@@ -1,0 +1,1 @@
+if lightning lightning = lightning_max;

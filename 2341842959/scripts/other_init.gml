@@ -1,0 +1,1 @@
+personaQuips[10] = "No need to raise a stink!"

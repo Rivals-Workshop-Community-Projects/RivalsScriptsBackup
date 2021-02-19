@@ -1,0 +1,15 @@
+//blocknum=0;//How many question blocks are active?
+pulleyvsp=0; //Shared vsp value used for the pulleys.
+pulleyvspb=0; //Shared vsp value used for the pulleys.
+pulleyhit=0; //How many pulleys are being stood on.
+pulleybreak=0; //Whether the pulleys have been broken.
+pulleycount=0;
+pulleyhome=0;
+pulleyhomefall=0;
+pulleybreakrecover=true;//Whether the pulley has recovered from being broken
+fastmusic=0;
+drmario=false;
+playdr=false;
+sparkle = hit_fx_create( sprite_get( "sparkle" ), 9 );
+starman = false; //Whether there is an active starman.
+cloaking = false; //Whether there is an active cloaking device.

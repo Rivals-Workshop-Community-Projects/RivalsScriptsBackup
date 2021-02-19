@@ -1,0 +1,18 @@
+//remove 5 points of Sig
+if (GAUGE_SIG_CURRENT >= 25) {
+    GAUGE_SIG_CURRENT -= 25;
+} else {
+    GAUGE_SIG_CURRENT -= GAUGE_SIG_CURRENT;
+}
+
+if (GAUGE_SIG_CURRENT <= 75) {
+    GAUGE_UNLOCK = 2;
+}
+if (GAUGE_SIG_CURRENT <= 50) {
+    GAUGE_UNLOCK = 1;
+}
+if (GAUGE_SIG_CURRENT <= 25) {
+    GAUGE_UNLOCK = 0;
+}
+
+AMMO_CURRENT = AMMO_MAX;

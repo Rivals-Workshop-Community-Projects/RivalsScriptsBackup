@@ -1,0 +1,66 @@
+sprite_change_offset("idle", 25, 68);
+sprite_change_offset("hurt", 28, 62);
+sprite_change_offset("crouch", 24, 60);
+sprite_change_offset("walk", 25, 68);
+sprite_change_offset("walkturn", 28, 62);
+sprite_change_offset("dash", 27, 62);
+sprite_change_offset("dashstart", 24, 64);
+sprite_change_offset("dashstop", 24, 64);
+sprite_change_offset("dashturn", 32, 62);
+
+sprite_change_offset("jumpstart", 25, 62);
+sprite_change_offset("jump", 25, 66);
+sprite_change_offset("doublejump", 25, 66);
+sprite_change_offset("walljump", 20, 64);
+sprite_change_offset("pratfall", 75, 92);
+sprite_change_offset("pratland", 19, 64);
+sprite_change_offset("land", 19, 64);
+sprite_change_offset("landinglag", 24, 58);
+
+sprite_change_offset("parry", 38, 64);
+sprite_change_offset("roll_forward", 25, 64);
+sprite_change_offset("roll_backward", 25, 64);
+sprite_change_offset("airdodge", 26, 50);
+sprite_change_offset("waveland", 23, 58);
+sprite_change_offset("tech", 28, 58);
+
+sprite_change_offset("jab", 20, 48);
+sprite_change_offset("dattack", 23, 58);
+sprite_change_offset("ftilt", 33, 48);
+sprite_change_offset("dtilt", 30, 60);
+sprite_change_offset("utilt", 25, 76);
+sprite_change_offset("nair", 23, 62);
+sprite_change_offset("fair", 51, 70);
+sprite_change_offset("bair1", 57, 66);
+sprite_change_offset("uair", 25, 98);
+sprite_change_offset("dair", 21, 64);
+sprite_change_offset("fstrong", 40, 64);
+sprite_change_offset("fstrong2", 39, 64);
+sprite_change_offset("fstrong3", 39, 64);
+sprite_change_offset("ustrong", 27, 70);
+sprite_change_offset("ustrong1", 57, 70);
+sprite_change_offset("dstrong", 48, 72);
+sprite_change_offset("nspecial", 25, 64);
+sprite_change_offset("nspecial_air", 21, 64);
+sprite_change_offset("fspecial", 35, 64);
+sprite_change_offset("fustrong", 58, 70);
+sprite_change_offset("uspecial", 68, 96);
+sprite_change_offset("dspecial", 26, 62);
+sprite_change_offset("taunt", 32, 62);
+sprite_change_offset("extra_1", 80, 90);
+
+sprite_change_offset("plat", 30, 58);
+
+sprite_change_offset("bomb", 21, 16);
+sprite_change_offset("bombr", 21, 16);
+sprite_change_offset("bombw", 21, 16);
+sprite_change_offset("bomb_skull", 21, 16);
+sprite_change_offset("bombr_skull", 21, 16);
+sprite_change_offset("bombw_skull", 21, 16);
+sprite_change_offset("bombf", 17, 17);
+sprite_change_offset("bombfr", 17, 17);
+sprite_change_offset("bombfw", 17, 17);
+sprite_change_offset("bomb_mask", 21, 16);
+sprite_change_offset("kaboom", 80, 71);
+sprite_change_offset("mine", 19, 9);
+sprite_change_offset("light", 16, 34);

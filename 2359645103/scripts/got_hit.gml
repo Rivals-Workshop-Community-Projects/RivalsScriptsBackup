@@ -1,0 +1,1 @@
+kk_hitcount = 0;

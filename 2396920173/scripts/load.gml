@@ -1,0 +1,247 @@
+sprite_change_offset("idle", 39, 76);
+sprite_change_offset("Phurtbox", 39, 76);
+sprite_change_offset("Pcrouchbox", 39, 76);
+sprite_change_offset("hurt", 39, 76);
+sprite_change_offset("hurtground", 39, 76);
+sprite_change_offset("bighurt", 39, 76);
+sprite_change_offset("spinhurt", 39, 56);
+sprite_change_offset("crouch", 39, 76);
+sprite_change_offset("walk", 39, 76);
+sprite_change_offset("walkturn", 39, 76);
+sprite_change_offset("dash", 39, 76);
+sprite_change_offset("dashstart", 39, 76);
+sprite_change_offset("dashstop", 39, 76);
+sprite_change_offset("dashturn", 39, 76);
+sprite_change_offset("jumpstart", 39, 76);
+sprite_change_offset("jump", 39, 76);
+sprite_change_offset("doublejump", 32, 62);
+sprite_change_offset("walljump", 0, 0);
+sprite_change_offset("pratfall", 0, 0);
+sprite_change_offset("land", 39, 76);
+sprite_change_offset("landinglag", 39, 76);
+sprite_change_offset("parry", 39, 76);
+sprite_change_offset("roll_forward", 39, 76);
+sprite_change_offset("roll_backward", 39, 76);
+sprite_change_offset("airdodge", 39, 76);
+sprite_change_offset("waveland", 39, 76);
+sprite_change_offset("tech", 39, 76);
+
+sprite_change_offset("Pproj", 39, 39);
+
+sprite_change_offset("Pwire", 39, 76);
+
+sprite_change_offset("jab", 0, 0);
+sprite_change_offset("dattack", 39, 76);
+sprite_change_offset("ftilt", 40, 78);
+sprite_change_offset("dtilt", 39, 76);
+sprite_change_offset("Qdtilt", 50, 98);
+sprite_change_offset("utilt", 60, 98);
+sprite_change_offset("nair", 0, 0);
+sprite_change_offset("fair", 40, 78);
+sprite_change_offset("bair", 49, 76);
+sprite_change_offset("Qbair", 70, 98);
+sprite_change_offset("uair", 60, 108);
+sprite_change_offset("dair", 40, 68);
+sprite_change_offset("fstrong", 50, 98);
+sprite_change_offset("ustrong", 39, 158);
+sprite_change_offset("dstrong", 100, 98);
+sprite_change_offset("nspecial", 0, 0);
+sprite_change_offset("uspecial", 0, 0);
+sprite_change_offset("dspecial", 0, 0);
+sprite_change_offset("taunt", 0, 0);
+
+sprite_change_offset("Pfspecial", 50, 98);
+sprite_change_offset("Nfspecial", 40, 78);
+sprite_change_offset("Bfspecial", 40, 88);
+sprite_change_offset("Bfspecial_missile", 40, 60);
+sprite_change_offset("Bfspecial_charge", 40, 60);
+sprite_change_offset("Rfspecial", 39, 76);
+sprite_change_offset("Rfspecial_barrel", 39, 83);
+sprite_change_offset("Qfspecial", 50, 98);
+sprite_change_offset("Kfspecial", 0, 0);
+
+sprite_change_offset("Nfspecial_proj", 32, 32);
+sprite_change_offset("range_circle", 128, 128);
+sprite_change_offset("reticle", 32, 32);
+
+sprite_change_offset("Nidle", 40, 78);
+sprite_change_offset("Nhurtbox", 40, 78);
+sprite_change_offset("Ncrouchbox", 40, 78);
+sprite_change_offset("Nhurt", 40, 78);
+sprite_change_offset("Nhurtground", 40, 78);
+sprite_change_offset("Nbighurt", 40, 78);
+sprite_change_offset("Nspinhurt", 40, 58);
+sprite_change_offset("Ncrouch", 40, 78);
+sprite_change_offset("Nwalk", 40, 78);
+sprite_change_offset("Nwalkturn", 40, 78);
+sprite_change_offset("Ndash", 40, 78);
+sprite_change_offset("Ndashstart", 40, 78);
+sprite_change_offset("Ndashstop", 40, 78);
+sprite_change_offset("Ndashturn", 40, 78);
+sprite_change_offset("Njumpstart", 40, 78);
+sprite_change_offset("Njump", 40, 78);
+sprite_change_offset("Ndoublejump", 40, 78);
+sprite_change_offset("Nwalljump", 0, 0);
+sprite_change_offset("Npratfall", 0, 0);
+sprite_change_offset("Nland", 40, 78);
+sprite_change_offset("Nlandinglag", 40, 78);
+sprite_change_offset("Nparry", 40, 78);
+sprite_change_offset("Nroll_forward", 40, 78);
+sprite_change_offset("Nroll_backward", 40, 78);
+sprite_change_offset("Nairdodge", 40, 78);
+sprite_change_offset("Nwaveland", 40, 78);
+sprite_change_offset("Ntech", 40, 78);
+
+sprite_change_offset("Nproj", 40, 40);
+sprite_change_offset("Nwire", 40, 78);
+
+sprite_change_offset("Ridle", 39, 76);
+sprite_change_offset("Rhurtbox", 39, 76);
+sprite_change_offset("Rcrouchbox", 39, 76);
+sprite_change_offset("Rhurt", 39, 76);
+sprite_change_offset("Rhurtground", 39, 76);
+sprite_change_offset("Rbighurt", 39, 76);
+sprite_change_offset("Rspinhurt", 39, 56);
+sprite_change_offset("Rcrouch", 39, 76);
+sprite_change_offset("Rwalk", 39, 76);
+sprite_change_offset("Rwalkturn", 39, 76);
+sprite_change_offset("Rdash", 39, 76);
+sprite_change_offset("Rdashstart", 39, 76);
+sprite_change_offset("Rdashstop", 39, 76);
+sprite_change_offset("Rdashturn", 39, 76);
+sprite_change_offset("Rjumpstart", 39, 76);
+sprite_change_offset("Rjump", 39, 66);
+sprite_change_offset("Rdoublejump", 39, 66);
+sprite_change_offset("Rwalljump", 0, 0);
+sprite_change_offset("Rpratfall", 0, 0);
+sprite_change_offset("Rland", 39, 76);
+sprite_change_offset("Rlandinglag", 39, 76);
+sprite_change_offset("Rparry", 39, 76);
+sprite_change_offset("Rroll_forward", 39, 76);
+sprite_change_offset("Rroll_backward", 39, 76);
+sprite_change_offset("Rairdodge", 39, 76);
+sprite_change_offset("Rwaveland", 39, 76);
+sprite_change_offset("Rtech", 39, 76);
+
+sprite_change_offset("Rwire", 39, 76);
+
+sprite_change_offset("Bidle", 40, 78);
+sprite_change_offset("Bhurtbox", 40, 78);
+sprite_change_offset("Bcrouchbox", 40, 78);
+sprite_change_offset("Bhurt", 40, 78);
+sprite_change_offset("Bhurtground", 40, 78);
+sprite_change_offset("Bbighurt", 40, 78);
+sprite_change_offset("Bspinhurt", 40, 58);
+sprite_change_offset("Bcrouch", 40, 78);
+sprite_change_offset("Bwalk", 40, 78);
+sprite_change_offset("Bwalkturn", 40, 78);
+sprite_change_offset("Bdash", 40, 78);
+sprite_change_offset("Bdashstart", 40, 78);
+sprite_change_offset("Bdashstop", 40, 78);
+sprite_change_offset("Bdashturn", 40, 78);
+sprite_change_offset("Bjumpstart", 40, 78);
+sprite_change_offset("Bjump", 40, 78);
+sprite_change_offset("Bdoublejump", 40, 78);
+sprite_change_offset("Bwalljump", 0, 0);
+sprite_change_offset("Bpratfall", 0, 0);
+sprite_change_offset("Bland", 40, 78);
+sprite_change_offset("Blandinglag", 40, 78);
+sprite_change_offset("Bparry", 40, 78);
+sprite_change_offset("Broll_forward", 40, 78);
+sprite_change_offset("Broll_backward", 40, 78);
+sprite_change_offset("Bairdodge", 40, 78);
+sprite_change_offset("Bwaveland", 40, 78);
+sprite_change_offset("Btech", 40, 78);
+
+sprite_change_offset("Bwire", 40, 78);
+
+sprite_change_offset("Qidle", 50, 98);
+sprite_change_offset("Qhurtbox", 50, 98);
+sprite_change_offset("Qcrouchbox", 50, 98);
+sprite_change_offset("Qhurt", 50, 98);
+sprite_change_offset("Qhurtground", 50, 98);
+sprite_change_offset("Qbighurt", 50, 98);
+//sprite_change_offset("Qspinhurt", 50, 68);
+sprite_change_offset("Qcrouch", 50, 98);
+sprite_change_offset("Qwalk", 50, 98);
+sprite_change_offset("Qwalkturn", 50, 98);
+sprite_change_offset("Qdash", 50, 98);
+sprite_change_offset("Qdashstart", 50, 98);
+sprite_change_offset("Qdashstop", 50, 98);
+sprite_change_offset("Qdashturn", 50, 98);
+sprite_change_offset("Qjumpstart", 50, 98);
+sprite_change_offset("Qjump", 50, 98);
+sprite_change_offset("Qdoublejump", 50, 98);
+sprite_change_offset("Qwalljump", 50, 98);
+sprite_change_offset("Qpratfall", 50, 98);
+sprite_change_offset("Qland", 50, 98);
+sprite_change_offset("Qlandinglag", 50, 98);
+sprite_change_offset("Qparry", 50, 98);
+sprite_change_offset("Qroll_forward", 50, 98);
+sprite_change_offset("Qroll_backward", 50, 98);
+sprite_change_offset("Qairdodge", 50, 98);
+sprite_change_offset("Qwaveland", 50, 98);
+sprite_change_offset("Qtech", 50, 98);
+
+sprite_change_offset("Qwire", 50, 98);
+
+sprite_change_offset("Kidle", 50, 98);
+sprite_change_offset("Khurtbox", 50, 98);
+sprite_change_offset("Kcrouchbox", 50, 98);
+sprite_change_offset("Khurt", 50, 98);
+sprite_change_offset("Khurtground", 50, 98);
+sprite_change_offset("Kbighurt", 50, 98);
+//sprite_change_offset("Kspinhurt", 50, 68);
+sprite_change_offset("Kcrouch", 50, 98);
+sprite_change_offset("Kwalk", 50, 98);
+sprite_change_offset("Kwalkturn", 50, 98);
+sprite_change_offset("Kdash", 50, 98);
+sprite_change_offset("Kdashstart", 50, 98);
+sprite_change_offset("Kdashstop", 50, 98);
+sprite_change_offset("Kdashturn", 50, 98);
+sprite_change_offset("Kjumpstart", 50, 98);
+sprite_change_offset("Kjump", 50, 98);
+sprite_change_offset("Kdoublejump", 50, 98);
+sprite_change_offset("Kwalljump", 50, 98);
+sprite_change_offset("Kpratfall", 50, 98);
+sprite_change_offset("Kland", 50, 98);
+sprite_change_offset("Klandinglag", 50, 98);
+sprite_change_offset("Kparry", 50, 98);
+sprite_change_offset("Kroll_forward", 50, 98);
+sprite_change_offset("Kroll_backward", 50, 98);
+sprite_change_offset("Kairdodge", 50, 98);
+sprite_change_offset("Kwaveland", 50, 98);
+sprite_change_offset("Ktech", 50, 98);
+
+sprite_change_offset("Kwire", 50, 98);
+
+sprite_change_offset("Knair", 50, 98);
+sprite_change_offset("Qnair", 50, 98);
+sprite_change_offset("Rnair", 50, 98);
+sprite_change_offset("Nnair", 50, 98);
+sprite_change_offset("Bnair", 50, 98);
+sprite_change_offset("Pnair", 50, 98);
+
+sprite_change_offset("Kjab", 50, 98);
+sprite_change_offset("Qjab", 50, 98);
+sprite_change_offset("Rjab", 50, 98);
+sprite_change_offset("Njab", 50, 98);
+sprite_change_offset("Bjab", 50, 98);
+sprite_change_offset("Pjab", 50, 98);
+
+sprite_change_offset("plat", 47, 0);
+sprite_change_offset("taunt", 40, 78);
+
+sprite_change_offset("arrow", 30, 30);
+
+sprite_change_offset("pawn_piece_hud", 6, 7);
+sprite_change_offset("hp_segment", 6, 4);
+sprite_change_offset("armour_meter", 30, 4);
+sprite_change_offset("armour_outline", 20, 90);
+sprite_change_offset("proj_particle", 11, 11);
+
+sprite_change_offset("kirby_N", 40, 70);
+sprite_change_offset("kirby_R", 40, 70);
+sprite_change_offset("kirby_Q", 40, 60);
+
+set_victory_theme(sound_get("victory_music"))

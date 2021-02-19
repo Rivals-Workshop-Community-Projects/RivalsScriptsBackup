@@ -1,0 +1,97 @@
+///
+
+
+// DEFAULT COLOR
+
+// energy
+set_color_profile_slot( 0, 0, 0, 208, 255 );
+set_color_profile_slot_range( 0, 1, 1, 1 );
+
+// Hair
+set_color_profile_slot( 0, 1, 221, 228, 231 );
+set_color_profile_slot_range( 1, 9, 13, 32 );
+
+// Skin
+set_color_profile_slot( 0, 2, 130, 125, 35 );
+set_color_profile_slot_range( 2, 1, 32, 30 );
+
+// oufit1
+set_color_profile_slot( 0, 3, 37, 49, 65 );
+set_color_profile_slot_range( 3, 4, 1, 10 );
+
+// outfit2
+set_color_profile_slot( 0, 4, 35, 46, 49 );
+set_color_profile_slot_range( 4, 4, 3, 6 );
+
+// outfit3
+set_color_profile_slot( 0, 5, 42, 71, 86 );
+set_color_profile_slot_range( 5, 1, 15, 8 );
+
+// Chair1
+set_color_profile_slot( 0, 6, 129, 132, 154 );
+set_color_profile_slot_range( 6, 1, 1, 1 );
+
+// Chair2
+set_color_profile_slot( 0, 7, 219, 219, 219 );
+set_color_profile_slot_range( 7, 1, 1, 1 );
+
+
+// ALTERNATE COLORS
+set_num_palettes( 6 );
+
+// Vante
+set_color_profile_slot( 1, 0, 0, 208, 255 ); //energy
+set_color_profile_slot( 1, 1, 221, 228, 231 ); //Hair
+set_color_profile_slot( 1, 2, 138, 26, 26 ); //Skin
+set_color_profile_slot( 1, 3, 156, 34, 34 ); //oufit1
+set_color_profile_slot( 1, 4, 61, 34, 34 ); //outfit2
+set_color_profile_slot( 1, 5, 51, 28, 28 ); //outfit3
+set_color_profile_slot( 1, 6, 18, 18, 18 ); //Chair1
+set_color_profile_slot( 1, 7, 36, 36, 36 ); //Chair2
+
+// Sparda
+set_color_profile_slot( 2, 0, 0, 208, 255 ); //energy
+set_color_profile_slot( 2, 1, 221, 228, 231 ); //Hair
+set_color_profile_slot( 2, 2, 245, 234, 2 ); //Skin
+set_color_profile_slot( 2, 3, 63, 48, 84 ); //oufit1
+set_color_profile_slot( 2, 4, 41, 41, 41 ); //outfit2
+set_color_profile_slot( 2, 5, 138, 61, 61 ); //outfit3
+set_color_profile_slot( 2, 6, 117, 51, 40 ); //Chair1
+set_color_profile_slot( 2, 7, 173, 117, 81 ); //Chair2
+
+// Lady
+set_color_profile_slot( 3, 0, 156, 34, 34 ); //energy
+set_color_profile_slot( 3, 1, 51, 53, 54 ); //Hair
+set_color_profile_slot( 3, 2, 94, 86, 86 ); //Skin
+set_color_profile_slot( 3, 3, 219, 219, 219 ); //oufit1
+set_color_profile_slot( 3, 4, 36, 36, 36 ); //outfit2
+set_color_profile_slot( 3, 5, 59, 59, 59 ); //outfit3
+set_color_profile_slot( 3, 6, 18, 18, 18 ); //Chair1
+set_color_profile_slot( 3, 7, 36, 36, 36 ); //Chair2
+
+// V
+set_color_profile_slot( 4, 0, 147, 70, 229 ); //energy
+set_color_profile_slot( 4, 1, 51, 53, 54 ); //Hair
+set_color_profile_slot( 4, 2, 219, 219, 219 ); //Skin
+set_color_profile_slot( 4, 3, 36, 36, 36 ); //oufit1
+set_color_profile_slot( 4, 4, 36, 36, 36 ); //outfit2
+set_color_profile_slot( 4, 5, 245, 206, 196 ); //outfit3
+set_color_profile_slot( 4, 6, 117, 50, 209 ); //Chair1
+set_color_profile_slot( 4, 7, 79, 49, 120 ); //Chair2
+
+// Ken from Street
+set_color_profile_slot( 5, 0, 245, 87, 2 ); //energy
+set_color_profile_slot( 5, 1, 245, 209, 34 ); //Hair
+set_color_profile_slot( 5, 2, 156, 34, 34 ); //Skin
+set_color_profile_slot( 5, 3, 209, 36, 36 ); //oufit1
+set_color_profile_slot( 5, 4, 120, 80, 34 ); //outfit2
+set_color_profile_slot( 5, 5, 51, 28, 28 ); //outfit3
+set_color_profile_slot( 5, 6, 129, 132, 154 ); //Chair1
+set_color_profile_slot( 5, 7, 219, 219, 219 ); //Chair2
+
+
+/* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
+=== BEGIN JSON PALETTE ===
+{"formatversion":1,"data":[{"name":"energy","colors":[{"r":0,"g":208,"b":255,"main":true}]},{"name":"Hair","colors":[{"r":221,"g":228,"b":231,"main":true},{"r":129,"g":143,"b":154}]},{"name":"Skin","colors":[{"r":204,"g":200,"b":118},{"r":130,"g":125,"b":35,"main":true}]},{"name":"oufit1","colors":[{"r":37,"g":49,"b":65,"main":true},{"r":24,"g":31,"b":42}]},{"name":"outfit2","colors":[{"r":25,"g":33,"b":36},{"r":35,"g":46,"b":49,"main":true}]},{"name":"outfit3","colors":[{"r":42,"g":71,"b":86,"main":true},{"r":24,"g":54,"b":69}]},{"name":"Chair1","colors":[{"r":129,"g":132,"b":154,"main":true}]},{"name":"Chair2","colors":[{"r":219,"g":219,"b":219,"main":true}]}]}
+=== END JSON PALETTE ===
+*/

@@ -1,0 +1,10 @@
+//debug-draw
+//draw_debug_text(x,y,string(window_timer));
+//draw_debug_text(x,y+15,string(window_timer));
+//draw_debug_text(x,y+30,string(fair_parry));
+//draw_debug_text(x,y+45,string(shdl));
+//draw_debug_text(x,y+60,string(vsp));
+//draw_debug_text(x,y+75,string(reflect.hitpause_growth));
+//draw_debug_text(x,y+90,string(reflect.hit_effect));
+//draw_debug_text(x,y+105,string(reflect.hit_effect_x));
+//draw_debug_text(x,y+120,string(reflect.hit_effect_y));

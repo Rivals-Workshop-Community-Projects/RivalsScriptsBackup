@@ -1,0 +1,11 @@
+// Stage Platforms/Solid
+sprite_index = asset_get("empty_sprite");
+image_xscale = 2;
+image_yscale = 2;
+plat = obj_stage_main.cur_plat;
+block = obj_stage_main.cur_block;
+depth = 10;
+destroyed = false;
+destination_y = 0;
+starting_y = 0;
+fake_y = 0;

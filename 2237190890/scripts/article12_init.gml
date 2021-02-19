@@ -1,0 +1,19 @@
+// Fireworks
+sprite_index = asset_get("empty_sprite");
+image_xscale = 2;
+image_yscale = 2;
+depth = 32;
+parallax_x = -0.25;
+parallax_y = -0.25;
+firework_index = obj_stage_main.firework_index;
+position_set = false;
+sound_played = false;
+sprite_changed = false;
+delay = 0;
+max_delay = 0;
+delay_set = false;
+window = 0;
+window_timer = 0;
+window_lengths = [20, 10, 40];
+window_frames = [0, 9, 5];
+destroyed = false;

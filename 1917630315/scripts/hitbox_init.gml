@@ -1,0 +1,1 @@
+trace("hitbox_init was called");

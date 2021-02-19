@@ -1,0 +1,1 @@
+//draw_debug_text(x,y,string(hsp)+" "+string(vsp))

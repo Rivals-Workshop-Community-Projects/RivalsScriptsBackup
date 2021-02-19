@@ -1,0 +1,222 @@
+//set_attack
+
+switch attack {
+    case AT_FSTRONG:
+    case AT_DSTRONG:
+    piece = "K";
+    break;
+    
+    case AT_DATTACK:
+    case AT_DAIR:
+    case AT_USTRONG:
+    piece = "R";
+    break;
+    
+    case AT_UTILT:
+    case AT_UAIR:
+    piece = "B";
+    break;
+    
+    case AT_FAIR:
+    case AT_FTILT:
+    piece = "N";
+    break;
+    
+    case AT_BAIR:
+    case AT_DTILT:
+    piece = queen_active && !(piece_id != undefined && instance_exists(piece_id) && piece_id.piece == "Q") ? "Q" : "P"
+    break;
+}
+
+switch attack {
+    case AT_NAIR:
+    set_attack_value(AT_NAIR, AG_SPRITE, sprite_get(piece + "nair"));
+    set_attack_value(AT_NAIR, AG_HURTBOX_SPRITE, sprite_get(piece + "nair_hurt"));
+    switch piece {
+        case "P":
+        set_window_value(AT_NAIR, 1, AG_WINDOW_GOTO, 2);
+        break;
+        
+        case "B": case "N": case "R":
+        set_window_value(AT_NAIR, 1, AG_WINDOW_GOTO, 3);
+        break;
+        
+        case "Q": case "K":
+        set_window_value(AT_NAIR, 1, AG_WINDOW_GOTO, 4);
+        break;
+    }
+    break;
+    
+    case AT_JAB:
+    set_attack_value(AT_JAB, AG_SPRITE, sprite_get(piece + "jab"));
+    set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get(piece + "jab_hurt"));
+    for (var i = 1; i < 7; i++) {
+        reset_hitbox_value(AT_JAB, i, HG_WINDOW);
+    }
+    switch piece {
+        case "P": set_hitbox_value(AT_JAB, 1, HG_WINDOW, 2) break;
+        case "N": set_hitbox_value(AT_JAB, 2, HG_WINDOW, 2) break;
+        case "B": set_hitbox_value(AT_JAB, 3, HG_WINDOW, 2) break;
+        case "R": set_hitbox_value(AT_JAB, 4, HG_WINDOW, 2) break;
+        case "K": set_hitbox_value(AT_JAB, 5, HG_WINDOW, 2) break;
+        case "Q": set_hitbox_value(AT_JAB, 6, HG_WINDOW, 2) break;
+    }
+    break;
+    
+    case AT_DTILT:
+    if queen_active && !(piece_id != undefined && instance_exists(piece_id) && piece_id.piece == "Q") {
+        set_attack_value(AT_DTILT, AG_SPRITE, sprite_get("Qdtilt"));
+        set_attack_value(AT_DTILT, AG_HURTBOX_SPRITE, sprite_get("Qdtilt_hurt"));
+        set_hitbox_value(AT_DTILT, 1, HG_WINDOW, 69);
+        set_hitbox_value(AT_DTILT, 2, HG_WINDOW, 2);
+    } else {
+        reset_attack_value(AT_DTILT, AG_SPRITE);
+        reset_attack_value(AT_DTILT, AG_HURTBOX_SPRITE);
+        reset_hitbox_value(AT_DTILT, 1, HG_WINDOW);
+        reset_hitbox_value(AT_DTILT, 2, HG_WINDOW);
+    }
+    break;
+    
+    case AT_BAIR:
+    if queen_active && !(piece_id != undefined && instance_exists(piece_id) && piece_id.piece == "Q") {
+        set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("Qbair"));
+        set_attack_value(AT_BAIR, AG_HURTBOX_SPRITE, sprite_get("Qbair_hurt"));
+        set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 69);
+        set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 2);
+    } else {
+        reset_attack_value(AT_BAIR, AG_SPRITE);
+        reset_attack_value(AT_BAIR, AG_HURTBOX_SPRITE);
+        reset_hitbox_value(AT_BAIR, 1, HG_WINDOW);
+        reset_hitbox_value(AT_BAIR, 2, HG_WINDOW);
+    }
+    break;
+    
+    //case AT_TAUNT: piece = "Q" break;
+}
+
+if attack == AT_NSPECIAL && special_counter == 4 && move_cooldown[AT_NSPECIAL] <= 5 {
+    if piece_id != undefined && !piece_id.perform_attack && !piece_id.gonnadie {
+        var cur_x = x;
+        var cur_y = y;
+        var cur_hsp = hsp;
+        var cur_vsp = vsp;
+        var cur_dir = spr_dir;
+        var cur_piece = piece;
+        var cur_free = free;
+        var cur_armour = king_armour;
+        var cur_armour_timer = armour_timer;
+        
+        var new_x = piece_id.x;
+        var new_y = piece_id.y;
+        var new_hsp = piece_id.hsp;
+        var new_vsp = piece_id.vsp;
+        var new_dir = piece_id.spr_dir;
+        var new_piece = piece_id.piece;
+        var new_free = piece_id.free;
+        var new_armour = piece_id.king_armour;
+        var new_armour_timer = piece_id.armour_timer;
+        
+        x = new_x
+        y = new_y + 2
+        hsp = new_hsp
+        vsp = new_vsp
+        spr_dir = new_dir
+        piece = new_piece
+        king_armour = new_armour
+        armour_timer = new_armour_timer
+        
+        piece_id.x = cur_x
+        piece_id.y = cur_y
+        piece_id.hsp = cur_hsp
+        piece_id.vsp = cur_vsp
+        piece_id.spr_dir = cur_dir
+        piece_id.piece = cur_piece
+        piece_id.king_armour = cur_armour
+        piece_id.armour_timer = cur_armour_timer
+        if !cur_armour piece_id.outline_color = [0,0,0]
+        piece_id.mask_index = sprite_get(cur_piece + "hurtbox")
+        
+        piece_id.bishop_cooldown = 120;
+        
+        spawn_hit_fx(cur_x, cur_y, 13)
+        spawn_hit_fx(new_x, new_y, 13)
+        sound_play(asset_get("mfx_star"))
+        
+        switch cur_piece {
+            case "P": piece_id.hp = hp_P; break;
+            case "B": piece_id.hp = hp_B; break;
+            case "N": piece_id.hp = hp_N; break;
+            case "K": piece_id.hp = hp_K; break;
+            case "R": piece_id.hp = hp_R; break;
+            case "Q": piece_id.hp = hp_Q; break;
+        }
+        
+        if cur_free {
+            next_state = free ? PS_PRATFALL : PS_PRATLAND;
+            prat_land_time = 26;
+        }
+    }
+    move_cooldown[AT_NSPECIAL] = 40;
+    //state = PS_IDLE;
+}
+
+if attack == AT_USPECIAL {
+    set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, hurtbox_spr);
+    if piece == "P" {
+        set_attack_value(AT_USPECIAL, AG_SPRITE, sprite_get("idle"));
+    } else {
+        set_attack_value(AT_USPECIAL, AG_SPRITE, sprite_get(piece + "idle"));
+    }
+}
+
+if attack == AT_FSPECIAL {
+    switch piece {
+        case "P":
+        if pawn_meter == 7 && !(piece_id != undefined && piece_id.piece == "Q") attack = AT_DTHROW
+        else if special_counter == 1 {
+            sound_play(sound_get("lol"))
+            shake_timer = 10;
+        }
+        break;
+        case "N": attack = AT_UTHROW break;
+        case "B": attack = AT_DSPECIAL_2 break;
+        case "R": attack = AT_NSPECIAL_2 break;
+        case "Q": attack = AT_FSPECIAL_2 break;
+        case "K": if special_counter == 2 && !king_armour && armour_cooldown == 0 {
+            king_armour = true;
+            armour_timer = 0;
+            sound_play(asset_get("sfx_metal_hit_strong"))
+        }
+        break;
+    }
+}
+
+if attack == AT_DSPECIAL {
+    if special_counter == 1 {
+        if piece_id != undefined && instance_exists(piece_id) && !piece_id.perform_attack && piece_id.not_hitpause_timer > 20 && !piece_id.gonnadie && !(piece_id.piece == "B" && piece_id.bishop_cooldown < 120) {
+            piece_id.perform_attack = true;
+            piece_id.attack_timer = 0;
+            piece_id.window_timer = 0;
+        }
+    }
+}
+
+if attack == AT_NSPECIAL || attack == AT_DSPECIAL {
+    if special_counter == 1 && piece_id != undefined && instance_exists(piece_id) {
+        piece_id.progress_attack = true;
+    }
+}
+
+user_event(0)
+
+//TRAILER STUFF, DELETE LATER
+/*
+if attack_counter == 0 {
+    with oPlayer {
+        if id != other.id {
+            other.trailer_timer = 0;
+            other.trailer_phase++;
+        }
+    }
+}
+*/

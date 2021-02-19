@@ -1,0 +1,1 @@
+sound_play(sfx_sonic_ring_loss);

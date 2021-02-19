@@ -1,0 +1,1461 @@
+===================== Base Stats =====================
+
+--------------------- Effective Weight ---------------------
+
+Knockback Adjustment: 1.14
+Gravity Speed: 0.90
+Hitstun Gravity: 0.60
+Air Friction: 0.03
+Aerial Acceleration: 0.30
+Aerial Acceleration: while in pratfall
+Max Fall Speed: 11.70
+Max FastFall Speed: 14.21
+--------------------- Grounded Movement ---------------------
+
+Walk Speed: 4.5
+Walk Acceleration: 0.5
+Walk Acceleration: 1.0
+Walk Turn Time: 6
+Initial Dash Time: 11
+Initial Dash Speed: 8.5
+Dash Speed: 8.5
+Dash Speed: 8
+Dash Turn Time: 10
+Dash Turn Acceleration: 1.5
+Dash Stop Time: 4
+Dash Stop Percent: 0.35
+Ground Friction: 0.7
+Moonwalk Acceleration: 1.0
+Waveland Time: 8
+Waveland Speed: 1.35
+Waveland Friction: 0.08
+--------------------- Aerial Movement ---------------------
+
+Jump Start Time: 5
+Jump Speed: 15.3
+Jump Speed: 17.49
+Short Hop Speed: 9.37
+Double Jump Speed: 17.49
+Leave Ground Max Speed: 7
+Max Jump Hop Speed: 6
+Max Airspeed: 4
+Max Doublejump Hspeed: 3
+Pratfall Acceleration: 0.85
+Max Double Jumps: 1
+Double Jump Frames: 32
+Walljump Hspeed: 6
+Walljump Vspeed: 11
+Walljump Time: 50
+Walljump Time: 50
+Landing Time: 4
+Landing Time: 3
+Landing Time: 8
+Prat Landing Time: 3
+Airdodge Startup: 2
+Airdodge Active: 2
+Airdodge Recovery: 3
+Airdodge Speed: 7.5
+--------------------- Misc Stats ---------------------
+
+Crouch Startup: 2
+Crouch Active: 8
+Crouch Recovery: 2
+Parry Startup: 1
+Parry Startup: 2
+Parry Active: 1
+Parry Active: 2
+Parry Recovery: 4
+Parry Recovery: 3
+Tech Active: 3
+Tech Recovery: 1
+Techroll Startup: 3
+Techroll Active: 7
+Techroll Recovery: 3
+Techroll Speed: 10
+Roll Startup: 2
+Roll Active: 3
+Roll Recovery: 2
+Roll Speed: 9
+
+
+===================== Attack Stats =====================
+
+--------------------- bair Stats ---------------------
+
+Startup: 4
+Endlag (hit): 14
+Endlag (whiff): 21
+Has Landing Lag: Yes
+Landing Lag: 5
+
+~~~~~Hit 1 values~~~~~
+
+Active Frames: 16
+Priority: 4
+Damage: 5
+Angle: 361
+Base Knockback: 4
+Knockback Scaling: 0.5
+Base Hitpause: 6
+Hitpause Scaling: 0.25
+Kills Projectiles: Yes
+Angle Flipper: 6 (Horizontal knockback sends away from the enemy player)
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 2 values~~~~~
+
+Active Frames: 4
+Priority: 3
+Damage: 7
+Angle: 361
+Base Knockback: 6.5
+Knockback Scaling: 0.7
+Base Hitpause: 8
+Hitpause Scaling: 0.5
+Kills Projectiles: Yes
+Angle Flipper: 6 (Horizontal knockback sends away from the enemy player)
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 3 values~~~~~
+
+Active Frames: 4
+Priority: 2
+Damage: 6
+Angle: 361
+Base Knockback: 6.5
+Knockback Scaling: 0.6
+Base Hitpause: 7
+Hitpause Scaling: 0.5
+Kills Projectiles: Yes
+Angle Flipper: 6 (Horizontal knockback sends away from the enemy player)
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 4 values~~~~~
+
+Active Frames: 8
+Priority: 1
+Damage: 5
+Angle: 361
+Base Knockback: 4
+Knockback Scaling: 0.5
+Base Hitpause: 6
+Hitpause Scaling: 0.25
+Kills Projectiles: Yes
+Angle Flipper: 6 (Horizontal knockback sends away from the enemy player)
+Hitstun Multiplier: 1x
+
+
+
+--------------------- dair Stats ---------------------
+
+Startup: 6
+Endlag (hit): 16
+Endlag (whiff): 24
+Has Landing Lag: Yes
+Landing Lag: 7
+
+~~~~~Hit 1 values~~~~~
+
+Active Frames: 2
+Priority: 2
+Damage: 1
+Angle: 290
+Base Knockback: 5
+Knockback Scaling: 0
+Base Hitpause: 3
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 0.65x
+
+
+
+
+~~~~~Hit 2 values~~~~~
+
+Active Frames: 2
+Priority: 1
+Damage: 1
+Angle: 290
+Base Knockback: 5
+Knockback Scaling: 0
+Base Hitpause: 3
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 0.65x
+
+
+
+
+~~~~~Hit 3 values~~~~~
+
+Active Frames: 2
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 4 values~~~~~
+
+Active Frames: 2
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 5 values~~~~~
+
+Active Frames: 2
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 6 values~~~~~
+
+Active Frames: 2
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 7 values~~~~~
+
+Active Frames: 2
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 8 values~~~~~
+
+Active Frames: 2
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 9 values~~~~~
+
+Active Frames: 2
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 10 values~~~~~
+
+Active Frames: 2
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 11 values~~~~~
+
+Active Frames: 2
+Priority: 2
+Damage: 1
+Angle: 290
+Base Knockback: 5
+Knockback Scaling: 0
+Base Hitpause: 3
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 12 values~~~~~
+
+Active Frames: 2
+Priority: 1
+Damage: 1
+Angle: 290
+Base Knockback: 5
+Knockback Scaling: 0
+Base Hitpause: 3
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 13 values~~~~~
+
+Active Frames: 2
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 14 values~~~~~
+
+Active Frames: 2
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+--------------------- dattack Stats ---------------------
+
+Startup: 5
+Endlag (hit): 15
+Endlag (whiff): 23
+Has Landing Lag: No
+
+~~~~~Hit 1 values~~~~~
+
+Active Frames: 3
+Priority: 2
+Damage: 5
+Angle: 72
+Base Knockback: 7
+Knockback Scaling: 0.60
+Base Hitpause: 7
+Hitpause Scaling: 0.25
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 2 values~~~~~
+
+Active Frames: 10
+Priority: 2
+Damage: 4
+Angle: 72
+Base Knockback: 7
+Knockback Scaling: 0.60
+Base Hitpause: 6
+Hitpause Scaling: 0.25
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+--------------------- dspecial Stats ---------------------
+
+Unable to extract damage window. Most likely outcome: Hitbox is spawned manually.
+No valid damage windows set. Most likely outcome: num_hitboxes are set to 0
+
+~~~~~Hit 1 values~~~~~
+
+Active Frames: 1
+Priority: 6
+Damage: 2
+Angle: 0
+Base Knockback: 10
+Knockback Scaling: 0
+Base Hitpause: 4
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: 6 (Horizontal knockback sends away from the enemy player)
+Hitstun Multiplier: 0.8x
+
+
+
+--------------------- dstrong Stats ---------------------
+
+Startup: 9
+Endlag (hit): 17
+Endlag (whiff): 26
+Has Landing Lag: No
+
+~~~~~Hit 1 values~~~~~
+
+Active Frames: 13
+Priority: 3
+Damage: 9
+Angle: 361
+Base Knockback: 5.5
+Knockback Scaling: 0.8
+Base Hitpause: 6
+Hitpause Scaling: 0.35
+Kills Projectiles: Yes
+Angle Flipper: 6 (Horizontal knockback sends away from the enemy player)
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 2 values~~~~~
+
+Active Frames: 5
+Priority: 4
+Damage: 11
+Angle: 40
+Base Knockback: 6
+Knockback Scaling: 0.8
+Base Hitpause: 10
+Hitpause Scaling: 0.75
+Kills Projectiles: Yes
+Angle Flipper: 6 (Horizontal knockback sends away from the enemy player)
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 3 values~~~~~
+
+Active Frames: 8
+Priority: 4
+Damage: 11
+Angle: 40
+Base Knockback: 6
+Knockback Scaling: 0.8
+Base Hitpause: 10
+Hitpause Scaling: 0.75
+Kills Projectiles: Yes
+Angle Flipper: 6 (Horizontal knockback sends away from the enemy player)
+Hitstun Multiplier: 1x
+
+
+
+--------------------- dtilt Stats ---------------------
+
+Startup: 6
+Endlag (hit): 14
+Endlag (whiff): 21
+Has Landing Lag: No
+
+~~~~~Hit 1 values~~~~~
+
+Active Frames: 3
+Priority: 3
+Damage: 7
+Angle: 75
+Base Knockback: 9
+Knockback Scaling: 0.6
+Base Hitpause: 6
+Hitpause Scaling: 0.25
+Kills Projectiles: Yes
+Angle Flipper: 6 (Horizontal knockback sends away from the enemy player)
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 2 values~~~~~
+
+Active Frames: 3
+Priority: 2
+Damage: 7
+Angle: 90
+Base Knockback: 9
+Knockback Scaling: 0.6
+Base Hitpause: 6
+Hitpause Scaling: 0.25
+Kills Projectiles: Yes
+Angle Flipper: 6 (Horizontal knockback sends away from the enemy player)
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 3 values~~~~~
+
+Active Frames: 1
+Priority: 6
+Damage: 7
+Angle: 75
+Base Knockback: 9
+Knockback Scaling: 0.6
+Base Hitpause: 6
+Hitpause Scaling: 0.25
+Kills Projectiles: Yes
+Angle Flipper: 6 (Horizontal knockback sends away from the enemy player)
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 4 values~~~~~
+
+Active Frames: 1
+Priority: 5
+Damage: 7
+Angle: 90
+Base Knockback: 9
+Knockback Scaling: 0.6
+Base Hitpause: 6
+Hitpause Scaling: 0.25
+Kills Projectiles: Yes
+Angle Flipper: 6 (Horizontal knockback sends away from the enemy player)
+Hitstun Multiplier: 1x
+
+
+
+--------------------- fair Stats ---------------------
+
+Startup: 5
+Endlag (hit): 10
+Endlag (whiff): 15
+Has Landing Lag: Yes
+Landing Lag: 6
+
+~~~~~Hit 1 values~~~~~
+
+Active Frames: 4
+Priority: 2
+Damage: 3
+Angle: 50
+Base Knockback: 3
+Knockback Scaling: 0.4
+Base Hitpause: 5
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 2 values~~~~~
+
+Active Frames: 4
+Priority: 2
+Damage: 2
+Angle: 50
+Base Knockback: 3
+Knockback Scaling: 0.3
+Base Hitpause: 5
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 3 values~~~~~
+
+Active Frames: 3
+Priority: 3
+Damage: 2
+Angle: 50
+Base Knockback: 3
+Knockback Scaling: 0.2
+Base Hitpause: 5
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 4 values~~~~~
+
+Active Frames: 4
+Priority: 3
+Damage: 1
+Angle: 50
+Base Knockback: 3
+Knockback Scaling: 0.1
+Base Hitpause: 5
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 5 values~~~~~
+
+Active Frames: 5
+Priority: 5
+Damage: 5
+Angle: 30
+Base Knockback: 7
+Knockback Scaling: 0.55/4
+Base Hitpause: 7
+Hitpause Scaling: 0.55/4
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+--------------------- fspecial Stats ---------------------
+
+Startup: 23
+Endlag (hit): 26
+Endlag (whiff): 39
+Has Landing Lag: Yes
+Landing Lag: 100
+
+~~~~~Hit 1 values~~~~~
+
+Active Frames: 1
+Priority: 4
+Damage: 4
+Angle: 80
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 2 values~~~~~
+
+Active Frames: 1
+Priority: 4
+Damage: 4
+Angle: 80
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 3 values~~~~~
+
+Active Frames: 1
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 4 values~~~~~
+
+Active Frames: 1
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+--------------------- fstrong Stats ---------------------
+
+Startup: 11
+Endlag (hit): 17
+Endlag (whiff): 26
+Has Landing Lag: No
+
+~~~~~Hit 1 values~~~~~
+
+Active Frames: 3
+Priority: 6
+Damage: 12
+Angle: 361
+Base Knockback: 6.5
+Knockback Scaling: 1.1
+Base Hitpause: 8
+Hitpause Scaling: 0.7
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 2 values~~~~~
+
+Active Frames: 3
+Priority: 4
+Damage: 10
+Angle: 361
+Base Knockback: 6.5
+Knockback Scaling: 1.1
+Base Hitpause: 8
+Hitpause Scaling: 0.7
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 3 values~~~~~
+
+Active Frames: 5
+Priority: 3
+Damage: 10
+Angle: 361
+Base Knockback: 5
+Knockback Scaling: 1.0
+Base Hitpause: 6
+Hitpause Scaling: 0.7
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+--------------------- ftilt Stats ---------------------
+
+Startup: 4
+Endlag (hit): 10
+Endlag (whiff): 15
+Has Landing Lag: No
+
+~~~~~Hit 1 values~~~~~
+
+Active Frames: 1
+Priority: 2
+Damage: 5
+Angle: 361
+Base Knockback: 3.5
+Knockback Scaling: 0.5
+Base Hitpause: 5
+Hitpause Scaling: 0.2
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 2 values~~~~~
+
+Active Frames: 3
+Priority: 2
+Damage: 5
+Angle: 361
+Base Knockback: 3.5
+Knockback Scaling: 0.5
+Base Hitpause: 5
+Hitpause Scaling: 0.2
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+--------------------- ftilt_down Stats ---------------------
+
+Unable to extract damage window. Most likely outcome: Hitbox is spawned manually.
+No valid damage windows set. Most likely outcome: num_hitboxes are set to 0
+No valid damage windows set. Most likely outcome: num_hitboxes are set to 0
+--------------------- ftilt_up Stats ---------------------
+
+Unable to extract damage window. Most likely outcome: Hitbox is spawned manually.
+No valid damage windows set. Most likely outcome: num_hitboxes are set to 0
+No valid damage windows set. Most likely outcome: num_hitboxes are set to 0
+--------------------- jab Stats ---------------------
+
+Startup: 3
+Endlag (hit): 12
+Endlag (whiff): 12
+Has Landing Lag: No
+
+~~~~~Hit 1 values~~~~~
+
+Active Frames: 3
+Priority: 2
+Damage: 2
+Angle: 70
+Base Knockback: 4
+Knockback Scaling: 0
+Base Hitpause: 4
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 0.8x
+
+
+
+
+~~~~~Hit 2 values~~~~~
+
+Active Frames: 3
+Priority: 1
+Damage: 2
+Angle: 70
+Base Knockback: 4
+Knockback Scaling: 0
+Base Hitpause: 5
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 3 values~~~~~
+
+Active Frames: 2
+Priority: 3
+Damage: 1
+Angle: 78
+Base Knockback: 2
+Knockback Scaling: 0
+Base Hitpause: 2
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 4 values~~~~~
+
+Active Frames: 2
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 5 values~~~~~
+
+Active Frames: 2
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 6 values~~~~~
+
+Active Frames: 2
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 7 values~~~~~
+
+Active Frames: 2
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+--------------------- l_cancel Stats ---------------------
+
+Unable to extract damage window. Most likely outcome: Hitbox is spawned manually.
+No valid damage windows set. Most likely outcome: num_hitboxes are set to 0
+No valid damage windows set. Most likely outcome: num_hitboxes are set to 0
+--------------------- nair Stats ---------------------
+
+Startup: 4
+Endlag (hit): 11
+Endlag (whiff): 17
+Has Landing Lag: Yes
+Landing Lag: 4
+
+~~~~~Hit 1 values~~~~~
+
+Active Frames: 7
+Priority: 3
+Damage: 6
+Angle: 361
+Base Knockback: 6
+Knockback Scaling: 0.5
+Base Hitpause: 5
+Hitpause Scaling: 0.2
+Kills Projectiles: Yes
+Angle Flipper: 6 (Horizontal knockback sends away from the enemy player)
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 2 values~~~~~
+
+Active Frames: 21
+Priority: 2
+Damage: 4
+Angle: 361
+Base Knockback: 4
+Knockback Scaling: 0.5
+Base Hitpause: 4
+Hitpause Scaling: 0.2
+Kills Projectiles: Yes
+Angle Flipper: 6 (Horizontal knockback sends away from the enemy player)
+Hitstun Multiplier: 1x
+
+
+
+--------------------- nspecial Stats ---------------------
+
+Startup: 11
+Endlag (hit): -16
+Endlag (whiff): -16
+Has Landing Lag: No
+
+~~~~~Hit 1 values~~~~~
+
+Active Frames: 4
+Priority: 1
+Damage: 3
+Angle: 361
+Base Knockback: 0
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 2 values~~~~~
+
+Active Frames: 37
+Priority: 1
+Damage: 2
+Angle: 361
+Base Knockback: 0
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+--------------------- spotdodge Stats ---------------------
+
+Unable to extract damage window. Most likely outcome: Hitbox is spawned manually.
+No valid damage windows set. Most likely outcome: num_hitboxes are set to 0
+No valid damage windows set. Most likely outcome: num_hitboxes are set to 0
+--------------------- taunt Stats ---------------------
+
+Unable to extract damage window. Most likely outcome: Hitbox is spawned manually.
+No valid damage windows set. Most likely outcome: num_hitboxes are set to 0
+No valid damage windows set. Most likely outcome: num_hitboxes are set to 0
+--------------------- uair Stats ---------------------
+
+Startup: 7
+Endlag (hit): 22
+Endlag (whiff): 33
+Has Landing Lag: Yes
+Landing Lag: 5
+
+~~~~~Hit 1 values~~~~~
+
+Active Frames: 2
+Priority: 2
+Damage: 3
+Angle: 92
+Base Knockback: 9
+Knockback Scaling: 0
+Base Hitpause: 6
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 0.75x
+
+
+
+
+~~~~~Hit 2 values~~~~~
+
+Active Frames: 3
+Priority: 5
+Damage: 6
+Angle: 85
+Base Knockback: 7.5
+Knockback Scaling: 0.75
+Base Hitpause: 10
+Hitpause Scaling: 0.4
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+--------------------- uspecial Stats ---------------------
+
+Startup: 21
+Endlag (hit): 20
+Endlag (whiff): 20
+Has Landing Lag: No
+
+~~~~~Hit 1 values~~~~~
+
+Active Frames: 1
+Priority: 3
+Damage: 1
+Angle: 70
+Base Knockback: 1
+Knockback Scaling: 0
+Base Hitpause: 3
+Hitpause Scaling: 0
+Kills Projectiles: No
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 2 values~~~~~
+
+Active Frames: 1
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 3 values~~~~~
+
+Active Frames: 1
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 4 values~~~~~
+
+Active Frames: 1
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 5 values~~~~~
+
+Active Frames: 1
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 6 values~~~~~
+
+Active Frames: 1
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 7 values~~~~~
+
+Active Frames: 1
+Priority: 
+Damage: 
+Angle: 
+Base Knockback: 
+Knockback Scaling: 0
+Base Hitpause: 
+Hitpause Scaling: 0
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 8 values~~~~~
+
+Active Frames: 30
+Priority: 8
+Damage: 9
+Angle: 80
+Base Knockback: 11
+Knockback Scaling: 0.35
+Base Hitpause: 9
+Hitpause Scaling: 0.6
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 0.8x
+
+
+
+--------------------- ustrong Stats ---------------------
+
+Startup: 9
+Endlag (hit): 20
+Endlag (whiff): 30
+Has Landing Lag: No
+
+~~~~~Hit 1 values~~~~~
+
+Active Frames: 4
+Priority: 8
+Damage: 13
+Angle: 85
+Base Knockback: 8
+Knockback Scaling: 1.25
+Base Hitpause: 10
+Hitpause Scaling: 0.75
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 2 values~~~~~
+
+Active Frames: 4
+Priority: 4
+Damage: 11
+Angle: 73
+Base Knockback: 8
+Knockback Scaling: 1.25
+Base Hitpause: 10
+Hitpause Scaling: 0.75
+Kills Projectiles: Yes
+Angle Flipper: 6 (Horizontal knockback sends away from the enemy player)
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 3 values~~~~~
+
+Active Frames: 4
+Priority: 4
+Damage: 11
+Angle: 73
+Base Knockback: 8
+Knockback Scaling: 1.25
+Base Hitpause: 9
+Hitpause Scaling: 0.75
+Kills Projectiles: Yes
+Angle Flipper: 6 (Horizontal knockback sends away from the enemy player)
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 4 values~~~~~
+
+Active Frames: 3
+Priority: 2
+Damage: 8
+Angle: 361
+Base Knockback: 3
+Knockback Scaling: 1
+Base Hitpause: 6
+Hitpause Scaling: 0.35
+Kills Projectiles: Yes
+Angle Flipper: 6 (Horizontal knockback sends away from the enemy player)
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 5 values~~~~~
+
+Active Frames: 3
+Priority: 2
+Damage: 8
+Angle: 361
+Base Knockback: 3
+Knockback Scaling: 0.8
+Base Hitpause: 6
+Hitpause Scaling: 0.35
+Kills Projectiles: Yes
+Angle Flipper: 6 (Horizontal knockback sends away from the enemy player)
+Hitstun Multiplier: 1x
+
+
+
+--------------------- utilt Stats ---------------------
+
+Startup: 4
+Endlag (hit): 8
+Endlag (whiff): 12
+Has Landing Lag: No
+
+~~~~~Hit 1 values~~~~~
+
+Active Frames: 7
+Priority: 2
+Damage: 5
+Angle: 80
+Base Knockback: 7
+Knockback Scaling: 0.6
+Base Hitpause: 6
+Hitpause Scaling: 0.5
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 2 values~~~~~
+
+Active Frames: 2
+Priority: 3
+Damage: 8
+Angle: 110
+Base Knockback: 7
+Knockback Scaling: 0.75
+Base Hitpause: 8
+Hitpause Scaling: 0.5
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 3 values~~~~~
+
+Active Frames: 2
+Priority: 2
+Damage: 5
+Angle: 84
+Base Knockback: 7
+Knockback Scaling: 0.6
+Base Hitpause: 6
+Hitpause Scaling: 0.5
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 4 values~~~~~
+
+Active Frames: 5
+Priority: 3
+Damage: 8
+Angle: 110
+Base Knockback: 7
+Knockback Scaling: 0.75
+Base Hitpause: 8
+Hitpause Scaling: 0.5
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+~~~~~Hit 5 values~~~~~
+
+Active Frames: 5
+Priority: 2
+Damage: 5
+Angle: 84
+Base Knockback: 7
+Knockback Scaling: 0.6
+Base Hitpause: 6
+Hitpause Scaling: 0.5
+Kills Projectiles: Yes
+Angle Flipper: None
+Hitstun Multiplier: 1x
+
+
+
+
+
+
+===================== Credits =====================
+Extracted with ROA Frame Data Extractor tool by Selrate
+Discord: Selrate#4428
+Twitter: @theselrate

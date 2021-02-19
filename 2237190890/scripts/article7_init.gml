@@ -1,0 +1,10 @@
+// Stage Foreground
+sprite_index = asset_get("empty_sprite");
+image_xscale = 2;
+image_yscale = 2;
+depth = -10;
+fg = obj_stage_main.cur_fg;
+destroyed = false;
+destination_y = 0;
+starting_y = 0;
+fake_y = 0;

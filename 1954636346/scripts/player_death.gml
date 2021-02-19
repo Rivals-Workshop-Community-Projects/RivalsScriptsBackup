@@ -1,0 +1,1 @@
+with obj_stage_article if (num == 1 && has_gotten_hit) respawn_timer = 1;

@@ -1,0 +1,10 @@
+//debug-draw
+//draw_debug_text(x,y,string(y));
+//draw_debug_text(x,y+15,string(has_hit_player));
+//draw_debug_text(x,y+30,string(was_parried));
+//draw_debug_text(x,y+45,string(cos(degtorad(fiyaa_angle))));
+//draw_debug_text(x,y+60,string(fiyaa_angle));
+//draw_debug_text(x,y+75,string(has_hit));
+//draw_debug_text(x,y+90,string(reflect.hit_effect));
+//draw_debug_text(x,y+105,string(reflect.hit_effect_x));
+//draw_debug_text(x,y+120,string(reflect.hit_effect_y));

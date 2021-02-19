@@ -1,0 +1,1 @@
+if (moist_rn < 100) { moist_rn = 0 } else { moist_rn -= 100 }
