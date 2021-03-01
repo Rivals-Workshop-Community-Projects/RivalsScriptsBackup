@@ -12,8 +12,7 @@ if (parent.hit < 2 && hit = 0 && smoke_timer > 2) {
         if (id == other.player_id) continue;
         if (place_meeting(x, y, other)) {
             if (array_find_index(other.parent.players_hit, id) < 0 && !clone) {
-                array_push(other.parent.players_hit, id)
-                smoke_obj = other.id;
+                array_push(other.parent.players_hit, id);
             }
         }
     }

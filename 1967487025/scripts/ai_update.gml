@@ -36,7 +36,7 @@ if 90 > xdist and 90 > ydist AIwait -= 1
 usmashpercent = (2 - ai_target.knockback_adj) * 85
 fsmashpercent = (2 - ai_target.knockback_adj) * 95
 dsmashpercent = (2 - ai_target.knockback_adj) * 110
-uspecialpercent = (2 - ai_target.knockback_adj) * 130
+uspecialpercent = (2 - ai_target.knockback_adj) * 999
 bairpercent = (2 - ai_target.knockback_adj) * 110
 
 if ai_recovering {
@@ -257,46 +257,6 @@ if attack = AT_FSPECIAL and window = 2{
 }
 
 
-//Dspecial
-if 	(recoverytimer > 60) and can_special and get_stage_data( SD_Y_POS ) > y+24 {
-    joy_pad_idle = true;
-    left_down = false;
-    right_down = false;
-	down_down = true;
-    special_pressed = true;
-    attack_pressed = false;
-}
-
-if xdist > 400 and can_special and !ai_recovering and 100 > jetcharge {
-	joy_pad_idle = true;
-    left_down = false;
-    right_down = false;
-	down_down = true;
-    special_pressed = true;
-    attack_pressed = false;
-}
-
-if attack = AT_DSPECIAL and window = 2 {
-	if xdist > 400 and 100 > jetcharge and !ai_recovering {
-	special_down = true
-	}
-	else {
-	special_down = false
-	if !ai_recovering {
-	shield_pressed = true
-	}
-	}
-}
-
-if attack = AT_DSPECIAL and window = 5 {
-	if 100 > ydist and 100 > xdist and facing {
-		special_pressed = true
-	}
-	else {
-	special_pressed = false;
-	}
-}
-
 //Tilts
 if !free and can_attack and 0 > AIwait{
     if 72 > xdist and 60 > ydist{ // Ftilt
@@ -436,8 +396,8 @@ if (0 > AIwait and get_gameplay_time() mod 17 == 0 and ai_target.state_cat = SC_
     joy_pad_idle = true;
     left_down = false;
     right_down = false;
-	down_down = false
-	up_down = false
+	down_down = false;
+	up_down = false;
     special_pressed = true;
     attack_pressed = false;
 }
@@ -451,8 +411,20 @@ if attack != AT_DSPECIAL{
 	nearbyhitbox = collision_circle( x-32, y-32, 64, asset_get("pHitBox"), true, true ) 
 	if nearbyhitbox != noone{
 		if nearbyhitbox.player_id != self{
-			shield_pressed = true
+			shield_pressed = true;
 			}
 	}
 }
+
+
+var stage_x = get_stage_data( SD_X_POS );
+var stage_y = get_stage_data( SD_Y_POS );
+if (attack == AT_USPECIAL && state == PS_ATTACK_AIR) { //From Hikaru
+	joy_pad_idle = false;
+	if window == 1 && state_timer <= 1 rec_joy_dir = ((stage_y >= 800)?point_direction(x, y, ((x>room_width/2)?3:1)*floor(room_width/4), topcustom - 10):point_direction(x, y, (x>room_width/2?room_width-stage_x:stage_x), stage_y - 10));
+	joy_dir = rec_joy_dir;
+	}
+
+
 }
+

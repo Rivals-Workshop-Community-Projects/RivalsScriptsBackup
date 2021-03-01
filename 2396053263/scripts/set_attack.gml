@@ -5,6 +5,16 @@
 
 //This code checks to see if the player is performing the attack that allows hearts to be broken, and if so, tells the hearts that they should be broken.
 
+if (heartDebugTriggerable and attack == AT_TAUNT and down_down)
+{
+    heartDebug = !heartDebug
+    var str;
+    str = heartDebug ? "open" : "close"
+    
+    sound_play(sound_get("DEBUG_"+str));
+}
+
+
 heartSetAttack();
 
 #define heartSetAttack

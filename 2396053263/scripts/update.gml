@@ -1,5 +1,24 @@
 //update
 
+heartDebugTimer[0] = heartDebug ? min(heartDebugTimer[0]+1,heartDebugTimer[1]) : max(heartDebugTimer[0]-1,0);
+
+if array_length_1d(fspecial_needles) != 0
+{
+	for (var i = 0; i < 3; i++)
+	{
+		if fspecial_needles[i] != noone
+	    {
+	    	with (fspecial_needles[i])
+	    	{
+				var num;
+				num = min(ceil( (hitbox_timer+1) / 6), 3) //1-3
+				//print(num)
+				sound_effect = sound_get("needle" + string(num))
+	    	}
+	    }
+	}
+}
+
 if (!free){
     has_brake = 1;
     air_timer = 0;

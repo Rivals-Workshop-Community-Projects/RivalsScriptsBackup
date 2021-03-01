@@ -1,6 +1,21 @@
 // draw_hud.gml
 // Draws images on top of the Player's HUD
 // use temp_x and temp_y to refer to the player's specific HUD position
+
+if (move_cooldown[AT_DSPECIAL] == 0){
+	draw_sprite_ext(sprite_get("box_hud"), 0, temp_x + 180, temp_y - 12, 1, 1, 0, c_white, 1);
+}
+else {
+	draw_sprite_ext(sprite_get("box_hud"), 1, temp_x + 180, temp_y - 12, 1, 1, 0, c_white, 1);
+}
+
+if (move_cooldown[AT_USPECIAL] == 0){
+	draw_sprite_ext(sprite_get("needle_hud"), 0, temp_x + 120, temp_y - 12, 1, 1, 0, c_white, 1);
+}
+else {
+	draw_sprite_ext(sprite_get("needle_hud"), 1, temp_x + 120, temp_y - 12, 1, 1, 0, c_white, 1);
+}
+
 /*
 // Draws the battery on the HUD
 draw_sprite_ext(sprite_get("battery"), 0, temp_x + 160, temp_y - 12, 1, 1, 0, c_white, 1);

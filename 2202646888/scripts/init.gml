@@ -62,6 +62,16 @@ ncode3 = "Handle with care."
 //sbeve
 steve_death_message = "Steve was so false";
 
+kirbyability = 16;
+swallowed = 0
+enemykirby = noone;
+
+fs_char_chosen_final_smash = "custom";
+fs_char_portrait_y = 115;
+
+var_eggfsX = 0;
+var_eggfsY = 0;
+
 hurtbox_spr = sprite_get("egghurt");
 crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;

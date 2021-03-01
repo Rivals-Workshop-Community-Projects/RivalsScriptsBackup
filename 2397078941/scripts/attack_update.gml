@@ -24,6 +24,9 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
     	hsp = 0
     }
     
+
+    	can_wall_jump = true
+
     if window == 2 && has_hit_player {
     	set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
 		window = 4
@@ -33,7 +36,7 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
 	}
 	
 	
-	 if window == 2 && (place_meeting(x+10*spr_dir, y, asset_get("par_block"))){
+	 if window == 2 && window_timer > 5 && (place_meeting(x+10*spr_dir, y, asset_get("par_block"))){
 	 	with (asset_get("pHitBox")) {
         if(player_id == other.id) {
             destroyed = true

@@ -1,5 +1,7 @@
 ///
 
+
+
 if state == PS_PRATFALL {
 	can_fast_fall = true
 }
@@ -107,6 +109,17 @@ if get_gameplay_time() == 2 {
             summon += 1 + random_func(1, 4, true) 
             
         }    
+        
+        
+        if get_gameplay_time() % 120 == 0 && (down_down) {
+        	sasdh = instance_create(x + 80*spr_dir,y,"oPlayer");
+    	shake_camera(6,12)
+    	sound_play(sound_get("counterhit")) 	
+    	sound_play(asset_get("sfx_bird_downspecial")) 
+    	sound_play(asset_get("sfx_orca_absorb")) 
+    	spawn_hit_fx(x,y - 30,306)
+    	spawn_hit_fx(x,y - 30,305)
+        }
         
         if get_gameplay_time() % 16 == 0 && ("ai_target"  in self) {
         	
@@ -1223,4 +1236,42 @@ if isyellow {
 		spawn_hit_fx (x - 600 + (get_gameplay_time()-60)*30 , y - 10, saillusion)
 	}
 	
+}
+
+
+
+if ("sasdh") in self{
+with sasdh {
+
+alt = get_player_color(player);
+
+Rline = get_color_profile_slot_r ( alt , 0 )
+Gline = get_color_profile_slot_g ( alt , 0 )
+Bline = get_color_profile_slot_b ( alt , 0 )
+
+			outline_color =  [Rline/3 + 20, Gline/3 + 20, Bline/3 + 20]
+			   	
+     inkshield = -1
+     inkshield_buildup = -999
+     ink = 0		
+     temp_level = 9
+     move_cooldown[AT_EXTRA_1] = 2
+          other.move_cooldown[AT_EXTRA_1] = 2
+     if state_cat == SC_HITSTUN && !hitpause && free {
+     	state_timer -= 1
+     }
+     draw_indicator = false
+
+     move_cooldown[AT_EXTRA_2] = 0
+
+other.move_cooldown[AT_DSPECIAL] = 2
+
+if other.state == PS_DEAD or other.state == PS_RESPAWN {
+	spawn_hit_fx(x,y - 30, 304)
+    y = 9999
+}
+
+}
+init_shader();
+
 }

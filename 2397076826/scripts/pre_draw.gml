@@ -1,6 +1,32 @@
 ///
 shader_start();
 
+if get_player_color(player) == 6 {
+	
+	spawn_hit_fx( x + 20 - random_func(5, 40, true) - (20*spr_dir), y - random_func(4, 80, true) , apar )
+		spawn_hit_fx( x + 20 - random_func(5, 40, true) - (20*spr_dir), y - random_func(4, 80, true) , apar2 )
+		
+	if (state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD or state == PS_TECH_GROUND
+	or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD or state == PS_AIR_DODGE or state_cat == SC_HITSTUN){
+		
+		if get_gameplay_time() % 3 == 0 {
+     draw_sprite_ext(sprite_get("idlewing"), get_gameplay_time() / 5, x - 8*spr_dir  , y , spr_dir, 1, 0 , -1 , 0.6);
+		}
+		
+			if get_gameplay_time() % 3 > 1 {
+     draw_sprite_ext(sprite_get("idlewing"), get_gameplay_time() / 5, x - 8*spr_dir  , y , spr_dir, 1, 0 , -1 , 0.6);
+		}
+		
+	} else  {
+    draw_sprite_ext(sprite_get("idlewing"), get_gameplay_time() / 5, x - 8*spr_dir  , y , spr_dir, 1, 0 , -1 , 1);
+	}
+	
+	if state_cat == SC_HITSTUN && get_gameplay_time() % 3 == 0 {
+    draw_sprite_ext(sprite_get("idlewing"), 3, x - 8*spr_dir  , y , spr_dir, 1, 0 , -1 , 0.6);
+	}
+	
+}
+
 if state == PS_WAVELAND or state == PS_DASH 
 or state == PS_DASH_START or state == PS_DASH_TURN  {
     draw_sprite_ext(sprite_index, image_index, x - shsp*2 , y - svsp *2, spr_dir, 1, 0 , -1 , 0.4);
@@ -39,7 +65,7 @@ if state == PS_FIRST_JUMP or state == PS_DOUBLE_JUMP {
 }
 
 
-if attacking && attack = AT_FSTRONG {
+if attacking && attack = AT_NSPECIAL {
 	 draw_sprite_ext(sprite_index, image_index, x - shsp*2 , y - svsp *2, spr_dir, 1, 0 , -1 , 0.4);
 	 	draw_sprite_ext(sprite_index, image_index, x - shsp*3.5 , y - svsp *3.5, spr_dir, 1, 0 , -1 , 0.3);
 	draw_sprite_ext(sprite_index, image_index, x - shsp*4.5 , y - svsp *4.5, spr_dir, 1, 0 , -1 , 0.2);
@@ -66,7 +92,7 @@ if cloneout != 0 && move_cooldown[AT_EXTRA_2] == 0 {
 		 cloneinv = 0
 	}
 	
-	if attacking && attack != AT_FSTRONG && attack != AT_NSPECIAL && attack != AT_USPECIAL && attack != AT_FSPECIAL  && attack != AT_TAUNT  {
+	if attacking && attack != AT_FSTRONG && attack != AT_USTRONG && attack != AT_DSTRONG && attack != AT_NSPECIAL && attack != AT_USPECIAL && attack != AT_FSPECIAL  && attack != AT_TAUNT  {
 		draw_sprite_ext(sprite_get("idle"), get_gameplay_time()/5, clonex , cloney + 38, clonedir, 1, 0 , -1 , 0.8);
 		cloneinv = 0
 	}
@@ -83,7 +109,7 @@ if cloneout != 0 && move_cooldown[AT_EXTRA_2] == 0 {
 		 		cloneinv = 1
 	}
 	
-	if attacking && (attack == AT_FSTRONG or attack == AT_NSPECIAL or attack == AT_USPECIAL or attack == AT_FSPECIAL or attack == AT_TAUNT) {
+	if attacking && (attack == AT_FSTRONG or attack == AT_USTRONG  or attack == AT_DSTRONG or attack == AT_NSPECIAL or attack == AT_USPECIAL or attack == AT_FSPECIAL or attack == AT_TAUNT) {
 		draw_sprite_ext(sprite_index, image_index, clonex , cloney + 38, clonedir, 1, 0 , -1 , 0.8);
 		cloneinv = 0
 	}
@@ -96,7 +122,7 @@ if cloneout != 0 && move_cooldown[AT_EXTRA_2] == 0 {
 		 draw_sprite_ext(sprite_get("idle"), get_gameplay_time()/5, clonex - 4 + random_func(1,8, true) , cloney + 38 - 4 + random_func(2,8, true), clonedir, 1, 0 , -1 , 0.6);
 	}
 	
-	if attacking && attack != AT_FSTRONG && attack != AT_NSPECIAL && attack != AT_USPECIAL && attack != AT_FSPECIAL && attack != AT_TAUNT  {
+	if attacking && attack != AT_FSTRONG && attack != AT_USTRONG && attack != AT_DSTRONG && attack != AT_NSPECIAL && attack != AT_USPECIAL && attack != AT_FSPECIAL  && attack != AT_TAUNT  {
 		draw_sprite_ext(sprite_get("idle"), get_gameplay_time()/5, clonex - 4 + random_func(1,8, true) , cloney + 38 - 4 + random_func(2,8, true), clonedir, 1, 0 , -1 , 0.6);
 	}
 	
@@ -111,7 +137,7 @@ if cloneout != 0 && move_cooldown[AT_EXTRA_2] == 0 {
 		 draw_sprite_ext(sprite_index, image_index, clonex , cloney + 38, clonedir, 1, 0 , -1 , 0.5);
 	}
 	
-	if attacking && (attack == AT_FSTRONG or attack == AT_NSPECIAL or attack == AT_USPECIAL or attack == AT_FSPECIAL or attack == AT_TAUNT) {
+	if attacking && (attack == AT_FSTRONG or attack == AT_USTRONG  or attack == AT_DSTRONG or attack == AT_NSPECIAL or attack == AT_USPECIAL or attack == AT_FSPECIAL or attack == AT_TAUNT) {
 		draw_sprite_ext(sprite_index, image_index, clonex - 4 + random_func(1,8, true) , cloney + 38 - 4 + random_func(2,8, true), clonedir, 1, 0 , -1 , 0.6);
 	}	 
 	}

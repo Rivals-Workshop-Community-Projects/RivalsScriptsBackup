@@ -5,6 +5,7 @@ if(state == 0){
 	if(state_timer == 1){
 		y = chungy+12;
 		scisbox = create_hitbox(AT_NSPECIAL, 1, x, y-44);
+		hbox.no_absorb = true;
 	}
 }
 scisbox.x = x;

@@ -7,15 +7,15 @@ char_height = 52;
 idle_anim_speed = .1;
 crouch_anim_speed = 10;
 walk_anim_speed = .055;
-dash_anim_speed = .2;
+dash_anim_speed = .15;
 pratfall_anim_speed = .25;
 
-walk_speed = 4;
+walk_speed = 3;
 walk_accel = 0.2;
 walk_turn_time = 3;
 initial_dash_time = 14;
 initial_dash_speed = 8;
-dash_speed = 7.5;
+dash_speed = 6.5;
 dash_turn_time = 10;
 dash_turn_accel = 1.5;
 dash_stop_time = 4;
@@ -97,7 +97,7 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
-
+firev = false;
 hudv = 0;
 
 //used to kill non-htibox objects when respawned or player is dead.
@@ -109,6 +109,15 @@ bl_select = 7;
 bl_show = -1;
 
 small_sprites = true;
+
+firetimer = 0;
+sinkv = false;
+floatv = false;
+firefxtimer = 0;
+
+smokefx = hit_fx_create(sprite_get("hotsmoke"), 18);
+
+
 
 
 

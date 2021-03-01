@@ -507,6 +507,8 @@ sound_play(sound_get("CARAMEL"))
 	}
 	if window == 4 {
 		has_airdodge = true
+		hsp = 0
+        vsp = 0
 	}
 	if window == 4 && window_timer == 44 && free {
 		set_state (PS_PRATFALL)

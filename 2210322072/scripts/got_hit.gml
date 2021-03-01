@@ -16,7 +16,7 @@ move_cooldown[AT_NSPECIAL] = 0 ;
 
 if soultimer < -1 {
 	sound_play(asset_get("sfx_holy_lightning"))	
-take_damage( player, -1 , -1 * enemy_hitboxID.damage)
+take_damage( player, -1 , floor(-1 * enemy_hitboxID.damage))
 souldmg += enemy_hitboxID.damage
 
 
@@ -32,8 +32,7 @@ soultimer = 0
 x = soulx
 y = souly
 move_cooldown[AT_DSPECIAL] = 0
-hsp = 0
-vsp = 0
+
 set_attack (AT_DSPECIAL)
 window = 4
 window_timer = 0

@@ -91,7 +91,7 @@ mycolich_type = 0;
 healdraw = 0;
 
 //tick = 25;
-tick = 25;
+tick = 7;
 
 sporecap = 300;
 sporediv = 16;
@@ -167,7 +167,7 @@ jump_start_time = 4;
 jump_speed = 7;
 
 
-short_hop_speed = 5;
+short_hop_speed = 4;
 djump_speed = 6;
 leave_ground_max = 5; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 8; //the maximum hsp you can have when jumping from the ground

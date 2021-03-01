@@ -113,6 +113,7 @@ if attack == AT_NSPECIAL{
 				spr_dir = player_id.spr_dir;		//Can Turn Around
 				C_dam  += 2;
 				player_id.show = 1;
+				player_id.has_hit = true;
 			}
 		}
 	}
@@ -306,7 +307,20 @@ if attack == AT_NSPECIAL{
 }
 
 
+//Force Show - FOR DITTO
+if forced == 1 {
+	player_id.show = 1
+	forced = 0;
+}
+
+
 
 if y > 1500 {
 	destroyed = true;
+}
+
+
+// Final Smash
+if (attack == 49 && hitbox_timer == length-1 && player_id.fs_hit >= 2){
+	player_id.docscore = 60
 }

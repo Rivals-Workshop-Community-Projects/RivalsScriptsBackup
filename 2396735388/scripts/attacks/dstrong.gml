@@ -93,7 +93,16 @@ set_window_value(AT_DSTRONG_2, 4, AG_WINDOW_CUSTOM_GRAVITY, .35);
 set_window_value(AT_DSTRONG_2, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DSTRONG_2, 4, AG_WINDOW_CUSTOM_AIR_FRICTION, .4);
 
-set_num_hitboxes(AT_DSTRONG_2, 4);
+set_window_value(AT_DSTRONG_2, 5, AG_WINDOW_LENGTH, 2);
+set_window_value(AT_DSTRONG_2, 5, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DSTRONG_2, 5, AG_WINDOW_ANIM_FRAME_START, 13);
+
+set_window_value(AT_DSTRONG_2, 6, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DSTRONG_2, 6, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_DSTRONG_2, 6, AG_WINDOW_ANIM_FRAME_START, 14);
+set_window_value(AT_DSTRONG_2, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
+
+set_num_hitboxes(AT_DSTRONG_2, 5);
 
 set_hitbox_value(AT_DSTRONG_2, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_HITBOX_TYPE, 1);
@@ -153,3 +162,23 @@ set_hitbox_value(AT_DSTRONG_2, 4, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_DSTRONG_2, 4, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DSTRONG_2, 4, HG_EFFECT, 229);
 set_hitbox_value(AT_DSTRONG_2, 4, HG_VISUAL_EFFECT, 304);
+
+set_hitbox_value(AT_DSTRONG_2, 5, HG_PARENT_HITBOX, 0);
+set_hitbox_value(AT_DSTRONG_2, 5, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DSTRONG_2, 5, HG_WINDOW, 5);
+set_hitbox_value(AT_DSTRONG_2, 5, HG_LIFETIME, 2);
+set_hitbox_value(AT_DSTRONG_2, 5, HG_HITBOX_X, 0);
+set_hitbox_value(AT_DSTRONG_2, 5, HG_HITBOX_Y, -28);
+set_hitbox_value(AT_DSTRONG_2, 5, HG_SHAPE, 2);
+set_hitbox_value(AT_DSTRONG_2, 5, HG_WIDTH, 90);
+set_hitbox_value(AT_DSTRONG_2, 5, HG_HEIGHT, 56);
+set_hitbox_value(AT_DSTRONG_2, 5, HG_PRIORITY, 2);
+set_hitbox_value(AT_DSTRONG_2, 5, HG_DAMAGE, 6);
+set_hitbox_value(AT_DSTRONG_2, 5, HG_ANGLE, 80);
+set_hitbox_value(AT_DSTRONG_2, 5, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_DSTRONG_2, 5, HG_KNOCKBACK_SCALING, .5);
+set_hitbox_value(AT_DSTRONG_2, 5, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_DSTRONG_2, 5, HG_HITPAUSE_SCALING, .7);
+set_hitbox_value(AT_DSTRONG_2, 5, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
+set_hitbox_value(AT_DSTRONG_2, 5, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_DSTRONG_2, 5, HG_EFFECT, 229);

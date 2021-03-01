@@ -58,10 +58,10 @@ if (attack == AT_DSPECIAL){
 	if (window == 3 && window_timer >= 5 && window_timer <= 15){
 		switch (spr_dir){
 			case 1:
-				draw_sprite_ext(sprite_get("gifts"), GrappleMode, x - 16, y - 90, 1, 1, 0, c_white, .1 * (window_timer-5));
+				draw_sprite_ext(sprite_get("gifts"), GrappleMode, x - 16, y - 90, 1, 1, 0, c_white, .20 * (window_timer-5));
 			break;
 			case -1:
-				draw_sprite_ext(sprite_get("gifts"), GrappleMode, x + 16, y - 90, 1, 1, 0, c_white, .1 * (window_timer-5));
+				draw_sprite_ext(sprite_get("gifts"), GrappleMode, x + 16, y - 90, 1, 1, 0, c_white, .20 * (window_timer-5));
 			break;
 		}
 	}

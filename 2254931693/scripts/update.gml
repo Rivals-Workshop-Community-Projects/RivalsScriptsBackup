@@ -1,7 +1,8 @@
 //update
 
-
-
+if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND){
+    set_attack_value(AT_FSPECIAL, AG_CATEGORY, 2);
+}
 
 if (dspecialhitcount = 0){
     move_cooldown[AT_DSPECIAL] = 0;

@@ -1,5 +1,18 @@
 shader_start();
 
+if cloneout == 1 && attacking && (attack == AT_FSTRONG or attack == AT_DSTRONG 
+or attack == AT_USTRONG) && window == 1 {
+
+     draw_sprite_ext(sprite_index, image_index, x , y, spr_dir, 1, 0 , -1 , 1);
+    	
+    gpu_set_blendmode(bm_add);
+        draw_sprite_ext(sprite_index, image_index , x - 4 + random_func(1,8,true) , y - 4 + random_func(2,8,true)  , spr_dir, 1, 0 , c_fuchsia , 1);
+        
+		draw_sprite_ext(sprite_index, image_index , x + 4 - random_func(3,8,true)  , y + 4 - random_func(4,8,true)  , spr_dir, 1, 0 , c_aqua , 1);
+  gpu_set_blendmode(bm_normal);
+  
+  
+}
 if get_gameplay_time() < 120 {
 
 	draw_sprite_ext(sprite_get("introAE"), 1, x , y, 1, 1, 0 , -1 , 1.2 - get_gameplay_time()/100);

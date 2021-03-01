@@ -5,14 +5,16 @@
 
 can_be_grounded = true;
 ignores_walls = false;
+fall_through = false;
+
+flag = false;
 
 state = 0;
 state_timer = 0;
 
 sprite_index = sprite_get("box");
-mask_index = -1;
+mask_index = sprite_get("box");
 image_index = 0;
-image_speed = .4;
 
 got_hit = false;
 

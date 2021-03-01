@@ -47,36 +47,36 @@ if attack == AT_DSPECIAL && hbox_num == 1{
                   spawn_hit_fx (x+10*spr_dir, y - 20, 305)
                   sound_play(asset_get("sfx_holy_lightning")); 
                   sound_play(asset_get("sfx_clairen_hit_strong"))	
-                   create_hitbox (AT_NSPECIAL, 7, player_id.x, player_id.y - 30)
+                   create_hitbox (AT_NSPECIAL, 11, player_id.x, player_id.y - 30)
                   clonetime = 0
 	    }
 	    
 	    if nearbyhitbox.player_id != player_id  && nearbyhitbox.type == 2{
-	    	if player_id.move_cooldown[AT_EXTRA_2] <= 12 {
-	    	player_id.move_cooldown[AT_EXTRA_2] = 20
-            sound_play(sound_get("RI")); 
-            shake_camera(4, 6)
-            spawn_hit_fx (nearbyhitbox.x - 10 + random_func(2,20,true), y  - random_func(2,40,true) , 302 )
-	    	}
-			nearbyhitbox.hsp *= -1 + random_func(1,6,true)/10
-			if nearbyhitbox.x > x {
-			nearbyhitbox.x += 10
-			nearbyhitbox.hsp += 0.2
-			} else {
-			nearbyhitbox.x -= 10	
-			nearbyhitbox.hsp -= 0.2
-			}
-			if nearbyhitbox.vsp > 0 {
-				nearbyhitbox.vsp = 0
-			} 
-			nearbyhitbox.air_friction = 0
-			nearbyhitbox.spr_dir *= -1
-			if nearbyhitbox.vsp > -8 {
-			nearbyhitbox.vsp -= 7 + random_func(1,4,true)/2
-			}
-			nearbyhitbox.grav = 0.2 + abs(nearbyhitbox.hsp/40)
-	       	nearbyhitbox.hitbox_timer = 1
-			nearbyhitbox.can_hit_self = true
+	    	///if player_id.move_cooldown[AT_EXTRA_2] <= 12 {
+	    	///player_id.move_cooldown[AT_EXTRA_2] = 20
+            ///sound_play(sound_get("RI")); 
+            ///shake_camera(4, 6)
+            ///spawn_hit_fx (nearbyhitbox.x - 10 + random_func(2,20,true), y  - random_func(2,40,true) , 302 )
+	    	///}
+			///nearbyhitbox.hsp *= -1 + random_func(1,6,true)/10
+			///if nearbyhitbox.x > x {
+			///nearbyhitbox.x += 10
+			///nearbyhitbox.hsp += 0.2
+			///} else {
+			///nearbyhitbox.x -= 10	
+			///nearbyhitbox.hsp -= 0.2
+			///}
+			///if nearbyhitbox.vsp > 0 {
+			///	nearbyhitbox.vsp = 0
+			///} 
+			///nearbyhitbox.air_friction = 0
+			///nearbyhitbox.spr_dir *= -1
+			///if nearbyhitbox.vsp > -8 {
+			///nearbyhitbox.vsp -= 7 + random_func(1,4,true)/2
+			///}
+			//nearbyhitbox.grav = 0.2 + abs(nearbyhitbox.hsp/40)
+	       	//nearbyhitbox.hitbox_timer = 1
+			//nearbyhitbox.hit_priority = 0
 			///nearbyhitbox.destroyed = true
 
 	    }
@@ -104,7 +104,7 @@ if y > (room_height/2 + 400) {
 			player_id.cloneout = 0
                  destroyed = 1
                  clonetime = 0
-                  create_hitbox (AT_NSPECIAL, 7, player_id.x, player_id.y - 30)
+                  create_hitbox (AT_NSPECIAL, 11, player_id.x, player_id.y - 30)
                   sound_play(asset_get("sfx_holy_lightning")); 
                   sound_play(asset_get("sfx_clairen_hit_strong"))	
 }
@@ -136,8 +136,28 @@ if player_id.attacking and player_id.attack = AT_DSPECIAL && player_id.cloneout 
         hsp /= 1.1
     }
     
+    if player_id.attacking and (player_id.attack = AT_DSTRONG or player_id.attack = AT_USTRONG or player_id.attack = AT_FSTRONG) {
+    	spr_dir = player_id.spr_dir
+    	if player_id.window > 1 {
+    	vsp = 0
+    	hsp = 0
+    	}
+    	with player_id {
+    		if window == 1 {
+    		if right_down && other.hsp < 6 {
+    			other.hsp += 1
+    		}
+    		if left_down && other.hsp > -6  {
+    			other.hsp -= 1
+    		}
+    		other.hsp /= 1.06
+    		}
+    	}
+    }
     
-    if player_id.attacking and player_id.attack = AT_FSTRONG {
+
+    
+    if player_id.attacking and player_id.attack = AT_NSPECIAL {
         hsp = player_id.hsp/1.2  
         spr_dir =  player_id.spr_dir 
         if player_id.window < 5 {
@@ -160,30 +180,16 @@ if player_id.attacking and player_id.attack = AT_DSPECIAL && player_id.cloneout 
         
         if player_id.hitpause == false {
         if player_id.window == 6 and player_id.window_timer == 3 {
-            create_hitbox(AT_FSTRONG, 5, 0, 0)
-            create_hitbox(AT_FSTRONG, 6, 0, 0)
+            create_hitbox(AT_NSPECIAL, 5, 0, 0)
+            create_hitbox(AT_NSPECIAL, 6, 0, 0)
         }
         if player_id.window == 8 and player_id.window_timer == 3 {
-            create_hitbox(AT_FSTRONG, 7, 0, 0)
-            create_hitbox(AT_FSTRONG, 8, 0, 0)
+            create_hitbox(AT_NSPECIAL, 7, 0, 0)
+            create_hitbox(AT_NSPECIAL, 8, 0, 0)
         }
         }
     }
     
-    if player_id.attacking and player_id.attack = AT_NSPECIAL and player_id.hitpause == false  {
-    	
-    	hsp /= 1.06
-    	
-    	if x > player_id.hit_player_obj.x {
-    		spr_dir = -1
-    	} else {
-    		spr_dir = 1
-    	}
-    	
-        if player_id.window == 3 && player_id.window_timer == 1 {
-            create_hitbox(AT_NSPECIAL, 1, x, y)
-        }
-    }
     
     if player_id.attacking and player_id.attack = AT_USPECIAL   {
         vsp = player_id.vsp

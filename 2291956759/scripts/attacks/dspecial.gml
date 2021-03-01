@@ -416,7 +416,7 @@ set_hitbox_value(AT_DSPECIAL, 31, HG_IGNORES_PROJECTILES, true);
 set_hitbox_value(AT_DSPECIAL, 17, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 17, HG_WINDOW, 2);
 set_hitbox_value(AT_DSPECIAL, 17, HG_WINDOW_CREATION_FRAME, 4);
-set_hitbox_value(AT_DSPECIAL, 17, HG_LIFETIME, 300);
+set_hitbox_value(AT_DSPECIAL, 17, HG_LIFETIME, 60);
 set_hitbox_value(AT_DSPECIAL, 17, HG_HITBOX_X, 40);
 set_hitbox_value(AT_DSPECIAL, 17, HG_HITBOX_Y, -36);
 set_hitbox_value(AT_DSPECIAL, 17, HG_PRIORITY, 3);

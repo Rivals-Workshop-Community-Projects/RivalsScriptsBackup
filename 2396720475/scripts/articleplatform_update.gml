@@ -26,22 +26,28 @@ if (state == 1){
 
 if (state == 2){
 
-	if (instance_exists(player_id.Box)){
+
+	if (instance_exists(player_id.Box) ){
 		with (player_id.Box){
 			if (place_meeting(x, y, other)){
 				other.canmove = true;
 				
 				other.stored_x = x - other.x;
 				other.stored_y = y - other.y + 1;
+				other.state = 3;
 			}
 		}
-	}
-			
-	if (instance_exists(player_id.movingbox) && canmove == true){
-		state = 3;
-	}
 
-	if (canmove && new_box){
+	}
+	
+	if (place_meeting(x, y, asset_get("par_block")) && (!place_meeting(x, y, player_id.Box))){
+		state = 5;
+	}
+}
+
+if (state == 5){
+	
+	if (!place_meeting(x, y, asset_get("par_block")) && new_box && player_id.attack == AT_DSPECIAL && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){
 		state = 4;
 	}
 
@@ -62,7 +68,7 @@ if (state == 3){ // Moves with Box
 				if ((place_meeting(x, y - 3, other) && y < other.y + 10) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
 					if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
 						free = false;
-						y = other.y - 5;
+						y = other.y - 3;
 					}
 					
 					if ((state_cat != SC_AIR_COMMITTED)){
@@ -93,17 +99,17 @@ if (state == 4){
 	exit;
 }
 
-if (state_timer == 990){
+if (state_timer == 400){
 	sound_play(sound_get("needle1_sfx"));
 	instance_destroy();
 	exit;
 }
 
-if ((state_timer < 990 && state_timer > 985) || (state_timer < 980 && state_timer > 975) || (state_timer < 970 && state_timer > 965) || (state_timer < 960 && state_timer > 955) || (state_timer < 950 && state_timer > 945) || (state_timer < 940 && state_timer > 935)){
+if ((state_timer < 400 && state_timer > 395) || (state_timer < 390 && state_timer > 385) || (state_timer < 380 && state_timer > 375) || (state_timer < 370 && state_timer > 365) || (state_timer < 360 && state_timer > 355) || (state_timer < 350 && state_timer > 345)){
 	image_alpha = 0;
 }
 
-if ((state_timer < 985 && state_timer > 980) || (state_timer < 975 && state_timer > 970) || (state_timer < 965 && state_timer > 960) || (state_timer < 955 && state_timer > 950) || (state_timer < 945 && state_timer > 940) || (state_timer < 935 && state_timer > 930)){
+if ((state_timer < 395 && state_timer > 390) || (state_timer < 385 && state_timer > 380) || (state_timer < 375 && state_timer > 370) || (state_timer < 365 && state_timer > 360) || (state_timer < 355 && state_timer > 350) || (state_timer < 345 && state_timer > 340)){
 	image_alpha = 1;
 }
 

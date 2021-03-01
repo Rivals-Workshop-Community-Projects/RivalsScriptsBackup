@@ -149,7 +149,7 @@ if attack == AT_FSPECIAL_AIR && !hitpause {
 		if window_timer == 14 && free {
 			window_timer = 10;
 		}
-		if window_timer > 10 {
+		if window_timer > 10 && !was_parried {
 			can_jump = true;
 			can_shield = true;
 		}

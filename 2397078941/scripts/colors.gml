@@ -146,15 +146,15 @@ set_color_profile_slot( 11, 5, 21, 21, 21 ); //unnamed color row
 set_color_profile_slot( 11, 6, 124, 40, 223 ); //unnamed color row
 set_color_profile_slot( 11, 7, 65, 0, 210 ); //unnamed color row
 
-// 12
-set_color_profile_slot( 12, 0, 255, 201, 0 ); //unnamed color row
-set_color_profile_slot( 12, 1, 255, 255, 180 ); //unnamed color row
-set_color_profile_slot( 12, 2, 255, 210, 70 ); //unnamed color row
+// Equaliza
+set_color_profile_slot( 12, 0, 255, 173, 251 ); //unnamed color row
+set_color_profile_slot( 12, 1, 251, 251, 251 ); //unnamed color row
+set_color_profile_slot( 12, 2, 255, 158, 248 ); //unnamed color row
 set_color_profile_slot( 12, 3, 255, 255, 255 ); //unnamed color row
-set_color_profile_slot( 12, 4, 255, 255, 140 ); //unnamed color row
-set_color_profile_slot( 12, 5, 255, 190, 0 ); //unnamed color row
-set_color_profile_slot( 12, 6, 255, 228, 85 ); //unnamed color row
-set_color_profile_slot( 12, 7, 255, 180, 0 ); //unnamed color row
+set_color_profile_slot( 12, 4, 255, 117, 248 ); //unnamed color row
+set_color_profile_slot( 12, 5, 168, 173, 237 ); //unnamed color row
+set_color_profile_slot( 12, 6, 166, 252, 255 ); //unnamed color row
+set_color_profile_slot( 12, 7, 129, 170, 214 ); //unnamed color row
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

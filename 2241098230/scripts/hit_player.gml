@@ -67,7 +67,7 @@ for (var i = 0; i < array_length(hbox_apply_smoke); i++) {
         }
         hit_player_obj.smoked = true;
         hit_player_obj.smoked_id = id;
-        hit_player_obj.smoked_timer = 240 + (has_rune("B") * 180);
+        hit_player_obj.smoked_timer = smoke_timer_max + (has_rune("B") * 600);
     }
 }
 

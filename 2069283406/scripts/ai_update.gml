@@ -1,7 +1,40 @@
 //ai_init - setting the basic AI attack behaviors
 if (get_training_cpu_action() == CPU_FIGHT){
     
-    
+    if attack == AT_NSPECIAL && window == 3 {
+    	if !inrange {
+    		x += 2 * spr_dir
+    		hsp = 4 *spr_dir
+    	}
+    	
+    	if window < 3{
+    		
+    		if x > ai_target.x{
+    			spr_dir = -1
+    		} else {
+    			spr_dir = 1
+    		}
+    		
+    	}
+    	
+    	if !ai_recovering {
+    		if x > ai_target.x{
+    			left_down = true
+    			right_down = false
+    		} else {
+    			left_down = false
+    			right_down = true
+    		}
+    		
+    		if y > ai_target.y{
+    			up_down = true
+    			down_down = false
+    		} else if y + 20 < ai_target.y {
+    			up_down = false
+    			down_down = true
+    		}
+    	}
+    }
     if ai_target.state == PS_ATTACK_AIR or ai_target.state == PS_ATTACK_GROUND {
 	
    if xdist < 100 && can_attack && ai_target.window == 1 && ((x < ai_target.x && ai_target.spr_dir == -1) or (x > ai_target.x && ai_target.spr_dir == 1))  {
@@ -16,6 +49,31 @@ if (get_training_cpu_action() == CPU_FIGHT){
 
 ///
 
+if state == PS_RESPAWN && visible{
+	move_cooldown[AT_TAUNT] = 0 ;
+	set_attack(AT_TAUNT)
+}
+if (can_attack and attack != (AT_TAUNT) and targetbusy and move_cooldown[AT_TAUNT] == 0){
+    taunt_pressed = true;
+    
+}
+if attack == AT_TAUNT {
+	down_down = true
+}
+if get_gameplay_time() > 100 and !targetbusy or state_cat = SC_HITSTUN {
+	move_cooldown[AT_TAUNT] = 80 ;
+}
+
+
+if ai_target.state_cat == SC_HITSTUN && fireon >= 3 && firerange > 100 && can_attack{
+	    	    joy_pad_idle = true;
+    	        left_down = false;
+    	        right_down = false;
+    	        up_down = false;
+    	        down_down = false;
+    	        special_pressed = true;
+    	        attack_pressed = false;
+}
 
 if state_cat == SC_HITSTUN {
 	hsp /= 1.008
@@ -81,7 +139,7 @@ if state_cat == SC_HITSTUN {
         can_boost = true;
     }
     
-    if fireon >= 3 and (attack == AT_DSTRONG or attack == AT_USTRONG or attack == AT_FSTRONG){
+    if fireon >= 3 and (attack == AT_DSTRONG or attack == AT_USTRONG or attack == AT_FSTRONG) and !hitpause {
     	special_down = true;
     }
     
@@ -291,12 +349,11 @@ if state_cat == SC_HITSTUN {
 	}
 	
 	//DACUS
-    DACUSpercent = (2 - ai_target.knockback_adj) * 100;
-    if(attack == AT_DTILT and has_hit and DACUSpercent < targetdamage and targetdamage < DACUSpercent * 1.30){
+    if(attack == AT_DTILT and has_hit){
     	can_DACUS = true;
     }
     
-    if(attack == AT_DATTACK and attacking and !ai_target_offstage and freemd and DACUSpercent < targetdamage and targetdamage < DACUSpercent * 1.30){
+    if(attack == AT_DATTACK and attacking and !ai_target_offstage and freemd){
     	can_DACUS = true;
     }else{
     	can_DACUS = false;;
@@ -373,15 +430,11 @@ if state_cat == SC_HITSTUN {
 	
     //Attacks
     if (can_attack or state == PS_DASH or state == PS_DASH_START or state == PS_DASH_STOP or state == PS_DOUBLE_JUMP) and !targetbusy and !to_boost and !do_not_attack{
-    	
-    	
-        
+
         if !free{
-    		
-    		
-            strongPercent = (2 - ai_target.knockback_adj) * 70 < targetdamage;
+
             //Strongs
-            if can_strong and ((ai_target.state_cat == SC_HITSTUN and strongPercent) or ai_target_offstage or ai_target.state == PS_PRATLAND){
+            if can_strong and ((ai_target.state_cat == SC_HITSTUN) or ai_target_offstage or ai_target.state == PS_PRATLAND){
             	
             	//Call the hitbox selection function, it stores the value in chosenAttack
             	hitboxloc("strongs");
@@ -482,7 +535,7 @@ if state_cat == SC_HITSTUN {
     	            right_down = true;
     	        }
     	        up_down = false;
-    	        down_down = false;
+    	        down_down = true;
     	        special_pressed = false;
     	        attack_pressed = true;
     	        rangedtimer = 300;
@@ -494,13 +547,18 @@ if state_cat == SC_HITSTUN {
             if chosenAttack == AT_DTILT{
                 clear_button_buffer( PC_ATTACK_PRESSED );
     	        joy_pad_idle = true;
-    	        left_down = false;
-    	        right_down = false;
+    	        if x > ai_target.x{
+    	            left_down = true;
+    	            right_down = false;
+    	        } else {
+    	            left_down = false;
+    	            right_down = true;
+    	        }
     	        up_down = false;
-    	        down_down = true;
+    	        down_down = false;
     	        special_pressed = false;
     	        attack_pressed = true;
-    			rangedtimer = 300;
+    	        rangedtimer = 300;
     			
             }
             
@@ -757,9 +815,7 @@ if (ai_recovering){
     	jump_down = true;
     }
     
-    if attack == AT_FSPECIAL and window == 1 and window_timer <= 1{
-    	facestage();
-    }
+
 }else{
 	stall = 1;
 }

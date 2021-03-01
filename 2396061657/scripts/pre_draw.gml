@@ -8,3 +8,7 @@ with (obj_article1){ // Draws the outline of the heart during the first state (W
 		}
 	}
 }		
+
+if (attack == AT_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
+	draw_sprite_ext(sprite_get("magnetism"), state_timer / 5.5, x, y - 30, 1, 1, 0, c_white, 1);
+}

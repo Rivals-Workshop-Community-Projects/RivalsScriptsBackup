@@ -28,7 +28,7 @@ if(player_id == other.id) {
  	
 	with (asset_get("oPlayer")) {
 	if (player != other.player) {
-    if "ai_target" in self {
+    if "ai_target" in self && "nname" not in self{
              		if url != "2108469290" {
 
                    move_cooldown[AT_DSPECIAL] = 30

@@ -67,10 +67,13 @@ set_hitbox_value(AT_USTRONG, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_USTRONG, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 2);
 set_hitbox_value(AT_USTRONG, 1, HG_ANGLE, 105);
-set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_USTRONG, 1, HG_ANGLE_FLIPPER, 4);
+set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(AT_USTRONG, 1, HG_SDI_MULTIPLIER, 0);
+set_hitbox_value(AT_USTRONG, 1, HG_DRIFT_MULTIPLIER, 0);
 
 //launcher left
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
@@ -83,11 +86,14 @@ set_hitbox_value(AT_USTRONG, 2, HG_HEIGHT, 47);
 set_hitbox_value(AT_USTRONG, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_USTRONG, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 2);
-set_hitbox_value(AT_USTRONG, 2, HG_ANGLE, 65);
-set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_USTRONG, 2, HG_ANGLE, 45);
+set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_HITPAUSE, 1);
+set_hitbox_value(AT_USTRONG, 2, HG_ANGLE_FLIPPER, 4);
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(AT_USTRONG, 2, HG_SDI_MULTIPLIER, 0);
+set_hitbox_value(AT_USTRONG, 2, HG_DRIFT_MULTIPLIER, 0);
 
 //pistol1
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_TYPE, 1);
@@ -100,12 +106,14 @@ set_hitbox_value(AT_USTRONG, 3, HG_HEIGHT, 85);
 set_hitbox_value(AT_USTRONG, 3, HG_PRIORITY, 3);
 set_hitbox_value(AT_USTRONG, 3, HG_DAMAGE, 2);
 set_hitbox_value(AT_USTRONG, 3, HG_ANGLE, 80);
+set_hitbox_value(AT_USTRONG, 3, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_USTRONG, 3, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_USTRONG, 3, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, 12);
 set_hitbox_value(AT_USTRONG, 3, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_USTRONG, 3, HG_ANGLE_FLIPPER, 9);
+set_hitbox_value(AT_USTRONG, 3, HG_SDI_MULTIPLIER, 0);
+set_hitbox_value(AT_USTRONG, 3, HG_DRIFT_MULTIPLIER, 0);
 
 //pistol2
 set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_TYPE, 1);
@@ -118,12 +126,14 @@ set_hitbox_value(AT_USTRONG, 4, HG_HEIGHT, 85);
 set_hitbox_value(AT_USTRONG, 4, HG_PRIORITY, 3);
 set_hitbox_value(AT_USTRONG, 4, HG_DAMAGE, 2);
 set_hitbox_value(AT_USTRONG, 4, HG_ANGLE, 80);
+set_hitbox_value(AT_USTRONG, 4, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_USTRONG, 4, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_USTRONG, 4, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_USTRONG, 4, HG_VISUAL_EFFECT, 13);
 set_hitbox_value(AT_USTRONG, 4, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_GROUP, 2);
-set_hitbox_value(AT_USTRONG, 4, HG_ANGLE_FLIPPER, 9);
+set_hitbox_value(AT_USTRONG, 4, HG_SDI_MULTIPLIER, 0);
+set_hitbox_value(AT_USTRONG, 4, HG_DRIFT_MULTIPLIER, 0);
 
 //pistol3
 set_hitbox_value(AT_USTRONG, 5, HG_HITBOX_TYPE, 1);

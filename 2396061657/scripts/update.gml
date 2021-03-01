@@ -259,14 +259,6 @@ with (oPlayer){
 			can_jump = true;
 			can_special = true;
 		}
-/*
-		if (!free){
-			if (hitstop = 0){
-				hitpause = true;
-				hitstop = CandyCounter;
-			}
-		}
-*/
 
 		if (!free && !hitpause){
 
@@ -1114,14 +1106,16 @@ if (DG_chat_num == 1 && isTaunt){
 				break;
 				case 2:
 					chattingoptions[chatindex] = 2; // If 1, option select.. if 2, then more dialogue... if 3, then end dialogue
-					dialogue[chatindex] = "Oh! I didn't know you could speak to the Aetherian Grounds as well.	
+					dialogue[chatindex] = "Oh! I didn't know you could speak to the 
+										Aetherian Grounds as well.	
 
 										";
 					nextindex = 3;
 				break;
 				case 3:
 					chattingoptions[chatindex] = 1; // If 1, option select.. if 2, then more dialogue... if 3, then end dialogue
-					dialogue[chatindex] = "I always believed that only the Wall Runners could speak to them.
+					dialogue[chatindex] = "I always believed that only the Wall Runners 
+									could speak to them.
 
 										";
 					optionselect[chatindex] = "That's not what I meant..
@@ -1132,14 +1126,16 @@ if (DG_chat_num == 1 && isTaunt){
 				break;
 				case 4:
 					chattingoptions[chatindex] = 2; // If 1, option select.. if 2, then more dialogue... if 3, then end dialogue
-					dialogue[chatindex] = "Oh, yeah I picked them off the Rock Wall. They're one of my favorites.	
+					dialogue[chatindex] = "Oh, yeah I picked them off the Rock Wall.
+									They're one of my favorites.	
 
 										";
 					nextindex = 5;
 				break;
 				case 5:
 					chattingoptions[chatindex] = 2; // If 1, option select.. if 2, then more dialogue... if 3, then end dialogue
-					dialogue[chatindex] = "They're called Wooly Thyme. They're a very gentle flower so be careful, okay.
+					dialogue[chatindex] = "They're called Wooly Thyme. They're a very 
+										gentle flower so be careful, okay.
 
 										";
 					nextindex = 6;
@@ -1196,6 +1192,7 @@ if (DG_chat_num == 1 && isTaunt){
 										";
 					nextindex = 3;
 				break;
+			}	
 		break;
 
 //////////////////
@@ -1205,6 +1202,7 @@ if (DG_chat_num == 1 && isTaunt){
 		case 6: // Forsb - Date Girl is the one selecting dialogue options
 			switch(chatindex){
 				case 0:
+					room = 8;
 					chattingoptions[chatindex] = 2; // If 1, option select.. if 2, then more dialogue... if 3, then end dialogue
 					dialogue[chatindex] = "Risen from the darkness a Pink entity of 
 										mysterious form appears in the middle of the hallways..
@@ -1502,7 +1500,7 @@ if (DG_chat_num == 1 && isTaunt){
 		
 		case 9: // Eta - Date Girl is the one selecting dialogue options
 			switch(chatindex){
-			case 0:
+				case 0:
 					chattingoptions[chatindex] = 2; // If 1, option select.. if 2, then more dialogue... if 3, then end dialogue
 					dialogue[chatindex] = "Hey Callie, it's been quiet a while since you've visited
 										how goes everything?
@@ -2540,7 +2538,7 @@ if (DG_chat_num == 1 && isTaunt){
 		break;
 	}
 }
-}	
+
 if (DG_chat_num == 2 && isTaunt){
 	with (asset_get("obj_stage_main")){
 		if (variable_instance_exists(id, "Chatting")){

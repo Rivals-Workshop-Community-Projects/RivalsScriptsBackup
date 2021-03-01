@@ -550,6 +550,14 @@ with phone{
 	 * put the version number and full date.
 	 */
 
+	initPatch("1.6.1", "February 22nd, 2021");
+	initPatchWords("-Added proper landing lag to Forward-Special when used in air
+	-Forward-Special now transitions into idle state properly when used on ground
+	-Fixed a bug where Forward-Special had no parry stun
+	-Fixed sprite offsets being 1px off vertically");
+	initPatchImage(player_id.spr_bighurt, -1, fa_left, 3, c_white, 1);	
+	
+
 	initPatch("1.6", "February 4th, 2021");
 	initPatchWords("-Redrew portrait
 	-Forward-Special reworked
@@ -567,7 +575,7 @@ with phone{
 	-Forward-Air sourspot knockback scaling decreased (0.9 -> 0.7)
 	-Decreased size of Forward-Strong hitbox
 	-Changed abyss runes H and M");
-	initPatchImage(player_id.spr_ustrong, -1, fa_right, 1, c_white, 0);	
+	initPatchImage(other.spr_fspecial, 6, fa_left, 1, c_white, 3);	 
 	
 
 	

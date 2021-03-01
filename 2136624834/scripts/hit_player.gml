@@ -34,14 +34,6 @@ if timestop < 100 && timefreeze < 1 && (my_hitboxID.attack != AT_USPECIAL) && mo
 
 if timefreeze > 40 {
 	
-        	var ADdmg = floor(my_hitboxID.damage)
-with hit_player_obj {
-		take_damage( player, -1 , ADdmg * -1)
-		
-}	
-
-    
-    timehit += my_hitboxID.damage 
     
     set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 1);
     set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 4);
@@ -51,11 +43,11 @@ with hit_player_obj {
     set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -60);
     set_hitbox_value(AT_USPECIAL, 2, HG_PRIORITY, 3);
     set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 1);
-    set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 2000);
-    set_hitbox_value(AT_USPECIAL, 2, HG_HEIGHT, 2000);
+    set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 280);
+    set_hitbox_value(AT_USPECIAL, 2, HG_HEIGHT, 280);
     set_hitbox_value(AT_USPECIAL, 2, HG_SHAPE, 0);
     set_hitbox_value(AT_USPECIAL, 2, HG_PRIORITY, 3);
-    set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, timehit);
+    set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 0.1);
     set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, my_hitboxID.kb_angle);
     set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, my_hitboxID.kb_value);
     set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, my_hitboxID.kb_scale);

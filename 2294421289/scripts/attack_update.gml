@@ -6,14 +6,18 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 }
 
 if (attack == AT_DAIR){
-	if (has_hit){
+	if (has_hit)
+  {
 		can_fast_fall = true;
 	}
 }
 
 if (attack == AT_FSPECIAL)
 {
-	if (has_hit)
+ if was_parried = false
+ {
+ 
+ if (has_hit)
 	{
      can_attack = true;
      old_vsp = 1;
@@ -29,6 +33,8 @@ if (attack == AT_FSPECIAL)
 
 	can_wall_jump = true;
 	old_vsp = -7;
+
+ }
 
   if ((window == 2 || window == 3 || window == 4 || window == 5) && !free)  && (was_parried = false)
   {
@@ -56,7 +62,7 @@ if (attack == AT_USPECIAL)
   if ((window == 3 ) && !free)
   {
     set_state( PS_LANDING_LAG );
-    landing_lag_time = 16;
+    landing_lag_time = 16 / 2;
     hsp = hsp / 2;
   }
  }
@@ -228,7 +234,7 @@ if (attack == AT_DSPECIAL)
     if (window_timer == 4)
     {
       move_cooldown[AT_DSPECIAL] = 120;
-      var ring = instance_create(x+(spr_dir * 3), y-80, "obj_article2");
+      var ring = instance_create(x+(spr_dir * 30), y-80, "obj_article2");
       ring.player_id = id;
       ring.player = player;
       ring.spr_dir = spr_dir;

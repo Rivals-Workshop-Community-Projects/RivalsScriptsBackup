@@ -23,7 +23,7 @@ break;
 }
 
 
-if -127 > obj_stage_main.monoX {
+if -160 > obj_stage_main.monoX {
 obj_stage_main.guiltyScreen = -4
 if sprite_index != sprite_get("killing") {
 image_index = 0

@@ -8,6 +8,5 @@ if(debug){
     draw_debug_text(x + 175, y + 35, "FREE: " + string(free));
     draw_debug_text(x, y + 50, "hsp: " + string(hsp));
     draw_debug_text(x + 100, y + 50, "vsp: " + string(vsp));
-    draw_debug_text(x, y + 65, "hitstop: " + string(hitstop));
-    draw_debug_text(x + 100, y + 65, "hitstop full: " + string(hitstop_full));
+    draw_debug_text(x, y + 65, "has grenade: " + string(has_grenade));
 }

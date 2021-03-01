@@ -22,10 +22,10 @@ if attack == AT_DTILT && hbox_num == 1 {
 
 	//}
 	//var maxlen = get_hitbox_value(AT_DTILT, 1, HG_HITBOX_X);
-	var maxlen = 110;
+	var maxlen = 190;
 	var of = 26*player_id.spr_dir
 	
-	if player_id.normal_charge > 0 maxlen += 80;
+//	if player_id.normal_charge > 0 maxlen += 80;
 	
 	
 	

@@ -11,10 +11,15 @@ state_timer = 0;
 
 solid_timer = 30;
 
+falling_state = false;
+
 sprite_index = sprite_get("box_spin");
 mask_index = -1;
 image_index = 0;
-image_speed = .4;
+//image_speed = .4;
+
+initial_spawn = false
+flag = false;;
 
 got_hit = false;
 

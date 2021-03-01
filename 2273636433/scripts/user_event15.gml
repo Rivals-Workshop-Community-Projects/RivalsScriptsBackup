@@ -160,7 +160,9 @@ phone.taunt_hint_x = 0;									// Sideways offset of the "Taunt!" thing that sh
 phone.taunt_hint_y = 0;
 phone.shader = 0;
 
-phone.dont_fast = 0;									// Set this to 1, and Fast Graphics will not automatically be set when the FPS dips below 60.
+phone.dont_fast = 1;									// Set this to 1, and Fast Graphics will not automatically be set when the FPS dips below 60.
+phone_lightweight = 1;									// Set to 1 to disable certain features, possibly improving performance a little bit. See _readme.gml.
+phone.frame_data_loaded = 0;							// Set to 1 to disable the frame data guide, which MIGHT improve performance on bad computers? (This is just a guess. It has no impact on code run during gameplay, but gets rid of a TON of data stored in memory in Practice Mode...)
 
 
 
@@ -362,6 +364,47 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	 
+	initPatch("1.31", "25 Febuary, 2021");
+	initPatchWords("Fspecial")
+	initPatchWords_ext("Now refelects Articles Properly. Main example being Morshu Bombs
+	In the ditto the cape refelcting pill is like if you hit your own pill with cape", fa_left, c_gray, 1, 0);
+	initPatchWords("Rune desc")
+	initPatchWords_ext("Fixed a bug", fa_left, c_gray, 1, 0);
+	 
+	initPatch("1.3", "22 Febuary, 2021");
+	initPatchWords("Balance Changes")
+	initPatchWords_ext("-Ftilt Endlag 14 -> 12
+-Dtilt Endlag 12 -> 11
+-Utilt Endlag 12 -> 10
+-Uspecial: Active frames increased by 2
+KBS: 0.7 -> 0.75
+This Move can now be hit-falled (Only for finisher hitbox)
+This also applies to hitting your own pills 
+-Fspecial: Startup: 9 -> 8
+Removed second hitbox that appeared behind DMM
+-Dspecial: Now has slightly faster  horizontal traveling speed when grounded 
+-Fstrong: Endlag: 20 -> 18
+-Dstrong: KBS Front hit: .85 -> .9
+Damage Front hit: 10-> 11
+KBS Back hit: .95 -> 1
+-Fair Rework:
+Weak initial hitbox removed, the move now starts with the strong hitbox
+Active frames 6 -> 4
+BKB Weak hits: 7 -> 8
+-Jab: First Hit Endlag reduced by 2 frames 
+Second and Third hits Endlag reduced by 1 frame
+-Nair: Active frames 15 -> 16
+-rune L desc=Dspecial can be held down and has improved movement stats.
+-Adjusted Fair spiking rune to work with the Fair rework and fair spike rune now sends at 320", fa_left, c_gray, 1, 0);
+	initPatchWords("Support")
+	initPatchWords_ext("-Morshu and Matt can grab pills
+-Final Smash buddy compatibility added (In progress)", fa_left, c_gray, 1, 0); 
+	initPatchWords("AI updates:")
+	initPatchWords_ext("-Removed Utilt from neutral options
+-Will overall  use a more of its moveset
+-AI will now recover with Dspecial more frequenly
+-AI can hitfall and walkturns when it gets a kill woooooo", fa_left, c_gray, 1, 0); 
 	
 	initPatch("1.27", "1 Febuary, 2021");
 	initPatchWords("Dair code imrpoved

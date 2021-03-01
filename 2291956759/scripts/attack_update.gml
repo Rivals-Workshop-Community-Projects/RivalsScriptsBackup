@@ -238,6 +238,20 @@ if attack == AT_USPECIAL {
 
 if attack == AT_DSPECIAL {
     
+    if taunt_pressed && ink >= 300 && !free{
+    	sasdh = instance_create(x + 80*spr_dir,y,"oPlayer");
+    	set_attack (AT_FSPECIAL)
+    	window = 2
+    	window_timer = 4
+    	shake_camera(6,12)
+    	sound_play(sound_get("counterhit")) 	
+    	sound_play(asset_get("sfx_bird_downspecial")) 
+    	sound_play(asset_get("sfx_orca_absorb")) 
+    	spawn_hit_fx(x,y - 30,306)
+    	spawn_hit_fx(x,y - 30,305)
+    	ink = 0
+    	x -= 40*spr_dir
+    }
         if joy_dir < 45 || joy_dir >= 315 {
             summon = 0
         }

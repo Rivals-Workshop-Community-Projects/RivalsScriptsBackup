@@ -43,6 +43,16 @@ if drawtime < 15 {
     
 }
 
+if alt == 12 {
+    if drawtime == 1 {
+    sound_play(asset_get("sfx_diamond_collect"))
+    sound_play(asset_get("sfx_boss_vortex_end"),false,noone,2)
+    }
+    draw_sprite_ext(sprite_get("tflag"),0,temp_x-2,temp_y-2,2,2,0,-1,1);    
+    if drawtime <= 20 && drawtime % 3 == 0 { 
+          draw_sprite_ext(sprite_get("charselectflash"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
+    }
+}
 
 
 //define the palette names
@@ -58,7 +68,8 @@ var palette_names = [
   "Hey Spar, Love the character",     
    "Lum",   
      "Air Better",   
-         "Abyss Learner",   
+         "Abyss Learner",  
+           "Equaliza",
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

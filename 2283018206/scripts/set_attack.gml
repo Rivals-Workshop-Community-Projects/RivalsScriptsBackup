@@ -9,6 +9,8 @@ switch(attack){
 			ball_found = 1;
 		}
 		if bike || free || ball_found attack = AT_DSPECIAL_AIR;
+        set_attack_value(AT_DSPECIAL_AIR, AG_CATEGORY, 2);
+        dspecial_air_free = free || ball_found;
 	case AT_FSPECIAL:
 	case AT_USPECIAL:
 		if nspecial_buffer && !move_cooldown[AT_NSPECIAL] attack = AT_NSPECIAL;

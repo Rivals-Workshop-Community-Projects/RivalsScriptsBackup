@@ -77,7 +77,7 @@ set_hitbox_value(AT_DAIR, 2, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, sound_get("RI"));
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_DAIR, 2, HG_TECHABLE, 1);
+set_hitbox_value(AT_DAIR, 2, HG_TECHABLE, 2);
 set_hitbox_value(AT_DAIR, 2, HG_HITSTUN_MULTIPLIER, 1.5);
 
 set_hitbox_value(AT_DAIR, 3, HG_PARENT_HITBOX, 0);
@@ -100,7 +100,7 @@ set_hitbox_value(AT_DAIR, 3, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_DAIR, 3, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_DAIR, 3, HG_HIT_SFX, sound_get("RI"));
 set_hitbox_value(AT_DAIR, 3, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_DAIR, 3, HG_TECHABLE, 1);
+set_hitbox_value(AT_DAIR, 3, HG_TECHABLE, 2);
 set_hitbox_value(AT_DAIR, 3, HG_HITSTUN_MULTIPLIER, 1.5);
 
 set_hitbox_value(AT_DAIR, 4, HG_PARENT_HITBOX, 0);
@@ -124,7 +124,7 @@ set_hitbox_value(AT_DAIR, 4, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_DAIR, 4, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_DAIR, 4, HG_HIT_SFX, sound_get("RI2"));
 set_hitbox_value(AT_DAIR, 4, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_DAIR, 4, HG_TECHABLE, 1);
+set_hitbox_value(AT_DAIR, 4, HG_TECHABLE, 2);
 set_hitbox_value(AT_DAIR, 4, HG_HITSTUN_MULTIPLIER, 1.5);
 
 set_hitbox_value(AT_DAIR, 5, HG_PARENT_HITBOX, 0);
@@ -148,7 +148,7 @@ set_hitbox_value(AT_DAIR, 5, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_DAIR, 5, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_DAIR, 5, HG_HIT_SFX, sound_get("RI2"));
 set_hitbox_value(AT_DAIR, 5, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_DAIR, 5, HG_TECHABLE, 1);
+set_hitbox_value(AT_DAIR, 5, HG_TECHABLE, 2);
 set_hitbox_value(AT_DAIR, 5, HG_HITSTUN_MULTIPLIER, 1.5);
 
 set_hitbox_value(AT_DAIR, 6, HG_PARENT_HITBOX, 0);

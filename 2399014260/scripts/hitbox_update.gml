@@ -68,6 +68,11 @@ if (attack == AT_DSPECIAL){
 		sound_play(player_id.sfx_mario_pop_1);
 		
 		lumad = 1;
+		
+		with player_id.luma if state == PS_IDLE{
+			state = PS_SPAWN;
+			state_timer = 3;
+		}
 	}
 	
 	if place_meeting(x, y, asset_get("par_block")){

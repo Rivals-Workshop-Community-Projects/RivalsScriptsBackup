@@ -20,3 +20,7 @@ if attack == AT_FSPECIAL_2 {
 sound_play(asset_get("mfx_player_ready"))
 hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE)
 }
+
+if attack == AT_DAIR && (attack_down or down_stick_down) {
+attack = AT_DTHROW;
+}

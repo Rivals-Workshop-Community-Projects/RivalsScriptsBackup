@@ -45,10 +45,10 @@ repeat(2){
 
 	set_hitbox_value(_atk, i, HG_HITBOX_TYPE, 1);
 	set_hitbox_value(_atk, i, HG_WINDOW, (_atk == AT_FSTRONG) ? 3 : 2);
-	set_hitbox_value(_atk, i, HG_LIFETIME, 2);
-	set_hitbox_value(_atk, i, HG_HITBOX_X, 18);
+	set_hitbox_value(_atk, i, HG_LIFETIME, 3);
+	set_hitbox_value(_atk, i, HG_HITBOX_X, 32);
 	set_hitbox_value(_atk, i, HG_HITBOX_Y, (_atk == AT_FSTRONG) ? -29 : -35);
-	set_hitbox_value(_atk, i, HG_WIDTH, 70);
+	set_hitbox_value(_atk, i, HG_WIDTH, 48);
 	set_hitbox_value(_atk, i, HG_HEIGHT, 20);
 	set_hitbox_value(_atk, i, HG_SHAPE, 2);
 	set_hitbox_value(_atk, i, HG_PRIORITY, 3);

@@ -547,6 +547,11 @@ if attack == AT_BAIR {
 if attack == AT_TAUNT {
     
     if window == 1 {
+        if invincible == false {
+        	if state_timer % 20 == 0 {
+        		DT += 1
+        	}
+        }
         
         if window_timer == 1 && up_down && training{
         	move_cooldown[AT_DSPECIAL] = 0

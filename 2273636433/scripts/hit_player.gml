@@ -20,7 +20,7 @@ if (my_hitboxID.attack == AT_USPECIAL){
 		//TRAVIS GRAB CODE LUL
 		//Trying to Grab GODKARMA or any other character inmune to Hitstun
 
-		if(window==2)&&(grabbedid == noone)&&(hit_player_obj.state ==PS_HITSTUN ||hit_player_obj.state==PS_HITSTUN_LAND){									//Aqui va la condición de que detecto golpe	
+		if(window==2)&&(grabbedid == noone)&&(hit_player_obj.state ==PS_HITSTUN ||hit_player_obj.state==PS_HITSTUN_LAND){									//Aqui va la condiciï¿½n de que detecto golpe	
 				hit_player_obj.grabbed = 1;					//Actual grab code?
 				grabbedid = hit_player_obj;
 				grabbedid.ungrab = 0;
@@ -43,6 +43,12 @@ if (my_hitboxID.attack == AT_DSPECIAL){
 		attack_end();
 	}
 }
+
+
+if (my_hitboxID.attack == 49){
+	fs_hit = fs_hit + 1
+} 
+
 
 
 if (has_rune ("A")) && (has_rune ("B")) && (has_rune ("C")) && (has_rune ("D")) && (has_rune ("E")) && (has_rune ("F")) && (has_rune ("G")) && (has_rune ("H")) && (has_rune ("I")) && (has_rune ("J")) && (has_rune ("K")) && (has_rune ("L")) && (has_rune ("M")) && (has_rune ("N")) && (has_rune ("O")){

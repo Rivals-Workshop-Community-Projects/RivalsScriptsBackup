@@ -1,3 +1,4 @@
+
 hurtbox_spr = sprite_get("stabd_box");
 crouchbox_spr = sprite_get("stabdb_box");
 air_hurtbox_spr = -1;
@@ -149,6 +150,9 @@ set_hit_particle_sprite( 1, sprite_get( "spark" ));
             
 SC = hit_fx_create( sprite_get( "SC" ), 14 );
 sprite_change_offset("SC", 76, 80);
+
+apar = hit_fx_create( sprite_get( "angelpar" ), 18 );
+apar2 = hit_fx_create( sprite_get( "angelpar2" ), 18 );
 
 sprite_change_offset("cpar1", 50, 50);
 sprite_change_offset("cpar2", 50, 50);

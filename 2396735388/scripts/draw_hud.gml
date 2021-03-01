@@ -123,7 +123,7 @@ switch guide_textbox {
 	case 200: 
 		return true; 
 	break;
-	case 250: 
+	case 253: 
 		return true; 
 	break;
 	case 300: 
@@ -179,15 +179,15 @@ switch eff_attack {
     
     case AT_NAIR:
         guide_fd_f_h_start[0]=110;
-        guide_fd_grid[0,0]="Neutral Air"; guide_fd_grid[1,0]="5"; guide_fd_grid[2,0]="6-8"; guide_fd_grid[3,0]="12"; guide_fd_grid[4,0]="20";
-            guide_fd_grid[5,0]="5"; guide_fd_grid[6,0]="55"; guide_fd_grid[7,0]="6"; guide_fd_grid[8,0]=".4"; guide_fd_grid[9,0]="Landing Lag: 10/15";
+        guide_fd_grid[0,0]="Neutral Air"; guide_fd_grid[1,0]="5"; guide_fd_grid[2,0]="6-8"; guide_fd_grid[3,0]="10"; guide_fd_grid[4,0]="18";
+            guide_fd_grid[5,0]="5"; guide_fd_grid[6,0]="55"; guide_fd_grid[7,0]="6"; guide_fd_grid[8,0]=".4"; guide_fd_grid[9,0]="Landing Lag: 4/6";
     break;
     case AT_FAIR:
         guide_fd_f_h_start[0]=56;
-        guide_fd_grid[0,0]="Forward Air: Early"; guide_fd_grid[1,0]="9"; guide_fd_grid[2,0]="10-12"; guide_fd_grid[3,0]="--"; guide_fd_grid[4,0]="--";
-            guide_fd_grid[5,0]="7"; guide_fd_grid[6,0]="55"; guide_fd_grid[7,0]="7"; guide_fd_grid[8,0]=".65"; guide_fd_grid[9,0]="Landing Lag: 6/9";
+        guide_fd_grid[0,0]="Forward Air: Early"; guide_fd_grid[1,0]="6"; guide_fd_grid[2,0]="7-9"; guide_fd_grid[3,0]="--"; guide_fd_grid[4,0]="--";
+            guide_fd_grid[5,0]="7"; guide_fd_grid[6,0]="55"; guide_fd_grid[7,0]="7"; guide_fd_grid[8,0]=".65"; guide_fd_grid[9,0]="Landing Lag: 4/6";
         guide_fd_f_h_start[1]=156;
-        guide_fd_grid[0,1]="Late"; guide_fd_grid[1,1]="--"; guide_fd_grid[2,1]="13-18"; guide_fd_grid[3,1]="12/18"; guide_fd_grid[4,1]="36";
+        guide_fd_grid[0,1]="Late"; guide_fd_grid[1,1]="--"; guide_fd_grid[2,1]="10-15"; guide_fd_grid[3,1]="10/15"; guide_fd_grid[4,1]="30";
             guide_fd_grid[5,1]="5"; guide_fd_grid[6,1]="35"; guide_fd_grid[7,1]="6"; guide_fd_grid[8,1]=".3"; guide_fd_grid[9,1]="";
     break;
     case AT_UAIR:
@@ -200,10 +200,10 @@ switch eff_attack {
     break;
     case AT_BAIR:
         guide_fd_f_h_start[0]=84;
-        guide_fd_grid[0,0]="Back Air: Early"; guide_fd_grid[1,0]="7"; guide_fd_grid[2,0]="8-10"; guide_fd_grid[3,0]="--"; guide_fd_grid[4,0]="--";
-            guide_fd_grid[5,0]="7"; guide_fd_grid[6,0]="135"; guide_fd_grid[7,0]="7"; guide_fd_grid[8,0]=".6"; guide_fd_grid[9,0]="Landing Lag: 6/9";
+        guide_fd_grid[0,0]="Back Air: Early"; guide_fd_grid[1,0]="7"; guide_fd_grid[2,0]="8-9"; guide_fd_grid[3,0]="--"; guide_fd_grid[4,0]="--";
+            guide_fd_grid[5,0]="7"; guide_fd_grid[6,0]="135"; guide_fd_grid[7,0]="7"; guide_fd_grid[8,0]=".5"; guide_fd_grid[9,0]="Landing Lag: 6/9";
         guide_fd_f_h_start[1]=156;
-        guide_fd_grid[0,1]="Late"; guide_fd_grid[1,1]="--"; guide_fd_grid[2,1]="11-25"; guide_fd_grid[3,1]="12/18"; guide_fd_grid[4,1]="43";
+        guide_fd_grid[0,1]="Late"; guide_fd_grid[1,1]="--"; guide_fd_grid[2,1]="10-19"; guide_fd_grid[3,1]="9/14"; guide_fd_grid[4,1]="34";
             guide_fd_grid[5,1]="5"; guide_fd_grid[6,1]="115"; guide_fd_grid[7,1]="6"; guide_fd_grid[8,1]=".3"; guide_fd_grid[9,1]="";
     break;
     case AT_DAIR:
@@ -212,7 +212,7 @@ switch eff_attack {
             guide_fd_grid[5,0]="1"; guide_fd_grid[6,0]="45"; guide_fd_grid[7,0]="5"; guide_fd_grid[8,0]="0"; guide_fd_grid[9,0]="Landing Lag: 7/11";
         guide_fd_f_h_start[1]=154;
         guide_fd_grid[0,1]="Hit 6"; guide_fd_grid[1,1]="--"; guide_fd_grid[2,1]="22-24"; guide_fd_grid[3,1]="12/18"; guide_fd_grid[4,1]="42";
-            guide_fd_grid[5,1]="3"; guide_fd_grid[6,1]="90"; guide_fd_grid[7,1]="8"; guide_fd_grid[8,1]=".6"; guide_fd_grid[9,1]="";
+            guide_fd_grid[5,1]="3"; guide_fd_grid[6,1]="90"; guide_fd_grid[7,1]="8"; guide_fd_grid[8,1]=".45"; guide_fd_grid[9,1]="";
     break;
     
     case AT_FSTRONG:
@@ -241,15 +241,22 @@ switch eff_attack {
     break;
     case AT_DSTRONG:
     case AT_DSTRONG_2:
-        guide_fd_f_h_start[0]=74;
-        guide_fd_grid[0,0]="DStrong: Normal"; guide_fd_grid[1,0]="15"; guide_fd_grid[2,0]="16-21"; guide_fd_grid[3,0]="15/23"; guide_fd_grid[4,0]="44";
-            guide_fd_grid[5,0]="10"; guide_fd_grid[6,0]="-90"; guide_fd_grid[7,0]="6 -> 5"; guide_fd_grid[8,0]=".5"; guide_fd_grid[9,0]="Landing Lag: 14/21";
-        guide_fd_f_h_start[1]=42;
-        guide_fd_grid[0,1]="Empowered Hits 1-3"; guide_fd_grid[1,1]="18"; guide_fd_grid[2,1]="19-24"; guide_fd_grid[3,1]=""; guide_fd_grid[4,1]="--";
-            guide_fd_grid[5,1]="2"; guide_fd_grid[6,1]="--"; guide_fd_grid[7,1]="--"; guide_fd_grid[8,1]="--"; guide_fd_grid[9,1]="grabs";
-        guide_fd_f_h_start[2]=68;
-        guide_fd_grid[0,2]="Empowered Hit 4"; guide_fd_grid[1,2]="--"; guide_fd_grid[2,2]="25-26"; guide_fd_grid[3,2]="22/33"; guide_fd_grid[4,2]="59";
-            guide_fd_grid[5,2]="6"; guide_fd_grid[6,2]="-90"; guide_fd_grid[7,2]="6"; guide_fd_grid[8,2]=".7"; guide_fd_grid[9,2]="";
+    	if window == 1 {
+	        guide_fd_f_h_start[0]=74;
+	        guide_fd_grid[0,0]="DStrong: Normal"; guide_fd_grid[1,0]="15"; guide_fd_grid[2,0]="16-21"; guide_fd_grid[3,0]="15/23"; guide_fd_grid[4,0]="44";
+	            guide_fd_grid[5,0]="10"; guide_fd_grid[6,0]="-90"; guide_fd_grid[7,0]="6 -> 5"; guide_fd_grid[8,0]=".5"; guide_fd_grid[9,0]="Landing Lag: 14/21";
+	        guide_fd_f_h_start[1]=42;
+	        guide_fd_grid[0,1]="Empowered Hits 1-3"; guide_fd_grid[1,1]="18"; guide_fd_grid[2,1]="19-24"; guide_fd_grid[3,1]=""; guide_fd_grid[4,1]="--";
+	            guide_fd_grid[5,1]="2"; guide_fd_grid[6,1]="--"; guide_fd_grid[7,1]="--"; guide_fd_grid[8,1]="--"; guide_fd_grid[9,1]="grabs";
+	        guide_fd_f_h_start[2]=68;
+	        guide_fd_grid[0,2]="Empowered Hit 4"; guide_fd_grid[1,2]="--"; guide_fd_grid[2,2]="25-26"; guide_fd_grid[3,2]="22/33"; guide_fd_grid[4,2]="59";
+	            guide_fd_grid[5,2]="6"; guide_fd_grid[6,2]="-90"; guide_fd_grid[7,2]="6"; guide_fd_grid[8,2]=".7"; guide_fd_grid[9,2]="";
+    	} else {
+    		guide_fd_f_h_start[0]=20;
+	        guide_fd_grid[0,0]="DStrong: Landing Hitbox"; guide_fd_grid[1,0]="0"; guide_fd_grid[2,0]="1-2"; guide_fd_grid[3,0]="12/18"; guide_fd_grid[4,0]="20";
+	            guide_fd_grid[5,0]="10"; guide_fd_grid[6,0]="80"; guide_fd_grid[7,0]="8"; guide_fd_grid[8,0]=".5"; guide_fd_grid[9,0]="Frame advance to";
+	            																								guide_fd_grid[9,1]="see the rest";
+    	}
     break;
     
     case AT_NSPECIAL:
@@ -277,7 +284,7 @@ switch eff_attack {
     	var wootus11 = eff_attack == AT_USPECIAL_GROUND
         guide_fd_f_h_start[0]=64;
         guide_fd_grid[0,0]="Up Special: Sweet"; guide_fd_grid[1,0]="12"; guide_fd_grid[2,0]="13-14"; guide_fd_grid[3,0]="--"; guide_fd_grid[4,0]="--";
-            guide_fd_grid[5,0]="12"; guide_fd_grid[6,0]=-100 + 235 * wootus11; guide_fd_grid[7,0]=5 + 4 * wootus11; guide_fd_grid[8,0]=.6 + .2 * wootus11; guide_fd_grid[9,0]="";
+            guide_fd_grid[5,0]="12"; guide_fd_grid[6,0]=-100 + 245 * wootus11; guide_fd_grid[7,0]=6 + 3 * wootus11; guide_fd_grid[8,0]=.6 + .4 * wootus11; guide_fd_grid[9,0]="";
         guide_fd_f_h_start[1]=140;
         guide_fd_grid[0,1]="Normal"; guide_fd_grid[1,1]="--"; guide_fd_grid[2,1]="12-20"; guide_fd_grid[3,1]="29"; guide_fd_grid[4,1]="49";
             guide_fd_grid[5,1]="6"; guide_fd_grid[6,1]="45"; guide_fd_grid[7,1]="7"; guide_fd_grid[8,1]=".3"; guide_fd_grid[9,1]="";

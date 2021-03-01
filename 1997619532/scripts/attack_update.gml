@@ -75,6 +75,15 @@ if attack == AT_EXTRA_1 {
     }
 	 	
 	 } 
+	 
+	 if window == 2 {
+	 	if hsp > 0 {
+	 		spr_dir = 1 
+	 	}
+	 	if hsp < 0 {
+	 		spr_dir = -1
+	 	}
+	 }
 	//RAnBU
 	can_move = false
 		
@@ -226,8 +235,7 @@ if attack == AT_EXTRA_3 {
 if attack == AT_FSPECIAL {
     
     if has_hit && !hitpause {
-    	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 1);
-    	window_timer += 0.3
+    	window_timer += 0.5
     	hsp /= 1.14
     } else {
     	if free {
@@ -235,10 +243,8 @@ if attack == AT_FSPECIAL {
     		hsp /= 1.14
     		window_timer += 0.3
     		}
-    		set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 7);
     	}
     	if !free {
-    		set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 1);
     	}
     }
     
@@ -308,7 +314,7 @@ if window == 2 {
 
 if attack == AT_FSTRONG {
 	
-	if window < 5 && has_hit_player{
+	if window < 5 && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN{
 		hit_player_obj.x += ((x + (50 * spr_dir)) - hit_player_obj.x) / 10
 		hit_player_obj.y += ((y) - hit_player_obj.y) / 3
 	}

@@ -41,11 +41,11 @@ walljump_vsp = 8;
 max_fall = 10.5; //maximum fall speed without fastfalling
 fast_fall = 14; //fast fall speed
 gravity_speed = .50;			// Doc always has Mario Gravity
-hitstun_grav = .53;
+hitstun_grav = .51;
 knockback_adj = 1.0;			//the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 
-prat_land_time = 12;
+prat_land_time = 11;
 wave_land_time = 7;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .12; //grounded deceleration when wavelanding
@@ -212,6 +212,9 @@ fire_taunt_frames = 1;
 fire_taunt_sound = sound_get("melee_wack");
 fire_taunt_sound_frame = 1;
 
+fs_hit = 0;
+docscore = 0;
+
 // funny variables for phone thing
 prev_gravity_speed = gravity_speed;
 prev_hitstun_grav = hitstun_grav;
@@ -227,5 +230,8 @@ assistOffsetX = 10; //The horizontal distance they spawn from the player
 assistOffsetY = 0; //The vertical distance they spawn from the player
 assistGroundOnly = false; //Whether or not they are forced to the ground
 assistFloat = false; //Whether or not they stay in place vertically
+
+fs_char_chosen_final_smash = "custom";
+fs_char_portrait_y = 85;
 
 user_event(14);

@@ -104,6 +104,14 @@ if (state == PS_DOUBLE_JUMP){
 	sound_stop(sfx_dattack);
 }
 
+//walljump stuff
+if (state == PS_WALL_JUMP){
+	tornadoused = false
+	if (state_timer == 1){
+		sound_play(sfx_walljump)
+	}
+}
+
 //Reseting Down Air Counter
 if (!free){
 	dairtimeshit = 0

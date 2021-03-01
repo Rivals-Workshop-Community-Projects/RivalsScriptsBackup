@@ -72,7 +72,7 @@ switch(attack){
                 if window_timer != phone_window_end break;
             
             case 2:
-                var spd = 20;
+                var spd = 25;
                 var ang = point_direction(x, y, uspecial_target.x, uspecial_target.y);
                 hsp = lengthdir_x(spd, ang);
                 vsp = lengthdir_y(spd, ang);
@@ -168,7 +168,7 @@ if (attack == AT_BAIR){
 }
 }
 
-if (attack == AT_DATTACK && has_hit){
+if (attack == AT_DATTACK && has_hit && window == 3){
     can_jump = true;
 }
 
@@ -195,6 +195,9 @@ if attack == AT_EXTRA_1 {
         set_attack( AT_DSTRONG);
     } else if special_down {
         set_attack(AT_DSPECIAL);
+    } else if shield_down{
+        free = false;
+        set_state(PS_PARRY);
     }
 }
 
@@ -224,4 +227,48 @@ if has_rune("N"){
 
 if has_rune("O"){
     set_hitbox_value(AT_JAB, 1, HG_ANGLE, 320);
+}
+
+if (attack == 49) {
+    can_fast_fall = false;
+    can_move = false;
+    if (window == 1 && window_timer == 3){
+        sound_play(sound_get("PARRY"))
+
+    }
+
+    if (window == 3 && window_timer == 1 && has_hit_player) {
+        create_deathbox(
+            has_hit_id.x, // x
+            has_hit_id.y, // y
+            100, // w
+            200, // h
+            has_hit_id.player, // player
+            true, // free
+            1, // shape
+            3, // lifespan
+            2 // bg_type
+        );
+
+    }
+    if (window == 3 && window_timer == 1 && has_hit_player){
+    sound_play(sound_get("baby"))
+
+
+    } 
+    if window == 3 && window_timer < 20 && has_hit_player{
+        shake_camera( 50, 1)
+    }
+
+if window == 3 && window_timer == 15 && has_hit_player{
+     sound_play(sound_get("arrival"))
+    }
+
+if window < 3{
+    vsp = 0;
+    hsp = 0;
+}
+if window == 3{
+    vsp = 1.4
+}
 }

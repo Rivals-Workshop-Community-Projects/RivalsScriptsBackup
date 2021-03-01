@@ -487,7 +487,7 @@ if soultimer < -1 {
 		} 
 	}
 
-if soultimer > -300 && soultimer < -1  { 	
+if soultimer > -340 && soultimer < -1  { 	
 	
 	nearbyhitbox = collision_circle( soulx, souly - 10, 20, asset_get("pHitBox"), true, true ) 
 	if nearbyhitbox != noone{
@@ -505,7 +505,11 @@ if soultimer > -300 && soultimer < -1  {
 		    window_timer = 99
 		    hsp = 0
 		    vsp = -2
-                     set_state(PS_PRATFALL)
+		    nearbyhitbox.hitbox_timer -= 2
+		    nearbyhitbox.hitpause += 10
+		    nearbyhitbox.extra_hitpause += 10
+		    nearbyhitbox.image_xscale *= 2
+		    nearbyhitbox.image_yscale *= 2
                      x = soulx 
                      y = souly 
 
@@ -514,7 +518,7 @@ if soultimer > -300 && soultimer < -1  {
 	}
 }
 	
-if (y >= room_height - vsp) or ( x > room_width/2 + 700) or ( x < room_width/2 - 700) or (y <= vsp + 10) {
+if (y >= room_height - vsp) or ( x + hsp > room_width) or ( x + hsp < 0) or (y <= vsp + 10) {
 			outline_color = [0, 0, 0]
 	init_shader();
     spawn_hit_fx (x,y -30 , 302 )
@@ -528,7 +532,9 @@ y = souly
             state_timer = 99
 		    invincible = 0
 		    window_timer = 99
+		    move_cooldown[AT_DSPECIAL] = 0
 set_attack(AT_DSPECIAL)
+
 window = 4
 window_timer = 0
 	}

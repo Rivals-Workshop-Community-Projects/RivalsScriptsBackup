@@ -374,11 +374,13 @@ if attack == AT_DSPECIAL_2 {
             window_timer = 0;
             hsp = 0;
             vsp = 0;
-        } else if distance_to_point(target_player.x, target_player.y) < 5 && target_player.invincible = true && window_timer > 1 {
-            sound_play(asset_get("sfx_ell_fist_explode"));
-            spawn_hit_fx(x, y, 143);
+        } else if distance_to_point(target_player.x, target_player.y) < 5 && window_timer > 1 {
+            //sound_play(asset_get("sfx_ell_fist_explode"));
+            //spawn_hit_fx(x, y, 143);
+            destroy_hitboxes();
             window = 4;
             window_timer = 0;
+            prat_land_time = 40;
         }
         var spd = 12;
         if target_player != undefined {

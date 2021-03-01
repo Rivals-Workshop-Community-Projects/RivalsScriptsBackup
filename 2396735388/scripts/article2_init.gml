@@ -65,3 +65,5 @@ rotation_direction = 0;
 total_rotation = 0;
 
 spr_angle = 0;
+
+original_direction = 0;

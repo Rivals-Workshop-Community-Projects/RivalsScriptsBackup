@@ -2,6 +2,9 @@ x = round(x);
 y = round(y);
 
 
+// article_update, or init?
+y = clamp(y, 0, room_height - 10);
+
 
 switch(state){
 	

@@ -91,5 +91,5 @@ set_hitbox_value(AT_DAIR, 3, HG_BASE_HITPAUSE, 20);
 set_hitbox_value(AT_DAIR, 3, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_DAIR, 3, HG_VISUAL_EFFECT, hit_sprites[3]);
 set_hitbox_value(AT_DAIR, 3, HG_VISUAL_EFFECT_Y_OFFSET, 20);
-set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(AT_DAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_DAIR, 3, HG_HIT_LOCKOUT, 10);

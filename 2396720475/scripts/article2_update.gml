@@ -6,6 +6,7 @@ image_alpha = .1;
 if (state_timer == 1){
 	state = 1;
 
+	sound_play(sound_get("uspecial_sfx"));
 	var travel = 20;
 	
 	hsp = (travel * cos(player_id.angle));
@@ -63,7 +64,8 @@ if (state == 1){
 		ignores_walls = true;
 		state_timer = 900;
 	}
-	
+
+/*
 	with (oPlayer){
 		if (place_meeting(x, y, other)){
 			if (player != other.player){
@@ -81,6 +83,11 @@ if (state == 1){
 				}
 			}
 		}
+	}
+*/
+	
+	if (vsp == 0 && hsp == 0 && !hit_wall){
+		state = 4;
 	}
 }
 

@@ -7,7 +7,7 @@ set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"));
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 11);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 13);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, sound_get("nspecialstart"));
@@ -49,7 +49,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 0);
-set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 25);
+set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 15);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 109);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("nspecialhitsfx"));
 

@@ -165,7 +165,7 @@ switch(attack){
         
         if (window < 5){
             var move_type = (window == 4 && window_timer == phone_window_end);
-            if has_hit_player with melee_hit_player ustrongDrag(move_type, other);
+            if has_hit_player && melee_hit_player.state_cat == SC_HITSTUN with melee_hit_player ustrongDrag(move_type, other);
             if has_hit_ball with melee_hit_ball ustrongDrag(move_type, other);
         }
         
@@ -405,7 +405,7 @@ switch(attack){
                 if (window_timer == 1){
                     sound_play(asset_get("sfx_ori_ustrong_charge"));
                     sound_play(sfx_rev[1]);
-                    vsp = -5;
+                    vsp = -5 * (dspecial_air_free ? 1 : 2);
                     ground_bounce = false;
                 }
                 if (window_timer == phone_window_end){
@@ -418,7 +418,7 @@ switch(attack){
                 }
                 break;
             case 2:
-            	if !was_parried && (!free || (has_hit && !hitpause)){
+            	if !was_parried && (/*!free || */(has_hit && !hitpause)){
             		setWindow(3);
             		vsp = -10;
             		destroy_hitboxes();
@@ -426,6 +426,7 @@ switch(attack){
             		set_window_value(AT_DSPECIAL_AIR, 3, AG_WINDOW_TYPE, ground_bounce ? 7 : 1);
             		if !free sound_play(landing_lag_sound);
             	}
+            	else if !free && !hitpause set_attack_value(AT_DSPECIAL_AIR, AG_CATEGORY, 1);
                 break;
             case 3:
             	if was_parried{
@@ -436,10 +437,7 @@ switch(attack){
             		can_jump = true;
             		can_special = true;
             	}
-            	if !free{
-            		vsp = -10;
-            		window_timer = 0;
-            	}
+            	else if !free set_attack_value(AT_DSPECIAL_AIR, AG_CATEGORY, 1);
                 break;
         }
         

@@ -738,6 +738,21 @@ if zvoice == 1{
             }
      }
      
+             if get_player_color(player) == (8) {
+     	if (introTimer2 == 0 && introTimer == 11) {
+            	      
+            	sound_play(sound_get("intro"));
+            }
+     }
+     
+                  if get_player_color(player) == (7) {
+     	if (introTimer2 == 0 && introTimer == 11) {
+            	      
+            	sound_play(sound_get("bruh"));
+            }
+     }
+     
+     
       if get_player_color(player) == (4) {
      	if (introTimer2 == 0 && introTimer == 11) {
             	      
@@ -750,13 +765,9 @@ if zvoice == 1{
             	      
             	sound_play(sound_get("intro"));
             }
-            
-            
-   
-    
-   
-            
      }
+     
+     
 }
 
 
@@ -1518,4 +1529,36 @@ if state == PS_DASH && get_player_color(player) == 5 && zvoice == 1 {
 
 
 
-
+if get_player_color(player) == 8 {
+	outline_color = [19, 15, 28]
+   if visible {  
+   	if !hitpause {
+	if get_gameplay_time() % 40 == 0	 {
+   	set_color_profile_slot(get_player_color(player),0, 255, 196, 244); 
+	} 
+	
+	if get_gameplay_time() % 40 == 26{
+	set_color_profile_slot(get_player_color(player),0, 0, 191, 255 );	
+	}
+	
+    if get_gameplay_time() % 40 == 13 {
+	set_color_profile_slot(get_player_color(player),0, 160, 195, 250 );	
+	}
+   	}
+   	
+   	if hitpause {
+	if get_gameplay_time() % 8 == 0	 {
+   	set_color_profile_slot(get_player_color(player),0, 255, 196, 244); 
+	} 
+	
+	if get_gameplay_time() % 8 == 6{
+	set_color_profile_slot(get_player_color(player),0, 0, 191, 255 );	
+	}
+	
+    if get_gameplay_time() % 8 == 3 {
+	set_color_profile_slot(get_player_color(player),0, 160, 195, 250 );	
+	}
+   	}
+	}
+    init_shader();	 
+}

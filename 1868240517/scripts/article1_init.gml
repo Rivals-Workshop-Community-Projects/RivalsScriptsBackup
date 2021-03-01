@@ -23,6 +23,18 @@ im_dex = 0;
 player_code3 = 0;
 player_color = 0;
 
+x_init = x;
+y_init = y;
+float_count = 0;
+if has_rune("C") {
+    float_inc = 4;
+    mag = 60;
+} else {
+    float_inc = 1;
+    mag = 6;
+}
+
+
 sprite_index = wall_spr;
 hurtbox_spr = sprite_get("dspecial_wall_hurt");
 alpha = image_alpha;
@@ -34,7 +46,8 @@ state = 0;
 state_timer = 0;
 full_timer = 0;
 stay_timer = 0;
-build_time = 10;
+build_time = 2;
+dest_time = 16;
 
 bounce_timer = 0;
 bounce_time = 3;

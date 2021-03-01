@@ -10,6 +10,12 @@ zipping = false;
 zip_hit = false;
 can_zoop = false;
 
+usedFspecial = false;
+usedUspecial = false;
+usedUspecial_Again = 0;
+chargedash = 0;
+
+
 if (instance_exists(needleplatform)){
 	instance_destroy(needleplatform);
 }

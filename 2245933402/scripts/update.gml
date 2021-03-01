@@ -283,3 +283,52 @@ if ostyle != 5 {
 		take_damage (player, -1, -1)
 	} 
 }
+
+
+
+if get_player_color(player) == 7 {
+		outline_color = [29, 25, 38]
+   if visible {  
+   	if !hitpause {
+	if get_gameplay_time() % 40 == 0 {
+   	set_color_profile_slot(get_player_color(player),0, 255, 196, 244); 
+	} 
+	
+	if get_gameplay_time() % 40 == 26{
+	set_color_profile_slot(get_player_color(player),0, 0, 191, 255 );	
+	}
+	
+    if get_gameplay_time() % 40 == 13 {
+	set_color_profile_slot(get_player_color(player),0, 160, 195, 250 );	
+	}
+	
+	if get_gameplay_time() % 60 == 0	 {
+   	set_color_profile_slot(get_player_color(player),2, 255, 196, 244); 
+	} 
+	
+	if get_gameplay_time() % 60 == 40{
+	set_color_profile_slot(get_player_color(player),2, 0, 191, 255 );	
+	}
+	
+    if get_gameplay_time() % 60 == 20{
+	set_color_profile_slot(get_player_color(player),2, 160, 195, 250 );	
+	}
+	
+   	}
+   	
+   	if hitpause {
+	if get_gameplay_time() % 8 == 0	 {
+   	set_color_profile_slot(get_player_color(player),0, 255, 196, 244); 
+	} 
+	
+	if get_gameplay_time() % 8 == 6{
+	set_color_profile_slot(get_player_color(player),0, 0, 191, 255 );	
+	}
+	
+    if get_gameplay_time() % 8 == 3 {
+	set_color_profile_slot(get_player_color(player),0, 160, 195, 250 );	
+	}
+   	}
+	}
+    init_shader();	 
+}

@@ -5,7 +5,7 @@ if (get_training_cpu_action() != CPU_FIGHT && !playtest && !("is_ai" in self)) {
 	practice = true;
 }
 
-if(state_cat == SC_AIR_NEUTRAL&&glide_energy>0&&!glided){
+/*if(state_cat == SC_AIR_NEUTRAL&&glide_energy>0&&!glided){
     if((jump_pressed&&down_down)||(jump_down&&vsp>=0)){
         if((state!=PS_FIRST_JUMP||state_timer>5)){
             if(state==PS_DOUBLE_JUMP&&state_timer<1){
@@ -22,7 +22,7 @@ if(state_cat == SC_AIR_NEUTRAL&&glide_energy>0&&!glided){
             }
         }
     }
-}
+}//*/
 
 if(state==PS_DOUBLE_JUMP&&state_timer<1){
     stored_glide_hsp=previous_hsp;
@@ -411,16 +411,16 @@ switch guide_textbox {
 		guide_readtext[7]="(press special to go back)";
 	break;
 	case 51:
-		guide_readtext[0]="Entering glide can be entered by either holding jump";
-		guide_readtext[1]="past its apex or pressing jump while down is held. While";
-		guide_readtext[2]="in glide, point the stick in the direction you want to go.";
+		guide_readtext[0]="Entering glide can be done by using nair and other";
+		guide_readtext[1]="moves that lead into glide. While in glide, point the";
+		guide_readtext[2]="stick in the direction you want to go.";
 		guide_readtext[4]="If you launch people into the ring created by nspecial,"; 
 		guide_readtext[5]="they are grabbed and hit in the direction its facing."; 
 		guide_readtext[6]="This will also create a wind collumn / row depending on";
 		guide_readtext[7]="where it was facing.";
 		guide_readtext[9]="If you are in glide and in the wind, your strongs are";
 		guide_readtext[10]="empowered and you accelerate faster.";
-		guide_readtext[12]="The ring can be rotated using fspecial.";
+		guide_readtext[12]="Rotate the ring with nspecial while the ring is out";
 	break;
 	//in- depth
 	case 100:
@@ -432,9 +432,9 @@ switch guide_textbox {
 	break;
 	case 101:
 		guide_readtext[0]="The main thing about Zephrie is their unique glide.";
-		guide_readtext[2]="Entering glide can be entered by either holding jump";
-		guide_readtext[3]="past its apex or pressing jump while down is held. While";
-		guide_readtext[4]="in glide, point the stick in the direction you want to go.";
+		guide_readtext[2]="Entering glide can be done by using nair and other";
+		guide_readtext[3]="moves that lead into glide. While in glide, point the";
+		guide_readtext[4]="stick in the direction you want to go.";
 		guide_readtext[5]="Or, you can change the glide controls by pressing taunt";
 		guide_readtext[6]="while holding up, which makes holding right rotate you";
 		guide_readtext[7]="CW and left rotate you CCW.";
@@ -451,17 +451,24 @@ switch guide_textbox {
 		guide_readtext[6]="will be put into an epowered strong.";
 		guide_readtext[7]="If you launch someone into the ring, they will be";
 		guide_readtext[8]="grabbed and then launched in the direction the ring";
-		guide_readtext[9]="is facing. The ring can be rotated by fspecial in";
-		guide_readtext[10]="order to face up / down. When someone is launched";
-		guide_readtext[11]="by the ring, a wind row / column is created";
-		guide_readtext[12]="depending on which direction the ring was facing.";
+		guide_readtext[9]="is facing. You can rotate the ring by using nspecial";
+		guide_readtext[10]="while the ring is already out and it will always go";
+		guide_readtext[11]="like: normal -> up -> opposite -> down -> repeat.";
+		guide_readtext[12]="";
 	break;
 	case 103:
-		guide_readtext[0]="If you are in glide and in the wind, your strongs are";
-		guide_readtext[1]="empowered and you accelerate faster.";
-		guide_readtext[2]="The ring stays around for 10 seconds before";
-		guide_readtext[4]="disappearing, and the wind stays for 7.5.";
-		guide_readtext[6]="Nspecial's cooldown is 5 seconds.";
+		guide_readtext[0]="When the ring launches an enemy, a wind column/row";
+		guide_readtext[1]="is created based on whther it was facing";
+		guide_readtext[2]="horizontally or vertically";
+		guide_readtext[3]="This strip of wind makes you automatically accelerate";
+		guide_readtext[4]="while in glide and heightens its speed cap from 11 to 15.";
+		guide_readtext[5]="The other thing the wind does is while you're in it, any";
+		guide_readtext[6]="strongs you use are booted.";
+		guide_readtext[8]="And now for some misc, but important values:";
+		guide_readtext[9]="The ring stays around for 10 seconds before";
+		guide_readtext[10]="disappearing, and the wind strip stays for 7.5.";
+		guide_readtext[11]="If the ring is parried or is destroyed by plasma field,";
+		guide_readtext[12]="nspecial can not be used for 5 seconds.";
 	break;
 	//misc
 	case 150:
@@ -475,7 +482,62 @@ switch guide_textbox {
 	break;
 	//changelog
 	case 250:
-		guide_readtext[0]="Come back after a patch.";
+		guide_readtext[0]="Patch 1.1:";
+		guide_readtext[2]="= Removed manual glide entry (holding jump while going";
+		guide_readtext[3]="   down and pressing jump while holding down)";
+		guide_readtext[5]="+ Fair startup 9 -> 6";
+		guide_readtext[6]="+ Fair endlag 12 ->10";
+		guide_readtext[7]="+ Fair landing lag 6 -> 4";
+		guide_readtext[8]="- Bair early hit active frames 8-10 -> 8-9";
+		guide_readtext[9]="- Bair late hit active frames 11-25 -> 10-19";
+		guide_readtext[10]="+ Bair endlag 12 -> 9";
+		guide_readtext[11]="+ Bair landing lag 6 -> 4";
+		guide_readtext[12]="+ Bair faf 43 -> 34";
+	break;
+	case 251:
+		guide_readtext[0]="+ Bair early hit kbs .6 -> .5";
+		guide_readtext[1]="+ Dair kbs .6 -> .45";
+		guide_readtext[2]="+ Nair endlag 12 -> 10";
+		guide_readtext[3]="+ Nair landing lag 10 -> 4";
+		guide_readtext[4]="";
+		guide_readtext[5]="= Nspecial mini-rework:";
+		guide_readtext[6]="  * fspecial no longer rotates ring";
+		guide_readtext[7]="  * while no ring is out, nspecial acts like it did before";
+		guide_readtext[8]="  * while ring is out, nspecial rotates the ring based on";
+		guide_readtext[9]="     which was it initially going normal -> up ->";
+		guide_readtext[10]="     opposite -> down -> repeat with a 10 frame cooldown";
+		guide_readtext[11]="  * if ring is parried, nspecial gets a 5 second cooldown";
+		guide_readtext[12]="";
+	break;
+	case 252:
+		guide_readtext[0]="+ Uspecial endlag 29 -> 26";
+		guide_readtext[1]="+ Uspecial aerial sweetspot bkb 5 -> 6";
+		guide_readtext[2]="+ Uspecial grounded sweetspot angle 135 (45) -> 145 (35)";
+		guide_readtext[3]="+ Uspecial grounded sweetspot kbs .8 -> 1";
+		guide_readtext[4]="= Dspecial vertical speed cap on entry no cap -> 5 downward";
+		guide_readtext[5]="- Dspecial speed cap on exit (horizontal / vertical) 7 / 5 -> 5 / 4.5";
+		guide_readtext[6]="";
+		guide_readtext[7]="- strongs stop in place when parried";
+		guide_readtext[8]="+ all strongs can no longer land in the time after the";
+		guide_readtext[9]="   button is released and the hitbox starts";
+		guide_readtext[10]="+ Fstrong can no longer land while active";
+		guide_readtext[11]="+ Empowered Dstrong now has a landing hitbox with";
+		guide_readtext[12]="   angle 80, bkb 8, and kbs .5";
+	break;
+	case 253:
+		guide_readtext[0]="= Ring no longer interacts strangely with other articles";
+		guide_readtext[1]="   that detect hitboxes";
+		guide_readtext[2]="= Ring now properly goes away when inside plasma field";
+		guide_readtext[3]="   (it also applies the same cooldown as parrying it)";
+		guide_readtext[4]="= Strongs now have the flash effect on zephrie rather";
+		guide_readtext[5]="   than just the little ring";
+		guide_readtext[6]="";
+		guide_readtext[7]="";
+		guide_readtext[8]="";
+		guide_readtext[9]="";
+		guide_readtext[10]="";
+		guide_readtext[11]="";
+		guide_readtext[12]="";
 	break;
 	/*case 251:
 		guide_readtext[0]="All previous patch notes are on the steam page";
@@ -512,7 +574,7 @@ switch guide_textbox {
 	case 200: 
 		return true; 
 	break;
-	case 250: 
+	case 253: 
 		return true; 
 	break;
 	default:

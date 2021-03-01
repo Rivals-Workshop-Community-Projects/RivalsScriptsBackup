@@ -27,6 +27,7 @@ set_window_value(AT_DTILT, 4, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_DTILT, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DTILT, 4, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_DTILT, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
+set_window_value(AT_DTILT, 4, AG_MUNO_WINDOW_EXCLUDE, 2);
 // set_window_value(AT_DTILT, 4, AG_WINDOW_HAS_SFX, 1);
 // set_window_value(AT_DTILT, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
 

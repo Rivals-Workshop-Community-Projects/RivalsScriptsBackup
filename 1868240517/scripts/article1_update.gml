@@ -1,7 +1,6 @@
-//article1_update
+//article1_update, wall
 
 state_timer ++;
-
 if (init == 0) {
     init = 1;
     
@@ -79,6 +78,8 @@ if player_color == 3 && glitch_switch = glitch_switch_frame {
 	
 } else glitch_switch++;
 
+float_count += float_inc;
+y = y_init + dcos(float_count)*mag;
 
 if (state == 0) { //building
     im_dex = (state_timer/build_time)*im_num;
@@ -90,7 +91,7 @@ if (state == 0) { //building
         full_timer = 0;
         hit_count = 0;
         hitting = 0;
-         sprite_index = idle_spr;
+        sprite_index = idle_spr;
         im_num = sprite_get_number(idle_spr);
     }
 }
@@ -99,23 +100,23 @@ var stay_time = 50000;
 if (state == 1) {
     switch hit_count {
         case 0:
-             sprite_index = idle_spr;
+            sprite_index = idle_spr;
             im_num = sprite_get_number(idle_spr);
             bounce_sprite = bounce_spr;
             break;
         case 1:
-             sprite_index = wall_spr1;
+            sprite_index = wall_spr1;
             im_num = sprite_get_number(wall_spr1);
             bounce_sprite = bounce_spr1;
             break;
         case 2:
-             sprite_index = wall_spr2;
+            sprite_index = wall_spr2;
             im_num = sprite_get_number(wall_spr2);
             bounce_sprite = bounce_spr2;
             break;
     }
     im_dex = (state_timer*.2) % im_num;
-     image_index = im_dex;
+    image_index = im_dex;
     has_bounced = 0;
     inst = instance_place(x,y,asset_get("pHitBox"));
     insta = instance_place(x,y,asset_get("oPlayer"));
@@ -136,7 +137,7 @@ if (state == 1) {
     if (inster != noone && inster.player_id == player_id) {
         with (inster) {
         	spr_dir = other.spr_dir;
-            hsp = other.spr_dir*(abs(hsp)+hitSpeed*3);
+            hsp = other.spr_dir*(abs(hsp)+hitSpeed*2);
             other.has_bounced = 1;
             hit_op = 1;
             if (other.hitting == 0) {
@@ -170,18 +171,20 @@ if (state == 1) {
         bounce_timer = 0;
         sound_play(bounce_sfx);
     }
+    if has_rune("F") hit_count = 0;
     if (hit_count > 2 || stay_timer == stay_time) {
-         sprite_index = dest_spr;
-        im_num = sprite_get_number(dest_spr);
+    	im_num = sprite_get_number(dest_spr);
+        sprite_index = dest_spr;
         state = 2;
     }
     stay_timer++;
 }
 
 if (state == 2) {
-    im_dex = (build_time - full_timer)/build_time*im_num;
-     image_index = im_dex;
-    if (full_timer == build_time) {
+    im_dex = (dest_time - full_timer)/dest_time*im_num;
+    image_index = im_dex;
+    if (full_timer == dest_time) {
+    	with player_id move_cooldown[AT_DSPECIAL] =  wall_cooldown;
         instance_destroy();
         exit;
     }

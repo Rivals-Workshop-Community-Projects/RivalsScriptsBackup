@@ -13,22 +13,40 @@ if infernal2 >= 300 && get_gameplay_time()  % 10 > 5{
     draw_sprite(sprite_get("infernalfull3"), 0, temp_x + 26, temp_y - 6 );
 }
 
-if guntier == 1 {
+if gunname == 0 {
   draw_sprite(sprite_get("suitcase1"), 0, temp_x + 26, temp_y - 38 );  
 }
 
-if guntier == 2 {
+if gunname != 0 {
   draw_sprite(sprite_get("suitcase2"), 0, temp_x + 26, temp_y - 38 );  
 }
 
-if guntier == 3 {
-    
+
+
+if gunname >= 1 && gunname <= 3 && infernal2 >= 100 {
+      draw_sprite(sprite_get("suitcase3"), 0, temp_x + 26, temp_y - 38 );  
     if get_gameplay_time()  % 10 < 5{
         draw_sprite(sprite_get("suitcase4"), 0, temp_x + 26, temp_y - 38 );  
     }
-  draw_sprite(sprite_get("suitcase3"), 0, temp_x + 26, temp_y - 38 );  
+
 }
 
+if gunname >= 4 && gunname <= 7 && infernal2 >= 200 {
+      draw_sprite(sprite_get("suitcase3"), 0, temp_x + 26, temp_y - 38 );  
+    if get_gameplay_time()  % 10 < 5{
+        draw_sprite(sprite_get("suitcase4"), 0, temp_x + 26, temp_y - 38 );  
+    }
+  
+}
+
+
+if gunname >= 8 && infernal2 >= 300 {
+      draw_sprite(sprite_get("suitcase3"), 0, temp_x + 26, temp_y - 38 );  
+    if get_gameplay_time()  % 10 < 5{
+        draw_sprite(sprite_get("suitcase4"), 0, temp_x + 26, temp_y - 38 );  
+    }
+
+}
 
 
  if get_player_color(player) == 1 && hunter == 1 && gunname == 0{

@@ -17,7 +17,7 @@ monoTimer ++
 
 obj_stage_main.monoX -= 1
 
-if -127 > obj_stage_main.monoX {
+if -160 > obj_stage_main.monoX {
 obj_stage_main.player_death = -4
 instance_destroy()
 }

@@ -155,19 +155,6 @@ if introtimer > 0 {
   
 ///Fuki
 
-    if hit_player_obj.souldmg == 0  {
-      if introhit = -1 && introtimer < 150 {
-           draw_debug_text(temp_x + 24,temp_y - 28,"I don not like that joke.");
-      }
-      
-        if introhit = 1{
-           draw_debug_text(temp_x + 44,temp_y - 68,"Not taking care");
-            draw_debug_text(temp_x + 46,temp_y - 52,"of the dojo ?");
-
-      }
-      
-    }  
-  
   
 }
 

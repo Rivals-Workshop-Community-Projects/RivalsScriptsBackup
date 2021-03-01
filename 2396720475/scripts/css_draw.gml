@@ -46,9 +46,9 @@ image_index = color;
 				case 0:
 			name = " 1: Tomo"; 
 			var position = 0;
-			ColorPrev = make_color_rgb(116, 227, 148);
-			ColorNext = make_color_rgb(92, 154, 242 );
-			ColorNextNext = make_color_rgb(2214, 68, 92);
+			ColorPrev = make_color_rgb(242, 191, 212);
+			ColorNext = make_color_rgb(57, 116, 204 );
+			ColorNextNext = make_color_rgb(138, 32, 47);
 			if (path_position == 0 && path_scale == 0){
 				path_position = 1;
 			}
@@ -57,9 +57,9 @@ image_index = color;
 				case 1: 
 			name = " 2: Blueberry"; 
 			var position = 1;
-			ColorPrev = make_color_rgb(255, 103, 112);
-			ColorNext = make_color_rgb(214, 68, 92);
-			ColorNextNext = make_color_rgb(92, 204, 92);
+			ColorPrev = make_color_rgb(212, 51, 78);
+			ColorNext = make_color_rgb(138, 32, 47);
+			ColorNextNext = make_color_rgb(82, 181, 82);
 			if (path_position == 1 && path_scale == 1){
 				path_position = 2;
 			}
@@ -68,20 +68,20 @@ image_index = color;
 				case 2: 
 			name = " 3: Pomegranate"; 
 			var position = 2;
-			ColorPrev = make_color_rgb(92, 154, 242 );
-			ColorNext = make_color_rgb(92, 204, 92);
-			ColorNextNext = make_color_rgb(114, 92, 143 );
+			ColorPrev = make_color_rgb(57, 116, 204 );
+			ColorNext = make_color_rgb(82, 181, 82);
+			ColorNextNext = make_color_rgb(94, 75, 117  );
 			if (path_position == 2 && path_scale == 0){
 				path_position = 3;
 			}
 				break;
 			
 				case 3: 
-			name = " 4: Youngling"; 
+			name = " 4: Melon"; 
 			var position = 3;
-			ColorPrev = make_color_rgb(255, 112, 156);
-			ColorNext = make_color_rgb(114, 92, 143 );
-			ColorNextNext = make_color_rgb(177, 79, 214);
+			ColorPrev = make_color_rgb(138, 32, 47);
+			ColorNext = make_color_rgb(94, 75, 117  );
+			ColorNextNext = make_color_rgb(132, 46, 163);
 			if (path_position == 3 && path_scale == 0){
 				path_position = 4;
 			}
@@ -90,9 +90,9 @@ image_index = color;
 				case 4: 
 			name = " 5: Blackberry"; 
 			var position = 4;
-			ColorPrev = make_color_rgb(92, 204, 92);
-			ColorNext = make_color_rgb(177, 79, 214);
-			ColorNextNext = make_color_rgb(166, 172, 214);
+			ColorPrev = make_color_rgb(82, 181, 82);
+			ColorNext = make_color_rgb(132, 46, 163);
+			ColorNextNext = make_color_rgb(97, 106, 150);
 			if (path_position == 4 && path_scale == 0){
 				path_position = 5;
 			}
@@ -101,8 +101,8 @@ image_index = color;
 				case 5: 
 			name = " 6: Eggplant"; 
 			var position = 5;
-			ColorPrev = make_color_rgb(114, 92, 143 );
-			ColorNext = make_color_rgb(166, 172, 214);
+			ColorPrev = make_color_rgb(94, 75, 117);
+			ColorNext = make_color_rgb(97, 106, 150);
 			ColorNextNext = make_color_rgb(211, 226, 154);
 			if (path_position == 5 && path_scale == 0){
 				path_position = 6;
@@ -112,9 +112,9 @@ image_index = color;
 				case 6: 
 			name = " 7: Abyssalmato"; 
 			var position = 6;
-			ColorPrev = make_color_rgb(177, 79, 214);
+			ColorPrev = make_color_rgb(132, 46, 163);
 			ColorNext = make_color_rgb(211, 226, 154);
-			ColorNextNext = make_color_rgb(255, 102, 0);
+			ColorNextNext = make_color_rgb(230, 92, 0);
 			if (path_position == 6 && path_scale == 0){
 				path_position = 7;
 			}
@@ -128,9 +128,9 @@ image_index = color;
 				}
 			}
 			var position = 7;
-			ColorPrev = make_color_rgb(166, 172, 214);
-			ColorNext = make_color_rgb(255, 102, 0);
-			ColorNextNext = make_color_rgb(251, 255, 48);
+			ColorPrev = make_color_rgb(97, 106, 150);
+			ColorNext = make_color_rgb(230, 92, 0);
+			ColorNextNext = make_color_rgb(214, 217, 22);
 			if (path_position == 7 && path_scale == 0){
 				path_position = 8;
 			}
@@ -140,8 +140,8 @@ image_index = color;
 			name = " 9: Pumpkin"; 
 			var position = 8;
 			ColorPrev = make_color_rgb(211, 226, 154);
-			ColorNext = make_color_rgb(251, 255, 48);
-			ColorNextNext = make_color_rgb(116, 227, 148);
+			ColorNext = make_color_rgb(214, 217, 22);
+			ColorNextNext = make_color_rgb(104, 208, 212);
 			if (path_position == 9 && path_scale == 0){
 				path_position = 10;
 			}
@@ -150,48 +150,50 @@ image_index = color;
 				case 9: 
 			name = " 10: Lemon"; 
 			var position = 9;
-			ColorPrev = make_color_rgb(255, 102, 0);
-			ColorNext = make_color_rgb(116, 227, 148);
-			ColorNextNext = make_color_rgb(255, 103, 112);
+			ColorPrev = make_color_rgb(230, 92, 0);
+			ColorNext = make_color_rgb(104, 208, 212);
+			ColorNextNext = make_color_rgb(85, 194, 116);
 			if (path_position == 1 && path_scale == 0){
 				path_position = 2;
 			}
 			break;
 			
 				case 10: 
-			name = " 11: Pogg"; 
+			name = " 11: Cotton Candy"; 
 			var position = 10;
-			ColorPrev = make_color_rgb(251, 255, 48);
-			ColorNext = make_color_rgb(255, 103, 112);
-			ColorNextNext = make_color_rgb(255, 169, 195);
+			ColorPrev = make_color_rgb(214, 217, 22);
+			ColorNext = make_color_rgb(85, 194, 116);
+			ColorNextNext = make_color_rgb(222, 95, 131 );
 			if (path_position == 1 && path_scale == 0){
 				path_position = 2;
 			}
 			break;	
 			
 				case 11: 
-			name = " 12: Date.GIF"; 
+			name = " 12: Pogg"; 
 			var position = 11;
-			ColorPrev = make_color_rgb(219, 115, 94);
-			ColorNext = make_color_rgb(255, 169, 195);
-			ColorNextNext = make_color_rgb(111, 237, 220);
+			ColorPrev = make_color_rgb(104, 208, 212);
+			ColorNext = make_color_rgb(222, 95, 131 );
+			ColorNextNext = make_color_rgb(242, 191, 212);
 			if (path_position == 1 && path_scale == 0){
 				path_position = 2;
 			}
 			break;
 			
 				case 12: 
-			name = "13: Torch"; 
+			name = " 13: Puff"; 
 			var position = 12;	
-			ColorPrev = make_color_rgb(182, 73, 218);
-			ColorNext = make_color_rgb(182, 73, 218);			
+			ColorPrev = make_color_rgb(85, 194, 116);
+			ColorNext = make_color_rgb(242, 191, 212);		
+			ColorNextNext = make_color_rgb(212, 51, 78);	
 				break;	
 			
 				case 13: 
-			name = "14: Bagworm"; 
+			name = " 14: Datemato"; 
 			var position = 13;
-			ColorPrev = make_color_rgb(182, 73, 218);
-			ColorNext = make_color_rgb(182, 73, 218);
+			ColorPrev = make_color_rgb(222, 95, 131 );
+			ColorNext = make_color_rgb(212, 51, 78);
+			ColorNextNext = make_color_rgb(57, 116, 204);
 				break;	
 				
 				case 14: 
@@ -199,6 +201,7 @@ image_index = color;
 			var position = 14;
 			ColorPrev = make_color_rgb(182, 73, 218);
 			ColorNext = make_color_rgb(182, 73, 218);
+			ColorNextNext = make_color_rgb(111, 237, 220);
 				break;	
 		}
 	//break;
@@ -208,13 +211,13 @@ image_index = color;
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
-draw_text_color(x + 10, y - 6, "Version 1.0.0", c_white, c_white, c_white, c_white, 1);
+draw_text_color(x + 10, y - 6, "Version 1.3.0", c_white, c_white, c_white, c_white, 1);
 
 // Date Display
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_right);
 draw_set_valign(fa_top);
-draw_text_color(x + 210, y - 6, "February 15th, 2021", c_white, c_white, c_white, c_white, 1);
+draw_text_color(x + 210, y - 6, "February 24th, 2021", c_white, c_white, c_white, c_white, 1);
 
 
 if (image_alpha == 0){

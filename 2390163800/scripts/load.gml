@@ -56,3 +56,4 @@ sprite_change_offset("kirby_hurt", 42, 90);
 sprite_change_offset("dest_idle", 52, 136);
 sprite_change_offset("dest_grab", 150, 136);
 sprite_change_offset("dest_car", 24, 30);
+sprite_change_offset("gpsfinalsmash", 58, 135);

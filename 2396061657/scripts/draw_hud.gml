@@ -12,16 +12,24 @@ if ("DG_chat_num" in self && DG_chat_num < 1){
 
 	// Draws the current Grab Meter
 	if ("GrappleMode" in self){
-		draw_sprite_ext(sprite_get("meter"), 4, temp_x + 40, temp_y - 2, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(sprite_get("meter"), 4, temp_x + 60, temp_y - 2, 1, 1, 0, c_white, 1);
 
-		draw_sprite_part(sprite_get("meter"), GrappleMode, 0, 0, LoveMeter[GrappleMode]/2, 8, temp_x + 10, temp_y - 6);
+		draw_sprite_part(sprite_get("meter"), GrappleMode, 0, 0, LoveMeter / 2, 8, temp_x + 30, temp_y - 6);
 		if (GrappleMode == 0){
 			draw_sprite_ext(sprite_get("gifts"), GrappleMode, temp_x + 4, temp_y - 12, 1, 1, 0, c_white, 1);
 		}
 		else{
 			draw_sprite_ext(sprite_get("gifts"), GrappleMode, temp_x + 4, temp_y - 8, 1, 1, 0, c_white, 1);			
 		}
-		draw_debug_text(temp_x + 12, temp_y - 8, string(LoveMeter[GrappleMode]));
+		if (LoveMeter >= 100){
+			draw_debug_text(temp_x + 8, temp_y - 8, string(LoveMeter));
+		}
+		if (LoveMeter < 100 && LoveMeter != 0){
+			draw_debug_text(temp_x + 16, temp_y - 8, string(LoveMeter));
+		}
+		if (LoveMeter == 0){
+			draw_debug_text(temp_x + 24, temp_y - 8, string(LoveMeter));
+		}
 	}
 }
 

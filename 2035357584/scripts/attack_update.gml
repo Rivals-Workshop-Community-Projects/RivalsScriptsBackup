@@ -37,7 +37,7 @@ if(attack == AT_DSTRONG_G){
 if(attack == AT_FSPECIAL_G){
     throw_speed = THROW_SPEED_SIDE;
     
-    if(window == 2 && window_timer >= get_hitbox_value(AT_FSPECIAL_G,1,HG_WINDOW_CREATION_FRAME)){
+    if(window == 1 && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)){
         has_grenade = false;
     }
     
@@ -53,7 +53,7 @@ if(attack == AT_FSPECIAL_G){
 if(attack == AT_DSPECIAL_G){
     throw_speed = THROW_SPEED_DOWN;
     
-    if(window == 2){
+    if(window == 2 && window_timer >= get_hitbox_value(AT_DSPECIAL_G, 1, HG_WINDOW_CREATION_FRAME)){
         has_grenade = false;
     }
     
@@ -78,7 +78,7 @@ if(attack == AT_DSPECIAL_G){
 if(attack == AT_USPECIAL_G){
     throw_speed = THROW_SPEED_UP;
     
-    if(window == 2 && window_timer >= get_hitbox_value(AT_USPECIAL_G,1,HG_WINDOW_CREATION_FRAME)){
+    if(window == 1 && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)){
         has_grenade = false;
     }
     

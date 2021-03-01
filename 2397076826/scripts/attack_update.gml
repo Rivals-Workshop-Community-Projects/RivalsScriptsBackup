@@ -4,18 +4,65 @@
 if visible {
 
 
-if attack == AT_DSTRONG or attack == AT_USTRONG {
-	set_attack (AT_FSTRONG)
+if !hitpause {
+if attack == AT_DSTRONG or attack == AT_USTRONG or attack == AT_FSTRONG {
+	
+	if cloneout == 1 {
+		set_num_hitboxes(AT_DSTRONG, 4);
+		set_num_hitboxes(AT_USTRONG, 4);
+		set_num_hitboxes(AT_FSTRONG, 2);
+			    set_hitbox_value(AT_DSTRONG,3, HG_HITBOX_X,  (clonex - x)*spr_dir + 40);
+                set_hitbox_value(AT_DSTRONG,3, HG_HITBOX_Y,  (cloney - y) - 28 + 37);
+    
+    
+    	        set_hitbox_value(AT_DSTRONG,4, HG_HITBOX_X,  (clonex - x)*spr_dir - 40);
+                set_hitbox_value(AT_DSTRONG,4, HG_HITBOX_Y,  (cloney - y) - 40 + 37);
+    
+                 set_hitbox_value(AT_USTRONG,3, HG_HITBOX_X,  (clonex - x)*spr_dir + 36);
+                set_hitbox_value(AT_USTRONG,3, HG_HITBOX_Y,  (cloney - y) - 76 + 37);
+    
+    
+    	        set_hitbox_value(AT_USTRONG,4, HG_HITBOX_X,  (clonex - x)*spr_dir + 6);
+                set_hitbox_value(AT_USTRONG,4, HG_HITBOX_Y,  (cloney - y) - 118 + 37);
+  
+                set_hitbox_value(AT_FSTRONG,2, HG_HITBOX_X,  (clonex - x)*spr_dir + 66);
+                set_hitbox_value(AT_FSTRONG,2, HG_HITBOX_Y,  (cloney - y) - 22 + 37);
+    
+    
+	} else {
+	   set_num_hitboxes(AT_DSTRONG, 2);
+		set_num_hitboxes(AT_USTRONG, 2);
+		set_num_hitboxes(AT_FSTRONG, 1);
+	}
+	hsp /= 1.05
+	if window == 1 && window_timer == 1 {
+		sound_play(asset_get("sfx_ice_shieldup"))
+	}
+	if window == 2 && window_timer == 1 {
+		sound_play(asset_get("sfx_bird_downspecial"),false,noone,0.8)
+	}
+	if window == 2 && window_timer == 6 && attack == AT_USTRONG {
+		sound_play(asset_get("sfx_bird_sidespecial_start"),false,noone,0.8)
+		sound_play(asset_get("sfx_clairen_swing_strong"),false,noone,2)
+	}
+	if window == 2 && window_timer == 6 && attack == AT_DSTRONG {
+		sound_play(asset_get("sfx_clairen_swing_mega_instant"),false,noone,1)
+		sound_play(asset_get("sfx_bird_sidespecial"),false,noone,1)
+	}
+	if window == 2 && window_timer == 6 && attack == AT_FSTRONG {
+		sound_play(asset_get("sfx_clairen_poke_strong"),false,noone,1.2)
+	sound_play(asset_get("sfx_bird_sidespecial_start"),false,noone,0.8)		
+	}
+}
 }
 
 if window == 1 && window_timer == 1 && free {
-	    	if strongdown {
-	    	set_attack (AT_FSTRONG)
+	    	if attack == AT_NSPECIAL {
+	    	set_attack (AT_NSPECIAL)
 	    	window = 4
 	    	window_timer = 11
 	    	iaijump = 2
 	    	spawn_hit_fx(x,y-40,305)
-	    	sound_play(asset_get("sfx_ice_on_player"))
 	    	}
 }
 
@@ -172,23 +219,23 @@ if attack == AT_DATTACK{
 }
 
 
-if attack == AT_FSTRONG {
+if attack == AT_NSPECIAL {
     
 
-    set_hitbox_value(AT_FSTRONG, 5, HG_HITBOX_X,  (clonex - x)*spr_dir -63);
-    set_hitbox_value(AT_FSTRONG, 5, HG_HITBOX_Y,  (cloney - y) -16);
+    set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_X,  (clonex - x)*spr_dir -63);
+    set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_Y,  (cloney - y) -16);
 
     
-    set_hitbox_value(AT_FSTRONG, 6, HG_HITBOX_X, (clonex - x)*spr_dir -8);
-    set_hitbox_value(AT_FSTRONG, 6, HG_HITBOX_Y, (cloney - y) -101 + 36);
+    set_hitbox_value(AT_NSPECIAL, 6, HG_HITBOX_X, (clonex - x)*spr_dir -8);
+    set_hitbox_value(AT_NSPECIAL, 6, HG_HITBOX_Y, (cloney - y) -101 + 36);
 
     
-    set_hitbox_value(AT_FSTRONG, 7, HG_HITBOX_X, (clonex - x)*spr_dir + 78);
-    set_hitbox_value(AT_FSTRONG, 7, HG_HITBOX_Y, (cloney - y) -72 + 36);
+    set_hitbox_value(AT_NSPECIAL, 7, HG_HITBOX_X, (clonex - x)*spr_dir + 78);
+    set_hitbox_value(AT_NSPECIAL, 7, HG_HITBOX_Y, (cloney - y) -72 + 36);
 
       
-    set_hitbox_value(AT_FSTRONG, 8, HG_HITBOX_X, (clonex - x)*spr_dir + 42);
-    set_hitbox_value(AT_FSTRONG, 8, HG_HITBOX_Y, (cloney - y) -24 + 36); 
+    set_hitbox_value(AT_NSPECIAL, 8, HG_HITBOX_X, (clonex - x)*spr_dir + 42);
+    set_hitbox_value(AT_NSPECIAL, 8, HG_HITBOX_Y, (cloney - y) -24 + 36); 
 
      
     if down_down {
@@ -201,7 +248,7 @@ if attack == AT_FSTRONG {
     if window <= 4 && state_timer > 6{
 
     	
-    	if (!strongdown ) {
+    	if (!special_down ) {
     		sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"));
     			window = 7
     		window_timer = 0
@@ -209,7 +256,7 @@ if attack == AT_FSTRONG {
     }
     
     if window == 7 && window_timer == 10 {
-    	if right_down && (!strongdown )  {
+    	if right_down && (!special_down )  {
     		if spr_dir = -1 {
     			window = 6
     		window_timer = 0
@@ -221,7 +268,7 @@ if attack == AT_FSTRONG {
     	
 
     	
-    	if left_down && (!strongdown ) {
+    	if left_down && (!special_down ) {
     		if spr_dir = 1 {
     			window = 6
     		window_timer = 0
@@ -427,50 +474,7 @@ if attack == AT_FSTRONG {
 	
 }
 
-if attack == AT_NSPECIAL {
-	move_cooldown[AT_NSPECIAL] = 30
-	if window_timer == 1 && window = 2 {
-		sound_play(asset_get("sfx_ice_shieldup"))
-	}
-		
-	if get_player_color(player) == 9{
-		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial2"));
-	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("hamburger"));
-	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("projectilehit"));
-	if window_timer == 1 && window = 3 {
-		sound_play(asset_get("sfx_clairen_spin"))
-		sound_play(sound_get("throw"))
-	}
-    }
 
-	if window_timer == 1 && window = 3 && get_player_color(player) != 9{ 
-		sound_play(asset_get("sfx_clairen_spin"))
-		sound_play(asset_get("sfx_ice_on_player"))
-	}
-	
-
-	
-	if state_timer < 6 {
-		if left_down {
-			spr_dir = -1
-		}
-		if right_down {
-			spr_dir = 1
-		}
-	}
-	
-	if special_down{
-		set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -20);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, 4);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 7);
-	} else {
-		set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -50);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 9);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, 0);
-	}
-	
-
-}
 
 if attack == AT_FSPECIAL {
  
@@ -553,7 +557,7 @@ if attack == AT_USPECIAL {
 	 	}
 	 }
 
-    if window = 1 && window_timer == 18 && !hitpause && cloneout == 1 {
+    if window = 1 && window_timer == 16 && !hitpause && cloneout == 1 {
           spawn_base_dust(clonex-10*spr_dir,cloney - 60,"djump",spr_dir);
              	spawn_base_dust(clonex-10*spr_dir,cloney,"djump",spr_dir);
     	create_hitbox(AT_USPECIAL, 2, clonex, cloney - 64)
@@ -574,7 +578,7 @@ if attack == AT_USPECIAL {
 		}
 	}
 	
-		if  window = 1 && window_timer == 18  && !hitpause {
+		if  window = 1 && window_timer == 16  && !hitpause {
 		        spawn_base_dust(x-10*spr_dir,y - 100,"djump",spr_dir);   
              	spawn_base_dust(x-10*spr_dir,y - 40,"djump",spr_dir);
 		}

@@ -45,18 +45,31 @@ else {
                                     can_h = false;
                                 }
                             }
-                            if (can_h && player_near.smoke_hit_cooldown <= 0) {
+                            var smoke_obj = noone;
+                            var smoke_dist = 9999;
+                            for (var i = 0; i < array_length(other.smoke_objects); i++) {
+                                if instance_exists(other.smoke_objects[i]) {
+                                    var dist = point_distance(other.smoke_objects[i].x, other.smoke_objects[i].y, player_near.x, player_near.y);
+                                    if (dist < smoke_dist) {
+                                        smoke_obj = other.smoke_objects[i];
+                                        smoke_dist = dist;
+                                    }
+                                }
+                            }
+                            
+                            
+                            if (instance_exists(smoke_obj) && can_h && player_near.smoke_hit_cooldown <= 0 && smoke_obj.hit == 0) {
                                 switch (other.hit) {
                                     case 0:
-                                        create_hitbox(AT_EXTRA_1, 1, round(player_near.smoke_obj.x), round(player_near.smoke_obj.y))
+                                        create_hitbox(AT_EXTRA_1, 1, round(smoke_obj.x), round(smoke_obj.y))
                                         player_near.smoke_hit_cooldown = 5;
                                         break;
                                     case 1:
-                                        create_hitbox(AT_EXTRA_1, 2, round(player_near.smoke_obj.x), round(player_near.smoke_obj.y))
+                                        create_hitbox(AT_EXTRA_1, 2, round(smoke_obj.x), round(smoke_obj.y))
                                         player_near.smoke_hit_cooldown = 5;
                                         break;
                                     case 2:
-                                        create_hitbox(AT_EXTRA_1, 3, round(player_near.smoke_obj.x), round(player_near.smoke_obj.y))
+                                        create_hitbox(AT_EXTRA_1, 3, round(smoke_obj.x), round(smoke_obj.y))
                                         player_near.smoke_hit_cooldown = 10;
                                         break;
                                 }

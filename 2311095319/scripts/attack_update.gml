@@ -163,9 +163,9 @@ if (attack == AT_NSPECIAL){
 	if (window == 1){
 		if (hasfirebrand == true){
 			firecharge = 0
-			window = 5
+			window = 6
 			window_timer = 0
-			set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 7);
+			set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 8);
 			hasfirebrand = false
 		}
 		if (window_timer == 9){
@@ -174,8 +174,8 @@ if (attack == AT_NSPECIAL){
 	}
     if (window == 2){
 		if (shield_pressed){
-			window = 4
-			window_timer = 20
+			window = 9
+			window_timer = 0
 			sound_stop(sfx_mario_fireball_charge);
 		}	
 		if (window_timer == 21 && special_down){
@@ -186,34 +186,37 @@ if (attack == AT_NSPECIAL){
 		if (special_down == false){
 			window = 3
 			window_timer = 0
-			firecharge = 0
-			sound_play(sfx_mario_fireball);
-			sound_stop(sfx_mario_fireball_charge);
-			//spawn_hit_fx( x + 32 * spr_dir, y - 20, 3 );
 		}
 	}
 	if (window == 4){
+		if (window_timer == 1){
+			firecharge = 0
+			sound_play(sfx_mario_fireball);
+			sound_stop(sfx_mario_fireball_charge);
+		}
+	}
+	if (window == 5){
 		if (window_timer == 17){
 			move_cooldown[AT_NSPECIAL] = 28;
 		}
 	}
 	if (firecharge == fireball_charge_needed_for_firebrand && window == 2){
 		hasfirebrand = true
-		window = 4
-		window_timer = 20
+		window = 9
+		window_timer = 0
 		sound_stop(sfx_mario_fireball_charge);
 		sound_play(sfx_mario_fireball_charge_full);
 		spawn_hit_fx( x , y - 20, 204 );
 	}
-	if (window == 5){
+	if (window == 6){
 		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecialbig"));
 		set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecialbig"));
 	}
-	if (window == 7){
+	if (window == 8){
 		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
 		set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"));
 		if (window_timer == 20){
-			set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 4);
+			set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 5);
 		}
 	}
 }

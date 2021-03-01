@@ -9,6 +9,7 @@ if(effect == 227){
 	            ring.player_id = id;
 	            ring.player = player;
 	            ring.spr_dir = other.spr_dir * -1;
+	            ring.original_direction = other.spr_dir * -1;
 	            var ring_2 = instance_create(other.x + 36 * other.spr_dir, other.y - 22, "obj_article1");
 	            ring_2.player_id = id;
 	            ring_2.depth = depth - 2;

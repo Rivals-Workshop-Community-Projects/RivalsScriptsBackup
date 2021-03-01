@@ -27,7 +27,7 @@ set_num_hitboxes(AT_DTILT,2);
 set_hitbox_value(AT_DTILT, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_DTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DTILT, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_DTILT, 1, HG_LIFETIME, 3);
+set_hitbox_value(AT_DTILT, 1, HG_LIFETIME, 4);
 set_hitbox_value(AT_DTILT, 1, HG_HITBOX_X, 63);
 set_hitbox_value(AT_DTILT, 1, HG_HITBOX_Y, -40);
 set_hitbox_value(AT_DTILT, 1, HG_WIDTH, 68);
@@ -45,13 +45,13 @@ set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"))
 set_hitbox_value(AT_DTILT, 1, HG_HITSTUN_MULTIPLIER, 0.9);
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 304);
 
-set_hitbox_value(AT_DTILT, 2, HG_PARENT_HITBOX, 1);
+set_hitbox_value(AT_DTILT, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DTILT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DTILT, 2, HG_WINDOW, 2);
-set_hitbox_value(AT_DTILT, 2, HG_LIFETIME, 3);
-set_hitbox_value(AT_DTILT, 2, HG_HITBOX_X, 83);
+set_hitbox_value(AT_DTILT, 2, HG_LIFETIME, 4);
+set_hitbox_value(AT_DTILT, 2, HG_HITBOX_X, 63);
 set_hitbox_value(AT_DTILT, 2, HG_HITBOX_Y, -10);
-set_hitbox_value(AT_DTILT, 2, HG_WIDTH, 68);
+set_hitbox_value(AT_DTILT, 2, HG_WIDTH, 108);
 set_hitbox_value(AT_DTILT, 2, HG_HEIGHT, 35);
 set_hitbox_value(AT_DTILT, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_DTILT, 2, HG_PRIORITY, 3);

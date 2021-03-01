@@ -346,7 +346,7 @@ if hit_lockout <= 0 {
         }
     
     var currentHighestPriority = noone;
-    with (pHitBox) if player != other.player
+    with (pHitBox) if player != other.player && damage
         if `hit_${article}` not in self
             if place_meeting(x,y,other) && (groundedness == 0 || groundedness == 1+free) && hit_priority != 0 {
                 if hbox_group == -1 || ( hbox_group != -1 && other.hbox_group[@ orig_player-1][@ attack][@ hbox_group] == 0) {

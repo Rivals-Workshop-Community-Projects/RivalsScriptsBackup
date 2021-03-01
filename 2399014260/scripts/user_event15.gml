@@ -435,6 +435,37 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.2", "27 February, 2021");
+	initPatchWords("DSpecial Air - Buffs, Adjustments, Clarity");
+	initPatchWords_ext("Midair usage limit and stall removed.
+	Grab hitbox size and shape adjusted.
+	Visual effect added to sprite.", fa_left, c_gray, 1, 0);
+	initPatchWords("Jab - Buffs");
+	initPatchWords_ext("Both cancel windows start 3 frames earlier.", fa_left, c_gray, 1, 0);
+	initPatchWords("DTilt - Buffs");
+	initPatchWords_ext("Endlag can be canceled on hit.", fa_left, c_gray, 1, 0);
+	initPatchWords("NAir - Buffs, Adjustments");
+	initPatchWords_ext("Damage 6 --> 7.
+	Knockback growth 0.7 --> 0.8.", fa_left, c_gray, 1, 0);
+	initPatchWords("FAir - Buffs");
+	initPatchWords_ext("Damage 4 --> 5.", fa_left, c_gray, 1, 0);
+	initPatchWords("UAir - Buffs");
+	initPatchWords_ext("Endlag 18f --> 14f.", fa_left, c_gray, 1, 0);
+	
+	initPatch("1.1", "18 February, 2021");
+	initPatchWords("NSpecial (Luma Spin) - Nerfs");
+	initPatchWords_ext("Now only grants height once per airtime (also refreshes when walljumping or getting hit).", fa_left, c_gray, 1, 0);
+	initPatchWords("DSpecial - Aesthetics, Bugfixes");
+	initPatchWords_ext("Luma now has an animation for throwing a turnip upwards.
+	Visual for dropping a turnip no longer appears when hit by non-flinching hitboxes.", fa_left, c_gray, 1, 0);
+	initPatchWords("USpecial - Funny");
+	initPatchWords_ext("Is now ended prematurely by Steve water.", fa_left, c_gray, 1, 0);
+	initPatchWords("DAir - Adjustments");
+	initPatchWords_ext("Base knockback 9 --> 8.
+	Knockback growth 1 --> 0.7.", fa_left, c_gray, 1, 0);
+	initPatchWords("Luma - Bugfixes");
+	initPatchWords_ext("Now ignores enemy hitboxes which deal 0 damage.", fa_left, c_gray, 1, 0);
+	
 	initPatch("1.0", "17 February, 2021");
 	initPatchWords_ext("Toad Time", fa_center, c_white, 0, 1);
 	initPatchImage(other.spr_doublejump, 0, fa_center, 1, c_white, 1);

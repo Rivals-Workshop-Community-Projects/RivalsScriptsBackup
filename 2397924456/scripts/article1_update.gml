@@ -158,8 +158,8 @@ switch(state){
 			if !was_controlled_already && !player_id.prev_sync sound_play(player_id.sfx_astral_chain_legion_summon);
 			
 			if !player_id.joy_pad_idle{
-                var acc = 0.6;
-                var spd = 10;
+                var acc = 1; // 0.6
+                var spd = 11; // 10
                 hsp = clamp(hsp + lengthdir_x(acc, player_id.joy_dir), -spd, spd);
                 vsp = clamp(vsp + lengthdir_y(acc, player_id.joy_dir), -spd, spd);
                 moving = 1;
@@ -666,6 +666,8 @@ switch(state){
 							see_thru = 1;
 						}
 						
+						if player_id.state_cat == SC_HITSTUN setState(PS_IDLE);
+						
 						switch(dir){
 							case 0:
 								// var sin_thing = sin((window_timer + 4) / 3) * -72;
@@ -780,6 +782,12 @@ switch(state){
 	case PS_DEAD: // dying when player dies or when enemy depletes HP
 		
 		// disappear; new article is created
+		
+		break;
+	
+	default: // catch unexpected states
+		
+		setState(PS_IDLE);
 		
 		break;
 	
@@ -945,7 +953,7 @@ if hit_lockout <= 0 {
         }
     
     var currentHighestPriority = noone;
-    with (pHitBox) 
+    with (pHitBox) if damage
         if `hit_${article}` not in self && player != other.player
             if place_meeting(x,y,other) && (groundedness == 0 || groundedness == 1+free) && hit_priority != 0 {
                 if hbox_group == -1 || ( hbox_group != -1 && other.hbox_group[@ orig_player-1][@ attack][@ hbox_group] == 0) {
@@ -979,7 +987,7 @@ if hit_lockout <= 0 {
             
             attackingRecoil();
             
-            hitstun = (other.kb_value * 4 * ((kb_adj - 1) * 0.6 + 1) + other.damage * 0.12 * other.kb_scale * 4 * 0.65 * kb_adj) + 12;
+            hitstun = round((other.kb_value * 4 * ((kb_adj - 1) * 0.6 + 1) + other.damage * 0.12 * other.kb_scale * 4 * 0.65 * kb_adj) + 12);
             hitstun_full = hitstun;
             
             hit_lockout = other.no_other_hit;

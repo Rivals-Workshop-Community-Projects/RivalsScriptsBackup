@@ -73,7 +73,9 @@ if (attack == AT_NSPECIAL){
 }
 
 if (attack == AT_USPECIAL){
-	can_wall_jump = true;
+	if (window <= 6){
+		can_wall_jump = true;
+	}
 	if(!hitpause && window == 2){
         if(special_down && launch_timer < 40){
             can_move = false;
@@ -125,6 +127,7 @@ if (attack == AT_USPECIAL){
 	}
 	if (window == 7 || window == 8){
 		can_move = false;
+		can_wall_jump = false;
 	}
 	if (window == 7 && window_timer == 14 && !hitpause){
         sound_play(asset_get("sfx_forsburn_combust"));
@@ -164,10 +167,6 @@ if (attack == AT_NSPECIAL_AIR && window == 1){
 }
 
 if (attack == AT_DSPECIAL){
-	can_wall_jump = true;
-}
-
-if (attack == AT_USPECIAL){
 	can_wall_jump = true;
 }
 
@@ -432,6 +431,11 @@ if (attack == AT_DATTACK){
 		max_jump_hsp = 8;
 	}
 	}
+	if (window == 2 && hsp == 0 && !hitpause){
+		sound_stop(asset_get("sfx_blink_dash"));
+		window = 6;
+		window_timer = 0;
+	}
 }
 
 if (attack == AT_DATTACK){
@@ -450,8 +454,38 @@ if (attack == AT_DATTACK){
 		can_jump = true;
 	}
 	if (window == 4 && jump_pressed){
+		sound_stop(sound_get("sfx_bash"));
 		max_jump_hsp = 9;
 	}
+	if (window == 4 && hsp == 0 && !hitpause){
+		sound_stop(sound_get("sfx_bash"));
+		window = 6;
+		window_timer = 0;
+	}
+	if (window == 4 && (taunt_pressed || shield_pressed)){
+		sound_stop(sound_get("sfx_bash"));
+		window = 5;
+		window_timer = 0;
+	}
+	if (window > 4){
+		destroy_hitboxes();
+	}
+	if (window == 4 && window_timer == 1){
+		sound_play(sound_get("sfx_bash"));
+	}
+	if (window == 5 && window_timer == 1){
+		sound_play(sound_get("sfx_halt"));
+	}
+	if (window == 5 && window_timer == get_window_value(AT_DATTACK, 5, AG_WINDOW_LENGTH) && has_hit == true){
+		set_state(PS_IDLE);
+	}
+	if (window == 5 && window_timer == 30 && !has_hit){
+		set_state(PS_IDLE);
+	}
+}
+
+if (attack != AT_DATTACK){
+	sound_stop(sound_get("sfx_bash"));
 }
 
 if (attack == AT_DATTACK && window == 2 && was_parried == true){

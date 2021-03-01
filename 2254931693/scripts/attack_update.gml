@@ -148,7 +148,12 @@ if (window = 2 && has_hit_player = true){
 }
 
 if (window = 3 && window_timer = 8){
+    if (free = 1){
     set_state(PS_IDLE_AIR);
+    }
+    if (free = 0){
+        set_state(PS_LANDING_LAG);
+    }
 }
 
 
@@ -156,8 +161,30 @@ if (window = 4 && window_timer = 1){
     vsp = -12.5;
 }
 
+if (window = 2 && window_timer = 1){
+    if (free = 1){
+    set_attack_value(AT_FSPECIAL, AG_CATEGORY, 1);
+    }
+}
+
+if (window = 3 && window_timer = 7){
+    y = y + 2;
+}
+
+if (window = 3 && window_timer = 7){
+    if (free = 0 && get_attack_value(AT_FSPECIAL, AG_CATEGORY) = 2){
+    set_state(PS_IDLE);
+}
+}
+
+if (window = 3 && window_timer = 8){
+    if (get_attack_value(AT_FSPECIAL, AG_CATEGORY) = 1){
+    set_attack_value(AT_FSPECIAL, AG_CATEGORY, 2);
+}
+}
 
 if (window = 4 && window_timer > 3){
+    set_attack_value(AT_FSPECIAL, AG_CATEGORY, 2);
     iasa_script();
 }
 

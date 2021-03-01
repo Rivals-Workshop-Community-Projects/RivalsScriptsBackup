@@ -76,11 +76,13 @@ if (has_rune("F")){
     max_djumps = 4;
 }
 
+/* now-removed rune
 if (has_rune("G")){
     set_hitbox_value(AT_NSPECIAL, 1, HG_EFFECT, 11);
     
     set_hitbox_value(AT_DSPECIAL, 1, HG_EFFECT, 11);
 }
+*/
 
 if (has_rune("I")){
     set_hitbox_value(AT_DSTRONG, 1, HG_KNOCKBACK_SCALING, 1.15);
@@ -205,4 +207,80 @@ if trummelcodecneeded{
     page++; 
 
     //repeat...
+}
+
+if swallowed { //Kirby ability script starts here
+swallowed = 0
+//Define any assets kirby might need to grab from YOUR CHARACTER
+var ability_spr = sprite_get("kirby");
+var ability_hurt = sprite_get("kirby_hurt")
+var ability_mine = sprite_get("kirbymine")
+var ability_icon = sprite_get("kirby_icon") //Optional
+with enemykirby { //Define AT_EXTRA_3 for Kirby, using your asset variables where necessary in place of sprite_get or sound_get
+sound_play(asset_get("sfx_chest_open"))
+set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
+set_attack_value(AT_EXTRA_3, AG_SPRITE, ability_spr);
+set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 3);
+set_attack_value(AT_EXTRA_3, AG_HAS_LANDING_LAG, 4);
+set_attack_value(AT_EXTRA_3, AG_OFF_LEDGE, 1);
+set_attack_value(AT_EXTRA_3, AG_AIR_SPRITE, ability_spr);
+set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, ability_hurt);
+
+set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
+set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX, asset_get("sfx_shop_move"));
+set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX_FRAME, 13);
+
+set_window_value(AT_EXTRA_3, 2, AG_WINDOW_TYPE, 1);
+set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAME_START, 2);
+
+set_window_value(AT_EXTRA_3, 3, AG_WINDOW_TYPE, 1);
+set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAME_START, 4);
+
+set_num_hitboxes(AT_EXTRA_3, 1);
+
+set_hitbox_value(AT_EXTRA_3, 1, HG_PARENT_HITBOX, 1);
+set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 2);
+set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW_CREATION_FRAME, 3);
+set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 240);
+set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, 25);
+set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, -25);
+set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 30);
+set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 30);
+set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 3);
+set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 4);
+set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 74);
+set_hitbox_value(AT_EXTRA_3, 1, HG_HITSTUN_MULTIPLIER, .95);
+set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, .2);
+set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, .6);
+set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_SPRITE, ability_mine);
+set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_ANIM_SPEED, .5);
+set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_HSPEED, 3);
+set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_VSPEED, 5);
+set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_GRAVITY, .2);
+set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_WALL_BEHAVIOR, 2);
+newicon = ability_icon //Optional, replaces the kirby ability icon
+} //Kirby ability script ends here
+}
+
+if enemykirby != undefined { //if kirby is in a match & swallowed
+with oPlayer { //Run through all players
+if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_EXTRA_3) {
+if  window == 3{
+					move_cooldown[AT_EXTRA_3] = 85;
+					move_cooldown[AT_NSPECIAL] = 85;
+				}
+}
+}
 }

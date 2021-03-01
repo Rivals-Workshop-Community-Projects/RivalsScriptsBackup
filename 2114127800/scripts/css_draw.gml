@@ -8,9 +8,9 @@ if (get_color_profile_slot_r(0, 0) == 143) {
     set_color_profile_slot(0, 0, get_color_profile_slot_r(0, 0) + 1, get_color_profile_slot_g(0, 0), get_color_profile_slot_b(0, 0));
 }
 
-patch_ver = "4.35";
-patch_day = "14";
-patch_month = "January";
+patch_ver = "4.4";
+patch_day = "13";
+patch_month = "February";
 
 var num_alts = 16;
 var alt_cur = get_player_color(player);
@@ -23,10 +23,10 @@ alt_name[2]  = "Nature";
 alt_name[3]  = "Earth";
 alt_name[4]  = "Air";
 alt_name[5]  = "Metal";
-alt_name[6]  = "Ruby";
-alt_name[7]  = "Abyss";
-alt_name[8]  = "Champion";
-alt_name[9]  = "Mollo";
+alt_name[6]  = "Abyss";
+alt_name[7]  = "Champion";
+alt_name[8]  = "Rykenburn";
+alt_name[9]  = "Atticus";
 alt_name[10]  = "Iroh";
 alt_name[11]  = "Ganondorf";
 alt_name[12]  = "Vaporwave";

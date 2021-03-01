@@ -1,6 +1,6 @@
 
 
-set_num_palettes(14);
+set_num_palettes(15);
 
 //DEFAULT COLOR (R,G,B)
 set_color_profile_slot(0, 1, 111, 103, 126); //Body Color
@@ -93,8 +93,25 @@ set_color_profile_slot(13, 1, 250, 250, 250);
 set_color_profile_slot(13, 0, 21, 255, 0);
 set_color_profile_slot(13, 2, 21, 255, 0);
 
-//Slot 14 - Ghost
+/*//Slot 14 - Ghost
 //set_color_profile_slot(12, 0, 120, 120, 150);
 set_color_profile_slot(14, 1, 100, 250, 100);
 set_color_profile_slot(14, 0, 21, 255, 0);
-set_color_profile_slot(14, 2, 21, 255, 0);
+set_color_profile_slot(14, 2, 21, 255, 0);*/
+
+//Slot 14 - Alchemy
+set_color_profile_slot(14, 1, 27, 40, 70); 
+set_color_profile_slot(14, 0, 50, 220, 240); 
+set_color_profile_slot(14, 2, 50, 220, 240);
+
+//Slot 15 - UNUSED
+// All my money gone, and all my time wasted....
+// All my money gone, and all my time wasted....
+// All my money gone, and all my time wasted....
+// All my money gone, and all my time wasted....
+// All my money gone, and all my time wasted....
+// All my money gone, and all my time wasted....
+// All my money gone, and all my time wasted....
+// All my money gone, and all my time wasted....
+// All my money gone, and all my time wasted....
+// All my money gone, and all my time wasted....

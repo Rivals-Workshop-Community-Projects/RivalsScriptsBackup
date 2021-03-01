@@ -39,10 +39,14 @@ if !free && down_down {
 }
 
 
+var final_smash_charged = false;
+if "fs_char_initialized" in self && fs_charge >= 200 {
+  final_smash_charged = true;
+} 
 
 if nspecial_timer{
 	
-	if nspecial_timer == nspecial_timer_max{
+	if nspecial_timer == nspecial_timer_max && final_smash_charged == false{
 		
 		// place dest_1
 		
@@ -64,8 +68,9 @@ if nspecial_timer{
 		
 	}
 	
-	if nspecial_timer == 1{
-		
+		if nspecial_timer == 1 || y != clamp(y, 0 + 150, room_height) && dest_2 = noone && final_smash_charged == false{
+
+		nspecial_timer = 1;
 		// place dest_2
 		
 		dest_2 = instance_create(x, y - 10, "obj_article1");
@@ -117,11 +122,11 @@ if (state == PS_PARRY) {
 }
 
 if (state != PS_HITSTUN) {
-	if (x > room_width) {
-		x = 0;
+	if (x > room_width - 10) {
+		x = 10;
 	} else {
-		if (x < 0) {
-			x = room_width;
+		if (x < 10) {
+			x = room_width - 10;
 		}
 	}
 }

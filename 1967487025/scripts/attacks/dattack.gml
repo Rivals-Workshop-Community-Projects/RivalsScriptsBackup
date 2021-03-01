@@ -74,5 +74,5 @@ set_hitbox_value(AT_DATTACK, 2, HG_KNOCKBACK_SCALING, .2);
 set_hitbox_value(AT_DATTACK, 2, HG_BASE_HITPAUSE, 16);
 set_hitbox_value(AT_DATTACK, 2, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_DATTACK, 2, HG_HITSTUN_MULTIPLIER, .6);
-set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_ell_strong_attack_explosion"));
+set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, sound_get("chaos_fire_hit"));
 set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT, 148);

@@ -404,6 +404,10 @@ if(state == 13){
 
 //forger's citrine (shot)
 if(state == 14){
+    if(state_timer >= 120){
+        instance_destroy();
+        exit;
+    }
     if(state_timer % 6 = 1){
         sound_play(asset_get("sfx_waveland_zet"))
     }

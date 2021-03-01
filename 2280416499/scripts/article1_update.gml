@@ -2,6 +2,10 @@
 
 
 
+if current_layout has_changed_layouts = 1;
+
+
+
 if current_layout != prev_layout{
 	current_layout = current_layout % array_length(layouts);
 	if !("death_timer" in obj_stage_main && obj_stage_main.death_timer) loadLayout(current_layout);

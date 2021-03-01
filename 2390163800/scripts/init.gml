@@ -196,6 +196,11 @@ kirbyability = 16;
 swallowed = 0
 enemykirby = noone;
 
+fs_char_chosen_final_smash = "custom";
+fs_char_portrait_y = 85;
+fs_char_chosen_trigger = "ori";
+fs_charge_mult = 1;
+
 // Muno template: (don't change)
 
 user_event(14); // General init

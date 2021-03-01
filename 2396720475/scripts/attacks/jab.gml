@@ -118,6 +118,5 @@ set_hitbox_value(AT_JAB, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_GROUP, -1);
 
-set_hitbox_value(AT_JAB, 1, HG_EXTRA_HITPAUSE, 2);
-set_hitbox_value(AT_JAB, 2, HG_EXTRA_HITPAUSE, 2);
+set_hitbox_value(AT_JAB, 2, HG_EXTRA_HITPAUSE, 1);
 set_hitbox_value(AT_JAB, 3, HG_EXTRA_HITPAUSE, 6);

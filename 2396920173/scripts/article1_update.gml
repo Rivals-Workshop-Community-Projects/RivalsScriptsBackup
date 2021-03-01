@@ -224,6 +224,15 @@ if (hitbox != noone) {
             
             
             if !superarmour && !king_armour {
+            	
+            	if piece == "Q" && perform_attack && window < 3 {
+            		window = 3;
+            		window_timer = 0;
+            	} else if !(piece == "Q" && window >= 3) {
+            		perform_attack = false;
+            		window = 0;
+					window_timer = 0;
+            	}
                 
                 image_angle = 0;
                 
@@ -232,10 +241,6 @@ if (hitbox != noone) {
                 hitstop = _hitpause + extraHitpause;
                 
                 rook_cannon = undefined;
-                
-                perform_attack = false;
-				window = 0;
-				window_timer = 0;
 				attack_timer = 0;
 				missile_timer = 0;
 				range_dist = 0;
@@ -506,19 +511,13 @@ if perform_attack {
 		        perform_attack = false;
 	            instance_destroy();
 	            exit;
-	        } else if distance_to_point(target_player.x, target_player.y) < 5 && target_player.invincible = true && window_timer > 1 {
-	            sound_play(asset_get("sfx_ell_fist_explode"));
-	            spawn_hit_fx(x, y, 143);
-	            if target_player != undefined {
-		            target_player.draw_reticle = false;
-		        }
-	        	player_id.piece_id = undefined;
-	        	draw_missile = false;
-		        range_dist = 0;
-		        missile_timer = 0;
-		        missile_angle = 0;
-		        perform_attack = false;
-	            instance_destroy();
+	        } else if distance_to_point(target_player.x, target_player.y) < 5 && window_timer > 1 {
+	            //sound_play(asset_get("sfx_ell_fist_explode"));
+	            //spawn_hit_fx(x, y, 143);
+	            window = 4;
+	            window_timer = 0;
+	            bishop_cooldown = 0;
+	            //instance_destroy();
 	            exit;
 	        }
 	        
@@ -536,6 +535,7 @@ if perform_attack {
 	        if missile_timer > 40 {
 	            window = 4;
 	            window_timer = 0;
+	            bishop_cooldown = 0;
 	        }
 	    }
 	    

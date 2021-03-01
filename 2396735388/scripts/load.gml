@@ -40,13 +40,15 @@ sprite_change_offset("bair", 62, 62);
 sprite_change_offset("uair", 54, 72);
 sprite_change_offset("dair", 58, 66);
 sprite_change_offset("strong_charge", 68, 24);
+sprite_change_offset("strong_charge_flash", 68, 24);
 sprite_change_offset("fstrong", 68, 68);
 sprite_change_offset("ustrong", 48, 78);
 sprite_change_offset("dstrong", 42, 90);
 sprite_change_offset("strong_charge_emp", 68, 32);
+sprite_change_offset("strong_charge_emp_flash", 68, 32);
 sprite_change_offset("fstrong_emp", 82, 68);
 sprite_change_offset("ustrong_emp", 48, 84);
-sprite_change_offset("dstrong_emp", 42, 102);
+sprite_change_offset("dstrong_emp", 50, 102);
 sprite_change_offset("nspecial", 52, 60);
 sprite_change_offset("fspecial", 50, 56);
 sprite_change_offset("fspecial_air", 50, 56);
@@ -87,3 +89,5 @@ sprite_change_offset("uspecial_ground_explosion", 70, 68);
 sprite_change_offset("dspecial_leave", 56, 88);
 
 sprite_change_offset("glide_control_method_indicator", 16, 12);
+
+sprite_change_offset("fake_hitbox_mask", 32, 32);

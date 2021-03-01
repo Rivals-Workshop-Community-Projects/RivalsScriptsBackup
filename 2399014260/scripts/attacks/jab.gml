@@ -22,7 +22,7 @@ set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_JAB, 3, AG_WINDOW_HAS_WHIFFLAG, 0); //multi hit jabs are not supposed to have whifflag. WHY
 set_window_value(AT_JAB, 3, AG_WINDOW_CANCEL_TYPE, 1);
-set_window_value(AT_JAB, 3, AG_WINDOW_CANCEL_FRAME, 3);
+set_window_value(AT_JAB, 3, AG_WINDOW_CANCEL_FRAME, 0); // 3
 
 //4 startup
 set_window_value(AT_JAB, 4, AG_WINDOW_TYPE, 1);
@@ -46,7 +46,7 @@ set_window_value(AT_JAB, 6, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 6, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_JAB, 6, AG_WINDOW_HAS_WHIFFLAG, 0); //multi hit jabs are not supposed to have whifflag. WHY
 set_window_value(AT_JAB, 6, AG_WINDOW_CANCEL_TYPE, 1);
-set_window_value(AT_JAB, 6, AG_WINDOW_CANCEL_FRAME, 3);
+set_window_value(AT_JAB, 6, AG_WINDOW_CANCEL_FRAME, 0); // 3
 
 //7 startup
 set_window_value(AT_JAB, 7, AG_WINDOW_TYPE, 1);

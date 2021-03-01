@@ -1,6 +1,12 @@
 //print_debug("Hit player!!!!!!!!!!!!!!!!!!!!")
+
 if my_hitboxID.attack == AT_DTILT {
 	has_hit_player = true;
+}
+
+if my_hitboxID.attack == AT_DTHROW {
+	vsp = min(vsp, 0)
+	old_vsp = vsp;
 }
 
 if hit_player_obj.mycolich_sporetime > 0 {
@@ -13,7 +19,7 @@ if hit_player_obj.mycolich_player == player && hit_player_obj.mycolich_sporetime
 	sound_play(asset_get("sfx_poison_hit_weak"))
 }
 
-if my_hitboxID.effect == 999 && my_hitboxID.orig_player = player { //Grabbing
+if my_hitboxID.effect == 999 && my_hitboxID.orig_player = player && hit_player_obj.state_cat == SC_HITSTUN { //Grabbing
 	hit_player_obj.mycolich_grabbed = my_hitboxID
 }
 if my_hitboxID.attack == AT_NSPECIAL {
@@ -44,7 +50,7 @@ if my_hitboxID.attack == AT_NSPECIAL_2 {
 	selfstab = 0;
 	
 		var s = 10
-		var ins = instance_create(hit_player_obj.x,hit_player_obj.y-(hit_player_obj.char_height/2),"obj_article2")
+		var ins = instance_create(hit_player_obj.x,floor(hit_player_obj.y-(hit_player_obj.char_height/2)),"obj_article2")
 		ins.timer = 30
 		ins.image_xscale = 0
 		ins.hsp = s
@@ -132,6 +138,11 @@ if my_hitboxID.attack == AT_FSPECIAL {
 	state_timer = 0;
 	sound_play(asset_get("sfx_frog_dspecial_hit"))
 	fspecial_target = hit_player_obj;
+	if fspecial_target.from_crouch with fspecial_target {
+//		set_state(PS_HITSTUN);
+//		old_vsp = -1;
+
+	}
 }
 
 if selfstab && my_hitboxID.type == 1 && !selfstab_target && !instance_exists(selfstab_hbox) && !hit_player_obj.clone {

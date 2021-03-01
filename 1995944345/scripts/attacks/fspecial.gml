@@ -71,6 +71,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_HITPAUSE, 15);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_frog_dspecial_hit_ground"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_FORCE_FLINCH, 3);
 
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));

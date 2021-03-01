@@ -343,7 +343,7 @@ triggertime += 1
 
 
 if triggertime % 45 == 0 && triggertime > 1 {
-	if triggertime % 90 == 0 {
+	if triggertime % 45 == 0 {
 	take_damage( player, -1 , -1)
 	}
 	DT -= 1

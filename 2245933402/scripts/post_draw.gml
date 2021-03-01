@@ -67,4 +67,6 @@ if move_cooldown[AT_EXTRA_2] > 12 {
 	draw_sprite(sprite_get("TP"), 0, x , y - 60 );
 }
 
+
+
 shader_end() 

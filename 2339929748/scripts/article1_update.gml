@@ -79,6 +79,8 @@ if (state == 1){
 		}
 	}
 	*/
+	
+	
 }
 
 //State 2: Dying
@@ -102,7 +104,7 @@ if (state == 3){
 		
 		case 0:
 		//spawn platform that allows you to jump higher
-		var fbox = instance_create(x, y-60, "obj_article_platform");
+		var fbox = instance_create(x, y-40, "obj_article_platform");
 		fbox.player_id = player_id;
 		fbox.orig_player_id = player_id;
 		fbox.player = player;
@@ -118,7 +120,9 @@ if (state == 3){
 		
 		case 2:
 		//Hitbox that deals fire damage and destroys projectiles
-		create_hitbox(AT_USPECIAL, 1, x+20, y+20);
+		fire = true;
+		fire_timer = 180;
+		
 		state = 1;
 		break;
 		
@@ -132,7 +136,7 @@ if (state == 3){
 		//massive hitbox that kills at low percents
 		create_hitbox(AT_DSPECIAL, 1, x+20, y+20);
 		state = 2;
-		player_id.move_cooldown[AT_FSPECIAL] = 300;
+		player_id.move_cooldown[AT_FSPECIAL] = 600;
 		break;
 		
 		case 5:
@@ -156,7 +160,9 @@ if (state == 3){
 		break;
 		
 	}
+	print_debug(string(fire));
 	
+
 	
 	/*
 	if(player_id.bl_select != 3){
@@ -168,13 +174,19 @@ if (state == 3){
 		instance_destroy(fbox);
 	}
 	*/
-	if(player_id.attack == AT_FSPECIAL){
-		state = 2;
-	}
+	
 	
 }
 }
 
+if(fire){
+	if(fire_timer >= 10){
+		create_hitbox(AT_USPECIAL, 2, x +20, y +20);
+		fire_timer = 0;
+	}
+fire_timer ++;
+print_debug(string(fire_timer));
+}
 
 //NOTE: To use a hitbox properly with an article, it MUST be a projectile! (hitbox type 2)
 

@@ -6,7 +6,7 @@
 
 // Sets current meter to 0 
 if (attack == AT_FSPECIAL){
-	LoveMeter[GrappleMode] = 0;
+	LoveMeter = 0;
 }
 
 // Turns opponents status effects off

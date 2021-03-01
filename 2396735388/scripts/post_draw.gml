@@ -1,12 +1,15 @@
 //post-draw
 
+//print_debug(string(window));
+
 if(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
     var external_draw_nec=false;
     var external_tail_draw_nec=false;
     var external_tail_draw_nec_really=false;
     var external_draw_sprite=-1;
+    var draw_strong_flash = false;
+    var strong_flash = -1;
     //var external_draw_y_offset=0;
-    //print_debug(string(attack));
     switch attack {
         case AT_EXTRA_1:
             external_draw_nec=true;
@@ -28,11 +31,14 @@ if(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
             external_draw_nec = window == 1;
             if strong_emp {
                 external_draw_sprite=sprite_get("strong_charge_emp");
+                strong_flash=sprite_get("strong_charge_emp_flash");
             } else {
                 external_draw_sprite=sprite_get("strong_charge");
+                strong_flash=sprite_get("strong_charge_flash");
             }
             spr_angle = spr_angle_temp * (window == 1);
             glide_image_index = image_index;
+            draw_strong_flash = ( (strong_charge / 5) % 2 ) < 1 && window_timer > 11;
         break;
         case AT_USPECIAL:
             external_draw_nec = window == 3;
@@ -76,6 +82,9 @@ if(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
     if external_draw_nec {
         shader_start();
         draw_sprite_ext(external_draw_sprite,glide_image_index,x,y-18,spr_dir,1,spr_angle,c_white,1);
+        if draw_strong_flash {
+            draw_sprite_ext(strong_flash,0,x,y-18,spr_dir,1,spr_angle,c_white,.5);
+        }
         shader_end();
     }
     if(external_tail_draw_nec){

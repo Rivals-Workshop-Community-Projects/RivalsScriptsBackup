@@ -40,6 +40,8 @@ switch(attack){
     
     case AT_USPECIAL:
     
+        // if (state_timer % 3 != 0 && move_cooldown[AT_NSPECIAL] > 2) move_cooldown[AT_NSPECIAL]++;
+    
         switch(window){
             
             case 1:
@@ -82,7 +84,8 @@ switch(attack){
                 // vsp = min(vsp, 2);
                 if (window_timer == 1 && free){
                     hsp = clamp(hsp, -1, 1);
-                    vsp = min(vsp, -9);
+                    if spin_refreshed vsp = min(vsp, -9);
+                    spin_refreshed = 0;
                     spawn_hit_fx(x, y - 10, vfx_sparkles_up);
                 }
                 if (window_timer == 4){
@@ -127,6 +130,10 @@ switch(attack){
                     draw_indicator = 0;
                 }
                 has_moved_at_end = 0;
+                if has_hit{
+                    hsp = 0;
+                    vsp = 0;
+                }
                 break;
             
             case 2:
@@ -154,8 +161,9 @@ switch(attack){
     
     case AT_DSPECIAL:
         
-        can_move = 0;
+        can_move = (window == 1);
         can_fast_fall = 0;
+        vsp = min(vsp, max_fall);
         
         switch(window){
             
@@ -232,6 +240,8 @@ switch(attack){
         if window == 1 && window_timer == phone_window_end{
             sound_play(asset_get("sfx_swipe_medium1"));
         }
+        
+        if (window == 4 && has_hit) iasa_script();
         
         break;
     

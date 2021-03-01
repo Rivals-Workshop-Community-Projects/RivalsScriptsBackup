@@ -2,8 +2,6 @@
 
 if attack == AT_USPECIAL{
 	set_num_hitboxes(AT_USPECIAL, 2);
-	if !free {set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 14);}
-	else {set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 12);}
 }
 
 if attack == AT_USTRONG{
@@ -17,6 +15,7 @@ if attack == AT_FSTRONG{
 }
 if attack == AT_DSPECIAL{
 	set_window_value(AT_DSPECIAL, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
+	set_hitbox_value(AT_DSPECIAL, 4, HG_BASE_KNOCKBACK, 7);
 }
 
 

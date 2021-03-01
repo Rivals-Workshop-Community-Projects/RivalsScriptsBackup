@@ -9,7 +9,7 @@ damage = 0;
 
 damagetick = 0;
 damagelim = 20;
-cloud = noone;
+cloud = array_create(3, noone);
 
 state = -1;
 state_timer = 0;
@@ -29,4 +29,3 @@ transferred = 0;
 old_player_id = player_id
 
 init = 1;
-

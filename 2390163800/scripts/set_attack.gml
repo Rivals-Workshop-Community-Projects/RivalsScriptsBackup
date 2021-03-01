@@ -1,8 +1,13 @@
+var final_smash_charged = false;
+if "fs_char_initialized" in self && fs_charge >= 200 {
+  final_smash_charged = true;
+} 
+
 switch(attack){
 	
 	case AT_NSPECIAL:
 	
-		if !nspecial_timer{
+		if !nspecial_timer && final_smash_charged == false{
 			nspecial_timer = nspecial_timer_max;
 		}
 	

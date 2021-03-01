@@ -514,6 +514,70 @@ phone_practice
     also gets set to false when the MunoPhone is powered off, and is always
     false for CPU players.
 
+phone_stopped_sounds
+    This is an array that stores the instance IDs of played sounds, empty by
+    default. Whenever the player goes from the attacking states into landing
+    lag, pratland, hitstun, or a death state, sound_stop() is run on each sound
+    in the array, and then the array is cleared.
+    
+    In other words - you can add sounds to the array during an attack, and when
+    the attack ends prematurely by getting hit / landinglag / dying, the sound
+    will be cut short. To do this, simply do:
+    
+    array_push(phone_stopped_sounds, sound_play(sound_get("my_cool_sound")));
+
+phone_landing
+    This is true if the character is on the ground, walljumping, in hitstun,
+    or respawning - and false otherwise. Handy for resetting once-per-jump
+    resources.
+
+phone_hud_hidden
+    This is true if the player has disabled overhead names and damage in the
+    RoA game settings, and false otherwise. Can be used to adjust the height of
+    overhead HUD elements and best utilize space.
+
+phone_offscreen
+    This is an array that stores the instance IDs of objects (e.g. articles,
+    projectiles, or whatever you want) which should have an offscreen indicator
+    drawn for them. To use this, run this code from within that object, e.g.
+    in hitbox_init or articleX_init:
+    
+    array_push(player_id.phone_offscreen, self);
+    phone_offscr_sprite = sprite_get("..."); // icon to display
+    phone_offscr_index = 0; // image_index of the icon
+    phone_offscr_x_offset = 0; // x offset to draw the arrow at; uses spr_dir
+    phone_offscr_y_offset = 0; // y offset to draw the arrow at
+    phone_offscr_leeway = 16; // approximate width/height of obj
+    
+    An example icon can be found in the sprites folder:
+    
+    _pho_offscreen_example.png
+    
+    (it doesn't need a load.gml offset)
+    
+phone_lightweight
+    Disables many features which are normally run during the match, which could
+    help optimize performance if you don't need any of these features.
+    
+    Recommended if you're porting the phone to an existing character.
+    
+    Disables:
+    - setting muno_char_id for all characters in the match
+    - making the character visible while respawning in Practice Mode
+    - the Debug Print phone setting
+    - built-in character compatibility templates for non-Muno characters
+    - AG_MUNO_ATTACK_COOLDOWN
+    - AG_MUNO_WINDOW_INVUL
+    - phone_window_end
+    - phone_landing
+    - phone_arrow_cooldown
+    - phone_invis_cooldown
+    
+    Another optimization measure you could try: disable frame data guide, by
+    putting the following line in init.gml AFTER user_event(14);
+    
+    phone.frame_data_loaded = 1;
+
 phone_ditto
     This is true if you are fighting a copy of the same character, and false
     otherwise.
@@ -557,7 +621,7 @@ phone_invis_cooldown
 muno_char_id
     In a match with ANY MunoPhone characters present, ALL characters will have
     this variable in them. For Muno's characters, this number is the same as the
-    "fighter number" seen on the Steam thumbnail - Trummel 1, Otto 2, etc. For
+    "fighter number" seen on the Steam thumbnail - Trummel=1, Otto=2, etc. For
     all other characters, its value is noone (the GML constant whose value is
     -4).
 

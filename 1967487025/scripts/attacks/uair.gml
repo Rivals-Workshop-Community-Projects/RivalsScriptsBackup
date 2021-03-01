@@ -48,7 +48,7 @@ set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, .7);
-set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_ell_strong_attack_explosion"));
+set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, sound_get("chaos_fire_hit"));
 set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 148);
 
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_TYPE, 1);

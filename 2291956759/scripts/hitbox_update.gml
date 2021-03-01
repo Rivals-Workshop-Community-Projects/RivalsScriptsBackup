@@ -100,6 +100,7 @@ if attack == AT_FSPECIAL && hbox_num > 3{
 
 if attack == AT_DSPECIAL {
 		
+		player_id.move_cooldown[AT_DSPECIAL] = 2
 summon = hit_fx_create( sprite_get( "summon" ), 40 );
 				i1 = hit_fx_create( sprite_get( "inkpar5" ), 26);
 				i2 = hit_fx_create( sprite_get( "inkpar6" ), 26);

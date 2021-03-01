@@ -17,6 +17,10 @@ switch(attack){
         switch(window){
             
             case 1: // startup
+                if (window_timer == 1){
+                    nspecial_stall_active = nspecial_stall;
+                    nspecial_stall = 0;
+                }
                 if window_timer == phone_window_end{
                     set_window_value(attack, window, AG_WINDOW_GOTO, 2 + !special_down);
                     if legion.state != PS_ATTACK_AIR && !special_down && !legion.dash_timer && !(legion.sync && legion.badly_damaged){
@@ -93,7 +97,7 @@ switch(attack){
                 break;
         }
                 
-        vsp = min(vsp, 4);
+        vsp = min(vsp, nspecial_stall_active ? 2 : 4);
         hsp = clamp(hsp, -3, 3);
         // hsp = 0;
         can_move = 0;
@@ -149,16 +153,18 @@ switch(attack){
                 if !free{
                     attack_end();
                     set_state(has_hit ? PS_LAND : PS_PRATLAND);
-                    if !has_hit hsp = 0;
+                    // if !has_hit hsp = 0;
                 }
                 else if (window_timer == phone_window_end && window == 4){
-                    if !has_hit hsp = clamp(hsp, -3, 3);
+                    // if !has_hit hsp = clamp(hsp, -5, 5);
                     set_window_value(attack, window, AG_WINDOW_TYPE, 7 * !has_hit);
                 }
                 
                 if has_hit && !hitpause && window > 2 iasa_script();
                 
                 move_cooldown[AT_USPECIAL] = 1;
+                
+                // fall_through = (abs(vsp) < 3);
                 break;
             
         }

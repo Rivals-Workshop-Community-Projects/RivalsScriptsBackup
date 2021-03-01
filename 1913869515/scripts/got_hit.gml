@@ -46,7 +46,7 @@ if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 1{
             }
         }
 	 spawn_hit_fx ( x  , y - 20 , SC );
-	        take_damage(player,-1,enemy_hitboxID.damage * -1)
+	        take_damage(player,-1,floor(enemy_hitboxID.damage * -1))
 	        offense = 1
 	        offensetimer = 0
 	        if halo < 3 {

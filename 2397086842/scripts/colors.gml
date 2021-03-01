@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 4, 3, 15 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 12 );
+set_num_palettes( 13 );
 
 // Void
 set_color_profile_slot( 1, 0, 36, 255, 156 ); //Energy
@@ -145,6 +145,16 @@ set_color_profile_slot( 11, 4, 255, 229, 0 ); //eyes
 set_color_profile_slot( 11, 5, 86, 94, 89 ); //body
 set_color_profile_slot( 11, 6, 189, 139, 0 ); //skirt
 set_color_profile_slot( 11, 7, 91, 72, 94 ); //ears
+
+// Equaliza
+set_color_profile_slot( 12, 0, 89, 244, 255 ); //Energy
+set_color_profile_slot( 12, 1, 255, 143, 214 ); //Hair + parts
+set_color_profile_slot( 12, 2, 122, 242, 255 ); //shirt
+set_color_profile_slot( 12, 3, 133, 243, 255 ); //cloak1 + sock
+set_color_profile_slot( 12, 4, 122, 242, 255 ); //eyes
+set_color_profile_slot( 12, 5, 255, 255, 255 ); //body
+set_color_profile_slot( 12, 6, 255, 130, 209 ); //skirt
+set_color_profile_slot( 12, 7, 255, 102, 199 ); //ears
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -2,11 +2,33 @@
 
 //NSPECIAL GRAB FUNCTIONALITY (HIT_PLAYER)
 //Edited by: Delta Parallax
-
 //Grab the opponent, make sure nspecial_pos is updated for the ease.
-if (my_hitboxID.attack == AT_NSPECIAL){
-    nspecial_target = hit_player_obj;
-    nspecial_pos = [floor(nspecial_target.x), floor(nspecial_target.y)];
+
+switch (my_hitboxID.attack)
+{
+    case AT_USPECIAL:
+        if (my_hitboxID.hbox_num == 1 and vsp < 0 and uspecial_loops > 0) // check to see if it's a linking hit and you're moving upwards
+        {
+            var lerpam;
+            lerpam = [0.1,0.07]
+            if heartDebug
+            {
+                print_debug("HB "+ string(uspecial_loops) +" pos change: x="+string(hit_player_obj.x-lerp(floor(hit_player_obj.x), x + (16 * spr_dir),lerpam[0])) + ", y="+string(hit_player_obj.y-lerp(floor(hit_player_obj.y), y - 72,lerpam[1])))
+                if uspecial_loops == 4 print_debug("||||||||||||||||||||||||||||||||||")
+                
+            }
+            hit_player_obj.x = lerp(floor(hit_player_obj.x), x + (16 * spr_dir),lerpam[0]) //update x
+            hit_player_obj.y = lerp(floor(hit_player_obj.y), y - 72,lerpam[1]) //update y
+        }
+    break;
+    case AT_NSPECIAL:
+    if (has_hit_player)
+    {
+        djumps = 0;
+        nspecial_target = hit_player_obj;
+        nspecial_pos = [floor(nspecial_target.x), floor(nspecial_target.y)];
+    }
+    break;
 }
 
 //HEARTBREAK FUNCTIONALITY (HIT_PLAYER)
@@ -40,8 +62,11 @@ heartHitPlayer();
 //Check conditions
 var found;
 found = array_find_index(heartAttacks, my_hitboxID.attack);
-if (!hit_player_obj.clone and hit_player_obj.heartChainPlayer == noone and found != -1 and (array_find_index(heartAttackNumbers[found], my_hitboxID.hbox_num) != -1 or heartAttackNumbers[found][0] == -1) and !heartBreakInProgress)
+if (!my_hitboxID.was_parried and !hit_player_obj.clone and hit_player_obj.heartChainPlayer == noone and found != -1 and (array_find_index(heartAttackNumbers[found], my_hitboxID.hbox_num) != -1 or heartAttackNumbers[found][0] == -1) and !heartBreakInProgress)
 {
+    //play a sound
+    sound_play(sound_get("heart_applied"))
+    
     //Mark the player as chained
     hit_player_obj.heartChainPlayer = id;
 
@@ -50,9 +75,13 @@ if (!hit_player_obj.clone and hit_player_obj.heartChainPlayer == noone and found
     hx = hit_player_obj.x;
     hy = hit_player_obj.y - (hit_player_obj.char_height * .5);
     
-    heart = instance_create(hx,hy,"obj_article1");
+    heart = instance_create(floor(hx),floor(hy),"obj_article1");
     heart.chainedPlayer = hit_player_obj;
-    heart.heartChainsPos = findSpot();
+    
+    var find;
+    find = findSpot();
+    heart.heartChainsPos = find; 
+    hit_player_obj.heartPosition = find;
     heart.depth = 0;
     
     //Transfer stats
@@ -67,9 +96,17 @@ if (!hit_player_obj.clone and hit_player_obj.heartChainPlayer == noone and found
     heart.heartBreakMaxTimer = heartBreakMaxTimer;
     heart.heartBreakDetectSelf = heartBreakDetectSelf;
     
-    // if (hit_player_obj.url == "2233589685")
+    if (("heartbrakeCompatibility" in hit_player_obj) and hit_player_obj.heartbrakeCompatibility)
+    {
+        print("using")
+        heart.useCompatibility = true;
+        heart.articleSprites =  hit_player_obj.heartbrakeSprites;
+        heart.sprite_index = hit_player_obj.heartbrakeSprites[4];
+        heart.image_index = 0
+    }
+    // else
     // {
-    //     heart.sprite_index = 
+    //     heart.sprite_index = heartSprites[4];
     // }
 
     //Add to array of current hearts

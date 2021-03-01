@@ -13,3 +13,7 @@ if (hit_player_obj.should_make_shockwave) {
 
 
 }
+
+if attack == 49 {
+	hit_player_obj.visible = false;
+}

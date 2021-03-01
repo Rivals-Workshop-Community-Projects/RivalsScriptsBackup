@@ -5,7 +5,7 @@ shader_start();
 //draw_debug_text(x, y+8, string(window)+" "+string(window_timer))
 if fspecial_nodex != 0 {
 
-	draw_sprite(sprite_get("fspecial_node"),1+(!instance_exists(fspecial_box))*2,x+fspecial_nodex*spr_dir,y+fspecial_nodey)
+
 
 	var os = y-30
 	
@@ -15,7 +15,7 @@ if fspecial_nodex != 0 {
 	var xx = lengthdir_x(2, dr-90)
 	var yy = lengthdir_y(2, dr-90)
 	var im = 0;
-	
+	draw_sprite_ext(sprite_get("fspecial_node"),1+(!instance_exists(fspecial_box))*2,x+fspecial_nodex*spr_dir,y+fspecial_nodey,1*spr_dir,1,dr,c_white,1)	
 	
 	if attack == AT_FSPECIAL_2 im = max(5-window_timer, 0)+(state_timer mod 6 < 3)*7
 	else im += min(abs(fspecial_nodey-fspecial_nodey_start)*0.15, 5)+(fspecial_nodey < fspecial_nodey_start)*7
@@ -24,7 +24,7 @@ if fspecial_nodex != 0 {
 	draw_sprite_ext(sprite_get("rope"), im, (x-xx)+xs*spr_dir, os-yy, (d*spr_dir)*2, (1.3-d*0.5)*2, dr, c_black, image_alpha)
 	draw_sprite_ext(sprite_get("rope"), im, x+xs*spr_dir, os, (d*spr_dir)*2, (1.3-d*0.5)*2, dr, image_blend, image_alpha)
 	
-	draw_sprite(sprite_get("fspecial_node"),(!instance_exists(fspecial_box))*2,x+fspecial_nodex*spr_dir,y+fspecial_nodey)
+	draw_sprite_ext(sprite_get("fspecial_node"),(!instance_exists(fspecial_box))*2,x+fspecial_nodex*spr_dir,y+fspecial_nodey,1*spr_dir,1,dr,c_white,1)
 
 }
 

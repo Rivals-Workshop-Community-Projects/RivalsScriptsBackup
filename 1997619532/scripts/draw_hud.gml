@@ -158,19 +158,6 @@ if introtimer > 0 {
 
 ///Fuki 
 
-    if hit_player_obj.is_fuki {
-      if introhit = -1 && introtimer < 150 {
-           draw_debug_text(temp_x + 44,temp_y - 28,"I only need power.");
-      }
-      
-        if introhit = 1{
-           draw_debug_text(temp_x + 34,temp_y - 68,"HEY SIS wanna go");
-            draw_debug_text(temp_x + 36,temp_y - 52,"out this weekend?");
-
-      }
-      
-  }  
-  
 }
 
 

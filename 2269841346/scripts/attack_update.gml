@@ -326,14 +326,14 @@ if attack == AT_DSPECIAL{
     		if batt >= 1 {
     		if special_down {
     		sound_play(asset_get("sfx_spin"));
-        	batt -= 1
+        	batt -= 2
     	create_hitbox(AT_DSPECIAL , 1 , x , y - 42 );
 
     		}
     		
     		if !special_down {
     	sound_play(asset_get("sfx_spin"));	
-    		batt -= 1
+    		batt -= 2
     	create_hitbox(AT_DSPECIAL , 3 , x + (32 * spr_dir) , y - 32 );
     		}
     		}
@@ -341,7 +341,7 @@ if attack == AT_DSPECIAL{
     	
     }
     
-    if has_rune("O") and (window == 4 or window == 2) and batt > 0 {
+    if has_rune("O") and (window == 4 or window == 2) and batt > 1 {
     		    		    set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_HSPEED, 4 - random_func(1,8,true));
 	    					set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_VSPEED, 2 - random_func(2,6,true));
 	    					set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 4 - random_func(3,8,true));
@@ -350,19 +350,19 @@ if attack == AT_DSPECIAL{
     	if window_timer % 3 == 0 {
     		create_hitbox(AT_DSPECIAL , 3 , x + (32*spr_dir) , y - 32 );
     		create_hitbox(AT_DSPECIAL , 1 , x + (32*spr_dir) , y - 32 );
-    		batt -= 1
+    		batt += 1
     	}
     }
     
-    if window == 2 && window_timer == 1 && !hitpause && batt >= 1{
-    	batt -= 1
+    if window == 2 && window_timer == 1 && !hitpause && batt > 1{
+    	batt -= 2
     	sound_play(asset_get("sfx_spin"));
     	create_hitbox(AT_DSPECIAL , 3 , x + (32 * spr_dir) , y - 32 );
     }
     
-    if window == 3 && window_timer == 1 && !hitpause && batt >= 1{
+    if window == 3 && window_timer == 1 && !hitpause && batt > 1{
     	sound_play(asset_get("sfx_spin"));
-    	batt -= 1
+    	batt -= 2
     	create_hitbox(AT_DSPECIAL , 1 , x , y - 42 );
     }
     

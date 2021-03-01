@@ -391,7 +391,7 @@ if attack == AT_NSPECIAL{
          	    y += 2
          	} 
 		
-		if window_timer <= 1{
+		if window_timer <= 1 && "ai_target" not in self{
 			if left_down {
 				spr_dir = -1
 			}

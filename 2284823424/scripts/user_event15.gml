@@ -484,6 +484,12 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.17", "16 February, 2021");
+	initPatchWords("FStrong, Crossbow - Adjustments");
+	initPatchWords_ext("Melee hitbox no longer reaches behind Steve.
+	As a result of the adjustment, the forward range is slightly increased.
+	Melee hitbox lifetime 2 --> 3 (to match the animation).", fa_left, c_gray, 1, 0);
+	
 	initPatch("1.16", "07 February, 2021");
 	initPatchWords("Added an Advancement");
 	initPatchWords("Removed Herobrine");

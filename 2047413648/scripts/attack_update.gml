@@ -89,6 +89,7 @@ if (attack == AT_BAIR){
 }
 
 if (attack == AT_DAIR){
+	fall_through = true
 	can_fast_fall = false
 	if window == 1{
 		dairv = 0
@@ -114,8 +115,12 @@ if (attack == AT_DAIR){
 			hit_player_obj.x = x + 30
 		}
 		
-		hit_player_obj.y += ((y) - hit_player_obj.y) / 2
-		
+		hit_player_obj.y = y - 6
+		hit_player_obj.fall_through = true
+	}
+	
+	if has_hit_player {
+		soft_armor = 999
 	}
        
        if window == 3{
@@ -1212,15 +1217,15 @@ if attack == AT_DSTRONG or attack == AT_USTRONG or attack == AT_FSTRONG {
   	
   	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 2 + scharge/12);
     set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 9.5 );
-    set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1);
+    set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.15);
   	
   	set_hitbox_value(AT_USTRONG, 8, HG_DAMAGE, 6 + scharge/12);
     set_hitbox_value(AT_USTRONG, 8, HG_BASE_KNOCKBACK, 9.5 );
-    set_hitbox_value(AT_USTRONG, 8, HG_KNOCKBACK_SCALING, 1 );
+    set_hitbox_value(AT_USTRONG, 8, HG_KNOCKBACK_SCALING, 1.15 );
     
     set_hitbox_value(AT_USTRONG, 9, HG_DAMAGE, 6 + scharge/12);
     set_hitbox_value(AT_USTRONG, 9, HG_BASE_KNOCKBACK, 7 );
-    set_hitbox_value(AT_USTRONG, 9, HG_KNOCKBACK_SCALING, 1 );
+    set_hitbox_value(AT_USTRONG, 9, HG_KNOCKBACK_SCALING, 1.15 );
     
     set_hitbox_value(AT_DSTRONG, 5, HG_DAMAGE, 7 + scharge/12);
     set_hitbox_value(AT_DSTRONG, 5, HG_BASE_KNOCKBACK, 8 );

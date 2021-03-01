@@ -10,7 +10,7 @@ if !instance_exists(luma) luma = noone;
 
 
 
-if (!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN) && bee_time < bee_time_max bee_time += 2;
+if phone_landing && bee_time < bee_time_max bee_time += 2;
 
 if (phone_attacking && attack == AT_USPECIAL){
 	if !bee_moment{
@@ -20,7 +20,7 @@ if (phone_attacking && attack == AT_USPECIAL){
 	bee_moment = 1;
 	
 	if window > 1{
-		if bee_time bee_time--;
+		if bee_time && !("steve_water_check_frame" in self && abs(steve_water_check_frame - get_gameplay_time()) < 2) bee_time--;
 	
 		else{
 			sound_play(sfx_mario_galaxy_powerup_lose);
@@ -55,3 +55,7 @@ if (move_cooldown[AT_NSPECIAL] == 2){
 if phone_cheats[cheat_bee]{
 	bee_time = bee_time_max;
 }
+
+
+
+if phone_landing spin_refreshed = 1;

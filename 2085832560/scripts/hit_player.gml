@@ -46,29 +46,31 @@ if introhit = 0 {
 intro = 1
 
 
+if my_hitboxID.attack == AT_DTILT or my_hitboxID.attack == AT_UAIR  {
+ infernal2 += 10
 
-
+}
 
 if my_hitboxID.type == 1 or my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_UAIR or my_hitboxID.attack == AT_USTRONG
 or my_hitboxID.attack == AT_BAIR or my_hitboxID.attack == AT_NAIR or my_hitboxID.attack == AT_DAIR  or my_hitboxID.attack == AT_JAB
-or my_hitboxID.attack == AT_FTILT or my_hitboxID.attack == AT_DTILT{
+or my_hitboxID.attack == AT_FTILT or my_hitboxID.attack == AT_NAIR  {
 if infernal2 < 300{
 
 if infernal2 < 100 {	
-var infernaladd = floor(my_hitboxID.damage  * 4)
-    infernal2 += min(infernaladd,15)
+var infernaladd = floor(my_hitboxID.damage  * 5)
+    infernal2 += min(infernaladd,20)
 
 }
 
 if infernal2 >= 100 and infernal2 < 200 {	
-var infernaladd = floor(my_hitboxID.damage  * 5)
-    infernal2 += min(infernaladd,15)
+var infernaladd = floor(my_hitboxID.damage  * 6)
+    infernal2 += min(infernaladd,20)
 
 }
 
 if infernal2 >= 200 {	
-var infernaladd = floor(my_hitboxID.damage  * 6)
-    infernal2 += min(infernaladd,15)
+var infernaladd = floor(my_hitboxID.damage  * 7)
+    infernal2 += min(infernaladd,20)
 
 }
 

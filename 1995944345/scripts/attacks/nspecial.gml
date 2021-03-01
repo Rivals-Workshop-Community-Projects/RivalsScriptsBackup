@@ -8,7 +8,7 @@ set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("nspecial_air_hurt"));
 
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 24);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_syl_nspecial_plantgrowth"));
@@ -23,7 +23,7 @@ set_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_may_wrap1"));
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX_FRAME, 4);
 
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 

@@ -1,6 +1,6 @@
 //update
-
 if state == PS_SPAWN {
+	in_intro = 1;
     if attack_down && shield_down code_1 = 1;
     if attack_down && up_down code_2 = 4;
     if attack_down && left_down code_2 = 2;
@@ -18,12 +18,60 @@ if state == PS_SPAWN {
 			set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, taunt_sfx);
     	}
     }
-}
+} else in_intro = false;
 //player_color = get_player_color(player);
 
 if move_cooldown[AT_NSPECIAL] == 20 {
 	direc = darctan(-vsp/hsp)+180*(sign(hsp) == -1);
 }
+
+if !code_1 && get_gameplay_time() > 5 && get_gameplay_time() < shadow_end {
+	shadow_y -= shadow_speed;
+}
+if !code_1 && in_intro {
+	if get_gameplay_time() == 2 {
+		draw_indicator = false;
+		sound_play(sound_get("rocket_long"));
+        anim_x = x;
+        anim_y = y;
+        intro_index = 0;
+        index_offset = 0;
+        index_mod = 6;
+        s_adj = SD_Y_POS;
+        s_dist = s_adj - get_stage_data(SD_TOP_BLASTZONE);
+        if s_dist > -200 anim_y -= s_dist-150;
+        else anim_y -= 450;
+	}
+	
+	if abs(y-anim_y) > 10 {
+		draw_indicator = false;
+		anim_y += 15;
+		index_offset = 0;
+		index_mod = 6;
+	} else if get_gameplay_time() > 5 && intro_index < 11 && index_mod < 10 {
+		draw_indicator = false;
+		anim_y = y;
+		anim_x = x;
+		index_offset = 7;
+		index_mod = 5;
+		if intro_index < index_offset {
+			sound_play(asset_get("sfx_blow_heavy2"));
+        	spawn_hit_fx(x,y,304);
+		}
+		
+	} else {
+		index_offset = 11;
+        index_mod = 10;
+        draw_indicator = true;
+        state = PS_SPAWN;
+        in_intro = false;
+	}
+	
+	if intro_index < index_offset intro_index = index_offset;
+    if index_mod != 0 intro_index = ((intro_index-index_offset+intro_speed) % index_mod)+index_offset;
+}
+
+/*
 if !code_1 && index_mod < 11 { //&& player_color != 3
 	
     if get_gameplay_time() == 2 {
@@ -33,37 +81,39 @@ if !code_1 && index_mod < 11 { //&& player_color != 3
         anim_y = y;
         intro_index = 0;
         index_offset = 0;
-        index_mod = 4;
+        index_mod = 6;
         //sound_play(sound_get("hehe2"));
         if get_stage_data(SD_TOP_BLASTZONE)-s_adj > get_stage_data(SD_SIDE_BLASTZONE)-s_adj {
         s_dist = get_stage_data(SD_SIDE_BLASTZONE)-s_adj;
         }  else s_dist = get_stage_data(SD_TOP_BLASTZONE)-s_adj;
         if s_dist > 200 {
-	        anim_x -= s_dist*spr_dir;
+	        //anim_x -= s_dist*spr_dir;
 	        anim_y -= s_dist;
         } else {
-	        anim_x -= 300*spr_dir;
+	        //anim_x -= 300*spr_dir;
 	        anim_y -= 300;
 
         }
     }
     if abs(y-anim_y) > 10 {
         anim_y += 10;
-        anim_x += 10*spr_dir;
+        //anim_x += 10*spr_dir;
         index_offset = 0;
-        index_mod = 4;
-    } else if get_gameplay_time() > 5 && intro_index < 8 {
+        index_mod = 6;
+        draw_indicator = false;
+    } else if get_gameplay_time() > 5 && intro_index < 10 {
+    	draw_indicator = false;
     //	draw_indicator = true;
         anim_y = y;
         anim_x = x;
-        index_offset = 4;
-        index_mod = 5;
+        index_offset = 7;
+        index_mod = 4;
         if intro_index < index_offset {
         	sound_play(asset_get("sfx_blow_heavy2"));
         	spawn_hit_fx(x,y,304);
         }
     } else {
-    	index_offset = 9;
+    	index_offset = 11;
         index_mod = 11;
         draw_indicator = true;
         
@@ -71,12 +121,14 @@ if !code_1 && index_mod < 11 { //&& player_color != 3
     if intro_index < index_offset intro_index = index_offset;
     if index_mod != 0 intro_index = ((intro_index-index_offset+intro_speed) mod index_mod)+index_offset;
 }
+*/
 
-
-if attack == AT_NTHROW && window == 3 && get_gameplay_time() > 120 {
+if (attack == AT_NTHROW || state == PS_SPAWN) && window == 3 && get_gameplay_time() > 120 {
     set_state(PS_IDLE);
     attack = AT_JAB;
 }
+
+if state == PS_WALL_JUMP && state_timer == 1 nspecial_done = 0;
 
 if player_color == 1 && code_4 && !code_3 {
 	color_hsv=make_color_rgb(240,240,240); 
@@ -124,7 +176,6 @@ if code_3 { //Riped Kirby color code by Anguish
 	energy_clr[player_color] = color_hsv;
 }
 if (!free) {
-	dair_count = 0;
     nspecial_done = 0;
     uspecial_done = 0;
     if flight == flight_max flight--;
@@ -273,7 +324,7 @@ if draw_indicator == true && flight < flight_max {
 }
 
 //Outline code from Gustav
-if player_color == 13 outline_color = [get_color_profile_slot_r(player_color,0), get_color_profile_slot_g(player_color,0), get_color_profile_slot_b(player_color,0)]; 
+/*if player_color == 13 outline_color = [get_color_profile_slot_r(player_color,0), get_color_profile_slot_g(player_color,0), get_color_profile_slot_b(player_color,0)]; 
 if got_gun < got_gun_max {
     got_gun++;
     ccode = round(sin(got_gun*3.14159/got_gun_max)*100)+100;
@@ -282,8 +333,8 @@ if got_gun < got_gun_max {
     outline_color = [0,0,0];
     if player_color == 13 outline_color = [get_color_profile_slot_r(player_color,0), get_color_profile_slot_g(player_color,0), get_color_profile_slot_b(player_color,0)]; 
     
-} else
-    init_shader();
+    
+} else init_shader();*/
     
 
 if (has_hit == 1 || ((state == 5 || state == 6) && hit_timer > 0)) hit_timer = hit_timer_max;
@@ -302,7 +353,7 @@ if !game_is_go && player_color == 3 {
 	set_player_damage(player,random_func_2(5,200,true)+1);
 }
 
-
+if player_color == 13 outline_color = [get_color_profile_slot_r(player_color,0), get_color_profile_slot_g(player_color,0), get_color_profile_slot_b(player_color,0)]; 
 //Trummel Support
 
 if trummelcodecneeded {

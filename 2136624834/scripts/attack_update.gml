@@ -48,6 +48,12 @@ if attack == AT_DSPECIAL && !hitpause  {
 }
 
 if window == 5 && window_timer == 1 {
+		create_hitbox(AT_USPECIAL , 3 , x, y );
+		sound_play(sound_get("RI"));
+	spawn_hit_fx( x - (10 * spr_dir) , y - 40 , 306 )
+	spawn_hit_fx( x - (10 * spr_dir) , y - 40 , 302 )
+}
+if window == 5 && window_timer == 2 && has_hit_player{
 			ncharge = 100
 	create_hitbox(AT_USPECIAL , 3 , x, y );
 	timehit = 0
@@ -59,8 +65,10 @@ if window == 5 && window_timer == 1 {
 	spawn_hit_fx( x - (10 * spr_dir) , y - 40 , 306 )
 	spawn_hit_fx( x - (10 * spr_dir) , y - 40 , 302 )
 	timefreeze = 360
-	
+}
 
+if window == 5 && window_timer == 2 && !has_hit_player{
+	timestop = 60
 }
 
 if window == 5 && get_gameplay_time() % 2 == 0 && window_timer < 12{
@@ -328,6 +336,14 @@ if attack == AT_USTRONG && !hitpause {
 
 if attack == AT_DSTRONG && !hitpause {
 
+if window == 4 && window_timer == 14 {
+	if left_down && !right_down {
+		spr_dir = -1
+	}
+	if !left_down && right_down {
+		spr_dir = 1
+	} 
+}
 if window == 2 {
 	 			if window_timer == 1 {
 		spawn_hit_fx( x + ((55 + random_func(5, 20, true)) * spr_dir) , y - 44 + random_func(6, 30, true) , tauntpar1 )
@@ -420,11 +436,32 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 0.3);
 
 if attack == AT_USPECIAL {
  
- 
+
+if timefreeze > 40  {
+	vsp /= 1.1
+} 
 if uspechit && timefreeze > 40 && !hitpause {
 	vsp = 6
-	hit_player_obj.x += floor((x - hit_player_obj.x)/7)
-	hit_player_obj.y += floor((y - hit_player_obj.y)/7)
+
+	
+   with (asset_get("oPlayer")) {
+
+
+
+		if x != other.x {
+			
+					
+		 xrange = abs(x - other.x);
+         yrange = abs(other.y - y);
+         
+         if xrange <= 260 and yrange <= 260 {
+			x += floor((other.x - x)/7)
+            y += floor((other.y - y)/7)
+			
+		}
+	}
+   }
+	
 }
 
 if window < 3 {
@@ -830,11 +867,11 @@ if attack == AT_FAIR {
     
     if window == 2 {
     	if down_down && !hitpause{
-    		y += 4
+    		y += 2
     	}
     	
     	if up_down && !hitpause {
-    		y -= 4
+    		y -= 2
     	}
     	
     	if timefreeze > 1 {

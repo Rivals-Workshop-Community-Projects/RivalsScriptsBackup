@@ -8,7 +8,7 @@ GrappleMode = 0;
 // [Roses]   [Candy]   [Ribbon]   [Balloon]
 //    0         1         2           3
 
-LoveMeter = array_create(4, 0);
+LoveMeter = 0;
 
 Platform_Text = [ [44, "She cute tho"], [32, "Doki Doki"], [48, "100% Real Girl"], [32, "Date Girl"], [32, "Data Girl"], [46, "S U C C E S S"], [46, "World is Mine"], [34, "Digital Girl"], [44, "Do your best!"], [38, "Keep going!"], [28, "Press F"] ];
 platform_number = 0;

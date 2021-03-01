@@ -2,6 +2,7 @@
 
 init = 0;
 
+depth = -5;
 
 air_hurtbox_spr = sprite_get("fspecial_spin");
 spin_spr = sprite_get("fspecial_spin");
@@ -36,8 +37,10 @@ distBox = 0;
 hBox = noone;
 direc = 0;
 accel = .007;//.005
+accel_mod = 100;
+if has_rune("B") accel_mod = 300;
 fric = 1;
-hit_op = 0;
+hit_op = 1;
 last_hit_op = 0;
 hit_sp = 0;
 near_hit = 16;
@@ -46,6 +49,13 @@ hit_cd = 0;
 hit_cd_max = 60;
 hit_accel = 0;
 hit_jerk = 7/8;
+if has_rune("A") {
+    hit_jerk_b = 19/21;
+    hit_jerk_m = 11/21;
+} else {
+    hit_jerk_b = 7/8;
+    hit_jerk_m = 5/8;
+}
 hit_jerk_mod = 1;
 hit_since = 0;
 exploding = 0;
@@ -63,6 +73,8 @@ with player_id {
 player_hit = player;
 hit_damage = 0;
 last_hitbox = noone;
+
+max_star = 1;
 
 //Proj Vars
 hitSpeed = 4;

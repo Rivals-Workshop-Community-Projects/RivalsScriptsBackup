@@ -7,11 +7,11 @@
 
 // Sets current meter to 0 
 if (isFspecial){
-	if (LoveMeter[GrappleMode] > 0){
+	if (LoveMeter > 0){
 		spawn_hit_fx( x, y, hearthurt_fx);
 	}
 	
-	LoveMeter[GrappleMode] = 0;
+	LoveMeter = 0;
 }
 
 // Turns opponents status effects off if Date Girl is in specific states

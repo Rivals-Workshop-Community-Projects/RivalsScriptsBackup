@@ -47,7 +47,7 @@ knockback_adj = 0.95; //the multiplier to KB dealt to you. 1 = default, >1 = lig
 
 land_time = 4; //normal landing frames
 prat_land_time = 3;
-wave_land_time = 9;
+wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .1; //grounded deceleration when wavelanding
 
@@ -108,6 +108,7 @@ smoked_fx = hit_fx_create(sprite_get("smoke_debuff"), 12)
 smoked = false; //The smoked status effect
 smoke_hit_cooldown = 0;
 smoke_consumed = noone; //Smoke consumption
+smoke_timer_max = 600; //10 seconds
 
 max_fall_def = max_fall;
 walk_speed_def = walk_speed;
@@ -120,7 +121,7 @@ set_victory_bg(sprite_get("victory_bg"));
 set_victory_theme(CH_ZETTERBURN);
 
 //Attacks with status effects
-hbox_apply_smoke = [[AT_FSTRONG, 1], [AT_USTRONG, 1], [AT_DSTRONG, 1], [AT_EXTRA_1, 1], [AT_DSPECIAL, 1], [AT_DSPECIAL, 2]];
+hbox_apply_smoke = [[AT_FSTRONG, 1], [AT_USTRONG, 1], [AT_DSTRONG, 1], [AT_EXTRA_1, 1], [AT_EXTRA_1, 2], [AT_EXTRA_1, 3], [AT_DSPECIAL, 1], [AT_DSPECIAL, 2]];
 hbox_apply_smoke_consume = [[AT_UAIR, 3], [AT_FTHROW, 2], [AT_UTHROW, 2], [AT_FSPECIAL, 5], [AT_USPECIAL, 7]];
 hbox_throws = [[AT_UAIR, 2], [AT_UAIR, 3], [AT_FTHROW, 1], [AT_FTHROW, 2], [AT_UTHROW, 1], [AT_UTHROW, 2],
 [AT_FSPECIAL, 3],

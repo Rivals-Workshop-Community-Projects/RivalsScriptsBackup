@@ -125,6 +125,12 @@ if (my_hitboxID.attack == AT_USPECIAL){
 	    window_timer = 1;
 	    grabbedid.x = my_hitboxID.x;
 	    grabbedid.y = my_hitboxID.y;
+	    
+	    var max_moves = 30;
+	    with(grabbedid) while(collision_line(x + (5*other.spr_dir),y,x + (5*other.spr_dir),y+30,asset_get("par_block"),false,true) && max_moves > 0){
+	    	x-= other.spr_dir;
+	    	max_moves--;
+	    }
     }
 }
 

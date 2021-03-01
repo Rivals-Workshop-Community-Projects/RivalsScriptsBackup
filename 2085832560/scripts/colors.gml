@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 5, 46 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 8 );
+set_num_palettes( 9 );
 
 // Half Devil
 set_color_profile_slot( 1, 0, 255, 0, 0 ); //energy
@@ -106,15 +106,17 @@ set_color_profile_slot( 7, 5, 255, 208, 77 ); //pink fur
 set_color_profile_slot( 7, 6, 0, 0, 0 ); //eye1
 set_color_profile_slot( 7, 7, 0, 0, 0 ); //eye2
 
-// Syrie
-set_color_profile_slot( 8, 0, 255, 217, 0 ); //energy
-set_color_profile_slot( 8, 1, 135, 89, 42 ); //hair
-set_color_profile_slot( 8, 2, 176, 179, 240 ); //white
-set_color_profile_slot( 8, 3, 8, 19, 66 ); //shirt & blade
-set_color_profile_slot( 8, 4, 60, 73, 74 ); //limbs & metal
-set_color_profile_slot( 8, 5, 65, 99, 184 ); //pink fur
-set_color_profile_slot( 8, 6, 255, 217, 0 ); //eye1
-set_color_profile_slot( 8, 7, 255, 217, 0 ); //eye2
+
+// Equaliza
+set_color_profile_slot( 8, 0, 161, 255, 252 ); //energy
+set_color_profile_slot( 8, 1, 161, 255, 252 ); //hair
+set_color_profile_slot( 8, 2, 255, 255, 255 ); //white
+set_color_profile_slot( 8, 3, 255, 163, 204 ); //shirt & blade
+set_color_profile_slot( 8, 4, 161, 255, 252 ); //limbs & metal
+set_color_profile_slot( 8, 5, 255, 181, 238 ); //pink fur
+set_color_profile_slot( 8, 6, 251, 0, 255 ); //eye1
+set_color_profile_slot( 8, 7, 0, 255, 255 ); //eye2
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

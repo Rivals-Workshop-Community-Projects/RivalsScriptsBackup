@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 7 );
+set_num_palettes( 8 );
 
 // unnamed alt palette
 set_color_profile_slot( 1, 0, 210, 0, 0 ); //unnamed color row
@@ -67,7 +67,7 @@ set_color_profile_slot( 3, 6, 43, 43, 43 ); //unnamed color row
 set_color_profile_slot( 3, 7, 222, 222, 222 ); //unnamed color row
 
 // unnamed alt palette
-set_color_profile_slot( 4, 0, 210, 0, 0 ); //unnamed color row
+set_color_profile_slot( 4, 0, 1, 255, 0 ); //unnamed color row
 set_color_profile_slot( 4, 1, 13, 47, 12 ); //unnamed color row
 set_color_profile_slot( 4, 2, 20, 88, 46 ); //unnamed color row
 set_color_profile_slot( 4, 3, 50, 200, 86 ); //unnamed color row
@@ -87,7 +87,7 @@ set_color_profile_slot( 5, 6, 154, 125, 0 ); //unnamed color row
 set_color_profile_slot( 5, 7, 255, 201, 137 ); //unnamed color row
 
 // unnamed alt palette
-set_color_profile_slot( 6, 0, 210, 0, 0 ); //unnamed color row
+set_color_profile_slot( 6, 0, 189, 43, 70 ); //unnamed color row
 set_color_profile_slot( 6, 1, 53, 151, 191 ); //unnamed color row
 set_color_profile_slot( 6, 2, 189, 43, 70 ); //unnamed color row
 set_color_profile_slot( 6, 3, 255, 97, 97 ); //unnamed color row
@@ -95,6 +95,16 @@ set_color_profile_slot( 6, 4, 82, 185, 227 ); //unnamed color row
 set_color_profile_slot( 6, 5, 223, 235, 235 ); //unnamed color row
 set_color_profile_slot( 6, 6, 180, 186, 185 ); //unnamed color row
 set_color_profile_slot( 6, 7, 255, 255, 255 ); //unnamed color row
+
+// Equaliza
+set_color_profile_slot( 7, 0, 97, 189, 255 ); //unnamed color row
+set_color_profile_slot( 7, 1, 255, 127, 176 ); //unnamed color row
+set_color_profile_slot( 7, 2, 109, 212, 255 ); //unnamed color row
+set_color_profile_slot( 7, 3, 255, 255, 255 ); //unnamed color row
+set_color_profile_slot( 7, 4, 255, 194, 217 ); //unnamed color row
+set_color_profile_slot( 7, 5, 213, 240, 240 ); //unnamed color row
+set_color_profile_slot( 7, 6, 151, 222, 222 ); //unnamed color row
+set_color_profile_slot( 7, 7, 255, 255, 255 ); //unnamed color row
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -57,7 +57,7 @@ if next_state != undefined {
 	next_state = undefined
 }
 
-if state != PS_PRATLAND && state != PS_PRATFALL {
+if state != PS_PRATLAND && state != PS_PRATFALL && !((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_DSPECIAL_2) {
 	prat_land_time = 16;
 }
 
@@ -70,7 +70,7 @@ if !((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_DSPEC
 if shake_timer > 0 {
     shake_timer--;
 }
-pawn_move_timer++;
+pawn_move_timer++
 
 switch piece {
     case "P":
@@ -85,9 +85,10 @@ switch piece {
     short_hop_speed = 7;
     dash_stop_percent = 0.6;
     dash_turn_accel = 1.1;
-    ground_friction = 0.1;
+    ground_friction = 0.16;
     dash_speed = 5;
     initial_dash_speed = 5.5;
+    wave_friction = 0.1;
     break;
     
     case "R":

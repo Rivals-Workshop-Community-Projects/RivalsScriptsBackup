@@ -1544,8 +1544,12 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
     	if(!grabbed_solid)
     	with(grabbedid)
     	{
+        	
+        	
+        	
     		x += -other.hsp;
         	y += -other.vsp;
+        	
         	
         	// Super weird jankfest invisible grab meme fix
         	x = floor(x);
@@ -2045,7 +2049,7 @@ if (attack == AT_AIR_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_G
     	if(throw_dir == "up" && hitpause == false && window != 5)
     	{
     		
-    		if(from_dspecial)
+    		if((from_dspecial || from_uspecial))
     		{
 	    		vsp = -4;
 	    		hsp = 0;
@@ -2091,7 +2095,7 @@ if (attack == AT_AIR_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_G
     	// Left flip
     	if(throw_dir == "back" && hitpause == false && window != 5)
     	{
-    		if(from_dspecial)
+    		if((from_dspecial || from_uspecial))
     		{
     			vsp = -3;
     			hsp = -7*spr_dir;
@@ -2139,7 +2143,7 @@ if (attack == AT_AIR_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_G
     	{
     		
     		// Grounded ver
-    		if(from_dspecial)
+    		if((from_dspecial || from_uspecial))
     		{
 	    		vsp = -3;
 	    		hsp = 7*spr_dir;

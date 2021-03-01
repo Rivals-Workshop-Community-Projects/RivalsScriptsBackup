@@ -411,7 +411,7 @@ with phone{
 	initTipWords("Throw a fireball like usual. Has a slight cooldown. Throwing the fireball resets the charge. You cancelout of the charge by pressing parry.
 	Hold the Special button to charge it up and have it deal more damage and knockback when fully charged!");
 	if ("spr_nspecial_proj" in player_id) initTipImage_ext(player_id.spr_nspecial_proj, -5, fa_right, 1, c_white, 3, 40, 30, 60, 0);
-	initTipImage(player_id.spr_nspec, 6, fa_left, 1, c_white, 0);
+	initTipImage(player_id.spr_nspec, 7, fa_left, 1, c_white, 0);
 	//initTipImage(player_id.spr_fireball, 0, fa_right, 1, c_white, 0);
 	initTipImage_ext(player_id.spr_fireball, 6, fa_right, 1, c_white, 0, 20, 90, 96, 0);
 	
@@ -558,6 +558,49 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	
+	initPatch("1.9", "Febuary 15, 2021");
+	initPatchWords("General
+	~ Added Patch Notes for v1.8, as I forgot to add that when I updated Mario.
+	~ Fading smears have been adjusted to not last as long.");
+	initPatchWords("Neutral Special (Fireball)
+	- Pressing Parry during the charge doesn't cancel the move with a parry: rather, an animation plays where Mario puts away the fireball.");
+	
+	initPatch("1.8", "January 29, 2021");
+	initPatchWords("General
+	~ Abyss alt’s colors now mirror the “Poisoned” status from Super Mario RPG.
+	~ Added information about Mario’s alternate colors in the MunoPhone.
+	~ New idle animation.
+	~ New dash animation.
+	~ Adjusted Mario’s facial expression when jumping.
+	- Air Max Speed: 5.5 -> 5
+	~ Max Fall Speed: 13 -> 11
+	~ Fast Fall Speed: 16 -> 15");
+	initPatchWords("Jab (Right Punch, Left Punch, Kick)
+	~ Adjusted Mario’s facial expressions.");
+	initPatchWords("Forward Tilt (Cappy Toss)
+	- Total Hitbox Active Frames: 4 per hitbox -> 3 per hitbox
+	~ Different sound effect (pulled from Odyssey)");
+	initPatchWords("Up Tilt (Overhead Swing)
+	~ Removed the weak spike hitbox");	
+	initPatchWords("Neutral Air (Mario Kick)
+	- Startup: 3 -> 4
+	- Normal Hit Damage: 6 -> 5");
+	initPatchWords("Forward Strong (Hammer Swing)
+	+ Move has a little bit more range.");
+	initPatchWords("Down Strong (Sweep Kick)
+	- Startup: 11 -> 12
+	- Endlag: 16 -> 17
+	- First Hitbox size decreased.");
+	initPatchWords("Neutral Special (Fireball)
+	- Projectile Lifetime: 90 frames -> 65 frames");
+	initPatchWords("Forward Special (Dive)
+	- Startup: 6 -> 8
+	- Dive Damage: 6 -> 5
+	- Flip Damage: 7 -> 5");
+	initPatchWords("Up Special (Super Jump Punch)
+	~ Added information to the move in the MunoPhone.
+	+ Landing the first hit of the move should guarantee the rest of the hitboxes connecting.");
 	
 	initPatch("1.7", "January 20, 2021");
 	initPatchWords("General

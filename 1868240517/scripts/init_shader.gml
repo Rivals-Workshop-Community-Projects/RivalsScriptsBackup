@@ -15,13 +15,12 @@ if player_color == 13 {
     set_article_color_slot(1,250, 250, 250,0.0);
     set_character_color_shading(1,0);
 }
-
-if player_color == 14 {
+/*if player_color == 14 {
     set_character_color_slot(1,get_color_profile_slot_r(player_color,0), get_color_profile_slot_g(player_color,0), get_color_profile_slot_b(player_color,0),0.3);
     set_article_color_slot(1,get_color_profile_slot_r(player_color,0), get_color_profile_slot_g(player_color,0), get_color_profile_slot_b(player_color,0),0.3);
     
     set_character_color_shading(1,0);
-}
+}*/
 
 if player_color == 9 {
      //set_character_color_shading(1,-1);

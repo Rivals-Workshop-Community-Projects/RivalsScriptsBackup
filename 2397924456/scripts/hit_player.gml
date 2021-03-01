@@ -9,7 +9,7 @@ if my_hitboxID.attack == AT_NTHROW && !legion.badly_damaged{
 
 
 
-if ("article_owner" in my_hitboxID && my_hitboxID.true_type == 1){
+if ("article_owner" in my_hitboxID && my_hitboxID.true_type == 1 && !hit_player_obj.clone ){
 	my_hitboxID.article_owner.hitstop = round(hit_player_obj.hitstop);
 	my_hitboxID.article_owner.has_hit_player = 1;
 	my_hitboxID.article_owner.hit_player_obj = hit_player_obj;

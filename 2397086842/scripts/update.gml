@@ -136,8 +136,10 @@ with oPlayer if (activated_kill_effect) {
 }
 }
 
-if killwho != 0 && move_cooldown[AT_NSPECIAL_2] < 80  {
+if killwho != 0 && move_cooldown[AT_NSPECIAL_2] < 80 && !hitpause {
 	if killwho.state_cat != SC_HITSTUN {
+		
+		if killwho.visible = false {
 			sound_play(sound_get("clap"),false,noone,1)	
 			
 			if get_gameplay_time() % 4 == 0 {
@@ -152,9 +154,10 @@ if killwho != 0 && move_cooldown[AT_NSPECIAL_2] < 80  {
 			if get_gameplay_time() % 4 == 3 {
 					sound_play(sound_get("RT"),false,noone,1)	
 			}
-			
+		}
 		killattack = -1
 	}
+	
 	if killtimer == 1 {
 		spawn_hit_fx (killwho.x,killwho.y - 30, 304)
 		       sound_play(sound_get("b1"),false,noone,1)
@@ -220,12 +223,19 @@ if killwho != 0 && move_cooldown[AT_NSPECIAL_2] < 80  {
 	 	
 		with killwho {
 		if  other.killtimer <= 2{
+			if x < other.x {
+						spr_dir = -1
+			} else {
+				spr_dir = 1
+			}
+			y = other.y - 10
 			hsp = 20*spr_dir
 			vsp = -8
 		} 
 		
 		
 		if  other.killtimer== 10{
+
 			with other{
 			spawn_hit_fx(killwho.x,killwho.y,301)
 			sound_play(asset_get("sfx_absa_singlezap1"))
@@ -309,4 +319,38 @@ if move_cooldown[AT_NSPECIAL_2] > 80 && !hitstop {
 if !hitstop {
  move_cooldown[AT_NSPECIAL_2] = 0	
 }
+}
+
+if get_player_color(player) == 12 {
+	outline_color = [19, 15, 28]
+   if visible {  
+   	if !hitpause {
+	if get_gameplay_time() % 40 == 0	 {
+   	set_color_profile_slot(get_player_color(player),0, 255, 196, 244); 
+	} 
+	
+	if get_gameplay_time() % 40 == 26{
+	set_color_profile_slot(get_player_color(player),0, 0, 191, 255 );	
+	}
+	
+    if get_gameplay_time() % 40 == 13 {
+	set_color_profile_slot(get_player_color(player),0, 160, 195, 250 );	
+	}
+   	}
+   	
+   	if hitpause {
+	if get_gameplay_time() % 8 == 0	 {
+   	set_color_profile_slot(get_player_color(player),0, 255, 196, 244); 
+	} 
+	
+	if get_gameplay_time() % 8 == 6{
+	set_color_profile_slot(get_player_color(player),0, 0, 191, 255 );	
+	}
+	
+    if get_gameplay_time() % 8 == 3 {
+	set_color_profile_slot(get_player_color(player),0, 160, 195, 250 );	
+	}
+   	}
+	}
+    init_shader();	 
 }

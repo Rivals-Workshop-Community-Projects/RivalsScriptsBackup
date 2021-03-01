@@ -84,3 +84,9 @@ if (my_hitboxID.attack == AT_FSPECIAL) {
 	 }
 }
 
+if (my_hitboxID.attack == AT_USPECIAL or my_hitboxID.attack == AT_NSPECIAL) {
+if cloneout = 0 {
+   	create_hitbox(AT_DSPECIAL, 1, x, y - 40)
+     	cloneout = 1
+} 
+}

@@ -26,7 +26,7 @@ alt_name[10] = "RAT";
 alt_name[11] = "Blue";
 alt_name[12] = "Glass";
 alt_name[13] = "Wireframe";
-alt_name[14] = "UNUSED";
+alt_name[14] = "Alchemy";
 alt_name[15] = "UNUSED";
  
  

@@ -53,6 +53,55 @@ switch attack {
         set_attack_value(AT_JAB, AG_OFF_LEDGE, 0);
         set_attack_value(AT_JAB, AG_CATEGORY, 0);
     break;
+    case AT_DSPECIAL:
+        reset_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED_TYPE);
+        reset_window_value(AT_FSTRONG, 3, AG_WINDOW_VSPEED_TYPE);
+        reset_window_value(AT_DSTRONG, 3, AG_WINDOW_HSPEED_TYPE);
+        reset_window_value(AT_DSTRONG, 3, AG_WINDOW_VSPEED_TYPE);
+        reset_window_value(AT_USTRONG, 3, AG_WINDOW_HSPEED_TYPE);
+        reset_window_value(AT_USTRONG, 3, AG_WINDOW_VSPEED_TYPE);
+        reset_window_value(AT_FSTRONG_2, 3, AG_WINDOW_HSPEED_TYPE);
+        reset_window_value(AT_FSTRONG_2, 3, AG_WINDOW_VSPEED_TYPE);
+        reset_window_value(AT_DSTRONG_2, 3, AG_WINDOW_HSPEED_TYPE);
+        reset_window_value(AT_DSTRONG_2, 3, AG_WINDOW_VSPEED_TYPE);
+        reset_window_value(AT_USTRONG_2, 3, AG_WINDOW_HSPEED_TYPE);
+        reset_window_value(AT_USTRONG_2, 3, AG_WINDOW_VSPEED_TYPE);
+        
+        reset_attack_value(AT_FSTRONG, AG_CATEGORY);
+        reset_attack_value(AT_DSTRONG, AG_CATEGORY);
+        reset_attack_value(AT_USTRONG, AG_CATEGORY);
+        reset_attack_value(AT_FSTRONG_2, AG_CATEGORY);
+        reset_attack_value(AT_DSTRONG_2, AG_CATEGORY);
+        reset_attack_value(AT_USTRONG_2, AG_CATEGORY);
+    break;
+    case AT_NSPECIAL:
+        var ring_active = false;
+        with obj_article2 {
+            if player_id == other {
+                if state != 2 {
+                    ring_active = true;
+                }
+            }
+        }
+        if ring_active {
+            with obj_article2 {
+    			if player_id == other {
+    				if state == 1 {
+    					is_horizontal = !is_horizontal;
+    					is_up = (spr_dir * original_direction + 1) / 2;
+    					rotation_direction = -original_direction;
+    					state = 7;
+    					sound_play(asset_get("sfx_bird_nspecial2"));
+    				}
+    			}
+    		}
+            clear_button_buffer(PC_SPECIAL_PRESSED);
+            move_cooldown[AT_NSPECIAL] = 10;
+            set_state(PS_IDLE);
+        } else {
+            //reset_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS);
+        }
+    break;
     default:
     break;
 }
@@ -127,6 +176,25 @@ switch attack {
     case AT_DSTRONG:
     case AT_FSTRONG:
     case AT_USTRONG:
+        reset_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED_TYPE);
+        reset_window_value(AT_FSTRONG, 3, AG_WINDOW_VSPEED_TYPE);
+        reset_window_value(AT_DSTRONG, 3, AG_WINDOW_HSPEED_TYPE);
+        reset_window_value(AT_DSTRONG, 3, AG_WINDOW_VSPEED_TYPE);
+        reset_window_value(AT_USTRONG, 3, AG_WINDOW_HSPEED_TYPE);
+        reset_window_value(AT_USTRONG, 3, AG_WINDOW_VSPEED_TYPE);
+        reset_window_value(AT_FSTRONG_2, 3, AG_WINDOW_HSPEED_TYPE);
+        reset_window_value(AT_FSTRONG_2, 3, AG_WINDOW_VSPEED_TYPE);
+        reset_window_value(AT_DSTRONG_2, 3, AG_WINDOW_HSPEED_TYPE);
+        reset_window_value(AT_DSTRONG_2, 3, AG_WINDOW_VSPEED_TYPE);
+        reset_window_value(AT_USTRONG_2, 3, AG_WINDOW_HSPEED_TYPE);
+        reset_window_value(AT_USTRONG_2, 3, AG_WINDOW_VSPEED_TYPE);
+        
+        reset_attack_value(AT_FSTRONG, AG_CATEGORY);
+        reset_attack_value(AT_DSTRONG, AG_CATEGORY);
+        reset_attack_value(AT_USTRONG, AG_CATEGORY);
+        reset_attack_value(AT_FSTRONG_2, AG_CATEGORY);
+        reset_attack_value(AT_DSTRONG_2, AG_CATEGORY);
+        reset_attack_value(AT_USTRONG_2, AG_CATEGORY);
         var in_wind = false;
         with obj_article3 {
         	if player_id.url == other.url {

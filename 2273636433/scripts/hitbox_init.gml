@@ -11,6 +11,7 @@ if (attack == AT_NSPECIAL){
 	 charge = 0;
 	 roll = 0;
 	 limit = 1;
+
 	 //KNOCKBACK
 	 if (kb_value) == 4{ //Starts at 0
 		 C_knock = 0;
@@ -26,3 +27,24 @@ if (attack == AT_NSPECIAL){
 		
 	 reset = 0;
 }
+
+if (attack == AT_NSPECIAL){
+
+ proj_reflectable = 1 ;
+MattCanGrab = true;
+MorshuCanGrab = true;
+
+}
+
+if (attack == 49){
+MattCanGrab = true;
+player_id.fs_hit = 0;
+}
+
+
+if (attack == AT_FSPECIAL){
+MattStar = true;
+MorshuBomb = true;
+}
+
+forced = 0;

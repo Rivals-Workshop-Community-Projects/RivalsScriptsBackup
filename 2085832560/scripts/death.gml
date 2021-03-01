@@ -1,7 +1,6 @@
-infernal2 /= 1.25
+infernal2 -= floor(infernal2/3)
 
 
-gunname = 0
 
  with (asset_get("pHitBox")) {
         if player_id == other.id {

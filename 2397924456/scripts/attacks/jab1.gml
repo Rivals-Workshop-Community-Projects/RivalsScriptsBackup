@@ -1,4 +1,5 @@
 set_attack_value(AT_JAB, AG_SPRITE, sprite_get("jab1"));
+set_attack_value(AT_JAB, AG_MUNO_ATTACK_NAME, "Jab 1");
 set_attack_value(AT_JAB, AG_AIR_SPRITE, sprite_get("jab1_air"));
 set_attack_value(AT_JAB, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab1_hurt"));

@@ -140,8 +140,8 @@ if attack == AT_FAIR {
 if attack == AT_FSTRONG {
      set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 7);
      set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 8);
-     set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.7);
-     set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 0.7);
+     set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1);
+     set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1);
      if window == 4 {
      	
      	
@@ -670,6 +670,9 @@ if attack == AT_FSPECIAL  {
 }
 
 if attack == AT_DSPECIAL {
+	if gunname = 0 {
+		set_attack(AT_NSPECIAL)
+	}
 	can_fast_fall = false
 	move_cooldown[AT_DSPECIAL] = 999
 	
@@ -682,19 +685,7 @@ if attack == AT_DSPECIAL {
 	if window = 2{
 		if infernal2 <= 300{
 		
-		if guntier == 0{
-			infernal2 += 1
-		}	
-		
-		if guntier == 1{
-			if window_timer % 2 == 0{
-			infernal2 += 1
-			}
-		}
-		
-			if window_timer % 2 == 0{
-			infernal2 += 1
-			}
+				infernal2 += 1.5
 		
 		
 			if window_timer % 2 == 0{
@@ -705,7 +696,7 @@ if attack == AT_DSPECIAL {
 		 spawn_hit_fx( x + 40 - random_func(3, 80, true), y - random_func(4, 100, true) , smoke1 )
 			}
 			
-		if state_timer % 12 == 0{
+		if state_timer % 8 == 0{
 			take_damage(player, -1, 1)
 		}
 		}
@@ -723,7 +714,27 @@ if attack == AT_DSPECIAL {
 
 
 if attack == AT_NSPECIAL {
+
+if window == 1 && window_timer == 1 {
+if gunname >= 0 && gunname <= 3 && infernal2 < 100 {
+	gunname = 0
+	infernal2 = 0
 	
+}
+
+
+if gunname >= 4 && gunname <= 7 && infernal2 < 200 {
+	gunname = 0
+	infernal2 = 0
+}
+
+
+if gunname >= 8 && infernal2 < 300 {
+	gunname = 0
+	infernal2 = 0
+}
+}
+
     lmtime = 360
 
 	if  free {
@@ -1464,7 +1475,10 @@ if attack == AT_TAUNT {
 	
 	
 	if window == 15 && infernal2 >= 300 {
+		take_damage(player, -1, 50)
 		infernal2 = 0
+		shake_camera(6,6)
+		sound_play(asset_get("sfx_abyss_explosion"))
 if spr_dir == 1 {
 	set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_SPRITE, sprite_get("tt3"));
 		spawn_hit_fx( x + (10 * spr_dir)  , y - 50 , 306 )
@@ -1974,7 +1988,7 @@ if window == 13 {
 					create_hitbox(AT_FSPECIAL , 1 , x + (32 * spr_dir) , y - 24 );
 				}
 				
-				if !free && jump_pressed {
+				if jump_pressed {
 					 spawn_hit_fx( x , y , 303 )
 				 window = 23
 				 window_timer = 0

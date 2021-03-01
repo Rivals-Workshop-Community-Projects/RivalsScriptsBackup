@@ -12,3 +12,4 @@ is_ai = true;
 cuttertimer = 200
 recoverytimer = 0;
 
+rec_joy_dir = 90;

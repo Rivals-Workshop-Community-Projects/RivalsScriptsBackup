@@ -1,8 +1,10 @@
 //Hello, curious one!
 //Heartbrake developed by Trail Mix, with major coding assistance from Delta Parallax.
 
-//Check out Seeds of Aether, a workshop development group that Delta Parallax is involved in!
-//Or check out my other stuff on Workshop! You can find it from the Workshop page you downloaded this character from.
+//Check out Seeds of Aether, a workshop development group that Delta Parallax is involved in! https://discord.gg/U3xSFXp
+//Or check out my other stuff on Workshop! You can find it from the Workshop page you downloaded this character from, or check out my server, 
+//The Mix-Up, to stay up-to-date on what I'm developing. https://discord.gg/ezkZ9rGB2A
+
 //Also, don't forget to visit the Rivals of Aether Extended Workshop discord server!
 
 hurtbox_spr = asset_get("ex_guy_hurt_box");
@@ -72,6 +74,33 @@ vbrake_timer = 0; //used specifically for heartbrake's infinite vbrakes cheat
 
 uspecial_loops = 0; //the amount of times that uspecial's spin hitbox has looped
 uspecial_max_loops = 6; //the amount of times that uspecial's spin hitbox WILL loop
+
+////DEBUG MODE!
+
+//Whether one can activate Debug Mode in this build.
+heartDebugTriggerable = false;
+
+//Whether Debug Mode is active or not.
+heartDebug = false;
+
+heartDebugTimer = [0,20];
+
+//COMPATIBILITY
+
+//Turns compatibility off and on
+heartbrakeCompatibility = false;
+
+//Sprites to use
+heartbrakeSprites = [sprite_get("heart_ditto"), sprite_get("heartlefthalf_ditto"), sprite_get("heartrighthalf_ditto"), sprite_get("chainlinks_ditto"), sprite_get("heartappear")]
+
+//entranceFrames: how long it takes for the heart to come in
+entranceFrames = 3
+
+//heartAnimSpeed: how fast the heart sprite animates
+heartAnimSpeed = .4
+
+//heartChainNumber: how many chains should be drawn
+heartChainCount = 10
 
 //DAIR fast-fall stuff 
 //By: Delta Parallax
@@ -154,6 +183,9 @@ nspecial_pcol_change = [0,0,0]
 //     nspecial_pcol_change[i] = (end_col[i]-nspecial_pcol[i]) / lifetime
 // }
 
+////FSPECIAL stuff
+fspecial_needles = []
+
 ////HEARTBREAK FUNCTIONALITY (INIT)
 ////By: Delta Parallax (Thank you so much!)
 
@@ -161,15 +193,13 @@ nspecial_pcol_change = [0,0,0]
 
 //heartSprites: the sprite references for the heart, its parts, and the chain.
 //The first element is the whole heart, the second and third are its left and right halves respectively, and the last is the chain.
-heartSprites = [sprite_get("heart"), sprite_get("heartlefthalf"), sprite_get("heartrighthalf"), sprite_get("chainlinks")]
-
-//heartDittoSprites: sprites used for when the linked player is another heartbrake
-heartDittoSprites = [sprite_get("heart_ditto"), sprite_get("heartlefthalf_ditto"), sprite_get("heartrighthalf_ditto"), sprite_get("chainlinks_ditto")]
+heartSprites = [sprite_get("heart"), sprite_get("heartlefthalf"), sprite_get("heartrighthalf"), sprite_get("chainlinks"), sprite_get("heartappear")]
 
 //heartSounds: the sounds that the heart makes.
 heartSounds = [sound_get("sfx_heartbreak"), sound_get("sfx_heartreassemble")]
 
-//heartChainNumber: the number of chains that appear between the heart and the chained player. Adjust to your heart's content.
+//heartChainNumber: the number of chains (- 1) that appear between the heart and the chained player. Adjust to your heart's content.
+// heartChainNumber = 6
 heartChainNumber = 6
 
 //heartAttacks: an array of moves that will cause your opponent to become chained.
@@ -209,7 +239,8 @@ heartDistanceThreshold = 220;
 heartTension = (1/30)
 
 //heartFriction: The friction when slowing down
-heartFriction = .5
+// heartFriction = .5
+heartFriction = .6
 
 //heartLerpVal: Between 0 and 1. The lower this number is, the more smoothly (but slowly???) the heart will change direction.  
 heartLerpVal = 0.07
@@ -219,6 +250,9 @@ heartBreakMaxTimer = [25, 15];
 
 //heartBreakDetectSelf: Whether to detect yourself.
 heartBreakDetectSelf = false;
+
+//heartChainPlayer
+heartChainPlayer = noone;
 
 //hit effects
 

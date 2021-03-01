@@ -1,4 +1,5 @@
 sprite_change_offset("idle", 48, 92);
+sprite_change_offset("idlewing", 48, 92);
 sprite_change_offset("clonerot", 48, 0);
 sprite_change_offset("crouch", 48, 92);
 sprite_change_offset("walk", 46, 92);
@@ -67,7 +68,9 @@ sprite_change_offset("dair", 136, 140);
 
 
 sprite_change_offset("strong", 136, 140);
-
+sprite_change_offset("ustrong", 136, 180);
+sprite_change_offset("dstrong", 136, 140);
+sprite_change_offset("fstrong", 136, 140);
 
 sprite_change_offset("jab", 136, 140);
 

@@ -209,8 +209,6 @@ if (x != clamp(x, player_id.blastzone_l, player_id.blastzone_r) || y > player_id
 
 
 if player == orig_player getHit();
-print_debug(string(player))
-print_debug(string(orig_player))
 
 
 

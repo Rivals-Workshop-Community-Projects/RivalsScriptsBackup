@@ -28,7 +28,7 @@ set_window_value(AT_DSPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_ice_shatter"));
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_SFX_FRAME, 0);
 
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_HAS_SFX, 1);

@@ -52,8 +52,8 @@ with (asset_get("oPlayer")){
     	smoke_hit_cooldown --;
     }
     
-    if (smoked) {
-        smoked_timer --;
+    if (smoked && other.grabbedid != id) {
+        //smoked_timer --;
 		outline_color = [smoke_r, smoke_g, smoke_b];
 			init_shader();
 		outline_color = [ 0, 0, 0 ];
@@ -74,7 +74,7 @@ with (asset_get("oPlayer")){
         }
         //manual_flash = 602;
         //Reset the effect
-        if (smoked_timer <= 0)
+        if (smoked_timer <= 1)
         {
             //manual_flash = 0;
             sound_play(asset_get("sfx_forsburn_consume_fail"));

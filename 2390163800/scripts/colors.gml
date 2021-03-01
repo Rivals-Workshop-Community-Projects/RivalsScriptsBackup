@@ -33,7 +33,7 @@ set_color_profile_slot_range( 6, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 13 );
+set_num_palettes( 14 );
 
 // 1 delirium
 set_color_profile_slot( 1, 0, 255, 255, 255 ); //spine
@@ -135,7 +135,7 @@ set_color_profile_slot( 10, 5, 195, 151, 26 ); //error
 set_color_profile_slot( 10, 6, 150, 136, 84 ); //computer2
 set_color_profile_slot( 10, 7, 0, 255, 0 ); //unnamed color row
 
-// 11 cookie || she didnt tell me the characters name
+// 11 cookie ||  dust
 set_color_profile_slot( 11, 0, 90, 120, 166 ); //spine
 set_color_profile_slot( 11, 1, 79, 78, 74 ); //computer
 set_color_profile_slot( 11, 2, 220, 221, 221 ); //screen
@@ -154,6 +154,17 @@ set_color_profile_slot( 12, 4, 253, 31, 108 ); //eye
 set_color_profile_slot( 12, 5, 18, 18, 18 ); //error
 set_color_profile_slot( 12, 6, 253, 31, 108 ); //computer2
 set_color_profile_slot( 12, 7, 0, 255, 0 ); //unnamed color row
+
+//13 unobtainable
+set_color_profile_slot( 13, 0, 51, 106, 68 ); //spine
+set_color_profile_slot( 13, 1, 0, 117, 38 ); //computer
+set_color_profile_slot( 13, 2, 43, 102, 239 ); //screen
+set_color_profile_slot( 13, 3, 0, 0, 145 ); //road
+set_color_profile_slot( 13, 4, 138, 0, 0 ); //eye
+set_color_profile_slot( 13, 5, 208, 199, 162 ); //error
+set_color_profile_slot( 13, 6, 0, 83, 27 ); //computer2
+set_color_profile_slot( 13, 7, 51, 106, 68 ); //unnamed color row
+
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

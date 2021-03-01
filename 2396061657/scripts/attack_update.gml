@@ -24,7 +24,7 @@ if (attack == AT_NAIR){
 	// Can cancel nair early if they land a hit
 	if (has_hit_player && !free){
 		can_attack = true;
-		can_jump = true;
+//		can_jump = true;
 		can_move = true;
 		can_special = true;
 		can_walk = true;
@@ -49,8 +49,8 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_NTHROW && win
 
 // Allows player to gain meter during training mode by pressing taunt
 if (attack == AT_TAUNT && state_timer == 1 && get_training_cpu_action() != CPU_FIGHT){
-	if (LoveMeter[GrappleMode] <= 190){
-		LoveMeter[GrappleMode] += 10;
+	if (LoveMeter <= 190){
+		LoveMeter += 10;
 	}
 }
 

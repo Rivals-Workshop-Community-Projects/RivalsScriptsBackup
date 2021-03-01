@@ -42,7 +42,7 @@ set_window_value(AT_EXTRA_1, 4, AG_WINDOW_SFX_FRAME, 0);
 /// 3
  
 set_window_value(AT_EXTRA_1, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_EXTRA_1, 5, AG_WINDOW_LENGTH, 24);
+set_window_value(AT_EXTRA_1, 5, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_EXTRA_1, 5, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_EXTRA_1, 5, AG_WINDOW_ANIM_FRAME_START, 22);
 set_window_value(AT_EXTRA_1, 5, AG_WINDOW_HAS_SFX, 1);
@@ -51,7 +51,7 @@ set_window_value(AT_EXTRA_1, 5, AG_WINDOW_SFX_FRAME, 1);
 
 set_window_value(AT_EXTRA_1, 6, AG_WINDOW_TYPE, 1);
 set_window_value(AT_EXTRA_1, 6, AG_WINDOW_LENGTH, 1);
-set_window_value(AT_EXTRA_1, 6, AG_WINDOW_ANIM_FRAMES, 10);
+set_window_value(AT_EXTRA_1, 6, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_EXTRA_1, 6, AG_WINDOW_ANIM_FRAME_START, 27);
 set_window_value(AT_EXTRA_1, 6, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_EXTRA_1, 6, AG_WINDOW_SFX, sound_get("GL"));

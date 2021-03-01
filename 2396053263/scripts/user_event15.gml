@@ -254,7 +254,7 @@ pho_has_daro_codec = 0; // Dialogue for the Daroach boss fight
 
 
 if (object_index == asset_get("cs_playerbg_obj")){
-	num_alts = 6; // Number of alt costumes; controls how many appear on the CSS
+	num_alts = 14; // Number of alt costumes; controls how many appear on the CSS
 	exit;
 }
 

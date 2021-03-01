@@ -28,3 +28,8 @@ if (has_rune("O")){
     has_airdodge = true;
     has_walljump = true;
 }
+
+//final smash
+if (my_hitboxID.attack == 49){
+    sound_play(sound_get("horn"));
+}

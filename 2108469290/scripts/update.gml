@@ -375,7 +375,7 @@ if hhalo = 1 {
 }
 
 if "ai_target" in self {
-	
+	if (get_training_cpu_action() == CPU_FIGHT){	
 //////////remember their attacks 	
 if ai_target.state == PS_ATTACK_AIR or ai_target.state == PS_ATTACK_GROUND {
 	
@@ -397,5 +397,6 @@ if state_cat == SC_HITSTUN {
 	if x > room_width/2 - 400 and x < room_width/2 - 400 {
 		vsp += 0.4
 	} 
+}
 }
 }

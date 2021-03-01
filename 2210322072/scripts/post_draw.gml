@@ -59,7 +59,7 @@ if soultimer % 3 == 0 {
 }
 
 
-if soultimer > -300 {
+if soultimer > -340 {
         if soulfree == -1{
    if souldir = -1 {
     draw_sprite(sprite_get("dspecl"), 5, soulx, souly); 

@@ -1,5 +1,8 @@
 if get_gameplay_time() > 120 {
-	
+
+
+
+if (get_training_cpu_action() == CPU_FIGHT){	
 	
 
 move_cooldown[AT_FSPECIAL] = 999 	
@@ -167,7 +170,6 @@ if attack == AT_DSTRONG && window == 1 {
 
 
 
-if (get_training_cpu_action() == CPU_FIGHT){
 
 if  hhalo == 0 && lockon == 0 && free && can_attack && move_cooldown[AT_DSPECIAL] == 0 && ai_target.y - 20 > y && y < room_height - 300{
 	set_attack (AT_DSPECIAL)

@@ -5,7 +5,8 @@ if attack == AT_EXTRA_1 && hbox_num == 1 {
  
 var heal_player = instance_place(x, y, oPlayer)
 prevheal_player = 0
-if (heal_player != noone) && heal_player.id != player_id && hitbox_timer > 0 && heal_player != prevheal_player{
+if (heal_player != noone) && heal_player.id != player_id && hitbox_timer > 0 && heal_player != prevheal_player
+&& heal_player.visible == true{
 	create_hitbox(AT_EXTRA_1, 3 , heal_player.x, heal_player.y - 40)
 	spawn_hit_fx(heal_player.x, heal_player.y - 40, slashc)
 	sound_play(asset_get("sfx_bird_sidespecial_start"))
@@ -96,7 +97,7 @@ if attack == AT_FSPECIAL && hbox_num == 3 {
     	hitbox_timer = 120
 	}
 	
-	if hitbox_timer < 280 && player_id.stormtarget.state != PS_DEAD && player_id.stormtarget.state != PS_RESPAWN {
+	if hitbox_timer < 290 && player_id.stormtarget.state != PS_DEAD && player_id.stormtarget.state != PS_RESPAWN {
 		if  hitbox_timer < 270 {
 		image_index = (hitbox_timer % 12)/3
 		}
@@ -139,9 +140,9 @@ if attack == AT_DSPECIAL && hbox_num == 3 {
 
 if attack == AT_DSPECIAL && hbox_num == 2 {
 	
-	  player_id.move_cooldown[AT_DSPECIAL] = 30
+	  player_id.move_cooldown[AT_DSPECIAL] = 60
 	  
-	if hitbox_timer % 3 <= 1 && hitbox_timer > 30 {
+	if hitbox_timer % 3 <= 1 && hitbox_timer > 20 {
 		 sound_play(sound_get("SpaceCutB"),false,noone,0.4) 	
 	create_hitbox(AT_DSPECIAL,1,x + 100 - random_func(1,200,true),y)
 	}

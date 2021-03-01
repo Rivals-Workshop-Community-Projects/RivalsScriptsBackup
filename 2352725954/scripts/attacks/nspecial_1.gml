@@ -41,7 +41,6 @@ set_hitbox_value(AT_NSPECIAL_1, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_NSPECIAL_1, 1, HG_BASE_KNOCKBACK, 14.5);
 set_hitbox_value(AT_NSPECIAL_1, 1, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_NSPECIAL_1, 1, HG_HIT_SFX, sound_get("sfx_swordheavy"));
-set_hitbox_value(AT_NSPECIAL_1, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_NSPECIAL_1, 1, HG_EXTRA_HITPAUSE, 5);
 set_hitbox_value(AT_NSPECIAL_1, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_NSPECIAL_1, 1, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("nspec1_proj"));

@@ -586,33 +586,57 @@ if gunname >= 8 && infernal2 >= 300 {
 }
 
 
-if gunname >= 1 && gunname <= 3 && infernal2 < 100 {
-	move_cooldown[AT_NSPECIAL] = 2
+if gunname = 0 {
+	infernal2 = 0
+}
+
+
+
+if get_player_color(player) == 8 {
+	outline_color = [19, 15, 28]
+   if visible {  
+   	if !hitpause {
+	if get_gameplay_time() % 40 == 0 {
+   	set_color_profile_slot(get_player_color(player),0, 255, 196, 244); 
+	} 
 	
+	if get_gameplay_time() % 40 == 26{
+	set_color_profile_slot(get_player_color(player),0, 0, 191, 255 );	
+	}
+	
+    if get_gameplay_time() % 40 == 13 {
+	set_color_profile_slot(get_player_color(player),0, 160, 195, 250 );	
+	}
+	
+		if get_gameplay_time() % 60 == 0 {
+   	set_color_profile_slot(get_player_color(player),3, 255, 196, 244); 
+	} 
+	
+	if get_gameplay_time() % 60 == 40{
+	set_color_profile_slot(get_player_color(player),3, 0, 191, 255 );	
+	}
+	
+    if get_gameplay_time() % 60 == 20 {
+	set_color_profile_slot(get_player_color(player),3, 160, 195, 250 );	
+	}
+   	}
+   	
+   	if hitpause {
+	if get_gameplay_time() % 8 == 0	 {
+   	set_color_profile_slot(get_player_color(player),0, 255, 196, 244); 
+	} 
+	
+	if get_gameplay_time() % 8 == 6{
+	set_color_profile_slot(get_player_color(player),0, 0, 191, 255 );	
+	}
+	
+    if get_gameplay_time() % 8 == 3{
+	set_color_profile_slot(get_player_color(player),0, 160, 195, 250 );	
+	}
+   	}
+	}
+    init_shader();	 
 }
-
-
-if gunname >= 4 && gunname <= 7 && infernal2 < 200 {
-	move_cooldown[AT_NSPECIAL] = 2
-}
-
-
-if gunname >= 8 && infernal2 < 300 {
-	move_cooldown[AT_NSPECIAL] = 2
-}
-
-if !attacking or (attacking && attack != AT_NSPECIAL)  {
-
-if gunname >= 1 && gunname <= 3 && infernal2 > 100 {
-	infernal2 = 101
-}
-
-if gunname >= 4 && gunname <= 7 && infernal2 > 200 {
-	infernal2 = 201
-}
-
-}
-
 
 
 //////////

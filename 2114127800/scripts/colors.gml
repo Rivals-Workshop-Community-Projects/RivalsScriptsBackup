@@ -32,6 +32,7 @@ set_color_profile_slot_range( 6, 1, 1, 1 );
 set_color_profile_slot( 0, 7, 97, 61, 48 );
 set_color_profile_slot_range( 7, 4, 14, 20 );
 
+
 // ALTERNATE COLORS
 set_num_palettes( 16 );
 
@@ -85,45 +86,45 @@ set_color_profile_slot( 5, 5, 115, 115, 115 ); //Eyes
 set_color_profile_slot( 5, 6, 170, 170, 170 ); //Iris
 set_color_profile_slot( 5, 7, 128, 128, 128 ); //Armor
 
-// 7
-set_color_profile_slot( 6, 0, 230, 138, 141 ); //Fur
-set_color_profile_slot( 6, 1, 102, 0, 20 ); //Eyes
-set_color_profile_slot( 6, 2, 153, 15, 43 ); //Hair
-set_color_profile_slot( 6, 3, 230, 115, 138 ); //Hair Tint
-set_color_profile_slot( 6, 4, 102, 0, 20 ); //Lava
-set_color_profile_slot( 6, 5, 128, 26, 46 ); //Eyes
-set_color_profile_slot( 6, 6, 102, 0, 20 ); //Iris
-set_color_profile_slot( 6, 7, 153, 15, 43 ); //Armor
-
 // 8
-set_color_profile_slot( 7, 0, 112, 108, 128 ); //Fur
-set_color_profile_slot( 7, 1, 23, 0, 51 ); //Eyes
-set_color_profile_slot( 7, 2, 112, 67, 166 ); //Hair
-set_color_profile_slot( 7, 3, 179, 138, 230 ); //Hair Tint
-set_color_profile_slot( 7, 4, 112, 67, 166 ); //Lava
-set_color_profile_slot( 7, 5, 102, 61, 153 ); //Eyes
-set_color_profile_slot( 7, 6, 112, 67, 166 ); //Iris
-set_color_profile_slot( 7, 7, 47, 23, 77 ); //Armor
+set_color_profile_slot( 6, 0, 112, 108, 128 ); //Fur
+set_color_profile_slot( 6, 1, 23, 0, 51 ); //Eyes
+set_color_profile_slot( 6, 2, 112, 67, 166 ); //Hair
+set_color_profile_slot( 6, 3, 179, 138, 230 ); //Hair Tint
+set_color_profile_slot( 6, 4, 112, 67, 166 ); //Lava
+set_color_profile_slot( 6, 5, 102, 61, 153 ); //Eyes
+set_color_profile_slot( 6, 6, 112, 67, 166 ); //Iris
+set_color_profile_slot( 6, 7, 47, 23, 77 ); //Armor
 
 // 9
-set_color_profile_slot( 8, 0, 172, 172, 172 ); //Fur
-set_color_profile_slot( 8, 1, 100, 99, 97 ); //Eyes
-set_color_profile_slot( 8, 2, 207, 174, 71 ); //Hair
-set_color_profile_slot( 8, 3, 238, 206, 93 ); //Hair Tint
-set_color_profile_slot( 8, 4, 213, 213, 213 ); //Lava
-set_color_profile_slot( 8, 5, 177, 177, 177 ); //Eyes
-set_color_profile_slot( 8, 6, 153, 153, 153 ); //Iris
-set_color_profile_slot( 8, 7, 147, 83, 22 ); //Armor
+set_color_profile_slot( 7, 0, 172, 172, 172 ); //Fur
+set_color_profile_slot( 7, 1, 100, 99, 97 ); //Eyes
+set_color_profile_slot( 7, 2, 207, 174, 71 ); //Hair
+set_color_profile_slot( 7, 3, 238, 206, 93 ); //Hair Tint
+set_color_profile_slot( 7, 4, 213, 213, 213 ); //Lava
+set_color_profile_slot( 7, 5, 177, 177, 177 ); //Eyes
+set_color_profile_slot( 7, 6, 153, 153, 153 ); //Iris
+set_color_profile_slot( 7, 7, 147, 83, 22 ); //Armor
+
+// 7
+set_color_profile_slot( 8, 0, 114, 105, 86 ); //Fur
+set_color_profile_slot( 8, 1, 255, 255, 228 ); //Eyes
+set_color_profile_slot( 8, 2, 128, 96, 28 ); //Hair
+set_color_profile_slot( 8, 3, 170, 149, 58 ); //Hair Tint
+set_color_profile_slot( 8, 4, 255, 124, 0 ); //Lava
+set_color_profile_slot( 8, 5, 0, 0, 0 ); //Eyes
+set_color_profile_slot( 8, 6, 0, 0, 0 ); //Iris
+set_color_profile_slot( 8, 7, 170, 149, 58 ); //Armor
 
 // 10
-set_color_profile_slot( 9, 0, 171, 106, 152 ); //Fur
-set_color_profile_slot( 9, 1, 41, 0, 46 ); //Eyes
-set_color_profile_slot( 9, 2, 244, 212, 173 ); //Hair
-set_color_profile_slot( 9, 3, 255, 237, 217 ); //Hair Tint
-set_color_profile_slot( 9, 4, 41, 0, 46 ); //Lava
-set_color_profile_slot( 9, 5, 128, 21, 0 ); //Eyes
-set_color_profile_slot( 9, 6, 255, 220, 66 ); //Iris
-set_color_profile_slot( 9, 7, 135, 49, 49 ); //Armor
+set_color_profile_slot( 9, 0, 228, 214, 170 ); //Fur
+set_color_profile_slot( 9, 1, 247, 247, 247 ); //Eyes
+set_color_profile_slot( 9, 2, 58, 126, 90 ); //Hair
+set_color_profile_slot( 9, 3, 70, 148, 107 ); //Hair Tint
+set_color_profile_slot( 9, 4, 71, 71, 71 ); //Lava
+set_color_profile_slot( 9, 5, 207, 0, 0 ); //Eyes
+set_color_profile_slot( 9, 6, 207, 0, 0 ); //Iris
+set_color_profile_slot( 9, 7, 243, 109, 0 ); //Armor
 
 // 11
 set_color_profile_slot( 10, 0, 253, 253, 253 ); //Fur

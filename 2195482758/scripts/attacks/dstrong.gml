@@ -67,3 +67,4 @@ set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT_X_OFFSET, 10);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_DSTRONG, 1, HG_HITSTUN_MULTIPLIER, 1.0);
+set_hitbox_value(AT_DSTRONG, 1, HG_HIT_LOCKOUT, 10);

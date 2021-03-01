@@ -15,5 +15,13 @@ if my_hitboxID.effect == 228 {
     }
     if instance_exists(closest_ring) {
         closest_ring.max_lifetime = 0;
+        closest_ring.player_id.move_cooldown[AT_NSPECIAL] = 300;
     }
+}//*/
+
+if (my_hitboxID.attack >= AT_FSTRONG && my_hitboxID.attack <= AT_USTRONG) || (my_hitboxID.attack - 13 >= AT_FSTRONG && my_hitboxID.attack <= AT_USTRONG) {
+    hsp = 0;
+    vsp = 0;
+    set_window_value(attack, 3, AG_WINDOW_HSPEED_TYPE, 0);
+    set_window_value(attack, 3, AG_WINDOW_VSPEED_TYPE, 0);
 }

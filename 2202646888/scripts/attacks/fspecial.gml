@@ -60,3 +60,4 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_HITPAUSE, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_FSPECIAL, 1, HG_THROWS_ROCK, 1);

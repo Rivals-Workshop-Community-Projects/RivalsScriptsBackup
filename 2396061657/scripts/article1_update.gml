@@ -11,17 +11,30 @@ if (state_timer == 1){
 	state = 1;
 }
 
-if (state == 1){ // Hearts fly, can be collected by Callie
+if (player_id.attack == AT_DSPECIAL && player_id.window == 2 && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && point_distance( player_id.x, player_id.y, x, y) < 275) {
+	state = 1;
+	hsp = 10 * dcos(point_direction(x, y, player_id.x, player_id.y - 20));
+	vsp = -10 * dsin(point_direction(x, y, player_id.x, player_id.y - 20));
+}
+else {
 	if (hsp > 0){
-		hsp -= .05;
+		hsp -= .1;
 	}
 
 	if (hsp < 0){
-		hsp += .05;
+		hsp += .1;
 	}
 	
-	if (!free && hsp == 0){
+	if (!free && hsp >= -2 && hsp <= 2){
+		state = 2;
 		vsp = 0;
+	}
+}
+
+if (state == 1){ // Hearts fly, can be collected by Callie
+	
+	if (!free && hsp == 0){
+//		vsp = 0;
 		state = 2;
 	}
 		
@@ -38,8 +51,8 @@ if (state == 1){ // Hearts fly, can be collected by Callie
 		}
 		
 		if (pointsgain){
-			if (player_id.LoveMeter[player_id.GrappleMode] <= 190){
-				player_id.LoveMeter[player_id.GrappleMode] += 10;
+			if (player_id.LoveMeter <= 190){
+				player_id.LoveMeter += 10;
 			}
 		}
 		
@@ -68,16 +81,16 @@ if (state == 2){ // Can be collected when other player interacts with hearts
 	
 	if (pointsgain || otherpoints){
 		if (pointsgain){
-			if (player_id.LoveMeter[player_id.GrappleMode]  <= 190){
-				player_id.LoveMeter[player_id.GrappleMode] += 10;
+			if (player_id.LoveMeter <= 190){
+				player_id.LoveMeter += 10;
 			}	
 		}
 		
 		if (otherpoints){
 			with(oPlayer){
 				if (place_meeting(x, y, other) && player != other.player && "GrappleMode" in self){
-					if (LoveMeter[GrappleMode]  <= 190){
-						LoveMeter[GrappleMode] += 10;
+					if (LoveMeter  <= 190){
+						LoveMeter += 10;
 					}
 				}		
 			}
@@ -104,15 +117,15 @@ if (state == 3){ // Plays a sound and then kills the heart
 	exit;
 }
 
-if (state_timer == 320 || y > room_height - 50){
+if (state_timer == 520 || y > room_height - 50){
 	instance_destroy();
 	exit;
 }
 
-if ((state_timer < 320 && state_timer > 315) || (state_timer < 310 && state_timer > 305) || (state_timer < 300 && state_timer > 290) || (state_timer < 280 && state_timer > 270) || (state_timer < 260 && state_timer > 250) || (state_timer < 240 && state_timer > 230)){
+if ((state_timer < 520 && state_timer > 515) || (state_timer < 510 && state_timer > 505) || (state_timer < 500 && state_timer > 490) || (state_timer < 480 && state_timer > 470) || (state_timer < 460 && state_timer > 450) || (state_timer < 440 && state_timer > 430)){
 	image_alpha = 0;
 }
 
-if ((state_timer < 315 && state_timer > 310) || (state_timer < 305 && state_timer > 300) || (state_timer < 290 && state_timer > 280) || (state_timer < 270 && state_timer > 260) || (state_timer < 250 && state_timer > 240) || (state_timer < 230 && state_timer > 220)){
+if ((state_timer < 515 && state_timer > 510) || (state_timer < 505 && state_timer > 500) || (state_timer < 490 && state_timer > 480) || (state_timer < 470 && state_timer > 460) || (state_timer < 450 && state_timer > 440) || (state_timer < 430 && state_timer > 420)){
 	image_alpha = 1;
 }

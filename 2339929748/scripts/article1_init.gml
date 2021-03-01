@@ -33,7 +33,7 @@ new_sprite = sprite_get("box");             //This is another part of the animat
 
 //Limit on number of articles
 replacedcount = 0;                                  //This gets incremented whenever a new article is created. If this reaches maxarticles, the article is destroyed
-maxarticles = 1;                                    //The maximum number of this article that should exist at once.
+maxarticles = 3;                                    //The maximum number of this article that should exist at once.
 
 with(asset_get("obj_article1")){
     if (player_id == other.player_id){
@@ -44,8 +44,8 @@ with(asset_get("obj_article1")){
 //Cure depression
 shoulddie = false;                                  //If this is set to true, the article will change to state 2 (despawn animation) as soon as it's not busy. This keeps it from despawning in the middle of something
 sthree = false;
-
-
+fire = false;
+fire_timer = 0;
 /* README - Basic Article Usage
 
 

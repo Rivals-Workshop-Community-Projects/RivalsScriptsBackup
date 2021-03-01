@@ -27,7 +27,7 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
 
 //Travel Up
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE,1);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 0);
@@ -50,6 +50,7 @@ set_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE, 7);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 4);
+set_window_value(AT_USPECIAL, 5, AG_WINDOW_VSPEED, 1);
 
 
 set_num_hitboxes(AT_USPECIAL, 3);
@@ -66,7 +67,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 76);											// 76 cause its the exact number to ensure the trigonometrical triangle ( 76 - 14 - 90) That ensures one side is equal to 4 times to other side
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 12);
-set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 9);
+set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITPAUSE_SCALING, 0.7);
 set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 3);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, sound_get("melee_stronghit"));
@@ -107,9 +108,9 @@ set_hitbox_value(AT_USPECIAL, 3, HG_PRIORITY, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_DAMAGE, 7);
 set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE, 75);													
 set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, .7);
+set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, .75);
 set_hitbox_value(AT_USPECIAL, 3, HG_BASE_HITPAUSE, 12);
-set_hitbox_value(AT_USPECIAL, 3, HG_HITPAUSE_SCALING, .7);
+set_hitbox_value(AT_USPECIAL, 3, HG_HITPAUSE_SCALING, .75);
 set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, 3);
 set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, sound_get("melee_stronghit2"));
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_GROUP, -1);

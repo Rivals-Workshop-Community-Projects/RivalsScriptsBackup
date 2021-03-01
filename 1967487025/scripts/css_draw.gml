@@ -56,8 +56,8 @@ init_shader();
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-patch_ver = "4.5";
-patch_day = "4";
+patch_ver = "4.7";
+patch_day = "21";
 patch_month = "FEB";
  
 var num_alts = 15;

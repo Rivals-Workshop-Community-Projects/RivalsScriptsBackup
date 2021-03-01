@@ -31,6 +31,7 @@ set_hitbox_value(AT_UAIR, 1, HG_HEIGHT, 74);
 set_hitbox_value(AT_UAIR, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE, 80);
+set_hitbox_value(AT_UAIR, 1, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .75);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 9);

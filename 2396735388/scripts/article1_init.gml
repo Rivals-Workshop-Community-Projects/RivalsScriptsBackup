@@ -6,6 +6,7 @@ visible = false;
 article_which = 0; /*
 0 - front of ring
 1 - gcm particle
+2 - fake ring hitbox
 //*/
 
 livetimer = 0;

@@ -1,5 +1,5 @@
 with (asset_get("oPlayer")) {
 	if (smoked && smoked_id == other.id) {
-		smoked_timer = 0;
+		smoked_timer = 1;
 	}
 }

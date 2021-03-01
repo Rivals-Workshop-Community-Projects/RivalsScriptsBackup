@@ -7,13 +7,29 @@ platform_number = 0;
 
 trailer_effect = false;
 
-usedFspecial = 0;
+SecretColor = 0;
+ColorLock = 0;
+ColorLocked = false;
 
+usedFspecial = 0;
+usedUspecial = 0;
+can_pull = false;
+
+usedUspecial_Again = 0;
+
+needle_hitbox = noone;
+flag_destroy = false;
+flag_num = 1;
+Box_temp_x = 0;
+Box_temp_y = 0;
 
 Box = noone;
+boxfalling = false;
 movingbox = noone;
+
 needleplatform = noone;
 needleplatform_solid = noone;
+
 needleland = false;
 needle_sprite = noone;
 
@@ -61,8 +77,8 @@ walk_speed = 4;
 walk_accel = 0.25;
 walk_turn_time = 6;
 initial_dash_time = 8;
-initial_dash_speed = 6;
-dash_speed = 7;
+initial_dash_speed = 7;
+dash_speed = 6.5;
 dash_turn_time = 8;
 dash_turn_accel = .7;
 dash_stop_time = 6;
@@ -75,7 +91,7 @@ jump_speed = 10;
 short_hop_speed = 7;
 djump_speed = 10;
 leave_ground_max = 15; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
+max_jump_hsp = 5.75; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;

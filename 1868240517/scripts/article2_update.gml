@@ -41,7 +41,7 @@ if (init == 0) {
             expl_spr = sprite_get("fspecial_explode");
         }
     }
-    
+    //hit_op = 1;
 }
 
 
@@ -91,7 +91,7 @@ if (state == 1) {
         if (id != other.player_id &&  other.near_hit > distance_to_object(other)) {
             other.hit_accel = 1;
         }
-        if (id == other.player_id && (state == PS_PRATLAND || state == PS_PRATFALL)) { //If R-00 is in stun or using up-b
+        if (id == other.player_id && (state == PS_PRATLAND || state == PS_PRATFALL)) { //If R-00 is in stun
             other.hit_op = 0;
         }
         /*
@@ -105,7 +105,7 @@ if (state == 1) {
     //Movement Code
     direc = degtorad(point_direction(x,y,player_id.x,player_id.y-32));
     with (asset_get("pHitBox")){
-        //if type != 2 {
+        if type != 2 {
             // print_debug("HIT ORB WITH TYPE 1");
             if (other.hit_cd2 <= 0 && !(attack == 16 && hbox_num == 2) && place_meeting(x,y,other.id)) {
                 if other.last_hitbox != self && !player_id.has_hit_player {
@@ -116,10 +116,8 @@ if (state == 1) {
                         old_vsp = vsp;
                         
                         if attack != AT_FSPECIAL has_hit = true;
-                        if other.type != 2 {
-                            hitstop = other.hitpause+other.damage*other.hitpause_growth*.05-2;
-                            hitpause = true;
-                        }
+                        hitstop = other.hitpause+other.damage*other.hitpause_growth*.05-2;
+                        hitpause = true;
                     }
                 }
                 if player_id == other.player_id other.hit_op = 1;
@@ -148,15 +146,23 @@ if (state == 1) {
                 other.last_hitbox = self;
                 other.hit_cd2 = other.hit_cd2_max;
             }
-        //}
+        }
             
         //}
         //if (attack != 16 && !place_meeting(x,y,other.id)) {
             //other.hit_box = 0;
         //}
     }
-    if hit_accel == 0 || hit_cd2 > 0 hit_jerk = 7/8;
-    else hit_jerk = 5/8;
+    /*if player_hit != player {
+        with player_id {
+            take_damage(player,other.player_hit,(floor(other.hit_damage/5)));
+            sound_play(star_sound);
+            spawn_hit_fx(x,y-40,star_vfx);
+        }
+        player_hit = player;
+    }*/
+    if hit_accel == 0 || hit_cd2 > 0 hit_jerk = hit_jerk_b;
+    else hit_jerk = hit_jerk_m;
     hit_jerk_mod = 1;
     hsp = hsp*hit_jerk*(hit_jerk_mod) -(accel*((dist/10)^(1/6))*-cos(direc));
     vsp = vsp*hit_jerk*(hit_jerk_mod) -(accel*((dist/10)^(1/6))*sin(direc));
@@ -236,14 +242,52 @@ if (state == 4) { //Return
     with (asset_get("pHitBox")){
         if (other.hit_cd2 <= 0 && !(attack == 16 && hbox_num == 2) && place_meeting(x,y,other.id)) {
             other.state = 1;
+            //Put As Rune
+            /*if other.last_hitbox != self && !player_id.has_hit_player {
+                sound_play(sound_effect);
+                spawn_hit_fx(other.x+hit_effect_x,other.y+hit_effect_y,hit_effect);
+                with player_id {
+                    old_hsp = hsp;
+                    old_vsp = vsp;
+                    
+                    if attack != AT_FSPECIAL has_hit = true;
+                    hitstop = other.hitpause+other.damage*other.hitpause_growth*.05-2;
+                    hitpause = true;
+                }
+            }
+            if player_id == other.player_id other.hit_op = 1;
+            else {
+                if other.last_hitbox != self {
+                    other.player_hit = player;
+                    other.hit_damage = damage;
+                }
+                other.hit_op = 0;
+            }
+            if other.last_hitbox != self {
+                if (attack == 8 || attack == AT_FSPECIAL) { //DSTRONG, FSPECIAL
+                    other.hsp = other.hitSpeed*spr_dir*kb_value*cos(degtorad(kb_angle));
+                    other.vsp = - other.hitSpeed*kb_value*sin(degtorad(kb_angle));
+                } else {
+                    if (kb_angle >= 90 && kb_angle < 270) {
+                        other.hsp = other.hitSpeed*spr_dir*kb_value*cos(degtorad(kb_angle+ other.hitAngle))*(1-other.hit_accel*.5);
+                        other.vsp = - other.hitSpeed*kb_value*sin(degtorad(kb_angle+ other.hitAngle))*(1-other.hit_accel*.5);
+                    }
+                    if (kb_angle < 90 || kb_angle >= 270) {
+                        other.hsp =  other.hitSpeed*spr_dir*kb_value*cos(degtorad(kb_angle-other.hitAngle))*(1-other.hit_accel*.5);
+                        other.vsp = - other.hitSpeed*kb_value*sin(degtorad(kb_angle- other.hitAngle))*(1-other.hit_accel*.5);
+                    }
+                }
+            }
+            other.last_hitbox = self;
+            other.hit_cd2 = other.hit_cd2_max;*/
         }
             
     }
     //hit_op = 1;
     direc = degtorad(point_direction(x,y,player_id.x,player_id.y-32));
     hit_jerk = 7/8;
-    hsp = 1.1*hsp*hit_jerk*(hit_jerk_mod)-(accel*(100)*-cos(direc));
-    vsp = 1.1*vsp*hit_jerk*(hit_jerk_mod)-(accel*(100)*sin(direc));
+    hsp = 1.1*hsp*hit_jerk*(hit_jerk_mod)-(accel*(accel_mod)*-cos(direc));
+    vsp = 1.1*vsp*hit_jerk*(hit_jerk_mod)-(accel*(accel_mod)*sin(direc));
     if hit_cd2 > 0 hit_cd2--;
     if (hit_op == 0 && instance_exists(hBox)) instance_destroy(hBox);
     if (player_id.state == 5 || player_id.state == 6) && player_id.attack == AT_USPECIAL && player_id.window == 1 && player_id.uspecial_done == 0 {

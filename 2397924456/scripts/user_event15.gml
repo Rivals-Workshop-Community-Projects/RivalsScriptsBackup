@@ -452,6 +452,46 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.2", "18 February, 2021");
+	initPatchWords("NSpecial - Buffs");
+	initPatchWords_ext("The first midair use of NSpecial now stalls your fall much more.
+	Legion movement speed increased.", fa_left, c_gray, 1, 0);
+	initPatchWords("FSpecial - Bugfixes");
+	initPatchWords_ext("Synced FSpecial now gets interrupted properly when Akira gets hit.", fa_left, c_gray, 1, 0);
+	initPatchWords("USpecial - Nerfs");
+	initPatchWords_ext("Last patch's height increase reverted.", fa_left, c_gray, 1, 0);
+	initPatchWords("Legion - Bugfixes");
+	initPatchWords_ext("Now ignores enemy hitboxes which deal 0 damage.
+	No longer reacts to hitting Forsburn clones.", fa_left, c_gray, 1, 0);
+	initPatchWords("FStrong - Nerfs");
+	initPatchWords_ext("Angle (both hitboxes) 40 --> 45.", fa_left, c_gray, 1, 0);
+	initPatchWords("DStrong - Buffs");
+	initPatchWords_ext("The shockwave hitbox now takes priority over the Fist hitbox against grounded opponents.", fa_left, c_gray, 1, 0);
+	initPatchWords("UTilt - Buffs");
+	initPatchWords_ext("Second hitbox moved up a little bit.", fa_left, c_gray, 1, 0);
+	initPatchWords("DTilt - Buffs");
+	initPatchWords_ext("Startup 10 --> 8.", fa_left, c_gray, 1, 0);
+	initPatchWords("FAir - Nerfs");
+	initPatchWords_ext("Hitbox size reduced, position adjusted.", fa_left, c_gray, 1, 0);
+	initPatchWords("BAir - Nerfs");
+	initPatchWords_ext("Landing lag 4 --> 6.", fa_left, c_gray, 1, 0);
+	initPatchWords("UAir - Adjustments");
+	initPatchWords_ext("Angle flipper 0 --> 3.", fa_left, c_gray, 1, 0);
+	initPatchWords("Jab 3 - Nerfs, Aesthetics");
+	initPatchWords_ext("Knockback growth 0.6 --> 0.4.
+	Adjusted vfx.", fa_left, c_gray, 1, 0);
+	initPatchWords("FTilt - Nerfs");
+	initPatchWords_ext("Behavior on parry corrected.", fa_left, c_gray, 1, 0);
+	
+	initPatch("1.1", "16 February, 2021");
+	initPatchWords("USpecial - Buffs");
+	initPatchWords_ext("Beast Legion jump height increased.
+	Whiffing the move no longer restricts momentum when you land during the move or when it ends.", fa_left, c_gray, 1, 0);
+	initPatchWords("FSpecial - Buffs");
+	initPatchWords_ext("Legion's knee attack hitbox moved forward.", fa_left, c_gray, 1, 0);
+	initPatchWords("Legion - Bugfixes");
+	initPatchWords_ext("Added a check for unexpected Legion states - i.e. fixed the bug where the Legion might get frozen for no reason.", fa_left, c_gray, 1, 0);
+	
 	initPatch("1.0", "16 February, 2021");
 	initPatchWords_ext("Akira and her crazy UStrong were released onto the world.", fa_center, c_white, 0, 1);
 	initPatchImage(other.spr_taunt, 4, fa_center, 1, c_white, 1);

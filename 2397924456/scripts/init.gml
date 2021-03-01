@@ -155,6 +155,7 @@ prev_sync = 0;
 jab_progress = 0;
 jab_moves = [AT_JAB, AT_NAIR, AT_NTHROW];
 jab_timer = 0;
+nspecial_stall = 1;
 blue_color = make_color_rgb(
     get_color_profile_slot_r(get_player_color(player), 0),
     get_color_profile_slot_g(get_player_color(player), 0),

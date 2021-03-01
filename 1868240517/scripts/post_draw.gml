@@ -10,8 +10,8 @@ if get_player_color(player) == 3 && state == 6 && attack == AT_TAUNT && window_t
 //draw_sprite_ext(nspecial_gui,nspec_frame,x-28*spr_dir,y-96,spr_dir,1,0,c_white,.9);
 
 if get_player_color(player) == 3 { //(0,16) to (96,112) / 16 = (0,1) to (6,7)
-    draw_sprite_part_ext(sprite_index,image_index,glitch_x*16,glitch_y*16,16,16,x+(-60+glitch_x*16+(glitch_x_off-3)*4)*spr_dir,y-100+glitch_y*16+(glitch_y_off-3)*4,spr_dir,1,c_white,1);
-    draw_sprite_part_ext(sprite_index,image_index,glitch_xp*16,glitch_yp*16,16,16,x+(-60+glitch_xp*16+(glitch_x_offp-3)*4)*spr_dir,y-100+glitch_yp*16+(glitch_y_offp-3)*4,spr_dir,1,c_white,1);
+    draw_sprite_part_ext(sprite_index,image_index,glitch_x*16,glitch_y*16,16,16,x+(-60+glitch_x*16+(glitch_x_off-3)*4)*spr_dir,y-100+glitch_y*16+(glitch_y_off-3)*4,spr_dir*2,1,c_white,1);
+    draw_sprite_part_ext(sprite_index,image_index,glitch_xp*16,glitch_yp*16,16,16,x+(-60+glitch_xp*16+(glitch_x_offp-3)*4)*spr_dir,y-100+glitch_yp*16+(glitch_y_offp-3)*4,spr_dir*2,2,c_white,1);
     with obj_article1 {
         if player_id == other.id {
             draw_sprite_part_ext(sprite_index,image_index,glitch_x*16,glitch_y*16,16,16,x+(-68+glitch_x*16+(glitch_x_off-3)*4)*spr_dir,y-110+glitch_y*16+(glitch_y_off-3)*4,spr_dir,1,c_white,1);
@@ -44,7 +44,11 @@ draw_sprite_ext(sprite_get("bair"),image_index,x,y,spr_dir,1,image_angle,c_white
 gpu_set_alphatestenable(false);
 gpu_set_blendmode(bm_normal);*/
 
-if !code_1 && index_mod < 11 {
+/*if !code_1 && get_gameplay_time() < shadow_end {
+    draw_sprite_ext(sprite_get("intro_extra"),0,shadow_x,shadow_y,1,1,0,c_gray,1);
+}*/
+
+if !code_1 && in_intro {
     draw_sprite_ext(anim_intro,intro_index,anim_x,anim_y,spr_dir,1,0,c_white,1);
     
 }
@@ -74,10 +78,6 @@ shader_end();
 //draw_debug_text(x+96*spr_dir,y+64,string(instance_exists(disk)));
 //draw_debug_text(x+64*spr_dir,y+64,string(djump_speed));
 //draw_debug_text(x+32,y+10,string(abs(x - stage_x_left)));
-
-
-
-
 
 
 //with disk {

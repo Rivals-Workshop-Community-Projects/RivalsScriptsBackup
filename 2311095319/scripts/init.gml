@@ -175,6 +175,7 @@ sfx_uair = sound_get("sfx_uair");
 sfx_upspecial = sound_get("sfx_upspecial");
 sfx_uptaunt_grow = sound_get("sfx_uptaunt_grow");
 sfx_uptaunt_shrink = sound_get("sfx_uptaunt_shrink");
+sfx_walljump = sound_get("sfx_walljump");
 sfx_waveland = sound_get("sfx_waveland");
 
 //stuffs

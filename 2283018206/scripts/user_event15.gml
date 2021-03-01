@@ -406,6 +406,14 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.22", "16 February, 2021");
+	initPatchWords("DSpecial - Nerfs, Adjustments");
+	initPatchWords_ext("Active hitbox duration 18f --> 12f.
+	Now has landing lag (18f) instead of bouncing.
+	When started on the ground, the dive is now preceded by a jump.", fa_left, c_gray, 1, 0);
+	initPatchWords("UStrong - Bugfixes");
+	initPatchWords_ext("No longer grabs armored players.", fa_left, c_gray, 1, 0);
+	
 	initPatch("1.21", "07 February, 2021");
 	initPatchWords("NSpecial - Buffs");
 	initPatchWords_ext("The change made last patch now only applies to melee hitboxes.

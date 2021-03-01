@@ -22,6 +22,8 @@ depth = 27;
 
 layouts = [];
 
+has_changed_layouts = 0;
+
 /*
  * initStage(name, width in grids)
  * initPlat(y in grids, x in grids, width in grids)

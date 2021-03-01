@@ -25,27 +25,29 @@ if(attack == AT_FSPECIAL){
     
     if (window == 2 && window_timer == 2){
         
-        var box = instance_create(x+70*spr_dir, y-20, "obj_article1");
+        var box = instance_create(x+70*spr_dir, y-50, "obj_article1");
         box.player_id = id;
         box.player = player;
-        move_cooldown[AT_FSPECIAL] = 90;
+        
     }
-    with(asset_get("onj_article_solid")){
+    with(asset_get("obj_article_solid")){
         instance_destroy();
     }
-    
+    with(asset_get("obj_article_platform")){
+        instance_destroy();
+    }
+    move_cooldown[AT_FSPECIAL] = 60;
 }
 
 //USPECIAL
-var sinkv = false;
 if(attack == AT_USPECIAL){
 	if(window == 2 && window_timer == 9){
     switch(bl_select){
         case 0:
             //Increase djumps
             hudv = 1;
-            max_djumps = 4;
-            
+            floatv = true;
+            sinkv = false;
         break;
         
         case 1:
@@ -54,31 +56,34 @@ if(attack == AT_USPECIAL){
                 player_id.x = x;
                 player_id.y = y;
             }
+            spawn_dust_fx(x-40*spr_dir, y-60, sprite_get("teleffect"), 30);
+            set_state(PS_PRATFALL);
         break;
         
         case 2:
-        
-        create_hitbox(AT_USPECIAL, 1, x, y);
+        hudv = 4;
+        firev = true;
+        sinkv = false;
         break;
         
         case 3:
         hudv = 2;
         walk_speed = 8;
         dash_speed = 11;
+        firev = false;
+        sinkv = false;
         break;
         
         case 4:
-        create_deathbox(x, y, 8, 8, -1, true, 0, 3, 2);
+        create_deathbox(x, y-20, 16, 16, -1, true, 0, 3, 2);
+        firev = false;
+        sinkv = false;
         break;
         
         case 5:
         hudv = 3;
-        gravity_speed = 1.05;
-        jump_speed = 9;
-        short_hop_speed = 6;
-        djump_speed = 9;
-        knockback_adj = 0.5;
         sinkv = true;
+        firev = false;
         break;
         
         case 6:
@@ -88,37 +93,42 @@ if(attack == AT_USPECIAL){
         	hsp = 10*spr_dir;
         	vsp = 0;
         }
+        hudv = 0;
+        firev = false;
+        sinkv = false;
         break;
         
         case 7:
-        
+        hudv = 0;
+        firev = false;
+        sinkv = false;
         break;
         
     }
-    if(bl_select != 0){
-        max_djumps = 1;
-    }
+
+
     if(bl_select != 3){
-        walk_speed = 4;
-        dash_speed = 7.5;
+        walk_speed = 3;
+        dash_speed = 6.5;
         
         
 
     }
-    if(bl_select != 5){
-        jump_speed = 13;
-        short_hop_speed = 8;
-        djump_speed = 12;
-        knockback_adj = 1.0;
-        sinkv = false;
-        gravity_speed = .70;
-    }
-    move_cooldown[AT_USPECIAL] = 180;
+
+    move_cooldown[AT_USPECIAL] = 30;
     
 }
 }
 
+
+
+
 if(sinkv){
+	gravity_speed = 1.05;
+    jump_speed = 9;
+    short_hop_speed = 6;
+    djump_speed = 9;
+    knockback_adj = 0.5;
     set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 10);
     set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 10);
     set_hitbox_value(AT_USTRONG, 3, HG_DAMAGE, 10);
@@ -140,6 +150,7 @@ if(attack == AT_DSPECIAL){
         if(instance_exists(asset_get("obj_article_solid"))){
 		        instance_destroy();
         }
+        move_cooldown[AT_DSPECIAL] = 30;
 }
 
 

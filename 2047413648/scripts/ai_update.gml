@@ -1,8 +1,88 @@
 ///
+if (get_training_cpu_action() == CPU_FIGHT){	
+	
+	fchargetimer += 1
+	
+	if (attack == AT_NSPECIAL or attack == AT_DAIR) && state == PS_ATTACK_AIR {
+		
+		if y > room_width/2 + 300 {
+			vsp = 0
+			state = PS_AIR_DODGE
+			state_timer = 0
+		}
+	}
+	
+	if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND {
+		if attack == AT_USPECIAL {
+			fcharge = 3
+			down_down = true
+		
+		shield_pressed = false
+		
+		if ai_recovering && y > room_width/2 + 60{
+				jump_pressed = true
+			}
+			
+			
+		if xdist < 110 and ydist < 80 && ai_target.y <= y + 20 and fcharge >= 1{
+			if x > ai_target.x {
+				spr_dir = -1
+			} else {
+				spr_dir = 1
+			}
+			if get_gameplay_time() % 3 == 0 {
+				attack_pressed = true
+			}
+			if get_gameplay_time() % 3 == 1 {
+				special_pressed = true
+			}
+			if get_gameplay_time() % 3 == 2 or y > room_width/2 + 300 {
+				jump_pressed = true
+			}
+		}
+		}
+		
+	}
+	if state_cat == SC_HITSTUN {
+	hsp /= 1.008
+	if x > room_width/2 - 400 and x < room_width/2 - 400 {
+		vsp += 0.4
+	} 
+}
+
+if y < room_height/2 - 100 && x < room_width/2 + 300 && x > room_width/2 - 300 && can_attack {
+	    joy_pad_idle = true;
+	down_down = true
+	attack_pressed = true
+	special_pressed = false
+	up_down = false
+	left_down = false
+	right_down = false 
+} else {
+	move_cooldown[AT_DSPECIAL] = 2 
+}
+
+if free {
+	move_cooldown[AT_NSPECIAL] = 2 
+}
 
 if get_gameplay_time() <= 20 {
 	sakura = 1
 }
+
+if attack == AT_NSPECIAL && state == PS_ATTACK_AIR {
+   	soft_armor = 100
+}
+
+if attack == AT_DSPECIAL {
+	special_down = true
+	down_down = true
+}
+
+if attack == AT_FSPECIAL {
+    can_attack = true
+}
+
 
 //ai_update - called every frame for this character as a CPU
 temp_level = 9;
@@ -204,7 +284,7 @@ if (get_stage_data(SD_Y_POS) - 150 > y and get_gameplay_time() mod 13 == 0 and c
 }
 
 //Fspecial
-if ( get_stage_data( SD_Y_POS ) > y and can_special and 100 > xdist){
+if ( get_stage_data( SD_Y_POS ) > y and can_special and xdist > 100){
 	cuttertimer = 120
     joy_pad_idle = true;
     if x > ai_target.x{
@@ -220,19 +300,25 @@ if ( get_stage_data( SD_Y_POS ) > y and can_special and 100 > xdist){
 }
 
 if attack = AT_FSPECIAL and window = 2{
-	if y > ai_target.y - 30{
-            up_pressed = false;
-            down_pressed = true;
+	if get_gameplay_time() % 4 < 3 {
+	if x > ai_target.x {
+           left_down = true
+           right_down = false
+           up_down = false
+           down_down = false
     } 
 	else {
-		if ai_target.y + 30 > y { 
-			up_pressed = true;
-            down_pressed = false;
-        }
-		else {
-			up_down = false;
-			down_down = false;
-		}
+		left_down = false
+           right_down = true
+           up_down = false
+           down_down = false
+	}
+	attack_pressed = true
+	} else {
+		hsp /= 2
+		set_attack(AT_USPECIAL)
+		window = 1
+		window_timer = 1
 	}
 }
 
@@ -434,4 +520,6 @@ if attack != AT_DSPECIAL{
 			shield_pressed = true
 			}
 	}
+}
+
 }

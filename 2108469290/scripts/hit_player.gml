@@ -87,7 +87,7 @@ if my_hitboxID.attack == AT_FSPECIAL && hhalo > 0 {
 
    with (asset_get("oPlayer")) {
 	if (player != other.player) {
-             	if "ai_target" in self {
+             	if "ai_target" in self && "nname" not in self{
              		if url != "2108469290" {
                    move_cooldown[AT_DSPECIAL] = 60
                    move_cooldown[AT_FSPECIAL] = 60

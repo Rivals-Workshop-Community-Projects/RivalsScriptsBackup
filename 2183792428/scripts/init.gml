@@ -18,13 +18,6 @@ for (i = 0; 7 > i; i++) {
 
 number = 0
 for (i = 0; 2 > i; i++) {
-  instance_create( room_width / 2 ,room_height / 2 + 100, "obj_stage_article_platform", 3)
-  number ++
-}
-
-
-number = 0
-for (i = 0; 2 > i; i++) {
   instance_create( room_width / 2 ,room_height / 2 + 100, "obj_stage_article", 4)
   number ++
 }

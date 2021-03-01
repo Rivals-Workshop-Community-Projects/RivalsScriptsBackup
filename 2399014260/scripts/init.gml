@@ -155,6 +155,7 @@ bee_moment = 0;
 bee_ui_alpha = 0;
 luma_pop_timer = 0;
 luma_pop_timer_max = 7 * 3;
+spin_refreshed = 1;
 
 swapped_sprite_names = [
     "idle", 

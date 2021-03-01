@@ -227,11 +227,15 @@ with (oPlayer) {
 	if id != other.id && mycolich_player == other.player {
 	
 				if !hitpause{
-					if mycolich_spored && !invincible && state != PS_RESPAWN && state != PS_DEAD {
+					if state_cat == SC_HITSTUN && mycolich_spored && !invincible && state != PS_RESPAWN && state != PS_DEAD {
 						mycolich_sporetick = min(mycolich_sporetick+1, other.sporecap)
 						if mycolich_sporetick >= other.tick {
 							mycolich_sporetick = 0;
 							take_damage(player, other.player, 1)
+							if !activated_kill_effect {
+								hsp *= 0.9;//clamp(knockback_adj-0.1, 0.8, 1.0)
+								vsp *= 0.9;//clamp(knockback_adj-0.1, 0.8, 1.0)
+							}
 							sound_play(spsn)
 							//take_damage(other.player, 0, -1)
 						}

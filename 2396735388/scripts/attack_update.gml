@@ -273,18 +273,6 @@ switch attack {
     
     case AT_FSPECIAL_AIR:
     case AT_FSPECIAL:
-    	if window == 1 && window_timer == 1 {
-    		with obj_article2 {
-    			if player_id == other {
-    				if state == 1 {
-    					is_horizontal = !is_horizontal;
-    					is_up = (spr_dir * other.spr_dir - 1) / -2;
-    					rotation_direction = other.spr_dir;
-    					state = 7;
-    				}
-    			}
-    		}
-    	}//*/
     	move_cooldown[AT_FSPECIAL]=99999;
     
         if window == 2 && window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH) {
@@ -365,17 +353,11 @@ switch attack {
         }
     break;
     
-    case AT_NSPECIAL:
-        /*if window == 1 && window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH) {
-            var new_ring = instance_create(x, y-32, "obj_article1");
-            new_ring.haccel= -.2 * spr_dir;
-            new_ring.hsp = 7 * spr_dir;
-            new_ring.spr_dir = spr_dir;
-        }//*/
+    /*case AT_NSPECIAL:
     	if (window == 1 && window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH)) || window > 1 {
     		move_cooldown[AT_NSPECIAL] = 300;
     	}
-    break;
+    break;//*/
     
     case AT_FSTRONG:
     case AT_USTRONG:
@@ -453,6 +435,9 @@ switch attack {
 	        	hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
 	        }//*/
     	}
+    	if window == 2 && window_timer == 1 {
+    		set_attack_value(attack, AG_CATEGORY, 2);
+    	}
     	if(window == 2 && window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH)){//window == 2 && window_timer == 1){
     		switch attack {
     			case AT_FSTRONG:
@@ -467,25 +452,17 @@ switch attack {
     		}
     		grabbed_by_zeph_ring = false;
     		grabbed_by_zeph_ring_id = noone;
+    		set_attack_value(attack, AG_CATEGORY, 1);
     	}
     	if window == 3 {
+    		if window_timer == 1 && attack != AT_DSTRONG {
+    			set_attack_value(attack, AG_CATEGORY, 2);
+    		}
     		var closest_ring = noone;
-	        var closest_ring_distance = 1000000000;
-	        var zeph_id = id;
-			with pHitBox {
-				if "effect" in self {
-	    			if point_distance(x, y, other.x, other.y-24) < 80 && effect == 228 {
-				        
-				        with obj_article2 {
-				            if player_id.url == other.player_id.url {
-				                var current_ring_distance = point_distance(x,y,other.x,other.y);
-				                
-				                if  current_ring_distance < closest_ring_distance && state == 1 && point_distance(x, y, zeph_id.x, zeph_id.y-24) < 80 {
-				                    closest_ring_distance = current_ring_distance;
-				                    closest_ring = id;
-				                }
-				            }
-				        }
+			with obj_article1 {
+				if player_id.url == other.url {
+	    			if point_distance(x, y, other.x, other.y-24) < 80 && article_which == 2 {
+				       closest_ring = assoc_ring;
 	    			}
 				}
     		}
@@ -518,6 +495,9 @@ switch attack {
     			hsp = 0;
     			vsp = 0;
     		}
+    		if window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH) {
+    			set_attack_value(attack, AG_CATEGORY, 1);
+    		}
     	}
     	if(window == 4 && (attack == AT_USTRONG )){//|| attack == AT_DSTRONG)){
     		vsp /= 1.2;
@@ -528,6 +508,9 @@ switch attack {
     case AT_FSTRONG_2:
     case AT_DSTRONG_2:
     case AT_USTRONG_2:
+    	if window == 2 && window_timer == 1 {
+    		set_attack_value(attack, AG_CATEGORY, 2);
+    	}
     	if(window == 2 && window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH)){//window == 2 && window_timer == 1){
     		switch attack {
     			case AT_FSTRONG_2:
@@ -543,25 +526,21 @@ switch attack {
     		sound_stop(strong_emp_noise);
     		grabbed_by_zeph_ring = false;
     		grabbed_by_zeph_ring_id = noone;
+    		if attack != AT_DSTRONG_2 {
+    			set_attack_value(attack, AG_CATEGORY, 1);
+    		} else {
+    			reset_attack_value(AT_DSTRONG_2, AG_NUM_WINDOWS);
+    		}
     	}
     	if window == 3 {
+    		if window_timer == 1 {
+    			set_attack_value(attack, AG_CATEGORY, 2);
+    		}
     		var closest_ring = noone;
-	        var closest_ring_distance = 1000000000;
-	        var zeph_id = id;
-			with pHitBox {
-				if "effect" in self {
-	    			if point_distance(x, y, other.x, other.y-24) < 80 && effect == 228 {
-				        
-				        with obj_article2 {
-				            if player_id.url == other.player_id.url {
-				                var current_ring_distance = point_distance(x,y,other.x,other.y);
-				                
-				                if  current_ring_distance < closest_ring_distance && state == 1 && point_distance(x, y, zeph_id.x, zeph_id.y-24) < 80 {
-				                    closest_ring_distance = current_ring_distance;
-				                    closest_ring = id;
-				                }
-				            }
-				        }
+			with obj_article1 {
+				if player_id.url == other.url {
+	    			if point_distance(x, y, other.x, other.y-24) < 80 && article_which == 2 {
+				       closest_ring = assoc_ring;
 	    			}
 				}
     		}
@@ -593,6 +572,11 @@ switch attack {
     			hurtboxID.sprite_index = get_attack_value(attack_to_be, AG_HURTBOX_SPRITE);
     			hsp = 0;
     			vsp = 0;
+    		} else if attack == AT_DSTRONG_2 && window_timer < 8 && !free {
+    			window = 5;
+    			window_timer = -1;
+    			set_attack_value(AT_DSTRONG_2, AG_NUM_WINDOWS, 6);
+    			set_attack_value(AT_DSTRONG_2, AG_CATEGORY, 0);
     		}
     		switch attack {
     			case AT_FSTRONG_2:
@@ -611,7 +595,7 @@ switch attack {
     		if window_timer < 6 {
 	    		with oPlayer {
 	    			if id != other {
-			            if grabbed_by_zeph && grabbed_by_zeph_id == other {
+			            if grabbed_by_zeph && grabbed_by_zeph_id == other && state_cat == SC_HITSTUN {
 			                state = PS_HITSTUN * free + PS_HITSTUN_LAND * !free;
 			                state_timer = 0;
 			                hitstun = 16;
@@ -625,6 +609,9 @@ switch attack {
 			            }
 	    			}
 		        }
+    		}
+    		if window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH) {
+    			set_attack_value(attack, AG_CATEGORY, 1);
     		}
     	}
     	if(window == 4 && (attack == AT_USTRONG_2 )){//|| attack == AT_DSTRONG)){
@@ -680,7 +667,7 @@ switch attack {
     		}
     		hsp = target_hsp*speed_scale;
     		vsp = max(target_vsp*speed_scale, -15);
-    		if window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH) && !was_parried {
+    		if window_timer >= 32 /*get_window_value(attack,window,AG_WINDOW_LENGTH)//*/ && !was_parried {
     			attack_end();
     			set_attack(AT_EXTRA_1);
 	            hurtboxID.sprite_index = get_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE);
@@ -736,6 +723,8 @@ switch attack {
     		var newfx = spawn_hit_fx(x, y, dspecial_leave);
     		newfx.spr_dir = spr_dir;
     		char_height = 100000;
+    	} else if window == 1 {
+    		vsp = clamp(vsp, -200, 5);
     	}
     	if window == 2 {
     		set_window_value(AT_DSPECIAL, 2, AG_WINDOW_GOTO, 6 - 3 * special_down);
@@ -747,27 +736,15 @@ switch attack {
     		fall_through = true;
     		if window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH) {
     			char_height = 52;
-    			hsp = clamp(hsp, -7, 7);
-    			vsp = clamp(vsp, -5, 20);
+    			hsp = clamp(hsp, -5, 5);
+    			vsp = clamp(vsp, -4.5, 20);
 				var closest_ring = noone;
-		        var closest_ring_distance = 1000000000;
-		        var zeph_id = id;
-    			with pHitBox {
-    				if "effect" in self {
-		    			if point_distance(x, y, other.x, other.y-24) < 80 && effect == 228 {
-					        
-					        with obj_article2 {
-					            if player_id.url == other.player_id.url {
-					                var current_ring_distance = point_distance(x,y,other.x,other.y);
-					                
-					                if  current_ring_distance < closest_ring_distance && state == 1 && point_distance(x, y, zeph_id.x, zeph_id.y-24) < 80 {
-					                    closest_ring_distance = current_ring_distance;
-					                    closest_ring = id;
-					                }
-					            }
-					        }
+    			with obj_article1 {
+					if player_id.url == other.url {
+		    			if point_distance(x, y, other.x, other.y-24) < 80 && article_which == 2 {
+					       closest_ring = assoc_ring;
 		    			}
-    				}
+					}
 	    		}
 	    		if instance_exists(closest_ring) {
 		        	grabbed_by_zeph_ring = true;
@@ -791,6 +768,7 @@ switch attack {
 	    					attack_to_be = AT_DSTRONG_2;
 	    				}
 	    			}
+	    			set_attack_value(attack_to_be, AG_CATEGORY, 2);
 	    			set_attack(attack_to_be);
 	    			window = 2;
 	    			window_timer = 0;

@@ -62,6 +62,12 @@ sprite_change_offset("plat", 64, 94);
 
 sprite_change_offset("nspecial_proj", 64, 94);
 
+sprite_change_offset("kirby", 42, 90);
+sprite_change_offset("kirby_hurt", 42, 90);
+sprite_change_offset("kirbymine", 15, 15);
+
+sprite_change_offset("eggcar", 80, 60);
+
 sprite_change_offset("eggdogferi", 50, 98);
 sprite_change_offset("eggdoglastresourt", 27, 39);
 sprite_change_offset("eggtrialground", 31, 0);

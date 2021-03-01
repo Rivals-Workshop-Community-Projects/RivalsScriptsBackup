@@ -1,5 +1,8 @@
 //draw_hud - the x position of your HUD element is 48*(i-1)
 
+if("hudv" not in self) exit;
+
+
 var temp_color = c_white;
 draw_sprite(sprite_get("block_hud"), 0, temp_x, temp_y-30);
 if(move_cooldown[AT_FSPECIAL] > 0) temp_color = c_gray;
@@ -23,6 +26,10 @@ switch(hudv){
     
     case 3:
     draw_sprite_ext(sprite_get("sinkhud"), 0, temp_x + 170, temp_y - 25, 0.5, 0.5, 0, c_white, 1);
+    break;
+    
+    case 4:
+    draw_sprite_ext(sprite_get("hothud"), 0, temp_x + 170, temp_y - 25, 0.5, 0.5, 0, c_white, 1);
     break;
 }
 

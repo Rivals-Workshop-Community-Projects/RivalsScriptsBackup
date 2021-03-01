@@ -25,120 +25,130 @@ if ("phone_inited" in self){
 	
 	
 	
-	// char id for ALL
-	
-	if !phone.char_ided && fps_real >= 60{
-		with oPlayer if self != other{
-			if "muno_char_id" not in self muno_char_id = noone;
-			if "muno_char_name" not in self muno_char_name = get_char_info(player, INFO_STR_NAME);
-			if "muno_char_icon" not in self muno_char_icon = get_char_info(player, INFO_ICON);
-			if (muno_char_id == other.muno_char_id && muno_char_id != noone) || "url" in self && url == other.url{
-				other.phone_ditto = true;
-				phone_ditto = true;
-			}
-		}
-		phone.char_ided = true;
-	}
-	
-	
-	
-	// Attack stuff
-	
-	if phone_arrow_cooldown > 0 phone_arrow_cooldown--;
-	if phone_invis_cooldown > 0 phone_invis_cooldown--;
-	
 	phone_attacking = (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND);
 	
-	if phone_using_landing_cd == noone{
-		phone_using_landing_cd = 0;
-		phone_using_invul = 0;
-		muno_cooldown_checked = [];
-		muno_invul_checked = [];
-		for (var checked_move = 0; checked_move < 50; checked_move++){
-			if (get_attack_value(checked_move, AG_MUNO_ATTACK_COOLDOWN) < 0){
-				phone_using_landing_cd = 1;
-				array_push(muno_cooldown_checked, checked_move);
+	
+	
+	if !phone_lightweight{
+	
+		// char id for ALL
+		
+		if !phone.char_ided && fps_real >= 60{
+			with oPlayer if self != other{
+				if "muno_char_id" not in self muno_char_id = noone;
+				if "muno_char_name" not in self muno_char_name = get_char_info(player, INFO_STR_NAME);
+				if "muno_char_icon" not in self muno_char_icon = get_char_info(player, INFO_ICON);
+				if (muno_char_id == other.muno_char_id && muno_char_id != noone) || "url" in self && url == other.url{
+					other.phone_ditto = true;
+					phone_ditto = true;
+				}
 			}
-			for (var checked_window = 1; get_window_value(checked_move, checked_window, AG_WINDOW_LENGTH) > 0; checked_window++){
-				if (get_window_value(checked_move, checked_window, AG_MUNO_WINDOW_INVUL) != 0){
-					phone_using_invul = 1;
-					array_push(muno_invul_checked, checked_move);
+			phone.char_ided = true;
+		}
+		
+		
+		
+		// Attack stuff
+		
+		if phone_arrow_cooldown > 0 phone_arrow_cooldown--;
+		if phone_invis_cooldown > 0 phone_invis_cooldown--;
+		
+		phone_landing = (!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN || state == PS_RESPAWN);
+		
+		if phone_using_landing_cd == noone{
+			phone_using_landing_cd = 0;
+			phone_using_invul = 0;
+			muno_cooldown_checked = [];
+			muno_invul_checked = [];
+			for (var checked_move = 0; checked_move < 50; checked_move++){
+				if (get_attack_value(checked_move, AG_MUNO_ATTACK_COOLDOWN) < 0){
+					phone_using_landing_cd = 1;
+					array_push(muno_cooldown_checked, checked_move);
+				}
+				for (var checked_window = 1; get_window_value(checked_move, checked_window, AG_WINDOW_LENGTH) > 0; checked_window++){
+					if (get_window_value(checked_move, checked_window, AG_MUNO_WINDOW_INVUL) != 0){
+						phone_using_invul = 1;
+						array_push(muno_invul_checked, checked_move);
+					}
 				}
 			}
 		}
-	}
-	
-	if phone_attacking{
-		phone_window_end = floor(get_window_value(attack, window, AG_WINDOW_LENGTH) * ((get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !has_hit) ? 1.5 : 1));
 		
-		if phone_using_invul && !phone_invul_override && array_find_index(muno_invul_checked, attack) != -1{
-			super_armor = false;
-			invincible = false;
-			soft_armor = 0;
+		if phone_attacking{
+			phone_window_end = floor(get_window_value(attack, window, AG_WINDOW_LENGTH) * ((get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !has_hit) ? 1.5 : 1));
 			
-			switch(get_window_value(attack, window, AG_MUNO_WINDOW_INVUL)){
-				case -1:
-					invincible = true;
-					break;
-				case -2:
-					super_armor = true;
-					break;
-				case 0:
-					break;
-				default:
-					soft_armor = get_window_value(attack, window, AG_MUNO_WINDOW_INVUL);
-					break;
+			if phone_using_invul && !phone_invul_override && array_find_index(muno_invul_checked, attack) != -1{
+				super_armor = false;
+				invincible = false;
+				soft_armor = 0;
+				
+				switch(get_window_value(attack, window, AG_MUNO_WINDOW_INVUL)){
+					case -1:
+						invincible = true;
+						break;
+					case -2:
+						super_armor = true;
+						break;
+					case 0:
+						break;
+					default:
+						soft_armor = get_window_value(attack, window, AG_MUNO_WINDOW_INVUL);
+						break;
+				}
+			}
+			
+			phone_invul_override = 0;
+			
+			if get_attack_value(attack, AG_MUNO_ATTACK_COOLDOWN) != 0{
+				var set_amt = abs(get_attack_value(attack, AG_MUNO_ATTACK_COOLDOWN));
+				
+				switch (get_window_value(attack, window, AG_MUNO_WINDOW_CD_SPECIAL)){
+					case 1:
+						set_amt = -1;
+						break;
+					case 2:
+						set_amt = 0;
+						break;
+					case 3:
+						if has_hit set_amt = 0;
+						break;
+					case 4:
+						if has_hit_player set_amt = 0;
+						break;
+				}
+				
+				if set_amt != -1 switch (get_attack_value(attack, AG_MUNO_ATTACK_CD_SPECIAL)){
+					case 0:
+						move_cooldown[attack] = set_amt;
+						break;
+					case 1:
+						phone_arrow_cooldown = set_amt;
+						break;
+					case 2:
+						phone_invis_cooldown = set_amt;
+						break;
+				}
 			}
 		}
 		
-		phone_invul_override = 0;
+		if phone_using_landing_cd && phone_landing{
+			for (var checked_move = 0; checked_move < array_length(muno_cooldown_checked); checked_move++){
+				switch (get_attack_value(muno_cooldown_checked[checked_move], AG_MUNO_ATTACK_CD_SPECIAL)){
+					case 0:
+						move_cooldown[muno_cooldown_checked[checked_move]] = 0;
+						break;
+					case 1:
+						phone_arrow_cooldown = 0;
+						break;
+					case 2:
+						phone_invis_cooldown = 0;
+						break;
+				}
+			}
+		}
 		
-		if get_attack_value(attack, AG_MUNO_ATTACK_COOLDOWN) != 0{
-			var set_amt = abs(get_attack_value(attack, AG_MUNO_ATTACK_COOLDOWN));
-			
-			switch (get_window_value(attack, window, AG_MUNO_WINDOW_CD_SPECIAL)){
-				case 1:
-					set_amt = -1;
-					break;
-				case 2:
-					set_amt = 0;
-					break;
-				case 3:
-					if has_hit set_amt = 0;
-					break;
-				case 4:
-					if has_hit_player set_amt = 0;
-					break;
-			}
-			
-			if set_amt != -1 switch (get_attack_value(attack, AG_MUNO_ATTACK_CD_SPECIAL)){
-				case 0:
-					move_cooldown[attack] = set_amt;
-					break;
-				case 1:
-					phone_arrow_cooldown = set_amt;
-					break;
-				case 2:
-					phone_invis_cooldown = set_amt;
-					break;
-			}
-		}
-	}
-	
-	if phone_using_landing_cd && (!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN || state == PS_RESPAWN){
-		for (var checked_move = 0; checked_move < array_length(muno_cooldown_checked); checked_move++){
-			switch (get_attack_value(muno_cooldown_checked[checked_move], AG_MUNO_ATTACK_CD_SPECIAL)){
-				case 0:
-					move_cooldown[muno_cooldown_checked[checked_move]] = 0;
-					break;
-				case 1:
-					phone_arrow_cooldown = 0;
-					break;
-				case 2:
-					phone_invis_cooldown = 0;
-					break;
-			}
-		}
+		if phone_practice && state == PS_RESPAWN visible = 1;
+		
 	}
 
 
@@ -163,8 +173,6 @@ if ("phone_inited" in self){
 		}
 	}
 	
-	if phone_practice && state == PS_RESPAWN visible = 1;
-	
 	user_event(10);
 	user_event(15);
 	
@@ -176,7 +184,8 @@ if ("phone_inited" in self){
 muno_char_id = noone;
 phone_inited = false;
 phone_playtest = (object_index == oTestPlayer);
-phone_practice = (get_training_cpu_action() != CPU_FIGHT) && !phone_playtest && get_player_hud_color(player) != c_gray;
+phone_practice = get_match_setting(SET_PRACTICE) && !phone_playtest && get_player_hud_color(player) != c_gray;
+phone_hud_hidden = !(get_local_setting(SET_HUD_SIZE) || get_local_setting(SET_HUD_NAMES));
 phone_online = 0;
 for (var cur = 0; cur < 4; cur++){
 	if get_player_hud_color(cur+1) == $64e542 phone_online = 1;
@@ -188,6 +197,9 @@ amber_startHug = false;
 phone_ditto = false;
 phone_user_id = self;
 phone_attacking = 0;
+phone_landing = 0;
+phone_lightweight = 0;
+phone_offscreen = [];
 phone_invul_override = 0;
 
 phone_darkened_player_color = make_color_rgb(
@@ -323,7 +335,7 @@ spr_taunt = sprite_get("taunt");
 
 
 phone = {
-	firmware: 9, // latest public: 9, 21 december 2020
+	firmware: 10, // latest public: 10, 18 feb 2021
 	stage_id: noone,
 	
 	hint_opac: 2,
@@ -493,7 +505,7 @@ with phone{
 
 // Sprites, sfx init
 
-with phone{ // for GML autocomplete lol
+if 0{ // for GML autocomplete lol
 
 	spr_pho_idle = 0;
 	spr_pho_roundtangle_small = 0;
@@ -530,6 +542,7 @@ sfx_pho_select1 = sound_get("_pho_select1");
 sfx_pho_select2 = sound_get("_pho_select2");
 
 spr_pho_cooldown_arrow = sprite_get("_pho_cooldown_arrow");
+spr_pho_offscreen = sprite_get("_pho_offscreen");
 
 phone.sprite_index = phone.spr_pho_idle;
 phone.side_bar.sprite_index = phone.spr_pho_slider;

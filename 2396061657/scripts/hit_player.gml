@@ -42,7 +42,7 @@ if (attack == AT_FSPECIAL && state != PS_HITSTUN){
 		switch(GrappleMode){
 			case 0:			
 				hurtboxID.sprite_index = get_attack_value(AT_FTHROW, AG_HURTBOX_SPRITE);
-				ThornKB = (ThornKB + ((LoveMeter[GrappleMode]/50)/1.5));
+				ThornKB = (ThornKB + ((LoveMeter/40)));
 				set_hitbox_value(AT_FTHROW, 1, HG_BASE_KNOCKBACK, ThornKB);
 				set_hitbox_value(AT_FTHROW, 1, HG_BASE_HITPAUSE, ThornKB);
 				attack = AT_FTHROW;
@@ -52,12 +52,12 @@ if (attack == AT_FSPECIAL && state != PS_HITSTUN){
 				attack = AT_DTHROW;
 			break;
 			case 2:	
-				hurtboxID.sprite_index = get_attack_value(AT_NTHROW, AG_HURTBOX_SPRITE);	RibbonHSP = (RibbonHSP - (LoveMeter[GrappleMode]/60));
-				RibbonVSP = (RibbonVSP - (LoveMeter[GrappleMode]/100));
+				hurtboxID.sprite_index = get_attack_value(AT_NTHROW, AG_HURTBOX_SPRITE);	RibbonHSP = (RibbonHSP - (LoveMeter/60));
+				RibbonVSP = (RibbonVSP - (LoveMeter/100));
 				set_window_value(AT_NTHROW, 2, AG_WINDOW_HSPEED, RibbonHSP);
 				set_window_value(AT_NTHROW, 2, AG_WINDOW_VSPEED, RibbonVSP);
 				
-				RibbonKB = (RibbonKB + (LoveMeter[GrappleMode]/30));
+				RibbonKB = (RibbonKB + (LoveMeter/30));
 				set_hitbox_value(AT_NTHROW, 1, HG_BASE_KNOCKBACK, RibbonKB);
 				attack = AT_NTHROW;
 			break;
@@ -77,8 +77,8 @@ if (attack == AT_FTHROW){
 	other.isThorn = true;
 	other.thorn_id = id;
 	if (other.ThornCounter == 0){
-		other.ThornCounter = LoveMeter[GrappleMode] + 120;
-		LoveMeter[GrappleMode] = 0;
+		other.ThornCounter = LoveMeter + 120;
+		LoveMeter = 0;
 	}
 }
 
@@ -87,9 +87,8 @@ if (attack == AT_DTHROW){
 	other.isCandy = true;
 	other.candy_id = id;
 	if (other.CandyCounter == 0){
-//		other.CandyCounter = LoveMeter[GrappleMode]/2 + 200;
-		other.CandyCounter = (LoveMeter[GrappleMode]/2) + 60;
-		LoveMeter[GrappleMode] = 0;
+		other.CandyCounter = (LoveMeter/2) + 60;
+		LoveMeter = 0;
 	}
 }
 
@@ -99,8 +98,8 @@ if (attack == AT_NTHROW){
 	other.ribbon_id = id;
 
 	if (other.RibbonCounter == 0){
-		other.RibbonCounter = LoveMeter[GrappleMode]  + 120;
-		LoveMeter[GrappleMode] = 0;
+		other.RibbonCounter = LoveMeter  + 120;
+		LoveMeter = 0;
 	}
 }
 
@@ -109,7 +108,7 @@ if (attack == AT_UTHROW){
 	other.isBalloon = true;
 	other.balloon_id = id;
 	if (other.BalloonCounter == 0){
-		other.BalloonCounter = LoveMeter[GrappleMode]  + 200;
-		LoveMeter[GrappleMode] = 0;
+		other.BalloonCounter = LoveMeter  + 200;
+		LoveMeter = 0;
 	}
 }

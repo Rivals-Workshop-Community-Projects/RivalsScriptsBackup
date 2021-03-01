@@ -388,6 +388,11 @@ with phone{
 	initTipWords("With the puddle active on stage, it can act as a stage hazard for opponents, dealing damage to them and knocking them upwards whenever they step on it. Exetior can do a couple of other things with it as well, such as super jump on it with down air and even throw out a more powerful version of Flame Dweller. This is of course Exetior's secondary gimmick.");
 	initTipImage(player_id.spr_puddle, -6, fa_center, 1, c_white, 0);
 	
+	initTip("Dash Attack: Shoulder Bash");
+	initTipWords("Dash Attack is one of Exetior's most reliable combo starters, being able to jump cancel out of it on hit. Exetior can easily follow up with aerials after landing his Dash Attack, however, if the player presses the special button during the startup of the move, Exetior's Dash Attack will become even more powerful.");
+	initTipImage(player_id.spr_dattack, -5, fa_center, 1, c_white, 0);
+	initTipWords("Exetior's Charged Dash Attack allows him to continue charging forward until he either falls off a ledge, jump cancels the move, or if the player presses parry or taunt. On top of being much faster than normal Dash Attack, Charged Dash Attack can be jump canceled at any time.");
+	
 	initTip("Dair");
 	initTipWords_ext("S T O M P S", fa_center, c_red, 0, 1);
 	initTipImage(player_id.spr_dair, -5, fa_center, 1, c_white, 1);
@@ -401,8 +406,10 @@ with phone{
 	
 	initTip("Additional Tips");
 	initTipWords("- If you jump cancel the first window of forward special, you will send yourself flying forward. This is known as Inferno Boost. Inferno Boosting can also be done offstage for recovering.");
-	initTipWords("- Dash attack can be jump canceled on hit so it can connect into aerials to keep combos going.");
 	initTipWords("- Exetior's nair and uair can both be reliable approach tools in case you're ever in a pickle.");
+	initTipWords("- Exetior's wavedash is his most reliable movement option, use it for whenever you need to close the gap or get out of harm's way faster.");
+	initTipWords("- Exetior's aerial Neutral Special, Rising Phoenix, can be used as both a recovery option and a kill confirm for midair comboes. Just be wary, Rising Phoenix's power is dependent on how much Flame Dweller charge you currently have stored.");
+	initTipWords("- Landing on the Scorching Stain puddle during Up Special will give you max Flame Dweller charge in an instant.");
 	initTipImage(player_id.spr_taunt, -5, fa_center, 1, c_white, 0);
 	
 	initTip("Exetior's Lore");
@@ -450,7 +457,15 @@ with phone{
 	 * put the version number and full date.
 	 */
 	 
-	 initPatch("4.35", "14 Jan, 2021");
+	initPatch("4.4", "13 Feb, 2021");
+	initPatchWords("~ Replaced the Ruby alt with a Rykenburn alt");
+	initPatchWords("~ Replaced the Mollo alt with an Atticus alt");
+	initPatchWords("~ Added more character tips to the MunoPhone");
+	initPatchWords("+ Replaced Exetior's tornado spin with a stronger shoulder bash for charged dash attack");
+	initPatchWords("- Made it so Exetior cannot cancel out of the aerial Up Special explosion");
+	initPatchWords("- Now when Exetior runs into a wall during either Dash Attack state, he will bonk on said wall and have all of his momentum stopped.");
+	
+	initPatch("4.35", "14 Jan, 2021");
 	initPatchWords("~ Reanimated Exticide");
 	initPatchWords("~ Revised Kirby's copy ability animation");
 	initPatchWords("+ Buffed Kirby's copy ability framedata");

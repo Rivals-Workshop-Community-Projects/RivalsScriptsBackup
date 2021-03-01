@@ -12,13 +12,15 @@ case -1:
 break;
 default:
 //sound_play(asset_get("sfx_birdflap"));
-	if !instance_exists(cloud) {
-		cloud = instance_create(x,y-60,"obj_article2");
-		cloud.player_id = player_id;
-	} else {
-		cloud.x = x;
-		cloud.y = y-60;
-		cloud.timer = 31;
+	for (i = 0; i < 3; i++) {
+		if !instance_exists(cloud[i]) {
+			cloud[i] = instance_create(x,y-(i+1)*60,"obj_article2");
+			cloud[i].player_id = player_id;
+		} else {
+			cloud[i].x = x;
+			cloud[i].y = y-(i+1)*60;
+			cloud[i].timer = 31;
+		}
 	}
 	//if free state = -1;
 	/*
@@ -38,7 +40,14 @@ default:
 	
 	var playdmg = get_player_damage(player_id.player)
 	
-
+	//Old code 
+	/*
+	if playdmg-ignored_damage > old_damage {
+		damage += ((playdmg-ignored_damage) - old_damage );
+		set_player_damage(player_id.player, old_damage+ignored_damage)
+	}
+	*/
+	
 	//CURRENT CODE HERE
 	if playdmg >= damagemin {
 	

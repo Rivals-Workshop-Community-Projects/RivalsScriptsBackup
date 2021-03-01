@@ -6,6 +6,56 @@
 
 if "phone_inited" not in self exit; // dont give the funny error message
 
+if (object_index == oPlayer && !array_equals(phone_offscreen, [])){
+	
+	var empty = 1;
+	
+	for (var i = 0; i < array_length(phone_offscreen); i++){
+		if phone_offscreen[i] != noone{
+			empty = 0;
+			if !instance_exists(phone_offscreen[i]){
+				phone_offscreen[i] = noone;
+			}
+			else with phone_offscreen[i]{
+				var leeway = phone_offscr_leeway;
+				
+				var x_ = x + phone_offscr_x_offset * spr_dir;
+				var y_ = y + phone_offscr_y_offset;
+				
+				var off_l = x_ < view_get_xview() - leeway;
+				var off_r = x_ > view_get_xview() + view_get_wview() + leeway;
+				var off_u = y_ < view_get_yview() - leeway;
+				var off_d = y_ > view_get_yview() + view_get_hview() + leeway;
+				
+				var margin = 34;
+				var idx = noone;
+				
+				if off_l{
+					idx = 0;
+					if off_u idx = 1;
+					if off_d idx = 7;
+				}
+				else if off_r{
+					idx = 4;
+					if off_u idx = 3;
+					if off_d idx = 5;
+				}
+				else if off_u idx = 2;
+				else if off_d idx = 6;
+				
+				if idx != noone{
+					draw_sprite_ext(other.spr_pho_offscreen, idx, clamp(x_ - view_get_xview(), margin, view_get_wview() - margin) - 33, clamp(y_ - view_get_yview(), margin, view_get_hview() - margin) - 33, 1, 1, 0, get_player_hud_color(player), 1);
+					with other shader_start();
+					draw_sprite_ext(phone_offscr_sprite, phone_offscr_index, clamp(x_ - view_get_xview(), margin, view_get_wview() - margin) - 33, clamp(y_ - view_get_yview(), margin, view_get_hview() - margin) - 33, 1, 1, 0, c_white, 1);
+					with other shader_end();
+				}
+			}
+		}
+	}
+	
+	if empty phone_offscreen = [];
+}
+
 if (object_index == asset_get("obj_stage_main") || (object_index == oPlayer && phone_practice && phone.stage_id == noone)){
 	with phone_user_id drawHud();
 }
@@ -37,12 +87,7 @@ if phone_online && get_gameplay_time() < 300 && get_gameplay_time() % 30 < 25 dr
 // "Taunt!" prompt
 
 if phone.hint_opac > 0{
-	if ("taunt_hint_y" not in phone){
-		phone.taunt_hint_y = 0;
-		phone.shader = 0;
-	}
-	
-	var height = temp_y - 11 + ease_backOut(100, 0, round(phone.hint_opac * 10), 20, 2);
+	var height = temp_y - 11 + ((phone.hint_opac == 2) ? 0 : ease_backOut(100, 0, round(phone.hint_opac * 10), 20, 2));
 	textDraw(temp_x + 42 + phone.taunt_hint_x, height + phone.taunt_hint_y, "fName", c_white, 100, 100, fa_right, 1, true, 1, "Taunt!", false);
 	draw_sprite_ext(phone.spr_pho_compatibility_badges, 0, temp_x + 40 + phone.taunt_hint_x, height + phone.taunt_hint_y - 7, 1, 1, 0, c_white, 1);
 }

@@ -1,8 +1,17 @@
 
 
 
-if get_window_value(attack, window, AG_WINDOW_TYPE) == 666 &&  window_timer == get_window_value(attack, window, AG_WINDOW_SFX_FRAME)+1  {
-	var origincloud = instance_create(x,y, "obj_article2");
+if attack == AT_JAB && get_window_value(attack, window, AG_WINDOW_TYPE) == 666 &&  window_timer == get_window_value(attack, window, AG_WINDOW_SFX_FRAME)+1  {
+	var origincloud = instance_create(x+40*spr_dir,y-30, "obj_article2");
+	origincloud.hsp = 4*spr_dir;
+	newcloud = instance_create(origincloud.x,origincloud.y,"obj_article2");
+	newcloud.hsp = 20*spr_dir;
+	newcloud = instance_create(origincloud.x,origincloud.y,"obj_article2");
+	newcloud.hsp = 7*spr_dir;
+	newcloud.vsp = -6;
+	newcloud = instance_create(origincloud.x,origincloud.y,"obj_article2");
+	newcloud.hsp = 17*spr_dir;
+	newcloud.vsp = -12;
 }
 
 if attack == AT_NSPECIAL_2 {
@@ -18,6 +27,10 @@ if attack == AT_NSPECIAL_2 {
 		selfstab_y = ease_quadOut(y - 50, y+get_hitbox_value(attack, 1, HG_HITBOX_Y), window_timer, get_window_value(attack,window,AG_WINDOW_LENGTH))
 		selfstab_angle = point_direction(oldx, oldy, selfstab_x, selfstab_y)
 	}
+}
+
+if attack == AT_DTHROW && window <= 3 && !(attack_down or down_stick_down) {
+	set_attack(AT_DAIR);
 }
 
 if attack == AT_DATTACK && window == 1 {
@@ -168,7 +181,7 @@ if attack == AT_FSPECIAL_2 && instance_exists(fspecial_target) { //Caught
 		if fspecial_target != id {
 			fspecial_target.hsp -= spr_dir;
 			fspecial_target.vsp = 0;		
-			
+			if fspecial_target.from_crouch fspecial_target.state_timer--;
 			var xx = fspecial_target.bbox_right;
 			if spr_dir > 0 xx = fspecial_target.bbox_left;
 			//if x-xx != 0 spr_dir = -sign(x-xx )
@@ -354,12 +367,12 @@ if attack == AT_USPECIAL {
 	if window_timer == 1 && get_window_value(attack, window, AG_WINDOW_TYPE) == 69 && !hitpause {
 		sound_play(asset_get("sfx_ell_small_missile_fire"))
 		var origincloud = instance_create(x,y-10, "obj_article2");
-		origincloud.vsp = 7*free;
+		origincloud.vsp = -7;
 		origincloud.depth = depth-1
 		var newcloud;
 		var newangle = 90;
 		var cff = 6;
-		var csp = 17;
+		var csp = 20;
 		if !strong_charge {
 			cff = 3;
 			csp = 5;

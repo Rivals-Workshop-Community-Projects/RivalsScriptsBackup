@@ -19,16 +19,11 @@ draw_indicator = false
 }
 
 
-    	if right_strong_down || left_strong_down || up_strong_down || down_strong_down || strong_down {
-    		strongdown = true
-    	} else {
-    		strongdown = false
-    	}
     	
     	
     	
     	if state == PS_JUMPSQUAT && strong_down {
-    		set_attack (AT_FSTRONG)
+    		set_attack (AT_NSPECIAL)
 	    	window = 4
 
 	    	window_timer = 0

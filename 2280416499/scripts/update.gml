@@ -40,6 +40,7 @@ if setting_clicked != noone{
 	
 	if setting_clicked == st_st_save{
 		saveState();
+		phone_user_id.phone.cursor++;
 	}
 	
 	else if setting_clicked == st_st_load{

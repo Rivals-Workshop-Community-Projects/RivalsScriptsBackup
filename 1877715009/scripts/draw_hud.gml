@@ -2077,7 +2077,7 @@ if ("yes" in self && yes)
 					text[4] = "Hikaru clones fakie transfer timer 100 frames -> 120 frames";
 					text[5] = "Hikaru clone lifetime 5 secs -> 4 secs";
 					text[6] = "";
-					text[7] = "FTilt animation redone by Regina Reforged (Thanks!)";
+					text[7] = "FTilt and BAir animations redone by Regina Reforged (Thanks!)";
 					text[8] = "";
 					text[9] = "Added Shrine of Light discord link";
 					nooflines = 10;

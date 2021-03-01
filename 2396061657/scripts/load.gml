@@ -13,6 +13,7 @@ sprite_change_offset("crouch_hurtbox", 20, 70);
 sprite_change_offset("date_logo",  65, 65);
 sprite_change_offset("stage_logo",  65, 65);
 sprite_change_offset("taunt...",  72, 96);
+sprite_change_offset("magnetism", 205, 205);
 
 sprite_change_offset("idle", 50, 98);
 sprite_change_offset("hurt", 32, 62);

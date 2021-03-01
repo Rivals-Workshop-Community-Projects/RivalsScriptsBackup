@@ -381,3 +381,17 @@ if (has_rune("N")){
 		}
 	}
 }
+
+if (attack == 49){
+	if (state_timer == 1){
+	var_eggX = x;
+	var_eggY = y;
+	}
+	if window == 2 && (((x < 0) || ((room_width - x)< 0)) || state_timer > 300) {
+		window = 3;
+		window_timer = 0
+		x = var_eggX;
+		y = var_eggY;
+		sound_play(asset_get("sfx_abyss_portal_spawn"))
+	}
+}

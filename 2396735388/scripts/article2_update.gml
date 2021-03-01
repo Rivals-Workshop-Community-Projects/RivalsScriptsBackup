@@ -1,5 +1,11 @@
 //article2_update
 
+if (position_meeting(x,y, asset_get("plasma_field_obj")) && state != 2){
+	state = 2;
+	state_timer = 0;
+	player_id.move_cooldown[AT_NSPECIAL] = 300;
+}
+
 image_index = (floor(state_timer / num_frames[state] * num_anim_frames[state]) % num_anim_frames[state]) + anim_frame_start[state];
 switch state {
     case 0: //forming
@@ -13,7 +19,17 @@ switch state {
         }
     break;
     case 1: //idle
-        create_hitbox(AT_EXTRA_3, 1, x, y);
+        //create_hitbox(AT_EXTRA_3, 1, x, y);
+        with player_id {
+            var fake_ring_hitbox = instance_create(other.x, other.y, "obj_article1");
+            fake_ring_hitbox.player_id = id;
+            fake_ring_hitbox.player = player;
+            fake_ring_hitbox.article_which = 2;
+            fake_ring_hitbox.assoc_ring = other;
+            fake_ring_hitbox.sprite_index = sprite_get("fake_hitbox_mask");
+            //fake_ring_hitbox.mask_index = sprite_get("fake_hitbox_mask");
+            //fake_ring_hitbox.visible = true;
+        }
         if (state_timer + 1) >= max_lifetime - max_lifetime % num_frames[state] {
             state = 2;
             state_timer = 0;
@@ -103,6 +119,7 @@ switch state {
             if abs(total_rotation) == 2 { 
                 spr_angle = 0; 
                 spr_dir *= -1; 
+                total_rotation = 0;
             }
         }
     break;

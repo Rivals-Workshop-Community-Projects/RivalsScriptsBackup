@@ -104,15 +104,12 @@ music_timer++;
 
 switch(rngCheck) {
 case 1: //Lets Killing
+
 	if (60 * 60 > get_game_timer()) || killingTime = 1 {
 	music_play_file("1last");
 	monitorKilling = 1
 		} else {
-		if music_timer > 2749 {
-		music_play_file("loop");
-		} else {
-		music_play_file("intro");
-		}
+		music_play_file("music_loop1");
 		}
 
 break;
@@ -165,18 +162,6 @@ case 8:
 	music_play_file("5last");
 		} else {
 		music_play_file("music_loop8");
-		}
-break;
-
-default: //Lets Killing
-	if (60 * 60 > get_game_timer()) || killingTime = 1 {
-	music_play_file("1last");
-	monitorKilling = 1
-		} else {
-		music_play_file("itsupfordebate_DR_intro")
-		if get_gameplay_time() > 44 * 60 {
-		music_play_file("itsupfordebate_DR_loop")
-		}
 		}
 break;
 

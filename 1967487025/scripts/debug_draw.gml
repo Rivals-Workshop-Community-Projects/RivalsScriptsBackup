@@ -5,5 +5,10 @@
 //draw_debug_text(x, y + 12, "" + string(enemy_hitboxID) + string(sprite_index));
 //draw_debug_text(x, y + 12, "" + string(hsp) /*+ string(sprite_index)*/);
 //with oPlayer draw_debug_text(x, y + 12, string (free));
-
-//draw_debug_text(x, y + 12, string(get_match_setting(SET_RUNES)));
+//var stage_x = get_stage_data( SD_X_POS );
+//var stage_y = get_stage_data( SD_Y_POS );
+//draw_debug_text(x, y + 12, string(joy_dir));
+//draw_debug_text(x, y + 24, "y = " + string(y));
+//draw_debug_text(x, y + 36, "x = " + string(x));
+//draw_debug_text(x, y + 48, "sty = " + string(stage_y));
+//draw_debug_text(x, y + 60, "rw = " + string(room_width));

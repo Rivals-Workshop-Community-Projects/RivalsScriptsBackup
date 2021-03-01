@@ -82,7 +82,9 @@ sprite_change_offset("miiversepost", 60, 30);
 
 //Set offsets
 sprite_change_offset("heart", 30, 30);
+sprite_change_offset("heart_ditto", 34, 34);
 sprite_change_offset("heartflash", 48, 48);
 sprite_change_offset("heartlefthalf", 30, 30);
 sprite_change_offset("heartrighthalf", 0, 30);
 sprite_change_offset("chainlinks", 12, 12);
+sprite_change_offset("heartappear", 34, 34);

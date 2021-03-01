@@ -65,12 +65,6 @@ if "practice" in obj_stage_main && obj_stage_main.practice{
 				other.sfx_pho_select2 = sound_get("_pho_select2");
 			}
 		}
-		
-		if found && get_gameplay_time() < 60{
-			with obj_stage_article_solid if num == 1{
-				current_layout = village_index;
-			}
-		}
 	}
 	
 	else{
@@ -106,6 +100,11 @@ if "practice" in obj_stage_main && obj_stage_main.practice{
 		with phn.side_bar{
 			x = the_screen.x;
 			y = the_screen.y;
+			if state with obj_stage_article_solid if num == 1{
+				if !has_changed_layouts{
+					current_layout = village_index;
+				}
+			}
 		}
 	}
 

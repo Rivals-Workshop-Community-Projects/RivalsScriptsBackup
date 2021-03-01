@@ -82,3 +82,7 @@ with asset_get("hit_fx_obj") if ("akira_obj_follow" in self){
 	x = akira_obj_follow.x;
 	y = akira_obj_follow.y;
 }
+
+
+
+if phone_landing nspecial_stall = 1;

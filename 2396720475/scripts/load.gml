@@ -21,8 +21,15 @@ sprite_change_offset("standing_hurtbox", 25, 46);
 
 sprite_change_offset("box", 23, 22);
 sprite_change_offset("box_spin", 25, 24);
+sprite_change_offset("plushy", 23, 22);
+sprite_change_offset("plushy_spin", 25, 24);
+sprite_change_offset("macka", 23, 22);
+sprite_change_offset("macka_spin", 23, 22);
+sprite_change_offset("flags", 25, 24);
+sprite_change_offset("flag_fall", 100, 100);
 sprite_change_offset("needle", 6, 5);
 sprite_change_offset("tomo_pointer", 6, 6);
+//sprite_change_offset("tomo_string", 6, 6);
 
 sprite_change_offset("idle", 32, 44);
 sprite_change_offset("hurt", 32, 44);
@@ -68,6 +75,7 @@ sprite_change_offset("fspecial", 32, 74);
 sprite_change_offset("uspecial", 50, 98);
 sprite_change_offset("dspecial", 36, 56);
 sprite_change_offset("taunt", 38, 52);
+sprite_change_offset("taunt2", 33, 56);
 
 sprite_change_offset("plat", 64, 62);
 sprite_change_offset("plat_back", 64, 62);

@@ -18,7 +18,7 @@ set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 
 //ENDLAG FOR JAB 1
 set_window_value(AT_JAB, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 12);			//CHANGE ENDLAG HERE
+set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 10);			//CHANGE ENDLAG HERE
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_JAB, 3, AG_WINDOW_CANCEL_TYPE, 1);
@@ -45,7 +45,7 @@ set_window_value(AT_JAB, 5, AG_WINDOW_HSPEED, 2);					//CHANGE HORIZONTAL BOOST 
 
 //ENDLAG FOR JAB 2
 set_window_value(AT_JAB, 6, AG_WINDOW_TYPE, 1);
-set_window_value(AT_JAB, 6, AG_WINDOW_LENGTH, 14);			//CHANGE ENDLAG HERE
+set_window_value(AT_JAB, 6, AG_WINDOW_LENGTH, 12);			//CHANGE ENDLAG HERE
 set_window_value(AT_JAB, 6, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 6, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_JAB, 6, AG_WINDOW_CANCEL_FRAME, 5);
@@ -71,7 +71,7 @@ set_window_value(AT_JAB, 8, AG_WINDOW_HSPEED, 4);					//CHANGE HORIZONTAL BOOST 
 
 //ENDLAG FOR JAB 3
 set_window_value(AT_JAB, 9, AG_WINDOW_TYPE, 1);
-set_window_value(AT_JAB, 9, AG_WINDOW_LENGTH, 15);			//CHANGE ENDLAG HERE
+set_window_value(AT_JAB, 9, AG_WINDOW_LENGTH, 14);			//CHANGE ENDLAG HERE
 set_window_value(AT_JAB, 9, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_JAB, 9, AG_WINDOW_ANIM_FRAME_START, 15);
 set_window_value(AT_JAB, 9, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -109,7 +109,7 @@ set_hitbox_value(AT_JAB, 2, HG_HITBOX_Y, -25);
 set_hitbox_value(AT_JAB, 2, HG_WIDTH, 58);
 set_hitbox_value(AT_JAB, 2, HG_HEIGHT, 38);
 set_hitbox_value(AT_JAB, 2, HG_PRIORITY, 2);
-set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 2);
+set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 4);
 set_hitbox_value(AT_JAB, 2, HG_ANGLE, 60);
 set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 4);

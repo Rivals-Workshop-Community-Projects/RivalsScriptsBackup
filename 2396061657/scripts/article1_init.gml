@@ -13,3 +13,5 @@ sprite_index = sprite_get("heart");
 mask_index = -1;
 image_index = 0;
 image_speed = .4;
+
+heart_pulling = true;

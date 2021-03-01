@@ -1,19 +1,14 @@
-number = obj_stage_main.number
+//
 
-if number = 0 {
-number = -1
-}
+sprite_index = sprite_get("platform");
 
-sprite_index = sprite_get("platform")
+marker[0] = 1;
+marker[1] = 2;
 
-depth = 8
 
-xPos = 0
+current_marker = -1;
+total_markers = 2;
 
-platState = 0
-platStateTimer = 0
 
-platStart = 180
-
-platMaxDist = 256
-platMaxWait = 180
+wait_timer = 250;
+wait_timer_max = 250;

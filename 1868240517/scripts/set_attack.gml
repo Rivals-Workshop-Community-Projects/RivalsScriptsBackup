@@ -1,3 +1,1 @@
 //set_attack
-
-

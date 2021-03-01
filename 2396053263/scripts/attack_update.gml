@@ -158,7 +158,7 @@ if (attack == AT_FSPECIAL){
 				hbox.vsp = lengthdir_y(18*spr_dir, movement_angle);
 				hbox.hsp = lengthdir_x(18*spr_dir, movement_angle);
 			}
-
+			fspecial_needles[i] = hbox;
 		}
 	}
 	
@@ -174,6 +174,9 @@ if (attack == AT_FSPECIAL){
 
 if (attack == AT_NSPECIAL)
 {
+	if (window > 4 and instance_exists(nspecial_target)) nspecial_target.y = y-4;
+	
+	//can_fast_fall = false;
 	// Stop yourself at the beginning, reset variables.
 	if (window <= 2)
 	{
@@ -207,13 +210,19 @@ if (attack == AT_NSPECIAL)
 		if (nspecial_target != noone)
 		{
 			var next_x, next_y;
-			next_x = ease_cubeOut( nspecial_pos[0], x  + (53*spr_dir), nspecial_ease_timer[0], nspecial_ease_timer[1] );
-			next_y = ease_cubeOut( nspecial_pos[1], y - 4, nspecial_ease_timer[0], nspecial_ease_timer[1] );
+			next_x = ease_cubeOut( nspecial_pos[0], x  + (53*spr_dir), clamp(nspecial_ease_timer[0],0,10), nspecial_ease_timer[1] );
+			next_y = ease_cubeOut( nspecial_pos[1], y-4, nspecial_ease_timer[0], nspecial_ease_timer[1] );
 			
-			nspecial_target.x = next_x;
-        	nspecial_target.y = next_y;
+			with (nspecial_target)
+			{
+			    if !place_meeting(next_x,next_y, asset_get("par_block"))
+			    {
+			        x = next_x;
+			        y = next_y;
+			    }
+			}
         	
-        	nspecial_ease_timer[0]+=1;
+        	nspecial_ease_timer[0] = min(nspecial_ease_timer[0]+1,nspecial_ease_timer[1]);
 		}
 		
 		//Throw stuff
@@ -252,15 +261,23 @@ if (attack == AT_NSPECIAL)
 			hsp = 0;
 			
 			//Calculate the slide distance and ease the opponent into it
-			var throw_type, next_x, next_y;
+			var throw_type, next_x;
 			throw_type = get_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS) == 7 ? 2 : 0;
 			next_x = ease_cubeOut( nspecial_pos[0], nspecial_pos[0]  + (nspecial_hdisp[throw_type] * spr_dir), nspecial_slide_timer, nspecial_max_slide[1] );
-			next_y = ease_cubeOut( nspecial_pos[1], nspecial_pos[1] - nspecial_vdisp[throw_type], nspecial_slide_timer, nspecial_max_slide[1] );
+			//next_y = ease_cubeOut( nspecial_pos[1], nspecial_pos[1] - nspecial_vdisp[throw_type], nspecial_slide_timer, nspecial_max_slide[1] );
 			
 			//Apply calculated distances to grabbed opponent's position
-			nspecial_target.x = next_x;
-			nspecial_target.y = next_y;
-			
+			with (nspecial_target)
+			{
+				if !place_meeting(next_x,y, asset_get("par_block")) 
+				{
+					x = next_x;
+				}
+				else
+				{
+					other.nspecial_slide_timer--;
+				}
+			}
 			//Increase the slide timer until you get to nspecial_max_slide[1]
 			nspecial_slide_timer = min(nspecial_slide_timer+1,nspecial_max_slide[1])
 		}
@@ -283,14 +300,17 @@ if (attack == AT_NSPECIAL)
 		hsp = 0;
 		
 		//Calculate the slide distance and ease the opponent into it
-		var throw_type, next_x, next_y;
+		var throw_type, next_x;
 		throw_type = 1
 		next_x = ease_cubeOut( nspecial_pos[0], nspecial_pos[0]  + (nspecial_hdisp[throw_type] * spr_dir), nspecial_bslide_timer, nspecial_max_slide[0] );
-		next_y = ease_cubeOut( nspecial_pos[1], nspecial_pos[1], nspecial_bslide_timer, nspecial_max_slide[0] );
+		//next_y = ease_cubeOut( nspecial_pos[1], nspecial_pos[1], nspecial_bslide_timer, nspecial_max_slide[0] );
 		
 		//Apply calculated distances to grabbed opponent's position
-		nspecial_target.x = next_x;
-		nspecial_target.y = next_y;	
+		with (nspecial_target)
+		{
+			if !place_meeting(next_x,y, asset_get("par_block")) x = next_x;
+		}
+		//nspecial_target.y = y;	
 		
 		//Increase the slide timer until you get to nspecial_max_slide[0]
 		nspecial_bslide_timer = min(nspecial_bslide_timer+1,nspecial_max_slide[0])
@@ -307,6 +327,7 @@ if (attack == AT_NSPECIAL)
 	if ( nspecial_target != noone )
 	{
 		//Keeps the opponent in hitstop
+		nspecial_target.can_fast_fall = false;
 		nspecial_target.hitpause = true;
 		nspecial_target.hitstop = 5;
 		nspecial_target.hitstop_full = 5;
@@ -377,11 +398,11 @@ if (attack == AT_FSTRONG){
 
 if (attack == AT_USTRONG){
 	if (window == 2){
-		char_height = ease_linear(54, 106, window_timer, 3);
+		//hud_offset_dest = ease_linear(54, 106, window_timer, 3);
 	}
 	
 	if (window == 5 && window_timer >= 6){
-		char_height = lerp(char_height, 54, 0.3);
+		//hud_offset_dest = lerp(hud_offset_dest, 54, 0.3);
 	}
 }
 

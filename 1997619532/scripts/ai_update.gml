@@ -1,17 +1,26 @@
 //ai_update - called every frame for this character as a CPU
+if (get_training_cpu_action() == CPU_FIGHT){	
 
-temp_level = 9;
-knockback_adj = 0.90;
+has_walljump = true
+
+if attack == AT_USPECIAL && window == 3 {
+	y -= 3
+}
+
+if state_cat == SC_HITSTUN {
+	hsp /= 1.008
+	if x > room_width/2 - 400 and x < room_width/2 - 400 {
+		vsp += 0.4
+	} 
+}
 
 if get_gameplay_time() == 20 {
 	sakura = 1
 }
 
-if attack == AT_USPECIAL && state == PS_ATTACK_AIR && window < 3{
-	vsp = -10
-}
 
-if !free and  ai_target.y < y {
+
+if !free and ground_type == 2 and ai_target.y < y {
 	y += 5
 }
 
@@ -59,11 +68,13 @@ if (ai_target.spr_dir = 1 and ai_target.x < x and spr_dir = -1) or (ai_target.sp
 	
 ///taunt
 
-halotimer += 1
+if state == PS_RESPAWN && visible {
+	move_cooldown[AT_TAUNT] = 0 ;
+	set_attack(AT_TAUNT)
+}
 
 if (can_attack and attack != (AT_TAUNT) and targetbusy and move_cooldown[AT_TAUNT] == 0){
     taunt_pressed = true;
-    
 }
 
 if get_gameplay_time() > 100 and !targetbusy or state_cat = SC_HITSTUN {
@@ -114,7 +125,7 @@ if (window == 9 && has_hit){
 
 // Dtilt
 
-if (can_attack and !free and xrange < 80 and yrange < 20 and !targetbusy){
+if (can_attack and !free and xrange < 120 and yrange < 40 and !targetbusy){
     if ai_target.x < x{
         left_down = true;
         down_down = true;
@@ -128,22 +139,29 @@ if (can_attack and !free and xrange < 80 and yrange < 20 and !targetbusy){
     attack_pressed = true;
 }
 
+    if get_gameplay_time() mod 5 == 0 and 80 > ydist and xdist > 160 and 420 > xdist{ // Dattack
+        clear_button_buffer( PC_ATTACK_PRESSED );
+		if ai_target.x > x{
+			right_hard_pressed = true;
+		} 
+		else {
+			left_hard_pressed = true;
+			}
+        joy_pad_idle = true;
+        left_down = false;
+        right_down = false;
+        up_down = false;
+        down_down = false;
+        special_pressed = false;
+        attack_pressed = true;
+		}
 
-if facing and (attack == AT_JAB){
-	
-    
-	 if (window == 3 && window_timer == 11){
-	 	
-	 	special_pressed = true ;
-   
-            
-        }
-    }
+
     
     
 // Ftilt    
     
-    if (can_attack and !free and xrange < 140 and y > ai_target.y and xrange > 70 and yrange < 60 and !targetbusy){
+ if (can_attack and !free and xrange < 160 and y > ai_target.y and xrange > 20 and yrange < 80 and !targetbusy){
     clear_button_buffer( PC_ATTACK_PRESSED );
     if ai_target.x < x{
         left_strong_pressed = true;
@@ -159,7 +177,7 @@ if facing and (attack == AT_JAB){
 
 
 // Utilt
-if (can_attack and !free and xrange < 60 and yrange < 110 and yrange > 60 and y > ai_target.y and !targetbusy){
+if (can_attack and !free and xrange < 60 and yrange < 120 and yrange > 70 and y > ai_target.y and !targetbusy){
     if ai_target.x < x{
         left_down = true;
         up_down = true;
@@ -176,25 +194,12 @@ if (can_attack and !free and xrange < 60 and yrange < 110 and yrange > 60 and y 
 
    
 
-//Nspecial
-
-if (facing and can_attack and ai_target.state_cat != SC_HITSTUN and abs(hsp) < 50 and xrange < 650 and xrange > 100 and yrange < 150 and y + 40 > ai_target.y and move_cooldown[AT_NSPECIAL] = 0 ){
-	shield_pressed = false;
-    joy_pad_idle = true;
-    left_down = false;
-    right_down = false;
-    down_down = false;
-    special_pressed = true;
-    attack_pressed = false;
-}
-
-
     
     
     
 //Fspecial
 
-if can_attack and xrange < 400 and yrange < 100 and move_cooldown[AT_FSPECIAL] = 0 {
+if can_attack and xrange < 600 and xrange > 100  and yrange < 100 and move_cooldown[AT_FSPECIAL] = 0 {
        if ai_target.x < x{
         left_down = true;
 
@@ -213,30 +218,19 @@ if can_attack and xrange < 400 and yrange < 100 and move_cooldown[AT_FSPECIAL] =
     
 // Uspecial   
     
-    if (facing and move_cooldown[AT_NSPECIAL] > 0 and move_cooldown[AT_USPECIAL] = 0 and can_attack and xrange < 80 and ai_target.y < y + 40 and xrange > 30 and yrange < 120 and move_cooldown[AT_USPECIAL] = 0 and !targetbusy){
-    clear_button_buffer( PC_ATTACK_PRESSED );
-    joy_pad_idle = true;
-    if ai_target.x < x{
+if can_attack and yrange < 600 and yrange > 100 and ai_target.y < y  and xrange < 100 and move_cooldown[AT_USPECIAL] = 0 {
+       if ai_target.x < x{
         left_down = true;
-         up_down = true;
+
         right_down = false;
     } else {
         left_down = false;
-         up_down = true;
+
         right_down = true;
     }
+    up_down = true;
     special_pressed = true;
     attack_pressed = false;
-    
-    if (attack == AT_USPECIAL and offstage) {
-    	if (window == 1 ){
-        special_down = true ;
-   
-            
-        }
-      
-    	
-    }
 }
 
 // Aerials
@@ -260,8 +254,8 @@ if free and can_attack and !targetbusy{
     }
     
     // Position Check (I wouldn't have had to repeat this if there was custom function support...)
-    atkwidth = get_hitbox_value( AT_DAIR, 1, HG_WIDTH ) + 40;
-    atkheight = get_hitbox_value( AT_DAIR, 1, HG_HEIGHT ) + 40;
+    atkwidth = get_hitbox_value( AT_DAIR, 1, HG_WIDTH ) + 120;
+    atkheight = get_hitbox_value( AT_DAIR, 1, HG_HEIGHT ) + 120;
     xpos = get_hitbox_value( AT_DAIR, 1, HG_HITBOX_X ) * spr_dir;
     ypos = get_hitbox_value( AT_DAIR, 1, HG_HITBOX_Y );
     in_range = false;
@@ -271,8 +265,8 @@ if free and can_attack and !targetbusy{
     
     
     // Position Check (I wouldn't have had to repeat this if there was custom function support...)
-    atkwidth = get_hitbox_value( AT_NAIR, 1, HG_WIDTH ) + 70;
-    atkheight = get_hitbox_value( AT_NAIR, 1, HG_HEIGHT ) + 70;
+    atkwidth = get_hitbox_value( AT_NAIR, 1, HG_WIDTH ) + 120;
+    atkheight = get_hitbox_value( AT_NAIR, 1, HG_HEIGHT ) + 120;
     xpos = get_hitbox_value( AT_NAIR, 1, HG_HITBOX_X ) * spr_dir;
     ypos = get_hitbox_value( AT_NAIR, 1, HG_HITBOX_Y );
     in_range = false;
@@ -292,8 +286,8 @@ if free and can_attack and !targetbusy{
     }
     
     // Position Check (I wouldn't have had to repeat this if there was custom function support...)
-    atkwidth = get_hitbox_value( AT_UAIR, 1, HG_WIDTH ) + 40;
-    atkheight = get_hitbox_value( AT_UAIR, 1, HG_HEIGHT ) + 40;
+    atkwidth = get_hitbox_value( AT_UAIR, 1, HG_WIDTH ) + 120;
+    atkheight = get_hitbox_value( AT_UAIR, 1, HG_HEIGHT ) + 120;
     xpos = get_hitbox_value( AT_UAIR, 1, HG_HITBOX_X ) * spr_dir;
     ypos = get_hitbox_value( AT_UAIR, 1, HG_HITBOX_Y );
     in_range = false;
@@ -330,14 +324,27 @@ if free and can_attack and !targetbusy{
 //recover
 
 
-if (ai_recovering and attack == AT_USPECIAL){
-	
-	      	special_down = true;
-
-}
 
 
 if (ai_recovering and offstage){
+	
+			if x > room_width/2 {
+				spr_dir = -1
+			  left_down = true;
+            right_down = false;
+		}
+        
+        if x < room_width/2 {
+        	spr_dir = 1
+			  left_down = false;
+            right_down = true;
+		}
+		
+	if move_cooldown[AT_FSPECIAL] == 0 {
+
+		   up_down = false
+            special_pressed = true;
+	} 
 	
 	 if (has_airdodge and vsp < 2){
 	      	up_down = true;
@@ -433,12 +440,9 @@ if (attack == AT_DSTRONG){
 ///Counter
 
 
-if (move_cooldown[AT_DSPECIAL] = 0 and attack != AT_DSPECIAL and can_attack and ai_target.state == PS_ATTACK_AIR and xrange < 80 and yrange < 30) { 
-	set_attack (AT_EXTRA_3);
-}
 
 if (move_cooldown[AT_DSPECIAL] = 0 and attack != AT_DSPECIAL and can_attack and ai_target.state == PS_ATTACK_GROUND and xrange < 80 and yrange < 30) { 
-	set_attack (AT_EXTRA_3);
+	shield_pressed = true
 }
 
 
@@ -456,4 +460,4 @@ if(attack == AT_USPECIAL){
 
 
 
-
+}

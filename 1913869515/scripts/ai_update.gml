@@ -1,13 +1,53 @@
 //ai_update - called every frame for this character as a 
 
+has_walljump = true
+if (get_training_cpu_action() == CPU_FIGHT){
+	
+	offense = 1
 if state != PS_HITSTUN && free {
 	if hsp > 8 or hsp < -8 {
 		hsp/= 1.2
 	}
 }
+
+
+if state == PS_JUMPSQUAT && state_timer == 1 {
+	
+	if get_gameplay_time() % 3 == 1 {
+		set_state (PS_AIR_DODGE)
+	}
+	
+}
+
+
+    if state == PS_WAVELAND && state_timer <= 1 {
+    	
+    	if ai_target.state_cat != SC_HITSTUN {
+    	if get_gameplay_time() % 2 == 1 {
+    		hsp = 10
+    	}
+    	
+    	if get_gameplay_time() % 2 == 0 {
+    		hsp = -10
+    	}
+    	}
+    	
+    	if ai_target.state_cat == SC_HITSTUN {
+    		if ai_target.x > x {
+    			hsp = 10
+    		}
+    		
+    		if ai_target.x < x {
+    	     	hsp = -10
+    		}
+    	}
+    }
+    
+    
+
 if state == PS_ATTACK_AIR && xrange < 60 and yrange < 60 and !hitpause && window == 1 && window_timer == 1{
 	if attack == AT_FAIR or attack == AT_NAIR or attack == AT_UAIR or attack == AT_BAIR or attack == AT_USPECIAL 
-	or attack == AT_NSPECIAL or attack == AT_UTILLT or attack == AT_USTRONG {
+	or attack == AT_NSPECIAL or attack == AT_UTILT or attack == AT_USTRONG {
 		hsp += min( (hit_player_obj.x  - x + (55 * spr_dir)) / 12, 4 )
 		vsp -= min( (hit_player_obj.y - 35 - y) / 12, 4 )
 	}
@@ -148,6 +188,46 @@ if (free){
 	move_cooldown[AT_FSPECIAL] = 1.1 ;
 }
 
+if state == PS_RESPAWN && visible {
+	move_cooldown[AT_TAUNT] = 0 ;
+	if zwill == 0 {
+	set_attack (AT_TAUNT);
+	window = 2;
+    }
+if zwill == 1 {
+	set_attack (AT_TAUNT);
+	window = 17;
+}
+
+if zwill == 2 {
+	set_attack (AT_TAUNT);
+	window = 16;
+	if get_player_color(player) == 1{
+            	      sound_play(sound_get("tauntUV"));
+            
+            } else {
+            	sound_play(sound_get("tauntU"));
+            }
+}
+
+if zwill == 3 {
+	set_attack (AT_TAUNT);
+	window = 18;
+}
+
+if zwill == 4 {
+	set_attack (AT_TAUNT);
+	window = 7;
+	 if get_player_color(player) == 1{
+            	      sound_play(sound_get("tauntV"));
+            
+            } else {
+            	sound_play(sound_get("taunt"));
+            }
+}
+window_timer = 0
+}
+
 if (can_attack and attack != (AT_TAUNT) and targetbusy and move_cooldown[AT_TAUNT] == 0){
     taunt_pressed = true;
     
@@ -232,7 +312,8 @@ if (window == 9 && has_hit){
 
 // Dtilt
 
-if (can_attack and !free and xrange < 80 and yrange < 20 and !targetbusy){
+if ai_target.state_cat != SC_HITSTUN {
+if (can_attack and !free and xrange < 90 and yrange < 40 and !targetbusy){
     if ai_target.x < x{
         left_down = true;
         down_down = true;
@@ -245,7 +326,17 @@ if (can_attack and !free and xrange < 80 and yrange < 20 and !targetbusy){
     special_pressed = false;
     attack_pressed = true;
 }
-
+} else {
+	
+	if (can_attack and !free and xrange < 96 and yrange < 60 and !targetbusy){
+        left_down = false;
+        down_down = false;
+        right_down = false;
+        left_down = false;
+    special_pressed = false;
+    attack_pressed = true;
+	}
+}
 
 if facing and (attack == AT_JAB){
 	
@@ -296,7 +387,7 @@ if (can_attack and !free and xrange < 60 and yrange < 110 and yrange > 60 and y 
 
 //Nspecial
 
-if (facing and can_attack and abs(hsp) < 50 and xrange < 250 and xrange > 40 and yrange < 80 and y + 40 > ai_target.y and move_cooldown[AT_NSPECIAL] = 0 ){
+if halo >= 1 && (facing and can_attack and abs(hsp) < 50 and xrange < 250 and xrange > 60 and yrange < 80 and y + 40 > ai_target.y and move_cooldown[AT_NSPECIAL] = 0 ){
 	shield_pressed = false;
     joy_pad_idle = true;
     left_down = false;
@@ -330,7 +421,7 @@ if (!free and can_attack and xrange > 120 and move_cooldown[AT_FSPECIAL] = 0 ){
     
 // Uspecial   
     
-    if (facing and ai_target.state_cat != SC_HITSTUN and move_cooldown[AT_USPECIAL] = 0 and can_attack and xrange < 250 and ai_target.y < y + 40 and yrange < 100 and move_cooldown[AT_USPECIAL] = 0 and !targetbusy){
+    if halo >= 1 && (facing and ai_target.state_cat != SC_HITSTUN and move_cooldown[AT_USPECIAL] = 0 and can_attack and xrange < 300 and xrange > 100 and ai_target.y < y + 40 and yrange < 100 and move_cooldown[AT_USPECIAL] = 0 and !targetbusy){
     clear_button_buffer( PC_ATTACK_PRESSED );
     joy_pad_idle = true;
     if ai_target.x < x{
@@ -356,6 +447,23 @@ if (!free and can_attack and xrange > 120 and move_cooldown[AT_FSPECIAL] = 0 ){
     }
 }
 
+    if get_gameplay_time() mod 5 == 0 and 60 > ydist and xdist > 120 and 400 > xdist{ // Dattack
+        clear_button_buffer( PC_ATTACK_PRESSED );
+		if ai_target.x > x{
+			right_hard_pressed = true;
+		} 
+		else {
+			left_hard_pressed = true;
+			}
+        joy_pad_idle = true;
+        left_down = false;
+        right_down = false;
+        up_down = false;
+        down_down = false;
+        special_pressed = false;
+        attack_pressed = true;
+		}
+
 // Aerials
 if free and can_attack and !targetbusy{
     goingforspike = false;
@@ -377,8 +485,8 @@ if free and can_attack and !targetbusy{
     }
     
     // Position Check (I wouldn't have had to repeat this if there was custom function support...)
-    atkwidth = get_hitbox_value( AT_DAIR, 1, HG_WIDTH ) + 40;
-    atkheight = get_hitbox_value( AT_DAIR, 1, HG_HEIGHT ) + 40;
+    atkwidth = get_hitbox_value( AT_DAIR, 1, HG_WIDTH ) + 120;
+    atkheight = get_hitbox_value( AT_DAIR, 1, HG_HEIGHT ) + 120;
     xpos = get_hitbox_value( AT_DAIR, 1, HG_HITBOX_X ) * spr_dir;
     ypos = get_hitbox_value( AT_DAIR, 1, HG_HITBOX_Y );
     in_range = false;
@@ -388,8 +496,8 @@ if free and can_attack and !targetbusy{
     
     
     // Position Check (I wouldn't have had to repeat this if there was custom function support...)
-    atkwidth = get_hitbox_value( AT_NAIR, 1, HG_WIDTH ) + 70;
-    atkheight = get_hitbox_value( AT_NAIR, 1, HG_HEIGHT ) + 70;
+    atkwidth = get_hitbox_value( AT_NAIR, 1, HG_WIDTH ) + 90;
+    atkheight = get_hitbox_value( AT_NAIR, 1, HG_HEIGHT ) + 90;
     xpos = get_hitbox_value( AT_NAIR, 1, HG_HITBOX_X ) * spr_dir;
     ypos = get_hitbox_value( AT_NAIR, 1, HG_HITBOX_Y );
     in_range = false;
@@ -409,8 +517,8 @@ if free and can_attack and !targetbusy{
     }
     
     // Position Check (I wouldn't have had to repeat this if there was custom function support...)
-    atkwidth = get_hitbox_value( AT_UAIR, 1, HG_WIDTH ) + 40;
-    atkheight = get_hitbox_value( AT_UAIR, 1, HG_HEIGHT ) + 40;
+    atkwidth = get_hitbox_value( AT_UAIR, 1, HG_WIDTH ) + 80;
+    atkheight = get_hitbox_value( AT_UAIR, 1, HG_HEIGHT ) + 80;
     xpos = get_hitbox_value( AT_UAIR, 1, HG_HITBOX_X ) * spr_dir;
     ypos = get_hitbox_value( AT_UAIR, 1, HG_HITBOX_Y );
     in_range = false;
@@ -456,6 +564,16 @@ if (ai_recovering and attack == AT_USPECIAL) or xrange < 100{
 
 if (ai_recovering and offstage){
 	
+		if x > room_width/2 {
+			  left_down = true;
+            right_down = false;
+		}
+        
+        if x < room_width/2 {
+			  left_down = false;
+            right_down = true;
+		}
+		
 	 if (has_airdodge and vsp < 2){
 	      	up_down = true;
             left_down = false;
@@ -551,13 +669,13 @@ if (attack == AT_DSTRONG){
 ///Counter
 
 
-if halo > 1 && (move_cooldown[AT_DSPECIAL] = 0 and attack != AT_DSPECIAL and can_attack and ai_target.state == PS_ATTACK_AIR and xrange < 80 and yrange < 30) { 
+if (move_cooldown[AT_DSPECIAL] = 0 and attack != AT_DSPECIAL and can_attack and ai_target.state == PS_ATTACK_AIR and xrange < 80 and yrange < 80) { 
+	set_attack (AT_DSPECIAL);
+}
+if (move_cooldown[AT_DSPECIAL] = 0 and attack != AT_DSPECIAL and can_attack and ai_target.state == PS_ATTACK_GROUND and xrange < 80 and yrange < 80) { 
 	set_attack (AT_DSPECIAL);
 }
 
-if halo < 1 && (move_cooldown[AT_DSPECIAL] = 0 and attack != AT_DSPECIAL and can_attack and ai_target.state == PS_ATTACK_GROUND and xrange < 80 and yrange < 30) { 
-	shield_pressed = true
-}
 
 
 
@@ -606,5 +724,6 @@ if state_cat = SC_HITSTUN{
 	}
 
 
-knockback_adj = 1.1;
+}
+
 }

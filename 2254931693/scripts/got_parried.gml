@@ -12,3 +12,7 @@ if (my_hitboxID.attack == AT_USPECIAL){
     my_hitboxID.length = 0;
     instance_destroy(uspecialfrog);
 }
+
+if (my_hitboxID.attack == AT_FSPECIAL){
+        set_state(PS_PRATFALL);
+}

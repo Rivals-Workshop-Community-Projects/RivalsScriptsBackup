@@ -119,482 +119,609 @@ if (introTimer < 17) {
 if (state == PS_SPAWN || was_reloaded){
 	if (spawn_timer < 100 && ColorLock == 0 && jump_down){
 	    
-	   	if (get_player_color(player) == 1){ // Color 1 Variations
-	   	    if (up_down && !down_down && !left_down && !right_down && !taunt_down){
+	    if (get_player_color(player) == 0){ // Color 0 Variations
+	   	    if (up_down && !down_down && !left_down && !right_down && !attack_down && !taunt_down){
+				Default = 1;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}		
+			if (!up_down && down_down && !left_down && !right_down && !attack_down && !taunt_down){
+				Default = 2;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}	
+			if (!up_down && !down_down && left_down && !right_down && !attack_down && !taunt_down){
+				Default = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}	
+			if (!up_down && !down_down && !left_down && right_down && !attack_down && !taunt_down){
+				Default = 4;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}	
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
+				Default = 5;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Default = 6;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}	
+	   	}
+	    if (get_player_color(player) == 1){ // Color 1 Variations
+	   	    if (up_down && !down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Rune_Maker = 1;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}		
-			if (!up_down && down_down && !left_down && !right_down && !taunt_down){
+			if (!up_down && down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Rune_Maker = 2;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && left_down && !right_down && !taunt_down){
+			if (!up_down && !down_down && left_down && !right_down && !attack_down && !taunt_down){
 				Rune_Maker = 3;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && right_down && !taunt_down){
+			if (!up_down && !down_down && !left_down && right_down && !attack_down && !taunt_down){
 				Rune_Maker = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Rune_Maker = 5;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Rune_Maker = 6;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
 	   	}
-	   	if (get_player_color(player) == 2){ // Color 2 Variations
-	   	    if (up_down && !down_down && !left_down && !right_down && !taunt_down){
+	   	 if (get_player_color(player) == 2){ // Color 2 Variations
+	   	    if (up_down && !down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Crayfish = 1;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}		
-			if (!up_down && down_down && !left_down && !right_down && !taunt_down){
+			if (!up_down && down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Crayfish = 2;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && left_down && !right_down && !taunt_down){
+			if (!up_down && !down_down && left_down && !right_down && !attack_down && !taunt_down){
 				Crayfish = 3;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && right_down && !taunt_down){
+			if (!up_down && !down_down && !left_down && right_down && !attack_down && !taunt_down){
 				Crayfish = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Crayfish = 5;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Crayfish = 6;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
 	   	}
-	   	if (get_player_color(player) == 3){ // Color 3 Variations
-	   	    if (up_down && !down_down && !left_down && !right_down && !taunt_down){
+	   	 if (get_player_color(player) == 3){ // Color 3 Variations
+	   	    if (up_down && !down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Emerald_Confidant = 1;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}		
-			if (!up_down && down_down && !left_down && !right_down && !taunt_down){
+			if (!up_down && down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Emerald_Confidant = 2;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && left_down && !right_down && !taunt_down){
+			if (!up_down && !down_down && left_down && !right_down && !attack_down && !taunt_down){
 				Emerald_Confidant = 3;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && right_down && !taunt_down){
+			if (!up_down && !down_down && !left_down && right_down && !attack_down && !taunt_down){
 				Emerald_Confidant = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
-			}
-			if (!up_down && !down_down && !left_down && !right_down && taunt_down){
+			}	
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Emerald_Confidant = 5;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Emerald_Confidant = 6;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}	
 	   	}
-	   	if (get_player_color(player) == 4){ // Color 4 Variations
-	   	    if (up_down && !down_down && !left_down && !right_down && !taunt_down){
+	   	 if (get_player_color(player) == 4){ // Color 4 Variations
+	   	    if (up_down && !down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Black_Blank = 1;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}		
-			if (!up_down && down_down && !left_down && !right_down && !taunt_down){
+			if (!up_down && down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Black_Blank = 2;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && left_down && !right_down && !taunt_down){
+			if (!up_down && !down_down && left_down && !right_down && !attack_down && !taunt_down){
 				Black_Blank = 3;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && right_down && !taunt_down){
+			if (!up_down && !down_down && !left_down && right_down && !attack_down && !taunt_down){
 				Black_Blank = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Black_Blank = 5;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Black_Blank = 6;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
 	   	}
-	   	if (get_player_color(player) == 5){ // Color 5 Variations
-	   	    if (up_down && !down_down && !left_down && !right_down && !taunt_down){
+	   	 if (get_player_color(player) == 5){ // Color 5 Variations
+	   	    if (up_down && !down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Robbery_Purple = 1;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}		
-			if (!up_down && down_down && !left_down && !right_down && !taunt_down){
+			if (!up_down && down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Robbery_Purple = 2;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && left_down && !right_down && !taunt_down){
+			if (!up_down && !down_down && left_down && !right_down && !attack_down && !taunt_down){
 				Robbery_Purple = 3;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && right_down && !taunt_down){
+			if (!up_down && !down_down && !left_down && right_down && !attack_down && !taunt_down){
 				Robbery_Purple = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Robbery_Purple = 5;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Robbery_Purple = 6;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
 	   	}
-	   	if (get_player_color(player) == 6){ // Color 6 Variations
-	   	    if (up_down && !down_down && !left_down && !right_down && !taunt_down){
+	   	 if (get_player_color(player) == 6){ // Color 6 Variations
+	   	    if (up_down && !down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Empty_Flame = 1;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}		
-			if (!up_down && down_down && !left_down && !right_down && !taunt_down){
+			if (!up_down && down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Empty_Flame = 2;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && left_down && !right_down && !taunt_down){
+			if (!up_down && !down_down && left_down && !right_down && !attack_down && !taunt_down){
 				Empty_Flame = 3;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && right_down && !taunt_down){
+			if (!up_down && !down_down && !left_down && right_down && !attack_down && !taunt_down){
 				Empty_Flame = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Empty_Flame = 5;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Empty_Flame = 6;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
 	   	}
-	   	if (get_player_color(player) == 7){ // Color 7 Variations
-	   	    if (up_down && !down_down && !left_down && !right_down && !taunt_down){
+	   	 if (get_player_color(player) == 7){ // Color 7 Variations
+	   	    if (up_down && !down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Crimson_Scourge = 1;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}		
-			if (!up_down && down_down && !left_down && !right_down && !taunt_down){
+			if (!up_down && down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Crimson_Scourge = 2;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && left_down && !right_down && !taunt_down){
+			if (!up_down && !down_down && left_down && !right_down && !attack_down && !taunt_down){
 				Crimson_Scourge = 3;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && right_down && !taunt_down){
+			if (!up_down && !down_down && !left_down && right_down && !attack_down && !taunt_down){
 				Crimson_Scourge = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Crimson_Scourge = 5;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Crimson_Scourge = 6;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
 	   	}
-	   	if (get_player_color(player) == 8){ // Color 8 Variations
-	   	    if (up_down && !down_down && !left_down && !right_down && !taunt_down){
+	    if (get_player_color(player) == 8){ // Color 8 Variations
+	   	    if (up_down && !down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				King_of_Kings = 1;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}		
-			if (!up_down && down_down && !left_down && !right_down && !taunt_down){
+			if (!up_down && down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				King_of_Kings = 2;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && left_down && !right_down && !taunt_down){
+			if (!up_down && !down_down && left_down && !right_down && !attack_down && !taunt_down){
 				King_of_Kings = 3;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && right_down && !taunt_down){
+			if (!up_down && !down_down && !left_down && right_down && !attack_down && !taunt_down){
 				King_of_Kings = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				King_of_Kings = 5;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				King_of_Kings = 6;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
 	   	}
-	   	if (get_player_color(player) == 9){ // Color 9 Variations
-	   	    if (up_down && !down_down && !left_down && !right_down && !taunt_down){
+	   	 if (get_player_color(player) == 9){ // Color 9 Variations
+	   	    if (up_down && !down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Humble_Melody = 1;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}		
-			if (!up_down && down_down && !left_down && !right_down && !taunt_down){
+			if (!up_down && down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Humble_Melody = 2;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && left_down && !right_down && !taunt_down){
+			if (!up_down && !down_down && left_down && !right_down && !attack_down && !taunt_down){
 				Humble_Melody = 3;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && right_down && !taunt_down){
+			if (!up_down && !down_down && !left_down && right_down && !attack_down && !taunt_down){
 				Humble_Melody = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Humble_Melody = 5;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Humble_Melody = 6;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
 	   	}
-	   	if (get_player_color(player) == 10){ // Color 10 Variations
-	   	    if (up_down && !down_down && !left_down && !right_down && !taunt_down){
+	   	 if (get_player_color(player) == 10){ // Color 10 Variations
+	   	    if (up_down && !down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Crystalline_Growth = 1;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}		
-			if (!up_down && down_down && !left_down && !right_down && !taunt_down){
+			if (!up_down && down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Crystalline_Growth = 2;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && left_down && !right_down && !taunt_down){
+			if (!up_down && !down_down && left_down && !right_down && !attack_down && !taunt_down){
 				Crystalline_Growth = 3;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && right_down && !taunt_down){
+			if (!up_down && !down_down && !left_down && right_down && !attack_down && !taunt_down){
 				Crystalline_Growth = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Crystalline_Growth = 5;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Crystalline_Growth = 6;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
 	   	}
-	   	if (get_player_color(player) == 11){ // Color 11 Variations
-	   	    if (up_down && !down_down && !left_down && !right_down && !taunt_down){
+	   	 if (get_player_color(player) == 11){ // Color 11 Variations
+	   	    if (up_down && !down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Explosive_Rebel = 1;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}		
-			if (!up_down && down_down && !left_down && !right_down && !taunt_down){
+			if (!up_down && down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Explosive_Rebel = 2;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && left_down && !right_down && !taunt_down){
+			if (!up_down && !down_down && left_down && !right_down && !attack_down && !taunt_down){
 				Explosive_Rebel = 3;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && right_down && !taunt_down){
+			if (!up_down && !down_down && !left_down && right_down && !attack_down && !taunt_down){
 				Explosive_Rebel = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Explosive_Rebel = 5;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Explosive_Rebel = 6;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
 	   	}
-	   	if (get_player_color(player) == 12){ // Color 12 Variations
-	   	    if (up_down && !down_down && !left_down && !right_down && !taunt_down){
+	   	 if (get_player_color(player) == 12){ // Color 12 Variations
+	   	    if (up_down && !down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Poisonous_Roar = 1;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}		
-			if (!up_down && down_down && !left_down && !right_down && !taunt_down){
+			if (!up_down && down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Poisonous_Roar = 2;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && left_down && !right_down && !taunt_down){
+			if (!up_down && !down_down && left_down && !right_down && !attack_down && !taunt_down){
 				Poisonous_Roar = 3;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && right_down && !taunt_down){
+			if (!up_down && !down_down && !left_down && right_down && !attack_down && !taunt_down){
 				Poisonous_Roar = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Poisonous_Roar = 5;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Poisonous_Roar = 6;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
 	   	}
-	   	if (get_player_color(player) == 13){ // Color 13 Variations
-	   	    if (up_down && !down_down && !left_down && !right_down && !taunt_down){
+	    if (get_player_color(player) == 13){ // Color 13 Variations
+	   	    if (up_down && !down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Attuned_Traveler = 1;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}		
-			if (!up_down && down_down && !left_down && !right_down && !taunt_down){
+			if (!up_down && down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Attuned_Traveler = 2;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && left_down && !right_down && !taunt_down){
+			if (!up_down && !down_down && left_down && !right_down && !attack_down && !taunt_down){
 				Attuned_Traveler = 3;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && right_down && !taunt_down){
+			if (!up_down && !down_down && !left_down && right_down && !attack_down && !taunt_down){
 				Attuned_Traveler = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Attuned_Traveler = 5;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Attuned_Traveler = 6;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
 	   	}
-	   	if (get_player_color(player) == 14){ // Color 14 Variations
-	   	    if (up_down && !down_down && !left_down && !right_down && !taunt_down){
+	   	 if (get_player_color(player) == 14){ // Color 14 Variations
+	   	    if (up_down && !down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Hardened_Veteran = 1;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}		
-			if (!up_down && down_down && !left_down && !right_down && !taunt_down){
+			if (!up_down && down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Hardened_Veteran = 2;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && left_down && !right_down && !taunt_down){
+			if (!up_down && !down_down && left_down && !right_down && !attack_down && !taunt_down){
 				Hardened_Veteran = 3;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && right_down && !taunt_down){
+			if (!up_down && !down_down && !left_down && right_down && !attack_down && !taunt_down){
 				Hardened_Veteran = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
-				
-			}
-			if (!up_down && !down_down && !left_down && !right_down && taunt_down){
-				Hardened_Veteran = 5;
+			}	
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
+				Hardened_Veteranx = 5;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Hardened_Veteran = 6;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}	
 	   	}
-	   	if (get_player_color(player) == 15){ // Color 15 Variations
-	   	    if (up_down && !down_down && !left_down && !right_down && !taunt_down){
+	   	 if (get_player_color(player) == 15){ // Color 15 Variations
+	   	    if (up_down && !down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Sanguine_Lightning = 1;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}		
-			if (!up_down && down_down && !left_down && !right_down && !taunt_down){
+			if (!up_down && down_down && !left_down && !right_down && !attack_down && !taunt_down){
 				Sanguine_Lightning = 2;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && left_down && !right_down && !taunt_down){
+			if (!up_down && !down_down && left_down && !right_down && !attack_down && !taunt_down){
 				Sanguine_Lightning = 3;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && right_down && !taunt_down){
+			if (!up_down && !down_down && !left_down && right_down && !attack_down && !taunt_down){
 				Sanguine_Lightning = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Sanguine_Lightning = 5;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Sanguine_Lightning = 6;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();

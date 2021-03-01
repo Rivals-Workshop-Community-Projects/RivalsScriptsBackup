@@ -3,10 +3,14 @@
 
 //This code goes through all available particles and draws them, mapping relevant attributes to draw function arguments.
 //Execute this code from Heartbrake's perspective to access the necessary variables.
+if !("other_player_id" in self) exit;
+
+//draw_debug_text(x,y,"using compat: "+string(heartbrakeCompatibility))
+
 with (other_player_id)
 {
 	//Make sure nspecial_target exists and is referring to a grabbed opponent.
-	if ("nspecial_target" in self and nspecial_target != noone)
+	if ("nspecial_target" in self and nspecial_target == other)
 	{
 		//Stop the shader, as this may cause problems.
 		shader_end()

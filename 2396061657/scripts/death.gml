@@ -2,9 +2,9 @@
 // Runs when the player dies
 
 // Clears all LoveMeters
-for (var i = 0; i < 3; i++) {
-	LoveMeter[i] = 0;
-}
+//for (var i = 0; i < 3; i++) {
+	LoveMeter = 0;
+//}
 
 // resets all cooldowns
 move_cooldown[AT_FSPECIAL] = 0;

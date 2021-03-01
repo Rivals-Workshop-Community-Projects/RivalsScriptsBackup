@@ -26,10 +26,10 @@ set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 56);
-set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 56);
-set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -22);
+set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 48); // 56
+set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -16); // -22
 set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 96);
-set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 116);
+set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 96); // 116
 set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 9);
 set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 45);

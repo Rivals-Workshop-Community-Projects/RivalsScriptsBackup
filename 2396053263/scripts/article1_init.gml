@@ -51,11 +51,28 @@ heartChainsPos = 0;
 //heartBreakDetectSelf: Whether to detect yourself.
 heartBreakDetectSelf = false;
 
-//Set the sprite index to be the heart sprite
-sprite_index = player_id.heartSprites[0]
+//articleSprites: sprites to use for this instance
+articleSprites = player_id.heartSprites
+
+//Set the sprite index to be the heart sprite if there's no sprite in the chained player
+sprite_index = articleSprites[4]
+frame = 0;
+maxframes = 3;
 
 //Hit effect for when the heart closes
 hit_heartflash = hit_fx_create(sprite_get("heartflash"), 18);
+
+//heartShouldClose: whether the heart is closing or not.
+heartShouldClose = false;
+
+//heartShouldDie
+heartShouldDie = false;
+
+//heartDetectedPlayer: the player the heart detected while broken
+heartDetectedPlayer = noone;
+
+//Whether to use compatibility or not
+useCompatibility = false;
 
 //playerToDetect: player to detect after the break.
 playerToDetect = noone;
