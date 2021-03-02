@@ -48,7 +48,7 @@ set_window_value(AT_DSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 9);
 
 //yeet.
 set_window_value(AT_DSPECIAL, 6, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 6, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DSPECIAL, 6, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 10);
 //set_window_value(AT_DSPECIAL, 5, AG_WINDOW_HAS_SFX, 1);
@@ -56,7 +56,7 @@ set_window_value(AT_DSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 10);
 
 //fixed cooldown.
 set_window_value(AT_DSPECIAL, 7, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 7, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_DSPECIAL, 7, AG_WINDOW_LENGTH, 17);
 set_window_value(AT_DSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 12);
 //cancellable cooldown.
@@ -79,7 +79,7 @@ set_num_hitboxes(AT_DSPECIAL, 11);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 6);
-set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 4);
+set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_X, 28);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_Y, -35);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 60);
@@ -106,7 +106,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_THROWS_ROCK, 1);  //throws rock
 set_hitbox_value(AT_DSPECIAL, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, 6);
-set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 4);
+set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_X, 17);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_Y, -65);
 set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 56);

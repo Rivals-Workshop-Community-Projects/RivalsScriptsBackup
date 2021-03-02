@@ -31,7 +31,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
 
 //chargable armor frames.
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 56);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 40);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
@@ -81,33 +81,33 @@ set_window_value(AT_FSPECIAL, 7, AG_WINDOW_VSPEED_TYPE, 1);
 
 //cooldown 1.
 set_window_value(AT_FSPECIAL, 8, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 8, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_FSPECIAL, 8, AG_WINDOW_LENGTH, 12);//8
 set_window_value(AT_FSPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_FSPECIAL, 8, AG_WINDOW_CUSTOM_GRAVITY, 0);
 set_window_value(AT_FSPECIAL, 8, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_FSPECIAL, 8, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(AT_FSPECIAL, 8, AG_WINDOW_HAS_WHIFFLAG, 1);
+//set_window_value(AT_FSPECIAL, 8, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //cooldown 2.
 set_window_value(AT_FSPECIAL, 9, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 9, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_FSPECIAL, 9, AG_WINDOW_LENGTH, 9);//6
 set_window_value(AT_FSPECIAL, 9, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 9, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_FSPECIAL, 9, AG_WINDOW_CUSTOM_GRAVITY, 0.5);
 set_window_value(AT_FSPECIAL, 9, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_FSPECIAL, 9, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(AT_FSPECIAL, 9, AG_WINDOW_HAS_WHIFFLAG, 1);
+//set_window_value(AT_FSPECIAL, 9, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //cooldown 3.
 set_window_value(AT_FSPECIAL, 10, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 10, AG_WINDOW_LENGTH, 2);
+set_window_value(AT_FSPECIAL, 10, AG_WINDOW_LENGTH, 3);//2
 set_window_value(AT_FSPECIAL, 10, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 10, AG_WINDOW_ANIM_FRAME_START, 14);
 set_window_value(AT_FSPECIAL, 10, AG_WINDOW_CUSTOM_GRAVITY, 0.5);
 set_window_value(AT_FSPECIAL, 10, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_FSPECIAL, 10, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_FSPECIAL, 10, AG_WINDOW_HAS_WHIFFLAG, 1);
+//set_window_value(AT_FSPECIAL, 10, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //the final windows have extreme friction so that the move slows to a stop.
 //set_window_value(AT_FSPECIAL, 7, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);

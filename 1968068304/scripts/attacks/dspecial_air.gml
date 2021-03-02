@@ -118,7 +118,7 @@ set_window_value(AT_DSPECIAL_AIR, 13, AG_WINDOW_CUSTOM_GRAVITY, 0.6);
 
 //14: recovery after ground slam (transition to crouch)
 set_window_value(AT_DSPECIAL_AIR, 14, AG_WINDOW_TYPE, 0);
-set_window_value(AT_DSPECIAL_AIR, 14, AG_WINDOW_LENGTH, 25);
+set_window_value(AT_DSPECIAL_AIR, 14, AG_WINDOW_LENGTH, 28);
 set_window_value(AT_DSPECIAL_AIR, 14, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DSPECIAL_AIR, 14, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_DSPECIAL_AIR, 14, AG_WINDOW_HAS_WHIFFLAG, 1);

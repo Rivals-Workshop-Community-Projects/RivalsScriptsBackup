@@ -50,6 +50,8 @@ if (scr_epinel_grabbed_opponent_is_still_grabbed()) { //y > room_height &&
 move_cooldown[AT_USPECIAL] = 0;
 epinel_heavy_state = 0;
 
+epinel_is_armored = 0;
+
 
 #define scr_epinel_grabbed_opponent_is_still_grabbed
 //returns true if a grabbed opponent still meets all the conditions for being grabbed.

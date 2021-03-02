@@ -55,14 +55,20 @@ projectileOut = 0
 
 hitboxReal = 0
 
+fspec_turns = 0
+
 dtimer = 0
 
 startMoving = true
+
+lifeTimer = 1300
 
 sprite[0] = sprite_get("sawSpawn");             //Example sprites
 sprite[1] = sprite_get("sawMove");
 sprite[2] = sprite_get("sawMove");
 sprite[3] = sprite_get("sawMove");
+sprite[4] = sprite_get("sawSpawn");
+
 /* README - Basic Article Usage
 
 

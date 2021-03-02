@@ -11,6 +11,11 @@ if attack == AT_DSPECIAL && free{
 if attack == AT_FSTRONG {
 	set_attack_value(attack, AG_CATEGORY, 0)
 }
+print(attack)
+if attack == AT_FSPECIAL_2 {
+	hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+	print("what");
+}
 
 /*
 if attack == AT_FSTRONG && (is_turning or ((spr_dir > 0 && left_strong_down) or (spr_dir < 0 && right_strong_down))) {

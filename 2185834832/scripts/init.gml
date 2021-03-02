@@ -71,7 +71,7 @@ air_friction = .04;
 max_djumps = 1;
 double_jump_time = 35; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 3.5;
-walljump_vsp = 8.2;
+walljump_vsp = 9;
 walljump_time = 18;
 max_fall = 11; //maximum fall speed without fastfalling
 fast_fall = 11; //fast fall speed
@@ -145,26 +145,25 @@ waterSpout90 = hit_fx_create( sprite_get( "waterSpout90" ), 15 );
 waterSpout70 = hit_fx_create( sprite_get( "waterSpout70" ), 15 );
 waterSpout110 = hit_fx_create( sprite_get( "waterSpout110" ), 15 );
 waterPort = hit_fx_create( sprite_get( "waterTeleport" ), 15 );
+waterCharge = hit_fx_create( sprite_get( "nspecial_charging" ), 36 );
 waterHud_sprite= sprite_get("waterHud");
 waterHudbub_sprite= sprite_get("waterHudbub");
+waterHudEmerg_sprite = sprite_get("waterhudemergency");
 
+
+emergencyCount = 0
+waterLevelEmergency = 0
 dspecVar = 0
-
 fspecVar = 2
-
 waterLevel = 0
-
 waterCharges = 1
-
 waterBomb = 0
-
 combatTimer = 5
-
 waterTimer = 1
-
 strongAttack = false
-
 dspecFlying = false
-
 doublejumpVar = 0
 grabbedid = noone;
+saw_blade = noone
+waterChargingFx = noone
+effect_drawangle = 0

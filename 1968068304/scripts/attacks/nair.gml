@@ -54,12 +54,12 @@ set_hitbox_value(AT_NAIR, 1, HG_SHAPE, 0);
 //knockback
 set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 7.5);
 set_hitbox_value(AT_NAIR, 1, HG_KNOCKBACK_SCALING, 0.3); 
-set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 86);
+set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 85);
 //stun
 set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_NAIR, 1, HG_HITPAUSE_SCALING, 0.1);
 set_hitbox_value(AT_NAIR, 1, HG_HITSTUN_MULTIPLIER, 0.9);
-set_hitbox_value(AT_NAIR, 1, HG_DRIFT_MULTIPLIER, 0.75);
+set_hitbox_value(AT_NAIR, 1, HG_DRIFT_MULTIPLIER, 1);
 //effects
 set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));//("sfx_ell_drill_stab"));
 
@@ -85,12 +85,12 @@ set_hitbox_value(AT_NAIR, 2, HG_SHAPE, 0);
 //knockback
 set_hitbox_value(AT_NAIR, 2, HG_BASE_KNOCKBACK, 7.5);
 set_hitbox_value(AT_NAIR, 2, HG_KNOCKBACK_SCALING, 0.3); 
-set_hitbox_value(AT_NAIR, 2, HG_ANGLE, 83);
+set_hitbox_value(AT_NAIR, 2, HG_ANGLE, 82);
 //stun
 set_hitbox_value(AT_NAIR, 2, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_NAIR, 2, HG_HITPAUSE_SCALING, 0.1);
 set_hitbox_value(AT_NAIR, 2, HG_HITSTUN_MULTIPLIER, 0.9);
-set_hitbox_value(AT_NAIR, 2, HG_DRIFT_MULTIPLIER, 0.75);
+set_hitbox_value(AT_NAIR, 2, HG_DRIFT_MULTIPLIER, 1);
 //effects
 set_hitbox_value(AT_NAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_weak2"));//("sfx_ell_drill_stab"));
 
@@ -120,7 +120,7 @@ set_hitbox_value(AT_NAIR, 3, HG_ANGLE, 35); //same knockback, but very low angle
 set_hitbox_value(AT_NAIR, 3, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_NAIR, 3, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_NAIR, 3, HG_HITSTUN_MULTIPLIER, 0.9);
-set_hitbox_value(AT_NAIR, 3, HG_DRIFT_MULTIPLIER, 0.75);
+set_hitbox_value(AT_NAIR, 3, HG_DRIFT_MULTIPLIER, 1);
 //effects
 set_hitbox_value(AT_NAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_medium2"));//("sfx_ell_drill_stab"));
 set_hitbox_value(AT_NAIR, 3, HG_VISUAL_EFFECT, 194); //wind
@@ -148,12 +148,12 @@ set_hitbox_value(AT_NAIR, 4, HG_SHAPE, 0);
 //knockback
 set_hitbox_value(AT_NAIR, 4, HG_BASE_KNOCKBACK, 5.5);
 set_hitbox_value(AT_NAIR, 4, HG_KNOCKBACK_SCALING, 0.3); 
-set_hitbox_value(AT_NAIR, 4, HG_ANGLE, 86);
+set_hitbox_value(AT_NAIR, 4, HG_ANGLE, 85);
 //stun
 set_hitbox_value(AT_NAIR, 4, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_NAIR, 4, HG_HITPAUSE_SCALING, 0.1);
 set_hitbox_value(AT_NAIR, 4, HG_HITSTUN_MULTIPLIER, 0.9);
-set_hitbox_value(AT_NAIR, 4, HG_DRIFT_MULTIPLIER, 0.75);
+set_hitbox_value(AT_NAIR, 4, HG_DRIFT_MULTIPLIER, 1);
 //effects
 set_hitbox_value(AT_NAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_weak2"));//("sfx_ell_drill_stab"));
 
@@ -178,12 +178,12 @@ set_hitbox_value(AT_NAIR, 5, HG_SHAPE, 0);
 //knockback
 set_hitbox_value(AT_NAIR, 5, HG_BASE_KNOCKBACK, 5.5);
 set_hitbox_value(AT_NAIR, 5, HG_KNOCKBACK_SCALING, 0.3); 
-set_hitbox_value(AT_NAIR, 5, HG_ANGLE, 83);
+set_hitbox_value(AT_NAIR, 5, HG_ANGLE, 82);
 //stun
 set_hitbox_value(AT_NAIR, 5, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_NAIR, 5, HG_HITPAUSE_SCALING, 0.1);
 set_hitbox_value(AT_NAIR, 5, HG_HITSTUN_MULTIPLIER, 0.9);
-set_hitbox_value(AT_NAIR, 5, HG_DRIFT_MULTIPLIER, 0.75);
+set_hitbox_value(AT_NAIR, 5, HG_DRIFT_MULTIPLIER, 1);
 
 //effects
 set_hitbox_value(AT_NAIR, 5, HG_HIT_SFX, asset_get("sfx_blow_weak2"));//("sfx_ell_drill_stab"));

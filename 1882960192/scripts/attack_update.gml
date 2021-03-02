@@ -374,7 +374,7 @@ if (attack == AT_FTILT) {
 		
 		set_hitbox_value(AT_FTILT, 1, HG_WINDOW_CREATION_FRAME, 2);
 		set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 6);
-		set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, .45);
+		set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, .5);
 		set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 6);
 		set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_ell_drill_stab"));
 		set_hitbox_value(AT_FTILT, 1, HG_ANGLE, 60);

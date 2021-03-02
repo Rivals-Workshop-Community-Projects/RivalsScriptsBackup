@@ -11,3 +11,12 @@ if(attack == AT_DTILT){
 if(waterCharges > 0){
 waterCharges -= 1
 }
+
+if(attack == AT_FSPECIAL){
+    if(free){
+        state = PS_PRATFALL
+    }else{
+        state = PS_PRATLAND
+    }
+    prat_land_time = 6
+}

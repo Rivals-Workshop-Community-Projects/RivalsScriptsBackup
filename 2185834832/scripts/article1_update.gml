@@ -9,7 +9,6 @@
 */
 
 //Are there too many articles? If so, I should die
-		
 if (replacedcount > maxarticles){
     shoulddie = true;
 }
@@ -30,7 +29,7 @@ if (state == 0){
     if(free){
     	x -= spr_dir*8
     }
-    if(state_timer > 18 && player_id.special_down){
+    if(state_timer > 18 && player_id.special_down && startMoving == true){
 		startMoving = false
 	}
     if(!free){
@@ -49,13 +48,23 @@ if (state == 0){
 //State 1: Moving
 
 if (state == 1){
-	if(state_timer <= 1 && player_id.special_down){
-		startMoving = false
+	if(state_timer == 0 && startMoving == false){
+		spawn_hit_fx(x,y + 60, 111)
+		sound_play(asset_get("sfx_kragg_rock_land"))
 	}
 	if(startMoving = false){
 		hsp = 0
 		if(player_id.attack == AT_FSPECIAL){
 			startMoving = true
+		}
+		if(lifeTimer > 0){
+			lifeTimer -= 1
+		}else{
+			if(state == 0 || state == 1){
+				state = 4
+				state_timer = 0
+				image_index = 7
+			}
 		}
 	}
 	if(hsp > -5 && hsp < 5 && startMoving = true){
@@ -68,7 +77,7 @@ if (state == 1){
 	}else if(free && state_timer <= 2 || hit_wall == true && state_timer <= 2){
 		instance_destroy();
 	}
-	if(player_id.attack == AT_EXTRA_1){
+	if(player_id.attack == AT_EXTRA_1 && player_id.window == 2){
 		state = 3
 		state_timer = 0
 	}
@@ -79,7 +88,7 @@ if (state == 1){
     image_index += spd
     hitboxReal += 0.12
     if(hitboxReal > 1 && startMoving = true){
-	create_hitbox( AT_DSPECIAL, 1, x + 10, y)
+	create_hitbox( AT_DSPECIAL, 1, x, y + 40)
 	hitboxReal = 0
     }
 }
@@ -87,23 +96,30 @@ if (state == 1){
 //State 2: Dying
 
 if (state == 2){
-    if (state_timer == die_time){
-    	spawn_hit_fx( x, y + 40, 149 );
-    	create_hitbox( AT_DSPECIAL, 2, x + 10, y)
-    	sound_play( asset_get("sfx_waterwarp_start"))
-    	instance_destroy();
-        exit;
-    }
+	spawn_hit_fx( x, y + 40, 149 );
+	create_hitbox( AT_DSPECIAL, 2, x, y + 40)
+	sound_play( asset_get("sfx_waterwarp_start"))
+	instance_destroy();
+    exit;
 }
 
 //State 3: Emerge
 if (state == 3){
-    if (state_timer == die_time){
-    	spawn_hit_fx( x, y + 40, 149 );
-    	sound_play( asset_get("sfx_waterhit_heavy"))
-    	instance_destroy();
-        exit;
-    }
+	spawn_hit_fx( x, y + 40, 149 );
+	sound_play( asset_get("sfx_waterhit_heavy"))
+	instance_destroy();
+    exit;
+}
+
+//State 4: Sink
+if (state == 4){
+	image_index -= 0.25
+	if(state_timer == 1){
+	sound_play( asset_get("sfx_orca_shake"))
+	}else if(state_timer > 27){
+		instance_destroy();
+    	exit;
+	}
 }
 
 //NOTE: To use a hitbox properly with an article, it MUST be a projectile! (hitbox type 2)

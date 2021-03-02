@@ -1,5 +1,6 @@
 sprite_change_offset("idle", 48, 88);
 sprite_change_offset("hurt", 48, 88);
+sprite_change_offset("uphurt", 48, 88);
 sprite_change_offset("bighurt", 44, 66);
 sprite_change_offset("hurtground", 44, 66);
 sprite_change_offset("crouch", 48, 88);
@@ -15,7 +16,7 @@ sprite_change_offset("jump", 48, 88);
 sprite_change_offset("doublejump", 48, 88);
 sprite_change_offset("walljump", 48, 88);
 sprite_change_offset("pratfall", 48, 88);
-sprite_change_offset("land", 48, 88);
+sprite_change_offset("land", 44, 88);
 sprite_change_offset("landinglag", 48, 88);
 
 sprite_change_offset("parry", 48, 88);
@@ -39,12 +40,8 @@ sprite_change_offset("fstrong", 48, 108);
 sprite_change_offset("ustrong", 46, 128);
 sprite_change_offset("funnyustrong", 46, 249);
 sprite_change_offset("dstrong", 48, 88);
-sprite_change_offset("nspecial", 48, 129);
-sprite_change_offset("nspecialair_shootupward", 48, 129);
-sprite_change_offset("nspecial_shootupward", 48, 129);
-sprite_change_offset("nspecialair_shootupright", 48, 129);
-sprite_change_offset("nspecial_shootupright", 48, 129);
-sprite_change_offset("nspecialair", 48, 129);
+sprite_change_offset("nspecial", 60, 96);
+sprite_change_offset("nspecialair", 60, 96);
 sprite_change_offset("fspecial", 64, 88);
 sprite_change_offset("fspecialair", 48, 88);
 sprite_change_offset("fspecialupward", 64, 106);
@@ -61,12 +58,16 @@ sprite_change_offset("nspecialspikeballhitthing", 33, 67);
 sprite_change_offset("dspecialnote", 21, 23);
 
 sprite_change_offset("nspecialspikeball", 22, 22);
+sprite_change_offset("bonbynspecialdespawn", 64, 64);
 sprite_change_offset("spikeballexplosion", 110, 108);
+sprite_change_offset("final_launchhitbox", 110, 108);
 sprite_change_offset("nspecialspikeballmask", 22, 22);
 sprite_change_offset("uspecialfrogthing", 32, 43);
 sprite_change_offset("fspecialeffect", 40, 89);
 sprite_change_offset("fspecialmisfireeffect", 40, 89);
 sprite_change_offset("fspecialchargeeffect", 48, 89);
+sprite_change_offset("bonbynspecialtrail", 22, 22);
+sprite_change_offset("bonbynspecialtrail2", 22, 22);
 sprite_change_offset("bonbyfspecialhiteffect", 125, 125);
 
 sprite_change_offset("eyegleameffect", 152, 94);
@@ -76,3 +77,5 @@ sprite_change_offset("feri_costume_bon", 84, 114);
 sprite_change_offset("phone_open", 48, 88);
 
 sprite_change_offset("kirb", 50, 96);
+
+sprite_change_offset("final_start", 66, 96);

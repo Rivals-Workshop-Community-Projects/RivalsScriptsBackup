@@ -77,7 +77,7 @@ set_window_value(AT_DAIR, 8, AG_WINDOW_ANIM_FRAME_START, 8);
 
 //recovery
 set_window_value(AT_DAIR, 9, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DAIR, 9, AG_WINDOW_LENGTH, 17);
+set_window_value(AT_DAIR, 9, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_DAIR, 9, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DAIR, 9, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_DAIR, 9, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -323,10 +323,10 @@ set_hitbox_value(AT_DAIR, 7, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DAIR, 7, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_DAIR, 7, HG_HITSTUN_MULTIPLIER, 1);
 //effects
-set_hitbox_value(AT_DAIR, 7, HG_VISUAL_EFFECT, 303); //"basic small with spin effect in center"
+set_hitbox_value(AT_DAIR, 7, HG_VISUAL_EFFECT, 304); //"basic small with spin effect in center"
 set_hitbox_value(AT_DAIR, 7, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_DAIR, 7, HG_DRIFT_MULTIPLIER, 1);
-set_hitbox_value(AT_DAIR, 7, HG_DRIFT_MULTIPLIER, 0.5); 
+set_hitbox_value(AT_DAIR, 7, HG_DRIFT_MULTIPLIER, 1); 
 
 //main hit 2 - if first attack hits
 set_hitbox_value(AT_DAIR, 8, HG_PARENT_HITBOX, 0);
@@ -348,7 +348,7 @@ set_hitbox_value(AT_DAIR, 8, HG_SHAPE, 0);
 //knockback
 set_hitbox_value(AT_DAIR, 8, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_DAIR, 8, HG_KNOCKBACK_SCALING, 0.25);
-set_hitbox_value(AT_DAIR, 8, HG_ANGLE, 86);
+set_hitbox_value(AT_DAIR, 8, HG_ANGLE, 90);
 set_hitbox_value(AT_DAIR, 8, HG_ANGLE_FLIPPER, 7); //hit towards epinel
 //stun
 set_hitbox_value(AT_DAIR, 8, HG_BASE_HITPAUSE, 3);
@@ -357,7 +357,7 @@ set_hitbox_value(AT_DAIR, 8, HG_HITSTUN_MULTIPLIER, 1);
 //effects
 set_hitbox_value(AT_DAIR, 8, HG_VISUAL_EFFECT, 303); //"basic small with spin effect in center"
 set_hitbox_value(AT_DAIR, 8, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
-set_hitbox_value(AT_DAIR, 8, HG_DRIFT_MULTIPLIER, 0.5); 
+set_hitbox_value(AT_DAIR, 8, HG_DRIFT_MULTIPLIER, 1); 
 
 
 
@@ -365,7 +365,7 @@ set_hitbox_value(AT_DAIR, 8, HG_DRIFT_MULTIPLIER, 0.5);
 set_hitbox_value(AT_DAIR, 9, HG_PARENT_HITBOX, 0);
 //stats
 set_hitbox_value(AT_DAIR, 9, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_DAIR, 9, HG_WINDOW, 8);
+set_hitbox_value(AT_DAIR, 9, HG_WINDOW, 20);//8
 set_hitbox_value(AT_DAIR, 9, HG_LIFETIME, 3);
 set_hitbox_value(AT_DAIR, 9, HG_DAMAGE, 3);
 //priority/grouping
@@ -381,7 +381,7 @@ set_hitbox_value(AT_DAIR, 9, HG_SHAPE, 0);
 //knockback
 set_hitbox_value(AT_DAIR, 9, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DAIR, 9, HG_KNOCKBACK_SCALING, 0.25); //fixed knockback to link into the next hit. 
-set_hitbox_value(AT_DAIR, 9, HG_ANGLE, 80);
+set_hitbox_value(AT_DAIR, 9, HG_ANGLE, 90);
 set_hitbox_value(AT_DAIR, 9, HG_ANGLE_FLIPPER, 7); //hit towards epinel
 //stun
 set_hitbox_value(AT_DAIR, 9, HG_BASE_HITPAUSE, 4);
@@ -396,7 +396,7 @@ set_hitbox_value(AT_DAIR, 9, HG_DRIFT_MULTIPLIER, 0.5);
 set_hitbox_value(AT_DAIR, 10, HG_PARENT_HITBOX, 0);
 //stats
 set_hitbox_value(AT_DAIR, 10, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_DAIR, 10, HG_WINDOW, 8);
+set_hitbox_value(AT_DAIR, 10, HG_WINDOW, 20);//8
 set_hitbox_value(AT_DAIR, 10, HG_LIFETIME, 3);
 set_hitbox_value(AT_DAIR, 10, HG_DAMAGE, 3);
 //priority/grouping

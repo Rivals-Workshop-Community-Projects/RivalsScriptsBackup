@@ -58,6 +58,7 @@ if(!free){
 	uspecVar = 1
 	fspecVar = 2
 	dspecFlying = false
+	emergencyCount = 0
 }
 
 if(waterLevel > 99 && waterCharges < 3){
@@ -92,4 +93,22 @@ if(waterLevel > 0){
 
 if(window == 0){
 	strongAttack = false
+}
+
+if(waterCharges > 0){
+	waterLevelEmergency = 0
+}else{
+	if(emergencyCount < 2){
+		if(waterLevelEmergency <= 7){
+			waterLevelEmergency += 0.015
+		}
+	}else{
+		waterLevelEmergency = 8
+	}
+}
+
+if(waterLevelEmergency > 0){
+	if(state == PS_PRATFALL || state == PS_PRATLAND){
+		waterLevelEmergency = 0
+	}
 }

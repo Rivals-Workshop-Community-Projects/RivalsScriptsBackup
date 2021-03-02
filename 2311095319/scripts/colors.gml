@@ -166,15 +166,15 @@ set_color_profile_slot( 13, 5, 255, 255, 0 ); //Button
 set_color_profile_slot( 13, 6, 55, 28, 9 ); //Shoes
 set_color_profile_slot( 13, 7, 12, 33, 71 ); //Eye Color
 
-// Jumpman
-set_color_profile_slot( 14, 0, 255, 56, 67 ); //Hat
-set_color_profile_slot( 14, 1, 68, 125, 235 ); //Undershirt
-set_color_profile_slot( 14, 2, 255, 56, 67 ); //Overalls
+// Classic Suit
+set_color_profile_slot( 14, 0, 209, 55, 12 ); //Hat
+set_color_profile_slot( 14, 1, 60, 71, 123 ); //Undershirt
+set_color_profile_slot( 14, 2, 209, 55, 12 ); //Overalls
 set_color_profile_slot( 14, 3, 255, 205, 133 ); //Skin
 set_color_profile_slot( 14, 4, 220, 241, 243 ); //Gloves
 set_color_profile_slot( 14, 5, 255, 255, 0 ); //Button
 set_color_profile_slot( 14, 6, 101, 56, 35 ); //Shoes
-set_color_profile_slot( 14, 7, 0, 0, 0 ); //Eye Color
+set_color_profile_slot( 14, 7, 4, 122, 213 ); //Eye Color
 
 // SMB3
 set_color_profile_slot( 15, 0, 178, 50, 38 ); //Hat

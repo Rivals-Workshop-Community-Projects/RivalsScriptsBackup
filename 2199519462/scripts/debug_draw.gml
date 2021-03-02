@@ -1,3 +1,4 @@
+//draw_debug_text(x,y, string(attack))
 //draw_debug_text(x,y, string(move_cooldown[AT_DSPECIAL])+" "+string(move_cooldown[AT_DSPECIAL_AIR]))
 
 //draw_debug_text(x,y, string(window_timer)+" "+string(global.skin_script))

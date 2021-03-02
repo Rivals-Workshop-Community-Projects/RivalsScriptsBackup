@@ -18,8 +18,8 @@ switch (attack)
 {
 	case AT_NSPECIAL:
 	{
-		var chargetime = 30;
-		var chargetime2 = 50;
+		var chargetime = 20;
+		var chargetime2 = 40;
 	    if (godmode)
 		{
 	        as_charge = 2;
@@ -28,8 +28,8 @@ switch (attack)
 		if (runeJ && !as_charge) as_charge = 1;
 		if (runeB)
 		{
-			chargetime = 15;
-			chargetime2 = 25;
+			chargetime = 10;
+			chargetime2 = 20;
 			set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX_FRAME, chargetime2 - 1);
 		}
 		else
@@ -52,10 +52,10 @@ switch (attack)
 					as_reverse = true;
 					if (hsp != 0) techdone[4] = true;
 				}
-				if (window_timer >= 10 || (aura && !special_down))
+				if (window_timer >= get_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH) || (aura && !special_down))
 				{
 					techdone[5] = !special_down && aura;
-				    if (aura && window_timer >= 10)
+				    if (aura && window_timer >= get_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH))
 					{
 						buffcolour = true;
 						set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, theirAnim);
@@ -108,6 +108,7 @@ switch (attack)
 				as_frame = window_timer;
 				fall_through = down_down;
 				//if (state_timer % 20 == 0) spawn_hit_fx(x + 45 * spr_dir,y-31,charge_effect);
+                if (state_timer % 16 == 0 && !free) spawn_base_dust(x, y, "nspec", spr_dir);
 				if (down_down && !freemd && !free)
 				{
 					free = true;
@@ -217,6 +218,7 @@ switch (attack)
 			case 1:
 				if (window_timer == 1)
 				{
+					spawn_base_dust(x-0*spr_dir, y, "nspec", spr_dir);
 					FSpecSweetspot = false;
 					if (aura)
 					{
@@ -293,6 +295,7 @@ switch (attack)
 			case 1:
 				if (window_timer == 1)
 				{
+					spawn_base_dust(x, y-32, "smoke", spr_dir);
 					reset_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE);
 					//through_stage = false;
 					origfree = free;
@@ -466,6 +469,7 @@ switch (attack)
 					move_cooldown[AT_DSPECIAL_2] = 100;
 					move_cooldown[AT_DSPECIAL_AIR] = 100;
 					djumpTimer = djumpNumOfAfterImages;
+					if (!free) spawn_base_dust(x-20*spr_dir, y, "dash_start", spr_dir);
 				}
 				with (oPlayer)
 				{
@@ -668,6 +672,7 @@ switch (attack)
 					reset_window_value(AT_JAB, 8, AG_WINDOW_SFX);
 					reset_hitbox_value(AT_JAB, 3, HG_HIT_SFX);
 					reset_hitbox_value(AT_JAB, 3, HG_BASE_HITPAUSE);
+					spawn_base_dust(x-20*spr_dir, y, "dash", spr_dir);
 				}
 				break;
 			case 4:
@@ -676,6 +681,7 @@ switch (attack)
 					hsp = 20*spr_dir;
 					clear_button_buffer( PC_ATTACK_PRESSED );
 					reset_window_value(AT_JAB, 9, AG_WINDOW_HSPEED);
+					spawn_base_dust(x+20*spr_dir, y, "dash_start", spr_dir);
 				}
 				break;
 			case 7:
@@ -717,7 +723,10 @@ switch (attack)
 							sound_play(sound_get("voiceup"));
 							set_window_value(AT_JAB, 9, AG_WINDOW_HSPEED, 50);
 						}
+						spawn_base_dust(x-20*spr_dir, y, "dash_start", spr_dir);
 					}
+					else
+						spawn_base_dust(x-20*spr_dir, y, "dash", spr_dir);
 				}
 				break;
 		}
@@ -775,7 +784,6 @@ switch (attack)
 					}
 					else
 					{
-						can_fast_fall = false;
 						vsp = 0;
 					}
 					grab(0, 0, 6, 0);
@@ -834,11 +842,15 @@ switch (attack)
 	case AT_DATTACK:
 	if (o_copyplayer == noone)
 	{
-		if (((special_pressed && down_down) || stupidbossbool) && has_hit_player && !move_cooldown[AT_DSPECIAL_2] && !was_parried && !hitpause)
+		if (has_hit_player && !was_parried)
 		{
-			set_attack(AT_DSPECIAL_2);
-			CorrectHurtboxes();
-			techdone[14] = true;
+			can_ustrong = true;
+			if (((special_pressed && down_down) || stupidbossbool) && !move_cooldown[AT_DSPECIAL_2] && !hitpause)
+			{
+				set_attack(AT_DSPECIAL_2);
+				CorrectHurtboxes();
+				techdone[14] = true;
+			}
 		}
 	}
 	break;
@@ -970,16 +982,25 @@ switch (attack)
 	{
 	    if (window >= 2)
 	        draw_indicator = false;
-	    if (window == 2 && window_timer == 1)
+	    if (window == 2)
 	    {
-			spawn_hit_fx( x + 1, y - 88, 137 );
-			if (buffcolour)
+			if (window_timer == 1)
 			{
-				spawn_hit_fx( x + 22, y - 88, 137 );
-				spawn_hit_fx( x - 21, y - 88, 137 );
+				spawn_base_dust(x, y, "jump", spr_dir);
+				spawn_hit_fx( x + 1, y - 96, 137 );
+				if (buffcolour)
+				{
+					spawn_hit_fx( x + 22, y - 96, 137 );
+					spawn_hit_fx( x - 21, y - 96, 137 );
+				}
+				else
+					minmin();
 			}
-			else
-				minmin();
+			else if (window_timer == 4)
+			{
+				vsp = -7;
+				sound_play(jump_sound);
+			}
 		}
 	    else if (window == 1 && window_timer == 11)
 	    {
@@ -1034,6 +1055,11 @@ switch (attack)
 			{
 				spawn_hit_fx( x + 70, y - 26, 3 );
 				spawn_hit_fx( x - 70, y - 26, 3 );
+			}
+			if (window_timer == 3)
+			{
+				spawn_base_dust(x+50*spr_dir, y, "nspec", -spr_dir);
+				spawn_base_dust(x-50*spr_dir, y, "nspec", spr_dir);
 			}
 		}
 	    else if (window == 2 && window_timer == 8)
@@ -1512,3 +1538,35 @@ if (o_copyplayer && o_copyplayer != noone && instance_exists(o_copyplayer))
 {
     hurtboxID.sprite_index = get_attack_value(attack, (free && get_attack_value(attack, AG_HURTBOX_AIR_SPRITE) != 0) ? AG_HURTBOX_AIR_SPRITE : AG_HURTBOX_SPRITE);
 }
+
+#define spawn_base_dust
+{
+    ///spawn_base_dust(x, y, name, ?dir)
+    var dlen; //dust_length value
+    var dfx; //dust_fx value
+    var dfg; //fg_sprite value
+    var dust_color = 0;
+    var x = argument[0], y = argument[1], name = argument[2];
+    var dir = argument_count > 3 ? argument[3] : 0;
+    
+    switch (name) {
+        default: 
+        case "nspec":dlen = 10; dfx = 12; dfg = 2626; break;
+        case "smoke":dlen = 32; dfx = 13; dfg = 2626; break;
+        case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+        case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+        case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+        case "doublejump": 
+        case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+        case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+        case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+        case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+        case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+    }
+    var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+    newdust.dust_fx = dfx; //set the fx id
+    if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+    newdust.dust_color = dust_color; //set the dust color
+    if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+    return newdust;
+} // Supersonic

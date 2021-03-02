@@ -32,7 +32,7 @@ max_jump_hsp = 4; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 6.5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .1;
-prat_fall_accel = 0.8; //multiplier of air_accel while in pratfall
+prat_fall_accel = 0.5; //multiplier of air_accel while in pratfall
 air_friction = .04;
 max_djumps = 1;
 double_jump_time = 36; //the number of frames to play the djump animation. Can't be less than 31.
@@ -43,7 +43,7 @@ wall_frames = 2; //anim frames before you leave the wall
 max_fall = 10.5; //maximum fall speed without fastfalling
 fast_fall = 13.5; //fast fall speed
 gravity_speed = .7; 
-hitstun_grav = .51; //.525;
+hitstun_grav = .51;
 knockback_adj = 0.98; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
                    
 
@@ -289,4 +289,3 @@ for(var n = 0; n < 3; n++) {
 
 //low gravity
 if (runeO) { gravity_speed = .525; hitstun_grav = 0.5; }
-else       { gravity_speed = .7;   hitstun_grav = 0.51; }	

@@ -9,6 +9,16 @@ else {
 	follow_object_id = noone;
 }
 
+if (spawn_check == 0) {
+	spawn_check = 1;
+	//destroy other pillars upon spawn
+	if (instance_number(obj_article3) > 1) {
+		with (obj_article3) {
+			if (id == other.id || player_id != other.player_id) continue;
+			lifetime = min(lifetime, 0);
+		}
+	}
+}
 
 image_index += 0.1 + activated;
 

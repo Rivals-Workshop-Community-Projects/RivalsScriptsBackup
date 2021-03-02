@@ -31,19 +31,21 @@ if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num >= 4 with (my_hitbox
 }
 
 if !bake_strong {
-	if my_hitboxID.effect == 69 or my_hitboxID.effect == 69420 && hit_player_obj.amarelle_timer <= 0 {
+//	if my_hitboxID.effect == 69 or my_hitboxID.effect == 69420 && hit_player_obj.amarelle_timer <= 0 {
+	if self_effect > 0 {
 	sound_play(sound_get("applyloud"))
-		hit_player_obj.amarelle_effect[hit_player_obj.amarelle_current] = effect;
+		hit_player_obj.amarelle_effect[hit_player_obj.amarelle_current] = self_effect;
 		if rune hit_player_obj.amarelle_current = !hit_player_obj.amarelle_current
 		hit_player_obj.amarelle_hfx_time = 0;
-		hit_player_obj.amarelle_hfx = effect;
-		user_event(0)
+		hit_player_obj.amarelle_hfx = self_effect;
+		//user_event(0)
 	if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.type == 2 {
 		hit_player_obj.amarelle_effect[hit_player_obj.amarelle_current] = my_hitboxID.ameffect;
 		hit_player_obj.amarelle_current = !hit_player_obj.amarelle_current
 	}
 	
 	}
+	self_effect = 0;
 } else {
 	if (((my_hitboxID.effect == 420 or my_hitboxID.effect == 69420) && hit_player_obj.amarelle_timer <= 0) or (my_hitboxID.hbox_group == 8 && (hit_player_obj.amarelle_timer <= 0 or has_rune("E"))))  && hit_player_obj.amarelle_effect[0] > 0 {
 		hit_player_obj.amarelle_should_submit = 1;

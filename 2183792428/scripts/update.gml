@@ -2,7 +2,7 @@
 
 
 with oPlayer {
-if 150 > get_gameplay_time() && taunt_down {
+if 150 > get_gameplay_time() && (taunt_down || special_down){
 
 if up_down && !right_down && !left_down && !down_down {
 other.musicSelect = 1

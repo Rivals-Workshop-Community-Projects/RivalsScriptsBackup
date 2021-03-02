@@ -84,6 +84,8 @@ sprite_change_offset("bubbleBombHugeEmpty", 69, 65);
 sprite_change_offset("bubbleBombMask", 0, 38);
 sprite_change_offset("bubbleBombEmpty", 32, 40);
 sprite_change_offset("torrohitbox", 125, 164);
+sprite_change_offset("sawport", 125, 164);
+sprite_change_offset("nspecial_charging", 54, 54);
 
 set_victory_bg( sprite_get( "victory" ));
 

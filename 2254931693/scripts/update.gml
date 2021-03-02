@@ -126,17 +126,10 @@ set_character_color_shading( 6, 0 );
 }
 
 
-//adjust cannon SFX
-if (spikeballishere = 1){
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX, sound_get("nspecialdryshot"));
-}
-
-if (spikeballishere = 0){
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX, sound_get("nspecialcannon"));
-}
 
 
 
+//Fast utilt rune
 if (has_rune("D")){
     set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 7);
     set_window_value(AT_UTILT, 2, AG_WINDOW_LENGTH, 7);
@@ -191,7 +184,6 @@ if ((get_gameplay_time() < 127 && shield_down) || family = 1){
 }
 
 //character/stage support
-
 
 
 user_event(14);

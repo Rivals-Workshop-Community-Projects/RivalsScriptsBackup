@@ -25,9 +25,21 @@ if (attack == AT_USPECIAL){
 
 }
 
+if attack == AT_NSPECIAL && hbox_num == 1 && length-hitbox_timer != 1{
+        spawn_hit_fx( x, y, player_id.nspecialtraileffect);
+  
+}
+
 
 if attack == AT_NSPECIAL && hbox_num == 1 {
   player_id.move_cooldown[AT_NSPECIAL] = 2;
+  
+    if (length-hitbox_timer = 1){
+        sound_play(player_id.nspecialpopsound)
+        spawn_hit_fx(x, y, player_id.nspecialpopeffect);
+    }
+  
+
   
 }
 

@@ -114,7 +114,7 @@ if ("yeetimebreak2" in hit_player_obj && "shiver" in hit_player_obj)
 
 if (my_hitboxID.attack == AT_NSPECIAL)
 {
-	if (my_hitboxID.hbox_num == 3)
+	if (my_hitboxID.hbox_num >= 3)
 		hit_player_obj.shiver = true;
 }
 

@@ -5,12 +5,8 @@ if(my_hitboxID.attack == AT_USPECIAL){
 	}
 }
 
-if(attack == AT_FSPECIAL){
-	if(free){
-		if(window == 2){
-		can_jump = true
-		}
-	}
+if(my_hitboxID.attack == AT_FSPECIAL){
+	fspecial_can_attack = true
 }
 
 if(attack == AT_DTILT){
@@ -20,7 +16,38 @@ if(attack == AT_DTILT){
 	}
 }
 
+if(my_hitboxID.attack == AT_DSTRONG){
+	if(my_hitboxID.hbox_num == 1 ||
+	my_hitboxID.hbox_num == 2 ||
+	my_hitboxID.hbox_num == 3 ||
+	my_hitboxID.hbox_num == 4 ||
+	my_hitboxID.hbox_num == 5 ||
+	my_hitboxID.hbox_num == 6 ||
+	my_hitboxID.hbox_num == 8 ||
+	my_hitboxID.hbox_num == 9 ||
+	my_hitboxID.hbox_num == 10 ||
+	my_hitboxID.hbox_num == 11 ||
+	my_hitboxID.hbox_num == 12 ||
+	my_hitboxID.hbox_num == 13){
+        grabbedid = hit_player_obj;
+        hit_player_obj.grabbed = 1;
+		grabbedid.ungrab = 0;
+	}
+}
+
 if(waterCharges < 3){
+	if(my_hitboxID.attack == AT_USPECIAL){
+		if(my_hitboxID.hbox_num == 2){
+			waterLevel += 40
+		}
+	}
+	if(my_hitboxID.attack == AT_DSPECIAL){
+		if(my_hitboxID.hbox_num == 1){
+			waterLevel += 3
+		}else if(my_hitboxID.hbox_num == 2){
+			waterLevel += 10
+		}
+	}
 	if(my_hitboxID.attack == AT_FTILT){
 		if(my_hitboxID.hbox_num == 1){
 			waterLevel += 14
@@ -151,17 +178,18 @@ if(waterCharges < 3){
 			}
 		}
 		if(my_hitboxID.attack == AT_DSTRONG){
-			if(my_hitboxID.hbox_num == 1){
-				waterLevel += 5
-			}else if(my_hitboxID.hbox_num == 2){
-				waterLevel += 5
-			}else if(my_hitboxID.hbox_num == 3){
-				waterLevel += 5
-			}else if(my_hitboxID.hbox_num == 4){
-				waterLevel += 5
-			}else if(my_hitboxID.hbox_num == 5){
-				waterLevel += 5
-			}else if(my_hitboxID.hbox_num == 6){
+			if(my_hitboxID.hbox_num == 1 ||
+			my_hitboxID.hbox_num == 2 ||
+			my_hitboxID.hbox_num == 3 ||
+			my_hitboxID.hbox_num == 4 ||
+			my_hitboxID.hbox_num == 5 ||
+			my_hitboxID.hbox_num == 6 ||
+			my_hitboxID.hbox_num == 8 ||
+			my_hitboxID.hbox_num == 9 ||
+			my_hitboxID.hbox_num == 10 ||
+			my_hitboxID.hbox_num == 11 ||
+			my_hitboxID.hbox_num == 12 ||
+			my_hitboxID.hbox_num == 13){
 				waterLevel += 5
 			}else if(my_hitboxID.hbox_num == 7){
 				waterLevel += 8

@@ -32,7 +32,7 @@ set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.2);
 
 //chargable armor frames.
 set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_LENGTH, 56);
+set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_LENGTH, 40);
 set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_VSPEED, 0);

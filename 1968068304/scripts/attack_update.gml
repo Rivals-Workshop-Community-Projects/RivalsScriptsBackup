@@ -23,7 +23,7 @@ if (has_hit_player && !was_parried && special_pressed && up_down && !hitpause &&
 		break;
 	}
 	if (cancel_into_uspecial) {
-		set_attack(AT_USPECIAL);
+		safely_set_attack(AT_USPECIAL);
 	}
 }
 
@@ -62,13 +62,23 @@ switch (attack) { //open switch(attack)
 					epinel_charge_timer = ceil( (strong_charge / 2 + 4) * (1 + runeE * 2) );
 				}
 			break;
+			case 3:
+				if (window_timer == 1) {
+					hsp = (right_down - left_down) * 2;
+				}
+				else {
+					hsp += (right_down - left_down) * (0.45 - has_hit_player * 0.1);
+					if (has_hit_player && !runeE) hsp = clamp(hsp, -3, 3);
+				}
+			break;
 			case 4: //looping window
 				if (hitpause) break;
 				epinel_charge_timer--;
-				repeat (1 + (window_timer == 1)) {
-					hsp += (right_down - left_down) * (0.5 - has_hit_player * 0.1);
+				
+				//else {
+					hsp += (right_down - left_down) * (0.45 - has_hit_player * 0.1);
 					if (has_hit_player && !runeE) hsp = clamp(hsp, -3, 3);
-				}
+				//}
 				if (epinel_charge_timer <= 0 || (runeE && (down_strong_pressed || left_strong_pressed || right_strong_pressed || attack_pressed))) { window += 1; window_timer = 0; }
 				else  {
 					attack_end();
@@ -220,7 +230,7 @@ switch (attack) { //open switch(attack)
 			break;
 			//crouch stance
 			case 6:
-				if (!was_parried) { set_state(PS_CROUCH); state_timer = 10; }
+				if (!was_parried) { attack_end(); set_state(PS_CROUCH); state_timer = 10; }
 			break;
 		}
 	
@@ -232,7 +242,7 @@ switch (attack) { //open switch(attack)
 				epinel_charge_timer = 0;
 			break;
 			case 3: //hasten the attack if it connects early.
-				if (has_hit) { window_timer = max(window_timer, ceil(get_window_value(AT_NAIR, 3, AG_WINDOW_LENGTH) / 3) ); }
+				if (has_hit) { window_timer = max(window_timer, ceil(get_window_value(AT_NAIR, 3, AG_WINDOW_LENGTH) / 2.5) ); } // /3
 			case 2: //hasten the attack if it connects early.
 				if (hitpause && hitstop <= 1 && has_hit && epinel_charge_timer == 0 && !down_hard_pressed && (down_down - up_down) <= 0) {
 					old_vsp = min(old_vsp, -2.5);
@@ -272,23 +282,18 @@ switch (attack) { //open switch(attack)
 				case 1:
 					//workaround to give a grounded move landing lag.
 					set_attack_value(AT_UTILT, AG_CATEGORY, 2);
+					set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 19);
 					//shorten recovery if lightweight.
-					set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 10 + (epinel_lightweight_time == 0) * 10);
+					//set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 10 + (epinel_lightweight_time == 0) * 10);
 				break;
 				
 				case 2:
 					//add hsp to the jump if holding forwards
-					hsp += (spr_dir + right_down - left_down) * 0.8;
+					hsp += (spr_dir + right_down - left_down);
 
-					//shorten recovery if lightweight (under a platform). Also increase jump height.
-					if (epinel_lightweight_time > 0) { 
-						set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 10); 
-						vsp -= 4; 
-					}
-					//apply landing lag if not.
-					else { 
-						set_attack_value(AT_UTILT, AG_CATEGORY, 1); 
-					}
+					//apply landing lag.
+					set_attack_value(AT_UTILT, AG_CATEGORY, 1); 
+
 					
 					//rise on hit.
 					if (has_hit) { 
@@ -355,10 +360,10 @@ switch (attack) { //open switch(attack)
 				}
 				
 				//limit horizontal direction.
-				hsp /= max(1, max(epinel_uair_jump_counter, epinel_consecutive_uair_jumps));
-				hsp *= spr_dir;
-				hsp = clamp(hsp * 0.8, 2.35, 8); //2.35
-				hsp *= spr_dir;
+				hsp /= clamp(epinel_consecutive_uair_jumps, 1, 1.5); //clamp(max(1, max(epinel_uair_jump_counter, epinel_consecutive_uair_jumps)), 1, 2);
+				//hsp *= spr_dir;
+				//hsp = clamp(hsp * 0.8, 2.35, 8); //2.35
+				//hsp *= spr_dir;
 				
 				//hsp = 2.35 * spr_dir;
 				
@@ -368,6 +373,12 @@ switch (attack) { //open switch(attack)
 			
 			case 3:
 				
+				//limit horizontal direction.
+				hsp /= clamp(epinel_uair_jump_counter, 1, 1.5); //clamp(max(1, max(epinel_uair_jump_counter, epinel_consecutive_uair_jumps)), 1, 2);
+				hsp *= spr_dir;
+				hsp = clamp(hsp * 0.8, 2.35, 8); //2.35
+				hsp *= spr_dir;
+			
 				//re-enable landing lag.
 				if (window_timer == 1) {
 					set_attack_value(AT_UAIR, AG_HAS_LANDING_LAG, 1);
@@ -379,11 +390,11 @@ switch (attack) { //open switch(attack)
 			
 			case 4:
 				//add a miniscule cooldown if the move didn't hit an opponent.
-				if (epinel_uair_jump_counter > 0) move_cooldown[AT_UAIR] = 3;
+				if (epinel_uair_jump_counter > 0) move_cooldown[AT_UAIR] = 5;
 				//if (window_timer == 1 && epinel_uair_jump_counter > 0) move_cooldown[AT_UAIR] = ceil(get_window_value(AT_UAIR, window, AG_WINDOW_LENGTH) * 1.5 + 2);
 				
 				//lock drifting, allow wall jump
-				if (window_timer < 12 && !has_hit ) { can_move = false; }
+				if (window_timer < 8 && !has_hit ) { can_move = false; }
 				if (vsp >= 0) { can_wall_jump = true; }
 			break;
 		}
@@ -471,7 +482,7 @@ switch (attack) { //open switch(attack)
 			
 			case 9:
 			//allow cancelling some of the endlag on hit.
-				if (window_timer >= 14) {
+				if (window_timer >= 13) {
 					can_wall_jump = true;
 					if (has_hit) { iasa_script(); can_fast_fall = true; }
 				}
@@ -568,7 +579,7 @@ switch (attack) { //open switch(attack)
 						//on the ground, allow only roll cancels, not parry cancels.
 						//if (sign(right_down - left_down) == sign(spr_dir)) 
 						//set_state( PS_ROLL_FORWARD );
-						set_attack(AT_FSPECIAL_2);
+						safely_set_attack(AT_FSPECIAL_2);
 						hurtboxID.sprite_index = get_attack_value(AT_FSPECIAL_2, AG_HURTBOX_SPRITE);
 						super_armor = false;
 						soft_armor = 0;
@@ -713,6 +724,8 @@ switch (attack) { //open switch(attack)
 					if (holding_dir == spr_dir) holding_dir *= 0.5;
 					hsp = holding_dir * 0.5;
 				}
+				//if in heavy state, transition to heavy state
+				else if (window == 10 && epinel_heavy_state > 0) transition_to_heavy_state_recovery_at_end_of_window();
 			break;
 		} //close switch(window)
 	break;
@@ -723,7 +736,7 @@ switch (attack) { //open switch(attack)
     		case 1:
     			can_move = false;
     			if (window_timer == 1  && !hitpause) {
-    				spawn_hit_fx(x + spr_dir * 24, y - 60, epinel_fx_warning);
+    				spawn_hit_fx(x + spr_dir * 24, y - 60, epinel_fx_warning).depth = depth - 1;
     				spawn_hit_fx(x, y-30, epinel_fx_inertia_small); 
     				sound_play(asset_get("sfx_blow_weak2"), 0, noone, 0.5, 1.2);
 					sound_play(sound_get("glass_bottle_edited_freesounds_dasebr"), 0, noone, 0.5, 1.5);
@@ -733,9 +746,10 @@ switch (attack) { //open switch(attack)
     			
     		break;
     		default:
-    			set_attack(AT_EXTRA_2);
+    			safely_set_attack(AT_EXTRA_2);
 				hurtboxID.sprite_index = get_attack_value(AT_FSPECIAL_2, AG_HURTBOX_SPRITE);
-				window_timer = 7;
+				//state_timer = 7;
+				//window_timer = 7;
     		break;
     	}
     break;
@@ -764,7 +778,7 @@ switch (attack) { //open switch(attack)
 				
 				//super_armor = 1;
 				soft_armor = 12;
-				//epinel_is_armored = 1;
+				epinel_is_armored = 1;
 				
 				if (window_timer == 1 && !hitpause) {
 					spawn_hit_fx( x, round(y - char_height / 2), epinel_fx_inertia_medium );
@@ -774,7 +788,7 @@ switch (attack) { //open switch(attack)
 				if (!free && down_down) {
 					var thiswindow = window;
 					var thiswindowtimer = window_timer;
-					set_attack(AT_FSPECIAL);
+					safely_set_attack(AT_FSPECIAL);
 					window = thiswindow;
 					window_timer = thiswindowtimer;
 					
@@ -802,7 +816,7 @@ switch (attack) { //open switch(attack)
 			case 3:
 				
 				soft_armor = 12;
-				//epinel_is_armored = 1;
+				epinel_is_armored = 1;
 				
 				
 				//allow wall-jumps during armor frames
@@ -958,7 +972,7 @@ switch (attack) { //open switch(attack)
 				//allow slow air drift
 				var holding_dir = right_down - left_down;
 				if (holding_dir == spr_dir) holding_dir *= 1.5;
-				hsp += (holding_dir) * 0.15;
+				hsp += (holding_dir) * 0.12;
 				//allow wall jumps
 				can_wall_jump = true;
 				//allow move cancels if this attack ricocheted off a platform
@@ -974,6 +988,10 @@ switch (attack) { //open switch(attack)
 				if (!free && window == 8 && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) - 4 && !was_parried) {
 					set_state(PS_LANDING_LAG);
 				}
+				//if in heavy state, speed up recovery
+				if (epinel_heavy_state > 0 && !hitpause && (window_timer mod 3) == 1) { vsp -= 0.1; window_timer++; }
+				//if in heavy state, transition to heavy state
+				//else if (window == 10) transition_to_heavy_state_recovery_at_end_of_window();
 			break;
 		} //close switch(window)
 
@@ -982,6 +1000,14 @@ switch (attack) { //open switch(attack)
 	
 	case AT_DSPECIAL:
 		old_jump = false; //make sure this move doesn't rise from a DJC
+		
+		//cancel this move if it is used in mid-air
+		if (free && window >= 3) {
+			safely_set_attack(AT_EXTRA_1);
+			vsp = min(vsp, -4);
+			break;
+		}
+		
 		switch (window) {
 			case 1:
 				if (window_timer == 1) {
@@ -1043,8 +1069,8 @@ switch (attack) { //open switch(attack)
 						dig.image_xscale = (1 + runeG / 3);
 					}
 					else {
-						//no room to spawn a platform here. if <not> already on a platform, just perform the attack.
-						if (epinel_other_standing_on_platform_id < 0 || !special_down) {
+						//no room to spawn a platform here. just perform the attack.
+						 {
 							epinel_charge_timer = -10;
 							window = 5;
 							window_timer = 0;
@@ -1057,9 +1083,7 @@ switch (attack) { //open switch(attack)
 				
 				
 				if (epinel_other_standing_on_platform_id > 0) {
-					//this move lasts indefinitely while on a platform.
-					window_timer = 2;
-					
+
 					//can be jump cancelled.
 					can_jump = true;
 					
@@ -1452,13 +1476,16 @@ switch (attack) { //open switch(attack)
 			case 6:
 				//if the special button is held: land on this platform.
 				
+				//replenish heavy state
+				if (window_timer == 1 && !hitpause) remove_heavy_state_if_currently_in_heavy_state();
+				
 				var tempvar_transition_to_ground_special = false;
 				//break the platform that epinel is on.
 				if (epinel_other_standing_on_platform_id != noone && instance_exists(epinel_other_standing_on_platform_id)) {
 				
 					if (special_down) {
 						//transition to the ground version of down-special.
-						set_attack(AT_DSPECIAL);
+						safely_set_attack(AT_DSPECIAL);
 						window = 1;
 						window_timer = 0;
 						epinel_charge_timer = -2;
@@ -1483,10 +1510,15 @@ switch (attack) { //open switch(attack)
 				
 				//return to window 3.
 				if (tempvar_transition_to_ground_special == false && window_timer >= get_window_value( AT_DSPECIAL_AIR, 6, AG_WINDOW_LENGTH )) {
-					window = 3;
-					window_timer = 2;
+					//window = 3;
+					//window_timer = 2;
 					//accelerate up a little before returning to this window.
 					vsp = -2;
+					attack_end();
+					set_state(PS_DOUBLE_JUMP);
+					state_timer = 15;
+					apply_short_aerial_cooldowns();
+					//safely_set_attack(AT_EXTRA_1);
 				}
 			break;
 			
@@ -1547,6 +1579,10 @@ switch (attack) { //open switch(attack)
 			
 			//11: hit player into epinel platform
 			case 11:
+			
+				//replenish heavy state
+				if (window_timer == 1 && !hitpause) remove_heavy_state_if_currently_in_heavy_state();
+				
 				//break the platform that epinel is on.
 				if (epinel_other_standing_on_platform_id != noone && instance_exists(epinel_other_standing_on_platform_id)) {
 					//increase the platform-hit-count if the platform has above -1 hp.
@@ -1658,6 +1694,11 @@ switch (attack) { //open switch(attack)
 				//crouch at the end of this window.
 				if (window_timer == 1 && !hitpause) {
 					scr_epinel_air_dspecial_create_impact_particles();
+					
+					//recover from heavy state
+					if (!free) {
+						remove_heavy_state_if_currently_in_heavy_state();
+					}
 				}
 				else if (window_timer >= get_window_value( AT_DSPECIAL_AIR, 14, AG_WINDOW_LENGTH )) {
 					attack_end();
@@ -1675,7 +1716,11 @@ switch (attack) { //open switch(attack)
 			case 15:
 				//add landing lag.
 				
-				if (window_timer == 1) {
+				if (window_timer == 1 && !hitpause) {
+					//if (!hitpause) {
+						
+						
+					//}
 					//don't meteor the oppoent if they escape or are released.
 					if (epinel_grab_connected == true && scr_epinel_grabbed_opponent_is_still_grabbed()) {
 						epinel_grabbed_player_object_id.old_vsp = -2;
@@ -1690,6 +1735,10 @@ switch (attack) { //open switch(attack)
 						sound_play(asset_get("sfx_blow_weak2"), 0, noone, 1, 1.2);
 						//sound_play(sound_get("glass_bottle_edited_freesounds_dasebr"), 0, noone, 0.5, 1.5);
 					}
+					old_hsp = hsp;
+					old_vsp = vsp;
+					hitpause = true;
+					hitstop = 2;
 				}
 				//mercy rule: prevent falling into the bottom blast zone.
 				if (vsp > 0 && y > room_height + 90) {
@@ -2055,7 +2104,11 @@ switch (attack) { //open switch(attack)
 			case 1:
 				//this attack can only be b-reversed on window 1 and 2. prevents b-reversing after the sweetspot hits.
 				trigger_b_reverse();
-				//invincible = true;
+				if (window_timer == 1) {
+					invincible = true;
+					invince_time = max(0, invince_time);
+				}
+				
 				if (hitpause || window_timer > 1) break;
 					
 				if (epinel_nspecial_halt_vsp) {
@@ -2146,7 +2199,9 @@ switch (attack) { //open switch(attack)
 			//continue
 			case 5:
 			case 8:
-				if (hitpause || epinel_grabbed_player_object_id == noone) { break; }
+				if (hitpause) {break; }
+				if (window_timer == 1 && (window == 5 || window == 8)) { vsp = 0; hsp = spr_dir * (5 - (window == 8)); break; }
+				if (epinel_grabbed_player_object_id == noone) { break; }
 				if (!instance_exists(epinel_grabbed_player_object_id)) { epinel_grabbed_player_object_id = noone; break; }
 				var tempvar_targetx = epinel_grabbed_player_object_id.x + epinel_grabbed_player_x_offset * (window != 7);
 				var tempvar_targety = y; //2nd hit does not follow into the air if on the ground
@@ -2169,6 +2224,10 @@ switch (attack) { //open switch(attack)
 		iasa_script();
 		can_jump = true;
 		can_wall_jump = true;
+		//land cancel.
+		if (!free && window_timer > 1) {
+			set_state(PS_LAND);
+		} 
 	break;
 	
 	case AT_JAB:
@@ -2282,6 +2341,7 @@ switch (attack) { //open switch(attack)
 		
 		switch (window) {
 			case 1:
+				if (window_timer == 1 && !hitpause) state_timer = 1;
 				epinel_charge_timer = 1;
 			break;
 			case 3:
@@ -2362,7 +2422,7 @@ switch (attack) { //open switch(attack)
 				if (window_timer >= get_window_value( attack, window, AG_WINDOW_LENGTH) - 1) {
 					set_state(PS_IDLE);
 				}
-				else if (window_timer >= 7) {
+				else if (window_timer >= 10) {
 					can_attack = true;
 					can_special = true;
 					can_ustrong = true;
@@ -2375,19 +2435,12 @@ switch (attack) { //open switch(attack)
 	break;
 	
 	case AT_EXTRA_3:
+		if (window == 2) {
+			attack_end(); set_state(PS_CROUCH); state_timer = 10; break;
+		}
 		if (window != 1 || window_timer != 1 || hitpause) break;
 		
-		sound_play(sound_get("releaseland"), 0, noone, 0.4);
-		
-		for (var i = 1; i <= 3; i++;) { 
-			var newpebble = instance_create(x + spr_dir * 12, y, "obj_article1");
-			newpebble.state = 100;
-			newpebble.random_index = i;
-			newpebble.vsp -= 2;
-			spawn_hit_fx(x, y+16, epinel_fx_parry).depth = depth + 1;
-			spawn_hit_fx(x, y+16, epinel_fx_parry_front).depth = depth - 1;
-		}
-		
+		heavy_state_recovery_effect();
 
 	break;
 }
@@ -2483,15 +2536,17 @@ if (found_plat != noone) {
 		epinel_platform_ricochet = true;
 		
 		var launch_angle = 55 - ((right_down - left_down) * spr_dir * 10);
-		old_hsp = lengthdir_x(13, launch_angle) * spr_dir;
-		old_vsp = lengthdir_y(13, launch_angle);
+		old_hsp = lengthdir_x(9, launch_angle) * spr_dir;
+		old_vsp = lengthdir_y(9, launch_angle);
 		//old_hsp = (spr_dir * 8) + 6 * (right_down - left_down);
 		//old_vsp = -9;
 		hsp = 0;
 		vsp = 0;
 		
-		hitstop = 2;
+		hitstop = 3;
 		hitpause = true;
+		
+		apply_short_aerial_cooldowns();
 		
 		//restore double-jump
 		//djumps = 0;
@@ -2590,7 +2645,9 @@ epinel_buffered_standing_on_platform_id = found_plat;
 //transition to the ground version of down-special.
 set_attack_value(AT_DSPECIAL, AG_CATEGORY, 1);
 var prev_window_timer = window_timer;
-set_attack(AT_DSPECIAL);
+safely_set_attack(AT_DSPECIAL);
+hsp = 0;
+free = false;
 //window = 1;
 window_timer = prev_window_timer;
 epinel_charge_timer = -2;
@@ -2602,4 +2659,47 @@ return;
 
 #define scr_epinel_is_below_bottom_of_screen
 return (y > room_height + 60);
-							  
+
+#define safely_set_attack
+destroy_hitboxes();
+attack_end();
+set_attack(argument0);
+hurtboxID.sprite_index = get_attack_value(argument0, AG_HURTBOX_SPRITE);
+return;
+#define transition_to_heavy_state_recovery_at_end_of_window
+if (epinel_heavy_state > 0 && window_timer - 1 == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause) {
+	safely_set_attack(AT_EXTRA_3);
+} 
+return;
+
+#define heavy_state_recovery_effect
+		
+sound_play(sound_get("releaseland"), 0, noone, 0.4);
+
+for (var i = 1; i <= 3; i++;) { 
+	var newpebble = instance_create(x + spr_dir * 12, y, "obj_article1");
+	newpebble.state = 100;
+	newpebble.random_index = i;
+	newpebble.vsp -= 2;
+}
+
+spawn_hit_fx(x, y+16, epinel_fx_parry).depth = depth + 1;
+spawn_hit_fx(x, y+16, epinel_fx_parry_front).depth = depth - 1;
+return;
+
+#define remove_heavy_state_if_currently_in_heavy_state
+if (epinel_heavy_state == 0) return;
+epinel_heavy_state = 0;
+heavy_state_recovery_effect();
+return;
+
+#define apply_short_aerial_cooldowns 
+move_cooldown[AT_NAIR]     = 3;
+move_cooldown[AT_FAIR]     = 3;
+move_cooldown[AT_BAIR]     = 3;
+move_cooldown[AT_DAIR]     = 3;
+move_cooldown[AT_UAIR]     = 3;
+move_cooldown[AT_NSPECIAL] = 3;
+move_cooldown[AT_FSPECIAL] = 3;
+move_cooldown[AT_DSPECIAL] = 3;
+return;

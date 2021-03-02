@@ -14,13 +14,11 @@ if (free)
 	
 	if (epinel_heavy_state > 0) {
 		max_fall = 12;
-		air_friction = .05;
 		
 		if (epinel_heavy_state > 1) move_cooldown[AT_USPECIAL] = max(move_cooldown[AT_USPECIAL], 2);
 	}
 	else {
 		max_fall = 10.5;
-		air_friction = .04;
 	}
 	
 	image_alpha = c_gray;
@@ -87,7 +85,6 @@ if (free)
 }
 else //if not free
 {
-
     //increase dash speed over time.
     switch (state) {
     	case PS_DASH:
@@ -108,11 +105,13 @@ else //if not free
     	
     	case PS_LAND:
     	case PS_LANDING_LAG:
-			if (state_timer > 1 && epinel_other_standing_on_platform_id != noone) {
+			if (state_timer > 2 && epinel_other_standing_on_platform_id != noone) {
 				set_state(PS_IDLE);
 				spawn_hit_fx(x, y, epinel_fx_inertia_small).depth = depth - 1;
 			}
-			else if (epinel_heavy_state > 0) {
+		case PS_HITSTUN_LAND:
+		case PS_PRATLAND:
+			if (epinel_heavy_state > 0) {
 				set_attack(AT_EXTRA_3);
 				//spawn_hit_fx(x, y, epinel_fx_absorb).depth = depth + 1;
 			}
@@ -132,9 +131,13 @@ else //if not free
 			}
 		
     	case PS_WAVELAND:
-    		if (state_timer == 1 && epinel_other_standing_on_platform_id != noone && instance_exists(epinel_other_standing_on_platform_id) ) {
-				hsp *= 1.05; //+= sign(hsp);
+    		if (state_timer == 2 && epinel_other_standing_on_platform_id != noone && instance_exists(epinel_other_standing_on_platform_id) ) {
+				//hsp *= 1.05; //+= sign(hsp);
 				epinel_other_standing_on_platform_id.hsp = clamp(epinel_other_standing_on_platform_id.hsp + sign(hsp), -epinel_other_standing_on_platform_id.top_speed, epinel_other_standing_on_platform_id.top_speed);
+    			if (sign(epinel_other_standing_on_platform_id.hsp) != sign(hsp) || abs(epinel_other_standing_on_platform_id.hsp) < 4) {
+    				epinel_other_standing_on_platform_id.hsp = sign(hsp) * 4;
+    				//epinel_other_standing_on_platform_id.friction_poll = 4;
+    			}
     			spawn_hit_fx(x, y, epinel_fx_inertia_small).depth = depth - 1;
     		}
     		else if (epinel_heavy_state > 0) {
@@ -165,7 +168,10 @@ else //if not free
 	if (/*epinel_uair_jump_counter > 0 &&*/ state_cat != SC_AIR_COMMITTED && (state != PS_ATTACK_GROUND || attack != AT_USPECIAL)) { 
 		epinel_uair_jump_counter = 0; epinel_consecutive_uair_jumps = 0; epinel_consecutive_dair_jumps = 0; epinel_nspecial_halt_vsp = true; 
 		move_cooldown[AT_USPECIAL] = 0;
-		epinel_heavy_state = 0;
+		if (is_epinel_performing_a_move_that_maintains_heavy_state()) {
+			epinel_heavy_state = min(epinel_heavy_state, 1);
+		}
+		else epinel_heavy_state = 0;
 		
 	}
 	
@@ -241,6 +247,7 @@ if (epinel_is_armored) {
 		
 		if (restore) {
 			//not even bypassing superarmor can stop epinel's superarmor.
+			//print("fspecial restored")
 			state = PS_ATTACK_GROUND;
 			x = epinel_fspecial_move_restore_x;
 			y = epinel_fspecial_move_restore_y;
@@ -259,6 +266,17 @@ else if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack != AT_F
 }
 
 
+
+#define is_epinel_performing_a_move_that_maintains_heavy_state
+if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) return false;
+switch (attack) {
+	case AT_FSPECIAL:
+	case AT_FSPECIAL_AIR:
+	case AT_DSPECIAL_AIR:
+		return true;
+	default:
+		return false;
+}
 
 
 

@@ -22,105 +22,60 @@ if (attack == AT_NSPECIAL) && (window != 5 && window != 6){
     max_fall = 4;
 }
 
+if (attack == AT_NSPECIAL && window > 4){
+    iasa_script();
+}
+
 if (attack == AT_NSPECIAL) && (window = 5){
     air_max_speed = 5.5;
     max_fall = 11;
 }
 
 if (attack == AT_NSPECIAL && (window == 4 && window_timer = 2)){
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 6.75);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 7.5);
     set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -2.5);   
-    set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 60);
-    set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -50);
-    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, -0.6 * spr_dir);
 }
 
 if (attack == AT_NSPECIAL && (window == 1 || window == 2)){
     if (up_down && (!left_down && !right_down)){
-        set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecialup"))
-        set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 0);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -80);
         set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 0);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -14);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, -0.4);;
+        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -16);
     }
     
     if (up_down && right_down){
         spr_dir = 1;    
-        set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 60);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -50);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 7);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -14);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, -0.6);  
+        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 7.5);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -14.5);
     }
     
     if (up_down && left_down){
         spr_dir = -1;    
-        set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 60);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -50);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 7);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -14);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.6);  
+        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 7.5);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -14.5);
     }    
     
     if (right_down && (!up_down && !down_down)){
     spr_dir = 1;
-    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 6.75);
+    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 7.5);
     set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -4.25);   
-    set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 60);
-    set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -50);
-    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, -0.6);
     }   
 
     if (left_down && (!up_down && !down_down)){
     spr_dir = -1;
-    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 6.75);
+    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 7.5);
     set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -4.25);   
-    set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 60);
-    set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -50);
-    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.6);    
     }    
     
     if (joy_pad_idle = true){
-            set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 6.75);
+            set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 7.5);
     set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -4.25);   
-    set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 60);
-    set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -50);
-    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, -0.6);
     }  
     
-    if (get_hitbox_value( AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED ) = 0){
-     set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_shootupward"));
-    set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecialair_shootupward"));
-    }
-    
-    if (get_hitbox_value( AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED ) = 7){
-     set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_shootupright"));
-    set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecialair_shootupright"));
-    }
-    
-    if (get_hitbox_value( AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED ) = 6.75){
-     set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
-    set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecialair"));
     }    
 
-    
-    
-}
-
-if (attack = AT_NSPECIAL && window = 4 && window_timer = 2){
-    
 
 
-if(spr_dir = 1){
-spawn_hit_fx( spikecoordx, spikecoordy, 144 );
-}
 
-if(spr_dir = -1){
-spawn_hit_fx( spikecoordx, spikecoordy, 144 );
-}
-
-}
 
 //FSPECIAL charge
 
@@ -530,5 +485,67 @@ if (has_rune("H")){
 }
 
 
+//Final Smash
+if (attack == 49){
+    can_fast_fall = false;
+    can_move = false;
+
+ 
+ if (window > 2){
+     hsp = 0;
+ }
+
+ if ((window = 1 || window = 2) && free = 0){
+     y = y - 1;
+ }
+
+ 
+if (window < 9){
+        initial_invince = 1;
+    with (oPlayer){
+        if (player != other.player){
+            hitpause = true;
+            hitstop = 1;
+            old_hsp = hsp;
+            old_vsp = vsp;
+
+        }
+    }
+}
+
+if (window > 2 && window < 9)
+    with (oPlayer){
+        if (player != other.player){
+        initial_invince = 1;
+        visible = false;
+        }
+}
+
+if (window = 9)
+    with (oPlayer){
+        if (player != other.player){
+        initial_invince = 0;
+        visible = true;
+        }
+}
 
 
+ 
+ 
+ if (window = 2 && window_timer = 18){
+     window = 9;
+ }
+
+ 
+if (window = 3){
+    sound_stop(sound_get("bonby_final_dash"))
+} 
+ 
+ 
+ if (window = 9 && window_timer = 1){
+    initial_invince = 0;
+ create_hitbox(49, 2, hit_player_obj.x, hit_player_obj.y);
+
+}
+
+}

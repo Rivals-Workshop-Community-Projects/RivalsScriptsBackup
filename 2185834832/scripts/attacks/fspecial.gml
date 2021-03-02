@@ -16,7 +16,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
 
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_CANCEL_TYPE, 2);
@@ -28,7 +28,7 @@ set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
 
-set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_CANCEL_TYPE, 2);

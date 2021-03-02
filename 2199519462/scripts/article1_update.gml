@@ -49,8 +49,8 @@ var h = 0;
 
 var m = 128
 if y > room_height+m or x < -m or x > room_width+m {
-	player_id.move_cooldown[AT_DSPECIAL] = 70;
-	player_id.move_cooldown[AT_DSPECIAL_AIR] = 70;
+	player_id.move_cooldown[AT_DSPECIAL] = 120;
+	player_id.move_cooldown[AT_DSPECIAL_AIR] = 120;
 instance_destroy();
 }
 if active && free {
@@ -89,6 +89,16 @@ with (asset_get("pHitBox")) {
 	}
 	if player_id == other.player_id && ((attack == AT_DAIR  && hbox_num > 1) or attack == AT_DTILT or (attack == AT_USTRONG && hbox_group == 1)) && place_meeting(x,y,other){
 		other.vsp = min(other.vsp, -kb_value*0.8);
+	}
+	if player_id == other.player_id && (attack == AT_FSTRONG or attack == AT_BAIR) && place_meeting(x,y,other){
+		with (other) {var aaa = get_hitbox_angle(other.id)};
+		other.vsp = lengthdir_y(kb_value*0.5, aaa);
+		other.hsp = lengthdir_x(kb_value*1.7, aaa);
+		if !other.free {
+			other.free = true;
+			other.active = 4;
+			with (other) sound_play(sound_get("boing"));
+		}
 	}
 }
 if player_id.url != "2009829905" && player_id.url != "2199519462" {

@@ -60,7 +60,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 2);
-set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 99999);
+set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_Y, -30);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 100);

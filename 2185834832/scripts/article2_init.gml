@@ -61,6 +61,9 @@ sprite[1] = sprite_get("bubbleBombDown");
 sprite[2] = sprite_get("bubbleBombBreak");
 
 bbExplode = hit_fx_create( sprite_get( "bubbleBombExplode" ), 18 );
+
+hitstun = -1
+got_hit_timer = -1
 /* README - Basic Article Usage
 
 

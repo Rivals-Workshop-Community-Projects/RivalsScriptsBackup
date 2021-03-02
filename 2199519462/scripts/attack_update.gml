@@ -271,6 +271,10 @@ if instance_exists(prox_ins[0]) p = 1;
 
 	prox_ins[p] = instance_create(x+40*spr_dir,y,"obj_article1")
 	/*if use_effect*/ prox_ins[p].effect = effect;
+					  if self_effect {
+					  prox_ins[p].effect = self_effect;
+					  self_effect = 0;
+					  }
 			var h = spawn_hit_fx(prox_ins[p].x, prox_ins[p].y - 26, hfx[8+prox_ins[p].effect]);	
 			h.depth = depth-3;
 	user_event(0)
@@ -308,11 +312,6 @@ if attack == AT_DSPECIAL_AIR && window_timer == 1 && get_window_value(attack,win
 }
 */
 
-if can_bake {
-	bake_time = 0;
-	sound_play(asset_get("sfx_upbcharge"), 0, noone, 1, 1.2)
-	
-}
 
 if attack == AT_FSPECIAL {
 if window >= 3 	{	move_cooldown[AT_FSPECIAL] = max(move_cooldown[AT_FSPECIAL],35);
@@ -524,8 +523,20 @@ if window >= 3 		move_cooldown[AT_FSPECIAL] = 25;
 	}
 }*/
 if attack == AT_DATTACK {
+	if window == 1 {
+		clear_button_buffer(PC_ATTACK_PRESSED);
+	}
 	if window == 2 {
-
+		
+		if window_attack_pressed {
+			attack_end(attack);
+			set_attack(AT_FSPECIAL_2);
+			hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+			with (asset_get("pHitBox")) {
+				if player_id == other.id && attack == AT_DATTACK length = 0;
+			}
+		}
+		
 		soft_armor = 4+(abs(hsp)*0.1);
 		if abs(hsp) < 2 && !hitpause && window_timer > 4{window++ window_timer = 0;
 			with (asset_get("pHitBox")) {
@@ -551,8 +562,8 @@ if attack == AT_USPECIAL {
 
 
 	if window <= get_attack_value(attack, AG_STRONG_CHARGE_WINDOW) {
-		vsp *= 0.5
-		hsp *= 0.7
+		vsp *= 0.8
+		hsp *= 0.8
 	} else {
 		recolor = true;
 	}
@@ -576,7 +587,7 @@ if attack == AT_USPECIAL {
 		var h = spawn_hit_fx(x,y,hfx[17]);
 		h.depth = depth-3;
 
-		var d = max(6 + (strong_charge/60)*9, 8)
+		var d = max(10 + (strong_charge/60)*9, 8)
 		var a = 80;
 		switch((((left_pressed or left_down) && spr_dir == -1) || ((right_pressed or right_down) && spr_dir == 1)) - (((left_pressed or left_down) && spr_dir == 1) || ((right_pressed or right_down) && spr_dir == -1))) {
 			//Angling
@@ -717,6 +728,10 @@ if bake_mode && !strong_charging_noise && (smash_charging or (window == get_atta
 
 if bake_strong && window = get_attack_value(attack, AG_STRONG_CHARGE_WINDOW)+1 {
 	strong_charge = overcharge;
+}
+
+if bake_strong == 0 && smash_charging {
+	bake_time = min(bake_time+3, bake_max);
 }
 
 

@@ -1,4 +1,4 @@
-
+small_sprites = true;
 
 hurtbox_spr = sprite_get("hurtbox_hurt");
 crouchbox_spr = sprite_get("crouchbox_hurt");
@@ -53,8 +53,9 @@ blep = 0;
 hap = 0;
 
 
-bake_max = 420 - (has_rune("L"))*120;
+bake_max = 420*2 - (has_rune("L"))*120;
 bake_time = -1;
+old_bake_time = -1;
 bake_reset = 270;
 bake_armor = 30;
 bake_mode = 0;

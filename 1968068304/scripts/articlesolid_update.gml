@@ -36,7 +36,7 @@ with (oPlayer) {
 					
 					//if this character is epinel, accelerate the platform in some direction.
 					if (other.epinel_other_is_epinel) {
-						var relative_spd = other.hsp - hsp;
+						var relative_spd = (other.hsp * 1.5) - hsp;
 						hsp += clamp(floor(sqrt(abs(relative_spd))) * sign(relative_spd), -3, 3);
 					}
 				}
@@ -62,7 +62,6 @@ with (oPlayer) {
 		if (instance_exists(epinel_other_standing_on_platform_id)) {
 			with (epinel_other_standing_on_platform_id) {
 				if (x > 250 && x <= room_width - 250) break;
-				draw_glow += 2;
 				if (hp > 4) {
 					hp -= 1;
 				}

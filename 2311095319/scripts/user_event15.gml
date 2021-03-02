@@ -293,7 +293,7 @@ pho_has_agentn_cdc = 1; // Agent N's codec
 
 // Stage cosmetics
 pho_has_drac_codec = 0;	// Dialogue for the Dracula boss fight
-pho_has_miivs_post = 0;	// Posts for the Miiverse stage
+pho_has_miivs_post = 1;	// Posts for the Miiverse stage
 pho_has_dede_title = 1;	// Title for the Mt Dedede Stadium stage
 pho_has_soul_title = 0; // Text for the Soulbound Conflict stage
 pho_has_been_found = 0; // Death sprite for the Trial Grounds stage
@@ -558,6 +558,18 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	
+	initPatch("1.10", "Febuary 28, 2021");
+	initPatchWords("General
+	~ Added Miiverse posts.
+	~ Adjusted Jumpman color to better match the Classic Suit from Super Mario Odyssey.
+	~ Adjusted Taunt animation.");
+	initPatchWords("Jab (Right Punch, Left Punch, Kick)
+	+ Jab 2 Hitbox size increased.");
+	initPatchWords("Neutral Air (Mario Kick)
+	~ Fixed up the pillow shading on the hands.");
+	initPatchWords("Forward Strong 2 (Firebrand)
+	~ Adjusted animation to keep in line with the rest of Mario’s animations.");
 	
 	initPatch("1.9", "Febuary 15, 2021");
 	initPatchWords("General
@@ -1267,8 +1279,8 @@ if pho_has_drac_codec{
 
 if pho_has_miivs_post{
 	
-	sprite_change_offset("miiverse_post", 60, 30);
-	miiverse_post = sprite_get("miiverse_post");
+	sprite_change_offset("miiverse", 60, 30);
+	miiverse_post = sprite_get("miiverse");
 	
 }
 

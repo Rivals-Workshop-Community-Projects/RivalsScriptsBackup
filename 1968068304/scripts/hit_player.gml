@@ -72,16 +72,17 @@ switch (my_hitboxID.attack) {
 	
 	case AT_DAIR:
 		//on the first hit, slightly influence the opponent's hsp so that it connects into the second hit easier.
-		if (my_hitboxID.hbox_num <= 6) {
+		if (my_hitboxID.hbox_num <= 6 && hit_player_obj.state == PS_HITSTUN ) {
 			hit_player_obj.old_hsp += clamp(old_hsp / 2, -3, 3); 
 		}
 	break;
 	
 	case AT_DSTRONG:
+		if (hit_player_obj.state_cat != SC_HITSTUN) break;
 		//drag the hit player with epinel.
-		if (my_hitboxID.hbox_num <= 6) {
-			hit_player_obj.old_hsp += old_hsp;
-			hit_player_obj.old_hsp = min(-0.01, hit_player_obj.old_hsp);
+		if (my_hitboxID.hbox_num <= 4) {
+			//hit_player_obj.old_hsp += old_hsp;
+			//hit_player_obj.old_hsp = min(-0.01, hit_player_obj.old_hsp);
 			if (instance_exists(epinel_other_standing_on_platform_id) ) {
 				hit_player_obj.old_hsp += epinel_other_standing_on_platform_id.hsp * 1.25;
 				//add platform hitstop
@@ -91,9 +92,20 @@ switch (my_hitboxID.attack) {
 				}
 			}
 		}
+		//push the player away from epinel's center
+		if (my_hitboxID.hbox_num <= 1 || my_hitboxID.hbox_num >= 5) break;
+		var player_x_distance = hit_player_obj.x - x;
+		if (abs(player_x_distance) > 32) break;
+		var push_distance = ceil(min(6, abs(player_x_distance))) * sign(player_x_distance);
+		with (hit_player_obj) {
+			if (!place_meeting(x + push_distance, y, asset_get("par_block"))) {
+				x += push_distance;
+			}
+		}
+			
 	break;
 	
-	case AT_DAIR:
+	case AT_DTILT:
 		//drag the hit player with epinel.
 		if (my_hitboxID.hbox_num <= 1) {
 			hit_player_obj.old_hsp += old_hsp;
@@ -140,6 +152,7 @@ switch (my_hitboxID.attack) {
 				if (is_standing_on_platform) {
 					with (epinel_other_standing_on_platform_id) {
 						crumble = max(crumble, 1.9);
+						hsp = 0;
 					}
 				}
 				
@@ -156,8 +169,11 @@ switch (my_hitboxID.attack) {
 							hp = min(hp, 0);
 							break_when_not_stood_on = true;
 						}
-						hit_player_obj.should_make_shockwave = false;
+						//hit_player_obj.should_make_shockwave = false;
 					 }
+				}
+				else {
+					hit_player_obj.should_make_shockwave = false;
 				}
 				
 			}
@@ -228,7 +244,7 @@ switch (my_hitboxID.attack) {
 	case AT_UTILT:
 		//rise on hit. scale with opponent launch height.
 		if (old_vsp > -4.5) old_hsp *= 0.9;
-		old_vsp = min(old_vsp, -4.5 + (hit_player_obj.old_vsp / 2)); //-9.5
+		old_vsp = min(old_vsp, -4.5 + (hit_player_obj.old_vsp / 1.5)); //-9.5
 		old_vsp = clamp(old_vsp, -15, -6.5);
 		
 	break;

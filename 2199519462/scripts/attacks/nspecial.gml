@@ -9,7 +9,7 @@ set_attack_value(AT_NSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("nspecial_air_hu
 set_attack_value(AT_NSPECIAL, AG_STRONG_CHARGE_WINDOW, 2);
 
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 22);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_bubblepop"));
@@ -23,7 +23,7 @@ set_window_value(AT_NSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_crunch_water"));
 
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_TYPE, 101);
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);

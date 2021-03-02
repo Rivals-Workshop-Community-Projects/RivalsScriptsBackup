@@ -37,8 +37,8 @@ if (free) {
 			if (move_cooldown[AT_NSPECIAL] <= 0) {
 				scr_epinel_reset_consecutive_move_counters_and_buffers(); 
 				//this move has first-frame invincibility
-				invincible = true;
-				invince_time = max(1, invince_time);
+				//invincible = true;
+				//invince_time = max(1, invince_time);
 			}
 		break;
 		
@@ -80,8 +80,8 @@ if (free) {
 else {
 	//nspecial has first-frame invincibility
 	if (attack == AT_NSPECIAL && move_cooldown[AT_NSPECIAL] <= 0) {
-		invincible = true;
-		invince_time = max(1, invince_time);
+		//invincible = true;
+		//invince_time = max(1, invince_time);
 	}
 	else if (attack == AT_TAUNT) {
 		if (up_down || up_stick_down) attack = AT_EXTRA_2;

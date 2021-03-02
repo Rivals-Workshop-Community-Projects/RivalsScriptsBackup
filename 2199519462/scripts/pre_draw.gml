@@ -1,4 +1,5 @@
-
+var Yy = image_yscale*(1+small_sprites);
+var Xx = spr_dir*(1+small_sprites);
 if bake_time > 0 { 
 	
 	
@@ -28,24 +29,24 @@ if bake_time > 0 {
 		
 		gpu_set_fog(1, col, -1000, 0)
 
-		draw_sprite_ext(sprite_index, image_index, x-ds, y, spr_dir, image_yscale, 0, c_black, abs(dcos(bake_time*amt)))
-		draw_sprite_ext(sprite_index, image_index, x+ds, y, spr_dir, image_yscale, 0, c_black,  abs(dcos(bake_time*amt)))
-		draw_sprite_ext(sprite_index, image_index, x, y-ds, spr_dir, image_yscale, 0, c_black,  abs(dcos(bake_time*amt)))
-		draw_sprite_ext(sprite_index, image_index, x, y+ds, spr_dir, image_yscale, 0, c_black,  abs(dcos(bake_time*amt)))
+		draw_sprite_ext(sprite_index, image_index, x-ds, y, Xx, Yy, 0, c_black, abs(dcos(bake_time*amt)))
+		draw_sprite_ext(sprite_index, image_index, x+ds, y, Xx, Yy, 0, c_black,  abs(dcos(bake_time*amt)))
+		draw_sprite_ext(sprite_index, image_index, x, y-ds, Xx, Yy, 0, c_black,  abs(dcos(bake_time*amt)))
+		draw_sprite_ext(sprite_index, image_index, x, y+ds, Xx, Yy, 0, c_black,  abs(dcos(bake_time*amt)))
 		
 		switch(self_effect) {
 			default: break;
 			case 4: 
-			draw_sprite_ext(sprite_index, image_index, x+(ds*spr_dir)+spr_dir*4, y, spr_dir, image_yscale, 0, c_black, abs(dcos(bake_time*amt)))
+			draw_sprite_ext(sprite_index, image_index, x+(ds*spr_dir)+spr_dir*4, y, Xx, Yy, 0, c_black, abs(dcos(bake_time*amt)))
 			break;
 			case 1: 
-			draw_sprite_ext(sprite_index, image_index, x, y-ds-4, spr_dir, image_yscale, 0, c_black, abs(dcos(bake_time*amt)))
+			draw_sprite_ext(sprite_index, image_index, x, y-ds-4, Xx, Yy, 0, c_black, abs(dcos(bake_time*amt)))
 			break;
 			case 2: 
-			draw_sprite_ext(sprite_index, image_index, x, y+ds+4, spr_dir, image_yscale, 0, c_black, abs(dcos(bake_time*amt)))
+			draw_sprite_ext(sprite_index, image_index, x, y+ds+4, Xx, Yy, 0, c_black, abs(dcos(bake_time*amt)))
 			break;
 			case 3: 
-			draw_sprite_ext(sprite_index, image_index, x-(ds*spr_dir)-spr_dir*4, y, spr_dir, image_yscale, 0, c_black, abs(dcos(bake_time*amt)))
+			draw_sprite_ext(sprite_index, image_index, x-(ds*spr_dir)-spr_dir*4, y, Xx, Yy, 0, c_black, abs(dcos(bake_time*amt)))
 			break;
 		}
 		gpu_set_fog(0, c_orange, 0, 0)
@@ -53,14 +54,34 @@ if bake_time > 0 {
 		var amt = ease_linear(1, 0, bake_time-bake_max, bake_reset)
 		ds = 2
 		gpu_set_fog(1, c_orange, -1000, 0)
-		draw_sprite_ext(sprite_index, image_index, x-ds, y, spr_dir, image_yscale, 0, c_black, amt)
-		draw_sprite_ext(sprite_index, image_index, x+ds, y, spr_dir, image_yscale, 0, c_black,  amt)
-		draw_sprite_ext(sprite_index, image_index, x, y-ds, spr_dir, image_yscale, 0, c_black,  amt)
-		draw_sprite_ext(sprite_index, image_index, x, y+ds, spr_dir, image_yscale, 0, c_black,  amt)
+		draw_sprite_ext(sprite_index, image_index, x-ds, y, Xx, Yy, 0, c_black, amt)
+		draw_sprite_ext(sprite_index, image_index, x+ds, y, Xx, Yy, 0, c_black,  amt)
+		draw_sprite_ext(sprite_index, image_index, x, y-ds, Xx, Yy, 0, c_black,  amt)
+		draw_sprite_ext(sprite_index, image_index, x, y+ds, Xx, Yy, 0, c_black,  amt)
 		gpu_set_fog(0, c_orange, 0, 0)	
 	}
 }
 
+if bake_draw > 0 && bake_time >= 0 {
+var ring = sprite_get("fire_ring");
+var wid = sprite_get_width(ring);
+var hei = sprite_get_height(ring);
+var yyy = ease_sineInOut(0, hei, bake_time, bake_max);
+	draw_sprite_part(ring, 0, 0, hei-yyy, wid, yyy, x-wid/2, (y+hei/2)-floor(char_height/2)-yyy)
+}
+/*
+if bake_draw > 0 && bake_time >= 0 {
+	var drawdiv = 40;
+	var len = 60;
+	//print_debug("sup")
+	for (var i = 0; i <= (1-(bake_draw))*(drawdiv); i++) {
+		var angang = i*(180/drawdiv)-90
+		draw_sprite_ext(sprite_get("tinyfire"),(i/drawdiv)*32,x+lengthdir_x(len,angang),(y-char_height/2)+lengthdir_y(len,angang),1,1,angang-90,c_white,1)
+		angang = i*-(180/drawdiv)-90
+		draw_sprite_ext(sprite_get("tinyfire"),(i/drawdiv)*32,x+lengthdir_x(len,angang),(y-char_height/2)+lengthdir_y(len,angang),1,1,angang-90,c_white,1)
+	}
+}
+*/
 if bake_time >= -1 && (bake_color == 1 or self_effect) {
 
 bake_color = 0;

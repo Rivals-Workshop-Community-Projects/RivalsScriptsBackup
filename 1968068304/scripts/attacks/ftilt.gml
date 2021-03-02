@@ -96,9 +96,9 @@ set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 7);
 set_hitbox_value(AT_FTILT, 2, HG_HEIGHT, 7);
 set_hitbox_value(AT_FTILT, 2, HG_SHAPE, 0);
 //knockback
-set_hitbox_value(AT_FTILT, 2, HG_BASE_KNOCKBACK, 7.5); //6.4);
-set_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING, 0.5); 
-set_hitbox_value(AT_FTILT, 2, HG_ANGLE, 32.5);
+set_hitbox_value(AT_FTILT, 2, HG_BASE_KNOCKBACK, 6.5); 
+set_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING, 0.7); 
+set_hitbox_value(AT_FTILT, 2, HG_ANGLE, 35);
 //stun
 set_hitbox_value(AT_FTILT, 2, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_FTILT, 2, HG_HITPAUSE_SCALING, 0);

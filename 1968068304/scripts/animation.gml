@@ -59,7 +59,7 @@ switch (state){
 	
 	case PS_IDLE_AIR:
 		//sprite_index = sprite_get( "hover" );
-		if (move_cooldown[AT_USPECIAL] > 0) {
+		if (epinel_heavy_state > 0) {
 			sprite_index = sprite_get("pratfall");
 			break;
 		}

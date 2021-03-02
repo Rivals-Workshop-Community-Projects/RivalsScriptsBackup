@@ -14,6 +14,7 @@ fspecial_charge = 0;
 started_fspecial_charge = 0;
 max_fall = 11;
 fast_fall = 14; 
+sprite_change_offset("hurt", 48, 88);
 air_max_speed = 5.5;
 gravity_speed = .45;
 dspecialhitcount = 0;

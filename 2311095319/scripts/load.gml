@@ -103,4 +103,7 @@ sprite_change_offset("kirby_ability", 28, 42);
 //Otto Bobblehead
 sprite_change_offset("otto", 0, 2);
 
+//Miiverse
+sprite_change_offset("miiverse", 60, 30);
+
 set_victory_bg(sprite_get("victory_background"));

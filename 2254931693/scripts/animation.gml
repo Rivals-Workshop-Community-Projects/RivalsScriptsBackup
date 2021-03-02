@@ -7,6 +7,6 @@ switch (state){
     if (attack == AT_NAIR){
     image_index = 5;
 }
-    
+
     default: break;
 }

@@ -156,92 +156,98 @@ with (oPlayer) {
 		if (free) {
 			//then we're no longer on this platform.
 			//if this is epinel, add this platform to his buffer.
-			if (epinel_other_is_epinel && state != PS_FIRST_JUMP && prev_state != PS_JUMPSQUAT) {
-				epinel_buffered_standing_on_platform_id = epinel_other_standing_on_platform_id;
+			if (epinel_other_is_epinel) {
+				if (state != PS_FIRST_JUMP && prev_state != PS_JUMPSQUAT) {
+					epinel_buffered_standing_on_platform_id = epinel_other_standing_on_platform_id;
+				}
+				//give a hsp boost for jumping off this platform.
+				if ((state_cat == SC_AIR_NEUTRAL || (state == PS_ATTACK_AIR && attack != AT_DSPECIAL && attack != AT_DSPECIAL_AIR)) && state_timer < 1) hsp += other.hsp;// * 0.75;
 			}
 			epinel_other_standing_on_platform_id = noone;
-			//give a hsp boost for jumping off this platform.
-			if (state_cat == SC_AIR_NEUTRAL) hsp += other.hsp * 0.75;
+			
 			epinel_other_platform_collision_check_timer = 4;
 		}
 		
-		//this player's on the ground. double check that it's still above this platform.
-		//this is an expensive check, so only do this every few frames.
-		else if (epinel_other_platform_collision_check_timer <= 0) {
-			
-			var tempvar_this_player = id;
-			with (other) {
-				var still_on_platform = place_meeting(x, y-1, tempvar_this_player);
-				if (!still_on_platform) {
-					//we're not still on this platform. check all other epinel platforms to see if it's standing on one of those instead.
-					with (obj_article_platform) {
-					
-						//skip if not an epinel platform.
-						if (id == other.id || !instance_exists(player_id) || !player_id.epinel_other_is_epinel || hp < 0) { continue; }
+		
+		
+		else {
+			// double check that it's still above this platform. this is an expensive check, so only do this every few frames.
+			if (epinel_other_platform_collision_check_timer <= 0) {
+				var tempvar_this_player = id;
+				with (other) {
+					var still_on_platform = place_meeting(x, y-1, tempvar_this_player);
+					if (!still_on_platform) {
+						//we're not still on this platform. check all other epinel platforms to see if it's standing on one of those instead.
+						with (obj_article_platform) {
 						
-						//if the player's on this platform, set that as their current platform.
-						if (tempvar_this_player.y == y && place_meeting(x, y-1, tempvar_this_player)) {
-							tempvar_this_player.epinel_other_standing_on_platform_id = id;
-							break;
+							//skip if not an epinel platform.
+							if (id == other.id || !instance_exists(player_id) || !player_id.epinel_other_is_epinel || hp < 0) { continue; }
+							
+							//if the player's on this platform, set that as their current platform.
+							if (tempvar_this_player.y == y && place_meeting(x, y-1, tempvar_this_player)) {
+								tempvar_this_player.epinel_other_standing_on_platform_id = id;
+								break;
+							}
 						}
 					}
 				}
+				//lastly, roll the timer back up.
+				epinel_other_platform_collision_check_timer = 4;
 			}
-			//lastly, roll the timer back up.
-			epinel_other_platform_collision_check_timer = 4;
-		}
-		else {
-			//count down the timer.
-			epinel_other_platform_collision_check_timer--;
+			else {
+				//count down the timer.
+				epinel_other_platform_collision_check_timer--;
+			}
 		}
 	} //end if 'while marked as standing on this platform'
 	
 	
 	//after all these checks: is this player an epinel? 
 	if (epinel_other_is_epinel) {
-		//allow epinel to surf on the platform if he is on top of it and crouching.
-		if (epinel_other_standing_on_platform_id == other.id && 
-				 (     
-					   //( state == PS_CROUCH && state_timer > 4 ) ||
-					( (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && window <= 5 && attack == AT_DSPECIAL  )
-				 )
-				&& hitstop <= 0 && other.hitstop == 0 && other.hitpause == false		
-		   ) {
-					
-			//nyoom fast if this is a low platform on-stage
-			//var stagex = get_stage_data( SD_X_POS );
-			//var stagey = get_stage_data( SD_Y_POS );
-			var freq = 3 - runeA;
-			//if (other.y > stagey - 90 && y < stagey && other.x > stagex && other.x <= room_width - stagex) { freq = 3; }
-			
-			if (state_timer mod freq == freq-1) {
-				other.hsp += spr_dir;//right_down - left_down;//player_id.spr_dir;
-				
-				with (other) {
-					hsp = clamp(hsp, -top_speed, top_speed);
-					draw_glow = min(100, draw_glow + 5);
-					if (hp > 9) hp -= 7 - other.runeA * 2;
-					else if (draw_hp == 1 && time_until_crumble > 3) time_until_crumble -= 3;
-					//halt friction upon reaching top speed
-					if (abs(hsp) == top_speed) {
-						friction_poll = 4;
-					}
-				}
-				
-				other.hsp = clamp(other.hsp, -other.top_speed, other.top_speed);
-				other.draw_glow = min(100, other.draw_glow + 5);
-				if (other.hp > 9) other.hp -= 7 - runeA * 2;
-				else if (other.draw_hp == 1 && other.time_until_crumble > 3) other.time_until_crumble -= 3;
-			}
-			else {
-				if (other.draw_glow < 50) other.draw_glow = min(50, other.draw_glow + 5);
-			}
-		}
 		
-		//lower Epinel's weight while he is under this platform.
-		else if (free && y > other.y && x >= other.x-75 && x < other.x+75) 
-		{
-			//epinel_lightweight_time = 4; //!
+		//allow epinel to surf on the platform if he is on top of it and crouching.
+		if (epinel_other_standing_on_platform_id == other.id) {
+			
+			//epinel is on this platform. disable the platform's friction at a certain threshold.
+			if (abs(other.hsp) <= 7) other.friction_poll = 4;
+			//make this platform glow.
+			if (other.draw_glow < 50) other.draw_glow = min(50, other.draw_glow + 5);
+			
+			if ( ( (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && window <= 5 && attack == AT_DSPECIAL  ) && hitstop <= 0 && other.hitstop == 0 && other.hitpause == false) 		
+		    {
+			
+
+				var freq = 3 - runeA;
+				
+				if (state_timer mod freq == freq-1) {
+					other.hsp += spr_dir;
+					
+					with (other) {
+						hsp = clamp(hsp, -top_speed, top_speed);
+						draw_glow = min(100, draw_glow + 5);
+						if (hp > 9) hp -= 7 - other.runeA * 2;
+						else if (draw_hp == 1 && time_until_crumble > 3) time_until_crumble -= 3;
+						//halt friction upon reaching top speed
+						if (abs(hsp) == top_speed) {
+							friction_poll = 4;
+						}
+					}
+					
+					other.hsp = clamp(other.hsp, -other.top_speed, other.top_speed);
+					other.draw_glow = min(100, other.draw_glow + 5);
+					if (other.hp > 9) other.hp -= 7 - runeA * 2;
+					else if (other.draw_hp == 1 && other.time_until_crumble > 3) other.time_until_crumble -= 3;
+				}
+				//else {
+				//	if (other.draw_glow < 50) other.draw_glow = min(50, other.draw_glow + 5);
+				//}
+			}
+			
+			//lower Epinel's weight while he is under this platform.
+			else if (free && y > other.y && x >= other.x-75 && x < other.x+75) 
+			{
+				//epinel_lightweight_time = 4; //!
+			}
 		}
 	}
 }
@@ -333,50 +339,59 @@ if (draw_hp <= 0 || hp <= 0) {
 		}
 		else sound_play(asset_get("sfx_kragg_roll_turn"));
 		
-		//put players who aren't Epinel into pratfall.
 		
 		with (oPlayer) {
 			//if this player == epinel, use him to spawn a fx (because platforms can't???) then continue
-			if (id == other.player_id) {
+			if (id != other.player_id) continue;
 				
-				var spacing = round(38 * image_xscale);
-				
-				
-				//spawn platforms don't have shards
-				if (other.break_when_not_stood_on == false) {
-				
-					//bullet hell platform rune
-					if (runeN) {
-						var shardangle = 0;
-						for(var i = 0; i < 360; i+= 72;) {
-							shardangle = i + random_func(i/72, 72, true);
-							var temph = lengthdir_x(10, shardangle);
-							var tempv = lengthdir_y(10, shardangle);
-							var newproj = create_hitbox( AT_DSPECIAL, 6, round(other.x + lengthdir_x(spacing, shardangle)), other.y + 10 );
-							newproj.hsp = lengthdir_x(10, i);
-							newproj.vsp = lengthdir_y(10, i);
-							newproj.length = 30;
-						}
+			var spacing = round(38 * image_xscale);
+			
+			//spawn platforms don't have shards
+			if (other.break_when_not_stood_on == false) {
+			
+				//bullet hell platform rune
+				if (runeN) {
+					var shardangle = 0;
+					for(var i = 0; i < 360; i+= 72;) {
+						shardangle = i + random_func(i/72, 72, true);
+						var temph = lengthdir_x(10, shardangle);
+						var tempv = lengthdir_y(10, shardangle);
+						var newproj = create_hitbox( AT_DSPECIAL, 6, round(other.x + lengthdir_x(spacing, shardangle)), other.y + 10 );
+						newproj.hsp = lengthdir_x(10, i);
+						newproj.vsp = lengthdir_y(10, i);
+						newproj.length = 30;
 					}
 				}
-			
-				if (other.hp <= -1 && other.break_when_not_stood_on == false) {
-					spawn_hit_fx( other.x, other.y, 155); //rock x-large
-					
-					tempvar_pillar_article = instance_create(other.x, 0, "obj_article3");
-					tempvar_pillar_article.player_id = id;
-					//tempvar_pillar_article.follow_object_id = id;
-					tempvar_pillar_article.lifetime *= other.pillar_lifetime_factor * (1 + runeN);//(1 + runeN);
-				}
-				else {
-					//spawn_hit_fx( other.x, other.y, 192); //rock large
-					spawn_hit_fx( other.x-spacing, other.y, 193).image_xscale = image_xscale;
-					spawn_hit_fx( other.x+spacing, other.y, 193).image_xscale = image_xscale;
-					spawn_hit_fx( other.x, other.y, 193).image_xscale = image_xscale;
-				}
-				
-				//continue; 
 			}
+		
+			if (other.hp <= -1 && other.break_when_not_stood_on == false) {
+				spawn_hit_fx( other.x, other.y, 155); //rock x-large
+				
+				tempvar_pillar_article = instance_create(other.x, 0, "obj_article3");
+				tempvar_pillar_article.player_id = id;
+				//tempvar_pillar_article.follow_object_id = id;
+				tempvar_pillar_article.lifetime *= other.pillar_lifetime_factor * (1 + runeN);//(1 + runeN);
+			}
+			else {
+				//spawn_hit_fx( other.x, other.y, 192); //rock large
+				spawn_hit_fx( other.x-spacing, other.y, 193).image_xscale = image_xscale;
+				spawn_hit_fx( other.x+spacing, other.y, 193).image_xscale = image_xscale;
+				spawn_hit_fx( other.x, other.y, 193).image_xscale = image_xscale;
+			}
+			
+			//finally, if using dash attack, transition to at_extra_1
+						//if this player is epinel performing dash attack, make him use at_extra_1 instead
+			if (epinel_other_is_epinel && state == PS_ATTACK_GROUND && attack == AT_DATTACK) {
+				attack_end();
+				set_attack(AT_EXTRA_1);
+				if (!place_meeting(x - 8 * spr_dir, y, asset_get("par_block"))) x -= 8 * spr_dir; 
+				if (!place_meeting(x, y + 8, asset_get("par_block"))) y += 8;
+				spr_dir = -spr_dir;
+				hurtboxID.sprite_index = get_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE);
+			}
+			
+			break;
+
 			
 		}
 		hp = -2;

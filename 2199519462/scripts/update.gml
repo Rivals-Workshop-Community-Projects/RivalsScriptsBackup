@@ -8,6 +8,17 @@
 			}
 */
 
+switch(state) {
+
+
+	case PS_ATTACK_GROUND:
+	if attack != AT_DAIR or window != 4 or window_timer != 1 break;
+
+	shake_camera(6, 3)
+	break;
+	
+}
+
 if state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR {
 recolor = 0;
 }
@@ -111,18 +122,18 @@ if state == PS_IDLE && state_timer == 1 && prev_state == PS_CROUCH {
 }
 
 
-if state_cat == SC_HITSTUN {
-	stun_cooldown = 5;
-} else stun_cooldown -= (stun_cooldown > 0)
-
 var oldbake = bake_time;
 if bake_time != -1 bake_time++;
+if state_cat == SC_HITSTUN && bake_time >= 0 && bake_time <= bake_max bake_time--;
 
 if (bake_time == -1 && has_rune("J")) bake_time++;
 if (bake_time >= 0 && !bake_mode && has_rune("L")) bake_time = min(bake_time+1, bake_max);
 
 if oldbake == -2 && bake_time = -1 refresh_alpha = 1;
 if bake_time >= 0 {
+	if old_bake_time < 0 {
+		sound_play(asset_get("sfx_absa_whip_charge"))
+	}
 	if bake_time >= bake_max + bake_reset {
 		bake_time = -bake_cooldown
 		spawn_hit_fx(x, y, hfx[2])
@@ -131,9 +142,9 @@ if bake_time >= 0 {
 	}
 	
 	bake_mode = (bake_time >= bake_max) + (bake_time >= bake_max+bake_armor)
-	super_armor = 0;
+
 	if bake_mode == 1 {
-		if !stun_cooldown && !(state == PS_PARRY && window == 1) super_armor = 1;
+//		if !stun_cooldown && !(state == PS_PARRY && window == 1) super_armor = 1;
 		var c = 0.5+(1-((bake_time-bake_max)/bake_reset))*0.5
 		outline_color = [219*c, 120*c, 0]
 		shadered = 1;
@@ -162,17 +173,16 @@ if bake_time >= 0 {
 			}
 			p++;
 		}
-	}
-	if bake_time >= bake_max && self_effect > 0 && !stun_cooldown && !hitpause {
-		sound_play(sound_get("sizzle"), 0, noone, 0.1, 1)
+	//	sound_play(sound_get("sizzle"), 0, noone, 0.1, 1)
 
-		attack_end(AT_NSPECIAL);
-		var b = create_hitbox(AT_NSPECIAL, self_effect, x, y);
+		//attack_end(AT_NSPECIAL);
+		//var b = create_hitbox(AT_NSPECIAL, self_effect, x, y);
 		spawn_hit_fx(x, y-40, hfx[8]);
 
 		self_effect = 0;
 
 	}
+
 	
 
 
@@ -182,6 +192,7 @@ if bake_time >= 0 {
 		spawn_hit_fx((bbox_left-mr)+random_func(0,(bbox_right-bbox_left)+mr*2, 1), (bbox_top-mr)+random_func(1,(bbox_bottom-bbox_top)+mr*2, 1), hfx[1])
 	}
 }
+
 
 		if refresh_alpha > 0 {
 		outline_color = [255*refresh_alpha, 255*refresh_alpha, 255*refresh_alpha]
@@ -320,11 +331,17 @@ bake_draw = 1-(bake_time/bake_max)
 else
 bake_draw = 0
 
-if bake_time >= 0 &&  bake_time < bake_max && bake_time mod 30 == 0 {
+if bake_time >= 0 &&  bake_time < bake_max && floor(bake_time/30) > floor(old_bake_time/30) {
 	var vol = 1;
 	if bake_max - bake_time > 90 vol = 0; //vol -= bake_time*0.006
 		sound_play(asset_get("sfx_ice_chain"), 0, noone, vol, 1.2 - (bake_time mod 60 == 0)*0.3 )
 }
+
+
+
+old_bake_time = bake_time;
+
+
 if trummelcodecneeded{
     trummelcodec = 17;
     trummelcodecmax = 11;

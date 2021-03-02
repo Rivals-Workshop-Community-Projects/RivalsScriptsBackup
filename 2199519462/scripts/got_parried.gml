@@ -13,6 +13,6 @@ outline_color = [0, 0, 0]
 init_shader();
 
 if my_hitboxID.attack == AT_FSPECIAL {
-	window = 10;
+	window = 9;
 	window_timer = 0;
 }

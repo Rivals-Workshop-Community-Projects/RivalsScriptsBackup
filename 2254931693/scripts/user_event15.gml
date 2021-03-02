@@ -488,7 +488,7 @@ with phone{
 	 */
 	 
 	initTip("U-Special");
-	initTipWords("USpecial spawns a frog. You can bounce on it or send your NSpecial projectile upward with it. Opponents will get stunned when they bounce on it.");
+	initTipWords("USpecial spawns a frog. You can land on it to bounce up and gain height, and all of your other Special moves can interact with it in some way. Opponents will get stunned when they bounce on it.");
 	initTipImage(player_id.spr_idle, -4, fa_left, 1, c_white, 0);
 	initTipImage(player_id.spr_uspecialfrog, -5, fa_right, 1, c_white, 0);
 	
@@ -501,9 +501,17 @@ with phone{
 	initTipImage(player_id.spr_fspecial, 7, fa_center, 1, c_white, 3);
 	
 	initTip("N-Special");
-	initTipWords("NSpecial lets you shoot a hard-hitting spike ball projectile. It bounces off opponents when it hits them, and you can hit it yourself to launch it around. However, opponents can hit it too, and when they do, you'll be able to take damage from it. Lastly, your frog will bounce it upward when it lands on it.");
+	initTipWords("NSpecial throws a hard-hitting ball projectile, and you can hold in different directions to change the angle you throw it at. Both you and your opponents are able to hit the ball to knock it around, and when it lands on your frog, it will bounce upward.");
 	initTipImage(player_id.spr_nspecial, -5, fa_left, 1, c_white, 0);
 	initTipImage(player_id.spr_nspecialproj, -3, fa_right, 1, c_white, 0);
+	
+	initTip("N-Air");
+	initTipWords("NAir is a multi-hit attack. If you keep the Attack button held down, you'll gain a small vertical boost during the last hit of the move.");
+	initTipImage(player_id.spr_nair, -3, fa_center, 1, c_white, 0);	
+	
+	initTip("D-Strong");
+	initTipWords("DStrong is a command grab, where you lift the opponent and slam them down to the ground in an explosive manner. You can move during this attack when you grab onto someone, and can even jump offstage. Keep in mind that you'll die before the opponent does if you pull this off.");
+	initTipImage(player_id.spr_dstrong, 11, fa_center, 1, c_white, 1);
 	
 	
 	
@@ -550,6 +558,16 @@ with phone{
 	 * put the version number and full date.
 	 */
 
+	initPatch("1.6.2", "February 28th, 2021");
+	initPatchWords("-Redrew landing, landing lag, and pratfall sprites
+	-Added uphurt sprite
+	-Reworked visuals and sounds for Neutral-Special
+	-Adjusted positioning and speed of Neutral-Special projectile
+	-Neutral-Special startup and endlag significantly reduced
+	-Neutral-Special can now be acted out of during the last 2 windows
+	-Added compatibility with Final Smash Buddy");
+	initPatchImage(other.spr_landinglag, 0, fa_right, -1, c_white, 0);	
+	
 	initPatch("1.6.1", "February 22nd, 2021");
 	initPatchWords("-Added proper landing lag to Forward-Special when used in air
 	-Forward-Special now transitions into idle state properly when used on ground

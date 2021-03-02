@@ -79,7 +79,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 80);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_X_OFFSET, 1 * spr_dir);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.95);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fireball"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("fireball"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .2);
@@ -90,6 +90,8 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("sfx_mario_fireball_hit"));
+
+//note to self other fireball stuffs is in tornado lmao 
 
 //Big Fireball
 set_hitbox_value(AT_NSPECIAL, 2, HG_PARENT_HITBOX, 0);

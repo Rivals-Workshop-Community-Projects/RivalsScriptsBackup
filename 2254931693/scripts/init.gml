@@ -129,7 +129,15 @@ fspecialboosteffect4 = hit_fx_create( sprite_get( "fspecialeffect" ), 36 );
 fspecialboosteffectmisfire = hit_fx_create( sprite_get( "fspecialmisfireeffect" ), 36 );
 fspecialchargeeffect = hit_fx_create( sprite_get("fspecialchargeeffect"), 85)
 
+gpu_set_blendmode(bm_add);
+nspecialtraileffect = hit_fx_create( sprite_get("bonbynspecialtrail"), 20)
+nspecialtraileffect2 = hit_fx_create( sprite_get("bonbynspecialtrail2"), 20)
+gpu_set_blendmode(bm_normal);
+
 fspecialhiteffect = hit_fx_create( sprite_get( "bonbyfspecialhiteffect" ), 36 );
+
+nspecialpopeffect = hit_fx_create( sprite_get( "bonbynspecialdespawn" ), 24 );
+nspecialpopsound = sound_get("bonby_nspecial_despawn");
 
 
 eyegleameffect = hit_fx_create( sprite_get( "eyegleam" ), 30 );
@@ -160,6 +168,13 @@ sprite_change_offset("gfzsignpost", 18, 41);
 kirbyability = 16;
 
 family = 0;
+
+fs_char_portrait_y = 98;
+fs_char_chosen_final_smash = "custom";
+fs_char_attack_index = 49;
+fs_ball_offset_x = -50;
+fs_ball_offset_y = -32;
+finalhitsprite = 0;
 
 
 user_event(14);

@@ -15,3 +15,8 @@ activated = 0;
 max_xscale = 1;
 collision_poll = 0;
 follow_object_id = noone;
+
+spawn_check = 0;
+
+
+		

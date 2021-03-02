@@ -25,6 +25,16 @@ if (my_hitboxID.type == 1 && (my_hitboxID.attack != AT_JAB || window >= 8) ) {
 		max_xscale *= 0.9;
 		image_xscale = max_xscale;
 	}
+	
+	//if epinel is standing on one of his platforms, slow that platform's movement speed.
+	if (!free && instance_exists(epinel_other_standing_on_platform_id)) {
+		with (epinel_other_standing_on_platform_id) {
+			hsp = clamp(hsp, -1, 1);
+		}
+	}
+	
+	//finally, reset epinel's heavy state
+	epinel_heavy_state = 0;
 }
 
 

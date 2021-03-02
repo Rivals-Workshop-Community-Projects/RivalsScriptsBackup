@@ -158,7 +158,7 @@ set_hitbox_value(AT_DATTACK, 3, HG_PRIORITY, 2);
 set_hitbox_value(AT_DATTACK, 3, HG_DAMAGE, 9);
 set_hitbox_value(AT_DATTACK, 3, HG_ANGLE, 85);
 set_hitbox_value(AT_DATTACK, 3, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_DATTACK, 3, HG_KNOCKBACK_SCALING, .85);
+set_hitbox_value(AT_DATTACK, 3, HG_KNOCKBACK_SCALING, .95);
 set_hitbox_value(AT_DATTACK, 3, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DATTACK, 3, HG_HITPAUSE_SCALING, 1.5);
 set_hitbox_value(AT_DATTACK, 3, HG_VISUAL_EFFECT, 192 ); //"rock large"
@@ -232,9 +232,9 @@ set_hitbox_value(AT_DATTACK, 6, HG_HITBOX_Y, -25);
 set_hitbox_value(AT_DATTACK, 6, HG_WIDTH, 66);
 set_hitbox_value(AT_DATTACK, 6, HG_HEIGHT, 70);
 set_hitbox_value(AT_DATTACK, 6, HG_PRIORITY, 5); //inertia
-set_hitbox_value(AT_DATTACK, 6, HG_DAMAGE, 11); //extra damage
+set_hitbox_value(AT_DATTACK, 6, HG_DAMAGE, 8); //extra damage
 set_hitbox_value(AT_DATTACK, 6, HG_ANGLE, 270); //meteor
-set_hitbox_value(AT_DATTACK, 6, HG_BASE_KNOCKBACK, 6.5);
+set_hitbox_value(AT_DATTACK, 6, HG_BASE_KNOCKBACK, 9.5);
 set_hitbox_value(AT_DATTACK, 6, HG_KNOCKBACK_SCALING, .75);
 set_hitbox_value(AT_DATTACK, 6, HG_BASE_HITPAUSE, 1); //low hitpause
 set_hitbox_value(AT_DATTACK, 6, HG_HITPAUSE_SCALING, 0); 

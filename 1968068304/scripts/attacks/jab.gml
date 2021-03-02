@@ -105,6 +105,7 @@ set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT_X_OFFSET, 24);
 set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_JAB, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_JAB, 1, HG_FORCE_FLINCH, 1);
+set_hitbox_value(AT_JAB, 1, HG_ANGLE_FLIPPER, 6);
 
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 2, HG_WINDOW, 5);

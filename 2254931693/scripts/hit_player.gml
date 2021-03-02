@@ -50,3 +50,8 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num = 1){
         sound_play(sound_get("dstrongexplosion"))
     }
 }
+
+if (my_hitboxID.attack == 49 && my_hitboxID.hbox_num = 1){
+    final_hitsprite = hit_player;
+    window = 3;
+}

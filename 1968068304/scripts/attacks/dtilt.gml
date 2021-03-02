@@ -26,7 +26,7 @@ set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_DTILT, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DTILT, 3, AG_WINDOW_SFX, asset_get("sfx_syl_ustrong_part1"));//("sfx_ice_nspecial_hit_ground"));//("sfx_swipe_weak2"));
-set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 4);
+set_window_value(AT_DTILT, 3, AG_WINDOW_SFX_FRAME, 4);
 
 //rising hit
 set_window_value(AT_DTILT, 4, AG_WINDOW_TYPE, 1);
@@ -78,7 +78,7 @@ set_hitbox_value(AT_DTILT, 1, HG_SHAPE, 0);
 //knockback
 set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, 0); 
-set_hitbox_value(AT_DTILT, 1, HG_ANGLE, 180); //launcher.
+set_hitbox_value(AT_DTILT, 1, HG_ANGLE, 90); //launcher.
 set_hitbox_value(AT_DTILT, 1, HG_ANGLE_FLIPPER, 9);
 //stun
 set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 4);
@@ -90,11 +90,11 @@ set_hitbox_value(AT_DTILT, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_DTILT, 1, HG_FORCE_FLINCH, 1); //forces flinch.
 set_hitbox_value(AT_DTILT, 1, HG_GROUNDEDNESS, 1); //only hits grounded targets
 set_hitbox_value(AT_DTILT, 1, HG_SDI_MULTIPLIER, 0.01);
+set_hitbox_value(AT_DTILT, 1, HG_TECHABLE, 2); //through platforms
 
 //effects
 set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_DTILT, 1, HG_EXTRA_CAMERA_SHAKE, 2);
-
 
 
 //aerial hitbox - low angle, low priority

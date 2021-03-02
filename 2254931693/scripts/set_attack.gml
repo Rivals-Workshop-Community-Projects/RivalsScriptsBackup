@@ -109,3 +109,11 @@ if(has_rune("H")){
     set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_COOLDOWN, 6);
     set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 8);
 }
+
+
+
+//FINAL SMASH
+
+
+
+

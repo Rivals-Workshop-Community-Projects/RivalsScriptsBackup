@@ -32,7 +32,7 @@ if (aurapt[5] && counterid.player <= 4)
 	{
 		shader_start();
 		var smallMult = small_sprites?2:1;
-		draw_sprite_ext(other.aurapt[7], other.aurapt[8], other.aurapt[0], other.aurapt[1]+floor(char_height/2), other.aurapt[9]*smallMult, smallMult, 0, c_white, 0.7);
+		draw_sprite_ext(other.aurapt[7], other.aurapt[8], other.aurapt[0], other.aurapt[1]+floor(char_height/2), other.aurapt[9]*smallMult, smallMult, 0, c_white, 0.4);
 		shader_end();
 	}
 }

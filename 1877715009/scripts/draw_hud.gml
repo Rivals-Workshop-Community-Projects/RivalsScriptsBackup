@@ -2083,6 +2083,35 @@ if ("yes" in self && yes)
 					nooflines = 10;
 					textwidth = 470;
 					break;
+				case 20:
+					text[0] = "Reworked UStrong (New Sprites by Regina Reforged!)";
+					text[1] = "Gave changed horizontal speed of DAttack for better DACUS with new UStrong";
+					text[2] = "";
+					text[3] = "UAir1 can now be hitfalled";
+					text[4] = "This is so that the Raindrop tech can be executed more easily";
+					text[5] = "";
+					text[6] = "FTilt ground friction 0.5 -> 0.4";
+					text[7] = "This is so that Wavedash FTilt can cover more distance";
+					text[8] = "";
+					text[9] = "Reworked NSpecial slightly (New Sprites by Regina Reforged!)";
+					text[10] = "Startup 10 -> 15";
+					text[11] = "NSpec1 Damage 2 -> 4";
+					text[12] = "NSpec2 Damage 6 -> 8";
+					text[13] = "NSpec3 Damage 9 -> 12";
+					text[14] = "NSpec1 Extra Hitpause 0 -> 8";
+					text[15] = "NSpec2 Extra Hitpause 0 -> 12";
+					text[16] = "NSpec3 Extra Hitpause 0 -> 20";
+					text[17] = "NSpec1-2 Chargetime 30 -> 20";
+					text[18] = "NSpec2-3 Chargetime 50 -> 40";
+					text[19] = "";
+					text[20] = "Clone Lifetime 4 seconds -> 2 seconds";
+					text[21] = "Clone Fakie transfer timer 120 frames -> 200 frames";
+					text[22] = "Clone Fakie transfer sprite opacity 0.7 -> 0.4";
+					text[23] = "";
+					text[24] = "Added dust particles to some attacks";
+					nooflines = 25;
+					textwidth = 600;
+					break;
 			}
 			break;
 	}

@@ -1,5 +1,6 @@
 var h = 0;
-
+var Yy = image_yscale*(1+small_sprites);
+var Xx = spr_dir*(1+small_sprites);
 /*
 if draw_indicator {
 if bake_time < -1 draw_sprite_ext(asset_get("mech_steambar_spr"), 0, x-32, y-char_height-hud_offset-30,2,2,0,c_black,1)
@@ -13,13 +14,13 @@ if bake_time > bake_max{
 
 		gpu_set_fog(1, c_orange, -1000, -1000)
 
-		draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, image_yscale, 0, c_white, -0.3+abs(dcos((bake_time-bake_max)*6))*0.8)
+		draw_sprite_ext(sprite_index, image_index, x, y, Xx, Yy, 0, c_white, -0.3+abs(dcos((bake_time-bake_max)*6))*0.8)
 		gpu_set_fog(0, c_orange, 0, 0)
 
 } else if bake_max-bake_time <= 90{
 		gpu_set_fog(1, c_orange, -1000, -1000)
 
-		draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, image_yscale, 0, c_white, (10-(bake_time mod 30))/10)
+		draw_sprite_ext(sprite_index, image_index, x, y, Xx, Yy, 0, c_white, (10-(bake_time mod 30))/10)
 		gpu_set_fog(0, c_orange, 0, 0)
 }
 
@@ -46,8 +47,8 @@ if attack == AT_NSPECIAL && window == 3 && !bake_strong{
 
 if attack == AT_DSTRONG && get_window_value(attack,window,AG_WINDOW_TYPE) == 9 {
 	if !h {shader_start(); h = 1}
-	draw_sprite_ext(sprite_get("dstrong_leggy_outline"), dstrong_frame+dstrong_dir, x, y, spr_dir, image_yscale, image_angle, make_color_rgb(outline_color[0],outline_color[1],outline_color[2]), 1)
-	draw_sprite_ext(sprite_get("dstrong_leggy"), dstrong_frame+dstrong_dir, x, y, spr_dir, image_yscale, image_angle, image_blend, 1)
+	draw_sprite_ext(sprite_get("dstrong_leggy_outline"), dstrong_frame+dstrong_dir, x, y, spr_dir*1+small_sprites, image_yscale*1+small_sprites, image_angle, make_color_rgb(outline_color[0],outline_color[1],outline_color[2]), 1)
+	draw_sprite_ext(sprite_get("dstrong_leggy"), dstrong_frame+dstrong_dir, x, y, spr_dir*1+small_sprites, image_yscale*1+small_sprites, image_angle, image_blend, 1)
 }
 
 if self_effect && self_effect_time mod 40 <= 20 {

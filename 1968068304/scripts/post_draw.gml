@@ -60,4 +60,5 @@ draw_debug_text(x, y-160, "prev_state: " + get_state_name(prev_state));
 draw_debug_text(x, y-180, "attack: " + string(attack));
 draw_debug_text(x, y-200, "hitpause: " + string(hitpause));
 draw_debug_text(x, y-220, "was_parried: " + string(was_parried));
+draw_debug_text(x, y-240, "is_armored: " + string(epinel_is_armored));
 */

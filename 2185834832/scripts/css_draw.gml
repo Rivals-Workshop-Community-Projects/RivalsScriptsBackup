@@ -15,17 +15,10 @@ if (alt_cur == 0) {
     }
 }
 
-if (alt_cur == 7) {
-    for(i = 0; i < 6; i++){
-		set_character_color_shading(i, 0);
-	}
-}
-
-
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-var num_alts = 9;
+var num_alts = 16;
 var alt_cur = get_player_color(player);
  
  
@@ -41,6 +34,13 @@ alt_name[5]  = "Sepia";
 alt_name[6]  = "Toxic";
 alt_name[7]  = "Comic";
 alt_name[8]  = "Virtual Boy";
+alt_name[9]  = "Torkoal";
+alt_name[10]  = "Squirtle";
+alt_name[11]  = "BLM";
+alt_name[12]  = "Naturist";
+alt_name[13]  = "Hiker";
+alt_name[14]  = "Mountain Climber";
+alt_name[15]  = "Developer";
  
  
  
