@@ -17,6 +17,7 @@ if "practice" in obj_stage_main && obj_stage_main.practice{
 			other.phone_user_id = self;
 			other.stage.phone_user_id = self;
 			obj_stage_main.phone_user_id = self;
+			if ("phone_lightweight" not in self) phone_lightweight = 0;
 			
 			with phone{
 				i = 0;

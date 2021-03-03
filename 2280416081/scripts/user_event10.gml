@@ -361,7 +361,7 @@ if phone_practice with phone{
 		}
 		
 		else{
-			image_index = 0;
+			// image_index = 0;
 		}
 		
 		state_timer++;

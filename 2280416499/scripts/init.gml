@@ -30,7 +30,7 @@ has_music_interrupted = false;
 
 
 
-firmware = 11;
+firmware = 12;
 
 death_timer = 0;
 death_timer_max = 120;
