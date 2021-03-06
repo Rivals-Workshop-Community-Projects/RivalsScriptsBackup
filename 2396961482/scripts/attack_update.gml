@@ -3,6 +3,9 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+
+
+
 switch (attack)
 {
     case AT_NSPECIAL:
@@ -18,7 +21,7 @@ switch (attack)
         if (window == 1)
         {
             hsp /= 1.2;
-            if (window_timer == 1) move_cooldown[AT_DAIR] = 70;
+            if (window_timer == 1) move_cooldown[AT_DAIR] = 40;
         }
         break;
 
@@ -62,10 +65,10 @@ switch (attack)
                     break;
                 case 3:
                     can_wall_jump = true;
-                    if (get_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE) == 0 && has_hit && is_special_pressed(DIR_UP))
+                    if (get_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE) == 0 && has_hit && special_pressed)
                     {
                         set_attack(AT_USPECIAL);
-                        window = 2;
+                        window = 4;
                     }
                     break;
             }
@@ -96,3 +99,7 @@ switch (attack)
             }
             break;
 }
+
+//jump cancel from fspecial jank
+if (attack == AT_FSPECIAL && has_hit_player && window == 2){
+    can_jump = true;}

@@ -112,6 +112,7 @@ ralsei_dair_ammo_regen_counter = 0;
 ralsei_dair_max_ammo = 25;
 ralsei_dair_ammo = ralsei_dair_max_ammo;
 ralsei_dair_consecutive_shots = 0;
+ralsei_dair_velocity = gravity_speed * (7 + has_rune("D"));
 
 ralsei_bair_bullet_hit_player_object_id = noone;
 ralsei_bair_mlg_counter = 0;
@@ -134,6 +135,7 @@ ralsei_draw_tp = ralsei_tp;
 ralsei_draw_time_since_last_hit = 30;
 ralsei_use_super_move = false;
 ralsei_super_move_cancelled = false;
+ralsei_tp_multiplier = 1 + has_rune("H");
 
 ralsei_courage = 0;
 ralsei_max_courage = 480; //8s
@@ -156,6 +158,7 @@ ralsei_default_shell_bounce_spr = sprite_get("bullet_shell");
 ralsei_default_shell_bounce_sound = sound_get("bullet_shell_by_anthousai_edited");
 
 ralsei_most_recent_ground_height = y;
+
 
 
 var col_r = ceil(get_color_profile_slot_r( get_player_color(player), 6) / 1.25);

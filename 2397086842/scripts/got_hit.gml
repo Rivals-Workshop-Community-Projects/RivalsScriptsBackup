@@ -1,6 +1,6 @@
 ///
 
-if move_cooldown[AT_TAUNT] == 0 && !soft_armor && !super_armor && enemy_hitboxID.damage >= 1{
+if move_cooldown[AT_TAUNT] == 0 && !soft_armor && !super_armor && enemy_hitboxID.damage >= 1 && voiced == 1{
            if random_func(1,4,true) == 0 {
          sound_play(sound_get("h1"),false,noone,0.4)  
     }

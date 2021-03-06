@@ -99,7 +99,7 @@ if state == PS_AIR_DODGE {
 }
 
 
-if state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD {
+if state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD {
 	y -= 10
 	set_state (PS_AIR_DODGE)
 	state_time = 0
@@ -138,10 +138,11 @@ with oPlayer if (activated_kill_effect) {
 
 if killwho != 0 && move_cooldown[AT_NSPECIAL_2] < 80 && !hitpause {
 	if killwho.state_cat != SC_HITSTUN {
-		
+			 killattack = -1
 		if killwho.visible = false {
 			sound_play(sound_get("clap"),false,noone,1)	
 			
+			if voiced == 1 {
 			if get_gameplay_time() % 4 == 0 {
 					sound_play(sound_get("DF"),false,noone,1)	
 			}
@@ -154,8 +155,8 @@ if killwho != 0 && move_cooldown[AT_NSPECIAL_2] < 80 && !hitpause {
 			if get_gameplay_time() % 4 == 3 {
 					sound_play(sound_get("RT"),false,noone,1)	
 			}
+			}
 		}
-		killattack = -1
 	}
 	
 	if killtimer == 1 {
@@ -300,9 +301,9 @@ if killwho != 0 && move_cooldown[AT_NSPECIAL_2] < 80 && !hitpause {
 
 
 if killattack == -1 {
-	killwho = 0
     killattack = 0
     killtimer = 0
+    killwho = 0
 }
 
 if move_cooldown[AT_NSPECIAL_2] > 80 && !hitstop {
@@ -353,4 +354,15 @@ if get_player_color(player) == 12 {
    	}
 	}
     init_shader();	 
+}
+
+
+if get_gameplay_time() <= 120 && voiced == 1 {
+
+
+	if taunt_down {
+		sound_play(asset_get("sfx_gem_collect"));
+		voiced = 0
+	}
+	
 }

@@ -1,6 +1,7 @@
 //update
 user_event(14);
 
+
 if (teleported == true){
 	hsp = (ease_quadOut( -1, 0, 0, 30 ) * spr_dir) + dsp_target.hsp
 	teleported = false
@@ -117,4 +118,10 @@ if(recharged == 0){
         recoverytimer = 0;
         recoverytick = 0;
     }
+}
+
+//Fspecial Cooldown resets when you touch the floor
+if(!free){
+	move_cooldown[AT_FSPECIAL] = 0;
+	move_cooldown[AT_FSPECIAL_2] = 0;
 }

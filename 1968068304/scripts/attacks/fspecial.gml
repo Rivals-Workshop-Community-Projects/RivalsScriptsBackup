@@ -13,11 +13,12 @@ set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_waveland_kra"));
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 6);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, sound_get("gravel_sweep_freesounds_jorickhoofd_169555_edited_CCBY30"));
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
 
 //first armor frame.
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_waveland_kra"));
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 2);
@@ -81,7 +82,7 @@ set_window_value(AT_FSPECIAL, 7, AG_WINDOW_VSPEED_TYPE, 1);
 
 //cooldown 1.
 set_window_value(AT_FSPECIAL, 8, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 8, AG_WINDOW_LENGTH, 12);//8
+set_window_value(AT_FSPECIAL, 8, AG_WINDOW_LENGTH, 13);//8
 set_window_value(AT_FSPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_FSPECIAL, 8, AG_WINDOW_CUSTOM_GRAVITY, 0);
@@ -124,7 +125,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 30);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -28);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 60);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 48);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 46);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 4);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 16);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);

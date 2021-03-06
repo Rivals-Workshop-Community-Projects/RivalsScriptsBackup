@@ -181,7 +181,7 @@ set_hitbox_value(AT_DATTACK, 7, HG_ANGLE, 80);
 set_hitbox_value(AT_DATTACK, 7, HG_SHAPE, 0);
 set_hitbox_value(AT_DATTACK, 7, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_DATTACK, 7, HG_KNOCKBACK_SCALING, 0.5);
-set_hitbox_value(AT_DATTACK, 7, HG_EXTRA_HITPAUSE, 0);
+set_hitbox_value(AT_DATTACK, 7, HG_EXTRA_HITPAUSE, 1);
 set_hitbox_value(AT_DATTACK, 7, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_DATTACK, 7, HG_VISUAL_EFFECT_X_OFFSET, 24);
 set_hitbox_value(AT_DATTACK, 7, HG_HIT_SFX, sound_get("counterhit"));

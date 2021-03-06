@@ -2,7 +2,6 @@
 // Used for gameplay mechanics
 // Runs every frame
 
-
 if (trailer_effect){
 	spawn_hit_fx(Box.x + 6, Box.y, hit_small1);
 	trailer_effect = false;
@@ -21,6 +20,24 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 else { 
 	if (!free){
 		usedUspecial_Again = 0;
+	}
+}
+
+if (tomoyai){
+	
+	if (yai_timer % bpm_steps == 0){
+		sound_play(sound_get("metro"));
+	}
+	
+	yai_timer++
+	
+	if (yai_timer == 192){
+		yai_timer = 0;
+	}
+	
+	if (attack == AT_EXTRA_3 && window == 2 && window_timer == 1){
+		yai_x = yai_timer * 3.31;
+		yai_shout_num += 1;
 	}
 }
 
@@ -275,6 +292,8 @@ if (create_moving){
 
 	}
 	
+	movingbox.hitfxowner = id;
+	
 	if (get_player_color(player) == 13){
 		movingbox.sprite_index = sprite_get("plushy_spin");
 	}
@@ -296,7 +315,7 @@ if (instance_exists(movingbox) && movingbox.destroy && movingbox.solid_timer == 
 		if (get_player_color(player) == 11){
 			Box.sprite_index = sprite_get("macka");
 		}
-		if (get_player_color(player) == 12 || get_player_color(player) == 10){
+		if (get_player_color(player) == 12 || get_player_color(player) == 10 || get_player_color(player) == 1){
 			Box.flag = false;
 		}		
 		if (movingbox.flag){		

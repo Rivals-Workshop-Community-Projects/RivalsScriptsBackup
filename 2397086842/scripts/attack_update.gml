@@ -254,7 +254,7 @@ if !hitpause {
                                       sound_play(asset_get("sfx_absa_whip3"),false,noone,1)
             }
             
-             if window_timer == 14 {
+             if window_timer == 14 && voiced == 1{
                  sound_play(sound_get("fspec"),false,noone,0.8)
              }
         }
@@ -280,7 +280,7 @@ if !hitpause {
             
             move_cooldown[AT_NSPECIAL] = 0
             
-                            create_hitbox(AT_DSPECIAL,11, x + 20 * spr_dir , y - 30)
+                            create_hitbox(AT_DSPECIAL,11, x + 10 * spr_dir , y - 36)
             if move_cooldown[AT_NSPECIAL] == 0 {
                sound_play(asset_get("sfx_clairen_tip_strong"),false,noone,1.2)
                sound_play(asset_get("sfx_absa_whip3"),false,noone,1.2)

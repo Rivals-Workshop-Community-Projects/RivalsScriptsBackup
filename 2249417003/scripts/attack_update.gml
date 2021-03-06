@@ -19,6 +19,8 @@ if (ralsei_courage > 0 && state_timer == 8) {
 	sound_play(sound_get("dr_wing_edit"));
 }  
 
+
+
 switch (attack) { //open switch(attack)
 	
 	case AT_JAB:
@@ -156,14 +158,27 @@ switch (attack) { //open switch(attack)
 					ralsei_dstrong_heal_amount = 12; //heal 12 hp 
 					ralsei_dstrong_player_heal_amount[player] = 10; //also heal ralsei himself
 					//empty super meter
-					
 					ralsei_tp = 0;
+					
+					//rune invincibility
+					if (has_rune("E")) invince_time = max(invince_time, 12);
 				}
 				else {
 					ralsei_dstrong_heal_amount = 1 + round(strong_charge / 20); //heal 0-3 hp depending on charge time
+					
+					if (has_rune("E")) {
+						//self-heal
+						var self_heal_amount = floor(min(ralsei_dstrong_heal_amount, ralsei_tp / 5));
+						ralsei_dstrong_player_heal_amount[player] = self_heal_amount;
+						ralsei_tp -= self_heal_amount * 5;
+						//rune invincibility
+						if (self_heal_amount > 0) invince_time = max(invince_time, 12);
+					}
 				}
+
 			}
 		case 4:
+
 		case 5:
 			if (was_parried && window == 5 && window_timer < 10) window_timer = 10;
 			var frame_check = 3 - ralsei_use_super_move - was_parried;
@@ -203,21 +218,21 @@ switch (attack) { //open switch(attack)
 	break;
 	
 	case AT_DTILT:
-		if (window == 2 && window_timer == 1) {
+		if (window == 2 && window_timer == 1 && !was_parried) {
 
-			var mine_already_exists = 0
+			var mine_counter = 0
 			with (obj_article1) {
 				if (player_id != other || article_index != 2) continue;
-				if (state < 3) { state = 4; state_timer = 0; image_alpha = 0.6; }
-				mine_already_exists = 1;
-				break;
+				mine_counter++;
+				//if (mine_counter <= (has_rune("A") * 4)) continue;
+				//if (state < 3) { state = 5; state_timer = 0; image_alpha = 0.6; }
 			}
-			//if (!mine_already_exists) {
+			if (mine_counter <= (has_rune("A") * 4)) {
 				var new_mine = instance_create(x + 10 * spr_dir, y - 12, "obj_article1");
 				new_mine.article_index = 2;
 				new_mine.spr_dir = spr_dir;
 				new_mine.depth = depth-1;
-			//}
+			}
 		}
 		if (window > 2) move_cooldown[AT_DTILT] = 15;
 	break;
@@ -344,6 +359,7 @@ switch (attack) { //open switch(attack)
 						
 							//transition to final hit if ralsei has hit three nairs already
 							if (ralsei_nair_consecutive_hits == 3) {
+								attack_end();
 								set_attack(AT_NTHROW);
 							}
 						}
@@ -417,7 +433,7 @@ switch (attack) { //open switch(attack)
 						//if (vsp > 0) 
 						var bullet = create_hitbox(attack, 1, x+8*spr_dir, y-4);
 						vsp *= 0.67;
-						vsp = clamp(vsp - gravity_speed * 7, -10, 10);
+						vsp = clamp(vsp - ralsei_dair_velocity, -10, 10);
 						ralsei_dair_ammo--;
 						ralsei_dair_consecutive_shots++;
 						if (ralsei_dair_consecutive_shots == 1) bullet.damage += 2;
@@ -466,7 +482,7 @@ switch (attack) { //open switch(attack)
 			break;
 			case 3:
 				if (window_timer == 1) {
-					ralsei_nspec_ammo -= 1;
+					if (!has_rune("B")) ralsei_nspec_ammo -= 1;
 					spawn_hit_fx(x + 50 * spr_dir, y - 38, ralsei_fx_sonic).depth = depth - 1;
 					spawn_bullet_shell(0, false);
 				}
@@ -477,7 +493,7 @@ switch (attack) { //open switch(attack)
 					if (special_down || special_pressed) {
 						if (ralsei_nspec_ammo > 0) {
 							window = 2;
-							window_timer = 0;
+							window_timer = has_rune("B") * 5;
 							spawn_grenades_if_courage_is_active();
 						}
 					}
@@ -528,11 +544,13 @@ switch (attack) { //open switch(attack)
 				//hsp = clamp(hsp - (spr_dir * 5.25 - right_down + left_down) / 10, -12, 12);
 				if (window_timer <= 10) break;
 				
-				var hsp_goal = (-3 - (max(window_timer - 10, 0) / 20) - (2 * free)) * spr_dir + (right_down - left_down) * 3;
+				var hsp_rune_add =  has_rune("D") * 0.2;
+				var hsp_goal = (-3 - (max(window_timer - 10, 0) / 20) - (2 * free)) * spr_dir + (right_down - left_down) * (3 + hsp_rune_add * 2);
+				
 				if (spr_dir > 0)
-					hsp = clamp(hsp_goal, hsp - 0.4, hsp + 0.2);
+					hsp = clamp(hsp_goal, hsp - 0.4, hsp + 0.2 + hsp_rune_add );
 				else 
-					hsp = clamp(hsp_goal, hsp - 0.2, hsp + 0.4);
+					hsp = clamp(hsp_goal, hsp - 0.2, hsp + 0.4 + hsp_rune_add );
 				
 				if (window_timer >= 30) {
 					if (window_timer >= 55) window_timer = 55;
@@ -731,7 +749,42 @@ switch (attack) { //open switch(attack)
 	break;
 }
 
+//recoil rune
+if (window_timer == 1 && has_rune("D")) {
+switch (attack) {
+	case AT_JAB:
+		if window != 2 break;
+		hsp -= spr_dir * 1.5;
+	break;
 
+	case AT_FTILT:
+		if (window != 2) break;
+		hsp -= spr_dir * 3.5;
+	break;
+	
+	case AT_NAIR:
+		if (window != 3) break;
+		hsp +=         spr_dir * (lengthdir_x(1.5, ralsei_nair_bullet1_dir[ralsei_nair_cycle]) + lengthdir_x(1.5, ralsei_nair_bullet2_dir[ralsei_nair_cycle]) );
+		vsp += -0.25 + spr_dir * (lengthdir_y(1.5, ralsei_nair_bullet1_dir[ralsei_nair_cycle]) + lengthdir_y(1.5, ralsei_nair_bullet2_dir[ralsei_nair_cycle]) );
+	break;
+	
+	case AT_FAIR:
+		if (window != 2 && window != 3) break;
+		hsp -= spr_dir * 1;
+		if (window == 2) vsp -= 0.5;
+	break;
+	
+	case AT_BAIR:
+		if (window != 6) break;
+		hsp += spr_dir * 4;
+	break;
+	
+	case AT_NSPECIAL:
+		if window != 3 break;
+		hsp -= spr_dir * 2.5;
+	break;
+}
+}
 
 #define ralsei_tp_meter_is_full
 return ralsei_tp >= ralsei_max_tp;

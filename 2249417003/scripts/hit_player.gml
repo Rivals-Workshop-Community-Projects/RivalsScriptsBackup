@@ -8,7 +8,7 @@ if (my_hitboxID.player != my_hitboxID.orig_player) exit;
 
 //reward melee attacks with tp gain. don't gain meter from EX FStrong.
 if (my_hitboxID.damage > 0 && hit_player_obj.invincible == false && (my_hitboxID.attack != AT_FSTRONG || my_hitboxID.type != 2)) { // my_hitboxID.type == 1
-	ralsei_tp += my_hitboxID.damage / 3; //max(1, floor(my_hitboxID.damage / 3) );
+	ralsei_tp += my_hitboxID.damage / 3 * ralsei_tp_multiplier; //max(1, floor(my_hitboxID.damage / 3) );
 }
 
 
@@ -30,7 +30,19 @@ switch (my_hitboxID.attack) {
 			ralsei_bair_bullet_hit_player_object_id = hit_player_obj;
 			sound_play(sound_get("hitmarker"));
 			sound_play(sound_get("hitbody_by_filmmakersmanual"));
-			spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - floor(hit_player_obj.char_height/2), ralsei_fx_hitmarker).depth = hit_player_obj.depth - 1;
+			var fx_x = hit_player_obj.x;
+			var fx_y = hit_player_obj.y - floor(hit_player_obj.char_height/2);
+			spawn_hit_fx(fx_x, fx_y, ralsei_fx_hitmarker).depth = hit_player_obj.depth - 1;
+			
+			//rune
+			if (has_rune("C") && scr_detected_headshot()) {
+				spawn_hit_fx(fx_x, fx_y, 305);
+				with (hit_player_obj) {
+					if (state == PS_HITSTUN && hitpause == true && hitstop >= 1) {
+						hitstop = min(hitstop + 15, 30);
+					}
+				}
+			}
 		}
 	break;
 	case AT_UAIR:
@@ -51,7 +63,7 @@ switch (my_hitboxID.attack) {
 	break;
 	case AT_UTILT:
 		//remove whifflag even if the projectile part of the attack hits.
-		if (state == PS_ATTACK_GROUND && attack == AT_UTILT) has_hit = true;
+		if (state == PS_ATTACK_GROUND && attack == AT_UTILT && hit_player_obj.state_cat == PS_HITSTUN) has_hit = true;
 		
 		//utilt projectiles can't be crouch cancelled.
 		if (my_hitboxID.type == 2 && hit_player_obj.state == PS_HITSTUN && hit_player_obj.hitpause) {
@@ -141,3 +153,9 @@ return (argument[0].hurtboxID.bbox_right - argument[0].hurtboxID.bbox_left);
 
 #define scr_get_player_height
 return (argument[0].hurtboxID.bbox_bottom - argument[0].hurtboxID.bbox_top);
+
+#define scr_detected_headshot
+var height = scr_get_player_height(hit_player_obj);
+var top = hit_player_obj.hurtboxID.bbox_top + height * 0.01;
+var bottom = top + height * 0.24;
+return (my_hitboxID.y >= top && my_hitboxID.y <= bottom);

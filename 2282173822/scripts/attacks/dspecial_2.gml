@@ -16,8 +16,10 @@ set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 
+// Lightning DSpecial - Endlag
+
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_LENGTH, 24); // 15
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 

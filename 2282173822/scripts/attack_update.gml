@@ -138,7 +138,7 @@ switch(attack){
 				    	vsp = 5;
 				    }
 				    else{
-						hsp = 15 * spr_dir;
+						hsp = 13 * spr_dir; // 15
 						vsp = 0;
 				    }
 					x += 18 * spr_dir;
@@ -150,7 +150,7 @@ switch(attack){
 				// with obj_article1 if player_id == other && state == 11 state_timer = 0;
 				break;
 			case 3: //active 2
-				hsp = clamp(hsp, -10, 10);
+				hsp = clamp(hsp, -9, 9); // -10, 10
 				hsp -= sign(hsp) * 0.05;
 				vsp += 0.1;
 			case 2: //active 1
@@ -357,7 +357,7 @@ switch(attack){
                 if strong_charge{
                     if window == 1 strong_charge++;
                     
-                    var max_fly = lerp(18, 6, strong_charge / 60);
+                    var max_fly = lerp(18, 0, strong_charge / 60); // 18 - 6
                     if shield_down max_fly = min(max_fly, 8);
                     var fly_acc = max_fly * 0.1;
                     

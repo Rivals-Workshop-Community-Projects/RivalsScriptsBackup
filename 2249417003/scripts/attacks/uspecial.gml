@@ -37,9 +37,9 @@ set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 6);
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_HSPEED, 5);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_HSPEED, 5 + has_rune("D"));
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, -5);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, -5 - has_rune("D"));
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 1);
 //tumble1
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE, 1);

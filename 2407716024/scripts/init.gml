@@ -1,3 +1,5 @@
+//Phone Junk
+
 hurtbox_spr = sprite_get("peacock_hurtbox");
 crouchbox_spr = sprite_get("peacock_crouch_hurtbox");
 air_hurtbox_spr = -1;
@@ -122,6 +124,8 @@ peacock_article_doom_id = noone;
 peacock_fx_fspecial_blast = hit_fx_create(sprite_get("fspecial_blast"), 12);
 peacock_fx_fair_shot = hit_fx_create(sprite_get("fair_shot"), 24);
 peacock_fx_airdash_puff = hit_fx_create(sprite_get("airdash_puff"), 16);
+peacock_fx_fsmash_beam = hit_fx_create(sprite_get("fsmash_laser"), 16);
+peacock_fx_fsmash_shot = hit_fx_create(sprite_get("fsmash_proj_shot"), 16);
 
 //codec
 ncode1 = "The Cartoon Elemental Anti-Skullgirl Unit crafted"
@@ -133,6 +137,10 @@ arena_title = "The Murder-Go-Round";
 battle_text = "* Peacock and her gang blocks the path!";
 
 gfzsignspr = sprite_get("gfz_pea");
+
+steve_death_message = "Steve couldn't parry.";
+
+Hikaru_Title = "Cartoon Elemental";
 
 easter_egg_timer = 0;
 easter_egg_set = false;
@@ -187,6 +195,18 @@ dracula_speaker[page] = 2;
 dracula_text[page] = "Good luck trying to shut this toon up!";
 page++;
 
+//Final Smash
+fs_char_portrait_y = 120;
+fs_char_chosen_final_smash = "custom";
+fs_char_chosen_trigger = "custom";
+fs_chosen_final_smash = "custom";
+fs_go_to_hud = false;
+fs_force_fs = false;
+
+time_frozen = false
+time_freeze_ticks = 0
+
+
 //Runes
 
 /*
@@ -223,3 +243,5 @@ abyssMods[@ runes.N] = [-1, "Locked."];
 abyssMods[@ runes.O] = [-1, "Locked."];
 
 */
+
+user_event(14); // General init

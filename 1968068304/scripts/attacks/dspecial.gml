@@ -56,7 +56,7 @@ set_window_value(AT_DSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 10);
 
 //fixed cooldown.
 set_window_value(AT_DSPECIAL, 7, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 7, AG_WINDOW_LENGTH, 17);
+set_window_value(AT_DSPECIAL, 7, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_DSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 12);
 //cancellable cooldown.
@@ -92,7 +92,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_FINAL_BASE_KNOCKBACK, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 1.3); //KOs at high percents.
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 100);
 //stun
-set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
 //effects
@@ -119,7 +119,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_FINAL_BASE_KNOCKBACK, 2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.3); //KOs at high percents.
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 100);
 //stun
-set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 1);
 //effects

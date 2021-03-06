@@ -46,6 +46,10 @@ switch (article_index) {
 						ralsei_hsp = 0;
 						ralsei_vsp = 0;
 						warmup = 0;
+						with (player_id) {
+							other.rune_velocity = has_rune("D") * 0.25; 
+						}
+						
 						if (player_id.attack == AT_FSPECIAL) {
 							sprite_index = sprite_get("fspecial_minigun_ground");
 							mask_index = sprite_get("fspecial_minigun_mask"); //sprite_get("fspecial_minigun_ground_startup_mask");
@@ -137,7 +141,7 @@ switch (article_index) {
 					shell.image_index = 2;
 
 					ammo -= 1;
-					hsp -= spr_dir;
+					hsp -= spr_dir + rune_velocity;
 					if (ammo <= 0 || y > room_height + 50) set_article_state(3);
 				}
 				if (state == 2) {
@@ -287,17 +291,28 @@ switch (article_index) {
 					var primed = 0;
 					var this_mine_article = id;
 					with (oPlayer) {
+						
 						if (id == other.player_id || free ) continue;
-						with (hurtboxID) {
-							if (place_meeting(x, y, this_mine_article) ) primed = 1;
+						switch (state) {
+							case PS_TECH_FORWARD:
+							case PS_TECH_BACKWARD:
+							case PS_ROLL_FORWARD:
+							case PS_ROLL_BACKWARD:
+								if (place_meeting(x, y, this_mine_article) ) primed = 1;
+							break;
+							default:
+								with (hurtboxID) {
+									if (place_meeting(x, y, this_mine_article) ) primed = 1;
+								}
+							break;
 						}
-						break;
+						if (primed) break;
 					}
 					if (primed) set_article_state(3);
 				}
 				
 				//expire after a set time
-				if (state_timer > 640) set_article_state(4);
+				if (state_timer > 480) set_article_state(5);
 			break;
 			
 			case 3: //explode
@@ -306,7 +321,7 @@ switch (article_index) {
 					if (state_timer mod 6 == 1) sound_play(sound_get("dr_bombfall"));
 					break;
 				}
-				destroy = true;
+				//destroy = true;
 				
 				//boom	
 				//spawn_hitbox
@@ -315,8 +330,15 @@ switch (article_index) {
 				spawn_hit_fx(x, y, player_id.ralsei_fx_mine_explode)
 				//sound
 				sound_play(sound_get("dr_bomb"));
+				
+				//become inactive
+				set_article_state(4);
 			break;
-			case 4: //fadeaway
+			case 4: //inactive mine
+				if (state_timer == 1) sprite_index = sprite_get("dtilt_landmine_triggered");
+				if (state_timer >= 300) set_article_state(5);
+			break;
+			case 5: //fadeaway
 				image_alpha -= 0.05;
 				if (image_alpha <= 0) destroy = true;
 			break;

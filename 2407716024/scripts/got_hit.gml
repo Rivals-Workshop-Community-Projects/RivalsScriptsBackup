@@ -3,6 +3,7 @@
 //refresh uspecial
 if (state_cat == SC_HITSTUN) move_cooldown[AT_USPECIAL] = 0;
 
+if(state_cat == SC_HITSTUN){
 if easter_egg_set = true {
     snd_rng = random_func(0, 6, true);
     
@@ -19,4 +20,5 @@ if easter_egg_set = true {
     } else if (snd_rng == 5) {
         sound_play(sound_get("hurt6"));
     }
+}
 }

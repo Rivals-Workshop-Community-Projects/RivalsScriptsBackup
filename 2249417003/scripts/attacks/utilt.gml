@@ -59,8 +59,8 @@ set_hitbox_value(AT_UTILT, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_UTILT, 1, HG_LIFETIME, 10);
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_X, 40);
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_Y, -60);
-set_hitbox_value(AT_UTILT, 1, HG_WIDTH, 38);
-set_hitbox_value(AT_UTILT, 1, HG_HEIGHT, 38);
+set_hitbox_value(AT_UTILT, 1, HG_WIDTH, 42);
+set_hitbox_value(AT_UTILT, 1, HG_HEIGHT, 42);
 set_hitbox_value(AT_UTILT, 1, HG_PRIORITY, 7);
 set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 1);
 set_hitbox_value(AT_UTILT, 1, HG_ANGLE, 65);
@@ -81,8 +81,8 @@ set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_UTILT, 2, HG_LIFETIME, 10);
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_X, 55);
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_Y, -75); 
-set_hitbox_value(AT_UTILT, 2, HG_WIDTH, 32);
-set_hitbox_value(AT_UTILT, 2, HG_HEIGHT, 32);
+set_hitbox_value(AT_UTILT, 2, HG_WIDTH, 36);
+set_hitbox_value(AT_UTILT, 2, HG_HEIGHT, 36);
 set_hitbox_value(AT_UTILT, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 1);
 set_hitbox_value(AT_UTILT, 2, HG_ANGLE, 70);
@@ -97,7 +97,7 @@ set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT, 4);
 set_hitbox_value(AT_UTILT, 2, HG_HIT_LOCKOUT, 1);
 set_hitbox_value(AT_UTILT, 2, HG_SDI_MULTIPLIER, 0.5);
 set_hitbox_value(AT_UTILT, 2, HG_FORCE_FLINCH, 2); //cannot flinch
-
+set_hitbox_value(AT_UTILT, 2, HG_EFFECT, 9); //polite
 
 set_hitbox_value(AT_UTILT, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 //set_hitbox_value(AT_UTILT, 2, HG_PROJECTILE_DESTROY_EFFECT, 193); //rock small

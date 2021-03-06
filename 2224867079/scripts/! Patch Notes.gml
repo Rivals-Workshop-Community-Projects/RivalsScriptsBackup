@@ -1,5 +1,14 @@
 /*
--- V1.10 --
+-- V2.1 --
+
+Balance Changes:
+- Fspecial can now bounce off solid objects
+- Fspecial Frame data has been changed
+
+Cosmetic Changes:
+- New Fspecial Sprites
+
+-- V2.0 --
 
 Markers have now been replaced with a new mechanic
 You can now throw kunais on the ground and blow them up with dspecial

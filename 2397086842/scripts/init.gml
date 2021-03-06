@@ -10,7 +10,7 @@ ncode1 = "Decendant of Sound Deity"
 ncode2 = "Capable of creating high shockwave as well "
 ncode3 = "as creating electric infused projectiles."
 
-
+voiced = 1 
 
 shsp = 0
 svsp = 0
@@ -109,9 +109,9 @@ tech_recovery_frames = 2;
 
 //tech roll animation frames
 techroll_startup_frames = 1
-techroll_active_frames = 6;
-techroll_recovery_frames = 2;
-techroll_speed = 9.8;
+techroll_active_frames = 2;
+techroll_recovery_frames = 1;
+techroll_speed = 6;
 
 //airdodge animation frames
 air_dodge_startup_frames = 2;

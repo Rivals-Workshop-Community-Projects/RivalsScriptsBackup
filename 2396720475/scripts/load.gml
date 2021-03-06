@@ -76,6 +76,8 @@ sprite_change_offset("uspecial", 50, 98);
 sprite_change_offset("dspecial", 36, 56);
 sprite_change_offset("taunt", 38, 52);
 sprite_change_offset("taunt2", 33, 56);
+sprite_change_offset("taunt3", 52, 74);
+sprite_change_offset("taunt4", 52, 74);
 
 sprite_change_offset("plat", 64, 62);
 sprite_change_offset("plat_back", 64, 62);

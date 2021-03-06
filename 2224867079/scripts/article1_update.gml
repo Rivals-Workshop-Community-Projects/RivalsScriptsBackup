@@ -73,6 +73,20 @@ if (state == 1){ //idle
 		idle_cycle = idle_cycle+1; //counting for IDLE EXPIRED below
     }
 }
+	
+	var got_hit = false;
+	var enemy_hitboxID = noone;
+
+	with pHitBox{ //run the below code for all existing hitboxes
+	   if (place_meeting(x, y, other) && player_id != other.id){ //"if touching article + not belonging to same player as article". you can add more conditions here too
+	       got_hit = true;
+	       enemy_hitboxID = id;
+	  }
+	}
+
+	if got_hit{
+	    print_debug("lol")
+	}
 
 // // IDLE EXPIRED
 var idle_max = 14; //amount of idle loop it can do until it ends

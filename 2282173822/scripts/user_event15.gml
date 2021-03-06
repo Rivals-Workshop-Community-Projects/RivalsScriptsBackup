@@ -410,6 +410,20 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.11", "03 March, 2021");
+	initPatchWords("NSpecial - Nerfs");
+	initPatchWords_ext("Base knockback of all variants reduced by 1.", fa_left, c_gray, 1, 0);
+	initPatchWords("FSpecial - Nerfs");
+	initPatchWords_ext("Movement speed reduced.", fa_left, c_gray, 1, 0);
+	initPatchWords("Lightning Strongs - Nerfs");
+	initPatchWords_ext("Flight speed now decreases much more as the charge progresses, all the way to 0 speed at the end.", fa_left, c_gray, 1, 0);
+	initPatchWords("Lightning DSpecial - Nerfs");
+	initPatchWords_ext("Endlag 15 --> 24.", fa_left, c_gray, 1, 0);
+	initPatchWords("DStrong - Nerfs");
+	initPatchWords_ext("On parry, the mech now resets its hitbox timer and speeds up.", fa_left, c_gray, 1, 0);
+	initPatchWords("BAir - Nerfs");
+	initPatchWords_ext("Landing lag 6 --> 8.", fa_left, c_gray, 1, 0);
+	
 	initPatch("1.10", "07 February, 2021");
 	initPatchWords("Lightning Strongs, Lightning DSpecial - Nerfs");
 	initPatchWords_ext("These moves now inflict 3 recoil damage (up to 5 for charged Strongs).

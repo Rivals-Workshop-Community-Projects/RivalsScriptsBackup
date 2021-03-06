@@ -8,6 +8,7 @@ sprite_change_offset("bighurt", 36, 72);
 sprite_change_offset("uphurt", 36, 72);
 sprite_change_offset("downhurt", 36, 72);
 sprite_change_offset("bouncehurt", 36, 72);
+sprite_change_offset("spinhurt", 36, 72);
 
 //sprite_change_offset("hurtground", 24, 60);
 sprite_change_offset("crouch", 32, 72);

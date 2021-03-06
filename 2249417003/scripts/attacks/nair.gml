@@ -44,7 +44,7 @@ set_window_value(AT_NAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //final endlag
 set_window_value(AT_NAIR, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NAIR, 5, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_NAIR, 5, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_NAIR, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NAIR, 5, AG_WINDOW_ANIM_FRAME_START, 25);
 set_window_value(AT_NAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);

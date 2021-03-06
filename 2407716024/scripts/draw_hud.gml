@@ -14,3 +14,5 @@ if (easter_egg_set == true){
 draw_sprite_ext(sprite_get("hud_voice"), 1, temp_x+60, temp_y -10, 2, 2, 0, draw, 1);
 
 }
+
+user_event(11);

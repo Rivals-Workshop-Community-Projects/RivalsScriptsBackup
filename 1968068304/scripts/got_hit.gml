@@ -26,10 +26,10 @@ if (state_cat == SC_HITSTUN || state == PS_HITSTUN_LAND) {
 		else {
 			sound_play(sound_get("glass_bottle_edited_freesounds_dasebr"));
 			spawn_hit_fx(x, round(y - char_height / 2), epinel_fx_armorbreak);
-			if (hitstun >= 1) hitstop += 10;
+			if (hitstun >= 1) { hitstop += 15; hitstop_full += 15; }
 			//if a melee attack, give the attacker hitstop too
 			if (hit_player_obj.hitpause && hit_player_obj.hitstop > 0 && enemy_hitboxID.type == 1) {
-				hit_player_obj.hitstop += 2;
+				hit_player_obj.hitstop += 15; hit_player_obj.hitstop_full += 15;
 			}
 			epinel_is_armored = 0;
 			//put epinel in heavy state when armor is broken.
@@ -54,6 +54,7 @@ else if ((super_armor >= 1 || soft_armor >= 1)
 
 	
 	//if this attack dealt significant knockback AND was not a <8 damage projectile, enter heavy state.
+	var inflicted_heavy_state = false;
 	if (super_armor >= 1) {
 		with (enemy_hitboxID) {
 			if ((type == 2 && damage < 8 && transcendent == false)) break;
@@ -62,13 +63,14 @@ else if ((super_armor >= 1 || soft_armor >= 1)
 				sound_play(sound_get("glass_bottle_edited_freesounds_dasebr"));
 				spawn_hit_fx(x, round(y - char_height / 2), epinel_fx_armorbreak);
 				epinel_heavy_state = max(epinel_heavy_state, 1);
+				inflicted_heavy_state = true;
 			}
 			
 		}
 	}
 	
 	invince_time = max(invince_time, 3);
-	sound_play(sound_get("armor"), 0, noone, 1, 1 - (soft_armor >= 1) * 0.25);
+	if (!inflicted_heavy_state) sound_play(sound_get("armor"), 0, noone, 1, 1 - (soft_armor >= 1) * 0.25);
 	
 	hsp = clamp(hsp, -4, 4);
 	old_hsp = clamp(old_hsp, -4, 4);
@@ -78,11 +80,14 @@ else if ((super_armor >= 1 || soft_armor >= 1)
 
 	//add hitstop for emphasis
 	if (hitpause && hitstop > 0) {
-		if (enemy_hitboxID.type != 1)  { hitstop += 1; }
+		if (inflicted_heavy_state) { hitstop += 15; hitstop_full += 15; }
+		else if (enemy_hitboxID.type != 1)  { hitstop += 3; hitstop_full += 3; }
+		else { hitstop += 1; hitstop_full += 1; }
 		
 		//if a melee attack, give the attacker hitstop too
 		if (hit_player_obj.hitpause && hit_player_obj.hitstop > 0 && enemy_hitboxID.type == 1) {
-			hit_player_obj.hitstop += 2;
+			if (epinel_heavy_state > 0) { hit_player_obj.hitstop += 15; hit_player_obj.hitstop_full += 15; }
+			else						{ hit_player_obj.hitstop += 2;  hit_player_obj.hitstop_full += 2; }
 			
 			//if epinel is in hitstun, also extend his hitstop.
 			if (hitstun >= 1) { hitstop += 2; }

@@ -83,7 +83,7 @@ set_hitbox_value(AT_DTILT, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DTILT, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DTILT, 2, HG_WINDOW, 20);
 set_hitbox_value(AT_DTILT, 2, HG_LIFETIME, 3);
-set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 12);
+set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 10);
 //priority/grouping
 set_hitbox_value(AT_DTILT, 2, HG_PRIORITY, 6);
 set_hitbox_value(AT_DTILT, 2, HG_HITBOX_GROUP, 1);
@@ -106,7 +106,7 @@ set_hitbox_value(AT_DTILT, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT_Y_OFFSET, 16);
 set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT, 141);
 set_hitbox_value(AT_DTILT, 2, HG_HITSTUN_MULTIPLIER, 0.75);
-set_hitbox_value(AT_DTILT, 2, HG_HIT_LOCKOUT, 0);
+set_hitbox_value(AT_DTILT, 2, HG_HIT_LOCKOUT, 5);
 
 
 //effects

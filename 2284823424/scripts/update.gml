@@ -23,6 +23,10 @@ if held_item == IT_TOTEM && has_rune("O"){
 
 
 
+if state != PS_PRATFALL prat_fall_accel = 0.8;
+
+
+
 if has_rune("A") && !held_item has_container = 1;
 
 if held_item has_container = 0;
@@ -305,6 +309,7 @@ if (held_item == IT_TOTEM || rune_totem){
 		else if !phone_cheats[cheat_tmi] held_item = IT_NOTHING;
 		if (state_cat == SC_HITSTUN){
 			set_state(PS_PRATFALL);
+			prat_fall_accel = 0;
 		}
 		spawn_hit_fx(x, y - 32, 304);
 		sound_play(sfx_minecraft_totem);

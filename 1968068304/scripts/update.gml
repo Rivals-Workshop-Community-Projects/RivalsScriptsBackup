@@ -129,12 +129,13 @@ else //if not free
 				epinel_dash_momentum = 0;
 				dash_speed = 3.25;
 			}
+		break;
 		
     	case PS_WAVELAND:
     		if (state_timer == 2 && epinel_other_standing_on_platform_id != noone && instance_exists(epinel_other_standing_on_platform_id) ) {
 				//hsp *= 1.05; //+= sign(hsp);
 				epinel_other_standing_on_platform_id.hsp = clamp(epinel_other_standing_on_platform_id.hsp + sign(hsp), -epinel_other_standing_on_platform_id.top_speed, epinel_other_standing_on_platform_id.top_speed);
-    			if (sign(epinel_other_standing_on_platform_id.hsp) != sign(hsp) || abs(epinel_other_standing_on_platform_id.hsp) < 4) {
+    			if (abs(hsp) > 0.5 && ( sign(epinel_other_standing_on_platform_id.hsp) != sign(hsp) || abs(epinel_other_standing_on_platform_id.hsp) < 4) ) {
     				epinel_other_standing_on_platform_id.hsp = sign(hsp) * 4;
     				//epinel_other_standing_on_platform_id.friction_poll = 4;
     			}

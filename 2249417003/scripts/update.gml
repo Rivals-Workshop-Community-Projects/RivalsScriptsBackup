@@ -123,6 +123,14 @@ if (instance_exists(ralsei_bair_bullet_hit_player_object_id)) {
 }
 else {
     ralsei_bair_buffer = 0;
+    
+    //grenade roll rune
+    if (has_rune("F") && (state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD) && state_timer == 10 && !hitpause) {
+    	var nade = instance_create(x, y - 30, "obj_article1");
+		nade.spr_dir = spr_dir;
+		nade.article_index = 5;
+		nade.vsp = -3;
+    } 
 }
 
 //outline handling

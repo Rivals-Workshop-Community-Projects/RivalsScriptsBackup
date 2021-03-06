@@ -34,7 +34,7 @@ set_window_value(AT_FTILT, 3, AG_WINDOW_SFX_FRAME, 0);
 
 //recovery
 set_window_value(AT_FTILT, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAMES, 4); //4
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 8); //8
 set_window_value(AT_FTILT, 4, AG_WINDOW_HSPEED, 3.5);
@@ -61,11 +61,11 @@ set_hitbox_value(AT_FTILT, 1, HG_HITBOX_X, 40);
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_Y, -30);
 //shape
 set_hitbox_value(AT_FTILT, 1, HG_WIDTH, 58);
-set_hitbox_value(AT_FTILT, 1, HG_HEIGHT, 48);
+set_hitbox_value(AT_FTILT, 1, HG_HEIGHT, 44);
 set_hitbox_value(AT_FTILT, 1, HG_SHAPE, 0);
 //knockback
 set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 7.5);
-set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, 0.5); 
+set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, 0.6); 
 set_hitbox_value(AT_FTILT, 1, HG_ANGLE, 35);
 //stun
 set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 8);

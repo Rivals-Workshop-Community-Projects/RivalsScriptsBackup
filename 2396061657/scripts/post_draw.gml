@@ -100,7 +100,7 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
 
 
 // Some code junk
-//draw_debug_text(x, y - 40, "Stage ID: " + string(get_stage_data(SD_ID)));
+//draw_debug_text(x, y - 40, "CandyKB: " + string(CandyKB));
 //draw_debug_text(x, y - 60, "Room: " + string(room));
 //draw_debug_text(x, y - 80, "LoveMeter Rib: " + string(LoveMeter_Ribbon));
 //draw_debug_text(x, y - 100, "LoveMeter Bal: " + string(LoveMeter_Balloon));

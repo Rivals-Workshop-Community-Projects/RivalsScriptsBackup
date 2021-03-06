@@ -38,12 +38,11 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 30);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 70);
 set_hitbox_value(AT_DSPECIAL, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 10);
-set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 1);
-set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 90); //Just in case i need to revert back to JUGGLES
-//set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 7);
+set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 2);
+set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 165); //Just in case i need to revert back to JUGGLES
+//set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, .5);
-set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, lanternfx);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ice_shatter_big"));
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
@@ -59,4 +58,4 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_VSPEED, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, lanternfx);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_LOCKOUT, 6);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_LOCKOUT, 15);

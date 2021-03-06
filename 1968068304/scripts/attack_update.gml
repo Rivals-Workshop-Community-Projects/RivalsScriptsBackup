@@ -376,7 +376,7 @@ switch (attack) { //open switch(attack)
 				//limit horizontal direction.
 				hsp /= clamp(epinel_uair_jump_counter, 1, 1.5); //clamp(max(1, max(epinel_uair_jump_counter, epinel_consecutive_uair_jumps)), 1, 2);
 				hsp *= spr_dir;
-				hsp = clamp(hsp * 0.8, 2.35, 8); //2.35
+				hsp = clamp(hsp * 0.8, 2, 8); //2.35
 				hsp *= spr_dir;
 			
 				//re-enable landing lag.
@@ -583,6 +583,7 @@ switch (attack) { //open switch(attack)
 						hurtboxID.sprite_index = get_attack_value(AT_FSPECIAL_2, AG_HURTBOX_SPRITE);
 						super_armor = false;
 						soft_armor = 0;
+						epinel_is_armored = 0;
 						//else set_state( PS_ROLL_BACKWARD );
 						epinel_other_weightless_timer = 0;
 						//add a cooldown so that roll-cancelled f-special stance can't be spammed
@@ -725,7 +726,7 @@ switch (attack) { //open switch(attack)
 					hsp = holding_dir * 0.5;
 				}
 				//if in heavy state, transition to heavy state
-				else if (window == 10 && epinel_heavy_state > 0) transition_to_heavy_state_recovery_at_end_of_window();
+				else if (window == 10) transition_to_heavy_state_recovery_at_end_of_window();
 			break;
 		} //close switch(window)
 	break;
@@ -844,6 +845,7 @@ switch (attack) { //open switch(attack)
 						iasa_script();
 						set_state( PS_AIR_DODGE );
 						epinel_other_weightless_timer = 0;
+						soft_armor = 0;
 					}
 				}
 				if (!hitpause) epinel_charge_timer += 1;
@@ -991,7 +993,7 @@ switch (attack) { //open switch(attack)
 				//if in heavy state, speed up recovery
 				if (epinel_heavy_state > 0 && !hitpause && (window_timer mod 3) == 1) { vsp -= 0.1; window_timer++; }
 				//if in heavy state, transition to heavy state
-				//else if (window == 10) transition_to_heavy_state_recovery_at_end_of_window();
+				//else if (window == 10 && !free) transition_to_heavy_state_recovery_at_end_of_window();
 			break;
 		} //close switch(window)
 
@@ -1004,7 +1006,7 @@ switch (attack) { //open switch(attack)
 		//cancel this move if it is used in mid-air
 		if (free && window >= 3) {
 			safely_set_attack(AT_EXTRA_1);
-			vsp = min(vsp, -4);
+			vsp = min(vsp, 4);
 			break;
 		}
 		
@@ -1012,6 +1014,7 @@ switch (attack) { //open switch(attack)
 			case 1:
 				if (window_timer == 1) {
 					epinel_charge_timer = -2;
+					hsp = clamp(hsp, -3, 3);
 					//set_attack.gml changes this move's category to 'aerial or grounded' if the move is buffered after falling through a platform.
 					//this changes it back to a grounded-only move, after epinel has 'landed' on the platform he snapped back to.
 					
@@ -2640,13 +2643,13 @@ if (place_meeting(x, found_plat.y, asset_get("par_block"))) return;
 
 y = found_plat.y;
 vsp = 0;
+hsp = 0;
 epinel_other_standing_on_platform_id = found_plat;
 epinel_buffered_standing_on_platform_id = found_plat;
 //transition to the ground version of down-special.
 set_attack_value(AT_DSPECIAL, AG_CATEGORY, 1);
 var prev_window_timer = window_timer;
 safely_set_attack(AT_DSPECIAL);
-hsp = 0;
 free = false;
 //window = 1;
 window_timer = prev_window_timer;
@@ -2667,7 +2670,7 @@ set_attack(argument0);
 hurtboxID.sprite_index = get_attack_value(argument0, AG_HURTBOX_SPRITE);
 return;
 #define transition_to_heavy_state_recovery_at_end_of_window
-if (epinel_heavy_state > 0 && window_timer - 1 == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause) {
+if (epinel_heavy_state > 0 && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) - 1 && !hitpause && !free) {
 	safely_set_attack(AT_EXTRA_3);
 } 
 return;

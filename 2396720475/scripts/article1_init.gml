@@ -18,6 +18,8 @@ mask_index = -1;
 image_index = 0;
 //image_speed = .4;
 
+hitfxowner = noone;
+
 initial_spawn = false
 flag = false;;
 

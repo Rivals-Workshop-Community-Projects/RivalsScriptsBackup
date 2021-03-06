@@ -2,17 +2,17 @@
 // Used for gameplay mechanics
 // Runs every frame
 
-if (get_training_cpu_action() == CPU_STAND && taunt_pressed) {
+if (get_training_cpu_action() == CPU_STAND && taunt_pressed && attack == AT_TAUNT) {
 	taunt_counter = 140
 
 	if (down_down && DG_chat_num == 0 && !up_down){
-	window = 2;
-	window_timer = 14;
+		window = 2;
+		window_timer = 14;
 		DG_chat_num = 1;
 	}
 	if (up_down && DG_chat_num == 0 && !down_down){
-	window = 2;
-	window_timer = 14;
+		window = 2;
+		window_timer = 14;
 		DG_chat_num = 2;
 	}
 }
@@ -57,7 +57,7 @@ if (state == PS_SPAWN && state_timer == 1){
 }
 
 // Checks isFspecial on when Forward Special is used
-if ((attack == AT_FSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR || state == PS_HITSTUN)) || ((attack == AT_DTHROW || attack == AT_NTHROW || attack == AT_UTHROW || attack == AT_FTHROW) && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR || state == PS_HITSTUN))){
+if ((attack == AT_FSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR || state == PS_HITSTUN) && window == 2) || ((attack == AT_DTHROW || attack == AT_NTHROW || attack == AT_UTHROW || attack == AT_FTHROW) && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR || state == PS_HITSTUN))){
 	isFspecial = true;
 }
 else {
@@ -163,14 +163,32 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 
 		if (get_player_color(player) == 2){ // Color 2 Secret Alt
 
-			// Inner Otaku BLM alt color
+			// Inner - BLM alt color
 			if (up_down && !down_down && !left_down && !right_down && shield_down && !attack_down && !special_down){
 				SecretColor = 1;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
+			}	
+			// Slime - Kagami Sumika alt color
+			if (!up_down && down_down && !left_down && !right_down && shield_down && !attack_down && !special_down){
+				SecretColor = 2;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
 			}			
 		}		
+	
+		if (get_player_color(player) == 4){ // Color 4 Secret Alt
+
+			// Dichi - Charlotte alt color
+			if (up_down && !down_down && !left_down && !right_down && shield_down && !attack_down && !special_down){
+				SecretColor = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+		}
 		
 		if (ColorLocked){
 			sound_play(asset_get("mfx_confirm"));

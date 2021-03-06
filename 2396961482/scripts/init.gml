@@ -3,6 +3,8 @@ dategirl_init = 0
 Chatting = true
 Hikaru_Title = "Fish Food";
 steve_death_message = "Steve went closer to the light";
+pkmn_stadium_front_img = sprite_get("pkmn_sprite1");
+pkmn_stadium_back_img = sprite_get("pkmn_sprite2");
 
 //Regular Stuff
 hurtbox_spr = asset_get("ex_guy_hurt_box");
@@ -20,20 +22,20 @@ pratfall_anim_speed = .25;
 walk_speed = 4;
 walk_accel = 0.2;
 walk_turn_time = 6;
-initial_dash_time = 14;
-initial_dash_speed = 6;
-dash_speed = 8;
-dash_turn_time = 10;
-dash_turn_accel = 2;
+initial_dash_time = 8;
+initial_dash_speed = 6.50;
+dash_speed = 6.50;
+dash_turn_time = 8;
+dash_turn_accel = 1.75;
 dash_stop_time = 4;
 dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .4;
+ground_friction = .5;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
 jump_speed = 10;
-short_hop_speed = 7;
-djump_speed = 9;
+short_hop_speed = 6;
+djump_speed = 10;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
@@ -46,14 +48,14 @@ double_jump_time = 31; //the number of frames to play the djump animation. Can't
 walljump_hsp = 7;
 walljump_vsp = 8;
 walljump_time = 32;
-max_fall = 8; //maximum fall speed without fastfalling
-fast_fall = 12; //fast fall speed
+max_fall = 10; //maximum fall speed without fastfalling
+fast_fall = 13; //fast fall speed
 gravity_speed = .50;
 hitstun_grav = .5;
-knockback_adj = 1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.05; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 12;
+prat_land_time = 8;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .11; //grounded deceleration when wavelanding

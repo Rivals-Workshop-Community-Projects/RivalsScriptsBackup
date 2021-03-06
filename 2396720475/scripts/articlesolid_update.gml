@@ -42,7 +42,7 @@ if (state == 1){
 		}
 	}
 
-	if (vsp >= 1.5 && !player_id.create_moving){
+	if (vsp > 2.5 && !player_id.create_moving){
 		player_id.create_moving = true;
 		player_id.create_x = x;
 		player_id.create_y = y;

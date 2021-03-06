@@ -14,6 +14,10 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 // Neutral Air
 if (attack == AT_NAIR){
+	if (window == 1 && window_timer == 9){
+		sound_play(sound_get("ustrongtwinkle"));
+	}
+	
 	if (!free){
 		if (window <= 3){
 			window_timer = 0;

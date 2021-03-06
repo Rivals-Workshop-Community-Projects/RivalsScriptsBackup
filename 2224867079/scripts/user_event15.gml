@@ -454,6 +454,14 @@ with phone{
 //	initPatchWords("Fnuuy joke
 //	- waog");
 //	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0);
+	//2.1
+	initPatch("2.1", "2 March, 2021");
+	initPatchWords_ext("Fspecial Update", fa_center, c_white, 1, 0);
+	initPatchWords_ext("Balance Changes:", fa_center, c_white, 1, 0);
+	initPatchWords("- Fspecial can now bounce off solid objects
+	- Fspecial Frame data has been changed")
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_white, 1, 0);
+	initPatchWords("- New Fspecial Sprites")
 	//2.0
 	initPatch("2.0", "2 March, 2021");
 	initPatchWords_ext("Character Rework", fa_center, c_white, 1, 0);

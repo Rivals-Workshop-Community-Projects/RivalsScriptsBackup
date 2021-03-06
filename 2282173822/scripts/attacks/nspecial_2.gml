@@ -39,7 +39,7 @@ for (var i = 0; i < 4; i++){
 	set_hitbox_value(AT_NSPECIAL_2, 1 + i, HG_PRIORITY, 3);
 	set_hitbox_value(AT_NSPECIAL_2, 1 + i, HG_DAMAGE, 3 + 3 * i);
 	set_hitbox_value(AT_NSPECIAL_2, 1 + i, HG_ANGLE, 45);
-	set_hitbox_value(AT_NSPECIAL_2, 1 + i, HG_BASE_KNOCKBACK, 8 + i * 0.5);
+	set_hitbox_value(AT_NSPECIAL_2, 1 + i, HG_BASE_KNOCKBACK, 7 + i * 0.5); // 8 + i * 0.5
 	set_hitbox_value(AT_NSPECIAL_2, 1 + i, HG_KNOCKBACK_SCALING, 0.7 + 0.1 * i);
 	set_hitbox_value(AT_NSPECIAL_2, 1 + i, HG_BASE_HITPAUSE, 10 + i * 3);
 	set_hitbox_value(AT_NSPECIAL_2, 1 + i, HG_HITPAUSE_SCALING, 0.7 + 0.1 * i);

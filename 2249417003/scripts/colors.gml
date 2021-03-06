@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 10, 12, 29 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 14 );
+set_num_palettes( 15 );
 
 // Boy
 set_color_profile_slot( 1, 0, 77, 204, 142 ); //cloak
@@ -165,6 +165,16 @@ set_color_profile_slot( 13, 4, 222, 242, 161 ); //object2
 set_color_profile_slot( 13, 5, 242, 149, 0 ); //object3 (saturated)
 set_color_profile_slot( 13, 6, 121, 255, 109 ); //magic
 set_color_profile_slot( 13, 7, 232, 39, 59 ); //scarf
+
+// Grit
+set_color_profile_slot( 14, 0, 252, 188, 58 ); //cloak
+set_color_profile_slot( 14, 1, 252, 188, 58 ); //hat
+set_color_profile_slot( 14, 2, 48, 91, 166 ); //fluff
+set_color_profile_slot( 14, 3, 115, 36, 156 ); //object1
+set_color_profile_slot( 14, 4, 230, 153, 51 ); //object2
+set_color_profile_slot( 14, 5, 255, 223, 10 ); //object3 (saturated)
+set_color_profile_slot( 14, 6, 9, 210, 224 ); //magic
+set_color_profile_slot( 14, 7, 36, 169, 252 ); //scarf
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

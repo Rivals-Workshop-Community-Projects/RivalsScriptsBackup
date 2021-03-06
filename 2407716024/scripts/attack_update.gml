@@ -3,6 +3,8 @@
 if (attack == AT_DSPECIAL || ((attack == AT_FSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL) && peacock_consecutive_cancelled_attacks < 0 )) {
     trigger_b_reverse();
 }
+
+		fs_force_fs = false;
 /*
 	if (attack == AT_USPECIAL) {
 	  if (window == 1){
@@ -272,11 +274,39 @@ switch (attack) {
 		}
 	break;
 	
+	//Final Smash
+	case 49:
+	    fs_force_fs = false;
+		if (window = 2 && window_timer == 6 || window == 3 && state_timer <= 90) {
+			spawn_hit_fx(x + 40 * spr_dir, y - 80, peacock_fx_fsmash_beam);
+		
+		}
+		
+		if (state_timer == 100){
+			window = 4;
+			window_timer = 0;
+		}
+		
+		if(window = 5 && window_timer = 1){
+			sound_play(sound_get("fsmash_shot"));
+		}
+		
+		if (state_timer == 220){
+			window = 6;
+			window_timer = 0;
+		}
 
+    if window <= 2{
+    	time_freeze_ticks = 1;
+    }
+    can_fast_fall = false;
+    can_move = false;
+
+	break;
 	
 	
 	case AT_NSPECIAL:
-		if (window >= 2) move_cooldown[AT_NSPECIAL] = 30;
+		if (window >= 2) move_cooldown[AT_NSPECIAL] = 60;
 	break;
 	
 	case AT_FSPECIAL:
@@ -309,7 +339,7 @@ switch (attack) {
 				}
 			break;
 			case 4:
-				if (special_pressed && peacock_fspecial_shots > 1) {
+				if (special_pressed && peacock_fspecial_shots > 1 && window_timer > 4) {
 					window = 2;
 					window_timer = 0;
 					peacock_fspecial_shots--;
@@ -318,7 +348,6 @@ switch (attack) {
 					window = get_attack_value(attack, AG_NUM_WINDOWS);
 					window_timer = 0;
 				}
-			break;
 		}
 	break;
 	
@@ -371,8 +400,7 @@ switch (attack) {
     			peacock_airdash_backward_dash_buffer = 0;
 				
 				//force a short cooldown on all aerial moves
-				move_cooldown[AT_NSPECIAL] = 12;
-				move_cooldown[AT_FSPECIAL] = 12;
+				move_cooldown[AT_FSPECIAL] = 24;
 				move_cooldown[AT_DSPECIAL] = 12;
 				move_cooldown[AT_NAIR]     = 12;
 				move_cooldown[AT_FAIR]     = 12;
@@ -916,6 +944,20 @@ if ((attack == AT_UTILT) && state_timer == 1) {
         sound_play(sound_get("grunt5"));
     } else if (snd_rng == 6) {
         sound_play(sound_get("grunt6"));
+    }    
+}
+
+if ((attack == 49) && state_timer == 1) {
+    snd_rng = random_func(0, 4, true);
+    
+    if (snd_rng == 0) {
+        sound_play(sound_get("fsmash1"));
+    } else if (snd_rng == 1) {
+        sound_play(sound_get("fsmash2"));
+    } else if (snd_rng == 2) {
+        sound_play(sound_get("fsmash3"));
+    } else if (snd_rng == 3) {
+        sound_play(sound_get("fsmash4"));
     }    
 }
 	}

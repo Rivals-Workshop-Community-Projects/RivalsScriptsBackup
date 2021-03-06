@@ -87,15 +87,15 @@ if (attack == AT_UTHROW) {
 }
 //Attack Multipliers//
 ///////////////////////    Blue     /////////////////////////////////////////////////////////////////////////////////////////////////////
-if redmark > 0 and RedMode = false {
-    damage *= 1.5
-    knockback *= 1.5
-} else {
-    damage *= 1
-    knockback *= 1
-    
+if (has_rune("G")){
+	if redmark > 0 and RedMode = false {
+	    damage *= 1.5
+	    knockback *= 1.5
+	} else {
+	    damage *= 1
+	   knockback *= 1
+	}
 }
-
 /*
 //Attack Multipliers//
 ///////////////////////    Blue     /////////////////////////////////////////////////////////////////////////////////////////////////////

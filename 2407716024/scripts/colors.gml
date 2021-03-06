@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 16, 1, 10 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 8 );
+set_num_palettes( 9 );
 
 // Inkling
 set_color_profile_slot( 1, 0, 37, 84, 102 ); //Dress
@@ -106,9 +106,17 @@ set_color_profile_slot( 7, 5, 71, 53, 82 ); //Metal
 set_color_profile_slot( 7, 6, 111, 127, 188 ); //Avery
 set_color_profile_slot( 7, 7, 144, 59, 206 ); //Avery's Beak
 
+// Trans Rights
+set_color_profile_slot( 8, 0, 217, 102, 198 ); //Dress
+set_color_profile_slot( 8, 1, 68, 123, 150 ); //Bow
+set_color_profile_slot( 8, 2, 255, 255, 255 ); //Skin
+set_color_profile_slot( 8, 3, 0, 137, 156 ); //Hair
+set_color_profile_slot( 8, 4, 162, 179, 185 ); //Gloves
+set_color_profile_slot( 8, 5, 162, 179, 185 ); //Metal
+set_color_profile_slot( 8, 6, 0, 137, 156 ); //Avery
+set_color_profile_slot( 8, 7, 162, 179, 185 ); //Avery's Beak
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"Dress","colors":[{"r":213,"g":87,"b":118},{"r":139,"g":48,"b":75,"main":true},{"r":85,"g":17,"b":69}]},{"name":"Bow","colors":[{"r":228,"g":0,"b":0},{"r":147,"g":8,"b":30,"main":true},{"r":85,"g":0,"b":0}]},{"name":"Skin","colors":[{"r":236,"g":205,"b":157},{"r":220,"g":134,"b":94,"main":true},{"r":158,"g":63,"b":44}]},{"name":"Hair","colors":[{"r":255,"g":122,"b":34},{"r":178,"g":50,"b":9,"main":true}]},{"name":"Gloves","colors":[{"r":252,"g":255,"b":255},{"r":162,"g":179,"b":185,"main":true}]},{"name":"Metal","colors":[{"r":212,"g":216,"b":216},{"r":155,"g":166,"b":166,"main":true},{"r":72,"g":81,"b":81}]},{"name":"Avery","colors":[{"r":1,"g":240,"b":176},{"r":4,"g":117,"b":128,"main":true}]},{"name":"Avery's Beak","colors":[{"r":255,"g":244,"b":7},{"r":232,"g":166,"b":6,"main":true}]}]}
-=== END JSON PALETTE ===
-*/
+{"formatversion":1,"data":[{"name":"Dress","colors":[{"r":213,"g":87,"b":118},{"r":139,"g":48,"b":75,"main":true},{"r":85,"g":17,"b":69}]},{"name":"Bow","colors":[{"r":228,"g":0,"b":0},{"r":147,"g":8,"b":30,"main":true},{"r":85,"g":0,"b":0}]},{"name":"Skin","colors":[{"r":236,"g":205,"b":157},{"r":220,"g":134,"b":94,"main":true},{"r":158,"g":63,"b":44}]},{"name":"Hair","colors":[{"r":255,"g":122,"b":34},{"r":178,"g":50,"b":9,"main":true}]},{"name":"Gloves","colors":[{"r":252,"g":255,"b":255},{"r":162,"g":179,"b":185,"main":true}]},{"name":"Metal","colors":[{"r":212,"g":216,"b":216},{"r":155,"g":166,"b":166,"main":true},{"r":72,"g":81,"b":81}]},{"name":"Avery","colors":

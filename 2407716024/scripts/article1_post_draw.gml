@@ -31,7 +31,7 @@ else if (state == 20 && state_timer > 0) {
 else if (state >= 9 && hitbox_sprite_index != noone) {
     draw_sprite_ext(hitbox_sprite_index, hitbox_image_index, hitbox_x, hitbox_y, 2, 2, 0, c_white, 1);
 }
-
+/*
 if (state >= 3 && state <= 8) {
     draw_sprite_ext(spr_pillar, 0, x, y, power_level * 2, 1000, 0, player_id.peacock_main_color, 0.1);
 }

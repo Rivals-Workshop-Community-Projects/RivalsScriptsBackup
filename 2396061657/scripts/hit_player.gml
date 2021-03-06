@@ -7,7 +7,7 @@
 
 // Calculates how many hearts an attack creates
 if (attack != AT_NTHROW && attack != AT_DTHROW && attack != AT_UTHROW && attack != AT_FTHROW){
-	HeartPop = floor(pHitBox.damage/1.8);
+	HeartPop = floor(my_hitboxID.damage/1.8);
 }
 
 if (attack == AT_FSPECIAL && state == PS_HITSTUN){
@@ -37,6 +37,9 @@ if (attack == AT_FSPECIAL && state != PS_HITSTUN){
 
 	dthrowCheck = false;
 	
+	ThornKB = 7.5;
+	CandyKB = 4;
+	
 	attack_end();
 	if (!other.super_armor){ // Checks if the opponent has super armor and doesn't activate if they are
 		switch(GrappleMode){
@@ -49,6 +52,9 @@ if (attack == AT_FSPECIAL && state != PS_HITSTUN){
 			break;
 			case 1:
 				hurtboxID.sprite_index = get_attack_value(AT_DTHROW, AG_HURTBOX_SPRITE);
+				CandyKB = (CandyKB + (LoveMeter/100));
+				set_hitbox_value(AT_DTHROW, 1, HG_BASE_KNOCKBACK, CandyKB);
+				set_hitbox_value(AT_DTHROW, 1, HG_BASE_HITPAUSE, CandyKB + 5);
 				attack = AT_DTHROW;
 			break;
 			case 2:	

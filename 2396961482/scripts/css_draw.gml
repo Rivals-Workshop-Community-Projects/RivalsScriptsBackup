@@ -25,20 +25,20 @@ else if (alt_new != currAlt)
 }
 
 alt_name[0]  = "Default";
-alt_name[1]  = "Blue";
-alt_name[2]  = "Red";
-alt_name[3]  = "Green";
-alt_name[4]  = "White";
-alt_name[5]  = "Pink";
+alt_name[1]  = "Rikuo";
+alt_name[2]  = "Slardar";
+alt_name[3]  = "Octodad";
+alt_name[4]  = "Vaporeon";
+alt_name[5]  = "Vaporwave";
 alt_name[6]  = "Hikaru";
 alt_name[7]  = "Early Access";
-alt_name[8]  = "Urien";
-alt_name[9]  = "Trans Rights";
-alt_name[10] = "You're Going to Brazil";
-alt_name[11] = "Edgelord";
+alt_name[8]  = "Valkyrie";
+alt_name[9]  = "You're Going to Brazil";
+alt_name[10] = "Edgelord";
+alt_name[11] = "Urien";
 alt_name[12] = "Mewtwo";
-alt_name[13] = "Bird Guy";
-alt_name[14] = "Valkyrie";
+alt_name[13] = "Mipha";
+alt_name[14] = "Trans Rights";
 alt_name[15] = "Sans Rights";
 
 draw_set_halign(fa_right);

@@ -26,7 +26,6 @@ if ((attack==AT_DSPECIAL_2||
     }
 }
 
-
 //Wacky Uspecial
 
 if(attack == AT_USPECIAL){
@@ -215,7 +214,7 @@ if (attack == AT_NSPECIAL && teleported == true){
 }
 */
 
-//cancel nspecial air
+//Cancel nspecial air
 if (attack == AT_NSPECIAL_AIR && !free){
 	state = PS_IDLE
 }
@@ -223,6 +222,47 @@ if (attack == AT_NSPECIAL_AIR && !free){
 if (attack == AT_EXTRA_1 && !free){
 	state = PS_IDLE
 }
+
+//Fspecial Bounce off wall
+var _block = asset_get("par_block");
+if (attack == AT_FSPECIAL){
+	if (window >= 4){
+		if (place_meeting(x + 1, y, _block) ||
+    	place_meeting(x - 1, y, _block))
+    	{
+			set_state( PS_IDLE_AIR );
+			old_hsp = -5 * spr_dir;
+			old_vsp = -11;
+			hsp = -5 * spr_dir;
+			vsp = -11;
+			can_fast_fall = true;
+			move_cooldown[AT_FSPECIAL] = 90;
+			sound_play( sound_get( "Hit4" ) );
+		    spawn_hit_fx( x+8, y-10, blue_new_stab_1 );
+		    shake_camera( 3, 4 )
+		}
+	}
+}
+
+if (attack == AT_FSPECIAL_2){
+	if (window >= 4){
+		if (place_meeting(x + 1, y, _block) ||
+    	place_meeting(x - 1, y, _block))
+    	{
+			set_state( PS_IDLE_AIR );
+			old_hsp = -5 * spr_dir;
+			old_vsp = -11;
+			hsp = -5 * spr_dir;
+			vsp = -11;
+			can_fast_fall = true;
+			move_cooldown[AT_FSPECIAL_2] = 90;
+			sound_play( sound_get( "RedHit4" ) );
+		    spawn_hit_fx( x+8, y-10, red_new_stab_1 );
+		    shake_camera( 3, 4 )
+		}
+	}
+}
+
 
 //Abyss Runes
 if has_rune("L") {

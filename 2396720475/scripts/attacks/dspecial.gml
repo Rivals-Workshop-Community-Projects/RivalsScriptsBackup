@@ -48,7 +48,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, .7);
 //set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_HITPAUSE, 35);
-set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, hit_small1);
+//set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, hit_small1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, sound_get("basic2_hit_sfx"));
@@ -59,6 +59,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_VSPEED, 1);
+set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_UNBASHABLE, false);
 
 // Da spike hitbox
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 2);
@@ -88,3 +89,4 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_HSPEED, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_VSPEED, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_UNBASHABLE, false);

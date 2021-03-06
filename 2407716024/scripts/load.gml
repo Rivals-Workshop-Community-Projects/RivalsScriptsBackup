@@ -55,6 +55,7 @@ sprite_change_offset("fspecial", 52, 92);
 sprite_change_offset("uspecial", 78, 128);
 sprite_change_offset("dspecial", 48, 94);
 sprite_change_offset("taunt", 46, 158);
+sprite_change_offset("phone_open", 46, 158);
 
 sprite_change_offset("plat", 64, 94);
 
@@ -84,7 +85,8 @@ sprite_change_offset("gfz_pea", 19, 47);
 
 sprite_change_offset("kirb_throw", 48, 64);
 
-
+sprite_change_offset("fsmash_proj", 52, 32);
+sprite_change_offset("fsmash_proj_shot", 32, 12);
 
 
 
@@ -113,6 +115,10 @@ sprite_change_offset("dspecial_block_lv2_8_die",0,60);
 sprite_change_offset("dspecial_block_lv1_0_falling",12,16);
 sprite_change_offset("dspecial_block_lv1_0_ground",12,16);
 sprite_change_offset("dspecial_block_lv1_0_die",12,16);
+
+sprite_change_offset("fsmash", 68, 128);
+
+
 
 /*
 var i;

@@ -39,3 +39,5 @@ switch (attack) {
         }
     break;
 }
+
+user_event(13);

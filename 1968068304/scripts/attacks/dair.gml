@@ -303,7 +303,7 @@ set_hitbox_value(AT_DAIR, 7, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DAIR, 7, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DAIR, 7, HG_WINDOW, 6);
 set_hitbox_value(AT_DAIR, 7, HG_LIFETIME, 3);
-set_hitbox_value(AT_DAIR, 7, HG_DAMAGE, 6);
+set_hitbox_value(AT_DAIR, 7, HG_DAMAGE, 7);
 //priority/grouping
 set_hitbox_value(AT_DAIR, 7, HG_PRIORITY, 1); 
 set_hitbox_value(AT_DAIR, 7, HG_HITBOX_GROUP, 2);
@@ -315,8 +315,8 @@ set_hitbox_value(AT_DAIR, 7, HG_WIDTH, 104);
 set_hitbox_value(AT_DAIR, 7, HG_HEIGHT, 104);
 set_hitbox_value(AT_DAIR, 7, HG_SHAPE, 0);
 //knockback
-set_hitbox_value(AT_DAIR, 7, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_DAIR, 7, HG_KNOCKBACK_SCALING, 0.4);
+set_hitbox_value(AT_DAIR, 7, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_DAIR, 7, HG_KNOCKBACK_SCALING, 0.45);
 set_hitbox_value(AT_DAIR, 7, HG_ANGLE, 90);
 //stun
 set_hitbox_value(AT_DAIR, 7, HG_BASE_HITPAUSE, 6);
@@ -346,7 +346,7 @@ set_hitbox_value(AT_DAIR, 8, HG_WIDTH, 104);
 set_hitbox_value(AT_DAIR, 8, HG_HEIGHT, 104);
 set_hitbox_value(AT_DAIR, 8, HG_SHAPE, 0);
 //knockback
-set_hitbox_value(AT_DAIR, 8, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_DAIR, 8, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DAIR, 8, HG_KNOCKBACK_SCALING, 0.25);
 set_hitbox_value(AT_DAIR, 8, HG_ANGLE, 90);
 set_hitbox_value(AT_DAIR, 8, HG_ANGLE_FLIPPER, 7); //hit towards epinel

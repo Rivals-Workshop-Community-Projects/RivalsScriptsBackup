@@ -112,7 +112,7 @@ set_window_value(AT_NSPECIAL, 9, AG_WINDOW_VSPEED_TYPE, 2);
 
 //hit 3 cooldown
 set_window_value(AT_NSPECIAL, 10, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 10, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_NSPECIAL, 10, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_NSPECIAL, 10, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 10, AG_WINDOW_ANIM_FRAME_START, 21);
 //set_window_value(AT_NSPECIAL, 10, AG_WINDOW_VSPEED, 1);
@@ -140,7 +140,7 @@ set_window_value(AT_NSPECIAL, 12, AG_WINDOW_ANIM_FRAME_START, 25);
 
 //hit 1 recovery
 set_window_value(AT_NSPECIAL, 13, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 13, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_NSPECIAL, 13, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_NSPECIAL, 13, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 13, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_NSPECIAL, 13, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -251,13 +251,13 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 70); //50
 //stun
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.8);
 set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 8);
 
 //effects
 set_hitbox_value(AT_NSPECIAL, 1, HG_TECHABLE, 3); //can't tech or bounce after the sweetspot.
 set_hitbox_value(AT_NSPECIAL, 1, HG_FORCE_FLINCH, 2);
-set_hitbox_value(AT_NSPECIAL, 1, HG_SDI_MULTIPLIER, 0.001 );//no SDI until the last hit.
+set_hitbox_value(AT_NSPECIAL, 1, HG_SDI_MULTIPLIER, 1 );//no SDI until the last hit.
 set_hitbox_value(AT_NSPECIAL, 1, HG_DRIFT_MULTIPLIER, 0.001 ); //no DI on first hit.
 set_hitbox_value(AT_NSPECIAL, 1, HG_IGNORES_PROJECTILES, 1 ); //cannot break projectiles. 
 
@@ -297,7 +297,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_EXTRA_HITPAUSE, 6);
 
 //effects
 set_hitbox_value(AT_NSPECIAL, 2, HG_TECHABLE, 3); //can't tech or bounce before the last hit.
-set_hitbox_value(AT_NSPECIAL, 2, HG_SDI_MULTIPLIER, 0.001 );//no SDI on first hit.
+set_hitbox_value(AT_NSPECIAL, 2, HG_SDI_MULTIPLIER, 0.25 );//no SDI on first hit.
 set_hitbox_value(AT_NSPECIAL, 2, HG_DRIFT_MULTIPLIER, 0.001 ); //no DI on first hit.
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 302 );
@@ -332,7 +332,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_EXTRA_HITPAUSE, 6);
 //effects
 set_hitbox_value(AT_NSPECIAL, 3, HG_TECHABLE, 3); //can't tech or bounce before the last hit.
-set_hitbox_value(AT_NSPECIAL, 3, HG_SDI_MULTIPLIER, 0.001 );//no SDI before the last hit.
+set_hitbox_value(AT_NSPECIAL, 3, HG_SDI_MULTIPLIER, 0.25 );//no SDI before the last hit.
 set_hitbox_value(AT_NSPECIAL, 3, HG_DRIFT_MULTIPLIER, 0.001 ); //no DI on first hit.
 
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 302 );
@@ -369,8 +369,8 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_EXTRA_HITPAUSE, 8);
 
 //effects
 set_hitbox_value(AT_NSPECIAL, 4, HG_TECHABLE, 3); //can't tech or bounce before the last hit.
-set_hitbox_value(AT_NSPECIAL, 4, HG_SDI_MULTIPLIER, 0.001 );//no SDI before the last hit.
-set_hitbox_value(AT_NSPECIAL, 4, HG_DRIFT_MULTIPLIER, 0.65 ); //reduced drift DI on second hit.
+set_hitbox_value(AT_NSPECIAL, 4, HG_SDI_MULTIPLIER, 0.25 );//no SDI before the last hit.
+set_hitbox_value(AT_NSPECIAL, 4, HG_DRIFT_MULTIPLIER, 0.75 ); //reduced drift DI on second hit.
 
 set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_blow_medium1"));//("sfx_ell_drill_stab"));
@@ -405,7 +405,8 @@ set_hitbox_value(AT_NSPECIAL, 5, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_EXTRA_HITPAUSE, 8);
 //effects
 set_hitbox_value(AT_NSPECIAL, 5, HG_TECHABLE, 3); //can't tech or bounce before the last hit.
-set_hitbox_value(AT_NSPECIAL, 5, HG_SDI_MULTIPLIER, 0.001 );//no SDI before the last hit.
+set_hitbox_value(AT_NSPECIAL, 5, HG_SDI_MULTIPLIER, 0.25 );//no SDI before the last hit.
+set_hitbox_value(AT_NSPECIAL, 5, HG_DRIFT_MULTIPLIER, 0.75 ); //reduced drift DI on second hit.
 
 set_hitbox_value(AT_NSPECIAL, 5, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_blow_medium1"));//("sfx_ell_drill_stab"));
@@ -431,13 +432,14 @@ set_hitbox_value(AT_NSPECIAL, 6, HG_HEIGHT, 62);
 set_hitbox_value(AT_NSPECIAL, 6, HG_SHAPE, 0);
 //knockback
 set_hitbox_value(AT_NSPECIAL, 6, HG_BASE_KNOCKBACK, 8); //5
-set_hitbox_value(AT_NSPECIAL, 6, HG_KNOCKBACK_SCALING, 0.5); //0.7
-set_hitbox_value(AT_NSPECIAL, 6, HG_ANGLE, 40);
+set_hitbox_value(AT_NSPECIAL, 6, HG_KNOCKBACK_SCALING, 0.6); //0.7
+set_hitbox_value(AT_NSPECIAL, 6, HG_ANGLE, 35);
 //stun
 set_hitbox_value(AT_NSPECIAL, 6, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_NSPECIAL, 6, HG_EXTRA_HITPAUSE, 5);
 set_hitbox_value(AT_NSPECIAL, 6, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_NSPECIAL, 6, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_NSPECIAL, 6, HG_DRIFT_MULTIPLIER, 1);
 
 set_hitbox_value(AT_NSPECIAL, 6, HG_VISUAL_EFFECT, 304 );
 set_hitbox_value(AT_NSPECIAL, 6, HG_HIT_SFX, asset_get("sfx_blow_heavy2")); //("sfx_ell_drill_stab"));

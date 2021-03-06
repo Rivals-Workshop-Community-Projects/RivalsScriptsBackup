@@ -33,7 +33,7 @@ set_hitbox_value(AT_NTHROW, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_NTHROW, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_NTHROW, 1, HG_ANGLE, 105);
 set_hitbox_value(AT_NTHROW, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_NTHROW, 1, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(AT_NTHROW, 1, HG_KNOCKBACK_SCALING, 0.7); // 0.9
 set_hitbox_value(AT_NTHROW, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_NTHROW, 1, HG_HITPAUSE_SCALING, 0.9);
 set_hitbox_value(AT_NTHROW, 1, HG_VISUAL_EFFECT, 3);
@@ -231,7 +231,7 @@ set_hitbox_value(AT_NTHROW, 9, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NTHROW, 9, HG_PROJECTILE_HSPEED, 6);
 set_hitbox_value(AT_NTHROW, 9, HG_PROJECTILE_VSPEED, -12);
 set_hitbox_value(AT_NTHROW, 9, HG_PROJECTILE_GRAVITY, 0.45);
-// set_hitbox_value(AT_NTHROW, 9, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_NTHROW, 9, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_NTHROW, 9, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NTHROW, 9, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_NTHROW, 9, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);

@@ -94,7 +94,7 @@ switch(attack){
 			
 			else{
 				if (prev_free == 15) sound_play(asset_get("sfx_mobile_gear_jump"))
-				var spd = 4 * spr_dir;
+				var spd = (player == orig_player ? 4 : 8) * spr_dir; // used to always be 4
 				if critical{
 					hsp -= 0.5 * sign(hsp);
 					if (abs(hsp) < 1) hsp = 0;

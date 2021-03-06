@@ -4,7 +4,7 @@
 // Use ai_recovering to check if the CPU is recovering or not
 // Use temp_level to reference the CPU’s difficulty level (1-9)
 
-if (get_training_cpu_action() == CPU_FIGHT) {
+if (get_training_cpu_action() == CPU_FIGHT && state != PS_SPAWN) {
 	// Wave Dashing
 	if (willWavedashL && free){
 		joy_pad_idle = false;
@@ -84,11 +84,12 @@ if (get_training_cpu_action() == CPU_FIGHT) {
 		targetlocked = false;
 	}
 
+/*
 	// Chase The opponent
 	if (state != PS_SPAWN){
 		if ((((ai_target.state != PS_ATTACK_AIR || ai_target.state != PS_ATTACK_GROUND) || (!ai_recovering) && targetlocked)) && get_training_cpu_action() == CPU_FIGHT){
 		
-		/*
+		
 			// Wave Dashing Towards
 		//	if (enemy_strength == 1){
 				if (xDistanceTot > 100 && !free && (state != PS_DASH || state != PS_DASH_START || state != PS_DASH_TURN) && GeneralRandom > 8.5 && !didWavedash){
@@ -104,7 +105,7 @@ if (get_training_cpu_action() == CPU_FIGHT) {
 					didWavedash = true;
 				}
 		//	}
-		*/
+		
 		}
 	}
 
@@ -121,13 +122,11 @@ if (get_training_cpu_action() == CPU_FIGHT) {
 
 	if (attack == AT_DATTACK && has_hit_player && state != PS_ATTACK_GROUND){
 		
-		/*
 		// Dattack -> Dtilt
 		if ((DI_inwards || DI_upwards || DI_downwards) && damage < 30){
 			down_down = true;
 			attack_pressed = true;
 		}
-		*/
 
 		// Dattack -> Utilt
 		if (DI_inwards && damage < 30 && ai_target.y - x < 20){
@@ -143,4 +142,5 @@ if (get_training_cpu_action() == CPU_FIGHT) {
 		//}
 		
 	}
+*/
 }

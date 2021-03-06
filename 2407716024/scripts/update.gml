@@ -1,4 +1,5 @@
 //update.gml
+user_event(14);
 
 var attempt_air_dash = false;
 
@@ -433,6 +434,62 @@ if  (oPlayer.url != 2135192216 && oPlayer.url != CH_ELLIANA && oPlayer.url != CH
 }
 }
 
+//Time freeze
+
+time_frozen = time_freeze_ticks > 0;
+time_freeze_ticks = clamp(time_freeze_ticks - 1, 0, 9999);
+
+if (attack = 49 && window = 1){
+if time_frozen{
+    var articles = ["obj_article1", "obj_article2", "obj_article3", "obj_article_solid", "obj_article_platform"]
+    
+    with (asset_get("oPlayer")) {
+        if (player != other.player) {
+            //print_debug( string(hsp) + ", " + string(vsp) + " || " + string(old_hsp) + ", " + string(old_vsp))
+            if (hitstop == 0 or abs(vsp) > 1 or abs(hsp) > 0){
+                old_vsp = vsp;
+                old_hsp = hsp;
+                vsp = -1;
+                hsp = -1;
+                can_move = false;
+            }
+            vsp = -1;
+            hsp = -1;
+            hitstop = 2;
+            hitstop_full = 2;
+            hitpause = true;
+            can_move = false;
+        }
+    }
+	
+	var attacks = [AT_JAB, AT_FTILT, AT_DTILT, AT_UTILT, AT_FSTRONG, AT_DSTRONG, AT_USTRONG, AT_DATTACK, AT_BAIR, AT_NAIR, AT_FAIR, AT_UAIR, AT_DAIR, AT_TAUNT, AT_NSPECIAL, AT_FSPECIAL, AT_USPECIAL, AT_DSPECIAL]
+	
+	with (asset_get("oPlayer")) {
+        if (player != other.player) {
+			for (var i = 0; i < array_length_1d(attacks); ++i){
+				if move_cooldown[attacks[i]] < 2{
+					move_cooldown[attacks[i]] = 2;
+			    }
+			}
+        }
+    }
+
+    
+    with (asset_get("oPlayer")) {
+        for (var i = 0; i < array_length_1d(articles); ++i){
+            with ( asset_get( string(articles[i]) ) ){
+                hitstop = 2;
+            }
+        }
+    }
+}
+}
+	if !(free){
+		if (joy_pad_idle && special_pressed && state_timer <= 1){
+		fs_force_fs = true;
+		}
+	}
+
 if easter_egg_set == true {
 	if (state == PS_TECH_GROUND && state_timer == 1){
     snd_rng = random_func(0, 6, true);
@@ -531,7 +588,6 @@ if (oPlayer.state == PS_DEAD && instance_number(oPlayer) < 3 && window_timer <= 
     }
 }
 }
-
 
 
 

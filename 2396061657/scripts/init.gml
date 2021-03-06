@@ -18,6 +18,7 @@ up1 = 1;
 up2 = 1;
 up3 = 1;
 
+
 isThorn = false;
 isCandy = false;
 isRibbon = false;
@@ -29,6 +30,10 @@ RibbonVSP = -11;
 RibbonHSP = -5;
 RibbonKB = 7.5;
 ThornKB = 7.5;
+CandyKB = 4;
+
+variabl_o = 0;
+dspecial_check = false;
 
 usedFspecial = 0;
 nthrowFastFall = false;

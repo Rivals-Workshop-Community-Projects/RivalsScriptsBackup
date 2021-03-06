@@ -484,6 +484,15 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.18", "03 March, 2021");
+	initPatchWords("NSpecial Items - Nerfs, Buffs");
+	initPatchWords_ext("Anvil knockback 9/1.1 --> 8/1.
+	Fire Charge knockback growth 0.9 --> 0.7.
+	Bell is now transcendent.
+	Totem of Undying's pratfall no longer allows air drift.", fa_left, c_gray, 1, 0);
+	initPatchWords("UTilt - Nerfs");
+	initPatchWords_ext("Endlag 12 --> 14.", fa_left, c_gray, 1, 0);
+	
 	initPatch("1.17", "16 February, 2021");
 	initPatchWords("FStrong, Crossbow - Adjustments");
 	initPatchWords_ext("Melee hitbox no longer reaches behind Steve.

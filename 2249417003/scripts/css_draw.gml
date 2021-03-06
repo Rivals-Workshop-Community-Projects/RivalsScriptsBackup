@@ -19,7 +19,7 @@ patch_ver = "1.0";
 patch_day = "04";
 patch_month = "MAR";
  
-var num_alts = 14;
+var num_alts = 15;
 var alt_cur = get_player_color(player);
  
  
@@ -40,7 +40,7 @@ alt_name[10] = "Second Class";
 alt_name[11] = "Goat Ops";
 alt_name[12] = "Shooting Wind";
 alt_name[13] = "Misfire";
-alt_name[14] = "woag";
+alt_name[14] = "Super Snipe";
 alt_name[15] = "woag";
  
  

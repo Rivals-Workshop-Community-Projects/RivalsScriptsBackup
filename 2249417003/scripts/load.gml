@@ -43,6 +43,7 @@ sprite_change_offset("ftilt", 48, 92);
 
 sprite_change_offset("dtilt", 48, 92);
 sprite_change_offset("dtilt_landmine", 20, 16);
+sprite_change_offset("dtilt_landmine_triggered", 20, 16);
 sprite_change_offset("dtilt_landmine_mask", 28, 14);
 sprite_change_offset("dtilt_landmine_mask2", 8, 14);
 

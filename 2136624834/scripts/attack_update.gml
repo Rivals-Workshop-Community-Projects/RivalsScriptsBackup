@@ -336,7 +336,7 @@ if attack == AT_USTRONG && !hitpause {
 
 if attack == AT_DSTRONG && !hitpause {
 
-if window == 4 && window_timer == 14 {
+if window == 4 && window_timer == 14 && timefreeze <= 0{
 	if left_down && !right_down {
 		spr_dir = -1
 	}
@@ -737,10 +737,22 @@ if (window == 2 && window_timer > 2) or window == 3 or (window == 4  && window_t
 
 if attack == AT_DSTRONG {
 	
-	  if has_hit_player && window < 5 && hit_player_obj.state_cat == SC_HITSTUN && !hitpause{
-        hit_player_obj.hsp = ((x + (30 * spr_dir)) - hit_player_obj.x) / 6
-		hit_player_obj.vsp = ((y - 10) - hit_player_obj.y) / 4
+	 if has_hit_player && window < 5 && !hitpause{
+	 	with asset_get("oPlayer") {
+	 				 xrange = abs(x - other.x);
+         yrange = abs(other.y - y);
+         
+         if xrange <= 260 and yrange <= 100 {
+	 		if state_cat == SC_HITSTUN && x != other.x {
+	 			 hsp = ((other.x + (30 * other.spr_dir)) - x) / 6
+		         vsp = ((other.y - 10) - y) / 4
+	 		}
+         }
+         
+	 	}
+       
     }
+	 
     
     if window < 3 && grabbed && !hitpause{
     	window_timer += 0.5

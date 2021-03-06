@@ -13,12 +13,13 @@ set_attack_value(AT_FSPECIAL_AIR, AG_HURTBOX_SPRITE, sprite_get("fspecial_air_hu
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX, asset_get("sfx_waveland_kra"));
-set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME, 6);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
+set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX, sound_get("gravel_sweep_freesounds_jorickhoofd_169555_edited_CCBY30"));
 
 //first armor frame.
+set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_SFX, asset_get("sfx_waveland_kra"));
 set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_ANIM_FRAMES, 2);

@@ -52,6 +52,21 @@ needle_angle = 0;
 chargeshot = 0;
 chargedash = 0;
 
+tomoyai = false;
+yai_timer = 0;
+
+yai_x = 0;
+yai_hold_sound = 0;
+
+yai_shout = [];
+yai_shout_num = 0;
+
+yai_doo = [];
+
+
+bpm = 152;
+bpm_steps = bpmtosteps(bpm);
+
 hit_big = hit_fx_create( sprite_get("bighit_fx"), 32);
 hit_spiky = hit_fx_create( sprite_get("spikyhit_fx"), 32);
 hit_small1 = hit_fx_create( sprite_get("smallhit1_fx"), 36);
@@ -160,3 +175,16 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
+
+ 
+// shoutouts to delta for this thing below
+#define bpmtosteps
+//bpmtosteps(bpm)
+//calculates the number of steps per beat for a given BPM. 
+var bpm, result;
+bpm = argument0
+
+//3600 steps in a minute.
+result = round(3600 / bpm)
+
+return result;

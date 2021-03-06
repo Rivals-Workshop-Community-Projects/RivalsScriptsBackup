@@ -118,7 +118,7 @@ set_window_value(AT_DSPECIAL_AIR, 13, AG_WINDOW_CUSTOM_GRAVITY, 0.6);
 
 //14: recovery after ground slam (transition to crouch)
 set_window_value(AT_DSPECIAL_AIR, 14, AG_WINDOW_TYPE, 0);
-set_window_value(AT_DSPECIAL_AIR, 14, AG_WINDOW_LENGTH, 28);
+set_window_value(AT_DSPECIAL_AIR, 14, AG_WINDOW_LENGTH, 27);
 set_window_value(AT_DSPECIAL_AIR, 14, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DSPECIAL_AIR, 14, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_DSPECIAL_AIR, 14, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -150,15 +150,15 @@ set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_LIFETIME, 3);
-set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_DAMAGE, 2);
+set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_DAMAGE, 3);
 //priority/grouping
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITBOX_GROUP, 1);
 //shape
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITBOX_X, -12);
-set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITBOX_Y, -55);
-set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_WIDTH, 38);
-set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HEIGHT, 68);
+set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITBOX_Y, -57);
+set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_WIDTH, 40);
+set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HEIGHT, 72);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_SHAPE, 2); //rounded rectangle
 //knockback
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_BASE_KNOCKBACK, 3);
@@ -183,7 +183,7 @@ set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_LIFETIME, 3);
-set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_DAMAGE, 2);
+set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_DAMAGE, 3);
 //priority/grouping
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HITBOX_GROUP, 1);
@@ -216,14 +216,14 @@ set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_WINDOW, 4);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_LIFETIME, 9);
-set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_DAMAGE, 2);
+set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_DAMAGE, 3);
 //priority/grouping
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HITBOX_GROUP, 2);
 //shape
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HITBOX_X, 0);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HITBOX_Y, -20);
-set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_WIDTH, 36);
+set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_WIDTH, 38);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HEIGHT, 28);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_SHAPE, 0); //circle
 //knockback
@@ -422,10 +422,10 @@ set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_DAMAGE, 2);
 set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_HITBOX_GROUP, 1);
 //shape
-set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_HITBOX_X, -6);
-set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_HITBOX_Y, -68);
-set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_WIDTH, 32);
-set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_HEIGHT, 26);
+set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_HITBOX_X, -3);
+set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_HITBOX_Y, -66);
+set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_WIDTH, 40);
+set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_HEIGHT, 36);
 set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_SHAPE, 0); //circle
 //knockback
 set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_BASE_KNOCKBACK, 3);

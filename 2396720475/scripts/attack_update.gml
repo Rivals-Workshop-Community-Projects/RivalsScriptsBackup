@@ -16,6 +16,65 @@ if (taunt_down && attack == AT_EXTRA_1 && state == PS_ATTACK_GROUND && window ==
 	window_timer = 1;
 }
 
+if (attack == AT_EXTRA_2 && state == PS_ATTACK_GROUND && window == 1 && window_timer == 4){
+	
+	if (yai_hold_sound != 0){
+		yai_hold_sound = 0;
+	}
+	
+	if (attack_pressed || shield_pressed || jump_pressed){
+		window = 3;
+		window_timer = 1;
+	}
+	else {
+		window = 1;
+		window_timer = 1;
+	}
+	
+	if (down_down){ // Doo
+		sound_play(sound_get("moyai_start"));
+		window = 2;
+		window_timer = 1;
+	}
+	
+	if (up_down){ // Shout
+		attack = AT_EXTRA_3;
+		window = 2;
+		window_timer = 1;
+		sound_play(sound_get("moyai_shout"));
+	}
+	
+	/*
+	if (up_down){ // Minigame
+		tomoyai = true;
+	}
+	*/
+}
+
+if (attack == AT_EXTRA_2 && down_down && window = 2 && window_timer == 6){
+	window_timer = 5;
+	if (yai_hold_sound == 27){
+		yai_hold_sound = 0;
+	}
+	if (yai_hold_sound == 0){
+		sound_play(sound_get("moyai_hold"));
+	}
+	yai_hold_sound++;
+}
+
+if (attack == AT_EXTRA_2  && window = 2 && window_timer == 8){
+	sound_stop(sound_get("moyai_hold"));
+	sound_play(sound_get("moyai_end"));
+}
+
+if ((attack == AT_EXTRA_2 || attack == AT_EXTRA_3) && state == PS_ATTACK_GROUND && window == 2 && window_timer == 12){
+	if (attack == AT_EXTRA_3){
+		attack = AT_EXTRA_2;
+	}
+	window = 1;
+	window_timer = 1;
+}
+
 	
 // Down Special
 if (attack == AT_DSPECIAL){
@@ -66,8 +125,9 @@ if (attack == AT_DSPECIAL){
 		movingbox.owner = player;
 		movingbox.health_check = true;
 		movingbox.initial_spawn = true;
+		movingbox.hitfxowner = id;
 		
-		if (get_player_color(player) == 12 || get_player_color(player) == 10){
+		if (get_player_color(player) == 12 || get_player_color(player) == 10 || get_player_color(player) == 1){
 			flag_destroy = false;
 			movingbox.flag = true;
 		}
@@ -89,7 +149,18 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL){
 if (attack == AT_FSPECIAL){	
 	move_cooldown[AT_FSPECIAL] = 40;
 	if (window == 2){
-	
+		
+		
+		if (chargedash == 0){ // Weak
+			sound_play(sound_get("charging"));
+		}
+		if (chargedash == 20){ // Medium
+			sound_play(sound_get("charging"));
+		}
+		if (chargedash == 40){ // Strong
+			sound_play(sound_get("charging"));
+		}
+
 		if (shield_pressed){
 			window = 6;
 			window_timer = 0;		

@@ -42,7 +42,6 @@ if attack == AT_DSPECIAL{
     	  if hitbox_timer % 2 == 1 {
     	spawn_hit_fx(x - 40 + random_func(1,80,true),y - 40 + random_func(2,80,true), bfx3)
     	}
-    	spawn_hit_fx(x,y ,bfx1)
 	
 }
 

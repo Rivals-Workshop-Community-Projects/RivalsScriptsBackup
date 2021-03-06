@@ -99,9 +99,10 @@ if (state == 1){
 			boxhitbox = create_hitbox( AT_DSPECIAL, 1, x, y );	
 			boxhitbox.kb_angle = kb_angle;	
 		}
-		
+
+//		boxhitbox.hit_effect = hitfxowner.hit_small1;
 		boxhitbox.player = owner;
-		boxhitbox.length = 999;		
+		boxhitbox.length = 999;
 	}
 
 	if (!free && vsp > -.5 && vsp < .5 && hsp < 2 && hsp > -2){

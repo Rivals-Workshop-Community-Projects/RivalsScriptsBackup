@@ -8,7 +8,6 @@ mask_index = sprite_get("peacock_crouch_hurtbox");
 spr_dir = player_id.spr_dir;                        //The direction the article should face when it spawns. Here I have it set to face the same way as the character
 uses_shader = false;                                 //Whether or not the article is recolored according to the character's color.gml and costume.
 
-
 charge_time = 0;
 
 

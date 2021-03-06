@@ -43,6 +43,10 @@ if (state == 2){
 	if (place_meeting(x, y, asset_get("par_block")) && (!place_meeting(x, y, player_id.Box))){
 		state = 5;
 	}
+	
+	if (state_timer > 10){
+		state = 4;
+	}
 }
 
 if (state == 5){
@@ -82,13 +86,31 @@ if (state == 3){ // Moves with Box
 					
 				}
 			}
-		}	
-		x = player_id.movingbox.x - stored_x;
+		}
+		
+		if (image_angle == 0){
+			x = player_id.movingbox.x - stored_x - 5;
+		}
+		else{
+			x = player_id.movingbox.x - stored_x + 5;		
+		}
+		
 		y = player_id.movingbox.y - stored_y;
 	}
 	
 	if (!instance_exists(player_id.movingbox) && !instance_exists(player_id.Box)){
 		state = 4;
+	}
+	
+	if (instance_exists(player_id.Box)){
+		if (image_angle == 0){
+			x = player_id.Box.x - stored_x - 5;
+		}
+		else{
+			x = player_id.Box.x - stored_x + 5;		
+		}
+		
+		y = player_id.Box.y - stored_y;		
 	}
 }
 

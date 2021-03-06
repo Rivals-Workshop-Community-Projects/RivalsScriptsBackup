@@ -155,6 +155,9 @@ if attack == AT_EXTRA_3 {
     if window == 4 {
         if window_timer < 33 {
         shake_camera(2,2)
+        if window_timer % 3 == 0 {
+        window_timer += 1
+        }
         }
 
         if window_timer == 33 {
@@ -162,17 +165,25 @@ if attack == AT_EXTRA_3 {
         spawn_hit_fx(x+10*spr_dir,y-10,303)
          sound_play(sound_get("counterhit"))
           create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 40 - (14*triggered))
-          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 40- (14*triggered))
-          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 40- (14*triggered))
-          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 40- (14*triggered))
-          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 40- (14*triggered))
-          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 40- (14*triggered))
-          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 40- (14*triggered))
-          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 40- (14*triggered))
-          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 40- (14*triggered))
-          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 40- (14*triggered))
-          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 40- (14*triggered))
-          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 40- (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 40 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 40 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 40 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 40 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 40 - (14*triggered))
+          
+          create_hitbox(AT_EXTRA_3, 3, x + 30*spr_dir , y - 50 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 30*spr_dir , y - 50 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 30*spr_dir , y - 50 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 30*spr_dir , y - 50 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 30*spr_dir , y - 50 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 30*spr_dir , y - 50 - (14*triggered))
+          
+          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 60 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 60 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 60 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 60 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 60 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 60 - (14*triggered))
           
         }
     }
@@ -547,9 +558,11 @@ if attack == AT_BAIR {
 if attack == AT_TAUNT {
     
     if window == 1 {
-        if invincible == false {
-        	if state_timer % 20 == 0 {
+    	
+        if !free {
+        	if state_timer % 17 == 0 && state_timer <= 90{
         		DT += 1
+                move_cooldown[AT_DTILT] = 6
         	}
         }
         

@@ -31,6 +31,17 @@ else {
 	}
 }
 
+
+with(oPlayer){
+	if (player != other.player && url == other.player_id.url){
+		if ( attack == AT_DSPECIAL &&  window == 2 && ( state == PS_ATTACK_AIR ||  state == PS_ATTACK_GROUND) && point_distance( x, y, other.x, other.y) < 275) {
+			other.state = 2;
+			other.hsp = 10 * dcos(point_direction(other.x, other.y,  x,  y - 20));
+			other.vsp = -10 * dsin(point_direction(other.x, other.y,  x,  y - 20));
+		}
+	}
+}
+
 if (state == 1){ // Hearts fly, can be collected by Callie
 	
 	if (!free && hsp == 0){
@@ -41,6 +52,7 @@ if (state == 1){ // Hearts fly, can be collected by Callie
 	if (state_timer > 20){
 		var collected = false;
 		var pointsgain = false;
+
 		with (oPlayer){
 			if (place_meeting(x, y, other)){
 				if (player == other.player){
