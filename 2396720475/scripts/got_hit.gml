@@ -7,3 +7,5 @@
 
 	usedUspecial = false;
 	usedUspecial2 = 0;
+	chargedash = 0;
+	usedFspecial = false;

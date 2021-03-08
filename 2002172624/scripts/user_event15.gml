@@ -196,17 +196,17 @@ pho_has_agentn_cdc = 1; // Agent N's codec
 // Stage cosmetics
 pho_has_drac_codec = 1;	// Dialogue for the Dracula boss fight
 pho_has_miivs_post = 1;	// Posts for the Miiverse stage
-pho_has_dede_title = 0;	// Title for the Mt Dedede Stadium stage
-pho_has_soul_title = 0; // Text for the Soulbound Conflict stage
-pho_has_been_found = 0; // Death sprite for the Trial Grounds stage
+pho_has_dede_title = 1;	// Title for the Mt Dedede Stadium stage
+pho_has_soul_title = 1; // Text for the Soulbound Conflict stage
+pho_has_been_found = 1; // Death sprite for the Trial Grounds stage
 pho_has_resort_pic = 0; // Portrait for the Last Resort stage
-pho_has_pkmn_image = 0; // Battle sprite for Pokémon Stadium
+pho_has_pkmn_image = 1; // Battle sprite for Pokémon Stadium
 pho_has_daro_codec = 0; // Dialogue for the Daroach boss fight
 
 
 
 if (object_index == asset_get("cs_playerbg_obj")){
-	num_alts = 14; // Number of alt costumes; controls how many appear on the CSS
+	num_alts = 16; // Number of alt costumes; controls how many appear on the CSS
 	exit;
 }
 
@@ -226,8 +226,8 @@ muno_char_name = get_char_info(player, INFO_STR_NAME);	// Name of the character,
 
 muno_char_icon = get_char_info(player, INFO_ICON);		// CSS icon of the character. You can replace this with an arbitrary sprite, using sprite_get(), and it'll be used in the upper left of the phone's big screen. (Make it the same size pls, thank u)
 
-phone.taunt_hint_x = 0;									// Sideways offset of the "Taunt!" thing that shows in Practice Mode until you've opened the MunoPhone. You can move it sideways if it covers up your HUD elements.
-phone.taunt_hint_y = 0;									// Vertical offset
+phone.taunt_hint_x = 5;									// Sideways offset of the "Taunt!" thing that shows in Practice Mode until you've opened the MunoPhone. You can move it sideways if it covers up your HUD elements.
+phone.taunt_hint_y = -37;									// Vertical offset
 phone.shader = 0;										// Whether or not to apply the character's palette to the phone and non-TrainingTown sidebar (change color with alt costumes)
 
 phone.dont_fast = 0;									// Set this to 1, and Fast Graphics will not automatically be set when the FPS dips below 60.
@@ -372,9 +372,34 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	//Update 1.20 - Skins + Punishment  Time
+	initPatch("1.20", "7 March, 2021");
+	initPatchWords("Up Special 'Grappling Hook'
+	- Now hooks onto anything under 'par_block' or 'par_jumpthrough'");
+	initPatchWords_ext("This means it should work on articles and moving platforms on custom stages", fa_left, c_gray, 1, 0);
+
+	initPatchWords("Up Strong 'The Throne'
+	- Fixed the false galaxy problem");
+	initPatchWords_ext("For real this time... I hope", fa_left, c_gray, 1, 0);
+
+	initPatchWords("Down Strong 'Punishment Time'
+	- No longer lets the enemy out of grab when pressing special");
+
+	initPatchWords("Down Air 'Crown Pound'
+	- Knockback lowered from 10 to 8");
+
+	initPatchWords("Compatibility and Support
+	- Added sprites for 'Killing Grounds' and 'Trial Grounds'
+	- Added sprites for 'Pokemon Stadium'");
+
+	initPatchWords("Other Notes
+	- Siggneos Meter filling and emptying animations are now smoother (doesn't effect gameplay only visual)
+	- Character Select UI changed to show pallet names again and look cleaner
+	- Alternate Pallets 'Magnetic Majesty' and 'King of Despair' added");
+
 	//Update 1.19 - Fire Effect for ftilt and uair + balancing
 	initPatch("1.19", "27 December, 2020");
-	initPatchWords("Neutral Special ‘The King’s Word'
+	initPatchWords("Neutral Special 'The King’s Word'
 	- All words are now destroyed when parried");
 	initPatchWords_ext("Briggs still gets extended parry stun", fa_left, c_gray, 1, 0);
 
@@ -635,8 +660,31 @@ with phone{
 	
 	");
 
+	initAbout("Compatibile Mods", "This is a list of mods that King Briggs has support for, go check em out!
+	Character Mods
+	- Kirby (copy ability)
+	- Trummel & Alto (Codec)
+	- Trummel & Alto 2 (Codec)
+	- Otto (Bobble Head)
+	- Steve (Death Message)
+	- Feri (Taunt Cosplay)
+	- Agent N (Codec)
+	- Haikaru (Fakie Title)
+	
+	Stage Mods
+	- Drarcula Boss (Opening Dialog)
+	- Miiverse (Miiverse Post)
+	- Mt Dedede (Title)
+	- Soulbound Conflict (Battle Text)
+	- Pokemon Stadium (Background Screen Sprites)
+	- The Killing Grounds + The Trail Grounds (Found Guilty Sprites)
+	
+	Other
+	- Muno Phone (you're using it right now)");
+
 	initAbout("The Legend of the King", "Atop the tallest mountain in the land sits an ominous tower ensconced in a volcanic krag, its silhouette illuminated with fire and RGB lighting. The rainbow progresses from one color to the next as a challenger approaches. The nigh impossible climb punctuated with the slow opening of the massive oak doors, the darkness within inviting anyone who has dared to make the trek. Slowly the challenger’s eyes adjust as their ears catch something sinister. A chuckle, a cackle even, its cacophonous echo seems without origin. That can’t be true though, the uninvited guest knows why he is here, there is wealth to claim and a King to depose. Finally he reaches it, The Throne Room. In front of him, the Gamer King unaware of his presence, stands immersed in a vr experience bought with his draconic wealth. Since the beginning of time (video games) he has been here, amassing wealth and gamer skill, chuckling with each win he claims, undefeated, immortal. The challenger approaches to take the King by surprise… but he stands outmatched. The King’s aim and reaction times are too fast, the interloper is decimated by his 12 gauge. Another day, another ez win; his Siggneos’ power embiggened. Soon the day will come when the Greatest Pyroblast is released, where all will perish ‘cept the King and those like him who have gotten gud. Do you have what it takes to challenge him? Do you have what it takes to fight the King?")
 	
+
 }
 
 
@@ -930,8 +978,8 @@ if pho_has_miivs_post{
 
 if pho_has_dede_title{
 	
-	arena_title = "woag";
-	arena_short_name = "woaf";
+	arena_title = "The Taunting Tyrant";
+	arena_short_name = "King Briggs";
 	
 }
 
@@ -941,7 +989,7 @@ if pho_has_dede_title{
 
 if pho_has_soul_title{
 	
-	battle_text = "* woag";
+	battle_text = "* You hear an ominous chuckle";
 	
 }
 
@@ -951,8 +999,8 @@ if pho_has_soul_title{
 
 if pho_has_been_found{
 
-	sprite_change_offset("trial_grounds", 31, 0);
-	guiltySprite = sprite_get("trial_grounds");
+	sprite_change_offset("guiltySprite", 31, 0);
+	guiltySprite = sprite_get("guiltySprite");
 	
 }
 
@@ -975,7 +1023,7 @@ if pho_has_pkmn_image{
 	
 	pkmn_stadium_front_img = sprite_get("pkmn_front");
 	pkmn_stadium_back_img = sprite_get("pkmn_back");
-	pkmn_stadium_name_override = "sdkhjfskhgfkslhfglkha";
+	pkmn_stadium_name_override = "KB's Cat";
 	
 }
 

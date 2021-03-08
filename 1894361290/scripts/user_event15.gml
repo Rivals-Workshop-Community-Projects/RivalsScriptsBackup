@@ -584,6 +584,33 @@ with phone{
 	initPatchWords("Bug Fixes:
 	- Fixed a bug where you could sometimes spawn infinite walkie talkies.
 	");
+	
+	initPatch("5.6", "8 March, 2021");
+	
+	initPatchWords("Balance Changes:
+	- Dair multihit damage decreased: 2 -> 1
+	- Dair launcher damage decreased: 8 -> 7
+	- WT dair multihits no longer affected by the +1 damage bonus per hitbox
+	- Nspecial WT small shockwave damage decreased: 3 -> 2
+	- Nspecial WT large shockwave damage decreased: 10 -> 9
+	- Nspecial WT large shockwave base hitpause decreased: 20 -> 15
+	- Nspecial WT large shockwave bkb increased: 7 -> 12
+	- Nspecial WT large shockwave kbg decreased: 0.7 -> 0.4
+	- Nspecial WT large shockwave angle increased: 65 -> 90
+	- Fspecial hsp decreased slightly (both normal/wt)
+	- You can no longer summon a WT for 60 frames after one has been destroyed via blastzone.
+	- You can no longer summon a WT for 30 frames after throwing a WT.
+	");
+	
+	initPatchWords("Bug Fixes:
+	- Fspecial no longer can be jump canceled after being parried.
+	");
+	
+	initPatchWords("Other:
+	- Fspecial normal/wt animation smears improved.
+	- Bird Guy alt honk sfx volume decreased.
+	- Sfx added for when WT is destroyed via blastzone.
+	");
 }
 
 

@@ -55,3 +55,4 @@ set_hitbox_value(AT_USPECIAL, 1, HG_EXTRA_HITPAUSE, 9);
 set_hitbox_value(AT_USPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_UNBASHABLE, false);
+set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, hit_small1);

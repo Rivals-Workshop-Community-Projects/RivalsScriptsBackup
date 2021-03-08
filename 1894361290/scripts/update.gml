@@ -5,6 +5,11 @@ timer++;
 //munophone
 user_event(14);
 
+if wt_destroyed_timer > 0 {
+	wt_destroyed_timer--;
+	if move_cooldown[AT_DSPECIAL] < 2 move_cooldown[AT_DSPECIAL] = 2;
+}
+
 //codec stuff
 if ("trummel_id" in self) {
 	with trummel_id {
@@ -121,9 +126,7 @@ if state == PS_HITSTUN || state == PS_HITSTUN_LAND {
 }
 
 if num_wt >= num_wt_max && !holding_wt {
-    move_cooldown[AT_DSPECIAL] = 10;
-} else {
-    move_cooldown[AT_DSPECIAL] = 0;
+    if move_cooldown[AT_DSPECIAL] < 2 move_cooldown[AT_DSPECIAL] = 2;
 }
 
 if holding_wt {

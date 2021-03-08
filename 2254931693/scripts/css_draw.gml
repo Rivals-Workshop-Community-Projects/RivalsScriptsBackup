@@ -2,9 +2,9 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-patch_ver = "1.6.2";
-patch_day = "28";
-patch_month = "FEB";
+patch_ver = "1.6.3";
+patch_day = "07";
+patch_month = "MAR";
  
 if get_player_color(player) == 7 {
 set_character_color_shading( 0, 0 );

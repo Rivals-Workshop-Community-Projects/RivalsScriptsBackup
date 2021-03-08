@@ -236,12 +236,6 @@ if (attack == AT_DSTRONG && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND
         grabbedid.spr_dir = -spr_dir; //TURN THE GRABBED PLAYER TO FACE THE GRABBING PLAYER
         grabbedid.wrap_time = 7000;
         grabbedid.state = PS_WRAPPED;
-        if(special_pressed){ //REPLACE THIS IF CONDITION WITH WHAT YOU WANT TO RELEASE THE GRAB
-            grabbedid.state = PS_TUMBLE;
-            grabbedid.x = x;
-            grabbedid.y = y;
-            grabbedid = noone;
-        }
     }
 }
 

@@ -20,7 +20,7 @@ if (attack == AT_NSPECIAL){
 }
 */
 
-if (attack = AT_DSPECIAL){
+if (attack == AT_DSPECIAL){
 	if (was_parried){
 		if (instance_exists(player_id.movingbox)){
 			if (player_id.movingbox.vsp < -4){

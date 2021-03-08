@@ -83,5 +83,8 @@ sprite_change_offset("bobble_briggs", 0, 4);
 sprite_change_offset("Kirby_Briggs", 34, 108);
 sprite_change_offset("Kirby_Briggs_Hurt", 34, 108);
 
+//KILLING GROUNDS
+sprite_change_offset("guiltySprite", 31, 0);
+
 //MUNO PHONE
 sprite_change_offset( "phone_open", 32, 80 )

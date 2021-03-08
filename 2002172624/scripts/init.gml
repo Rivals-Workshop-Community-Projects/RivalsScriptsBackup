@@ -115,6 +115,7 @@ bubble_y = 8;
 //SIG GAUGE
 
 GAUGE_SIG_CURRENT = 0;
+GAUGE_SIG = 0;
 GAUGE_SIG_MAX = 100;
 GAUGE_SIG_USED = false;	// optional
 GAUGE_UNLOCK = 0; //how much of the Gauge is unlocked 0 = 1 bar, 1 = 2 bar, 2 = 3 bar
@@ -174,7 +175,8 @@ miiverse_post3 = sprite_get("miiverse_post3");
 sprite_change_offset("miiverse_post", 60, 30);
 sprite_change_offset("miiverse_post2", 60, 30);
 sprite_change_offset("miiverse_post3", 60, 30);
-
+//Killing Grounds
+guiltySprite = sprite_get("guiltySprite");
 
 //Phone (stays at bottom)
 user_event(14);

@@ -15,8 +15,6 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_jumpground"));
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -3);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED, 3);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, 1);
 

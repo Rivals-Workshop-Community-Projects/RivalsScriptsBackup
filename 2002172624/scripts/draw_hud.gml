@@ -27,7 +27,7 @@ if (GAUGE_SIG_CURRENT = 5 and GAUGE_UNLOCK = 1) {
 draw_sprite_ext(sprite_get("ui_backing"), 0, temp_x - 1, temp_y - 50, 2, 2, 0, -1, 1);
 
 //FILL
-draw_sprite_ext(sprite_get("ui_fill"), 0, temp_x + 1.7, temp_y - 50, (GAUGE_SIG_CURRENT * 2) / 100, 2, 0, -1, 1);
+draw_sprite_ext(sprite_get("ui_fill"), 0, temp_x + 1.7, temp_y - 50, (GAUGE_SIG * 2) / 100, 2, 0, -1, 1);
 
 //FRAME
 draw_sprite_ext(sprite_get("ui_frame"), 0, temp_x - 1, temp_y - 50, 2, 2, 0, -1, 1);

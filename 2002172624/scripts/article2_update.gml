@@ -23,7 +23,7 @@ if (state == 0) { //thrown
     //spr_dir = -1*(image_angle > 90 && image_angle < 270) + 1*(image_angle < 90 || image_angle > 270);
     x_ch = x;
     y_ch = y;
-    if (((position_meeting(x,y,asset_get("solid_32_obj")) || (state_timer > hook_time && position_meeting(x,y,asset_get("jumpthrough_32_obj")))))) state = 1;
+    if (((position_meeting(x,y,asset_get("par_block")) || (state_timer > hook_time && position_meeting(x,y,asset_get("par_jumpthrough")))))) state = 1;
     if !instance_exists(hbox) hbox = create_hitbox(AT_USPECIAL,1,x,y);
     else {
         hbox.x = x;

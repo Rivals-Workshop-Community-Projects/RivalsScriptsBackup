@@ -29,7 +29,7 @@ if attack == AT_DSPECIAL {
     }
     
     //take out/put away
-    if window_timer == 0 {
+    if window_timer == 0 && move_cooldown[AT_DSPECIAL] == 0 {
         if holding_wt && !picking_wt {
             window = 2;
             holding_wt = false;

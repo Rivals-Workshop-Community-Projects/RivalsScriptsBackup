@@ -66,8 +66,9 @@ var max_col = long ? 6 : 5;
 	
 for (i = 0; i < len; i++){
 	if displayed[i]{
-		if long draw_sprite(sprite_get("_pho_compatibility_badges"), i, x + 8 + 18 * floor(i / max_col), y + 40 + 18 * (iters % max_col));
-		else draw_sprite(sprite_get("_pho_compatibility_badges"), i, x + 12 + 22 * floor(i / max_col), y + 44 + 22 * (iters % max_col));
+		if long draw_sprite(sprite_get("_pho_compatibility_badges"), i, x + 8 + 18 * (iters % max_col), y + 40 + 18 * floor(i / max_col));
+		else draw_sprite(sprite_get("_pho_compatibility_badges"), i, x + 8 + 18 * (iters % max_col), y + 40 + 22 * floor(i / max_col));
+		//153 = bottom
 		iters++;
 	}
 }
@@ -78,19 +79,34 @@ for (i = 0; i < len; i++){
 
 var alt_cur = get_player_color(player);
 
-rectDraw(x + 10, y + 10, 201, 5, c_black);
- 
+colorName[0] = "King Briggs";
+colorName[1] = "Royal Blue";
+colorName[2] = "Vineyard";
+colorName[3] = "Snowman Clan";
+colorName[4] = "Poop Goblin";
+colorName[5] = "Candy Watermelon";
+colorName[6] = "Demon King";
+colorName[7] = "Copper Green";
+colorName[8] = "Lasaga Lord";
+colorName[9] = "Northern Noble";
+colorName[10] = "Cobble Keep";
+colorName[11] = "Midas Touch";
+colorName[12] = "King's Feast";
+colorName[13] = "Pale King";
+colorName[14] = "Magnetic Majesty";
+colorName[15] = "The Ultimate King";
+
+
 for(i = 0; i < num_alts; i++){
-    var draw_color = (i == alt_cur) ? c_white : c_gray;
-    var draw_x = x + 78 + 8 * i;
-    rectDraw(draw_x, y + 10, 5, 3, draw_color);
+    var draw_color = (i == alt_cur) ? c_white : c_black;
+    var draw_x = x + 76 + 8 * i;
+    rectDraw(draw_x, y + 2, 5, 3, draw_color);
 }
 
-var txt = "#" + string(alt_cur);
+var txt = "#" + string(alt_cur + 1);
 
-rectDraw(x + 76, y + 15, 41, 20, c_black);
-
-textDraw(x + 82, y + 19, "fName", c_white, 20, 1000, fa_left, 1, false, 1, txt);
+textDraw(x + 6, y - 13, "fName", c_white, 20, 1000, fa_left, 1, false, 1, txt);
+textDraw(x + 40, y - 13, "fName", c_white, 20, 1000, fa_left, 1, false, 1, colorName[alt_cur]);
 
 
 

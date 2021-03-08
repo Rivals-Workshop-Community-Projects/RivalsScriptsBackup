@@ -86,6 +86,10 @@ with (needleplatform_solid){
 //draw_debug_text(x, y - 80, "needle_angle: " + string(needle_angle));
 //draw_debug_text(temp_x + 300, temp_y - 80, "y pos: " + string(y));
 
+//draw_debug_text(temp_x + 200, temp_y - 80, "usedUspecial1: " + string(usedUspecial ));
+//draw_debug_text(temp_x + 200, temp_y - 100, "can_pull: " + string(can_pull));
+//draw_debug_text(temp_x + 200, temp_y - 120, "needle_land: " + string(needleland));
+
 /*
 if (instance_exists(movingbox)){
 	with (movingbox){

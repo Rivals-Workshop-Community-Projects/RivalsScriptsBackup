@@ -22,8 +22,10 @@ var wt_attacks = [AT_JAB, AT_FTILT, AT_DTILT, AT_UTILT, AT_UAIR, AT_FAIR, AT_DAI
 var damage_bonus = 0;
 for (var i = 0; i < array_length(wt_attacks); i++) {
     if my_hitboxID.attack == wt_attacks[i] {
-        damage_bonus = 1;
-        break;
+        if !(my_hitboxID.attack == AT_DAIR && (my_hitboxID.hbox_num == 6 || my_hitboxID.hbox_num == 7)) {
+            damage_bonus = 1;
+            break;
+        }
     }
 }
 if holding_wt && damage_bonus {

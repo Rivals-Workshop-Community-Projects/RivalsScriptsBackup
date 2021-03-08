@@ -39,8 +39,8 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 70);
 set_hitbox_value(AT_DSPECIAL, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 10);
 set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 2);
-set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 165); //Just in case i need to revert back to JUGGLES
-//set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 2);
+set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 361); //Just in case i need to revert back to JUGGLES
+set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, lanternfx);

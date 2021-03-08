@@ -388,7 +388,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 305);
-
+set_hitbox_value(AT_NSPECIAL, 1, HG_IGNORES_PROJECTILES, true);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 1);

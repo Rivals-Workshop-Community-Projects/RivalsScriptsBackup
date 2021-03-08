@@ -79,6 +79,7 @@ set_hitbox_value(AT_FTILT, 2, HG_HITBOX_GROUP, 1);
 
 set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_SPRITE, sprite_get("ftilt_magic"));
 set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_MASK, sprite_get("ftilt_magic_hurt"));
+set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_DESTROY_EFFECT, 4);
 set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_boss_fireball_land"));
 set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_ANIM_SPEED, 0.2);
 set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_HSPEED, 2.5);

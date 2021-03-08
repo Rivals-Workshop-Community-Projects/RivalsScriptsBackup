@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 14 );
+set_num_palettes( 16 );
 
 // Royal Blue
 set_color_profile_slot( 1, 0, 219, 230, 237 ); //Crown
@@ -166,8 +166,28 @@ set_color_profile_slot( 13, 5, 255, 255, 255 ); //Skin
 set_color_profile_slot( 13, 6, 255, 255, 255 ); //Cat Light
 set_color_profile_slot( 13, 7, 209, 209, 209 ); //Cat Dark
 
+// Magnetic Majesty
+set_color_profile_slot( 14, 0, 131, 48, 194 ); //Crown
+set_color_profile_slot( 14, 1, 105, 26, 99 ); //Crown Dark
+set_color_profile_slot( 14, 2, 206, 214, 247 ); //Crown Light
+set_color_profile_slot( 14, 3, 166, 76, 49 ); //Cloak
+set_color_profile_slot( 14, 4, 238, 255, 71 ); //Hair
+set_color_profile_slot( 14, 5, 255, 162, 122 ); //Skin
+set_color_profile_slot( 14, 6, 0, 166, 255 ); //Cat Light
+set_color_profile_slot( 14, 7, 232, 79, 76 ); //Cat Dark
 
-/* This is used by that one RoA colors.gml generator tool to store palette data
+// Monokuma
+set_color_profile_slot( 15, 0, 230, 46, 46 ); //Crown
+set_color_profile_slot( 15, 1, 161, 5, 39 ); //Crown Dark
+set_color_profile_slot( 15, 2, 255, 118, 77 ); //Crown Light
+set_color_profile_slot( 15, 3, 38, 35, 38 ); //Cloak
+set_color_profile_slot( 15, 4, 245, 240, 245 ); //Hair
+set_color_profile_slot( 15, 5, 245, 240, 245 ); //Skin
+set_color_profile_slot( 15, 6, 245, 240, 245 ); //Cat Light
+set_color_profile_slot( 15, 7, 38, 35, 38 ); //Cat Dark
+
+
+/* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
 {"formatversion":1,"data":[{"name":"Crown","colors":[{"r":255,"g":251,"b":18,"main":true}]},{"name":"Crown Dark","colors":[{"r":242,"g":196,"b":60,"main":true}]},{"name":"Crown Light","colors":[{"r":255,"g":254,"b":245,"main":true}]},{"name":"Cloak","colors":[{"r":194,"g":47,"b":51,"main":true},{"r":167,"g":22,"b":34}]},{"name":"Hair","colors":[{"r":194,"g":171,"b":80,"main":true},{"r":167,"g":113,"b":84},{"r":128,"g":86,"b":68}]},{"name":"Skin","colors":[{"r":255,"g":242,"b":189},{"r":244,"g":164,"b":130,"main":true}]},{"name":"Cat Light","colors":[{"r":251,"g":251,"b":251,"main":true}]},{"name":"Cat Dark","colors":[{"r":195,"g":178,"b":173,"main":true}]}]}
 === END JSON PALETTE ===

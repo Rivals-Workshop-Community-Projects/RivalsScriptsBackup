@@ -26,9 +26,3 @@ if (attack == AT_DSTRONG){
         self.hitstop = 0;
     }
 }
-
-        set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 60);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -40);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 7);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -14);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, -0.6);  

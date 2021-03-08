@@ -29,6 +29,8 @@ draw_non = true; //if true, will draw non-sprites like bat and hammer
 fspec_grapple_id = undefined; //fspecial command grab id
 fspec_grapple_hitbox = undefined;
 
+wt_destroyed_timer = 0; //if thrown offstage and destroyed, has a timer before can spawn another one.
+
 aerial_throws = false;
 
 hurtbox_spr = sprite_get("hurtbox");

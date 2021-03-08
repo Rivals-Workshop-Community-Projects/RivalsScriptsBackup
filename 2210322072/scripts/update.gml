@@ -5,13 +5,15 @@
 	}
 
 
-if !instance_exists( curse_target){
+if !instance_exists(curse_target){
 
  curse_target = self
  admw = 0
  admb = 0 
 
 }
+
+
 
 /////
 
@@ -223,7 +225,7 @@ if get_gameplay_time() == 70 {
 
 
 if get_gameplay_time() == 90 {
-	set_attack (AT_DSTRONG)
+	set_attack(AT_DSTRONG)
 	window = 2
 	window_timer = 0
 	visible = true
@@ -233,12 +235,13 @@ if get_gameplay_time() == 90 {
     
 }
 
-if curse_target != 0 && ((curse_target.state == PS_RESPAWN or curse_target.state == PS_DEAD) &&  curse_target.state_timer == 1) {
+if curse_target != 0 && (curse_target.state == PS_RESPAWN or curse_target.state == PS_DEAD){
 karma = 0
 karmatimer = 0
 karmacom = 0
 admw = 0
 admb = 0
+curse_target = self
 }
 
 if state == PS_WAVELAND && (state_timer % 5 == 0 or state_timer == 1) {
@@ -369,10 +372,19 @@ if soultimer <= -240 && !hitpause {
 
 }
 
-	if soulfree && soultimer < 0 {
-		soulx += floor((x - 90*spr_dir - soulx)/40)
-		souly += floor((y - 90 - souly)/40)
+	if soulfree && soultimer < 0 && soulx < x {
+		soulx += min(floor((x - 90*spr_dir - soulx)/40), 2)
+		
 	}
+	
+	if soulfree && soultimer < 0 {
+	souly += min(floor((y - 90 - souly)/40), 1)
+	}
+	
+	if soulfree && soultimer < 0 && soulx >= x {
+		soulx += max(floor((x - 90*spr_dir - soulx)/40), -2)
+	}
+	
 	
 if soultimer < 0 && get_gameplay_time() % 4 == 2 {
 	create_hitbox(AT_DSPECIAL , 2 , floor(x + 20 - random_func(6, 40, true) - (10*spr_dir)), floor(y - 10 - random_func(7, 40, true))); 

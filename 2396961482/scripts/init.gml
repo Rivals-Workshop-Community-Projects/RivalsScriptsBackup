@@ -1,6 +1,6 @@
 //Compat
-dategirl_init = 0
-Chatting = true
+dategirl_init = 0;
+Chatting = true;
 Hikaru_Title = "Fish Food";
 steve_death_message = "Steve went closer to the light";
 pkmn_stadium_front_img = sprite_get("pkmn_sprite1");

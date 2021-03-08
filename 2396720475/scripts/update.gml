@@ -6,7 +6,7 @@ if (trailer_effect){
 	spawn_hit_fx(Box.x + 6, Box.y, hit_small1);
 	trailer_effect = false;
 }
-
+/*
 if (instance_exists(needleplatform)){
 	move_cooldown[AT_USPECIAL] = 20;
 }
@@ -14,7 +14,7 @@ if (instance_exists(needleplatform)){
 if (usedUspecial_Again >= 2){
 	move_cooldown[AT_USPECIAL] = 20;
 }
-
+*/
 if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
 }
 else { 
@@ -90,9 +90,9 @@ if (instance_exists(needle_hitbox)){
 
 // Code for article_2 and article_platform
 if (needleland && instance_exists(needleplatform)){
+	needleland = false;
 	usedUspecial = true;
 	can_pull = true;
-//	move_cooldown[AT_USPECIAL] = 0;
 	sound_play(sound_get("needle2_sfx"));
 	
 	if (instance_exists(needleplatform_solid)){
@@ -115,9 +115,18 @@ if (needleland && instance_exists(needleplatform)){
 	instance_destroy(needleplatform);
 }
 
+with(pHitBox){
+	if (attack == AT_USPECIAL && destroyed){
+		if (instance_exists(player_id.needleplatform)){
+			instance_destroy(player_id.needleplatform);
+			sound_play(sound_get("needle1_sfx"));
+		}
+	}
+}
+
 if(!free && usedUspecial){
 	if (instance_exists(needleplatform_solid)){
-		if (!place_meeting(x, y, needleplatform_solid)){ // If grounded and not on the needle platform, get recovery back
+		if (!place_meeting(x, y, needleplatform_solid) && state != PS_WAVELAND){ // If grounded and not on the needle platform, get recovery back
 			
 			if (instance_exists(Box)){ // If grounded and not on the box, get recovery back
 				if (x > Box.x + 50 || x < Box.x - 50){
@@ -129,13 +138,17 @@ if(!free && usedUspecial){
 			}
 		}
 	}
+	else {
+		if (x > get_stage_data( SD_X_POS ) && x < room_width - get_stage_data( SD_X_POS )){
+			if (!instance_exists(Box)){
+				usedUspecial = false;
+			}
+			else {
+				usedUspecial = false;
+			}
+		}
+	}
 }
-
-
-if (!free && usedUspecial && !instance_exists(needleplatform_solid)){
-	usedUspecial = false;
-}
-
 
 if (usedUspecial && !can_pull){
 	move_cooldown[AT_USPECIAL] = 5;

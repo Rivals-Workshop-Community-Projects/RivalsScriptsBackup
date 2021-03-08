@@ -171,19 +171,19 @@ if attack == AT_EXTRA_3 {
           create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 40 - (14*triggered))
           create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 40 - (14*triggered))
           
-          create_hitbox(AT_EXTRA_3, 3, x + 30*spr_dir , y - 50 - (14*triggered))
-          create_hitbox(AT_EXTRA_3, 3, x + 30*spr_dir , y - 50 - (14*triggered))
-          create_hitbox(AT_EXTRA_3, 3, x + 30*spr_dir , y - 50 - (14*triggered))
-          create_hitbox(AT_EXTRA_3, 3, x + 30*spr_dir , y - 50 - (14*triggered))
-          create_hitbox(AT_EXTRA_3, 3, x + 30*spr_dir , y - 50 - (14*triggered))
-          create_hitbox(AT_EXTRA_3, 3, x + 30*spr_dir , y - 50 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 30*spr_dir , y - 60 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 30*spr_dir , y - 60 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 30*spr_dir , y - 60 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 30*spr_dir , y - 60 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 30*spr_dir , y - 60 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 30*spr_dir , y - 60 - (14*triggered))
           
-          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 60 - (14*triggered))
-          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 60 - (14*triggered))
-          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 60 - (14*triggered))
-          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 60 - (14*triggered))
-          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 60 - (14*triggered))
-          create_hitbox(AT_EXTRA_3, 3, x + 20*spr_dir , y - 60 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 40*spr_dir , y - 80 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 40*spr_dir , y - 80 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 40*spr_dir , y - 80 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 40*spr_dir , y - 80 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 40*spr_dir , y - 80 - (14*triggered))
+          create_hitbox(AT_EXTRA_3, 3, x + 40*spr_dir , y - 80 - (14*triggered))
           
         }
     }

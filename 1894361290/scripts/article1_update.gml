@@ -87,22 +87,28 @@ if disabled_timer == 0 {
 
 //blastzone destroy
 if (x > player_id.room_width + 10) || (x < -10) || (y > player_id.room_height + 50) {
+    if !player_id.holding_wt player_id.wt_destroyed_timer = 60;
+    sound_play(sound_get("pshh"))
     instance_destroy();
     exit;
 }
 #define spawn_shockwave
+var volume = 0.5;
+if get_player_color(player_id.player) == 10 { //bird up
+    volume = 0.3;
+}
 switch player_id.wt_hitbox_size {
     case 1:
     var hitbox = create_hitbox(AT_NSPECIAL, 2, x, y - 5);
         hitbox.wt = id;
     var _fx = spawn_hit_fx(x, y - 5, shockwave_small_vfx);
-    sound_play(honk_sfx, 0, false, 0.5);
+    sound_play(honk_sfx, 0, false, volume);
     break;
     
     case 2:
     var hitbox = create_hitbox(AT_NSPECIAL_2, 2, x, y - 5);
         hitbox.wt = id;
     var _fx = spawn_hit_fx(x, y - 5, shockwave_large_vfx);
-    sound_play(honk_sfx, 0, false, 0.7 + 0.3*(player_id.strong_charge/60));
+    sound_play(honk_sfx, 0, false, volume + 0.2 + 0.3*(player_id.strong_charge/60));
     break;
 }

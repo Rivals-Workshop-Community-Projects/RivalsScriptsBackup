@@ -138,7 +138,7 @@ bubble_y = 8;
 
 plat2 = hit_fx_create( sprite_get( "plat2" ), 4 );
 
-SC = hit_fx_create( sprite_get( "SC" ), 16 );
+SC = hit_fx_create( sprite_get( "SC" ), 12 );
 sprite_change_offset("SC", 100, 100);
 
 slashc = hit_fx_create( sprite_get( "slashc" ), 20 );

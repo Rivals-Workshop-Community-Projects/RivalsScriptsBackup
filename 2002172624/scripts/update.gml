@@ -1,6 +1,16 @@
 //Phone (stays at top)
 user_event(14);
 
+//SIG METER
+//makes sig meter fill nicely
+if (GAUGE_SIG != GAUGE_SIG_CURRENT) {
+  if (GAUGE_SIG > GAUGE_SIG_CURRENT) {
+    GAUGE_SIG -= 1;
+  } else if (GAUGE_SIG < GAUGE_SIG_CURRENT) {
+    GAUGE_SIG += 1;
+  }
+}
+
 //MAKES IT SO YOU HAVE TO BE ON THE GROUND TO RELOAD SHOTGUN
 if (AMMO_CURRENT > 0) {
 	set_attack_value(AT_FSPECIAL, AG_CATEGORY, 2);

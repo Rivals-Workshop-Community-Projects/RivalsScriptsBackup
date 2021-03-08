@@ -89,7 +89,7 @@ if ("phone_inited" in self && phone_inited){
 				// edit the below (and, indeed, the above!) just like a regular attack script
 				
 set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 0);
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX, dspecialswish);
@@ -97,7 +97,7 @@ set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX_FRAME, 3);
 set_window_value(AT_EXTRA_3, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.4);
 
 set_window_value(AT_EXTRA_3, 2, AG_WINDOW_TYPE, 0);
-set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_EXTRA_3, 2, AG_WINDOW_HAS_SFX, 1);
@@ -108,7 +108,7 @@ set_window_value(AT_EXTRA_3, 2, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_EXTRA_3, 2, AG_WINDOW_CUSTOM_GRAVITY, 3);
 
 set_window_value(AT_EXTRA_3, 3, AG_WINDOW_TYPE, 0);
-set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED, -3);
@@ -116,7 +116,7 @@ set_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_EXTRA_3, 3, AG_WINDOW_CUSTOM_GRAVITY, 2);
 set_window_value(AT_EXTRA_3, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_EXTRA_3, 3, AG_WINDOW_SFX, dspecialfalling);
-set_window_value(AT_EXTRA_3, 3, AG_WINDOW_SFX_FRAME, 9);
+set_window_value(AT_EXTRA_3, 3, AG_WINDOW_SFX_FRAME, 4);
 
 set_window_value(AT_EXTRA_3, 4, AG_WINDOW_TYPE, 8);
 set_window_value(AT_EXTRA_3, 4, AG_WINDOW_LENGTH, 5);
@@ -158,10 +158,10 @@ set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 47);
 set_hitbox_value(AT_EXTRA_3, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 4);
 set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 7);
-set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 58);
+set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 75);
 set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, .5);
-set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 1.05);
+set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.65);
 set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 
@@ -177,10 +177,10 @@ set_hitbox_value(AT_EXTRA_3, 2, HG_HEIGHT, 47);
 set_hitbox_value(AT_EXTRA_3, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_EXTRA_3, 2, HG_PRIORITY, 4);
 set_hitbox_value(AT_EXTRA_3, 2, HG_DAMAGE, 7);
-set_hitbox_value(AT_EXTRA_3, 2, HG_ANGLE, 58);
+set_hitbox_value(AT_EXTRA_3, 2, HG_ANGLE, 75);
 set_hitbox_value(AT_EXTRA_3, 2, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_EXTRA_3, 2, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_EXTRA_3, 2, HG_KNOCKBACK_SCALING, 1.05);
+set_hitbox_value(AT_EXTRA_3, 2, HG_KNOCKBACK_SCALING, 0.65);
 set_hitbox_value(AT_EXTRA_3, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_EXTRA_3, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 			}
@@ -214,7 +214,7 @@ if (window < 4){
 if (has_hit_player = true){
     window = 1;
     set_window_value(AT_EXTRA_3, 2, AG_WINDOW_VSPEED, -23);
-    window_timer = 11;
+    window_timer = 9;
     kirby_dspecialhit = 1;
     has_hit_player = false;
 
@@ -222,7 +222,7 @@ if (has_hit_player = true){
 
 
 
-if (window = 2 && window_timer = 19 && kirby_dspecialhit = 1){
+if (window = 2 && window_timer = 11 && kirby_dspecialhit = 1){
     move_cooldown[AT_EXTRA_3] = 9999;
     set_window_value(AT_EXTRA_3, 2, AG_WINDOW_VSPEED, -16);
 set_state( PS_IDLE_AIR );
@@ -557,6 +557,16 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	initPatch("1.6.3", "March 7th, 2021");
+	initPatchWords("-Increased Neutral-Special base hitpause (4.25 -> 6.5)
+	-Increased Neutral-Special hitpause scaling (0.75 -> 0.85)
+	-Increased Forward-Special base hitpause (8 -> 10)
+	-Increased Forward-Special hitpause scaling (0.8 -> 1.1)
+	-Removed stray pixels on Back-Air hurtbox
+	-Fixed a bug where Neutral-Special's spawn point changed on death
+	-Updated stats of Kirby copy ability to match current stats of Down-Special");
+	initPatchImage(other.spr_landinglag, 0, fa_left, 1, c_white, 0);	
+
 
 	initPatch("1.6.2", "February 28th, 2021");
 	initPatchWords("-Redrew landing, landing lag, and pratfall sprites

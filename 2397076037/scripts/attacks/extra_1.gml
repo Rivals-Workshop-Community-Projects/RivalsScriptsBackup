@@ -91,7 +91,7 @@ set_hitbox_value(AT_EXTRA_1, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_EXTRA_1, 4, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_EXTRA_1, 4, HG_WINDOW, 1);
 set_hitbox_value(AT_EXTRA_1, 4, HG_WINDOW_CREATION_FRAME, 0);
-set_hitbox_value(AT_EXTRA_1, 4, HG_LIFETIME, 6);
+set_hitbox_value(AT_EXTRA_1, 4, HG_LIFETIME, 4);
 set_hitbox_value(AT_EXTRA_1, 4, HG_HITBOX_X, 40);
 set_hitbox_value(AT_EXTRA_1, 4, HG_HITBOX_Y, -1);
 set_hitbox_value(AT_EXTRA_1, 4, HG_PRIORITY, 3);

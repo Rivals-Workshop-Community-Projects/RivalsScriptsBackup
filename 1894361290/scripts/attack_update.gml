@@ -29,8 +29,13 @@ if attack == AT_NSPECIAL {
         wt_hitbox_size = 0;
     }
     
+    var volume = 0.6;
+    if get_player_color(player) == 10 { //bird up
+        volume = 0.5;
+    }
+    
     if window == 2 && window_timer == 0 && !hitpause {
-        sound_play(honk_sfx, 0, false, 0.6);
+        sound_play(honk_sfx, 0, false, volume);
     }
 }
 
@@ -152,7 +157,7 @@ if attack == AT_FSPECIAL {
     }
     
     if window == 3 {
-        if state_timer >= 50 {
+        if state_timer >= 50 && !was_parried {
             can_jump = true;
             can_attack = true;
             //can_special = true;
@@ -366,7 +371,7 @@ if window == 1 && window_timer == 1 {
             set_hitbox_value(AT_FSPECIAL, 6, HG_WINDOW, 2);
             set_hitbox_value(AT_FSPECIAL, 7, HG_WINDOW, 2);
             set_hitbox_value(AT_FSPECIAL, 8, HG_WINDOW, 4);
-            set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 12);
+            set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 11);
             if !has_rune("G") {
                 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 20);
                 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 16);
@@ -537,6 +542,8 @@ if holding_wt && throwing_wt {
         var hitbox = create_hitbox(AT_DSPECIAL, 1, x + 30*spr_dir, y - 10);
             hitbox.wt = wt.id;
     }
+    
+    move_cooldown[AT_DSPECIAL] = 30;
 }
 
 //picking up wt
