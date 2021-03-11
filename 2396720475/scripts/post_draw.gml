@@ -13,6 +13,9 @@ if (instance_exists(Box)){
 	if (Box.flag && get_player_color(player) == 1 && current_weekday == 5){
 		draw_sprite_ext(sprite_get("flags"), 2, Box.x, Box.y, 1, 1, 0, c_white, 1);
 	}	
+	if (Box.flag && SecretColor == 2){
+		draw_sprite_ext(sprite_get("flags"), 3, Box.x, Box.y, 1, 1, 0, c_white, 1);
+	}	
 }
 
 if (instance_exists(movingbox)){
@@ -25,10 +28,13 @@ if (instance_exists(movingbox)){
 	if (movingbox.flag && get_player_color(player) == 1 && current_weekday == 5){
 		draw_sprite_ext(sprite_get("flags"), 2, movingbox.x, movingbox.y, 1, 1, 0, c_white, 1);
 	}	
+	if (movingbox.flag && SecretColor == 2){
+		draw_sprite_ext(sprite_get("flags"), 3, movingbox.x, movingbox.y, 1, 1, 0, c_white, 1);
+	}	
 }
 
 if (flag_destroy){
-	if (get_player_color(player) == 12 || get_player_color(player) == 10 || (get_player_color(player) == 1 && current_weekday == 5)){
+	if (get_player_color(player) == 12 || get_player_color(player) == 10 || (get_player_color(player) == 1 && current_weekday == 5) || SecretColor == 2){
 		draw_sprite_ext(sprite_get("flag_fall"), flag_num, Box_temp_x, Box_temp_y, 1, 1, 0, c_white, 1);
 		flag_num += .20;
 		
@@ -77,9 +83,15 @@ shader_end();
 // Some code junk
 
 /*
+with (movingbox){
+	draw_debug_text(x, y - 40, "vsp: " + string(vsp));
+	draw_debug_text(x, y - 60, "hsp: " + string(hsp));
+}
+
+
 with (needleplatform_solid){
-	draw_debug_text(x, y - 40, "Attached: " + string(canmove));
-	draw_debug_text(x, y - 60, "Standing: " + string(standing));
+	draw_debug_text(x, y - 40, "state_timer: " + string(state_timer));
+	draw_debug_text(x, y - 60, "state: " + string(state));
 }
 */
 

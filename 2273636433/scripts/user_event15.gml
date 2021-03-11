@@ -295,7 +295,7 @@ with phone{
 	initTip("Strong Attacks: Megavitamins");
 	initTipWords("The strongs are the familiar smash versions, but the main difference is that you they interact with Megavitamin:
 
-	Fstrong: Stuns the Megavitamin in place. Charging the strong attack increases stun time.
+	Fstrong: Stuns the Megavitamin in place and brings it closer to the center of the spark. Charging the strong attack increases stun time.
 	
 	Dstrong: Makes the Megavitamin roll on the ground. Charging the strong attack increases rolling speed.
 	
@@ -364,6 +364,19 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	 
+	initPatch("1.35", "10 March, 2021");
+    initPatchWords("Bug Fix")
+    initPatchWords_ext("Fixed a Bug where interrupting Dspecial while there were pills inside withouth touching said pills resulted in a anormally long pill duration.
+   Fixed a  Bug where, pills boosted with Fspecial right after being boosted by Dspecial  did not gain the full speed buff.", fa_left, c_gray, 1, 0);
+	initPatchWords("FStrong: Slight Pill Rework")
+    initPatchWords_ext("Dr Melee Mario Fstrong now moves pills to the center of the spark when hit", fa_left, c_gray, 1, 0);
+    initPatchWords("Fspecial")
+    initPatchWords_ext("Refelect code logic for ditto updated
+   Cape Player knockback: 7 -> 8
+   Fspecial can now go off ledges", fa_left, c_gray, 1, 0);
+    initPatchWords("Munophone")
+    initPatchWords_ext("Dr Melee Mario is now a cheater and has more munophone cheats", fa_left, c_gray, 1, 0); 
 	 
 	initPatch("1.31", "25 Febuary, 2021");
 	initPatchWords("Fspecial")
@@ -749,8 +762,14 @@ with self{
 	 * 
 	 * Cheat descriptions should be short and sweet, as they can't be scrolled.
 	 */
-	
+		
+	initCheat("Pill RNG", "cheat_rng", [0, 1], ["On", "Off"], "Next pill is decided randomly in batches of six.");
+	initCheat("Pill Cooldown", "cheat_cooldown", [0, 1], ["On", "Off"], "There's a brief cooldown after throwing a pill.");
 	initCheat("Floaty", "cheat_floaty", [0, 1], ["Off", "On"], "Certified Tempo moment.");
+	initCheat("N° of Double Jumps", "cheat_jump", [1, 2, 3, 999 ], ["1", "2", "3", "Unlimited"], "Dr. JUMPMAN Melee Mario.");
+	initCheat("Melee Link Nair", "cheat_funny", [0, 1], ["Off", "On"], "Certified Sakurai moment.");
+	initCheat("Luigi Ciclone", "cheat_luigi", [0, 1], ["Off", "On"], "Certified Ultimate moment.");
+	initCheat("The Dr. Toxic Tornado", "cheat_space", [0, 1], ["Off", "On"], "You spin me right 'round, baby right 'round like a record, baby right 'round, 'round, 'round");
 	
 }
 

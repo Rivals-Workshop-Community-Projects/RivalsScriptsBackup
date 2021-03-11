@@ -287,9 +287,10 @@ if attack == AT_DSPECIAL {
         sound_stop(asset_get("sfx_ori_grenade_aim"))
     }
     
-    if window == 1 && window_timer == 5 && !free {
-        create_hitbox(AT_DSPECIAL, 21, x, y - 30)
-        spawn_hit_fx (x, y - 30, 304)
+    if window == 1 && window_timer == 1 && !free {
+        //create_hitbox(AT_DSPECIAL, 21, x, y - 30)
+        spawn_hit_fx (x, y - 50, 305)
+        shake_camera(2,4)
     }
     
     

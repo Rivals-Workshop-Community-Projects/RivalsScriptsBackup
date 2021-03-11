@@ -1,6 +1,6 @@
 //article1_post_draw
 
-if hitbox_active && wire_sprite != undefined {
+if hitbox_active && wire_sprite != undefined && !(perform_attack && piece == "B") {
      draw_sprite_ext(wire_sprite,0,x,y,spr_dir,1,0,c_gray,1)
 }
 
@@ -66,7 +66,7 @@ if draw_missile {
     }
 }
 
-//visiable masks
+//visible masks
 if timer > 1 && (player_id.hitbox_view && player_id.practice_mode) {
     draw_sprite_ext(mask_index, image_index, x, y, 1, 1, 0, c_white, 0.5);
 }

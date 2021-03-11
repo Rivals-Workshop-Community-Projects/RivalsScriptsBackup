@@ -26,9 +26,35 @@ if(fusion = true){
 }
 
 if (attack == AT_EXTRA_2){
+	
+	//高速落下不可
+	can_fast_fall = false;
+	
 	    if (window == 1 && window_timer == 1){
 			spawn_hit_fx( x, y-24, light_Fx );
 			sound_play( asset_get("sfx_zetter_shine"));
+		}
+		
+		//ちょっと移動できる
+		if(window  == 1 ){
+			if (!joy_pad_idle){
+	            hsp += lengthdir_x(1, joy_dir);
+	            vsp += lengthdir_y(1, joy_dir);
+	        } else {
+	            hsp *= .3;
+	            vsp *= .3;
+	        }
+	        var fly_dir = point_direction(0,0,hsp,vsp);
+	        var fly_dist = point_distance(0,0,hsp,vsp);
+	        var max_speed = 4;
+	        if (fly_dist > max_speed){
+	            hsp = lengthdir_x(max_speed, fly_dir);
+	            vsp = lengthdir_y(max_speed, fly_dir);
+	        }
+		}
+		
+		if(window  == 4 ){
+			move_cooldown[AT_DSPECIAL_AIR] = 30;
 		}
 }
 
@@ -48,7 +74,6 @@ if (attack == AT_DSTRONG){
 if (attack == AT_EXTRA_3){
 	can_wall_jump = true;
 	
-	
 	if (window == 4 && window_timer == 1){
 		destroy_hitboxes();
 	}
@@ -56,15 +81,13 @@ if (attack == AT_EXTRA_3){
 
 //------------------------------------------------------------------------------
 //当たったらキャンセル可
-/*
-if (attack == AT_DATTACK){
+
+if (attack == AT_EXTRA_1){
 	if(has_hit_player){
-		can_jump = true;
-		can_strong = true;
-		can_ustrong = true;
+		can_special = true;
 	}
 }
-*/
+
 
 if (attack == AT_UTILT){
 	if(has_hit_player){
@@ -189,7 +212,7 @@ if (attack == AT_DSPECIAL){
 		}
 		
 	
-	if (window == 4 && window_timer == 1 && bodyless = false){
+	if (window == 3 && window_timer == 3 && bodyless = false){
 			var misobody = instance_create(x, y+0, "obj_article1");
 	        misobody.player_id = player_id;
 	        misobody.player = player;
@@ -198,8 +221,8 @@ if (attack == AT_DSPECIAL){
 	        misobody.vsp = 0;
 	}
 		
-	if (window == 4){
-        bodyless = true;	
+	if (window > 3){
+        bodyless = true;
 	}
 }
 

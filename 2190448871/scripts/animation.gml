@@ -34,5 +34,11 @@ if get_player_color(player) != 6{
     }
 }
 
-
+if(attack == AT_FSPECIAL and window == 2){
+    if(hsp > 10){
+        image_index = 5;
+    }else{
+        image_index = 4;
+    }
+}
 

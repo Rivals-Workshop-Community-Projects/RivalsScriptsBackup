@@ -215,14 +215,14 @@ fire_taunt_sound_frame = 1;
 fs_hit = 0;
 docscore = 0;
 
-// funny variables for phone thing
+/* funny variables for phone thing
 prev_gravity_speed = gravity_speed;
 prev_hitstun_grav = hitstun_grav;
 prev_air_accel = air_accel;
 prev_jump_speed = jump_speed;
 prev_djump_speed = djump_speed;
 prev_short_hop_speed = short_hop_speed;
-prev_double_jump_time = double_jump_time; 
+prev_double_jump_time = double_jump_time;*/ 
 
 //Assist Buddy - Default values, may change with each attack
 assistAttackRNG = 0; //The attack to use as the assist

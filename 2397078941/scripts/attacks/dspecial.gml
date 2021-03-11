@@ -7,7 +7,7 @@ set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
 
 
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_TYPE, 0);
-set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_VSPEED, -10);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);

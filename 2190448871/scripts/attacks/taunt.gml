@@ -51,7 +51,7 @@ set_hitbox_value(AT_TAUNT, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_TAUNT, 1, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_TAUNT, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_TAUNT, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
-set_hitbox_value(AT_TAUNT, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_heavy"));
+set_hitbox_value(AT_TAUNT, 1, HG_HIT_SFX, sound_get("spike"));
 set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_SPRITE, sprite_get("star"));
 set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_ANIM_SPEED, .2);

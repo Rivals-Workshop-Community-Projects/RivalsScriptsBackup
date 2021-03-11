@@ -71,7 +71,7 @@ var hitbox = noone;
 if instance_place(x, y, pHitBox) {
 	var currentPriority = 0;
 	with pHitBox {
-		if (instance_place(x, y, other)) && !(player_id == other.player_id && (attack == AT_FTHROW || attack == AT_DSPECIAL_2 || attack == AT_UTHROW || attack == AT_FSPECIAL_2 || attack == AT_NSPECIAL_2)) {
+		if (instance_place(x, y, other)) && !(player_id == other.player_id && (attack == AT_DTHROW || attack == AT_FTHROW || attack == AT_DSPECIAL_2 || attack == AT_UTHROW || attack == AT_FSPECIAL_2 || attack == AT_NSPECIAL_2)) {
 			with player_id {
 				var hitboxParent = get_hitbox_value(other.attack, other.hbox_num, HG_PARENT_HITBOX);
 				var hboxNum = other.hbox_num;
@@ -344,13 +344,34 @@ if perform_attack {
             progress_attack = false;
             sound_play(sound_get("gun_shoot"))
         }
+        if has_rune("L") { //All FSPECIAl/DSPECIAL attacks have been enhanced.
+	        if window == 3 && (window_timer == 2 || window_timer == 4) {
+	            var hbox1 = create_hitbox(AT_UTHROW, 1, x, y - 30)
+	                hbox1.hsp = spr_dir*12;
+	        }
+	    }
         break;
         
         case "Q":
         progress_attack = false;
         do_move(AT_FSPECIAL_2);
+        
+        if has_rune("L") { //All FSPECIAl/DSPECIAL attacks have been enhanced.
+        var targetplayer = undefined;
+	        with oPlayer {
+	            if id != other.player_id {
+	                targetplayer = id;
+	            }
+	        }
+	        
+	        if targetplayer != undefined {
+	            player_id.laser_angle = darctan2(y - targetplayer.y - 60, spr_dir*(targetplayer.x - x))
+	        }
+	    }
+        
         if window == 2 {
-	        var num_hitboxes = 15;
+	        if has_rune("L") var num_hitboxes = 50 //All FSPECIAl/DSPECIAL attacks have been enhanced.
+        	else var num_hitboxes = 15;
 	        var dist = 30;
 	        for (var i = 0; i < num_hitboxes; i++) {
 	            var startx = x+(28 + dist*i*dcos(player_id.laser_angle))*spr_dir;
@@ -358,7 +379,7 @@ if perform_attack {
 	            create_hitbox(AT_FSPECIAL_2, 1, floor(startx), floor(starty))
 	        }
 	    } else if window == 3 {
-	        player_id.pawn_meter = 0;
+	        player_id.pawn_meter = player_id.pawn_meter_default;
 	        hp = player_id.hp_P;
 	        player_id.queen_active = false;
 			player_id.queen_timer = 0;
@@ -367,6 +388,12 @@ if perform_attack {
         
         case "P":
         progress_attack = false;
+        if has_rune("L") { //All FSPECIAl/DSPECIAL attacks have been enhanced.
+	        if window_timer mod 2 == 1 {
+	            create_hitbox(AT_DTHROW, 1, x, 500);
+	        }
+	    }
+        
         if player_id.pawn_meter == 7 && player_id.piece != "Q" {
         	do_move(AT_DTHROW);
         	hp = player_id.hp_Q;
@@ -449,10 +476,14 @@ if perform_attack {
 	            draw_missile = false;
 	            sound_play(sound_get("rune_search_start"))
 	        }
+	        
+	        if has_rune("L") var incrementvar = 6; //All FSPECIAl/DSPECIAL attacks have been enhanced.
+	        else var incrementvar = 3;
+	        
 	        if attack_timer < 60 {
-	            range_dist += 3;
+	            range_dist += incrementvar;
 	        } else if attack_timer < 120 {
-	            range_dist -= 3;
+	            range_dist -= incrementvar;
 	        } else {
 	            window = 4;
 	            window_timer = 0;
@@ -603,7 +634,7 @@ if hp <= 0 {
 	if die_timer mod 10 == 0 {
 		sound_play(sound_get("prebomb"))
 	}
-	if die_timer > 50 {
+	if (die_timer > 50) || (has_rune("F") && die_timer > 20) { //Piece self destruct explosion countdown time reduced.
 		create_hitbox(AT_FTHROW, 2, x, y-30)
 		sound_play(asset_get("sfx_ell_fist_explode"))
 		spawn_hit_fx(x, y-30, 3)

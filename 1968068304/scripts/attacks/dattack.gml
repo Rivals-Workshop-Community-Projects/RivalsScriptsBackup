@@ -156,7 +156,7 @@ set_hitbox_value(AT_DATTACK, 3, HG_WIDTH, 66);
 set_hitbox_value(AT_DATTACK, 3, HG_HEIGHT, 70);
 set_hitbox_value(AT_DATTACK, 3, HG_PRIORITY, 2);
 set_hitbox_value(AT_DATTACK, 3, HG_DAMAGE, 9);
-set_hitbox_value(AT_DATTACK, 3, HG_ANGLE, 85);
+set_hitbox_value(AT_DATTACK, 3, HG_ANGLE, 90);
 set_hitbox_value(AT_DATTACK, 3, HG_BASE_KNOCKBACK, 9.5);
 set_hitbox_value(AT_DATTACK, 3, HG_KNOCKBACK_SCALING, .95);
 set_hitbox_value(AT_DATTACK, 3, HG_BASE_HITPAUSE, 6);
@@ -166,8 +166,8 @@ set_hitbox_value(AT_DATTACK, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_DATTACK, 3, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DATTACK, 3, HG_HITSTUN_MULTIPLIER, 1); 
 set_hitbox_value(AT_DATTACK, 3, HG_EXTRA_CAMERA_SHAKE, 1);
-set_hitbox_value(AT_DATTACK, 3, HG_SDI_MULTIPLIER, 0.01);
-set_hitbox_value(AT_DATTACK, 3, HG_DRIFT_MULTIPLIER, 0.5); //!!
+set_hitbox_value(AT_DATTACK, 3, HG_SDI_MULTIPLIER, 0.5);
+set_hitbox_value(AT_DATTACK, 3, HG_DRIFT_MULTIPLIER, 1); 
 
 
 //throw hit - airborne
@@ -241,6 +241,7 @@ set_hitbox_value(AT_DATTACK, 6, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_DATTACK, 6, HG_VISUAL_EFFECT, 304 ); //"basic large"
 set_hitbox_value(AT_DATTACK, 6, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DATTACK, 6, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_DATTACK, 6, HG_SDI_MULTIPLIER, 0.5);
 set_hitbox_value(AT_DATTACK, 6, HG_EXTRA_CAMERA_SHAKE, 1); 
 set_hitbox_value(AT_DATTACK, 6, HG_TECHABLE, 2); //through platforms 
 set_hitbox_value(AT_DATTACK, 6, HG_HIT_SFX, sound_get("smallexplosion"));

@@ -129,7 +129,7 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
 		if window == 1 && window_timer == 1 {
 			sound_play(asset_get("sfx_bird_sidespecial_start"))
 		}
-	if window == 1 && window_timer == 19 {
+	if window == 1 && window_timer == 17 {
 		sound_play(asset_get("sfx_bird_sidespecial"))
 		vsp = 10
 		hsp = 10*spr_dir
@@ -153,7 +153,9 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
 	}
 
     if has_hit_player && window < 3 && hit_player_obj.state_cat == SC_HITSTUN {
-    	hit_player_obj.state_timer = 1
+    	with hit_player_obj {
+    		state_timer = 1
+    	}
     	if window == 1 {
     	hit_player_obj.x += (x - 30*spr_dir - hit_player_obj.x) / 3
 		hit_player_obj.y += ((y) - 40 - hit_player_obj.y) / 3

@@ -5,8 +5,8 @@ set_color_profile_slot( 0, 0, 220, 27, 50 );
 set_color_profile_slot_range( 0, 1, 6, 34 );
 
 // pant
-set_color_profile_slot( 0, 1, 44, 92, 205 );
-set_color_profile_slot_range( 1, 8, 9, 14 );
+set_color_profile_slot( 0, 1, 22, 72, 171 );
+set_color_profile_slot_range( 1, 3, 9, 14 );
 
 // button
 set_color_profile_slot( 0, 2, 255, 237, 1 );
@@ -105,7 +105,7 @@ set_color_profile_slot( 8, 5, 79, 62, 58 ); //hair
 set_color_profile_slot( 8, 6, 235, 253, 255 ); //eye
 
 // SimpleFlips
-set_color_profile_slot( 9, 0, 64, 200, 228 ); //hat
+set_color_profile_slot( 9, 0, 130, 228, 255 ); //hat
 set_color_profile_slot( 9, 1, 44, 92, 205 ); //pant
 set_color_profile_slot( 9, 2, 255, 237, 1 ); //button
 set_color_profile_slot( 9, 3, 252, 251, 250 ); //glove
@@ -113,13 +113,13 @@ set_color_profile_slot( 9, 4, 248, 207, 172 ); //skin
 set_color_profile_slot( 9, 5, 51, 40, 37 ); //hair
 set_color_profile_slot( 9, 6, 235, 253, 255 ); //eye
 
-// Super Mario Land
-set_color_profile_slot( 10, 0, 1, 1, 1 ); //hat
-set_color_profile_slot( 10, 1, 85, 85, 85 ); //pant
-set_color_profile_slot( 10, 2, 255, 255, 255 ); //button
-set_color_profile_slot( 10, 3, 170, 170, 170 ); //glove
-set_color_profile_slot( 10, 4, 170, 170, 170 ); //skin
-set_color_profile_slot( 10, 5, 1, 1, 1 ); //hair
+// Giga Bowser
+set_color_profile_slot( 10, 0, 43, 166, 255 ); //hat
+set_color_profile_slot( 10, 1, 1, 0, 77 ); //pant
+set_color_profile_slot( 10, 2, 27, 152, 219 ); //button
+set_color_profile_slot( 10, 3, 52, 250, 200 ); //glove
+set_color_profile_slot( 10, 4, 248, 207, 172 ); //skin
+set_color_profile_slot( 10, 5, 79, 62, 58 ); //hair
 set_color_profile_slot( 10, 6, 255, 255, 255 ); //eye
 
 // Flying
@@ -142,7 +142,7 @@ set_color_profile_slot( 12, 6, 255, 181, 107 ); //eye
 
 // Super Mario Bros Z
 set_color_profile_slot( 13, 0, 255, 234, 13 ); //hat
-set_color_profile_slot( 13, 1, 255, 253, 255 ); //pant
+set_color_profile_slot( 13, 1, 222, 236, 255 ); //pant
 set_color_profile_slot( 13, 2, 255, 237, 1 ); //button
 set_color_profile_slot( 13, 3, 255, 254, 253 ); //glove
 set_color_profile_slot( 13, 4, 248, 207, 172 ); //skin
@@ -170,6 +170,6 @@ set_color_profile_slot( 15, 6, 235, 253, 255 ); //eye
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"hat","colors":[{"r":220,"g":27,"b":50,"main":true},{"r":134,"g":9,"b":24}]},{"name":"pant","colors":[{"r":44,"g":92,"b":205,"main":true},{"r":22,"g":50,"b":172}]},{"name":"button","colors":[{"r":255,"g":237,"b":1,"main":true},{"r":190,"g":159,"b":44}]},{"name":"glove","colors":[{"r":252,"g":251,"b":250,"main":true},{"r":199,"g":197,"b":189}]},{"name":"skin","colors":[{"r":248,"g":207,"b":172,"main":true},{"r":187,"g":143,"b":116}]},{"name":"hair","colors":[{"r":79,"g":62,"b":58,"main":true},{"r":53,"g":43,"b":41}]},{"name":"eye","colors":[{"r":235,"g":253,"b":255,"main":true}]}]}
+{"formatversion":1,"data":[{"name":"hat","colors":[{"r":220,"g":27,"b":50,"main":true},{"r":134,"g":9,"b":24}]},{"name":"pant","colors":[{"r":44,"g":92,"b":205},{"r":22,"g":72,"b":171,"main":true}]},{"name":"button","colors":[{"r":255,"g":237,"b":1,"main":true},{"r":190,"g":159,"b":44}]},{"name":"glove","colors":[{"r":252,"g":251,"b":250,"main":true},{"r":199,"g":191,"b":189}]},{"name":"skin","colors":[{"r":248,"g":207,"b":172,"main":true},{"r":187,"g":143,"b":116}]},{"name":"hair","colors":[{"r":79,"g":62,"b":58,"main":true},{"r":53,"g":43,"b":41}]},{"name":"eye","colors":[{"r":235,"g":253,"b":255,"main":true}]}]}
 === END JSON PALETTE ===
 */

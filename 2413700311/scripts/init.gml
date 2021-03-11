@@ -6,8 +6,8 @@ hitstun_hurtbox_spr = -1;
 char_height = 52;
 idle_anim_speed = .1;
 crouch_anim_speed = .1;
-walk_anim_speed = .125;
-dash_anim_speed = .3;
+walk_anim_speed = .3;
+dash_anim_speed = .5;
 pratfall_anim_speed = .5;
 
 walk_speed = 3;
@@ -140,6 +140,10 @@ bodyshot = 20;
 ex3cooltime = 0;
 hutahit = false;
 hutahit2 = false;
+
+
+//下必殺で蓋に当たったとき用
+hutaSP = false;
 
 
 //音とか

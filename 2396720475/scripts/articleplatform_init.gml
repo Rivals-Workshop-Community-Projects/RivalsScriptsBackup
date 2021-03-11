@@ -27,6 +27,7 @@ standing = true;
 canmove = false;
 
 destroy = false;
+other_box = false;
 
 stored_x = 0
 stored_y = 0;

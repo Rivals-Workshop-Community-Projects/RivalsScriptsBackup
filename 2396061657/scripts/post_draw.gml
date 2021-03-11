@@ -1,6 +1,14 @@
 // post_draw.gml
 // Draws sprites in front of the player
-	
+
+shader_start();
+if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
+	if (window == 2 || (window == 1 && window_timer != 1)){
+		draw_sprite_ext(sprite_get("big_sparkle"), 0, fspec_x - (50 * spr_dir) - 8 - fspecial_circles, fspec_y - 30, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(sprite_get("small_sparkle"), 0, fspec_x + (40 * spr_dir) - 8 - fspecial_circles, fspec_y - 20, 1, 1, 0, c_white, 1);
+	}
+}
+shader_end();
 
 if (taunt_down && down_down && taunt_counter < 140){
 	draw_sprite_ext(sprite_get("date_logo"), 0, x, y - 30 - 60, 1, 1, 0, c_white, .70);

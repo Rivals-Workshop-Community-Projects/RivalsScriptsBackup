@@ -41,12 +41,12 @@ if attack == AT_NSPECIAL{
 
 					if (pill_state == 2 ){					//Fstrong
 						vsp = 0;
-						if hsp == 0 {hsp = 4*player_id.spr_dir;}
+						if hsp == 0 {hsp = 4.5*player_id.spr_dir;}
 						length = 150;
 						pill_state = 9;
 					}else if (pill_state == 3){				//Dspecial
 						vsp = -5;
-						hsp = 4*player_id.spr_dir; 
+						hsp = 4.5*player_id.spr_dir; 
 						length = 150;
 						pill_state =0;
 					}else if (pill_state == 4){				//Dstrong1 // No Gravity
@@ -64,7 +64,7 @@ if attack == AT_NSPECIAL{
 					}
 					else {
 						vsp = -abs(vsp);
-						if hsp == 0 { hsp = 4*player_id.spr_dir; }
+						if hsp == 0 { hsp = 4.5*player_id.spr_dir; }
 						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 2/3;}
 						else{ hsp = hsp*-1; }
 						//grav = 0.56;
@@ -87,7 +87,7 @@ if attack == AT_NSPECIAL{
 			if abs(y - (player_id.y - 36))<48{
 				hsp = 0;
 				vsp = 0;
-				length = 696969;			//NiceNice
+				length = 200;			//NiceNice
 				walls =1;
 				x = player_id.x + sin(hitbox_timer)*20 ;
 				y = player_id.y - 42+ sin(hitbox_timer)*10;
@@ -177,9 +177,9 @@ if attack == AT_NSPECIAL{
 	if (hitbox_timer > 12)  && player_id.attack == AT_FSTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 3 {
 		if abs(x - (player_id.x+72*player_id.spr_dir))<40{
 			if abs(y - (player_id.y - 38))<40{
-	
-
 				
+				coord_x = player_id.x + 64*player_id.spr_dir;
+				coord_y = player_id.y - 38;
 				//ROLLING DTRONG PROYECTILES
 				if	pill_state ==4{
 					prev_grav = 0;
@@ -285,6 +285,11 @@ if attack == AT_NSPECIAL{
 
 		}else{
 			proj_angle = (hitbox_timer*1)*-spr_dir;					//Frozen in place
+			//ADJUST COORDINATES
+			if y < (coord_y) { y+=1;}
+			if y > (coord_y) { y-=1;}
+			if x < (coord_x) { x+=1;}
+			if x > (coord_x) { x-=1;}
 		}
 	}
 
@@ -317,10 +322,4 @@ if forced == 1 {
 
 if y > 1500 {
 	destroyed = true;
-}
-
-
-// Final Smash
-if (attack == 49 && hitbox_timer == length-1 && player_id.fs_hit >= 2){
-	player_id.docscore = 60
 }

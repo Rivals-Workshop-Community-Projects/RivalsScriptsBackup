@@ -45,18 +45,17 @@ set_num_hitboxes(AT_USPECIAL, 2);
 set_hitbox_value(AT_USPECIAL, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USPECIAL, 1, HG_WINDOW, 99);
-set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 3);
+set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 9);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_Y, -50);
 
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_X, -50);
-set_hitbox_value(AT_USPECIAL, 1, HG_WIDTH, 100);
-set_hitbox_value(AT_USPECIAL, 1, HG_HEIGHT, 100);
+set_hitbox_value(AT_USPECIAL, 1, HG_WIDTH, 110);
+set_hitbox_value(AT_USPECIAL, 1, HG_HEIGHT, 110);
 set_hitbox_value(AT_USPECIAL, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_USPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 12);
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 60);
-set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 8);
@@ -65,7 +64,12 @@ set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, -1);
-
+set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_UNBASHABLE, 1);
 
 
 //the rest of these don't matter they're just there to not crash the game

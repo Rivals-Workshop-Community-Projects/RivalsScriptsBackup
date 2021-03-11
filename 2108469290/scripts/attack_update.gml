@@ -274,11 +274,11 @@ if attack == AT_FSPECIAL {
     }
     
     if window == 3 && window_timer % 3 == 0  && !hitpause{
-    	if hhalo > 0 {
-    	sound_play(asset_get("sfx_ice_shieldup"));
-		create_hitbox(AT_NSPECIAL , 1 + random_func(1, 2, true) , x - (20 * spr_dir) , y - 70 + random_func(2, 20, true) );
-		spawn_hit_fx ( x - (30 * spr_dir) , y - 60 + random_func(2, 20, true) , summon  );
-    	} 
+    	///if hhalo > 0 {
+    	///sound_play(asset_get("sfx_ice_shieldup"));
+		///create_hitbox(AT_NSPECIAL , 1 + random_func(1, 2, true) , x - (20 * spr_dir) , y - 70 + random_func(2, 20, true) );
+		///spawn_hit_fx ( x - (30 * spr_dir) , y - 60 + random_func(2, 20, true) , summon  );
+    	///} 
         	spawn_hit_fx ( x - (10 * spr_dir) , y , ai );
     }
     

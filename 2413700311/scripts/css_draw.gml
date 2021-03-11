@@ -4,7 +4,7 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
  
-var num_alts = 11;
+var num_alts = 16;
 var alt_cur = get_player_color(player);
 
 //Alt name init. var doesn't work with arrays lol
@@ -18,8 +18,13 @@ alt_name[5]  = "Black";
 alt_name[6]  = "White";
 alt_name[7]  = "Early Access";
 alt_name[8]  = "Poison";
-alt_name[9]  = "Alternative";
+alt_name[9]  = "Alter";
 alt_name[10]  = "Dark";
+alt_name[11]  = "Ghost";
+alt_name[12]  = "Abyss";
+alt_name[13]  = "Bug";
+alt_name[14]  = "Dramatic";
+alt_name[15]  = "What";
 
  
  

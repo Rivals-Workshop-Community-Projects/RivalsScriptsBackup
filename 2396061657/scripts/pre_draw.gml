@@ -9,6 +9,16 @@ with (obj_article1){ // Draws the outline of the heart during the first state (W
 	}
 }		
 
+shader_start();
 if (attack == AT_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
 	draw_sprite_ext(sprite_get("magnetism"), state_timer / 5.5, x, y - 30, 1, 1, 0, c_white, 1);
 }
+	
+if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
+	
+	if (window == 2 || (window == 1 && window_timer != 1)){
+		draw_sprite_ext(sprite_get("big_sparkle"), 0, fspec_x + (30 * spr_dir) - 8 - fspecial_circles, fspec_y - 80, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(sprite_get("small_sparkle"), 0, fspec_x - (30 * spr_dir) - 8 - fspecial_circles, fspec_y - 60, 1, 1, 0, c_white, 1);
+	}
+}
+shader_end();

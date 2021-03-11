@@ -46,7 +46,7 @@ if (state == 1){
 		}
 		
 		if (place_meeting(x, y, other) && other.boxhitbox == noone){
-			if (other.hit_delay <= 1){
+			if (other.hit_delay <= 1 && throws_rock != 2){
 				if ((!(other.past_hitbox == hbox_num && other.past_attack == attack)) && ((other.past_group == hbox_group && other.past_attack != attack) || other.past_group != hbox_group || -1 = hbox_group)){
 					other.past_hitbox = hbox_num;
 					other.past_attack = attack;

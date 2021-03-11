@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 17, 14, 30 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 11 );
+set_num_palettes( 16 );
 
 // blue
 set_color_profile_slot( 1, 0, 182, 198, 211 ); //white
@@ -107,7 +107,7 @@ set_color_profile_slot( 7, 6, 167, 186, 74 ); //blue1
 set_color_profile_slot( 7, 7, 83, 122, 62 ); //blue2
 
 // poison
-set_color_profile_slot( 8, 0, 124, 67, 148 ); //white
+set_color_profile_slot( 8, 0, 167, 90, 199 ); //white
 set_color_profile_slot( 8, 1, 194, 255, 249 ); //skin1
 set_color_profile_slot( 8, 2, 116, 143, 176 ); //skin2
 set_color_profile_slot( 8, 3, 53, 88, 92 ); //skin3
@@ -117,7 +117,7 @@ set_color_profile_slot( 8, 6, 77, 125, 87 ); //blue1
 set_color_profile_slot( 8, 7, 48, 71, 64 ); //blue2
 
 // alter
-set_color_profile_slot( 9, 0, 92, 49, 49 ); //white
+set_color_profile_slot( 9, 0, 163, 87, 87 ); //white
 set_color_profile_slot( 9, 1, 158, 117, 84 ); //skin1
 set_color_profile_slot( 9, 2, 102, 41, 41 ); //skin2
 set_color_profile_slot( 9, 3, 13, 12, 12 ); //skin3
@@ -127,7 +127,7 @@ set_color_profile_slot( 9, 6, 231, 247, 238 ); //blue1
 set_color_profile_slot( 9, 7, 130, 148, 125 ); //blue2
 
 // dark
-set_color_profile_slot( 10, 0, 97, 22, 40 ); //white
+set_color_profile_slot( 10, 0, 166, 37, 68 ); //white
 set_color_profile_slot( 10, 1, 100, 105, 143 ); //skin1
 set_color_profile_slot( 10, 2, 67, 64, 87 ); //skin2
 set_color_profile_slot( 10, 3, 36, 32, 41 ); //skin3
@@ -135,6 +135,56 @@ set_color_profile_slot( 10, 4, 82, 0, 112 ); //red1
 set_color_profile_slot( 10, 5, 28, 5, 69 ); //red2
 set_color_profile_slot( 10, 6, 212, 30, 85 ); //blue1
 set_color_profile_slot( 10, 7, 115, 31, 78 ); //blue2
+
+// ghost
+set_color_profile_slot( 11, 0, 83, 228, 237 ); //white
+set_color_profile_slot( 11, 1, 0, 255, 208 ); //skin1
+set_color_profile_slot( 11, 2, 0, 224, 224 ); //skin2
+set_color_profile_slot( 11, 3, 0, 130, 166 ); //skin3
+set_color_profile_slot( 11, 4, 0, 207, 162 ); //red1
+set_color_profile_slot( 11, 5, 0, 133, 119 ); //red2
+set_color_profile_slot( 11, 6, 0, 199, 166 ); //blue1
+set_color_profile_slot( 11, 7, 0, 136, 166 ); //blue2
+
+// abyss
+set_color_profile_slot( 12, 0, 145, 104, 217 ); //white
+set_color_profile_slot( 12, 1, 226, 153, 255 ); //skin1
+set_color_profile_slot( 12, 2, 192, 99, 255 ); //skin2
+set_color_profile_slot( 12, 3, 102, 23, 179 ); //skin3
+set_color_profile_slot( 12, 4, 159, 51, 201 ); //red1
+set_color_profile_slot( 12, 5, 97, 0, 207 ); //red2
+set_color_profile_slot( 12, 6, 144, 0, 240 ); //blue1
+set_color_profile_slot( 12, 7, 99, 21, 189 ); //blue2
+
+// bug
+set_color_profile_slot( 13, 0, 51, 138, 255 ); //white
+set_color_profile_slot( 13, 1, 255, 229, 0 ); //skin1
+set_color_profile_slot( 13, 2, 30, 199, 0 ); //skin2
+set_color_profile_slot( 13, 3, 0, 109, 176 ); //skin3
+set_color_profile_slot( 13, 4, 255, 0, 0 ); //red1
+set_color_profile_slot( 13, 5, 85, 0, 255 ); //red2
+set_color_profile_slot( 13, 6, 0, 200, 255 ); //blue1
+set_color_profile_slot( 13, 7, 13, 0, 255 ); //blue2
+
+// dramatic
+set_color_profile_slot( 14, 0, 140, 131, 127 ); //white
+set_color_profile_slot( 14, 1, 209, 183, 155 ); //skin1
+set_color_profile_slot( 14, 2, 153, 99, 70 ); //skin2
+set_color_profile_slot( 14, 3, 54, 35, 32 ); //skin3
+set_color_profile_slot( 14, 4, 171, 79, 79 ); //red1
+set_color_profile_slot( 14, 5, 94, 36, 60 ); //red2
+set_color_profile_slot( 14, 6, 101, 119, 171 ); //blue1
+set_color_profile_slot( 14, 7, 56, 41, 84 ); //blue2
+
+// what
+set_color_profile_slot( 15, 0, 92, 125, 214 ); //white
+set_color_profile_slot( 15, 1, 255, 87, 87 ); //skin1
+set_color_profile_slot( 15, 2, 194, 0, 75 ); //skin2
+set_color_profile_slot( 15, 3, 97, 13, 45 ); //skin3
+set_color_profile_slot( 15, 4, 255, 223, 189 ); //red1
+set_color_profile_slot( 15, 5, 194, 97, 80 ); //red2
+set_color_profile_slot( 15, 6, 255, 255, 255 ); //blue1
+set_color_profile_slot( 15, 7, 193, 152, 139 ); //blue2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

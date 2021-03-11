@@ -61,6 +61,25 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) {
         if _width != 0 draw_rectangle_color(x-_width/2, 0, x+_width/2, 1000, col,col,col,col, false)
         draw_set_alpha(1)
     }
+    
+    //final smash
+    if attack == 49 {
+        var _width = 100;
+        if window == 6 {
+            draw_set_alpha((window_timer/10)*0.7)
+            _width -= (10 - window_timer)*10;
+        } else if window == 7 {
+            draw_set_alpha(0.7)
+        } else if window == 8 {
+            draw_set_alpha(0.7 - (window_timer/10)*0.7)
+            _width -= window_timer*10;
+        } else {
+            _width = 0
+        }
+        var col = c_white;
+        if _width != 0 draw_rectangle_color(x-_width/2, 0, x+_width/2, 1000, col,col,col,col, false)
+        draw_set_alpha(1)
+    }
 }
 
 if piece_id != undefined && instance_exists(piece_id) && piece_id.piece == "Q" && piece_id.perform_attack == true {
@@ -121,4 +140,9 @@ if king_armour {
     draw_sprite(sprite_get("armour_meter"), 0, x, y - 91)
     var _col = c_red;
     draw_rectangle_color(x - 28, y - 91 - 2, x + 27 - (armour_timer/120)*55, y - 91 + 1, _col,_col,_col,_col, false)
+}
+
+//final smash
+if sprite_index == sprite_get("finalsmash_chessatron") {
+    draw_sprite_ext(sprite_get("finalsmash_vfx_front"), image_index, x, y, spr_dir, 1, 0, c_white, 1);
 }

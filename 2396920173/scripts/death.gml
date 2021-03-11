@@ -1,7 +1,7 @@
 // called when the character gets KO'd
 piece = "P"
 
-pawn_meter = 0; //0 - 8
+pawn_meter = pawn_meter_default;
 can_increment = true;
 shake_timer = 0;
 pawn_move_timer = 0;
@@ -18,6 +18,7 @@ queen_active = false;
 queen_timer_max = 480;
 queen_timer = 0;
 
+fs_force_fs = false;
 
 if piece_id != undefined && instance_exists(piece_id) {
     instance_destroy(piece_id);

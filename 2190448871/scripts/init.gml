@@ -143,6 +143,8 @@ base_dashstart = initial_dash_speed;
 
 spawn_scuttle = false;
 
+annouced = false;
+
 //Intro
 introdelay = 50;
 introTimer = 999;
@@ -159,7 +161,14 @@ stomp_fx = hit_fx_create(sprite_get("poof"), 30)
 
 Hikaru_Title = "Infinite Speed";
 feri_costume = sprite_get("feri_costume_[Speedrunner_Feri]");
+battle_text = "*You hear yahoos all around you";
+arena_title = "The Speed Demon";
 tcoart = sprite_get("TCOdemon");
 toonlink_photo = sprite_get("pictophoto_smario");
 toonlink_photo2 = 4;
 kirbyability = 4;
+gfzsignspr = sprite_get("speedsign");
+steve_death_message = "So long-ay, Steve";
+ncode1 = "The Speed Demon himself.";
+ncode2 = "Make him lose speed to weaken him";
+ncode3 = "or else he will overwhelm you.";

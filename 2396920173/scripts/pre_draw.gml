@@ -97,6 +97,11 @@ if rook_cannon != undefined {
     shader_end();
 }
 
+//final smash
+if sprite_index == sprite_get("finalsmash_chessatron") {
+    draw_sprite_ext(sprite_get("finalsmash_vfx_back"), image_index, x, y, spr_dir, 1, 0, c_white, 1);
+}
+
 //TRAILER STUFF, DELETE LATER
 /*
 var spr = sprite_get("trailer_gif");

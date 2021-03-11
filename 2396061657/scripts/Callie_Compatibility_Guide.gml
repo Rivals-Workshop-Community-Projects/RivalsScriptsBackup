@@ -119,6 +119,22 @@ DG_nextindex[DG_page] = 1;  // The Next page the dialogue should point to
 
 - This chat type doesn't need any exta variables
 
+--------------------* Right Side Dialogue Bonus *----------------------
+
+- If you intend on using the right side for dialogue please use these variables
+this dialogue type should only be used when DG_chat_type = 2 but is not required
+if you don't intend to use the right side as a speaker
+
+- It's important to note that ALL pages must have DG_right_speaker if you
+wish to use this feature, even just once. 
+
+- When DG_right_speaker = false you do not need DG_dialogue_right
+
+    DG_right_speaker[DG_page] = true;
+    DG_dialogue_right[DG_page] = "This the right dialogue
+                            
+                            Page 0";
+							
 -----------------------------------------------------------------------
 -----------------* Example Character / Skin Code *---------------------
 ---* You can use the below dialogue as a guide for making your own *---

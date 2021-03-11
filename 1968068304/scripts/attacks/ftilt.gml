@@ -102,7 +102,7 @@ set_hitbox_value(AT_FTILT, 2, HG_ANGLE, 35);
 //stun
 set_hitbox_value(AT_FTILT, 2, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_FTILT, 2, HG_HITPAUSE_SCALING, 0);
-set_hitbox_value(AT_FTILT, 2, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_FTILT, 2, HG_HITSTUN_MULTIPLIER, 1.05);
 set_hitbox_value(AT_FTILT, 2, HG_EXTRA_HITPAUSE, 0);
 
 set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, 305 ); //"basic sweetspot"

@@ -7,7 +7,7 @@ set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
 
 
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 0);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
 
 
@@ -47,9 +47,9 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 50);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 40);
-set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 4);
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.4);
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 302);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
@@ -141,9 +141,9 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_HEIGHT, 140);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PRIORITY, 6);
 set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 4);
 set_hitbox_value(AT_NSPECIAL, 4, HG_TECHABLE, 1);
-set_hitbox_value(AT_NSPECIAL, 4, HG_ANGLE, 50);
-set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_NSPECIAL, 4, HG_KNOCKBACK_SCALING, 0.2);
+set_hitbox_value(AT_NSPECIAL, 4, HG_ANGLE, 90);
+set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_NSPECIAL, 4, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT, 1);

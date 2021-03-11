@@ -19,50 +19,17 @@ if ((state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) and attack == AT_NSPEC
     if gametime % 7 == 0 and old_gametime != gametime{
             indicator_timer++;
         }
-        switch (indicator_timer % 4){
-            case 0:
-                var indicator_mini_x = x+12 - 1;
-                var indicator_mini_y = y-char_height+5;
-                
-                var indicator_small_x = x+20;
-                var indicator_small_y = y-char_height-2 + 1;
-                
-                var indicator_x = x+20 + 1;
-                var indicator_y = y-char_height-30;
-                
-                break;
-            case 1:
-                var indicator_mini_x = x+12;
-                var indicator_mini_y = y-char_height+5 + 1;
-                
-                var indicator_small_x = x+20 + 1;
-                var indicator_small_y = y-char_height-2;
-                
-                var indicator_x = x+20;
-                var indicator_y = y-char_height-30 - 1;
-                break;
-            case 2:
-                var indicator_mini_x = x+12 + 1;
-                var indicator_mini_y = y-char_height+5;
-                
-                var indicator_small_x = x+20;
-                var indicator_small_y = y-char_height-2 - 1;
-                
-                var indicator_x = x+20 - 1;
-                var indicator_y = y-char_height-30;
-                break;
-            case 3:
-                var indicator_mini_x = x+12;
-                var indicator_mini_y = y-char_height+5 - 1;
-                
-                var indicator_small_x = x+20 - 1;
-                var indicator_small_y = y-char_height-2;
-                
-                var indicator_x = x+20;
-                var indicator_y = y-char_height-30 + 1;
-                break;
-            
-        }
+        
+        var degree = (indicator_timer % 4) * 90;
+        var indicator_mini_x = x+12 + dcos(degree);
+        var indicator_mini_y = y-char_height+5 + dsin(degree) * -1; // -1 = Invert axis
+        
+        var indicator_small_x = x+20 + dcos(degree+90);
+        var indicator_small_y = y-char_height-2 + dsin(degree+90) * -1;// -1 = Invert axis
+        
+        var indicator_x = x+20 + dcos(degree+180);
+        var indicator_y = y-char_height-30 + dsin(degree+180) * -1;// -1 = Invert axis
+        
         if(old_gametime != gametime){
             old_gametime = gametime;
             // var old_indicator_scale = indicator_scale;

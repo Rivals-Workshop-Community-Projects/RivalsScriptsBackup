@@ -378,8 +378,9 @@ if (has_rune ("L"))|| ((has_rune ("N")) )&& (has_rune ("I")) {
 	snolid = 0;
 }
 
+//------------------------------------------------------------MUNOPHONE CHEATS--------------------------
 // phoen cheats aka same thing
-if (phone_cheats[cheat_floaty] == 1) {
+if (phone_cheats[cheat_floaty]) {
     // generally absa stats
     gravity_speed = 0.3; 
     hitstun_grav = 0.45;
@@ -388,16 +389,22 @@ if (phone_cheats[cheat_floaty] == 1) {
     djump_speed = 10.60;
     short_hop_speed = 8.50;
     double_jump_time = 40;
+    //djump_accel = -1.4;
+    air_max_speed = 6;
+} else {
+	gravity_speed = .50;
+	hitstun_grav = .51;
+	air_accel = .25;
+	jump_speed = 10.5;
+	short_hop_speed = 6.5;
+	djump_speed = 10;
+	double_jump_time = 32;
+	air_max_speed = 4.5;
 }
-else if (phone_cheats[cheat_floaty] == 0) {
-    gravity_speed = prev_gravity_speed;
-    hitstun_grav = prev_hitstun_grav;
-    air_accel = prev_air_accel;
-    jump_speed = prev_jump_speed;
-    djump_speed = prev_djump_speed;
-    short_hop_speed = prev_short_hop_speed;
-    double_jump_time = prev_double_jump_time;
+if (phone_cheats[cheat_jump] != 1) {
+	max_djumps = phone_cheats[cheat_jump];
 }
+
 
 //------------------------------------------------------------------------KIRBY LOGIC --------------------------
 if swallowed { //Kirby ability script starts here

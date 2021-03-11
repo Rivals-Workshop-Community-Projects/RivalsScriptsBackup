@@ -34,3 +34,9 @@ if (attack == AT_DSPECIAL){
 		was_parried = false;
 	}
 }
+
+if (attack == AT_DSPECIAL){
+	if (!instance_exists(player_id.movingbox)){
+		destroyed = true;
+	}
+}

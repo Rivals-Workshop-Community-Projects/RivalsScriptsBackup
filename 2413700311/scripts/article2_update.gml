@@ -57,9 +57,17 @@ if(state == 1){
 				vsp = -14;
 				sound_play(sound_get("miso_uair"));
 				hutahit = true;
-			}else set_attack(AT_EXTRA_3);
-				attack_end();
+			}else{
+				//下必殺蓋アタック
+				if ((attack == AT_DSPECIAL and window > 3 ) or (attack == AT_DSPECIAL_AIR and window == 5 ) ){
+					hutaSP = true;
+				}else hutaSP = false;
+				set_attack(AT_EXTRA_3);
 			}
+			attack_end();
+		}
+			
+			if(attack == AT_DSPECIAL and window > 3) bodyless = true;
 		}
 	}
 	
@@ -152,6 +160,9 @@ if((player_id.state == PS_ATTACK_AIR) or (player_id.state == PS_ATTACK_GROUND)){
 		}
 	}
 }
+
+
+			
 
 //時間で消す
     if ((lifetime = 460)){

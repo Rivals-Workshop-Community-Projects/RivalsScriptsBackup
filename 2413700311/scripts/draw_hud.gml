@@ -1,16 +1,16 @@
 //draw_hud.gml
 //debug-------------------------------------------------------------------------
 /*
-draw_debug_text(30, 80 + 13, "bodyless: " + string(bodyless));
-draw_debug_text(30, 80 + 26, "bodyloss: " + string(bodyloss));
-draw_debug_text(30, 80 + 39, "headdie: " + string(headdie));
-draw_debug_text(30, 80 + 52, "random_intro: " + string(random_intro));
+draw_debug_text(30, 110 + 13, "bodyless: " + string(bodyless));
+draw_debug_text(30, 110 + 26, "bodyloss: " + string(bodyloss));
+draw_debug_text(30, 110 + 39, "headdie: " + string(headdie));
+draw_debug_text(30, 110 + 52, "hutaSP: " + string(hutaSP));
 
 draw_debug_text(temp_x + 0, temp_y - 13, "attack: " + string( attack ));
 draw_debug_text(temp_x + 0, temp_y - 26, "charge: " + string( strong_charge ));
 
-draw_debug_text(temp_x + 100, temp_y - 52, "nair_combo: " + string( nair_combo ));
-draw_debug_text(temp_x + 100, temp_y - 39, "state: " + get_state_name( state ));
+draw_debug_text(temp_x + 100, temp_y - 52, "state: " + get_state_name( state ));
+draw_debug_text(temp_x + 100, temp_y - 39, "window timer: " + string( window_timer ));
 draw_debug_text(temp_x + 100, temp_y - 26, "window: " + string(window));
 draw_debug_text(temp_x + 100, temp_y - 13, "imageindex: " + string(image_index));
  

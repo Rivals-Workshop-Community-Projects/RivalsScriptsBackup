@@ -1,5 +1,10 @@
 //set_attack
 
+
+if special_pressed && joy_pad_idle {
+    fs_force_fs = true;
+}
+
 switch attack {
     case AT_FSTRONG:
     case AT_DSTRONG:
@@ -151,12 +156,19 @@ if attack == AT_NSPECIAL && special_counter == 4 && move_cooldown[AT_NSPECIAL] <
             case "Q": piece_id.hp = hp_Q; break;
         }
         
-        if cur_free {
+        if cur_free && !has_rune("B") { //NSPECIAL cooldown and pratland removed.+
             next_state = free ? PS_PRATFALL : PS_PRATLAND;
             prat_land_time = 26;
         }
+        
+        if has_rune("H") { //NSPECIAL has a hitbox.
+            create_hitbox(AT_NSPECIAL, 1, new_x, new_y - 30);
+        }
     }
-    move_cooldown[AT_NSPECIAL] = 40;
+    if !has_rune("B") { //NSPECIAL cooldown and pratland removed.
+        move_cooldown[AT_NSPECIAL] = 40;
+    }
+    
     //state = PS_IDLE;
 }
 

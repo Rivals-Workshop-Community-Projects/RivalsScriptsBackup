@@ -6,7 +6,7 @@
 // To change the knockback given, edit hit_player_obj.orig_knock
 
 // Calculates how many hearts an attack creates
-if (attack != AT_NTHROW && attack != AT_DTHROW && attack != AT_UTHROW && attack != AT_FTHROW){
+if (attack != AT_NTHROW && attack != AT_DTHROW && attack != AT_UTHROW && attack != AT_FTHROW && attack != AT_FSPECIAL){
 	HeartPop = floor(my_hitboxID.damage/1.8);
 }
 

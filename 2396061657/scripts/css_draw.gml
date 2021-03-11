@@ -46,7 +46,7 @@ image_index = color;
 				case 0:
 			name = " 1: Date Girl"; 
 			var position = 0;
-			ColorPrev = make_color_rgb(167, 104, 191);
+			ColorPrev = make_color_rgb(56, 76, 128);
 			ColorNext = make_color_rgb(111, 237, 220);
 			ColorNextNext = make_color_rgb(255, 254, 252);
 				break;
@@ -142,22 +142,23 @@ image_index = color;
 			var position = 11;
 			ColorPrev = make_color_rgb(219, 115, 94);
 			ColorNext = make_color_rgb(167, 104, 191);
-			ColorNextNext = make_color_rgb(255, 169, 195);
+			ColorNextNext = make_color_rgb(56, 76, 128);
 				break;
 			
 				case 12: 
 			name = " 13: Breaker"; 
 			var position = 12;	
 			ColorPrev = make_color_rgb(182, 73, 218);
-			ColorNext = make_color_rgb(255, 169, 195);
-			ColorNextNext = make_color_rgb(111, 237, 220);
+			ColorNext = make_color_rgb(56, 76, 128);
+			ColorNextNext = make_color_rgb(255, 169, 195);
 				break;	
 			
 				case 13: 
-			name = " 14: Breaker"; 
+			name = " 14: Anarchy"; 
 			var position = 13;
-			ColorPrev = make_color_rgb(182, 73, 218);
-			ColorNext = make_color_rgb(182, 73, 218);
+			ColorPrev = make_color_rgb(167, 104, 191);
+			ColorNext = make_color_rgb(255, 169, 195);
+			ColorNextNext = make_color_rgb(111, 237, 220);
 				break;	
 				
 				case 14: 
@@ -238,13 +239,13 @@ draw_sprite_ext( sprite_get("select_highlight"), 0, x + 8, y + 8, 1, 1, 0, Highl
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
-draw_text_color(x + 10, y - 6, "Version 1.2.0", c_white, c_white, c_white, c_white, 1);
+draw_text_color(x + 10, y - 6, "Version 1.3.0", c_white, c_white, c_white, c_white, 1);
 
 // Date Display
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_right);
 draw_set_valign(fa_top);
-draw_text_color(x + 210, y - 6, "March 5th, 2021", c_white, c_white, c_white, c_white, 1);
+draw_text_color(x + 210, y - 6, "March 10th, 2021", c_white, c_white, c_white, c_white, 1);
 
 // Border Rectangle Yo!
 //draw_rectangle_color(temp_x - 4, temp_y + 4, temp_x + 40 + 10 * alts, temp_y + 12, c_black, c_black, c_black, c_black, false);

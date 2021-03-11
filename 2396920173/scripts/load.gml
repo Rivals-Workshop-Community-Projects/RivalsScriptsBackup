@@ -231,6 +231,10 @@ sprite_change_offset("Pjab", 50, 98);
 
 sprite_change_offset("plat", 47, 0);
 sprite_change_offset("taunt", 40, 78);
+sprite_change_offset("finalsmash_chessatron", 160, 320);
+sprite_change_offset("finalsmash_vfx_front", 160, 320);
+sprite_change_offset("finalsmash_vfx_back", 160, 320);
+sprite_change_offset("finalsmash_pawn", 30, 58);
 
 sprite_change_offset("arrow", 30, 30);
 

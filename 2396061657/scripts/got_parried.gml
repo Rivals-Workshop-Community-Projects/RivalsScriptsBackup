@@ -5,8 +5,9 @@
 // Use my_hitboxID to reference the hitbox that was parried
 
 // Sets current meter to 0 
-if (attack == AT_FSPECIAL){
-	LoveMeter = 0;
+if (isFspecial){
+	got_hitFspecial = true;
+	isFspecial = false;
 }
 
 // Turns opponents status effects off

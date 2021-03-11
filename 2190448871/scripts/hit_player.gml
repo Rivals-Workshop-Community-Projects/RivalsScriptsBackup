@@ -6,21 +6,28 @@ if my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 1 {
 	old_vsp = -9;
 }
 
-if my_hitboxID.attack == AT_DSPECIAL {
+if my_hitboxID.attack == AT_DSPECIAL_2 {
 	mariospeed += 5;
 }
 
-if my_hitboxID.attack == AT_FSPECIAL {
-	if mariospeed < 15 {
-		mariospeed += my_hitboxID.damage;
-	} else {
-		mariospeed *= 1.4
-	}
+// if my_hitboxID.attack == AT_FSPECIAL {
+// 	if mariospeed < 15 {
+// 		mariospeed += my_hitboxID.damage;
+// 	} else {
+// 		mariospeed *= 1.4
+// 	}
+// }
+
+mariospeed += ceil(my_hitboxID.damage * 0.4);
+//scuttle = 0
+draincooldown = 90;
+
+
+if(isAllowedCancel()){
+	white_flash_timer = hitstop_full;
 }
 
-mariospeed += my_hitboxID.damage;
-scuttle = 0
-draincooldown = 45;
+
 
 // if qpu && my_hitboxID.type == 1 {
 // hitstop *= 0.75;
@@ -36,3 +43,6 @@ draincooldown = 45;
 // 	}
 // }
 
+#define isAllowedCancel()
+
+return (attack == AT_DTILT or attack == AT_DATTACK or attack == AT_FSPECIAL or attack == AT_DAIR)

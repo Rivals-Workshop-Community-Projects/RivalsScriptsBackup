@@ -79,63 +79,73 @@ if ((attack == AT_EXTRA_2 || attack == AT_EXTRA_3) && state == PS_ATTACK_GROUND 
 // Down Special
 if (attack == AT_DSPECIAL){
 	if (state_timer == 11){
-		move_cooldown[AT_DSPECIAL] = 200;
-		if (instance_exists(needleplatform_solid)){
-			needleplatform_solid.new_box = true;
-		}
-		
-		box_health = 7;
-		if (instance_exists(Box)){
-			spawn_hit_fx(Box.x, Box.y, hit_small1);
+		create_new_box = true;
 
-			if (get_player_color(player) == 13 || get_player_color(player) == 11){
-				sound_play(sound_get("squeak_sfx"));
-			}
-			else {
-				sound_play(sound_get("box3_sfx"));			
-			}
-
-			instance_destroy(Box);
-			Box = noone;
-		}
+		box_health = 10;
 
 		if (instance_exists(movingbox)){
-			if (instance_exists(movingbox.boxhitbox)){
-				instance_destroy(movingbox.boxhitbox);
+			create_new_box = false;
+			move_cooldown[AT_DSPECIAL] = 30;
+		}
+		
+		if (create_new_box){
+			move_cooldown[AT_DSPECIAL] = 200;
+			
+			if (instance_exists(needleplatform_solid)){
+				if (needleplatform_solid.state == 3){
+					needleplatform_solid.new_box = true;
+				}
 			}
-			instance_destroy(movingbox);
-			movingbox = noone;
-		}
-		
-		/*
-		Box = instance_create(x, y + 40, "obj_article_solid");
-		Box.player_id = id;
-		Box.player = player;
-		*/
+			
+			with (oPlayer){
+				if (player != other.player && url == other.url){
+					if (instance_exists(needleplatform_solid)){
+						if (needleplatform_solid.state == 6 && point_distance( needleplatform_solid.x, needleplatform_solid.y, other.Box.x, other.Box.y ) > 10){
+							needleplatform_solid.new_box = true;
+						}
+					}
+				}
+			}
 
-		movingbox = instance_create(x, y + 40, "obj_article1");
-		movingbox.player_id = id;
-		movingbox.player = player;
-		movingbox.state = 1;
-		movingbox.hit_delay = 6;
-		movingbox.kb_angle = 270;
-		movingbox.bkb = 4;
-		movingbox.kb_scaling = .4;
-		movingbox.destroy_check = false;
-		movingbox.owner = player;
-		movingbox.health_check = true;
-		movingbox.initial_spawn = true;
-		movingbox.hitfxowner = id;
-		
-		if (get_player_color(player) == 12 || get_player_color(player) == 10 || get_player_color(player) == 1){
-			flag_destroy = false;
-			movingbox.flag = true;
-		}
-		if (get_player_color(player) == 13){
-			movingbox.sprite_index = sprite_get("plushy");
-		}
-		if (get_player_color(player) == 11){
-			movingbox.sprite_index = sprite_get("macka");
+			if (instance_exists(Box)){
+				spawn_hit_fx(Box.x, Box.y, hit_small1);
+
+				if (get_player_color(player) == 13 || get_player_color(player) == 11){
+					sound_play(sound_get("squeak_sfx"));
+				}
+				else {
+					sound_play(sound_get("box3_sfx"));			
+				}
+
+				instance_destroy(Box);
+				Box = noone;
+			}
+
+
+			movingbox = instance_create(x, y + 40, "obj_article1");
+			movingbox.player_id = id;
+			movingbox.player = player;
+			movingbox.state = 1;
+			movingbox.hit_delay = 6;
+			movingbox.kb_angle = 270;
+			movingbox.bkb = 4;
+			movingbox.kb_scaling = .4;
+			movingbox.destroy_check = false;
+			movingbox.owner = player;
+			movingbox.health_check = true;
+			movingbox.initial_spawn = true;
+			movingbox.hitfxowner = id;
+			
+			if (get_player_color(player) == 12 || get_player_color(player) == 10 || get_player_color(player) == 1 || SecretColor == 2){
+				flag_destroy = false;
+				movingbox.flag = true;
+			}
+			if (get_player_color(player) == 13){
+				movingbox.sprite_index = sprite_get("plushy");
+			}
+			if (get_player_color(player) == 11){
+				movingbox.sprite_index = sprite_get("macka");
+			}
 		}
 	}
 }
@@ -180,8 +190,8 @@ if (attack == AT_FSPECIAL){
 		}		
 		else { // Charge Release
 
-		sound_play(sound_get("uspecial_sfx"));
-		if (chargedash >= 0 && chargedash <= 20){ // Weak
+			sound_play(sound_get("uspecial_sfx"));
+			if (chargedash >= 0 && chargedash <= 20){ // Weak
 				window = 3;
 				window_timer = 0;
 			}
@@ -221,6 +231,49 @@ if (attack == AT_FSPECIAL){
 		if (!has_hit_player){
 			window = 20;
 		}
+	}
+}
+
+// Neutral Special
+if (attack == AT_NSPECIAL){	
+	move_cooldown[AT_NSPECIAL] = 30;
+	if (window == 1){
+
+		set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_air"));
+		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_ground"));
+		set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 6);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 3);
+			
+		if (special_down) { // Charge Shot
+			if (window_timer == 9 && chargespike == 20){
+				set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("tomochungus"));
+				set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("tomochungus"));
+				set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 3);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 6);
+				window = 2;
+				window_timer = 0;
+			}
+			if (window_timer == 9){
+				window_timer = 6;
+			}
+			if (chargespike < 20){
+				chargespike += 1;
+			}
+		}
+
+	}	
+	
+	if (window >= 2){
+		if (window_timer == 2){
+			chargespike = 0;
+		}	
+	}	
+	
+	if ((has_hit && window >= 3) && window_timer >= 5){
+		can_jump = true;
+		can_attack = true;
+		can_special = true;
+		can_move = true;
 	}
 }
 

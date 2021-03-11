@@ -72,52 +72,27 @@ if attack == AT_DAIR {
 }
 
 if (attack == AT_NAIR && window == 5 && window_timer == 5) {
-     move_cooldown[AT_NAIR] = 20; 			//NUMBER HERE: THIS IS NAIR'S COOLDOWN. YOU PROBABLY ALREADY KNOW THAT THOUGH.
+     move_cooldown[AT_NAIR] = 25; 			//NUMBER HERE: THIS IS NAIR'S COOLDOWN. YOU PROBABLY ALREADY KNOW THAT THOUGH.
 } 
 
 if attack == AT_DSPECIAL {
-	
-	if window == 1 && scuttle == 0 && !special_down && !hitpause {
+	move_cooldown[AT_DSPECIAL] = 20;
+	if window == 1 && window_timer < get_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH) && scuttle == 0 && !hitpause {
 		scuttle = 1;
 		spawn_scuttle = true;
     }
 	
 	if !spawn_scuttle{
-		move_cooldown[AT_DSPECIAL] = 16;
-		if (window == 1 or window == 2) && window_timer == 1 {
-		voiceclip = "yahooquiet";
-		playvoice = 1;
-		mariospeed += 1;  			//NUMBER HERE: THIS IS HOW MUCH MARIOSPEED GOES UP EVERY TIME YOU USE DSPECIAL.
-		vsp = min(vsp,1)
-		hsp = clamp(hsp,-1,1) 
+		if(window == 1 and window_timer == 1){
+			
+			sound_play(sound_get("doh"));
+			window = 3;
+			window_timer = 0;
 		}
-		if window == 1 && window_timer == get_window_value(AT_DSPECIAL,1,AG_WINDOW_LENGTH) {
-			if !special_down or mariospeed >= 100{
-				window = 3;
-				window_timer = 0;
-			}
-		}
-		if window == 2 && window_timer == get_window_value(AT_DSPECIAL,2,AG_WINDOW_LENGTH) {
-			if !special_down or mariospeed >= 100{
-				window = 3;
-				window_timer = 0;
-			}
-		}
-	}else{
-		set_window_value(attack, 2, AG_WINDOW_TYPE, 0);
-		set_window_value(attack, 2, AG_WINDOW_LENGTH, 8);
-		set_window_value(attack, 2, AG_WINDOW_ANIM_FRAMES, 4);
-		set_window_value(attack, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 		
-		if window == 1 {
-		window = 2
-		window_timer = 0
-		}
-		if(window == 2 and window_timer == 1){
-			sound_play(sound_get("haha"),false,noone,0.5);
-		}
+	}else{
 		if(window == 2 and window_timer == get_window_value(attack, 2, AG_WINDOW_LENGTH)){
-			create_hitbox(AT_DSPECIAL , 3 , x , y - 10 );
+			create_hitbox(AT_DSPECIAL , 1 , x , y - 10 );
 			spawn_hit_fx (x,y - 10, 305);
 			sound_play(sound_get("throw"));
 			spawn_scuttle = false;
@@ -125,6 +100,50 @@ if attack == AT_DSPECIAL {
 	}
 }
 
+if(attack == AT_DSPECIAL_2){
+	move_cooldown[AT_DSPECIAL_2] = 16;
+	if (window == 1 && window_timer == 1){
+		var t = 5;
+		var s = hit_player_obj.x + hit_player_obj.hsp * t;
+		var so = x;
+		hsp = (s - so)/t;
+		
+		var s = hit_player_obj.y + hit_player_obj.vsp * t + hit_player_obj.grav * t;
+		var so = y;
+		vsp = sqrt(abs(2 * grav * abs(s - so))) * sign(s - so) ;
+	}
+	if (window == 2) && window_timer == 1 {
+		voiceclip = "yahooquiet";
+		playvoice = 1;
+		mariospeed += 1;  			//NUMBER HERE: THIS IS HOW MUCH MARIOSPEED GOES UP EVERY TIME YOU USE DSPECIAL.
+		vsp = clamp(vsp, -1,1)
+		hsp = clamp(hsp,-1,1);
+	}
+	if window == 1 && window_timer == get_window_value(AT_DSPECIAL_2,1,AG_WINDOW_LENGTH) {
+		if !special_down or mariospeed >= 100{
+			window = 3;
+			window_timer = 0;
+		}
+	}
+	if window == 2 && window_timer == get_window_value(AT_DSPECIAL_2,2,AG_WINDOW_LENGTH) {
+		if !special_down or mariospeed >= 100{
+			window = 3;
+			window_timer = 0;
+		}
+	}
+}
+
+if(has_hit_player and mariospeed < 100 and isAllowedCancel() and hitpause and ((special_down and down_down) or is_special_pressed(DIR_DOWN))){
+	attack_end();
+	destroy_hitboxes();
+	set_attack(AT_DSPECIAL_2);
+	if(hit_player_obj.hitpause){
+		hit_player_obj.hitstop += 5;
+		hit_player_obj.hitstop_full += 5;
+	}
+	
+	hurtboxID.sprite_index = get_attack_value(AT_DSPECIAL_2, AG_HURTBOX_SPRITE);
+}
 
 if attack == AT_NSPECIAL {
 	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 50 - floor(mariospeed/3))
@@ -184,7 +203,7 @@ if attack == AT_FSTRONG {
 if attack == AT_FSPECIAL {
 	
 	if window == 1 && window_timer == 1 {
-		set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 2+floor(mariospeed*0.06));              //NUMBER HERE: *0.1 IS HOW MUCH MARIOSPEED ADDS TO THE DAMAGE, AND THE 2 IS THE BASE DAMAGE
+		set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 5+floor(mariospeed*0.09));              //NUMBER HERE: *0.1 IS HOW MUCH MARIOSPEED ADDS TO THE DAMAGE, AND THE 2 IS THE BASE DAMAGE
 		set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 5+floor(mariospeed*0.01));			//NUMBER HERE: *0.1 IS HOW MUCH MARIOSPEED ADDS TO THE KNOCKBACK, AND THE 4 IS THE BASE KNOCKBACK
 		
 		set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, air_max_speed + 1 + (0.07 * mariospeed));	//NUMBER HERE: AIR_MAX_SPEED + 1 IS THE BASE VELOCITY TO APPLY AND (0.07 * MARIOSPEED) IS THE GROWTH PERCENTAGE 
@@ -197,30 +216,21 @@ if attack == AT_FSPECIAL {
 		playvoice = 1;
 		//hsp += (8+mariospeed * 0.5)*spr_dir;  //NUMBER HERE: * 1 IS HOW MUCH MARIOSPEED ADDS TO THE BLJ, AND THE 3 IS THE BASE SPEED, OLD
 	
-		mariospeed /= 1.15;   //NUMBER HERE: THIS IS HOW MUCH SPEED BLJING DRAINS.
+		mariospeed -= 4;   //NUMBER HERE: THIS IS HOW MUCH SPEED BLJING DRAINS.
 	}
 	
-	if window == 2{
-		
-		if window_timer == 2{
-			if (mariospeed >= 70 - 10){ //NUMBER HERE: 70 IS THE MARIOSPEED TO DISPLAY THE STRETCH SPRITE AND 10 IS THE DRAIN VALUE FROM ABOVE 
-				window = 4;
-				window_timer = 0;
-			}
-		}
-		
-	}
-	if window == 3 and window_timer == get_window_value(AT_FSPECIAL,3,AG_WINDOW_LENGTH){
-		window = 29;		//CUSTOM ENDLAG WHEN NOT STRETCHING
+	if window == 2 and window_timer == get_window_value(AT_FSPECIAL,2,AG_WINDOW_LENGTH){
+		window = 4;
+		window_timer = 0;
 	}
 	
-	if (window == 2 or window == 4) and hsp = 0 and free{	//BOUNCE TRIGGER
-		window = 7;
+	if window == 2 and hsp == 0 and free{	//BOUNCE TRIGGER
+		window = 3;
 		window_timer = 0;
 	}
 
-	if window == 7 and !hitpause and window_timer == 2{	//ENDLAG2, THIS ONE IS 5 FRAMES FASTER
-		window = 6;
+	if window == 3 and !hitpause and window_timer == 2{	//ENDLAG2, THIS ONE IS 5 FRAMES FASTER
+		window = 4;
 		window_timer = 0;
 		hsp = spr_dir * -2;		//NUMBER HERE: -4 IS THE VELOCITY TO APPLY IN THE OPPOSITE DIRECTION
 		vsp = -7; //NUMBER HERE:THE VELOCITY TO APPLY VERTICALLY
@@ -443,6 +453,8 @@ if attack == AT_DAIR {
     }
 }
 
-
-
 }
+
+#define isAllowedCancel()
+
+return (attack == AT_DTILT or attack == AT_DATTACK or attack == AT_FSPECIAL or attack == AT_DAIR)

@@ -18,6 +18,12 @@ up1 = 1;
 up2 = 1;
 up3 = 1;
 
+fspecial_circles = 0;
+fspec_x = 0;
+fspec_y = 0;
+fspec_s_x = 0;
+fspec_s_y = 0;
+fspec_sparkle_timer = 0;
 
 isThorn = false;
 isCandy = false;
@@ -56,6 +62,9 @@ hit_ustrong = hit_fx_create( sprite_get("ustrong_fx"), 40);
 sfxdthrow = sound_get("dthrowsfx");
 dThrow = noone; 
 isFspecial = false;
+got_hitFspecial = false;
+heartsplode = false;
+heart_num = 0;
 
 hurtbox_spr = asset_get("ex_guy_hurt_box");
 crouchbox_spr = sprite_get("crouch_hurtbox");

@@ -275,6 +275,12 @@ if(state != 5){
         instance_destroy();
         exit;
     }
+    
+//密着fix
+if (player_id.attack == AT_EXTRA_3 and player_id.bodyless == false){
+	instance_destroy();
+    exit;
+}
 
 
     if (y > room_height + 100){

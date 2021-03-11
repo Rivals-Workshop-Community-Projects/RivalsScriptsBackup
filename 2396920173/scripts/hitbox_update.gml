@@ -44,7 +44,15 @@ if attack == AT_FTHROW && hbox_num == 1 { //uspec
     y = owner.y - 20 + owner.vsp;
     owner.hitbox_active = true;
     
-    var _max = 35;
+    var rune_active = false;
+    with player_id {
+        if has_rune("K") { //Piece hitboxes last much longer when being attacked.
+            var _max = 120;
+        } else {
+            var _max = 35;
+        }
+    }
+    
     if ("active_max" in self) {
         _max = active_max;
     }
@@ -62,7 +70,7 @@ if attack == AT_FTHROW && hbox_num == 1 { //uspec
     var prev_id = owner.prevHitboxID;
     if prev_id != undefined && instance_exists(prev_id) {
         //print_debug(string(prev_id.player_id.player))
-        if prev_id.player_id != player_id {
+        if prev_id.player_id != player_id { 
             can_hit_self = true;
             can_hit[prev_id.player_id.player] = false;
         }
@@ -89,15 +97,23 @@ if attack == AT_NSPECIAL_2 {
         }
     }
     
+    with player_id {
+        if has_rune("L") { //All FSPECIAl/DSPECIAL attacks have been enhanced.
+            var counter_max = 5;
+        } else {
+            var counter_max = 1;
+        }
+    }
+    
     var _frames = 9;
     if hbox_num == 2 {
         if hitbox_timer == 1 {
-            if counter == 0 sound_play(asset_get("sfx_ell_dspecial_explosion_1"))
-            else if counter == 1 sound_play(asset_get("sfx_ell_dspecial_explosion_2"))
+            if counter < counter_max sound_play(asset_get("sfx_ell_dspecial_explosion_1"))
+            else if counter == counter_max sound_play(asset_get("sfx_ell_dspecial_explosion_2"))
             spawn_hit_fx(x, y, 115)
         }
         if hitbox_timer == _frames {
-            if counter < 1 {
+            if counter < counter_max {
                 var hitbox = create_hitbox(AT_NSPECIAL_2, 2, x, y);
                     hitbox.hsp = 0;
                     hitbox.vsp = 0;
@@ -123,6 +139,8 @@ if (attack == AT_NSPECIAL_2 && hbox_num == 1) || (attack == AT_UTHROW && hbox_nu
 }
 
 if attack == AT_DSPECIAL_2 && hbox_num == 2 {
+    if owner.hsp > 0 spr_dir = 1;
+    else if owner.hsp < 0 spr_dir = -1;
     if !instance_exists(owner) {
         instance_destroy()
         exit;
@@ -135,7 +153,26 @@ if attack == AT_DSPECIAL_2 && hbox_num == 2 {
 }
 
 if attack == AT_FTHROW && hbox_num == 2 {
-    can_hit_self = true;
+    var runeactive = false;
+    with player_id {
+        if has_rune("D") { //Piece self destruct explosions no longer harm yourself.
+            runeactive = true;
+        }
+    }
+    if !runeactive can_hit_self = true;
+}
+
+//final smash
+if attack == 49 && hbox_num == 10 {
+    if image_index == 2 {
+        vsp = -50;
+        img_spd = 0;
+        image_xscale = 0.15;
+        image_yscale = 0.3;
+    } else {
+        image_xscale = 0
+        image_yscale = 0
+    }
 }
 
 #define destroy_piece

@@ -3,7 +3,7 @@
 
 state_timer++
 
-if (state_timer == 1){
+if (state_timer == 1 && state == 0){
 	state = 1;
 }
 
@@ -27,7 +27,7 @@ if (state == 1){
 if (state == 2){
 
 
-	if (instance_exists(player_id.Box) ){
+	if (instance_exists(player_id.Box)){
 		with (player_id.Box){
 			if (place_meeting(x, y, other)){
 				other.canmove = true;
@@ -35,12 +35,32 @@ if (state == 2){
 				other.stored_x = x - other.x;
 				other.stored_y = y - other.y + 1;
 				other.state = 3;
+				other.state_timer = -240;
 			}
 		}
-
 	}
 	
-	if (place_meeting(x, y, asset_get("par_block")) && (!place_meeting(x, y, player_id.Box))){
+	var self_temp = player_id.needleplatform_solid;
+	
+	with (oPlayer){
+		if (player != other.player && url == other.player_id.url){
+			if (instance_exists(Box)){
+				with (Box){	
+					if (place_meeting(x, y, self_temp)){
+						self_temp.canmove = true;						
+						self_temp.stored_x = x - self_temp.x;
+						self_temp.stored_y = y - self_temp.y + 1;
+						self_temp.state = 6;
+						self_temp.state_timer = -240;
+						self_temp.other_box = true;
+					}
+				}
+			}
+
+		}
+	}
+	
+	if (place_meeting(x, y, asset_get("par_block")) && (!place_meeting(x, y, player_id.Box)) && !other_box){
 		state = 5;
 	}
 	
@@ -69,21 +89,132 @@ if (state == 3){ // Moves with Box
 	if (instance_exists(player_id.movingbox) && canmove == true){
 		if (standing){
 			with(oPlayer){
-				if ((place_meeting(x, y - 3, other) && y < other.y + 10) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
-					if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
-						free = false;
-						y = other.y - 3;
-					}
-					
-					if ((state_cat != SC_AIR_COMMITTED)){
-						if (other.image_angle == 0){
-							x = other.x + 25;
+				if (other.player_id.movingbox.vsp >= 19){
+					if ((place_meeting(x, y - 3, other) && y < other.y + 15) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+							free = false;
+							y = other.y + 20;
 						}
-						if (other.image_angle == 180){
-							x = other.x - 25;
+						
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+							if (other.image_angle == 0){
+								x = other.x + 25;
+							}
+							if (other.image_angle == 180){
+								x = other.x - 25;
+							}
 						}
+						
+					}				
+				}
+				if (other.player_id.movingbox.vsp >= 15 && other.player_id.movingbox.vsp < 19){
+					if ((place_meeting(x, y - 3, other) && y < other.y + 15) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+							free = false;
+							y = other.y + 15;
+						}
+						
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+							if (other.image_angle == 0){
+								x = other.x + 25;
+							}
+							if (other.image_angle == 180){
+								x = other.x - 25;
+							}
+						}
+						
+					}				
+				}
+				if (other.player_id.movingbox.vsp >= 10 && other.player_id.movingbox.vsp < 15){
+					if ((place_meeting(x, y - 3, other) && y < other.y + 15) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+							free = false;
+							y = other.y + 10;
+						}
+						
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+							if (other.image_angle == 0){
+								x = other.x + 25;
+							}
+							if (other.image_angle == 180){
+								x = other.x - 25;
+							}
+						}
+						
+					}				
+				}
+				if (other.player_id.movingbox.vsp >= 5.5 && other.player_id.movingbox.vsp < 10){
+					if ((place_meeting(x, y - 3, other) && y < other.y + 15) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+							free = false;
+							y = other.y + 5;
+						}
+						
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+							if (other.image_angle == 0){
+								x = other.x + 25;
+							}
+							if (other.image_angle == 180){
+								x = other.x - 25;
+							}
+						}
+						
+					}				
+				}
+				if (other.player_id.movingbox.vsp >= 0 && other.player_id.movingbox.vsp < 5.5){
+					if ((place_meeting(x, y - 3, other) && y < other.y + 15) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+							free = false;
+							y = other.y;
+						}
+						
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+							if (other.image_angle == 0){
+								x = other.x + 25;
+							}
+							if (other.image_angle == 180){
+								x = other.x - 25;
+							}
+						}
+						
+					}				
+				}
+				if (other.player_id.movingbox.vsp < 0 && other.player_id.movingbox.vsp > -10){
+					if ((place_meeting(x, y - 3, other) && y < other.y + 10) || (point_distance( x, y, other.x, other.y) < 30 && y < other.y)){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+							free = false;
+							y = other.y - 3;
+						}
+						
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+							if (other.image_angle == 0){
+								x = other.x + 25;
+							}
+							if (other.image_angle == 180){
+								x = other.x - 25;
+							}
+						}
+						
 					}
-					
+				}
+
+				if (other.player_id.movingbox.vsp <= -10){
+					if ((place_meeting(x, y, other) && y < other.y + 5) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+							free = false;
+							y = other.y - 13;
+						}
+						
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+							if (other.image_angle == 0){
+								x = other.x + 25;
+							}
+							if (other.image_angle == 180){
+								x = other.x - 25;
+							}
+						}
+						
+					}
 				}
 			}
 		}
@@ -111,6 +242,194 @@ if (state == 3){ // Moves with Box
 		}
 		
 		y = player_id.Box.y - stored_y;		
+	}
+}
+
+if (state == 6){ // Moves with Other Tomo Box
+
+	if (canmove && new_box){
+		state = 4;
+	}
+	
+	
+	with (oPlayer){
+		if (player != other.player && url == other.player_id.url){
+			if (instance_exists(Box)){
+				var oBox = Box;
+			}
+			else {
+				var oBox = noone;
+			}
+
+			if (instance_exists(movingbox)){
+				var oMovBox = movingbox;
+			}
+			else {
+				var oMovBox = noone;
+			}
+		}
+	}
+	
+	if (instance_exists(oMovBox) && canmove == true){
+		if (standing){
+			with(oPlayer){
+				if (oMovBox.vsp >= 19){
+					if ((place_meeting(x, y - 3, other) && y < other.y + 15) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+							free = false;
+							y = other.y + 20;
+						}
+						
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+							if (other.image_angle == 0){
+								x = other.x + 25;
+							}
+							if (other.image_angle == 180){
+								x = other.x - 25;
+							}
+						}
+						
+					}				
+				}
+				if (oMovBox.vsp >= 15 && oMovBox.vsp < 19){
+					if ((place_meeting(x, y - 3, other) && y < other.y + 15) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+							free = false;
+							y = other.y + 15;
+						}
+						
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+							if (other.image_angle == 0){
+								x = other.x + 25;
+							}
+							if (other.image_angle == 180){
+								x = other.x - 25;
+							}
+						}
+						
+					}				
+				}
+				if (oMovBox.vsp >= 10 && oMovBox.vsp < 15){
+					if ((place_meeting(x, y - 3, other) && y < other.y + 15) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+							free = false;
+							y = other.y + 10;
+						}
+						
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+							if (other.image_angle == 0){
+								x = other.x + 25;
+							}
+							if (other.image_angle == 180){
+								x = other.x - 25;
+							}
+						}
+						
+					}				
+				}
+				if (oMovBox.vsp >= 5.5 && oMovBox.vsp < 10){
+					if ((place_meeting(x, y - 3, other) && y < other.y + 15) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+							free = false;
+							y = other.y + 5;
+						}
+						
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+							if (other.image_angle == 0){
+								x = other.x + 25;
+							}
+							if (other.image_angle == 180){
+								x = other.x - 25;
+							}
+						}
+						
+					}				
+				}
+				if (oMovBox.vsp >= 0 && oMovBox.vsp < 5.5){
+					if ((place_meeting(x, y - 3, other) && y < other.y + 15) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+							free = false;
+							y = other.y;
+						}
+						
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+							if (other.image_angle == 0){
+								x = other.x + 25;
+							}
+							if (other.image_angle == 180){
+								x = other.x - 25;
+							}
+						}
+						
+					}				
+				}
+				if (oMovBox.vsp < 0 && oMovBox.vsp > -10){
+					if ((place_meeting(x, y - 3, other) && y < other.y + 10) || (point_distance( x, y, other.x, other.y) < 30 && y < other.y)){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+							free = false;
+							y = other.y - 3;
+						}
+						
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+							if (other.image_angle == 0){
+								x = other.x + 25;
+							}
+							if (other.image_angle == 180){
+								x = other.x - 25;
+							}
+						}
+						
+					}
+				}
+
+				if (oMovBox.vsp <= -10){
+					if ((place_meeting(x, y, other) && y < other.y + 5) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+							free = false;
+							y = other.y - 13;
+						}
+						
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+							if (other.image_angle == 0){
+								x = other.x + 25;
+							}
+							if (other.image_angle == 180){
+								x = other.x - 25;
+							}
+						}
+						
+					}
+				}
+			}
+		}
+	}
+	
+	if (instance_exists(oMovBox) && canmove == true){
+		if (image_angle == 0){
+			x = oMovBox.x - stored_x - 5;
+		}
+		else{
+			x = oMovBox.x - stored_x + 5;		
+		}
+		
+		y = oMovBox.y - stored_y;
+	}
+	
+/*
+	if (!instance_exists(oMovBox) && !instance_exists(oBox)){
+		state = 4;
+	}
+*/	
+
+	if (instance_exists(oBox)){
+		if (image_angle == 0){
+			x = oBox.x - stored_x - 5;
+		}
+		else{
+			x = oBox.x - stored_x + 5;		
+		}
+		
+		y = oBox.y - stored_y;		
 	}
 }
 

@@ -15,3 +15,5 @@ image_index = 0;
 image_speed = .4;
 
 heart_pulling = true;
+
+CalliesHeart = true;

@@ -39,7 +39,6 @@ if get_player_color(player) = 8 {
 }
 init_shader();
 
-
 move_cooldown[AT_FSPECIAL] = 60;
 move_cooldown[AT_DSPECIAL] = 60;
 if move_cooldown[AT_NSPECIAL] <= 1 {
@@ -79,7 +78,8 @@ switch piece {
     case "N":
     knockback_adj = 1.05;
     char_height = 50;
-    max_djumps = 2;
+    if has_rune("J") max_djumps = 4; //Knight has 2 extra jumps, and King retains FSPECIAL super armour on FSTRONG and DSTRONG.
+    else max_djumps = 2;
     jump_speed = 11;
     djump_speed = 9;
     short_hop_speed = 7;
@@ -154,38 +154,55 @@ if !hitpause {
 
 if king_armour {
 	//disable dash/shield
-	can_shield = false;
-	has_airdodge = false;
-	super_armor = true;
-	djumps = 1;
-	walk_speed = 1;
-	dash_speed = 2;
-	initial_dash_speed = 2.5
-	air_max_speed = 3;
-	
-	armour_timer++;
-	
-	if armour_timer >= 120 {
-		king_armour = false;
-		armour_timer = 0;
-		user_event(0)
-		char_height = 75;
-	    walk_speed = 2;
-	    dash_speed = 4;
-	    initial_dash_speed = 4.25;
-	    air_max_speed = 4;
-	    armour_cooldown = 120;
-	    exit;
-	}
-	
-	switch (state) {
-		case PS_PARRY_START:
-		set_state(prev_state)
+	if has_rune("L") { //All FSPECIAl/DSPECIAL attacks have been enhanced.
 		super_armor = true;
+		armour_timer += 0.5;
+		if armour_timer >= 120 {
+			king_armour = false;
+			armour_timer = 0;
+			user_event(0)
+			char_height = 75;
+		    walk_speed = 2;
+		    dash_speed = 4;
+		    initial_dash_speed = 4.25;
+		    air_max_speed = 4;
+		    armour_cooldown = 120;
+		    exit;
+		}
+	} else {
 		can_shield = false;
-		break;
-		default: break;
-    }
+		has_airdodge = false;
+		super_armor = true;
+		djumps = 1;
+		walk_speed = 1;
+		dash_speed = 2;
+		initial_dash_speed = 2.5
+		air_max_speed = 3;
+		
+		armour_timer++;
+		
+		if armour_timer >= 120 {
+			king_armour = false;
+			armour_timer = 0;
+			user_event(0)
+			char_height = 75;
+		    walk_speed = 2;
+		    dash_speed = 4;
+		    initial_dash_speed = 4.25;
+		    air_max_speed = 4;
+		    armour_cooldown = 120;
+		    exit;
+		}
+		
+		switch (state) {
+			case PS_PARRY_START:
+			set_state(prev_state)
+			super_armor = true;
+			can_shield = false;
+			break;
+			default: break;
+	    }
+	}
 }
 if armour_cooldown > 0 {
 	armour_cooldown--;
@@ -193,10 +210,12 @@ if armour_cooldown > 0 {
 
 if queen_active && piece == "Q" {
 	if queen_timer > 0 && !((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_FSPECIAL_2) {
-		queen_timer--;
+		if !has_rune("G") { //Queen form meter never decreases.
+			queen_timer--;
+		}
 	} else if queen_timer == 0 {
 		queen_active = false;
-        pawn_meter = 0;
+        pawn_meter = pawn_meter_default;
 	}
 }
 /*
@@ -245,57 +264,43 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && special_pressed && !
     }
 }
 
+//runes
+if has_rune("A") { //Pawn meter always starts 3 spaces ahead.
+	pawn_meter_default = 3;
+	if state == PS_SPAWN {
+		pawn_meter = pawn_meter_default;
+	}
+}
+if has_rune("K") { //Piece hitboxes when attacked size increased, and last much longer.
+	set_hitbox_value(AT_FTHROW, 1, HG_WIDTH, 60);
+	set_hitbox_value(AT_FTHROW, 1, HG_HEIGHT, 60);
+}
+if has_rune("O") { //If you die while another piece is active, you will switch to that piece instead.
+	if y > room_height + 160 || x < -80 || x > room_width + 80 {
+		if piece_id != undefined && instance_exists(piece_id) {
+			x = piece_id.x
+			y = piece_id.y
+			piece = piece_id.piece;
+			user_event(0)
+			sound_play(asset_get("mfx_levelup"))
+			instance_destroy(piece_id);
+			piece_id = undefined;
+		}
+	}
+}
+if has_rune("M") { //When Pawn meter is full, press TAUNT to unleash a Megachessatron (only once per game).
+    if !used_fs && pawn_meter >= 7 && taunt_pressed && (state_cat == SC_GROUND_NEUTRAL || state_cat == SC_AIR_NEUTRAL || (state == PS_ATTACK_GROUND && attack == AT_TAUNT)) {
+        state = PS_ATTACK_GROUND;
+        attack = 49;
+        window = 0;
+        window_timer = 0;
+        state_timer = 0;
+        visible = false;
+        used_fs = true;
+    }
+}
 //compatibility
 //user_event(9)
 
 //chess ai
 //user_event(1);
-
-/*
-with oPlayer {
-	if id != other.id {
-		if attack_down other.attack_down = true;
-		if left_down other.left_down = true;
-		if right_down other.right_down = true;
-		if up_down other.up_down = true;
-		if down_down other.down_down = true;
-	}
-}
-*/
-
-//TRAILER STUFF, DELETE LATER
-/*
-move_cooldown[AT_JAB] = 60;
-with oPlayer {
-	if id != other.id {
-		var rate = 6;
-		var spr = asset_get("empty_sprite")
-		switch other.trailer_phase {
-			case 0: break;
-			case 1: other.trailer_frame = 0; other.trailer_x = x - 46; other.trailer_y = y - 118; visible = false; break;
-			case 2: other.trailer_frame = floor(clamp(other.trailer_timer/rate, 0, 2)+1) break;
-			case 3: other.trailer_frame = floor(clamp(other.trailer_timer/rate, 0, 1)+4) break;
-			case 4: other.trailer_frame = floor(clamp(other.trailer_timer/rate, 0, 3)+6) break;
-			case 5: other.trailer_frame = floor(clamp(other.trailer_timer/rate, 0, 1)+10) break;
-			case 6: other.trailer_frame = floor(clamp(other.trailer_timer/rate, 0, 1)+12) break;
-			case 7: other.trailer_frame = floor(clamp(other.trailer_timer/rate, 0, 2)+14) break;
-			case 8: other.trailer_frame = floor(clamp(other.trailer_timer/rate, 0, 2)+17) break;
-			case 9: other.trailer_frame = 20; break;
-			case 10: other.trailer_frame = 21; break;
-			case 11: other.trailer_frame = floor(clamp(other.trailer_timer/rate, 0, 1)+22) break;
-			case 12: other.trailer_frame = 24; break;
-			case 13: other.trailer_frame = 25; visible = true break;
-		}
-		if state == PS_RESPAWN && other.trailer_phase > 12 {
-			visible = false
-			other.trailer_dead = true;
-		}
-		if other.trailer_dead {
-			visible = false;
-			x = room_width/2;
-			y = room_height/2 - 100;
-		}
-		other.trailer_timer++;
-	}
-}
-*/

@@ -14,3 +14,7 @@ if (my_hitboxID.attack == AT_FSPECIAL){
 	chargedash = 0;
 	usedFspecial = false;
 }
+
+if (my_hitboxID.attack == AT_NSPECIAL){
+	chargespike = 0;
+}

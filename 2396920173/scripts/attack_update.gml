@@ -1,5 +1,9 @@
 // attack_update
 
+if !(special_pressed && joy_pad_idle) && attack != 49 {
+    fs_force_fs = false;
+}
+
 //B - Reversals
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
@@ -43,7 +47,12 @@ if attack == AT_USTRONG {
     if window == 2 && window_timer == get_window_value(AT_USTRONG, window, AG_WINDOW_LENGTH) {
         destroy_piece();
         var _p = spawn_piece(x, y - 60, "P")
-            _p.vsp = -(strong_charge/6 + 12);
+            if has_rune("E") {
+                _p.vsp = -(strong_charge/3 + 18);
+            } else {
+                _p.vsp = -(strong_charge/6 + 12);
+            }
+            
         var hitbox = create_hitbox(AT_FTHROW, 1, x, y - 60);
             hitbox.owner = _p;
             hitbox.active_max = 60
@@ -174,7 +183,7 @@ if attack == AT_USPECIAL {
         init_shader();
         
         if window_timer == get_window_value(AT_USPECIAL, window, AG_WINDOW_LENGTH) {
-            if !free {
+            if !free || has_rune("C") { //USPECIAL never puts you into pratfall.
                 set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 0);
             }
             if !(piece == "N" && uspec_move_num <= 1) {
@@ -190,6 +199,13 @@ if attack == AT_USPECIAL {
 
 //Knight
 if attack == AT_UTHROW {
+    if has_rune("L") { //All FSPECIAl/DSPECIAL attacks have been enhanced.
+        if window == 3 && (window_timer == 1 || window_timer == 3) {
+            var hbox1 = create_hitbox(AT_UTHROW, 1, x, y - 30)
+                hbox1.hsp = spr_dir*12;
+        }
+    }
+    
     if window == 2 && window_timer > 6 {
         if special_pressed && !down_down {
             window = 3;
@@ -213,13 +229,19 @@ if attack == AT_DTHROW {
         }
         queen_active = true;
     }
+    
+    if has_rune("L") { //All FSPECIAl/DSPECIAL attacks have been enhanced.
+        if window_timer mod 2 == 1 {
+            create_hitbox(AT_DTHROW, 1, x, 500);
+        }
+    }
 }
 
 if !has_hit {
     can_increment = true;
 }
 
-if piece == "P" || attack == AT_FSTRONG {
+if piece == "P" || attack == AT_FSTRONG || has_rune("N") { //All piece type attacks can fill up the Pawn meter.
     if has_hit && hitstop == hitstop_full - 1 && can_increment {
         if pawn_meter < 7 {
             pawn_meter++;
@@ -231,9 +253,22 @@ if piece == "P" || attack == AT_FSTRONG {
 
 //Queen
 if attack == AT_FSPECIAL_2 {
+    if has_rune("L") { //All FSPECIAl/DSPECIAL attacks have been enhanced.
+        var targetplayer = undefined;
+        with oPlayer {
+            if id != other.id {
+                targetplayer = id;
+            }
+        }
+        
+        if targetplayer != undefined {
+            laser_angle = darctan2(y - targetplayer.y - 60, spr_dir*(targetplayer.x - x))
+        }
+    }
     if window == 2 {
         can_move = false;
-        var num_hitboxes = 15;
+        if has_rune("L") var num_hitboxes = 50 //All FSPECIAl/DSPECIAL attacks have been enhanced.
+        else var num_hitboxes = 15;
         var dist = 30;
         for (var i = 0; i < num_hitboxes; i++) {
             var startx = x+(28 + dist*i*dcos(laser_angle))*spr_dir;
@@ -243,7 +278,7 @@ if attack == AT_FSPECIAL_2 {
     } else if window == 3 {
         outline_color = [0,0,0]
         init_shader()
-        pawn_meter = 0;
+        pawn_meter = pawn_meter_default;
     }
     if window == 6 {
         piece = "P"
@@ -324,10 +359,13 @@ if attack == AT_DSPECIAL_2 {
             draw_missile = false;
             sound_play(sound_get("rune_search_start"))
         }
+        if has_rune("L") var incrementvar = 6; //All FSPECIAl/DSPECIAL attacks have been enhanced.
+        else var incrementvar = 3;
+        
         if state_timer < 60 {
-            range_dist += 3;
+            range_dist += incrementvar;
         } else if state_timer < 120 {
-            range_dist -= 3;
+            range_dist -= incrementvar;
         } else {
             window = 4;
             window_timer = 0;
@@ -413,12 +451,21 @@ if attack == AT_DSPECIAL_2 {
     }
 }
 
-if king_armour && !(attack == AT_JAB || attack == AT_NAIR) {
+if king_armour && !(attack == AT_JAB || attack == AT_NAIR || (has_rune("J") && (attack == AT_FSTRONG || attack == AT_DSTRONG))) { //Knight has 2 extra jumps, and King retains FSPECIAL super armour on FSTRONG and DSTRONG.
     king_armour = false;
     super_armor = false;
     armour_cooldown = 120;
     if state_timer == 1 {
         //sound_play(asset_get("sfx_metal_hit_weak"))
+    }
+}
+
+if attack == AT_NAIR {
+    if has_rune("I") { //NAIR can be held down to extend the multihits lifetime.
+        if attack_down && (window == 2 || window == 3 || window == 4) && window_timer == 8 {
+            attack_end()
+            window_timer = 4;
+        }
     }
 }
 
@@ -432,6 +479,43 @@ if attack == AT_TAUNT {
         sound_play(sound_get("move"), false, noone, 0.8)
     }
     move_cooldown[AT_TAUNT] = 30;
+}
+
+//final smash
+if attack == 49 {
+    super_armor = true;
+    hurtboxID.sprite_index = get_attack_value(49, AG_HURTBOX_SPRITE);
+    piece = 'P'
+    fall_through = true;
+    can_move = false;
+    
+    if window == 1 && window_timer mod 4 == 1 {
+        create_hitbox(49, 10, x + ceil(window_timer/4)*10, y);
+        create_hitbox(49, 10, x - ceil(window_timer/4)*10, y);
+    }
+    if window == 2 && window_timer mod 4 == 1 && window_timer < 19 && !hitpause {
+        sound_play(asset_get("sfx_swipe_weak1"));
+    }
+    
+    if window == 3 && !free {
+        fs_force_fs = false;
+        destroy_hitboxes();
+        sound_play(asset_get("sfx_kragg_rock_shatter"))
+        sound_play(asset_get("sfx_kragg_rock_pillar"))
+        sound_play(asset_get("sfx_swipe_heavy2"))
+        window++;
+        window_timer = 0;
+        shake_camera(10, 15)
+    }
+    
+    if (window == 3 && window_timer < 20) {
+        if left_down && !right_down x -= 3;
+        if !left_down && right_down x += 3;
+    }
+    if window == 3 char_height = 150;
+    if window == 8 user_event(0);
+    
+    if has_rune("M") visible = true; //When Pawn meter is full, press TAUNT to unleash a Megachessatron (only once per game).
 }
 
 #define destroy_piece

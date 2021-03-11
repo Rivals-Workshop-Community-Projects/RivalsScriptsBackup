@@ -762,6 +762,10 @@ switch (attack) { //open switch(attack)
 			case 1:
 				epinel_is_armored = 0;
 				if (window_timer == 1) { 
+					
+					//allow the grounded version of this move to slide off ledges.
+					set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1); 
+					
 					epinel_charge_timer = 4; 
 					epinel_fspecial_currently_moving_with_superarmor = false;
 					
@@ -1485,7 +1489,7 @@ switch (attack) { //open switch(attack)
 				var tempvar_transition_to_ground_special = false;
 				//break the platform that epinel is on.
 				if (epinel_other_standing_on_platform_id != noone && instance_exists(epinel_other_standing_on_platform_id)) {
-				
+					/*
 					if (special_down) {
 						//transition to the ground version of down-special.
 						safely_set_attack(AT_DSPECIAL);
@@ -1497,8 +1501,8 @@ switch (attack) { //open switch(attack)
 						
 						tempvar_transition_to_ground_special = true;
 					}
-					
-					else {
+					*/
+					//else {
 						//break the platform.
 						if (epinel_other_standing_on_platform_id.hp > -1) sound_play(asset_get("sfx_kragg_rock_shatter"));
 						epinel_other_standing_on_platform_id.hp = min(epinel_other_standing_on_platform_id.hp, -1);
@@ -1508,7 +1512,7 @@ switch (attack) { //open switch(attack)
 						
 						//jump slightly.
 						vsp = -0.5;
-					}
+					//}
 				}
 				
 				//return to window 3.

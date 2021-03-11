@@ -71,6 +71,7 @@ sprite_change_offset("ustrong", 38, 122);
 sprite_change_offset("dstrong", 72, 66);
 sprite_change_offset("nspecial_ground", 50, 78);
 sprite_change_offset("nspecial_air", 50, 78);
+sprite_change_offset("tomochungus", 86, 122);
 sprite_change_offset("fspecial", 32, 74);
 sprite_change_offset("uspecial", 50, 98);
 sprite_change_offset("dspecial", 36, 56);

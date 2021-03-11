@@ -72,6 +72,7 @@ sprite_change_offset("plat", 64, 92);
 
 sprite_change_offset("feri_costume_smario", 84, 114);
 sprite_change_offset("smariotrial", 31, 0);
+sprite_change_offset("speedsign", 18, 41);
 
 sprite_change_offset("nspecial_proj1", 16, 24);
 sprite_change_offset("nspecial_proj2", 26, 20);

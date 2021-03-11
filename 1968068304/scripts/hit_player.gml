@@ -83,8 +83,8 @@ switch (my_hitboxID.attack) {
 		if (my_hitboxID.hbox_num <= 4) {
 			//hit_player_obj.old_hsp += old_hsp;
 			//hit_player_obj.old_hsp = min(-0.01, hit_player_obj.old_hsp);
-			if (instance_exists(epinel_other_standing_on_platform_id) ) {
-				hit_player_obj.old_hsp += epinel_other_standing_on_platform_id.hsp * 1.25;
+			if (instance_exists(epinel_other_standing_on_platform_id) && hit_player_obj.epinel_other_standing_on_platform_id != epinel_other_standing_on_platform_id) {
+				hit_player_obj.old_hsp += clamp(epinel_other_standing_on_platform_id.hsp * 1.25, -6, 6);
 				//add platform hitstop
 				if (epinel_other_standing_on_platform_id.vsp == 0 ) {
 					epinel_other_standing_on_platform_id.hitstop = ceil(hitstop);
@@ -105,12 +105,30 @@ switch (my_hitboxID.attack) {
 			
 	break;
 	
+	
+	
+	case AT_JAB:
+		//if on a platform, drag the hit player with epinel.
+		if (!instance_exists(epinel_other_standing_on_platform_id) || hit_player_obj.state_cat != SC_HITSTUN || epinel_other_standing_on_platform_id.hsp == 0) break;
+		//don't drag if the opponent's standing on the same platform.
+		if (hit_player_obj.epinel_other_standing_on_platform_id == epinel_other_standing_on_platform_id) break;
+		hit_player_obj.old_hsp += clamp(epinel_other_standing_on_platform_id.hsp, -6, 6);
+		
+		//add platform hitstop
+		if (epinel_other_standing_on_platform_id.vsp == 0 ) {
+			epinel_other_standing_on_platform_id.hitstop = ceil(hitstop);
+			epinel_other_standing_on_platform_id.old_hsp = epinel_other_standing_on_platform_id.hsp;
+		}
+	break;
+	
+	
+	
 	case AT_DTILT:
 		//drag the hit player with epinel.
 		if (my_hitboxID.hbox_num <= 1) {
 			hit_player_obj.old_hsp += old_hsp;
 			hit_player_obj.old_hsp = min(-0.01, hit_player_obj.old_hsp);
-			if (instance_exists(epinel_other_standing_on_platform_id) ) {
+			if (instance_exists(epinel_other_standing_on_platform_id) && hit_player_obj.epinel_other_standing_on_platform_id != epinel_other_standing_on_platform_id) {
 				hit_player_obj.old_hsp += epinel_other_standing_on_platform_id.hsp * 0.5;
 				//add platform hitstop
 				if (epinel_other_standing_on_platform_id.vsp == 0 ) {
@@ -137,8 +155,8 @@ switch (my_hitboxID.attack) {
 		//don't do anything for hitbox 5 and beyond.
 		if (my_hitboxID.hbox_num >= 5) { break; }
 		
-		//for hitbox 3 of b-air and beyond, disable the weightless effect.
-		if (my_hitboxID.hbox_num >= 3) {
+		//for hitbox 3 of b-air, disable the weightless effect.
+		if (my_hitboxID.hbox_num == 3) {
 			if (!runeM) { //don't disable for rune
 				hit_player_obj.epinel_other_weightless_inflicted = false;
 				hit_player_obj.epinel_other_weightless_timer = 0;
@@ -169,11 +187,8 @@ switch (my_hitboxID.attack) {
 							hp = min(hp, 0);
 							break_when_not_stood_on = true;
 						}
-						//hit_player_obj.should_make_shockwave = false;
+						hit_player_obj.should_make_shockwave = false;
 					 }
-				}
-				else {
-					hit_player_obj.should_make_shockwave = false;
 				}
 				
 			}

@@ -43,7 +43,7 @@ set_window_value(AT_JAB, 5, AG_WINDOW_ANIM_FRAME_START, 6);
 
 //--------------------------------------------------------------
 //２撃目
-set_window_value(AT_JAB, 6, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_JAB, 6, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_JAB, 6, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_JAB, 6, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_JAB, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -73,7 +73,7 @@ set_window_value(AT_JAB, 6, AG_WINDOW_HITPAUSE_FRAME, 9);
 
 //--------------------------------------------------------------
 //３撃目
-set_window_value(AT_JAB, 9, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_JAB, 9, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_JAB, 9, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_JAB, 9, AG_WINDOW_ANIM_FRAME_START, 20);
 set_window_value(AT_JAB, 9, AG_WINDOW_HAS_WHIFFLAG, 3);

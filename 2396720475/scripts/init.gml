@@ -33,7 +33,8 @@ needleplatform_solid = noone;
 needleland = false;
 needle_sprite = noone;
 
-box_health = 7;
+box_health = 10;
+create_new_box = true;
 
 create_moving = false;
 create_x = 0;
@@ -51,6 +52,7 @@ prev_y = 0;
 needle_angle = 0;
 chargeshot = 0;
 chargedash = 0;
+chargespike = 0;
 
 tomoyai = false;
 yai_timer = 0;

@@ -208,18 +208,31 @@ with (oPlayer) {
 		//allow epinel to surf on the platform if he is on top of it and crouching.
 		if (epinel_other_standing_on_platform_id == other.id) {
 			
-			//epinel is on this platform. disable the platform's friction at a certain threshold.
-			if (abs(other.hsp) <= 7) other.friction_poll = 4;
+			
+			
+			//epinel is on this platform. 
+			//check if epinel is currently using an attack.
+			var is_using_an_attack = (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR);
+			
+			//disable the platform's friction at a certain threshold.
+			if (abs(other.hsp) <= 6) {
+				//if epinel is using an attack, don't disable friction during endlag or while being parried.
+				//if (!is_using_an_attack || ( !get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !was_parried))
+				other.friction_poll = 4;
+			}
 			//make this platform glow.
 			if (other.draw_glow < 50) other.draw_glow = min(50, other.draw_glow + 5);
 			
-			if ( ( (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && window <= 5 && attack == AT_DSPECIAL  ) && hitstop <= 0 && other.hitstop == 0 && other.hitpause == false) 		
+			if ( ( is_using_an_attack && window <= 5 && attack == AT_DSPECIAL  ) && hitstop <= 0 && other.hitstop == 0 && other.hitpause == false) 		
 		    {
 			
 
-				var freq = 3 - runeA;
+				var freq = 2 - runeA;
 				
 				if (state_timer mod freq == freq-1) {
+					if (abs(other.hsp) < 4 && sign(other.hsp) != sign(spr_dir)) {
+						other.hsp = spr_dir;
+					}
 					other.hsp += spr_dir;
 					
 					with (other) {

@@ -87,11 +87,11 @@ if attack == AT_DAIR && has_hit{
 
 if attack == AT_NSPECIAL {			//PILL LOGIC
 	if window == 2 && window_timer == 1 && !hitpause{
-		if !(has_rune("A")){ pill++; }								//RUNE LOGIC
+		if !((has_rune("A")||phone_cheats[cheat_rng])){ pill++; }								//RUNE LOGIC
 	}
-
+	
 	if window ==2 || window == 3{	
-		if !(has_rune("I")){									//RUNE LOGIC
+		if !(has_rune("I")||phone_cheats[cheat_cooldown]){									//RUNE LOGIC
 			move_cooldown[AT_NSPECIAL] = 42;
 			move_cooldown[AT_TAUNT] = 42;
 		}
@@ -228,12 +228,14 @@ if (attack == AT_FSPECIAL && window == 2 && window_timer <7 ) {
     }
     
 	//Conditions for Reflector to be active
-    if (hit_check != noone  && (hit_check != pHitBox || (hit_check == pHitBox && hit_check.type == 2)) && gustav != hit_check  && !has_hit_player && hit_check.player != player  && hit_check.type != 1) && hit_check.hitstun_factor != -1  {
+    if (hit_check != noone  && (hit_check != pHitBox || (hit_check == pHitBox && hit_check.type == 2 && hit_check.hitstun_factor != -1)) && gustav != hit_check  && !has_hit_player && hit_check.player != player  && hit_check.type != 1)   {
 
         gustav = hit_check;						//Object
 		invincible = 1;
 		invince_time = 10;							
 		spawn_hit_fx( x +44*spr_dir, y-34, 194 );			//VISUAL EFFECT 
+		gustav.was_parried = true;							//MOVED THIS LINE UP TO COVER A COUPLE OF SPECFIC CASES
+
 
 		//UPDATE: IF the projectile is not static ( or has a really small movement speed) it reflects
 		if abs(gustav.hsp) >  0.5 {								//Minimal Horizontal speed
@@ -258,10 +260,22 @@ if (attack == AT_FSPECIAL && window == 2 && window_timer <7 ) {
 			}
 		}
 
+		//CODE FOR TENRU INTERACTION I GUESS
+		if variable_instance_exists(gustav, "reflected") {
+           gustav.reflected = true;
+        }
+		//CODE FOR SEIJA INTERACTION I GUESS
+		if variable_instance_exists(gustav, "sided") {
+
+			gustav.sided = -gustav.sided;           
+            gustav.cant_be_hit = 20;
+            gustav.was_switched = true;
+			gustav.hitboxHit = gustav.id;
+        }
 		//SPEED MULTIPLIER LOGIC
         if gustav.object_index != oPlayer {
 
-            gustav.was_parried = true;
+
 			gustav.hitbox_timer = 0;
             gustav.can_hit_self = true;
             gustav.x = x + 55*spr_dir;
@@ -291,6 +305,7 @@ if (attack == AT_FSPECIAL && window == 2 && window_timer <7 ) {
 		   gustav.forced = 1;
         }
 
+
 		//SOUND TO PLAY
         sound_play(sound_get("mantle"));					//Here comes a sound effect
     }
@@ -302,7 +317,7 @@ if (attack == AT_FSPECIAL && window == 2 && window_timer <7 ) {
 
 //-----------------------------------------------------RUNE LOGIC PART 1 ---------------------------------------------
 
-if (has_rune("B")){
+if (has_rune("B") || phone_cheats[cheat_funny]){
 	set_hitbox_value(AT_NAIR, 6, HG_LIFETIME, 120);
 	set_hitbox_value(AT_NAIR, 5, HG_LIFETIME, 120);
 }else{
@@ -335,7 +350,7 @@ if (has_rune("G")){
 	}
 }
 
-if (has_rune("H")){
+if (has_rune("H")|| phone_cheats[cheat_luigi]){
 	if attack == AT_DSPECIAL{
 		if state_timer < 48 {invincible = true;}
 	}
@@ -365,7 +380,7 @@ if (has_rune("N")){
 }
 
 
-if (has_rune("L")){
+if (has_rune("L")|| phone_cheats[cheat_space]){
 	if attack == AT_DSPECIAL {
 		can_jump = true;
 		if window == 2 && window_timer ==12{

@@ -42,7 +42,7 @@ set_hitbox_value(AT_NTHROW, 1, HG_WIDTH, 64);
 set_hitbox_value(AT_NTHROW, 1, HG_HEIGHT, 50);
 set_hitbox_value(AT_NTHROW, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_NTHROW, 1, HG_PRIORITY, 2);
-set_hitbox_value(AT_NTHROW, 1, HG_DAMAGE, 7);
+set_hitbox_value(AT_NTHROW, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_NTHROW, 1, HG_ANGLE, 135);
 set_hitbox_value(AT_NTHROW, 1, HG_BASE_KNOCKBACK, RibbonKB);
 //set_hitbox_value(AT_NTHROW, 1, HG_KNOCKBACK_SCALING, .2);
@@ -53,5 +53,6 @@ set_hitbox_value(AT_NTHROW, 1, HG_VISUAL_EFFECT_X_OFFSET, 4);
 set_hitbox_value(AT_NTHROW, 1, HG_VISUAL_EFFECT_Y_OFFSET, 8);
 set_hitbox_value(AT_NTHROW, 1, HG_HIT_SFX, sound_get("fthrowsfx"));
 set_hitbox_value(AT_NTHROW, 1, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_NTHROW, 1, HG_HITSTUN_MULTIPLIER, .7);
 
 set_hitbox_value(AT_NTHROW, 1, HG_HIT_PARTICLE_NUM, 2);

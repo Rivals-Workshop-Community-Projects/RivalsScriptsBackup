@@ -6,7 +6,7 @@ if (trailer_effect){
 	spawn_hit_fx(Box.x + 6, Box.y, hit_small1);
 	trailer_effect = false;
 }
-/*
+
 if (instance_exists(needleplatform)){
 	move_cooldown[AT_USPECIAL] = 20;
 }
@@ -14,7 +14,8 @@ if (instance_exists(needleplatform)){
 if (usedUspecial_Again >= 2){
 	move_cooldown[AT_USPECIAL] = 20;
 }
-*/
+
+
 if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
 }
 else { 
@@ -90,7 +91,7 @@ if (instance_exists(needle_hitbox)){
 
 // Code for article_2 and article_platform
 if (needleland && instance_exists(needleplatform)){
-	needleland = false;
+//	needleland = false;
 	usedUspecial = true;
 	can_pull = true;
 	sound_play(sound_get("needle2_sfx"));
@@ -278,7 +279,7 @@ if (box_health == 0){
 		instance_destroy(Box);
 		Box = noone;
 	}
-	box_health = 7;
+	box_health = 10;
 }
 
 if (get_player_color(player) == 13 || get_player_color(player) == 11){
@@ -328,7 +329,7 @@ if (instance_exists(movingbox) && movingbox.destroy && movingbox.solid_timer == 
 		if (get_player_color(player) == 11){
 			Box.sprite_index = sprite_get("macka");
 		}
-		if (get_player_color(player) == 12 || get_player_color(player) == 10 || get_player_color(player) == 1){
+		if (get_player_color(player) == 12 || get_player_color(player) == 10 || get_player_color(player) == 1 || SecretColor == 2){
 			Box.flag = false;
 		}		
 		if (movingbox.flag){		
@@ -355,11 +356,22 @@ else {
 if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice mode reload
 	if (spawn_timer < 100 && ColorLock == 0 && jump_down){
 
-		if (get_player_color(player) == 10){ // Color 2 Secret Alt
+		if (get_player_color(player) == 10){ // Color 11 Trans Secret Alt
 
-			// Cotton Candy+ (This is the trans alt color, Tomo sans Trans Rights)
+			// Cotton Candy+ (This is the trans alt color, Tomo says Trans Rights)
 			if (!up_down && down_down && !left_down && !right_down && !shield_down && !attack_down && !special_down){
 				SecretColor = 1;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}			
+		}		
+		
+		if (get_player_color(player) == 8){ // Color 9 Pumpkin Secret Alt
+
+			// THE - Alt color Down + Attack + Jump
+			if (!up_down && down_down && !left_down && !right_down && !shield_down && attack_down && !special_down){
+				SecretColor = 2;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();

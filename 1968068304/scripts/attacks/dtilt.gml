@@ -153,8 +153,8 @@ set_hitbox_value(AT_DTILT, 3, HG_HEIGHT, 30);
 set_hitbox_value(AT_DTILT, 3, HG_SHAPE, 0);
 //knockback
 set_hitbox_value(AT_DTILT, 3, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_DTILT, 3, HG_KNOCKBACK_SCALING, 0.4); 
-set_hitbox_value(AT_DTILT, 3, HG_ANGLE, 110);
+set_hitbox_value(AT_DTILT, 3, HG_KNOCKBACK_SCALING, 0.3); 
+set_hitbox_value(AT_DTILT, 3, HG_ANGLE, 105);
 //stun
 set_hitbox_value(AT_DTILT, 3, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DTILT, 3, HG_HITPAUSE_SCALING, 0.5);

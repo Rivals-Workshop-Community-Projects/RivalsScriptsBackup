@@ -129,6 +129,17 @@ if (state == 3){ // Plays a sound and then kills the heart
 	exit;
 }
 
+if (state == 4){
+	
+	can_be_grounded = false;
+	ignores_walls = true;
+
+	if (state_timer == 31){
+		instance_destroy();
+		exit;
+	}
+}
+
 if (state_timer == 520 || y > room_height - 50){
 	instance_destroy();
 	exit;

@@ -33,6 +33,11 @@ made_move = false;
 //swallowed = 0;
 //enemykirby = undefined;
 
+//final smash buddy
+fs_char_portrait_y = 90;
+fs_char_chosen_final_smash = "custom";
+fs_char_chosen_trigger = "custom";
+
 //init
 
 hitbox_view = false;
@@ -46,7 +51,8 @@ timer = 0;
 
 piece_id = undefined;
 
-pawn_meter = 0; //0 - 7
+pawn_meter_default = 0;
+pawn_meter = pawn_meter_default; //0 - 7
 can_increment = true;
 shake_timer = 0;
 pawn_move_timer = 0;
@@ -64,6 +70,8 @@ next_state = undefined;
 queen_active = false;
 queen_timer_max = 480;
 queen_timer = 0;
+
+used_fs = false;
 
 hp_P = 1;
 hp_N = 3;

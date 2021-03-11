@@ -79,8 +79,8 @@ if (bodyless == false) {//身体あり
 	crouchbox_spr = asset_get("ex_guy_crouch_box");
 	idle_anim_speed = .1;
 	crouch_anim_speed = .1;
-	walk_anim_speed = .125;
-	dash_anim_speed = .3;
+	walk_anim_speed = .3;
+	dash_anim_speed = .5;
 	pratfall_anim_speed = .5;
 	
 	char_height = 52;
@@ -228,6 +228,7 @@ if (bodyless == true) {//身体なし
 	set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("headless_taunt"));
 	set_attack_value(AT_TAUNT, AG_HURTBOX_SPRITE, asset_get("ex_guy_crouch_box"));
 	//蓋ジャンプ----------------------------------------------------------------
+	if (hutaSP == false) {
 	set_attack_value(AT_EXTRA_3, AG_SPRITE, sprite_get("headless_ex03"));
 	set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, sprite_get("headless_ex03_hurt"));
 	set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 3);
@@ -239,6 +240,20 @@ if (bodyless == true) {//身体なし
 	set_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED, -8);
 	set_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED_TYPE, 1);
 	set_window_value(AT_EXTRA_3, 3, AG_WINDOW_CUSTOM_GRAVITY, 1);
+	}
+	if (hutaSP == true) {
+	set_attack_value(AT_EXTRA_3, AG_SPRITE, sprite_get("headless_ex03"));
+	set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, sprite_get("headless_ex03_hurt"));
+	set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 3);
+	
+	set_window_value(AT_EXTRA_3, 3, AG_WINDOW_TYPE, 1);//落下させる
+	set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 6);
+	set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAMES, 6);
+	set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAME_START, 2);
+	set_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED, -8);
+	set_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED_TYPE, 1);
+	set_window_value(AT_EXTRA_3, 3, AG_WINDOW_CUSTOM_GRAVITY, 1);
+	}
 	//--------------------------------------------------------------------------
 	//蓋投げ
 	set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("headless_fspecial2"));

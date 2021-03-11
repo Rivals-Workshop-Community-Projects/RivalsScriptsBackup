@@ -103,6 +103,37 @@ if (attack != AT_FTHROW){
 	set_hitbox_value(AT_FTHROW, 1, HG_BASE_KNOCKBACK, ThornKB);
 }
 
+// Fspecial VFX
+if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
+	if (window == 1 && window_timer == 0){
+		fspec_x = x;
+		fspec_y = y;
+		fspecial_circles = 0;
+	}		
+	
+	if (window >= 2 && window_timer % 2 == 0){
+		instance_create( x, y - 10 -  random_func( 2, 60, true ), "obj_article2");
+	}
+	
+	if (window <= 2){
+		fspecial_circles += .3 * spr_dir;
+	}
+	
+	if (fspec_sparkle_timer == 7){
+		fspec_sparkle_timer = 0;
+	}
+	else {
+		fspec_sparkle_timer += .5;
+	}
+}
+
+// Uspecial VFX
+if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && !hitpause){
+	if (window >= 2 && window_timer % 3 == 0){
+		instance_create( x + ((random_func( 2, 50, true ) - 20) * spr_dir), y - 10 - random_func( 2, 10, true ), "obj_article2");
+	}
+}
+
 /*
 // Gives Down Strong soft armor
 if (attack == AT_DSTRONG){
@@ -146,6 +177,47 @@ if (attack == AT_DSTRONG){
 	}
 //}
 
+if (got_hitFspecial){
+//	spawn_hit_fx( x, y, hearthurt_fx);
+	
+	var heart = noone;
+//	for (i = 0; i < LoveMeter / 20; i++){
+	if (heart_num < LoveMeter / 20){
+		heart_num++;
+		heart = instance_create( x , y - 30, "obj_article1");
+
+		heart.player_id = id;
+		heart.player = player;
+		heart.state = 4;
+		heart.state_timer = 2;
+		heart.image_alpha = .8;
+		heart.hsp = clamp(random_func(5, 7, true), 3, 5);
+		heart.vsp = clamp(random_func(6, 10, true) * -1, -10, -5);
+		if (random_func(0,2,true) == 1){
+			heart.hsp = heart.hsp * -1;
+		}
+		
+		if (heart_num >= LoveMeter / 20){
+			heartsplode = true;
+		}
+	}
+	
+	if (heartsplode || state_cat == SC_GROUND_NEUTRAL || state_cat == SC_AIR_COMMITTED){
+		LoveMeter = 0;
+		got_hitFspecial = false;
+		heartsplode = false;
+		heart_num = 0;
+	}
+}
+
+if (instance_exists(asset_get("obj_article1"))){
+	with (obj_article1){
+		if ("CalliesHeart" in self && state == 4 && state_timer == 30){
+			var sparklez = instance_create(x, y - 20, "obj_article2");
+			sparklez.state = 1;
+		}
+	}
+}
 
 ////////// Secret alt color code //////////
 
@@ -184,6 +256,28 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 			// Dichi - Charlotte alt color
 			if (up_down && !down_down && !left_down && !right_down && shield_down && !attack_down && !special_down){
 				SecretColor = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+		}
+		
+		if (get_player_color(player) == 5){ // Color 5 Secret Alt
+
+			// Nuzle - Zombi? alt color
+			if (up_down && !down_down && !left_down && !right_down && shield_down && !attack_down && !special_down){
+				SecretColor = 4;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+		}
+		
+		if (get_player_color(player) == 8){ // Color 10 Secret Alt
+
+			// Staur - alt color
+			if (up_down && !down_down && !left_down && !right_down && shield_down && !attack_down && !special_down){
+				SecretColor = 5;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -416,6 +510,10 @@ with (oPlayer){
 		if (vsp > 0 && BalloonCounter > 0 && free){
 			vsp = vsp / BalloonStrength;
 		}
+		if (BalloonCounter > 0 && free && state_cat != SC_HITSTUN){
+			hsp = clamp(hsp, -4, 4);
+		}
+
 		BalloonCounter--;
 		if(BalloonCounter <= 0){
 			isBalloon = false;
@@ -1220,7 +1318,6 @@ if (DG_chat_num == 1 && isTaunt){
 		case 6: // Forsb - Date Girl is the one selecting dialogue options
 			switch(chatindex){
 				case 0:
-					room = 8;
 					chattingoptions[chatindex] = 2; // If 1, option select.. if 2, then more dialogue... if 3, then end dialogue
 					dialogue[chatindex] = "Risen from the darkness a Pink entity of 
 										mysterious form appears in the middle of the hallways..
@@ -2570,7 +2667,17 @@ if (DG_chat_num == 2 && isTaunt){
 				if (DG_chat_type[other.chatindex] == 1){
 					other.optionselect[other.chatindex] = DG_options[other.chatindex];
 				}
-
+	
+				if (variable_instance_exists(id, "DG_right_speaker")){
+					if (DG_right_speaker[other.chatindex]){
+						other.right_speaker = true;
+						other.right_dialogue[other.chatindex] = DG_dialogue_right[other.chatindex];
+					}
+					else {
+						other.right_speaker = false;
+					}
+				}
+				
 				if (variable_instance_exists(id, "DG_adopts_color_left")){
 						other.adopts_color_left = DG_adopts_color_left[other.chatindex];
 				}

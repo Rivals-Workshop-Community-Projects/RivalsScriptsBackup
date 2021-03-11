@@ -78,14 +78,14 @@ set_window_value(AT_BAIR, 8, AG_WINDOW_ANIM_FRAME_START, 18);
 
 //startup 5
 
-set_num_hitboxes(AT_BAIR, 3);
+set_num_hitboxes(AT_BAIR, 4);
 
 //main hit.
 set_hitbox_value(AT_BAIR, 1, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 6);
+set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 2);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_X, -31);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_Y, -28);
 set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 59);
@@ -94,7 +94,6 @@ set_hitbox_value(AT_BAIR, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 50);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 7.5);
-set_hitbox_value(AT_BAIR, 1, HG_FINAL_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .75);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0.6);
@@ -161,5 +160,29 @@ set_hitbox_value(AT_BAIR, 3, HG_DRIFT_MULTIPLIER, 1);
 
 
 
-
+//late hit.
+set_hitbox_value(AT_BAIR, 4, HG_PARENT_HITBOX, 0);
+set_hitbox_value(AT_BAIR, 4, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_BAIR, 4, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_BAIR, 4, HG_WINDOW, 2);
+set_hitbox_value(AT_BAIR, 4, HG_WINDOW_CREATION_FRAME, 2);
+set_hitbox_value(AT_BAIR, 4, HG_LIFETIME, 4);
+set_hitbox_value(AT_BAIR, 4, HG_HITBOX_X, -31);
+set_hitbox_value(AT_BAIR, 4, HG_HITBOX_Y, -28);
+set_hitbox_value(AT_BAIR, 4, HG_WIDTH, 59);
+set_hitbox_value(AT_BAIR, 4, HG_HEIGHT, 46);
+set_hitbox_value(AT_BAIR, 4, HG_PRIORITY, 1);
+set_hitbox_value(AT_BAIR, 4, HG_DAMAGE, 6);
+set_hitbox_value(AT_BAIR, 4, HG_ANGLE, 50);
+set_hitbox_value(AT_BAIR, 4, HG_BASE_KNOCKBACK, 7.5);
+set_hitbox_value(AT_BAIR, 4, HG_FINAL_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_BAIR, 4, HG_KNOCKBACK_SCALING, .75);
+set_hitbox_value(AT_BAIR, 4, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_BAIR, 4, HG_HITPAUSE_SCALING, 0.6);
+set_hitbox_value(AT_BAIR, 4, HG_EXTRA_HITPAUSE, 1); //extra hitpause for the grab.
+set_hitbox_value(AT_BAIR, 4, HG_VISUAL_EFFECT_X_OFFSET, -32);
+set_hitbox_value(AT_BAIR, 4, HG_VISUAL_EFFECT_Y_OFFSET, -10);
+set_hitbox_value(AT_BAIR, 4, HG_VISUAL_EFFECT, 303 ); //"basic small directional"
+set_hitbox_value(AT_BAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_BAIR, 4, HG_ANGLE_FLIPPER, 6);
 
