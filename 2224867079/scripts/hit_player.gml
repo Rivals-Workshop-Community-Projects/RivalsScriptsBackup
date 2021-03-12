@@ -182,3 +182,19 @@ if (hitmove == AT_DTILT) // No Knockback
 	print_debug("Hello, world!");
 }
 */
+
+//Final smash stop time
+if (my_hitboxID.attack == 49 && my_hitboxID.hbox_num == 1)
+{
+
+    hit_player_obj.hitpause = true;
+    
+    hit_player_obj.old_hsp = 0;
+    
+    hit_player_obj.old_vsp = 0;
+    
+    hit_player_obj.hitstop = 2;
+    
+    hit_player_obj.hitstop_full = 2;
+
+}

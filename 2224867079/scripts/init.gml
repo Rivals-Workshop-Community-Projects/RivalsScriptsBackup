@@ -21,11 +21,16 @@ teleported = false
 //Hud Stuff
 introhud = true
 hudstart = false
+
 //Sprites
 spr_red_dspecial = sprite_get("red_dspecial");
 spr_red_fstrong = sprite_get("red_fstrong");
 spr_nspecial_proj = sprite_get("nspecial_proj")
 spr_rbmark = sprite_get("RBmark2")
+spr_kunai_grounded = sprite_get("blue_proj_grounded")
+spr_red_kunai_grounded = sprite_get("red_proj_grounded")
+spr_red_uspecial = sprite_get("red_uspecial")
+spr_femboy = sprite_get("femboy")
 
 //Red Stuff
 RedMode = false;

@@ -3,8 +3,9 @@
 if !hitpause {
     
     if attack == AT_DTILT {
-        if has_hit && window == 3{
-            can_jump = true
+        if has_hit && window <= 3{
+            window = 4
+            window_timer = 1
         }
     }
     

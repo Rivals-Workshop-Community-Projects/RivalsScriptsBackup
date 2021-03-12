@@ -181,7 +181,7 @@ if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_DSPECI
 
 if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_DSPECIAL) {
 	switch (get_player_color(player)) {
-		case(9):
+		case(10):
 		sprite_index = sprite_get("red_kawaii_dspecial");
 		break;
 	}

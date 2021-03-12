@@ -81,7 +81,7 @@ sprite_change_offset("fspecial", 80, 70);
 sprite_change_offset("uspecial", 32, 120);
 sprite_change_offset("dspecial", 44, 79);
 sprite_change_offset("kawaii_dspecial", 46, 80);
-sprite_change_offset("taunt", 84, 83);
+sprite_change_offset("taunt", 44, 88);
 
 sprite_change_offset("plat", 64, 54);
 set_victory_theme( sound_get( "Lognes_win" ));
@@ -143,7 +143,7 @@ sprite_change_offset("red_fspecial", 80, 70);
 sprite_change_offset("red_uspecial", 32, 123);
 sprite_change_offset("red_dspecial", 44, 79);
 sprite_change_offset("red_kawaii_dspecial", 46, 80);
-sprite_change_offset("red_taunt", 84, 83);
+sprite_change_offset("red_taunt", 46, 88);
 
 set_victory_bg( sprite_get( "custom" ));
 
@@ -156,3 +156,7 @@ sprite_change_offset("blue_proj_grounded", 42, 60);
 sprite_change_collision_mask("blue_proj_grounded", false, 2, 68, 82, 97, 114, 0);
 sprite_change_offset("red_proj_grounded", 42, 60);
 sprite_change_collision_mask("red_proj_grounded", false, 2, 68, 82, 97, 114, 0);
+
+//Final Smash
+sprite_change_offset("final_smash", 74, 106);
+sprite_change_offset("final_smash_proj", 72, 80);

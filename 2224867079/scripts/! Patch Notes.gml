@@ -1,4 +1,19 @@
 /*
+-- V2.2 --
+
+-Added Lore
+-Updated Munophone
+
+Balance Changes:
+- Blue's Dair's Sweetspot basically doesnt do anything anymore
+- Dair's Sweetspot is now diagonal 
+
+Cosmetic Changes:
+- Updated Red Idle
+- Double jump is now the same as regular jump
+- New taunt
+- New alt
+
 -- V2.1 --
 
 Balance Changes:

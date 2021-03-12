@@ -275,3 +275,20 @@ if has_rune("L") {
 		move_cooldown[AT_FSPECIAL_2] = 0
 	}
 }
+
+//Final Smash
+if (attack == 49)
+{
+	can_fast_fall = false;
+	can_move = false;
+    if (window == 1)
+    {
+        create_hitbox( 49, 1, x + (500 * spr_dir), y - 50 );
+    }
+    
+    if (window == 2)
+    {
+        create_hitbox( 49, 1, x + (500 * spr_dir), y - 50 );
+    }
+    
+}

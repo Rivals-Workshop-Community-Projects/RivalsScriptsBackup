@@ -23,12 +23,12 @@ if alt == 1 {
 }
 
 //Bingy Alt
-if alt == 5 {
+if alt == 6 {
   draw_sprite_ext(sprite_get("logo"),1,temp_x-2,temp_y-2,2,2,0,-1,1);
 }
 
 //Troll Alt
-if alt == 6 {
+if alt == 7 {
   draw_sprite_ext(sprite_get("logo"),2,temp_x-2,temp_y-2,2,2,0,-1,1);
 }
 
@@ -47,15 +47,20 @@ if alt == 4 {
   draw_sprite_ext(sprite_get("logo"),5,temp_x-2,temp_y-2,2,2,0,-1,1);
 }
 
+//Subi Alt
+if alt == 5 {
+  draw_sprite_ext(sprite_get("logo"),6,temp_x-2,temp_y-2,2,2,0,-1,1);
+}
+
 
 //Kawaii Alt
-if alt == 9 {
+if alt == 10 {
   draw_sprite_ext(sprite_get("charselecthearts2"),drawtime / 1,temp_x-2,temp_y-2,2,2,0,-1,1);
 }
 
 drawtime += 1 
 
-if alt == 9 {
+if alt == 10 {
     if drawtime == 1 {
         sound_play(sound_get("wow"))
     }
@@ -65,7 +70,7 @@ if alt == 9 {
 prev_alt = alt;
 draw_sprite_ext(sprite_get("charselectver"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
 //More Kawaii Alt
-if alt == 9 {
+if alt == 10 {
     draw_sprite_ext(sprite_get("charselecthearts"),drawtime / 2,temp_x-2,temp_y-2,2,2,0,-1,1);
     draw_sprite_ext(sprite_get("charselect2"),drawtime / 5,temp_x-2,temp_y-2,2,2,0,-1,1);
 }
@@ -95,11 +100,12 @@ alt_name[1]  = "BluAxolotl";
 alt_name[2]  = "Ans";
 alt_name[3]  = "Shujo";
 alt_name[4]  = "Nep";
-alt_name[5]  = "Bingy";
-alt_name[6]  = "Troll";
-alt_name[7]  = "Abyss";
-alt_name[8]  = "Nega";
-alt_name[9]  = "Kawaii";
+alt_name[5]  = "Subi";
+alt_name[6]  = "Bingy";
+alt_name[7]  = "Troll";
+alt_name[8]  = "Abyss";
+alt_name[9]  = "Nega";
+alt_name[10]  = "Kawaii";
  
  
 //Alt

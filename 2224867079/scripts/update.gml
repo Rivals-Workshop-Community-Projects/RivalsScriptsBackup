@@ -1,6 +1,7 @@
 //update
 user_event(14);
 
+init_shader();
 
 if (teleported == true){
 	hsp = (ease_quadOut( -1, 0, 0, 30 ) * spr_dir) + dsp_target.hsp

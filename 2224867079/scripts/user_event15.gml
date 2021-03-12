@@ -254,7 +254,7 @@ pho_has_daro_codec = 0; // Dialogue for the Daroach boss fight
 
 
 if (object_index == asset_get("cs_playerbg_obj")){
-	num_alts = 10; // Number of alt costumes; controls how many appear on the CSS
+	num_alts = 11; // Number of alt costumes; controls how many appear on the CSS
 	exit;
 }
 
@@ -370,26 +370,39 @@ with phone{
 	initTipImage(player_id.spr_red_fstrong, -5, fa_left, 1, c_white, 0);
 	initTipImage(player_id.spr_fstrong, -5, fa_right, 1, c_white, 0);
 	
-	initTip("Nspecial");
-	initTipWords("Nspecial Shoots a projectile which will mark the person it his with it's color");
-	initTipWords("The mark buffs the opposing color for the next three hits");
-	initTipImage(player_id.spr_rbmark, -5, fa_middle, 1, c_white, 0);
+	initTip("Kunai Bombs");
+	initTipWords("If you perform a Nspecial in the air. The kunai will land on the ground");
+	initTipWords("Once grounded, You can detonate the kunai by switching modes. Depending on the mode you switch on, the explosion's properties will change.");
+	initTipImage(player_id.spr_kunai_grounded, -5, fa_left, 1, c_white, 0);
+	initTipImage(player_id.spr_red_kunai_grounded, -5, fa_right, 1, c_white, 0);
 	
+	initTip("Blue Fspecial Fastfall");
+	initTipWords("You're able to fastfall while performing blue Fspecial");
+	initTipWords("When the move hits, instead of bouncing you up you will land straight to the ground where you can perform a grounded attack");
+	initTipImage(player_id.spr_fspecial, -5, fa_center, 1, c_white, 3);
+	
+	initTip("Red Uspecial Sweetspot");
+	initTipWords("Red Uspecial has a sweetspot right near the start of the attack");
+	initTipWords("If it hits the move will do a ton of knockback making it a great kill move");
+	initTipImage(player_id.spr_red_uspecial, -5, fa_center, 1, c_white, 1);
+	
+	/*
 	initTip("Fspecial Waveland");
 	initTipWords("You're able to waveland right as you hit your opponent with fspecial, you can do this to cancel into any move of your choice.");
 	initTipWords("Bonus tip:");
 	initTipWords("If you hit someone with the last few frames of fspecial you can immeditely dtilt out of it");
 	initTipImage(player_id.spr_fspecial, -5, fa_center, 1, c_white, 3);
+	*/
 	
 	initTip("Dair Reversal");
 	initTipWords("if you immedietly turn your joystick to the opposite direction when you perform a dair you can reverse it and go the other way");
-	initTipImage(other.spr_dair, -4, fa_center, 1, c_white, 1);
+	initTipImage(other.spr_dair, -4, fa_center, 1, c_white, 0);
 	
-	initTip("bwah");
-	initTipWords_ext("bwah", fa_left, c_red, 0, 0);
-	initTipImage(other.spr_jab, -4, fa_center, 1, c_white, 0);
+	initTip("log is a femboy");
+	initTipWords_ext("WHAT", fa_center, c_red, 0, 1);
+	initTipImage(player_id.spr_femboy, -4, fa_center, 1, c_white, 0);
 
-	/*
+	/* THIS IS ALL OLD.
 	initTip("Lognes' Lore");
 	initTipWords_ext("Chapter 1", fa_center, c_gray, 0, 0);
 	initTipWords("A long time ago in a very distant land. One being existed. It had no purpose, no goals, not even a body. This being was known as lognes. One day, Lognes created the two lesser beings to himself. The god of matter, and the god of antimatter.");
@@ -454,6 +467,18 @@ with phone{
 //	initPatchWords("Fnuuy joke
 //	- waog");
 //	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0);
+	//2.2
+	initPatch("2.2", "11 March, 2021");
+	initPatchWords_ext("Updated Munophone", fa_center, c_white, 1, 0);
+	initPatchWords_ext("Added Lore", fa_center, c_white, 1, 0);
+	initPatchWords_ext("Balance Changes:", fa_center, c_white, 1, 0);
+	initPatchWords("- Blue's Dair's Sweetspot basically doesnt do anything anymore
+	- Dair's Sweetspot is now diagonal ")
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_white, 1, 0);
+	initPatchWords("- Updated Red Idle
+	- Double jump is now the same as regular jump
+	- New taunt
+	- New alt")
 	//2.1
 	initPatch("2.1", "2 March, 2021");
 	initPatchWords_ext("Fspecial Update", fa_center, c_white, 1, 0);
@@ -757,7 +782,7 @@ with self{
 	// update.gml
 	initCheat("Remove Dspecial cooldown", "dspecial_nocd", [0, 1], ["Off", "On"], "flavour text");
 	initCheat("why are you hitting yourself", "cheat_recoil", [0, 1], ["Off", "On"], "ouf");
-	
+	initCheat("turns jab into final smash", "jab_fsmash", [0, 1], ["Off", "On"], "e");
 }
 
 
@@ -889,13 +914,41 @@ with phone{
 	 * if you want. AND you can have multiple of these
 	 */
 	
-	initAbout("About Loges", "character made by lognes yeah thats basically it 
+	initAbout("About Lognes: Gameplay", 
+	"Lognes is an insanely fast rushdown character who's able to switch between red and blue stances.
+	
+	Red and Blue come with base stat changes, completely different strongs and specials with different properties
+	Blue does more damage with the downside of less knockback. The specials try to keep you closer to the oppenent and the strongs create objects.
+	Red does more knockback with the upside of less damage. The specials try to force the opponent away from you and the strongs are all very powerful punches.
+	
+	Red Upsecial and Red Dair has a special property of being able to sweetspot and do massive damage.
+	You can also create kunai bombs by using neutral special in the air and detonating them by switching
+	
+	For more, Check out the Fighter Tips Section");
 	
 	
+	initAbout("About Lognes: Lore", 
+	"According to all known rules about the world of TOTH. Lognes should NOT exist. No one knows how or why he exists, but he does anyway. 
+
+	Despite this, Lognes is a Vessel. He is somehow able to wield both antimatter and matter. This should not be possible yet he does it anyway.
+	He's also has incredible agility. Seemingly a complete master of how to wield his body.
+
+	Lognes has a split personality. he's constantly having an internal struggle with his matter half and antimatter half.
+	Blue log (Matter Log) seems completely devoid of emotion. He's able to understand them but he does not seem to posses them. 
+	On the other hand.
+	Red Log (Antimatter Log) Is just bursting with emotion, completely unable to look at situations logically and does a lot of regrettable actions because of this.
+	They still both share the same consious however. They think the same things but just express them differently.
+
+	Lognes however, is contempt with his split personality. He sees it as a nessisary evil. And when situations are dire, They will completely cooperate and switch only when they both agree to switch.");
 	
+	initAbout("About Vessels", 
+	"Vessels are an artifical species of people created by gods. They mainly serve the purpose of assisting the gods in their solar system with protecting it.
 	
-	I will destroy you");
+	Vessels are created by going to a planet / dwarf planet that dont contain life and by extracting the god soul residing there.
+	Usually the god soul is born into one of the species on that planet but if it doesnt contain life there is no body for the soul to occupy.
+	Once the soul has been collected and put into a physical object for it to reside in (a soulgem). The gem is put into a Vessel Body. Once placed, The body morphs into a shape befitting the soul.
 	
+	Since they contain a God soul, They also have all the same abilities a regular god has. They are able to create and manipulate matter and live however long their host planet survives for.");
 }
 
 

@@ -91,12 +91,12 @@ if (state == 3){ // Moves with Box
 			with(oPlayer){
 				if (other.player_id.movingbox.vsp >= 19){
 					if ((place_meeting(x, y - 3, other) && y < other.y + 15) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
-						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && state != PS_HITSTUN && other.vsp > -1){
 							free = false;
 							y = other.y + 20;
 						}
 						
-						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START && state != PS_HITSTUN){
 							if (other.image_angle == 0){
 								x = other.x + 25;
 							}
@@ -109,12 +109,12 @@ if (state == 3){ // Moves with Box
 				}
 				if (other.player_id.movingbox.vsp >= 15 && other.player_id.movingbox.vsp < 19){
 					if ((place_meeting(x, y - 3, other) && y < other.y + 15) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
-						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && state != PS_HITSTUN && other.vsp > -1){
 							free = false;
 							y = other.y + 15;
 						}
 						
-						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START && state != PS_HITSTUN){
 							if (other.image_angle == 0){
 								x = other.x + 25;
 							}
@@ -127,12 +127,12 @@ if (state == 3){ // Moves with Box
 				}
 				if (other.player_id.movingbox.vsp >= 10 && other.player_id.movingbox.vsp < 15){
 					if ((place_meeting(x, y - 3, other) && y < other.y + 15) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
-						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && state != PS_HITSTUN && other.vsp > -1){
 							free = false;
 							y = other.y + 10;
 						}
 						
-						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START && state != PS_HITSTUN){
 							if (other.image_angle == 0){
 								x = other.x + 25;
 							}
@@ -145,12 +145,12 @@ if (state == 3){ // Moves with Box
 				}
 				if (other.player_id.movingbox.vsp >= 5.5 && other.player_id.movingbox.vsp < 10){
 					if ((place_meeting(x, y - 3, other) && y < other.y + 15) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
-						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && state != PS_HITSTUN && other.vsp > -1){
 							free = false;
 							y = other.y + 5;
 						}
 						
-						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START && state != PS_HITSTUN){
 							if (other.image_angle == 0){
 								x = other.x + 25;
 							}
@@ -163,12 +163,12 @@ if (state == 3){ // Moves with Box
 				}
 				if (other.player_id.movingbox.vsp >= 0 && other.player_id.movingbox.vsp < 5.5){
 					if ((place_meeting(x, y - 3, other) && y < other.y + 15) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
-						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && state != PS_HITSTUN && other.vsp > -1){
 							free = false;
 							y = other.y;
 						}
 						
-						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START && state != PS_HITSTUN){
 							if (other.image_angle == 0){
 								x = other.x + 25;
 							}
@@ -181,12 +181,12 @@ if (state == 3){ // Moves with Box
 				}
 				if (other.player_id.movingbox.vsp < 0 && other.player_id.movingbox.vsp > -10){
 					if ((place_meeting(x, y - 3, other) && y < other.y + 10) || (point_distance( x, y, other.x, other.y) < 30 && y < other.y)){
-						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && state != PS_HITSTUN && other.vsp > -1){
 							free = false;
 							y = other.y - 3;
 						}
 						
-						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START && state != PS_HITSTUN){
 							if (other.image_angle == 0){
 								x = other.x + 25;
 							}
@@ -200,12 +200,12 @@ if (state == 3){ // Moves with Box
 
 				if (other.player_id.movingbox.vsp <= -10){
 					if ((place_meeting(x, y, other) && y < other.y + 5) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
-						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && state != PS_HITSTUN && other.vsp > -1){
 							free = false;
 							y = other.y - 13;
 						}
 						
-						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START && state != PS_HITSTUN){
 							if (other.image_angle == 0){
 								x = other.x + 25;
 							}
@@ -275,12 +275,12 @@ if (state == 6){ // Moves with Other Tomo Box
 			with(oPlayer){
 				if (oMovBox.vsp >= 19){
 					if ((place_meeting(x, y - 3, other) && y < other.y + 15) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
-						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && state != PS_HITSTUN && other.vsp > -1){
 							free = false;
 							y = other.y + 20;
 						}
 						
-						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START && state != PS_HITSTUN){
 							if (other.image_angle == 0){
 								x = other.x + 25;
 							}
@@ -293,12 +293,12 @@ if (state == 6){ // Moves with Other Tomo Box
 				}
 				if (oMovBox.vsp >= 15 && oMovBox.vsp < 19){
 					if ((place_meeting(x, y - 3, other) && y < other.y + 15) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
-						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && state != PS_HITSTUN && other.vsp > -1){
 							free = false;
 							y = other.y + 15;
 						}
 						
-						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START && state != PS_HITSTUN){
 							if (other.image_angle == 0){
 								x = other.x + 25;
 							}
@@ -311,12 +311,12 @@ if (state == 6){ // Moves with Other Tomo Box
 				}
 				if (oMovBox.vsp >= 10 && oMovBox.vsp < 15){
 					if ((place_meeting(x, y - 3, other) && y < other.y + 15) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
-						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && state != PS_HITSTUN && other.vsp > -1){
 							free = false;
 							y = other.y + 10;
 						}
 						
-						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START && state != PS_HITSTUN){
 							if (other.image_angle == 0){
 								x = other.x + 25;
 							}
@@ -329,12 +329,12 @@ if (state == 6){ // Moves with Other Tomo Box
 				}
 				if (oMovBox.vsp >= 5.5 && oMovBox.vsp < 10){
 					if ((place_meeting(x, y - 3, other) && y < other.y + 15) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
-						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && state != PS_HITSTUN && other.vsp > -1){
 							free = false;
 							y = other.y + 5;
 						}
 						
-						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START && state != PS_HITSTUN){
 							if (other.image_angle == 0){
 								x = other.x + 25;
 							}
@@ -347,12 +347,12 @@ if (state == 6){ // Moves with Other Tomo Box
 				}
 				if (oMovBox.vsp >= 0 && oMovBox.vsp < 5.5){
 					if ((place_meeting(x, y - 3, other) && y < other.y + 15) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
-						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && state != PS_HITSTUN && other.vsp > -1){
 							free = false;
 							y = other.y;
 						}
 						
-						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START && state != PS_HITSTUN){
 							if (other.image_angle == 0){
 								x = other.x + 25;
 							}
@@ -365,12 +365,12 @@ if (state == 6){ // Moves with Other Tomo Box
 				}
 				if (oMovBox.vsp < 0 && oMovBox.vsp > -10){
 					if ((place_meeting(x, y - 3, other) && y < other.y + 10) || (point_distance( x, y, other.x, other.y) < 30 && y < other.y)){
-						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && state != PS_HITSTUN && other.vsp > -1){
 							free = false;
 							y = other.y - 3;
 						}
 						
-						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START && state != PS_HITSTUN){
 							if (other.image_angle == 0){
 								x = other.x + 25;
 							}
@@ -384,12 +384,12 @@ if (state == 6){ // Moves with Other Tomo Box
 
 				if (oMovBox.vsp <= -10){
 					if ((place_meeting(x, y, other) && y < other.y + 5) || (point_distance( x, y, other.x, other.y) < 20 && y < other.y)){
-						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && other.vsp > -1){
+						if (state_cat != SC_AIR_COMMITTED && !jump_pressed && state != PS_HITSTUN && other.vsp > -1){
 							free = false;
 							y = other.y - 13;
 						}
 						
-						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START){
+						if ((state_cat != SC_AIR_COMMITTED) && state != PS_DASH_START && state != PS_HITSTUN){
 							if (other.image_angle == 0){
 								x = other.x + 25;
 							}
