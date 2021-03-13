@@ -2,7 +2,7 @@ user_event(14);
 
 spr_phoneopen = sprite_get("phone_open");
 
-hurtbox_spr = asset_get("ex_guy_hurt_box");
+hurtbox_spr = sprite_get("hurtbox");
 crouchbox_spr = sprite_get("crouch_hurt");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
@@ -19,7 +19,7 @@ walk_accel = 0.2;
 walk_turn_time = 6;
 initial_dash_time = 10.5
 initial_dash_speed = 7;
-dash_speed = 5.75
+dash_speed = 5.6
 dash_turn_time = 8;
 dash_turn_accel = 1.5;
 dash_stop_time = 6;
@@ -43,8 +43,8 @@ double_jump_time = 33; //the number of frames to play the djump animation. Can't
 walljump_hsp = 7;
 walljump_vsp = 10;
 walljump_time = 32;
-max_fall = 8.25; //maximum fall speed without fastfalling
-fast_fall = 15; //fast fall speed
+max_fall = 7; //maximum fall speed without fastfalling
+fast_fall = 14; //fast fall speed
 gravity_speed = .65;
 hitstun_grav = .5;
 knockback_adj = .94; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
@@ -120,6 +120,7 @@ mud_gained = false;     //Variable on whether or not the player has gained dspec
 killarticles = false;
 
 mud = noone;            //specify the mud article when it's spawned
+//puddle_hitbox = noone;
 
 on_mud = false;         //variable to change moves/affect meter when quagsire is on top of the mud
 
@@ -130,6 +131,7 @@ nyoom = false; //for mud dash speed up
 
 bonk = false; //for bonk shenans
 
+AT_UTILT_2 = 49;
 
 mud_hit_fx1 = hit_fx_create( sprite_get( "mud_hit" ), 16 );
 mud_hit_fx2 = hit_fx_create( sprite_get( "mud_hit2" ), 25 );
@@ -256,3 +258,65 @@ dracula_text[page] = "Oh shut up. Have at you![glass]";
 page++;
 
 
+/*
+//Date Girl Support. Generated using McDucky's Date Girl Generator! 
+Chatting = true;
+DG_portrait = sprite_get("DG_portrait");
+var DG_page = 0;
+
+//Page 0
+DG_page = 0;
+DG_chat_type[DG_page] = 1;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 1;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = true;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"Testing
+Hello
+Yes"
+
+DG_options[DG_page] = 
+"
+
+"
+			
+DG_answers[DG_page] = [0,0,0];
+
+
+//Page 1
+DG_page = 1;
+DG_chat_type[DG_page] = 1;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = true;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"Testing
+Hello
+Yes"
+
+DG_options[DG_page] = 
+"
+
+"
+			
+DG_answers[DG_page] = [0,0,0];
+
+*/

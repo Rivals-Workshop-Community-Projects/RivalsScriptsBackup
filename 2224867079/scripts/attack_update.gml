@@ -132,7 +132,7 @@ if (attack == AT_NSPECIAL && ncancel = false) {
             nbox = 2;
             window_timer = 0;
             */
-        }
+        } 
         else {
             //skip to the next window
             window = 4;
@@ -291,4 +291,46 @@ if (attack == 49)
         create_hitbox( 49, 1, x + (500 * spr_dir), y - 50 );
     }
     
+}
+
+//Blue Ustrong Spawns Article
+/*
+if (attack == AT_USTRONG){
+	if (ustrongarticle == false){
+		if !was_parried {
+			if (window = 1){
+				destroy_fx = 1;
+				if(spr_dir = 1){
+					var blue_ustrongobj = instance_create(x+48, y-152, "obj_article3");
+					ustrongarticle = true;
+					blue_ustrongobj.ustrongarticlestate = 1;
+				}
+				if(spr_dir = -1){
+					var blue_ustrongobj = instance_create(x-108, y-152, "obj_article3");
+					ustrongarticle = true;
+					blue_ustrongobj.ustrongarticlestate = 1;
+				}
+			}
+		}
+		instance_destroy(); exit;
+	}
+}
+*/
+
+//Blue Recovery Effect
+if (attack == AT_USPECIAL){
+	if (window == 2){
+		if (dotheeffect == true){
+		spawn_hit_fx( x+8, y-10, blue_recovery );
+		dotheeffect = false
+		}
+	}
+}
+if (attack == AT_USPECIAL_2){
+	if (window == 2){
+		if (dotheeffect == true){
+		spawn_hit_fx( x+8, y-10, red_recovery );
+		dotheeffect = false
+		}
+	}
 }

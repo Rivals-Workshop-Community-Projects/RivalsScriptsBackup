@@ -467,6 +467,35 @@ with phone{
 //	initPatchWords("Fnuuy joke
 //	- waog");
 //	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0);
+	//2.4
+	initPatch("2.4", "13 March, 2021");
+	initPatchWords_ext("Balance Changes:", fa_center, c_white, 1, 0);
+	initPatchWords("- Overall damage increase
+	- Adjusted Dtilt Hitbox
+	- Adjusted Nair Hitbox
+		- Adjusted Uair Hitbox
+	- Adjusted Utilt Hitbox
+	- Adjusted Blue Dstrong Hitbox
+	- Bair now has a different launch angle, (Should be easier to DI)
+	- Charged Nspecial now comes out quicker and has less lifetime
+	- Nair is now a 3 hit move
+	- Blue Fstrong shouldnt be as jank anymore
+	- Uspecial now happens over a shorter period of time
+	")
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_white, 1, 0);
+	initPatchWords("- Updated Dstrong
+	- Uspecial now has new visual effects")
+	//2.3
+	initPatch("2.3", "12 March, 2021");
+	initPatchWords_ext("Completely revamped how palettes worked in order to cut down on the amount of sprites", fa_center, c_white, 1, 0);
+	initPatchWords_ext("Balance Changes:", fa_center, c_white, 1, 0);
+	initPatchWords("- Hitpause has been increased universally")
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_white, 1, 0);
+	initPatchWords("- The eyes now stay in the right spot when turning around
+	- Updated Taunt
+	- Updated Ustrong Sprite
+	- Updated Info
+	- Updated Walkturn")
 	//2.2
 	initPatch("2.2", "11 March, 2021");
 	initPatchWords_ext("Updated Munophone", fa_center, c_white, 1, 0);

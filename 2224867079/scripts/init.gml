@@ -18,6 +18,11 @@ ncancel = false
 tempsprdir = 0
 teleported = false
 
+ustrongarticle = false
+ustrongarticlestate = 0
+
+dotheeffect = true
+
 //Hud Stuff
 introhud = true
 hudstart = false
@@ -78,6 +83,8 @@ red_new_stab_2 = hit_fx_create( sprite_get( "RedNewStab2" ), 17 );
 red_stab_3 = hit_fx_create( sprite_get( "RedStab3" ), 20 );
 red_stab_4 = hit_fx_create( sprite_get( "RedStab_4" ), 20 );
 redupb = hit_fx_create( sprite_get( "UpB_Sweetspot" ), 34 );
+blue_recovery = hit_fx_create( sprite_get( "BlueRecovery" ), 8 );
+red_recovery = hit_fx_create( sprite_get( "RedRecovery" ), 8 );
 meffectb = false
 
 //Projectile Stuff

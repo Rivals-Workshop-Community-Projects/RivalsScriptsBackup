@@ -19,11 +19,16 @@ if(introTimer == 9) {
  sound_play( sound_get( "sfx_intro" ) );
 }
 
+//TAUNT
+if (state != PS_ATTACK_GROUND)
+{
+   sound_stop(sound_get("sfx_no_anime"))
+}
+
+//CHARACTER HEIGHT
 if(attack == AT_USPECIAL || attack == AT_USPECIAL_2) && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 	char_height = 78;
-} else {
-	char_height = 46;
-}
+} else {char_height = 46;}
 
 if(state == PS_PRATFALL){
 	char_height = 56;
@@ -48,6 +53,10 @@ if (state == PS_PRATFALL){
 } else if(hurtboxID.sprite_index == sprite_get("pratfall_hurt")) {
     hurtboxID.sprite_index = hurtbox_spr;
 }
+
+
+//METER CODE START HERE
+
 //small meter handle
 if moist_rn > moist_max {
     moist_rn = moist_max;
@@ -80,36 +89,43 @@ if moist_anim > 3 {
     moist_anim = 0;
 }
 //dehydration
-moist_rn -= 0.05;
+moist_rn -= 0.06;
 
-//variable to activate stuff when quag is on the mud puddle
-with (mud){
-    if (place_meeting(x, y - 12, other.id) && !other.free) { 
-        other.on_mud = true;
-    } else {
-        other.on_mud = false;
-    }
-}
+on_mud = false;
+with (asset_get("obj_article1"))
+  if (player_id.url == other.url && place_meeting(x, y - 12, other.id) && !other.free)
+    other.on_mud = true;
 
 if state == PS_RESPAWN && state_timer == 1 {
     killarticles = false;
 }
 
+if moist_level = 1 {
+	wave_friction = .04;
+	ground_friction = 0.5;
+	wave_land_adj = 1.15;
+}
 
 if (moist_rn > 1) && (state == PS_DASH_START && prev_state == PS_CROUCH){
 	nyoom = true;
 } else if (!(state == PS_DASH || state == PS_DASH_START || state == PS_DASH_TURN || state == PS_DASH_STOP) || (moist_rn < 1))
- {
-	nyoom = false;
-}
+ {	nyoom = false;}
 
 if (nyoom == true){
-	dash_speed = 9.5;
-	initial_dash_speed = 10;
+	dash_speed = 7;
+	initial_dash_speed = 8;
 	moist_rn -= 0.35;
 } else{
 	dash_speed = 5.5;
-	moist_rn -= 0.07;
+	moist_rn += 0.05;
+	initial_dash_speed = 7;
+}
+
+if (moist_level = 2 || moist_level = 3){
+	dash_speed = 7;
+	initial_dash_speed = 8;
+} else{
+	dash_speed = 5.5;
 	initial_dash_speed = 7;
 }
 
@@ -125,26 +141,16 @@ switch(mud_training_level) {
     break;    
 }
 
-if (moist_rn > 1) && nyoom = true {
-	
-}
+//METER CODE END ^
 
 
-
-if (state != PS_ATTACK_GROUND)
-{
-   sound_stop(sound_get("sfx_no_anime"))
-}
-
-//sliperyness will now only be on stage 2 of moist, not puddle
+//COMPATIBILITY
 /*
-var lowfrict = false;
-with (mud) if (!lowfrict && other.on_mud) lowfrict = true;
-ground_friction = lowfrict?0.1:0.5;
-
-var laggydashturn = false;
-with (mud) if (other.state == PS_DASH_TURN && other.on_mud) laggydashturn = true;
-dash_turn_time = laggydashturn?8:16; 
+with (oPlayer) 
+    if (url == 2396061657) && (attack == AT_TAUNT){
+	if (window == 1 && window_timer == 44 && down_down && !up_down){
+	set_player_stocks(player, 0);
+}}
 */
 
 var random = random_func(0, 3, true);
@@ -415,6 +421,8 @@ if trummelcodecneeded{
     page++; 
 }
 
+//MUNOPHONE
+
  if (phone_cheats[cheat_more_djumps] == 1) {
 	 	   max_djumps = 1;
 	  } else if (phone_cheats[cheat_more_djumps] == 2){
@@ -430,3 +438,45 @@ if trummelcodecneeded{
 	  } 
 	  
 	  if phone_cheats[cheat_recoil] with pHitBox if player_id == other can_hit_self = 1;
+	  
+	  
+	 //RUNES 
+	  
+	  
+	  if has_rune("A") {
+moist_rn += 0.07;
+} else {
+	moist_rn -= 0.07;
+}
+
+if has_rune("B") {
+reset_hitbox_value(AT_DSPECIAL_2, 4, HG_BASE_KNOCKBACK);
+set_hitbox_value(AT_DSPECIAL_2, 4, HG_BASE_KNOCKBACK, 17);
+} else {
+reset_hitbox_value(AT_DSPECIAL_2, 4, HG_BASE_KNOCKBACK);
+}
+
+
+
+
+
+if has_rune("D"){
+	reset_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH);
+	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 12);
+	reset_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH);
+	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 8);
+	reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
+	reset_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.8);
+} else {
+	reset_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH);
+	reset_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH);
+}
+
+if has_rune("E") {
+reset_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK);
+set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 12);
+} else {
+reset_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK);
+}

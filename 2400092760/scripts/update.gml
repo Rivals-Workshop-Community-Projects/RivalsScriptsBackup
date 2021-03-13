@@ -677,7 +677,7 @@ if (state == PS_SPAWN || was_reloaded){
 				init_shader();
 			}	
 			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
-				Hardened_Veteranx = 5;
+				Hardened_Veteran = 5;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();

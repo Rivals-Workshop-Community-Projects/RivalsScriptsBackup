@@ -24,10 +24,10 @@ if attack == AT_NSPECIAL{
 	
 	if x < room_width and x > 0 and y < room_height { 
 		if player_id.move_cooldown[AT_NSPECIAL] > 0{
-        	player_id.move_cooldown[AT_NSPECIAL] = 2
+        	player_id.move_cooldown[AT_NSPECIAL] = 5
 		}
 	} else {
-		destroyed = 1
+			destroyed = true
 		sound_play(asset_get("sfx_absa_singlezap1"))
 	}
 	
@@ -46,10 +46,15 @@ if attack == AT_DSPECIAL{
 }
 
 if attack == AT_NSPECIAL  && hbox_num <= 3{
-	
 
     if batted == 0 {
     	
+    		
+    if player_id.move_cooldown[AT_UTILT] > 0 {
+    		can_hit_self = true
+    }
+    
+    
     	if player == orig_player {
     	if hitbox_timer % 4 == 0 and (hbox_num == 2 or hbox_num == 3)  {
     	spawn_hit_fx(x - 4 + random_func(1,8,true),y - 4 + random_func(2,8,true), bfx2)

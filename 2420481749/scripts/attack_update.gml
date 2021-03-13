@@ -82,24 +82,31 @@ if (attack == AT_USTRONG)
 	}
 }
 
-//jab offset
-if (attack == AT_NAIR && window <= 7)
-{
-	hud_offset = 40;
-}
-
 //dstrong offset
 if (attack == AT_DSTRONG)
 {
-	if window <= 5
+	if (window <= 4) && window >= 3 || (window == 5 && window_timer <= 5)
 	hud_offset = 72;
-	
-	if window == 1
-	dstrong_pressed = false;
 	
 	if window == 2 && window_timer == 3 && !hitpause
 	{
 		sound_play(sound_get("stronghammer"));
+	}
+	
+	if window <= 2 && window_timer <= 16
+	{
+		if pressButton <= 4
+		{
+			pressButton+=0.5;	
+		}
+	}
+	
+	if window >= 2 && window <= 5
+	{
+		if pressButton <= 11
+		{
+			pressButton+=0.5;	
+		}
 	}
 	
 	if window == 2 && window_timer >= 16
@@ -113,6 +120,7 @@ if (attack == AT_DSTRONG)
 		{
 			window_timer = 0;
 			window = 3;
+			spawn_hit_fx( x, y+16, great);
 			sound_play(sound_get("successfulhit"));
 		}
 		else
@@ -376,6 +384,12 @@ if (attack == AT_NAIR && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) &
     switch ( window )
 {
 	case 1: {
+		
+		if pressButton <= 4
+		{
+			pressButton+=0.4;	
+		}
+		
         confettiBurst = true;
         
         if window_timer >= 10
@@ -394,24 +408,39 @@ if (attack == AT_NAIR && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) &
 	}break;
     case 2:{
     	
+    	if window_timer >= 5
+    	{
+    		if pressButton <= 11
+			{
+				pressButton+=1;	
+			}
+    	}
+    	
     if (!free && window_timer >= 5 && (attack_down || attack_pressed))
     {
     	window = 5;
     	window_timer = 0;
     	sound_play(sound_get("successfulhit"));
     	destroy_hitboxes();
+    	NAir_Land = true;
     }
     else if (!free && (!attack_down || !attack_pressed)) 
     {
     	window = 8;
     	window_timer = 0;}
     }break;
-    case 3:{ 
+    case 3:{
+    if pressButton <= 11
+			{
+				pressButton+=1;	
+			}
+    	
     if (!free && (attack_down || attack_pressed))
     {
     	window = 5;
     	window_timer = 0;
     	sound_play(sound_get("successfulhit"));
+    	NAir_Land = true;
     }
     else if (!free) {
     window = 8;
@@ -430,7 +459,7 @@ if (attack == AT_NAIR && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) &
     	window_timer = 0;
     }
     }break;
-    case 6:{ 
+    case 6:{
     if (window_timer == 11)
     {
     window = 7;
@@ -465,6 +494,16 @@ if (attack == AT_NAIR && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) &
     	
     	if (hammercoins == true)
             {
+            if shouldSpawnGreat
+            {
+            	spawn_hit_fx( x-64*spr_dir, y-46, great);
+            	shouldSpawnGreat = false;
+            }
+            else
+            {
+            	spawn_hit_fx( x-64*spr_dir, y-46, good);
+            }
+            	
             	var coin4 = instance_create(x+40*spr_dir, y-16, "obj_article2");
 			coin4.sprite_index = sprite_get("coin");
 			coin4.state = 2;
@@ -499,7 +538,7 @@ if (attack == AT_NAIR && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) &
 			coin7.cointimer = 33 + random_func( 0, 4, true )
 			
 			hammercoins = false;
-            }
+		}
     }
     
     }break;
@@ -523,6 +562,27 @@ if (attack == AT_UAIR) {
 //dash attack
 if (attack == AT_DATTACK)
 {
+	if hitpause
+    {
+    	vsp -= 0.5;
+    }
+	
+	if window <= 1
+	{
+		if pressButton <= 4
+		{
+			pressButton+=0.5;	
+		}
+	}
+	
+	if window >= 2 && window <= 3
+	{
+		if pressButton <= 10
+		{
+			pressButton+=1;	
+		}
+	}
+	
     can_move = false
     can_fast_fall = false
 	switch ( window )
@@ -542,8 +602,21 @@ if (attack == AT_DATTACK)
     }
     if ((special_pressed || special_down) && window_timer <= 14) 
     {
+    	if hit_player_obj != noone
+    	{
+    		if (hit_player_obj.super_armor || hit_player_obj.invincible || hit_player_obj.state == PS_PARRY || hit_player_obj.state == PS_AIR_DODGE || hit_player_obj.state == PS_ROLL_FORWARD
+		|| hit_player_obj.state == PS_ROLL_BACKWARD || hit_player_obj.state == PS_TECH_GROUND || hit_player_obj.state == PS_TECH_FORWARD || hit_player_obj.shield_pressed
+		|| hit_player_obj.state == PS_TECH_BACKWARD || hit_player_obj.state == PS_WALL_TECH || hit_player_obj.state == PS_TECH_GROUND || hit_player_obj.shield_down)
+		{
+			hit_player_obj = noone;
+			has_hit_player = false;
+		}
+    	}
+    	
     	if (spr_dir == -1 && (left_pressed || left_down)) 
     	{
+    		set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_WIDTH, 30);
+			set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HEIGHT, 40);
     		set_attack(AT_FSPECIAL_AIR);
     		window = 2;
     		dash_fspec = true;
@@ -552,6 +625,8 @@ if (attack == AT_DATTACK)
     	}
     	if (spr_dir == 1 && (right_pressed || right_down)) 
     	{
+    		set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_WIDTH, 30);
+			set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HEIGHT, 40);
     		set_attack(AT_FSPECIAL_AIR);
     		window = 2;
     		window_timer = 0;
@@ -610,17 +685,32 @@ if (attack == AT_FSPECIAL_AIR && !hitpause) {
     
     switch ( window )
     {
-        case 2: { if (window_timer == 7 && !has_hit_player) {
-            window = 8;
-            window_timer = 0;}
-            else if (!free && !has_hit_player) {
-            sound_play(sound_get("falldown"));
-            window = 9;
-            window_timer = 0;}
-            if (window_timer == 7 && has_hit_player) {
-            window = 3;
-            window_timer = 0;}
+    	case 1:
+    	{
+    		reset_hitbox_value(AT_FSPECIAL_AIR, 1, HG_WIDTH);
+			reset_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HEIGHT);
+    	}break;
+    	
+        case 2: { if (window_timer == 7 && !has_hit_player) 
+        	{
+            	window = 8;
+            	window_timer = 0;
+        	}
+            else if (!free && !has_hit_player) 
+            {
+            	sound_play(sound_get("falldown"));
+            	window = 9;
+            	window_timer = 0;
+            }
+            
+            if (window_timer == 7 && has_hit_player) 
+            {
+            	window = 3;
+            	window_timer = 0;
+            	
+            }
         }break;
+        
         case 3: { if (window_timer == 15) {
             window = 4;
             window_timer = 0;}
@@ -673,7 +763,15 @@ if (attack == AT_FSPECIAL_AIR && !hitpause) {
             
             can_fast_fall = false;
         }break;
-        case 4:{ if (window_timer == 7) {
+        case 4:{ 
+        
+        if dash_fspec == true && window_timer == 1 && !hitpause
+        {
+        	spawn_hit_fx( x, y+16, great);
+        	sound_play(sound_get("successfulhit"));
+        }
+        	
+        if (window_timer == 7) {
         window = 5;
         window_timer = 0;}
         can_fast_fall = false;
@@ -751,31 +849,37 @@ if (attack == AT_FSPECIAL_AIR && !hitpause) {
         }break;
     }
     
-    if ((window == 2 || window == 3 || (window == 4 && window_timer <= 2)) && has_hit_player) {
+    if ((window == 2 || window == 3 || (window == 4 && window_timer <= 2)) && has_hit_player) 
+    {
         destroy_hitboxes();
         hsp = 0;
         vsp = 0;
-        can_fast_fall = false
-        if( instance_exists(hit_player_obj) && (!super_armor && state != PS_PARRY && state != PS_AIR_DODGE && state != PS_ROLL_FORWARD
-						&& state != PS_ROLL_BACKWARD && state != PS_TECH_GROUND && state != PS_TECH_FORWARD && !invincible
-						&& state != PS_TECH_BACKWARD && state != PS_WALL_TECH)) {
-         with(hit_player_obj) {
-                x = other.x+(40*other.spr_dir) + other.hsp;
-                y = other.y+(-18) + other.vsp;
-                can_move = 0;
-				can_attack = 0;
-				can_tech = false;
-				invincible = false;
-				if(free) {
-                    set_state(PS_HITSTUN);
-                }
-                else if !free
-                {
-                    set_state(PS_HITSTUN_LAND);
-                }
-          }
+        if( hit_player_obj != noone) 
+        {
+			with(hit_player_obj) 
+			{
+				if (!super_armor && !invincible && state != PS_PARRY && state != PS_AIR_DODGE && state != PS_ROLL_FORWARD
+				&& state != PS_ROLL_BACKWARD && state != PS_TECH_GROUND && state != PS_TECH_FORWARD
+				&& state != PS_TECH_BACKWARD && state != PS_WALL_TECH && state != PS_TECH_GROUND)
+				{
+					x = other.x+(40*other.spr_dir) + other.hsp;
+					y = other.y+(-18) + other.vsp;
+					can_move = 0;
+					can_attack = 0;
+					can_tech = false;
+					invincible = false;
+					if(free) 
+					{
+						set_state(PS_HITSTUN);
+					}
+					else 
+					{
+					set_state(PS_HITSTUN_LAND);
+					}
+				}
+			}
         }
-      }
+	}
       if ((window == 2 || window == 3 || (window == 4 && window_timer <= 2)) && pullingpanel == true) 
       {
         destroy_hitboxes();
@@ -789,13 +893,17 @@ if (attack == AT_FSPECIAL && !hitpause) {
     
     switch ( window )
     {
-        case 2: { if (window_timer == 7 && !has_hit_player) {
-            window = 7;
-            window_timer = 0;}
+        case 2:
+        {	
+        	if (window_timer >= 7 && !has_hit_player) 
+        		{
+            	window = 7;
+            	window_timer = 0;
+        		}
             if (window_timer == 7 && has_hit_player) 
             {
-            window = 3;
-            window_timer = 0;
+            	window = 3;
+            	window_timer = 0;
             }
 			if (window_timer <= 1) {
             hsp = 4*spr_dir;
@@ -906,28 +1014,36 @@ if (attack == AT_FSPECIAL && !hitpause) {
         	vsp = 0;
     	}
     
-    if ((window == 2 || window == 3 || (window == 4 && window_timer <= 2)) && has_hit_player) {
+    if ((window == 2 || window == 3 || (window == 4 && window_timer <= 2)) && has_hit_player) 
+    {
         destroy_hitboxes();
-        if( instance_exists(hit_player_obj) && (!super_armor && state != PS_PARRY && state != PS_AIR_DODGE && state != PS_ROLL_FORWARD
-						&& state != PS_ROLL_BACKWARD && state != PS_TECH_GROUND && state != PS_TECH_FORWARD && !invincible
-						&& state != PS_TECH_BACKWARD && state != PS_WALL_TECH)) {
-         with(hit_player_obj) {
-                x = other.x+(40*other.spr_dir) + other.hsp;
-                y = other.y+(-18) + other.vsp;
-                can_move = 0;
-				can_attack = 0;
-				can_tech = false;
-				invincible = false;
-				if(free) {
-                    set_state(PS_HITSTUN);
-                }
-                else {
-                    set_state(PS_HITSTUN_LAND);
-                }
-          }
+        if( hit_player_obj != noone) 
+        {
+			with(hit_player_obj) 
+			{
+				if (!super_armor && !invincible && state != PS_PARRY && state != PS_AIR_DODGE && state != PS_ROLL_FORWARD
+				&& state != PS_ROLL_BACKWARD && state != PS_TECH_GROUND && state != PS_TECH_FORWARD
+				&& state != PS_TECH_BACKWARD && state != PS_WALL_TECH && state != PS_TECH_GROUND)
+				{
+					x = other.x+(40*other.spr_dir) + other.hsp;
+					y = other.y+(-18) + other.vsp;
+					can_move = 0;
+					can_attack = 0;
+					can_tech = false;
+					invincible = false;
+					if(free) 
+					{
+						set_state(PS_HITSTUN);
+					}
+					else 
+					{
+					set_state(PS_HITSTUN_LAND);
+					}
+				}
+			}
         }
-      }
-    }
+	}
+}
 
 //confetti
 if (attack == AT_BAIR) {
@@ -1083,7 +1199,15 @@ if (attack == AT_DSPECIAL_AIR)
 
 if (attack == AT_DSPECIAL)
 {
-	if (window = 3 && window_timer == 1)
+	if window == 2
+	{
+		if window_timer == 14 && !hitpause
+		{
+			sound_play(asset_get("mfx_coin"));
+		}
+	}
+	
+	if (window == 3 && window_timer == 1)
 	{
 
 		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 2.5 + random_func( -4, 2, false ));

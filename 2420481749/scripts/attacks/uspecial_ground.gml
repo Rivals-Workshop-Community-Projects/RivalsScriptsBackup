@@ -8,6 +8,8 @@ set_attack_value(AT_USPECIAL_GROUND, AG_HURTBOX_SPRITE, sprite_get("uspecground_
 //anger frame
 set_window_value(AT_USPECIAL_GROUND, 1, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_USPECIAL_GROUND, 1, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_USPECIAL_GROUND, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_USPECIAL_GROUND, 1, AG_WINDOW_SFX, asset_get("sfx_spin"));
 
 //come on!
 set_window_value(AT_USPECIAL_GROUND, 2, AG_WINDOW_LENGTH, 10);

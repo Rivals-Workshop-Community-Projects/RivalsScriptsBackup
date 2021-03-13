@@ -10,6 +10,8 @@ set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_TYPE, 9);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, sound_get("oliviafolding"));
 
 //Climbing window
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE, 9);
@@ -21,6 +23,9 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_GOTO, 3);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_kragg_rock_land"));
+
 
 //Tossed window
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 9);
@@ -28,6 +33,8 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_GOTO, 4);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_spin"));
 
 //falling window
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);

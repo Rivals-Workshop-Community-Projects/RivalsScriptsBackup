@@ -122,7 +122,13 @@ if (state == 1){
         state = 2;
         state_timer = 0;
     }
-    
+ /*
+     if has_rune("K"){
+     if !instance_exists(puddle_hitbox) {
+     	puddle_hitbox = create_hitbox(AT_NSPECIAL, 2, x - 2 * spr_dir,y -16);}}
+*/
+
+
     //Accept buffered state
     if (bufferedstate > 0){
         state = bufferedstate;
@@ -132,11 +138,12 @@ if (state == 1){
 }
 
 
-
 //State 2: Dying
-
 if (state == 2){
-    if (state_timer == die_time){
+	/*
+if instance_exists(puddle_hitbox) {
+  instance_destroy(puddle_hitbox);
+}   */ if (state_timer == die_time){
         player_id.killarticles = false;
         instance_destroy();
         exit;

@@ -7,6 +7,11 @@
 
 	usedUspecial = false;
 	usedUspecial2 = 0;
-	chargedash = 0;
 	usedFspecial = false;
 	chargespike = 0;
+	
+	
+if (attack == AT_FSPECIAL){
+	chargedash = 0;
+	usedFspecial = false;
+}

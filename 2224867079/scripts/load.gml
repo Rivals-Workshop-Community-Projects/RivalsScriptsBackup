@@ -19,6 +19,8 @@ sprite_change_offset("BlueSwipe", 102, 106);
 sprite_change_offset("BlueSwipe2", 102, 106);
 sprite_change_offset("RedSwipe", 102, 106);
 sprite_change_offset("RedSwipe2", 102, 106);
+sprite_change_offset("BlueRecovery", 65, 100);
+sprite_change_offset("RedRecovery", 65, 100);
 
 //RB Mark
 sprite_change_offset("RBmark", 50, 50);

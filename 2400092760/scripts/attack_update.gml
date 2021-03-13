@@ -312,7 +312,7 @@ if(attack == AT_DSPECIAL_AIR){
         }
     }
     if(window == 4 || (window == 1 && window_timer > 1)){
-        if(DSPA_grab){
+        if(DSPA_grab && DSPA_grab_id.state != PS_RESPAWN){
             if(DSPA_timer <= 22){
                 DSPA_grab_id.x = ease_linear(DSPA_grab_id.x, x+4*spr_dir, DSPA_timer, 22);
                 DSPA_grab_id.y = ease_linear(DSPA_grab_id.y, y-0, DSPA_timer, 22);
@@ -537,7 +537,7 @@ if(attack == AT_UAIR){
     if(window == 1 && window_timer == 1){
         UAGrab = false;
     }
-    if(window == 3 && window_timer % 5 = 0 && !hitpause && window_timer < 14){
+    if(window == 3 && window_timer % 6 = 0 && !hitpause && window_timer < 16){
         create_hitbox(AT_UAIR, 1, x, y)
         create_hitbox(AT_UAIR, 2, x, y)
         

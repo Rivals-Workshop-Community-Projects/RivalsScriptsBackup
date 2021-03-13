@@ -234,6 +234,7 @@ if (state = 7)
                 {
                     spawn_hit_fx( other.x-14, other.y-14, paneldsp);
                     doublepowerboost = true;
+                    doublepowerboostusedup = false;
                     doublepower_pickuptxt = 32;
                     doublepower_pickuptxt_y = -70;
                     sound_play(sound_get("softsound"));
@@ -302,6 +303,7 @@ if (state == 10)
     sprite_index = sprite_get("handpanel");
     ignores_walls = false;
     panelpullable = true;
+    panelglow = 3;
     
     if panelupward <= 1 && !panelfade
     {
@@ -322,6 +324,10 @@ if (state == 10)
                 other.image_angle+=2;
                 other.panelglow = 3;
                 thousandfold = true;
+                if other.panelglowing <= 0.45
+                {
+                    other.panelglowing += 0.1;
+                }
                 
                 if state == PS_ATTACK_GROUND && attack == AT_FSPECIAL_2
                 {
@@ -334,7 +340,6 @@ if (state == 10)
             else
             {
                 other.image_angle = 0;
-                other.panelglow = 0;
                 thousandfold = false;
             }
         }
@@ -347,6 +352,7 @@ if (state == 11)
     sprite_index = sprite_get("icevellpanel");
     ignores_walls = false;
     panelpullable = true;
+    panelglow = 7;
     
      if panelupward <= 1 && !panelfade
     {
@@ -357,6 +363,10 @@ if (state == 11)
                 other.image_angle+=2;
                 other.panelglow = 7;
                 icevell = true;
+                if other.panelglowing <= 0.45
+                {
+                    other.panelglowing += 0.1;
+                }
                 
                 if state == PS_ATTACK_GROUND  && attack == AT_DSTRONG_2
                 {
@@ -369,7 +379,6 @@ if (state == 11)
             else
             {
                 other.image_angle = 0;
-                other.panelglow = 0;
                 icevell = false;
             }
         }
@@ -382,6 +391,7 @@ if (state == 12)
     sprite_index = sprite_get("watervellpanel");
     ignores_walls = false;
     panelpullable = true;
+    panelglow = 6;
     
     if panelupward <= 1 && !panelfade
     {
@@ -392,6 +402,10 @@ if (state == 12)
                 other.image_angle+=2;
                 other.panelglow = 6;
                 watervell = true;
+                if other.panelglowing <= 0.45
+                {
+                    other.panelglowing += 0.1;
+                }
                 
                 if state == PS_ATTACK_GROUND  && attack == AT_USTRONG_2
                 {
@@ -404,7 +418,6 @@ if (state == 12)
             else
             {
                 other.image_angle = 0;
-                other.panelglow = 0;
                 watervell = false;
             }
         }
@@ -417,6 +430,7 @@ if (state == 13)
     sprite_index = sprite_get("earthvellpanel");
     ignores_walls = false;
     panelpullable = true;
+    panelglow = 5;
     
     if panelupward <= 1 && !panelfade
     {
@@ -427,6 +441,10 @@ if (state == 13)
                 other.image_angle+=2;
                 other.panelglow = 5;
                 earthvell = true;
+                if other.panelglowing <= 0.45
+                {
+                    other.panelglowing += 0.1;
+                }
                 
                 if state == PS_ATTACK_GROUND  && attack == AT_DSPECIAL_2
                 {
@@ -439,7 +457,6 @@ if (state == 13)
             else
             {
                 other.image_angle = 0;
-                other.panelglow = 0;
                 earthvell = false;
             }
         }
@@ -452,6 +469,7 @@ if (state == 14)
     sprite_index = sprite_get("firevellpanel");
     ignores_walls = false;
     panelpullable = true;
+    panelglow = 4;
     
     if panelupward <= 1 && !panelfade
     {
@@ -462,6 +480,10 @@ if (state == 14)
                 other.image_angle+=2;
                 other.panelglow = 4;
                 firevell = true;
+                if other.panelglowing <= 0.45
+                {
+                    other.panelglowing += 0.1;
+                }
                 
                 if state == PS_ATTACK_GROUND && attack == AT_FSTRONG_2
                 {
@@ -474,14 +496,13 @@ if (state == 14)
             else
             {
                 other.image_angle = 0;
-                other.panelglow = 0;
                 firevell = false;
             }
         }
     }
 }
 
-if (state >= 3)
+if (state >= 3 && state <= 14.1)
 {
     if (panelupward >= 1)
     {
@@ -624,6 +645,14 @@ if (state >= 3)
             if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR) && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
                 if collision_point(x+22*spr_dir, y-28, other, false, true )
                 {
+                    oliviagone = false;
+                    firevell = false;
+                    icevell = false;
+                    watervell = false;
+                    earthvell = false;
+                    thousandfold = false;
+                    
+                    
                     if window == 2
                     {
                         window = 3;
@@ -678,19 +707,9 @@ if (state >= 3)
         hsp = 0;
     }
     
-    if (panelglow >= 3)
+    if panelglowing >= 0.1
     {
-        if panelglowing <= 0.4
-        {
-            panelglowing+=0.1;
-        }
-    }
-    else
-    {
-        if panelglowing != 0
-        {
-            panelglowing-=0.1;
-        }
+        panelglowing-=0.05;
     }
     
     if (panelupward == 3)
@@ -747,12 +766,23 @@ if (state >= 3)
     {
         image_alpha+= -0.2;
         
+        with player_id
+        {
+            firevell = false;
+            icevell = false;
+            watervell = false;
+            earthvell = false;
+            thousandfold = false;
+        }
+        
         if image_alpha <= 0
         {
             should_destroy = true;
         }
     }
 }
+
+
 
 if (should_destroy)
 {

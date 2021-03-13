@@ -1,4 +1,36 @@
 /*
+-- V2.4 --
+
+Balance Changes:
+- Overall damage increase
+- Adjusted Dtilt Hitbox
+- Adjusted Nair Hitbox
+- Adjusted Uair Hitbox
+- Adjusted Utilt Hitbox
+- Adjusted Blue Dstrong Hitbox
+- Bair now has a different launch angle, (Should be easier to DI)
+- Charged Nspecial now comes out quicker and has less lifetime
+- Nair is now a 3 hit move
+- Blue Fstrong shouldnt be as jank anymore
+- Uspecial now happens over a shorter period of time
+
+Cosmetic Changes:
+- Updated Dstrong
+- Uspecial now has new visual effects
+
+-- V2.3 --
+- Completely revamped how palettes worked in order to cut down on the amount of sprites
+
+Balance Changes:
+- Hitpause has been increased universally
+
+Cosmetic Changes:
+- The eyes now stay in the right spot when turning around
+- Updated Taunt
+- Updated Ustrong Sprite
+- Updated Info
+- Updated Walkturn
+
 -- V2.2 --
 
 -Added Lore

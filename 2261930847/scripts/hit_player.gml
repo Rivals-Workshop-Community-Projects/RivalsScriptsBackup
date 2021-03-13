@@ -29,13 +29,13 @@ var k = spawn_hit_fx(my_hitboxID.x + (spr_dir * 12), my_hitboxID.y - -15, which_
     k.depth = depth - 1;
 }
 
-if (attack == AT_DSPECIAL_2 && my_hitboxID.hbox_num == 4) // I guess
+if ((attack == AT_DSPECIAL_2 && my_hitboxID.hbox_num == 4) || (attack == AT_USTRONG && my_hitboxID.hbox_num == 7 && moist_level = 3)) // I guess
 {    
        var k = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y, mud_hit_fx2);
        k.depth = depth - 1;
 }
 
-if (attack == AT_DSPECIAL && my_hitboxID.hbox_num ==1 && on_mud = true){
+if (attack == AT_DSPECIAL && my_hitboxID.hbox_num ==1){
         var k = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y, mud_hit_fx1);
        k.depth = depth - 1;
 }
@@ -80,3 +80,20 @@ if(attack == AT_USPECIAL_2 && my_hitboxID.hbox_num == 4){
             var k = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y, mud_hit_fx2);
        k.depth = depth - 1;
 }
+
+if(attack == AT_UTILT_2){
+    if (my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 4 || my_hitboxID.hbox_num == 5){
+            var k = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y, mud_hit_fx1);
+    k.depth = depth - 1;
+}} 
+
+if(attack == AT_USTRONG && moist_level = 3){
+    if (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 4 || my_hitboxID.hbox_num == 5 || my_hitboxID.hbox_num == 6){
+            var k = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y, mud_hit_fx1);
+    k.depth = depth - 1;
+}}
+    
+if(attack == AT_USPECIAL_2 && moist_level = 3 && my_hitboxID.hbox_num == 7){
+            var k = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y, mud_hit_fx2);
+    k.depth = depth - 1;
+} 

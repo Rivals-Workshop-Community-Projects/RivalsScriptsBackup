@@ -89,12 +89,15 @@ if (attack == AT_FAIR)
     }
 }
 
+
+
 if (spawntencoin)
 {
     var tencoin = instance_create(tencoin_x, tencoin_y, "obj_article2");
 	tencoin.sprite_index = sprite_get("tencoin");
 	tencoin.state = 1;
 	tencoin.player = player
+	sound_play(asset_get("sfx_land_med2"));
 	spawntencoin = false;
 	
 }
@@ -396,13 +399,10 @@ with (hit_fx_obj) if (other.bob_hit == hit_fx && player_id = other.id)
     other.move_cooldown[AT_DTILT] = 2;
 }
 with (hit_fx_obj) if (other.bowserfireburst == hit_fx && player_id = other.id) depth = -5; 
+with (hit_fx_obj) if (other.bowserfireburst2 == hit_fx && player_id = other.id) depth = -5;
 with (hit_fx_obj) if (other.starryhit == hit_fx && player_id = other.id) depth = -5;
 with (hit_fx_obj) if (other.puffyhit == hit_fx && player_id = other.id) depth = -5;
-with (hit_fx_obj) if (other.pressa == hit_fx && player_id = other.id) depth = -5;
-with (hit_fx_obj) if (other.presseda == hit_fx && player_id = other.id) depth = -6;
 with (hit_fx_obj) if (other.splashvfx == hit_fx && player_id = other.id) depth = -6;
-with (hit_fx_obj) if (other.press_fspec == hit_fx && player_id = other.id) depth = -5;
-with (hit_fx_obj) if (other.pressed_fspec == hit_fx && player_id = other.id) depth = -6;
 with (hit_fx_obj) if (other.dashhit == hit_fx && player_id = other.id) depth = -4;
 with (hit_fx_obj) if (other.bob_fall == hit_fx && player_id = other.id) 
 {
@@ -412,8 +412,12 @@ with (hit_fx_obj) if (other.bob_fall == hit_fx && player_id = other.id)
 with (hit_fx_obj) if (other.bootssuccessful == hit_fx && player_id = other.id) depth = -4;
 with (hit_fx_obj) if (other.sidehammer == hit_fx && player_id = other.id) depth = -4;
 with (hit_fx_obj) if (other.goldenguard == hit_fx && player_id = other.id) depth = -3;
-with (hit_fx_obj) if (other.block == hit_fx && player_id = other.id) depth = -12;
+with (hit_fx_obj) if (other.block == hit_fx && player_id = other.id) depth = -6;
 with (hit_fx_obj) if (other.block == hit_fx && player_id = other.id) spr_dir = 1;
+with (hit_fx_obj) if (other.great == hit_fx && player_id = other.id) depth = -6;
+with (hit_fx_obj) if (other.great == hit_fx && player_id = other.id) spr_dir = 1;
+with (hit_fx_obj) if (other.good == hit_fx && player_id = other.id) depth = -6;
+with (hit_fx_obj) if (other.good == hit_fx && player_id = other.id) spr_dir = 1;
 with (hit_fx_obj) if (other.coinshine == hit_fx && player_id = other.id) depth = -5;
 with (hit_fx_obj) if (other.icechunkbrk	 == hit_fx && player_id = other.id) depth = -5;
 

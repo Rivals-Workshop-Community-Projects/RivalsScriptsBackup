@@ -35,13 +35,13 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.05);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, sound_get("BlueSwish6"));
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, .1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -11);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -19);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.05);
 

@@ -60,13 +60,15 @@ if (attack == AT_FSTRONG && hbox_num == 1 && sprite_index == sprite_get("bowserf
     var my_x = x;
     var my_y = y;
     
-    if !free { 
-        destroyed = true;
-        with player_id {
-            var bob_fallhfx = spawn_hit_fx( my_x, my_y, bowserfireburst );
-            bob_fallhfx.spr_dir = other.spr_dir;
+    if !free {
+        with player_id 
+        {
+            var fireburst = spawn_hit_fx( my_x, my_y, bowserfireburst2 );
+            fireburst.spr_dir = other.spr_dir;
             create_hitbox( AT_FSTRONG, 2, my_x, my_y);
         }
+        destroy_fx = 1;
+        destroyed = true;
     }
 }
 

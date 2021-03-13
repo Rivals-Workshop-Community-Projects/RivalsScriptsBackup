@@ -1,11 +1,5 @@
 //visual objects or blank slates
 
-
-
-if setDestroy != 0 {
-	instance_destroy();
-}
-
 //Animate appear
 if instance_exists(self) && notbowser == false && state <= 5
 {
@@ -79,6 +73,7 @@ if instance_exists(self) && state == 2
 	
 	with(player_id) {
 		spawnedBowser = false;
+		sound_play(asset_get("sfx_spin_longer"));
 		var BowJrHitbox = create_hitbox(AT_USPECIAL, 1, jr_x, jr_y-16);
 		}
 	instance_destroy();
@@ -121,9 +116,10 @@ if instance_exists(self) && state == 4
 	with(player_id) 
 	{
 		spawnedBowser = false;
+		sound_play(asset_get("sfx_spin_longer"));
 		var BowJrHitbox = create_hitbox(AT_USPECIAL_GROUND, 1, jr_x, jr_y-16);
 	}
-	instance_destroy();
+	setDestroy = true;
 }
 
 if instance_exists(self) && state == 5
@@ -192,7 +188,7 @@ if instance_exists(self) && state == 5
 		image_alpha-=0.1;
 		if image_alpha <= 0
 		{
-			instance_destroy();
+			setDestroy = true;
 		}
 	}
 }
@@ -356,7 +352,6 @@ if instance_exists(self) && state == 6
 	
 	with (player_id)
 	{
-		move_cooldown[AT_JAB] = 5;
 		move_cooldown[AT_FAIR] = 5;
 		move_cooldown[AT_FSTRONG_2] = 5;
 	}
@@ -521,7 +516,7 @@ if instance_exists(self) && state == 7
 		{
 			with player_id
 			{
-				create_hitbox(AT_USTRONG_2, 8, other.x+10*other.spr_dir, other.y-140);
+				create_hitbox(AT_USTRONG_2, 8, other.x+10*other.spr_dir, other.y-160);
 				if !hitpause
 				{
 					sound_play(sound_get("sploosh"));
@@ -536,7 +531,7 @@ if instance_exists(self) && state == 7
 			waterspout1.state = 8;
 			waterspout1.depth = -5;
 			waterspout1.notbowser = true;
-			waterspout1.hsp = 3;
+			waterspout1.hsp = 2.5;
 			
 			var waterspout2 = instance_create(x, y, "obj_article1");
 			waterspout2.sprite_index = sprite_get("waterspout");
@@ -544,7 +539,7 @@ if instance_exists(self) && state == 7
 			waterspout2.notbowser = true;
 			waterspout2.depth = -5;
 			waterspout2.spr_dir = -1;
-			waterspout2.hsp = -3;
+			waterspout2.hsp = -2.5;
 		}break;
 		
 		case 70:
@@ -566,7 +561,6 @@ if instance_exists(self) && state == 7
 	
 	with (player_id)
 	{	
-		move_cooldown[AT_JAB] = 5;
 		move_cooldown[AT_FAIR] = 5;
 		move_cooldown[AT_USTRONG_2] = 5;
 	}
@@ -600,40 +594,39 @@ if instance_exists(self) && state == 8
 		hsp = 0;
 	}
 	
-		
-	if waterspout_timer <= 12
+	if waterspout_timer <= 20
 	{
-		hsp *=0.9;
+		hsp *=0.8;
+	}
+	
+	if abs(hsp) <= 2 && waterspout_timer <= 30
+	{
+		if image_xscale >= 0.02
+		{
+			image_xscale -= 0.02;
+		}
 	}
 	
 	if waterspout_timer >= 1 && !hitpause
 	{
 		waterspout_timer--;
 		
-		if (waterspout_timer % 6 == 0)
+		if (waterspout_timer % 3 == 0)
 		{
 			with player_id
 			{
-				create_hitbox(AT_USTRONG_2, 1, other.x, other.y-20);
-			}
-		}
-		
-		if waterspout_timer == 2
-		{
-			with player_id
-			{
-				spawn_hit_fx( other.x, other.y, splashvfx);
-				create_hitbox(AT_USTRONG_2, 1, other.x, other.y-20);
+				create_hitbox(AT_USTRONG_2, 1, floor(other.x+other.hsp), floor(other.y-30));
 			}
 		}
 	}
 	else
 	{
-		image_alpha-=0.5;
+		image_alpha-=0.1;
+		image_yscale -= 0.02;
 		
 		if image_alpha <= 0
 		{
-			instance_destroy();
+			setDestroy = true;
 		}
 	}
 }
@@ -864,7 +857,6 @@ if instance_exists(self) && state == 9
 	
 	with (player_id)
 	{	
-		move_cooldown[AT_JAB] = 5;
 		move_cooldown[AT_FAIR] = 5;
 		move_cooldown[AT_DSTRONG_2] = 5;
 	}
@@ -884,7 +876,7 @@ if instance_exists(self) && state == 9
 	}
 }
 
-if (instance_exists(self) && state == 10)
+if instance_exists(self) && ( state == 10)
 {
 	image_xscale = 2;
 	image_yscale = 2;
@@ -928,7 +920,7 @@ if (instance_exists(self) && state == 10)
 	}
 }
 
-if (instance_exists(self) && state == 11)
+if instance_exists(self) && ( state == 11)
 {
 	image_xscale = 2;
 	image_yscale = 2;
@@ -1050,7 +1042,6 @@ if (instance_exists(self) && state == 11)
 	
 	with (player_id)
 	{	
-		move_cooldown[AT_JAB] = 5;
 		move_cooldown[AT_FAIR] = 5;
 		move_cooldown[AT_DSPECIAL_2] = 5;
 	}
@@ -1070,7 +1061,7 @@ if (instance_exists(self) && state == 11)
 	}
 }
 
-if (instance_exists(self) && state == 12)
+if instance_exists(self) && ( state == 12)
 {
 	dralpha+=0.05;
 	depth = 1;
@@ -1111,4 +1102,8 @@ if (instance_exists(self) && state == 12)
         instance_destroy();
     }
 
+}
+
+if instance_exists(self) && setDestroy != 0 {
+	instance_destroy();
 }

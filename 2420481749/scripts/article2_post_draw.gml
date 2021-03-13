@@ -1,5 +1,6 @@
 //uv
-
+if panelglowing >= 0.1
+{
 if (panelglow == 4)
 {
     gpu_set_blendmode(bm_add)
@@ -39,4 +40,6 @@ if (panelglow == 7)
     draw_sprite_ext(sprite_get("iceeffect"), 0, x,y,  2, 2, image_angle, c_white, panelglowing);
     gpu_set_blendmode(bm_normal)
     draw_debug_text(x-70,y-80, "Use Down [Strong]");
+}
+
 }

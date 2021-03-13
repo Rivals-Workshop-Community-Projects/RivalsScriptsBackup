@@ -359,40 +359,40 @@ with phone{
 	// variables. See init.gml for an example of this with spr_nspecial_proj.
 	
 		initTip("Quagsire's Gimmick");
-	initTipWords("His moveset revolves around his neutral special: Mud Bomb. Mud Bomb is a projectile, but when it hits the ground, it creates a mud puddle! You can use your down special (Mud Sport) on a mud puddle to increase your Moisture Meter. His meter can only be filled by using down special on a puddle, and goes down over time.");
+	initTipWords("His moveset revolves around his neutral special: Mud Bomb. Mud Bomb is a projectile, but when it hits the ground, it creates a mud puddle! You can use your down special on a mud puddle to increase your Moisture Meter. His meter can only be filled by using down special on a puddle, and goes down over time.");
 	initTipImage(player_id.spr_dspecial, -4, fa_center, 1, c_white, 0);
 	
 	initTip("Stage 2");
-	initTipWords("Once the Meter is more than 1/3 filled, Quagsire reaches Stage 2, where some moves get buffed. Stage 2 buffs include:
+	initTipWords("Once the Meter is more than 1/3 filled, Quagsire reaches Stage 2, where his tilts and movement get buffed. Stage 2 buffs include:
 -Lower friction
--Ftilt (Mud-Slap) can kill
+-Better Wavedash
+-Faster Dash Speed
 -Dtilt can be jump-cancelled on hit
--Up special (Surf) can be cancelled with a double jump or airdodge
--Ustrong (Scald) has a 30% chance to set opponent on fire");
+-Utilt gains more hits and does more damage
+-Ftilt kills earlier")
 	initTipImage(player_id.spr_muddtilt, -3, fa_center, 1, c_white, 3);
 
 
 	initTip("Stage 3");
-	initTipWords("Once the Meter is more than 2/3 filled, Quagsire reaches Stage 3, where he has all the buffs of Stage 2 and:
--Even lower friction
--Faster wavedash speed
--Dtilt can be jump-cancelled at any point
--Up strong (Scald) now has far less startup
--Side special (Liquidation) is much more disjointed and can now kill
--Ustrong has a 100% chance to set opponent on fire");
+	initTipWords("Once the Meter is more than 2/3 filled, Quagsire reaches Stage 3, where he has all the buffs of Stage 2 and his Strongs and Grounded Specials get buffed. Stage 3 buffs include:
+-Down Strong hits twice, is faster, and much stronger.
+-Up Strong becomes stronger
+-Forward Strong has more range and kills earlier
+-(Grounded) Forward special is muddy, much more disjointed and can now kill
+-(Grounded) Up Special is muddy and kills much earlier")
 	initTipImage(player_id.spr_fspecial2, -3.5, fa_center, 1, c_white, 0);
 
-	initTip("Mudrun");
-	initTipWords("Crouch and then immediately dash to run incredibly fast. This can be done at any stage, but it consumes mud. This is called Mudrunning.");
-	initTipImage(player_id.spr_muddash, -3.5, fa_center, 1, c_white, 0);
+	initTip("Flair");
+	initTipWords("During the startup of Forward Air, Quagsire has reduced gravity. This means if you press Jump and Forward Air at the same time, you will jump very high and use Forward Air at the same time. This technique is called Flair. It is a great way to gain vertical movement with a hitbox in front of you, can be useful for edgeguards, and can ward off getting edgeguarded.");
+	initTipImage(player_id.spr_fair, -3.5, fa_center, 1, c_white, 0);
 
 
 	initTip("NSpecial: Far/Close Shots");
-	initTipWords("By holding the B button, Nspecial's projectile will travel much farther, with no additional lag. However, tapping the button will cause the projectile to travel a short distance. This is best for quickly setting up puddle and gaining moisture without having to move.");
+	initTipWords("By holding the B button, Nuetral Special's projectile will travel much farther, with no additional lag. However, tapping the button will cause the projectile to travel a short distance. This is best for quickly setting up puddle and gaining moisture without having to move.");
 	initTipImage(player_id.spr_nspecial, -3.5, fa_center, 1, c_white, 0);
 	
 	initTip("Continued Dspecial");
-	initTipWords("Hold special during Dspecial to continue rolling. This is the fastest way to gain meter.");
+	initTipWords("Hold Special during Down Special to continue rolling. This is the fastest way to gain Meter.");
 	initTipImage(player_id.spr_dspecialroll, -3.5, fa_center, 1, c_white, 0);
 	
 		initTip("Taunt");
@@ -454,6 +454,46 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+
+		initPatch("2.0", "February, 20, 2021");
+	initPatchWords("Beegest patch.");
+	
+	initPatchWords("
+	
+	The biggest patch in Quagsire's history. We replaced several attacks, restructured his gimmick, made a lot of balance changes, and made lots of quality of life changes.
+	
+	New Attacks:
+	
+	Dash Attack: Belly Flop, decently fast. Covers more ground than most of Quagsire's attacks, and kills well.
+	Up Strong: Whirlpool, a long lasting multihit move with a two-hit Shoryuken finish. Does good damage, fairly fast, but kills late. You can move around during the multihits by holding left or right, but be careful, the opponent might fall out if you move too far.
+
+	Heavily Modified Attacks:
+	
+	Up Tilt: Water Spout, Quagsire now summons a water spout in front of him for his Up Tilt. This gives better coverage in front of him, and the water multihits do more damage.
+	Mud Up Tilt: Mud Spout, Up Tilt now has a Meter Buff, with the water spout becoming muddy and going above and behind Quagsire. This move is similar to Shovel Knight's Uptilt but smaller and faster. Great for combos and racking up damage.
+	Mud Forward Strong: Mud Forward Strong will now cause rocks to sprout from the ground. The buff gives Fstrong much more disjoint and makes it last much longer. This move has much less horizontal movement than Stage 1 and Stage 2 Fstrong, but has more horizontal range and lasts longer to compensate, as well as killing earlier.
+	
+	
+	Gimmick Changes:
+	
+	I realized before that the gimmick was unfocused and not clear to new players. I tried to fix this and centralize things.
+	Meter now acts as follows:
+	
+	At Stage 2, Quagsire's Tilts and Movement are buffed.
+	All his Tilts, his Wavedash, and Dash have new mud animations and behave differently.
+	
+	At Stage 3, Quagsire's Strongs and Grounded Specials are buffed.
+	All his Strongs, Grounded Fspecial, and Grounded Uspecial have new mud animations and behave differently.
+
+
+	Balance Changes and Quality of Life Changes:
+	
+	To be honest, this patch has been in the works so long that I can't remember all the small balance and quality of life changes... I guess try to find them yourselves! Sorry :)
+	
+	Hope everyone has fun with the new patch!")
+	
+	initPatchImage(other.spr_crouch, 3, fa_center, 1, c_white, 1);
+	
 
 		initPatch("1.3", "November 7, 2020");
 	initPatchWords("Beeg patch.");

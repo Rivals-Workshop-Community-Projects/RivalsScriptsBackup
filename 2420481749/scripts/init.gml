@@ -213,6 +213,10 @@ thousandfold_x = 0;
 thousandfold_intro = 14;
 thousandfold_grab_x = 0;
 
+pressButton = 0;
+shouldSpawnGreat = false;
+NAir_Land = false;
+
 float_timer = 12;
 float_frequency = 2;
 float_height = 5;
@@ -239,12 +243,11 @@ puffyhit = hit_fx_create( sprite_get( "puffyhit" ), 24 );
 dashhit = hit_fx_create( sprite_get( "dashhit" ), 32 );
 bootssuccessful = hit_fx_create( sprite_get( "bootssuccessful" ), 24 );
 goldenguard = hit_fx_create( sprite_get( "goldenguard" ), 18 );
-block = hit_fx_create( sprite_get( "block" ), 18 );
-pressa = hit_fx_create( sprite_get( "pressa" ), 20 );
-presseda = hit_fx_create( sprite_get( "presseda" ), 20 );
-press_fspec = hit_fx_create( sprite_get( "pressfspec" ), 22 );
-pressed_fspec = hit_fx_create( sprite_get( "pressedfspec" ), 20 );
+block = hit_fx_create( sprite_get( "block" ), 24 );
+good = hit_fx_create( sprite_get( "good" ), 24 );
+great = hit_fx_create( sprite_get( "great" ), 24 );
 bowserfireburst = hit_fx_create( sprite_get( "bowserfireburst" ), 36 );
+bowserfireburst2 = hit_fx_create( sprite_get( "bowserfireburst2" ), 36 );
 coinshine = hit_fx_create( sprite_get( "coinshine" ), 16 );
 paneldsp = hit_fx_create( sprite_get( "paneldisappear" ), 16 );
 paneluse = hit_fx_create( sprite_get( "paneluse" ), 36);

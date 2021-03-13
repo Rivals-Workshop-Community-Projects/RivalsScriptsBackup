@@ -166,26 +166,75 @@ if (can_zoop){
 		if (can_pull){
 		state = PS_IDLE_AIR;
 			with (needleplatform_solid){
-				if (image_angle == 0){
-					other.hsp = 10 * dcos(point_direction( other.x, other.y, x + 50, y));
+				if (instance_exists(other.Box)){ 
+					if (point_distance( x, y, other.Box.x, other.Box.y) < 85){
+						if (image_angle == 0){
+							other.hsp = 10 * dcos(point_direction( other.x, other.y, x + 50, y));
 
-					if (y <= other.y){
-						other.vsp = - 16 * dsin(point_direction( other.x, other.y, x + 70, y - 60));		
+							if (y <= other.y){
+								other.vsp = clamp(- 14 * dsin(point_direction( other.x, other.y, x + 70, y - 60)), -7, -4);		
+							}
+							else {
+								other.vsp = clamp(- 10 * dsin(point_direction( other.x, other.y, x + 70, y - 60)), -7, -4);
+							}
+						}
+						else {
+							other.hsp = 10 * dcos(point_direction( other.x, other.y, x - 50, y));				
+
+							if (y <= other.y){
+								other.vsp = clamp(- 14 * dsin(point_direction( other.x, other.y, x - 70, y - 60)), -7, -4);		
+							}
+							else {
+								other.vsp = clamp(- 10 * dsin(point_direction( other.x, other.y, x - 70, y - 60)), -7, -4);						
+							}
+						}				
 					}
 					else {
-						other.vsp = - 10 * dsin(point_direction( other.x, other.y, x + 70, y - 60));						
+						if (image_angle == 0){
+							other.hsp = 10 * dcos(point_direction( other.x, other.y, x + 50, y));
+
+							if (y <= other.y){
+								other.vsp = - 16 * dsin(point_direction( other.x, other.y, x + 70, y - 60));		
+							}
+							else {
+								other.vsp = - 10 * dsin(point_direction( other.x, other.y, x + 70, y - 60));						
+							}
+						}
+						else {
+							other.hsp = 10 * dcos(point_direction( other.x, other.y, x - 50, y));				
+
+							if (y <= other.y){
+								other.vsp = - 16 * dsin(point_direction( other.x, other.y, x - 70, y - 60));		
+							}
+							else {
+								other.vsp = - 10 * dsin(point_direction( other.x, other.y, x - 70, y - 60));						
+							}
+						}				
+
 					}
 				}
 				else {
-					other.hsp = 10 * dcos(point_direction( other.x, other.y, x - 50, y));				
+					if (image_angle == 0){
+						other.hsp = 10 * dcos(point_direction( other.x, other.y, x + 50, y));
 
-					if (y <= other.y){
-						other.vsp = - 16 * dsin(point_direction( other.x, other.y, x - 70, y - 60));		
+						if (y <= other.y){
+							other.vsp = - 16 * dsin(point_direction( other.x, other.y, x + 70, y - 60));		
+						}
+						else {
+							other.vsp = - 10 * dsin(point_direction( other.x, other.y, x + 70, y - 60));						
+						}
 					}
 					else {
-						other.vsp = - 10 * dsin(point_direction( other.x, other.y, x - 70, y - 60));						
-					}
-				}				
+						other.hsp = 10 * dcos(point_direction( other.x, other.y, x - 50, y));				
+
+						if (y <= other.y){
+							other.vsp = - 16 * dsin(point_direction( other.x, other.y, x - 70, y - 60));		
+						}
+						else {
+							other.vsp = - 10 * dsin(point_direction( other.x, other.y, x - 70, y - 60));						
+						}
+					}								
+				}
 			}
 		}
 }

@@ -22,9 +22,14 @@ if (state == PS_SPAWN) {
     }
 }
 
-if (nyoom = true && state == PS_DASH){
+if ((nyoom = true || moist_level = 2 || moist_level = 3) && state == PS_DASH){
     sprite_index = sprite_get("muddash");
    image_index = (state_timer * 0.25) % image_number;
+}
+
+if ((moist_level = 2 || moist_level = 3) && state == PS_WAVELAND){
+    sprite_index = sprite_get("waveland_mud");
+    image_index = (state_timer * 0.25) % image_number;
 }
 
 if(state == PS_PARRY){

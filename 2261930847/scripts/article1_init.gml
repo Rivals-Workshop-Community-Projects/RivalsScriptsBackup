@@ -45,7 +45,6 @@ with(asset_get("obj_article1")){
 shoulddie = false;                                  //If this is set to true, the article will change to state 2 (despawn animation) as soon as it's not busy. This keeps it from despawning in the middle of something
 
 
-
 /* README - Basic Article Usage
 
 

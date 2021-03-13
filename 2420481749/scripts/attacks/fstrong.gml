@@ -51,7 +51,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sound_get("fire"));
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_SPRITE, sprite_get("bowserfire"));
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_DESTROY_EFFECT, bowserfireburst);
-set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, bowserfireburst);
+set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, bowserfireburst2);
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1)
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_GRAVITY, 0.3);

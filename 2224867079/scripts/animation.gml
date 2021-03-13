@@ -38,13 +38,17 @@ if (attack == AT_NAIR) && window == 2 {
 
 //Red Mode Stuff
 
-if (state == PS_RESPAWN && RedMode == true) {
-	sprite_index = sprite_get( "red_idle" );
-	image_index = floor(image_number*state_timer/(image_number*5));
+if (state == PS_WALK_TURN && RedMode == true) {
+	sprite_index = sprite_get( "red_walkturn" );
 }
 
-if (state == PS_TUMBLE && RedMode == true) {
-	sprite_index = sprite_get( "red_spinhurt" );
+if (state == PS_CROUCH && RedMode == true) {
+	sprite_index = sprite_get( "red_crouch" );
+}
+
+
+if (state == PS_IDLE && RedMode == false) {
+	sprite_index = sprite_get( "idle" );
 	image_index = floor(image_number*state_timer/(image_number*5));
 }
 
@@ -53,10 +57,12 @@ if (state == PS_IDLE && RedMode == true) {
 	image_index = floor(image_number*state_timer/(image_number*5));
 }
 
-if (state == PS_IDLE && RedMode == false) {
-	sprite_index = sprite_get( "idle" );
+if (state == PS_RESPAWN && RedMode == true) {
+	sprite_index = sprite_get( "red_idle" );
 	image_index = floor(image_number*state_timer/(image_number*5));
 }
+
+/*
 
 if (state == PS_CROUCH && RedMode == true) {
 	sprite_index = sprite_get( "red_crouch" );
@@ -66,11 +72,6 @@ if (state == PS_WALK && RedMode == true) {
 	sprite_index = sprite_get( "red_walk" );
 	image_index = floor(image_number*state_timer/(image_number*5));
 }
-
-if (state == PS_WALK_TURN && RedMode == true) {
-	sprite_index = sprite_get( "red_walkturn" );
-}
-
 if (state == PS_DASH && RedMode == true) {
 	sprite_index = sprite_get( "red_dash" );
 	image_index = floor(image_number*state_timer/(image_number*3));
@@ -99,11 +100,9 @@ if (state == PS_HITSTUN_LAND && RedMode == true) {
 if (state == PS_PARRY && RedMode == true) {
 	sprite_index = sprite_get( "red_parry" );
 }
-
 if (state == PS_ROLL_BACKWARD && RedMode == true) {
 	sprite_index = sprite_get( "red_roll_backward" );
 }
-
 if (state == PS_ROLL_FORWARD && RedMode == true) {
 	sprite_index = sprite_get( "red_roll_forward" );
 }
@@ -125,6 +124,11 @@ if (state == PS_LAND && RedMode == true) {
 	sprite_index = sprite_get( "red_land" );
 }
 
+if (state == PS_LANDING_LAG && RedMode == true) {
+	sprite_index = sprite_get( "red_landinglag" );
+}
+
+
 if (state == PS_PRATLAND && RedMode == true) {
 	sprite_index = sprite_get( "red_land" );
 }
@@ -142,10 +146,6 @@ if (state == PS_JUMPSQUAT && RedMode == true) {
 	sprite_index = sprite_get( "red_jumpstart" );
 }
 
-if (state == PS_LANDING_LAG && RedMode == true) {
-	sprite_index = sprite_get( "red_landinglag" );
-}
-
 if (state == PS_WAVELAND && RedMode == true) {
 	sprite_index = sprite_get( "red_waveland" );
 }
@@ -153,15 +153,6 @@ if (state == PS_WAVELAND && RedMode == true) {
 if (state == PS_TECH_GROUND && RedMode == true) {
 	sprite_index = sprite_get( "red_tech" );
 }
-
-if (state == PS_TECH_BACKWARD && RedMode == true) {
-	sprite_index = sprite_get( "red_roll_backward" );
-}
-
-if (state == PS_TECH_FORWARD && RedMode == true) {
-	sprite_index = sprite_get( "red_roll_forward" );
-}
-
 if (state == PS_IDLE_AIR && RedMode == true) {
 	sprite_index = sprite_get( "red_jump" );
 }
@@ -169,7 +160,7 @@ if (state == PS_IDLE_AIR && RedMode == true) {
 if (state == PS_AIR_DODGE && RedMode == true) {
 	sprite_index = sprite_get( "red_airdodge" );
 }
-
+*/
 //Kawaii Stuff
 if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_DSPECIAL_2) {
 	switch (get_player_color(player)) {

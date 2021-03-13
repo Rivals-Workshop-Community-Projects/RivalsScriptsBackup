@@ -43,8 +43,6 @@ earthtimer = 80;
 
 dralpha = 0;
 
-player = 0;
-
 player_image_index = 0;
 
 icechunk_timer = 70;
@@ -53,6 +51,6 @@ icefloor_hit = false;
 icefloor_hit_x = 0;
 icefloor_hit_y = 0;
 
-waterspout_timer = 120;
+waterspout_timer = 123;
 
 icechunkbrk = hit_fx_create( sprite_get( "icechunk_break" ), 36);

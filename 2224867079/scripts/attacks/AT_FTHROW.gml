@@ -18,7 +18,7 @@ set_window_value(AT_FTHROW, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTHROW, 2, AG_WINDOW_ANIM_FRAME_START, 0);
 
 set_window_value(AT_FTHROW, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTHROW, 3, AG_WINDOW_LENGTH, 25);
+set_window_value(AT_FTHROW, 3, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_FTHROW, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTHROW, 3, AG_WINDOW_ANIM_FRAME_START, 0);
 
@@ -44,7 +44,7 @@ set_hitbox_value(AT_FTHROW, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FTHROW, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FTHROW, 1, HG_WINDOW, 4);
 set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
-set_hitbox_value(AT_FTHROW, 1, HG_LIFETIME, 70);
+set_hitbox_value(AT_FTHROW, 1, HG_LIFETIME, 62);
 set_hitbox_value(AT_FTHROW, 1, HG_HITBOX_X, 35);
 set_hitbox_value(AT_FTHROW, 1, HG_HITBOX_Y, -36);
 set_hitbox_value(AT_FTHROW, 1, HG_PRIORITY, 3);

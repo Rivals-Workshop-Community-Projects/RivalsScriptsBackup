@@ -18,7 +18,7 @@ set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_ANIM_FRAME_START, 10);
 set_num_hitboxes(AT_DSTRONG_2,9);
 
 set_hitbox_value(AT_DSTRONG_2, 1, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_DSTRONG_2, 1, HG_LIFETIME, 840);
+set_hitbox_value(AT_DSTRONG_2, 1, HG_LIFETIME, 360);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_PROJECTILE_ANIM_SPEED, 0.1);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_HITBOX_X, 0);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_HITBOX_Y, -2);

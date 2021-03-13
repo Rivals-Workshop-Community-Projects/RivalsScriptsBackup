@@ -1,6 +1,14 @@
 //update
 user_event(14);
+/*
+if(dotheeffect == false){
+	print_debug("not cringe")
+}
 
+if(dotheeffect == true){
+	print_debug("cringe")
+}
+*/
 init_shader();
 
 if (teleported == true){
@@ -125,4 +133,8 @@ if(recharged == 0){
 if(!free){
 	move_cooldown[AT_FSPECIAL] = 0;
 	move_cooldown[AT_FSPECIAL_2] = 0;
+}
+
+if(state == SC_GROUND_NEUTRAL || SC_AIR_NEUTRAL ){
+	dotheeffect = true
 }

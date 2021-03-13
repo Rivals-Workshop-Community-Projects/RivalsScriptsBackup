@@ -93,7 +93,7 @@ set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_BASE_HITPAUSE, 2);
-set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_WINDOW_CREATION_FRAME, 2);

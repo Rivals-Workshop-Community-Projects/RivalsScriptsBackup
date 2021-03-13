@@ -275,6 +275,10 @@ dontfoldarms = false;
 olivia_alpha = 0;
 olivia_image_index = 0;
 can_grab_visual = false;
+pressButton = 0;
+dstrong_pressed = false;
+hit_player_obj = noone;
+NAir_Land = false;
 
 if player_to_grab != noone
 {
