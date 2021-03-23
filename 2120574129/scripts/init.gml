@@ -1,1 +1,0 @@
-gc_fx = hit_fx_create(sprite_get("gamecube_effect"), 30)
