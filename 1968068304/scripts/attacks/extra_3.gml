@@ -18,7 +18,7 @@ set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAME_START, 15); //7
 set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 2); //4
 //set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1); 
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1.75); 
+set_window_value(AT_EXTRA_3, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1.5); 
 
 //set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HAS_SFX, 1); //play sound.
 //set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX, sound_get("releaseland"));//asset_get("sfx_kragg_rock_shatter"));

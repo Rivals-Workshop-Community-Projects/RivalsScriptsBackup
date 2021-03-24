@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 11, 4, 7 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 29 );
 
 // Absa
 set_color_profile_slot( 1, 0, 215, 215, 244 ); //Pink
@@ -185,6 +185,136 @@ set_color_profile_slot( 15, 4, 255, 248, 253 ); //Eyes
 set_color_profile_slot( 15, 5, 255, 255, 255 ); //White Stuff
 set_color_profile_slot( 15, 6, 223, 204, 235 ); //fur.2
 set_color_profile_slot( 15, 7, 224, 130, 186 ); //hair.2
+
+// BLM
+set_color_profile_slot( 16, 0, 41, 41, 41 ); //Pink
+set_color_profile_slot( 16, 1, 41, 42, 51 ); //Hair
+set_color_profile_slot( 16, 2, 143, 99, 65 ); //Body
+set_color_profile_slot( 16, 3, 255, 200, 0 ); //Purple
+set_color_profile_slot( 16, 4, 236, 237, 232 ); //Eyes
+set_color_profile_slot( 16, 5, 255, 255, 255 ); //White Stuff
+set_color_profile_slot( 16, 6, 117, 60, 42 ); //fur.2
+set_color_profile_slot( 16, 7, 24, 22, 28 ); //hair.2
+
+// Tsareena
+set_color_profile_slot( 17, 0, 197, 51, 109 ); //Pink
+set_color_profile_slot( 17, 1, 180, 209, 127 ); //Hair
+set_color_profile_slot( 17, 2, 251, 253, 252 ); //Body
+set_color_profile_slot( 17, 3, 242, 115, 145 ); //Purple
+set_color_profile_slot( 17, 4, 236, 237, 232 ); //Eyes
+set_color_profile_slot( 17, 5, 255, 255, 255 ); //White Stuff
+set_color_profile_slot( 17, 6, 169, 202, 202 ); //fur.2
+set_color_profile_slot( 17, 7, 88, 142, 93 ); //hair.2
+
+// M.Lopunny
+set_color_profile_slot( 18, 0, 63, 55, 52 ); //Pink
+set_color_profile_slot( 18, 1, 238, 222, 164 ); //Hair
+set_color_profile_slot( 18, 2, 139, 90, 65 ); //Body
+set_color_profile_slot( 18, 3, 238, 222, 164 ); //Purple
+set_color_profile_slot( 18, 4, 243, 167, 203 ); //Eyes
+set_color_profile_slot( 18, 5, 255, 255, 255 ); //White Stuff
+set_color_profile_slot( 18, 6, 86, 46, 36 ); //fur.2
+set_color_profile_slot( 18, 7, 197, 164, 123 ); //hair.2
+
+// Salazzle
+set_color_profile_slot( 19, 0, 118, 116, 140 ); //Pink
+set_color_profile_slot( 19, 1, 101, 97, 96 ); //Hair
+set_color_profile_slot( 19, 2, 101, 97, 96 ); //Body
+set_color_profile_slot( 19, 3, 224, 92, 131 ); //Purple
+set_color_profile_slot( 19, 4, 177, 161, 200 ); //Eyes
+set_color_profile_slot( 19, 5, 255, 255, 255 ); //White Stuff
+set_color_profile_slot( 19, 6, 63, 54, 57 ); //fur.2
+set_color_profile_slot( 19, 7, 63, 54, 57 ); //hair.2
+
+// Mantis
+set_color_profile_slot( 20, 0, 160, 255, 255 ); //Pink
+set_color_profile_slot( 20, 1, 96, 96, 96 ); //Hair
+set_color_profile_slot( 20, 2, 96, 96, 96 ); //Body
+set_color_profile_slot( 20, 3, 117, 29, 29 ); //Purple
+set_color_profile_slot( 20, 4, 160, 255, 255 ); //Eyes
+set_color_profile_slot( 20, 5, 255, 255, 255 ); //White Stuff
+set_color_profile_slot( 20, 6, 60, 60, 60 ); //fur.2
+set_color_profile_slot( 20, 7, 60, 60, 60 ); //hair.2
+
+// Byuni
+set_color_profile_slot( 21, 0, 255, 199, 234 ); //Pink
+set_color_profile_slot( 21, 1, 255, 253, 254 ); //Hair
+set_color_profile_slot( 21, 2, 255, 253, 254 ); //Body
+set_color_profile_slot( 21, 3, 76, 76, 79 ); //Purple
+set_color_profile_slot( 21, 4, 236, 237, 232 ); //Eyes
+set_color_profile_slot( 21, 5, 255, 255, 255 ); //White Stuff
+set_color_profile_slot( 21, 6, 217, 179, 198 ); //fur.2
+set_color_profile_slot( 21, 7, 217, 179, 198 ); //hair.2
+
+// Fennie
+set_color_profile_slot( 22, 0, 181, 41, 57 ); //Pink
+set_color_profile_slot( 22, 1, 247, 200, 205 ); //Hair
+set_color_profile_slot( 22, 2, 255, 253, 253 ); //Body
+set_color_profile_slot( 22, 3, 60, 60, 62 ); //Purple
+set_color_profile_slot( 22, 4, 236, 237, 232 ); //Eyes
+set_color_profile_slot( 22, 5, 255, 255, 255 ); //White Stuff
+set_color_profile_slot( 22, 6, 247, 200, 205 ); //fur.2
+set_color_profile_slot( 22, 7, 206, 124, 153 ); //hair.2
+
+// ZSS
+set_color_profile_slot( 23, 0, 122, 221, 255 ); //Pink
+set_color_profile_slot( 23, 1, 255, 246, 120 ); //Hair
+set_color_profile_slot( 23, 2, 248, 253, 255 ); //Body
+set_color_profile_slot( 23, 3, 60, 94, 153 ); //Purple
+set_color_profile_slot( 23, 4, 236, 237, 232 ); //Eyes
+set_color_profile_slot( 23, 5, 255, 255, 255 ); //White Stuff
+set_color_profile_slot( 23, 6, 179, 197, 217 ); //fur.2
+set_color_profile_slot( 23, 7, 230, 184, 78 ); //hair.2
+
+// Red
+set_color_profile_slot( 24, 0, 237, 28, 36 ); //Pink
+set_color_profile_slot( 24, 1, 135, 62, 62 ); //Hair
+set_color_profile_slot( 24, 2, 255, 248, 248 ); //Body
+set_color_profile_slot( 24, 3, 157, 12, 28 ); //Purple
+set_color_profile_slot( 24, 4, 236, 237, 232 ); //Eyes
+set_color_profile_slot( 24, 5, 255, 255, 255 ); //White Stuff
+set_color_profile_slot( 24, 6, 217, 179, 186 ); //fur.2
+set_color_profile_slot( 24, 7, 109, 32, 43 ); //hair.2
+
+// Fernet
+set_color_profile_slot( 25, 0, 146, 72, 211 ); //Pink
+set_color_profile_slot( 25, 1, 255, 209, 217 ); //Hair
+set_color_profile_slot( 25, 2, 255, 209, 217 ); //Body
+set_color_profile_slot( 25, 3, 238, 220, 0 ); //Purple
+set_color_profile_slot( 25, 4, 236, 237, 232 ); //Eyes
+set_color_profile_slot( 25, 5, 255, 255, 255 ); //White Stuff
+set_color_profile_slot( 25, 6, 181, 127, 158 ); //fur.2
+set_color_profile_slot( 25, 7, 181, 127, 158 ); //hair.2
+
+// TuQiu
+set_color_profile_slot( 26, 0, 34, 32, 79 ); //Pink
+set_color_profile_slot( 26, 1, 253, 253, 253 ); //Hair
+set_color_profile_slot( 26, 2, 253, 253, 253 ); //Body
+set_color_profile_slot( 26, 3, 247, 54, 86 ); //Purple
+set_color_profile_slot( 26, 4, 236, 237, 232 ); //Eyes
+set_color_profile_slot( 26, 5, 255, 255, 255 ); //White Stuff
+set_color_profile_slot( 26, 6, 200, 182, 226 ); //fur.2
+set_color_profile_slot( 26, 7, 200, 182, 226 ); //hair.2
+
+// Cat
+set_color_profile_slot( 27, 0, 242, 110, 197 ); //Pink
+set_color_profile_slot( 27, 1, 242, 110, 197 ); //Hair
+set_color_profile_slot( 27, 2, 63, 66, 67 ); //Body
+set_color_profile_slot( 27, 3, 110, 242, 235 ); //Purple
+set_color_profile_slot( 27, 4, 110, 242, 235 ); //Eyes
+set_color_profile_slot( 27, 5, 255, 255, 255 ); //White Stuff
+set_color_profile_slot( 27, 6, 40, 47, 50 ); //fur.2
+set_color_profile_slot( 27, 7, 214, 65, 163 ); //hair.2
+
+// Poi
+set_color_profile_slot( 28, 0, 219, 152, 128 ); //Pink
+set_color_profile_slot( 28, 1, 178, 118, 73 ); //Hair
+set_color_profile_slot( 28, 2, 88, 59, 44 ); //Body
+set_color_profile_slot( 28, 3, 68, 57, 69 ); //Purple
+set_color_profile_slot( 28, 4, 255, 254, 254 ); //Eyes
+set_color_profile_slot( 28, 5, 255, 255, 255 ); //White Stuff
+set_color_profile_slot( 28, 6, 62, 34, 29 ); //fur.2
+set_color_profile_slot( 28, 7, 132, 63, 41 ); //hair.2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

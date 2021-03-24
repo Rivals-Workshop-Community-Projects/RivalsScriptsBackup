@@ -55,6 +55,7 @@ if enemykirby != undefined { //if kirby is in a match & swallowed
                         cube.kirby_thrown = true;
                         cube.can_hit[other.player] = false;
                         cube.can_hit_self = true;
+                        cube.was_grounded = false;
                 }
             }
         }
@@ -286,7 +287,8 @@ if holdingCube {
     if heldExplode && heldExplodeTimer <= 0 { //explode cube
         sound_play(asset_get("sfx_ell_fist_explode"));
         spawn_hit_fx(x, y - 65, 141);
-        create_hitbox(AT_NSPECIAL, 2, x, y - 60);
+        var boom = create_hitbox(AT_NSPECIAL, 2, x, y - 60);
+        	boom.can_hit_self = true;
         holdingCube = false;
         heldExplode = false;
         heldExplodeTimer = heldExplodeMax;

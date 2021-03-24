@@ -28,8 +28,8 @@ uspecial_used = 0;
 waveland_cancel = (state == PS_WAVELAND)
 switch(state) {
 	case PS_WAVELAND:
-	if state_timer >= 1 hsp = 0;
-	else hsp *= 6
+	if state_timer == 1 hsp *= 0.08;// hsp = sign(hsp)*4;
+	if state_timer == 0 hsp *= 5
 	break;
 	default: orbit_speed = 1.5; break;
 	case PS_ATTACK_GROUND:

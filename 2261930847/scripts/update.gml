@@ -100,7 +100,7 @@ if state == PS_RESPAWN && state_timer == 1 {
     killarticles = false;
 }
 
-if moist_level = 1 {
+if moist_level == 1 {
 	wave_friction = .04;
 	ground_friction = 0.5;
 	wave_land_adj = 1.15;
@@ -479,4 +479,117 @@ reset_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 12);
 } else {
 reset_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK);
+}
+
+//Kirby
+
+if swallowed { //Kirby ability script starts here
+swallowed = 0
+//Define any assets kirby might need to grab from YOUR CHARACTER
+var ability_spr = sprite_get("kirby");
+var ability_hurt = sprite_get("kirby_hurt")
+//var ability_icon = sprite_get("") //Optional
+var ability_bomb = sprite_get("nspecial_proj")
+var ability_sound = sound_get("sfx_nspecial")
+var ability_ground = sound_get("sfx_nspecial_grnd")
+with enemykirby { //Define AT_EXTRA_3 for Kirby, using your asset variables where necessary in place of sprite_get or sound_get
+set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
+set_attack_value(AT_EXTRA_3, AG_SPRITE, ability_spr);
+set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 3);
+set_attack_value(AT_EXTRA_3, AG_HAS_LANDING_LAG, 4);
+set_attack_value(AT_EXTRA_3, AG_OFF_LEDGE, 1);
+set_attack_value(AT_EXTRA_3, AG_AIR_SPRITE, ability_spr);
+set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, ability_hurt);
+
+set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
+set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 11);
+set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX, ability_sound);
+set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX_FRAME, 1);
+
+set_window_value(AT_EXTRA_3, 2, AG_WINDOW_TYPE, 1);
+set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 2);
+set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAME_START, 2);
+
+set_window_value(AT_EXTRA_3, 3, AG_WINDOW_TYPE, 1);
+set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAME_START, 4);
+
+set_num_hitboxes(AT_EXTRA_3, 1);
+
+set_hitbox_value(AT_EXTRA_3, 1, HG_PARENT_HITBOX, 1);
+set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 2);
+set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 250);
+set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, 32);
+set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 90);
+set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 60);
+set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 103);
+set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_GRAVITY, .8);
+set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 5);
+set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 65);
+set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.4);
+set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT_X_OFFSET, -16);
+set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
+set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 4.25);
+set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 0.55);
+set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
+set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_ANIM_SPEED, .45);
+set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_HSPEED, 2);
+set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_VSPEED, -4);
+//set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
+set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_SPRITE, ability_bomb);
+set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_MASK, ability_bomb);
+set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
+set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_PARRY_STUN, 1);
+newicon = ability_icon //Optional, replaces the kirby ability icon
+} 
+}
+
+if enemykirby != undefined { //if kirby is in a match & swallowed
+    with pHitBox { //Run through all players Hitbox update stuff
+    if hit_priority == 103 {
+if (attack == AT_EXTRA_3 && hbox_num == 1 && was_parried) {
+    destroyed = true;
+}
+
+if (attack == AT_EXTRA_3 && hbox_num == 1 && player == orig_player)
+{
+    proj_angle = 0;
+    if (place_meeting(x,y+1,asset_get("par_block")))
+    {
+        free = false;
+    }
+    if (!free)
+    {
+        vsp = 0;
+        hsp = 0;
+        sound_play(ability_ground);
+        destroyed = true;
+    }
+	}
+  }
+    } 
+with oPlayer { //Run through all players
+if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_EXTRA_3) {
+
+	if(attack == AT_EXTRA_3 && special_down){
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_HSPEED, 7);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_VSPEED, -8);
+	} else {
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_HSPEED, 3);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_VSPEED, -4);
+	}
+	if  window == 3{
+		move_cooldown[AT_EXTRA_3] = 25;
+		move_cooldown[AT_NSPECIAL] = 25;
+		}
+	}
+}
 }

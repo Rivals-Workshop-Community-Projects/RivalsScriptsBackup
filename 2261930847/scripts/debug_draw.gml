@@ -6,5 +6,6 @@
 
 //draw_debug_text(x,y + 35,"Nyoom: " +string(nyoom));
 //draw_debug_text(x,y + 35, "Bonk: " +string(bonk));
+//draw_debug_text(x,y + 35, "Friction: " +string(ground_friction));
 
 //draw_debug_text(x, y + 35, "Joy_dir:" +string(joy_dir));

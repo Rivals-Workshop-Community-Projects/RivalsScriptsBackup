@@ -36,6 +36,8 @@ switch(t) {
 	case 11: t = "Nostalgia"; break;
 	case 12: t = "Princess"; break;
 	case 13: t = "Ark"; break;
+	case 14: t = "G-Diffuser"; break;
+	case 15: t = "Autonomic Nerve"; break;
 }
 if image_alpha > 0 {
 draw_set_font(1)

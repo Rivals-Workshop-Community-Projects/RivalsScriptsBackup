@@ -166,32 +166,34 @@ switch attack {
                 glide_speed = max(0,glide_speed-over_max_slowdown_rate);
             }
             
-            switch glide_turn_method {
-                case 0:
-                    if (!joy_pad_idle) {
-        				var angle_change = angle_difference(glide_angle, joy_dir);
-        				
-        				var max_turn = sqrt(abs(glide_speed*5)) * turning_coefficient;
-        				//if (glide_energy <= 0) max_turn /= 4;
-        				max_turn = min(max_turn, 90);
-        				
-        				angle_change = clamp(angle_change, -max_turn, max_turn);
-        				
-        				glide_angle -= angle_change;
-        			}
-                break;
-                default:
-                    switch left_down-right_down {
-                        case 0:
-                        break;
-                        case 1:
-                            glide_angle+=sqrt(abs(glide_speed*4)+5)*turning_coefficient;
-                        break;
-                        case -1:
-                            glide_angle-=sqrt(abs(glide_speed*4)+5)*turning_coefficient;
-                        break;
-                    }
-                break;
+            if !was_parried {
+	            switch glide_turn_method {
+	                case 0:
+	                    if (!joy_pad_idle) {
+	        				var angle_change = angle_difference(glide_angle, joy_dir);
+	        				
+	        				var max_turn = sqrt(abs(glide_speed*5)) * turning_coefficient;
+	        				//if (glide_energy <= 0) max_turn /= 4;
+	        				max_turn = min(max_turn, 90);
+	        				
+	        				angle_change = clamp(angle_change, -max_turn, max_turn);
+	        				
+	        				glide_angle -= angle_change;
+	        			}
+	                break;
+	                default:
+	                    switch left_down-right_down {
+	                        case 0:
+	                        break;
+	                        case 1:
+	                            glide_angle+=sqrt(abs(glide_speed*4)+5)*turning_coefficient;
+	                        break;
+	                        case -1:
+	                            glide_angle-=sqrt(abs(glide_speed*4)+5)*turning_coefficient;
+	                        break;
+	                    }
+	                break;
+	            }
             }
             
             hsp = lengthdir_x(glide_speed,glide_angle);
@@ -255,7 +257,7 @@ switch attack {
                 set_hitbox_value(AT_NAIR, i, HG_HITBOX_X, lengthdir_x(get_hitbox_value(AT_NAIR, i, HG_HITBOX_X),glide_angle+90-90*spr_dir));
             }
         } else {
-            if window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH) {
+            if window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH) && !was_parried {
                 if(glide_energy>0){
                     starting_spr_angle=spr_angle;
                     set_attack(AT_EXTRA_1);
@@ -327,7 +329,7 @@ switch attack {
         }
         if window == 8 {
             can_move = false;
-            if window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH) {
+            if window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH) && !was_parried {
                 var temp_glide_angle = point_direction(0,0,hsp,vsp);
                 
                 var supposed_spr_angle = 0;
@@ -461,7 +463,7 @@ switch attack {
     		var closest_ring = noone;
 			with obj_article1 {
 				if player_id.url == other.url {
-	    			if point_distance(x, y, other.x, other.y-24) < 80 && article_which == 2 {
+	    			if point_distance(x, y, other.x, other.y-24) < 40 && article_which == 2 {
 				       closest_ring = assoc_ring;
 	    			}
 				}
@@ -539,7 +541,7 @@ switch attack {
     		var closest_ring = noone;
 			with obj_article1 {
 				if player_id.url == other.url {
-	    			if point_distance(x, y, other.x, other.y-24) < 80 && article_which == 2 {
+	    			if point_distance(x, y, other.x, other.y-24) < 40 && article_which == 2 {
 				       closest_ring = assoc_ring;
 	    			}
 				}

@@ -69,6 +69,7 @@ if ("practiceinit" in self
 		items[17] = "Delete taunt menu";
 		items[18] = "Get stickbugged lol";
 		items[19] = "Folet";
+		items[20] = "Final Smash";
 		DrawTutBlock(noofitems);
 		DrawTutText(noofitems, items);
 		if (tutmenu == 15 && "alts" in self)
@@ -2098,9 +2099,9 @@ if ("yes" in self && yes)
 					text[11] = "NSpec1 Damage 2 -> 4";
 					text[12] = "NSpec2 Damage 6 -> 8";
 					text[13] = "NSpec3 Damage 9 -> 12";
-					text[14] = "NSpec1 Extra Hitpause 0 -> 8";
-					text[15] = "NSpec2 Extra Hitpause 0 -> 12";
-					text[16] = "NSpec3 Extra Hitpause 0 -> 20";
+					text[14] = "NSpec4 Extra Hitpause 0 -> 8";
+					text[15] = "NSpec5 Extra Hitpause 0 -> 12";
+					text[16] = "NSpec6 Extra Hitpause 0 -> 20";
 					text[17] = "NSpec1-2 Chargetime 30 -> 20";
 					text[18] = "NSpec2-3 Chargetime 50 -> 40";
 					text[19] = "";
@@ -2111,6 +2112,22 @@ if ("yes" in self && yes)
 					text[24] = "Added dust particles to some attacks";
 					nooflines = 25;
 					textwidth = 600;
+					break;
+				case 21:
+					text[0] = "Removed Gattling";
+					text[1] = "";
+					text[2] = "UStrong endlag forces you to not drift";
+					text[3] = "UStrong sourspot no longer has angle flipper 3";
+					text[4] = "UStrong sourspot no longer has 0.01 drift multiplier";
+					text[5] = "";
+					text[6] = "Added Final Smash Buddy support";
+					text[7] = "Added Final Smash to Taunt Menu";
+					text[8] = "";
+					text[9] = "Changed CSS to original CSS template";
+					text[10] = "";
+					text[11] = "Added Trans flag outline to Transcend alt";
+					nooflines = 12;
+					textwidth = 400;
 					break;
 			}
 			break;

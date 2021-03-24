@@ -372,3 +372,10 @@ if get_player_color(player) == 11 {
 	}
     init_shader();	 
 }
+
+  	with (pHitBox) {
+  		if player_id == other.id {
+  			projectile_parry_stun = 1 
+  			
+  		}
+  	}

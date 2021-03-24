@@ -269,12 +269,10 @@ if (state == PS_ROLL_BACKWARD or state == PS_ROLL_FORWARD or state == PS_TECH_FO
 	 }
 	 
 	 if state_timer > 9 && state_timer < 25 {
-	     x += (27 - state_timer) * spr_dir
+	     hsp = (27 - state_timer) * spr_dir
 	 }
 	 
-	 if state_timer > 9 {
-	     hsp = 0
-	 }
+
 	 
 }
 

@@ -12,12 +12,12 @@ walk_anim_speed = .3;
 dash_anim_speed = .40;
 pratfall_anim_speed = .25;
 
-walk_speed = 3;
+walk_speed = 2;
 walk_accel = 0.2;
 walk_turn_time = 8;
 initial_dash_time = 6;
-initial_dash_speed = 6;
-dash_speed = 6.5;
+initial_dash_speed = 5;
+dash_speed = 6;
 dash_turn_time = 16;
 dash_turn_accel = 1.2;
 dash_stop_time = 4;
@@ -195,6 +195,11 @@ dracula_speaker[page] = 2;
 dracula_text[page] = "Good luck trying to shut this toon up!";
 page++;
 
+miiverse_post = sprite_get("miiverse_post_peacock");
+
+got_hit_ticks = 0;
+got_hit_num = 0;
+
 //Final Smash
 fs_char_portrait_y = 120;
 fs_char_chosen_final_smash = "custom";
@@ -206,6 +211,8 @@ fs_force_fs = false;
 time_frozen = false
 time_freeze_ticks = 0
 
+
+		
 
 //Runes
 
@@ -242,6 +249,199 @@ abyssMods[@ runes.M] = [-1, "Locked."];
 abyssMods[@ runes.N] = [-1, "Locked."];
 abyssMods[@ runes.O] = [-1, "Locked."];
 
+
+
+//Sprites
+
+//Ground
+spr_idle = sprite_get("idle");
+spr_crouch = sprite_get("crouch");
+spr_walk = sprite_get("walk");
+spr_walkturn = sprite_get("walkturn");
+spr_dash = sprite_get("dash");
+spr_dashstart = sprite_get("dashstart");
+spr_dashstop = sprite_get("dashstop");
+spr_dashturn = sprite_get("dashturn");
+
+//Air
+spr_jumpstart = sprite_get("jumpstart");
+spr_jump = sprite_get("jump");
+spr_doublejump = sprite_get("doublejump");
+spr_walljump = sprite_get("walljump");
+spr_pratfall = sprite_get("pratfall");
+spr_land = sprite_get("land");
+spr_landinglag = sprite_get("landinglag");
+
+//Dodge
+spr_parry = sprite_get("parry");
+spr_roll_forward = sprite_get("roll_forward");
+spr_roll_backward = sprite_get("roll_backward");
+spr_airdodge = sprite_get("airdodge");
+spr_airdodge_waveland = sprite_get("waveland");
+spr_tech = sprite_get("tech");
+
+//Hurt
+spr_hurt = sprite_get("hurt");
+spr_bighurt = sprite_get("bighurt");
+spr_hurtground = sprite_get("hurtground");
+spr_uphurt = sprite_get("uphurt");
+spr_downhurt = sprite_get("downhurt");
+spr_bouncehurt = sprite_get("bouncehurt");
+spr_spinhurt = sprite_get("spinhurt");
+
+//Attack
+spr_jab = sprite_get("jab");
+spr_dattack = sprite_get("dattack");
+spr_ftilt = sprite_get("ftilt");
+spr_dtilt = sprite_get("dtilt");
+spr_utilt = sprite_get("utilt");
+spr_nair = sprite_get("nair");
+spr_fair = sprite_get("fair");
+spr_bair = sprite_get("bair");
+spr_uair = sprite_get("uair");
+spr_dair = sprite_get("dair");
+spr_fstrong = sprite_get("fstrong");
+spr_ustrong = sprite_get("ustrong");
+spr_dstrong = sprite_get("dstrong");
+spr_nspecial = sprite_get("nspecial");
+spr_fspecial = sprite_get("fspecial");
+spr_uspecial = sprite_get("uspecial");
+spr_dspecial = sprite_get("dspecial");
+spr_fsmash = sprite_get("fsmash");
+spr_taunt = sprite_get("taunt");
+
+//Respawn
+spr_plat = sprite_get("plat");
+
+//Projectile
+spr_ftilt_proj = sprite_get("ftilt_proj");
+spr_dair_proj = sprite_get("dair_proj");
+spr_fair_shot = sprite_get("fair_shot");
+spr_uair_proj = sprite_get("uair_proj");
+spr_bomb_walk = sprite_get("bomb_walk");
+spr_bullet1 = sprite_get("bullet1");
+spr_bullet2 = sprite_get("bullet2");
+spr_bullet3 = sprite_get("bullet3");
+spr_fspecial_blast = sprite_get("fspecial_blast");
+spr_dspecial_roadroller = sprite_get("dspecial_roadroller");
+spr_dspecial_avery = sprite_get("dspecial_avery");
+spr_spring = sprite_get("spring");
+spr_fsmash_proj = sprite_get("fsmash_proj");
+spr_fsmash_shot = sprite_get("fsmash_shot");
+spr_fsmash_laser = sprite_get("fsmash_laser");
+
+//Item Drop
+
+//Lv 1
+spr_dspecial_lv1_0_falling = sprite_get("dspecial_block_lv1_0_falling");
+spr_dspecial_lv1_0_ground = sprite_get("dspecial_block_lv1_0_ground");
+spr_dspecial_lv1_0_die = sprite_get("dspecial_block_lv1_0_die");
+
+spr_dspecial_lv1_1_falling = sprite_get("dspecial_block_lv1_1_falling");
+spr_dspecial_lv1_1_ground = sprite_get("dspecial_block_lv1_1_ground");
+spr_dspecial_lv1_1_die = sprite_get("dspecial_block_lv1_1_die");
+
+spr_dspecial_lv1_2_falling = sprite_get("dspecial_block_lv1_2_falling");
+spr_dspecial_lv1_2_ground = sprite_get("dspecial_block_lv1_2_ground");
+spr_dspecial_lv1_2_die = sprite_get("dspecial_block_lv1_2_die");
+
+spr_dspecial_lv1_3_falling = sprite_get("dspecial_block_lv1_3_falling");
+spr_dspecial_lv1_3_ground = sprite_get("dspecia_blockl_lv1_3_ground");
+spr_dspecial_lv1_3_die = sprite_get("dspecial_block_lv1_3_die");
+
+spr_dspecial_lv1_4_falling = sprite_get("dspecial_block_lv1_4_falling");
+spr_dspecial_lv1_4_ground = sprite_get("dspecial_block_lv1_4_ground");
+spr_dspecial_lv1_4_die = sprite_get("dspecial_block_lv1_4_die");
+
+spr_dspecial_lv1_5_falling = sprite_get("dspecial_block_lv1_5_falling");
+spr_dspecial_lv1_5_ground = sprite_get("dspecial_block_lv1_5_ground");
+spr_dspecial_lv1_5_die = sprite_get("dspecial_block_lv1_5_die");
+
+spr_dspecial_lv1_6_falling = sprite_get("dspecial_block_lv1_6_falling");
+spr_dspecial_lv1_6_ground = sprite_get("dspecial_block_lv1_6_ground");
+spr_dspecial_lv1_6_die = sprite_get("dspecial_block_lv1_6_die");
+
+//Lv 2
+spr_dspecial_lv2_0_falling = sprite_get("dspecial_block_lv2_0_falling");
+spr_dspecial_lv2_0_ground = sprite_get("dspecial_block_lv2_0_ground");
+spr_dspecial_lv2_0_die = sprite_get("dspecial_block_lv2_0_die");
+
+spr_dspecial_lv2_1_falling = sprite_get("dspecial_block_lv2_1_falling");
+spr_dspecial_lv2_1_ground = sprite_get("dspecial_block_lv2_1_ground");
+spr_dspecial_lv2_1_die = sprite_get("dspecial_block_lv2_1_die");
+
+spr_dspecial_lv2_2_falling = sprite_get("dspecial_block_lv2_2_falling");
+spr_dspecial_lv2_2_ground = sprite_get("dspecial_block_lv2_2_ground");
+spr_dspecial_lv2_2_die = sprite_get("dspecial_block_lv2_2_die");
+
+spr_dspecial_lv2_3_falling = sprite_get("dspecial_block_lv2_3_falling");
+spr_dspecial_lv2_3_ground = sprite_get("dspecia_blockl_lv2_3_ground");
+spr_dspecial_lv2_3_die = sprite_get("dspecial_block_lv2_3_die");
+
+spr_dspecial_lv2_4_falling = sprite_get("dspecial_block_lv2_4_falling");
+spr_dspecial_lv2_4_ground = sprite_get("dspecial_block_lv2_4_ground");
+spr_dspecial_lv2_4_die = sprite_get("dspecial_block_lv2_4_die");
+
+spr_dspecial_lv2_5_falling = sprite_get("dspecial_block_lv2_5_falling");
+spr_dspecial_lv2_5_ground = sprite_get("dspecial_block_lv2_5_ground");
+spr_dspecial_lv2_5_die = sprite_get("dspecial_block_lv2_5_die");
+
+spr_dspecial_lv2_6_falling = sprite_get("dspecial_block_lv2_6_falling");
+spr_dspecial_lv2_6_ground = sprite_get("dspecial_block_lv2_6_ground");
+spr_dspecial_lv2_6_die = sprite_get("dspecial_block_lv2_6_die");
+
+spr_dspecial_lv2_7_falling = sprite_get("dspecial_block_lv2_7_falling");
+spr_dspecial_lv2_7_ground = sprite_get("dspecial_block_lv2_7_ground");
+spr_dspecial_lv2_7_die = sprite_get("dspecial_block_lv2_7_die");
+
+spr_dspecial_lv2_8_falling = sprite_get("dspecial_block_lv2_8_falling");
+spr_dspecial_lv2_8_ground = sprite_get("dspecial_block_lv2_8_ground");
+spr_dspecial_lv2_8_die = sprite_get("dspecial_block_lv2_8_die");
+
+//Lv 3
+spr_dspecial_lv1_1_falling = sprite_get("dspecial_block_lv3_1_falling");
+spr_dspecial_lv1_1_ground = sprite_get("dspecial_block_lv3_1_ground");
+spr_dspecial_lv1_1_die = sprite_get("dspecial_block_lv3_1_die");
+
+spr_dspecial_lv1_2_falling = sprite_get("dspecial_block_lv3_2_falling");
+spr_dspecial_lv1_2_ground = sprite_get("dspecial_block_lv3_2_ground");
+spr_dspecial_lv1_2_die = sprite_get("dspecial_block_lv3_2_die");
+
+spr_dspecial_lv1_3_falling = sprite_get("dspecial_block_lv3_3_falling");
+spr_dspecial_lv1_3_ground = sprite_get("dspecial_block_lv3_3_ground");
+spr_dspecial_lv1_3_die = sprite_get("dspecial_block_lv3_3_die");
+
+spr_dspecial_lv1_4_falling = sprite_get("dspecial_block_lv3_4_falling");
+spr_dspecial_lv1_4_ground = sprite_get("dspecia_blockl_lv3_4_ground");
+spr_dspecial_lv1_4_die = sprite_get("dspecial_block_lv3_4_die");
+
+spr_dspecial_lv1_5_falling = sprite_get("dspecial_block_lv4_5_falling");
+spr_dspecial_lv1_5_ground = sprite_get("dspecial_block_lv4_5_ground");
+spr_dspecial_lv1_5_die = sprite_get("dspecial_block_lv4_5_die");
+
+//ROADA ROLLA DA
+spr_dspecial_roadroller = sprite_get("dspecial_roadroller");
+
+//Misc
+spr_charselect = sprite_get("charselect");
+spr_hud = sprite_get("hud");
+spr_hurt = sprite_get("hurt");
+spr_offscreen = sprite_get("offscreen");
+spr_portrait = sprite_get("portrait");
+spr_result_small = sprite_get("result_small");
+
+switch(get_player_color(player)){
+    case 9: //Beach
+        spr_idle = sprite_get("01_idle");
+        
+        
+        useskins = true;
+        
+        break;
+    case 14: //Kimono
+        break;
+        
+}
 */
 
 user_event(14); // General init

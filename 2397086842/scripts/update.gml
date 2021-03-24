@@ -1,5 +1,6 @@
 ///
 
+
 if get_gameplay_time() < 92 {
 	set_attack(AT_EXTRA_1)
 	window = 1
@@ -26,12 +27,6 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 	 attacking = false
 }
 
-
-if sagemode < 0 && state_cat == SC_HITSTUN {
-	create_hitbox(AT_NSPECIAL, 3, x - 10*spr_dir + floor(hsp), y + floor(vsp) - 40 - random_func(4, 20, true))
-	sagemode += 1
-	move_cooldown[AT_UTILT] = 2
-}
 
 
 

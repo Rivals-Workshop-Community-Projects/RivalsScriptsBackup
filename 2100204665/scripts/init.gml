@@ -1,6 +1,17 @@
+fs_char_portrait_y = 90;
+fs_char_chosen_final_smash = "custom";
+fs_char_chosen_trigger = "ori";
+if (get_player_color( player ) == 0){
+fs_char_portrait_override = sprite_get("portraitog");
+}
+times_through = 0;
+
 get_btt_data = false;
 btt_music_playing = false;
 btt = false;
+
+papy_orb = false;
+bluesoul = sprite_get("bluesoul");
 
 hurtbox_spr = sprite_get("pap_hurtbox");
 crouchbox_spr = sprite_get("pap_crouchbox");

@@ -131,7 +131,60 @@ if window == 3 && window_timer >= 20 {
 }
 
 
+if rank >= 4 && get_gameplay_time() % 5 < 3{
+	  gpu_set_blendmode(bm_add);
+	  
+	  switch get_player_color(player) {
+	  	case 0 :
+        draw_sprite_ext(sprite_index, image_index, x + 2 - shsp*1.1 - random_func(1,4,true) , y - 2 - (10 * triggered) - svsp*1.1 + random_func(2,4,true)  , spr_dir, 1, 0 , c_purple , 0.2);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - shsp*1.05 + random_func(1,4,true) , y + 2 - (10 * triggered) - svsp*1.05 - random_func(2,4,true)  , spr_dir, 1, 0 , c_aqua , 0.3);
+        break ;
 
+	  	case 1 :
+        draw_sprite_ext(sprite_index, image_index, x + 2 - shsp*1.1 - random_func(1,4,true) , y - 2 - (10 * triggered) - svsp*1.1 + random_func(2,4,true)  , spr_dir, 1, 0 , c_red , 0.2);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - shsp*1.05 + random_func(1,4,true) , y + 2 - (10 * triggered) - svsp*1.05 - random_func(2,4,true)  , spr_dir, 1, 0 , c_red , 0.3);
+        break ;
+
+	  	case 2 :
+        draw_sprite_ext(sprite_index, image_index, x + 2 - shsp*1.1 - random_func(1,4,true) , y - 2 - (10 * triggered) - svsp*1.1 + random_func(2,4,true)  , spr_dir, 1, 0 , c_purple , 0.2);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - shsp*1.05 + random_func(1,4,true) , y + 2 - (10 * triggered) - svsp*1.05 - random_func(2,4,true)  , spr_dir, 1, 0 , c_blue  , 0.3);
+        break ;
+
+	  	case 3 :
+        draw_sprite_ext(sprite_index, image_index, x + 2 - shsp*1.1 - random_func(1,4,true) , y - 2 - (10 * triggered) - svsp*1.1 + random_func(2,4,true)  , spr_dir, 1, 0 , -1 , 0.1);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - shsp*1.05 + random_func(1,4,true) , y + 2 - (10 * triggered) - svsp*1.05 - random_func(2,4,true)  , spr_dir, 1, 0 , -1 , 0.2);
+        break ;
+        
+	  	case 4 :
+        draw_sprite_ext(sprite_index, image_index, x + 2 - shsp*1.1 - random_func(1,4,true) , y - 2 - (10 * triggered) - svsp*1.1 + random_func(2,4,true)  , spr_dir, 1, 0 , c_fuchsia , 0.2);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - shsp*1.05 + random_func(1,4,true) , y + 2 - (10 * triggered) - svsp*1.05 - random_func(2,4,true)  , spr_dir, 1, 0 , c_blue , 0.3);
+        break ;
+
+	  	case 5 :
+        draw_sprite_ext(sprite_index, image_index, x + 2 - shsp*1.1 - random_func(1,4,true) , y - 2 - (10 * triggered) - svsp*1.1 + random_func(2,4,true)  , spr_dir, 1, 0 , c_red , 0.2);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - shsp*1.05 + random_func(1,4,true) , y + 2 - (10 * triggered) - svsp*1.05 - random_func(2,4,true)  , spr_dir, 1, 0 , c_yellow , 0.3);
+        break ;
+
+	  	case 6 :
+        draw_sprite_ext(sprite_index, image_index, x + 2 - shsp*1.1 - random_func(1,4,true) , y - 2 - (10 * triggered) - svsp*1.1 + random_func(2,4,true)  , spr_dir, 1, 0 , c_aqua , 0.2);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - shsp*1.05 + random_func(1,4,true) , y + 2 - (10 * triggered) - svsp*1.05 - random_func(2,4,true)  , spr_dir, 1, 0 , c_blue , 0.3);
+        break ;
+
+	  	case 7 :
+        draw_sprite_ext(sprite_index, image_index, x + 2 - shsp*1.1 - random_func(1,4,true) , y - 2 - (10 * triggered) - svsp*1.1 + random_func(2,4,true)  , spr_dir, 1, 0 , c_fuchsia , 0.2);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - shsp*1.05 + random_func(1,4,true) , y + 2 - (10 * triggered) - svsp*1.05 - random_func(2,4,true)  , spr_dir, 1, 0 , c_blue , 0.3);
+        break ;        
+
+	  	case 8 :
+        draw_sprite_ext(sprite_index, image_index, x + 2 - shsp*1.1 - random_func(1,4,true) , y - 2 - (10 * triggered) - svsp*1.1 + random_func(2,4,true)  , spr_dir, 1, 0 , c_green , 0.2);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - shsp*1.05 + random_func(1,4,true) , y + 2 - (10 * triggered) - svsp*1.05 - random_func(2,4,true)  , spr_dir, 1, 0 , c_lime , 0.3);
+        break ;      
+        
+	  }
+ 
+  gpu_set_blendmode(bm_normal);
+  
+}
 
 
 shader_end() 

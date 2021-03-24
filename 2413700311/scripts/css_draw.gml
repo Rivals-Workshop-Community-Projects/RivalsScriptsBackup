@@ -7,8 +7,6 @@ var temp_y = y + 9;
 var num_alts = 16;
 var alt_cur = get_player_color(player);
 
-//Alt name init. var doesn't work with arrays lol
- 
 alt_name[0]  = "Default";
 alt_name[1]  = "Blue";
 alt_name[2]  = "Yellow";
@@ -48,7 +46,7 @@ draw_set_halign(fa_left);
  
  
 //include alt. name
-textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1) + ": " + alt_name[alt_cur]);
+textDraw(temp_x + 10, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, string(alt_cur + 1) + ": " + alt_name[alt_cur]);
  
 //exclude alt. name
 //textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));

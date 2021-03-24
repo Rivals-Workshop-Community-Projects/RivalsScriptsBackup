@@ -31,7 +31,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 112);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ell_uspecial_explode"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_HITPAUSE, 0);
-set_hitbox_value(AT_FSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_LOCKOUT, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, 0);
@@ -50,7 +50,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_LIFESPAN, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 0);
-set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 111);
 

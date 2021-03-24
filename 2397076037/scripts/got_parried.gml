@@ -25,5 +25,8 @@ if(player_id == other.id) {
 
 DT -= 2
 
+rankm -= 600
+inactive = 60
+
 weapon = -1
 exheld = -1

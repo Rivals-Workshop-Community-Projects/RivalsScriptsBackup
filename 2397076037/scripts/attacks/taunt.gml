@@ -10,7 +10,7 @@ set_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH, 22*5);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_ANIM_FRAMES, 22);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("vtaunt1"));
-set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX_FRAME, 1);
+set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX_FRAME, 2);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 
 set_window_value(AT_TAUNT, 2, AG_WINDOW_TYPE, 2);

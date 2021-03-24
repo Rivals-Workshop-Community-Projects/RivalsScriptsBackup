@@ -335,7 +335,7 @@ if state_timer == 1 {
 }
 
 
-if get_player_color(player) >= 7 && get_player_color(player) != 13 && isyellow == false {
+if get_player_color(player) >= 99 && isyellow == false {
 	
 	isyellow = true
 	inkshield = 0

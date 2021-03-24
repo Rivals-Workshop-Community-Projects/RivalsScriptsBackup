@@ -31,6 +31,8 @@ throwVsp = 0;
 bounceHsp = 0; //hsp of cube when bounce of enemy
 bounceVsp = 0;
 
+absorbedCube = false; //dspecial cube absorb
+
 heldPower = 0; //power of held cube
 heldExplode = false; //inherits willExplode
 heldExplodeMax = 600;

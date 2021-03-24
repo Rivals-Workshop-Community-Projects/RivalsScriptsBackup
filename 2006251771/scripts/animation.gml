@@ -64,6 +64,12 @@ if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_USPECI
 	}
 }
 
+
+// Fair landing hitbox parry. Needs to be in animation so it runs super duper early
+if (attack == AT_FAIR && was_parried) {
+	fair_parry = true;
+}
+
 if (state == PS_PARRY && reflect_parry = true) {
 	sprite_index = sprite_get("dspecial");
 }

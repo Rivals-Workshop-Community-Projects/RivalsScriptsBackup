@@ -10,12 +10,12 @@ if attack == AT_EXTRA_1 {
     char_height = lerp(char_height,-300,char_height);
     if window_timer == 60 char_height = char_heigh_orig;
 }
-
+if window == 1 && window_timer == 1 strong_charge = 0; 
 if attack == AT_DSPECIAL {
     char_height = dspec_char_height; 
     if window == 2 {
         sound_play(sound_get("elu"));
-        if (attack_down || special_down || taunt_down ){
+        if (attack_down || special_down || taunt_down || left_strong_down || right_strong_down || up_strong_down || down_strong_down){
             dspec_attack = attack_down;
             dspec_special = special_down;
             dspec_down = down_down;
@@ -23,6 +23,10 @@ if attack == AT_DSPECIAL {
             dspec_left = left_down;
             dspec_right = right_down;
             dspec_taunt = taunt_down;
+            dspec_left_strong = left_strong_down;
+			dspec_right_strong = right_strong_down;
+			dspec_up_strong = up_strong_down;
+			dspec_down_strong = down_strong_down;
             window_timer = 0;
             window = 3;
         }
@@ -30,8 +34,8 @@ if attack == AT_DSPECIAL {
     if window == 3 {
         with asset_get("oPlayer") {
             if id != other.id {
-                if (taunt_down && other.dspec_taunt) || ((attack_down && attack_down == other.dspec_attack) || (special_down && special_down == other.dspec_special)) && 
-                (other.dspec_down == down_down && other.dspec_up == up_down && (other.dspec_left == left_down || other.dspec_right == right_down)) {
+                if (taunt_down && other.dspec_taunt) || ((other.dspec_left_strong == left_strong_down && other.dspec_right_strong == right_strong_down && other.dspec_up_strong == up_strong_down && other.dspec_down_strong == down_strong_down) && ((attack_down == other.dspec_attack) && (special_down == other.dspec_special)) && 
+                (other.dspec_down == down_down && other.dspec_up == up_down && (other.dspec_left == left_down || other.dspec_right == right_down))) {
                     //print_debug("AAAA");
                     with other {
                         create_hitbox(AT_DSPECIAL,1,other.x,other.y);
@@ -50,13 +54,9 @@ if attack == AT_DTILT && window == 3 && window_timer == get_window_value(AT_DTIL
 }
 
 if attack == AT_DAIR && window == 3 && (attack_down || special_down) {
-    if prev_attack == AT_DAIR {
-        hsp -= dair_vel[0]*spr_dir*.7;
-        vsp -= dair_vel[1]*.7;
-    } else {
-        hsp -= dair_vel[0]*spr_dir;
-        vsp -= dair_vel[1];
-    }
+    hsp -= dair_vel[0]*spr_dir*(1 - .2*dair_count);
+    vsp -= dair_vel[1]*(1 - .2*dair_count);
+    if window_timer == 1 dair_count++;
 }
 
 if attack == AT_DSTRONG && free can_jump = true;
@@ -76,8 +76,9 @@ if attack == AT_JAB && window == 2 && window_timer == 1 {
         temp_jab_offset -= 1;
     }
     //if !collision_point(x+spr_dir*temp_jab_offset,y+1,asset_get("par_block"),true,true) temp_jab_offset = 0;
-    var jab_art = instance_create(x+spr_dir*temp_jab_offset,y,"obj_article1");
+    jab_art = instance_create(x+spr_dir*temp_jab_offset,y,"obj_article1");
     jab_art.att = AT_JAB;
+    jab_art.strong_charge = strong_charge;
     //jab_art._init = 1;
 }
 

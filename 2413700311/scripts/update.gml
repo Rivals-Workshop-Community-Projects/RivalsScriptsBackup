@@ -21,6 +21,24 @@ if(introend = false){
 }
 //---------------------------
 
+//バグ回避用
+if(grabbedid != noone){
+	grabbedid.ungrab++;
+	if(grabbedid.ungrab == 2){
+		grabbedid.visible = true; //掴みで相手が見えなくならない場合は、自由にこの行を削除してください。
+		grabbedid.invincible = false; //掴みで相手が無敵にならない場合は、遠慮なくこの行を削除してください。
+		grabbedid.state = PS_TUMBLE;
+		grabbedid.ungrab = 0;
+		grabbedid = noone;
+	}
+}
+
+if (state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND){
+	FS_alpha = 0;
+}
+
+//---------------------------
+
 if (attack == AT_EXTRA_3)
 {
 	ex3cooltime = 30;

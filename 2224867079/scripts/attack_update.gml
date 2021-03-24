@@ -4,7 +4,12 @@
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
 }
-if (attack == AT_DAIR){
+
+if (attack == AT_NSPECIAL_2 || attack == AT_FSPECIAL_2 || attack == AT_DSPECIAL_2 || attack == AT_USPECIAL_2){
+    trigger_b_reverse();
+}
+
+if (attack == AT_DAIR || attack ==  AT_NSPECIAL_AIR || attack ==  AT_EXTRA_1){
 	trigger_b_reverse();
 }
 
@@ -121,6 +126,7 @@ if (attack == AT_FSTRONG_2){
 //Charge Nspecial
 if (attack == AT_NSPECIAL && ncancel = false) {
 	tempsprdir = spr_dir
+	move_cooldown[AT_NSPECIAL] = 10;
     if (window == 2) {
         //check if the player is still holding the special button down
         if (special_down) {
@@ -143,6 +149,7 @@ if (attack == AT_NSPECIAL && ncancel = false) {
 
 if (attack == AT_NSPECIAL_2 && ncancel = false) {
 	tempsprdir = spr_dir
+	move_cooldown[AT_NSPECIAL_2] = 10;
     if (window == 2) {
         //check if the player is still holding the special button down
         if (special_down) {
@@ -317,7 +324,7 @@ if (attack == AT_USTRONG){
 }
 */
 
-//Blue Recovery Effect
+//Recovery Effect
 if (attack == AT_USPECIAL){
 	if (window == 2){
 		if (dotheeffect == true){
@@ -332,5 +339,82 @@ if (attack == AT_USPECIAL_2){
 		spawn_hit_fx( x+8, y-10, red_recovery );
 		dotheeffect = false
 		}
+	}
+}
+
+//Rotatey blue fspecial oohooh
+if (attack == AT_FSPECIAL){
+	can_fast_fall = false
+	if(window == 4)
+	{
+		//down
+		if((joy_dir < 350 && joy_dir > 200 && spr_dir == 1) || (joy_dir > 210 && joy_dir < 300 && spr_dir == -1) || down_stick_down)
+		{
+			set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 1);
+			set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED, 4);
+		}
+		//up 
+		else if((joy_dir > 30 && joy_dir < 260 && spr_dir == 1) || (joy_dir < 150 && joy_dir > 40 && spr_dir == -1) || up_stick_down)
+		{
+			set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 1);
+			set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED, -4);
+		}
+		else
+		{
+			set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 1);
+			set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED, 0);
+		}
+	}
+}
+
+//Cant Fastfall Red Fspecial
+if (attack == AT_FSPECIAL_2){
+	can_fast_fall = false
+}
+
+//Trail Effects
+//Blue
+if(attack == AT_FSPECIAL){
+	if(state_timer % 3 == 0){
+    	spawn_hit_fx((x - 40 * spr_dir), y -70, fx_star_trail);
+    }
+}
+
+if(attack == AT_USPECIAL){
+	if(window >= 3){
+		if(state_timer % 3 == 0){
+    	spawn_hit_fx((x - 40 * spr_dir), y -70, fx_star_trail);
+    	}
+	}
+}
+
+if(attack == AT_FSPECIAL_2){
+	if(state_timer % 3 == 0){
+    	spawn_hit_fx((x - 40 * spr_dir), y -70, fx_red_star_trail);
+    }
+}
+
+if(attack == AT_USPECIAL_2){
+	if(window >= 3){
+		if(state_timer % 3 == 0){
+    	spawn_hit_fx((x - 40 * spr_dir), y -70, fx_red_star_trail);
+    	}
+	}
+}
+
+//Nair Stuff
+if(attack == AT_NAIR){
+	if (window == 3){
+		attack_end()
+	}
+	if (window == 5){
+		attack_end()
+	}
+}
+
+//Cancel Red Jab
+if (attack == AT_JAB && RedMode == true){
+	if (has_hit){
+		can_attack = true;
 	}
 }

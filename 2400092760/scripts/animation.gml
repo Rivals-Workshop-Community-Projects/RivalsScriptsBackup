@@ -4,7 +4,7 @@
     break;
     
     default: break;
-}
+}*/
 switch (state){
     case PS_DASH:
     case PS_DASH_TURN:
@@ -15,7 +15,7 @@ switch (state){
         break;
 }
 
-if(attack == AT_USTRONG && state == PS_ATTACK_GROUND && smash_charging){
+/*if(attack == AT_USTRONG && state == PS_ATTACK_GROUND && smash_charging){
     image_index = (floor(strong_charge / 8) % 2) +1;
 }*/
 

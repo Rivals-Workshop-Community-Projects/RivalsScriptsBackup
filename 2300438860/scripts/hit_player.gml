@@ -55,33 +55,40 @@ dy1 = hit_player_obj.y
 }
 
 
-if my_hitboxID.attack != AT_NSPECIAL and my_hitboxID.attack != AT_USPECIAL and  my_hitboxID.attack != AT_FSPECIAL and  my_hitboxID.attack != AT_DSPECIAL{
-    attackbar = 0
+if my_hitboxID.attack != AT_NSPECIAL and my_hitboxID.attack != AT_USPECIAL and  my_hitboxID.attack != AT_FSPECIAL and  my_hitboxID.attack != AT_DSPECIAL 
+&& attackbar != 0 {
+    attackbar = 1
+        spawn_hit_fx (x,y,lighten3)
+        
+        hitstop += my_hitboxID.hitpause/2
+        hit_player_obj.hitstop += my_hitboxID.hitpause/2
+        barpause = 0
+        move_cooldown[AT_NSPECIAL] = 0
+  
+                
 if dmgmul == 1.5 {
 	   	 with hit_player_obj {
-                 take_damage( player, -1 , floor(enemy_hitboxID.damage/2) + 3)
+                 take_damage( player, -1 , floor(enemy_hitboxID.damage/2) + 2)
          }	
-    sound_play(sound_get("hcine"),false,noone,0.4)
+    sound_play(sound_get("hcine"),false,noone,0.6)
         dmgmul = 0
     spawn_hit_fx (hit_player_obj.x  + 10*spr_dir + (random_func(1, 36, true))*spr_dir, hit_player_obj.y - 30 - random_func(2, 66, true) , shit1)
 }
 
 if dmgmul == 2 {
 	   	 with hit_player_obj {
-                 take_damage( player, -1 , floor(enemy_hitboxID.damage/1.5) + 9)
+                 take_damage( player, -1 , floor(enemy_hitboxID.damage/1.5) + 5)
          }	
-    sound_play(sound_get("hcine"),false,noone,0.6)
-    spawn_hit_fx (x,y,lighten2)
+    sound_play(sound_get("hcine"),false,noone,0.9)
         dmgmul = 0
      spawn_hit_fx (hit_player_obj.x + 10*spr_dir  + (random_func(1, 36, true))*spr_dir, hit_player_obj.y - 30 - random_func(2, 66, true) , shit4)    
 }
 
 if dmgmul == 3 {
 	   	 with hit_player_obj {
-                 take_damage( player, -1 , floor(enemy_hitboxID.damage/1.2) + 15)
+                 take_damage( player, -1 , floor(enemy_hitboxID.damage/1.2) + 8)
          }	
-    sound_play(sound_get("hcine"),false,noone,2)
-    spawn_hit_fx (x,y,lighten3)
+    sound_play(sound_get("hcine"),false,noone,1.2)
         dmgmul = 0
      spawn_hit_fx (hit_player_obj.x + 10*spr_dir  + (random_func(1, 36, true))*spr_dir, hit_player_obj.y - 30 - random_func(2, 66, true) , shit5)    
 }

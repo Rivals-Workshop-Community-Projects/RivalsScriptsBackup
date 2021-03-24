@@ -173,7 +173,7 @@ if ((attack == AT_FSTRONG|| attack == AT_DSTRONG || attack == AT_USTRONG) && win
 }
 
 //---------------------------------------------ACTUAL REFLECTOR LOGIC - THANKS ARCHY-----------------------------------------
-//------------------------------------------------------V2 UPDATE: 25/02-----------------------------------------
+//------------------------------------------------------V3 UPDATE: 17/03-----------------------------------------
 
 if attack == AT_FSPECIAL {
 	if window ==2 {
@@ -196,7 +196,7 @@ if attack == AT_FSPECIAL && window == 1 {		//Startup
     gustav = 0;
 }
 //ACTIVE REFLECTOR
-if (attack == AT_FSPECIAL && window == 2 && window_timer <7 ) {		
+if (attack == AT_FSPECIAL && window == 2 ) {		
     hit_check = noone;
 	//So now it checks for players, hitbox or articles
 
@@ -228,42 +228,24 @@ if (attack == AT_FSPECIAL && window == 2 && window_timer <7 ) {
     }
     
 	//Conditions for Reflector to be active
-    if (hit_check != noone  && (hit_check != pHitBox || (hit_check == pHitBox && hit_check.type == 2 && hit_check.hitstun_factor != -1)) && gustav != hit_check  && !has_hit_player && hit_check.player != player  && hit_check.type != 1)   {
+    if (hit_check != noone  && (hit_check != pHitBox || (hit_check == pHitBox && hit_check.type == 2 )) && gustav != hit_check  && !has_hit_player && hit_check.player != player  && hit_check.type != 1)&& hit_check.hitstun_factor != -1   {
 
         gustav = hit_check;						//Object
 		invincible = 1;
-		invince_time = 10;							
+		invince_time = 12;							
 		spawn_hit_fx( x +44*spr_dir, y-34, 194 );			//VISUAL EFFECT 
 		gustav.was_parried = true;							//MOVED THIS LINE UP TO COVER A COUPLE OF SPECFIC CASES
-
-
-		//UPDATE: IF the projectile is not static ( or has a really small movement speed) it reflects
-		if abs(gustav.hsp) >  0.5 {								//Minimal Horizontal speed
-			if variable_instance_exists(gustav, "sprdir") {
-				gustav.image_xscale = 0.01;
-				if spr_dir *gustav.sprdir == -1 {				//REFLECTS 
-					gustav.hsp *= -1					
-					gustav.sprdir *= -1;
-				}
-			} else {
-				if spr_dir *gustav.spr_dir == -1 {				//REFLECTS 
-					gustav.hsp *= -1					
-					gustav.spr_dir *= -1;
-				}
-			}
-		} else {												//When the projectile is static
-			if variable_instance_exists(gustav, "sprdir") {
-				gustav.image_xscale = 0.01;
-				gustav.sprdir = spr_dir;
-			} else {
-				gustav.spr_dir = spr_dir;
-			}
-		}
 
 		//CODE FOR TENRU INTERACTION I GUESS
 		if variable_instance_exists(gustav, "reflected") {
            gustav.reflected = true;
         }
+
+		//CODE FOR MATT I GUESS
+		if variable_instance_exists(gustav, "UnReflectable") {
+           gustav.UnReflectable = false;
+        }
+
 		//CODE FOR SEIJA INTERACTION I GUESS
 		if variable_instance_exists(gustav, "sided") {
 
@@ -272,20 +254,39 @@ if (attack == AT_FSPECIAL && window == 2 && window_timer <7 ) {
             gustav.was_switched = true;
 			gustav.hitboxHit = gustav.id;
         }
+
+		//UPDATE: IF the projectile is not static ( or has a really small movement speed) it reflects
+		//There is Horizontal movement
+		gustav.image_xscale = 0.01;
+		if variable_instance_exists(gustav, "sprdir") {
+			gustav.hsp = sprdir * abs(gustav.hsp);					
+			gustav.sprdir = sprdir;
+		} else {
+			gustav.hsp = spr_dir * abs(gustav.hsp);			
+			gustav.spr_dir = spr_dir;
+		}
+		//Theres no horizontal movement BUT there is vertical movment
+		 if abs(gustav.vsp) > 0.5  && abs(gustav.hsp) <  0.5{					
+			if variable_instance_exists(gustav, "sprdir") {				
+				gustav.sprdir *= -1;
+			} else {				
+				gustav.spr_dir *= -1;
+			}
+		}
+		
 		//SPEED MULTIPLIER LOGIC
         if gustav.object_index != oPlayer {
-
-
 			gustav.hitbox_timer = 0;
             gustav.can_hit_self = true;
-            gustav.x = x + 55*spr_dir;
+            gustav.x = x + 60*spr_dir;
             gustav.y = gustav.y;
 
             gustav.image_angle = 0+(180*(spr_dir+1));				//REFLECTS 
 			if abs(gustav.hsp) < 0.5  { gustav.hsp = 4*spr_dir;}	//Speed Giver
 			else{gustav.hsp = gustav.hsp* 1.25;}					//Speed multiplier
+
 			if !gustav.free { gustav.vsp = -5;}						//THE VSP THAT IT GIVES GROUNDED PROJECTILES
-			else {gustav.vsp = gustav.vsp *-1;}						//INVERTS THE SPEED OF NON GROUNDED PROJECTILES
+			else {gustav.vsp *= -1;}						//INVERTS THE SPEED OF NON GROUNDED PROJECTILES
         }
 
 	   //DAMAGE AND KNOCKBACK MODIFIERS

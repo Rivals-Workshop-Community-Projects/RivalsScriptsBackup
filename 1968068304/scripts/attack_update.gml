@@ -1182,7 +1182,7 @@ switch (attack) { //open switch(attack)
 							plat.player_id = id;
 							plat.player = player;
 							plat.spr_dir = 1;
-							plat.hsp = 0;
+							plat.hsp = 3 * (right_down - left_down);//spr_dir * 2;
 							plat.vsp = -4;
 							//plat size rune
 							plat.image_xscale = 1 + runeG * 0.4;
@@ -1196,6 +1196,7 @@ switch (attack) { //open switch(attack)
 							plat.player_id = id;
 							plat.player = player;
 							plat.spr_dir = 1;
+							plat.hsp = 3 * (right_down - left_down);
 							plat.vsp = -3 - sqrt(epinel_charge_timer);
 							//plat size rune
 							plat.image_xscale = 1 + runeG * 0.4;
@@ -1251,7 +1252,7 @@ switch (attack) { //open switch(attack)
 			hsp = clamp(hsp + (0.25 + runeA / 5) * (right_down - left_down), -(3.5 + runeA), 3.5 + runeA);
 			
 			//fall faster than normal.
-			if (vsp > -2) vsp *= 1.04 + (epinel_air_dspecial_platform_hits * 0.02) + (epinel_heavy_state > 0) * 0.04;
+			if (vsp > -2) vsp = min(vsp * 1.04 + (epinel_air_dspecial_platform_hits * 0.02) + (epinel_heavy_state > 0) * 0.04,  20 + epinel_heavy_state * 5);
 			else if (free) vsp += 0.02;
 			
 			//cancel this move if shield is pressed.
@@ -1930,8 +1931,8 @@ switch (attack) { //open switch(attack)
 				//uncharged ver active
 				if (window_timer == 1 && hitpause == false) {
 					
-					epinel_heavy_state = 2;
-					move_cooldown[AT_USPECIAL] = 30;
+					
+					move_cooldown[AT_USPECIAL] = 60;
 					//spawn effect.
 					//spawn_hit_fx(x, y - char_height / 2, epinel_fx_inertia);
 					spawn_hit_fx(x, y - char_height / 2, epinel_fx_absorb);
@@ -1947,6 +1948,8 @@ switch (attack) { //open switch(attack)
 					if (joy_pad_idle) {
 						hsp = 0;
 						vsp = 0;
+						
+						if (free) epinel_heavy_state = 2;
 					}
 					
 					else {
@@ -1957,6 +1960,7 @@ switch (attack) { //open switch(attack)
 						hsp = lengthdir_x(8, inertiadir);
 						vsp = lengthdir_y(8, inertiadir);
 						
+						if (free || vsp < 0) epinel_heavy_state = 2;
 					}
 					
 					/*
@@ -2174,6 +2178,8 @@ switch (attack) { //open switch(attack)
 				//third hit recovery can be fast-falled and walljump-cancelled.
 				can_wall_jump = true;
 				can_fast_fall = true;
+				//also allow drifting.
+				can_move = true;
 			break;
 			
 			case 15:

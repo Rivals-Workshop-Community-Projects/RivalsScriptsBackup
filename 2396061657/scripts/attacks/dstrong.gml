@@ -15,12 +15,12 @@ set_window_value(AT_DSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX, sound_get("CMN_SWISH_2"));
 
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 
@@ -35,7 +35,7 @@ set_num_hitboxes(AT_DSTRONG, 2);
 
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_WINDOW, 3);
-set_hitbox_value(AT_DSTRONG, 1, HG_LIFETIME, 7);
+set_hitbox_value(AT_DSTRONG, 1, HG_LIFETIME, 5);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_X, 25);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_Y, -10);
 set_hitbox_value(AT_DSTRONG, 1, HG_WIDTH, 80);
@@ -57,7 +57,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_HITSTUN_MULTIPLIER, 1.0);
 
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW, 4);
-set_hitbox_value(AT_DSTRONG, 2, HG_LIFETIME, 7);
+set_hitbox_value(AT_DSTRONG, 2, HG_LIFETIME, 4);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_X, -30);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_Y, -10);
 set_hitbox_value(AT_DSTRONG, 2, HG_WIDTH, 80);

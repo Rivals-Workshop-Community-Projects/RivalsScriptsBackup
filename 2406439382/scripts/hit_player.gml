@@ -15,9 +15,12 @@ switch(my_hitboxID.attack)
     case AT_USPECIAL:
         if (free)
         {
-            attack_end();
-            set_attack(AT_USPECIAL_2)
-            pHurtBox.sprite_index = sprite_get("uspecial_endlag_hit_hurt")
+            if (state_cat != SC_HITSTUN)
+            {
+                attack_end();
+                set_attack(AT_USPECIAL_2)
+                pHurtBox.sprite_index = sprite_get("uspecial_endlag_hit_hurt")
+            }
         }
         
         if (has_rune("O"))

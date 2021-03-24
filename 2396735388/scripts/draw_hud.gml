@@ -123,7 +123,7 @@ switch guide_textbox {
 	case 200: 
 		return true; 
 	break;
-	case 253: 
+	case 250: 
 		return true; 
 	break;
 	case 300: 

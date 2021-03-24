@@ -163,7 +163,7 @@ if (attack == AT_USPECIAL) {
 	if window == 2 {
 		if special_down && 10 > eggcharge {
 			eggcharge++;
-			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -14-(eggcharge*.25));
+			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -14-(eggcharge*.35));
 			set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 7+(eggcharge*.5));
 			set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 6+(eggcharge*.4));
 			
@@ -450,7 +450,7 @@ if (has_rune("F")){
 }
 
 ////////// YOSHI SWORD ???
-if !hitpause && yosword = 1 {
+if !hitpause && yosword == 1 {
 	
 		
 	if get_player_damage(player) > 160 and get_player_damage(player) <= 300 and bossmode = 1{

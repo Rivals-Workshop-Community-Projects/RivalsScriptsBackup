@@ -408,6 +408,7 @@ if (easter_egg_timer <= 90) {
     }
 }
 
+/*
 if  (oPlayer.url != 2135192216 && oPlayer.url != CH_ELLIANA && oPlayer.url != CH_CLAIREN && oPlayer.url != 2229862078 && oPlayer.url != CH_ZETTERBURN && oPlayer.url != CH_ORI && oPlayer.url != 2269841346 && oPlayer.url != 1890617624 && oPlayer.url != 1871153050 && oPlayer.url != 1970731843 && oPlayer.url != 2190448871 && oPlayer.url != 2269841346 && oPlayer.url != CH_KRAGG && oPlayer.url != CH_WRASTOR && oPlayer.url != CH_MAYPUL && oPlayer.url != CH_RANNO && oPlayer.url != CH_ORCANE && oPlayer.url != CH_FORSBURN && oPlayer.url != CH_SHOVEL_KNIGHT && oPlayer.url != CH_ETALUS && oPlayer.url != CH_SYLVANOS && oPlayer.url != CH_ABSA){
 	 	    snd_rng = random_func(0, 5, true);
     if (snd_rng == 0) {
@@ -422,7 +423,7 @@ if  (oPlayer.url != 2135192216 && oPlayer.url != CH_ELLIANA && oPlayer.url != CH
         sound_play(sound_get("intro_workshop"));
     }
 }
-
+*/
 
 	var peacock_player = self;
 	with (oPlayer) {
@@ -563,7 +564,7 @@ if easter_egg_set == true {
 }
 
 
-	if (state == PS_FIRST_JUMP && state_timer == 1){
+	if (state == PS_FIRST_JUMP && state_timer == 1 || state == PS_DOUBLE_JUMP && state_timer == 1){
     snd_rng = random_func(0, 3, true);
     
     if (snd_rng == 0) {
@@ -575,6 +576,7 @@ if easter_egg_set == true {
     }
 }
 
+/*
 if (oPlayer.state == PS_DEAD && instance_number(oPlayer) < 3 && window_timer <= 1){
 	easter_egg_set = false;
     snd_rng = random_func(0, 3, true);
@@ -586,10 +588,34 @@ if (oPlayer.state == PS_DEAD && instance_number(oPlayer) < 3 && window_timer <= 
     } else if (snd_rng == 2) {
         sound_play(sound_get("victory2"));
     }
-}
+} */
 }
 
-
+if (got_hit_num == 1){
+	    got_hit_ticks++;
+}
+if (state_cat == SC_HITSTUN && got_hit_ticks == 16){
+	got_hit_num = 2;
+if easter_egg_set = true && got_hit_num = 2 {
+    snd_rng = random_func(0, 6, true);
+    
+    if (snd_rng == 0) {
+        sound_play(sound_get("hurt1"));
+    } else if (snd_rng == 1) {
+        sound_play(sound_get("hurt2"));
+    } else if (snd_rng == 2) {
+        sound_play(sound_get("hurt3"));
+    } else if (snd_rng == 3) {
+        sound_play(sound_get("hurt4"));
+    } else if (snd_rng == 4) {
+        sound_play(sound_get("hurt5"));
+    } else if (snd_rng == 5) {
+        sound_play(sound_get("hurt6"));
+    }
+    got_hit_ticks = 0;
+got_hit_num = 0;
+}
+}
 
 #define clear_button_buffers_after_dashing
 clear_button_buffer(PC_LEFT_HARD_PRESSED);

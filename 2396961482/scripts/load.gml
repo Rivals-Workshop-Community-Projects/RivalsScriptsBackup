@@ -2,6 +2,9 @@ set_victory_theme( sound_get( "victory" ));
 
 sprite_change_offset("idle", 40, 68);
 sprite_change_offset("hurt", 40, 78);
+sprite_change_offset("bighurt", 40, 78);
+sprite_change_offset("uphurt", 40, 78);
+sprite_change_offset("downhurt", 40, 78);
 sprite_change_offset("spinhurt", 40, 78);
 sprite_change_offset("bouncehurt", 40, 78);
 sprite_change_offset("hurtground", 40, 78);

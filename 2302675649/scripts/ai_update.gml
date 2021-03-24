@@ -306,12 +306,10 @@ SetAttack();
 			special_down = true;
 			break;
 		case AT_FSPECIAL:
-			sound_play(asset_get("mfx_star"));
 			if (ai_state == AS_RECOVER)
 				HoldTowardsStage();
 			else
 				HoldTowardsTarget();
-			down_down = true;
 			special_pressed = true;
 			special_down = true;
 			break;

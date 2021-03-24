@@ -154,7 +154,7 @@ switch(attack) {
 		if window_timer == 1 && get_window_value(attack,window,AG_WINDOW_TYPE) == 69 && !hitpause{
 			if !sun_cooldown {
 				sun_ins = instance_create(x+spr_dir*20,y,"obj_article2");
-				sun_ins.hsp = spr_dir*16;
+				sun_ins.hsp = spr_dir*(16 - (down_down xor up_down)*4);
 				sun_ins.vsp = (down_down - up_down)*3
 			} 
 		}
@@ -752,7 +752,10 @@ switch(attack) {
 						
 						//if !owner.hitpause orbiting = false;
 						hsp = destx[i]*0.05;
-
+						
+						attack = AT_FSTRONG;
+						
+						scary_looking = hb.length;
 					}
 				}
 			}
@@ -846,7 +849,9 @@ switch(attack) {
 						
 						//if !owner.hitpause orbiting = false;
 						hsp = destx[i]*0.05;
-
+						attack = AT_USTRONG;
+						
+						scary_looking = hb.length;
 					}
 				}
 			}
@@ -892,7 +897,7 @@ switch(attack) {
 		}
 		if get_window_value(attack, window, AG_WINDOW_TYPE) == 420 {
 			if has_rune("D") && state_timer < 6 fall = 0;
-			if attack_down && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1
+			if (attack_down or down_stick_down or strong_down) && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1
 			window_timer--
 		}
 		if get_window_value(attack, window+1, AG_WINDOW_TYPE) == 69 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) {

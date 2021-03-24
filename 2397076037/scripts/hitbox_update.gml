@@ -158,11 +158,21 @@ if attack == AT_DSPECIAL && hbox_num == 1 {
 		   	shake_camera(2,2)
 		destroyed = 1
 		sound_play(sound_get("slicel"),false,noone,0.6) 
-		spawn_hit_fx(x,y,mblade5)
+		spawn_hit_fx(x,y + vsp, mblade5)
 		spawn_hit_fx( x - 12, y + 40 - random_func(4, 10, true) , esp )
 		spawn_hit_fx( x + 12, y + 40 - random_func(4, 10, true) , esp )
 	}
 }
 
 
-
+if attack == AT_USPECIAL && hbox_num == 16 && (!free or hitbox_timer == 59)  {
+	 spawn_hit_fx(x,y,berrye)
+	 if !free {
+	  sound_play(asset_get("sfx_orca_bite"),false,noone,0.5) 	
+	 sound_play(asset_get("sfx_poison_hit_med"),false,noone,0.3) 
+	 } else {
+	 sound_play(asset_get("sfx_poison_hit_med"),false,noone,0.3) 	
+	 }
+	 
+	 destroyed = 1
+}

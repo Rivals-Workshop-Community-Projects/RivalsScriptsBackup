@@ -41,7 +41,12 @@ if attackbar != 0 && !hitpause {
 		shake_camera (1,1)
 		}
 		suppress_stage_music( 0.3, 10 );	
-	attackbar += 1
+		
+	if barpause <= 0 {	
+	attackbar += 1 
+	} else {
+		barpause -= 1
+	}
 	
 if attackbar >= 20 && attackbar < 50 {
     dmgmul = 1.5
@@ -72,18 +77,51 @@ if attackbar < 20 or attackbar > 158 {
 if attackbar == 180 {
 	attackbar = 0
 	shake_camera (2,4)
-	sound_play(sound_get("uspec"))
-	prat_land_time = 30;
-	        	if free {
-            set_state(PS_PRATFALL)	
-        	} else {
-        	 set_state(PS_PRATLAND)		
-        	}
+	sound_play(sound_get("nspecdis"))
+	 move_cooldown [AT_NSPECIAL] = 180
 }
 
 if attackbar == 0 and attack != AT_TAUNT {
-	sound_stop(sound_get("buzzing"))
+	sound_stop(cur_sound)
+	barpause = 0
 }
+
+if move_cooldown [AT_NSPECIAL] = 179 && heartbroke = 0 {
+	
+	heartbroke = 1
+	spawn_hit_fx (x,y + 16, hb1)
+	 sound_play(sound_get("fstrong1"),false,noone,0.4)
+	 	sound_stop(cur_sound)
+}
+
+
+if move_cooldown [AT_NSPECIAL] == 15 && heartbroke = 1{
+	spawn_hit_fx (x,y + 16, hb2)
+	 sound_play(sound_get("fstrong2"),false,noone,0.4)
+}
+
+if move_cooldown[AT_NSPECIAL] = 0 {
+		heartbroke = 0
+}
+
+if move_cooldown[AT_NSPECIAL] > 1 && move_cooldown[AT_NSPECIAL] < 15 && heartbroke = 1{
+alt = get_player_color(player);
+
+Rline = get_color_profile_slot_r ( alt , 0 )
+Gline = get_color_profile_slot_g ( alt , 0 )
+Bline = get_color_profile_slot_b ( alt , 0 )
+
+			outline_color = [move_cooldown[AT_NSPECIAL]/5 * Rline , 
+			move_cooldown[AT_NSPECIAL]/15 * Gline, 
+			move_cooldown[AT_NSPECIAL]/15 * Bline]
+
+}
+init_shader();
+
+if move_cooldown[AT_NSPECIAL] == 1 {
+				outline_color = [0,0,0]
+}
+init_shader();
 
 if esave > 1 && !hitpause{
 	esave -= 1

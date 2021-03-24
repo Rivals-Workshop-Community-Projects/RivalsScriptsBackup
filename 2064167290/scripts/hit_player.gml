@@ -41,20 +41,23 @@ if (my_hitboxID.attack == AT_USTRONG)
 // bouncing dtilt timer
 if (my_hitboxID.attack == AT_DTILT) 
 {
-    destroy_hitboxes()
-    attack_end();
-    set_attack(AT_EXTRA_2);
-    hurtboxID.sprite_index = sprite_get("dtiltbounce_hurt")
-    vsp = 0;
-    
-    // the late hitbox doesn't send hana as high
-    if (my_hitboxID.hbox_num == 1)
+    if (state_cat != SC_HITSTUN)
     {
-        set_window_value( AT_EXTRA_2, 2, AG_WINDOW_VSPEED, -7 )
-    }
-    else
-    {
-        set_window_value( AT_EXTRA_2, 2, AG_WINDOW_VSPEED, -5 )
+        destroy_hitboxes()
+        attack_end();
+        set_attack(AT_EXTRA_2);
+        hurtboxID.sprite_index = sprite_get("dtiltbounce_hurt")
+        vsp = 0;
+        
+        // the late hitbox doesn't send hana as high
+        if (my_hitboxID.hbox_num == 1)
+        {
+            set_window_value( AT_EXTRA_2, 2, AG_WINDOW_VSPEED, -7 )
+        }
+        else
+        {
+            set_window_value( AT_EXTRA_2, 2, AG_WINDOW_VSPEED, -5 )
+        }
     }
     
 }
@@ -114,28 +117,22 @@ if (my_hitboxID.attack == AT_NSPECIAL_2)
         ycd_timer = 10;
     }
        
-       
-    
 }
-
-
-
-
 
 
 if (my_hitboxID.attack == AT_FSPECIAL)
 {
-    
-    destroy_hitboxes()
-    attack_end();
-    set_attack(AT_EXTRA_1);
-    window_timer = 4;
-    hurtboxID.sprite_index = sprite_get("dairbounce_hurt");
-    sound_play(sound_get("bounce"));
-    vsp = 0;
-    move_cooldown[AT_FSPECIAL] = 0;
-    
-    
+    if (state_cat != SC_HITSTUN)
+    {
+        destroy_hitboxes()
+        attack_end();
+        set_attack(AT_EXTRA_1);
+        window_timer = 4;
+        hurtboxID.sprite_index = sprite_get("dairbounce_hurt");
+        sound_play(sound_get("bounce"));
+        vsp = 0;
+        move_cooldown[AT_FSPECIAL] = 0;
+    }
 }
 
 

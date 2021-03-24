@@ -11,7 +11,7 @@ if (attack == AT_NSPECIAL || attack == AT_USPECIAL ){
 if attack == AT_FSTRONG {
      
      if has_hit_player && window < 5 && hit_player_obj.state_cat == SC_HITSTUN{
-     	hit_player_obj.x += ((x + (60 * spr_dir)) - hit_player_obj.x) / 20
+     	hit_player_obj.x += ((x + (60 * spr_dir)) - hit_player_obj.x) / 10
      }
  if window == 2 && window_timer == 1 {
      spawn_hit_fx ( x - (20 * spr_dir) , y - 30 , summon  );

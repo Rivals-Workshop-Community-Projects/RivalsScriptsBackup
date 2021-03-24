@@ -94,6 +94,10 @@ sprite_change_offset("trial_grounds", 31, 0);
 sprite_change_offset("firequagsupport", 39, 74);
 sprite_change_offset("flower_zone", 18, 41);
 sprite_change_offset("phone_open", 36, 62);
+sprite_change_offset("costume_quagsire", 84, 114);
+
+sprite_change_offset("kirby", 42, 90);
+sprite_change_offset("kirby_hurt", 42, 90);
 
 set_victory_bg( sprite_get( "quag_victory_bg" ));
 

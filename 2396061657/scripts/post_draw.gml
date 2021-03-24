@@ -108,6 +108,7 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
 
 
 // Some code junk
+//draw_debug_text(300, 200, "color: " + string(get_player_color(player)));
 //draw_debug_text(x, y - 40, "CandyKB: " + string(CandyKB));
 //draw_debug_text(x, y - 60, "Room: " + string(room));
 //draw_debug_text(x, y - 80, "LoveMeter Rib: " + string(LoveMeter_Ribbon));

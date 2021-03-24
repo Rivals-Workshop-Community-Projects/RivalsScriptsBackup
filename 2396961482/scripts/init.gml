@@ -1,10 +1,11 @@
 //Compat
 dategirl_init = 0;
 Chatting = true;
-Hikaru_Title = "Fish Food";
+Hikaru_Title = "Light Bringer";
 steve_death_message = "Steve went closer to the light";
 pkmn_stadium_front_img = sprite_get("pkmn_sprite1");
 pkmn_stadium_back_img = sprite_get("pkmn_sprite2");
+plushForAmber = sprite_get("plushforamber");
 
 //Regular Stuff
 hurtbox_spr = asset_get("ex_guy_hurt_box");
@@ -24,12 +25,12 @@ walk_accel = 0.2;
 walk_turn_time = 6;
 initial_dash_time = 8;
 initial_dash_speed = 6.50;
-dash_speed = 6.50;
+dash_speed = 6.5;
 dash_turn_time = 8;
 dash_turn_accel = 1.75;
 dash_stop_time = 4;
 dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .5;
+ground_friction = .7;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
@@ -58,7 +59,7 @@ land_time = 4; //normal landing frames
 prat_land_time = 8;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .11; //grounded deceleration when wavelanding
+wave_friction = .10; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 3;
@@ -84,7 +85,7 @@ techroll_speed = 8;
 air_dodge_startup_frames = 1;
 air_dodge_active_frames = 4;
 air_dodge_recovery_frames = 2;
-air_dodge_speed = 6;
+air_dodge_speed = 7.0;
 
 //roll animation frames
 roll_forward_startup_frames = 2;
@@ -105,6 +106,7 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 lanternfx = hit_fx_create( sprite_get( "lanternfx" ), 15 );
 my_article = noone; //declare to avoid errors
 airLock = false;
+transcounter = 0;
 
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;

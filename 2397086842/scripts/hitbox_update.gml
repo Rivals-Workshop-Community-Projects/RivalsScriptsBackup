@@ -47,6 +47,8 @@ if attack == AT_DSPECIAL{
 
 if attack == AT_NSPECIAL  && hbox_num <= 3{
 
+
+
     if batted == 0 {
     	
     		
@@ -60,6 +62,7 @@ if attack == AT_NSPECIAL  && hbox_num <= 3{
     	spawn_hit_fx(x - 4 + random_func(1,8,true),y - 4 + random_func(2,8,true), bfx2)
     	}
     	
+    	if hit_priority == 9 {
     	if hitbox_timer % 4 == 2 and  hbox_num == 3 {
     	spawn_hit_fx(x - 8 + random_func(1,16,true),y - 8 + random_func(2,16,true), bfx3)
     	}
@@ -67,11 +70,9 @@ if attack == AT_NSPECIAL  && hbox_num <= 3{
     	spawn_hit_fx(x,y ,bfx1)
     		}
     	} else {
-    		if hitbox_timer % 2 == 1 { 
-    	      spawn_hit_fx(x,y ,bfx4)
-    		}	
+	
     	}
-    	
+    	}
     	
     	
     hsp /= 1.01
@@ -137,6 +138,9 @@ if attack == AT_NSPECIAL  && hbox_num <= 3{
         
     nearbyhitbox = collision_circle( x, y , 32, asset_get("pHitBox"), true, true ) 
 	if nearbyhitbox != noone {
+		
+		hit_priority = 9 
+		
 		if nearbyhitbox.type == 1 && nearbyhitbox.hit_effect_x != -0.69 {
 			
 			if batted == 0{
@@ -147,12 +151,13 @@ if attack == AT_NSPECIAL  && hbox_num <= 3{
 		    player = nearbyhitbox.player
 		    if hitbox_timer > 1 {
 		    		
-		     spawn_hit_fx(x,y,302) 
+		     spawn_hit_fx(x,y,14) 
 		    shake_camera(4,4)
 		    sound_play(asset_get("sfx_ori_energyhit_medium"))
 		   sound_play(asset_get("sfx_kragg_rock_land"),false,noone, 0.4 + nearbyhitbox.damage/20)
              if nearbyhitbox.hit_effect_x == 0.69 {
              if player == orig_player {
+             sound_stop(sound_get("bathit"))	
              sound_play(sound_get("bathit"),false,noone,0.5 + nearbyhitbox.damage/20)
              }
              }
@@ -189,7 +194,7 @@ if attack == AT_NSPECIAL  && hbox_num <= 3{
                	
         }
         }
-        
+        	sound_stop(asset_get("sfx_bird_downspecial"))
              switch hbox_num {
                case 1 :
                sound_play(asset_get("sfx_bird_downspecial"),false,noone,0.4)
@@ -262,8 +267,8 @@ if attack == AT_NSPECIAL  && hbox_num <= 3{
                    vsp = 3
                }  
                } else {
-               	   hsp = 5 * nearbyhitbox.spr_dir
-                   vsp = -7
+               	   hsp = 7 * nearbyhitbox.spr_dir
+                   vsp = -2
                }
 	    }
 	}
@@ -430,7 +435,7 @@ if attack == AT_NSPECIAL  && hbox_num <= 3{
 ///strong bat
 
 if attack == AT_NSPECIAL && hbox_num > 3{
-	
+		        	hit_priority = 9
 	nearbyhitbox = collision_circle( x, y , 32, asset_get("pHitBox"), true, true ) 
 		if nearbyhitbox != noone {
 	        if nearbyhitbox.type == 1 && nearbyhitbox.hit_effect_x == -0.69 {
@@ -439,17 +444,19 @@ if attack == AT_NSPECIAL && hbox_num > 3{
 	        	if nearbyhitbox.attack == AT_FSTRONG {
 	        		batted = 1
 	        	}
+	        	
 	        	if nearbyhitbox.attack == AT_USTRONG {
 	        		batted = 2
 	        	}
+	        	
 	        	if nearbyhitbox.attack == AT_DSTRONG {
 	        		batted = 3
 	        	}
-	        	hit_priority = 9
+
 	        }
 
 	       ////hitback 
-	       if nearbyhitbox.type == 1 && nearbyhitbox.player_id != player_id && nearbyhitbox.hit_effect_x != -0.69  {
+	       if nearbyhitbox.type == 1 && nearbyhitbox.player_id != player_id {
 	       	        player = nearbyhitbox.player
                    switch hbox_num {
                      case 4 :
@@ -463,13 +470,13 @@ if attack == AT_NSPECIAL && hbox_num > 3{
                      case 6 :
                      create_hitbox(AT_NSPECIAL,3,x,y)
                      break;
-                     
                    }
                    
                    destroyed = 1
 	       	
 	       }
 		}
+		
 	if batted == 1 {
 		hsp = 7*spr_dir
 		if hitbox_timer % 14 < 6 {

@@ -79,13 +79,14 @@ if(item[11,3] == 1){
 if(my_hitboxID.attack==AT_DAIR){
 	if(my_hitboxID.hbox_num < 3){
 		old_hsp = old_hsp / 1.5;
-		//old_vsp=-3;
+		old_vsp -= 1;
 	}
 	
-	if(my_hitboxID.hbox_num==3){
+	if(my_hitboxID.hbox_num == 3 && (attack_down || strong_down || down_stick_down)){
 		old_vsp = dairBounce;	
 	}
 }
+
 
 // XP shard
 

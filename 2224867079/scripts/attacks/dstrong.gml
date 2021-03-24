@@ -18,7 +18,6 @@ set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 0);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX, sound_get("BlueSwish4"));
-set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_clairen_hit_med"));
 
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 14);

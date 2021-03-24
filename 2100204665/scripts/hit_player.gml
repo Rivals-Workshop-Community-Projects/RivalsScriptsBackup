@@ -4,13 +4,17 @@ if(my_hitboxID.attack == AT_FSPECIAL){
     hit_player_obj.blue_time = 600;
     hit_player_obj.blue_id = id;
     can_blue = false;
-    blue_time = hit_player_obj.blue_time;
-    blue_id = noone;
-    blue = true;
 	    if (has_rune("J")){
 	    	hit_player_obj.blue_time = 900;
 	    }
     }
+}
+
+if (my_hitboxID.attack == AT_EXTRA_1){
+	if (my_hitboxID.effect == 11 or my_hitboxID.can_hit_self){
+		sound_stop(sound_get("sfx_shock"));
+		sound_play(sound_get("sfx_shock"));
+	}
 }
 
 if (my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num == 7 && has_hit && can_blue){

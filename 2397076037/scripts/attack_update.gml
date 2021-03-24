@@ -76,7 +76,9 @@ if attack == AT_NSPECIAL {
         window_timer = 2
     }
     
+    
     if triggered = 1 && window_timer = 1{
+    	DT -= 2
         set_attack(AT_EXTRA_3)
         window_timer = 0 
         window = 1
@@ -556,13 +558,53 @@ if attack == AT_BAIR {
 
 
 if attack == AT_TAUNT {
+	
+	inactive = 60
+	
+    rankm += 2
+    
+    if rank < 4 && state_timer == 2 && window == 1{
+    	switch get_gameplay_time() % 6 {
+    		case 0:
+    		sound_play(sound_get("taunt1"),false,noone,1.5)
+    		break;
+    		
+    		case 1:
+    		sound_play(sound_get("taunt2"),false,noone,1.5)
+    		break;
+    		
+    		case 2:
+    		sound_play(sound_get("taunt3"),false,noone,1.5)
+    		break;
+ 
+     		case 3:
+    		sound_play(sound_get("taunt4"),false,noone,1.8)
+    		break;
+    		
+    		case 4:
+    		sound_play(sound_get("taunt5"),false,noone,1.8)
+    		break;
+    		
+    	    case 5:
+    		sound_play(sound_get("taunt6"),false,noone,1.8)
+    		break;
+    	}
+    	shake_camera(2,4)
+    	set_state(PS_CROUCH)
+    	state_timer = 0
+    	rankm += 120
+    	move_cooldown[AT_TAUNT] = 80
+    }
     
     if window == 1 {
     	
+    	can_jump = true 
+    	
         if !free {
-        	if state_timer % 17 == 0 && state_timer <= 90{
+        	if state_timer == 85{
         		DT += 1
                 move_cooldown[AT_DTILT] = 6
+                	move_cooldown[AT_TAUNT] = 80
         	}
         }
         

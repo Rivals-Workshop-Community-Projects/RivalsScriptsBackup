@@ -388,7 +388,7 @@ holdtimer = 0;
 tutstring = "";
 tutstring2 = "";
 noofmainmenu = 4;
-noofitems = 20;
+noofitems = 21;
 nooftechs = 19;
 noofV = 9;
 noofsubV = 0;
@@ -413,6 +413,9 @@ muted = true;
 muteaplha = 1;
 mutebg = false;
 
+// FS
+fs_char_chosen_final_smash = "custom";
+fs_char_portrait_y = 96;
 
 // alts
 altnum = 0;

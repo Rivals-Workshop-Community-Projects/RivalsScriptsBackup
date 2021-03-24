@@ -34,18 +34,18 @@ if has_rune("B") {
     reset_window_value(AT_BAIR, 4, AG_WINDOW_LENGTH);
 }
 
-set_num_hitboxes(AT_BAIR, 1);
+set_num_hitboxes(AT_BAIR, 2);
 
 set_hitbox_value(AT_BAIR, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 3);
-set_hitbox_value(AT_BAIR, 1, HG_HITBOX_X, -25);
+set_hitbox_value(AT_BAIR, 1, HG_HITBOX_X, -34);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_Y, -48);
-set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 114);
-set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 48);
+set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 74);
+set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 56);
 set_hitbox_value(AT_BAIR, 1, HG_PRIORITY, 2);
-set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 8);
+set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 7);
 set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 135);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .75);
@@ -54,5 +54,25 @@ set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 8);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 8);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, blue_new_stab_1 );
-set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
-set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("Hit2"));
+set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("Hit4"));
+
+//Sourspot
+set_hitbox_value(AT_BAIR, 2, HG_PARENT_HITBOX, 0);
+set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 3);
+set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 3);
+set_hitbox_value(AT_BAIR, 2, HG_HITBOX_X, 0);
+set_hitbox_value(AT_BAIR, 2, HG_HITBOX_Y, -50);
+set_hitbox_value(AT_BAIR, 2, HG_WIDTH, 57);
+set_hitbox_value(AT_BAIR, 2, HG_HEIGHT, 47);
+set_hitbox_value(AT_BAIR, 2, HG_PRIORITY, 1);
+set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 5);
+set_hitbox_value(AT_BAIR, 2, HG_ANGLE, 135);
+set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 4);
+set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, .75);
+set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, .4);
+set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, 8);
+set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, 8);
+set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, blue_new_stab_1 );
+set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, sound_get("Hit1"));

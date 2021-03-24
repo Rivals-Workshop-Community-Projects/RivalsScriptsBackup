@@ -557,6 +557,29 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	initPatch("1.6.5", "March 16th, 2021");
+	initPatchWords("-Up-Special vertical speed decreased
+	-Up-Special knockback decreased
+	-Increased Neutral-Special startup time
+	-Forward-Special can only be used once in air before landing, walljumping or getting hit
+	-Forward-Special recoil speed decreased");
+	initPatchImage(other.spr_dattack, 7, fa_center, 1, c_white, 0);	
+	 
+	 
+	initPatch("1.6.4", "March 13th, 2021");
+	initPatchWords("-Decreased Back-Air hitbox size
+	-Decreased Forward-Air hitbox size
+	-Adjusted Down-Air hitbox to match sprite better
+	-Adjusted Up-Air hitbox to match sprite better
+	-Adjusted Up-Tilt hitbox to match sprite better
+	-Recoded Down-Tilt and adjusted hitbox
+	-Slightly increased Forward-Tilt hitbox size
+	-Removed stray pixels on Down-Air hurtbox
+	-Fixed an oversight where Forward-Special effects were part of the move's hurtbox");
+	initPatchImage(other.spr_landinglag, 0, fa_right, -3, c_white, 0);	
+	 
+
+	 
 	initPatch("1.6.3", "March 7th, 2021");
 	initPatchWords("-Increased Neutral-Special base hitpause (4.25 -> 6.5)
 	-Increased Neutral-Special hitpause scaling (0.75 -> 0.85)

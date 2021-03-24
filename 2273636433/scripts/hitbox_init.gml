@@ -38,7 +38,7 @@ MorshuCanGrab = true;
 
 if (attack == 49){
 MattCanGrab = true;
-player_id.fs_hit = 0;
+player_id.docsocre = 0;
 }
 
 

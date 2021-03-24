@@ -44,13 +44,12 @@ sprite_change_offset("dash", 40, 70);
 sprite_change_offset("dashstart", 40, 70);
 sprite_change_offset("dashstop", 40, 70);
 sprite_change_offset("dashturn", 40, 70);
-
 sprite_change_offset("jumpstart", 32, 91);
-sprite_change_offset("jump", 32, 91);
+sprite_change_offset("jump", 40, 86);
 sprite_change_offset("airdodge", 32, 91);
-sprite_change_offset("doublejump", 32, 91);
+sprite_change_offset("doublejump", 40, 91);
 sprite_change_offset("walljump", 24, 85);
-sprite_change_offset("pratfall", 32, 70);
+sprite_change_offset("pratfall", 40, 50);
 sprite_change_offset("land", 32, 91);
 sprite_change_offset("landinglag", 32, 91);
 
@@ -80,7 +79,7 @@ sprite_change_offset("nspecial_proj2", 22, 35);
 sprite_change_offset("nspecial_air_proj", 45, 45);;
 sprite_change_offset("nspecial_air", 32, 70);
 sprite_change_offset("fspecial", 80, 70);
-sprite_change_offset("uspecial", 32, 120);
+sprite_change_offset("uspecial", 42, 95);
 sprite_change_offset("dspecial", 44, 79);
 sprite_change_offset("kawaii_dspecial", 46, 80);
 sprite_change_offset("taunt", 44, 88);
@@ -162,3 +161,7 @@ sprite_change_collision_mask("red_proj_grounded", false, 2, 68, 82, 97, 114, 0);
 //Final Smash
 sprite_change_offset("final_smash", 74, 106);
 sprite_change_offset("final_smash_proj", 72, 80);
+
+//Trail
+fx_star_trail = hit_fx_create(sprite_get("star_trail"), 30);
+fx_red_star_trail = hit_fx_create(sprite_get("red_star_trail"), 30);

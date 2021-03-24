@@ -95,6 +95,7 @@ if attack == AT_NSPECIAL {
                     cube.explodeTimer = heldExplodeTimer - compactTimer*7;
                     cube.explodeThreshhold = heldExplodeThreshhold;
                     cube.hitCooldown = 0;
+                    cube.was_grounded = false;
                 compactTimer = 0;
             }
             outline_color = [0, 0, 0];
@@ -162,6 +163,44 @@ if attack == AT_DSPECIAL {
             window = 2;
             window_timer = 12;
             reset_window_value(AT_DSPECIAL, 2, AG_WINDOW_INVINCIBILITY);
+        }
+        
+        if absorbedCube && window_timer == 3 {
+            sound_play(asset_get("sfx_ell_strong_attack_explosion"))
+            var cube = create_hitbox(AT_NSPECIAL, 1, x, y - 25);
+                cube.hsp = 12*spr_dir + hsp;
+                cube.vsp = -3 + vsp;
+                cube.bounceHsp = -1;
+                cube.bounceVsp = -4;
+                cube.power = compactTimer;
+                cube.willExplode = heldExplode;
+                cube.explodeTimer = heldExplodeTimer - compactTimer*7;
+                cube.explodeThreshhold = heldExplodeThreshhold;
+                cube.hitCooldown = 0;
+                cube.was_grounded = false;
+                
+            compactID = undefined; //id of player being compacted
+            compactTimer = 0; //level of compactness until cube is full
+            compactThreshhold = 30; //above value, cubes will explode
+            compactMax = 60; //max level of compactness
+            compactJunk = false; //true if hit junk, speeds up compacting time
+            cubeDist = 100000000000; //distance to nearest cube
+            cubeNearest = undefined; //id of nearest cube
+            holdingCube = false; //true if holding cube
+            throwHsp = 0; //hsp of throwing cube
+            throwVsp = 0;
+            bounceHsp = 0; //hsp of cube when bounce of enemy
+            bounceVsp = 0;
+            
+            heldPower = 0; //power of held cube
+            heldExplode = false; //inherits willExplode
+            heldExplodeMax = 600;
+            heldExplodeTimer = 600; //inherits explodeTimer
+            heldExplodeThreshhold = 120; //number of frame as which ticking starts
+            
+            absorbedCube = false;
+            outline_color = [0, 0, 0];
+            init_shader();
         }
     }
     
@@ -318,7 +357,9 @@ if window == 1 && window_timer == get_window_value(throwDir, 1, AG_WINDOW_LENGTH
         cubeHitbox.explodeTimer = heldExplodeTimer;
         cubeHitbox.explodeThreshhold = heldExplodeThreshhold;
         cubeHitbox.hitCooldown = 0;
+        cubeHitbox.was_grounded = false;
     holdingCube = false;
     heldExplode = false;
     heldExplodeTimer = heldExplodeMax;
+    has_airdodge = true;
 }

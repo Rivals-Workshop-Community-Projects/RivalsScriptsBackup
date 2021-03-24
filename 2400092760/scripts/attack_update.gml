@@ -16,7 +16,7 @@ if(attack == AT_NSPECIAL){
     if(window == 2 && window_timer == 1){
         Dgrab = false;
         reset_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER);
-        take_damage(player,1,5);
+        take_damage(player,1,4);
         with(obj_article1){
             if(player_id == other.id){
                 plimit -= 1;
@@ -159,8 +159,8 @@ if (attack == AT_FSPECIAL){
     if(window == 1){
         if(window_timer == 1){
             with(obj_article1){
-                if(state == 2 || state == 3){
-                    if(player_id == other.id){
+            	if(player_id == other.id){
+                    if(state == 2 || state == 3){
                         state = 40;
                         state_timer = 0;
                         image_index = 0;
@@ -280,7 +280,7 @@ if(attack == AT_DSPECIAL_AIR){
         if(window_timer == 1){
             getup_dir = spr_dir;
             
-            take_damage(player,1,6);
+            take_damage(player,1,5);
             DSPA_grab = false;
             with(obj_article1){
                 if(player_id == other.id){
@@ -540,7 +540,10 @@ if(attack == AT_UAIR){
     if(window == 3 && window_timer % 6 = 0 && !hitpause && window_timer < 16){
         create_hitbox(AT_UAIR, 1, x, y)
         create_hitbox(AT_UAIR, 2, x, y)
-        
+    }
+    if(window == 4 && window_timer % 6 = 0 && !hitpause && window_timer < 16){
+        create_hitbox(AT_UAIR, 3, x, y)
+        create_hitbox(AT_UAIR, 4, x, y)
     }
     if(UAGrab == true && window_timer < 15){
         if(UAGdir == 1){
@@ -581,7 +584,6 @@ if(attack == AT_DTILT){
                 }
             }
             if(!puddle_exist){
-                take_damage(player,1,1);
                         with(obj_article1){
                             if(player_id == other.id){
                                 plimit -= 1;
@@ -662,6 +664,10 @@ if(attack == AT_JAB){
     
     //#endregion
     
+    //#region Dattack
+    if attack = AT_DATTACK and window = 2 and has_hit_player {
+		can_ustrong = true
+}
     
 //#endregion
 

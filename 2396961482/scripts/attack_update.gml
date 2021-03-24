@@ -3,21 +3,20 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
-
-
+//I hope i didnt make ur code too messy when i did some slight changes. 
 
 switch (attack)
 {
     case AT_NSPECIAL:
-        if (window == 1 && window_timer == 1) move_cooldown[AT_NSPECIAL] = 60;
+        if (window == 1 && window_timer == 1) move_cooldown[AT_NSPECIAL] = 65;
         //Fast Fall disable
-        if (window == 1 && !was_parried) can_jump = true;
+        if (window == 1 && !was_parried) can_jump = false;
         can_fast_fall = false;
         can_move = false;
         break;
 
     case AT_DAIR:
-        can_fast_fall = false;
+        if (window == !2) can_fast_fall = false;//makes it so that you can hitfall this move
         if (window == 1)
         {
             hsp /= 1.2;
@@ -65,7 +64,7 @@ switch (attack)
                     break;
                 case 3:
                     can_wall_jump = true;
-                    if (get_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE) == 0 && has_hit && special_pressed)
+                    if (get_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE) == 0  && special_pressed)
                     {
                         set_attack(AT_USPECIAL);
                         window = 4;
@@ -101,5 +100,35 @@ switch (attack)
 }
 
 //jump cancel from fspecial jank
-if (attack == AT_FSPECIAL && has_hit_player && window == 2){
+if (attack == AT_FSPECIAL && has_hit && window == 2){
     can_jump = true;}
+//Stop
+if (attack == AT_FSPECIAL){
+    go_through = false;}
+//Ledge Snap    
+if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR && window == 2){
+    can_fast_fall = false;
+    if (window == 1 && window_timer == 1){
+        moved_up = false;
+        //reset the vspeed to the value in fspecial_air.gml
+        reset_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_VSPEED);
+    }
+    if (window == 2){
+        // MOVE UP AT LEDGE
+        if (!moved_up){
+            if (free && place_meeting(x+hsp,y,asset_get("par_block"))){
+                for (var i = 0; i < 40; i++){
+                    if (!place_meeting(x+hsp,y-(i+1),asset_get("par_block"))){
+                        y -= i;
+                        moved_up = true;
+                        break;
+                    }
+                }
+            }
+        }
+}
+}
+
+
+
+    

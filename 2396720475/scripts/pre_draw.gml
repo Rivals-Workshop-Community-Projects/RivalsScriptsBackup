@@ -32,6 +32,19 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AI
 	
 }
 
+// Tomo Super Jump Visual
+if (tsj_check){
+	if (tsj_timer < 56){
+		draw_sprite_ext(sprite_index, image_index, tsj_x1, tsj_y1, spr_dir, 1, 0, c_white, 0.75); 
+	}
+	if (tsj_timer < 58){
+		draw_sprite_ext(sprite_index, image_index, tsj_x2, tsj_y2, spr_dir, 1, 0, c_white, 0.5); 
+	}
+	
+	draw_sprite_ext(sprite_index, image_index, tsj_x3, tsj_y3, spr_dir, 1, 0, c_white, 0.2); 
+}
+
+
 if ("needleplatform_solid" in self && instance_exists(needleplatform_solid) && "can_zoop" in self && can_zoop){
 	if (x >= needleplatform_solid.x){
 		var Right_of = -1;
@@ -46,3 +59,4 @@ if (state == PS_RESPAWN){
 	draw_sprite_ext(sprite_get("plat_back"), -1, x, y, 1, 1, 0, c_white, 1);
 }
 shader_end();
+

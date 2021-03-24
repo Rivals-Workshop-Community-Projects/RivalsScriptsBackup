@@ -59,3 +59,14 @@ neutral_attacks[6] = AT_FAIR;
 neutral_attacks[7] = AT_BAIR;
 neutral_attacks[8] = AT_UTILT;
 neutral_attacks[9] = AT_DSPECIAL;
+
+xdist = 0;
+AIwait = 0
+temp_level = 9;
+facing = false;
+nearedge = false;
+randDI = 0
+rangedtimer = 300;
+inactive = 0;
+is_ai = true;
+recoverytimer = 0;

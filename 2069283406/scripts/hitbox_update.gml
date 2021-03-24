@@ -95,7 +95,7 @@ with oPlayer{
 	    if  url == other.player_id.url {
 	        if ((state == PS_AIR_DODGE and state_timer > 2) or state == PS_PRATFALL or
 		(attacking and ((attack == AT_USPECIAL && window > 5) or (attack == AT_DSPECIAL && vsp > 2) or 
-		(attack == AT_NSPECIAL && window > 1 && (!inrange or firerange <= 0))))){
+		(attack == AT_NSPECIAL && window > 1 && (!inrange))))){
 				if !attacking or (attacking && attack != AT_DSPECIAL)  {	
 					state_timer = 99
 					window_timer = 99
@@ -115,6 +115,7 @@ with oPlayer{
 		sound_play(asset_get("sfx_burnapplied"))
 		sound_play(sound_get("RI2"))
 					spawn_hit_fx(other.x - 10*spr_dir ,other.y - 10, ffireh)
+					has_air_dodge = true
       }
 	    }
    }    

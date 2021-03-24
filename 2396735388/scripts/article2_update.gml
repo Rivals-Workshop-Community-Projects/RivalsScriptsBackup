@@ -29,6 +29,8 @@ switch state {
             fake_ring_hitbox.sprite_index = sprite_get("fake_hitbox_mask");
             //fake_ring_hitbox.mask_index = sprite_get("fake_hitbox_mask");
             //fake_ring_hitbox.visible = true;
+            fake_ring_hitbox.image_xscale = .6 + .4 * !other.is_horizontal;
+            fake_ring_hitbox.image_yscale = .6 + .4 * other.is_horizontal;
         }
         if (state_timer + 1) >= max_lifetime - max_lifetime % num_frames[state] {
             state = 2;

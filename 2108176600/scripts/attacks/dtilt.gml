@@ -8,7 +8,7 @@ set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_DTILT, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DTILT, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
-set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 11);
+set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 9);
 
 set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAMES, 2);

@@ -82,7 +82,7 @@ else if ((super_armor >= 1 || soft_armor >= 1)
 	if (hitpause && hitstop > 0) {
 		if (inflicted_heavy_state) { hitstop += 15; hitstop_full += 15; }
 		else if (enemy_hitboxID.type != 1)  { hitstop += 3; hitstop_full += 3; }
-		else { hitstop += 1; hitstop_full += 1; }
+		else if (window != 3) { hitstop += 1; hitstop_full += 1; } //for projectiles, add hitstop only if epinel isn't charging fspecial
 		
 		//if a melee attack, give the attacker hitstop too
 		if (hit_player_obj.hitpause && hit_player_obj.hitstop > 0 && enemy_hitboxID.type == 1) {

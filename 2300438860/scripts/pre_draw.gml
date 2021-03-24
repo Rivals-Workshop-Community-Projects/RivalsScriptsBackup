@@ -91,16 +91,16 @@ if esave > 0 {
 	with saveid shader_end();
 }
 
-if attackbar > 8 or attackbar == -1 {
-	    draw_set_alpha(0.1);
+if attackbar > 0 or attackbar == -1 {
+	    draw_set_alpha(0.08);
         draw_rectangle_color(0,0,room_width,room_height,0,0,0,0,false);
     	draw_set_alpha(1);
 
 
 }
 
-if attackbar > 6 or move_cooldown[AT_NSPECIAL] > 40{
-	    draw_set_alpha(0.1);
+if attacking && attack == AT_NSPECIAL && window_timer < 2{
+	    draw_set_alpha(0.08);
         draw_rectangle_color(0,0,room_width,room_height,0,0,0,0,false);
     	draw_set_alpha(1);
 }

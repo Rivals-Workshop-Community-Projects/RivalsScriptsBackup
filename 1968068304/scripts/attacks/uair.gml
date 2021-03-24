@@ -32,7 +32,7 @@ set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 
 //recovery
 set_window_value(AT_UAIR, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UAIR, 4, AG_WINDOW_LENGTH, 11); //big cooldown
+set_window_value(AT_UAIR, 4, AG_WINDOW_LENGTH, 11); 
 set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_UAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);

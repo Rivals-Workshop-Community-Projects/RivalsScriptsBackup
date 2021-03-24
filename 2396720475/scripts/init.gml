@@ -6,6 +6,14 @@ Platform_Text = [ [44, "She cute tho"], [32, "Doki Doki"], [48, "100% Real Girl"
 platform_number = 0;
 
 trailer_effect = false;
+tsj_check = false;
+tsj_x1 = 0;
+tsj_x2 = 0;
+tsj_x3 = 0;
+tsj_y1 = 0;
+tsj_y2 = 0;
+tsj_y3 = 0;
+tsj_timer = 0;
 
 SecretColor = 0;
 ColorLock = 0;

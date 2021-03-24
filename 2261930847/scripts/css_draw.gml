@@ -1,12 +1,13 @@
-
 var temp_x = x + 8;
 var temp_y = y + 9;
+shader_end();
+
+var alt_cur = get_player_color(player);
  
-patch_ver = "2.0";
-patch_day = "12";
+patch_ver = "2.1";
+patch_day = "20";
 patch_month = "MAR";
  
-var num_alts = 16;
 var alt_cur = get_player_color(player);
  
 //Alt name init. var doesn't work with arrays lol
@@ -16,18 +17,87 @@ alt_name[1]  = "Shiny";
 alt_name[2]  = "Mudkip";
 alt_name[3]  = "Pyukumuku";
 alt_name[4]  = "Golisopod";
-alt_name[5]  = "Gastrodon";
-alt_name[6]  = "N/A";
-alt_name[7]  = "Goomy";
-alt_name[8]  = "Pikachu";
-alt_name[9]  = "Axolotl";
-alt_name[10] = "Military";
-alt_name[11] = "Mewtwo";
-alt_name[12] = "Shadow Mewtwo";
-alt_name[13] = "Handy";
-alt_name[14] = "Snom";
-alt_name[15] = "Dunsparce";
- 
+alt_name[5]  = "Gastrodon (W)";
+alt_name[6]  = "Gastrodon (E)";
+alt_name[7]  = "N/A";
+alt_name[8]  = "Goomy";
+alt_name[9]  = "Pikachu";
+alt_name[10]  = "Axolotl";
+alt_name[11] = "Military";
+alt_name[12] = "Mewtwo";
+alt_name[13] = "Shadow Mewtwo";
+alt_name[14] = "Handy";
+alt_name[15] = "Snom";
+alt_name[16] = "Dunsparce";
+alt_name[17] = "Emboar";
+alt_name[18] = "Swalot";
+alt_name[19] = "Sableye";
+alt_name[20] = "Machamp";
+alt_name[21] = "Haxorous";
+alt_name[22] = "Venusaur";
+alt_name[23] = "Charmeleon";
+alt_name[24] = "Gigalith";
+alt_name[25] = "Solgaleo";
+alt_name[26] = "Lunala";
+alt_name[27] = "Emolga";
+alt_name[28] = "Drizzile";
+alt_name[29] = "Coalossal";
+alt_name[30] = "Inverted";
+alt_name[31] = "Peabody";
+
+
+//stolen from ASDF Guy which stole it from Kirby, if you steal this keep the chain going
+if !("hue" in self) hue = 0
+if get_player_color(player) = 23 {
+	hue+=.5 
+	if hue>255 hue-=255;
+	//make hue shift every step + loop around
+
+	color_rgb=make_color_rgb(192, 33, 255);
+	//make a gamemaker color variable using kirby's default color (body)
+	hue2=(color_get_hue(color_rgb)+hue) mod 255;
+	//shift that colour by Hue, make sure it also loops
+	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
+	//make a gamemaker color variable using the new hue
+	set_color_profile_slot(23,0,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	//set the new color using rgb values from the gamemaker color
+	
+		color_rgb=make_color_rgb(255, 155, 217);
+	hue2=(color_get_hue(color_rgb)+hue) mod 255;
+	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
+	set_color_profile_slot(23,1,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	
+		color_rgb=make_color_rgb(164, 161, 173);
+	hue2=(color_get_hue(color_rgb)+hue) mod 255;
+	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
+	set_color_profile_slot(23,2,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	
+		color_rgb=make_color_rgb(255, 231, 0);
+	hue2=(color_get_hue(color_rgb)+hue) mod 255;
+	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
+	set_color_profile_slot(23,3,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	
+		color_rgb=make_color_rgb(213, 7, 7);
+	hue2=(color_get_hue(color_rgb)+hue) mod 255;
+	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
+	set_color_profile_slot(23,4,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	
+		color_rgb=make_color_rgb(255, 124, 10);
+	hue2=(color_get_hue(color_rgb)+hue) mod 255;
+	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
+	set_color_profile_slot(23,5,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	
+		color_rgb=make_color_rgb(173, 173, 209);
+	hue2=(color_get_hue(color_rgb)+hue) mod 255;
+	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
+	set_color_profile_slot(23,6,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	
+		color_rgb=make_color_rgb(250, 255, 255);
+	hue2=(color_get_hue(color_rgb)+hue) mod 255;
+	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
+	set_color_profile_slot(23,7,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+}
+init_shader();
  
 //Patch
  
@@ -36,91 +106,37 @@ draw_set_halign(fa_left);
 textDraw(temp_x + 2, temp_y + 30, "medFont", c_white, 0, 1000, 1, true, 1, "VER. " + patch_ver);
  
 textDraw(temp_x + 2, temp_y + 50, "fName", c_white, 0, 1000, 1, true, 1, patch_day + " " + patch_month);
- 
- 
- 
-//Alt
 
+///Alt
+ 
 rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
  
-for(i = 0; i < num_alts; i++){
-switch (i) {
-	case 1: // Blue Robe
-	robe_color = make_color_rgb(238, 156, 246);
-	break;
-	case 2: // Yellow Robe
-	robe_color = make_color_rgb(0, 169, 235);
-	break;
-	case 3: // Green Robe
-	robe_color = make_color_rgb(102, 97, 96);
-	break;
-	case 4: // Black Robe
-	robe_color = make_color_rgb(212, 224, 215);
-	break;
-	case 5: // Pink Robe
-	robe_color = make_color_rgb(240, 156, 180);
-	break;
-	case 6: // Purple Robe
-	robe_color = make_color_rgb(77, 119, 195);
-	break;
-	case 7: // Gameboy Robe
-	robe_color = make_color_rgb(175, 148, 189);
-	break;
-	case 8: // Brown Robe
-	robe_color = make_color_rgb(221, 241, 96);
-	break;
-	case 9: // Gray Robe
-	robe_color = make_color_rgb(255, 203, 228);
-	break;
-	case 10: // White Robe
-	robe_color = make_color_rgb(66, 84, 69);
-	break;
-	case 11: // Cyan Robe
-	robe_color = make_color_rgb(116, 54, 159);
-	break;
-	case 12: // Orange Robe
-	robe_color = make_color_rgb(255, 147, 45);
-	break;
-	case 13: // Light Green Robe
-	robe_color = make_color_rgb(97, 165, 219);
-	break;
-	case 14: // Dark Blue Robe
-	robe_color = make_color_rgb(77, 255, 255);
-	break;
-	case 15: // Dark Red Robe
-	robe_color = make_color_rgb(251, 233, 139);
-	break;
-	default:
-	robe_color = make_color_rgb(111, 200, 219);
-	break;
+for(var i = 0; i < ceil(array_length(alt_name)/16); i++){
+    for(var j = 0; j < min(array_length(alt_name)-i*16, 16); j++){
+        var draw_color = (j+16*i == alt_cur) ? c_white : c_gray;
+        var draw_x = temp_x + 2 + 10 * j;
+        rectDraw(draw_x, temp_y + 137 - 5*i, draw_x + 7, temp_y + 140 - 5*i, draw_color);
+    }
 }
-alt_color[i] = robe_color;
-}
- 
-for(i = 0; i < num_alts; i++){
-    var draw_color = (i == alt_cur) ? c_white : alt_color[i];
-    var draw_x = temp_x + 2 + 10 * i;
-    rectDraw(draw_x, temp_y + 137, draw_x + 7, temp_y + 140, draw_color);
-}
-
  
 draw_set_halign(fa_left);
  
 //include alt. name
-textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "" + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1) + ": " + alt_name[alt_cur]);
+textDraw(temp_x + 2, temp_y + 119, "fName", c_white, 0, 1000, 1, true, 1, "" + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1) + ": " + alt_name[alt_cur]);
  
 //exclude alt. name
-//textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
+//textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "" + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
  
  
  
+user_event(12);
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
  
 draw_set_font(asset_get(argument[2]));
  
 if argument[7]{ //outline. doesn't work lol
-    for (i = -1; i < 2; i++){
-        for (j = -1; j < 2; j++){
+    for (var i = -1; i < 2; i++){
+        for (var j = -1; j < 2; j++){
             draw_text_ext_transformed_color(argument[0] + i * 2, argument[1] + j * 2, argument[9], argument[4], argument[5], argument[6], argument[6], 0, c_black, c_black, c_black, c_black, 1);
         }
     }
@@ -135,4 +151,3 @@ return string_width_ext(argument[9], argument[4], argument[5]);
 #define rectDraw(x1, y1, x2, y2, color)
  
 draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argument[4], argument[4], argument[4], argument[4], false);
-

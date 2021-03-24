@@ -382,6 +382,25 @@ if (has_rune("N")){
 	}
 }
 
+if (has_rune("O")){
+	if (attack == AT_DSPECIAL){
+		if (window == 2){
+			if (window_timer == 1){
+				if (!hitpause && !hitstop){
+					var rand = random_func(1,5,true);
+					if (rand == 4 && eggdog_count <= max_eggs){
+						var chugnus = instance_create(x,y,"oPlayer",player);
+	                    chugnus.custom_clone = true;
+	                    chugnus.disable_ai = false;
+	                    chugnus.owner_player = player;
+	                    eggdog_count++;
+					}
+				}
+			}
+		}
+	}
+}
+
 if (attack == 49){
 	if (state_timer == 1){
 	var_eggX = x;

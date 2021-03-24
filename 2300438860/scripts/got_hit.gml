@@ -20,6 +20,7 @@ if attackbar > 0  && enemy_hitboxID.damage > 3{
      move_cooldown[AT_FTILT] = enemy_hitboxID.damage*4 + 10
      ohsp = x
      ovsp = y - 10
+     move_cooldown [AT_NSPECIAL] = 180
 }
 
 

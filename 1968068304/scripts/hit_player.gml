@@ -109,7 +109,7 @@ switch (my_hitboxID.attack) {
 	
 	case AT_JAB:
 		//if on a platform, drag the hit player with epinel.
-		if (!instance_exists(epinel_other_standing_on_platform_id) || hit_player_obj.state_cat != SC_HITSTUN || epinel_other_standing_on_platform_id.hsp == 0) break;
+		if (!instance_exists(epinel_other_standing_on_platform_id) || (hit_player_obj.state_cat != SC_HITSTUN && hit_player_obj.state != PS_HITSTUN_LAND) || epinel_other_standing_on_platform_id.hsp == 0) break;
 		//don't drag if the opponent's standing on the same platform.
 		if (hit_player_obj.epinel_other_standing_on_platform_id == epinel_other_standing_on_platform_id) break;
 		hit_player_obj.old_hsp += clamp(epinel_other_standing_on_platform_id.hsp, -6, 6);
@@ -169,7 +169,9 @@ switch (my_hitboxID.attack) {
 				
 				if (is_standing_on_platform) {
 					with (epinel_other_standing_on_platform_id) {
+						//stop crumbling
 						crumble = max(crumble, 1.9);
+						//stop moving
 						hsp = 0;
 					}
 				}
@@ -180,6 +182,7 @@ switch (my_hitboxID.attack) {
 					if (epinel_grabbed_player_object_id == hit_player_obj && is_standing_on_platform) {
 						hit_player_obj.hitstop = 8;
 						hitstop += 7;
+						my_hitboxID.hitbox_timer = 10; //destroy this hitbox for the next frame?
 						set_hitbox_value(AT_DATTACK, 6, HG_WINDOW_CREATION_FRAME, 0);
 						sound_play(asset_get("sfx_kragg_roll_turn"));
 						with (epinel_other_standing_on_platform_id) {
@@ -220,9 +223,14 @@ switch (my_hitboxID.attack) {
 			epinel_grabbed_player_x_offset = round(x - hit_player_obj.x);
 			epinel_grabbed_player_y_offset = round(y - hit_player_obj.y);
 			
-			
-			
 			epinel_grabbed_player_suplex_distance = ceil( scr_get_player_width(hit_player_obj) / 2) + 4;
+			
+			//if on a platform, stop the platform from crumbling
+			if instance_exists(epinel_other_standing_on_platform_id) {
+				with (epinel_other_standing_on_platform_id) {
+					crumble = max(crumble, 1.9);
+				}
+			}
 			
 			//if (hit_player_obj.hurtbox_spr <= 0) { epinel_grabbed_player_suplex_distance = 20; }
 			//else { epinel_grabbed_player_suplex_distance = ceil(sprite_get_width(hit_player_obj.hurtbox_spr) / 2) + 4; }
@@ -428,16 +436,23 @@ switch (my_hitboxID.attack) {
 	break;
 	
 	case AT_USPECIAL:
-		//inflict weak inertia
-		if (was_parried || hit_player_obj.invincible) break;
-		hit_player_obj.epinel_other_weightless_inflicted = max(epinel_other_weightless_inflicted, 1);
-		hit_player_obj.epinel_other_player_that_inflicted_weightless_id = id;
-		spawn_hit_fx(hit_player_obj.x, round(hit_player_obj.y - hit_player_obj.char_height/2), epinel_fx_inertia);
 		
-		//add hitstun if already in hitstun
-		if (hit_player_obj.state_cat == SC_HITSTUN && hit_player_obj.hitstun > 2) {
-			hit_player_obj.hitstun += 15;
-		} 
+		if (was_parried || hit_player_obj.invincible) break;
+		
+		with (hit_player_obj) {
+			//inflict weak inertia
+			epinel_other_weightless_inflicted = max(epinel_other_weightless_inflicted, 1);
+			epinel_other_player_that_inflicted_weightless_id = other.id;
+		
+			//add hitstun and launch if already in hitstun	
+			if (state_cat == SC_HITSTUN && hitstun > 2) {
+				hitstun += 15;
+				if (!hitpause) vsp -= 1;
+			}
+		
+			spawn_hit_fx(x, round(y - char_height/2), other.epinel_fx_inertia);
+		
+		}
 	break;
 	
 }

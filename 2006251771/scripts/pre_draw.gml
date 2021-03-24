@@ -16,8 +16,3 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) {
 		}
 	}
 }
-
-// Fair landing hitbox parry. Why does it have to be in this script? Who knows.
-if (attack == AT_FAIR && was_parried) {
-	fair_parry = true;
-}

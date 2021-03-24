@@ -40,7 +40,7 @@ set_hitbox_value(AT_FTILT, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 9);
 set_hitbox_value(AT_FTILT, 1, HG_ANGLE, 50 - has_rune("J") * 55 );
 set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, 0.8);
+set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, 0.7);
 set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));

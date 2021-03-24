@@ -74,24 +74,6 @@ for (i = 0; i < len; i++){
 
 
 
-// Alt costume
-
-var alt_cur = get_player_color(player);
-
-rectDraw(x + 10, y + 10, 201, 5, c_black);
- 
-for(i = 0; i < num_alts; i++){
-    var draw_color = (i == alt_cur) ? c_white : c_gray;
-    var draw_x = x + 78 + 8 * i;
-    rectDraw(draw_x, y + 10, 5, 3, draw_color);
-}
-
-var txt = "#" + string(alt_cur);
-
-rectDraw(x + 76, y + 15, 41, 20, c_black);
-
-textDraw(x + 82, y + 19, "fName", c_white, 20, 1000, fa_left, 1, false, 1, txt);
-
 
 
 #define maskHeader

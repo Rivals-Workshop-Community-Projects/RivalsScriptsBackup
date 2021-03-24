@@ -46,10 +46,8 @@ if (my_hitboxID.attack == AT_DSPECIAL){
 
 
 if (my_hitboxID.attack == 49){
-	fs_hit = fs_hit + 1
+	docsocre = docsocre + 1
 } 
-
-
 
 if (has_rune ("A")) && (has_rune ("B")) && (has_rune ("C")) && (has_rune ("D")) && (has_rune ("E")) && (has_rune ("F")) && (has_rune ("G")) && (has_rune ("H")) && (has_rune ("I")) && (has_rune ("J")) && (has_rune ("K")) && (has_rune ("L")) && (has_rune ("M")) && (has_rune ("N")) && (has_rune ("O")){
 	if (my_hitboxID.attack == AT_NSPECIAL) {

@@ -166,12 +166,22 @@ fire_taunt_sound_frame = 5;
 walle_taunt_sound = sound_get("sfx_victory")
 walle_taunt_type = 2
 
+feri_costume = sprite_get("costume_quagsire");
+
 Hikaru_Title = "Water Fish";
 
 childsupport = 1;
 
-/* kirbyability = 16;
-swallowed = 0 */
+kirbyability = 16;
+swallowed = 0 
+enemykirby = noone;
+
+
+nname = "Quagsire"
+
+ncode1 = "The Water Fish Pokemon,"
+ncode2 = "He rolls around in mud to gain power."
+ncode3 = "He doesn't like anime, so be wary."
 
 pkmn_stadium_front_img = sprite_get("pokemonstadium1");
 pkmn_stadium_back_img = sprite_get("pokemonstadium2");

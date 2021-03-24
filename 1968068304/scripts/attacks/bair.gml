@@ -117,9 +117,9 @@ set_hitbox_value(AT_BAIR, 2, HG_HITBOX_Y, -34); //-30
 set_hitbox_value(AT_BAIR, 2, HG_WIDTH, 14);
 set_hitbox_value(AT_BAIR, 2, HG_HEIGHT, 12);
 set_hitbox_value(AT_BAIR, 2, HG_PRIORITY, 5);
-set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 6);
+set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 7);
 set_hitbox_value(AT_BAIR, 2, HG_ANGLE, 140);
-set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 7.5);
+set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, 0.5);
@@ -130,8 +130,8 @@ set_hitbox_value(AT_BAIR, 2, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, 305 ); //"basic sweetspot"
 set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_BAIR, 2, HG_EXTRA_CAMERA_SHAKE, 2);
-set_hitbox_value(AT_BAIR, 2, HG_SDI_MULTIPLIER, 2); //make this move's followups a little more escapable.
-set_hitbox_value(AT_BAIR, 2, HG_HITSTUN_MULTIPLIER, 1.05); //stun longer, so that it can still KO even with the inertia effect
+set_hitbox_value(AT_BAIR, 2, HG_SDI_MULTIPLIER, 1.5); //make this move's followups a little more escapable.
+set_hitbox_value(AT_BAIR, 2, HG_HITSTUN_MULTIPLIER, 1); 
 
 //throw hit.
 set_hitbox_value(AT_BAIR, 3, HG_PARENT_HITBOX, 0);

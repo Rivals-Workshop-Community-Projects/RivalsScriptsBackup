@@ -6,24 +6,19 @@ if(attack == AT_JAB && was_parried){
 
 if(attack == AT_UTILT){
 	can_fast_fall = false;
-	if (item[11,3] == 1 && window < 4){
-		suppress_stage_music(0.5, 0.015);
+	if (item[11,3] == 1){
+		if(window < 4){
+			suppress_stage_music(0.35, 0.02);
+		}
+		if(window == 4 && window_timer == 18){
+			shake_camera( 8, 6 );
+		}
 	}
-	//if (window == 1 && window_timer == get_window_value(AT_UTILT,1,AG_WINDOW_LENGTH)){
-	if (window < 6 && window_timer < 15){
+	if (window < 5 && window_timer < 15){
 		hud_offset = 60;
 	}
-	if (window == 3 && (attack_down || up_stick_down)){
-		window = 5;
-		window_timer = 0;
-	}
 	
-	if (window == 5){
-		if(window_timer == get_window_value(AT_UTILT,5,AG_WINDOW_LENGTH)){
-			window = 6;
-			window_timer = 0;
-		}
-		
+	if (window <= 4){
 		if(item[23, 3] == 1){
 			set_attack_value(AT_UTILT, AG_OFF_LEDGE, 1);
 			if(!free){
@@ -38,7 +33,7 @@ if(attack == AT_UTILT){
 		}
 	}
 	
-	if(window == 6){
+	if(window == 5){
 		if(item[23, 3] && hsp < -1){
 			hsp++;
 		}
@@ -261,12 +256,13 @@ if (attack == AT_FSPECIAL){
 	can_wall_jump = false;
 	
 	if(was_parried){
+		super_armor = false;
 		fspecialTimer = 0;
 		hsp = 0;
 		old_hsp = 0;
 	}
 	
-	if (window == 1 && window_timer >= 7 && free){
+	if (window == 1 && window_timer >= 13 && free){
 		vsp -= 5;
 	}
 
@@ -305,11 +301,23 @@ if (attack == AT_FSPECIAL){
 		}
 		
 		if(free){
+			if(vsp > 9){
+				fspecialTimer += 0.5;
+			} else {
+				fspecialTimer -= 0.5;
+			}
 			if(taxiAirStart = false){
-				taxiMaxHSP = 7;
+				taxiMaxHSP = 6;
 				taxiAirStart = true;
 				if(up_down || special_down){
-					vsp -= 7;
+					var postBounceTimer = fspecialTimer;
+					postBounceTimer -= 20;
+					if(postBounceTimer < 15){
+						fspecialTimer = 15;
+					} else {
+						fspecialTimer = postBounceTimer;
+					}
+					vsp -= 6;
 					hsp /= fspecialLedgeHSP;
 					spawn_hit_fx( x - (spr_dir * 10) , y , carhopFX);
 					if(item[22, 7] == false){
@@ -341,10 +349,11 @@ if (attack == AT_FSPECIAL){
 //				taxiLanded = false;
 //			}
 //		}
-		if(hsp == 0 && fspecialTimer >= 3){
+		if(hsp == 0 && fspecialTimer >= 3 && (has_hit_player || place_meeting(x+hsp+(20*spr_dir),y,asset_get("par_block")))){
 			sound_play( asset_get("sfx_blow_medium2"));
 			attack_end();
 			destroy_hitboxes();
+			super_armor = false;
 			if(carbounceRestoredJumps == false && djumps > 0){
 				djumps = 0;
 				carbounceRestoredJumps = true;
@@ -358,7 +367,7 @@ if (attack == AT_FSPECIAL){
 			sound_play( asset_get("mfx_place_marker"));
 		}
 			
-		if(!was_parried){
+		if(!was_parried && !hitpause){
 			if(abs(hsp) > 0){
 				if(abs(hsp) < taxiMaxHSP){ 
 					hsp = hsp + (spr_dir * 0.6);
@@ -368,17 +377,18 @@ if (attack == AT_FSPECIAL){
 			}
 		}
 
-		if(free && vsp < 11){
+		if(free && vsp < 10){
 			vsp = vsp + 0.6;
-			hsp /= 1.1;
+			hsp /= 1.02;
 		}
 		
 		if(fspecialTimer > 3 && !was_parried){
 			create_hitbox( AT_FSPECIAL, 1, x, y );
+			super_armor = true;
 		}
 		if(fspecialTimer >= 15 && !was_parried){
-			can_jump = true;
-			if((item[22, 3] == 1 || !free) && (special_pressed || (!joy_pad_idle && joy_dir > 60 + (90 * spr_dir) && joy_dir < 120 + (90 * spr_dir)))){
+			//can_jump = true;
+			if((item[22, 3] == 1 || !free) && (attack_pressed || (!joy_pad_idle && joy_dir > 60 + (90 * spr_dir) && joy_dir < 120 + (90 * spr_dir)))){
 				destroy_hitboxes();
 				window = 4;
 				window_timer = 0;
@@ -386,10 +396,19 @@ if (attack == AT_FSPECIAL){
 			}
 			if(shield_pressed && vsp > 0){
 				destroy_hitboxes();
+				super_armor = false;
 				window = 7;
 				window_timer = 0;
 				fspecialTimer = 0;
 			}
+		}
+		
+		if(fspecialTimer >= 40){
+			destroy_hitboxes();
+			super_armor = false;
+			window = 7;
+			window_timer = 0;
+			fspecialTimer = 0;
 		}
 		
 		if (item[15,3] == 1 && !hitpause) {
@@ -409,9 +428,9 @@ if (attack == AT_FSPECIAL){
 			off_edge = false;
 		}
 		
-		if(free && vsp < 11){
+		if(free && vsp < 10){
 			vsp = vsp + 0.6;
-			hsp /= 1.01;
+			hsp /= 1.02;
 		}
 		
 		if(window_timer == 1 && !was_parried && abs(hsp) < fspecialDriftBoost){ 
@@ -426,13 +445,18 @@ if (attack == AT_FSPECIAL){
 		attack_end();
 	}
 	
+	if (window == 6 && has_hit){
+		can_jump = true;
+		can_fast_fall = true;
+	}
+	
 	if (window == 7){
 		if(free && vsp > 3){
 			vsp = 3;
 		}
 		can_wall_jump = true;
 	}
-	move_cooldown[AT_FSPECIAL] = 60;
+	move_cooldown[AT_FSPECIAL] = 40;
 }
 
 if(attack == AT_TAUNT){

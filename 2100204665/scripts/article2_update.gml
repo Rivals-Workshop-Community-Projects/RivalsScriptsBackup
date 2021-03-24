@@ -15,6 +15,12 @@ if (article_animation_frame == 6){
 x=host.x-(16*spr_dir)+host.hsp;	
 y=host.y-(host.char_height-18)+host.vsp;
 
+if (host != noone){
+    if (host.state == PS_CROUCH){
+    y = host.y -(host.char_height-36)+host.vsp;
+   } else y=host.y-(host.char_height-18)+host.vsp;
+} 
+
 //if (article_animation_frame > 3 && article_animation_frame < 6 && !("made_hitbox" in self)){
 //    var hitbox = create_hitbox(AT_EXTRA_1, 2, floor(x+5), floor(y-20));
 //    made_hitbox = true;

@@ -23,7 +23,7 @@ switch (attack)
 		attack = has_rune("A")&&CheckJumpStrong()?AT_NTHROW:AT_DTILT;
 		break;
 	case AT_TAUNT:
-		if (down_down)
+		if (down_down || up_down)
 			attack = AT_EXTRA_1;
 		else if (get_player_color(player) == 12 && !practice)
 			attack = AT_TAUNT_2;

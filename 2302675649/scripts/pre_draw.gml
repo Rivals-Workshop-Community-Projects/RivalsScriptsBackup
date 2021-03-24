@@ -138,6 +138,24 @@ if ("rollArray" in self)
 						break;
 				}
 				break;
+
+			case 49:
+				switch (window)
+				{
+					case 1:
+						draw_circle_colour(x, y-floor(char_height/2), floor(ease_backOut(0, 100, window_timer, get_window_value(49, 1, AG_WINDOW_LENGTH), 3)), c_black, c_black, 0);
+						break;
+					case 2:
+						draw_circle_colour(x, y-floor(char_height/2), 100, c_black, c_black, 0);
+						break;
+					case 3:
+						if (window_timer < 20)
+							draw_circle_colour(x, y-floor(char_height/2), 100+floor(room_width*window_timer/20), c_black, c_black, 0);
+						else if (window_timer < 30)
+							draw_rectangle_color(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
+						break;
+				}
+				break;
 		}
 	}
 

@@ -26,7 +26,7 @@ set_color_profile_slot_range( 5, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 11 );
+set_num_palettes( 12 );
 
 // prince fluff
 set_color_profile_slot( 1, 0, 132, 222, 255 ); //rock
@@ -107,6 +107,14 @@ set_color_profile_slot( 10, 2, 163, 224, 193 ); //band white
 set_color_profile_slot( 10, 3, 83, 163, 166 ); //band blue
 set_color_profile_slot( 10, 4, 255, 255, 255 ); //eye white
 set_color_profile_slot( 10, 5, 69, 69, 69 ); //eye blue
+
+// Rocky Blaboa
+set_color_profile_slot( 11, 0, 80, 222, 183 ); //rock
+set_color_profile_slot( 11, 1, 138, 40, 40 ); //feet
+set_color_profile_slot( 11, 2, 119, 0, 255 ); //band white
+set_color_profile_slot( 11, 3, 73, 0, 255 ); //band blue
+set_color_profile_slot( 11, 4, 255, 255, 255 ); //eye white
+set_color_profile_slot( 11, 5, 70, 50, 161 ); //eye blue
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

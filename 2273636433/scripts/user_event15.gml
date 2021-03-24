@@ -268,8 +268,6 @@ with phone{
 	Kirby only copies the next Megavitamin in the queue and keeps it forever.
 	For Kirby to change the Megavitamin he has to lose his ability and re-inhale Dr. Mele Mario
 	
-	Kirby's Megavitmins have less lifetime and damage but also less cooldown.
-	
 	Everything else Dr. Melee Mario's Megavitmin, Kirby copies.");
 	initTipImage(player_id.spr_nspecialk, -5, fa_center, 1, c_white, 0);
 	
@@ -364,7 +362,48 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
-	 
+	
+	initPatch("1.38", "22 March, 2021");
+	initPatchWords("Runes")
+	initPatchWords_ext("In overflow runes Dr Melee Mario gets Cursade down b and fspecial.", fa_left, c_gray, 1, 0);
+	initPatchWords("Misc")
+	initPatchWords_ext("Added a new alt
+	When you galxey someone on last stock it plays the smash final hit sound", fa_left, c_gray, 1, 0);
+	
+	initPatch("1.37", "17 March, 2021");
+	initPatchWords("Alts")
+	initPatchWords_ext("Now with workshop having more alts Dr melee mario now has 22 total alts instead of 16!
+	Try playing the luigi alt agasint a Mario for a surpise
+	Red Medic Alt colors modified", fa_left, c_gray, 1, 0);
+	initPatchWords("Kirby Ability")
+	initPatchWords_ext("Vsiaul updated: Now has a head mirror
+	Kirby Ability works like Dr Melee Mario's:
+	
+	-Uses custom bounce code now
+-Lifetime increased from 75 to 90
+-Cooldown extended to be the same as Dmm
+-Rotation logic is now consistent
+-Damage, Knockback, KBS and hitpause scaling are now the same as  Dmm
+	
+	Updated the kirby section in fighter tips in this munophone", fa_left, c_gray, 1, 0);
+	initPatchWords("Reflector")
+	initPatchWords_ext("Logic updated:
+- simplified some things
+- it nows prioritizes speed over direction
+- it gives 12 frames of inv insteas of 10", fa_left, c_gray, 1, 0);	
+	initPatchWords("Dash Sprite")
+	initPatchWords_ext("Fixed a miscolored pixel", fa_left, c_gray, 1, 0);	
+	
+	initPatch("1.36", "13 March, 2021");
+	initPatchWords("Fspecial")
+	initPatchWords_ext("-Reflect code tweaks to increase reliability
+-Reflect active time (6 -> 9)", fa_left, c_gray, 1, 0);
+	initPatchWords("Bair")
+	initPatchWords_ext("Bair sweetspot active time (2 -> 3)
+Bair sourpspot active time ( 4 -> 3)", fa_left, c_gray, 1, 0);
+	initPatchWords("Jab")
+	initPatchWords_ext("Jab whifflag removed", fa_left, c_gray, 1, 0);	
+	
 	initPatch("1.35", "10 March, 2021");
     initPatchWords("Bug Fix")
     initPatchWords_ext("Fixed a Bug where interrupting Dspecial while there were pills inside withouth touching said pills resulted in a anormally long pill duration.

@@ -1,5 +1,135 @@
 ///
 
+
+
+
+
+if rank >= 4 && !hitpause && get_gameplay_time() % 10-rank == 0{
+	shake_camera(1,1)
+	
+	
+}
+
+if triggered && !hitpause && get_gameplay_time() % 10-rank == 3{
+	shake_camera(1,1)
+	
+}
+
+if rankm >= 0 && !hitpause {
+
+	inactive -= 1
+	
+    if inactive < 0 {
+	rankm -= 1
+	}
+	
+	
+	if inactive < -120 {
+		rankm -= 1
+	}
+	
+
+	
+}
+
+
+
+if rank > 0  {
+
+if rankm <= 0 {
+	if rank == 1 {
+	   sound_play(sound_get("rankd"),false,noone,1) 
+	    prevrank = rank 
+    } else {
+    	 prevrank = rank 
+    }
+    
+ rankm += 120
+ rank -= 1
+ 
+
+
+
+}
+}
+
+if rank < 6  {
+   if rankm >= 240 {	
+   	 rankm -= 120
+     rank += 1
+     switch rank {
+     	case 1 :
+     	sound_stop(sound_get("rankd")) 	
+     	if rank > prevrank {
+     	sound_play(sound_get("rankc"),false,noone,0.8) 	
+     	prevrank = rank
+     	}
+     	break;
+     	
+     	case 2 :
+     	if rank > prevrank {
+     	sound_stop(sound_get("rankc")) 	
+     	sound_play(sound_get("rankb"),false,noone,0.8) 
+     	prevrank = rank
+     	}
+     	break;
+     	
+     	case 3 :
+     	if rank > prevrank {
+     	sound_stop(sound_get("rankb")) 	
+     	sound_play(sound_get("ranka"),false,noone,0.8) 
+     	prevrank = rank
+     	}
+     	break;
+     
+        case 4 :
+        if rank > prevrank {
+     	sound_stop(sound_get("ranka")) 	
+     	sound_play(sound_get("ranks"),false,noone,0.8) 
+     	prevrank = rank
+        }
+        
+     	 if hitpause {
+     		hitstop += 4
+     		hit_player_obj.hitstop += 4
+     	}
+     	
+         	spawn_hit_fx(x,y - 40,SC)
+     	    spawn_hit_fx(x,y,lighten)
+     		sound_play(sound_get("counterhit"),false,noone,0.8)
+     		sound_play(sound_get("RI"),false,noone,0.6)
+     	
+     	break;
+     	
+     	case 5 :
+     	if rank > prevrank {
+     	sound_stop(sound_get("ranks")) 	
+     	sound_play(sound_get("rankss"),false,noone,0.8) 
+     	prevrank = rank
+     	}
+     	break;
+     	
+     
+        case 6 :
+        if rank > prevrank {
+     	sound_stop(sound_get("rankss")) 	
+     	sound_play(sound_get("ranksss"),false,noone,0.8) 
+     	prevrank = rank
+        }
+     	break;
+     		
+     }
+   }
+   
+} else {
+   if rankm >= 240 {	
+   	 rankm -= 2
+   }
+}
+
+
+
+
 if DT < 6 and triggered == 0 and (can_attack or state == PS_DASH 
 or state == PS_DASH_START or state == PS_DASH_TURN or state == PS_DASH_STOP)and !free {
 	if left_strong_pressed or right_strong_pressed {
@@ -171,6 +301,7 @@ move_cooldown[AT_DTILT] = 6
 	if triggered == 0 {
 	DT -= 4
 	}
+
    }
    
     if weapon = 0 {
@@ -586,4 +717,19 @@ set_hitbox_value(AT_EXTRA_3, 3, HG_HITBOX_GROUP, -1);
 
 
 } 
+}
+
+if instance_exists(hit_player_obj) {
+if get_player_color(player) == 7 && hit_player_obj.state_cat == SC_HITSTUN {
+	if hitpause {
+		 
+		 if get_gameplay_time() % 5 == 0 {
+		create_hitbox(AT_USPECIAL , 16 , floor(hit_player_obj.x + 20 - random_func(4, 40, true)) ,  floor(hit_player_obj.y - 40 + 20 - random_func(5, 40, true)));
+				set_hitbox_value(AT_USPECIAL, 16, HG_PROJECTILE_HSPEED, 6 - random_func(4, 14, true) );
+        set_hitbox_value(AT_USPECIAL, 16, HG_PROJECTILE_VSPEED, -3 - random_func(3, 6, true) );	
+		 }
+		 
+	} 
+		
+}
 }

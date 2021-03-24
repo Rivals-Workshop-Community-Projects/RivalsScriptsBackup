@@ -48,6 +48,7 @@ if (instance_exists(needle_hitbox)){
 	}
 	
 	else {
+		/*
 		switch (needleplatform.image_angle){
 			case 0:
 				needle_hitbox.y = needleplatform.y;		
@@ -86,6 +87,43 @@ if (instance_exists(needle_hitbox)){
 				needle_hitbox.x = needleplatform.x+ 15;
 			break;
 		}
+		*/
+		
+		if ((needle_angle <= 22.5 || needle_angle >= 337.5)){
+				needle_hitbox.y = needleplatform.y;		
+				needle_hitbox.x = needleplatform.x + 15;
+		}		
+		if (needle_angle < 67.5 && needle_angle > 22.5){
+				needle_hitbox.y = needleplatform.y - 15;		
+				needle_hitbox.x = needleplatform.x + 15;
+		}
+		if (needle_angle <= 112.5 && needle_angle >= 67.5){
+				needle_hitbox.y = needleplatform.y - 15;		
+				needle_hitbox.x = needleplatform.x;
+		}
+		if (needle_angle < 157.5 && needle_angle > 112.5){
+				needle_hitbox.y = needleplatform.y - 15;		
+				needle_hitbox.x = needleplatform.x - 15;
+		}
+		if (needle_angle <= 202.5 && needle_angle >= 157.5){
+				needle_hitbox.y = needleplatform.y;		
+				needle_hitbox.x = needleplatform.x - 15;
+		}
+		if (needle_angle < 247.5 && needle_angle > 202.5){
+				needle_hitbox.y = needleplatform.y + 15;
+				needle_hitbox.x = needleplatform.x - 15 ;
+		}
+		if (needle_angle <= 292.5 && needle_angle >= 247.5){
+				needle_hitbox.y = needleplatform.y + 15;		
+				needle_hitbox.x = needleplatform.x;
+		}
+		if (needle_angle < 337.5 && needle_angle > 292.5){
+				needle_hitbox.y = needleplatform.y + 15;		
+				needle_hitbox.x = needleplatform.x + 15;
+		}
+		
+//		needle_hitbox.y = needleplatform.y;		
+//		needle_hitbox.x = needleplatform.x;
 	}
 }
 
@@ -160,7 +198,7 @@ if (instance_exists(needleplatform_solid)){
 //	if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND || state == PS_IDLE_AIR) && window == 1 && window_timer > 12 && can_zoop){		
 
 
-if (can_zoop){
+	if (can_zoop){
 		zipping = true;
 		zip_hit = true;
 		if (can_pull){
@@ -237,10 +275,14 @@ if (can_zoop){
 				}
 			}
 		}
-}
-//	}
+	}
 	
 	if (zipping){
+		
+		if (vsp < -14.0){
+			tsj_check = true;
+		}
+
 		if (attack_pressed || jump_pressed || special_pressed){
 			can_zoop = false;
 		}
@@ -278,7 +320,39 @@ if (can_zoop){
 				has_airdodge = true;
 			}
 		}
+	}
+}
+
+if (tsj_check){
+		
+	if (get_gameplay_time() % 2 == 0){
+		tsj_x3 = tsj_x2;
+		tsj_y3 = tsj_y2;
+
+		tsj_x2 = tsj_x1;
+		tsj_y2 = tsj_y1;
+
+		tsj_x1 = x;
+		tsj_y1 = y;
+	}
 	
+	tsj_timer++;
+}
+
+if (tsj_timer == 2){
+	sound_play(sound_get("tomosuperjumpsfx"));
+}
+
+if (tsj_timer >= 60){
+	tsj_check = false;
+	tsj_x1 = 0;
+	tsj_x2 = 0;
+	tsj_x3 = 0;
+	tsj_y1 = 0;
+	tsj_y2 = 0;
+	tsj_y3 = 0;
+	if (tsj_timer >= 60){
+		tsj_timer = 0;
 	}
 }
 
@@ -378,7 +452,7 @@ if (instance_exists(movingbox) && movingbox.destroy && movingbox.solid_timer == 
 		if (get_player_color(player) == 11){
 			Box.sprite_index = sprite_get("macka");
 		}
-		if (get_player_color(player) == 12 || get_player_color(player) == 10 || get_player_color(player) == 1 || SecretColor == 2){
+		if (get_player_color(player) == 12 || get_player_color(player) == 10 || get_player_color(player) == 1 || SecretColor == 2 || SecretColor == 3){
 			Box.flag = false;
 		}		
 		if (movingbox.flag){		
@@ -421,6 +495,29 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 			// THE - Alt color Down + Attack + Jump
 			if (!up_down && down_down && !left_down && !right_down && !shield_down && attack_down && !special_down){
 				SecretColor = 2;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}			
+		}		
+		
+		if (get_player_color(player) == 3){ // Color 4 Melon Secret Alt
+
+			// THE - Alt color Down + Attack + Jump
+			if (!up_down && down_down && !left_down && !right_down && !shield_down && attack_down && !special_down){
+				SecretColor = 3;
+				hit_big = hit_fx_create( sprite_get("bighit_custom1_fx"), 44);
+				hit_small1 = hit_fx_create( sprite_get("smallhit1_custom1_fx"), 38);
+
+				set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, hit_big);
+				set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, hit_big);
+
+				set_hitbox_value(AT_NAIR, 2, HG_VISUAL_EFFECT, hit_small1);
+				set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, hit_small1);
+				set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, hit_small1);
+				set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, hit_small1);
+				set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, hit_small1);
+				
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();

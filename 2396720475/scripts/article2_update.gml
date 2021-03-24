@@ -42,11 +42,24 @@ if (state == 1){
 					if (other.touched_player){
 						hsp = 13 * dcos(point_direction( x, y - 5, other.x, other.y));
 						vsp = - 13 * dsin(point_direction( x, y - 5, other.x, other.y));								
+
+						if (vsp < -12.50){
+							tsj_check = true;
+						}
 					}
 					else {
-						hsp = 14 * dcos(point_direction( x, y - 5, other.x, other.y));
-						vsp = - 14 * dsin(point_direction( x, y - 5, other.x, other.y));			
+						hsp = 13 * dcos(point_direction( x, y - 5, other.x, other.y));
+						vsp = - 13 * dsin(point_direction( x, y - 5, other.x, other.y));
+						
+						if (point_distance(x, y, other.x, other.y) < 30){
+							vsp = - 14 * dsin(point_direction( x, y - 5, other.x, other.y));
+						}
+						if (vsp < -13.5){
+							tsj_check = true;
+						}
 					}
+					
+
 				}
 			}
 		}

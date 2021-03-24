@@ -23,7 +23,7 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
 }
 
 if (attack == AT_NSPECIAL) && (hbox_num == 2) {
-    if !has_rune("M") {
-        can_hit_self = true;
+    if has_rune("M") {
+        can_hit_self = false;
     }
 }

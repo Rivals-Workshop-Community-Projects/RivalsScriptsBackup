@@ -74,7 +74,6 @@ set_window_value(AT_JAB, 9, AG_WINDOW_TYPE, 1);
 set_window_value(AT_JAB, 9, AG_WINDOW_LENGTH, 14);			//CHANGE ENDLAG HERE
 set_window_value(AT_JAB, 9, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_JAB, 9, AG_WINDOW_ANIM_FRAME_START, 15);
-set_window_value(AT_JAB, 9, AG_WINDOW_HAS_WHIFFLAG, 1);
 	//ADD OR REMOVE WHIFFLAG HERE
 
 
@@ -96,6 +95,7 @@ set_hitbox_value(AT_JAB, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_JAB, 1, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
+set_hitbox_value(AT_JAB, 1, HG_FORCE_FLINCH, 1);
 set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 
 

@@ -1,18 +1,6 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-if player == 0{
-    var alt_cur = get_player_color(player);
-} else {
-    var alt_cur = sprite_get_xoffset(sprite_get("dog"));
-}
-
-var doNotInitShader = "alt_name" in self; // check if running for the first time
-
-
-if player == 0{
-    doNotInitShader = true;
-}
 //Alt name init. var doesn't work with arrays lol
 
 alt_name[0]  = "Default";
@@ -46,11 +34,9 @@ alt_name[27] = "For The Honor";
 alt_name[28] = "Yandere";
 alt_name[29] = "Strong One";
 alt_name[30] = "Undertale Battle";
-alt_name[31] = "Curated";
+alt_name[31] = "Black Lives Matter";
 
-if(!doNotInitShader){
-    init_shader(); // makes the shader update when you return to the CSS (don't know why the game is coded so that this necessary)
-}
+alt_cur = get_player_color(player);
 
 // CSS Goodies
 // Seasonal

@@ -2,7 +2,7 @@
 
 var temp_x = x + 8;
 var temp_y = y + 9;
-var numAlts = 16;
+var numAlts = 29;
 
 patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1);
 image_alpha = max(image_alpha-0.02, 0);
@@ -25,21 +25,35 @@ else if (alt_new != currAlt)
 }
 
 alt_name[0]  = "Default";
-alt_name[1]  = "Rikuo";
-alt_name[2]  = "Slardar";
-alt_name[3]  = "Octodad";
-alt_name[4]  = "Vaporeon";
-alt_name[5]  = "Vaporwave";
-alt_name[6]  = "Hikaru";
-alt_name[7]  = "Early Access";
-alt_name[8]  = "Valkyrie";
-alt_name[9]  = "You're Going to Brazil";
-alt_name[10] = "Edgelord";
-alt_name[11] = "Urien";
-alt_name[12] = "Mewtwo";
-alt_name[13] = "Mipha";
-alt_name[14] = "Trans Rights";
-alt_name[15] = "Sans Rights";
+alt_name[1]  = "Future";
+alt_name[2]  = "Guardian";
+alt_name[3]  = "Blazing";
+alt_name[4]  = "Vaporwave";
+alt_name[5]  = "Edgelord";
+alt_name[6]  = "Veggie";
+alt_name[7]  = "Koi";
+alt_name[8]  = "Early Access";
+alt_name[9]  = "Hikaru";
+alt_name[10] = "Chad";
+alt_name[11] = "Bird Guy";
+alt_name[12] = "Heartbrake";
+alt_name[13] = "Ao";
+alt_name[14] = "Valkyrie";
+alt_name[15] = "Doomkin";
+alt_name[16] = "Amber";
+alt_name[17] = "Octodad";
+alt_name[18] = "Slardar";
+alt_name[19] = "Aegis";
+alt_name[20] = "Rikuo";
+alt_name[21] = "Mipha";
+alt_name[22] = "Vaporeon";
+alt_name[23] = "Mewtwo";
+alt_name[24] = "Freddy Fish";
+alt_name[25] = "Undyne";
+alt_name[26] = "BLM";
+alt_name[27] = "Trans Rights";
+alt_name[28] = "Sans Rights";
+alt_name[29] = "You're Going to Brazil";
 
 draw_set_halign(fa_right);
 textDraw(temp_x + 198, temp_y + 106, "fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);

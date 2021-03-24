@@ -19,6 +19,7 @@ set_window_value(AT_DSTRONG, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 7);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_HAS_WHIFFLAG, 7);
 
 set_num_hitboxes(AT_DSTRONG, 2);
 

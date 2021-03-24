@@ -5,9 +5,9 @@ sprite_change_offset("planet3", 10, 10);
 sprite_change_offset("planetO1", 10, 10);
 sprite_change_offset("planetO2", 14, 10);
 sprite_change_offset("planetO3", 10, 10);
-sprite_change_offset("planetO1_active", 10, 10);
-sprite_change_offset("planetO2_active", 8, 8);
-sprite_change_offset("planetO3_active", 10, 10);
+sprite_change_offset("planetO1_active", 12, 12);
+sprite_change_offset("planetO2_active", 10, 10);
+sprite_change_offset("planetO3_active", 12, 12);
 
 sprite_change_offset("planetP1", 6, 6);
 sprite_change_offset("planetP2", 12, 8);

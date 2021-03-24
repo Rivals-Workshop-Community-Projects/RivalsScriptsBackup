@@ -159,7 +159,10 @@ switch(state)
                 }
                 else
                 {
-                    hitboxHit.destroyed = true;
+                    if (!hitboxHit.transcendent)
+                    {
+                        hitboxHit.destroyed = true;
+                    }
                 }
             }
            

@@ -5,9 +5,9 @@ if _init == 0 {
     switch att {
         case AT_JAB:
             sprite_index = sprite_get("jab_article");
-            anim_frames = [3,3,3];
-            anim_start = [0,4,7];
-            anim_timer = [20, 50, 25];
+            anim_frames = [3,1,5];
+            anim_start = [0,4,5];
+            anim_timer = [20, 50 + (strong_charge), 39];
             _init = 1;
             break;
         case AT_FSTRONG:
@@ -22,12 +22,14 @@ if _init == 0 {
 state_timer++;
 
 if state == 0 {
+    with pHitBox if id == other.hitb instance_destroy(other.hitb);
     image_index = (anim_frames[state])*(state_timer/(anim_timer[state]))+anim_start[state];
     if state_timer/(anim_timer[state]) > 1 {
         state = 1;
         state_timer = 0;
+        
         if att == AT_JAB {
-            create_hitbox(AT_JAB,1,x,y-32);
+            hitb = create_hitbox(AT_JAB,1,x,y-32);
             sound_play(sound_get("weird_hit1"));
         }
         //if att == AT_FSTRONG hitb = create_hitbox(AT_FSTRONG,3,x,y);

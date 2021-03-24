@@ -22,14 +22,24 @@ boxhitbox = noone;
 hit_delay = 0;
 hit_set = 0;
 
+past_hitbox = noone;
+past_attack = noone;
+past_group = noone;
+
 health_check = false;
 
 owner = noone;
 
-movingbox = noone;
+kb_scaling = 0;
+bkb = 0;
+fancynum = 0.12;
+kb_adj = 1.4;
+kb_speed = 0;
+
+kb_angle = 0;
 
 destroy = false;
-
+destroy_check = false;
 // Destroys Box
 
 var oldest_plat_id = noone;

@@ -53,6 +53,12 @@ if(state == 1){
 		if (ex3cooltime == 0 && (point_distance( x, y-10, other.x, other.y )) < 32){
 			sound_play(asset_get("sfx_blow_heavy2"));
 			spawn_hit_fx( x, y, 302 );//エフェクト
+			if(attack == AT_DSPECIAL){
+				if((spr_dir == 1 and left_down) or (spr_dir == -1 and right_down)){
+					set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HSPEED, 0);
+					set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HSPEED_TYPE, 1);
+				}
+			}
 			if (((attack == AT_FSTRONG_2 or attack == AT_USTRONG_2 or attack == AT_DSTRONG) and window == 1) or (((attack == AT_NSPECIAL) and window <= 3) or (attack == AT_DSTRONG_2)) and window !=0){
 				vsp = -14;
 				sound_play(sound_get("miso_uair"));

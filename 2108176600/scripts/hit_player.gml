@@ -21,3 +21,9 @@ if my_hitboxID.attack == AT_FTILT && my_hitboxID.hbox_num == 1 {
     }
 }
 
+with obj_article1 {
+    if other.player == player {
+        state_timer = 0;
+        state = 0;
+    }
+}

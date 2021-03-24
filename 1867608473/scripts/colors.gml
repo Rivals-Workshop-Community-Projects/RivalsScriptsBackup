@@ -19,7 +19,7 @@ set_color_profile_slot_range(6, 1, 1, 1); //SOUL
 set_color_profile_slot_range(7, 1, 1, 1); //STRONG HIT
 
 // changes the maximum number of palettes
-set_num_palettes(16);
+set_num_palettes(32);
 
 //Blue - LANCER
 set_color_profile_slot(1, 5, 255, 255, 255); //SKIN
@@ -170,3 +170,148 @@ set_color_profile_slot(15, 4, 150, 150, 152); //HILT
 set_color_profile_slot(15, 0, 237, 237, 237); //SWORD
 set_color_profile_slot(15, 6, 255, 255, 255); //SOUL
 set_color_profile_slot(15, 7, 255, 255, 255); //STRONG HIT
+
+set_color_profile_slot(16, 5, 117, 75, 75 ); //Skin
+set_color_profile_slot(16, 1, 178, 181, 185 ); //Armor
+set_color_profile_slot(16, 2, 50, 81, 168 ); //Cape
+set_color_profile_slot(16, 3, 23, 22, 33 );
+set_color_profile_slot(16, 4, 166, 33, 33); //HILT
+set_color_profile_slot(16, 0, 152, 26, 21); //SWORD
+set_color_profile_slot(16, 6, 255, 52, 0); //SOUL
+set_color_profile_slot(16, 7, 255, 52, 0); //STRONG HIT
+
+set_color_profile_slot(17, 5, 247, 224, 197 ); //Skin
+set_color_profile_slot(17, 1, 36, 61, 138 ); //Armor
+set_color_profile_slot(17, 2, 136, 48, 48 ); //Cape
+set_color_profile_slot(17, 3, 178, 46, 48 ); // HAIR
+set_color_profile_slot(17, 4, 235, 224, 164); //HILT
+set_color_profile_slot(17, 0, 190, 190, 190 ); //SWORD
+set_color_profile_slot(17, 6, 90, 79, 165); //SOUL
+set_color_profile_slot(17, 7, 218, 84, 40); //STRONG HIT
+
+set_color_profile_slot(18, 5, 227, 196, 175 ); //Skin
+set_color_profile_slot(18, 1, 127, 123, 122 ); //Armor
+set_color_profile_slot(18, 2, 236, 234, 237 ); //Cape
+set_color_profile_slot(18, 3, 57, 73, 96 ); // HAIR
+set_color_profile_slot(18, 4, 153, 67, 52); //HILT
+set_color_profile_slot(18, 0, 218, 220, 217 ); //SWORD
+set_color_profile_slot(18, 6, 255, 255, 255); //SOUL
+set_color_profile_slot(18, 7, 255, 255, 255); //STRONG HIT
+
+set_color_profile_slot(19, 5, 255, 206, 183 ); //Skin
+set_color_profile_slot(19, 1, 193, 52, 209 ); //Armor
+set_color_profile_slot(19, 2, 42, 183, 81 ); //Cape
+set_color_profile_slot(19, 3, 194, 50, 210 ); // HAIR
+set_color_profile_slot(19, 4, 255, 37, 27); //HILT
+set_color_profile_slot(19, 0, 255, 37, 27 ); //SWORD
+set_color_profile_slot(19, 6, 255, 37, 27); //SOUL
+set_color_profile_slot(19, 7, 98, 69, 99); //STRONG HIT (nice)
+
+set_color_profile_slot(20, 5, 232, 168, 88 ); //Skin
+set_color_profile_slot(20, 1, 224, 88, 184 ); //Armor
+set_color_profile_slot(20, 2, 88, 88, 248 ); //Cape
+set_color_profile_slot(20, 3, 88, 88, 248 ); // HAIR
+set_color_profile_slot(20, 4, 200, 136, 8); //HILT
+set_color_profile_slot(20, 0, 248, 248, 32 ); //SWORD
+set_color_profile_slot(20, 6, 192, 248, 176); //SOUL
+set_color_profile_slot(20, 7, 152, 56, 120); //STRONG HIT
+
+set_color_profile_slot(21, 5, 253, 224, 180 ); //Skin
+set_color_profile_slot(21, 1, 26, 207, 250 ); //Armor
+set_color_profile_slot(21, 2, 142, 147, 185 ); //Cape
+set_color_profile_slot(21, 3, 245, 200, 99 ); // HAIR
+set_color_profile_slot(21, 4, 4, 52, 88); //HILT
+set_color_profile_slot(21, 0, 244, 244, 244 ); //SWORD
+set_color_profile_slot(21, 6, 245, 200, 99); //SOUL
+set_color_profile_slot(21, 7, 244, 244, 244); //STRONG HIT
+
+set_color_profile_slot(22, 5, 248, 197, 152 ); //Skin
+set_color_profile_slot(22, 1, 85, 99, 100 ); //Armor
+set_color_profile_slot(22, 2, 154, 21, 14 ); //Cape
+set_color_profile_slot(22, 3, 255, 219, 62 ); // HAIR
+set_color_profile_slot(22, 4, 154, 172, 174); //HILT
+set_color_profile_slot(22, 0, 56, 64, 75 ); //SWORD
+set_color_profile_slot(22, 6, 0, 0, 0); //SOUL
+set_color_profile_slot(22, 7, 56, 64, 75); //STRONG HIT
+
+set_color_profile_slot(23, 5, 133, 81, 66 ); //Skin
+set_color_profile_slot(23, 1, 177, 171, 180 ); //Armor
+set_color_profile_slot(23, 2, 178, 19, 51 ); //Cape
+set_color_profile_slot(23, 3, 66, 61, 61 ); // HAIR
+set_color_profile_slot(23, 4, 220, 211, 223); //HILT
+set_color_profile_slot(23, 0, 245, 245, 245 ); //SWORD
+set_color_profile_slot(23, 6, 0, 255, 0); //SOUL
+set_color_profile_slot(23, 7, 245, 245, 245); //STRONG HIT
+
+set_color_profile_slot(24, 5, 66, 54, 78 ); //Skin
+set_color_profile_slot(24, 1, 181, 181, 181 ); //Armor
+set_color_profile_slot(24, 2, 170, 34, 74 ); //Cape
+set_color_profile_slot(24, 3, 68, 69, 89 ); // HAIR
+set_color_profile_slot(24, 4, 185, 180, 177); //HILT
+set_color_profile_slot(24, 0, 254, 13, 107 ); //SWORD
+set_color_profile_slot(24, 6, 196, 68, 165); //SOUL
+set_color_profile_slot(24, 7, 18, 247, 240); //STRONG HIT
+
+set_color_profile_slot(25, 5, 246, 158, 118 ); //Skin
+set_color_profile_slot(25, 1, 54, 59, 88 ); //Armor
+set_color_profile_slot(25, 2, 245, 39, 15 ); //Cape
+set_color_profile_slot(25, 3, 140, 72, 37 ); // HAIR
+set_color_profile_slot(25, 4, 202, 204, 191); //HILT
+set_color_profile_slot(25, 0, 202, 204, 191 ); //SWORD
+set_color_profile_slot(25, 6, 245, 39, 15); //SOUL
+set_color_profile_slot(25, 7, 156, 255, 242); //STRONG HIT
+
+set_color_profile_slot(26, 5, 250, 218, 203 ); //Skin
+set_color_profile_slot(26, 1, 1, 108, 202 ); //Armor
+set_color_profile_slot(26, 2, 10, 164, 218 ); //Cape
+set_color_profile_slot(26, 3, 240, 240, 240 ); // HAIR
+set_color_profile_slot(26, 4, 38, 40, 63); //HILT
+set_color_profile_slot(26, 0, 251, 232, 111 ); //SWORD
+set_color_profile_slot(26, 6, 237, 57, 34); //SOUL
+set_color_profile_slot(26, 7, 255, 229, 114); //STRONG HIT
+
+set_color_profile_slot(27, 5, 249, 205, 146 ); //Skin
+set_color_profile_slot(27, 1, 240, 240, 240 ); //Armor
+set_color_profile_slot(27, 2, 233, 106, 83 ); //Cape
+set_color_profile_slot(27, 3, 205, 160, 83 ); // HAIR
+set_color_profile_slot(27, 4, 240, 175, 19); //HILT
+set_color_profile_slot(27, 0, 160, 217, 231 ); //SWORD
+set_color_profile_slot(27, 6, 160, 217, 231); //SOUL
+set_color_profile_slot(27, 7, 160, 217, 231); //STRONG HIT
+
+set_color_profile_slot(28, 5, 253, 236, 226 ); //Skin
+set_color_profile_slot(28, 1, 249, 249, 249 ); //Armor
+set_color_profile_slot(28, 2, 52, 39, 39 ); //Cape
+set_color_profile_slot(28, 3, 126, 44, 57 ); // HAIR
+set_color_profile_slot(28, 4, 50, 50, 50); //HILT
+set_color_profile_slot(28, 0, 170, 170, 170 ); //SWORD
+set_color_profile_slot(28, 6, 255, 0, 0); //SOUL
+set_color_profile_slot(28, 7, 170, 170, 170); //STRONG HIT
+
+set_color_profile_slot(29, 5, 249, 205, 146 ); //Skin
+set_color_profile_slot(29, 1, 200, 218, 208 ); //Armor
+set_color_profile_slot(29, 2, 96, 96, 96 ); //Cape
+set_color_profile_slot(29, 3, 247, 128, 0 ); // HAIR
+set_color_profile_slot(29, 4, 240, 175, 19); //HILT
+set_color_profile_slot(29, 0, 248, 248, 0 ); //SWORD
+set_color_profile_slot(29, 6, 0, 0, 0); //SOUL
+set_color_profile_slot(29, 7, 248, 248, 0); //STRONG HIT
+
+set_color_profile_slot(30, 5, 255, 255, 255 ); //Skin
+set_color_profile_slot(30, 1, 255, 255, 255 ); //Armor
+set_color_profile_slot(30, 2, 0, 0, 0 ); //Cape
+set_color_profile_slot(30, 3, 0, 0, 0 ); // HAIR
+set_color_profile_slot(30, 4, 255, 255, 255 ); //HILT
+set_color_profile_slot(30, 0, 0, 0, 0 ); //SWORD
+set_color_profile_slot(30, 6, 255, 0, 0 ); //SOUL
+set_color_profile_slot(30, 7, 255, 0, 0 ); //STRONG HIT
+
+// For Inner
+set_color_profile_slot(31, 5, 149, 95, 71 );    // Skin
+set_color_profile_slot(31, 1, 247, 231, 0 );  // Armor
+set_color_profile_slot(31, 2, 250, 253, 255 );  // Cape
+set_color_profile_slot(31, 3, 60, 62, 61 );     // hair
+set_color_profile_slot(31, 4, 60, 62, 61 );     // hilt
+set_color_profile_slot(31, 0, 250, 253, 255 );  // sword
+set_color_profile_slot(31, 6, 250, 253, 255);  // soul
+set_color_profile_slot(31, 7, 247, 231, 0 );  // strong

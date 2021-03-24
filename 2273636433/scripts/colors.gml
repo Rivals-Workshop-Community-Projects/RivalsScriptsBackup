@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 2, 4, 24 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 24 );
 
 // Pink
 set_color_profile_slot( 1, 0, 255, 135, 135 ); //Lab Coat
@@ -122,50 +122,122 @@ set_color_profile_slot( 10, 4, 208, 171, 152 ); //Skin
 set_color_profile_slot( 10, 5, 25, 62, 182 ); //Tie / Eyes
 set_color_profile_slot( 10, 6, 181, 151, 58 ); //HeadBand
 
-// TF2 Medic
-set_color_profile_slot( 11, 0, 245, 245, 245 ); //Lab Coat
-set_color_profile_slot( 11, 1, 88, 62, 61 ); //Pants
-set_color_profile_slot( 11, 2, 111, 57, 9 ); //Hair / Shoes
+// RED Medic
+set_color_profile_slot( 11, 0, 245, 220, 220 ); //Lab Coat
+set_color_profile_slot( 11, 1, 125, 88, 87 ); //Pants
+set_color_profile_slot( 11, 2, 28, 28, 28 ); //Hair / Shoes
 set_color_profile_slot( 11, 3, 207, 66, 70 ); //Gloves
 set_color_profile_slot( 11, 4, 241, 166, 137 ); //Skin
-set_color_profile_slot( 11, 5, 25, 62, 182 ); //Tie / Eyes
+set_color_profile_slot( 11, 5, 207, 66, 70 ); //Tie / Eyes
 set_color_profile_slot( 11, 6, 88, 62, 61 ); //HeadBand
 
-// Mario
-set_color_profile_slot( 12, 0, 232, 8, 8 ); //Lab Coat
-set_color_profile_slot( 12, 1, 40, 34, 138 ); //Pants
-set_color_profile_slot( 12, 2, 111, 57, 9 ); //Hair / Shoes
-set_color_profile_slot( 12, 3, 248, 248, 248 ); //Gloves
-set_color_profile_slot( 12, 4, 233, 183, 152 ); //Skin
-set_color_profile_slot( 12, 5, 41, 123, 255 ); //Tie / Eyes
-set_color_profile_slot( 12, 6, 41, 123, 255 ); //HeadBand
+// BLU Medic
+set_color_profile_slot( 12, 0, 216, 227, 245 ); //Lab Coat
+set_color_profile_slot( 12, 1, 51, 69, 83 ); //Pants
+set_color_profile_slot( 12, 2, 28, 28, 28 ); //Hair / Shoes
+set_color_profile_slot( 12, 3, 41, 144, 171 ); //Gloves
+set_color_profile_slot( 12, 4, 241, 166, 137 ); //Skin
+set_color_profile_slot( 12, 5, 41, 144, 171 ); //Tie / Eyes
+set_color_profile_slot( 12, 6, 51, 69, 83 ); //HeadBand
 
-// Gameboy
-set_color_profile_slot( 13, 0, 83, 122, 62 ); //Lab Coat
-set_color_profile_slot( 13, 1, 167, 186, 74 ); //Pants
-set_color_profile_slot( 13, 2, 211, 226, 154 ); //Hair / Shoes
-set_color_profile_slot( 13, 3, 167, 186, 74 ); //Gloves
-set_color_profile_slot( 13, 4, 167, 186, 74 ); //Skin
-set_color_profile_slot( 13, 5, 167, 186, 74 ); //Tie / Eyes
-set_color_profile_slot( 13, 6, 83, 122, 62 ); //HeadBand
+// Mario
+set_color_profile_slot( 13, 0, 232, 8, 8 ); //Lab Coat
+set_color_profile_slot( 13, 1, 40, 34, 138 ); //Pants
+set_color_profile_slot( 13, 2, 111, 57, 9 ); //Hair / Shoes
+set_color_profile_slot( 13, 3, 248, 248, 248 ); //Gloves
+set_color_profile_slot( 13, 4, 233, 183, 152 ); //Skin
+set_color_profile_slot( 13, 5, 41, 123, 255 ); //Tie / Eyes
+set_color_profile_slot( 13, 6, 41, 123, 255 ); //HeadBand
+
+// Luigi
+set_color_profile_slot( 14, 0, 53, 172, 54 ); //Lab Coat
+set_color_profile_slot( 14, 1, 40, 34, 138 ); //Pants
+set_color_profile_slot( 14, 2, 111, 57, 9 ); //Hair / Shoes
+set_color_profile_slot( 14, 3, 248, 248, 248 ); //Gloves
+set_color_profile_slot( 14, 4, 233, 183, 152 ); //Skin
+set_color_profile_slot( 14, 5, 41, 123, 255 ); //Tie / Eyes
+set_color_profile_slot( 14, 6, 122, 59, 237 ); //HeadBand
+
+// Dr Wily
+set_color_profile_slot( 15, 0, 249, 249, 249 ); //Lab Coat
+set_color_profile_slot( 15, 1, 53, 214, 255 ); //Pants
+set_color_profile_slot( 15, 2, 103, 165, 168 ); //Hair / Shoes
+set_color_profile_slot( 15, 3, 124, 198, 202 ); //Gloves
+set_color_profile_slot( 15, 4, 248, 222, 163 ); //Skin
+set_color_profile_slot( 15, 5, 238, 55, 37 ); //Tie / Eyes
+set_color_profile_slot( 15, 6, 95, 28, 11 ); //HeadBand
+
+// Dr Piccolo
+set_color_profile_slot( 16, 0, 249, 249, 249 ); //Lab Coat
+set_color_profile_slot( 16, 1, 125, 17, 158 ); //Pants
+set_color_profile_slot( 16, 2, 184, 124, 102 ); //Hair / Shoes
+set_color_profile_slot( 16, 3, 61, 189, 65 ); //Gloves
+set_color_profile_slot( 16, 4, 123, 189, 125 ); //Skin
+set_color_profile_slot( 16, 5, 24, 132, 206 ); //Tie / Eyes
+set_color_profile_slot( 16, 6, 125, 17, 158 ); //HeadBand
+
+// Dr Strange
+set_color_profile_slot( 17, 0, 60, 76, 111 ); //Lab Coat
+set_color_profile_slot( 17, 1, 47, 48, 52 ); //Pants
+set_color_profile_slot( 17, 2, 82, 76, 60 ); //Hair / Shoes
+set_color_profile_slot( 17, 3, 227, 138, 82 ); //Gloves
+set_color_profile_slot( 17, 4, 230, 172, 143 ); //Skin
+set_color_profile_slot( 17, 5, 207, 174, 86 ); //Tie / Eyes
+set_color_profile_slot( 17, 6, 138, 49, 51 ); //HeadBand
+
+// Gold / Silver
+set_color_profile_slot( 18, 0, 207, 174, 86 ); //Lab Coat
+set_color_profile_slot( 18, 1, 80, 75, 66 ); //Pants
+set_color_profile_slot( 18, 2, 182, 199, 207 ); //Hair / Shoes
+set_color_profile_slot( 18, 3, 154, 171, 192 ); //Gloves
+set_color_profile_slot( 18, 4, 255, 243, 211 ); //Skin
+set_color_profile_slot( 18, 5, 148, 203, 218 ); //Tie / Eyes
+set_color_profile_slot( 18, 6, 80, 75, 66 ); //HeadBand
 
 // Abyss
-set_color_profile_slot( 14, 0, 79, 61, 94 ); //Lab Coat
-set_color_profile_slot( 14, 1, 78, 23, 141 ); //Pants
-set_color_profile_slot( 14, 2, 79, 61, 94 ); //Hair / Shoes
-set_color_profile_slot( 14, 3, 220, 113, 255 ); //Gloves
-set_color_profile_slot( 14, 4, 166, 172, 214 ); //Skin
-set_color_profile_slot( 14, 5, 220, 113, 255 ); //Tie / Eyes
-set_color_profile_slot( 14, 6, 220, 113, 255 ); //HeadBand
+set_color_profile_slot( 19, 0, 79, 61, 94 ); //Lab Coat
+set_color_profile_slot( 19, 1, 78, 23, 141 ); //Pants
+set_color_profile_slot( 19, 2, 79, 61, 94 ); //Hair / Shoes
+set_color_profile_slot( 19, 3, 220, 113, 255 ); //Gloves
+set_color_profile_slot( 19, 4, 166, 172, 214 ); //Skin
+set_color_profile_slot( 19, 5, 220, 113, 255 ); //Tie / Eyes
+set_color_profile_slot( 19, 6, 220, 113, 255 ); //HeadBand
+
+// Gameboy
+set_color_profile_slot( 20, 0, 83, 122, 62 ); //Lab Coat
+set_color_profile_slot( 20, 1, 167, 186, 74 ); //Pants
+set_color_profile_slot( 20, 2, 211, 226, 154 ); //Hair / Shoes
+set_color_profile_slot( 20, 3, 167, 186, 74 ); //Gloves
+set_color_profile_slot( 20, 4, 167, 186, 74 ); //Skin
+set_color_profile_slot( 20, 5, 167, 186, 74 ); //Tie / Eyes
+set_color_profile_slot( 20, 6, 83, 122, 62 ); //HeadBand
 
 // Nes dr. mario
-set_color_profile_slot( 15, 0, 255, 255, 255 ); //Lab Coat
-set_color_profile_slot( 15, 1, 255, 255, 255 ); //Pants
-set_color_profile_slot( 15, 2, 173, 123, 0 ); //Hair / Shoes
-set_color_profile_slot( 15, 3, 255, 231, 173 ); //Gloves
-set_color_profile_slot( 15, 4, 255, 231, 173 ); //Skin
-set_color_profile_slot( 15, 5, 255, 189, 0 ); //Tie / Eyes
-set_color_profile_slot( 15, 6, 255, 189, 0 ); //HeadBand
+set_color_profile_slot( 21, 0, 255, 255, 255 ); //Lab Coat
+set_color_profile_slot( 21, 1, 255, 255, 255 ); //Pants
+set_color_profile_slot( 21, 2, 173, 123, 0 ); //Hair / Shoes
+set_color_profile_slot( 21, 3, 255, 231, 173 ); //Gloves
+set_color_profile_slot( 21, 4, 255, 231, 173 ); //Skin
+set_color_profile_slot( 21, 5, 255, 189, 0 ); //Tie / Eyes
+set_color_profile_slot( 21, 6, 255, 189, 0 ); //HeadBand
+
+// BLMario
+set_color_profile_slot( 22, 0, 255, 234, 219 ); //Lab Coat
+set_color_profile_slot( 22, 1, 48, 48, 48 ); //Pants
+set_color_profile_slot( 22, 2, 28, 28, 28 ); //Hair / Shoes
+set_color_profile_slot( 22, 3, 207, 166, 58 ); //Gloves
+set_color_profile_slot( 22, 4, 138, 71, 11 ); //Skin
+set_color_profile_slot( 22, 5, 255, 250, 0 ); //Tie / Eyes
+set_color_profile_slot( 22, 6, 227, 223, 0 ); //HeadBand
+
+// Vaporwave
+set_color_profile_slot( 23, 0, 139, 236, 240 ); //Lab Coat
+set_color_profile_slot( 23, 1, 255, 66, 186 ); //Pants
+set_color_profile_slot( 23, 2, 191, 73, 227 ); //Hair / Shoes
+set_color_profile_slot( 23, 3, 255, 161, 221 ); //Gloves
+set_color_profile_slot( 23, 4, 233, 183, 152 ); //Skin
+set_color_profile_slot( 23, 5, 191, 73, 227 ); //Tie / Eyes
+set_color_profile_slot( 23, 6, 255, 66, 186 ); //HeadBand
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

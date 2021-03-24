@@ -119,3 +119,11 @@ with pHitBox {
         }
     }
 }
+
+//fstrong
+if attack == AT_FSTRONG && window == 3 {
+    var imgindex = floor(window_timer/5)
+    if imgindex <= 3 {
+        draw_sprite_ext(sprite_get("fstrong_vfx"), imgindex, x, y, spr_dir, 1, 0, c_white, 1)
+    }
+}

@@ -34,13 +34,13 @@ set_color_profile_slot_range( 7, 1, 1, 9 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 24 );
 
 // sans.
 set_color_profile_slot( 1, 0, 255, 255, 255 ); //HEAD
 set_color_profile_slot( 1, 1, 200, 182, 226 ); //HEAD SHADING
-set_color_profile_slot( 1, 2, 186, 208, 240 ); //BODY
-set_color_profile_slot( 1, 3, 90, 134, 199 ); //BODY SHADING
+set_color_profile_slot( 1, 2, 218, 227, 240 ); //BODY
+set_color_profile_slot( 1, 3, 155, 173, 199 ); //BODY SHADING
 set_color_profile_slot( 1, 4, 57, 101, 189 ); //CLOTHES
 set_color_profile_slot( 1, 5, 255, 171, 252 ); //LINING
 set_color_profile_slot( 1, 6, 57, 68, 74 ); //BOTTOMS
@@ -119,18 +119,18 @@ set_color_profile_slot( 8, 7, 0, 0, 0 ); //LIMBS (portrait only)
 // Mettaton EX
 set_color_profile_slot( 9, 0, 255, 255, 255 ); //HEAD
 set_color_profile_slot( 9, 1, 200, 182, 226 ); //HEAD SHADING
-set_color_profile_slot( 9, 2, 130, 204, 184 ); //BODY
+set_color_profile_slot( 9, 2, 204, 130, 197 ); //BODY
 set_color_profile_slot( 9, 3, 194, 31, 179 ); //BODY SHADING
 set_color_profile_slot( 9, 4, 222, 0, 200 ); //CLOTHES
-set_color_profile_slot( 9, 5, 85, 173, 201 ); //LINING
+set_color_profile_slot( 9, 5, 235, 225, 56 ); //LINING
 set_color_profile_slot( 9, 6, 82, 82, 82 ); //BOTTOMS
 set_color_profile_slot( 9, 7, 48, 48, 48 ); //LIMBS (portrait only)
 
 // Rouxls Kaard
-set_color_profile_slot( 10, 0, 15, 0, 98 ); //HEAD
-set_color_profile_slot( 10, 1, 15, 0, 98 ); //HEAD SHADING
+set_color_profile_slot( 10, 0, 27, 0, 179 ); //HEAD
+set_color_profile_slot( 10, 1, 18, 0, 130 ); //HEAD SHADING
 set_color_profile_slot( 10, 2, 15, 0, 98 ); //BODY
-set_color_profile_slot( 10, 3, 15, 0, 98 ); //BODY SHADING
+set_color_profile_slot( 10, 3, 11, 0, 71 ); //BODY SHADING
 set_color_profile_slot( 10, 4, 37, 0, 117 ); //CLOTHES
 set_color_profile_slot( 10, 5, 143, 211, 255 ); //LINING
 set_color_profile_slot( 10, 6, 15, 0, 98 ); //BOTTOMS
@@ -141,7 +141,7 @@ set_color_profile_slot( 11, 0, 255, 255, 255 ); //HEAD
 set_color_profile_slot( 11, 1, 186, 186, 186 ); //HEAD SHADING
 set_color_profile_slot( 11, 2, 255, 117, 117 ); //BODY
 set_color_profile_slot( 11, 3, 255, 8, 8 ); //BODY SHADING
-set_color_profile_slot( 11, 4, 71, 17, 17 ); //CLOTHES
+set_color_profile_slot( 11, 4, 150, 55, 55 ); //CLOTHES
 set_color_profile_slot( 11, 5, 227, 0, 0 ); //LINING
 set_color_profile_slot( 11, 6, 54, 54, 54 ); //BOTTOMS
 set_color_profile_slot( 11, 7, 31, 31, 31 ); //LIMBS (portrait only)
@@ -159,32 +159,112 @@ set_color_profile_slot( 12, 7, 94, 94, 94 ); //LIMBS (portrait only)
 // Lancer
 set_color_profile_slot( 13, 0, 255, 255, 255 ); //HEAD
 set_color_profile_slot( 13, 1, 200, 182, 226 ); //HEAD SHADING
-set_color_profile_slot( 13, 2, 74, 128, 217 ); //BODY
-set_color_profile_slot( 13, 3, 6, 68, 171 ); //BODY SHADING
+set_color_profile_slot( 13, 2, 102, 145, 217 ); //BODY
+set_color_profile_slot( 13, 3, 50, 95, 171 ); //BODY SHADING
 set_color_profile_slot( 13, 4, 28, 80, 166 ); //CLOTHES
 set_color_profile_slot( 13, 5, 69, 69, 69 ); //LINING
 set_color_profile_slot( 13, 6, 68, 123, 212 ); //BOTTOMS
 set_color_profile_slot( 13, 7, 48, 48, 48 ); //LIMBS (portrait only)
 
-// Golden
-set_color_profile_slot( 14, 0, 255, 221, 71 ); //HEAD
-set_color_profile_slot( 14, 1, 179, 145, 0 ); //HEAD SHADING
-set_color_profile_slot( 14, 2, 255, 232, 130 ); //BODY
-set_color_profile_slot( 14, 3, 207, 174, 33 ); //BODY SHADING
-set_color_profile_slot( 14, 4, 255, 213, 28 ); //CLOTHES
-set_color_profile_slot( 14, 5, 245, 200, 0 ); //LINING
-set_color_profile_slot( 14, 6, 242, 198, 0 ); //BOTTOMS
-set_color_profile_slot( 14, 7, 133, 107, 0 ); //LIMBS (portrait only)
-
 // Infamous
+set_color_profile_slot( 14, 0, 255, 255, 255 ); //HEAD
+set_color_profile_slot( 14, 1, 147, 194, 226 ); //HEAD SHADING
+set_color_profile_slot( 14, 2, 0, 255, 168 ); //BODY
+set_color_profile_slot( 14, 3, 0, 199, 131 ); //BODY SHADING
+set_color_profile_slot( 14, 4, 212, 69, 254 ); //CLOTHES
+set_color_profile_slot( 14, 5, 241, 255, 209 ); //LINING
+set_color_profile_slot( 14, 6, 55, 234, 255 ); //BOTTOMS
+set_color_profile_slot( 14, 7, 86, 83, 170 ); //LIMBS (portrait only)
+
+// Eldom 1
 set_color_profile_slot( 15, 0, 255, 255, 255 ); //HEAD
-set_color_profile_slot( 15, 1, 147, 194, 226 ); //HEAD SHADING
-set_color_profile_slot( 15, 2, 0, 255, 168 ); //BODY
-set_color_profile_slot( 15, 3, 0, 199, 131 ); //BODY SHADING
-set_color_profile_slot( 15, 4, 212, 69, 254 ); //CLOTHES
-set_color_profile_slot( 15, 5, 241, 255, 209 ); //LINING
-set_color_profile_slot( 15, 6, 55, 234, 255 ); //BOTTOMS
-set_color_profile_slot( 15, 7, 86, 83, 170 ); //LIMBS (portrait only)
+set_color_profile_slot( 15, 1, 200, 182, 226 ); //HEAD SHADING
+set_color_profile_slot( 15, 2, 23, 40, 89 ); //BODY
+set_color_profile_slot( 15, 3, 16, 29, 64 ); //BODY SHADING
+set_color_profile_slot( 15, 4, 115, 0, 114 ); //CLOTHES
+set_color_profile_slot( 15, 5, 125, 163, 163 ); //LINING
+set_color_profile_slot( 15, 6, 17, 153, 153 ); //BOTTOMS
+set_color_profile_slot( 15, 7, 26, 0, 25 ); //LIMBS (portrait only)
+
+// Eldom 2
+set_color_profile_slot( 16, 0, 255, 255, 255 ); //HEAD
+set_color_profile_slot( 16, 1, 200, 182, 226 ); //HEAD SHADING
+set_color_profile_slot( 16, 2, 219, 56, 8 ); //BODY
+set_color_profile_slot( 16, 3, 173, 37, 17 ); //BODY SHADING
+set_color_profile_slot( 16, 4, 214, 159, 71 ); //CLOTHES
+set_color_profile_slot( 16, 5, 173, 37, 17 ); //LINING
+set_color_profile_slot( 16, 6, 48, 48, 48 ); //BOTTOMS
+set_color_profile_slot( 16, 7, 21, 36, 79 ); //LIMBS (portrait only)
+
+// Frisk
+set_color_profile_slot( 17, 0, 255, 255, 255 ); //HEAD
+set_color_profile_slot( 17, 1, 200, 182, 226 ); //HEAD SHADING
+set_color_profile_slot( 17, 2, 0, 145, 255 ); //BODY
+set_color_profile_slot( 17, 3, 0, 75, 235 ); //BODY SHADING
+set_color_profile_slot( 17, 4, 227, 0, 227 ); //CLOTHES
+set_color_profile_slot( 17, 5, 255, 240, 69 ); //LINING
+set_color_profile_slot( 17, 6, 128, 80, 41 ); //BOTTOMS
+set_color_profile_slot( 17, 7, 48, 48, 48 ); //LIMBS (portrait only)
+
+// Golden
+set_color_profile_slot( 18, 0, 255, 239, 189 ); //HEAD
+set_color_profile_slot( 18, 1, 255, 226, 105 ); //HEAD SHADING
+set_color_profile_slot( 18, 2, 255, 221, 66 ); //BODY
+set_color_profile_slot( 18, 3, 206, 174, 46 ); //BODY SHADING
+set_color_profile_slot( 18, 4, 235, 202, 31 ); //CLOTHES
+set_color_profile_slot( 18, 5, 254, 255, 22 ); //LINING
+set_color_profile_slot( 18, 6, 117, 91, 0 ); //BOTTOMS
+set_color_profile_slot( 18, 7, 77, 61, 0 ); //LIMBS (portrait only)
+
+// Guzma
+set_color_profile_slot( 19, 0, 255, 255, 255 ); //HEAD
+set_color_profile_slot( 19, 1, 200, 182, 226 ); //HEAD SHADING
+set_color_profile_slot( 19, 2, 255, 255, 255 ); //BODY
+set_color_profile_slot( 19, 3, 200, 182, 226 ); //BODY SHADING
+set_color_profile_slot( 19, 4, 64, 64, 64 ); //CLOTHES
+set_color_profile_slot( 19, 5, 255, 224, 48 ); //LINING
+set_color_profile_slot( 19, 6, 153, 69, 201 ); //BOTTOMS
+set_color_profile_slot( 19, 7, 36, 36, 36 ); //LIMBS (portrait only)
+
+// Skeletor
+set_color_profile_slot( 20, 0, 240, 215, 149 ); //HEAD
+set_color_profile_slot( 20, 1, 201, 170, 107 ); //HEAD SHADING
+set_color_profile_slot( 20, 2, 0, 145, 255 ); //BODY
+set_color_profile_slot( 20, 3, 0, 77, 219 ); //BODY SHADING
+set_color_profile_slot( 20, 4, 97, 0, 181 ); //CLOTHES
+set_color_profile_slot( 20, 5, 97, 0, 181 ); //LINING
+set_color_profile_slot( 20, 6, 0, 145, 255 ); //BOTTOMS
+set_color_profile_slot( 20, 7, 48, 48, 48 ); //LIMBS (portrait only)
+
+// Underswap
+set_color_profile_slot( 21, 0, 255, 255, 255 ); //HEAD
+set_color_profile_slot( 21, 1, 200, 182, 226 ); //HEAD SHADING
+set_color_profile_slot( 21, 2, 226, 133, 47 ); //BODY
+set_color_profile_slot( 21, 3, 179, 92, 37 ); //BODY SHADING
+set_color_profile_slot( 21, 4, 173, 114, 57 ); //CLOTHES
+set_color_profile_slot( 21, 5, 204, 58, 0 ); //LINING
+set_color_profile_slot( 21, 6, 138, 92, 0 ); //BOTTOMS
+set_color_profile_slot( 21, 7, 48, 48, 48 ); //LIMBS (portrait only)
+
+// Underfell
+set_color_profile_slot( 22, 0, 255, 255, 255 ); //HEAD
+set_color_profile_slot( 22, 1, 158, 158, 158 ); //HEAD SHADING
+set_color_profile_slot( 22, 2, 69, 69, 69 ); //BODY
+set_color_profile_slot( 22, 3, 38, 38, 38 ); //BODY SHADING
+set_color_profile_slot( 22, 4, 161, 0, 0 ); //CLOTHES
+set_color_profile_slot( 22, 5, 255, 208, 0 ); //LINING
+set_color_profile_slot( 22, 6, 94, 43, 35 ); //BOTTOMS
+set_color_profile_slot( 22, 7, 48, 48, 48 ); //LIMBS (portrait only)
+
+// Waluigi
+set_color_profile_slot( 23, 0, 255, 232, 186 ); //HEAD
+set_color_profile_slot( 23, 1, 181, 153, 100 ); //HEAD SHADING
+set_color_profile_slot( 23, 2, 55, 60, 163 ); //BODY
+set_color_profile_slot( 23, 3, 0, 5, 156 ); //BODY SHADING
+set_color_profile_slot( 23, 4, 181, 0, 222 ); //CLOTHES
+set_color_profile_slot( 23, 5, 255, 234, 0 ); //LINING
+set_color_profile_slot( 23, 6, 55, 60, 163 ); //BOTTOMS
+set_color_profile_slot( 23, 7, 48, 48, 48 ); //LIMBS (portrait only)
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

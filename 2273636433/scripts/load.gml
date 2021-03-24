@@ -67,7 +67,7 @@ sprite_change_offset("pill_hit",11, 11);
 sprite_change_offset("Dr_Hurtbox",22, 68);
 sprite_change_offset("Dr_Crouchbox",22, 68);
 
-sprite_change_offset("kirbyability",34, 42);
+sprite_change_offset("kirbyability",34, 55);
 
 sprite_change_offset("firechungus", 31, 96);
 

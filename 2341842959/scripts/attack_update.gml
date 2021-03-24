@@ -201,6 +201,12 @@ if (attack == AT_DATTACK && window == 3 && !hitpause && (!attack_down || dattack
 }
 */
 
+if (attack == AT_DATTACK){
+    if (window == 2 && window_timer == 12 && attack_down){
+        window_timer = 0;
+    }
+}
+
 //Specials Diagonally
 if ((attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL) && window == 1){
     if (up_down && (right_down || left_down)){
@@ -212,7 +218,7 @@ if ((attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL) &&
         set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED, 20);
     }
     if (!up_down && !down_down){
-        set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED, 1);
+        set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED, 0);
     }
     if (!right_down && !left_down){
         set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 0);
@@ -233,8 +239,11 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL){
     if (window == 3 && window_timer == 3){
         instance_create(x,y,"obj_article1"); 
     }
-    if (window == 1 && window_timer == 2){
+    if (window == 1 && window_timer == 1){
         tokens += 1.1; 
+    }
+    if (window == 1 && window_timer > 1 && shield_pressed){
+        window = 4;
     }
     
 }

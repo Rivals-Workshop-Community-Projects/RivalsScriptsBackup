@@ -14,6 +14,12 @@ deathnum = 0
 triggertime = 0
 DT = 6
 
+prevrank = 0
+
+rank = 0
+rankm = 0
+inactive = 0
+
 shsp = 0
 svsp = 0
 triggered = 0
@@ -155,6 +161,7 @@ sprite_change_offset("parryfx", 136, 158);
 
 mblade5 = hit_fx_create( sprite_get( "mblade5" ), 20 );
 
+sprite_change_offset("rank", 6, 16);
 set_victory_theme(sound_get("custom"));
 darken = hit_fx_create( sprite_get( "darken" ), 10);
 sprite_change_offset("darken", 1000, 1000);

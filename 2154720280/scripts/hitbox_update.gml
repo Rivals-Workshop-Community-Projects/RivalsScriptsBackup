@@ -135,7 +135,11 @@ if (heal_player != noone) {
 			
 		}
 		
-		
+
+
+if attack == AT_DSPECIAL && hbox_num < 4  {
+	player_id.move_cooldown[AT_DSPECIAL] = 2
+}		
 if attack == AT_DSPECIAL && hbox_num == 1 && !free && player_id.milkpizz != 1  {
 	destroyed = 1 
 	spawn_hit_fx( x  , y , 195 )
@@ -163,6 +167,10 @@ if attack == AT_DSPECIAL && hbox_num == 3 {
     
     if hitbox_timer > 60 && hitbox_timer < 110 {
        hsp += 0.2 * spr_dir	
+    }
+    
+    if hitbox_timer == 179 {
+    	spawn_hit_fx(x,y - 10, 302)
     }
 }
 

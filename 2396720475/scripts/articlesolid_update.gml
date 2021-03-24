@@ -39,6 +39,28 @@ if (state == 1){
 			if (other.flag){
 				other.player_id.flag_destroy = true;	
 			}
+			
+			if (other.hit_delay <= 1 && throws_rock != 2){
+				if ((!(other.past_hitbox == hbox_num && other.past_attack == attack)) && 
+				((other.past_group == hbox_group && other.past_attack != attack) || 
+				other.past_group != hbox_group || -1 = hbox_group)){
+					other.past_hitbox = hbox_num;
+					other.past_attack = attack;
+					other.past_group = hbox_group;
+
+					other.hsp = 0;
+					other.vsp = 0;
+					
+					if (type == 1){
+						pHitBox.player_id.has_hit = true;
+						pHitBox.player_id.hitpause = true;
+						pHitBox.player_id.hitstop = hitpause + 2;
+						
+						pHitBox.player_id.old_hsp = pHitBox.player_id.hsp;
+						pHitBox.player_id.old_vsp = pHitBox.player_id.vsp;
+					}
+				}
+			}
 		}
 	}
 

@@ -29,6 +29,9 @@ if (state_timer == 1){
 	state = 1;
 }
 
+if (!instance_exists(boxhitbox) && boxhitbox != noone){
+	boxhitbox = noone;
+}
 
 if (state == 1){
 	if (vsp > 2){
@@ -47,7 +50,9 @@ if (state == 1){
 		
 		if (place_meeting(x, y, other) && other.boxhitbox == noone){
 			if (other.hit_delay <= 1 && throws_rock != 2){
-				if ((!(other.past_hitbox == hbox_num && other.past_attack == attack)) && ((other.past_group == hbox_group && other.past_attack != attack) || other.past_group != hbox_group || -1 = hbox_group)){
+				if ((!(other.past_hitbox == hbox_num && other.past_attack == attack)) && 
+				((other.past_group == hbox_group && other.past_attack != attack) || 
+				other.past_group != hbox_group || -1 = hbox_group)){
 					other.past_hitbox = hbox_num;
 					other.past_attack = attack;
 					other.past_group = hbox_group;
@@ -56,38 +61,53 @@ if (state == 1){
 					other.vsp = 0;
 					
 					other.destroy_check = false;
-					other.hit_delay = 5 + hitpause + extra_hitpause;
+					other.hit_delay = 4 + hitpause + extra_hitpause;
 
 					other.kb_scaling = kb_scale;
 					other.bkb = kb_value;
-					other.kb_angle = get_hitbox_angle(id);	
-
+					with (other) {kb_angle = get_hitbox_angle(other.id)}
+					//print (other.kb_angle);
 					other.hitpause = true;
-					other.hitstop = hitpause;
+					other.hitstop = hitpause + extra_hitpause;
 
-					other.owner = player;
+					other.owner = pHitBox.player;
 					
 					other.health_check = true;
-						
+
+					/*
+					with (other){
+						if (get_hitbox_angle(other.id) < 90 or get_hitbox_angle(other.id) > 270){
+							other.spr_dir = -1;
+						}
+						if (get_hitbox_angle(other.id) > 90 and get_hitbox_angle(other.id) < 270){
+							other.spr_dir = 1;
+						}
+					}
+					*/
+
 					sound_play(pHitBox.sound_effect);	
 					spawn_hit_fx(other.x, other.y, hit_effect);
 					
-					player_id.has_hit = true;
-					player_id.hitpause = true;
-					player_id.hitstop = hitpause;
-					
-					player_id.old_hsp = player_id.hsp;
-					player_id.old_vsp = player_id.vsp;
+					if (other.state_timer > 10 && type == 1){ // This is mainly to avoid weird momentum stoppage when you hit a box that's not moving initially
+						pHitBox.player_id.has_hit = true;
+						pHitBox.player_id.hitpause = true;
+						pHitBox.player_id.hitstop = hitpause + 2;
+						
+						pHitBox.player_id.old_hsp = pHitBox.player_id.hsp;
+						pHitBox.player_id.old_vsp = pHitBox.player_id.vsp;
+					}
 				}
 			}
 		}
 	}
 
-	kb_speed = ((bkb + 70 * kb_scaling * fancynum * kb_adj) / 1.2); // calculates knockback speed
+	kb_speed = ((bkb + 50 * kb_scaling * fancynum * kb_adj)); // calculates knockback speed
 
-	if (hit_delay = 5){
+	if (hit_delay = 4){
 		vsp = lengthdir_y(kb_speed , kb_angle);
 		hsp = lengthdir_x(kb_speed , kb_angle);
+		//			print (vsp);
+		//			print (hsp);
 		
 		if (initial_spawn){
 			boxhitbox = create_hitbox( AT_DSPECIAL, 2, x, y );
@@ -138,9 +158,6 @@ if (state == 1){
 	}
 }
 	
-if (!instance_exists(boxhitbox) && boxhitbox != noone){
-	boxhitbox = noone;
-}
 
 if (health_check){
 	health_check = false;

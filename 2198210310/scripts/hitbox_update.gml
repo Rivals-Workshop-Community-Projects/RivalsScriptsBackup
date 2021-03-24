@@ -54,7 +54,16 @@ if (attack == AT_FSPECIAL) && (hbox_num == 1) {
 if (attack == AT_NSPECIAL) && (hbox_num == 1) {
     depth = -1
     uses_shader = false;
-    var hitbox = instance_place(x, y, pHitBox);
+    var has_hitbox = place_meeting(x, y, pHitBox)
+    if has_hitbox {
+        with pHitBox {
+            if instance_place(x, y, other) {
+                var hitbox = id;
+            }
+        }
+    } else {
+        var hitbox = noone;
+    }
     
     if power >= player_id.compactThreshhold {
         var freq = floor(10 * 60/power);
@@ -97,7 +106,8 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
                 with player_id {
                     spawn_hit_fx(other.x, other.y - 15, 141);
                 }
-                create_hitbox(AT_NSPECIAL, 2, x, y - 10);
+                var boom = create_hitbox(AT_NSPECIAL, 2, x, y - 10);
+                    boom.can_hit_self = true;
                 destroyed = true;
                 exit;
             } else {
@@ -173,12 +183,26 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
                 create_hitbox(AT_NSPECIAL, 3, x, y - 20);
                 destroyed = true;
                 exit;
+            } else if ("isWalle" in hitbox.player_id) && hitbox.hbox_num == 1 && hitbox.attack == AT_DSPECIAL { //dspecial absorb cube
+                with hitbox.player_id {
+                    window = 4;
+                    window_timer = 0;
+                    absorbedCube = true;
+                    compactTimer = other.power;
+                    heldExplode = other.willExplode;
+                    heldExplodeTimer = other.explodeTimer + compactTimer*7;
+                    heldExplodeThreshhold = other.explodeThreshhold;
+                    sound_play(asset_get("sfx_ell_utilt_fire"));
+                }
+                instance_destroy()
+                exit;
             } else if (variable_instance_exists(hitbox.player_id, "isWalle") && hitbox.attack == AT_FTILT) { //ftilt explosion
                 sound_play(asset_get("sfx_ell_fist_explode"));
                 with player_id {
                     spawn_hit_fx(other.x, other.y - 15, 141);
                 }
-                create_hitbox(AT_NSPECIAL, 2, x, y - 10);
+                var boom = create_hitbox(AT_NSPECIAL, 2, x, y - 10);
+                    boom.can_hit_self = false;
                 destroyed = true;
                 exit;
             } else if free && !hasMoved && !(variable_instance_exists(hitbox.player_id, "isWalle") && hitbox.attack == AT_NSPECIAL) {
@@ -214,18 +238,25 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
                         oldVsp = -oldSpeed*(dsin(round(angle/45)*45));
                     }
                     
+                    if was_grounded {
+                        oldHsp *= 0.75
+                        oldVsp *= 0.75
+                    }
+                    
                     hitbox.player_id.has_hit = true;
                     
                     in_hitpause = true;
                     hasMoved = true;
-                    hitCooldown = 10;
+                    hitCooldown = 8;
                     movePlayerID.hitpause = true;
                     with movePlayerID {
                         if hitstop <= 0 {
                             hitstop = 8;
                             hitstop_full = 8;
                             sound_play(get_hitbox_value(hitbox.attack, hitbox.hbox_num, HG_HIT_SFX));
-                            spawn_hit_fx(other.x, other.y, get_hitbox_value(hitbox.attack, hitbox.hbox_num, HG_VISUAL_EFFECT));
+                            var hitfx = get_hitbox_value(hitbox.attack, hitbox.hbox_num, HG_VISUAL_EFFECT);
+                            if hitfx == 0 hitfx = 301;
+                            spawn_hit_fx(other.x, other.y, hitfx);
                         }
                     }
                     with movePlayerID {
@@ -240,24 +271,41 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
         }
         
         
-        if hitCooldown <= 0 {
+        if hitCooldown <= 0 { //available to hit a player
             hit_priority = 3;
-            if instance_exists(self) && hasMoved {
+            if instance_exists(self) && hasMoved { //if has been hit in the air prior
                 with oPlayer {
                     if id != other.movePlayerID {
                         other.can_hit[player] = true;
                     }
                 }
+                hasMoved = false;
             }
-            hasMoved = false;
         } else {
+            with oPlayer {
+                other.can_hit[player] = false;
+            }
             if !hasMoved {
                 hit_priority = 0;
             }
             if !in_hitpause {
+                was_grounded = false;
                 hitCooldown--;
             }
         }
+    }
+    
+    //angle changing code
+    if abs(hsp) < 1 { //vertical
+        if vsp <= 0 { //upwards
+            kb_angle = 90;
+        } else { //spike
+            kb_angle = -90;
+        }
+    } else if hsp > 0 {
+        kb_angle = 90 - 45*spr_dir;
+    } else {
+        kb_angle = 90 + 45*spr_dir;
     }
     
     if (x > player_id.room_width + 100) || (x < -100) || (y > player_id.room_height + 100) {
@@ -269,7 +317,8 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
         with player_id {
             spawn_hit_fx(other.x, other.y - 15, 141);
         }
-        create_hitbox(AT_NSPECIAL, 2, x, y - 10);
+        var boom = create_hitbox(AT_NSPECIAL, 2, x, y - 10);
+            boom.can_hit_self = true;
         destroyed = true;
         exit;
     }

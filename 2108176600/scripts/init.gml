@@ -12,6 +12,7 @@ set_victory_theme(sound_get("laugh"));
 dtilt_offset = [38,140];
 dtilt_end = false;
 dair_vel = [0,.8];
+dair_count = 0;
 
 dspec_attack = false;
 dspec_special = false;
@@ -20,6 +21,10 @@ dspec_up = false;
 dspec_left = false;
 dspec_right = false;
 dspec_taunt = false;
+dspec_left_strong = false;
+dspec_right_strong = false;
+dspec_up_strong = false;
+dspec_down_strong = false;
 dspec_char_height = 100;
 
 dstrong_cyl_max = 2;
@@ -29,6 +34,8 @@ use_nspec = false;
 jab_offset = 80;
 temp_jab_offset = 0;
 dattack_offset = 64;
+jab_art = noone;
+has_airdodge_prev = has_airdodge;
 
 spr_dir_prev = spr_dir;
 prev_attack = AT_JAB;
@@ -97,7 +104,7 @@ ph_text_arry = [
     "swallowed != 0",
     "MIXELS",
     "HIME WILL BE REAL IN 3",
-    "YOU & ME NOT BY THE DING DONG TREE",
+    "YOU & ME BY THE DING DONG TREE",
     "PLEASE WAKE UP",
     "6.999999999",
     "THE NEXT DISASTER WILL HAPPEN IN 0 SECONDS",
@@ -108,7 +115,8 @@ ph_text_arry = [
     "DAN FURNACE",
     "MAYPUL DRILL",
     "8 AWESOME ANGLE FLIPPERS",
-    "HYPER_REALISTIC_BLOOD_STRIP420.PNG"
+    "HYPER_REALISTIC_BLOOD_STRIP420.PNG",
+    "YOU CANNOT WAKL YOU CANNOT R U N"
     ];
 ph_text_rd = 0;
 ICU_index = 0;

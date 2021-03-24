@@ -34,15 +34,6 @@
     	bonk = false;
 }}}
 
-if (attack == AT_DTILT && moist_level = 3){
-	  		set_attack_value(AT_DTILT, AG_SPRITE, sprite_get("dtilt_mud"));
-  		set_attack_value(AT_DTILT, AG_HURTBOX_SPRITE, sprite_get("dtilt_mud_hurt"));
-  		set_hitbox_value(AT_DTILT, 1, HG_HITBOX_X, 0);
-} else {
-	    	reset_attack_value(AT_DTILT, AG_SPRITE);
-    	reset_attack_value(AT_DTILT, AG_HURTBOX_SPRITE);
-  		reset_hitbox_value(AT_DTILT, 1, HG_HITBOX_X);
-}
 
 if (attack == AT_TAUNT)
 {if (up_down)

@@ -95,7 +95,8 @@ if attack == AT_DAIR {
 
 if attack == AT_DATTACK {
     if ((window < 3 && window_timer < 3) or window < 3) && (has_hit_player && hit_player_obj.state_cat == SC_HITSTUN && !hitpause){
-			hit_player_obj.x += ((x + (30 * spr_dir)) - hit_player_obj.x) / 10
+			hit_player_obj.x += ((x + (20 * spr_dir)) - hit_player_obj.x) / 10
+			hit_player_obj.y += (y - 10 - hit_player_obj.y) / 10
     }
 }
 

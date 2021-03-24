@@ -436,6 +436,9 @@ if (state >= 21 && state <= 32) {
         move_cooldown[AT_FTILT] = 2;
         move_cooldown[AT_UTILT] = 2;
         move_cooldown[AT_DTILT] = 2;
+        move_cooldown[AT_FSTRONG] = 2;
+        move_cooldown[AT_USTRONG] = 2;
+        move_cooldown[AT_DSTRONG] = 2;
         move_cooldown[AT_NAIR] = 2;
         move_cooldown[AT_FAIR] = 2;
         move_cooldown[AT_BAIR] = 2;

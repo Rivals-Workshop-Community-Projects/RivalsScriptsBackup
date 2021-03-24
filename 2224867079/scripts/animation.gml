@@ -23,18 +23,25 @@ if (state == PS_RESPAWN) {
 	image_index = floor(image_number*state_timer/(image_number*5));
 }
 
-//Moving Uspecial
-/*
-if (attack == AT_NAIR) && window == 3 {
-	spr_angle = point_direction(0,0,hsp,-22)-90
+//Rotatey Fspecial
+
+if (attack == AT_FSPECIAL) && window == 4 {
+		//down
+		if((joy_dir < 350 && joy_dir > 200 && spr_dir == 1) || (joy_dir > 210 && joy_dir < 300 && spr_dir == -1) || down_stick_down)
+		{
+			spr_angle = -25 * spr_dir
+		}
+		//up 
+		else if((joy_dir > 30 && joy_dir < 260 && spr_dir == 1) || (joy_dir < 150 && joy_dir > 40 && spr_dir == -1) || up_stick_down)
+		{
+			spr_angle = 25 * spr_dir
+		}
+		else
+		{
+			spr_angle = 0
+		}
 }
-if (attack == AT_NAIR) && window > 3 {
-	spr_angle = lerp(spr_angle,0,0.01)
-}
-if (attack == AT_NAIR) && window == 2 {
-	spr_angle = lerp(spr_angle,point_direction(0,0,hsp,-22)-90,0.5)
-}
-*/
+
 
 //Red Mode Stuff
 
@@ -164,7 +171,7 @@ if (state == PS_AIR_DODGE && RedMode == true) {
 //Kawaii Stuff
 if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_DSPECIAL_2) {
 	switch (get_player_color(player)) {
-		case(9):
+		case(10):
 		sprite_index = sprite_get("kawaii_dspecial");
 		break;
 	}

@@ -482,62 +482,13 @@ switch guide_textbox {
 	break;
 	//changelog
 	case 250:
-		guide_readtext[0]="Patch 1.1:";
-		guide_readtext[2]="= Removed manual glide entry (holding jump while going";
-		guide_readtext[3]="   down and pressing jump while holding down)";
-		guide_readtext[5]="+ Fair startup 9 -> 6";
-		guide_readtext[6]="+ Fair endlag 12 ->10";
-		guide_readtext[7]="+ Fair landing lag 6 -> 4";
-		guide_readtext[8]="- Bair early hit active frames 8-10 -> 8-9";
-		guide_readtext[9]="- Bair late hit active frames 11-25 -> 10-19";
-		guide_readtext[10]="+ Bair endlag 12 -> 9";
-		guide_readtext[11]="+ Bair landing lag 6 -> 4";
-		guide_readtext[12]="+ Bair faf 43 -> 34";
-	break;
-	case 251:
-		guide_readtext[0]="+ Bair early hit kbs .6 -> .5";
-		guide_readtext[1]="+ Dair kbs .6 -> .45";
-		guide_readtext[2]="+ Nair endlag 12 -> 10";
-		guide_readtext[3]="+ Nair landing lag 10 -> 4";
-		guide_readtext[4]="";
-		guide_readtext[5]="= Nspecial mini-rework:";
-		guide_readtext[6]="  * fspecial no longer rotates ring";
-		guide_readtext[7]="  * while no ring is out, nspecial acts like it did before";
-		guide_readtext[8]="  * while ring is out, nspecial rotates the ring based on";
-		guide_readtext[9]="     which was it initially going normal -> up ->";
-		guide_readtext[10]="     opposite -> down -> repeat with a 10 frame cooldown";
-		guide_readtext[11]="  * if ring is parried, nspecial gets a 5 second cooldown";
-		guide_readtext[12]="";
-	break;
-	case 252:
-		guide_readtext[0]="+ Uspecial endlag 29 -> 26";
-		guide_readtext[1]="+ Uspecial aerial sweetspot bkb 5 -> 6";
-		guide_readtext[2]="+ Uspecial grounded sweetspot angle 135 (45) -> 145 (35)";
-		guide_readtext[3]="+ Uspecial grounded sweetspot kbs .8 -> 1";
-		guide_readtext[4]="= Dspecial vertical speed cap on entry no cap -> 5 downward";
-		guide_readtext[5]="- Dspecial speed cap on exit (horizontal / vertical) 7 / 5 -> 5 / 4.5";
-		guide_readtext[6]="";
-		guide_readtext[7]="- strongs stop in place when parried";
-		guide_readtext[8]="+ all strongs can no longer land in the time after the";
-		guide_readtext[9]="   button is released and the hitbox starts";
-		guide_readtext[10]="+ Fstrong can no longer land while active";
-		guide_readtext[11]="+ Empowered Dstrong now has a landing hitbox with";
-		guide_readtext[12]="   angle 80, bkb 8, and kbs .5";
-	break;
-	case 253:
-		guide_readtext[0]="= Ring no longer interacts strangely with other articles";
-		guide_readtext[1]="   that detect hitboxes";
-		guide_readtext[2]="= Ring now properly goes away when inside plasma field";
-		guide_readtext[3]="   (it also applies the same cooldown as parrying it)";
-		guide_readtext[4]="= Strongs now have the flash effect on zephrie rather";
-		guide_readtext[5]="   than just the little ring";
-		guide_readtext[6]="";
-		guide_readtext[7]="";
-		guide_readtext[8]="";
-		guide_readtext[9]="";
-		guide_readtext[10]="";
-		guide_readtext[11]="";
-		guide_readtext[12]="";
+		guide_readtext[0]="Patch 1.2:";
+		guide_readtext[2]="- jab3 and nair no longer enter glide after being parried";
+		guide_readtext[3]="- nair no longer steerable when parried";
+		guide_readtext[5]="- ring hitbox more accurately matches visual ";
+		guide_readtext[6]="   (which makes it a bit smaller)";
+		guide_readtext[7]="= ring detection for strongs range cut in half to help";
+		guide_readtext[8]="   avoid accidentally activating it";
 	break;
 	/*case 251:
 		guide_readtext[0]="All previous patch notes are on the steam page";
@@ -574,7 +525,7 @@ switch guide_textbox {
 	case 200: 
 		return true; 
 	break;
-	case 253: 
+	case 250: 
 		return true; 
 	break;
 	default:

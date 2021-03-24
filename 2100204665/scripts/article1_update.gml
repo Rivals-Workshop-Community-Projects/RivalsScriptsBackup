@@ -25,6 +25,11 @@ if (state == 1){
     }
 }
 
+if free == true && state != 3{
+    state = 3;
+    state_timer = 0;
+}
+
 if (state == 2){
     state_timer++;
     if (state_timer == 2){

@@ -1,4 +1,4 @@
-set_num_palettes(14)
+set_num_palettes(16)
 
 //DEFAULT COLOR (R,G,B)
 set_color_profile_slot(0, 0, 255, 234, 147); //LIGHT
@@ -186,9 +186,9 @@ set_color_profile_slot(9, 8, 104, 102, 94); //BUTT OFF
 set_color_profile_slot(10, 0, 251, 110, 41); //LIGHT
 set_color_profile_slot(10, 1, 249, 236, 176); //PLATING
 set_color_profile_slot(10, 2, 74, 132, 155); //RUBBER
-set_color_profile_slot(10, 3, 246, 76, 54); //PLANET 1
+set_color_profile_slot(10, 3, 29, 158, 225); //PLANET 1
 set_color_profile_slot(10, 4, 250, 225, 13); //PLANET 2
-set_color_profile_slot(10, 5, 29, 158, 225); //PLANET 3
+set_color_profile_slot(10, 5, 246, 76, 54); //PLANET 3 
 set_color_profile_slot(10, 6, 50, 231, 149); //ANTENNAE
 
 
@@ -240,3 +240,31 @@ set_color_profile_slot(13, 6, 104, 124, 183); //ANTENNAE
 set_color_profile_slot(13, 7, 255, 154, 117); //RED GIANT
 
 set_color_profile_slot(13, 8, 104, 102, 94); //BUTT OFF
+
+//Arwing
+set_color_profile_slot(14, 0, 83, 105, 219); //LIGHT
+set_color_profile_slot(14, 1, 234, 234, 234); //PLATING
+set_color_profile_slot(14, 2, 89, 89, 89); //RUBBER
+set_color_profile_slot(14, 3, 175, 179, 224); //PLANET 1
+set_color_profile_slot(14, 4, 224, 53, 82); //PLANET 2
+set_color_profile_slot(14, 5, 148, 206, 41); //PLANET 3
+set_color_profile_slot(14, 6, 204, 157, 6); //ANTENNAE
+
+
+set_color_profile_slot(14, 7, 255, 154, 117); //RED GIANT
+
+set_color_profile_slot(14, 8, 104, 102, 94); //BUTT OFF
+
+//Vatista
+set_color_profile_slot(15, 0, 253, 17, 18); //LIGHT
+set_color_profile_slot(15, 1, 55, 54, 81); //PLATING
+set_color_profile_slot(15, 2, 247, 245, 254); //RUBBER
+set_color_profile_slot(15, 3, 255, 122, 223); //PLANET 1
+set_color_profile_slot(15, 4, 57, 255, 255); //PLANET 2
+set_color_profile_slot(15, 5, 255, 122, 223); //PLANET 3
+set_color_profile_slot(15, 6, 247, 245, 254); //ANTENNAE
+
+
+set_color_profile_slot(15, 7, 193, 0, 80); //RED GIANT
+
+set_color_profile_slot(15, 8, 104, 102, 94); //BUTT OFF

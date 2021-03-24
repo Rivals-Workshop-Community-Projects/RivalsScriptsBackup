@@ -38,7 +38,7 @@ var palette_names = [
   "Calligrapher of Crystal",
   "Drawer of Motivation",
   "Gimmick is Stun",
-  "Melee Sai",
+  "not-Melee Sai",
   "Paint Tool Sai",
   "Osu Dab",
   "Cmon!",
@@ -80,8 +80,5 @@ if drawtime < 15 {
     
 }
 
-if alt < 7 or alt == 13 {
+
 draw_sprite_ext(sprite_get("style"),0,temp_x-2,temp_y+30,2,2,0,-1,1-(drawtime/60) );
-} else {
- draw_sprite_ext(sprite_get("style"),1,temp_x-2,temp_y+30,2,2,0,-1,1-(drawtime/60) );  
-}

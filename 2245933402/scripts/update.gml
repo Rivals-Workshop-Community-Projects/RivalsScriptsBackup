@@ -219,7 +219,7 @@ hitstun_grav = .5;
 	
 }
 
-if ostyle == 2 or ostyle == 5{
+if  ostyle == 5{
 	set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair"));
 	set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("nair"));
 idle_anim_speed = .12;
@@ -259,6 +259,49 @@ gravity_speed = .5;
 hitstun_grav = .5;
 wave_land_adj = 1;
 } 
+
+
+if ostyle == 2{
+	set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair"));
+	set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("nair"));
+idle_anim_speed = .1;
+crouch_anim_speed = .1;
+walk_anim_speed = .1;
+dash_anim_speed = .2;
+
+walk_speed = 2;
+walk_accel = 0.5;
+walk_turn_time = 5;
+initial_dash_time = 10;
+initial_dash_speed = 3;
+dash_speed = 3;
+dash_turn_time = 6;
+dash_turn_accel = 1.5;
+dash_stop_time = 10;
+
+jump_start_time = 4;
+jump_speed = 8;
+short_hop_speed = 6;
+djump_speed = 8;
+leave_ground_max = 3; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
+jump_change = 4; //maximum hsp when double jumping. If already going faster, it will not slow you down
+air_accel = .2;
+prat_fall_accel = .80; //multiplier of air_accel while in pratfall
+air_friction = .035;
+max_djumps = 1;
+double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
+walljump_hsp = 4;
+walljump_vsp = 11;
+walljump_time = 24;
+max_fall = 8; //maximum fall speed without fastfalling
+fast_fall = 14; //fast fall speed
+gravity_speed = .5;
+hitstun_grav = .6;
+wave_land_adj = 1;
+} 
+
 
 
 if ostyle != 5 {

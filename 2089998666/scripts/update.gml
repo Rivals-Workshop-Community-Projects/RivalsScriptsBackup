@@ -217,7 +217,7 @@ set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 143);
 if has_rune("L") {
 	yosword = 1;
 	}
-if (naenae and balltorture and ligmas and yosword = 0 and attack = AT_TAUNT){
+if (naenae and balltorture and ligmas and yosword = 0 and attack = AT_TAUNT and (get_player_damage( player ) == 69) ){
     bossmode = 1
 	sound_play(sound_get("smw2_message_block"));
 	sound_play(sound_get("DSw"));
@@ -230,7 +230,7 @@ if (naenae and balltorture and ligmas and yosword = 0 and attack = AT_TAUNT){
 			
 			with (asset_get("oPlayer")) {
 				if (player != other.player) {
-					set_player_stocks(player, 5);
+					set_player_stocks(player, 2);
 					var curr_dist = point_distance(x,y,other.x,other.y);
 					if (curr_dist < shortest_dist) {
 						shortest_dist = curr_dist;

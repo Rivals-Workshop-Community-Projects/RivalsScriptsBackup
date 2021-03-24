@@ -4,6 +4,7 @@ switch (attack)
     case AT_FSPECIAL:
     case AT_DSPECIAL:
     case AT_USPECIAL:
+    case 49:
         trigger_b_reverse();
         break;
 }
@@ -35,6 +36,7 @@ switch (attack)
         break;
     case AT_EXTRA_1:
         tutDoneAdv[7] = true;
+        can_jump = true;
         if (taunt_down)
         {
             window_timer = 0;
@@ -360,7 +362,7 @@ switch (attack)
                 can_wall_jump = true;
                 x = lerp(fspecPosX.a, fspecPosX.b, window_timer/get_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH));
                 hsp = 6*spr_dir;
-                soft_armor = 621;
+                if (get_window_value(AT_FSPECIAL, 6, AG_WINDOW_TYPE)==1) soft_armor = 621;
                 if (window_timer == get_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH))
                 {
                     canTele = false;
@@ -440,6 +442,44 @@ switch (attack)
                 can_fast_fall = false;
                 can_move = false;
                 can_wall_jump = true;
+                break;
+        }
+    }
+    break;
+    case 49:
+    {
+        suppress_stage_music(0, 0.03);
+        switch (window)
+        {
+            case 1:
+                hsp/=1.15;
+                vsp/=1.15;
+                can_fast_fall = false;
+                can_move = false;
+                free = true;
+                break;
+            case 2:
+                hsp/=1.15;
+                vsp/=1.15;
+                can_fast_fall = false;
+                can_move = false;
+                break;
+            case 3:
+	            if (window_timer > 50 && window_timer <= 100 && window_timer % 8 == 0 && !hitpause)
+	            {
+	            	sfxname = "step";
+	            	sfxname += string(random_func(0, 4, true)+1);
+	            	sound_play(sound_get(sfxname), 0, 0, (window_timer-50)/20);
+	            }
+	            else if (window_timer == 100 && !hitpause)
+	            {
+	            	sound_play(sound_get("slash4"));
+			        sound_play(sound_get("hitsfx1"));
+			        sound_play(asset_get("sfx_blow_heavy2"));
+	            }
+                break;
+            case 4:
+                suppress_stage_music(1, 1);
                 break;
         }
     }

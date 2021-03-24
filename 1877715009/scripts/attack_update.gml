@@ -5,6 +5,7 @@ switch (attack)
 	case AT_DSPECIAL:
 	case AT_USPECIAL:
 	case AT_JAB:
+	case 49:
 	    trigger_b_reverse();
 		break;
 }
@@ -844,7 +845,6 @@ switch (attack)
 	{
 		if (has_hit_player && !was_parried)
 		{
-			can_ustrong = true;
 			if (((special_pressed && down_down) || stupidbossbool) && !move_cooldown[AT_DSPECIAL_2] && !hitpause)
 			{
 				set_attack(AT_DSPECIAL_2);
@@ -980,7 +980,7 @@ switch (attack)
 	case AT_USTRONG:
 	if (o_copyplayer == noone)
 	{
-	    if (window >= 2)
+	    if (window >= 3)
 	        draw_indicator = false;
 	    if (window == 2)
 	    {
@@ -996,13 +996,16 @@ switch (attack)
 				else
 					minmin();
 			}
-			else if (window_timer == 4)
+		}
+	    else if (window == 3)
+	    {
+			if (window_timer == 4)
 			{
 				vsp = -7;
 				sound_play(jump_sound);
 			}
 		}
-	    else if (window == 1 && window_timer == 11)
+	    else if (window == 1 && window_timer == 10)
 	    {
 	        if (aura || runeN)
 	        {
@@ -1172,6 +1175,30 @@ switch (attack)
 		}
 	}
 	break;
+
+	case 49:
+		draw_indicator = false;
+		switch (window)
+		{
+			case 1:
+				if (window_timer == 2 && !hitpause)
+				{
+					sound_play(sound_get("sfx_taunt"));
+					sound_stop(sound_get("meme"));
+				}
+				break;
+			case 2:
+				if (window_timer == 1 && !hitpause)
+				{
+					var owo = spawn_hit_fx(x-14*spr_dir,y-36,shinestar_effect); owo.depth = -10;
+				}
+				break;
+			case 4:
+				if (window_timer < 62 && window_timer % 2 == 1)
+					create_hitbox(49, 2, x, y);
+				break;
+		}
+		break;
 }
 
 

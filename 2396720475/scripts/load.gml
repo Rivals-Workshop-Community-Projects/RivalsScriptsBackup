@@ -10,6 +10,8 @@ sprite_change_offset("recharged", 25, 68);
 sprite_change_offset("grabrecharged", 41, 41);
 
 sprite_change_offset("bighit_fx", 100, 100);
+sprite_change_offset("bighit_custom1_fx", 100, 80);
+sprite_change_offset("smallhit1_custom1_fx", 100, 80);
 sprite_change_offset("spikyhit_fx", 100, 100);
 sprite_change_offset("smallhit1_fx", 100, 100);
 sprite_change_offset("smallhit2_fx", 100, 100);
@@ -18,6 +20,8 @@ sprite_change_offset("smallhit4_fx", 100, 100);
 
 sprite_change_offset("crouch_hurtbox", 27, 26);
 sprite_change_offset("standing_hurtbox", 25, 46);
+
+sprite_change_offset("TAG_crown", 28, 56);
 
 sprite_change_offset("box", 23, 22);
 sprite_change_offset("box_spin", 25, 24);
@@ -62,7 +66,7 @@ sprite_change_offset("ftilt", 46, 86);
 sprite_change_offset("dtilt", 58, 54);
 sprite_change_offset("utilt", 58, 100);
 sprite_change_offset("nair", 72, 82);
-sprite_change_offset("fair", 60, 70);
+sprite_change_offset("fair", 56, 74);
 sprite_change_offset("bair", 72, 80);
 sprite_change_offset("uair", 58, 86);
 sprite_change_offset("dair", 72, 80);
@@ -102,15 +106,6 @@ sprite_change_offset("meter", 30, 4);
 sprite_change_offset("bighurt", 24, 50);
 sprite_change_offset("spinhurt", 30, 60);
 //sprite_change_offset("uphurt", 74, 118);
-
-sprite_change_offset("hit_medium1", 174, 166);
-sprite_change_offset("hit_medium2", 174, 166);
-sprite_change_offset("hit_diagonal1", 174, 166);
-sprite_change_offset("hit_diagonal3", 174, 166);
-sprite_change_offset("hit_diagonal2", 174, 166);
-sprite_change_offset("hit_up1", 174, 166);
-sprite_change_offset("hit_slap", 174, 166);
-sprite_change_offset("hit_heart", 174, 166);
 
 set_victory_theme( sound_get( "victory_tune" ));
 set_victory_bg( sprite_get( "victory_bg" ));

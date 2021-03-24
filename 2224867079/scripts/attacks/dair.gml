@@ -77,6 +77,7 @@ set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, blue_new_stab_1 );
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, sound_get("Hit1"));
 
+//sweetspot
 set_hitbox_value(AT_DAIR, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_TYPE, 1);
@@ -87,7 +88,7 @@ set_hitbox_value(AT_DAIR, 2, HG_HITBOX_Y, -26);
 set_hitbox_value(AT_DAIR, 2, HG_WIDTH, 26);
 set_hitbox_value(AT_DAIR, 2, HG_HEIGHT, 29);
 set_hitbox_value(AT_DAIR, 2, HG_PRIORITY, 2);
-set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 7);
+set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 6);
 set_hitbox_value(AT_DAIR, 2, HG_ANGLE, 315);
 set_hitbox_value(AT_DAIR, 2, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_DAIR, 2, HG_KNOCKBACK_SCALING, 0.1);

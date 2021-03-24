@@ -746,11 +746,11 @@ if (attack == AT_DSPECIAL){
         }
     }
     
-    if (window == 3 && window_timer == 1 && hitstop == 0) {
+    if (window == 3 && window_timer == 2 && hitstop == 0) {
        create_smoke(x, y - 32, 8, 30, 0, 359, 4 + (has_rune("L") * 6), 8 + (has_rune("L") * 6), 0.18)
     }
     
-    if (window == 5 && window_timer == 1 && hitstop == 0) {
+    if (window == 5 && window_timer == 2 && hitstop == 0) {
        create_smoke(x, y - 32, 16, 60, 0, 359, 12 + (has_rune("L") * 14), 16 + (has_rune("L") * 14), 0.18)
     }
     

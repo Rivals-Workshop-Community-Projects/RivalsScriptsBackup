@@ -98,4 +98,49 @@ if training {
     
     
 }
+
+if rank < 5 {
+draw_sprite(sprite_get("rank"), rank, temp_x + 10, temp_y - 22);
+
+draw_sprite_ext(sprite_get("rank"), rank + 5, temp_x + 10, temp_y - 22,1,1,0,-1, rankm/120 );
+
+draw_sprite_ext(sprite_get("rank"), rank + 10, temp_x + 10, temp_y - 22,1 ,1 ,0,-1, rankm/240 - (get_gameplay_time() % 20)/200);
+
+}
+
+if rank == 5 {
+    
+
+  
+    draw_sprite(sprite_get("rank"), 4, temp_x + 18, temp_y - 24);
+  draw_sprite_ext(sprite_get("rank"), 14, temp_x + 18, temp_y - 24,1 ,1 ,0,-1, rankm/300 - (get_gameplay_time() % 20)/200);
+  
+draw_sprite(sprite_get("rank"), 4, temp_x + 10, temp_y - 22);
+
+draw_sprite_ext(sprite_get("rank"), 9, temp_x + 10, temp_y - 22,1,1,0,-1, rankm/120 );
+
+draw_sprite_ext(sprite_get("rank"), 14, temp_x + 10, temp_y - 22,1 ,1 ,0,-1, rankm/280 - (get_gameplay_time() % 20)/200);
+
+}
+
+if rank == 6 {
+    
+        draw_sprite(sprite_get("rank"), 4, temp_x + 2, temp_y - 24);
+  draw_sprite_ext(sprite_get("rank"), 14, temp_x + 2, temp_y - 24,1 ,1 ,0,-1, rankm/300 - (get_gameplay_time() % 20)/200);
+  
+  
+    draw_sprite(sprite_get("rank"), 4, temp_x + 18, temp_y - 24);
+  draw_sprite_ext(sprite_get("rank"), 14, temp_x + 18, temp_y - 24,1 ,1 ,0,-1, rankm/300 - (get_gameplay_time() % 20)/200);
+  
+draw_sprite(sprite_get("rank"), 4, temp_x + 10, temp_y - 22);
+
+draw_sprite_ext(sprite_get("rank"), 9, temp_x + 10, temp_y - 22,1,1,0,-1, rankm/120 );
+
+draw_sprite_ext(sprite_get("rank"), 14, temp_x + 10, temp_y - 22,1 ,1 ,0,-1, rankm/280 - (get_gameplay_time() % 20)/200);
+
+}
+
+   ///draw_debug_text(temp_x + 140,temp_y - 102,"rankm" + string(rankm));
+   ///draw_debug_text(temp_x + 140,temp_y - 112,"rank" + string(rank));
+   
 shader_end();

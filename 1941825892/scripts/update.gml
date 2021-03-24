@@ -1172,9 +1172,6 @@ if (enemykirby != -1) {
 		                    sound_play(shine_break_sfx);
 		                } else {
 		                    sound_play(shine_reflect_sfx);
-		                    if (reflect.object_index == pHitBox) {
-                    			reflect.image_angle = (180 * (sign(reflect.hsp) + 1));
-                    		}
 		                    switch (reflect.player_id.url) {
 		                    	case CH_WRASTOR:
 			                    	// Wrastor Slipstream

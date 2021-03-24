@@ -73,9 +73,9 @@ if !free && hitbox_timer > 10 && hitbox_timer < 90 {
 }	
 
 if hitbox_timer == 90 {
-    destroyed = 1
 	create_hitbox( AT_FSPECIAL, 8, x, y);
-   sound_play(asset_get("sfx_bird_sidespecial"));	
+   sound_play(asset_get("sfx_bird_sidespecial"));
+    destroyed = 1   
 }
 
 
@@ -96,20 +96,20 @@ if (attack == AT_FSPECIAL) && hbox_num == 8 {
 
 
 if hitbox_timer == 30 {
-	destroyed = 1
 	sound_play(asset_get("sfx_ice_on_player"));
 		spawn_hit_fx ( x, y - 40, 304)
 		player_id.yosword = 1
+	destroyed = 1
 }
 }
 
 
 if (attack == AT_FSPECIAL) && hbox_num == 10 && !free {
-    destroyed = 1
 	sound_play(sound_get("ssbm_eggbreak"));
 	spawn_hit_fx ( x, y - 40, 304)
 	if get_gameplay_time() % 3 == 0 {
 	create_hitbox( AT_FSPECIAL, 11, x, y - 50);
+    destroyed = 1
 	}
 }
 
@@ -120,10 +120,10 @@ if (attack == AT_FSPECIAL) && hbox_num == 11 {
 	if (x - 40 - (player_id.x)) < 0 
 	and (x + 40 - (player_id.x)) > 0 and (y - 30 - (player_id.y)) < 0
 	and (y + 60 - (player_id.y)) > 0{	
-			destroyed = 1
     	spawn_hit_fx( x  , y , 305 )
     	sound_play(asset_get("sfx_may_arc_hit"));
     	player_id.bsta += 20
+		destroyed = 1
 		}
 		
 		
@@ -136,9 +136,9 @@ if (attack == AT_FSPECIAL) && hbox_num == 19 {
 
 
 if hitbox_timer == 90 {
-    destroyed = 1
 	create_hitbox( AT_FSPECIAL, 18, x, y);
    sound_play(asset_get("sfx_bird_sidespecial"));	
+   destroyed = 1
 }
 
 
@@ -153,10 +153,10 @@ if (attack == AT_FSPECIAL) && hbox_num == 18 {
 	vsp = (player_id.y - y -40 ) / 20
 	
 	if hitbox_timer == 60 {
-	destroyed = 1
 	sound_play(asset_get("sfx_ice_on_player"));
 		spawn_hit_fx ( x, y - 40, 304)
 		player_id.yosword = 1
+	destroyed = 1
 }
 
 }

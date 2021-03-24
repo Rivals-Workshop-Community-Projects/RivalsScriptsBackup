@@ -1,6 +1,8 @@
 time = 300;
 time_total = 300;
 
+state_cat = SC_HITSTUN;
+
 if has_rune("B") time += 600;
 
 can_be_grounded = 1;

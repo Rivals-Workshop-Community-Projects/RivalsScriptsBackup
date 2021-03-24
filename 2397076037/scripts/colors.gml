@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 7 );
+set_num_palettes( 9 );
 
 // Vante
 set_color_profile_slot( 1, 0, 0, 208, 255 ); //energy
@@ -78,10 +78,10 @@ set_color_profile_slot( 4, 7, 79, 49, 120 ); //Chair2
 
 // Ken from Street
 set_color_profile_slot( 5, 0, 245, 87, 2 ); //energy
-set_color_profile_slot( 5, 1, 245, 209, 34 ); //Hair
+set_color_profile_slot( 5, 1, 245, 196, 34 ); //Hair
 set_color_profile_slot( 5, 2, 156, 34, 34 ); //Blate guard
 set_color_profile_slot( 5, 3, 209, 36, 36 ); //oufit1
-set_color_profile_slot( 5, 4, 120, 80, 34 ); //outfit2
+set_color_profile_slot( 5, 4, 89, 60, 25 ); //outfit2
 set_color_profile_slot( 5, 5, 51, 28, 28 ); //outfit3
 set_color_profile_slot( 5, 6, 129, 132, 154 ); //Chair1
 set_color_profile_slot( 5, 7, 219, 219, 219 ); //Chair2
@@ -95,6 +95,26 @@ set_color_profile_slot( 6, 4, 71, 53, 32 ); //outfit2
 set_color_profile_slot( 6, 5, 43, 50, 61 ); //outfit3
 set_color_profile_slot( 6, 6, 194, 91, 43 ); //Chair1
 set_color_profile_slot( 6, 7, 255, 208, 79 ); //Chair2
+
+// Blue Berry Boss Battle
+set_color_profile_slot( 7, 0, 176, 9, 68 ); //energy
+set_color_profile_slot( 7, 1, 43, 52, 102 ); //Hair
+set_color_profile_slot( 7, 2, 71, 163, 0 ); //Blate guard
+set_color_profile_slot( 7, 3, 43, 52, 102 ); //oufit1
+set_color_profile_slot( 7, 4, 40, 21, 61 ); //outfit2
+set_color_profile_slot( 7, 5, 99, 47, 78 ); //outfit3
+set_color_profile_slot( 7, 6, 44, 120, 0 ); //Chair1
+set_color_profile_slot( 7, 7, 70, 176, 40 ); //Chair2
+
+// Void Edge
+set_color_profile_slot( 8, 0, 162, 255, 0 ); //energy
+set_color_profile_slot( 8, 1, 245, 255, 240 ); //Hair
+set_color_profile_slot( 8, 2, 0, 130, 0 ); //Blate guard
+set_color_profile_slot( 8, 3, 48, 82, 22 ); //oufit1
+set_color_profile_slot( 8, 4, 25, 28, 25 ); //outfit2
+set_color_profile_slot( 8, 5, 245, 206, 196 ); //outfit3
+set_color_profile_slot( 8, 6, 18, 18, 18 ); //Chair1
+set_color_profile_slot( 8, 7, 36, 36, 36 ); //Chair2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

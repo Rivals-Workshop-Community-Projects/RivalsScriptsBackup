@@ -1,4 +1,85 @@
 /*
+-- V2.11 --
+
+Balance Changes:
+- Blue Uspecial now does less damage
+- Blue Uspecial now has less startup time (12->10)
+
+Cosmetic Changes:
+- Updated Codec
+
+-- V2.10 --
+
+Balance Changes:
+- Blue Uspecial has been replaced
+- Red Jab is now a one hit move that can cancel into any normal
+- You can now B-Reverse red specials
+
+Cosmetic Changes:
+- Updated Red Walkturn
+- Updated Pratfall
+
+-- V2.9 --
+
+Balance Changes:
+- Increased all of red base knockback by 1
+- Nair SHOULD now connect better
+- Blue's Uspecial now goes higher than Red's
+
+-- V2.7 --
+
+Balance Changes:
+- Reduced Red Dash speed by .5
+- Dtilt now properly changes when switching back to blue
+- Fixed the hurtsprites
+
+Cosmetic Changes:
+- New Vfx when dodging
+- New Jump Sprite
+- Fixed Kawaii Alt
+- Updated Jumpstart
+- Updated Waveland
+
+-- v2.6 --
+
+Red and blue now have passive stat changes
+
+Balance Changes:
+- Decreased all the damage by 1
+- Red performs better on ground
+- Blue performs better in the air
+- Red Ftilt sends you backwards
+- Red Fspecial now no longer sends down
+- Red Fspecial now covers more distance
+- Blue Fspecial can now be aimed
+- Red Dtilt now sends downwards
+- Charged Blue Nspecial now shoots two regular projectiles
+
+Cosmetic Changes:
+- Red Dattack now makes the right sound
+- New Red Dtilt sprite
+
+-- V2.5 --
+alright im gonna start trying to be more specific with my patch notes
+
+Balance Changes:
+- Adjusted a lot of hitboxes to give them sweet and sour spots
+- Nspecial now has a cooldown of 10 frames
+- Red Nspecial now has less startup (12->9)
+- Nair angle changed (361->65)
+- Utilt now has a sweetspot
+- Utilt has now been made taller to more easily hit grounded opponents
+- Uair now has a sourspot
+- Fair is extended slightly further out
+- Fair's active window is now slightly longer (5->7)
+- Blue Uspecial now no longer does 12 damage (12->8)
+- Blue Ustrong now has a sweetspot
+- Dtilt now has a sweetspot
+
+Cosmetic Changes:
+- Nair now hurts your ears less
+
+
 -- V2.4 --
 
 Balance Changes:

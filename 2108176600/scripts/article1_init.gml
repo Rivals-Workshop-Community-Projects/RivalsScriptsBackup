@@ -15,6 +15,7 @@ att = 0;
 anim_frames = [3,3,3];
 anim_start = [0,4,7];
 anim_timer = [20, 50, 25];
+strong_charge = 0;
 hitb = noone;
 fstrong_hsp_init = 30;
 fstrong_hsp = fstrong_hsp_init;

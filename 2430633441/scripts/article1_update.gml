@@ -59,7 +59,7 @@ if orbiting {
 	if point_distance(0, 0, hsp, vsp) > 7 {
 		gravity_amount = 0;
 		gravity_speed = 5;
-		if !parrytime && abs(angle_difference(point_direction(0,0,hsp,vsp), dir)) > 90  active = 1;
+		if !parrytime && abs(angle_difference(point_direction(0,0,hsp,vsp), dir)) > 90 && owner.state_cat != SC_HITSTUN active = 1;
 	}
 		if !parrytime && point_distance(x,y,owner.x,owner.y-orbit_height) <= 25 {
 			orbiting = 1;
@@ -96,12 +96,13 @@ overriding = max(overriding-0.05, 0);
 	image_alpha -= 0.1;
 	parrytime = 0;
 }
-if active {
+if active or scary_looking {
 	active_time = (active_time + 1) mod 3
 	if active_time == 1 {
 		active_time = 0;
 		var hfx = spawn_hit_fx(floor(x+hsp), floor(y+vsp), orig_player_id.hitfx[type])
 	}
+	if active {
 	if !instance_exists(hitbox) or hitbox.attack != attack{
 		if instance_exists(hitbox) instance_destroy(hitbox);
 		hitbox = create_hitbox(attack, type+offset, floor(x), floor(y))
@@ -115,6 +116,7 @@ if active {
 	hitbox.plasma_safe = (orbiting == true && owner == orig_player_id)
 	if linked hitbox.can_hit = orig_player_id.planet_can_hit;
 	if hsp != 0 hitbox.spr_dir = sign(hsp)
+	}
 } else {
 	active_time = 0;
 	if instance_exists(hitbox) {
@@ -126,8 +128,8 @@ if active {
 	
 	}
 }
-
-if active {
+scary_looking -= (scary_looking > 0)
+if active or scary_looking {
 	sprite_index = active_sprite;
 } else {
 	sprite_index = inactive_sprite;

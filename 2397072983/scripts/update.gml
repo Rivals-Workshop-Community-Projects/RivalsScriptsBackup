@@ -286,6 +286,11 @@ if state == PS_AIR_DODGE or state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWAR
 	   spawn_hit_fx(x,y,idles)
 	}
 	
+	if !free and unte {
+		if state_timer > 15 {
+			window_timer -= 0.5
+		}
+	}
 	
 }
 
@@ -310,7 +315,7 @@ if !hitpause {
 		(state == PS_AIR_DODGE or state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD or state == PS_TECH_FORWARD  or state == PS_TECH_BACKWARD)
 		and move_cooldown[AT_EXTRA_1] == 0{
 			dplayer = nearbyhitbox.player_id
-     if unte {
+     if unte && !free {
      	move_cooldown[AT_NSPECIAL_2] = 123
      }
 	    	hit_player_obj = nearbyhitbox.player_id

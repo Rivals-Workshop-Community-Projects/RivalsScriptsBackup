@@ -5,6 +5,37 @@ with(orb){
         bomb_out = true;
     }
 }
+var papy = id;
+if (papy_orb == true){
+	with pHitBox{
+		if (attack == AT_EXTRA_1 && player_id = papy){
+			can_hit_self = true;
+		}
+	}
+}
+
+if (attack == 49){
+	if (window == 2){
+		if (window_timer == 5){
+			times_through ++;
+		}
+		if (window_timer == 5 && times_through == 6){
+			times_through = 0;
+			window = 3;
+			window_timer = 0;
+		}
+	}
+	if (window == 3){
+		if (window_timer == 5){
+			times_through ++;
+		}
+		if (window_timer == 5 && times_through == 6){
+			times_through = 0;
+			window = 4;
+			window_timer = 0;
+		}
+	}
+}
 
 
 //B - Reversals
@@ -122,7 +153,7 @@ if (attack == AT_UTILT){
 }
 
 if (attack == AT_DTILT){
-    if (window == 1 and window_timer == 2){
+    if (window == 1 && window_timer == 2 && !oPlayer.hitpause){
         sound_play(sound_get("sfx_alert"));
     }
 }

@@ -14,9 +14,9 @@ patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_cha
 //patch_month = "MAR";
 image_alpha = max(image_alpha-0.02, 0);
 
-var num_alts = 16;
+var num_alts = 29;
 var alt_new = get_player_color(player);
-if ((alt_new != 15 && alt_new != image_index - 1) || (alt_new == 15 && (image_index == 15 || image_index == 1))) // image_index is global
+if ((alt_new != 28 && alt_new != image_index - 1) || (alt_new == 28 && (image_index == 15 || image_index == 1))) // image_index is global
 	image_alpha = 1.5;
 image_index = alt_new;
 
@@ -36,6 +36,20 @@ alt_name[12] = "Metallic Performer";
 alt_name[13] = "Greyscale Spectre";
 alt_name[14] = "Champion";
 alt_name[15] = "Trans Pride";
+alt_name[16] = "BLM";
+alt_name[17] = "Garden Queen";
+alt_name[18] = "Lop-Eared";
+alt_name[19] = "Pheromone Lizard";
+alt_name[20] = "Energy Fox";
+alt_name[21] = "Hourglass Bunny";
+alt_name[22] = "Lovely Fennek";
+alt_name[23] = "Zero Suit";
+alt_name[24] = "Red Ribbons";
+alt_name[25] = "Punching Pupil";
+alt_name[26] = "Lunar Rabbit";
+alt_name[27] = "Smug Feline";
+alt_name[28] = "Sly Ferret";
+
 
 draw_set_halign(fa_left);
 
@@ -49,8 +63,14 @@ if (image_alpha > 0.5)
 	for(i = 0; i < num_alts; ++i)
 	{
 	    var draw_color = (i == image_index) ? colourrrrr : c_gray;
-	    var draw_x = temp_x + 2 + 10 * i;
-		rectDraw(draw_x, temp_y + 143 - floor((image_alpha>1?1:image_alpha)*3.5)*2, draw_x + 7, temp_y + 140, draw_color);
+	    if (i < 16){
+	    	var draw_x = temp_x + 2 + 10 * i;
+	    	rectDraw(draw_x, temp_y + 138 - floor((image_alpha>1?1:image_alpha)*3.5)*2, draw_x + 7, temp_y + 135, draw_color);
+	    }
+	    else{
+	    	var draw_x = temp_x + 2 + 10 * (i - 16);
+	    	rectDraw(draw_x, temp_y + 143 - floor((image_alpha>1?1:image_alpha)*3.5)*2, draw_x + 7, temp_y + 140, draw_color);
+	    }
 	}
 
 draw_set_halign(fa_left);
@@ -62,7 +82,7 @@ draw_set_halign(fa_left);
 //}
 //else{
 	//textDraw(temp_x + 2, temp_y + 124, "fName", colourrrrr, 0, 1000, 1, true, 1, "Alt. " + (image_index < 9 ? "0" : "") + string(image_index + 1) + ": " + alt_name[image_index]);
-	textDraw(temp_x + 2, temp_y + 125 - floor((image_alpha>1?1:image_alpha)*3.5)*2, "fName", colourrrrr, 0, 1000, 1, true, image_alpha, (image_index < 9 ? "0" : "") + string(image_index + 1) + ": " + alt_name[image_index]);
+	textDraw(temp_x + 2, temp_y + 123 - floor((image_alpha>1?1:image_alpha)*3.5)*2, "fName", colourrrrr, 0, 1000, 1, true, image_alpha, (image_index < 9 ? "0" : "") + string(image_index + 1) + ": " + alt_name[image_index]);
 //}
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)

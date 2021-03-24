@@ -43,7 +43,7 @@ if (leap_cooldown = 0 && (point_distance( x, y, other.frog_hitbox.x, other.frog_
             spawn_hit_fx( x, y, 6 );
             other.dstrong_bounce = other.dstrong_bounce + 1;
         }
-        vsp = -18
+        vsp = -14;
         max_fall = 11;
         fast_fall = 17; 
         air_max_speed = 5.5;
@@ -70,7 +70,7 @@ if (leap_cooldown = 0 && (point_distance( x, y, other.frog_hitbox.x, other.frog_
     var frogfspecialdir = point_direction(x, y, other.x, other.y - 100);
     var frogfspecialspeed = 16;
     hsp = lengthdir_x(frogfspecialspeed, frogfspecialdir);
-    vsp = -17;
+    vsp = -14;
     other.image_speed = .4;
     other.image_index = 0;
     other.frogbouncea = 20;
@@ -85,7 +85,7 @@ if (leap_cooldown = 0 && (point_distance( x, y, other.frog_hitbox.x, other.frog_
     dspecialhitcount = -1
     set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX, sound_get("uspecialdspecial"));
     window = 1
-    set_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED, -26);
+    set_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED, -19);
     window_timer = 18;
     spawn_hit_fx( other.x, other.y - 15, 198 );
     other.frog_hitbox.x = 9999;

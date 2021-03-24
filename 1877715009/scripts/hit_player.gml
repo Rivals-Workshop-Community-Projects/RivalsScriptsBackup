@@ -27,6 +27,17 @@ if (my_hitboxID.attack == AT_EXTRA_3 && my_hitboxID.hbox_num == 3)
 	}
 }
 
+if (my_hitboxID.attack == 49)
+{
+	if (my_hitboxID.hbox_num == 2)
+	{
+		x = hit_player_obj.x;
+		y = hit_player_obj.y;
+		var owo = spawn_hit_fx(x-100+random_func(clamp((hit_player_obj.player-1)*2,0,24), 200, 1), y-32-100+random_func(clamp((hit_player_obj.player-1)*2+1,0,24), 200, 1), paw_effect); owo.depth = -10;
+		sound_play(sound_get("bell"));
+	}
+}
+
 if (my_hitboxID.attack == AT_USTRONG || my_hitboxID.attack == AT_FSTRONG)
 {
 	if (my_hitboxID.hbox_num == 1 && move_cooldown[AT_UAIR])
@@ -87,7 +98,8 @@ if ("yeetimebreak2" in hit_player_obj && "shiver" in hit_player_obj)
 	|| (my_hitboxID.attack == AT_USTRONG && /*my_hitboxID.hbox_num == 1 &&*/ my_hitboxID.hit_effect_y == -100)
 	|| (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num <= 3 && my_hitboxID.hit_effect_y == -100)
 	|| (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 2 && my_hitboxID.hit_effect_y == -100)
-	|| (my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num == 3 && strong_charge >= 170))
+	|| (my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num == 3 && strong_charge >= 170)
+	|| (my_hitboxID.attack == 49 && my_hitboxID.hbox_num == 1))
 	)
 	{
 		hit_player_obj.checktimebreak = player;

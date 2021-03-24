@@ -38,7 +38,9 @@ var palette_names = [
   "Lady",
   "V",
   "Ken from Street",
-  "DMC3",
+  "Dee em cee 3",
+  "Blue Berry Boss Battle",
+  "Void Edge",  
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

@@ -247,14 +247,6 @@ if (phone_cheats[cheat_diamond] == 1) {
 	diamondbutbetterkrisbbutbetter = false;
 }
 
-if (state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND){
-	with obj_article3 {
-		if player_id == other.id {
-			instance_destroy();
-		}
-	}
-}
-
 if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2){
 	can_wall_jump = true;
 }

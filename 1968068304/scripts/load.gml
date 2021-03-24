@@ -12,7 +12,7 @@ sprite_change_offset("spinhurt", 36, 72);
 
 //sprite_change_offset("hurtground", 24, 60);
 sprite_change_offset("crouch", 32, 72);
-sprite_change_offset("walk", 27, 74);
+sprite_change_offset("walk", 28, 74);
 sprite_change_offset("walkturn", 32, 72);
 sprite_change_offset("dash", 28, 66); 
 //sprite_change_offset("dash", 27, 74);  //walk-dash
@@ -121,6 +121,7 @@ sprite_change_offset("plat_shard", 20, 20);
 sprite_change_offset("plat_by_Gourami", 57, 0);
 sprite_change_offset("plat_large_by_Gourami", 57, 0);
 sprite_change_offset("dspecial_platform_hitbox", 57, 0);
+sprite_change_offset("dspecial_platform_hitbox_old", 57, 0);
 
 //set_victory_theme( sound_get( "victory_by_TailZMusicYT" ));
 

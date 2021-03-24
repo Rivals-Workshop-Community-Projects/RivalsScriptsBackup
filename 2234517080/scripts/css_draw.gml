@@ -8,7 +8,7 @@ patch_ver = " ";
 patch_day = " ";
 patch_month = " ";
  
-var num_alts = 11;
+var num_alts = 12;
 var alt_cur = get_player_color(player);
  
  
@@ -25,7 +25,7 @@ alt_name[7]  = "Gameboy";
 alt_name[8]  = "Thwomp";
 alt_name[9]  = "Kragg";
 alt_name[10] = "Champion";
-alt_name[11] = "Brown";
+alt_name[11] = "Tourney";
 alt_name[12] = "Orange";
 alt_name[13] = "Blue";
 alt_name[14] = "Snowman";

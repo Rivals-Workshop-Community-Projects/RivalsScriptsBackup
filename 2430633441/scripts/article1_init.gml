@@ -18,6 +18,7 @@ dead = 0;
 vis = 1;
 attack = AT_EXTRA_1
 linked = 0;
+scary_looking = 0;
 
 parrytime = 0;
 

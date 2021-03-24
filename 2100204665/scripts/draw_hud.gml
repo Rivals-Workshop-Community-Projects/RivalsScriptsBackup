@@ -1,7 +1,7 @@
 if (move_cooldown[AT_FSPECIAL] > 0){
     draw_sprite_ext(sprite_get("bluehud"), 1, temp_x + 4, temp_y + 6, 1, 1, 0, c_white, 1);
 }
-if (move_cooldown[AT_FSPECIAL] = 0){
+if (can_blue == false){
     draw_sprite_ext(sprite_get("bluehud"), 0, temp_x + 4, temp_y + 6, 1, 1, 0, c_white, 1);
 }
 
@@ -131,6 +131,12 @@ if (state == PS_DEAD){
 if (AT_TAUNT == false){
     taunt_timer = 0;
 }
+
+/*if (bone != noone){
+    draw_debug_text(temp_x+22, temp_y-50, string(bone.time));
+}
+
+//draw_debug_text(temp_x+22, temp_y-50, string(papy_orb));
 
 //if (blue_time > 0){
 //    draw_debug_text(temp_x+22, temp_y-50, string(blue_time));

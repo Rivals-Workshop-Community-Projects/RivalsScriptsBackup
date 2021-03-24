@@ -18,6 +18,11 @@ if (get_player_color(player) == 7){
 	outline_color = [35, 67, 49]; 
 }
 
+if (get_player_color(player) == 18){
+
+	outline_color = [73, 94, 102]; 
+}
+
 if ("ColorLocked" in self && ColorLocked){
 	switch (SecretColor){ // Color Alt 0 Secret Colors
 		case 1:

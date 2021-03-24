@@ -156,6 +156,16 @@ sprite_change_offset("ef_light", 108, 108);
 sprite_change_offset("portal1", 12, 94);
 sprite_change_offset("portal2", 12, 94);
 
+//FinalSmash
+sprite_change_offset("_fs_atk", 57, 43);
+sprite_change_offset("_fs_ef_shine", 95, 60);
+sprite_change_offset("_fs_hit", 57, 84);
+
+sprite_change_offset("_fs_portrait1", 114, 224);
+sprite_change_offset("_fs_portrait2", 114, 224);
+sprite_change_offset("_fs_bg3", 240, 66);
+sprite_change_offset("_fs_blood", 1, 66);
+
 //set_victory_theme( CH_RANNO );
 
 //miiverse

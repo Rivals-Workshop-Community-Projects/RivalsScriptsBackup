@@ -1,6 +1,7 @@
-//article2.gml
-
+//article2_update.gml
+hsp *= 0.95;
 if (vsp < 0) {vsp = min(vsp+0.2, 0); }
+
 
 if (vsp > -2.8) {
 	image_xscale = 200;

@@ -2,6 +2,12 @@ if (!free) airLock = false;
 
 move_cooldown[AT_DSPECIAL] = instance_exists(my_article)?60:move_cooldown[AT_DSPECIAL]<2&&airLock?2:move_cooldown[AT_DSPECIAL];
 
+// barrierLockout
+with (oPlayer) if ("barrierLockout" in self && barrierLockout.anglara == other.player && barrierLockout.timer > 0) barrierLockout.timer--;
+
+// transcend
+transcounter = clamp(((get_player_color(player) == 27 && (state==PS_SPAWN||(attack == AT_TAUNT && state == PS_ATTACK_GROUND)))?transcounter+2:transcounter-6),0,70);
+
 //Date Girl Compat
 if (dategirl_init < 9) {
 	dategirl_init++

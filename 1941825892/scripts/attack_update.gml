@@ -944,9 +944,6 @@ if (attack == AT_DSPECIAL) {
                     sound_play(sound_get("shine_break"));
                 } else {
                     sound_play(sound_get("shine_reflect"));
-                    if (reflect.object_index == pHitBox) {
-                    	reflect.image_angle = (180 * (sign(reflect.hsp) + 1));
-                    }
                     reflect_timer = get_gameplay_time();
                     switch (reflect.player_id.url) {
                     	case CH_WRASTOR:

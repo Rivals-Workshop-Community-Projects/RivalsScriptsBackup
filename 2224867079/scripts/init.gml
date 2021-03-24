@@ -49,6 +49,7 @@ mark_target = 0
 
 //Blur
 blur = array_create(7);
+rollArray = array_create(6, -1);
 
 // vfx roll
 rollArray = array_create(6, -1);
@@ -97,7 +98,7 @@ air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
 char_height = 52;
-idle_anim_speed = .1;
+idle_anim_speed = .2;
 crouch_anim_speed = .1;
 walk_anim_speed = .125;
 dash_anim_speed = .3;
@@ -108,7 +109,7 @@ walk_accel = 0.2;
 walk_turn_time = 6;
 initial_dash_time = 8;
 initial_dash_speed = 10;
-dash_speed = 8.5;
+dash_speed = 8.0;
 dash_turn_time = 10;
 dash_turn_accel = 1.5;
 dash_stop_time = 4;
@@ -116,8 +117,8 @@ dash_stop_percent = .35; //the value to multiply your hsp by when going into idl
 ground_friction = .5;
 moonwalk_accel = 1.4;
 
-jump_start_time = 5;
-jump_speed = 13;
+jump_start_time = 4;
+jump_speed = 14;
 short_hop_speed = 8;
 djump_speed = 12;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
@@ -126,7 +127,7 @@ air_max_speed = 7; //the maximum hsp you can accelerate to when in a normal aeri
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
 prat_fall_accel = .75; //multiplier of air_accel while in pratfall
-air_friction = .02;
+air_friction = .01;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 7;

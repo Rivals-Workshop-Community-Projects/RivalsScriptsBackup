@@ -70,6 +70,7 @@ var palette_names = [
      "Air Better",   
          "Abyss Learner",  
            "Equaliza",
+          "Blue Berry Bat Bat", 
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

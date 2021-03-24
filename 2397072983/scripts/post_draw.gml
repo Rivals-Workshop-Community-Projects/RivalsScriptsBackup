@@ -87,8 +87,8 @@ if shoping == 1 && window < 3 {
      }
      
      if item == 4 {
-     	draw_debug_text(x - 140,y - 200,"[Untethered] Dodge and Roll distance is halved")
-     	draw_debug_text(x - 140,y - 185,"but you freeze time when dodged an attack.")
+     	draw_debug_text(x - 140,y - 200,"[Untethered] Dodge and Roll speed is halved")
+     	draw_debug_text(x - 140,y - 185,"but you freeze time when Roll thru an attack.")
      	if unte = 0 {
      	draw_debug_text(x + 30,y - 100,"Cost: 1500 La")
      	} else {
@@ -144,3 +144,5 @@ if move_cooldown[AT_NSPECIAL_2] > 2 {
 if get_gameplay_time() % 60 < 30 && LA >= 1000 && (adap != 1 or raged != 1 or para != 1 or unte != 1 or disc != 1 or gun != 1){
    draw_debug_text(shopx - 38,shopy + 15,"Taunt here")
 }
+
+

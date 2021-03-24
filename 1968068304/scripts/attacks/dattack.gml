@@ -175,7 +175,7 @@ set_hitbox_value(AT_DATTACK, 3, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_DATTACK, 4, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DATTACK, 4, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_DATTACK, 4, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_DATTACK, 4, HG_WINDOW, 9);
+set_hitbox_value(AT_DATTACK, 4, HG_WINDOW, 20);
 set_hitbox_value(AT_DATTACK, 4, HG_LIFETIME, 2);
 set_hitbox_value(AT_DATTACK, 4, HG_HITBOX_X, -66);
 set_hitbox_value(AT_DATTACK, 4, HG_HITBOX_Y, -25);
@@ -232,7 +232,7 @@ set_hitbox_value(AT_DATTACK, 6, HG_HITBOX_Y, -25);
 set_hitbox_value(AT_DATTACK, 6, HG_WIDTH, 66);
 set_hitbox_value(AT_DATTACK, 6, HG_HEIGHT, 70);
 set_hitbox_value(AT_DATTACK, 6, HG_PRIORITY, 5); //inertia
-set_hitbox_value(AT_DATTACK, 6, HG_DAMAGE, 8); //extra damage
+set_hitbox_value(AT_DATTACK, 6, HG_DAMAGE, 9); //extra damage
 set_hitbox_value(AT_DATTACK, 6, HG_ANGLE, 270); //meteor
 set_hitbox_value(AT_DATTACK, 6, HG_BASE_KNOCKBACK, 9.5);
 set_hitbox_value(AT_DATTACK, 6, HG_KNOCKBACK_SCALING, .75);

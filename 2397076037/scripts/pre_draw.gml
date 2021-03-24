@@ -1,6 +1,16 @@
 ///
 shader_start();
 
+if rank >= 4 {
+	
+     draw_sprite_ext(sprite_index, image_index, x  - shsp*2 , y  - svsp*2, 1 * spr_dir, 1, 0 , c_white , 0.2);
+     draw_sprite_ext(sprite_index, image_index, x  - shsp*4 , y  - svsp*4, 1 * spr_dir, 1, 0 , c_white , 0.1); 
+     
+		  gpu_set_blendmode(bm_add);
+	 draw_sprite_ext(sprite_index, image_index, x  - shsp*2 , y  - svsp*2, 1 * spr_dir, 1, 0 , c_white , 0.2);
+     draw_sprite_ext(sprite_index, image_index, x  - shsp*4 , y  - svsp*4, 1 * spr_dir, 1, 0 , c_white , 0.1); 
+  gpu_set_blendmode(bm_normal);
+}
 
 if attacking && attack == AT_DATTACK{
     if window == 3 {
@@ -194,5 +204,7 @@ if trainingtype != -1 {
         draw_rectangle_color(0,0,room_width,room_height,0,0,0,0,false);
     	draw_set_alpha(1);    
 }
+
+
 
 shader_end() 

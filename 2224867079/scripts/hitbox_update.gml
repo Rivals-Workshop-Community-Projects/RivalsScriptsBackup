@@ -44,6 +44,7 @@ if (attack== AT_EXTRA_1 && !free) {
 
 //charged nspecial
 var refresh_time = 8; 
+/*
 if (attack == AT_FTHROW) {
   if (hitbox_timer % refresh_time == 0) for (var i = 1; i < 20; i++) {
      can_hit[i] = 1;
@@ -64,6 +65,7 @@ if (attack == AT_FTHROW) {
   hsp = 14 * spr_dir
   }
 }
+*/
 //red
 if (attack == AT_UTHROW) {
   if (hitbox_timer % refresh_time == 0) for (var i = 1; i < 20; i++) {
@@ -84,6 +86,16 @@ if (attack == AT_UTHROW) {
   if (hitbox_timer == 25){
   hsp = 2 * spr_dir
   }
+}
+
+//Rotate Charged Nspecial
+if (attack == AT_FTHROW){
+	if (spr_dir == 1){
+		proj_angle = point_direction(0,0,hsp,vsp);
+	}
+	if (spr_dir == -1){
+		proj_angle = point_direction(0,0,-hsp,-vsp);	
+	}
 }
 //Attack Multipliers//
 ///////////////////////    Blue     /////////////////////////////////////////////////////////////////////////////////////////////////////

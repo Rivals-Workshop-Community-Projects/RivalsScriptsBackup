@@ -127,7 +127,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -28);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 60);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 46);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 4);
-set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 16);
+set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 15);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 //knockback
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
@@ -182,7 +182,7 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_X, -15); //adjusts
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, -30);
 set_hitbox_value(AT_FSPECIAL, 3, HG_WIDTH, 30); //adjusts
-set_hitbox_value(AT_FSPECIAL, 3, HG_HEIGHT, 16);
+set_hitbox_value(AT_FSPECIAL, 3, HG_HEIGHT, 15);
 set_hitbox_value(AT_FSPECIAL, 3, HG_PRIORITY, 1); //lowest priority
 set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_SHAPE, 1);

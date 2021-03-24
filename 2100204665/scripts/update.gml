@@ -46,22 +46,6 @@ dracula_portrait = sprite_get("dracportrait1");
 dracula_portrait2 = sprite_get("dracportrait2");
 gfzsignspr = sprite_get("goalpost");
 }
-
-if (blue_time > 0){
-	blue_time --;
-} else blue_time = 0;
-
-var papyrus = id;
-if (blue_time > 0){
-	with (asset_get("oPlayer")){
-		if (blue_time == 0){
-			with (papyrus){
-				blue_time = 0;
-			}
-		}
-	}
-}
-
 if (has_rune("G")){
 	dash_speed = 9;
 	initial_dash_speed = 9.5;
@@ -82,6 +66,26 @@ if (introTimer < 12){
     draw_indicator = false;
 } else {
     draw_indicator = true;
+}
+
+if (instance_exists(bones)){
+	var papy = id;
+	var boness = bones;
+	with oPlayer{
+		if place_meeting(x,y,boness){
+			if state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD or state == PS_AIR_DODGE{
+				with (boness){
+				if (state != 3){
+				state = 3;
+				state_timer = 0;
+				}
+			}
+			with papy{
+			move_cooldown[AT_DSPECIAL] = 30;
+			}
+		}
+			}
+		}
 }
 
 var bomb_out = false;
@@ -119,6 +123,10 @@ if (spr_dir == -1 && attack == AT_DSTRONG){
 	set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrongalt"));
 }
 
+if (instance_exists(orb) && orb.host == id){
+	papy_orb = true;
+} else papy_orb = false;
+
 if (spr_dir == 1 && attack == AT_DSTRONG){
 	set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong"));
 }
@@ -149,7 +157,7 @@ if (state == PS_DASH == false) {
 		sound_play(sound_get("sfx_dashstop"));
 	}
 }
-if (state == PS_PARRY && state_timer == 3){
+if (state == PS_PARRY && state_timer == 3 && !oPlayer.hitpause){
 	sound_play(sound_get("sfx_rise"));
 }
 
@@ -159,7 +167,6 @@ if (state == PS_ATTACK_GROUND && attack == AT_UTILT){
 else{
 	char_height = 74;
 }
-
 
 if swallowed { //Kirby ability script starts here
     swallowed = 0
@@ -251,7 +258,6 @@ if swallowed { //Kirby ability script starts here
 
 	}
 } //Kirby ability script ends here
-
 with (asset_get("oPlayer")){
     if (state == PS_RESPAWN && blue == true){
 	    blue_time = 0;
@@ -260,7 +266,6 @@ with (asset_get("oPlayer")){
     }
     if(blue == true and blue_id == other.id){
         blue_time -= 1;
-        outline_color = [0, 0, 255];
         if (state == PS_IDLE_AIR or state == PS_FIRST_JUMP){
         can_djump = false;
         }
@@ -304,13 +309,13 @@ with (asset_get("oPlayer")){
 		djumps = 0;
     }*/
 
-with (asset_get("oPlayer")){
+/*with (asset_get("oPlayer")){
 	if (blue and blue_id == other.id){
 		if (activated_kill_effect && blue_time >= 0){
 			blue_time = 0;
 		}
 	}
-}
+}*/
 
 if (bone_useable == false)
 {
@@ -410,6 +415,12 @@ if (bone != noone)
     	bone.image_index = 0;
 		bone.image_speed = 0.2 - 0.2*boneNA;
 	}
+	
+	if (bone.y < room_height - 460){
+		if bone.time >= 60 && bone.time < 140{
+			bone.time = 140;
+		}
+	}
 
     if (bone.time > 140)
     {
@@ -423,23 +434,31 @@ if (bone != noone)
     	if (free == false && place_meeting(x, y+1, bone)){
         	set_state(PS_PRATFALL);
         }
-        with (asset_get("oPlayer")){
-        		if (free == false && place_meeting(x, y+1, boneplat)){
-        	set_state(PS_PRATFALL);
-        		}
-        }
 		sound_play(sound_get("sfx_ping"));
         instance_destroy(bone);
         bone = noone;
     }
 }
 
+if oPlayer.blue == true{
+	can_blue = false;
+}
+
 if (can_blue == false){
 	move_cooldown[AT_FSPECIAL] = 2;
 }
-
-if (blue_time == 0){
-	can_blue = true;
+var papy = id;
+with (asset_get("oPlayer")){
+		var bleu_time = blue_time;
+	if (blue_time > 0){
+		with papy{
+			can_blue = false;
+			blue_time = bleu_time;
+		}
+	} else with papy{
+		can_blue = true;
+		blue_time = 0;
+	}
 }
 
 if get_btt_data { //Get data for Break The Targets

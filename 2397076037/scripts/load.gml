@@ -80,6 +80,9 @@ sprite_change_offset("plat2", 92, 66);
 
 sprite_change_offset("mcan", 16, 16);
 
+sprite_change_offset("berry", 20, 20);
+sprite_change_offset("berrye", 20, 20);
+
 sprite_change_offset("slashck", 75, 50);
 
 sprite_change_offset("kspecial", 46, 104);

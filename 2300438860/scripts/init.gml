@@ -8,11 +8,17 @@ ncode1 = "A human from ancient age when mankind can"
 ncode2 = "beat monster with raw strength alone, no data"
 ncode3 = "on what is the extend of their abilities."
 
+cur_sound = sound_play(sound_get("buzzing"))
+	 	sound_stop(cur_sound)
+	 	
 wjcap = 0
 hue = 2
 saveid = 0
+barpause = 0
 
 cosmetic = 1
+
+heartbroke = 0
 
 songplay = -1
 songtime = 0
@@ -148,7 +154,7 @@ can_jump_capped = false;
 
  i5 = hit_fx_create( sprite_get( "np5" ), 20);	
 
-lighten3 = hit_fx_create( sprite_get( "lighten" ), 8);	
+lighten3 = hit_fx_create( sprite_get( "lighten" ), 4);	
 lighten2 = hit_fx_create( sprite_get( "lighten" ), 8);	
 	
 sprite_change_offset("lighten", 1000, 1000);
@@ -172,3 +178,10 @@ shit5 = hit_fx_create( sprite_get( "shit5" ), 60 );
 sprite_change_offset("shit1", 100, 100);
 sprite_change_offset("shit4", 100, 100);
 sprite_change_offset("shit5", 100, 100);
+
+
+hb1 = hit_fx_create( sprite_get( "heartb" ), 20);	
+hb2 = hit_fx_create( sprite_get( "heartb2" ), 20);
+
+sprite_change_offset("heartb", 30, 30);
+sprite_change_offset("heartb2", 30, 30);

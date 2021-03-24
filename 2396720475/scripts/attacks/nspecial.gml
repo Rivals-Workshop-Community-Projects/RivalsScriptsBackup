@@ -82,3 +82,6 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, sound_get("strong_hit_sfx"));
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, hit_spiky);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT_X_OFFSET, 26);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT_Y_OFFSET, -20);
+
+set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 3);
+set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE_FLIPPER, 3);

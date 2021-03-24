@@ -1,4 +1,8 @@
 ///
+if attackbar == 1 && !hitpause {
+	              sound_stop(cur_sound)
+	sound_play(sound_get("buzzing"),false,noone,0.4)
+}
 
 if !hitpause {
     
@@ -147,21 +151,29 @@ if !hitpause {
     
     if attack == AT_NSPECIAL {
     if window == 1 && window_timer == 1 {
-        move_cooldown [AT_NSPECIAL] = 45
-        if free {
+    	if !hitpause {
+    		create_hitbox (AT_NSPECIAL, 1, x, y)
+    	}
+        if attackbar == 0 {
+        	
+        	        if free {
             vsp = -4
         }
-        if attackbar == 0 {
+        
         	attackbar = 1
         	window_timer = 2
         	sound_play(sound_get("nspecen"))
         	shake_camera(3,3)
-        		sound_play(sound_get("buzzing"),false,noone,0.5)
+        		sound_play(sound_get("buzzing"),false,noone,0.4)
         } else {
-        	attackbar = 0
-        	sound_play(sound_get("nspecdis"))
-        	sound_stop(sound_get("buzzing"))
-        	dmgmul = 0
+        	        	sound_play(sound_get("heartbeat"),false,noone,1.6)
+        	take_damage(player,-1,2)
+        	shake_camera(3,3)
+        		sound_stop(cur_sound)
+                sound_play(sound_get("buzzing"),false,noone,0.4)		
+        	barpause = 120
+        	sound_play(sound_get("tauntflash"))
+        	move_cooldown [AT_NSPECIAL] = 140
         }
     }
 	
@@ -243,6 +255,8 @@ if !hitpause {
 				if dmgmul == 1.5 {
 					    sound_play(sound_get("hcine"),false,noone,0.4)
 				}
+				
+				move_cooldown [AT_NSPECIAL] = 180
 			}
 			
 			if dmgmul >= 2 {
@@ -295,6 +309,8 @@ if !hitpause {
 						create_hitbox (AT_USPECIAL, 3 , x , y + 30)
 					    sound_play(sound_get("hcine"),false,noone,0.4)
 				}
+				
+					 move_cooldown [AT_NSPECIAL] = 180
 			}
 			
 			if dmgmul >= 2 {
@@ -327,6 +343,9 @@ if !hitpause {
         if attack == AT_DSPECIAL {
         	
         	vsp /= 1.1
+        	if free {
+        	hsp /= 1.04
+        	}
         	hsp /= 1.01
         	if window == 1 {
         		
@@ -340,6 +359,9 @@ if !hitpause {
 					set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 40);
 					    sound_play(sound_get("hcine"),false,noone,0.4)
 				}
+				
+				
+					 move_cooldown [AT_NSPECIAL] = 180
 			}
 			
 			if dmgmul >= 2 {

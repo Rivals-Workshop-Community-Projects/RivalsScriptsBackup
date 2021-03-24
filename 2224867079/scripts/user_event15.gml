@@ -467,6 +467,75 @@ with phone{
 //	initPatchWords("Fnuuy joke
 //	- waog");
 //	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0);
+	//2.11
+	initPatch("2.11", "18 March, 2021");
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Blue Uspecial now does less damage
+	- Blue Uspecial now has less startup time (12->10)")
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Updated Codec")
+	//2.10
+	initPatch("2.10", "18 March, 2021");
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Blue Uspecial has been replaced
+	- Red Jab is now a one hit move that can cancel into any normal
+	- You can now B-Reverse red specials")
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Updated Red Walkturn
+	- Updated Pratfall")
+	//2.9
+	initPatch("2.9", "17 March, 2021");
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Increased all of red base knockback by 1
+	- Nair SHOULD now connect better
+	- Blue's Uspecial now goes higher than Red's")
+	//2.7
+	initPatch("2.7", "16 March, 2021");
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Reduced Red Dash speed by .5
+	- Dtilt now properly changes when switching back to blue
+	- Fixed the hurtsprites
+	")
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- New Vfx when dodging
+	- New Jump Sprite
+	- Fixed Kawaii Alt
+	- Updated Jumpstart
+	- Updated Waveland")
+	//2.6
+	initPatch("2.6", "15 March, 2021");
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Decreased all the damage by 1
+	- Red performs better on ground
+	- Blue performs better in the air
+	- Red Ftilt sends you backwards
+	- Red Fspecial now no longer sends down
+	- Red Fspecial now covers more distance
+	- Blue Fspecial can now be aimed
+	- Red Dtilt now sends downwards
+	- Charged Blue Nspecial now shoots two regular projectiles
+	")
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Red Dattack now makes the right sound
+	- New Red Dtilt sprite")
+	//2.5
+	initPatch("2.5", "14 March, 2021");
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Adjusted a lot of hitboxes to give them sweet and sour spots
+	- Nspecial now has a cooldown of 10 frames
+	- Red Nspecial now has less startup (12->9)
+	- Nair angle changed (361->65)
+	- Utilt now has a sweetspot
+	- Utilt has now been made taller to more easily hit grounded opponents
+	- Uair now has a sourspot
+	- Fair is extended slightly further out
+	- Fair's active window is now slightly longer (5->7)
+	- Blue Uspecial now no longer does 12 damage (12->8)
+	- Blue Ustrong now has a sweetspot
+	- Dtilt now has a sweetspot
+	")
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Nair now hurts your ears less")
 	//2.4
 	initPatch("2.4", "13 March, 2021");
 	initPatchWords_ext("Balance Changes:", fa_center, c_white, 1, 0);
@@ -1053,7 +1122,6 @@ if pho_has_trum_codec{
 	initCodecPage(SPK_TRUM, 0, 0, "Any tips?");
 	initCodecPage(SPK_NEP, 1, 0, "Only because i'm sure you wont beat him ;)");
 	initCodecPage(SPK_NEP, 1, 0, "When his hands switch to red it won't hurt as bad but get ready to go flying if he does hit you");
-	initCodecPage(SPK_NEP, 1, 0, "Also look out for those markers, If you get marked by one color the opposing color will get stronger for 3 hits");
 	initCodecPage(SPK_ALTO, 0, 0, "Alright, thanks crazy lady");
 	
 	spr_custom_trummel_color = c_red;

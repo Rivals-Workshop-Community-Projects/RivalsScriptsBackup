@@ -318,6 +318,24 @@ if ("rollArray" in self)
 						AddText("FSpec will not put you into pratfall if you're supposed to hook onto another player");
 						AddText("FSpec will not hook onto an airdodging or rolling player on the frame they gain invincibility");
 						break;
+					case 19:
+						AddText("v1.19 - 15 Mar 2021");
+						AddText("");
+						AddText("Removed AI debug code on FSpec");
+						AddText("");
+						AddText("FSpec no longer has armour when hooking onto the wall");
+						AddText("FSpec still has armour while hooking onto the opponent");
+						AddText("");
+						AddText("Maybe fixed song name intro");
+						AddText("");
+						AddText("Lonin Drip can now also be executed with up + taunt");
+						AddText("Lonin Drip is now jump cancellable");
+						break;
+					case 20:
+						AddText("v1.20 - 18 Mar 2021");
+						AddText("");
+						AddText("Added support for Final Smash Buddy");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -392,7 +410,7 @@ if ("rollArray" in self)
 							AddText("The little bounce you get from landing aerial FSpec counts as a jump, so you can jump strong afterwards");
 							break;
 						case 7:
-							AddText("Down + Taunt");
+							AddText("Down + Taunt, or Up + Taunt");
 							AddText("Lol!");
 							break;
 					}
@@ -528,17 +546,19 @@ if ("rollArray" in self)
 			return "The Earthen Division (Main Event Ver.)";
 		case 29:
 			return "Tetherball Versus";
-		case "nt\383980\2061009621":
-			return "Derek Fiechter - Night at the Castle";
-		case "nt\383980\2298935492":
-			return "Loeder - Miitopia Boss Battle 1 8-BIT";
-		case "nt\383980\2082867100":
-			return "Evan King - [KARLSONVIBE]";
-		case "nt\383980\2210984773":
-			return "Porter Robinson - Shelter";
-		case "nt\383980\2158754801":
-			return "Bill Kiley - You Will Never Know";
 		default:
+			if (string_count("2061009621", get_stage_data(SD_ID)) > 0)
+				return "Derek Fiechter - Night at the Castle";
+			else if (string_count("2298935492", get_stage_data(SD_ID)) > 0)
+				return "Loeder - Miitopia Boss Battle 1 8-BIT";
+			else if (string_count("2082867100", get_stage_data(SD_ID)) > 0)
+				return "Evan King - [KARLSONVIBE]";
+			else if (string_count("2210984773", get_stage_data(SD_ID)) > 0)
+				return "Porter Robinson - Shelter";
+			else if (string_count("2158754801", get_stage_data(SD_ID)) > 0)
+				return "Bill Kiley - You Will Never Know";
+			else if (string_count("2392386094", get_stage_data(SD_ID)) > 0)
+				return "ARCHYTAS AAAAAAAAAAAAAA";
 			return "Darude - Sandstorm";
 	}
 }

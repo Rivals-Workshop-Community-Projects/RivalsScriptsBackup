@@ -69,9 +69,18 @@ switch (my_hitboxID.attack)
 	case AT_JAB:
 		sound_play(asset_get("sfx_blow_weak1"));
 		break;
+	case 49:
+		hit_player_obj.should_make_shockwave = false;
+		if (my_hitboxID.hbox_num == 1)
+		{
+			x = hit_player_obj.x + 200*spr_dir;
+			y = hit_player_obj.y;
+			hit_player_obj.can_wall_tech = false;
+		}
+		break;
 }
 
-if (hit_player_obj.hitpause && hit_player_obj.hitstop > 3)
+if (hit_player_obj.hitpause && hit_player_obj.hitstop > 3 && !(my_hitboxID.attack == 49 && my_hitboxID.hbox_num == 2))
 {
 	vfxSlice.sliceX = hit_player_obj.x;
 	vfxSlice.sliceY = floor(hit_player_obj.y-hit_player_obj.char_height/2);

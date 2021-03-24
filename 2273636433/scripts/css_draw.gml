@@ -15,11 +15,19 @@ alt_name[7]  = "Dr. Purple";
 alt_name[8]  = "Dr. Bluey";
 alt_name[9]  = "Dr. Yuuto";
 alt_name[10] = "Dr. Peace";
-alt_name[11] = "The Medic";
-alt_name[12] = "Mario";
-alt_name[13] = "Gameboy";
-alt_name[14] = "Abyss";
-alt_name[15] = "NES";
+alt_name[11] = "The Medic (Red)";
+alt_name[12] = "The Medic (Blu)";
+alt_name[13] = "Mario";
+alt_name[14] = "Luigi";
+alt_name[15] = "Dr. Wily";
+alt_name[16] = "Dr. Piccolo";
+alt_name[17] = "Dr. Strange";
+alt_name[18] = "Gold + Silver";
+alt_name[19] = "Abyss";
+alt_name[20] = "Gameboy";
+alt_name[21] = "NES";
+alt_name[22] = "BLMario";
+alt_name[23] = "Vaporwave";
 
 draw_set_halign(fa_left);
 

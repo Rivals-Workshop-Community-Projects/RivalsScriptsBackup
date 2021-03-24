@@ -169,6 +169,111 @@ bubble_x = 0;
 bubble_y = 8;
 
 
+//デバッグ用
+//misodebug = true;
+misodebug = false;
+
+//final smash------------------------------
+
+fs_char_portrait_y = 96;
+fs_char_chosen_final_smash = "custom";
+fs_char_attack_index = 49;
+fs_meter_x = 30;
+
+grabbedid = noone;
+
+FS_alpha = 0;
+
+fog_start = false;
+fog_timer = 0;
+
+jmp_start = false;
+jmp_timer = 0;
+jmp_y = 0;
+
+break_start = false;
+break_timer = 0;
+
+fs_hit_scale = 10;
+fs_hit_y = 0;
+
+fs_shake_x = 0;
+fs_shake_y = 0;
+fs_shake_r = 0;
+
+fs_dmg = 1;//ダメージ量
+
+fs_loop_count = 0;
+
+enemy_x = 470;
+enemy_y = 370;
+
+atk_start = false;
+atk_sub[0] = 0;
+atk_x[0] = 0;
+atk_y[0] = 0;
+atk_xs[0] = 1;
+atk_ys[0] = 1;
+atk_rot[0] = 0;
+atk_alpha[0] = 1;
+
+atk_sub[1] = 0;
+atk_x[1] = 0;
+atk_y[1] = 0;
+atk_xs[1] = 1;
+atk_ys[1] = 1;
+atk_rot[1] = 0;
+atk_alpha[1] = 1;
+
+do_sub[0] = 0;
+do_x[0] = 0;
+do_y[0] = 0;
+do_alpha[0] = 1;
+
+do_sub[1] = 0;
+do_x[1] = 0;
+do_y[1] = 0;
+do_alpha[1] = 1;
+
+hit_sub[0] = 0;
+hit_x[0] = 0;
+hit_y[0] = 0;
+hit_xs[0] = 1;
+hit_ys[0] = 1;
+hit_rot[0] = 0;
+hit_alpha[0] = 1;
+
+hit_sub[1] = 0;
+hit_x[1] = 0;
+hit_y[1] = 0;
+hit_xs[1] = 1;
+hit_ys[1] = 1;
+hit_rot[1] = 0;
+hit_alpha[1] = 1;
+
+hit_sub[2] = 0;
+hit_x[2] = 0;
+hit_y[2] = 0;
+hit_xs[2] = 1;
+hit_ys[2] = 1;
+hit_rot[2] = 0;
+hit_alpha[2] = 1;
+
+shine_start = 0;
+shine_sub = 0;
+shine_xs = 3;
+shine_ys = 3;
+shine_rot = 0;
+
+blo_timer = 0;//血
+blo_x = 0;
+blo_y = 0;
+blo_alpha = 0;
+
+pot_rot = 0;
+fs_r2 = 0;
+fs_camera_y = 0;
+
 //character support------------------------------
 
 //char: tco art

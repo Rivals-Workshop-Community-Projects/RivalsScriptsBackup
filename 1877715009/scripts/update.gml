@@ -479,6 +479,12 @@ if (practiceinit && !stupidbossbool && object_index != oTestPlayer && get_gamepl
 						tutstatebuffer = 0;
 						tutstate = 0;
 						break;
+					case 20:
+						set_attack(49);
+						tuton = false;
+						tutstatebuffer = 0;
+						tutstate = 0;
+						break;
 					default:
 						break;
 				}
@@ -517,7 +523,7 @@ if (practiceinit && !stupidbossbool && object_index != oTestPlayer && get_gamepl
 					noofsubV = 29;
 					break;
 				case 8:
-					noofsubV = 21; // ctrl+f here
+					noofsubV = 22; // ctrl+f here
 					break;
 			}
 			if (shield_pressed)

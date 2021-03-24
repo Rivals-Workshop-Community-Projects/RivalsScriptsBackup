@@ -38,7 +38,7 @@ sprite_change_offset("waveland", 42, 94);
 sprite_change_offset("tech", 60, 126);
 
 sprite_change_offset("jab", 54, 94);
-sprite_change_offset("dattack", 54, 94);
+sprite_change_offset("dattack", 54, 92);
 sprite_change_offset("ftilt", 58, 94);
 sprite_change_offset("dtilt", 50, 94);
 sprite_change_offset("utilt", 46, 88);
@@ -60,7 +60,6 @@ sprite_change_offset("phone_open", 46, 158);
 sprite_change_offset("plat", 64, 94);
 
 sprite_change_offset("ftilt_proj", 14, 32);
-sprite_change_offset("mallet", 14, 32);
 sprite_change_offset("dair_proj", 14, 32);
 sprite_change_offset("dair_proj_mask", 14, 32);
 sprite_change_collision_mask( "dair_proj_mask", true, 1, 0, 0, 0, 0, 0);
@@ -80,7 +79,6 @@ sprite_change_offset("dspecial_avery", 10, 74);
 sprite_change_offset("mallet", 48, 48);
 sprite_change_offset("spring", 48, 60);
 
-sprite_change_offset("nspecial_proj", 64, 94);
 sprite_change_offset("gfz_pea", 19, 47);
 
 sprite_change_offset("kirb_throw", 48, 64);
@@ -116,7 +114,10 @@ sprite_change_offset("dspecial_block_lv1_0_falling",12,16);
 sprite_change_offset("dspecial_block_lv1_0_ground",12,16);
 sprite_change_offset("dspecial_block_lv1_0_die",12,16);
 
-sprite_change_offset("fsmash", 68, 128);
+sprite_change_offset("fsmash", 68, 126);
+sprite_change_offset("fsmash_hurt", 68, 126);
+
+sprite_change_offset("miiverse_post_peacock", 60, 30);
 
 
 
@@ -190,11 +191,93 @@ set_victory_theme( sound_get("peacock_victory"));
 set_victory_bg(sprite_get("victory"));
 
 
+//Skins
+
+sprite_change_offset("01_idle", 54, 94);
+sprite_change_offset("01_hurt", 32, 62);
+sprite_change_offset("01_spinhurt", 76, 128);
+sprite_change_offset("01_hurtground", 46, 94);
+sprite_change_offset("01_bighurt", 76, 128);
+sprite_change_offset("01_uphurt", 76, 128);
+sprite_change_offset("01_downhurt", 76, 128);
+sprite_change_offset("01_bouncehurt", 76, 128);
+sprite_change_offset("01_bouncehurt", 76, 128);
+sprite_change_offset("01_crouch", 46, 94);
+sprite_change_offset("01_walk", 44, 90);
+sprite_change_offset("01_walkturn", 44, 94);
+sprite_change_offset("01_dash", 44, 94);
+sprite_change_offset("01_dashstart", 42, 94);
+sprite_change_offset("01_dashstop", 50, 94);
+sprite_change_offset("01_dashturn", 42, 94);
+
+sprite_change_offset("01_jumpstart", 60, 126);
+sprite_change_offset("01_jump", 60, 126);
+sprite_change_offset("01_doublejump", 60, 114);
+sprite_change_offset("01_walljump", 56, 120);
+sprite_change_offset("01_pratfall", 60, 126);
+sprite_change_offset("01_land", 60, 126);
+sprite_change_offset("01_landinglag", 60, 126);
+
+sprite_change_offset("01_parry", 60, 94);
+sprite_change_offset("01_roll_forward", 58, 94);
+sprite_change_offset("01_roll_backward", 44, 94);
+sprite_change_offset("01_airdodge", 60, 128);
+sprite_change_offset("01_waveland", 42, 94);
+sprite_change_offset("01_tech", 60, 126);
+
+sprite_change_offset("01_jab", 54, 94);
+sprite_change_offset("01_dattack", 54, 94);
+sprite_change_offset("01_ftilt", 58, 94);
+sprite_change_offset("01_dtilt", 50, 94);
+sprite_change_offset("01_utilt", 46, 88);
+sprite_change_offset("01_nair", 54, 110);
+sprite_change_offset("01_fair", 54, 110);
+sprite_change_offset("01_bair", 104, 128);
+sprite_change_offset("01_uair", 76, 128);
+sprite_change_offset("01_dair", 76, 128);
+sprite_change_offset("01_fstrong", 74, 94);
+sprite_change_offset("01_ustrong", 78, 158);
+sprite_change_offset("01_dstrong", 46, 94);
+sprite_change_offset("01_nspecial", 60, 94);
+sprite_change_offset("01_fspecial", 52, 92);
+sprite_change_offset("01_uspecial", 78, 128);
+sprite_change_offset("01_dspecial", 48, 94);
+sprite_change_offset("01_taunt", 46, 158);
+sprite_change_offset("01_phone_open", 46, 158);
+
+sprite_change_offset("01_ftilt_proj", 14, 32);
+sprite_change_offset("01_dair_proj", 14, 32);
+sprite_change_offset("01_fair_shot", 14, 32);
+sprite_change_offset("01_uair_proj", 48, 48);
+sprite_change_offset("01_bomb_walk", 52, 32);
+sprite_change_offset("01_bullet1", 52, 32);
+sprite_change_offset("01_bullet2", 52, 32);
+sprite_change_offset("01_bullet3", 52, 32);
+sprite_change_offset("01_fspecial_blast", 14, 32);
+sprite_change_offset("01_dspecial_roadroller", 42, 70);
+sprite_change_offset("01_dspecial_avery", 10, 74);
 
 
+sprite_change_offset("01_spring", 48, 60);
 
+sprite_change_offset("01_fsmash_proj", 52, 32);
+sprite_change_offset("01_fsmash_proj_shot", 32, 12);
 
+sprite_change_offset("01_dspecial_block_lv2_0_falling",26,64);
+sprite_change_offset("01_dspecial_block_lv2_0_ground",26,64);
+sprite_change_offset("01_dspecial_block_lv2_0_die",26,64);
 
+sprite_change_offset("01_dspecial_block_lv3_0_falling",24,64);
+sprite_change_offset("01_dspecial_block_lv3_0_ground",24,64);
+sprite_change_offset("01_dspecial_block_lv3_0_die",24,64);
 
+sprite_change_offset("01_dspecial_block_lv2_8_falling",20,30);
+sprite_change_offset("01_dspecial_block_lv2_8_ground",0,60);
+sprite_change_offset("01_dspecial_block_lv2_8_die",0,60);
 
+sprite_change_offset("01_dspecial_block_lv1_0_falling",12,16);
+sprite_change_offset("01_dspecial_block_lv1_0_ground",12,16);
+sprite_change_offset("01_dspecial_block_lv1_0_die",12,16);
+
+sprite_change_offset("01_fsmash", 68, 126);
 

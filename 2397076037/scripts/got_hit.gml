@@ -1,4 +1,5 @@
 ///
+inactive = 60
 
 if move_cooldown[AT_TAUNT] == 0 && !soft_armor && !super_armor{
        if random_func(1,3,true) == 0 {
@@ -28,3 +29,7 @@ if super_armor or soft_armor {
     take_damage( player, -1 , -1 * enemy_hitboxID.damage)
 }
 
+
+if rankm > 0 {
+rankm -= enemy_hitboxID.damage * 15
+}

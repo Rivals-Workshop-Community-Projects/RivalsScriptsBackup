@@ -368,8 +368,27 @@ if (has_rune ("A")) && (has_rune ("B")) && (has_rune ("C")) && (has_rune ("D")) 
 	set_hitbox_value(AT_DAIR, 3, HG_DAMAGE, 14);
 	set_hitbox_value(AT_DAIR, 4, HG_DAMAGE, 14);
 	set_hitbox_value(AT_DAIR, 5, HG_DAMAGE, 14);
-}
 
+	set_hitbox_value(AT_DSPECIAL, 5, HG_ANGLE, 270);
+
+	set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.2);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 9);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 1.2);
+
+	set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 1.2);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 9);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 1.2);
+
+	set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
+	
+	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
+	
+	set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 1);
+	
+	set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
+	
+	set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 40);
+}
 
 //Lag prevention
 if (has_rune ("L"))|| ((has_rune ("N")) )&& (has_rune ("I")) {
@@ -405,6 +424,25 @@ if (phone_cheats[cheat_jump] != 1) {
 	max_djumps = phone_cheats[cheat_jump];
 }
 
+//-- bounus??????? --
+// hello
+if(found_mario) {
+  print("said hello to Mario")
+  sound_play(sound_get("hello"));
+  found_mario = false;
+}
+
+//die
+    if move_cooldown[AT_DSPECIAL] == 0 && hitstop{
+        with oPlayer if (activated_kill_effect) {
+           if other.hit_player_obj == self && get_player_stocks(player) == 1 {
+                with other {
+                    move_cooldown[AT_DSPECIAL] = 60;
+                    sound_play(sound_get("finishhit"));
+                }
+            }
+        }
+}
 
 //------------------------------------------------------------------------KIRBY LOGIC --------------------------
 if swallowed { //Kirby ability script starts here
@@ -484,16 +522,16 @@ if swallowed { //Kirby ability script starts here
 
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 2);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 2);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 75);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 90);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, 24);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, -40);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 30);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 30);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 3);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 19);
 
-		set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, .1);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 2);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, .1);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, .2);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 4);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, .2);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_SPRITE, ability_icon);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_MASK, -1);
@@ -502,46 +540,46 @@ if swallowed { //Kirby ability script starts here
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_VSPEED, -6);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_GRAVITY, 0.56);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 2);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, ability_chungus);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_EFFECT, 12);
 
 		switch(pick_pill){
 			case 1 :			//BLUE BLUE
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 2);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 4);
 				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 45 );																//This will vary;
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 3);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 5);
 				break;
 			case 2 :			//RED RED
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 2);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 4);
 				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 120 );																//This will vary
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 3);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 5);
 				break;
 			case 3 :			//YELLOW YELLOW
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 2);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 4);
 				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 90 );																//This will vary
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 3);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 5);
 				break;	
 			case 4 :		//RED BLUE
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 3);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 5);
 				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 60 );																//This will vary
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 2);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 4);
 				break;
 			case 5 :			//RED YELLOW
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 3);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 5);
 				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 105 );																//This will vary
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 2);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 4);
 				break;	
 			case 6 :			//BLUE YELLOW
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 3);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 5);
 				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 75 );																//This will vary
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 2);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 4);
 				break;
 			default: 
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 3);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 5);
 				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 60 );																//This will vary
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 2);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 4);
 				break;
 		}
 
@@ -549,33 +587,41 @@ if swallowed { //Kirby ability script starts here
 		newicon = kirby_icon; //Optional, replaces the kirby ability icon
 	} //Kirby ability script ends here
 }
-
+// Hitbox update
 if enemykirby != undefined { //if kirby is in a match & swallowed
 	with oPlayer { //Run through all players
-		if pHitBox.attack == AT_EXTRA_3 {
-			if  pHitBox.hitbox_timer == 1{pHitBox.floor_pos = 0; }
-			pHitBox.proj_angle = (pHitBox.hitbox_timer*(abs(pHitBox.hsp)+1))*-pHitBox.spr_dir;
-			/*
-			//BOUNCE
-			if !pHitBox.free{
-				pHitBox.floor_pos = pHitBox.y;
+		if get_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY) == 19 {			//Random value to identify Kirby
+			with pHitBox {
+				if attack == AT_EXTRA_3 && type == 2 {
+					if hitbox_timer == 1 { floor_pos = 0}
+					//ANIMATION
+					proj_angle = (hitbox_timer*(abs(hsp)+1))*-spr_dir;
+					//BOUNCE
+					if !free{
+						floor_pos = y;
+					}
+					if y == floor_pos {
+						 vsp = -8.5;
+						 floor_pos = 0;
+					} 
+				}
 			}
-			if pHitBox.y == pHitBox.floor_pos {
-				pHitBox.vsp = -8.5
-				pHitBox.floor_pos = 0;
-			} 
-			*/
 		}
+	}
+}
+
+//Attack update
+if enemykirby != undefined { //if kirby is in a match & swallowed
+	with oPlayer { //Run through all players
 		if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)  {
-			
 			if (attack == AT_EXTRA_3) {			//PILL LOGIC
 				if window == 1  && window_timer <5 {
 					if left_down{spr_dir =-1;}
 					if right_down{spr_dir =1;}
 				}
 				if  window == 3{
-					move_cooldown[AT_EXTRA_3] = 32;
-					move_cooldown[AT_NSPECIAL] = 32;
+					move_cooldown[AT_EXTRA_3] = 42;
+					move_cooldown[AT_NSPECIAL] = 42;
 				}
 			}
 		}

@@ -27,7 +27,7 @@ else {
 		taunt_counter = 0;
 	}
 
-	if (taunt_counter == 20){
+	if (taunt_counter == 24){
 		if (down_down && DG_chat_num == 0 && !up_down){
 			DG_chat_num = 1;
 		}
@@ -233,7 +233,7 @@ else {
 if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice mode reload
 	if (spawn_timer < 100 && ColorLock == 0 && jump_down){
 
-		if (get_player_color(player) == 2){ // Color 2 Secret Alt
+		if (get_player_color(player) == 11){ // Color 12 Secret Alt
 
 			// Inner - BLM alt color
 			if (up_down && !down_down && !left_down && !right_down && shield_down && !attack_down && !special_down){
@@ -251,7 +251,7 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 			}			
 		}		
 	
-		if (get_player_color(player) == 4){ // Color 4 Secret Alt
+		if (get_player_color(player) == 13){ // Color 14 Secret Alt
 
 			// Dichi - Charlotte alt color
 			if (up_down && !down_down && !left_down && !right_down && shield_down && !attack_down && !special_down){
@@ -262,7 +262,7 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 			}
 		}
 		
-		if (get_player_color(player) == 5){ // Color 5 Secret Alt
+		if (get_player_color(player) == 8){ // Color 9 Secret Alt
 
 			// Nuzle - Zombi? alt color
 			if (up_down && !down_down && !left_down && !right_down && shield_down && !attack_down && !special_down){
@@ -273,7 +273,7 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 			}
 		}
 		
-		if (get_player_color(player) == 8){ // Color 10 Secret Alt
+		if (get_player_color(player) == 14){ // Color 15 Secret Alt
 
 			// Staur - alt color
 			if (up_down && !down_down && !left_down && !right_down && shield_down && !attack_down && !special_down){

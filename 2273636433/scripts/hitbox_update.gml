@@ -87,7 +87,7 @@ if attack == AT_NSPECIAL{
 			if abs(y - (player_id.y - 36))<48{
 				hsp = 0;
 				vsp = 0;
-				length = 200;			//NiceNice
+				length = hitbox_timer + 19;			//NiceNice
 				walls =1;
 				x = player_id.x + sin(hitbox_timer)*20 ;
 				y = player_id.y - 42+ sin(hitbox_timer)*10;

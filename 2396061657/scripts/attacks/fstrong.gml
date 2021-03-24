@@ -18,7 +18,7 @@ set_window_value(AT_FSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, sound_get("CMN_SWISH01"));
 
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 
@@ -32,7 +32,7 @@ set_num_hitboxes(AT_FSTRONG,1);
 
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, 3);
-set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 7);
+set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 4);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 47);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_Y, -39);
 set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 60);

@@ -51,66 +51,7 @@ if ("phone_inited" in self && phone_inited){
 	// Copy Ability
 	
 	if pho_has_copy_power{
-		
-		// Initial swallow
-		
-		if swallowed {
-			
-			swallowed = 0; // don't touch this line please im begging you
-			
-			var copy_spr = sprite_get("copy_sprite");
-			var copy_hrt = sprite_get("copy_hurt");
-			var copy_icn = sprite_get("copy_icon");
-			// add more to transfer other sprites, or sfx
-			
-			with enemykirby{
-				newicon = copy_icn;
-				muno_last_swallowed = other.id;
-				
-				set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
-				set_attack_value(AT_EXTRA_3, AG_SPRITE, copy_spr);
-				set_attack_value(AT_EXTRA_3, AG_AIR_SPRITE, copy_spr);
-				set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 1);
-				set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, copy_hrt);
-				set_attack_value(AT_EXTRA_3, AG_HURTBOX_AIR_SPRITE, copy_hrt);
-				
-				// edit the below (and, indeed, the above!) just like a regular attack script
-				
-				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 10);
-				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 2);
-				
-				set_num_hitboxes(AT_EXTRA_3, 1);
-				
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 1);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 3);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 8);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, 50);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, -10);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 66);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 75);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 3);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 14);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 90);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 10);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.8);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 12);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 1.0);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITSTUN_MULTIPLIER, 1.15);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DRIFT_MULTIPLIER, 0);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 0);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
-			}
-		}
-		
-		
-		
-		// Update code
-		
-		with oPlayer if "muno_last_swallowed" in self && muno_last_swallowed == other && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_EXTRA_3{
-			// you can treat this like an attack_update.gml for when kirby is using your character's ability
-			
-			// this system avoids conflicts between 2 swallowed chars IF they both use the munophone system for copy abilities.
-		}
+		// no
 	}
 	
 	
@@ -118,51 +59,7 @@ if ("phone_inited" in self && phone_inited){
 	// Break the Targets data
 	
 	if pho_has_btt_layout{
-		if get_btt_data { // Get data for Break The Targets
-			course_name = "R-00 Course";
-			// Set the spawn properties
-			respawn_point = [[29,50],[0,0],1];
-			// Set the collision of the solid sprites to precise
-			sprite_change_collision_mask("btt_solid",true, 1, 0, 0, 0, 0, 0 );  
-			room_add(1,[
-			    [ // Each Cell
-			        [0,0], // Cell Coordinates
-			        [
-			        	// Targets
-				        [10, 4, 55, 0, -5, [0, 0, 32, [[0,0],[0,-3]], 0, 0, 0, 0], [0]],
-				        [10, 40, 30.5, 0, -5, [1, 0, 60, [[-10,0],[5,0]], 0, 0, 0, 0], [0]],
-				        [10, 87, 46, 0, -5, [2, 0, 0, 0, 0, 0, 0, 0], [0]],
-				        [10, 52, 44, 0, -5, [3, 0, 0, 0, 0, 0, 0, 0], [0]],
-				        [10, 55, 75, 0, -5, [3, 0, 0, 0, 0, 0, 0, 0], [0]],
-				        [10, 125, 55, 0, -5, [4, 0, 32, [[0,0],[0,-1]], 0, 0, 0, 0], [0]],
-				        // Solid Ground
-				    	[1, 2, 2, 2, 0, [sprite_get("btt_solid"), 0, 0, 0, 0, 0, 0, 0], [0]],
-				    	// Plats
-				    	[1, 46, 49, 1, 0, [sprite_get("btt_plat_64"), 0, 0, 0, 0, 0, 0, 0], [0]],
-				    	[1, 64, 71, 1, 0, [sprite_get("btt_plat_64"), 0, 0, 0, 0, 0, 0, 0], [0]]
-			            ]
-			        ],
-			    // Blastzones
-			    [ // Each Cell
-			        [0,1], // Cell Coordinates
-			        [
-			            [4, 0, 32, 0, 0, [4, 0, 0, 0, 0, 2608, 20, 0], [0,0]]
-			            ]
-			        ],
-			    [
-			        [1,1],
-			        [
-			        	[4, 0, 32, 0, 0, [4, 0, 0, 0, 0, 2608, 20, 0], [0,0]]
-			            ]
-			        ],
-			    [ // Each Cell
-			        [-1,1], // Cell Coordinates
-			        [
-			        	[4, 0, 32, 0, 0, [4, 0, 0, 0, 0, 2608, 20, 0], [0,0]]
-			            ]
-			        ]
-			    ]);
-		}
+		// no
 	}
 	
 	
@@ -170,24 +67,7 @@ if ("phone_inited" in self && phone_inited){
 	// Amber
 	
 	if pho_has_amber_love{
-		if amber_startHug{ // Amber will set this bool to true when this player accepts the hug
-		    with amber_herObj{ // Access Amber's player object and set the values
-		        // Set the window values for Amber's hugging. DO NOT change Amber's sprites
-		        // in the attack_values
-		        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
-		        // etc....
-		
-		        // Important. Puts Amber in startup hug state (2).
-		        // Editing this variable not recommended
-		        amberHugState = 2; 
-		    }
-		    // Important. Puts this character in startup hug state (2).
-		    // Editing this variable not recommended
-		    oPlayerHugAmberState = 2;
-		    
-		    // Set this bool back to false so that this doesn't loop
-		    amber_startHug = false;
-		}
+		// no
 	}
 	
 	exit;
@@ -221,8 +101,8 @@ if ("phone_inited" in self && phone_inited){
  */
 
 // Gameplay-relevant, and codecs because im biased :>
-pho_has_muno_phone = 1;	// MunoPhone support		(should always be 1, obviously...)
-pho_has_trum_codec = 1;	// Trummel & Alto codec
+pho_has_muno_phone = 0;	// MunoPhone support		(should always be 1, obviously...)
+pho_has_trum_codec = 0;	// Trummel & Alto codec
 pho_has_copy_power = 0;	// Kirby Copy Ability
 pho_has_btt_layout = 0;	// Break the Targets stage
 
@@ -254,7 +134,7 @@ pho_has_daro_codec = 0; // Dialogue for the Daroach boss fight
 
 
 if (object_index == asset_get("cs_playerbg_obj")){
-	num_alts = 6; // Number of alt costumes; controls how many appear on the CSS
+	num_alts = 32; // Number of alt costumes; controls how many appear on the CSS
 	exit;
 }
 
@@ -455,7 +335,13 @@ with phone{
 	 * put the version number and full date.
 	 */
 
-		initPatch("2.0", "February, 20, 2021");
+	
+	initPatch("2.1","March, 13, 2021")
+	initPatchWords("Supports")
+	initPatchWords_ext("Added Kirby Support
+	Added Agent N Support", fa_left, c_gray, 1, 0);
+
+	initPatch("2.0", "March, 12, 2021");
 	initPatchWords("Beegest patch.");
 	
 	initPatchWords("

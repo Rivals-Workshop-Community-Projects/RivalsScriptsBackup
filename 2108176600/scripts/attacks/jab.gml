@@ -3,6 +3,7 @@ set_attack_value(AT_JAB, AG_SPRITE, sprite_get("jab"));
 set_attack_value(AT_JAB, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_JAB, AG_LANDING_LAG, 4);
 set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
+set_attack_value(AT_JAB, AG_STRONG_CHARGE_WINDOW, 1);
 
 set_window_value(AT_JAB, 1, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_JAB, 1, AG_WINDOW_ANIM_FRAMES, 2);
@@ -24,7 +25,7 @@ set_num_hitboxes(AT_JAB, 1);
 
 set_hitbox_value(AT_JAB, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_JAB, 1, HG_WINDOW, 4);
-set_hitbox_value(AT_JAB, 1, HG_LIFETIME, 16);
+set_hitbox_value(AT_JAB, 1, HG_LIFETIME, 120);
 set_hitbox_value(AT_JAB, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_JAB, 1, HG_HITBOX_X, 0);
 set_hitbox_value(AT_JAB, 1, HG_HITBOX_Y, 32);

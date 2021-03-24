@@ -258,6 +258,7 @@ fast_fall = 14;
 }
 
 if (attack == AT_EXTRA_1 && window_timer == 1){
+        hurtboxID.sprite_index = get_attack_value(AT_EXTRA_2, AG_HURTBOX_SPRITE);
 started_fspecial_charge = 0;
 leap_cooldown = 10;
 spawn_hit_fx( x, y, 6 );
@@ -266,7 +267,7 @@ charge_sound = 0;
 sound_stop(chargesfx);
 init_shader();
 outline_color = [ 0, 0, 0 ];
-vsp = -18;
+vsp = -14.5;
 can_move = true;
 air_max_speed = 5.5;
 max_fall = 11;

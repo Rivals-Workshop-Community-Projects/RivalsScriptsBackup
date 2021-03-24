@@ -12,7 +12,7 @@ set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, sound_get("BlueSwish3"));
 
 set_window_value(AT_FAIR, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 
@@ -37,12 +37,12 @@ set_hitbox_value(AT_FAIR, 1, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 4);
-set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 32);
+set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 38);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -35);
 set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 78);
 set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 64);
 set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 2);
-set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 7);
+set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 35);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .5);

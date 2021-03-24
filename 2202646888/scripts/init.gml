@@ -22,6 +22,10 @@ timermod = 35;
 scisx = 0;
 scisy = 0;
 
+//runes
+owner_player = 0;
+eggdog_count = 1;
+max_eggs = 8;
 
 //supports
 Hikaru_Title = "Interrupting Tortoise";

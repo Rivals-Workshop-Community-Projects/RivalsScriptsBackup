@@ -11,7 +11,7 @@ set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, sound_get("Bow03"));
 set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 2);
 
 set_window_value(AT_UTILT, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UTILT, 2, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_UTILT, 2, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_UTILT, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UTILT, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 
@@ -26,7 +26,7 @@ set_num_hitboxes(AT_UTILT, 1);
 set_hitbox_value(AT_UTILT, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_UTILT, 1, HG_LIFETIME, 8);
+set_hitbox_value(AT_UTILT, 1, HG_LIFETIME, 4);
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_X, 20);
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_Y, -65);
 set_hitbox_value(AT_UTILT, 1, HG_WIDTH, 45);

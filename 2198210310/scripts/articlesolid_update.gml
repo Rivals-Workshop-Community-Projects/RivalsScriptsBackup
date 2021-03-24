@@ -35,6 +35,7 @@ if getting_bashed {
             cubeHitbox.can_hit[bashed_id.player] = false;
             cubeHitbox.can_hit_self = true;
             cubeHitbox.was_bashed = true;
+            cubeHitbox.was_grounded = false
         instance_destroy();
         exit;
     }
@@ -58,6 +59,19 @@ if getting_bashed {
                     spawn_hit_fx(other.x, other.y, get_hitbox_value(hitbox.attack, hitbox.hbox_num, HG_VISUAL_EFFECT));
                 }
             }
+        } else if ("isWalle" in hitbox.player_id) && hitbox.hbox_num == 1 && hitbox.attack == AT_DSPECIAL { //dspecial absorb cube
+            with hitbox.player_id {
+                window = 4;
+                window_timer = 0;
+                absorbedCube = true;
+                compactTimer = other.power;
+                heldExplode = other.willExplode;
+                heldExplodeTimer = other.explodeTimer + compactTimer*7;
+                heldExplodeThreshhold = other.explodeThreshhold;
+                sound_play(asset_get("sfx_ell_utilt_fire"));
+            }
+            instance_destroy()
+            exit;
         }
         if hitboxOwner.has_hit {
             if (variable_instance_exists(hitboxOwner, "isWalle") && hitbox.attack == AT_FSPECIAL && hitbox.hbox_num == 1) { //fspecial proj explosion
@@ -74,13 +88,31 @@ if getting_bashed {
                 with player_id {
                     spawn_hit_fx(other.x, other.y - 15, 141);
                 }
-                create_hitbox(AT_NSPECIAL, 2, x, y - 10);
+                var boom = create_hitbox(AT_NSPECIAL, 2, x, y - 10);
+                    boom.can_hit_self = false;
                 instance_destroy();
                 exit;
             } else if !(variable_instance_exists(hitboxOwner, "isWalle") && 
                     ((hitbox.attack == AT_FSPECIAL && (hitbox.hbox_num == 2 || hitbox.hbox_num == 3)) || 
                     (hitbox.attack == AT_NSPECIAL))) { //hit by other hitbox
-                junked = true;
+                var cubeHitbox = create_hitbox(AT_NSPECIAL, 1, x, y);
+                    cubeHitbox.hsp = 0;
+                    cubeHitbox.spr_dir = hitboxOwner.spr_dir;
+                    cubeHitbox.vsp = -1;
+                    cubeHitbox.bounceHsp = 0;
+                    cubeHitbox.bounceVsp = 0;
+                    cubeHitbox.power = power;
+                    cubeHitbox.willExplode = willExplode;
+                    cubeHitbox.explodeTimer = explodeTimer;
+                    cubeHitbox.explodeThreshhold = player_id.heldExplodeThreshhold;
+                    cubeHitbox.hitCooldown = 4;
+                    cubeHitbox.was_grounded = true;
+                    with oPlayer {
+                        cubeHitbox.can_hit[player] = false;
+                    }
+                instance_destroy();
+                exit;
+                //junked = true;
             }
         }
     }
@@ -121,7 +153,8 @@ if getting_bashed {
             with player_id {
                 spawn_hit_fx(other.x, other.y - 15, 141);
             }
-            create_hitbox(AT_NSPECIAL, 2, x, y - 10);
+            var boom create_hitbox(AT_NSPECIAL, 2, x, y - 10);
+                boom.can_hit_self = true;
             instance_destroy();
             exit;
         }
@@ -145,6 +178,7 @@ if getting_bashed {
             cubeHitbox.explodeThreshhold = player_id.heldExplodeThreshhold;
             cubeHitbox.hitCooldown = 5;
             cubeHitbox.can_hit_self = true;
+            cubeHitbox.was_grounded = false;
         instance_destroy();
         exit;
     }

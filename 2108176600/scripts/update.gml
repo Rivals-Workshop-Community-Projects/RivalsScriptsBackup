@@ -10,7 +10,7 @@ if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) {
 	//if special_down && use_nspec == false use_nspec = true;
 }
 if state != PS_DEAD && state != PS_RESPAWN {
-if state != PS_HITSTUN && (special_down || use_nspec) && state != PS_PRATFALL && state != PS_PRATLAND && attack != AT_USPECIAL && attack != AT_DSPECIAL && prev_attack != AT_FSPECIAL && prev_attack != AT_NSPECIAL && shadow_cooldown == 0 {
+if state != PS_HITSTUN && (special_down || use_nspec) && state != PS_PRATFALL && state != PS_PRATLAND && !((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && (attack == AT_USPECIAL || attack == AT_DSPECIAL)) && prev_attack != AT_FSPECIAL && prev_attack != AT_NSPECIAL && shadow_cooldown == 0 {
     if !instance_exists(shadow) && !(get_attack_value(prev_attack,AG_CATEGORY) == 1 && !free) {
         sound_play(sound_get("elu"));
         shadow = instance_create(x,y,"obj_article2");
@@ -53,9 +53,14 @@ if state != PS_HITSTUN && (special_down || use_nspec) && state != PS_PRATFALL &&
 	        with asset_get("pHitBox") {
 	        	if player_id == other.id && type == 0 instance_destroy();
 	        }
+	        has_airdodge_prev = has_airdodge;
 	        set_state(PS_IDLE); //Reset Hitboxes
+	        
 	        if free set_state(PS_ATTACK_AIR);
-	        else set_state(PS_ATTACK_GROUND);
+	        else {
+	        	set_state(PS_ATTACK_GROUND);
+	        	has_airdodge = has_airdodge_prev;
+	        }
 	        attack = shadow.attack;
 	        //hurtbox_spr = shadow.hurt_sprite;
 	        window = 1;
@@ -119,7 +124,7 @@ if dtilt_end && (state != PS_ATTACK_GROUND || attack != AT_DTILT || window == 1)
     dtilt_end = false;
 }
 
-
+if !free || state == PS_WALL_JUMP dair_count = 0;
 if attack != AT_NSPECIAL && attack != AT_FSPECIAL && attack != AT_USPECIAL prev_attack = attack;
 if shadow_cooldown > 0 shadow_cooldown--;
 

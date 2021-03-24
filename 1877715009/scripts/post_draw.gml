@@ -1,6 +1,31 @@
 //post draw
 if ("mutebg" in self && mutebg) suppress_stage_music( 0, 0.05 );
 
+// bad code, I'm lazy to optimize
+if ("fs_char_chosen_final_smash" in self && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == 49)
+{
+	switch (window)
+	{
+		case 1:
+			var bruh = floor(lerp(120, 200, window_timer/12));
+			draw_rectangle_colour(0, 0, room_width, bruh, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_colour(0, room_height-bruh, room_width, room_height, c_black, c_black, c_black, c_black, false);
+			break;
+		case 2:
+			draw_rectangle_colour(0, 0, room_width, 200, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_colour(0, room_height-200, room_width, room_height, c_black, c_black, c_black, c_black, false);
+			break;
+		case 3:
+			var bruh = floor(lerp(200, room_height/2, window_timer/12));
+			draw_rectangle_colour(0, 0, room_width, bruh, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_colour(0, room_height-bruh, room_width, room_height, c_black, c_black, c_black, c_black, false);
+			break;
+		case 4:
+			draw_rectangle_colour(0, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
+			break;
+	}
+}
+
 if ("fspeccoolhud" in self && fspeccoolhud)
 {
 	draw_debug_text(x - 64, y + 16, "FSpec Cooldown: "+string(move_cooldown[AT_FSPECIAL]));

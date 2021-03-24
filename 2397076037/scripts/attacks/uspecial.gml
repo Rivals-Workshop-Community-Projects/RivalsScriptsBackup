@@ -25,5 +25,32 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_spin"));
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX_FRAME, 0);
 
+set_hitbox_value(AT_USPECIAL, 16, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_USPECIAL, 16, HG_WINDOW, 20);
+set_hitbox_value(AT_USPECIAL, 16, HG_LIFETIME, 60);
+set_hitbox_value(AT_USPECIAL, 16, HG_HITBOX_X, 32);
+set_hitbox_value(AT_USPECIAL, 16, HG_HITBOX_Y, -32);
+set_hitbox_value(AT_USPECIAL, 16, HG_WIDTH, 0);
+set_hitbox_value(AT_USPECIAL, 16, HG_HEIGHT, 0);
+set_hitbox_value(AT_USPECIAL, 16, HG_PRIORITY, 0);
+set_hitbox_value(AT_USPECIAL, 16, HG_DAMAGE, 3);
+set_hitbox_value(AT_USPECIAL, 16, HG_ANGLE, 50);
+set_hitbox_value(AT_USPECIAL, 16, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_USPECIAL, 16, HG_KNOCKBACK_SCALING, 0.06);
+set_hitbox_value(AT_USPECIAL, 16, HG_BASE_HITPAUSE, 4);
+set_hitbox_value(AT_USPECIAL, 16, HG_VISUAL_EFFECT, 303);
+set_hitbox_value(AT_USPECIAL, 16, HG_PROJECTILE_DESTROY_EFFECT, 1 );
+set_hitbox_value(AT_USPECIAL, 16, HG_PROJECTILE_SPRITE, sprite_get("berry"));
+set_hitbox_value(AT_USPECIAL, 16, HG_PROJECTILE_ANIM_SPEED, 0.15);
+set_hitbox_value(AT_USPECIAL, 16, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_USPECIAL, 16, HG_PROJECTILE_HSPEED, 0);
+set_hitbox_value(AT_USPECIAL, 16, HG_PROJECTILE_VSPEED, -4);
+set_hitbox_value(AT_USPECIAL, 16, HG_PROJECTILE_GRAVITY, .4);
+set_hitbox_value(AT_USPECIAL, 16, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
+set_hitbox_value(AT_USPECIAL, 16, HG_PROJECTILE_WALL_BEHAVIOR, 2);
+set_hitbox_value(AT_USPECIAL, 16, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_USPECIAL, 16, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_USPECIAL, 16, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_USPECIAL, 16, HG_IGNORES_PROJECTILES, true);
 
 

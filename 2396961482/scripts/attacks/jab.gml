@@ -48,11 +48,11 @@ set_window_value(AT_JAB, 8, AG_WINDOW_HSPEED, 3);
 set_window_value(AT_JAB, 8, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_JAB, 8, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_JAB, 8, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
-set_window_value(AT_JAB, 8, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_window_value(AT_JAB, 9, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_JAB, 9, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 9, AG_WINDOW_ANIM_FRAME_START, 14);
+set_window_value(AT_JAB, 9, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 
 
@@ -92,6 +92,7 @@ set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_JAB, 2, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_JAB, 2, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 3, HG_WINDOW, 8);

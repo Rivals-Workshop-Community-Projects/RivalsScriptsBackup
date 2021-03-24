@@ -361,7 +361,7 @@ switch (attack) {
 				if (is_end_of_window()) {
 					if (joy_pad_idle) peacock_uspec_move_speed = 0;
 					else { 
-						peacock_uspec_move_speed = lengthdir_x(40, joy_dir);
+						peacock_uspec_move_speed = lengthdir_x(46, joy_dir);
 						
 						//peacock can't teleport backwards.
 						if (sign(peacock_uspec_move_speed) != spr_dir) {

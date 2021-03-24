@@ -12,6 +12,10 @@ ncode3 = "as creating electric infused projectiles."
 
 voiced = 1 
 
+fs_char_chosen_final_smash = "custom";
+fs_char_chosen_trigger = "ori";
+fs_char_portrait_y = 115;
+ 
 shsp = 0
 svsp = 0
 farx = 0
@@ -149,3 +153,15 @@ bfx1 = hit_fx_create( sprite_get( "ballfx1" ), 12);
 bfx2 = hit_fx_create( sprite_get( "ballfx2" ), 10);
 bfx3 = hit_fx_create( sprite_get( "ballfx3" ), 7);
 bfx4 = hit_fx_create( sprite_get( "ballfx4" ), 12);
+
+if get_player_color(player) == 13 {
+    
+    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("berryball1"));
+    set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("berryball2"));
+    set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("berryball3"));
+    
+    set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_SPRITE, sprite_get("berryball1"));
+    set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_SPRITE, sprite_get("berryball2"));
+    set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_SPRITE, sprite_get("berryball3"));
+    
+}

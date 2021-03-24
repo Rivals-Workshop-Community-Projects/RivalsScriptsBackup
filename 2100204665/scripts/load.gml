@@ -53,6 +53,7 @@ sprite_change_offset("boneshigh", 33, 43);
 sprite_change_offset("boneplat", 48, 4);
 sprite_change_offset("bonemask", 48, 0);
 sprite_change_offset("bluewarning", 0, 92);
+sprite_change_offset("bluesoul", 16, 32);
 
 sprite_change_offset("plat", 60, 68);
 

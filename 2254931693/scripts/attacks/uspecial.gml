@@ -49,7 +49,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 0);
 set_hitbox_value(AT_USPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 0);
-set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 16);
+set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 12);
 set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, sound_get("uspecialfrogopponentlaunch"));
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 3);

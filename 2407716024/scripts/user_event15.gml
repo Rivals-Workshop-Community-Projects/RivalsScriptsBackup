@@ -427,6 +427,30 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	 
+	initPatch("1.6", "16 March, 2021");
+	
+	initPatchWords("Adjustments");
+	initPatchWords_ext("Redesigned MunoPhone", fa_left, c_gray, 1, 0);
+	initPatchWords_ext("Adjusted Voiced Mode", fa_left, c_gray, 1, 0);
+	initPatchWords_ext("Fixed DSpecial Hurtbox", fa_left, c_gray, 1, 0);
+	initPatchWords_ext("Added Cirno Skin", fa_left, c_gray, 1, 0);
+	initPatchWords_ext("Everything updated before this patch is now stuffed in v1.6", fa_left, c_gray, 1, 0);
+
+	initPatchWords("Buffs");
+	initPatchWords_ext("Adjusted FStrong Angles: Sour: 30 > 44 - Sweet: 27 > 36", fa_left, c_gray, 1, 0);
+	initPatchWords_ext("Chipped off 4 Frames From DStrong", fa_left, c_gray, 1, 0);
+	initPatchWords_ext("Final Smash Finisher now fires 4 transcendent Projectiles to kill more than 1 player", fa_left, c_gray, 1, 0);
+	initPatchWords_ext("Changed the angles of Final Smash Projectiles - Top sends downwards while bottom sends upwards.", fa_left, c_gray, 1, 0);
+	initPatchWords_ext("Ground USpecial can now send you slightly further", fa_left, c_gray, 1, 0);
+	initPatchWords_ext("Increased Double Jump Height", fa_left, c_gray, 1, 0);
+
+	initPatchWords("Nerfs");
+	initPatchWords_ext("UTilt now has set knockback", fa_left, c_gray, 1, 0);
+	initPatchWords_ext("Decreased UTilt Hitbox Base Knockback 5 > 4", fa_left, c_gray, 1, 0);
+	initPatchWords_ext("Decreased DStrong Knockback growth: Sweet: 1.0 > .90 - Sour: .84 > .80", fa_left, c_gray, 1, 0);
+	initPatchWords_ext("Decreased Dash Speed: 6.5 > 6", fa_left, c_gray, 1, 0);
+	initPatchWords_ext("You can no longer use strong attacks during the road roller drop", fa_left, c_gray, 1, 0);
 	
 	initPatch("1.5", "3 March, 2021");
 	initPatchWords("Additions");
@@ -784,8 +808,8 @@ if pho_has_trum_codec{
 
 if pho_has_otto_bhead{
 	
-	otto_bobblehead_sprite = sprite_get("_pho_example_bobble_head");
-	otto_bobblebody_sprite = sprite_get("_pho_example_bobble_body"); // you only need to change this one if you REALLY want to. most chars just use the head sprite
+	otto_bobblehead_sprite = sprite_get("bob");
+	otto_bobblebody_sprite = sprite_get("bob_body"); // you only need to change this one if you REALLY want to. most chars just use the head sprite
 	
 }
 
@@ -969,8 +993,8 @@ if !phone_lightweight{
 	
 	if pho_has_miivs_post{
 		
-		sprite_change_offset("miiverse_post", 60, 30);
-		miiverse_post = sprite_get("miiverse_post");
+		sprite_change_offset("miiverse_post_peacock", 60, 30);
+		miiverse_post = sprite_get("miiverse_post_peacock");
 		
 	}
 	
@@ -1030,7 +1054,7 @@ if !phone_lightweight{
 	}
 	
 	
-
+/*
 	// Daroach dialogue
 	
 	if pho_has_daro_codec{
@@ -1052,7 +1076,7 @@ if !phone_lightweight{
 		
 		// repeat...
 		
-	}
+	} */
 	
 }
 

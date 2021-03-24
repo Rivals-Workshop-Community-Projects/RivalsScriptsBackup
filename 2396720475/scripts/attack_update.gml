@@ -136,7 +136,7 @@ if (attack == AT_DSPECIAL){
 			movingbox.initial_spawn = true;
 			movingbox.hitfxowner = id;
 			
-			if (get_player_color(player) == 12 || get_player_color(player) == 10 || get_player_color(player) == 1 || SecretColor == 2){
+			if (get_player_color(player) == 12 || get_player_color(player) == 10 || get_player_color(player) == 1 || SecretColor == 2 || SecretColor == 3){
 				flag_destroy = false;
 				movingbox.flag = true;
 			}
@@ -286,10 +286,12 @@ if (attack == AT_USPECIAL){
 	if (window == 1 && window_timer == 1){
 		usedUspecial_Again++;
 	}
-	if (!joy_pad_idle){
-		needle_angle = floor(joy_dir / 22.5) * 22.5;
-	}
 	
+	if (!joy_pad_idle){
+	//	needle_angle = floor(joy_dir / 22.5) * 22.5;
+		needle_angle = joy_dir;
+	}
+	/*
 		if ((needle_angle <= 22.5 || needle_angle >= 337.5) && needle_angle != 0){
 			needle_angle = 0;
 		}		
@@ -314,7 +316,7 @@ if (attack == AT_USPECIAL){
 		if (needle_angle < 337.5 && needle_angle > 292.5){
 			needle_angle = 315;
 		}
-
+	*/
 		angle = (needle_angle / 180) * -pi;
 
 		if (window_timer == 15){

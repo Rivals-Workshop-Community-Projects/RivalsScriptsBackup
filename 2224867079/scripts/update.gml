@@ -1,5 +1,31 @@
 //update
 user_event(14);
+
+//Stat Changes
+if (RedMode == true){
+dash_speed = 9;
+initial_dash_time = 5;
+initial_dash_speed = 9.5;
+jump_speed = 12;
+jump_start_time = 5;
+air_friction = .02;
+air_accel = .3;
+djump_speed = 11;
+dash_turn_time = 8;
+}
+
+if (RedMode == false){
+dash_speed = 8;
+initial_dash_time = 8;
+initial_dash_speed = 8.5;
+jump_speed = 13;
+jump_start_time = 4;
+air_friction = .01;
+air_accel = .4;
+djump_speed = 12;
+dash_turn_time = 10;
+}
+
 /*
 if(dotheeffect == false){
 	print_debug("not cringe")
@@ -138,3 +164,37 @@ if(!free){
 if(state == SC_GROUND_NEUTRAL || SC_AIR_NEUTRAL ){
 	dotheeffect = true
 }
+
+//Trail Effects
+if(state == PS_AIR_DODGE){
+	if(state_timer % 3 == 0){
+		if(RedMode == false){
+			spawn_hit_fx((x - 40 * spr_dir), y - 80, fx_star_trail);
+		}
+		if(RedMode == true){
+			spawn_hit_fx((x - 40 * spr_dir), y - 80, fx_red_star_trail);
+		}
+    }
+}if(state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD || state == PS_TECH_FORWARD || state == PS_TECH_BACKWARD){
+	if(state_timer % 3 == 0){
+		if(RedMode == false){
+    		spawn_hit_fx((x - 30 * spr_dir), y - 80, fx_star_trail);
+		}
+		if(RedMode == true){
+    		spawn_hit_fx((x - 30 * spr_dir), y - 80, fx_red_star_trail);
+		}
+	}
+}
+
+/*
+// roll vfx
+for (var i = 0; i < 6; ++i) if (rollArray[i] != -1 && rollArray[i].rollAlpha > 0) rollArray[i].rollAlpha--;
+
+// jump strong timer
+if (jsTimer > 0) jsTimer--;
+if (state_timer == 0 && (state == PS_JUMPSQUAT || state == PS_DOUBLE_JUMP || state == PS_WALL_JUMP)) jsTimer = jsMax;
+
+// jump vfx
+if (jsTimer > 0) jsArray[jsTimer-1]={jsSprite:sprite_index,jsImage:image_index,jsX:x,jsY:y,jsDir:spr_dir,jsAlpha:10};
+for (var i = 0; i < 10; ++i) if (jsArray[i] != -1 && jsArray[i].jsAlpha > 0) jsArray[i].jsAlpha--;
+*/

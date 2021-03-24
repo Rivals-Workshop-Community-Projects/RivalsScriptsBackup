@@ -17,6 +17,60 @@ if ("rollArray" in self)
 				draw_sprite_ext(sprite_get("strongSword"), spriteIndex, x+xPos*spr_dir, y-yPos, spr_dir, 1, rot, c_white, 1);
 				shader_end();
 				break;
+			case 49:
+				if (window == 3)
+				{
+					shader_start();
+					if (window_timer < 20)
+					{
+						// cry about it
+					}
+					else if (window_timer < 30)
+					{
+						draw_set_alpha((window_timer-20)/10);
+						draw_rectangle_color(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
+						draw_set_alpha(1);
+					}
+					else
+					{
+						draw_rectangle_color(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
+						if (window_timer > 50 && window_timer <= 100)
+						{
+							for (var i = 0; i < 9; ++i)
+								draw_sprite_ext(sprite_get("plat"), 0, i*192-(window_timer*8)%64*spr_dir, room_height/2+64, 2, 2, 0, c_white, (window_timer-50)/20);
+							draw_rectangle_color(0,room_height/2+128,room_width,room_height,c_black,c_black,c_black,c_black,false);
+							with (hit_player_obj)
+							{
+								shader_start();
+								draw_sprite_ext(get_char_info(player,INFO_ICON), real(url)<100?real(url)-1%sprite_get_number(get_char_info(player,INFO_ICON)):0, other.spr_dir==1?1450-other.window_timer*8:room_width-1450+other.window_timer*8, room_height/2, 4, 4, 0, c_white, (other.window_timer-50)/20);
+								shader_end();
+							}
+							shader_start();
+							draw_sprite_ext(sprite_get("finalRun"), (window_timer/8)%2, spr_dir==1?500:room_width-500, room_height/2, 4*spr_dir, 4, 0, c_white, (window_timer-50)/20);
+						}
+						else if (window_timer > 100)
+						{
+							for (var i = 0; i < 9; ++i)
+								draw_sprite_ext(sprite_get("plat"), 0, i*192+24, room_height/2+64, 2, 2, 0, c_white, 1);
+							draw_rectangle_color(0,room_height/2+128,room_width,room_height,c_black,c_black,c_black,c_black,false);
+							if (window_timer < 120)
+							{
+								var slash = 16*(window_timer-100)/20;
+								draw_rectangle_color(0,room_height/2+16+slash,room_width,room_height/2+48-slash,c_white,c_white,c_white,c_white,false);
+							}
+							with (hit_player_obj)
+							{
+								shader_start();
+								draw_sprite_ext(get_char_info(player,INFO_ICON), real(url)<100?real(url)-1%sprite_get_number(get_char_info(player,INFO_ICON)):0, (other.spr_dir==1?650:room_width-650)+(floor(sin(other.window_timer)/4)*4-4)*other.spr_dir, room_height/2, 4, 4, 0, c_white, 1);
+								shader_end();
+							}
+							shader_start();
+							draw_sprite_ext(sprite_get("finalIdle"), (window_timer/16)%2, (spr_dir==1?850:room_width-850)+(window_timer<110?floor((window_timer-100)/4)*8:20)*spr_dir, room_height/2, 4*spr_dir, 4, 0, c_white, 1);
+						}
+					}
+					shader_end();
+				}
+				break;
 		}
 	}
 

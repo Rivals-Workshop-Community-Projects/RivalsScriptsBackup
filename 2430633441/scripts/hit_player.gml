@@ -2,7 +2,7 @@ switch(my_hitboxID.attack) {
 	default: break;
 	case AT_FSTRONG: case AT_USTRONG:
 	case AT_NAIR:
-		var p = planet[my_hitboxID.hbox_num];
+		var p = planet[max(my_hitboxID.hbox_num-1, 0)];
 		var o = p.owner;
 		if !o.hitpause {o.old_hsp = o.hsp; o.hsp = 0;}
 		if !o.hitpause {o.old_vsp = o.vsp; o.vsp = 0;}
