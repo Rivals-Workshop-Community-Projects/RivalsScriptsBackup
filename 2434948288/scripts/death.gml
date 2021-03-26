@@ -1,0 +1,1 @@
+guitar.newState = 0;
