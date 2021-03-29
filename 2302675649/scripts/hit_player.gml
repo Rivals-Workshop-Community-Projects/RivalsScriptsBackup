@@ -6,7 +6,8 @@ switch (my_hitboxID.attack)
 			has_walljump = true;
 			sound_play(sound_get("hitsfx1"));
 			sound_play(asset_get("sfx_blow_heavy2"));
-			var a = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - hit_player_obj.char_height, get_player_color(player)==6?saw_effect:dragon_effect); a.depth = -10; a.spr_dir = 1;
+			var a = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - hit_player_obj.char_height, get_player_color(player)==6?saw_effect:get_player_color(player)==16?chun_effect:dragon_effect); a.depth = -10; a.spr_dir = 1;
+			ApplyFlag();
 		}
 		else sound_play(asset_get("sfx_blow_weak1"));
 		if (has_rune("F")) set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
@@ -86,4 +87,12 @@ if (hit_player_obj.hitpause && hit_player_obj.hitstop > 3 && !(my_hitboxID.attac
 	vfxSlice.sliceY = floor(hit_player_obj.y-hit_player_obj.char_height/2);
 	vfxSlice.sliceAng = point_direction(0,0,hit_player_obj.old_hsp,hit_player_obj.old_vsp);
 	vfxSlice.sliceTimer = 20;
+}
+
+#define ApplyFlag()
+{
+	if (get_player_color(player) == 1)
+		hit_player_obj.outlineState = 1;
+	else if (get_player_color(player) == 17)
+		hit_player_obj.outlineState = 2;
 }

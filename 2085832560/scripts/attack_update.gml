@@ -7,9 +7,70 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL
 }
 
 
+if !hitpause && attack == 49{
+	
+	    super_armor = false 
+        soft_armor = 621
+        
+    if window == 1 && window_timer == 2 {
+    	create_hitbox(AT_EXTRA_2, 3, room_width/2 - 600*spr_dir, room_height/2 - 100)
+    }
+    
+    if state_timer % 30 == 0 {
+    	create_hitbox(AT_EXTRA_1, 7, room_width/2 + 400 - random_func(1,800,true), room_height/2 - 100)
+    }
+    
+    
+    if window == 15 && window_timer == 1 {
+    	spawn_hit_fx(x + 20*spr_dir, y - 45, 304)
+    	        sound_play(sound_get("SGF"));
+    	 shake_camera(5,6)
+    	 
+    	 			spawn_hit_fx( x + 10 * spr_dir , y - 20 , exp1 )
+			spawn_hit_fx( x + 10 * spr_dir, y - 20 , 304 )
+			 spawn_hit_fx( x, y, shotgun2 )
+			  spawn_hit_fx( x + 30*spr_dir, y + 40, shotgun1 )
+			   spawn_hit_fx( x + 60*spr_dir , y - 5 , shotgun2 )
+			   spawn_hit_fx( x + 30*spr_dir, y - 40, shotgun1 )
+
+			
+				create_hitbox(AT_FSTRONG , 1 , x + 160 * spr_dir, y - 40 );	
+				create_hitbox(AT_FSTRONG , 1 , x + 0 * spr_dir, y - 50 );
+				create_hitbox(AT_FSTRONG , 2 , x + 90 * spr_dir, y - 60 );
+				create_hitbox(AT_FSTRONG , 2 , x + 90 * spr_dir, y - 40 );
+				create_hitbox(AT_FSTRONG , 1 , x + 160 * spr_dir, y - 30 );	
+				create_hitbox(AT_FSTRONG , 2 , x + 90 * spr_dir, y - 20 );
+				create_hitbox(AT_FSTRONG , 2 , x + 90 * spr_dir, y - 40 );
+				create_hitbox(AT_FSTRONG , 1 , x + 160 * spr_dir, y - 30 );	
+				create_hitbox(AT_FSTRONG , 2 , x + 90 * spr_dir, y - 20 );
+				create_hitbox(AT_FSTRONG , 1 , x + 160 * spr_dir, y - 40 );	
+				create_hitbox(AT_FSTRONG , 1 , x + 0 * spr_dir, y - 50 );
+				create_hitbox(AT_FSTRONG , 2 , x + 90 * spr_dir, y - 60 );
+				create_hitbox(AT_FSTRONG , 2 , x + 90 * spr_dir, y - 40 );
+				create_hitbox(AT_FSTRONG , 1 , x + 160 * spr_dir, y - 30 );	
+				create_hitbox(AT_FSTRONG , 2 , x + 90 * spr_dir, y - 20 );
+				create_hitbox(AT_FSTRONG , 2 , x + 90 * spr_dir, y - 40 );
+				create_hitbox(AT_FSTRONG , 1 , x + 160 * spr_dir, y - 30 );	
+				create_hitbox(AT_FSTRONG , 2 , x + 90 * spr_dir, y - 20 );
+				create_hitbox(AT_EXTRA_2 , 7 , x + 20 * spr_dir, y - 50 );
+				
+			if !hitpause {	 
+			sound_play (sound_get("exp2"));
+			sound_play (sound_get("SGF"));
+			sound_play (sound_get("QSGF"));
+			}
+		
+    }
+
+
+    if window == 16 && window_timer == 9 {
+    	create_hitbox(AT_EXTRA_2, 9, x, room_height/2)
+    }
+
+
+}
 
 ////explosive
-
 
 
 var last_window = get_attack_value(attack, AG_NUM_WINDOWS);
@@ -670,46 +731,48 @@ if attack == AT_FSPECIAL  {
 }
 
 if attack == AT_DSPECIAL {
-	if gunname = 0 {
-		set_attack(AT_NSPECIAL)
-	}
-	can_fast_fall = false
-	move_cooldown[AT_DSPECIAL] = 999
-	
-	    if window == 1 && infernal2 > 300 {
-			set_state(PS_IDLE)
-			clear_button_buffer( PC_SPECIAL_PRESSED );
-		}
-		
+  move_cooldown[AT_DSPECIAL] = 30 
+  
+  walk_speed = 4;
+walk_accel = 0.7;
+walk_turn_time = 6;
+initial_dash_time = 10;
+initial_dash_speed = 8;
+dash_speed = 7
+dash_turn_time = 10;
+dash_turn_accel = 1;
+dash_stop_time = 10;
+dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
+ground_friction = .8;
+moonwalk_accel = 1.4;
 
-	if window = 2{
-		if infernal2 <= 300{
-		
-				infernal2 += 1.5
-		
-		
-			if window_timer % 2 == 0{
-		 spawn_hit_fx( x + 40 - random_func(1, 80, true), y - random_func(2, 100, true) , smoke2 )
-			}
-			
-			if window_timer % 2 == 1{	
-		 spawn_hit_fx( x + 40 - random_func(3, 80, true), y - random_func(4, 100, true) , smoke1 )
-			}
-			
-		if state_timer % 8 == 0{
-			take_damage(player, -1, 1)
-		}
-		}
-		
-		if infernal2 > 300  {
-			window = 3
-			window_timer = 0
-		}
-		if window_timer == 11 && special_down{
-			window_timer = 0
-		}
-	}
-	
+jump_start_time = 5;
+jump_speed = 11;
+short_hop_speed = 6;
+djump_speed = 11;
+leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 4.5; //the maximum hsp you can accelerate to when in a normal aerial state
+jump_change = 3.5; //maximum hsp when double jumping. If already going faster, it will not slow you down
+air_accel = .3;
+prat_fall_accel = 1; //multiplier of air_accel while in pratfall
+air_friction = .045;
+
+  if window_timer = 1 {
+	sound_play(asset_get("sfx_ell_steam_release"));
+	sound_play(sound_get("RI"),false,noone,0.7);
+    shake_camera(4,8)
+    triggered += 300
+    infernal2 -= 100
+ 	spawn_hit_fx( x, y - 30, stylec )
+  } else {
+  	can_attack = true
+  	can_shield = true
+  	can_wall_jump = true
+  }
+  
+
+  
 }
 
 
@@ -718,20 +781,16 @@ if attack == AT_NSPECIAL {
 if window == 1 && window_timer == 1 {
 if gunname >= 0 && gunname <= 3 && infernal2 < 100 {
 	gunname = 0
-	infernal2 = 0
-	
 }
 
 
 if gunname >= 4 && gunname <= 7 && infernal2 < 200 {
 	gunname = 0
-	infernal2 = 0
 }
 
 
 if gunname >= 8 && infernal2 < 300 {
 	gunname = 0
-	infernal2 = 0
 }
 }
 
@@ -1521,7 +1580,6 @@ if spr_dir == -1 {
 
 
 if attack == AT_EXTRA_2 {
-	
 	hurtboxID.sprite_index = get_attack_value(AT_EXTRA_2, AG_HURTBOX_SPRITE);
 	can_fast_fall = false
 	////ATM
@@ -1878,7 +1936,9 @@ if window == 13 {
 				if window_timer == 14 {
 					sound_play(sound_get("gun3s"));
             spawn_hit_fx( x + (85 * spr_dir) , y - 56, 305 )
-            create_hitbox(AT_EXTRA_1 , 8 , x + (32 * spr_dir) , y - 56 );
+            create_hitbox(AT_EXTRA_1 , 8 , x + (12 * spr_dir) , y - 56 );
+              create_hitbox(AT_EXTRA_1 , 8 , x + (22 * spr_dir) , y - 46 );
+                create_hitbox(AT_EXTRA_1 , 8 , x + (12 * spr_dir) , y - 66 );
 				}
 			}
 			
@@ -1898,18 +1958,11 @@ if window == 13 {
 		 set_hitbox_value(AT_EXTRA_1, 23, HG_PROJECTILE_ANIM_SPEED, 0.5 + ((random_func(3, 4, true))/10));
 		 set_hitbox_value(AT_EXTRA_1, 24, HG_PROJECTILE_ANIM_SPEED, 0.5 + ((random_func(4, 4, true))/10));
 		 
-				if !hitpause and window_timer == 1 {
+				if !hitpause and window_timer % 3 == 0 {
 					sound_play(sound_get("exp1"));
 					create_hitbox(AT_EXTRA_1 , 21 , x + (10 * spr_dir), y - 66 );	
 		    	}
-		    	if !hitpause and window_timer == 4 {
-					sound_play(sound_get("exp2"));
-					create_hitbox(AT_EXTRA_1 , 22 , x + (10 * spr_dir), y - 66 );	
-		    	}
-		    	if !hitpause and window_timer == 8 {
-					sound_play(sound_get("exp1"));
-					create_hitbox(AT_EXTRA_1 , 21 , x + (10 * spr_dir), y - 66 );	
-		    	}
+
 		    	
 			}
 			
@@ -1931,19 +1984,26 @@ if window == 13 {
 				
 		
 				if left_down{
-					hsp -= 0.4
+					hsp -= 0.5
 				}
 				
 				if right_down{
-					hsp += 0.4
+					hsp += 0.5
 				}
 				 
-				if hsp > 6 {
-					hsp = 6
+				 if down_down{
+					fall_through = true
+					if !free {
+						y += 10
+					}
 				}
 				
-				if hsp < -6 {
-					hsp = -6
+				if hsp > 8 {
+					hsp = 8
+				}
+				
+				if hsp < -8 {
+					hsp = -8
 				}
 			}
 			
@@ -2007,13 +2067,20 @@ if window == 13 {
 				if right_down{
 					hsp += 0.4
 				}
-				 
-				if hsp > 6 {
-					hsp = 6
+				
+				if down_down{
+					fall_through = true
+					if !free {
+						y += 10
+					}
 				}
 				
-				if hsp < -6 {
-					hsp = -6
+				if hsp > 8 {
+					hsp = 8
+				}
+				
+				if hsp < -8 {
+					hsp = -8
 				}
 				
 				

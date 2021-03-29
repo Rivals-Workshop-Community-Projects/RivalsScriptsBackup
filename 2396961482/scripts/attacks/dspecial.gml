@@ -42,10 +42,9 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 361); //Just in case i need to revert
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_DSPECIAL, 1, HG_EFFECT, 9);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, lanternfx);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ice_shatter_big"));
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
-set_hitbox_value(AT_DSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_CAMERA_SHAKE, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_IGNORES_PROJECTILES, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_DRIFT_MULTIPLIER, 1);
@@ -58,3 +57,22 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_VSPEED, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, lanternfx);
+
+set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, 2);
+set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 4);
+set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 6);
+set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_X, 40);
+set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_Y, -30);
+set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 120);
+set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 60);
+set_hitbox_value(AT_DSPECIAL, 2, HG_SHAPE, 2);
+set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, 3);
+set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 6);
+set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 45);//45
+set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 6);//8
+set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, .2);//.2
+set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, lanternfx);
+set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_ice_shatter_small"));
+set_hitbox_value(AT_DSPECIAL, 2, HG_IGNORES_PROJECTILES, 1);

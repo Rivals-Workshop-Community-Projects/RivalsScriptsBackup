@@ -123,7 +123,7 @@ switch (state)
             {
                 animSpeed = 6;
                 image_index = 10;
-                create_hitbox(AT_DAIR, 2, x, y);
+                create_hitbox(AT_FSPECIAL, 2, x, y);
             }
             vsp /= 1.1;
         }

@@ -59,7 +59,11 @@ if orbiting {
 	if point_distance(0, 0, hsp, vsp) > 7 {
 		gravity_amount = 0;
 		gravity_speed = 5;
-		if !parrytime && abs(angle_difference(point_direction(0,0,hsp,vsp), dir)) > 90 && owner.state_cat != SC_HITSTUN active = 1;
+		if !parrytime && abs(angle_difference(point_direction(0,0,hsp,vsp), dir)) > 90 && owner.state_cat != SC_HITSTUN {
+			active = 1;
+			attack = AT_EXTRA_1;
+			offset = 1;
+		}
 	}
 		if !parrytime && point_distance(x,y,owner.x,owner.y-orbit_height) <= 25 {
 			orbiting = 1;
@@ -103,7 +107,7 @@ if active or scary_looking {
 		var hfx = spawn_hit_fx(floor(x+hsp), floor(y+vsp), orig_player_id.hitfx[type])
 	}
 	if active {
-	if !instance_exists(hitbox) or hitbox.attack != attack{
+	if !instance_exists(hitbox) or hitbox.attack != attack or hitbox.hbox_num != type+offset{
 		if instance_exists(hitbox) instance_destroy(hitbox);
 		hitbox = create_hitbox(attack, type+offset, floor(x), floor(y))
 		
@@ -138,10 +142,14 @@ if active or scary_looking {
 x -= hsp*(1-drag);
 y -= vsp*(1-drag);
 	
-attack = AT_EXTRA_1
+
 if orbiting active = 0;
+
+if !active {
+attack = AT_EXTRA_1
 linked = 0;
 offset = 1;
+}
 	/*
 } else if orbiting == 0{
 	time++;

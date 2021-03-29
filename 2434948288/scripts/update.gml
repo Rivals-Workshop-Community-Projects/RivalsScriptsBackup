@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 2;
+	var noOfPatches = 6;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -76,6 +76,15 @@ with (oPlayer)
 {
 	if (player != other.player)
 	{
+		if (maybeBury > 0)
+		{
+			if (free) maybeBury--;
+			else
+			{
+				burieddd = other.buryFrames;
+				maybeBury = 0;
+			}
+		}
 		if (burieddd > 0)
 		{
 			--burieddd;

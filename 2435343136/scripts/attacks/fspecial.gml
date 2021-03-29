@@ -12,7 +12,7 @@ set_attack_value(AT_FSPECIAL, 15, 0);
 
 
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED, 0);

@@ -336,6 +336,24 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("Added support for Final Smash Buddy");
 						break;
+					case 21:
+						AddText("v1.21 - 24 Mar 2021");
+						AddText("");
+						AddText("Added 2 new alts:");
+						AddText("-Saikyo Jyanshi");
+						AddText("-BLM");
+						break;
+					case 22:
+						AddText("v1.22 - 28 Mar 2021");
+						AddText("");
+						AddText("Flag alts will now apply their flags to the opponent when hitting USpec");
+						AddText("");
+						AddText("USpec now has 6 frames of direction lock when releasing Special");
+						AddText("");
+						AddText("Added overshoot to USpec circle effect HUD");
+						AddText("");
+						AddText("Added Metal alt");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

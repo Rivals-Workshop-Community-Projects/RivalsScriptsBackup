@@ -13,5 +13,9 @@ if state == PS_ATTACK_AIR and state_timer = 0 {
 }
 
 if state = PS_ATTACK_AIR and attack = AT_DSPECIAL and free {
-hurtboxID.sprite_index = sprite_get("dspecial_ground_air_hurt")
+	hurtboxID.sprite_index = sprite_get("dspecial_ground_air_hurt")
+}
+
+if state = PS_ATTACK_GROUND and attack = AT_NSPECIAL {
+	hurtboxID.sprite_index = sprite_get("nspecial_ground_hurt")
 }

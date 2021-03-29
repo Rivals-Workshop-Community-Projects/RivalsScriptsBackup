@@ -71,6 +71,7 @@ sprite_change_offset("slash2", 68, 54);
 sprite_change_offset("slash3", 60, 68);
 sprite_change_offset("slash4", 100, 44);
 sprite_change_offset("nspecFX", 106, 134);
+sprite_change_offset("dspecialFX", 80, 162);
 
 set_victory_theme(sound_get("theme"));
 set_victory_bg(sprite_get("vic"));

@@ -20,7 +20,7 @@ if attacking && attack == AT_USPECIAL {
 
 }
 
-if timepat == 9 {
+if timepat >= 9 or timetimer > 0 {
 			draw_sprite_ext( sprite_get("timehalo"), 7 + (get_gameplay_time() % 24)/2, sshsp , ssvsp, spr_dir, 1, 0 , -1 , 1 - random_func(1,5,true)/5);
 
 		draw_sprite_ext(sprite_get("timehalo"), 7 + (get_gameplay_time() % 12), sshsp  - 10*spr_dir , ssvsp - 10  , spr_dir*0.6, 0.6, 0 , -1 , 0.3 - random_func(2,5,true)/5);
@@ -32,8 +32,15 @@ if timepat == 9 {
 		draw_sprite_ext(sprite_get("timehalo"), 7 + (get_gameplay_time() % 12), sshsp  - 10*spr_dir , ssvsp - 10  , spr_dir*0.6, 0.6, 0 , -1 , 0.1);
   gpu_set_blendmode(bm_normal);
   
+  	    draw_set_alpha(0.08);
+        draw_rectangle_color(0,0,room_width,room_height,0,0,0,0,false);
+    	draw_set_alpha(1);
 
-} else if timepat > 0 {
+  
+
+} 
+
+if timepat < 9 && timepat > 0{
 	draw_sprite_ext( sprite_get("timehalo"), timepat - 1, sshsp , ssvsp, spr_dir, 1, 0 , -1 , 1 - random_func(1,5,true)/5);
     gpu_set_blendmode(bm_add);
 		draw_sprite_ext(sprite_get("timehalo"), 7 + (get_gameplay_time() % 12), sshsp  - 10*spr_dir , ssvsp - 10  , spr_dir*0.6, 0.6, 0 , -1 , 0.1);

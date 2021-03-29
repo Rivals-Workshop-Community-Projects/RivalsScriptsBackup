@@ -24,7 +24,7 @@ if (player_id.heartDebug)
         var thing;
         thing = [clamp(xx,heartx[0],heartx[1]),clamp(yy,hearty[0],hearty[1])]
         
-        var col = heartShouldClose ? c_lime : c_white;
+        var col = heartShouldClose or heartBreakState > 1 ? c_lime : merge_color(c_white,c_red,heartBreakTimer/heartBreakDelay);
         draw_line_width_color(thing[0],thing[1],xx,yy,3,col,col)
         //draw_rectangle_color(val[0] - threshold[0], val[1] - threshold[1], val[0] + threshold[0],val[1] + threshold[1],c_red,c_red,c_red,c_red,false)
         draw_rectangle_color(x - heart_threshold[0], y - heart_threshold[1], x + heart_threshold[0],y + heart_threshold[1],col,col,col,col,true)

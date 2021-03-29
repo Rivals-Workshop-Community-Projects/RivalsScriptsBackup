@@ -21,3 +21,11 @@ if (dategirl_init < 9) {
 		dategirl_init = 9
 	}
 }
+
+
+	
+//Dspecial indicator
+if move_cooldown[AT_DSPECIAL] = 1{
+    sound_play(asset_get("mfx_star"));
+	lanternhud_CURRENT = 100;
+}

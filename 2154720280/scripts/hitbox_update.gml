@@ -143,7 +143,6 @@ if attack == AT_DSPECIAL && hbox_num < 4  {
 if attack == AT_DSPECIAL && hbox_num == 1 && !free && player_id.milkpizz != 1  {
 	destroyed = 1 
 	spawn_hit_fx( x  , y , 195 )
-    	spawn_hit_fx( x  , y , 156 )
     	sound_play(sound_get("explosionshake"));
     	create_hitbox(AT_DSPECIAL , 2 , x , y );
 	

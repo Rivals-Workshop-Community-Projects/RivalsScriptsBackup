@@ -19,4 +19,11 @@ shader_end();
 
 
 
+if attacking && attack == 49 && window == 1 {
+    	draw_set_alpha(0.3);
+        draw_rectangle_color(0,0,room_width,room_height,0,0,0,0,false);
+    	draw_set_alpha(1);
+}
+
+
 ///Dash 

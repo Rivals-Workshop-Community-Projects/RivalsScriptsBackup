@@ -13,6 +13,11 @@ crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
+//Hud asset
+lanternhud_CURRENT = 100;
+lanternhud_MAX = 100;
+
+
 char_height = 52;
 idle_anim_speed = .2;
 crouch_anim_speed = .1;
@@ -69,7 +74,7 @@ crouch_recovery_frames = 3;
 //parry animation frames
 dodge_startup_frames = 1;
 dodge_active_frames = 2;
-dodge_recovery_frames = 1;
+dodge_recovery_frames = 2;
 
 //tech animation frames
 tech_active_frames = 2;

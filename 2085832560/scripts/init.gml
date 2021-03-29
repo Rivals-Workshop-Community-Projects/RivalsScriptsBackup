@@ -10,6 +10,15 @@ ncode1 = "Sorry dude, peeping into this girl data is a no-no."
 ncode2 = "We would like to keep our secrets, even to the government"
 ncode3 = "                         ---:Lynk:--- ;) "
 
+
+fs_char_chosen_final_smash = "custom";
+fs_char_chosen_trigger = "ori";
+fs_char_portrait_y = 115;
+
+triggered = 0
+
+gainlockout = 0
+
 introhit = 0
 
 intro = 0

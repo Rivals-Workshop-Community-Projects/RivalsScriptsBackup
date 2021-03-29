@@ -8,6 +8,10 @@ if state != PS_ATTACK_GROUND and gatling {
 	gatling = 0
 }
 
+if state != PS_ATTACK_AIR and damboost {
+damboost = 0
+}
+
 if makecrow {
 	makecrow = 0
 	if myscarecrow {
@@ -20,6 +24,7 @@ if makecrow {
 }
 
 if crowcanc {
+	damboost = 1
 	crowcanc = 0
 	state = PS_IDLE_AIR
 	vsp = avsp

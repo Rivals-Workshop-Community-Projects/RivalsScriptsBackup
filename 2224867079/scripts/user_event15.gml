@@ -470,10 +470,13 @@ with phone{
 	//2.11
 	initPatch("2.11", "18 March, 2021");
 	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
-	initPatchWords("- Blue Uspecial now does less damage
-	- Blue Uspecial now has less startup time (12->10)")
+	initPatchWords("- Red utilt does less knockback
+	- Red utilt has slightly less startup (6->4)
+	- Red Jab does less knocbkack
+	- Red Jad has slightly more hitstunis")
 	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
-	initPatchWords("- Updated Codec")
+	initPatchWords("- Added Intro Animation
+	- Pratfall Fixed")
 	//2.10
 	initPatch("2.10", "18 March, 2021");
 	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);

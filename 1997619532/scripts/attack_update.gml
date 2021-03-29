@@ -28,6 +28,11 @@ if attack == AT_UAIR and window == 1 and window_timer == 11  {
 
 }
 
+if attack == AT_UAIR && has_hit_player && window <= 3 && hit_player_obj.state_cat == SC_HITSTUN{
+		hit_player_obj.y += floor(((y - 40) - hit_player_obj.y) / 10)
+		hit_player_obj.x += floor(((x) - hit_player_obj.x) / 10)
+}
+
 if attack == AT_NAIR and has_hit and !hitstop {
     window_timer += 0.8
     if window == 3 && window_timer == 4 {
@@ -249,7 +254,10 @@ if attack == AT_FSPECIAL {
     }
     
     if window == 1 {
-    	         if (place_meeting(x+10*spr_dir, y, asset_get("par_block"))) {
+    	if window_timer == 17 {
+    		sound_play(asset_get("sfx_swipe_weak1")); 
+    	}
+    	     if (place_meeting(x-10*spr_dir, y, asset_get("par_block"))) {
                  set_attack (AT_UAIR)
                  window = 1
                  window_timer = 10
@@ -265,9 +273,7 @@ if attack == AT_FSPECIAL {
 		vsp /= 1.2
 	}
 	
-      	if window == 1 && window_timer % 3 = 0 {
-	 var aaimg = spawn_hit_fx( x  - (5 * spr_dir) , y - 35 , aimg )
-    		aaimg.depth = 1
+    if window == 1 && window_timer % 3 = 0 {
     			if get_player_color(player) == 5 && sakura == 1 && window_timer % 6 = 0 {
     				spawn_hit_fx( x  - (5 * spr_dir) , y - 35 , shit2 )
     			}
@@ -281,7 +287,7 @@ if attack == AT_FSPECIAL {
    	
    }
   
-   if window == 1 && window_timer = 14 && !hitpause {
+   if window == 1 && window_timer = 1 && !hitpause {
    	spr_dir *= -1
    }
     if window == 1 && window_timer <= 16 && window_timer >= 4 {

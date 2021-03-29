@@ -395,7 +395,7 @@ switch (attack)
         {
             case 1:
                 if (window_timer == 1) uspecStartup = uspecStartupConst;
-                reset_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE);
+                reset_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE);
                 hsp/=1.15;
                 vsp/=1.15;
                 can_fast_fall = false;
@@ -403,14 +403,18 @@ switch (attack)
                 can_shield = true;
                 if (shield_down && !shield_counter) tutDoneAdv[2] = true;
                 free = true;
+                uspecSpeed.hsp = lengthdir_x(145, joy_pad_idle?spr_dir==1?70:110:joy_dir);
+                uspecSpeed.vsp = lengthdir_y(145, joy_pad_idle?spr_dir==1?70:110:joy_dir);
+                uspecSpeed.joy_pad_idle = joy_pad_idle;
+                uspecSpeed.joy_dir = joy_dir;
                 if (window_timer > uspecStartup && !special_down)
                 {
                     window_timer = 0;
-                    window = 2;
+                    window = ("temp_level" in self)?3:2;
                 }
                 with (asset_get("obj_article1")) if (player_id == other.id) isDespawn = true;
                 break;
-            case 2:
+            case 3:
                 can_fast_fall = false;
                 can_move = false;
                 if (!hitpause)
@@ -418,12 +422,12 @@ switch (attack)
                     uspecStart.x = x;
                     uspecStart.y = y;
                     fall_through = true;
-                    hsp = lengthdir_x(145, joy_pad_idle?spr_dir==1?70:110:joy_dir);
-                    vsp = lengthdir_y(145, joy_pad_idle?spr_dir==1?70:110:joy_dir);
+                    hsp = uspecSpeed.hsp;
+                    vsp = uspecSpeed.vsp;
                     if (sign(hsp) != 0) spr_dir = sign(hsp);
                 }
                 break;
-            case 3:
+            case 4:
                 if (window_timer == 1 && !hitpause)
                 {
                     hsp /= 15;
@@ -438,7 +442,7 @@ switch (attack)
                     can_wall_jump = true;
                     uspecArray[window_timer-1]={uspecX:x,uspecY:y,uspecDir:spr_dir,uspecAlpha:14-window_timer};
                 break;
-            case 4:
+            case 5:
                 can_fast_fall = false;
                 can_move = false;
                 can_wall_jump = true;

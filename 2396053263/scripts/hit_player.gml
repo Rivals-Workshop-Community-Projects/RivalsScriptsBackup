@@ -10,17 +10,24 @@ switch (my_hitboxID.attack)
         if (my_hitboxID.hbox_num == 1 and vsp < 0 and uspecial_loops > 0) // check to see if it's a linking hit and you're moving upwards
         {
             var lerpam;
-            lerpam = [0.1,0.07]
+            lerpam = [0.1 + (uspecial_loops*.02),0.07 + (uspecial_loops*.02)]
             if heartDebug
             {
-                print_debug("HB "+ string(uspecial_loops) +" pos change: x="+string(hit_player_obj.x-lerp(floor(hit_player_obj.x), x + (16 * spr_dir),lerpam[0])) + ", y="+string(hit_player_obj.y-lerp(floor(hit_player_obj.y), y - 72,lerpam[1])))
-                if uspecial_loops == 4 print_debug("||||||||||||||||||||||||||||||||||")
+                var prst = `HB ${uspecial_loops} pos change: x (lx=${lerpam[0]}) = ${hit_player_obj.x-lerp(floor(hit_player_obj.x), x + (16 * spr_dir),lerpam[0])}, y (ly=${lerpam[1]}) = ${hit_player_obj.y-lerp(floor(hit_player_obj.y), y - 72,lerpam[1])}`
                 
+                // ${hit_player_obj.x-lerp(floor(hit_player_obj.x), x + (16 * spr_dir),lerpam[0]))}, y=${hit_player_obj.y-lerp(floor(hit_player_obj.y), y - 72,lerpam[1]))}`
+                print(prst)
+                if uspecial_loops == 4 print_debug("||||||||||||||||||||||||||||||||||")
             }
             hit_player_obj.x = lerp(floor(hit_player_obj.x), x + (16 * spr_dir),lerpam[0]) //update x
             hit_player_obj.y = lerp(floor(hit_player_obj.y), y - 72,lerpam[1]) //update y
         }
     break;
+    case AT_USTRONG:
+        var lerpam;
+        lerpam = [0.1,0.05]
+        hit_player_obj.x = lerp(floor(hit_player_obj.x), x,lerpam[0]) //update x
+        hit_player_obj.y = lerp(floor(hit_player_obj.y), y-92,lerpam[1]) //update y
     case AT_NSPECIAL:
     if (has_hit_player)
     {

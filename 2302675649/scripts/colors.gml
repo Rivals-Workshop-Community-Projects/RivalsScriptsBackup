@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 22, 7, 11 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 19 );
 
 // Transcend
 set_color_profile_slot( 1, 0, 255, 255, 255 ); //sword
@@ -185,6 +185,36 @@ set_color_profile_slot( 15, 4, 90, 8, 10 ); //pants2
 set_color_profile_slot( 15, 5, 240, 192, 144 ); //skin
 set_color_profile_slot( 15, 6, 217, 126, 71 ); //skin2
 set_color_profile_slot( 15, 7, 245, 211, 111 ); //hair
+
+// Saikyo Jyanshi
+set_color_profile_slot( 16, 0, 252, 214, 113 ); //sword
+set_color_profile_slot( 16, 1, 135, 52, 27 ); //shirt
+set_color_profile_slot( 16, 2, 97, 9, 30 ); //shirt2
+set_color_profile_slot( 16, 3, 50, 54, 105 ); //pants
+set_color_profile_slot( 16, 4, 23, 28, 89 ); //pants2
+set_color_profile_slot( 16, 5, 252, 235, 185 ); //skin
+set_color_profile_slot( 16, 6, 215, 182, 150 ); //skin2
+set_color_profile_slot( 16, 7, 164, 140, 103 ); //hair
+
+// BLM
+set_color_profile_slot( 17, 0, 37, 34, 34 ); //sword
+set_color_profile_slot( 17, 1, 239, 232, 228 ); //shirt
+set_color_profile_slot( 17, 2, 186, 169, 175 ); //shirt2
+set_color_profile_slot( 17, 3, 255, 255, 14 ); //pants
+set_color_profile_slot( 17, 4, 222, 173, 13 ); //pants2
+set_color_profile_slot( 17, 5, 102, 51, 39 ); //skin
+set_color_profile_slot( 17, 6, 87, 22, 22 ); //skin2
+set_color_profile_slot( 17, 7, 37, 34, 34 ); //hair
+
+// Iron
+set_color_profile_slot( 18, 0, 228, 228, 228 ); //sword
+set_color_profile_slot( 18, 1, 212, 225, 247 ); //shirt
+set_color_profile_slot( 18, 2, 202, 207, 227 ); //shirt2
+set_color_profile_slot( 18, 3, 173, 175, 224 ); //pants
+set_color_profile_slot( 18, 4, 150, 142, 209 ); //pants2
+set_color_profile_slot( 18, 5, 176, 189, 210 ); //skin
+set_color_profile_slot( 18, 6, 151, 158, 191 ); //skin2
+set_color_profile_slot( 18, 7, 181, 183, 201 ); //hair
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

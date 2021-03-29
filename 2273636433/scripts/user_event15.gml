@@ -321,7 +321,7 @@ with phone{
 	initTip("Fair");
 	initTipWords("Fair is a lot like Mario's Fair but unlike that move this move trades the spike hitbox for a more powerful move. 
 	Because of this you can use this move to finish stocks off.
-	The early and late hits are sourspots and the middle hit is the sweetspot.");
+	The late hits are sourspots and the early hit is the sweetspot.");
 	initTipImage(player_id.spr_fair, -5, fa_center, 1, c_white, 0);
 	
 	initTip("Bair");
@@ -362,6 +362,16 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	
+	initPatch("1.39", "25 March, 2021");
+	initPatchWords("DStrong")
+	initPatchWords_ext("Pills now roll faster when hit with Dstrong", fa_left, c_gray, 1, 0);
+	initPatchWords("FTilt")
+	initPatchWords_ext("Base Knockback 5 --> 6
+	Knockback Scailing .65 --> .8 
+	Hitpause Scailing .65 --> .8", fa_left, c_gray, 1, 0);
+	initPatchWords("Misc")
+	initPatchWords_ext("Removed false info from Munophone Fighter Tips: Fair", fa_left, c_gray, 1, 0);
 	
 	initPatch("1.38", "22 March, 2021");
 	initPatchWords("Runes")

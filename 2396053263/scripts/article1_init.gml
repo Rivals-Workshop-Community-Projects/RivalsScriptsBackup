@@ -54,6 +54,12 @@ heartBreakDetectSelf = false;
 //articleSprites: sprites to use for this instance
 articleSprites = player_id.heartSprites
 
+//doNotTrigger: array of state indices during which time the heart shouldn't close
+doNotTrigger = [PS_ROLL_BACKWARD,PS_ROLL_FORWARD,PS_TECH_GROUND,PS_TECH_BACKWARD,PS_TECH_FORWARD,PS_WALL_TECH,PS_AIR_DODGE]
+
+//doNotClose
+doNotClose = [PS_RESPAWN,PS_DEAD,PS_SPAWN]
+
 //Set the sprite index to be the heart sprite if there's no sprite in the chained player
 sprite_index = articleSprites[4]
 frame = 0;

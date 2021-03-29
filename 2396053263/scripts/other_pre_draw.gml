@@ -30,10 +30,12 @@ with (other_player_id)
 			    var p = part[@ i];
 			    if (p != -1)
 			    {
-			    	var color;
-			    	color = make_color_rgb(p.color[0],p.color[1],p.color[2])
+			    	var color, scaleup;
+			    	color = make_color_rgb(p.color[0],p.color[1],p.color[2]);
+			    	scaleup = ("small_sprites" in self and small_sprites == 1) ? 2 : 1;
+			    	
 			    	gpu_set_fog(1, color, 0,1)
-			    	draw_sprite_ext(p.sprite,p.frame,p.position[@ 0],p.position[@ 1],p.scale[@ 0], p.scale[@ 1], 0, c_white, p.alpha);
+			    	draw_sprite_ext(p.sprite,p.frame,p.position[@ 0],p.position[@ 1],p.scale[@ 0] * scaleup, p.scale[@ 1] * scaleup, 0, c_white, p.alpha);
 			    	gpu_set_fog(0, c_white, 0,1)
 			    }
 			}

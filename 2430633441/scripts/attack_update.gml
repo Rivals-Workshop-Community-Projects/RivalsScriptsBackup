@@ -62,6 +62,8 @@ switch(attack) {
 				planet[i].orig_y = y-40;
 				planet[i].hsp = 17*spr_dir;
 				planet[i].active = true;
+				planet[i].attack = AT_EXTRA_1;
+				planet[i].offset = 1;
 				planet[i].vsp = (down_down-up_down) * 3;
 						planet[i].cooldown = 15;
 				var h = spawn_hit_fx(planet[i].x+(spr_dir*10), planet[i].y, hitfx[10])
@@ -109,6 +111,8 @@ switch(attack) {
 				planet[i].hsp += lengthdir_x(inf_planet, point_direction(planet[i].x,planet[i].y,xx,yy-h));
 				planet[i].vsp += lengthdir_y(inf_planet, point_direction(planet[i].x,planet[i].y,xx,yy-h));
 				planet[i].active = 1;
+				planet[i].attack = AT_EXTRA_1;
+				planet[i].offset = 1;
 				if free {
 					hsp += lengthdir_x(pull_planet*planet[i].weight, point_direction(x,y-planet[i].orbit_height,planet[i].x,planet[i].y))
 					vsp += lengthdir_y(pull_planet*planet[i].weight, point_direction(x,y-planet[i].orbit_height,planet[i].x,planet[i].y))
@@ -285,7 +289,9 @@ switch(attack) {
 				planet[i].orig_y = y-40;
 				planet[i].hsp = 4*spr_dir;
 				planet[i].active = true;
-				planet[i].vsp = 12;
+				planet[i].attack = AT_EXTRA_1;
+				planet[i].offset = 4;
+				planet[i].vsp = 14.3;
 				planet[i].cooldown = 15;
 				var h = spawn_hit_fx(planet[i].x,planet[i].y,hitfx[10]);
 				h.draw_angle = point_direction(0,0,planet[i].hsp,planet[i].vsp);
@@ -1012,7 +1018,8 @@ switch(attack) {
 					planet[i].offset = 2;
 					j++;
 				}
-			}				
+			}	
+			if tossed_planet < 0 tossed_planet = 0;
 		}
 		if get_window_value(attack,window,AG_WINDOW_TYPE) == 666 {
 			var amt = window_timer/(get_window_value(attack,window,AG_WINDOW_LENGTH)*1+!has_hit_player*0.5)
@@ -1036,7 +1043,8 @@ switch(attack) {
 				planet[l].hsp += 5*spr_dir;
 				planet[l].vsp += 3;
 				planet[l].orbiting = false;
-				planet[l].cooldown *= 10;
+				planet[l].cooldown = 10;
+				tossed_planet = true;
 			}			
 		}
 	break;
@@ -1107,7 +1115,8 @@ switch(attack) {
 					planet[i].depth = depth-3;
 					j++;
 				}
-			}				
+			}
+			if tossed_planet < 0 tossed_planet = 0;
 		}
 		if get_window_value(attack,window,AG_WINDOW_TYPE) == 666 { 
 			var amt = 0.7+window_timer/(get_window_value(attack,window,AG_WINDOW_LENGTH)*1+!has_hit_player*0.5)*0.3
@@ -1129,7 +1138,9 @@ switch(attack) {
 			}		
 			if l >= 0 && window_timer == 3 {
 				planet[l].orbiting = false;
-				planet[i].cooldown = 10;
+				planet[l].cooldown = 10;
+				tossed_planet = 1;
+				print("tossing planet")
 			}
 		}
 	break;

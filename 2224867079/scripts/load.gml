@@ -1,5 +1,5 @@
 //Intro
-sprite_change_offset("intro", 156, 987);
+sprite_change_offset("intro", 82, 122);
 
 //Hit Effects
 sprite_change_offset("BlueStab1", 25, 102);
@@ -49,7 +49,7 @@ sprite_change_offset("jump", 40, 86);
 sprite_change_offset("airdodge", 32, 91);
 sprite_change_offset("doublejump", 40, 91);
 sprite_change_offset("walljump", 24, 85);
-sprite_change_offset("pratfall", 40, 50);
+sprite_change_offset("pratfall", 40, 80);
 sprite_change_offset("land", 32, 91);
 sprite_change_offset("landinglag", 32, 91);
 

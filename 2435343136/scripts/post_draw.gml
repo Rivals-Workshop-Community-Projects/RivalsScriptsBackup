@@ -1,6 +1,6 @@
 shader_start();
 
-if timepat == 9 {
+if timetimer > 0 {
 
     	
     gpu_set_blendmode(bm_add);

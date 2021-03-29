@@ -98,22 +98,22 @@ if has_uspecialed{
 //	init_shader();
 
 //Intro
-if (introTimer2 < 3) {
+if (introTimer2 < 1) {
     introTimer2++;
 } else {
     introTimer2 = 0;
     introTimer++;
 }
 
-if (introTimer < 25) {
+if (introTimer < 45) {
     draw_indicator = false;
 } else {
     draw_indicator = true;
 }
 
-//if (introTimer2 == 0 && introTimer == 2) {
-//    sound_play (sound_get("Log_Intro"));
-//}
+if (introTimer2 == 0 && introTimer == 2) {
+    sound_play (sound_get("Log_Intro"));
+}
 
 
 //this stops the overhead HUD from getting in the way of the animation. If your animation does not involve much movement, this may not be necessary.	

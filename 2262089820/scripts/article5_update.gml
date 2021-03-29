@@ -3,7 +3,7 @@ hover = false;
 with (oPlayer){
 	if (other.hover == false){
 		if (y==496){
-			if (x-80 < other.x && x+80 > other.x){
+			if (x-100 < other.x && x+100 > other.x){
 				other.hover = true;
 				//print_debug(string(current_second)+" 1")
 			}

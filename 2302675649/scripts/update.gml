@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 21;
+	var noOfPatches = 23;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -110,6 +110,7 @@ with (oPlayer)
 		if (shakeObj.timer % 5 == 0) x += shakeObj.timer%2==0?-6:6;
 		shakeObj.timer--;
 	}
+	if ("outlineState" in self && outlineState != 0 && state_cat != SC_HITSTUN) outlineState = 0;
 }
 
 // transcend

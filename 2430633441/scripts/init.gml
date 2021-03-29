@@ -23,6 +23,8 @@ maxplanets = 3;
 uspecial_grav = 0;
 uspecial_used = 0;
 
+tossed_planet = 0;
+
 
 var planstring = "planet";
 if get_player_color(player) == 8 planstring = "planetO"

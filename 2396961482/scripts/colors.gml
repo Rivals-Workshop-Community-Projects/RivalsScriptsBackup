@@ -18,7 +18,7 @@ set_color_profile_slot_range( 3, 49, 24, 54 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 29 );
+set_num_palettes( 31 );
 
 // Future
 set_color_profile_slot( 1, 0, 29, 82, 161 ); //Skin
@@ -193,6 +193,12 @@ set_color_profile_slot( 29, 0, 0, 148, 0 ); //Skin
 set_color_profile_slot( 29, 1, 45, 47, 212 ); //Color
 set_color_profile_slot( 29, 2, 255, 187, 0 ); //Fin
 set_color_profile_slot( 29, 3, 153, 255, 0 ); //Lantern
+
+// Zora (Player)
+set_color_profile_slot( 30, 0, 74, 72, 179 ); //Skin
+set_color_profile_slot( 30, 1, 150, 34, 34 ); //Color
+set_color_profile_slot( 30, 2, 54, 54, 54 ); //Fin
+set_color_profile_slot( 30, 3, 225, 255, 0 ); //Lantern
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

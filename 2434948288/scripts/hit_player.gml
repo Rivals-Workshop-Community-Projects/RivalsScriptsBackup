@@ -1,5 +1,6 @@
 // unbury
 if (hit_player_obj.burieddd > 1) hit_player_obj.burieddd = 1;
+if (hit_player_obj.maybeBury > 0) hit_player_obj.maybeBury = 0;
 
 switch (my_hitboxID.attack)
 {
@@ -23,8 +24,8 @@ switch (my_hitboxID.attack)
 		break;
 
 	case AT_DSPECIAL:
-		if (my_hitboxID.hbox_num == 1 && !hit_player_obj.super_armor && !hit_player_obj.free)
+		if (my_hitboxID.hbox_num == 1 && !hit_player_obj.super_armor)
 		{
-		    hit_player_obj.burieddd = buryFrames;
+			hit_player_obj.maybeBury = maybeBuryFrames+hit_player_obj.hitpause;
 		}
 }

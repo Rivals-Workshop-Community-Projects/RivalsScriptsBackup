@@ -70,10 +70,45 @@ if attack = AT_DATTACK {
 	can_ustrong = 1
 	}
 }
-if attack = AT_USTRONG and gatling {
-	gatling = 0
-	old_hsp *= 1.5
-	hsp *= 1.5
+if attack = AT_USTRONG {
+	if gatling {
+		gatling = 0
+		old_hsp *= 1.5
+		hsp *= 1.5
+	}
+    	if (window == 2){
+        char_height = ease_quartIn(48, 96, window_timer, 3)
+    	}
+    	if (window == 3){
+        char_height = 96;
+    	}
+    	if (window == 4 and window_timer < 11){
+        char_height = ease_quartIn(96, 48, window_timer, 10)
+    	}
+}
+
+if (attack == AT_UAIR) {
+    if (window == 1){
+        char_height = ease_quartIn(48, 64, window_timer, 6)
+    }
+    if (window == 2){
+        char_height = 64;
+    }
+    if (window == 3 and window_timer < 11){
+        char_height = ease_quartIn(64, 48, window_timer, 10)
+    }
+}
+
+if (attack == AT_UTILT) {
+    if (window == 1){
+        char_height = ease_quartIn(48, 68, window_timer, 10)
+    }
+    if (window == 2){
+        char_height = 68;
+    }
+    if (window == 3 and window_timer < 11){
+        char_height = ease_quartIn(68, 48, window_timer, 10)
+    }
 }
 
 if attack == AT_UTILT {

@@ -5,8 +5,49 @@ hit_player_obj = self
 
 }
 
+if triggered > 1 && !hitpause{
+	triggered -= 1
+	
+	if triggered % 60 == 0 {
+		take_damage(player,-1,-1)
+	}
+}
+
+if triggered = 1 {
+	walk_speed = 3.5;
+walk_accel = 0.4;
+walk_turn_time = 6;
+initial_dash_time = 10;
+initial_dash_speed = 6.4;
+dash_speed = 6
+dash_turn_time = 10;
+dash_turn_accel = 1;
+dash_stop_time = 10;
+dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
+ground_friction = .8;
+moonwalk_accel = 1.4;
+
+jump_start_time = 5;
+jump_speed = 11;
+short_hop_speed = 6;
+djump_speed = 11;
+leave_ground_max = 5; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 3.5; //the maximum hsp you can accelerate to when in a normal aerial state
+jump_change = 3.5; //maximum hsp when double jumping. If already going faster, it will not slow you down
+air_accel = .2;
+prat_fall_accel = 1; //multiplier of air_accel while in pratfall
+air_friction = .045;
+triggered = 0
+}
+
+if gainlockout > 0 {
+	gainlockout -= 1
+}
 
 
+		
+		
  	if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
  		attacking = true 
  	} else {
@@ -413,14 +454,12 @@ if get_gameplay_time() <= 40 && intro != 1 {
 
 if (!free) {
 	move_cooldown[AT_USPECIAL] = 0 
-	move_cooldown[AT_DSPECIAL] = 0 
 	move_cooldown[AT_UAIR] = 0 
 	move_cooldown[AT_BAIR] = 0 
 	
 };
 if (state == PS_WALL_JUMP) {
 	move_cooldown[AT_USPECIAL] = 0
-	move_cooldown[AT_DSPECIAL] = 0 
 };
 
 if (state == PS_ROLL_BACKWARD or state == PS_ROLL_FORWARD or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD){
@@ -493,24 +532,10 @@ if infernal2 > 290 and infernal2 < 302{
 }
 
 
-if infernal2 > 90 && infernal2 < 101{
-	spawn_hit_fx( x , y - 30 , 305 )
-	sound_play(sound_get("SGL2"));
-	infernal2 = 101
-}
-
-if infernal2 > 185 && infernal2 < 201{
-	spawn_hit_fx( x , y - 30 , 304 )
-	sound_play(sound_get("RI2"));
-	sound_play(sound_get("SGL"));
-	infernal2 = 201
-}
-
-
 
 
 if infernal2 < 100 {
-
+     move_cooldown[AT_DSPECIAL] = 2
 }
 
 if infernal2 >= 100 && infernal2 < 198 {
@@ -586,10 +611,6 @@ if gunname >= 8 && infernal2 >= 300 {
 }
 
 
-if gunname = 0 {
-	infernal2 = 0
-}
-
 
 
 if get_player_color(player) == 8 {
@@ -637,6 +658,8 @@ if get_player_color(player) == 8 {
 	}
     init_shader();	 
 }
+
+
 
 
 //////////

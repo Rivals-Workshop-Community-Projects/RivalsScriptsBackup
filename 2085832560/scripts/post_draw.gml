@@ -1,5 +1,11 @@
 ///
 
+if triggered > 0 {
+	  gpu_set_blendmode(bm_add);
+        draw_sprite_ext(sprite_index, image_index , x - 1 - hsp  , y - 1 - vsp  , spr_dir, 1, 0 , -1 , 0.3);
+		draw_sprite_ext(sprite_index, image_index , x + 1 - hsp*2  , y + 1 - vsp*2  , spr_dir, 1, 0 , -1 , 0.3);
+  gpu_set_blendmode(bm_normal);
+}
 
 if get_player_color(player) == 8 {
 		if visible && state != PS_PRATFALL && state != PS_PRATLAND {

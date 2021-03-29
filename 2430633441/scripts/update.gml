@@ -152,6 +152,27 @@ switch(state) {
 			}
 		}
 	break;
+	case PS_LANDING_LAG:
+		if tossed_planet == 0 {
+			var add_hsp = 2;
+			var add_vsp = -6;
+			if attack == AT_BAIR {
+				add_hsp = -1;
+				add_vsp = 7;
+			}
+			for (var i = maxplanets-1; i > 0; i--) {
+				if planet[i].orbiting == 1 {
+					planet[i].hsp = add_hsp*spr_dir;
+					planet[i].vsp = add_vsp;
+					planet[i].orbiting = false;
+					planet[i].cooldown = 10;
+					break;
+				}
+			}
+			print("landing lag tossplan is "+string(tossed_planet))
+			tossed_planet = true;
+		}
+	break;
 }
 if state != PS_TECH_GROUND && state != PS_TECH_BACKWARD && state != PS_TECH_FORWARD {
 	tech_x = x;

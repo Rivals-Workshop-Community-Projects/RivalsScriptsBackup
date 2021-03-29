@@ -1,9 +1,11 @@
-time = 300;
-time_total = 300;
+
+time_total = 450;
 
 state_cat = SC_HITSTUN;
 
-if has_rune("B") time += 600;
+if has_rune("B") time_total *= 2;
+
+time = time_total;
 
 can_be_grounded = 1;
 ignores_walls = 0;

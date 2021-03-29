@@ -119,6 +119,7 @@ slash2 = hit_fx_create(sprite_get("slash2"), 16);
 slash3 = hit_fx_create(sprite_get("slash3"), 16);
 slash4 = hit_fx_create(sprite_get("slash4"), 16);
 nspec  = hit_fx_create(sprite_get("nspecFX"), 16);
+dspec  = hit_fx_create(sprite_get("dspecialFX"), 8);
 
 // Transcend
 transcounter = 0;
@@ -135,6 +136,7 @@ nspecHeld = 0;
 
 // Bury
 buryFrames = 60;
+maybeBuryFrames = 20;
 
 // Support
 Hikaru_Title = "Shadow Hatter";

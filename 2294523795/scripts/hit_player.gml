@@ -54,11 +54,11 @@ if  my_hitboxID.attack == AT_NSPECIAL {
 
 if (my_hitboxID.attack == AT_DTILT) or my_hitboxID.attack == AT_JAB or my_hitboxID.attack == AT_FTILT or my_hitboxID.attack == AT_UTILT
 or my_hitboxID.attack == AT_USTRONG or my_hitboxID.attack == AT_DSTRONG or my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_DATTACK
-or my_hitboxID.attack == AT_NAIR or my_hitboxID.attack == AT_UAIR or (my_hitboxID.attack == AT_DAIR )or 
+or my_hitboxID.attack == AT_NAIR or my_hitboxID.attack == AT_UAIR or my_hitboxID.attack == AT_BAIR or (my_hitboxID.attack == AT_DAIR )or 
 (my_hitboxID.attack == AT_FAIR) {
     move_cooldown[AT_EXTRA_2] = 60
     
-       scharge += my_hitboxID.damage * 6
+       scharge += my_hitboxID.damage * 7
 } 
 
 if overcharged == 1 {

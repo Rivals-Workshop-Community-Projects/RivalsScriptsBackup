@@ -64,6 +64,70 @@ if ("practice" in self)
 						AddText("Left it in as a tech with a slightly different input:");
 						AddText("Hold NSpec to place the Guitar");
 						break;
+					case 2:
+						AddText("v1.2 - 26 Mar 2021");
+						AddText("");
+						AddText("Added AI");
+						AddText("");
+						AddText("Fixed input buffer for USpec airdodge cancel");
+						AddText("");
+						AddText("DAir now can be airdodge and jump cancelled");
+						AddText("");
+						AddText("The Guitar will no longer continue attacking with FSpec and DAir when Domenica gets hit");
+						AddText("");
+						AddText("UTilt3 Damage 8 -> 6");
+						AddText("UTilt3 BKB 7 -> 9");
+						AddText("UTilt3 KBS 1.3 -> 1.1");
+						AddText("UTilt3 Hitpause 10 -> 13");
+						AddText("UTilt3 Hit sound now has more impact");
+						AddText("");
+						AddText("FStrong Angle 40 -> 45");
+						AddText("FStrong BKB 7.5 -> 7");
+						AddText("");
+						AddText("DStrong Angle 35 -> 40");
+						AddText("DStrong KBS 1 -> 0.9");
+						AddText("");
+						AddText("FSpec2 Damage 6 -> 1");
+						AddText("");
+						AddText("NSpec (Guitar Out) Damage 5 -> 3");
+						break;
+					case 3:
+						AddText("v1.3 - 27 Mar 2021");
+						AddText("");
+						AddText("Fixed DAir hitpause bug");
+						AddText("");
+						AddText("Added cooldown to FSpecial and UAir when using either attacks to minimise air stalling");
+						AddText("");
+						AddText("DSpecial1 now buries aerial opponents too");
+						AddText("Chance of burying depends on how many frames it takes for the hit player to touch the ground (20 frames)");
+						AddText("DSpecial1 is no longer techable");
+						break;
+					case 4:
+						AddText("v1.4 - 27 Mar 2021");
+						AddText("");
+						AddText("Regina Reforged came in and resprited a buncha stuff what");
+						AddText("-BAir");
+						AddText("-DAttack");
+						AddText("-DSpecial");
+						AddText("");
+						AddText("???");
+						AddText("Thanks??????");
+						break;
+					case 5:
+						AddText("v1.5 - 28 Mar 2021");
+						AddText("");
+						AddText("Fixed a spriting error on the Walk animation");
+						AddText("");
+						AddText("DAttack now stops Domenica when parried");
+						AddText("");
+						AddText("Fixed an issue with DAttack's hsp startup");
+						AddText("This also gives Domenica a good DACUS");
+						AddText("");
+						AddText("FSpecial Guitar will now only cancel within the first 20 frames of the attack when getting hit");
+						AddText("DAir Guitar will now only cancel within the first 10 frames of the attack when getting hit");
+						AddText("");
+						AddText("Added a few new alts");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -88,7 +152,7 @@ if ("practice" in self)
 							break;
 						case 2:
 							AddText("You will fly towards the Guitar and dive downwards.");
-							AddText("DSpecial will bury any grounded opponents, easily starting combos.");
+							AddText("DSpecial will bury opponents, easily starting combos.");
 							AddText("If you hold Down while falling, you can fall through platforms.");
 							AddText("Be careful, if you're too far away from the Guitar, you'll end up in Special Fall.");
 							AddText("You can use this to recover in unique ways.");

@@ -58,8 +58,10 @@ knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lig
 land_time = 4; //normal landing frames
 prat_land_time = 10;
 wave_land_time = 15;
-wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = 0.35; //grounded deceleration when wavelanding
+wave_land_adj = 1.3; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_friction = 0.3; //grounded deceleration when wavelanding
+
+set_victory_theme(sound_get("victory")); //Victory theme
 
 //heartbrake specific variables
 
@@ -253,6 +255,11 @@ heartBreakDetectSelf = false;
 
 //heartChainPlayer
 heartChainPlayer = noone;
+
+//heartParryTimer: timer used for parrystun
+//heartParryAddition
+// heartParryTimer = 0;
+// heartParryAddition = 360;
 
 //hit effects
 

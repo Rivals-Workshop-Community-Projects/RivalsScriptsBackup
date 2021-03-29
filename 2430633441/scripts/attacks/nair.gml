@@ -60,6 +60,7 @@ set_hitbox_value(AT_NAIR, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_NAIR, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NAIR, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_NAIR, 1, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_NAIR, 1, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_NAIR, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_NAIR, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 
@@ -85,6 +86,7 @@ set_hitbox_value(AT_NAIR, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_NAIR, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NAIR, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_NAIR, 2, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_NAIR, 2, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_NAIR, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_NAIR, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 
@@ -116,5 +118,6 @@ set_hitbox_value(AT_NAIR, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_NAIR, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NAIR, 3, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_NAIR, 3, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_NAIR, 3, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_NAIR, 3, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_NAIR, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);

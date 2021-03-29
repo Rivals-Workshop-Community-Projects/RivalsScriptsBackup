@@ -8,7 +8,7 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 switch (attack)
 {
     case AT_NSPECIAL:
-        if (window == 1 && window_timer == 1) move_cooldown[AT_NSPECIAL] = 65;
+        if (window == 1 && window_timer == 1) move_cooldown[AT_NSPECIAL] = 60;
         //Fast Fall disable
         if (window == 1 && !was_parried) can_jump = false;
         can_fast_fall = false;
@@ -128,7 +128,18 @@ if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR && window == 2){
         }
 }
 }
+//Nspecial Jank
+if (attack == AT_DSPECIAL && window == 2 && window_timer == 1){
+    create_hitbox(AT_DSPECIAL, 2, x, y)}
 
+if (attack == AT_NSPECIAL && window == 1 && free == true){
+    vsp = 0;
+    hsp = 0;
+}
+//Taunt Hold
+if attack = AT_TAUNT && window == 3  && taunt_down {
+    window_timer = 14;
+}
+if (attack == AT_DSPECIAL){
+    lanternhud_CURRENT = 0;}
 
-
-    

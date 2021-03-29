@@ -49,7 +49,7 @@ set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_EXTRA_1, 1, HG_KNOCKBACK_SCALING, .45);
 set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_EXTRA_1, 1, HG_HITPAUSE_SCALING, .35);
-set_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE, 60);
+set_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE, 40);
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_PARRY_STUN, true);

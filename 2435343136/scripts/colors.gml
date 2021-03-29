@@ -60,10 +60,10 @@ set_color_profile_slot(4, 5, 176, 63, 255); //Plasma
 set_color_profile_slot(4, 6, 255, 168, 31); //Plasma Tipper
 
 //White
-set_color_profile_slot(5, 0, 150, 163, 164); //Body
-set_color_profile_slot(5, 1, 109, 141, 155); //Suit
-set_color_profile_slot(5, 2, 255, 255, 255); //Cape
-set_color_profile_slot(5, 3, 239, 233, 255); //Armor
-set_color_profile_slot(5, 4, 255, 47, 47); //Belt
-set_color_profile_slot(5, 5, 0, 203, 196); //Plasma
-set_color_profile_slot(5, 6, 255, 53, 53); //Plasma Tipper
+set_color_profile_slot(5, 0, 255,255,255);
+set_color_profile_slot(5, 1, 19,44,0);
+set_color_profile_slot(5, 2, 76,162,0);
+set_color_profile_slot(5, 3, 42,79,28);
+set_color_profile_slot(5, 4, 0,58,29);
+set_color_profile_slot(5, 5, 0,0,0);
+set_color_profile_slot(5, 6, 165, 255, 0);

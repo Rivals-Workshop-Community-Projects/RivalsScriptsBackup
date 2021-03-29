@@ -681,9 +681,9 @@ if hitbox_timer == 1 or hitbox_timer == 55 or hitbox_timer == 110 {
 if hitbox_timer > 160 {
 	
 	if x > player_id.x {
-		hsp = -1
+		hsp = -1.5
 	} else {
-		hsp = 1
+		hsp = 1.5
 	}
 
 	  if hitbox_timer % 6 == 0 {

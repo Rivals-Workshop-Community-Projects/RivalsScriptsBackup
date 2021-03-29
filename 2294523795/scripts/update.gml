@@ -35,6 +35,7 @@ if get_gameplay_time() == 64 {
 	visible = true
 	
 }
+
 if get_gameplay_time() == 89 {
 	set_attack (AT_TAUNT)
 	window = 1

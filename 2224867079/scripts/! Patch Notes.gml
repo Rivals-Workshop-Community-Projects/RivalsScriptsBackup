@@ -1,4 +1,18 @@
 /*
+-- V2.12 --
+
+Balance Changes:
+- Red utilt does less knockback
+- Red utilt has slightly less startup (6->4)
+- Red Jab does less knocbkack
+- Red Jad has slightly more hitstunis
+
+
+Cosmetic Changes:
+- Added Intro Animation
+- Pratfall Fixed
+
+
 -- V2.11 --
 
 Balance Changes:

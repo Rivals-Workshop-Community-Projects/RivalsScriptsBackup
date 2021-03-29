@@ -353,6 +353,8 @@ if !hitpause {
        
       if attack == AT_USPECIAL {
           
+          can_fast_fall = false
+          
           if super_armor {
        super_armor = false 
         soft_armor = 621

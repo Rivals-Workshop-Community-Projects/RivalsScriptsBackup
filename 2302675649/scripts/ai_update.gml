@@ -82,11 +82,12 @@ SetAttack();
 			case AT_USPECIAL:
 				switch (window)
 				{
-					case 4:
+					case 5:
 						ai_state = AS_RECOVER;
 						break;
 					case 1:
 					case 2:
+					case 3:
 					if (ai_state != AS_RECOVER)
 					{
 						joy_pad_idle = false;

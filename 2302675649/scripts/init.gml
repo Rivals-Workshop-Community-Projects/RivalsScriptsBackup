@@ -103,6 +103,7 @@ shinestar_effect = hit_fx_create(sprite_get("shinestar"), 10);
 fspec_effect = hit_fx_create(sprite_get("fspecParticle"), 10);
 dragon_effect = hit_fx_create(sprite_get("dragonhit"), 48);
 saw_effect = hit_fx_create(sprite_get("sawhit"), 48);
+chun_effect = hit_fx_create(sprite_get("chunhit"), 48);
 
 // vfx roll
 rollArray = array_create(6, -1);
@@ -122,8 +123,9 @@ vfxSlice = {sliceAng:0,sliceX:0,sliceY:0,sliceTimer:0};
 // USpec vfx
 uspecArray = array_create(10, -1);
 uspecStart = {x:0, y:0};
-uspecStartup = 18;
+uspecStartup = 12;
 uspecStartupConst = uspecStartup;
+uspecSpeed = {hsp:0, vsp:0, joy_pad_idle:0, joy_dir:0};
 
 // FSpec hookshot
 fspecPos = {x: 0, y: 0};		// final pos

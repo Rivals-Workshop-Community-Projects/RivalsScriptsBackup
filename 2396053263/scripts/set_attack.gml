@@ -14,7 +14,6 @@ if (heartDebugTriggerable and attack == AT_TAUNT and down_down)
     sound_play(sound_get("DEBUG_"+str));
 }
 
-
 heartSetAttack();
 
 #define heartSetAttack

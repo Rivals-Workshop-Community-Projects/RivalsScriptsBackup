@@ -21,7 +21,7 @@ if attack == AT_USPECIAL && instance_exists(sun_ins) {
 } else {
 uspecial_used = 0;
 }
-
+tossed_planet = -1;
 
 /*if attack == AT_USPECIAL {
 	starsleft = max_stars;

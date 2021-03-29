@@ -70,7 +70,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, hitfx[9]);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT_X_OFFSET, 10);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_bird_sidespecial"));
-set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 1);
+set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITSTUN_MULTIPLIER, 0.7);
 set_hitbox_value(AT_DSTRONG, 1, HG_TECHABLE, 1);
 

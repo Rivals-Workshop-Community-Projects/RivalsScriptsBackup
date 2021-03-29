@@ -20,10 +20,8 @@ if heartBroken
     //Next frame!
     heartBreakTimer++
     
-    if (heartShouldClose and heartBreakState != 0 and instance_exists(heartDetectedPlayer))
+    if (heartShouldClose and heartBreakState != 0 and instance_exists(heartDetectedPlayer) and array_find_index(doNotTrigger, heartDetectedPlayer.state) == -1 and heartDetectedPlayer.state_cat == SC_HITSTUN)
     {
-        //if player_id.heartDebug print("P"+string(player_id.player)+": Slowdown applied.")
-        
         //Momentum dampening
         heartDetectedPlayer.hsp *= 0.9;
         heartDetectedPlayer.vsp *= 0.9;
@@ -58,7 +56,7 @@ if heartBroken
             //Look for the nearest player.
             heartDetectedPlayer = heartBreakDetectSelf ? instance_nearest(x,y,asset_get("oPlayer")) : chainedPlayer;
             //Make sure the detected object exists.
-            if (instance_exists(heartDetectedPlayer))
+            if (instance_exists(heartDetectedPlayer) and array_find_index(doNotClose, heartDetectedPlayer.state) == -1)
             {
                 var heart_threshold, xx, yy, heartx, hearty;
                 xx = clamp(x, heartDetectedPlayer.bbox_left, heartDetectedPlayer.bbox_right);

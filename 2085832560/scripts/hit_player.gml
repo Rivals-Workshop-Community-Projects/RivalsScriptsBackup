@@ -45,32 +45,54 @@ if introhit = 0 {
 }
 intro = 1
 
+	if triggered > 0 &&  my_hitboxID.damage > 1 {   
+		 sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone, 0.6 + my_hitboxID.damage/20)
 
-if my_hitboxID.attack == AT_DTILT or my_hitboxID.attack == AT_UAIR  {
- infernal2 += 10
 
-}
+		if my_hitboxID.type == 1 && my_hitboxID.attack != AT_TAUNT{
+			hitstop += 4
+			hit_player_obj.hitstop += 4
+		}
+	if my_hitboxID.damage >= 2 {
+	   	 with hit_player_obj {
+                 take_damage( player, -1 , 1)
+         }	
+         
+     }
+     
+     if my_hitboxID.damage >= 3 {
+	   	 with hit_player_obj {
+                 take_damage( player, -1 , 1)
+         }	
 
-if my_hitboxID.type == 1 or my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_UAIR or my_hitboxID.attack == AT_USTRONG
-or my_hitboxID.attack == AT_BAIR or my_hitboxID.attack == AT_NAIR or my_hitboxID.attack == AT_DAIR  or my_hitboxID.attack == AT_JAB
-or my_hitboxID.attack == AT_FTILT or my_hitboxID.attack == AT_NAIR  {
+     }
+     
+     if my_hitboxID.damage >= 6 {
+	   	 with hit_player_obj {
+                 take_damage( player, -1 , 2)
+         }	
+
+     }
+	}
+
+if my_hitboxID.attack != AT_EXTRA_1 and my_hitboxID.attack != AT_EXTRA_2 {
+	
 if infernal2 < 300{
 
 if infernal2 < 100 {	
-var infernaladd = floor(my_hitboxID.damage  * 5)
-    infernal2 += min(infernaladd,20)
+    infernal2 += min(30,floor(my_hitboxID.damage *4))
 
 }
 
 if infernal2 >= 100 and infernal2 < 200 {	
-var infernaladd = floor(my_hitboxID.damage  * 6)
-    infernal2 += min(infernaladd,20)
+
+    infernal2 += min(30,floor(my_hitboxID.damage *5))
 
 }
 
 if infernal2 >= 200 {	
-var infernaladd = floor(my_hitboxID.damage  * 7)
-    infernal2 += min(infernaladd,20)
+
+    infernal2 += min(30,floor(my_hitboxID.damage *6))
 
 }
 
@@ -198,14 +220,11 @@ if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 13  {
 
 if my_hitboxID.attack == AT_EXTRA_2 && my_hitboxID.hbox_num == 7  {
 	sound_play(sound_get("exp1"));
-		
+	sound_play(asset_get("sfx_abyss_explosion"));
+			
 		var exp1 = hit_fx_create( sprite_get( "exp1" ), 32 );
-		
-		sound_play(sound_get("gun5"));
-		
 		spawn_hit_fx( hit_player_obj.x , hit_player_obj.y - 32 , exp1 )
 		destroyed = 1
-		create_hitbox(AT_EXTRA_1 , 15 , hit_player_obj.x , hit_player_obj.y  );
 }
 
 if my_hitboxID.attack == AT_EXTRA_2 && my_hitboxID.hbox_num == 2  {

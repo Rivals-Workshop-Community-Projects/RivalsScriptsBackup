@@ -21,6 +21,9 @@ sakura = 0
 
 omega = 0
 
+svsp = 0
+shsp = 0
+
 overt = 600
 stabt = 0;
 hitflash = false

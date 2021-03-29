@@ -5,7 +5,7 @@
 
 var temp_x = x + 8;
 var temp_y = y + 9;
-var num_alts = 16;
+var num_alts = 19;
 
 patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1);
 image_alpha = max(image_alpha-0.02, 0);
@@ -45,6 +45,9 @@ alt_name[12] = "Bravo";
 alt_name[13] = "My day be so fine";
 alt_name[14] = "Unbreakable Diamond";
 alt_name[15] = "Fatal Aikijutsu";
+alt_name[16] = "Saikyo Jyanshi";
+alt_name[17] = "BLM";
+alt_name[18] = "Metal";
 
 draw_set_halign(fa_right);
 textDraw(temp_x + 198, temp_y + 70,	"fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);

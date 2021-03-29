@@ -21,8 +21,10 @@ if (!array_equals(heartChains, []) and !hit_player_obj.clone) //include 'and !he
     
 }
 
-if my_hitboxID.attack == AT_FSPECIAL
+switch (my_hitboxID.attack)
 {
+    case AT_FSPECIAL:
+    
     for (var i = 0; i < array_length_1d(fspecial_needles); i++)
     {
         if fspecial_needles[i] != noone
@@ -38,5 +40,25 @@ if my_hitboxID.attack == AT_FSPECIAL
             fspecial_needles[i] = noone
         }
     }
-    print(" ------------ ")
+    
+    break;
+    
+    case AT_EXTRA_1:
+    
+    var base, distmult, dist;
+    base = 60;
+    distmult = 0.08;
+    dist = floor(distance_to_object(hit_player_obj) * distmult);
+    // penalty = (ceil(heartParryTimer / heartParryAddition) * 45)
+    
+    parry_lag = base + dist;
+    if heartDebug
+    {
+        print("PARRY LAG : "+ string(parry_lag))
+        print("DISTANCE COMP : "+ string(dist))
+    }
+    // print("HEART ATTACK PENALTY : " + string(penalty))
+    // heartParryTimer += heartParryAddition;
+    
+    break;
 }

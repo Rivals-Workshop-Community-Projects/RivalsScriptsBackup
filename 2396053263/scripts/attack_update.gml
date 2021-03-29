@@ -379,7 +379,7 @@ if (attack == AT_DSPECIAL){
 	vsp = 0;
 	hsp = 0;
 	move_cooldown[AT_DSPECIAL] = 60;
-	if (window == 3 && window_timer >= get_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH)){
+	if (window == 3 && window_timer >= get_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH) && !was_parried){
 		iasa_script();
 	}
 }

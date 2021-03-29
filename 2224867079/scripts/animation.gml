@@ -1,15 +1,15 @@
 //Intro
-//if (state == PS_SPAWN) {
-//    if (introTimer < 25 && introTimer >= 0) {
-//        sprite_index = sprite_get("intro");
-//        image_index = introTimer;
-//    } else if (introTimer < 0) {
-//        sprite_index = sprite_get("intro");
-//        image_index = 0;
-//    } else {
-//        sprite_index = sprite_get("idle");
-//    }
-//}
+if (state == PS_SPAWN) {
+    if (introTimer < 45 && introTimer >= 0) {
+        sprite_index = sprite_get("intro");
+        image_index = introTimer;
+    } else if (introTimer < 0) {
+        sprite_index = sprite_get("intro");
+        image_index = 0;
+    } else {
+        sprite_index = sprite_get("idle");
+    }
+}
 switch (state){
     case PS_IDLE:
     break;

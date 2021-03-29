@@ -3,7 +3,7 @@ crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
-char_height = 52;
+char_height = 48;
 idle_anim_speed = .1;
 crouch_anim_speed = .1;
 walk_anim_speed = .125;
@@ -113,6 +113,7 @@ iconspeed = 0
 makecrowx = 0
 makecrowy = 0
 makecrow = 0
+damboost = 0
 orig_gravity_speed = gravity_speed
 orig_air_accel = air_accel
 orig_air_friction = air_friction

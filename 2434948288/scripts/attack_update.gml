@@ -91,9 +91,12 @@ switch (attack)
     case AT_DATTACK:
         if (window == 3 && window_timer == 4)
             spawn_base_dust(x+30*spr_dir, y, "dash", -spr_dir);
+        if (was_parried) hsp = 0;
         break
 
     case AT_DAIR:
+        can_jump = state_timer >= 30;
+        can_shield = state_timer >= 30 && free;
         if (state_timer >= 30 && is_special_pressed(DIR_UP))
             set_attack(AT_USPECIAL);
         if (window == 4 && window_timer == 1)
@@ -109,7 +112,7 @@ switch (attack)
     case AT_UAIR:
         hud_offset = 54;
         if (window == 1) vsp /= 1.5;
-        move_cooldown[AT_UAIR] = 15;
+        StallCooldown();
         break;
 
     case AT_NSPECIAL:
@@ -143,7 +146,7 @@ switch (attack)
         DivideSpeed(1.2);
         if (window == 1 && window_timer == 1) guitar.newState = 2;
         if (free && window == 3 && window_timer == get_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH)-1) vsp = -6;
-        move_cooldown[AT_FSPECIAL] = 40;
+        StallCooldown();
         break;
 
     case AT_DSPECIAL:
@@ -175,6 +178,7 @@ switch (attack)
                 if (shield_pressed && has_airdodge) tutDoneAdv[3] = true;
                 DivideSpeed(1.5);
                 fall_through = down_down;
+                if (!hitpause && window_timer == 24) {var owo = spawn_hit_fx(x, y, dspec); owo.depth = -10;}
                 break;
             case 4:
                 fall_through = down_down;
@@ -202,6 +206,7 @@ switch (attack)
                 {
                     guitar.newState = 3;
                     tutDoneAdv[0] = true;
+                    clear_button_buffer(PC_SPECIAL_PRESSED);
                 }
                 free = true;
                 break;
@@ -293,4 +298,10 @@ switch (attack)
 {
     hsp /= _amount;
     vsp /= _amount;
+}
+
+#define StallCooldown()
+{
+    move_cooldown[AT_FSPECIAL] = attack==AT_FSPECIAL?40:15;
+    move_cooldown[AT_UAIR] = 15;
 }

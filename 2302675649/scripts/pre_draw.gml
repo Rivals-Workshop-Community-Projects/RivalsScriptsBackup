@@ -2,6 +2,7 @@ if ("rollArray" in self)
 {
 	var tempColour = GetColourPlayer(0);
 	var tempColour2 = GetColourPlayer(5);
+	var tempColour3 = GetColourPlayer(3);
 	var outlineColour = make_colour_rgb(outline_color[0],outline_color[1],outline_color[2]);
 	// roll vfx
 	for (var i = 0; i < 6; ++i) if (rollArray[i] != -1 && rollArray[i].rollAlpha > 0)
@@ -87,24 +88,23 @@ if ("rollArray" in self)
 				break;
 
 			case AT_USPECIAL:
-				if (window == 1)
+				if (window <= 2)
 				{
-					var uspecCol = get_player_color(player)==7?c_aqua:tempColour;
+					var uspecCol = window==1?(get_player_color(player)==7?c_aqua:tempColour):tempColour3;
 					gpu_set_blendmode(bm_add);
-					var timerGrow = min(window_timer/uspecStartup, 1);
+					var timerGrow = window==1?ease_backOut(0, 1, min(window_timer,uspecStartup), uspecStartup, 2):1;
 					shader_start();
 					draw_sprite_ext(sprite_get("uspecial_border"), 0, x, floor(y-char_height/2), 2*timerGrow, 2*timerGrow, 0, uspecCol, timerGrow/2);
 					shader_end();
-					
 					var joyDir = {x:x+lengthdir_x(200*timerGrow, spr_dir==1?70:110), y:floor(y-char_height/2)+lengthdir_y(200*timerGrow, spr_dir==1?70:110)};
-				    if (!joy_pad_idle)
+				    if (!uspecSpeed.joy_pad_idle)
 				    {
-				        joyDir.x = x+lengthdir_x(200*timerGrow, joy_dir);
-				        joyDir.y = floor(y-char_height/2)+lengthdir_y(200*timerGrow, joy_dir);
+				        joyDir.x = x+lengthdir_x(200*timerGrow, uspecSpeed.joy_dir);
+				        joyDir.y = floor(y-char_height/2)+lengthdir_y(200*timerGrow, uspecSpeed.joy_dir);
 				    }
 					var offsetWidth = 2;
-					var offsetX = lengthdir_x(offsetWidth, (joy_pad_idle?spr_dir==1?70:110:joy_dir)+90);
-					var offsetY = lengthdir_y(offsetWidth, (joy_pad_idle?spr_dir==1?70:110:joy_dir)+90);
+					var offsetX = lengthdir_x(offsetWidth, (uspecSpeed.joy_pad_idle?spr_dir==1?70:110:uspecSpeed.joy_dir)+90);
+					var offsetY = lengthdir_y(offsetWidth, (uspecSpeed.joy_pad_idle?spr_dir==1?70:110:uspecSpeed.joy_dir)+90);
 					draw_set_alpha(timerGrow/2);
 					draw_rectangle(x+offsetX, floor(y-char_height/2)+offsetY, x-offsetX, floor(y-char_height/2)-offsetY, joyDir.x+offsetX, joyDir.y+offsetY, joyDir.x-offsetX, joyDir.y-offsetY, uspecCol, uspecCol)
 					draw_set_alpha(1);
@@ -202,6 +202,15 @@ if ("rollArray" in self)
 		FlagPart(make_colour_rgb(85, 205, 252), 1, 0); // mayablue
 		FlagPart(make_colour_rgb(247, 168, 223), 3/5, 1/5); // pink
 		FlagPart(c_white, 1/5, 2/5);
+		gpu_set_fog(0, c_white, 0, 0);
+	}
+
+	// BLM
+	else if (get_player_color(player) == 17)
+	{
+		FlagPart(c_black, 1/3, 0);
+		FlagPart(c_white, 1/3, 1/3);
+		FlagPart(make_colour_rgb(251, 238, 31), 1/3, 2/3); // yellow
 		gpu_set_fog(0, c_white, 0, 0);
 	}
 }

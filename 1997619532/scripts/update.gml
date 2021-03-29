@@ -1,5 +1,14 @@
 
+if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
+	attacking = true
+} else {
+	attacking = false
+}
 
+if !hitpause {
+	shsp = (shsp + hsp)/2
+    svsp = (svsp + vsp)/2
+}
 
 if !instance_exists(hit_player_obj){
 
@@ -646,7 +655,7 @@ if halotimer < 1 {
     } else {
     	halo = 0
     }
-	sound_play(sound_get("SpaceCutB"));
+	sound_play(asset_get("sfx_bird_sidespecial_start"));
 }
 
 if halo < 6 && 

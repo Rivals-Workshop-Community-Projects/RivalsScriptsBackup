@@ -31,12 +31,12 @@ var h = spawn_hit_fx(floor(x),floor(y),orig_player_id.hitfx[15])
 instance_destroy();
 exit;
 }
-if has_rune("C") print_debug("HELLO");
-
-
-if abs(hsp) < 2 vsp += 0.01;
+//if has_rune("C") print_debug("HELLO");
 
 if vsp < 0 vsp += 0.04;
+else if abs(hsp) < 2 vsp += 0.005;
+
+
 
 if y >= room_height + 200 {
 	vsp = 0;

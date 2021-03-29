@@ -243,8 +243,8 @@ if attack == AT_NSPECIAL{
 				player_id.pilleffect=6;
 				pill_state = 4;
 				vsp = -abs(vsp/2);
-				if (hsp ==0){hsp = player_id.spr_dir*(4+ player_id.strong_charge/10);}
-				else{hsp = player_id.spr_dir*(abs(hsp*1.5)+ player_id.strong_charge/10);}
+				if (hsp ==0){hsp = player_id.spr_dir*(4.5+ player_id.strong_charge/10);}
+				else{hsp = player_id.spr_dir*(abs(hsp*2)+ player_id.strong_charge/10);}
 				spr_dir = player_id.spr_dir;
 			}
 		}
@@ -259,8 +259,8 @@ if attack == AT_NSPECIAL{
 				player_id.pilleffect=7;
 				pill_state = 5;
 				vsp = -abs(vsp/2);
-				if (hsp ==0){hsp = -player_id.spr_dir*(4+ player_id.strong_charge/10); }
-				else{hsp = -player_id.spr_dir*(abs(hsp*1.5)+ player_id.strong_charge/10);}
+				if (hsp ==0){hsp = -player_id.spr_dir*(4.5+ player_id.strong_charge/10); }
+				else{hsp = -player_id.spr_dir*(abs(hsp*2)+ player_id.strong_charge/10);}
 				spr_dir = -player_id.spr_dir;
 			}
 		}

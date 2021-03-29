@@ -10,7 +10,7 @@ if !hitpause {
     ssvsp += floor((y-26-ssvsp)/5)
 }
 
-if timepat == 9 && timetimer == 0 {
+if timepat >= 9 && timetimer == 0 {
 	timetimer = 600
 	    spawn_hit_fx(x - 30*spr_dir, y - 45,304)
 	sound_play(sound_get("timestop"),false,noone,2)
@@ -22,11 +22,14 @@ if !hitpause && timetimer > 1 {
 }
 
 if timetimer == 1 or ((state == PS_DEAD or state == PS_RESPAWN) && state_timer == 1 ) {
+	if ((state == PS_DEAD or state == PS_RESPAWN) && state_timer == 1) or timepat >= 9 { 
 	timepat = 0
+	}
 	timetimer = 0
 	spawn_hit_fx(x - 30*spr_dir, y - 45,302 )
 	sound_play(asset_get("sfx_ori_grenade_aim"),false,noone,1.0)
 }
+
 if !instance_exists(hit_player_obj) {
 	hit_player_obj = self
 }
@@ -87,7 +90,7 @@ if get_gameplay_time() == 120 - 35 {
 
 		with (pHitBox) {
 					     if player_id == other.id {
-			if (attack == AT_NSPECIAL && hbox_num == 9) or  (attack == AT_FSPECIAL && hbox_num == 10){
+			if (attack == AT_NSPECIAL && hbox_num == 9) or  (attack == AT_DSPECIAL && hbox_num == 10){
 				hsp /= 1.05
 				vsp /= 1.05
 				
@@ -100,7 +103,7 @@ if get_gameplay_time() == 120 - 35 {
                     	var heal_player = instance_place(x, y, other)
                     	if (heal_player != noone) {
                     		
-                    		if "timepat" not in self {
+                    		if "timetimer" not in self {
                     		          if free && !hitpause && state != PS_ATTACK_GROUND and state != PS_ATTACK_AIR {
                     	               vsp -= 0.1
                     		          }
@@ -129,7 +132,7 @@ if get_gameplay_time() == 120 - 35 {
                     
                     
                         	    } else {
-                        	    	if timepat < 9 {
+                        	    	if timetimer <= 0 {
                     		          if free && !hitpause && state_cat != SC_HITSTUN
                     		          && state != PS_ATTACK_GROUND and state != PS_ATTACK_AIR {
                     	               vsp -= 0.1
@@ -145,7 +148,7 @@ if get_gameplay_time() == 120 - 35 {
                     		          	}
                     		          }
                     		          
-                    	    	       if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
+                    	    	       if (state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR) and attack != AT_DSPECIAL {
                     	    	       	  if state_timer % 2 == 0 && !hitpause{
                     	    	       	  	hitpause = true;
                                             hitstop = 1;
@@ -170,7 +173,7 @@ if get_gameplay_time() == 120 - 35 {
     
             
 
-           if player_id.timepat < 9 {
+           if player_id.timetimer <= 0 {
 		     effect = 0
 		     extra_hitpause = 0
            } else {
@@ -186,12 +189,24 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 	
 	if has_hit_player && timehit = 0{
 		    timehit = 1
-		    if  timepat < 9 {
+		    if attack != AT_FSPECIAL && attack != AT_NSPECIAL && attack != AT_FSTRONG && attack != AT_DSTRONG 
+		    && attack != AT_USTRONG {
+		    if  timepat < 9 && timetimer <= 0{
 		    timepat += 1
 		    } else {
 		    sound_play(asset_get("sfx_ori_energyhit_medium"))
 	        }
+		    } else {
+		    if  timepat < 9 && timetimer <= 0{
+		    timepat += 3
+		    } else {
+		    sound_play(asset_get("sfx_ori_energyhit_heavy"))
+	        }
+		    }
+	        
+		    
 	}
+	
 	if attack == AT_USPECIAL && has_hit_player && hitpause && 	hit_player_obj != self {
 		y -= 5
 		hit_player_obj.x += ((x + (30 * spr_dir)) - hit_player_obj.x) / 10
@@ -200,6 +215,17 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 	
 	if attack == AT_USPECIAL && !hitpause{
 		can_move = true
+		if window == 1 && window_timer == 1 {
+			if !left_down && right_down {
+				spr_dir = 1
+				hsp = 5*spr_dir
+			}
+			if left_down && !right_down {
+				spr_dir = -1
+				hsp = 5*spr_dir
+			}
+		}
+		
 		if window == 1 && window_timer == 24 {
 			y -= 50
 			sound_play(asset_get("sfx_clairen_swing_mega_delayed"))
@@ -232,6 +258,7 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
     if attack == AT_FSPECIAL {
     	if window = 1 && window_timer == 1 {
     		oldx = x
+    		sound_play(asset_get("sfx_bird_sidespecial_start"))
     			fspeced = 0
     	}
     	
@@ -240,18 +267,13 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
     	}
     	
     	
-    	if window == 3 && window_timer == 5 &&  fspeced = 0 && timepat == 9{ 
+    	if window == 3 && window_timer == 5 &&  fspeced <= 1 && timetimer > 0{ 
     		oldx = x
     		create_hitbox(AT_NSPECIAL,10,x,y - 40)
-    		if left_down && !right_down {
-    			spr_dir = -1
-    		}
-    		if !left_down && right_down {
-    			spr_dir = 1
-    		}
-    		    fspeced = 1
+    			spr_dir *= -1
+    		    fspeced += 1
     		    window = 1
-    		    window_timer = 6
+    		    window_timer = 12
     	}
     }	
     
@@ -281,12 +303,11 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
            	 window_timer = 0
            	 sound_play(asset_get("sfx_bird_downspecial"))
            	 sound_play(asset_get("sfx_clairen_dspecial_counter_success"))
-           	 timepat = 9
-           	 timetimer = 180
+           	 timetimer += 180
 	    spawn_hit_fx(x - 30*spr_dir, y - 45,304)
 	sound_play(sound_get("timestop"),false,noone,2)
 	sound_play(sound_get("RI"),false,noone,1)
-	create_hitbox(AT_FSPECIAL,10,x,y)
+	create_hitbox(AT_DSPECIAL,10,x,y)
            	 create_hitbox(AT_DSPECIAL,9,x,y)
            }	
            
@@ -294,9 +315,13 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
         
         
            if attack == AT_NSPECIAL && !hitpause {
-
+           	
+             if window == 2 && window_timer == 1 {
+             	sound_play(asset_get("sfx_swipe_heavy2"))
+             }
+             
         	if window == 2 && window_timer == 1 {
-        		if timepat < 9 {
+        		if timepat < 9 && timetimer <= 0{
         			timepat += 1
         		}
         			sound_play(sound_get("timestop"),false,noone,1.2)

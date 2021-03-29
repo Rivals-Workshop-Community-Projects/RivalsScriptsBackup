@@ -23,3 +23,5 @@ close_side_attacks[2] = AT_FTILT;
 neutral_attacks[0] = AT_JAB;
 neutral_attacks[1] = AT_NAIR;
 neutral_attacks[2] = AT_DSPECIAL;
+
+ai_state = 0;

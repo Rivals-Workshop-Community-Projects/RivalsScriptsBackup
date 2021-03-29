@@ -1,5 +1,5 @@
 //update
-
+// heartParryTimer = max(0, heartParryTimer-1)
 heartDebugTimer[0] = heartDebug ? min(heartDebugTimer[0]+1,heartDebugTimer[1]) : max(heartDebugTimer[0]-1,0);
 
 if array_length_1d(fspecial_needles) != 0

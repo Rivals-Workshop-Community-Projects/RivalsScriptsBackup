@@ -23,3 +23,7 @@ set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 set_window_value(AT_TAUNT, 3, AG_WINDOW_SFX_FRAME, 0);
+
+
+
+	

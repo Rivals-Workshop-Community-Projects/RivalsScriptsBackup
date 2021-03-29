@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 13 );
+set_num_palettes( 16 );
 
 // blue
 set_color_profile_slot( 1, 0, 79, 101, 189 ); //Hat1
@@ -155,6 +155,36 @@ set_color_profile_slot( 12, 4, 168, 186, 74 ); //Tie1
 set_color_profile_slot( 12, 5, 168, 186, 74 ); //Tie2
 set_color_profile_slot( 12, 6, 210, 226, 155 ); //Shirt1
 set_color_profile_slot( 12, 7, 210, 226, 155 ); //Shirt2
+
+// dimentio
+set_color_profile_slot( 13, 0, 220, 113, 255 ); //Hat1
+set_color_profile_slot( 13, 1, 145, 59, 207 ); //Hat2
+set_color_profile_slot( 13, 2, 19, 25, 36 ); //Pants1
+set_color_profile_slot( 13, 3, 1, 5, 23 ); //Pants2
+set_color_profile_slot( 13, 4, 255, 255, 255 ); //Tie1
+set_color_profile_slot( 13, 5, 171, 186, 169 ); //Tie2
+set_color_profile_slot( 13, 6, 255, 249, 140 ); //Shirt1
+set_color_profile_slot( 13, 7, 230, 197, 99 ); //Shirt2
+
+// jevil
+set_color_profile_slot( 14, 0, 19, 25, 36 ); //Hat1
+set_color_profile_slot( 14, 1, 1, 5, 23 ); //Hat2
+set_color_profile_slot( 14, 2, 171, 237, 78 ); //Pants1
+set_color_profile_slot( 14, 3, 96, 212, 51 ); //Pants2
+set_color_profile_slot( 14, 4, 147, 156, 209 ); //Tie1
+set_color_profile_slot( 14, 5, 93, 81, 179 ); //Tie2
+set_color_profile_slot( 14, 6, 147, 203, 209 ); //Shirt1
+set_color_profile_slot( 14, 7, 105, 136, 179 ); //Shirt2
+
+// ballin wonderwall
+set_color_profile_slot( 15, 0, 255, 255, 255 ); //Hat1
+set_color_profile_slot( 15, 1, 151, 139, 142 ); //Hat2
+set_color_profile_slot( 15, 2, 199, 34, 39 ); //Pants1
+set_color_profile_slot( 15, 3, 130, 14, 80 ); //Pants2
+set_color_profile_slot( 15, 4, 106, 81, 138 ); //Tie1
+set_color_profile_slot( 15, 5, 73, 41, 89 ); //Tie2
+set_color_profile_slot( 15, 6, 0, 255, 162 ); //Shirt1
+set_color_profile_slot( 15, 7, 0, 144, 176 ); //Shirt2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

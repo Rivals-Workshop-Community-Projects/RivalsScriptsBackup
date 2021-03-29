@@ -5,7 +5,7 @@ set_attack_value(AT_FAIR, AG_CATEGORY, 1);
 set_attack_value(AT_FAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_FAIR, AG_LANDING_LAG, 8);
 
-set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_strong"));
