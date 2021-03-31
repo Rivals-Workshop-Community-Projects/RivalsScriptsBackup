@@ -196,22 +196,23 @@ if ("rollArray" in self)
 		draw_set_alpha(1);
 	}
 
-	// Trans
-	if (get_player_color(player) == 1)
+	switch (get_player_color(player))
 	{
-		FlagPart(make_colour_rgb(85, 205, 252), 1, 0); // mayablue
-		FlagPart(make_colour_rgb(247, 168, 223), 3/5, 1/5); // pink
-		FlagPart(c_white, 1/5, 2/5);
-		gpu_set_fog(0, c_white, 0, 0);
-	}
+		// Trans
+		case 1:
+			FlagPart(make_colour_rgb(85, 205, 252), 1, 0); // mayablue
+			FlagPart(make_colour_rgb(247, 168, 223), 3/5, 1/5); // pink
+			FlagPart(c_white, 1/5, 2/5);
+			gpu_set_fog(0, c_white, 0, 0);
+			break;
 
-	// BLM
-	else if (get_player_color(player) == 17)
-	{
-		FlagPart(c_black, 1/3, 0);
-		FlagPart(c_white, 1/3, 1/3);
-		FlagPart(make_colour_rgb(251, 238, 31), 1/3, 2/3); // yellow
-		gpu_set_fog(0, c_white, 0, 0);
+		// BLM
+		case 17:
+			FlagPart(c_black, 1/3, 0);
+			FlagPart(c_white, 1/3, 1/3);
+			FlagPart(make_colour_rgb(251, 238, 31), 1/3, 2/3); // yellow
+			gpu_set_fog(0, c_white, 0, 0);
+			break;
 	}
 }
 

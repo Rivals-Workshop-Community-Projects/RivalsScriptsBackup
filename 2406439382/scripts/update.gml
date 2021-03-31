@@ -132,7 +132,7 @@ with (oPlayer)
 {
     if (self != other)
     {
-        if !((state_cat = SC_HITSTUN) and (hitpause))
+        if !((state_cat = SC_HITSTUN) and (hitpause) and (last_attack == AT_FSPECIAL))
         {
             true_old_hsp = hsp;
             true_old_vsp = vsp;

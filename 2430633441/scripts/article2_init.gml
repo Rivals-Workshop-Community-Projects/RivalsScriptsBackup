@@ -20,6 +20,9 @@ sprite_index = sprite_get("sunV")
 if get_player_color(player) == 12 {
 sprite_index = sprite_get("sunR")
 }
+if get_player_color(player) == 16 {
+sprite_index = sprite_get("sun5")
+}
 
 inactive_sprite = sprite_index;
 mask_index = sprite_get("sun_mask")

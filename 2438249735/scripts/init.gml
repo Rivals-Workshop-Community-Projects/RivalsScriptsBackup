@@ -19,7 +19,7 @@ target = 0
 invisound = 0
 invitimer = 0
 
-char_height = 70.1;
+char_height = 80.1;
 idle_anim_speed = .2;
 crouch_anim_speed = .1;
 walk_anim_speed = .16;

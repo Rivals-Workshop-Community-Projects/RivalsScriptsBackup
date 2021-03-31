@@ -48,7 +48,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ice_shatter_big"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("nspecial_proj"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 0);
-set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 45);
+set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 40);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
@@ -74,8 +74,9 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, lanternfx);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_infinidagger"));//sfx_ice_shatter_big
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("nspecial2_proj"));
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_MASK, sprite_get("nspecial2_proj"));
-set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 65);
-set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE_FLIPPER, 7);
+set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 40);
+//set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 65);
+set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE_FLIPPER, 8);//7
 set_hitbox_value(AT_NSPECIAL, 2, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);

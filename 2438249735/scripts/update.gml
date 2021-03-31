@@ -69,7 +69,7 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 	
 	    if invitimer > 0 && visible = false {
                  visible = true
-    
+    move_cooldown[AT_EXTRA_3] = 10
       spawn_hit_fx(x  , y - 30, lpar1)              
                   spawn_hit_fx(x , y - 30, lpar4)   
                   

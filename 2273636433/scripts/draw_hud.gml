@@ -5,9 +5,12 @@ var temp_color = c_white;
 
 if state != PS_SPAWN {
 	if (move_cooldown[AT_NSPECIAL] ==0) {
-	draw_sprite(sprite_get("next"), order[pill], temp_x +108 , temp_y - 14);
+		if pringles == 1 {draw_sprite(sprite_get("next_pringles"), order[pill], temp_x +108 , temp_y - 14);}
+		else {draw_sprite(sprite_get("next"), order[pill], temp_x +108 , temp_y - 14);}
+
 	} else{
-		draw_sprite(sprite_get("next"), 0,  temp_x +108 , temp_y - 14);
+		if pringles == 1 {draw_sprite(sprite_get("next_pringles"), 0, temp_x +108 , temp_y - 14);}
+		else {draw_sprite(sprite_get("next"), 0, temp_x +108 , temp_y - 14);}
 	}
 }
 

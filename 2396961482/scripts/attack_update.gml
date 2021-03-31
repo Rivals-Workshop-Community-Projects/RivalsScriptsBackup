@@ -66,6 +66,7 @@ switch (attack)
                     can_wall_jump = true;
                     if (get_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE) == 0  && special_pressed)
                     {
+                        hitstop = 20;
                         set_attack(AT_USPECIAL);
                         window = 4;
                     }
@@ -86,6 +87,7 @@ switch (attack)
                     if (place_meeting( x, y, my_article))
                     {
                         set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 0);
+                        create_hitbox(AT_USPECIAL, 1, x, y);
                         hitpause = true;
                         hitstop = 10;
                         old_hsp = hsp;
@@ -128,10 +130,10 @@ if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR && window == 2){
         }
 }
 }
-//Nspecial Jank
+//Dspecial Get off me hitbox
 if (attack == AT_DSPECIAL && window == 2 && window_timer == 1){
     create_hitbox(AT_DSPECIAL, 2, x, y)}
-
+//Nspecial Jank
 if (attack == AT_NSPECIAL && window == 1 && free == true){
     vsp = 0;
     hsp = 0;
@@ -142,4 +144,4 @@ if attack = AT_TAUNT && window == 3  && taunt_down {
 }
 if (attack == AT_DSPECIAL){
     lanternhud_CURRENT = 0;}
-
+    

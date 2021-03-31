@@ -302,6 +302,10 @@ abyssMods[@ runes.O] = [3, "When courage is active, you can jump cancel any move
 // ;)
 otto_bobblehead_sprite = sprite_get("bobble_kris");
 
+flag_x = x;
+flag_y = y;
+flag_active = false;
+
 set_color_profile_slot(0, 5, 117, 250, 237); //SKIN
 set_color_profile_slot(0, 1, 201, 228, 242); //ARMOR
 set_color_profile_slot(0, 2, 235, 9, 152); //CAPE

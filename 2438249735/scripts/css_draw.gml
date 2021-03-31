@@ -43,6 +43,12 @@ var palette_names = [
   "Talon",
   "Donyowho?",
   "Bird are singing, grass are blooming.", 
+  "Delta",
+  "Linne",
+  "Giovanna",
+  "Filia",
+  "Hibiki",
+  "Pyra",
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

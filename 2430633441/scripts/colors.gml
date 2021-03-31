@@ -1,4 +1,4 @@
-set_num_palettes(16)
+set_num_palettes(17)
 
 //DEFAULT COLOR (R,G,B)
 set_color_profile_slot(0, 0, 255, 234, 147); //LIGHT
@@ -268,3 +268,17 @@ set_color_profile_slot(15, 6, 247, 245, 254); //ANTENNAE
 set_color_profile_slot(15, 7, 193, 0, 80); //RED GIANT
 
 set_color_profile_slot(15, 8, 104, 102, 94); //BUTT OFF
+
+//Five Pebbles
+set_color_profile_slot(16, 0, 255, 142, 56); //LIGHT
+set_color_profile_slot(16, 1, 255, 117, 220); //PLATING
+set_color_profile_slot(16, 2, 223, 82, 17); //RUBBER
+set_color_profile_slot(16, 3, 181, 186, 192); //PLANET 1
+set_color_profile_slot(16, 4, 247, 151, 73); //PLANET 2
+set_color_profile_slot(16, 5, 0, 0, 255); //PLANET 3
+set_color_profile_slot(16, 6, 166, 157, 158); //ANTENNAE
+
+
+set_color_profile_slot(16, 7, 255, 255, 255); //RED GIANT
+
+set_color_profile_slot(16, 8, 104, 102, 94); //BUTT OFF

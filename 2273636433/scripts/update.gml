@@ -7,6 +7,12 @@ if (timer_intro_2 < 3) {
     timer_intro_2 = 0;
     timer_intro++;
 }
+
+if (state == PS_SPAWN && taunt_down )||  get_player_color(player) == 24 {
+	pringles = 1;
+	set_victory_theme(sound_get("pringlesvictory"));
+}
+
 //-------------------------------------------------PILL RNG CODE----------------------------------------------
 
 pill_counter = 0;
@@ -50,40 +56,47 @@ if (valido == 1){
 	num ++;		//Next
 }
 //---------------------------------------------------CURRENT PILL CODE--------------------------------------------
-
+//Now pringles compatible
 switch(order[pill]){
 		case 1 :			//BLUE BLUE
-			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo"));
+			if pringles == 1{ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo_pringles"));}
+			else {	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo"));}
+
 			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 45);	
 			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 4);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5);	
 			break;
 		case 2 :			//RED RED
-			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo2"));
+			if pringles == 1{ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo2_pringles"));}
+			else {	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo2"));}
 			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 120);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 4);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5);	
 			break;
 		case 3 :			//YELLOW YELLOW
-			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo3"));
+			if pringles == 1{ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo3_pringles"));}
+			else {	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo3"));}
 			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 90);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 4);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5);	
 			break;	
 		case 4 :		//RED BLUE
-			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo4"));
+			if pringles == 1{ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo4_pringles"));}
+			else {	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo4"));}
 			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 60);	
 			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 5);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 4);	
 			break;
 		case 5 :			//RED YELLOW
-			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo5"));
+			if pringles == 1{ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo5_pringles"));}
+			else {	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo5"));}
 			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 105);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 5);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 4);	
 			break;	
 		case 6 :			//BLUE YELLOW
-			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo6"));
+			if pringles == 1{ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo6_pringles"));}
+			else {	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_colorcombo6"));}
 			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 75);	
 			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 5);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 4);	
@@ -368,7 +381,7 @@ if (has_rune ("A")) && (has_rune ("B")) && (has_rune ("C")) && (has_rune ("D")) 
 	set_hitbox_value(AT_DAIR, 3, HG_DAMAGE, 14);
 	set_hitbox_value(AT_DAIR, 4, HG_DAMAGE, 14);
 	set_hitbox_value(AT_DAIR, 5, HG_DAMAGE, 14);
-
+	
 	set_hitbox_value(AT_DSPECIAL, 5, HG_ANGLE, 270);
 
 	set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.2);
@@ -389,6 +402,7 @@ if (has_rune ("A")) && (has_rune ("B")) && (has_rune ("C")) && (has_rune ("D")) 
 	
 	set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 40);
 }
+
 
 //Lag prevention
 if (has_rune ("L"))|| ((has_rune ("N")) )&& (has_rune ("I")) {
@@ -423,11 +437,9 @@ if (phone_cheats[cheat_floaty]) {
 if (phone_cheats[cheat_jump] != 1) {
 	max_djumps = phone_cheats[cheat_jump];
 }
-
-//-- bounus??????? --
 // hello
 if(found_mario) {
-  print("said hello to Mario")
+	print("said hello to Mario")
   sound_play(sound_get("hello"));
   found_mario = false;
 }

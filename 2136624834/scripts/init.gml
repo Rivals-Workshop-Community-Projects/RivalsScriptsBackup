@@ -143,7 +143,7 @@ icepar1 = hit_fx_create( sprite_get( "icepar1" ), 12);
 sprite_change_offset("icepar1", 32, 32);
 
 
-icicle3 = hit_fx_create( sprite_get( "icicle3" ), 24);
+icicle3 = hit_fx_create( sprite_get( "icicle3" ), 20);
 
 darken = hit_fx_create( sprite_get( "darken" ), 10);
 sprite_change_offset("darken", 1000, 1000);

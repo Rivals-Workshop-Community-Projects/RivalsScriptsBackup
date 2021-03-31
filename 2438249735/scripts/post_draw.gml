@@ -17,6 +17,7 @@ if attacking && (attack == AT_NSPECIAL or attack == AT_FSPECIAL or attack == AT_
   
 }
 
+        draw_sprite_ext(sprite_index, image_index, x , y , spr_dir, 1, 0 , c_black , move_cooldown[AT_EXTRA_3]/10 - 0.2);
 
 
 shader_end() 

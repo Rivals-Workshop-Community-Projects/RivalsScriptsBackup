@@ -287,13 +287,20 @@ var scream_speed = 1;
 var taunt_volume = 2.75;
 
 // AAH AAAA
-if(taunt_down && !screaming && ( ( (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && (attack != AT_TAUNT && attack != AT_TAUNT_2 && attack != AT_PHONE) && !has_hit_player) || state == PS_HITSTUN || state == PS_TUMBLE))
+//if(taunt_down && !screaming && ( ( (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && (attack != AT_TAUNT && attack != AT_TAUNT_2 && attack != AT_PHONE) && !has_hit_player) || state == PS_HITSTUN || state == PS_TUMBLE))
+
+var should_scream = false;
+with(hit_player_obj) if(activated_kill_effect) should_scream = true;
+
+if((should_scream ||activated_kill_effect) && !screaming)
 {
 	screaming = true;
+	scream_timer = 60;
 	
 	var scream = random_func( 0, 3, true );
 	
 	sound_play( 
+		should_scream ? sound_get( "tenru_scream_ha" ) :
 		scream == 0 ? sound_get( "tenru_scream" ) : 
 		scream == 2 ? sound_get( "tenru_scream2" ) : 
 		sound_get( "tenru_scream3" ),
@@ -301,20 +308,24 @@ if(taunt_down && !screaming && ( ( (state == PS_ATTACK_GROUND || state == PS_ATT
 	);
 }
 
+if(scream_timer == 0) screaming = false;
+else scream_timer--;
+
 // OOO OOOO OOOOOO
-if(screaming && has_hit_player && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)) 
-{
-	screaming = false;
-	sound_stop(sound_get( "tenru_scream" ));
-	sound_stop(sound_get( "tenru_scream2" ));
-	sound_stop(sound_get( "tenru_scream3" ));
-	sound_play( sound_get( "tenru_scream_ha" ),false,false,taunt_volume );
-}
+// if(screaming && has_hit_player && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)) 
+// {
+// 	screaming = false;
+// 	sound_stop(sound_get( "tenru_scream" ));
+// 	sound_stop(sound_get( "tenru_scream2" ));
+// 	sound_stop(sound_get( "tenru_scream3" ));
+// 	sound_play( sound_get( "tenru_scream_ha" ),false,false,taunt_volume );
+// }
 
 // OOOH OOH AH
-if(!(( ( (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && (attack != AT_TAUNT && attack != AT_TAUNT_2 && attack != AT_PHONE) && !has_hit_player) || state == PS_HITSTUN || state == PS_TUMBLE))) {
-	screaming = false;
-}
+// if(!(( ( (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && (attack != AT_TAUNT && attack != AT_TAUNT_2 && attack != AT_PHONE) && !has_hit_player) || state == PS_HITSTUN || state == PS_TUMBLE))) {
+// 	screaming = false;
+// }
+
 
 
 

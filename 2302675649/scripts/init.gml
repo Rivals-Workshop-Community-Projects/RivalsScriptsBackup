@@ -104,6 +104,7 @@ fspec_effect = hit_fx_create(sprite_get("fspecParticle"), 10);
 dragon_effect = hit_fx_create(sprite_get("dragonhit"), 48);
 saw_effect = hit_fx_create(sprite_get("sawhit"), 48);
 chun_effect = hit_fx_create(sprite_get("chunhit"), 48);
+bunny_effect = hit_fx_create(sprite_get("bunnyhit"), 48);
 
 // vfx roll
 rollArray = array_create(6, -1);

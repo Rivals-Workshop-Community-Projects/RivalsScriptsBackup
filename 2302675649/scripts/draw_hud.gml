@@ -354,6 +354,20 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("Added Metal alt");
 						break;
+					case 23:
+						AddText("v1.23 - 30 Mar 2021");
+						AddText("");
+						AddText("Portals now despawn on parry");
+						AddText("Portals now cause half hitpause when hit");
+						AddText("Portals now bounce off stage limits when hit");
+						AddText("Portal stage limit borders now show when the portals are close");
+						AddText("Portal NSpec movement speed 4 -> 5");
+						AddText("Portal Knockback 11 -> 12");
+						AddText("");
+						AddText("Redone Metal alt");
+						AddText("Added 221020 alt");
+						AddText("Laurie D. Bunnykins alt (Dakoda)");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

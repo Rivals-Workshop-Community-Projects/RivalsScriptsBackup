@@ -236,12 +236,14 @@ fs_char_portrait_y = 85;
 
 found_mario = false;
 var check_player = 1;
-if(get_player_color(player) == 14) repeat(4) {
+if(get_player_color(player) == 21) repeat(4) {
   if(check_player != player && is_player_on(check_player) && string_count("mario", string_lower(get_char_info(check_player, INFO_STR_NAME)))) { //don't say hello to myself
     found_mario = true;
   }
   check_player++;
 }
 
+//Pringles
+pringles = 0;
 
 user_event(14);

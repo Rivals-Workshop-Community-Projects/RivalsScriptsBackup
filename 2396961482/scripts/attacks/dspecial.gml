@@ -54,9 +54,11 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_VSPEED, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, lanternfx);
+
 
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, 2);

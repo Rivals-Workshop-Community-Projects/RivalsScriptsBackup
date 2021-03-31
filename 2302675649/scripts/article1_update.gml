@@ -218,8 +218,12 @@ else
     {
         if (safeZone)
         {
-            hsp = 0;
-            vsp = 0;
+            if (nspecAngle != -621 && !player_id.joy_pad_idle)
+            {
+                hsp = 0;
+                vsp = 0;
+            }
+            else vsp = -vsp;
             y = ceil(room_height/5);
         }
         else
@@ -233,8 +237,12 @@ else
     {
         if (safeZone)
         {
-            hsp = 0;
-            vsp = 0;
+            if (nspecAngle != -621 && !player_id.joy_pad_idle)
+            {
+                hsp = 0;
+                vsp = 0;
+            }
+            else vsp = -vsp;
             y = floor(2*room_height/3);
         }
         else
@@ -248,8 +256,12 @@ else
     {
         if (safeZone)
         {
-            hsp = 0;
-            vsp = 0;
+            if (nspecAngle != -621 && !player_id.joy_pad_idle)
+            {
+                hsp = 0;
+                vsp = 0;
+            }
+            else hsp = -hsp;
             x = ceil(room_width/6);
         }
         else
@@ -263,8 +275,12 @@ else
     {
         if (safeZone)
         {
-            hsp = 0;
-            vsp = 0;
+            if (nspecAngle != -621 && !player_id.joy_pad_idle)
+            {
+                hsp = 0;
+                vsp = 0;
+            }
+            else hsp = -hsp;
             x = floor(5*room_width/6);
         }
         else
@@ -304,15 +320,16 @@ else
         		&& player != other.player_id.player
                 && !player_id.hitpause)
         	{
-                var hitAdj = 11;
+                var hitAdj = 12;
                 other.old_hsp = lengthdir_x(hitAdj, kb_angle)*spr_dir;
                 other.old_vsp = lengthdir_y(hitAdj, kb_angle);
                 other.moveAngle = kb_angle;
         		if (type == 1)
         		{
+                    var tempHitpause = ceil(hitpause/2);
         			player_id.hitpause = true;
-        			player_id.hitstop = hitpause;
-        			player_id.hitstop_full = hitpause;
+        			player_id.hitstop = tempHitpause;
+        			player_id.hitstop_full = tempHitpause;
         			player_id.old_hsp = player_id.hsp;
         			player_id.old_vsp = player_id.vsp;
         			player_id.hsp = 0;
@@ -320,7 +337,7 @@ else
         			player_id.hit_player = false;
                     other.hsp = 0;
                     other.vsp = 0;
-                    other.hitpause = hitpause;
+                    other.hitpause = tempHitpause;
         		}
                 else
                 {

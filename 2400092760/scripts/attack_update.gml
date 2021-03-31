@@ -275,7 +275,6 @@ if (attack == AT_DSPECIAL){
 if(attack == AT_DSPECIAL_AIR){
     can_wall_jump = true;
     can_fast_fall = false;
-    fall_through = down_down || down_stick_down;
     if(window == 1){
         if(window_timer == 1){
             getup_dir = spr_dir;

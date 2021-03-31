@@ -376,7 +376,7 @@ if(state == 10){
     }
     if(state_timer == 1){
         create_hitbox(AT_USPECIAL, 1, x, y - 48)
-        create_hitbox(AT_USPECIAL, 3, x, y - 18)
+        create_hitbox(AT_USPECIAL, 3, x, y - 20)
     }
     
     if(state_timer == 20){

@@ -25,7 +25,7 @@ triggerDist = 32;
 collideDist = 24;
 moveAngle = 0;
 nspecAngle = -621;
-nspecSpeed = 4;
+nspecSpeed = 5;
 
 hitpause = 0;
 old_hsp = 0;

@@ -731,33 +731,9 @@ if attack == AT_FSPECIAL  {
 }
 
 if attack == AT_DSPECIAL {
+			clear_button_buffer( PC_SPECIAL_PRESSED );
   move_cooldown[AT_DSPECIAL] = 30 
   
-  walk_speed = 4;
-walk_accel = 0.7;
-walk_turn_time = 6;
-initial_dash_time = 10;
-initial_dash_speed = 8;
-dash_speed = 7
-dash_turn_time = 10;
-dash_turn_accel = 1;
-dash_stop_time = 10;
-dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .8;
-moonwalk_accel = 1.4;
-
-jump_start_time = 5;
-jump_speed = 11;
-short_hop_speed = 6;
-djump_speed = 11;
-leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 4.5; //the maximum hsp you can accelerate to when in a normal aerial state
-jump_change = 3.5; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .3;
-prat_fall_accel = 1; //multiplier of air_accel while in pratfall
-air_friction = .045;
-
   if window_timer = 1 {
 	sound_play(asset_get("sfx_ell_steam_release"));
 	sound_play(sound_get("RI"),false,noone,0.7);

@@ -30,3 +30,5 @@ if(attack == AT_FSPECIAL){
         image_index = 0;
     }
 }
+
+    

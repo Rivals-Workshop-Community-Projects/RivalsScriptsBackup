@@ -6,7 +6,7 @@ switch (my_hitboxID.attack)
 			has_walljump = true;
 			sound_play(sound_get("hitsfx1"));
 			sound_play(asset_get("sfx_blow_heavy2"));
-			var a = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - hit_player_obj.char_height, get_player_color(player)==6?saw_effect:get_player_color(player)==16?chun_effect:dragon_effect); a.depth = -10; a.spr_dir = 1;
+			USpecFX();
 			ApplyFlag();
 		}
 		else sound_play(asset_get("sfx_blow_weak1"));
@@ -91,8 +91,33 @@ if (hit_player_obj.hitpause && hit_player_obj.hitstop > 3 && !(my_hitboxID.attac
 
 #define ApplyFlag()
 {
-	if (get_player_color(player) == 1)
-		hit_player_obj.outlineState = 1;
-	else if (get_player_color(player) == 17)
-		hit_player_obj.outlineState = 2;
+	switch (get_player_color(player))
+	{
+		case 1:
+			hit_player_obj.outlineState = 1;
+			break;
+		case 17:
+			hit_player_obj.outlineState = 2;
+			break;
+	}
+}
+
+#define USpecFX()
+{
+	var effect = dragon_effect;
+	switch (get_player_color(player))
+	{
+		case 6:
+			effect = saw_effect;
+			break;
+		case 16:
+			effect = chun_effect;
+			break;
+		case 20:
+			effect = bunny_effect;
+			break;
+	}
+	var a = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - hit_player_obj.char_height, get_player_color(player)==6?saw_effect:get_player_color(player)==16?chun_effect:effect);
+	a.depth = -10;
+	a.spr_dir = 1;
 }

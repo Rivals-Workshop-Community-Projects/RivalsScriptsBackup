@@ -33,13 +33,14 @@ switch(attack) {
 	case AT_FSPECIAL:
 		var xx = -10*spr_dir
 		var yy = -28
-		if window == 4 && special_pressed {
+		if window == 4 && strong_charge > 0 {
+			strong_charge--;
 			for (var i = 0; i < maxplanets; i++) {
 				if planet[i].orbiting == 1 break;
 			}
 			//print_debug("planet found is "+string(i))
 			if i < maxplanets {
-				window = 5;
+				window = 6;
 				window_timer = 0;
 			}		
 		}
@@ -69,25 +70,36 @@ switch(attack) {
 				var h = spawn_hit_fx(planet[i].x+(spr_dir*10), planet[i].y, hitfx[10])
 			}
 		}
-		if get_window_value(attack,window,AG_WINDOW_TYPE) == 420 {
+		if get_window_value(attack,window,AG_WINDOW_TYPE) == 420 or get_window_value(attack,window,AG_WINDOW_TYPE) == 421 {
+			var first = get_window_value(attack,window,AG_WINDOW_TYPE) == 420;
+			var j = 0;
 			for (var i = 0; i < maxplanets; i++) {
-				if planet[i].orbiting == 1 && planet[i].owner == id {
-					planet[i].overriding = 0.6;
-					planet[i].x -= spr_dir*6
+				if planet[i].orbiting == 1 {
+					if j <= strong_charge {
+						planet[i].overriding = 0.8;
+						var xx = planet[i].owner.x - (32 + j*40)*spr_dir
+						var yy = planet[i].owner.y-30
+						planet[i].x = lerp(planet[i].x, xx, 0.2);
+						planet[i].y = lerp(planet[i].y, yy, 0.2);
+
+					}
+					j++;
 				}
 			}	
-		
-			for (var i = 0; i < maxplanets; i++) {
-				if planet[i].orbiting == 1 break;
-			}
+
 			//print_debug("planet found is "+string(i))
-			if i < maxplanets {
-				planet[i].overriding = 1;
-				planet[i].x = lerp(planet[i].x, planet[i].owner.x+xx, 0.6)
-				planet[i].y = lerp(planet[i].y, planet[i].owner.y+yy, 0.6)
-				planet[i].depth = depth-3
-				planet[i].depthsort = false;
-			}			
+			if window_special_pressed {
+				clear_button_buffer(PC_SPECIAL_PRESSED);
+				window_special_pressed = 0;
+				tossed_planet++;
+
+			}
+			if window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH) && (special_down or tossed_planet > 0) && strong_charge < j-1 {
+				if !first strong_charge++;
+				window_timer = 0;
+				window = 5;
+				if !first tossed_planet--;
+			}
 		}
 	break;
 	case AT_DSPECIAL:
@@ -119,7 +131,7 @@ switch(attack) {
 				}
 			}			
 			with (asset_get("grabbable_obj")) {
-				if state_cat == SC_HITSTUN && get_player_team(player) != get_player_team(other.player){
+				if state_cat == SC_HITSTUN && get_player_team(player) != get_player_team(other.player) && !(object_index == asset_get("oPlayer") && activated_kill_effect) {
 					fall_through = true;
 					var INFLUENCE = (inf_player*min(get_player_damage(player), 110)*0.007)+0.5
 					var mult = 1-(min(point_distance(x,y,other.x,other.y)/800, 1))

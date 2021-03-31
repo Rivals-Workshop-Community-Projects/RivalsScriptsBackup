@@ -137,6 +137,8 @@ sprite_change_offset("tauntskinalt12", 69, 126);
 sprite_change_offset("taunt2", 69, 126);
 sprite_change_offset("spookymonth", 28, 68);
 
+sprite_change_offset("seggoflag", 145, 212);
+
 sprite_change_offset("plat", 92, 12);
 
 sprite_change_offset("nspecial_proj", 33, 33);

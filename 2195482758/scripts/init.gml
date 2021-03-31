@@ -201,6 +201,7 @@ uptilt_loop = false;
 // Taunt
 laugh_timer = 0
 screaming = false;
+scream_timer = 0;
 
 // Utilt tomfoolery
 spin_timer = 0;

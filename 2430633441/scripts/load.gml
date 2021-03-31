@@ -2,6 +2,10 @@ sprite_change_offset("planet1", 6, 6);
 sprite_change_offset("planet2", 12, 8);
 sprite_change_offset("planet3", 10, 10);
 
+sprite_change_offset("planet51", 6, 6);
+sprite_change_offset("planet52", 12, 8);
+sprite_change_offset("planet53", 10, 10);
+
 sprite_change_offset("planetO1", 10, 10);
 sprite_change_offset("planetO2", 14, 10);
 sprite_change_offset("planetO3", 10, 10);
@@ -45,6 +49,7 @@ sprite_change_offset("planet3_trail", 12, 12);
 sprite_change_offset("sun", 20, 54);
 sprite_change_offset("sunV", 26, 50);
 sprite_change_offset("sunR", 16, 48);
+sprite_change_offset("sun5", 24, 58);
 sprite_change_offset("sun_dspecial", 52, 90);
 sprite_change_offset("sun_explode", 48, 54);
 sprite_change_offset("sun_explode_big", 100, 140);

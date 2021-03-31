@@ -28,6 +28,7 @@ alt_name[20] = "Gameboy";
 alt_name[21] = "NES";
 alt_name[22] = "BLMario";
 alt_name[23] = "Vaporwave";
+alt_name[24] = "TSMSB";
 
 draw_set_halign(fa_left);
 

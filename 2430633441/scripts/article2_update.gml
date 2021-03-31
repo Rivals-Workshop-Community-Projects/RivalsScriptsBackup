@@ -48,6 +48,8 @@ time = max(time,1)
 
 image_index = ((time*0.2) mod 4) + floor(ease_circOut(image_number,0,min(time, time_total),time_total)/framediv)*framediv;
 
+if get_player_color(player) == 16 image_index = ease_linear(image_number, 0, time, time_total)
+
 if (player_id.state == PS_ATTACK_GROUND or player_id.state == PS_ATTACK_AIR) && player_id.attack == AT_DSPECIAL && player_id.image_index > 0 {
 	sprite_index = active_sprite;
 	image_index = player_id.image_index-1;

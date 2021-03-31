@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 22, 7, 11 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 19 );
+set_num_palettes( 21 );
 
 // Transcend
 set_color_profile_slot( 1, 0, 255, 255, 255 ); //sword
@@ -207,14 +207,34 @@ set_color_profile_slot( 17, 6, 87, 22, 22 ); //skin2
 set_color_profile_slot( 17, 7, 37, 34, 34 ); //hair
 
 // Iron
-set_color_profile_slot( 18, 0, 228, 228, 228 ); //sword
-set_color_profile_slot( 18, 1, 212, 225, 247 ); //shirt
-set_color_profile_slot( 18, 2, 202, 207, 227 ); //shirt2
-set_color_profile_slot( 18, 3, 173, 175, 224 ); //pants
-set_color_profile_slot( 18, 4, 150, 142, 209 ); //pants2
-set_color_profile_slot( 18, 5, 176, 189, 210 ); //skin
-set_color_profile_slot( 18, 6, 151, 158, 191 ); //skin2
-set_color_profile_slot( 18, 7, 181, 183, 201 ); //hair
+set_color_profile_slot( 18, 0, 218, 215, 231 ); //sword
+set_color_profile_slot( 18, 1, 160, 173, 190 ); //shirt
+set_color_profile_slot( 18, 2, 56, 55, 89 ); //shirt2
+set_color_profile_slot( 18, 3, 209, 159, 166 ); //pants
+set_color_profile_slot( 18, 4, 94, 51, 84 ); //pants2
+set_color_profile_slot( 18, 5, 255, 233, 156 ); //skin
+set_color_profile_slot( 18, 6, 99, 71, 47 ); //skin2
+set_color_profile_slot( 18, 7, 161, 126, 126 ); //hair
+
+// 221020
+set_color_profile_slot( 19, 0, 255, 194, 231 ); //sword
+set_color_profile_slot( 19, 1, 255, 255, 255 ); //shirt
+set_color_profile_slot( 19, 2, 186, 169, 175 ); //shirt2
+set_color_profile_slot( 19, 3, 53, 82, 161 ); //pants
+set_color_profile_slot( 19, 4, 28, 23, 130 ); //pants2
+set_color_profile_slot( 19, 5, 255, 206, 171 ); //skin
+set_color_profile_slot( 19, 6, 214, 129, 112 ); //skin2
+set_color_profile_slot( 19, 7, 61, 24, 24 ); //hair
+
+// Laurie D. Bunnykins
+set_color_profile_slot( 20, 0, 167, 180, 204 ); //sword
+set_color_profile_slot( 20, 1, 25, 158, 25 ); //shirt
+set_color_profile_slot( 20, 2, 6, 105, 72 ); //shirt2
+set_color_profile_slot( 20, 3, 26, 44, 56 ); //pants
+set_color_profile_slot( 20, 4, 9, 14, 43 ); //pants2
+set_color_profile_slot( 20, 5, 255, 255, 255 ); //skin
+set_color_profile_slot( 20, 6, 255, 189, 189 ); //skin2
+set_color_profile_slot( 20, 7, 204, 204, 204 ); //hair
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -22,7 +22,7 @@ if (state == 0) // idle lol
 {
     var hbox = create_hitbox(AT_DSPECIAL, 1, x+10, y);
     with (oPlayer) if ("barrierLockout" in self && barrierLockout.anglara == other.player_id.player && barrierLockout.timer > 0) hbox.can_hit[player] = false;
-    if (state_timer > 200)
+    if (state_timer > 200)//200 Is the base
     {
         sound_play(asset_get("sfx_ice_shatter_big"));
         instance_destroy(self);
@@ -55,3 +55,4 @@ else if (state == 1) // nspec hit
     state = _state;
     state_timer = 0;
 }
+

@@ -287,7 +287,9 @@ with phone{
 	Two main things to note is that you can hold or mash to gain more hight and landing this move on your megavitamin slightly increases both damage and knockback. 
 	Also hitting megavitamin with this move makes the megavitamin bounce and linger for a little while.
 	
-	Something else to note is that you only get one hight boost per down special unless you wall jump, get hit, or double jump");
+	Something else to note is that you only get one hight boost per down special unless you wall jump, get hit, or double jump
+	
+	You can also hold down during active frames to psudo fast fall this move but this gets over writen by holding/mashing.");
 	initTipImage(player_id.spr_dspecial, -5, fa_center, 1, c_white, 0);
 	
 	initTip("Strong Attacks: Megavitamins");
@@ -362,6 +364,45 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	
+	initPatch("1.41", "29 March, 2021");
+	initPatchWords("DStrong")
+	initPatchWords_ext("Hot Fix: Front Hit changed Base knockback from 9 to 8, still an overall buff
+	Front hit uses sfx heavy blow 1 again", fa_left, c_gray, 1, 0);
+	initPatchWords("Munophone")
+	initPatchWords_ext("Fixed typo's in last patch note
+	Added new Dspecial stuff from last patch to fighter's tips", fa_left, c_gray, 1, 0);
+	
+	
+	initPatch("1.4", "29 March, 2021");
+	initPatchWords("DAir")
+	initPatchWords_ext("Reduced the amount of frames in between hits: ( 2 -> 1)
+Tweaked knockback values of flipper 9 hitboxes to improve consistency", fa_left, c_gray, 1, 0);
+	initPatchWords("Dspecial")
+	initPatchWords_ext("You can now hold down during its active time to make the move fall a little faster. (This gets overwritted by mashing  / holding the special button)
+KBS final hit: ( .75 -> .85)", fa_left, c_gray, 1, 0);
+	initPatchWords("USpecial")
+	initPatchWords_ext("KBS final hit (.75 -> .9)", fa_left, c_gray, 1, 0);
+	initPatchWords("BAir")
+	initPatchWords_ext("KBS Early hit ( .7 -> .75)", fa_left, c_gray, 1, 0);
+	initPatchWords("Ustrong")
+	initPatchWords_ext("All hitboxes now have 1.05 KBG ( Up from 1.0 on the sourspots)", fa_left, c_gray, 1, 0);
+	initPatchWords("Fstrong")
+	initPatchWords_ext("Sourspot KBS ( .8 -> .9)", fa_left, c_gray, 1, 0);
+	initPatchWords("DStrong")
+	initPatchWords_ext("BKB remains unchaged for both hitboxes
+Both hitboxes now have 1.05 KBG 
+Both hitboxes now have Angle 361
+Both hitboxes now use sfx_blow_heavy2", fa_left, c_gray, 1, 0);
+	initPatchWords("New Alt")
+	initPatchWords_ext("TSMSB alt for Bookworm for DTT
+	Has Pringles for Pills (Shoutouts to sakk and relira)
+	Pringles Mode also has a special victory theme", fa_left, c_gray, 1, 0);
+	initPatchWords("Misc")
+	initPatchWords_ext("New Crouch anim and hurtbox
+	Press Taunt durring countdown on any alt for pringles instead of pills
+	New results screen picture
+	Removed a stray pixel on Yellow Red Pill", fa_left, c_gray, 1, 0);
 	
 	initPatch("1.39", "25 March, 2021");
 	initPatchWords("DStrong")

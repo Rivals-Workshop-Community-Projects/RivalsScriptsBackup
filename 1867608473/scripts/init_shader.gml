@@ -477,6 +477,7 @@ switch(get_player_color(player)){
 		arena_title = "The Fallen Child";
 		break;
 	case 12: // Pride
+		pride = true;
 		arena_title = "LGBTQ Rights!";
 		break;
 	case 14: // Kaho (for Giik)

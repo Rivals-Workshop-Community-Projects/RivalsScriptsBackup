@@ -1,6 +1,17 @@
 //pre_draw.gml
 shader_start();
 
+if triggered > 0 {
+	  gpu_set_blendmode(bm_add);
+        draw_sprite_ext(sprite_get("DT"), triggered / 4 , x - 1 - hsp  , y - 1 - vsp  , spr_dir*1, 1, 0 , -1 , 0.3);
+  gpu_set_blendmode(bm_normal);
+
+		draw_sprite_ext(sprite_get("DT"), triggered / 4 , x + 1 - hsp  , y + 1 - vsp  , spr_dir*1, 1, 0 , -1 , 0.2 + triggered%20/20 );
+		
+}
+
+
+
 if move_cooldown[AT_FSPECIAL] > 0 {
 	
      draw_sprite(sprite_get("nobike"), (90 - move_cooldown[AT_FSPECIAL]) / 9, x , y + 20  );

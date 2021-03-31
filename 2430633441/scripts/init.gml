@@ -30,6 +30,7 @@ var planstring = "planet";
 if get_player_color(player) == 8 planstring = "planetO"
 if get_player_color(player) == 5 planstring = "planetP"
 if get_player_color(player) == 10 planstring = "planetpk"
+if get_player_color(player) == 16 planstring = "planet5"
 
 if get_player_color(player) == 7 {
 

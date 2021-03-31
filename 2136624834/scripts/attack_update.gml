@@ -500,7 +500,6 @@ if window = 3 && window_timer = 1 {
 	 		
 	 sound_play(asset_get("sfx_ice_shieldup"));	
 	 spawn_hit_fx( x  , y - 50 + random_func(2, 40, true) , tauntpar1 )
-	 create_hitbox(AT_USPECIAL , 1,  x  , y );	
 	 }
      
      if window == 2 or window == 3 {

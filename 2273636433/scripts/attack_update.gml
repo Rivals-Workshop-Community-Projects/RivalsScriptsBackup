@@ -101,7 +101,7 @@ if attack == AT_NSPECIAL {			//PILL LOGIC
 
 ///DOCTOR TORNADO	
 if(attack==AT_DSPECIAL){	
-	can_fast_fall = 0;	
+	can_fast_fall = false;		
 	if (window == 1) {
 		counter = 0;
 		set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, 3);
@@ -127,8 +127,8 @@ if(attack==AT_DSPECIAL){
 			} else if (special_down)&&(!hitpause){
 				vsp=-2 -has_rune("L") + cyclone*3;			
 			}else {
-				vsp= vsp +0.25;	
-				if (vsp >(1+cyclone*3)) { vsp = 1 + +cyclone*3;}
+				vsp= vsp + 0.25 + down_down/2;	
+				if (vsp >(1+cyclone*3+ down_down/2)) { vsp = 1 + +cyclone*3+ down_down/2;}
 			}
 		}
 	

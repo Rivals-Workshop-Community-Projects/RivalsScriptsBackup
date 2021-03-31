@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 23;
+	var noOfPatches = 24;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -114,7 +114,7 @@ with (oPlayer)
 }
 
 // transcend
-transcounter = clamp(((get_player_color(player) == 1 && (state==PS_SPAWN||(attack == AT_TAUNT && state == PS_ATTACK_GROUND)))?transcounter+2:transcounter-6),0,70);
+transcounter = clamp((((get_player_color(player) == 1 || get_player_color(player) == 20) && (state==PS_SPAWN||(attack == AT_TAUNT && state == PS_ATTACK_GROUND)))?transcounter+2:transcounter-6),0,70);
 
 // sounds
 switch (state)

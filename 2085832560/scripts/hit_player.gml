@@ -60,12 +60,6 @@ intro = 1
          
      }
      
-     if my_hitboxID.damage >= 3 {
-	   	 with hit_player_obj {
-                 take_damage( player, -1 , 1)
-         }	
-
-     }
      
      if my_hitboxID.damage >= 6 {
 	   	 with hit_player_obj {
@@ -75,7 +69,8 @@ intro = 1
      }
 	}
 
-if my_hitboxID.attack != AT_EXTRA_1 and my_hitboxID.attack != AT_EXTRA_2 {
+if my_hitboxID.attack != AT_EXTRA_1 and my_hitboxID.attack != AT_EXTRA_2
+and my_hitboxID.attack != AT_EXTRA_3{
 	
 if infernal2 < 300{
 

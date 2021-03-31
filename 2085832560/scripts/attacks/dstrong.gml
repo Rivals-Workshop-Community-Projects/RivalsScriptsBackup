@@ -5,13 +5,13 @@ set_attack_value(AT_DSTRONG, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
 
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX, asset_get("sfx_spin"));
 
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
@@ -72,7 +72,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_Y, -20);
 set_hitbox_value(AT_DSTRONG, 1, HG_WIDTH, 130);
 set_hitbox_value(AT_DSTRONG, 1, HG_HEIGHT, 50);
 set_hitbox_value(AT_DSTRONG, 1, HG_PRIORITY, 2);
-set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 3);
+set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 4);

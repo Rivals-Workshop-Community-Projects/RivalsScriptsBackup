@@ -58,6 +58,13 @@ sprite_change_offset("nspecial_proj_colorcombo4",17, 9);
 sprite_change_offset("nspecial_proj_colorcombo5",17, 9);
 sprite_change_offset("nspecial_proj_colorcombo6",17, 9);
 
+sprite_change_offset("nspecial_proj_colorcombo_pringles",17, 9);
+sprite_change_offset("nspecial_proj_colorcombo2_pringles",17, 9);
+sprite_change_offset("nspecial_proj_colorcombo3_pringles",17, 9);
+sprite_change_offset("nspecial_proj_colorcombo4_pringles",17, 9);
+sprite_change_offset("nspecial_proj_colorcombo5_pringles",17, 9);
+sprite_change_offset("nspecial_proj_colorcombo6_pringles",17, 9);
+
 sprite_change_offset("drmario_smash_proj", 42, 50);
 
 sprite_change_offset("score", 72, 53);
@@ -74,5 +81,6 @@ sprite_change_offset("firechungus", 31, 96);
 sprite_change_offset("I_D",5, 44);
 sprite_change_offset("I_K",5, 44);
 
+sprite_change_offset("next_pringles", 0, 2);
 
 sprite_change_offset("FinalSmash", 58, 82);

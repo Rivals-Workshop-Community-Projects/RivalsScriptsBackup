@@ -11,9 +11,12 @@ if get_gameplay_time() == 2 {
     if attack_down && jump_down code_3 = 1;
 }
 
-if !code_1 && get_gameplay_time() < 120 {
+if get_gameplay_time() < 120 {
     if get_gameplay_time() == 2 {
         set_attack(AT_NTHROW);
+        if shield_down and get_player_color(player) == 15{
+        	flag_active = true;
+        }
     }
     if get_gameplay_time() > 5 {
         if attack == AT_NTHROW && window == 1 && window_timer == 21 {
@@ -25,12 +28,14 @@ if !code_1 && get_gameplay_time() < 120 {
             window_timer = 0;
         }
     }
-
 }
 
 if attack == AT_NTHROW && window <= 3{
 	if taunt_pressed{
 		sparkles_active = true;
+	}
+	if shield_pressed{
+		flag_active = true;
 	}
 }
 
@@ -396,11 +401,12 @@ if (get_player_color(player) == 6){
 	    break;
 	}
 }
-else if (shilling){
+else if (get_player_color(player) == 15){
 	guage_sprite = sprite_get("gaugechamp");
 }
-else if (obama_freed){
+else if (get_player_color(player) == 16){
 	guage_sprite = sprite_get("gaugebama");
+	obama_freed = true;
 }
 else{
 	guage_sprite = sprite_get("gauge");

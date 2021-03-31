@@ -9,6 +9,13 @@ switch (get_player_color(player))
         }
     }
     break;
+    //metal
+    case 18:
+    {
+        set_character_color_shading(0, 3);
+        set_character_color_shading(7, 2);
+    }
+    break;
 }
 
 var                                             outline_colour = [  0,   0,  0  ];

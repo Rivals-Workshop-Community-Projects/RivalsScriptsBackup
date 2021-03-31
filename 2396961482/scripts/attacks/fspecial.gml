@@ -64,7 +64,27 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, lanternfx);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_infinidagger"));
 
-
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 2);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 10);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, 10);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, -28);
+set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 75);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 55);
+set_hitbox_value(AT_FSPECIAL, 2, HG_SHAPE, 2);
+set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 5);
+set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 8);
+set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 361);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_LOCKOUT, 0);
+set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .4);
+set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 20);
+set_hitbox_value(AT_FSPECIAL, 2, HG_EXTRA_HITPAUSE, 6);
+set_hitbox_value(AT_FSPECIAL, 2, HG_EXTRA_CAMERA_SHAKE, 1);
+set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT_Y_OFFSET, -16);
+set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, lanternfx);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_infinidagger"));
 
 
 
