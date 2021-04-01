@@ -3,7 +3,25 @@
 shader_start();
 
 
-
+if state == PS_ATTACK_GROUND && ((attack == AT_FSTRONG or attack == AT_USTRONG) && window == 1) or (attack == AT_DSTRONG && window = 2) {
+	
+	if state > 0 && state_timer % 5 < 2 {
+		 gpu_set_blendmode(bm_add);
+        draw_sprite_ext(sprite_index, image_index, x + 2 - hsp*1.1 - random_func(1,4,true) , y - 2  - vsp*1.1 + random_func(2,4,true)  , spr_dir, 1, 0 , -1 , 0.1 + scharge/200);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - hsp*1.05 + random_func(1,4,true) , y + 2 - vsp*1.05 - random_func(2,4,true)  , spr_dir, 1, 0 , -1 , 0.3 + scharge/2-00);
+         gpu_set_blendmode(bm_normal);
+	}
+	
+	if scharge > 0 && state_timer % 5 >= 2 {
+        draw_sprite_ext(sprite_index, image_index, x + 2 - hsp*1.1 - random_func(2,4,true) , y - 2 - vsp*1.1 + random_func(1,4,true)  , spr_dir, 1, 0 , c_black , 0.1 + scharge/200);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - hsp*1.05 + random_func(2,4,true) , y + 2 - vsp*1.05 - random_func(1,4,true)  , spr_dir, 1, 0 , c_black , 0.3 + scharge/200);
+	}
+	
+	if scharge > 150 {
+		shake_camera(floor(scharge/150),2)
+	}
+	
+}
 
 
 

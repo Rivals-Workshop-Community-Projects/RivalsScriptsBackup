@@ -1,7 +1,7 @@
 set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong"));
 set_attack_value(AT_FSTRONG, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_FSTRONG, AG_HAS_LANDING_LAG, 3);
-set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
+set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(AT_FSTRONG, AG_HURTBOX_SPRITE, sprite_get("fstrong_hurt"));
 
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_TYPE, 1);
@@ -58,6 +58,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_FSTRONG, 1, HG_TECHABLE, 1);
 
+
 set_hitbox_value(AT_FSTRONG, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW, 3);
@@ -78,6 +79,7 @@ set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 304);
+
 
 set_hitbox_value(AT_FSTRONG, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_TYPE, 1);

@@ -1,7 +1,7 @@
 set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong"));
 set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_DSTRONG, AG_HAS_LANDING_LAG, 3);
-set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 2);
+set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 0);
 set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
 
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_TYPE, 1);
@@ -73,7 +73,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_DSTRONG, 1, HG_TECHABLE, 3);
-
+set_hitbox_value(AT_DSTRONG, 1, HG_EXTRA_HITPAUSE, 5);
 
 set_hitbox_value(AT_DSTRONG, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
@@ -97,6 +97,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_DSTRONG, 2, HG_TECHABLE, 3);
+set_hitbox_value(AT_DSTRONG, 2, HG_EXTRA_HITPAUSE, 5);
 
 set_hitbox_value(AT_DSTRONG, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_TYPE, 1);
@@ -120,7 +121,7 @@ set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, 3);
 set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_DSTRONG, 3, HG_TECHABLE, 3);
-
+set_hitbox_value(AT_DSTRONG, 3, HG_EXTRA_HITPAUSE, 5);
 
 set_hitbox_value(AT_DSTRONG, 4, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_TYPE, 1);
@@ -144,6 +145,7 @@ set_hitbox_value(AT_DSTRONG, 4, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_GROUP, 3);
 set_hitbox_value(AT_DSTRONG, 4, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_DSTRONG, 4, HG_TECHABLE, 3);
+set_hitbox_value(AT_DSTRONG, 4, HG_EXTRA_HITPAUSE, 5);
 
 set_hitbox_value(AT_DSTRONG, 5, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_TYPE, 1);
