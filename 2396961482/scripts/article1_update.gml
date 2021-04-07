@@ -1,25 +1,8 @@
 image_index += article_anim_speed;
 
-//Mcducky's code that may need some tweaking to work. currently some projectiles interacting with this crash game.
-//with(asset_get("pHitBox")) {             //Find a hitbox
-    //if (player_id != other.player_id) {  //Its not yours dude.
-        //if (place_meeting(x,y,other)) {  //we held hands so we must be married :plead:
-            //if(type == 2)                //Its a projectile.
-            //{
-                //hit_flipper = 8
-                //sound_play(asset_get("sfx_absa_cloud_crackle"))
-                //player = other.player;   //Set ID to yours.
-                //hitbox_timer = 0;        //Reset to hit them back.
-                //hsp = -hsp*2;          //Speed em up in the other way.
-                //damage = damage*3;       //More damage.
-            //}
-        //}
-    //}  
-//}
-
-
 if (state == 0) // idle lol
 {
+    if (state_timer == 0) while (place_meeting(x,y,asset_get("par_block"))) x-=player_id.spr_dir;
     var hbox = create_hitbox(AT_DSPECIAL, 1, x+10, y);
     with (oPlayer) if ("barrierLockout" in self && barrierLockout.anglara == other.player_id.player && barrierLockout.timer > 0) hbox.can_hit[player] = false;
     if (state_timer > 200)//200 Is the base

@@ -62,7 +62,7 @@ if (attack == AT_USPECIAL)
   if ((window == 3 ) && !free)
   {
     set_state( PS_LANDING_LAG );
-    landing_lag_time = 16 / 2;
+    landing_lag_time = 10;
     hsp = hsp / 2;
   }
  }
@@ -113,8 +113,6 @@ if (attack == AT_USPECIAL)
   }
   
 }
-
-
 
 if (attack == AT_NSPECIAL)
 {
@@ -233,7 +231,7 @@ if (attack == AT_DSPECIAL)
   {
     if (window_timer == 4)
     {
-      move_cooldown[AT_DSPECIAL] = 120;
+      move_cooldown[AT_DSPECIAL] = 160;
       var ring = instance_create(x+(spr_dir * 30), y-80, "obj_article2");
       ring.player_id = id;
       ring.player = player;
@@ -242,9 +240,22 @@ if (attack == AT_DSPECIAL)
   }
 }
 
-//Taunt 1 cancel
+//Taunt
 
-if (attack == AT_TAUNT)
+if attack == AT_TAUNT 
+{
+  if window <= 2 
+  {
+    if (window == 1 && window_timer == 5 && shield_down) 
+    {
+      attack = AT_TAUNT_2;
+    }
+  }
+}
+
+    //Taunt cancel
+
+if (attack == AT_TAUNT) or (attack = AT_TAUNT_2)
 {
   if (window == 2) && (window_timer > 2)
   {

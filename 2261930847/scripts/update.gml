@@ -129,6 +129,17 @@ if (moist_level = 2 || moist_level = 3){
 	initial_dash_speed = 7;
 }
 
+if (moist_level = 3 && attack == AT_USTRONG) {
+		set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 1);
+		set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 1);
+		set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, 1);
+		set_hitbox_value(AT_USTRONG, 4, HG_VISUAL_EFFECT, 1);
+		set_hitbox_value(AT_USTRONG, 5, HG_VISUAL_EFFECT, 1);
+		set_hitbox_value(AT_USTRONG, 6, HG_VISUAL_EFFECT, 1);
+		set_hitbox_value(AT_USTRONG, 7, HG_VISUAL_EFFECT, 1);
+
+    }
+
 //different mud levels for training toggles
 switch(mud_training_level) {
     case 0:

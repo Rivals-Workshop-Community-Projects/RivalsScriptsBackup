@@ -13,6 +13,7 @@ crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
+
 //Hud asset
 lanternhud_CURRENT = 100;
 lanternhud_MAX = 100;

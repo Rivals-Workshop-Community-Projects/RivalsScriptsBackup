@@ -8,7 +8,7 @@ hit_player_obj = self
 if get_gameplay_time() < 60 {
 	if get_gameplay_time() == 1 {
 		    	     sound_play(sound_get("steath"),false,noone,1)
-		    	              	sound_play(asset_get("sfx_bird_nspecial"),false,noone,0.4)
+		    	     sound_play(asset_get("sfx_bird_nspecial"),false,noone,0.4)
 	}
 	
 	visible = false 

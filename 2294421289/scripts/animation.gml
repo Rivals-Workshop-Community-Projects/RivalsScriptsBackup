@@ -31,3 +31,5 @@ if (state == PS_SPAWN)
 {
   sprite_index = sprite_get( "entrance" );
 }
+
+

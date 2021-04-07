@@ -1,0 +1,1 @@
+personaQuips[10] = "DMCA'd for copyright infringement!"

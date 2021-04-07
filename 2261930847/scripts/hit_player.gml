@@ -88,6 +88,14 @@ if(attack == AT_UTILT_2){
 }} 
 
 if(attack == AT_USTRONG && moist_level = 3){
+
+		set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 1);
+		set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 1);
+		set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, 1);
+		set_hitbox_value(AT_USTRONG, 4, HG_VISUAL_EFFECT, 1);
+		set_hitbox_value(AT_USTRONG, 5, HG_VISUAL_EFFECT, 1);
+		set_hitbox_value(AT_USTRONG, 6, HG_VISUAL_EFFECT, 1);
+		set_hitbox_value(AT_USTRONG, 7, HG_VISUAL_EFFECT, 1);
     if (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 4 || my_hitboxID.hbox_num == 5 || my_hitboxID.hbox_num == 6){
             var k = spawn_hit_fx(hit_player_obj.x, hit_player_obj.y, mud_hit_fx1);
     k.depth = depth - 1;

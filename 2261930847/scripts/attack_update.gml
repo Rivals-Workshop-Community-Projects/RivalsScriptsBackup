@@ -165,6 +165,14 @@ ground_friction = 0.25;
   		set_window_value(AT_DTILT, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.5);
     }       
                 
+     
+    //dtilt jc on hit
+    if(attack == AT_DTILT){
+        if(has_hit_player = true){
+         can_jump = true;   
+        }
+    }            
+                
   //low friction
 ground_friction = 0.25;
  
@@ -174,31 +182,7 @@ ground_friction = 0.25;
 	ground_friction = 0.25
 }
    
-if attack == AT_USTRONG {
-		set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrong_mud"));
-		set_hitbox_value(AT_USTRONG, 6, HG_BASE_HITPAUSE, 10);
-		set_hitbox_value(AT_USTRONG, 7, HG_BASE_KNOCKBACK, 7);
-		set_hitbox_value(AT_USTRONG, 7, HG_BASE_KNOCKBACK_SCALING, 1.2);
-		set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 1);
-		set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 1);
-		set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, 1);
-		set_hitbox_value(AT_USTRONG, 4, HG_VISUAL_EFFECT, 1);
-		set_hitbox_value(AT_USTRONG, 5, HG_VISUAL_EFFECT, 1);
-		set_hitbox_value(AT_USTRONG, 6, HG_VISUAL_EFFECT, 1);
-		set_hitbox_value(AT_USTRONG, 7, HG_VISUAL_EFFECT, 1);
 
-    } else {
-        reset_attack_value(AT_USTRONG, AG_SPRITE);
-        reset_hitbox_value(AT_USTRONG, 6, HG_BASE_HITPAUSE);
-       	reset_hitbox_value(AT_USTRONG, 7, HG_BASE_KNOCKBACK);
-       	reset_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT);
-		reset_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT);
-		reset_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT);
-		reset_hitbox_value(AT_USTRONG, 4, HG_VISUAL_EFFECT);
-		reset_hitbox_value(AT_USTRONG, 5, HG_VISUAL_EFFECT);
-		reset_hitbox_value(AT_USTRONG, 6, HG_VISUAL_EFFECT);
-		reset_hitbox_value(AT_USTRONG, 7, HG_VISUAL_EFFECT);
-	}
    
    //slow dash turn / walk turn
    dash_turn_time = 14;
@@ -209,8 +193,8 @@ if attack == AT_USTRONG {
 
 //TILTS
 /*
-if (state == PS_DASH || state == PS_DASH_START || state == PS_DASH_STOP){
-	if (attack_pressed && down_down){
+if
+    (attack_pressed && down_down){
 	attack = AT_DTILT;
 	clear_button_buffer ( PC_ATTACK_PRESSED)
 }}

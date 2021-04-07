@@ -100,7 +100,7 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
 	    
 	    	      
 	    	       
-    	if  url != other.player_id.url && other.hitbox_timer < 294 {
+    	if  !free && url != other.player_id.url && other.hitbox_timer < 294 {
 			other.hitbox_timer = 294
     	            	shake_camera(1,2)
         }

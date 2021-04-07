@@ -1,5 +1,7 @@
 sprite_change_offset("idle", 30, 78);
 sprite_change_offset("hurt", 32, 62);
+sprite_change_offset("uphurt", 23, 72);
+sprite_change_offset("downhurt", 36, 62);
 sprite_change_offset("crouch", 32, 69);
 sprite_change_offset("walk", 39, 78);
 sprite_change_offset("walkturn", 29, 73);
@@ -26,7 +28,7 @@ sprite_change_offset("tech", 25, 45);
 
 sprite_change_offset("jab", 30, 69);
 sprite_change_offset("dattack", 54, 65);
-sprite_change_offset("ftilt", 34, 90);
+sprite_change_offset("ftilt", 40, 90);
 sprite_change_offset("dtilt", 33, 70);
 sprite_change_offset("utilt", 73, 115);
 sprite_change_offset("nair", 40, 75);
@@ -50,6 +52,10 @@ sprite_change_offset("plat", 73, 112);
 sprite_change_offset("entrance", 39, 73);
 
 sprite_change_offset("soundbreak", 50, 40);
+
+sprite_change_offset("dugato", 36, 85);
+
+sprite_change_offset("classe", 56, 93);
 
 soundbreak = hit_fx_create(sprite_get("soundbreak"), 18);
 

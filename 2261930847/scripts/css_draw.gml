@@ -4,9 +4,9 @@ shader_end();
 
 var alt_cur = get_player_color(player);
  
-patch_ver = "2.1";
-patch_day = "20";
-patch_month = "MAR";
+patch_ver = "2.11";
+patch_day = "2";
+patch_month = "APR";
  
 var alt_cur = get_player_color(player);
  
@@ -46,59 +46,7 @@ alt_name[30] = "Inverted";
 alt_name[31] = "Peabody";
 
 
-//stolen from ASDF Guy which stole it from Kirby, if you steal this keep the chain going
-if !("hue" in self) hue = 0
-if get_player_color(player) = 23 {
-	hue+=.5 
-	if hue>255 hue-=255;
-	//make hue shift every step + loop around
 
-	color_rgb=make_color_rgb(192, 33, 255);
-	//make a gamemaker color variable using kirby's default color (body)
-	hue2=(color_get_hue(color_rgb)+hue) mod 255;
-	//shift that colour by Hue, make sure it also loops
-	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
-	//make a gamemaker color variable using the new hue
-	set_color_profile_slot(23,0,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
-	//set the new color using rgb values from the gamemaker color
-	
-		color_rgb=make_color_rgb(255, 155, 217);
-	hue2=(color_get_hue(color_rgb)+hue) mod 255;
-	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
-	set_color_profile_slot(23,1,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
-	
-		color_rgb=make_color_rgb(164, 161, 173);
-	hue2=(color_get_hue(color_rgb)+hue) mod 255;
-	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
-	set_color_profile_slot(23,2,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
-	
-		color_rgb=make_color_rgb(255, 231, 0);
-	hue2=(color_get_hue(color_rgb)+hue) mod 255;
-	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
-	set_color_profile_slot(23,3,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
-	
-		color_rgb=make_color_rgb(213, 7, 7);
-	hue2=(color_get_hue(color_rgb)+hue) mod 255;
-	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
-	set_color_profile_slot(23,4,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
-	
-		color_rgb=make_color_rgb(255, 124, 10);
-	hue2=(color_get_hue(color_rgb)+hue) mod 255;
-	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
-	set_color_profile_slot(23,5,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
-	
-		color_rgb=make_color_rgb(173, 173, 209);
-	hue2=(color_get_hue(color_rgb)+hue) mod 255;
-	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
-	set_color_profile_slot(23,6,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
-	
-		color_rgb=make_color_rgb(250, 255, 255);
-	hue2=(color_get_hue(color_rgb)+hue) mod 255;
-	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
-	set_color_profile_slot(23,7,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
-}
-init_shader();
- 
 //Patch
  
 draw_set_halign(fa_left);

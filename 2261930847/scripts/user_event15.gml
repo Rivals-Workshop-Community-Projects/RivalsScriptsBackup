@@ -335,11 +335,34 @@ with phone{
 	 * put the version number and full date.
 	 */
 
+	initPatch("2.11","April 2nd, 2021")
+	initPatchWords("Very Small Patch")
+	initPatchWords("
 	
-	initPatch("2.1","March, 13, 2021")
-	initPatchWords("Supports")
-	initPatchWords_ext("Added Kirby Support
-	Added Agent N Support", fa_left, c_gray, 1, 0);
+Utilt displacement bug fixed
+Utilt color bug fixed.
+Other bugs I can't remember lol
+")
+	
+	initPatch("2.1","March, 20, 2021")
+	initPatchWords("Buffs, Fixes, Compatibility")
+	initPatchWords("
+	
+Buffs:
+Ustrong fixed to connect better.
+Dash Attack - .6 kbs -> .7 kbs
+UAir - 6 bkb, .65 kbs-> 7.5 bkb, .75 kbs on all hitboxes except the spiking hitbox
+FAir - Angle 30, 6 bkb .5 kbs -> Angle 40, 7 bkb, .7 kbs on the sweetspot
+BAir - Angle 35, Angle flipper 6 -> Angle 145, Angle flipper 0
+Mud FSmash - Angle 35, .6 kbs -> Angle 40, .75 kbs
+
+Nerfs:
+Dtilt friction bug fixed
+
+Quality of Life:
+Added Kirby, Feri, Agent N. support
+")
+	
 
 	initPatch("2.0", "March, 12, 2021");
 	initPatchWords("Beegest patch.");

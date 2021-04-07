@@ -13,7 +13,7 @@ set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_clairen_nspecial_grab_success"));
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 3);
 
-set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
@@ -22,7 +22,7 @@ set_window_value(AT_NSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_ori_bash_hit"));
 //set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 
@@ -48,7 +48,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ice_shatter_big"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("nspecial_proj"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 0);
-set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 40);
+set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
@@ -60,7 +60,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, lanternfx);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 1);
-set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 160);
+set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 140);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X, -70);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 50);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 36);
@@ -74,9 +74,9 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, lanternfx);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_infinidagger"));//sfx_ice_shatter_big
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("nspecial2_proj"));
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_MASK, sprite_get("nspecial2_proj"));
-set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 40);
+set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 90);
 //set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 65);
-set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE_FLIPPER, 8);//7
+//set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE_FLIPPER, 8);//7
 set_hitbox_value(AT_NSPECIAL, 2, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
