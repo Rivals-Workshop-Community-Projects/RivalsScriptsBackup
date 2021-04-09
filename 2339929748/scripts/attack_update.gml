@@ -39,15 +39,16 @@ if(attack == AT_FSPECIAL){
     move_cooldown[AT_FSPECIAL] = 60;
 }
 
-//USPECIAL
+//USPECIAL block abilities
 if(attack == AT_USPECIAL){
 	if(window == 2 && window_timer == 9){
     switch(bl_select){
         case 0:
-            //Increase djumps
+            //Increase djumps, maybe make baba floaty?
             hudv = 1;
             floatv = true;
             sinkv = false;
+            firev = false;
         break;
         
         case 1:
@@ -61,12 +62,15 @@ if(attack == AT_USPECIAL){
         break;
         
         case 2:
+        //sets baba on fire
         hudv = 4;
         firev = true;
         sinkv = false;
+        floatv = false;
         break;
         
         case 3:
+        //makes baba faster on the ground
         hudv = 2;
         walk_speed = 8;
         dash_speed = 11;
@@ -75,9 +79,12 @@ if(attack == AT_USPECIAL){
         break;
         
         case 4:
-        create_deathbox(x, y-20, 16, 16, -1, true, 0, 3, 2);
+        //spawns destructive hitbox that can kill at 30. Still need to input a jigglypuff-esque stun
+        create_hitbox(AT_DSPECIAL, 1, x+20, y+20);
         firev = false;
         sinkv = false;
+        stunv = true;
+        endtimer = 120;
         break;
         
         case 5:
@@ -87,7 +94,7 @@ if(attack == AT_USPECIAL){
         break;
         
         case 6:
-        
+        //flips baba's direction in the air
         if(free){
         	spr_dir = -spr_dir;
         	hsp = 10*spr_dir;
@@ -99,6 +106,7 @@ if(attack == AT_USPECIAL){
         break;
         
         case 7:
+        //neutralizer
         hudv = 0;
         firev = false;
         sinkv = false;
@@ -146,11 +154,7 @@ if(attack == AT_DSPECIAL){
     }
     
     }
-    
-        if(instance_exists(asset_get("obj_article_solid"))){
-		        instance_destroy();
-        }
-        move_cooldown[AT_DSPECIAL] = 30;
+    move_cooldown[AT_DSPECIAL] = 30;
 }
 
 

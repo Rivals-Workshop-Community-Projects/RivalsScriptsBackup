@@ -32,13 +32,9 @@ lockontime = 180
 if (my_hitboxID.attack == AT_NSPECIAL or my_hitboxID.attack == AT_FSPECIAL)  && hit_player_obj != self{
     sound_play(sound_get("slice"));
     lockon = 1
-    
- 		if get_gameplay_time() % 4 <= 1 {   
    with hit_player_obj {
 		take_damage( player, -1 , 1 )
-}
-}
-
+   }
 }
 
 if my_hitboxID.attack == AT_DSPECIAL  {

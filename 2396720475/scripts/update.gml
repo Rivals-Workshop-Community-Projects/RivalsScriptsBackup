@@ -2,6 +2,11 @@
 // Used for gameplay mechanics
 // Runs every frame
 
+if (get_player_color(player) == 14 && state == PS_SPAWN && state_timer < 10){
+	set_victory_sidebar( sprite_get( "slime_result_small" ));
+	set_victory_portrait( sprite_get( "slime_portrait" ));
+}
+
 if (trailer_effect){
 	spawn_hit_fx(Box.x + 6, Box.y, hit_small1);
 	trailer_effect = false;
@@ -452,7 +457,7 @@ if (instance_exists(movingbox) && movingbox.destroy && movingbox.solid_timer == 
 		if (get_player_color(player) == 11){
 			Box.sprite_index = sprite_get("macka");
 		}
-		if (get_player_color(player) == 12 || get_player_color(player) == 10 || get_player_color(player) == 1 || SecretColor == 2 || SecretColor == 3){
+		if (get_player_color(player) == 12 || get_player_color(player) == 14 || get_player_color(player) == 10 || get_player_color(player) == 1 || SecretColor == 2 || SecretColor == 3){
 			Box.flag = false;
 		}		
 		if (movingbox.flag){		

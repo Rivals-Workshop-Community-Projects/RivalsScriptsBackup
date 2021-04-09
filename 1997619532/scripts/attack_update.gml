@@ -68,9 +68,11 @@ if attack == AT_DTILT and has_hit and !hitstop {
 
 if attack == AT_EXTRA_1 {
 	halo = 0
+	prat_land_time = 20;
 	 move_cooldown[AT_FSPECIAL] = 40
 	 
 	 if window == 1 && window_timer < 4 {
+	 		shake_camera(4,4)
 	 	 if left_down or left_pressed{
         spr_dir = -1
     }
@@ -82,6 +84,7 @@ if attack == AT_EXTRA_1 {
 	 } 
 	 
 	 if window == 2 {
+	 		shake_camera(2,2)
 	 	if hsp > 0 {
 	 		spr_dir = 1 
 	 	}
@@ -118,16 +121,13 @@ if window == 2 && window_timer % 3 = 0 {
     	
     }
 	
-	if window == 3 && !has_hit && free {
-		
-	set_state (PS_IDLE_AIR)	
-	}
-	
-	if window == 3 && window_timer == 12 && !has_hit {
-
-		
-	set_state (PS_IDLE)	
-	
+	if window == 3 && !has_hit {
+    spawn_hit_fx(x,y-30,302)
+    shake_camera(2,4)
+    sound_play(asset_get("sfx_spin"));
+    hsp /= 3
+    vsp = -12
+	set_state (PS_PRATFALL)	
 	}
 	
 	if window <= 2 && has_hit_player {
@@ -150,7 +150,7 @@ if window == 2 && window_timer % 3 = 0 {
 if attack == AT_EXTRA_2 {
 	//Blender
 	halo = 0
-	
+	prat_land_time = 20;
 	
 	if has_hit_player {
 		set_window_value(AT_EXTRA_2, 7, AG_WINDOW_CUSTOM_GRAVITY, 1);
@@ -174,7 +174,7 @@ if attack == AT_EXTRA_2 {
         
 	} 
     if window == 1 && window_timer == 1 {
-    	
+    		shake_camera(6,6)
     		var halodeact = spawn_hit_fx( x - (10 * spr_dir) , y - 50 , 305 )
     		halodeact.depth = -1000
     	
@@ -210,7 +210,7 @@ if attack == AT_EXTRA_3 {
     	    halo = 0
     		var rek = spawn_hit_fx( x - (8 * spr_dir) , y - 50 , 306 )
     		rek.depth = 1000
-    	
+    	shake_camera(6,6)
     }
     
       if window == 2 && get_player_color(player) == 5 && sakura == 1 {
@@ -386,15 +386,20 @@ if window > 2{
     move_cooldown[AT_USPECIAL] = 999
     }
     
-  if has_hit && window > 2 && !hitpause {
-  	window_timer += 1.5
-  	
-  } 
   
-  if window == 5 and window_timer == 12 && !has_hit {
-  	
-  	set_state (PS_PRATFALL)
-  	
+  if window == 5 and window_timer == 15 {
+  	if !has_hit {
+    prat_land_time = 12;
+  	} else {
+  	prat_land_time = 4;	
+  	}
+    set_state(PS_PRATFALL)
+  }
+  
+  if has_hit_player && window < 5 {
+  	if hit_player_obj.y > y {
+  		hit_player_obj.y -= 20
+  	}
   }
   
 }
@@ -414,6 +419,7 @@ if attack == AT_DSPECIAL {
        var stab = spawn_hit_fx( x + (5 * spr_dir) , y - 20 , 303 )
     		stab.depth = -1000
    	   	take_damage( player, -1 , 6 + (4 * stabt))
+   	   		shake_camera(6,6)
    	   	if get_player_damage( player) > 150 {
    	   		stabt = 10
    	   		window = 3
@@ -445,6 +451,7 @@ if attack == AT_DSPECIAL {
    }
     
     if window == 3 && window_timer == 1{
+    	shake_camera(6,6)
     	stabt += 1
         halo += 6
     }
@@ -472,6 +479,7 @@ move_cooldown[AT_NSPECIAL] = 30
     		halodeact.depth = -1000
 		window = 3
 		halo = 0    	
+			shake_camera(6,6)
    	
    }
    
@@ -514,11 +522,17 @@ if window == 1 && window_timer == 1 && !hitpause {
 
 if attack == AT_DAIR {
 	
-	can_fast_fall = false;
 
-if window == 8 && window_timer == 9 {
+if window == 8 {
 
+
+if has_hit && window_timer == 9 {
 set_state (PS_IDLE_AIR)	
+}
+
+if !has_hit && window_timer == 14 {
+set_state (PS_IDLE_AIR)	
+}
 	
 }
 

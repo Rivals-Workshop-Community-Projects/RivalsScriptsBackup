@@ -99,8 +99,8 @@ sound_play(sound_get("powerjump"))
 if attack == AT_FSPECIAL {
 can_jump = false;
 djumps = 2;
-has_walljump = false;
-move_cooldown[AT_FSPECIAL] = 100
+//has_walljump = false;
+move_cooldown[AT_FSPECIAL] = 10
 can_fast_fall = false
 
 if (window = 1 and window_timer = 1) or window = 8

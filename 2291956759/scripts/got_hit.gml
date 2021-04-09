@@ -11,7 +11,6 @@ move_cooldown[AT_EXTRA_1] = 60
 
 
 spawn_hit_fx (x, y - 40, 304)
-take_damage( player, -1 , floor(-0.5 * enemy_hitboxID.damage))
 inkshield -= enemy_hitboxID.damage*5
 x -= 20 * spr_dir
 }

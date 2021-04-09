@@ -124,6 +124,7 @@ expl_can_hit = true;
 fc_base_y = -40;
 fc_base_x = 0;
 fc_backspin = false;
+fc_bunt = false;
 
 fc_trail = hit_fx_create( sprite_get( "smoketrail" ), 15 );
 fc_effect = hit_fx_create( sprite_get( "explosion_single" ), 7 );

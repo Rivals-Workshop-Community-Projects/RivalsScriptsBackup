@@ -136,6 +136,7 @@ if attack == AT_FSPECIAL{
 				spawn_hit_fx( x  , y - 50 , 305 )
 			window = 3
 			window_timer = 0
+			move_cooldown[AT_FSPECIAL] = 60
 		}
 		
 		if special_down && supply >= 3 && free{
@@ -146,6 +147,7 @@ if attack == AT_FSPECIAL{
 				vsp = -6
 			window = 5
 			window_timer = 0
+			move_cooldown[AT_FSPECIAL] = 60
 		}
 		
 	}

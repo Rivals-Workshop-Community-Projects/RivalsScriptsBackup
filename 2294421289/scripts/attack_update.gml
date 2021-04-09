@@ -304,3 +304,19 @@ if (attack == AT_DATTACK)
   }
 }
 
+//Final smash
+
+if attack == 49
+{
+
+   //hsp = -2 * (cos(degtorad(joy_dir))) * spr_dir;
+   vsp = -5 * (sin(degtorad(joy_dir)));
+  can_fast_fall = 0;
+  can_move = 1;
+
+  if has_hit and window == 4 and window_timer == 1
+  {
+    sound_play( sound_get( "argh" ) );
+  }
+}
+

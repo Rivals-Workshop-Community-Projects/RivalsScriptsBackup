@@ -19,7 +19,7 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 8);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -12);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_spin_longer"));
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_forsburn_consume"));
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_INVINCIBILITY, 1);
 
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 7);

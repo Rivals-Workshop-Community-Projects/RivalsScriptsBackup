@@ -6,14 +6,14 @@ set_window_value(AT_JAB, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_JAB, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_JAB, 1, AG_WINDOW_SFX, asset_get("sfx_ice_shieldup"));
-set_window_value(AT_JAB, 1, AG_WINDOW_SFX_FRAME, 4);
+set_window_value(AT_JAB, 1, AG_WINDOW_SFX_FRAME, 5);
 
 set_window_value(AT_JAB, 2, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 
 
-set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 13);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_JAB, 3, AG_WINDOW_HAS_WHIFFLAG, 1);

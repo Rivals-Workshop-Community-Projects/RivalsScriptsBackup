@@ -13,7 +13,9 @@ if (attack == AT_NSPECIAL){
 		fc_count = 1;
 		fc_smoketimer = 6;
 		fc_backspin = false;
+		fc_bunt = false;
 		
+		if(vsp > 0) vsp/=4;
 		
 		// Normal sprites
 		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
@@ -126,12 +128,12 @@ if (attack == AT_NSPECIAL){
 		window_timer = fc_max_hold_time;
 	}
 	
-	// Spin throw
+	// Spin/bunt throw
 	if((window == 1 && window_timer < fc_max_hold_time && window_timer > 6) && (attack_down || left_strong_pressed || right_strong_pressed || up_strong_pressed || down_strong_pressed || shield_down))
 	{
 		window_timer = fc_max_hold_time;
-		fc_backspin = true;
-
+		fc_backspin = !(left_strong_pressed || right_strong_pressed || up_strong_pressed || down_strong_pressed);
+		fc_bunt = left_strong_pressed || right_strong_pressed || up_strong_pressed || down_strong_pressed;
 	}
 	
 	// Spin attributes
@@ -227,7 +229,7 @@ if (attack == AT_NSPECIAL){
 		// Cooldown
 		move_cooldown[AT_NSPECIAL] = 45;
 		
-		throw_speed = firecracker_speed;
+		throw_speed = fc_bunt ? firecracker_speed * .75 : firecracker_speed;
 		// Set firecracker speed
 		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, throw_speed * (-dsin(firecracker_angle)*1.3) + (vsp*0.5));
 		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, throw_speed * dcos(firecracker_angle));
@@ -619,7 +621,7 @@ if (attack == AT_FSPECIAL){
 		{
 			grabbedid = tempSolid;
 			grabbed_solid = true;
-			can_grab_solid_fspec = false;
+			can_grab_solid_fspec = free && tempPlat!=noone;
 			set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 8);
 			
 			 // Play sound and hitpause
@@ -1397,7 +1399,7 @@ if (attack == AT_USPECIAL){
 		{
 			grabbedid = tempSolid;
 			grabbed_solid = true;
-			can_grab_solid_uspec = false;
+			can_grab_solid_uspec = free && tempPlat!=noone;;
 			
 			 // Play sound and hitpause
 			sound_play(sound_get("tenru_grab"));
@@ -2478,6 +2480,15 @@ if(attack == AT_DAIR){
 		djumps = 0;
 	}
 
+	
+}
+#endregion
+
+#region Uair
+//Dair code
+if(attack == AT_UAIR){
+
+	can_wall_jump = window == 5;
 	
 }
 #endregion

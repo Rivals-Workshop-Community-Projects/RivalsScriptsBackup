@@ -2,7 +2,11 @@ set_attack_value(AT_DSPECIAL, AG_CATEGORY, 2);
 set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_DSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_DSPECIAL, AG_OFF_LEDGE, 1);
-if (get_player_color(player) == 9){
+if (get_player_color(player) == 7){
+    set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get("dspecial_ea"));
+    set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecial_ea"));
+}
+else if (get_player_color(player) == 9){
     set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get("dspecial_trans"));
     set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecial_trans"));
 }
@@ -22,11 +26,13 @@ set_window_value(AT_DSPECIAL, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 1);
+set_window_value(AT_DSPECIAL, 2, AG_WINDOW_INVINCIBILITY, 2);
 
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_INVINCIBILITY, 2);
 
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 10);
@@ -34,6 +40,9 @@ set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 
 set_num_hitboxes(AT_DSPECIAL, 2);
+if (has_rune("H")){
+   set_num_hitboxes(AT_DSPECIAL, 1);  
+}
 
 set_hitbox_value(AT_DSPECIAL, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 1);
@@ -44,7 +53,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_Y, -30);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 80);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 80);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 1);
-set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 2);
+set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 7.5);
 set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, .2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 8);

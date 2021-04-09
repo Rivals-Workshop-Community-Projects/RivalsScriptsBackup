@@ -128,6 +128,16 @@ if ("practice" in self)
 						AddText("");
 						AddText("Added a few new alts");
 						break;
+					case 6:
+						AddText("v1.6 - 4 Apr 2021");
+						AddText("");
+						AddText("Adjusted FAir speeds to make it less oppressive");
+						AddText("FAir will now instantly end when parried");
+						AddText("");
+						AddText("Increased UStrong hitpause scaling to increase impact");
+						AddText("");
+						AddText("Added a few new alts");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

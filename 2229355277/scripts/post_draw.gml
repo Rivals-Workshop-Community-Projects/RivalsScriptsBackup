@@ -28,6 +28,10 @@ if attack == AT_NSPECIAL and (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUN
   draw_sprite_ext(sprite_get("buttons"), 1 , spell2x + 4, buttonsy, 1, 1, 0, slottwo_col, 1);
 }
 
+if show_flashing_icon{
+    draw_sprite_ext(sprite_get("spells"), prev_spell_icon , spell1x + 14, spellsy - 4, 1, 1, 0, col_flashing, 1);
+}
+
 if attack == AT_UAIR and (state == PS_ATTACK_AIR){
   draw_sprite_ext(sprite_get("uair_effect"), image_index, x, y, spr_dir, 1, 0, -1, 1);
 }
@@ -48,6 +52,8 @@ if wearing_hat && sprite_index == sprite_get("idle"){
   draw_sprite_ext(sprite_get("santahat"), image_index, x, y, spr_dir, 1, 0, -1, 1);
 }
 */
+
+
 
 if state == PS_PARRY{
   draw_sprite_ext(sprite_get("parryshield"), image_index, x, y, spr_dir, 1, 0, -1, 1);

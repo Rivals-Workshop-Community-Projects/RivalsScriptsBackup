@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 24;
+	var noOfPatches = 26;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -116,11 +116,28 @@ with (oPlayer)
 // transcend
 transcounter = clamp((((get_player_color(player) == 1 || get_player_color(player) == 20) && (state==PS_SPAWN||(attack == AT_TAUNT && state == PS_ATTACK_GROUND)))?transcounter+2:transcounter-6),0,70);
 
+// hue
+hue+=3;
+hue%=255;
+
 // sounds
 switch (state)
 {
 	case PS_SPAWN:
-		if (state_timer == 68) sound_play(sound_get("button"));
+		if (state_timer == 68)
+		{
+			sound_play(sound_get("button"));
+			aura = ("temp_level" in self && temp_level == 1) || aura || auraMeter == 67 || get_match_setting(SET_TURBO);
+			gpu_set_alphatestfunc(aura);
+			if (aura)
+			{
+				sound_play(asset_get("sfx_absa_uair"));
+				shake_camera(8, 6);
+                spawn_hit_fx(x, y-42, 157);
+			}
+		}
+		else if (state_timer < 68 && auraMeter != -1) auraMeter = taunt_down?auraMeter+1:-1;
+		else if (state_timer == 1) auraMeter = 0;
 		break;
 	case PS_DASH_START:
 	case PS_DASH_TURN:

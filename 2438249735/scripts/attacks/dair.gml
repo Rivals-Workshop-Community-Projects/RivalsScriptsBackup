@@ -18,7 +18,7 @@ set_window_value(AT_DAIR, 2, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_DAIR, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DAIR, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 
-set_window_value(AT_DAIR, 3, AG_WINDOW_TYPE, 9);
+set_window_value(AT_DAIR, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DAIR, 3, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_DAIR, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DAIR, 3, AG_WINDOW_ANIM_FRAME_START, 4);

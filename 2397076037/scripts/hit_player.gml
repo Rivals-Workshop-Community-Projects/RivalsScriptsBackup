@@ -8,6 +8,16 @@ if get_player_color(player) == 7 {
 rankm += my_hitboxID.damage*15
 inactive = 60
 
+ if  (my_hitboxID.attack == AT_DSPECIAL) {
+ 		rankm += 10
+ }
+ 
+  if  (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) {
+ 		rankm += 30
+ 		    sound_play(sound_get("SpaceCut"))
+ 		    shake_camera(2,6)
+ }
+ 
  if  (my_hitboxID.attack == AT_NSPECIAL) {
  	if DT <= 16 {
  		DT += 3

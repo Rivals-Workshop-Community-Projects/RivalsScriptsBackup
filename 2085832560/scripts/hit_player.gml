@@ -45,56 +45,67 @@ if introhit = 0 {
 }
 intro = 1
 
-	if triggered > 0 &&  my_hitboxID.damage > 1 {   
+	if rank >= 4 &&  my_hitboxID.damage > 1 {   
 		 sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone, 0.6 + my_hitboxID.damage/20)
 
 
 		if my_hitboxID.type == 1 && my_hitboxID.attack != AT_TAUNT{
-			hitstop += 4
-			hit_player_obj.hitstop += 4
+			hitstop += 2
+			hit_player_obj.hitstop += 2
 		}
-	if my_hitboxID.damage >= 2 {
+	if my_hitboxID.damage > 2 {
 	   	 with hit_player_obj {
                  take_damage( player, -1 , 1)
          }	
          
      }
-     
-     
-     if my_hitboxID.damage >= 6 {
-	   	 with hit_player_obj {
-                 take_damage( player, -1 , 2)
-         }	
 
-     }
 	}
 
-if my_hitboxID.attack != AT_EXTRA_1 and my_hitboxID.attack != AT_EXTRA_2
-and my_hitboxID.attack != AT_EXTRA_3{
-	
+///if my_hitboxID.attack != AT_EXTRA_1 and my_hitboxID.attack != AT_EXTRA_2
+///and my_hitboxID.attack != AT_EXTRA_3 and move_cooldown[AT_FSPECIAL_2] == 0{
+///	
+///if infernal2 < 300{
+///
+///
+///    infernal2 += min(30,floor(my_hitboxID.damage * 2 * (rank/2 + 1)))
+///
+///if attack != AT_USTRONG and attack != AT_FSTRONG and attack != AT_DSTRONG and attack != AT_USPECIAL and attack != AT_DAIR{
+///    move_cooldown[AT_FSPECIAL_2] = 15
+///}
+///
+///}
+///
+///}
+
 if infernal2 < 300{
-
-if infernal2 < 100 {	
-    infernal2 += min(30,floor(my_hitboxID.damage *4))
-
+	if my_hitboxID.type == 1 {
+	infernal2 += min(15,floor(hit_player_obj.hitstop * 3 * (rank/2 + 1)))
+	    if my_hitboxID.attack == AT_NAIR {
+	    move_cooldown[AT_USPECIAL_GROUND] = 30
+	    }
+	} else {
+		
+	    
+		if my_hitboxID.damage <= 2 && move_cooldown[AT_USPECIAL_GROUND] == 0 {
+			infernal2 += 2
+	    	move_cooldown[AT_USPECIAL_GROUND] = 5
+		}
+	    if my_hitboxID.damage > 2 && my_hitboxID.damage <= 6 && move_cooldown[AT_USPECIAL_GROUND] == 0 {
+			infernal2 += 10
+			move_cooldown[AT_USPECIAL_GROUND] = 8	
+		}
+		if my_hitboxID.damage > 6 && move_cooldown[AT_USPECIAL_GROUND] == 0 {
+			infernal2 += 20
+			move_cooldown[AT_USPECIAL_GROUND] = 12
+		}
+		
+	    if my_hitboxID.attack == AT_NAIR {
+	    move_cooldown[AT_USPECIAL_GROUND] = 30
+	    }
+	    
+	}
 }
-
-if infernal2 >= 100 and infernal2 < 200 {	
-
-    infernal2 += min(30,floor(my_hitboxID.damage *5))
-
-}
-
-if infernal2 >= 200 {	
-
-    infernal2 += min(30,floor(my_hitboxID.damage *6))
-
-}
-
-}
-
-}
-
 
 ///
 
@@ -235,3 +246,9 @@ if my_hitboxID.attack == AT_EXTRA_2 && my_hitboxID.hbox_num >= 21 {
 	
 }
 
+
+rankm += my_hitboxID.damage*15
+inactive = 60
+
+
+   

@@ -9,6 +9,8 @@ switch (attack)
         break;
 }
 
+if (aura) was_parried = false;
+
 switch (attack)
 {
     case AT_TAUNT:
@@ -44,7 +46,21 @@ switch (attack)
             if (state_timer == 1)
             {
                 sound_play(asset_get("sfx_ghost_glove"));
-                spawn_base_dust(x, y, "drip", spr_dir);
+                spawn_base_dust(floor(x), floor(y), "drip", spr_dir);
+                if (aura)
+                {
+                    if (instance_exists(auraClone))
+                    {
+                        instance_destroy(auraClone);
+                        sound_play(asset_get("sfx_abyss_despawn"));
+                    }
+                    else
+                    {
+                        auraClone = instance_create(x,y,"oPlayer");
+                        auraClone.aura = true;
+                        sound_play(asset_get("sfx_abyss_spawn"));
+                    }
+                }
             }
         }
         else
@@ -53,6 +69,12 @@ switch (attack)
         }
         break;
     case AT_JAB:
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(3, 4);
+            clear_button_buffer(PC_ATTACK_PRESSED);
+        }
         was_parried = false;
         if (has_hit && window == 3 && !hitpause)
         {
@@ -65,14 +87,39 @@ switch (attack)
          if (state_timer == 1) spawn_base_dust(x-10*spr_dir, y, "ftilt", spr_dir);
     case AT_UTILT:
     case AT_DTILT:
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(3, 4);
+            clear_button_buffer(PC_ATTACK_PRESSED);
+            clear_button_buffer(PC_DOWN_STICK_PRESSED);
+            clear_button_buffer(PC_LEFT_STICK_PRESSED);
+            clear_button_buffer(PC_RIGHT_STICK_PRESSED);
+            clear_button_buffer(PC_DOWN_STRONG_PRESSED);
+            clear_button_buffer(PC_LEFT_STRONG_PRESSED);
+            clear_button_buffer(PC_RIGHT_STRONG_PRESSED);
+        }
         RuneH();
         break;
     case AT_NAIR:
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(4, 6);
+        }
         if (window == 1 && window_timer == 2) sound_play(asset_get("sfx_spin"));
         break;
     case AT_DAIR:
         can_move = false;
         can_jump = has_rune("B");
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(4, 6);
+            clear_button_buffer(PC_ATTACK_PRESSED);
+            clear_button_buffer(PC_DOWN_STICK_PRESSED);
+            clear_button_buffer(PC_DOWN_STRONG_PRESSED);
+        }
         switch (window)
         {
             case 1:
@@ -80,7 +127,7 @@ switch (attack)
                 break;
             case 2:
                 if (window_timer == 1) jsTimer = 10;
-                if (state_timer >= dairCancel && !attack_down && !down_stick_down)
+                if (state_timer >= (aura?dairCancel/2:dairCancel) && !attack_down && !down_stick_down)
                 {
                     vsp = -14;
                     set_state(PS_IDLE_AIR);
@@ -98,7 +145,25 @@ switch (attack)
                 break;
         }
         break;
+    case AT_FAIR:
+    case AT_BAIR:
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(3, 4);
+            clear_button_buffer(PC_ATTACK_PRESSED);
+            clear_button_buffer(PC_LEFT_STICK_PRESSED);
+            clear_button_buffer(PC_RIGHT_STICK_PRESSED);
+            clear_button_buffer(PC_LEFT_STRONG_PRESSED);
+            clear_button_buffer(PC_RIGHT_STRONG_PRESSED);
+        }
+        break;
     case AT_UAIR:
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(4, 5);
+        }
         switch (window)
         {
             case 1:
@@ -118,17 +183,17 @@ switch (attack)
                     {
                         if (window == 3 && window_timer == 7)
                         {
-                            create_hitbox(AT_UAIR, 1, x, y);
+                            create_hitbox(AT_UAIR, 1, floor(x), floor(y));
                             reset_num_hitboxes(AT_UAIR);
                         }
                         else if (window_timer%3==1)
                         {
-                            create_hitbox(AT_UAIR, 2, x, y);
+                            create_hitbox(AT_UAIR, 2, floor(x), floor(y));
                             set_num_hitboxes(AT_UAIR, 1);
                         }
                     }
                     else if (!free&&(window_timer<7||window==2))
-                        create_hitbox(AT_UAIR, 1, x, y);
+                        create_hitbox(AT_UAIR, 1, floor(x), floor(y));
                 }
                 break;
             case 4:
@@ -137,11 +202,8 @@ switch (attack)
         }
         break;
     case AT_DATTACK:
-        if (window == 2 && has_hit)
-        {
-            window = 3;
-            window_timer = 0;
-        }
+        if (aura) SkipWindow(4, 5);
+        if (has_hit) SkipWindow(2, 3);
         RuneH();
         break;
     case AT_NTHROW:
@@ -178,8 +240,8 @@ switch (attack)
                     else if (strongAng>=260 && strongAng<=280)  hitAng = 270;
                     else                                        hitAng = clamp(strongAng, 45, 135);
                     set_hitbox_value(AT_NTHROW, 1, HG_ANGLE, hitAng);
-                    spawn_hit_fx(x+get_hitbox_value(AT_NTHROW, 1, HG_HITBOX_X)*spr_dir, y+get_hitbox_value(AT_NTHROW, 1, HG_HITBOX_Y), 301);
-                    var portal = instance_create(x+get_hitbox_value(AT_NTHROW, 1, HG_HITBOX_X)*spr_dir,y+get_hitbox_value(AT_NTHROW, 1, HG_HITBOX_Y),"obj_article1");
+                    spawn_hit_fx(floor(x+get_hitbox_value(AT_NTHROW, 1, HG_HITBOX_X)*spr_dir), floor(y+get_hitbox_value(AT_NTHROW, 1, HG_HITBOX_Y)), 301);
+                    var portal = instance_create(floor(x+get_hitbox_value(AT_NTHROW, 1, HG_HITBOX_X)*spr_dir),floor(y+get_hitbox_value(AT_NTHROW, 1, HG_HITBOX_Y)),"obj_article1");
                     portal.moveAngle = strongAng;
                     portal.hsp = lengthdir_x(2, strongAng);
                     portal.vsp = lengthdir_y(2, strongAng);
@@ -199,6 +261,15 @@ switch (attack)
             window_timer = 1;
             uspecStartup = 12;
         }
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(3, 5);
+            clear_button_buffer(PC_UP_STRONG_PRESSED);
+            clear_button_buffer(PC_DOWN_STRONG_PRESSED);
+            clear_button_buffer(PC_LEFT_STRONG_PRESSED);
+            clear_button_buffer(PC_RIGHT_STRONG_PRESSED);
+        }
         break;
     case AT_NSPECIAL:
         switch (window)
@@ -212,9 +283,9 @@ switch (attack)
                 {
                     if (state_timer % 16 == 0 && !free) spawn_base_dust(x-20*spr_dir, y, "nspec", spr_dir);
                     can_shield = nspecCharge < nspecMax;
-                    if (can_shield && shield_down && !shield_counter) tutDoneAdv[1] = true;
+                    if (can_shield && shield_pressed && !shield_counter) tutDoneAdv[1] = true;
                     with (obj_article1) if (player_id == other.id && replacedCount == 1) nspecAngle = other.joy_dir;
-                    if (nspecCharge == nspecMax - 1)
+                    if (nspecCharge == nspecMax - 1 || (aura && state_timer == 3))
                     {
                         sound_play(asset_get("mfx_star"));
                         var owo = spawn_hit_fx(x+2*spr_dir,y-42,shinestar_effect); owo.depth = -10;
@@ -241,9 +312,16 @@ switch (attack)
                 tutDone[1] = true;
                 break;
         }
+        if (aura)
+        {
+            SkipWindow(1, 2);
+            SkipWindow(3, 4);
+            SkipWindow(5, 6);
+            nspecCharge = nspecMax;
+        }
         break;
     case AT_DSPECIAL:
-        move_cooldown[attack] = dspecCoolMax;
+        if (!aura) move_cooldown[attack] = dspecCoolMax;
         fast_falling = false;
         do_a_fast_fall = false;
         hsp = 8*spr_dir;
@@ -264,7 +342,7 @@ switch (attack)
                 vsp/=1.2;
                 fspecX = 0;
                 fspecX2 = 0;
-                if (window_timer == get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH))
+                if (window_timer == get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH) || aura)
                 {
                     if (down_down)
                     {
@@ -331,7 +409,7 @@ switch (attack)
                 }
                 break;
             case 4:
-                if (!fspecHooked || was_parried || shield_down)
+                if (!fspecHooked || shield_down || was_parried)
                 {
                     fspecX -= 100;
                     if (fspecX <= 0)
@@ -388,6 +466,11 @@ switch (attack)
         }
         can_fast_fall = false;
         can_move = false;
+        if (aura)
+        {
+            SkipWindow(1, 3);
+            SkipWindow(5, 7);
+        }
         break;
     case AT_USPECIAL:
     {
@@ -401,7 +484,7 @@ switch (attack)
                 can_fast_fall = false;
                 can_move = false;
                 can_shield = true;
-                if (shield_down && !shield_counter) tutDoneAdv[2] = true;
+                if (shield_pressed && !shield_counter) tutDoneAdv[2] = true;
                 free = true;
                 uspecSpeed.hsp = lengthdir_x(145, joy_pad_idle?spr_dir==1?70:110:joy_dir);
                 uspecSpeed.vsp = lengthdir_y(145, joy_pad_idle?spr_dir==1?70:110:joy_dir);
@@ -448,6 +531,12 @@ switch (attack)
                 can_wall_jump = true;
                 break;
         }
+    }
+    if (aura)
+    {
+        if (!special_down) SkipWindow(1, 2);
+        SkipWindow(2, 3);
+        SkipWindow(5, 6);
     }
     break;
     case 49:
@@ -560,6 +649,9 @@ switch (attack)
 #define spawn_base_dust
 {
     ///spawn_base_dust(x, y, name, ?dir)
+
+    if (hitpause) return noone;
+
     var dlen; //dust_length value
     var dfx; //dust_fx value
     var dfg; //fg_sprite value
@@ -599,5 +691,15 @@ switch (attack)
         old_hsp = 0;
         vsp = 0;
         old_vsp = 0;
+    }
+}
+
+#define SkipWindow(_before, _after)
+{
+    if (window == _before)
+    {
+        for (var i = _before; i < _after; ++i) if (get_window_value(attack, i, AG_WINDOW_HAS_SFX) && (_before != i || window_timer <= get_window_value(attack, i, AG_WINDOW_SFX_FRAME))) sound_play(get_window_value(attack, i, AG_WINDOW_SFX));
+	    window = _after;
+	    window_timer = 0;
     }
 }

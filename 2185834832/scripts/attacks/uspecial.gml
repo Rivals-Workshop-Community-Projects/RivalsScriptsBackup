@@ -7,7 +7,7 @@ set_attack_value(AT_USPECIAL, AG_AIR_SPRITE, sprite_get("uspecialair"));
 set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
 set_attack_value(AT_USPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("uspecialair_hurt"));
 
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 46);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 38);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 10);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, 0);
@@ -62,6 +62,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_USPECIAL, 1, HG_EXTENDED_PARRY_STUN, true);
 
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 2)
 set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_GRAVITY, 0);
@@ -93,6 +94,7 @@ set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_USPECIAL, 2, HG_EXTENDED_PARRY_STUN, true);
 
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_TYPE, 1)
 set_hitbox_value(AT_USPECIAL, 3, HG_WINDOW, 2);

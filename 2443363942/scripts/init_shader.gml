@@ -13,6 +13,9 @@ else if (get_player_color(player) == 8){
     set_victory_portrait(sprite_get("portrait_gold"));
     set_victory_sidebar(sprite_get("result_small_gold"));
 }
+else if (get_player_color(player) == 9){
+    set_victory_portrait(sprite_get("portrait_trans"));
+}
 else{
     set_victory_portrait(sprite_get("portrait"));
     set_victory_sidebar(sprite_get("result_small"));

@@ -297,6 +297,9 @@ if attack == AT_FAIR && !hitpause {
 
 if attack == AT_UAIR && !hitpause {
 
+     if window == 1 && window_timer == 1{
+        sound_play(asset_get("sfx_ice_shatter"));
+    }
 
 if window == 3 {
 		if window_timer == 1 {
@@ -436,7 +439,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 0.3);
 
 if attack == AT_USPECIAL {
  
-
+can_fast_fall = false
 if timefreeze > 40  {
 	vsp /= 1.1
 } 
@@ -604,6 +607,7 @@ if window == 2 {
 }
 
 if attack == AT_NSPECIAL {
+	move_cooldown[AT_NSPECIAL] = 40
 	if free {
 		can_move = false
 		can_fast_fall = false
@@ -910,6 +914,9 @@ if attack == AT_FAIR {
 
 
 if attack == AT_TAUNT {
+   if timefreeze > 2 && get_gameplay_time() % 2 == 0 {
+		timefreeze += 1
+	}
 	
 	if window == 1{
 		songplay = 0

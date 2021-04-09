@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 2, 12, 26 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 9 );
+set_num_palettes( 22 );
 
 // Blueberry
 set_color_profile_slot( 1, 0, 50, 44, 184 ); //Body
@@ -103,6 +103,123 @@ set_color_profile_slot( 8, 3, 102, 10, 10 ); //Knife
 set_color_profile_slot( 8, 4, 232, 0, 139 ); //Fire
 set_color_profile_slot( 8, 5, 158, 32, 32 ); //White
 set_color_profile_slot( 8, 6, 105, 0, 0 ); //Ghost
+
+// Norman
+set_color_profile_slot( 9, 0, 98, 145, 74 ); //Body
+set_color_profile_slot( 9, 1, 110, 0, 140 ); //Cap
+set_color_profile_slot( 9, 2, 255, 237, 145 ); //Face
+set_color_profile_slot( 9, 3, 209, 126, 0 ); //Knife
+set_color_profile_slot( 9, 4, 255, 0, 0 ); //Fire
+set_color_profile_slot( 9, 5, 255, 243, 209 ); //White
+set_color_profile_slot( 9, 6, 255, 115, 0 ); //Ghost
+
+// Phobos
+set_color_profile_slot( 10, 0, 204, 190, 190 ); //Body
+set_color_profile_slot( 10, 1, 250, 233, 233 ); //Cap
+set_color_profile_slot( 10, 2, 135, 0, 0 ); //Face
+set_color_profile_slot( 10, 3, 64, 0, 0 ); //Knife
+set_color_profile_slot( 10, 4, 16, 16, 23 ); //Fire
+set_color_profile_slot( 10, 5, 102, 0, 0 ); //White
+set_color_profile_slot( 10, 6, 0, 0, 0 ); //Ghost
+
+// RHCP
+set_color_profile_slot( 11, 0, 255, 242, 0 ); //Body
+set_color_profile_slot( 11, 1, 255, 242, 0 ); //Cap
+set_color_profile_slot( 11, 2, 255, 251, 184 ); //Face
+set_color_profile_slot( 11, 3, 255, 242, 0 ); //Knife
+set_color_profile_slot( 11, 4, 255, 224, 163 ); //Fire
+set_color_profile_slot( 11, 5, 255, 242, 0 ); //White
+set_color_profile_slot( 11, 6, 255, 251, 186 ); //Ghost
+
+// Flesh
+set_color_profile_slot( 12, 0, 204, 155, 104 ); //Body
+set_color_profile_slot( 12, 1, 51, 39, 26 ); //Cap
+set_color_profile_slot( 12, 2, 204, 190, 169 ); //Face
+set_color_profile_slot( 12, 3, 204, 104, 104 ); //Knife
+set_color_profile_slot( 12, 4, 204, 24, 24 ); //Fire
+set_color_profile_slot( 12, 5, 204, 73, 73 ); //White
+set_color_profile_slot( 12, 6, 204, 192, 180 ); //Ghost
+
+// Cacturne & Shuppet
+set_color_profile_slot( 13, 0, 200, 226, 181 ); //Body
+set_color_profile_slot( 13, 1, 69, 114, 74 ); //Cap
+set_color_profile_slot( 13, 2, 215, 185, 96 ); //Face
+set_color_profile_slot( 13, 3, 69, 114, 74 ); //Knife
+set_color_profile_slot( 13, 4, 107, 176, 114 ); //Fire
+set_color_profile_slot( 13, 5, 104, 173, 112 ); //White
+set_color_profile_slot( 13, 6, 125, 129, 167 ); //Ghost
+
+// Phineas & Ferb
+set_color_profile_slot( 14, 0, 246, 180, 154 ); //Body
+set_color_profile_slot( 14, 1, 209, 33, 29 ); //Cap
+set_color_profile_slot( 14, 2, 37, 45, 156 ); //Face
+set_color_profile_slot( 14, 3, 125, 81, 66 ); //Knife
+set_color_profile_slot( 14, 4, 242, 200, 186 ); //Fire
+set_color_profile_slot( 14, 5, 195, 125, 101 ); //White
+set_color_profile_slot( 14, 6, 82, 135, 87 ); //Ghost
+
+// Ao Oni
+set_color_profile_slot( 15, 0, 183, 159, 252 ); //Body
+set_color_profile_slot( 15, 1, 183, 159, 252 ); //Cap
+set_color_profile_slot( 15, 2, 252, 252, 252 ); //Face
+set_color_profile_slot( 15, 3, 128, 122, 187 ); //Knife
+set_color_profile_slot( 15, 4, 183, 159, 252 ); //Fire
+set_color_profile_slot( 15, 5, 183, 159, 252 ); //White
+set_color_profile_slot( 15, 6, 183, 159, 252 ); //Ghost
+
+// Listener-Kun & Hosoinu
+set_color_profile_slot( 16, 0, 217, 207, 162 ); //Body
+set_color_profile_slot( 16, 1, 255, 255, 255 ); //Cap
+set_color_profile_slot( 16, 2, 255, 255, 255 ); //Face
+set_color_profile_slot( 16, 3, 148, 105, 121 ); //Knife
+set_color_profile_slot( 16, 4, 240, 229, 179 ); //Fire
+set_color_profile_slot( 16, 5, 200, 172, 181 ); //White
+set_color_profile_slot( 16, 6, 255, 255, 255 ); //Ghost
+
+// Smithers
+set_color_profile_slot( 17, 0, 254, 217, 15 ); //Body
+set_color_profile_slot( 17, 1, 164, 222, 182 ); //Cap
+set_color_profile_slot( 17, 2, 250, 253, 241 ); //Face
+set_color_profile_slot( 17, 3, 189, 132, 15 ); //Knife
+set_color_profile_slot( 17, 4, 254, 234, 122 ); //Fire
+set_color_profile_slot( 17, 5, 254, 217, 15 ); //White
+set_color_profile_slot( 17, 6, 160, 159, 114 ); //Ghost
+
+// Psychicpebbles
+set_color_profile_slot( 18, 0, 255, 233, 196 ); //Body
+set_color_profile_slot( 18, 1, 66, 47, 41 ); //Cap
+set_color_profile_slot( 18, 2, 242, 219, 178 ); //Face
+set_color_profile_slot( 18, 3, 173, 157, 128 ); //Knife
+set_color_profile_slot( 18, 4, 242, 232, 213 ); //Fire
+set_color_profile_slot( 18, 5, 242, 219, 178 ); //White
+set_color_profile_slot( 18, 6, 255, 248, 237 ); //Ghost
+
+// Sylvanos
+set_color_profile_slot( 19, 0, 65, 92, 52 ); //Body
+set_color_profile_slot( 19, 1, 130, 181, 0 ); //Cap
+set_color_profile_slot( 19, 2, 255, 199, 130 ); //Face
+set_color_profile_slot( 19, 3, 255, 129, 79 ); //Knife
+set_color_profile_slot( 19, 4, 52, 97, 0 ); //Fire
+set_color_profile_slot( 19, 5, 255, 199, 130 ); //White
+set_color_profile_slot( 19, 6, 255, 219, 219 ); //Ghost
+
+// Doomkin
+set_color_profile_slot( 20, 0, 255, 98, 0 ); //Body
+set_color_profile_slot( 20, 1, 82, 60, 0 ); //Cap
+set_color_profile_slot( 20, 2, 191, 255, 0 ); //Face
+set_color_profile_slot( 20, 3, 26, 166, 0 ); //Knife
+set_color_profile_slot( 20, 4, 154, 255, 0 ); //Fire
+set_color_profile_slot( 20, 5, 169, 255, 112 ); //White
+set_color_profile_slot( 20, 6, 110, 255, 0 ); //Ghost
+
+// Void
+set_color_profile_slot( 21, 0, 38, 38, 38 ); //Body
+set_color_profile_slot( 21, 1, 38, 38, 38 ); //Cap
+set_color_profile_slot( 21, 2, 255, 186, 186 ); //Face
+set_color_profile_slot( 21, 3, 255, 214, 214 ); //Knife
+set_color_profile_slot( 21, 4, 255, 248, 224 ); //Fire
+set_color_profile_slot( 21, 5, 255, 230, 230 ); //White
+set_color_profile_slot( 21, 6, 242, 255, 242 ); //Ghost
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -13,8 +13,8 @@ if state == PS_ATTACK_GROUND && ((attack == AT_FSTRONG or attack == AT_USTRONG) 
 	}
 	
 	if scharge > 0 && state_timer % 5 >= 2 {
-        draw_sprite_ext(sprite_index, image_index, x + 2 - hsp*1.1 - random_func(2,4,true) , y - 2 - vsp*1.1 + random_func(1,4,true)  , spr_dir, 1, 0 , c_black , 0.1 + scharge/200);
-		draw_sprite_ext(sprite_index, image_index, x - 2 - hsp*1.05 + random_func(2,4,true) , y + 2 - vsp*1.05 - random_func(1,4,true)  , spr_dir, 1, 0 , c_black , 0.3 + scharge/200);
+        draw_sprite_ext(sprite_index, image_index, x + 2 - hsp*1.1 - random_func(2,4,true) , y - 2 - vsp*1.1 + random_func(1,4,true)  , spr_dir, 1, 0 , c_black , scharge/200 - 0.2);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - hsp*1.05 + random_func(2,4,true) , y + 2 - vsp*1.05 - random_func(1,4,true)  , spr_dir, 1, 0 , c_black , scharge/200 - 0.2);
 	}
 	
 	if scharge > 150 {
@@ -26,7 +26,12 @@ if state == PS_ATTACK_GROUND && ((attack == AT_FSTRONG or attack == AT_USTRONG) 
 
 
 if state == PS_CROUCH && fcharge < 3 {
+	        		draw_sprite_ext(sprite_index, image_index, x - 3 + random_func(1,6,true) , y - random_func(2,6,true), 1.04 * spr_dir, 1.04, 0 , c_white , 0.4);
+ 
+			 gpu_set_blendmode(bm_add);
         		draw_sprite_ext(sprite_index, image_index, x - 3 + random_func(1,6,true) , y - random_func(2,6,true), 1.04 * spr_dir, 1.04, 0 , c_white , 0.4);
+        gpu_set_blendmode(bm_normal);
+	
 }
 
 

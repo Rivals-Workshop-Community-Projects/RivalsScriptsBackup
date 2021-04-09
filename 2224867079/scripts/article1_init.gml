@@ -2,6 +2,7 @@
 
 init = 0;
 sprite_index = sprite_get("blue_proj_grounded");
+mask_index = sprite_get("article_collision_mask");
 
 state = 0;
 state_timer = 0;

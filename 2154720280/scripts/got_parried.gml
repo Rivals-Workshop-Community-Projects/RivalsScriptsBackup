@@ -1,4 +1,14 @@
 ///
+if my_hitboxID.type != 1 {
+    
+       	with (pHitBox) {
+  		if player_id == other.id {
+  			destroyed = true
+  		}
+  	}
+  	
+}
+
 
 
 
@@ -10,7 +20,7 @@ if my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_FAIR{
 	
      with (asset_get("oPlayer")) {
 	if (player != other.player) {
-		take_damage( player, -1 , -1 )
+		take_damage( player, -1 , -2 )
 	}
    }
    
@@ -28,11 +38,12 @@ if (my_hitboxID.attack == AT_DTILT && my_hitboxID.hbox_num == 2){
 	
      with (asset_get("oPlayer")) {
 	if (player != other.player) {
-		take_damage( player, -1 , -4 )
+		take_damage( player, -1 , -2 )
 	}
    }
    
 }
+
 
 if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 2) {
  
@@ -44,7 +55,7 @@ if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 2) {
 	
      with (asset_get("oPlayer")) {
 	if (player != other.player) {
-		take_damage( player, -1 , -8 )
+		take_damage( player, -1 , -2 )
 	}
 }
 
@@ -60,7 +71,7 @@ if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 4) {
 	
      with (asset_get("oPlayer")) {
 	if (player != other.player) {
-		take_damage( player, -1 , -4 )
+		take_damage( player, -1 , -2 )
 	}
 }
 
@@ -77,7 +88,7 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num > 1) {
 	
      with (asset_get("oPlayer")) {
 	if (player != other.player) {
-		take_damage( player, -1 , -6 )
+		take_damage( player, -1 , -2 )
 	}
 }
 
@@ -94,7 +105,7 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1) {
 	
      with (asset_get("oPlayer")) {
 	if (player != other.player) {
-		take_damage( player, -1 , -6)
+		take_damage( player, -1 , -2)
 	}
 }
 
@@ -110,7 +121,7 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num <= 3 ){
 	
      with (asset_get("oPlayer")) {
 	if (player != other.player) {
-		take_damage( player, -1 , -3 )
+		take_damage( player, -1 , -2 )
 
 	}
    }
@@ -127,7 +138,7 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 8){
 	
      with (asset_get("oPlayer")) {
 	if (player != other.player) {
-		take_damage( player, -1 , -6 )
+		take_damage( player, -1 , -2 )
 	}
    }
    

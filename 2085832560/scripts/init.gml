@@ -32,6 +32,13 @@ casing = 0
 style = 0
 prevstyle = 0 
 
+///rank
+prevrank = 0
+Vrank = 0
+rank = 0
+rankm = 0
+inactive = 0
+
 drops = 0
 
 faces = 0

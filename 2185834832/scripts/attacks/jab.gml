@@ -47,6 +47,7 @@ set_window_value(AT_JAB, 7, AG_WINDOW_ANIM_FRAME_START, 16);
 set_window_value(AT_JAB, 7, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_JAB, 7, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_JAB, 7, AG_WINDOW_SFX_FRAME, 0);
+set_window_value(AT_JAB, 7, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_JAB, 7, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 
 set_num_hitboxes(AT_JAB, 7);

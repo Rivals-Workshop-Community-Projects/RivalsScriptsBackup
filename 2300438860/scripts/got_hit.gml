@@ -12,20 +12,56 @@ if savex != 0 {
          savex = 0
 }
 
-if attackbar > 0  && enemy_hitboxID.damage > 3{
+if attackbar > 0  && enemy_hitboxID.type == 1 {
+	take_damage(player, -1, enemy_hitboxID.damage * -1)
      sound_play(sound_get("hextra"))
      set_state (PS_HITSTUN)
      spawn_hit_fx (x,y - 40, lighten2)
      spawn_hit_fx (x,y - 40, shit5)
-     move_cooldown[AT_FTILT] = enemy_hitboxID.damage*4 + 10
+     move_cooldown[AT_FTILT] = 30
+     hit_player_obj.hitstop = 30
+     hitstop += enemy_hitboxID.damage*3 + 45
      ohsp = x
      ovsp = y - 10
      move_cooldown [AT_NSPECIAL] = 180
+     dmgmul = 0
+attackbar = 0
 }
 
+/////if attackbar > 0  && enemy_hitboxID.type != 1{
+/////	if hit_player_obj.x < x {
+/////		spr_dir = -1
+/////	} else {
+/////		spr_dir = 1
+/////	}
+/////     spawn_hit_fx(x,y - 30, shit5)
+/////	hitstop = 20
+/////	hitstop_full = 20
+/////	     spawn_hit_fx(x,y,lighten2)
+/////        		sound_stop(cur_sound)
+/////                sound_play(sound_get("buzzing"),false,noone,0.4)		
+/////            
+/////        	sound_play(sound_get("tauntflash"),false,noone,1.2)
+/////        	sound_play(sound_get("fspec2"),false,noone,1.2)
+/////        	sound_play(sound_get("fspec3"),false,noone,1.2)
+/////        	
+/////                 
+/////        	
+/////
+/////        	enemy_hitboxID.hsp *= -2
+/////        	enemy_hitboxID.vsp *= -2
+/////        	enemy_hitboxID.can_hit_self = true
+/////        	
+/////        	enemy_hitboxID.destroyed = true
+/////        	
+/////        	set_attack(AT_FSPECIAL)
+/////        	window = 2
+/////        	window_timer = 0
+/////        	state_timer = 400
+/////        	move_cooldown [AT_NSPECIAL] = 300
+/////}
+/////
 
-dmgmul = 0
-attackbar = 0
 sound_stop(sound_get("buzzing"))
 
 

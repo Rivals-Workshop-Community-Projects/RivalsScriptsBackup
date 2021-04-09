@@ -40,6 +40,9 @@ spellselect[5] = 0;   // Slot 6 - Coming Up
 timefield = noone;
 suspended_frames = 0;
 
+playsound = false;
+chargetier = 0;
+
 sneakyalt = 0;
 
 // moll.o
@@ -80,6 +83,13 @@ jabdash = 9;
 jab_flash = 0;
 fullmana_flash = 0;   // literally don't even worry about this.
 wait_timer_thing = 0; //same
+
+// Visual Spell Indicator
+max_flash_time = 120;
+flash_time = 0;
+show_flashing_icon = false;
+prev_spell_icon = 6;
+col_flashing = c_white;
 
 uair_hitcheckvar = 0;
 

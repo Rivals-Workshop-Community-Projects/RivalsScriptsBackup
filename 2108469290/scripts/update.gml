@@ -273,43 +273,27 @@ if state == PS_AIR_DODGE && state_timer < 10{
 
 
 /// Nspecial
-if hhalo < 1 {
-if move_cooldown[AT_NSPECIAL] <= 80{
-move_cooldown[AT_NSPECIAL] = 80
-}
 
-if move_cooldown[AT_NSPECIAL] == 115 {
+
+if move_cooldown[AT_NSPECIAL] == 25 {
 		sound_play(asset_get("sfx_ice_shieldup"));
 		create_hitbox(AT_NSPECIAL , 1 + random_func(1, 2, true) , x - (20 * spr_dir) , y - 70 + random_func(2, 20, true) );
 		spawn_hit_fx ( x - (30 * spr_dir) , y - 60 + random_func(2, 20, true) , summon  );
 }
 
-if move_cooldown[AT_NSPECIAL] == 111 {
+if move_cooldown[AT_NSPECIAL] == 30 {
 		sound_play(asset_get("sfx_ice_shieldup"));
 		create_hitbox(AT_NSPECIAL , 1 + random_func(1, 2, true) , x - (20 * spr_dir) , y - 70 + random_func(2, 20, true) );
 		spawn_hit_fx ( x - (30 * spr_dir) , y - 60 + random_func(2, 20, true) , summon  );
 }
 
-if move_cooldown[AT_NSPECIAL] <= 81 {
-	if special_pressed && !left_down && !right_down && !up_down && !down_down && can_jump && move_cooldown[AT_TAUNT] == 0{
-		clear_button_buffer( PC_SPECIAL_PRESSED );
-		move_cooldown[AT_NSPECIAL] = 120
+if move_cooldown[AT_NSPECIAL] == 35 {
 		sound_play(asset_get("sfx_ice_shieldup"));
 		create_hitbox(AT_NSPECIAL , 1 + random_func(1, 2, true) , x - (20 * spr_dir) , y - 70 + random_func(2, 20, true) );
 		spawn_hit_fx ( x - (30 * spr_dir) , y - 60 + random_func(2, 20, true) , summon  );
-	}
-	
-	if (state == PS_WALK or state == PS_CROUCH) && (special_down) && can_attack && move_cooldown[AT_TAUNT] == 0 {
-		move_cooldown[AT_NSPECIAL] = 92
-		sound_play(asset_get("sfx_ice_shieldup"));
-		create_hitbox(AT_NSPECIAL , 1 + random_func(1, 2, true) , x - (20 * spr_dir) , y - 70 + random_func(2, 20, true) );
-		spawn_hit_fx ( x - (30 * spr_dir) , y - 60 + random_func(2, 20, true) , summon  );
-	}
-	
 }
-}else{
-	move_cooldown[AT_NSPECIAL] = 0
-}
+
+
 
 if !free or state == PS_WALL_JUMP {
 move_cooldown[AT_USPECIAL] = 0	

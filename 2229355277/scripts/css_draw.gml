@@ -11,7 +11,7 @@ display = image_alpha * 10;
 // Variables for positioning of visuals
 var temp_x = x + 12;
 var temp_y = y + 140;
-var alts = 27;
+var alts = 28;
 
 var color = get_player_color(player);
 var name = " ";
@@ -237,7 +237,7 @@ image_index = color;
 			var position = 16;
 			ColorPrev = make_color_rgb(130, 125, 255);
 			ColorNext = make_color_rgb(111, 160, 83);
-			ColorNextNext = make_color_rgb(30, 34, 71);
+			ColorNextNext = make_color_rgb(237, 179, 21);
 			if (path_position == 16 && path_scale == 0){
 				path_position = 17;
 			}
@@ -247,18 +247,18 @@ image_index = color;
 			name = " 18: Album"; 
 			var position = 17;
 			ColorPrev = make_color_rgb(232, 74, 42);
-			ColorNext = make_color_rgb(30, 34, 71);
-			ColorNextNext = make_color_rgb(72, 71, 111 );
+			ColorNext = make_color_rgb(237, 179, 21);
+			ColorNextNext = make_color_rgb(30, 34, 71 );
 			if (path_position == 17 && path_scale == 0){
 				path_position = 18;
 			}
 			    break;	
 			
 				case 18: 
-			name = " 19: Mega Man.EXE"; 
+			name = " 19: Golden"; 
 			var position = 18;
 			ColorPrev = make_color_rgb(111, 160, 83);
-			ColorNext = make_color_rgb(72, 71, 111 );
+			ColorNext = make_color_rgb(30, 34, 71 );
 			ColorNextNext = make_color_rgb(209, 111, 19);
 			if (path_position == 18 && path_scale == 0){
 				path_position = 19;
@@ -266,89 +266,100 @@ image_index = color;
 			    break;
 			
 				case 19: 
-			name = " 20: Sabrina"; 
-			var position = 19;	
-			ColorPrev = make_color_rgb(30, 34, 71);
-			ColorNext = make_color_rgb(209, 111, 19);		
-			ColorNextNext = make_color_rgb(107, 125, 215);
+			name = " 19: Mega Man.EXE"; 
+			var position = 19;
+			ColorPrev = make_color_rgb(237, 179, 21);
+			ColorNext = make_color_rgb(72, 71, 111 );
+			ColorNextNext = make_color_rgb(209, 111, 19);
 			if (path_position == 19 && path_scale == 0){
 				path_position = 20;
 			}
-				break;	
+			    break;
 			
 				case 20: 
-			name = " 21: Athena Cykes"; 
-			var position = 20;
-			ColorPrev = make_color_rgb(72, 71, 111 );
-			ColorNext = make_color_rgb(107, 125, 215);
-			ColorNextNext = make_color_rgb(31, 31, 31);
+			name = " 20: Sabrina"; 
+			var position = 20;	
+			ColorPrev = make_color_rgb(30, 34, 71);
+			ColorNext = make_color_rgb(209, 111, 19);		
+			ColorNextNext = make_color_rgb(107, 125, 215);
 			if (path_position == 20 && path_scale == 0){
 				path_position = 21;
 			}
 				break;	
-				
+			
 				case 21: 
-			name = " 22: Miyuki"; 
+			name = " 21: Athena Cykes"; 
 			var position = 21;
-			ColorPrev = make_color_rgb(209, 111, 19);
-			ColorNext = make_color_rgb(31, 31, 31);
-			ColorNextNext = make_color_rgb(227, 118, 40);
+			ColorPrev = make_color_rgb(72, 71, 111 );
+			ColorNext = make_color_rgb(107, 125, 215);
+			ColorNextNext = make_color_rgb(31, 31, 31);
 			if (path_position == 21 && path_scale == 0){
 				path_position = 22;
 			}
 				break;	
 				
 				case 22: 
-			name = " 23: Cotton Candy"; 
+			name = " 22: Miyuki"; 
 			var position = 22;
-			ColorPrev = make_color_rgb(107, 125, 215);
-			ColorNext = make_color_rgb(227, 118, 40);
-			ColorNextNext = make_color_rgb(73, 54, 48);
+			ColorPrev = make_color_rgb(209, 111, 19);
+			ColorNext = make_color_rgb(31, 31, 31);
+			ColorNextNext = make_color_rgb(227, 118, 40);
 			if (path_position == 22 && path_scale == 0){
 				path_position = 23;
 			}
-				break;
+				break;	
 				
 				case 23: 
-			name = " 24: Daisy"; 
+			name = " 23: Cotton Candy"; 
 			var position = 23;
-			ColorPrev = make_color_rgb(31, 31, 31);
-			ColorNext = make_color_rgb(73, 54, 48);
-			ColorNextNext = make_color_rgb(41, 41, 41);
+			ColorPrev = make_color_rgb(107, 125, 215);
+			ColorNext = make_color_rgb(227, 118, 40);
+			ColorNextNext = make_color_rgb(73, 54, 48);
 			if (path_position == 23 && path_scale == 0){
 				path_position = 24;
 			}
-			    break;
-			
+				break;
+				
 				case 24: 
-			name = " 25: Reimu"; 
+			name = " 24: Daisy"; 
 			var position = 24;
-			ColorPrev = make_color_rgb(227, 118, 40);
-			ColorNext = make_color_rgb(41, 41, 41);
-			ColorNextNext = make_color_rgb(67, 0, 156 );
+			ColorPrev = make_color_rgb(31, 31, 31);
+			ColorNext = make_color_rgb(73, 54, 48);
+			ColorNextNext = make_color_rgb(41, 41, 41);
 			if (path_position == 24 && path_scale == 0){
 				path_position = 25;
 			}
-			    break;	
+			    break;
 			
 				case 25: 
-			name = " 26: Oreo"; 
+			name = " 25: Reimu"; 
 			var position = 25;
-			ColorPrev = make_color_rgb(73, 54, 48);
-			ColorNext = make_color_rgb(67, 0, 156 );
-			ColorNextNext = make_color_rgb(250, 212, 122);
+			ColorPrev = make_color_rgb(227, 118, 40);
+			ColorNext = make_color_rgb(41, 41, 41);
+			ColorNextNext = make_color_rgb(67, 0, 156 );
 			if (path_position == 25 && path_scale == 0){
 				path_position = 26;
 			}
-			    break;
+			    break;	
 			
 				case 26: 
+			name = " 26: Oreo"; 
+			var position = 26;
+			ColorPrev = make_color_rgb(73, 54, 48);
+			ColorNext = make_color_rgb(67, 0, 156 );
+			ColorNextNext = make_color_rgb(250, 212, 122);
+			if (path_position == 26 && path_scale == 0){
+				path_position = 27;
+			}
+			    break;
+			
+				case 27: 
 			name = " 27: Aesthetic"; 
-			var position = 26;	
+			var position = 27;	
 			ColorPrev = make_color_rgb(41, 41, 41);
 			ColorNext = make_color_rgb(250, 212, 122);		
 			ColorNextNext = make_color_rgb(98, 87, 227);
-			if (path_position == 26 && path_scale == 0){
+			if (path_position == 27 && path_scale == 0){
 				path_position = 0;
 			}
 				break;	
@@ -361,13 +372,13 @@ image_index = color;
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
-draw_text_color(x + 10, y - 6, "Version 1.0.0", c_white, c_white, c_white, c_white, 1);
+draw_text_color(x + 10, y - 6, "Version 1.1.0", c_white, c_white, c_white, c_white, 1);
 
 // Date Display
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_right);
 draw_set_valign(fa_top);
-draw_text_color(x + 210, y - 6, "March 26th, 2021", c_white, c_white, c_white, c_white, 1);
+draw_text_color(x + 210, y - 6, "April 3rd, 2021", c_white, c_white, c_white, c_white, 1);
 
 var css_y = y + 94;
 var css_prevc_x = x + 12;   // previous

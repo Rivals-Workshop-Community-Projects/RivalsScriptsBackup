@@ -14,6 +14,7 @@ set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_FAIR, 2, AG_WINDOW_HAS_SFX, 1);
+
 set_window_value(AT_FAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 
 set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 15);
@@ -25,7 +26,7 @@ set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_num_hitboxes(AT_FAIR, 1);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_FAIR, 1, HG_WINDOW_CREATION_FRAME, 1);
+set_hitbox_value(AT_FAIR, 1, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 8);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 85);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -22);

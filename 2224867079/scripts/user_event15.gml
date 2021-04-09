@@ -467,6 +467,19 @@ with phone{
 //	initPatchWords("Fnuuy joke
 //	- waog");
 //	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0);
+	//2.14
+	initPatch("2.14", "8 April, 2021");
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Kunai bombs now follow moving platforms
+	- Kunai bombs now have much better collision with the ground (though you could probably still get them to float)")
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Red nspecial projectiles no longer have a glow
+	- Blue nspecial air projectile no longer has a glow")
+	//2.13
+	initPatch("2.13", "5 April, 2021");
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Red Uspecial base knockback changed (19->12)
+	")
 	//2.11
 	initPatch("2.11", "18 March, 2021");
 	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);

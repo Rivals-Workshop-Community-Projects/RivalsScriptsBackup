@@ -19,3 +19,7 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.type == 2) {
     }
 
 }
+
+
+     dmgmul = 0
+attackbar = 0

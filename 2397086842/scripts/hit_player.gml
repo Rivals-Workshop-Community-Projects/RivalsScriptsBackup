@@ -1,8 +1,10 @@
 ////
 
-if sagemode >= 0 and sagemode < 5 and  hit_player_obj != self and ((my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_DSTRONG or my_hitboxID.attack == AT_USTRONG or my_hitboxID.attack == AT_FSPECIAL ) 
-or (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num <= 6) or (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 2)) {
+//if sagemode >= 0 and sagemode < 5 and  hit_player_obj != self and ((my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_DSTRONG or my_hitboxID.attack == AT_USTRONG or my_hitboxID.attack == AT_FSPECIAL ) 
+//or (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num <= 6) or (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 2)) {
 
+
+if sagemode >= 0 and sagemode <= 5 and  move_cooldown[AT_EXTRA_3] = 0{
     if sagemode == 0 {
     sagefx1 = hit_player_obj.x
     sagefy1 = hit_player_obj.y
@@ -23,10 +25,16 @@ or (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num <= 6) or (my_hitbo
     sagefx5 = hit_player_obj.x
     sagefy5 = hit_player_obj.y
     }
+    
+    if sagemode == 5 {
+            sound_play(sound_get("sage"),false,noone,1.2)
+    sound_play(asset_get("sfx_absa_whip3"),false,noone,1)
+    sound_play(asset_get("sfx_bird_downspecial"),false,noone,1)
+                    spawn_hit_fx(x, y - 36, 306)
+    }
 
-
-sagemode += 1
-
+//sagemode += 1
+move_cooldown[AT_EXTRA_3] = 10
 }
 
 if (my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_DSTRONG or my_hitboxID.attack == AT_USTRONG) {

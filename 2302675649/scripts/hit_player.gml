@@ -15,6 +15,11 @@ switch (my_hitboxID.attack)
 	case AT_NSPECIAL:
 		sound_play(sound_get("hitsfx2"));
 		sound_play(asset_get("sfx_blow_heavy2"));
+		if (aura && get_player_damage(hit_player_obj.player) >= 150)
+		{
+			hit_player_obj.hitstop = 60;
+			set_attack(49);
+		}
 		if (nspecCharge>=nspecMax/2) hit_player_obj.shakeObj = {timer: hit_player_obj.hitstop, lonin: player};
 		break;
 	case AT_NTHROW:
@@ -74,7 +79,7 @@ switch (my_hitboxID.attack)
 		hit_player_obj.should_make_shockwave = false;
 		if (my_hitboxID.hbox_num == 1)
 		{
-			x = hit_player_obj.x + 200*spr_dir;
+			x = clamp(hit_player_obj.x + 200*spr_dir, 0, room_width);
 			y = hit_player_obj.y;
 			hit_player_obj.can_wall_tech = false;
 		}
@@ -87,6 +92,12 @@ if (hit_player_obj.hitpause && hit_player_obj.hitstop > 3 && !(my_hitboxID.attac
 	vfxSlice.sliceY = floor(hit_player_obj.y-hit_player_obj.char_height/2);
 	vfxSlice.sliceAng = point_direction(0,0,hit_player_obj.old_hsp,hit_player_obj.old_vsp);
 	vfxSlice.sliceTimer = 20;
+}
+
+if (aura)
+{
+	hitstop = floor(hitstop/2);
+	hitstop_full = hitstop;
 }
 
 #define ApplyFlag()

@@ -20,7 +20,7 @@ var tauntpar2 = hit_fx_create( sprite_get( "tauntpar2" ), 20);
 	
 	}
 	
-    if !free {
+    if  !free && (place_meeting(x, y + 2, asset_get("par_block")))  {
     	destroyed = 1
     	spawn_hit_fx( x  , y , 302 )
     	spawn_hit_fx( x  , y , 306 )
@@ -137,11 +137,13 @@ if (heal_player != noone) {
 		
 
 
-if attack == AT_DSPECIAL && hbox_num < 4  {
+if attack == AT_DSPECIAL && hbox_num < 4 && hitbox_timer < 60 {
 	player_id.move_cooldown[AT_DSPECIAL] = 2
 }		
+
 if attack == AT_DSPECIAL && hbox_num == 1 && !free && player_id.milkpizz != 1  {
 	destroyed = 1 
+	vsp += 0.1
 	spawn_hit_fx( x  , y , 195 )
     	sound_play(sound_get("explosionshake"));
     	create_hitbox(AT_DSPECIAL , 2 , x , y );

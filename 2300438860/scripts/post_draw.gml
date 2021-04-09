@@ -6,7 +6,13 @@ if state == PS_AIR_DODGE {
 draw_sprite_ext(sprite_index, image_index, x  , y  , 1 * spr_dir, 1, 0 , c_white , 1);
 }
 
-
+if barpause > 0 {
+    gpu_set_blendmode(bm_add);
+    	 draw_sprite_ext(sprite_index, image_index, x  - shsp*2 , y  - svsp*2, 1 * spr_dir, 1, 0 , c_red , 0.3);
+     draw_sprite_ext(sprite_index, image_index-1, x  - shsp*4 , y  - svsp*4, 1 * spr_dir, 1, 0 , c_red , 0.2);
+     draw_sprite_ext(sprite_index, image_index-2, x  - shsp*4.5 , y  - svsp*4.5, 1 * spr_dir, 1, 0 , c_red , 0.1);
+gpu_set_blendmode(bm_normal);
+}
 
 
 if attackbar > 0 {

@@ -32,6 +32,11 @@ set_hitbox_value(AT_TAUNT, 1, HG_HITBOX_X, 0);
 set_hitbox_value(AT_TAUNT, 1, HG_HITBOX_Y, -44);
 set_hitbox_value(AT_TAUNT, 1, HG_WIDTH, 42);
 set_hitbox_value(AT_TAUNT, 1, HG_HEIGHT, 48);
+if (has_rune("B")){
+    set_hitbox_value(AT_TAUNT, 1, HG_HITBOX_Y, -104);
+    set_hitbox_value(AT_TAUNT, 1, HG_WIDTH, 242);
+    set_hitbox_value(AT_TAUNT, 1, HG_HEIGHT, 248); 
+}
 set_hitbox_value(AT_TAUNT, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_TAUNT, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_TAUNT, 1, HG_DAMAGE, 1);
@@ -41,6 +46,6 @@ set_hitbox_value(AT_TAUNT, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_TAUNT, 1, HG_HITSTUN_MULTIPLIER, 0);
 set_hitbox_value(AT_TAUNT, 1, HG_BASE_HITPAUSE, 0);
 set_hitbox_value(AT_TAUNT, 1, HG_HITPAUSE_SCALING, 0);
-set_hitbox_value(AT_TAUNT, 1, HG_EXTRA_HITPAUSE, 40);
+if (!has_rune("O")) set_hitbox_value(AT_TAUNT, 1, HG_EXTRA_HITPAUSE, 40);
 set_hitbox_value(AT_TAUNT, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_TAUNT, 1, HG_ANGLE_FLIPPER, 8);

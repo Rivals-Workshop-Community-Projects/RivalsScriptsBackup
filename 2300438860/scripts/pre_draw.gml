@@ -1,7 +1,7 @@
 ///
 shader_start();
 
-if (state == PS_DASH_START or state == PS_DASH or state == PS_DASH_TURN or state == PS_DASH_STOP or 
+if (barpause > 0 or state == PS_DASH_START or state == PS_DASH or state == PS_DASH_TURN or state == PS_DASH_STOP or 
 state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD or state == PS_WAVELAND 
 or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD) && attackbar == 0{
 	 draw_sprite_ext(sprite_index, image_index, x  - shsp*2 , y  - svsp*2, 1 * spr_dir, 1, 0 , c_white , 0.3);
@@ -92,6 +92,14 @@ if esave > 0 {
 }
 
 if attackbar > 0 or attackbar == -1 {
+	    draw_set_alpha(0.08);
+        draw_rectangle_color(0,0,room_width,room_height,0,0,0,0,false);
+    	draw_set_alpha(1);
+
+
+}
+
+if barpause > 0 {
 	    draw_set_alpha(0.08);
         draw_rectangle_color(0,0,room_width,room_height,0,0,0,0,false);
     	draw_set_alpha(1);

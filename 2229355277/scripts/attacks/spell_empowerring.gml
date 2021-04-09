@@ -40,7 +40,7 @@ set_hitbox_value(AT_NTHROW, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_NTHROW, 1, HG_HITPAUSE_SCALING, .75);
 set_hitbox_value(AT_NTHROW, 1, HG_VISUAL_EFFECT, 4);
 set_hitbox_value(AT_NTHROW, 1, HG_HIT_SFX, asset_get("sfx_absa_singlezap1"));
-set_hitbox_value(AT_NTHROW, 1, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(AT_NTHROW, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_NTHROW, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_NTHROW, 1, HG_PROJECTILE_SPRITE, sprite_get("empowerball"));
 set_hitbox_value(AT_NTHROW, 1, HG_PROJECTILE_MASK, sprite_get("empowerball"));

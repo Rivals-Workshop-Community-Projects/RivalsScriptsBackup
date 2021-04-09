@@ -32,9 +32,9 @@ set_window_value(AT_EXTRA_1, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.45);
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_SFX, sound_get("RZ"));
 
 set_window_value(AT_EXTRA_1, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_EXTRA_1, 3, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_EXTRA_1, 3, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_EXTRA_1, 3, AG_WINDOW_ANIM_FRAME_START, 8);
-set_window_value(AT_EXTRA_1, 3, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_EXTRA_1, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_EXTRA_1, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_EXTRA_1, 3, AG_WINDOW_SFX, asset_get("sfx_jumpground"));
 set_window_value(AT_EXTRA_1, 3, AG_WINDOW_CUSTOM_GRAVITY, 1);

@@ -43,6 +43,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 13);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT_X_OFFSET, 10);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_DSTRONG, 1, HG_HITSTUN_MULTIPLIER, 1.0);
+set_hitbox_value(AT_DSTRONG, 1, HG_HIT_LOCKOUT, 4);
 
 set_hitbox_value(AT_DSTRONG, 2, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
@@ -64,6 +65,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 13);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT_X_OFFSET, 10);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_DSTRONG, 2, HG_HITSTUN_MULTIPLIER, 1.0);
+set_hitbox_value(AT_DSTRONG, 2, HG_HIT_LOCKOUT, 4);
 
 set_hitbox_value(AT_DSTRONG, 3, HG_PARENT_HITBOX, 3);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_TYPE, 1);
@@ -85,3 +87,4 @@ set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, 13);
 set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT_X_OFFSET, 10);
 set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_DSTRONG, 3, HG_HITSTUN_MULTIPLIER, 1.0);
+set_hitbox_value(AT_DSTRONG, 3, HG_HIT_LOCKOUT, 4);

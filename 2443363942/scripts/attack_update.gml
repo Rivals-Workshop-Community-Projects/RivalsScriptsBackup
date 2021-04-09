@@ -63,7 +63,7 @@ switch (attack)
         break;
 
     case AT_NSPECIAL:
-        if (window == 3 && special_pressed && window_timer > 7)
+        if (window == 3 && special_pressed && ((window_timer > 12 && !has_rune("A")) || (has_rune("A"))))
         {
             window = 1;
             window_timer = 0;
@@ -81,7 +81,7 @@ switch (attack)
                 spawn_hit_fx(x + 30 * spr_dir, y - 30, 14);
                 sound_play(asset_get("sfx_blow_heavy1"));
                 vsp = -1 * wall_bounces;
-                if (wall_bounces > 0) wall_bounces--;
+                if (wall_bounces > 0 && !has_rune("I")) wall_bounces--;
             }
             else vsp = -6;
             destroy_hitboxes();
@@ -121,16 +121,25 @@ switch (attack)
             case 4:
                 if (window == 4 && !hitpause)
                 {
+                    if (has_rune("G")){
+                        fly_dir = fly_dir = joy_pad_idle?fly_dir:joy_dir;
+                    }
                     spr_angle = fly_dir - 90;
                     hsp = lengthdir_x(20, fly_dir);
                     vsp = lengthdir_y(20, fly_dir);
                     if (!free){ //set_state(PS_LANDING_LAG);
-                        window = 6;
+                        if (has_hit){
+                            window = 6;    
+                            vsp = -3;
+                        }
+                        else{
+                            window = 5;
+                            vsp = -10;
+                        }
                         window_timer = 0;
                         spr_angle = 0;
-                        vsp = -5;
                         move_cooldown[AT_USPECIAL] = 30;
-                        hsp = clamp(hsp, -10, 10);
+                        hsp = clamp(hsp, -8, 8);
                         destroy_hitboxes();
                     }
                 }
@@ -146,10 +155,10 @@ switch (attack)
                 break;
             case 6:
                 if (window_timer > 5){
-                    can_jump = true;
+                    //can_jump = true;
                     can_shield = true;
-                    can_attack = true;
-                    can_special = true;
+                    //can_attack = true;
+                    //can_special = true;
                 }
                 break;
                 

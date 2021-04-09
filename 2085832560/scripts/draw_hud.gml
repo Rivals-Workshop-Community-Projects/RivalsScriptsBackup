@@ -78,6 +78,16 @@ if get_player_color(player) == 1 and hunter == 0 && get_gameplay_time() <= 120{
        draw_debug_text(temp_x,temp_y - 20,"[Voice of the Second Born]");
 }
 
+
+if get_player_color(player) != 1 and Vrank == 0 &&  get_gameplay_time() <= 120{
+  draw_debug_text(temp_x,temp_y - 35,"Press taunt to active");
+  draw_debug_text(temp_x,temp_y - 20,"Vocal Rank Annoucer");   
+    
+}
+
+ if get_player_color(player) != 1 and Vrank == 1 && get_gameplay_time() <= 200{
+       draw_debug_text(temp_x,temp_y - 28,"VRA Activated");
+}
 shader_end();
 
 
@@ -298,6 +308,8 @@ if gunname = 13 {
       draw_debug_text(temp_x + 40, temp_y - 34,"Car Key");
       draw_debug_text(temp_x + 50, temp_y - 20,"Terra Master");
 }
+
+
 
 
 shader_end();

@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 11, 10, 12 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 27 );
+set_num_palettes( 28 );
 
 // Blue
 set_color_profile_slot( 1, 0, 210, 176, 167 ); //Skin
@@ -196,7 +196,7 @@ set_color_profile_slot( 16, 5, 255, 72, 0 ); //Skirt
 set_color_profile_slot( 16, 6, 255, 143, 244 ); //Eyes
 set_color_profile_slot( 16, 7, 232, 74, 42 ); //Hair
 
-// Musical (Ruby's OC), 
+// Musical (Ruby's OC),
 set_color_profile_slot( 17, 0, 224, 210, 197 ); //Skin
 set_color_profile_slot( 17, 1, 224, 210, 197 ); //Gloves
 set_color_profile_slot( 17, 2, 126, 135, 116 ); //Coat
@@ -206,95 +206,106 @@ set_color_profile_slot( 17, 5, 65, 63, 65 ); //Skirt
 set_color_profile_slot( 17, 6, 111, 160, 83 ); //Eyes
 set_color_profile_slot( 17, 7, 111, 160, 83 ); //Hair
 
-// .EXE (Mega Man), 
-set_color_profile_slot( 18, 0, 255, 203, 151 ); //Skin
-set_color_profile_slot( 18, 1, 44, 136, 199 ); //Gloves
-set_color_profile_slot( 18, 2, 46, 50, 88 ); //Coat
-set_color_profile_slot( 18, 3, 46, 50, 88 ); //Tights
-set_color_profile_slot( 18, 4, 44, 136, 199 ); //Boots
-set_color_profile_slot( 18, 5, 185, 220, 196 ); //Skirt
-set_color_profile_slot( 18, 6, 79, 201, 90 ); //Eyes
-set_color_profile_slot( 18, 7, 30, 34, 71 ); //Hair
+// Gold
+set_color_profile_slot( 18, 0, 165, 117, 91 ); //Skin
+set_color_profile_slot( 18, 1, 237, 221, 208 ); //Gloves
+set_color_profile_slot( 18, 2, 237, 221, 208 ); //Coat
+set_color_profile_slot( 18, 3, 64, 62, 60 ); //Tights
+set_color_profile_slot( 18, 4, 237, 179, 21 ); //Boots
+set_color_profile_slot( 18, 5, 237, 179, 21 ); //Skirt
+set_color_profile_slot( 18, 6, 237, 221, 208 ); //Eyes
+set_color_profile_slot( 18, 7, 237, 179, 21 ); //Hair
 
-// Psychic (Sabrina), 
-set_color_profile_slot( 19, 0, 248, 234, 225 ); //Skin
-set_color_profile_slot( 19, 1, 255, 255, 253 ); //Gloves
-set_color_profile_slot( 19, 2, 173, 80, 98 ); //Coat
-set_color_profile_slot( 19, 3, 86, 72, 81 ); //Tights
-set_color_profile_slot( 19, 4, 173, 80, 98 ); //Boots
-set_color_profile_slot( 19, 5, 173, 80, 98 ); //Skirt
-set_color_profile_slot( 19, 6, 134, 63, 77 ); //Eyes
-set_color_profile_slot( 19, 7, 72, 71, 111 ); //Hair
+// .EXE (Mega Man),
+set_color_profile_slot( 19, 0, 255, 203, 151 ); //Skin
+set_color_profile_slot( 19, 1, 44, 136, 199 ); //Gloves
+set_color_profile_slot( 19, 2, 46, 50, 88 ); //Coat
+set_color_profile_slot( 19, 3, 46, 50, 88 ); //Tights
+set_color_profile_slot( 19, 4, 44, 136, 199 ); //Boots
+set_color_profile_slot( 19, 5, 185, 220, 196 ); //Skirt
+set_color_profile_slot( 19, 6, 79, 201, 90 ); //Eyes
+set_color_profile_slot( 19, 7, 30, 34, 71 ); //Hair
 
-// Aced (Athena Cykes), 
-set_color_profile_slot( 20, 0, 255, 202, 194 ); //Skin
-set_color_profile_slot( 20, 1, 31, 31, 31 ); //Gloves
-set_color_profile_slot( 20, 2, 226, 245, 6 ); //Coat
-set_color_profile_slot( 20, 3, 94, 68, 86 ); //Tights
-set_color_profile_slot( 20, 4, 222, 210, 213 ); //Boots
-set_color_profile_slot( 20, 5, 72, 148, 213 ); //Skirt
-set_color_profile_slot( 20, 6, 109, 154, 237 ); //Eyes
-set_color_profile_slot( 20, 7, 209, 111, 19 ); //Hair
+// Psychic (Sabrina),
+set_color_profile_slot( 20, 0, 248, 234, 225 ); //Skin
+set_color_profile_slot( 20, 1, 255, 255, 253 ); //Gloves
+set_color_profile_slot( 20, 2, 173, 80, 98 ); //Coat
+set_color_profile_slot( 20, 3, 86, 72, 81 ); //Tights
+set_color_profile_slot( 20, 4, 173, 80, 98 ); //Boots
+set_color_profile_slot( 20, 5, 173, 80, 98 ); //Skirt
+set_color_profile_slot( 20, 6, 134, 63, 77 ); //Eyes
+set_color_profile_slot( 20, 7, 72, 71, 111 ); //Hair
+
+// Aced (Athena Cykes),
+set_color_profile_slot( 21, 0, 255, 202, 194 ); //Skin
+set_color_profile_slot( 21, 1, 31, 31, 31 ); //Gloves
+set_color_profile_slot( 21, 2, 226, 245, 6 ); //Coat
+set_color_profile_slot( 21, 3, 94, 68, 86 ); //Tights
+set_color_profile_slot( 21, 4, 222, 210, 213 ); //Boots
+set_color_profile_slot( 21, 5, 72, 148, 213 ); //Skirt
+set_color_profile_slot( 21, 6, 109, 154, 237 ); //Eyes
+set_color_profile_slot( 21, 7, 209, 111, 19 ); //Hair
 
 // Miyuki (Blake's OC)
-set_color_profile_slot( 21, 0, 255, 236, 220 ); //Skin
-set_color_profile_slot( 21, 1, 59, 59, 59 ); //Gloves
-set_color_profile_slot( 21, 2, 246, 246, 246 ); //Coat
-set_color_profile_slot( 21, 3, 177, 177, 177 ); //Tights
-set_color_profile_slot( 21, 4, 129, 222, 255 ); //Boots
-set_color_profile_slot( 21, 5, 219, 162, 183 ); //Skirt
-set_color_profile_slot( 21, 6, 150, 203, 255 ); //Eyes
-set_color_profile_slot( 21, 7, 107, 125, 215 ); //Hair
+set_color_profile_slot( 22, 0, 255, 236, 220 ); //Skin
+set_color_profile_slot( 22, 1, 59, 59, 59 ); //Gloves
+set_color_profile_slot( 22, 2, 246, 246, 246 ); //Coat
+set_color_profile_slot( 22, 3, 177, 177, 177 ); //Tights
+set_color_profile_slot( 22, 4, 129, 222, 255 ); //Boots
+set_color_profile_slot( 22, 5, 219, 162, 183 ); //Skirt
+set_color_profile_slot( 22, 6, 150, 203, 255 ); //Eyes
+set_color_profile_slot( 22, 7, 107, 125, 215 ); //Hair
 
 // Trans Rights
-set_color_profile_slot( 22, 0, 150, 89, 60 ); //Skin
-set_color_profile_slot( 22, 1, 91, 206, 250 ); //Gloves
-set_color_profile_slot( 22, 2, 245, 169, 184 ); //Coat
-set_color_profile_slot( 22, 3, 245, 169, 184 ); //Tights
-set_color_profile_slot( 22, 4, 91, 206, 250 ); //Boots
-set_color_profile_slot( 22, 5, 255, 255, 255 ); //Skirt
-set_color_profile_slot( 22, 6, 82, 70, 70 ); //Eyes
-set_color_profile_slot( 22, 7, 31, 31, 31 ); //Hair
+set_color_profile_slot( 23, 0, 150, 89, 60 ); //Skin
+set_color_profile_slot( 23, 1, 91, 206, 250 ); //Gloves
+set_color_profile_slot( 23, 2, 245, 169, 184 ); //Coat
+set_color_profile_slot( 23, 3, 245, 169, 184 ); //Tights
+set_color_profile_slot( 23, 4, 91, 206, 250 ); //Boots
+set_color_profile_slot( 23, 5, 255, 255, 255 ); //Skirt
+set_color_profile_slot( 23, 6, 82, 70, 70 ); //Eyes
+set_color_profile_slot( 23, 7, 31, 31, 31 ); //Hair
 
 // Princess Daisy
-set_color_profile_slot( 23, 0, 255, 233, 209 ); //Skin
-set_color_profile_slot( 23, 1, 255, 233, 209 ); //Gloves
-set_color_profile_slot( 23, 2, 255, 217, 47 ); //Coat
-set_color_profile_slot( 23, 3, 0, 220, 0 ); //Tights
-set_color_profile_slot( 23, 4, 255, 137, 70 ); //Boots
-set_color_profile_slot( 23, 5, 255, 217, 47 ); //Skirt
-set_color_profile_slot( 23, 6, 0, 197, 255 ); //Eyes
-set_color_profile_slot( 23, 7, 227, 118, 40 ); //Hair
+set_color_profile_slot( 24, 0, 255, 233, 209 ); //Skin
+set_color_profile_slot( 24, 1, 255, 233, 209 ); //Gloves
+set_color_profile_slot( 24, 2, 255, 217, 47 ); //Coat
+set_color_profile_slot( 24, 3, 0, 220, 0 ); //Tights
+set_color_profile_slot( 24, 4, 255, 137, 70 ); //Boots
+set_color_profile_slot( 24, 5, 255, 217, 47 ); //Skirt
+set_color_profile_slot( 24, 6, 0, 197, 255 ); //Eyes
+set_color_profile_slot( 24, 7, 227, 118, 40 ); //Hair
 
-// Reimu 4 Smash 
-set_color_profile_slot( 24, 0, 255, 234, 193 ); //Skin
-set_color_profile_slot( 24, 1, 255, 255, 245 ); //Gloves
-set_color_profile_slot( 24, 2, 177, 14, 0 ); //Coat
-set_color_profile_slot( 24, 3, 177, 14, 0 ); //Tights
-set_color_profile_slot( 24, 4, 79, 53, 56 ); //Boots
-set_color_profile_slot( 24, 5, 254, 243, 65 ); //Skirt
-set_color_profile_slot( 24, 6, 194, 135, 79 ); //Eyes
-set_color_profile_slot( 24, 7, 73, 54, 48 ); //Hair
+// Reimu 4 Smash
+set_color_profile_slot( 25, 0, 255, 234, 193 ); //Skin
+set_color_profile_slot( 25, 1, 255, 255, 245 ); //Gloves
+set_color_profile_slot( 25, 2, 177, 14, 0 ); //Coat
+set_color_profile_slot( 25, 3, 177, 14, 0 ); //Tights
+set_color_profile_slot( 25, 4, 79, 53, 56 ); //Boots
+set_color_profile_slot( 25, 5, 254, 243, 65 ); //Skirt
+set_color_profile_slot( 25, 6, 194, 135, 79 ); //Eyes
+set_color_profile_slot( 25, 7, 73, 54, 48 ); //Hair
 
 // Oreo
-set_color_profile_slot( 25, 0, 222, 181, 158 ); //Skin
-set_color_profile_slot( 25, 1, 255, 255, 245 ); //Gloves
-set_color_profile_slot( 25, 2, 82, 82, 82 ); //Coat
-set_color_profile_slot( 25, 3, 177, 177, 177 ); //Tights
-set_color_profile_slot( 25, 4, 43, 43, 43 ); //Boots
-set_color_profile_slot( 25, 5, 196, 196, 196 ); //Skirt
-set_color_profile_slot( 25, 6, 92, 92, 92 ); //Eyes
-set_color_profile_slot( 25, 7, 41, 41, 41 ); //Hair
+set_color_profile_slot( 26, 0, 222, 181, 158 ); //Skin
+set_color_profile_slot( 26, 1, 255, 255, 245 ); //Gloves
+set_color_profile_slot( 26, 2, 82, 82, 82 ); //Coat
+set_color_profile_slot( 26, 3, 177, 177, 177 ); //Tights
+set_color_profile_slot( 26, 4, 43, 43, 43 ); //Boots
+set_color_profile_slot( 26, 5, 196, 196, 196 ); //Skirt
+set_color_profile_slot( 26, 6, 92, 92, 92 ); //Eyes
+set_color_profile_slot( 26, 7, 41, 41, 41 ); //Hair
 
 // Mandatory Vaporwave Set
-set_color_profile_slot( 26, 0, 201, 147, 131 ); //Skin
-set_color_profile_slot( 26, 1, 239, 140, 255 ); //Gloves
-set_color_profile_slot( 26, 2, 71, 255, 222 ); //Coat
-set_color_profile_slot( 26, 3, 70, 0, 128 ); //Tights
-set_color_profile_slot( 26, 4, 94, 234, 255 ); //Boots
-set_color_profile_slot( 26, 5, 255, 120, 253 ); //Skirt
-set_color_profile_slot( 26, 6, 135, 243, 255 ); //Eyes
-set_color_profile_slot( 26, 7, 67, 0, 156 ); //Hair
+set_color_profile_slot( 27, 0, 201, 147, 131 ); //Skin
+set_color_profile_slot( 27, 1, 239, 140, 255 ); //Gloves
+set_color_profile_slot( 27, 2, 71, 255, 222 ); //Coat
+set_color_profile_slot( 27, 3, 70, 0, 128 ); //Tights
+set_color_profile_slot( 27, 4, 94, 234, 255 ); //Boots
+set_color_profile_slot( 27, 5, 255, 120, 253 ); //Skirt
+set_color_profile_slot( 27, 6, 135, 243, 255 ); //Eyes
+set_color_profile_slot( 27, 7, 67, 0, 156 ); //Hair
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

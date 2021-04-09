@@ -43,7 +43,7 @@ if (player_id.killarticles && state != 2){
 //State 0: Freshly spawned
 
 if (state == 0){ //falling
-	if(!free && vsp == 0){
+	if(!free){
 		state = 1;
 	}
 }
@@ -57,14 +57,14 @@ if(free){
 
 if (state == 1){
     
-    
+    /*
     //Accept buffered state
     if (bufferedstate > 0){
         state = bufferedstate;
         state_timer = 0;
         bufferedstate = 0;
     }
-    
+    */
 	if (shoulddie == true){
 		state = 2;
 		state_timer = 0;
@@ -134,6 +134,7 @@ if (state == 3){
 		
 		case 4:
 		//massive hitbox that kills at low percents
+		fire = false;
 		create_hitbox(AT_DSPECIAL, 1, x+20, y+20);
 		state = 2;
 		player_id.move_cooldown[AT_FSPECIAL] = 600;
@@ -141,13 +142,14 @@ if (state == 3){
 		
 		case 5:
 		//hitbox with freeze effect.
+		fire = false;
 		create_hitbox(AT_DSPECIAL, 2, x+20, y+20);
 		state = 2;
 		break;
 		
 		case 6:
 		//spawn barrier block
-		
+		fire = false;
 		var sbox = instance_create(x, y-60, "obj_article_solid");
 		sbox.player_id = player_id;
 		sbox.orig_player_id = player_id;
@@ -181,12 +183,24 @@ if (state == 3){
 
 if(fire){
 	if(fire_timer >= 10){
-		create_hitbox(AT_USPECIAL, 2, x +20, y +20);
+		
+		create_hitbox(AT_USPECIAL, 2, x +24, y +20);
 		fire_timer = 0;
+		//
 	}
 fire_timer ++;
 print_debug(string(fire_timer));
 }
+/*
+if(fire){
+	if(fire_box_fxtimer == 10){
+		spawn_dust_fx(x+24, y+20, sprite_get("hotsmoke"), 30);
+	  //spawn_dust_fx(x-40, y-60, sprite_get("hotsmoke"), 30);
+		fire_box_fxtimer = 0;
+	}
+fire_box_fxtimer ++;
+}
+*/
 
 //NOTE: To use a hitbox properly with an article, it MUST be a projectile! (hitbox type 2)
 

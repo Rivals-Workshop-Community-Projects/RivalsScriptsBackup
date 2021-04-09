@@ -52,11 +52,12 @@ set_window_value(AT_USTRONG, 4, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_VSPEED, 7);
 
 set_window_value(AT_USTRONG, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_SFX_FRAME, 1);
+set_window_value(AT_USTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_SFX, asset_get("sfx_land_heavy"));
 
 set_num_hitboxes(AT_USTRONG, 7);
@@ -96,6 +97,7 @@ set_hitbox_value(AT_USTRONG, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_USTRONG, 2, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_HITPAUSE, 3);
+set_hitbox_value(AT_USTRONG, 2, HG_TECHABLE, 3);
 set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, -1);
 
@@ -115,6 +117,7 @@ set_hitbox_value(AT_USTRONG, 3, HG_SHAPE, 2);
 set_hitbox_value(AT_USTRONG, 3, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_USTRONG, 3, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_USTRONG, 3, HG_BASE_HITPAUSE, 3);
+set_hitbox_value(AT_USTRONG, 3, HG_TECHABLE, 3);
 set_hitbox_value(AT_USTRONG, 3, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_GROUP, -1);
 
@@ -134,6 +137,7 @@ set_hitbox_value(AT_USTRONG, 4, HG_SHAPE, 2);
 set_hitbox_value(AT_USTRONG, 4, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_USTRONG, 4, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_USTRONG, 4, HG_BASE_HITPAUSE, 3);
+set_hitbox_value(AT_USTRONG, 4, HG_TECHABLE, 3);
 set_hitbox_value(AT_USTRONG, 4, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_GROUP, -1);
 
@@ -153,6 +157,7 @@ set_hitbox_value(AT_USTRONG, 5, HG_SHAPE, 2);
 set_hitbox_value(AT_USTRONG, 5, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_USTRONG, 5, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_USTRONG, 5, HG_BASE_HITPAUSE, 3);
+set_hitbox_value(AT_USTRONG, 5, HG_TECHABLE, 3);
 set_hitbox_value(AT_USTRONG, 5, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(AT_USTRONG, 5, HG_HITBOX_GROUP, -1);
 

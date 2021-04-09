@@ -395,9 +395,7 @@ if timefreeze > 2 {
 	set_attack_value(AT_USTRONG, AG_STRONG_CHARGE_WINDOW, 90);
 	set_hitbox_value(AT_JAB, 1, HG_FORCE_FLINCH, 0);
 	
-	if get_gameplay_time() % 4 == 0 {
-		timefreeze += 1
-	}
+
 	
 
 	
@@ -427,7 +425,7 @@ if timefreeze > 2 {
 	has_airdodge = false
 	
 	if timefreeze > 1 && timefreeze < 350 {
-	suppress_stage_music( 0, 100 );	
+	suppress_stage_music( 0.2, 1 );	
 
 	}
 	

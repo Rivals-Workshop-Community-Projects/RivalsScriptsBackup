@@ -16,6 +16,8 @@ hue = 2
 saveid = 0
 barpause = 0
 
+
+
 cosmetic = 1
 
 heartbroke = 0

@@ -4,6 +4,16 @@ if attackbar == 1 && !hitpause {
 	sound_play(sound_get("buzzing"),false,noone,0.4)
 }
 
+if attack == AT_FSPECIAL {
+	if state_timer >= 400 {
+		invincible = true
+		if hitpause {
+			y -= 1
+			x += (1 - (get_gameplay_time()%3))*5
+		}
+	}
+
+}
 if !hitpause {
     
     if attack == AT_DTILT {
@@ -29,7 +39,7 @@ if !hitpause {
         if window == 1 && window_timer % 4 == 0 {
             sound_play(asset_get("sfx_ice_shieldup"))
         }
-        if window == 1 && window_timer == 13{
+        if window == 1 && window_timer == 11{
             sound_play(asset_get("sfx_ice_on_player"))
         }
     }
@@ -171,9 +181,9 @@ if !hitpause {
         	shake_camera(3,3)
         		sound_stop(cur_sound)
                 sound_play(sound_get("buzzing"),false,noone,0.4)		
-        	barpause = 120
+        	barpause = 150
         	sound_play(sound_get("tauntflash"))
-        	move_cooldown [AT_NSPECIAL] = 140
+        	move_cooldown [AT_NSPECIAL] = 9999
         }
     }
 	
@@ -228,6 +238,7 @@ if !hitpause {
                 	
         if attack == AT_FSPECIAL {
 	prat_land_time = 16;
+
     if window == 1 {
     	specialing = 0
     	hsp/= 1.1
@@ -288,7 +299,7 @@ if !hitpause {
     
     
     if attack == AT_USPECIAL {
-    	prat_land_time = 12;
+    	prat_land_time = 8;
     	if window == 1 {
     		
     		if window_timer == 1 {

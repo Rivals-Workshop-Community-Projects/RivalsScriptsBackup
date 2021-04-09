@@ -6,7 +6,7 @@ if (attack == AT_NSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
 
 if attack == AT_JAB {
 	
-	if window_timer == 1 && window == 1 && !hitpause {
+	if window_timer == 5 && window == 1 && !hitpause {
 		sound_play(asset_get("sfx_swipe_weak2"))
 	}
 	
@@ -381,6 +381,7 @@ if nshit == -10 {
 }
 
 if attack == AT_USPECIAL {
+	prat_land_time = 15;
 	if window >= 3 {
 	can_wall_jump = true
 	}

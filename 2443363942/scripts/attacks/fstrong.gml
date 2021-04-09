@@ -74,6 +74,10 @@ set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+if (has_rune("C")){
+     set_hitbox_value(AT_FSTRONG, 1, HG_EFFECT, 1);
+     set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_burnconsume"));
+}
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_LOCKOUT, 10);
 
 set_hitbox_value(AT_FSTRONG, 2, HG_PARENT_HITBOX, 2);
@@ -95,4 +99,18 @@ set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+if (has_rune("C")){
+     set_hitbox_value(AT_FSTRONG, 2, HG_EFFECT, 1);
+     set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_burnconsume"));
+}
+if (has_rune("J")){
+    set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 13);
+    set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 50);
+    set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 9);
+    set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.05);
+    set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 12);
+    set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, 1.0);
+    set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 304);
+    set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+}
 set_hitbox_value(AT_FSTRONG, 2, HG_HIT_LOCKOUT, 10);

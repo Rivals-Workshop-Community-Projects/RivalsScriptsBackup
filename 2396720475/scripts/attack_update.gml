@@ -136,7 +136,7 @@ if (attack == AT_DSPECIAL){
 			movingbox.initial_spawn = true;
 			movingbox.hitfxowner = id;
 			
-			if (get_player_color(player) == 12 || get_player_color(player) == 10 || get_player_color(player) == 1 || SecretColor == 2 || SecretColor == 3){
+			if (get_player_color(player) == 12 || get_player_color(player) == 14 || get_player_color(player) == 10 || get_player_color(player) == 1 || SecretColor == 2 || SecretColor == 3){
 				flag_destroy = false;
 				movingbox.flag = true;
 			}
@@ -239,15 +239,28 @@ if (attack == AT_NSPECIAL){
 	move_cooldown[AT_NSPECIAL] = 30;
 	if (window == 1){
 
-		set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_air"));
-		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_ground"));
+		if (get_player_color(player) == 14){
+			set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("slime_nspecial_air"));
+			set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("slime_nspecial_ground"));
+		}
+		else {
+			set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_air"));
+			set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_ground"));	
+		}
+			
 		set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 6);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 3);
 			
 		if (special_down) { // Charge Shot
 			if (window_timer == 9 && chargespike == 20){
-				set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("tomochungus"));
-				set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("tomochungus"));
+				if (get_player_color(player) == 14){
+					set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("slime_tomochungus"));
+					set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("slime_tomochungus"));
+				}
+				else {
+					set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("tomochungus"));
+					set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("tomochungus"));
+				}
 				set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 3);
 				set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 6);
 				window = 2;

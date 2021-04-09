@@ -184,7 +184,7 @@ if (state == 2) {
     im_dex = (dest_time - full_timer)/dest_time*im_num;
     image_index = im_dex;
     if (full_timer == dest_time) {
-    	with player_id move_cooldown[AT_DSPECIAL] =  wall_cooldown;
+    	with orig_player_id move_cooldown[AT_DSPECIAL] =  wall_cooldown;
         instance_destroy();
         exit;
     }

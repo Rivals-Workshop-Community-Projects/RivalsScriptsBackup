@@ -54,6 +54,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_HSPEED, 15);
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_VSPEED, -5);
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_GRAVITY, 0.7);
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_GROUND_FRICTION, 15);
+set_hitbox_value(AT_FSTRONG, 1, HG_HIT_LOCKOUT, 3);
 
 
 

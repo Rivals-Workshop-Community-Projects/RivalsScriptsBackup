@@ -1,6 +1,6 @@
 ///
 
-if triggered > 0 {
+if rank >= 4{
 	  gpu_set_blendmode(bm_add);
         draw_sprite_ext(sprite_index, image_index , x - 1 - hsp  , y - 1 - vsp  , spr_dir*1.05, 1.05, 0 , -1 , 0.3);
 		draw_sprite_ext(sprite_index, image_index , x + 1 - hsp*2  , y + 1 - vsp*2  , spr_dir*1.05, 1.05, 0 , -1 , 0.3);
@@ -20,7 +20,7 @@ if get_player_color(player) == 8 {
 
 if attacking {
 shader_start();    
-    if attack == AT_NSPECIAL && window == 2 {
+    if attack == AT_DSPECIAL && window == 2 {
     	draw_debug_text(x - 80 ,y - 170, "Tier 1");	
     	draw_debug_text(x - 40 ,y - 186, "Tier 2");	
     	draw_debug_text(x ,y - 210, "Tier 3");	
@@ -47,10 +47,10 @@ shader_end()
      if attack == AT_EXTRA_3{
 		if window_timer > 1 {
 			if casing = 1 {
-			draw_debug_text(x - (50) ,y - 90, "Bullet shells ON");	
+			draw_debug_text(x - (100) ,y - 90, "Rank annoucer & Bullet shells ON");	
 			}
 			if casing = 0 {
-			draw_debug_text(x - (50) ,y - 90, "Bullet shells OFF");	
+			draw_debug_text(x - (100) ,y - 90, "Rank annoucer & Bullet shells OFF");	
 			}
 		}
      }

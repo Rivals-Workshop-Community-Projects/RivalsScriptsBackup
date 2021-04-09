@@ -113,6 +113,7 @@ if (attack == AT_DAIR){
 		}
 		
 		hit_player_obj.y = y - 6
+		hit_player_obj.vsp = vsp
 		hit_player_obj.fall_through = true
 	}
 	
@@ -178,11 +179,14 @@ if attack == AT_FSTRONG  {
   	hit_player_obj.x += floor((x + 110*spr_dir - hit_player_obj.x) / 4 )
   	hit_player_obj.y += floor((y - 30 - hit_player_obj.y) / 4 )
   }
- if window == 1 && window_timer >= 18 && (strong_down or left_strong_pressed or right_strong_pressed) && scharge < 300{
+ if window == 1 && window_timer >= 18 && (strong_down or left_strong_pressed or right_strong_pressed) && scharge < 300 && dashed = 0{
  	 window_timer -= 1
  	 scharge += 3
  }
-  if fcharge >= 1 && window == 1 && (left_pressed or right_pressed) {
+ 
+  if fcharge >= 1 && window == 1 && (left_pressed or right_pressed) && dashed = 0 {
+  	set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 24);
+  	dashed = 1
   	    	if left_pressed {
     		 hsp = -10.5
   	    	}
@@ -218,15 +222,19 @@ if attack == AT_USTRONG {
   }
   
 
- if window == 1 && window_timer >= 18 && (strong_down or up_strong_pressed) && scharge < 300{
+ if window == 1 && window_timer >= 18 && (strong_down or up_strong_pressed) && scharge < 300 && dashed = 0{
  	 window_timer -= 1
  	 scharge += 3
  }
-  if fcharge >= 1 && window == 1 && (left_pressed or right_pressed) {
+  if fcharge >= 1 && window == 1 && (left_pressed or right_pressed) && dashed = 0{
+  	 set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 26);
+  	   	 dashed = 1
   	    	if left_pressed {
+  	    	scharge /= 2	
     		 hsp = -10.5
   	    	}
   	    	if right_pressed {
+  	    	scharge /= 2	
     		 hsp = 10.5
   	    	}
   	    	
@@ -249,7 +257,7 @@ if attack == AT_USTRONG {
 
 if attack == AT_DSTRONG {
 	
-  if state_timer == 1 {
+  if window = 1 && window_timer = 1 {
   	scharge = 0
   }
   
@@ -258,15 +266,20 @@ if attack == AT_DSTRONG {
   }
   
 
- if window == 2 && window_timer >= 18 && (strong_down or up_strong_pressed) && scharge < 300{
+ if window == 2 && window_timer >= 18 && (strong_down or up_strong_pressed) && scharge < 300 && dashed = 0{
  	 window_timer -= 1
- 	 scharge += 3
+ 	 	 scharge += 3
  }
-  if fcharge >= 1 && window <= 2 && (left_pressed or right_pressed) {
+ 
+  if fcharge >= 1 && window <= 2 && (left_pressed or right_pressed) && dashed = 0{
+  	 set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 24);
+  	 dashed = 1
   	    	if left_pressed {
+  	    		scharge /= 2	
     		 hsp = -10.5
   	    	}
   	    	if right_pressed {
+  	    		scharge /= 2	
     		 hsp = 10.5
   	    	}
   	    	
@@ -1202,11 +1215,11 @@ if (window == last_window) && window_timer == get_window_value(attack, last_wind
 
 if attack == AT_DSTRONG or attack == AT_USTRONG or attack == AT_FSTRONG {
   
-  if window == 1 && window_timer <= 6 {
-  move_cooldown[AT_FSPECIAL] = 5
-  }
-  if window == 1 && window_timer <= 1 {
+
+  
+  if state_timer == 1 {
   	dairv = 0
+  	  dashed = 0
   	set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 18);
   	set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 18);
   	set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 9);
@@ -1235,7 +1248,7 @@ if attack == AT_DSTRONG or attack == AT_USTRONG or attack == AT_FSTRONG {
   }
   
 
-  if window == 1 {
+  if window == 1 or window == 2 {
   	
   	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 2 + scharge/12);
     set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 9.5 );

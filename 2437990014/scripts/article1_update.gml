@@ -24,12 +24,10 @@ if(hold_timer > 0){
     --hold_timer
 }
 else{
-    if(anim2_index + anim2_speed > anim2_image_number){
-        anim2_index = 0;
-    }
     anim2_index += anim2_speed;
-    if(anim2_index + anim2_speed >= HOLD_FRAME_1 && anim2_index < HOLD_FRAME_1){
+    if(anim2_index + anim2_speed > anim2_image_number){
         hold_timer = HOLD_TIME_1
+        anim2_index = 0;
     }
 }
 

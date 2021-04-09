@@ -1,8 +1,8 @@
 //B - Reversals
 
 
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL 
-|| attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == AT_EXTRA_1 || attack == AT_EXTRA_2){
+if (attack == AT_DSPECIAL || attack == AT_FSPECIAL 
+|| attack == AT_NSPECIAL || attack == AT_USPECIAL || attack == AT_EXTRA_1 || attack == AT_EXTRA_2){
     trigger_b_reverse();
 }
 
@@ -730,44 +730,21 @@ if attack == AT_FSPECIAL  {
 
 }
 
-if attack == AT_DSPECIAL {
-			clear_button_buffer( PC_SPECIAL_PRESSED );
-  move_cooldown[AT_DSPECIAL] = 30 
-  
-  if window_timer = 1 {
-	sound_play(asset_get("sfx_ell_steam_release"));
-	sound_play(sound_get("RI"),false,noone,0.7);
-    shake_camera(4,8)
-    triggered += 300
-    infernal2 -= 100
- 	spawn_hit_fx( x, y - 30, stylec )
-  } else {
-  	can_attack = true
-  	can_shield = true
-  	can_wall_jump = true
-  }
-  
-
-  
-}
-
-
 if attack == AT_NSPECIAL {
-
-if window == 1 && window_timer == 1 {
-if gunname >= 0 && gunname <= 3 && infernal2 < 100 {
-	gunname = 0
+  clear_button_buffer( PC_SPECIAL_PRESSED );
+  set_attack(AT_DSPECIAL)
+  window = 1 
+  window_timer = 2
+  sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"));
 }
 
 
-if gunname >= 4 && gunname <= 7 && infernal2 < 200 {
-	gunname = 0
-}
+if attack == AT_DSPECIAL {
 
-
-if gunname >= 8 && infernal2 < 300 {
+if window == 1 && window_timer == 1{
 	gunname = 0
-}
+	  sound_stop(asset_get("sfx_frog_fspecial_charge_gained_1"));
+	  sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"));
 }
 
     lmtime = 360
@@ -778,7 +755,7 @@ if gunname >= 8 && infernal2 < 300 {
 		can_move = false
 	}
 	
-	if window == 1 && gunname != 0{
+	if window == 1 && gunname != 0 && window_timer > 2{
 		
 	
 	   if gunname >= 8  {
@@ -880,13 +857,13 @@ if gunname >= 8 && infernal2 < 300 {
 			draw_indicator = false
 			
 	
-	if window = 2{
+	if window = 2 {
 		
 		if window_timer == 1 {
 			gunname = 1
 		}
 		
-	    if !special_pressed and !attack_pressed {
+	    if (!special_pressed and !attack_pressed) or state_timer < 20 {
 	    	if window_timer = 18 {
 	    		window_timer = 10
 	    	}
@@ -905,31 +882,31 @@ if gunname >= 8 && infernal2 < 300 {
 	       }
 	    }
 
-	    if move_cooldown[AT_NSPECIAL_2] == 0{
+	    if move_cooldown[AT_DSPECIAL_2] == 0{
 	       
 
 	        if down_pressed  {
 	        	gunname += 1
 	        	sound_play(asset_get("mfx_back"))
-	        	move_cooldown[AT_NSPECIAL_2] = 6
+	        	move_cooldown[AT_DSPECIAL_2] = 6
 	        }
 	        
 	        if up_pressed {
 	        	gunname -= 1
 	        	sound_play(asset_get("mfx_back"))
-	        	move_cooldown[AT_NSPECIAL_2] = 6
+	        	move_cooldown[AT_DSPECIAL_2] = 6
 	        }
 	        
 	        if left_pressed {
 	        	gunname -= 4
 	        	sound_play(asset_get("mfx_back"))
-	        	move_cooldown[AT_NSPECIAL_2] = 6
+	        	move_cooldown[AT_DSPECIAL_2] = 6
 	        }
 	        
 	        if right_pressed {
 	        	gunname += 4
 	        	sound_play(asset_get("mfx_back"))
-	        	move_cooldown[AT_NSPECIAL_2] = 6
+	        	move_cooldown[AT_DSPECIAL_2] = 6
 	        }
 	   
 	   
@@ -1474,6 +1451,9 @@ if window == 21 {
 
 if attack == AT_TAUNT {
 	
+	inactive = 30
+	rankm += 1
+	
 	if window = 19 && window_timer == 16 {
 			set_state (PS_IDLE)
 		}
@@ -1914,7 +1894,6 @@ if window == 13 {
             spawn_hit_fx( x + (85 * spr_dir) , y - 56, 305 )
             create_hitbox(AT_EXTRA_1 , 8 , x + (12 * spr_dir) , y - 56 );
               create_hitbox(AT_EXTRA_1 , 8 , x + (22 * spr_dir) , y - 46 );
-                create_hitbox(AT_EXTRA_1 , 8 , x + (12 * spr_dir) , y - 66 );
 				}
 			}
 			
@@ -1934,7 +1913,7 @@ if window == 13 {
 		 set_hitbox_value(AT_EXTRA_1, 23, HG_PROJECTILE_ANIM_SPEED, 0.5 + ((random_func(3, 4, true))/10));
 		 set_hitbox_value(AT_EXTRA_1, 24, HG_PROJECTILE_ANIM_SPEED, 0.5 + ((random_func(4, 4, true))/10));
 		 
-				if !hitpause and window_timer % 3 == 0 {
+				if !hitpause and window_timer % 6 == 0 {
 					sound_play(sound_get("exp1"));
 					create_hitbox(AT_EXTRA_1 , 21 , x + (10 * spr_dir), y - 66 );	
 		    	}

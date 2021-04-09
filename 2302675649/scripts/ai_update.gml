@@ -195,14 +195,24 @@ SetAttack();
 		case AS_ADVANTAGE:
 			if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND && can_attack && get_training_cpu_action() == CPU_FIGHT)
 			{
-				var xdist = abs((ai_target.x+ai_target.hsp*6)-x);
-				var ydist = abs((ai_target.y+ai_target.vsp*6)-y);
+				var frameOffset = aura?1:6;
+				var xdist = abs((ai_target.x+ai_target.hsp*frameOffset)-x);
+				var ydist = abs((ai_target.y+ai_target.vsp*frameOffset)-y);
 				var dist = point_distance(0, 0, xdist, ydist);
 				
 				switch (task)
 				{
 					case TSK_NONE:
-						if (dist > 200 && dist < 250 && get_player_damage(ai_target.player) >= 100)
+						if (ai_target.invincible) break;
+						if (aura && ydist < 10 && xdist < 120 && xdist > 40 && get_player_damage(ai_target.player) >= 150)
+						{
+							DoAttack(AT_NSPECIAL);
+						}
+						else if (aura && ydist < 10 && xdist > 100 && attack != AT_FSPECIAL)
+						{
+							DoAttack(AT_FSPECIAL);
+						}
+						else if (dist > 200 && dist < 250 && (get_player_damage(ai_target.player) >= 100 || aura))
 						{
 							DoAttack(AT_USPECIAL);
 						}
@@ -323,6 +333,13 @@ SetAttack();
 			up_down = true;
 			special_pressed = true;
 			special_down = true;
+			break;
+		case 49:
+			if (aura && can_attack)
+			{
+				HoldTowardsTarget();
+				set_attack(49);
+			}
 			break;
 	}
 }

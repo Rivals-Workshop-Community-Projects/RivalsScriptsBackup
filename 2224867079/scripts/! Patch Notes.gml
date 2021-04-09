@@ -1,4 +1,19 @@
 /*
+-- V2.14 --
+
+Balance Changes:
+- Kunai bombs now follow moving platforms
+- Kunai bombs now have much better collision with the ground (though you could probably still get them to float)
+
+Cosmetic Changes:
+- Red nspecial projectiles no longer have a glow
+- Blue nspecial air projectile no longer has a glow
+
+-- V2.13 --
+
+Balance Changes:
+- Red Uspecial base knockback changed (19->12)
+
 -- V2.12 --
 
 Balance Changes:

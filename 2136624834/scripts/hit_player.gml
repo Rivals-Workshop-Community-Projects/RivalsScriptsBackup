@@ -34,6 +34,9 @@ if timestop < 100 && timefreeze < 1 && (my_hitboxID.attack != AT_USPECIAL) && mo
 
 if timefreeze > 40 {
 	
+	with hit_player_obj {
+		take_damage (player, -1, other.my_hitboxID.damage*-1)
+	}
     
     set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 1);
     set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 4);
@@ -60,12 +63,6 @@ if timefreeze > 40 {
     set_hitbox_value(AT_USPECIAL, 2, HG_HITSTUN_MULTIPLIER, my_hitboxID.hitstun_factor);
     set_hitbox_value(AT_USPECIAL, 2, HG_EFFECT, 9);
     set_hitbox_value(AT_USPECIAL, 2, HG_EXTRA_HITPAUSE, 20);
-
- if my_hitboxID.attack != AT_DSTRONG and my_hitboxID.attack != AT_USTRONG and my_hitboxID.attack != AT_FSTRONG and timefreeze > 60{
-    timefreeze -= (50 + my_hitboxID.damage)/2
-    }
-    
-    
 
 }
 

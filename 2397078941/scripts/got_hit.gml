@@ -39,7 +39,7 @@ if supply > 0  {
 }
 
 
-if nolan == 0 && changed == -1 {
+if nolan == 0 && changed == -4 {
     sound_play(sound_get("shock1"))
     spawn_hit_fx(x,y - 40,306)
     nolan = 1 

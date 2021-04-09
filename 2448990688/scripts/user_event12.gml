@@ -76,7 +76,7 @@ for (i = 0; i < len; i++){
 
 // Alt costume
 
-var alt_cur = get_player_color(player);
+/*var alt_cur = get_player_color(player);
 
 rectDraw(x + 10, y + 10, 201, 5, c_black);
  

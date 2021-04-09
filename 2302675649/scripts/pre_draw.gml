@@ -33,6 +33,14 @@ if ("rollArray" in self)
 		shader_end();
 	}
 
+	// aura meter
+	if (state == PS_SPAWN && auraMeter != -1 && state_timer < 68)
+	{
+	    draw_rectangle_color(x - 104, y - 124, x + 104, y - 96, c_black, c_black, c_black, c_black, false);
+	    draw_rectangle_color(x - 100, y - 120, x - 100 + 200*(auraMeter/67), y - 100, c_white, c_white, c_white, c_white, false);
+		draw_debug_text(x - 60, y - 114, "Void Dragon Mode");
+	}
+
 	// uspec vfx
 	for (var i = 0; i < 10; ++i) if (uspecArray[i] != -1 && uspecArray[i].uspecAlpha > 0)
 	{
@@ -80,7 +88,7 @@ if ("rollArray" in self)
 					gpu_set_blendmode(bm_normal);
 					if (nspecCharge == nspecMax)
 					{
-						draw_set_alpha(min(state_timer-nspecMax, 25)/100);
+						draw_set_alpha(min(state_timer-(aura?0:nspecMax), 25)/100);
 						draw_rectangle_color(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
 						draw_set_alpha(1);
 					}
@@ -212,6 +220,17 @@ if ("rollArray" in self)
 			FlagPart(c_white, 1/3, 1/3);
 			FlagPart(make_colour_rgb(251, 238, 31), 1/3, 2/3); // yellow
 			gpu_set_fog(0, c_white, 0, 0);
+			break;
+
+		// aura
+		default:
+			if (aura)
+			{
+				var color_rgb=make_color_rgb(255, 0, 255);
+				var color_hsv=make_color_hsv((color_get_hue(color_rgb)+hue)%255,color_get_saturation(color_rgb),color_get_value(color_rgb));
+				FlagPart(color_hsv, 1, 0);
+				gpu_set_fog(0, c_white, 0, 0);
+			}
 			break;
 	}
 }

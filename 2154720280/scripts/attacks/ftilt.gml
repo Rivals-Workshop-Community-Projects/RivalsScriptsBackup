@@ -37,13 +37,13 @@ set_hitbox_value(AT_FTILT, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_FTILT, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_FTILT, 1, HG_ANGLE, 76);
-set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 4.5);
+set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, .2);
 set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-set_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER, .9);
+set_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 303);
 
 

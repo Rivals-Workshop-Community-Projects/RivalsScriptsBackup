@@ -102,12 +102,18 @@ if (state == 1) {
             other.hit_cd = 2;
         }*/
     }
+    //New Removal code :)
+    if lockout > 0 {
+        hit_op = 0;
+        hit_accel = 0;
+        lockout--;
+    }
     //Movement Code
     direc = degtorad(point_direction(x,y,player_id.x,player_id.y-32));
     with (asset_get("pHitBox")){
         if type != 2 {
             // print_debug("HIT ORB WITH TYPE 1");
-            if (other.hit_cd2 <= 0 && !(attack == 16 && hbox_num == 2) && place_meeting(x,y,other.id)) {
+            if (other.lockout <= 0 && other.hit_cd2 <= 0 && !(attack == 16 && hbox_num == 2) && place_meeting(x,y,other.id)) {
                 if other.last_hitbox != self && !player_id.has_hit_player {
                     sound_play(sound_effect);
                     spawn_hit_fx(other.x+hit_effect_x,other.y+hit_effect_y,hit_effect);

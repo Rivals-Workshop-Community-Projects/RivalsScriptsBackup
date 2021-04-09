@@ -11,7 +11,6 @@ ncode3 = "It wont hurt as bad but it'll send you flying"
 recharged = 1
 recoverytimer = 0;
 recoverytick = 0;
-
 blueprojspawn = true
 nbox = 1
 ncancel = false

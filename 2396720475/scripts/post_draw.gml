@@ -83,6 +83,9 @@ if (instance_exists(Box)){
 	if (Box.flag && SecretColor == 3){
 		draw_sprite_ext(sprite_get("flags"), 4, Box.x, Box.y, 1, 1, 0, c_white, 1);
 	}	
+	if (Box.flag && get_player_color(player) == 14){
+		draw_sprite_ext(sprite_get("flags"), 5, Box.x, Box.y, 1, 1, 0, c_white, 1);
+	}	
 }
 
 if (instance_exists(movingbox)){
@@ -100,11 +103,15 @@ if (instance_exists(movingbox)){
 	}	
 	if (movingbox.flag && SecretColor == 3){
 		draw_sprite_ext(sprite_get("flags"), 4, movingbox.x, movingbox.y, 1, 1, 0, c_white, 1);
+	}		
+	if (movingbox.flag && get_player_color(player) == 14){
+		draw_sprite_ext(sprite_get("flags"), 5, movingbox.x, movingbox.y, 1, 1, 0, c_white, 1);
 	}	
 }
 
 if (flag_destroy){
-	if (get_player_color(player) == 12 || get_player_color(player) == 10 || (get_player_color(player) == 1 && current_weekday == 6) || SecretColor == 2 || SecretColor == 3){
+	if (get_player_color(player) == 12 || get_player_color(player) == 14 || get_player_color(player) == 10 || (get_player_color(player) == 1 && current_weekday == 6) || SecretColor == 2 || SecretColor == 3){
+
 		draw_sprite_ext(sprite_get("flag_fall"), flag_num, Box_temp_x, Box_temp_y, 1, 1, 0, c_white, 1);
 		flag_num += .20;
 		
@@ -118,8 +125,12 @@ if (flag_destroy){
 if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && window <= 2){
 shader_start();
 	
-	needle_sprite = draw_sprite_ext(sprite_get("needle"), -1, x, y - 15, 1, 1, needle_angle, c_white, 1);	
-
+	if (get_player_color(player) != 14){
+		needle_sprite = draw_sprite_ext(sprite_get("needle"), -1, x, y - 15, 1, 1, needle_angle, c_white, 1);	
+	}
+	else {
+		needle_sprite = draw_sprite_ext(sprite_get("slime_needle"), -1, x, y - 15, 1, 1, needle_angle, c_white, 1);		
+	}
 shader_end();
 }
 

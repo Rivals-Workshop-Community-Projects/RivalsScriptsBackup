@@ -5,6 +5,20 @@ hit_player_obj = self
 
 }
 
+if gunname >= 0 && gunname <= 3 && infernal2 < 100 {
+	move_cooldown[AT_NSPECIAL] = 2
+}
+
+
+if gunname >= 4 && gunname <= 7 && infernal2 < 200 {
+	move_cooldown[AT_NSPECIAL] = 2
+}
+
+
+if gunname >= 8 && infernal2 < 300 {
+	move_cooldown[AT_NSPECIAL] = 2
+}
+
 if triggered > 1 && !hitpause{
 	triggered -= 1
 	
@@ -318,7 +332,16 @@ if get_gameplay_time() <= 120 && hunter == 0 and taunt_pressed && get_player_col
 
 }
 
- if get_player_color(player) == 1 && hunter == 1 {
+
+
+if get_gameplay_time() <= 120 && Vrank == 0 and taunt_pressed && get_player_color(player) != 1{
+	Vrank = 1
+	sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"));
+    sound_play(sound_get("rankc")) 	
+}
+
+
+ if get_player_color(player) == 1 {
  	
  	if prevstyle != style {
  		prevstyle = style
@@ -356,7 +379,7 @@ if get_gameplay_time() <= 120 && hunter == 0 and taunt_pressed && get_player_col
  	
  	
  	if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR && !hitpause {
- 		if attack == AT_NSPECIAL&& window == 3 && window_timer == 6{
+ 		if attack == AT_DSPECIAL&& window == 3 && window_timer == 6{
  				sound_play(sound_get("DN"));
  		}
  		
@@ -377,11 +400,11 @@ if get_gameplay_time() <= 120 && hunter == 0 and taunt_pressed && get_player_col
  				sound_play(sound_get("DDa2"));
  			}
  		}
- 		if attack == AT_DSPECIAL {
+ 		if attack == AT_NSPECIAL {
  			style = 4
  		}
  		
- 		if attack == AT_NSPECIAL  or attack == AT_FTILT or attack == AT_FSTRONG
+ 		if attack == AT_DSPECIAL  or attack == AT_FTILT or attack == AT_FSTRONG
  		or attack == AT_NAIR or (attack == AT_JAB && window == 7) or attack == AT_USTRONG or attack == AT_UAIR 
  		or attack == AT_EXTRA_1 or attack == AT_EXTRA_2 or attack == AT_DTILT or (attack == AT_DAIR && window < 5 && window_timer > 2){
  			style = 2
@@ -499,21 +522,21 @@ if state == PS_DOUBLE_JUMP {
 /// INFERNAL ENERGY
 
 
-if infernal2 > 290 and infernal2 < 302{
+if infernal2 > 301{
 	 if get_player_color(player) == 1 && hunter == 1 {
 	 	sound_play(sound_get("Dmax"));
 	 }	
 	spawn_hit_fx( x , y - 30, 306 )
 	sound_play(sound_get("RI"));
 	sound_play(sound_get("exp1"));
-	infernal2 = 302
+	infernal2 = 300
 }
 
 
 
 
 if infernal2 < 100 {
-     move_cooldown[AT_DSPECIAL] = 2
+     move_cooldown[AT_NSPECIAL] = 2
 }
 
 if infernal2 >= 100 && infernal2 < 198 {
@@ -521,10 +544,6 @@ if infernal2 >= 100 && infernal2 < 198 {
 		 if get_gameplay_time() % 4 == 0 && !hitpause {
 		spawn_hit_fx( x - ((20 - random_func(11, 50, true)) * spr_dir) , y - 16 - random_func(12, 66, true) , dairs3 )
 	}
-
-		if get_gameplay_time() % 160 == 0{
-			take_damage(player, -1, 1)
-		}	
 
 
 }
@@ -540,9 +559,6 @@ if infernal2 >= 198 && infernal2 < 300 {
 		spawn_hit_fx( x - ((25 - random_func(11, 50, true)) * spr_dir) , y - 16 - random_func(12, 66, true) , smoke2 )
 	}
 	
-		if get_gameplay_time() % 120 == 0{
-			take_damage(player, -1, 1)
-		}
 		
 
 }
@@ -561,10 +577,6 @@ if infernal2 >= 300 {
 		spawn_hit_fx( x - ((25 - random_func(11, 50, true)) * spr_dir) , y - 16 - random_func(12, 66, true) , dairs3 )
 	}
 	
-		
-		if get_gameplay_time() % 60 == 0{
-			take_damage(player, -1, 1)
-		}
 		
 }
 
@@ -642,4 +654,135 @@ if get_player_color(player) == 8 {
 
 //////////
 /// setstock 
+
+
+
+
+if rank >= 4 && !hitpause && get_gameplay_time() % 10-rank == 0{
+	shake_camera(1,1)
+	
+	
+}
+
+if triggered && !hitpause && get_gameplay_time() % 10-rank == 3{
+	shake_camera(1,1)
+	
+}
+
+if rankm >= 0 && !hitpause {
+
+	inactive -= 1
+	
+    if inactive < 0 {
+	rankm -= 1
+	}
+	
+	
+	if inactive < -120 {
+		rankm -= 1
+	}
+	
+
+	
+}
+
+
+
+if rank > 0  {
+
+if rankm <= 0 {
+	if rank == 1 {
+		if hunter == 1 or Vrank = 1  {
+	   sound_play(sound_get("rankd"),false,noone,1) 
+	    prevrank = rank 
+		}
+    } else {
+    	 prevrank = rank 
+    }
+    
+ rankm += 120
+ rank -= 1
+ 
+
+
+
+}
+}
+
+if rank < 6  {
+   if rankm >= 240 {	
+   	 rankm -= 120
+     rank += 1
+     
+if hunter == 1 or Vrank = 1 {
+     switch rank {
+     	case 1 :
+     	sound_stop(sound_get("rankd")) 	
+     	if rank > prevrank {
+     	sound_play(sound_get("rankc"),false,noone,0.8) 	
+     	prevrank = rank
+     	}
+     	break;
+     	
+     	case 2 :
+     	if rank > prevrank {
+     	sound_stop(sound_get("rankc")) 	
+     	sound_play(sound_get("rankb"),false,noone,0.8) 
+     	prevrank = rank
+     	}
+     	break;
+     	
+     	case 3 :
+     	if rank > prevrank {
+     	sound_stop(sound_get("rankb")) 	
+     	sound_play(sound_get("ranka"),false,noone,0.8) 
+     	prevrank = rank
+     	}
+     	break;
+     
+        case 4 :
+        if rank > prevrank {
+     	sound_stop(sound_get("ranka")) 	
+     	sound_play(sound_get("ranks"),false,noone,0.8) 
+     	prevrank = rank
+        }
+        
+     	 if hitpause {
+     		hitstop += 4
+     		hit_player_obj.hitstop += 4
+     	}
+     	
+     	    spawn_hit_fx(x,y,lighten)
+     		sound_play(sound_get("counterhit"),false,noone,0.8)
+     		sound_play(sound_get("RI"),false,noone,0.6)
+     	
+     	break;
+     	
+     	case 5 :
+     	if rank > prevrank {
+     	sound_stop(sound_get("ranks")) 	
+     	sound_play(sound_get("rankss"),false,noone,0.8) 
+     	prevrank = rank
+     	}
+     	break;
+     	
+     
+        case 6 :
+        if rank > prevrank {
+     	sound_stop(sound_get("rankss")) 	
+     	sound_play(sound_get("ranksss"),false,noone,0.8) 
+     	prevrank = rank
+        }
+     	break;
+     		
+     }
+   }
+   
+}
+   
+} else {
+   if rankm >= 240 {	
+   	 rankm -= 2
+   }
+}
 

@@ -29,7 +29,7 @@ if (attack == AT_DAIR){
 }
 
 if(attack == AT_DTILT){
-	if(window == 4 && window_timer == 12){
+	if(window == 4 && window_timer == 15){
 		set_state(PS_IDLE);
 	}
 	if(window == 6 && window_timer > 3){
@@ -73,7 +73,8 @@ if (attack == AT_JAB && window == 3){
 }
 
 if (attack == AT_DSPECIAL){
-	if(waterLevelEmergency > 7 && window == 1){
+	if(waterLevelEmergency > 7 && !free){
+		if(window == 1 || window == 2 && window_timer < 16)
 		was_parried = true
 	}
 	if (window == 2 && window_timer == 15 && !free){
@@ -87,10 +88,15 @@ if (attack == AT_DSPECIAL){
 				set_attack(AT_EXTRA_1)
     	}
 	}
-	
+	if(free){
+		set_num_hitboxes(AT_DSPECIAL, 5);
+	}else{
+		set_num_hitboxes(AT_DSPECIAL, 2);
+	}
 }
 
 if(attack == AT_EXTRA_1){
+	was_parried = false
 	if(window == 1 && window_timer == 21){
 		if(instance_exists(saw_blade)){
 		spawn_hit_fx(x, y, waterPort);
@@ -138,28 +144,56 @@ if (attack == AT_USPECIAL){
 
 if(attack == AT_USPECIAL_2){
 	if(waterLevelEmergency > 7 && window == 1){
-		was_parried = true
+		if(!forceNoWater){
+			was_parried = true
+		}else{
+			was_parried = false
+		}
 	}
 	if(window == 3){
 		uspecVar = 0
 	}
 	if (waterCharges > 0 || waterLevelEmergency > 7){
-		if(window == 2 && window_timer == 1){
-		waterCharges -= 1
-        waterBomb = instance_create(x - (10 * spr_dir),y - 30,"obj_article2");
+		if(window == 2 && window_timer == 1 && !forceNoWater){
+			waterCharges -= 1
+	        waterBomb = instance_create(x - (10 * spr_dir),y - 30,"obj_article2");
 		}
-		set_attack_value(AT_USPECIAL_2, AG_SPRITE, sprite_get("uspecialair"));
-		set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -15);
-		set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_HAS_SFX, 1);
+		if(window == 1){
+			if(!forceNoWater){
+				set_attack_value(AT_USPECIAL_2, AG_SPRITE, sprite_get("uspecialair"));
+				set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -15);
+				set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_HAS_SFX, 1);
+				if(shield_pressed){
+					forceNoWater = true
+					spawn_hit_fx(x - 8*spr_dir, y - 90, 111)
+					sound_play(asset_get("sfx_waterhit_weak"))
+					vsp = -5
+					window_timer = 1
+					window = 1
+				}
+			}else{
+				set_attack_value(AT_USPECIAL_2, AG_SPRITE, sprite_get("uspecialairnob"));
+				set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -11);
+				set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_HAS_SFX, 0);
+			}
+		}
 	}else{
 		set_attack_value(AT_USPECIAL_2, AG_SPRITE, sprite_get("uspecialairnob"));
 		set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -11);
 		set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_HAS_SFX, 0);
 	}
+	if(window == 1){
+		if(window_timer == 0){
+			forceNoWater = false
+		}
+	}
 	if(free){
-		if(waterCharges <= 0 && waterLevelEmergency <= 7){
-			move_cooldown[AT_USPECIAL] = 30
-			move_cooldown[AT_USPECIAL_2] = 30
+		if(waterCharges == 0  && waterLevelEmergency <= 7 && !forceNoWater){
+			move_cooldown[AT_USPECIAL] = 35
+			move_cooldown[AT_USPECIAL_2] = 35
+		}else if(forceNoWater){
+			move_cooldown[AT_USPECIAL] = 45
+			move_cooldown[AT_USPECIAL_2] = 45
 		}else{
 			move_cooldown[AT_USPECIAL] = 12
 			move_cooldown[AT_USPECIAL_2] = 12

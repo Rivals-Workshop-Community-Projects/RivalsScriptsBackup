@@ -59,7 +59,6 @@ set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_HIT_SFX, asset_get("sfx_absa_orb_hit"));
 set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_air_proj"));
-set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_PROJECTILE_MASK, sprite_get("nspecial_air_proj"));
 set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_PROJECTILE_HSPEED, 11);
 set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_PROJECTILE_VSPEED, 15);
 set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_PROJECTILE_DESTROY_EFFECT, 302);

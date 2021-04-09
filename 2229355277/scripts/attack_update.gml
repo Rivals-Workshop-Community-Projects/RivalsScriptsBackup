@@ -183,13 +183,21 @@ if (attack == AT_FSPECIAL)
 
 if (attack == AT_FSTRONG){
 	if window == 1{
-		if (strong_charge >= 0 and strong_charge < 15){
+		if (strong_charge >= 0 and strong_charge < 30){
+      chargetier = 1;
+      if (strong_charge == 14){
+        playsound = true;
+      }
 			outline_color = [ 0, 0, 0 ];
 			init_shader();
 			print_debug("BANG");
 		}
 		// Decent Sized Projectile
-		if (strong_charge >= 15 and strong_charge < 45){
+		if (strong_charge >= 30 and strong_charge < 45){
+      chargetier = 2;
+      if (strong_charge == 43){
+        playsound = true;
+      }
 			outline_color = [ 0, 0, 255 ];
 			init_shader();
 			print_debug("BAM");
@@ -249,7 +257,7 @@ if ((attack == AT_NSPECIAL)and window == 1 and window_timer == 1)
 
 if (attack == AT_NSPECIAL and ((window == 1 and window_timer == 1) or window == 2))
   {
-  	char_height = 100;
+  char_height = 100;
   can_shield = true;
   can_jump = true;
 
@@ -296,20 +304,15 @@ if (attack == AT_NSPECIAL and ((window == 1 and window_timer == 1) or window == 
       manabar -= (spellcost[1] * 20);
       mana -= spellcost[1];
       //If the slot you pressed is empty, cast the spell in the other slot.
-
-      state = PS_IDLE;
       set_attack(spellslot[1]);
-      attack_end();
-      destroy_hitboxes();
+      flash_time = 0;
+      show_flashing_icon = true;
       move_cooldown[AT_NSPECIAL] = 60;
       //Checks if the spell you just cast was Echo, and if it's not, it saves
       //it as the previously cast spell.
       if (spellslot[1] != 33)
         {
-          state = PS_IDLE;
         prev_spell_cast = spellslot[1];
-        attack_end();
-        destroy_hitboxes();
         }
 
       //Consume spell 2, move all the other spells up.
@@ -333,17 +336,13 @@ if (attack == AT_NSPECIAL and ((window == 1 and window_timer == 1) or window == 
       mana -= spellcost[0];
 
       set_attack(spellslot[0]);
-      attack_end();
-      destroy_hitboxes();
-
+      flash_time = 0;
+      show_flashing_icon = true;
       move_cooldown[AT_NSPECIAL] = 60;
 
       if (spellslot[0] != 33)
         {
         prev_spell_cast = spellslot[0];
-        attack_end();
-        destroy_hitboxes();
-
         }
 
       //Consume spell 1, move all the other spells up.
@@ -378,18 +377,13 @@ if (attack == AT_NSPECIAL and ((window == 1 and window_timer == 1) or window == 
       mana -= spellcost[0];
       //If the slot you pressed is empty, cast the spell in the other slot.
       set_attack(spellslot[0]);
-      attack_end();
-      destroy_hitboxes();
-
+      flash_time = 0;
+      show_flashing_icon = true;
       move_cooldown[AT_NSPECIAL] = 60;
 
       if (spellslot[0] != 33)
         {
-
         prev_spell_cast = spellslot[0];
-        attack_end();
-        destroy_hitboxes();
-
         }
 
       //Consume spell 1, move all other spells up.
@@ -413,15 +407,12 @@ if (attack == AT_NSPECIAL and ((window == 1 and window_timer == 1) or window == 
       mana -= spellcost[1];
 
       set_attack(spellslot[1]);
-      attack_end();
-      destroy_hitboxes();
-
+      flash_time = 0;
+      show_flashing_icon = true;
       move_cooldown[AT_NSPECIAL] = 80;
 
       if (spellslot[1] != 33)
         {
-        attack_end();
-        destroy_hitboxes();
         prev_spell_cast = spellslot[1];
         }
 

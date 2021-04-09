@@ -57,13 +57,13 @@ dash_stop_percent = .35; //the value to multiply your hsp by when going into idl
 ground_friction = .22;
 moonwalk_accel = 1.2;
 
-jump_start_time = 6;
+jump_start_time = 5;
 jump_speed = 9.5;
 short_hop_speed = 5.8;
 djump_speed = 12.5;
 leave_ground_max = 5; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 3; //the maximum hsp you can accelerate to when in a normal aerial state
+air_max_speed = 4; // (3) the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .32;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
@@ -74,8 +74,8 @@ walljump_hsp = 3.5;
 walljump_vsp = 9;
 walljump_time = 18;
 max_fall = 11; //maximum fall speed without fastfalling
-fast_fall = 11; //fast fall speed
-gravity_speed = .45;
+fast_fall = 15; // (11) fast fall speed
+gravity_speed = .45; // (.45)
 hitstun_grav = .5;
 knockback_adj = 0.9; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
@@ -167,3 +167,4 @@ grabbedid = noone;
 saw_blade = noone
 waterChargingFx = noone
 effect_drawangle = 0
+forceNoWater = false

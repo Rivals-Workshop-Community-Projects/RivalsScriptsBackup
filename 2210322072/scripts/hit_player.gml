@@ -265,3 +265,15 @@ if my_hitboxID.hbox_num == 1 or my_hitboxID.hbox_num == 4 {
 }
 	
 }
+
+if move_cooldown[AT_NSPECIAL] == 0 && my_hitboxID.attack == AT_FSPECIAL or my_hitboxID.attack == AT_USPECIAL or my_hitboxID.sound_effect == sound_get("strong1") {
+	
+	 move_cooldown[AT_NSPECIAL] = 10
+	 
+	if nshit < 2{
+	nshit += 1
+	}
+	if nshit == 2 {
+		sound_play(sound_get("slicef"))
+	}
+}

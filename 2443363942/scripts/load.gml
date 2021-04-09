@@ -45,8 +45,11 @@ sprite_change_offset("dstrong", 96, 108);
 sprite_change_offset("nspecial", 24, 68);
 sprite_change_offset("fspecial", 34, 70);
 sprite_change_offset("uspecial", 156, 112);
+sprite_change_offset("uspecial_trans", 156, 112);
+sprite_change_offset("uspecial_ea", 156, 112);
 sprite_change_offset("dspecial", 46, 66);
 sprite_change_offset("dspecial_trans", 46, 66);
+sprite_change_offset("dspecial_ea", 46, 66);
 sprite_change_offset("taunt", 32, 82);
 
 sprite_change_offset("plat", 64, 94);
@@ -55,3 +58,8 @@ sprite_change_offset("nspecial_proj", 46, 28);
 
 sprite_change_offset("miiverse", 60, 30);
 sprite_change_offset("trial", 31, 0);
+sprite_change_offset("last_resort", 27, 39);
+sprite_change_offset("gfz", 18, 41);
+sprite_change_offset("amber_hug", 32, 68);
+sprite_change_offset("sandbert_hug", 32, 68);
+sprite_change_offset("kirby", 28, 54);

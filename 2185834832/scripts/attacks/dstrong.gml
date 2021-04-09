@@ -17,12 +17,13 @@ set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX_FRAME, 0);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 25);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 28);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_SFX, asset_get("sfx_frog_gong_hit"));
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_SFX_FRAME, 0);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 12);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_DSTRONG, 13);
 
@@ -158,7 +159,6 @@ set_hitbox_value(AT_DSTRONG, 7, HG_BASE_HITPAUSE, 9.8);
 set_hitbox_value(AT_DSTRONG, 7, HG_HITPAUSE_SCALING, 0.95);
 set_hitbox_value(AT_DSTRONG, 7, HG_HITBOX_GROUP, 7);
 set_hitbox_value(AT_DSTRONG, 7, HG_SHAPE, 2);
-set_hitbox_value(AT_DSTRONG, 7, HG_DRIFT_MULTIPLIER, 0);
 set_hitbox_value(AT_DSTRONG, 7, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
 set_hitbox_value(AT_DSTRONG, 8, HG_PARENT_HITBOX, 0);

@@ -18,9 +18,13 @@ switch (get_player_color(player))
     break;
 }
 
-var                                             outline_colour = [  0,   0,  0  ];
-if (get_player_color(player) == 3)              outline_colour = [  60,  0,  60 ];
-else if (get_player_color(player) == 5)         outline_colour = [  35,  67, 49 ];
+outline_colour = [0, 0, 0];
+switch (get_player_color(player))
+{
+    case 3:  outline_colour = [60, 0,  60]; break;
+    case 5:  outline_colour = [35, 67, 49]; break;
+    case 21: outline_colour = [90, 31,  7]; break;
+}
 
 if ("teleFlash" in self && teleFlash > 0)
 {
@@ -30,3 +34,8 @@ if ("teleFlash" in self && teleFlash > 0)
 						lerp(255,outline_colour[2],glow_value) ];
 }
 else outline_color = outline_colour;
+
+if (object_index == asset_get("draw_result_screen") && gpu_get_alphatestfunc())
+{
+    winner_name = "Void Dragon Lonin wins!";
+}

@@ -60,9 +60,9 @@ set_hitbox_value(AT_DAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_DAIR, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_X, -6);
-set_hitbox_value(AT_DAIR, 2, HG_HITBOX_Y, -50);
+set_hitbox_value(AT_DAIR, 2, HG_HITBOX_Y, -54);
 set_hitbox_value(AT_DAIR, 2, HG_WIDTH, 44);
-set_hitbox_value(AT_DAIR, 2, HG_HEIGHT, 52);
+set_hitbox_value(AT_DAIR, 2, HG_HEIGHT, 42);
 set_hitbox_value(AT_DAIR, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_DAIR, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 7);
@@ -74,4 +74,15 @@ set_hitbox_value(AT_DAIR, 2, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 21);
 set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
+if (has_rune("F")){
+    set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 14);
+    set_hitbox_value(AT_DAIR, 2, HG_ANGLE, 280);
+    set_hitbox_value(AT_DAIR, 2, HG_BASE_KNOCKBACK, 6);
+    set_hitbox_value(AT_DAIR, 2, HG_KNOCKBACK_SCALING, 0.9);
+    set_hitbox_value(AT_DAIR, 2, HG_BASE_HITPAUSE, 10);
+    set_hitbox_value(AT_DAIR, 2, HG_HITPAUSE_SCALING, 0.4);
+    set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 197);
+    set_hitbox_value(AT_DAIR, 2, HG_HIT_LOCKOUT, 10);
+    set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+}
 set_hitbox_value(AT_DAIR, 2, HG_ANGLE_FLIPPER, 6);

@@ -5,6 +5,11 @@ if introhit = 0 {
 }
 intro = 1
 
+
+if rankm > 0 {
+rankm -= enemy_hitboxID.damage * 15
+}
+
  if drops == 1 && droptime = 0{   
  	droptime = 40
     if attack == AT_NAIR  or attack == AT_UAIR or attack == AT_DTILT or attack == AT_FTILT and window < 5{

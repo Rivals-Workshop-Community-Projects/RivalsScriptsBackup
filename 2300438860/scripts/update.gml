@@ -10,9 +10,11 @@ if move_cooldown[AT_FTILT] > 1{
 	}
 	x = ohsp + (1 - (get_gameplay_time()%3))*5
 	y = ovsp 
-	state_timer -= 1
 }
 
+if !hitstop {
+	move_cooldown[AT_FTILT] = 0
+}
 if move_cooldown[AT_FTILT] == 1{ 
 	move_cooldown[AT_FTILT] = 0
 }
@@ -36,7 +38,12 @@ hit_player_obj = self
 
 }
 
-if attackbar != 0 && !hitpause {
+if attackbar != 0 && !hitpause && state_cat != SC_HITSTUN{
+	
+	///with (pHitBox) {
+    ///    enemies = 1
+    /// }
+	        	
 		if get_gameplay_time() % 2 == 0 {
 		shake_camera (1,1)
 		}
@@ -45,6 +52,14 @@ if attackbar != 0 && !hitpause {
 	if barpause <= 0 {	
 	attackbar += 1 
 	} else {
+		////if left_down && !right_down {
+		////	x -= 3
+		////	hsp -= 0.1
+		////}
+		////if !left_down && right_down {
+		////	x += 3
+		////	hsp += 0.1
+		////}
 		barpause -= 1
 	}
 	
@@ -86,7 +101,7 @@ if attackbar == 0 and attack != AT_TAUNT {
 	barpause = 0
 }
 
-if move_cooldown [AT_NSPECIAL] = 179 && heartbroke = 0 {
+if (move_cooldown [AT_NSPECIAL] = 179 or move_cooldown [AT_NSPECIAL] = 269) && heartbroke = 0 {
 	
 	heartbroke = 1
 	spawn_hit_fx (x,y + 16, hb1)
@@ -94,6 +109,9 @@ if move_cooldown [AT_NSPECIAL] = 179 && heartbroke = 0 {
 	 	sound_stop(cur_sound)
 }
 
+if move_cooldown [AT_NSPECIAL] = 181 {
+	move_cooldown [AT_NSPECIAL] = 177
+}
 
 if move_cooldown [AT_NSPECIAL] == 15 && heartbroke = 1{
 	spawn_hit_fx (x,y + 16, hb2)

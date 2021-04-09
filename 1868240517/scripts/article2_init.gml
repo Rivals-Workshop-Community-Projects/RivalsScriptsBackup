@@ -31,6 +31,9 @@ player_code3 = 0;
 player_code4 = 0;
 player_color = 0;
 
+lockout = 0;
+lockout_max = 240;
+
 build_time = 5;
 dist = 0;
 distBox = 0;

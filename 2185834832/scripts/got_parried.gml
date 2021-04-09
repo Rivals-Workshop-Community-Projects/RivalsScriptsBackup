@@ -20,3 +20,8 @@ if(attack == AT_FSPECIAL){
     }
     prat_land_time = 6
 }
+
+if(my_hitboxID.attack == AT_DSPECIAL){
+    saw_blade.state = 4
+    saw_blade.state_timer = 0
+}

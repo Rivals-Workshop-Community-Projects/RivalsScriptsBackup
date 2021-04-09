@@ -47,6 +47,9 @@ if attack == AT_DSPECIAL{
 
 if attack == AT_NSPECIAL  && hbox_num <= 3{
 
+if lockouttimer < 0 {
+	lockouttimer += 1
+}
 
 
     if batted == 0 {
@@ -79,7 +82,7 @@ if attack == AT_NSPECIAL  && hbox_num <= 3{
     if vsp < 0 {
     vsp /= 1.05
     }
-    if hitbox_timer == 179 {
+    if hitbox_timer == 259 {
         spawn_hit_fx(x,y,0)
         sound_play(asset_get("sfx_absa_singlezap2"))
     }
@@ -137,9 +140,11 @@ if attack == AT_NSPECIAL  && hbox_num <= 3{
 
         
     nearbyhitbox = collision_circle( x, y , 32, asset_get("pHitBox"), true, true ) 
-	if nearbyhitbox != noone {
-		
+	if nearbyhitbox != noone && (lockouttimer == 0 or player != nearbyhitbox.player) {
 		hit_priority = 9 
+		if player == nearbyhitbox.player {
+		lockouttimer = -15
+		}
 		
 		if nearbyhitbox.type == 1 && nearbyhitbox.hit_effect_x != -0.69 {
 			

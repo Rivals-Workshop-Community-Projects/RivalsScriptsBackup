@@ -260,8 +260,12 @@ if attack == AT_DSPECIAL {
 }
 
 
-if (attack == AT_USPECIAL || attack == AT_USPECIAL || attack == AT_FSPECIAL){
-	can_hitfall = false;
+if (attack == AT_USPECIAL || attack == AT_USPECIAL_2 || attack == AT_FSPECIAL){
+	can_fast_fall = false;
+} 
+
+if (attack == AT_USPECIAL || attack == AT_USPECIAL_2) && window == 4 {
+	can_fast_fall = true;
 }
 
 if(attack == AT_DSPECIAL_2)

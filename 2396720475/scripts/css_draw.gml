@@ -46,7 +46,7 @@ image_index = color;
 				case 0:
 			name = " 1: Tomo"; 
 			var position = 0;
-			ColorPrev = make_color_rgb(242, 191, 212);
+			ColorPrev = make_color_rgb(53, 186, 255);
 			ColorNext = make_color_rgb(57, 116, 204 );
 			ColorNextNext = make_color_rgb(138, 32, 47);
 			if (path_position == 0 && path_scale == 0){
@@ -185,23 +185,24 @@ image_index = color;
 			var position = 12;	
 			ColorPrev = make_color_rgb(85, 194, 116);
 			ColorNext = make_color_rgb(242, 191, 212);		
-			ColorNextNext = make_color_rgb(212, 51, 78);	
+			ColorNextNext = make_color_rgb(53, 186, 255);	
 				break;	
 			
 				case 13: 
 			name = " 14: Datemato"; 
 			var position = 13;
 			ColorPrev = make_color_rgb(222, 95, 131 );
-			ColorNext = make_color_rgb(212, 51, 78);
-			ColorNextNext = make_color_rgb(57, 116, 204);
+			ColorNext = make_color_rgb(53, 186, 255);
+			ColorNextNext = make_color_rgb(212, 51, 78);
 				break;	
 				
 				case 14: 
-			name = "15: Shiny"; 
+			name = " 15: Event"; 
 			var position = 14;
-			ColorPrev = make_color_rgb(182, 73, 218);
-			ColorNext = make_color_rgb(182, 73, 218);
-			ColorNextNext = make_color_rgb(111, 237, 220);
+			ColorPrev = make_color_rgb(242, 191, 212);
+			ColorNext = make_color_rgb(212, 51, 78);
+			ColorNextNext = make_color_rgb(57, 116, 204 );
+			draw_sprite_ext(sprite_get("slime_charselect"), 0, x + 8, y + 8, 2, 2, 0, -1, 1);
 				break;	
 		}
 	//break;
@@ -211,13 +212,13 @@ image_index = color;
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
-draw_text_color(x + 10, y - 6, "Version 1.5.0", c_white, c_white, c_white, c_white, 1);
+draw_text_color(x + 10, y - 6, "Version 1.6.0", c_white, c_white, c_white, c_white, 1);
 
 // Date Display
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_right);
 draw_set_valign(fa_top);
-draw_text_color(x + 210, y - 6, "March 17th, 2021", c_white, c_white, c_white, c_white, 1);
+draw_text_color(x + 210, y - 6, "April 3rd, 2021", c_white, c_white, c_white, c_white, 1);
 
 
 if (image_alpha == 0){

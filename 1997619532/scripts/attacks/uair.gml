@@ -1,6 +1,6 @@
 set_attack_value(AT_UAIR, AG_CATEGORY, 1);
 set_attack_value(AT_UAIR, AG_SPRITE, sprite_get("fair"));
-set_attack_value(AT_UAIR, AG_NUM_WINDOWS, 4);
+set_attack_value(AT_UAIR, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_UAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_UAIR, AG_LANDING_LAG, 6);
 set_attack_value(AT_UAIR, AG_HURTBOX_SPRITE, sprite_get("fair_hurt"));
@@ -31,11 +31,18 @@ set_window_value(AT_UAIR, 3, AG_WINDOW_SFX, asset_get("sfx_spin"));
 set_window_value(AT_UAIR, 3, AG_WINDOW_SFX_FRAME, 3);
 
 set_window_value(AT_UAIR, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UAIR, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_UAIR, 4, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_UAIR, 4, AG_WINDOW_VSPEED, -1);
-set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAME_START, 14);
 set_window_value(AT_UAIR, 4, AG_WINDOW_HAS_SFX, 1);
+
+set_window_value(AT_UAIR, 5, AG_WINDOW_TYPE, 1);
+set_window_value(AT_UAIR, 5, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_UAIR, 5, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_UAIR, 5, AG_WINDOW_ANIM_FRAME_START, 15);
+set_window_value(AT_UAIR, 5, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_UAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_UAIR,6);
 

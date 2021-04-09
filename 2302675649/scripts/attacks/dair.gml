@@ -2,7 +2,6 @@ set_attack_value(AT_DAIR, AG_CATEGORY, 2);
 set_attack_value(AT_DAIR, AG_USES_CUSTOM_GRAVITY, 1);
 set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("dair"));
 set_attack_value(AT_DAIR, AG_HURTBOX_SPRITE, sprite_get("dair_hurt"));
-
 set_attack_value(AT_DAIR, AG_NUM_WINDOWS, 5);
 
 set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 12);
@@ -19,6 +18,7 @@ set_window_value(AT_DAIR, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DAIR, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DAIR, 2, AG_WINDOW_VSPEED, 10);
 set_window_value(AT_DAIR, 2, AG_WINDOW_VSPEED_TYPE, 1);
+set_window_value(AT_DAIR, 2, AG_WINDOW_HSPEED_TYPE, 1);
 
 set_window_value(AT_DAIR, 3, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_DAIR, 3, AG_WINDOW_ANIM_FRAMES, 1);

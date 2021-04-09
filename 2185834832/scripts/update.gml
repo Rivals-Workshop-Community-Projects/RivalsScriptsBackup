@@ -32,6 +32,13 @@ if(state == PS_DOUBLE_JUMP && vsp < 0){
     }
 }
 
+if(attack != AT_DSTRONG || window == 0){
+	if(grabbedid != noone){
+		grabbedid.ungrab = 1
+        grabbedid.state = PS_TUMBLE;
+		grabbedid = noone
+	}
+}
 
 if(state == PS_DOUBLE_JUMP && state_timer < 2){
     if(left_down){

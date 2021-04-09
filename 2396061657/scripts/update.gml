@@ -242,12 +242,17 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 				ColorLocked = true;
 				init_shader();
 			}	
+		}	
+		
+		if (get_player_color(player) == 19){ // Color 12 Secret Alt
 			// Slime - Kagami Sumika alt color
 			if (!up_down && down_down && !left_down && !right_down && shield_down && !attack_down && !special_down){
 				SecretColor = 2;
 				ColorLock = 1;
 				ColorLocked = true;
+				set_victory_portrait( sprite_get( "slime_portrait" ));
 				init_shader();
+
 			}			
 		}		
 	

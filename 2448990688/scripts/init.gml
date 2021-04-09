@@ -72,6 +72,7 @@ spr_example = sprite_get("example"); // sprites/example_stripX.png
 
 // SFX
 sfx_example = sound_get("example"); // sounds/example.ogg
+sfx_amogus = sound_get("sfx_amogus"); // sounds/example.ogg
 
 // VFX
 vfx_example = hit_fx_create(spr_example, 54);

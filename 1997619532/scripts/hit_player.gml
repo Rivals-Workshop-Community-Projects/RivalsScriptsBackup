@@ -62,11 +62,11 @@ if my_hitboxID.attack == AT_EXTRA_2 && my_hitboxID.hbox_num != 6 {
 	}
 	
 	 if hit_player_obj.x > x + (35 * spr_dir){
-			hit_player_obj.x -= 16
+			hit_player_obj.x -= 30
 		}
 		
 	if hit_player_obj.x < x + (35 * spr_dir){
-			hit_player_obj.x += 16
+			hit_player_obj.x += 30
 		}
 	
 }

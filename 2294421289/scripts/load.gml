@@ -57,6 +57,8 @@ sprite_change_offset("dugato", 36, 85);
 
 sprite_change_offset("classe", 56, 93);
 
+sprite_change_offset("final_smash", 100, 93);
+
 soundbreak = hit_fx_create(sprite_get("soundbreak"), 18);
 
 set_victory_theme( sound_get( "colors" ));

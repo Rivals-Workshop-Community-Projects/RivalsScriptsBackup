@@ -3,6 +3,9 @@ crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
+fs_char_chosen_final_smash = "custom";
+fs_char_portrait_y = 100;
+
 char_height = 55;
 idle_anim_speed = .13;
 crouch_anim_speed = .1;

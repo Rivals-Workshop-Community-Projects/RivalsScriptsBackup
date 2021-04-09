@@ -1,7 +1,7 @@
 //update
 
 if(firev){
-	if(firetimer == 10){
+	if(firetimer == 15){
 		create_hitbox(AT_USPECIAL, 1, x-50, y-50);
 		firetimer = 0;
 	}
@@ -27,6 +27,13 @@ if(!sinkv){
     djump_speed = 12;
     knockback_adj = 1.0;
     gravity_speed = .70;
+    reset_hitbox_value(AT_USTRONG, 1, HG_DAMAGE);
+    reset_hitbox_value(AT_USTRONG, 2, HG_DAMAGE);
+    reset_hitbox_value(AT_USTRONG, 3, HG_DAMAGE);
+    reset_hitbox_value(AT_USTRONG, 4, HG_DAMAGE);
+    reset_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE);
+    reset_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE);
+    reset_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE);
 }
 
 if(floatv){
@@ -38,3 +45,10 @@ if(floatv){
 
 
 //print_debug(string(firetimer));
+
+if(stunv && endtimer > 120){
+	set_state(PS_PRATLAND)
+	
+}else{
+	stunv = false;
+}

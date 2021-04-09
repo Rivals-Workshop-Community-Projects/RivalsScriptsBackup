@@ -1,4 +1,5 @@
 set_victory_theme( sound_get( "victory" ));
+
 sprite_change_offset("idle", 64, 126);
 sprite_change_offset("hurt", 64, 126);
 sprite_change_offset("crouch", 64, 126);
@@ -40,7 +41,8 @@ sprite_change_offset("dstrong", 128, 126);
 sprite_change_offset("nspecial", 64, 126);
 sprite_change_offset("fspecial", 64, 126);
 sprite_change_offset("uspecial", 64, 126);
-sprite_change_offset("dspecial", 64, 126);
+//sprite_change_offset("dspecial", 64, 126);
+sprite_change_offset("dspecial", 180, 126);
 sprite_change_offset("taunt", 64, 126);
 sprite_change_offset("taunt2", 64, 126);
 
@@ -51,3 +53,8 @@ sprite_change_offset("scoville_crouch_hurtbox", 64, 126);
 sprite_change_offset("nspecial_proj", 64, 126);
 sprite_change_offset("phone_open", 64, 126);
 
+sprite_change_offset("hurtground", 64, 126);
+sprite_change_offset("bighurt", 64, 126);
+
+sprite_change_offset("uphurt", 64, 126);
+sprite_change_offset("downhurt", 64, 126);

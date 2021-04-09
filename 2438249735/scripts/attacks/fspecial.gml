@@ -7,7 +7,7 @@ set_attack_value(AT_FSPECIAL, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_FSPECIAL, AG_LANDING_LAG, 16);
 
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_bird_sidespecial"));

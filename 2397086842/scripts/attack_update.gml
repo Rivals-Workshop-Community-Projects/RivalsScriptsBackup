@@ -64,85 +64,85 @@ if !hitpause {
         super_armor = false 
         soft_armor = 621
     }
-///    if sagemode <= -1 {
-///        if attack != AT_FSPECIAL && attack != AT_DSPECIAL && attack != AT_USPECIAL
-///        && attack != AT_NSPECIAL && attack != AT_TAUNT{
-///            
-///        if (attack == AT_FTILT or attack == AT_JAB or attack == AT_UTILT or attack == AT_DTILT or attack == AT_NAIR) and window == 2  && window_timer <= 1    {
-///        create_hitbox(AT_NSPECIAL,1,x + 46*spr_dir ,y - 40)
-///                sagemode += 1
-///
-///        }
-///        
-///        if (attack == AT_DAIR  or attack == AT_DATTACK) and window == 2  && window_timer <= 1   {
-///        create_hitbox(AT_NSPECIAL,1,x + 46*spr_dir ,y - 20)
-///                sagemode += 1
-///
-///        }
-///        
-///        if (attack == AT_UAIR) and window == 2  && window_timer <= 1  {
-///        create_hitbox(AT_NSPECIAL,1,x + 26*spr_dir ,y - 60)
-///                sagemode += 1
-///
-///        }
-///        
-///        if (attack == AT_DSTRONG) and window == 2  && window_timer == 6  {
-///        create_hitbox(AT_NSPECIAL,1,x + 46*spr_dir ,y - 20)
-///                sagemode += 1
-///
-///        }
-///        
-///        if (attack == AT_USTRONG ) and window == 2  && window_timer == 8  {
-///        create_hitbox(AT_NSPECIAL,1,x + 26*spr_dir ,y - 60)
-///                sagemode += 1
-///
-///        }
-///
-///        
-///        if (attack == AT_FSTRONG) and window == 3  && window_timer == 2  {
-///        create_hitbox(AT_NSPECIAL,1,x + 26*spr_dir ,y - 60)
-///                sagemode += 1
-///
-///        }
-///        
-///        
-///           if attack == AT_BAIR and window == 2  && window_timer <= 1 {
-///        create_hitbox(AT_NSPECIAL,1,x - 46*spr_dir ,y - 30)
-///                sagemode += 1
-///
-///        }
-///        
-///        if attack == AT_FAIR and window == 2  && window_timer == 4 {
-///            create_hitbox(AT_NSPECIAL,1,x + 46*spr_dir ,y - 40)
-///                    sagemode += 1
-///
-///        }
-///        
-///        if window == 2  && window_timer <= 1 {
-///        
-///        if attack == AT_JAB or attack == AT_UAIR or attack == AT_FTILT or attack == AT_DAIR or attack == AT_NAIR or attack == AT_DTILT
-///        or attack == AT_FAIR {
-///            spawn_hit_fx(x + 46*spr_dir ,y - 40, 302)
-///        sound_play(sound_get("bathit"),false,noone,0.8)
-///        sound_play(sound_get("b1"),false,noone,0.6)
-///        sound_play(asset_get("sfx_bird_downspecial"),false,noone,0.8)
-///        sound_play(asset_get("sfx_ori_energyhit_medium"))
-///        }
-///        
-///        if attack == AT_DATTACK {
-///        		    sound_play(asset_get("sfx_ori_energyhit_medium"))
-///		   sound_play(asset_get("sfx_kragg_rock_land"))
-///        }
-///        
-///        if attack == AT_UTILT {
-///        		    sound_play(asset_get("sfx_ori_energyhit_medium"))
-///		   sound_play(asset_get("sfx_kragg_rock_land"))
-///        }
-///        }
-///
-///        
-///        }
-///    }
+    if sagemode == 6 && move_cooldown[AT_EXTRA_3] = 0 {
+        if attack != AT_FSPECIAL && attack != AT_DSPECIAL && attack != AT_USPECIAL
+        && attack != AT_NSPECIAL && attack != AT_TAUNT{
+            
+        if (attack == AT_FTILT or attack == AT_JAB or attack == AT_UTILT or attack == AT_DTILT or attack == AT_NAIR) and window == 2  && window_timer <= 1    {
+        create_hitbox(AT_NSPECIAL,3,x + 46*spr_dir ,y - 40)
+                sagemode = 0
+                spawn_hit_fx(x - 20*spr_dir, y - 36, 305)
+        }
+        
+        if (attack == AT_DAIR  or attack == AT_DATTACK) and window == 2  && window_timer <= 1   {
+        create_hitbox(AT_NSPECIAL,3,x + 46*spr_dir ,y - 20)
+                sagemode = 0
+               spawn_hit_fx(x - 20*spr_dir, y - 36, 305)
+        }
+        
+        if (attack == AT_UAIR) and window == 2  && window_timer <= 1  {
+        create_hitbox(AT_NSPECIAL,3,x + 26*spr_dir ,y - 60)
+                sagemode = 0
+               spawn_hit_fx(x - 20*spr_dir, y - 36, 305)         
+        }
+        
+        if (attack == AT_DSTRONG) and window == 2  && window_timer == 6  {
+        create_hitbox(AT_NSPECIAL,3,x + 46*spr_dir ,y - 20)
+                sagemode = 0
+               spawn_hit_fx(x - 20*spr_dir, y - 36, 305)
+        }
+        
+        if (attack == AT_USTRONG ) and window == 2  && window_timer == 8  {
+        create_hitbox(AT_NSPECIAL,3,x + 26*spr_dir ,y - 60)
+                sagemode = 0
+               spawn_hit_fx(x - 20*spr_dir, y - 36, 305)
+        }
+
+        
+        if (attack == AT_FSTRONG) and window == 3  && window_timer == 2  {
+        create_hitbox(AT_NSPECIAL,3,x + 26*spr_dir ,y - 60)
+                sagemode = 0
+               spawn_hit_fx(x - 20*spr_dir, y - 36, 305)
+        }
+        
+        
+           if attack == AT_BAIR and window == 2  && window_timer <= 1 {
+        create_hitbox(AT_NSPECIAL,3,x - 46*spr_dir ,y - 30)
+                sagemode = 0
+               spawn_hit_fx(x - 20*spr_dir, y - 36, 305)
+        }
+        
+        if attack == AT_FAIR and window == 2  && window_timer == 4 {
+            create_hitbox(AT_NSPECIAL,3,x + 46*spr_dir ,y - 40)
+                 sagemode = 0
+               spawn_hit_fx(x - 20*spr_dir, y - 36, 305)
+        }
+        
+        if window == 2  && window_timer <= 1 {
+        
+        if attack == AT_JAB or attack == AT_UAIR or attack == AT_FTILT or attack == AT_DAIR or attack == AT_NAIR or attack == AT_DTILT
+        or attack == AT_FAIR {
+            spawn_hit_fx(x + 46*spr_dir ,y - 40, 302)
+        sound_play(sound_get("bathit"),false,noone,0.8)
+        sound_play(sound_get("b1"),false,noone,0.6)
+        sound_play(asset_get("sfx_bird_downspecial"),false,noone,0.8)
+        sound_play(asset_get("sfx_ori_energyhit_medium"))
+        }
+        
+        if attack == AT_DATTACK {
+        		    sound_play(asset_get("sfx_ori_energyhit_medium"))
+		   sound_play(asset_get("sfx_kragg_rock_land"))
+        }
+        
+        if attack == AT_UTILT {
+        		    sound_play(asset_get("sfx_ori_energyhit_medium"))
+		   sound_play(asset_get("sfx_kragg_rock_land"))
+        }
+        }
+
+        
+        }
+    }
 
 
     if attack == AT_DTILT {
@@ -234,39 +234,38 @@ if !hitpause {
         if window == 1 {
             
             if window_timer == 1 {
-                if sagemode >= 0 {
+                ///if sagemode >= 0 {
                 ncharge = 0
-                } else {
-                    ncharge = 50
-                    sagemode += 1
-                }
+                ///} else {
+                    //ncharge = 50
+                    //sagemode += 1
+                ///}
                 
-                if sagemode == 5 {
-                    shake_camera(6,8)
-                    spawn_hit_fx(x, y - 36, lighten)
-                    spawn_hit_fx(x, y - 36, 306)
-                    set_attack(AT_DSPECIAL)
-                    window = 2
-                    window_timer = 2
-                    sound_play(sound_get("sage"),false,noone,1.2)
-                    sound_play(asset_get("sfx_absa_whip3"),false,noone,1)
-                    sound_play(asset_get("sfx_bird_downspecial"),false,noone,1)
-                    sagemode = -5
-                }
+                ///if sagemode == 5 {
+                ///    shake_camera(6,8)
+                ///    spawn_hit_fx(x, y - 36, lighten)
+                ///    spawn_hit_fx(x, y - 36, 306)
+                ///    set_attack(AT_DSPECIAL)
+                ///    window = 2
+                ///    window_timer = 2
+                ///    sound_play(sound_get("sage"),false,noone,1.2)
+                ///    sound_play(asset_get("sfx_absa_whip3"),false,noone,1)
+                ///    sound_play(asset_get("sfx_bird_downspecial"),false,noone,1)
+                ///    sagemode = -5
+                ///}
                 
                 spawn_hit_fx(x + 22*spr_dir, y - 36, 302)
             }
-            if ncharge == 25 {
+            if ncharge == 20 {
                 sound_play(asset_get("sfx_zetter_shine"),false,noone,1.2)
                 spawn_hit_fx(x + 22*spr_dir, y - 36, 302)
-                ncharge += 1
+                ncharge += 10
             }
             
              if ncharge == 50 {
-                 ncharge += 1
                  spawn_hit_fx(x + 22*spr_dir, y - 36, 305)
                 sound_play(asset_get("sfx_zetter_shine_charged"),false,noone,1)
-                ncharge += 1
+                ncharge += 5
             }
             
             if (special_down and ncharge <= 50) && window_timer > 1 {

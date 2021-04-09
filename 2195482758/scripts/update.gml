@@ -173,7 +173,7 @@ if(attack == AT_TAUNT)
         taunt_stall = 0;
     }
     else
-    if(!joy_pad_idle || jump_pressed || special_pressed || shield_pressed || attack_pressed)
+    if(!joy_pad_idle || jump_pressed || special_pressed || shield_pressed || attack_pressed || taunt_pressed)
     {
         taunt_stall = 1;
     }

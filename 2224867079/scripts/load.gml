@@ -76,7 +76,7 @@ sprite_change_offset("nspecial", 32, 70);
 sprite_change_offset("nspecial2", 38, 78);
 sprite_change_offset("nspecial_proj", 28, 35);
 sprite_change_offset("nspecial_proj2", 22, 35);
-sprite_change_offset("nspecial_air_proj", 45, 45);;
+sprite_change_offset("nspecial_air_proj", 45, 26);
 sprite_change_offset("nspecial_air", 32, 70);
 sprite_change_offset("fspecial", 80, 70);
 sprite_change_offset("uspecial", 42, 95);
@@ -139,7 +139,7 @@ sprite_change_offset("red_nspecial2", 38, 78);
 sprite_change_offset("red_nspecial_air", 32, 70);
 sprite_change_offset("red_nspecial_proj", 28, 35)
 sprite_change_offset("red_nspecial_proj2", 22, 35);
-sprite_change_offset("red_nspecial_air_proj", 45, 45);;
+sprite_change_offset("red_nspecial_air_proj", 45, 26);
 sprite_change_offset("red_fspecial", 80, 70);
 sprite_change_offset("red_uspecial", 32, 123);
 sprite_change_offset("red_dspecial", 44, 79);
@@ -153,10 +153,12 @@ sprite_change_offset("RechargeB", 30, -10);
 sprite_change_offset("RechargeR", 30, -10);
 
 //Article
-sprite_change_offset("blue_proj_grounded", 42, 60);
-sprite_change_collision_mask("blue_proj_grounded", false, 2, 68, 82, 97, 114, 0);
-sprite_change_offset("red_proj_grounded", 42, 60);
-sprite_change_collision_mask("red_proj_grounded", false, 2, 68, 82, 97, 114, 0);
+sprite_change_offset("blue_proj_grounded", 52, 60);
+//sprite_change_collision_mask("blue_proj_grounded", false, 2, 44, 44, 58, 60, 0);
+sprite_change_offset("red_proj_grounded", 52, 60);
+//sprite_change_collision_mask("red_proj_grounded", false, 2, 68, 82, 97, 114, 0);
+sprite_change_offset("article_collision_mask", 50, 21);
+sprite_change_offset("nspecial_air_mask", 45, 45);
 
 //Final Smash
 sprite_change_offset("final_smash", 74, 106);
@@ -165,3 +167,7 @@ sprite_change_offset("final_smash_proj", 72, 80);
 //Trail
 fx_star_trail = hit_fx_create(sprite_get("star_trail"), 30);
 fx_red_star_trail = hit_fx_create(sprite_get("red_star_trail"), 30);
+
+//Collision Mask
+sprite_change_offset("collision_mask", 32, 72);
+mask_index = (sprite_get("collision_mask"))

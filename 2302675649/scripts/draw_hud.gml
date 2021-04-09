@@ -368,6 +368,29 @@ if ("rollArray" in self)
 						AddText("Added 221020 alt");
 						AddText("Laurie D. Bunnykins alt (Dakoda)");
 						break;
+					case 24:
+						AddText("v1.24 - 7 Apr 2021");
+						AddText("");
+						AddText("Added Void Dragon mode (Startup and Endlag removed)");
+						AddText("Void Dragon mode is activated on Level 1 (CPU)");
+						AddText("or by holding Taunt during the start of the game (Player)");
+						AddText("");
+						AddText("Void Dragon NSpec will activate Final Smash at 150%");
+						AddText("");
+						AddText("Added Gold alt");
+						break;
+					case 25:
+						AddText("v1.25 - 8 Apr 2021");
+						AddText("");
+						AddText("Void Dragon CPU can no longer activate Final Smash at any time");
+						AddText("Void Dragon Drip will now spawn a Lonin CPU clone");
+						AddText("");
+						AddText("Void Dragon now will have a rainbow outline");
+						AddText("");
+						AddText("Fixed Void Dragon Lonin CPU code so dittos aren't just spamming FSpec");
+						AddText("");
+						AddText("Final Smash will no longer cause SDs at the edge of the screen");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -467,8 +490,8 @@ if ("rollArray" in self)
 		}
 		draw_set_alpha(1);
 	}
-
-	//draw_debug_text(temp_x, temp_y+32, string(get_match_setting(3)));
+	else if (aura)
+		draw_debug_text(temp_x + 128, temp_y - 10, "Void Dragon");
 }
 
 #define AIStateToString(_state)
@@ -505,7 +528,7 @@ if ("rollArray" in self)
 {
 	var isFirst = false;
 	var smallestPlayerNum = player;
-	with (oPlayer) if (url == other.url && smallestPlayerNum > player) smallestPlayerNum = player;
+	with (oPlayer) if ("url" in self && url == other.url && smallestPlayerNum > player) smallestPlayerNum = player;
 	return smallestPlayerNum == player;
 }
 

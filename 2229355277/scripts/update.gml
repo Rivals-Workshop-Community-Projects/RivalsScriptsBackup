@@ -1,4 +1,35 @@
 // update
+
+if get_gameplay_time() == 2 {
+	move_cooldown[AT_NSPECIAL] = 360;
+}
+
+if show_flashing_icon{
+	if flash_time < max_flash_time{
+		flash_time++;
+		if flash_time % 8 == 0{
+			col_flashing = c_dkgray;
+		} else {
+			col_flashing = c_white;
+		}
+	} else {
+		flash_time = 0;
+		show_flashing_icon = false;
+	}
+}
+
+if playsound{
+	switch(chargetier){
+		case 1:
+			sound_play(asset_get("mfx_timertick"));
+			break;
+		case 2:
+			sound_play(asset_get("mfx_timertick2"));
+			break;
+	}
+	playsound = false;
+}
+
 // Ho Ho Ho.
 if wearing_hat == 1 {
 	if state != PS_SPAWN && state != PS_RESPAWN && state != PS_IDLE {
@@ -51,7 +82,7 @@ if move_cooldown[AT_NSPECIAL] == 0{
 		// Slot 1 isn't castable
 		slotone_col = c_gray;
 	}
-	
+
 	if manabar >= spellcost[1] * 20{
 		// Slot 2
 		slottwo_col = c_white;
@@ -61,7 +92,7 @@ if move_cooldown[AT_NSPECIAL] == 0{
 	}
 }
 // Mana Charging
-if manabar <= manabar_max{
+if ((manabar <= manabar_max) and get_gameplay_time() > 120){
 	manacharge++;
 	if manacharge == 35{
 		manabar++;
@@ -254,6 +285,42 @@ for (var i = 0; i < (8); i++){
 					spellselect[i] = 0;
 					break;
     }
+}
+
+switch(prev_spell_cast){
+	case 20:	// Knockdown
+		prev_spell_icon = 11;
+		break;
+	case 25:	// Explosion
+		prev_spell_icon = 12;
+		break;
+	case 26:	// Ragnarok
+		prev_spell_icon = 7;
+		break;
+	case 27:	// Guillotine
+		prev_spell_icon = 10;
+		break;
+	case 28:	// Crossfire
+		prev_spell_icon = 9;
+		break;
+	case 29:	// Empower Ring
+		prev_spell_icon = 5;
+		break;
+	case 30:	// Tri-Shot
+		prev_spell_icon = 8;
+		break;
+	case 31:	// Thunder
+		prev_spell_icon = 2;
+		break;
+	case 33:	// Echo
+		prev_spell_icon = 6;
+		break;
+	case 37:	// Pekay Fire
+		prev_spell_icon = 3;
+		break;
+	case 38:	// Bomb Drop
+		prev_spell_icon = 4;
+		break;
 }
 
 // Runes

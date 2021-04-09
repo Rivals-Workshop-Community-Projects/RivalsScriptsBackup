@@ -10,10 +10,20 @@ else {
 }
 
 if (move_cooldown[AT_USPECIAL] == 0){
-	draw_sprite_ext(sprite_get("needle_hud"), 0, temp_x + 120, temp_y - 12, 1, 1, 0, c_white, 1);
+	if (get_player_color(player) != 14){
+		draw_sprite_ext(sprite_get("needle_hud"), 0, temp_x + 120, temp_y - 12, 1, 1, 0, c_white, 1);
+	}
+	else {
+		draw_sprite_ext(sprite_get("slime_needle_hud"), 0, temp_x + 120, temp_y - 12, 1, 1, 0, c_white, 1);	
+	}
 }
 else {
-	draw_sprite_ext(sprite_get("needle_hud"), 1, temp_x + 120, temp_y - 12, 1, 1, 0, c_white, 1);
+	if (get_player_color(player) != 14){
+		draw_sprite_ext(sprite_get("needle_hud"), 1, temp_x + 120, temp_y - 12, 1, 1, 0, c_white, 1);
+	}
+	else {
+		draw_sprite_ext(sprite_get("slime_needle_hud"), 1, temp_x + 120, temp_y - 12, 1, 1, 0, c_white, 1);
+	}
 }
 
 /*

@@ -13,6 +13,7 @@ ncode3 = "weapon, she is slow but capable of making sudden movements."
 
 
 introhit = 0
+dashed = 0
 
 intro = 0
 introtimer = -1
@@ -82,7 +83,7 @@ wave_friction = 0.04; //grounded deceleration when wavelanding
 //crouch animation frames
 crouch_startup_frames = 2;
 crouch_active_frames = 9;
-crouch_recovery_frames = 3;
+crouch_recovery_frames = 0;
 
 //parry animation frames
 dodge_startup_frames = 1;

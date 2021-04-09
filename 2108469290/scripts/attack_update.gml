@@ -513,10 +513,18 @@ if attack == AT_USPECIAL {
 
 
 
-if attack == AT_NSPECIAL && hhalo > 0 {
-	set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fstrong_hurt"));
+if attack == AT_NSPECIAL {
+	
+	if state_timer == 1 && hhalo == 0 {
+		move_cooldown[AT_NSPECIAL] = 40
+	}
+	
+	if hhalo > 0 {
+	set_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE, sprite_get("fstrong_hurt"));
 	hhalo = 0
 	set_attack (AT_EXTRA_1)
+	}
+	
 }
 
 if attack == AT_EXTRA_1 {
