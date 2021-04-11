@@ -74,7 +74,6 @@ set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, 8);
 set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_FAIR, 2, HG_ANGLE_FLIPPER, 0);
-set_hitbox_value(AT_FAIR, 2, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_FAIR, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_GROUP, 1);
@@ -99,7 +98,6 @@ set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT_Y_OFFSET, 8);
 set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FAIR, 3, HG_ANGLE_FLIPPER, 0);
-set_hitbox_value(AT_FAIR, 3, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_FAIR, 4, HG_PARENT_HITBOX, 1); // succ delet
 set_hitbox_value(AT_FAIR, 4, HG_HITBOX_GROUP, -1);
@@ -169,7 +167,6 @@ set_hitbox_value(AT_FAIR, 9, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_FAIR, 9, HG_VISUAL_EFFECT_Y_OFFSET, 8);
 set_hitbox_value(AT_FAIR, 9, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FAIR, 9, HG_ANGLE_FLIPPER, 0);
-set_hitbox_value(AT_FAIR, 9, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_FAIR, 10, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_FAIR, 10, HG_HITBOX_GROUP, 1);

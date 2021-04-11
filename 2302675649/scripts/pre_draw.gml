@@ -34,7 +34,7 @@ if ("rollArray" in self)
 	}
 
 	// aura meter
-	if (state == PS_SPAWN && auraMeter != -1 && state_timer < 68)
+	if ((state == PS_SPAWN || (state == PS_ATTACK_GROUND && (attack == AT_TAUNT || attack == AT_TAUNT_2) && !aura)) && auraMeter != -1 && state_timer < 68)
 	{
 	    draw_rectangle_color(x - 104, y - 124, x + 104, y - 96, c_black, c_black, c_black, c_black, false);
 	    draw_rectangle_color(x - 100, y - 120, x - 100 + 200*(auraMeter/67), y - 100, c_white, c_white, c_white, c_white, false);

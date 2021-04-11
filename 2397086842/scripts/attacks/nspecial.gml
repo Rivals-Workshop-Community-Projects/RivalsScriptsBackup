@@ -59,7 +59,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.9);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_UNBASHABLE, 1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_LOCKOUT, 0);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_LOCKOUT, 1);
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 99);
@@ -95,7 +95,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 0.9);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_UNBASHABLE, 1);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_LOCKOUT, 0);
+set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_LOCKOUT, 1);
 
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 99);
@@ -131,7 +131,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 0.9);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DOES_NOT_REFLECT, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_UNBASHABLE, 1);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_LOCKOUT, 0);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_LOCKOUT, 1);
 
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 4, HG_WINDOW, 99);

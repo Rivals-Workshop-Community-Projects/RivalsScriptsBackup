@@ -87,10 +87,10 @@ if (attack == AT_DTILT){
 }
 
 if (attack == AT_DAIR){
-		can_fast_fall = false
-		if (!free){
-			set_state(PS_PRATLAND)
-		}
+	can_fast_fall = false
+	if (!free){
+		set_state(PS_PRATLAND)
+	}
 }
 
 //Dair wall jump

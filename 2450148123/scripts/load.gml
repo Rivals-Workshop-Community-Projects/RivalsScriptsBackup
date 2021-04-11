@@ -80,6 +80,7 @@ sprite_change_offset("rollfx", 34, 80);
 sprite_change_offset("dashfx", 52, 80);
 sprite_change_offset("dashstartfx", 52, 80);
 
+sprite_change_offset("fairfx", 70, 110);
 sprite_change_offset("fspecialfx", 64, 108);
 sprite_change_offset("uspecialfx", 108, 132);
 sprite_change_offset("polarisfx", 64, 108);

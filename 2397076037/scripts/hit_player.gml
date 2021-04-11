@@ -6,7 +6,7 @@ if get_player_color(player) == 7 {
  
 }
 rankm += my_hitboxID.damage*15
-inactive = 60
+inactive = 120
 
  if  (my_hitboxID.attack == AT_DSPECIAL) {
  		rankm += 10

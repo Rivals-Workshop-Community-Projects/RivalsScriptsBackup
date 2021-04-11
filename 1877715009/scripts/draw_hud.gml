@@ -2129,6 +2129,19 @@ if ("yes" in self && yes)
 					nooflines = 12;
 					textwidth = 400;
 					break;
+				case 22:
+					text[0] = "FAir Non-spike hitboxes are now techable";
+					text[1] = "";
+					text[2] = "Bugfixes:";
+					text[3] = "";
+					text[4] = "Fakie USpec no longer homes in on dead players";
+					text[5] = "";
+					text[6] = "FSpec can now be parried";
+					text[7] = "";
+					text[8] = "Hikaru clones no longer activates on 0 damage hitboxes";
+					nooflines = 9;
+					textwidth = 420;
+					break;
 			}
 			break;
 	}

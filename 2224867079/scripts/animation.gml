@@ -25,7 +25,7 @@ if (state == PS_RESPAWN) {
 
 //Rotatey Fspecial
 
-if (attack == AT_FSPECIAL) && window == 4 {
+if (attack == AT_FSPECIAL) && window >= 4 {
 		//down
 		if((joy_dir < 350 && joy_dir > 200 && spr_dir == 1) || (joy_dir > 210 && joy_dir < 300 && spr_dir == -1) || down_stick_down)
 		{

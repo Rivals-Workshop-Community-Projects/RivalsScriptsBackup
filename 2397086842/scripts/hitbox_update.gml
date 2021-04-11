@@ -285,24 +285,23 @@ if lockouttimer < 0 {
 	   if nearbyhitbox2.type == 2 && nearbyhitbox2.hit_effect_x != -0.69 && hitbox_timer > 3 && nearbyhitbox2.hit_priority >= 1{
     	    for (var i = 1; i < 20; i++) can_hit[i] = true
 	   	    shake_camera(4,4)
+	   	    if hitbox_timer > 10 {
 		    sound_play(asset_get("sfx_absa_singlezap1"))
-            spawn_hit_fx(x,y,302)
+		    spawn_hit_fx((x + nearbyhitbox2.x)/2,(y + nearbyhitbox2.y)/2,302)
+	   	    }
+	   	    
             hitbox_timer = 0
+            
              if nearbyhitbox2.x < x {
-             x += 12
-             hsp = 2.5
+             hsp += 2
 	   	     } else {
-             x -= 12
-             hsp = -2.5
+             hsp -= 2
 	   	     }
 	   	     
 	   	     if nearbyhitbox2.y < y {
-             y += 10
-             vsp = -7
+             vsp += 2
 	   	     } else {
-	   	     nearbyhitbox2.y += 2
-             y -= 10
-             vsp = -4
+             vsp -= 2
 	   	     }
 	   }
 	}

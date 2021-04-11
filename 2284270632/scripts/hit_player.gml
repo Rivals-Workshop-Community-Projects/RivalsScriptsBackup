@@ -7,7 +7,7 @@ if (attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1){
 }
 
 if (attack == AT_NSPECIAL && my_hitboxID.hbox_num == 3){
-    if (window == 2 && grabbedid == noone && hit_player_obj == ionized){
+    if (window == 2 && grabbedid == noone && hit_player_obj == ionized && hit_player_obj.clone == false){
         hit_player_obj.grabbed = 1;
         grabbedid = hit_player_obj;
 	grabbedid.ungrab = 0;
@@ -18,7 +18,7 @@ if (attack == AT_NSPECIAL && my_hitboxID.hbox_num == 2){
 	ion_timer = 0;
 }
 
-if (my_hitboxID.attack == AT_FSPECIAL && ionized == noone){
+if (my_hitboxID.attack == AT_FSPECIAL && ionized == noone && hit_player_obj.clone == false){
 	ionized = hit_player_obj;
 	ion_timer = 60;
 	instance_create( ionized.x - 30, ionized.y - 30 - ionized.char_height, "obj_article2" );

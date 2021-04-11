@@ -33,8 +33,14 @@ if sagemode >= 0 and sagemode <= 5 and  move_cooldown[AT_EXTRA_3] = 0{
                     spawn_hit_fx(x, y - 36, 306)
     }
 
-//sagemode += 1
-move_cooldown[AT_EXTRA_3] = 10
+sagemode += 1
+
+if my_hitboxID.attack == AT_FSTRONG {
+    move_cooldown[AT_EXTRA_3] = 40 
+} else {
+    move_cooldown[AT_EXTRA_3] = 20 
+}
+
 }
 
 if (my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_DSTRONG or my_hitboxID.attack == AT_USTRONG) {

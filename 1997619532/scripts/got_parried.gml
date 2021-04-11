@@ -35,14 +35,15 @@ if (my_hitboxID.attack == AT_NSPECIAL) {
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1 ) {
 
     my_hitboxID.hitbox_timer = -10;
-
+   my_hitboxID.hsp *= 2
     
 }
 
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 2 ) {
 
     my_hitboxID.hitbox_timer = 0;
-     my_hitboxID.extra_hitpause = 45;   
+     my_hitboxID.extra_hitpause = 45;  
+     
 my_hitboxID.x = x
 my_hitboxID.y = y
     

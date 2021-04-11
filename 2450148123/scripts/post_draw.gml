@@ -35,6 +35,14 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 		gpu_set_alphatestenable(false);
 		gpu_set_blendmode(bm_normal);
 	}
+	
+	if (attack == AT_FAIR){
+		
+	
+	draw_sprite_ext( sprite_get("fairfx"), image_index, x, y, spr_dir, 1, 0, c_white, 1);
+
+		
+	}
 
 	if (install)
 	{
@@ -79,6 +87,19 @@ if (state == PS_AIR_DODGE)
     
     else if (air_dodge_dir = 5)
     draw_sprite_ext( sprite_get("airdodge_downfx"), image_index, x, y, spr_dir, 1, 0, c_white, 1);
+}
+
+if (airdashing)
+{
+	if (dashdir = -1)
+	{
+		draw_sprite_ext( sprite_get("airdodge_backfx"), 0, x, y, spr_dir, 1, 0, c_white, 1);
+	}
+	else if (dashdir = 1)
+	{
+		draw_sprite_ext( sprite_get("dashstartfx"), 1, x, y - 2, spr_dir, 1, 0, c_white, 1);
+	}
+	
 }
 
 if (state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD)

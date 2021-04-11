@@ -20,7 +20,7 @@ if triggered && !hitpause && get_gameplay_time() % 10-rank == 3{
 }
 
 if rankm >= 0 && !hitpause {
-
+     
 	inactive -= 1
 	
     if inactive < 0 {

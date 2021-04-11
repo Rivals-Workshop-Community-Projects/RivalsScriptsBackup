@@ -46,7 +46,7 @@ if (my_hitboxID.attack == AT_DSPECIAL){
 
 
 if (my_hitboxID.attack == 49){
-	docsocre = docsocre + 1
+	docscore = docscore + 1
 } 
 
 if (has_rune ("A")) && (has_rune ("B")) && (has_rune ("C")) && (has_rune ("D")) && (has_rune ("E")) && (has_rune ("F")) && (has_rune ("G")) && (has_rune ("H")) && (has_rune ("I")) && (has_rune ("J")) && (has_rune ("K")) && (has_rune ("L")) && (has_rune ("M")) && (has_rune ("N")) && (has_rune ("O")){

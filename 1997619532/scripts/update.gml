@@ -10,6 +10,10 @@ if !hitpause {
     svsp = (svsp + vsp)/2
 }
 
+if state == PS_PRATFALL {
+	can_fast_fall = true
+}
+
 if !instance_exists(hit_player_obj){
 
 hit_player_obj = self

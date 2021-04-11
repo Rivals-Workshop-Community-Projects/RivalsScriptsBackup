@@ -276,7 +276,7 @@ switch (attack)
 				break;
 			case 5:
 				if (aura) aura = in_field;
-				if (!free) set_state((get_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE) == 7)?PS_PRATLAND:PS_LAND);
+				if (!free) set_state((get_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE) == 7 || was_parried)?PS_PRATLAND:PS_LAND);
 				break;
 		}
 		can_wall_jump = (window >= 3);
@@ -336,6 +336,8 @@ switch (attack)
 				{
 					if (free
 						&& aura
+						&& counterid.state != PS_RESPAWN
+						&& counterid.state != PS_DEAD
 						&& (counterid.state_cat == SC_HITSTUN || uspec_timer > 0)
 						&& canTele(org_x, org_y, tele_x, tele_y, distancetravell, 60)
 						&& get_attack_value(AT_EXTRA_1, AG_NUM_WINDOWS) != 0)
@@ -348,6 +350,7 @@ switch (attack)
 				        spr_dir = spr_temp;
 						hsp = 0;
 						vsp = 0;
+						fall_through = false;
 				    }
 				}
 				else

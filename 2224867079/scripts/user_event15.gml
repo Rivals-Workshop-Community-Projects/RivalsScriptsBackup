@@ -376,11 +376,6 @@ with phone{
 	initTipImage(player_id.spr_kunai_grounded, -5, fa_left, 1, c_white, 0);
 	initTipImage(player_id.spr_red_kunai_grounded, -5, fa_right, 1, c_white, 0);
 	
-	initTip("Blue Fspecial Fastfall");
-	initTipWords("You're able to fastfall while performing blue Fspecial");
-	initTipWords("When the move hits, instead of bouncing you up you will land straight to the ground where you can perform a grounded attack");
-	initTipImage(player_id.spr_fspecial, -5, fa_center, 1, c_white, 3);
-	
 	initTip("Red Uspecial Sweetspot");
 	initTipWords("Red Uspecial has a sweetspot right near the start of the attack");
 	initTipWords("If it hits the move will do a ton of knockback making it a great kill move");
@@ -397,10 +392,6 @@ with phone{
 	initTip("Dair Reversal");
 	initTipWords("if you immedietly turn your joystick to the opposite direction when you perform a dair you can reverse it and go the other way");
 	initTipImage(other.spr_dair, -4, fa_center, 1, c_white, 0);
-	
-	initTip("log is a femboy");
-	initTipWords_ext("WHAT", fa_center, c_red, 0, 1);
-	initTipImage(player_id.spr_femboy, -4, fa_center, 1, c_white, 0);
 
 	/* THIS IS ALL OLD.
 	initTip("Lognes' Lore");
@@ -467,6 +458,13 @@ with phone{
 //	initPatchWords("Fnuuy joke
 //	- waog");
 //	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0);
+	//2.15
+	initPatch("2.15", "10 April, 2021");
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Fspecial has less active frames (12->8)
+	- Fspecial now has more recovery frames (6->8)");
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Updated Portrait")
 	//2.14
 	initPatch("2.14", "8 April, 2021");
 	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
@@ -896,7 +894,7 @@ with self{
 	// update.gml
 	initCheat("Remove Dspecial cooldown", "dspecial_nocd", [0, 1], ["Off", "On"], "flavour text");
 	initCheat("why are you hitting yourself", "cheat_recoil", [0, 1], ["Off", "On"], "ouf");
-	initCheat("turns jab into final smash", "jab_fsmash", [0, 1], ["Off", "On"], "e");
+	initCheat("turns jab into final smash", "jab_fsmash", [0, 1], ["Off", "On"], "(it's not ready yet)");
 }
 
 

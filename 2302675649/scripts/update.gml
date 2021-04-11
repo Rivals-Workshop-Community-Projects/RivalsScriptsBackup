@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 26;
+	var noOfPatches = 27;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -127,7 +127,7 @@ switch (state)
 		if (state_timer == 68)
 		{
 			sound_play(sound_get("button"));
-			aura = ("temp_level" in self && temp_level == 1) || aura || auraMeter == 67 || get_match_setting(SET_TURBO);
+			aura = ("temp_level" in self && temp_level == 1) || aura || auraMeter >= 67 || get_match_setting(SET_TURBO);
 			gpu_set_alphatestfunc(aura);
 			if (aura)
 			{

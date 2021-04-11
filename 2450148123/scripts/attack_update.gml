@@ -298,7 +298,7 @@ if (attack == AT_FAIR)
         else
         vsp -= 0.2;
     }
-    else if window == 1 && window_timer > 12
+    else if window == 1 && window_timer > 10
     {
         window = 2;
         window_timer = -1;
@@ -320,6 +320,25 @@ if (attack == AT_DAIR)
     move_cooldown[AT_FAIR] = 1;
     move_cooldown[AT_UAIR] = 1;
     move_cooldown[AT_DAIR] = 1;
+    move_cooldown[AT_BAIR] = 1;
+    
+    move_cooldown[AT_JAB] = 1;
+    move_cooldown[AT_FTILT] = 1;
+    move_cooldown[AT_UTILT] = 1;
+    move_cooldown[AT_DTILT] = 1;
+    
+    move_cooldown[AT_FSTRONG] = 1;
+    move_cooldown[AT_USTRONG] = 1;
+    move_cooldown[AT_DSTRONG] = 1;
+    
+    can_attack = true;
+}
+
+if (attack == AT_BAIR)
+{
+    move_cooldown[AT_NAIR] = 1;
+    move_cooldown[AT_FAIR] = 1;
+    move_cooldown[AT_UAIR] = 1;
     move_cooldown[AT_BAIR] = 1;
     
     move_cooldown[AT_JAB] = 1;
@@ -586,7 +605,10 @@ attack != AT_PHONE &&
 attack != 49 &&
 !was_parried
 )
+{
+	can_attack = true;
     can_special = true;
+}
 
 if (install)
 {

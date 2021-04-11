@@ -205,6 +205,8 @@ otto_bobblehead_sprite = sprite_get("_pho_example_bobble_head");
 feri_costume = sprite_get("cringesupport");
 sprite_change_offset("cringesupport", 84, 113);
 
+wily_robotmaster_img = sprite_get("Wily_Castle_DMM");
+
 //fire support
 fire_taunt = sprite_get("firechungus");
 fire_taunt_duration = 60;

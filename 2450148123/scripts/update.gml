@@ -40,7 +40,7 @@ if !noturn {
 	}
 }
 if rival_players==1 and !noturn {
-    if state==PS_IDLE or state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND or state==PS_CROUCH or state==PS_DASH_START or state==PS_WALK or state==PS_WALK_TURN or state==PS_LAND or state==PS_LANDING_LAG{
+    if state==PS_IDLE or state==PS_CROUCH or state==PS_DASH_START or state==PS_WALK or state==PS_WALK_TURN or state==PS_LAND or state==PS_LANDING_LAG{
         if rival.x>x {
             looking=1
         } else looking=-1
@@ -569,18 +569,18 @@ if dp_temp>=dp_timer {
 if ddf==0 start_dir[5]=spr_dir
 //Right
 if start_dir[5]==1 {
-    if ddf==0 and (!left_down and !down_down and right_pressed and !up_down)  {
+    if ddf==0 and (!left_down and !down_down and right_pressed)  {
         ddf=1
         ddf_timer=7
         ddf_temp=0
     }
 
-    if ddf==1 and (!left_down and !down_down and !right_down and !up_down) {
+    if ddf==1 and (!left_down and !down_down and !right_down) {
         ddf=2
         ddf_temp=0
     }
     
-    if ddf==2 and (!left_down and !down_down and right_down and !up_down) {
+    if ddf==2 and (!left_down and !down_down and right_down) {
         ddf=3
         ddf_timer=7
         ddf_temp=0
@@ -590,18 +590,18 @@ if start_dir[5]==1 {
 
 //Left
 if start_dir[5]==-1 {
-    if ddf==0 and (left_pressed and !down_down and !right_down and !up_down)  {
+    if ddf==0 and (left_pressed and !down_down and !right_down)  {
         ddf=1
         ddf_timer=7
         ddf_temp=0
     }
 
-    if ddf==1 and (!left_down and !down_down and !right_down and !up_down) {
+    if ddf==1 and (!left_down and !down_down and !right_down) {
         ddf=2
         ddf_temp=0
     }
     
-    if ddf==2 and (left_down and !down_down and !right_down and !up_down) {
+    if ddf==2 and (left_down and !down_down and !right_down) {
         ddf=3
         ddf_timer=7
         ddf_temp=0
@@ -620,18 +620,18 @@ if ddf_temp>=ddf_timer {
 if ddb==0 start_dir[5]=spr_dir
 //Right
 if start_dir[5]==1 {
-    if ddb==0 and (left_pressed and !down_down and !right_down and !up_down)  {
+    if ddb==0 and (left_pressed and !down_down and !right_down)  {
         ddb=1
         ddb_timer=7
         ddb_temp=0
     }
 
-    if ddb==1 and (!left_down and !down_down and !right_down and !up_down) {
+    if ddb==1 and (!left_down and !down_down and !right_down) {
         ddb=2
         ddb_temp=0
     }
     
-    if ddb==2 and (left_down and !down_down and !right_down and !up_down) {
+    if ddb==2 and (left_down and !down_down and !right_down) {
         ddb=3
         ddb_timer=7
         ddb_temp=0
@@ -640,18 +640,18 @@ if start_dir[5]==1 {
 
 //Left
 if start_dir[5]==-1 {
-    if ddb==0 and (!left_down and !down_down and right_pressed and !up_down)  {
+    if ddb==0 and (!left_down and !down_down and right_pressed)  {
         ddb=1
         ddb_timer=7
         ddb_temp=0
     }
 
-    if ddb==1 and (!left_down and !down_down and !right_down and !up_down) {
+    if ddb==1 and (!left_down and !down_down and !right_down) {
         ddb=2
         ddb_temp=0
     }
     
-    if ddb==2 and (!left_down and !down_down and right_down and !up_down) {
+    if ddb==2 and (!left_down and !down_down and right_down) {
         ddb=3
         ddb_timer=7
         ddb_temp=0

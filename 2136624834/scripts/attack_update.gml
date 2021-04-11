@@ -54,7 +54,6 @@ if window == 5 && window_timer == 1 {
 	spawn_hit_fx( x - (10 * spr_dir) , y - 40 , 302 )
 }
 if window == 5 && window_timer == 2 && has_hit_player{
-			ncharge = 100
 	create_hitbox(AT_USPECIAL , 3 , x, y );
 	timehit = 0
 	timestop = 0
@@ -869,15 +868,9 @@ if attack == AT_FAIR {
         	if !down_down {
              vsp = -7
         	} 
-        	if down_down {
-        		vsp = 11
-        	}
             hsp /= 3
         }
         
-        if window_timer > 1 {
-        window_timer += 0.5 
-        }
     }
     
     if window == 2 {

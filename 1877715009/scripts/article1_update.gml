@@ -82,6 +82,8 @@ if (!hitstop)
 			&& other.player != player
 			&& other.state != 2
 			&& !other.player_id.killarticles
+			&& damage > 0
+			&& hit_priority > 0
 			&& point_distance(other.player_id.x, other.player_id.y, other.x, other.y) > 40
 			&& get_player_team( player ) != get_player_team( other.player ))
 		{

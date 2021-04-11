@@ -247,8 +247,8 @@ if my_hitboxID.attack == AT_EXTRA_2 && my_hitboxID.hbox_num >= 21 {
 }
 
 
-rankm += my_hitboxID.damage*15
-inactive = 60
+rankm += my_hitboxID.damage*20
+inactive = 120
 
 
    

@@ -1,4 +1,13 @@
 /*
+-- V2.15 --
+
+Balance Changes:
+- Fspecial has less active frames (12->8)
+- Fspecial now has more recovery frames (6->8)
+
+Cosmetic Changes:
+- Updated Portrait
+
 -- V2.14 --
 
 Balance Changes:

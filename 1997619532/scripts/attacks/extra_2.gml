@@ -157,6 +157,7 @@ set_hitbox_value(AT_EXTRA_2, 1, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_EXTRA_2, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_EXTRA_2, 1, HG_HIT_SFX, sound_get("slicel"));
 set_hitbox_value(AT_EXTRA_2, 1, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_EXTRA_2, 1, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_EXTRA_2, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_EXTRA_2, 2, HG_WINDOW, 4);
@@ -178,7 +179,7 @@ set_hitbox_value(AT_EXTRA_2, 2, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_EXTRA_2, 2, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_EXTRA_2, 2, HG_HIT_SFX, sound_get("slicel"));
 set_hitbox_value(AT_EXTRA_2, 2, HG_HITBOX_GROUP, -1);
-
+set_hitbox_value(AT_EXTRA_2, 2, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_EXTRA_2, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_EXTRA_2, 3, HG_WINDOW, 5);
@@ -200,6 +201,7 @@ set_hitbox_value(AT_EXTRA_2, 3, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_EXTRA_2, 3, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_EXTRA_2, 3, HG_HIT_SFX, sound_get("slicel"));
 set_hitbox_value(AT_EXTRA_2, 3, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_EXTRA_2, 3, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_EXTRA_2, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_EXTRA_2, 4, HG_WINDOW, 6);
@@ -221,6 +223,7 @@ set_hitbox_value(AT_EXTRA_2, 4, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_EXTRA_2, 4, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_EXTRA_2, 4, HG_HIT_SFX, sound_get("slicel"));
 set_hitbox_value(AT_EXTRA_2, 4, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_EXTRA_2, 4, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_EXTRA_2, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_EXTRA_2, 5, HG_WINDOW, 10);
@@ -242,6 +245,7 @@ set_hitbox_value(AT_EXTRA_2, 5, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_EXTRA_2, 5, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_EXTRA_2, 5, HG_HIT_SFX, sound_get("slicel"));
 set_hitbox_value(AT_EXTRA_2, 5, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_EXTRA_2, 5, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_EXTRA_2, 6, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_EXTRA_2, 6, HG_WINDOW, 11);
@@ -263,6 +267,7 @@ set_hitbox_value(AT_EXTRA_2, 6, HG_HITPAUSE_SCALING, .55);
 set_hitbox_value(AT_EXTRA_2, 6, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_EXTRA_2, 6, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_EXTRA_2, 6, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_EXTRA_2, 6, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_EXTRA_2, 7, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_EXTRA_2, 7, HG_WINDOW, 9);
@@ -284,6 +289,7 @@ set_hitbox_value(AT_EXTRA_2, 7, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_EXTRA_2, 7, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_EXTRA_2, 7, HG_HIT_SFX, sound_get("slicel"));
 set_hitbox_value(AT_EXTRA_2, 7, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_EXTRA_2, 7, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_EXTRA_2, 8, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_EXTRA_2, 8, HG_WINDOW, 8);
@@ -305,6 +311,7 @@ set_hitbox_value(AT_EXTRA_2, 8, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_EXTRA_2, 8, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_EXTRA_2, 8, HG_HIT_SFX, sound_get("slicel"));
 set_hitbox_value(AT_EXTRA_2, 8, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_EXTRA_2, 8, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_EXTRA_2, 10, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_EXTRA_2, 10, HG_WINDOW, 7);
@@ -326,6 +333,7 @@ set_hitbox_value(AT_EXTRA_2, 10, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_EXTRA_2, 10, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_EXTRA_2, 10, HG_HIT_SFX, sound_get("slicel"));
 set_hitbox_value(AT_EXTRA_2, 10, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_EXTRA_2, 10, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_EXTRA_2, 9, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_EXTRA_2, 9, HG_WINDOW, 0);

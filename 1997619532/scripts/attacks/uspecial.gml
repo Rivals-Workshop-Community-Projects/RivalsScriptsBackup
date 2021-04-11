@@ -11,7 +11,7 @@ set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_jumpground"));
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_ice_shieldup"));
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -3);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 2);

@@ -391,6 +391,18 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("Final Smash will no longer cause SDs at the edge of the screen");
 						break;
+					case 26:
+						AddText("v1.26 - 9 Apr 2021");
+						AddText("");
+						AddText("BAir KBS 1.0 -> 0.9");
+						AddText("(Please give feedback directly to me next time instead)");
+						AddText("");
+						AddText("Void Dragon can now be toggled by holding Shield while performing a normal taunt");
+						AddText("");
+						AddText("Discord ping can now be performed with the Bravo alt taunt");
+						AddText("");
+						AddText("Added Spectrum alt");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

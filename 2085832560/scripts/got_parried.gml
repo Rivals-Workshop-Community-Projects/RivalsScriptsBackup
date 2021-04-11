@@ -6,8 +6,9 @@
     
 infernal2 -= 50  
 
-rankm -= 600
-inactive = 30
+if rankm > 4 {
+rankm -= 300
+}
 
 
 if (my_hitboxID.attack == AT_EXTRA_1) {

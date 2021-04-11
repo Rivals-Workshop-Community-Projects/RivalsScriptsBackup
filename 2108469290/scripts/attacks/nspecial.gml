@@ -8,7 +8,7 @@ set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("parry"))
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("stabd_box"));
 
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 25);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_ori_bash_use"));
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 1);

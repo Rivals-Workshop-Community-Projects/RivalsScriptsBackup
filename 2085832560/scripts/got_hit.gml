@@ -5,8 +5,7 @@ if introhit = 0 {
 }
 intro = 1
 
-
-if rankm > 0 {
+if rankm > 4 {
 rankm -= enemy_hitboxID.damage * 15
 }
 

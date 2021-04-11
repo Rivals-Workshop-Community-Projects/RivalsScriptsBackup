@@ -53,7 +53,7 @@ if attack == AT_NSPECIAL {
 	
 	
 	if player_id.window == 4 && player_id.window_timer = 1 && player_id.attack == AT_FSPECIAL  
-	&& (player_id.state == PS_ATTACK_GROUND or player_id.state == PS_ATTACK_AIR) {
+	&& (player_id.state == PS_ATTACK_GROUND or player_id.state == PS_ATTACK_AIR) && player_id.timefreeze < 2  {
     	if ((x - 120 - (30 * spr_dir)) - (player_id.x + (player_id.fcharge * 8 * player_id.spr_dir))) < 0 
 	and ((x + 120 - (30 * spr_dir)) - (player_id.x + (player_id.fcharge * 8 * player_id.spr_dir))) > 0 {
 		
@@ -109,7 +109,7 @@ if attack == AT_FSTRONG  {
 if 	player_id.timefreeze < 1 {
 
 if attack == AT_FSTRONG  {
-	
+	hit_priority = 9
     if get_gameplay_time() % 4 = 0 {
 	spawn_hit_fx( x , y + 14 - random_func(5, 20, true) , tauntpar1 )
 	 }
@@ -118,7 +118,7 @@ if attack == AT_FSTRONG  {
 
 
 if attack == AT_NSPECIAL {
-	
+	hit_priority = 9
 	  if hbox_num == 5 or hbox_num == 7 or hbox_num == 8  {
 	  	
 	  	if !free {
@@ -247,11 +247,13 @@ if attack == AT_FSPECIAL {
 
 if player_id.timefreeze > 10 {
 	if attack == AT_FSTRONG  {
+		hit_priority = 0
     hsp /= 1.5
     hitbox_timer = -30
     }
      
      if attack == AT_NSPECIAL {
+     	hit_priority = 0
     hsp /= 1.5
     vsp = 0
     hitbox_timer = -30

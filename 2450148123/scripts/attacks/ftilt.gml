@@ -52,7 +52,7 @@ set_hitbox_value(AT_FTILT, 1, HG_EXTRA_CAMERA_SHAKE, 2);
 set_hitbox_value(AT_FTILT, 2, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FTILT, 2, HG_WINDOW, 3);
-set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 3);
+set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 4);
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_X, 55);
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_Y, -24);
 set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 60);

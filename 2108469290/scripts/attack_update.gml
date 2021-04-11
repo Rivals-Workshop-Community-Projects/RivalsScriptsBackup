@@ -525,6 +525,24 @@ if attack == AT_NSPECIAL {
 	set_attack (AT_EXTRA_1)
 	}
 	
+	
+if move_cooldown[AT_NSPECIAL] == 25 {
+		sound_play(asset_get("sfx_ice_shieldup"));
+		create_hitbox(AT_NSPECIAL , 1 + random_func(1, 2, true) , x - (20 * spr_dir) , y - 70 + random_func(2, 20, true) );
+		spawn_hit_fx ( x - (30 * spr_dir) , y - 60 + random_func(2, 20, true) , summon  );
+}
+
+if move_cooldown[AT_NSPECIAL] == 30 {
+		sound_play(asset_get("sfx_ice_shieldup"));
+		create_hitbox(AT_NSPECIAL , 1 + random_func(1, 2, true) , x - (20 * spr_dir) , y - 70 + random_func(2, 20, true) );
+		spawn_hit_fx ( x - (30 * spr_dir) , y - 60 + random_func(2, 20, true) , summon  );
+}
+
+if move_cooldown[AT_NSPECIAL] == 35 {
+		sound_play(asset_get("sfx_ice_shieldup"));
+		create_hitbox(AT_NSPECIAL , 1 + random_func(1, 2, true) , x - (20 * spr_dir) , y - 70 + random_func(2, 20, true) );
+		spawn_hit_fx ( x - (30 * spr_dir) , y - 60 + random_func(2, 20, true) , summon  );
+}
 }
 
 if attack == AT_EXTRA_1 {

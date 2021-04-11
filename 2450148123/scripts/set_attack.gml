@@ -2,7 +2,7 @@ user_event(13);
 
 
 
-if (!free) && (attack != AT_FSPECIAL && attack != AT_FTILT)
+if (!free) && (attack != AT_FSPECIAL && attack != AT_FTILT && attack != AT_DATTACK && attack != AT_FSTRONG)
 {
 	spr_dir=looking;
 }

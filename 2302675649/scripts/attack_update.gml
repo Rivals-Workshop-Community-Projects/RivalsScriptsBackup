@@ -28,6 +28,10 @@ switch (attack)
         }
         if (window == 2 && window_timer == get_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH) && (attack_invince || taunt_down)) window_timer = 0;
         if (window == 1 && window_timer == 13) spawn_base_dust(x+44*spr_dir, y, "walk", -spr_dir);
+
+        if (state_timer == 1) auraMeter = 0;
+		if (state_timer < 68 && auraMeter != -1) auraMeter = shield_down?auraMeter+1:-1;
+		else if (state_timer == 68 && auraMeter == 67) ActivateAura();
         break;
     case AT_TAUNT_2:
         if (window == 2 && !taunt_down && state_timer > 60)
@@ -35,6 +39,14 @@ switch (attack)
             window_timer = 0;
             ++window;
         }
+        if (special_down && !special_counter && window <= 2)
+        {
+            sound_play(sound_get("ping"), 0, 0, 6.9);
+            thonkObj = {x:x, y:y-100, alpha:16};
+        }
+        if (state_timer == 1) auraMeter = 0;
+		if (state_timer < 68 && auraMeter != -1) auraMeter = shield_down?auraMeter+1:-1;
+		else if (state_timer == 68 && auraMeter == 67) ActivateAura();
         break;
     case AT_EXTRA_1:
         tutDoneAdv[7] = true;
@@ -701,5 +713,22 @@ switch (attack)
         for (var i = _before; i < _after; ++i) if (get_window_value(attack, i, AG_WINDOW_HAS_SFX) && (_before != i || window_timer <= get_window_value(attack, i, AG_WINDOW_SFX_FRAME))) sound_play(get_window_value(attack, i, AG_WINDOW_SFX));
 	    window = _after;
 	    window_timer = 0;
+    }
+}
+
+#define ActivateAura()
+{
+    aura = !aura;
+    gpu_set_alphatestfunc(aura);
+    if (aura)
+    {
+    	sound_play(asset_get("sfx_absa_uair"));
+    	shake_camera(8, 6);
+        spawn_hit_fx(x, y-42, 157);
+    }
+    else if (instance_exists(auraClone))
+    {
+        instance_destroy(auraClone);
+        sound_play(asset_get("sfx_abyss_despawn"));
     }
 }

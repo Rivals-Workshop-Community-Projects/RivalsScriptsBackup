@@ -276,7 +276,7 @@ pho_has_daro_codec = 0; // Dialogue for the Daroach boss fight
 
 
 if (object_index == asset_get("cs_playerbg_obj")){
-	num_alts = 6; // Number of alt costumes; controls how many appear on the CSS
+	num_alts = 16; // Number of alt costumes; controls how many appear on the CSS
 	exit;
 }
 
@@ -557,9 +557,53 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
-	initPatch("1.0", "30 Mebruary, 20XX");
+	initPatch("1.0", "8 April, 2021");
 	initPatchWords_ext("Annie of the Stars! Now Playable!", fa_center, c_white, 0, 1);
 	if ("spr_starpowersuper" in other) initPatchImage(other.spr_starpowersuper, 9, fa_center, 1, c_white, 1);
+	
+	initPatch("1.3", "9 April, 2021");
+	initPatchWords_ext("Moves and Input Adjustments, and More Alts
+	
+	FSpecial: BKB 8 > 7, KBG .4 > .5
+	True FSpecial: KBG .5 > .6
+	
+	USpecial: Angle 75 > 81, KBG .4 > .5
+	True USpecial: Angle 75 > 81, KBG .5 > .6
+	
+	UStrong Top Hitbox: Angle 90 > 80
+	
+	Dair: Angle 350 > 315
+	
+	Adjusted Airdash Input (double tap) to be less strict
+	Added more alts :)
+	", fa_center, c_white, 0, 0);
+	
+	initPatch("1.4", "9 April, 2021");
+	initPatchWords_ext("Adjustments and System Fixes (same day I know)
+	
+	Fixed some sprites not having proper colors on some shades
+	
+	Kara Cancelling now works with the Attack Button
+	
+	Removed AutoTurn on first part of DATTACK (2nd Hitbox still tracks hit Opponent)
+	
+	Prevented Fastfall while Airdashing
+	
+	Added VFX to FAIR
+	
+	Fixed VFX of Airdashing
+	
+	Adjusted FAIR Animation, FAIR Hitbox First Active Frame 22 > 23 (MAX HOLD)
+	
+	Adjusted USTRONG Animation
+	
+	Adjusted NSPECIAL Projectiles opacity
+	
+	Adjusted various Hurtboxes
+	
+	Adjusted various SFX
+	
+	", fa_center, c_white, 0, 0);
 }
 
 
