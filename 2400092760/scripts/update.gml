@@ -8,6 +8,11 @@ if(instance_exists(obj_article1) && obj_article1.player_id == id){
 
 }
 
+if (state != PS_ATTACK_GROUND)
+{
+	reset_attack_value(AT_DTILT, AG_NUM_WINDOWS);
+}
+
 if(uspec_cd && !free){
     uspec_cd = false;
 }
@@ -132,8 +137,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Default = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}	
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Default = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -152,8 +163,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Rune_Maker = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Rune_Maker = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -172,8 +189,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Crayfish = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Crayfish = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -191,9 +214,15 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
-			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			}
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Emerald_Confidant = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Emerald_Confidant = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -212,8 +241,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Black_Blank = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Black_Blank = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -232,8 +267,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Robbery_Purple = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Robbery_Purple = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -251,9 +292,15 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
-			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			}
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Crimson_Scourge = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Crimson_Scourge = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -272,8 +319,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				King_of_Kings = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				King_of_Kings = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -292,8 +345,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Blazing_Devil = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Blazing_Devil = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -312,8 +371,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Cruel_Comedian = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Cruel_Comedian = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -332,8 +397,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Immortal_Stranger = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Immortal_Stranger = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -352,8 +423,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Demon_Gangster = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Demon_Gangster = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -372,8 +449,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Schwarzschild = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Schwarzschild = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -392,8 +475,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Sin_of_Greed = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Sin_of_Greed = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -412,8 +501,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Storm_God = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Storm_God = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -432,8 +527,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Vampire_Savior = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Vampire_Savior = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -451,9 +552,15 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
-			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			}
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Empty_Flame = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Empty_Flame = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -472,8 +579,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Humble_Melody = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Humble_Melody = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -492,8 +605,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Metal_Ally = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Metal_Ally = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -512,8 +631,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Global_Warming = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Global_Warming = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -532,8 +657,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Crystalline_Growth = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Crystalline_Growth = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -552,8 +683,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Dangerous_Date = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Dangerous_Date = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -572,8 +709,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Blue_Sightseer = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Blue_Sightseer = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -592,8 +735,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Flaming_Gorilla = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Flaming_Gorilla = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -612,8 +761,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Explosive_Rebel = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Explosive_Rebel = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -632,8 +787,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Poisonous_Roar = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Poisonous_Roar = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -652,8 +813,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Attuned_Traveler = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Attuned_Traveler = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -672,9 +839,15 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Null = 3;
 				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Null = 3;
+				ColorLock = 4;
 				ColorLocked = true;
 				init_shader();
 			}	
@@ -692,8 +865,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Hardened_Veteran = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Hardened_Veteran = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -712,8 +891,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Old_Ghost = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Old_Ghost = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -732,8 +917,14 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLocked = true;
 				init_shader();
 			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Sanguine_Lightning = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Sanguine_Lightning = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -751,9 +942,15 @@ if (state == PS_SPAWN || was_reloaded){
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
-			}	
-			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+			}
+			if (!up_down && !down_down && !left_down && !right_down && attack_down && !taunt_down){
 				Cackling_Hyena = 3;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+			if (!up_down && !down_down && !left_down && !right_down && !attack_down && taunt_down){
+				Cackling_Hyena = 4;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();

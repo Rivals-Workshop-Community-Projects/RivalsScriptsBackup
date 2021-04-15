@@ -12,7 +12,6 @@ move_cooldown[AT_EXTRA_1] = 60
 
 spawn_hit_fx (x, y - 40, 304)
 inkshield -= enemy_hitboxID.damage*5
-x -= 20 * spr_dir
 }
 sound_stop(asset_get("sfx_troupple_rumble"))
 

@@ -24,7 +24,7 @@ if (my_hitboxID.attack == AT_NSPECIAL) {
  ///create_hitbox(AT_NSPECIAL,4,x,y)   
  state_timer = 99
  window_timer = 99
- move_cooldown[AT_TAUNT] = 240
+ move_cooldown[AT_TAUNT_2] = 240
  create_hitbox (AT_NSPECIAL, 7, x, y)
  spawn_hit_fx (x,y,lighten)
 }

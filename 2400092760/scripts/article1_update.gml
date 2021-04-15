@@ -478,7 +478,7 @@ if(state == 14){
     else{
         freeC = true;
     }
-    if(usp_forger_drag == true){
+    if(usp_forger_drag and instance_exists(usp_forger_id) and usp_forger_id.state != PS_RESPAWN and usp_forger_id.state != PS_DEAD){
         usp_forger_id.x = x +40* cos(degtorad(point_direction(x,y,donyx,donyy)));
         usp_forger_id.y = y -40* sin(degtorad(point_direction(x,y,donyx,donyy)));
     }
@@ -560,13 +560,12 @@ if(state == 14){
 
 if(state == 15){
     if(state_timer == 1){
-        player_id.djumps = 0;
-        player_id.has_walljump = true;
+        
         if(player_id.state == PS_PRATFALL || (player_id.state == PS_ATTACK_AIR && player_id.attack == AT_USPECIAL) ){
             player_id.state = PS_IDLE_AIR;
             player_id.hurtboxID.sprite_index = sprite_get("ar_hurtbox");
         }
-        player_id.vsp = -3;
+        player_id.vsp = -10;
     }
     depth = 10;
     x = player_id.x -2*player_id.spr_dir;

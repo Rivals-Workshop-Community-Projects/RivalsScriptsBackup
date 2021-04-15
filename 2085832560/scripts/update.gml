@@ -341,7 +341,7 @@ if get_gameplay_time() <= 120 && Vrank == 0 and taunt_pressed && get_player_colo
 }
 
 
- if get_player_color(player) == 1 {
+ if get_player_color(player) == 1 && hunter == 1 {
  	
  	if prevstyle != style {
  		prevstyle = style
@@ -690,6 +690,10 @@ if rankm >= 0 && !hitpause {
 
 if rank > 0  {
 
+if infernal2 < 300 {
+	infernal2 += 0.02 * rank
+}
+
 if rankm <= 0 {
 	if rank == 1 {
 		if hunter == 1 or Vrank = 1  {
@@ -703,14 +707,17 @@ if rankm <= 0 {
  rankm += 120
  rank -= 1
  
-
-
-
 }
+
 }
 
 if rank < 6  {
-   if rankm >= 240 {	
+	
+
+	
+   if rankm >= 240 {
+   	move_cooldown[AT_FSTRONG_2] = 10
+   	spawn_hit_fx(x - 30,y - 64,swordhit )
    	 rankm -= 120
      rank += 1
      

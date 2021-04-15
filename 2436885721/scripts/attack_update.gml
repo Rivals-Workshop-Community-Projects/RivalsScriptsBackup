@@ -91,7 +91,7 @@ if(attack == AT_DTILT){
 if attack == AT_DSTRONG {
 	if window == 2 and window_timer == 1 {
 		if !free {
-			create_hitbox( AT_DSTRONG, 1, x+56*spr_dir, y-(84/2));
+			create_hitbox( AT_DSTRONG, 1, x+54*spr_dir, y-(84/2));
 			sound_play(asset_get(""))
 			move_cooldown[AT_DSTRONG] = 90;
 		}

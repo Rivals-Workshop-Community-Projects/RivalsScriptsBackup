@@ -604,6 +604,41 @@ with phone{
 	Adjusted various SFX
 	
 	", fa_center, c_white, 0, 0);
+	
+	initPatch("1.5", "11 April, 2021");
+	initPatchWords_ext("Balance Changes to Base and Install modes
+	
+	Base Annie struggles securing a kill due to being mainly for racking up damage and Star Power was supposed to enable her to do that by maintaining momentum.
+	However, Base form is too weak and cannot secure a kill and comeback from disadvantage and Install form is too strong and can easily take a stock without too much effort if saved or carried over for the next stock.
+	
+	It felt like the restrictions were too polarizing.
+	adjustments are made to make both modes comfortable.
+	
+	FAIR: BKB 5 > 7
+	
+	USTRONG: BKB 6 > 8, KBG .8 > .9
+	
+	FSTRONG: Hitbox 2 - BKB 6 > 7, KBG .6 > .8
+	
+	DSTRONG: Stagger duration frames increased from 40 > 50, BKB 4 > 5
+	
+	USPECIAL: KBG .5 > .7
+	
+	True USPECIAL: KBG .6 > .8
+	
+	FSPECIAL: KBG .5 > .65
+	
+	True FSPECIAL: KBG .6 > .75
+	
+	METER GAIN: Base form - damage * 1.4 > damage * 1.25, STAR POWER - damage * .5 > damage * .4
+	
+	STAR POWER START UP: added IASA on frame 100 onwards
+	
+	STAR POWER: KBG multiplier removed, BKB multiplier increased from 1.25 > 1.5
+	
+	STAR POWER PROJECTILES: Fixed Star Projectiles that have incorrect Hitstun Multipliers (1 > -1)
+	
+	", fa_center, c_white, 0, 0);
 }
 
 

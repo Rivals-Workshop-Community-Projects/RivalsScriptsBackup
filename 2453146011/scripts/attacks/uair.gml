@@ -28,7 +28,7 @@ set_window_value(AT_UAIR, 3, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAMES, 8);
 set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_UAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 4);
-set_window_value(AT_UAIR, 3, AG_WINDOW_CUSTOM_GRAVITY, 1.0);
+set_window_value(AT_UAIR, 3, AG_WINDOW_CUSTOM_GRAVITY, 0);
 
 // Teleport delay
 set_window_value(AT_UAIR, 4, AG_WINDOW_TYPE, 1);
@@ -55,7 +55,7 @@ set_window_value(AT_UAIR, 7, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UAIR, 7, AG_WINDOW_ANIM_FRAME_START, 21);
 
 
-set_num_hitboxes(AT_UAIR,2);
+set_num_hitboxes(AT_UAIR,3);
 
 set_hitbox_value(AT_UAIR, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_UAIR, 1, HG_HITBOX_TYPE, 2);
@@ -79,6 +79,7 @@ set_hitbox_value(AT_UAIR, 1, HG_PROJECTILE_GRAVITY, .8);
 set_hitbox_value(AT_UAIR, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_UAIR, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_UAIR, 1, HG_PROJECTILE_ANIM_SPEED, .55);
+set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, emptyfx);
 set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, sound_get("monarch_knifehit2"));
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE_FLIPPER, 6);
 
@@ -101,3 +102,23 @@ set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, -20);
 set_hitbox_value(AT_UAIR, 2, HG_HITSTUN_MULTIPLIER, .7);
 set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, sound_get("monarch_knifehit1"));
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_GROUP, -1);
+
+set_hitbox_value(AT_UAIR, 3, HG_PARENT_HITBOX, 0);
+set_hitbox_value(AT_UAIR, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_UAIR, 3, HG_WINDOW, 2);
+set_hitbox_value(AT_UAIR, 3, HG_LIFETIME, 4);
+set_hitbox_value(AT_UAIR, 3, HG_HITBOX_Y, -50);
+set_hitbox_value(AT_UAIR, 3, HG_HITBOX_X, 20);
+set_hitbox_value(AT_UAIR, 3, HG_WIDTH, 25);
+set_hitbox_value(AT_UAIR, 3, HG_HEIGHT, 60);
+set_hitbox_value(AT_UAIR, 3, HG_PRIORITY, 1);
+set_hitbox_value(AT_UAIR, 3, HG_DAMAGE, 4);
+set_hitbox_value(AT_UAIR, 3, HG_ANGLE, 90);
+set_hitbox_value(AT_UAIR, 3, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_UAIR, 3, HG_KNOCKBACK_SCALING, .25);
+set_hitbox_value(AT_UAIR, 3, HG_BASE_HITPAUSE, 2);
+set_hitbox_value(AT_UAIR, 3, HG_HITPAUSE_SCALING, .2);
+set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT_X_OFFSET, 20);
+set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT_Y_OFFSET, -20);
+set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, sound_get("monarch_knifehit2"));
+set_hitbox_value(AT_UAIR, 3, HG_HITBOX_GROUP, -1);

@@ -157,16 +157,30 @@ if(x < 0 || x > room_width || y > room_height || player_id.state == PS_RESPAWN)
 
 //#endregion
 
+//#region Teleportfx
+
+if(!charged){
+    charged = teleported;
+    if(charged) sound_play(sound_get("monarch_zap"),false,0,0.5);
+}
+
+//#endregion
+
+
 //#region time's up
 
 if(clock_timer == teleport_time || early_trigger || fspec_trigger)
 {
     var doFall = true;
+    var hbox = noone;
+    
+    // Charge damage
+    with(player_id) set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 10);
     
     // Stun hitbox
     if(stuck_player != noone){
-        if(stuck_player.state == 12){
-            var hbox = create_hitbox(AT_DSPECIAL,2,ceil(x),ceil(y)-35);
+        if( (stuck_player.state == 12 || charged) && !stuck_player.activated_kill_effect){
+            hbox = create_hitbox(AT_DSPECIAL,2,ceil(x),ceil(y)-15);
             
             var hpTime = 10;
         	
@@ -183,12 +197,33 @@ if(clock_timer == teleport_time || early_trigger || fspec_trigger)
         }
     }
     
+
+    
     with(player_id)
     {
         // Teleport
         x = other.x;
         y = other.y;
-       
+        
+        if(other.charged) {
+            spawn_hit_fx(other.x,other.y,hitfx12);
+            
+            if(hbox == noone){
+                set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 160);
+                set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 160);
+                set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, floor(12*2.5));
+                
+                hbox = create_hitbox(AT_DSPECIAL,2,ceil(other.x),ceil(other.y)-15);
+                
+                reset_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH);
+                reset_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT);
+                reset_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME);
+            }
+            
+            
+            sound_play(sound_get("monarch_gunhit2"),false,0,0.8,1.1);
+        }
+       reset_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE);
         
         
         // Fall to platform/ground w/ failsafe
@@ -215,7 +250,7 @@ if(clock_timer == teleport_time || early_trigger || fspec_trigger)
         
 
         
-        sound_play(sound_get("monarch_appear"))
+        sound_play(sound_get("monarch_appear"),false,0,other.charged ? 0.8 : 1)
         
         if(other.early_trigger) y-=30;
         if(!doFall) {
@@ -231,6 +266,9 @@ if(clock_timer == teleport_time || early_trigger || fspec_trigger)
     
     // Reset stuff
     player_id.time_knife = noone;
+    
+    // Prevent jumping back into portals
+    if(charged) player_id.vsp = 0;
     instance_destroy();
 }
 

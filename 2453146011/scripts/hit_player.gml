@@ -44,18 +44,21 @@ if(my_hitboxID.attack = AT_BAIR && my_hitboxID.hbox_num == 1 && hit_player_obj.c
 }
 
 // Up air jank
-if(my_hitboxID.attack = AT_UAIR && my_hitboxID.hbox_num == 1 && hit_player_obj.clone == false) {
+if(my_hitboxID.attack = AT_UAIR && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 3) && hit_player_obj.clone == false) {
 	//move_cooldown[AT_UAIR] = 50;
 	
 	spawn_hit_fx(x,y,teleport_lite_start_smaller);
+	spawn_hit_fx(hit_player_obj.x-80*spr_dir,hit_player_obj.y-60,hitfx9);
     butterflyFX(70,70,4,-10*spr_dir,-40);	
     
     can_fast_fall = false;
     fast_falling = false;
     do_a_fast_fall = false;
     free = true;
+    old_vsp = -10;
+    vsp = -10;
     
-    if(state != PS_ATTACK_AIR)
+    if(state != PS_ATTACK_AIR || my_hitboxID.hbox_num == 3)
     {
 	    set_state(PS_ATTACK_AIR);
 	    set_attack(AT_UAIR);
@@ -68,12 +71,16 @@ if(my_hitboxID.attack = AT_UAIR && my_hitboxID.hbox_num == 1 && hit_player_obj.c
     has_hit_player = true;
 
     sound_stop(sound_get("monarch_wooshspin"));
+    
+
 }
 
 // Dspec
 if(my_hitboxID.attack == AT_DSPECIAL && hit_player_obj.clone == false){
-	time_knife.stuck_player = hit_player_obj;
-	time_knife.shake_timer = 10;
+	if(time_knife != noone){
+		time_knife.stuck_player = hit_player_obj;
+		time_knife.shake_timer = 10;
+	}
 	sound_play(sound_get("monarch_darthitplayer"));
 }
 
@@ -98,9 +105,23 @@ if(my_hitboxID.attack = AT_FSPECIAL){
     	
     	with(monarch) spawn_hit_fx(other.x,other.y-(char_height/1.5),newtprings);
     	
-    	hitpause = true;
-    	hitstop = hpTime;
-    	hitstop_full = hpTime;
+		if(monarch.fspec_charged){
+
+    		// Charged box
+			with(monarch) {
+				set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 8);
+				create_hitbox(AT_DSPECIAL,2,ceil(x),ceil(y)-15);
+				reset_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE);
+				sound_play(sound_get("monarch_gunhit2"),false,0,0.8,1.1);
+				
+				spawn_hit_fx(x,y,hitfx12);
+			}
+		}
+		else{
+	    	hitpause = true;
+	    	hitstop = hpTime;
+	    	hitstop_full = hpTime;
+		}
     }
     
     portal_afterimage.timer = 10;

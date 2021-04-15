@@ -83,7 +83,7 @@ set_hitbox_value(AT_UAIR, 3, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(AT_UAIR, 3, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_UAIR, 3, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT_Y_OFFSET, -16);
-set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_UAIR, 3, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_UAIR, 3, HG_GROUNDEDNESS, 1);
 
@@ -104,6 +104,6 @@ set_hitbox_value(AT_UAIR, 4, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(AT_UAIR, 4, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_UAIR, 4, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_UAIR, 4, HG_VISUAL_EFFECT_Y_OFFSET, -16);
-set_hitbox_value(AT_UAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_UAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_UAIR, 4, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_UAIR, 4, HG_GROUNDEDNESS, 2);

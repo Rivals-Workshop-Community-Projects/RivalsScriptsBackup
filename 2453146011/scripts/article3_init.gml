@@ -56,6 +56,8 @@ char_height = 100;
 
 // Portal stuff
 player_id.fspecial_obj = self;
+charged = false;
+
 
 in_portal = false;
 teleported = false;

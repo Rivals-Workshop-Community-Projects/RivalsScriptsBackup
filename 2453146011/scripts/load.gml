@@ -199,5 +199,7 @@ sprite_change_offset("hitfx8", 128, 128);
 sprite_change_offset("hitfx9", 128, 128);
 sprite_change_offset("hitfx9short", 128, 128);
 sprite_change_offset("hitfx10", 196, 196);
+sprite_change_offset("hitfx11", 128, 128);
+sprite_change_offset("hitfx12", 128, 128);
 
 set_victory_theme( sound_get( "monarch_victory" ));

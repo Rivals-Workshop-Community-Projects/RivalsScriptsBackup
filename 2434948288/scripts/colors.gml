@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 18 );
+set_num_palettes( 19 );
 
 // blue
 set_color_profile_slot( 1, 0, 79, 101, 189 ); //Hat1
@@ -205,6 +205,16 @@ set_color_profile_slot( 17, 4, 255, 249, 140 ); //Tie1
 set_color_profile_slot( 17, 5, 230, 197, 99 ); //Tie2
 set_color_profile_slot( 17, 6, 115, 255, 115 ); //Shirt1
 set_color_profile_slot( 17, 7, 42, 201, 151 ); //Shirt2
+
+// spectrum
+set_color_profile_slot( 18, 0, 255, 41, 116 ); //Hat1
+set_color_profile_slot( 18, 1, 181, 17, 115 ); //Hat2
+set_color_profile_slot( 18, 2, 93, 250, 253 ); //Pants1
+set_color_profile_slot( 18, 3, 41, 142, 204 ); //Pants2
+set_color_profile_slot( 18, 4, 93, 250, 253 ); //Tie1
+set_color_profile_slot( 18, 5, 41, 142, 204 ); //Tie2
+set_color_profile_slot( 18, 6, 175, 188, 210 ); //Shirt1
+set_color_profile_slot( 18, 7, 121, 120, 173 ); //Shirt2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

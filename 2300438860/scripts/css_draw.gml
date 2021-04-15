@@ -87,7 +87,9 @@ var palette_names = [
         "Gender?",
         "Hyper God (Rainbowfx)",
                 "Landkon Alt",
-                        "Bed Lump",        
+                        "Bed Lump",     
+                         "Guy from UnderSomething", 
+                         "BLM",          
                 
 ];
 var alt = get_player_color(player);

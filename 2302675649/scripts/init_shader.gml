@@ -16,6 +16,22 @@ switch (get_player_color(player))
         set_character_color_shading(7, 2);
     }
     break;
+    //tanjiro
+    case 24:
+    {
+        if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack != AT_TAUNT && attack != AT_TAUNT_2 && attack != AT_EXTRA_1)
+        {
+            if (get_player_damage(player) < 100)
+                set_character_color_slot(0, 102, 182, 222, 1);
+            else if (state_timer % 3)
+                set_character_color_slot(0, 242, 69, 27, 1);
+            else
+                set_character_color_slot(0, 254, 251, 112, 1);
+        }
+        else
+            set_character_color_slot(0, 24, 30, 37, 1);
+    }
+    break;
 }
 
 outline_colour = [0, 0, 0];

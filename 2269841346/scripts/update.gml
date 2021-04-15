@@ -43,7 +43,6 @@ if cheapmode = 1 && (state == PS_DEAD or inloop = 1 or (state != PS_ATTACK_GROUN
     visible = true
     x = thisx
 	y = thisy
-	spr_dir = thisface
 	set_player_stocks(player, 1);
 	spawn_hit_fx(floor(hit_player_obj.x + 60 - random_func(5, 120, true)) ,  floor(hit_player_obj.y + 70 - random_func(6, 140, true)), km3);	
 	}
@@ -100,7 +99,7 @@ if (state == PS_WALL_JUMP or !free) {move_cooldown[AT_USPECIAL] = 0};
 if hitpause {
 	move_cooldown[AT_EXTRA_1] += 1
 }
-if get_gameplay_time() == 2 {
+if get_gameplay_time() == 1 {
     
     	if hit_player_obj == self {
 		var shortest_dist = 9999;
@@ -120,10 +119,11 @@ if get_gameplay_time() == 2 {
 		
 		
     	if hit_player_obj.url != "2273636433" && hit_player_obj.url != "1870768156"
-	&& hit_player_obj.url != "1869351026" &&
-	(string_count("nald", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME))) > 0
+	&& hit_player_obj.url != "1869351026" && hit_player_obj.url != "2443363942" &&
+	(string_count("nald", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
 	or string_count("%", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
 	or string_count("sand", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
+	or string_count("oku", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
 	or string_count("psy", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
 	or string_count("ultra", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
 	or string_count("god", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
@@ -132,6 +132,9 @@ if get_gameplay_time() == 2 {
 	or string_count("ssg", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
 	or string_count("melee", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
 	or string_count("accurate", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
+	
+	or hit_player_obj.url == "2159023588"
+	or hit_player_obj.url == "1980469422"
 	) or state == PS_DEAD{
         set_attack (AT_TAUNT)
         window = 1 

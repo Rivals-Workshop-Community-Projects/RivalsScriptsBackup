@@ -140,10 +140,12 @@ default_throw_angle = 15;
 throw_angle = 65;
 can_blink = true;
 uspecial_buffer = false; 
+uspec_charged = false;
 
 // Fspecial stuff
 fspecial_obj = noone;
 hit_fspec = false;
+fspec_charged = false;
 
 // Effects
 teleport_start = hit_fx_create( sprite_get( "teleport_start" ), 25 );
@@ -237,6 +239,8 @@ hitfx8 = hit_fx_create(sprite_get("hitfx8"),20);
 hitfx9 = hit_fx_create(sprite_get("hitfx9"),10);
 hitfx9short = hit_fx_create(sprite_get("hitfx9short"),4);
 hitfx10 = hit_fx_create(sprite_get("hitfx10"),10);
+hitfx11 = hit_fx_create(sprite_get("hitfx11"),12);
+hitfx12 = hit_fx_create(sprite_get("hitfx12"),12 * 2);
 
 trail = hit_fx_create(sprite_get("trail"),6);
 trailfx[0] = {x:x,y:y,vsp:0,hsp:0,lifetime:0};
@@ -357,6 +361,7 @@ else
     monPurple = make_colour_rgb(get_color_profile_slot_r(get_player_color(player), 3), get_color_profile_slot_g(get_player_color(player), 3), get_color_profile_slot_b(get_player_color(player), 3));
     monDarkPurple = make_colour_rgb(get_color_profile_slot_r(get_player_color(player), 3)-28, get_color_profile_slot_g(get_player_color(player), 3)-10, get_color_profile_slot_b(get_player_color(player), 3)-47);
 }
+
 
 // Munophone
 user_event(14);

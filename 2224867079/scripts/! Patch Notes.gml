@@ -1,4 +1,9 @@
 /*
+-- V2.16 --
+
+Cosmetic Changes:
+- New Red Uspecial Effect
+
 -- V2.15 --
 
 Balance Changes:

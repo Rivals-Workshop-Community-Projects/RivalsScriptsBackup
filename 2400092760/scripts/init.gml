@@ -130,7 +130,7 @@ fstr_dir = 0;
 
 //dtilt
 puddle_exist = true;
-    
+dtilt_held = false;    
     
 //Uair
     UAGrab = false;
@@ -212,7 +212,7 @@ page++;
 
 //Page 6
 dracula_speaker[page] = 0;
-dracula_text[page] = "Brash Words for a blood drunk fool! [glass]I'll see to it that you are silenced!";
+dracula_text[page] = "Brash words for a blood drunk fool! [glass]I'll see to it that you are silenced!";
 page++;
 
 //Page 7

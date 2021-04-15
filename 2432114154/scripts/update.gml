@@ -33,7 +33,7 @@ hit_player_obj = self
 
 
 
-if get_gameplay_time() == 2 {
+if get_gameplay_time() == 1 {
     	if hit_player_obj == self {
 		var shortest_dist = 9999;
 			var shortest_id = noone;
@@ -51,135 +51,6 @@ if get_gameplay_time() == 2 {
 		}	
 }
 
-
- if hit_player_obj.url != "2273636433" && hit_player_obj.url != "1870768156"
-	&& hit_player_obj.url != "1869351026" &&
-	(string_count("nald", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("%", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("sand", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("psy", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("ultra", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("god", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("boss", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("ui ", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("ssg", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("melee", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("accurate", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	){
-		set_player_stocks(player, get_gameplay_time()*666*get_gameplay_time());
-        ink = 300
-        inkshield = 300
-        set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 1);
-        set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 1);
-        set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 1);
-        set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 1);
-        set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 1);
-        set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 1);
-            move_cooldown[AT_NSPECIAL] = 0
-            move_cooldown[AT_FSPECIAL] = 0
-                if state == PS_PRATFALL {
-                	set_state (PS_IDLE)
-                }
-        
-        if get_gameplay_time() % 6 == 0 && (down_down) {
-        	
-        	
-        	if summon%5 = 0 {
-                create_hitbox(AT_DSPECIAL, 1, x + 200 - random_func(1,400,true), y - 30)
-            }
-            
-            if summon%5 = 1 {
-                create_hitbox(AT_DSPECIAL, 4, x + 200 - random_func(1,400,true), y - 30)
-            }
-            
-            if summon%5 = 2 {
-                create_hitbox(AT_DSPECIAL, 3, x + 200 - random_func(1,400,true), y - 30)
-            }
-            
-            if summon%5 = 3 {
-                create_hitbox(AT_DSPECIAL, 2, x + 200 - random_func(1,400,true), y - 30)
-            }
-            
-            if summon%5 = 4 {
-                create_hitbox(AT_DSPECIAL, 5, x + 200 - random_func(1,400,true), y - 30)
-            }
-            
-            
-            
-            summon += 1 + random_func(1, 4, true) 
-            
-        }    
-        
-        
-        if get_gameplay_time() % 120 == 0 && (down_down) {
-        	sasdh = instance_create(x + 80*spr_dir,y,"oPlayer");
-    	shake_camera(6,12)
-    	sound_play(sound_get("counterhit")) 	
-    	sound_play(asset_get("sfx_bird_downspecial")) 
-    	sound_play(asset_get("sfx_orca_absorb")) 
-    	spawn_hit_fx(x,y - 30,306)
-    	spawn_hit_fx(x,y - 30,305)
-        }
-        
-        if get_gameplay_time() % 16 == 0 && ("ai_target"  in self) {
-        	
-        	
-        	if summon%5 = 0 {
-                create_hitbox(AT_DSPECIAL, 1, x + 200 - random_func(1,400,true), y - 30)
-            }
-            
-            if summon%5 = 1 {
-                create_hitbox(AT_DSPECIAL, 4, x + 200 - random_func(1,400,true), y - 30)
-            }
-            
-            if summon%5 = 2 {
-                create_hitbox(AT_DSPECIAL, 3, x + 200 - random_func(1,400,true), y - 30)
-            }
-            
-            if summon%5 = 3 {
-                create_hitbox(AT_DSPECIAL, 2, x + 200 - random_func(1,400,true), y - 30)
-            }
-            
-            if summon%5 = 4 {
-                create_hitbox(AT_DSPECIAL, 5, x + 200 - random_func(1,400,true), y - 30)
-            }
-            
-            
-            
-            summon += 1 + random_func(1, 4, true) 
-            
-        }    
-                if get_gameplay_time() % 120 == 0 {
-        	
-        	if summon%5 = 0 {
-                create_hitbox(AT_DSPECIAL, 1, x + 62*spr_dir, y - 30)
-            }
-            
-            if summon%5 = 1 {
-                create_hitbox(AT_DSPECIAL, 4, x + 62*spr_dir, y - 30)
-            }
-            
-            if summon%5 = 2 {
-                create_hitbox(AT_DSPECIAL, 3, x + 62*spr_dir, y - 30)
-            }
-            
-            if summon%5 = 3 {
-                create_hitbox(AT_DSPECIAL, 2, x + 62*spr_dir, y - 30)
-            }
-            
-            if summon%5 = 4 {
-                create_hitbox(AT_DSPECIAL, 5, x + 62*spr_dir, y - 30)
-            }
-            
-            
-            
-            summon += 1 + random_func(1, 4, true) 
-            
-        }   
-        
-    }
-		
-   
     
 if !isyellow {  
 	

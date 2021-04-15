@@ -468,7 +468,7 @@ if attack == AT_TAUNT {
 	draw_indicator = false
 	
 	if cheapmode = 0 && hit_player_obj.url != "2273636433" && hit_player_obj.url != "1870768156"
-	&& hit_player_obj.url != "1869351026" &&
+	&& hit_player_obj.url != "1869351026" && hit_player_obj.url != "2443363942" &&
 	(string_count("nald", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
 	or string_count("%", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
 	or string_count("sand", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
@@ -481,6 +481,9 @@ if attack == AT_TAUNT {
 	or string_count("ssg", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
 	or string_count("melee", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
 	or string_count("accurate", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
+	
+	or hit_player_obj.url == "2159023588"
+	or hit_player_obj.url == "1980469422"
 	){
         cheapmode = 1
     }

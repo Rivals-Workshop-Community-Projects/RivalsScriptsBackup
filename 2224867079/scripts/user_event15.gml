@@ -458,6 +458,10 @@ with phone{
 //	initPatchWords("Fnuuy joke
 //	- waog");
 //	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0);
+	//2.16
+	initPatch("2.15", "11 April, 2021");
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- New Red Uspecial Effect")
 	//2.15
 	initPatch("2.15", "10 April, 2021");
 	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);

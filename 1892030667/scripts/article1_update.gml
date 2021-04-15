@@ -79,10 +79,10 @@ if (state == 1) {
     }*/
     if vsp != 0 || hsp != 0 {
         collis_obj = instance_place(x,y,oPlayer);
-        if !has_hit && collis_obj != noone && collis_obj.id != player_id {
+        if has_shot && !has_hit && collis_obj != noone && collis_obj.id != player_id {
             if !instance_exists(hitbox1) {
-                hitbox1 = create_hitbox(AT_FSPECIAL,hitbox_type,collis_obj.x,collis_obj.y-20);
-                //else hitbox1 = create_hitbox(AT_FSPECIAL,2,collis_obj.x,collis_obj.y-20);
+                //hitbox1 = create_hitbox(AT_FSPECIAL,hitbox_type,collis_obj.x,collis_obj.y-20);
+                hitbox1 = create_hitbox(AT_FSPECIAL,2,collis_obj.x,collis_obj.y-20);
                 has_hit = true;
                 hitbox1.spr_dir = sign(hsp);
             }

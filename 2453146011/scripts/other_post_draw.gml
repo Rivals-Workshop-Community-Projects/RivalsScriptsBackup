@@ -1,4 +1,8 @@
-if(other_player_id.lite) exit;
+var otherexists;
+otherexists = instance_exists(other_player_id)
+
+if !otherexists exit;
+if (otherexists and (!("lite" in other_player_id) or other_player_id.lite)) exit;
 
 // Other post draw
 with(other_player_id) shader_start();

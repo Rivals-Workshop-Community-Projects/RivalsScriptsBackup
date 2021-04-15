@@ -641,9 +641,6 @@ if attack == AT_USPECIAL {
 			nearbyhitbox = collision_circle( x, y, 50, asset_get("pHitBox"), true, true ) 
 	if nearbyhitbox != noone && move_cooldown[AT_EXTRA_1] = 0{
 					dplayer = nearbyhitbox.player_id
-            if unte {
-            	move_cooldown[AT_NSPECIAL_2] = 123
-            }
 	    	hit_player_obj = nearbyhitbox.player_id
 			move_cooldown[AT_EXTRA_1] = 20
 	}

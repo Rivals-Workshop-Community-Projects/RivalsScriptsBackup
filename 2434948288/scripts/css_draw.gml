@@ -2,7 +2,7 @@
 
 var temp_x = x + 8;
 var temp_y = y + 9;
-var numAlts = 18;
+var numAlts = 19;
 
 patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1);
 image_alpha = max(image_alpha-0.02, 0);
@@ -42,6 +42,7 @@ alt_name[14]  = "Jevil";
 alt_name[15]  = "Ballin Wonderwall";
 alt_name[16]  = "Sleek";
 alt_name[17]  = "G. Wheeze";
+alt_name[18]  = "Spectrum";
 
 draw_set_halign(fa_right);
 textDraw(temp_x + 198, temp_y + 32, "fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);

@@ -8,6 +8,9 @@ if (attack == AT_NSPECIAL || attack == AT_USPECIAL ){
 
  
 
+if attack == AT_BAIR && window == 1 && window_timer == 1 {
+	set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 49);
+}
 if attack == AT_FSTRONG {
      
      if has_hit_player && window < 5 && hit_player_obj.state_cat == SC_HITSTUN{
@@ -210,8 +213,89 @@ if attack == AT_USTRONG {
  
 }
 
+if attack == AT_EXTRA_3 {
+
+hhalo = 0
+
+	if window == 4 && window_timer == 14 {
+		vsp = -90
+		spawn_hit_fx ( x - (30 * spr_dir) , y - 50 , summon  );
+		sound_play(asset_get("sfx_ice_on_player"));
+		set_state(PS_PRATFALL)
+	}
+
+	if has_hit_player  && !hitpause {
+
+		hsp = 0
+		vsp = -10
+		spr_dir *= -1
+		
+		x = hit_player_obj.x + 30*spr_dir
+		sound_play(sound_get("Fstrong"));
+		set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 149);
+			set_attack(AT_BAIR)
+			window = 1
+			window_timer = 6
+	}
+	
+	 if window == 1 && window_timer == 1 && !hitpause{
+	 	
+	 	y -= 10
+	 	
+	 	if "ai_target" not in self {
+	 	 sound_play(sound_get("SpaceCut"));
+	 	 sound_play(asset_get("sfx_bird_nspecial"));
+	 	 shake_camera(2,6)
+	 	 spawn_hit_fx(x - 20*spr_dir,y - 50,305)
+	 	spawn_hit_fx ( x + (30 * spr_dir) , y - 40 , summon  );
+
+		} else {
+			set_state (PS_WAVELAND)
+			state_timer = 0
+			sound_play(asset_get("sfx_quick_dodge"));
+		}
+	 }
+	 
+    if window == 3 && hsp = 0 && !hitpause {
+        vsp = -100
+        hsp = -4 * spr_dir
+        set_attack (AT_NAIR)
+        window = 4
+        sound_play(asset_get("sfx_blow_medium3"));
+         spawn_hit_fx ( x , y - 10, 305 );
+    }
+    
+    
+    can_move = false 
+    can_fast_fall = false
+    vsp /= 10
+    if free {
+        hsp /= 1.1
+    }
+    
+    if !free {
+        hsp /= 1.05
+    }
+    
+    
+    if window == 3 && !hitpause{
+    	shake_camera(1,2)
+    	///if hhalo > 0 {
+    	///sound_play(asset_get("sfx_ice_shieldup"));
+		///create_hitbox(AT_NSPECIAL , 1 + random_func(1, 2, true) , x - (20 * spr_dir) , y - 70 + random_func(2, 20, true) );
+		///spawn_hit_fx ( x - (30 * spr_dir) , y - 60 + random_func(2, 20, true) , summon  );
+    	///} 
+    	var ai4 = hit_fx_create( sprite_get( "ai4" ), 12 );
+        	spawn_hit_fx ( x + hsp , y - 46 + random_func(1,6,true), ai4 );
+    }
+    
+	
+}
 if attack == AT_FSPECIAL {
 	
+	if hhalo > 0 && state_timer == 1{
+		set_attack(AT_EXTRA_3)
+	}
 	
 	if has_hit_player  && !hitpause {
 		if !free {
@@ -268,24 +352,24 @@ if attack == AT_FSPECIAL {
         hsp /= 1.08
     }
     
-    if window == 3 && window_timer == 1{
-
-        spawn_hit_fx ( x - (10 * spr_dir) , y - 30 , 302 );
-    }
     
-    if window == 3 && window_timer % 3 == 0  && !hitpause{
+    if window == 3 && !hitpause{
     	///if hhalo > 0 {
     	///sound_play(asset_get("sfx_ice_shieldup"));
 		///create_hitbox(AT_NSPECIAL , 1 + random_func(1, 2, true) , x - (20 * spr_dir) , y - 70 + random_func(2, 20, true) );
 		///spawn_hit_fx ( x - (30 * spr_dir) , y - 60 + random_func(2, 20, true) , summon  );
     	///} 
-        	spawn_hit_fx ( x - (10 * spr_dir) , y , ai );
+    	var ai4 = hit_fx_create( sprite_get( "ai4" ), 12 );
+        	spawn_hit_fx ( x + hsp , y - 46 + random_func(1,6,true), ai4 );
     }
     
 }
 
 if attack == AT_DSPECIAL {
     
+    if window == 1 && hhalo > 0 {
+    	set_attack(AT_EXTRA_2)
+    }
     can_fast_fall = false
     
     if window == 1 {
@@ -334,16 +418,16 @@ if attack == AT_DSPECIAL {
         
     }
     
-    if window == 2 && window_timer < 5 && lockon == 1 {
-        
-        spawn_hit_fx (x - (15 * spr_dir) , y - 55, 302)
-        sound_play(asset_get("sfx_ice_on_player"));
-        hhalo = 180
+    if window == 2 && window_timer < 5 && lockon == 1 && move_cooldown[AT_TAUNT] == 0{
+       
+        lockontime = 180
         
         if hit_player_obj.state_cat == SC_HITSTUN {
-        
-         hit_player_obj.hsp /= 1.4
-            hit_player_obj.vsp /= 1.4
+         lockplayer.hsp /= 1.2
+         lockplayer.vsp /= 1.2
+         if lockplayer.vsp > 0 {
+         	lockplayer.vsp = 0
+         }
         }
         
     }
@@ -360,10 +444,6 @@ if attack == AT_DSPECIAL {
         }
      }
         
-    if window == 2 && window_timer > 2 {
-
-        lockon = 0
-    }
     
     if window == 2 && window_timer == 1  {
         
@@ -380,32 +460,20 @@ if attack == AT_DSPECIAL {
         }
         
         
-        if lockon == 1 {
-        	if "ai_target" not in self {
-            x = hit_player_obj.x + (40 * spr_dir) + hit_player_obj.hsp*3
-            y = hit_player_obj.y + hit_player_obj.vsp
+        if lockon == 1 &&  move_cooldown[AT_TAUNT_2] == 0 {
+        	move_cooldown[AT_TAUNT_2] = 180
+        	sound_play(asset_get("sfx_bird_downspecial"));
+        	shake_camera(2,6)
+            x = lockplayer.x + hit_player_obj.hsp*3
+            y = lockplayer.y + floor(hit_player_obj.vsp/2)
             spr_dir *= -1
-            lockontime = 120
-            }
+            lockontime = 180
+     
             
-            
-            if "ai_target" in self {
-            if hit_player_obj.free = false {	
-            x = hit_player_obj.x + (40 * spr_dir) + hit_player_obj.hsp*3
-            y = hit_player_obj.y + hit_player_obj.vsp
-            spr_dir *= -1
-            lockontime = 120
-            } else {
-            x = hit_player_obj.x - (40 * spr_dir) + hit_player_obj.hsp*3
-            y = hit_player_obj.y + hit_player_obj.vsp
-            lockontime = 120	
-            }
-            
-            }
-            
+           
         }
         
-        if free && lockon == 0 { 
+        if down_down && lockon == 0 { 
             vsp = 150
             
         }
@@ -423,15 +491,106 @@ if attack == AT_DSPECIAL {
     }
 }
 
+
+if attack == AT_EXTRA_2 {
+    
+    hhalo = 0
+    can_fast_fall = false
+    
+    if window == 1 {
+        if free {
+        vsp /= 2
+        hsp /= 2
+        }
+        can_move = false
+    }
+    
+   if window == 1 && window_timer == 9 {
+        
+        		with (asset_get("oPlayer")) {
+				if (player != other.player) {
+             	if "ai_target" in self && "nname" not in self {
+             		if url != "2108469290" {
+             		if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
+             			set_state (PS_IDLE)
+             		}
+             		
+                   move_cooldown[AT_DSPECIAL] = 60
+                   move_cooldown[AT_FSPECIAL] = 60
+                   if move_cooldown[AT_USPECIAL] < 20{
+                   move_cooldown[AT_USPECIAL] = 20
+                   }
+                   move_cooldown[AT_NSPECIAL] = 60
+				   move_cooldown[AT_DTILT] = 60
+				   move_cooldown[AT_UTILT] = 60
+				   move_cooldown[AT_FTILT] = 60
+				   move_cooldown[AT_JAB] = 60
+				   move_cooldown[AT_DATTACK] = 60
+				   move_cooldown[AT_DSTRONG] = 60
+				   move_cooldown[AT_FSTRONG] = 60
+				   move_cooldown[AT_USTRONG] = 60
+				   move_cooldown[AT_BAIR] = 60
+				   move_cooldown[AT_FAIR] = 60
+				   move_cooldown[AT_NAIR] = 60
+				   move_cooldown[AT_UAIR] = 60
+				   move_cooldown[AT_DAIR] = 60
+             	}
+             	}
+					
+				}
+			}
+        
+        
+    }
+    
+    
+        
+    
+    if window == 1 && window_timer == 10  {
+    create_hitbox(AT_DSPECIAL,7,x,y-30)	
+    }
+    	
+    if window == 2 && window_timer == 1  {
+    	
+    	         if left_down && lockon == 0 {
+            x -= 100
+        }
+        
+         if right_down && lockon == 0 {
+            x += 100
+        }
+        
+        
+    if down_down {
+            vsp = 150
+            
+
+    }
+    }
+    
+    if window == 2 && window_timer == 1 {
+        vsp = -12
+    }
+    
+    if window == 2 && window_timer == 4*5 && !hitpause{
+    	  vsp = -12
+         sound_play(sound_get("SpaceCut"));
+         sound_play(sound_get("RI"));
+	 	 sound_play(asset_get("sfx_bird_nspecial"));
+	 	 shake_camera(6,10)
+	 	 spawn_hit_fx(x - 10*spr_dir,y - 55,SC)
+    }
+    
+    if window == 2 {
+        vsp /= 2
+    }
+}
+
 if attack == AT_USPECIAL {
     
     if window == 1 && "ai_target" not in self  {
-    	if window_timer > 8 && !special_down {
-    		window_timer = 40
-    	}
-    	
-    	if window_timer < 40 {
-    	set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -1 * window_timer/3 - 4);
+    	if special_down {
+    	set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -1 * window_timer/3 - 6);
     	set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, window_timer/5 + 3);
     	}
     }
@@ -477,10 +636,12 @@ if attack == AT_USPECIAL {
     }
     
     if window == 4 && free {
-    	if down_pressed {
-    		    	 if vsp < 10 {
+    	if down_down && vsp > -4{
+    	if vsp < 10 {
     	 	spawn_hit_fx(x,y,27)
     	 }
+    	 sound_play(asset_get("sfx_bird_sidespecial_start"));
+    	 set_state(PS_PRATFALL)
     	 vsp = 14
 
     	}
@@ -520,6 +681,7 @@ if attack == AT_NSPECIAL {
 	}
 	
 	if hhalo > 0 {
+	shake_camera(3,8)	
 	set_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE, sprite_get("fstrong_hurt"));
 	hhalo = 0
 	set_attack (AT_EXTRA_1)
@@ -577,7 +739,8 @@ if attack == AT_EXTRA_1 {
 }
 
 if attack == AT_USPECIAL && hhalo > 0 {
-	if window == 4 && vsp > -4 && !hitpause {
+	if window == 4 && !hitpause {
+		shake_camera(2,6)
 		sound_play(sound_get("SpaceCut"));
 		   spawn_hit_fx (x  , y - 55, 304)
 		   	create_hitbox(AT_DSPECIAL , 5 , x + 20*spr_dir , y - 50  );	 
@@ -587,39 +750,23 @@ if attack == AT_USPECIAL && hhalo > 0 {
 	
 }
 
-if attack == AT_DSPECIAL && hhalo > 0 && window == 1{
-	set_attack (AT_EXTRA_2)
-}
+
 
 if attack == AT_EXTRA_2 {
-	if window == 1 {
+
+	if state_timer < 25 {
 		 sound_play(sound_get("SpaceCut2"));
-		hsp = 0
-		vsp /= 2
+       shake_camera(2,2)
 	}
 	
-	if (window == 2 && window_timer > 1){
-		vsp /= 1.02
-        can_jump= true;
-        move_cooldown[AT_DSPECIAL] = 12
-      
-     if "ai_target" in self && !hitpause{
-     	jump_pressed = true
-     }
-    }
+	if state_timer == 1 {
+		 sound_play(sound_get("SpaceCut"));
+	 	 spawn_hit_fx(x - 20*spr_dir,y - 50,305)
+   }
     
     can_fast_fall = false;
     can_move = false;
-         if left_pressed {
-             spr_dir = -1;
-         }
-          if right_pressed {
-             spr_dir = 1;
-         }
-         
-    if special_down {
-    	
-    }     
+
 }
 
 

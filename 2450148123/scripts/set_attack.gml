@@ -218,8 +218,7 @@ if (install)
 				var kbg = get_hitbox_value(attack, f, HG_KNOCKBACK_SCALING);
 				if (get_hitbox_value(attack, f, HG_PROJECTILE_SPRITE) != sprite_get("star_proj"))
 				{
-				set_hitbox_value(attack, f, HG_BASE_KNOCKBACK, kb * 1.25);
-				set_hitbox_value(attack, f, HG_KNOCKBACK_SCALING, kbg * 1.25);
+				set_hitbox_value(attack, f, HG_BASE_KNOCKBACK, kb * 1.5);
 				}
 				
 			}

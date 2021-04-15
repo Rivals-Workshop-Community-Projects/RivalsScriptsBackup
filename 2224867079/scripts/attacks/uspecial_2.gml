@@ -99,10 +99,6 @@ set_hitbox_value(AT_USPECIAL_2, 1, HG_BASE_KNOCKBACK, 12);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_BASE_HITPAUSE, 50);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HITPAUSE_SCALING, 0.1);
-set_hitbox_value(AT_USPECIAL_2, 1, HG_VISUAL_EFFECT, 143);
-set_hitbox_value(AT_USPECIAL_2, 1, HG_VISUAL_EFFECT_X_OFFSET, 10);
-set_hitbox_value(AT_USPECIAL_2, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
-set_hitbox_value(AT_USPECIAL_2, 1, HG_VISUAL_EFFECT, redupb );
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HIT_SFX, sound_get("homerun"));
 
 set_hitbox_value(AT_USPECIAL_2, 2, HG_HITBOX_TYPE, 1);

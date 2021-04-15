@@ -282,8 +282,8 @@ if window == 1 && window_timer == 1 {
             set_hitbox_value(AT_UAIR, 3, HG_WINDOW, 2);
             set_hitbox_value(AT_UAIR, 4, HG_WINDOW, 2);
             if !has_rune("G") {
-                set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 12);
-                set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 10);
+                set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 10);
+                set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 8);
             }
         } else {
             if throwing_wt {
@@ -599,6 +599,14 @@ if attack == AT_TAUNT {
                 sound_stop(sound_get("sans_earrape"));
             }
         }
+    }
+}
+
+//final smash
+if attack == 49 {
+    if window == 1 && window_timer == get_window_value(49, 1, AG_WINDOW_LENGTH) && !hitpause {
+        sound_play(honk_sfx)
+        spawn_hit_fx(x + 70*spr_dir, y-45, 304)
     }
 }
 

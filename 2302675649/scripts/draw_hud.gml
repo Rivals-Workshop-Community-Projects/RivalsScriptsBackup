@@ -403,6 +403,28 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("Added Spectrum alt");
 						break;
+					case 27:
+						AddText("v1.27 - 13 Apr 2021");
+						AddText("");
+						AddText("Drastically reduced momentum from USpec endlag");
+						AddText("");
+						AddText("UAir Final Hitpause 60 -> 30");
+						AddText("UAir Multihit Extra Hitpause 0 -> -1");
+						AddText("UAir Multihit BKB 6 -> 7");
+						AddText("UAir Multihit can now dragdown opponents through platforms properly");
+						AddText("");
+						AddText("Jab cooldown on hit 12 -> 30");
+						AddText("Jab Hitstun multiplier 1 -> 0.6");
+						AddText("");
+						AddText("FSpec horizontal speed after grappling can now be adjusted by holding left or right");
+						AddText("(This means FSpec on aerial opponents can lead to FAir more consistently)");
+						AddText("");
+						AddText("Fixed USpec airdodge cancelling special buffer");
+						AddText("Lonin AI will not use USpec downwards to the blastzone accidentally anymore... probably");
+						AddText("");
+						AddText("Added Swordfighter alt");
+						AddText("Added Slayer of Demons alt");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

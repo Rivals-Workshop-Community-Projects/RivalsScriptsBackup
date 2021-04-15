@@ -33,7 +33,11 @@ if get_gameplay_time() == 64 {
 	sound_play(asset_get("sfx_clairen_hit_strong"))	
 	shake_camera (3,6)
 	visible = true
-	
+	hsp = 3*spr_dir
+	set_attack(AT_FSPECIAL)
+            sound_play( asset_get("sfx_blow_medium3"));
+            window = 7
+            window_timer = 0
 }
 
 if get_gameplay_time() == 89 {

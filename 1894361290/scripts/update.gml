@@ -439,3 +439,66 @@ if fspec_grapple_id != undefined {
 		fspec_grapple_id = undefined;
 	}
 }
+
+//final smash
+if trigger_fs {
+	if fs_scene != 0 {
+		state = PS_LANDING_LAG;
+		has_airdodge = false;
+	}
+	fs_scene_timer++;
+	hsp = 0;
+	vsp = 0;
+	switch fs_scene {
+		case 0:
+		if fs_scene_timer == 60 { fs_scene++; fs_scene_timer = 0; }
+
+		break;
+		case 1:
+		if fs_scene_timer == 60 { fs_scene++; fs_scene_timer = 0; }
+		if fs_scene_timer == 24 sound_play(asset_get("sfx_kragg_rock_shatter"))
+		break;
+		
+		case 2:
+		if fs_scene_timer == 20 { fs_scene++; fs_scene_timer = 0; }
+		break;
+		
+		case 3:
+		if fs_scene_timer == 10 { fs_scene++; fs_scene_timer = 0; }
+		
+		if fs_scene_timer mod 10 == 0 sound_play(honk_sfx, false, false, 1);
+		if fs_scene_timer mod 7 == 0 sound_play(honk_sfx, false, false, 0.7);
+		if fs_scene_timer mod 13 == 0 sound_play(honk_sfx, false, false, 0.5);
+		break;
+		
+		case 4:
+		if fs_scene_timer == 100 { fs_scene++; fs_scene_timer = 0; }
+		if fs_scene_timer mod 10 == 0 sound_play(honk_sfx, false, false, 1);
+		if fs_scene_timer mod 7 == 0 sound_play(honk_sfx, false, false, 0.7);
+		if fs_scene_timer mod 13 == 0 sound_play(honk_sfx, false, false, 0.5);
+		break;
+		
+		case 5:
+		if fs_scene_timer == 30 take_damage(fs_hit_player.player, player, 30);
+		if fs_scene_timer == 80 { fs_scene++; fs_scene_timer = 0; }
+		if fs_scene_timer mod 10 == 0 sound_play(honk_sfx, false, false, 0.4);
+		if fs_scene_timer mod 7 == 0 sound_play(honk_sfx, false, false, 0.2);
+		if fs_scene_timer mod 13 == 0 sound_play(honk_sfx, false, false, 0.1);
+		
+		if fs_scene_timer mod 10 == 0 sound_play(asset_get("sfx_kragg_rock_pillar"), false, false, 0.4, 1.0);
+		if fs_scene_timer mod 7 == 0 sound_play(asset_get("sfx_kragg_rock_pillar"), false, false, 0.2, 0.9);
+		if fs_scene_timer mod 13 == 0 sound_play(asset_get("sfx_kragg_rock_pillar"), false, false, 0.1, 0.8);
+		break;
+		
+		case 6:
+		if fs_scene_timer == 1 create_hitbox(49, 2, x, y)
+		fs_hit_player = undefined;
+		trigger_fs = false;
+		fs_scene = 0;
+		fs_scene_timer = 0;
+		has_airdodge = true;
+		has_walljump = true;
+		djumps = 0;
+		break;
+	}
+}

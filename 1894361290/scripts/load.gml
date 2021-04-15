@@ -137,6 +137,8 @@ sprite_change_offset("kirby_ability", 36, 78);
 sprite_change_offset("kirby_ability_hurt", 36, 78);
 sprite_change_offset("feri_costume_goose", 84, 114);
 
+sprite_change_offset("fs_dash", 40, 78);
+
 if get_player_color(player) == 11 {
     set_victory_theme(sound_get("sans_victory"));
 } else {

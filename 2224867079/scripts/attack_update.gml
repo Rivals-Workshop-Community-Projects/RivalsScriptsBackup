@@ -334,7 +334,7 @@ if (attack == AT_USPECIAL){
 	}
 }
 if (attack == AT_USPECIAL_2){
-	if (window == 2){
+	if (window == 2 && window_timer == 1){
 		if (dotheeffect == true){
 		spawn_hit_fx( x+8, y-10, red_recovery );
 		dotheeffect = false

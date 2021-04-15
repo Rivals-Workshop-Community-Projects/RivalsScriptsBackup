@@ -29,6 +29,11 @@ draw_non = true; //if true, will draw non-sprites like bat and hammer
 fspec_grapple_id = undefined; //fspecial command grab id
 fspec_grapple_hitbox = undefined;
 
+trigger_fs = false; //trigger final smash cutscene
+fs_scene = 0; //different parts of cutscene
+fs_scene_timer = 0; //increment while cutscene plays, resets upon transition to new scene
+fs_hit_player = undefined;
+
 wt_destroyed_timer = 0; //if thrown offstage and destroyed, has a timer before can spawn another one.
 
 aerial_throws = false;

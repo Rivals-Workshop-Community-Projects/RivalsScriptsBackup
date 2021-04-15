@@ -168,7 +168,7 @@ with(stuff_to_teleport[i])
 	
     if(instance_exists(other) && projCheck)
     {
-    var collidedPlayer = collision_rectangle(x-10 + (hsp/2), y- (i == 2 ? 25 : monarch.original_char_height*1.5), x+10 + (hsp/2), y- (i == 2 ? -25 : 5) +(vsp/2), other, false, true);
+    var collidedPlayer = collision_rectangle(x-10 + (hsp/2), y- (i == 2 ? 35 : monarch.original_char_height*1.5), x+10 + (hsp/2), y- (i == 2 ? -35 : 5) +(vsp/2), other, false, true);
     
     
    

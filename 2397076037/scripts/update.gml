@@ -2,7 +2,7 @@
 
 
 if triggered {
-	knockback_adj = 1.3;
+	knockback_adj = 1.2;
 } else {
 	knockback_adj = 0.9;
 }

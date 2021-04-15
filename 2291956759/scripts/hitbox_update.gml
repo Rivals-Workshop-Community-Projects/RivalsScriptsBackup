@@ -256,6 +256,7 @@ if hbox_num == 2 {
 				hitbox_timer = 4*4
 				image_index = 3
 				x -= 10*spr_dir
+				nearbyhitbox.destroyed = true
 	    }
 	}   
 	}

@@ -87,9 +87,6 @@ if attack == AT_NSPECIAL {
     }
     
     if window == 2 && state_timer > 16 {
-        if get_gameplay_time() % 30 == 0 {
-		take_damage (player, -1, 1)
-	    }
         scharge += 3
         specialing = 1
     }
@@ -167,10 +164,6 @@ if attack == AT_FSPECIAL {
         scharge += 2
         specialing = 1
   
-        if get_gameplay_time() % 30 == 0 {
-		take_damage (player, -1, 1)
-	    }
-	
     }
     
     if has_hit && window != 6 {
@@ -384,9 +377,6 @@ if attack == AT_DSPECIAL {
     }
     
      if window == 2 && state_timer > 4 {
-     	if get_gameplay_time() % 30 == 0 {
-		take_damage (player, -1, 1)
-	    }
         scharge += 2
     }
     
@@ -426,7 +416,7 @@ if attack == AT_DSPECIAL {
 
 if attack == AT_USPECIAL {
     
-
+    can_fast_fall = false
     
     
     if move_cooldown[AT_EXTRA_2] < 60 {
@@ -477,9 +467,6 @@ if attack == AT_USPECIAL {
         scharge += 3
         hsp /= 1.1
         vsp += 0.1
-        if get_gameplay_time() % 30 == 0 {
-		take_damage (player, -1, 1)
-	    }
 	    
     }
     

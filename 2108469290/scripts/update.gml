@@ -4,12 +4,16 @@ if get_gameplay_time() < 120 {
 	move_cooldown[AT_NSPECIAL] = 100
 }
 
+
 if !instance_exists(hit_player_obj){
 
 hit_player_obj = self
 
 }
 
+if state != PS_ATTACK_GROUND and state != PS_ATTACK_AIR {
+	move_cooldown[AT_FSPECIAL_2] = 0
+}
 
 
 /// Teleport
@@ -61,6 +65,8 @@ if introtimer = 1 {
 	introtimer = 0
 	hitpause = 0
 	spawn_hit_fx( x, y, SC)
+	hsp = -6 * spr_dir
+	vsp = 0
 	
 	if introhit = 1 {
 		sound_play(asset_get("sfx_abyss_explosion"),false, noone, );
@@ -275,7 +281,7 @@ if state == PS_AIR_DODGE && state_timer < 10{
 /// Nspecial
 
 
-if move_cooldown[AT_TAUNT] > 0  { 
+if move_cooldown[AT_TAUNT_2] > 0  && hhalo <= 0{ 
    move_cooldown[AT_NSPECIAL] = 2	
 }
 
@@ -311,11 +317,7 @@ if state == PS_IDLE or state == PS_WALK or state == PS_IDLE_AIR{
 
 
 	
-initial_dash_speed = 7;
-dash_speed = 6.5
-dash_anim_speed = .28;
-leave_ground_max = 4.5;
-max_jump_hsp = 5;
+
 
 
 
@@ -328,9 +330,44 @@ max_jump_hsp = 5;
 
 
 if hhalo > 0 {
-	set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 3);
+
+walk_anim_speed = .2;
+dash_anim_speed = .4;
+	
+walk_speed = 4;
+walk_accel = 0.4;
+walk_turn_time = 6;
+initial_dash_time = 10;
+initial_dash_speed = 8;
+dash_speed = 7
+
+leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state
+jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
+air_accel = .33;
+		
+move_cooldown[AT_TAUNT_2] = 0
+
+
 } else{
-	set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 9);
+
+walk_anim_speed = .13;
+dash_anim_speed = .28;
+
+walk_speed = 3;
+walk_accel = 0.4;
+walk_turn_time = 6;
+initial_dash_time = 10;
+initial_dash_speed = 6.8;
+dash_speed = 6.2
+
+leave_ground_max = 4.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
+jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
+air_accel = .26;
+
 }
 
 if hhalo > 1 {

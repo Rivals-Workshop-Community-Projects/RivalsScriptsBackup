@@ -20,6 +20,12 @@ teleported = false
 ustrongarticle = false
 ustrongarticlestate = 0
 
+//Galaxy Stuff
+black_screen = false;
+black_screen_timer = 0;
+blood_timer = 0;
+logRed = make_colour_rgb(234, 29, 35);
+
 dotheeffect = true
 
 //Hud Stuff
@@ -83,6 +89,7 @@ red_new_stab_2 = hit_fx_create( sprite_get( "RedNewStab2" ), 17 );
 red_stab_3 = hit_fx_create( sprite_get( "RedStab3" ), 20 );
 red_stab_4 = hit_fx_create( sprite_get( "RedStab_4" ), 20 );
 redupb = hit_fx_create( sprite_get( "UpB_Sweetspot" ), 34 );
+redupb2 = hit_fx_create( sprite_get( "UpB_Sweetspot2" ), 34 );
 blue_recovery = hit_fx_create( sprite_get( "BlueRecovery" ), 8 );
 red_recovery = hit_fx_create( sprite_get( "RedRecovery" ), 8 );
 meffectb = false

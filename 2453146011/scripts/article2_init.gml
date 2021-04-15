@@ -38,6 +38,7 @@ char_height = 100;
 
 // Portal stuff
 player_id.fspecial_obj = self;
+charged = false;
 
 in_portal = false;
 teleported = false;
@@ -45,3 +46,5 @@ last_pcolor = 0;
 portal_timer = 2;
 portal_cooldown = 0;
 portal_afterimage = {x:x,y:y,sprite_index:sprite_index,image_index:image_index,timer:0};
+
+with(player_id) fspec_charged = false;

@@ -6,6 +6,56 @@
 
 if "phone_inited" not in self exit; // dont give the funny error message
 
+if (object_index == oPlayer && !array_equals(phone_offscreen, [])){
+	
+	var empty = 1;
+	
+	for (var i = 0; i < array_length(phone_offscreen); i++){
+		if phone_offscreen[i] != noone{
+			empty = 0;
+			if !instance_exists(phone_offscreen[i]){
+				phone_offscreen[i] = noone;
+			}
+			else with phone_offscreen[i]{
+				var leeway = phone_offscr_leeway;
+				
+				var x_ = x + phone_offscr_x_offset * spr_dir;
+				var y_ = y + phone_offscr_y_offset;
+				
+				var off_l = x_ < view_get_xview() - leeway;
+				var off_r = x_ > view_get_xview() + view_get_wview() + leeway;
+				var off_u = y_ < view_get_yview() - leeway;
+				var off_d = y_ > view_get_yview() + view_get_hview() + leeway;
+				
+				var margin = 34;
+				var idx = noone;
+				
+				if off_l{
+					idx = 0;
+					if off_u idx = 1;
+					if off_d idx = 7;
+				}
+				else if off_r{
+					idx = 4;
+					if off_u idx = 3;
+					if off_d idx = 5;
+				}
+				else if off_u idx = 2;
+				else if off_d idx = 6;
+				
+				if idx != noone{
+					draw_sprite_ext(other.spr_pho_offscreen, idx, clamp(x_ - view_get_xview(), margin, view_get_wview() - margin) - 33, clamp(y_ - view_get_yview(), margin, view_get_hview() - margin) - 33, 1, 1, 0, get_player_hud_color(player), 1);
+					with other shader_start();
+					draw_sprite_ext(phone_offscr_sprite, phone_offscr_index, clamp(x_ - view_get_xview(), margin, view_get_wview() - margin) - 33, clamp(y_ - view_get_yview(), margin, view_get_hview() - margin) - 33, 1, 1, 0, c_white, 1);
+					with other shader_end();
+				}
+			}
+		}
+	}
+	
+	if empty phone_offscreen = [];
+}
+
 if (object_index == asset_get("obj_stage_main") || (object_index == oPlayer && phone_practice && phone.stage_id == noone)){
 	with phone_user_id drawHud();
 }
@@ -30,16 +80,17 @@ if (fps_real) < 60 && "setting_fps_warn" in phone && phone.phone_settings[phone.
 
 // prompt
 
-if phone_online && get_gameplay_time() < 180 draw_debug_text(10, 64, "ONLINE: Press the zero key to enable Fast Graphics.");
+if phone_online && get_gameplay_time() < 300 && get_gameplay_time() % 30 < 25 draw_debug_text(10, 96, "ONLINE: Press the zero key to enable Fast Graphics.");
 
 
 
 // "Taunt!" prompt
 
 if phone.hint_opac > 0{
-	var height = temp_y - 11 + ease_backOut(100, 0, round(phone.hint_opac * 10), 20, 2);
-	textDraw(temp_x + 42 + phone.taunt_hint_x, height, "fName", c_white, 100, 100, fa_right, 1, true, 1, "Taunt!", false);
-	draw_sprite_ext(phone.spr_pho_compatibility_badges, 0, temp_x + 40 + phone.taunt_hint_x, height - 7, 1, 1, 0, c_white, 1);
+	var height = temp_y - 11 + ((phone.hint_opac == 2) ? 0 : ease_backOut(100, 0, round(phone.hint_opac * 10), 20, 2));
+	//textDraw(temp_x + 42 + phone.taunt_hint_x, height + phone.taunt_hint_y, "fName", c_white, 100, 100, fa_right, 1, true, 1, "Taunt!", false); there is no munophone for now
+	textDraw(temp_x + 42 + phone.taunt_hint_x, height + phone.taunt_hint_y, "fName", c_white, 100, 100, fa_right, 1, true, 1, "N/A", false);
+	draw_sprite_ext(phone.spr_pho_compatibility_badges, 0, temp_x + 40 + phone.taunt_hint_x, height + phone.taunt_hint_y - 7, 1, 1, 0, c_white, 1);
 }
 
 
@@ -81,7 +132,9 @@ if phone.state{
 	// Draw phone
 	
 	if !(phone.stage_id != noone && phone.state == 5){
+		if phone.shader with phone.player_id shader_start();
 		drawObj(phone);
+		if phone.shader with phone.player_id shader_end();
 	
 	
 	
@@ -292,7 +345,11 @@ if phone.state{
 	
 	// Draw side display
 	
+	if object_index == oPlayer && phone.shader shader_start();
+	
 	drawObj(phone.side_bar);
+	
+	if object_index == oPlayer && phone.shader shader_end();
 	
 	with phone if (side_bar.state == 2 && app){
 		
@@ -672,7 +729,7 @@ switch(move.type){
 		
 		table_y += biggest_height;
 		
-		if array_length_1d(move.hitboxes) > 1{
+		if array_length_1d(move.hitboxes) > 0{
 		
 			table_y += 20;
 			table_x = origin_x + 10;
@@ -695,7 +752,7 @@ switch(move.type){
 			draw_widths[9] = drawTableItem(app_color, 0, "HPG")[0];
 			drawTableItem(app_color, 0, "Notes");
 			
-			for (i = 1; i < array_length_1d(move.hitboxes); i++){
+			for (i = 0; i < array_length_1d(move.hitboxes); i++){
 			
 				startNewTableRow();
 				
@@ -848,6 +905,8 @@ for (i = 0; i < array_length_1d(arr[cursor].objs); i++){
 	var offset_x = 0;
 	var offset_y = 0;
 	
+	if cur.gimmick == 5 with player_id shader_start();
+	
 	if (cur.type == 0){ // Text
 		
 		var draw_text_width = side_bar.screen_w - 20;
@@ -879,8 +938,7 @@ for (i = 0; i < array_length_1d(arr[cursor].objs); i++){
 			case 3: // scrolling to the right
 				offset_x -= ease_linear(side_bar.screen_w, 0, side_bar.state_timer % 120, 120);
 				break;
-			case 4: // ignore vertical scroll
-				offset_y -= draw_y - draw_h - header_height + sin_thing;
+			case 4: // don't increase scroll
 				break;
 		}
 		
@@ -893,8 +951,6 @@ for (i = 0; i < array_length_1d(arr[cursor].objs); i++){
 				textDraw(draw_x + offset_x - side_bar.screen_w, draw_y + offset_y, "fName", cur.color, 20, draw_text_width, cur.align, 1, false, 1, cur.text, false);
 				break;
 			case 4:
-				last_drawn[1] = -para_margin;
-				cur.side_by_side_exempt = true;
 				break;
 		}
 		
@@ -954,8 +1010,7 @@ for (i = 0; i < array_length_1d(arr[cursor].objs); i++){
 			case 3: // scrolling to the right
 				offset_x -= ease_linear(side_bar.screen_w, 0, side_bar.state_timer % 120, 120);
 				break;
-			case 4: // ignore vertical scroll
-				offset_y -= draw_y - draw_h - header_height + sin_thing;
+			case 4: // don't increase scroll
 				break;
 		}
 		
@@ -967,8 +1022,6 @@ for (i = 0; i < array_length_1d(arr[cursor].objs); i++){
 				draw_sprite_part_ext(cur.sprite, draw_frame, draw_l, draw_t, draw_w, draw_h, draw_x + offset_x - side_bar.screen_w, draw_y + offset_y, cur.xscale, 1, cur.color, 1);
 				break;
 			case 4:
-				draw_h = -para_margin;
-				cur.side_by_side_exempt = true;
 				break;
 		}
 		
@@ -1004,7 +1057,9 @@ for (i = 0; i < array_length_1d(arr[cursor].objs); i++){
 		
 	}
 	
-	draw_y += last_drawn[1] + para_margin;
+	if cur.gimmick != 4 || i == array_length_1d(arr[cursor].objs) - 1 draw_y += last_drawn[1] + para_margin;
+	
+	if cur.gimmick == 5 with player_id shader_end();
 }
 
 draw_y -= draw_y_init;

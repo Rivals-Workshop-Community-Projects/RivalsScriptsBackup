@@ -94,7 +94,7 @@ SetAttack();
 						joy_dir = point_direction(x,y,ai_target.x,ai_target.y);
 						special_down = (ai_target.state == PS_PARRY_START || ai_target.state == PS_PARRY) && ai_target.state_timer <= 6;
 						var dist = point_distance(x,y,ai_target.x+ai_target.hsp,ai_target.y+ai_target.vsp);
-						if (dist > 260 || dist < 180)
+						if (can_shield && has_airdodge && (dist > 260 || dist < 180))
 						{
 							special_down = false;
 							shield_down = true;

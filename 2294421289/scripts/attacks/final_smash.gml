@@ -3,7 +3,6 @@ set_attack_value(49, AG_SPRITE, sprite_get("final_smash"));
 set_attack_value(49, AG_NUM_WINDOWS, 5);
 set_attack_value(49, AG_HAS_LANDING_LAG, 4);
 set_attack_value(49, AG_AIR_SPRITE, sprite_get("final_smash"));
-set_attack_value(49, AG_HURTBOX_SPRITE, sprite_get("final_smash"));
 set_attack_value(49, AG_OFF_LEDGE, 1);
 set_attack_value(49, AG_USES_CUSTOM_GRAVITY, 1);
 

@@ -186,6 +186,49 @@ if(state == PS_AIR_DODGE){
 	}
 }
 
+if (attack == AT_USPECIAL){
+	
+}
+
+if(blood_timer != 0)
+{
+	blood_timer--;
+	
+	if(blood_timer == 0)
+	{
+		if(attack == AT_USPECIAL_2)
+			var bloodfx = spawn_hit_fx(hit_player_obj.x - (0*hit_player_obj.spr_dir),hit_player_obj.y-50,redupb2);
+		else if(attack == AT_USTRONG)
+		{
+			spr_dir*=-1;
+			var bloodfx = spawn_hit_fx(hit_player_obj.x + (spr_dir*40),hit_player_obj.y-120,blood2);
+			spr_dir*=-1;
+		}
+		else if(attack == AT_DSTRONG)
+		{
+			spr_dir*=-1;
+			var bloodfx = spawn_hit_fx(hit_player_obj.x - (60*hit_player_obj.spr_dir),hit_player_obj.y-90,blood);
+			spr_dir*=-1;
+		}
+	    bloodfx.depth = depth - 999;
+	}
+}
+
+// Fstrong galaxy
+if(has_hit_player && (attack == AT_USPECIAL_2 && window == 2))
+{
+	has_hit_player = false;
+	if(hit_player_obj.activated_kill_effect){
+		black_screen = true;
+		blood_timer = 2;
+		
+		hit_player_obj.hitstop +=8;
+		hitstop+=8;
+	}
+}
+
+if(hitpause == false) black_screen = false;
+
 /*
 // roll vfx
 for (var i = 0; i < 6; ++i) if (rollArray[i] != -1 && rollArray[i].rollAlpha > 0) rollArray[i].rollAlpha--;

@@ -19,7 +19,7 @@
 
 */
 
-if ("phone_inited" in self && phone_inited){
+if ("phone_inited" in self && phone_inited && !phone_lightweight){
 
 	/*
 	 * update.gml Code - this runs every frame, edit the below sections as you
@@ -35,9 +35,9 @@ if ("phone_inited" in self && phone_inited){
 	 */
 	
 	phone_custom_debug = [
-		"h",
-		"hh",
-		"hhh"
+		"woag",
+		"woag",
+		"woag"
 		];
 	
 	
@@ -47,6 +47,148 @@ if ("phone_inited" in self && phone_inited){
 	 */
 	 
 	 
+	
+	// Copy Ability
+	
+	if pho_has_copy_power{
+		
+		// Initial swallow
+		
+		if swallowed {
+			
+			swallowed = 0; // don't touch this line please im begging you
+			
+			var copy_spr = sprite_get("copy_sprite");
+			var copy_hrt = sprite_get("copy_hurt");
+			var copy_icn = sprite_get("copy_icon");
+			// add more to transfer other sprites, or sfx
+			
+			with enemykirby{
+				newicon = copy_icn;
+				muno_last_swallowed = other.id;
+				
+				set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
+				set_attack_value(AT_EXTRA_3, AG_SPRITE, copy_spr);
+				set_attack_value(AT_EXTRA_3, AG_AIR_SPRITE, copy_spr);
+				set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 1);
+				set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, copy_hrt);
+				set_attack_value(AT_EXTRA_3, AG_HURTBOX_AIR_SPRITE, copy_hrt);
+				
+				// edit the below (and, indeed, the above!) just like a regular attack script
+				
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 10);
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 2);
+				
+				set_num_hitboxes(AT_EXTRA_3, 1);
+				
+				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 1);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 3);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 8);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, 50);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, -10);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 66);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 75);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 3);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 14);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 90);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 10);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.8);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 12);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 1.0);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_HITSTUN_MULTIPLIER, 1.15);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_DRIFT_MULTIPLIER, 0);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 0);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
+			}
+		}
+		
+		
+		
+		// Update code
+		
+		with oPlayer if "muno_last_swallowed" in self && muno_last_swallowed == other && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_EXTRA_3{
+			// you can treat this like an attack_update.gml for when kirby is using your character's ability
+			
+			// this system avoids conflicts between 2 swallowed chars IF they both use the munophone system for copy abilities.
+		}
+	}
+	
+	
+	
+	// Break the Targets data
+	
+	if pho_has_btt_layout{
+		if get_btt_data { // Get data for Break The Targets
+			course_name = "R-00 Course";
+			// Set the spawn properties
+			respawn_point = [[29,50],[0,0],1];
+			// Set the collision of the solid sprites to precise
+			sprite_change_collision_mask("btt_solid",true, 1, 0, 0, 0, 0, 0 );  
+			room_add(1,[
+			    [ // Each Cell
+			        [0,0], // Cell Coordinates
+			        [
+			        	// Targets
+				        [10, 4, 55, 0, -5, [0, 0, 32, [[0,0],[0,-3]], 0, 0, 0, 0], [0]],
+				        [10, 40, 30.5, 0, -5, [1, 0, 60, [[-10,0],[5,0]], 0, 0, 0, 0], [0]],
+				        [10, 87, 46, 0, -5, [2, 0, 0, 0, 0, 0, 0, 0], [0]],
+				        [10, 52, 44, 0, -5, [3, 0, 0, 0, 0, 0, 0, 0], [0]],
+				        [10, 55, 75, 0, -5, [3, 0, 0, 0, 0, 0, 0, 0], [0]],
+				        [10, 125, 55, 0, -5, [4, 0, 32, [[0,0],[0,-1]], 0, 0, 0, 0], [0]],
+				        // Solid Ground
+				    	[1, 2, 2, 2, 0, [sprite_get("btt_solid"), 0, 0, 0, 0, 0, 0, 0], [0]],
+				    	// Plats
+				    	[1, 46, 49, 1, 0, [sprite_get("btt_plat_64"), 0, 0, 0, 0, 0, 0, 0], [0]],
+				    	[1, 64, 71, 1, 0, [sprite_get("btt_plat_64"), 0, 0, 0, 0, 0, 0, 0], [0]]
+			            ]
+			        ],
+			    // Blastzones
+			    [ // Each Cell
+			        [0,1], // Cell Coordinates
+			        [
+			            [4, 0, 32, 0, 0, [4, 0, 0, 0, 0, 2608, 20, 0], [0,0]]
+			            ]
+			        ],
+			    [
+			        [1,1],
+			        [
+			        	[4, 0, 32, 0, 0, [4, 0, 0, 0, 0, 2608, 20, 0], [0,0]]
+			            ]
+			        ],
+			    [ // Each Cell
+			        [-1,1], // Cell Coordinates
+			        [
+			        	[4, 0, 32, 0, 0, [4, 0, 0, 0, 0, 2608, 20, 0], [0,0]]
+			            ]
+			        ]
+			    ]);
+		}
+	}
+	
+	
+	
+	// Amber
+	
+	if pho_has_amber_love{
+		if amber_startHug{ // Amber will set this bool to true when this player accepts the hug
+		    with amber_herObj{ // Access Amber's player object and set the values
+		        // Set the window values for Amber's hugging. DO NOT change Amber's sprites
+		        // in the attack_values
+		        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
+		        // etc....
+		
+		        // Important. Puts Amber in startup hug state (2).
+		        // Editing this variable not recommended
+		        amberHugState = 2; 
+		    }
+		    // Important. Puts this character in startup hug state (2).
+		    // Editing this variable not recommended
+		    oPlayerHugAmberState = 2;
+		    
+		    // Set this bool back to false so that this doesn't loop
+		    amber_startHug = false;
+		}
+	}
 	
 	exit;
 }
@@ -79,8 +221,8 @@ if ("phone_inited" in self && phone_inited){
  */
 
 // Gameplay-relevant, and codecs because im biased :>
-pho_has_muno_phone = 0;	// MunoPhone support		(should always be 1, obviously...)
-pho_has_trum_codec = 0;	// Trummel & Alto codec
+pho_has_muno_phone = 1;	// MunoPhone support		(should always be 1, obviously...)
+pho_has_trum_codec = 1;	// Trummel & Alto codec
 pho_has_copy_power = 0;	// Kirby Copy Ability
 pho_has_btt_layout = 0;	// Break the Targets stage
 
@@ -112,7 +254,7 @@ pho_has_daro_codec = 0; // Dialogue for the Daroach boss fight
 
 
 if (object_index == asset_get("cs_playerbg_obj")){
-	num_alts = 16; // Number of alt costumes; controls how many appear on the CSS
+	num_alts = 19; // Number of alt costumes; controls how many appear on the CSS
 	exit;
 }
 
@@ -133,8 +275,12 @@ muno_char_name = get_char_info(player, INFO_STR_NAME);	// Name of the character,
 muno_char_icon = get_char_info(player, INFO_ICON);		// CSS icon of the character. You can replace this with an arbitrary sprite, using sprite_get(), and it'll be used in the upper left of the phone's big screen. (Make it the same size pls, thank u)
 
 phone.taunt_hint_x = 0;									// Sideways offset of the "Taunt!" thing that shows in Practice Mode until you've opened the MunoPhone. You can move it sideways if it covers up your HUD elements.
+phone.taunt_hint_y = 0;									// Vertical offset
+phone.shader = 0;										// Whether or not to apply the character's palette to the phone and non-TrainingTown sidebar (change color with alt costumes)
 
-phone.dont_fast = 0;									// Set this to 1, and Fast Graphics will not automatically be set when the FPS dips below 60.
+phone.dont_fast = 0;									// Set to 1, and Fast Graphics will NOT automatically be set when the FPS dips below 60.
+phone_lightweight = 0;									// Set to 1 to disable certain features, possibly improving performance a little bit. See _readme.gml.
+phone.frame_data_loaded = 0;							// Set to 1 to disable the frame data guide, which MIGHT improve performance on bad computers? (This is just a guess. It has no impact on code run during gameplay, but gets rid of a TON of data stored in memory in Practice Mode...)
 
 
 
@@ -147,6 +293,7 @@ phone.dont_fast = 0;									// Set this to 1, and Fast Graphics will not automa
 ╚══════════════════════════════════════════════════════════════════════════════╝
 
 */
+
 with phone{
 	
 	i = 0;
@@ -200,7 +347,8 @@ with phone{
 	 * - 1: Shaking
 	 * - 2: Scrolling left
 	 * - 3: Scrolling right
-	 * - 4: Ignore vertical scroll (always placed at top of screen)
+	 * - 4: Cause this element to not push the subsequent elements downward
+	 * - 5: Cause the character's palette to apply to this element
 	 * 
 	 * Negative gimmick numbers are saved for whatever YOU might need them for!
 	 * Like idk, if you're a coding wizard and figure out something cool to do
@@ -214,16 +362,16 @@ with phone{
 	initTip("NSpecial: Fast Repeat Shots");
 	initTipWords("After shooting a heart with NSpecial, you can fire another shot sooner than you can perform any other action. Rack up damage against a distracted opponent!");
 	if ("spr_nspecial_proj" in player_id) initTipImage_ext(player_id.spr_nspecial_proj, -5, fa_right, 1, c_white, 3, 40, 30, 60, 0);
-	initTipImage(player_id.spr_nspecial, -5, fa_left, 1, c_white, 0);
+	initTipImage_ext(player_id.spr_nspecial, 2, fa_left, 1, c_white, 0, 24, 40, 64, 0);
 	
 	initTip("Shortening the FSpecial");
 	initTipWords("Press the special button again after performing FSpecial to stop the dash prematurely. You'll travel a shorter distance as a mixup.");
 	initTipImage(player_id.spr_fspecial, -5, fa_center, 1, c_white, 3);
 	
-	initTip("USpecial's Cancel");
-	initTipWords("Press shield to cancel the move into pratfall early - an effective way to mix up timing while recovering.");
-	initTipImage(player_id.spr_uspecial, 19, fa_left, 1, c_white, 0);
-	initTipImage(player_id.spr_pratfall, 0, fa_right, 1, c_gray, 0);
+	initTip("USpecial's Two Finishers");
+	initTipWords("Press B again during USpecial's free flight to deliver a powerful finisher whose knockback always sends away from Sandbert. Alternatively, press shield and you'll cancel the move into pratfall - monstrously effective combined with Sandbert's notoriously short pratfall landing lag.");
+	initTipImage(player_id.spr_uspecial, 3, fa_left, 1, c_white, 0);
+	initTipImage(player_id.spr_uspecial, 9, fa_right, 1, c_white, 0);
 	
 	initTip("woag");
 	initTipWords_ext("woag", fa_left, c_red, 0, 0);
@@ -285,41 +433,6 @@ with phone{
 	initTipWords_ext("Chapter 4", fa_center, c_gray, 0, 0);
 	initTipWords("Sandbert is a defender of the colossal Aetherian Forest. Deliberate and loyal, he is one of the infamous Wall Runners who patrol the Rock Wall. From their position atop the Wall, Sandbert and his fellow Runners defend both sides of the rock face and the forest below.");
 	initTipWords("While normally slow because of their massive bodies, Wall Runners can curl up into balls and traverse the Wall at high speeds. Unlike other Wall Runners, Sandbert has the legendary ability to control the earth with his will. When in peril, Sandbert can summon the earth to aid him, and he repairs the Wall when it is under siege.");
-	
-	initTip("even when you scroll");
-	initTipWords("he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows even over text holy freakign crap
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows
-	he follows");
-	initTipImage(player_id.spr_taunt, 3, fa_center, 1, c_white, 4);
 	
 	initTip("Phone Controls");
 	initTipWords("On the Character Select Screen, hold the 0 (zero) key on your keyboard to view the expanded list of Compatibility Icons.");
@@ -666,6 +779,8 @@ if pho_has_trum_codec{
 	 * GIM_SHUT_UP			no chatter sfx
 	 * GIM_HOWL				make the enemy dspecial
 	 * GIM_SHADER			use your char's shaders (palette swaps) for the speaker portrait
+	 * GIM_TEXTBOX			text color             is set to the value of the   spr_custom_trummel_textbox   variable in the player object
+	 * GIM_COLOR			textbox sprite index   is set to the value of the   spr_custom_trummel_color     variable in the player object
 	 * 
 	 * To use multiple gimmicks on a single page, MULTIPLY them together. See
 	 * _readme.gml for examples
@@ -681,7 +796,9 @@ if pho_has_trum_codec{
 	initCodec(0);
 	initCodecPage(SPK_TRUM, 0, 0, "wow is that sandbert with a phone");
 	initCodecPage(SPK_ALTO, 4, 0, "UNBLOCK ME ON FACEBOOK, COWARD");
-	initCodecPage(SPK_SAND, 0, 0, "no");
+	initCodecPage(SPK_SAND, 0, GIM_COLOR, "no");
+	
+	spr_custom_trummel_color = c_red;
 	
 }
 
@@ -708,252 +825,258 @@ if pho_has_steve_dmsg{
 
 
 
-// Feri taunt costume
+if !phone_lightweight{
 
-if pho_has_feri_taunt{
+
+
+	// Feri taunt costume
 	
-	sprite_change_offset("feri_costume", 84, 114);
-	feri_costume = sprite_get("feri_costume");
+	if pho_has_feri_taunt{
+		
+		sprite_change_offset("feri_costume", 84, 114);
+		feri_costume = sprite_get("feri_costume");
+		
+	}
 	
-}
-
-
-
-// Hikaru fakie title
-
-if pho_has_hikaru_fak{
 	
-	Hikaru_Title = "woaf";
 	
-}
-
-
-
-// Rat all-out quote
-
-if pho_has_rat_allout{
+	// Hikaru fakie title
 	
-	personaQuips[10] = "woaf";
+	if pho_has_hikaru_fak{
+		
+		Hikaru_Title = "woaf";
+		
+	}
 	
-}
-
-
-
-// The Chosen One sketch
-
-if pho_has_tco_sketch{
 	
-	tcoart = sprite_get("tco_sketch");
 	
-}
-
-
-
-// Abyss Hime death sprite
-
-if pho_has_ahime_dead{
+	// Rat all-out quote
 	
-	sprite_change_offset("ahime_dead", 0, 0);
-	abyssHime_deathspr = sprite_get("ahime_dead");
+	if pho_has_rat_allout{
+		
+		personaQuips[10] = "woaf";
+		
+	}
 	
-}
-
-
-
-// Fire's taunt
-
-if pho_has_fire_taunt{
 	
-	sprite_change_offset("fire_taunt", 0, 0);
-	fire_taunt = sprite_get("fire_taunt");
-	fire_taunt_duration = 420;
-	fire_taunt_frames = 69;
-	fire_taunt_sound = sound_get("woagf");
-	fire_taunt_sound_frame = 3;
 	
-}
-
-
-
-// Wall-E's radio
-
-if pho_has_wall_e_ost{
+	// The Chosen One sketch
 	
-	walle_taunt_sound = sound_get("wall_e_sound");
-	walle_taunt_type = 1;
+	if pho_has_tco_sketch{
+		
+		tcoart = sprite_get("tco_sketch");
+		
+	}
 	
-}
-
-
-
-// Amber's plushie and hug
-
-if pho_has_amber_love{
 	
-	plushForAmber = sprite_get("amber_plushie");
 	
-	// Amber interaction variables
-	amber_herObj = noone; // The object ID of Amber when she hugs. Amber's own script will set this when the hug is inititated
-	amber_thisHugSprite = sprite_get("sandbert_hug");
-	amber_herHugSprite = sprite_get("amber_hug");
-	amber_startHug = false; // This variable is set true from Amber's scripts
-	amber_thisSpriteInFront = true; // When true, this character's sprite is rendered over Amber's sprite
-	amber_autoTurnToHer = true; // This character will automatically face towards Amber upon hug activatation when true
+	// Abyss Hime death sprite
 	
-	amber_hugStartPos[0] = 42; // The x target offset point (from Amber's pos) where the player should hug Amber at. 
-	amber_hugStartPos[1] = 0; // The y target offset point. Recommended to keep this at 0 for grounded interaction
+	if pho_has_ahime_dead{
+		
+		sprite_change_offset("ahime_dead", 0, 0);
+		abyssHime_deathspr = sprite_get("ahime_dead");
+		
+	}
 	
-	amber_hugExitPos[0] = 42; // The x target offset point (from Amber's pos) where the player stands at when exiting hug state.
-	amber_hugExitPos[1] = 0; // The y target offset point.
 	
-	// The x target offset positions will inherit the character's spr_dir when this is true.
-	// Set this to true for character interactions that face toward each other such as hugging
-	// Set this to false for centered interaction animations
-	amber_useSprDirOffset = true; 
 	
-	amber_hugExitTimer = 30; // How many frames should pass before either player can exit the hug window loop
-	amber_hugExitWindow = 3; // The window to jump to when either player presses a button to exit hug loop
+	// Fire's taunt
 	
-	sprite_change_offset("sandbert_hug", 32, 62);
-	sprite_change_offset("amber_hug", 32, 62);
+	if pho_has_fire_taunt{
+		
+		sprite_change_offset("fire_taunt", 0, 0);
+		fire_taunt = sprite_get("fire_taunt");
+		fire_taunt_duration = 420;
+		fire_taunt_frames = 69;
+		fire_taunt_sound = sound_get("woagf");
+		fire_taunt_sound_frame = 3;
+		
+	}
 	
-}
-
-
-
-// Moonchild music
-
-if pho_has_moon_music{
 	
-	childsupport = true; // this is so sad
 	
-}
-
-
-
-// Agent N codec
-
-if pho_has_agentn_cdc{
+	// Wall-E's radio
 	
-	ncode1 = "line1";
-	ncode2 = "line2";
-	ncode3 = "line3";
+	if pho_has_wall_e_ost{
+		
+		walle_taunt_sound = sound_get("wall_e_sound");
+		walle_taunt_type = 1;
+		
+	}
 	
-}
-
-
-
-// Dracula dialogue
-
-if pho_has_drac_codec{
 	
-	dracula_portrait = sprite_get("drac_portrait");
-	dracula_portrait2 = asset_get("empty_sprite");
-	dracula_portrait3 = asset_get("empty_sprite");
-	var page = 0;
 	
-	// Page 0
-	dracula_speaker[page] = 0;
-	dracula_text[page] = "holy frick";
-	page++;
+	// Amber's plushie and hug
 	
-	// Page 1
-	dracula_speaker[page] = 0;
-	dracula_text[page] = "im dracula";
-	page++;
+	if pho_has_amber_love{
+		
+		plushForAmber = sprite_get("amber_plushie");
+		
+		// Amber interaction variables
+		amber_herObj = noone; // The object ID of Amber when she hugs. Amber's own script will set this when the hug is inititated
+		amber_thisHugSprite = sprite_get("sandbert_hug");
+		amber_herHugSprite = sprite_get("amber_hug");
+		amber_startHug = false; // This variable is set true from Amber's scripts
+		amber_thisSpriteInFront = true; // When true, this character's sprite is rendered over Amber's sprite
+		amber_autoTurnToHer = true; // This character will automatically face towards Amber upon hug activatation when true
+		
+		amber_hugStartPos[0] = 42; // The x target offset point (from Amber's pos) where the player should hug Amber at. 
+		amber_hugStartPos[1] = 0; // The y target offset point. Recommended to keep this at 0 for grounded interaction
+		
+		amber_hugExitPos[0] = 42; // The x target offset point (from Amber's pos) where the player stands at when exiting hug state.
+		amber_hugExitPos[1] = 0; // The y target offset point.
+		
+		// The x target offset positions will inherit the character's spr_dir when this is true.
+		// Set this to true for character interactions that face toward each other such as hugging
+		// Set this to false for centered interaction animations
+		amber_useSprDirOffset = true; 
+		
+		amber_hugExitTimer = 30; // How many frames should pass before either player can exit the hug window loop
+		amber_hugExitWindow = 3; // The window to jump to when either player presses a button to exit hug loop
+		
+		sprite_change_offset("sandbert_hug", 32, 62);
+		sprite_change_offset("amber_hug", 32, 62);
+		
+	}
 	
-	// repeat...
 	
-}
-
-
-
-// Miiverse post
-
-if pho_has_miivs_post{
 	
-	sprite_change_offset("miiverse_post", 60, 30);
-	miiverse_post = sprite_get("miiverse_post");
+	// Moonchild music
 	
-}
-
-
-
-// Mt Dedede title
-
-if pho_has_dede_title{
+	if pho_has_moon_music{
+		
+		childsupport = true; // this is so sad
+		
+	}
 	
-	arena_title = "woag";
-	arena_short_name = "woaf";
 	
-}
-
-
-
-// Soulbound Conflict
-
-if pho_has_soul_title{
 	
-	battle_text = "* woag";
+	// Agent N codec
 	
-}
-
-
-
-// Trial Grounds
-
-if pho_has_been_found{
-
-	sprite_change_offset("trial_grounds", 31, 0);
-	guiltySprite = sprite_get("trial_grounds");
+	if pho_has_agentn_cdc{
+		
+		ncode1 = "line1";
+		ncode2 = "line2";
+		ncode3 = "line3";
+		
+	}
 	
-}
-
-
-
-// Last Resort painting
-
-if pho_has_resort_pic{
 	
-	sprite_change_offset("last_resort", 27, 39);
-	resort_portrait = sprite_get("last_resort");
 	
-}
-
-
-
-// PKMN Stadium battle portraits
-
-if pho_has_pkmn_image{
+	// Dracula dialogue
 	
-	pkmn_stadium_front_img = sprite_get("pkmn_front");
-	pkmn_stadium_back_img = sprite_get("pkmn_back");
-	pkmn_stadium_name_override = "sdkhjfskhgfkslhfglkha";
+	if pho_has_drac_codec{
+		
+		dracula_portrait = sprite_get("drac_portrait");
+		dracula_portrait2 = asset_get("empty_sprite");
+		dracula_portrait3 = asset_get("empty_sprite");
+		var page = 0;
+		
+		// Page 0
+		dracula_speaker[page] = 0;
+		dracula_text[page] = "holy frick";
+		page++;
+		
+		// Page 1
+		dracula_speaker[page] = 0;
+		dracula_text[page] = "im dracula";
+		page++;
+		
+		// repeat...
+		
+	}
 	
-}
-
-
-
-// Daroach dialogue
-
-if pho_has_daro_codec{
 	
-	daroach_portrait = sprite_get("daro_portrait");
-	daroach_portrait2 = asset_get("empty_sprite");
-	daroach_portrait3 = asset_get("empty_sprite");
-	var page = 0;
 	
-	// Page 0
-	daroach_speaker[page] = 0;
-	daroach_text[page] = "holy frick";
-	page++;
+	// Miiverse post
 	
-	// Page 1
-	daroach_speaker[page] = 0;
-	daroach_text[page] = "im dracula";
-	page++;
+	if pho_has_miivs_post{
+		
+		sprite_change_offset("miiverse_post", 60, 30);
+		miiverse_post = sprite_get("miiverse_post");
+		
+	}
 	
-	// repeat...
+	
+	
+	// Mt Dedede title
+	
+	if pho_has_dede_title{
+		
+		arena_title = "woag";
+		arena_short_name = "woaf";
+		
+	}
+	
+	
+	
+	// Soulbound Conflict
+	
+	if pho_has_soul_title{
+		
+		battle_text = "* woag";
+		
+	}
+	
+	
+	
+	// Trial Grounds
+	
+	if pho_has_been_found{
+	
+		sprite_change_offset("trial_grounds", 31, 0);
+		guiltySprite = sprite_get("trial_grounds");
+		
+	}
+	
+	
+	
+	// Last Resort painting
+	
+	if pho_has_resort_pic{
+		
+		sprite_change_offset("last_resort", 27, 39);
+		resort_portrait = sprite_get("last_resort");
+		
+	}
+	
+	
+	
+	// PKMN Stadium battle portraits
+	
+	if pho_has_pkmn_image{
+		
+		pkmn_stadium_front_img = sprite_get("pkmn_front");
+		pkmn_stadium_back_img = sprite_get("pkmn_back");
+		pkmn_stadium_name_override = "sdkhjfskhgfkslhfglkha";
+		
+	}
+	
+	
+	
+	// Daroach dialogue
+	
+	if pho_has_daro_codec{
+		
+		daroach_portrait = sprite_get("daro_portrait");
+		daroach_portrait2 = asset_get("empty_sprite");
+		daroach_portrait3 = asset_get("empty_sprite");
+		var page = 0;
+		
+		// Page 0
+		daroach_speaker[page] = 0;
+		daroach_text[page] = "holy frick";
+		page++;
+		
+		// Page 1
+		daroach_speaker[page] = 0;
+		daroach_text[page] = "im dracula";
+		page++;
+		
+		// repeat...
+		
+	}
 	
 }
 

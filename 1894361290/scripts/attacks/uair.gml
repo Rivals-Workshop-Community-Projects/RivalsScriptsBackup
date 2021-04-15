@@ -6,12 +6,12 @@ set_attack_value(AT_UAIR, AG_HURTBOX_SPRITE, sprite_get("uair_hurt"));
 
 set_attack_value(AT_UAIR, AG_NUM_WINDOWS, 4);
 
-set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_UAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
-set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 8);
+set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 6);
 
 set_window_value(AT_UAIR, 2, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_UAIR, 2, AG_WINDOW_ANIM_FRAMES, 2);

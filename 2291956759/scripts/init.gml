@@ -16,6 +16,8 @@ gotink = 0
 isyellow = 0
 summon = 0
 
+attacking = false
+cheapmode = 0
 
 zettachoose = 0
 alexchoose = 0

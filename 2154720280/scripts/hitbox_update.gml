@@ -144,12 +144,19 @@ if attack == AT_DSPECIAL && hbox_num < 4 && hitbox_timer < 60 {
 if attack == AT_DSPECIAL && hbox_num == 1 && !free && player_id.milkpizz != 1  {
 	destroyed = 1 
 	vsp += 0.1
+	spawn_hit_fx( x  , y , 156 )
 	spawn_hit_fx( x  , y , 195 )
     	sound_play(sound_get("explosionshake"));
     	create_hitbox(AT_DSPECIAL , 2 , x , y );
 	
 }
 
+if attack == AT_DSPECIAL && hbox_num == 2 {
+	if hitbox_timer == 5 {
+		image_xscale *= 1.4
+		image_yscale *= 1.4
+	}
+}
 
 
 if attack == AT_DSPECIAL && hbox_num == 3 {

@@ -222,13 +222,13 @@ draw_sprite(sprite_get("soa_badge"), 0, temp_x + 160, temp_y-100 + offset-4)
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
-draw_text_color(x + 10, y - 6, "Version 1.56", c_white, c_white, c_white, c_white, 1);
+draw_text_color(x + 10, y - 6, "Version 1.61", c_white, c_white, c_white, c_white, 1);
 
 // Date Display
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_right);
 draw_set_valign(fa_top);
-draw_text_color(x + 210, y - 6, "March 29, 2021", c_white, c_white, c_white, c_white, 1);
+draw_text_color(x + 210, y - 6, "April 13, 2021", c_white, c_white, c_white, c_white, 1);
 
 // Border Rectangle Yo!
 draw_rectangle_color(temp_x, temp_y + 4, temp_x + 40 + 10 * alts, temp_y + 12, c_black, c_black, c_black, c_black, false);
@@ -263,13 +263,14 @@ if (image_alpha == 0 && position == 0){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 0 Secret Alts: Development Shit
 	draw_text_color(temp_x, temp_y, "Artist of Seer (Seer) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Sketchy Origins (Sketch Colors) = Left", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Golden Blues (Placeholder Pallet) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Development Shit", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 6, "Voidborn (Dragou Alt) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Sketchy Origins (Sketch Colors) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Golden Blues (Placeholder Pallet) = Up", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Development Shit", c_white, c_white, c_white, c_white, 1);	
 }
 
 // -- C1 Variations -- //
@@ -279,13 +280,14 @@ if (image_alpha == 0 && position == 1){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 1 Secret Alts
-	draw_text_color(temp_x, temp_y, "Particle Agitator (Mal) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Neo Samurai (Lonin) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Mad Dog (Azrael) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Human Strength", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y, "Amethyst Adventurer  (Nate) = Taunt", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 6, "Particle Agitator (Mal) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Neo Samurai (Lonin) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Mad Dog (Azrael) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Human Strength", c_white, c_white, c_white, c_white, 1);	
 	
 }
 
@@ -296,13 +298,14 @@ if (image_alpha == 0 && position == 2){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 2 Secret Alts
 	draw_text_color(temp_x, temp_y, "Shocking Rodent (Pichu) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Death Perception (Ryougi) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Metal Vampir (Mira) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: A Thousand Cuts", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 6, "Hatred Install (Painwheel) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Death Perception (Ryougi) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Metal Vampir (Mira) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: A Thousand Cuts", c_white, c_white, c_white, c_white, 1);	
 	
 }
 
@@ -313,13 +316,14 @@ if (image_alpha == 0 && position == 3){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 3 Secret Alts
 	draw_text_color(temp_x, temp_y, "Heaven Chaser (DIO) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Stardust Crusader (Jotaro) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Average Shmuck (Bob) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: The World", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 6, "Stardust Crusader (Jotaro) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Golden Wind (Giorno) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Average Shmuck (Bob) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: The World", c_white, c_white, c_white, c_white, 1);	
 }
 
 // -- C4 Variations -- //
@@ -329,13 +333,14 @@ if (image_alpha == 0 && position == 4){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 4 Secret Alts
 	draw_text_color(temp_x, temp_y, "Dragon Install (Sol) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Prideful Lion (Leo) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Void Sacrifice (Scaryami) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Heavy and Metal", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 6, "Highwind Blade (Slashe) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Prideful Lion (Leo) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Void Sacrifice (Scaryami) = Up", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Heavy and Metal", c_white, c_white, c_white, c_white, 1);	
 }
 
 // -- C5 Variations -- //
@@ -345,13 +350,14 @@ if (image_alpha == 0 && position == 5){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 5 Secret Alts
 	draw_text_color(temp_x, temp_y, "Infernal Punk (Amvira) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Gun Slinger (Darm) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Call Shot (Otto) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Tough Punks", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 6, "Fire Starter (Starter) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Gun Slinger (Darm) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Call Shot (Otto) = Up", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Tough Punks", c_white, c_white, c_white, c_white, 1);	
 }
 
 // -- C6 Variations -- //
@@ -361,13 +367,14 @@ if (image_alpha == 0 && position == 6){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 6 Secret Alts
 	draw_text_color(temp_x, temp_y, "Cheery Secretary (Isabelle) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Hunter's Eyes (Naoto) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Morion Black (Hilda) = Upk", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Bloodthirsty", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 6, "Slapstick Comedy (Bonby) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Hunter's Eyes (Naoto) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Morion Black (Hilda) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Bloodthirsty", c_white, c_white, c_white, c_white, 1);	
 }
 
 // -- C7 Variations -- //
@@ -377,13 +384,14 @@ if (image_alpha == 0 && position == 7){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 7 Secret Alts
-	draw_text_color(temp_x, temp_y, "Dark Heart (Ralsei) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Berserker (Susie) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Chosen One (Kris) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Lightners", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y, "Metamorphosis (Jevil) = Taunt", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 6, "Dark Heart (Ralsei) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Berserker (Susie) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Chosen One (Kris) = Up", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Lightners", c_white, c_white, c_white, c_white, 1);	
 }
 
 // -- C8 Variations -- //
@@ -393,13 +401,14 @@ if (image_alpha == 0 && position == 8){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 8 Secret Alts
 	draw_text_color(temp_x, temp_y, "Fire Savior (Clairen) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Future Mercenary (Penny) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Flaming Sentry (Exetior) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Blaze of Glory", c_white, c_white, c_white, c_white, 1);		
+	draw_text_color(temp_x, temp_y - 6, "Quirky Delivery (R-00) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Future Mercenary (Penny) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Flaming Sentry (Exetior) = Up", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Blaze of Glory", c_white, c_white, c_white, c_white, 1);	
 }
 
 // -- C9 Variations -- //
@@ -409,13 +418,14 @@ if (image_alpha == 0 && position == 9){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 9 Secret Alts
-	draw_text_color(temp_x, temp_y, "Genocide (Chara) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Fallen Child (Frisk) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Puzzling Fiend (Papyrus) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: A Beautiful Day", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y, "Vapor Grid (Vaporwave) = Taunt", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 6, "Genocide (Chara) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Fallen Child (Frisk) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Puzzling Fiend (Papyrus) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: A Beautiful Day", c_white, c_white, c_white, c_white, 1);
 }
 
 // -- C10 Variations -- //
@@ -425,13 +435,14 @@ if (image_alpha == 0 && position == 10){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 9 Secret Alts
 	draw_text_color(temp_x, temp_y, "Misty Swordmaster (Wolfgang) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Bloody Ronin (Nagoriyuki) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Kamui (Giovanna) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Smell of the Game", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 6, "P O W E R (Vergil) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Bloody Ronin (Nagoriyuki) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Kamui (Giovanna) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Smell of the Game", c_white, c_white, c_white, c_white, 1);
 }
 
 // -- C11 Variations -- //
@@ -441,13 +452,14 @@ if (image_alpha == 0 && position == 11){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Retro
 	draw_text_color(temp_x, temp_y, "Mark of the Wolf (Rock) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Joker (Oswald) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Unbridled Instinct (Iori) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: King of Fighters", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 6, "Pumped Up (Shen) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Joker (Oswald) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Unbridled Instinct (Iori) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: King of Fighters", c_white, c_white, c_white, c_white, 1);
 }
 
 // -- C12 Variations -- //
@@ -457,13 +469,14 @@ if (image_alpha == 0 && position == 12){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 12 Secret Alts
 	draw_text_color(temp_x, temp_y, "Bone Dry (Marie) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Astral Medium (Astra) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Clumsy Elemental (Yuuto) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Star Children", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 6, "Licht (Ferry) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Astral Medium (Astra) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Clumsy Elemental (Yuuto) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Star Children", c_white, c_white, c_white, c_white, 1);
 }
 
 // -- C13 Variations -- //
@@ -473,13 +486,14 @@ if (image_alpha == 0 && position == 13){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 13 Secret Alts
 	draw_text_color(temp_x, temp_y, "Fullmetal (Edward) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Sacred Sniper (Hime) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Kind Illusionist (Hikaru) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Philosphers Stone", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 6, "Undying Fox (Ban) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Sacred Sniper (Hime) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Kind Illusionist (Hikaru) = Up", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Philosphers Stone", c_white, c_white, c_white, c_white, 1);	
 }
 
 // -- C14 Variations -- //
@@ -490,13 +504,14 @@ if (image_alpha == 0 && position == 14){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 14 Secret Alts
 	draw_text_color(temp_x, temp_y, "Cunning Snake (Hazama) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Who is SG? (SG) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Fool or Clown (Adachi) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Deceptively Dangerous", c_white, c_white, c_white, c_white, 1);		
+	draw_text_color(temp_x, temp_y - 6, "Maddened Combatant (Tricky) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Who is SG? (SG) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Fool or Clown (Adachi) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Deceptively Dangerous", c_white, c_white, c_white, c_white, 1);
 }
 
 
@@ -507,13 +522,14 @@ if (image_alpha == 0 && position == 15){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 15 Secret Alts
 	draw_text_color(temp_x, temp_y, "Degraded Mentor (Giers) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Drumming Frenzy (Don-chan) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "CROWNED (Magalor) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: World Enders", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 6, "King of Evil (Ganondorf) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Drumming Frenzy (Don-chan) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "CROWNED (Magalor) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: World Enders", c_white, c_white, c_white, c_white, 1);
 }
 // -- C16 Variations -- //
 if (image_alpha == 0 && position == 16){
@@ -522,13 +538,14 @@ if (image_alpha == 0 && position == 16){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 16 Secret Alts: Development Shit
 	draw_text_color(temp_x, temp_y, "Dynamic Double (Delta) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Reflective Ocean (Lapis) = Left", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Eldrich Dancer (Vel) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Blood and Fire", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 6, "Time Traveler (Patricia) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Reflective Ocean (Lapis) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Eldrich Dancer (Vel) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Blood and Fire", c_white, c_white, c_white, c_white, 1);
 }
 
 // -- C17 Variations -- //
@@ -538,13 +555,14 @@ if (image_alpha == 0 && position == 17){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 17Secret Alts
 	draw_text_color(temp_x, temp_y, "Pruding Songsmith (Pomme) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Groovy Teacher (Marissa) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Galaxy Buster (Kitsuga) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Timely Melody", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 6, "Dusty Sonata (Tempo) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Groovy Teacher (Marissa) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Galaxy Buster (Kitsuga) = Up", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Timely Melody", c_white, c_white, c_white, c_white, 1);	
 	
 }
 
@@ -555,13 +573,14 @@ if (image_alpha == 0 && position == 18){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 18 Secret Alts
 	draw_text_color(temp_x, temp_y, "ERROR (Mojibake) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Dune Song (Coda) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Ominous Maw (Hosha) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Shining Steel", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 6, "Magnetic Puul (Lode & Puul) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Dune Song (Coda) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Ominous Maw (Hosha) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Shining Steel", c_white, c_white, c_white, c_white, 1);	
 	
 }
 
@@ -572,13 +591,14 @@ if (image_alpha == 0 && position == 19){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 19 Secret Alts
 	draw_text_color(temp_x, temp_y, "Moonlit Lily (Ao) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Crow Bar (Natsumi) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Light Bringer (Lumina) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Starlit Field", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 6, "Angelic Child (Hana) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Crow Bar (Natsumi) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Light Bringer (Lumina) = Up", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Starlit Field", c_white, c_white, c_white, c_white, 1);	
 }
 
 // -- C20 Variations -- //
@@ -588,13 +608,14 @@ if (image_alpha == 0 && position == 20){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 20 Secret Alts
 	draw_text_color(temp_x, temp_y, "Starry Artist (Spritestar) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Wind Burst (Ash) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Inertial Monster (Epinel) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Brawl of the Century", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 6, "Smoky Berserker (Rykenburn) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Wind Burst (Ash) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Inertial Monster (Epinel) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Brawl of the Century", c_white, c_white, c_white, c_white, 1);	
 }
 
 // -- C21 Variations -- //
@@ -604,13 +625,14 @@ if (image_alpha == 0 && position == 21){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 21 Secret Alts
 	draw_text_color(temp_x, temp_y, "Heartbreaker (Heartbrake) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Loving Athlete (Cupcake) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Essence Weaver (Siren) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Drifting Love", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 6, "Pins and Needles (Tomo) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Loving Athlete (Cupcake) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Essence Weaver (Siren) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Drifting Love", c_white, c_white, c_white, c_white, 1);
 }
 
 // -- C22 Variations -- //
@@ -620,13 +642,14 @@ if (image_alpha == 0 && position == 22){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 22 Secret Alts
-	draw_text_color(temp_x, temp_y, "Techno Rat (Linz) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Thunderstruck (Nial) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Ace of Spades (Lucy) = Upk", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Lost Concepts", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y, "Spirit Jester (Dazz) = Taunt", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 6, "Techno Rat (Linz) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Thunderstruck (Nial) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Ace of Spades (Lucy) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Lost Concepts", c_white, c_white, c_white, c_white, 1);	
 }
 
 // -- C23 Variations -- //
@@ -636,13 +659,14 @@ if (image_alpha == 0 && position == 23){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 7 Secret Alts
 	draw_text_color(temp_x, temp_y, "Phantom Ranger (Gustav) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Steamy Tutor (Hodan) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Monarch Wings (Monarch) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Elusive Masters", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 6, "Rocking Shadow (Domenica) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Steamy Tutor (Hodan) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Monarch Wings (Monarch) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Elusive Masters", c_white, c_white, c_white, c_white, 1);	
 }
 
 // -- C24 Variations -- //
@@ -652,13 +676,14 @@ if (image_alpha == 0 && position == 24){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 8 Secret Alts
 	draw_text_color(temp_x, temp_y, "Creator of Giik (Giik) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Pie Flavored (Amarelle) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Falling Spores (Mycolich) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Quirky Inventiveness", c_white, c_white, c_white, c_white, 1);		
+	draw_text_color(temp_x, temp_y - 6, "Unknown Omen (Synne) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Pie Flavored (Amarelle) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Falling Spores (Mycolich) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Quirky Inventiveness", c_white, c_white, c_white, c_white, 1);	
 }
 
 // -- C25 Variations -- //
@@ -668,13 +693,14 @@ if (image_alpha == 0 && position == 25){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 25 Secret Alts
 	draw_text_color(temp_x, temp_y, "Sandy Artillery (Colonel Brach) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Scarlet Detective (Sango) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Fog Wanderer (Cirra) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Treasured Figments", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 6, "Gas Passer (Stinker) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Scarlet Detective (Sango) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Fog Wanderer (Cirra) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Treasured Figments", c_white, c_white, c_white, c_white, 1);
 }
 
 // -- C26 Variations -- //
@@ -684,13 +710,14 @@ if (image_alpha == 0 && position == 26){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 26 Secret Alts
 	draw_text_color(temp_x, temp_y, "Sea Scoundrel (Buch) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Purity Sage (Torga) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Cloud Dandy (T&A) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Calm Ocean", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 6, "Large Medium (Valkyrie) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Purity Sage (Torga) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Cloud Dandy (T&A) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Calm Ocean", c_white, c_white, c_white, c_white, 1);
 }
 
 // -- C27 Variations -- //
@@ -700,13 +727,14 @@ if (image_alpha == 0 && position == 27){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 27 Secret Alts
 	draw_text_color(temp_x, temp_y, "Shifting Abyss (???) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Infinite Space (Suitcase) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Corrupted Hunter (Selene) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Unsettling Oddities", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 6, "STATIC (Tamat) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Infinite Space (Suitcase) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Corrupted Hunter (Selene) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Unsettling Oddities", c_white, c_white, c_white, c_white, 1);
 }
 
 // -- C28 Variations -- //
@@ -716,13 +744,14 @@ if (image_alpha == 0 && position == 28){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 28 Secret Alts
 	draw_text_color(temp_x, temp_y, "Karmic Justice (Fuki) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Burning Enforcer (Katie) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "King of Frost (Elice) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: WRONG place", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 6, "Night Walker (Bat Bat) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Burning Enforcer (Katie) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "King of Frost (Elice) = Up", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: WRONG place", c_white, c_white, c_white, c_white, 1);	
 }
 
 // -- C29 Variations -- //
@@ -732,13 +761,14 @@ if (image_alpha == 0 && position == 29){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 29 Secret Alts
 	draw_text_color(temp_x, temp_y, "Spirit of Combat (Ase) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Chaloric Destroyer (Nolan) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Soul Flame (Alex) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Old Spirits", c_white, c_white, c_white, c_white, 1);	
+	draw_text_color(temp_x, temp_y - 6, "Thistle Wind (Ceae) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Chaloric Destroyer (Nolan) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Soul Flame (Alex) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Old Spirits", c_white, c_white, c_white, c_white, 1);
 }
 
 // -- C30 Variations -- //
@@ -749,13 +779,14 @@ if (image_alpha == 0 && position == 30){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 30 Secret Alts
-	draw_text_color(temp_x, temp_y, "Anchored Caster (Tora) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Rotting Sanity (Crackers) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Wisp Drifter (Lyca) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Malevolent Tendencies", c_white, c_white, c_white, c_white, 1);		
+	draw_text_color(temp_x, temp_y, "Explosive Expert (Kaboom) = Taunt", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 6, "Anchored Caster (Tora) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Rotting Sanity (Crackers) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Wisp Drifter (Lyca) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Malevolent Tendencies", c_white, c_white, c_white, c_white, 1);
 }
 
 
@@ -766,11 +797,12 @@ if (image_alpha == 0 && position == 31){
 	draw_set_valign(fa_top);
 	
 	// Background Rectangle
-	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 155, temp_y - 20, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(temp_x, temp_y + 6, temp_x + 160, temp_y - 26, c_black, c_black, c_black, c_black, false);
 
 	// Color 31 Secret Alts
 	draw_text_color(temp_x, temp_y, "Hopeful Night (BLM Pallet) = Taunt", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 6, "Slipstream (Zephrie) = Down", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 12, "Frozen Heart (Diamond) = Up", c_white, c_white, c_white, c_white, 1);
-	draw_text_color(temp_x, temp_y - 18, "Secret Colors: Seeds of Pride", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 6, "Transition Period (Trans Right) = Attack", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 12, "Slipstream (Zephrie) = Down", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 18, "Frozen Heart (Diamond) = Up", c_white, c_white, c_white, c_white, 1);
+	draw_text_color(temp_x, temp_y - 24, "Secret Colors: Seeds of Pride", c_white, c_white, c_white, c_white, 1);
 }

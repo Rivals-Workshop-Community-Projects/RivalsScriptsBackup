@@ -8,7 +8,7 @@ set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
 
 
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 22);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_spin"));
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 0);
@@ -40,8 +40,8 @@ set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 20);
-set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_SFX, asset_get("sfx_ori_glide_end"));

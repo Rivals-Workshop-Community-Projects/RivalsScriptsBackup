@@ -2,25 +2,21 @@
 
 set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
 
-if introhit = 0 {
-	introhit = -1
-}
-intro = 1
 lockon = 0
 lockontime = 180
 fcharge = 0
-move_cooldown[AT_NSPECIAL] = 80
+intro = 1
 
 move_cooldown[AT_FSPECIAL] = 0
 move_cooldown[AT_USPECIAL] = 0 	
 move_cooldown[AT_DSPECIAL] = 0	
 
 
-			with (asset_get("pHitBox")) {
+with (asset_get("pHitBox")) {
 if(player_id == other.id) {
     destroyed = true;
 }
-			}
+}
 			
 			
 			

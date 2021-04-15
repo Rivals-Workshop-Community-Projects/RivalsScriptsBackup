@@ -48,7 +48,7 @@ dash_stop_percent = .35; //the value to multiply your hsp by when going into idl
 ground_friction = .7;
 moonwalk_accel = 1.4;
 
-jump_start_time = 4;
+jump_start_time = 5;
 jump_speed = 10;
 jump_frames = 8;
 short_hop_speed = 6;

@@ -1,3 +1,5 @@
+init_shader();
+
 hurtbox_spr = asset_get("ex_guy_hurt_box");
 crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;

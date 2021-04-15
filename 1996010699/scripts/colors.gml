@@ -33,8 +33,8 @@ set_color_profile_slot( 2, 3, 58, 210, 228 ); //CRYSTAL
 
 // 117
 set_color_profile_slot( 3, 0, 105, 118, 83 ); //CASE
-set_color_profile_slot( 3, 1, 92, 92, 92 ); //WHEELS
-set_color_profile_slot( 3, 2, 240, 153, 22 ); //CHEST
+set_color_profile_slot( 3, 1, 240, 153, 22 ); //WHEELS
+set_color_profile_slot( 3, 2, 92, 92, 92 ); //CHEST
 set_color_profile_slot( 3, 3, 58, 210, 228 ); //CRYSTAL
 
 // business 

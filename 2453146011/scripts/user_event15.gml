@@ -385,7 +385,7 @@ with phone{
 	
 	Hitting someone with this blast will a measely one percent, but swap you and your opponents position after a white flash and tiny bit of hitpause. Your opponent wont be in hitstun at all (Neither will you), so you can both immedietly act, but this is a super funny tool for offstage plays and general neutral shenanigans. 
 	
-	The butterfly can also go through portals.");
+	The butterfly can also go through portals. Sending it through a portal will charge it, stunning opponents it hits afterwards.");
 	initTipImage(player_id.spr_fspecial_proj, -3, fa_center, 1, c_white, 3);
 	
 	initTip("Up Special: Teleport");
@@ -393,7 +393,9 @@ with phone{
 
 	Jokes aside, this move is a fast teleport that puts you into pratfall afterward if used in the air. However, if you buffer an attack (Other than Up Special), you'll do it before going into pratfall. Additionally, landing during the move will also cancel any landing lag. If used from the ground state, you dont go into pratfall at all, which makes it super good in neutral.
 
-	One thing to note, however, is that you still have a hurtbox during this move, so you can easily be hit out of it if the opponent knows its coming. It also has 0 active hitbox.");
+	One thing to note, however, is that you still have a hurtbox during this move, so you can easily be hit out of it if the opponent knows its coming. It also has 0 active hitbox.
+	
+	Using this move through a portal will create a stun hitbox when yo re-appear.");
 	initTipImage(player_id.spr_uspecial, -3, fa_center, 1, c_white, 0);
 	
 	initTip("Down Special: Rift Knife");
@@ -403,7 +405,7 @@ with phone{
 	
 	If your opponent is in hitstun and has the knife in them when the timer runs out, they will get put in plasma stun when you teleport!
 	
-	The Rift Knife can also go through portals. ");
+	The Rift Knife can also go through portals. Throwing it through a portal will charge it, making it stun nearby foes when activated!");
 	initTipImage(player_id.spr_dspecial, -4, fa_center, 1, c_white, 0);
 	
 	initTip("Up Air");
@@ -565,6 +567,8 @@ with self{
 	
 	
 	initCheat("Infinite Portal Charges", "infiniteCharges", [0, 1], ["off", "on"], "No limit on portal uses");
+	initCheat("Enable Idle Tweak Sounds", "idleSounds", [0, 1], ["off", "on"], "Enables some sound effects for idle tweaks");
+	initCheat("Gatling", "canGatle", [0, 1], ["off", "on"], "Enables a cancel into ustrong from dash attack after landing the first hit");
 	
 	
 }

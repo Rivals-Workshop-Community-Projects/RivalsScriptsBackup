@@ -5,9 +5,25 @@ if (actionMeterStatus == 1) {actionMeterFill+= 0.15;}
 actionMeterFill = clamp(actionMeterFill, 0, 200);
 
 if (actionMeterFill > 199 && playedMeterSfx == 0) {
-	sound_play(sound_get("itemget"));
+	sound_play(asset_get("mfx_star"));
 	playedMeterSfx = 1;
+	outlineR = 255;
+	outlineG = 128;
+	outlineB = 255;
 }
+
+if (outlineB > 0) {
+	outlineR -= 20;
+	outlineG -= 10;
+	outlineB -= 20;	
+}
+
+if (outlineR < 0) {outlineR = 0;}
+if (outlineG < 0) {outlineG = 0;}
+if (outlineB < 0) {outlineB = 0;}
+
+outline_color = [ outlineR, outlineG, outlineB ];
+init_shader();
 
 if (actionMeterFill < 199) {
 	playedMeterSfx = 0;

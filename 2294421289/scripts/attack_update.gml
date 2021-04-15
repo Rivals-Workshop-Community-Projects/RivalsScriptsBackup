@@ -320,3 +320,62 @@ if attack == 49
   }
 }
 
+//Alternative cosmetics effects with Alt colors
+
+//Normal, Scourge, and Blue Sonic
+
+if (get_player_color( player ) == 0) or (get_player_color( player ) == 5) or (get_player_color( player ) == 7) 
+{
+  var effect = 196;
+  set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, effect);
+  set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, effect);
+  set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, effect);
+}
+
+//Fire Sonic
+if (get_player_color( player ) == 1)
+{
+  var effect = 253;
+  set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, effect);
+  set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, effect);
+  set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, effect);
+}
+
+//Dark spine
+if (get_player_color( player ) == 2)
+{
+  var effect = 204;
+  set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, effect);
+  set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, effect);
+  set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, effect);
+}
+
+//Shadow
+if (get_player_color( player ) == 3)
+{
+  var effect = 129;
+  set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, effect);
+  set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, effect);
+  set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, effect);
+}
+
+//Blaze
+if (get_player_color( player ) == 4)
+{
+  var effect = 148;
+  set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, effect);
+  set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, effect);
+  set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, effect);
+}
+
+//Batman
+if (get_player_color( player ) == 6)
+{
+  var effect = 197;
+  set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, effect);
+  set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, effect);
+  set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, effect);
+}
+
+
+

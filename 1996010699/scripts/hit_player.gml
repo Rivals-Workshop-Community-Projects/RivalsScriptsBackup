@@ -20,24 +20,6 @@ if (my_hitboxID.attack==AT_FSPECIAL && my_hitboxID.hbox_num == 1){
 	window_timer = 0;
 }
 
-if (my_hitboxID.attack==AT_BAIR){
-	if(my_hitboxID.hbox_num != 2){
-		has_hit = false;
-		if(item[25,3] == 1){
-			var randX = 128 - random_func(0, 256, true);
-			var randY = 64 - random_func(0, 128, true);
-		
-			set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, randX);
-			set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, randY);
-		}
-	} else {
-		sound_stop(asset_get("sfx_ell_small_missile_ground"));
-		old_hsp = (spr_dir * bairHSP);
-		old_vsp = bairVSP;
-	}
-}
-	
-
 if(item[14, 7] == false && item[14, 3] == 0 && my_hitboxID.attack==AT_DSPECIAL){
 	achieveUnlock(14);
 }

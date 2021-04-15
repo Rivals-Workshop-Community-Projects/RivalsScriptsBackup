@@ -99,7 +99,7 @@ wave_land_adj = 1.15;
 
         reset_attack_value(AT_USTRONG, AG_SPRITE);
         reset_hitbox_value(AT_USTRONG, 6, HG_BASE_HITPAUSE);
-       	reset_hitbox_value(AT_USTRONG, 7, HG_BASE_KNOCKBACK);
+       	reset_hitbox_value(AT_USTRONG, 7, HG_KNOCKBACK_SCALING);
        	reset_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT);
 		reset_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT);
 		reset_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT);
@@ -155,7 +155,11 @@ ground_friction = 0.25;
     break;
     //LEVEL 3
     case 3:
-           
+    
+    
+       set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrong_mud"));
+       set_hitbox_value(AT_USTRONG, 6, HG_BASE_HITPAUSE, 12);
+       set_hitbox_value(AT_USTRONG, 7, HG_KNOCKBACK_SCALING, 1.3);      
     	//DTILT
     if(attack == AT_DTILT){
         set_hitbox_value(AT_DTILT, 1, HG_LIFETIME, 12);

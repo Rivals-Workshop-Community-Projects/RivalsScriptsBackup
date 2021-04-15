@@ -110,5 +110,6 @@ switch player_id.wt_hitbox_size {
         hitbox.wt = id;
     var _fx = spawn_hit_fx(x, y - 5, shockwave_large_vfx);
     sound_play(honk_sfx, 0, false, volume + 0.2 + 0.3*(player_id.strong_charge/60));
+    disabled_timer = 60;
     break;
 }

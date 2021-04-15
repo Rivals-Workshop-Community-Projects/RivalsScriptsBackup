@@ -18,7 +18,7 @@ if (attack == AT_NSPECIAL){
 	{
 		if(!is_spin)
 		{
-			if(joy_pad_idle)
+			if(joy_pad_idle && (!down_stick_down && !right_stick_down && !left_stick_down && !up_stick_down))
 			{
 				// Default
 				throw_dir = "front";
@@ -46,7 +46,7 @@ if (attack == AT_NSPECIAL){
 			else
 			{
 				// Down
-				if(down_down)
+				if(down_down || down_stick_down)
 				   {
 				   	throw_dir = "down";
 				   	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 0);
@@ -73,7 +73,7 @@ if (attack == AT_NSPECIAL){
 				   }
 				   
 				//Up
-				if(up_down)
+				if(up_down || up_stick_down)
 				   {
 				   	throw_dir = "up";
 				    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 0);
@@ -99,7 +99,7 @@ if (attack == AT_NSPECIAL){
 					set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 90);
 				   }
 				// Front
-				else if (spr_dir == 1 && right_down || spr_dir == -1 && left_down)
+				else if (spr_dir == 1 && (right_down || right_stick_down) || spr_dir == -1 && (left_down || left_stick_down))
 				   {
 				   	throw_dir = "front";
 				    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, _speed);
@@ -125,7 +125,7 @@ if (attack == AT_NSPECIAL){
 				   }
 			
 				// Back
-				else if (spr_dir == 1 && left_down || spr_dir == -1 && right_down)
+				else if (spr_dir == 1 && (left_down || left_stick_down) || spr_dir == -1 && (right_down || right_stick_down))
 				   {
 				   	throw_dir = "back";
 				    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, -_speed);
@@ -188,13 +188,13 @@ if (attack == AT_NSPECIAL){
 	}
 	
 	// Red gun toggling
-	if(window < 2 && window_timer < 16 && special_down && !is_spin)
+	if(window < 2 && window_timer < get_window_value(AT_NSPECIAL,1,AG_WINDOW_LENGTH)-2 && special_down && !is_spin)
 	{
 		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_red_ground"));
 		set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_red_air"));
 		
 		blue = false;
-	} else if(window < 2 && window_timer < 16) blue = true;
+	} else if(window < 2 && window_timer < get_window_value(AT_NSPECIAL,1,AG_WINDOW_LENGTH)-2) blue = true;
 	
 	// Beam drawing
 	
@@ -351,6 +351,12 @@ if (attack == AT_USPECIAL){
 	// 	var tstart = spawn_hit_fx( x + (20 * spr_dir), y - 20, teleport_start );
 	// 	tstart.depth = -100;
 	// }
+
+	// Charged
+	if(teleported) {
+		if(!uspec_charged)  sound_play(sound_get("monarch_zap"),false,0,0.5);
+		uspec_charged = true;
+	}
 	
 	// Track hitfx on you
 	if("treturn" in self) {
@@ -364,6 +370,8 @@ if (attack == AT_USPECIAL){
 		if(free){
 			uspecial_buffer = true;
 		}
+		
+		uspec_charged = false;
 	}
 	
 	if(window == 1 && window_timer == get_window_value(AT_USPECIAL,1,AG_WINDOW_LENGTH))
@@ -395,6 +403,22 @@ if (attack == AT_USPECIAL){
 		
 		hsp*=.5;
 		vsp*=.5;
+		
+		// Charged box
+		if(uspec_charged){
+			set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 8);
+			set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 8);
+			
+			create_hitbox(AT_DSPECIAL,2,ceil(x),ceil(y)-15);
+			
+			reset_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE);
+			reset_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE);
+			
+			
+			sound_play(sound_get("monarch_gunhit2"),false,0,0.8,1.1);
+			
+			spawn_hit_fx(x,y,hitfx12);
+		}
 	}
 
 	if(window == 3){
@@ -712,6 +736,14 @@ if (attack == AT_DTILT){
 
 //#region Dattack
 if (attack == AT_DATTACK){
+	
+	if (has_hit_player && (window == 2 && window_timer < 6 ) && phone_cheats[canGatle] == 1)
+	{
+		can_ustrong = true;
+		set_window_value(AT_USTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 3);
+		set_window_value(AT_USTRONG, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 3);
+	}
+	
  	if(has_hit_player && hitpause && hitstop == hitstop_full-1 && my_hitboxID.hbox_num == 3){
 		starburst(4,starsmall,hit_player_obj.x-20,hit_player_obj.y-10,80,40,spr_dir,false);
 	}
@@ -930,16 +962,50 @@ if (attack == AT_FAIR){
 	// 	window = 10;
 	// 	window_timer = 0;
 	// }
+	
+	// Muno stall code
+	if(window == 1 && window_timer == 1) fastfall_check = 0;
+
+	// Stall
+	if free && hitpause{
+	    if !fastfall_check{
+	        if old_vsp == fast_fall old_vsp += 0.01;
+	        fastfall_check = true;
+	    }
+	    if old_vsp != fast_fall{
+	        old_vsp -= 0.05;
+	        if down_pressed{
+	            do_a_fast_fall = true;
+	            old_vsp = fast_fall;
+	        }
+	    }
+	}
+
+	// Stick inputs
+	var stickPressed = spr_dir == 1 ? right_stick_pressed : left_stick_pressed
+	var stickDown = spr_dir == 1 ? right_stick_down : left_stick_down
 
 	
 	if(window == 1) shot_queued = true;
-	if(window >= 4 && window <= 6 && !attack_down) shot_queued = false;
+	if(window >= 4 && window <= 6 && (!attack_down && !stickDown)) shot_queued = false;
 	
 
 	
-	if(window == 6 && window_timer >= 2 && attack_pressed)
+	//Cancels
+	
+	// First
+	if(window == 3 && window_timer >= 4 && (stickPressed || attack_pressed)){
+		window = 4;
+		window_timer = 0;
+	}
+	
+	
+	if(window == 6 && window_timer >= 2 && (attack_pressed || stickPressed))
 	{
 		clear_button_buffer(PC_ATTACK_PRESSED);
+		clear_button_buffer(PC_RIGHT_STICK_PRESSED);
+		clear_button_buffer(PC_LEFT_STICK_PRESSED);
+		
 	 	window = 10;
 	 	window_timer = 0;
 	}
@@ -947,8 +1013,10 @@ if (attack == AT_FAIR){
 	if((window == 6 || (window == 5 && window_timer >=5)) && shot_queued)
 	{
 		clear_button_buffer(PC_ATTACK_PRESSED);
+		clear_button_buffer(PC_RIGHT_STICK_PRESSED);
+		clear_button_buffer(PC_LEFT_STICK_PRESSED);
 		
-		if(attack_down){
+		if(attack_down || stickDown){
 			window = 7;
 			window_timer = 0;
 		}

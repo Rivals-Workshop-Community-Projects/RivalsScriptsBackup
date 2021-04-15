@@ -407,7 +407,7 @@ item[7, 3] = 0;
 item[7, 4] = sprite_get("mini_pocketcactus");
 item[7, 5] = 7; // ID #
 item[7, 6] = "BAIR UP";
-item[7, 7] = true;
+item[7, 7] = false;
 item[7, 8] = sprite_get("hud_shop");
 item[7, 9] = $d5a5b5;
 //Graduation Cap, ID 8
@@ -604,7 +604,7 @@ item[25, 3] = 0;
 item[25, 4] = sprite_get("mini_enternt");
 item[25, 5] = 25;
 item[25, 6] = "BAIR REVERSED";
-item[25, 7] = true;
+item[25, 7] = false;
 item[25, 8] = sprite_get("hud_shop");
 item[25, 9] = $d5a5b5;
 // F for Fornace, ID 26

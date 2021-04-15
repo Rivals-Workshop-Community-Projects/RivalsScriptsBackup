@@ -1,6 +1,6 @@
 if get_gameplay_time() > 120 {
 
-
+move_cooldown[AT_TAUNT_2] = 0
 
 if (get_training_cpu_action() == CPU_FIGHT){	
 	
@@ -41,7 +41,7 @@ if y < insy {
 
   right_hard_pressed = false;
   left_hard_pressed = false;
-hit_player_obj = ai_target 
+  lockplayer = ai_target 
 
 if state == PS_JUMPSQUAT && state_timer == 1 {
 	
@@ -184,14 +184,12 @@ if  hhalo == 0 && lockon == 0 && free && can_attack && move_cooldown[AT_DSPECIAL
     		set_attack (AT_UAIR)
     		window = 1
     		window_timer = 0
-    		x += 20 * spr_dir
     	}
     	
     	if get_gameplay_time() % 5 == 3 {
     		set_attack (AT_NAIR)
     		window = 1
     		window_timer = 0
-    		x += 20 * spr_dir
     	}
     	
     	if get_gameplay_time() % 5 == 2 {
@@ -199,7 +197,6 @@ if  hhalo == 0 && lockon == 0 && free && can_attack && move_cooldown[AT_DSPECIAL
     		window = 1
     		window_timer = 0
     		hsp += 3 * spr_dir
-    		x += 10 * spr_dir
     	}
     	
     	if get_gameplay_time() % 5 == 1 {
@@ -208,13 +205,11 @@ if  hhalo == 0 && lockon == 0 && free && can_attack && move_cooldown[AT_DSPECIAL
     		window = 1
     		window_timer = 0
     		hsp += 3 * spr_dir
-    		x += 40 * spr_dir
     		} else {
     		set_attack (AT_DAIR)
     		window = 1
     		window_timer = 0
     		hsp += 3 * spr_dir
-    		x += 10 * spr_dir
     		}
     	}
     	
@@ -223,7 +218,6 @@ if  hhalo == 0 && lockon == 0 && free && can_attack && move_cooldown[AT_DSPECIAL
     		window = 1
     		window_timer = 0
     		hsp += 3 * spr_dir
-    		x += 80 * spr_dir
     	}
     	
     	

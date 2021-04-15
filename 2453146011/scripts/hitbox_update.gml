@@ -13,6 +13,12 @@ if(attack == AT_UAIR && hbox_num == 1)
 	if(hitbox_timer == 17) with(player_id) sound_play(sound_get("monarch_smallblink1"),false,false,.4)
 	
 	if(get_gameplay_time() % 3 == 0) with(player_id) butterflyFX(50,50,1,other.x-x,other.y-y+10,false);
+	
+	// Destroy on melee
+	if(player_id.has_hit_player){
+		with(player_id) sound_stop(sound_get("monarch_wooshspin"));
+		instance_destroy();
+	}
 }
 
 #define butterflyFX(_xrange,_yrange,_density,_xoff,_yoff,_infront)

@@ -9,7 +9,7 @@ set_attack_value(AT_NSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("nspecial_hurt_f
 //set_attack_value(AT_NSPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
 
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 18);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 9);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, sound_get("monarch_shootportal"));
@@ -22,7 +22,7 @@ set_window_value(AT_NSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 2);
 
 
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 18);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 2);

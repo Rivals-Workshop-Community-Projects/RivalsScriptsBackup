@@ -4,7 +4,7 @@ if(attack == AT_NSPECIAL){
 		image_xscale = 0;
 		image_yscale = 0;
 	} else {
-		image_xscale = 0.45;    //width 90
+		image_xscale = 0.46;    //width 92
 		image_yscale = 0.3;        //height 60
 		
     }
@@ -16,8 +16,8 @@ if(attack == AT_DSPECIAL){
         image_xscale = 0;
         image_yscale = 0;
     } else {
-        image_xscale = 0.45;    //width 90
-        image_yscale = 0.3;        //height 60
+        image_xscale = 0.47;    //width 94
+        image_yscale = 0.32;        //height 64
 		
     }
 	if(hitbox_timer == 24) sound_play(asset_get("sfx_swipe_medium1"));
@@ -75,11 +75,11 @@ if attack == AT_DSTRONG {
 	calling the next hitboxes, you can view debug stuff with ctrl + 8, or remove the print lines if ya want
 	*/
 	if hbox_num == 1 and hitbox_timer = 16 {
-		create_hitbox( AT_DSTRONG, 2, x+60*spr_dir, y )
+		create_hitbox( AT_DSTRONG, 2, x+58*spr_dir, y )
 		sound_play(asset_get("sfx_kragg_spike"))
 	}
 	if hbox_num == 2 and hitbox_timer = 16 {
-		create_hitbox( AT_DSTRONG, 3, x+64*spr_dir, y )
+		create_hitbox( AT_DSTRONG, 3, x+62*spr_dir, y )
 		sound_play(asset_get("sfx_kragg_spike"))
 	}
 	//extra SFX added so spike 3 has a sound too! (without this it doesn't) final spike, so no spawning any hitbox here

@@ -413,7 +413,7 @@ with phone{
 	initTipImage_ext(player_id.spr_wt_blue, 0, fa_center, 1, c_white, -1, 140, 140, 60, 0);
 	
 	initTip("Walkie Talkie attacks");
-	initTipWords("Certain attacks like tilts and some aerials have some properties changed while holding a Walkie talkie, usually increased hitbox size but more startup frames.");
+	initTipWords("Certain attacks like tilts and some aerials have some properties changed while holding a Walkie talkie, usually increased hitbox size but more startup frames and less damage.");
 	initTipImage_ext(player_id.spr_ftilt, 4, fa_left, 1, c_white, 4, 80, 80, 80, 80);
 	initTipImage_ext(player_id.spr_ftilt_wt, 4, fa_left, 1, c_white, 4, 80, 80, 80, 80);
 	
@@ -610,6 +610,21 @@ with phone{
 	- Fspecial normal/wt animation smears improved.
 	- Bird Guy alt honk sfx volume decreased.
 	- Sfx added for when WT is destroyed via blastzone.
+	");
+	
+	initPatch("5.7", "14 April, 2021");
+	
+	initPatchWords("Balance Changes:
+	- WT bonus damage inverted, now attacks holding a WT deal 1% less damage than non-WT moves.
+	- Large WT shockwaves now have a 60 frame cooldown after each activation.
+	- Fair launcher hit dmg increased: 5 -> 6 (total dmg: 9 -> 10)
+	- Ftilt dmg increased: 7 -> 8
+	- Ustrong kbg decreased: 1.2 -> 1.1
+	- Uair startup decreased (-2f)
+	");
+	
+	initPatchWords("Other:
+	- Uspecial sweetspot sfx replaced with Bradshaw uspecial sweetspot sfx
 	");
 }
 

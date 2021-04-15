@@ -173,7 +173,7 @@ sprite_change_offset("nairs2", 102, 140);
 nairs3 = hit_fx_create( sprite_get( "nairs3" ), 9 );
 sprite_change_offset("nairs3", 102, 140);
 
-swordhit = hit_fx_create( sprite_get( "swordhit" ), 24 );
+swordhit = hit_fx_create( sprite_get( "swordhit" ), 12 );
 sprite_change_offset("swordhit", 50, 50);
 
 ustrongs2 = hit_fx_create( sprite_get( "ustrongs2" ), 12 );

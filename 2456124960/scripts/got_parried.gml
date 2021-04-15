@@ -13,3 +13,9 @@ if (my_hitboxID.attack == AT_FSPECIAL) {
 		flash.parriedPlayer = hit_player;
 	}
 }
+
+if (my_hitboxID.attack == AT_DATTACK) {
+	set_state(PS_PRATFALL);
+	hsp = 0;
+	vsp = 0;
+}

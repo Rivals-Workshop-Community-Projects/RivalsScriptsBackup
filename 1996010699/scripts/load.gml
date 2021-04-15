@@ -53,7 +53,7 @@ sprite_change_offset("utilt2", 24, 112);
 sprite_change_offset("nair", 31, 64);
 sprite_change_offset("nair1", 31, 64);
 sprite_change_offset("fair", 24, 56);
-sprite_change_offset("bair", 65, 50);
+sprite_change_offset("bair", 60, 60);
 sprite_change_offset("bair1", 65, 50);
 sprite_change_offset("uair", 25, 78);
 sprite_change_offset("dair", 24, 56);

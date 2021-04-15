@@ -5,6 +5,13 @@ var monarch = self;
 // Munophone
 user_event(14);
 
+//gatling
+if (state != PS_ATTACK_GROUND) and phone_cheats[canGatle] == 1
+{
+	reset_window_value(AT_USTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION);
+	reset_window_value(AT_USTRONG, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION);
+}
+
 
 //#region Player trail
 if(!lite)

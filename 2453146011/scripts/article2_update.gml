@@ -51,6 +51,11 @@ if(in_portal == true)
 	// Draw afterimage
 	if(portal_afterimage.timer == 0 && teleported)
 	{
+		
+		// Charged
+		if(!charged) sound_play(sound_get("monarch_zap"),false,0,0.5);
+		charged = true;
+		
 		teleported = false;
 		
 		//spr_dir*=-1;
@@ -79,13 +84,21 @@ if(in_portal == true)
 //#endregion
 
 
+
+
 //#region release
-if((!player_id.special_down || despawn_timer <= 0) && despawn_timer < 34)
+// Player collision
+var hitPlayer = collision_point(x,y,asset_get("oPlayer"),false,true) != player_id && collision_point(x,y,asset_get("oPlayer"),false,true) != noone;
+
+if((!player_id.special_down || despawn_timer <= 0 || hitPlayer) && despawn_timer < 34)
 {
     if(release_box == noone){
     	
     	// Boom, teleport, do it
     	release_box = create_hitbox(AT_FSPECIAL, 1, floor(x), floor(y));
+    	
+    	player_id.fspec_charged = charged;
+    	
     	with(player_id) {
     		butterflyFX(100,100,10,floor(other.x)-x,floor(other.y)-y,false);
     		sound_play(sound_get("monarch_fspecialmiss"))
@@ -94,7 +107,7 @@ if((!player_id.special_down || despawn_timer <= 0) && despawn_timer < 34)
     	
     	player_id.fspecial_obj = noone;
     }
-    else instance_destroy();
+    instance_destroy();
 }
 //#endregion
 

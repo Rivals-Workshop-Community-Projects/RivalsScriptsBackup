@@ -16,7 +16,7 @@ if(attack == AT_NSPECIAL){
     if(window == 2 && window_timer == 1){
         Dgrab = false;
         reset_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER);
-        take_damage(player,1,4);
+        take_damage(player,1,5);
         with(obj_article1){
             if(player_id == other.id){
                 plimit -= 1;
@@ -181,7 +181,7 @@ if (attack == AT_FSPECIAL){
     
     if(window == 3){
         if(window_timer == 8){
-            move_cooldown[AT_FSPECIAL] = 20
+            move_cooldown[AT_FSPECIAL] = 60
         }
     }
     
@@ -243,7 +243,7 @@ if (attack == AT_DSPECIAL){
     
     if(window = 2){
         if(window_timer = 3){
-            take_damage(player,1,2);
+            take_damage(player,1,3);
             with(obj_article1){
                 if(player_id == other.id){
                     plimit -= 1;
@@ -405,7 +405,7 @@ if(attack == AT_DSTRONG && window == 5){
 if(attack == AT_DSTRONG && window == 6){
     if(window_timer == 1){
         var lifesteal = create_hitbox(AT_DSTRONG, 3, x +42, y -50)
-            lifesteal.damage = 10 * (1 + strong_charge/100)
+            lifesteal.damage = 8 * (1 + strong_charge/100)
             sound_play(asset_get("sfx_burnconsume"))
     }
     attack_invince = true;
@@ -449,7 +449,7 @@ if(attack == AT_DSTRONG && window == 7){
     
 if(attack == AT_DSTRONG && window == 8){
     
-    if(window_timer == 15){
+    if(window_timer == 9){
         window = 9;
         window_timer = 0;
         image_index = 0;
@@ -502,6 +502,9 @@ if(attack == AT_FSTRONG){
     
     //#region Ustrong
 if(attack == AT_USTRONG){
+	if(state == PS_ATTACK_GROUND){
+		hsp = clamp(hsp,-8,8);
+	}
     if(window == 1){
         if(window_timer == 1){    
             set_hitbox_value(AT_USTRONG, 2, HG_ANGLE_FLIPPER, 9);
@@ -532,33 +535,38 @@ if(attack == AT_USTRONG){
 
     //#region Uair
     
-if(attack == AT_UAIR){
-    if(window == 1 && window_timer == 1){
-        UAGrab = false;
+if (attack == AT_UAIR)
+{
+	var spawn;
+	spawn = false;
+    if ( (window == 3 or window == 4) && window_timer % 6 == 0 && !hitpause && window_timer < 16)
+    {
+    	
+    	var num;
+    	num = ((window-3)*2) +1;
+    	
+        create_hitbox(AT_UAIR, num, x, y);
+        create_hitbox(AT_UAIR, num+1, x, y);
+        spawn = true;
     }
-    if(window == 3 && window_timer % 6 = 0 && !hitpause && window_timer < 16){
-        create_hitbox(AT_UAIR, 1, x, y)
-        create_hitbox(AT_UAIR, 2, x, y)
-    }
-    if(window == 4 && window_timer % 6 = 0 && !hitpause && window_timer < 16){
-        create_hitbox(AT_UAIR, 3, x, y)
-        create_hitbox(AT_UAIR, 4, x, y)
-    }
-    if(UAGrab == true && window_timer < 15){
-        if(UAGdir == 1){
-            UAGrab_id.x = ease_linear(UAGrab_id.x, x + 40*spr_dir, UAGrab_timer, 4)
-            UAGrab_id.y = ease_linear(UAGrab_id.y, y - 108, UAGrab_timer, 4)
-        }
-        if(UAGdir == 2){
-            UAGrab_id.x = ease_linear(UAGrab_id.x, x - 65*spr_dir, UAGrab_timer, 4)
-            UAGrab_id.y = ease_linear(UAGrab_id.y, y - 88, UAGrab_timer, 4)
-        }
-            UAGrab_timer++
+    //print("window: " + string(window)+ ", window_timer: "+string(window_timer)+", spawn?: "+ (spawn ? "yes" : "no") );
+    // if(UAGrab == true && window_timer < 15){
+    //     if(UAGdir == 1){
+    //         UAGrab_id.x = ease_linear(UAGrab_id.x, x + 40*spr_dir, UAGrab_timer, 4)
+    //         UAGrab_id.y = ease_linear(UAGrab_id.y, y - 108, UAGrab_timer, 4)
+    //     }
+    //     if(UAGdir == 2){
+    //         UAGrab_id.x = ease_linear(UAGrab_id.x, x - 65*spr_dir, UAGrab_timer, 4)
+    //         UAGrab_id.y = ease_linear(UAGrab_id.y, y - 88, UAGrab_timer, 4)
+    //     }
+    //         UAGrab_timer++
+    //         print(UAGrab_timer)
         
-    }
-    if(window_timer == 15){
-        UAGrab = false;
-    }
+    // }
+    
+    // if(window_timer == 15){
+    //     UAGrab = false;
+    // }
 }
     
     
@@ -569,9 +577,19 @@ if(attack == AT_UAIR){
 
 //#region Grounded
 
+
+if (attack == AT_DTILT and window == 1 and window_timer >= get_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH)-1 and attack_down)
+{
+	window = 4;
+	window_timer = 0;
+//	dtilt_held = true;
+	set_attack_value(AT_DTILT, AG_NUM_WINDOWS, 6);
+//	print("HELD")
+}
+
     //#region Dtilt
 if(attack == AT_DTILT){
-    if(window == 1){
+    if(window == 2){
         if(window_timer == 1){
             puddle_exist = false;
             with(obj_article1){
@@ -599,7 +617,7 @@ if(attack == AT_DTILT){
     }
 }
     
-if(attack == AT_DTILT && instance_exists(obj_article1) && window == 1 && window_timer == 1){
+if(attack == AT_DTILT && instance_exists(obj_article1) && window == 2 && window_timer == 1){
     take_damage(player,1,1);
         with(obj_article1){
             if(player_id == other.id){
@@ -714,11 +732,29 @@ if(attack == AT_TAUNT){
 
 //#endregion
 //#region Taunt
-if(attack == AT_TAUNT_2){
-    if window == 3 && !taunt_down {
+if (attack == AT_TAUNT_2){
+	if window <= 1 {
+		if window == 1 && window_timer == 4 && !down_down && up_down {
+			window = 6;
+			window_timer = 0;
+		}
+	}
+    if window == 4 && !taunt_down {
     window++;
     window_timer=0;
-    
+    }
+    if window == 5 {
+    	if window_timer == 30 window = 13
+    }
+    if(window = 7){
+        if(window_timer = 1){
+            take_damage(player,1,-1);
+        }
+    }
+    if(window = 12){
+        if(window_timer = 1){
+            take_damage(player,1,1);
+        }
     }
 }
 

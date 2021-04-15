@@ -4,9 +4,14 @@ set_attack_value(AT_EXTRA_1, AG_OFF_LEDGE, 1);
 set_attack_value(AT_EXTRA_1, AG_MUNO_ATTACK_NAME, "Star Power");
 set_attack_value(AT_EXTRA_1, AG_MUNO_ATTACK_MISC, "Input: 22AB
 Full Meter Required
+
 Fully invincible
+
 Hitboxes named Star on moves are the projectiles that Star Power enables
+
 Star Power multiplies all KB and KBG by 1.25
+
+IASA frame 100
 ");
 set_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE, asset_get("ex_guy_hurt_box"));
 

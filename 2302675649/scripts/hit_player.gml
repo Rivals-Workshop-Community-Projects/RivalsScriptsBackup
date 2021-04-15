@@ -58,7 +58,11 @@ switch (my_hitboxID.attack)
 			sound_play(asset_get("sfx_blow_heavy1"));
 			if (free) old_vsp = -6;
 		}
-		else sound_play(asset_get("sfx_blow_weak1"));
+		else
+		{
+			sound_play(asset_get("sfx_blow_weak1"));
+			hit_player_obj.free = true;
+		}
 		break;
 	case AT_FAIR:
 	case AT_DATTACK:
@@ -71,8 +75,9 @@ switch (my_hitboxID.attack)
 	case AT_BAIR:
 		sound_play(asset_get("sfx_blow_heavy1"));
 		break;
-	case AT_DTILT:
 	case AT_JAB:
+		if (!aura) move_cooldown[AT_JAB] = 30;
+	case AT_DTILT:
 		sound_play(asset_get("sfx_blow_weak1"));
 		break;
 	case 49:

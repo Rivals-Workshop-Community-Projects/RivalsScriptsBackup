@@ -25,7 +25,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_spin"));
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX_FRAME, 0);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 26);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 22);
 
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 18);
@@ -65,7 +65,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .35);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, .4);

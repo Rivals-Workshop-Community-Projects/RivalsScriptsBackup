@@ -61,6 +61,10 @@ mySwirl3 = noone;
 mySwirl4 = noone;
 chargingBeam = 0;
 
+outlineR = 0;
+outlineG = 0;
+outlineB = 0;
+
 fastFSpec = false;
 
 buffFX = 0;
@@ -107,7 +111,7 @@ walljump_time = 32;
 max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 12; //fast fall speed
 gravity_speed = .45;
-hitstun_grav = .4;
+hitstun_grav = .5;
 knockback_adj = 1.05; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames

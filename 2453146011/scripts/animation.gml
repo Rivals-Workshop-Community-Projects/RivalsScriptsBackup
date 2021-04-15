@@ -47,11 +47,13 @@ if(state == PS_IDLE)
                 sprite_index = sprite_get("tweak1");
                 
                 // Sounds
-                if(state_timer == 30) sound_play(sound_get("monarch_portalopen"),false,false,0.1,1.01);
-                if(state_timer == 50) sound_play(sound_get("monarch_portalopen"),false,false,0.1,1.02);
-                if(state_timer == 108) sound_play(sound_get("monarch_woosh1"),false,false,0.09,1.02);
-                if(state_timer == 133) sound_play(sound_get("monarch_woosh2"),false,false,0.09,1.02);
-                if(state_timer == 138) sound_play(sound_get("monarch_wooshspin"),false,false,0.09,1.02);
+                if(phone_cheats[idleSounds] ==1 ){
+                    if(state_timer == 30) sound_play(sound_get("monarch_portalopen"),false,false,0.1,1.01);
+                    if(state_timer == 50) sound_play(sound_get("monarch_portalopen"),false,false,0.1,1.02);
+                    if(state_timer == 108) sound_play(sound_get("monarch_woosh1"),false,false,0.09,1.02);
+                    if(state_timer == 133) sound_play(sound_get("monarch_woosh2"),false,false,0.09,1.02);
+                    if(state_timer == 138) sound_play(sound_get("monarch_wooshspin"),false,false,0.09,1.02);
+                }
                 
                 if(state_timer == 170)
                 {
@@ -65,10 +67,12 @@ if(state == PS_IDLE)
             sprite_index = sprite_get("tweak2");
             
             // Sounds
-            if(state_timer == 5) sound_play(sound_get("monarch_wooshspin"),false,false,0.09,1.02);
-            if(state_timer == 15) sound_play(sound_get("monarch_wooshspin"),false,false,0.09,1.06);
-            if(state_timer == 25) sound_play(sound_get("monarch_wooshspin"),false,false,0.08,0.95);
-            if(state_timer == 35) sound_play(sound_get("monarch_wooshspin"),false,false,0.07,0.93);
+            if(phone_cheats[idleSounds] ==1 ){
+                if(state_timer == 5) sound_play(sound_get("monarch_wooshspin"),false,false,0.09,1.02);
+                if(state_timer == 15) sound_play(sound_get("monarch_wooshspin"),false,false,0.09,1.06);
+                if(state_timer == 25) sound_play(sound_get("monarch_wooshspin"),false,false,0.08,0.95);
+                if(state_timer == 35) sound_play(sound_get("monarch_wooshspin"),false,false,0.07,0.93);
+            }
             
             if(state_timer == 59)
                 {
@@ -82,9 +86,11 @@ if(state == PS_IDLE)
             sprite_index = sprite_get("tweak3");
             
             // Sounds
-            if(state_timer == 5) sound_play(sound_get("monarch_wooshspin"),false,false,0.09,1.02);
-            if(state_timer == 38) sound_play(sound_get("monarch_twinkle"),false,false,0.05,0.95);
-            if(state_timer == 55) sound_play(sound_get("monarch_wooshspin"),false,false,0.06,1.05);
+            if(phone_cheats[idleSounds] ==1 ){
+                if(state_timer == 5) sound_play(sound_get("monarch_wooshspin"),false,false,0.09,1.02);
+                if(state_timer == 38) sound_play(sound_get("monarch_twinkle"),false,false,0.05,0.95);
+                if(state_timer == 55) sound_play(sound_get("monarch_wooshspin"),false,false,0.06,1.05);
+            }
             
             if(state_timer == 73)
                 {

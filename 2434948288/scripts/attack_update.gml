@@ -107,7 +107,7 @@ switch (attack)
 
     case AT_FAIR:
         if (was_parried) window = 12;
-        else if (window < 8 && hit_player && hitpause) Grab(40, 0, 2, 2);
+        else if (window < 8 && has_hit_player && hitpause) Grab(40, 0, 2, 2);
         if (down_down) vsp += 0.2;
         hsp = min(3, hsp);
         can_fast_fall = false;

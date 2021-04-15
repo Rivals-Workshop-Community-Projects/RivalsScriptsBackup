@@ -138,6 +138,15 @@ if ("practice" in self)
 						AddText("");
 						AddText("Added a few new alts");
 						break;
+					case 7:
+						AddText("v1.7 - 9 Apr 2021");
+						AddText("");
+						AddText("Added whifflag to DSpec - effectively 24 frames of endlag on whiff");
+						AddText("");
+						AddText("DAttack endlag 9 frames -> 13 frames");
+						AddText("");
+						AddText("Added Spectrum alt");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

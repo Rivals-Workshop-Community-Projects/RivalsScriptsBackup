@@ -88,11 +88,7 @@ switch (attack)
             clear_button_buffer(PC_ATTACK_PRESSED);
         }
         was_parried = false;
-        if (has_hit && window == 3 && !hitpause)
-        {
-            iasa_script();
-            move_cooldown[AT_JAB] = 12;
-        }
+        if (has_hit && window == 3 && !hitpause) iasa_script();
         RuneH();
         break;
     case AT_FTILT:
@@ -451,7 +447,7 @@ switch (attack)
                 }
                 can_wall_jump = true;
                 x = lerp(fspecPosX.a, fspecPosX.b, window_timer/get_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH));
-                hsp = 6*spr_dir;
+                hsp = 5*spr_dir-left_down+right_down;
                 if (get_window_value(AT_FSPECIAL, 6, AG_WINDOW_TYPE)==1) soft_armor = 621;
                 if (window_timer == get_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH))
                 {
@@ -498,8 +494,8 @@ switch (attack)
                 can_shield = true;
                 if (shield_pressed && !shield_counter) tutDoneAdv[2] = true;
                 free = true;
-                uspecSpeed.hsp = lengthdir_x(145, joy_pad_idle?spr_dir==1?70:110:joy_dir);
-                uspecSpeed.vsp = lengthdir_y(145, joy_pad_idle?spr_dir==1?70:110:joy_dir);
+                uspecSpeed.hsp = lengthdir_x(160, joy_pad_idle?spr_dir==1?70:110:joy_dir);
+                uspecSpeed.vsp = lengthdir_y(160, joy_pad_idle?spr_dir==1?70:110:joy_dir);
                 uspecSpeed.joy_pad_idle = joy_pad_idle;
                 uspecSpeed.joy_dir = joy_dir;
                 if (window_timer > uspecStartup && !special_down)
@@ -525,8 +521,8 @@ switch (attack)
             case 4:
                 if (window_timer == 1 && !hitpause)
                 {
-                    hsp /= 15;
-                    vsp /= 15;
+                    hsp /= 25;
+                    vsp /= 25;
                     for (var i = 0; i < 10; ++i)
                     {
                         create_hitbox(AT_USPECIAL, 1, floor(lerp(uspecStart.x, x, i/10)+get_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_X)), floor(lerp(uspecStart.y, y, i/10)+get_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_Y)))

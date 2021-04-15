@@ -233,12 +233,14 @@ if move_cooldown[AT_EXTRA_1] == 19 && state_cat != SC_HITSTUN{
 		   
 }
 
-if dplayer.state == PS_ATTACK_GROUND or dplayer.state == PS_ATTACK_AIR {
+
 if (move_cooldown[AT_NSPECIAL_2] = 121 or move_cooldown[AT_NSPECIAL_2] % 10 > 0){
 	    	
 		  	with dplayer{
 		    	hitpause = true
 		    	hitstop = 10
+		    	hsp = old_hsp
+		        vsp = old_vsp
 		  		}
 		  		
 		    }
@@ -247,10 +249,12 @@ if move_cooldown[AT_NSPECIAL_2] >= 1 and move_cooldown[AT_NSPECIAL_2] % 3 == 0 {
 			with dplayer{
 		    	hitpause = 0
 		    	hitstop = 0
+		    	hsp = old_hsp
+		        vsp = old_vsp
 		  	}
 
 }
-}
+
 
 if dplayer.state != PS_ATTACK_GROUND and dplayer.state != PS_ATTACK_AIR{
 	move_cooldown[AT_NSPECIAL_2] = 1
@@ -315,7 +319,7 @@ if !hitpause {
 		(state == PS_AIR_DODGE or state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD or state == PS_TECH_FORWARD  or state == PS_TECH_BACKWARD)
 		and move_cooldown[AT_EXTRA_1] == 0{
 			dplayer = nearbyhitbox.player_id
-     if unte && !free {
+     if unte {
      	move_cooldown[AT_NSPECIAL_2] = 123
      }
 	    	hit_player_obj = nearbyhitbox.player_id
@@ -1106,7 +1110,7 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
            gravity_speed = .6;
            hitstun_grav = .55;
            air_friction = .055;
-           knockback_adj = 0.9;
+           knockback_adj = 0.95;
 
           
            wave_land_adj = 1.0;
@@ -1124,9 +1128,9 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
    
    set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 12);
    set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 8);
-   set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, .8);
+   set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, .7);
    set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 8);
-   set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, .8);
+   set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, .7);
 ///Utilt
    set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 8);
    set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 10);
@@ -1148,18 +1152,18 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
    
    set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 8);
    set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 6);
-   set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, .8);
+   set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, .65);
    set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 5);
-   set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, .8);
+   set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, .65);
 ///Dattack
    set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 12);
    set_window_value(AT_DATTACK, 4, AG_WINDOW_LENGTH, 12);
    
    set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 11);
    set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 9);
-   set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, 0.9);
+   set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, 0.75);
    set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 6);
-   set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, .9);
+   set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, .75);
 ///Nair
    set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 8);
    set_window_value(AT_NAIR, 6, AG_WINDOW_LENGTH, 12);
@@ -1403,7 +1407,7 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
            gravity_speed = .7;
            hitstun_grav = .50;
            air_friction = .05;
-           knockback_adj = 1.0;
+           knockback_adj = 0.8;
  
 
            wave_land_adj = 1.3;

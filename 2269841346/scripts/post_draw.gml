@@ -66,24 +66,25 @@ if inloop && looptime < 401{
 			}
 	 hit1 = random_func(1, 150, true);
 	 hit2 = random_func(2, 150, true);
+	 spr_dir *= -1
         if  get_gameplay_time() % 12 <= 20 && get_gameplay_time() % 3 == 0 {
-         draw_sprite_ext(sprite_get("waveland"), window_timer / 1, shortest_id.x -70 + hit1, shortest_id.y -50 + hit2, 1, 1, 0,-1,.5 );
+         draw_sprite_ext(sprite_get("waveland"), window_timer / 1, shortest_id.x -70 + hit1, shortest_id.y -50 + hit2, 1, 1, 0,-1,1 );
          sound_play(sound_get("slicel"));
         }
         if  get_gameplay_time() % 13 <= 20 && get_gameplay_time() % 2 == 0 {
-         draw_sprite_ext(sprite_get("airdodge"), window_timer / 1, shortest_id.x -70 + hit2, shortest_id.y -50 + hit1, 1, 1, 0,-1,.5 );
+         draw_sprite_ext(sprite_get("airdodge"), window_timer / 1, shortest_id.x -70 + hit2, shortest_id.y -50 + hit1, 1, 1, 0,-1,1 );
                  sound_play(sound_get("slice1"));
         	
         }
         if  get_gameplay_time() % 14 <= 20 && get_gameplay_time() % 3 == 1 {
-         draw_sprite_ext(sprite_get("uspecial"), window_timer / 1, shortest_id.x -70 + hit1, shortest_id.y -50 + hit2, 1, 1, 0,-1,.5 );
+         draw_sprite_ext(sprite_get("uspecial"), window_timer / 1, shortest_id.x -70 + hit1, shortest_id.y -50 + hit2, 1, 1, 0,-1,1 );
                         sound_play(sound_get("slice3"));
         }
         if  get_gameplay_time() % 15 <= 20 && get_gameplay_time() % 2 == 1{
-         draw_sprite_ext(sprite_get("jab"), window_timer / 1, shortest_id.x -70 + hit2, shortest_id.y -50 + hit1, 1, 1, 0,-1,.5  );
+         draw_sprite_ext(sprite_get("jab"), window_timer / 1, shortest_id.x -70 + hit2, shortest_id.y -50 + hit1, 1, 1, 0,-1,1  );
         }
         if  get_gameplay_time() % 16 <= 20 && get_gameplay_time() % 3 == 2 {
-         draw_sprite_ext(sprite_get("fair"), window_timer / 1, shortest_id.x -70 + hit1, shortest_id.y -50 + hit2, 1, 1, 0,-1,.5  );
+         draw_sprite_ext(sprite_get("fair"), window_timer / 1, shortest_id.x -70 + hit1, shortest_id.y -50 + hit2, 1, 1, 0,-1,1  );
           sound_play(sound_get("slicel"));
         	
         }

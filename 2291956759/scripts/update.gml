@@ -52,23 +52,47 @@ if get_gameplay_time() == 2 {
 }
 
 
- if hit_player_obj.url != "2273636433" && hit_player_obj.url != "1870768156"
-	&& hit_player_obj.url != "1869351026" &&
-	(string_count("nald", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("%", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("sand", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("psy", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("ultra", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("god", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("boss", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("ui ", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("ssg", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("melee", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("accurate", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
+ if cheapmode == 0 {
+ 
+ with(asset_get("oPlayer")){ 
+ 	if url != "2273636433" && url != "1870768156"
+	&& url != "1869351026" && url != "2443363942" &&
+	(string_count("nald", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("%", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("sand", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("psy", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("ultra", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("god", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("boss", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("ui ", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("ssg", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("melee", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("OP ", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("accurate", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or string_count("Jo", string_lower( get_char_info(player, INFO_STR_NAME) )) > 0
+	or url == "2159023588"
+	or url == "1980469422"
 	){
-		set_player_stocks(player, get_gameplay_time()*666*get_gameplay_time());
+       other.cheapmode = 1 
+     }    
+ }
+ }     
+       
+if cheapmode = 1 && ((down_down && taunt_down && get_gameplay_time() < 300) or "ai_target" in self){
+	cheapmode = 2
+	sound_play(sound_get("SpaceCut"))
+	sound_play(sound_get("RI"))
+	shake_camera(6,12)
+	spawn_hit_fx(x,y - 50, SC)
+}        
+
+if cheapmode = 2 {
+	if hitpause {
+		histop = 0
+	}
         ink = 300
         inkshield = 300
+        knockback_adj = 0
         set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 1);
         set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 1);
         set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 1);
@@ -108,9 +132,7 @@ if get_gameplay_time() == 2 {
             
             summon += 1 + random_func(1, 4, true) 
             
-        }    
-        
-        
+}
         if get_gameplay_time() % 120 == 0 && (down_down) {
         	sasdh = instance_create(x + 80*spr_dir,y,"oPlayer");
     	shake_camera(6,12)

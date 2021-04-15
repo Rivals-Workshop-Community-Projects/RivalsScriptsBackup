@@ -1,9 +1,28 @@
 ///
+shader_start();    
+if move_cooldown[AT_FSTRONG_2] != 0 {
+	  gpu_set_blendmode(bm_add);
+	          draw_sprite_ext(sprite_index, image_index , x - 1 - hsp  , y - 1 - vsp  , spr_dir*1.05, 1.05, 0 , -1 , move_cooldown[AT_FSTRONG_2]/10);
+		draw_sprite_ext(sprite_index, image_index , x + 1 - hsp*2  , y + 1 - vsp*2  , spr_dir*1.05, 1.05, 0 , -1 , move_cooldown[AT_FSTRONG_2]/10);
+  	          draw_sprite_ext(sprite_index, image_index , x - 1 - hsp  , y - 1 - vsp  , spr_dir*1.05, 1.05, 0 , -1 , move_cooldown[AT_FSTRONG_2]/10);
+		draw_sprite_ext(sprite_index, image_index , x + 1 - hsp*2  , y + 1 - vsp*2  , spr_dir*1.05, 1.05, 0 , -1 , move_cooldown[AT_FSTRONG_2]/10);
+  	          draw_sprite_ext(sprite_index, image_index , x - 1 - hsp  , y - 1 - vsp  , spr_dir*1.05, 1.05, 0 , -1 , move_cooldown[AT_FSTRONG_2]/10);
+		draw_sprite_ext(sprite_index, image_index , x + 1 - hsp*2  , y + 1 - vsp*2  , spr_dir*1.05, 1.05, 0 , -1 , move_cooldown[AT_FSTRONG_2]/10)
+  	          draw_sprite_ext(sprite_index, image_index , x - 1 - hsp  , y - 1 - vsp  , spr_dir*1.05, 1.05, 0 , -1 , move_cooldown[AT_FSTRONG_2]/10);
+		draw_sprite_ext(sprite_index, image_index , x + 1 - hsp*2  , y + 1 - vsp*2  , spr_dir*1.05, 1.05, 0 , -1 , move_cooldown[AT_FSTRONG_2]/10);
+  	          draw_sprite_ext(sprite_index, image_index , x - 1 - hsp  , y - 1 - vsp  , spr_dir*1.05, 1.05, 0 , -1 , move_cooldown[AT_FSTRONG_2]/10);
+		draw_sprite_ext(sprite_index, image_index , x + 1 - hsp*2  , y + 1 - vsp*2  , spr_dir*1.05, 1.05, 0 , -1 , move_cooldown[AT_FSTRONG_2]/10);
+  	          draw_sprite_ext(sprite_index, image_index , x - 1 - hsp  , y - 1 - vsp  , spr_dir*1.05, 1.05, 0 , -1 , move_cooldown[AT_FSTRONG_2]/10);
+		draw_sprite_ext(sprite_index, image_index , x + 1 - hsp*2  , y + 1 - vsp*2  , spr_dir*1.05, 1.05, 0 , -1 , move_cooldown[AT_FSTRONG_2]/10);
+  
+
+  gpu_set_blendmode(bm_normal);	
+}
 
 if rank >= 4{
 	  gpu_set_blendmode(bm_add);
-        draw_sprite_ext(sprite_index, image_index , x - 1 - hsp  , y - 1 - vsp  , spr_dir*1.05, 1.05, 0 , -1 , 0.3);
-		draw_sprite_ext(sprite_index, image_index , x + 1 - hsp*2  , y + 1 - vsp*2  , spr_dir*1.05, 1.05, 0 , -1 , 0.3);
+        draw_sprite_ext(sprite_index, image_index , x - 1 - hsp  - random_func(1,2,true), y - 1 - vsp - random_func(2,2,true)  , spr_dir*1.05, 1.05, 0 , -1 , 0.3);
+		draw_sprite_ext(sprite_index, image_index , x + 1 - hsp*2 + random_func(1,2,true) , y + 1 - vsp*2 + random_func(2,2,true)  , spr_dir*1.05, 1.05, 0 , -1 , 0.3);
   gpu_set_blendmode(bm_normal);
 }
 
@@ -17,6 +36,7 @@ if get_player_color(player) == 8 {
   gpu_set_blendmode(bm_normal);
 }
 }
+shader_end() 
 
 if attacking {
 shader_start();    

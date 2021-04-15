@@ -1,14 +1,13 @@
 //pre_draw.gml
 shader_start();
 
-
-if rank >= 4 {
 	if infernal2 < 300 {
-		infernal2 += 0.1
-		if infernal2 > 299 {
+		if infernal2 > 295 {
 			infernal2 += 10
 		} 
 	}
+	
+if rank >= 4 {
 	  gpu_set_blendmode(bm_add);
         draw_sprite_ext(sprite_get("DT"), get_gameplay_time()/ 4 , x - 1 - hsp  , y - 1 - vsp  , spr_dir*1, 1, 0 , -1 , 0.5 - (get_gameplay_time() % 20)/200);
   gpu_set_blendmode(bm_normal);

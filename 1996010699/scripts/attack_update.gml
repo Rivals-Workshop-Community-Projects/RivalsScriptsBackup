@@ -144,23 +144,6 @@ if(attack == AT_FTILT){
 	}
 }
 
-if(attack == AT_BAIR){
-	if(window == 2){
-		can_fast_fall = false;
-	}
-	if(window == 3 && !has_hit){
-		if(window_timer == 4 && !hitpause){
-			sound_play(asset_get("sfx_ell_small_missile_ground"));
-		}
-		if(window_timer == 5){
-			hsp = (spr_dir * bairHSP);
-		}
-	}
-	if(window == 4){
-		can_wall_jump = true;
-	}
-}
-
 if(attack == AT_NAIR){
 	if(item[2, 3] == 1){
 	
@@ -256,13 +239,13 @@ if (attack == AT_FSPECIAL){
 	can_wall_jump = false;
 	
 	if(was_parried){
-		super_armor = false;
+		//super_armor = false;
 		fspecialTimer = 0;
 		hsp = 0;
 		old_hsp = 0;
 	}
 	
-	if (window == 1 && window_timer >= 13 && free){
+	if (window == 1 && window_timer >= 7 && free){	//13 super armor
 		vsp -= 5;
 	}
 
@@ -353,7 +336,7 @@ if (attack == AT_FSPECIAL){
 			sound_play( asset_get("sfx_blow_medium2"));
 			attack_end();
 			destroy_hitboxes();
-			super_armor = false;
+			//super_armor = false;
 			if(carbounceRestoredJumps == false && djumps > 0){
 				djumps = 0;
 				carbounceRestoredJumps = true;
@@ -384,10 +367,10 @@ if (attack == AT_FSPECIAL){
 		
 		if(fspecialTimer > 3 && !was_parried){
 			create_hitbox( AT_FSPECIAL, 1, x, y );
-			super_armor = true;
+			//super_armor = true;
 		}
 		if(fspecialTimer >= 15 && !was_parried){
-			//can_jump = true;
+			can_jump = true;
 			if((item[22, 3] == 1 || !free) && (attack_pressed || (!joy_pad_idle && joy_dir > 60 + (90 * spr_dir) && joy_dir < 120 + (90 * spr_dir)))){
 				destroy_hitboxes();
 				window = 4;
@@ -403,7 +386,7 @@ if (attack == AT_FSPECIAL){
 			}
 		}
 		
-		if(fspecialTimer >= 40){
+		if(fspecialTimer >= 60){
 			destroy_hitboxes();
 			super_armor = false;
 			window = 7;
@@ -1018,7 +1001,6 @@ switch(attack){
 			set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_ice_ftilt"));
 			set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 27);
 
-			set_hitbox_value(AT_UTILT, 2, HG_HITSTUN_MULTIPLIER, 8);
 			set_hitbox_value(AT_UTILT, 2, HG_EFFECT, 5);
 			set_hitbox_value(AT_UTILT, 3, HG_EFFECT, 5);
 			
@@ -1091,10 +1073,9 @@ switch(attack){
 			
 		case 23:	//nintendo switch
 			set_attack_value(AT_UTILT, AG_CATEGORY, 2);
-			set_window_value(AT_UTILT, 5, AG_WINDOW_LENGTH, 26);
-			set_window_value(AT_UTILT, 5, AG_WINDOW_SFX, sound_get("switch"));
-			set_hitbox_value(AT_UTILT, 1, HG_ANGLE, 105);
-			
+			set_window_value(AT_UTILT, 4, AG_WINDOW_SFX, sound_get("switch"));
+			set_hitbox_value(AT_UTILT, 1, HG_ANGLE, 180);
+			set_hitbox_value(AT_UTILT, 1, HG_ANGLE_FLIPPER, 0);
 			
 			itemsDisplayed[displaySlot] = item[23, 5];
 			displaySlot++;

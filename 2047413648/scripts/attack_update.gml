@@ -102,19 +102,32 @@ if (attack == AT_DAIR){
 		set_state (PS_PRATLAND)
 	}
 	
-	if window <= 3 && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN {
+	if window <= 3 && has_hit_player {
 		
-		if hit_player_obj.x < x {
-			hit_player_obj.x = x - 30
+		with hit_player_obj {
+			if !super_armor && !soft_armor && !invincible {
+			
+			set_state(PS_HITSTUN)
+			state_timer = -20
+			
+		if x < other.x {
+			x += floor((other.x - 30 - x)/3)
 		}
 		
-		if hit_player_obj.x > x {
-			hit_player_obj.x = x + 30
+		if x > other.x {
+			x += floor((other.x + 30 - x)/3)
 		}
 		
-		hit_player_obj.y = y - 6
-		hit_player_obj.vsp = vsp
-		hit_player_obj.fall_through = true
+		if hitpause {
+		y += floor((other.y - 4 - y)/3)
+		} else {
+			y = other.y - 10
+			vsp = other.vsp
+		}
+		fall_through = true
+		}
+		
+		}
 	}
 	
 	if has_hit_player {

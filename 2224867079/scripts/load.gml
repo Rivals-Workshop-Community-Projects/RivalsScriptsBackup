@@ -15,6 +15,7 @@ sprite_change_offset("RedNewStab2", 31, 33);
 sprite_change_offset("RedStab3", 50, 102);
 sprite_change_offset("RedStab_4", 67, 43);
 sprite_change_offset("UpB_Sweetspot", 206, 208);
+sprite_change_offset("UpB_Sweetspot2", 206, 208);
 sprite_change_offset("BlueSwipe", 102, 106);
 sprite_change_offset("BlueSwipe2", 102, 106);
 sprite_change_offset("RedSwipe", 102, 106);

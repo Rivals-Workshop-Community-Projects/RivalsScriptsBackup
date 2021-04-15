@@ -1,45 +1,140 @@
+switch (my_hitboxID.attack)
+{
+    case AT_NSPECIAL:
+        if my_hitboxID.hbox_num == 2
+        {
+            my_hitboxID.source.state_timer = 39;
+    
+            hit_player_obj.should_make_shockwave = false;            
+        }
+    break;
+    case AT_FSPECIAL_2:
+        fspec_jump = true;
+    break;
+    case AT_USPECIAL:
+        if (my_hitboxID.hbox_num == 2 && instance_find(obj_article1, true))
+        {
+            hit_player_obj.should_make_shockwave = false;
+            my_hitboxID.source.usp_forger_id = hit_player_obj.id;
+            if(hit_player_obj.soft_armor <= 0 && hit_player_obj.super_armor == false && hit_player_obj.invincible == false){
+                my_hitboxID.source.usp_forger_drag = true;
+            }            
+        }
+    break;
+    case AT_DSPECIAL_AIR:
+        if (my_hitboxID.hbox_num < 4)
+        {
+            hit_player_obj.should_make_shockwave = false;
+            //hit_player_obj.hitpause = true;
+            //hit_player_obj.hitstop += 70;
+            DSPA_grab_id = hit_player_obj.id;
+            if(!DSPA_grab){
+                DSPA_timer = 0;
+            }
+            if(hit_player_obj.soft_armor <= 0 && hit_player_obj.super_armor == false && hit_player_obj.invincible == false){
+                DSPA_grab = true;
+            }
+        }
+    break;
+    case AT_UAIR:
+    //print(my_hitboxID.hbox_num)
+    if (instance_exists(hit_player_obj) and !hit_player_obj.clone)
+    {
+        // hit_player_obj.x = lerp(hit_player_obj.x, x, .05)
+        // hit_player_obj.y = lerp(hit_player_obj.y, y-60, .05)
+        hit_player_obj.x = lerp(hit_player_obj.x, x, .15)
+        hit_player_obj.y = lerp(hit_player_obj.y, y-60, .15)
+    }
+    break;
+    case AT_DAIR:
+        hit_player_obj.Dsplat = true;
+        old_vsp = -8;
+    break;
+    case AT_DSTRONG:
+        switch (my_hitboxID.hbox_num)
+        {
+            case 1:
+            case 2:
+                hit_player_obj.should_make_shockwave = false;
+                if hit_player_obj.clone exit;
+                //hit_player_obj.hitpause = true;
+                //hit_player_obj.hitstop += 70;
+                Dgrab_id = hit_player_obj.id;
+                if(hit_player_obj.soft_armor <= 0 && hit_player_obj.super_armor == false && hit_player_obj.invincible == false){
+                    Dgrab = true;
+                }
+                set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 10);
+            break;
+            case 3:
+                take_damage(player, 1, floor(-my_hitboxID.damage))
+                
+                reset_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER);
+            case 4:
+                hit_player_obj.should_make_shockwave = false;
+            break;
+        }
+    break;
+    case AT_USTRONG:
+    sound_stop(asset_get("sfx_swipe_medium2"))
+        if (my_hitboxID.hbox_num != 3)
+        {
+            hit_player_obj.should_make_shockwave = false;
+            if(my_hitboxID.hbox_num == 2){
+                hit_player_obj.fall_through = true;
+            }
+        }
+    break;
+    case AT_FTILT:
+    if (my_hitboxID.hbox_num < 3)
+    {
+        set_num_hitboxes(attack, 4)
+    }
+    break;
+}
+
 //#region Specials
     //#region N-special
-if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 2){
-    /*my_hitboxID.source.state = 100;
-    my_hitboxID.source.state_timer = 0;
-    my_hitboxID.source.image_index = 0;*/
+
+// if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 2){
+//     /*my_hitboxID.source.state = 100;
+//     my_hitboxID.source.state_timer = 0;
+//     my_hitboxID.source.image_index = 0;*/
     
-    my_hitboxID.source.state_timer = 39;
+//     my_hitboxID.source.state_timer = 39;
     
-    hit_player_obj.should_make_shockwave = false;
-}
+//     hit_player_obj.should_make_shockwave = false;
+// }
     //#endregion
     
     
     //#region U-special
-if(my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 2 && instance_find(obj_article1, true)){
+// if(my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 2 && instance_find(obj_article1, true)){
     
-    hit_player_obj.should_make_shockwave = false;
-    my_hitboxID.source.usp_forger_id = hit_player_obj.id;
-    if(hit_player_obj.soft_armor <= 0 && hit_player_obj.super_armor == false && hit_player_obj.invincible == false){
-        my_hitboxID.source.usp_forger_drag = true;
-    }
-}
+//     hit_player_obj.should_make_shockwave = false;
+//     my_hitboxID.source.usp_forger_id = hit_player_obj.id;
+//     if(hit_player_obj.soft_armor <= 0 && hit_player_obj.super_armor == false && hit_player_obj.invincible == false){
+//         my_hitboxID.source.usp_forger_drag = true;
+//     }
+// }
     
     //#endregion
     
     //#region Dspecial_air
-if(my_hitboxID.attack == AT_DSPECIAL_AIR 
-&& (my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 3)){
+// if(my_hitboxID.attack == AT_DSPECIAL_AIR 
+// && (my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 3)){
     
-    hit_player_obj.should_make_shockwave = false;
-    //hit_player_obj.hitpause = true;
-    //hit_player_obj.hitstop += 70;
-    DSPA_grab_id = hit_player_obj.id;
-    if(!DSPA_grab){
-        DSPA_timer = 0;
-    }
-    if(hit_player_obj.soft_armor <= 0 && hit_player_obj.super_armor == false && hit_player_obj.invincible == false){
-        DSPA_grab = true;
-    }
+//     hit_player_obj.should_make_shockwave = false;
+//     //hit_player_obj.hitpause = true;
+//     //hit_player_obj.hitstop += 70;
+//     DSPA_grab_id = hit_player_obj.id;
+//     if(!DSPA_grab){
+//         DSPA_timer = 0;
+//     }
+//     if(hit_player_obj.soft_armor <= 0 && hit_player_obj.super_armor == false && hit_player_obj.invincible == false){
+//         DSPA_grab = true;
+//     }
     
-}
+// }
     
     
     
@@ -47,9 +142,9 @@ if(my_hitboxID.attack == AT_DSPECIAL_AIR
     
     
     //#region Fspecial_2
-if(attack == AT_FSPECIAL_2){
-    fspec_jump = true;
-}    
+// if(attack == AT_FSPECIAL_2){
+//     fspec_jump = true;
+// }    
     
     
     //#endregion
@@ -87,43 +182,43 @@ if(attack == AT_FSPECIAL_2){
 
 //#region Strongs
     //#region Dstrong
-if ( my_hitboxID.attack == AT_DSTRONG && (my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 1 )) {
-    hit_player_obj.should_make_shockwave = false;
-    //hit_player_obj.hitpause = true;
-    //hit_player_obj.hitstop += 70;
-    Dgrab_id = hit_player_obj.id;
-    if(hit_player_obj.soft_armor <= 0 && hit_player_obj.super_armor == false && hit_player_obj.invincible == false){
-        Dgrab = true;
-    }
-    set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 10);
-}
+// if ( my_hitboxID.attack == AT_DSTRONG && (my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 1 )) {
+//     hit_player_obj.should_make_shockwave = false;
+//     //hit_player_obj.hitpause = true;
+//     //hit_player_obj.hitstop += 70;
+//     Dgrab_id = hit_player_obj.id;
+//     if(hit_player_obj.soft_armor <= 0 && hit_player_obj.super_armor == false && hit_player_obj.invincible == false){
+//         Dgrab = true;
+//     }
+//     set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 10);
+// }
 
-if ( my_hitboxID.attack == AT_DSTRONG && (my_hitboxID.hbox_num == 3)){
-    take_damage(player, 1, floor(-my_hitboxID.damage))
+// if ( my_hitboxID.attack == AT_DSTRONG && (my_hitboxID.hbox_num == 3)){
+//     take_damage(player, 1, floor(-my_hitboxID.damage))
     
-    reset_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER);
-}
+//     reset_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER);
+// }
 
-if ( my_hitboxID.attack == AT_DSTRONG && (my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 4)){
+// if ( my_hitboxID.attack == AT_DSTRONG && (my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 4)){
     
-    hit_player_obj.should_make_shockwave = false
-}
+//     hit_player_obj.should_make_shockwave = false
+// }
 
 //#endregion
 
-    //#region Ustrong
-if(my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num != 3){
-    hit_player_obj.should_make_shockwave = false;
-    if(my_hitboxID.hbox_num == 2){
-        hit_player_obj.fall_through = true;
-    }
+//     //#region Ustrong
+// if(my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num != 3){
+//     hit_player_obj.should_make_shockwave = false;
+//     if(my_hitboxID.hbox_num == 2){
+//         hit_player_obj.fall_through = true;
+//     }
+//}
         
     
-    
-}
-if(my_hitboxID.attack == AT_USTRONG){
-    sound_stop(asset_get("sfx_swipe_medium2"))
-}
+
+// if(my_hitboxID.attack == AT_USTRONG){
+//     sound_stop(asset_get("sfx_swipe_medium2"))
+// }
 
 
     
@@ -134,9 +229,10 @@ if(my_hitboxID.attack == AT_USTRONG){
 //#endregion
 
 //#region Dair Splat
-if(my_hitboxID.attack == AT_DAIR){
-    hit_player_obj.Dsplat = true;
-}
+// if(my_hitboxID.attack == AT_DAIR){
+//     hit_player_obj.Dsplat = true;
+//     old_vsp = -10
+// }
 
 //#endregion
 
@@ -149,6 +245,6 @@ if(my_hitboxID.attack == AT_FTILT && (my_hitboxID.hbox_num == 4 || my_hitboxID.h
 
 //#region Ftilt follow up
 
-if(my_hitboxID.attack == AT_FTILT && my_hitboxID.hbox_num < 3){
-    set_num_hitboxes(attack, 4)
-}
+// if(my_hitboxID.attack == AT_FTILT && my_hitboxID.hbox_num < 3){
+//     set_num_hitboxes(attack, 4)
+// }

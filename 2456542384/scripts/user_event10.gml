@@ -14,23 +14,23 @@ if (object_index == asset_get("obj_stage_article") || (object_index == oPlayer &
 
 // Print Debug phone setting
 
-if phone.phone_settings[phone.setting_print_debug]{
-	print_debug("CUSTOM 1           " + string(phone_custom_debug[0]));
-	print_debug("CUSTOM 2           " + string(phone_custom_debug[1]));
-	print_debug("CUSTOM 3           " + string(phone_custom_debug[2]));
-	print_debug("HITPAUSE           " + string(hitstop));
+if !phone_lightweight && phone.phone_settings[phone.setting_print_debug]{
+	print_debug("CUSTOM 1           " + phone_custom_debug[0]);
+	print_debug("CUSTOM 2           " + phone_custom_debug[1]);
+	print_debug("CUSTOM 3           " + phone_custom_debug[2]);
+	print_debug("HITPAUSE           " + hitstop);
 	print_debug("STATE               " + get_state_name(state));
 	print_debug("PREV STATE         " + get_state_name(prev_state));
 	print_debug("PREV PREV STATE   " + get_state_name(prev_prev_state));
-	print_debug("STATE TMR          " + string(state_timer));
-	print_debug("ATTACK              " + string(attack));
-	print_debug("WINDOW             " + string(window));
-	print_debug("WINDOW TMR       " + string(window_timer));
-	print_debug("SPR DIR             " + string(spr_dir));
-	print_debug("HSP                  " + string(hsp));
-	print_debug("VSP                  " + string(vsp));
-	print_debug("FREE                 " + string(free));
-	print_debug("FPS                  " + string(fps_real));
+	print_debug("STATE TMR          " + state_timer);
+	print_debug("ATTACK              " + attack);
+	print_debug("WINDOW             " + window);
+	print_debug("WINDOW TMR       " + window_timer);
+	print_debug("SPR DIR             " + spr_dir);
+	print_debug("HSP                  " + hsp);
+	print_debug("VSP                  " + vsp);
+	print_debug("FREE                 " + free);
+	print_debug("FPS                  " + fps_real);
 }
 
 
@@ -57,11 +57,13 @@ if phone_practice with phone{
 	
 	x = 10;
 	
-	var scrolled_left = (view_get_xview() + view_get_wview() * 0.5) < (other.room_width / 2 - 4);
+	// var scrolled_left = (view_get_xview() + view_get_wview() * 0.5) < (other.room_width / 2 - 4);
 	
-	scrolled_left = true; // make it ALWAYS fade when lowered
+	// scrolled_left = true; // make it ALWAYS fade when lowered
 	
-	image_alpha = lerp(image_alpha, 1 - 0.5 * (scrolled_left && !(other.phone_attacking && other.attack == other.AT_PHONE)), 0.25);
+	// image_alpha = lerp(image_alpha, 1 - 0.5 * (scrolled_left && !(other.phone_attacking && other.attack == other.AT_PHONE)), 0.25);
+	
+	image_alpha = lerp(image_alpha, 1 - 0.5 * (!(other.phone_attacking && other.attack == other.AT_PHONE)), 0.25);
 	
 	switch(state){
 		
@@ -314,20 +316,10 @@ if phone_practice with phone{
 	
 	with (side_bar){
 		
-		if scroll_y != scroll_y_target scroll_y = round(lerp(scroll_y, scroll_y_target, 0.5));
-		if scroll_x != scroll_x_target scroll_x = round(lerp(scroll_x, scroll_x_target, 0.5));
-		
-		if (other.stage_id == noone){
-			x = other.x + 106;
-			y = other.y - 216;
-			image_alpha = other.image_alpha;
-		}
-		
 		switch(state){
 			
 			case 0: // Closed
 			
-				image_index = 0;
 				if (other.state != 0 && (other.state != 5 || other.stage_id != noone) && should_open) setState(1);
 				break;
 			
@@ -354,6 +346,21 @@ if phone_practice with phone{
 				if ((other.state == 1 || other.state == 6 || other.state == 2) && should_open) setState(1);
 				break;
 			
+		}
+		
+		if (state){
+			if scroll_y != scroll_y_target scroll_y = round(lerp(scroll_y, scroll_y_target, 0.5));
+			if scroll_x != scroll_x_target scroll_x = round(lerp(scroll_x, scroll_x_target, 0.5));
+		}
+			
+		if (other.stage_id == noone){
+			x = other.x + 106;
+			y = other.y - 216;
+			image_alpha = other.image_alpha;
+		}
+		
+		else{
+			image_index = 0;
 		}
 		
 		state_timer++;
@@ -588,7 +595,7 @@ moves[i] = {
 	length: stored_length,
 	ending_lag: stored_ending_lag,
 	landing_lag: stored_landing_lag,
-	hitboxes: [0],
+	hitboxes: [],
 	num_hitboxes: p_get_num_hitboxes(atk_index),
 	timeline: stored_timeline,
 	misc: stored_misc
@@ -829,7 +836,7 @@ var stored_name = pullHitboxValue(atk_index, index, HG_MUNO_HITBOX_NAME, ((p_get
 
 
 
-moves[current_move].hitboxes[index] = {
+array_push(moves[current_move].hitboxes, {
 	name: stored_name,
 	active: stored_active,
 	damage: stored_damage,
@@ -842,7 +849,7 @@ moves[current_move].hitboxes[index] = {
 	hitpause_scale: stored_hitpause_scale,
 	misc: stored_misc,
 	parent_hbox: parent
-};
+});
 
 
 

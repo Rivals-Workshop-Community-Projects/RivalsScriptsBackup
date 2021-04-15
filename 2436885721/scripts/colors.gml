@@ -31,7 +31,7 @@ set_color_profile_slot_range( 6, 1, 42, 18 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 11 );
+set_num_palettes( 12 );
 
 // Cheetos
 set_color_profile_slot( 1, 0, 163, 91, 151 ); //HAIR
@@ -51,14 +51,14 @@ set_color_profile_slot( 2, 4, 215, 195, 191 ); //TENTACLE
 set_color_profile_slot( 2, 5, 199, 147, 158 ); //BELT
 set_color_profile_slot( 2, 6, 215, 195, 191 ); //FIRE
 
-// Ina alt palette
-set_color_profile_slot( 3, 0, 92, 83, 112 ); //HAIR
-set_color_profile_slot( 3, 1, 151, 159, 192 ); //EYES
-set_color_profile_slot( 3, 2, 122, 113, 143 ); //FUR
-set_color_profile_slot( 3, 3, 246, 236, 232 ); //CLOTH
-set_color_profile_slot( 3, 4, 92, 83, 112 ); //TENTACLE
-set_color_profile_slot( 3, 5, 241, 173, 106 ); //BELT
-set_color_profile_slot( 3, 6, 241, 173, 106 ); //FIRE
+// Krystal alt palette
+set_color_profile_slot( 3, 0, 82, 93, 164 ); //HAIR
+set_color_profile_slot( 3, 1, 86, 136, 139 ); //EYES
+set_color_profile_slot( 3, 2, 110, 122, 186 ); //FUR
+set_color_profile_slot( 3, 3, 211, 191, 88 ); //CLOTH
+set_color_profile_slot( 3, 4, 122, 110, 59 ); //TENTACLE
+set_color_profile_slot( 3, 5, 242, 242, 242 ); //BELT
+set_color_profile_slot( 3, 6, 168, 171, 101 ); //FIRE
 
 // Thine alt palette
 set_color_profile_slot( 4, 0, 250, 250, 240 ); //HAIR
@@ -131,6 +131,15 @@ set_color_profile_slot( 10, 3, 122, 12, 12 ); //CLOTH
 set_color_profile_slot( 10, 4, 207, 218, 255 ); //TENTACLE
 set_color_profile_slot( 10, 5, 97, 238, 242 ); //BELT
 set_color_profile_slot( 10, 6, 167, 185, 214 ); //FIRE
+
+// Green placeholder
+set_color_profile_slot( 11, 0, 43, 200, 70 ); //HAIR
+set_color_profile_slot( 11, 1, 55, 204, 0 ); //EYES
+set_color_profile_slot( 11, 2, 72, 134, 95 ); //FUR
+set_color_profile_slot( 11, 3, 222, 150, 150 ); //CLOTH
+set_color_profile_slot( 11, 4, 07, 218, 55 ); //TENTACLE
+set_color_profile_slot( 11, 5, 217, 228, 192 ); //BELT
+set_color_profile_slot( 11, 6, 230, 125, 120 ); //FIRE
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

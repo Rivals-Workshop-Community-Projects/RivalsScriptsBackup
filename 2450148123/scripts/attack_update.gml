@@ -545,10 +545,12 @@ if (attack == AT_EXTRA_1)
 {
 	initial_invince = 2;
 	suppress_stage_music(0);
-	if (window = 7 && window_timer == 9)
+	
+	if (window = 6)
 	{
 		install = true;
 		initial_invince = 0;
+		iasa_script();	
 	}
 }
 
@@ -558,6 +560,7 @@ vsp = 0;
 hsp = 0;
 can_move = false;
 can_fast_fall = false;
+
 
 
 }

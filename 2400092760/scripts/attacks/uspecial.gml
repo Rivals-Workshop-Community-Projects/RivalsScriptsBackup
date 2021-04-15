@@ -89,7 +89,7 @@ set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite")
 set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, hit_sprites[0]);
 set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
-set_hitbox_value(AT_USPECIAL, 2, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_USPECIAL, 2, HG_HITSTUN_MULTIPLIER, 0.6);
 
 set_hitbox_value(AT_USPECIAL, 3, HG_PARENT_HITBOX, 3);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_TYPE, 2);

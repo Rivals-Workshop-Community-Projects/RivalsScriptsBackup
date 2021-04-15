@@ -5,7 +5,7 @@ if my_hitboxID.attack == AT_DAIR && (my_hitboxID.hbox_num == 1 || my_hitboxID.hb
 }
 
 if my_hitboxID.attack == AT_USPECIAL && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 3) {
-    sound_play(asset_get("sfx_bird_screech"));
+    //sound_play(asset_get("sfx_bird_screech"));
 }
 
 /*
@@ -18,16 +18,34 @@ if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 3 {
     }
 }
 */
+
+
+//damage bonus
 var wt_attacks = [AT_JAB, AT_FTILT, AT_DTILT, AT_UTILT, AT_UAIR, AT_FAIR, AT_DAIR, AT_FSPECIAL, AT_USPECIAL];
 var damage_bonus = 0;
 for (var i = 0; i < array_length(wt_attacks); i++) {
     if my_hitboxID.attack == wt_attacks[i] {
         if !(my_hitboxID.attack == AT_DAIR && (my_hitboxID.hbox_num == 6 || my_hitboxID.hbox_num == 7)) {
-            damage_bonus = 1;
+            damage_bonus = -1;
             break;
         }
     }
 }
-if holding_wt && damage_bonus {
+if holding_wt && damage_bonus != 0 {
     take_damage(hit_player_obj.player, player, damage_bonus)
+}
+
+
+if my_hitboxID.attack == 49 && my_hitboxID.hbox_num == 1 {
+    trigger_fs = true;
+    fs_scene = 0;
+    fs_scene_timer = 0;
+    fs_hit_player = hit_player_obj.id;
+}
+
+if my_hitboxID.attack == 49 && my_hitboxID.hbox_num == 2 {
+    trigger_fs = false;
+    fs_scene = 0;
+    fs_scene_timer = 0;
+    fs_hit_player = undefined;
 }
