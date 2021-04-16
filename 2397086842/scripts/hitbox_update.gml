@@ -47,6 +47,10 @@ if attack == AT_DSPECIAL{
 
 if attack == AT_NSPECIAL  && hbox_num <= 3{
 
+if player_id.move_cooldown[AT_FSPECIAL_2] != 0 {
+	hit_priority = 0
+}
+
 if lockouttimer < 0 {
 	lockouttimer += 1
 }
@@ -282,7 +286,7 @@ if lockouttimer < 0 {
 
     nearbyhitbox2 = collision_circle( x - hsp, y - vsp , 32, asset_get("pHitBox"), true, true ) 
 	if nearbyhitbox2 != noone {
-	   if nearbyhitbox2.type == 2 && nearbyhitbox2.hit_effect_x != -0.69 && hitbox_timer > 3 && nearbyhitbox2.hit_priority >= 1{
+	   if nearbyhitbox2.type == 2 && nearbyhitbox2.hit_effect_x != -0.69 && hitbox_timer > 5 && nearbyhitbox2.hit_priority >= 1{
     	    for (var i = 1; i < 20; i++) can_hit[i] = true
 	   	    shake_camera(4,4)
 	   	    if hitbox_timer > 10 {
@@ -356,7 +360,7 @@ if lockouttimer < 0 {
                case 1 :
                with nearbyhitbox.player_id {
                create_hitbox(AT_NSPECIAL,2,other.x,other.y)
-               create_hitbox(AT_NSPECIAL,10,other.x,other.y)
+               create_hitbox(AT_NSPECIAL,10,other.x,other.y + 20)
                }
                
                break;
@@ -364,14 +368,14 @@ if lockouttimer < 0 {
                case 2 :
                with nearbyhitbox.player_id {
                create_hitbox(AT_NSPECIAL,3,other.x,other.y)
-               create_hitbox(AT_NSPECIAL,10,other.x,other.y)
+               create_hitbox(AT_NSPECIAL,10,other.x,other.y + 20)
                }
                break;
                
                case 3 :
                with nearbyhitbox.player_id {
                create_hitbox(AT_NSPECIAL,3,other.x,other.y)
-               create_hitbox(AT_NSPECIAL,10,other.x,other.y)
+               create_hitbox(AT_NSPECIAL,10,other.x,other.y + 20)
                }
                break;
               }

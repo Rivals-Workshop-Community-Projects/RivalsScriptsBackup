@@ -19,17 +19,29 @@ switch (get_player_color(player))
     //tanjiro
     case 24:
     {
-        if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack != AT_TAUNT && attack != AT_TAUNT_2 && attack != AT_EXTRA_1)
+        if ("state" in self)
         {
-            if (get_player_damage(player) < 100)
-                set_character_color_slot(0, 102, 182, 222, 1);
-            else if (state_timer % 3)
-                set_character_color_slot(0, 242, 69, 27, 1);
+            if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack != AT_TAUNT && attack != AT_TAUNT_2 && attack != AT_EXTRA_1)
+            {
+                if (get_player_damage(player) < 100)
+                    set_character_color_slot(0, 102, 182, 222, 1);
+                else if (state_timer % 3)
+                    set_character_color_slot(0, 242, 69, 27, 1);
+                else
+                    set_character_color_slot(0, 254, 251, 112, 1);
+            }
             else
-                set_character_color_slot(0, 254, 251, 112, 1);
+                set_character_color_slot(0, 24, 30, 37, 1);
         }
-        else
-            set_character_color_slot(0, 24, 30, 37, 1);
+    }
+    break;
+    //astral
+    case 26:
+    {
+        AstralColours(1, 219, 64, 180, 82, 64, 219 );
+        AstralColours(2, 158, 35, 105, 35, 37, 158 );
+        AstralColours(3, 173, 20, 181, 20, 146, 181);
+        AstralColours(4, 109, 34, 122, 34, 91, 122 );
     }
     break;
 }
@@ -54,4 +66,14 @@ else outline_color = outline_colour;
 if (object_index == asset_get("draw_result_screen") && gpu_get_alphatestfunc())
 {
     winner_name = "Void Dragon Lonin wins!";
+}
+
+#define AstralColours(_index, _r, _g, _b, _r2, _g2, _b2)
+{
+    var lerpAmount = y/room_height;
+    set_character_color_slot(   _index,
+                                floor(lerp(_r, _r2, lerpAmount)),
+                                floor(lerp(_g, _g2, lerpAmount)),
+                                floor(lerp(_b, _b2, lerpAmount)),
+                                1);
 }

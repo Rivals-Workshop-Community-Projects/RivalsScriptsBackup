@@ -857,15 +857,6 @@ if (attack == AT_NSPECIAL){
 
 
 
-if attack == AT_FSPECIAL {
-	vsp /= 1.4
-	
-}
-
-if  attack == AT_FSPECIAL {
-	hsp /= 1.4
-	
-}
 
 if (attack == AT_FSPECIAL){
 	

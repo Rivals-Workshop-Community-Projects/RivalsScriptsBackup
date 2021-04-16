@@ -5,11 +5,11 @@ set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial"));
 set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
 
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 19);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 11);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 18);
 
 //the grab
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 4);
@@ -17,7 +17,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 
 //whiff
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 18);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_WHIFFLAG, 1);

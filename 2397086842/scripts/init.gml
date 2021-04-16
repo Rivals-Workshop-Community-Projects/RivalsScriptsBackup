@@ -22,6 +22,7 @@ farx = 0
 fary = 0
 sagemode = 0
 sagefire = 0
+rolling = 0
 
 killwho = 0
 killattack = 0

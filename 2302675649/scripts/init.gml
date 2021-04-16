@@ -198,6 +198,8 @@ ncode3 = ncode1;
 steve_death_message = "Transphobia is gone";
 fs_char_chosen_final_smash = "custom";
 fs_char_portrait_y = 96;
+kirbyability = 16;
+swallowed = 0;
 
 // aura
 aura = false;

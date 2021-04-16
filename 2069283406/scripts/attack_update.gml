@@ -12,6 +12,10 @@ if attack == AT_NAIR && !hitpause{
 
 }
 
+
+
+
+
 if shade = 1 {
 	
 	shadeshine = 1
@@ -51,7 +55,85 @@ if attack == AT_FAIR{
 	
 }
 
+if state_timer == 1 {
+	 set_attack_value(AT_UAIR, AG_CATEGORY, 1);
+	 set_attack_value(AT_NAIR, AG_CATEGORY, 1);
+	 set_attack_value(AT_BAIR, AG_CATEGORY, 1);
+	 set_attack_value(AT_FAIR, AG_CATEGORY, 1);
+}
 if attack == AT_JAB{
+	
+	if window == 3 && window_timer >= 2 && attack_pressed {
+		 if up_down  {
+        set_attack (AT_UTILT)
+        window = 1
+        window_timer = 0
+       }
+       
+       if down_down {
+        set_attack (AT_DTILT)
+        window = 1
+        window_timer = 0
+       }
+       
+       if (left_down && spr_dir == -1) or (right_down && spr_dir == 1){
+        set_attack (AT_FTILT)
+        window = 1
+        window_timer = 0
+       }
+       
+       if (left_down && spr_dir == 1) or (right_down && spr_dir == -1){
+       	spr_dir *= -1
+        set_attack (AT_FTILT)
+        window = 1
+        window_timer = 0
+       }
+	}
+	
+	   if window == 6 && window_timer >= 2 && attack_pressed {
+               
+       if up_down  {
+           hsp = 4*spr_dir
+           vsp = -10
+        set_attack_value(AT_UAIR, AG_CATEGORY, 2);
+        set_attack (AT_UAIR)
+        window = 1
+        window_timer = 5
+        sound_play(asset_get("sfx_swipe_heavy2"));
+       }
+       
+       if down_down {
+           hsp = 3*spr_dir
+           vsp = -8
+        set_attack_value(AT_NAIR, AG_CATEGORY, 2);
+        set_attack (AT_NAIR)
+        window = 1
+        window_timer = 4
+        sound_play(asset_get("sfx_swipe_heavy2"));
+       }
+       
+       if (left_down && spr_dir == -1) or (right_down && spr_dir == 1){
+           hsp = 3*spr_dir
+           vsp = -8
+           set_attack (AT_FAIR)
+           set_attack_value(AT_FAIR, AG_CATEGORY, 2);
+           window = 1
+           window_timer = 5
+           sound_play(asset_get("sfx_swipe_heavy2"));
+       }
+       
+       if (left_down && spr_dir == 1) or (right_down && spr_dir == -1){
+           hsp = -3*spr_dir
+           vsp = -8
+           set_attack (AT_BAIR)
+           set_attack_value(AT_BAIR, AG_CATEGORY, 2);
+           window = 1
+           window_timer = 5
+           sound_play(asset_get("sfx_swipe_heavy2"));
+       }
+       
+    }
+    
 	if window == 7 && window_timer == 1 {
 		sound_play(asset_get("sfx_swipe_heavy1"));
 	}
@@ -179,6 +261,10 @@ if attack == AT_DSTRONG {
 
 
 if attack == AT_DATTACK {
+	
+	if has_hit_player or window == 4{
+	   hsp /= 1.1	
+	}
 	
 	if window == 1 && window_timer == 1{
 		sound_play(asset_get("sfx_jumpground"));

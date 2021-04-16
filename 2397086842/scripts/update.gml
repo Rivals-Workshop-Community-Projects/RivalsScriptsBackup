@@ -1,5 +1,23 @@
 ///
 
+if  move_cooldown[AT_FSPECIAL_2] = 9{
+	
+create_hitbox(AT_NSPECIAL, 1 ,hit_player_obj.x,hit_player_obj.y - 40)
+  move_cooldown[AT_FSPECIAL_2] = 0
+}
+
+if  move_cooldown[AT_FSPECIAL_2] = 5{
+	
+create_hitbox(AT_NSPECIAL, 2 ,hit_player_obj.x,hit_player_obj.y - 40)
+  move_cooldown[AT_FSPECIAL_2] = 0
+}
+
+if  move_cooldown[AT_FSPECIAL_2] = 1{
+	
+create_hitbox(AT_NSPECIAL, 3 ,hit_player_obj.x,hit_player_obj.y - 40)
+  move_cooldown[AT_FSPECIAL_2] = 0
+}
+
 
 if get_gameplay_time() < 92 {
 	set_attack(AT_EXTRA_1)
@@ -64,6 +82,10 @@ if sagemode != 0 {
 
 
 if state == PS_AIR_DODGE {
+	if state_timer == 0 {
+		rolling = 0
+	}
+	
 	if state_timer < 12 {
 		if state_timer > 1 {
 		hsp = 7*spr_dir
@@ -91,6 +113,13 @@ if state == PS_AIR_DODGE {
 		airvsp /= 1.01
 	}
 	
+	if state_timer == 15 && rolling = 1 {
+		set_attack(AT_EXTRA_3)
+		window = 1
+		window_timer = 1
+	}
+	
+		
 		if state_timer == 20 {
 			state_timer = 99
 			window_timer = 99
@@ -100,9 +129,10 @@ if state == PS_AIR_DODGE {
 
 
 if state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD {
+	rolling = 1
 	y -= 10
 	set_state (PS_AIR_DODGE)
-	state_time = 0
+	state_time = 2
 }
 
 if instance_number(oPlayer) == 2 {

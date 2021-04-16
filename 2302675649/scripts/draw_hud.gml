@@ -38,6 +38,7 @@ if ("rollArray" in self)
 				AddText("Advanced Tutorials");
 				AddText("Change Notes");
 				AddText("Shrine of Light Discord");
+				AddText("A Message..");
 				DrawTutBlock();
 				DrawTutText();
 				break;
@@ -425,6 +426,18 @@ if ("rollArray" in self)
 						AddText("Added Swordfighter alt");
 						AddText("Added Slayer of Demons alt");
 						break;
+					case 28:
+						AddText("v1.28 - 16 Apr 2021");
+						AddText("");
+						AddText("Added Kirby support");
+						AddText("");
+						AddText("Added anti-Duane code");
+						AddText("");
+						AddText("Added Thunderclap Flash alt");
+						AddText("Added Astral alt");
+						AddText("");
+						AddText("Added a message..");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -520,6 +533,65 @@ if ("rollArray" in self)
 				DrawTutorialText();
 				draw_sprite_ext(sprite_get("discord"), 0, 16, temp_y-76+floor(tutAlpha*4)*2-8, 2, 2, 0, c_white, tutAlpha);
 				draw_sprite_ext(sprite_get("hikaru"), state_timer/(43/16), 64, temp_y-96+floor(tutAlpha*4)*2-8, 2, 2, 0, c_white, tutAlpha);
+				break;
+			case 8:
+				var a = 0;
+				if (string_count("2211945959", string(get_stage_data(SD_ID))) > 0)
+				{
+					if ("jabby" in hit_player_obj && "temp_level" in hit_player_obj && hit_player_obj.temp_level == 1)
+					{
+						a = 1;
+						AddText("Look a star is coming.");
+						AddText("");
+						AddText("");
+						AddText("");
+						AddText("");
+						AddText("");
+					}
+					else
+					{
+						AddText("Look a star is coming.");
+						AddText("I need more time to prepare.");
+						AddText("I am not ready.");
+					}
+				}
+				else if (string_count("2210984773", string(get_stage_data(SD_ID))) > 0)
+				{
+					if ("hikaru" in self && hikaru == "lost")
+					{
+						AddText("I... need some space");
+						AddText("Or time...");
+						AddText("Or both");
+						AddText("");
+						AddText("No more anxiety");
+					}
+					else
+					{
+						AddText("I-");
+						repeat (16)
+							AddText("I'm sorry");
+						AddText("I'm not cut out for this");
+						AddText("You wouldn't get it");
+						AddText("I'm sorry...");
+						AddText("");
+						AddText("...I'm feeling too anxious");
+					}
+				}
+				else
+				{
+					AddText("I could never find the right way to tell you");
+					AddText("Have you noticed I've been gone?");
+					AddText("'Cause I left behind the home that you made me");
+					AddText("But I will carry it along");
+					AddText("");
+					AddText("And it's a long way forward, so trust in me");
+					AddText("I'll give them shelter, like you've done for me");
+					AddText("And I know, I'm not alone, you'll be watching over us");
+					AddText("Until you're gone");
+				}
+				DrawTutorialBlock();
+				DrawTutorialText();
+				if (a) draw_sprite_ext(sprite_get("a"), 0, 16, temp_y-98+floor(tutAlpha*4)*2-8, 1, 1, 0, c_white, tutAlpha);
 				break;
 		}
 		draw_set_alpha(1);
@@ -648,6 +720,8 @@ if ("rollArray" in self)
 				return "Bill Kiley - You Will Never Know";
 			else if (string_count("2392386094", get_stage_data(SD_ID)) > 0)
 				return "ARCHYTAS AAAAAAAAAAAAAA";
+			else if (string_count("2457173325", get_stage_data(SD_ID)) > 0)
+				return "Hyper Potions - Porta Vista";
 			return "Darude - Sandstorm";
 	}
 }

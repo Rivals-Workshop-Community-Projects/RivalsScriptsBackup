@@ -97,6 +97,18 @@ if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num <= 6 {
    }
 
 }
+
+if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 4 {
+  move_cooldown[AT_FSPECIAL_2] = 12
+}
+
+if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 5 {
+  move_cooldown[AT_FSPECIAL_2] = 7
+}
+if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 6 {
+  move_cooldown[AT_FSPECIAL_2] = 4
+}
+
 if my_hitboxID.attack == AT_DSPECIAL {
     create_hitbox(AT_NSPECIAL, 1, hit_player_obj.x, hit_player_obj.y - 30)
     

@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 28;
+	var noOfPatches = 29;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -26,7 +26,7 @@ if (practice)
 			break;
 		case 1: // main menu
 			Invince();
-			MenuNav(4, 0, MainMenuNext());
+			MenuNav(5, 0, MainMenuNext());
 			break;
 		case 2: // Basic Tut Menu
 			Invince();
@@ -55,6 +55,7 @@ if (practice)
 			}
 			break;
 		case 7: // Discord Link
+		case 8: // A message
 			Invince();
 			MenuNav(0, 1, -1);
 			break;
@@ -98,20 +99,30 @@ if (state == PS_AIR_DODGE && state_timer == 0)
 // portal flash
 if (teleFlash > 0) teleFlash--;
 
-// portal vfx
 with (oPlayer)
 {
+	// portal vfx
 	if ("afterImageLonin" in self && afterImageLonin != -1 && afterImageLonin.lonin == other.player)
 	{
 		afterImageLonin.alpha--;
 		if (afterImageLonin.alpha <= 0) afterImageLonin = -1;
 	}
+	// shake
 	if ("shakeObj" in self && shakeObj != -1 && shakeObj.lonin == other.player && shakeObj.timer > 0)
 	{
 		if (shakeObj.timer % 5 == 0) x += shakeObj.timer%2==0?-6:6;
 		shakeObj.timer--;
 	}
+	// uspec outline
 	if ("outlineState" in self && outlineState != 0 && state_cat != SC_HITSTUN) outlineState = 0;
+
+	// Duane hurtbox
+	if (url == "1867634411")
+	{
+		hurtbox_spr = sprite_index;
+		crouchbox_spr = sprite_index;
+	}
+
 }
 
 // transcend
@@ -150,12 +161,116 @@ switch (state)
 	case PS_WALK:
 		if (state_timer % 22 == 14) PlayRandomStep();
 		break;
-	default:
+	case PS_HITSTUN:
+		if ("temp_level" in self && "temp_level" in hit_player_obj && aura && !hitpause && state_timer > 20) set_state(PS_TUMBLE);
 		break;
 }
 
 // runes
 if (has_rune("A") && jsTimer == 0) jsTimer = 10;
+
+// Kirby
+if (swallowed)
+{
+	swallowed = 0;
+	var kirbSpr = sprite_get("nspecialKirby");
+	var kirbHurt = sprite_get("nspecialKirby_hurt");
+	var slash1 = sound_get("slash1");
+	var hit2 = sound_get("hit2");
+	with (enemykirby)
+	{
+		set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
+		set_attack_value(AT_EXTRA_3, AG_SPRITE, kirbSpr);
+		set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 5);
+		set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, kirbHurt);
+		
+		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
+		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 6);
+		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 2);
+		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HAS_SFX, 1);
+		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX, asset_get("sfx_ori_ustrong_charge"));
+		
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_TYPE, 9);
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 9);
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAMES, 3);
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAME_START, 2);
+		
+		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_TYPE, 1);
+		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 4);
+		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAMES, 2);
+		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAME_START, 4);
+		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_HAS_SFX, 1);
+		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_SFX, slash1);
+		
+		set_window_value(AT_EXTRA_3, 4, AG_WINDOW_TYPE, 1);
+		set_window_value(AT_EXTRA_3, 4, AG_WINDOW_LENGTH, 4);
+		set_window_value(AT_EXTRA_3, 4, AG_WINDOW_ANIM_FRAMES, 1);
+		set_window_value(AT_EXTRA_3, 4, AG_WINDOW_ANIM_FRAME_START, 6);
+		
+		set_window_value(AT_EXTRA_3, 5, AG_WINDOW_TYPE, 1);
+		set_window_value(AT_EXTRA_3, 5, AG_WINDOW_LENGTH, 18);
+		set_window_value(AT_EXTRA_3, 5, AG_WINDOW_ANIM_FRAMES, 3);
+		set_window_value(AT_EXTRA_3, 5, AG_WINDOW_ANIM_FRAME_START, 7);
+		set_window_value(AT_EXTRA_3, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
+		
+		set_num_hitboxes(AT_EXTRA_3, 1);
+		
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 1);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 4);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 4);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_SHAPE, 1);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, 46);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, -20);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 80);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 40);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 2);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 4);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 40);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 6);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.8);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 5);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 1);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, hit2);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 306);
+	}
+}
+
+if ("enemykirby" in self && enemykirby != undefined) with (oPlayer) if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_EXTRA_3)
+{
+    trigger_b_reverse();
+	switch (window)
+	{
+	    case 1:
+	        nspecCharge = 0;
+	        if (!free) hsp = -3 * spr_dir;
+	        break;
+	    case 2:
+	        if (special_down || nspecCharge < 6)
+	        {
+	            can_shield = nspecCharge < nspecMax;
+	            if (nspecCharge == nspecMax - 1)
+	            {
+	                sound_play(asset_get("mfx_star"));
+	                with (other) {var owo = spawn_hit_fx(other.x+6*other.spr_dir,other.y-28,shinestar_effect); owo.depth = -10;}
+	            }
+	            if (nspecCharge < nspecMax) nspecCharge++;
+	            else shake_camera(2,1);
+	        }
+	        else
+	        {
+	            ++window;
+	            window_timer = 0;
+	            set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, lerp(6, 9, (nspecCharge-6)/(nspecMax-6)));
+	            set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, lerp(0.8, 2, (nspecCharge-6)/(nspecMax-6)));
+	            set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, lerp(5, 60, (nspecCharge-6)/(nspecMax-6)));
+	            set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, lerp(4, 18, (nspecCharge-6)/(nspecMax-6)));
+	        }
+	        break;
+	    case 3:
+	        if (!free) hsp = 6 * spr_dir;
+	        break;
+	}
+}
 
 init_shader();
 
@@ -234,6 +349,8 @@ init_shader();
 			return tutMenu + 2;
 		case 3:
 			return 7;
+		case 4:
+			return 8;
 	}
 	return 0;
 }

@@ -24,6 +24,23 @@ if ("afterImageLonin" in self)
 		FlagPart(make_colour_rgb(251, 238, 31), 1/3, 2/3); // yellow
 		gpu_set_fog(0, c_white, 0, 0);
 	}
+
+	// Kirby
+	if ("other_player_id" in self && "enemykirby" in other_player_id && other_player_id.enemykirby != undefined && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_EXTRA_3 && window == 2)
+	{
+		gpu_set_blendmode(bm_add);
+		shader_start();
+		draw_sprite_ext(sprite_index, image_index, x+nspecCharge/16+random_func(4,3,1), y+random_func(6,3,1)-1, spr_dir, 1, 0, c_fuchsia, 1);
+		draw_sprite_ext(sprite_index, image_index, x-nspecCharge/16-random_func(5,3,1), y+random_func(7,3,1)-1, spr_dir, 1, 0, c_aqua, 1);
+		shader_end();
+		gpu_set_blendmode(bm_normal);
+		if (nspecCharge == nspecMax)
+		{
+			draw_set_alpha(min(state_timer-nspecMax, 25)/100);
+			draw_rectangle_color(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
+			draw_set_alpha(1);
+		}
+	}
 }
 
 #define FlagPart(_colour, _heightRatio, _xOffsetRatio)

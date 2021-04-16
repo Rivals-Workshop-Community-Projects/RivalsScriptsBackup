@@ -846,7 +846,7 @@ if get_player_color(player) == 5{
 	
 }
 
-if get_player_color(player) == 6 {
+if get_player_color(player) == 6{
 	
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);

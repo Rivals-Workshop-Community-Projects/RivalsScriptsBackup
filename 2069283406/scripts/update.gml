@@ -224,20 +224,7 @@ if(player_id == other.id) {
 /// Dramatic death 
 
 if autodash = 0 {
-if state == PS_WALK_TURN && dashing == 1 {
-	state = PS_DASH_START
-}
 
-if (state == PS_IDLE && state_timer > 2) or state == PS_IDLE_AIR {
-	dashing = 0
-}
-
-if state == PS_DASH {
-	dashing = 1
-	if left_down or right_down {
-    state = PS_DASH_START
-	}
-}
 }
 
 if get_player_color(player) == 5{
@@ -347,7 +334,7 @@ if get_gameplay_time() % 2 = 0 {
 if state == PS_DASH_START {
     
   if state_timer > 2 {
-         hsp = (15 - ((state_timer) * 1.5)) * spr_dir
+         hsp = (15 - ((state_timer) * 1)) * spr_dir
   }
   
 }
@@ -489,6 +476,12 @@ if state == PS_DASH_START && get_player_color(player) == 5 && sakura == 1 {
 		
 	}
 
+}
+
+if state == PS_DASH && image_index % 4 == 0 {
+	sound_stop(asset_get("sfx_land"));
+	sound_play(asset_get("sfx_land"));
+	
 }
 
 if state == PS_WAVELAND && get_player_color(player) == 5 && sakura == 1 {

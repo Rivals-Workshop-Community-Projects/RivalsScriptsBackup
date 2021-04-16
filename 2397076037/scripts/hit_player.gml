@@ -16,9 +16,13 @@ inactive = 120
  }
  
   if  (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) {
- 		rankm += 30
+ 		rankm += 60
  		    sound_play(sound_get("SpaceCut"))
  		    shake_camera(2,6)
+ }
+ 
+  if  (my_hitboxID.attack == AT_EXTRA_1) {
+ 		rankm += 40
  }
  
  if  (my_hitboxID.attack == AT_NSPECIAL) {
@@ -132,3 +136,5 @@ if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1 {
 	stormtarget = hit_player_obj
 	create_hitbox(AT_FSPECIAL, 3, hit_player_obj.x, hit_player_obj.y - 40 )
 }
+
+

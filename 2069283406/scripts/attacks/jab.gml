@@ -145,5 +145,5 @@ set_hitbox_value(AT_JAB, 4, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_JAB, 4, HG_VISUAL_EFFECT_X_OFFSET, 24);
 set_hitbox_value(AT_JAB, 4, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_JAB, 4, HG_HITBOX_GROUP, 2);
-set_hitbox_value(AT_JAB, 4, HG_HITSTUN_MULTIPLIER, .76);
+set_hitbox_value(AT_JAB, 4, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_JAB, 4, HG_VISUAL_EFFECT, 303);

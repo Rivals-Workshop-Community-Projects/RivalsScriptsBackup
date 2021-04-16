@@ -31,7 +31,7 @@ last_hit_stun = false;
 kirbyability = 18
 
 feri_costume = sprite_get("feri");
-sprite_change_offset("feri", 84, 113);
+sprite_change_offset("feri", 84, 114);
 
 // STAT NAME		ZETTER VALUE   BASECAST RANGE   NOTES
 

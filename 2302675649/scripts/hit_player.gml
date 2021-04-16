@@ -105,6 +105,12 @@ if (aura)
 	hitstop_full = hitstop;
 }
 
+// Duane
+if (hit_player_obj.url == "1867634411")
+{
+	hit_player_obj.y = room_height*69;
+}
+
 #define ApplyFlag()
 {
 	switch (get_player_color(player))
