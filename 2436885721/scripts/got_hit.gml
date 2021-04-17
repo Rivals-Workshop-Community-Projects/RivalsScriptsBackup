@@ -11,7 +11,7 @@ if move_cooldown[AT_USPECIAL] != 0{
 	move_cooldown[AT_USPECIAL] = 0;
 	usedUspecial = false;
 	}
-
+	
 //reconsider dying
 
 var temp_angle = get_hitbox_angle(enemy_hitboxID);

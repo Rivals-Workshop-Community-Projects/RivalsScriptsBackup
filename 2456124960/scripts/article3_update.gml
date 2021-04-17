@@ -126,8 +126,7 @@ if (state == 1){
 		detonating = false;
 		detonatePossible = false;
 		spr_dir *= -1;
-		myHSpeed = -16.5;
-		myVSpeed = -4;			
+		myHSpeed *= 2;	
 		lifetime = 26;
 		hb = create_hitbox(AT_FSPECIAL, 1, x, y);
 		hb.player = parriedPlayer;

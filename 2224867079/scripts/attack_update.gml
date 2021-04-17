@@ -418,3 +418,73 @@ if (attack == AT_JAB && RedMode == true){
 		can_attack = true;
 	}
 }
+
+//New Taunt
+if attack == AT_TAUNT {
+    //Randomizes the sound you get
+    if (window == 1 && window_timer == 1){
+        tauntnumber = random_func( 0, 9, true );
+    }
+    if (window == 1 && window_timer >= 2){
+		switch (tauntnumber){
+			case(0):
+				set_window_value(AT_TAUNT_2, 2, AG_WINDOW_LENGTH, 50);
+			break;
+			case(1):
+				set_window_value(AT_TAUNT_2, 2, AG_WINDOW_LENGTH, 120);
+			break;
+			case(2):
+				set_window_value(AT_TAUNT_2, 2, AG_WINDOW_LENGTH, 120);
+			break;
+			case(3):
+				set_window_value(AT_TAUNT_2, 2, AG_WINDOW_LENGTH, 120);
+			break;
+			case(4):
+				set_window_value(AT_TAUNT_2, 2, AG_WINDOW_LENGTH, 120);
+			break;
+			case(5):
+				set_window_value(AT_TAUNT_2, 2, AG_WINDOW_LENGTH, 170);
+			break;
+			case(6):
+				set_window_value(AT_TAUNT_2, 2, AG_WINDOW_LENGTH, 120);
+			break;
+			case(7):
+				set_window_value(AT_TAUNT_2, 2, AG_WINDOW_LENGTH, 50);
+			break;
+			case(8):
+				set_window_value(AT_TAUNT_2, 2, AG_WINDOW_LENGTH, 50);
+			break;
+    	}
+    }
+    if (window == 2 && window_timer == 1){
+		switch (tauntnumber){
+			case(0):
+				sound_play(sound_get("Taunt1"));
+			break;
+			case(1):
+				sound_play(sound_get("Taunt3"));
+			break;
+			case(2):
+				sound_play(sound_get("Taunt6"));
+			break;
+			case(3):
+				sound_play(sound_get("Taunt7"));
+			break;
+			case(4):
+				sound_play(sound_get("Taunt8"));
+			break;
+			case(5):
+				sound_play(sound_get("Taunt9"));
+			break;
+			case(6):
+				sound_play(sound_get("Taunt11"));
+			break;
+			case(7):
+				sound_play(sound_get("Taunt12"));
+			break;
+			case(8):
+				sound_play(sound_get("Taunt13"));
+			break;
+		}
+    }
+}

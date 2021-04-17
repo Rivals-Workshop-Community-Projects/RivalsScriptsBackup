@@ -196,20 +196,9 @@ if(blood_timer != 0)
 	
 	if(blood_timer == 0)
 	{
-		if(attack == AT_USPECIAL_2)
+		if(attack == AT_USPECIAL_2){
 			var bloodfx = spawn_hit_fx(hit_player_obj.x - (0*hit_player_obj.spr_dir),hit_player_obj.y-50,redupb2);
-		else if(attack == AT_USTRONG)
-		{
-			spr_dir*=-1;
-			var bloodfx = spawn_hit_fx(hit_player_obj.x + (spr_dir*40),hit_player_obj.y-120,blood2);
-			spr_dir*=-1;
-		}
-		else if(attack == AT_DSTRONG)
-		{
-			spr_dir*=-1;
-			var bloodfx = spawn_hit_fx(hit_player_obj.x - (60*hit_player_obj.spr_dir),hit_player_obj.y-90,blood);
-			spr_dir*=-1;
-		}
+	}
 	    bloodfx.depth = depth - 999;
 	}
 }

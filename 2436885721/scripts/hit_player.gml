@@ -77,3 +77,8 @@ if(my_hitboxID.attack==AT_NAIR) && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbo
         hit_player_obj.debuff = true;
     }
 }
+
+//if(my_hitboxID.attack==AT_BAIR){
+//	 old_hsp = 3*spr_dir;
+//	 old_vsp = 0;
+//}

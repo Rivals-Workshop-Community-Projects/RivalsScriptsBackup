@@ -379,6 +379,7 @@ if (attack == AT_FSPECIAL) {
 		if (actionMeterFill > 199) {
 			set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 1);
 			if (window_timer < 5) {window_timer = 5;}
+			if (right_down - left_down != 0) {spr_dir = sign(right_down-left_down);}
 		} else {
 			set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 9);		
 			actionMeterFill += 1.5;

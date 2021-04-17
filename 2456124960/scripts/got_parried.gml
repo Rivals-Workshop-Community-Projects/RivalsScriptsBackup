@@ -8,7 +8,7 @@ activeBuff = 0;
 activeBuffUses = 0;
 
 if (my_hitboxID.attack == AT_FSPECIAL) {
-	if (my_hitboxID.hbox_num == 2) {
+	if (my_hitboxID.hbox_num == 1) {
 		flash.gotParried = 1;
 		flash.parriedPlayer = hit_player;
 	}

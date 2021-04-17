@@ -1,5 +1,10 @@
 //set_attack
-if (attack == AT_TAUNT && RedMode){
+if (attack == AT_TAUNT && (down_down)){
+	if (RedMode == true){
+		set_attack_value(AT_TAUNT_2, AG_SPRITE, sprite_get("red_taunt"));
+	} else {
+		set_attack_value(AT_TAUNT_2, AG_SPRITE, sprite_get("taunt"));
+	}
 	attack = AT_TAUNT_2;
 }
 

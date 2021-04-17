@@ -1,4 +1,20 @@
 /*
+-- V2.18 --
+
+Cosmetic Changes:
+- New taunt (old taunt moved to down taunt)
+
+
+-- V2.17 --
+
+Cosmetic Changes:
+- Tweaked Colors.gml
+- Made it so it displays Red Uspecial's old VFX if not at kill percent
+- Blue Uspecial now has less anim frames on the final window
+- New Alts
+- The red uspecial effect should work better on certain alts (probably not as well as it should, i'm gonna try find a better solution)
+
+
 -- V2.16 --
 
 Cosmetic Changes:

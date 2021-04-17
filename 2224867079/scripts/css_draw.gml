@@ -89,7 +89,7 @@ user_event(12);
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-var num_alts = 9;
+var num_alts = 12;
 var alt_cur = get_player_color(player);
 
  
@@ -106,7 +106,10 @@ alt_name[7]  = "Troll";
 alt_name[8]  = "Abyss";
 alt_name[9]  = "Nega";
 alt_name[10]  = "Kawaii";
- 
+alt_name[11]  = "Bugingi";
+alt_name[12]  = "Calda";
+alt_name[13]  = "Quil";
+
  
 //Alt
  

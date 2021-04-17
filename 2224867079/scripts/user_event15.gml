@@ -254,7 +254,7 @@ pho_has_daro_codec = 0; // Dialogue for the Daroach boss fight
 
 
 if (object_index == asset_get("cs_playerbg_obj")){
-	num_alts = 11; // Number of alt costumes; controls how many appear on the CSS
+	num_alts = 14; // Number of alt costumes; controls how many appear on the CSS
 	exit;
 }
 
@@ -458,27 +458,43 @@ with phone{
 //	initPatchWords("Fnuuy joke
 //	- waog");
 //	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0);
+	//2.18
+	initPatch("2.18	", "16 April, 2021");
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- New taunt (old taunt moved to down taunt)")
+	//2.17
+	initPatch("2.17	", "16 April, 2021");
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Tweaked Colors.gml
+	- Made it so it displays Red Uspecial's old VFX if not at kill percent
+	- Blue Uspecial now has less anim frames on the final window
+	- New Alts
+	- The red uspecial effect should work better on certain alts (probably not as well as it should, i'm gonna try find a better solution)")
 	//2.16
+	initPatch("2.16", "12 April, 2021");
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Made it so it displays Red Uspecial's old VFX if not at kill percent")
+	//2.15
 	initPatch("2.15", "11 April, 2021");
 	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
 	initPatchWords("- New Red Uspecial Effect")
-	//2.15
-	initPatch("2.15", "10 April, 2021");
+	//2.14
+	initPatch("2.14", "10 April, 2021");
 	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
 	initPatchWords("- Fspecial has less active frames (12->8)
 	- Fspecial now has more recovery frames (6->8)");
 	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
 	initPatchWords("- Updated Portrait")
-	//2.14
-	initPatch("2.14", "8 April, 2021");
+	//2.13
+	initPatch("2.13", "8 April, 2021");
 	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
 	initPatchWords("- Kunai bombs now follow moving platforms
 	- Kunai bombs now have much better collision with the ground (though you could probably still get them to float)")
 	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
 	initPatchWords("- Red nspecial projectiles no longer have a glow
 	- Blue nspecial air projectile no longer has a glow")
-	//2.13
-	initPatch("2.13", "5 April, 2021");
+	//2.12
+	initPatch("2.12", "5 April, 2021");
 	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
 	initPatchWords("- Red Uspecial base knockback changed (19->12)
 	")

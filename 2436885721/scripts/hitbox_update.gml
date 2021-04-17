@@ -74,15 +74,19 @@ if attack == AT_DSTRONG {
 	added a print line to all the different places so I could see when it was 
 	calling the next hitboxes, you can view debug stuff with ctrl + 8, or remove the print lines if ya want
 	*/
-	if hbox_num == 1 and hitbox_timer = 16 {
+	if hbox_num == 1 and hitbox_timer = 16 && player_id.state_cat != SC_HITSTUN{
 		create_hitbox( AT_DSTRONG, 2, x+58*spr_dir, y )
-		sound_play(asset_get("sfx_kragg_spike"))
 	}
-	if hbox_num == 2 and hitbox_timer = 16 {
+	if hbox_num == 2 and hitbox_timer = 16 && player_id.state_cat != SC_HITSTUN{
 		create_hitbox( AT_DSTRONG, 3, x+62*spr_dir, y )
-		sound_play(asset_get("sfx_kragg_spike"))
 	}
 	//extra SFX added so spike 3 has a sound too! (without this it doesn't) final spike, so no spawning any hitbox here
+	if hbox_num == 1 and hitbox_timer = 16 {
+        sound_play(asset_get("sfx_kragg_spike"))
+    }
+	if hbox_num == 2 and hitbox_timer = 16 {
+        sound_play(asset_get("sfx_kragg_spike"))
+    }
 	if hbox_num == 3 and hitbox_timer = 16 {
         sound_play(asset_get("sfx_kragg_spike"))
     }

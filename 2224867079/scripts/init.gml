@@ -16,6 +16,7 @@ nbox = 1
 ncancel = false
 tempsprdir = 0
 teleported = false
+tauntnumber = 0;
 
 ustrongarticle = false
 ustrongarticlestate = 0
@@ -24,7 +25,15 @@ ustrongarticlestate = 0
 black_screen = false;
 black_screen_timer = 0;
 blood_timer = 0;
-logRed = make_colour_rgb(234, 29, 35);
+
+//Galaxy Colours
+if (get_player_color(player) == 0){
+    logRed = make_colour_rgb (234, 29, 35);//(234, 29, 35);
+}
+else {
+    logRed = make_colour_rgb(get_color_profile_slot_r(get_player_color(player), 3), get_color_profile_slot_g(get_player_color(player), 3), get_color_profile_slot_b(get_player_color(player), 3));
+}
+
 
 dotheeffect = true
 

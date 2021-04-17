@@ -84,6 +84,7 @@ sprite_change_offset("uspecial", 42, 95);
 sprite_change_offset("dspecial", 44, 79);
 sprite_change_offset("kawaii_dspecial", 46, 80);
 sprite_change_offset("taunt", 44, 88);
+sprite_change_offset("newtaunt", 36, 70);
 
 sprite_change_offset("plat", 64, 54);
 set_victory_theme( sound_get( "Lognes_win" ));
