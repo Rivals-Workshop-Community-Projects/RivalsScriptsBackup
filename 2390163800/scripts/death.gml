@@ -1,1 +1,0 @@
-nspecial_timer = 0;

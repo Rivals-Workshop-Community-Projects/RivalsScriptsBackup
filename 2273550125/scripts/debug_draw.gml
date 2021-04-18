@@ -1,1 +1,0 @@
-//draw_debug_text(x, y+64, string( strong_charge ) );
