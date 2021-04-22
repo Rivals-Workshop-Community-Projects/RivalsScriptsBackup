@@ -6,7 +6,7 @@
 
 far_down_attacks[0] = AT_DAIR;
 
-far_side_attacks[0] = AT_DSPECIAL;
+far_side_attacks[0] = AT_NSPECIAL;
 far_side_attacks[1] = AT_FSPECIAL;
 
 mid_side_attacks[0] = AT_FSTRONG;

@@ -3,6 +3,8 @@
 //most of it is a better version of Acid Rainbows' raincloud code
 //which, in turn, is made from Guadua's bamboo code
 
+if (!afterimage_mode){ //if normal slash.
+
 if (init == 0){
     init = 1;
     
@@ -75,6 +77,8 @@ if (state == 1){
 		}
 	}
 	
+	player_id.usp_ls_cooldown = 5;
+	
     if (state_timer == state_end){
         state = 2;
         state_timer = 0;
@@ -121,6 +125,7 @@ if (state == 3){
 			spawn_hit_fx( other.tmp_x_str, other.tmp_y_str, na_ss_fx ) //y+30
 			create_hitbox( AT_USPECIAL, 5, other.tmp_x_str, other.tmp_y_str );
 			steve_death_message = "I want you to retrace your steps";
+			usp_ls_cooldown = 90;
 		}
         state = 2;
         state_timer = 0;
@@ -141,8 +146,26 @@ if (state == 3){
 }
 
 
-
-
+}else{ //if afterimage.
+	
+	state_end = 16+1;
+	sprite_index = sprite_get("uspecial_ai")
+	image_index = ease_linear( 0, 3, state_timer, state_end )
+	state_timer++;
+	image_alpha = ease_linear( 1, 0, state_timer, state_end );
+	image_xscale = 1;
+	image_yscale = 1;
+	
+	var tst_v = (backward)?-8:1
+	hsp = (1 * cos(ai_angle_pass))*-1;
+	vsp = (1 * sin(ai_angle_pass))*-1;
+	
+    if (state_timer == state_end){
+        instance_destroy();
+        exit;
+    }
+	
+}
 
 
 

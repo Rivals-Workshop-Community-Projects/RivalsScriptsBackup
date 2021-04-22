@@ -1,5 +1,6 @@
 //article3_pre_draw - slash
 
+if (!afterimage_mode){ //if normal slash.
 
 gpu_set_blendmode(bm_add);
 var angle = image_angle + ((spr_dir)?0:180)
@@ -44,3 +45,5 @@ if (state == 3){
 var angle = image_angle + ((spr_dir)?0:180)
 
 draw_sprite_ext( sprite_get("na_slash"), 0, x, y, length_scale*spr_dir, 1, angle, c_white, alp_tmp );*/
+
+}

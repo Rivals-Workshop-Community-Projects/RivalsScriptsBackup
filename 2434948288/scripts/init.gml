@@ -128,6 +128,9 @@ transcounter = 0;
 jabLoop = 0;
 jabHeld = false;
 
+// FSpecial
+fspecBounce = true;
+
 // Guitar
 guitar = instance_create(x,y,"obj_article1");
 

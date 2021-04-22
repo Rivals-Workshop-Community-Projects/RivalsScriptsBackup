@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 9 );
+set_num_palettes( 18 );
 
 // unnamed alt palette
 set_color_profile_slot( 1, 0, 137, 255, 0 ); //Flame
@@ -117,6 +117,95 @@ set_color_profile_slot( 8, 5, 0, 0, 0 ); //Eyes
 set_color_profile_slot( 8, 6, 0, 0, 0 ); //Ears
 set_color_profile_slot( 8, 7, 46, 99, 157 ); //Hair2
 
+/// Rock Lee
+set_color_profile_slot(9, 0, 137, 255, 0  ); //Flame
+set_color_profile_slot(9, 1, 255, 255, 255 ); //Fur
+set_color_profile_slot(9, 2, 39, 58, 56 ); //Shirt
+set_color_profile_slot(9, 3, 39, 58, 56 ); //Pant
+set_color_profile_slot(9, 4, 212, 125, 59 ); //Hair
+set_color_profile_slot(9, 5, 0, 0, 0 ); //Eyes
+set_color_profile_slot(9, 6, 108, 33, 46 ); //Ears
+set_color_profile_slot(9, 7, 215, 146, 94 ); //Hair2
+
+/// 02
+set_color_profile_slot( 10, 0, 177, 72, 70 ); //Flame
+set_color_profile_slot( 10, 1, 251, 251, 251 ); //Fur
+set_color_profile_slot( 10, 2, 177, 40, 37 ); //Shirt
+set_color_profile_slot( 10, 3, 186, 186, 186 ); //Pant
+set_color_profile_slot( 10, 4, 255, 205, 205 ); //Hair
+set_color_profile_slot( 10, 5, 64, 132, 124 ); //Eyes
+set_color_profile_slot( 10, 6, 176, 77, 77 ); //Ears
+set_color_profile_slot( 10, 7, 251, 201, 201 ); //Hair2
+
+// okayu
+set_color_profile_slot( 11, 0, 231, 87, 234 ); //Flame
+set_color_profile_slot( 11, 1, 255, 238, 224 ); //Fur
+set_color_profile_slot( 11, 2, 76, 73, 79 ); //Shirt
+set_color_profile_slot( 11, 3, 255, 255, 255 ); //Pant
+set_color_profile_slot( 11, 4, 238, 222, 245 ); //Hair
+set_color_profile_slot( 11, 5, 167, 103, 247 ); //Eyes
+set_color_profile_slot( 11, 6, 248, 245, 251 ); //Ears
+set_color_profile_slot( 11, 7, 255, 255, 255 ); //Hair2
+
+//chara
+set_color_profile_slot( 12, 0, 255, 0, 0 ); //Flame
+set_color_profile_slot( 12, 1, 246, 231, 196 ); //Fur
+set_color_profile_slot( 12, 2, 157, 227, 130 ); //Shirt
+set_color_profile_slot( 12, 3, 117, 36, 20 ); //Pant
+set_color_profile_slot( 12, 4, 117, 36, 20 ); //Hair
+set_color_profile_slot( 12, 5, 255, 0, 0 ); //Eyes
+set_color_profile_slot( 12, 6, 154, 66, 46 ); //Ears
+set_color_profile_slot( 12, 7, 154, 66, 46 ); //Hair2
+
+// glace
+set_color_profile_slot( 13, 0, 142, 46, 0 ); //Flame
+set_color_profile_slot( 13, 1, 238, 230, 244 ); //Fur
+set_color_profile_slot( 13, 2, 191, 235, 255 ); //Shirt
+set_color_profile_slot( 13, 3, 106, 177, 221 ); //Pant
+set_color_profile_slot( 13, 4, 191, 235, 255 ); //Hair
+set_color_profile_slot( 13, 5, 44, 133, 179 ); //Eyes
+set_color_profile_slot( 13, 6, 24, 73, 98 ); //Ears
+set_color_profile_slot( 13, 7, 222, 245, 255 ); //Hair2
+
+// SonicFox
+set_color_profile_slot( 14, 0, 161, 255, 97 ); //Flame
+set_color_profile_slot( 14, 1, 222, 224, 204 ); //Fur
+set_color_profile_slot( 14, 2, 60, 63, 71 ); //Shirt
+set_color_profile_slot( 14, 3, 60, 63, 71 ); //Pant
+set_color_profile_slot( 14, 4, 60, 134, 198 ); //Hair
+set_color_profile_slot( 14, 5, 60, 134, 198 ); //Eyes
+set_color_profile_slot( 14, 6, 222, 72, 64 ); //Ears
+set_color_profile_slot( 14, 7, 129, 165, 198 ); //Hair2
+
+// BLM
+set_color_profile_slot( 15, 0, 185, 50, 250); //Flame
+set_color_profile_slot( 15, 1, 166, 92, 47 ); //Fur
+set_color_profile_slot( 15, 2, 224, 224, 224 ); //Shirt
+set_color_profile_slot( 15, 3, 33, 33, 33 ); //Pant
+set_color_profile_slot( 15, 4, 224, 224, 224 ); //Hair
+set_color_profile_slot( 15, 5, 254, 242, 115 ); //Eyes
+set_color_profile_slot( 15, 6, 255, 208, 0 ); //Ears
+set_color_profile_slot( 15, 7, 255, 208, 0 ); //Hair2
+
+// Reimu
+set_color_profile_slot( 16, 0, 250, 59, 55 ); //Flame
+set_color_profile_slot( 16, 1, 251, 247, 219 ); //Fur
+set_color_profile_slot( 16, 2, 250, 59, 55 ); //Shirt
+set_color_profile_slot( 16, 3, 250, 59, 55 ); //Pant
+set_color_profile_slot( 16, 4, 51, 50, 51 ); //Hair
+set_color_profile_slot( 16, 5, 125, 36, 50 ); //Eyes
+set_color_profile_slot( 16, 6, 250, 59, 55 ); //Ears
+set_color_profile_slot( 16, 7, 150, 148, 150 ); //Hair2
+
+// Maypul
+set_color_profile_slot( 17, 0, 166, 255, 121 ); //Flame
+set_color_profile_slot( 17, 1, 110, 161, 107 ); //Fur
+set_color_profile_slot( 17, 2, 234, 231, 181 ); //Shirt
+set_color_profile_slot( 17, 3, 57, 54, 47 ); //Pant
+set_color_profile_slot( 17, 4, 110, 161, 107 ); //Hair
+set_color_profile_slot( 17, 5, 95, 93, 255 ); //Eyes
+set_color_profile_slot( 17, 6, 234, 231, 181 ); //Ears
+set_color_profile_slot( 17, 7, 176, 247, 123 ); //Hair2
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
 {"formatversion":1,"data":[{"name":"Flame","colors":[{"r":0,"g":255,"b":172,"main":true}]},{"name":"Fur","colors":[{"r":247,"g":255,"b":247,"main":true},{"r":137,"g":137,"b":137}]},{"name":"Shirt","colors":[{"r":42,"g":57,"b":42,"main":true},{"r":35,"g":47,"b":35}]},{"name":"Pant","colors":[{"r":29,"g":26,"b":29},{"r":33,"g":30,"b":33,"main":true},{"r":26,"g":24,"b":26}]},{"name":"Hair","colors":[{"r":25,"g":28,"b":25,"main":true}]},{"name":"Eyes","colors":[{"r":0,"g":160,"b":70,"main":true}]},{"name":"Ears","colors":[{"r":51,"g":106,"b":62,"main":true}]},{"name":"Hair2","colors":[{"r":40,"g":40,"b":40,"main":true}]}]}

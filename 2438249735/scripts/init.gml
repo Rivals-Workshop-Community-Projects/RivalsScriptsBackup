@@ -3,23 +3,23 @@ crouchbox_spr = sprite_get("crouch_box");
 air_hurtbox_spr = sprite_get("air_box");
 hitstun_hurtbox_spr = sprite_get("air_box");
 
-issmol = 1
 nname = "Ceae Grasia"
 ncode1 = "A divine being, or just a humanoid being"
 ncode2 = "bearing the embodiment of grasses (Poaceae)"
 ncode3 = "They can make grass grow on any surface."
 
 uspec = 0
-
+invis = 1
 shsp = 0
 svsp = 0
 djumped = 0
 target = 0
+attacking = 0
 
 invisound = 0
 invitimer = 0
 
-char_height = 80.1;
+char_height = 60.1;
 idle_anim_speed = .2;
 crouch_anim_speed = .1;
 walk_anim_speed = .16;
@@ -66,7 +66,7 @@ knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lig
 land_time = 4; //normal landing frames
 prat_land_time = 10;
 wave_land_time = 8;
-wave_land_adj = 1.05; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_land_adj = 1.2; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .01; //grounded deceleration when wavelanding
 
 //crouch animation frames

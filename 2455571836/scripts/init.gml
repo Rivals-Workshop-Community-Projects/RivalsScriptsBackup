@@ -24,6 +24,10 @@ battle_text = "* Nya.";
 //Trial Grounds
 guiltySprite = sprite_get("glacedr")
 
+//Kirby
+kirbyability = 16;
+swallowed = 0
+
 //Toon Link
 toonlink_photo = sprite_get("toonlink_photo");
 toonlink_photo2 = 4;
@@ -51,6 +55,70 @@ feri_costume = sprite_get("feri_costume_glace");
 //Hikaru
 Hikaru_Title = "Hikaru, the clothed furry!";
 
+//Amber
+plushForAmber = sprite_get("glace_amber_doll")
+
+//Abyss Hime
+abyssHime_deathspr = sprite_get("glace_sliced");
+
+//Dracula
+		dracula_portrait = sprite_get("glace_dracula_portrait");
+		dracula_portrait2 = sprite_get("glace_dracula_portrait");
+		dracula_portrait3 = sprite_get("glace_dracula_portrait");
+		var page = 0;
+		
+		dracula_speaker[page] = 0;
+		dracula_text[page] = "Who dares let a cat into my lair?";
+		page++;
+		
+		dracula_speaker[page] = 1;
+		dracula_text[page] = "Nya~!";
+		page++;
+		
+		dracula_speaker[page] = 0;
+		dracula_text[page] = "[shake] ...That power! You are not a normal feline afterall!";
+		page++;
+		
+		dracula_speaker[page] = 1;
+		dracula_text[page] = "Can we get onto the fight already? I'm starved.";
+		page++;
+		
+		dracula_speaker[page] = 0;
+		dracula_text[page] = "Whatever you are [glass], I shall end your life!";
+		page++;
+		
+//Daroach
+		daroach_portrait = sprite_get("glace_dracula_portrait");
+		daroach_portrait2 = asset_get("glace_dracula_portrait");
+		daroach_portrait3 = asset_get("glace_dracula_portrait");
+		var page = 0;
+		
+		daroach_speaker[page] = 0;
+		daroach_text[page] = "Squeak.";
+		page++;
+		
+		daroach_speaker[page] = 1;
+		daroach_text[page] = "Nya.";
+		page++;
+		
+		daroach_speaker[page] = 0;
+		daroach_text[page] = "...So you got any treasure?";
+		page++;
+		
+		daroach_speaker[page] = 1;
+		daroach_text[page] = "No, do I look like I could be carrying anything?";
+		page++;
+		
+		daroach_speaker[page] = 0;
+		daroach_text[page] = "...Good point, but I still wanna fight you anyways.";
+		page++;
+		
+		daroach_speaker[page] = 1;
+		daroach_text[page] = "Okay, but make it quick!";
+		page++;
+		
+//glace_Freeze = false;
+
 set_victory_theme( sound_get( "glace_victory" ) );
 set_victory_bg( sprite_get( "glace_victory_bg" ));
 
@@ -72,8 +140,8 @@ walk_turn_time = 10;
 initial_dash_time = 0;
 initial_dash_speed = 10;
 dash_speed = 5.5;
-dash_turn_time = 20;
-dash_turn_accel = 1.5;
+dash_turn_time = 3.5;
+dash_turn_accel = 8;
 dash_stop_time = 20;
 dash_stop_percent = .02; //the value to multiply your hsp by when going into idle from dash or dashstop
 ground_friction = .2;
@@ -153,3 +221,5 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
+
+user_event(14);

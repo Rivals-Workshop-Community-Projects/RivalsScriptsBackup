@@ -1,7 +1,7 @@
 //with player_id
 //move_cooldown[AT_NSPECIAL] = 10
 with player_id
-move_cooldown[AT_NSPECIAL] = 20
+move_cooldown[AT_NSPECIAL] = 1
 with (asset_get( "plasma_field_obj" )) {
 with (other.id) {
 if (point_distance(
@@ -16,9 +16,11 @@ instance_destroy();
 
 
 life -= 1;
-if life = 0
+if life <= 0
 {
-//move_cooldown[AT_NSPECIAL] = 0
+with player_id
+move_cooldown[AT_NSPECIAL] = 1
+
 instance_destroy(self);
 }
 var closeplayer = instance_place(x, y, asset_get("oPlayer"));
@@ -184,8 +186,8 @@ vsp = -6
 {
 //if get_id != player_id and hit_cool = 10 and (get_id.state != PS_ROLL_BACKWARD or get_id.state != PS_ROLL_FORWARD or get_id.state != PS_AIR_DODGE)
 {
-if !instance_exists(proj_hitbox) and main_hit_cool <= 0
-proj_hitbox = create_hitbox(AT_FTILT, 9, x, y);
+if !instance_exists(proj_hitbox)// and main_hit_cool <= 0
+proj_hitbox = create_hitbox(AT_NSPECIAL, 7, x, y);
 hit_cool = 9
 }
 }
@@ -241,5 +243,6 @@ if get_id != player_id and (get_id.state != PS_ROLL_BACKWARD or get_id.state != 
 
 
 if (y > view_get_yview() + view_get_hview()) {
+move_cooldown[AT_NSPECIAL] = 20
 instance_destroy();
 }

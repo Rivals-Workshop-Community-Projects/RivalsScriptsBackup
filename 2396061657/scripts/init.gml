@@ -9,6 +9,7 @@ GrappleMode = 0;
 //    0         1         2           3
 
 LoveMeter = 0;
+LoveStorage = 0;
 
 Platform_Text = [ [44, "She cute tho"], [32, "Doki Doki"], [48, "100% Real Girl"], [32, "Date Girl"], [32, "Data Girl"], [46, "S U C C E S S"], [46, "World is Mine"], [34, "Digital Girl"], [44, "Do your best!"], [38, "Keep going!"], [28, "Press F"] ];
 platform_number = 0;
@@ -17,6 +18,20 @@ up0 = 1;
 up1 = 1;
 up2 = 1;
 up3 = 1;
+
+nspecial_charge = 0;
+
+focus_attack = false;
+focus_armorbreak = false;
+nspecial_hitpause = 15;
+nspecial_damage = 3;
+
+should_crumple = false;
+crumple_timer = 0;
+crumple_x = 0;
+crumple_y = 0;
+crumple_dir = 1;
+crumple_alpha = .80;
 
 fspecial_circles = 0;
 fspec_x = 0;
@@ -34,8 +49,8 @@ HeartPop = 0;
 
 RibbonVSP = -11;
 RibbonHSP = -5;
-RibbonKB = 7.5;
-ThornKB = 7.5;
+RibbonKB = 8;
+ThornKB = 8;
 CandyKB = 4;
 
 variabl_o = 0;
@@ -58,6 +73,7 @@ hit_fthrow = hit_fx_create( sprite_get("fthrow_fx"), 45);
 hit_nthrow = hit_fx_create( sprite_get("nthrow_fx"), 40);
 hearthurt_fx = hit_fx_create( sprite_get("heartloss_fx"), 40);
 hit_ustrong = hit_fx_create( sprite_get("ustrong_fx"), 40);
+hit_focus = hit_fx_create( sprite_get("focushitfx"), 30);
 
 sfxdthrow = sound_get("dthrowsfx");
 dThrow = noone; 
@@ -99,7 +115,7 @@ leave_ground_max = 7; //the maximum hsp you can have when you go from grounded t
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4.5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .4;
+air_accel = .3;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
 air_friction = .04;
 max_djumps = 1;

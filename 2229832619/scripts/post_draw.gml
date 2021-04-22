@@ -3,7 +3,7 @@
 shader_start()
 if (attack == AT_USPECIAL && (state==PS_ATTACK_AIR || state==PS_ATTACK_GROUND)){
 	if (window<=7){
-		if (window<=3||window==4&&window_timer<9){
+		if (window<=3||window==4&&window_timer<1){//
 			if (joy_pad_idle){
 				var angle = (round(((spr_dir==1)?67.5:112.5) / 22.25) * 22.25) + ((spr_dir)?0:180);
 			}else{
@@ -12,7 +12,11 @@ if (attack == AT_USPECIAL && (state==PS_ATTACK_AIR || state==PS_ATTACK_GROUND)){
 		}else{
 			var angle = usp_angle + ((spr_dir)?0:180)
 		}
-		draw_sprite_ext( sprite_get("uspecial_dupli"), image_index, x, y-24, spr_dir, 1, angle, c_white, 1 );
+		if (get_player_color( player ) == 7){ //towerofheaven
+			draw_sprite_ext( sprite_get("uspecial_dupli_ea"), image_index, x, y-24, spr_dir, 1, angle, c_white, 1 );
+		}else{//normal
+			draw_sprite_ext( sprite_get("uspecial_dupli"), image_index, x, y-24, spr_dir, 1, angle, c_white, 1 );
+		}
 	}
 }
 

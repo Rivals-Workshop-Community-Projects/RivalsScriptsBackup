@@ -69,6 +69,15 @@ var palette_names = [
   "Vampire",
   "Meiling",
    "Reckless",
+    "Rock Lee",
+    "02",    
+    "Oyaku"
+    "Chara",    
+    "Glace"
+        "SonicFox"
+        "BLM"
+         "Reimu"
+         "Maypul"
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

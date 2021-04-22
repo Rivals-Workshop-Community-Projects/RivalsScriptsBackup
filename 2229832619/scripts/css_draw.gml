@@ -3,7 +3,23 @@ shader_end();
 //test
 
 
-draw_sprite_ext(sprite_get("aaa_vernum"),1,x+180,y+118,2,2,0,-1,1);
+draw_sprite_ext(sprite_get("aaa_vernum"),1,x+146,y+118,2,2,0,-1,1);
+
+var icon_x = 176
+var icon_y = 112
+switch(get_player_color( player )){
+	case 7:
+	draw_sprite_ext(sprite_get("na_ea_outline"),1,x+8,y+8,2,2,0,-1,1);
+	draw_sprite_ext(sprite_get("na_css_icons"),6,x+icon_x,y+icon_y,2,2,0,-1,1);
+	break;
+	case 12:
+	draw_sprite_ext(sprite_get("na_css_icons"),3,x+icon_x,y+icon_y,2,2,0,-1,1);
+	break;
+	case 18:
+	draw_sprite_ext(sprite_get("na_css_icons"),1,x+icon_x,y+icon_y,2,2,0,-1,1);
+	break;
+    default: break;
+}
 
 
 /*
@@ -60,7 +76,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ie = 0;
 	ye = false;
 	
-	col_max = 15; //max colors
+	col_max = 18; //max colors
 	ce[0,0] = make_color_rgb(71, 49, 87)
 	ce[0,1] = "Void Melanoid"
 	ce[1,0] = make_color_rgb(58, 154, 228)
@@ -85,14 +101,20 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[10,1] = "ASTRAL BIRTH" //void
 	ce[11,0] = make_color_rgb(0, 222, 130)
 	ce[11,1] = "doomsday"
-	ce[12,0] = make_color_rgb(172, 153, 255)
-	ce[12,1] = "True Purple" //you have entered the Y U M E K A W A zone
-	ce[13,0] = make_color_rgb(250, 225, 38)
-	ce[13,1] = "True Yellow"
-	ce[14,0] = make_color_rgb(217, 19, 19)
-	ce[14,1] = "True Red"
-	ce[15,0] = make_color_rgb(66, 79, 255)
-	ce[15,1] = "True Blue" //hey this kinda looks like apotos, that's nice
+	ce[12,0] = make_color_rgb(79, 61, 94)
+	ce[12,1] = "Traditional Abyss"
+	ce[13,0] = make_color_rgb(95, 0, 102)
+	ce[13,1] = "True Purple"
+	ce[14,0] = make_color_rgb(112, 64, 255)
+	ce[14,1] = "True Grey"
+	ce[15,0] = make_color_rgb(180, 255, 41)
+	ce[15,1] = "True Green"
+	ce[16,0] = make_color_rgb(232, 72, 9)
+	ce[16,1] = "True Red"
+	ce[17,0] = make_color_rgb(30, 50, 184)
+	ce[17,1] = "True Blue"
+	ce[18,0] = make_color_rgb(252, 196, 30)
+	ce[18,1] = "Ranked Gold"
 }
 
 if (ae == "ae"){

@@ -1,5 +1,6 @@
 ///
 
+
 if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1 {
     sound_play(asset_get("sfx_icehit_medium1"));
     spawn_hit_fx (hit_player_obj.x, hit_player_obj.y - 40, 303)

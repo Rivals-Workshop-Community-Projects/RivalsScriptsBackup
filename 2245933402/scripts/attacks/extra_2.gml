@@ -10,6 +10,7 @@ set_window_value(AT_EXTRA_2, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_SFX, sound_get( "intro" ));
+set_window_value(AT_EXTRA_2, 1, AG_WINDOW_SFX_FRAME, 1);
 
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_LENGTH, 30);

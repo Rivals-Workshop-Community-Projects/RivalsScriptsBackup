@@ -11,7 +11,7 @@ if (state_timer == 1){
 	state = 1;
 }
 
-if (player_id.attack == AT_DSPECIAL && player_id.window == 2 && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && point_distance( player_id.x, player_id.y, x, y) < 275) {
+if (player_id.attack == AT_NSPECIAL && player_id.window == 2 && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && point_distance( player_id.x, player_id.y, x, y) < 275) {
 	state = 1;
 	hsp = 10 * dcos(point_direction(x, y, player_id.x, player_id.y - 20));
 	vsp = -10 * dsin(point_direction(x, y, player_id.x, player_id.y - 20));
@@ -34,7 +34,7 @@ else {
 
 with(oPlayer){
 	if (player != other.player && url == other.player_id.url){
-		if ( attack == AT_DSPECIAL &&  window == 2 && ( state == PS_ATTACK_AIR ||  state == PS_ATTACK_GROUND) && point_distance( x, y, other.x, other.y) < 275) {
+		if ( attack == AT_NSPECIAL &&  window == 2 && ( state == PS_ATTACK_AIR ||  state == PS_ATTACK_GROUND) && point_distance( x, y, other.x, other.y) < 275) {
 			other.state = 2;
 			other.hsp = 10 * dcos(point_direction(other.x, other.y,  x,  y - 20));
 			other.vsp = -10 * dsin(point_direction(other.x, other.y,  x,  y - 20));
@@ -66,6 +66,9 @@ if (state == 1){ // Hearts fly, can be collected by Callie
 			if (player_id.LoveMeter <= 190){
 				player_id.LoveMeter += 10;
 			}
+			if (player_id.LoveMeter > 190 && player_id.LoveMeter < 200){
+				player_id.LoveMeter = 200;
+			}
 		}
 		
 		if (collected){
@@ -96,6 +99,9 @@ if (state == 2){ // Can be collected when other player interacts with hearts
 			if (player_id.LoveMeter <= 190){
 				player_id.LoveMeter += 10;
 			}	
+			if (player_id.LoveMeter > 190 && player_id.LoveMeter < 200){
+				player_id.LoveMeter = 200;
+			}
 		}
 		
 		if (otherpoints){
@@ -103,6 +109,9 @@ if (state == 2){ // Can be collected when other player interacts with hearts
 				if (place_meeting(x, y, other) && player != other.player && "GrappleMode" in self){
 					if (LoveMeter  <= 190){
 						LoveMeter += 10;
+					}
+					if (LoveMeter > 190 && LoveMeter < 200){
+						LoveMeter = 200;
 					}
 				}		
 			}

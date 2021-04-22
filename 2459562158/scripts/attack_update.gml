@@ -30,8 +30,15 @@ switch(attack)
         switch(window)
         {
             case 1:
+            
+            if (window_timer == 1)
+            {
+            	sound_play(asset_get("sfx_propeller_dagger_draw"))
+            }
+            
+            
               var time = get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH);
-                x_hand = x + 80 * spr_dir;
+                x_hand = 80 * spr_dir;
                 
                 spd_hand = (13.5 + has_rune("G") * 9) * spr_dir;
                 
@@ -91,7 +98,7 @@ switch(attack)
                 x_hand += spd_hand;
                 spd_hand -= acc_hand * spr_dir;
                 
-                if (x_hand < x + 56 ) and (x_hand > x - 56 )
+                if (x_hand < 56 ) and (x_hand > -56 )
                 {
                     if(grab_id == noone)
                     {
@@ -159,7 +166,7 @@ switch(attack)
         switch(window)
         {
             case 1:
-                x_cursor = x + 130 * spr_dir;
+                x_cursor = x + 196 * spr_dir;
                 y_cursor = y - 38;
             break;
             case 2:
@@ -290,14 +297,14 @@ switch(attack)
                     y_min = 100;
                     if (y > room_height - y_min)
                     {
-                        y += ((room_height - y_min) - y) / 9
+                        y += ((room_height - y_min) - y) / 8
                     }
                     
-                    y_max = 200;
+                    y_max = 300;
                     
                     if (y < 0 +  y_max)
                     {
-                        y += ((0 + y_max) - y) / 9
+                        y += ((0 + y_max) - y) / 8
                     }
                     
                 }

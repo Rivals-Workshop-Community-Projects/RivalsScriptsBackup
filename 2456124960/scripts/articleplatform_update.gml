@@ -40,3 +40,5 @@ fake_vsp = clamp (fake_vsp, 0, 20)
 if ((player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR) && player_id.attack == AT_USPECIAL_2 && player_id.window == 2) {
 	fake_hsp += (player_id.right_down - player_id.left_down) * 0.8;
 }
+
+if (!free) {instance_destroy();}

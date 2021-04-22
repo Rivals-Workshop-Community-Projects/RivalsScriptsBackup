@@ -55,6 +55,10 @@ if (activeBuff == 1 && my_hitboxID.attack != AT_NSPECIAL && my_hitboxID.attack !
 		take_damage(hit_player_obj.player, player, 1);
 	}
 	take_damage(hit_player_obj.player, player, 1);
+	if (my_hitboxID.attack == AT_NAIR && my_hitboxID.hbox_num == 1) {
+		print_debug("nope");
+		take_damage(hit_player_obj.player, player, 1);
+	}
 	activeBuffUses--;
 	sound_play(get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HIT_SFX), false, noone, 0.8);
 }

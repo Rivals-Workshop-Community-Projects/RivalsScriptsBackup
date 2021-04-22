@@ -38,14 +38,17 @@ if (article_mode == 0) {
 			decay_timer = 0;
 			free = false;
 			print("ball is on plat");
-		}	
+			onPlat = true;
+		} else {
+			onPlat = false;
+		}
 	}
 	
 	if (fake_hsp > 1) {
-		fake_hsp -= 0.2;
+		fake_hsp -= 0.15;
 	}
 	if (fake_hsp < -1) {
-		fake_hsp += 0.2;
+		fake_hsp += 0.15;
 	}
 
 	if obj_timer <= 1 {
@@ -65,7 +68,12 @@ if (article_mode == 0) {
 	}
 
 	if (!free && obj_timer > 10) {
-		decay_timer++;
+		decay_timer++;		
+		fake_hsp *= 0.9;
+		if (onPlat == false) {
+			if (instance_exists(hb)) {instance_destroy(hb);}
+		}
+		
 		if (decay_timer < 2) {
 			fake_vsp = -6 + (4 * decay_timer);
 		} else {

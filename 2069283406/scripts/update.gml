@@ -339,27 +339,24 @@ if state == PS_DASH_START {
   
 }
 
+
 with (oPlayer) {
   if (id != other.id) {
     if ((state == PS_RESPAWN || state == PS_DEAD) && state_timer == 1) {
-        with (oPlayer) {
-  if (id != other.id) {
-      fireon = 0
-      firerange = -100
-  }
+        with other{
+      firetimer = 20
     }
   }
 }
 }
 
-
-if fireon == 3 && firerange > 0 {
-    if get_gameplay_time() % 4 == 0 {
-    spawn_hit_fx(floor ( hit_player_obj.x + 130 + (0.7*firerange)) , floor ( hit_player_obj.y  + 300 - random_func(9, 600, true)) , firepar1 );
-   spawn_hit_fx(floor ( hit_player_obj.x - 130 - (0.7*firerange)) , floor ( hit_player_obj.y  + 300 - random_func(10, 600, true)) , firepar1 );
-}
-        
-}
+///if fireon == 3 && firerange > 0 {
+///    if get_gameplay_time() % 4 == 0 {
+///    spawn_hit_fx(floor ( hit_player_obj.x + 130 + (0.7*firerange)) , floor ( hit_player_obj.y  + 300 - random_func(9, 600, true)) , firepar1 );
+///   spawn_hit_fx(floor ( hit_player_obj.x - 130 - (0.7*firerange)) , floor ( hit_player_obj.y  + 300 - random_func(10, 600, true)) , firepar1 );
+///}
+///        
+///}
 
 if (((x + 150 + (0.7*firerange)) - hit_player_obj.x) > 0 and ((x - 150 - (0.7*firerange)) - hit_player_obj.x) < 0){
     inrange = true
@@ -375,12 +372,10 @@ if firetimer > 0{
     firetimer -= 1
 }
 
-if firerange > 1{
+if firerange > 1 && get_gameplay_time() % 3 == 0{
 
-    firerange -= 1
-    if firerange > 100 {
-    firerange -= firerange/300	
-    }
+spawn_hit_fx(hit_player_obj.x + 20 - random_func(1,40,true), hit_player_obj.y + 20 - random_func(2,40,true),firepar1 )
+firerange = 9999
 
 }
 
@@ -478,7 +473,7 @@ if state == PS_DASH_START && get_player_color(player) == 5 && sakura == 1 {
 
 }
 
-if state == PS_DASH && image_index % 4 == 0 {
+if state == PS_DASH && state_timer % 14 == 0 {
 	sound_stop(asset_get("sfx_land"));
 	sound_play(asset_get("sfx_land"));
 	
@@ -518,6 +513,7 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR{
 }
 	
 if state != PS_ATTACK_GROUND and state != PS_ATTACK_AIR{
+	mask_index = sprite_get("stand_box");
 		attacking = false
 	if shadeshine == 1{
 		shadeshine = 0
@@ -556,4 +552,20 @@ if get_player_color(player) = 7 {
 init_shader();
 
 /// setstock 
+if move_cooldown[AT_NSPECIAL_2] == 0 {
+with oPlayer if (activated_kill_effect) {
+  if hit_player_obj == other {
+  	with other {
+  		galx = x
+        galy = y
+  	    move_cooldown[AT_FSPECIAL_2] = 60 
+  	    move_cooldown[AT_NSPECIAL_2] = 60 
+  	}
+  }
+}
+}
 
+if move_cooldown[AT_FSPECIAL_2] = 60 {
+	spawn_hit_fx(x,y,lighten)
+    sound_play(sound_get("mesatsu"),false,noone,1)
+}

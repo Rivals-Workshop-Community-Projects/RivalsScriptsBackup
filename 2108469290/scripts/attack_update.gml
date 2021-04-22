@@ -162,6 +162,11 @@ if attack == AT_USTRONG {
 	can_move = false
 	can_fast_fall = false
 	
+	if !has_hit {
+		set_window_value(AT_USTRONG, 5, AG_WINDOW_TYPE, 7);
+	} else {
+		set_window_value(AT_USTRONG, 5, AG_WINDOW_TYPE, 0);
+	}
 	if window == 3 && window_timer == 7 && ustronghit = 0{
 		window = 5
 		window_timer = 4
@@ -464,8 +469,12 @@ if attack == AT_DSPECIAL {
         	move_cooldown[AT_TAUNT_2] = 180
         	sound_play(asset_get("sfx_bird_downspecial"));
         	shake_camera(2,6)
-            x = lockplayer.x + hit_player_obj.hsp*3
-            y = lockplayer.y + floor(hit_player_obj.vsp/2)
+        	if x > lockplayer.x {
+            x = lockplayer.x - 40 + lockplayer.hsp*3
+        	}  else {
+            x = lockplayer.x + 40 + lockplayer.hsp*3
+        	}
+            y = lockplayer.y + floor(lockplayer.vsp/2)
             spr_dir *= -1
             lockontime = 180
      
@@ -638,11 +647,11 @@ if attack == AT_USPECIAL {
     if window == 4 && free {
     	if down_down && vsp > -4{
     	if vsp < 10 {
-    	 	spawn_hit_fx(x,y,27)
+    	 	spawn_hit_fx(x,y - 30,27)
     	 }
     	 sound_play(asset_get("sfx_bird_sidespecial_start"));
     	 set_state(PS_PRATFALL)
-    	 vsp = 14
+    	 vsp = 20
 
     	}
     	

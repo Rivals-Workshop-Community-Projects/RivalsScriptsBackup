@@ -33,23 +33,23 @@ set_color_profile_slot_range( 6, 1, 42, 18 );
 // ALTERNATE COLORS
 set_num_palettes( 14 );
 
-// Chiaki alt palette
-set_color_profile_slot( 1, 0, 215, 195, 191 ); //HAIR
-set_color_profile_slot( 1, 1, 226, 172, 174 ); //EYES
-set_color_profile_slot( 1, 2, 205, 200, 195 ); //FUR
-set_color_profile_slot( 1, 3, 37, 63, 68 ); //CLOTH
-set_color_profile_slot( 1, 4, 215, 195, 191 ); //TENTACLE
-set_color_profile_slot( 1, 5, 199, 147, 158 ); //BELT
-set_color_profile_slot( 1, 6, 215, 195, 191 ); //FIRE
-
 // Krystal alt palette
-set_color_profile_slot( 2, 0, 82, 93, 164 ); //HAIR
-set_color_profile_slot( 2, 1, 86, 136, 139 ); //EYES
-set_color_profile_slot( 2, 2, 110, 122, 186 ); //FUR
-set_color_profile_slot( 2, 3, 211, 191, 88 ); //CLOTH
-set_color_profile_slot( 2, 4, 122, 110, 59 ); //TENTACLE
-set_color_profile_slot( 2, 5, 242, 242, 242 ); //BELT
-set_color_profile_slot( 2, 6, 168, 171, 101 ); //FIRE
+set_color_profile_slot( 1, 0, 82, 93, 164 ); //HAIR
+set_color_profile_slot( 1, 1, 86, 136, 139 ); //EYES
+set_color_profile_slot( 1, 2, 110, 122, 186 ); //FUR
+set_color_profile_slot( 1, 3, 211, 191, 88 ); //CLOTH
+set_color_profile_slot( 1, 4, 122, 110, 59 ); //TENTACLE
+set_color_profile_slot( 1, 5, 242, 242, 242 ); //BELT
+set_color_profile_slot( 1, 6, 168, 171, 101 ); //FIRE
+
+// Chiaki alt palette
+set_color_profile_slot( 2, 0, 215, 195, 191 ); //HAIR
+set_color_profile_slot( 2, 1, 226, 172, 174 ); //EYES
+set_color_profile_slot( 2, 2, 205, 200, 195 ); //FUR
+set_color_profile_slot( 2, 3, 37, 63, 68 ); //CLOTH
+set_color_profile_slot( 2, 4, 215, 195, 191 ); //TENTACLE
+set_color_profile_slot( 2, 5, 199, 147, 158 ); //BELT
+set_color_profile_slot( 2, 6, 215, 195, 191 ); //FIRE
 
 // Thine alt palette
 set_color_profile_slot( 3, 0, 250, 250, 240 ); //HAIR

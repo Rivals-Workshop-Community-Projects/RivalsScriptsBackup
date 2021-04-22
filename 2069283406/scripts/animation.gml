@@ -445,15 +445,12 @@ if move_cooldown[AT_FSPECIAL_2] > 0  && !down_hard_pressed && free{
 
 if has_rune("N") && move_cooldown[AT_USPECIAL_GROUND] > 0 {
    sprite_index = sprite_get("empty");
-	with asset_get("oPlayer") {
-		hitpause = 1
-		hitstop = 1
-		vsp = 0
-		hsp = 0
-	}
 
- 	
+hit_player_obj.vsp = random_func(4,4,true) * -1
+hit_player_obj.hsp = 5 - random_func(5,10,true)
+
 	move_cooldown[AT_USPECIAL_GROUND] -= 1
+ 	
  	
  	if move_cooldown[AT_USPECIAL_GROUND] > 10 {
  		x = hit_player_obj.x
@@ -505,10 +502,15 @@ if has_rune("N") && move_cooldown[AT_USPECIAL_GROUND] > 0 {
  	
  	if move_cooldown[AT_USPECIAL_GROUND] == 10 {
 		
+		
 		with (hit_player_obj) {
 			take_damage(player,-1,-999)
 			take_damage(player,-1,666)
 		}
+		galx = x
+        galy = y
+		sound_play(sound_get("mesatsu"),false,noone,1)
+		move_cooldown[AT_FSPECIAL_2] = 60 
  		sound_play(sound_get("RI"))
  		spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - 40, 306 )
  		spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - 40, lighten )

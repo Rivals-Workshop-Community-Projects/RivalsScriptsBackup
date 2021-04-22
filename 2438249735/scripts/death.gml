@@ -5,5 +5,5 @@ if(player_id == other.id) {
 }
 
 invitimer = 0
-
+invis = 1
     sound_play(sound_get("tstrong"),false,noone,1)

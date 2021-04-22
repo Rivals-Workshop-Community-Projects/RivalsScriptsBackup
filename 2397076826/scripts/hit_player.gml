@@ -43,7 +43,7 @@ if smark == 3  {
    	shake_camera(floor(hitstop/2)+8,floor(hitstop/2) + 4)
    	     spawn_hit_fx (x + 4, y + 22, 305) 
    	      with hit_player_obj {
-		   	take_damage( player, -1 , 4)
+		   	take_damage( player, -1 , 10)
           }
           hitstop += 10
           hit_player_obj.hitstop += 10
@@ -65,6 +65,10 @@ if smark == 3  {
 
 if sword {
   	
+  	   	   with hit_player_obj {
+		   	take_damage( player, -1 , 6)
+          }
+          
 move_cooldown[AT_EXTRA_3] = hitstop
 maxdraw = hitstop
 hitdmg = my_hitboxID.damage/10

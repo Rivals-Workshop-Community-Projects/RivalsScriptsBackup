@@ -10,6 +10,53 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 }
 shader_end();
 
+// Nspecial Armor
+if (attack == AT_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){ 
+	var armorcolor = make_colour_rgb(63, 240, 240);
+
+	if (window == 1){
+		if (!focus_armorbreak){
+
+			if (window_timer < 15 && window_timer >= 4){
+				gpu_set_fog(1, armorcolor, 0, 1);
+				draw_sprite_ext(sprite_index, image_index, x, y, 1 * spr_dir, 1, 0, armorcolor, .5);
+				gpu_set_fog(0, c_white, 0, 0);
+
+			}
+			if (window_timer >= 15){
+				gpu_set_fog(1, armorcolor, 0, 1);
+				draw_sprite_ext(sprite_index, image_index, x, y, 1 * spr_dir, 1, 0, armorcolor, .5);
+				gpu_set_fog(0, c_white, 0, 0);
+			}
+		}
+	}
+
+	if (window == 5 && !focus_armorbreak){
+		gpu_set_fog(1, armorcolor, 0, 1);
+		draw_sprite_ext(sprite_index, image_index, x, y, 1 * spr_dir, 1, 0, armorcolor, .5);
+		gpu_set_fog(0, c_white, 0, 0);
+	}	
+
+// Nspecial Charge effect
+	if (window == 1 && state_timer > 13){
+		shader_start();
+		draw_sprite_ext(sprite_get("focuseffectsfront"), get_gameplay_time()/4, x, y, 1 * spr_dir, 1, 0, c_white, 1);
+		shader_end();
+		
+		if (!focus_armorbreak){
+			gpu_set_fog(1, armorcolor, 0, 1);
+			draw_sprite_ext(sprite_get("focuseffectsfront"), get_gameplay_time()/4, x, y, 1 * spr_dir, 1, 0, armorcolor, .5);
+			gpu_set_fog(0, c_white, 0, 0);
+		}
+	}
+	
+	if (window < 3 || window == 5){
+		draw_sprite_ext(sprite_get("focuseffectssmoke"), get_gameplay_time()/4, x, y, 1 * spr_dir, 1, 0, c_white, 1);
+	}
+	
+}
+
+
 if (taunt_down && down_down && taunt_counter < 140){
 	draw_sprite_ext(sprite_get("date_logo"), 0, x, y - 30 - 60, 1, 1, 0, c_white, .70);
 	draw_sprite_part(sprite_get("date_logo"), 1, 0, 0, taunt_counter, 100, x - 65, y - 95 - 60);
@@ -32,19 +79,26 @@ else{
 }
 
 // Draws Nspecial cooldown effect when the cooldown is about to reset to 0
-if (move_cooldown[AT_NSPECIAL] < 40 && move_cooldown[AT_NSPECIAL] != 0){
-	draw_sprite_ext(sprite_get("recharged"), 10 - (move_cooldown[AT_NSPECIAL] / 4), x, y - 70, 1, 1, 0, c_white, 1);
-}
+if (move_cooldown[AT_DSPECIAL] < 20 && move_cooldown[AT_DSPECIAL] != 0){
+//	draw_sprite_ext(sprite_get("recharged"), 10 - (move_cooldown[AT_DSPECIAL] / 4), x, y - 70, 1, 1, 0, c_white, 1);
 
-// Some wack code if I want to add a refresh icon for when Fspecial cooldown comes back
-/*
-if (move_cooldown[AT_FSPECIAL] != 0 && move_cooldown[AT_FSPECIAL] < 18){
-	draw_sprite_ext(sprite_get("grabrecharged"), 6 - (move_cooldown[AT_FSPECIAL] / 3), x, y - 60, 1, 1, 0, c_white, 1);
+	var nspecialrecovercolor = make_colour_rgb(63, 240, 240);
+	
+	if (move_cooldown[AT_DSPECIAL] < 15 && move_cooldown[AT_DSPECIAL] >  10){
+		gpu_set_fog(1, nspecialrecovercolor, 0, 1);
+		draw_sprite_ext(sprite_index, image_index, x, y, 1 * spr_dir, 1, 0, nspecialrecovercolor, .70);
+		gpu_set_fog(0, c_white, 0, 0);
+	}
+	
+	if (move_cooldown[AT_DSPECIAL] < 6 && move_cooldown[AT_DSPECIAL] > 0){
+		gpu_set_fog(1, nspecialrecovercolor, 0, 1);
+		draw_sprite_ext(sprite_index, image_index, x, y, 1 * spr_dir, 1, 0, nspecialrecovercolor, .70);
+		gpu_set_fog(0, c_white, 0, 0);
+	}
 }
-*/
 
 // Draws the Down Special menu and icons when selecting a gift
-if (attack == AT_DSPECIAL){
+if (attack == AT_NSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)){
 
 	if (window == 1 and special_down && window_timer > 5){
 		draw_sprite_ext(sprite_get("dspecialmenu"), 0, x + 1, y - 37, 1, 1, 0, c_white, .05 * window_timer);	
@@ -75,8 +129,9 @@ if (attack == AT_DSPECIAL){
 	}
 }
 
+/*
 // Draws the flash animation during Nspecial
-if (attack == AT_NSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
+if (attack == AT_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
 	if (window == 2){
 		switch (spr_dir){
 			case 1:
@@ -88,6 +143,7 @@ if (attack == AT_NSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 		}
 	}
 }
+*/
 
 // Draws the Ribbon effect with extending string length
 var RibbonSprite = sprite_get("string");
@@ -108,11 +164,11 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
 
 
 // Some code junk
-//draw_debug_text(300, 200, "color: " + string(get_player_color(player)));
-//draw_debug_text(x, y - 40, "CandyKB: " + string(CandyKB));
-//draw_debug_text(x, y - 60, "Room: " + string(room));
-//draw_debug_text(x, y - 80, "LoveMeter Rib: " + string(LoveMeter_Ribbon));
-//draw_debug_text(x, y - 100, "LoveMeter Bal: " + string(LoveMeter_Balloon));
+//draw_debug_text(360, 200, "Armor: " + string(soft_armor));
+//draw_debug_text(360, 220, "FA: " + string(focus_attack));
+//draw_debug_text(360, 240, "Break: " + string(focus_armorbreak));
+//draw_debug_text(360, 260, "HSP: " + string(hsp));
+//draw_debug_text(360, 280, "VSP: " + string(vsp));
 
 //draw_debug_text(x, y - 100, "Thorn: " + string(isThorn));
 

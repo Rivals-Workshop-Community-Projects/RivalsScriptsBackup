@@ -146,8 +146,7 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
     	        	}
     	        }    	 
     	        
-    	        if !free and state_cat != SC_HITSTUN and (state_cat == SC_GROUND_NEUTRAL or state == PS_DASH or 
-    	        state == PS_DASH_START or state == PS_DASH_STOP or state == PS_DASH_TURN) {
+    	        if !free and state_cat != SC_HITSTUN  and !attacking {
 
     	        	
     	        if invitimer == 0{

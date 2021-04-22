@@ -541,7 +541,7 @@ if ("rollArray" in self)
 					if ("jabby" in hit_player_obj && "temp_level" in hit_player_obj && hit_player_obj.temp_level == 1)
 					{
 						a = 1;
-						AddText("Look a star is coming.");
+						AddText("1885391262");
 						AddText("");
 						AddText("");
 						AddText("");
@@ -553,17 +553,27 @@ if ("rollArray" in self)
 						AddText("Look a star is coming.");
 						AddText("I need more time to prepare.");
 						AddText("I am not ready.");
+						AddText("");
+						AddText("Maybe a deity of light can help");
 					}
 				}
 				else if (string_count("2210984773", string(get_stage_data(SD_ID))) > 0)
 				{
-					if ("hikaru" in self && hikaru == "lost")
+					
+					if ("hikaru" in self)
 					{
-						AddText("I... need some space");
-						AddText("Or time...");
-						AddText("Or both");
-						AddText("");
-						AddText("No more anxiety");
+						if (hikaru == "lost")
+						{
+							AddText("I... need some space");
+							AddText("Or time...");
+							AddText("Or both");
+							AddText("");
+							AddText("No more anxiety");
+						}
+						else if (hikaru == "found")
+						{
+							AddText("To arrange something or change the controls on a computer or other device so that it can be used in a particular way");
+						}
 					}
 					else
 					{
@@ -579,15 +589,30 @@ if ("rollArray" in self)
 				}
 				else
 				{
-					AddText("I could never find the right way to tell you");
-					AddText("Have you noticed I've been gone?");
-					AddText("'Cause I left behind the home that you made me");
-					AddText("But I will carry it along");
-					AddText("");
-					AddText("And it's a long way forward, so trust in me");
-					AddText("I'll give them shelter, like you've done for me");
-					AddText("And I know, I'm not alone, you'll be watching over us");
-					AddText("Until you're gone");
+					if ("hikaru" in self)
+					{
+						if (hikaru == "lost")
+						{
+							AddText("HQnC1UHBvWA");
+						}
+						else if (hikaru == "found")
+						{
+							AddText("I can't describe how I feel about this little fox.");
+							AddText("Can you?");
+						}
+					}
+					else
+					{
+						AddText("I could never find the right way to tell you");
+						AddText("Have you noticed I've been gone?");
+						AddText("'Cause I left behind the home that you made me");
+						AddText("But I will carry it along");
+						AddText("");
+						AddText("And it's a long way forward, so trust in me");
+						AddText("I'll give them shelter, like you've done for me");
+						AddText("And I know, I'm not alone, you'll be watching over us");
+						AddText("Until you're gone");
+					}
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

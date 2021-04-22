@@ -1,5 +1,16 @@
 move_cooldown[AT_USPECIAL] = 0 ;
+dspecon = 0
 intro = 1
+
+     if attack == AT_NSPECIAL && fireon >= 3{
+     	    firerange = -100
+    fireon = 0
+    sound_play(asset_get("sfx_spin"));
+    sound_play(asset_get("sfx_ori_grenade_aim"));
+     }
+     
+ move_cooldown[AT_NSPECIAL] = 0 ;
+ 
 if introhit = 0 {
 	introhit = -1
 }

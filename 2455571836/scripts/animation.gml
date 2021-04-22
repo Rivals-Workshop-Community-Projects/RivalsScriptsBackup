@@ -9,3 +9,7 @@ switch (state){
         image_index = floor(image_number*state_timer/(image_number*5));
     break;
 }
+
+if (state_cat == SC_HITSTUN) and sandstarred = true {
+sprite_index = sprite_get( "sandstar_hurt" );
+}

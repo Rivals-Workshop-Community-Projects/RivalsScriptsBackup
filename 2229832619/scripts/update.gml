@@ -11,11 +11,32 @@ if (get_player_color( player ) == 10) {
 	init_shader();
 }
 
+if (get_player_color( player ) == 7){ //towerofheaven
+	if (outline_color[0] == 0 && outline_color[1] == 0 && outline_color[2] == 0){
+		outline_color=[35, 67, 49]
+		init_shader();
+	}
+	if (!ea_init){
+		
+		ea_init = true;
+	}
+}
+
 if ((get_gameplay_time() == 2 && get_training_cpu_action() != CPU_FIGHT) || was_reloaded){
 	practice = true;
 }
 if (practice && down_down && taunt_down && shield_down){
 	nadev = true;
+}
+
+if (dairvsp != dairvsp_orig){
+	if (!free){
+		dairvsp = dairvsp_orig
+	}
+}
+
+if (usp_ls_cooldown>0){
+	usp_ls_cooldown--;
 }
 
 if (na_bh){
@@ -26,6 +47,12 @@ if (na_bh){
 	}
 	na_bh = false;
 }
+/*
+if (state==PS_HITSTUN){
+	air_friction = air_friction_hitstun
+}else if(air_friction != air_friction_orig){
+	air_friction = air_friction_orig
+}*/
 
 if ((state==PS_ATTACK_AIR || state==PS_ATTACK_GROUND) && (attack==AT_DSPECIAL || attack==AT_DSPECIAL_AIR)){
 	//wow
@@ -74,6 +101,12 @@ if (state==PS_SPAWN && extra_col == 0 && taunt_down){
 	}
 	if (shield_down){
 		extra_col = 6
+		white_flash_timer = 18;
+		sound_play(sound_get("shine"));
+		init_shader();
+	}
+	if (jump_down){
+		extra_col = 7
 		white_flash_timer = 18;
 		sound_play(sound_get("shine"));
 		init_shader();

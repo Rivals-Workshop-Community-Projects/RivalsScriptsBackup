@@ -12,6 +12,19 @@ if (isFspecial){
 	isFspecial = false;
 }
 
+if (enemy_hitboxID.type == 1){
+	if (focus_attack){
+		focus_attack = false;
+		focus_armorbreak = true;
+	}
+}
+
+if (focus_attack || focus_armorbreak){
+	if (enemy_hitboxID.type == 2){
+		LoveMeter = clamp(floor(LoveMeter + LoveStorage + (enemy_hitboxID.damage * 8)), 0, 200);
+		LoveStorage = 0;
+	}
+}
 
 // Turns opponents status effects off if Date Girl is in specific states
 with (hit_player){

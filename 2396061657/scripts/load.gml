@@ -15,6 +15,11 @@ sprite_change_offset("stage_logo",  65, 65);
 sprite_change_offset("taunt...",  72, 96);
 sprite_change_offset("magnetism", 205, 205);
 
+sprite_change_offset("focuseffectsfront", 42, 88);
+sprite_change_offset("focuseffectsback", 40, 88);
+sprite_change_offset("focuseffectssmoke", 44, 102);
+sprite_change_offset("crumple", 60, 98);
+
 sprite_change_offset("idle", 50, 98);
 sprite_change_offset("hurt", 32, 62);
 sprite_change_offset("crouch", 50, 98);
@@ -51,9 +56,9 @@ sprite_change_offset("bair", 60, 90);
 sprite_change_offset("uair", 50, 108);
 sprite_change_offset("dair", 50, 98);
 sprite_change_offset("fstrong", 50, 118);
-sprite_change_offset("ustrong", 50, 90);
+sprite_change_offset("ustrong", 48, 118);
 sprite_change_offset("dstrong", 74, 118);
-sprite_change_offset("nspecial", 70, 118);
+sprite_change_offset("nspecial", 40, 84);
 sprite_change_offset("fspecial", 50, 86);
 sprite_change_offset("fspecialair", 58, 86);
 sprite_change_offset("uspecial", 50, 98);
@@ -96,5 +101,6 @@ sprite_change_offset("fthrow_fx", 75, 64);
 sprite_change_offset("nthrow_fx", 110, 112);
 sprite_change_offset("heartloss_fx", 130, 140);
 sprite_change_offset("ustrong_fx", 89, 97);
+sprite_change_offset("focushitfx", 116, 108);
 
 sprite_change_offset("date_bg", 800, 500);

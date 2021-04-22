@@ -55,7 +55,9 @@ air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aeri
 jump_change = 3.8; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .35;
 prat_fall_accel = .5; //multiplier of air_accel while in pratfall
-air_friction = .017;
+//air_friction_orig = 0.017;
+air_friction = 0.03;//0.017
+//air_friction_hitstun = 0.04;
 max_djumps = 1;
 double_jump_time = 36; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 4.7;
@@ -165,10 +167,14 @@ na_ust_marked = 0;
 was_usp = false;
 na_dsp_charge = 0;
 dspmax = 30;//initially 50, previously 35, currently 30
+dairvsp_orig = -12;
+dairvsp = -12;
+usp_ls_cooldown = 0;
 
 col_timer = 0;
 col_timer_max = 30;
 col_phase = 0;
+ea_init = 0;
 
 trummelcodecneeded = false;
 trummelcodec_id = -4;

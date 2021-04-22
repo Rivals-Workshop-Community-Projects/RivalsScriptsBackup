@@ -183,7 +183,7 @@ if ((state == PS_ATTACK_GROUND) or (state == PS_ATTACK_AIR))
                 grab_id.hitstop_full = 2
                 
                 
-    			grab_id.x = x_hand + 20 * spr_dir;
+    			grab_id.x = x + x_hand + 20 * spr_dir;
     			grab_id.y = y_hand + 30;
     			
     			grab_id.force_depth = 1;

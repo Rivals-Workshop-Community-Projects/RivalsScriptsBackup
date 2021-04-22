@@ -37,7 +37,7 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED, 0);
 
 
 //endlag
-set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 33);
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 26);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED_TYPE, 2);
@@ -77,6 +77,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_LOCKOUT, 10);
+set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 
 
 // grab body start
@@ -101,6 +102,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, sound_get("grab"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_LOCKOUT, 10);
+set_hitbox_value(AT_FSPECIAL, 2, HG_IGNORES_PROJECTILES, 1);
 
 
 

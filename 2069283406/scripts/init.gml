@@ -6,6 +6,7 @@ hitstun_hurtbox_spr = -1;
 
 introhit = 0
 rollside = 1
+dspecon = 0
 
 nname = "Alex Ashikaga"
 ncode1 = "Ranger of Okyo Forest. His power called Soul Flame,"
@@ -17,6 +18,11 @@ halffire = 0
 autodash = 0
 dashing = 0
 daigomode = 0
+
+galx = 0
+galy = 0
+
+dohsp = 0
 
 planted = 0
 lattack = 0
@@ -156,14 +162,14 @@ sprite_change_offset("shit5", 100, 100);
 sprite_change_offset("shit6", 100, 100);
 sprite_change_offset("shit7", 100, 100);
 sprite_change_offset("shit8", 100, 100);
-
+sprite_change_offset("DeathAlex", 112, 112);
 lighten = hit_fx_create( sprite_get( "lighten" ), 8);
 sprite_change_offset("lighten", 1000, 1000);
 
 dsshadow = hit_fx_create( sprite_get( "DSshadow" ), 8);
 dshadow = hit_fx_create( sprite_get( "ffires2" ), 12);
 firepar1 = hit_fx_create( sprite_get( "firepar1" ), 20);
-firepar2 = hit_fx_create( sprite_get( "firepar2" ), 12);
+firepar2 = hit_fx_create( sprite_get( "firepar2" ), 16);
 ffire = hit_fx_create( sprite_get( "ffires3" ), 24);
 ffireh = hit_fx_create( sprite_get( "ffires3" ), 15);
 tauntpar1 = hit_fx_create( sprite_get( "tauntpar1" ), 24);

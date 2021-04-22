@@ -34,3 +34,5 @@ hitHboxNum = 0;
 hitDir = 0;
 hit_lockout = 0;
 hitPlayer = 0;
+
+onPlat = false;

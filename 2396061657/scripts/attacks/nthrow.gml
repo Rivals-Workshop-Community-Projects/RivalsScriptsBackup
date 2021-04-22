@@ -14,19 +14,21 @@ set_window_value(AT_NTHROW, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NTHROW, 2, AG_WINDOW_LENGTH, 22);
 set_window_value(AT_NTHROW, 2, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_NTHROW, 2, AG_WINDOW_ANIM_FRAME_START, 2);
+/*
 set_window_value(AT_NTHROW, 2, AG_WINDOW_HSPEED, RibbonHSP);
 set_window_value(AT_NTHROW, 2, AG_WINDOW_VSPEED, RibbonVSP);
 set_window_value(AT_NTHROW, 2, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_NTHROW, 2, AG_WINDOW_VSPEED_TYPE, 2);
+*/
 
 set_window_value(AT_NTHROW, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NTHROW, 3, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_NTHROW, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NTHROW, 3, AG_WINDOW_ANIM_FRAME_START, 9);
-//set_window_value(AT_NTHROW, 3, AG_WINDOW_HSPEED, -5);
 set_window_value(AT_NTHROW, 3, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_NTHROW, 3, AG_WINDOW_HSPEED_TYPE, 1);
-//set_window_value(AT_NTHROW, 3, AG_WINDOW_VSPEED, -);
+set_window_value(AT_NTHROW, 3, AG_WINDOW_VSPEED, 0);
+set_window_value(AT_NTHROW, 3, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_NTHROW, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NTHROW, 3, AG_WINDOW_SFX, sound_get("fspecialmove"));
 set_window_value(AT_NTHROW, 3, AG_WINDOW_SFX_FRAME, 3);

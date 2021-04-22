@@ -77,15 +77,15 @@ if (state == 0){
 switch (tier){
 	case 1:
 	void_range = 84;//82
-	disable_range = 120;//110
+	disable_range = 135;//110//120
 	break;
 	case 2:
 	void_range = 60;//54
-	disable_range = 80;//54//70
+	disable_range = 110;//54//70//80
 	break;
 	case 3:
 	void_range = 50;//42
-	disable_range = 75;//42//65
+	disable_range = 100;//42//65//75
 	break;
 }
 

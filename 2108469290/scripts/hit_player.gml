@@ -44,13 +44,13 @@ with hit_player_obj {
 
 
 spawn_hit_fx (hit_player_obj.x - (10 * spr_dir), hit_player_obj.y - 40, 303)
-
+if my_hitboxID.hitstun_factor != 6 {
 if get_gameplay_time() % 2 == 0 {
 sound_play(sound_get("RI"),false,noone, 0.4 + my_hitboxID.damage/20)
 } else {
 sound_play(sound_get("RI2"),false,noone, 0.6 + my_hitboxID.damage/20)	
 }
-
+}
 }	
 
 }

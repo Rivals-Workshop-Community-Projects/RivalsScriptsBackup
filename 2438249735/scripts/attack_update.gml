@@ -235,6 +235,7 @@ if !hitpause {
                 locky = y
                  fancyfx();
                 if window_timer == 17 {
+                	 move_cooldown[AT_FSPECIAL_2] = 0	
                     set_attack (AT_EXTRA_1)
                     invitimer = 0
                     djumped = 1
@@ -472,6 +473,7 @@ if !hitpause {
      	djumps = 0
      	move_cooldown [AT_FSPECIAL] = 999
      	          set_attack (AT_JAB)
+     	           move_cooldown[AT_FSPECIAL_2] = 0	
      	window = 4
      	window_timer = 1
      	vsp = -8

@@ -42,7 +42,7 @@ set_hitbox_value(AT_NAIR, 1, HG_KNOCKBACK_SCALING, 0.1);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 24);
-set_hitbox_value(AT_NAIR, 1, HG_HITSTUN_MULTIPLIER, 0.9);
+set_hitbox_value(AT_NAIR, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, sound_get("slicel"));
 
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_TYPE, 1);
@@ -63,4 +63,4 @@ set_hitbox_value(AT_NAIR, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_NAIR, 2, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_NAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, 24);
 set_hitbox_value(AT_NAIR, 2, HG_HIT_SFX, sound_get("slicel"));
-set_hitbox_value(AT_NAIR, 2, HG_HITSTUN_MULTIPLIER, 0.9);
+set_hitbox_value(AT_NAIR, 2, HG_HITSTUN_MULTIPLIER, 1);

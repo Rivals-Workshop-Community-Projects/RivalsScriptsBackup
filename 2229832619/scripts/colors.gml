@@ -1,3 +1,7 @@
+// N/A Colors.gml
+// Coded entirely using my catfriend's ROA Colors.gml generator/helper!
+// TAke a look, y'all: https://cl-9a.github.io/RoAColorsGmlHelper/
+
 // DEFAULT COLOR
 
 // main
@@ -34,7 +38,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 19 );
 
 // water
 set_color_profile_slot( 1, 0, 59, 73, 135 ); //main
@@ -86,7 +90,7 @@ set_color_profile_slot( 5, 5, 191, 88, 231 ); //abyss_eye
 set_color_profile_slot( 5, 6, 234, 214, 244 ); //blade
 set_color_profile_slot( 5, 7, 200, 153, 214 ); //blade.2
 
-// Leucistic //"not" abyss
+// Leucistic
 set_color_profile_slot( 6, 0, 255, 230, 230 ); //main
 set_color_profile_slot( 6, 1, 227, 182, 187 ); //main.2
 set_color_profile_slot( 6, 2, 199, 139, 169 ); //main.3
@@ -106,7 +110,7 @@ set_color_profile_slot( 7, 5, 211, 226, 154 ); //abyss_eye
 set_color_profile_slot( 7, 6, 211, 226, 154 ); //blade
 set_color_profile_slot( 7, 7, 167, 186, 74 ); //blade.2
 
-// CRIMSON WINGS
+// angel
 set_color_profile_slot( 8, 0, 255, 246, 245 ); //main
 set_color_profile_slot( 8, 1, 212, 195, 195 ); //main.2
 set_color_profile_slot( 8, 2, 181, 159, 159 ); //main.3
@@ -114,9 +118,9 @@ set_color_profile_slot( 8, 3, 179, 0, 0 ); //purple
 set_color_profile_slot( 8, 4, 207, 0, 0 ); //white_eye
 set_color_profile_slot( 8, 5, 255, 24, 0 ); //abyss_eye
 set_color_profile_slot( 8, 6, 255, 225, 0 ); //blade
-set_color_profile_slot( 8, 7, 209, 157, 0 ); //blade.2
+set_color_profile_slot( 8, 7, 222, 140, 0 ); //blade.2
 
-// CORONATION
+// crown
 set_color_profile_slot( 9, 0, 0, 89, 84 ); //main
 set_color_profile_slot( 9, 1, 0, 51, 49 ); //main.2
 set_color_profile_slot( 9, 2, 0, 26, 24 ); //main.3
@@ -126,7 +130,7 @@ set_color_profile_slot( 9, 5, 255, 0, 0 ); //abyss_eye
 set_color_profile_slot( 9, 6, 242, 241, 225 ); //blade
 set_color_profile_slot( 9, 7, 189, 184, 147 ); //blade.2
 
-// ASTRAL BIRTH
+// void
 set_color_profile_slot( 10, 0, 255, 255, 255 ); //main
 set_color_profile_slot( 10, 1, 255, 202, 201 ); //main.2
 set_color_profile_slot( 10, 2, 252, 166, 151 ); //main.3
@@ -146,45 +150,75 @@ set_color_profile_slot( 11, 5, 122, 78, 145 ); //abyss_eye
 set_color_profile_slot( 11, 6, 109, 76, 130 ); //blade
 set_color_profile_slot( 11, 7, 73, 47, 87 ); //blade.2
 
-// true purple //you have entered the Y U M E K A W A zone
-set_color_profile_slot( 12, 0, 217, 156, 255 ); //main
-set_color_profile_slot( 12, 1, 172, 153, 255 ); //main.2
-set_color_profile_slot( 12, 2, 130, 134, 255 ); //main.3
-set_color_profile_slot( 12, 3, 242, 239, 186 ); //purple
-set_color_profile_slot( 12, 4, 217, 156, 255 ); //white_eye
-set_color_profile_slot( 12, 5, 218, 204, 255 ); //abyss_eye
-set_color_profile_slot( 12, 6, 208, 242, 225 ); //blade
-set_color_profile_slot( 12, 7, 179, 227, 208 ); //blade.2
+// traditional abyss
+set_color_profile_slot( 12, 0, 79, 61, 94 ); //main
+set_color_profile_slot( 12, 1, 61, 47, 71 ); //main.2
+set_color_profile_slot( 12, 2, 42, 30, 53 ); //main.3
+set_color_profile_slot( 12, 3, 217, 113, 255 ); //purple
+set_color_profile_slot( 12, 4, 195, 203, 230 ); //white_eye
+set_color_profile_slot( 12, 5, 252, 196, 30 ); //abyss_eye
+set_color_profile_slot( 12, 6, 86, 84, 146 ); //blade
+set_color_profile_slot( 12, 7, 58, 51, 99 ); //blade.2
 
-// true yellow
-set_color_profile_slot( 13, 0, 250, 225, 38 ); //main
-set_color_profile_slot( 13, 1, 240, 189, 48 ); //main.2
-set_color_profile_slot( 13, 2, 191, 141, 0 ); //main.3
-set_color_profile_slot( 13, 3, 176, 174, 167 ); //purple
-set_color_profile_slot( 13, 4, 255, 161, 0 ); //white_eye
-set_color_profile_slot( 13, 5, 220, 224, 220 ); //abyss_eye
-set_color_profile_slot( 13, 6, 255, 255, 255 ); //blade
-set_color_profile_slot( 13, 7, 213, 217, 204 ); //blade.2
+// true purple/air
+set_color_profile_slot( 13, 0, 170, 136, 191 ); //main
+set_color_profile_slot( 13, 1, 99, 68, 125 ); //main.2
+set_color_profile_slot( 13, 2, 57, 32, 79 ); //main.3
+set_color_profile_slot( 13, 3, 95, 0, 102 ); //purple
+set_color_profile_slot( 13, 4, 95, 0, 102 ); //white_eye
+set_color_profile_slot( 13, 5, 100, 73, 135 ); //abyss_eye
+set_color_profile_slot( 13, 6, 186, 42, 191 ); //blade
+set_color_profile_slot( 13, 7, 127, 14, 140 ); //blade.2
 
-// true red
-set_color_profile_slot( 14, 0, 217, 19, 19 ); //main
-set_color_profile_slot( 14, 1, 156, 28, 30 ); //main.2
-set_color_profile_slot( 14, 2, 115, 26, 47 ); //main.3
-set_color_profile_slot( 14, 3, 255, 219, 56 ); //purple
-set_color_profile_slot( 14, 4, 255, 92, 92 ); //white_eye
-set_color_profile_slot( 14, 5, 255, 200, 0 ); //abyss_eye
-set_color_profile_slot( 14, 6, 255, 228, 107 ); //blade
-set_color_profile_slot( 14, 7, 255, 201, 84 ); //blade.2
+// true grey
+set_color_profile_slot( 14, 0, 128, 126, 176 ); //main
+set_color_profile_slot( 14, 1, 68, 67, 122 ); //main.2
+set_color_profile_slot( 14, 2, 33, 31, 69 ); //main.3
+set_color_profile_slot( 14, 3, 112, 64, 255 ); //purple
+set_color_profile_slot( 14, 4, 76, 42, 201 ); //white_eye
+set_color_profile_slot( 14, 5, 190, 168, 255 ); //abyss_eye
+set_color_profile_slot( 14, 6, 183, 173, 255 ); //blade
+set_color_profile_slot( 14, 7, 115, 97, 255 ); //blade.2
 
-// true blue //hey this kinda looks like apotos, that's nice
-set_color_profile_slot( 15, 0, 245, 253, 255 ); //main
-set_color_profile_slot( 15, 1, 166, 221, 255 ); //main.2
-set_color_profile_slot( 15, 2, 130, 170, 245 ); //main.3
-set_color_profile_slot( 15, 3, 30, 50, 184 ); //purple
-set_color_profile_slot( 15, 4, 92, 106, 255 ); //white_eye
-set_color_profile_slot( 15, 5, 165, 156, 255 ); //abyss_eye
-set_color_profile_slot( 15, 6, 66, 79, 255 ); //blade
-set_color_profile_slot( 15, 7, 22, 60, 201 ); //blade.2
+// true green/earth
+set_color_profile_slot( 15, 0, 71, 140, 95 ); //main
+set_color_profile_slot( 15, 1, 34, 84, 66 ); //main.2
+set_color_profile_slot( 15, 2, 20, 45, 99 ); //main.3
+set_color_profile_slot( 15, 3, 180, 255, 41 ); //purple
+set_color_profile_slot( 15, 4, 255, 237, 41 ); //white_eye
+set_color_profile_slot( 15, 5, 180, 255, 41 ); //abyss_eye
+set_color_profile_slot( 15, 6, 227, 220, 199 ); //blade
+set_color_profile_slot( 15, 7, 171, 133, 116 ); //blade.2
+
+// true red/fire
+set_color_profile_slot( 16, 0, 247, 132, 17 ); //main
+set_color_profile_slot( 16, 1, 232, 72, 9 ); //main.2
+set_color_profile_slot( 16, 2, 199, 18, 18 ); //main.3
+set_color_profile_slot( 16, 3, 156, 0, 0 ); //purple
+set_color_profile_slot( 16, 4, 255, 219, 56 ); //white_eye
+set_color_profile_slot( 16, 5, 240, 188, 0 ); //abyss_eye
+set_color_profile_slot( 16, 6, 255, 222, 71 ); //blade
+set_color_profile_slot( 16, 7, 255, 129, 18 ); //blade.2
+
+// true blue/water
+set_color_profile_slot( 17, 0, 245, 253, 255 ); //main
+set_color_profile_slot( 17, 1, 166, 221, 255 ); //main.2
+set_color_profile_slot( 17, 2, 130, 170, 245 ); //main.3
+set_color_profile_slot( 17, 3, 30, 50, 184 ); //purple
+set_color_profile_slot( 17, 4, 92, 106, 255 ); //white_eye
+set_color_profile_slot( 17, 5, 165, 156, 255 ); //abyss_eye
+set_color_profile_slot( 17, 6, 66, 79, 255 ); //blade
+set_color_profile_slot( 17, 7, 22, 60, 201 ); //blade.2
+
+// ranked gold
+set_color_profile_slot( 18, 0, 242, 248, 255 ); //main
+set_color_profile_slot( 18, 1, 175, 180, 214 ); //main.2
+set_color_profile_slot( 18, 2, 136, 144, 189 ); //main.3
+set_color_profile_slot( 18, 3, 126, 132, 189 ); //purple
+set_color_profile_slot( 18, 4, 242, 145, 0 ); //white_eye
+set_color_profile_slot( 18, 5, 252, 196, 30 ); //abyss_eye
+set_color_profile_slot( 18, 6, 247, 157, 0 ); //blade
+set_color_profile_slot( 18, 7, 227, 114, 0 ); //blade.2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
@@ -192,3 +226,4 @@ set_color_profile_slot( 15, 7, 22, 60, 201 ); //blade.2
 {"formatversion":1,"data":[{"name":"main","colors":[{"r":71,"g":49,"b":87,"main":true}]},{"name":"main.2","colors":[{"r":49,"g":33,"b":64,"main":true}]},{"name":"main.3","colors":[{"r":30,"g":19,"b":43,"main":true}]},{"name":"purple","colors":[{"r":119,"g":43,"b":197,"main":true},{"r":88,"g":22,"b":183},{"r":50,"g":17,"b":111},{"r":217,"g":113,"b":255}]},{"name":"white_eye","colors":[{"r":222,"g":232,"b":236,"main":true}]},{"name":"abyss_eye","colors":[{"r":255,"g":238,"b":109},{"r":255,"g":180,"b":0,"main":true},{"r":203,"g":98,"b":4}]},{"name":"blade","colors":[{"r":140,"g":145,"b":183,"main":true}]},{"name":"blade.2","colors":[{"r":99,"g":101,"b":149,"main":true}]}]}
 === END JSON PALETTE ===
 */
+

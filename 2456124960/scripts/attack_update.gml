@@ -207,13 +207,13 @@ if (attack == AT_NSPECIAL){
     }
     if (window == 2 && window_timer == 4){
 	if (crystalOut == 0) {
-		set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 40);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 40);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 30);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 30);
 		set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 20);
 		set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 20);
 		if (strong_charge > 30) {
-			set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 60);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 60);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 50);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 50);
 			set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 30);
 			set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 30);
 		}
@@ -341,6 +341,7 @@ if (attack == AT_BAIR) {
 	if (window == 2 || (window == 3 && window_timer < 4)) {progressCheck = 2;}
 	if (window == 3 && window_timer >= 4) {progressCheck = 3;}
 	if (window == 1 && window_timer == 6) {sound_play(asset_get("sfx_bird_nspecial2"), false, noone, 0.7, 1);}
+	if (window == 1 && window_timer == 2) {sound_play(asset_get("sfx_ice_back_air"), false, noone, 0.7, 1);}
 }
 
 if (attack == AT_NAIR) {

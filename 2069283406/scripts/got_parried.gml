@@ -13,18 +13,21 @@ if (my_hitboxID.attack == AT_NSPECIAL) {
     parry_lag = 60;
 }   
 
-if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 2) {
-    parry_lag = 60;
-}   
 
 
-if (my_hitboxID.attack == AT_FSPECIAL) {
-    my_hitboxID.hitbox_timer = 0;
-}
 
 
 fireon = 0
 firerange = -100
-if "fp" in self {
-fp.destroyed = true
+    with (asset_get("pHitBox")) {
+if(player_id == other.id && attack == AT_FSPECIAL && hbox_num == 2) {
+    destroyed = true;
+}
+}
+
+
+if (my_hitboxID.attack == AT_FSPECIAL) {
+    shake_camera(4,4)
+            sound_play(asset_get("sfx_forsburn_combust"));
+			sound_play(sound_get("RI2"));
 }

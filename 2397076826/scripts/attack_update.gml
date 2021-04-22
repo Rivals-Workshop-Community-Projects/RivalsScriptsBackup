@@ -478,6 +478,10 @@ if attack == AT_NSPECIAL {
 
 if attack == AT_FSPECIAL {
  
+ if has_hit_player && window < 4 && !hitpause {
+ 	window = 4
+ }
+ 
  if down_down {
  	fall_through = true
         if !free && ground_type == 2 {

@@ -4,27 +4,27 @@ set_attack_value(AT_DATTACK, AG_AIR_SPRITE, sprite_get("dattack"));
 set_attack_value(AT_DATTACK, AG_HURTBOX_SPRITE, sprite_get("dattack_hurt"));
 
 set_window_value(AT_DATTACK, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 4);
-set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 3);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX, sound_get("glace_dash"));
-set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, 3);
+set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, 6);
 
 set_window_value(AT_DATTACK, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 8);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, .04);
 
 set_window_value(AT_DATTACK, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 7);
-set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAME_START, 4);
+set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, .1);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, .4);

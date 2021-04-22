@@ -258,3 +258,28 @@ set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 //set_hitbox_value(AT_NSPECIAL, 6, HG_ANGLE_FLIPPER, 5);
 
 
+//Coffee
+set_hitbox_value(AT_NSPECIAL, 7, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_NSPECIAL, 7, HG_WINDOW, 999);
+set_hitbox_value(AT_NSPECIAL, 7, HG_LIFETIME, 999);
+set_hitbox_value(AT_NSPECIAL, 7, HG_WIDTH, 30);
+set_hitbox_value(AT_NSPECIAL, 7, HG_HEIGHT, 30);
+set_hitbox_value(AT_NSPECIAL, 7, HG_PRIORITY, 3);
+set_hitbox_value(AT_NSPECIAL, 7, HG_DAMAGE, 9);
+set_hitbox_value(AT_NSPECIAL, 7, HG_ANGLE, 107);
+set_hitbox_value(AT_NSPECIAL, 7, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_NSPECIAL, 7, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(AT_NSPECIAL, 7, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_NSPECIAL, 7, HG_EXTRA_HITPAUSE, 70);
+set_hitbox_value(AT_NSPECIAL, 7, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_NSPECIAL, 7, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_SPRITE, sprite_get("Bell"));
+//set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_HSPEED, 6);
+set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_DESTROY_EFFECT, 0);
+set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_VSPEED, -12);
+set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_GRAVITY, 0.47);
+// set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);

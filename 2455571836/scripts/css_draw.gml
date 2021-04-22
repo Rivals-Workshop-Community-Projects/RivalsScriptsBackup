@@ -6,7 +6,7 @@ var temp_y = y + 9;
  
 var num_alts = 32;
 var alt_cur = get_player_color(player);
-draw_sprite_ext(sprite_get("css_icons"), alt_cur, temp_x + 12, temp_y + 40, 1, 1, 0, c_white, 1); 
+draw_sprite_ext(sprite_get("css_icons"), alt_cur, temp_x + 12, temp_y + 40, 1, 1, 0, c_white, 1);
  
 //Alt name init. var doesn't work with arrays lol
  

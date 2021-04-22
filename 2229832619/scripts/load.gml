@@ -40,6 +40,8 @@ sprite_change_offset("fspecial", 74, 134);
 sprite_change_offset("fspecial_air", 74, 134);
 sprite_change_offset("uspecial", 74, 134);
 sprite_change_offset("uspecial_dupli", 74, 110); //134-110=24
+sprite_change_offset("uspecial_dupli_ea", 74, 110); //134-110=24
+sprite_change_offset("uspecial_ai", 74, 110);//round(74/2), round(110)); //134-110=24
 sprite_change_offset("dspecial", 74, 134);
 sprite_change_offset("dspecial_air", 74, 134);
 sprite_change_offset("taunt", 74, 134);

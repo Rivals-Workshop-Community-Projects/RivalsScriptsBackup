@@ -46,7 +46,7 @@ set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, 6);
 set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_DAIR, 2, HG_SHAPE, 0);
-set_hitbox_value(AT_DAIR, 2, HG_HITSTUN_MULTIPLIER, .85);
+set_hitbox_value(AT_DAIR, 2, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_DAIR, 2, HG_SDI_MULTIPLIER, 0.8);
 
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_TYPE, 1);
@@ -60,7 +60,7 @@ set_hitbox_value(AT_DAIR, 1, HG_HEIGHT, 80);
 set_hitbox_value(AT_DAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 145);
-set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, .5);
@@ -68,6 +68,6 @@ set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 6);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_DAIR, 1, HG_SHAPE, 0);
-set_hitbox_value(AT_DAIR, 1, HG_HITSTUN_MULTIPLIER, .9);
+set_hitbox_value(AT_DAIR, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_DAIR, 1, HG_SDI_MULTIPLIER, 0.75);
 

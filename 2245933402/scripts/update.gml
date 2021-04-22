@@ -44,13 +44,21 @@ if obamium > 1 {
 	obx += (x - obx) / 4
 }
 
-
-
-if hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 && hit_player_obj != self{
+with (oPlayer) {
+  if (id != other.id) {
+if ((state == PS_RESPAWN || state == PS_DEAD) && state_timer == 1) {
+        with other{
+      if hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 && hit_player_obj != self{
 obamium = 120
 sound_play(asset_get("sfx_ori_charged_flame_charge2")); 
 sound_play(sound_get("Obamium"));
 }
+    }
+  }
+}
+}
+
+
 
 if obamium > 0 {
     if obamium != 1 {
@@ -269,12 +277,12 @@ crouch_anim_speed = .1;
 walk_anim_speed = .1;
 dash_anim_speed = .2;
 
-walk_speed = 2;
+walk_speed = 3;
 walk_accel = 0.5;
 walk_turn_time = 5;
 initial_dash_time = 10;
-initial_dash_speed = 3;
-dash_speed = 3;
+initial_dash_speed = 5;
+dash_speed = 5;
 dash_turn_time = 6;
 dash_turn_accel = 1.5;
 dash_stop_time = 10;

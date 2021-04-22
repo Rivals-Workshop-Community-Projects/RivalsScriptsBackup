@@ -105,10 +105,7 @@ if (attack == AT_DAIR){
 	if window <= 3 && has_hit_player {
 		
 		with hit_player_obj {
-			if !super_armor && !soft_armor && !invincible {
-			
-			set_state(PS_HITSTUN)
-			state_timer = -20
+			if visible {
 			
 		if x < other.x {
 			x += floor((other.x - 30 - x)/3)

@@ -4,7 +4,7 @@ switch(attack)
 	case AT_FSPECIAL:
 		with (player_id)
 		{
-			other.x = x_hand;
+			other.x = x + x_hand;
 			other.y = y_hand;
 			
 			if (grab_id != noone) or (window == 3) or !(((state == PS_ATTACK_GROUND) or (state == PS_ATTACK_AIR)) and (attack == AT_FSPECIAL))

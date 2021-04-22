@@ -36,6 +36,14 @@ else {
 		}
 	}
 }
+
+// Gives Callie Armor during start up and dash of nspecial
+if (attack == AT_DSPECIAL && (window == 1 || window == 5) && !focus_armorbreak){
+	focus_attack = true;
+}
+else {
+	focus_attack = false;
+}
 	
 if (taunt_counter == 140){
 	isTaunt = true;
@@ -46,7 +54,7 @@ if (taunt_counter == 140){
 // Runs init_shader so Date Girl leggings are the right colors
 if (state == PS_SPAWN && state_timer == 1){
 	init_shader();
-	if (get_player_color( player ) = 4){
+	if (get_player_color( player ) = 13){
 		set_victory_portrait(sprite_get("ARportrait"));
 		set_victory_sidebar(sprite_get("ARsidebar"));
 	}
@@ -64,6 +72,31 @@ else {
 	isFspecial = false;
 }
 
+if (should_crumple){
+
+	if (crumple_timer < 3){
+		crumple_timer += 0.10;
+	}
+	
+	if (crumple_timer < 7 && crumple_timer > 6){
+		crumple_timer += 0.03;
+		crumple_alpha -= .03;
+	}
+	
+	if (crumple_timer >= 3 && crumple_timer <= 6) {
+		crumple_timer += 0.20;
+	}
+	
+	if (crumple_timer >= 7){
+		should_crumple = false;
+		crumple_timer = 0;
+	}
+}
+	
+if (move_cooldown[AT_DSPECIAL] == 10){
+	sound_play(asset_get("sfx_gem_collect"));
+}
+	
 // This is code for Date Girl dialogue that I never removed woops
 if (state == PS_IDLE || state == PS_PARRY){
 	DG_visual_state = 0;
@@ -87,21 +120,9 @@ if (!free){
 // Resets Ribbon Throw Date values
 if (attack != AT_NTHROW){
 
-	RibbonVSP = -11;
-	RibbonHSP = -5;
-	RibbonKB = 7.5;
-
-	set_window_value(AT_NTHROW, 2, AG_WINDOW_HSPEED, RibbonHSP);
-	set_window_value(AT_NTHROW, 2, AG_WINDOW_VSPEED, RibbonVSP);
-	set_hitbox_value(AT_NTHROW, 1, HG_BASE_KNOCKBACK, RibbonKB);
 	nthrowFastFall = false;
 }
 
-// Resets Roses Throw Date values
-if (attack != AT_FTHROW){
-	ThornKB = 7.5;
-	set_hitbox_value(AT_FTHROW, 1, HG_BASE_KNOCKBACK, ThornKB);
-}
 
 // Fspecial VFX
 if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
@@ -111,7 +132,7 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 		fspecial_circles = 0;
 	}		
 	
-	if (window >= 2 && window_timer % 2 == 0){
+	if ((window == 2 || (window == 3 && window_timer < 11)) && window_timer % 2 == 0){
 		instance_create( x, y - 10 -  random_func( 2, 60, true ), "obj_article2");
 	}
 	
@@ -134,17 +155,12 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 	}
 }
 
-/*
-// Gives Down Strong soft armor
-if (attack == AT_DSTRONG){
-	if (window == 3){
-		soft_armor = 8;
-	}
-	if (window == 4 && window_timer < 8){
-		soft_armor = 8;
+// Nspecial Dash Cancel Effect
+if (attack == AT_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && !hitpause){
+	if (window == 5 && window_timer % 3 == 0){
+		instance_create( x, y - 10 -  random_func( 2, 60, true ), "obj_article2");
 	}
 }
-*/
 
 // Creates hearts on the opponent after hitting someone
 //if (has_hit_player){
@@ -156,7 +172,7 @@ if (attack == AT_DSTRONG){
 		with(HitBox){
 			if (player == other.player){
 //				with (oPlayer){
-					if (player_id.url == CH_KRAGG && player_id.attack == AT_NSPECIAL){ // This is probably irrelevant now since I use  oPlayer instead of pHitBox but idk
+					if (player_id.url == CH_KRAGG && player_id.attack == AT_DSPECIAL){ // This is probably irrelevant now since I use  oPlayer instead of pHitBox but idk
 						break;
 					}
 					else {
@@ -244,13 +260,23 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 			}	
 		}	
 		
-		if (get_player_color(player) == 19){ // Color 12 Secret Alt
+		if (get_player_color(player) == 19){ // Color 20- Secret Alt
 			// Slime - Kagami Sumika alt color
 			if (!up_down && down_down && !left_down && !right_down && shield_down && !attack_down && !special_down){
 				SecretColor = 2;
 				ColorLock = 1;
 				ColorLocked = true;
 				set_victory_portrait( sprite_get( "slime_portrait" ));
+				init_shader();
+
+			}			
+			
+			// Dakota/Civic - Waga Baga Bobo
+			if (up_down && !down_down && !left_down && !right_down && !shield_down && attack_down && !special_down){
+				SecretColor = 6;
+				ColorLock = 1;
+				ColorLocked = true;
+//				set_victory_portrait( sprite_get( "slime_portrait" ));
 				init_shader();
 
 			}			
@@ -283,6 +309,39 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 			// Staur - alt color
 			if (up_down && !down_down && !left_down && !right_down && shield_down && !attack_down && !special_down){
 				SecretColor = 5;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+		}
+		
+		if (get_player_color(player) == 15){ // Color 16 Secret Alt
+
+			// Krankees - alt color
+			if (!up_down && !down_down && !left_down && !right_down && shield_down && !attack_down && special_down){
+				SecretColor = 7;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+		}
+		
+		if (get_player_color(player) == 18){ // Color 19 Secret Alt
+
+			// Golden Boy
+			if (!up_down && !down_down && !left_down && !right_down && shield_down && attack_down && !special_down && strong_down){
+				SecretColor = 200;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+		}
+		
+		if (get_player_color(player) == 9){ // Color 10 Secret Alt
+
+			// Golden Boy
+			if (!up_down && !down_down && !left_down && !right_down && shield_down && attack_down && !special_down && strong_down){
+				SecretColor = 201;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();
@@ -368,7 +427,7 @@ with (oPlayer){
 
 	if (isCandy && other.id = candy_id){
 		
-		if (vsp < -1 && (attack == AT_USPECIAL && state == PS_ATTACK_AIR)){
+		if (vsp < -1 || (attack == AT_USPECIAL && state == PS_ATTACK_AIR) || (!hitpause && (state == PS_DOUBLE_JUMP || state == PS_WALL_JUMP))){
 			isCandy = false;
 		}
 
@@ -424,6 +483,10 @@ with (oPlayer){
 				if (attack == AT_USPECIAL){
 					state = PS_IDLE;
 				}
+			}
+			
+			if (state == PS_DASH_START || state == PS_WALK){
+				state = PS_IDLE;
 			}
 		}
 

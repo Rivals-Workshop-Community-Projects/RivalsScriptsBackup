@@ -147,6 +147,23 @@ if ("practice" in self)
 						AddText("");
 						AddText("Added Spectrum alt");
 						break;
+					case 8:
+						AddText("v1.8 - 18 Apr 2021");
+						AddText("");
+						AddText("FSpec will now only receive the bounce once per airtime to reduce air stalling");
+						AddText("");
+						AddText("DAttack Endlag 13 -> 16 (24 on whiff)");
+						AddText("");
+						AddText("DTilt hitbox is now slightly thinner");
+						AddText("");
+						AddText("UStrong friction changed for less slippery DACUS");
+						AddText("");
+						AddText("BAir Landing lag 4 -> 6");
+						AddText("");
+						AddText("Guitar Strong return frame 8 -> 12");
+						AddText("");
+						AddText("Added a few new alts");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

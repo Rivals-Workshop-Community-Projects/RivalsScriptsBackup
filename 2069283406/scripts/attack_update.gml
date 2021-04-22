@@ -154,21 +154,19 @@ if attack == AT_BAIR{
 		sound_play(asset_get("sfx_swipe_medium2"));
 	}
 	
-	if has_hit_player && window == 2{
-		    vsp = 0
-			hit_player_obj.y += ((y - 10) - hit_player_obj.y) / 5
-	}
 	
 }
 
 if attack == AT_USTRONG{
+	
+	can_fast_fall = false 
 	
 	if window == 2 && window_timer == 1 && !hitpause{
 		sound_play(asset_get("sfx_swipe_heavy2"));
 	}
 	
 	
-	if window == 2 && window_timer == 3 && !hitpause{
+	if window == 2 && window_timer == 5 && !hitpause{
 		vsp = -12
 	}
 	
@@ -211,6 +209,7 @@ if attack == AT_DSTRONG {
 	if window == 2 {
 		
 		if window_timer <= 1 && !hitpause{
+			shake_camera(4,6)
 			sound_play(asset_get("sfx_forsburn_combust"));
 			sound_play(asset_get("sfx_zetter_downb"));
 			sound_play(sound_get("RI2"));
@@ -224,8 +223,10 @@ if attack == AT_DSTRONG {
 		shunpo = 0
 	}
 	
-	if window == 4 && hit_player_obj.state_cat == SC_HITSTUN { 
-		
+	
+	if window == 4  { 
+		move_cooldown[AT_NSPECIAL_2] = 30
+				firetimer += 1
 			if window_timer == 1 {
 		  spawn_hit_fx( x   , y , firepar2 )	
 		}
@@ -342,50 +343,45 @@ if attack == AT_DATTACK {
 
 if attack == AT_DAIR{
 	
-		if window == 1 && window_timer == 18 && !hitpause  {
-	
-	}
-	
-	if has_hit && window < 4 && !hitpause {
+	if window < 4 && has_hit && !hitpause {
 		window = 4
 		window_timer = 0
-	
 	}
-	
 	if window == 4 && window_timer == 1 && has_hit && !hit_pause{
 		vsp = -10
 	}
+	
+	
+
 }
 
 
 if attack == AT_NSPECIAL{
+	
+	if fireon == 3 {
+		
+		if window == 1 && window_timer == 5{
+			state_timer = 15
+			window = 2
+			window_timer = 0
+		}
+	}
+	
+	can_fast_fall = false
+	move_cooldown[AT_NSPECIAL] = 999
+	
 	if window == 1 && window_timer == 1 && !hitpause{
 		shake_camera (2,10)
 	}
 
-	can_fast_fall = false
-	can_wall_jump = true
-	
-	if window == 4 && window_timer == 1 && !has_hit{
-		vsp = -10
-		hsp /= 1.4
+   if window == 4 && window_timer == 1{
+		vsp = -11
 	}
 	
-	if window == 4 && window_timer > 11 && !has_hit{
-	
-
-    if fireon < 3 {
-	set_state (PS_PRATFALL)
-    } else {
-    	 fireon = 0
-         firerange = -100
-         hsp = 0
-    }
-    
-	
-	
+	if window == 4 && window_timer == 11 && firerange > 0{ 
+		fireon = 0
+		firerange = -100
 	}
-	
 	
 		if window <= 2 {
 			
@@ -396,53 +392,102 @@ if attack == AT_NSPECIAL{
 			}
 	}
 	
-	if window == 3 {
+	if window >= 3 && state_timer >= 35 {
+		if attack_pressed {
+			if  firerange > 0 {
+			firerange = -100
+			fireon = 0
+			}
+
+			if hsp > 4 or hsp < -4{
+			hsp = 4*spr_dir
+			}
+			vsp = -4
+			sound_play(asset_get("sfx_ori_bash_launch"));
+	        if !up_down && !down_down && !left_down && !right_down {
+	        set_attack(AT_NAIR)
+	        window = 1
+			window_timer = 6
+	        }
+	        
+	        if up_down && !down_down  {
+	        set_attack(AT_UAIR)
+	        window = 1
+			window_timer = 6
+	        }
+	        
+	        if !up_down && down_down  {
+	        set_attack(AT_DAIR)
+	        window = 1
+			window_timer = 6
+	        }
 		
-		if (x < hit_player_obj.x + 10 and x > hit_player_obj.x - 10) and 
-		(y < hit_player_obj.y + 30 and y > hit_player_obj.y - 30) and hit_player_obj != self {
-					vsp = -4
-		                hsp /= 1.5
-		                set_attack (AT_NAIR)
-                        window = 2
-                        window_timer = 2
-                        if fireon == 3 {
-                        fireon = 0
-                        firerange = 0
-                        }
+			if !up_down && !down_down && !left_down && right_down {
+				if spr_dir == 1 {
+	        set_attack(AT_FAIR)
+	        window = 1
+			window_timer = 6
+				}
+				
+				if spr_dir == -1 {
+	        set_attack(AT_BAIR)
+	        window = 1
+			window_timer = 6
+				}	
+	        }
+	        
+	       	if !up_down && !down_down && left_down && !right_down {
+				if spr_dir == -1 {
+	        set_attack(AT_FAIR)
+	        window = 1
+			window_timer = 6
+				}
+				
+				if spr_dir == 1 {
+	        set_attack(AT_BAIR)
+	        window = 1
+			window_timer = 6
+				}	
+	        } 
 		}
 
 	}
 	
+	
 	if window == 3 && firerange > 0 && inrange  {
-		
+		move_cooldown[AT_TAUNT_2] = 15
+		firetimer += 1
+		mask_index = asset_get("empty_sprite");
 		fall_through = 1
 		if window_timer == 1 {
 		  spawn_hit_fx( x   , y , firepar2 )	
 		}
-				if window_timer % 3 = 0 {
+		
+		if window_timer % 2 = 0 {
 		spawn_hit_fx( x   , y , dsshadow )
 		}
 		
 		
+		if hit_player_obj.state_cat == SC_HITSTUN {
+			hit_player_obj.hsp /= 1.1
+			hit_player_obj.vsp /= 1.1
+		}
 		spr_dir = (hit_player_obj.x > x?1:-1)
 		
 
-		hsp = (hit_player_obj.x - x) / 20 + (5 * spr_dir)
-		vsp = ((hit_player_obj.y * 1.2) - y) / 30
+		hsp = (hit_player_obj.x + hit_player_obj.hsp - 20*spr_dir - x) / 6
+		vsp = ((hit_player_obj.y) - y + hit_player_obj.vsp*2) / 4
 
         
-        if (hit_player_obj.x - x < 30) and (hit_player_obj.x - x > -30) {
-        		y += (hit_player_obj.y - y) / 40
-        }
+       	y += (hit_player_obj.y - y) / 20
+       
 		
-	if hit_player_obj.y - y < 0 {
-		y -= 10
-	} else {
-	    y += 10
-	} 
-   	if hit_player_obj.x - x < 0 {
+
+   	if hit_player_obj.x < x - 100  {
 		x -= 10
-	} else {
+	} 
+	
+	if hit_player_obj.x > x + 100{
 	    x += 10
 	} 	
 	
@@ -470,12 +515,12 @@ if attack == AT_NSPECIAL{
 			}
 		}
 		
-			if up_down{
-         		y -= 2
-         	} 
-         	if down_down{
-         	    y += 2
-         	} 
+			///if up_down{
+         	///	y -= 2
+         	///} 
+         	///if down_down{
+         	///    y += 2
+         	///} 
 		
 		if window_timer <= 1 && "ai_target" not in self{
 			if left_down {
@@ -504,9 +549,7 @@ if attack == AT_NSPECIAL{
 		sound_play(asset_get("sfx_ori_bash_launch"))
 	}
 	
-	if window == 4 && !has_hit && fireon == 3 && inrange {
-		move_cooldown[AT_NSPECIAL] = 999
-	}
+
 	
 	if window == 4 && window_timer == 1 && has_hit{
 	
@@ -532,7 +575,6 @@ if attack == AT_DSPECIAL {
 	
 	if window == 2 && shunpo = 2  {
 		
-		
 		hit_player_obj.x += (x - hit_player_obj.x) / 6
 		hit_player_obj.y += (y - hit_player_obj.y) / 4
 		vsp *= 1.05
@@ -547,15 +589,17 @@ if attack == AT_DSPECIAL {
 
 			if window == 1 && has_hit_player && !hitpause{
 			
+			y += 1
+			
 			if shunpo == 0{
 				shunpo = 2
 				vsp = -8
 				window = 2
 				window_timer = 14
 			}	
-		
+		hit_player_obj.state_timer -= 1
 		hit_player_obj.x += (x - hit_player_obj.x) / 6
-		hit_player_obj.y += ((y) - hit_player_obj.y) / 4
+		hit_player_obj.vsp = ((y) - hit_player_obj.y) / 4
 		
 	}
 
@@ -569,7 +613,7 @@ if attack == AT_DSPECIAL {
 
 		sound_play(asset_get("sfx_burnapplied"))
 		
-		if fireon >= 3 && inrange{
+		if (fireon >= 3&& inrange) or dspecon = 1{
 		create_hitbox(AT_DSPECIAL , 2 , hit_player_obj.x , y - 20 );
 		sound_play(asset_get("sfx_ori_bash_launch"))
 		}
@@ -591,9 +635,18 @@ if attack == AT_DSPECIAL {
 	
 	if window == 1 && !free {
 		window_timer = 18
+		shake_camera(4,6)
 	}
 	
-	if window == 2 && window_timer < 10 && fireon >= 3 && inrange{
+	if window == 2 && window_timer == 10 {
+		if fireon >= 3 && !has_hit_player && dspecon = 0 {
+			fireon = 0
+			firerange = -100
+		}
+		dspecon = 0
+	}
+	
+	if (window == 2 && window_timer < 10 && fireon >= 3 && inrange) or dspecon = 1{
 		
 		if sakura = 1 {
 		if window_timer == 1 {
@@ -628,14 +681,7 @@ if attack == AT_DSPECIAL {
 
 if attack == AT_FSPECIAL{
 	
-	if window == 1 && window_timer >= 9 && firerange > 0 && inrange && move_cooldown[AT_EXTRA_3] = 0   {
-	
-     	move_cooldown[AT_EXTRA_3] = 180
-		window = 4
-		window_timer = 0
-		spawn_hit_fx( x, y - 20 , 305 )
-	
-	}
+
 	
 	if window == 2 {
 		if window_timer == 6{
@@ -652,9 +698,15 @@ if attack == AT_FSPECIAL{
 	
 
 if window == 4 && window_timer < 2{
-	if "fp" in self {
-			fp.destroyed = true
+	
+	move_cooldown[AT_FSPECIAL] = 60
+	
+    with (asset_get("pHitBox")) {
+if(player_id == other.id && attack == AT_FSPECIAL && hbox_num == 2) {
+    destroyed = true;
 }
+}
+
 		if vsp > 0 {
 		vsp /= 1.2
 		}
@@ -664,10 +716,9 @@ if window == 4 && window_timer < 2{
 		spawn_hit_fx( x + 20 - random_func(13, 40, true), y + 20 , firepar1 )
 	}
 	
-	if window == 1 && window_timer > 8 && special_down && move_cooldown[AT_EXTRA_3] = 0 {
-		move_cooldown[AT_EXTRA_3] = 180
+	if window == 1 && window_timer == 1  {
 		window = 3
-		window_timer = 1
+		window_timer = 2
 		if free && !down_down {
 		vsp = -6
 		}
@@ -685,11 +736,8 @@ if window == 4 && window_timer < 2{
 
 if attack == AT_USPECIAL {
 	
-	if window < 4 {
-	can_fast_fall = false
-	} else {
-	can_fast_fall = true	
-	}
+		can_fast_fall = false 
+		
 	
 	if window > 4 && !free {
 		set_state (PS_PRATLAND)
@@ -815,4 +863,6 @@ if attack == AT_TAUNT {
 	
 }
 
-
+if attack != AT_NSPECIAL {
+	mask_index = sprite_get("stand_box");
+}

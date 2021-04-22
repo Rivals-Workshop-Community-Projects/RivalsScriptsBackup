@@ -19,5 +19,26 @@ if attacking && (attack == AT_NSPECIAL or attack == AT_FSPECIAL or attack == AT_
 
         draw_sprite_ext(sprite_index, image_index, x , y , spr_dir, 1, 0 , c_black , move_cooldown[AT_EXTRA_3]/10 - 0.2);
 
+if invis == 0  {
+	
+draw_sprite_ext(sprite_index, image_index, x , y , spr_dir, 1, 0 , c_black ,  ( move_cooldown[AT_FSPECIAL_2])/20);	
+}
+
+if invis == 0 && get_gameplay_time()%4 == 0 {
+draw_sprite_ext(sprite_index, image_index, x , y , spr_dir, 1, 0 , c_black , 0.3);	
+}
+
+	  gpu_set_blendmode(bm_add);
+
+if invis == 0  {
+draw_sprite_ext(sprite_index, image_index, x , y , spr_dir, 1, 0 , c_white , ( move_cooldown[AT_FSPECIAL_2])/20)	
+}
+
+if invis == 0 && get_gameplay_time()%4 == 0 {
+draw_sprite_ext(sprite_index, image_index, x , y , spr_dir, 1, 0 , c_white , 0.4);	
+}
+
+
+	  gpu_set_blendmode(bm_normal);
 
 shader_end() 

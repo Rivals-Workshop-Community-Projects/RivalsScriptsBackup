@@ -5,10 +5,11 @@
 // Will hide everything if taunt menu is on
 if ("DG_chat_num" in self && DG_chat_num < 1){
 
+/*
 	// Draws the battery on the HUD
 	draw_sprite_ext(sprite_get("battery"), 0, temp_x + 160, temp_y - 12, 1, 1, 0, c_white, 1);
-	draw_sprite_part(sprite_get("battery"), 3 - floor(move_cooldown[AT_NSPECIAL]/40), 0, 0, 50 - (move_cooldown[AT_NSPECIAL]/2.5), 16, temp_x + 160, temp_y - 12);
-
+	draw_sprite_part(sprite_get("battery"), 3 - floor(move_cooldown[AT_DSPECIAL]/40), 0, 0, 50 - (move_cooldown[AT_DSPECIAL]/2.5), 16, temp_x + 160, temp_y - 12);
+*/
 
 	// Draws the current Grab Meter
 	if ("GrappleMode" in self){

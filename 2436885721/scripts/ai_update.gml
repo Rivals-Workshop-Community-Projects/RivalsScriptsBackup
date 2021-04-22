@@ -6,10 +6,10 @@ ydist = abs(ai_target.y - y);
 damage = get_player_damage( ai_target.player );
 facing = false;
 if 90 > xdist and 90 > ydist AIwait -= 1
-usmashpercent = (2 - ai_target.knockback_adj) * 85
-fsmashpercent = (2 - ai_target.knockback_adj) * 95
+usmashpercent = (2 - ai_target.knockback_adj) * 60
+fsmashpercent = (2 - ai_target.knockback_adj) * 90
 dsmashpercent = (2 - ai_target.knockback_adj) * 110
-bairpercent = (2 - ai_target.knockback_adj) * 110
+bairpercent = (2 - ai_target.knockback_adj) * 80
 
 
 //recovery
@@ -39,7 +39,7 @@ if (attack == AT_USPECIAL && window == 2) {
 }
 
 // Chase the opponent down
-if (((0 > rangedtimer) or (!ai_recovering and inactive > 20)) and (state_cat == SC_GROUND_NEUTRAL or state_cat == SC_AIR_NEUTRAL) and xdist > 100){
+if (((0 > rangedtimer) or (!ai_recovering and inactive > 20)) and (state_cat == SC_GROUND_NEUTRAL or state_cat == SC_AIR_NEUTRAL) and xdist > 270){
     if ai_target.x > x{
         right_hard_pressed = true;
 		if state = PS_DASH {
@@ -187,7 +187,7 @@ if ((get_gameplay_time() mod 2 == 0 or ai_target.state_cat = SC_HITSTUN) and can
 }
 
 // U Smash
-if ((get_gameplay_time() mod 2 == 0 or ai_target.state_cat = SC_HITSTUN) and can_strong and !free and 50 > xdist and damage > usmashpercent and 100 > ydist and y > ai_target.y-1 and facing){
+if ((get_gameplay_time() mod 2 == 0 or ai_target.state_cat = SC_HITSTUN) and can_strong and !free and 50 > xdist and damage > usmashpercent and 80 > ydist and y > ai_target.y-1 and facing){
     joy_pad_idle = true;
     left_down = false;
     right_down = false;
@@ -341,7 +341,7 @@ if free and can_attack and get_stage_data( SD_Y_POS ) > y+24 and 0 > AIwait {
         special_pressed = false;
         attack_pressed = true;
     }
-    else if xdist < 60 and ydist < 60{ // Nair
+    else if xdist < 70 and ydist < 70{ // Nair
         clear_button_buffer( PC_ATTACK_PRESSED );
         joy_pad_idle = true;
         left_down = false;
@@ -416,4 +416,32 @@ if(attack == AT_DTILT && window == 4 && window_timer == 3 && 60 > ydist){
     if(doDTilt2 == 1){
         attack_pressed = true;
     }
+}
+
+// specials usage
+if instance_exists(hexDebuffID) and (ai_target.x < x + 40){
+	var doNspec = random_func(0, 6, true);
+	if(doNspec == 1){
+		up_pressed = false;
+		up_down = false;
+		special_pressed = true;
+		}	
+}
+
+if instance_exists(hexDebuffID) and (ai_target.x > x - 40){
+	var doNspec = random_func(0, 6, true);
+	if(doNspec == 1){
+		up_pressed = false;
+		up_down = false;
+		special_pressed = true;
+		}	
+}
+
+if instance_exists(hexDebuffID) and (ai_target.x > x - 40) and (ai_target.knockback_adj) * 80{
+	var doNspec = random_func(0, 10, true);
+	if(doNspec == 1){
+		up_pressed = false;
+		up_down = false;
+		special_pressed = true;
+		}			
 }

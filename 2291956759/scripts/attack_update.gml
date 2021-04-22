@@ -23,7 +23,7 @@ if !hitpause && !isyellow{
         }
     if has_hit_player && hit_player_obj.state_cat == SC_HITSTUN {
         hit_player_obj.x += ((x + 40*spr_dir) - hit_player_obj.x)/3
-        hit_player_obj.vsp = ((y) - hit_player_obj.y)/4
+        hit_player_obj.vsp = ((y) - hit_player_obj.y)/3
     }
     
     }

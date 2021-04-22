@@ -117,6 +117,8 @@ uspecialcancel2 = hit_fx_create( sprite_get ( "explode" ), 50 );
 
 taketendamage = false;
 
+portrait = 0;
+
 swirl = hit_fx_create(sprite_get("hit_fx_swirl"), 18);
 
 tada = hit_fx_create(sprite_get("hit_fx_tada"), 24);

@@ -239,8 +239,8 @@ if (move_cooldown[AT_NSPECIAL_2] = 121 or move_cooldown[AT_NSPECIAL_2] % 10 > 0)
 		  	with dplayer{
 		    	hitpause = true
 		    	hitstop = 10
-		    	hsp = old_hsp
-		        vsp = old_vsp
+		    	old_hsp = hsp 
+		        old_vsp = vsp 
 		  		}
 		  		
 		    }

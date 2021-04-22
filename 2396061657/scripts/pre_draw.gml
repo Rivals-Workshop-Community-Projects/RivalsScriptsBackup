@@ -8,9 +8,13 @@ with (obj_article1){ // Draws the outline of the heart during the first state (W
 		}
 	}
 }		
-
+/*
+if (should_crumple && crumple_timer < 7){
+	draw_sprite_ext(sprite_get("crumple"), crumple_timer, crumple_x, crumple_y, 1 * crumple_dir, 1, 0, c_white, crumple_alpha);	
+}
+*/
 shader_start();
-if (attack == AT_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
+if (attack == AT_NSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
 	draw_sprite_ext(sprite_get("magnetism"), state_timer / 5.5, x, y - 30, 1, 1, 0, c_white, 1);
 }
 	
@@ -22,3 +26,20 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 	}
 }
 shader_end();
+
+if (attack == AT_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){ 
+	var armorcolor = make_colour_rgb(63, 240, 240);
+
+	// Nspecial Charge effect
+	if (window == 1 && state_timer > 13){
+		shader_start();
+		draw_sprite_ext(sprite_get("focuseffectsback"), get_gameplay_time()/4, x, y, 1 * spr_dir, 1, 0, c_white, 1);
+		shader_end();
+		if (!focus_armorbreak){
+			gpu_set_fog(1, armorcolor, 0, 1);
+			draw_sprite_ext(sprite_get("focuseffectsback"), get_gameplay_time()/4, x, y, 1 * spr_dir, 1, 0, armorcolor, .5);
+			gpu_set_fog(0, c_white, 0, 0);
+		}
+	}
+}
+

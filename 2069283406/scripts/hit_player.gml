@@ -4,6 +4,8 @@ if move_cooldown[AT_DTILT] != 0 {
 		take_damage( player, -1 , -3 )
 	}
 }
+move_cooldown[AT_NSPECIAL_2] = 0
+move_cooldown[AT_NSPECIAL] = 0
 
 if has_rune("L") && move_cooldown[AT_TAUNT_2] == 0 && get_gameplay_time() % 3 <= 1  && my_hitboxID.damage >= 3 && my_hitboxID.type == 1 && my_hitboxID.attack != AT_USPECIAL {
 		create_hitbox(AT_FSPECIAL, 3, x, y - 40);
@@ -11,7 +13,7 @@ if has_rune("L") && move_cooldown[AT_TAUNT_2] == 0 && get_gameplay_time() % 3 <=
 		 sound_play(asset_get("sfx_burnapplied"));
 }
 
-if has_rune("L")  && get_gameplay_time() % 3 == 0 && my_hitboxID.type == 1 && my_hitboxID.attack != AT_USPECIAL && my_hitboxID.damage >= 3 {
+if has_rune("L") && my_hitboxID.type == 1 && my_hitboxID.attack != AT_USPECIAL && my_hitboxID.damage >= 3 {
 		create_hitbox(AT_FSPECIAL, 3, x - 400*spr_dir, 0);
 }
 
@@ -22,10 +24,17 @@ if has_rune("M") && my_hitboxID.type == 1 && free && my_hitboxID.attack != AT_US
 } 
 
 
-if has_rune("N") && my_hitboxID.attack == AT_NSPECIAL{
+if has_rune("N"){
 	
+	with (asset_get("pHitBox")) {
+if(player_id == other.id) {
+    destroyed = true;
+}
+}
+
+
 	with hit_player_obj{
-		if get_player_damage(player) >= 150 {
+		if get_player_damage(player) >= 120 {
 			
 			with other {
 					sound_play(sound_get("RZ2"))
@@ -49,14 +58,15 @@ if has_rune("N"){
 } 
 
 
-if has_rune("H") && my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1 &&  move_cooldown[AT_DSTRONG] == 0{
+if has_rune("H") && my_hitboxID.attack == AT_FSPECIAL &&  move_cooldown[AT_DSTRONG] == 0{
 	
 	hitstop += 6
+	
 		shunpo = random_func(3,3,true)
 	    set_attack (AT_DSTRONG)
 		window = 4
-		window_timer = 2
-	    move_cooldown[AT_DSTRONG] = 10
+		window_timer = 1
+	    move_cooldown[AT_DSTRONG] = 20
 	    sound_play(sound_get("RZ"))
 	    spawn_hit_fx(x,y - 40, 305)
 		
@@ -92,11 +102,7 @@ if my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num == 2 {
 }
 
 
-if my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 2 {
- 
-   fireon = -1
- firerange = -100
-}
+
 
 if my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 3 {
  
@@ -104,6 +110,7 @@ if my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 3 {
 }
 
 if my_hitboxID.attack == AT_FSPECIAL{
+
 
     
     if my_hitboxID.hbox_num == 1 {
@@ -126,13 +133,15 @@ if my_hitboxID.attack == AT_FSPECIAL{
     
     
     
-    if my_hitboxID.hbox_num >= 2 {
+    if my_hitboxID.hbox_num >= 2 && my_hitboxID.hbox_num != 9 {
     if firerange < 3 {
         fireon = 3
         firerange = 600
     sound_play(sound_get("RI"));
     sound_play(asset_get("sfx_ori_grenade_launch"));
      spawn_hit_fx ( hit_player_obj.x + 5 * spr_dir , hit_player_obj.y + 20 , firepar2 )
+    } else {
+    	shake_camera(2,2)
     }
     
     firerange -= 100
@@ -180,7 +189,7 @@ if my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num == 4 {
  window = 2
  window_timer = 0
  y = hit_player_obj.y
-  fireon  = -0.5
+  fireon  = -1
  firerange = -100
  }
  
@@ -189,6 +198,8 @@ if my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num == 4 {
  
  if shunpo == 1 {
  set_attack (AT_UAIR)
+ old_hsp = 0
+ old_vsp = -6
  window = 2
  window_timer = 0
  y = hit_player_obj.y
@@ -212,13 +223,28 @@ if my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num == 4 {
 if (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num < 4) or attack == AT_FSTRONG or attack == AT_USTRONG  {
     
     if fireon > 0.5 {
+    
+        
     fireon = 3
- firerange += 200
+ firerange = 100
+ 
+    spawn_hit_fx( floor (hit_player_obj.x + 110 + (0.7*firerange)) , floor(hit_player_obj.y  + 115 - random_func(1, 40, true)) , firepar1 )
+    spawn_hit_fx( floor (hit_player_obj.x + 130 + (0.7*firerange)) , floor(hit_player_obj.y  + 75 - random_func(2, 40, true)) , firepar1 )
+    spawn_hit_fx( floor (hit_player_obj.x + 130 + (0.7*firerange)) , floor(hit_player_obj.y  + 45 - random_func(3, 40, true)) , firepar1 )
+    spawn_hit_fx( floor (hit_player_obj.x + 110 + (0.7*firerange)) , floor(hit_player_obj.y  + 05 - random_func(4, 40, true)) , firepar1 )
+    
+    
+    spawn_hit_fx( floor(hit_player_obj.x - 110 - (0.7*firerange)) , floor(hit_player_obj.y  + 115 - random_func(5, 40, true)) , firepar1 )
+    spawn_hit_fx( floor(hit_player_obj.x - 130 - (0.7*firerange)) , floor(hit_player_obj.y  + 75 - random_func(6, 40, true)) , firepar1 )
+    spawn_hit_fx( floor(hit_player_obj.x - 130 - (0.7*firerange)) , floor(hit_player_obj.y  + 45 - random_func(7, 40, true)) , firepar1 )
+    spawn_hit_fx( floor(hit_player_obj.x - 110 - (0.7*firerange)) , floor(hit_player_obj.y  + 05 - random_func(8, 40, true)) , firepar1 )
+
      sound_play(sound_get("RI"));
     sound_play(asset_get("sfx_ori_grenade_launch"));
+    
     } else {
     	
-    	fireon = 2.5
+    	fireon = 1.5
     } 
     
    
@@ -247,14 +273,19 @@ if my_hitboxID.attack == AT_NSPECIAL{
     
 }
 
-if fireon < 3 {
+
+if move_cooldown[AT_TAUNT_2] == 0 {
+if fireon <= 3 {
     fireon += 0.5
 }
 
-
+if fireon < 3 && my_hitboxID.attack != AT_JAB{
+    fireon += 0.5
+}
+}
 
 if fireon >= 3 && firerange < 300{
-    firerange += 100
+    firerange = 100
 }
 
 if fireon == 3 && firerange == 100 {
@@ -263,16 +294,17 @@ if fireon == 3 && firerange == 100 {
 }
 
 if fireon == 3 && firerange > 0 {
-    spawn_hit_fx( floor (hit_player_obj.x + 130 + (0.7*firerange)) , floor(hit_player_obj.y  + 115 - random_func(1, 40, true)) , firepar1 )
+	
+    spawn_hit_fx( floor (hit_player_obj.x + 110 + (0.7*firerange)) , floor(hit_player_obj.y  + 115 - random_func(1, 40, true)) , firepar1 )
     spawn_hit_fx( floor (hit_player_obj.x + 130 + (0.7*firerange)) , floor(hit_player_obj.y  + 75 - random_func(2, 40, true)) , firepar1 )
     spawn_hit_fx( floor (hit_player_obj.x + 130 + (0.7*firerange)) , floor(hit_player_obj.y  + 45 - random_func(3, 40, true)) , firepar1 )
-    spawn_hit_fx( floor (hit_player_obj.x + 130 + (0.7*firerange)) , floor(hit_player_obj.y  + 05 - random_func(4, 40, true)) , firepar1 )
+    spawn_hit_fx( floor (hit_player_obj.x + 110 + (0.7*firerange)) , floor(hit_player_obj.y  + 05 - random_func(4, 40, true)) , firepar1 )
     
     
-    spawn_hit_fx( floor(hit_player_obj.x - 130 - (0.7*firerange)) , floor(hit_player_obj.y  + 115 - random_func(5, 40, true)) , firepar1 )
+    spawn_hit_fx( floor(hit_player_obj.x - 110 - (0.7*firerange)) , floor(hit_player_obj.y  + 115 - random_func(5, 40, true)) , firepar1 )
     spawn_hit_fx( floor(hit_player_obj.x - 130 - (0.7*firerange)) , floor(hit_player_obj.y  + 75 - random_func(6, 40, true)) , firepar1 )
     spawn_hit_fx( floor(hit_player_obj.x - 130 - (0.7*firerange)) , floor(hit_player_obj.y  + 45 - random_func(7, 40, true)) , firepar1 )
-    spawn_hit_fx( floor(hit_player_obj.x - 130 - (0.7*firerange)) , floor(hit_player_obj.y  + 05 - random_func(8, 40, true)) , firepar1 )
+    spawn_hit_fx( floor(hit_player_obj.x - 110 - (0.7*firerange)) , floor(hit_player_obj.y  + 05 - random_func(8, 40, true)) , firepar1 )
 }
 
 

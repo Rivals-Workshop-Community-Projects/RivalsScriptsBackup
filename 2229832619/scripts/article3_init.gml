@@ -22,3 +22,7 @@ free = true;
 can_be_grounded = false;
 ignores_walls = true;
 uses_shader = true;
+
+afterimage_mode = false;
+ai_angle_pass = 0;
+backward = false;

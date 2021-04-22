@@ -56,7 +56,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite")
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 150);//170
 set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 150);//170
-set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 13);
+set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 9);//13
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 60);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 1);
@@ -82,7 +82,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite")
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 110);//130
 set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 110);//130
-set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 10);
+set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 7);//10
 set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 60);
 set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 1);
@@ -108,7 +108,7 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_SPRITE, asset_get("empty_sprite")
 set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_WIDTH, 90);//100
 set_hitbox_value(AT_FSPECIAL, 3, HG_HEIGHT, 90);//100
-set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 8);
+set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 5);//8
 set_hitbox_value(AT_FSPECIAL, 3, HG_ANGLE, 60);
 set_hitbox_value(AT_FSPECIAL, 3, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_FSPECIAL, 3, HG_PRIORITY, 1);

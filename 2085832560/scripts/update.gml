@@ -760,8 +760,7 @@ if hunter == 1 or Vrank = 1 {
      	}
      	
      	    spawn_hit_fx(x,y,lighten)
-     		sound_play(sound_get("counterhit"),false,noone,0.8)
-     		sound_play(sound_get("RI"),false,noone,0.6)
+     		sound_play(sound_get("RI"),false,noone,0.7)
      	
      	break;
      	

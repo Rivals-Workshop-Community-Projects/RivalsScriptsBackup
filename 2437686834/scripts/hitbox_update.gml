@@ -183,6 +183,23 @@ move_cooldown[AT_NSPECIAL] = 20
 
 
 
+//MiniPac
+if attack == AT_NSPECIAL && hbox_num == 7{
+
+        sprite_index = sprite_get("empty");
+x = fruit.x
+y = fruit.y
+if !instance_exists(player_id.fruit)
+{
+with player_id
+move_cooldown[AT_NSPECIAL] = 1
+
+destroyed = true;
+}
+}
+
+
+
 
 
 

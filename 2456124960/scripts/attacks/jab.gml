@@ -118,12 +118,11 @@ set_hitbox_value(AT_JAB, 3, HG_ANGLE, 80);
 set_hitbox_value(AT_JAB, 3, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_JAB, 3, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_JAB, 3, HG_HITPAUSE_SCALING, .5);
-set_hitbox_value(AT_JAB, 3, HG_VISUAL_EFFECT_X_OFFSET, 32);
-set_hitbox_value(AT_JAB, 3, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_JAB, 3, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
 set_hitbox_value(AT_JAB, 3, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_GROUP, 3);
 set_hitbox_value(AT_JAB, 3, HG_DRIFT_MULTIPLIER, .4);
+set_hitbox_value(AT_JAB, 3, HG_VISUAL_EFFECT, 27);
 
 set_hitbox_value(AT_JAB, 4, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_JAB, 4, HG_HITBOX_TYPE, 1);
@@ -140,12 +139,11 @@ set_hitbox_value(AT_JAB, 4, HG_ANGLE, 100);
 set_hitbox_value(AT_JAB, 4, HG_BASE_KNOCKBACK, 2);
 set_hitbox_value(AT_JAB, 4, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_JAB, 4, HG_HITPAUSE_SCALING, .5);
-set_hitbox_value(AT_JAB, 4, HG_VISUAL_EFFECT_X_OFFSET, 32);
-set_hitbox_value(AT_JAB, 4, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_JAB, 4, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
 set_hitbox_value(AT_JAB, 4, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_JAB, 4, HG_HITBOX_GROUP, 3);
 set_hitbox_value(AT_JAB, 4, HG_DRIFT_MULTIPLIER, .4);
+set_hitbox_value(AT_JAB, 4, HG_VISUAL_EFFECT, 27);
 
 
 
@@ -166,12 +164,11 @@ set_hitbox_value(AT_JAB, 5, HG_ANGLE, 80);
 set_hitbox_value(AT_JAB, 5, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_JAB, 5, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_JAB, 5, HG_HITPAUSE_SCALING, .5);
-set_hitbox_value(AT_JAB, 5, HG_VISUAL_EFFECT_X_OFFSET, 32);
-set_hitbox_value(AT_JAB, 5, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_JAB, 5, HG_HIT_SFX, asset_get("sfx_icehit_medium1"));
 set_hitbox_value(AT_JAB, 5, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_JAB, 5, HG_HITBOX_GROUP, 4);
 set_hitbox_value(AT_JAB, 5, HG_DRIFT_MULTIPLIER, .4);
+set_hitbox_value(AT_JAB, 5, HG_VISUAL_EFFECT, 27);
 
 set_hitbox_value(AT_JAB, 6, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_JAB, 6, HG_HITBOX_TYPE, 1);
@@ -189,12 +186,11 @@ set_hitbox_value(AT_JAB, 6, HG_ANGLE, 100);
 set_hitbox_value(AT_JAB, 6, HG_BASE_KNOCKBACK, 2);
 set_hitbox_value(AT_JAB, 6, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_JAB, 6, HG_HITPAUSE_SCALING, .5);
-set_hitbox_value(AT_JAB, 6, HG_VISUAL_EFFECT_X_OFFSET, 32);
-set_hitbox_value(AT_JAB, 6, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_JAB, 6, HG_HIT_SFX, asset_get("sfx_icehit_medium1"));
 set_hitbox_value(AT_JAB, 6, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_JAB, 6, HG_HITBOX_GROUP, 4);
 set_hitbox_value(AT_JAB, 6, HG_DRIFT_MULTIPLIER, .4);
+set_hitbox_value(AT_JAB, 6, HG_VISUAL_EFFECT, 27);
 
 
 
@@ -216,11 +212,10 @@ set_hitbox_value(AT_JAB, 7, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_JAB, 7, HG_KNOCKBACK_SCALING, 0.5);
 set_hitbox_value(AT_JAB, 7, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(AT_JAB, 7, HG_HITPAUSE_SCALING, .7);
-set_hitbox_value(AT_JAB, 7, HG_VISUAL_EFFECT_X_OFFSET, 32);
-set_hitbox_value(AT_JAB, 7, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_JAB, 7, HG_HIT_SFX, asset_get("sfx_icehit_heavy1"));
 set_hitbox_value(AT_JAB, 7, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_JAB, 7, HG_HITBOX_GROUP, 5);
+set_hitbox_value(AT_JAB, 7, HG_VISUAL_EFFECT, 27);
 
 set_hitbox_value(AT_JAB, 8, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_JAB, 8, HG_HITBOX_TYPE, 1);
@@ -239,8 +234,7 @@ set_hitbox_value(AT_JAB, 8, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_JAB, 8, HG_KNOCKBACK_SCALING, 0.5);
 set_hitbox_value(AT_JAB, 8, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(AT_JAB, 8, HG_HITPAUSE_SCALING, .7);
-set_hitbox_value(AT_JAB, 8, HG_VISUAL_EFFECT_X_OFFSET, 32);
-set_hitbox_value(AT_JAB, 8, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_JAB, 8, HG_HIT_SFX, asset_get("sfx_icehit_heavy1"));
 set_hitbox_value(AT_JAB, 8, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_JAB, 8, HG_HITBOX_GROUP, 5);
+set_hitbox_value(AT_JAB, 8, HG_VISUAL_EFFECT, 27);

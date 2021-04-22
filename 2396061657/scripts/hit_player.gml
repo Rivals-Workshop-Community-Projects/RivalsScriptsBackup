@@ -6,7 +6,7 @@
 // To change the knockback given, edit hit_player_obj.orig_knock
 
 // Calculates how many hearts an attack creates
-if (attack != AT_NTHROW && attack != AT_DTHROW && attack != AT_UTHROW && attack != AT_FTHROW && attack != AT_FSPECIAL){
+if (attack != AT_NTHROW && attack != AT_DTHROW && attack != AT_UTHROW && attack != AT_FTHROW && attack != AT_FSPECIAL && attack != AT_DSPECIAL){
 	HeartPop = floor(my_hitboxID.damage/1.8);
 }
 
@@ -14,6 +14,15 @@ if (attack == AT_FSPECIAL && state == PS_HITSTUN){
 	with(hit_player){
 		hitpause = false;
 	}
+}
+
+if (attack == AT_DSPECIAL){
+	should_crumple = true;
+	crumple_timer = 0;
+	crumple_x = hit_player_obj.x;
+	crumple_y = hit_player_obj.y;
+	crumple_dir = -1 * hit_player_obj.spr_dir;
+	crumple_alpha = .80;
 }
 
 // Does all the fancy code to define when Date Girl lands a grab
@@ -37,33 +46,44 @@ if (attack == AT_FSPECIAL && state != PS_HITSTUN){
 
 	dthrowCheck = false;
 	
-	ThornKB = 7.5;
+	ThornKB = 8;
 	CandyKB = 4;
 	
+	RibbonVSP = -11;
+	RibbonHSP = -5;
+	RibbonKB = 8;
+
 	attack_end();
 	if (!other.super_armor){ // Checks if the opponent has super armor and doesn't activate if they are
 		switch(GrappleMode){
 			case 0:			
 				hurtboxID.sprite_index = get_attack_value(AT_FTHROW, AG_HURTBOX_SPRITE);
-				ThornKB = (ThornKB + ((LoveMeter/40)));
+				ThornKB = floor(ThornKB + (floor(LoveMeter/40)));
 				set_hitbox_value(AT_FTHROW, 1, HG_BASE_KNOCKBACK, ThornKB);
 				set_hitbox_value(AT_FTHROW, 1, HG_BASE_HITPAUSE, ThornKB);
 				attack = AT_FTHROW;
 			break;
 			case 1:
 				hurtboxID.sprite_index = get_attack_value(AT_DTHROW, AG_HURTBOX_SPRITE);
-				CandyKB = (CandyKB + (LoveMeter/100));
+				CandyKB = floor(CandyKB + (LoveMeter/100));
 				set_hitbox_value(AT_DTHROW, 1, HG_BASE_KNOCKBACK, CandyKB);
 				set_hitbox_value(AT_DTHROW, 1, HG_BASE_HITPAUSE, CandyKB + 5);
 				attack = AT_DTHROW;
 			break;
 			case 2:	
-				hurtboxID.sprite_index = get_attack_value(AT_NTHROW, AG_HURTBOX_SPRITE);	RibbonHSP = (RibbonHSP - (LoveMeter/60));
-				RibbonVSP = (RibbonVSP - (LoveMeter/100));
-				set_window_value(AT_NTHROW, 2, AG_WINDOW_HSPEED, RibbonHSP);
-				set_window_value(AT_NTHROW, 2, AG_WINDOW_VSPEED, RibbonVSP);
+				hurtboxID.sprite_index = get_attack_value(AT_NTHROW, AG_HURTBOX_SPRITE);	
+
+				RibbonHSP = floor(RibbonHSP - (LoveMeter/60));
+				RibbonVSP = floor((RibbonVSP - (LoveMeter/100)));
+
+//				set_window_value(AT_NTHROW, 2, AG_WINDOW_HSPEED, RibbonHSP);
+//				set_window_value(AT_NTHROW, 2, AG_WINDOW_VSPEED, RibbonVSP);
 				
-				RibbonKB = (RibbonKB + (LoveMeter/30));
+				//print(RibbonHSP);
+				//print(RibbonVSP);
+
+				RibbonKB = floor(RibbonKB + floor(LoveMeter/30));
+				//print("pain");
 				set_hitbox_value(AT_NTHROW, 1, HG_BASE_KNOCKBACK, RibbonKB);
 				attack = AT_NTHROW;
 			break;

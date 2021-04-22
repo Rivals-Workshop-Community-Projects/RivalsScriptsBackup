@@ -82,6 +82,8 @@ move_cooldown[AT_NSPECIAL] = 300
     }
     if (behavior == 7){
         sprite_index = sprite_get("Coffee");  
+        proj_hitbox = create_hitbox(AT_NSPECIAL, 7, x, y);
+        //life = 20
     }
     if (behavior == 8){
         sprite_index = sprite_get("PowerPellet");  

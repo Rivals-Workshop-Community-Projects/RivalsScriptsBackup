@@ -37,7 +37,7 @@ switch(state)
     case 1:
        
         
-        if (state_timer < 40) or (aimed_id != noone) 
+        if (state_timer < 30) or (aimed_id != noone) 
         {
             angle_to = find_angle(x,y,x_target,y_target);
             
@@ -60,10 +60,10 @@ switch(state)
         
         angle += (angle_to - angle) / 8
         
-        if (state_timer < 40)
+        if (state_timer < 30)
         {
-            hsp += (0 - hsp ) / 35;
-            vsp += (max_fall - vsp ) / 20;
+            hsp += (0 - hsp ) / 25;
+            vsp += (max_fall - vsp ) / 18;
         }
         else
         {

@@ -429,7 +429,7 @@ if state_cat == SC_HITSTUN {
 	}
 	
     //Attacks
-    if (can_attack or state == PS_DASH or state == PS_DASH_START or state == PS_DASH_STOP or state == PS_DOUBLE_JUMP) and !targetbusy and !to_boost and !do_not_attack{
+    if can_attack or (attack == AT_NSPECIAL && window >= 3 && xdist < 60 && ydist < 40){
 
         if !free{
 

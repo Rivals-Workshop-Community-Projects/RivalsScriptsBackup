@@ -45,7 +45,7 @@ switch (attack)
 		break;
 
     case AT_FSTRONG:
-        if (state_timer == 6) StrongReturn();
+        StrongReturn();
         if (window == 2 || window == 3) draw_indicator = false;
         if (window == 2 && window_timer == 1) spawn_base_dust(x-10*spr_dir, y, "dash_start", spr_dir);
         if ((window == 2 || window == 3) && window_timer % 2 == 0 && !hitpause)
@@ -75,11 +75,12 @@ switch (attack)
         break;
 
     case AT_DSTRONG:
-        if (state_timer == 6) StrongReturn();
+        StrongReturn();
         break;
 
     case AT_USTRONG:
-        if (state_timer == 6) StrongReturn();
+        StrongReturn();
+        if (window == 1 && window_timer == get_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH) - 1) hsp /= 1.2;
         if (window == 3 && window_timer == 6) hsp = 10*spr_dir;
         break;
 
@@ -89,7 +90,7 @@ switch (attack)
         break
 
     case AT_DATTACK:
-        if (window == 3 && window_timer == 4)
+        if (window == 3 && window_timer == 8)
             spawn_base_dust(x+30*spr_dir, y, "dash", -spr_dir);
         if (was_parried) hsp = 0;
         break
@@ -149,7 +150,11 @@ switch (attack)
     case AT_FSPECIAL:
         DivideSpeed(1.2);
         if (window == 1 && window_timer == 1) guitar.newState = 2;
-        if (free && window == 3 && window_timer == get_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH)-1) vsp = -6;
+        if (free && window == 3 && window_timer == get_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH)-1 && fspecBounce)
+        {
+            vsp = -6;
+            fspecBounce = false;
+        }
         StallCooldown();
         break;
 
@@ -245,10 +250,13 @@ switch (attack)
 
 #define StrongReturn()
 {
-    guitar.newState = 7;
-    guitar.noHit = (guitar.state == 0);
-    tutDone[0] = true;
-    tutDoneAdv[2] = (guitar.state == 2);
+    if (state_timer == 10)
+    {
+        guitar.newState = 7;
+        guitar.noHit = (guitar.state == 0);
+        tutDone[0] = true;
+        tutDoneAdv[2] = (guitar.state == 2);
+    }
 }
 
 #define spawn_base_dust

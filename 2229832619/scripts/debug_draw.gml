@@ -15,6 +15,9 @@ if (nadev){
 		draw_debug_text(scrleft+16,scrtop+96,string(clock_n_timer))
 		draw_debug_text(scrleft+16,scrtop+(16*7),string(v_fstrong))
 		draw_debug_text(scrleft+16,scrtop+(16*8),"window "+string(window)+" timer "+string(window_timer))
+		draw_debug_text(scrleft+16,scrtop+(16*9),string(hsp))
+		draw_debug_text(scrleft+16,scrtop+(16*10),string(air_friction))
+		draw_debug_text(scrleft+16,scrtop+(16*11),string(usp_ls_cooldown))
 		/*
 		with ("dust_fx_obj"){
 		draw_debug_text(x,y+30,"here");

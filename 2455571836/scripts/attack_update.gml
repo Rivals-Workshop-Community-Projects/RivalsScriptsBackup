@@ -11,11 +11,34 @@ if (attack == AT_USPECIAL && window == 3 || attack == AT_USPECIAL && window == 4
 	can_shield = true;
 }
 
+if (attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+    can_fast_fall = false;
+}
+
+//Jab
+if (attack == AT_JAB && window == 2 && window_timer == 11){
+        window = 7;
+		window_timer = 0;
+}
+
+if (attack == AT_JAB && window == 4 && window_timer == 12){
+        window = 7;
+		window_timer = 2;
+}
+
 //Dash Attack
 if (attack == AT_DATTACK){
 	if (window == 2 && has_hit_player && jump_pressed){
         window = 3;
-		window_timer = 7;
+		window_timer = 10;
+    }
+}
+
+//Neutral Air
+if (attack == AT_NAIR){
+	if (window == 3 && !has_hit_player || window == 5 && !has_hit_player){
+        window = 6;
+		window_timer = 0;
     }
 }
 
@@ -84,8 +107,14 @@ if (attack == AT_FSPECIAL){
 //Down Special
 //sets the super armor
 if (attack == AT_DSPECIAL){
-	if (window == 2 || window == 3 || window == 5 || window == 6 || window == 7){
+	if (window == 3 || window == 5 || window == 6){
 		super_armor = true;
+    }
+}
+
+if (attack == AT_DSPECIAL){
+	if (window == 4 || window == 7 || window == 8 || window == 9){
+		super_armor = false;
     }
 }
 
@@ -118,6 +147,13 @@ if (attack == AT_DSPECIAL){
 		window_timer = 0;
 	}
 }
+
+//checks if you done did it
+/*if (attack == AT_DSPECIAL && window == 5 && has_hit_player && hit_player_obj.glace_Freeze == true ||
+attack == AT_DSPECIAL && window == 6 && has_hit_player && hit_player_obj.glace_Freeze == true){
+			window = 9;
+			window_timer = 0;
+	}*/
 
 //Taunt
 if (attack == AT_TAUNT)

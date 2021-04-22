@@ -104,7 +104,7 @@ set_article_color_slot(6, 20, 206, 227 ); //blade
 set_article_color_slot(7, 19, 121, 196 ); //blade.2
 base_col = make_colour_rgb(196, 57, 78 );
 }
-if (extra_col==3){//dragou
+if (extra_col==3){//dragou "shadow"
 // shade, r, g, b, alpha
 set_character_color_slot(0, 45, 45, 45 ); //main
 set_character_color_slot(1, 34, 33, 35 ); //main.2
@@ -183,6 +183,26 @@ set_article_color_slot(5, 251, 42, 170 ); //abyss_eye
 set_article_color_slot(6, 255, 188, 101 ); //blade
 set_article_color_slot(7, 253, 116, 136 ); //blade.2
 base_col = make_colour_rgb(254, 91, 148 );
+}
+if (extra_col==7){//landkon "moon"
+// shade, r, g, b, alpha
+set_character_color_slot(0, 36, 37, 60 ); //main
+set_character_color_slot(1, 30, 32, 50 ); //main.2
+set_character_color_slot(2, 24, 25, 40 ); //main.3
+set_character_color_slot(3, 255, 220, 100 ); //purple
+set_character_color_slot(4, 253, 255, 166 ); //white_eye
+set_character_color_slot(5, 255, 153, 153 ); //abyss_eye
+set_character_color_slot(6, 169, 108, 66 ); //blade
+set_character_color_slot(7, 107, 67, 39 ); //blade.2
+set_article_color_slot(0, 36, 37, 60 ); //main
+set_article_color_slot(1, 30, 32, 50 ); //main.2
+set_article_color_slot(2, 24, 25, 40 ); //main.3
+set_article_color_slot(3, 255, 220, 100 ); //purple
+set_article_color_slot(4, 253, 255, 166 ); //white_eye
+set_article_color_slot(5, 255, 153, 153 ); //abyss_eye
+set_article_color_slot(6, 169, 108, 66 ); //blade
+set_article_color_slot(7, 107, 67, 39 ); //blade.2
+base_col = make_colour_rgb(255, 220, 100 );
 }
 
 if (variable_instance_exists(id, "state")){

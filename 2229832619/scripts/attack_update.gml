@@ -24,6 +24,10 @@ if (attack==AT_DAIR){
 	if (window<=7){
 		can_fast_fall = false;
 		can_move = false;
+		if (was_parried){
+			window = 8;
+			window_timer = 0;
+		}
 	}
 	
 	if (window==1 && !hitpause){
@@ -58,8 +62,15 @@ if (attack==AT_DAIR){
 	}
 	if (window==5 && !hitpause){
 		if (window_timer==1){
-			hsp = -3.5*spr_dir;
-			vsp = -12;
+			if (((spr_dir == -1 && left_down) || (spr_dir == 1 && right_down))&&!free){
+				hsp = 6*spr_dir;//-3.5
+				vsp = dairvsp/1.5;
+				sound_play(sound_get("metalhit"), false, noone, 0.8, 1.2);
+			}else{
+				hsp = -2.5*spr_dir;//-3.5
+				vsp = dairvsp;
+			}
+			dairvsp = dairvsp/2;
 			move_cooldown[AT_DAIR] = 50;//60
 			vsp = clamp(vsp, -13, 2)
 		}
@@ -70,7 +81,7 @@ if (attack==AT_DAIR){
 		vsp = clamp(vsp, -13, vmaxtemp)
 	}
 	if (window>5){
-		if (!free){
+		if (!free && !was_parried){
 			set_state( PS_LANDING_LAG );
 			landing_lag_time = 20;
 		}
@@ -116,6 +127,12 @@ if (attack==AT_FSTRONG){
 }
 
 if (attack==AT_USTRONG){
+	if (window==1){
+		if (window_timer==1){
+			hsp = clamp(hsp, -9,9)
+		}
+		
+	}
 	if (window==4||window==3){
 		if (!hitpause){
 			var ustw3v = get_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH);
@@ -142,6 +159,14 @@ if (attack == AT_NSPECIAL){
 	can_fast_fall = false;
 	if (window==1){
 		if (window_timer==1){
+			hsp = hsp/1.75;
+			nsp_hsp_storage = hsp;
+			nsp_vsp_storage = (free)?vsp:-7;
+		}
+	}
+	/*
+	if (window==1){
+		if (window_timer==1){
 			nsp_hsp_storage = hsp;
 			nsp_vsp_storage = (free)?vsp:-9;
 		}
@@ -157,8 +182,11 @@ if (attack == AT_NSPECIAL){
 		nsp_vsp_storage=nsp_vsp_storage/1.08;
 		hsp=nsp_hsp_storage;
 		vsp=nsp_vsp_storage;
-	}
-	if (window==3){
+	}*/
+	if (window==2){
+		//old values - 6 4 4 6 = 20
+		//base value - 8 4 3 8 = 23
+		//new values - 6 = 13
 		set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 6);//8
 		set_window_value(AT_NSPECIAL_AIR, 2, AG_WINDOW_LENGTH, 4);//5
 		set_window_value(AT_NSPECIAL_AIR, 2, AG_WINDOW_SFX_FRAME, 3);
@@ -213,8 +241,8 @@ if (attack == AT_NSPECIAL_AIR){
 		voidID.spr_dir = 1;
 		voidID.image_angle = (spr_dir==1)?0:180;
 		voidID.tmpdir = spr_dir;
-		move_cooldown[AT_NSPECIAL] = 74;//74
-		move_cooldown[AT_NSPECIAL_AIR] = 74;//74
+		move_cooldown[AT_NSPECIAL] = 90;//74
+		move_cooldown[AT_NSPECIAL_AIR] = 90;//74
 	}
 }
 
@@ -337,11 +365,7 @@ if (attack == AT_USPECIAL){
 		}
 	}
 	if (window==4&&!hitpause){
-		if (window_timer==9){
-			sound_stop(sound_get("dimensional"));
-			sound_play(sound_get("fastslash"), false, noone, 0.9, 1.3);
-			hsp_decide = 0;
-			vsp_decide = 0;
+		if (window_timer==1){
 			if (!joy_pad_idle){//is not idle
 				usp_angle = (round(joy_dir / 22.5) * 22.5);
 				usp_angle_f = usp_angle / 180 * -3.14; //45)*45)/180
@@ -355,25 +379,33 @@ if (attack == AT_USPECIAL){
 				//hsp_decide = 0;
 				//vsp_decide = -distance;
 			}
+		}
+		if (window_timer==9){
+			sound_stop(sound_get("dimensional"));
+			sound_play(sound_get("fastslash"), false, noone, 0.9, 1.3);
+			hsp_decide = 0;
+			vsp_decide = 0;
 			//usp_angle is "pure" rounded angle (45, etc)
 			//usp_angle_f is "final" angle (0.6, etc)
 			//usp_angle_e is one that mimics what's seen in post_draw.gml, "true" final angle
 			if (usp_slashmode){
-				sound_play(sound_get("shine"));
 				usp_distance = -20
 				
-				//at here i create slash
-				var disp_y = 38;
-				var sldisp = -29;
-				var sltx = round(sldisp * cos(usp_angle_e));
-				var slty = round(sldisp * sin(usp_angle_e))-disp_y;
-				var slashID = instance_create(x+sltx+30, y+slty, "obj_article3");
-				slashID.player_id = id;
-				slashID.player = player;
-				//slashID.spr_dir = spr_dir;
-				slashID.image_angle = usp_angle;
-				slashID.tmpdir = spr_dir;
-				//print_debug( "slashmode "+string(usp_angle_e) )
+				if (usp_ls_cooldown==0){
+					sound_play(sound_get("shine"));
+					//at here i create slash
+					var disp_y = 38;
+					var sldisp = -29;
+					var sltx = round(sldisp * cos(usp_angle_e));
+					var slty = round(sldisp * sin(usp_angle_e))-disp_y;
+					var slashID = instance_create(x+sltx+30, y+slty, "obj_article3");
+					slashID.player_id = id;
+					slashID.player = player;
+					//slashID.spr_dir = spr_dir;
+					slashID.image_angle = usp_angle;
+					slashID.tmpdir = spr_dir;
+					//print_debug( "slashmode "+string(usp_angle_e) )
+				}
 			}
 				hsp_decide = (usp_distance * cos(usp_angle_f));
 				vsp_decide = (usp_distance * sin(usp_angle_f));
@@ -381,6 +413,16 @@ if (attack == AT_USPECIAL){
 			attack_invince = true;
 			invince_time = 4;
 			fall_through = true;
+			
+			var aiID = instance_create(x, y-24, "obj_article3");
+			aiID.afterimage_mode = true;
+			aiID.player_id = id;
+			aiID.player = player;
+			aiID.image_angle = usp_angle + ((spr_dir)?0:180);
+			aiID.ai_angle_pass = usp_angle_f;
+			aiID.tmpdir = spr_dir;
+			aiID.spr_dir = spr_dir;
+			aiID.backward = usp_slashmode;
 		}
 	}
 	if (window==5&&!hitpause){
@@ -419,6 +461,19 @@ if (attack == AT_USPECIAL){
 		hsp=hsp_decide;
 		vsp=vsp_decide;
 		fall_through = true;
+		if (window_timer==3){
+			
+			var aiID = instance_create(x, y-24, "obj_article3");
+			aiID.afterimage_mode = true;
+			aiID.player_id = id;
+			aiID.player = player;
+			aiID.image_angle = usp_angle + ((spr_dir)?0:180);
+			aiID.ai_angle_pass = usp_angle_f;
+			aiID.tmpdir = spr_dir;
+			aiID.spr_dir = spr_dir;
+			aiID.backward = usp_slashmode;
+			
+		}
 	}
 	if (window==6){
 		fall_through = false;
@@ -547,6 +602,11 @@ if (attack == AT_DSPECIAL){//22%
 	if (window==10&&window_timer==2){
 		na_dsp_charge = 0;
 		sound_play(sound_get("laser"), false, noone, 0.9, 1);
+		
+		if (get_player_color( player ) == 7){//towerofheaven
+			sound_play(sound_get("laser_ea"), false, noone, 0.9, 1);
+		}
+		
 		//quake_timer = quake_dur;
 		//shake_camera(intensity, time)
 		
@@ -624,6 +684,8 @@ if (attack==AT_TAUNT&&window==5){
 		shake_camera(18, 3)
 		if (get_player_color(player)==6){//axolotl
 			sound_play(sound_get( "flower_garden" ));
+		}else if (get_player_color(player)==7){//towerofheaven
+			sound_play(sound_get( "scream_ea2"), false, noone, 1.1, 1 );
 		}else if (get_player_color(player)==9){//crown
 			sound_play(sound_get( "scream4" ));
 		}else if (get_player_color(player)==10){//astral

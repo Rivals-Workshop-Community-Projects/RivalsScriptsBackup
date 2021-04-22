@@ -7,8 +7,138 @@ if (attack == AT_TAUNT && state_timer == 10){
 }
 */
 
+
+// Neutral Special
+if (attack == AT_DSPECIAL){
+
+	if (state_timer == 1){
+		nspecial_charge = 0;
+		focus_armorbreak = false;
+		LoveStorage = 0;
+		nspecial_hitpause = 15;
+		nspecial_damage = 3;
+		set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_HITPAUSE, nspecial_hitpause);
+		set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, nspecial_damage);
+	}
+	
+	if (state_timer == 4){
+		if (!hitpause){
+			sound_play(sound_get("nspecialcharge"));
+		}	
+	}
+	
+	move_cooldown[AT_DSPECIAL] = 100;
+
+	if (special_down && LoveMeter >= 10){
+		nspecial_charge += 1;
+
+		if (window == 1 && window_timer == 16){
+			window_timer = 15;
+			window = 1;
+		}
+
+		if (nspecial_charge % 10 == 0){
+			LoveMeter -= 10;
+			LoveStorage += 10;
+			nspecial_hitpause = 15 + (LoveStorage/2);
+			set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_HITPAUSE, nspecial_hitpause);
+			nspecial_damage += 1;
+			set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, nspecial_damage);
+		}
+		
+	}
+	if (window == 1 && window_timer >= 4){
+		if (!focus_armorbreak){
+			soft_armor = 999;
+		}
+		
+		else { soft_armor = 0 }
+	}
+	
+	if (window == 2){
+		focus_armorbreak = false;
+		soft_armor = 0;
+	}
+	
+	// Dash Cancel
+	if (window == 1 && window_timer >= 4){
+		if (shield_pressed || shield_down){
+			if (spr_dir == 1){
+				if (left_pressed || left_down){
+					window = 5;
+					window_timer = 0;
+					hsp = -8;
+					spr_dir = -1;
+				}
+				else {
+					window = 5;
+					window_timer = 0;
+					hsp = 8;
+					spr_dir = 1;
+				}
+			}
+			else {
+				if (right_pressed || right_down){
+					window = 5;
+					window_timer = 0;
+					hsp = 8;
+					spr_dir = 1;
+				}
+				else {
+					window = 5;
+					window_timer = 0;
+					hsp = -8;
+					spr_dir = -1;
+				}		
+			}
+		}
+	}
+	
+	// Dash Cancel SFX
+	if (window == 5 && window_timer == 1){
+		sound_play(sound_get("CMN_SWISH_2"));
+	}
+	
+	if (window == 5){
+	
+		if (!focus_armorbreak){
+			soft_armor = 999;
+		}
+		
+		else { soft_armor = 0 }
+		
+	}
+	
+	// Turnaround
+	if (window == 1 && window_timer == 18){
+		if (!shield_pressed && !shield_down){
+			if (left_down || left_pressed){
+				spr_dir = -1;
+			}
+			if (right_down || right_pressed){
+				spr_dir = 1;
+			}
+		}
+	}
+	
+
+/*		
+    if ((window == 4 || window == 3) && has_hit_player){ // Allows player to cancel last animation early on hit
+		can_special = true;
+		can_attack = true;
+    	can_jump = true;
+		can_move = true;
+		can_strong = true;
+		can_ustrong = true;
+		can_shield = true;		
+		can_walk = true;
+	}
+*/
+
+}
+
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (attack == AT_DSPECIAL || attack == AT_FSPECIAL || attack == AT_NSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
 }
 
@@ -51,6 +181,16 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_NTHROW && win
 	can_wall_jump = true;
 }
 
+// Checks if touching ledge and slides the character upward
+if ((attack == AT_FSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR || state == PS_HITSTUN) && window == 2) || ((attack == AT_DTHROW || attack == AT_NTHROW || attack == AT_UTHROW || attack == AT_FTHROW) && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR))){
+	if (window == 2 && !hitpause){
+		if (place_meeting(x + (5 * spr_dir), y + 35, asset_get("par_block")) && !place_meeting(x + (5 * spr_dir), y - 40, asset_get("par_block")) && free && hsp == 0){
+//			print("pain");
+			y -= 5;
+		}
+	}
+}
+
 // Allows player to gain meter during training mode by pressing taunt
 if (attack == AT_TAUNT && state_timer == 1 && get_training_cpu_action() != CPU_FIGHT){
 	if (LoveMeter <= 190){
@@ -59,7 +199,7 @@ if (attack == AT_TAUNT && state_timer == 1 && get_training_cpu_action() != CPU_F
 }
 
 // Disables fast falls during throw animations
-if (attack == AT_UTHROW || attack == AT_FTHROW || attack == AT_DTHROW || attack == AT_FSPECIAL){
+if (attack == AT_UTHROW || attack == AT_FTHROW || attack == AT_DTHROW || attack == AT_FSPECIAL || attack == AT_DSPECIAL){
 	can_fast_fall = false;
 }
 
@@ -67,10 +207,7 @@ if (attack == AT_UTHROW || attack == AT_FTHROW || attack == AT_DTHROW || attack 
 // Ribbon Throw
 if (attack == AT_NTHROW){
 	if (window < 3){
-		left_down = false;
-		right_down = false;
-		left_pressed = false;
-		right_pressed = false;
+		can_move = false;
 		can_fast_fall = false;
 	}
 	else{
@@ -92,26 +229,15 @@ if (attack == AT_NTHROW){
 			nthrowFastFall = true;
 		}
 	}
-}
-
-// Neutral Special
-if (attack == AT_NSPECIAL){
-	move_cooldown[AT_NSPECIAL] = 120;
-		
-    if ((window == 4 || window == 3) && has_hit_player){ // Allows player to cancel last animation early on hit
-		can_special = true;
-		can_attack = true;
-    	can_jump = true;
-		can_move = true;
-		can_strong = true;
-		can_ustrong = true;
-		can_shield = true;		
-		can_walk = true;
+	
+	if (window == 2 && window_timer == 1){
+		vsp = floor((RibbonVSP)/2) * 2;
+		hsp = floor((RibbonHSP * spr_dir) / 2) * 2;
 	}
 }
 
 // Down Special
-if (attack == AT_DSPECIAL){ 
+if (attack == AT_NSPECIAL){ 
 	if (window == 1){ // Assigns item to next one in list
 		hud_offset = hud_offset + 20;
 		if (window_timer == 1){

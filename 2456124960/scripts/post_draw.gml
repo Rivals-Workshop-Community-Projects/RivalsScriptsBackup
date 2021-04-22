@@ -63,12 +63,14 @@ shader_end();
 
 var value = 0;
 var value_h = 0;
+var shouldAvoidAProblem = 0;
 if (get_match_setting(SET_HITBOX_VIS)) {
 	with (asset_get("pHitBox")) {
 		if (true) {
 			with (player_id) {
 				value = get_hitbox_value(other.attack, other.hbox_num, HG_DAMAGE);
 				value_h = get_hitbox_value(other.attack, other.hbox_num, HG_HEIGHT) / 2;
+				if (other.attack == AT_NAIR && other.hbox_num == 1) {shouldAvoidAProblem = 1;}
 			}
 			
 			draw_set_font(asset_get("medFont"));
@@ -76,6 +78,7 @@ if (get_match_setting(SET_HITBOX_VIS)) {
 				if (value > 7) {value += 2}
 				else if (value > 3) {value++;}
 				value++;
+				if (shouldAvoidAProblem == 1) {value++;}
 				draw_text_color(x, y-20-value_h, string(value), c_white, c_white, c_green, c_green, 1);
 			} else {
 				draw_text_color(x, y-20-value_h, string(value), c_white, c_white, c_white, c_white, 1);

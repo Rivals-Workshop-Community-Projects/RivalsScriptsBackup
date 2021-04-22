@@ -5,6 +5,10 @@ hit_player_obj = self
 
 }
 
+if invis == true and !attacking {
+   move_cooldown[AT_FSPECIAL_2] = 20	
+}
+
 if get_gameplay_time() < 60 {
 	if get_gameplay_time() == 1 {
 		    	     sound_play(sound_get("steath"),false,noone,1)
@@ -67,8 +71,8 @@ if move_cooldown[AT_NSPECIAL_2] > 0 {
 if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 	attacking = true
 	
-	    if invitimer > 0 && visible = false {
-                 visible = true
+	    if invitimer > 0 && invis = false {
+                 invis = true
     move_cooldown[AT_EXTRA_3] = 10
       spawn_hit_fx(x  , y - 30, lpar1)              
                   spawn_hit_fx(x , y - 30, lpar4)   
@@ -94,7 +98,7 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 	if invitimer != 0 && attack != AT_EXTRA_1 {
 	 
 	 
-	 switch state_timer % 3 + 1 {
+	 switch state_timer % 3 + 1 && !hitpause {
     	case 1:
 	 	spawn_hit_fx(x - 40 + random_func(2,80,true) , y - 16 - random_func(3,60,true), lpar2)
     	break ;
@@ -103,33 +107,34 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 	 	spawn_hit_fx(x - 40 + random_func(2,80,true) , y - 16 - random_func(3,60,true), lpar3)
     	break ;
     	    	
-
     	case 3:
 	 	spawn_hit_fx(x - 40 + random_func(2,80,true) , y - 16 - random_func(3,60,true), lpar5)
     	break ;
 	 }
+	 
+	 
 	}
 	
 } else {
 	attacking = false
 	if invitimer != 0 {
 	invitimer += 1
-    
-    visible = false
+    draw_indicator = false
+    invis = false
 	         
-            if get_gameplay_time() % 3 == 0 && (left_down or right_down) {
-           	 switch get_gameplay_time() % 2 {
-    	         case 0:
-	 	         spawn_hit_fx(x - 20 + random_func(2,40,true) , y + 12 - random_func(3,40,true), lpar2)
+            if (left_down or right_down) {
+           	 switch get_gameplay_time() % 6 {
+    	         case 3:
+	 	         spawn_hit_fx(x - 20 + random_func(2,40,true) , y - 6 - random_func(3,40,true), lpar2)
     	         break ;
           
-    	         case 1:
-	 	         spawn_hit_fx(x - 20 + random_func(2,40,true) , y + 12 - random_func(3,40,true), lpar3)
+    	         case 0:
+	 	         spawn_hit_fx(x - 20 + random_func(2,40,true) , y - 6 - random_func(3,40,true), lpar3)
     	         break ;
            	 }
           }
           
-          if get_gameplay_time() % 15 == 0 && !left_down and !right_down {
+          if get_gameplay_time() % 9 == 0 && !left_down and !right_down {
            	 switch get_gameplay_time() % 2 {
     	         case 0:
 	 	         spawn_hit_fx(x - 20 + random_func(2,40,true) , y + 12 - random_func(3,40,true), lpar2)
@@ -146,7 +151,7 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 
 if invitimer >= 90 {
 	invitimer = 0
-    visible = true
+    invis = true
     
       spawn_hit_fx(x  , y - 30, lpar1)              
                   spawn_hit_fx(x , y - 30, lpar4)   
@@ -166,7 +171,7 @@ if !free or state_cat == SC_HITSTUN {
 	move_cooldown[AT_USPECIAL] = 0
 	move_cooldown[AT_FSPECIAL] = 0
 	if state_cat == SC_HITSTUN {
-	    visible = true
+	    invis = true
    } 
 }
 

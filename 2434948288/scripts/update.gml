@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 8;
+	var noOfPatches = 9;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -70,6 +70,9 @@ transcounter = clamp(((get_player_color(player) == 6 && (state==PS_SPAWN||(attac
 
 // intro
 if (state == PS_SPAWN && state_timer == 18) sound_play(asset_get("sfx_forsburn_cape_swipe"));
+
+// fspec bounce
+if (!free) fspecBounce = true;
 
 // bury code
 with (oPlayer)

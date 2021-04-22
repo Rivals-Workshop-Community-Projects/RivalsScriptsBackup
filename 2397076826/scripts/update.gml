@@ -226,6 +226,5 @@ Bline = get_color_profile_slot_b ( alt , 0 )
 			move_cooldown[AT_EXTRA_1]/20 * Gline, 
 			move_cooldown[AT_EXTRA_1]/20 * Bline]
 
-
 }
 init_shader();

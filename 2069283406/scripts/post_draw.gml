@@ -1,6 +1,15 @@
 shader_start();
 
+if move_cooldown[AT_FSPECIAL_2] > 0 {
+	
 
+	
+	draw_sprite_ext(sprite_get("DeathAlex"),0, (galx + room_width/2)/2 + 10 - random_func(1,20,true), (galy + room_height/2)/2 + 10 - random_func(2,20,true) , 4 - move_cooldown[AT_FSPECIAL_2]/60 , 4 - move_cooldown[AT_FSPECIAL_2]/60,-1, c_white, move_cooldown[AT_FSPECIAL_2]/120 );
+	draw_sprite_ext(sprite_get("DeathAlex"),0, (galx + room_width/2)/2 + 10 - random_func(2,20,true), (galy + room_height/2)/2 + 10 - random_func(1,20,true), 3 - move_cooldown[AT_FSPECIAL_2]/40 , 3 - move_cooldown[AT_FSPECIAL_2]/40,-1, c_white, move_cooldown[AT_FSPECIAL_2]/90 );
+
+	
+	
+}
 
 if fireon >= 1 && fireon <= 1.5{
     draw_sprite(sprite_get("fireon1"), get_gameplay_time() / 6, hit_player_obj.x ,hit_player_obj.y  + 25  );
@@ -15,10 +24,10 @@ if fireon >= 3{
 }
 
 
-if firerange > 0{
-    draw_sprite(sprite_get("fireedge1"), get_gameplay_time() / 6, hit_player_obj.x + 100 + (0.7*firerange) ,hit_player_obj.y  + 35  );
-    draw_sprite(sprite_get("fireedge2"), get_gameplay_time() / 6, hit_player_obj.x - 100 - (0.7*firerange) ,hit_player_obj.y  + 35  );
-}
+///if firerange > 0{
+///    draw_sprite(sprite_get("fireedge1"), get_gameplay_time() / 6, hit_player_obj.x + 100 + (0.7*firerange) ,hit_player_obj.y  + 35  );
+///    draw_sprite(sprite_get("fireedge2"), get_gameplay_time() / 6, hit_player_obj.x - 100 - (0.7*firerange) ,hit_player_obj.y  + 35  );
+///}
 
 
 
