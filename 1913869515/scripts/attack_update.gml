@@ -240,8 +240,6 @@ if attack == AT_BAIR{
 
 if attack == AT_FTILT {
 	
-	move_cooldown[AT_FTILT] = 10 ;
-	
 	if window == 3 && window_timer == 10 {
 		set_attack (AT_UTILT)
 		window = 3
@@ -276,12 +274,13 @@ if attack == AT_FAIR && zbayo == 2 && window == 3 && !hitpause {
 	spawn_hit_fx( x - (20 * spr_dir) , y - 50 , shit5 )
 		sound_play(sound_get("counterhit"));
 		vsp = -9
-		x = hit_player_obj.x + 60 * spr_dir
-		y = hit_player_obj.y + 40
+		x = hit_player_obj.x + 20 * spr_dir
+		y = hit_player_obj.y + 50
 		spr_dir *= -1
 		hsp = 0
 		set_attack (AT_UAIR)
 		window = 2
+		window_timer = 3
 		zbayo = 0 
 		
 }
@@ -411,7 +410,7 @@ set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 18);
 
 set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE, 60);
 set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 11);
-set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, 0.1);
+set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_USPECIAL, 3, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITPAUSE_SCALING, .25);
@@ -420,7 +419,7 @@ set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, sound_get("slicel"));
 
 set_hitbox_value(AT_USPECIAL, 4, HG_ANGLE, 60);
 set_hitbox_value(AT_USPECIAL, 4, HG_BASE_KNOCKBACK, 11);
-set_hitbox_value(AT_USPECIAL, 4, HG_KNOCKBACK_SCALING, 0.1);
+set_hitbox_value(AT_USPECIAL, 4, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_USPECIAL, 4, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_USPECIAL, 4, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_USPECIAL, 4, HG_HITPAUSE_SCALING, .25);
@@ -475,8 +474,8 @@ set_hitbox_value(AT_USPECIAL, 1, HG_WIDTH, 120);
 set_hitbox_value(AT_USPECIAL, 1, HG_HEIGHT, 47);
 set_hitbox_value(AT_USPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 3);
-set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 0);
-set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 120);
+set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 3);
@@ -496,8 +495,8 @@ set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 120);
 set_hitbox_value(AT_USPECIAL, 2, HG_HEIGHT, 48);
 set_hitbox_value(AT_USPECIAL, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 5);
-set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 70);
-set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 120);
+set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 0);
@@ -759,13 +758,13 @@ if (attack == AT_NSPECIAL){
     }
     
 
-    if (window == 3){
+    if (window == 3 && window_timer >= 3){
     	 move_cooldown[AT_NSPECIAL] = 30 ;
 
         if halo < 1 or offense = 0 {
         	    spawn_hit_fx( x + (100*spr_dir + nrange*spr_dir), y - 30, SCF1)
                 window = 5;
-            	window_timer = 0;
+            	window_timer = 2;
             	sound_play(asset_get("sfx_spin"));
         }
         
@@ -781,7 +780,7 @@ if (attack == AT_NSPECIAL){
             
     }
     
-    if (window == 4){
+    if (window == 4 && window_timer == 3){
     	
         
             window = 7;
@@ -1326,7 +1325,7 @@ if(attack == AT_DAIR){
 	
 
 	
-    if (window == 2 && has_hit) {
+    if (window <= 3 && has_hit) {
     	
     	window = 4;
     	window_timer = 0;
@@ -1608,10 +1607,10 @@ if (attack == AT_UAIR && !hitpause){
 if (attack == AT_FTILT){
 	
 	if (has_hit) && !hitpause {
-                window_timer += 0.5;
+                window_timer += 1;
 	}
 	
-	if window == 3 && window_timer == 9 && !has_hit {
+	if window == 3 && window_timer >= 9 {
 		
 		x -= 6 * spr_dir
 		sound_play(asset_get("sfx_ice_shieldup"));

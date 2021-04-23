@@ -121,8 +121,10 @@ if player_id.attacking = true && player_id.attack == AT_NSPECIAL && player_id.wi
 	spawn_hit_fx( x , y + 60 - random_func(13, 40, true) , firepar1 )
 	
 	with player_id {
-		other.x += floor((x - other.x) / 12)
-		other.y += floor((y - other.y) / 12)
+		other.x += floor((x - other.x) / 24)
+		other.y += floor((y - other.y) / 24)
+		other.hsp = (x - other.x) / 24
+		other.vsp = (y - other.y) / 24
     }
 
 	
@@ -262,8 +264,9 @@ if kb_value = 8 {
   
 	sprite_index = sprite_get("ffires2")
 } else {
-	if (hitbox_timer == 1 or hitbox_timer % 10 = 0) {
+	if (hitbox_timer == 1 or hitbox_timer % 5 = 0) && (hsp > 2 or hsp < -2) {
 	create_hitbox(AT_FSPECIAL,9,x,y)
+	spawn_hit_fx(x,y,305)
 	}
 	var firepar1 = hit_fx_create( sprite_get( "firepar1" ), 20);
     if get_gameplay_time() % 2 = 0 {

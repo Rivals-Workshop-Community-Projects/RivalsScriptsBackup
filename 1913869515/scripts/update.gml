@@ -300,7 +300,7 @@ set_window_value(AT_UAIR, 4, AG_WINDOW_TYPE, 7);
 	}
 } else {
 	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 7);
-	set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 8);
+	set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 5);
 	set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 7);
 	set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 9);
 	set_hitbox_value(AT_UAIR, 3, HG_DAMAGE, 8);

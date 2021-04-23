@@ -9,7 +9,7 @@ var alt_gre = get_color_profile_slot_g(alt_cur, 0);
 var alt_blu = get_color_profile_slot_b(alt_cur, 0);
 var alt_col = make_color_rgb(alt_red, alt_gre, alt_blu);
 
-var num_alts = 16;
+var num_alts = 18;
 
 //Alt name init. var doesn't work with arrays lol
 
@@ -21,7 +21,7 @@ alt_name[4]  = "Black";
 alt_name[5]  = "Purple";
 alt_name[6]  = "Abyss";
 alt_name[7]  = "Gameboy";
-alt_name[8]  = "Gold";
+alt_name[8]  = "Yellow";
 alt_name[9]  = "Cheeto";
 alt_name[10] = "Edgy";
 alt_name[11] = "Rainbow";
@@ -29,7 +29,8 @@ alt_name[12] = "Pink";
 alt_name[13] = "Grass";
 alt_name[14] = "Blue";
 alt_name[15] = "Purple 2";
-
+alt_name[16] = "Silver";
+alt_name[17] = "Gold";
 
 //Patch
 

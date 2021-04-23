@@ -46,9 +46,9 @@ if  halo < 3 {
 halo += 1
 }
 sound_play(sound_get("stackfinish"));
-var dmdamge = min(floor(my_hitboxID.damage*2),10)
+var dmdamge = min(floor(my_hitboxID.damage/2),10)
 with hit_player_obj {
-		take_damage( player, -1 , 4 + (dmdamge/2))
+		take_damage( player, -1 , 4 + dmdamge)
 }
 
 

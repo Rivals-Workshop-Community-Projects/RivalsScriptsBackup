@@ -54,3 +54,4 @@ set_hitbox_value(49, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(49, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(49, 1, HG_LIFETIME, 9);
 set_hitbox_value(49, 1, HG_TECHABLE, 1);
+set_hitbox_value(49, 1, HG_HIT_LOCKOUT, 6);

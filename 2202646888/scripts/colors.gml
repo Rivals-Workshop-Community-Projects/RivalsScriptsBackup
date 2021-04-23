@@ -18,7 +18,7 @@ set_color_profile_slot_range( 3, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 18 );
 
 // sonic
 set_color_profile_slot( 1, 0, 58, 100, 189 ); //egg
@@ -62,7 +62,7 @@ set_color_profile_slot( 7, 1, 167, 186, 74 ); //egg shade
 set_color_profile_slot( 7, 2, 211, 226, 154 ); //mouth
 set_color_profile_slot( 7, 3, 211, 226, 154 ); //mouth shade
 
-// gold
+// Yellow
 set_color_profile_slot( 8, 0, 255, 221, 0 ); //egg
 set_color_profile_slot( 8, 1, 217, 151, 20 ); //egg shade
 set_color_profile_slot( 8, 2, 240, 62, 62 ); //mouth
@@ -109,6 +109,18 @@ set_color_profile_slot( 15, 0, 175, 111, 217 ); //egg
 set_color_profile_slot( 15, 1, 134, 68, 184 ); //egg shade
 set_color_profile_slot( 15, 2, 156, 80, 131 ); //mouth
 set_color_profile_slot( 15, 3, 122, 46, 98 ); //mouth shade
+
+// Silver
+set_color_profile_slot( 16, 0, 154, 171, 192 ); //egg
+set_color_profile_slot( 16, 1, 105, 109, 145 ); //egg shade
+set_color_profile_slot( 16, 2, 148, 203, 218 ); //mouth
+set_color_profile_slot( 16, 3, 83, 112, 140 ); //mouth shade
+
+// Gold
+set_color_profile_slot( 17, 0, 207, 174, 86 ); //egg
+set_color_profile_slot( 17, 1, 147, 92, 48 ); //egg shade
+set_color_profile_slot( 17, 2, 240, 224, 180 ); //mouth
+set_color_profile_slot( 17, 3, 156, 116, 84 ); //mouth shade
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

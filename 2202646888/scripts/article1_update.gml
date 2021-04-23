@@ -9,6 +9,7 @@ if(state == 0){
 	}
 }
 scisbox.x = x;
+scisbox.hitbox_timer = 0;
 if (player_id.bababooey == true){
 	spr_dir *= -1;
 	scisbox.player = player_id.bababooey_two;

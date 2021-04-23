@@ -14,6 +14,8 @@ vsp = 0;                                            //The vertical speed of the 
 chungx = 0;
 chungy = 0;
 
+neo_freeze_data = true;
+
 can_be_grounded = false;                            //Determines if the article follows platforms when free == false.
 ignores_walls = true;                               //Determines if the article goes through walls.
 free = true;                                        //Whether the article is in the air or not.

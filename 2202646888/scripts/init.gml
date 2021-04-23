@@ -28,10 +28,14 @@ eggdog_count = 1;
 max_eggs = 8;
 
 //supports
+
 Hikaru_Title = "Interrupting Tortoise";
 arena_title = "El Huevo";
 tcoart = sprite_get("tcodog");
 otto_bobblehead_sprite = sprite_get("bobblehead");
+
+sprite_change_offset("eggdog_gfz", 18, 41);
+gfzsignspr = sprite_get("eggdog_gfz");
 
 feri_costume = sprite_get("eggdogferi");
 resort_portrait = sprite_get("eggdoglastresourt")
@@ -39,6 +43,11 @@ guiltySprite = sprite_get("eggtrialground");
 
 trummelcodecneeded = false;
 trummelcodec_id = noone;
+
+//Miiverse
+
+miiverse_post = sprite_get("miiverse");
+sprite_change_offset("miiverse", 60, 30);
 
 fire_taunt = sprite_get("eggdogferi");
 fire_taunt_duration = 100;

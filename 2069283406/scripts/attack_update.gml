@@ -13,6 +13,42 @@ if attack == AT_NAIR && !hitpause{
 }
 
 
+if attack != AT_NSPECIAL &&	move_cooldown[AT_TAUNT_2] != 0 {
+		fall_through = 1
+		
+		if window_timer % 2 = 0 {
+		spawn_hit_fx( x   , y , dsshadow )
+		}
+		
+		
+		if hit_player_obj.state_cat == SC_HITSTUN {
+			hit_player_obj.hsp /= 1.1
+			hit_player_obj.vsp /= 1.1
+		}
+		
+         
+         if attack != AT_BAIR {
+		hsp = (hit_player_obj.x + hit_player_obj.hsp - 20*spr_dir - x) / 6
+         } else {
+         hsp = (hit_player_obj.x + hit_player_obj.hsp + 40*spr_dir - x) / 4
+         }
+		vsp = ((hit_player_obj.y) - y + hit_player_obj.vsp*2) / 4
+
+        
+       	y += (hit_player_obj.y - y) / 20
+       
+		
+
+   	if hit_player_obj.x < x - 100  {
+		x -= 10
+	} 
+	
+	if hit_player_obj.x > x + 100{
+	    x += 10
+	} 	
+	
+}
+
 
 
 
@@ -407,32 +443,32 @@ if attack == AT_NSPECIAL{
 	        if !up_down && !down_down && !left_down && !right_down {
 	        set_attack(AT_NAIR)
 	        window = 1
-			window_timer = 6
+			window_timer = 5
 	        }
 	        
 	        if up_down && !down_down  {
 	        set_attack(AT_UAIR)
 	        window = 1
-			window_timer = 6
+			window_timer = 5
 	        }
 	        
 	        if !up_down && down_down  {
 	        set_attack(AT_DAIR)
 	        window = 1
-			window_timer = 6
+			window_timer = 5
 	        }
 		
 			if !up_down && !down_down && !left_down && right_down {
 				if spr_dir == 1 {
 	        set_attack(AT_FAIR)
 	        window = 1
-			window_timer = 6
+			window_timer = 5
 				}
 				
 				if spr_dir == -1 {
 	        set_attack(AT_BAIR)
 	        window = 1
-			window_timer = 6
+			window_timer = 5
 				}	
 	        }
 	        
@@ -440,13 +476,13 @@ if attack == AT_NSPECIAL{
 				if spr_dir == -1 {
 	        set_attack(AT_FAIR)
 	        window = 1
-			window_timer = 6
+			window_timer = 5
 				}
 				
 				if spr_dir == 1 {
 	        set_attack(AT_BAIR)
 	        window = 1
-			window_timer = 6
+			window_timer = 5
 				}	
 	        } 
 		}
