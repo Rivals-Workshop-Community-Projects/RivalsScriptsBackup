@@ -1,9 +1,0 @@
-timestop_x = -1;
-timestop_y = -1;
-timestop_spr_index = undefined;
-timestop_img_index = undefined;
-timestop_spr_dir = undefined;
-timestopped = false;
-stored_knockback = 0;
-stored_angle = 0;
-fractional_damage = 0;
