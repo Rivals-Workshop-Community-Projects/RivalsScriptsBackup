@@ -1,7 +1,7 @@
 //AR DAIR [WIP]
 
 set_attack_value(AT_DAIR, AG_CATEGORY, 1);
-set_attack_value(AT_DAIR, AG_NUM_WINDOWS, 4);
+set_attack_value(AT_DAIR, AG_NUM_WINDOWS, 7);
 set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("dair"));
 set_attack_value(AT_DAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_DAIR, AG_LANDING_LAG, 8);
@@ -14,7 +14,8 @@ set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DAIR, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_DAIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DAIR, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
+set_window_value(AT_DAIR, 1, AG_WINDOW_SFX, asset_get("sfx_shovel_swing_light1"));
+//set_window_value(AT_DAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
 
 set_window_value(AT_DAIR, 2, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DAIR, 2, AG_WINDOW_ANIM_FRAME_START, 3);
@@ -23,19 +24,31 @@ set_window_value(AT_DAIR, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DAIR, 2, AG_WINDOW_SFX_FRAME, 5);
 set_window_value(AT_DAIR, 2, AG_WINDOW_SFX, sound_get("SWE3"));
 
-set_window_value(AT_DAIR, 3, AG_WINDOW_LENGTH, 4);//11
+set_window_value(AT_DAIR, 3, AG_WINDOW_LENGTH, 3);//11//4
 set_window_value(AT_DAIR, 3, AG_WINDOW_ANIM_FRAME_START, 6);
-set_window_value(AT_DAIR, 3, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_DAIR, 3, AG_WINDOW_ANIM_FRAMES, 1);//2
 set_window_value(AT_DAIR, 3, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_DAIR, 3, AG_WINDOW_VSPEED, -3);
 
-set_window_value(AT_DAIR, 4, AG_WINDOW_LENGTH, 11);
-set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAME_START, 8);
-set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAMES, 6);
-set_window_value(AT_DAIR, 4, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DAIR, 4, AG_WINDOW_SFX_FRAME, 1);
-set_window_value(AT_DAIR, 4, AG_WINDOW_SFX, asset_get("sfx_shovel_swing_light1"));
-set_window_value(AT_DAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);//this is new
+set_window_value(AT_DAIR, 4, AG_WINDOW_LENGTH, 1);
+set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAME_START, 7);
+set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAMES, 1);
+
+set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 11);//11
+set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAME_START, 7);//8
+set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAMES, 3);//6
+set_window_value(AT_DAIR, 5, AG_WINDOW_HAS_SFX, 1);
+//set_window_value(AT_DAIR, 4, AG_WINDOW_SFX_FRAME, 1);
+//set_window_value(AT_DAIR, 4, AG_WINDOW_SFX, asset_get("sfx_shovel_swing_light1"));
+set_window_value(AT_DAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);//this is new
+
+set_window_value(AT_DAIR, 6, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_DAIR, 6, AG_WINDOW_ANIM_FRAME_START, 10);
+set_window_value(AT_DAIR, 6, AG_WINDOW_ANIM_FRAMES, 1);
+
+set_window_value(AT_DAIR, 7, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DAIR, 7, AG_WINDOW_ANIM_FRAME_START, 11);
+set_window_value(AT_DAIR, 7, AG_WINDOW_ANIM_FRAMES, 3);
 
 set_num_hitboxes(AT_DAIR, 4);
 

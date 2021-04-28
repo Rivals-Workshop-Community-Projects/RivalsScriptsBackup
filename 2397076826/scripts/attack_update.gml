@@ -478,19 +478,26 @@ if attack == AT_NSPECIAL {
 
 if attack == AT_FSPECIAL {
  
- if has_hit_player && window < 4 && !hitpause {
- 	window = 4
+ can_fast_fall = false
+ if has_hit_player && window < 4 {
+ 	if vsp > -6 {
+ 	vsp -= 1
+ 	}
+		hit_player_obj.x += ((x + (65 * spr_dir)) - hit_player_obj.x) / 6
+		hit_player_obj.y += (y - 35 - hit_player_obj.y) / 6
  }
  
- if down_down {
- 	fall_through = true
-        if !free && ground_type == 2 {
-    	y += 10
-    	} 
- 	
- }
+
 	if  fspechit{ 
 	hsp /= 1.04
+	if window = 4 && window_timer == 1  && has_hit_player {
+		create_hitbox(AT_FSPECIAL, 7, x, y)
+			 if cloneout = 0 {
+	 	fspechit2 = 1	
+     	create_hitbox(AT_DSPECIAL, 1, x, y - 40)
+     	cloneout = 1
+	 }
+	}
 	if window = 4 && window_timer == 14 {
 		set_state(PS_IDLE_AIR)
 		fspechit = 0
@@ -500,7 +507,7 @@ if attack == AT_FSPECIAL {
 	
 	if window == 4 {
 		if vsp < 0 {
-			vsp /= 2
+			vsp /= 1.1
 		}
 		vsp -= 0.3
 		if left_down {

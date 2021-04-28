@@ -87,6 +87,7 @@ sprite_change_offset("dspecial", 136, 140);
 
 
 sprite_change_offset("taunt", 48, 92);
+sprite_change_offset("halo1", 64, 48);
 
 sprite_change_offset("shuriken", 50, 50);
 sprite_change_offset("hamburger", 20, 20);

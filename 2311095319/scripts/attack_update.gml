@@ -450,6 +450,7 @@ if (attack == AT_DSPECIAL){
 		can_move = true
 		if (window_timer == 6 && tornadospin != 2){//This segment of code resets Mario to window 2 of the move.
 			window_timer = 0
+			//clear_button_buffer(PC_SPECIAL_PRESSED);
 			tornadospin++;
 			tornadoboost = true
 		}
@@ -458,7 +459,7 @@ if (attack == AT_DSPECIAL){
 			if (tornadoair == false){
 				vsp = vsp - 6
 			} else {
-				vsp = vsp - 2.55
+				vsp = vsp - 6.5
 			}
 			tornadoboost = false
 			tornadoboosttimes++;
@@ -476,6 +477,9 @@ if (attack == AT_DSPECIAL){
 			} else if (tornadoair == false){
 				hsp = hsp + 1
 			}
+		}
+		if (vsp < -9){//>
+			vsp = -9
 		}
 		//Firebrand Stuff
 		if (hasfirebrand == true){
@@ -516,6 +520,17 @@ if (attack == AT_DSPECIAL){
 				}
 				hsp = hsp * 0.752
 			}
+		}
+	}
+}
+
+//Taunt
+//This is mainly for debug stuff (and also ripping the base game vfx lmao)
+if (attack == AT_TAUNT){
+	if (window == 1){
+		if (window_timer == 3){
+			//spawn_hit_fx( x + 190, y - 50, 148 );
+			//also 148
 		}
 	}
 }

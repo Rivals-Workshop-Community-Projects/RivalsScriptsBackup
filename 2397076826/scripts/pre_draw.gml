@@ -27,6 +27,18 @@ if get_player_color(player) == 6 {
 	
 }
 
+if get_player_color(player) == 1 {
+     if cloneout != 0 {
+     	
+     	draw_sprite_ext(sprite_get("halo1"), get_gameplay_time()/3, x - 24*spr_dir - hsp , y - 54 - vsp , spr_dir, 1, 0 , -1 , 0.8);
+     	     	
+     	gpu_set_blendmode(bm_add);
+     	draw_sprite_ext(sprite_get("halo1"), get_gameplay_time()/3, x - 24*spr_dir - hsp  , y - 54 - vsp , spr_dir*1.05, 1.05, 0 , -1 , 0.2);
+     	gpu_set_blendmode(bm_normal);
+
+     }
+}
+
 if state == PS_WAVELAND or state == PS_DASH 
 or state == PS_DASH_START or state == PS_DASH_TURN  {
     draw_sprite_ext(sprite_index, image_index, x - shsp*2 , y - svsp *2, spr_dir, 1, 0 , -1 , 0.4);

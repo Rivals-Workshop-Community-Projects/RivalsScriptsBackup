@@ -1,20 +1,20 @@
 ///
 
-if  move_cooldown[AT_FSPECIAL_2] = 9{
+if  move_cooldown[AT_FSPECIAL_2] = 11{
 	
-create_hitbox(AT_NSPECIAL, 1 ,hit_player_obj.x,hit_player_obj.y - 40)
+create_hitbox(AT_NSPECIAL, 12 ,hit_player_obj.x,hit_player_obj.y - 40)
   move_cooldown[AT_FSPECIAL_2] = 0
 }
 
-if  move_cooldown[AT_FSPECIAL_2] = 5{
+if  move_cooldown[AT_FSPECIAL_2] = 6{
 	
-create_hitbox(AT_NSPECIAL, 2 ,hit_player_obj.x,hit_player_obj.y - 40)
+create_hitbox(AT_NSPECIAL, 13 ,hit_player_obj.x,hit_player_obj.y - 40)
   move_cooldown[AT_FSPECIAL_2] = 0
 }
 
-if  move_cooldown[AT_FSPECIAL_2] = 1{
+if  move_cooldown[AT_FSPECIAL_2] = 3{
 	
-create_hitbox(AT_NSPECIAL, 3 ,hit_player_obj.x,hit_player_obj.y - 40)
+create_hitbox(AT_NSPECIAL, 14 ,hit_player_obj.x,hit_player_obj.y - 40)
   move_cooldown[AT_FSPECIAL_2] = 0
 }
 

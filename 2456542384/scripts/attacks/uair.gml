@@ -21,6 +21,8 @@ set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_UAIR, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UAIR, 3, AG_WINDOW_SFX_FRAME, 2);
+set_window_value(AT_UAIR, 3, AG_WINDOW_VSPEED_TYPE, 0);
+set_window_value(AT_UAIR, 3, AG_WINDOW_VSPEED, -4);
 set_window_value(AT_UAIR, 3, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 
 //2nd hit
@@ -68,7 +70,7 @@ set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_UAIR, 2, HG_HITPAUSE_SCALING, .5);
-set_hitbox_value(AT_UAIR, 2, HG_HITSTUN_MULTIPLIER, .85);
+set_hitbox_value(AT_UAIR, 2, HG_HITSTUN_MULTIPLIER, .95);
 set_hitbox_value(AT_UAIR, 2, HG_HIT_LOCKOUT, 3);
 set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));

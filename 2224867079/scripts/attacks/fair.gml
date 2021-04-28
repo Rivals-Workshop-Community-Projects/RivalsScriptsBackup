@@ -20,6 +20,7 @@ set_window_value(AT_FAIR, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //Abyss Runes
 if has_rune("B") {
@@ -30,20 +31,21 @@ if has_rune("B") {
     reset_window_value(AT_FAIR, 4, AG_WINDOW_LENGTH);
 }
 
-set_num_hitboxes(AT_FAIR, 1);
+set_num_hitboxes(AT_FAIR, 2);
 
+//Inside
 set_hitbox_value(AT_FAIR, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 4);
-set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 38);
-set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -35);
-set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 78);
-set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 64);
-set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 2);
+set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 27);
+set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -37);
+set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 74);
+set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 50);
+set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 6);
 set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 6);
-set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 35);
+set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 60);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 7);
@@ -53,3 +55,25 @@ set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 8);
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, blue_new_stab_1 );
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, sound_get("Hit2"));
+
+//Inside
+set_hitbox_value(AT_FAIR, 2, HG_WINDOW_CREATION_FRAME, 3);
+set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 2);
+set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 4);
+set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 29);
+set_hitbox_value(AT_FAIR, 2, HG_HITBOX_Y, -37);
+set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 92);
+set_hitbox_value(AT_FAIR, 2, HG_HEIGHT, 60);
+set_hitbox_value(AT_FAIR, 2, HG_PRIORITY, 2);
+set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 4);
+set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 40);
+set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .3);
+set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 7);
+set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, .4);
+set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, 8);
+set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, 8);
+set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, blue_new_stab_2 );
+set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, sound_get("Hit3"));

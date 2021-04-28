@@ -59,7 +59,7 @@ What happened?
 //
 // now, please change this string to your character's name. used for resetting the values after other characters.
 //--- ---
-var qe_b = "template"
+var qe_b = "Acid"
 // ! you can now scroll down until you reach "the primary part you should change."
 
 var tmp_cur = 0;
@@ -111,7 +111,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = sound_get("altsel"); // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 15;
+	col_max = 19;
 	ce[0,0] = make_color_rgb(182, 73, 218)
 	ce[0,1] = "A.R."
 	ce[0,2] = "Design by Kaggysmilk"
@@ -156,12 +156,24 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[13,0] = make_color_rgb(26, 78, 232)
 	ce[13,1] = "Feribows"
 	ce[13,2] = "Did you know I helped with Feri? Shoutouts to Azazel"
-	ce[14,0] = make_color_rgb(131, 199, 122)
-	ce[14,1] = "repentance"
-	ce[14,2] = "Colors based on the cover art of repentance"
-	ce[15,0] = make_color_rgb(102, 0, 245)
-	ce[15,1] = "TWILIGHT"
-	ce[15,2] = "Colors based on the cover art of TWILIGHT v2"
+	ce[14,0] = make_color_rgb(183, 242, 87)
+	ce[14,1] = "Tomorrow Valley"
+	ce[14,2] = "Also known as Storyshift"
+	ce[15,0] = make_color_rgb(227, 113, 109)
+	ce[15,1] = "Nano"
+	ce[15,2] = "Oldest Acid alt color revived! From Nichijou"
+	ce[16,0] = make_color_rgb(131, 199, 122)
+	ce[16,1] = "repentance past"
+	ce[16,2] = "Colors based on the cover art of repentance"
+	ce[17,0] = make_color_rgb(230, 170, 210)
+	ce[17,1] = "repentance future"
+	ce[17,2] = "Colors based on the cover art of repentance"
+	ce[18,0] = make_color_rgb(240, 255, 249)
+	ce[18,1] = "Devoid"
+	ce[18,2] = "No color, drained of all of it"
+	ce[19,0] = make_color_rgb(102, 0, 245)
+	ce[19,1] = "TWILIGHT"
+	ce[19,2] = "Colors based on the cover art of TWILIGHT v2"
 }
 
 if (ae == "ae"){

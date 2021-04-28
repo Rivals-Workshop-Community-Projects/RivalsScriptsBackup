@@ -1,4 +1,5 @@
 set_victory_theme( sound_get( "victory" ));
+sprite_change_offset("feri_costume_scoville", 84, 114);
 
 sprite_change_offset("idle", 64, 126);
 sprite_change_offset("hurt", 64, 126);

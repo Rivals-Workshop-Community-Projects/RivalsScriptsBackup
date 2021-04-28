@@ -158,7 +158,7 @@ if (pre_rfl != player_id){
 	
 	//summon rain
 	
-	if (state_timer % 5 == 0 && pre_rfl == player_id){ //10
+	if (state_timer % 5 == 0 && pre_rfl == player_id && arc_cooldown == 0){ //10
 //		if (variable_instance_exists(player_id, "ardev")){
 			var ARain = instance_create((x+(-32 + random_func( 0, 64, true ))), (y+(6 - random_func( 0, 2, true )) ), "obj_article3");
 			ARain.player_id = player_id;
@@ -190,8 +190,16 @@ if (pre_rfl != player_id){
 		//var arc_c_temp_y = 0;
 		//var arc_rm_temp_y = 0;
 		
+		if (arc_cooldown > 0){
+			arc_cooldown--;
+			image_alpha = 0.75-((arc_cooldown/250)/4)
+			player_id.arc_cooldown = true;
+		}else{
+			image_alpha = 1
+			player_id.arc_cooldown = false;
+		}
 		
-if (state_timer % 3 == 0){
+if (state_timer % 3 == 0 && arc_cooldown == 0){
 	var ray_x_n = 0;
 	var ray_x;
 	var ray_l = x-29; //29
@@ -242,13 +250,49 @@ if (state_timer % 3 == 0){
 							spawn_hit_fx( x, y-floor(char_height/2), 116 );
 							ar_rain = 0;
 						}
+						if (state==PS_PARRY){ //the "fake parry" here
+							if (window==1){
+								window_timer = 0;
+								hitpause = true;
+								hitstop = 10;
+								hitstop_full = 10;
+								hsp = 0;
+								vsp = 0;
+								old_hsp = 0;
+								old_vsp = 0;
+								other.arc_cooldown = 230//250
+								spawn_hit_fx( other.x, other.y-16, 116 );
+								var tmp_id = other.player_id
+								var pass_rainhitvfx = other.rainhitvfx
+								var pass_id = other
+								parry_got = true;
+								sound_play(asset_get("sfx_parry_success"))
+								tmp_id.fakeparry_got = true;
+								tmp_id.fakeparry_id = id;
+								if (url == tmp_id.url){
+									sound_stop(sound_get("SE034_low"));
+									sound_play(sound_get("SE031_low"));
+								}
+								with (obj_article3){
+									if (player_id==tmp_id){
+										if (ar_a3_type == 0){
+											spawn_hit_fx( x, y, pass_rainhitvfx );
+											pass_id.vsp = -6;
+											instance_destroy(id);
+										}
+									}
+								}
+								
+							}
+						}
+						
 					}
 				} //player_if_end
 					if (id == other.player_id && position_meeting(ray_x, other.y+ray_tmp_y, id)){
 						if (!rain_hit[player-1]){
 //							sound_play(dingsnd);
 							rain_hit[player-1] = true;
-							if (burned){
+							/*if (burned){
 								burn_timer+=5;
 							}
 							if (bubbled){
@@ -256,7 +300,7 @@ if (state_timer % 3 == 0){
 							}
 							if ((attack == 8 || attack == 7 || attack == 9)&&strong_charge > 0&&strong_charge < 58&&state==6){
 								strong_charge+=1;
-							}
+							}*/
 						}
 					} //player_if_end
 			}
@@ -290,10 +334,12 @@ if (state_timer % 3 == 0){
 
 // // // // IDLE EXPIRED
 var idle_max = 16;
-if (idle_cycle == idle_max && state == 1){
-	state = 2;
-	state_timer = 0;
-	sound_play(asset_get("sfx_bubblepop"));
+if (idle_cycle >= idle_max && state == 1){
+	if (arc_cooldown==0){
+		state = 2;
+		state_timer = 0;
+		sound_play(asset_get("sfx_bubblepop"));
+	}
 	}
 
 //start idleloop charge  lightning disappear
@@ -307,6 +353,7 @@ if (state == 2){
 		with (asset_get("oPlayer")){
 			if (id == other.player_id){
 				arc_active = false;
+				arc_cooldown = false;
 			}
 		}
         instance_destroy();
@@ -554,6 +601,7 @@ if (state == 1){
 	var archit = 0
 	
 	//enemy
+	/*
 	var elecsound = sound_get("elec");
     with (asset_get("pHitBox")){
 		if (place_meeting(x,y,other.id)){
@@ -581,7 +629,7 @@ if (state == 1){
 				}
 			}
 		}
-	}
+	}*/
 	//FTILT
     with (asset_get("pHitBox")){
         if (player_id == other.player_id && attack == AT_FTILT && hbox_num == 2 && place_meeting(x,y,other.id) && !player_id.hitpause){

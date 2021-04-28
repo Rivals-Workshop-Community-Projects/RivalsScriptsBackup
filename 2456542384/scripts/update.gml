@@ -20,16 +20,24 @@ if phone_cheats[cheat_recoil] with pHitBox if player_id == other can_hit_self = 
 if (!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN) {
 	can_use_uspecial = true;
 }
-if (free || place_meeting(x,y+1,asset_get("par_jumpthrough"))) { //no flower in the air or platforms
-	move_cooldown[AT_DSPECIAL] = 2;
-}
-
 if !can_use_uspecial {
 	move_cooldown[AT_USPECIAL] = 2;
 }
-if instance_exists(dros_flower) {
-	move_cooldown[AT_DSPECIAL] = dros_flower_cooldown;
-}
 if state != PS_ATTACK_GROUND && instance_exists(bite_plat) {
 	instance_destroy(bite_plat);
+}
+
+//dspecial stuff
+if instance_exists(dros_flower) && (dros_flower.state == 1 || dros_flower.state == 6) { //dspecial cooldown only whne flower dies
+	flower_on_cooldown = true;
+	flower_cooldown_rn = dros_flower_cooldown;
+}
+if flower_cooldown_rn == 0 {
+	flower_on_cooldown = false;
+}
+if instance_exists(dros_flower) {
+	flower_on_cooldown = true;
+}
+if flower_cooldown_rn > 0 { //new flower cooldown variable to be able to do dspecial_2 while you can't use the regular dspecial
+	flower_cooldown_rn -= 1;
 }

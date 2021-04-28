@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 2, 12, 26 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 22 );
+set_num_palettes( 24 );
 
 // Blueberry
 set_color_profile_slot( 1, 0, 50, 44, 184 ); //Body
@@ -220,6 +220,24 @@ set_color_profile_slot( 21, 3, 255, 214, 214 ); //Knife
 set_color_profile_slot( 21, 4, 255, 248, 224 ); //Fire
 set_color_profile_slot( 21, 5, 255, 230, 230 ); //White
 set_color_profile_slot( 21, 6, 242, 255, 242 ); //Ghost
+
+// Habanero
+set_color_profile_slot( 22, 0, 255, 170, 0 ); //Body
+set_color_profile_slot( 22, 1, 53, 166, 38 ); //Cap
+set_color_profile_slot( 22, 2, 213, 222, 44 ); //Face
+set_color_profile_slot( 22, 3, 255, 81, 0 ); //Knife
+set_color_profile_slot( 22, 4, 255, 66, 66 ); //Fire
+set_color_profile_slot( 22, 5, 168, 0, 0 ); //White
+set_color_profile_slot( 22, 6, 184, 52, 0 ); //Ghost
+
+// Feri
+set_color_profile_slot( 23, 0, 208, 0, 255 ); //Body
+set_color_profile_slot( 23, 1, 0, 26, 194 ); //Cap
+set_color_profile_slot( 23, 2, 255, 0, 170 ); //Face
+set_color_profile_slot( 23, 3, 250, 0, 255 ); //Knife
+set_color_profile_slot( 23, 4, 229, 115, 255 ); //Fire
+set_color_profile_slot( 23, 5, 255, 122, 202 ); //White
+set_color_profile_slot( 23, 6, 255, 110, 201 ); //Ghost
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

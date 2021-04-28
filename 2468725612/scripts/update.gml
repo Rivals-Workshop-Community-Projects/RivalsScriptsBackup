@@ -192,6 +192,17 @@ if (introTimer < 52) {
 //If your animation does not involve much movement, this may not be necessary.
 }
 
+if (phone_cheats[hold_special_parry] == 1){
+	hold_on = false;
+} 
+
+if (state == PS_SPAWN && taunt_pressed && hold_on == true) {
+	hold_on = false;
+	sound_play(sound_get("nspecial_act"));	
+}
+
+
+
 }	///////
 
 if (custom_clone){

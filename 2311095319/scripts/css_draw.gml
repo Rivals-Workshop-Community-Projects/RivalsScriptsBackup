@@ -65,7 +65,23 @@ user_event(12);
 
 shader_end();
 
-draw_sprite(sprite_get("colorgrid"),alt_cur,x + 8, y - 24);
+//ricE's colorgrid css_draw stuffs.
+if (alt_cur < 16){
+	draw_sprite(sprite_get("colorgrid"),alt_cur,x + 8, y - 24);
+	draw_sprite(sprite_get("colorgrid_pagenum1"),alt_cur,x + 202, y - 28);
+} else {
+	draw_sprite(sprite_get("colorgrid_part2"),alt_cur,x + 8, y - 24);
+	draw_sprite(sprite_get("colorgrid_pagenum2"),alt_cur,x + 202, y - 28);
+}
+
+//Special Icons n shit
+if (get_player_color(player) == 6){
+	draw_sprite(sprite_get("css_icon_abyss"),0,x+10,y+42);
+} else if (get_player_color(player) == 7){
+	draw_sprite(sprite_get("css_icon_ea"),0,x+10,y+42);
+} else if (get_player_color(player) == 11){
+	draw_sprite(sprite_get("css_icon_special"),0,x+10,y+42);
+} 
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
  

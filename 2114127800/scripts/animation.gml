@@ -16,28 +16,6 @@ if (state == PS_SPAWN) {
 	}
 }
 
-spr_hurt = sprite_get("hurt");
-spr_hurtground = sprite_get("hurtground");
-spr_bighurt = sprite_get("bighurt");
-
-if (sprite_index == spr_hurt){
-    var frames = 4;
-    var frame_dur = 4;
-    image_index = floor((state_timer mod (frames * frame_dur)) / frame_dur);
-}
-
-if (sprite_index == spr_bighurt){
-    var frames = 4;
-    var frame_dur = 4;
-    image_index = floor((state_timer mod (frames * frame_dur)) / frame_dur);
-}
-
-if (sprite_index == spr_hurtground){
-    var frames = 4;
-    var frame_dur = 3.5;
-    image_index = floor((state_timer mod (frames * frame_dur)) / frame_dur);
-}
-
 if (state == PS_ATTACK_AIR && attack == AT_USPECIAL && window > 2 && window < 5){
     if (soft_armor > 0){
         sprite_index = sprite_get("uspecial_armor");

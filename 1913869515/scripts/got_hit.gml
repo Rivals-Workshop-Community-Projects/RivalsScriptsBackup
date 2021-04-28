@@ -29,6 +29,8 @@ reset_window_value(AT_TAUNT, 18, AG_WINDOW_SFX);
 
 
 if attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 1{
+	
+	hit_player_obj.hitstop += 20
 			        if zvoice == 1{
          if get_player_color(player) == 1{
             	      sound_play(sound_get("counterV"));

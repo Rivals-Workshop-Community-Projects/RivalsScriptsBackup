@@ -1,6 +1,5 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
-var num_alts = 27;
 
 patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1);
 image_alpha = max(image_alpha-0.02, 0);
@@ -51,6 +50,9 @@ alt_name[23] = "Swordfighter";
 alt_name[24] = "Slayer of Demons";
 alt_name[25] = "Thunderclap Flash";
 alt_name[26] = "Astral";
+alt_name[27] = "Redline";
+alt_name[28] = "AK Mortal";
+var num_alts = 29;
 
 draw_sprite_ext(sprite_get("charselect"),1,x+8,y+8,2,2,0,make_colour_rgb(outline_colour[0],outline_colour[1],outline_colour[2]),1);
 

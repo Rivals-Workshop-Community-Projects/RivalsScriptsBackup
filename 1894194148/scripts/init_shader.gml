@@ -33,11 +33,15 @@ if (get_player_color( player ) == 10||
 	get_player_color( player ) == 8||
 	get_player_color( player ) == 3||
 	get_player_color( player ) == 13||
-	get_player_color( player ) == 14||
-	get_player_color( player ) == 15) {
+	get_player_color( player ) == 16||
+	get_player_color( player ) == 17||
+	get_player_color( player ) == 19) {
 set_character_color_shading( 3, -1 );
 }
-if (get_player_color( player ) == 14) {
+if (get_player_color( player ) == 16) {
+set_character_color_shading( 1, -1 );
+}
+if (get_player_color( player ) == 17) {
 set_character_color_shading( 1, -1 );
 }
 if (get_player_color( player ) == 12) {

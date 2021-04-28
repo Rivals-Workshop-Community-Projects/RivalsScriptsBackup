@@ -360,6 +360,41 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("3.8", "2021-4-25 (YMD)");
+	initPatchWords_ext("Changes", fa_left, c_yellow, 1, 0);
+	initPatchWords("- forgot to write the last time but fspecial cooldown is longer by 20 frames (80 -> 100)
+	- raincloud parry cooldown is shorter by 20 frames (250 -> 230)");
+	initPatchWords_ext("Fixes", fa_left, c_yellow, 1, 0);
+	initPatchWords("- fixed the issue where if the raincloud disappears while it's still parried, it keeps the cooldown forever. it won't now! thanks HaalfNHaalf!! (to be exact, to avoid being able to avoid cooldown by having cloud parried when it's almost despawning, i've made it so that it will wait until cooldown is over before it despawns.)");
+	
+	
+	initPatch("3.7", "2021-4-25 (YMD)");
+	initPatchWords_ext("Additions", fa_left, c_yellow, 1, 0);
+	initPatchWords("- added various alts,");
+	
+	initPatchWords_ext("Changes", fa_left, c_yellow, 1, 0);
+	initPatchWords("- reverted the thing that let opponent destroy the raincloud. instead you can now parry the cloud's rain to disable it for a few seconds (250 frames to be exact). you won't be able to 're-place it' when a raincloud that's already out is still in cooldown - but you can still nspecial, just that it won't summon the raincloud.
+	- walk speed decreased because it moved too fast for how it 'looked' i guess?
+	- dair windows/animation speed has been tweaked so that you can hopefully see better what she's actually doing. frame data is completely unaffected by this change!
+	- removed dair 'recover spin' sound. this change will be made for Ao as well in the future.");
+	
+	initPatchWords_ext("Fixes", fa_left, c_yellow, 1, 0);
+	initPatchWords("- her css_draw was broken and might have overriden others' hyu-style css_draw. fixed that now, my bad");
+	
+	initPatchWords_ext("Balances", fa_left, c_yellow, 1, 0);
+	initPatchWords_ext("-- -- idk", fa_left, c_olive, 1, 0);
+	initPatchWords("- fixed nspecial brush hitpause after all these years
+	- nspecial brush angles are a bit higher now (20, 40 -> 40, 60)");
+	initPatchWords_ext("-- -- counterplay", fa_left, c_olive, 1, 0);
+	initPatchWords("- increased nair landing lag by 2 points (4 -> 6)
+	- increased nair endlag by 1 point (6 -> 7, excluding whifflag)
+	- increased fstrong startup by 2 frames (12 -> 14 + charge)
+	- increased ftilt startup by 1 frame (5 -> 6)
+	- max speed you can have when jumping from ground decreased by 0.2 (7 -> 6.8)
+	- max speed you can have when falling off from ledge decreased by 0.2 (7 -> 6.8)
+	- usual nspecial cooldown at end has been increased by 10 frames (10 -> 20)");
+	
+	
 	initPatch("3.6", "2021-1-11 (YMD)");
 	initPatchWords_ext("Balances", fa_left, c_yellow, 1, 0);
 	initPatchWords_ext("-- -- counterplay", fa_left, c_olive, 1, 0);

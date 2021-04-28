@@ -6,6 +6,9 @@ enemykirby = noone;
 
 seasonal = false;
 
+polish = 0;   // literally don't even worry about this.
+wait_timer_thing = 0; //same
+
 urmom = 0;
 
 muted = 0

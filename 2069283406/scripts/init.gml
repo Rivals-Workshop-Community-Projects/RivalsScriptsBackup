@@ -50,7 +50,7 @@ pratfall_anim_speed = .25;
 walk_speed = 4.85;
 walk_accel = 1;
 walk_turn_time = 6;
-initial_dash_time = 10;
+initial_dash_time = 9;
 initial_dash_speed = 10;
 dash_speed = 7;
 dash_turn_time = 10;
@@ -60,7 +60,7 @@ dash_stop_percent = .35; //the value to multiply your hsp by when going into idl
 ground_friction = .5;
 moonwalk_accel = 0.7;
 
-jump_start_time = 4;
+jump_start_time = 5;
 jump_frames = 8;
 jump_speed = 13;
 short_hop_speed = 7;
@@ -81,14 +81,14 @@ wall_frames = 2;
 max_fall = 9.5; //maximum fall speed without fastfalling
 fast_fall = 14; //fast fall speed
 gravity_speed = 0.80;
-hitstun_grav = 0.52;
-knockback_adj = 1.05; //the multi
+hitstun_grav = 0.5;
+knockback_adj = 1.0; //the multi
 
 
 land_time = 4; //normal landing frames
 prat_land_time = 8;
 wave_land_time = 6;
-wave_land_adj = 1.15; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_land_adj = 1.3; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .006; //grounded deceleration when wavelanding
 
 //crouch animation frames

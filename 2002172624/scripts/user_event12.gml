@@ -96,7 +96,6 @@ colorName[13] = "Pale King";
 colorName[14] = "Magnetic Majesty";
 colorName[15] = "The Ultimate King";
 
-
 for(i = 0; i < num_alts; i++){
     var draw_color = (i == alt_cur) ? c_white : c_black;
     var draw_x = x + 76 + 8 * i;

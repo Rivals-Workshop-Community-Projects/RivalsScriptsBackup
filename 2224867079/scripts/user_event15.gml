@@ -458,6 +458,29 @@ with phone{
 //	initPatchWords("Fnuuy joke
 //	- waog");
 //	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0);
+	//2.19
+	initPatch("2.20	", "28 April, 2021");
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Resprited Uair
+	- After images now dissapear when performing certain moves
+	- Nspecial now has the new blue colours")
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Brand new Red Dattack
+	- Fair Angle Changed (35->60)
+	- Fair now has a hitbox for when you just barely hit someone
+	- Aerials now have whifflag
+	- Removed the Uair Sourspot
+	- Redid the Uair Hitboxes
+	- Removed the Bair sourspot
+	- Ftilt Angle Changed (55->361)
+	- Blue Ftilt BKB Changed (6->5)
+	- Red Ftilt BKB Changed (10->7)");
+	//2.19
+	initPatch("2.19	", "24 April, 2021");
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Edited the new taunt sprite
+	- Redid the afterimages (Using lukaru's code)
+	- Edited a few sprites")
 	//2.18
 	initPatch("2.18	", "16 April, 2021");
 	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);

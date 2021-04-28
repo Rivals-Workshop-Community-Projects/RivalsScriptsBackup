@@ -99,6 +99,8 @@ bubble_x = 0;
 bubble_y = 8;
 
 //other variables. idk
+ballOut = 0;
+ballDown = 0;
 wblastcharge = 0;
 rps = 0;
 superbluey = false;

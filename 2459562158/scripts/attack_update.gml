@@ -73,7 +73,7 @@ switch(attack)
                     window_timer = 0;
                 }
                 
-                 if (collision_circle(x_hand ,y_hand,10,asset_get("par_block"),false,true))
+                 if (collision_circle(x + x_hand ,y_hand,10,asset_get("par_block"),false,true))
                  {
                      spd_hand = 0;
                  }
@@ -262,9 +262,17 @@ switch(attack)
     case AT_DAIR:
         var time = get_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH);
         
-        if (window == 1) and (window_timer == time)
+        if (window == 1)
         {
-            instance_create(x + 14 * spr_dir ,y - 10,"obj_article2")
+        	if (window_timer == 3)
+        	{
+        		sound_play(asset_get("sfx_troupple_swipe"))
+        	}
+        	if (window_timer == time)
+        	{
+        		sound_stop(asset_get("sfx_troupple_swipe"))
+            	instance_create(x + 14 * spr_dir ,y - 10,"obj_article2")
+        	}
         }
     
     break;

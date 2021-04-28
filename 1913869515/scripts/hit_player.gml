@@ -1,10 +1,21 @@
 intro = 1
+finishercd = 0
+
+if my_hitboxID.sound_effect == sound_get("slice") or my_hitboxID.sound_effect == sound_get("slicel") {
+slashdraw = hitstop
+maxdraw = hitstop
+hitdmg = my_hitboxID.damage/10
+
+angledraw = random_func(1,360,true)  
+}
 
 if my_hitboxID.attack == AT_FSPECIAL {
 ztarget = hit_player_obj
 spawn_hit_fx( ztarget.x , ztarget.y - 30 , shit5 )
 spawn_hit_fx( ztarget.x , ztarget.y - 30 , shit1 )
 }
+
+
 
 if my_hitboxID.attack == AT_NAIR {
 hit_player_obj.x += ((x + (35 * spr_dir)) - hit_player_obj.x) / 2
@@ -172,7 +183,7 @@ if zvoice == 1{
 
 
 
-if (get_player_color(player) != 3) {
+if (get_player_color(player) != 3) && (my_hitboxID.sound_effect == sound_get("slice") or my_hitboxID.sound_effect == sound_get("slicel")){
 	
 
 
@@ -182,36 +193,35 @@ if (get_player_color(player) != 3) {
 	
 	if (hits == 0 ){
     	var hit1 = spawn_hit_fx( hit_player_obj.x + random_func(3, 10, true), hit_player_obj.y - 30 + random_func(1, 10, true), slash )
-    		hit1.depth = -1000
 
 	}
 	
   	if (hits == 1 ){
     var hit2 = spawn_hit_fx( hit_player_obj.x + random_func(3, 10, true), hit_player_obj.y - 30 + random_func(1, 10, true), slash2 )
-    	hit2.depth = -1000
 
      }
      
        	if (hits == 2){
     	var hit3 = spawn_hit_fx( hit_player_obj.x + random_func(3, 10, true), hit_player_obj.y - 30 + random_func(1, 10, true), slash3 )
-    		hit3.depth = -1000
 
      }
      
        	if (hits == 3){
  	var hit4 = spawn_hit_fx( hit_player_obj.x + random_func(3, 10, true), hit_player_obj.y - 30 + random_func(1, 10, true), slash4 )
- 		hit4.depth = -1000
      }
 	
 }
 
 if get_player_color(player) == 3{
-	
-	
+
     if( attack != AT_NSPECIAL  ){
-	
-	 create_hitbox(AT_FSPECIAL, 9 , hit_player_obj.x  - 30 + random_func(1, 60, true), hit_player_obj.y - 60 + random_func(2, 30, true) );
-}
+    	if spr_dir == -1  {
+	 create_hitbox(AT_FSPECIAL, 9 , floor(hit_player_obj.x - 30 + random_func(1, 60, true)), floor(hit_player_obj.y - 60 + random_func(2, 30, true)) );
+    	} else {
+    	 create_hitbox(AT_FSPECIAL, 10 , floor(hit_player_obj.x - 30 + random_func(1, 60, true)), floor(hit_player_obj.y - 60 + random_func(2, 30, true)) );
+ 		
+    	}
+    }
 }
 
 if get_player_color(player) == 5{
@@ -221,30 +231,25 @@ if get_player_color(player) == 5{
 	
 	if (hitsp == 0 ){
     	var hit1 = spawn_hit_fx( hit_player_obj.x + random_func(3, 10, true), hit_player_obj.y - 30 + random_func(1, 10, true), shit1 )
-    		hit1.depth = -1000
 
 	}
 	
   	if (hitsp == 1 ){
     var hit2 = spawn_hit_fx( hit_player_obj.x + random_func(3, 10, true), hit_player_obj.y - 30 + random_func(1, 10, true), shit2 )
-    	hit2.depth = -1000
 
      }
      
      if (hitsp == 2){
     	var hit3 = spawn_hit_fx( hit_player_obj.x + random_func(3, 10, true), hit_player_obj.y - 30 + random_func(1, 10, true), shit3 )
-    		hit3.depth = -1000
 
      }
      
        	if (hitsp == 3){
  	var hit4 = spawn_hit_fx( hit_player_obj.x + random_func(3, 10, true), hit_player_obj.y - 30 + random_func(1, 10, true), shit4 )
- 		hit4.depth = -1000
      }
      
          	if (hitsp == 4){
  	var hit5 = spawn_hit_fx( hit_player_obj.x + random_func(3, 10, true), hit_player_obj.y - 30 + random_func(1, 10, true), shit5 )
- 		hit5.depth = -1000
      }
 	
 }

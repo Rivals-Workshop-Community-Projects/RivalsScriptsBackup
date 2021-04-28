@@ -62,7 +62,7 @@ if state == PS_WALL_JUMP || state == PS_AIR_DODGE {
 	sound_stop( sound_get( "wind"));
 }
 
-if !free && ( (!(state == PS_JUMPSQUAT) && !(state == PS_LAND) && !(state == PS_LANDING_LAG) && !(state == PS_FIRST_JUMP)) || (jumps > 3 || jumps > 2 && (spr_dir == 1 && hsp < 3 || spr_dir == -1 && hsp > 3)) ) {
+if !free && ( (!(state == PS_JUMPSQUAT) && !(state == PS_LAND) && !(state == PS_LANDING_LAG) && !(state == PS_FIRST_JUMP) && !(state == PS_WAVELAND)) || (jumps > 3 || jumps > 2 && (spr_dir == 1 && hsp < 3 || spr_dir == -1 && hsp > 3)) ) {
 	jumps = 0;
 }
 	

@@ -38,7 +38,7 @@ if ("rollArray" in self)
 				AddText("Advanced Tutorials");
 				AddText("Change Notes");
 				AddText("Shrine of Light Discord");
-				AddText("A Message..");
+				AddText("Thank you");
 				DrawTutBlock();
 				DrawTutText();
 				break;
@@ -438,6 +438,34 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("Added a message..");
 						break;
+					case 29:
+						AddText("v1.29 - 24 Apr 2021");
+						AddText("");
+						AddText("Fixed UAir Grounded Final hitpause sprite");
+						AddText("UAir Final BKB 8 -> 7");
+						AddText("(UAir Final sends you into Tumble before USpec can hit)");
+						AddText("");
+						AddText("USpec Endlag 16 -> 20 (aerial), 36 (grounded)");
+						AddText("Added more sprites for the endlag animation");
+						AddText("USpec can now be edge cancelled");
+						AddText("USpec will no longer go into pratfall while grounded");
+						AddText("");
+						AddText("FSpec Whiff Endlag 8 -> 12");
+						AddText("FSpec will no longer go into pratfall on whiff while grounded");
+						AddText("FSpec cancel on hit will drastically reduce hitstop time");
+						AddText("FSpec BKB 1 -> 2");
+						AddText("");
+						AddText("NSpec Max charge time 100 -> 80");
+						AddText("NSpec Endlag 18 -> 21 (32 frames after whifflag multiplier)");
+						AddText("");
+						AddText("FAir Sweet/Normal KBS 0.9 -> 1.0");
+						AddText("JStrong BKB 6 -> 7");
+						AddText("BAir Lifetime 6 -> 4");
+						AddText("");
+						AddText("Prat land time 16 -> 18");	
+						AddText("Added Redline and AK Mortal alts");
+						AddText("Replaced a message with a thank you note");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -535,88 +563,19 @@ if ("rollArray" in self)
 				draw_sprite_ext(sprite_get("hikaru"), state_timer/(43/16), 64, temp_y-96+floor(tutAlpha*4)*2-8, 2, 2, 0, c_white, tutAlpha);
 				break;
 			case 8:
-				var a = 0;
-				if (string_count("2211945959", string(get_stage_data(SD_ID))) > 0)
-				{
-					if ("jabby" in hit_player_obj && "temp_level" in hit_player_obj && hit_player_obj.temp_level == 1)
-					{
-						a = 1;
-						AddText("1885391262");
-						AddText("");
-						AddText("");
-						AddText("");
-						AddText("");
-						AddText("");
-					}
-					else
-					{
-						AddText("Look a star is coming.");
-						AddText("I need more time to prepare.");
-						AddText("I am not ready.");
-						AddText("");
-						AddText("Maybe a deity of light can help");
-					}
-				}
-				else if (string_count("2210984773", string(get_stage_data(SD_ID))) > 0)
-				{
-					
-					if ("hikaru" in self)
-					{
-						if (hikaru == "lost")
-						{
-							AddText("I... need some space");
-							AddText("Or time...");
-							AddText("Or both");
-							AddText("");
-							AddText("No more anxiety");
-						}
-						else if (hikaru == "found")
-						{
-							AddText("To arrange something or change the controls on a computer or other device so that it can be used in a particular way");
-						}
-					}
-					else
-					{
-						AddText("I-");
-						repeat (16)
-							AddText("I'm sorry");
-						AddText("I'm not cut out for this");
-						AddText("You wouldn't get it");
-						AddText("I'm sorry...");
-						AddText("");
-						AddText("...I'm feeling too anxious");
-					}
-				}
-				else
-				{
-					if ("hikaru" in self)
-					{
-						if (hikaru == "lost")
-						{
-							AddText("HQnC1UHBvWA");
-						}
-						else if (hikaru == "found")
-						{
-							AddText("I can't describe how I feel about this little fox.");
-							AddText("Can you?");
-						}
-					}
-					else
-					{
-						AddText("I could never find the right way to tell you");
-						AddText("Have you noticed I've been gone?");
-						AddText("'Cause I left behind the home that you made me");
-						AddText("But I will carry it along");
-						AddText("");
-						AddText("And it's a long way forward, so trust in me");
-						AddText("I'll give them shelter, like you've done for me");
-						AddText("And I know, I'm not alone, you'll be watching over us");
-						AddText("Until you're gone");
-					}
-				}
+				AddText("Thank you for participating in the ARG");
+				AddText("");
+				AddText("Hyuponia");
+				AddText("Reshivan");
+				AddText("BernardO");
+				AddText("SnowKnight");
+				AddText("Neptendo");
+				AddText("Irol");
+				AddText("Zerks");
+				AddText("");
+				AddText("You're a star!");
 				DrawTutorialBlock();
 				DrawTutorialText();
-				if (a) draw_sprite_ext(sprite_get("a"), 0, 16, temp_y-98+floor(tutAlpha*4)*2-8, 1, 1, 0, c_white, tutAlpha);
 				break;
 		}
 		draw_set_alpha(1);

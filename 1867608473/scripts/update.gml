@@ -14,9 +14,11 @@ if get_gameplay_time() == 2 {
 if get_gameplay_time() < 120 {
     if get_gameplay_time() == 2 {
         set_attack(AT_NTHROW);
+        /*
         if shield_down and get_player_color(player) == 15{
         	flag_active = true;
         }
+        */
     }
     if get_gameplay_time() > 5 {
         if attack == AT_NTHROW && window == 1 && window_timer == 21 {
@@ -365,9 +367,28 @@ if (supersaiyan == 1 && tp_gauge <= 0) {
 
 // When TP hits 70%, it should make Kris Red
 if (tp_gauge >= 65 && tp_gauge < 100){
-	// then make the character outline red
-	outline_color = [ 255, 0, 0 ];
-	// tell the shader to update the character's colors
+	if polish < 255 and wait_timer_thing == -1{
+		polish += 5;
+		outline_color = [polish, 0, 0];
+	}
+
+	if polish == 255{
+		wait_timer_thing++;
+		if wait_timer_thing == 15{
+			wait_timer_thing = -2;
+		}
+	}
+
+	if polish > 0 and wait_timer_thing == -2{
+		polish -= 5;
+		outline_color = [polish, 0, 0];
+	}
+	if polish == 0{
+		wait_timer_thing++;
+		if wait_timer_thing == 14{
+			wait_timer_thing = -1;
+		}
+	}
 	init_shader();
 }
 

@@ -22,6 +22,13 @@ switch(state)
         //sprite_index = (uint)Mathf.Lerp(0, spriteLength - 1, 1 - (vsp + fast_fall) / (fast_fall * 2));
         image_index = lerp(0, image_number - 1, (vsp + fast_fall) / (fast_fall * 2));
 		break;
+	case PS_LANDING_LAG:
+		if (attack == AT_UAIR && hitpause)
+		{
+			sprite_index = sprite_get("uair");
+			image_index = 11;
+		}
+		break;
 	case PS_AIR_DODGE:
 		draw_y = -3*room_height;
 		draw_indicator = false;

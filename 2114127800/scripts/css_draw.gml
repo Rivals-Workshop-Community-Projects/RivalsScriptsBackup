@@ -8,9 +8,9 @@ if (get_color_profile_slot_r(0, 0) == 143) {
     set_color_profile_slot(0, 0, get_color_profile_slot_r(0, 0) + 1, get_color_profile_slot_g(0, 0), get_color_profile_slot_b(0, 0));
 }
 
-patch_ver = "4.4";
-patch_day = "13";
-patch_month = "February";
+patch_ver = "4.5";
+patch_day = "27";
+patch_month = "April";
 
 var num_alts = 16;
 var alt_cur = get_player_color(player);

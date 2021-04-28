@@ -15,6 +15,13 @@ if attack == AT_FSPECIAL {
     grabbed_player_relative_x = 0;
     grabbed_player_relative_y = 0;
 }
+if attack == AT_NSPECIAL {
+    set_attack_value(AT_NSPECIAL,AG_NUM_WINDOWS,3);
+    //grab variables reset
+    grabbed_player_obj = noone; 
+    grabbed_player_relative_x = 0;
+    grabbed_player_relative_y = 0;
+}
 if attack == AT_USPECIAL {
     grabbed_wall = false;
     can_use_uspecial = false;
@@ -35,6 +42,14 @@ if attack == AT_DAIR {
 
 if attack == AT_TAUNT {
     should_bite = false;
+}
+//flower activator
+if attack == AT_DSPECIAL && (instance_exists(dros_flower) || flower_cooldown_rn > 0 || place_meeting(x,y+1,asset_get("par_jumpthrough")) || free) {//use dspecial 2 if flower exists, is on cooldown, or you're on a platform
+    attack = AT_DSPECIAL_2;
+}
+
+if (attack == AT_UAIR && vsp >= 0){
+    vsp -= 4;
 }
 
 

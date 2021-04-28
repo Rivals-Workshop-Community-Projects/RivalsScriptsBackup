@@ -17,6 +17,19 @@ if bluemark > 0 or redmark > 0{
 shader_end(); 
 }
 //After Images
+for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i].alpha > 0 && draw_indicator)
+{
+    shader_start();
+    gpu_set_blendmode(bm_add);
+    if (RedMode == true){
+    	draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index, afterImage[i].x, afterImage[i].y, afterImage[i].spr_dir*1, 1, 0, $001DFF, afterImage[i].alpha/10);
+    } else {
+    	draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index, afterImage[i].x, afterImage[i].y, afterImage[i].spr_dir*1, 1, 0, $FFEA00, afterImage[i].alpha/10);
+    }
+    gpu_set_blendmode(bm_normal);
+    shader_end();
+}
+/*
 	////////////////////////////////////////////Dattack////////////////////////////////////////////////////////
     if (RedMode == false && attack = AT_DATTACK && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR )) {
 
@@ -101,6 +114,7 @@ shader_end();
 	
 	}
 	*/
+/*
 	if (attack = AT_FSPECIAL_2 && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR )) {
             
 	shader_start();
@@ -125,6 +139,7 @@ shader_end();
 
 	}
 	*/
+/*
 	if (attack = AT_USPECIAL_2 && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR )) {
             
 	shader_start();
@@ -162,7 +177,7 @@ shader_end();
 	shader_end();
 
 	}
-	
+*/	
 //Marker Effects
 shader_start();
 

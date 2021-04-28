@@ -458,6 +458,18 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.11", "27 April, 2021");
+	initPatchWords_ext("- Jab now comes out on frame 6.", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- The hologram won't galaxy when getting hit when Buffy is at high percent.", fa_left, c_white, 0, 0);
+	 
+	initPatch("1.1", "27 April, 2021");
+	initPatchWords_ext("- Increased the Base Hitpause from the sweetspot of UAir.", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- Changed something in ''got_hit'' which should hopefully fix some online bugs.", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- Added an option to hold Parry/Shield instead of Special when using USpecial Teleport or NSpecial Command.", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- Jab should now be safe on Parry.", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- Buffy's Hat will appear when she's in pratfall now (when wearing the hat).", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- Fixed the Hurtbox for DSpecial and USpecial when used in the air.", fa_left, c_white, 0, 0);
+	
 	initPatch("1.0", "26 April, 2021");
 	initPatchWords_ext("HOLY CRAP THE CHARACTER IS OUT!", fa_center, c_white, 0, 1);
 	initPatchImage(other.spr_doublejump, 0, fa_center, 1, c_white, 1);
@@ -518,6 +530,8 @@ with self{
 	
 	// attack_update.gml
 	initCheat("Hologram Never Dies", "hologram_immortal", [0, 1], ["No", "Yes"], "The Hologram doesn't die when getting parried or going off-stage");
+	
+	initCheat("Hold Special/Parry", "hold_special_parry", [0, 1], ["Special", "Parry"], "Which input should the player hold when using USpecial Teleport or NSpecial Command. (If if doesn't go back to ''Special'' after changing it, refresh with F5)");
 	
 }
 

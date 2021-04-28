@@ -1,4 +1,30 @@
 /*
+-- V2.20 --
+
+Cosmetic Changes:
+- Resprited Uair
+- After images now dissapear when performing certain moves
+- Nspecial now has the new blue colours
+
+Balance Changes:
+- Brand new Red Dattack
+- Fair Angle Changed (35->60)
+- Fair now has a hitbox for when you just barely hit someone
+- Aerials now have whifflag
+- Removed the Uair Sourspot
+- Redid the Uair Hitboxes
+- Removed the Bair sourspot
+- Ftilt Angle Changed (55->361)
+- Blue Ftilt BKB Changed (6->5)
+- Red Ftilt BKB Changed (10->7)
+
+-- V2.19 --
+
+Cosmetic Changes:
+- Edited the new taunt sprite
+- Redid the afterimages (Using lukaru's code)
+- Edited a few sprites
+
 -- V2.18 --
 
 Cosmetic Changes:

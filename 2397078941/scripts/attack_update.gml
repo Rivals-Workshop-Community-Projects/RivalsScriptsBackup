@@ -17,6 +17,18 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
 
     if attack == AT_USPECIAL {
     
+    if window == 4 && window_timer == 12 {
+    		sound_play(sound_get("throw"));
+    }
+    
+     if window == 4 && !free {
+    		set_state(PS_PRATFALL)
+    }
+    
+    if window == 4 && !hitpause && window_timer > 8 && window_timer < 16{
+    	create_hitbox(AT_USPECIAL,3,x - 10 + random_func(1,20,true),y - random_func(3,20,true))
+    	set_hitbox_value(AT_USPECIAL, 3, HG_PROJECTILE_HSPEED, -6 + random_func(2,12,true))
+    }
     move_cooldow[AT_USPECIAL] = 999
     
     if window == 4 && window_timer == 1 {
@@ -168,6 +180,7 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
 	if has_hit_player && hit_player_obj.state != PS_HITSTUN && window < 3{
 	  set_state(PS_PRATFALL)
 	  hsp = -6*spr_dir
+	  vsp = -10
 	}
 	
 	if window == 1 && window_timer == 1{
@@ -220,6 +233,7 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
 			}
 			
 			if window == 1 {
+				set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 4*8);
 				hsp /= 2
 				vsp /= 2
 			}
@@ -279,6 +293,7 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
 				set_hitbox_value(AT_FSPECIAL, 4, HG_WINDOW, 9);
 				
 				set_hitbox_value(AT_FSPECIAL, 5, HG_WINDOW, 4);
+				set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 6*8);
 			}
 			
 			if get_hitbox_value(AT_FSPECIAL, 4, HG_WINDOW) == 4 && window == 4 && window_timer == 12 {
@@ -461,6 +476,34 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
 
 
 if attack == AT_NSPECIAL{
+	move_cooldown[AT_NSPECIAL] = 60
+	famix += floor(((x-10*spr_dir)-famix)/2)
+    famiy += floor((y-famiy)/2)
+	
+	if window == 1 && window_timer == 12{
+	  		if seednum == 2 {
+    			sound_play(sound_get("throw"));
+set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 10);
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.8);
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 20);
+set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 302);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
+    		}
+    		
+    		if seednum == 3 {
+    			sound_play(sound_get("throw"));
+set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 16);    		    
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 1.1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 30);
+set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 306);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 302);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_heavy"));
+    		}
+    		
+	}
 	
 	  if state_timer < 5 {
   	if left_down && !right_down {
@@ -472,8 +515,16 @@ if attack == AT_NSPECIAL{
   	}
   }
   
-  if window == 2 && window_timer == 1 {
+  if window == 2 && window_timer == 2 {
   		sound_play(asset_get("sfx_abyss_seed_fall"));
+  		  		seednum = 1
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.4);
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 305);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 302);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
+set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 4);
   }
   
 	can_fast_fall = false
@@ -481,9 +532,6 @@ if attack == AT_NSPECIAL{
     if window == 1 && window_timer == 1 {
     			sound_play(asset_get("sfx_forsburn_consume_fail"));
     	sound_play(asset_get("sfx_forsburn_reappear"));
-    	
-    
-		
     }	
     
     if window == 4 {
@@ -841,6 +889,7 @@ if attack == AT_DSPECIAL{
 
 
 if attack == AT_USPECIAL{
+	prat_land_time = 5;
 	if window == 1 && window_timer == 1 {
 		    		set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 2);
     		set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 4);

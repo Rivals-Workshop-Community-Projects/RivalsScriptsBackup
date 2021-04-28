@@ -82,11 +82,13 @@ draw_debug_text(x+30,y,string("article 1"));
 		draw_debug_text(x+30,y+32,"state: "+string(state));
 		draw_debug_text(x+30,y+48,"arc_life: "+string(arc_life));
 		draw_debug_text(x+30,y+64,string(arc_temp_id));
-		draw_debug_text(x+30,y+72,"thruplat "+string(arc_thruplat));
+		draw_debug_text(x+30,y+82,"thruplat "+string(arc_thruplat));
 		draw_debug_text(x-30,y+16,"hsp "+string(hsp));
 		draw_debug_text(x-30,y+32,"vsp "+string(vsp));
 		draw_debug_text(x-30,y+48,"cur "+string(arc_num));
 		draw_debug_text(x-30,y+64,"max "+string(arc_num_max));
+		draw_debug_text(x-30,y+82,"dur "+string(idle_cycle)+"/"+string(16));
+		draw_debug_text(x-30,y+100,"cd  "+string(arc_cooldown));
 	}
 }
 with (obj_article2){
@@ -105,6 +107,10 @@ draw_debug_text(x+30,y,string("article 3"));
 		draw_debug_text(x+30,y+16,string("afterimage"));
 		}
 	}
+}
+with (hit_fx_obj){
+draw_debug_text(x+30,y,string("hitfx"));
+	draw_debug_text(x+30,y+16,string(hit_fx));
 }
 
 with (oPlayer){

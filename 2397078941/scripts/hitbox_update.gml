@@ -1,13 +1,29 @@
 ///
 
 if player_id.nolan == 0 {
-if attack == AT_NSPECIAL or attack == AT_USPECIAL{
+if attack == AT_NSPECIAL{
 	
 	if x < room_width and x > 0 and y < room_height { 
-        	player_id.move_cooldown[AT_NSPECIAL] = 2
+        	player_id.move_cooldown[AT_NSPECIAL] = 60
+        	player_id.famix = x
+        	player_id.famiy = y
 	} else {
 		destroyed = 1
 		sound_play(asset_get("sfx_abyss_seed_explode"))
+	}
+	
+
+}
+
+if attack == AT_USPECIAL && hbox_num == 1{
+	
+	if x < room_width and x > 0 and y < room_height { 
+        	player_id.move_cooldown[AT_NSPECIAL] = 30
+        	player_id.famix = x
+        	player_id.famiy = y
+	} else {
+		destroyed = 1
+		sound_play(asset_get("sfx_abyss_seed_explode"),false,noone,0.6)
 	}
 	
 
@@ -21,16 +37,37 @@ if (attack == AT_NSPECIAL or attack == AT_USPECIAL) && hbox_num == 1 && hitbox_t
     spawn_hit_fx (x  + 10 - random_func(2, 20, true) , y + 10 - random_func(1, 20, true), esp)
 }
 
-if (attack == AT_NSPECIAL or attack == AT_USPECIAL) && hbox_num == 1 {
+if attack == AT_NSPECIAL && hbox_num == 1 {
      if (place_meeting(x + hsp, y + vsp , asset_get("par_block"))) {
          spawn_hit_fx(x,y,301)
 	  		create_hitbox(AT_NSPECIAL, 2, x , y )
 	  		shake_camera(2,6)
 	  		sound_play(asset_get("sfx_abyss_seed_explode"))
 	  		destroyed = 1
+	  		
+	  if hitpause == 20 {
+      	create_hitbox(AT_NSPECIAL, 7, x , y )
+      	spawn_hit_fx(x,y, 304)
+      	sound_play(asset_get("sfx_ori_energyhit_medium"))
       }
       
-     
+      if hitpause == 30 {
+      	create_hitbox(AT_NSPECIAL, 7, x , y )
+      	spawn_hit_fx(x,y, 306)
+      	sound_play(asset_get("sfx_ori_energyhit_heavy"))	
+      }
+      
+      }
+      
+      
+}
+
+if attack == AT_USPECIAL{
+     if (place_meeting(x + hsp, y - vsp , asset_get("par_block"))) {
+	  		shake_camera(2,2)
+	  		sound_play(asset_get("sfx_abyss_seed_explode"),false,noone,0.6);
+	  		destroyed = 1
+      }
 }
 
 if attack == AT_NSPECIAL && hbox_num == 2 {
@@ -45,11 +82,6 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
     }
     }
     
-    with player_id {
-        if attack == AT_USPECIAL && window == 4 && window_timer == 1 && other.hitbox_timer < 10 {
-            other.destroyed = 1
-        }
-    }
     
     
     if hsp < 0 {
@@ -134,24 +166,24 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
       nearbyhitbox = collision_circle( x, y , 32, asset_get("pHitBox"), true, true ) 
 	if nearbyhitbox != noone {
 	    
-	    if nearbyhitbox.type == 2 && nearbyhitbox.hit_effect_x != -0.666 && hitbox_timer > 1 && hitbox_timer < 10 && hitbox_timer > 0{
-	        
-            hsp = nearbyhitbox.hsp/4
-            vsp = nearbyhitbox.vsp/4
-            hitbox_timer = -6
-	        image_index = 8
-	        with player_id {
-	        	spawn_hit_fx(x, y - 50, tauntpar1)
-	        	spawn_hit_fx(x, y - 10, tauntpar1)
-	        	spawn_hit_fx(x + 10, y - 30, tauntpar1)
-	        	spawn_hit_fx(x - 10, y - 30, tauntpar1)
-	        	sound_play(asset_get("sfx_ori_taunt2"),false,noone,1.5);
-	        	sound_play(asset_get("sfx_abyss_hex_hit"),false,noone,0.5)
-	        	take_damage(player, -1, -1 * floor(5+ other.nearbyhitbox.damage/4))
-	        }
-	        nearbyhitbox.destroyed = 1
-	        destroyed = true
-	    }
+	    //if nearbyhitbox.type == 2 && nearbyhitbox.hit_effect_x != -0.666 && hitbox_timer > 1 && hitbox_timer < 10 && hitbox_timer > 0{
+	    //    
+        //    hsp = nearbyhitbox.hsp/4
+        //    vsp = nearbyhitbox.vsp/4
+        //    hitbox_timer = -6
+	    //    image_index = 8
+	    //    with player_id {
+	    //    	spawn_hit_fx(x, y - 50, tauntpar1)
+	    //    	spawn_hit_fx(x, y - 10, tauntpar1)
+	    //    	spawn_hit_fx(x + 10, y - 30, tauntpar1)
+	    //    	spawn_hit_fx(x - 10, y - 30, tauntpar1)
+	    //    	sound_play(asset_get("sfx_ori_taunt2"),false,noone,1.5);
+	    //    	sound_play(asset_get("sfx_abyss_hex_hit"),false,noone,0.5)
+	    //    	take_damage(player, -1, -1 * floor(5+ other.nearbyhitbox.damage/4))
+	    //    }
+	    //    nearbyhitbox.destroyed = 1
+	    //    destroyed = true
+	    //}
 	    
 	     if nearbyhitbox.type == 2 && nearbyhitbox.hit_effect_x == -0.666 && hitbox_timer < 60  && nearbyhitbox.player_id.nolan == 0{
 	         sound_play(asset_get("sfx_abyss_hex_hit"))
@@ -162,6 +194,12 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
 	     }
 	    
 		if nearbyhitbox.type == 1  && hitbox_timer < 10 && nearbyhitbox.hit_effect_x != 0.666{
+			
+			kb_value = nearbyhitbox.kb_value
+			kb_scale = nearbyhitbox.kb_scale 
+			kb_angle = nearbyhitbox.kb_angle
+			hit_flipper = 6
+			
 		    for (var i = 1; i < 20; i++) can_hit[i] = true
 			damage += nearbyhitbox.damage
 			

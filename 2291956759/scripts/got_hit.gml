@@ -1,18 +1,18 @@
 ///
 move_cooldown[AT_USPECIAL] = 0
-if inkshield {
-if enemy_hitboxID.damage < 5 {    
-sound_play(sound_get("RI2"))	
-} else {
-sound_play(sound_get("RI"))	   
-}
-
-move_cooldown[AT_EXTRA_1] = 60
-
-
-spawn_hit_fx (x, y - 40, 304)
-inkshield -= enemy_hitboxID.damage*5
-}
+///if inkshield {
+///if enemy_hitboxID.damage < 5 {    
+///sound_play(sound_get("RI2"))	
+///} else {
+///sound_play(sound_get("RI"))	   
+///}
+///
+///move_cooldown[AT_EXTRA_1] = 60
+///
+///
+///spawn_hit_fx (x, y - 40, 304)
+///inkshield -= enemy_hitboxID.damage*5
+///}
 sound_stop(asset_get("sfx_troupple_rumble"))
 
 if countering == 1 {

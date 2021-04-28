@@ -44,14 +44,34 @@ switch (get_player_color(player))
         AstralColours(4, 109, 34, 122, 34, 91, 122 );
     }
     break;
+    //redline
+    case 27:
+    {
+        set_character_color_shading(0, 3);
+        set_character_color_shading(7, 3);
+    }
+    break;
+    //ak mortal
+    case 28:
+    {
+        if ("state" in self)
+        {
+            if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack != AT_TAUNT && attack != AT_TAUNT_2 && attack != AT_EXTRA_1)
+                set_character_color_slot(0, 255, 204, 36, 1);
+            else
+                set_character_color_slot(0, 7, 1, 6, 1);
+        }
+    }
+    break;
 }
 
 outline_colour = [0, 0, 0];
 switch (get_player_color(player))
 {
-    case 3:  outline_colour = [60, 0,  60]; break;
-    case 5:  outline_colour = [35, 67, 49]; break;
-    case 21: outline_colour = [90, 31,  7]; break;
+    case 3:  outline_colour = [60,   0,   60]; break;
+    case 5:  outline_colour = [35,   67,  49]; break;
+    case 21: outline_colour = [90,   31,   7]; break;
+    case 28: outline_colour = [255, 204,  59]; break;
 }
 
 if ("teleFlash" in self && teleFlash > 0)

@@ -1,6 +1,11 @@
 ///
 
 if attack == AT_USPECIAL && (hbox_num != 2) && (hbox_num < 5){
+	hsp /= 1.1
+	if hitbox_timer == 1 {
+		hsp = player_id.hsp
+	}
+	
     if hitbox_timer % 2 == 0 {
         create_hitbox (AT_USPECIAL, 2 , x, y)
     }

@@ -75,9 +75,11 @@ switch (my_hitboxID.attack)
         }
     break;
     case AT_USTRONG:
-    sound_stop(asset_get("sfx_swipe_medium2"))
+    //sound_stop(asset_get("sfx_swipe_medium2"))
         if (my_hitboxID.hbox_num != 3)
         {
+            hit_player_obj.x = lerp(hit_player_obj.x, x, .3)
+            hit_player_obj.y = lerp(hit_player_obj.y, y-100, .3)            
             hit_player_obj.should_make_shockwave = false;
             if(my_hitboxID.hbox_num == 2){
                 hit_player_obj.fall_through = true;

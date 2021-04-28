@@ -1,6 +1,23 @@
 intro = 0
 introtimer = -1
 
+finisher = 0
+finishercd = 0
+finisherinc = 0
+  		galx = 0
+        galy = 0
+        
+slashdraw = 0
+maxdraw = 0
+hitdmg = 0
+
+shsp = 0
+svsp = 0
+
+angledraw = 0
+
+
+
 introhit = 0
 
 ztarget = 0    
@@ -143,8 +160,12 @@ bubble_y = 8;
 
 SC = hit_fx_create( sprite_get( "SC" ), 12 );
 sprite_change_offset("SC", 100, 100);
+sprite_change_offset("SCf", 100, 100);
 SB = hit_fx_create( sprite_get( "SB" ), 12 );
 sprite_change_offset("SB", 100, 100);
+
+sprite_change_offset("death", 1000, 1000);
+sprite_change_offset("blud", 256, 125);
 
 G7 = hit_fx_create( sprite_get( "G7" ), 24 );
 G72 = hit_fx_create( sprite_get( "G72" ), 24 );
@@ -185,6 +206,8 @@ sprite_change_offset("shit5", 100, 100);
 sprite_change_offset("shit6", 100, 100);
 sprite_change_offset("shit7", 100, 100);
 sprite_change_offset("shit8", 100, 100);
+
+sprite_change_offset("slosh", 200, 200);
 
 lighten = hit_fx_create( sprite_get( "lighten" ), 8);
 sprite_change_offset("lighten", 1000, 1000);

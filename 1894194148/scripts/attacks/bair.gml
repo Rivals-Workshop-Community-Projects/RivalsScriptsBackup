@@ -11,11 +11,11 @@ set_attack_value(AT_BAIR, AG_HURTBOX_SPRITE, sprite_get("bair_hurt"));
 //bas   baa   bar
 //0-4:5 5-7:3 8-10:3
 
-set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 9);//10
+set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 10);//9//10
 set_window_value(AT_BAIR, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_BAIR, 1, AG_WINDOW_ANIM_FRAMES, 4);//5
 set_window_value(AT_BAIR, 1, AG_WINDOW_HAS_SFX, 1);//moved from window 2
-set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 8);//this is new
+set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 9);//this is new
 set_window_value(AT_BAIR, 1, AG_WINDOW_SFX, sound_get("SWFS5"));
 
 set_window_value(AT_BAIR, 2, AG_WINDOW_LENGTH, 8);//12

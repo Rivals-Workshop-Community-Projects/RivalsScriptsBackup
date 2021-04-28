@@ -5,11 +5,13 @@ set_attack_value(AT_NAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_NAIR, AG_LANDING_LAG, 4);
 set_attack_value(AT_NAIR, AG_HURTBOX_SPRITE, sprite_get("nair_hurt"));
 
-set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
-set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 11);
+set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 7);
+set_window_value(AT_NAIR, 1, AG_WINDOW_VSPEED_TYPE, 0);
+set_window_value(AT_NAIR, 1, AG_WINDOW_VSPEED, -1);
 
 set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_NAIR, 2, AG_WINDOW_ANIM_FRAMES, 1);

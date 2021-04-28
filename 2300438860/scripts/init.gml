@@ -17,6 +17,14 @@ saveid = 0
 barpause = 0
 
 
+finisher = 0
+finishercd = 0
+finisherinc = 0
+  		galx = 0
+        galy = 0
+        
+
+
 
 cosmetic = 1
 
@@ -181,6 +189,8 @@ sprite_change_offset("shit1", 100, 100);
 sprite_change_offset("shit4", 100, 100);
 sprite_change_offset("shit5", 100, 100);
 
+
+sprite_change_offset("death", 1000, 1000);
 
 hb1 = hit_fx_create( sprite_get( "heartb" ), 20);	
 hb2 = hit_fx_create( sprite_get( "heartb2" ), 20);

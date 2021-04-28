@@ -23,18 +23,55 @@ if my_hitboxID.type == 1 && my_hitboxID.damage >= 5 {
 	  sound_play(asset_get("sfx_abyss_seed_explode"))
  }
  
-  if my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 1 {
-	  create_hitbox(AT_NSPECIAL, 2, hit_player_obj.x , hit_player_obj.y - 40 )
-	  sound_play(asset_get("sfx_abyss_seed_explode"))
+ 
+  if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 2 && hit_player_obj != self{
+ 	  if seednum < 3 {
+ 	  	seednum += 1
+ 	  }
+ }
+ 
+  if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num >= 5 && hit_player_obj != self{
+ 	  if seednum < 3 {
+ 	  	seednum += 1
+ 	  }
+ 	  move_cooldown[AT_NSPECIAL] = 30
+ 	  famix = x
+ 	  famiy = y
  }
  
  
- if move_cooldown[AT_NSPECIAL] = 0 {
- 	if my_hitboxID.attack == AT_DSPECIAL &&  my_hitboxID.hbox_num == 2  {
- 		create_hitbox(AT_NSPECIAL, 2, x + 50*spr_dir , y - 80 )
- 	}
- 	
+ if move_cooldown[AT_NSPECIAL] == 0 {
+  if my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_DSTRONG or my_hitboxID.attack == AT_USTRONG{
+ 	  if seednum < 3 {
+ 	  	seednum += 1
+ 	  }
+ 	  famix = x
+ 	  famiy = y
+ 	  move_cooldown[AT_NSPECIAL] = 30
+ }
+
+ if my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 2 {
+ 	  if seednum < 3 {
+	    seednum += 1
+ 	  }
+ 	  famix = x
+ 	  famiy = y
+ 	  move_cooldown[AT_NSPECIAL] = 30
+ 	   	
+ }
+ 
+
+ if my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 2  {
+ 	  if seednum < 3 {
+	    seednum += 1
+ 	  }
+ 	  move_cooldown[AT_NSPECIAL] = 30
+ 	  famix = x
+ 	  famiy = y
+ }
+ 
 }
+
 }
 
 if nolan == 1 {

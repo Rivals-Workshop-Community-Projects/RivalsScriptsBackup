@@ -14,10 +14,10 @@ if attack == AT_NSPECIAL  {
         hsp *= -1
     }
     
-        shu = hit_fx_create( sprite_get( "shuriken2" ), 9 );
-    if hitbox_timer % 2 == 0 {
-     spawn_hit_fx (x  , y + 10 - random_func(1, 20, true) , shu)
-    }
+   //     shu = hit_fx_create( sprite_get( "shuriken2" ), 9 );
+   // if hitbox_timer % 2 == 0 {
+   //  spawn_hit_fx (x  , y + 10 - random_func(1, 20, true) , shu)
+   // }
           
 } 
 
@@ -37,6 +37,10 @@ if attack == AT_USPECIAL  {
 
 if attack == AT_DSPECIAL && hbox_num == 1{
 
+if hitbox_timer = 1 {
+	vsp = player_id.vsp
+	hsp = player_id.hsp
+}
 	nearbyhitbox = collision_circle( x-12, y-12, 34, asset_get("pHitBox"), true, true ) 
 	
 	if nearbyhitbox != noone && nearbyhitbox.hit_priority > 0 && player_id.cloneinv == 0{

@@ -69,9 +69,9 @@ if attack == AT_FSTRONG {
     }
     
     if window == 2 {
-        if !free {
-        x += 4*spr_dir
-        }
+        //if !free {
+        //x += 4*spr_dir
+        //}
         if window_timer % 3 == 0 && window_timer > 4 {
         create_hitbox(AT_FSTRONG , 1 , x , y  );
         }
@@ -107,7 +107,7 @@ if attack == AT_UAIR {
 }
 
 if attack == AT_DAIR {
-
+ can_wall_jump = true
  fall_through = true
  
  if y > room_height/2 + 300 {
@@ -130,11 +130,7 @@ if attack == AT_DAIR {
      if window == 2 {
          
      if (y > room_height/2 + 300){
-    	if shield_pressed or jump_pressed or special_pressed{
-    	    set_attack (AT_DSPECIAL)
-    	    window = 1
-    	    window_timer = 1
-    	}
+    	can_shield = true
      }
     
          hsp = 0
@@ -226,13 +222,8 @@ if attack == AT_USPECIAL {
         sound_play(asset_get("sfx_bird_downspecial")) 
     }
     if window == 3 && window_timer == 6 {
-        if inkshield > 0 {
-            window_timer += 1
-            move_cooldown[AT_USPECIAL] = 999 
-        } else {
-            vsp = -11
+            vsp = -14
             set_state (PS_PRATFALL)
-        }
     }
 }
 
@@ -395,12 +386,49 @@ if attack == AT_DSPECIAL {
     
 }
         if attack == AT_TAUNT {
+        	can_jump = true
+        	
+     if window == 4 {
+     	if window_timer >= 57 && taunt_down {
+     		window_timer -= 1
+     	}
+     	if state_timer % 5 == 0 {
+     		state_timer = 0
+     		ui1x = 30 - random_func(1,60,true)
+            ui1y = 20 - random_func(2,80,true)
+            
+            ui2x = 30 - random_func(3,60,true)
+            ui2y = 20 - random_func(4,80,true)
+     	}
+     	
+     	spawn_hit_fx(x - 32*spr_dir + ui1x, y - 90 - ui1y - state_timer*4, esp) 
+     	spawn_hit_fx(x - 32*spr_dir + ui2x, y - 90 - ui2y - state_timer*4, esp) 
+     	
+     }
+     
     if window == 1 && window_timer == 1 {
         sound_play(asset_get("sfx_forsburn_disappear"))
         
     }
     
+    if window == 4 && window_timer == 59 {
+    	window = 3 
+    	window_timer = 8
+    	sound_play(asset_get("sfx_forsburn_reappear"))
+    }
+    
+    if window == 1 && window_timer == 12 {
+    	shake_camera(4,6)
+    	    	    	if get_player_color(player) == 14{
+    		 sound_stop(sound_get("drip")) 
+            sound_play(sound_get("drip")) 
+            window = 4
+        }
+    }
+    
     if window == 2 && window_timer == 1 {
+
+        
              if get_gameplay_time()%5 = 0 {
                spawn_hit_fx (x - 50*spr_dir ,y, tauntzetta)
             }

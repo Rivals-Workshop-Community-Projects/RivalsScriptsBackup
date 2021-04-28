@@ -54,7 +54,47 @@ if has_uspecialed{
 	if !free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN has_uspecialed = false;
 }
 
-//Blur
+//Afterimage
+if (afterImageTimer > 0)
+{
+    afterImage[afterImageTimer-1]={sprite_index:sprite_index,image_index:image_index,x:x,y:y,spr_dir:spr_dir,alpha:10};
+    afterImageTimer--;
+}
+for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i].alpha > 0) afterImage[i].alpha--;
+
+//After image attacks
+if (attack == AT_DATTACK && window==1&&window_timer==1&&!hitpause){
+	afterImageTimer = 20;
+}
+if (attack == AT_UTILT && window==1&&window_timer==1&&!hitpause){
+	afterImageTimer = 24;
+}
+if (attack == AT_DAIR && window==1&&window_timer==1&&!hitpause){
+	afterImageTimer = 24;
+}
+if (attack == AT_NAIR && window==1&&window_timer==1&&!hitpause){
+	afterImageTimer = 24;
+}
+if (attack == AT_FSPECIAL_2 && window==1&&window_timer==1&&!hitpause){
+	afterImageTimer = 24;
+}
+if (attack == AT_USPECIAL && window==1&&window_timer==1&&!hitpause){
+	afterImageTimer = 24;
+}
+if (attack == AT_USPECIAL_2 && window==1&&window_timer==1&&!hitpause){
+	afterImageTimer = 24;
+}
+if (attack == AT_UAIR && window==1&&window_timer==1&&!hitpause){
+	afterImageTimer = 0;
+}
+if (attack == AT_FAIR && window==1&&window_timer==1&&!hitpause){
+	afterImageTimer = 0;
+}
+if (attack == AT_BAIR && window==1&&window_timer==1&&!hitpause){
+	afterImageTimer = 0;
+}
+/*
+//Afterimage OLD
 (asset_get("oPlayer")){
 	//Move back all other frames
 	for(var i = array_length_1d(blur) - 1; i > 0; i--) {
@@ -72,7 +112,7 @@ if has_uspecialed{
 		image_alpha,
 	];
 }
-
+*/
 //Red Mode
 //Gives Red Meter Over time if in blue mode, Decreases it if in Red Mode
 //if(Red_Mode && get_gameplay_time() % 18 == 0) {
@@ -186,10 +226,6 @@ if(state == PS_AIR_DODGE){
 	}
 }
 
-if (attack == AT_USPECIAL){
-	
-}
-
 if(blood_timer != 0)
 {
 	blood_timer--;
@@ -203,7 +239,7 @@ if(blood_timer != 0)
 	}
 }
 
-// Fstrong galaxy
+//Galaxy
 if(has_hit_player && (attack == AT_USPECIAL_2 && window == 2))
 {
 	has_hit_player = false;

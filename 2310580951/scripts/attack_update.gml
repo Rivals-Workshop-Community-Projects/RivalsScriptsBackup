@@ -87,7 +87,9 @@ if attack == AT_FSPECIAL {
 			window = 4;
 			window_timer = 0;
 		}
-		can_attack = true;
+		if !was_parried {
+			can_attack = true;
+		}
 	}
 	
 	if window == 2 {
@@ -100,10 +102,13 @@ if attack == AT_FSPECIAL {
 		if window_timer == 5 && free {
 			window_timer = 0;
 		}
+		if !was_parried {
 		can_jump = true;
 		can_shield = true;
+		}
 	}
 	if window == 4  {
+		destroy_hitboxes();
 		if special_pressed && (left_down || right_down) && !free {
 			window = 1;
 			window_timer = 5;
@@ -114,7 +119,7 @@ if attack == AT_FSPECIAL {
 		off_edge = false;
 	}
 	if window == 5 {
-		if window_timer == 5 && !free {
+		if window_timer == 5 && !free && !was_parried {
 			set_state(PS_CROUCH);
 			state_timer = 8;
 		}	
@@ -174,7 +179,7 @@ if attack == AT_FSPECIAL_AIR && !hitpause {
 		destroy_hitboxes();
 	}
 	if window == 6 {
-		if window_timer > 5 {
+		if window_timer > 5 && !was_parried {
 			can_attack = true;
 		}
 		destroy_hitboxes();
@@ -551,10 +556,20 @@ if (attack == AT_DATTACK) {
 	
 	if (window == 2 || window == 3 || window == 4 && window_timer < 6) && !free && !hitpause {
 		vsp = -3;
+		sound_play(sound_get("step-grass"));
 	}
 	
-	if window == 4 && window_timer > 1 && has_hit {
-		can_jump = true;
+	if (window == 3 && window_timer > 10 || window > 3) && has_hit && !hitpause {
+		if (jump_down || attack_down) && !free {
+			attack_end();
+			attack = AT_FSPECIAL_AIR;
+			window = 6;
+			window_timer = 0;
+			vsp = -5;
+			hsp *= 1.3;	
+		} else {
+			can_jump = true;
+		}
 	}
 }
 

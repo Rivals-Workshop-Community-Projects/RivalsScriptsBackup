@@ -437,6 +437,11 @@ with phone{
 	 * put the version number and full date.
 	 */
 
+	initPatch("4.91", "27 April, 2021");
+	initPatchWords_ext("Hey, what if Kris was stronger?", fa_center, c_white, 0, 0);
+	initPatchWords_ext("Changes:", fa_center, c_gray, 0, 0);
+	initPatchWords_ext("- Kris will no longer disappear immediately after using any partner attacks (ustrong, dstrong, fspecial, nspecial)", fa_left, c_white, 0, 0);
+
 	initPatch("4.9", "18 March, 2021");
 	initPatchWords_ext("Nothing special going on, just fixing a new patch bug. Sorry for the inconvenience!", fa_center, c_white, 0, 0);
 	initPatchWords_ext("Bug Fixes:", fa_center, c_gray, 0, 0);

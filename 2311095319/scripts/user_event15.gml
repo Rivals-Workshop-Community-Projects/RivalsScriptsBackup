@@ -559,6 +559,24 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.11", "April 23, 2021");
+	initPatchWords("General
+	~ Added 8 new color palettes! The CSS draw grid has been updated to accommodate for the additional palettes.
+	~ Icons for the Abyss, Early Access, and Shadow Mario alt have been added.
+	~ The Shadow Mario color palette has a unique Forward Strong animation where Shadow Mario uses his paintbrush instead of the hammer. Has different sound effects, and is strictly cosmetic only.");
+	initPatchWords("Up Air (Air Slash)
+	+ Hitboxes slightly increased.
+	- Knockback Scaling: .45 -> .4");
+	initPatchWords("Neutral Special (Fireball)
+	- Parrying any fireball resets the fireball’s lifetime.");
+	initPatchWords("Up Special (Super Jump Punch)
+	+ First Hit Base Knockback: 9 -> 10
+	+ First Hit Angle: 75 -> 80
+	+ The connecting hitboxes when Mario lands the first hit should now connect better.");
+	initPatchWords("Down Special (Mario Tornado)
+	+ The move grants Mario more height in the air, giving the move more recovery potential.");
+
+	
 	initPatch("1.10", "Febuary 28, 2021");
 	initPatchWords("General
 	~ Added Miiverse posts.

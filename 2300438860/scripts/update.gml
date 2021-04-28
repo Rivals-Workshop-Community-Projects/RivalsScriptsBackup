@@ -334,3 +334,72 @@ if get_gameplay_time() <= 120 && cosmetic == 1 {
 	
 }
 
+if instance_number(oPlayer) == 2 {
+
+
+if finishercd == 0 {
+with oPlayer if (activated_kill_effect) {
+  if hit_player_obj == other {
+  	with other {
+  		galx = x
+        galy = y
+        if svsp < 3 && svsp > 0 {
+        svsp = 3
+        }
+      
+        if svsp > -3 && svsp < 0 {
+        svsp = -3
+        }
+        
+        if shsp < 6 && shsp > 0 {
+        shsp = 6
+        }
+      
+        if shsp > -6 && shsp < 0 {
+        shsp = -6
+        }
+        
+  	    finisher = 60 
+  	    finishercd = 120 
+  	    finisherinc = 0
+  	}
+  }
+}
+}
+
+
+if finisher = 60 {
+	if hitpause  {
+		hitstop += 30
+		hit_player_obj.hitstop += 30
+	}
+    sound_stop(sound_get("hcine"))
+    sound_play(sound_get("hcine"),false,noone,1)
+    sound_stop(sound_get("hstrong"))
+    sound_play(sound_get("hstrong"),false,noone,1)
+    sound_play(sound_get("fstrong1"),false,noone,1)
+    
+}
+
+if finisher = 40 {
+    sound_play(sound_get("hstrong"),false,noone,0.6)
+    sound_play(sound_get("fstrong1"),false,noone,0.6)
+}
+
+if finisher = 20 {
+
+    sound_play(sound_get("hstrong"),false,noone,0.2)
+    sound_play(sound_get("fstrong1"),false,noone,0.2)
+}
+
+
+
+ if finisher > 0{
+	finisher -= 1
+	if finisherinc < 24 {
+	finisherinc += 1
+	}
+}
+
+
+}

@@ -5,7 +5,7 @@ set_attack_value(AT_NAIR, AG_CATEGORY, 1);
 set_attack_value(AT_NAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_NAIR, AG_LANDING_LAG, 8);
 
-set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));

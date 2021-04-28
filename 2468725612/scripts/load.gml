@@ -86,6 +86,7 @@ sprite_change_offset("hurt_hat", 13, 45);
 sprite_change_offset("hurt_hat2", 12, 11);
 sprite_change_offset("hurt_hat3", 10, 12);
 sprite_change_offset("spinhurt_hat", 19, 31);
+sprite_change_offset("pratfall_hat", 23, 50);
 sprite_change_offset("phone_open_hat", 8, 44);
 
 sprite_change_offset("jab_hat", 9, 45);

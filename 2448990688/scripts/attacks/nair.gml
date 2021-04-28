@@ -7,11 +7,11 @@ set_attack_value(AT_NAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_NAIR, AG_LANDING_LAG, 4);
 
 set_attack_value(AT_NAIR, AG_NUM_WINDOWS, 3);
-set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
-set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 4);
+set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 9);
 
 set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_NAIR, 2, AG_WINDOW_ANIM_FRAMES, 2);
@@ -48,5 +48,5 @@ set_hitbox_value(AT_NAIR, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(AT_NAIR, 1, HG_PROJECTILE_HSPEED, 1);
 set_hitbox_value(AT_NAIR, 1, HG_PROJECTILE_UNBASHABLE, 1);
 
-set_hitbox_value(AT_NAIR, 1, HG_MUNO_HITBOX_NAME, "Multihit 1");
+set_hitbox_value(AT_NAIR, 1, HG_MUNO_HITBOX_NAME, "Jump Cancel off this!");
 

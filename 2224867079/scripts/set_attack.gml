@@ -64,22 +64,106 @@ if(attack == AT_NSPECIAL_AIR && RedMode){
 if (attack == AT_FSTRONG && RedMode){
 	attack = AT_FSTRONG_2;
 }
+
 if(attack == AT_DATTACK && RedMode){
 	
+	set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 5);
+	set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 1);
+	set_attack_value(AT_DATTACK, AG_CATEGORY, 2);
     set_attack_value(AT_DATTACK, AG_SPRITE, sprite_get ( "red_dattack" ) );
-    set_window_value(AT_DATTACK, 2, AG_WINDOW_SFX, sound_get("RedSwish4"));
-    set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 10);
+    set_attack_value(AT_DATTACK, AG_HURTBOX_SPRITE, sprite_get("red_dattack_hurt"));
+	set_attack_value(AT_DATTACK, AG_AIR_SPRITE, sprite_get("red_dattack_air"));
+    set_window_value(AT_DATTACK, 2, AG_WINDOW_SFX, sound_get("RedSwish2"));
+    set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 4);
+	set_window_value(AT_DATTACK, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+	set_window_value(AT_DATTACK, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, .4);
+    set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES, 1);
+    
+    set_window_value(AT_DATTACK, 2, AG_WINDOW_TYPE, 0);
+    set_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH, 4);
+    set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAMES, 2);
+    set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAME_START, 1);
+    set_window_value(AT_DATTACK, 2, AG_WINDOW_VSPEED_TYPE, 2);
+	set_window_value(AT_DATTACK, 2, AG_WINDOW_VSPEED, -4);
+	set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED_TYPE, 1);
+	set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 6);
+	
+	set_window_value(AT_DATTACK, 3, AG_WINDOW_TYPE, 10);
+    set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 24);
+    set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAMES, 1);
+    set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAME_START, 2);
+	
+	set_window_value(AT_DATTACK, 4, AG_WINDOW_LENGTH, 8);
+	set_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAMES, 3);
+	set_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAME_START, 3);
+	set_window_value(AT_DATTACK, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+	set_window_value(AT_DATTACK, 4, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1);
+	set_window_value(AT_DATTACK, 4, AG_WINDOW_SFX_FRAME, 0);
+	set_window_value(AT_DATTACK, 4, AG_WINDOW_HAS_SFX, 1);
+	set_window_value(AT_DATTACK, 4, AG_WINDOW_SFX, sound_get("Blow4"));
+
     set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 5);
+    set_hitbox_value(AT_DATTACK, 1, HG_WINDOW, 4);
+    set_hitbox_value(AT_DATTACK, 1, HG_WINDOW_CREATION_FRAME, 1);
+    set_hitbox_value(AT_DATTACK, 1, HG_ANGLE, 361);
+    set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 8);
     set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, red_new_stab_1 );
     set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, sound_get("RedHit4"));
+	set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_X, 64);
+	set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_Y, -32);
+	set_hitbox_value(AT_DATTACK, 1, HG_WIDTH, 84);
+	set_hitbox_value(AT_DATTACK, 1, HG_HEIGHT, 66);
+	set_hitbox_value(AT_DATTACK, 1, HG_SHAPE, 2);
 } else {   
 	
+	reset_attack_value(AT_DATTACK, AG_NUM_WINDOWS);
+	reset_attack_value(AT_DATTACK, AG_OFF_LEDGE);
+	reset_attack_value(AT_DATTACK, AG_CATEGORY);
     reset_attack_value(AT_DATTACK, AG_SPRITE);
+    reset_attack_value(AT_DATTACK, AG_HURTBOX_SPRITE);
+	reset_attack_value(AT_DATTACK, AG_AIR_SPRITE);
     reset_window_value(AT_DATTACK, 2, AG_WINDOW_SFX);
-    reset_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK);
+    reset_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH);
+	reset_window_value(AT_DATTACK, 1, AG_WINDOW_HAS_CUSTOM_FRICTION);
+	reset_window_value(AT_DATTACK, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION);
+    reset_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES);
+    
+    reset_window_value(AT_DATTACK, 2, AG_WINDOW_TYPE);
+    reset_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH);
+    reset_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAMES);
+    reset_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAME_START);
+    reset_window_value(AT_DATTACK, 2, AG_WINDOW_VSPEED_TYPE);
+	reset_window_value(AT_DATTACK, 2, AG_WINDOW_VSPEED);
+	reset_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED_TYPE);
+	reset_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED);
+	
+	reset_window_value(AT_DATTACK, 3, AG_WINDOW_TYPE);
+    reset_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH);
+    reset_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAMES);
+    reset_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAME_START);
+	
+	reset_window_value(AT_DATTACK, 4, AG_WINDOW_LENGTH);
+	reset_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAMES);
+	reset_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAME_START);
+	reset_window_value(AT_DATTACK, 4, AG_WINDOW_HAS_CUSTOM_FRICTION);
+	reset_window_value(AT_DATTACK, 4, AG_WINDOW_CUSTOM_GROUND_FRICTION);
+	reset_window_value(AT_DATTACK, 4, AG_WINDOW_SFX_FRAME);
+	reset_window_value(AT_DATTACK, 4, AG_WINDOW_HAS_SFX);
+	reset_window_value(AT_DATTACK, 4, AG_WINDOW_SFX);
+
     reset_hitbox_value(AT_DATTACK, 1, HG_DAMAGE);
+    reset_hitbox_value(AT_DATTACK, 1, HG_WINDOW);
+    reset_hitbox_value(AT_DATTACK, 1, HG_WINDOW_CREATION_FRAME);
+    reset_hitbox_value(AT_DATTACK, 1, HG_ANGLE);
+    reset_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK);
     reset_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT);
     reset_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX);
+	reset_hitbox_value(AT_DATTACK, 1, HG_HITBOX_X);
+	reset_hitbox_value(AT_DATTACK, 1, HG_HITBOX_Y);
+	reset_hitbox_value(AT_DATTACK, 1, HG_WIDTH);
+	reset_hitbox_value(AT_DATTACK, 1, HG_HEIGHT);
+	reset_hitbox_value(AT_DATTACK, 1, HG_SHAPE);
+    
 }
 
 if(attack == AT_DTILT && RedMode){
@@ -125,7 +209,7 @@ if(attack == AT_FTILT && RedMode){
     set_window_value(AT_FTILT, 1, AG_WINDOW_SFX, sound_get("RedSwish1"));
 	set_window_value(AT_FTILT, 2, AG_WINDOW_HSPEED_TYPE, 2);
 	set_window_value(AT_FTILT, 2, AG_WINDOW_HSPEED, -4);
-    set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 10);
+    set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 7);
     set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 3);
     set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, red_new_stab_1 );
     set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, sound_get("RedHit1"));
@@ -149,6 +233,11 @@ if(attack == AT_FAIR && RedMode){
     set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 4);
     set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, red_new_stab_1);
     set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, sound_get("RedHit2"));
+    
+    set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 5);
+    set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 2);
+    set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, red_new_stab_2 );
+	set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, sound_get("RedHit3"));
 } else {   
 	
     reset_attack_value(AT_FAIR, AG_SPRITE);
@@ -157,6 +246,11 @@ if(attack == AT_FAIR && RedMode){
     reset_hitbox_value(AT_FAIR, 1, HG_DAMAGE);
     reset_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT);
     reset_hitbox_value(AT_FAIR, 1, HG_HIT_SFX);
+    
+    reset_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK);
+    reset_hitbox_value(AT_FAIR, 2, HG_DAMAGE);
+    reset_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT);
+	reset_hitbox_value(AT_FAIR, 2, HG_HIT_SFX);
 }
 
 if(attack == AT_UAIR && RedMode){
@@ -171,12 +265,12 @@ if(attack == AT_UAIR && RedMode){
     set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 3);
     set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, red_new_stab_1);
     set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, sound_get("RedHit2"));
-    /*
+    
     set_hitbox_value(AT_UAIR, 3, HG_BASE_KNOCKBACK, 7);
     set_hitbox_value(AT_UAIR, 3, HG_DAMAGE, 3);
     set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, red_new_stab_1);
     set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, sound_get("RedHit2"));
-    */
+    
     set_hitbox_value(AT_UAIR, 4, HG_BASE_KNOCKBACK, 5);
     set_hitbox_value(AT_UAIR, 4, HG_DAMAGE, 2);
     set_hitbox_value(AT_UAIR, 4, HG_VISUAL_EFFECT, red_new_stab_1);

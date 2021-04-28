@@ -511,7 +511,7 @@ if(attack == AT_USTRONG){
         }
     }
 	if (window == 2){
-		char_height = ease_linear(54, 106, window_timer, 3);
+		char_height = ease_linear(54, 80, window_timer, 3);
 	}
 	
 	if (window == 4 && window_timer >= 6){

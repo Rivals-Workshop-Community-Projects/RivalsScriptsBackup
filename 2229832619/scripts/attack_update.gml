@@ -31,6 +31,12 @@ if (attack==AT_DAIR){
 	}
 	
 	if (window==1 && !hitpause){
+		if (window_timer==1){
+			reset_window_value(AT_DAIR, 6, AG_WINDOW_LENGTH);
+			reset_window_value(AT_DAIR, 7, AG_WINDOW_LENGTH);
+			reset_window_value(AT_DAIR, 8, AG_WINDOW_LENGTH);
+			dair_mark = false;
+		}
 		if (vsp<0){
 			vsp=vsp+0.5;
 		}
@@ -65,7 +71,9 @@ if (attack==AT_DAIR){
 			if (((spr_dir == -1 && left_down) || (spr_dir == 1 && right_down))&&!free){
 				hsp = 6*spr_dir;//-3.5
 				vsp = dairvsp/1.5;
-				sound_play(sound_get("metalhit"), false, noone, 0.8, 1.2);
+				sound_stop(sound_get("metalhit"));
+				sound_play(sound_get("bounce"));
+				dair_mark = true;
 			}else{
 				hsp = -2.5*spr_dir;//-3.5
 				vsp = dairvsp;
@@ -73,6 +81,12 @@ if (attack==AT_DAIR){
 			dairvsp = dairvsp/2;
 			move_cooldown[AT_DAIR] = 50;//60
 			vsp = clamp(vsp, -13, 2)
+		}
+		if (has_hit && dair_mark){
+			//print_debug("has hit, boom")
+			set_window_value(AT_DAIR, 6, AG_WINDOW_LENGTH, 4);//5
+			set_window_value(AT_DAIR, 7, AG_WINDOW_LENGTH, 10);//13
+			set_window_value(AT_DAIR, 8, AG_WINDOW_LENGTH, 3);//4
 		}
 	}
 	if (window==6){

@@ -72,6 +72,9 @@ switch (state) {
     case PS_LAND:
         draw_sprite_ext(sprite_get("land_hat"), image_index, x, y, spr_dir*2, 2, 0, c_white, 1 );
     break;
+    case PS_PRATFALL:
+        draw_sprite_ext(sprite_get("pratfall_hat"), image_index, x, y, spr_dir*2, 2, 0, c_ltgray, 1 );
+    break;
     case PS_PRATLAND:
         draw_sprite_ext(sprite_get("land_hat"), image_index, x, y, spr_dir*2, 2, 0, c_ltgray, 1 );
     break;

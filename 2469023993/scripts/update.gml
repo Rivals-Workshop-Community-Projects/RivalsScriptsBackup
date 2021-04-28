@@ -145,6 +145,29 @@ if swift_mode = true{
 	set_hitbox_value(AT_JAB, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 	set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_ori_seinhit_heavy"));
 	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_heavy"));
+	set_hitbox_value(AT_FSTRONG, 5, HG_BASE_HITPAUSE, 18);
+	set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 14);
+	set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 14);
+	set_hitbox_value(AT_USTRONG, 5, HG_BASE_HITPAUSE, 18);
+	set_hitbox_value(AT_UTILT, 4, HG_BASE_HITPAUSE, 8);
+	set_hitbox_value(AT_UTILT, 5, HG_BASE_HITPAUSE, 8);
+	set_hitbox_value(AT_UTILT, 6, HG_BASE_HITPAUSE, 8);
+	set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 16);
+	set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 20);
+	set_hitbox_value(AT_BAIR, 4, HG_BASE_HITPAUSE, 20);
+	set_hitbox_value(AT_DAIR, 5, HG_BASE_HITPAUSE, 8);
+	set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 16);
+	set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 12);
+	set_hitbox_value(AT_DTILT, 2, HG_BASE_HITPAUSE, 12);
+	set_hitbox_value(AT_DTILT, 3, HG_BASE_HITPAUSE, 12);
+	set_hitbox_value(AT_DTILT, 4, HG_BASE_HITPAUSE, 20);
+	set_hitbox_value(AT_FAIR, 6, HG_BASE_HITPAUSE, 10);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 18);
+	set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 16);
+	set_hitbox_value(AT_FTILT, 2, HG_BASE_HITPAUSE, 6);
+	set_hitbox_value(AT_JAB, 3, HG_BASE_HITPAUSE, 12);
+	set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 16);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 14);
 }
 
 if swift_mode = false{
@@ -246,6 +269,29 @@ if swift_mode = false{
 	set_hitbox_value(AT_JAB, 3, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 	set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_ori_seinhit_medium"));
 	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
+	set_hitbox_value(AT_FSTRONG, 5, HG_BASE_HITPAUSE, 12);
+	set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 8);
+	set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 8);
+	set_hitbox_value(AT_USTRONG, 5, HG_BASE_HITPAUSE, 12);
+	set_hitbox_value(AT_UTILT, 4, HG_BASE_HITPAUSE, 4);
+	set_hitbox_value(AT_UTILT, 5, HG_BASE_HITPAUSE, 4);
+	set_hitbox_value(AT_UTILT, 6, HG_BASE_HITPAUSE, 4);
+	set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 8);
+	set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 15);
+	set_hitbox_value(AT_BAIR, 4, HG_BASE_HITPAUSE, 15);
+	set_hitbox_value(AT_DAIR, 5, HG_BASE_HITPAUSE, 3);
+	set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 10);
+	set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 8);
+	set_hitbox_value(AT_DTILT, 2, HG_BASE_HITPAUSE, 8);
+	set_hitbox_value(AT_DTILT, 3, HG_BASE_HITPAUSE, 8);
+	set_hitbox_value(AT_DTILT, 4, HG_BASE_HITPAUSE, 12);
+	set_hitbox_value(AT_FAIR, 6, HG_BASE_HITPAUSE, 5);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 12);
+	set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 12);
+	set_hitbox_value(AT_FTILT, 2, HG_BASE_HITPAUSE, 4);
+	set_hitbox_value(AT_JAB, 3, HG_BASE_HITPAUSE, 8);
+	set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 12);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 8);
 }
 
 with(asset_get("oPlayer")) {

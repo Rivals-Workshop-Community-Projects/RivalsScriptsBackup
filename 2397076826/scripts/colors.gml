@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 7, 19 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 10 );
+set_num_palettes( 14 );
 
 // Void Edge
 set_color_profile_slot( 1, 0, 0, 0, 0 ); //energy1
@@ -126,7 +126,45 @@ set_color_profile_slot( 9, 5, 219, 114, 0 ); //outfit shading
 set_color_profile_slot( 9, 6, 255, 0, 0 ); //outfit pattern
 set_color_profile_slot( 9, 7, 255, 171, 0 ); //gloves
 
+// BLM
+set_color_profile_slot( 10, 0, 89, 89, 89 ); //energy1
+set_color_profile_slot( 10, 1, 255, 208, 0 ); //energy2
+set_color_profile_slot( 10, 2, 166, 93, 33 ); //hair
+set_color_profile_slot( 10, 3, 135, 73, 7 ); //hair shading
+set_color_profile_slot( 10, 4, 240, 240, 240 ); //outfit
+set_color_profile_slot( 10, 5, 214, 214, 214 ); //outfit shading
+set_color_profile_slot( 10, 6, 255, 208, 0 ); //outfit pattern
+set_color_profile_slot( 10, 7, 0, 0, 0 ); //gloves
 
+// Strawberries
+set_color_profile_slot( 11, 0, 18, 19, 23 ); //energy1
+set_color_profile_slot( 11, 1, 211, 212, 216 ); //energy2
+set_color_profile_slot( 11, 2, 227, 164, 95 ); //hair
+set_color_profile_slot( 11, 3, 217, 120, 41 ); //hair shading
+set_color_profile_slot( 11, 4, 49, 50, 55 ); //outfit
+set_color_profile_slot( 11, 5, 18, 19, 23 ); //outfit shading
+set_color_profile_slot( 11, 6, 239, 240, 242 ); //outfit pattern
+set_color_profile_slot( 11, 7, 163, 79, 79 ); //gloves
+
+// Tomato-
+set_color_profile_slot( 12, 0, 221, 229, 242 ); //energy1
+set_color_profile_slot( 12, 1, 131, 128, 157 ); //energy2
+set_color_profile_slot( 12, 2, 87, 254, 105 ); //hair
+set_color_profile_slot( 12, 3, 49, 193, 33 ); //hair shading
+set_color_profile_slot( 12, 4, 255, 102, 110 ); //outfit
+set_color_profile_slot( 12, 5, 215, 52, 81 ); //outfit shading
+set_color_profile_slot( 12, 6, 215, 52, 81 ); //outfit pattern
+set_color_profile_slot( 12, 7, 255, 99, 112 ); //gloves
+
+// Lyn
+set_color_profile_slot( 13, 0, 179, 188, 208 ); //energy1
+set_color_profile_slot( 13, 1, 246, 247, 246 ); //energy2
+set_color_profile_slot( 13, 2, 28, 82, 56 ); //hair
+set_color_profile_slot( 13, 3, 7, 30, 12 ); //hair shading
+set_color_profile_slot( 13, 4, 95, 160, 188 ); //outfit
+set_color_profile_slot( 13, 5, 6, 74, 111 ); //outfit shading
+set_color_profile_slot( 13, 6, 221, 204, 142 ); //outfit pattern
+set_color_profile_slot( 13, 7, 24, 62, 66 ); //gloves
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
 {"formatversion":1,"data":[{"name":"energy1","colors":[{"r":255,"g":74,"b":0,"main":true}]},{"name":"energy2","colors":[{"r":252,"g":252,"b":252,"main":true},{"r":255,"g":255,"b":255}]},{"name":"hair","colors":[{"r":255,"g":78,"b":58,"main":true},{"r":219,"g":40,"b":20}]},{"name":"hair shading","colors":[{"r":255,"g":168,"b":133,"main":true}]},{"name":"outfit","colors":[{"r":38,"g":38,"b":38,"main":true}]},{"name":"outfit shading","colors":[{"r":26,"g":26,"b":26,"main":true}]},{"name":"outfit pattern","colors":[{"r":97,"g":0,"b":85,"main":true},{"r":64,"g":0,"b":54}]},{"name":"gloves","colors":[{"r":99,"g":85,"b":101,"main":true},{"r":144,"g":116,"b":148}]}]}

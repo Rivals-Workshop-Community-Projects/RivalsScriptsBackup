@@ -67,7 +67,7 @@ var max_col = long ? 6 : 5;
 for (i = 0; i < len; i++){
 	if displayed[i]{
 		if long draw_sprite(sprite_get("_pho_compatibility_badges"), i, x + 8 + 18 * floor(i / max_col), y + 40 + 18 * (iters % max_col));
-		else draw_sprite(sprite_get("_pho_compatibility_badges"), i, x + 12 + 22 * floor(i / max_col), y + 44 + 22 * (iters % max_col));
+		else draw_sprite(sprite_get("_pho_compatibility_badges"), i, x + 12 + 22 * floor(i / max_col), y + 74 + 22 * (iters % max_col));
 		iters++;
 	}
 }

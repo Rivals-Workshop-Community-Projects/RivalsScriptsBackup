@@ -376,6 +376,7 @@ switch (attack)
             case 3:
                 if (window_timer == 1)
                 {
+                    reset_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE);
                     reset_window_value(AT_FSPECIAL, 6, AG_WINDOW_TYPE);
                     var groundPos = range_finder(x+fspecPos.x*spr_dir,y-fspecPos.y,spr_dir==1?0:180,room_width,asset_get("solid_32_obj"),true,true);
                     var playerPos = room_width;
@@ -425,7 +426,11 @@ switch (attack)
                         ++window;
                         window_timer = 0;
                     }
-                    if (fspecHooked && shield_down) tutDoneAdv[3] = true;
+                    if (fspecHooked && shield_down)
+                    {
+                        tutDoneAdv[3] = true;
+                        hit_player_obj.hitstop /= 3;
+                    }
                 }
                 else
                 {
@@ -470,6 +475,7 @@ switch (attack)
             case 5:
                 if (has_rune("E")||has_rune("O")) move_cooldown[attack] = 30;
                 FreezePortals(fspecPortalHooked);
+                if (!free) set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, 1);
                 break;
         }
         can_fast_fall = false;
@@ -532,8 +538,15 @@ switch (attack)
                 else
                     can_wall_jump = true;
                     uspecArray[window_timer-1]={uspecX:x,uspecY:y,uspecDir:spr_dir,uspecAlpha:14-window_timer};
+                if (!free) set_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE, 1);
                 break;
             case 5:
+                if (!free)
+                {
+                    set_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE, 1);
+                    set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 36);
+                }
+                else reset_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH);
                 can_fast_fall = false;
                 can_move = false;
                 can_wall_jump = true;

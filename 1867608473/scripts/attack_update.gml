@@ -3,6 +3,17 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+if attack == AT_TAUNT{
+	if window == 1 and window_timer >= 17{
+		if has_hit{
+			can_jump = true;
+		}
+	}
+	if window >= 2{
+		iasa_script();
+	}
+}
+
 // RUNE J : USpecial Armor
 if runeJ {
 	if (attack == AT_USPECIAL || attack == AT_USPECIAL_2){

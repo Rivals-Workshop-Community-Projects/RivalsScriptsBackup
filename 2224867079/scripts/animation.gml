@@ -69,6 +69,17 @@ if (state == PS_RESPAWN && RedMode == true) {
 	image_index = floor(image_number*state_timer/(image_number*5));
 }
 
+if (state == PS_JUMPSQUAT && state_timer == 1) {
+	afterImageTimer = 24;
+}
+
+if (state == PS_DOUBLE_JUMP && state_timer == 1) {
+	afterImageTimer = 24;
+}
+if (state == PS_WAVELAND && state_timer == 1) {
+	afterImageTimer = 24;
+}
+
 /*
 
 if (state == PS_CROUCH && RedMode == true) {

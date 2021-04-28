@@ -87,6 +87,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 111);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_AIR_FRICTION, -.05);
 
 //Medium charge 1
 set_hitbox_value(AT_NSPECIAL, 2, HG_PARENT_HITBOX, 0);
@@ -144,37 +145,6 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_HSPEED, 6);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_VSPEED, -.3);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_AIR_FRICTION, -.02);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_DESTROY_EFFECT, 111);
-
-
-//Full charge
-set_hitbox_value(AT_NSPECIAL, 3, HG_PARENT_HITBOX, 0);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 6);
-set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 6);
-set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 45);//30
-set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_X, 53);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_Y, -35);
-set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, 55);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, 55);
-set_hitbox_value(AT_NSPECIAL, 3, HG_PRIORITY, 3);
-set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 15);
-set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE, 45);
-set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 112);
-set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_NSPECIAL, 3, HG_FINAL_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, 1);
-set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 1);
-set_hitbox_value(AT_NSPECIAL, 3, HG_EXTRA_HITPAUSE, 40);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, 0);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
-set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj3"));
-set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_ANIM_SPEED, .7);
-set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_AIR_FRICTION, -.06);
-set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, 7);//6
-set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 112);
-set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, true);
 
 //Medium charge 2
 set_hitbox_value(AT_NSPECIAL, 5, HG_PARENT_HITBOX, 0);
@@ -260,3 +230,33 @@ set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_HSPEED, 6);
 set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_AIR_FRICTION, -.02);
 set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_DESTROY_EFFECT, 111);
 set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_IS_TRANSCENDENT, false);
+
+//Full charge
+set_hitbox_value(AT_NSPECIAL, 3, HG_PARENT_HITBOX, 0);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 6);
+set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 6);
+set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 45);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_X, 53);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_Y, -35);
+set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, 52);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, 52);
+set_hitbox_value(AT_NSPECIAL, 3, HG_PRIORITY, 3);
+set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 13);
+set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE, 45);
+set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 112);
+set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_NSPECIAL, 3, HG_FINAL_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, 1.15);
+set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_NSPECIAL, 3, HG_EXTRA_HITPAUSE, 5);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, 1);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj3"));
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_WALL_BEHAVIOR, 0);
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_ANIM_SPEED, .7);
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_AIR_FRICTION, -.06);
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, 7);//6
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 112);
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, true);

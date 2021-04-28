@@ -92,7 +92,4 @@ sprite_change_offset("feri", 84, 114);
 sprite_change_offset("guiltyDony", 31, 0);
 
 sprite_change_offset("intro", 98, 138);
-
-
-
-
+sprite_change_offset("hitbox_test", 100, 100);

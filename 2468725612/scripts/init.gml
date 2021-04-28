@@ -233,6 +233,7 @@ dspecial_dj = false;
 dspecial_rune = false;
 
 pratfall_cont = false;
+hold_on = true;
 
 my_x = 0;
 my_y = 0;

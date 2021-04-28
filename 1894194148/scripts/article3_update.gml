@@ -6,6 +6,34 @@
 //var acidhitsnd = sound_get("AcidDamage");
 //var dingsnd = sound_get("DING");
 
+//fakeparry
+
+if (ar_a3_type == 3){
+	if (init == 0){
+		sprite_index = asset_get("fx_parry_new")
+		image_alpha = 0.5
+		image_xscale = 2;
+		image_yscale = 2;
+		can_be_grounded = false;
+		ignores_walls = true;
+		depth = 29;
+		init = 1;
+	}
+	if (init == 1){
+		fptimer++;
+	}
+	if (fptimer >= fptimermax){
+		instance_destroy();
+		exit;
+	}
+    image_index = 0 + fptimer * 6 / fptimermax;
+	//that's:
+	//starting animation frame +
+	//current time *
+	//number of anim frame in the duration /
+	//time it takes
+}
+
 //rain
 if (ar_a3_type == 0){
 	

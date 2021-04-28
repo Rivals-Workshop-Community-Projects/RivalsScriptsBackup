@@ -1,4 +1,11 @@
-    //update
+
+// with asset_get("pHitBox")
+// {
+// 	if type == 1
+// 	{
+// 		sprite_index = other.hitbox_test
+// 	}
+// }
 
 //Dtilt Cooldown
 if(instance_exists(obj_article1) && obj_article1.player_id == id){

@@ -169,6 +169,7 @@ na_dsp_charge = 0;
 dspmax = 30;//initially 50, previously 35, currently 30
 dairvsp_orig = -12;
 dairvsp = -12;
+dair_mark = false;
 usp_ls_cooldown = 0;
 
 col_timer = 0;

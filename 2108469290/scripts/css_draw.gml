@@ -38,6 +38,7 @@ var palette_names = [
   "Icy Phantom",
   "Shiro Mujou",
   "Trail Mix's alt",
+  "HS",
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

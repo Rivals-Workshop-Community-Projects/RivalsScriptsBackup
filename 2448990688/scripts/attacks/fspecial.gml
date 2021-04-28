@@ -17,7 +17,6 @@ set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_INVINCIBILITY, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_spin"));
 
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 25);
@@ -34,7 +33,7 @@ set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED, -5);
 
-set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 30);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 14);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_HSPEED_TYPE, 1);

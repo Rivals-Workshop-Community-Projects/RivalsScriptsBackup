@@ -8,9 +8,18 @@ ncode1 = "A proclaimed Historian who wanders around Venam's Edge."
 ncode2 = "If it wasn't for their works, history and events happened prio"
 ncode3 = "to 'Hell Impact' would be lost or become a vague folktale.."
 
+ui1x = 0
+ui1y = 0
+
+ui2x = 0
+ui2y = 0
+
 inkshield = -1
 inkshield_buildup = 0
 ink = 100
+
+drip_sound = sound_play(sound_get("drip"))
+sound_stop(drip_sound)
 
 gotink = 0
 isyellow = 0
@@ -72,8 +81,8 @@ wall_frames = 2; //anim frames before you leave the wall
 max_fall = 8.5; //maximum fall speed without fastfalling
 fast_fall = 12; //fast fall speed
 gravity_speed = .5;
-hitstun_grav = .53;
-knockback_adj = 1.05;//the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+hitstun_grav = .5;
+knockback_adj = 1.0;//the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 10;
@@ -138,6 +147,9 @@ SC = hit_fx_create( sprite_get( "SC" ), 20 );
 sprite_change_offset("SC", 100, 100);
 summon = hit_fx_create( sprite_get( "summon" ), 45 );
 sprite_change_offset("summon", 100, 80);
+
+esp = hit_fx_create( sprite_get( "esp2" ), 9 );
+sprite_change_offset("esp", 32, 32);
 
 saillusion = hit_fx_create( sprite_get( "saillusion" ), 8);
 

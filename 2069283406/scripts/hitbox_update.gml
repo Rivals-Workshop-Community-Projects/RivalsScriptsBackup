@@ -110,9 +110,8 @@ and y < player_id.y + 60 and y > player_id.y - 120{
 
 }
 
-if player_id.attacking = true && player_id.attack == AT_NSPECIAL && player_id.window > 2 &&  player_id.fireon == 3{
+if player_id.move_cooldown[AT_TAUNT_2] != 0{
 	spr_dir = player_id.spr_dir
-			player_id.move_cooldown[AT_NSPECIAL] = 0
 	                kb_value = 8
 					hitpause = 12
 					hitpause_growth = 0.5
@@ -209,6 +208,10 @@ with oPlayer{
 				    set_attack(AT_DAIR)
 					window = 5
 					vsp = -12
+					
+                     move_cooldown[AT_FSPECIAL] = 30
+                     move_cooldown[AT_EXTRA_3] = 40
+
 				}
 				
 				if state == PS_AIR_DODGE {

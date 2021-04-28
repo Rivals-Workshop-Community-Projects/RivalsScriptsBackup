@@ -70,52 +70,56 @@ if !hitpause {
             
         if (attack == AT_FTILT or attack == AT_JAB or attack == AT_UTILT or attack == AT_DTILT or attack == AT_NAIR) and window == 2  && window_timer <= 1    {
         create_hitbox(AT_NSPECIAL,3,x + 46*spr_dir ,y - 40)
+        //create_hitbox(AT_NSPECIAL,3,x + 42*spr_dir ,y - 44)
+        //create_hitbox(AT_NSPECIAL,3,x + 44*spr_dir ,y - 46)
+        //create_hitbox(AT_NSPECIAL,3,x + 48*spr_dir ,y - 47)
+        //create_hitbox(AT_NSPECIAL,3,x + 41*spr_dir ,y - 32)
                 sagemode = 0
-                spawn_hit_fx(x - 20*spr_dir, y - 36, 305)
+                spawn_hit_fx(x - 26*spr_dir, y - 50, 305)
         }
         
         if (attack == AT_DAIR  or attack == AT_DATTACK) and window == 2  && window_timer <= 1   {
         create_hitbox(AT_NSPECIAL,3,x + 46*spr_dir ,y - 20)
                 sagemode = 0
-               spawn_hit_fx(x - 20*spr_dir, y - 36, 305)
+               spawn_hit_fx(x - 26*spr_dir, y - 50, 305)
         }
         
         if (attack == AT_UAIR) and window == 2  && window_timer <= 1  {
         create_hitbox(AT_NSPECIAL,3,x + 26*spr_dir ,y - 60)
                 sagemode = 0
-               spawn_hit_fx(x - 20*spr_dir, y - 36, 305)         
+               spawn_hit_fx(x - 26*spr_dir, y - 50, 305)         
         }
         
         if (attack == AT_DSTRONG) and window == 2  && window_timer == 6  {
         create_hitbox(AT_NSPECIAL,3,x + 46*spr_dir ,y - 20)
                 sagemode = 0
-               spawn_hit_fx(x - 20*spr_dir, y - 36, 305)
+               spawn_hit_fx(x - 26*spr_dir, y - 50, 305)
         }
         
         if (attack == AT_USTRONG ) and window == 2  && window_timer == 8  {
         create_hitbox(AT_NSPECIAL,3,x + 26*spr_dir ,y - 60)
                 sagemode = 0
-               spawn_hit_fx(x - 20*spr_dir, y - 36, 305)
+               spawn_hit_fx(x - 26*spr_dir, y - 50, 305)
         }
 
         
         if (attack == AT_FSTRONG) and window == 3  && window_timer == 2  {
         create_hitbox(AT_NSPECIAL,3,x + 26*spr_dir ,y - 60)
                 sagemode = 0
-               spawn_hit_fx(x - 20*spr_dir, y - 36, 305)
+               spawn_hit_fx(x - 26*spr_dir, y - 50, 305)
         }
         
         
            if attack == AT_BAIR and window == 2  && window_timer <= 1 {
         create_hitbox(AT_NSPECIAL,3,x - 46*spr_dir ,y - 30)
                 sagemode = 0
-               spawn_hit_fx(x - 20*spr_dir, y - 36, 305)
+               spawn_hit_fx(x - 26*spr_dir, y - 50, 305)
         }
         
         if attack == AT_FAIR and window == 2  && window_timer == 4 {
             create_hitbox(AT_NSPECIAL,3,x + 46*spr_dir ,y - 40)
                  sagemode = 0
-               spawn_hit_fx(x - 20*spr_dir, y - 36, 305)
+               spawn_hit_fx(x - 26*spr_dir, y - 50, 305)
         }
         
         if window == 2  && window_timer <= 1 {
@@ -373,7 +377,7 @@ if !hitpause {
               vsp = -12
               hsp /= 2
               
-              if has_hit_player {
+              if has_hit_player && hit_player_obj.visible = true {
                   hit_player_obj.x += floor((x - hit_player_obj.x)/3)
                   hit_player_obj.y += floor((y - 30 - hit_player_obj.y)/4)
               }

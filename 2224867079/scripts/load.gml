@@ -123,7 +123,8 @@ sprite_change_offset("red_roll_forward", 32, 70);
 sprite_change_offset("red_roll_backward", 32, 70);
 
 sprite_change_offset("red_jab", 38, 88);
-sprite_change_offset("red_dattack", 32, 70);
+sprite_change_offset("red_dattack", 32, 80);
+sprite_change_offset("red_dattack_air", 32, 80);
 sprite_change_offset("red_ftilt", 24, 70);
 sprite_change_offset("red_dtilt", 42, 95);
 sprite_change_offset("red_utilt", 26, 82);

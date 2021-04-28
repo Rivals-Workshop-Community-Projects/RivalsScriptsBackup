@@ -77,11 +77,11 @@ if (state == PS_LANDING_LAG){
 
 //Actually playing the Jump Sound Effect
 if (state == PS_FIRST_JUMP && state_timer == 1){
-	sound_play(sfx_jump);
+	//sound_play(sfx_jump);
 }
 
 //Stopping the Jump Sound Effect if Mario Airdodges
-if (state == PS_AIR_DODGE && state_timer == 1){
+if (state == PS_AIR_DODGE){
 	sound_stop(sfx_jump);
 }
 
@@ -91,6 +91,14 @@ if (state == PS_CROUCH){
 		sound_play(sfx_crouch);
 	}
 }
+
+//Dash Start Sound Effect
+if (state == PS_DASH_START){
+	if (state_timer == 0){
+		//sound_play(sfx_dashstart);
+	}
+}
+
 
 //Dash Stop Sound Effect
 if (state == PS_DASH_STOP){
@@ -119,6 +127,23 @@ if (!free){
 
 if !(url == 2311095319) {
 	player = -1
+}
+
+//Shadow Mario Sprite Swap for Fsmash
+if (shadowmario == true){
+	sfx_hammer_land = asset_get("sfx_poison_hit_med");
+	sfx_hammer_swing = asset_get("sfx_shovel_swing_med1");
+	sfx_hammer_hit_normal = asset_get("sfx_poison_hit_strong")
+	sfx_hammer_hit_spike = asset_get("sfx_poison_hit_weak")
+	set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, sfx_hammer_swing);
+	set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_paintbrush"));
+} else if (shadowmario == false){
+	sfx_hammer_land = sound_get("sfx_hammer_land");
+	sfx_hammer_swing = sound_get("sfx_hammer_swing");
+	sfx_hammer_hit_normal = asset_get("sfx_shovel_hit_heavy2")
+	sfx_hammer_hit_spike = asset_get("sfx_shovel_hit_heavy1")
+	set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, sfx_hammer_swing);
+	set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong"));
 }
 
 //Stopping Airdodge Sound on Wavedash

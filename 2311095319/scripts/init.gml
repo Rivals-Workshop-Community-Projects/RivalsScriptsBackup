@@ -4,6 +4,9 @@ kirbyability = 16
 //Coin Effect
 coin_effect = hit_fx_create(sprite_get("coineffect"),33);
 
+//Debug
+debug = 0
+
 //Undershirt Stuff
 isundershirtunfixed = false
 
@@ -47,6 +50,9 @@ tornadoboosttimes = 0
 tornadoused = false
 tornadoair = false
 tornado_cheat_active = false
+
+//is mario shadow
+shadowmario = false
 
 //Hurtbox Stuff
 hurtbox_spr = asset_get("ex_guy_hurt_box");
@@ -150,6 +156,7 @@ sfx_bair = sound_get("sfx_bair");
 sfx_cappy_toss = sound_get("sfx_cappy_toss");
 sfx_coin = sound_get("sfx_coin");
 sfx_crouch = sound_get("sfx_crouch");
+sfx_dashstart = sound_get("sfx_dashstart");
 sfx_dashstop = sound_get("sfx_dashstop");
 sfx_dattack = sound_get("sfx_dattack");
 sfx_doublejump = sound_get("sfx_doublejump");
@@ -178,12 +185,16 @@ sfx_uptaunt_shrink = sound_get("sfx_uptaunt_shrink");
 sfx_walljump = sound_get("sfx_walljump");
 sfx_waveland = sound_get("sfx_waveland");
 
+//ok these are base game sfx but this is for easy use for changing shit with shadow mario fstrong.
+sfx_hammer_hit_normal = asset_get("sfx_shovel_hit_heavy2")
+sfx_hammer_hit_spike = asset_get("sfx_shovel_hit_heavy1")
+
 //stuffs
 land_sound = sfx_land;
 landing_lag_sound = sfx_landing_lag;
 waveland_sound = sfx_waveland;
-jump_sound = sfx_empty;
-//jump_sound = sfx_jump;
+//jump_sound = sfx_empty;
+jump_sound = sfx_jump;
 djump_sound = sfx_doublejump;
 air_dodge_sound = sfx_airdodge;
 
@@ -202,6 +213,13 @@ if (get_player_color( player ) == 4){
 }
 //set_victory_theme(sound_get("victory"));
 
+
+//Is Shadow Mario?
+if (get_player_color( player ) == 11){
+	shadowmario = true
+} else {
+	shadowmario = false
+}
 
 //MunoPhone Sprites
 spr_alts = sprite_get("alts");

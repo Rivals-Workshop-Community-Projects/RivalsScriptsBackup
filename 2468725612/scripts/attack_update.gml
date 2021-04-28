@@ -55,6 +55,10 @@ if (attack == AT_USPECIAL || attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR 
         can_wall_jump = true;
     }
 
+if (attack == AT_JAB && was_parried){
+    was_parried = false;
+}
+
 if (window == 1){
 	can_command = false;
 }
@@ -139,7 +143,8 @@ if (attack == AT_NSPECIAL_2 && hologram_is_alive == true){
             hologram.y += 4;
         }
     }
-    if (window == 1 && window_timer == 7 && special_down){
+    if (window == 1 && window_timer == 7 && 
+    ((special_down && hold_on == true) || (shield_down && hold_on == false))){
         window = 4;
         window_timer = 1;
     }
@@ -630,7 +635,8 @@ if (attack == AT_USPECIAL){
 		}
 	} 
 	if (window == 3){
-    	if (hologram_is_alive == true && special_down){
+    	if (hologram_is_alive == true && 
+    	((special_down && hold_on == true) || (shield_down && hold_on == false))){
     		window = 4;
     		window_timer = 1;
     	}
@@ -660,7 +666,8 @@ if (attack == AT_USPECIAL){
     		window = 4;
     		window_timer = 1;
     	}
-    	if (window == 4 && window_timer == 6 && !hitpause && special_down){
+    	if (window == 4 && window_timer == 6 && !hitpause && 
+    	((special_down && hold_on == true) || (shield_down && hold_on == false))){
 	    	x = hologram.x;
 	    	y = hologram.y;
 	    	hologram_is_alive = false;

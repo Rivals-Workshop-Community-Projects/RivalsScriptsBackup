@@ -1,6 +1,13 @@
 ///
 
+
+
+
+
 shader_start();
+
+
+
 
 if state == PS_AIR_DODGE {
 draw_sprite_ext(sprite_index, image_index, x  , y  , 1 * spr_dir, 1, 0 , c_white , 1);
@@ -46,3 +53,95 @@ if attacking && attack == AT_TAUNT && window == 3 {
 }
 
 shader_end() 
+
+
+if finisher > 0 && hitpause{
+
+
+shader_start();
+	draw_sprite_ext(sprite_get("death"),0,room_width/2, room_height/2 + 100 - finisher*5, 1,  1,0,-1,  1)
+	
+		  	draw_set_alpha(0.7);
+        draw_rectangle_color(0,0,room_width,room_height,0,0,0,0,false);
+    	draw_set_alpha(1);
+    	
+	  gpu_set_blendmode(bm_add);
+	draw_sprite_ext(sprite_get("death"),0, room_width/2 - 10 + random_func(1,20,true), room_height/2  - 40 - 10 + random_func(2,20,true), 
+	1.4 - finisher/120,  1.4 - finisher/120,0,-1,  finisher/60 - 0.2)
+	gpu_set_blendmode(bm_normal);
+	
+	if finisher > 55{
+	draw_sprite_ext(sprite_get("lighten"),0, room_width/2 - 10 + random_func(1,20,true), room_height/2  - 40 - 10 + random_func(2,20,true), 
+	1.4 - finisher/120,  1.4 - finisher/120,0,-1,  1)
+	}
+	
+shader_end();
+
+
+gpu_set_fog(1, c_black, 0, 1);
+draw_sprite_ext(hit_player_obj.sprite_index,hit_player_obj.image_index,
+(hit_player_obj.x + room_width/2)/2 + 10 - random_func(13,20,true) - 6,
+(hit_player_obj.y + room_height/2)/2 + 60 - random_func(14,20,true) , 
+hit_player_obj.spr_dir*3,3,image_angle,c_white,1);
+
+draw_sprite_ext(hit_player_obj.sprite_index,hit_player_obj.image_index,
+(hit_player_obj.x + room_width/2)/2 + 10 - random_func(13,20,true) + 6,
+(hit_player_obj.y + room_height/2)/2 + 60 - random_func(14,20,true) , 
+hit_player_obj.spr_dir*3,3,image_angle,c_white,1);
+
+draw_sprite_ext(hit_player_obj.sprite_index,hit_player_obj.image_index,
+(hit_player_obj.x + room_width/2)/2 + 10 - random_func(13,20,true) ,
+(hit_player_obj.y + room_height/2)/2 + 60 - random_func(14,20,true) - 6 , 
+hit_player_obj.spr_dir*3,3,image_angle,c_white,1);
+
+draw_sprite_ext(hit_player_obj.sprite_index,hit_player_obj.image_index,
+(hit_player_obj.x + room_width/2)/2 + 10 - random_func(13,20,true) ,
+(hit_player_obj.y + room_height/2)/2 + 60 - random_func(14,20,true) , 
+hit_player_obj.spr_dir*3,3,image_angle,c_white,1);
+
+draw_sprite_ext(hit_player_obj.sprite_index,hit_player_obj.image_index,
+(hit_player_obj.x + room_width/2)/2 + 10 - random_func(13,20,true) ,
+(hit_player_obj.y + room_height/2)/2 + 60 - random_func(14,20,true) + 6, 
+hit_player_obj.spr_dir*3,3,image_angle,c_white,1);
+gpu_set_fog(0, c_black, 0, 0);
+
+
+
+gpu_set_fog(1, c_white, 0, 1);
+draw_sprite_ext(hit_player_obj.sprite_index,hit_player_obj.image_index,
+(hit_player_obj.x + room_width/2)/2 + 10 - random_func(13,20,true) ,
+(hit_player_obj.y + room_height/2)/2 + 60 - random_func(14,20,true) , 
+hit_player_obj.spr_dir*3,3,image_angle,c_white,1);
+gpu_set_fog(0, c_white, 0, 0);
+
+
+gpu_set_fog(1, c_white, 0, 1);
+draw_sprite_ext(sprite_get("heartb"),10 - finisher/6,
+(hit_player_obj.x + room_width/2)/2 + 10 - random_func(15,20,true) ,
+(hit_player_obj.y + room_height/2)/2 - 30 - random_func(16,20,true) , 
+hit_player_obj.spr_dir*3,3,image_angle,c_white,1);
+gpu_set_fog(0, c_white, 0, 0);
+
+gpu_set_fog(1, c_black, 0, 1);
+draw_sprite_ext(sprite_get("heartb"),10 - finisher/6,
+(hit_player_obj.x + room_width/2)/2 + 10 - random_func(15,20,true) - 6,
+(hit_player_obj.y + room_height/2)/2 - 30 - random_func(16,20,true) , 
+hit_player_obj.spr_dir*3,3,image_angle,c_white,1);
+
+draw_sprite_ext(sprite_get("heartb"),10 - finisher/6,
+(hit_player_obj.x + room_width/2)/2 + 10 - random_func(15,20,true) + 6,
+(hit_player_obj.y + room_height/2)/2 - 30 - random_func(16,20,true) , 
+hit_player_obj.spr_dir*3,3,image_angle,c_white,1);
+
+draw_sprite_ext(sprite_get("heartb"),10 - finisher/6,
+(hit_player_obj.x + room_width/2)/2 + 10 - random_func(15,20,true) ,
+(hit_player_obj.y + room_height/2)/2 - 30 - random_func(16,20,true) - 6, 
+hit_player_obj.spr_dir*3,3,image_angle,c_white,1);
+
+draw_sprite_ext(sprite_get("heartb"),10 - finisher/6,
+(hit_player_obj.x + room_width/2)/2 + 10 - random_func(15,20,true) ,
+(hit_player_obj.y + room_height/2)/2 - 30 - random_func(16,20,true) + 6, 
+hit_player_obj.spr_dir*3,3,image_angle,c_white,1);
+gpu_set_fog(0, c_black, 0, 0);
+
+}

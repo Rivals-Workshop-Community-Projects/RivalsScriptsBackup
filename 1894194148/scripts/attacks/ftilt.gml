@@ -7,11 +7,11 @@ set_attack_value(AT_FTILT, AG_HURTBOX_SPRITE, sprite_get("ftilt_hurt"));
 //fts   ft1   ftt   fta   fth   ftr
 //0-0:1 1-2:2 3-3:1 4-6:3 7-7:1 8-10:3
 
-set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 6);//5
 set_window_value(AT_FTILT, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_FTILT, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTILT, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 4);
+set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 5);
 set_window_value(AT_FTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 
 set_window_value(AT_FTILT, 2, AG_WINDOW_LENGTH, 6);

@@ -100,7 +100,7 @@ set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HIT_SFX, asset_get("sfx_absa_singlezap1"));
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_ANGLE_FLIPPER, 4);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_TECHABLE, 1);
-set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITSTUN_MULTIPLIER, 4);
+set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITSTUN_MULTIPLIER, 2);
 
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_PARENT_HITBOX, 3);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HITBOX_TYPE, 1);
@@ -119,7 +119,7 @@ set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_VISUAL_EFFECT, 1);
 //set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HIT_SFX, asset_get("sfx_absa_singlezap1"));
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_ANGLE_FLIPPER, 4);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_TECHABLE, 1);
-set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HITSTUN_MULTIPLIER, 4);
+set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HITSTUN_MULTIPLIER, 2);
 
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HITBOX_TYPE, 1);

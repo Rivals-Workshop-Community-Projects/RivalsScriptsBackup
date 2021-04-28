@@ -1,5 +1,41 @@
 ////
 
+if attack == AT_NSPECIAL && hbox_num == 12 {
+	if player_id.hitpause == true {
+		hitbox_timer -= 1
+	}
+	  if hitbox_timer == 10 {
+	  	create_hitbox(AT_NSPECIAL,1,x,y)
+	  	destroyed = true
+	  }
+	
+}
+
+
+if attack == AT_NSPECIAL && hbox_num == 13 {
+		if player_id.hitpause == true {
+		hitbox_timer -= 1
+	}
+	  if hitbox_timer == 10 {
+	  	create_hitbox(AT_NSPECIAL,2,x,y)
+	  	destroyed = true
+	  }
+	
+}	
+
+
+if attack == AT_NSPECIAL && hbox_num == 14 {
+		if player_id.hitpause == true {
+		hitbox_timer -= 1
+	}
+	  if hitbox_timer == 10 {
+	  	create_hitbox(AT_NSPECIAL,3,x,y)
+	  	destroyed = true
+	  }
+	
+}	
+
+
 if attack == AT_NSPECIAL && hbox_num == 11 {
 	  if (place_meeting(x, y , asset_get("par_block"))) {
 	  	y += 30
@@ -442,7 +478,7 @@ if lockouttimer < 0 {
 
 ///strong bat
 
-if attack == AT_NSPECIAL && hbox_num > 3{
+if attack == AT_NSPECIAL && hbox_num > 3 && hbox_num < 12{
 		        	hit_priority = 9
 	nearbyhitbox = collision_circle( x, y , 32, asset_get("pHitBox"), true, true ) 
 		if nearbyhitbox != noone {

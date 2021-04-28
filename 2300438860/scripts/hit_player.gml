@@ -12,7 +12,7 @@ if get_player_color(player) = 1 {
 }
 
 
-
+finishercd = 0
 
 
 
@@ -68,7 +68,7 @@ if my_hitboxID.attack != AT_NSPECIAL and my_hitboxID.attack != AT_USPECIAL and  
                 
 if dmgmul == 1.5 {
 	   	 with hit_player_obj {
-                 take_damage( player, -1 , floor(enemy_hitboxID.damage/2) + 2)
+                 take_damage( player, -1 , floor(enemy_hitboxID.damage/2.5) + 1)
          }	
     sound_play(sound_get("hcine"),false,noone,0.6)
         dmgmul = 0
@@ -77,7 +77,7 @@ if dmgmul == 1.5 {
 
 if dmgmul == 2 {
 	   	 with hit_player_obj {
-                 take_damage( player, -1 , floor(enemy_hitboxID.damage/1.5) + 5)
+                 take_damage( player, -1 , floor(enemy_hitboxID.damage/2) + 3)
          }	
     sound_play(sound_get("hcine"),false,noone,0.9)
         dmgmul = 0
@@ -86,7 +86,7 @@ if dmgmul == 2 {
 
 if dmgmul == 3 {
 	   	 with hit_player_obj {
-                 take_damage( player, -1 , floor(enemy_hitboxID.damage/1.2) + 8)
+                 take_damage( player, -1 , floor(enemy_hitboxID.damage/1.5) + 6)
          }	
     sound_play(sound_get("hcine"),false,noone,1.2)
         dmgmul = 0

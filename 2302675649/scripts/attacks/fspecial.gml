@@ -37,7 +37,7 @@ set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 1);
 
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, has_rune("E")?1:7); // whiff
-set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_HSPEED_TYPE, 1);
@@ -61,7 +61,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 48);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 0);
-set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_EFFECT, 6);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 6);

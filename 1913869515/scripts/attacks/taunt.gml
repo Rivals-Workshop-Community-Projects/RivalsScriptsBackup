@@ -147,6 +147,7 @@ set_hitbox_value(AT_TAUNT, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_TAUNT, 1, HG_VISUAL_EFFECT_X_OFFSET, -10);
 set_hitbox_value(AT_TAUNT, 1, HG_HIT_SFX, sound_get("slicel"));
 set_hitbox_value(AT_TAUNT, 1, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_TAUNT, 1, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_TAUNT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_TAUNT, 2, HG_WINDOW, 8);
@@ -165,6 +166,7 @@ set_hitbox_value(AT_TAUNT, 2, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_TAUNT, 2, HG_VISUAL_EFFECT_X_OFFSET, -10);
 set_hitbox_value(AT_TAUNT, 2, HG_HIT_SFX, sound_get("slicel"));
 set_hitbox_value(AT_TAUNT, 2, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_TAUNT, 2, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_TAUNT, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_TAUNT, 3, HG_WINDOW, 9);
@@ -183,6 +185,7 @@ set_hitbox_value(AT_TAUNT, 3, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_TAUNT, 3, HG_VISUAL_EFFECT_X_OFFSET, -10);
 set_hitbox_value(AT_TAUNT, 3, HG_HIT_SFX, sound_get("slicel"));
 set_hitbox_value(AT_TAUNT, 3, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_TAUNT, 3, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_TAUNT, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_TAUNT, 4, HG_WINDOW, 10);
@@ -201,6 +204,7 @@ set_hitbox_value(AT_TAUNT, 4, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_TAUNT, 4, HG_VISUAL_EFFECT_X_OFFSET, -10);
 set_hitbox_value(AT_TAUNT, 4, HG_HIT_SFX, sound_get("slicel"));
 set_hitbox_value(AT_TAUNT, 4, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_TAUNT, 4, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_TAUNT, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_TAUNT, 5, HG_WINDOW, 11);
@@ -219,6 +223,7 @@ set_hitbox_value(AT_TAUNT, 5, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_TAUNT, 5, HG_VISUAL_EFFECT_X_OFFSET, -10);
 set_hitbox_value(AT_TAUNT, 5, HG_HIT_SFX, sound_get("slicel"));
 set_hitbox_value(AT_TAUNT, 5, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_TAUNT, 5, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_TAUNT, 6, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_TAUNT, 6, HG_WINDOW, 12);
@@ -237,6 +242,7 @@ set_hitbox_value(AT_TAUNT, 6, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_TAUNT, 6, HG_VISUAL_EFFECT_X_OFFSET, -10);
 set_hitbox_value(AT_TAUNT, 6, HG_HIT_SFX, sound_get("slicel"));
 set_hitbox_value(AT_TAUNT, 6, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_TAUNT, 6, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_TAUNT, 7, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_TAUNT, 7, HG_WINDOW, 13);
@@ -255,6 +261,7 @@ set_hitbox_value(AT_TAUNT, 7, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_TAUNT, 7, HG_VISUAL_EFFECT_X_OFFSET, -10);
 set_hitbox_value(AT_TAUNT, 7, HG_HIT_SFX, sound_get("slicel"));
 set_hitbox_value(AT_TAUNT, 7, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_TAUNT, 7, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_TAUNT, 8, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_TAUNT, 8, HG_WINDOW, 14);

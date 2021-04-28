@@ -54,7 +54,8 @@ sprite_change_offset("uair", 46, 92);
 sprite_change_offset("dair", 26, 68);
 
 //Strong Attacks
-sprite_change_offset("fstrong", 76, 98);
+sprite_change_offset("fstrong", 82, 108);
+sprite_change_offset("fstrong_paintbrush", 82, 108);
 sprite_change_offset("firebrand", 24, 118);
 sprite_change_offset("ustrong", 30, 70);
 sprite_change_offset("ustrong_muno", 30, 70);

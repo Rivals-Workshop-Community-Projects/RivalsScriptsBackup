@@ -31,8 +31,8 @@ set_window_value(AT_USPECIAL, 4, AG_WINDOW_SFX, sound_get("slash4"));
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE, 7); // endlag
-set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 16);
-set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_CUSTOM_GRAVITY, 1);
 

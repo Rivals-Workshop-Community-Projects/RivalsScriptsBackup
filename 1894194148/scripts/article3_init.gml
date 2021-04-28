@@ -26,4 +26,7 @@ rainhitvfx = hit_fx_create( sprite_get( "rainhit" ), 6 );
 aitimer = 0;
 aitimermax = 16;
 
+fptimer = 0;
+fptimermax = 16;
+
 rain_lifetime = 0;

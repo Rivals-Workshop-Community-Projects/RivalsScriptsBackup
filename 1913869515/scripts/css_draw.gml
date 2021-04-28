@@ -98,6 +98,11 @@ var palette_names = [
   "Golden",
   "Bruh sfx on kills",
   "Equaliza",
+  "Purble",  
+  "Mossy", 
+  "BLW", 
+  "Star Fox (not mcCloud)", 
+  "Cake Goat",
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

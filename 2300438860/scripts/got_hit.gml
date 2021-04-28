@@ -13,13 +13,13 @@ if savex != 0 {
 }
 
 if attackbar > 0  && enemy_hitboxID.type == 1 {
-	take_damage(player, -1, enemy_hitboxID.damage * -1)
+	take_damage(player, -1, floor(enemy_hitboxID.damage * -0.5))
      sound_play(sound_get("hextra"))
      set_state (PS_HITSTUN)
      spawn_hit_fx (x,y - 40, lighten2)
      spawn_hit_fx (x,y - 40, shit5)
      move_cooldown[AT_FTILT] = 30
-     hit_player_obj.hitstop = 30
+     hit_player_obj.hitstop += 5
      hitstop += enemy_hitboxID.damage*3 + 45
      ohsp = x
      ovsp = y - 10

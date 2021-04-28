@@ -41,6 +41,11 @@ dotheeffect = true
 introhud = true
 hudstart = false
 
+// afterimage
+afterImageTimer = 0;
+afterImageMax = 24;
+afterImage = array_create(afterImageMax, -1);
+
 //Sprites
 spr_red_dspecial = sprite_get("red_dspecial");
 spr_red_fstrong = sprite_get("red_fstrong");
@@ -61,9 +66,11 @@ bluemark = 0
 rbmark = 0
 mark_target = 0
 
+/*
 //Blur
 blur = array_create(7);
 rollArray = array_create(6, -1);
+*/
 
 // vfx roll
 rollArray = array_create(6, -1);

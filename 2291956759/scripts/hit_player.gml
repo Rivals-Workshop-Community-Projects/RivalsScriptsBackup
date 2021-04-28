@@ -11,16 +11,10 @@ hit_player_obj.x += ((x + (60 * spr_dir)) - hit_player_obj.x) / 2
 }
 
 if my_hitboxID.attack == AT_NSPECIAL && !isyellow{
- if inkshield >= 200 {
      inkshield = 300
      inkshield_buildup = 0
      sound_play(sound_get("RI"))	
      spawn_hit_fx (x, y - 32, 304)
- } else {
- 	inkshield_buildup += 100
- }
- knockback_adj = 0.5
- 
 }
 
 if inkshield > 0 && my_hitboxID.attack != AT_DSPECIAL && my_hitboxID.attack != AT_FSPECIAL && !isyellow && inkshield < 300 {

@@ -22,7 +22,7 @@ sprite_change_offset("airdodge", 75, 110);
 sprite_change_offset("waveland", 68, 124);
 sprite_change_offset("tech", 90, 124);
 
-sprite_change_offset("jab", 118, 104);
+sprite_change_offset("jab", 118, 110);
 sprite_change_offset("dattack", 112, 104);
 sprite_change_offset("ftilt", 118, 124);
 sprite_change_offset("dtilt", 107, 98);
@@ -35,10 +35,11 @@ sprite_change_offset("dair", 114, 164);
 sprite_change_offset("fstrong", 69, 124);
 sprite_change_offset("ustrong", 108, 214);
 sprite_change_offset("dstrong", 76, 124);
-sprite_change_offset("nspecial", 86, 110);
+sprite_change_offset("nspecial", 66, 110);
 sprite_change_offset("fspecial", 108, 110);
 sprite_change_offset("uspecial", 108, 230);
 sprite_change_offset("dspecial", 79, 110);
+sprite_change_offset("dspecial_2", 86, 110);
 sprite_change_offset("taunt", 104, 110);
 sprite_change_offset("phone_open", 32, 64);
 

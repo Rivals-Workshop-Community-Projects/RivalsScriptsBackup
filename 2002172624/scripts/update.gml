@@ -37,6 +37,11 @@ if attack == AT_USPECIAL && window > 2 && state_timer > 60 && !free {
 	instance_destroy(hook);
 }
 
+if attack == AT_USPECIAL and window == 1 and window_timer == 2 {
+	move_cooldown[AT_USPECIAL] = 999;
+
+}
+
 if attack == AT_USPECIAL && state == 5 && (window == 1 || window == 2){
 	move_cooldown[AT_USPECIAL] = 999;
 	air_accel = 0;
@@ -46,7 +51,7 @@ if attack == AT_USPECIAL && state == 5 && (window == 1 || window == 2){
 	air_friction = .02;
 }
 
-if !free || (vsp == 0 && state == 5) || state == PS_WALL_JUMP || state == PS_HITSTUN {
+if !free || state == PS_WALL_JUMP || state == PS_HITSTUN {
     move_cooldown[AT_USPECIAL] = 0;
 }
 

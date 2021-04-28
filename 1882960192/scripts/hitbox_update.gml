@@ -24,7 +24,12 @@ if (attack == AT_FSPECIAL) {
 		
 		if hitbox_timer == length {
 			spawn_hit_fx(x, y, 14);
+			with player_id ballDown = 30;
 		}
+		
+		if destroyed {
+			with player_id ballDown = 30;
+		}		
 		
 		if smacked && (hitbox_timer == 1 || hitbox_timer mod 2 == 0) {
 			spawn_hit_fx(x, y, player_id.fspecialAfter);
@@ -41,7 +46,7 @@ if (attack == AT_FSPECIAL) {
 		
 		with (asset_get("pHitBox")) {
 			if (player_id == other.player_id &&
-			(attack == AT_FAIR || attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_JAB && hbox_num == 3)
+			(attack == AT_FAIR || attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_JAB && hbox_num == 3 || attack == AT_FSPECIAL_AIR)
 			&& place_meeting(x,y,other.id) && !other.was_parried && !other.has_hit && !player_id.has_hit) {
 				other.player = player;
 				enemy_hitboxID = noone;
@@ -61,7 +66,7 @@ if (attack == AT_FSPECIAL) {
 				player_id.hitpause = 1;
 				player_id.hitstop = 7;
 				player_id.hitstop_full = 7;					
-				player_id.move_cooldown[AT_FSPECIAL] = 120;
+				player_id.move_cooldown[AT_FSPECIAL] = 30;
 				spawn_hit_fx(other.x, other.y, 304);
 				
 				if (attack == AT_FAIR) {
@@ -69,9 +74,14 @@ if (attack == AT_FSPECIAL) {
 					other.old_hsp = 7 * (spr_dir);
 				}
 				
+				if (attack == AT_FSPECIAL_AIR) {
+					other.old_vsp = -5;
+					other.old_hsp = 6 * (spr_dir);
+				}
+				
 				if (attack == AT_FSTRONG) {
 					other.old_vsp = -6;
-					other.old_hsp = 8 * (spr_dir);
+					other.old_hsp = 8.5 * (spr_dir);
 				}
 				
 				if (attack == AT_DSTRONG) {
@@ -158,11 +168,16 @@ if (attack == AT_FSPECIAL_2) {
 		
 		if hitbox_timer == length {
 			spawn_hit_fx(x, y, 111);
+			with player_id ballDown = 40;
+		}
+		
+		if destroyed {
+			with player_id ballDown = 40;
 		}
 		
 		with (asset_get("pHitBox")) {
 			if (player_id == other.player_id &&
-			(attack == AT_FAIR || attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_JAB && hbox_num == 3)
+			(attack == AT_FAIR || attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_JAB && hbox_num == 3 || attack == AT_FSPECIAL_AIR)
 			&& place_meeting(x,y,other.id) && !other.was_parried && !other.has_hit && !player_id.has_hit) {
 				other.player = player;
 				enemy_hitboxID = noone;
@@ -182,7 +197,7 @@ if (attack == AT_FSPECIAL_2) {
 				player_id.hitpause = 1;
 				player_id.hitstop = 7;
 				player_id.hitstop_full = 7;					
-				player_id.move_cooldown[AT_FSPECIAL] = 120;
+				player_id.move_cooldown[AT_FSPECIAL] = 30;
 				spawn_hit_fx(other.x, other.y, 304);
 				
 				if (attack == AT_FAIR) {
@@ -192,7 +207,12 @@ if (attack == AT_FSPECIAL_2) {
 				
 				if (attack == AT_FSTRONG) {
 					other.old_vsp = -6;
-					other.old_hsp = 9 * (spr_dir);
+					other.old_hsp = 9.5 * (spr_dir);
+				}
+				
+				if (attack == AT_FSPECIAL_AIR) {
+					other.old_vsp = -5;
+					other.old_hsp = 6 * (spr_dir);
 				}
 				
 				if (attack == AT_DSTRONG) {

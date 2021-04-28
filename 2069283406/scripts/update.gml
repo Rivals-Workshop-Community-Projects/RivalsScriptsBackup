@@ -288,7 +288,7 @@ if get_gameplay_time() < 80 {
     draw_indicator = false;
 
   set_attack (AT_JAB)
-  window = 9
+  window = 10
   
   if get_gameplay_time() == 65  {
   sound_play(sound_get("RZ"));
@@ -332,10 +332,6 @@ if get_gameplay_time() % 2 = 0 {
      
 
 if state == PS_DASH_START {
-    
-  if state_timer > 2 {
-         hsp = (15 - ((state_timer) * 1)) * spr_dir
-  }
   
 }
 
@@ -514,6 +510,7 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR{
 	
 if state != PS_ATTACK_GROUND and state != PS_ATTACK_AIR{
 	mask_index = sprite_get("stand_box");
+	dspecon = 0
 		attacking = false
 	if shadeshine == 1{
 		shadeshine = 0
@@ -552,20 +549,29 @@ if get_player_color(player) = 7 {
 init_shader();
 
 /// setstock 
+
+if instance_number(oPlayer) == 2 {
 if move_cooldown[AT_NSPECIAL_2] == 0 {
 with oPlayer if (activated_kill_effect) {
   if hit_player_obj == other {
   	with other {
+  			hitstop += 20
+  			hit_player_obj.hitstop += 20
+  			
   		galx = x
         galy = y
   	    move_cooldown[AT_FSPECIAL_2] = 60 
-  	    move_cooldown[AT_NSPECIAL_2] = 60 
+  	    move_cooldown[AT_NSPECIAL_2] = 120 
   	}
   }
 }
 }
 
+if move_cooldown[AT_FSPECIAL_2] > 0 && hitpause{
+	hit_player_obj.x += 5 - (get_gameplay_time() % 3 * 5)
+}
 if move_cooldown[AT_FSPECIAL_2] = 60 {
 	spawn_hit_fx(x,y,lighten)
     sound_play(sound_get("mesatsu"),false,noone,1)
+}
 }

@@ -13,7 +13,7 @@ if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2){
 //DSpecial stuff
 if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) {
 	can_fast_fall = false;
-	if (window == 6) {
+	if (window == 6 && !was_parried) {
 		if window_timer > 8 {
 			can_attack = true;
 		}
@@ -117,7 +117,7 @@ if (attack == AT_USTRONG_2) {
 //NSpecial cooldown
 if (attack == AT_NSPECIAL) and (window == 7) and (window_timer == 3) {
     move_cooldown[AT_NSPECIAL] = 45;
-	move_cooldown[AT_FSPECIAL] = 40;
+	move_cooldown[AT_FSPECIAL] = 30;
 }
 //DSpecial cooldown
 if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) and (window == 5) and (window_timer == 2) {
@@ -125,9 +125,15 @@ if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) and (window == 5) and (win
 }
 
 //FSpecial cooldown
+if (attack == AT_FSPECIAL && window == 1 && window_timer == 1 && (ballOut || ballDown > 0) ) {
+	attack = AT_FSPECIAL_AIR;
+	window = 1;
+	window_timer = 1;
+	}
+
 if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2) and (window == 4) and (window_timer == 3) {
-    move_cooldown[AT_FSPECIAL] = 110;
-    move_cooldown[AT_NSPECIAL] = 70;
+    move_cooldown[AT_FSPECIAL] = 30;
+    move_cooldown[AT_NSPECIAL] = 30;
 	}
 
 	
@@ -284,8 +290,8 @@ if (attack == AT_FSPECIAL) and (3 > window) and !(joy_pad_idle) {
 		}
 	else 
 	if(joy_dir <= 330 && joy_dir >= 190) {
-		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 4);
-		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, 1);
+		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 6);
+		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, 2);
 		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_AIR_FRICTION, 0);
 		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_GRAVITY, .65);
 		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
@@ -302,15 +308,15 @@ if (attack == AT_FSPECIAL) and (3 > window) and !(joy_pad_idle) {
 //FSpecial2 angling
 if (attack == AT_FSPECIAL_2) and (3 > window) and !(joy_pad_idle) {
 	if(joy_dir >= 30 && joy_dir <= 170) {
-		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_HSPEED, .5);
+		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_HSPEED, 1);
 		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_VSPEED, -10);
 		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_GRAVITY, .55);
 		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 2);
 		}
 	else 
 	if(joy_dir <= 330 && joy_dir >= 190) {
-		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_HSPEED, 5);
-		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_VSPEED, 1);
+		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_HSPEED, 6);
+		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_VSPEED, 2);
 		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_GRAVITY, .8);
 		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 		
@@ -336,20 +342,20 @@ if (attack == AT_FTILT) {
 	}
 	
 	if (rps == 0) { //Rock
-		set_attack_value(AT_FTILT, AG_SPRITE, sprite_get("ftilt_r"));
+		reset_attack_value(AT_FTILT, AG_SPRITE);
 		
-		set_num_hitboxes(AT_FTILT,1);
+		reset_num_hitboxes(AT_FTILT);
 		
-		set_hitbox_value(AT_FTILT, 1, HG_WINDOW_CREATION_FRAME, 0);
-		set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 7);
-		set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, .5);
-		set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 8);
-		set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
-		set_hitbox_value(AT_FTILT, 1, HG_ANGLE, 361);
-		set_hitbox_value(AT_FTILT, 1, HG_THROWS_ROCK, 1);
-		set_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER, 0);
-		set_hitbox_value(AT_FTILT, 1, HG_TECHABLE, 0);
-		set_hitbox_value(AT_FTILT, 1, HG_EXTRA_HITPAUSE, 0);		
+		reset_hitbox_value(AT_FTILT, 1, HG_WINDOW_CREATION_FRAME);
+		reset_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK);
+		reset_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING);
+		reset_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE);
+		reset_hitbox_value(AT_FTILT, 1, HG_HIT_SFX);
+		reset_hitbox_value(AT_FTILT, 1, HG_ANGLE);
+		reset_hitbox_value(AT_FTILT, 1, HG_THROWS_ROCK);
+		reset_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER);
+		reset_hitbox_value(AT_FTILT, 1, HG_TECHABLE);
+		reset_hitbox_value(AT_FTILT, 1, HG_EXTRA_HITPAUSE);		
 	}
 	if (rps == 1) { //Paper
 		set_attack_value(AT_FTILT, AG_SPRITE, sprite_get("ftilt_p"));
@@ -357,15 +363,15 @@ if (attack == AT_FTILT) {
 		set_num_hitboxes(AT_FTILT,1);
 		
 		set_hitbox_value(AT_FTILT, 1, HG_WINDOW_CREATION_FRAME, 0);
-		set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 6);
-		set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, .25);
-		set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 4);
+		set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 7);
+		set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, .45);
+		set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 6);
 		set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_ell_dtilt2"));
 		set_hitbox_value(AT_FTILT, 1, HG_ANGLE, 35);
 		set_hitbox_value(AT_FTILT, 1, HG_THROWS_ROCK, 0);
-		set_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER, 1.1);
-		set_hitbox_value(AT_FTILT, 1, HG_TECHABLE, 1);
-		set_hitbox_value(AT_FTILT, 1, HG_EXTRA_HITPAUSE, 15);	
+		set_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER, 1);
+		set_hitbox_value(AT_FTILT, 1, HG_TECHABLE, 0);
+		set_hitbox_value(AT_FTILT, 1, HG_EXTRA_HITPAUSE, 16);	
 	}
 	if (rps == 2) { //Scissors
 		set_attack_value(AT_FTILT, AG_SPRITE, sprite_get("ftilt_s"));
@@ -373,13 +379,13 @@ if (attack == AT_FTILT) {
 		set_num_hitboxes(AT_FTILT,2);
 		
 		set_hitbox_value(AT_FTILT, 1, HG_WINDOW_CREATION_FRAME, 2);
-		set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 6);
-		set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, .5);
-		set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 6);
+		set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 8);
+		set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, .6);
+		set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 8);
 		set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_ell_drill_stab"));
-		set_hitbox_value(AT_FTILT, 1, HG_ANGLE, 60);
+		set_hitbox_value(AT_FTILT, 1, HG_ANGLE, 70);
 		set_hitbox_value(AT_FTILT, 1, HG_THROWS_ROCK, 2);
-		set_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER, 1.2);
+		set_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER, 1.1);
 		set_hitbox_value(AT_FTILT, 1, HG_TECHABLE, 0);
 		set_hitbox_value(AT_FTILT, 1, HG_EXTRA_HITPAUSE, 0);	
 	}

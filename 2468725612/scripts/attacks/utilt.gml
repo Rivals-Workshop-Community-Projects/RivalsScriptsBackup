@@ -131,7 +131,7 @@ set_hitbox_value(AT_UTILT, 6, HG_ANGLE, 90);
 set_hitbox_value(AT_UTILT, 6, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_UTILT, 6, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_UTILT, 6, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(AT_UTILT, 6, HG_HITPAUSE_SCALING, .4);
+//set_hitbox_value(AT_UTILT, 6, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_UTILT, 6, HG_VISUAL_EFFECT, 124);
 set_hitbox_value(AT_UTILT, 6, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
 set_hitbox_value(AT_UTILT, 6, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));

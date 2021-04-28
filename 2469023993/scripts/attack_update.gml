@@ -35,8 +35,8 @@ if (window == 3 && attack == AT_DSPECIAL) super_armor = false;
 if (window == 4 && attack == AT_DSPECIAL && window_timer > 10) super_armor = false;
 	
 
-if (window == 2 && attack == AT_USPECIAL && window_timer < 30) super_armor = true;
-if (window == 2 && attack == AT_USPECIAL && window_timer > 30) super_armor = false;
+if (window == 2 && attack == AT_USPECIAL && window_timer < 20) super_armor = true;
+if (window == 2 && attack == AT_USPECIAL && window_timer > 20) super_armor = false;
 	
 if (attack == AT_DSPECIAL){
 	move_cooldown[AT_DSPECIAL] = 20;
@@ -123,7 +123,7 @@ if (attack == AT_USPECIAL){
             hsp = lengthdir_x(max_speed, fly_dir);
             vsp = lengthdir_y(max_speed, fly_dir);
         }
-		if (window == 2 && window_timer > 60 && shield_pressed || window_timer > 60 && attack_pressed || window_timer > 60 && special_pressed){
+		if (window == 2 && window_timer > 45 && shield_pressed || window_timer > 45 && attack_pressed || window_timer > 45 && special_pressed){
             window = 3;
 			window_timer = 2;
 			sound_play(sound_get("shadowrefresh"))

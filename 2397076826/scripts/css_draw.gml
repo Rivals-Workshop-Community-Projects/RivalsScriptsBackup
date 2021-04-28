@@ -42,6 +42,11 @@ var palette_names = [
   "Need Healing",
   "1/2 Ghost",
   "Beesechurger",
+  "BLW",
+  "Strawberries",
+  "Tomato-",
+  "Lyn",
+  
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

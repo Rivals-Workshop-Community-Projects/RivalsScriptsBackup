@@ -29,28 +29,28 @@ if (attack == AT_FSPECIAL){
 if (my_hitboxID.attack == AT_USPECIAL){
 	if (window == 2){
 		//Linking Hitbox 1
-		set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_X, 20);
-		set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -60);
-		set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 70);
-		set_hitbox_value(AT_USPECIAL, 2, HG_HEIGHT, 80);
+		set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_X, 24);
+		set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -62);
+		set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 85);
+		set_hitbox_value(AT_USPECIAL, 2, HG_HEIGHT, 100);
 		
 		//Linking Hitbox 2
-		set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_X, 20);
-		set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_Y, -60);
-		set_hitbox_value(AT_USPECIAL, 3, HG_WIDTH, 70);
-		set_hitbox_value(AT_USPECIAL, 3, HG_HEIGHT, 80);
+		set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_X, 24);
+		set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_Y, -62);
+		set_hitbox_value(AT_USPECIAL, 3, HG_WIDTH, 85);
+		set_hitbox_value(AT_USPECIAL, 3, HG_HEIGHT, 100);
 		
 		//Linking Hitbox 3
-		set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_X, 20);
-		set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_Y, -60);
-		set_hitbox_value(AT_USPECIAL, 4, HG_WIDTH, 70);
-		set_hitbox_value(AT_USPECIAL, 4, HG_HEIGHT, 80);
+		set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_X, 24);
+		set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_Y, -62);
+		set_hitbox_value(AT_USPECIAL, 4, HG_WIDTH, 85);
+		set_hitbox_value(AT_USPECIAL, 4, HG_HEIGHT, 100);
 		
 		//Final Hit
 		set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_X, 22);
 		set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_Y, -61);
-		set_hitbox_value(AT_USPECIAL, 5, HG_WIDTH, 110);
-		set_hitbox_value(AT_USPECIAL, 5, HG_HEIGHT, 110);
+		set_hitbox_value(AT_USPECIAL, 5, HG_WIDTH, 125);
+		set_hitbox_value(AT_USPECIAL, 5, HG_HEIGHT, 125);
 		
 		//Note to self: These reset during endlag.
 	}

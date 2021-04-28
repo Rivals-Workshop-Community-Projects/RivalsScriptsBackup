@@ -134,18 +134,18 @@ if attack == AT_UTILT {
 	
 	if window == 3 && zbayo = 7 && !hitpause{
 		
-set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE, 60);
+set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE, 80);
 set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, 0.5);
+set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USPECIAL, 3, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, sound_get("slice"));
 
-set_hitbox_value(AT_USPECIAL, 4, HG_ANGLE, 60);
+set_hitbox_value(AT_USPECIAL, 4, HG_ANGLE, 80);
 set_hitbox_value(AT_USPECIAL, 4, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_USPECIAL, 4, HG_KNOCKBACK_SCALING, 0.5);
+set_hitbox_value(AT_USPECIAL, 4, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_USPECIAL, 4, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USPECIAL, 4, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_USPECIAL, 4, HG_HITPAUSE_SCALING, .6);
@@ -157,11 +157,12 @@ set_hitbox_value(AT_USPECIAL, 4, HG_HIT_SFX, sound_get("slice"));
 	    spawn_hit_fx( x - (20 * spr_dir) , y - 50 , shit5 )
 		sound_play(sound_get("counterhit"));
 		vsp = -5
-		x = hit_player_obj.x - 60 * spr_dir
-		y = hit_player_obj.y - 20
+		x = hit_player_obj.x
+		y = hit_player_obj.y
 		spr_dir = hit_player_obj.spr_dir * -1
 		set_attack (AT_USPECIAL)
 		window = 3
+		window_timer = 2
 		zbayo = 6 
 		hsp = 4 * spr_dir
 		} else {
@@ -251,7 +252,9 @@ if attack == AT_FTILT {
 if (attack == AT_UAIR && window == 1 && window_timer == 1){
 	
 	sound_play(asset_get("sfx_swipe_heavy2"));
-	
+	set_hitbox_value(AT_UAIR, 3, HG_WIDTH, 51);
+set_hitbox_value(AT_UAIR, 3, HG_HEIGHT, 71);
+set_hitbox_value(AT_UAIR, 3, HG_ANGLE, 90);
 }
 
 
@@ -261,11 +264,13 @@ if attack == AT_FAIR && zbayo == 3 && window == 3 && !hitpause {
 	spawn_hit_fx( x - (20 * spr_dir) , y - 50 , shit5 )
 		sound_play(sound_get("counterhit"));
 		vsp = -5
+			sound_play(asset_get("sfx_swipe_weak2"));
 		x = hit_player_obj.x + 100 * spr_dir
 		y = hit_player_obj.y - 10
 		spr_dir *= -1
 		set_attack (AT_FAIR)
 		window = 2
+		window_timer = 4
 		zbayo = 2 
 		hsp *= -1
 }
@@ -274,13 +279,14 @@ if attack == AT_FAIR && zbayo == 2 && window == 3 && !hitpause {
 	spawn_hit_fx( x - (20 * spr_dir) , y - 50 , shit5 )
 		sound_play(sound_get("counterhit"));
 		vsp = -9
+		sound_play(asset_get("sfx_swipe_weak1"));
 		x = hit_player_obj.x + 20 * spr_dir
-		y = hit_player_obj.y + 50
+		y = hit_player_obj.y + 60
 		spr_dir *= -1
 		hsp = 0
 		set_attack (AT_UAIR)
 		window = 2
-		window_timer = 3
+		window_timer = 2
 		zbayo = 0 
 		
 }
@@ -309,7 +315,7 @@ if (attack == AT_USPECIAL){
 		sound_play(sound_get("SpaceCut"));
 	}
 	
-	if window = 4 && window_timer == 8 && zbayo == -1 {
+	if window = 4 && window_timer == 7 && zbayo == -1 {
 		halo -= 1 
 		
 		
@@ -333,6 +339,7 @@ if (attack == AT_USPECIAL){
 			
 		spawn_hit_fx( x - (20 * spr_dir) , y - 50 , shit5 )
 		sound_play(sound_get("counterhit"));
+		sound_play(asset_get("sfx_swipe_weak1"));
 		zbayo = 3
 		vsp = -5
 		x = hit_player_obj.x + 60 * spr_dir
@@ -340,6 +347,7 @@ if (attack == AT_USPECIAL){
 		spr_dir *= -1
 		set_attack (AT_FAIR)
 		window = 2
+		window_timer = 4
 		
 		}
 	}
@@ -360,7 +368,7 @@ if (attack == AT_USPECIAL){
 		sound_play(asset_get("sfx_boss_shine"));
 	}
 	
-	if window == 4 && window_timer == 18 && !has_hit_player{
+	if window == 4 && window_timer == 18{
 		 set_state (PS_PRATFALL)
 	}
 	
@@ -374,9 +382,9 @@ if (attack == AT_USPECIAL){
 		}
 	}
 	
-		if (window < 4 or (window == 5 && window_timer <3 )) && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN && !hitpause {
-		hit_player_obj.hsp = ((x + (65 * spr_dir)) - hit_player_obj.x) / (8 - window)
-		hit_player_obj.y += (y - 35 - hit_player_obj.y) / 8
+	if window < 4 && window != 0 && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN && !hitpause {
+		hit_player_obj.x += ((x + (45 * spr_dir)) - hit_player_obj.x) / (4)
+		hit_player_obj.y += (y - 15 - hit_player_obj.y) / 6
 	}
 	
 	if window == 1 {
@@ -408,23 +416,23 @@ if (attack == AT_USPECIAL){
 prat_land_time = 14;
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 18);
 
-set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE, 60);
-set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 11);
-set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, 0);
-set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, 305);
+set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE, 80);
+set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, .7);
+set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USPECIAL, 3, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(AT_USPECIAL, 3, HG_HITPAUSE_SCALING, .25);
+set_hitbox_value(AT_USPECIAL, 3, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT_Y_OFFSET, -16);
-set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, sound_get("slicel"));
+set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, sound_get("slice"));
 
-set_hitbox_value(AT_USPECIAL, 4, HG_ANGLE, 60);
-set_hitbox_value(AT_USPECIAL, 4, HG_BASE_KNOCKBACK, 11);
-set_hitbox_value(AT_USPECIAL, 4, HG_KNOCKBACK_SCALING, 0);
-set_hitbox_value(AT_USPECIAL, 4, HG_VISUAL_EFFECT, 305);
+set_hitbox_value(AT_USPECIAL, 4, HG_ANGLE, 80);
+set_hitbox_value(AT_USPECIAL, 4, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_USPECIAL, 4, HG_KNOCKBACK_SCALING, .7);
+set_hitbox_value(AT_USPECIAL, 4, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USPECIAL, 4, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(AT_USPECIAL, 4, HG_HITPAUSE_SCALING, .25);
+set_hitbox_value(AT_USPECIAL, 4, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_USPECIAL, 4, HG_VISUAL_EFFECT_Y_OFFSET, -16);
-set_hitbox_value(AT_USPECIAL, 4, HG_HIT_SFX, sound_get("slicel"));
+set_hitbox_value(AT_USPECIAL, 4, HG_HIT_SFX, sound_get("slice"));
 
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 8);
@@ -474,12 +482,12 @@ set_hitbox_value(AT_USPECIAL, 1, HG_WIDTH, 120);
 set_hitbox_value(AT_USPECIAL, 1, HG_HEIGHT, 47);
 set_hitbox_value(AT_USPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 3);
-set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 120);
+set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 40);
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 3);
-set_hitbox_value(AT_USPECIAL, 1, HG_HITPAUSE_SCALING, .25);
+set_hitbox_value(AT_USPECIAL, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, -1);
@@ -495,12 +503,12 @@ set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 120);
 set_hitbox_value(AT_USPECIAL, 2, HG_HEIGHT, 48);
 set_hitbox_value(AT_USPECIAL, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 5);
-set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 120);
+set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 40);
 set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, 302);
-set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 0);
-set_hitbox_value(AT_USPECIAL, 2, HG_HITPAUSE_SCALING, .25);
+set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 2);
+set_hitbox_value(AT_USPECIAL, 2, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_GROUP, -1);
@@ -514,21 +522,21 @@ set_hitbox_value(AT_USPECIAL, 4, HG_DAMAGE, 3);
 }
 
 if (window == 1 && window_timer == 11)  {
-prat_land_time = 10;	
-set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE, 60);
-set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, 0.6);
+prat_land_time = 12;	
+set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE, 80);
+set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, 0.7);
 set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, 304);
-set_hitbox_value(AT_USPECIAL, 3, HG_BASE_HITPAUSE, 15);
+set_hitbox_value(AT_USPECIAL, 3, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, sound_get("slice"));
 
-set_hitbox_value(AT_USPECIAL, 4, HG_ANGLE, 60);
-set_hitbox_value(AT_USPECIAL, 4, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_USPECIAL, 4, HG_KNOCKBACK_SCALING, 0.6);
+set_hitbox_value(AT_USPECIAL, 4, HG_ANGLE, 80);
+set_hitbox_value(AT_USPECIAL, 4, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_USPECIAL, 4, HG_KNOCKBACK_SCALING, 0.7);
 set_hitbox_value(AT_USPECIAL, 4, HG_VISUAL_EFFECT, 304);
-set_hitbox_value(AT_USPECIAL, 4, HG_BASE_HITPAUSE, 15);
+set_hitbox_value(AT_USPECIAL, 4, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_USPECIAL, 4, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_USPECIAL, 4, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_USPECIAL, 4, HG_HIT_SFX, sound_get("slice"));	
@@ -575,9 +583,9 @@ set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_USPECIAL, 1, HG_WINDOW_CREATION_FRAME, 4);
 set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 3); 
-set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_X, 35);
+set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_X, 25);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_Y, -60);
-set_hitbox_value(AT_USPECIAL, 1, HG_WIDTH, 70);
+set_hitbox_value(AT_USPECIAL, 1, HG_WIDTH, 80);
 set_hitbox_value(AT_USPECIAL, 1, HG_HEIGHT, 110);
 set_hitbox_value(AT_USPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 6);
@@ -917,7 +925,7 @@ if (attack == AT_DSPECIAL){
     
     nearbyhitbox = collision_circle( x-12, y-12, 64, asset_get("pHitBox"), false, true ) 
 	if nearbyhitbox != noone{
-		if nearbyhitbox.player_id != self && nearbyhitbox.type == 2 && super_armor {
+		if nearbyhitbox.player_id != self && nearbyhitbox.type == 2 && super_armor && nearbyhitbox.hit_priority != 0  {
 			zcountered = 1
 			        if zvoice == 1{
          if get_player_color(player) == 1{
@@ -961,10 +969,7 @@ if (attack == AT_DSPECIAL){
 
 
 if attack == AT_EXTRA_1 {
-	
-	if has_hit_player {
-		hitpause = 0
-	}
+
 	
 	if zcountered = 1 {
 		invincible = true
@@ -1040,25 +1045,23 @@ if window_timer % 3 == 0{
 	}
 	
 	if window == 8 && window_timer == 12 && !hitpause{
-		zcountered = 0
-		spr_dir *= -1
-		sound_play(sound_get("RI2"));
 		if has_hit_player{
-		create_hitbox(AT_EXTRA_1 , 3 , hit_player_obj.x , hit_player_obj.y );
+			sound_play(sound_get("RI2"));
+			create_hitbox(AT_EXTRA_1,3,x,y)
+			halo -= 1
+		} else {
+			sound_play(asset_get("sfx_ice_shieldup"));
 		}
+		
+		zcountered = 0
+		
+		
 	}
 	
-	if window == 8 && window_timer == 8 && !has_hit_player{
+		if window == 9 && window_timer == 5 && !hitpause{
+		spr_dir *= -1
 		
-
-			sound_play(asset_get("sfx_ice_shieldup"));
-		spr_dir *= -1	
-		set_attack (AT_FSTRONG)
-    	window = 3
-    	window_timer = 6
-		
-}
-	
+	}
 
 	
 }
@@ -1168,7 +1171,7 @@ set_hitbox_value(AT_FSTRONG, 3, HG_HITSTUN_MULTIPLIER, 1);
 if attack == AT_DSTRONG {
 	
 	if window < 4 && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN {
-		hit_player_obj.hsp = ((x + (45 * spr_dir)) - hit_player_obj.x) / 5
+		hit_player_obj.hsp = ((x + (45 * spr_dir)) - hit_player_obj.x) / 3
 	}
 	
 	if window == 8 && window_timer == 2 {
@@ -1261,7 +1264,7 @@ if (attack == AT_JAB){
     
     if (hit_player_obj.state_cat == SC_HITSTUN and window >= 8 and has_hit){
     
-        if (special_pressed){
+        if (special_down) && !hitpause{
         	sound_play(sound_get("SpaceCutB"));
             set_attack(AT_FSTRONG)
             set_hitbox_value(AT_FSTRONG, 3, HG_DAMAGE, 1);
@@ -1333,8 +1336,8 @@ if(attack == AT_DAIR){
     
    
    if (window == 4 && !hitpause) {
-    	vsp = -10 ;
-       	hsp = -5 * spr_dir ;
+    	vsp = -6
+       	hsp = -3 * spr_dir
     	set_attack (AT_BAIR)
     	window = 10
     }

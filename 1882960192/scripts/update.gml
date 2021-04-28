@@ -11,6 +11,25 @@ if !superbluey and !(get_player_color( player ) == 15) {
 	}
 }
 
+//Check if a fspecial ball is out
+var ABallThereIs = false;
+
+with(asset_get("pHitBox")){
+    if(player_id == other.id && (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2) && hbox_num == 1){
+        ABallThereIs = true;
+    }
+}
+
+if ABallThereIs{
+   	ballOut = true;
+}
+
+else { ballOut = false; }
+
+if ballDown > 0 {
+	ballDown--;
+}
+
 if (get_player_color( player ) == 15) {
 	if (wblastcharge >= 55) and ((get_gameplay_time() mod 10) > 5) {
 	outline_color = [ 168, 224, 248 ];

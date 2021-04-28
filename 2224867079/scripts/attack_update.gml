@@ -488,3 +488,25 @@ if attack == AT_TAUNT {
 		}
     }
 }
+
+//Red Dattack
+if (attack == AT_DATTACK && RedMode == true && !hitstun){
+	can_wall_jump = true;
+	if (window == 3){
+		if (left_down || down_down){
+			hsp += -.3
+		}
+		if (attack_down && window_timer >= 6 && free){
+			set_attack_value(AT_DATTACK, AG_CATEGORY, 1);
+			set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 8);
+			window_timer = 0
+			window = 6
+		}
+	}
+	if (window == 6 && !free){
+    	window = 8
+	}
+	if (window == 4 && window_timer == 1){
+		shake_camera(2,2);
+	}
+}

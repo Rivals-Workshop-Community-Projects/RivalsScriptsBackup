@@ -131,6 +131,9 @@ if (attack==AT_FTILT && window == 6 && window_timer >= 5 && !was_parried) {
 if (attack==AT_BAIR && window == 5 && !was_parried) {
 	iasa_script();
 }
+if (attack==AT_DAIR && (window == 6 || window == 7) && !was_parried) {
+	iasa_script();
+}
 
 /*if (attack==AT_UTILT && window == 5 && !was_parried) {
 //    iasa_script();
@@ -191,7 +194,7 @@ if (attack==AT_FSPECIAL && window == 2 && window_timer == 1 && !hitpause) {
 		sound_play( sound_get( "ea_ss" ) );
 	}
 	if (!runeN){
-	move_cooldown[AT_FSPECIAL] = 80;
+	move_cooldown[AT_FSPECIAL] = 100;//80
 	}
 //	fspecial_happened = 1;
 	if (!runeC){
@@ -367,36 +370,39 @@ if (free && attack==AT_DSPECIAL && window <= 3) { //>
 //}
 
 //54 -67
-if (attack==AT_NSPECIAL){
-    if (window == 2 && window_timer == 4){
-		if (!position_meeting(x+(55*spr_dir), y-67, asset_get("par_block"))){
-		var ARCloud = instance_create(x+(54*spr_dir), y-67, "obj_article1");
-		ARCloud.player_id = id;
-		ARCloud.player = player;
-		ARCloud.spr_dir = 1;
-		ARCloud.pre_rfl = id;
-			if (phone_cheats[cheat_charge]){
-				ARCloud.arc_faircharge = phone_cheats[cheat_charge];
-			}
-		}
-	}
-	move_cooldown[AT_NSPECIAL] = 10;
-}
 
-if (attack==AT_NSPECIAL_AIR){
-    if (window == 2 && window_timer == 4){
-		if (!position_meeting(x+(55*spr_dir), y-28, asset_get("par_block"))){
-		var ARCloud = instance_create(x+(55*spr_dir), y-28, "obj_article1");
-		ARCloud.player_id = id;
-		ARCloud.player = player;
-		ARCloud.spr_dir = 1;
-		ARCloud.pre_rfl = id;
-			if (phone_cheats[cheat_charge]){
-				ARCloud.arc_faircharge = phone_cheats[cheat_charge];
+if (!arc_cooldown){
+	if (attack==AT_NSPECIAL){
+		if (window == 2 && window_timer == 4){
+			if (!position_meeting(x+(55*spr_dir), y-67, asset_get("par_block"))){
+			var ARCloud = instance_create(x+(54*spr_dir), y-67, "obj_article1");
+			ARCloud.player_id = id;
+			ARCloud.player = player;
+			ARCloud.spr_dir = 1;
+			ARCloud.pre_rfl = id;
+				if (phone_cheats[cheat_charge]){
+					ARCloud.arc_faircharge = phone_cheats[cheat_charge];
+				}
 			}
 		}
+		move_cooldown[AT_NSPECIAL] = 20;
 	}
-	move_cooldown[AT_NSPECIAL_AIR] = 10;
+
+	if (attack==AT_NSPECIAL_AIR){
+		if (window == 2 && window_timer == 4){
+			if (!position_meeting(x+(55*spr_dir), y-28, asset_get("par_block"))){
+			var ARCloud = instance_create(x+(55*spr_dir), y-28, "obj_article1");
+			ARCloud.player_id = id;
+			ARCloud.player = player;
+			ARCloud.spr_dir = 1;
+			ARCloud.pre_rfl = id;
+				if (phone_cheats[cheat_charge]){
+					ARCloud.arc_faircharge = phone_cheats[cheat_charge];
+				}
+			}
+		}
+		move_cooldown[AT_NSPECIAL_AIR] = 20;
+	}
 }
 
 //referencely stolen from guadua

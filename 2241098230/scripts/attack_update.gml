@@ -747,11 +747,11 @@ if (attack == AT_DSPECIAL){
     }
     
     if (window == 3 && window_timer == 2 && hitstop == 0) {
-       create_smoke(x, y - 32, 8, 30, 0, 359, 4 + (has_rune("L") * 6), 8 + (has_rune("L") * 6), 0.18)
+       create_smoke(x, y - 32, 8, 15, 0, 359, 4 + (has_rune("L") * 6), 8 + (has_rune("L") * 6), 0.18)
     }
     
     if (window == 5 && window_timer == 2 && hitstop == 0) {
-       create_smoke(x, y - 32, 16, 60, 0, 359, 12 + (has_rune("L") * 14), 16 + (has_rune("L") * 14), 0.18)
+       create_smoke(x, y - 32, 16, 35, 0, 359, 12 + (has_rune("L") * 14), 16 + (has_rune("L") * 14), 0.18)
     }
     
     if (window == 5 && has_hit_player) {
@@ -761,7 +761,7 @@ if (attack == AT_DSPECIAL){
     	}
     }
     
-    if (window == 4 || window == 6) && window_timer >= 5{
+    if (window == 4 || window == 6) && window_timer >= 5 && has_hit_player{
         can_jump = true;
     }
     can_fast_fall = false;

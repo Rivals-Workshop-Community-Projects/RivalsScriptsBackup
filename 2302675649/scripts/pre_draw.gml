@@ -222,6 +222,12 @@ if ("rollArray" in self)
 			gpu_set_fog(0, c_white, 0, 0);
 			break;
 
+		// AK Mortal
+		case 28:
+			FlagPart(make_colour_rgb(251, 156, 35), 1, 0); // orange
+			gpu_set_fog(0, c_white, 0, 0);
+			break;
+
 		// aura
 		default:
 			if (aura)

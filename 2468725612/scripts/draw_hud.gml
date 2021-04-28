@@ -53,5 +53,15 @@ shader_end();
 //in death.gml
 
 //if custom_clone set_player_stocks(player, get_player_stocks(player)+1);
+
+if (state == PS_SPAWN) {
+	if (hold_on == true) {
+		draw_debug_text(temp_x+4, temp_y-92, "Press TAUNT to use Parry");
+		draw_debug_text(temp_x+4, temp_y-74, "instead of Special Tap/Hold");
+	} else {
+		draw_debug_text(temp_x+4, temp_y-74, "Using Parry for Hold!");		
+	}
+}
+
 user_event(11);
 }

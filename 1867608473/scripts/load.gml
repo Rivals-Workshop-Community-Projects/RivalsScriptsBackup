@@ -35,16 +35,16 @@ sprite_change_offset("airdodge", 32, 61);
 sprite_change_offset("waveland", 40, 79);
 sprite_change_offset("tech", 26, 68);
 
-sprite_change_offset("jab", 33, 90);
-sprite_change_offset("dattack", 72, 97);
-sprite_change_offset("ftilt", 17, 66);
-sprite_change_offset("dtilt", 65, 56);
-sprite_change_offset("utilt", 79, 142);
-sprite_change_offset("nair", 70, 106);
-sprite_change_offset("fair", 78, 94);
-sprite_change_offset("bair", 92, 84);
-sprite_change_offset("uair", 44, 76);
-sprite_change_offset("dair", 42, 66);
+sprite_change_offset("jab", 33, 90);        // buffed
+sprite_change_offset("dattack", 72, 97);    // buffed
+sprite_change_offset("ftilt", 17, 66);      // buffed
+sprite_change_offset("dtilt", 65, 56);      // buffed
+sprite_change_offset("utilt", 79, 142);     // buffed
+sprite_change_offset("nair", 70, 106);      // buffed
+sprite_change_offset("fair", 78, 94);       // buffed framedata wise
+sprite_change_offset("bair", 148, 76);      // massive buff
+sprite_change_offset("uair", 44, 76);       // buffed
+sprite_change_offset("dair", 42, 66);       // buffed
 sprite_change_offset("fstrong", 33, 90);
 sprite_change_offset("stando", 67, 126);
 sprite_change_offset("ustrong", 67, 126);

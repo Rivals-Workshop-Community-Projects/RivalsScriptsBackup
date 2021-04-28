@@ -5,7 +5,6 @@
     }
     
 if (my_hitboxID.attack == AT_FSPECIAL) {
-    parry_lag = 60;
     create_hitbox(AT_DSPECIAL , 1 , x , y - 110 );  
     x = hit_player_obj.x 
     y = hit_player_obj.y

@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 9 );
+set_num_palettes( 14 );
 
 // unnamed alt palette
 set_color_profile_slot( 1, 0, 0, 90, 135 ); //unnamed color row
@@ -104,6 +104,50 @@ set_color_profile_slot( 8, 4, 255, 255, 255 ); //unnamed color row
 set_color_profile_slot( 8, 5, 173, 123, 158 ); //unnamed color row
 set_color_profile_slot( 8, 6, 195, 179, 255 ); //unnamed color row
 
+// Purble
+set_color_profile_slot( 9, 0, 123, 19, 158 ); //Skirt and Sash
+set_color_profile_slot( 9, 1, 75, 17, 163 ); //Ears
+set_color_profile_slot( 9, 2, 255, 35, 196 ); //Line pattern
+set_color_profile_slot( 9, 3, 185, 102, 255 ); //Energy
+set_color_profile_slot( 9, 4, 120, 82, 199 ); //Fur
+set_color_profile_slot( 9, 5, 136, 0, 255 ); //Pants
+set_color_profile_slot( 9, 6, 58, 40, 97 ); //Shading
+
+// Mossy
+set_color_profile_slot( 10, 0, 64, 179, 25 ); //Skirt and Sash
+set_color_profile_slot( 10, 1, 101, 189, 0 ); //Ears
+set_color_profile_slot( 10, 2, 59, 161, 0 ); //Line pattern
+set_color_profile_slot( 10, 3, 64, 255, 0 ); //Energy
+set_color_profile_slot( 10, 4, 73, 122, 106 ); //Fur
+set_color_profile_slot( 10, 5, 65, 133, 56 ); //Pants
+set_color_profile_slot( 10, 6, 20, 33, 28 ); //Shading
+
+// Leave me alone Inner
+set_color_profile_slot( 11, 0, 0, 0, 0 ); //Skirt and Sash
+set_color_profile_slot( 11, 1, 255, 229, 0 ); //Ears
+set_color_profile_slot( 11, 2, 255, 229, 0 ); //Line pattern
+set_color_profile_slot( 11, 3, 255, 229, 0 ); //Energy
+set_color_profile_slot( 11, 4, 130, 87, 0 ); //Fur
+set_color_profile_slot( 11, 5, 0, 0, 0 ); //Pants
+set_color_profile_slot( 11, 6, 87, 58, 0 ); //Shading
+
+// Cuter Star Fox
+set_color_profile_slot( 12, 0, 238, 227, 88 ); //unnamed color row
+set_color_profile_slot( 12, 1, 200, 200, 240 ); //unnamed color row
+set_color_profile_slot( 12, 2, 109, 62, 201 ); //unnamed color row
+set_color_profile_slot( 12, 3, 238, 227, 88 ); //unnamed color row
+set_color_profile_slot( 12, 4, 200, 200, 240 ); //unnamed color row
+set_color_profile_slot( 12, 5, 109, 62, 201 ); //unnamed color row
+set_color_profile_slot( 12, 6, 132, 132, 240 ); //unnamed color row
+
+// Cake Goat
+set_color_profile_slot( 13, 0, 252, 174, 220 ); //unnamed color row
+set_color_profile_slot( 13, 1, 252, 252, 252 ); //unnamed color row
+set_color_profile_slot( 13, 2, 170, 100, 232 ); //unnamed color row
+set_color_profile_slot( 13, 3, 231, 121, 185 ); //unnamed color row
+set_color_profile_slot( 13, 4, 133, 106, 135 ); //unnamed color row
+set_color_profile_slot( 13, 5, 170, 100, 232 ); //unnamed color row
+set_color_profile_slot( 13, 6, 130, 68, 135 ); //unnamed color row
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

@@ -220,6 +220,7 @@ dracula_speaker[page] = 2;
 dracula_text[page] = "I'd like to see you try, punk!";
 page++;
 
+hitbox_test = sprite_get("hitbox_test")
 
 //Secret Alt Colors
 ColorLock = 0;

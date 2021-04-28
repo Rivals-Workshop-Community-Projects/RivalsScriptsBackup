@@ -127,7 +127,7 @@ walkturn_anim_speed = .04;
 dash_anim_speed = .18;
 pratfall_anim_speed = .25;
 
-walk_speed = 4;
+walk_speed = 3.5;
 walk_accel = 0.2;
 walk_turn_time = 2;
 initial_dash_time = 7;
@@ -144,8 +144,8 @@ jump_start_time = 5;
 jump_speed = 13;
 short_hop_speed = 9;
 djump_speed = 12;
-leave_ground_max = 7;//7.2 //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 7;//7.5//8 //the maximum hsp you can have when jumping from the ground
+leave_ground_max = 6.8;//7//7.2 //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 6.8;//7//7.5//8 //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
@@ -169,7 +169,7 @@ wave_land_adj = 1.3; //the multiplier to your initial hsp when wavelanding. Usua
 wave_friction = .03; //grounded deceleration when wavelanding
 
 //crouch animation frames
-crouch_startup_frames = 2;
+crouch_startup_frames = 1;
 crouch_active_frames = 1;
 crouch_recovery_frames = 1;
 
@@ -219,6 +219,7 @@ bubble_y = 8;
 
 rainhit = hit_fx_create( sprite_get( "rainhit" ), 6 );
 //jischarge = hit_fx_create( sprite_get( "jis_hit_test" ), 18 );
+fakeparry_1 = hit_fx_create( asset_get( "new_dodge_spr" ), 40 );
 
 //top 35
 //left 27
@@ -243,10 +244,13 @@ enemykirby = noone; // by doing this it will stop _my side_ from spamming error 
 swallowed = 0; // changed swallowed implementation to fix error message as well
 
 arc_active = false; // for AI purposes
+arc_cooldown = false;
 ar_rain = 0; // for ditto purposes. i put it to my enemies anyway, why not put it to myself?
 ar_rain_max = 6;
 ar_rain_immune = false;
 jiseffect = 0;
+fakeparry_got = false;
+fakeparry_id = -4;
 
 AT_TAUNT_3 = 37;
 
@@ -263,7 +267,7 @@ arena_short_name = "A.R.";
 battle_text = "*           approaches.";
 
 ncode1 = "Faceless hooded figure with a red blade."
-ncode2 = "Not detected by mechanical automatic detection."
+ncode2 = "Unable to identify with automatic detection."
 ncode3 = "Don't think. Feel and you'll be"
 
 steve_death_message = "Steve was slain by z_ARainbows using XaaaCi";

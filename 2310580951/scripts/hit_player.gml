@@ -11,6 +11,13 @@ if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1) {
 	old_vsp = -1;
 }
 
+if (my_hitboxID.attack == AT_FSPECIAL) {
+	destroy_hitboxes();
+	attack_end();
+	sound_play(sound_get("bounce"));
+	old_vsp = -6;
+}
+
 //hit_player.gml
 if (my_hitboxID.attack == AT_NSPECIAL) {
 	

@@ -68,6 +68,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(AT_USPECIAL, 1, HG_IGNORES_PROJECTILES, true);
 set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, false);
 
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 2);
@@ -101,6 +102,7 @@ set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(AT_USPECIAL, 2, HG_IGNORES_PROJECTILES, true);
 set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, false);
 
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USPECIAL, 3, HG_WINDOW, 2);
@@ -133,6 +135,7 @@ set_hitbox_value(AT_USPECIAL, 3, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(AT_USPECIAL, 3, HG_IGNORES_PROJECTILES, true);
 set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_USPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, false);
 
 set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USPECIAL, 4, HG_WINDOW, 2);
@@ -165,6 +168,7 @@ set_hitbox_value(AT_USPECIAL, 4, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(AT_USPECIAL, 4, HG_IGNORES_PROJECTILES, true);
 set_hitbox_value(AT_USPECIAL, 4, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_USPECIAL, 4, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_USPECIAL, 4, HG_PROJECTILE_IS_TRANSCENDENT, false);
 
 set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USPECIAL, 5, HG_WINDOW, 999);
@@ -197,6 +201,7 @@ set_hitbox_value(AT_USPECIAL, 5, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(AT_USPECIAL, 5, HG_IGNORES_PROJECTILES, true);
 set_hitbox_value(AT_USPECIAL, 5, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_USPECIAL, 5, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_USPECIAL, 5, HG_PROJECTILE_IS_TRANSCENDENT, false);
 
 set_hitbox_value(AT_USPECIAL, 6, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USPECIAL, 6, HG_WINDOW, 999);
@@ -228,7 +233,7 @@ set_hitbox_value(AT_USPECIAL, 6, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(AT_USPECIAL, 6, HG_IGNORES_PROJECTILES, true);
 set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_UNBASHABLE, true);
-set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_IS_TRANSCENDENT, false);
 set_hitbox_value(AT_USPECIAL, 6, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_USPECIAL, 6, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_USPECIAL, 6, HG_HITSTUN_MULTIPLIER, 1);

@@ -46,7 +46,7 @@ hitstun_grav = .5;
 knockback_adj = 1.0;
 
 land_time = 4;
-prat_land_time = 16;
+prat_land_time = 18;
 wave_land_time = 8;
 wave_land_adj = 1.35;
 wave_friction = .15;
@@ -140,7 +140,7 @@ fspecPortalHooked = false;
 portalRef = noone;
 
 // NSpec charge
-nspecMax = has_rune("N")?40:100;
+nspecMax = has_rune("N")?30:80;
 nspecCharge = 0;
 
 // DSpec effect

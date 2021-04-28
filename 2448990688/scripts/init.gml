@@ -18,19 +18,19 @@ walk_speed          = 3;		// 3    -  4.5
 walk_accel          = 0.2;		// 0.2  -  0.5
 walk_turn_time      = 6;	    // 6
 initial_dash_time   = 14;		// 8    -  16
-initial_dash_speed  = 7;		// 4    -  9
-dash_speed          = 6.5;		// 5    -  9
+initial_dash_speed  = 7.5;		// 4    -  9
+dash_speed          = 7;		// 5    -  9
 dash_turn_time      = 10;		// 8    -  20
 dash_turn_accel     = 1.5;		// 0.1  -  2
 dash_stop_time      = 4;		// 4    -  6
-dash_stop_percent   = 0.35;		// 0.25 -  0.5
-ground_friction     = 0.3;		// 0.3  -  1
-moonwalk_accel      = 1.3;		// 1.2  -  1.4
+dash_stop_percent   = 0.5;		// 0.25 -  0.5
+ground_friction     = 0.25;		// 0.3  -  1
+moonwalk_accel      = 1.4;		// 1.2  -  1.4
     
 // Air movement
-leave_ground_max    = 6;		// 4    -  8
+leave_ground_max    = 4;		// 4    -  8
 max_jump_hsp        = 6;		// 4    -  8
-air_max_speed       = 4;  		// 3    -  7
+air_max_speed       = 3;  		// 3    -  7
 jump_change         = 3;		// 3
 air_accel           = 0.3;		// 0.2  -  0.4
 prat_fall_accel     = 0.85;		// 0.25 -  1.5
@@ -44,7 +44,7 @@ hitstun_grav        = 0.5;		// 0.45 -  0.53
 jump_start_time     = 5;		// 5                this stat is automatically decreased by 1 after init.gml (dan moment), so its "real value" is 4. if you change this during a match, 4 is the value you should reset it to
 jump_speed          = 11.5;		// 7.6  -  12       okay, zetter's is actually 10.99 but... come on
 short_hop_speed     = 6;		// 4    -  7.4
-djump_speed         = 8;		// 6    -  12       absa's is -1 because of her floaty djump
+djump_speed         = 9;		// 6    -  12       absa's is -1 because of her floaty djump
 djump_accel         = 0;        // -1.4 -  0        absa's is -1.4, all other chars are 0. only works if the   djump_accel_end_time   variable is also set. floaty djumps should be adjusted by feel based on your char's gravity
 djump_accel_end_time= 0;        //                  the amount of time that   djump_accel   is applied for
 max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has hover instead
@@ -58,7 +58,7 @@ wave_friction       = 0.03;		// 0    -  0.15
 roll_forward_max    = 9;        // 9    -  11
 roll_backward_max   = 9;        // 9    -  11       always the same as forward
 wave_land_time      = 12;		// 6    -  12
-wave_land_adj       = 1.2;		// 1.2  -  1.5      idk what zetterburn's is
+wave_land_adj       = 1.4;		// 1.2  -  1.5      idk what zetterburn's is
 air_dodge_speed     = 7.5;      // 7.5  -  8
 techroll_speed      = 10;       // 8    -  11
 
@@ -68,14 +68,14 @@ techroll_speed      = 10;       // 8    -  11
 
 //Sprites
 spr_nspecial_proj = sprite_get("nspecial_proj");
-spr_example = sprite_get("example"); // sprites/example_stripX.png
+//spr_example = sprite_get("example"); // sprites/example_stripX.png
 
 // SFX
-sfx_example = sound_get("example"); // sounds/example.ogg
+//sfx_example = sound_get("example"); // sounds/example.ogg
 sfx_amogus = sound_get("sfx_amogus"); // sounds/example.ogg
 
 // VFX
-vfx_example = hit_fx_create(spr_example, 54);
+//vfx_example = hit_fx_create(spr_example, 54);
 
 // Variables
 rainbow_color = c_white; // (used for one of Sandbert w/ a Phone's cheat codes)
@@ -170,3 +170,6 @@ bubble_y = 8;
 // Muno template: (don't change)
 
 user_event(14); // General init
+
+//Compat
+feri_costume = sprite_get("feri_costume_scoville");

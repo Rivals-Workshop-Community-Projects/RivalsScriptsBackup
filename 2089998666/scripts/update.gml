@@ -83,7 +83,7 @@ if bossmode = 1 {
         air_accel = .6;    
     } else { //default cookie buff stats
         dash_speed = 7;
-        initial_dash_speed = 7;
+        initial_dash_speed = 7.5;
         air_accel = .4;    
     }
 
@@ -125,7 +125,7 @@ if bossmode = 1 {
         walk_speed = 3;
         initial_dash_speed = 6.5;
         dash_speed = 6;
-		air_friction = .03;
+		air_friction = .04;
 		hitstun_grav = .52;
     }
 }

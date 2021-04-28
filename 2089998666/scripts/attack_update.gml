@@ -12,7 +12,7 @@ if (attack == AT_EXTRA_1) {
 	can_attack = true;
 	can_special = true;
 	can_shield = true;
-	hsp = clamp(hsp, -(air_max_speed-1), air_max_speed-1);
+	//hsp = clamp(hsp, -(air_max_speed-1), air_max_speed-1);
 	
 	if 3 > vsp {
 	flutterTimer--;
@@ -36,10 +36,10 @@ if (attack == AT_EXTRA_1) {
 	flutterAttack = 1;
 	
 		if right_down {
-		hsp = 5;
+		hsp = 5.5;
 		}
 		else if left_down {
-		hsp = -5;
+		hsp = -5.5;
 		}
 	}
 	
@@ -177,6 +177,7 @@ if (attack == AT_USPECIAL) {
 	}
 	
 	if window == 3 {
+		soft_armor = 4;
 		if window_timer == 1 {
 			eggcharge = 0;
 			reset_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED);
@@ -363,7 +364,7 @@ if (attack == AT_FSPECIAL) {
 //DSpecial stuff
 if (attack == AT_DSPECIAL) {
 	can_fast_fall = false;	
-	if (window == 1 || window == 2 && window_timer < 4) {
+	if (window == 1) {
 		can_shield = true;
 		
 		if down_pressed {

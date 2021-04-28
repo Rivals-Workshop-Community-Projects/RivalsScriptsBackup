@@ -130,6 +130,12 @@ if attack == AT_DAIR {
 
 //fspecial grab
 if (attack == AT_FSPECIAL){
+	//vertical boost
+	if window == 1 && window_timer == get_window_value(AT_FSPECIAL,1,AG_WINDOW_LENGTH)-2 && free {
+		if vsp > -6 {
+			vsp = -6;
+		}
+	}
 	//wallgrab
 	if !has_hit_player && (collision_rectangle(x + 10 * spr_dir,y-5,x + 150 * spr_dir,y-55,asset_get("par_block"),false,true) || collision_rectangle(x + 10 * spr_dir,y-5,x + 150 * spr_dir,y-55,asset_get("par_jumpthrough"),false,true)) {
         if window == 2 {
@@ -255,6 +261,62 @@ if (attack == AT_USPECIAL){
     }
 }
 
+//nspecial grab
+if (attack == AT_NSPECIAL){
+	//heals
+	if window == 4 && !hitpause {
+		/* no more colored outline u stinky
+		if window_timer <= get_window_value(AT_NSPECIAL,4,AG_WINDOW_LENGTH)/2 {
+			outline_color = [outline_color[0],ease_cubeIn(0,185,window_timer,get_window_value(AT_NSPECIAL,4,AG_WINDOW_LENGTH)/2),outline_color[2]]
+			//print_debug(string(outline_color[1]))
+		}
+		if window_timer > get_window_value(AT_NSPECIAL,4,AG_WINDOW_LENGTH)/2 {
+			outline_color = [outline_color[0],ease_cubeIn(185,0,window_timer,get_window_value(AT_NSPECIAL,4,AG_WINDOW_LENGTH)),outline_color[2]]
+			//print_debug(string(outline_color[1]))
+		}
+		init_shader();
+		*/
+		if window_timer == get_window_value(AT_NSPECIAL,4,AG_WINDOW_LENGTH)/2 {
+			take_damage(player,-1,-5); //heals
+		}
+		if window_timer mod 4 == 0 {
+			sound_play(asset_get("mfx_hp_spawn"));
+		}
+	}
+    //grab
+    if instance_exists(grabbed_player_obj){
+	    if (window >= 5) { grabbed_player_obj = noone; }
+		else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { grabbed_player_obj = noone; }
+	
+		else {
+			//keep the grabbed player in hitstop until the grab is complete.
+			grabbed_player_obj.hitstop = 2;
+			grabbed_player_obj.hitpause = true;
+			
+			//if this is the first frame of a window, store the grabbed player's relative position.
+			if (window_timer <= 1) {
+				grabbed_player_relative_x = grabbed_player_obj.x - x;
+				grabbed_player_relative_y = grabbed_player_obj.y - y;
+			}
+			 
+			//on the first window, pull the opponent into the grab.
+			if (window == 4) { 
+				//change as necessary. by default, this grab will pull the opponent to (30, 0) in front of the player.
+				var pull_to_x = 30 * spr_dir;
+				var pull_to_y = 0;
+				
+				//using an easing function, smoothly pull the opponent into the grab over the duration of this window.
+				var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
+				grabbed_player_obj.x = x + ease_circOut( grabbed_player_relative_x, pull_to_x, window_timer, window_length);
+				grabbed_player_obj.y = y + ease_circOut( grabbed_player_relative_y, pull_to_y, window_timer, window_length);
+			}
+			//the above block can be copied for as many windows as necessary.
+			//e.g. for an attack like Clairen's back throw, you might have an additional window where the grabbed player is pulled behind.
+		}
+    }
+}
+
+
 //dspecials spawning flower
 if (attack == AT_DSPECIAL){
     if window == 2 && window_timer == 2 {
@@ -265,8 +327,8 @@ if (attack == AT_DSPECIAL){
     }
 }
 
-//nspecial activating flower
-if (attack == AT_NSPECIAL){
+//new dspecial activating flower
+if (attack == AT_DSPECIAL_2){
 	if instance_exists(dros_flower) {
     	if window == 2 && window_timer == 1 && dros_flower.should_activate == false {
     		dros_flower.should_activate = true;
@@ -295,4 +357,7 @@ if attack == AT_TAUNT {
 	}
 }
 
-
+//FStrong sounds
+if (attack == AT_FSTRONG && window == 2 && window_timer == get_window_value(AT_FSTRONG,2,AG_WINDOW_LENGTH)-1){
+	sound_play(asset_get("sfx_crunch"));
+}

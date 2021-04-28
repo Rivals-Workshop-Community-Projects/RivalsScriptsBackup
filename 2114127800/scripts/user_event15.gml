@@ -457,6 +457,10 @@ with phone{
 	 * put the version number and full date.
 	 */
 	 
+	initPatch("4.5", "27 Apr, 2021");
+	initPatchWords("- Increased Up Special's startup (15 > 20)");
+	initPatchWords("- Added multiple fixes and nerfs to charged dash attack.");
+
 	initPatch("4.4", "13 Feb, 2021");
 	initPatchWords("~ Replaced the Ruby alt with a Rykenburn alt");
 	initPatchWords("~ Replaced the Mollo alt with an Atticus alt");

@@ -28,9 +28,9 @@ if attack == AT_UAIR and window == 1 and window_timer == 11  {
 
 }
 
-if attack == AT_UAIR && has_hit_player && window <= 3 && hit_player_obj.state_cat == SC_HITSTUN{
-		hit_player_obj.y += floor(((y - 40) - hit_player_obj.y) / 10)
-		hit_player_obj.x += floor(((x) - hit_player_obj.x) / 10)
+if attack == AT_UAIR && has_hit_player && window <= 3 && hit_player_obj.state_cat == SC_HITSTUN && hitpause{
+		hit_player_obj.y += floor(((y - 40) - hit_player_obj.y) / 6)
+		hit_player_obj.x += floor(((x) - hit_player_obj.x) / 6)
 }
 
 if attack == AT_NAIR and has_hit and !hitstop {
@@ -287,9 +287,7 @@ if attack == AT_FSPECIAL {
    	
    }
   
-   if window == 1 && window_timer = 1 && !hitpause {
-   	spr_dir *= -1
-   }
+
     if window == 1 && window_timer <= 16 && window_timer >= 4 {
     	if free {
         move_cooldown[AT_FSPECIAL] = 999

@@ -24,6 +24,7 @@ arc_temp_id = noone;
 arc_num = 0;
 arc_num_max = 1;
 arc_thruplat = false;
+arc_cooldown = 0;
 
 rainhitvfx = hit_fx_create( sprite_get( "rainhit" ), 6 );
 

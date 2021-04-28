@@ -84,12 +84,16 @@ if (attack == AT_USPECIAL){
         }
 		else {
             if(launch_timer <= 15){
-                sound_play(asset_get("sfx_burnapplied"));
-                vsp = -5;
+				if(!hitpause){
+					sound_play(asset_get("sfx_burnapplied"));
+					vsp = -5;
+				}
             }
 			else {
-                sound_play(sound_get("sfx_launch"));
-                vsp = (launch_timer / 4) * -1;
+				if(!hitpause){
+					sound_play(sound_get("sfx_launch"));
+					vsp = (launch_timer / 4) * -1;
+				}
             }
             window = 3;
             window_timer = 0;
@@ -446,9 +450,11 @@ if (attack == AT_DATTACK){
 		set_state(PS_IDLE);
 	}
 	if (window == 1 && special_pressed && charge_gauge > 0){
-		window = 4;
-		window_timer = 0;
-		charge_gauge -= 1;
+		if (window_timer == 9){
+			window = 4;
+			window_timer = 0;
+			charge_gauge -= 1;
+		}
 	}
 	if (window == 4){
 		can_jump = true;
@@ -470,10 +476,10 @@ if (attack == AT_DATTACK){
 	if (window > 4){
 		destroy_hitboxes();
 	}
-	if (window == 4 && window_timer == 1){
+	if (window == 4 && window_timer == 1 && !hitpause){
 		sound_play(sound_get("sfx_bash"));
 	}
-	if (window == 5 && window_timer == 1){
+	if (window == 5 && window_timer == 1 && !hitpause){
 		sound_play(sound_get("sfx_halt"));
 	}
 	if (window == 5 && window_timer == get_window_value(AT_DATTACK, 5, AG_WINDOW_LENGTH) && has_hit == true){
@@ -489,6 +495,10 @@ if (attack != AT_DATTACK){
 }
 
 if (attack == AT_DATTACK && window == 2 && was_parried == true){
+	set_state(PS_PRATLAND);
+}
+
+if (attack == AT_DATTACK && window == 4 && was_parried == true){
 	set_state(PS_PRATLAND);
 }
 

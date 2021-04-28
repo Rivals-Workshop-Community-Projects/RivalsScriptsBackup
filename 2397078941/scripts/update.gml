@@ -1,5 +1,15 @@
 ///
 
+if move_cooldown[AT_NSPECIAL] < 58  {
+famix += floor(((x-30*spr_dir)-famix)/7)
+famiy += floor((y-56-famiy)/7)
+}
+
+if move_cooldown[AT_NSPECIAL] == 1  {
+	sound_play(asset_get("sfx_ice_shieldup"),false,noone,1);
+	sound_play(asset_get("sfx_orca_shake"),false,noone,1);
+}
+
 if nolan == 0 && changed == 0 {
 
 

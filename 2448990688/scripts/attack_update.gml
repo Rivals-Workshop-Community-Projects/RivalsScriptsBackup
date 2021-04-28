@@ -12,12 +12,22 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 //    }
 //}
 
+//Cooldowns
+if (attack == AT_FSPECIAL){
+        move_cooldown[AT_FSPECIAL] = 30;
+    }
+    
+if (attack == AT_NSPECIAL){
+        move_cooldown[AT_NSPECIAL] = 30;
+    }
+
+//Can Move and Jump
 if (attack == AT_FSPECIAL && window == 2){
         can_move = true;
     }
 
 
-if (attack == AT_NAIR && has_hit){
+if (attack == AT_NAIR && has_hit){//jump cancel nairs
         can_jump = true;
     }
     
@@ -45,3 +55,36 @@ if (attack == AT_DSTRONG && window == 1 && window_timer == 13){
 if (attack == AT_USTRONG && window == 1 && window_timer == 23){
         sound_play( asset_get( "sfx_forsburn_consume" ) );
     }    
+    
+// heals damage to self:
+if (attack == AT_DSPECIAL && window == 4 && has_hit) {
+        take_damage( player, -1, -1 );
+    }
+// Deals 50 damage to self:
+if (attack == AT_DSPECIAL && window == 4 && !has_hit) {
+        take_damage( player, -1, 1 );
+    }
+
+//Ledge Snap    
+if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR && window == 3){
+    can_fast_fall = false;
+    if (window == 1 && window_timer == 1){
+        moved_up = false;
+        //reset the vspeed to the value in fspecial_air.gml
+        reset_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED);
+    }
+    if (window == 3){
+        // MOVE UP AT LEDGE
+        if (!moved_up){
+            if (free && place_meeting(x+hsp,y,asset_get("par_block"))){
+                for (var i = 0; i < 40; i++){
+                    if (!place_meeting(x+hsp,y-(i+1),asset_get("par_block"))){
+                        y -= i;
+                        moved_up = true;
+                        break;
+                    }
+                }
+            }
+        }
+}
+}

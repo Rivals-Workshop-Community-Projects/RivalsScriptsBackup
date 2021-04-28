@@ -70,6 +70,18 @@ if runesUpdated {
 
 user_event(14);
 
+if (fakeparry_got){
+	if (fakeparry_id != -4){
+		spawn_hit_fx( fakeparry_id.x, fakeparry_id.y, fakeparry_1 );
+		var fakeparry_2 = instance_create(fakeparry_id.x, fakeparry_id.y-34, "obj_article3");
+		fakeparry_2.ar_a3_type = 3;
+		fakeparry_2.player_id = id;
+		fakeparry_2.player = player;
+		fakeparry_id = -4;
+		fakeparry_got = false;
+	}
+}
+
 //fries
 if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_TAUNT_3){
 	
@@ -202,6 +214,9 @@ if (outline_color[0] == 0 && outline_color[1] == 0 && outline_color[2] == 0){
 outline_color=[35, 67, 49]
 init_shader();
 }
+}
+if (get_player_color( player ) == 14){
+	runeE = true;
 }
 	
 if (Hikaru_Title = "Temporary Title"){

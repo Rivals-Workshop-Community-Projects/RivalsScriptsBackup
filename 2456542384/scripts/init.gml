@@ -11,6 +11,8 @@
 //flower gimmick
 dros_flower = noone;
 dros_flower_cooldown = 140;
+flower_on_cooldown = false;
+flower_cooldown_rn = 0;
 
 //grab
 grabbed_player_obj = noone;    //the player object currently being grabbed.
@@ -31,7 +33,7 @@ last_hit_stun = false;
 kirbyability = 18
 
 feri_costume = sprite_get("feri");
-sprite_change_offset("feri", 84, 114);
+sprite_change_offset("feri", 84, 113);
 
 // STAT NAME		ZETTER VALUE   BASECAST RANGE   NOTES
 

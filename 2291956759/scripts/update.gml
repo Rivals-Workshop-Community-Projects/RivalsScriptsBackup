@@ -11,7 +11,7 @@ if inkshield_buildup >= 300 {
      sound_play(sound_get("RI"))	
      spawn_hit_fx (x, y - 32, 302)
 	inkshield_buildup = 0
-	knockback_adj = 0.5
+	///knockback_adj = 0.5
 }
 
 if inkshield_buildup < 0 {
@@ -21,6 +21,7 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 	attacking = true
 } else {
 	attacking = false
+	sound_stop(drip_sound)
 }
 
 
@@ -268,11 +269,14 @@ if (state == PS_PRATLAND or state == PS_WALL_JUMP)  && visible = false {
 
 if state == PS_PRATFALL && visible = false {
 	invincible = true
-    fall_though = true
-	 if (y > room_height/2 + 400){
-    	vsp = -20
-    	visible = true
-     }
+	visible = true
+	vsp = 4
+	if y < room_height/2 {
+	y += 160
+	} else {
+	y += 80	
+	}
+
 }
 if inkshield > 0 && !hitpause && move_cooldown[AT_EXTRA_1] == 0{
 	

@@ -1,6 +1,6 @@
 //got_parried.gml
 
-if (my_hitboxID.attack != AT_JAB){
+if (my_hitboxID.attack != AT_JAB && my_hitboxID.type != 2){
 	hasfirebrand = false
 }
 
@@ -20,3 +20,7 @@ if (my_hitboxID.attack == AT_DSPECIAL){
 	hsp = 0
 	move_cooldown[AT_DSPECIAL] = 46;
 }
+
+if my_hitboxID.type == 2 {
+    my_hitboxID.hitbox_timer = 0;
+} 

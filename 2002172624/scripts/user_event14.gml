@@ -560,7 +560,7 @@ with phone{
 	initApp(2, 2, "Patch Notes", $5a7b1d, patches);
 	initApp(3, 3, "Phone Settings", $bd5b68, settings);
 	initApp(4, 4, "Frame Data", $33929e, moves); // old color: $236b89
-	initApp(5, 5, "Cheat Codes", $352587, cheats);
+	initApp(5, 5, "Battle Cats", $352587, cheats);
 	initApp(6, 6, "Training Town", $6c3e3f, stage_settings);
 	initApp(7, 7, "Codecs", $264b87, []);
 	initApp(8, 8, "About", $8f2b85, abouts);

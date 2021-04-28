@@ -13,7 +13,7 @@ set_window_value(AT_BAIR, 1, AG_WINDOW_SFX, sound_get("slash2"));
 set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 6);
 
 set_window_value(AT_BAIR, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_BAIR, 2, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_BAIR, 2, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_BAIR, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_BAIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 
@@ -29,7 +29,7 @@ set_hitbox_value(AT_BAIR, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW_CREATION_FRAME, 2);
-set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 2);
+set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 1);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_X, -20);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_Y, -70);
 set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 55);
@@ -47,8 +47,8 @@ set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 306);
 set_hitbox_value(AT_BAIR, 2, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 2);
-set_hitbox_value(AT_BAIR, 2, HG_WINDOW_CREATION_FRAME, 4);
-set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 4);
+set_hitbox_value(AT_BAIR, 2, HG_WINDOW_CREATION_FRAME, 3);
+set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_X, -40);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_Y, -35);
 set_hitbox_value(AT_BAIR, 2, HG_WIDTH, 55);

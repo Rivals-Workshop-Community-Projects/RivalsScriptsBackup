@@ -21,6 +21,8 @@ if my_hitboxID.attack == AT_NSPECIAL {
 
 if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1 {
     move_cooldown[AT_FTILT] = 2
+    shake_camera(2,2)
+      sound_play(asset_get("sfx_blow_medium2"));
 }
 
 if ostyle == 3 {

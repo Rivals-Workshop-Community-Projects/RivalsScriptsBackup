@@ -38,7 +38,7 @@ set_color_profile_slot_range( 6, 1, 1, 7 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 20 );
 
 // prekrasno
 set_color_profile_slot( 1, 0, 100, 148, 213 ); //top.purple
@@ -157,23 +157,59 @@ set_color_profile_slot( 13, 4, 16, 53, 133 ); //dark.purple
 set_color_profile_slot( 13, 5, 15, 48, 28 ); //dark.green
 set_color_profile_slot( 13, 6, 28, 33, 28 ); //grey.portrait
 
-// repentance
-set_color_profile_slot( 14, 0, 37, 41, 39 ); //top.purple
-set_color_profile_slot( 14, 1, 131, 199, 122 ); //top.green
-set_color_profile_slot( 14, 2, 194, 142, 97 ); //skin
-set_color_profile_slot( 14, 3, 105, 43, 201 ); //red
-set_color_profile_slot( 14, 4, 37, 41, 39 ); //dark.purple
-set_color_profile_slot( 14, 5, 229, 255, 236 ); //dark.green
-set_color_profile_slot( 14, 6, 51, 38, 66 ); //grey.portrait
+// tomorrow valley
+set_color_profile_slot( 14, 0, 122, 79, 52 ); //top.purple
+set_color_profile_slot( 14, 1, 183, 242, 87 ); //top.green
+set_color_profile_slot( 14, 2, 231, 190, 165 ); //skin
+set_color_profile_slot( 14, 3, 255, 0, 15 ); //red
+set_color_profile_slot( 14, 4, 82, 50, 34 ); //dark.purple
+set_color_profile_slot( 14, 5, 76, 133, 43 ); //dark.green
+set_color_profile_slot( 14, 6, 71, 65, 65 ); //grey.portrait
+
+// nano
+set_color_profile_slot( 15, 0, 87, 91, 97 ); //top.purple
+set_color_profile_slot( 15, 1, 227, 113, 109 ); //top.green
+set_color_profile_slot( 15, 2, 254, 230, 208 ); //skin
+set_color_profile_slot( 15, 3, 237, 247, 255 ); //red
+set_color_profile_slot( 15, 4, 56, 60, 61 ); //dark.purple
+set_color_profile_slot( 15, 5, 110, 48, 44 ); //dark.green
+set_color_profile_slot( 15, 6, 85, 100, 148 ); //grey.portrait
+
+// repentance past
+set_color_profile_slot( 16, 0, 64, 71, 68 ); //top.purple
+set_color_profile_slot( 16, 1, 131, 199, 122 ); //top.green
+set_color_profile_slot( 16, 2, 194, 142, 97 ); //skin
+set_color_profile_slot( 16, 3, 105, 43, 201 ); //red
+set_color_profile_slot( 16, 4, 97, 107, 103 ); //dark.purple
+set_color_profile_slot( 16, 5, 229, 255, 236 ); //dark.green
+set_color_profile_slot( 16, 6, 64, 48, 105 ); //grey.portrait
+
+// repentance future
+set_color_profile_slot( 17, 0, 82, 46, 61 ); //top.purple
+set_color_profile_slot( 17, 1, 230, 170, 210 ); //top.green
+set_color_profile_slot( 17, 2, 204, 169, 110 ); //skin
+set_color_profile_slot( 17, 3, 150, 144, 62 ); //red
+set_color_profile_slot( 17, 4, 115, 65, 86 ); //dark.purple
+set_color_profile_slot( 17, 5, 255, 255, 255 ); //dark.green
+set_color_profile_slot( 17, 6, 82, 46, 61 ); //grey.portrait
+
+// devoid
+set_color_profile_slot( 18, 0, 240, 255, 249 ); //top.purple
+set_color_profile_slot( 18, 1, 240, 255, 249 ); //top.green
+set_color_profile_slot( 18, 2, 231, 230, 229 ); //skin
+set_color_profile_slot( 18, 3, 237, 247, 255 ); //red
+set_color_profile_slot( 18, 4, 172, 184, 178 ); //dark.purple
+set_color_profile_slot( 18, 5, 123, 130, 127 ); //dark.green
+set_color_profile_slot( 18, 6, 65, 69, 66 ); //grey.portrait
 
 // twilight
-set_color_profile_slot( 15, 0, 122, 216, 255 ); //top.purple
-set_color_profile_slot( 15, 1, 73, 54, 217 ); //top.green
-set_color_profile_slot( 15, 2, 64, 144, 255 ); //skin
-set_color_profile_slot( 15, 3, 102, 0, 245 ); //red
-set_color_profile_slot( 15, 4, 107, 132, 255 ); //dark.purple
-set_color_profile_slot( 15, 5, 34, 0, 130 ); //dark.green
-set_color_profile_slot( 15, 6, 54, 0, 168 ); //grey.portrait
+set_color_profile_slot( 19, 0, 122, 216, 255 ); //top.purple
+set_color_profile_slot( 19, 1, 73, 54, 217 ); //top.green
+set_color_profile_slot( 19, 2, 64, 144, 255 ); //skin
+set_color_profile_slot( 19, 3, 102, 0, 245 ); //red
+set_color_profile_slot( 19, 4, 107, 132, 255 ); //dark.purple
+set_color_profile_slot( 19, 5, 34, 0, 130 ); //dark.green
+set_color_profile_slot( 19, 6, 54, 0, 168 ); //grey.portrait
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
@@ -181,5 +217,3 @@ set_color_profile_slot( 15, 6, 54, 0, 168 ); //grey.portrait
 {"formatversion":1,"data":[{"name":"top.purple","colors":[{"r":182,"g":73,"b":218,"isTarget":false,"main":true}]},{"name":"top.green","colors":[{"r":71,"g":185,"b":89,"isTarget":false,"main":true},{"r":39,"g":117,"b":43,"isTarget":false}]},{"name":"skin","colors":[{"r":254,"g":208,"b":177,"isTarget":false,"main":true},{"r":213,"g":128,"b":87,"isTarget":false,"main":false},{"r":163,"g":91,"b":65,"isTarget":false,"main":false}]},{"name":"red","colors":[{"r":255,"g":79,"b":72,"isTarget":false,"main":false},{"r":255,"g":38,"b":29,"isTarget":true,"main":true},{"r":153,"g":5,"b":0,"isTarget":false,"main":false},{"r":67,"g":3,"b":0,"isTarget":false,"main":false}]},{"name":"dark.purple","colors":[{"r":97,"g":68,"b":96,"isTarget":false,"main":true},{"r":67,"g":37,"b":63,"isTarget":false,"main":false}]},{"name":"dark.green","colors":[{"r":26,"g":85,"b":43,"isTarget":false,"main":true}]},{"name":"grey.portrait","colors":[{"r":48,"g":48,"b":48,"isTarget":false,"main":true},{"r":32,"g":32,"b":32,"isTarget":false,"main":false}]}]}
 === END JSON PALETTE ===
 */
-
-

@@ -13,7 +13,7 @@ if attack == AT_NAIR && !hitpause{
 }
 
 
-if attack != AT_NSPECIAL &&	move_cooldown[AT_TAUNT_2] != 0 {
+if attack != AT_NSPECIAL && attack != AT_DSPECIAL && attack != AT_USPECIAL && attack != AT_FSPECIAL  &&	move_cooldown[AT_TAUNT_2] != 0 {
 		fall_through = 1
 		
 		if window_timer % 2 = 0 {
@@ -21,18 +21,14 @@ if attack != AT_NSPECIAL &&	move_cooldown[AT_TAUNT_2] != 0 {
 		}
 		
 		
-		if hit_player_obj.state_cat == SC_HITSTUN {
-			hit_player_obj.hsp /= 1.1
-			hit_player_obj.vsp /= 1.1
-		}
 		
          
          if attack != AT_BAIR {
-		hsp = (hit_player_obj.x + hit_player_obj.hsp - 20*spr_dir - x) / 6
+		x += (hit_player_obj.x + hit_player_obj.hsp - 20*spr_dir - x) / 20
          } else {
-         hsp = (hit_player_obj.x + hit_player_obj.hsp + 40*spr_dir - x) / 4
+         x += (hit_player_obj.x + hit_player_obj.hsp + 40*spr_dir - x) / 20
          }
-		vsp = ((hit_player_obj.y) - y + hit_player_obj.vsp*2) / 4
+		y += ((hit_player_obj.y) - y + hit_player_obj.vsp*2) / 20
 
         
        	y += (hit_player_obj.y - y) / 20
@@ -99,7 +95,7 @@ if state_timer == 1 {
 }
 if attack == AT_JAB{
 	
-	if window == 3 && window_timer >= 2 && attack_pressed {
+	if window == 3 && window_timer >= 2 && (attack_pressed or up_stick_down or down_stick_down or left_stick_down or up_stick_down) {
 		 if up_down  {
         set_attack (AT_UTILT)
         window = 1
@@ -126,47 +122,33 @@ if attack == AT_JAB{
        }
 	}
 	
-	   if window == 6 && window_timer >= 2 && attack_pressed {
+	 if window == 6 && window_timer >= 2 && attack_pressed {
                
        if up_down  {
-           hsp = 4*spr_dir
-           vsp = -10
-        set_attack_value(AT_UAIR, AG_CATEGORY, 2);
-        set_attack (AT_UAIR)
+        set_attack (AT_UTILT)
         window = 1
-        window_timer = 5
-        sound_play(asset_get("sfx_swipe_heavy2"));
+        window_timer = 0
        }
        
        if down_down {
-           hsp = 3*spr_dir
-           vsp = -8
-        set_attack_value(AT_NAIR, AG_CATEGORY, 2);
-        set_attack (AT_NAIR)
+        set_attack (AT_DTILT)
         window = 1
-        window_timer = 4
-        sound_play(asset_get("sfx_swipe_heavy2"));
+        window_timer = 0
        }
        
        if (left_down && spr_dir == -1) or (right_down && spr_dir == 1){
-           hsp = 3*spr_dir
-           vsp = -8
-           set_attack (AT_FAIR)
-           set_attack_value(AT_FAIR, AG_CATEGORY, 2);
-           window = 1
-           window_timer = 5
-           sound_play(asset_get("sfx_swipe_heavy2"));
+        set_attack (AT_FTILT)
+        window = 1
+        window_timer = 0
        }
        
        if (left_down && spr_dir == 1) or (right_down && spr_dir == -1){
-           hsp = -3*spr_dir
-           vsp = -8
-           set_attack (AT_BAIR)
-           set_attack_value(AT_BAIR, AG_CATEGORY, 2);
-           window = 1
-           window_timer = 5
-           sound_play(asset_get("sfx_swipe_heavy2"));
+       	spr_dir *= -1
+        set_attack (AT_FTILT)
+        window = 1
+        window_timer = 0
        }
+       
        
     }
     
@@ -412,6 +394,7 @@ if attack == AT_NSPECIAL{
 
    if window == 4 && window_timer == 1{
 		vsp = -11
+		move_cooldown[AT_TAUNT_2] = 0
 	}
 	
 	if window == 4 && window_timer == 11 && firerange > 0{ 
@@ -429,7 +412,7 @@ if attack == AT_NSPECIAL{
 	}
 	
 	if window >= 3 && state_timer >= 35 {
-		if attack_pressed {
+		if attack_pressed or up_stick_down or down_stick_down or left_stick_down or up_stick_down {
 			if  firerange > 0 {
 			firerange = -100
 			fireon = 0
@@ -446,19 +429,19 @@ if attack == AT_NSPECIAL{
 			window_timer = 5
 	        }
 	        
-	        if up_down && !down_down  {
+	        if up_stick_down or (up_down && !down_down)  {
 	        set_attack(AT_UAIR)
 	        window = 1
 			window_timer = 5
 	        }
 	        
-	        if !up_down && down_down  {
+	        if down_stick_down or (!up_down && down_down)  {
 	        set_attack(AT_DAIR)
 	        window = 1
 			window_timer = 5
 	        }
 		
-			if !up_down && !down_down && !left_down && right_down {
+			if right_stick_down or (!up_down && !down_down && !left_down && right_down) {
 				if spr_dir == 1 {
 	        set_attack(AT_FAIR)
 	        window = 1
@@ -472,7 +455,7 @@ if attack == AT_NSPECIAL{
 				}	
 	        }
 	        
-	       	if !up_down && !down_down && left_down && !right_down {
+	       	if right_stick_down or (!up_down && !down_down && left_down && !right_down) {
 				if spr_dir == -1 {
 	        set_attack(AT_FAIR)
 	        window = 1
@@ -506,24 +489,28 @@ if attack == AT_NSPECIAL{
 		
 		if hit_player_obj.state_cat == SC_HITSTUN {
 			hit_player_obj.hsp /= 1.1
-			hit_player_obj.vsp /= 1.1
+			hit_player_obj.vsp /= 1.05
+			if hit_player_obj.vsp > 0 {
+				hit_player_obj.vsp /= 1.2
+			}
+			hit_player_obj.state_timer -= 0.5
 		}
 		spr_dir = (hit_player_obj.x > x?1:-1)
 		
 
-		hsp = (hit_player_obj.x + hit_player_obj.hsp - 20*spr_dir - x) / 6
-		vsp = ((hit_player_obj.y) - y + hit_player_obj.vsp*2) / 4
+		hsp = (hit_player_obj.x + hit_player_obj.hsp - 30*spr_dir - x) / 20
+		vsp = ((hit_player_obj.y) - y + hit_player_obj.vsp*2) / 20
 
         
        	y += (hit_player_obj.y - y) / 20
        
 		
 
-   	if hit_player_obj.x < x - 100  {
+   	if hit_player_obj.x < x - 50  {
 		x -= 10
 	} 
 	
-	if hit_player_obj.x > x + 100{
+	if hit_player_obj.x > x + 50{
 	    x += 10
 	} 	
 	
@@ -588,7 +575,6 @@ if attack == AT_NSPECIAL{
 
 	
 	if window == 4 && window_timer == 1 && has_hit{
-	
 		vsp = -4
 		hsp /= 1.5
 		set_attack (AT_NAIR)

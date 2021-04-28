@@ -97,10 +97,10 @@ set_color_profile_slot( 13, 1, 255, 18, 34 ); //WHEELS
 set_color_profile_slot( 13, 2, 252, 219, 233 ); //CHEST
 set_color_profile_slot( 13, 3, 206, 234, 237 ); //CRYSTAL
 
-// Katie
-set_color_profile_slot( 14, 0, 255, 255, 255 ); //CASE
-set_color_profile_slot( 14, 1, 255, 192, 192 ); //WHEELS
-set_color_profile_slot( 14, 2, 0, 255, 255 ); //CHEST
+// hedward
+set_color_profile_slot( 14, 0, 201, 201, 201 ); //CASE
+set_color_profile_slot( 14, 1, 162, 41, 162 ); //WHEELS
+set_color_profile_slot( 14, 2, 186, 171, 135 ); //CHEST
 set_color_profile_slot( 14, 3, 58, 210, 228 ); //CRYSTAL
 
 // Gold

@@ -18,8 +18,10 @@ set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX_FRAME, 11);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 6);
+set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_USTRONG, 3, AG_WINDOW_SFX, asset_get("sfx_crunch"));
 //launcher
-set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 2);
+set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 

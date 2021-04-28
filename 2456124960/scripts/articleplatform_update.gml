@@ -41,4 +41,4 @@ if ((player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR) &&
 	fake_hsp += (player_id.right_down - player_id.left_down) * 0.8;
 }
 
-if (!free) {instance_destroy();}
+if (!free && fake_vsp > 0) {instance_destroy();}

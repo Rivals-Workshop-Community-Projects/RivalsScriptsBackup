@@ -42,5 +42,5 @@ set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 1.15);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
-set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_orca_crunch"));
+set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_LOCKOUT, 10);
