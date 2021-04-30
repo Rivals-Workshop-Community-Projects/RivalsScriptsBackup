@@ -1,6 +1,4 @@
 
-
-
 if attack == AT_FSPECIAL_2 {
 	can_move = 0;
 	can_fast_fall = 0;
@@ -41,6 +39,18 @@ if attack == AT_FSPECIAL {
 		can_move = 0;
 
 	}
+	/*
+	if window == 2 && instance_exists(nspecial_current) && abs(nspecial_current.x - (x + spr_dir * 20)) <= 40 && abs(nspecial_current.y - (y - spr_dir * 10)) <= 30 && !was_parried {
+		print("check2");
+		attack_end();
+		set_attack(AT_FSPECIAL_2);
+		spawn_hit_fx(x, y, hit_fx_create(sprite_get("fspecial_fx"), 15))
+		y = ((nspecial_current.y))
+		nspecial_current.vsp = 0;
+		nspecial_current.hit_by_fspecial = 1;
+		sound_play(sound_effect);
+	}
+	*/
 	
 }
 
@@ -135,9 +145,9 @@ if (attack == AT_DSPECIAL) {
 
 
 if (attack == AT_NSPECIAL) {
-	if window_timer == 1 && get_window_value(attack, window, AG_WINDOW_TYPE) == 69 {
-	nspecial_active = 1;
-	nspecial_current = noone;
+	if window_timer == 1 && get_window_value(attack, window, AG_WINDOW_TYPE) == 69 && !hitpause {
+		nspecial_active = 1;
+		nspecial_current = noone;
 		with (pHitBox) {
 			if player_id == other.id && attack == AT_USPECIAL {
 				other.nspecial_current = id;
@@ -146,33 +156,27 @@ if (attack == AT_NSPECIAL) {
 		}
 		if nspecial_current == noone {
 			nspecial_current = create_hitbox(AT_USPECIAL, 1, x, y-30);
-			nspecial_current.hsp = 2 *spr_dir;
+			nspecial_current.hsp = 3 *spr_dir;
 			nspecial_current.vsp = nspecial_rock_vspeed;
 			nspecial_current.should_crack = 1;
+			//with (oPlayer) {
+			//	if (id == other) continue;
+			//	other.nspecial_current.can_hit[player] = 0;
+			//}
 		}
 		//var nsplat = instance_create(nspecial_current.x, nspecial_current.y-10, "obj_article_platform") //commented out for balance reasons
 		//nsplat.followbox = nspecial_current;
-	}
+		}
+}
+if (attack == AT_NSPECIAL_2) {
+	//disable nspecial
 	if window_timer == 1 && get_window_value(attack, window, AG_WINDOW_TYPE) == 420 {
-	nspecial_active = 0;
-	if instance_exists(nspecial_current) nspecial_current.vsp -= nspecial_off_vsp;
+		nspecial_active = 0;
+		nspecial_current.vsp = nspecial_off_vsp;
+		nspecial_current.hsp = 2 *spr_dir;
 	}
 }
 
-
-/*
-if (attack == AT_FSPECIAL) {
-    if (window == 2) {
-        if (special_pressed) {
-            window = 3;
-            window_timer = 0;
-            destroy_hitboxes();
-        }
-    }
-
-    can_fast_fall = false;
-}
-*/
 
 /*
 if (attack == AT_USPECIAL){
@@ -234,8 +238,8 @@ if (attack == AT_TAUNT)
 		++taunt_timer;
 		--window_timer;
 		suppress_stage_music( 0, 0.0015 );
-		var volume = clamp(taunt_timer/1000-0.5,0,1);
-		if (get_gameplay_time() % 45 == 0 && volume != 1)
+		var volume = clamp(taunt_timer/1000-1.5,0,1);
+		if (get_gameplay_time() % 25 == 0 && volume != 1)
 		{
 			sound_stop( sound_get( "static" ) );
 			sound_play( sound_get( "static" ), true, noone, volume );
@@ -248,3 +252,6 @@ if (attack == AT_TAUNT)
 		sound_stop( sound_get( "static" ) );
 	}
 }
+
+
+

@@ -11,18 +11,18 @@ hitstun_hurtbox_spr = -1;
 
 char_height = 52;
 idle_anim_speed = .2;
-crouch_anim_speed = .05;
+crouch_anim_speed = .15;
 walk_anim_speed = .2;
 dash_anim_speed = .25;
 pratfall_anim_speed = .25;
 
 
-walk_speed = 3.3;
-walk_accel = 1;
+walk_speed = 3.2
+walk_accel = 1.1;
 walk_turn_time = 6;
-initial_dash_time = 12;
+initial_dash_time = 14;
 initial_dash_speed = 6.75;
-dash_speed = 6.5;
+dash_speed = 6.2;
 dash_turn_time = 8;
 dash_turn_accel = 1.5;
 dash_stop_time = 7;
@@ -37,11 +37,11 @@ jump_speed = 9;
 short_hop_speed = 5.25;
 
 leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
+max_jump_hsp = 6.5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5.25; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .4;
-prat_fall_accel = .65; //multiplier of air_accel while in pratfall
+air_accel = .37;
+prat_fall_accel = 1; //multiplier of air_accel while in pratfall
 air_friction = .0375;
 max_djumps = 3;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
@@ -50,7 +50,7 @@ walljump_vsp = 8;
 walljump_time = 32;
 max_fall = 8.5; //maximum fall speed without fastfalling
 fast_fall = 11; //fast fall speed
-gravity_speed = .4;
+gravity_speed = .385;
 hitstun_grav = .5;
 knockback_adj = 1.2; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
@@ -68,10 +68,10 @@ for (i = 0; i <= max_djumps; i += 1) {
 }
 
 //jump stuff
-crouch_jump_speed = 13;
+crouch_jump_speed = 15;
 stand_jump_speed = jump_speed;
 
-crouch_jump_hsp = 1;
+crouch_jump_hsp = 2;
 stand_jump_hsp = max_jump_hsp;
 
 crouch_jump_accel = 0.15;
@@ -80,9 +80,10 @@ stand_jump_accel = air_accel;
 crouch_jump_sound = sound_get("bounce");
 
 //crouch animation frames
-crouch_startup_frames = 4;
-crouch_active_frames = 1;
-crouch_recovery_frames = 2;
+crouch_startup_frames = 3;
+crouch_active_frames = 6;
+crouch_recovery_frames = 3;
+
 
 //parry animation frames
 dodge_startup_frames = 1;
@@ -189,17 +190,17 @@ BOULDER_DIR_R  = 4;
 BOULDER_DIR_UR = 5;
 BOULDER_DIR_B  = 6;
 
-BOULDER_COOLDOWN = 1.33;  // Cooldown in seconds for Up-B
+BOULDER_COOLDOWN = 1.3;  // Cooldown in seconds for Up-B
 
-BOULDER_BASE_DAMAGE    = 6;
+BOULDER_BASE_DAMAGE    = 7;
 BOULDER_BASE_KNOCKBACK = 6;
 BOULDER_FLIPPER = 1;
-BOULDER_KNOCKBACK_SCALING = 0.33;
+BOULDER_KNOCKBACK_SCALING = 0.25;
 
 BOULDER_BOUNCE_DAMAGE = 3;
-BOULDER_BOUNCE_KNOCKBACK = 6;
+BOULDER_BOUNCE_KNOCKBACK = 7;
 BOULDER_BOUNCE_FLIPPER = 6;
-BOULDER_BOUNCE_KNOCKBACK_SCALING = 0.15;
+BOULDER_BOUNCE_KNOCKBACK_SCALING = 0.25;
 
 BOULDER_SPIKE_BONUS = .33 //Multiplies the knockback the closer to straight down they're sent.
 
@@ -215,8 +216,8 @@ boulder_dir = BOULDER_DIR_U;
 
 //F-special
 
-glide_vsp_limit = 11.5;
-glide_vsp_rate = 1.5;
+glide_vsp_limit = 6;
+glide_vsp_rate = 1.2;
 glide_cooldown = .66; //Cooldown in seconds for f-special
 
 glide_tired_vsp_limit = 7.5;
@@ -227,21 +228,23 @@ glide_used = 0;
 //D-special
 
 dspecial_limit = 100; //D-special won't damage more than this to match %s.
-dspecial_drainrate = .08; //This is per frame. 0.1 will heal back 1 every 10 frames. setting this to 0 will disable the drain entirely.
+dspecial_drainrate = .065; //This is per frame. 0.1 will heal back 1 every 10 frames. setting this to 0 will disable the drain entirely.
 
 archen_dspecial_damage = 0; //this is just for keeping track of damage for draining. changing this won't do anything useful.
 
 //N-Special
 
 nspecial_active = 0;
-nspecial_friction = 0.945;
+nspecial_friction = 0.93;
 nspecial_anim_speed = 0.2;
-nspecial_rock_vspeed = -3; //For when you spawn a rock using nspecial.
-
-nspecial_off_vsp = 4.5; //Pushes the rock up when you disable AP.
+nspecial_rock_vspeed = -4; //For when you spawn a rock using nspecial.
+nspecial_off_vsp = -7; //Pushes the rock up when you disable AP.
 
 nspecial_current = noone;
 nspecial_image = -1;
+
+uspecial_vfx_article = instance_create(-10000, -10000, "obj_article1");
+
 
 // UI
 POWER_BAR_COLOUR_OFF  = make_colour_rgb(255, 255, 255);  // Colour for neutral state
@@ -275,3 +278,6 @@ Hikaru_Title = "Bird Fox";
 
 // Taunt Static
 taunt_timer = 0;
+
+beakss = hit_fx_create( sprite_get( "beakss" ), 45 );
+beakss2 = hit_fx_create( sprite_get( "beakss2" ), 42 );

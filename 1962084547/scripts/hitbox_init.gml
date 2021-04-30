@@ -19,15 +19,50 @@ if (attack == AT_USPECIAL) {
 	
 	hit_by_fspecial = 0;
 	
-	hitby = AT_TAUNT;
+	hitby_attack = AT_TAUNT;
+	hitby_group = -1;
 	should_crack = 0;
 	if player_id.nspecial_current == id should_crack = 2;
 	
 	bounce_fx = 194;
 	
+	in_hitpause_timer = 0;
 	
 	trailtimer = 4;
 	
+	egg_hitbox_is_active = true;
+	
+	with (player_id.uspecial_vfx_article) {
+		for (var i = 0; i < trail_count; i++) {
+			if (hb_array_id[i]) == noone {
+				hb_array_id[i] = other.id;
+				hb_array_state[i] = -1;
+				break;
+			}
+		}
+	}
+	
+//ALT EGGS
+switch (get_player_color( player_id.player ))
+{
+    case 4: sprite_index = sprite_get("inner_boulder"); break;
+    case 5: sprite_index = sprite_get("abyss_boulder"); break;
+    case 6: sprite_index = sprite_get("frozen_boulder"); break;
+    case 8: sprite_index = sprite_get("coco_boulder"); break;
+    case 10: sprite_index = sprite_get("fury_boulder"); break;
+    case 11: sprite_index = sprite_get("golem_boulder"); break;
+    case 13: sprite_index = sprite_get("raven_boulder"); break;
+    case 19: sprite_index = sprite_get("bee_boulder"); break;
+    case 21: sprite_index = sprite_get("wind_boulder"); break;
+    case 22: sprite_index = sprite_get("amethyst_boulder"); break;
+    case 23: sprite_index = sprite_get("spacey_boulder"); break;
+    case 24: sprite_index = sprite_get("stone_boulder"); break;
+    case 25: sprite_index = sprite_get("phoenix_boulder"); break;
+    case 27: sprite_index = sprite_get("baked_boulder"); break;
+    case 29: sprite_index = sprite_get("spook_boulder"); break;
+}
+
+
 	//bounce_fx = hit_fx_create(sprite_get("boulder_bounce"), 30));
 	
 	//If you want to use a custom effect, delete the "//" on the line above this one.

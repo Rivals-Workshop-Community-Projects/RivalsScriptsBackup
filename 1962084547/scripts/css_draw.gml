@@ -21,9 +21,9 @@ var colourrrrr = merge_colour(make_colour_rgb(red1, green1, blue1), c_white, 0.5
 //patch_month = "MAR";
 image_alpha = max(image_alpha-0.02, 0);
 
-var num_alts = 14;
+var num_alts = 18;
 var alt_new = get_player_color(player);
-if ((alt_new != 15 && alt_new != image_index - 1) || (alt_new == 15 && (image_index == 15 || image_index == 1))) // image_index is global
+if ((alt_new != 32 && alt_new != image_index - 1) || (alt_new == 18 && (image_index == 18 || image_index == 1))) // image_index is global
 	image_alpha = 1.5;
 image_index = alt_new;
 
@@ -35,14 +35,30 @@ alt_name[4]  = "Devolition";
 alt_name[5]  = "Abyss";
 alt_name[6]  = "Frozen";
 alt_name[7]  = "Arctic";
-alt_name[8]  = "Haunting";
+alt_name[8]  = "Coco the nut";
 alt_name[9]  = "Toxic";
-alt_name[10] = "Scrambled";
+alt_name[10] = "FURY";
 alt_name[11] = "Golem";
-alt_name[12] = "Pastel";
-alt_name[13] = "Early Access";
-alt_name[14] = "Seagull";
-alt_name[15] = "Pilot";
+alt_name[12] = "Bird Gal";
+alt_name[13] = "Ravenous";
+alt_name[14] = "Gulliver";
+alt_name[15] = "Angel";
+alt_name[16] = "Blue Footed Bobby";
+alt_name[17] = "Blue Jay";
+alt_name[18] = "Glimmer Guy";
+alt_name[19] = "Bee";
+alt_name[20] = "1Bit Guy";
+alt_name[21] = "Rolling Wind";
+alt_name[22] = "Amethyst";
+alt_name[23] = "Spacey";
+alt_name[24] = "Stone";
+alt_name[25] = "Phoenix Guy";
+alt_name[26] = "Reverse Guy";
+alt_name[27] = "Baked Bird";
+alt_name[28] = "Fierce";
+alt_name[29] = "Spook";
+alt_name[30] = "Angry";
+alt_name[31] = "Angel";
 
 draw_set_halign(fa_left);
 

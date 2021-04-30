@@ -29,3 +29,11 @@ down_icon = power_state == POWER_STATE_DOWN ? spr_power_icon_down_1 : spr_power_
 
 draw_sprite_ext(up_icon, 1, POWER_ICON_UP_X, POWER_ICON_UP_Y, 2, 2, 0, c_white, 1);
 draw_sprite_ext(down_icon, 1, POWER_ICON_DOWN_X, POWER_ICON_DOWN_Y, 2, 2, 0, c_white, 1);
+
+
+with (pHitBox) {
+	if (player_id != other || orig_player != other.player || attack != AT_USPECIAL) continue;
+	draw_debug_text(x - 40, y - 60, string(hit_by_fspecial));
+	
+}
+*/

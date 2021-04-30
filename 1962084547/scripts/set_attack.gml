@@ -17,7 +17,7 @@ if (attack == AT_USPECIAL && free && move_cooldown[attack] == 0) {
 }
 if attack == AT_NSPECIAL {
 	if nspecial_active {
-		window = 3;
+		attack = AT_NSPECIAL_2;
 	}
 }
 

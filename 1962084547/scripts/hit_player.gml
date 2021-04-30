@@ -4,9 +4,18 @@
 // my_hitboxID = The hitbox we hit them with.
 // orig_knock  = Knockback given.
 
+if my_hitboxID.attack == AT_DAIR && check_if_bg_is_in_an_attack_state_and_has_not_been_parried() {
+	hsp = get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num,  HG_PROJECTILE_HSPEED)*spr_dir
+	vsp = get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num,  HG_PROJECTILE_VSPEED)
+	old_hsp = hsp;
+	old_vsp = vsp;
+}
 
 
-if my_hitboxID.attack == AT_DSPECIAL {
+
+
+if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) {
+	if my_hitboxID.attack == AT_DSPECIAL  {
 	var damdiff = min(get_player_damage(player) - get_player_damage(hit_player_obj.player), dspecial_limit)
 	if damdiff > 0 {
 		take_damage(hit_player_obj.player, player, damdiff);
@@ -22,13 +31,16 @@ if my_hitboxID.attack == AT_USPECIAL {
 	}
 }
 
-if my_hitboxID.attack == AT_FSPECIAL {
+if my_hitboxID.attack == AT_FSPECIAL && !was_parried && hit_player_obj.state_cat == SC_HITSTUN {
 	attack_end();
+	destroy_hitboxes();
 	set_attack(AT_FSPECIAL_2);
 	spawn_hit_fx(x, y, hit_fx_create(sprite_get("fspecial_fx"), 15))
-//	vsp = -(y-(hit_player_obj.y-hit_player_obj.char_height/2))
+	//	vsp = -(y-(hit_player_obj.y-hit_player_obj.char_height/2))
 	y = ((hit_player_obj.y-hit_player_obj.char_height/2))
 }
+}
+
 
 original_knock = hit_player_obj.orig_knock
 
@@ -52,3 +64,12 @@ debug_last_knock = hit_player_obj.orig_knock
 if (attack == AT_USPECIAL) {
     boulder_alive = false;
 }
+
+
+
+#define check_if_opponent_is_in_hitstun
+return (hit_player_obj.state_cat == SC_HITSTUN);
+
+
+#define check_if_bg_is_in_an_attack_state_and_has_not_been_parried
+return ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && !was_parried );
