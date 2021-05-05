@@ -117,6 +117,43 @@ abyssHime_deathspr = sprite_get("glace_sliced");
 		daroach_text[page] = "Okay, but make it quick!";
 		page++;
 		
+//Amber
+amber_herObj = noone; //The object ID of Amber when she hugs. Amber's own script will set this when the hug is inititated
+amber_thisHugSprite = sprite_get("glace_hug");
+amber_herHugSprite = sprite_get("amber_hug");
+amber_startHug = false; //This variable is set true from Amber's scripts
+amber_thisSpriteInFront = false; //When true, this character's sprite is rendered over Amber's sprite
+amber_autoTurnToHer = true; //This character will automatically face towards Amber upon hug activatation when true
+
+amber_hugStartPos[0] = 42; //The x target offset point (from Amber's pos) where the player should hug Amber at. 
+amber_hugStartPos[1] = 0; //The y target offset point. Recommended to keep this at 0 for grounded interaction
+
+amber_hugExitPos[0] = 42; //The x target offset point (from Amber's pos) where the player stands at when exiting hug state.
+amber_hugExitPos[1] = 0; //The y target offset point.
+
+//The x target offset positions will inherit the character's spr_dir when this is true.
+//Set this to true for character interactions that face toward each other such as hugging
+//Set this to false for centered interaction animations
+amber_useSprDirOffset = true; 
+
+amber_hugExitTimer = 30; //How many frames should pass before either player can exit the hug window loop
+amber_hugExitWindow = 3; //The window to jump to when either player presses a button to exit hug loop
+
+//Assist Buddy
+assistAttack = AT_DSPECIAL; //The attack to use as the assist
+assistOffsetX = 69; //The horizontal distance they spawn from the player
+assistOffsetY = 32; //The vertical distance they spawn from the player
+assistVelX = 4; //The horizontal velocity applied when the assist is called
+assistVelY = 0; //The vertical velocity applied when the assist is called
+assistGroundOnly = false; //Whether or not they are forced to the ground
+assistFloat = true; //Whether or not they stay in place vertically
+assistCool = 240; //The time it takes for the assist to recharge
+
+//Final Smash
+fs_portrait_x = 31;
+fs_char_portrait_y = 69;
+fs_char_chosen_final_smash = "custom";
+
 //glace_Freeze = false;
 
 set_victory_theme( sound_get( "glace_victory" ) );

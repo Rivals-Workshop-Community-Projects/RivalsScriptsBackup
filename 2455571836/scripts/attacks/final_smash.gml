@@ -1,0 +1,90 @@
+set_attack_value(49, AG_MUNO_ATTACK_NAME, "Final Smash");
+set_attack_value(49, AG_CATEGORY, 2);
+set_attack_value(49, AG_SPRITE, sprite_get("uspecial"));
+set_attack_value(49, AG_NUM_WINDOWS, 5);
+set_attack_value(49, AG_HAS_LANDING_LAG, 4);
+set_attack_value(49, AG_LANDING_LAG, 0);
+set_attack_value(49, AG_HURTBOX_SPRITE, sprite_get("uspecial"));
+
+set_window_value(49, 1, AG_WINDOW_TYPE, 1);
+set_window_value(49, 1, AG_WINDOW_LENGTH, 9);
+set_window_value(49, 1, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(49, 1, AG_WINDOW_ANIM_FRAME_START, 8);
+set_window_value(49, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(49, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
+set_window_value(49, 1, AG_WINDOW_SFX_FRAME, 8);
+set_window_value(49, 1, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(49, 1, AG_WINDOW_HSPEED, 0);
+set_window_value(49, 1, AG_WINDOW_VSPEED_TYPE, 1);
+set_window_value(49, 1, AG_WINDOW_VSPEED, -8);
+
+set_window_value(49, 2, AG_WINDOW_TYPE, 9);
+set_window_value(49, 2, AG_WINDOW_LENGTH, 1);
+set_window_value(49, 2, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(49, 2, AG_WINDOW_ANIM_FRAME_START, 10);
+set_window_value(49, 2, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(49, 2, AG_WINDOW_HSPEED, 0);
+set_window_value(49, 2, AG_WINDOW_VSPEED_TYPE, 1);
+set_window_value(49, 2, AG_WINDOW_VSPEED, 15);
+set_window_value(49, 2, AG_USES_CUSTOM_GRAVITY, 1);
+set_window_value(49, 2, AG_WINDOW_CUSTOM_GRAVITY, 2.0);
+
+set_window_value(49, 3, AG_WINDOW_TYPE, 1);
+set_window_value(49, 3, AG_WINDOW_LENGTH, 2);
+set_window_value(49, 3, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(49, 3, AG_WINDOW_ANIM_FRAME_START, 13);
+set_window_value(49, 3, AG_WINDOW_HAS_SFX, 1);
+set_window_value(49, 3, AG_WINDOW_SFX, asset_get("sfx_ice_nspecial_hit_ground"));
+set_window_value(49, 3, AG_WINDOW_SFX_FRAME, 1);
+
+set_window_value(49, 4, AG_WINDOW_TYPE, 1);
+set_window_value(49, 4, AG_WINDOW_LENGTH, 30);
+set_window_value(49, 4, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(49, 4, AG_WINDOW_ANIM_FRAME_START, 13);
+set_window_value(49, 4, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(49, 4, AG_WINDOW_HSPEED, 0);
+set_window_value(49, 4, AG_WINDOW_HAS_WHIFFLAG, 8);
+set_window_value(49, 4, AG_WINDOW_INVINCIBILITY, 1);
+
+set_window_value(49, 5, AG_WINDOW_TYPE, 1);
+set_window_value(49, 5, AG_WINDOW_LENGTH, 10);
+set_window_value(49, 5, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(49, 5, AG_WINDOW_ANIM_FRAME_START, 15);
+set_window_value(49, 5, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(49, 5, AG_WINDOW_HSPEED, 0);
+set_window_value(49, 5, AG_WINDOW_HAS_WHIFFLAG, 8);
+
+set_num_hitboxes(49,2);
+
+set_hitbox_value(49, 1, HG_PARENT_HITBOX, 1);
+set_hitbox_value(49, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(49, 1, HG_WINDOW, 4);
+set_hitbox_value(49, 1, HG_LIFETIME, 30);
+set_hitbox_value(49, 1, HG_HITBOX_X, 0);
+set_hitbox_value(49, 1, HG_HITBOX_Y, -130);
+set_hitbox_value(49, 1, HG_WIDTH, 230);
+set_hitbox_value(49, 1, HG_HEIGHT, 270);
+set_hitbox_value(49, 1, HG_SHAPE, 2);
+set_hitbox_value(49, 1, HG_PRIORITY, 4);
+set_hitbox_value(49, 1, HG_DAMAGE, 50);
+set_hitbox_value(49, 1, HG_ANGLE, 90);
+set_hitbox_value(49, 1, HG_BASE_KNOCKBACK, 11);
+set_hitbox_value(49, 1, HG_KNOCKBACK_SCALING, 1.5);
+set_hitbox_value(49, 1, HG_EXTRA_HITPAUSE, 20);
+
+set_hitbox_value(49, 2, HG_PARENT_HITBOX, 2);
+set_hitbox_value(49, 2, HG_HITBOX_TYPE, 2);
+set_hitbox_value(49, 2, HG_WINDOW, 4);
+set_hitbox_value(49, 2, HG_LIFETIME, 30);
+set_hitbox_value(49, 2, HG_HITBOX_X, -132);
+set_hitbox_value(49, 2, HG_HITBOX_Y, -286);
+set_hitbox_value(49, 2, HG_WIDTH, 0);
+set_hitbox_value(49, 2, HG_HEIGHT, 0);
+set_hitbox_value(49, 2, HG_HIT_SFX, sound_get("glace_tag"));
+set_hitbox_value(49, 2, HG_PROJECTILE_SPRITE, sprite_get("glace_final_smash_spike"));
+set_hitbox_value(49, 2, HG_PROJECTILE_MASK, sprite_get("glace_final_smash_spike_mask"));
+set_hitbox_value(49, 2, HG_PROJECTILE_GRAVITY, 0);
+set_hitbox_value(49, 2, HG_PROJECTILE_ANIM_SPEED, 0.25);
+set_hitbox_value(49, 2, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(49, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(49, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1);

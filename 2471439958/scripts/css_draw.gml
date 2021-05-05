@@ -14,9 +14,9 @@ patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_cha
 //patch_month = "APRIL";
 image_alpha = max(image_alpha-0.02, 0);
 
-var num_alts = 29;
+var num_alts = 30;
 var alt_new = get_player_color(player);
-if ((alt_new != 28 && alt_new != image_index - 1) || (alt_new == 28 && (image_index == 15 || image_index == 1))) // image_index is global
+if ((alt_new != 30 && alt_new != image_index - 1) || (alt_new == 30 && (image_index == 15 || image_index == 1))) // image_index is global
 	image_alpha = 1.5;
 image_index = alt_new;
  
@@ -50,6 +50,8 @@ alt_name[24] = "Arizona";
 alt_name[25] = "Oleander";
 alt_name[26] = "Alternate Reality";
 alt_name[27] = "Margaret Moonlight";
+alt_name[28] = "Whitty";
+alt_name[29] = "Bat Bat";
  
  
 draw_set_halign(fa_left);

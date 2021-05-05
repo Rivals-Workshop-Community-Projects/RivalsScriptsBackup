@@ -27,7 +27,7 @@ alt_name[0]  = "Lukastar";
 alt_name[1]  = "Blue";
 alt_name[2]  = "Orange";
 alt_name[3]  = "Green";
-alt_name[4]  = "Grey";
+alt_name[4]  = "Black";
 alt_name[5]  = "Purple";
 alt_name[6]  = "Kitsune";
 alt_name[7]  = "Trancend";
@@ -35,7 +35,7 @@ alt_name[8]  = "Roaring Beast";
 alt_name[9]  = "Protean Aura";
 alt_name[10]  = "Thunderclap";
 alt_name[11]  = "Lonely Prince";
-alt_name[12]  = "Fink Pong";
+alt_name[12]  = "Ice Bnuuy";
 alt_name[13]  = "Ori";
 alt_name[14]  = "Miles per hour";
 alt_name[15]  = "Nova Visionary";
@@ -55,7 +55,8 @@ alt_name[28]  = "Avatar's Bison";
 alt_name[29]  = "Moon Kitten";
 alt_name[30]  = "Abyss";
 alt_name[31]  = "Spectrum";
-var num_alts = 32;
+var num_alts = array_length_1d(alt_name);
+shader_end();
 
 //draw_sprite_ext(sprite_get("charselect"),1,x+8,y+8,2,2,0,make_colour_rgb(outline_colour[0],outline_colour[1],outline_colour[2]),1);
 

@@ -377,7 +377,7 @@ with phone{
 	
 	initTip("NSpecial: Snowball");
 	initTipWords("Low damage, low knockback, but all the annoying. Will you stop throwing snowballs? Up to you.");
-	initTipImage(player_id.spr_nspecial, 2, fa_left, 1, c_white, 0);
+	initTipImage(player_id.spr_nspecial, -5, fa_left, 1, c_white, 0);
 	
 	initTip("FSpecial: Kitty Pounce -> Roll");
 	initTipWords("Using the FSpecial once will put you in a state where you must commit, hit an opponent, or land onto the ground. Press the special button again after performing FSpecial to start rolling.");
@@ -446,13 +446,32 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	 
+	initPatch("1.3", "May 2nd, 2021");
+	initPatchWords("Misc. Updates
+	~ AI code added
+	- Abyss Runes added
+	- New cheat code added
+	- Added an excerpt about the DimpsBuild of MunoPhone");
+	
+	initPatchWords("Visual Updates
+	* Up Taunt now added
+	* Neutral Taunt replaced with a new non-loopable taunt
+	* New sprites for NSpecial
+	* New sprites for FSpecial
+	* Workshop: Amber hug compatibility added
+	* Workshop: Assist buddy compatibility added
+	* Workshop: Final Smash compatibility added
+	");
+	initPatchWords_ext("You thought we were done here?", fa_left, c_gray, 1, 0);
 	
 	initPatch("1.2", "April 20th, 2021");
 	
 	initPatchWords("Attack Buffs
 	+ Made the FStrong hitbox a little bit taller
 	+ Buffed DTilt slightly
-	+ Made it a little more possible to dash dance with her");
+	+ Made it a little more possible to dash dance with her
+	");
 	initPatchWords_ext("She really didn't need a lot of these.", fa_left, c_gray, 1, 0);
 	
 	initPatchWords("Attack Nerfs
@@ -470,7 +489,8 @@ with phone{
 	- Reduced the hitpause on Jabs 1 and 2
 	- Nerfed the damage on FStrong
 	- Added a little bit of starting lag on FStrong
-	- Nerfed Jab 3 slightly");
+	- Nerfed Jab 3 slightly
+	");
 	initPatchWords_ext("We gotta make her tournament viable, somehow!", fa_left, c_gray, 1, 0);
 	
 	initPatchWords("Visual Updates
@@ -488,12 +508,13 @@ with phone{
 	* Workshop: Rat All Out Attack Quote added
 	* Workshop: Abyss Hime sliced sprite added
 	* Workshop: Dracula dialogue added
-	* Workshop: Daroach dialogue added");
+	* Workshop: Daroach dialogue added
+	");
 	initPatchWords_ext("Wow! So much better looking!", fa_left, c_gray, 1, 0);
 	
 	initPatch("1.0", "April 12th, 2021");
 	initPatchWords_ext("THE INITIAL RELEASE!!", fa_center, c_white, 0, 1);
-	initPatchImage(other.spr_taunt_2, -4, fa_center, 1, c_white, 1);
+	initPatchImage(other.spr_sleep, -25, fa_center, 1, c_white, 0);
 	
 }
 
@@ -545,20 +566,23 @@ with self{
 	
 	//We'll add cheat codes later...//
 	
-	// post_draw.gml
-	//initCheat("Say woag", "cheat_funny_snail", [0, 1], ["no", "yes"], "Say woag? Yes. No. AAAAAA");
-	
 	// update.gml
 	initCheat("Max Jumps", "cheat_more_djumps", [1, 2, 3, 4, 5, 6, 7, 8, 9, 0], ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"], "Change Glace's maximum number of jumps.");
+	
+	// update.gml
+	initCheat("wide?", "cheat_widebert", [1, 1.25, 1.5, 2, 3, 5, 10, 20, 0.5, 0.25, 0.1, 0], ["Normal", "wide", "w i d e", "w  i  d  e", "w   i   d   e", "w    i    d    e", "w     i     d     e", "w      h      a      t", "narrow", "narrower", "narrowerer", "."], "how");
+	
+	// set_attack.gml
+	initCheat("Final Smash Toggle", "cheat_final_smash", [0, 1], ["Off", "On"], "Change the NSPECIAL to the Final Smash.");
+	
+	// post_draw.gml
+	//initCheat("Say woag", "cheat_funny_snail", [0, 1], ["no", "yes"], "Say woag? Yes. No. AAAAAA");
 	
 	// attack_update.gml
 	//initCheat("USpecial Flight Speed", "cheat_flight_speed", [1, 1.25, 1.5, 2, 3, 5, 10], ["1", "1.25", "1.5", "2", "3", "5", "10"], "Change the speed of USpecial's flight.");
 	
 	// attack_update.gml
 	//initCheat("FSpecial Cancel", "cheat_fspecial_cancel", [0, 1], ["Off", "On"], "Cancel FSpecial into any action.");
-	
-	// update.gml
-	initCheat("wide?", "cheat_widebert", [1, 1.25, 1.5, 2, 3, 5, 10, 20, 0.5, 0.25, 0.1, 0], ["Normal", "wide", "w i d e", "w  i  d  e", "w   i   d   e", "w    i    d    e", "w     i     d     e", "w      h      a      t", "narrow", "narrower", "narrowerer", "."], "how");
 	
 	// init_shader.gml
 	//initCheat("Disco", "cheat_skittles", [0, 1], ["Off", "On"], "skittles");
@@ -703,6 +727,13 @@ with phone{
 	 * if you want. AND you can have multiple of these
 	 */
 	
+	initAbout("About The DimpBuild", "The customized MunoPhone created by Dimpsuu.
+	
+	This is a version of MunoPhone created by Dimpsuu, the contents created can be reused but recommend credit.
+	
+	Twitter: @Dimpsy_Boots
+	Discord: Dimpsuu#1376");
+	
 	initAbout("About Glace", "Original character created by Dimpsuu.
 	
 	SFX:
@@ -711,7 +742,9 @@ with phone{
 	- Sonic Advance
 	- Mega Man Zero
 	- Minecraft
-	- Skullgirls");
+	- Skullgirls
+	- Mario & Luigi: Superstar Saga
+	- Mega Man 8");
 	
 }
 
@@ -802,7 +835,7 @@ if pho_has_trum_codec{
 if pho_has_otto_bhead{
 	
 	otto_bobblehead_sprite = sprite_get("_pho_glace_bobble_head");
-	otto_bobblebody_sprite = sprite_get("_pho_glace_bobble_body"); // you only need to change this one if you REALLY want to. most chars just use the head sprite
+	//otto_bobblebody_sprite = sprite_get("_pho_glace_bobble_body"); // you only need to change this one if you REALLY want to. most chars just use the head sprite
 	
 }
 

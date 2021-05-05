@@ -15,13 +15,16 @@ if (attack == AT_NSPECIAL){
 		fc_backspin = false;
 		fc_bunt = false;
 		
-		if(vsp > 0) vsp/=4;
+		if(vsp > 0) vsp/=6;
+		else vsp/=1.2;
 		
 		// Normal sprites
 		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
 		set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_air"));
 		set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 		set_attack_value(AT_NSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("nspecial_hurt_air"));
+		reset_hitbox_value(AT_NSPECIAL,1,HG_PROJECTILE_AIR_FRICTION);
+		reset_hitbox_value(AT_NSPECIAL,1,HG_PROJECTILE_GRAVITY);
 		
 		with(pHurtBox) 
 			if(other.player == player && !other.free) sprite_index = sprite_get("nspecial_hurt");
@@ -229,10 +232,17 @@ if (attack == AT_NSPECIAL){
 		// Cooldown
 		move_cooldown[AT_NSPECIAL] = 45;
 		
-		throw_speed = fc_bunt ? firecracker_speed * .75 : firecracker_speed;
+		//throw_speed = fc_bunt ? firecracker_speed * .75 : firecracker_speed;
+		throw_speed = firecracker_speed;
+		
+		
 		// Set firecracker speed
-		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, throw_speed * (-dsin(firecracker_angle)*1.3) + (vsp*0.5));
+		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, throw_speed * (-dsin(firecracker_angle)*1.3) + (vsp* (fc_bunt ? 1.4 : 0.5) ));
 		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, throw_speed * dcos(firecracker_angle));
+		if(fc_bunt){ 
+			//set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_AIR_FRICTION, .4);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GRAVITY, .68);
+		}
 		
 		// Set firecracker spawn loc
 		
@@ -258,6 +268,8 @@ if (attack == AT_NSPECIAL){
 		
 		// Set firecracker sprite
 		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get(fc_string));
+		
+		
 	}
 }
 #endregion
@@ -381,7 +393,7 @@ if (attack == AT_FSPECIAL){
 		
 		
 		// If its my own firecracker
-		if(tempProj.player_id == id)
+		if(tempProj.player_id.is_tenru)
 		{
 			if(!tempProj.transcendent) tempProj.bounced = false;
 			tempProj.transcendent = true;
@@ -429,7 +441,7 @@ if (attack == AT_FSPECIAL){
 
 			
 			// Can only grab own projectiles. Leaving code here to make it a rune later.
-			if (tempProj.orig_player == player && (tempProj.attack == AT_NSPECIAL) && tempProj.hbox_num == 1) 
+			if (tempProj.player_id.is_tenru && (tempProj.attack == AT_NSPECIAL) && tempProj.hbox_num == 1) 
 			{
 				if((is_bashable == 0 && is_transcendent == 0 && (has_hsp != 0 || has_vsp != 0)) || tempProj.player_id.url == CH_WRASTOR)
 				{
@@ -796,7 +808,7 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
         		with(grabbedid)
         		{
         			y-=10;
-        			x+=36*other.spr_dir;
+        			x+=32*other.spr_dir;
         		}	
         	}
         	else if(window_timer >= 14)
@@ -804,7 +816,7 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
         		with(grabbedid)
         		{
         			y+=22;
-        			x+=16*other.spr_dir;
+        			x+=22*other.spr_dir;
         		}
         	}
         	if(window_timer == 17)
@@ -1157,6 +1169,7 @@ if (attack == AT_USPECIAL){
 		caught_projectile = false;
 		grabbed_solid = false;
 		KRAGG = false;
+		dspec_buffer = false;
 	}
 	can_fast_fall = false;
 	
@@ -1203,12 +1216,15 @@ if (attack == AT_USPECIAL){
     	spr_dir *= -1;
     }
     
-
+	// Dspec buffer
+    if(has_hit_player && special_pressed && joy_dir >= 225 && joy_dir <= 315) dspec_buffer = true;
     
     // Cancel into dspecial
-    if(window >= 8 && special_pressed && window_timer > 4 && joy_dir >= 225 && joy_dir <= 315) {
+    if(window >= 8  && window_timer > 4 && ( (special_pressed && joy_dir >= 225 && joy_dir <= 315) || dspec_buffer)  ) {
     	set_state(PS_IDLE_AIR);
+    	set_attack(AT_DSPECIAL);
     	from_uspecial = true;
+    	dspec_buffer = false;
     }
     
     // Grabbing projectile
@@ -1238,7 +1254,7 @@ if (attack == AT_USPECIAL){
 				KRAGG = true;
 			}
 			// If its my own firecracker
-			if(tempProj.player_id == id)
+			if(tempProj.player_id.is_tenru)
 			{
 				tempProj.transcendent = true;
 			}
@@ -1284,7 +1300,7 @@ if (attack == AT_USPECIAL){
 			// this is a workaround.
 			
 			// Can only grab own projectiles. Leaving code here to make it a rune later.
-			if (tempProj.orig_player == player && (tempProj.attack == AT_NSPECIAL) && tempProj.hbox_num == 1) 
+			if (tempProj.player_id.is_tenru && (tempProj.attack == AT_NSPECIAL) && tempProj.hbox_num == 1) 
 			if((is_bashable == 0 && is_transcendent == 0 && (has_hsp != 0 || has_vsp != 0)) || tempProj.player_id.url == CH_WRASTOR)
 			{
 				
@@ -1448,6 +1464,8 @@ if (attack == AT_USPECIAL){
 	if(!hitpause && grabbedid == noone && grabbedProj == noone && window >= 3 && window <= 7 && !KRAGG)
 		if(window_timer <= 1 && window < 7)
 			create_hitbox(AT_USPECIAL,window-2,x,y);
+			
+
     
 }
 #endregion
@@ -1840,7 +1858,7 @@ if (attack == AT_AIR_DSPECIAL){
 				}
 			}
 			// If its my own firecracker
-			if(tempProj.player_id == id)
+			if(tempProj.player_id.is_tenru)
 			{
 				tempProj.transcendent = true;
 			}
@@ -1884,7 +1902,7 @@ if (attack == AT_AIR_DSPECIAL){
 
 			
 			// Can only grab own projectiles. Leaving code here to make it a rune later.
-			if (tempProj.orig_player == player && (tempProj.attack == AT_NSPECIAL) && tempProj.hbox_num == 1) 
+			if (tempProj.player_id.is_tenru && (tempProj.attack == AT_NSPECIAL) && tempProj.hbox_num == 1) 
 			if((is_bashable == 0 && is_transcendent == 0 && (has_hsp != 0 || has_vsp != 0)) || tempProj.player_id.url == CH_WRASTOR)
 			{
 				window = 4;
@@ -1894,7 +1912,7 @@ if (attack == AT_AIR_DSPECIAL){
 				
 				// Set grabbed projectile properties
 				grabbedProj = tempProj;
-				var yoff = get_hitbox_value(AT_AIR_DSPECIAL, 2, HG_HITBOX_Y)+40;
+				var yoff = get_hitbox_value(AT_AIR_DSPECIAL, 2, HG_HITBOX_Y);
 				var xoff = get_hitbox_value(AT_AIR_DSPECIAL, 2, HG_HITBOX_X)*spr_dir;
 				with(grabbedProj)
 				{
@@ -2487,9 +2505,24 @@ if(attack == AT_DAIR){
 #region Uair
 //Dair code
 if(attack == AT_UAIR){
-
-	can_wall_jump = window == 5;
+	// Wall jump
+	can_wall_jump = window == 5 || window == 3;
 	
+	// Landing lag
+	if(window < 3 && has_hit_player) set_attack_value(AT_UAIR, AG_LANDING_LAG, 0);
+	else reset_attack_value(AT_UAIR, AG_LANDING_LAG);
+}
+#endregion
+
+#region Bair
+//Dair code
+if(attack == AT_BAIR){
+
+	can_wall_jump = window == 3 || window == 5 || window == 7;
+	
+	// Landing lag
+	if(window < 6 && has_hit_player) set_attack_value(AT_BAIR, AG_LANDING_LAG, 0);
+	else reset_attack_value(AT_BAIR, AG_LANDING_LAG);
 }
 #endregion
 
@@ -2519,26 +2552,62 @@ if(attack == AT_UAIR){
 //FStrong code
 if(attack == AT_FSTRONG){
 
+	// Init
+	if(window == 1 && window_timer == 1){
+		reset_attack_value(AT_FSTRONG, AG_SPRITE);
+		reset_attack_value(AT_FSTRONG, AG_AIR_SPRITE);
+		reset_attack_value(AT_FSTRONG, AG_HURTBOX_SPRITE);
+		reset_attack_value(AT_FSTRONG, AG_HURTBOX_AIR_SPRITE);
+		reset_window_value(AT_FSTRONG, 6, AG_WINDOW_ANIM_FRAMES);
+		reset_window_value(AT_FSTRONG, 6, AG_WINDOW_ANIM_FRAME_START);
+		reset_window_value(AT_FSTRONG, 6, AG_WINDOW_HAS_CUSTOM_FRICTION);
+		reset_window_value(AT_FSTRONG, 6, AG_WINDOW_LENGTH);
+		
+		with(pHurtBox) 
+			if(other.player == player && !other.free) sprite_index = sprite_get("fstrong_hurt");
+			else if(other.player == player && other.free) sprite_index = sprite_get("fstrong_air_recover_hurt");
+	}
+
 	// Basic hsp boost
 	if(window == 3 && window_timer == 1) hsp = max(abs(hsp),12) * spr_dir;
 
-	if(window == 3)
+	if( (window == 3 || window == 4) && !was_parried)
 	{
 	if(left_down && spr_dir == 1)
-		hsp -= .2;
+		hsp -= 1;
 	if(right_down && spr_dir == -1)
-		hsp += .2;
+		hsp += 1;
 	}
 
 	// Endlag movement
 	if(((window == 5 && window_timer > 10) || window > 5))
 	{
-	if(left_down )
-		hsp = -5;
-	else if(right_down)
-		hsp = 5;
+		
+		if(left_down ) hsp = -7.8 + (window > 5 ? window_timer/2.5 : 0);
+		else if(right_down) hsp = 7.8 - (window > 5 ? window_timer/2.5 : 0);
 	}
 	
+	// Air ver
+	if(window == 4 && window_timer == phone_window_end && free){
+		set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_air"));
+		set_attack_value(AT_FSTRONG, AG_AIR_SPRITE, sprite_get("fstrong_air"));
+		set_attack_value(AT_FSTRONG, AG_HURTBOX_SPRITE, sprite_get("fstrong_air_hurt"));
+		set_attack_value(AT_FSTRONG, AG_HURTBOX_AIR_SPRITE, sprite_get("fstrong_air_hurt"));
+		
+		with(pHurtBox) 
+			if(other.player == player && !other.free) sprite_index = sprite_get("fstrong_air_hurt");
+			else if(other.player == player && other.free) sprite_index = sprite_get("fstrong_air_hurt");
+		
+		window = 6;
+		window_timer = 1;
+		
+		set_window_value(AT_FSTRONG, 6, AG_WINDOW_ANIM_FRAMES, 4);
+		set_window_value(AT_FSTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 12);
+		set_window_value(AT_FSTRONG, 6, AG_WINDOW_HAS_CUSTOM_FRICTION, 0);
+		set_window_value(AT_FSTRONG, 6, AG_WINDOW_LENGTH, 8);
+	}
+	
+
 	// Experemental weird feature
 	//if(window == 2 && shield_pressed) set_state(PS_IDLE);
 }

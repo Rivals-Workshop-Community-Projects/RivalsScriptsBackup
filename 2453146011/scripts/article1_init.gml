@@ -26,8 +26,12 @@ platform = noone;
 inPosition = false;
 
 fxCount = 30; 
+shake_timer = 0;
+
+destroyed = false;
 
 sprite_index = asset_get("empty_sprite");
+
 
 with(player_id){
     sound_play(sound_get("monarch_portalopen"))

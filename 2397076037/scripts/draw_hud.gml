@@ -89,10 +89,7 @@ if training {
         draw_debug_text(temp_x + 60,temp_y - 135,"If you have sufficient DT bars and your attack connected.");
         draw_debug_text(temp_x + 60,temp_y - 115,"you can hold Attack to charge Ex-move right away and");
         draw_debug_text(temp_x + 60,temp_y - 95, "cancel current attack into either [Judgement Cut] or [Round Trip].");
-        draw_debug_text(temp_x + 60,temp_y - 65,"If you stored a Ex-move by keep the Attack button held, and not getting hit");
-        draw_debug_text(temp_x + 60,temp_y - 45,"or perform another attack, you can cancel your airdodge, roll, or parry into Ex-move.");
-        
-        draw_debug_text(temp_x + 60,temp_y - 15,"Anyway, each stock you can down+taunt once for 3 free DT bars.");
+     draw_debug_text(temp_x + 60,temp_y - 45,"Anyway, each stock you can down+taunt once for 3 free DT bars.");
     }
     
     

@@ -51,7 +51,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GRAVITY, 0.56);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("pill_hit"));

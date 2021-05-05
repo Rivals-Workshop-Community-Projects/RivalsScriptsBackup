@@ -72,6 +72,8 @@ if attack == AT_USPECIAL{
 
 if attack == AT_NSPECIAL && hbox_num == 2 {
     
+    
+    
     if hitbox_timer < 10 {
     if x < player_id.x + 100*player_id.spr_dir {
         hsp += 0.06
@@ -166,6 +168,20 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
       nearbyhitbox = collision_circle( x, y , 32, asset_get("pHitBox"), true, true ) 
 	if nearbyhitbox != noone {
 	    
+	    if nearbyhitbox.type == 2  && nearbyhitbox.hit_priority >= 1 && nearbyhitbox.player != orig_player{
+             if nearbyhitbox.x < x {
+             hsp += 1
+	   	     } else {
+             hsp -= 1
+	   	     }
+	   	     
+	   	     if nearbyhitbox.y < y {
+             vsp += 1
+	   	     } else {
+             vsp -= 1
+	   	     }
+	   }
+	   
 	    //if nearbyhitbox.type == 2 && nearbyhitbox.hit_effect_x != -0.666 && hitbox_timer > 1 && hitbox_timer < 10 && hitbox_timer > 0{
 	    //    
         //    hsp = nearbyhitbox.hsp/4

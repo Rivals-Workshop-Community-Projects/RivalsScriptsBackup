@@ -1,28 +1,3 @@
-user_event(14);
-
-//lyca outline code
-var is_charged, old_out, new_color_r, new_color_g, new_color_b, gt, scale;
-is_charged = itemCredits > 0;
-if (cur == 15){
-	old_out = [76, 53, 0];
-} else {
-	old_out = [0,0,0];
-}
-new_color_r = lerp(old_out[0], abyss_col[0], itemCredits > 2 ? 1 : (itemCredits / 3.3));
-new_color_g = lerp(old_out[1], abyss_col[1], itemCredits > 2 ? 1 : (itemCredits / 3.3));
-new_color_b = lerp(old_out[2], abyss_col[2], itemCredits > 2 ? 1 : (itemCredits / 3.3));
-
-gt = (get_gameplay_time() mod 120) - 60;
-scale = (1 + abs(gt / 60));
-
-if(is_charged){
-	outline_color = [new_color_r/scale,new_color_g/scale,new_color_b/scale];
-	init_shader();
-} else {
-	outline_color = old_out;
-	shader_end();
-}
-
 if(itempoolUpdated == false){
 	updateItempool();
 	itempoolUpdated = true;

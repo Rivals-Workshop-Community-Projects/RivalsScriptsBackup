@@ -17,6 +17,6 @@ set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_SFX, sound_get("ancientpowerfast"))
 
 //Dismissing_2
 set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_TYPE, 420);
-set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 9);

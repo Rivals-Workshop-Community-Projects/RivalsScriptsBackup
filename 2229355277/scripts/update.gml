@@ -185,111 +185,122 @@ if (suspended_frames > 0)
 for (var i = 0; i < (8); i++){
     switch spellslot[i]{
     	// Because honestly i don't care
-        case 1:
-					spellslot[i] = 31;
-        	break;
-        case 2:
-					spellslot[i] = 37;
-          break;
-        case 3:
-					spellslot[i] = 38;
-          break;
-        case 4:
-					spellslot[i] = 29;
-          break;
-        case 5:
-					spellslot[i] = 26;
-        	break;
-        case 6:
-					spellslot[i] = 27;
-          break;
-				case 7:
-					spellslot[i] = 33;
-					break;
-				case 8:
-					spellslot[i] = 20;
-					break;
-				case 9:
-					spellslot[i] = 28;
-					break;
-				case 10:
-					spellslot[i] = 25;
-					break;
-				case 11:
-					spellslot[i] = 30
-					break;
-
-				case 20:
-					debugspell[i] = "Knock Down";
-					spellcost[i] = spKnockdown;
-					spellselect[i] = 11;
-					break;
-				case 25:
-					debugspell[1] = "EXPLOSION!!";
-					spellcost[i] = spExplosion;
-					spellselect[i] = 12;
-					break;
-				case 26:
-          debugspell[i] = "Ragnarok";
-					spellcost[i] = spRagnarok;
-					spellselect[i] = 7;
-          break;
-				case 27:
-          debugspell[i] = "Guillotine";
-					spellcost[i] = spGetNaeNaed;
-					spellselect[i] = 10;
-          break;
-				case 28:
-					debugspell[i] = "Crossfire";
-					spellcost[i] = spCrossfire;
-					spellselect[i] = 9;
-					break;
-				case 29:
-          debugspell[i] = "Empower Ring";
-					spellcost[i] = spEmpowerRing;
-					spellselect[i] = 5;
-          break;
-				case 30:
-					debugspell[i] = "Tri-Shot";
-					spellcost[i] = spTrishot;
-					spellselect[i] = 8;
-					break;
-				case 31:
-        	debugspell[i] = "Thunder";
-					spellcost[i] = spThunder;
-					spellselect[i] = 2;
-          break;
-				case 33:
-					debugspell[1] = "Echo";
-					spellcost[i] = spEcho;
-					spellselect[i] = 6;
-					break;
-				case 37:
-          debugspell[i] = "Pekay Fire";
-					spellcost[i] = spPekayFire;
-					spellselect[i] = 3;
-          break;
-				case 38:
-          debugspell[i] = "Bomb Drop";
-					spellcost[i] = spBomb;
-					spellselect[i] = 4;
-          break;
-        case -4:
-          debugspell[i] = "None";
-					spellcost[i] = 0;
-					spellselect[i] = 1;
-          break;
-				default:
-					debugspell[i] = "???";
-					spellcost[i] = 0;
-					spellselect[i] = 0;
-					break;
+		case 1:
+			spellslot[i] = 31;
+			break;
+		case 2:
+			spellslot[i] = 37;
+			break;
+		case 3:
+			spellslot[i] = 38;
+			break;
+		case 4:
+			spellslot[i] = 29;
+			break;
+		case 5:
+			spellslot[i] = 26;
+			break;
+		case 6:
+			spellslot[i] = 27;
+			break;
+		case 7:
+			spellslot[i] = 33;
+			break;
+		case 8:
+			spellslot[i] = 20;
+			break;
+		case 9:
+			spellslot[i] = 28;
+			break;
+		case 10:
+			spellslot[i] = 25;
+			break;
+		case 11:
+			spellslot[i] = 30;
+			break;
+		case 12:
+			spellslot[i] = 24;
+			break;
+		
+		case 20:
+			debugspell[i] = "Knock Down";
+			spellcost[i] = spKnockdown;
+			spellselect[i] = 11;
+			break;
+		case 24:
+			debugspell[1] = "Wonder";
+			spellcost[i] = spWonder;
+			spellselect[i] = 13;
+			break;
+		case 25:
+			debugspell[1] = "EXPLOSION!!";
+			spellcost[i] = spExplosion;
+			spellselect[i] = 12;
+			break;
+		case 26:
+			debugspell[i] = "Ragnarok";
+			spellcost[i] = spRagnarok;
+			spellselect[i] = 7;
+			break;
+		case 27:
+			debugspell[i] = "Guillotine";
+			spellcost[i] = spGetNaeNaed;
+			spellselect[i] = 10;
+			break;
+		case 28:
+			debugspell[i] = "Crossfire";
+			spellcost[i] = spCrossfire;
+			spellselect[i] = 9;
+			break;
+		case 29:
+			debugspell[i] = "Empower Ring";
+			spellcost[i] = spEmpowerRing;
+			spellselect[i] = 5;
+			break;
+		case 30:
+			debugspell[i] = "Tri-Shot";
+			spellcost[i] = spTrishot;
+			spellselect[i] = 8;
+			break;
+		case 31:
+			debugspell[i] = "Thunder";
+			spellcost[i] = spThunder;
+			spellselect[i] = 2;
+			break;
+		case 33:
+			debugspell[1] = "Echo";
+			spellcost[i] = spEcho;
+			spellselect[i] = 6;
+			break;
+		case 37:
+			debugspell[i] = "Pekay Fire";
+			spellcost[i] = spPekayFire;
+			spellselect[i] = 3;
+			break;
+		case 38:
+			debugspell[i] = "Bomb Drop";
+			spellcost[i] = spBomb;
+			spellselect[i] = 4;
+			break;
+		case -4:
+			debugspell[i] = "None";
+			spellcost[i] = 0;
+			spellselect[i] = 1;
+			break;
+		default:
+			debugspell[i] = "???";
+			spellcost[i] = 0;
+			spellselect[i] = 0;
+			break;
     }
 }
 
 switch(prev_spell_cast){
 	case 20:	// Knockdown
 		prev_spell_icon = 11;
+		break;
+	case 24:	// Wonder
+		prev_spell_icon = 13;
 		break;
 	case 25:	// Explosion
 		prev_spell_icon = 12;

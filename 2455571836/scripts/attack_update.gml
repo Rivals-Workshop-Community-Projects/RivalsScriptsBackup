@@ -158,6 +158,56 @@ attack == AT_DSPECIAL && window == 6 && has_hit_player && hit_player_obj.glace_F
 //Taunt
 if (attack == AT_TAUNT)
 {
+if (window == 1 || window == 2){
+	can_shield = true;
+	}
+}
+
+if (attack == AT_TAUNT_2)
+{
+if (window == 1 && up_down){
+	window = 2;
+	window_timer = 0;
+	}
+}
+
+if (attack == AT_TAUNT_2)
+{
+if (window == 1 && down_down){
+	window = 4;
+	window_timer = 0;
+	}
+}
+
+if (attack == AT_TAUNT_2 && window == 2 && window_timer == 50)
+{
+if (taunt_down == 1){
+	window = 2;
+	window_timer = 0;
+	}
+else
+{
+	window = 3;
+	window_timer = 0;
+	}
+}
+
+if (attack == AT_TAUNT_2 && window == 4 && window_timer == 23)
+{
+if (taunt_down == 1){
+	window = 4;
+	window_timer = 0;
+	}
+else
+{
+	window = 3;
+	window_timer = 0;
+	}
+}
+
+/*
+if (attack == AT_TAUNT)
+{
 // replace [num] with the window number you want to repeat in the taunt
 if (taunt_down == 1){
     set_window_value(AT_TAUNT, 2, AG_WINDOW_TYPE, 9);
@@ -177,4 +227,13 @@ else
 {
     set_window_value(AT_TAUNT_2, 2, AG_WINDOW_TYPE, 0);
 }
+}*/
+
+//Final Smash
+if (attack == "49")
+{
+if (window == 2 && !free){
+	window = 3;
+	window_timer = 0;
+	}
 }

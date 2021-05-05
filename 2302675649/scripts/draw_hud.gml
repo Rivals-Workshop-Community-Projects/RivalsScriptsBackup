@@ -56,7 +56,7 @@ if ("rollArray" in self)
 				AddText("USpec cancelling");
 				AddText("FSpec hit-cancelling");
 				AddText("Discord ping");
-				AddText("DAir autocancel");
+				AddText("DAir cancel");
 				AddText("FSpec into Spike");
 				AddText("Lonin Drip");
 				DrawTutBlock();
@@ -466,6 +466,54 @@ if ("rollArray" in self)
 						AddText("Added Redline and AK Mortal alts");
 						AddText("Replaced a message with a thank you note");
 						break;
+					case 30:
+						AddText("v1.30 - 29 Apr 2021");
+						AddText("");
+						AddText("NSpec Max charge time 80 -> 90");
+						AddText("NSpec Fully Charged KBS 2 -> 1.5");
+						AddText("NSpec Fully Charged BKB 9 -> 11");
+						AddText("NSpec Base KBS 0.8 -> 0.9");
+						AddText("NSpec Base BKB 6 -> 8");
+						AddText("(Now it kills at ~75% instead of ~30%)");
+						AddText("");
+						AddText("DAttack startup 4 -> 6");
+						AddText("(Hitbox comes out frame 7)");
+						AddText("");
+						AddText("FSpec Whiff Endlag 12 -> 22 (Grounded; Aerial is still 12 but has pratfall)");
+						AddText("");
+						AddText("Mildly reworked DAir");
+						AddText("(Removed DAir bounce)");
+						AddText("");
+						AddText("Added Enby alt");
+						AddText("Added Ace alt");
+						break;
+					case 31:
+						AddText("v1.31 - 1 May 2021");
+						AddText("");
+						AddText("DSpec Move cooldown 80 -> 110");
+						AddText("");
+						AddText("USpec startup +8 frames");
+						AddText("");
+						AddText("UAir Final BKB 7 -> 6");
+						AddText("UAir Final KBS 0.4 -> 0.5");
+						AddText("UAir Final Hitstun multiplier 0.7 -> 0.85");
+						AddText("UAir Multi Hitstun multiplier 0.1 -> 0.3");
+						AddText("UAir Landing Lag 4 -> 6");
+						AddText("");
+						AddText("Added End's High alt");
+						break;
+					case 32:
+						AddText("v1.32 - 5 May 2021");
+						AddText("");
+						AddText("DAir Final - Removed Hitstun Multiplier & Drift Multiplier");
+						AddText("DAir Link - BKB 15 -> 9");
+						AddText("DAir Link - Hitstun Multiplier 0.1 -> 0.4");
+						AddText("DAir Link - Extra Hitpause 0 -> -2");
+						AddText("");
+						AddText("UTilt - Extra Hitpause 8 -> 4");
+						AddText("");
+						AddText("I'm going into army tomorrow. Don't expect frequent balance changes anymore.");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -508,7 +556,6 @@ if ("rollArray" in self)
 						case 0:
 							AddText("If you Jump Strong upwards, you'll be able to enter your own portal");
 							AddText("Recovery 1: FSpec (to the wall) -> Walljump -> Up Jump Strong");
-							AddText("Recovery 2: DAir (if you're high up enough) -> Up Jump Strong");
 							break;
 						case 1:
 							AddText("NSpec can be cancelled with the Parry button while it's not fully charged");
@@ -528,11 +575,8 @@ if ("rollArray" in self)
 							AddText("Lol!");
 							break;
 						case 5:
-							AddText("DAir will autocancel after " + string(dairCancel) + " frames");
-							AddText("Be sure to jump high before starting your DAir");
-							AddText("When you cancel, you'll bounce up high");
-							AddText("This bounce counts as a jump, so you can jump strong afterwards");
-							AddText("Hold down the Attack button to prevent autocancelling");
+							AddText("DAir can be cancelled after " + string(dairCancel) + " frames");
+							AddText("You can cancel into Jump, Airdodge, FSpecial, or USpecial");
 							break;
 						case 6:
 							AddText("Use aerial FSpec to chain into a strong spike");

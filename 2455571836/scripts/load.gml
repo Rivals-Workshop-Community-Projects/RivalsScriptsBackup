@@ -52,14 +52,16 @@ sprite_change_offset("fspecial", 42, 64);
 sprite_change_offset("uspecial", 39, 96);
 sprite_change_offset("dspecial", 95, 75);
 
-sprite_change_offset("taunt", 37, 73);
-sprite_change_offset("taunt2", 33, 66);
+sprite_change_offset("taunt", 37, 128);
+sprite_change_offset("taunt2", 37, 72);
 
 sprite_change_offset("plat", 64, 28);
 
 sprite_change_offset("nspecial_proj", 64, 94);
 
-//Worksohop stuff
+sprite_change_offset("glace_final_smash_spike", 0, 0);
+
+//Workshop stuff
 sprite_change_offset("glace_signpost", 17, 45);
 sprite_change_offset("glace_namco", 16, 16);
 sprite_change_offset("sal_portrait", 27, 39); //Last Resort
@@ -72,3 +74,6 @@ sprite_change_offset("glace_amber_doll", 0, 5);
 
 sprite_change_offset("feri_costume_glace", 84, 114);
 sprite_change_offset("glace_kirby", 31, 70);
+
+sprite_change_offset("amber_hug", 32, 74);
+sprite_change_offset("glace_hug", 32, 74);

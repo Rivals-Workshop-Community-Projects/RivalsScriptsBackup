@@ -135,12 +135,25 @@ switch (attack)
                 break;
             case 2:
                 if (window_timer == 1) jsTimer = 10;
-                if (state_timer >= (aura?dairCancel/2:dairCancel) && !attack_down && !down_stick_down)
+                if (state_timer >= (aura?dairCancel/2:dairCancel))
                 {
-                    vsp = -14;
-                    set_state(PS_IDLE_AIR);
-                    tutDoneAdv[5] = true;
-                    jsTimer = jsMax;
+                    can_jump = true && free;
+                    can_shield = true && free;
+                    if ((can_shield && has_airdodge && shield_pressed) || (can_jump && djumps != max_djumps && jump_pressed))
+                        tutDoneAdv[5] = true;
+                    if (is_special_pressed(DIR_UP))
+                    {
+                        set_attack(AT_USPECIAL);
+                        tutDoneAdv[5] = true;
+                    }
+                    else if (is_special_pressed(DIR_LEFT) || is_special_pressed(DIR_RIGHT))
+                    {
+                        set_attack(AT_FSPECIAL);
+                        spr_dir = right_down-left_down;
+                        if (spr_dir == 0) spr_dir = sign(floor(room_width/2)-x);
+                        if (spr_dir == 0) spr_dir = 1;
+                        tutDoneAdv[5] = true;
+                    }
                 }
                 break;
             case 3:
@@ -309,10 +322,10 @@ switch (attack)
                     reset_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING);
                     reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE);
                     reset_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE);
-                    set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, lerp(get_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK), 9, (nspecCharge-6)/(nspecMax-6)));
-                    set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, lerp(get_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING), 2, (nspecCharge-6)/(nspecMax-6)));
-                    set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, lerp(get_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE), 60, (nspecCharge-6)/(nspecMax-6)));
-                    set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, lerp(get_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE), 18, (nspecCharge-6)/(nspecMax-6)));
+                    set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK,     lerp(get_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK),       11,      (nspecCharge-6)/(nspecMax-6)));
+                    set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING,  lerp(get_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING),    1.5,    (nspecCharge-6)/(nspecMax-6)));
+                    set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE,      lerp(get_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE),        60,     (nspecCharge-6)/(nspecMax-6)));
+                    set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE,             lerp(get_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE),               18,     (nspecCharge-6)/(nspecMax-6)));
                 }
                 break;
             case 3:
@@ -476,6 +489,12 @@ switch (attack)
                 if (has_rune("E")||has_rune("O")) move_cooldown[attack] = 30;
                 FreezePortals(fspecPortalHooked);
                 if (!free) set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, 1);
+                if (!free)
+                {
+                    set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, 1);
+                    set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 22);
+                }
+                else reset_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH);
                 break;
         }
         can_fast_fall = false;
@@ -510,6 +529,12 @@ switch (attack)
                     window = ("temp_level" in self)?3:2;
                 }
                 with (asset_get("obj_article1")) if (player_id == other.id) isDespawn = true;
+                break;
+            case 2:
+                hsp/=1.15;
+                vsp/=1.15;
+                can_fast_fall = false;
+                can_move = false;
                 break;
             case 3:
                 can_fast_fall = false;

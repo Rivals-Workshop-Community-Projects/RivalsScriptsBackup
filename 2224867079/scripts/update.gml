@@ -151,6 +151,9 @@ if (introTimer < 45) {
     draw_indicator = true;
 }
 
+if (introTimer < liteModeTime)
+	if(taunt_pressed && !lite) lite = true;
+
 if (introTimer2 == 0 && introTimer == 2) {
     sound_play (sound_get("Log_Intro"));
 }
@@ -239,6 +242,7 @@ if(blood_timer != 0)
 	}
 }
 
+//Galaxy stuff is stolen from monarch lol
 //Galaxy
 if(has_hit_player && (attack == AT_USPECIAL_2 && window == 2))
 {

@@ -1,8 +1,15 @@
 
+if attack == AT_DATTACK || attack == AT_FSTRONG {
+    set_attack_value(attack, AG_OFF_LEDGE, !was_parried = 1);
+}
+
+
 if attack == AT_FSPECIAL_2 {
-	can_move = 0;
-	can_fast_fall = 0;
-	if window == 2 && window_timer == 1 {spr_dir *= -1; }
+    can_move = 0;
+    can_fast_fall = 0;
+    if window == 2 && window_timer == 1 {spr_dir *= -1; }
+    //cap vsp until the move hits a player
+    if (!hitpause && !has_hit_player) vsp = max(vsp, -1);
 }
 
 if attack == AT_FSPECIAL {

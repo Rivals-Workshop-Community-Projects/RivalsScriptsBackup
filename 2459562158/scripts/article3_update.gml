@@ -99,7 +99,7 @@ if(place_meeting(x + hsp,y + vsp,asset_get("par_block")))
 
 with (oPlayer)
 {
-    if (self != other.player_id) and (state != PS_DEAD) and (state != PS_RESPAWN) and (self != other.player_id.grab_id)
+    if (self != other.player_id) and (state != PS_DEAD) and (state != PS_RESPAWN) and (self != other.player_id.grab_id) and ((collision_circle(other.x,other.y,16,hurtboxID,false,true)))
     {
         if (collision_circle(other.x,other.y,16,self,false,false)) //(place_meeting(x,y,other))
         {

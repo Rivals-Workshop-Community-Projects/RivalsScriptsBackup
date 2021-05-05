@@ -27,16 +27,16 @@ set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_FAIR, 1);
 
-set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_FAIR, 1, HG_WINDOW_CREATION_FRAME, 0);
+set_hitbox_value(AT_FAIR, 1, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 5);
 set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_SPRITE, sprite_get("nothing"));
 set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 53);
-set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -46);
-set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 60);
-set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 54);
+set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -50);
+set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 75);
+set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 70);
 set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 45);

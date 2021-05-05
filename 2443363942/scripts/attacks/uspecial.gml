@@ -18,7 +18,7 @@ set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
 set_attack_value(AT_USPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
 
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
@@ -94,6 +94,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 3);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_USPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 
 set_hitbox_value(AT_USPECIAL, 2, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 1);

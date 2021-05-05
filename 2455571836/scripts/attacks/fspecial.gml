@@ -48,34 +48,34 @@ set_window_value(AT_FSPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
 
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 6);
-set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 3);
 
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH, 6);
-set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 4);
-set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 5);
 
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_LENGTH, 6);
-set_window_value(AT_FSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 4);
-set_window_value(AT_FSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_FSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_FSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 6);
 
 set_window_value(AT_FSPECIAL, 8, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL, 8, AG_WINDOW_LENGTH, 6);
-set_window_value(AT_FSPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_FSPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, 3);
 
 set_window_value(AT_FSPECIAL, 9, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL, 9, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_FSPECIAL, 9, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_FSPECIAL, 9, AG_WINDOW_ANIM_FRAME_START, 7);
+set_window_value(AT_FSPECIAL, 9, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_FSPECIAL, 9, AG_WINDOW_HSPEED_TYPE, 1);
 
 set_window_value(AT_FSPECIAL, 10, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL, 10, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_FSPECIAL, 10, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_FSPECIAL, 10, AG_WINDOW_ANIM_FRAME_START, 10);
+set_window_value(AT_FSPECIAL, 10, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_FSPECIAL, 10, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL, 10, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 10, AG_WINDOW_SFX, sound_get("glace_pounce_bop"));

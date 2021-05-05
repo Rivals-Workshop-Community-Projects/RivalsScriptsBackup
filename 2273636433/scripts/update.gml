@@ -551,7 +551,7 @@ if swallowed { //Kirby ability script starts here
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_HSPEED, 3);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_VSPEED, -6);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_GRAVITY, 0.56);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, ability_chungus);

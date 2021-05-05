@@ -360,6 +360,14 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("3.9", "2021-4-29 (YMD)");
+	initPatchWords_ext("Fixes", fa_left, c_yellow, 1, 0);
+	initPatchWords("- fixed the issue where you can still hit and activate dspecial with raincloud when it's still in cooldown. this was a big oversight on my part, sorry! this should fix cloud permanently being in cooldown... hopefully!");
+	
+	initPatchWords_ext("Notes", fa_left, c_yellow, 1, 0);
+	initPatchWords("open for inputs!");
+	
+	
 	initPatch("3.8", "2021-4-25 (YMD)");
 	initPatchWords_ext("Changes", fa_left, c_yellow, 1, 0);
 	initPatchWords("- forgot to write the last time but fspecial cooldown is longer by 20 frames (80 -> 100)

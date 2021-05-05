@@ -48,5 +48,6 @@ set_hitbox_value(AT_FSTRONG_2, 1, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_VISUAL_EFFECT_X_OFFSET, 8);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_VISUAL_EFFECT_Y_OFFSET, 8);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_VISUAL_EFFECT, red_new_stab_1 );
+set_hitbox_value(AT_FSTRONG_2, 1, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_FSTRONG_2, 1, HG_HIT_SFX, sound_get("RedHit4"));

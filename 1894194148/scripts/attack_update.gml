@@ -411,22 +411,24 @@ if (attack == AT_DSPECIAL){
     if (window == 1 && window_timer == 6){ //&& !hitpause){
         with (asset_get("obj_article1")){
             if (player_id == other.id && state == 1){
-				if (arc_faircharge <= 0){
-					state = 3;
-					state_timer = 0;
-				}
-				if (arc_faircharge == 1){
-					state = 3;
-					state_timer = 8; // 22
-					arc_faircharge = 0;
-					sound_play( sound_get( "SE024" ) );
-				}
-				if (arc_faircharge == 2){
-					state = 3;
-					state_timer = 16; // 22
-					arc_faircharge = 0;
-					arc_thruplat = true;
-					sound_play( sound_get( "fastantici" ) );
+				if (arc_cooldown == 0){
+					if (arc_faircharge <= 0){
+						state = 3;
+						state_timer = 0;
+					}
+					if (arc_faircharge == 1){
+						state = 3;
+						state_timer = 8; // 22
+						arc_faircharge = 0;
+						sound_play( sound_get( "SE024" ) );
+					}
+					if (arc_faircharge == 2){
+						state = 3;
+						state_timer = 16; // 22
+						arc_faircharge = 0;
+						arc_thruplat = true;
+						sound_play( sound_get( "fastantici" ) );
+					}
 				}
             }
         }

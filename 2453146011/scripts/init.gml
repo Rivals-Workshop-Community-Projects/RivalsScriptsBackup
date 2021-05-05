@@ -100,6 +100,8 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 
 set_victory_bg( sprite_get( "victory" ));
 
+last_hit_player = noone;
+
 //Prev speed storage
 hsp_prev = 0;
 vsp_prev = 0;
@@ -146,6 +148,7 @@ uspec_charged = false;
 fspecial_obj = noone;
 hit_fspec = false;
 fspec_charged = false;
+fspec_line_timer = 0;
 
 // Effects
 teleport_start = hit_fx_create( sprite_get( "teleport_start" ), 25 );
@@ -239,7 +242,7 @@ hitfx8 = hit_fx_create(sprite_get("hitfx8"),20);
 hitfx9 = hit_fx_create(sprite_get("hitfx9"),10);
 hitfx9short = hit_fx_create(sprite_get("hitfx9short"),4);
 hitfx10 = hit_fx_create(sprite_get("hitfx10"),10);
-hitfx11 = hit_fx_create(sprite_get("hitfx11"),12);
+hitfx11 = hit_fx_create(sprite_get("hitfx11"),24);
 hitfx12 = hit_fx_create(sprite_get("hitfx12"),12 * 2);
 
 trail = hit_fx_create(sprite_get("trail"),6);
@@ -314,6 +317,9 @@ time_knife = noone;
 default_knife_angle = 30;
 knife_angle = 15;
 knife_speed = 10;
+knife_line_timer = 0;
+last_knife_pos = {x:0,y:0};
+last_player_pos = {x:0,y:0};
 
 // Fair shiz
 shot_queued = false;
@@ -339,6 +345,7 @@ idleState = 0;
 // Lite mode
 lite = false;
 liteModeTime = 30;
+frameTimer = 0;
 
 // Colors
 if(get_player_color(player) == 0)
@@ -361,6 +368,7 @@ else
     monPurple = make_colour_rgb(get_color_profile_slot_r(get_player_color(player), 3), get_color_profile_slot_g(get_player_color(player), 3), get_color_profile_slot_b(get_player_color(player), 3));
     monDarkPurple = make_colour_rgb(get_color_profile_slot_r(get_player_color(player), 3)-28, get_color_profile_slot_g(get_player_color(player), 3)-10, get_color_profile_slot_b(get_player_color(player), 3)-47);
 }
+
 
 
 // Munophone

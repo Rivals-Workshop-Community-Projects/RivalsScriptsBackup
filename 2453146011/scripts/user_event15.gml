@@ -395,7 +395,7 @@ with phone{
 
 	One thing to note, however, is that you still have a hurtbox during this move, so you can easily be hit out of it if the opponent knows its coming. It also has 0 active hitbox.
 	
-	Using this move through a portal will create a stun hitbox when yo re-appear.");
+	Using this move through a portal will create a stun hitbox when you re-appear.");
 	initTipImage(player_id.spr_uspecial, -3, fa_center, 1, c_white, 0);
 	
 	initTip("Down Special: Rift Knife");
@@ -405,7 +405,7 @@ with phone{
 	
 	If your opponent is in hitstun and has the knife in them when the timer runs out, they will get put in plasma stun when you teleport!
 	
-	The Rift Knife can also go through portals. Throwing it through a portal will charge it, making it stun nearby foes when activated!");
+	The Rift Knife can also go through portals. Throwing it through a portal will charge it, making it stun nearby foes when activated! Hitting a stuck opponent with charged uspecial or regular fspecial will also charge the knife!");
 	initTipImage(player_id.spr_dspecial, -4, fa_center, 1, c_white, 0);
 	
 	initTip("Up Air");

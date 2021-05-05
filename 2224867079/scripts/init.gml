@@ -8,6 +8,11 @@ ncode2 = "Carefull when he turns red,"
 ncode3 = "It wont hurt as bad but it'll send you flying"
 */
 
+//Lite Mode
+lite = false;
+liteModeTime = 30;
+frameTimer = 0;
+
 recharged = 1
 recoverytimer = 0;
 recoverytick = 0;
@@ -209,6 +214,10 @@ waveland_sound = sound_get("waveland");
 jump_sound = asset_get("sfx_jumpground");
 djump_sound = asset_get("sfx_jumpair");
 air_dodge_sound = asset_get("sfx_quick_dodge");
+
+//Hit Particle
+set_hit_particle_sprite( 1, sprite_get( "hit_particle_blue" ) );
+set_hit_particle_sprite( 2, sprite_get( "hit_particle_red" ) );
 
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;

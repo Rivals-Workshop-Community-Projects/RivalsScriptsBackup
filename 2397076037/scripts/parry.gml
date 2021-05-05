@@ -7,9 +7,4 @@ shake_camera(4, 12)
 DT += 6
 rankm += 300
 
-with (asset_get("pHitBox")) {
-if(player_id == other.id) {
-    destroyed = true;
-}
-}
 

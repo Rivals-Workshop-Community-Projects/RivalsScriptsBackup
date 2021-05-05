@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 30;
+	var noOfPatches = 33;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -226,8 +226,8 @@ if (swallowed)
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 2);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 4);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 40);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 6);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.8);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 8);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.9);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 5);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 1);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, hit2);
@@ -260,10 +260,10 @@ if ("enemykirby" in self && enemykirby != undefined) with (oPlayer) if ((state =
 	        {
 	            ++window;
 	            window_timer = 0;
-	            set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, lerp(6, 9, (nspecCharge-6)/(nspecMax-6)));
-	            set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, lerp(0.8, 2, (nspecCharge-6)/(nspecMax-6)));
-	            set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, lerp(5, 60, (nspecCharge-6)/(nspecMax-6)));
-	            set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, lerp(4, 18, (nspecCharge-6)/(nspecMax-6)));
+	            set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK,		lerp(8,  11, (nspecCharge-6)/(nspecMax-6)));
+	            set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING,	lerp(.9, 1.5,(nspecCharge-6)/(nspecMax-6)));
+	            set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE,		lerp(5,  60, (nspecCharge-6)/(nspecMax-6)));
+	            set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE,				lerp(4,  18, (nspecCharge-6)/(nspecMax-6)));
 	        }
 	        break;
 	    case 3:

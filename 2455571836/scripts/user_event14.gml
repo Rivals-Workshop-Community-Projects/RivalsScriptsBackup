@@ -346,6 +346,7 @@ spr_uspecial = sprite_get("uspecial");
 spr_dspecial = sprite_get("dspecial");
 spr_taunt = sprite_get("taunt");
 spr_taunt_2 = sprite_get("taunt2");
+spr_sleep = sprite_get("sleep");
 
 
 

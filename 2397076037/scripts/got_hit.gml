@@ -32,3 +32,11 @@ if super_armor or soft_armor {
 if rankm > 4 {
 rankm -= enemy_hitboxID.damage * 15
 }
+
+
+
+
+  if  (triggered &&  move_cooldown[AT_TAUNT_2] = 0) {
+  	DT -= 2
+  	move_cooldown[AT_TAUNT_2] = 30
+  }	

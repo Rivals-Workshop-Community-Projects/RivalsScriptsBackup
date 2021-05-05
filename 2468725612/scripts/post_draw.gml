@@ -2,7 +2,10 @@ if (!custom_clone){
 
 //print (state_timer);
 
-shader_start();
+if (get_player_color(player) != 18){
+       shader_start();
+}
+
 
 if (hat_on == true){
     
@@ -136,6 +139,11 @@ switch (state) {
     case PS_ATTACK_GROUND:
     case PS_ATTACK_AIR:
         switch (attack) {
+        	case AT_NSPECIAL:
+        		if (state_timer == 0){
+        			draw_sprite_ext(sprite_get("idle_hat"), image_index, x, y+2, spr_dir*2, 2, 0, c_white, 1 );	
+        		}
+    		break;
             case AT_JAB:
                 draw_sprite_ext(sprite_get("jab_hat"), image_index, x, y, spr_dir*2, 2, 0, c_white, 1 );
             break;
@@ -216,6 +224,12 @@ if (sprite_index == sprite_get("phone_open")){
 
 }
 
+if (get_player_color(player) != 18){
+       shader_end();
+}
+
+shader_start();
+
 if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_NSPECIAL_2){
     if ((window == 1 && window_timer > 9 && special_down) || (window == 4 || window == 5)){
         draw_sprite_ext(sprite_get("nspecial_interface"), image_index, x, y, spr_dir*2, 2, 0, c_white, 1 );
@@ -236,7 +250,6 @@ if (sprite_index == sprite_get("phone_open")){
 	}
 }
 
-
 if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_DSPECIAL && dspecial_hit && window == 3){
 	draw_sprite_ext(sprite_get("dspecial_effect"), get_gameplay_time()*.3, 
 	x+70*spr_dir, y-55, spr_dir*2, 2, 0, c_white, 1 );
@@ -249,8 +262,8 @@ if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_DSPECI
 	x+30*spr_dir, y-2, spr_dir*2, 2, 0, c_white, 1 );
 }
 
-
 shader_end();
+
 
 if (hologram_is_alive == true && hologram_icon == 1){
 	draw_debug_text(hologram.x+attack_holo_size, hologram.y-118, string(attack_holo_nome));

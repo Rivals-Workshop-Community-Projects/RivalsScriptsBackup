@@ -109,6 +109,8 @@ alt_name[10]  = "Kawaii";
 alt_name[11]  = "Bugingi";
 alt_name[12]  = "Calda";
 alt_name[13]  = "Quil";
+alt_name[14]  = "Beepbox";
+alt_name[15]  = "Modbox";
 
  
 //Alt

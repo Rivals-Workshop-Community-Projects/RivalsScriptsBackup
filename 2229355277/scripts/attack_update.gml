@@ -493,6 +493,65 @@ if (attack == AT_ECHO and window == 1 and window_timer == 1)
 		}
 	}
 
+//If the spell is Echo, cast the previously cast spell.
+if (attack == AT_WONDER and window == 1 and window_timer == 1){
+	var spell = random_func(0, 12, true);
+	print_debug(string(spell));
+	switch(spell){
+		case 0:
+			set_attack(31);
+			break;
+		case 1:
+			set_attack(37);
+			break;
+		case 2:
+			set_attack(38);
+			break;
+		case 3:
+			set_attack(29);
+			break;
+		case 4:
+			set_attack(26);
+			break;
+		case 5:
+			set_attack(27);
+			break;
+		case 6:
+			sound_play(asset_get("sfx_may_wrap1"));
+			state = PS_WRAPPED;
+			wrap_time = 180;
+			break;
+		case 7:
+			set_attack(20);
+			break;
+		case 8:
+			set_attack(28);
+			break;
+		case 9:
+			set_attack(25);
+			break;
+		case 10:
+			set_attack(30);
+			break;
+		case 11:
+			set_attack(35);
+			sound_play(asset_get("mfx_tut_fail"));
+			manabar = 0;
+			mana = 0;
+			break;
+		case 12:
+			spellslot[0] = -4;  // 1
+			spellslot[1] = -4;
+			spellslot[2] = -4;
+			spellslot[3] = -4;
+			spellslot[4] = -4;
+			spellslot[5] = -4;
+			spellslot[6] = -4;
+			spellslot[7] = -4;
+			break;
+	}
+}
+
 if (attack == AT_BOMB){
 	if has_hit{
     	create_hitbox(AT_BOMB, 2, has_hit_id.x, has_hit_id.y);

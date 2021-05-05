@@ -1,10 +1,7 @@
 
 // with asset_get("pHitBox")
 // {
-// 	if type == 1
-// 	{
-// 		sprite_index = other.hitbox_test
-// 	}
+// 	if type == 1 sprite_index = other.hitbox_test
 // }
 
 //Dtilt Cooldown

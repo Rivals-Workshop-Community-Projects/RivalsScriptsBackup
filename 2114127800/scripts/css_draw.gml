@@ -1,15 +1,15 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 var alt_cur = get_player_color(player);
-draw_sprite_ext(sprite_get("css_icons"), alt_cur, temp_x + 5, temp_y + 60, 1, 1, 0, c_white, 1); 
+draw_sprite_ext(sprite_get("css_icons"), alt_cur, temp_x + 160, temp_y + 35, 1, 1, 0, c_white, 1); 
 
 if (get_color_profile_slot_r(0, 0) == 143) {
     sound_play(sound_get("css_select"));
     set_color_profile_slot(0, 0, get_color_profile_slot_r(0, 0) + 1, get_color_profile_slot_g(0, 0), get_color_profile_slot_b(0, 0));
 }
 
-patch_ver = "4.5";
-patch_day = "27";
+patch_ver = "5.0";
+patch_day = "30";
 patch_month = "April";
 
 var num_alts = 16;

@@ -24,6 +24,15 @@ switch(my_hitboxID.attack) {
 		o.hitstop_full = hit_player_obj.hitstop_full;
 		o.hitstop = hit_player_obj.hitstop_full;
 	break;
+	case AT_EXTRA_1:
+		if my_hitboxID.effect == 70 && hit_player_obj.from_crouch {
+			hit_player_obj.hitstop_full = 6;
+			hit_player_obj.hitstop = 6;
+			hit_player_obj.orig_knock = 0;
+			hit_player_obj.should_make_shockwave = false;
+			print("bonk")
+		}
+	break;
 /*
 	case AT_FSTRONG: case AT_USTRONG: case AT_EXTRA_1:
 		var p = my_hitboxID.hbox_num-1

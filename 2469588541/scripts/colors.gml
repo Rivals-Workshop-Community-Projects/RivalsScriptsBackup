@@ -59,14 +59,14 @@ set_color_profile_slot( 3, 4, 255, 255, 255 ); //Eye2
 set_color_profile_slot( 3, 5, 82, 89, 77 ); //Limbs
 set_color_profile_slot( 3, 6, 38, 41, 37 ); //Limbs2
 
-// Grey
-set_color_profile_slot( 4, 0, 79, 79, 79 ); //Scarf
-set_color_profile_slot( 4, 1, 148, 148, 148 ); //Fur tone
-set_color_profile_slot( 4, 2, 181, 181, 181 ); //Fur tone2
-set_color_profile_slot( 4, 3, 191, 220, 255 ); //Eye
-set_color_profile_slot( 4, 4, 255, 255, 255 ); //Eye2
-set_color_profile_slot( 4, 5, 70, 75, 94 ); //Limbs
-set_color_profile_slot( 4, 6, 29, 33, 46 ); //Limbs2
+// Black
+set_color_profile_slot( 4, 0, 120, 50, 50 ); //Scarf
+set_color_profile_slot( 4, 1, 30, 30, 30 ); //Fur tone
+set_color_profile_slot( 4, 2, 220, 190, 160 ); //Fur tone2
+set_color_profile_slot( 4, 3, 190, 190, 190 ); //Eye
+set_color_profile_slot( 4, 4, 240, 120, 60 ); //Eye2
+set_color_profile_slot( 4, 5, 120, 80, 80 ); //Limbs
+set_color_profile_slot( 4, 6, 110, 70, 70 ); //Limbs2
 
 // Purple
 set_color_profile_slot( 5, 0, 178, 150, 227 ); //Scarf
@@ -131,14 +131,14 @@ set_color_profile_slot( 11, 4, 255, 255, 255 ); //Eye2
 set_color_profile_slot( 11, 5, 87, 189, 138 ); //Limbs
 set_color_profile_slot( 11, 6, 56, 118, 85 ); //Limbs2
 
-// Fink Pong
-set_color_profile_slot( 12, 0, 254, 220, 1 ); //Scarf
-set_color_profile_slot( 12, 1, 251, 62, 164 ); //Fur tone
-set_color_profile_slot( 12, 2, 255, 255, 255 ); //Fur tone2
-set_color_profile_slot( 12, 3, 255, 255, 255 ); //Eye
-set_color_profile_slot( 12, 4, 251, 62, 164 ); //Eye2
-set_color_profile_slot( 12, 5, 251, 62, 164 ); //Limbs
-set_color_profile_slot( 12, 6, 161, 27, 132 ); //Limbs2
+// Zerra
+set_color_profile_slot( 12, 0, 138, 222, 255 ); //Scarf
+set_color_profile_slot( 12, 1, 227, 239, 255 ); //Fur tone
+set_color_profile_slot( 12, 2, 245, 245, 245 ); //Fur tone2
+set_color_profile_slot( 12, 3, 59, 199, 255 ); //Eye
+set_color_profile_slot( 12, 4, 186, 229, 255 ); //Eye2
+set_color_profile_slot( 12, 5, 0, 139, 255 ); //Limbs
+set_color_profile_slot( 12, 6, 0, 102, 186 ); //Limbs2
 
 // Ori
 set_color_profile_slot( 13, 0, 232, 240, 255 ); //Scarf

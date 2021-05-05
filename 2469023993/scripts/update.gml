@@ -133,9 +133,9 @@ if swift_mode = true{
 	set_hitbox_value(AT_DAIR, 5, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 	set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 	set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
-	set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
-	set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
-	set_hitbox_value(AT_DTILT, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+	set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+	set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+	set_hitbox_value(AT_DTILT, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 	set_hitbox_value(AT_DTILT, 4, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
 	set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 	set_hitbox_value(AT_FAIR, 6, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
@@ -146,15 +146,15 @@ if swift_mode = true{
 	set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_ori_seinhit_heavy"));
 	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_heavy"));
 	set_hitbox_value(AT_FSTRONG, 5, HG_BASE_HITPAUSE, 18);
-	set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 14);
-	set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 14);
+	set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 12);
+	set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 12);
 	set_hitbox_value(AT_USTRONG, 5, HG_BASE_HITPAUSE, 18);
 	set_hitbox_value(AT_UTILT, 4, HG_BASE_HITPAUSE, 8);
 	set_hitbox_value(AT_UTILT, 5, HG_BASE_HITPAUSE, 8);
 	set_hitbox_value(AT_UTILT, 6, HG_BASE_HITPAUSE, 8);
-	set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 16);
-	set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 20);
-	set_hitbox_value(AT_BAIR, 4, HG_BASE_HITPAUSE, 20);
+	set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 12);
+	set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 18);
+	set_hitbox_value(AT_BAIR, 4, HG_BASE_HITPAUSE, 18);
 	set_hitbox_value(AT_DAIR, 5, HG_BASE_HITPAUSE, 8);
 	set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 16);
 	set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 12);
@@ -163,10 +163,10 @@ if swift_mode = true{
 	set_hitbox_value(AT_DTILT, 4, HG_BASE_HITPAUSE, 20);
 	set_hitbox_value(AT_FAIR, 6, HG_BASE_HITPAUSE, 10);
 	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 18);
-	set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 16);
+	set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 14);
 	set_hitbox_value(AT_FTILT, 2, HG_BASE_HITPAUSE, 6);
 	set_hitbox_value(AT_JAB, 3, HG_BASE_HITPAUSE, 12);
-	set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 16);
+	set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 14);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 14);
 }
 
@@ -257,9 +257,9 @@ if swift_mode = false{
 	set_hitbox_value(AT_DAIR, 5, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 	set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 	set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
-	set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-	set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-	set_hitbox_value(AT_DTILT, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+	set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
+	set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
+	set_hitbox_value(AT_DTILT, 3, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 	set_hitbox_value(AT_DTILT, 4, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 	set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 	set_hitbox_value(AT_FAIR, 6, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
@@ -277,8 +277,8 @@ if swift_mode = false{
 	set_hitbox_value(AT_UTILT, 5, HG_BASE_HITPAUSE, 4);
 	set_hitbox_value(AT_UTILT, 6, HG_BASE_HITPAUSE, 4);
 	set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 8);
-	set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 15);
-	set_hitbox_value(AT_BAIR, 4, HG_BASE_HITPAUSE, 15);
+	set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 14);
+	set_hitbox_value(AT_BAIR, 4, HG_BASE_HITPAUSE, 14);
 	set_hitbox_value(AT_DAIR, 5, HG_BASE_HITPAUSE, 3);
 	set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 10);
 	set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 8);
@@ -287,10 +287,10 @@ if swift_mode = false{
 	set_hitbox_value(AT_DTILT, 4, HG_BASE_HITPAUSE, 12);
 	set_hitbox_value(AT_FAIR, 6, HG_BASE_HITPAUSE, 5);
 	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 12);
-	set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 12);
+	set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 10);
 	set_hitbox_value(AT_FTILT, 2, HG_BASE_HITPAUSE, 4);
 	set_hitbox_value(AT_JAB, 3, HG_BASE_HITPAUSE, 8);
-	set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 12);
+	set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 10);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 8);
 }
 
@@ -315,4 +315,88 @@ if state == PS_AIR_DODGE or state == PS_PARRY_START or state == PS_PARRY or stat
 	can_swift = false;
 	} else{
 	can_swift = true;
+}
+
+if swallowed {
+    swallowed = 0
+    var ability_spr = sprite_get("kirbothrow");
+	var ability_hurt = sprite_get("kirbothrow_hurt");
+	var box_proj = sprite_get("nspecial_proj");
+	var ability_sfx = sound_get("shadowfling");
+	var ability_sfx2 = sound_get("shadowrefresh");
+	var myicon = sprite_get("kirbyicon");
+	
+	with enemykirby {
+		newicon = myicon;
+        set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
+		set_attack_value(AT_EXTRA_3, AG_SPRITE, ability_spr);
+		set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 3);
+		set_attack_value(AT_EXTRA_3, AG_HAS_LANDING_LAG, 4);
+		set_attack_value(AT_EXTRA_3, AG_OFF_LEDGE, 1);
+		set_attack_value(AT_EXTRA_3, AG_AIR_SPRITE, ability_spr);
+		set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, ability_hurt);
+
+		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
+		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 21);
+		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 3);
+		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HAS_SFX, 1);
+		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX, asset_get("sfx_ori_glide_end"));
+		set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX_FRAME, 1);
+
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_TYPE, 1);
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 16);
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAMES, 5);
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAME_START, 3);
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_HAS_SFX, 1);
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_SFX, ability_sfx);
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_SFX_FRAME, 1);
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_VSPEED, 3);
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_VSPEED_TYPE, 1);
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.25);
+		set_window_value(AT_EXTRA_3, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.25);
+
+		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_TYPE, 1);
+		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 16);
+		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAMES, 3);
+		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAME_START, 8);
+		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_HAS_SFX, 1);
+		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_SFX, ability_sfx2);
+		set_window_value(AT_EXTRA_3, 3, AG_WINDOW_SFX_FRAME, 14);
+
+		set_num_hitboxes(AT_EXTRA_3, 1);
+
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PARENT_HITBOX, 1);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 2);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 2);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 35);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, 32);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 90);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 60);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 10);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 11);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 9);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_FINAL_BASE_KNOCKBACK, 5);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.65);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 10);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 0.5);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_heavy"));
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HITSTUN_MULTIPLIER, .5);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 90);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 127);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HITSTUN_MULTIPLIER, 1);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_SPRITE, box_proj);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_MASK, box_proj);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_ANIM_SPEED, .5);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_HSPEED, 15);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_UNBASHABLE, 1);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_AIR_FRICTION, .64);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_DESTROY_EFFECT, 256);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_PARRY_STUN, 1);
+	}
 }

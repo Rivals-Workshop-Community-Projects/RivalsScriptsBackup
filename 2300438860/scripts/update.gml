@@ -219,7 +219,11 @@ if state_timer == 1 {
 
 
 if get_player_color(player) = 13 {
+	if finishercd == 0 {
 	hue += 4
+	} else {
+		hue += 0.5
+	}
 	
 	if hue>255 {
 		hue = 0;

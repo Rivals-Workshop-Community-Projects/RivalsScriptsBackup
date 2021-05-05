@@ -65,7 +65,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, true);
+//set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_LOCKOUT, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 3 );
 

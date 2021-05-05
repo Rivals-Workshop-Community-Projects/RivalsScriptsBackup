@@ -44,6 +44,7 @@ set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 4);
 set_hitbox_value(AT_EXTRA_3, 1, HG_EFFECT, 1);
 set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, sound_get("explode_fire"));
+set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 361);
 set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_EXTRA_3, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_SPRITE, sprite_get("temp_bomb_proj"));

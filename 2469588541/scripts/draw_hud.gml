@@ -14,6 +14,7 @@ if ("practice" in self)
 				with(asset_get("obj_article1")) if (player_id == other.id && state == 1) noOfStars += isBig+1;;
 				AddText("No. of stars: " + string(noOfStars));
 				AddText("KB multiplier: " + string(noOfStars*starKB) + "%");
+				//AddText("djumps: " + string(djumps));
 				DrawDebugBlock();
 				DrawDebugText();
 				break;
@@ -22,6 +23,7 @@ if ("practice" in self)
 				AddText("Advanced Tutorials");
 				AddText("Change Notes");
 				AddText("Shrine of Light Discord");
+				AddText("Spawn Star");
 				DrawTutBlock();
 				DrawTutText();
 				break;
@@ -34,8 +36,9 @@ if ("practice" in self)
 				break;
 			case 3:
 				AddText("Up Throw Up Air");
-				AddText("Up Throw mixup");
-				AddText("Up Throw mixup 2");
+				AddText("Up Throw NSpec");
+				AddText("Up Throw FSpec");
+				AddText("USpec Link");
 				DrawTutBlock();
 				DrawTutText();
 				break;
@@ -73,6 +76,68 @@ if ("practice" in self)
 						AddText("Added FSpecial sound effects");
 						AddText("");
 						AddText("FStrong angle 40 -> 45");
+						break;
+					case 3:
+						AddText("v1.3 - 29 Apr 2021");
+						AddText("");
+						AddText("Constellations now no longer affects base knockback");
+						AddText("Star damage bonus increased to 2% per star");
+						AddText("");
+						AddText("DStrong KBS 0.8 -> 0.9");
+						AddText("");
+						AddText("Weight (knockback_adj) 1.15 -> 1.1");
+						AddText("");
+						AddText("USpec now no longer refreshes resources when landing");
+						AddText("");
+						AddText("Added 'USpec Link' advanced tutorial");
+						AddText("Added 'Spawn Star' command");
+						break;
+					case 4:
+						AddText("v1.4 - 30 Apr 2021");
+						AddText("");
+						AddText("NAir Initial - Damage 6 -> 5");
+						AddText("NAir Initial - Range reduced");
+						AddText("Nair Startup 3 -> 4");
+						AddText("");
+						AddText("FSpecial Grab - Frame 11 -> 9");
+						AddText("FSpecial Dash - Startup 20 -> 16");
+						AddText("FSpecial Endlag 18 -> 32");
+						AddText("FSpecial Endlag no longer has whifflag multiplier");
+						AddText("FSpecial no longer has 8 frames cooldown");
+						AddText("");
+						AddText("NSpecial can no longer Jump Cancel UStrong");
+						AddText("");
+						AddText("UAir Startup 18 -> 14");
+						AddText("UAir Endlag 12 -> 14");
+						AddText("");
+						AddText("Big stars deceleration 1.05 -> 1.07");
+						AddText("(Speed is divided by this number every frame; For reference, small stars have 1.1)");
+						AddText("");
+						AddText("Replaced Lukaru's victory theme with Regina's victory theme");
+						AddText("Replaced Fink Pong alt with Ice Bnuuy alt");
+						AddText("Replaced Grey alt with Black alt");
+						break;
+					case 5:
+						AddText("v1.5 - 1 May 2021");
+						AddText("");
+						AddText("Fixed infinite djump FSpec bug");
+						AddText("");
+						AddText("NSpecial now can Jump Cancel UStrong");
+						AddText("NSpecial now prioritizes big stars");
+						AddText("Small stars no longer has parry stun");
+						AddText("");
+						AddText("DSpecial now pulls in stars more consistently");
+						AddText("DSpecial now pulls in stars faster");
+						AddText("");
+						AddText("FSpecial dash now pulls the opponent in to follow up more consistently");
+						AddText("");
+						AddText("BAir startup 13 -> 11");
+						AddText("");
+						AddText("Added Cracked Star state for destroying stars");
+						AddText("Stars become cracked when getting hit by the opponent");
+						AddText("Cracked stars only despawn after Lukastar gets hit");
+						AddText("Spawning new stars prioritizes despawning cracked stars when reaching star limit");
+						AddText("Fusing stars will remove the cracked status");
 						break;
 				}
 				DrawTutorialBlock();
@@ -135,6 +200,14 @@ if ("practice" in self)
 							AddText("This is more consistent than UAir, but kills later.");
 							AddText("");
 							AddText("Grab (FSpecial) -> Shorthop/DSpecial -> FSpecial");
+							break;
+						case 3:
+							AddText("Frame 6 or faster moves are true if you hit USpec on the ground, ending close to the opponent");
+							AddText("It's more consistent if you do it diagonally downwards");
+							AddText("However, this can easily be countered by crouch cancelling");
+							AddText("If you see your opponent crouching before getting hit by USpec, don't follow up!");
+							AddText("");
+							AddText("USpec1 -> USpec2 -> UStrong/DStrong/UTilt/DTilt (or anything frame 6 or faster)");
 							break;
 					}
 				}

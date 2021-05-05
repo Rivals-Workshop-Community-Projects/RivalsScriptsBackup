@@ -125,6 +125,8 @@ if attack == AT_DAIR {
 			//e.g. for an attack like Clairen's back throw, you might have an additional window where the grabbed player is pulled behind.
 		}
     }
+ can_fast_fall = false 
+	
 }
 
 

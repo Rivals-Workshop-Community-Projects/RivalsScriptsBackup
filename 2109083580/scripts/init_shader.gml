@@ -2,27 +2,27 @@
 switch (get_player_color(player))
 {
 	case 7:
-    for(var i = 0; i < 8; ++i) set_character_color_shading(i, 0);
-    outline_color = [ 35, 67, 49 ];
-	break;
+		for(var i = 0; i < 8; ++i) set_character_color_shading(i, 0);
+		outline_color = [ 35, 67, 49 ];
+		break;
 	case 13:
-	var temp_a = 0.6;
-	var temp_r = get_color_profile_slot_r(13, 0);
-	var temp_g = get_color_profile_slot_g(13, 0);
-	var temp_b = get_color_profile_slot_b(13, 0);
-	set_character_color_slot(0, temp_r, temp_g, temp_b, temp_a);
-	set_article_color_slot(0, temp_r, temp_g, temp_b, temp_a);
-	temp_r = get_color_profile_slot_r(13, 4);
-	temp_g = get_color_profile_slot_g(13, 4);
-	temp_b = get_color_profile_slot_b(13, 4);
-	set_character_color_slot(4, temp_r, temp_g, temp_b, temp_a);
-	set_article_color_slot(4, temp_r, temp_g, temp_b, temp_a);
-	temp_r = get_color_profile_slot_r(13, 6);
-	temp_g = get_color_profile_slot_g(13, 6);
-	temp_b = get_color_profile_slot_b(13, 6);
-	set_character_color_slot(6, temp_r, temp_g, temp_b, temp_a);
-	set_article_color_slot(6, temp_r, temp_g, temp_b, temp_a);
-	break;
+		var temp_a = 0.6;
+		var temp_r = get_color_profile_slot_r(13, 0);
+		var temp_g = get_color_profile_slot_g(13, 0);
+		var temp_b = get_color_profile_slot_b(13, 0);
+		set_character_color_slot(0, temp_r, temp_g, temp_b, temp_a);
+		set_article_color_slot(0, temp_r, temp_g, temp_b, temp_a);
+		temp_r = get_color_profile_slot_r(13, 4);
+		temp_g = get_color_profile_slot_g(13, 4);
+		temp_b = get_color_profile_slot_b(13, 4);
+		set_character_color_slot(4, temp_r, temp_g, temp_b, temp_a);
+		set_article_color_slot(4, temp_r, temp_g, temp_b, temp_a);
+		temp_r = get_color_profile_slot_r(13, 6);
+		temp_g = get_color_profile_slot_g(13, 6);
+		temp_b = get_color_profile_slot_b(13, 6);
+		set_character_color_slot(6, temp_r, temp_g, temp_b, temp_a);
+		set_article_color_slot(6, temp_r, temp_g, temp_b, temp_a);
+		break;
 }
 //#region Sanguine Lightning Colour Palette
 
@@ -97,6 +97,18 @@ if("slActive" in self && slActive){
 		set_color_profile_slot( 15, 5, 255, 255, 255 ); //Skin
 		set_color_profile_slot( 15, 6, 243, 84, 116 ); //Alt Fur
 	break;
+	case 16:
+		set_color_profile_slot( 16, 5, 177, 239, 242 ); //Alt Fur
+		set_color_profile_slot( 16, 6, 168, 255, 250 ); //Skin
+	break;
+	case 17:
+		set_color_profile_slot( 17, 5, 255, 195, 158 ); //Alt Fur 2
+		set_color_profile_slot( 17, 6, 255, 160, 59 ); //Skin 2
+	break;
+	case 18:
+		set_color_profile_slot( 18, 5, 254, 225, 69 ); //Skin
+		set_color_profile_slot( 18, 6, 242, 250, 171 ); //Alt Fur
+	break;
 	default:
 	break;
 	}
@@ -159,8 +171,6 @@ else{
 		set_color_profile_slot( 12, 6, 253, 253, 253 ); //Alt Fur
 	break;
 	case 13:
-		//set_color_profile_slot( 13, 5, 242, 250, 171 ); //Skin
-		//set_color_profile_slot( 13, 6, 253, 253, 253 ); //Alt Fur
 		set_color_profile_slot( 13, 5, 116, 141, 196 ); //Skin
 		set_color_profile_slot( 13, 6, 253, 253, 253 ); //Alt Fur
 	break;
@@ -171,6 +181,18 @@ else{
 	case 15:
 		set_color_profile_slot( 15, 5, 174, 142, 172 ); //Skin
 		set_color_profile_slot( 15, 6, 253, 253, 253 ); //Alt Fur
+	break;
+	case 16:
+		set_color_profile_slot( 16, 5, 61, 127, 242 ); //Skin
+		set_color_profile_slot( 16, 6, 247, 248, 250 ); //Alt Fur
+	break;
+	case 17:
+		set_color_profile_slot( 17, 5, 185, 70, 70 ); //Skin
+		set_color_profile_slot( 17, 6, 255, 230, 210 ); //Alt Fur
+	break;
+	case 18:
+		set_color_profile_slot( 18, 5, 242, 250, 171 ); //Skin
+		set_color_profile_slot( 18, 6, 253, 253, 253 ); //Alt Fur
 	break;
 	default:
 	break;

@@ -2,7 +2,11 @@
 
 var monarch = self;
 
-with(hit_player_obj) other_afterimage_array[0] = {x:x,y:y,sprite_index:sprite_index,image_index:image_index,color:other_player_id.monDarkRed};
+with(hit_player_obj) {
+	last_monarch = monarch;
+}
+
+last_hit_player = hit_player_obj;
 
 // Spikes clear cooldown
 if(get_hitbox_angle(my_hitboxID) <= 290 && get_hitbox_angle(my_hitboxID) >= 250)
@@ -45,7 +49,7 @@ if(my_hitboxID.attack = AT_BAIR && my_hitboxID.hbox_num == 1 && hit_player_obj.c
 
 // Up air jank
 if(my_hitboxID.attack = AT_UAIR && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 3) && hit_player_obj.clone == false) {
-	//move_cooldown[AT_UAIR] = 50;
+	move_cooldown[AT_UAIR] = 45;
 	
 	spawn_hit_fx(x,y,teleport_lite_start_smaller);
 	spawn_hit_fx(hit_player_obj.x-80*spr_dir,hit_player_obj.y-60,hitfx9);
@@ -77,11 +81,17 @@ if(my_hitboxID.attack = AT_UAIR && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbo
 
 // Dspec
 if(my_hitboxID.attack == AT_DSPECIAL && hit_player_obj.clone == false){
-	if(time_knife != noone){
-		time_knife.stuck_player = hit_player_obj;
-		time_knife.shake_timer = 10;
+	if(my_hitboxID.hbox_num == 1){
+		if(time_knife != noone){
+			time_knife.stuck_player = hit_player_obj;
+			time_knife.shake_timer = 10;
+		}
+		sound_play(sound_get("monarch_darthitplayer"));
 	}
-	sound_play(sound_get("monarch_darthitplayer"));
+	else
+	{
+		spawn_hit_fx(hit_player_obj.x ,hit_player_obj.y- hit_player_obj.char_height/2,hitfx11);
+	}
 }
 
 if(my_hitboxID.attack = AT_FSPECIAL){
@@ -158,6 +168,7 @@ if(my_hitboxID.attack = AT_FSPECIAL){
     
     spr_dir *=-1;
     hit_fspec = true;
+    fspec_line_timer = 15;
     
     // Knife special interaction
     if(time_knife != noone){

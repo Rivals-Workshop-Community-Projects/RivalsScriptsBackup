@@ -228,6 +228,24 @@ if ("rollArray" in self)
 			gpu_set_fog(0, c_white, 0, 0);
 			break;
 
+		// Enby
+		case 29:
+			FlagPart(make_colour_rgb(255, 244, 51), 1/4, 0);
+			FlagPart(c_white, 1/4, 1/4);
+			FlagPart(make_colour_rgb(155, 89, 208), 1/4, 2/4);
+			FlagPart(make_colour_rgb(43, 43, 43), 1/4, 3/4);
+			gpu_set_fog(0, c_white, 0, 0);
+			break;
+
+		// Ace
+		case 30:
+			FlagPart(c_black, 1/4, 0);
+			FlagPart(make_colour_rgb(164, 164, 164), 1/4, 1/4);
+			FlagPart(c_white, 1/4, 2/4);
+			FlagPart(make_colour_rgb(129, 0, 129), 1/4, 3/4);
+			gpu_set_fog(0, c_white, 0, 0);
+			break;
+
 		// aura
 		default:
 			if (aura)

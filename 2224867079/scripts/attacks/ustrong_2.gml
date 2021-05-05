@@ -47,4 +47,5 @@ set_hitbox_value(AT_USTRONG_2, 1, HG_KNOCKBACK_SCALING, 1.2);
 set_hitbox_value(AT_USTRONG_2, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_USTRONG_2, 1, HG_HITPAUSE_SCALING, 0.1);
 set_hitbox_value(AT_USTRONG_2, 1, HG_VISUAL_EFFECT, red_new_stab_1 );
+set_hitbox_value(AT_USTRONG_2, 1, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(AT_USTRONG_2, 1, HG_HIT_SFX, sound_get("RedHit4"));

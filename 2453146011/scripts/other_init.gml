@@ -1,4 +1,6 @@
 // other init
+
+
 var i = 0;
 repeat(100)
 {
@@ -24,3 +26,5 @@ portal_afterimage = {x:x,y:y,sprite_index:sprite_index,image_index:image_index,s
 portal_white = 0;
 last_spr_dir = 1;
 
+has_monarch_variables = true;
+last_monarch = noone;

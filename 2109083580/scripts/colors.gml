@@ -1,3 +1,5 @@
+// DEFAULT COLOR
+
 // Fur
 set_color_profile_slot( 0, 0, 200, 200, 240 );
 set_color_profile_slot_range( 0, 27, 24, 29 );
@@ -32,7 +34,7 @@ set_color_profile_slot_range( 7, 15, 6, 38 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 19 );
 
 // Blue
 set_color_profile_slot( 1, 0, 128, 171, 244 ); //Fur
@@ -154,16 +156,6 @@ set_color_profile_slot( 12, 5, 176, 130, 204 ); //Skin
 set_color_profile_slot( 12, 6, 253, 253, 253 ); //Alt Fur
 set_color_profile_slot( 12, 7, 175, 86, 159 ); //Gold2
 
-// Jerome
-//set_color_profile_slot( 13, 0, 47, 45, 45 ); //Fur
-//set_color_profile_slot( 13, 1, 36, 35, 35 ); //Fabric
-//set_color_profile_slot( 13, 2, 5, 5, 71 ); //Pants
-//set_color_profile_slot( 13, 3, 212, 186, 72 ); //Gold1
-//set_color_profile_slot( 13, 4, 34, 65, 133 ); //Red Fur
-//set_color_profile_slot( 13, 5, 34, 65, 133 ); //Skin
-//set_color_profile_slot( 13, 6, 201, 190, 161 ); //Alt Fur
-//set_color_profile_slot( 13, 7, 120, 96, 30 ); //Gold2
-
 // Champion
 set_color_profile_slot( 13, 0, 201, 249, 253 ); //Fur
 set_color_profile_slot( 13, 1, 57, 56, 54 ); //Fabric
@@ -194,6 +186,35 @@ set_color_profile_slot( 15, 5, 174, 142, 172 ); //Skin
 set_color_profile_slot( 15, 6, 253, 253, 253 ); //Alt Fur
 set_color_profile_slot( 15, 7, 65, 57, 74 ); //Gold2
 
+// Zerra
+set_color_profile_slot( 16, 0, 194, 213, 252 ); //Fur
+set_color_profile_slot( 16, 1, 61, 127, 242 ); //Fabric
+set_color_profile_slot( 16, 2, 145, 195, 255 ); //Pants
+set_color_profile_slot( 16, 3, 99, 155, 255 ); //Gold1
+set_color_profile_slot( 16, 4, 99, 234, 255 ); //Red Fur
+set_color_profile_slot( 16, 5, 61, 127, 242 ); //Skin
+set_color_profile_slot( 16, 6, 247, 248, 250 ); //Alt Fur
+set_color_profile_slot( 16, 7, 0, 76, 255 ); //Gold2
+
+// Blood Moon
+set_color_profile_slot( 17, 0, 55, 55, 55 ); //Fur
+set_color_profile_slot( 17, 1, 120, 50, 50 ); //Fabric
+set_color_profile_slot( 17, 2, 100, 75, 75 ); //Pants
+set_color_profile_slot( 17, 3, 220, 150, 100 ); //Gold1
+set_color_profile_slot( 17, 4, 185, 50, 25 ); //Red Fur
+set_color_profile_slot( 17, 5, 185, 70, 70 ); //Skin
+set_color_profile_slot( 17, 6, 255, 230, 210 ); //Alt Fur
+set_color_profile_slot( 17, 7, 210, 110, 60 ); //Gold2
+
+// Legacy
+set_color_profile_slot( 18, 0, 47, 45, 45 ); //Fur
+set_color_profile_slot( 18, 1, 36, 35, 35 ); //Fabric
+set_color_profile_slot( 18, 2, 5, 5, 71 ); //Pants
+set_color_profile_slot( 18, 3, 212, 186, 72 ); //Gold1
+set_color_profile_slot( 18, 4, 34, 65, 133 ); //Red Fur
+set_color_profile_slot( 18, 5, 34, 65, 133 ); //Skin
+set_color_profile_slot( 18, 6, 201, 190, 161 ); //Alt Fur
+set_color_profile_slot( 18, 7, 120, 96, 30 ); //Gold2
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

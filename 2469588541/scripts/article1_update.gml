@@ -13,25 +13,27 @@ switch (state)
         if (state_timer >= startupTime) SetArticleState(AS_IDLE);
         break;
     case AS_IDLE:
-        with (asset_get("pHitBox"))
-		{
-		    if (place_meeting(x,y,other.id)
-				&& other.player != player
-				&& other.state != 2
-				&& !other.isDespawn
-				&& damage > 0
-                && effect != 9
-				&& hit_priority > 0
-				&& get_player_team(player) != get_player_team(other.player))
-			{
-				//can_hit[other.player] = false;
-		    	//sound_play(sound_effect);
-				//var fx = spawn_hit_fx(other.x+(hit_effect_x*spr_dir)+x-other.x,other.y+hit_effect_y+y-other.y,hit_effect);
-				//fx.draw_angle = kb_angle;
-				//fx.spr_dir = spr_dir;
-                other.isDespawn = true;
+        if (cracked)
+        {
+            if (state_timer % 5 == 0) x += state_timer%2==0?-4:4;
+        }
+        else
+        {
+            with (asset_get("pHitBox"))
+		    {
+		        if (place_meeting(x,y,other.id)
+		    		&& other.player != player
+		    		&& other.state != 2
+		    		&& !other.isDespawn
+		    		&& damage > 0
+                    && effect != 9
+		    		&& hit_priority > 0
+		    		&& get_player_team(player) != get_player_team(other.player))
+		    	{
+                    other.cracked = true;
+		        }
 		    }
-		}
+        }
         if (isDespawn) SetArticleState(AS_DESPAWN);
         else if (checkMerge)
         {
@@ -43,6 +45,7 @@ switch (state)
                     other.isBig = true;
                     isDespawn = true;
                     player_id.tutDone[2] = true;
+                    other.cracked = false;
                 }
                 if (isBig) SetSprites();
             }
@@ -63,6 +66,7 @@ switch (state)
         if (state_timer >= constellationTime) SetArticleState(AS_DESPAWN);
         break;
     case AS_NSPEC:
+        checkMerge = false;
         ignores_walls = true;
         var dist = point_distance(0, 0, hsp, vsp);
         if (dist < 5 || place_meeting(x, y, asset_get("plasma_field_obj"))) SetArticleState(AS_DESPAWN);
@@ -75,11 +79,12 @@ switch (state)
         uwu.depth = depth+1;
         break;
     case AS_DESPAWN:
-        if (state_timer >= dieTime + replacedCount)
+        if (state_timer >= dieTime + replacedCount || (isBig && isDespawn))
         {
             var uwu = spawn_hit_fx(x, y, 302); uwu.spr_dir = hsp==0?1:sign(hsp);
             uwu.depth = depth+1;
             sound_play(sound_get("break"));
+            cracked = false;
             if (isBig && isDespawn)
             {
                 isBig = false;
@@ -106,8 +111,9 @@ if (state_timer % animSpeed == 0 && state_timer != 0)
 #define SlowDown()
 {
     ignores_walls = point_distance(0, 0, hsp, vsp) > 10;
-    hsp /= isBig?1.05:1.1;
-    vsp /= isBig?1.05:1.1;
+    var frict = checkMerge?1.4:isBig?1.07:1.1;
+    hsp /= frict;
+    vsp /= frict;
 }
 
 #define SetArticleState(_state)

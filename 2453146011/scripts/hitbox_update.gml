@@ -21,6 +21,7 @@ if(attack == AT_UAIR && hbox_num == 1)
 	}
 }
 
+
 #define butterflyFX(_xrange,_yrange,_density,_xoff,_yoff,_infront)
 {
 	// Save original direction

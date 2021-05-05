@@ -1,5 +1,7 @@
 //update
 
+//print(fast_fall)
+
 switch(state)
 {
     case PS_LANDING_LAG:

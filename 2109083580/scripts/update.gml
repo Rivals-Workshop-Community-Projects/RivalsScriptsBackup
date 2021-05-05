@@ -18,6 +18,17 @@ if(state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND){
 }
 //#endregion
 
+//#region Fspec jc boost
+if(fspec_boost_timer < 15){
+	if(left_down) hsp -= .4;
+	if(right_down) hsp += .4;
+	fspec_boost_timer++;
+	
+}
+
+
+//#endregion
+
 //#region dairflip
 
 with(oPlayer){
@@ -158,9 +169,8 @@ with(oPlayer){
 //#region Uspecial SL cooldown
 move_cooldown[AT_USPECIAL] = (can_US?0:50);
 
-if (!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN) {
+if (!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN)
   can_US = true;
-}
 
 //#endregion
 
@@ -168,104 +178,105 @@ if (!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN) {
 
 //#region Sanguine Lightning
 
-if(slTimer > slTimerLimit){
+if (slTimer > slTimerLimit)
 	slTimer = slTimerLimit;
-}
 	
-if(slTimer >= slTimerLimit - 30){
-	if(attack_down 
-	&& special_down 
-	&& ((state != PS_ATTACK_AIR 
-	&&	state != PS_ATTACK_GROUND
-	&&	state_cat != SC_HITSTUN
-	&&	state_cat != SC_AIR_COMMITTED
-	&&	state_cat != SC_AIR_NEUTRAL)
-	||	((state == PS_ATTACK_AIR
-	||	state == PS_ATTACK_GROUND)
-	&&	state_timer < 2))
-	){
-		if(free){
-			state = PS_IDLE_AIR;
-			//vsp = old_vsp
-			//hsp = old_hsp
-		}else{
-			state = PS_IDLE;
-		}
+if (slTimer >= floor(slTimerLimit/3))
+{
+	if ((attack_down && special_down)
+		&& (	(state_cat != SC_HITSTUN
+				&& state_cat != SC_GROUND_COMMITTED
+				&& state_cat != SC_AIR_COMMITTED)
+			|| ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && state_timer < 2))
+		)
+	{
+		set_state(free?PS_IDLE_AIR:PS_IDLE);
 	}
 }
-//old_vsp = vsp;
-//old_hsp = hsp;
-if(slTimer >= slTimerLimit){
+
+if (slTimer >= slTimerLimit)
+{
 	move_cooldown[AT_DSPECIAL] = 60;
 	move_cooldown[AT_DSPECIAL_2] = 60;
 	move_cooldown[AT_DSPECIAL_AIR] = 60;
-//	if(attack_down){
-		//move_cooldown[AT_NSPECIAL] = 10;
-	//}
 }
-if (slTimer >= slTimerLimit 
-&& !slActive 
-&& special_down
-&& (down_down || attack_down))
+
+if (slTimer >= floor(slTimerLimit/3) - 2
+	&& !slActive 
+	&& special_down
+	&& attack_down
+	&& state_cat != SC_HITSTUN
+	&& state_cat != SC_GROUND_COMMITTED
+	&& state_cat != SC_AIR_COMMITTED
+	&& !hitpause)
 {
 	slActive = true;
+	miniSL_timer = round(slTimerLimit/3);
+	miniSL_tick = 8;
+	miniSL_cd = 0;
 	SL_mode();
 	DSP_dam = 0;
-	slTimer = slTimerLimit
 	slHurtTimer = slMaxHurtTime;
 	SL_trans_timer = 0;
 	sound_play(sound_get("warwick_howl"));
-	
-	/*				Time Stop, removed
-	with(oPlayer){
-		hitpause = true;
-		hitstop += 45;
-	}*/
 }
-	SL_trans_timer += 0.32;
+SL_trans_timer += 0.32;
 
-if(slTimer < 0){
-	slHurtTimer = 0
-	slDamageMult = slNormalDamage
-	slKBMult = slNormalKB
-	
+if (slTimer - miniSL_timer >= floor(slTimerLimit/3)-1 && slActive)
+{
+	if(attack_down && special_down)
+	{
+		if(miniSL_cd > 10)
+		{
+			sound_play(asset_get("sfx_absa_singlezap1"));
+			miniSL_timer += round(slTimerLimit/3);
+		}
+		miniSL_cd = 0;
+	}
+}
+if (miniSL_cd < 15)
+	miniSL_cd++;
+
+if (slTimer < 0)
+{
+	slHurtTimer = 0;
+	slDamageMult = slNormalDamage;
+	slKBMult = slNormalKB;
 }
 
-if floor(slBarIndex) >= 1 and slBarIndex < 2.8
-{
-	slBarIndex +=0.2
-}
-else if slBarIndex >= 2.8
-{
-	slBarIndex = 0
-}
+if (floor(slBarIndex) >= 1 and slBarIndex < 2.8)
+	slBarIndex += 0.2;
+else if (slBarIndex >= 2.8)
+	slBarIndex = 0;
 
-if slActive
+if (slActive)
 {
-	
-	if(!hitpause){
-		slTimer -= 0.95;
+	if (!hitpause)
+	{
+		--slTimer;
 		--slHurtTimer;
+		--miniSL_timer;
 	}
 	
-	slDamageMult = slActiveDamage
-	slKBMult = slActiveKB
+	slDamageMult = slActiveDamage;
+	slKBMult = slActiveKB;
 	
-	if slTimer <= 0 
+	if (miniSL_timer <= 0 )
 	{
-		slTimer = 0;
-		slActive = false
+		miniSL_timer = 0;
+		miniSL_tick = 0;
+		slActive = false;
 		SL_mode();
 	}
 	
-	if slHurtTimer <= 0
+	if (slHurtTimer <= 0)
 	{
 		slHurtTimer = slMaxHurtTime;
 		if (!runeA)
 		{
-			sound_play(sound_get("SL_HURT"))
-			take_damage(player,-1,slHurtAmount)
-			slBarIndex = 1
+			sound_play(sound_get("SL_HURT"));
+			take_damage(player, -1, slHurtAmount);
+			slBarIndex = 1;
 		}
 		DSP_dam += slHurtAmount;
 	}
@@ -273,13 +284,12 @@ if slActive
 }
 else
 {
-	slHurtTimer = 0
-	slDamageMult = slNormalDamage
-	slKBMult = slNormalKB
+	slHurtTimer = slMaxHurtTime;
+	slDamageMult = slNormalDamage;
+	slKBMult = slNormalKB;
 }
-if(DSP_dam > 20){
+if (DSP_dam > 20)
 	DSP_dam = 20;
-}
 
 slHUDshakeOffset = (slHUDshake>0?slHUDshakeOffset+(floor(get_gameplay_time()/3)%2==0?2:-2):0);
 --slHUDshake;
@@ -354,6 +364,7 @@ hud_timer += (temp_timer>hud_timer?1:(temp_timer<hud_timer?-1:0));
 hud_timer = clamp(hud_timer,0,23);
 
 
+
 //#endregion
 
 
@@ -399,7 +410,8 @@ if(dtparry_timer <= dtparry_limit){
 
 //#region Sangiune Lightning Strong Hitboxes
 slHUDshake = 16;
-if(slActive){
+if (slActive)
+{
     //Ustrong Kill Version
     set_hitbox_value(AT_USTRONG, 4, HG_BASE_KNOCKBACK, 12);
     set_hitbox_value(AT_USTRONG, 4, HG_DAMAGE, 12);
@@ -415,8 +427,8 @@ if(slActive){
     
     //Fstrong Kill Version
     for(var i = 1; i <= 12; ++i){
-    	set_hitbox_value(AT_FSTRONG, i, HG_BASE_KNOCKBACK, 8.5);
-    	set_hitbox_value(AT_FSTRONG, i, HG_KNOCKBACK_SCALING, 0.70);
+    	set_hitbox_value(AT_FSTRONG, i, HG_BASE_KNOCKBACK, 10);
+    	set_hitbox_value(AT_FSTRONG, i, HG_KNOCKBACK_SCALING, 1.4);
     	set_hitbox_value(AT_FSTRONG, i, HG_ANGLE, 40);
     	set_hitbox_value(AT_FSTRONG, i, HG_BASE_HITPAUSE, 18);
     	set_hitbox_value(AT_FSTRONG, i, HG_HITPAUSE_SCALING, 1);
@@ -426,7 +438,8 @@ if(slActive){
     //hiteffect shift
     lightningpop = hit_fx_create(sprite_get("SL_lightningpop"), 30)
 }
-else{
+else
+{
     //Ustrong reset
     reset_hitbox_value(AT_USTRONG, 4, HG_BASE_KNOCKBACK);
     reset_hitbox_value(AT_USTRONG, 4, HG_DAMAGE);
@@ -489,8 +502,8 @@ if(slActive){
 	set_hitbox_value(AT_UTILT, 10, HG_DAMAGE, 11)
 	
 	//Dattack speed upgrade
-	set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 14)
-	set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 7)
+	//set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 14)
+	//set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 7)
 	
 	//Bair Damage upgrage
 	set_hitbox_value(AT_BAIR, 5, HG_DAMAGE, 14);

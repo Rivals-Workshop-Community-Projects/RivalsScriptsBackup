@@ -102,7 +102,7 @@ if triggered == 1 or rank >= 4{
 	if  rank >= 4 && my_hitboxID.damage > 1 {
 		
 				 spawn_hit_fx (hit_player_obj.x  + (random_func(1, 12, true))*spr_dir, hit_player_obj.y - 30 - random_func(2, 10, true) , 303)
-	   	 sound_play(asset_get("sfx_clairen_tip_strong"),false,noone,0.6 + my_hitboxID.damage/20); 
+	   	 sound_play(asset_get("sfx_ori_energyhit_weak"),false,noone,1.2 + my_hitboxID.damage/20); 
 
 
 		if my_hitboxID.type == 1  && my_hitboxID.attack != AT_TAUNT {

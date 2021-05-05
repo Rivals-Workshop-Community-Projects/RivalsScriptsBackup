@@ -1,6 +1,7 @@
 // User event 0
 
 //article1_update
+if(destroyed) exit;
 
 var monarch = player_id;
 if(portal_white > 0) portal_white--;
@@ -19,6 +20,8 @@ if(!isCeil)
 else
     mask_index = sprite_get("puddle_offset_down")
 //#endregion
+
+
 
 //Fall down to stage
 if(!inPosition)
@@ -52,6 +55,9 @@ if(!inPosition)
         while(limit > 0 && !place_meeting(x, y+48, asset_get("par_block")) && !place_meeting(x, y+48, asset_get("par_jumpthrough"))){y--;limit--;}
     }
     while(limit > 0 && !isCeil &&!isWall && place_meeting(x, y-10, asset_get("par_jumpthrough"))){y-=1;limit--;}
+    
+    // Floor failsafe
+    if(isFloor) while(limit > 0 && place_meeting(x, y-2, asset_get("par_block")) || place_meeting(x, y-2, asset_get("par_jumpthrough"))) {y-=1;limit--;}
     //#endregion
 	
 
@@ -162,6 +168,9 @@ repeat(3)
 {
 with(stuff_to_teleport[i])
 {
+	// Skip if not in range
+    if(point_distance(x,y,other.x,other.y) > 100) continue;
+	
 	var projCheck = true;
 	
 	if(i == 0) if!(type == 2 && player_id == other.player_id && attack == AT_UAIR) projCheck = false;
@@ -170,6 +179,7 @@ with(stuff_to_teleport[i])
     {
     var collidedPlayer = collision_rectangle(x-10 + (hsp/2), y- (i == 2 ? 35 : monarch.original_char_height*1.5), x+10 + (hsp/2), y- (i == 2 ? -35 : 5) +(vsp/2), other, false, true);
     
+
     
    
     
@@ -329,9 +339,11 @@ with(stuff_to_teleport[i])
             x += secondPortal.x - firstPortal.x;
             y += secondPortal.y - firstPortal.y;
             
+            // charges
             with(monarch){
-            	sound_play(sound_get("monarch_enterportal"));
+            	sound_play(sound_get("monarch_enterportal"),false,false,1,1+((max_charges-charges)/100));
             	if(i == 1 && phone_cheats[infiniteCharges] == 0) charges--;
+            	if(charges == 0) sound_play(sound_get("monarch_fspecialmiss"));
             }
             
             teleported = true;
@@ -538,6 +550,18 @@ i += 1;
 }
 //#endregion
 
+//#region Shake
+if(monarch.charges == 1)
+if(shake_timer == 0){
+	if(isWall) y += (get_gameplay_time()%2 == 1 ? 1 : -1);
+    else x += (get_gameplay_time()%2 == 1 ? 1 : -1);
+    	
+    shake_timer = 2;
+} else shake_timer--;
+
+//#endregion
+
+
 //#region particles
 if(fxCount > 0) fxCount--;
 else
@@ -547,7 +571,7 @@ else
         if(other.portal_id == 1) butterflyFX(50,(other.isWall == true ? 75 : 50),1,other.x - x - (other.isWall == true ? 40 : 0) + ( other.leftWall == 1 ? 80 : 0),other.y - y - (other.isWall == true ? 0 : other.isCeil == true ? -50 : 50),false);
         else butterflyFXr(50,(other.isWall == true ? 75 : 50),1,other.x - x - (other.isWall == true ? 40 : 0) + ( other.leftWall == 1 ? 80 : 0),other.y - y - (other.isWall == true ? 0 : other.isCeil == true ? -50 : 50),false);
     
-    fxCount = 10;
+    fxCount = 35 - monarch.charges*4;
 }
 
 
@@ -560,6 +584,8 @@ if(collision_circle(x,y,radius,asset_get("par_block"),false,true) == noone && co
 	with(monarch)butterflyFX(80,80,20,portal_1.x-x,portal_1.y-y-20,false);
 	if(portal_id == 1) monarch.portal_1 = noone;
 	if(portal_id == 2) monarch.portal_2 = noone;
+	
+	destroyed = true;
 	instance_destroy();
 }
 
@@ -619,7 +645,7 @@ if(collision_circle(x,y,radius,asset_get("par_block"),false,true) == noone && co
 		spr_dir = random_func(i % 24,2,true) == 0 ? 1 : -1;
 		
 		// Funky math
-		var part = spawn_hit_fx( x + _xoff + random_func_2(i,_xrange,true), y + _yoff + random_func_2(i+1,_yrange,true), butterfliesr[random_func_2(i+2,7,true)+1]);
+		var part = spawn_hit_fx( x + _xoff + random_func_2(i+2,_xrange,true), y + _yoff + random_func_2(i+3,_yrange,true), butterfliesr[random_func_2(i+2,7,true)+1]);
 		if(_infront) part.depth = -100;
 		// Increment counter
 		i++;

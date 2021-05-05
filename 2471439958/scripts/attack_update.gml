@@ -242,15 +242,15 @@ if (attack == AT_DAIR) {
 }
 //Ftilt stick? (wtf) 
 if (attack == AT_FTILT) {
-	if window == 3 && window_timer >= 1{
+	if window == 3 && window_timer >= 4{
 		if right_strong_pressed * spr_dir or left_strong_pressed * -spr_dir{
 		window = 4;
 		sound_play(asset_get("sfx_swipe_medium1"));
 	}
 	}
-	if window == 5 && window_timer >= 1{
+	if window == 6{
 		if right_strong_pressed * spr_dir or left_strong_pressed * -spr_dir{
-		window = 6;
+		window = 7;
 		sound_play(asset_get("sfx_swipe_heavy2"));
 	}
 }

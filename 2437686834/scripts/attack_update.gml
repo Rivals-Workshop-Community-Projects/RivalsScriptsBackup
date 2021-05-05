@@ -102,6 +102,7 @@ djumps = 2;
 //has_walljump = false;
 move_cooldown[AT_FSPECIAL] = 10
 can_fast_fall = false
+fall_through = true
 
 if (window = 1 and window_timer = 1) or window = 8
 {

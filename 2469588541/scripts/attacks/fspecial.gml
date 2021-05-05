@@ -4,13 +4,13 @@ set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial2_hurt"));
 
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, sound_get("fspec"));
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 11);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 10);
 
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 6);
@@ -31,10 +31,9 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 18);
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 32);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 11);
-set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_FSPECIAL, 3);
 
@@ -81,7 +80,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, bigstar_effect);
 set_hitbox_value(AT_FSPECIAL, 3, HG_PARENT_HITBOX, 3);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW, 1);
-set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 10);
+set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 8);
 set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_X, 37);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, -28);

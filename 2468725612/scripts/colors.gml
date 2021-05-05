@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 17 );
+set_num_palettes( 21 );
 
 // Blue
 set_color_profile_slot( 1, 0, 10, 61, 122 ); //Purple Clothing
@@ -195,6 +195,46 @@ set_color_profile_slot( 16, 4, 189, 96, 37 ); //Shotgun Black
 set_color_profile_slot( 16, 5, 62, 64, 68 ); //Shotgun Brown
 set_color_profile_slot( 16, 6, 198, 193, 184 ); //Pink Ears
 set_color_profile_slot( 16, 7, 215, 0, 0 ); //Blue Buttons
+
+// Ganondorf
+set_color_profile_slot( 17, 0, 82, 97, 82 ); //Purple Clothing
+set_color_profile_slot( 17, 1, 156, 68, 17 ); //Yellow Clothing
+set_color_profile_slot( 17, 2, 148, 130, 41 ); //White Fur
+set_color_profile_slot( 17, 3, 144, 54, 186 ); //Red Eye/Hologram
+set_color_profile_slot( 17, 4, 145, 125, 71 ); //Shotgun Black
+set_color_profile_slot( 17, 5, 255, 252, 205 ); //Shotgun Brown
+set_color_profile_slot( 17, 6, 195, 42, 0 ); //Pink Ears
+set_color_profile_slot( 17, 7, 234, 234, 20 ); //Blue Buttons
+
+// The Takeover
+set_color_profile_slot( 18, 0, 215, 0, 0 ); //Purple Clothing
+set_color_profile_slot( 18, 1, 255, 72, 67 ); //Yellow Clothing
+set_color_profile_slot( 18, 2, 214, 26, 21 ); //White Fur
+set_color_profile_slot( 18, 3, 84, 49, 130 ); //Red Eye/Hologram
+set_color_profile_slot( 18, 4, 215, 0, 0 ); //Shotgun Black
+set_color_profile_slot( 18, 5, 215, 0, 0 ); //Shotgun Brown
+set_color_profile_slot( 18, 6, 255, 72, 67 ); //Pink Ears
+set_color_profile_slot( 18, 7, 215, 0, 0 ); //Blue Buttons
+
+// Roshach
+set_color_profile_slot( 19, 0, 189, 173, 124 ); //Purple Clothing
+set_color_profile_slot( 19, 1, 115, 93, 80 ); //Yellow Clothing
+set_color_profile_slot( 19, 2, 244, 238, 224 ); //White Fur
+set_color_profile_slot( 19, 3, 41, 41, 41 ); //Red Eye/Hologram
+set_color_profile_slot( 19, 4, 179, 127, 88 ); //Shotgun Black
+set_color_profile_slot( 19, 5, 115, 93, 80 ); //Shotgun Brown
+set_color_profile_slot( 19, 6, 0, 0, 0 ); //Pink Ears
+set_color_profile_slot( 19, 7, 94, 84, 92 ); //Blue Buttons
+
+// Arcade
+set_color_profile_slot( 20, 0, 64, 87, 113 ); //Purple Clothing
+set_color_profile_slot( 20, 1, 255, 52, 43 ); //Yellow Clothing
+set_color_profile_slot( 20, 2, 255, 161, 154 ); //White Fur
+set_color_profile_slot( 20, 3, 255, 116, 105 ); //Red Eye/Hologram
+set_color_profile_slot( 20, 4, 255, 254, 255 ); //Shotgun Black
+set_color_profile_slot( 20, 5, 56, 56, 56 ); //Shotgun Brown
+set_color_profile_slot( 20, 6, 255, 223, 173 ); //Pink Ears
+set_color_profile_slot( 20, 7, 255, 254, 255 ); //Blue Buttons
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

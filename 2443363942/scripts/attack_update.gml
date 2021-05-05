@@ -63,7 +63,7 @@ switch (attack)
         break;
 
     case AT_NSPECIAL:
-        if (window == 3 && special_pressed && ((window_timer > 12 && !has_rune("A")) || (has_rune("A"))))
+        if (window == 3 && special_pressed && has_rune("A"))
         {
             window = 1;
             window_timer = 0;

@@ -24,6 +24,7 @@ if(item[14, 7] == false && item[14, 3] == 0 && my_hitboxID.attack==AT_DSPECIAL){
 	achieveUnlock(14);
 }
 
+/*
 if(my_hitboxID.attack==AT_NAIR){
 	if(item[2, 3] == 0 && item[2, 7] == false){
 		nairbounceTryUnlock = true;
@@ -32,6 +33,7 @@ if(my_hitboxID.attack==AT_NAIR){
 		}
 	}
 }
+*/
 
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1){
 	crysProj_timer = crysProj_tickDelay;

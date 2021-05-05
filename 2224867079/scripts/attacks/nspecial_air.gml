@@ -57,6 +57,7 @@ set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_KNOCKBACK_SCALING, 0.3);
 set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_VISUAL_EFFECT, 301);
+set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_HIT_SFX, asset_get("sfx_absa_orb_hit"));
 set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_air_proj"));
 set_hitbox_value(AT_NSPECIAL_AIR, 1, HG_PROJECTILE_HSPEED, 11);

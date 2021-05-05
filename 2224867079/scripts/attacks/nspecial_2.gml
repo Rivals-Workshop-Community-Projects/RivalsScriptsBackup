@@ -53,6 +53,7 @@ set_hitbox_value(AT_NSPECIAL_2, 1, HG_KNOCKBACK_SCALING, 0.3);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_BASE_HITPAUSE, 0);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_VISUAL_EFFECT, 301);
+set_hitbox_value(AT_NSPECIAL_2, 1, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_absa_orb_hit"));
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_SPRITE, sprite_get("red_nspecial_proj"));
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_MASK, sprite_get("red_nspecial_proj"));

@@ -1048,7 +1048,6 @@ if window_timer % 3 == 0{
 		if has_hit_player{
 			sound_play(sound_get("RI2"));
 			create_hitbox(AT_EXTRA_1,3,x,y)
-			halo -= 1
 		} else {
 			sound_play(asset_get("sfx_ice_shieldup"));
 		}

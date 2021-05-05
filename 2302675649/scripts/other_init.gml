@@ -4,5 +4,5 @@ shakeObj = -1;
 
 outlineState = 0;
 
-nspecMax = 100;
+nspecMax = 90;
 nspecCharge = 0;

@@ -44,7 +44,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 70);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 3); 
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 55);
-set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0);
@@ -61,7 +61,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, -3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_EFFECT, has_rune("M"));
-
+set_hitbox_value(AT_NSPECIAL, 1, HG_DRIFT_MULTIPLIER, 0.1);
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 99);
@@ -75,7 +75,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 80);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 3); 
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 55);
-set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, 0);
@@ -92,6 +92,8 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_NSPECIAL, 2, HG_EXTRA_HITPAUSE, -3);
 set_hitbox_value(AT_NSPECIAL, 2, HG_EFFECT, has_rune("M"));
+set_hitbox_value(AT_NSPECIAL, 2, HG_DRIFT_MULTIPLIER, 0.1);
+
 
 
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
@@ -123,3 +125,4 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_LOCKOUT, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_EFFECT, has_rune("M"));
+set_hitbox_value(AT_NSPECIAL, 3, HG_DRIFT_MULTIPLIER, 1);

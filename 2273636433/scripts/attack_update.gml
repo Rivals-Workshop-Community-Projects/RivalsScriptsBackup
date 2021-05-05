@@ -266,7 +266,7 @@ if (attack == AT_FSPECIAL && window == 2 ) {
 			gustav.spr_dir = spr_dir;
 		}
 		//Theres no horizontal movement BUT there is vertical movment
-		 if abs(gustav.vsp) > 0.5  && abs(gustav.hsp) <  0.5{					
+		 if abs(gustav.vsp) > 0.5  && abs(gustav.hsp) <=  0.5{					
 			if variable_instance_exists(gustav, "sprdir") {				
 				gustav.sprdir *= -1;
 			} else {				
@@ -282,11 +282,18 @@ if (attack == AT_FSPECIAL && window == 2 ) {
             gustav.y = gustav.y;
 
             gustav.image_angle = 0+(180*(spr_dir+1));				//REFLECTS 
-			if abs(gustav.hsp) < 0.5  { gustav.hsp = 4*spr_dir;}	//Speed Giver
-			else{gustav.hsp = gustav.hsp* 1.25;}					//Speed multiplier
 
-			if !gustav.free { gustav.vsp = -5;}						//THE VSP THAT IT GIVES GROUNDED PROJECTILES
-			else {gustav.vsp *= -1;}						//INVERTS THE SPEED OF NON GROUNDED PROJECTILES
+
+			if abs(gustav.hsp) <= 0.5  {				//Varely any HSP
+				gustav.hsp = 4*spr_dir
+				if gustav.free {				
+					gustav.vsp *= -1;
+				}else {
+					gustav.vsp = -5;
+				}
+			}else{
+				gustav.hsp = gustav.hsp* 1.25
+			}
         }
 
 	   //DAMAGE AND KNOCKBACK MODIFIERS

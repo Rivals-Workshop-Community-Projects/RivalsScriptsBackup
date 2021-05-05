@@ -1,6 +1,12 @@
 // a1 post draw
 //gpu_set_blendmode(bm_add);
 
+
+var playtest = false;
+
+with(player_id) playtest = phone_playtest;
+if(playtest) exit;
+
 // Portal white
 if(portal_white > 0){
 	gpu_set_blendmode(bm_normal);

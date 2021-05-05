@@ -90,7 +90,7 @@ knockback_adj = 0.9; //the multiplier to KB dealt to you. 1 = default, >1 = ligh
 land_time = 4; //normal landing frames
 prat_land_time = 20;
 wave_land_time = 8;
-wave_land_adj = 0.8; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_land_adj = 1; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .01; //grounded deceleration when wavelanding
 
 //crouch animation frames
@@ -152,6 +152,9 @@ sprite_change_offset("slashc", 75, 50);
 
 summon = hit_fx_create( sprite_get( "summon" ), 12 );
 sprite_change_offset("summon", 50, 50);
+
+triggerfx = hit_fx_create( sprite_get( "triggerfx" ), 15 );
+sprite_change_offset("triggerfx", 140, 128);
 
 esp = hit_fx_create( sprite_get( "esp" ), 9 );
 sprite_change_offset("esp", 32, 32);

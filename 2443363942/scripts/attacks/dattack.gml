@@ -16,10 +16,10 @@ set_window_value(AT_DATTACK, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 8);
+set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 7);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_DATTACK, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, .05);
+set_window_value(AT_DATTACK, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, .075);
 if (has_rune("D")){
     set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 12);
     set_window_value(AT_DATTACK, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0);

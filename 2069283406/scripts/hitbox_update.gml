@@ -150,6 +150,10 @@ if has_rune("J") && player_id.fireon >= 1 {
 				}
 		}
 	
+} else {
+	if (hsp == 0 && vsp < 2 && vsp > -1)  && hit_priority != 0 {
+		destroyed = true
+	}
 }
 	
 if (place_meeting(x+hsp, y, asset_get("par_block"))) && !has_rune("J") {
@@ -161,7 +165,7 @@ if (place_meeting(x+hsp, y, asset_get("par_block"))) && !has_rune("J") {
                  vsp -= 0.6
              } 
              
-             if free {
+             if free && hit_priority = 0{
              	vsp += 0.06
              }
              

@@ -19,3 +19,6 @@ if "attackbar" in self {
     set_character_color_slot( 7, 225, 225, 225 ); //unnamed color row
     }
 }
+
+
+

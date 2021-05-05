@@ -106,3 +106,18 @@ can_swift = true;
 swift_mode = false;
 swift_timer = 0;
 training = get_training_cpu_action() != CPU_FIGHT;
+
+kirbyability = 16;
+swallowed = 0;
+enemykirby = undefined;
+
+walle_taunt_sound = sound_get("walle");
+walle_taunt_type = 1;
+
+Hikaru_Title = "Shadow Trickster";
+
+arena_title = "The Shadow Trickster";
+
+tcoart = sprite_get("noxtcodraw");
+
+miiverse_post = sprite_get("noxmiis");

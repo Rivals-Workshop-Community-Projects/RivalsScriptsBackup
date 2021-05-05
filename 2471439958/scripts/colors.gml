@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 9 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 28 );
+set_num_palettes( 30 );
 
 // Ice Blue
 set_color_profile_slot( 1, 0, 245, 255, 255 ); //white
@@ -306,6 +306,25 @@ set_color_profile_slot( 27, 5, 102, 90, 77 ); //blood
 set_color_profile_slot( 27, 6, 54, 158, 119 ); //eyes
 set_color_profile_slot( 27, 7, 225, 193, 115 ); //cleaver
 
+// Bomb Ghost
+set_color_profile_slot( 28, 0, 10, 1, 23 ); //white
+set_color_profile_slot( 28, 1, 0, 65, 123 ); //scarf
+set_color_profile_slot( 28, 2, 13, 2, 28 ); //hair
+set_color_profile_slot( 28, 3, 0, 65, 123 ); //hoodie
+set_color_profile_slot( 28, 4, 255, 198, 186 ); //wood
+set_color_profile_slot( 28, 5, 255, 47, 0 ); //blood
+set_color_profile_slot( 28, 6, 254, 87, 34 ); //eyes
+set_color_profile_slot( 28, 7, 37, 6, 79 ); //cleaver
+
+// JJ
+set_color_profile_slot( 29, 0, 90, 78, 96 ); //white
+set_color_profile_slot( 29, 1, 179, 11, 255 ); //scarf
+set_color_profile_slot( 29, 2, 49, 37, 56 ); //hair
+set_color_profile_slot( 29, 3, 49, 37, 56 ); //hoodie
+set_color_profile_slot( 29, 4, 212, 101, 255 ); //wood
+set_color_profile_slot( 29, 5, 179, 11, 255 ); //blood
+set_color_profile_slot( 29, 6, 94, 94, 94 ); //eyes
+set_color_profile_slot( 29, 7, 134, 11, 255 ); //cleaver
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

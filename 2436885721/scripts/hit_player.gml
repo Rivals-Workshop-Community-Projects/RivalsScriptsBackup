@@ -15,7 +15,7 @@ if (my_hitboxID.attack==AT_DSPECIAL) {
 //Homing Icon
 
 if(my_hitboxID.attack==AT_FTILT){
-  if(hit_player_obj.debuff == false){
+	if(hit_player_obj.debuff == false && hit_player_obj.clone == false){
         if hexDebuffID != noone and hexDebuffID != hit_player_obj
         { 
             hexDebuffID.debuff_id = noone;
@@ -28,7 +28,7 @@ if(my_hitboxID.attack==AT_FTILT){
 }
 
 if(my_hitboxID.attack==AT_UTILT){
-  if(hit_player_obj.debuff == false){
+	if(hit_player_obj.debuff == false && hit_player_obj.clone == false){
         if hexDebuffID != noone and hexDebuffID != hit_player_obj
         { 
             hexDebuffID.debuff_id = noone;
@@ -41,7 +41,7 @@ if(my_hitboxID.attack==AT_UTILT){
 }
 
 if(my_hitboxID.attack==AT_UAIR){
-    if(hit_player_obj.debuff == false){
+	if(hit_player_obj.debuff == false && hit_player_obj.clone == false){
         if hexDebuffID != noone and hexDebuffID != hit_player_obj
         { 
             hexDebuffID.debuff_id = noone;
@@ -54,7 +54,7 @@ if(my_hitboxID.attack==AT_UAIR){
 }
 
 if(my_hitboxID.attack==AT_DATTACK){
-  if(hit_player_obj.debuff == false){
+	if(hit_player_obj.debuff == false && hit_player_obj.clone == false){
         if hexDebuffID != noone and hexDebuffID != hit_player_obj
         { 
             hexDebuffID.debuff_id = noone;
@@ -66,7 +66,7 @@ if(my_hitboxID.attack==AT_DATTACK){
     }
 }
 if(my_hitboxID.attack==AT_NAIR) && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2){
-  if(hit_player_obj.debuff == false){
+	if(hit_player_obj.debuff == false && hit_player_obj.clone == false){
         if hexDebuffID != noone and hexDebuffID != hit_player_obj
         { 
             hexDebuffID.debuff_id = noone;

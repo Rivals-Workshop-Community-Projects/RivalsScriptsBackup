@@ -255,6 +255,10 @@ if (attack == AT_NSPECIAL_AIR && window > 1 && !free){
 	set_state(PS_PRATLAND);
 }
 
+if (attack == AT_NSPECIAL_AIR && window > 1 && !free){
+	set_state(PS_PRATLAND);
+}
+
 if (attack == AT_NSPECIAL_AIR){
 	if (window == 2 && !hitpause){
 		vsp = -4;

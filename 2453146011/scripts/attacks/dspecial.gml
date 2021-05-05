@@ -66,13 +66,15 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 4);
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 15);
+set_hitbox_value(AT_DSPECIAL, 2, HG_EXTRA_HITPAUSE, 30);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 361);
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE_FLIPPER, 8);
-set_hitbox_value(AT_DSPECIAL, 2, HG_EFFECT, 11);
+//set_hitbox_value(AT_DSPECIAL, 2, HG_EFFECT, 11);
 set_hitbox_value(AT_DSPECIAL, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, sound_get("monarch_gunhit2"));
 

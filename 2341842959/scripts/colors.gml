@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 15, 3, 17 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 17 );
 
 // Blue Blur
 set_color_profile_slot( 1, 0, 49, 89, 211 ); //Black Fur
@@ -185,6 +185,16 @@ set_color_profile_slot( 15, 4, 43, 43, 43 ); //White Hair Shading
 set_color_profile_slot( 15, 5, 55, 200, 102 ); //Green Mask
 set_color_profile_slot( 15, 6, 49, 133, 76 ); //Green Mask Shading
 set_color_profile_slot( 15, 7, 138, 221, 78 ); //Brown Claw
+
+// Takky
+set_color_profile_slot( 16, 0, 71, 71, 71 ); //Black Fur
+set_color_profile_slot( 16, 1, 56, 56, 56 ); //Black Fur Shading
+set_color_profile_slot( 16, 2, 234, 234, 234 ); //Green Bracelet
+set_color_profile_slot( 16, 3, 178, 23, 255 ); //White Hair
+set_color_profile_slot( 16, 4, 132, 17, 189 ); //White Hair Shading
+set_color_profile_slot( 16, 5, 255, 0, 0 ); //Green Mask
+set_color_profile_slot( 16, 6, 186, 0, 0 ); //Green Mask Shading
+set_color_profile_slot( 16, 7, 255, 255, 255 ); //Brown Claw
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

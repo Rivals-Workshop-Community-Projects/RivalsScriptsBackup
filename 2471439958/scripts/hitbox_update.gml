@@ -122,7 +122,7 @@ if (attack == AT_DAIR && hbox_num == 4)
 //ARTICL
 if (attack == AT_DAIR && hbox_num == 4 ){
 	var  pitch = hit_fx_create( sprite_get( "pitchthrow_afterimg" ), 10);
-	spawn_hit_fx( x + 0*spr_dir , y + -50 , pitch ) 
+	spawn_hit_fx( x + 0*spr_dir , y + -40 , pitch ) 
 }
 //Afterimage
 
@@ -147,5 +147,5 @@ if (attack == AT_NSPECIAL && hbox_num > 0 && sprite_index = sprite_get ("tesla")
 }
 if ((attack == AT_NSPECIAL_2 or attack == AT_NSPECIAL_AIR) && hbox_num > 0 && sprite_index = sprite_get ("bullet")){
 	var  trail5 = hit_fx_create( sprite_get( "TrailD" ), 10);
-	spawn_hit_fx( x + -9*spr_dir , y + 2 , trail5 ) 
+	spawn_hit_fx( x + 8*spr_dir , y + 0 , trail5 ) 
 }

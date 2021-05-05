@@ -1,10 +1,8 @@
 // Lukaru's css_draw
-
 var temp_x = x + 8;
 var temp_y = y + 9;
-var numAlts = 21;
 
-patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1);
+patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(max(get_char_info(player, INFO_VER_MINOR)-1, 0));
 image_alpha = max(image_alpha-0.02, 0);
 
 var alt_new = get_player_color(player);
@@ -45,6 +43,9 @@ alt_name[17]  = "G. Wheeze";
 alt_name[18]  = "Spectrum";
 alt_name[19]  = "Spongebob";
 alt_name[20]  = "Snowblind";
+alt_name[21]  = "Greed";
+var numAlts = array_length_1d(alt_name);
+shader_end();
 
 draw_set_halign(fa_right);
 textDraw(temp_x + 198, temp_y + 32, "fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);

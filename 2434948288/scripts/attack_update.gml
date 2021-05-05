@@ -237,14 +237,16 @@ switch (attack)
             case 3:
                 if (window_timer == 1)
                 {
+                    var boostSpeed = 9;
 				    var angle = point_direction(guitar.x, guitar.y,  x, y);
-				    hsp = lengthdir_x(11, angle);
-				    vsp = lengthdir_y(11, angle);
+				    hsp = lengthdir_x(boostSpeed, angle);
+				    vsp = lengthdir_y(boostSpeed, angle);
                     guitar.newState = 7;
                     guitar.noHit = true;
                 }
                 break;
         }
+        StallCooldown();
         break;
 }
 

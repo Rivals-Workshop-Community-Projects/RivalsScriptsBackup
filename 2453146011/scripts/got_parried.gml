@@ -11,7 +11,7 @@ if(attack == AT_DSPECIAL)
 }
 
 if my_hitboxID.attack == AT_FSPECIAL{
-    sound_play(sound_get("PARRY"));
+    //sound_play(sound_get("PARRY"));
     attack_end();
     set_state(free ? PS_PRATFALL : PS_PRATLAND);
     was_parried = 1;

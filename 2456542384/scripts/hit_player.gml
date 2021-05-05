@@ -126,7 +126,7 @@ if (my_hitboxID.attack == AT_USPECIAL) {
 	}
 }
 if (my_hitboxID.attack == AT_DAIR) {
-	
+	move_cooldown[AT_DAIR] = 50;
 	//Before grabbing the opponent, first make sure that:
 	//-The player is in an attack animation
 	//-The opponent is in hitstun

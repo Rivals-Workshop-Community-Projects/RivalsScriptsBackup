@@ -1,5 +1,6 @@
 if(slActive){
-	slTimer -= 300;
+	slTimer -= round(slTimerLimit/3);
+	miniSL_timer -= round(slTimerLimit/3);
 }
 
 if(attack == AT_JAB){

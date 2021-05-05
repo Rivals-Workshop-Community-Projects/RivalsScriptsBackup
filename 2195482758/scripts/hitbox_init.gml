@@ -8,6 +8,7 @@ is_spin = false;
 reset = false;
 bounced = 0;
 grabbed = 0;
+is_bunt = player_id.fc_bunt;
 
  // Figure out what sprite I am
 if(sprite_index == sprite_get("firecracker_single") || sprite_index == sprite_get("firecracker_single_spin"))

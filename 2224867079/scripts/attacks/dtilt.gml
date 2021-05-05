@@ -40,6 +40,7 @@ set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, 8);
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT_Y_OFFSET, 8);
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, blue_new_stab_1 );
+set_hitbox_value(AT_DTILT, 1, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, sound_get("Hit2"));
 
@@ -63,6 +64,7 @@ set_hitbox_value(AT_DTILT, 2, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT_X_OFFSET, 8);
 set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT_Y_OFFSET, 8);
 set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT, blue_new_stab_2 );
+set_hitbox_value(AT_DTILT, 2, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, sound_get("Hit1"));
 
@@ -87,5 +89,6 @@ set_hitbox_value(AT_DTILT, 3, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_DTILT, 3, HG_VISUAL_EFFECT_X_OFFSET, 8);
 set_hitbox_value(AT_DTILT, 3, HG_VISUAL_EFFECT_Y_OFFSET, 8);
 set_hitbox_value(AT_DTILT, 3, HG_VISUAL_EFFECT, blue_new_stab_1 );
+set_hitbox_value(AT_DTILT, 3, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_DTILT, 3, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_DTILT, 3, HG_HIT_SFX, sound_get("Hit4"));

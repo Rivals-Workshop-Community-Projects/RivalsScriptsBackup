@@ -65,7 +65,7 @@ set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_VSPEED_TYPE, 2)
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FSPECIAL, 5, AG_WINDOW_SFX, asset_get("sfx_blow_weak1"));
+set_window_value(AT_FSPECIAL, 5, AG_WINDOW_SFX, asset_get("sfx_blow_medium2"));
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_VSPEED, -6)
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_HSPEED_TYPE, 2)
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_HSPEED, -6)

@@ -108,6 +108,7 @@ if(attack == AT_DATTACK && RedMode){
     set_hitbox_value(AT_DATTACK, 1, HG_ANGLE, 361);
     set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 8);
     set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, red_new_stab_1 );
+    set_hitbox_value(AT_DATTACK, 1, HG_HIT_PARTICLE_NUM, 2);
     set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, sound_get("RedHit4"));
 	set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_X, 64);
 	set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_Y, -32);
@@ -157,6 +158,7 @@ if(attack == AT_DATTACK && RedMode){
     reset_hitbox_value(AT_DATTACK, 1, HG_ANGLE);
     reset_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK);
     reset_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT);
+    reset_hitbox_value(AT_DATTACK, 1, HG_HIT_PARTICLE_NUM);
     reset_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX);
 	reset_hitbox_value(AT_DATTACK, 1, HG_HITBOX_X);
 	reset_hitbox_value(AT_DATTACK, 1, HG_HITBOX_Y);
@@ -183,6 +185,9 @@ if(attack == AT_DTILT && RedMode){
     set_hitbox_value(AT_DTILT, 3, HG_BASE_KNOCKBACK, 7);
     set_hitbox_value(AT_DTILT, 3, HG_DAMAGE, 3);
 	set_hitbox_value(AT_DTILT, 3, HG_ANGLE, 270);
+	set_hitbox_value(AT_DTILT, 1, HG_HIT_PARTICLE_NUM, 2);
+	set_hitbox_value(AT_DTILT, 2, HG_HIT_PARTICLE_NUM, 2);
+	set_hitbox_value(AT_DTILT, 3, HG_HIT_PARTICLE_NUM, 2);
 } else {   
 	
     reset_attack_value(AT_DTILT, AG_SPRITE);
@@ -201,6 +206,9 @@ if(attack == AT_DTILT && RedMode){
     reset_hitbox_value(AT_DTILT, 3, HG_BASE_KNOCKBACK);
     reset_hitbox_value(AT_DTILT, 3, HG_DAMAGE);
     reset_hitbox_value(AT_DTILT, 3, HG_ANGLE);
+	reset_hitbox_value(AT_DTILT, 1, HG_HIT_PARTICLE_NUM);
+	reset_hitbox_value(AT_DTILT, 2, HG_HIT_PARTICLE_NUM);
+	reset_hitbox_value(AT_DTILT, 3, HG_HIT_PARTICLE_NUM);
 }
 
 if(attack == AT_FTILT && RedMode){
@@ -213,6 +221,7 @@ if(attack == AT_FTILT && RedMode){
     set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 3);
     set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, red_new_stab_1 );
     set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, sound_get("RedHit1"));
+    set_hitbox_value(AT_FTILT, 1, HG_HIT_PARTICLE_NUM, 2);
 } else {   
 	
     reset_attack_value(AT_FTILT, AG_SPRITE);
@@ -223,6 +232,7 @@ if(attack == AT_FTILT && RedMode){
     reset_hitbox_value(AT_FTILT, 1, HG_DAMAGE);
     reset_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT);
     reset_hitbox_value(AT_FTILT, 1, HG_HIT_SFX);
+	reset_hitbox_value(AT_FTILT, 1, HG_HIT_PARTICLE_NUM);
 }
 
 if(attack == AT_FAIR && RedMode){
@@ -233,11 +243,14 @@ if(attack == AT_FAIR && RedMode){
     set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 4);
     set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, red_new_stab_1);
     set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, sound_get("RedHit2"));
+
     
     set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 5);
     set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 2);
     set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, red_new_stab_2 );
 	set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, sound_get("RedHit3"));
+	set_hitbox_value(AT_FTILT, 1, HG_HIT_PARTICLE_NUM, 2);
+	set_hitbox_value(AT_FTILT, 2, HG_HIT_PARTICLE_NUM, 2);
 } else {   
 	
     reset_attack_value(AT_FAIR, AG_SPRITE);
@@ -251,6 +264,8 @@ if(attack == AT_FAIR && RedMode){
     reset_hitbox_value(AT_FAIR, 2, HG_DAMAGE);
     reset_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT);
 	reset_hitbox_value(AT_FAIR, 2, HG_HIT_SFX);
+	reset_hitbox_value(AT_FAIR, 1, HG_HIT_PARTICLE_NUM);
+	reset_hitbox_value(AT_FAIR, 2, HG_HIT_PARTICLE_NUM);
 }
 
 if(attack == AT_UAIR && RedMode){
@@ -275,6 +290,10 @@ if(attack == AT_UAIR && RedMode){
     set_hitbox_value(AT_UAIR, 4, HG_DAMAGE, 2);
     set_hitbox_value(AT_UAIR, 4, HG_VISUAL_EFFECT, red_new_stab_1);
     set_hitbox_value(AT_UAIR, 4, HG_HIT_SFX, sound_get("RedHit3"));
+	set_hitbox_value(AT_UAIR, 1, HG_HIT_PARTICLE_NUM, 2);
+	set_hitbox_value(AT_UAIR, 2, HG_HIT_PARTICLE_NUM, 2);
+	set_hitbox_value(AT_UAIR, 3, HG_HIT_PARTICLE_NUM, 2);
+	set_hitbox_value(AT_UAIR, 4, HG_HIT_PARTICLE_NUM, 2);
 } else {   
 	
     reset_attack_value(AT_UAIR, AG_SPRITE);
@@ -295,6 +314,10 @@ if(attack == AT_UAIR && RedMode){
     reset_hitbox_value(AT_UAIR, 4, HG_DAMAGE);
     reset_hitbox_value(AT_UAIR, 4, HG_VISUAL_EFFECT);
     reset_hitbox_value(AT_UAIR, 4, HG_HIT_SFX);
+	reset_hitbox_value(AT_UAIR, 1, HG_HIT_PARTICLE_NUM);
+	reset_hitbox_value(AT_UAIR, 2, HG_HIT_PARTICLE_NUM);
+	reset_hitbox_value(AT_UAIR, 3, HG_HIT_PARTICLE_NUM);
+	reset_hitbox_value(AT_UAIR, 4, HG_HIT_PARTICLE_NUM);
 }
 
 if(attack == AT_NAIR && RedMode){
@@ -321,6 +344,11 @@ if(attack == AT_NAIR && RedMode){
     set_hitbox_value(AT_NAIR, 5, HG_DAMAGE, 1);
     set_hitbox_value(AT_NAIR, 5, HG_VISUAL_EFFECT, red_new_stab_1);
     set_hitbox_value(AT_NAIR, 5, HG_HIT_SFX, sound_get("RedHit4"));
+	set_hitbox_value(AT_NAIR, 1, HG_HIT_PARTICLE_NUM, 2);
+	set_hitbox_value(AT_NAIR, 2, HG_HIT_PARTICLE_NUM, 2);
+	set_hitbox_value(AT_NAIR, 3, HG_HIT_PARTICLE_NUM, 2);
+	set_hitbox_value(AT_NAIR, 4, HG_HIT_PARTICLE_NUM, 2);
+	set_hitbox_value(AT_NAIR, 5, HG_HIT_PARTICLE_NUM, 2);
     //	if(multihit == 1){
 	//	set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 0);
 	//	set_hitbox_value(AT_NAIR, 2, HG_DAMAGE, 0);
@@ -350,6 +378,11 @@ if(attack == AT_NAIR && RedMode){
     reset_hitbox_value(AT_NAIR, 5, HG_DAMAGE);
     reset_hitbox_value(AT_NAIR, 5, HG_VISUAL_EFFECT);
     reset_hitbox_value(AT_NAIR, 5, HG_HIT_SFX);
+	reset_hitbox_value(AT_NAIR, 1, HG_HIT_PARTICLE_NUM);
+	reset_hitbox_value(AT_NAIR, 2, HG_HIT_PARTICLE_NUM);
+	reset_hitbox_value(AT_NAIR, 3, HG_HIT_PARTICLE_NUM);
+	reset_hitbox_value(AT_NAIR, 4, HG_HIT_PARTICLE_NUM);
+	reset_hitbox_value(AT_NAIR, 5, HG_HIT_PARTICLE_NUM);
 }
 
 
@@ -370,6 +403,9 @@ if(attack == AT_UTILT && RedMode){
     set_hitbox_value(AT_UTILT, 3, HG_DAMAGE, 4);
     set_hitbox_value(AT_UTILT, 3, HG_VISUAL_EFFECT, red_new_stab_1);
     set_hitbox_value(AT_UTILT, 3, HG_HIT_SFX, sound_get("RedHit1"));
+	set_hitbox_value(AT_UTILT, 1, HG_HIT_PARTICLE_NUM, 2);
+	set_hitbox_value(AT_UTILT, 2, HG_HIT_PARTICLE_NUM, 2);
+	set_hitbox_value(AT_UTILT, 3, HG_HIT_PARTICLE_NUM, 2);
 } else {   
 	
     reset_attack_value(AT_UTILT, AG_SPRITE);
@@ -388,6 +424,9 @@ if(attack == AT_UTILT && RedMode){
     reset_hitbox_value(AT_UTILT, 3, HG_DAMAGE);
     reset_hitbox_value(AT_UTILT, 3, HG_VISUAL_EFFECT);
     reset_hitbox_value(AT_UTILT, 3, HG_HIT_SFX);
+	reset_hitbox_value(AT_UTILT, 1, HG_HIT_PARTICLE_NUM);
+	reset_hitbox_value(AT_UTILT, 2, HG_HIT_PARTICLE_NUM);
+	reset_hitbox_value(AT_UTILT, 3, HG_HIT_PARTICLE_NUM);
 }
 if(attack == AT_DAIR && RedMode){
 	
@@ -402,6 +441,8 @@ if(attack == AT_DAIR && RedMode){
     set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 9);
     set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, red_new_stab_1);
     set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, sound_get("Meteor Smash"));
+	set_hitbox_value(AT_DAIR, 1, HG_HIT_PARTICLE_NUM, 2);
+	set_hitbox_value(AT_DAIR, 2, HG_HIT_PARTICLE_NUM, 2);
 } else {   
 	
     reset_attack_value(AT_DAIR, AG_SPRITE);
@@ -416,6 +457,8 @@ if(attack == AT_DAIR && RedMode){
     reset_hitbox_value(AT_DAIR, 2, HG_DAMAGE);
     reset_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT);
     reset_hitbox_value(AT_DAIR, 2, HG_HIT_SFX);
+	reset_hitbox_value(AT_NAIR, 1, HG_HIT_PARTICLE_NUM);
+	reset_hitbox_value(AT_NAIR, 2, HG_HIT_PARTICLE_NUM);
 }
 
 if(attack == AT_BAIR && RedMode){
@@ -430,6 +473,8 @@ if(attack == AT_BAIR && RedMode){
     set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 2);
     set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, red_new_stab_1);
     set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, sound_get("RedHit1"));
+	set_hitbox_value(AT_BAIR, 1, HG_HIT_PARTICLE_NUM, 2);
+	set_hitbox_value(AT_BAIR, 2, HG_HIT_PARTICLE_NUM, 2);
 } else {   
 	
     reset_attack_value(AT_BAIR, AG_SPRITE);
@@ -442,6 +487,8 @@ if(attack == AT_BAIR && RedMode){
     reset_hitbox_value(AT_BAIR, 2, HG_DAMAGE);
     reset_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT);
     reset_hitbox_value(AT_BAIR, 2, HG_HIT_SFX);
+	reset_hitbox_value(AT_BAIR, 1, HG_HIT_PARTICLE_NUM);
+	reset_hitbox_value(AT_BAIR, 2, HG_HIT_PARTICLE_NUM);
 }
 
 if(attack == AT_JAB && RedMode){
@@ -470,6 +517,8 @@ if(attack == AT_JAB && RedMode){
     set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 2);
     set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, red_new_stab_1);
     set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, sound_get("RedHit3"));
+    set_hitbox_value(AT_JAB, 1, HG_HIT_PARTICLE_NUM, 2);
+	set_hitbox_value(AT_JAB, 2, HG_HIT_PARTICLE_NUM, 2);
     //	if(multihit == 1){
 	//	set_hitbox_value(AT_JAB, 1, HG_DAMAGE, 0);
 	//	set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 0);
@@ -499,6 +548,8 @@ if(attack == AT_JAB && RedMode){
     reset_hitbox_value(AT_JAB, 2, HG_DAMAGE);
     reset_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT);
     reset_hitbox_value(AT_JAB, 2, HG_HIT_SFX);
+    reset_hitbox_value(AT_JAB, 1, HG_HIT_PARTICLE_NUM);
+	reset_hitbox_value(AT_JAB, 2, HG_HIT_PARTICLE_NUM);
 }
 /*
 if(attack == AT_USPECIAL && doubleUspecial == 1){

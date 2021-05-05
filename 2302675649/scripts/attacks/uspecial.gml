@@ -7,7 +7,7 @@ set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
 set_attack_value(AT_USPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
 
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_TYPE, 1); // startup
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 32);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 40);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, sound_get("chargeup"));

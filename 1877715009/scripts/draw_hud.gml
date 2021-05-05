@@ -2142,6 +2142,13 @@ if ("yes" in self && yes)
 					nooflines = 9;
 					textwidth = 420;
 					break;
+				case 23:
+					text[0] = "Clone Fakie transfer timer 200 frames -> 160 frames";
+					text[1] = "";
+					text[2] = "Adjusted non-fakie FStrong hit sound to have more impact";
+					nooflines = 3;
+					textwidth = 440;
+					break;
 			}
 			break;
 	}

@@ -11,3 +11,5 @@ with(obj_article_platform)
        destroyed = true;
     }
 }
+
+inside_water = false;

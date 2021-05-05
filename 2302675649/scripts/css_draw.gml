@@ -52,7 +52,11 @@ alt_name[25] = "Thunderclap Flash";
 alt_name[26] = "Astral";
 alt_name[27] = "Redline";
 alt_name[28] = "AK Mortal";
-var num_alts = 29;
+alt_name[29] = "Enby";
+alt_name[30] = "Ace";
+alt_name[31] = "End's High";
+var num_alts = array_length_1d(alt_name);
+shader_end();
 
 draw_sprite_ext(sprite_get("charselect"),1,x+8,y+8,2,2,0,make_colour_rgb(outline_colour[0],outline_colour[1],outline_colour[2]),1);
 

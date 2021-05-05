@@ -243,19 +243,19 @@ if lockouttimer < 0 {
              switch hbox_num {
                case 1 :
                sound_play(asset_get("sfx_bird_downspecial"),false,noone,0.4)
-               damage = 8
+               damage = 7
                break;
                
                case 2 :
                sound_play(asset_get("sfx_bird_downspecial"),false,noone,0.7)
                sound_play(sound_get("b1"),false,noone,0.6)
-               damage = 12
+               damage = 10
                break;
                
                case 3 :
                sound_play(asset_get("sfx_bird_downspecial"),false,noone,1)
                sound_play(sound_get("b3"),false,noone,0.6)
-               damage = 16
+               damage = 13
                break;
                
              }
@@ -322,15 +322,14 @@ if lockouttimer < 0 {
 
     nearbyhitbox2 = collision_circle( x - hsp, y - vsp , 32, asset_get("pHitBox"), true, true ) 
 	if nearbyhitbox2 != noone {
-	   if nearbyhitbox2.type == 2 && nearbyhitbox2.hit_effect_x != -0.69 && hitbox_timer > 5 && nearbyhitbox2.hit_priority >= 1{
-    	    for (var i = 1; i < 20; i++) can_hit[i] = true
+	   if nearbyhitbox2.type == 2 && nearbyhitbox2.hit_effect_x != -0.69 && hitbox_timer > 5 && nearbyhitbox2.hit_priority >= 1 && hitbox_timer > 5{
 	   	    shake_camera(4,4)
 	   	    if hitbox_timer > 10 {
 		    sound_play(asset_get("sfx_absa_singlezap1"))
 		    spawn_hit_fx((x + nearbyhitbox2.x)/2,(y + nearbyhitbox2.y)/2,302)
 	   	    }
 	   	    
-            hitbox_timer = 0
+            hitbox_timer = 5
             
              if nearbyhitbox2.x < x {
              hsp += 2

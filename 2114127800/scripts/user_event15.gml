@@ -457,6 +457,16 @@ with phone{
 	 * put the version number and full date.
 	 */
 	 
+	initPatch("5.0", "30 Apr, 2021");
+	initPatchWords("The Final Update for the Old Build");
+	initPatchWords("~ Made a new character portrait to fit with Old Exetior's sprites.");
+
+	initPatch("4.6", "28 Apr, 2021");
+	initPatchWords("- Nerfed ftilt's angle (35 > 40)");
+	initPatchWords("- Gave puddle dweller parry stun");
+	initPatchWords("+ Buffed fstrong and dstrong's sour spots");
+	initPatchWords("+ Reduced up strong's endlag");
+	
 	initPatch("4.5", "27 Apr, 2021");
 	initPatchWords("- Increased Up Special's startup (15 > 20)");
 	initPatchWords("- Added multiple fixes and nerfs to charged dash attack.");

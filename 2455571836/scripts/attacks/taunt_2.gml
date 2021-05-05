@@ -9,10 +9,15 @@ set_window_value(AT_TAUNT_2, 1, AG_WINDOW_LENGTH, 1);
 set_window_value(AT_TAUNT_2, 1, AG_WINDOW_ANIM_FRAMES, 1);
 
 set_window_value(AT_TAUNT_2, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_TAUNT_2, 2, AG_WINDOW_LENGTH, 23);
+set_window_value(AT_TAUNT_2, 2, AG_WINDOW_LENGTH, 50);
 set_window_value(AT_TAUNT_2, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_TAUNT_2, 2, AG_WINDOW_ANIM_FRAME_START, 0);
 
 set_window_value(AT_TAUNT_2, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_TAUNT_2, 3, AG_WINDOW_LENGTH, 1);
 set_window_value(AT_TAUNT_2, 3, AG_WINDOW_ANIM_FRAMES, 1);
+
+set_window_value(AT_TAUNT_2, 4, AG_WINDOW_TYPE, 1);
+set_window_value(AT_TAUNT_2, 4, AG_WINDOW_LENGTH, 23);
+set_window_value(AT_TAUNT_2, 4, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_TAUNT_2, 4, AG_WINDOW_ANIM_FRAME_START, 4);

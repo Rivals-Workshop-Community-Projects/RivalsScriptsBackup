@@ -4,11 +4,6 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 }
 
 if attack == AT_TAUNT{
-	if window == 1 and window_timer >= 17{
-		if has_hit{
-			can_jump = true;
-		}
-	}
 	if window >= 2{
 		iasa_script();
 	}

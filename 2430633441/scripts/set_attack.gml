@@ -38,7 +38,9 @@ if is_special_pressed(DIR_NONE) {
 	attack = AT_EXTRA_3;
 }
 */
-
+if attack == AT_USPECIAL_2 {
+	times_through = 1;
+}
 grabbing = 0;
 grab_ids = array_create(0);
 print_debug(string(y))

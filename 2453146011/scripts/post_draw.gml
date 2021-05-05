@@ -3,7 +3,7 @@
 // Munophone
 user_event(12); 
 
-if(lite) exit;
+if(lite || phone_playtest) exit;
 
 shader_start();
 
@@ -31,7 +31,7 @@ flickerback = flickercount == 10 ? true : flickercount == -10 ? false : flickerb
 repeat(2)
 {
 var pref = noone;
-if(portal_1 != noone && j == 0)
+if(portal_1 != noone && j == 0 && instance_exists(portal_1))
 {
 	var px = portal_1.x;
 	var py = portal_1.y;
@@ -40,7 +40,7 @@ if(portal_1 != noone && j == 0)
 	var portalid = 1;
 }
 
-if(portal_2 != noone && j == 1)
+if(portal_2 != noone && j == 1 && instance_exists(portal_2))
 {
 	var px = portal_2.x;
 	var py = portal_2.y;
@@ -214,7 +214,12 @@ if(portal_white > 0)
 	draw_rectangle_color(0,0, room_width,room_height, c_white,c_white,c_white,c_white,false);
 	gpu_set_alphatestenable(false);
 	gpu_set_blendmode(bm_normal);
+	
+
 }
+
+
+
 
 // Respawn
 if(respawn_flash > 0 && state != PS_RESPAWN)
@@ -239,9 +244,15 @@ if(respawn_flash > 0 && state != PS_RESPAWN)
 
 // Portal hitbox preview
 //draw_rectangle_color(x-10 + (hsp/2),y-char_height,x+10 + (hsp/2),y- 5 +(vsp/2),c_red,c_red,c_red,c_red,c_red);
-
-
+//draw_rectangle_color(x-5 ,y+2,x+5 ,y+2 ,c_red,c_red,c_red,c_red,c_red);
 
 shader_end();
+
+
+
+//draw_rectangle(x, y,  500, 500,monRed, monRed,10);
+
+
+
 
 

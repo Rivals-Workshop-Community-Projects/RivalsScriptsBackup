@@ -117,6 +117,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[15,0] = make_color_rgb(255, 255, 255)
     ce[15,1] = "Stinker?"
     ce[15,2] = "An invert of Stinker's default palette."
+    ce[16,0] = make_color_rgb(255, 0, 0)
+    ce[16,1] = "Takky"
+    ce[16,2] = "Alt based on the OC skunk, Tak."
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
     // you can ignore the mess below...

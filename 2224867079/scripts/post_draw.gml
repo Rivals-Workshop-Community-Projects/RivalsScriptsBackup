@@ -1,8 +1,6 @@
 //post-draw
 user_event(12);
 
-shader_start();
-
 gpu_set_blendmode(bm_normal);
 
 var alpha_screen = clamp(black_screen_timer/5-1,0,1);
@@ -10,6 +8,7 @@ draw_set_alpha(alpha_screen);
 draw_rectangle_color(0,0,room_width,room_height,logRed,logRed,logRed,logRed,false);
 draw_set_alpha(1);
 
+//Galaxy stuff is stolen from monarch lol
 // Fstrong screen
 if (black_screen == true)
 {
@@ -28,7 +27,4 @@ if (black_screen == true)
     draw_sprite_ext(sprite_index,image_index,x,y,spr_dir*1,1,0,c_black,1)
     with(oPlayer) if(player != other.player) draw_sprite_ext(sprite_index,image_index,x,y,spr_dir* 1,1,0,c_black,1)
 }
-
-
-shader_end();
 

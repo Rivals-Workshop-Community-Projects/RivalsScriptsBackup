@@ -164,6 +164,15 @@ if ("practice" in self)
 						AddText("");
 						AddText("Added a few new alts");
 						break;
+					case 9:
+						AddText("v1.9 - 29 Apr 2021");
+						AddText("");
+						AddText("FSpec and UAir now both get cooldowns when using USpecial");
+						AddText("Reduced USpecial speed 11 -> 9");
+						AddText("(If you think you cant recover, try USpec->AirdodgeCancel->DAir->TapUSpec->HeldUSpec)");
+						AddText("");
+						AddText("Added Greed alt");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

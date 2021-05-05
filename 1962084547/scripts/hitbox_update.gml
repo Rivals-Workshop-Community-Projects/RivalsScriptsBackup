@@ -115,6 +115,7 @@ return;
 
 #define deactivate_egg_hitbox_if_currently_active
 //run this every frame after frame 2.
+if (hitbox_timer < 6) return;
 
 //run this repeatedly, even if egg_hitbox_is_active already equals false.
 egg_hitbox_is_active = false;
@@ -181,7 +182,7 @@ if ap_hit_enabled && !hit_by_fspecial && hitstop < 1 {
 					break;
 					case AT_FSPECIAL_2:
 						//hit the egg horizontally
-						hsp = 10 * player_id.spr_dir;
+						hsp = 9 * player_id.spr_dir;
 						vsp = -2;
 						
 						if (player_id.nspecial_current == id) player_id.nspecial_current = noone;

@@ -121,6 +121,12 @@ if (hit_player_obj.url == "1867634411")
 		case 17:
 			hit_player_obj.outlineState = 2;
 			break;
+		case 29:
+			hit_player_obj.outlineState = 3;
+			break;
+		case 30:
+			hit_player_obj.outlineState = 4;
+			break;
 	}
 }
 

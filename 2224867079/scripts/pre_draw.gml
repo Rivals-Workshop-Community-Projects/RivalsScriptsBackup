@@ -17,6 +17,7 @@ if bluemark > 0 or redmark > 0{
 shader_end(); 
 }
 //After Images
+if (!lite){
 for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i].alpha > 0 && draw_indicator)
 {
     shader_start();
@@ -28,6 +29,7 @@ for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i]
     }
     gpu_set_blendmode(bm_normal);
     shader_end();
+}
 }
 /*
 	////////////////////////////////////////////Dattack////////////////////////////////////////////////////////
@@ -207,17 +209,4 @@ if(recharged = 0){
 {
 	draw_triangle_colour(x1, y1, x2, y2, x3, y3, colour1, colour1, colour2, false);
 	draw_triangle_colour(x2, y2, x3, y3, x4, y4, colour1, colour2, colour2, false);
-}
-
-#define GetColourPlayer(_index)
-{
-	return make_colour_rgb(get_color_profile_slot_r(get_player_color(player), _index),get_color_profile_slot_g(get_player_color(player), _index),get_color_profile_slot_b(get_player_color(player), _index));
-	
-}
-
-#define FlagPart(_colour, _heightRatio, _xOffsetRatio)
-{
-	gpu_set_fog(1, _colour, 0, 1);
-	for (i = -1; i < 2; ++i) for (j = -1; j < 2; ++j)
-		draw_sprite_part_ext(sprite_index, image_index, 0, sprite_height*_xOffsetRatio, sprite_width*spr_dir, sprite_height*_heightRatio, x+i*2+draw_x-sprite_xoffset*(1+small_sprites), y+j*2+(draw_y-sprite_yoffset+sprite_height*_xOffsetRatio)*(1+small_sprites), spr_dir*(1+small_sprites), 1+small_sprites, c_white, 1);
 }

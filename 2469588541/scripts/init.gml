@@ -44,7 +44,7 @@ max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed
 gravity_speed = .65;
 hitstun_grav = .5;
-knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 16;
@@ -115,7 +115,7 @@ tutOn = true;
 tutMenu = 0;
 tutPrevMenu = 0;
 tutDone = array_create(3, 0);
-tutDoneAdv = array_create(3, 0);
+tutDoneAdv = array_create(4, 0);
 
 // tut draw text
 tutText = -1;
@@ -139,6 +139,8 @@ uspecDir = 0;
 uspecTimes = 0;
 uspecLanded = false;
 uspecPos = {x:0, y:0};
+uspecHit = 0; // tutorial
+uspecResources = {djump:0, airdodge:0, walljump:0};
 
 // dair counter for star
 dairTimes = 0;
@@ -149,7 +151,7 @@ dspecRadius = has_rune("A")?512:256;
 // fspec
 grabDjump = true;
 hasMovedUp = false;
-upThrow = 0;
+upThrow = 0; // tutorial
 
 // shine
 nspecCharge = 0;
@@ -159,7 +161,7 @@ canDespawn = true;
 
 // constellations
 starKB = has_rune("K")?8:5;
-starDamage = 1;
+starDamage = 2;
 
 // afterimage
 afterImageTimer = 0;

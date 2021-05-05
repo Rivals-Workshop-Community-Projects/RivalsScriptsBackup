@@ -26,11 +26,15 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 9);
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_SFX, asset_get("sfx_frog_dspecial_cast"));
 
 //wallgrab
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 9);
+set_window_value(AT_FSPECIAL, 5, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_FSPECIAL, 5, AG_WINDOW_SFX, asset_get("sfx_frog_dspecial_cast"));
 
 set_num_hitboxes(AT_FSPECIAL, 1);
 

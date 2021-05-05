@@ -26,46 +26,56 @@ set_window_value(AT_FTILT, 3, AG_WINDOW_CANCEL_TYPE, 1);
 set_window_value(AT_FTILT, 3, AG_WINDOW_CANCEL_FRAME, 4);
 
 set_window_value(AT_FTILT, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 6);
-set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 1);
+set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 8);
-set_window_value(AT_FTILT, 4, AG_WINDOW_HSPEED, 4);
-set_window_value(AT_FTILT, 4, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_FTILT, 4, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FTILT, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
-set_window_value(AT_FTILT, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_window_value(AT_FTILT, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 5, AG_WINDOW_LENGTH, 9);
-set_window_value(AT_FTILT, 5, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_FTILT, 5, AG_WINDOW_ANIM_FRAME_START, 11);
-set_window_value(AT_FTILT, 5, AG_WINDOW_CANCEL_TYPE, 1);
-set_window_value(AT_FTILT, 5, AG_WINDOW_CANCEL_FRAME, 1);
+set_window_value(AT_FTILT, 5, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_FTILT, 5, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_FTILT, 5, AG_WINDOW_ANIM_FRAME_START, 8);
+set_window_value(AT_FTILT, 5, AG_WINDOW_HSPEED, 4);
+set_window_value(AT_FTILT, 5, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(AT_FTILT, 5, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_FTILT, 5, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
+set_window_value(AT_FTILT, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_window_value(AT_FTILT, 6, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 6, AG_WINDOW_LENGTH, 8);
-set_window_value(AT_FTILT, 6, AG_WINDOW_ANIM_FRAMES, 5);
-set_window_value(AT_FTILT, 6, AG_WINDOW_ANIM_FRAME_START, 13);
-set_window_value(AT_FTILT, 6, AG_WINDOW_HSPEED, 3);
-set_window_value(AT_FTILT, 6, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FTILT, 6, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
-set_window_value(AT_FTILT, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
+set_window_value(AT_FTILT, 6, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_FTILT, 6, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_FTILT, 6, AG_WINDOW_ANIM_FRAME_START, 11);
+set_window_value(AT_FTILT, 6, AG_WINDOW_CANCEL_TYPE, 1);
+set_window_value(AT_FTILT, 6, AG_WINDOW_CANCEL_FRAME, 1);
 
 set_window_value(AT_FTILT, 7, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 7, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_FTILT, 7, AG_WINDOW_LENGTH, 1);
 set_window_value(AT_FTILT, 7, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_FTILT, 7, AG_WINDOW_ANIM_FRAME_START, 18);
-set_window_value(AT_FTILT, 7, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(AT_FTILT, 7, AG_WINDOW_ANIM_FRAME_START, 11);
 
 set_window_value(AT_FTILT, 8, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 8, AG_WINDOW_LENGTH, 6);
-set_window_value(AT_FTILT, 8, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_FTILT, 8, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(AT_FTILT, 8, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_FTILT, 8, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_FTILT, 8, AG_WINDOW_ANIM_FRAME_START, 13);
+set_window_value(AT_FTILT, 8, AG_WINDOW_HSPEED, 3);
+set_window_value(AT_FTILT, 8, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_FTILT, 8, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
+set_window_value(AT_FTILT, 8, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_window_value(AT_FTILT, 9, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 9, AG_WINDOW_LENGTH, 13);
+set_window_value(AT_FTILT, 9, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_FTILT, 9, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_FTILT, 9, AG_WINDOW_ANIM_FRAME_START, 1);
+set_window_value(AT_FTILT, 9, AG_WINDOW_ANIM_FRAME_START, 18);
+set_window_value(AT_FTILT, 9, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+
+set_window_value(AT_FTILT, 10, AG_WINDOW_TYPE, 1);
+set_window_value(AT_FTILT, 10, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_FTILT, 10, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_FTILT, 10, AG_WINDOW_ANIM_FRAME_START, 2);
+
+set_window_value(AT_FTILT, 11, AG_WINDOW_TYPE, 1);
+set_window_value(AT_FTILT, 11, AG_WINDOW_LENGTH, 13);
+set_window_value(AT_FTILT, 11, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_FTILT, 11, AG_WINDOW_ANIM_FRAME_START, 1);
 
 //Generic end
 
@@ -103,7 +113,7 @@ set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, blood_effect);
 
 set_hitbox_value(AT_FTILT, 2, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_FTILT, 2, HG_WINDOW, 4);
+set_hitbox_value(AT_FTILT, 2, HG_WINDOW, 5);
 set_hitbox_value(AT_FTILT, 2, HG_WINDOW_CREATION_FRAME, 2);
 set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 2);
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_X, 36);
@@ -125,7 +135,7 @@ set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, blood_effect);
 
 set_hitbox_value(AT_FTILT, 3, HG_PARENT_HITBOX, 3);
 set_hitbox_value(AT_FTILT, 3, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_FTILT, 3, HG_WINDOW, 6);
+set_hitbox_value(AT_FTILT, 3, HG_WINDOW, 8);
 set_hitbox_value(AT_FTILT, 3, HG_WINDOW_CREATION_FRAME, 5);
 set_hitbox_value(AT_FTILT, 3, HG_LIFETIME, 2);
 set_hitbox_value(AT_FTILT, 3, HG_HITBOX_X, 30);
@@ -147,7 +157,7 @@ set_hitbox_value(AT_FTILT, 3, HG_VISUAL_EFFECT, blood_effect);
 
 set_hitbox_value(AT_FTILT, 4, HG_PARENT_HITBOX, 4);
 set_hitbox_value(AT_FTILT, 4, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_FTILT, 4, HG_WINDOW, 6);
+set_hitbox_value(AT_FTILT, 4, HG_WINDOW, 8);
 set_hitbox_value(AT_FTILT, 4, HG_WINDOW_CREATION_FRAME, 5);
 set_hitbox_value(AT_FTILT, 4, HG_LIFETIME, 2);
 set_hitbox_value(AT_FTILT, 4, HG_HITBOX_X, 20);

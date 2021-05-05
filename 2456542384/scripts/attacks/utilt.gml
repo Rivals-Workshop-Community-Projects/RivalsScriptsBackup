@@ -11,6 +11,9 @@ set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 2);
 set_window_value(AT_UTILT, 2, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_UTILT, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UTILT, 2, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(AT_UTILT, 2, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_UTILT, 2, AG_WINDOW_SFX, asset_get("sfx_blow_weak2"));
+set_window_value(AT_UTILT, 2, AG_WINDOW_SFX_FRAME, 2);
 
 set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAMES, 2);
@@ -33,7 +36,7 @@ set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, .45);
 set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .35);
-set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_leafy_hit1"));
 
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 2);
@@ -51,4 +54,4 @@ set_hitbox_value(AT_UTILT, 2, HG_KNOCKBACK_SCALING, .55);
 set_hitbox_value(AT_UTILT, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_UTILT, 2, HG_HITPAUSE_SCALING, .45);
 set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT_Y_OFFSET, -16);
-set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, asset_get("sfx_leafy_hit2"));

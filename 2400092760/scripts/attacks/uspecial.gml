@@ -103,7 +103,7 @@ set_hitbox_value(AT_USPECIAL, 3, HG_PRIORITY, 9);
 set_hitbox_value(AT_USPECIAL, 3, HG_DAMAGE, 12);
 set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE, 270);
 set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, 0.6);
+set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_USPECIAL, 3, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, hit_sprites[2]);
 //set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));

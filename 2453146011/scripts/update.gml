@@ -2,6 +2,25 @@
 
 var monarch = self;
 
+// Auto enable lite mode
+// if(!lite){
+// 	if(fps_real < 45 && introTimer > 16) 
+// 	{
+// 		if(frameTimer >= 15)
+// 			lite = true;
+// 		else
+// 			frameTimer++;
+// 	}
+// 	else
+// 	{
+// 		frameTimer = 0;
+// 	}
+// }
+// else if(frameTimer < 100)
+// {
+// 	frameTimer++;
+// }
+
 // Munophone
 user_event(14);
 
@@ -15,9 +34,8 @@ if (state != PS_ATTACK_GROUND) and phone_cheats[canGatle] == 1
 
 //#region Player trail
 if(!lite)
-with(oPlayer) if(player != other.player)
+with(oPlayer) if(player != other.player) if(last_monarch == monarch)
 {
-
 	if(!(state == 12 || state == 7 || state == 0 || state == SC_HITSTUN) && other_arrayindex > 0) other_array_cleared = false;
 	
 	if((state == 12 || state == 7 || state == 0 || state == SC_HITSTUN) && hit_player_obj == other && !hitpause)
@@ -497,6 +515,10 @@ if(has_hit_player && (attack == AT_DSTRONG || attack == AT_FSTRONG || (attack ==
 
 if(hitpause == false) black_screen = false;
 
+// Fspecial timer
+if(fspec_line_timer > 0) fspec_line_timer--;
+if(knife_line_timer > 0) knife_line_timer--;
+
 // With hitbox stuff
 with(pHitBox){
     in_portal = false;
@@ -569,9 +591,9 @@ with(pHitBox){
         
        
         // Check floor
-        if(canPlacePortal && (ceilPlat || (ceilFloor && (other.throw_dir == "up" || other.throw_dir == "down")) || rightWall || leftWall || !destroyed && (collision_circle(x,y, 15, asset_get("par_block"), true,true) != noone || 
+        if(y < other.phone_blastzone_b && canPlacePortal && (ceilPlat || (ceilFloor && (other.throw_dir == "up" || other.throw_dir == "down")) || rightWall || leftWall || !destroyed && (collision_circle(x,y, other.throw_dir == "down" ? 38 : 5, asset_get("par_block"), true,true) != noone || 
         
-        (  (collision_circle(x,y,15, asset_get("par_jumpthrough"), true,true) != noone) && (other.throw_dir == "up" || other.throw_dir == "down")  )
+        (  (collision_circle(x,y,other.throw_dir == "down" ? 38 : 5, asset_get("par_jumpthrough"), true,true) != noone) && (other.throw_dir == "up" || other.throw_dir == "down")  )
         
         )))
         {
@@ -655,8 +677,20 @@ with(pHitBox){
                     {
                         portal_1.image_angle += 180;
                         portal_1.isCeil = true;
+                        
+                      
                     } else{
                     	portal_1.isFloor = true;
+                    
+                    	while( !place_meeting(portal_1.x,portal_1.y,asset_get("par_block")) && !place_meeting(portal_1.x,portal_1.y,asset_get("par_jumpthrough"))) portal_1.x++;
+                    	while( !place_meeting(portal_1.x,portal_1.y,asset_get("par_block")) && !place_meeting(portal_1.x,portal_1.y,asset_get("par_jumpthrough"))) portal_1.x--;
+                    	while( place_meeting(portal_1.x,portal_1.y,asset_get("par_block")) || place_meeting(portal_1.x,portal_1.y,asset_get("par_jumpthrough"))) {
+                    		
+                    		// Stop moving up if already in place
+                    		if(place_meeting(portal_1.x,portal_1.y+34,asset_get("par_block")) || place_meeting(portal_1.x,portal_1.y+34,asset_get("par_jumpthrough"))) break;
+                    		
+                    		portal_1.y--;
+                    	}
                     }
                 }
                 else
@@ -684,11 +718,23 @@ with(pHitBox){
                         portal_2.image_angle += 90;
                         portal_2.isWall = true;
                         portal_2.rightWall = true;
-                        //portal_2.x+=33;
+                        //portal_1.x+=33;
                         portal_2.y-=15;
-                        while( !place_meeting(portal_2.x+10,portal_2.y-34,asset_get("par_block"))) portal_2.y++;
-                        while( place_meeting(portal_2.x,portal_2.y,asset_get("par_block"))) portal_2.x--;
-                        while(portal_2.y > room_height-100) portal_2.y--;
+                        
+                        var limit = 100;
+                        exit;
+						while( !place_meeting(portal_2.x+20,portal_2.y-34,asset_get("par_block"))){
+							portal_2.y++;
+							
+							limit--;
+							if(limit == 0){
+								limit = 100;
+								break;
+							}
+						}
+                    	
+						while( place_meeting(portal_2.x,portal_2.y,asset_get("par_block"))) portal_2.x--;
+						while(portal_2.y > room_height-100) portal_2.y--;
                     }
                     else if((throw_dir == "front" && spr_dir == -1) ||(throw_dir == "back" && spr_dir == 1))
                     {
@@ -708,7 +754,19 @@ with(pHitBox){
                         portal_2.image_angle += 180;
                         portal_2.isCeil = true;
                     }
-                    else portal_2.isFloor = true;
+                    else {
+                    	portal_2.isFloor = true;
+                    	
+                		while( !place_meeting(portal_2.x,portal_2.y,asset_get("par_block")) && !place_meeting(portal_2.x,portal_2.y,asset_get("par_jumpthrough"))) portal_2.x++;
+                    	while( !place_meeting(portal_2.x,portal_2.y,asset_get("par_block")) && !place_meeting(portal_2.x,portal_2.y,asset_get("par_jumpthrough"))) portal_2.x--;
+                    	while( place_meeting(portal_2.x,portal_2.y,asset_get("par_block")) || place_meeting(portal_2.x,portal_2.y,asset_get("par_jumpthrough"))) {
+                    		
+                    		// Stop moving up if already in place
+                    		if(place_meeting(portal_2.x,portal_2.y+34,asset_get("par_block")) || place_meeting(portal_2.x,portal_2.y+34,asset_get("par_jumpthrough"))) break;
+                    		
+                    		portal_2.y--;
+                    	}
+                    }
                     
                 }
             }
@@ -769,8 +827,9 @@ if(charges == 0)
 
 // Handle portal timers
 with(oPlayer)
+if(!("is_monarch" in self) || player == other.player)
 {
-
+	
 	// Tick down afterimage and white
 	if(portal_afterimage.timer > 0) portal_afterimage.timer--;
 	if(portal_white > 0) portal_white--;

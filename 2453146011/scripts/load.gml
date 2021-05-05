@@ -185,6 +185,7 @@ sprite_change_offset("blood", 128, 128);
 sprite_change_offset("blood2", 128, 128);
 
 sprite_change_offset("dust", 63, 21);
+sprite_change_offset("charged", 128, 128);
 
 sprite_change_offset("slash", 1524, 128);
 sprite_change_offset("hitfx1", 128, 128);

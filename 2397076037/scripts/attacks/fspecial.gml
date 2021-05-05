@@ -107,7 +107,7 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_AIR_FRICTION, 0);
 set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_HSPEED, 0);
 set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_VSPEED, 0);
 set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_ANIM_SPEED, 0.3);
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_ANIM_SPEED, 0.376);
 set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_WIDTH, 20);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HEIGHT, 20);

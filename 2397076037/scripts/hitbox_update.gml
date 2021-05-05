@@ -98,9 +98,6 @@ if attack == AT_FSPECIAL && hbox_num == 3 {
 	}
 	
 	if hitbox_timer < 290 && player_id.stormtarget.state != PS_DEAD && player_id.stormtarget.state != PS_RESPAWN {
-		if  hitbox_timer < 270 {
-		image_index = (hitbox_timer % 12)/3
-		}
 		
 		x = player_id.stormtarget.x
 		y = player_id.stormtarget.y - 40
@@ -117,9 +114,6 @@ if attack == AT_FSPECIAL && hbox_num == 3 {
 		}
 		
 		
-	if hitbox_timer >= 270 {
-	   	image_index = hitbox_timer / 5	- 2
-	}
 }
 
 

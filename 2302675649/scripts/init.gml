@@ -124,7 +124,7 @@ vfxSlice = {sliceAng:0,sliceX:0,sliceY:0,sliceTimer:0};
 // USpec vfx
 uspecArray = array_create(10, -1);
 uspecStart = {x:0, y:0};
-uspecStartup = 12;
+uspecStartup = 20;
 uspecStartupConst = uspecStartup;
 uspecSpeed = {hsp:0, vsp:0, joy_pad_idle:0, joy_dir:0};
 
@@ -140,12 +140,12 @@ fspecPortalHooked = false;
 portalRef = noone;
 
 // NSpec charge
-nspecMax = has_rune("N")?30:80;
+nspecMax = has_rune("N")?30:90;
 nspecCharge = 0;
 
 // DSpec effect
 dspecImage = -1;
-dspecCoolMax = has_rune("K")?0:80;
+dspecCoolMax = has_rune("K")?0:110;
 
 // strong angle
 strongAng = 0;
@@ -154,7 +154,7 @@ strongAng = 0;
 transcounter = 0;
 
 // dair cancel
-dairCancel = 60;
+dairCancel = 30;
 
 // portal
 canTele = true;

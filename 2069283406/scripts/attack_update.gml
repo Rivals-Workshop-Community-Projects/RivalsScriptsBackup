@@ -71,7 +71,7 @@ if attack == AT_FTILT{
 
 if attack == AT_FAIR{
 	
-	if window == 2 && hitpause {
+	if window == 2 && !hitpause && window_timer < 3 {
 		if has_hit_player && hitpause {
 				hit_player_obj.x += ((x + (34 * spr_dir)) - hit_player_obj.x) / 6
 				hit_player_obj.y += ((y + (10)) - hit_player_obj.y) / 6
@@ -158,8 +158,8 @@ if attack == AT_JAB{
 	
 	
 	
-	if window < 3 && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN{
-			hit_player_obj.x += ((x + (50 * spr_dir)) - hit_player_obj.x) / 10
+	if !hitpause && window_timer <= 3 && has_hit_player && (window == 4 or window == 7){
+			hsp = (hit_player_obj.x - (x + (30 * spr_dir))) / 6
 	}
 	
 
@@ -412,6 +412,11 @@ if attack == AT_NSPECIAL{
 	}
 	
 	if window >= 3 && state_timer >= 35 {
+		
+		if fireon < 3 && window == 3 {
+	 	window_timer += 2
+     	}
+	
 		if attack_pressed or up_stick_down or down_stick_down or left_stick_down or up_stick_down {
 			if  firerange > 0 {
 			firerange = -100
@@ -488,11 +493,6 @@ if attack == AT_NSPECIAL{
 		
 		
 		if hit_player_obj.state_cat == SC_HITSTUN {
-			hit_player_obj.hsp /= 1.1
-			hit_player_obj.vsp /= 1.05
-			if hit_player_obj.vsp > 0 {
-				hit_player_obj.vsp /= 1.2
-			}
 			hit_player_obj.state_timer -= 0.5
 		}
 		spr_dir = (hit_player_obj.x > x?1:-1)
@@ -635,10 +635,11 @@ if attack == AT_DSPECIAL {
 
 		sound_play(asset_get("sfx_burnapplied"))
 		
-		if (fireon >= 3&& inrange) or dspecon = 1{
-		create_hitbox(AT_DSPECIAL , 2 , hit_player_obj.x , y - 20 );
+		if (fireon >= 3 && inrange) or dspecon = 1{
+		create_hitbox(AT_DSPECIAL , 2 , hit_player_obj.x , y + 30 );
 		sound_play(asset_get("sfx_ori_bash_launch"))
 		}
+		
 		spawn_hit_fx( x + 5 * spr_dir , y + 20 , firepar2 )
 	}
 	

@@ -332,6 +332,7 @@ if(my_hitboxID.attack == AT_DATTACK){
 //#region SL Add
 if(my_hitboxID.attack != AT_DSPECIAL_2 && my_hitboxID.attack != AT_DSPECIAL_AIR ){
 slTimer += (slActive?5:8) * floor(my_hitboxID.damage) * (runeG?3:1);
+//miniSL_timer += (slActive?5:0) * floor(my_hitboxID.damage) * (runeG?3:1);
 }
 
 //#endregion
@@ -344,7 +345,7 @@ if(stun_timer > stun_limit){
 	reset_hitbox_value(AT_DSTRONG, 2, HG_ANGLE);
 	reset_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING);
 	
-	for(var i = 1; i <= 12; ++i){
+	for(var i = 2; i <= 12; ++i){
 		reset_hitbox_value(AT_FSTRONG, i, HG_BASE_KNOCKBACK);
 		reset_hitbox_value(AT_FSTRONG, i, HG_ANGLE);
 		reset_hitbox_value(AT_FSTRONG, i, HG_KNOCKBACK_SCALING);
@@ -360,7 +361,7 @@ else{
 	set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE, 135);
 	set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, 0.4);
 	
-	for(var i = 1; i <= 12; ++i){
+	for(var i = 2; i <= 12; ++i){
 		set_hitbox_value(AT_FSTRONG, i, HG_BASE_KNOCKBACK, 7);
 		set_hitbox_value(AT_FSTRONG, i, HG_ANGLE, 55);
 		set_hitbox_value(AT_FSTRONG, i, HG_KNOCKBACK_SCALING, 0.5);

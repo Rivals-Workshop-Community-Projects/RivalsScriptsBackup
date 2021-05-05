@@ -220,7 +220,7 @@ set_hitbox_value(AT_FSPECIAL_AIR, 15, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL_AIR, 15, HG_WINDOW, 7);
 set_hitbox_value(AT_FSPECIAL_AIR, 15, HG_LIFETIME, 0);
 set_hitbox_value(AT_FSPECIAL_AIR, 15, HG_HITBOX_X, 50);
-set_hitbox_value(AT_FSPECIAL_AIR, 15, HG_HITBOX_Y, 10);
+set_hitbox_value(AT_FSPECIAL_AIR, 15, HG_HITBOX_Y, -10);
 set_hitbox_value(AT_FSPECIAL_AIR, 15, HG_WIDTH, 20);
 set_hitbox_value(AT_FSPECIAL_AIR, 15, HG_HEIGHT, 20);
 set_hitbox_value(AT_FSPECIAL_AIR, 15, HG_PRIORITY, 8);

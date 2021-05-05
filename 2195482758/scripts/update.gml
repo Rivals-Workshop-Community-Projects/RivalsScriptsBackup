@@ -292,7 +292,7 @@ var taunt_volume = 2.75;
 var should_scream = false;
 with(hit_player_obj) if(activated_kill_effect) should_scream = true;
 
-if((should_scream ||activated_kill_effect) && !screaming)
+if((should_scream ||activated_kill_effect) && !screaming && taunt_pressed)
 {
 	screaming = true;
 	scream_timer = 60;
@@ -492,6 +492,9 @@ with(pHitBox){
          {
          	hsp = -4 * sign(hsp);
          }
+         
+         // Explode if bunt
+         if(is_bunt) hitbox_timer = other.fc_lifetime-1;
      }
      
 	if(attack == AT_EXTRA_3)

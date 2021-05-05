@@ -61,6 +61,6 @@ set_hitbox_value(AT_FSPECIAL_2, 1, HG_EFFECT, 6);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_EXTRA_HITPAUSE, 3);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_VISUAL_EFFECT, 304);
-set_hitbox_value(AT_FSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_FSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_IGNORES_PROJECTILES, 1);
 

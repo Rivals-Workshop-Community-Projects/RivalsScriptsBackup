@@ -450,6 +450,7 @@ if (stage_y + stage_b < y){
 		with (asset_get("oPlayer")){
 			if (id == other.player_id){
 				arc_active = false;
+				arc_cooldown = false;
 			}
 		}
 		sound_play(asset_get( "sfx_bubblepop" ));
@@ -598,6 +599,7 @@ if (hsp != 0) {
 //spaghetti... what mess
 
 if (state == 1){
+if (arc_cooldown == 0){
 	var archit = 0
 	
 	//enemy
@@ -895,6 +897,7 @@ if (state == 1){
 		archit = 0;
 	}
 }
+}//hitbox interact end
 
 var stun_time = 32;
 if (state == 5){

@@ -63,3 +63,4 @@ if (my_hitboxID.attack == AT_FSTRONG && ice = 1 && hit_player_obj.ice_mark == 1 
 
 
 
+

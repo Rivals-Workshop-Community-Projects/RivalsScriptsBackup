@@ -5,13 +5,15 @@
 // bouncing dair off of player
 if (my_hitboxID.attack == AT_DAIR) 
 {
-    destroy_hitboxes()
-    attack_end();
-    set_attack(AT_EXTRA_1);
-    hurtboxID.sprite_index = sprite_get("dairbounce_hurt")
-    vsp = 0;
-    has_hit = true
-    
+    if (state_cat != SC_HITSTUN)
+    {
+        destroy_hitboxes()
+        attack_end();
+        set_attack(AT_EXTRA_1);
+        hurtboxID.sprite_index = sprite_get("dairbounce_hurt")
+        vsp = 0;
+        has_hit = true
+    }
 }
 
 // Pale hitting with the sweetspot

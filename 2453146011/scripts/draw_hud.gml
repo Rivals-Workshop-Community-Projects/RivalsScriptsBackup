@@ -1,6 +1,6 @@
 if "introTimer" not in self exit;
 
-if(introTimer < liteModeTime)
+if(introTimer < liteModeTime || (frameTimer > 15 && frameTimer < 60))
 {
     textDraw(temp_x , 480, "fName", c_white, 100, 400, fa_left, 1, true, 1, lite ? "Lite mode activated!" : "Press Taunt for lite mode", false);
 }
@@ -39,7 +39,7 @@ else if(red_indicator > 0)
     if(red_indicator < 7) red_indicator = 7;
     
     if(red_indicator < 10) red_indicator += 0.2;
-    draw_sprite_ext(sprite_get("smallport_red"),blue_indicator,temp_x + 180,486,1,1,0,c_white,1);
+    draw_sprite_ext(sprite_get("smallport_red"),red_indicator,temp_x + 180,486,1,1,0,c_white,1);
     
     if(red_indicator == 10) red_indicator = 0;
 }

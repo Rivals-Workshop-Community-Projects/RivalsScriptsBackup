@@ -4,11 +4,11 @@ set_attack_value(AT_USTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get("ustrong_hurt"));
 
 set_window_value(AT_USTRONG, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_ANIM_FRAMES, 4);
 
 set_window_value(AT_USTRONG, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 
@@ -46,7 +46,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, 1);
 
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_WINDOW, 2);
-set_hitbox_value(AT_USTRONG, 2, HG_WINDOW_CREATION_FRAME, 2);
+set_hitbox_value(AT_USTRONG, 2, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_LIFETIME, 2);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_X, 5);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y, -10);

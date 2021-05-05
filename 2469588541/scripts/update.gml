@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 3;
+	var noOfPatches = 6;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -26,7 +26,7 @@ if (practice)
 			break;
 		case 1: // main menu
 			Invince();
-			MenuNav(4, 0, MainMenuNext());
+			MenuNav(5, 0, MainMenuNext());
 			break;
 		case 2: // Basic Tut Menu
 			Invince();
@@ -34,7 +34,7 @@ if (practice)
 			break;
 		case 3: // Adv Tut Menu
 			Invince();
-			MenuNav(3, 1, 6);
+			MenuNav(4, 1, 6);
 			break;
 		case 4: // Change Notes
 			Invince();
@@ -70,6 +70,9 @@ transcounter = clamp(((get_player_color(player) == 7 && (state==PS_SPAWN||(attac
 // fspec
 if (!free) grabDjump = true;
 if (upThrow > 0) upThrow--;
+
+// uspec
+if (uspecHit > 0) uspecHit--;
 
 // dspec
 if (free && state != PS_WALL_JUMP && state_cat != SC_HITSTUN && move_cooldown[AT_DSPECIAL] != 0) move_cooldown[AT_DSPECIAL] = 2;
@@ -157,6 +160,13 @@ for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i]
 			return tutMenu + 2;
 		case 3:
 			return 7;
+		case 4:
+			if (attack_down && !attack_counter)
+			{
+				instance_create(x, y-30, "obj_article1");
+				sound_play(asset_get("mfx_star"));
+			}
+			break;
 	}
 	return 0;
 }

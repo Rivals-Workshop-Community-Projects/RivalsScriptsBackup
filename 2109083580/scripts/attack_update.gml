@@ -1,15 +1,15 @@
 //B - Reversals
 switch (attack)
 {
-case AT_NSPECIAL:
-case AT_FSPECIAL:
-case AT_DSPECIAL:
-case AT_USPECIAL:
-case AT_DAIR:
-case AT_DSPECIAL_AIR:
-case AT_DSPECIAL_2:
-    trigger_b_reverse();
-	break;
+    case AT_NSPECIAL:
+    case AT_FSPECIAL:
+    case AT_DSPECIAL:
+    case AT_USPECIAL:
+    case AT_DAIR:
+    case AT_DSPECIAL_AIR:
+    case AT_DSPECIAL_2:
+        trigger_b_reverse();
+    	break;
 }
 
 
@@ -109,53 +109,48 @@ switch attack {
             case 1:
             	if(window_timer == 1){
 			        fspec_airgrab = false;
-			        fspec_jc = false
+			        fspec_jc = false;
 			        fspec_wall = false;
 			        reset_window_value(attack,3,AG_WINDOW_LENGTH);
-			        if(free){
-			        	can_fspec = false
-			        }
+			        if (free)
+			        	can_fspec = false;
 		        }
-		        if(!joy_pad_idle){
-			        if(joy_dir <= 20 || joy_dir >= 340 || (joy_dir <= 200 && joy_dir >= 160)){
+		        if (!joy_pad_idle)
+                {
+			        if (joy_dir <= 20 || joy_dir >= 340 || (joy_dir <= 200 && joy_dir >= 160))
 				        fspec_angle = 0;
-			        }
-			        if(joy_dir > 20 && joy_dir < 160){
+			        else if (joy_dir > 20 && joy_dir < 160)
 				        fspec_angle = 15;
-			        }
-			        if(joy_dir < 340 && joy_dir > 200){
-				        if(free){
-					        fspec_angle = 345;
-				        }
-				        else{
-						    fspec_angle = 0;
-				        }
-			        }
+			        else if (joy_dir < 340 && joy_dir > 200)
+                        fspec_angle = free?345:0;
 		        }
             break;
             case 2:
-            	if(slActive){
+            	if (slActive)
+                {
             		fsp_sp = 22;
             		fsp_spend = 8;
-            	}else{
+            	}
+                else
+                {
             		fsp_sp = 22;
             		fsp_spend = 8;
             	}
                 can_wall_jump = true;
-                if( fspec_angle = 345 && !free){
+                if (fspec_angle = 345 && !free)
         	        fspec_angle = 0;
-                }
-                if(fspec_airgrab){
+                if (fspec_airgrab)
+                {
         	        fspec_id.x = ease_linear(fspec_id.x, x + (60 * spr_dir), window_timer, 19);
         	        fspec_id.y = ease_linear(fspec_id.y, y - 10, window_timer, 19);
     	        }
-                if(was_parried){
+                if (was_parried)
+                {
                     window = 3;
                     window_timer = 0;
                 }    
-                if(window_timer % 4 == 0){
+                if(window_timer % 4 == 0)
                     create_hitbox(AT_FSPECIAL, 1, x, y);
-                }
                 //movement
                 hsp = cos(degtorad(fspec_angle)) * ease_cubeOut(fsp_sp * spr_dir, (fsp_spend+3) * spr_dir , window_timer, 19);
                 vsp = -sin(degtorad(fspec_angle)) * ease_cubeOut(fsp_sp , fsp_spend+3 , window_timer, 19);   
@@ -166,43 +161,37 @@ switch attack {
                 	fspec_wall = true;
                 }
                 oldx = x;
-                if(fspec_wall){
-                	//window = 3;
-                	if(window_timer < 17){
+                if(fspec_wall)
+                	if(window_timer < 17)
                 		window_timer = 17;
-                	}
-                }
-                if(window_timer == 18){
+                if(window_timer == 18)
                 	destroy_hitboxes();
-                }
             break;
             case 3:
             	if(window_timer == 1){
     				move_cooldown[AT_FSPECIAL] = 1;
             	}
-            	if(!free){
-            		set_window_value(attack, window, AG_WINDOW_LENGTH, 20){
-            		}
-            	}else{
-            		if(!fspec_jc)	
-            			reset_window_value(attack, window, AG_WINDOW_LENGTH)
-            	}
+            	/*if(!free)
+            		set_window_value(attack, window, AG_WINDOW_LENGTH, 20);
+            	else if(!fspec_jc)	
+                    reset_window_value(attack, window, AG_WINDOW_LENGTH);
+            	}*/
             	
-            	if(fspec_wall){
+            	if (fspec_wall)
+                {
             		can_special = true;
-    				move_cooldown[AT_DSPECIAL] = 1;
-    				move_cooldown[AT_NSPECIAL] = 1;
-            		if(vsp >= 1){
-            			vsp = 1;
-            		}
+    				move_cooldown[AT_DSPECIAL] = 2;
+    				move_cooldown[AT_NSPECIAL] = 2;
+            		if (vsp >= 1) vsp = 1;
             	}
                 can_wall_jump = true;
                 if !was_parried {
                 	if(fspec_jc){
-                		if(left_down) hsp -= 0.6;
-                		if(right_down) hsp += 0.6;
+                		//if(left_down) hsp -= .5;
+                		//if(right_down) hsp += .5;
+                		fspec_boost_timer = 0;
                     	if(window_timer == 1){
-                    		vsp = -8;
+                    		vsp = -13;
                     		hsp = 0;
                     	};
                 	}
@@ -321,19 +310,25 @@ switch attack {
     	        }
             break;
             case 3:
-            	if(up_down){
-            		vsp -= 0.4
-            	}
-            	if(down_down){
-            		vsp += 0.2
-            	}
-            	if(left_down){
-            		hsp -= 0.2
-            	}
-            	if(right_down){
-            		hsp += 0.2
+            	if(USPpow){
+	            	if(up_down){
+	            		vsp -= 0.4
+	            	}
+	            	if(down_down){
+	            		vsp += 0.2
+	            	}
+	            	if(left_down){
+	            		hsp -= 0.2
+	            	}
+	            	if(right_down){
+	            		hsp += 0.2
+	            	}
             	}
                 USPpow = false;
+                if(window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH)){
+                	vsp *= 0.6;
+                	hsp *= 0.6;
+                }
             break;
         }
         can_move = true;
@@ -394,12 +389,12 @@ switch attack {
             case 2:
             	soft_armor = 0
                 if (window_timer == 6) {
+                    slTimer -= miniSL_timer;
+                    miniSL_timer = 0;
                     if (dspec_buff) {
                         dspec_buff = false;
-                    }
-                    else {
-                        slTimer = 0;
-                    }
+                    } 
+                    
                 }
             break;
             case 3:
@@ -438,7 +433,8 @@ switch attack {
                         dspec_buff = false;
                     }
                     else {
-                        slTimer = 0;
+                        slTimer -= miniSL_timer;
+                        miniSL_timer = 0;
                     }
                 }
             break;
@@ -465,43 +461,19 @@ switch attack {
                     }
                 }
             break;
+            case 4:
+            	if(y > USTstart){
+            		state = PS_IDLE_AIR
+            	}
+            
+            break;
             case 6:
             	destroy_hitboxes();
-                if (hitpause)
+                if (window_timer < 10 && hit_player_obj.hitpause && has_hit_player && hit_player_obj.soft_armor <= 0 && !hit_player_obj.super_armor)
 		        {
-			        if (hit_player)
-			        {
-				        if(hit_player_obj.soft_armor <= 0 || hit_player_obj.super_armor == true){
-					        if (hitstop == 0)
-					        {
-						        hit_player_obj.x = x + spr_dir * 15;
-						        hit_player_obj.y = y - 65;
-					        }
-					        else
-					        {
-						        if (hit_player_obj.x > (x + spr_dir * 15))
-						        {
-							        hit_player_obj.x -= (hit_player_obj.x - (x + spr_dir * 15))/6;
-						        }
-						        else if (hit_player_obj.x < (x + spr_dir * 15))
-						        {
-							        hit_player_obj.x += ((x + spr_dir * 15) - hit_player_obj.x)/6;
-						        }
-						        if (hit_player_obj.y > (y - 65))
-						        {
-							        hit_player_obj.y -= (hit_player_obj.y - (y - 65))/6;
-						        }
-						        else if (hit_player_obj.y < (y - 65))
-						        {
-							        hit_player_obj.y += ((y - 65) - hit_player_obj.y)/6;
-						        }
-					        }
-					    hit_player_obj.hsp = 0;
-					    hit_player_obj.vsp = 0;
-				        }
-			        }
+				    Grab(0, -90, 3, 3);
 		        }
-		        else
+		        if (!hitpause)
 		        {
 			        vsp = ease_sineOut(-8, -4, window_timer, 15);
 			
@@ -639,6 +611,9 @@ switch attack {
             //can_jump = true;
             //can_strong = true; //temporarily disabled for balance reasons
         }
+        // stop at ledge
+        var width = 76;
+        if (!collision_line(x+width*spr_dir, y, x+width*spr_dir, y+2, asset_get("par_block"), 0, 1) && !collision_line(x+width*spr_dir, y, x+width*spr_dir, y+2, asset_get("par_jumpthrough"), 0, 1)) hsp = 0;
     break;
 
     /*case AT_UTILT:
@@ -842,3 +817,17 @@ else{
 	set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 0.8);
 	set_hitbox_value(AT_USTRONG, 1, HG_HITSTUN_MULTIPLIER, 0.5);
 }
+
+#define Grab(xpos, ypos, xsmooth, ysmooth)
+{
+    if (xsmooth != 0)
+    {
+        hit_player_obj.x += ((x + spr_dir * xpos) - hit_player_obj.x)/xsmooth;
+        hit_player_obj.hsp = 0;
+    }
+    if (ysmooth != 0)
+    {
+        hit_player_obj.y += ((y + ypos) - hit_player_obj.y)/ysmooth;
+        hit_player_obj.vsp = 0;
+    }
+} // Lukaru

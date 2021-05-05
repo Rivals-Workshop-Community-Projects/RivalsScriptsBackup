@@ -59,7 +59,10 @@ if orbiting {
 	if point_distance(0, 0, hsp, vsp) > 7 {
 		gravity_amount = 0;
 		gravity_speed = 5;
-		if !parrytime && abs(angle_difference(point_direction(0,0,hsp,vsp), dir)) > 90 && owner.state_cat != SC_HITSTUN {
+		if !parrytime && owner.state_cat != SC_HITSTUN && 
+		owner.state != PS_WALL_TECH && owner.state != PS_TECH_GROUND && owner.state != PS_TECH_BACKWARD && 
+		owner.state != PS_TECH_FORWARD && owner.state != PS_RESPAWN && owner.state != PS_DEAD &&
+		abs(angle_difference(point_direction(0,0,hsp,vsp), dir)) > 90 {
 			active = 1;
 			attack = AT_EXTRA_1;
 			offset = 1;

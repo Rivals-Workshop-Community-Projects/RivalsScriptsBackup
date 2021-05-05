@@ -187,4 +187,4 @@ set_hitbox_value(AT_DATTACK, 7, HG_VISUAL_EFFECT_X_OFFSET, 24);
 set_hitbox_value(AT_DATTACK, 7, HG_HIT_SFX, sound_get("counterhit"));
 set_hitbox_value(AT_DATTACK, 7, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DATTACK, 7, HG_EFFECT, 9);
-set_hitbox_value(AT_DATTACK, 7, HG_HITSTUN_MULTIPLIER, 0.9);
+set_hitbox_value(AT_DATTACK, 7, HG_HITSTUN_MULTIPLIER, 1.05);

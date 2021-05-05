@@ -26,6 +26,8 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 8);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_SFX, asset_get("sfx_frog_dspecial_cast"));
 
 //grab launcher
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 6);
@@ -36,6 +38,8 @@ set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_USPECIAL, 6, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_USPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_USPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 8);
+set_window_value(AT_USPECIAL, 6, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_USPECIAL, 6, AG_WINDOW_SFX, asset_get("sfx_frog_dspecial_cast"));
 
 set_num_hitboxes(AT_USPECIAL, 3);
 

@@ -1540,8 +1540,8 @@ with oPlayer if (activated_kill_effect) {
 
 if finisher = 60 {
 	if hitpause  {
-		hitstop += 30
-		hit_player_obj.hitstop += 30
+		hitstop += 32
+		hit_player_obj.hitstop += 32
 	}
 	spawn_hit_fx(x,y,lighten)
     sound_stop(sound_get("tstrong"))

@@ -23,3 +23,7 @@ if(slTimer >= slTimerLimit - 5){
 if(attack == AT_DATTACK){
 	DA_jcancel = false;
 }
+
+if(attack == AT_USTRONG){
+	USTstart = y;
+}

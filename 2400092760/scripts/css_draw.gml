@@ -281,11 +281,11 @@ draw_sprite(sprite_get("soa_badge"), 0, temp_x + 160, temp_y-100 + offset-4)
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
-draw_text_color(x + 10, y - 6, "Version 1.65", c_white, c_white, c_white, c_white, 1);
+draw_text_color(x + 10, y - 6, "Version 1.66", c_white, c_white, c_white, c_white, 1);
 
 // Date Display
 draw_set_halign(fa_right);
-draw_text_color(x + 210, y - 6, "April 24, 2021", c_white, c_white, c_white, c_white, 1);
+draw_text_color(x + 210, y - 6, "April 28, 2021", c_white, c_white, c_white, c_white, 1);
 
 // Border Rectangle Yo!
 draw_rectangle_color(temp_x, temp_y + 4, temp_x + 40 + 10 * alts, temp_y + 12, c_black, c_black, c_black, c_black, false);

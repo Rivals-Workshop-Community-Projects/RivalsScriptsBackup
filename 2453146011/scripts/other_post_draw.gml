@@ -28,7 +28,7 @@ var portalid = 0;
 
 with(other_player_id) if (init)
 {
-    if(portal_1 != noone && j == 0)
+    if(portal_1 != noone && j == 0 && instance_exists(portal_1))
     {
     	px = portal_1.x;
     	py = portal_1.y;
@@ -37,7 +37,7 @@ with(other_player_id) if (init)
     	portalid = 1;
     }
     
-    if(portal_2 != noone && j == 1)
+    if(portal_2 != noone && j == 1 && instance_exists(portal_1))
     {
     	px = portal_2.x;
     	py = portal_2.y;
@@ -123,6 +123,57 @@ if(portal_white > 0)
 	gpu_set_blendmode(bm_normal);
 }
 
+// Stun fx
+if(hit_player_obj == other_player_id && hitpause && !has_hit_player && last_monarch != noone && hitstop_full >= 30)
+{
+   gpu_set_blendmode(bm_add);
+   
+   draw_sprite_ext(sprite_index,image_index,
+   x + (1 - cos((hitstop/5 * 3.14) / 2))*hitstop_full/20,
+   y + (1 - cos((hitstop/5 * 3.14) / 2))*hitstop_full/20,
+   spr_dir*small,small,0,last_monarch.monLightBlue,1)
+   
+   draw_sprite_ext(sprite_index,image_index,
+   x - (1 - cos((hitstop/5 * 3.14) / 2))*hitstop_full/20,
+   y - (1 - cos((hitstop/5 * 3.14) / 2))*hitstop_full/20,
+   spr_dir*small,small,0,last_monarch.monRed,1)
+   
+   
+   draw_sprite_ext(sprite_index,image_index,
+   x + (1 - sin((hitstop/5 * 3.14) / 2))*hitstop_full/20,
+   y + (1 - sin((hitstop/5 * 3.14) / 2))*hitstop_full/20,
+   spr_dir*small,small,0,last_monarch.monLightBlue,1)
+   
+   draw_sprite_ext(sprite_index,image_index,
+   x - (1 - sin((hitstop/5 * 3.14) / 2))*hitstop_full/20,
+   y - (1 - sin((hitstop/5 * 3.14) / 2))*hitstop_full/20,
+   spr_dir*small,small,0,last_monarch.monRed,1)
+   
+   
+   other_arrayindex = 0;
+	var i = 0;
+	repeat(100)
+	{
+	    other_afterimage_array[i] = -1;
+	    i++;
+	}
+	    
+    
+    gpu_set_blendmode(bm_normal);
+}
+
+if(hitstop_full >= 30 && last_player == other_player_id.player && hitpause) {
+	// Fade out
+	if(hitstop < 10)
+		draw_set_alpha(hitstop/10);
+	
+	gpu_set_blendmode(bm_add);
+	with(other_player_id){
+		draw_sprite(sprite_get("hitfx11"),(get_gameplay_time()%(12*4))/4,other.x,other.y-other.char_height/2);
+	}
+	draw_set_alpha(1);
+	gpu_set_blendmode(bm_normal);
+}
 
 
 gpu_set_blendmode(bm_normal);

@@ -22,8 +22,9 @@ if (attack == AT_USPECIAL) {
 	hitby_attack = AT_TAUNT;
 	hitby_group = -1;
 	should_crack = 0;
+
 	if player_id.nspecial_current == id should_crack = 2;
-	
+
 	bounce_fx = 194;
 	
 	in_hitpause_timer = 0;

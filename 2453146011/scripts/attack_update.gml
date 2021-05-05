@@ -270,7 +270,7 @@ if (attack == AT_NSPECIAL){
 		{
 			// Offsets
 			var yoff = throw_dir == "up" ? 104 : 40;
-			var xoff = throw_dir == "up" ? dir(6) : 2;
+			var xoff = throw_dir == "up" ? dir(6) : dir(4);
 			var tempSolid = noone;
 			var up = throw_dir == "up" ? -1 : 1;
 			var uoff = throw_dir == "up" ? 22 : 18;
@@ -311,7 +311,7 @@ if (attack == AT_NSPECIAL){
 			until(tempSolid != noone || i > 1000 || i < -1000)
 			
 			// Create projectile
-			create_hitbox(AT_NSPECIAL,1,x+xoff + dir(8),y+(i*up) - 34);
+			create_hitbox(AT_NSPECIAL,1,x+xoff + dir(8) + (throw_dir == "up" ? 0 : 0),y+(i*up) - 34);
 			special_held = special_down;
 		}
 	}
@@ -408,11 +408,13 @@ if (attack == AT_USPECIAL){
 		if(uspec_charged){
 			set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 8);
 			set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 8);
+			set_hitbox_value(AT_DSPECIAL, 2, HG_EXTRA_HITPAUSE, 8);
 			
 			create_hitbox(AT_DSPECIAL,2,ceil(x),ceil(y)-15);
 			
 			reset_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE);
 			reset_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE);
+			reset_hitbox_value(AT_DSPECIAL, 2, HG_EXTRA_HITPAUSE);
 			
 			
 			sound_play(sound_get("monarch_gunhit2"),false,0,0.8,1.1);
@@ -531,7 +533,7 @@ if (attack == AT_DSPECIAL_2){
 	if(window == 2 && window_timer == get_window_value(AT_DSPECIAL_2,2,AG_WINDOW_LENGTH)){ circ = spawn_hit_fx(x,y,dspec_circle); circ.depth = depth-1; }
 	
 	// Trigger teleport
-	if(window == 4 && window_timer == 1){time_knife.early_trigger = true; sound_stop(sound_get("monarch_countdown"))}
+	if(window == 4 && window_timer == 1 && time_knife != noone){time_knife.early_trigger = true; sound_stop(sound_get("monarch_countdown"))}
 }
 //#endregion
 
@@ -1218,7 +1220,7 @@ return(_x*spr_dir);
 #define teleport(_dist)
 	repeat(abs(_dist))
 		if(!place_meeting(x, y, asset_get("par_block")))
-		if((place_meeting(x + (sign(_dist) * 25), y+2, asset_get("par_block")) || place_meeting(x + (sign(_dist) * 25), y+2, asset_get("par_jumpthrough")))) {
+		if((place_meeting(x + (sign(_dist) * 25), y+15, asset_get("par_block")) || place_meeting(x + (sign(_dist) * 25), y+15, asset_get("par_jumpthrough")))) {
 			
 			var collidedport = collision_rectangle(x-5 + (hsp/2), y-65, x+5 + (hsp/2), y-5, asset_get("obj_article1"), false, true);
 			if(collidedport != noone) with(collidedport) user_event(0);

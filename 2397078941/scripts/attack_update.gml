@@ -327,7 +327,21 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
 
 
 	if attack == AT_NAIR {
-		 if has_hit_player && hit_player_obj.state_cat == SC_HITSTUN && window == 3 {
+		
+	if window == 3 {
+		set_attack_value(AT_NAIR, AG_CATEGORY, 2);
+		if !free {
+			sound_play(asset_get("sfx_blow_weak2"))
+			spawn_hit_fx(x,y + 10, 14)
+			vsp = -7
+			hsp = 8*spr_dir
+		}
+	} else {
+		set_attack_value(AT_NAIR, AG_CATEGORY, 1);
+	}
+	
+	
+		 if has_hit_player && hit_player_obj.state_cat == SC_HITSTUN && window <= 4 {
 		 	if state_timer < 60 {
 		 		sound_play(asset_get("sfx_swipe_heavy2"))
 		 		window_timer = 1
@@ -484,8 +498,8 @@ if attack == AT_NSPECIAL{
 	  		if seednum == 2 {
     			sound_play(sound_get("throw"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 10);
-set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.8);
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 20);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 302);
@@ -495,8 +509,8 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium
     		if seednum == 3 {
     			sound_play(sound_get("throw"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 16);    		    
-set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 1.1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 30);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 306);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 302);
@@ -518,7 +532,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_heavy"
   if window == 2 && window_timer == 2 {
   		sound_play(asset_get("sfx_abyss_seed_fall"));
   		  		seednum = 1
-set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 305);
@@ -1091,6 +1105,9 @@ if hitpause {
 	
 
 if attack == AT_NAIR{
+	
+
+	
 	if window == 1 {
 		nairtime = 0
 	}

@@ -25,9 +25,3 @@ if (spr_dir == -1){
     //Right Eye
     set_character_color_slot( 7, get_color_profile_slot_r(get_player_color(player), 3), get_color_profile_slot_g(get_player_color(player), 3), get_color_profile_slot_b(get_player_color(player), 3));
 }
-
-//Maid Outfit >:)
-if (get_player_color(player) == 0) {
-    set_character_color_slot( 4, 255, 255, 255 ); //Maid Oufit Light
-}
-

@@ -39,7 +39,7 @@ set_window_value(AT_JAB, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
 set_window_value(AT_JAB, 5, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_JAB, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, 5, AG_WINDOW_ANIM_FRAME_START, 8);
-set_window_value(AT_JAB, 5, AG_WINDOW_HSPEED, 4);
+set_window_value(AT_JAB, 5, AG_WINDOW_HSPEED, 6);
 set_window_value(AT_JAB, 5, AG_WINDOW_HSPEED_TYPE, 2);
 
 

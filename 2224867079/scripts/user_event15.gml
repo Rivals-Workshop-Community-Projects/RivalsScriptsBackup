@@ -254,7 +254,7 @@ pho_has_daro_codec = 0; // Dialogue for the Daroach boss fight
 
 
 if (object_index == asset_get("cs_playerbg_obj")){
-	num_alts = 14; // Number of alt costumes; controls how many appear on the CSS
+	num_alts = 16; // Number of alt costumes; controls how many appear on the CSS
 	exit;
 }
 
@@ -458,7 +458,19 @@ with phone{
 //	initPatchWords("Fnuuy joke
 //	- waog");
 //	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0);
-	//2.19
+	//2.22
+	initPatch("2.22	", "1 May 2021");
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Fixed the issue with the default skin")
+	//2.21
+	initPatch("2.21	", "1 May 2021");
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- The STUPID Uspecial effect works now - Thanks to lukaru
+	- Added custom hit particle effects because ive only just now realised that was a thing
+	- Added Lite mode
+	- Added two new alts (Beepbox and Modbox)
+	- Edited colours.css again (the lines now change colour too)")
+	//2.20
 	initPatch("2.20	", "28 April, 2021");
 	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
 	initPatchWords("- Resprited Uair

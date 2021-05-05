@@ -50,7 +50,7 @@ sprite_change_offset("dtiltKT", 42, 42);
 sprite_change_offset("utilt", 24, 112);
 sprite_change_offset("utilt1", 24, 112);
 sprite_change_offset("utilt2", 24, 112);
-sprite_change_offset("nair", 31, 64);
+sprite_change_offset("nair", 63, 88);
 sprite_change_offset("nair1", 31, 64);
 sprite_change_offset("fair", 24, 56);
 sprite_change_offset("bair", 84, 60);

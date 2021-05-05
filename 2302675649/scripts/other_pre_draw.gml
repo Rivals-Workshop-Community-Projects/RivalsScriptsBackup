@@ -7,22 +7,41 @@ if ("afterImageLonin" in self)
 		gpu_set_blendmode(bm_normal);
 	}
 
-	// Trans
-	if (outlineState == 1)
+	switch (outlineState)
 	{
-		FlagPart(make_colour_rgb(85, 205, 252), 1, 0); // mayablue
-		FlagPart(make_colour_rgb(247, 168, 223), 3/5, 1/5); // pink
-		FlagPart(c_white, 1/5, 2/5);
-		gpu_set_fog(0, c_white, 0, 0);
-	}
+		// Trans
+		case 1:
+			FlagPart(make_colour_rgb(85, 205, 252), 1, 0); // mayablue
+			FlagPart(make_colour_rgb(247, 168, 223), 3/5, 1/5); // pink
+			FlagPart(c_white, 1/5, 2/5);
+			gpu_set_fog(0, c_white, 0, 0);
+			break;
 
-	// BLM
-	else if (outlineState == 2)
-	{
-		FlagPart(c_black, 1/3, 0);
-		FlagPart(c_white, 1/3, 1/3);
-		FlagPart(make_colour_rgb(251, 238, 31), 1/3, 2/3); // yellow
-		gpu_set_fog(0, c_white, 0, 0);
+		// BLM
+		case 2:
+			FlagPart(c_black, 1/3, 0);
+			FlagPart(c_white, 1/3, 1/3);
+			FlagPart(make_colour_rgb(251, 238, 31), 1/3, 2/3); // yellow
+			gpu_set_fog(0, c_white, 0, 0);
+			break;
+
+		// Enby
+		case 3:
+			FlagPart(make_colour_rgb(255, 244, 51), 1/4, 0);
+			FlagPart(c_white, 1/4, 1/4);
+			FlagPart(make_colour_rgb(155, 89, 208), 1/4, 2/4);
+			FlagPart(make_colour_rgb(43, 43, 43), 1/4, 3/4);
+			gpu_set_fog(0, c_white, 0, 0);
+			break;
+
+		// Ace
+		case 4:
+			FlagPart(c_black, 1/4, 0);
+			FlagPart(make_colour_rgb(164, 164, 164), 1/4, 1/4);
+			FlagPart(c_white, 1/4, 2/4);
+			FlagPart(make_colour_rgb(129, 0, 129), 1/4, 3/4);
+			gpu_set_fog(0, c_white, 0, 0);
+			break;
 	}
 
 	// Kirby

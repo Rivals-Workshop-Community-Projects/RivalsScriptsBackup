@@ -1,4 +1,17 @@
 /*
+-- V2.22 --
+Cosmetic Changes:
+- Fixed the issue with the default skin
+
+-- V2.21 --
+
+Cosmetic Changes:
+- The STUPID Uspecial effect works now - Thanks to lukaru
+- Added custom hit particle effects because ive only just now realised that was a thing
+- Added Lite mode
+- Added two new alts (Beepbox and Modbox)
+- Edited colours.css again (the lines now change colour too)
+
 -- V2.20 --
 
 Cosmetic Changes:

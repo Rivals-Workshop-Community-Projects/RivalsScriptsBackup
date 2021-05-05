@@ -149,17 +149,12 @@ if (sprite_index == spr_idle){
 }
 if (sprite_index == spr_walk){
 	
-    var frames = 8;
-    var frame_dur = 4 ;
+    var frames = 12;
+    var frame_dur = 4;
     image_index = floor((state_timer mod (frames * frame_dur)) / frame_dur);
 }
 if (sprite_index == spr_dash){
-	if(slActive){
-		dash_ASP = 3;
-	}
-	else {
-		dash_ASP = 4;
-	}
+	dash_ASP = slActive?3:4;
     var frames = 10;
     var frame_dur = dash_ASP;
     image_index = floor((state_timer mod (frames * frame_dur)) / frame_dur);

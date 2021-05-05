@@ -17,8 +17,8 @@ switch(my_hitboxID.attack)
 			if (obj != noone)
 			{
 				var ang = find_angle( hit_player_obj.x, hit_player_obj.y,obj.x, obj.y);
-	            hit_player_obj.old_hsp = lengthdir_x(10, ang);
-	            hit_player_obj.old_vsp = lengthdir_y(10, ang);
+	            hit_player_obj.old_hsp = lengthdir_x(12, ang);
+	            hit_player_obj.old_vsp = lengthdir_y(12, ang);
 			}
 		}
 	break;

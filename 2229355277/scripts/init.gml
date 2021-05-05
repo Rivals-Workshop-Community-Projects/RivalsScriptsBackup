@@ -62,9 +62,10 @@ AT_ECHO = AT_NSPECIAL_2;
 AT_BOMB = AT_EXTRA_3;
 AT_EXPLOSION = AT_FSPECIAL_2;
 AT_CROSSFIRE = AT_DTHROW;
+AT_WONDER = AT_USPECIAL_2;
 
 // Spell Costs
-amountofspells = 11; // This is just so we can easily adjust any loops
+amountofspells = 12; // This is just so we can easily adjust any loops
 
 spThunder = 1;      // KA-CHOW
 spBomb = 2;         // You lit the fuse, I stand accused
@@ -74,9 +75,10 @@ spRagnarok = 4;     // haha big sword go PSHHH
 spGetNaeNaed = 4;   // thwack.
 spEcho = 1;         // What the hell's going on, can someone tell me please?
 spKnockdown = 2;    // Can hurt enemies who are using Fly or Bounce, I think
-spCrossfire = 2;    //IN THE FUTURE, THE ULTIMATE CHALLENGE -
-spExplosion = 5;    //Bakuretsu bakuretsu, la la la~
-spTrishot = 1;      //My mom always warned me the cool kids would try to get me to drink
+spCrossfire = 2;    // IN THE FUTURE, THE ULTIMATE CHALLENGE -
+spExplosion = 5;    // Bakuretsu bakuretsu, la la la~
+spTrishot = 1;      // My mom always warned me the cool kids would try to get me to drink
+spWonder = 0;       // Feeling lucky?
 
 jabdash = 9;
 

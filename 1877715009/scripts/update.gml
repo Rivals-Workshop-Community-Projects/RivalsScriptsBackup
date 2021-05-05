@@ -523,7 +523,7 @@ if (practiceinit && !stupidbossbool && object_index != oTestPlayer && get_gamepl
 					noofsubV = 29;
 					break;
 				case 8:
-					noofsubV = 23; // ctrl+f here
+					noofsubV = 24; // ctrl+f here
 					break;
 			}
 			if (shield_pressed)

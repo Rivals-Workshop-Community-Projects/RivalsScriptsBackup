@@ -28,6 +28,7 @@ wall_frames = 1;
 taunt_stall = 0;
 bounce = 0;
 jump_queue = 0;
+is_tenru = true;
 
 jump_start_time = 5;
 max_jump_speed = 10.5;
@@ -186,6 +187,7 @@ from_dspecial = false;
 from_uspecial = false;
 landing_time = 20;
 can_air_dspecial = true;
+dspec_buffer = false;
 
 // Particles
 land_dust_started = false;

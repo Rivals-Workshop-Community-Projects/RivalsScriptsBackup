@@ -78,7 +78,6 @@ if (attack == AT_USPECIAL){
 	can_fast_fall = false;
 }
 
-
 if (attack == AT_FSTRONG){
 	move_cooldown[AT_FSTRONG] = 15;
 	move_cooldown[AT_DSTRONG] = 15;
@@ -114,10 +113,10 @@ if (attack == AT_USPECIAL){
         var fly_dir = point_direction(0,0,hsp,vsp);
         var fly_dist = point_distance(0,0,hsp,vsp);
 		if swift_mode = false{
-			var max_speed = 3.5;
+			var max_speed = 3.75;
 		}
 		if swift_mode = true{
-			var max_speed = 4;
+			var max_speed = 4.5;
 		}
         if (fly_dist > max_speed){
             hsp = lengthdir_x(max_speed, fly_dir);
@@ -133,7 +132,7 @@ if (attack == AT_USPECIAL){
 
 
 if swift_mode = false{
-	var max_speed = 3.5;
+	var max_speed = 3.75;
 }
 if attack == AT_TAUNT_2 {
 	if window == 1 {

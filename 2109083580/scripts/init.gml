@@ -6,7 +6,7 @@ hitstun_hurtbox_spr = -1;
 char_height = 52;
 idle_anim_speed = .21;
 crouch_anim_speed = .1;
-walk_anim_speed = .22;
+walk_anim_speed = .8;
 dash_anim_speed = .30;
 dash_ASP = 4;
 pratfall_anim_speed = .25;
@@ -16,7 +16,7 @@ walk_accel = 0.2;
 walk_turn_time = 5;
 initial_dash_time = 8;
 initial_dash_speed = 6.1;
-dash_speed = 5.2;
+dash_speed = 6.0;
 dash_turn_time = 10;
 dash_turn_accel = 1.3;
 dash_stop_time = 5;
@@ -114,6 +114,10 @@ slHUDshakeOffset = 0;
 spark_articles = false;
 spark_timer = 90;
 
+miniSL_timer = 0;
+miniSL_tick = 8;
+miniSL_cd = 0;
+
 //self-damage
 slHurtTimer = 0;
 slMaxHurtTime = 120; //2 seconds worth of frames
@@ -154,6 +158,7 @@ fspec_airgrab = false;
 can_fspec = true;
 fspec_hit = false;
 fspec_grounded = false;
+fspec_boost_timer = 16;
 
 //Nspecial
 explode = false;

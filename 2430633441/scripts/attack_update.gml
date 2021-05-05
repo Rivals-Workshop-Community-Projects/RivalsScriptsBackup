@@ -106,7 +106,7 @@ switch(attack) {
 		if get_window_value(attack,window,AG_WINDOW_TYPE) == 69 {
 			can_attack = true;
 			move_cooldown[AT_DSPECIAL] = 40;
-			var inf_planet = 1.5;
+			var inf_planet = 1.1;
 			var inf_player = 1.3;
 			var inf_hitbox = 0.1
 			var pull_planet = 0.3;
@@ -141,6 +141,7 @@ switch(attack) {
 					vsp += lengthdir_y(INFLUENCE, point_direction(x,y,xx,yy-h));
 				}	
 			}
+			/*
 			with (asset_get("pHitBox")) {
 				if !unbashable && type == 2 {
 
@@ -149,6 +150,7 @@ switch(attack) {
 					vsp += lengthdir_y((inf_hitbox)+0.5, point_direction(x,y,xx,yy-h));
 				}	
 			}
+			*/
 			if window_timer mod 1 == 0 {
 				var ang = random_func(0, 359, 1)
 				var xdir = lengthdir_x(1, ang);
@@ -174,6 +176,11 @@ switch(attack) {
 				sun_ins.vsp = (down_down - up_down)*3
 			} 
 		}
+		if window == 4 {
+			can_attack = true;
+			can_jump = true;
+			can_strong = true;
+		}
 	break;
 	case AT_NSPECIAL_2:
 	with (pHitBox) {
@@ -193,10 +200,19 @@ switch(attack) {
 			}
 		}
 	}
+	if window == 4 {
+		can_attack = true;
+		can_jump = true;
+		can_strong = true;
+	}
 	break;
 	case AT_USPECIAL_2: //Sun out!
 		can_wall_jump = true;
 		if (get_window_value(attack,window,AG_WINDOW_TYPE) == 420 or get_window_value(attack,window,AG_WINDOW_TYPE) == 666) && instance_exists(sun_ins) {
+		
+			if times_through {
+				super_armor = true;
+			}
 			//fall = true;
 			fall_through = true;
 			var amt = 3.5*(1-(window_timer/get_window_value(attack,window,AG_WINDOW_LENGTH))*0.7);

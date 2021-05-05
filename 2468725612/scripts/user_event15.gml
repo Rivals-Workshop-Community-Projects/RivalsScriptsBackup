@@ -224,7 +224,7 @@ if ("phone_inited" in self && phone_inited && !phone_lightweight){
 
 // Gameplay-relevant, and codecs because im biased :>
 pho_has_muno_phone = 1;	// MunoPhone support		(should always be 1, obviously...)
-pho_has_trum_codec = 1;	// Trummel & Alto codec
+pho_has_trum_codec = 0;	// Trummel & Alto codec
 pho_has_copy_power = 0;	// Kirby Copy Ability
 pho_has_btt_layout = 0;	// Break the Targets stage
 
@@ -457,6 +457,17 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	
+	initPatch("1.13", "30 April, 2021");
+	initPatchWords_ext("- Fixed a bug where the hat wouldn't show in the first frame of NSpecial, again.", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- The DSpecial_Air Shotgun Blast only spikes at the sweetspot.", fa_left, c_white, 0, 0);
+	 
+	initPatch("1.12", "28 April, 2021");
+	initPatchWords_ext("- Fixed a bug when hitting the hologram with FSpecial_air.", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- Fixed a bug where the hat wouldn't show in the first frame of NSpecial.", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- Fixed a visual bug when the hologram uses FSpecial.", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- Fixed a bug with the Munophone.", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- Added 4 new Alternate Costumes.", fa_left, c_white, 0, 0);
 	
 	initPatch("1.11", "27 April, 2021");
 	initPatchWords_ext("- Jab now comes out on frame 6.", fa_left, c_white, 0, 0);
@@ -772,7 +783,7 @@ if pho_has_otto_bhead{
 
 if pho_has_steve_dmsg{
 	
-	steve_death_message = "Steve got canceled on Twitter";
+	steve_death_message = "Steve has been terminated";
 	
 }
 

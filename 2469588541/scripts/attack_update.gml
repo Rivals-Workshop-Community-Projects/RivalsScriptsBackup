@@ -1,5 +1,13 @@
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL) trigger_b_reverse();
+switch (attack)
+{
+    case AT_NSPECIAL:
+    case AT_FSPECIAL:
+    case AT_DSPECIAL:
+    case AT_USPECIAL:
+        trigger_b_reverse();
+        break;
+}
 
 switch (attack)
 {
@@ -39,29 +47,7 @@ switch (attack)
                         star.state = 1;
                         star.newState = 1;
                     }
-                    with(asset_get("obj_article1")) if (shootOne && player_id == other.id && state == 1 && point_distance(x, y, other.x, other.y) < (isBig?128:96))
-                    {
-                        var opponent = noone;
-                        var baseSpeed = has_rune("G")?60:30;
-                        with (other) opponent = NearestOpponentDir();
-                        if (opponent == noone)
-                        {
-                            hsp = other.spr_dir * (baseSpeed+other.nspecCharge*2);
-                            vsp = 0;
-                        }
-                        else
-                        {
-                            var dir = point_direction(x, y, opponent.x + opponent.hsp*4, opponent.y-floor(opponent.char_height/2) + opponent.vsp*4);
-                            hsp = lengthdir_x(baseSpeed+other.nspecCharge*2.5, dir);
-                            vsp = lengthdir_y(baseSpeed+other.nspecCharge*2.5, dir);
-                            ignores_walls = true;
-                        }
-                        newState = 4;
-                        shootOne = false;
-                        other.tutDone[1] = true;
-                        if (other.upThrow > 50) other.tutDoneAdv[1] = true;
-	                    sound_play(asset_get("sfx_boss_shine"));
-                    }
+                    if (!ShootStar(1)) ShootStar(0);
                 }
                 break;
             case 4:
@@ -75,12 +61,10 @@ switch (attack)
                 break;
         }
         can_jump = ((window == 3 && window_timer > 2) || window >= 4) && !was_parried;
-        //can_fast_fall = false;
         break;
 
     case AT_FSPECIAL:
         can_fast_fall = false;
-        move_cooldown[attack] = 8;
         switch (window)
         {
             case 1:
@@ -94,7 +78,7 @@ switch (attack)
                         CorrectHurtboxes();
                     }
                 }
-                else if (window_timer == 12)
+                else if (window_timer == 9)
                 {
                     var uwu = spawn_hit_fx(x, y-36, shinestar_effect); uwu.depth = -10;
                     sound_play(asset_get("mfx_star"));
@@ -105,9 +89,9 @@ switch (attack)
 
             case 2:
                 if (window_timer == 1) afterImageTimer = 6;
+                if (has_hit_player && !hit_player_obj.super_armor && hit_player_obj.hitpause) Grab(64, 0, 3, 3);
                 if (!hitpause || (has_rune("E") && has_hit_player))
                 {
-                    //var uwu = spawn_hit_fx(x-hsp, y-floor(char_height/2), startrail_effect); uwu.spr_dir = spr_dir;
                     if (has_hit)
                     {
                         destroy_hitboxes();
@@ -148,10 +132,11 @@ switch (attack)
                     uspecDir = USpecDir();
                     if (uspecDir == -1) uspecDir = 90;
                     USpecInit();
-                    //SpawnStar(0, -30);
+                    uspecResources = {djump:djumps, airdodge:has_airdodge, walljump:has_walljump};
                 }
                 break;
             case 2:
+                USpecRemoveResources();
                 if (!hitpause)
                 {
                     if (!free) uspecLanded = true;
@@ -162,6 +147,7 @@ switch (attack)
                 }
                 break;
             case 3:
+                USpecRemoveResources();
                 if (window_timer == get_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH)-1)
                 {
                     var tempUspecDir = uspecDir;
@@ -171,7 +157,6 @@ switch (attack)
                         window = 2;
                         window_timer = 0;
                         USpecInit();
-                        //SpawnStar(0, -30);
                         sound_play(sound_get("pew"));
                     }
                 }
@@ -189,16 +174,19 @@ switch (attack)
         fast_falling = false;
         do_a_fast_fall = false;
         move_cooldown[attack] = 2;
-        if (window_timer == get_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH))
+        if (window_timer == 1)
         {
             with(asset_get("obj_article1")) if (player_id == other.id && state == 1 && point_distance(x, y, other.x, other.y-floor(other.char_height/2)) < other.dspecRadius+32)
             {
-            	var len = point_distance(x, y, other.x, other.y)+random_func(replacedCount*2, 6, 0)-3;
-            	var dir = point_direction(x, y, other.x, other.y)+random_func(replacedCount*2+1, 6, 0)-3;
-                hsp = lengthdir_x(len/10, dir);
-                vsp = lengthdir_y(len/10, dir);
+            	var len = point_distance(x, y, other.x, other.y-100);
+            	var dir = point_direction(x, y, other.x, other.y-100);
+                hsp = lengthdir_x(len/3, dir);
+                vsp = lengthdir_y(len/3, dir);
                 checkMerge = true;
             }
+        }
+        else if (window_timer == get_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH))
+        {
             if (has_rune("O")) with (oPlayer) if (other.player != player && get_player_team(player) != get_player_team(other.player) && state_cat == SC_HITSTUN && point_distance(x, y, other.x, other.y) < other.dspecRadius+32)
             {
                 var uwu = spawn_hit_fx(x, y-floor(char_height/2), 305); uwu.depth = -10;
@@ -244,16 +232,9 @@ switch (attack)
         break;
         
     case AT_UAIR:
-        //ConstellationBonus(attack, 1);
+        ConstellationBonus(attack, 1);
         ConstellationBonus(attack, 2);
         break;
-}
-
-#define SpawnStar(_x, _y)
-{
-    if (!hitpause)
-        return instance_create(x+_x,y+_y,"obj_article1");
-    return noone;
 }
 
 #define USpecDir()
@@ -267,6 +248,13 @@ switch (attack)
     uspecLanded = !free;
     uspecPos = {x:x, y:y};
     ++uspecTimes;
+}
+
+#define USpecRemoveResources()
+{
+    djumps = uspecResources.djump;
+    has_airdodge = uspecResources.airdodge;
+    has_walljump = uspecResources.walljump;
 }
 
 #define NearestOpponentDir()
@@ -319,12 +307,10 @@ switch (attack)
 #define ConstellationBonus(_attack, _hboxNum)
 {
     var noOfStars = StarCount();
-    reset_hitbox_value(_attack, _hboxNum, HG_BASE_KNOCKBACK);
     reset_hitbox_value(_attack, _hboxNum, HG_KNOCKBACK_SCALING);
     reset_hitbox_value(_attack, _hboxNum, HG_DAMAGE);
-    set_hitbox_value(_attack, _hboxNum, HG_BASE_KNOCKBACK, KBMult(get_hitbox_value(_attack, _hboxNum, HG_BASE_KNOCKBACK), noOfStars));
-    set_hitbox_value(_attack, _hboxNum, HG_KNOCKBACK_SCALING, KBMult(get_hitbox_value(_attack, _hboxNum, HG_KNOCKBACK_SCALING), noOfStars));
-    set_hitbox_value(_attack, _hboxNum, HG_DAMAGE, DamageBonus(get_hitbox_value(_attack, _hboxNum, HG_DAMAGE), noOfStars));
+    set_hitbox_value(_attack, _hboxNum, HG_KNOCKBACK_SCALING,   KBMult(get_hitbox_value(_attack, _hboxNum, HG_KNOCKBACK_SCALING), noOfStars));
+    set_hitbox_value(_attack, _hboxNum, HG_DAMAGE,              DamageBonus(get_hitbox_value(_attack, _hboxNum, HG_DAMAGE), noOfStars));
 }
 
 #define StarCount()
@@ -345,4 +331,35 @@ switch (attack)
 #define DamageBonus(_damage, _noOfStars)
 {
     return _damage + _noOfStars*starDamage;
+}
+
+#define ShootStar(_big)
+{
+    var success = false;
+    with(asset_get("obj_article1")) if (player_id == other.id && state == 1 && (_big^^!isBig) && point_distance(x, y, other.x, other.y) < (isBig?128:96))
+    {
+        var opponent = noone;
+        var baseSpeed = has_rune("G")?60:30;
+        with (other) opponent = NearestOpponentDir();
+        if (opponent == noone)
+        {
+            hsp = other.spr_dir * (baseSpeed+other.nspecCharge*2);
+            vsp = 0;
+        }
+        else
+        {
+            var dir = point_direction(x, y, opponent.x + opponent.hsp*4, opponent.y-floor(opponent.char_height/2) + opponent.vsp*4);
+            hsp = lengthdir_x(baseSpeed+other.nspecCharge*2.5, dir);
+            vsp = lengthdir_y(baseSpeed+other.nspecCharge*2.5, dir);
+        }
+        newState = 4;
+        ignores_walls = true;
+        checkMerge = false;
+        other.tutDone[1] = true;
+        if (other.upThrow > 50) other.tutDoneAdv[1] = true;
+        sound_play(asset_get("sfx_boss_shine"));
+        success = true;
+        break;
+    }
+    return success;
 }

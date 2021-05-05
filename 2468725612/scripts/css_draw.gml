@@ -109,7 +109,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[12,1] = "Second Chance"
     ce[12,2] = ""
     ce[13,0] = make_color_rgb(97, 65, 39)
-    ce[13,1] = "Trench Coat"
+    ce[13,1] = "Minerals"
     ce[13,2] = ""
     ce[14,0] = make_color_rgb(47, 105, 96)
     ce[14,1] = "Citrus Aurantium"
@@ -120,6 +120,18 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[16,0] = make_color_rgb(228, 188, 29)
     ce[16,1] = "The Other Side of the Coin"
     ce[16,2] = ""
+    ce[17,0] = make_color_rgb(82, 97, 82)
+    ce[17,1] = "King of Darkness"
+    ce[17,2] = ""
+    ce[18,0] = make_color_rgb(215, 0, 0)
+    ce[18,1] = "The Real Master"
+    ce[18,2] = ""
+    ce[19,0] = make_color_rgb(189, 173, 124)
+    ce[19,1] = "Trench Coat"
+    ce[19,2] = ""
+    ce[20,0] = make_color_rgb(64, 87, 113)
+    ce[20,1] = "Are you lucky?"
+    ce[20,2] = ""
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
     // you can ignore the mess below...

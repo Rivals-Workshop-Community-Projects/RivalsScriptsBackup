@@ -4,12 +4,20 @@ if (!custom_clone){
 col_final1 = make_color_rgb(col_R1, col_G1, col_B1);
 col_final2 = make_color_rgb(col_R2, col_G2, col_B2);
 
-shader_start();
+if (get_player_color(player) != 18){
+       shader_start();
+}
 
 if (hat_on == true && !custom_clone){
         draw_sprite_ext(sprite_get("hud_hat"), 0, temp_x+28, temp_y+8, 2, 2, 0, c_white, 1);
 }
 
+if (get_player_color(player) != 18){
+       shader_end();
+}
+
+
+shader_start();
 
 draw_sprite_ext(sprite_get("hud"), 0, temp_x-12, temp_y-43, 2, 2, 0, c_white, 1);
 

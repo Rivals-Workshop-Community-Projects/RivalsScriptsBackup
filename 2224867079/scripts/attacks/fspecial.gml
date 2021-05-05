@@ -81,5 +81,6 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 0.1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, blue_new_stab_1 );
+set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("Hit4"));
 //set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));

@@ -8,14 +8,8 @@ if (get_color_profile_slot_r(1, 0) == 181)
 if (!"hue" in self) hue = 0;
 if (!"currAlt" in self) currAlt = 0;
 
-//if (get_color_profile_slot_r(1, 0) == 181) {
-//    sound_play(sound_get("hehe"));
-//	set_color_profile_slot( 1, 0, 180, 218, 85 );
-//}
-
 var temp_x = x + 8;
 var temp_y = y + 9;
-var num_alts = 16;
 
 patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1);
 image_alpha = max(image_alpha-0.02, 0);
@@ -53,13 +47,15 @@ altStr[12] = "Sino";
 altStr[13] = "Asriel";
 altStr[14] = "Arcade";
 altStr[15] = "Colour Select";
+var num_alts = array_length_1d(altStr);
+
+draw_sprite_ext(sprite_get("idle2"),currAlt,temp_x - 10,temp_y - 61,1,1,0,c_white,1);
+shader_end();
+draw_sprite_ext(sprite_get("logo"),currAlt,temp_x + 166,temp_y + 91,1,1,0,c_white,1);
 
 draw_set_halign(fa_right);
 textDraw(temp_x + 198, temp_y + 70,	"fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);
 textDraw(temp_x + 200, temp_y + 72, "fName", c_fuchsia, 0, 1000, 1, false, 0.3, "v" + patch_ver);
-
-draw_sprite_ext(sprite_get("idle2"),currAlt,temp_x - 10,temp_y - 61,1,1,0,c_white,1);
-draw_sprite_ext(sprite_get("logo"),currAlt,temp_x + 166,temp_y + 91,1,1,0,c_white,1);
 
 draw_set_halign(fa_left);
 

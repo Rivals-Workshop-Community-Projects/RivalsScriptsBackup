@@ -222,7 +222,7 @@ if my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num == 4 {
 
 if (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num < 4) or attack == AT_FSTRONG or attack == AT_USTRONG  {
     
-    if fireon > 0.5 {
+    if fireon > 2{
     
         
     fireon = 3
@@ -242,10 +242,7 @@ if (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num < 4) or attack == A
      sound_play(sound_get("RI"));
     sound_play(asset_get("sfx_ori_grenade_launch"));
     
-    } else {
-    	
-    	fireon = 1.5
-    } 
+    }
     
    
 }

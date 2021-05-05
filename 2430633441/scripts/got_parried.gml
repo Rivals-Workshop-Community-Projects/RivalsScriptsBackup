@@ -1,11 +1,16 @@
 if my_hitboxID.attack == AT_EXTRA_1 {
+	
 	var spd = 18;
-	my_hitboxID.planet.parrytime = 60;
-	var dir = point_direction(my_hitboxID.planet.x,my_hitboxID.planet.y,x,y);
-	my_hitboxID.planet.vsp = lengthdir_y(spd, dir)
-	my_hitboxID.planet.hsp = lengthdir_x(spd, dir)
-	my_hitboxID.planet.gravity_amount = 1;
-	my_hitboxID.planet.gravity_friction = 0;
-	my_hitboxID.planet.gravity_speed = spd;
-//	my_hitboxID.planet.cooldown = 60;
+	for (var i = 0; i < maxplanets; i++) {
+	if !planet[i].active continue;
+	planet[i].parrytime = 60;
+	planet[i].cooldown = 60;
+	var dir = point_direction(planet[i].x,planet[i].y,x,y);
+	planet[i].vsp = lengthdir_y(spd, dir)
+	planet[i].hsp = lengthdir_x(spd, dir)
+	planet[i].gravity_amount = 0;
+	planet[i].gravity_friction = 0;
+	planet[i].gravity_speed = spd;
+	}
+//	planet[i].cooldown = 60;
 }

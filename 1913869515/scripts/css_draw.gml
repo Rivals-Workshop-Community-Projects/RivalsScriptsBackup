@@ -103,6 +103,11 @@ var palette_names = [
   "BLW", 
   "Star Fox (not mcCloud)", 
   "Cake Goat",
+  "Ninja Kitten",
+  "Ice Bunny",
+  "Miko of Paradise",
+  "Three Spirits",  
+  "Can't Kill"
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

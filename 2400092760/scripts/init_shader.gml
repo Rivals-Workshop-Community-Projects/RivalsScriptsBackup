@@ -2069,23 +2069,23 @@ if ("ColorLocked" in self && ColorLocked){
 	switch (Poisonous_Roar){ // Color Alt 25 Secret Colors
 		case 1:
 	//Fog Wanderer (25 Up)
-	set_character_color_slot( 0, 212, 241, 255 ); //SKIN
-	set_character_color_slot(  1, 72, 61, 91 ); //HAIR
-	set_character_color_slot( 2, 212, 241, 255 ); //SHIRT
-	set_character_color_slot( 3, 110, 39, 71 ); //COAT
+	set_character_color_slot( 0, 255, 217, 145 ); //SKIN
+	set_character_color_slot( 1, 217, 156, 102 ); //HAIR
+	set_character_color_slot( 2, 242, 248, 255 ); //SHIRT
+	set_character_color_slot( 3, 102, 51, 83 ); //COAT
 	set_character_color_slot( 4, 133, 238, 255 ); //FUR
-	set_character_color_slot( 5, 72, 61, 91 ); //BANDAGES
-	set_character_color_slot( 6, 0, 255, 251 ); //HIGHLIGHTS
-	set_character_color_slot( 7, 219, 238, 255 ); //BLOOD
+	set_character_color_slot( 5, 242, 248, 255 ); //BANDAGES
+	set_character_color_slot( 6, 133, 238, 255 ); //HIGHLIGHTS
+	set_character_color_slot( 7, 242, 248, 255 ); //BLOOD
 	
-	set_article_color_slot( 0, 212, 241, 255 ); //SKIN
-	set_article_color_slot(  1, 72, 61, 91 ); //HAIR
-	set_article_color_slot( 2, 212, 241, 255 ); //SHIRT
-	set_article_color_slot( 3, 110, 39, 71 ); //COAT
+	set_article_color_slot( 0, 255, 217, 145 ); //SKIN
+	set_article_color_slot( 1, 217, 156, 102 ); //HAIR
+	set_article_color_slot( 2, 242, 248, 255 ); //SHIRT
+	set_article_color_slot( 3, 102, 51, 83 ); //COAT
 	set_article_color_slot( 4, 133, 238, 255 ); //FUR
-	set_article_color_slot( 5, 72, 61, 91 ); //BANDAGES
-	set_article_color_slot( 6, 0, 255, 251 ); //HIGHLIGHTS
-	set_article_color_slot( 7, 219, 238, 255 ); //BLOOD
+	set_article_color_slot( 5, 242, 248, 255 ); //BANDAGES
+	set_article_color_slot( 6, 133, 238, 255 ); //HIGHLIGHTS
+	set_article_color_slot( 7, 242, 248, 255 ); //BLOOD
 		break;
 		case 2:
 	//Scarlet Detective (25 Down)

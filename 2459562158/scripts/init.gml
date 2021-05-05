@@ -14,8 +14,8 @@ walk_speed = 2;
 walk_accel = 0.15;
 walk_turn_time = 6;
 initial_dash_time = 10;
-initial_dash_speed = 5.5 + has_rune("J") * 1;
-dash_speed = 5 + has_rune("J") * 1;
+initial_dash_speed = 5.75 + has_rune("J") * 1;
+dash_speed = 5.5 + has_rune("J") * 1;
 dash_turn_time = 12;
 dash_turn_accel = 0.85;
 dash_stop_time = 6;
@@ -49,7 +49,7 @@ knockback_adj = 0.9; // THE touhou heavy     the multiplier to KB dealt to you. 
 land_time = 6; //normal landing frames
 prat_land_time = 8;
 wave_land_time = 8;
-wave_land_adj = 1.1 + has_rune("J") * 0.15; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_land_adj = 1.2 + has_rune("J") * 0.15; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .04; //grounded deceleration when wavelanding
 
 //crouch animation frames

@@ -18,9 +18,4 @@ if i implement the suggestion i'll remove it from this list
 - Red dstrong's posing is really bad, lacks proper anticipation and overshoot
 
 
-Okay the rest of this stuff is just my ideas
-- Potentially just rmemove markers entierly? it has articles now and they're both involving nspecial
-
-
-
 */

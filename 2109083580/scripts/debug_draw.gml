@@ -2,7 +2,7 @@
 //draw_debug_text(x,y+20, "window_timer: "+string(window_timer));
 
 
-//draw_debug_text(x,y+20, "dair_spike: "+string(dair_spike));
+//draw_debug_text(x,y+20, "slBarIndex: "+string(slBarIndex));
 
 //draw_debug_text(x,y+20, "FtoU true: "+string(FtoU));
 //draw_debug_text(x,y+20, "dair_detect: "+string(dair_detect));

@@ -279,12 +279,11 @@ if exheld >= 0 && !hitpause && (!attacking or (attacking && has_hit_player)) && 
 	exheld += 1
 }
 
-if exheld >= 6 && !attack_down && (state != PS_AIR_DODGE or (state == PS_AIR_DODGE && state_timer >= 16))
-
-&& (state != PS_ROLL_BACKWARD or (state == PS_ROLL_BACKWARD && state_timer >= 16))
-&& (state != PS_ROLL_FORWARD or (state == PS_ROLL_FORWARD && state_timer >= 16))
-&& (state != PS_TECH_BACKWARD or (state == PS_TECH_BACKWARD && state_timer >= 16))
-&& (state != PS_TECH_FORWARD or (state == PS_TECH_FORWARD && state_timer >= 16)){
+if exheld >= 6 && !attack_down && (state != PS_AIR_DODGE )
+&& (state != PS_ROLL_BACKWARD )
+&& (state != PS_ROLL_FORWARD )
+&& (state != PS_TECH_BACKWARD)
+&& (state != PS_TECH_FORWARD ){
 
 move_cooldown[AT_DTILT] = 6
 	
@@ -445,8 +444,8 @@ walk_speed = 4;
 walk_accel = 0.4;
 walk_turn_time = 4;
 initial_dash_time = 10;
-initial_dash_speed = 7;
-dash_speed = 6.5
+initial_dash_speed = 8;
+dash_speed = 7.5
 dash_turn_time = 8;
 dash_turn_accel = .5;
 dash_stop_time = 6;
@@ -463,7 +462,7 @@ max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 4; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
-wave_land_adj = 1.1;
+wave_land_adj = 1.3;
 	
 walljump_hsp = 5;
 walljump_vsp = 12;
@@ -522,7 +521,7 @@ walk_accel = 0.4;
 walk_turn_time = 4;
 initial_dash_time = 10;
 initial_dash_speed = 5;
-dash_speed = 4
+dash_speed = 5
 dash_turn_time = 8;
 dash_turn_accel = .5;
 dash_stop_time = 6;
@@ -539,7 +538,7 @@ max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .26;
-wave_land_adj = 0.75;
+wave_land_adj = 0.86;
 
 walljump_hsp = 3;
 walljump_vsp = 8;

@@ -4,8 +4,8 @@ if(attack == AT_NSPECIAL){
 		image_xscale = 0;
 		image_yscale = 0;
 	} else {
-		image_xscale = 0.46;    //width 92
-		image_yscale = 0.3;        //height 60
+		image_xscale = 0.47;    //width 94
+		image_yscale = 0.31;        //height 62
 		
     }
 		if(hitbox_timer == 24) sound_play(asset_get("sfx_swipe_medium1"));
@@ -16,8 +16,8 @@ if(attack == AT_DSPECIAL){
         image_xscale = 0;
         image_yscale = 0;
     } else {
-        image_xscale = 0.47;    //width 94
-        image_yscale = 0.32;        //height 64
+        image_xscale = 0.48;    //width 96
+        image_yscale = 0.34;        //height 68
 		
     }
 	if(hitbox_timer == 24) sound_play(asset_get("sfx_swipe_medium1"));
@@ -29,8 +29,8 @@ if(attack == AT_FSPECIAL){
         image_xscale = 0;
         image_yscale = 0;
     } else {
-        image_xscale = 0.45;    //width 90
-        image_yscale = 0.55;        //height 110
+        image_xscale = 0.46;    //width 92
+        image_yscale = 0.56;        //height 112
 		
     }
 	if(hitbox_timer == 24) sound_play(asset_get("sfx_swipe_medium1"));

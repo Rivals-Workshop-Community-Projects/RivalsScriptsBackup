@@ -8,7 +8,7 @@ patch_ver = "";
 patch_day = "";
 patch_month = "";
  
-var num_alts = 16;
+var num_alts = 22;
 var alt_cur = get_player_color(player);
  
  
@@ -16,7 +16,7 @@ var alt_cur = get_player_color(player);
 //Alt name init. var doesn't work with arrays lol
  
 alt_name[0]  = "Default";
-alt_name[1]  = "Monkey";
+alt_name[1]  = "Dony";
 alt_name[2]  = "Boots";
 alt_name[3]  = "Nade";
 alt_name[4]  = "Wukong";
@@ -25,12 +25,18 @@ alt_name[6]  = "Charlie";
 alt_name[7]  = "Tanjiro";
 alt_name[8]  = "Hodan";
 alt_name[9]  = "Col. Brach";
-alt_name[10] = "Dony";
+alt_name[10] = "Monkey";
 alt_name[11] = "Currency Coin";
 alt_name[12] = "Astronomy";
 alt_name[13] = "Grim";
 alt_name[14] = "Amigo";
 alt_name[15] = "Royal";
+alt_name[16] = "Monarch";
+alt_name[17] = "Funny Kitty";
+alt_name[18] = "MONKEY RAGE";
+alt_name[19] = "Evil Monke";
+alt_name[20] = "Monke Rights";
+alt_name[21] = "Prober";
  
  
  
@@ -43,7 +49,7 @@ textDraw(temp_x + 2, temp_y + 30, "medFont", c_white, 0, 1000, 1, true, 1, "" + 
 textDraw(temp_x + 2, temp_y + 50, "fName", c_white, 0, 1000, 1, true, 1, patch_day + " " + patch_month);
  
 //failsafe
-if(alt_cur < 0 || alt_cur > 16)
+if(alt_cur < 0 || alt_cur > num_alts)
 {
 	if(get_player_color(player) >= 1 && get_player_color(player) <= 16 ) alt_cur = get_player_color(player);
 	else alt_cur = 0;
@@ -56,8 +62,8 @@ rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
  
 for(i = 0; i < num_alts; i++){
 	var draw_color = (i == alt_cur) ? c_white : c_gray;
-	var draw_x = temp_x + 2 + 10 * i;
-	rectDraw(draw_x, temp_y + 137, draw_x + 7, temp_y + 140, draw_color);
+	var draw_x = temp_x + 2 + 8 * i;
+	rectDraw(draw_x, temp_y + 137, draw_x + 5, temp_y + 140, draw_color);
 }
  
 draw_set_halign(fa_left);

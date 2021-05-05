@@ -4,7 +4,7 @@
 //or (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num <= 6) or (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 2)) {
 
 
-if sagemode >= 0 and sagemode <= 5 and  move_cooldown[AT_EXTRA_3] = 0{
+if sagemode >= 0 and sagemode <= 5 and  move_cooldown[AT_EXTRA_3] = 0 and hit_player_obj != self{
     if sagemode == 0 {
     sagefx1 = hit_player_obj.x
     sagefy1 = hit_player_obj.y

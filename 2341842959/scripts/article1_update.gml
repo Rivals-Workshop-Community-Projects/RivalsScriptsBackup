@@ -16,6 +16,20 @@ if (state_timer > 435){
 	state = 3;
 }
 
+with (asset_get("pHitBox")){
+	
+if (damage > 0 && kb_value > 0){
+	if (place_meeting(x,y,other.id) && other.player != player){
+		if !(get_player_team(other.player_id.player ) == get_player_team( player_id.player )){
+			other.state_timer = 451;
+			other.image_index = 1;
+			other.state = 3;
+    	}
+	}
+}
+
+}
+
 if (player_id.state == PS_RESPAWN || player_id.state == PS_DEAD){
 	state_timer = 436;
 	image_index = 1;

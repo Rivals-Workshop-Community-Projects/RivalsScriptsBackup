@@ -15,19 +15,19 @@ var small = small_sprites+1;
 
 
 // Hitstun fx
-if(hit_player_obj == other_player_id && hitpause && !has_hit_player)
+if(hit_player_obj == other_player_id && hitpause && !has_hit_player && last_monarch != noone && hitstop_full < 30)
 {
-    
+	// Non-stun
     gpu_set_blendmode(bm_add);
     draw_sprite_ext(sprite_index,image_index,
     x+ (1 - cos((hitstop/5 * 3.14) / 2))*hitstop_full*2,
     y + (1 - cos((hitstop/5 * 3.14) / 2))*hitstop_full*2,
-    spr_dir*small,small,0,other_player_id.monBlue,1)
+    spr_dir*small,small,0,last_monarch.monBlue,1)
     
     draw_sprite_ext(sprite_index,image_index,
     x - (1 - cos((hitstop/5 * 3.14) / 2))*hitstop_full*2,
     y - (1 - cos((hitstop/5 * 3.14) / 2))*hitstop_full*2,
-    spr_dir*small,small,0,other_player_id.monRed,1)
+    spr_dir*small,small,0,last_monarch.monRed,1)
     
     
     
@@ -41,9 +41,11 @@ if(hit_player_obj == other_player_id && hitpause && !has_hit_player)
     
     
     gpu_set_blendmode(bm_normal);
+    
+
 }
 
-other_afterimage_array[0] = {x:x,y:y,sprite_index:sprite_index,image_index:image_index,color:other_player_id.monDarkRed};
+if(last_monarch != noone) other_afterimage_array[0] = {x:x,y:y,sprite_index:sprite_index,image_index:image_index,color:last_monarch.monDarkRed};
 
 // Flying off fx
 if(state == 12 && hit_player_obj == other_player_id && !hitpause)

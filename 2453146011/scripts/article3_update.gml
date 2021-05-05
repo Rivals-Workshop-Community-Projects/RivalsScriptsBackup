@@ -161,6 +161,11 @@ if(x < 0 || x > room_width || y > room_height || player_id.state == PS_RESPAWN)
 
 if(!charged){
     charged = teleported;
+    
+    if(stuck_player)
+        if(stuck_player.portal_white != 0) 
+            charged = true;
+    
     if(charged) sound_play(sound_get("monarch_zap"),false,0,0.5);
 }
 
@@ -169,7 +174,7 @@ if(!charged){
 
 //#region time's up
 
-if(clock_timer == teleport_time || early_trigger || fspec_trigger)
+if(clock_timer == teleport_time || early_trigger) // || fspecial_trigger
 {
     var doFall = true;
     var hbox = noone;
@@ -197,8 +202,17 @@ if(clock_timer == teleport_time || early_trigger || fspec_trigger)
         }
     }
     
-
     
+    player_id.last_knife_pos.x = x;
+    player_id.last_knife_pos.y = y - (early_trigger ? 40 : 0)-10;
+    
+    player_id.last_player_pos.x = player_id.x;
+    player_id.last_player_pos.y = player_id.y - char_height/2 + (early_trigger ? 10 : 0);
+    
+    
+    player_id.knife_line_timer = 15;
+
+    if(!player_id.hitpause || !doFall){
     with(player_id)
     {
         // Teleport
@@ -263,12 +277,20 @@ if(clock_timer == teleport_time || early_trigger || fspec_trigger)
         var fx = spawn_hit_fx(x,y-50,time_appear)
         spr_dir = sdir_store;
     }
+    }
+    else
+    {
+        // Shatter sound
+        sound_play(sound_get("monarch_knifedestroy"))
+    }
     
     // Reset stuff
     player_id.time_knife = noone;
     
     // Prevent jumping back into portals
-    if(charged) player_id.vsp = 0;
+    if(charged && !player_id.hitpause) player_id.vsp = 0;
+
+    
     instance_destroy();
 }
 

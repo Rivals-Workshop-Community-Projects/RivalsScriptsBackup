@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 22, 7, 11 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 29 );
+set_num_palettes( 32 );
 
 // Transcend
 set_color_profile_slot( 1, 0, 255, 255, 255 ); //sword
@@ -315,6 +315,36 @@ set_color_profile_slot( 28, 4, 7, 1, 6 ); //pants2
 set_color_profile_slot( 28, 5, 22, 8, 4 ); //skin
 set_color_profile_slot( 28, 6, 7, 1, 6 ); //skin2
 set_color_profile_slot( 28, 7, 7, 1, 6 ); //hair
+
+// Enby
+set_color_profile_slot( 29, 0, 255, 244, 51 ); //sword
+set_color_profile_slot( 29, 1, 155, 89, 208 ); //shirt
+set_color_profile_slot( 29, 2, 98, 50, 171 ); //shirt2
+set_color_profile_slot( 29, 3, 43, 43, 43 ); //pants
+set_color_profile_slot( 29, 4, 26, 26, 26 ); //pants2
+set_color_profile_slot( 29, 5, 255, 255, 255 ); //skin
+set_color_profile_slot( 29, 6, 175, 188, 210 ); //skin2
+set_color_profile_slot( 29, 7, 255, 197, 51 ); //hair
+
+// Ace
+set_color_profile_slot( 30, 0, 129, 0, 129 ); //sword
+set_color_profile_slot( 30, 1, 255, 255, 255 ); //shirt
+set_color_profile_slot( 30, 2, 186, 169, 175 ); //shirt2
+set_color_profile_slot( 30, 3, 129, 0, 129 ); //pants
+set_color_profile_slot( 30, 4, 90, 0, 120 ); //pants2
+set_color_profile_slot( 30, 5, 164, 164, 164 ); //skin
+set_color_profile_slot( 30, 6, 91, 92, 125 ); //skin2
+set_color_profile_slot( 30, 7, 37, 34, 34 ); //hair
+
+// End's High
+set_color_profile_slot( 31, 0, 255, 77, 124 ); //sword
+set_color_profile_slot( 31, 1, 255, 224, 102 ); //shirt
+set_color_profile_slot( 31, 2, 227, 135, 54 ); //shirt2
+set_color_profile_slot( 31, 3, 183, 255, 105 ); //pants
+set_color_profile_slot( 31, 4, 78, 201, 50 ); //pants2
+set_color_profile_slot( 31, 5, 255, 204, 153 ); //skin
+set_color_profile_slot( 31, 6, 219, 175, 131 ); //skin2
+set_color_profile_slot( 31, 7, 17, 35, 48 ); //hair
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

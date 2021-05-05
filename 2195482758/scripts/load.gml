@@ -25,6 +25,7 @@ sprite_change_offset("tech", 64, 126);
 
 sprite_change_offset("jab", 96, 126);
 sprite_change_offset("dattack", 64, 126);
+sprite_change_offset("dattack_air", 64, 126);
 sprite_change_offset("ftilt", 64, 126);
 sprite_change_offset("dtilt", 84, 126);
 sprite_change_offset("dtilt_crouch", 84, 126);
@@ -35,6 +36,8 @@ sprite_change_offset("bair", 74, 111);
 sprite_change_offset("uair", 74, 111);
 sprite_change_offset("dair", 74, 99);
 sprite_change_offset("fstrong", 84, 126);
+sprite_change_offset("fstrong_air", 84, 110);
+sprite_change_offset("fstrong_air_recover", 84, 126);
 sprite_change_offset("ustrong", 64, 126);
 sprite_change_offset("dstrong", 96, 126);
 sprite_change_offset("nspecial", 64, 126);

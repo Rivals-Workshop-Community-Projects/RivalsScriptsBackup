@@ -15,6 +15,10 @@ if attack == AT_DTILT {
 
 }
 
+if attack == AT_FAIR && window == 1 {
+	set_attack_value(AT_FAIR, AG_CATEGORY, 1);
+}
+
 if attack == AT_DAIR {
     
     if (y > room_height/2 + 300) && window == 2{
@@ -166,8 +170,15 @@ if attack == AT_FSPECIAL {
   
     }
     
-    if has_hit && window != 6 {
-    	can_jump = true
+    if has_hit && !free {
+    	sound_play(asset_get("sfx_forsburn_reappear"))
+    	set_attack_value(AT_FAIR, AG_CATEGORY, 2);
+    	set_attack(AT_FAIR)
+    	window = 3
+    	window_timer = 8
+    	hsp /= 3
+    	vsp = -8
+    	
     }
     
     
@@ -377,7 +388,7 @@ if attack == AT_DSPECIAL {
     }
     
      if window == 2 && state_timer > 4 {
-        scharge += 2
+        scharge += 1.5
     }
     
     if window == 2 && state_timer > 4 && (!special_down or scharge >= 180) {

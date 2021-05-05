@@ -12,7 +12,7 @@ if (attack != AT_FSTRONG && attack != AT_USTRONG && attack != AT_DSTRONG
 }
 
 if (attack != AT_NSPECIAL && attack != AT_NSPECIAL_2 && attack != AT_USPECIAL 
-&& attack != AT_TAUNT && shotgun_shot == false){
+&& attack != AT_TAUNT && attack != AT_PHONE && shotgun_shot == false){
     attack_meu = attack;
     if (attack == AT_FSTRONG && window == 4){
         attack_meu = AT_FSTRONG_2;
@@ -177,6 +177,7 @@ if (hologram_act == true){
     hologram.state = PS_ATTACK_AIR;
     if (attack_hologram != AT_UTHROW){
     	hologram.dspecial_cont = 0;
+    	hologram.image_index = 0;
     	hologram.dspecial_air_cont = 0;
     	hologram.hurtboxID.sprite_index = get_attack_value( attack_hologram, AG_HURTBOX_SPRITE);
         hologram.attack = attack_hologram; 
