@@ -4,9 +4,10 @@ switch (state){
     break;
     
     case PS_IDLE_AIR:
-    if (attack == AT_NAIR){
-    image_index = 5;
+    if (attack == AT_NSPECIAL_2 || prev_state = PS_DOUBLE_JUMP || prev_state = PS_WALL_JUMP){
+    image_index = 8;
 }
+
 
     default: break;
 }

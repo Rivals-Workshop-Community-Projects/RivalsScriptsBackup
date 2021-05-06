@@ -25,7 +25,7 @@ if (object_index == oPlayer && !array_equals(phone_offscreen, [])){
 				var off_l = x_ < view_get_xview() - leeway;
 				var off_r = x_ > view_get_xview() + view_get_wview() + leeway;
 				var off_u = y_ < view_get_yview() - leeway;
-				var off_d = y_ > view_get_yview() + view_get_hview() + leeway;
+				var off_d = y_ > view_get_yview() + view_get_hview() - 52 + leeway;
 				
 				var margin = 34;
 				var idx = noone;
@@ -44,9 +44,9 @@ if (object_index == oPlayer && !array_equals(phone_offscreen, [])){
 				else if off_d idx = 6;
 				
 				if idx != noone{
-					draw_sprite_ext(other.spr_pho_offscreen, idx, clamp(x_ - view_get_xview(), margin, view_get_wview() - margin) - 33, clamp(y_ - view_get_yview(), margin, view_get_hview() - margin) - 33, 1, 1, 0, get_player_hud_color(player), 1);
+					draw_sprite_ext(other.spr_pho_offscreen, idx, clamp(x_ - view_get_xview(), margin, view_get_wview() - margin) - 32, clamp(y_ - view_get_yview(), margin, view_get_hview() - 52 - margin) - 32, 1, 1, 0, get_player_hud_color(player), 1);
 					with other shader_start();
-					draw_sprite_ext(phone_offscr_sprite, phone_offscr_index, clamp(x_ - view_get_xview(), margin, view_get_wview() - margin) - 33, clamp(y_ - view_get_yview(), margin, view_get_hview() - margin) - 33, 1, 1, 0, c_white, 1);
+					draw_sprite_ext(phone_offscr_sprite, phone_offscr_index, clamp(x_ - view_get_xview(), margin, view_get_wview() - margin) - 32, clamp(y_ - view_get_yview(), margin, view_get_hview() - 52 - margin) - 32, 1, 1, 0, c_white, 1);
 					with other shader_end();
 				}
 			}

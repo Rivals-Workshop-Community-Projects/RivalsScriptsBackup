@@ -1,6 +1,6 @@
 set_attack_value(AT_USPECIAL_GROUND, AG_CATEGORY, 2);
 set_attack_value(AT_USPECIAL_GROUND, AG_SPRITE, sprite_get("uspecial_ground"));
-set_attack_value(AT_USPECIAL_GROUND, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
+set_attack_value(AT_USPECIAL_GROUND, AG_HURTBOX_SPRITE, sprite_get("uspecial_ground_hurt"));
 set_attack_value(AT_USPECIAL_GROUND, AG_USES_CUSTOM_GRAVITY, 1);
 set_attack_value(AT_USPECIAL_GROUND, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_USPECIAL_GROUND, AG_LANDING_LAG, 50);

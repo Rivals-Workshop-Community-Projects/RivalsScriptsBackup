@@ -69,6 +69,12 @@ if (state == PS_SPAWN) {
 	} else {
 		draw_debug_text(temp_x+4, temp_y-74, "Using Parry for Hold!");		
 	}
+	
+	if (shake_on == true) {
+		draw_debug_text(temp_x-44, temp_y-122, "Press SPECIAL to disable all Screen Shake");
+	} else {
+		draw_debug_text(temp_x+4, temp_y-122, "Screen Shake Disabled!");		
+	}
 }
 
 user_event(11);

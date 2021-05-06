@@ -229,7 +229,7 @@ if (attack == AT_DAIR) {
 }
 //Down Air Throw
 if (attack == AT_DAIR) {
-	if window == 2{
+	if window == 2 && window_timer > 1{
 		if attack_pressed or down_strong_pressed{
 		window = 5;
 		sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
@@ -245,13 +245,11 @@ if (attack == AT_FTILT) {
 	if window == 3 && window_timer >= 4{
 		if right_strong_pressed * spr_dir or left_strong_pressed * -spr_dir{
 		window = 4;
-		sound_play(asset_get("sfx_swipe_medium1"));
 	}
 	}
-	if window == 6{
+	if window == 6 && window_timer >= 1{
 		if right_strong_pressed * spr_dir or left_strong_pressed * -spr_dir{
 		window = 7;
-		sound_play(asset_get("sfx_swipe_heavy2"));
 	}
 }
 }
@@ -277,14 +275,14 @@ if (attack == AT_JAB) {
 }
 
 if (attack == AT_JAB){
-	if window == 5 && window_timer == 16 {
+	if window == 5 && window_timer == 13 {
 		window = 13;
 		set_window_value(AT_JAB, 13, AG_WINDOW_ANIM_FRAME_START, 13);
 	}
 }
 
 if (attack == AT_FTILT){
-	if window == 5 && window_timer == 8{
+	if window == 6 && window_timer == 9{
 		window = 10;
 	}
 }

@@ -319,7 +319,8 @@ if phone_practice with phone{
 		switch(state){
 			
 			case 0: // Closed
-			
+				
+				image_index = 0;
 				if (other.state != 0 && (other.state != 5 || other.stage_id != noone) && should_open) setState(1);
 				break;
 			
@@ -360,7 +361,7 @@ if phone_practice with phone{
 		}
 		
 		else{
-			image_index = 0;
+			// image_index = 0;
 		}
 		
 		state_timer++;

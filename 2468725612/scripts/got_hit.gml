@@ -4,6 +4,8 @@ if (custom_clone){
 //	player.hitpause = ((enemy_hitboxID.hitpause + enemy_hitboxID.damage) * (enemy_hitboxID.hitpause_growth) * (.05));
 }
 
+uspecial_teleport = false;
+
 if (!custom_clone && hologram_is_alive == true){
 	if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR){
 		hologram.hurtboxID.sprite_index = sprite_get("hurtbox_idle");

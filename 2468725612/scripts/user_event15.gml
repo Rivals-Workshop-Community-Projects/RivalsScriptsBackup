@@ -458,6 +458,23 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.21", "6 May, 2021");
+	initPatchWords_ext("- Buffy's ''knockback_adj'' is now .88", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- Buffy's ''initial_dash_time'' is now 8", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- Buffy's ''land_time'' is now 6", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- USpecial startup is now 8 frames slower", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- BAir Shotgun Blast Sourspot now lasts for 2 less frames", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- UStrong Sweetspot no longer has KB scaling of 1.5", fa_left, c_white, 0, 0);
+	
+	initPatch("1.2", "5 May, 2021");
+	initPatchWords_ext("- Tweaked the animation of FAir, thus giving it more range", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- FAir has a proper hurtbox on the hand smear frame", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- BAir, UAir and DAir have increased Landing Lag.", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- NSpecial2 is now faster when setting the Hologram's actions.", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- You can teleport to the hat before the hologram has been spawn (so just after throwing it with NSpecial).", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- You can disable all Screenshake at the start of the match with the Special Button.", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- The overall Screenshake has been toned it down as well.", fa_left, c_white, 0, 0);
+	
 	initPatch("1.13", "30 April, 2021");
 	initPatchWords_ext("- Fixed a bug where the hat wouldn't show in the first frame of NSpecial, again.", fa_left, c_white, 0, 0);
 	initPatchWords_ext("- The DSpecial_Air Shotgun Blast only spikes at the sweetspot.", fa_left, c_white, 0, 0);

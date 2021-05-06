@@ -3,6 +3,7 @@ set_attack_value(49, AG_SPRITE, sprite_get("final_start"));
 set_attack_value(49, AG_HURTBOX_SPRITE, asset_get("ex_guy_hurt_box"));
 set_attack_value(49, AG_NUM_WINDOWS, 12);
 set_attack_value(49, AG_OFF_LEDGE, 1);
+set_attack_value(49, AG_MUNO_ATTACK_EXCLUDE, 1);
 
 
 set_window_value(49, 1, AG_WINDOW_TYPE, 0);

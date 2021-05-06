@@ -51,3 +51,4 @@ set_hitbox_value(AT_FSTRONG, 1, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_HSPEED, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_UNBASHABLE, 1);
+set_hitbox_value(AT_FSTRONG, 1, HG_EFFECT, 1); //scoville buffs? On god?

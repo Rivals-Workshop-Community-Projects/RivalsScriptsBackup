@@ -347,7 +347,7 @@ set_state( PS_IDLE_AIR );
 // Gameplay-relevant, and codecs because im biased :>
 pho_has_muno_phone = 1;	// MunoPhone support		(should always be 1, obviously...)
 pho_has_trum_codec = 1;	// Trummel & Alto codec
-pho_has_copy_power = 1;	// Kirby Copy Ability
+pho_has_copy_power = 0;	// Kirby Copy Ability
 pho_has_btt_layout = 0;	// Break the Targets stage
 
 // Character cosmetics
@@ -409,7 +409,13 @@ phone.dont_fast = 0;									// Set this to 1, and Fast Graphics will not automa
 // Sprites (you could also include things like these in init.gml if you like)
 
 spr_nspecialproj = sprite_get("nspecialspikeball");
-spr_uspecialfrog = sprite_get("uspecialfrogidle");
+spr_frog = sprite_get("_pho_frog");
+spr_frogthrow = sprite_get("_pho_frogthrow");
+spr_frogoutline = sprite_get("_pho_frogoutline");
+spr_frogmoving = sprite_get("_pho_frogmoving");
+spr_frogparry = sprite_get("_pho_frogparry");
+spr_frognspecial = sprite_get("_pho_nspecial_example");
+spr_frogspit = sprite_get("_pho_frogspit");
 spr_phoneopen = sprite_get("phone_open");
 spr_walk2 = sprite_get("walk_alt15");
 spr_walk3 = sprite_get("walk_alt16");
@@ -487,26 +493,40 @@ with phone{
 	 * 
 	 */
 	 
-	initTip("U-Special");
-	initTipWords("USpecial spawns a frog. You can land on it to bounce up and gain height, and all of your other Special moves can interact with it in some way. Opponents will get stunned when they bounce on it.");
-	initTipImage(player_id.spr_idle, -4, fa_left, 1, c_white, 0);
-	initTipImage(player_id.spr_uspecialfrog, -5, fa_right, 1, c_white, 0);
+	initTip("Explaining Frog (1)");
+	initTipWords("The most important tool in Bonby's moveset is the frog. There are many different ways to go about using the frog.");
+	initTipImage(player_id.spr_frog, -5, fa_center, 1, c_white, 0);	
+	initTipWords("Using NSpecial normally will allow you to use your frog to grab opponents in front of you. You can cancel into another move as soon as whoever you grabbed gets close enough.");
+	initTipImage(player_id.spr_frognspecial, -5, fa_center, 1, c_white, 0);	
+
+	initTip("Explaining Frog (2)");
+	initTipWords("If you use DSpecial, you'll place your frog down onto the stage.");
+	initTipImage(player_id.spr_frogthrow, -5, fa_center, 1, c_white, 0);
+	initTipWords("Using NSpecial while your frog is out will make it try to grab opponents in a diagonal direction. Whichever direction you're facing when you use the move is the direction your frog will try to grab in.");	
+	initTipImage(player_id.spr_frogspit, -5, fa_center, 1, c_white, 0);
+	initTipWords("Opponents that get caught will be launched towards you, allowing you to follow up with another attack.");	
+
 	
-	initTip("D-Special");
-	initTipWords("When you use DSpecial, you'll briefly bounce upward before plummeting down. When going downward, you can hit an opponent and bounce back up. You won't be able to use the move again until you land, but you can follow it up into another attack. If you land on your frog when using DSpecial, you can gain more height. You can also wall jump out of the move when rising.");
-	initTipImage(player_id.spr_dspecial, -5, fa_center, 1, c_white, 0);
-	
-	initTip("F-Special");
-	initTipWords("Use FSpecial to blast forward for some unexplained reason. You'll bounce back a bit when you hit somebody. Landing on your frog during this move lets you rise up and hit anyone above you. Lastly, you can jump cancel out of the starting window of the move.");
-	initTipImage(player_id.spr_fspecial, 7, fa_center, 1, c_white, 3);
-	
-	initTip("N-Special");
-	initTipWords("NSpecial throws a hard-hitting ball projectile, and you can hold in different directions to change the angle you throw it at. Both you and your opponents are able to hit the ball to knock it around, and when it lands on your frog, it will bounce upward.");
-	initTipImage(player_id.spr_nspecial, -5, fa_left, 1, c_white, 0);
-	initTipImage(player_id.spr_nspecialproj, -3, fa_right, 1, c_white, 0);
+	initTip("Explaining Frog (3)");
+	initTipWords("If you want to move your frog around, use DSpecial while it's out to bring it closer to you, or use FSpecial to knock it away.");
+	initTipImage(player_id.spr_frogmoving, -5, fa_center, 1, c_white, 0);		
+	initTipWords("If you're close enough to your frog, there'll be a white outline around it, indicating you can pick it back up by using DSpecial.");
+	initTipImage(player_id.spr_frogoutline, -5, fa_center, 1, c_white, 0);		
+
+	initTip("Explaining Frog (4)");
+	initTipWords("Lastly, if your frog falls offstage or gets parried, you'll be unable to use NSpecial or Dspecial for a short time.");
+	initTipImage(player_id.spr_frogparry, -5, fa_center, 1, c_white, 0);		
+
+	initTip("F-Special Charge");
+	initTipWords("F-Special can be charged by holding the Special button down. In addition to increased damage, you'll fly back further, allowing you to use the move for horizontal recovery.");
+	initTipImage(player_id.spr_fspecial, 8, fa_center, 1, c_white, 1);	
+
+	initTip("D-Air");
+	initTipWords("There's two opportunities to cancel out of DAir. You can jump cancel out of the startup window, and upon hitting an opponent, you can immediately cancel into either a jump or an airdodge.");
+	initTipImage(player_id.spr_dair, -4, fa_center, 1, c_white, 0);	
 	
 	initTip("N-Air");
-	initTipWords("NAir is a multi-hit attack. If you keep the Attack button held down, you'll gain a small vertical boost during the last hit of the move.");
+	initTipWords("N-Air can be charged by holding the Attack button down. When fully charged, it becomes a strong spiking attack.");
 	initTipImage(player_id.spr_nair, -3, fa_center, 1, c_white, 0);	
 	
 	initTip("D-Strong");
@@ -557,6 +577,23 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+
+	initPatch("2.0", "May 5th, 2021");
+	initPatchWords("-All special moves have been completely reworked
+	-Jab, Neutral-Air, Forward-Air, Up-Air, and Down-Air have been reworked
+	-Neutral-Air can now be charged
+	-Added new alternate Neutral-Air attack when the move is fully charged	
+	-Down-Air can now be canceled during start-up window and on hit
+	-Redrew idle, dashing, dash turning, jumping, double jumping, wall-jumping, wavelanding, rolling, and parrying sprites
+	-Increased max air speed (5.5 -> 6.25)
+	-Increased max jump horizontal speed (5.5 -> 7.25)
+	-Increased jump height (10 -> 11)
+	-Increased double jump height (10 -> 11.5)
+	-Decreased max fall speed (11 -> 10)
+	-Decreased pratfall horizontal acceleration (.85 -> .55)
+	-Increased prat land time (5 -> 20)
+	-Added 8 new alt colors");
+	 
 	initPatch("1.6.5", "March 16th, 2021");
 	initPatchWords("-Up-Special vertical speed decreased
 	-Up-Special knockback decreased
@@ -916,6 +953,7 @@ with phone{
 		AT_USTRONG_2,
 		AT_DSTRONG_2,
 		AT_NAIR,
+		47,
 		AT_FAIR,
 		AT_BAIR,
 		AT_UAIR,
@@ -950,7 +988,6 @@ with phone{
 		44,
 		45,
 		46,
-		47,
 		48,
 		49,
 		50
@@ -1018,7 +1055,15 @@ with phone{
 	 * Useful for credits or etc. The page can also scroll, so they can be long
 	 * if you want
 	 */
-	
+		initAbout("Special Thanks", "Moveset Design Help:
+-Robot
+-XtheGAMEmaster
+
+Playtesting:
+-Gnome
+
+Alt color #21 'Brigade Leader' designed by:
+-Zerks");
 
 	
 }
@@ -1260,7 +1305,7 @@ var page = 0;
 
 //Page 0
 dracula_speaker[page] = 0;
-dracula_text[page] = "Is this some sort of joke? What brings an unheeding broad
+dracula_text[page] = "Is this some sort of joke? What brings an unheeding fool
 such as you into my domain?";
 page++;
 

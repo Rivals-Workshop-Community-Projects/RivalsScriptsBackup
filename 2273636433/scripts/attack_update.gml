@@ -339,6 +339,9 @@ if (has_rune("D")){
 	set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, .18);
 	set_hitbox_value(AT_UTILT, 2, HG_KNOCKBACK_SCALING, .18);
 	set_hitbox_value(AT_UTILT, 3, HG_KNOCKBACK_SCALING, .18);
+	set_hitbox_value(AT_UTILT, 1, HG_HITSTUN_MULTIPLIER, 2);
+	set_hitbox_value(AT_UTILT, 2, HG_HITSTUN_MULTIPLIER, 2);
+	set_hitbox_value(AT_UTILT, 3, HG_HITSTUN_MULTIPLIER, 2);
 }
 
 

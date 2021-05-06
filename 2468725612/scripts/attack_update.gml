@@ -66,7 +66,7 @@ if (window == 1){
 
 //NSpecial - Hologram Spawn
 if (attack == AT_NSPECIAL){
-	
+	uspecial_teleport = false;
 	if (hat_on == true){
     	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 20);
 		set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 6);
@@ -106,7 +106,7 @@ if (attack == AT_NSPECIAL){
     	hat_on = false;
         hat = instance_create( x+40*(spr_dir), y-34, "obj_article1");
         hat.state = 2;
-        hat.vsp = -10;
+        hat.vsp = -11;
     }
     
     if (hat_on == false && hologram_is_alive == false){
@@ -131,6 +131,7 @@ if (attack == AT_NSPECIAL){
 
 //NSpecial2 - Hologram Command
 if (attack == AT_NSPECIAL_2 && hologram_is_alive == true){
+	uspecial_teleport = false;
     if (window < 3){
         if (right_down && (hologram.window == 1 || hologram.state == PS_IDLE || hologram.state == PS_IDLE_AIR)){
         hologram.spr_dir = 1;
@@ -159,7 +160,7 @@ if (attack == AT_NSPECIAL_2 && hologram_is_alive == true){
         
         spawn_hit_fx( x+(10*spr_dir), y-52, 256);
     }
-    if (window == 5 && window_timer == 14){
+    if (window == 5 && window_timer == 10){
         attack_hologram = attack_meu;
         attack_holo_nome = attack_nome;
         attack_holo_icon = attack_icon;
@@ -629,6 +630,7 @@ if (attack == AT_USPECIAL){
 		set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -5);
 	}
 	if (window == 2){
+		uspecial_teleport = false;
 		prat_land_time = 24;
 		set_window_value(AT_USPECIAL, 7, AG_WINDOW_TYPE, 7);
 		if (vsp > -9 && window_timer < 3 && free){
@@ -636,6 +638,7 @@ if (attack == AT_USPECIAL){
 		}
 	} 
 	if (window == 3){
+		uspecial_teleport = true;
     	if (hologram_is_alive == true && 
     	((special_down && hold_on == true) || (shield_down && hold_on == false))){
     		window = 4;
@@ -648,8 +651,10 @@ if (attack == AT_USPECIAL){
     if (window == 4 && window_timer < 6 && hologram_is_alive == false && !has_rune("O")){
     	window = 7;
     	window_timer = 1;
+    	uspecial_teleport = false;
     }
     if (window == 4 && window_timer == 6 && !hitpause && !has_rune("O")){
+    	uspecial_teleport = false;
     	invincible = true;
     	invince_time = 4;
     	x = hologram.x;
@@ -659,6 +664,10 @@ if (attack == AT_USPECIAL){
     		hat = instance_create( x, y, "obj_article1");
     		hat.state = 4;
     	}
+    }
+    
+    if (window == 7){
+    	uspecial_teleport = false;
     }
     
     if (has_rune("O")){
@@ -761,10 +770,14 @@ if (attack == AT_TAUNT && window == 1 && !hitpause){
 		spawn_hit_fx( x+16*spr_dir, y-20, 304);	
 		if (hologram_is_alive == true && hologram.free == false){
 			spawn_hit_fx( hologram.x+16*hologram.spr_dir, hologram.y-20, 304);
-			shake_camera(24, 6);
+			if (shake_on == true){
+				shake_camera(24, 6);
+			}
 		}
 		else {
-			shake_camera(12, 6);
+			if (shake_on == true){
+				shake_camera(12, 6);
+			}
 		}
 	}
 }

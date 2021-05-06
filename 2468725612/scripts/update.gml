@@ -196,9 +196,16 @@ if (phone_cheats[hold_special_parry] == 1){
 	hold_on = false;
 } 
 
-if (state == PS_SPAWN && taunt_pressed && hold_on == true) {
-	hold_on = false;
-	sound_play(sound_get("nspecial_act"));	
+if (state == PS_SPAWN) {
+	if (taunt_pressed && hold_on == true){
+		hold_on = false;
+		sound_play(sound_get("nspecial_act"));	
+	}
+	if (special_pressed && shake_on == true){
+		shake_on = false;
+		sound_play(sound_get("nspecial_pick"));	
+	}
+		
 }
 
 

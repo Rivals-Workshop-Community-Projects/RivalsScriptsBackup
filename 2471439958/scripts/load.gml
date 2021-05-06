@@ -92,7 +92,10 @@ sprite_change_offset("bullet", 8, 6);
   sprite_change_offset("bulletI", 14, 8);
 
 sprite_change_offset("vfx_bloodhit1", 60, 40);
-sprite_change_offset("switcher", 70, 75);
+sprite_change_offset("switcher_fire", 70, 75);
+sprite_change_offset("switcher_ice", 70, 75);
+sprite_change_offset("switcher_plasma", 70, 75);
+sprite_change_offset("switcher_rock", 70, 75);
 
 
 set_victory_bg( sprite_get( "victory_background" ));

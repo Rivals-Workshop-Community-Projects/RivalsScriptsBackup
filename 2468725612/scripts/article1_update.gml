@@ -78,7 +78,7 @@ if (attack == AT_USPECIAL && (place_meeting(x,y,other.id) && other.player_id = p
 */
 
 //Hat float up
-if (state_timer == 40 && state < 3){
+if (state_timer == 38 && state < 3){
 	state = 3;
 }
 
@@ -87,7 +87,7 @@ if (state != 2){
 }
 
 //Hologram Spawn
-if (state_timer > 62 && state <= 3){
+if ((state_timer > 62 && state <= 3) || (player_id.uspecial_teleport == true && state <= 3)){
 	player_id.hat_x = x;
 	player_id.hat_y = y;
 	player_id.hologram_dir = spr_dir;

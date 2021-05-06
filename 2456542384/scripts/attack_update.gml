@@ -279,7 +279,7 @@ if (attack == AT_NSPECIAL){
 		init_shader();
 		*/
 		if window_timer == get_window_value(AT_NSPECIAL,4,AG_WINDOW_LENGTH)/2 {
-			take_damage(player,-1,-5); //heals
+			take_damage(player,-1,-6); //heals
 		}
 		if window_timer mod 4 == 0 {
 			sound_play(asset_get("mfx_hp_spawn"));

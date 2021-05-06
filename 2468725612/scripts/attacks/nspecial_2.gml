@@ -29,20 +29,20 @@ set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_GOTO, 6);
 set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_CUSTOM_GRAVITY, .60);
 
-set_window_value(AT_NSPECIAL_2, 4, AG_WINDOW_LENGTH, 17);
+set_window_value(AT_NSPECIAL_2, 4, AG_WINDOW_LENGTH, 13);
 set_window_value(AT_NSPECIAL_2, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL_2, 4, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_NSPECIAL_2, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL_2, 4, AG_WINDOW_SFX, sound_get("nspecial_pick"));
-set_window_value(AT_NSPECIAL_2, 4, AG_WINDOW_SFX_FRAME, 8);
+set_window_value(AT_NSPECIAL_2, 4, AG_WINDOW_SFX_FRAME, 6);
 set_window_value(AT_NSPECIAL_2, 4, AG_WINDOW_CUSTOM_GRAVITY, .60);
 
-set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_LENGTH, 17);
+set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_LENGTH, 13);
 set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_SFX, sound_get("nspecial_pick"));
-set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_SFX_FRAME, 8);
+set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_SFX_FRAME, 6);
 set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_CUSTOM_GRAVITY, .60);
 
 set_window_value(AT_NSPECIAL_2, 6, AG_WINDOW_LENGTH, 3);

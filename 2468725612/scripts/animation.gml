@@ -36,7 +36,9 @@ if (state == PS_TUMBLE){
 if (state == PS_DASH){
 	dash_cont++;
 	if (dash_cont == 11 || dash_cont == 26){
-		shake_camera(6, 2);
+		if (shake_on == true){
+			shake_camera(5, 2);
+		}
 		step_sound = random_func( 0, 9, true);
 		switch (step_sound){
 		    case 1:
@@ -79,7 +81,9 @@ else {
 if (state == PS_WALK){
 	walk_cont++;
 	if (walk_cont == 31 || walk_cont == 71){
-		shake_camera(3, 2);
+		if (shake_on == true){
+			shake_camera(2, 2);
+		}
 		step_sound = random_func( 0, 9, true);
 		switch (step_sound){
 		    case 1:
@@ -119,8 +123,8 @@ else {
     walk_cont = 0;
 }
 
-if (state == PS_LAND){
-	shake_camera(4, 2);
+if (state == PS_LAND && shake_on == true){
+	shake_camera(2, 2);
 }
 
 switch (attack_meu){

@@ -3,11 +3,12 @@ crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
+
 char_height = 52;
 idle_anim_speed = .18;
 crouch_anim_speed = .5;
 walk_anim_speed = .1675;
-dash_anim_speed = .3;
+dash_anim_speed = .45;
 pratfall_anim_speed = .25;
 
 
@@ -25,29 +26,29 @@ ground_friction = .45;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
-jump_speed = 10;
+jump_speed = 11;
 short_hop_speed = 6;
-djump_speed = 10;
+djump_speed = 11.5;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 5.5; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 5.5; //the maximum hsp you can accelerate to when in a normal aerial state
+max_jump_hsp = 7.25; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 6.25; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .4;
-prat_fall_accel = .85; //multiplier of air_accel while in pratfall
+prat_fall_accel = .55; //multiplier of air_accel while in pratfall
 air_friction = .02;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 7;
 walljump_vsp = 9;
 walljump_time = 32;
-max_fall = 11; //maximum fall speed without fastfalling
+max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 14; //fast fall speed
 gravity_speed = .45;
 hitstun_grav = .4;
 knockback_adj = 1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 5;
+prat_land_time = 20;
 wave_land_time = 8;
 wave_land_adj = 1.3; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .01; //grounded deceleration when wavelanding
@@ -59,7 +60,7 @@ crouch_recovery_frames = 3;
 
 //parry animation frames
 dodge_startup_frames = 1;
-dodge_active_frames = 1;
+dodge_active_frames = 2;
 dodge_recovery_frames = 2;
 
 //tech animation frames
@@ -102,63 +103,27 @@ bubble_y = 8;
 set_victory_bg( sprite_get( "bonbyvictorybackground" ))
 set_victory_theme( sound_get( "bonby_victory" ));
 
-spikeballishere = 0;
-
-nair_boost = 0;
-
-uspecialfrog = noone;
-spikeball = noone;
-trumpet_cooldown = 0;
-
-dspecialhitcount = 0;
-
-leap_cooldown = 0;
-
-charge_sound = 0;
-started_fspecial_charge = 0;
+frog_exists = 0;
+frog_deathtimer = 0;
 fspecial_charge = 0;
-fspecial_speed = 3;
-fspecial_boosting = 0;
-fspecial_hit = 0;
-fspecial_misfire = 0;
-chargesfx = sound_get("fspecialchargeup")
-fspecialboosteffect1 = hit_fx_create( sprite_get( "fspecialeffect" ), 20 );
-fspecialboosteffect2 = hit_fx_create( sprite_get( "fspecialeffect" ), 26 );
-fspecialboosteffect3 = hit_fx_create( sprite_get( "fspecialeffect" ), 30 );
-fspecialboosteffect4 = hit_fx_create( sprite_get( "fspecialeffect" ), 36 );
-fspecialboosteffectmisfire = hit_fx_create( sprite_get( "fspecialmisfireeffect" ), 36 );
-fspecialchargeeffect = hit_fx_create( sprite_get("fspecialchargeeffect"), 85)
+frog_pausetime = 0;
+frog_movetimer = 0;
 
-gpu_set_blendmode(bm_add);
-nspecialtraileffect = hit_fx_create( sprite_get("bonbynspecialtrail"), 20)
-nspecialtraileffect2 = hit_fx_create( sprite_get("bonbynspecialtrail2"), 20)
-gpu_set_blendmode(bm_normal);
+nspecial_grabbedplayer = 0;
 
-fspecialhiteffect = hit_fx_create( sprite_get( "bonbyfspecialhiteffect" ), 36 );
+tauntpose = 0;
 
-nspecialpopeffect = hit_fx_create( sprite_get( "bonbynspecialdespawn" ), 24 );
-nspecialpopsound = sound_get("bonby_nspecial_despawn");
+sprite_change_collision_mask( "frog_tonguehitbox1", true, 0, 0, 0, 0, 0, 0 );
+frog_hb_sprite_1 = sprite_get("frog_tonguehitbox1");
 
 
-eyegleameffect = hit_fx_create( sprite_get( "eyegleam" ), 30 );
+uspecial_hiteffect = hit_fx_create( sprite_get( "uspecial_hiteffect" ), 28 );
+uspecial_effect = hit_fx_create( sprite_get( "uspecial_effect" ), 12 );
+fspecial_waveeffect = hit_fx_create( sprite_get( "fspecial_trumpetwave" ), 20 );
+taunt_flasheffect = hit_fx_create( sprite_get( "tauntflash" ), 16 );
+frog_despawneffect = hit_fx_create( sprite_get( "frog_despawn" ), 16 );
 
-dspecialbounceeffect = sound_get("dspecialbounce");
-dspecialfalleffect = sound_get("dspecialfall");
-
-nair_rune_loop = 0;
-charging_aerials = 0;
-
-enoughisenough = 0;
-
-spikevolley = 0;
-spikevolleytimer = 0;
-
-spikecoordx = 9999;
-spikecoordy = 9999;
-
-spikebouncecool = 0;
-
-
+indicator_color = get_player_hud_color( player );
 
 //character/stage support
 

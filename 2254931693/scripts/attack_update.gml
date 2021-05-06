@@ -3,280 +3,34 @@
 
 
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_2 || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
 }
 
-if (attack == AT_FSPECIAL && window = 3 && window_timer > 1){
-    can_fast_fall = 0;
-        can_jump = 1;
+if (attack == AT_TAUNT && window = 1 && window_timer = 1){
+    tauntpose = random_func( 7, 10, true);
 }
 
-if (attack == AT_TAUNT && window = 3 && window_timer = 15 && taunt_down){
-    window = 2;
+if (attack == AT_TAUNT){
+        set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAME_START, 18 + tauntpose);
+        set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAME_START, 18 + tauntpose);
+}
+
+if (attack == AT_TAUNT && window = 1 && window_timer = 31){
+ window = 2;
+ window_timer = 0;
+}
+
+if (attack == AT_TAUNT && window = 2 && window_timer = 1 && !hitpause){
+     shake_camera(5, 4);
+      spawn_hit_fx(x, y, taunt_flasheffect);
+}
+
+if (attack == AT_TAUNT && window = 3 && taunt_down){
     window_timer = 0;
 }
 
-if (attack == AT_NSPECIAL) && (window != 5 && window != 6){
-    air_max_speed = 1.5;
-    max_fall = 4;
-}
 
-if (attack == AT_NSPECIAL && window > 4){
-    iasa_script();
-}
-
-if (attack == AT_NSPECIAL) && (window = 5){
-    air_max_speed = 5.5;
-    max_fall = 11;
-}
-
-if (attack == AT_NSPECIAL && (window == 4 && window_timer = 2)){
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 7.5);
-    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -2.5);   
-}
-
-if (attack == AT_NSPECIAL && (window == 1 || window == 2)){
-    if (up_down && (!left_down && !right_down)){
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 0);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -16);
-    }
-    
-    if (up_down && right_down){
-        spr_dir = 1;    
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 7.5);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -14.5);
-    }
-    
-    if (up_down && left_down){
-        spr_dir = -1;    
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 7.5);
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -14.5);
-    }    
-    
-    if (right_down && (!up_down && !down_down)){
-    spr_dir = 1;
-    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 7.5);
-    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -4.25);   
-    }   
-
-    if (left_down && (!up_down && !down_down)){
-    spr_dir = -1;
-    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 7.5);
-    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -4.25);   
-    }    
-    
-    if (joy_pad_idle = true){
-            set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 7.5);
-    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -4.25);   
-    }  
-    
-    }    
-
-
-
-
-
-//FSPECIAL charge
-
-
-
-if (attack == AT_FSPECIAL){
-    can_move = false;
-    can_fast_fall = false;
-    can_wall_jump = true;
- if (window = 2 && window_timer = 1 && free = 0){
-     y = y - 1;
- }
-
-if (window = 2 && window_timer = 1){
-    shake_camera(2, 6); 
-}
-
-if (window = 1 && window_timer < 16){
-    can_jump = true;
-}
-
-if (window = 2 && has_hit_player = true){
-    window = 4;
-    window_timer = 0;
-}
-
-if (window = 3 && window_timer = 8){
-    if (free = 1){
-    set_state(PS_IDLE_AIR);
-    }
-    if (free = 0){
-        set_state(PS_LANDING_LAG);
-    }
-}
-
-
-if (window = 4 && window_timer = 1){
-    vsp = -12.5;
-}
-
-if (window = 2 && window_timer = 1){
-    if (free = 1){
-    set_attack_value(AT_FSPECIAL, AG_CATEGORY, 1);
-    }
-}
-
-if (window = 3 && window_timer = 7){
-    y = y + 2;
-}
-
-if (window = 3 && window_timer = 7){
-    if (free = 0 && get_attack_value(AT_FSPECIAL, AG_CATEGORY) = 2){
-    set_state(PS_IDLE);
-}
-}
-
-if (window = 3 && window_timer = 8){
-    if (get_attack_value(AT_FSPECIAL, AG_CATEGORY) = 1){
-    set_attack_value(AT_FSPECIAL, AG_CATEGORY, 2);
-}
-}
-
-if (window = 4 && window_timer > 3){
-    set_attack_value(AT_FSPECIAL, AG_CATEGORY, 2);
-    iasa_script();
-}
-
-if (has_rune("H") && window > 1){
-    can_attack = true;
-    can_special = true;
-    can_jump = true;
-    can_shield = true;
-}
-
-
-}
-
-if (attack == AT_EXTRA_2){
-    hurtboxID.sprite_index = get_attack_value(AT_EXTRA_2, AG_HURTBOX_SPRITE);
-    can_move = false;
-}
-if (attack == AT_EXTRA_2 && window_timer > 5){
-    hsp = 0;
-}
-
-if (attack == AT_EXTRA_2 && window_timer = 1){
-    destroy_hitboxes();
-}
-
-
-//NAIR aerial momentum
-if (attack == AT_NAIR && nair_boost = 0 && attack_down){
-    
-    if (window == 2 && window_timer == 1){
-        if (has_rune("J")){
-        vsp = -4.5;
-        }
-        
-        if (!has_rune("J")){
-        vsp = vsp - 1;
-        }
-    }
-    
- if (window == 3 && window_timer == 1){
-        vsp = -7.5;
-        nair_boost = 1;
-    }
-}
-
-//NAIR looping rune
-if (attack == AT_NAIR && window == 2 && window_timer == 19 && attack_down && nair_rune_loop < 2 && has_rune("J")){
-    nair_rune_loop = nair_rune_loop + 1;
-    window_timer = 0;
-    attack_end();
-}
-
-if (attack == AT_NAIR && window == 3){
-    nair_rune_loop = 0;
-}
-
-
-
-
-
-
-
-//USPECIAL frog spawning
-if(attack == AT_USPECIAL && window == 1 && window_timer == 7){
-
-//set speed and destroy old frog
-hsp = 0;
-leap_cooldown = 22;
-with (uspecialfrog){
-    instance_destroy(frog_hitbox);
-}
-instance_destroy(uspecialfrog);
-
-//frog spawn when in air
-if (free = 1){
-spawn_hit_fx( x, y - 40, 198 );
-uspecialfrog = instance_create( x, y - 20, "obj_article1" );
-}
-
-//frog spawn when on ground
-if (free = 0){
-spawn_hit_fx( x + 58 * spr_dir, y-62, 198 );
-uspecialfrog = instance_create( x + 58 * spr_dir, y - 72, "obj_article1" );
-}
-
-}
-
-
-if(attack == AT_USPECIAL && window = 1 && window_timer = 1 && free = 1){
-can_move = false;
-can_fast_fall = false;
-air_max_speed = 0;
-hsp = 0;
-vsp = 0;
-max_fall = 0.5;
-fast_fall = 0.5;
-}
-
-
-
-if(attack == AT_USPECIAL && window = 4){
-can_move = true;
-air_max_speed = 5.5;
-can_fast_fall = true;
-max_fall = 11;
-fast_fall = 14;
-}
-
-if (attack == AT_USPECIAL && window = 3 && window_timer = 12 && free = 1){
-set_attack( AT_EXTRA_1 );
-can_move = true;
-air_max_speed = 5.5;
-can_fast_fall = true;
-max_fall = 11;
-fast_fall = 14;
-}
-
-if (attack == AT_EXTRA_1 && window_timer == 1){
-        hurtboxID.sprite_index = get_attack_value(AT_EXTRA_2, AG_HURTBOX_SPRITE);
-started_fspecial_charge = 0;
-leap_cooldown = 10;
-spawn_hit_fx( x, y, 6 );
-sound_play( sound_get( "uspecialfrogleap" ) );
-charge_sound = 0;
-sound_stop(chargesfx);
-init_shader();
-outline_color = [ 0, 0, 0 ];
-vsp = -14.5;
-can_move = true;
-air_max_speed = 5.5;
-max_fall = 11;
-fast_fall = 14;
-if (fspecial_boosting = 1){
-    fspecial_boosting = 0;
-    fspecial_charge = 0;
-}
-}
 
 if (attack == AT_DATTACK){
 if (window = 1 || window = 2 && has_hit_player = false){
@@ -303,7 +57,7 @@ if (attack == AT_DSTRONG && window = 2 && window_timer = 16 && (has_hit_player =
 }
 
 if (attack == AT_DSTRONG && window = 4 && window_timer = 1){
-    vsp = -9;
+    vsp = -10;
 }
 
 if (attack == AT_DSTRONG && window = 4){
@@ -337,7 +91,12 @@ if (window == 3){
 }
 
 if (attack == AT_DSTRONG && window = 4){
-    air_max_speed = 8.5;
+    if (left_down){
+        hsp = hsp - 0.30;
+    }
+    if (right_down){
+        hsp = hsp + 0.30;
+    }       
     with (hit_player_obj){
         self.hitstop = 8;
         
@@ -350,6 +109,7 @@ if (attack == AT_DSTRONG && window = 4){
         self.x = other.x - 20;
         self.y = other.y - 35;
     }
+    
 }
 }
 
@@ -359,9 +119,7 @@ if (attack == AT_DSTRONG && window = 5){
     self.hitstop = 8;
     }
     can_fast_fall = 0;
-    max_fall = 30;
-    air_max_speed = 7;
-    gravity_speed = .7;
+    vsp = vsp + 0.5;
     with (hit_player_obj){
         self.x = other.x;
         self.y = other.y - 50;
@@ -369,9 +127,6 @@ if (attack == AT_DSTRONG && window = 5){
 }
 
 if (attack == AT_DSTRONG && window = 6 && window_timer = 1){
-    max_fall = 11;
-    gravity_speed = .45;
-    air_max_speed = 5.5;
     with (hit_player_obj){
         if(other.spr_dir = 1){
         self.x = other.x + 20;
@@ -395,96 +150,223 @@ if (attack == AT_DSTRONG && has_hit_player){
 }
 
 
-//new dspecial
-if (attack == AT_DSPECIAL){
-    if ((window = 6 && window_timer = 6) || window = 2){
-    sound_stop(dspecialfalleffect);
+
+if (attack == AT_DAIR && taunt_down && window = 5 && window_timer = 4){
+    window_timer = 3;
 }
 
-if (window < 4){
-    can_wall_jump = true;
-}
-
-if (has_hit_player = true && !has_rune("I") && dspecialhitcount < 1){
-    dspecialhitcount = 1;
-    window = 1;
-    set_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED, -23);
-    window_timer = 9;
-    attack_end();
-    has_hit_player = false;
-
-}
-
-if (has_hit_player = true && has_rune("I") && dspecialhitcount < 3){
-    dspecialhitcount = dspecialhitcount + 1;
-    window = 1;
-    set_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED, -23);
-    window_timer = 9;
-    attack_end();
-    has_hit_player = false;
-
-}
-
-if (attack == AT_DSPECIAL && window = 2 && window_timer = 19 && has_rune("I") && dspecialhitcount = 3){
-    move_cooldown[AT_DSPECIAL] = 9999;
-    set_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED, -16);
-set_state( PS_IDLE_AIR );
-}
-
-if (attack == AT_DSPECIAL && window = 2 && window_timer = 11 && !has_rune("I") && dspecialhitcount = 1){
-    move_cooldown[AT_DSPECIAL] = 9999;
-    set_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED, -16);
-set_state( PS_IDLE_AIR );
+if (attack == AT_NSPECIAL && window < 6){
+    can_move = false;
+    hsp = 0;
 }
 
 
-
-if (window = 6){
-    dspecialhitcount = 0;
-    move_cooldown[AT_DSPECIAL] = 0;
-}
-
-if (attack == AT_DSPECIAL && down_down){
-    fall_through = true;
-
-}
-
-
-if (((window = 2 && window_timer > 5) || window = 3) && dspecialhitcount > 0){
-    move_cooldown[AT_DSPECIAL] = 9999;
-    iasa_script();
-}
-
-
-}
-
-
-//Strong super armor rune
-if (has_rune("L")){
-if (attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG){
-    super_armor = 1;
-}
-}
-
-//FSPECIAL super armor rune
-if (has_rune("K")){
-if (attack == AT_FSPECIAL){
-    super_armor = 1;
-}
-}
-
-//DAIR forward momentum rune
-if (has_rune("A")){
-   set_window_value(AT_DAIR, 2, AG_WINDOW_HSPEED, 6.5); 
-}
-
-//FSPECIAL misfire rune
-if (has_rune("H")){
-    if (attack == AT_FSPECIAL && window = 4 && window_timer = 1){
-        fspecial_misfire = random_func( 0, 7, true );
+if (attack == AT_NSPECIAL && has_hit_player){
+    if (window = 8){
+    if (frog_pausetime < 12){
+        frog_pausetime = frog_pausetime + 1;
+    } 
+    if (frog_pausetime = 1){
+        shake_camera(3, 3);
+    }
+    if (frog_pausetime = 11){
+        sound_play( sound_get("bonby_frog_zip"));
+    }        
+ with (nspecial_grabbedplayer){
+    hitstop = 5;
+    hitstun = 15;
+     can_tech = false;
+    hsp = 0;
+    vsp = 0;
+    old_hsp = 0;
+    old_vsp = 0;
+    if (point_distance(x, y, other.x, other.y) > 44 && other.frog_pausetime > 11){ 
+    var frogdir = point_direction(x, y, other.x, other.y - 12);
+    var frogspeed = 30;
+    other.frog_movetimer = other.frog_movetimer + 1;
+    x += lengthdir_x(frogspeed, frogdir);
+    y += lengthdir_y(frogspeed, frogdir);
+    }
+ }
     }
 }
 
+
+if (attack == AT_NSPECIAL && window = 8){
+     if ((point_distance(x, y, hit_player_obj.x, hit_player_obj.y) < 45) || frog_movetimer = 12){ 
+         window = 6;
+         frog_pausetime = 0;
+    with (nspecial_grabbedplayer){ 
+            hsp = 0;
+    vsp = 0;
+    hitstun = 10;
+    old_hsp = 0;
+    old_vsp = 0;
+     }
+}
+}
+
+if (attack == AT_NSPECIAL && has_hit_player){
+    move_cooldown[AT_NSPECIAL] = 70;
+    
+}
+
+if (attack == AT_NSPECIAL && window > 5 && window != 8 && has_hit_player){
+    iasa_script();
+    frog_movetimer = 0;
+
+}
+
+
+if (attack == AT_NSPECIAL && window = 7 && window_timer = 11){
+        if (free = 0){
+            set_state(PS_IDLE);
+        }
+                if (free = 1){
+            set_state(PS_IDLE_AIR);
+        }
+}
+
+if (attack == AT_NSPECIAL && window = 8){
+    can_fast_fall = false;
+}
+
+
+if (attack == AT_USPECIAL){
+    can_fast_fall = false;
+}
+
+if (attack == AT_USPECIAL && window = 3 && window_timer > 6 && window_timer < 14 && free){
+    vsp = -1;
+
+}
+
+if (attack == AT_USPECIAL && (window = 2 || window = 3)){
+    can_wall_jump = true;
+}
+
+
+if (attack == AT_USPECIAL && has_hit_player && window = 2){
+ with (hit_player_obj){
+    var uspecialautolinkdir = point_direction(x, y, other.x, other.y - 36);
+    var uspecialautolinkspeed = 8;
+    hsp = lengthdir_x(uspecialautolinkspeed, uspecialautolinkdir);
+    vsp = lengthdir_y(uspecialautolinkspeed, uspecialautolinkdir);
+ }
+}
+
+if (attack == AT_NAIR && strong_charge > 10 && window = 1){
+    vsp = 0;
+    can_move = false;
+}
+
+if (attack == AT_NAIR && strong_charge > 10 && window = 1 && left_down){
+    hsp = -0.5;
+}
+
+if (attack == AT_NAIR && strong_charge > 10 && window = 1 && right_down){
+    hsp = 0.5;
+}
+
+if (attack == AT_NAIR && strong_charge > 10 && window = 1 && !left_down && !right_down){
+    hsp = 0;
+}
+
+if (attack == AT_NAIR && strong_charge = 40){
+    attack_down = false;
+    window_timer = 1;
+    window = 1;
+    set_attack(47);
+
+    strong_charge = 0;
+}
+
+if (attack == AT_DSPECIAL && window_timer = 4 && window = 1){
+sound_play(sound_get("bonby_dspecial_back2"));
+}
+
+
+if (attack == AT_DSPECIAL && window_timer = 1 && window = 2){
+    frog = instance_create( x + (28 * spr_dir), y - 20, "obj_article1" );
+    frog_exists = 1;
+}
+
+
+
+
+if (attack == AT_DSPECIAL_2 && window_timer = 1 && window = 2){
+    spawn_hit_fx(frog.x, frog.y, frog_despawneffect)
+    instance_destroy(frog)
+    frog_exists = 0;
+}
+
+if attack == AT_USPECIAL_GROUND && window != 3 {
+        if left_down hsp  -= 0.65;
+        if right_down hsp += 0.65;
+}
+
+if attack == AT_USPECIAL_GROUND{
+    fall_through = false;
+}
+
+if (attack == AT_FSPECIAL && window = 2 && special_down){
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 9);    
+   fspecial_charge = fspecial_charge + 1;
+
+}
+
+if (attack == AT_FSPECIAL && ((window = 2 && !special_down) || (fspecial_charge = 44))){
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, (-3 - ((fspecial_charge / 44) * 12)));
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 2);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 0);
+set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 9 + ((fspecial_charge / 44) * 5));
+set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 9 + ((fspecial_charge / 44) * 5));
+set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 9 + ((fspecial_charge / 44) * 5));
+}
+
+if (attack == AT_FSPECIAL && fspecial_charge > 25){
+set_num_hitboxes(AT_FSPECIAL, 4);
+}
+
+if (attack == AT_FSPECIAL && fspecial_charge < 26){
+set_num_hitboxes(AT_FSPECIAL, 3);
+}
+
+
+
+if (attack == AT_FSPECIAL && (window = 2)){
+    can_jump = true;
+    can_wall_jump = true;
+}
+
+
+if (attack == AT_FSPECIAL && (window = 2 || window = 3 || window = 4)){
+    can_wall_jump = true;
+}
+
+
+if (attack == AT_FSPECIAL && window = 3 && window_timer = 3){
+    fspecial_charge = 0;
+
+}
+
+if (attack == AT_FSPECIAL && window = 3 && window_timer = 1 && !hitpause){
+    spawn_hit_fx(x, y, fspecial_waveeffect)
+
+}
+
+
+if (attack == AT_DAIR && window == 1){
+    clear_button_buffer(PC_ATTACK_PRESSED);
+        clear_button_buffer(PC_DOWN_STICK_PRESSED);
+    can_jump = true;
+}
+
+
+if (attack == AT_DAIR && has_hit_player && window < 4 && !hitpause){
+can_jump = true;
+can_shield = true;
+}
 
 //Final Smash
 if (attack == 49){
@@ -513,6 +395,8 @@ if (window < 9){
         }
     }
 }
+
+
 
 if (window > 2 && window < 9)
     with (oPlayer){

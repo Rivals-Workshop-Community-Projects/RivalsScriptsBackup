@@ -11,14 +11,14 @@
 
 // Physical size
 char_height         = 76;       //                  not zetterburn's. this is just cosmetic anyway
-knockback_adj       = 0.85;		// 0.9  -  1.2
+knockback_adj       = 0.88;		// 0.9  -  1.2
 
 
 // Ground movement
 walk_speed          = 2.5;		// 3    -  4.5
 walk_accel          = 0.2;		// 0.2  -  0.5
 walk_turn_time      = 6;	    // 6
-initial_dash_time   = 4;		// 8    -  16
+initial_dash_time   = 8;		// 8    -  16
 initial_dash_speed  = 3.5;		// 4    -  9
 dash_speed          = 4.5;		// 5    -  9
 dash_turn_time      = 10;		// 8    -  20
@@ -51,7 +51,7 @@ djump_accel_end_time= 0;        //                  the amount of time that   dj
 max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has hover instead
 walljump_hsp        = 5;		// 4    -  7
 walljump_vsp        = 9;		// 7    -  10
-land_time           = 4;		// 4    -  6
+land_time           = 6;		// 4    -  6
 prat_land_time      = 24;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
@@ -221,6 +221,7 @@ hat_x = 0;
 hat_y = 0;
 hat_on = true;              //Postdraw Hat
 hat_out = false;
+uspecial_teleport = false;
 
 fspecial_cont = 0;
 fspecial_hit = -1;
@@ -234,6 +235,7 @@ dspecial_rune = false;
 
 pratfall_cont = false;
 hold_on = true;
+shake_on = true;
 
 my_x = 0;
 my_y = 0;

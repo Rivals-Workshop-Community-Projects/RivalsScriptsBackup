@@ -57,7 +57,7 @@ max_fall = 9; //maximum fall speed without fastfalling
 fast_fall = 13; //fast fall speed
 gravity_speed = .55;
 hitstun_grav = .5;
-knockback_adj = 1.2; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 6; //normal landing frames
 prat_land_time = 3;
@@ -127,7 +127,10 @@ grabbed_player_relative_y = 0;   //we store this coordinate to smoothly repositi
 //Effects
 explosion_effect = hit_fx_create( sprite_get( "explosion" ), 25 );
 blood_effect = hit_fx_create( sprite_get( "vfx_bloodhit1" ), 28 );
-switcher = hit_fx_create( sprite_get( "switcher" ), 12 );
+switcherF = hit_fx_create( sprite_get( "switcher_fire" ), 12 );
+switcherI = hit_fx_create( sprite_get( "switcher_ice" ), 12 );
+switcherP = hit_fx_create( sprite_get( "switcher_plasma" ), 12 );
+switcherR = hit_fx_create( sprite_get( "switcher_rock" ), 12 );
 // USpec meter
 uspec_max = 100; // number of frames you can use uspec
 uspec_meter = uspec_max;

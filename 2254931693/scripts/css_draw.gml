@@ -2,9 +2,9 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-patch_ver = "1.6.5";
-patch_day = "16";
-patch_month = "MAR";
+patch_ver = "2.0";
+patch_day = "5";
+patch_month = "MAY";
  
 if get_player_color(player) == 7 {
 set_character_color_shading( 0, 0 );
@@ -91,7 +91,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
     color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
     
-    col_max = 15; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    col_max = 23; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(22, 135, 111) // "color preview square" color. can be any color!
@@ -119,7 +119,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[7,1] = "Game Boy"
     ce[7,2] = ""
     ce[8,0] = make_color_rgb(143, 106, 65)
-    ce[8,1] = "Chocolate"
+    ce[8,1] = "Cocoa"
     ce[8,2] = ""
     ce[9,0] = make_color_rgb(255, 213, 0)
     ce[9,1] = "Gold"
@@ -141,7 +141,55 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[14,2] = ""
     ce[15,0] = make_color_rgb(86, 144, 61)
     ce[15,1] = "Lode"
-    ce[15,2] = ""    
+    ce[15,2] = "" 
+    ce[16,0] = make_color_rgb(253, 128, 84)
+    ce[16,1] = "Cosign"
+    ce[16,2] = ""    
+    ce[17,0] = make_color_rgb(255, 103, 112)
+    ce[17,1] = "Tomo"
+    ce[17,2] = ""    
+    ce[18,0] = make_color_rgb(230, 193, 129)
+    ce[18,1] = "Desert"
+    ce[18,2] = "" 
+    ce[19,0] = make_color_rgb(96, 31, 194)
+    ce[19,1] = "Cosmic"
+    ce[19,2] = ""    
+    ce[20,0] = make_color_rgb(255, 85, 162)
+    ce[20,1] = "Watermelon"
+    ce[20,2] = ""    
+    ce[21,0] = make_color_rgb(241, 164, 36)
+    ce[21,1] = "Brigade Leader"
+    ce[21,2] = ""    
+    ce[22,0] = make_color_rgb(240, 246, 255)
+    ce[22,1] = "Bone-Chilling"
+    ce[22,2] = ""    
+    ce[23,0] = make_color_rgb(255, 204, 0)
+    ce[23,1] = "BEES"
+    ce[23,2] = "" 
+    ce[24,0] = make_color_rgb(86, 144, 61)
+    ce[24,1] = "Lode"
+    ce[24,2] = ""    
+    ce[25,0] = make_color_rgb(86, 144, 61)
+    ce[25,1] = "Lode"
+    ce[25,2] = ""   
+    ce[26,0] = make_color_rgb(86, 144, 61)
+    ce[26,1] = "Lode"
+    ce[26,2] = ""    
+    ce[27,0] = make_color_rgb(86, 144, 61)
+    ce[27,1] = "Lode"
+    ce[27,2] = "" 
+    ce[28,0] = make_color_rgb(86, 144, 61)
+    ce[28,1] = "Lode"
+    ce[28,2] = ""    
+    ce[29,0] = make_color_rgb(86, 144, 61)
+    ce[29,1] = "Lode"
+    ce[29,2] = ""    
+    ce[30,0] = make_color_rgb(86, 144, 61)
+    ce[30,1] = "Lode"
+    ce[30,2] = ""    
+    ce[31,0] = make_color_rgb(86, 144, 61)
+    ce[31,1] = "Lode"
+    ce[31,2] = ""       
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
     // you can ignore the mess below...

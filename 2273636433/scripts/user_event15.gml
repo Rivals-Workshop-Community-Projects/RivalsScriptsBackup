@@ -299,7 +299,9 @@ with phone{
 	
 	Dstrong: Makes the Megavitamin roll on the ground. Charging the strong attack increases rolling speed.
 	
-	UStrong: Sends the Megavitmin soaring upwards! Charging the strong attack increases the launch distance.");
+	UStrong: Sends the Megavitmin soaring upwards! Charging the strong attack increases the launch distance.
+	
+	The Strongs also change the power of pills");
 	initTipImage(player_id.spr_fstrong, -5, fa_left, 1, c_white, 0);
 	initTipImage(player_id.spr_dstrong, -5, fa_right, 1, c_white, 0);
 	initTipImage(player_id.spr_ustrong, -5, fa_center, 1, c_white, 0);
@@ -364,6 +366,18 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	
+	initPatch("1.42", "5 May, 2021");
+	initPatchWords("Strongs")
+	initPatchWords_ext("Hitboxes are larger
+	Pills now gain buffs from getting hit by strongs", fa_left, c_gray, 1, 0);
+	initPatchWords("Dair")
+	initPatchWords_ext("There are no gaps between hitboxes
+	Landing lag reduced 9 > 6", fa_left, c_gray, 1, 0);
+	initPatchWords("Fair")
+	initPatchWords_ext("Landing lag reduced 9 > 8", fa_left, c_gray, 1, 0);
+	initPatchWords("Rune D")
+	initPatchWords_ext("It is awesome", fa_left, c_gray, 1, 0);
 	
 	initPatch("1.41", "29 March, 2021");
 	initPatchWords("DStrong")

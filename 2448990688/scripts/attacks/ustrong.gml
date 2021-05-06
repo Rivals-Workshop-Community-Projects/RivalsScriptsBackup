@@ -50,3 +50,4 @@ set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_HSPEED, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(AT_USTRONG, 1, HG_EFFECT, 1); //scoville buffs? On god?

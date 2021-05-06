@@ -10,6 +10,12 @@ if my_hitboxID.attack == AT_FSPECIAL{
 
 }
 
+if my_hitboxID.attack == AT_DAIR{
+	if my_hitboxID.hbox_num < 10 {
+		hit_player_obj.should_make_shockwave=false;
+	}
+}
+
 if (my_hitboxID.attack == AT_USPECIAL){
 	
 	if (my_hitboxID.hbox_num ==1 ){

@@ -1,140 +1,268 @@
-//article1_update
-vsp = vsp + 0.2
+// article_update
 
-frog_lifetime = frog_lifetime + 1
 
-if (free = 0 && frogbouncea = 0){
-sprite_index = sprite_get("uspecialfrogidle");
-image_speed = .25;
+if (free = 1 && state != PS_HITSTUN){
+vsp = vsp + 1;
 }
 
-if (dstrong_sfx_bounce = 1){
-  dstrong_sfx_timer = dstrong_sfx_timer + 1  
-}
-
-if (dstrong_sfx_timer = 15){
-    dstrong_sfx_bounce = 0;
-    dstrong_sfx_timer = 0;
-}
-
-if (frog_lifetime = 400){
-    spawn_hit_fx( x, y - 15, 198 );
-     instance_destroy();
-     sound_play(sound_get("uspecialfrogdespawn"));
+if (free = 1 && state = PS_HITSTUN){
+vsp = vsp + 0.75;
 }
 
 if (y > room_height + 100){
+    player_id.frog_exists = 0;
+    player_id.frog_deathtimer = 480;
+    sound_play(sound_get("bonby_frog_sd"));
+    shake_camera(4, 8);
     instance_destroy();
 }
 
-if (dstrong_bounce = 1){
-    instance_destroy(frog_hitbox);
-    spawn_hit_fx( x, y - 15, 198 );
-    instance_destroy();
-}
-
-with (player_id){
-if (leap_cooldown = 0 && (point_distance( x, y, other.frog_hitbox.x, other.frog_hitbox.y )) < 42 ){
+switch(state){
     
-    if (attack == AT_DSTRONG && window = 5){
-        if (other.dstrong_sfx_bounce = 0){
-            other.dstrong_sfx_bounce = 1;
-            sound_play( sound_get( "uspecialfrogleap" ) );
-            spawn_hit_fx( x, y, 6 );
-            other.dstrong_bounce = other.dstrong_bounce + 1;
+    //Idle
+    case PS_IDLE:
+            sprite_index = sprite_get("frog_idle");  
+        image_index = state_timer / 4;
+        if (player_id.attack == AT_NSPECIAL_2 && player_id.window = 1 && player_id.window_timer = 3 && (player_id.state = PS_ATTACK_GROUND || player_id.state = PS_ATTACK_AIR)){
+            state = PS_ATTACK_GROUND;
+            state_timer = 0;
         }
-        vsp = -14;
-        max_fall = 11;
-        fast_fall = 17; 
-        air_max_speed = 5.5;
-        gravity_speed = .45;
-        attack_end();
-    }
-
-
-
+        if (player_id.attack == 48 && player_id.window = 2 && player_id.window_timer = 1 && (player_id.state = PS_ATTACK_GROUND || player_id.state = PS_ATTACK_AIR)){
+            state = PS_JUMPSQUAT;
+            state_timer = 0;
+        }        
+        if free = 1{
+            state = PS_IDLE_AIR;
+            state_timer = 0;
+        }
+        break;
+        
+    //Falling
+    case PS_IDLE_AIR:
+        sprite_index = sprite_get("frog_idle_air");
+        image_index = state_timer / 4;
+        if free = 0{
+            hsp = 0;
+            sound_play(sound_get("bonby_frog_land"))
+            state = PS_LAND;
+            state_timer = 0;
+        }
+    break;  
     
-    if (free = 0){
-    set_attack( AT_EXTRA_1 );
-    other.image_speed = .4;
-    other.image_index = 0;
-    other.frogbouncea = 20;
-    other.sprite_index = sprite_get("uspecialfrogbounce");
-    spawn_hit_fx( x, y, 6 );
-    }
-    
+    //Landing
+    case PS_LAND:
+        sprite_index = sprite_get("frog_land");
+        image_index = state_timer / 4;
+        if state_timer = 10{
+            state = PS_IDLE;
+            state_timer = 0;
+        }
+        if free = 1{
+            state = PS_IDLE_AIR;
+            state_timer = 0;
+        }        
+        break;
+        
+    //NSpecial
+    case PS_ATTACK_GROUND:
+        sprite_index = sprite_get("frog_tongue");
+        if state_timer = 1{
+        sound_play(sound_get("bonby_frog_start"));
+        if player_id.spr_dir = 1{
+            spr_dir = 1;
+        }
+        if player_id.spr_dir = -1{
+            spr_dir = -1;
+        }    
+        }
+        if state_timer = 12{
+        sound_play(sound_get("bonby_frog_tongue"));
+        }        
+        if state_timer < 13{
+        image_index = state_timer / 6;
+        }
+        if state_timer > 12{
+        image_index = state_timer / 4;
+        }
+        if state_timer = 16{
+            create_hitbox(39, 1, x + (84 * spr_dir), y - 100);
+        }
+        if state_timer = 44{
+            state = PS_IDLE;
+        }
+        break;
+        
+    //NSpecial (Grabbing Player)        
+    case PS_WRAPPED:
+        sprite_index = sprite_get("frog_grabbing");
+        image_index = 0;
+        if (frog_dspecial_pausetime < 12){
+            frog_dspecial_pausetime = frog_dspecial_pausetime + 1;
+        }
+    if (frog_dspecial_pausetime = 1){
+        shake_camera(3, 3);
+    }        
+    if (frog_dspecial_pausetime = 11){
+        sound_play( sound_get("bonby_frog_zip"));
+    }              
+        with (grabbedplayer){
+            free = 1;
+            hitstop = 5;
+            hitstun = 15;
+            can_tech = false;
+        var grabdir = point_direction(x, y, other.x, other.y);
+        var grabspeed = 30;
+        if (other.frog_dspecial_pausetime > 11){
+            other.frog_dspecial_movetime = other.frog_dspecial_movetime + 1;
+          x += lengthdir_x(grabspeed, grabdir);
+          y += lengthdir_y(grabspeed, grabdir);
+        } 
+          hsp = 0;
+          vsp = 0;
+            fall_through = true;
+        }
+        if (point_distance(x, y, grabbedplayer.x, grabbedplayer.y) < 36 && frog_dspecial_pausetime > 11){
+            sound_play(sound_get("bonby_frog_gulp"));
+            state = PS_ATTACK_AIR;
+            state_timer = 0;
+        }
+        if (frog_dspecial_movetime = 12){
+            state = PS_ATTACK_GROUND;
+            frog_dspecial_movetime = 0;
+            frog_dspecial_pausetime = 0;
+            state_timer = 35;
+        }
+        break; 
+        
+    //NSpecial (Spitting Grabbed Player)    
+    case PS_ATTACK_AIR:
+        sprite_index = sprite_get("frog_spit");  
+        image_index = state_timer / 5;
+        frog_dspecial_pausetime = 0;    
+        if (state_timer = 14){
+        sound_play(sound_get("bonby_frog_spit"));
+        spittargetx = player_id.x
+        spittargety = player_id.y - 48;
+        }        
+        if (state_timer < 15){
+                    if (player_id.x > x){
+            spr_dir = 1;
+        }
+        if (player_id.x < x){
+            spr_dir = -1;
+        }
+        with (grabbedplayer){
+            free = 1;
+            set_state(PS_PRATFALL);
+            hitstun = 0;
+            hitpause = true;
+            hitstop = 1;
+            initial_invince = 2;
+          x = other.x + (36 * other.spr_dir)
+          y = other.y - 20;
+          hsp = 0;
+          vsp = 0;
+        visible = false; 
+
+        }
+        }
+        if (state_timer > 16 && state_timer < 21){
+            shake_camera(3, 4);
+        var spitdir = point_direction(grabbedplayer.x, grabbedplayer.y, spittargetx, spittargety);
+        var spitspeed = 10;
+        with (grabbedplayer){
+        initial_invince = 0;      
+            free = 1;
+            hitstun = 35;
+          set_state(PS_HITSTUN);  
+          hsp = lengthdir_x(spitspeed, spitdir);
+            vsp = lengthdir_y(spitspeed, spitdir) - 7.5;
+          visible = true;
+        }
+        }      
+        
+        if (state_timer = 21){
+        grabbedplayer = 0;
+        }
+
+        if (state_timer = 34){
+        state = PS_IDLE;
+        state_timer = 0;
+        }        
+        break;
+        
+    //DSpecial (Jumpsquat)
+    case PS_JUMPSQUAT:
+        sprite_index = sprite_get("frog_land");
+        image_index = 0;
+        if (player_id.x > x){
+            spr_dir = 1;
+        }
+        if (player_id.x < x){
+            spr_dir = -1;
+        }
+        if state_timer = 5{
+        state = PS_FIRST_JUMP;
+        state_timer = 0;
+        }
+        break;  
+        
+    //DSpecial (Jumping)        
+    case PS_FIRST_JUMP:
+        sprite_index = sprite_get("frog_idle_air");
+        image_index = state_timer / 4;
+        if state_timer = 1{
+        sound_play(sound_get("bonby_frog_jump"));
+        y = y - 5;
+        free = true;
+        vsp = -10;
+        }
+if (state_timer > 0 && free = 1){
+        var froghopdir = point_direction(x, y, player_id.x, player_id.y);
+    var froghopspeed = 12.5;
+    hsp = lengthdir_x(froghopspeed, froghopdir);
+}        
+        if (state_timer > 2 && free = 0){
+            sound_play(sound_get("bonby_frog_land"))
+            hsp = 0;
+            state = PS_LAND;
+            state_timer = 0;
+        }
+        break; 
+        
+    //FSpecial (Knocked Back)      
+    case PS_TUMBLE:
+        sprite_index = sprite_get("frog_idle_air");
+        image_index = state_timer / 4;
+        if state_timer = 0{
+        y = y - 5;
+        free = true;
+        vsp = -9;
+        hsp = 8 * player_id.spr_dir;     
+        } 
+        if (state_timer > 2 && free = 0){
+            sound_play(sound_get("bonby_frog_land"))
+            hsp = 0;
+            state = PS_LAND;
+            state_timer = 0;
+        }        
+        
+    break;
+
+
+    //Parried        
+    case PS_HITSTUN:
+        sprite_index = sprite_get("frog_parried");
+        image_index = state_timer / 4;
+        depth = -10;
+        can_be_grounded = false;
+        ignores_walls = true;
+        if (state_timer = 1){
+            vsp = -10;
+            hsp = -3 * spr_dir;
+        }
+    break;
+   
 }
 
-    if (state = PS_ATTACK_AIR && attack = AT_FSPECIAL && window != 1 && (point_distance( x, y, other.frog_hitbox.x, other.frog_hitbox.y )) < 24){
-    y = y - 15;
-    var frogfspecialdir = point_direction(x, y, other.x, other.y - 100);
-    var frogfspecialspeed = 16;
-    hsp = lengthdir_x(frogfspecialspeed, frogfspecialdir);
-    vsp = -14;
-    other.image_speed = .4;
-    other.image_index = 0;
-    other.frogbouncea = 20;
-    other.sprite_index = sprite_get("uspecialfrogbounce");
-    spawn_hit_fx( x, y, 6 );
-    set_attack( AT_EXTRA_2 );
-              shake_camera(5, 5); 
-                sound_play( sound_get( "fspecialfrogbounce" ) );
-    }    
-    
-        if ((state = PS_ATTACK_AIR || state = PS_ATTACK_GROUND) && attack = AT_DSPECIAL && window != 1 && (point_distance( x, x, other.frog_hitbox.x, other.frog_hitbox.x )) < 52 && (point_distance( y, y, other.frog_hitbox.y, other.frog_hitbox.y )) < 16){
-    dspecialhitcount = -1
-    set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX, sound_get("uspecialdspecial"));
-    window = 1
-    set_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED, -19);
-    window_timer = 18;
-    spawn_hit_fx( other.x, other.y - 15, 198 );
-    other.frog_hitbox.x = 9999;
-    other.frog_hitbox.y = 9999;
-    instance_destroy();
-
-    }
-    
-}
-
-with (oPlayer){
-    if (player != other.player && free = 0 && (point_distance( x, y, other.frog_hitbox.x, other.frog_hitbox.y )) < 48 ){
-    other.image_speed = .4;
-    other.image_index = 0;
-    other.frogbouncea = 20;
-    other.sprite_index = other.fbsprite;
-    }
-}
-
-with (asset_get("pHitBox")){
-    if (attack == AT_NSPECIAL){
-if (player_id == other.player_id && other.frogbouncea = 0 && other.frogspikebounce = 0 && (abs(y - other.frog_hitbox.y) < 10) && (abs(x - other.frog_hitbox.x) < 38) && was_parried = false ){
-    frogspikebounce = 1;
-    other.frogbouncea = 20;
-    spawn_hit_fx( x, y, 6 );
-    other.sprite_index = sprite_get("uspecialfrogbounce");
-    other.image_index = 0;
-    other.image_speed = .4;
-    sound_play( sound_get( "uspecialfrogspikeballlaunch" ) );
-    vsp = 18;
-    img_spd = img_spd * 0.65
-    hsp = hsp * 0.65;
-}
-
-
-if (other.frogbouncea = 0){
-    frogspikebounce = 0;
-}
-
-}
-}
-
-if (frogbouncea > 0){
-    frogbouncea = frogbouncea - 1;
-}
-
-
-
-
-frog_hitbox.x = x;
-frog_hitbox.y = y - 18;
-
+state_timer++;

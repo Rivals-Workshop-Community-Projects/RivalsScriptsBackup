@@ -60,9 +60,9 @@ if (attack == AT_USTRONG && window == 1 && window_timer == 23){
 if (attack == AT_DSPECIAL && window == 4 && has_hit) {
         take_damage( player, -1, -1 );
     }
-// Deals 50 damage to self:
+// Deals damage to self:
 if (attack == AT_DSPECIAL && window == 4 && !has_hit) {
-        take_damage( player, -1, 1 );
+        take_damage( player, -1, 2 );
     }
 
 //Ledge Snap    

@@ -1,6 +1,6 @@
 if (!custom_clone){
 
-//print (state_timer);
+//print (uspecial_teleport);
 
 if (get_player_color(player) != 18){
        shader_start();

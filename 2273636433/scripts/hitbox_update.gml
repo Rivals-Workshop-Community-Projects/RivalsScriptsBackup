@@ -52,29 +52,29 @@ if attack == AT_NSPECIAL{
 					}else if (pill_state == 4){				//Dstrong1 // No Gravity
 						vsp = 0;
 						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 2/3;}
-						else{ hsp = hsp*-1; }
+						else{ hsp = hsp*-1.25; }
 						length = 150;
 						pill_state = 4;
 					}else if (pill_state == 5){				//Dstrong2 // No Gravity
 						vsp = 0;
 						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 2/3;}
-						else{ hsp = hsp*-1; }
+						else{ hsp = hsp*-1.25; }
 						length = 150;
 						pill_state = 5;
 					}
 					else {
 						vsp = -abs(vsp);
-						if hsp == 0 { hsp = 4.5*player_id.spr_dir; }
 						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 2/3;}
-						else{ hsp = hsp*-1; }
+						else{ hsp = hsp*-1.25; }
+						if abs(hsp) < 1 { hsp = 4.5*player_id.spr_dir; }
 						//grav = 0.56;
 						pill_state =0;
 					}
 
 					hitbox_timer = 0;
 					player_id.pilleffect=2;
-					kb_value = kb_value*1.5;
 					spr_dir = player_id.spr_dir;		//Can Turn Around
+					kb_value = kb_value*1.5;
 					C_knock += 2;
 					player_id.show = 1;
 				}
@@ -109,9 +109,9 @@ if attack == AT_NSPECIAL{
 				grav = 0.5;
 				player_id.pilleffect=1;
 				damage = damage*1.5;
+				C_dam  += 2;
 				pill_state =0;
 				spr_dir = player_id.spr_dir;		//Can Turn Around
-				C_dam  += 2;
 				player_id.show = 1;
 				player_id.has_hit = true;
 			}
@@ -122,7 +122,7 @@ if attack == AT_NSPECIAL{
 	//CHECK IF INTERACTS WITH USTRong (MEME LAUNCHER) -NUMERO 1
 	if (hitbox_timer > 12)  && player_id.attack == AT_USTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 2  && player_id.window_timer < 2{
 		if abs(x - (player_id.x-37*player_id.spr_dir))<45{
-			if abs(y - (player_id.y - 58))<40{
+			if abs(y - (player_id.y - 58))<42{
 				grav = 0.42;
 				vsp = - 25 - player_id.strong_charge/6;
 				hsp = hsp/4;
@@ -132,7 +132,9 @@ if attack == AT_NSPECIAL{
 				grounds = 0;
 				pill_state = 1;
 				player_id.pilleffect=8;
-
+				kb_value = kb_value*1.5;
+				C_knock += 2;
+				player_id.show = 1;
 			}
 		}
 	}
@@ -150,13 +152,16 @@ if attack == AT_NSPECIAL{
 				grounds = 0;
 				pill_state = 1;
 				player_id.pilleffect=4;
+				kb_value = kb_value*1.5;
+				C_knock += 2;
+				player_id.show = 1;
 			}
 		}
 	}
 
 	//CHECK IF INTERACTS WITH USTRong (MEME LAUNCHER) -NUMERO 3
 	if (hitbox_timer > 12)  && player_id.attack == AT_USTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 2  && player_id.window_timer < 6 && player_id.window_timer > 3{
-		if abs(x - (player_id.x+35*player_id.spr_dir))<40{
+		if abs(x - (player_id.x+35*player_id.spr_dir))<42{
 			if abs(y - (player_id.y - 52))<45{
 				grav = 0.42;
 				vsp = - 25 - player_id.strong_charge/6;
@@ -167,6 +172,9 @@ if attack == AT_NSPECIAL{
 				grounds = 0;
 				pill_state = 1;
 				player_id.pilleffect=9;
+				kb_value = kb_value*1.5;
+				C_knock += 2;
+				player_id.show = 1;
 			}
 		}
 	}
@@ -180,6 +188,11 @@ if attack == AT_NSPECIAL{
 				
 				coord_x = player_id.x + 64*player_id.spr_dir;
 				coord_y = player_id.y - 38;
+				kb_value= kb_value*1.25;
+				damage = damage*1.25;
+				C_knock += 1;
+				C_dam  += 1;
+				player_id.show = 1;
 				//ROLLING DTRONG PROYECTILES
 				if	pill_state ==4{
 					prev_grav = 0;
@@ -223,10 +236,10 @@ if attack == AT_NSPECIAL{
 				hitbox_timer =0;
 				length = 300;
 				walls = 0;
-				kb_value= kb_value*1.25;
-				damage = damage*1.25;
 				player_id.pilleffect=3;
 				pill_state =3;
+				kb_value= kb_value*1.25;
+				damage = damage*1.25;
 				C_knock += 1;
 				C_dam  += 1;
 				player_id.show = 1;
@@ -236,14 +249,17 @@ if attack == AT_NSPECIAL{
 
 	//CHECK IF INTERACTS WITH DSTRONG (ROLLING) - HITBOX 1
 	if (hitbox_timer > 12)  && player_id.attack == AT_DSTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 3  && player_id.window_timer <3{
-		if abs(x - (player_id.x+42*player_id.spr_dir))<40{
-			if abs(y - (player_id.y - 20))<40{
+		if abs(x - (player_id.x+40*player_id.spr_dir))<42{
+			if abs(y - (player_id.y - 20))<42{
 				length = 149 + player_id.strong_charge;
 				hitbox_timer =0;
 				player_id.pilleffect=6;
 				pill_state = 4;
+				damage = damage*1.5;
+				C_dam  += 2;
+				player_id.show = 1;
 				vsp = -abs(vsp/2);
-				if (hsp ==0){hsp = player_id.spr_dir*(4.5+ player_id.strong_charge/10);}
+				if abs(hsp) < 1{hsp = player_id.spr_dir*(4.5+ player_id.strong_charge/10);}
 				else{hsp = player_id.spr_dir*(abs(hsp*2)+ player_id.strong_charge/10);}
 				spr_dir = player_id.spr_dir;
 			}
@@ -252,12 +268,15 @@ if attack == AT_NSPECIAL{
 
 	//CHECK IF INTERACTS WITH DSTRONG (ROLLING) - HITBOX 2
 	if (hitbox_timer > 12)  && player_id.attack == AT_DSTRONG  && (player_id.state == PS_ATTACK_GROUND) && player_id.window == 3  && player_id.window_timer >5{
-		if abs(x - (player_id.x-38*player_id.spr_dir))<40{
-			if abs(y - (player_id.y - 20))<40{
+		if abs(x - (player_id.x-34*player_id.spr_dir))<42{
+			if abs(y - (player_id.y - 20))<42{
 				length = 149 + player_id.strong_charge;
 				hitbox_timer =0;
 				player_id.pilleffect=7;
 				pill_state = 5;
+				damage = damage*1.5;
+				C_dam  += 2;
+				player_id.show = 1;
 				vsp = -abs(vsp/2);
 				if (hsp ==0){hsp = -player_id.spr_dir*(4.5+ player_id.strong_charge/10); }
 				else{hsp = -player_id.spr_dir*(abs(hsp*2)+ player_id.strong_charge/10);}

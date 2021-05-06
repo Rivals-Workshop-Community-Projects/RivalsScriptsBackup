@@ -2,7 +2,7 @@ set_attack_value(AT_DAIR, AG_CATEGORY, 2);
 set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("dairB"));
 set_attack_value(AT_DAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_DAIR, AG_LANDING_LAG, 8);
-set_attack_value(AT_DAIR, AG_HURTBOX_SPRITE, sprite_get("hurtbox"));
+set_attack_value(AT_DAIR, AG_HURTBOX_SPRITE, sprite_get("dairB_hurt"));
 
 set_attack_value(AT_DAIR, AG_NUM_WINDOWS, 8);
 
