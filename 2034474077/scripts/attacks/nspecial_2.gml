@@ -26,7 +26,7 @@ set_window_value(AT_NSPECIAL_2, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL_2, 4, AG_WINDOW_ANIM_FRAME_START, 9);
 //swing
 set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_LENGTH, 11);
+set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_HAS_SFX, 1);
@@ -46,8 +46,13 @@ set_window_value(AT_NSPECIAL_2, 7, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL_2, 7, AG_WINDOW_ANIM_FRAME_START, 25);
 
 set_window_value(AT_NSPECIAL_2, 8, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL_2, 8, AG_WINDOW_LENGTH, 1);
+set_window_value(AT_NSPECIAL_2, 8, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_NSPECIAL_2, 8, AG_WINDOW_ANIM_FRAMES, 1);
+
+//cancel
+set_window_value(AT_NSPECIAL_2, 9, AG_WINDOW_TYPE, 1);
+set_window_value(AT_NSPECIAL_2, 9, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_NSPECIAL_2, 9, AG_WINDOW_ANIM_FRAMES, 1);
 
 set_num_hitboxes(AT_NSPECIAL_2, 2);
 

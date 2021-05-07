@@ -129,6 +129,8 @@ if(stuck_player != noone)
     vsp = stuck_player.vsp;
     
     in_portal = true;
+    
+    depth = stuck_player.depth-1;
 }
 
 //#region Shake
@@ -260,7 +262,7 @@ if(clock_timer == teleport_time || early_trigger) // || fspecial_trigger
             }
         }
         portal_cooldown = 2;
-        //teleported = true;
+        teleported = true;
         
 
         
@@ -286,6 +288,7 @@ if(clock_timer == teleport_time || early_trigger) // || fspecial_trigger
     
     // Reset stuff
     player_id.time_knife = noone;
+
     
     // Prevent jumping back into portals
     if(charged && !player_id.hitpause) player_id.vsp = 0;

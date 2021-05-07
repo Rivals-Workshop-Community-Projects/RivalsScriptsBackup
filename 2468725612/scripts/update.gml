@@ -6,6 +6,8 @@ if (lockout_timer <= 5){
     lockout_timer++;    
 }
 
+if (object_index != oTestPlayer){
+
 if (hologram_exists == false){
 	hologram_start = true;
 }
@@ -15,6 +17,28 @@ if (hologram_exists == false){
 if (hologram_start == true){
     hologram = instance_create( x, y, "oPlayer");
     hologram_start = false;
+}
+
+}
+
+else {
+	set_num_hitboxes(AT_JAB, 1);
+    set_num_hitboxes(AT_FTILT, 1);
+    set_num_hitboxes(AT_DTILT, 1);
+    set_num_hitboxes(AT_UTILT, 3);
+    set_num_hitboxes(AT_DATTACK, 2);
+    set_num_hitboxes(AT_FSTRONG, 3);
+    set_num_hitboxes(AT_USTRONG, 3);
+    set_num_hitboxes(AT_DSTRONG, 2);
+    set_num_hitboxes(AT_NAIR, 3);
+    set_num_hitboxes(AT_FAIR, 1);
+    set_num_hitboxes(AT_BAIR, 2);
+    set_num_hitboxes(AT_UAIR, 7);
+    set_num_hitboxes(AT_DAIR, 2);
+    set_num_hitboxes(AT_FSPECIAL, 13);
+    set_num_hitboxes(AT_FSPECIAL_AIR, 13);
+    set_num_hitboxes(AT_DSPECIAL, 4);
+    set_num_hitboxes(AT_DSPECIAL_AIR, 9);
 }
 
 //Hologram is not active

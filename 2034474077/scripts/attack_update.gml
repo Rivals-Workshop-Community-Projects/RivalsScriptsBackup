@@ -88,7 +88,7 @@ switch (attack){
                 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
                 set_hitbox_value(AT_NSPECIAL_2, 2, HG_DAMAGE, 8);
                 set_hitbox_value(AT_NSPECIAL_2, 2, HG_BASE_KNOCKBACK, 9);
-                set_hitbox_value(AT_NSPECIAL_2, 2, HG_KNOCKBACK_SCALING, 0.85);
+                set_hitbox_value(AT_NSPECIAL_2, 2, HG_KNOCKBACK_SCALING, 0.9);
                 set_hitbox_value(AT_NSPECIAL_2, 2, HG_BASE_HITPAUSE, 15);
                 set_hitbox_value(AT_NSPECIAL_2, 2, HG_HITPAUSE_SCALING, 0.7);
                 window = 5;
@@ -105,7 +105,14 @@ switch (attack){
         }
         if(window >= 2 && window < 5){
             can_jump = true;
-            can_shield = true;
+            //cancel
+            if(shield_pressed){
+                window_timer = 0;
+                window = 9;
+                clear_button_buffer(PC_SHIELD_PRESSED);
+                sound_stop(sound_get("uppercharge2"));
+                move_cooldown[AT_NSPECIAL_2] = 15;
+            }
             if(window < 5 && window_timer <= 4){
                 if(dir_held == (spr_dir * -1) && can_b_reverse){
                     can_b_reverse = false;
@@ -113,10 +120,11 @@ switch (attack){
                     hsp *= -1;
                 }
             }
+            //paunch
             if(special_pressed){
                 set_attack_value(AT_NSPECIAL_2, AG_NUM_WINDOWS, 7);
-                window = 5;
                 window_timer = 0;
+                window = 5;
             }
             if(window_timer == 20){
                 can_b_reverse = false;
@@ -135,8 +143,16 @@ switch (attack){
                     }
                 }
             } 
-        }
-        if(window >= 5){
+        }else if(window >= 5){
+            if(window_timer <= 4){
+                if(dir_held == (spr_dir * -1) && can_b_reverse){
+                    can_b_reverse = false;
+                    spr_dir *= -1;
+                    hsp *= -1;
+                }
+            }else if(window_timer == 5){
+                can_b_reverse = false;
+            }
             if(window == 5){
                 ultupper = -1;
             }
@@ -160,24 +176,20 @@ switch (attack){
         can_wall_jump = false;
         if(window == 1 && window_timer == 1){
             reset_attack_value(AT_NSPECIAL_3, AG_NUM_WINDOWS);
-        }
-        if(window == 2){
+        }else if(window == 2){
             if(dir_held == (spr_dir * -1)){
                 set_attack_value(AT_NSPECIAL_3, AG_NUM_WINDOWS, 9);
                 spr_dir *= -1;
                 window = 6;
                 window_timer = 0;
             }
-        }
-        if(window == 3 || window == 7){
+        }else if(window == 3 || window == 7){
             if(window_timer > 14){
                 super_armor = true;
             }
-        }
-        if(window == 4 || window == 8){
+        }else if(window == 4 || window == 8){
             super_armor = true;
-        }
-        if(window == 5 || window == 9){
+        }else if(window == 5 || window == 9){
             super_armor = false;
         }
         break;
@@ -206,8 +218,23 @@ switch (attack){
                     set_hitbox_value(AT_FSPECIAL_1, 8, HG_KNOCKBACK_SCALING, (1.2 + (rage * 0.005)));
                 }
             }
-            if(window == 2 && !was_parried && !hitpause){
-                hsp = 11 * spr_dir;
+            if(window == 2){
+                if(!was_parried && !hitpause) hsp = 11 * spr_dir;
+                
+                //ledge snap
+                if (place_meeting(x + hsp, y, asset_get("par_block")) && free) {
+                    for (var i = 1; i < 40; i++){
+                        if (!place_meeting(x + hsp, y- i ,asset_get("par_block"))) {
+                            reset_window_value(AT_FSPECIAL_1, 5, AG_WINDOW_TYPE);
+                            reset_window_value(AT_FSPECIAL_1, 13, AG_WINDOW_TYPE);
+                            reset_hitbox_value(AT_FSPECIAL_1, 7, HG_ANGLE);
+                            reset_hitbox_value(AT_FSPECIAL_1, 7, HG_BASE_KNOCKBACK);
+                            y -= i;
+                            break;
+                        }
+                    }      
+                }
+                
             }
             can_wall_jump = true;
         }
@@ -295,8 +322,18 @@ switch (attack){
                 }
             }
         }
-        if(window == 2 && !was_parried && !hitpause){
-            hsp = 10 * spr_dir;
+        if(window == 2){
+            if(!was_parried && !hitpause) hsp = 10 * spr_dir;
+                
+                //ledge snap
+                if (place_meeting(x + hsp, y, asset_get("par_block")) && free) {
+                    for (var i = 1; i < 40; i++){
+                        if (!place_meeting(x + hsp, y - i ,asset_get("par_block"))) {
+                            y -= i;
+                            break;
+                        }
+                    }      
+                }
         }
         if(window == 8){
             multihit = noone;
@@ -512,13 +549,13 @@ switch (attack){
     case AT_DSPECIAL:
         can_fast_fall = false;
         can_move = false;
-        has_fjump = false;
         if(window < 5){
             fall_through = down_down;
         }
         if(window > 2){
             can_wall_jump = true;
             if(!free){
+                has_fjump = true;
                 if(window == 3 || window == 4){
                     window = 8;
                     window_timer = 0;
@@ -530,18 +567,14 @@ switch (attack){
                     window = 9;
                     window_timer = 0;
                     destroy_hitboxes();
-                    move_cooldown[AT_DSPECIAL] = 40;
                 }
             }
         }
         if(window == 2 && window_timer == 1){
-            invincible = true;
-            invincible_time = 4;
-        }
-        if(window == 3 && window_timer == 1){
+            has_fjump = false;
+        }else if(window == 3 && window_timer == 1){
             spr_dir = spr_dir * -1;
-        }
-        if(window == 4 && window_timer >= 10){
+        }else if(window == 4 && window_timer >= 10){
             can_jump = true;
         }
         if(window == 3 || window == 4){
@@ -559,6 +592,7 @@ switch (attack){
         if(window == 9 && free){
             window_timer = 99;
             has_fjump = true;
+            move_cooldown[AT_DSPECIAL] = 50;
         }
         break;
 
@@ -591,6 +625,10 @@ switch (attack){
                         if(trig_hbox.player_id.x < x){
                             spr_dir = -1;
                         }
+                        /*trig_hbox.player_id.hitpause = true;
+                        trig_hbox.player_id.hitstop = 10;
+                        hitpause = true;
+                        hitstop = 10;*/
                         set_attack_value(AT_DSPECIAL_3, AG_NUM_WINDOWS, 8);
                         window_timer = 0;
                         window = 5;

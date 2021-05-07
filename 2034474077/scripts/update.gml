@@ -20,7 +20,8 @@ if(multihit != noone){
 if(!has_fjump && free){
     move_cooldown[AT_DSPECIAL] = 2;
 }
-if(!has_fjump && !free && move_cooldown[AT_DSPECIAL] < 1){
+if(!has_fjump && !free){
+    has_fjump = true;
     has_fjump = true;
 }
 if(!has_suplex && free){
@@ -59,6 +60,10 @@ if(menu_timer >= 0){
     }
 }else{
     menu_open = false;
+}
+
+if(close_timer >= 0){
+    close_timer--;
 }
 
 //menu selection

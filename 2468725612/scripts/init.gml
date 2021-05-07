@@ -11,7 +11,7 @@
 
 // Physical size
 char_height         = 76;       //                  not zetterburn's. this is just cosmetic anyway
-knockback_adj       = 0.88;		// 0.9  -  1.2
+knockback_adj       = 0.9;		// 0.9  -  1.2
 
 
 // Ground movement
@@ -35,7 +35,7 @@ air_max_speed       = 3.5;  		// 3    -  7
 jump_change         = 3;		// 3
 air_accel           = 0.3;		// 0.2  -  0.4
 prat_fall_accel     = 0.85;		// 0.25 -  1.5
-air_friction        = 0.04;		// 0.02 -  0.07
+air_friction        = 0.05;		// 0.02 -  0.07
 max_fall            = 10;		// 6    -  11
 fast_fall           = 14;		// 11   -  16
 gravity_speed       = 0.5;		// 0.3  -  0.6

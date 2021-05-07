@@ -456,7 +456,7 @@ if (attack == AT_FSPECIAL){
 					grabbedProj = tempProj;
 					
 					
-					var yoff = get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y);	
+					var yoff = get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y) - 5;	
 					
 					with(grabbedProj)
 					{

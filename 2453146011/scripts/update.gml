@@ -3,23 +3,23 @@
 var monarch = self;
 
 // Auto enable lite mode
-// if(!lite){
-// 	if(fps_real < 45 && introTimer > 16) 
-// 	{
-// 		if(frameTimer >= 15)
-// 			lite = true;
-// 		else
-// 			frameTimer++;
-// 	}
-// 	else
-// 	{
-// 		frameTimer = 0;
-// 	}
-// }
-// else if(frameTimer < 100)
-// {
-// 	frameTimer++;
-// }
+if(!lite){
+	if(fps_real < 50 && introTimer > 16) 
+	{
+		if(frameTimer >= 15)
+			lite = true;
+		else
+			frameTimer++;
+	}
+	else
+	{
+		frameTimer = 0;
+	}
+}
+else if(frameTimer < 100)
+{
+	frameTimer++;
+}
 
 // Munophone
 user_event(14);
@@ -505,10 +505,11 @@ if(has_hit_player && (attack == AT_DSTRONG || attack == AT_FSTRONG || (attack ==
 		{
 		    black_screen = true;
 			blood_timer = 2;
-			
-			hit_player_obj.hitstop +=8;
-			hitstop+=8;
 		}
+		
+		hit_player_obj.hitstop +=8;
+		hitstop+=8;
+		
 		if(attack != AT_USTRONG)sound_play(sound_get("monarch_fstronghit"))
     } else sound_play(sound_get("monarch_knifehit3"))
 }
@@ -593,7 +594,7 @@ with(pHitBox){
         // Check floor
         if(y < other.phone_blastzone_b && canPlacePortal && (ceilPlat || (ceilFloor && (other.throw_dir == "up" || other.throw_dir == "down")) || rightWall || leftWall || !destroyed && (collision_circle(x,y, other.throw_dir == "down" ? 38 : 5, asset_get("par_block"), true,true) != noone || 
         
-        (  (collision_circle(x,y,other.throw_dir == "down" ? 38 : 5, asset_get("par_jumpthrough"), true,true) != noone) && (other.throw_dir == "up" || other.throw_dir == "down")  )
+        (  (collision_circle(x,y,other.throw_dir == "down" ? 38 : 15, asset_get("par_jumpthrough"), true,true) != noone) && (other.throw_dir == "up" || other.throw_dir == "down")  )
         
         )))
         {

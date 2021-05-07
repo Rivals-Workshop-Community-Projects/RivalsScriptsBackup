@@ -116,12 +116,12 @@ if(get_training_cpu_action() == CPU_FIGHT){
 }else{
     practice = true;
 }
-if(get_player_color(player) == 10){
+if(get_player_color(player) == 11){
     classic = true;
 }else{
     classic = false;
 }
-if (get_player_color(player) == 5){
+if (get_player_color(player) == 5 || get_player_color(player) == 8){
     hud_menu = sprite_get("hud_menu2");     //Due to color purposes, a different menu sprite is used for Alt 6.
 }else{
     hud_menu = sprite_get("hud_menu");

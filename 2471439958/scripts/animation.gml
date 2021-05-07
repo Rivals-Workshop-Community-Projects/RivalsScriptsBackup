@@ -42,4 +42,3 @@ if move_cooldown[AT_NSPECIAL_2] == 1{
 sound_play(sound_get("cooldown"));
 		spawn_hit_fx( x + 0*spr_dir, y + -20, 139);
 }
-

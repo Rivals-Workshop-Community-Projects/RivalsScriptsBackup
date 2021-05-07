@@ -458,6 +458,13 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.22", "7 May, 2021");
+	initPatchWords_ext("- Buffy's ''knockback_adj'' is now .9", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- Buffy's ''air_friction'' is now 0.05", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- DSpecial_Air landing lag is now 30 frames", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- DSpecial_Air Spike Hitbox now has KG growth of .6 instead of .8", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- Buffy should no longer break or crash the game in playtest", fa_left, c_white, 0, 0);
+	
 	initPatch("1.21", "6 May, 2021");
 	initPatchWords_ext("- Buffy's ''knockback_adj'' is now .88", fa_left, c_white, 0, 0);
 	initPatchWords_ext("- Buffy's ''initial_dash_time'' is now 8", fa_left, c_white, 0, 0);

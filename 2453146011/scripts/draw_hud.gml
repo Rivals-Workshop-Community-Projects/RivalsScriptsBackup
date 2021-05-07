@@ -1,6 +1,6 @@
 if "introTimer" not in self exit;
 
-if(introTimer < liteModeTime || (frameTimer > 15 && frameTimer < 60))
+if(introTimer < liteModeTime || (frameTimer > 15 && frameTimer < 100))
 {
     textDraw(temp_x , 480, "fName", c_white, 100, 400, fa_left, 1, true, 1, lite ? "Lite mode activated!" : "Press Taunt for lite mode", false);
 }

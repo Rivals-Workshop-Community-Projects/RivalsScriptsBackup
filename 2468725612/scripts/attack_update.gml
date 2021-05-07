@@ -710,15 +710,23 @@ if (attack == AT_DSPECIAL_AIR  || attack == AT_TAUNT_2){
 	if (window == 1){
 		set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_ANGLE, 290);
 		set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_ANGLE, 290);
+		set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_KNOCKBACK_SCALING, .6);
+		set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_KNOCKBACK_SCALING, .6);
 		set_hitbox_value(AT_TAUNT_2, 1, HG_ANGLE, 290);
 		set_hitbox_value(AT_TAUNT_2, 2, HG_ANGLE, 290);
+		set_hitbox_value(AT_TAUNT_2, 1, HG_KNOCKBACK_SCALING, .6);
+		set_hitbox_value(AT_TAUNT_2, 1, HG_KNOCKBACK_SCALING, .6);
 	}
 	
 	if (dspecial_air_cont >= 3 && !dspecial_air_hit && !has_rune("C")){
 		set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_ANGLE, 60);
 		set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_ANGLE, 60);
+		set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_KNOCKBACK_SCALING, .8);
+		set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_KNOCKBACK_SCALING, .8);
 		set_hitbox_value(AT_TAUNT_2, 1, HG_ANGLE, 60);
 		set_hitbox_value(AT_TAUNT_2, 2, HG_ANGLE, 60);
+		set_hitbox_value(AT_TAUNT_2, 1, HG_KNOCKBACK_SCALING, .8);
+		set_hitbox_value(AT_TAUNT_2, 1, HG_KNOCKBACK_SCALING, .8);
 	}
 	
 	if (window == 2 && !hitpause){

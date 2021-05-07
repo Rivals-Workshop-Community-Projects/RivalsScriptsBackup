@@ -39,7 +39,23 @@ if (my_hitboxID.attack == AT_NSPECIAL && ice = 1 && hit_player_obj.ice_mark == 0
     hit_player_obj.outline_color = [86, 113, 128];
 }
 
-if (my_hitboxID.attack == AT_USPECIAL or AT_USPECIAL_GROUND && ice = 1 && hit_player_obj.ice_mark == 0 && ice_cont == 0){
+if (my_hitboxID.attack == AT_USPECIAL && ice = 1 && hit_player_obj.ice_mark == 0 && ice_cont == 0){
+    hit_player_obj.ice_mark = 1;
+    ice_cont = 1;
+    ice_active = true;
+    ice_active_cont = 0;
+    hit_player_obj.outline_color = [86, 113, 128];
+}
+
+if (my_hitboxID.attack == AT_USPECIAL_GROUND && ice = 1 && hit_player_obj.ice_mark == 0 && ice_cont == 0){
+    hit_player_obj.ice_mark = 1;
+    ice_cont = 1;
+    ice_active = true;
+    ice_active_cont = 0;
+    hit_player_obj.outline_color = [86, 113, 128];
+}
+
+if (my_hitboxID.attack == AT_FAIR && ice = 1 && hit_player_obj.ice_mark == 0 && ice_cont == 0){
     hit_player_obj.ice_mark = 1;
     ice_cont = 1;
     ice_active = true;

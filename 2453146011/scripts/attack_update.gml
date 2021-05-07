@@ -863,9 +863,9 @@ if (attack == AT_UTILT){
 //#region DStrong
 if (attack == AT_DSTRONG){
 	can_move = true;
-	
+
 	// check ground
-	if((collision_line( x, y, x, y+95, asset_get("par_block"), false, true ) == noone) && (collision_line( x, y, x, y+95, asset_get("par_jumpthrough"), false, true ) == noone) && teleported = false){
+	if(  (collision_line( x, y, x, y+95, asset_get("par_block"), false, true ) == noone) && (collision_line( x, y, x, y+95, asset_get("par_jumpthrough"), false, true ) == noone) && teleported = false){
 		x = (xprevious-sign(hsp));
 		hsp = 0;
 		can_move = false;
@@ -902,7 +902,7 @@ if (attack == AT_DSTRONG){
 		
 		butterflyFX(80,80,3,0,-40);
 	}
-	if(window == 4 && window_timer == get_window_value(AT_DSTRONG,4,AG_WINDOW_LENGTH)) y+=45;
+	if(window == 4 && window_timer == get_window_value(AT_DSTRONG,4,AG_WINDOW_LENGTH) && !teleported) y+=45;
 	
 	// Butterflies
 	if(window_timer % 2 == 0) with(pHitBox) if(orig_player == other.player) with(other) butterflyFX(floor(get_hitbox_value(AT_DSTRONG,other.hbox_num,HG_WIDTH)*1.2),floor(get_hitbox_value(AT_DSTRONG,other.hbox_num,HG_HEIGHT)*1.2),1,other.x-x,other.y-y);

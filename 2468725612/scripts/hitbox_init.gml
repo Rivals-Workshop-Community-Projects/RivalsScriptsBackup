@@ -1,6 +1,9 @@
-
-if (object_index != oTestPlayer){
-can_hit_self = true;
+/*
+if (object_index == oTestPlayer){
+	can_hit_self = false;
+}
+else {
+	can_hit_self = true;
 }
 
 if ((attack == AT_DATTACK || attack == AT_NAIR || attack == AT_FAIR || attack == AT_BAIR || attack == AT_UAIR 

@@ -6,6 +6,16 @@ if (get_player_color(player) != 18){
        shader_start();
 }
 
+if (object_index == oTestPlayer && hologram_icon == 1){
+	draw_debug_text(x-80, y-140, string("Lol the Hologram was"));
+	draw_debug_text(x-80, y-120, string("crashing       Playtest"));
+	
+	draw_debug_text(x+40, y-80, string("Down + "));
+	draw_debug_text(x+40, y-60, string("Taunt to"));
+	draw_debug_text(x+40, y-40, string("disable"));
+	draw_debug_text(x+40, y-20, string(" this"));
+}
+
 
 if (hat_on == true){
     

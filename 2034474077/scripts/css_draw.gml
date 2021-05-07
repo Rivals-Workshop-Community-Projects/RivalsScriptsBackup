@@ -1,11 +1,11 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-patch_ver = "2.12";
+patch_ver = "2.13";
 patch_day = "";
 patch_month = "";
  
-var num_alts = 11;
+var num_alts = 12;
 var alt_cur = get_player_color(player);
  
  
@@ -20,11 +20,12 @@ alt_name[4]  = "Flying Man";
 alt_name[5]  = "Team Rocket";
 alt_name[6]  = "Martial Artist";
 alt_name[7]  = "Spring Man";
-alt_name[8]  = "Purple";
-alt_name[9]  = "Early Access";
-alt_name[10] = "Classic (no menu)";
+alt_name[8]  = "Miiku";
+alt_name[9]  = "Purple";
+alt_name[10] = "Early Access";
+alt_name[11] = "Classic (no menu)";
+alt_name[12] = "woag";
 /*
-alt_name[11] = "woag";
 alt_name[12] = "woag";
 alt_name[13] = "woag";
 alt_name[14] = "woag";

@@ -25,7 +25,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX_FRAME, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 6);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 6.12);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
 
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);

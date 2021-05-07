@@ -348,6 +348,13 @@ spr_taunt = sprite_get("taunt");
 spr_taunt_2 = sprite_get("taunt2");
 spr_sleep = sprite_get("sleep");
 
+spr_design1 = sprite_get("glace_design_1");
+spr_design2 = sprite_get("glace_design_2");
+spr_design3 = sprite_get("glace_design_3");
+spr_design4 = sprite_get("glace_design_4");
+spr_design5 = sprite_get("glace_design_5");
+spr_designR = sprite_get("glace_design_roa");
+
 
 
 phone = {

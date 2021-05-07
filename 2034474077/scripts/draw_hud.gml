@@ -49,11 +49,10 @@ if(menu_open == true){
     }
 }
 //Menu Closing
-if(close_timer >= 0){
+if(close_timer > 0){
     shader_start();
-    draw_sprite(hud_menu, ((close_timer) / 2) - 3, temp_x - 12, temp_y - 144);
+    draw_sprite(hud_menu, (floor(close_timer / 2) + 5), temp_x - 12, temp_y - 144);
     shader_end();
-    close_timer--;
 }
 
 //Hud Icons

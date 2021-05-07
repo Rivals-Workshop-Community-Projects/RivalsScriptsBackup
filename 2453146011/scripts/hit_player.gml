@@ -97,6 +97,9 @@ if(my_hitboxID.attack == AT_DSPECIAL && hit_player_obj.clone == false){
 if(my_hitboxID.attack = AT_FSPECIAL){
 	var hpTime = 15;
 	
+	// Cooldown
+	move_cooldown[AT_FSPECIAL] = 20;
+	
     //Afterimage
     with(hit_player_obj)
     {

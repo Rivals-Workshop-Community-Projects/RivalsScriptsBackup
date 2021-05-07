@@ -108,7 +108,7 @@ if (my_hitboxID.attack == AT_FSPECIAL){
 	    window = 5;
 	    window_timer = 1;
 	    grabbedid.x = x + (spr_dir * 80);
-	     grabbedid.y = y;
+	     grabbedid.y = y-5;
     }
 }
 

@@ -400,21 +400,29 @@ with phone{
 	initTipWords("If you press the air dodge button during, USpecial, the first part of FSpecial, or the first part of DSpecial you will cancel out of the move..");
 	initTipImage(player_id.spr_airdodge, -5, fa_center, 1, c_white, 0);
 
-/*	
-	initTip("Sandbert's Lore");
-	initTipWords_ext("Chapter 1", fa_center, c_gray, 0, 0);
-	initTipWords("Sandbert, a son of the ruling family of the Firelands, is an experienced and hardened warrior. He has fought many wars for the Fire Capital, a bellicose nation that constantly seeks to expand its influence over neighbouring lands. His courage in battle has made him a hero among his people.");
-	initTipWords("However, his straightforward character and unquestioning allegiance to the Fire Nation blind him at times. He is a reliable general on the field, but naive to the larger politics of Aether. In battle, Sandbert is equally forthright; he uses no weapons except for his razor-sharp claws and ability to control flame.");
-	initTipWords_ext("Chapter 2", fa_center, c_gray, 0, 0);
-	initTipWords("When he first arrived in Water Town, the merchant capital of Aether, Sandbert was considered a dangerous nuisance and a criminal. Sandbert is a playful trickster, notorious for escaping even the most precarious of situations.");
-	initTipWords("However, while the Water Merchants denounce Sandbert in public, they do not hesitate to call upon him when they need a situation dealt with quietly. Sandbert is sly and can infiltrate even the most secure strongholds. He can transform into water and confuse enemies with a spray of bubbles, making him the perfect candidate for stealth assignments.");
-	initTipWords_ext("Chapter 3", fa_center, c_gray, 0, 0);
-	initTipWords("The youngest trainee in the history of the Air Academy, Sandbert has never lived by anyone's rules but his own. After graduating at the top of his class, he joined the Air Armada, the military force of Air Nation.");
-	initTipWords("Within a year, Sandbert became renowned not just in Air Nation but across Aether as a fierce and unpredictable figher. However, among his superiors, he is more infamous for his brashness and arrogance than for his daring deeds. Currently an Aerial Ace for the Air Armada, Sandbert is wrecking havoc among the Armada's enemies and generals alike.");
-	initTipWords_ext("Chapter 4", fa_center, c_gray, 0, 0);
-	initTipWords("Sandbert is a defender of the colossal Aetherian Forest. Deliberate and loyal, he is one of the infamous Wall Runners who patrol the Rock Wall. From their position atop the Wall, Sandbert and his fellow Runners defend both sides of the rock face and the forest below.");
-	initTipWords("While normally slow because of their massive bodies, Wall Runners can curl up into balls and traverse the Wall at high speeds. Unlike other Wall Runners, Sandbert has the legendary ability to control the earth with his will. When in peril, Sandbert can summon the earth to aid him, and he repairs the Wall when it is under siege.");
-*/	
+	initTip("Design Evolution");
+		initTipWords_ext("Design #1 - Sonic OC", fa_center, c_gray, 0, 0);
+	initTipImage(player_id.spr_design1, 0, fa_center, 1, c_white, 0);
+	initTipWords("While never officially being named Glace (nor an ice-type at the time), a design adjacent to her was once created as a Sonic OC in the early 2010s.");
+		initTipWords_ext("Design #2 - Too Derivative", fa_center, c_gray, 0, 0);
+	initTipImage(player_id.spr_design2, 0, fa_center, 1, c_white, 0);
+	initTipWords("Still evolving into the Glace we know, a very derivative OC was created in I wanna say 2013-2014 during my time in the Exploding Rabbit community. We'll be getting to more original territory soon enough!");
+		initTipWords_ext("Design #3 - Ice Furry", fa_center, c_gray, 0, 0);
+	initTipImage(player_id.spr_design3, 0, fa_center, 1, c_white, 0);
+	initTipWords("This is where Glace truly gets her start. Beginning with the codename 'IceFurry,'	I created her around 2016-2017 for a Mega Man 8-Bit Deathmatch mod called 'TheMod.pk3' as we lacked an ice-type character in the cast.");
+	initTipWords("as well this was during an era where we added an elemental weakness system and thus elements that didn't exist as playable characters needed to be created. Glace was also created as a parallel character to another playable in the roster, 'Sal,' an anthro Espeon.");
+	initTipWords("Although, Glace was never created to be based on a Pokemon, let alone Glaceon despite a close enough name. She first started development taking more inspiration from Kirby's Ice Form and as such featured SFX from Kirby Super Star in her first appearance.");
+		initTipWords_ext("Design #4 - Near Perfection", fa_center, c_gray, 0, 0);
+	initTipImage(player_id.spr_design4, 0, fa_center, 1, c_white, 0);
+	initTipWords("By this point in 2018, TheMod.pk3 had received a new name in the form of 'MagiCode,' and among many of it's updates I decided to update Glace's design for the first time to streamline details and simplify her appearance to be easier to work with.");
+	initTipWords("This was also when I begun to think more about her as an original character in an original world. Gave her the last name 'Diamond,' and created a new world of characters featured in this furry world. Including my own take on the character 'Sal.'");
+		initTipWords_ext("Design #5 - Today", fa_center, c_gray, 0, 0);
+	initTipImage(player_id.spr_design5, 0, fa_center, 1, c_white, 0);
+	initTipWords("As of 2020, I've officially landed on a design that has remained mostly consistent and how you see her today. A smug and cutesy ice kitty who apparently becomes the subject to why she lacks clothing. Though that may be lore that will be dived into another day.");
+	initTipWords("For more info, you can check out her ToyHouse page at: https://toyhou.se/9323316.glace-diamond");
+initTipWords_ext("Appearance in Rivals of Aether", fa_center, c_gray, 0, 0);
+	initTipImage(player_id.spr_designR, 0, fa_center, 1, c_white, 0);
+	initTipWords("Starting in 2019, I begun thinking of creating Glace as a modded character for Rivals of Aether ever since the Workshop was first revealed. Overtime, the look of her main sprite changed to what you see now in 2021, which is funnily enough the result of only a month's worth of work to create the full product.");
 }
 
 /*
@@ -447,12 +455,20 @@ with phone{
 	 * put the version number and full date.
 	 */
 	 
+	initPatch("1.3.2", "May 6th, 2021");
+	initPatchWords("Misc. Updates
+	~ Added a design biography in the Tips section");
+	
+	initPatchWords("Visual Updates
+	* Fixed more color issues
+	");
+	 
 	initPatch("1.3", "May 2nd, 2021");
 	initPatchWords("Misc. Updates
 	~ AI code added
-	- Abyss Runes added
-	- New cheat code added
-	- Added an excerpt about the DimpsBuild of MunoPhone");
+	~ Abyss Runes added
+	~ New cheat code added
+	~ Added an excerpt about the DimpsBuild of MunoPhone");
 	
 	initPatchWords("Visual Updates
 	* Up Taunt now added

@@ -286,7 +286,11 @@ if (attack == AT_FTILT){
 		window = 10;
 	}
 }
-
+if (attack == AT_JAB){
+	if window >= 9 && has_hit=true{
+		can_jump=true;
+	}
+}
 
 //DYNAMITE ANGLED
 
