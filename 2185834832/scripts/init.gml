@@ -146,6 +146,7 @@ waterSpout70 = hit_fx_create( sprite_get( "waterSpout70" ), 15 );
 waterSpout110 = hit_fx_create( sprite_get( "waterSpout110" ), 15 );
 waterPort = hit_fx_create( sprite_get( "waterTeleport" ), 15 );
 waterCharge = hit_fx_create( sprite_get( "nspecial_charging" ), 36 );
+nspec_large = hit_fx_create( sprite_get( "nspec_large" ), 20 );
 waterHud_sprite= sprite_get("waterHud");
 waterHudbub_sprite= sprite_get("waterHudbub");
 waterHudEmerg_sprite = sprite_get("waterhudemergency");
@@ -168,3 +169,28 @@ saw_blade = noone
 waterChargingFx = noone
 effect_drawangle = 0
 forceNoWater = false
+stupid_hit_var = false
+can_action = false
+enemykirby = noone
+inner_audio = false
+alt_cur = get_player_color(player);
+
+//Pokemon Stadium
+pkmn_stadium_back_img = sprite_get("torga_back_sprite")
+pkmn_stadium_front_img = sprite_get("torga_front_sprite")
+
+//Dedede
+arena_title = "The Pacific End";
+
+//miiverse
+miiverse_post = sprite_get("torga_miiverse");
+
+sprite_change_offset("torga_miiverse", 60, 30);
+
+//Wall-E
+walle_taunt_sound = sound_get("stage_theme");
+walle_taunt_type = 1;
+
+//kirby
+swallowed = 0;
+kirbyability = 16;

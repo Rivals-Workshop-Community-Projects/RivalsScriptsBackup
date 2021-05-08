@@ -71,6 +71,25 @@ air_accel = 0.4;
 }
 
 ///rune F desc="Kata 32: Increase parry length. Execute Kata 32 after a successful parry."
+if has_rune("K") {
+	
+	if state == PS_PARRY {
+
+if window_timer == 1{
+window_timer = 3
+}
+
+if state_timer < 20 {
+window_timer = 3	
+} 
+
+if state_timer > 20 && window_timer != 20 {
+	window_timer += 1
+}
+	
+}
+
+}
 
 if has_rune("K") {
 	
@@ -280,8 +299,7 @@ if attacking && has_rune("O") {
 		soft_armor = 999	
 		hsp /= 2
 		
-		    hit_player_obj.x += floor((x + (35 * spr_dir * rside) - hit_player_obj.x)/4 )
-	     	hit_player_obj.y += floor((y - 30 - hit_player_obj.y)/4)
+		    		
 
 	}
 	
@@ -411,29 +429,33 @@ if attacking && has_rune("O") {
 ///rune M desc="Twin Dream: Repeat succeed attacks."
 if has_rune("M") && daigomode = 0 && attack != AT_DSPECIAL && lattacktime <= 3 && free { 
 
-if attacking && move_cooldown[AT_FSPECIAL_2] != 0 && !hitpause{
-		move_cooldown[AT_FSPECIAL_2] += 1
+if attacking && move_cooldown[AT_USPECIAL_2] != 0 && !hitpause{
+		move_cooldown[AT_USPECIAL_2] += 1
 }
 
 if hitpause && get_gameplay_time() % 2 == 0 {
 		window_timer += 1
 }
 
-if move_cooldown[AT_FSPECIAL_2] > 0  && !down_hard_pressed && free{
-		if  move_cooldown[AT_FSPECIAL_2] %3 == 0 {
+if move_cooldown[AT_USPECIAL_2] > 0  && !down_hard_pressed && free{
+		if  move_cooldown[AT_USPECIAL_2] %3 == 0 {
    	   	spawn_hit_fx( x - (10 * spr_dir)  , y  , dsshadow)
    	   }
+
+		
+		if attacking && state_timer < 30 && !has_hit_player {
+			
 		hsp = hit_player_obj.hsp /1.2
 		vsp = hit_player_obj.vsp /1.2
 		
-		if attacking && window == 1 {
-			
-			if window_timer == 1 {
-				    		sound_play(sound_get("RZ3"),false,noone,0.6);
+			if window == 1 && window_timer == 1 {
+				 sound_play(sound_get("RZ"),false,noone,0.3);
     	     	spawn_hit_fx( x - (10 * spr_dir)  , y - 40  , 305)
 			}
-		hsp = (hit_player_obj.x + 50*(left_down - right_down) - x) / 5
-		vsp = (hit_player_obj.y - y) / 5
+			hsp = (hit_player_obj.x + 50*(left_down - right_down) - x) / 10
+		vsp = (hit_player_obj.y - y) / 10
+		x += floor((hit_player_obj.x + 50*(left_down - right_down) - x) / 10)
+		y += floor((hit_player_obj.y - y) / 10)
 		hit_player_obj.hsp /= 1.1
 		hit_player_obj.vsp /= 1.1
 		}
@@ -501,7 +523,8 @@ hit_player_obj.hsp = 5 - random_func(5,10,true)
  	}
  	
  	if move_cooldown[AT_USPECIAL_GROUND] == 10 {
-		
+		  	    move_cooldown[AT_FSPECIAL_2] = 60 
+  	    move_cooldown[AT_NSPECIAL_2] = 120 
 		
 		with (hit_player_obj) {
 			take_damage(player,-1,-999)
@@ -510,7 +533,8 @@ hit_player_obj.hsp = 5 - random_func(5,10,true)
 		galx = x
         galy = y
 		sound_play(sound_get("mesatsu"),false,noone,1)
-		move_cooldown[AT_FSPECIAL_2] = 60 
+		vsp = -6
+		move_cooldown[AT_USPECIAL_2] = 60 
  		sound_play(sound_get("RI"))
  		spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - 40, 306 )
  		spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - 40, lighten )

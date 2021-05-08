@@ -7,36 +7,32 @@ if move_cooldown[AT_DTILT] != 0 {
 move_cooldown[AT_NSPECIAL_2] = 0
 move_cooldown[AT_NSPECIAL] = 0
 
-if has_rune("L") && move_cooldown[AT_TAUNT_2] == 0 && get_gameplay_time() % 3 <= 1  && my_hitboxID.damage >= 3 && my_hitboxID.type == 1 && my_hitboxID.attack != AT_USPECIAL {
-		create_hitbox(AT_FSPECIAL, 3, x, y - 40);
-		move_cooldown[AT_TAUNT_2] = 15
-		 sound_play(asset_get("sfx_burnapplied"));
+if has_rune("L") && my_hitboxID.damage >= 3 && my_hitboxID.type == 1 && my_hitboxID.attack != AT_USPECIAL {
+		create_hitbox(AT_FSPECIAL, 3, x - 20*spr_dir, y - 40);
+		sound_play(asset_get("sfx_burnapplied"));
 }
 
-if has_rune("L") && my_hitboxID.type == 1 && my_hitboxID.attack != AT_USPECIAL && my_hitboxID.damage >= 3 {
-		create_hitbox(AT_FSPECIAL, 3, x - 400*spr_dir, 0);
-}
-
-if has_rune("M") && my_hitboxID.type == 1 && free && my_hitboxID.attack != AT_USPECIAL && lattack != attack &&  lattacktime < 3{
-	lattack = attack
-	move_cooldown[AT_FSPECIAL_2] = 20
+if has_rune("M") && my_hitboxID.type == 1 && free && my_hitboxID.attack != AT_USPECIAL &&  lattacktime < 3{
+	move_cooldown[AT_USPECIAL_2] = 20
 	lattacktime += 1
 } 
 
 
 if has_rune("N"){
 	
-	with (asset_get("pHitBox")) {
+
+
+
+	with hit_player_obj{
+		if get_player_damage(player) >= 150 {
+			
+			with other {
+				
+					with (asset_get("pHitBox")) {
 if(player_id == other.id) {
     destroyed = true;
 }
 }
-
-
-	with hit_player_obj{
-		if get_player_damage(player) >= 120 {
-			
-			with other {
 					sound_play(sound_get("RZ2"))
  	         	 sound_play(asset_get("sfx_ori_grenade_launch"));
  	         	spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - 40, 306 )
@@ -153,6 +149,12 @@ if my_hitboxID.attack == AT_FSPECIAL{
 }
 
 
+if my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 2 && dspecon == 0 {
+
+fireon = -1
+firerange -= 100
+
+}
 
 if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num >= 2 {
 

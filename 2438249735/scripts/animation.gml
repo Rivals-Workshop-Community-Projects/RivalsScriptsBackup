@@ -27,8 +27,11 @@ air_max_speed = 8; //the maximum hsp you can accelerate to when in a normal aeri
 jump_change = 4; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = 0.35;
 
-    
+
+  
    draw_y = 999
+
+
 } else {
     
 walk_speed = 4;

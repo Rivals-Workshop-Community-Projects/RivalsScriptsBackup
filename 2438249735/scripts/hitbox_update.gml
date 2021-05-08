@@ -19,9 +19,9 @@ if attack == AT_NSPECIAL && hbox_num == 1 {
                 	 }
                 	 
                 	 if !free {
-                	     create_hitbox(AT_NSPECIAL,2,x,y)
-                	     create_hitbox(AT_NSPECIAL,2,x + 15*spr_dir,y)
-                	     create_hitbox(AT_NSPECIAL,2,x + 22*spr_dir,y)
+                	     create_hitbox(AT_NSPECIAL,2,x,y + 1)
+                	     create_hitbox(AT_NSPECIAL,2,x + 15*spr_dir,y + 1)
+                	     create_hitbox(AT_NSPECIAL,2,x + 22*spr_dir,y + 1)
                 	     sound_play(asset_get("sfx_plant_ready"))
                 	     destroyed = 1 
                 	 }
@@ -48,7 +48,7 @@ hsp /= 1.01
     }
     
                 	 if !free {
-                	     create_hitbox(AT_NSPECIAL,2,x,y - 20)
+                	     create_hitbox(AT_NSPECIAL,2,x,y - 1)
                 	     sound_play(asset_get("sfx_plant_ready"))
                 	     destroyed = 1 
                 	 }
@@ -146,14 +146,15 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
     	        	}
     	        }    	 
     	        
-    	        if !free and state_cat != SC_HITSTUN  and !attacking {
+    	        if !free and state_cat != SC_HITSTUN and !attacking and state != PS_LANDING_LAG and state != PS_PRATLAND {
+           
 
-    	        	
+    	        
     	        if invitimer == 0{
-    	        set_attack (AT_EXTRA_1)
-    	        window = 1
-    	        window_timer = 1
-    	        invisound = 0
+    	        sound_play(asset_get("sfx_bird_nspecial"),false,noone,0.4)
+    	     sound_play(sound_get("steath"),false,noone,1)
+    	     
+    	     invitimer = 1
     	            shake_camera(1,4)
     	         
     	               spawn_hit_fx(x , y - 30, shit1)  

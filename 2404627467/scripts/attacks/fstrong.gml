@@ -37,9 +37,9 @@ set_hitbox_value(AT_FSTRONG, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 361);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.6);
+set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.85);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 0.6);
+set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 0.85);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, fx_slashlight);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sound_get("sfx_anthem_hit1"));
 
@@ -87,9 +87,9 @@ set_hitbox_value(AT_FSTRONG, 4, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSTRONG, 4, HG_DAMAGE, 12);
 set_hitbox_value(AT_FSTRONG, 4, HG_ANGLE, 361);
 set_hitbox_value(AT_FSTRONG, 4, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_FSTRONG, 4, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(AT_FSTRONG, 4, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_FSTRONG, 4, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_FSTRONG, 4, HG_HITPAUSE_SCALING, 0.9);
+set_hitbox_value(AT_FSTRONG, 4, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_FSTRONG, 4, HG_VISUAL_EFFECT, fx_slashlight);
 set_hitbox_value(AT_FSTRONG, 4, HG_HIT_SFX, sound_get("sfx_anthem_hit2"));
 

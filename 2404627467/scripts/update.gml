@@ -8,8 +8,11 @@ if ((!free || state == PS_WALL_JUMP || state == PS_WALL_TECH || state == PS_HITS
 }
 
 //NSPECIAL cooldown
+
 if (instance_exists(nspecial_article)) {
-    move_cooldown[AT_NSPECIAL] = 30;
+	if (nspecial_article.window == 3 || nspecial_article.window == 5 || nspecial_article.window == 7) {
+    	move_cooldown[AT_NSPECIAL] = 30;
+	}
 }
 
 if (uspecial_used && free)

@@ -119,3 +119,91 @@ if(waterLevelEmergency > 0){
 		waterLevelEmergency = 0
 	}
 }
+
+//torga kirby
+if (swallowed == 1) {
+	swallowed = 0;
+	
+	var ability_spr = sprite_get("kirb");
+	var ability_hurt = sprite_get("kirb_hurt");
+	var myicon = sprite_get("torgakirbyicon")
+	
+	with enemykirby{
+		newicon = myicon
+		sprite_change_offset("kirb", 80, 100);
+		set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
+		set_attack_value(AT_EXTRA_3, AG_SPRITE, ability_spr);
+		set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 3);
+		set_attack_value(AT_EXTRA_3, AG_AIR_SPRITE, ability_spr);
+		set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, ability_hurt);
+		set_attack_value(AT_EXTRA_3, AG_USES_CUSTOM_GRAVITY, 1);
+        
+        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
+        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 4);
+        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 1);
+        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HAS_SFX, 1);
+        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.8);
+        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX, asset_get("sfx_waterwarp"));
+                
+        set_window_value(AT_EXTRA_3, 2, AG_WINDOW_TYPE, 9);
+        set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 12);
+        set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAMES, 3);
+        set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAME_START, 1);
+        set_window_value(AT_EXTRA_3, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.5);
+                
+        set_window_value(AT_EXTRA_3, 3, AG_WINDOW_TYPE, 1);
+        set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 10);
+        set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAMES, 2);
+        set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAME_START, 4);
+        set_window_value(AT_EXTRA_3, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
+        set_window_value(AT_EXTRA_3, 3, AG_WINDOW_CUSTOM_GRAVITY, 1);
+        set_window_value(AT_EXTRA_3, 3, AG_WINDOW_SFX, asset_get("sfx_waterhit_weak"));
+        set_window_value(AT_EXTRA_3, 3, AG_WINDOW_HAS_SFX, 1);
+                
+        set_num_hitboxes(AT_EXTRA_3, 1);
+        
+        set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 1)
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_GRAVITY, 0.42);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 3);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW_CREATION_FRAME, 1);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 4);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 110);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 110);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, 0);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, -20);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 5);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 7);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 6.2);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.2);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 7);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 0.55);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 90);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 5);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE_FLIPPER, 1);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
+	}
+}
+if(enemykirby != undefined){
+	with (oPlayer){
+		if(state == PS_ATTACK_AIR && attack == AT_EXTRA_3|| state == PS_ATTACK_GROUND && attack == AT_EXTRA_3){
+			if(window == 2 && state_timer > 100){
+				window = 3
+				window_timer = 0
+				vsp = -3
+				move_cooldown[AT_EXTRA_3] = 100
+				move_cooldown[AT_NSPECIAL] = 100
+			}else if(window == 2 && state_timer > 16 && !special_down){
+				window = 3
+				window_timer = 0
+				vsp = -3
+				move_cooldown[AT_EXTRA_3] = 100
+				move_cooldown[AT_NSPECIAL] = 100
+			}
+			set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 6.2 + state_timer / 20);
+			set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.2 + state_timer / 200);
+			set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 7 + state_timer / 20);
+			set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 0.55 + state_timer / 200);
+			set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 7 + state_timer / 20);
+		}
+	}
+}

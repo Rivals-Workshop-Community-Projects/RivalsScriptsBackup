@@ -3,7 +3,7 @@
 //State 0: Existing lol
 
 if (state == 0){
-		image_alpha = 1 - (state_timer / 12);
+		image_alpha = .6 - (state_timer / 12);
     if (state_timer >= 10){
 	    state = 2;
 	    state_timer = 0;

@@ -159,12 +159,17 @@ if pill_counter > 0 && (show > 0){
 	}
 }
 
-
-if docscore > 0{
-	docscore-=1
-	draw_sprite( sprite_get("score"), fs_hit-1, get_stage_data( SD_X_POS ) +  get_stage_data( SD_WIDTH )/2, get_stage_data(SD_TOP_BLASTZONE)/2);
-	if docscore == 59{
-	sound_play(sound_get("pillcombo")) 
-}
+// This variable gets triggered when  Doc Score is 
+if doc_score > 0{
+	fs_display--;
+	if fs_display == 60 {
+		sound_play(sound_get("pillcombo")) 
+	}
+	if fs_display < 60 && fs_display > 0 {
+		draw_sprite( sprite_get("score"), doc_score, get_stage_data( SD_X_POS ) +  get_stage_data( SD_WIDTH )/2, get_stage_data(SD_TOP_BLASTZONE)/2);
+	}
+	if fs_display == 1 {
+		doc_score = 0;	
+	}
 }
 	user_event(12);

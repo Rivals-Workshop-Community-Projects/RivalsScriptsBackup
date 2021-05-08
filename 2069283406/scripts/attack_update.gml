@@ -160,6 +160,13 @@ if attack == AT_JAB{
 	
 	if !hitpause && window_timer <= 3 && has_hit_player && (window == 4 or window == 7){
 			hsp = (hit_player_obj.x - (x + (30 * spr_dir))) / 6
+			
+			if hsp > 6 {
+				hsp = 6
+			}
+			if hsp < -6 {
+				hsp = -6
+			}
 	}
 	
 
@@ -636,7 +643,7 @@ if attack == AT_DSPECIAL {
 		sound_play(asset_get("sfx_burnapplied"))
 		
 		if (fireon >= 3 && inrange) or dspecon = 1{
-		create_hitbox(AT_DSPECIAL , 2 , hit_player_obj.x , y + 30 );
+		create_hitbox(AT_DSPECIAL , 2 , hit_player_obj.x , y - 20 );
 		sound_play(asset_get("sfx_ori_bash_launch"))
 		}
 		

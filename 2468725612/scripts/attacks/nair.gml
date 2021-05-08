@@ -98,6 +98,7 @@ set_hitbox_value(AT_NAIR, 4, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NAIR, 4, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_NAIR, 4, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_NAIR, 4, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_NAIR, 4, HG_PROJECTILE_DESTROY_EFFECT, 1);
 
 set_hitbox_value(AT_NAIR, 5, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NAIR, 5, HG_WINDOW, 2);
@@ -119,6 +120,7 @@ set_hitbox_value(AT_NAIR, 5, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NAIR, 5, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_NAIR, 5, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_NAIR, 5, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_NAIR, 5, HG_PROJECTILE_DESTROY_EFFECT, 1);
 
 set_hitbox_value(AT_NAIR, 6, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NAIR, 6, HG_WINDOW, 2);
@@ -142,6 +144,7 @@ set_hitbox_value(AT_NAIR, 6, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NAIR, 6, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_NAIR, 6, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_NAIR, 6, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_NAIR, 6, HG_PROJECTILE_DESTROY_EFFECT, 1);
 
 set_hitbox_value(AT_NAIR, 7, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NAIR, 7, HG_WINDOW, 2);

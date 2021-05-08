@@ -12,6 +12,11 @@ if ((attack == AT_DATTACK || attack == AT_NAIR || attack == AT_FAIR || attack ==
 		y = y_pos + player_id.y;
 }
 
+if ((attack == AT_NAIR || attack == AT_FAIR || attack == AT_BAIR || attack == AT_UAIR 
+	|| attack == AT_DAIR) && hit_priority != 0 && player_id.free == false){
+		destroyed = true;
+}
+
 if ((attack == AT_UTILT || attack == AT_NAIR) && hbox_num == 7){
 	if (free == false){
 		sound_play(sound_get("shotgun_shell"));

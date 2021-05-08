@@ -14,7 +14,6 @@ intro = 1
 if introhit = 0 {
 	introhit = -1
 }
-firetimer = 300
 
 if firerange > 0 {
     firerange -= 30

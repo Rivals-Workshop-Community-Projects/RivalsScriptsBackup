@@ -367,6 +367,18 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.43", "7 May, 2021");
+	initPatchWords("Uair")
+	initPatchWords_ext("Increased scaling for all hits - .35 > 4", fa_left, c_gray, 1, 0);
+	initPatchWords("Final smash")
+	initPatchWords_ext("Fixed a bug", fa_left, c_gray, 1, 0);
+	initPatchWords("Miiverse")
+	initPatchWords_ext("added one more lol", fa_left, c_gray, 1, 0);
+	initPatchWords("Runes")
+	initPatchWords_ext("fixed some stuff", fa_left, c_gray, 1, 0);
+	
+	
+	
 	initPatch("1.42", "5 May, 2021");
 	initPatchWords("Strongs")
 	initPatchWords_ext("Hitboxes are larger

@@ -385,6 +385,13 @@ set_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH, 5);
     visible = false;
     draw_indicator = false;
     
+
+	with pet_obj {
+		if variable_instance_exists(self,"clone_comp"){
+			clone_comp = true;
+		}
+	}
+
     
     
 }

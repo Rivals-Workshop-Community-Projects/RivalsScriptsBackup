@@ -66,6 +66,21 @@ if (attack == AT_USPECIAL_GROUND)
 	}
 }
 
+
+if (attack == AT_USPECIAL) && vsp == 0{
+	if fire = 1{
+		vsp = -2.6;
+	}
+	if ice = 1{
+		vsp = -3.6;
+	}
+	if thunder = 1{
+		vsp = -2;
+	}
+	if pistols = 1{
+		vsp = -1.5;
+	}
+}	
 //SHOTGUN
 if (attack == AT_NSPECIAL)
 {

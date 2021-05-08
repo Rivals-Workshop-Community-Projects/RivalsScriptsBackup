@@ -63,6 +63,8 @@ startMoving = true
 
 lifeTimer = 1300
 
+multi_hits = 0
+
 sprite[0] = sprite_get("sawSpawn");             //Example sprites
 sprite[1] = sprite_get("sawMove");
 sprite[2] = sprite_get("sawMove");

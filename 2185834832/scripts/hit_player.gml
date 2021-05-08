@@ -21,14 +21,7 @@ if(my_hitboxID.attack == AT_DSTRONG){
 	my_hitboxID.hbox_num == 2 ||
 	my_hitboxID.hbox_num == 3 ||
 	my_hitboxID.hbox_num == 4 ||
-	my_hitboxID.hbox_num == 5 ||
-	my_hitboxID.hbox_num == 6 ||
-	my_hitboxID.hbox_num == 8 ||
-	my_hitboxID.hbox_num == 9 ||
-	my_hitboxID.hbox_num == 10 ||
-	my_hitboxID.hbox_num == 11 ||
-	my_hitboxID.hbox_num == 12 ||
-	my_hitboxID.hbox_num == 13){
+	my_hitboxID.hbox_num == 5){
         grabbedid = hit_player_obj;
         hit_player_obj.grabbed = 1;
 		grabbedid.ungrab = 0;
@@ -44,6 +37,7 @@ if(waterCharges < 3){
 	if(my_hitboxID.attack == AT_DSPECIAL){
 		if(my_hitboxID.hbox_num == 1){
 			waterLevel += 3
+			saw_blade.multi_hits += 1
 		}else if(my_hitboxID.hbox_num == 2){
 			waterLevel += 10
 		}
@@ -209,6 +203,7 @@ if(attack == AT_NSPECIAL){
 	if(waterCharges < 3){
 	waterCharges += 1
 	}
+	stupid_hit_var = true
 }
 
 if(attack == AT_DATTACK){

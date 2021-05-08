@@ -262,7 +262,8 @@ spr_dspecial_air = sprite_get("dspecial_air");
 spr_dspecial_effect = sprite_get("dspecial_effect"); 
 spr_parry_holo = sprite_get("parry_hologram"); 
 
-
+groove_hud_y = -30;
+lgroove_strong = AT_FSTRONG;
 
 
 //asset_get("empty_sprite"))

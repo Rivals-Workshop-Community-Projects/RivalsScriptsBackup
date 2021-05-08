@@ -412,6 +412,36 @@ if (has_rune("O")){
 }
 
 
+if (has_rune ("A")) && (has_rune ("B")) && (has_rune ("C")) && (has_rune ("D")) && (has_rune ("E")) && (has_rune ("F")) && (has_rune ("G")) && (has_rune ("H")) && (has_rune ("I")) && (has_rune ("J")) && (has_rune ("K")) && (has_rune ("L")) && (has_rune ("M")) && (has_rune ("N")) && (has_rune ("O")){
+
+	set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 14);
+	set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 14);
+	set_hitbox_value(AT_DAIR, 3, HG_DAMAGE, 14);
+	set_hitbox_value(AT_DAIR, 4, HG_DAMAGE, 14);
+	set_hitbox_value(AT_DAIR, 5, HG_DAMAGE, 14);
+	
+	set_hitbox_value(AT_DSPECIAL, 5, HG_ANGLE, 270);
+
+	set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.2);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 9);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 1.2);
+
+	set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 1.2);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 9);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 1.2);
+
+	set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
+	
+	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
+	
+	set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 1);
+	
+	set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
+	
+	set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 40);
+}
+
+
 // offset stuff
 if (attack == AT_DAIR){
 hud_offset = 15;

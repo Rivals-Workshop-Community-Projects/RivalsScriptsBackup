@@ -458,6 +458,10 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.23", "8 May, 2021");
+	initPatchWords_ext("- Buffy now properly works with the Groove Buddy!", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- Fixed the ''projectile'' hitboxes on Buffy's aerials", fa_left, c_white, 0, 0);
+	
 	initPatch("1.22", "7 May, 2021");
 	initPatchWords_ext("- Buffy's ''knockback_adj'' is now .9", fa_left, c_white, 0, 0);
 	initPatchWords_ext("- Buffy's ''air_friction'' is now 0.05", fa_left, c_white, 0, 0);

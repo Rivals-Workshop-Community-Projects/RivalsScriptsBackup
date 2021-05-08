@@ -2,6 +2,7 @@ if (!custom_clone){
     user_event(14);
 
 
+
 if (lockout_timer <= 5){
     lockout_timer++;    
 }
@@ -148,7 +149,17 @@ if (fspecial_hit >= 0){
 		fspecial_hit = -1;
 	}
 	
-if (state == PS_WALL_JUMP && hologram_is_alive == true){
+if ((state == PS_IDLE|| PS_IDLE_AIR) && hologram_is_alive == true && hologram.state != PS_ATTACK_AIR
+&& grab_ground_clone == false && grab_air_clone == false){
+	hologram.hurtboxID.sprite_index = sprite_get("hurtbox_idle");
+}
+
+if (state == PS_AIR_DODGE){
+	grab_ground_clone = false;
+	grab_air_clone = false;
+}
+	
+if ((state == PS_WALL_JUMP || shield_pressed) && hologram_is_alive == true){
 	hologram.hurtboxID.sprite_index = sprite_get("hurtbox_idle");
 }
 
@@ -271,6 +282,8 @@ if (has_rune("M") && !custom_clone && taunt_pressed && hologram_is_alive == true
 if (has_rune("N") && !custom_clone && hologram_is_alive == true && hologram.state = PS_ATTACK_AIR){
 	hologram.super_armor = true;
 }
+
+
 
 
 

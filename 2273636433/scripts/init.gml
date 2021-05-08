@@ -214,8 +214,8 @@ fire_taunt_frames = 1;
 fire_taunt_sound = sound_get("melee_wack");
 fire_taunt_sound_frame = 1;
 
-fs_hit = 0;
-docscore = 0;
+fs_display = 180;
+doc_score = 0;		
 
 /* funny variables for phone thing
 prev_gravity_speed = gravity_speed;

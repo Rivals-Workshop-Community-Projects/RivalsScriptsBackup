@@ -141,12 +141,12 @@ set_color_profile_slot( 14, 4, 167, 235, 214 ); //Beads
 set_color_profile_slot( 14, 5, 230, 255, 248 ); //Bubble Highlight
 
 // BLM
-set_color_profile_slot( 15, 0, 66, 47, 47 ); //Liquid
-set_color_profile_slot( 15, 1, 105, 90, 86 ); //Skin
-set_color_profile_slot( 15, 2, 92, 86, 79 ); //Cloth
-set_color_profile_slot( 15, 3, 51, 47, 43 ); //Shell
-set_color_profile_slot( 15, 4, 138, 119, 112 ); //Beads
-set_color_profile_slot( 15, 5, 173, 158, 158 ); //Bubble Highlight
+set_color_profile_slot( 15, 0, 212, 212, 212 ); //Liquid
+set_color_profile_slot( 15, 1, 99, 93, 91 ); //Skin
+set_color_profile_slot( 15, 2, 212, 176, 13 ); //Cloth
+set_color_profile_slot( 15, 3, 64, 59, 54 ); //Shell
+set_color_profile_slot( 15, 4, 125, 107, 101 ); //Beads
+set_color_profile_slot( 15, 5, 66, 52, 52 ); //Bubble Highlight
 
 // Copper [5k Milestone]
 set_color_profile_slot( 16, 0, 171, 115, 91 ); //Liquid
@@ -164,13 +164,13 @@ set_color_profile_slot( 17, 3, 150, 156, 153 ); //Shell
 set_color_profile_slot( 17, 4, 221, 230, 227 ); //Beads
 set_color_profile_slot( 17, 5, 255, 255, 255 ); //Bubble Highlight
 
-// Pyrite [Almost at 15k!!]
-set_color_profile_slot( 18, 0, 163, 136, 96 ); //Liquid
-set_color_profile_slot( 18, 1, 201, 175, 131 ); //Skin
-set_color_profile_slot( 18, 2, 97, 75, 34 ); //Cloth
-set_color_profile_slot( 18, 3, 107, 72, 18 ); //Shell
-set_color_profile_slot( 18, 4, 163, 136, 96 ); //Beads
-set_color_profile_slot( 18, 5, 163, 136, 96 ); //Bubble Highlight
+// Gold [15k Milestone]
+set_color_profile_slot( 18, 0, 255, 243, 209 ); //Liquid
+set_color_profile_slot( 18, 1, 255, 195, 0 ); //Skin
+set_color_profile_slot( 18, 2, 255, 174, 0 ); //Cloth
+set_color_profile_slot( 18, 3, 255, 217, 0 ); //Shell
+set_color_profile_slot( 18, 4, 255, 228, 179 ); //Beads
+set_color_profile_slot( 18, 5, 255, 174, 0 ); //Bubble Highlight
 
 // Developer
 set_color_profile_slot( 19, 0, 238, 107, 255 ); //Liquid

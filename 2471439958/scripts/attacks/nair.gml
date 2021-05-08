@@ -44,7 +44,7 @@ set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 2);
 set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_NAIR, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 4);
+set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, sound_get("axe_hit"));
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, blood_effect);

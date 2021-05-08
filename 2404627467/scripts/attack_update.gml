@@ -3,6 +3,16 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+//Rune
+if (has_rune("A")) {
+	if (attack == AT_DATTACK) {
+		if (window > 2) {
+			can_ustrong = true;
+		}
+	}
+}
+
+
 //Tilts
 if(attack == AT_JAB){
     if(window == 1 && window_timer == 1){
@@ -268,6 +278,15 @@ if (attack == AT_DAIR) {
 
 //Specials
 if (attack == AT_NSPECIAL) {
+	if (state_timer == 2) {
+		if (instance_exists(nspecial_article)) {
+		    if (nspecial_article.window > 1) {
+		    	window = 4;
+		    	window_timer = 0;
+		    }
+		}
+	}
+	
 	if (window == 2) {
 		var window_third = round(get_window_value(attack, window, AG_WINDOW_LENGTH) / 3);
 		if (window_timer == 1) {
@@ -301,6 +320,18 @@ if (attack == AT_NSPECIAL) {
 				window_timer = 0;
 			}
 		}
+	}
+	
+	if (window == 5) {
+		if (window_timer == 1) {
+		    if (nspecial_article.window == 2 || nspecial_article.window == 4 || nspecial_article.window == 6) {
+		        nspecial_article.window_timer = 290;
+		    }
+		}
+	}
+	
+	if (window > 5) {
+		move_cooldown[AT_NSPECIAL] = 30;
 	}
 }
 
@@ -427,7 +458,16 @@ if (attack == AT_DSPECIAL){
         if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {    //Check to see if the window is at its end.
             var tp_angle = 0;   //The angle at which the teleport will go.
             if(!joy_pad_idle) { //Set the angle to the direction held on the joystick if a direction is being held.
-                tp_angle = joy_dir;
+            	if (joy_dir > 180 && joy_dir < 360 && !free) {
+            		if (left_down)
+            			tp_angle = 175;
+            		else if (right_down)
+            			tp_angle = 5;
+            		else
+                		tp_angle = 270;
+            	} 
+            	else
+                	tp_angle = joy_dir;
 	        
 	            var tp_dist_x = lengthdir_x(tp_dist, tp_angle); //The x and y components of the vector that will be added to
 	            var tp_dist_y = lengthdir_y(tp_dist, tp_angle); //the player's location.

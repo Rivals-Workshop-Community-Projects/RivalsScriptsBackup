@@ -425,9 +425,9 @@ if !hitpause {
      
      
      case AT_NSPECIAL:    
-     move_cooldown[AT_NSPECIAL] = 20
+     move_cooldown[AT_NSPECIAL] = 30
      if window == 1 && window_timer == 1 && !free {
-        vsp = -6
+        vsp = -8
      }
 
      if window == 2 && window_timer == 1 {

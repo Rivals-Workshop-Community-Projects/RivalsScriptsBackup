@@ -19,6 +19,13 @@ attacking = 0
 invisound = 0
 invitimer = 0
 
+finisher = 0
+finishercd = 0
+finisherinc = 0
+  		galx = 0
+        galy = 0
+        
+
 char_height = 60.1;
 idle_anim_speed = .2;
 crouch_anim_speed = .1;
@@ -145,15 +152,16 @@ sprite_change_offset("shit1", 100, 100);
 
 sprite_change_offset("nproj", 25, 25);
 sprite_change_offset("grass", 20, 38);
-sprite_change_offset("seed", 5, 5);
+sprite_change_offset("seed", 20, 20);
 sprite_change_offset("grasscv", 30, 30);
 
 ds = hit_fx_create( sprite_get( "ds" ), 25 );
 
 
 
-
-
+sprite_change_offset("death", 1000, 1000);
+sprite_change_offset("blud", 256, 125);
+sprite_change_offset("grassd", 256, 125);
 
 
 

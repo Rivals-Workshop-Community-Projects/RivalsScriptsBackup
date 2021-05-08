@@ -4,17 +4,21 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL){
 }
 
 //Dstrong Combo Grab
-if (attack == AT_DSTRONG && state == PS_ATTACK_GROUND){
+if (attack == AT_DSTRONG && state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR && attack == AT_DSTRONG){
     if (window > 1 && grabbedid != noone){
 		grabbedid.ungrab = 0;
         //grabbedid.visible = false; //UNCOMMENT THIS LINE TO MAKE THE GRABBED PLAYER INVISIBLE
-        if(window == 2){
-	        grabbedid.x = lerp(grabbedid.x, x, 0.1); //SET GRABBED PLAYER X TO BE RELATIVE TO PLAYER X
+        if(window == 2 || window == 3 && window_timer < 19){
+        	if(grabbedid.x > x){
+		        grabbedid.x = lerp(grabbedid.x, x + 30, 0.2); //SET GRABBED PLAYER X TO BE RELATIVE TO PLAYER X
+        	}else{
+        		grabbedid.x = lerp(grabbedid.x, x - 30, 0.2); //SET GRABBED PLAYER X TO BE RELATIVE TO PLAYER X
+        	}
 			grabbedid.y = lerp(grabbedid.y, y - 10, 0.1); //SET GRABBED PLAYER Y TO BE RELATIVE TO PLAYER Y
         }
         grabbedid.wrap_time = 6000;
         grabbedid.state = PS_WRAPPED;
-        if(window == 3){ //REPLACE THIS IF CONDITION WITH WHAT YOU WANT TO RELEASE THE GRAB
+        if(window == 3 && window_timer == 20){ //REPLACE THIS IF CONDITION WITH WHAT YOU WANT TO RELEASE THE GRAB
             grabbedid.ungrab = 1
             grabbedid.state = PS_TUMBLE;
             grabbedid = noone;
@@ -227,12 +231,12 @@ if(attack == AT_FSPECIAL){
 				saw_blade.fspec_turns += 1
 				sound_play(asset_get("sfx_gus_propeller_dagger_wall"))
 				spawn_hit_fx(saw_blade.x, saw_blade.y + 60, 109)
-				obj_article1.spr_dir = spr_dir
-				if(obj_article1.spr_dir == -1){
-					obj_article1.hsp = -0.1
+				saw_blade.spr_dir = spr_dir
+				if(saw_blade.spr_dir == -1){
+					saw_blade.hsp = -0.1
 					move_cooldown[AT_FSPECIAL] = 25
 				}else{
-					obj_article1.hsp = 0.1
+					saw_blade.hsp = 0.1
 					move_cooldown[AT_FSPECIAL] = 25
 				}
 			}
@@ -265,9 +269,22 @@ if(attack == AT_FSPECIAL){
 }
 
 if(attack == AT_USTRONG){
+	if(window == 1){
+		can_action = false
+		if(free){
+			window_timer = 16
+			strong_down = false
+			strong_pressed = false
+		}
+	}
+	if(can_action == true){
+		can_jump = true
+		can_shield = true
+	}
 	if(window == 4){
-		if(window_timer == 20){
+		if(window_timer == 30){
 			window_timer = 0
+			can_action = true
 		}
 		if(!free){
 			window = 5
@@ -292,6 +309,11 @@ if(attack == AT_JAB){
 }
 
 if(attack == AT_NSPECIAL){
+	if(window == 1){
+		stupid_hit_var = false
+		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
+		set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecialair"));
+	}
 	if(window == 2 || window == 3){
 		create_hitbox( AT_NSPECIAL, 2, x, y)
 	}
@@ -308,6 +330,10 @@ if(attack == AT_NSPECIAL){
 		set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.3 + state_timer / 150);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 7 + state_timer / 150);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.2 + state_timer / 150);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
+		set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 120);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 120);
+		//Extra endlag
 		
 		if(window_timer == 19 && special_down){
 			window = 3
@@ -316,9 +342,21 @@ if(attack == AT_NSPECIAL){
 		if(!special_down){
 			window = 3
 			window_timer = 20
-		}else if(state_timer > 80){
+		}else if(state_timer > 70){
 			window = 3
 			window_timer = 20
+			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 14);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 11);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 1);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 12);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 1);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));
+			set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_full"));
+			set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_air_full"));
+			sound_play(asset_get("sfx_ell_fist_explode"))
+			spawn_hit_fx(x, y - 45, nspec_large)
+			set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 170);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 170);
 		}
 	}
 	combatTimer = 5
@@ -333,8 +371,12 @@ if(attack == AT_DATTACK){
 }
 
 if(attack == AT_TAUNT){
+	if(window == 4){
+		can_jump = true
+		can_shield = true
+	}
 	if(window == 4 && window_timer > 5 && window_timer < 10){
-		if(special_down){
+		if(taunt_down){
 			window_timer = 5
 		}
 	}
@@ -346,15 +388,60 @@ if(attack == AT_TAUNT){
 }
 
 if(attack == AT_DSTRONG){
-	if(window == 2){
-		if(hsp < 3 && hsp > -3){
-			if(left_pressed || left_down){
-				hsp -= 1
-			}else if(right_pressed || right_down){
-				hsp += 1
+	can_move = false
+	vsp = 0
+	if(window == 1){
+		if(free){
+			hsp /= 1.1
+		}
+	}
+	if(window == 2 || window == 3){
+		if(window_timer == 1){
+			if(state_timer > 55){
+				
+			}else if(state_timer > 30){
+				window_timer = 9
 			}else{
-				hsp /= 2
+				window_timer = 18
+			}
+		}
+		if(!free){
+			if(hsp < 2 && hsp > -2){
+				if(left_pressed || left_down){
+					hsp -= 1
+				}else if(right_pressed || right_down){
+					hsp += 1
+				}else{
+					hsp /= 2
+				}
+			}
+		}else{
+			if(hsp < 2 && hsp > -2){
+				if(left_pressed || left_down){
+					hsp -= 0.5
+				}else if(right_pressed || right_down){
+					hsp += 0.5
+				}else{
+					hsp /= 2
+				}
+			}else{
+				if(hsp > 3){
+					hsp = 3
+				}else if(hsp < -3){
+					hsp = -3
+				}
 			}
 		}
 	}
+	if(window == 4){
+		hsp = 0
+	}
+}
+
+//inner bullshit (jk jk)
+if(alt_cur == 20){
+    if(attack == AT_TAUNT && window == 1 && window_timer == 2 && inner_audio = false){
+        sound_play(sound_get("Inner taunt audio thing whatever idk dude"))
+        inner_audio = true
+    }
 }

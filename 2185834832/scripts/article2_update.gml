@@ -38,6 +38,7 @@ if(hitstun > 0){
 	hsp = old_hsp
 	vsp = old_vsp
 }
+
 if (state == 0){
     image_index += 0.25
     create_hitbox(AT_USPECIAL, 1, x + 6*spr_dir, y - 18)
@@ -50,55 +51,6 @@ if (state == 0){
     	state = 2
     	state_timer = 0
     }
-    //Hit
-    var hitbox_check = instance_place(x, y, pHitBox);
-    
-    if(hitbox_check != noone && got_hit_timer < 0){
-        if(hitbox_check.player_id == player_id){
-            if(hitbox_check.attack != AT_FSPECIAL 
-            && hitbox_check.attack != AT_USPECIAL
-            && hitbox_check.attack != AT_USPECIAL_2
-            && hitbox_check.attack != AT_DSPECIAL){
-            	if(hitbox_check.attack == AT_NSPECIAL && hitbox_check.hbox_num == 2){
-            		
-            	}else{
-					var kb_angle = get_hitbox_angle(hitbox_check);
-				    var kb_distance = hitbox_check.kb_value + hitbox_check.damage *
-				      hitbox_check.kb_scale;
-				    hsp = lengthdir_x( kb_distance, kb_angle );
-				    vsp = lengthdir_y(kb_distance, kb_angle);
-	                image_index = 0
-	                sound_play(hitbox_check.sound_effect)
-	                spawn_hit_fx(x, y, hitbox_check.hit_effect)
-	                player_id.old_hsp = player_id.hsp;
-					player_id.old_vsp = player_id.vsp;
-	                player_id.hitpause = true
-	                player_id.hitstop = hitbox_check.hitpause
-	                player_id.hitstop_full = hitbox_check.hitpause
-	                old_vsp = vsp
-	            	old_hsp = hsp
-	            	hitstun = 5
-	                instance_destroy(hitbox_check);
-	                got_hit_timer = hitstun + 3
-            	}
-		    }else if(hitbox_check.attack == AT_FSPECIAL){
-		    	hsp = 4 * hitbox_check.spr_dir
-		    	vsp = -5.5
-		    	sound_play(hitbox_check.sound_effect)
-                spawn_hit_fx(x, y, hitbox_check.hit_effect)
-                player_id.old_hsp = player_id.hsp;
-				player_id.old_vsp = player_id.vsp;
-                player_id.hitpause = true
-                player_id.hitstop = 4
-                player_id.hitstop_full = 4
-            	old_vsp = vsp
-            	old_hsp = hsp
-            	hitstun = 4
-                instance_destroy(hitbox_check);
-                got_hit_timer = hitstun + 3
-		    }
-		}
-	}
 }
 
 
@@ -117,49 +69,42 @@ if (state == 1){
     	state = 2
     	state_timer = 0
     }
-       //Hit
-    var hitbox_check = instance_place(x, y, pHitBox);
-    
-    if(hitbox_check != noone && got_hit_timer < 0){
-        if(hitbox_check.player_id == player_id){
-            if(hitbox_check.attack != AT_FSPECIAL 
-            && hitbox_check.attack != AT_USPECIAL
-            && hitbox_check.attack != AT_USPECIAL_2
-            && hitbox_check.attack != AT_DSPECIAL){
-				var kb_angle = get_hitbox_angle(hitbox_check);
-			    var kb_distance = hitbox_check.kb_value + hitbox_check.damage *
-			      hitbox_check.kb_scale;
-			    hsp = lengthdir_x( kb_distance, kb_angle );
-			    vsp = min( -5, ( lengthdir_y(kb_distance, kb_angle) ) );
-                image_index = 0
-                sound_play(hitbox_check.sound_effect)
-                spawn_hit_fx(x, y, hitbox_check.hit_effect)
-                player_id.old_hsp = player_id.hsp;
-				player_id.old_vsp = player_id.vsp;
-                player_id.hitpause = true
-                player_id.hitstop = 4
-                player_id.hitstop_full = 4
-                old_vsp = vsp
-            	old_hsp = hsp
-            	hitstun = 4
-                instance_destroy(hitbox_check);
-                got_hit_timer = hitstun + 3
-		    }else if(hitbox_check.attack == AT_FSPECIAL){
-		    	hsp = 4 * hitbox_check.spr_dir
-		    	vsp = 5.5
-		    	sound_play(hitbox_check.sound_effect)
-                spawn_hit_fx(x, y, hitbox_check.hit_effect)
-                player_id.old_hsp = player_id.hsp;
-				player_id.old_vsp = player_id.vsp;
-                player_id.hitpause = true
-                player_id.hitstop = hitbox_check.hitpause
-                player_id.hitstop_full = hitbox_check.hitpause
-                old_vsp = vsp
-            	old_hsp = hsp
-            	hitstun = 4
-                instance_destroy(hitbox_check);
-                got_hit_timer = hitstun + 3
-		    }
+}
+
+with (asset_get("pHitBox")){
+	if (place_meeting(x, y, other)){
+		if(other.got_hit_timer < 0){
+		    if(player_id == other.player_id){
+		        if(attack != AT_USPECIAL
+		        && attack != AT_USPECIAL_2
+		        && attack != AT_DSPECIAL && !(attack == AT_NSPECIAL && hbox_num == 2)){
+				    var kb_distance = kb_value + damage *
+				      kb_scale;
+				    other.hsp = lengthdir_x( kb_distance, kb_angle) * spr_dir;
+				    other.vsp = ( lengthdir_y(kb_distance, kb_angle) );
+		            image_index = 0
+		            sound_play(sound_effect)
+		            spawn_hit_fx(x, y, hit_effect)
+		            player_id.old_hsp = player_id.hsp;
+					player_id.old_vsp = player_id.vsp;
+		            player_id.hitpause = true
+		            player_id.hitstop = 4
+		            player_id.hitstop_full = 4
+		            other.old_vsp = other.vsp
+		        	other.old_hsp = other.hsp
+		        	other.hitstun = 4
+		            other.got_hit_timer = other.hitstun + 3
+		            if(attack == AT_DTILT){
+			            if(player_id.window == 2 || player_id.window == 3){
+							player_id.window = 5
+							player_id.window_timer = 0
+						}
+		            }
+		            instance_destroy(pHitBox);
+		            exit;
+		        
+			    }
+			}
 		}
 	}
 }
@@ -176,12 +121,6 @@ if (state == 2){
 	if(state_timer == 3){
 		create_hitbox(AT_USPECIAL, 2, x, y);
 		sound_play( asset_get("sfx_waterhit_heavy"));
-		if(instance_exists(player_id.saw_blade)){
-			with(player_id){
-			saw_blade.state = 2
-			saw_blade.state_timer = 0
-			}
-		}
 	}
 	if(image_index < 8){
 	image_index += 0.35

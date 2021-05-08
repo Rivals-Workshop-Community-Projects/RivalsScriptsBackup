@@ -45,7 +45,7 @@ if attack == AT_FSPECIAL && hbox_num == 1 {
 
 if attack == AT_USPECIAL && hbox_num == 11  {
 	can_hit_self = true
-	with player_id { 
+	with player_id.hit_player_o { 
 		other.x += floor((x - other.x) / 12)
 		other.y += floor((y - other.y) / 12)
 	}
@@ -120,17 +120,17 @@ if player_id.move_cooldown[AT_TAUNT_2] != 0{
 	spawn_hit_fx( x , y + 60 - random_func(13, 40, true) , firepar1 )
 	
 	with player_id {
-		other.x += floor((x - other.x) / 24)
-		other.y += floor((y - other.y) / 24)
-		other.hsp = (x - other.x) / 24
-		other.vsp = (y - other.y) / 24
+		other.x += floor((hit_player_obj.x - other.x) / 24)
+		other.y += floor((hit_player_obj.y - other.y) / 24)
+		other.hsp = (hit_player_obj.x - other.x) / 24
+		other.vsp = (hit_player_obj.y - other.y) / 24
     }
 
 	
 }
 
 
-if has_rune("J") && player_id.fireon >= 1 {
+if has_rune("L") && player_id.fireon >= 1 {
 		spr_dir = (player_id.hit_player_obj.x > x?1:-1)
 		
 
@@ -151,7 +151,7 @@ if has_rune("J") && player_id.fireon >= 1 {
 		}
 	
 } else {
-	if (hsp == 0 && vsp < 2 && vsp > -1)  && hit_priority != 0 {
+	if (hsp == 0 && vsp < 2 && vsp > -1)  && hit_priority != 0 && hbox_num == 2{
 		destroyed = true
 	}
 }

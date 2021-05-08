@@ -64,6 +64,7 @@ set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, 0.82);
 set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 149);
+set_hitbox_value(AT_FSTRONG, 2, HG_HIT_LOCKOUT, 10);
 
 set_hitbox_value(AT_FSTRONG, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_TYPE, 1);
@@ -86,6 +87,7 @@ set_hitbox_value(AT_FSTRONG, 3, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));
 set_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, 149);
 set_hitbox_value(AT_FSTRONG, 3, HG_ANGLE_FLIPPER, 3);
+set_hitbox_value(AT_FSTRONG, 3, HG_HIT_LOCKOUT, 10);
 
 set_hitbox_value(AT_FSTRONG, 4, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_TYPE, 1);

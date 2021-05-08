@@ -51,20 +51,20 @@ if attack == AT_NSPECIAL{
 						pill_state =0;
 					}else if (pill_state == 4){				//Dstrong1 // No Gravity
 						vsp = 0;
-						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 2/3;}
+						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 3/4;}
 						else{ hsp = hsp*-1.25; }
 						length = 150;
 						pill_state = 4;
 					}else if (pill_state == 5){				//Dstrong2 // No Gravity
 						vsp = 0;
-						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 2/3;}
+						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 3/4;}
 						else{ hsp = hsp*-1.25; }
 						length = 150;
 						pill_state = 5;
 					}
 					else {
 						vsp = -abs(vsp);
-						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 2/3;}
+						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 3/4;}
 						else{ hsp = hsp*-1.25; }
 						if abs(hsp) < 1 { hsp = 4.5*player_id.spr_dir; }
 						//grav = 0.56;

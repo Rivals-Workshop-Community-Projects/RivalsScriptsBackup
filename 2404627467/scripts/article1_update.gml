@@ -32,17 +32,17 @@ else {
     
     //Charge 1
     if (window == 2) {
-        sprite_index = sprite_get("fx_nspecial1_idle");   
-        if (window_timer <= 14) {
+        sprite_index = sprite_get("fx_nspecial1_idle");    
+        if (window_timer <= 290) {
             image_index += 0.1;
             if (image_index >= 4)
                 image_index = 0
         }
-        if (window_timer > 14 && window_timer < 30) {
+        if (window_timer > 290 && window_timer < 300) {
             image_index = window_timer % 4 < 2 ? 4 : 5;
         }
         
-        if (window_timer = 30) {
+        if (window_timer = 300) {
             window = 3;
             window_timer = 0;
         }
@@ -70,17 +70,17 @@ else {
     
     //Charge 2
     if (window == 4) {
-        sprite_index = sprite_get("fx_nspecial2_idle");   
-        if (window_timer <= 44) {
+        sprite_index = sprite_get("fx_nspecial2_idle");    
+        if (window_timer <= 290) {
             image_index += 0.1;
             if (image_index >= 4)
                 image_index = 0
         }
-        if (window_timer > 44 && window_timer < 60) {
+        if (window_timer > 290 && window_timer < 300) {
             image_index = window_timer % 4 < 2 ? 4 : 5;
         }
         
-        if (window_timer == 60) {
+        if (window_timer == 300) {
             window = 5;
             window_timer = 0;
         }
@@ -109,16 +109,16 @@ else {
     //Charge 3
     if (window == 6) {
         sprite_index = sprite_get("fx_nspecial3_idle");   
-        if (window_timer <= 74) {
+        if (window_timer <= 290) {
             image_index += 0.1;
             if (image_index >= 4)
                 image_index = 0
         }
-        if (window_timer > 74 && window_timer < 90) {
+        if (window_timer > 290 && window_timer < 300) {
             image_index = window_timer % 4 < 2 ? 4 : 5;
         }
         
-        if (window_timer == 90) {
+        if (window_timer == 300) {
             window = 7;
             window_timer = 0;
         }

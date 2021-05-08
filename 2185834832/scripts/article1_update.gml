@@ -88,7 +88,7 @@ if (state == 1){
     image_index += spd
     hitboxReal += 0.12
     if(hitboxReal > 1 && startMoving = true){
-	create_hitbox( AT_DSPECIAL, 1, x, y + 40)
+	create_hitbox( AT_DSPECIAL, 1, floor(x + (hsp * 2)), y + 40)
 	hitboxReal = 0
     }
 }
@@ -113,6 +113,8 @@ if (state == 3){
 
 //State 4: Sink
 if (state == 4){
+	hsp = 0
+	vsp = 0
 	image_index -= 0.25
 	if(state_timer == 1){
 	sound_play( asset_get("sfx_orca_shake"))
@@ -120,6 +122,12 @@ if (state == 4){
 		instance_destroy();
     	exit;
 	}
+}
+
+if(multi_hits > 20 && state != 4){
+	state = 4
+	state_timer = 0
+	image_index = 0
 }
 
 //NOTE: To use a hitbox properly with an article, it MUST be a projectile! (hitbox type 2)

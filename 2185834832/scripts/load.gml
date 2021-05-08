@@ -50,8 +50,10 @@ sprite_change_offset("ustrongstrong", 125, 164);
 sprite_change_offset("dstrong", 125, 164);
 sprite_change_offset("dstrongstrong", 125, 164);
 sprite_change_offset("nspecial", 125, 164);
+sprite_change_offset("nspecial_full", 125, 164);
 sprite_change_offset("nspecialnon", 125, 164);
 sprite_change_offset("nspecialair", 125, 164);
+sprite_change_offset("nspecial_air_full", 125, 164);
 sprite_change_offset("nspecialairnon", 125, 164);
 sprite_change_offset("fspecial", 125, 164);
 sprite_change_offset("uspecial", 125, 164);
@@ -86,6 +88,7 @@ sprite_change_offset("bubbleBombEmpty", 32, 40);
 sprite_change_offset("torrohitbox", 125, 164);
 sprite_change_offset("sawport", 125, 164);
 sprite_change_offset("nspecial_charging", 54, 54);
+sprite_change_offset("nspec_large", 96, 96);
 
 set_victory_bg( sprite_get( "victory" ));
 

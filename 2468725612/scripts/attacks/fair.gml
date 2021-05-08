@@ -62,3 +62,4 @@ set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_DESTROY_EFFECT, 1);

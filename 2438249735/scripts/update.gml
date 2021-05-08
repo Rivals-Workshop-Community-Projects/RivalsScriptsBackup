@@ -149,7 +149,7 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 }
 
 
-if invitimer >= 90 {
+if invitimer >= 150 {
 	invitimer = 0
     invis = true
     
@@ -279,3 +279,119 @@ if state_timer < 12 {
 }
 
 }
+
+if instance_number(oPlayer) == 2 {
+
+
+
+if finisher > 0 {
+with (asset_get("pHitBox")) {
+if(player_id == other.id) {
+   destroyed = true
+}
+}
+	galx += floor((room_width/2 - galx)/22)
+    galy += floor((room_height/2 - galy)/22)
+}
+
+if finishercd == 0 {
+with oPlayer if (activated_kill_effect) {
+  if hit_player_obj == other {
+  	with other {
+  		galx = x
+        galy = y
+        
+  	    finisher = 60 
+  	    finishercd = 120 
+  	    finisherinc = 0
+  	}
+  }
+}
+}
+
+
+if finisher = 60 {
+	
+	spawn_hit_fx(x,y,lighten)
+    sound_play(sound_get("tstrong"),false,noone,0.4)
+    sound_play(sound_get("grassblade"),false,noone,1)
+}
+
+if finisher = 40 {
+    sound_play(sound_get("tstrong"),false,noone,0.6)
+         sound_play(asset_get("sfx_plant_ready"))
+                 sound_play(asset_get("sfx_crunch"),false,noone,1.4)
+}
+
+if finisher = 20 {
+    sound_play(sound_get("tstrong"),false,noone,1)
+         sound_play(asset_get("sfx_crunch"),false,noone,3)
+}
+
+ if finisher > 0{
+ 	           
+ 	           hitpause = true
+ 			hitstop = 5
+		old_hsp = hsp
+		old_vsp = vsp
+		hit_player_obj.hitstop = 5
+		
+	finisher -= 1
+	if finisherinc < 24 {
+	finisherinc += 1
+	}
+}
+
+
+}
+
+if finishercd != 0 &&  hit_player_obj.state_cat == SC_HITSTUN && !hitpause{
+	
+	
+		
+	spawn_hit_fx(hit_player_obj.x - 40 + random_func(3,80,true) , hit_player_obj.y - 16 - random_func(2,60,true), lpar5)
+	
+			 switch random_func (1,5,true) + 1 {
+    	case 1:
+	 	spawn_hit_fx(hit_player_obj.x - 40 + random_func(3,80,true) , hit_player_obj.y - 16 - random_func(2,60,true), lpar1)
+    	break ;
+ 
+    	case 2:
+	 	spawn_hit_fx(hit_player_obj.x - 40 + random_func(3,80,true) , hit_player_obj.y - 16 - random_func(2,60,true), lpar2)
+    	break ;
+    	    	
+    	case 3:
+	 	spawn_hit_fx(hit_player_obj.x - 40 + random_func(3,80,true) , hit_player_obj.y - 16 - random_func(2,60,true), lpar3)
+    	break ;
+    	
+    	case 4:
+	 	spawn_hit_fx(hit_player_obj.x - 40 + random_func(3,80,true) ,hit_player_obj. y - 16 - random_func(2,60,true), lpar4)
+    	break ;
+    	
+    	case 5:
+	 	spawn_hit_fx(hit_player_obj.x - 40 + random_func(3,80,true) , hit_player_obj.y - 16 - random_func(2,60,true), lpar5)
+    	break ;
+	 }
+	 
+		 switch state_timer % 5 + 1 {
+    	case 1:
+	 	spawn_hit_fx(hit_player_obj.x - 40 + random_func(2,80,true) , hit_player_obj.y - 16 - random_func(3,60,true), lpar1)
+    	break ;
+ 
+    	case 2:
+	 	spawn_hit_fx(hit_player_obj.x - 40 + random_func(2,80,true) , hit_player_obj.y - 16 - random_func(3,60,true), lpar2)
+    	break ;
+    	    	
+    	case 3:
+	 	spawn_hit_fx(hit_player_obj.x - 40 + random_func(2,80,true) , hit_player_obj.y - 16 - random_func(3,60,true), lpar3)
+    	break ;
+    	
+    	case 4:
+	 	spawn_hit_fx(hit_player_obj.x - 40 + random_func(2,80,true) ,hit_player_obj. y - 16 - random_func(3,60,true), lpar4)
+    	break ;
+    	
+    	case 5:
+	 	spawn_hit_fx(hit_player_obj.x - 40 + random_func(2,80,true) , hit_player_obj.y - 16 - random_func(3,60,true), lpar5)
+    	break ;
+	 }
+} 
