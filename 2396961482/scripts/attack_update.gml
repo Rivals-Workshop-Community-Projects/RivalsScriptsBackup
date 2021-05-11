@@ -8,7 +8,7 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 switch (attack)
 {
     case AT_NSPECIAL:
-        if (window == 1 && window_timer == 1) move_cooldown[AT_NSPECIAL] = 60;
+        if (window == 1 && window_timer == 1) move_cooldown[AT_NSPECIAL] = 75;
         //Fast Fall disable
         if (window == 1 && !was_parried) can_jump = false;
         can_fast_fall = false;
@@ -99,19 +99,102 @@ switch (attack)
                     break;
             }
             break;
+        case 49: //FINAL SMASH By McStinky Duckrs
+            if(has_hit)
+            {
+                set_attack_value(49, AG_NUM_WINDOWS, 7);
+                if(fs_cinematic)
+                    set_view_position(x + (char_height / 5)*spr_dir, y - (char_height / 0.5));
+            }
+
+            switch(window)
+            {
+                case 1:
+                    {
+                        fs_has_hit = false;
+                        fs_tempcheck = 0;
+                        break;
+                    }
+                case 2:
+                    {
+                        if(has_hit && !fs_has_hit)
+                        {
+                            fs_has_hit = true;
+                            //check for too many players
+                            for(i = 0; i < 4; i++)
+                            {
+                                if (is_player_on(i+1))
+                                    fs_tempcheck ++;
+                            }
+                            
+                            if(fs_tempcheck > 2)
+                            {
+                                set_window_value(49, 3, AG_WINDOW_LENGTH, 20);
+                                set_window_value(49, 5, AG_WINDOW_LENGTH, 50);
+                                fs_cinematic = false;
+                            }
+                            else
+                            {
+                                sound_play(sound_get("special_metsu_sauce"));
+                                reset_window_value(49, 3, AG_WINDOW_LENGTH);
+                                reset_window_value(49, 5, AG_WINDOW_LENGTH);
+                                fs_cinematic = true;
+                            }
+
+                            shake_camera(10, 20)
+                        }
+                        break;
+                    }
+                case 3:
+                    {
+                        if(window_timer == 1 && !has_hit)
+                        {
+                            set_attack(AT_USPECIAL);
+                            window = 4;
+                        }
+                        break;
+                    }
+                case 4:
+                    {
+                        if(window_timer == 11)
+                            shake_camera(12, 20);
+                        break;
+                    }
+                case 5:
+                    {
+                        if(window_timer == 40)
+                            shake_camera(10, 30);
+                        if(window_timer == 70)
+                            shake_camera(20, 80);
+                        break;
+                    }
+                case 6:
+                    {
+                        if(window_timer == 2)
+                        fs_has_hit = false;
+                        has_hit = false;
+                        break;
+                    }
+
+            }
 }
 // dust
 if (attack == AT_FSPECIAL && window_timer == 1 && window == 2){
     spawn_base_dust(x, y, "dash_start");}
 if (attack == AT_USPECIAL && window_timer == 1 && window == 4 || attack == AT_USPECIAL && window_timer == 1 && window == 2){
     spawn_base_dust(x, y, "n_wavedash");}
-    
+
+//funny taunt cancel
+if (attack == AT_FSPECIAL && window == 2 && taunt_pressed){
+        set_attack(AT_TAUNT);
+}
+
 //jump cancel from fspecial jank
 if (attack == AT_FSPECIAL && has_hit && window == 2){
     can_jump = true;
 }
 //Stop
-if (attack == AT_FSPECIAL){
+if (attack == AT_FSPECIAL && has_hit && window == 2){
     go_through = false;
 }
 //Ledge Snap    
@@ -153,6 +236,7 @@ if (attack == AT_DSPECIAL){
     lanternhud_CURRENT = 0;}
     
 #define spawn_base_dust
+/// spawn_base_dust(x, y, name, dir = 0)
 ///spawn_base_dust(x, y, name, ?dir)
 //This function spawns base cast dusts. Names can be found below.
 var dlen; //dust_length value

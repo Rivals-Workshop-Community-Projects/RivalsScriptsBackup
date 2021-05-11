@@ -373,7 +373,7 @@ with phone{
 	initTipWords_ext("Tip: Whenever you hit the hologram with any non special move, you can instantly cancel your move with either a NSpecial Tap or Hold!", fa_center, c_gray, 0, 0);
 	
 	initTip("About the Hologram");
-	initTipWords("Buffy's Hologram can be hit around by either herself or other players. It doesn't have a ''damage percentage'' of its own, so it will always fly the same distance depending on the attack's base knockback.");
+	initTipWords("Buffy's Hologram can be hit around by either herself or other players. It doesn't have a ''damage percentage'' of its own, so it will always fly the same distance depending on the attack's base knockback. However then the hologram gets hit by an enemy attack, its hat will enter into a ''hurt'' state for 30 frames, during this time, Buffy can't give the hologram new commands or attacks.");
 	initTipImage(player_id.spr_idle_holo, -8, fa_center, 1, c_white, 0);
 	initTipWords_ext("If the Hologram is parried or thrown off stage, it will be despawned. In this case Buffy needs to get her hat back, if it's not on the stage, you can press NSpecial to summon it back.", fa_center, c_white, 0, 0);
 	initTipWords_ext("Tip: You can check the little indicator over the hologram to check its command action, you can also hold down and Taunt to disable the indicator.
@@ -457,6 +457,14 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	
+	initPatch("1.3", "9 May, 2021");
+	initPatchWords_ext("- Buffy no longer slides off-stage with DSpecial_Air when landing on the ground", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- The hologram doesn't travel as far when getting hit", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- The hat falls a bit faster when its being respawn", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- If the hologram is dead when Buffy respawns, she'll have her hat back.", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- NEW MECHANIC:", fa_center, c_white, 0, 0);
+	initPatchWords_ext("- If the hologram gets hit, it will be in a ''hurt'' state for 30 frames, during this time, Buffy can't give the hologram any orders or change its attacks", fa_left, c_white, 0, 0);
 	
 	initPatch("1.23", "8 May, 2021");
 	initPatchWords_ext("- Buffy now properly works with the Groove Buddy!", fa_left, c_white, 0, 0);

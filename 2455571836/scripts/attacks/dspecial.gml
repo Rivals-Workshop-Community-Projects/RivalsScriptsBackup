@@ -15,8 +15,6 @@ set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 9);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX, asset_get("mfx_coin_portal"));
-set_window_value(AT_DSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(AT_DSPECIAL, 1, AG_WINDOW_VSPEED, -6);
 
 //statue idle
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_TYPE, 1);

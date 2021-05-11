@@ -50,7 +50,7 @@ set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 12);//7
 set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, 1);//1.3
 set_hitbox_value(AT_FAIR, 1, HG_EXTRA_CAMERA_SHAKE, 1);
 set_hitbox_value(AT_FAIR, 1, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 113);
+set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 110);
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 
 //main hit
@@ -71,7 +71,7 @@ set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, 0.55);//.65
 set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 8);//2
 set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, .5);//1.2
 set_hitbox_value(AT_FAIR, 2, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 194);
+set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 109);
 set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, sound_get("ARSlash"));
 
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_TYPE, 1);

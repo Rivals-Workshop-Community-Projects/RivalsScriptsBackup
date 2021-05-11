@@ -11,14 +11,14 @@ set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, sound_get("fart"));
 set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 4);
 
 set_window_value(AT_DTILT, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 13);// old 8 
+set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 10);// old 8 
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DTILT, 2, AG_WINDOW_VSPEED, -10);
 set_window_value(AT_DTILT, 2, AG_WINDOW_VSPEED_TYPE, 2);
 
 set_window_value(AT_DTILT, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 5);// old  5
+set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 3);// old  5
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_DTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);

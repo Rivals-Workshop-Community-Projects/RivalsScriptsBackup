@@ -174,7 +174,7 @@ if (can_command && joy_pad_idle && special_pressed){
 }
 
 //Hologram Act
-if (hologram_act == true){
+if (hologram_act == true && move_cooldown[AT_NSPECIAL_2] == 0){
     hologram.state = PS_ATTACK_AIR;
     if (attack_hologram != AT_UTHROW){
     	hologram.dspecial_cont = 0;

@@ -1,14 +1,15 @@
-// When dspecial is input, recall the zone if it's already deployed
-if (attack == AT_DSPECIAL){
-    var zone_deployed = false;
-    // Detect if a comedy zone belonging to this character exists
+// Use separate aerial windup animation if you start from the air
+if (attack == AT_USPECIAL) {
+    if (free) {
+        window = 3;
+    }
+}
+
+// If the Comedy Zone has already been deployed, recall it instead
+if (attack == AT_DSPECIAL) {
     with (asset_get("obj_article1")) {
         if (player_id == other.id) {
-            zone_deployed = true;
+            other.attack = AT_DSPECIAL_2;
         }
-    }
-    if (zone_deployed) {
-        window = 5;
-        window_timer = 0;
     }
 }

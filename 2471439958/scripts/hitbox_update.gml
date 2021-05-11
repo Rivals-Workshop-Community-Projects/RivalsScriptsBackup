@@ -5,7 +5,7 @@
 if (attack == AT_DSPECIAL && hbox_num == 1)
 {		
 	// Estas son las condiciones para que rebote el dspecial
-	if  player_id.attack == AT_FSPECIAL && player_id.window > 3 && player_id.window < 7 && vsp >0 && (player_id.state == PS_ATTACK_GROUND ||player_id.state == PS_ATTACK_AIR) && ( y > player_id.y -60 &&  y < player_id.y) && player_id.spr_dir == spr_dir{
+	if  player_id.attack == AT_FSPECIAL && player_id.window > 3 && vsp > 0 &&  player_id.window < 7 && (player_id.state == PS_ATTACK_GROUND ||player_id.state == PS_ATTACK_AIR) && ( y > player_id.y -60 &&  y < player_id.y) && player_id.spr_dir == spr_dir{
 		if spr_dir == 1{
 			 if x < player_id.x + 200 {					//Con estos valores se forma la caja de deteccion, se puede variar
 				vsp = vsp * -1;
@@ -26,7 +26,7 @@ if (attack == AT_DSPECIAL && hbox_num == 1)
 		//Podrias aumentar la duracion del proyectil por esta nueva funcionalidad
 	}
 	// Estas son las condiciones para que rebote el dspecial
-	if  player_id.attack == AT_FSTRONG && player_id.window > 2 && player_id.window < 4 && vsp >0 && (player_id.state == PS_ATTACK_GROUND) && ( y > player_id.y -60 &&  y < player_id.y) && player_id.spr_dir == spr_dir{
+	if  player_id.attack == AT_FSTRONG && player_id.window > 2 && vsp > 0 &&  player_id.window < 4 && (player_id.state == PS_ATTACK_GROUND) && ( y > player_id.y -60 &&  y < player_id.y) && player_id.spr_dir == spr_dir{
 		if spr_dir == 1{
 			 if x < player_id.x + 200 {					//Con estos valores se forma la caja de deteccion, se puede variar
 				vsp = vsp * -0.7;
@@ -54,7 +54,7 @@ if (attack == AT_DSPECIAL && hbox_num == 1)
 	}
 	
 //NUEVA INTERACCION: DSPECIAL Y USPECIAL
-	if  player_id.attack == AT_USPECIAL && player_id.window == 2 && vsp >0 && player_id.state == PS_ATTACK_AIR && ( y < player_id.y +64 &&  y > player_id.y) {
+	if  player_id.attack == AT_USPECIAL && player_id.window == 2 && vsp > 0 &&  player_id.state == PS_ATTACK_AIR && ( y < player_id.y +64 &&  y > player_id.y) {
 		 if x < (player_id.x + 32) && x > (player_id.x - 32) {					//Con estos valores se forma la caja de deteccion, se puede variar
 			destroyed = true;
 			player_id.vsp = -8;													//Aqui puedes cambiar el boost que recibe
@@ -62,7 +62,7 @@ if (attack == AT_DSPECIAL && hbox_num == 1)
 		}
 	}
 
-	if  player_id.attack == AT_USPECIAL_GROUND && player_id.window == 2 && vsp >0 && player_id.state == PS_ATTACK_GROUND && ( y < player_id.y &&  y > player_id.y - 64) {
+	if  player_id.attack == AT_USPECIAL_GROUND && player_id.window == 2 && vsp > 0 &&  player_id.state == PS_ATTACK_GROUND && ( y < player_id.y &&  y > player_id.y - 64) {
 		if player_id.spr_dir == 1{					//Derecha
 			if (x < player_id.x + 96) && (x > player_id.x) {					//Con estos valores se forma la caja de deteccion, se puede variar
 				destroyed = true;
@@ -90,27 +90,28 @@ if (attack == AT_DSPECIAL && hbox_num == 1)
 if (attack == AT_DSPECIAL && hbox_num == 1)
 {		
 	// Estas son las condiciones para que rebote el dspecial
-	if  player_id.attack == AT_FAIR && player_id.window == 2 && vsp >0 && (player_id.state == PS_ATTACK_GROUND ||player_id.state == PS_ATTACK_AIR) && ( y > player_id.y -60 &&  y < player_id.y) && player_id.spr_dir == spr_dir{
+	if  player_id.attack == AT_FAIR && player_id.window == 2 && vsp > 0 && (player_id.state == PS_ATTACK_GROUND ||player_id.state == PS_ATTACK_AIR) && ( y > player_id.y -60 &&  y < player_id.y) && player_id.spr_dir == spr_dir{
 		if player_id.spr_dir == 1{
 			 if x < player_id.x + 120 {					//Con estos valores se forma la caja de deteccion, se puede variar
-				vsp = vsp * -1.1;
-				hsp = hsp + 6;
+				vsp = -6;
+				hsp = 9;
 				kb_angle = 60;
 				camera_shake = 1;
 				spawn_hit_fx( x, y + 10, 302 );	
-			sound_play(asset_get("sfx_blow_medium3"));
 				//Aqui le puedes agregar un sound effect
+				sound_play(asset_get("sfx_blow_medium3"));
 			}
 		} else if player_id.spr_dir == -1{
+			sound_play(asset_get("sfx_blow_medium3"));	
 			if x > player_id.x - 120 {
-				vsp = vsp * -1.1;
-				hsp = hsp - 6;
+				vsp = -6;
+				hsp = -9;
 				kb_angle = 60;
 				camera_shake = 1;
-				spawn_hit_fx( x, y + 10, 302 );
-			sound_play(asset_get("sfx_blow_medium3"));				 
+				spawn_hit_fx( x, y + 10, 302 );			 
 				//Aqui le puedes agregar un sound effect
-			}			
+				sound_play(asset_get("sfx_blow_medium3"));
+			}
 		}
 		//Podrias aumentar la duracion del proyectil por esta nueva funcionalidad
 	}

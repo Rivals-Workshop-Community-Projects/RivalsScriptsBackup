@@ -1,12 +1,14 @@
 set_attack_value(AT_DATTACK, AG_SPRITE, sprite_get("dattack"));
-set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 4);
+set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 6);
 set_attack_value(AT_DATTACK, AG_AIR_SPRITE, sprite_get("dattack"));
 set_attack_value(AT_DATTACK, AG_HURTBOX_SPRITE, sprite_get("dattack_hurt"));
 
+// Crouch
 set_window_value(AT_DATTACK, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES, 2);
 
+// Leap
 set_window_value(AT_DATTACK, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH, 21);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAMES, 7);
@@ -27,14 +29,28 @@ set_window_value(AT_DATTACK, 3, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_SFX, sound_get("tumble"));
 
-// Ugh, Petah...
+// Squish
 set_window_value(AT_DATTACK, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DATTACK, 4, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_DATTACK, 4, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAME_START, 17);
-set_window_value(AT_DATTACK, 4, AG_WINDOW_HAS_WHIFFLAG, 5);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.2);
+
+// Ugh, Petah...
+set_window_value(AT_DATTACK, 5, AG_WINDOW_TYPE, 1);
+set_window_value(AT_DATTACK, 5, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_DATTACK, 5, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DATTACK, 5, AG_WINDOW_ANIM_FRAME_START, 18);
+set_window_value(AT_DATTACK, 5, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(AT_DATTACK, 5, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.2);
+
+// Get up
+set_window_value(AT_DATTACK, 6, AG_WINDOW_TYPE, 1);
+set_window_value(AT_DATTACK, 6, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_DATTACK, 6, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_DATTACK, 6, AG_WINDOW_ANIM_FRAME_START, 19);
+set_window_value(AT_DATTACK, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 var num_dattack_boxes = 8;
 set_num_hitboxes(AT_DATTACK, 1 + num_dattack_boxes);
@@ -58,14 +74,11 @@ for (i = 0; i < num_dattack_boxes; i++) {
     
     set_hitbox_value(AT_DATTACK, 2 + i, HG_DAMAGE, 1);
     set_hitbox_value(AT_DATTACK, 2 + i, HG_ANGLE, 10);
-    set_hitbox_value(AT_DATTACK, 2 + i, HG_ANGLE_FLIPPER, 0);
+    set_hitbox_value(AT_DATTACK, 2 + i, HG_ANGLE_FLIPPER, 4);
     set_hitbox_value(AT_DATTACK, 2 + i, HG_BASE_KNOCKBACK, 6.5);
     set_hitbox_value(AT_DATTACK, 2 + i, HG_KNOCKBACK_SCALING, 0.0);
     set_hitbox_value(AT_DATTACK, 2 + i, HG_BASE_HITPAUSE, 4);
     set_hitbox_value(AT_DATTACK, 2 + i, HG_HITPAUSE_SCALING, 0.2);
-    //set_hitbox_value(AT_DATTACK, 2 + i, HG_TECHABLE, 1);
-    //set_hitbox_value(AT_DATTACK, 2 + i, HG_DRIFT_MULTIPLIER, 0);
-    //set_hitbox_value(AT_DATTACK,  + i, HG_SDI_MULTIPLIER, 0);
     
     set_hitbox_value(AT_DATTACK, 2 + i, HG_VISUAL_EFFECT, 303);
     set_hitbox_value(AT_DATTACK, 2 + i, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
@@ -77,7 +90,7 @@ set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DATTACK, 1, HG_WINDOW, 4);
 set_hitbox_value(AT_DATTACK, 1, HG_WINDOW_CREATION_FRAME, 0);
-set_hitbox_value(AT_DATTACK, 1, HG_LIFETIME, 20);
+set_hitbox_value(AT_DATTACK, 1, HG_LIFETIME, 16);
 set_hitbox_value(AT_DATTACK, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_X, 1);
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_Y, -27);

@@ -151,6 +151,10 @@ sprite_change_offset("red_taunt", 46, 88);
 
 set_victory_bg( sprite_get( "custom" ));
 
+sprite_change_offset("fx_ustrong", 32, 150);
+sprite_change_offset("fx_utilt", 26, 82);
+sprite_change_offset("fx_red_utilt", 26, 94);
+
 //Recharge
 sprite_change_offset("RechargeB", 30, -10);
 sprite_change_offset("RechargeR", 30, -10);

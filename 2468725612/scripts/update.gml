@@ -243,6 +243,17 @@ if (state == PS_SPAWN) {
 		
 }
 
+if (hologram.hologram_cool = true){
+	hologram.hologram_idle = false
+	move_cooldown[AT_NSPECIAL_2] = 30;
+	hologram_act = false;
+	hologram_parry = false;
+	hologram.hologram_cool = false;
+}
+
+if (move_cooldown[AT_NSPECIAL_2] == 0){
+	hologram.hologram_idle = true;
+}
 
 
 }	///////

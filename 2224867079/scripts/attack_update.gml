@@ -323,6 +323,36 @@ if (attack == AT_USTRONG){
 	}
 }
 */
+//Spawns aricle 3
+if (attack == AT_USTRONG) {
+	if (window == 1 && window_timer == 1) {
+		if (instance_exists (construct)) {instance_destroy(construct);}
+		construct = instance_create(x, y, "obj_article3");
+		construct.spr_dir = spr_dir;
+		construct.displayMove = 0;
+		construct.lifetime = 100;
+	}
+}
+
+if (attack == AT_DTILT && RedMode == false) {
+	if (window == 1 && window_timer == 1) {
+		if (instance_exists (construct)) {instance_destroy(construct);}
+		construct = instance_create(x, y, "obj_article3");
+		construct.spr_dir = spr_dir;
+		construct.displayMove = 1;
+		construct.lifetime = 20;
+	}
+}
+
+if (attack == AT_DTILT && RedMode == true) {
+	if (window == 1 && window_timer == 1) {
+		if (instance_exists (construct)) {instance_destroy(construct);}
+		construct = instance_create(x, y, "obj_article3");
+		construct.spr_dir = spr_dir;
+		construct.displayMove = 2;
+		construct.lifetime = 20;
+	}
+}
 
 //Recovery Effect
 if (attack == AT_USPECIAL){

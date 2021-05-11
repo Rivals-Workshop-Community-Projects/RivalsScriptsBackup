@@ -87,7 +87,7 @@ if ((attack == AT_JAB) && (state == PS_ATTACK_GROUND)) {
 }
 
 // Joke primed aura
-if (joke_primed) {
+if (comedy_zone_charges_granted > 0) {
     var aura_sprite_index = (joke_aura_timer / 4) % 16;
     draw_sprite_ext(sprite_get("nspecial_aura"), aura_sprite_index, x + (spr_dir * 1), y, spr_dir, 1, 0, c_white, 1);
 }

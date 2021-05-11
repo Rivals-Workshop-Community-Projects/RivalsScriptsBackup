@@ -1,5 +1,6 @@
 sprite_change_offset("idle", 65, 94);
 sprite_change_offset("hurt", 65, 94);
+sprite_change_offset("bighurt", 65, 94);
 sprite_change_offset("crouch", 65, 94);
 sprite_change_offset("walk", 65, 94);
 sprite_change_offset("walkturn", 63, 94);
@@ -34,7 +35,7 @@ sprite_change_offset("bair", 193, 94);
 sprite_change_offset("uair", 65, 222);
 sprite_change_offset("dair", 65, 94);
 sprite_change_offset("fstrong", 109, 146);
-sprite_change_offset("ustrong", 65, 94);
+sprite_change_offset("ustrong", 65, 126);
 sprite_change_offset("dstrong", 65, 126);
 sprite_change_offset("nspecial", 65, 94);
 sprite_change_offset("fspecial", 109, 146);
@@ -62,9 +63,25 @@ sprite_change_collision_mask("dspecial_border", false, 2, 32, 32, 159, 159, 1);
 
 set_victory_theme( sound_get( "victory" ) );
 
-// Get player color and assign to slot 6
+// Set different victory/loss portraits depending on alt selected
+var selected_color = get_player_color(player);
+if (selected_color == 0) { // Default win/loss portraits are miscolored, replace them
+    set_victory_portrait(sprite_get("portrait_original"));
+    set_victory_sidebar(sprite_get("result_small_original"));
+} else if (selected_color == 9) { // thanos
+    set_victory_portrait(sprite_get("portrait_thanos"));
+    set_victory_sidebar(sprite_get("result_small_thanos"));
+} else if (selected_color == 10) { // pickle
+    set_victory_portrait(sprite_get("portrait_pickle"));
+    set_victory_sidebar(sprite_get("result_small_pickle"));
+} else if (selected_color == 11) { // sans
+    set_victory_portrait(sprite_get("portrait_sans"));
+    set_victory_sidebar(sprite_get("result_small_sans"));
+}
+
+// Get player color and assign to slot 7 to color indicator
 var indicator_color = get_player_hud_color(player);
-set_article_color_slot(6,
+set_article_color_slot(7,
                        color_get_red(indicator_color),
                        color_get_green(indicator_color),
                        color_get_blue(indicator_color),

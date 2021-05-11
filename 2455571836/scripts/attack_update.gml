@@ -105,6 +105,12 @@ if (attack == AT_FSPECIAL){
 }
 
 //Down Special
+if (attack == AT_DSPECIAL){
+	if (window == 1 && !free){
+			vsp = -10;
+			}
+		}
+
 //sets the super armor
 if (attack == AT_DSPECIAL){
 	if (window == 3 || window == 5 || window == 6){

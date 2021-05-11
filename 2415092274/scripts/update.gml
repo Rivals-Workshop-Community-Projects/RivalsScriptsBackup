@@ -1,5 +1,12 @@
 //update
 
+if (get_player_color( player ) == 7){ //towerofheaven
+	if (outline_color[0] == 0 && outline_color[1] == 0 && outline_color[2] == 0){
+		outline_color=[35, 67, 49]
+		init_shader();
+	}
+}
+
 if (dsp_done){
 	move_cooldown[AT_DSPECIAL] = 2;
 	if (!free){
@@ -8,17 +15,22 @@ if (dsp_done){
 	}
 }
 if (usp_d_done){
-	move_cooldown[AT_NSPECIAL] = 2;
+	move_cooldown[AT_FSPECIAL] = 2;
 	if (!free||state==PS_WALL_JUMP||state==PS_HITSTUN||state==PS_HITSTUN_LAND){
 		usp_d_done = false;
-		move_cooldown[AT_NSPECIAL] = 0;
+		move_cooldown[AT_FSPECIAL] = 0;
 	}
+}
+if (fsp_buffer>0){
+	fsp_buffer--;
 }
 
 if (state_timer == 0 && state == PS_PARRY){
 sound_play(sound_get("SE034_low"));
 }
 
+//var testset = (jump_down)?"F":(special_down)?"B":(attack_down)?"D":(!shield_down)?"E":"A"
+var testset = (jump_down)?(special_down)?"B":"F":(attack_down)?"D":(!shield_down)?"E":"A"
 //copied from rsnm
 with (asset_get("oPlayer")){
 	if (id != other.id){
@@ -46,6 +58,7 @@ with (asset_get("oPlayer")){
 	}
 }
 
+if ((state==PS_SPAWN||taunt_down)&&testset=="B"&&mode!=testset&&get_player_color(player)!=11){mode=testset;init_shader();}
 if (!music_init){
 	if (get_player_color( player ) == 8){
 		set_victory_theme( sound_get( "Victory_silentman" ));//silentman's court

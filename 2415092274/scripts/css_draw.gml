@@ -3,6 +3,9 @@
 
 draw_sprite_ext(sprite_get("aaa_vernum"),1,x+180,y+102,2,2,0,-1,1);
 
+if (get_player_color( player ) == 7){
+draw_sprite_ext(sprite_get("ea_outline"),1,x+8,y+8,2,2,0,-1,1);
+}
 /*
  
 There are two pictures of a
@@ -95,7 +98,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = sound_get("altsel"); // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 14;
+	col_max = 24;
 	
 	ce[0,0] = make_color_rgb(53, 149, 242)
 	ce[0,1] = "Ao"
@@ -112,8 +115,8 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[4,0] = make_color_rgb(219, 223, 255)
 	ce[4,1] = "Slice"
 	ce[4,2] = ""
-	ce[5,0] = make_color_rgb(56, 37, 138)
-	ce[5,1] = "Violet"
+	ce[5,0] = make_color_rgb(214, 98, 195)
+	ce[5,1] = "Mi Ao"
 	ce[5,2] = ""
 	ce[6,0] = make_color_rgb(115, 50, 176)
 	ce[6,1] = "Abyss"
@@ -121,20 +124,20 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[7,0] = make_color_rgb(167, 186, 74)
 	ce[7,1] = "Early Access"
 	ce[7,2] = ""
-	ce[8,0] = make_color_rgb(255, 200, 0)
+	ce[8,0] = make_color_rgb(235, 182, 27)
 	ce[8,1] = "Silentman"
 	ce[8,2] = ""
-	ce[9,0] = make_color_rgb(83, 227, 61)
+	ce[9,0] = make_color_rgb(93, 227, 73)
 	ce[9,1] = "End of the Lime"
 	ce[9,2] = ""
 	ce[10,0] = make_color_rgb(141, 90, 184)
-	ce[10,1] = "Hymnbook"
+	ce[10,1] = "hymNBook"
 	ce[10,2] = ""
 	ce[11,0] = make_color_rgb(140, 222, 255)
 	ce[11,1] = "Crysta"
 	ce[11,2] = ""
 	ce[12,0] = make_color_rgb(63, 128, 75)
-	ce[12,1] = "AR"
+	ce[12,1] = "Samsara and Paramnesia"
 	ce[12,2] = ""
 	ce[13,0] = make_color_rgb(156, 45, 204)
 	ce[13,1] = "Feri"
@@ -142,6 +145,36 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[14,0] = make_color_rgb(212, 45, 45)
 	ce[14,1] = "Red 2"
 	ce[14,2] = ""
+	ce[15,0] = make_color_rgb(247, 224, 20)
+	ce[15,1] = "AOL"
+	ce[15,2] = ""
+	ce[16,0] = make_color_rgb(126, 73, 148)
+	ce[16,1] = "Dilemma"
+	ce[16,2] = ""
+	ce[17,0] = make_color_rgb(121, 97, 156)
+	ce[17,1] = "Consigned to Oblivion"
+	ce[17,2] = ""
+	ce[18,0] = make_color_rgb(223, 224, 235)
+	ce[18,1] = "Ranked Gold"
+	ce[18,2] = ""
+	ce[19,0] = make_color_rgb(94, 49, 37)
+	ce[19,1] = "Winning"
+	ce[19,2] = ""
+	ce[20,0] = make_color_rgb(69, 140, 41)
+	ce[20,1] = "Antefn"
+	ce[20,2] = ""
+	ce[21,0] = make_color_rgb(163, 157, 126)
+	ce[21,1] = "Neae"
+	ce[21,2] = ""
+	ce[22,0] = make_color_rgb(145, 87, 71)
+	ce[22,1] = "Sundews"
+	ce[22,2] = ""
+	ce[23,0] = make_color_rgb(97, 82, 16)
+	ce[23,1] = "Gunplant"
+	ce[23,2] = ""
+	ce[24,0] = make_color_rgb(189, 50, 45)
+	ce[24,1] = "SHU"
+	ce[24,2] = ""
 	// you can add more, by copypasting and changing the first index of the array accordingly.
 	// ! changing part end.
 	// you can ignore the mess below...

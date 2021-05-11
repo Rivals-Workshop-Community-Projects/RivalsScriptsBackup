@@ -2,14 +2,8 @@ state_timer++;
 
 // Decrement comedy zone counters of each player
 with (asset_get("oPlayer")) {
-    // But first, set timers to 0 when a player loses a stock or heals
-    var previous_stocks = ds_map_find_value(other.player_stock_map, player);
-    var current_stocks = get_player_stocks(player);
-    ds_map_set(other.player_stock_map, player, current_stocks);
-    var previous_damage = ds_map_find_value(other.player_damage_map, player);
-    var current_damage = get_player_damage(player);
-    ds_map_set(other.player_damage_map, player, current_damage);
-    if (previous_stocks != current_stocks)
+    // But first, set timers to 0 when a player respawns
+    if (state == PS_RESPAWN)
     {
         ds_map_set(other.healing_counter_map, player, 0);
         ds_map_set(other.burning_counter_map, player, 0);
@@ -26,15 +20,18 @@ with (asset_get("oPlayer")) {
     }
     var current_burn_countdown = ds_map_find_value(other.burning_counter_map, player);
     if (current_burn_countdown > 0) {
-        // TODO - add emanating emojis
+        // TODO - add emanating emojis?
 
-        // Decrement the coutndown
+        // Decrement the countdown
         ds_map_set(other.burning_counter_map, player, --current_burn_countdown);
         // Deal damage at regular intervals
-        if ((current_burn_countdown == (other.laughter_burn_duration / 2))
-            || (current_burn_countdown == 0))
-        {
-            take_damage(player, other.player, 1);
+        var damage_step = ceil(other.laughter_burn_duration / other.laughter_total_dot);
+        if ((current_burn_countdown % damage_step) == 0) {
+            if (other.double_damage) { // Double zone effectiveness
+                take_damage(player, other.player, 2);
+            } else {
+                take_damage(player, other.player, 1);
+            }
         }
         if (current_burn_countdown == 0) {
             ds_map_set(other.final_outline_change_cycle_map, player, true);
@@ -111,12 +108,26 @@ switch (state) {
                         if (ds_map_find_value(other.healing_counter_map, player) == 0) {
                             // If it was an enemy, heal for more and destroy the zone
                             if (get_player_team(player) != get_player_team(other.player)) {
-                                take_damage(player, -1, -8);
+                                if (other.double_damage) { // Double zone effectiveness
+                                    take_damage(player, -1, -16);
+                                } else {
+                                    take_damage(player, -1, -8);
+                                }
                                 ds_map_set(other.healing_counter_map, player, other.laughter_heal_cooldown);
                                 other.collapse_zone = true;
-                            } else {
-                                take_damage(player, -1, -2);
+                            } else { // Activated by ally
+                                if (other.double_damage) { // Double zone effectiveness
+                                    take_damage(player, -1, -4);
+                                } else {
+                                    take_damage(player, -1, -2);
+                                }
                                 ds_map_set(other.healing_counter_map, player, other.laughter_heal_cooldown);
+                                // If it's the owner, grant a Comedy Charge up to the limit
+                                if (other.player_id == id) {
+                                    if (comedy_zone_charges_granted < comedy_charge_limit) {
+                                        comedy_zone_charges_granted++;
+                                    }
+                                }
                             }
                         }
                         if (other.laughter_audio_countdown == 0) {
@@ -128,7 +139,7 @@ switch (state) {
                         }
                     }
                     
-                    // This will happen only if the owner is in the zone
+                    // This will reduce nspecial charge time if the owner is in the Zone
                     if (other.player_id == id) {
                         if ((attack == AT_NSPECIAL) && (window == 2)) {
                             if (joke_progress < joke_limit) {
@@ -211,6 +222,15 @@ switch (state) {
                     ds_list_add(previous_laughs, laugh_choice);
                 }
             }
+            
+            // Lower the music volume quickly at the beginning, hold for a while, then slowly come back at the end.
+            if (laughter_audio_countdown > (laughter_audio_duration / 3)) {
+                suppress_stage_music(0.2, 0.075);
+            } else {
+                // This is the tail end of the laughter, slowly start bringing the music back up
+                suppress_stage_music(1.0, 0.025);
+            }
+            
             laughter_audio_countdown--;
         }
         
@@ -292,6 +312,10 @@ switch (state) {
         with (asset_get("oPlayer")) {
             ds_map_set(other.healing_counter_map, player, 0);
             ds_map_set(other.final_outline_change_cycle_map, player, true);
+            if (id == other.player_id) {
+                comedy_zone_charges_granted = 0;
+            }
+            
         }
         break;
     case 5 :
@@ -299,6 +323,9 @@ switch (state) {
         // End burn timers
         with (asset_get("oPlayer")) {
             ds_map_set(other.burning_counter_map, player, 0);
+            if (id == other.player_id) {
+                comedy_zone_charges_granted = 0;
+            }
         }
         
         // Keep border wiggling while curtain is pulled down
@@ -375,6 +402,9 @@ switch (state) {
         with (asset_get("oPlayer")) {
             ds_map_set(other.healing_counter_map, player, 0);
             ds_map_set(other.final_outline_change_cycle_map, player, true);
+            if (id == other.player_id) {
+                comedy_zone_charges_granted = 0;
+            }
         }
         break;
     default :

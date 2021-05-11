@@ -25,6 +25,7 @@ sprite_change_offset("roll_forward", tx, ty);
 sprite_change_offset("roll_backward", tx, ty);
 sprite_change_offset("airdodge", tx, ty);
 sprite_change_offset("waveland", tx, ty);
+sprite_change_offset("wave_buffer", round(tx/2), 23);
 sprite_change_offset("tech", tx, ty);
 
 sprite_change_offset("jab", tx, ty);
@@ -33,6 +34,7 @@ sprite_change_offset("ftilt", tx, ty);
 sprite_change_offset("dtilt", tx, ty);
 sprite_change_offset("utilt", tx, ty);
 sprite_change_offset("nair", tx, ty);
+sprite_change_offset("nair2", tx, ty);
 sprite_change_offset("fair", tx, ty);
 sprite_change_offset("bair", tx, ty);
 sprite_change_offset("uair", tx, ty);
@@ -41,6 +43,7 @@ sprite_change_offset("fstrong", tx, ty);
 sprite_change_offset("ustrong", tx, ty);
 sprite_change_offset("dstrong", tx, ty);
 sprite_change_offset("nspecial", tx, ty);
+sprite_change_offset("nspecial2", tx, ty);
 sprite_change_offset("fspecial", tx, ty);
 sprite_change_offset("uspecial", tx, ty);
 sprite_change_offset("dspecial", tx, ty);
@@ -57,11 +60,24 @@ sprite_change_offset("spinhurt", tx, ty);
 sprite_change_offset("uphurt", tx, ty);
 sprite_change_offset("downhurt", tx, ty);
 
-sprite_change_offset("uspecial_slash", 90, 102);
+sprite_change_offset("nspecial2_comettrail", round(tx/2)+32, round(ty/2)+32);
+sprite_change_offset("uspecial_slash", 54, 48);//90 102
+sprite_change_offset("uspecial_slash_hb", 54, 48);//90 102
 sprite_change_offset("starcircle", tx, ty);
 sprite_change_offset("starcircle_1x", round(tx/2), round(ty/2));
 sprite_change_offset("nspecial_blue", tx, ty);
+sprite_change_offset("moon", 40, 40);
+sprite_change_offset("moon_gb", 40, 40);
+sprite_change_offset("moon_alt", 40, 40);
+sprite_change_offset("moon_stars", 40, 40);
+sprite_change_offset("moon_stars_alt", 40, 40);
+sprite_change_offset("hfx_tackle", 96, 96);
+sprite_change_offset("hfx_tackle2", 96, 96);
 
+sprite_change_offset("exp_ao", 84, 114);
+sprite_change_offset("stars", 40, 40);
+sprite_change_offset("stars2", 40, 40);
+sprite_change_offset("stars3", 40, 40);
 
 
 

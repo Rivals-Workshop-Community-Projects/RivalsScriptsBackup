@@ -56,3 +56,5 @@ sprite_change_offset("lanternfx", 90, 140);
 sprite_change_offset("nspecial_proj", 40, 68);
 sprite_change_offset("nspecial2_proj", 40, 68);
 sprite_change_offset("dspecial_proj", 40, 48);
+
+sprite_change_offset("finalsmash", 50, 98);

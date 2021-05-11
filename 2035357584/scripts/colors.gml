@@ -38,7 +38,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 11 );
+set_num_palettes( 13 );
 
 // red
 set_color_profile_slot( 1, 0, 209, 175, 175 ); //armour highlight
@@ -100,42 +100,62 @@ set_color_profile_slot( 6, 5, 120, 160, 169 ); //cloth main
 set_color_profile_slot( 6, 6, 95, 101, 129 ); //cloth shade 1
 set_color_profile_slot( 6, 7, 42, 76, 109 ); //cloth shade 2
 
-// soldier
-set_color_profile_slot( 7, 0, 175, 142, 142 ); //armour highlight
-set_color_profile_slot( 7, 1, 131, 90, 90 ); //armour main
-set_color_profile_slot( 7, 2, 101, 72, 72 ); //armour shade 1
-set_color_profile_slot( 7, 3, 77, 42, 42 ); //armour shade 2
-set_color_profile_slot( 7, 4, 209, 175, 175 ); //cloth highlight
-set_color_profile_slot( 7, 5, 212, 74, 74 ); //cloth main
-set_color_profile_slot( 7, 6, 154, 50, 50 ); //cloth shade 1
-set_color_profile_slot( 7, 7, 101, 35, 35 ); //cloth shade 2
-
 // valentine
-set_color_profile_slot( 8, 0, 239, 186, 237 ); //armour highlight
-set_color_profile_slot( 8, 1, 221, 130, 223 ); //armour main
-set_color_profile_slot( 8, 2, 187, 103, 173 ); //armour shade 1
-set_color_profile_slot( 8, 3, 129, 50, 92 ); //armour shade 2
-set_color_profile_slot( 8, 4, 214, 214, 214 ); //cloth highlight
-set_color_profile_slot( 8, 5, 192, 192, 192 ); //cloth main
-set_color_profile_slot( 8, 6, 144, 136, 136 ); //cloth shade 1
-set_color_profile_slot( 8, 7, 122, 120, 120 ); //cloth shade 2
+set_color_profile_slot( 7, 0, 239, 186, 237 ); //armour highlight
+set_color_profile_slot( 7, 1, 221, 130, 223 ); //armour main
+set_color_profile_slot( 7, 2, 187, 103, 173 ); //armour shade 1
+set_color_profile_slot( 7, 3, 129, 50, 92 ); //armour shade 2
+set_color_profile_slot( 7, 4, 214, 214, 214 ); //cloth highlight
+set_color_profile_slot( 7, 5, 192, 192, 192 ); //cloth main
+set_color_profile_slot( 7, 6, 144, 136, 136 ); //cloth shade 1
+set_color_profile_slot( 7, 7, 122, 120, 120 ); //cloth shade 2
 
 // gengis
-set_color_profile_slot( 9, 0, 109, 118, 135 ); //armour highlight
-set_color_profile_slot( 9, 1, 76, 84, 87 ); //armour main
-set_color_profile_slot( 9, 2, 41, 52, 64 ); //armour shade 1
-set_color_profile_slot( 9, 3, 40, 46, 71 ); //armour shade 2
-set_color_profile_slot( 9, 4, 67, 102, 140 ); //cloth highlight
-set_color_profile_slot( 9, 5, 52, 75, 99 ); //cloth main
-set_color_profile_slot( 9, 6, 36, 52, 77 ); //cloth shade 1
-set_color_profile_slot( 9, 7, 38, 42, 71 ); //cloth shade 2
+set_color_profile_slot( 8, 0, 109, 118, 135 ); //armour highlight
+set_color_profile_slot( 8, 1, 76, 84, 87 ); //armour main
+set_color_profile_slot( 8, 2, 41, 52, 64 ); //armour shade 1
+set_color_profile_slot( 8, 3, 40, 46, 71 ); //armour shade 2
+set_color_profile_slot( 8, 4, 67, 102, 140 ); //cloth highlight
+set_color_profile_slot( 8, 5, 52, 75, 99 ); //cloth main
+set_color_profile_slot( 8, 6, 36, 52, 77 ); //cloth shade 1
+set_color_profile_slot( 8, 7, 38, 42, 71 ); //cloth shade 2
 
 // jaffa
-set_color_profile_slot( 10, 0, 255, 160, 63 ); //armour highlight
-set_color_profile_slot( 10, 1, 230, 145, 57 ); //armour main
-set_color_profile_slot( 10, 2, 189, 119, 47 ); //armour shade 1
-set_color_profile_slot( 10, 3, 133, 83, 33 ); //armour shade 2
-set_color_profile_slot( 10, 4, 142, 140, 140 ); //cloth highlight
-set_color_profile_slot( 10, 5, 74, 74, 74 ); //cloth main
-set_color_profile_slot( 10, 6, 52, 52, 52 ); //cloth shade 1
-set_color_profile_slot( 10, 7, 27, 27, 27 ); //cloth shade 2
+set_color_profile_slot( 9, 0, 255, 160, 63 ); //armour highlight
+set_color_profile_slot( 9, 1, 230, 145, 57 ); //armour main
+set_color_profile_slot( 9, 2, 189, 119, 47 ); //armour shade 1
+set_color_profile_slot( 9, 3, 133, 83, 33 ); //armour shade 2
+set_color_profile_slot( 9, 4, 142, 140, 140 ); //cloth highlight
+set_color_profile_slot( 9, 5, 74, 74, 74 ); //cloth main
+set_color_profile_slot( 9, 6, 52, 52, 52 ); //cloth shade 1
+set_color_profile_slot( 9, 7, 27, 27, 27 ); //cloth shade 2
+
+// abyss
+set_color_profile_slot( 10, 0, 175, 74, 255 );//armour highlight
+set_color_profile_slot( 10, 1, 165, 51, 255 ); //armour main
+set_color_profile_slot( 10, 2, 120, 0, 214 );//armour shade 1
+set_color_profile_slot( 10, 3, 76, 0, 138 ); //armour shade 2
+set_color_profile_slot( 10, 4, 193, 115, 255 ); //cloth highlight
+set_color_profile_slot( 10, 5, 148, 61, 217 ); //cloth main
+set_color_profile_slot( 10, 6, 105, 48, 150 ); //cloth shade 1
+set_color_profile_slot( 10, 7, 63, 31, 89 ); //cloth shade 2
+
+// doom slayer
+set_color_profile_slot( 11, 0, 195, 196, 117 ); //unnamed color row
+set_color_profile_slot( 11, 1, 166, 168, 117 ); //unnamed color row
+set_color_profile_slot( 11, 2, 139, 140, 89 ); //unnamed color row
+set_color_profile_slot( 11, 3, 65, 66, 41 ); //unnamed color row
+set_color_profile_slot( 11, 4, 162, 158, 155 ); //unnamed color row
+set_color_profile_slot( 11, 5, 191, 187, 183 ); //unnamed color row
+set_color_profile_slot( 11, 6, 112, 109, 107 ); //unnamed color row
+set_color_profile_slot( 11, 7, 66, 65, 63 ); //unnamed color row
+
+// russian military
+set_color_profile_slot( 12, 0, 145, 141, 102 ); //unnamed color row
+set_color_profile_slot( 12, 1, 101, 98, 64 ); //unnamed color row
+set_color_profile_slot( 12, 2, 60, 87, 44 ); //unnamed color row
+set_color_profile_slot( 12, 3, 19, 41, 14 ); //unnamed color row
+set_color_profile_slot( 12, 4, 143, 105, 86 ); //unnamed color row
+set_color_profile_slot( 12, 5, 164, 121, 99 ); //unnamed color row
+set_color_profile_slot( 12, 6, 124, 123, 78 );//unnamed color row
+set_color_profile_slot( 12, 7, 104, 78, 29 ); //unnamed color row

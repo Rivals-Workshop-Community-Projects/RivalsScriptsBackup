@@ -25,6 +25,8 @@ tauntnumber = 0;
 
 ustrongarticle = false
 ustrongarticlestate = 0
+construct = noone;
+
 
 //Galaxy Stuff
 black_screen = false;

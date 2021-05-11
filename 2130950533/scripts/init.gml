@@ -111,19 +111,35 @@ swallowed = 0;
 thumbsup_queued = false;
 floss_queued = false;
 floss_duration = 16; // duration of each step of the floss
-num_jabs = 10;
+num_jabs = 10 + (has_rune("A") * 20);
 max_hat_spins = 3;
-var color_slot = get_player_color(player);
-emoji_color = [get_color_profile_slot_r(color_slot, 5),
-               get_color_profile_slot_g(color_slot, 5),
-               get_color_profile_slot_b(color_slot, 5)];
+var color_profile = get_player_color(player);
+emoji_color_slot = 6;
+emoji_color = [get_color_profile_slot_r(color_profile, emoji_color_slot),
+               get_color_profile_slot_g(color_profile, emoji_color_slot),
+               get_color_profile_slot_b(color_profile, emoji_color_slot)];
+// Make outline flash while fully charged
+flash_outline_color = [200, 200, 200];
+flash_duration = 7;
+flash_countdown = 0;
+weak_outline_color = [25, 25, 25];
+outline_off_duration = 18;
+outline_off_countdown = 0;
+default_outline_color = outline_color;
+// These only apply to rune G - rapid-fire emojis
+prev_throw_angle = 0;
+max_throw_increment = 7;
 // nspecial
-joke_primed = false;
 joke_charge_sound_playing = false;
 joke_progress = 0;
-joke_limit = 240;
+joke_limit = 120;
+joke_primed = false;
 joke_aura_timer = 0;
 joke_aura_timer_max = 64;
 joke_interrupted = false;
 joke_reached_half = false;
 joke_reached_full = false;
+// Track charges granted to Bloppi by the Comedy Zone
+comedy_zone_charges_granted = 0;
+// Limit increased by rune
+comedy_charge_limit = has_rune("B") ? 10 : 1;

@@ -25,6 +25,10 @@ else
 if (black_screen == true) 
 {
     draw_sprite_ext(sprite_index,image_index,x,y,spr_dir*1,1,0,c_black,1)
-    with(oPlayer) if(player != other.player) draw_sprite_ext(sprite_index,image_index,x,y,spr_dir* 1,1,0,c_black,1)
+    with(oPlayer){ 
+        if(player != other.player){ 
+            draw_sprite_ext(sprite_index,image_index,x,y,spr_dir * (small_sprites+1),(small_sprites+1),0,c_black,1)
+		}	
+	}
 }
 

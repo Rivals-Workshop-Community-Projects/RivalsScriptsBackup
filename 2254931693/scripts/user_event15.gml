@@ -578,6 +578,9 @@ with phone{
 	 * put the version number and full date.
 	 */
 
+	initPatch("2.0.1", "May 8th, 2021");
+	initPatchWords("-Fixed compatibility with Final Smash Buddy");
+
 	initPatch("2.0", "May 5th, 2021");
 	initPatchWords("-All special moves have been completely reworked
 	-Jab, Neutral-Air, Forward-Air, Up-Air, and Down-Air have been reworked

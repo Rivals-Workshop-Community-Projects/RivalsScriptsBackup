@@ -194,6 +194,8 @@ hologram_start = true;      //Hologram Start of the match
 hologram_act = false;
 hologram_parry = false;
 hologram_parry_cont = 0;
+hologram_cool = false;
+hologram_idle = true;
 
 attack_meu = AT_JAB;
 attack_nome = "";
@@ -244,10 +246,13 @@ col_R1 = get_color_profile_slot_r( get_player_color(player), 0);
 col_G1 = get_color_profile_slot_g( get_player_color(player), 0);
 col_B1 = get_color_profile_slot_b( get_player_color(player), 0);
 
-
 col_R2 = get_color_profile_slot_r( get_player_color(player), 1);
 col_G2 = get_color_profile_slot_g( get_player_color(player), 1);
 col_B2 = get_color_profile_slot_b( get_player_color(player), 1);
+
+col_R3 = get_color_profile_slot_r( get_player_color(player), 3);
+col_G3 = get_color_profile_slot_g( get_player_color(player), 3);
+col_B3 = get_color_profile_slot_b( get_player_color(player), 3);
 
 col_arrow = get_player_hud_color( player );
 

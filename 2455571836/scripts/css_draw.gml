@@ -33,15 +33,15 @@ alt_name[19] = "Tanuki";
 alt_name[20] = "Kitsune";
 alt_name[21] = "Double";
 alt_name[22] = "Chaos";
-alt_name[23] = "Invert";
-alt_name[24] = "Speedy";
-alt_name[25] = "Festive";
-alt_name[26] = "Forest";
-alt_name[27] = "Aqua";
-alt_name[28] = "Magical";
-alt_name[29] = "Abyss";
-alt_name[30] = "Burning";
-alt_name[31] = "Melon";
+alt_name[23] = "Speedy";
+alt_name[24] = "Festive";
+alt_name[25] = "Forest";
+alt_name[26] = "Aqua";
+alt_name[27] = "Magical";
+alt_name[28] = "Abyss";
+alt_name[29] = "Burning";
+alt_name[30] = "Melon";
+alt_name[31] = "Lovely";
  
  
 //Patch

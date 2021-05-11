@@ -14,7 +14,7 @@ if (object_index == asset_get("obj_stage_article") || (object_index == oPlayer &
 
 // Print Debug phone setting
 
-if !phone_lightweight && phone.phone_settings[phone.setting_print_debug]{
+/*if !phone_lightweight && phone.phone_settings[phone.setting_print_debug]{
 	print_debug("CUSTOM 1           " + phone_custom_debug[0]);
 	print_debug("CUSTOM 2           " + phone_custom_debug[1]);
 	print_debug("CUSTOM 3           " + phone_custom_debug[2]);
@@ -31,7 +31,7 @@ if !phone_lightweight && phone.phone_settings[phone.setting_print_debug]{
 	print_debug("VSP                  " + vsp);
 	print_debug("FREE                 " + free);
 	print_debug("FPS                  " + fps_real);
-}
+}*/
 
 
 

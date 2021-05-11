@@ -11,13 +11,14 @@ set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
-set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 8);
+set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 5);
 
 set_window_value(AT_UAIR, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_UAIR, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_UAIR, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_UAIR, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UAIR, 2, AG_WINDOW_VSPEED, -1);
+set_window_value(AT_UAIR, 2, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_window_value(AT_UAIR, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_UAIR, 3, AG_WINDOW_LENGTH, 1);

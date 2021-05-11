@@ -371,7 +371,7 @@ set_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH, 5);
     max_fall = 4;
     gravity_speed = 0.2;
     hitstun_grav = 0.4;
-    air_friction = 0.02;
+    air_friction = 0.03;
     knockback_adj = 0;
     
     land_sound = noone;

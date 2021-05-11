@@ -138,7 +138,7 @@ if (state == 3){
 //State 4: Fall Down 1
 if (state == 4){
 	sprite_index = sprite_get("hat1");
-	vsp = 3;
+	vsp = 3.5;
 	if (place_meeting(x, y, player_id)){
 		if (state_timer > 5){
 			spawn_hit_fx( x, y, 194);

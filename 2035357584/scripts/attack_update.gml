@@ -330,7 +330,7 @@ if(attack == AT_FSPECIAL){
 		}
 		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			super_armor = false;
-			head_box = create_hitbox(AT_FSPECIAL, 5, x, y);
+			head_box = create_hitbox(AT_FSPECIAL, 6, x, y);
 		}
 	}
 	

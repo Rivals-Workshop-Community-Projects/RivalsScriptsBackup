@@ -455,13 +455,29 @@ with phone{
 	 * put the version number and full date.
 	 */
 	 
+	initPatch("1.4", "May 9th, 2021");
+	initPatchWords("Attack Nerfs
+	- Set the DSpecial to only go upwards if activated on the ground
+	- Lowered the knockback and knockback scaling on UStrong
+	- Lowered the speed and knockback on the NSpecial snowballs
+	");
+	initPatchWords_ext("Who knows why these weren't done sooner...", fa_left, c_gray, 1, 0);
+	
+	initPatchWords("Misc. Updates
+	~ Added a new cheat code");
+	
+	initPatchWords("Visual Updates
+	* Color separation added to allow for cleaner alternate colors
+	* Changed some of the alternate colors to benefit from the color separation update
+	* Removed the Invert color palette
+	* Added the Lovely color palette");
+	 
 	initPatch("1.3.2", "May 6th, 2021");
 	initPatchWords("Misc. Updates
 	~ Added a design biography in the Tips section");
 	
 	initPatchWords("Visual Updates
-	* Fixed more color issues
-	");
+	* Fixed more color issues");
 	 
 	initPatch("1.3", "May 2nd, 2021");
 	initPatchWords("Misc. Updates
@@ -591,6 +607,10 @@ with self{
 	// set_attack.gml
 	initCheat("Final Smash Toggle", "cheat_final_smash", [0, 1], ["Off", "On"], "Change the NSPECIAL to the Final Smash.");
 	
+	// update.gml
+	initCheat("Enable All Runes", "cheat_all_runes", [0, 1], ["Off", "On"], "Equips all the Abyss Runes, besides Rune A (go to Max Jumps for that).");
+	
+	//Unused Cheat Codes//
 	// post_draw.gml
 	//initCheat("Say woag", "cheat_funny_snail", [0, 1], ["no", "yes"], "Say woag? Yes. No. AAAAAA");
 	

@@ -110,12 +110,13 @@ set_hitbox_value(49, 1, HG_HIT_SFX, sound_get("dstronggrab"));
 
 set_hitbox_value(49, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(49, 2, HG_HITBOX_GROUP, 2);
-set_hitbox_value(49, 2, HG_PROJECTILE_SPRITE, sprite_get("uspecialfrogthing"));
-set_hitbox_value(49, 2, HG_PROJECTILE_MASK, sprite_get("final_launchhitbox"));
+set_hitbox_value(49, 2, HG_PROJECTILE_SPRITE, sprite_get("final_launchhitbox"));
+set_hitbox_value(49, 2, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(49, 2, HG_WINDOW, 9);
 set_hitbox_value(49, 2, HG_SHAPE, 2);
 set_hitbox_value(49, 2, HG_LIFETIME, 3);
-set_hitbox_value(49, 2, HG_WIDTH, 1);
-set_hitbox_value(49, 2, HG_HEIGHT, 1);
+set_hitbox_value(49, 2, HG_WIDTH, 20);
+set_hitbox_value(49, 2, HG_HEIGHT, 20);
 set_hitbox_value(49, 2, HG_PRIORITY, 9);
 set_hitbox_value(49, 2, HG_DAMAGE, 30);
 set_hitbox_value(49, 2, HG_ANGLE, 45);

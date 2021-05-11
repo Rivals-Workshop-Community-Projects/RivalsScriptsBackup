@@ -184,10 +184,23 @@ if (attack == AT_FSTRONG){
 
 if (attack == AT_NSPECIAL){
 
+	if (window == 1){
+		if(window_timer == 1){
+			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, crysProj_shotSpeedBase);
+			crysProj_shotSpeedBonus = 0;
+			crysProj_tickDelay = 10;
+		}
+	}
     if (window == 2){
 		crystalHold++;
+		if(crystalHold % 20 == 0){
+			crysProj_tickDelay -= 2;
+			crysProj_shotSpeedBonus += 2;
+			spawn_hit_fx(x + (36 * spr_dir), y - 34, crysSmall);
+		}
 		
-        if (crystalHold == 25 || (!special_down && window_timer >= 4)){
+        if (crystalHold == 40 || (!special_down && window_timer >= 4)){
+			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, crysProj_shotSpeedBase + crysProj_shotSpeedBonus);
 			window = 3;
 			window_timer = 0;
 			crystalHold = 0;
@@ -210,9 +223,7 @@ if (attack == AT_NSPECIAL){
 	move_cooldown[AT_NSPECIAL] = crystalCooldown;
 }
 
-//if (attack == AT_DAIR){
-//	move_cooldown[AT_DAIR] = dairCooldown;
-//}
+
 //B - Reversals
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
@@ -1015,7 +1026,6 @@ switch(attack){
 			hitstun_grav = hitstun_grav - .05;
 			max_fall = max_fall - 1;
 			fast_fall = fast_fall - 1;
-			set_window_value(AT_FSTRONG, 1, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.45);
 			
 			itemsDisplayed[displaySlot] = item[17, 5];
 			displaySlot++;
@@ -1049,6 +1059,8 @@ switch(attack){
 			break;
 			
 		case 20:	//letterman jacket
+			set_attack_value(AT_FSTRONG, AG_CATEGORY, 2);
+			
 			itemsDisplayed[displaySlot] = item[20, 5];
 			displaySlot++;
 			break;
@@ -1138,12 +1150,15 @@ switch(attack){
 			set_hitbox_value(AT_NSPECIAL, breakfastCount, HG_HITBOX_GROUP, -1);
 		}
 	} else {
-		if(crysProj_tickDelay > 3){
-			crysProj_tickDelay--;
-		}
-		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, get_hitbox_value(AT_NSPECIAL,1,HG_PROJECTILE_HSPEED) + 0.2);
 		itemsDisplayed[displaySlot] = item[x, 5];
 		displaySlot++;
+		if(voidStacks < 10){
+			gravity_speed -= 0.01;
+			air_max_speed += 0.1;
+			hitstun_grav -= .0075;
+			knockback_adj += .01;
+			voidStacks++;
+		}
 	}
 }
 

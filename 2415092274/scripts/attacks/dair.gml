@@ -1,7 +1,7 @@
-//AR DAIR [WIP]
+//Ao DAIR
 
 set_attack_value(AT_DAIR, AG_CATEGORY, 1);
-set_attack_value(AT_DAIR, AG_NUM_WINDOWS, 4);
+set_attack_value(AT_DAIR, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("dair"));
 set_attack_value(AT_DAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_DAIR, AG_LANDING_LAG, 8);
@@ -30,12 +30,14 @@ set_window_value(AT_DAIR, 3, AG_WINDOW_ANIM_FRAMES, 2);
 //set_window_value(AT_DAIR, 3, AG_WINDOW_VSPEED, -3);
 
 set_window_value(AT_DAIR, 4, AG_WINDOW_LENGTH, 11);
-set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAME_START, 6);
-set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAME_START, 5);//6
+set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAMES, 2);//3
 set_window_value(AT_DAIR, 4, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DAIR, 4, AG_WINDOW_SFX_FRAME, 1);
-set_window_value(AT_DAIR, 4, AG_WINDOW_SFX, asset_get("sfx_shovel_swing_light1"));
-set_window_value(AT_DAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
+
+set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 13);
+set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAME_START, 6);
+set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_DAIR, 5, AG_WINDOW_HAS_SFX, 1);
 
 set_num_hitboxes(AT_DAIR, 4);
 

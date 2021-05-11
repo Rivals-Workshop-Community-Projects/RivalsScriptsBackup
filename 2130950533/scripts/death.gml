@@ -1,13 +1,4 @@
-// Delete articles on death
-//var comedy_zone = asset_get("obj_article1");
-/*
-with (asset_get("obj_article1")) {
-    if (player_id == other.id) {
-        // Begin the disappear sequence
-        state = 3;
-        state_timer = 0;
-    }
-}
-*/
+// Reset charge move progress and number of charges on death
 joke_primed = 0;
 joke_progress = 0;
+comedy_zone_charges_granted = 0;

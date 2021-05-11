@@ -1,3 +1,5 @@
+set_victory_bg(sprite_get("victory_bg"));
+
 sprite_change_offset("hurt", 63, 106);
 sprite_change_offset("bighurt", 63, 106);
 sprite_change_offset("hurtground", 63, 106);

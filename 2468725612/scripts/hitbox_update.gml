@@ -13,7 +13,7 @@ if ((attack == AT_DATTACK || attack == AT_NAIR || attack == AT_FAIR || attack ==
 }
 
 if ((attack == AT_NAIR || attack == AT_FAIR || attack == AT_BAIR || attack == AT_UAIR 
-	|| attack == AT_DAIR) && hit_priority != 0 && player_id.free == false){
+	|| attack == AT_DAIR) && hit_priority != 0 && damage == 0 && player_id.free == false){
 		destroyed = true;
 }
 

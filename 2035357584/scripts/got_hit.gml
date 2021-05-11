@@ -10,3 +10,5 @@ if (enemy_hitboxID.player_id == id && enemy_hitboxID.attack == AT_EXPLOSION) {
     //hitstun *= 0.33;
     //hitstun_full *= 0.33;
 }
+
+trigger = false;

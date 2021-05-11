@@ -7,28 +7,6 @@ if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_2 || attack == AT_FSPECIAL ||
     trigger_b_reverse();
 }
 
-if (attack == AT_TAUNT && window = 1 && window_timer = 1){
-    tauntpose = random_func( 7, 10, true);
-}
-
-if (attack == AT_TAUNT){
-        set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAME_START, 18 + tauntpose);
-        set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAME_START, 18 + tauntpose);
-}
-
-if (attack == AT_TAUNT && window = 1 && window_timer = 31){
- window = 2;
- window_timer = 0;
-}
-
-if (attack == AT_TAUNT && window = 2 && window_timer = 1 && !hitpause){
-     shake_camera(5, 4);
-      spawn_hit_fx(x, y, taunt_flasheffect);
-}
-
-if (attack == AT_TAUNT && window = 3 && taunt_down){
-    window_timer = 0;
-}
 
 
 
@@ -429,7 +407,7 @@ if (window = 3){
  
  if (window = 9 && window_timer = 1){
     initial_invince = 0;
- create_hitbox(49, 2, hit_player_obj.x, hit_player_obj.y);
+ create_hitbox(49, 2, hit_player_obj.x, hit_player_obj.y - 30);
 
 }
 

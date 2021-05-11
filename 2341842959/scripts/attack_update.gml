@@ -68,7 +68,7 @@ if (attack == AT_DTILT && window > 1){
         gas_dtilt_posy = y;
     }
     if (!hitpause){
-        gas_dtilt_cont += .25;  
+        gas_dtilt_cont += .35;  
     }
     
 }

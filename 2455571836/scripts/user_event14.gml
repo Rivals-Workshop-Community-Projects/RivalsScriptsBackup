@@ -634,9 +634,9 @@ with phone{
 	In online matches, it won't automatically trigger; instead, press the 0 (zero) key on the keyboard to enable Fast Graphics.");
 
 
-	initSetting("Debug Print", "setting_print_debug", [0, 1], ["Off", "On"], "With this setting enabled, press Ctrl+8 to monitor important values such as current speed, frames per second, and current state.
+	/*initSetting("Debug Print", "setting_print_debug", [0, 1], ["Off", "On"], "With this setting enabled, press Ctrl+8 to monitor important values such as current speed, frames per second, and current state.
 	
-	As the developer of this character, you can define three custom variables to track; see user_event15.gml for details.");
+	As the developer of this character, you can define three custom variables to track; see user_event15.gml for details.");*/
 	initSetting("FPS Warning", "setting_fps_warn", [1, 0], ["On", "Off"], "Display a warning onscreen when the FPS drops below 60.");
 	
 }

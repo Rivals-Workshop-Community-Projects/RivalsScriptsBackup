@@ -86,7 +86,7 @@ if(attack == AT_DATTACK && RedMode){
     set_window_value(AT_DATTACK, 2, AG_WINDOW_VSPEED_TYPE, 2);
 	set_window_value(AT_DATTACK, 2, AG_WINDOW_VSPEED, -4);
 	set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED_TYPE, 1);
-	set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 6);
+	set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 2.5);
 	
 	set_window_value(AT_DATTACK, 3, AG_WINDOW_TYPE, 10);
     set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 24);
@@ -109,6 +109,7 @@ if(attack == AT_DATTACK && RedMode){
     set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 8);
     set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, red_new_stab_1 );
     set_hitbox_value(AT_DATTACK, 1, HG_HIT_PARTICLE_NUM, 2);
+    set_hitbox_value(AT_DATTACK, 2, HG_HIT_PARTICLE_NUM, 2);
     set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, sound_get("RedHit4"));
 	set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_X, 64);
 	set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_Y, -32);
@@ -158,6 +159,7 @@ if(attack == AT_DATTACK && RedMode){
     reset_hitbox_value(AT_DATTACK, 1, HG_ANGLE);
     reset_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK);
     reset_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT);
+    reset_hitbox_value(AT_DATTACK, 1, HG_HIT_PARTICLE_NUM);
     reset_hitbox_value(AT_DATTACK, 1, HG_HIT_PARTICLE_NUM);
     reset_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX);
 	reset_hitbox_value(AT_DATTACK, 1, HG_HITBOX_X);
@@ -249,8 +251,8 @@ if(attack == AT_FAIR && RedMode){
     set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 2);
     set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, red_new_stab_2 );
 	set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, sound_get("RedHit3"));
-	set_hitbox_value(AT_FTILT, 1, HG_HIT_PARTICLE_NUM, 2);
-	set_hitbox_value(AT_FTILT, 2, HG_HIT_PARTICLE_NUM, 2);
+	set_hitbox_value(AT_FAIR, 1, HG_HIT_PARTICLE_NUM, 2);
+	set_hitbox_value(AT_FAIR, 2, HG_HIT_PARTICLE_NUM, 2);
 } else {   
 	
     reset_attack_value(AT_FAIR, AG_SPRITE);
@@ -457,8 +459,8 @@ if(attack == AT_DAIR && RedMode){
     reset_hitbox_value(AT_DAIR, 2, HG_DAMAGE);
     reset_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT);
     reset_hitbox_value(AT_DAIR, 2, HG_HIT_SFX);
-	reset_hitbox_value(AT_NAIR, 1, HG_HIT_PARTICLE_NUM);
-	reset_hitbox_value(AT_NAIR, 2, HG_HIT_PARTICLE_NUM);
+	reset_hitbox_value(AT_DAIR, 1, HG_HIT_PARTICLE_NUM);
+	reset_hitbox_value(AT_DAIR, 2, HG_HIT_PARTICLE_NUM);
 }
 
 if(attack == AT_BAIR && RedMode){

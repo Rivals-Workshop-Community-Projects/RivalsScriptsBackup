@@ -1,4 +1,13 @@
 /*
+-- V2.23 --
+Balance Changes:
+- Red Dattack should now be easier to hit
+
+Cosmetic Changes:
+- Fixed Dair not resetting the hit particle
+- Fixed an issue with small sprites
+- Blue Ustrong and both dtilts now have extra vfx
+
 -- V2.22 --
 Cosmetic Changes:
 - Fixed the issue with the default skin

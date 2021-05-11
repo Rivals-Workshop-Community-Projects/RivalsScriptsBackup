@@ -7,7 +7,7 @@ if(my_hitboxID.attack == AT_EXPLOSION){
     if(hit_player_obj != id){
         //explosion from the trap has this unique variable to prevent parry stun
         if(my_hitboxID.camera_shake == 0){
-            set_state(PS_IDLE);
+            was_parried = false;
         }
         else{
             if(free){
@@ -24,4 +24,8 @@ if(my_hitboxID.attack == AT_EXPLOSION){
     else{
         invince_time = floor(invince_time/4);
     }
+}
+
+if(my_hitboxID.attack == AT_FAIR_G){
+    set_state(PS_PRATFALL);
 }

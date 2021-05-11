@@ -14,7 +14,7 @@ idle_anim_speed = .075;
 crouch_anim_speed = .1;
 walk_anim_speed = .1;
 walkturn_anim_speed = .04;
-dash_anim_speed = .12;
+dash_anim_speed = .13;//.12
 pratfall_anim_speed = .25;
 
 walk_speed = 4;
@@ -22,7 +22,7 @@ walk_accel = 0.2;
 walk_turn_time = 2;
 initial_dash_time = 12;
 initial_dash_speed = 7;
-dash_speed = 6.2;
+dash_speed = 6.5;//6.2
 dash_turn_time = 10;
 dash_turn_accel = 1.8;
 dash_stop_time = 6;
@@ -43,8 +43,8 @@ prat_fall_accel = .85; //multiplier of air_accel while in pratfall
 air_friction = .02;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
-walljump_hsp = 7;
-walljump_vsp = 11;
+walljump_hsp = 5;//7
+walljump_vsp = 13;//11
 walljump_time = 32;
 max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 12;//16 //fast fall speed
@@ -107,18 +107,28 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
+aodev = false;
+
+nsp_dir_h = 0;
+nsp_dir_v = 0;
+nsp_direction_storage_for_post_draw = 0;
 
 dsp_free = false;
 dsp_done = false;
-nsp_level = 0;
-nsp_time = 0;
-nsp_t_max = 16;
-nsp_a_time = 0;
-nsp_a_t_max = 16;
+dsp_override = false;
+dsp_qualified = false;
+dsp_confirmed = false;
+fsp_level = 0;
+fsp_time = 0;
+fsp_t_max = 16;
+fsp_a_time = 0;
+fsp_a_t_max = 16;
+fsp_buffer = 0;
 
 usp_d_able = false;
 usp_d_done = false;
 
+fake_mhID = -4;
 
 Hikaru_Title = "Starry Magic";
 feri_costume = sprite_get("exp_ao"); //i coded this!
@@ -132,5 +142,8 @@ ncode3 = "too lazy to write this doc."
 
 steve_death_message = "Steve was slain by starryao";
 
+tackle_hfx = hit_fx_create( sprite_get("hfx_tackle"), 18 )
+tackle_hfx2 = hit_fx_create( sprite_get("hfx_tackle2"), 24 )
 set_victory_bg( sprite_get( "victorybg" ));
 music_init = false;
+mode = false;

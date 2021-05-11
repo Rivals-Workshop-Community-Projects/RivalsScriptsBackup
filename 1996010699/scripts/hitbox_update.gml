@@ -22,6 +22,8 @@ if(attack == AT_NSPECIAL){
 				makeShards(2);
 				grav = .2;
 				vsp = -4;
+				hsp /= 1.5;
+				player_id.crysProj_tickDelay += 2;
 				projectile_parry_stun = true;
 				does_not_reflect = true;
 				walls = 0;

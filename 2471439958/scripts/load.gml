@@ -1,4 +1,6 @@
 sprite_change_offset("idle", 50, 90);
+    sprite_change_offset("idle_EX", 50, 90);
+    sprite_change_offset("idle_EX1", 50, 90);
 sprite_change_offset("hurtbox", 50, 90);
 sprite_change_offset("crouch_hurt", 50, 90);
 sprite_change_offset("crouch_hurt2", 50, 86);

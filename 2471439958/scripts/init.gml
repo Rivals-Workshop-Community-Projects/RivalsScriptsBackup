@@ -17,7 +17,7 @@ air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
 char_height = 62;
-idle_anim_speed = .172;
+idle_anim_speed = .16;
 crouch_anim_speed = .1;
 walk_anim_speed = .150;
 dash_anim_speed = .2;

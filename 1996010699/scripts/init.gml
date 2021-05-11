@@ -274,6 +274,8 @@ crystalStartup = 10;
 crysProj_id = noone;
 crysProj_timer = 0;
 crysProj_tickDelay = 10;
+crysProj_shotSpeedBase = 3;
+crysProj_shotSpeedBonus = 0;
 
 //Dair variables
 dairCooldown = 15;
@@ -321,6 +323,7 @@ IDLockedIn = false;
 itempoolUpdated = false;
 suitcaseLevel = 0;
 itemCredits = 0;
+voidStacks = 0;
 
 //Prize Purse, ID 0
 item[0, 0] = "PRIZE PURSE";

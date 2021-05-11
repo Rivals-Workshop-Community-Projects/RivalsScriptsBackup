@@ -14,6 +14,8 @@ if (my_hitboxID.type == 2 && hit_player_obj.im_the_clone == true){
 	if (my_hitboxID.attack != AT_FSPECIAL && my_hitboxID.attack != AT_FSPECIAL_AIR
 	&& my_hitboxID.attack != AT_DSPECIAL && my_hitboxID.attack != AT_DSPECIAL_AIR){
 		can_command = true;	
+		hologram.hologram_cool = false;
+		move_cooldown[AT_NSPECIAL_2] = 0;
 	}
     
     if (my_hitboxID.damage == 0){

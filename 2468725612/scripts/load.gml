@@ -131,6 +131,7 @@ sprite_change_offset("fspecial_air_hologram", 25, 61);
 sprite_change_offset("dspecial_hologram", 50, 49);
 sprite_change_offset("dspecial_air_hologram", 37, 47);
 sprite_change_offset("taunt_hologram", 39, 54);
+sprite_change_offset("hurtground_hologram", 27, 59);
 
 sprite_change_offset("nspecial_interface", 4, 37);
 sprite_change_offset("nspecial_button", -4, 29);

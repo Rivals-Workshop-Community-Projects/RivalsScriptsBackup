@@ -6,6 +6,7 @@ set_attack_value(AT_DSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecial"));
 set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
 
+// Deploy the Comedy Zone!
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
@@ -27,23 +28,5 @@ set_window_value(AT_DSPECIAL, 4, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 9);
-
-// Recall the zone with a whistle
-set_window_value(AT_DSPECIAL, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 5, AG_WINDOW_LENGTH, 4);
-set_window_value(AT_DSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_DSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 11);
-
-set_window_value(AT_DSPECIAL, 6, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 6, AG_WINDOW_LENGTH, 30);
-set_window_value(AT_DSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_DSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 12);
-set_window_value(AT_DSPECIAL, 6, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSPECIAL, 6, AG_WINDOW_SFX, sound_get("whistle"));
-
-set_window_value(AT_DSPECIAL, 7, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 7, AG_WINDOW_LENGTH, 4);
-set_window_value(AT_DSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_DSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 13);
 
 set_num_hitboxes(AT_DSPECIAL, 0);

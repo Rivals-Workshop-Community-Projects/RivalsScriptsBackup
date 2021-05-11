@@ -265,9 +265,8 @@ if(suitcaseLevel >= 10 && item[15, 3] == 0 && item[15, 7] == false){
 }
 
 //f key unlock
-if(keyboard_string == "f" && item[26, 3] == 0 && item[26, 7] == false){
+if(get_gameplay_time() > 10 && keyboard_string == "f" && item[26, 3] == 0 && item[26, 7] == false){
 	achieveUnlock(26);
-	keyboard_string = "";
 }
 
 if(((state_cat == SC_AIR_NEUTRAL && prev_state == PS_PRATLAND) || (state_cat == SC_AIR_COMMITTED && prev_prev_state = PS_PRATLAND)) && item[17, 3] == 0 && item[17, 7] == false){

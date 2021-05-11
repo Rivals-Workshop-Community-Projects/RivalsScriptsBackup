@@ -161,11 +161,11 @@ spr_dir = phone_cheats[cheat_widebert] * sign(spr_dir);
 //Abyss Runes
 max_djumps = 1 + has_rune("A") * 1;
 
-if has_rune("B"){
+if (has_rune("B") || phone_cheats[cheat_all_runes] == 1){
 set_window_value( AT_USPECIAL, 6, AG_WINDOW_TYPE, 1 );
 }
 
-if has_rune("C"){
+if (has_rune("C") || phone_cheats[cheat_all_runes] == 1){
 walk_turn_time = 0;
 initial_dash_time = 0;
 dash_turn_time = 0;
@@ -176,16 +176,16 @@ ground_friction = 1;
 moonwalk_accel = 1.4;
 }
 
-if has_rune("D"){
+if (has_rune("D") || phone_cheats[cheat_all_runes] == 1){
 walk_speed = 5;
 dash_speed = 10;
 }
 
-if has_rune("E"){
+if (has_rune("E") || phone_cheats[cheat_all_runes] == 1){
 set_hitbox_value( AT_NSPECIAL, 1, HG_PROJECTILE_GRAVITY, 0.0 );
 }
 
-if has_rune("F"){
+if (has_rune("F") || phone_cheats[cheat_all_runes] == 1){
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED, 11);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED_TYPE, 1);
 
@@ -209,18 +209,18 @@ set_window_value(AT_FSPECIAL, 9, AG_WINDOW_HSPEED_TYPE, 1);
 	}
 }
 
-if has_rune("G"){
+if (has_rune("G") || phone_cheats[cheat_all_runes] == 1){
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED_TYPE, -1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED_TYPE, -1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, 0);
 }
 
-if has_rune("H"){
+if (has_rune("H") || phone_cheats[cheat_all_runes] == 1){
 	move_cooldown[AT_FSPECIAL] = 0;
 }
 
-if has_rune("I"){
+if (has_rune("I") || phone_cheats[cheat_all_runes] == 1){
 set_hitbox_value( AT_DTILT, 1, HG_BASE_KNOCKBACK, 3 );
 set_hitbox_value( AT_DTILT, 1, HG_KNOCKBACK_SCALING, 0.75 );
 set_hitbox_value( AT_DTILT, 1, HG_BASE_HITPAUSE, 0 );
@@ -228,7 +228,7 @@ set_hitbox_value( AT_DTILT, 1, HG_EXTRA_HITPAUSE, 30 );
 set_hitbox_value( AT_DTILT, 1, HG_HITPAUSE_SCALING, 0.25 );
 }
 
-if has_rune("J"){
+if (has_rune("J") || phone_cheats[cheat_all_runes] == 1){
 set_window_value( AT_FSTRONG, 3, AG_WINDOW_LENGTH, 6 );
 set_window_value( AT_FSTRONG, 3, AG_WINDOW_SFX_FRAME, 5 );
 
@@ -243,28 +243,28 @@ set_window_value( AT_USTRONG, 5, AG_WINDOW_LENGTH, 6 );
 set_window_value( AT_USTRONG, 6, AG_WINDOW_LENGTH, 4 );
 }
 
-if has_rune("K"){
+if (has_rune("K") || phone_cheats[cheat_all_runes] == 1){
 set_hitbox_value( AT_NSPECIAL, 1, HG_DAMAGE, 9);
 set_hitbox_value( AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value( AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.5);
 }
 
-if has_rune("L"){
+if (has_rune("L") || phone_cheats[cheat_all_runes] == 1){
 set_window_value( AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 6);
 set_window_value( AT_DSPECIAL, 1, AG_WINDOW_VSPEED, -12);
 set_window_value( AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 1);
 }
 
-if has_rune("M"){
+if (has_rune("M") || phone_cheats[cheat_all_runes] == 1){
 set_hitbox_value( AT_BAIR, 1, HG_EXTRA_HITPAUSE, 30);
 set_hitbox_value( AT_DAIR, 1, HG_EXTRA_HITPAUSE, 30);
-if has_rune("G"){
+if (has_rune("G") || phone_cheats[cheat_all_runes] == 1){
 set_hitbox_value( AT_BAIR, 2, HG_EXTRA_HITPAUSE, 30);
 set_hitbox_value( AT_DAIR, 2, HG_EXTRA_HITPAUSE, 30);
 	}
 }
 
-if has_rune("N"){
+if (has_rune("N") || phone_cheats[cheat_all_runes] == 1){
 set_window_value(AT_TAUNT, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAMES, 4);
@@ -291,7 +291,7 @@ if (window == 5 && window_timer == 9){
 	}
 }
 
-if has_rune("O"){
+if (has_rune("O") || phone_cheats[cheat_all_runes] == 1){
 set_hitbox_value( AT_DAIR, 2, HG_DAMAGE, 8);
 set_hitbox_value( AT_DAIR, 2, HG_ANGLE, 270);
 set_hitbox_value( AT_DAIR, 2, HG_BASE_KNOCKBACK, 8);

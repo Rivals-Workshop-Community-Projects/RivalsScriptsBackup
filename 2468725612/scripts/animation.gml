@@ -250,14 +250,19 @@ switch (attack_meu){
 	break;
 }
 
+if (move_cooldown[AT_NSPECIAL_2] != 0){
+	hologram.sprite_index = sprite_get("hurtground_hologram");
+}
+
 with (hologram){
-	if (state == PS_IDLE || state == PS_IDLE_AIR || state == PS_HITSTUN || state == PS_HITSTUN_LAND
-	|| state == PS_LAND || state == PS_TUMBLE){
+	if ((state == PS_IDLE || state == PS_IDLE_AIR || state == PS_HITSTUN || state == PS_HITSTUN_LAND
+	|| state == PS_LAND || state == PS_TUMBLE) && hologram_idle == true){
 		sprite_index = sprite_get("idle_hologram");
 		image_index = floor((state_timer mod (4 * 10))/10);	
 	}
 	
 }
+
 
 if (state == PS_DOUBLE_JUMP && state_timer == 7){
 	if ((spr_dir == 1 && hsp >= 2) || (spr_dir == -1 && hsp <= 2) || hsp == 0){

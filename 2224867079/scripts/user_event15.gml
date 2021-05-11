@@ -458,6 +458,14 @@ with phone{
 //	initPatchWords("Fnuuy joke
 //	- waog");
 //	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0);
+	//2.23
+	initPatch("2.23	", "8 May 2021");
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Fixed Dair not resetting the hit particle
+	- Fixed an issue with small sprites
+	- Blue Ustrong and both dtilts now have extra vfx")
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Red Dattack should now be easier to hit");
 	//2.22
 	initPatch("2.22	", "1 May 2021");
 	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);

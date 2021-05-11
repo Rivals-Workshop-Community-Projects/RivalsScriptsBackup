@@ -1,14 +1,13 @@
-//article3_init
+//THIS IS A MODIFIED VERSION OF NATE'S ARTICLE 2 CODE
 
-init = 0;
-sprite_index = sprite_get("ustrong_obj");
-
-state = 0;
-state_timer = 0;
-idle_cycle = 0;
-use_left = 1;
-
-free = true;
-can_be_grounded = true;
-ignores_walls = false;
-uses_shader = true;
+displayMove = 0;
+//0 = utilt, 1 = dtilt, 2 = usmash, 3 = dsmash, 4/5 = dattack, 6 = taunt
+obj_timer = 0;
+lifetime = 0;
+my_image_index = 0;
+can_be_grounded = false;
+fall_forward = false;
+connected = true;
+my_max = 10;
+print_debug("making construct");
+displayFront = 0;

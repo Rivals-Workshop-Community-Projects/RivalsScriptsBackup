@@ -111,8 +111,6 @@ frog_movetimer = 0;
 
 nspecial_grabbedplayer = 0;
 
-tauntpose = 0;
-
 sprite_change_collision_mask( "frog_tonguehitbox1", true, 0, 0, 0, 0, 0, 0 );
 frog_hb_sprite_1 = sprite_get("frog_tonguehitbox1");
 

@@ -13,6 +13,12 @@ crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
+//Final Smash
+fs_char_portrait_y = 60;
+fs_char_chosen_final_smash = "custom";
+fs_has_hit = false;
+fs_cinematic = false;
+fs_tempcheck = 0;
 
 //Hud asset
 lanternhud_CURRENT = 100;
@@ -30,8 +36,8 @@ walk_speed = 4;
 walk_accel = 0.2;
 walk_turn_time = 6;
 initial_dash_time = 8;
-initial_dash_speed = 6.50;
-dash_speed = 6.5;
+initial_dash_speed = 7.2;
+dash_speed = 6.8;
 dash_turn_time = 8;
 dash_turn_accel = 1.75;
 dash_stop_time = 4;

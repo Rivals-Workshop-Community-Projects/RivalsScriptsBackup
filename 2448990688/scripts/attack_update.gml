@@ -18,7 +18,7 @@ if (attack == AT_FSPECIAL){
     }
     
 if (attack == AT_NSPECIAL){
-        move_cooldown[AT_NSPECIAL] = 30;
+        move_cooldown[AT_NSPECIAL] = 25;
     }
 
 //Can Move and Jump
@@ -37,7 +37,7 @@ if (attack == AT_TAUNT && down_down){
     
 
 //Dspecial Laugh
-if (attack == AT_DSPECIAL && window == 3 && window_timer == 18){
+if (attack == AT_DSPECIAL && window == 3 && window_timer == 14){
         sound_play( sound_get( "sfx_amogus" ) );
     }
 //Troll Taunt Sfx    
