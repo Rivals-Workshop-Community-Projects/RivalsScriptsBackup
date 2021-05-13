@@ -12,6 +12,7 @@ if (attack==AT_DSPECIAL){
 	}
 }
 if (attack==AT_FSPECIAL){
+	fsp_jc_confirm = false;
 	if (fsp_buffer == 0){
 		fsp_level = 0;
 	}else{
@@ -27,5 +28,4 @@ if (attack==AT_USPECIAL){
 }
 if (attack==35 && mode=="B" && down_down){
 	attack = 36
-	instance_create( x, y-30, "obj_article1" );
 }

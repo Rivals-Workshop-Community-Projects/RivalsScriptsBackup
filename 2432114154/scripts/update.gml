@@ -21,6 +21,7 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 	attacking = true
 } else {
 	attacking = false
+	sound_stop(drip_sound)
 }
 
 
@@ -52,158 +53,7 @@ if get_gameplay_time() == 1 {
 }
 
     
-if !isyellow {  
-	
-if inkshield < 0 {
-	knockback_adj = 1.05
-}
 
-
-if get_gameplay_time() <= 29 {
-	set_attack (AT_EXTRA_1)
-	window = 0
-	window_timer = 0
-	visible = false
-}
-
-if get_gameplay_time() <= 80 {
-	draw_indicator = false
-}
-if get_gameplay_time() == 30 {
-	visible = true
-}
-
-if get_gameplay_time() == 34 {
-	sound_play(asset_get("sfx_orca_soak"))
-}
-
-if get_gameplay_time() == 48 {
-	sound_play(asset_get("sfx_waterhit_heavy2"))
-}
-
-if get_gameplay_time() == 70 {
-	sound_play(asset_get("sfx_bird_downspecial"))
-	sound_play(asset_get("sfx_waterwarp"))
-}
-
-
-
-if hitpause {
-	move_cooldown[AT_EXTRA_1] += 1
-}
-
-
-if !free or state == PS_WALL_JUMP {
-	move_cooldown[AT_USPECIAL] = 0
-}
-if hit_player_obj.state_cat == SC_HITSTUN && hit_player_obj.free && move_cooldown[AT_EXTRA_1] = 0 && ink < 300 {
-	if get_gameplay_time() % 8 == 0 {
-		create_hitbox (AT_NSPECIAL, 8, floor(hit_player_obj.x), floor(hit_player_obj.y - 40) )
-	}
-}
-
-if ink > 300 {
-	ink = 300
-}
-if ink < 0 {
-	ink = 0
-}
-
-if (state == PS_PRATLAND or state == PS_WALL_JUMP)  && visible = false {
-	visible = true
-	spawn_hit_fx (x, y + 4, i1)
-      spawn_hit_fx (x, y + 4, i2)
-} 
-
-if state == PS_PRATFALL && visible = false {
-	invincible = true
-    fall_though = true
-	 if (y > room_height/2 + 400){
-    	vsp = -20
-    	visible = true
-     }
-}
-if inkshield > 0 && !hitpause && move_cooldown[AT_EXTRA_1] == 0{
-	
-	inkshield -= 1
-
-}
-if inkshield == 0 {
-	sound_play(asset_get("sfx_ori_bash_projectile"));
-	spawn_hit_fx (x, y - 32, 27)
-	inkshield = -1
-}
-
-if !instance_exists(hit_player_obj){
-
-hit_player_obj = self
-
-}
-
-
-
-if state == PS_DASH_START {
-    hsp /= 1.6
-    if state_timer == 11 {
-        sound_play(sound_get("SpaceCut2"));
-    }
-}
-
-if state == PS_DASH_TURN {
-    hsp /= 2
-    if state_timer == 3 {
-        set_state (PS_DASH)
-        state_timer = 0
-        sound_play(sound_get("SpaceCut2"));
-    }
-}
-
-if state == PS_DASH{
-    
-    if state_timer % 5 == 0 or state_timer == 3 {
-        spawn_hit_fx (x - 6*spr_dir , y - 5 +  random_func(1, 10, true), i1)
-    }
-}
-
-if state == PS_AIR_DODGE {
-	if state_timer < 12  {
-		draw_indicator = false
-		if state_timer % 4 == 0 {
-        spawn_hit_fx (x, y - 5 +  random_func(1, 10, true), i1)
-		}
-    }
-}
-if state == PS_WAVELAND{
-    if state_timer == 4 {
-        spawn_hit_fx (x, y + 4, i1)
-    }
-}
-
-
-
-if (state == PS_ROLL_BACKWARD or state == PS_ROLL_FORWARD or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD){
-   
-if state_timer == 1 {
-	 spawn_hit_fx (x, y + 4, i2)
-    sound_play(asset_get("sfx_orcane_fspecial"));
-}
-	 
-	 if state_timer < 10 {
-	 draw_indicator = false	
-	 hsp = -4 * spr_dir
-	 }
-	 
-	 if state_timer < 18 {
-	     draw_indicator = false
-	 }
-	 
-	 if state_timer > 14 {
-	     hsp = 0
-	 }
-	 
-
-}
-}
 
 
 if isyellow == false {
@@ -351,10 +201,10 @@ set_window_value(AT_JAB, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 6);
 set_hitbox_value(AT_JAB, 2, HG_LIFETIME, 4);
-set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, .6);
-set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 7);
-set_hitbox_value(AT_JAB, 2, HG_HITPAUSE_SCALING, .6);
+set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, .4);
+set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 4);
+set_hitbox_value(AT_JAB, 2, HG_HITPAUSE_SCALING, .4);
 
 
 ///Fair 
@@ -1089,13 +939,59 @@ if isyellow {
 		
 	}
 	
+	
+	if get_gameplay_time() < 120 {
+		visible = false
+	}
+	
 	if get_gameplay_time() == 60 {
 	sound_play(asset_get("sfx_clairen_swing_mega_instant"))
 	sound_play(asset_get("sfx_ori_bash_use"))
 	sound_play(asset_get("sfx_bird_nspecial"))
     }
     
-    if get_gameplay_time() == 80 {
+   	if get_gameplay_time() == 70 {
+   		       			sound_play(asset_get("mfx_star"))
+	spawn_hit_fx(x, y-30, 304)
+	sound_play(asset_get("sfx_clairen_swing_mega_instant"))
+	sound_play(asset_get("sfx_ori_bash_use"))
+	sound_play(asset_get("sfx_bird_nspecial"))
+    }
+    
+       	if get_gameplay_time() == 80 {
+       			sound_play(asset_get("mfx_star"))
+	spawn_hit_fx(x, y-30, 302)
+	sound_play(asset_get("sfx_clairen_swing_mega_instant"))
+	sound_play(asset_get("sfx_ori_bash_use"))
+	sound_play(asset_get("sfx_bird_nspecial"))
+    }
+    
+    
+           	if get_gameplay_time() == 90 {
+           			sound_play(asset_get("mfx_star"))
+	spawn_hit_fx(x, y-30, 306)
+	sound_play(asset_get("sfx_clairen_swing_mega_instant"))
+	sound_play(asset_get("sfx_ori_bash_use"))
+	sound_play(asset_get("sfx_bird_nspecial"))
+    }
+    
+               	if get_gameplay_time() == 100 {
+               			sound_play(asset_get("mfx_star"))
+	spawn_hit_fx(x, y-30, 302)
+	sound_play(asset_get("sfx_clairen_swing_mega_instant"))
+	sound_play(asset_get("sfx_ori_bash_use"))
+	sound_play(asset_get("sfx_bird_nspecial"))
+    }
+    
+               	if get_gameplay_time() == 110 {
+               			sound_play(asset_get("mfx_star"))
+	spawn_hit_fx(x, y-30, 304)
+	sound_play(asset_get("sfx_clairen_swing_mega_instant"))
+	sound_play(asset_get("sfx_ori_bash_use"))
+	sound_play(asset_get("sfx_bird_nspecial"))
+    }
+    
+    if get_gameplay_time() == 120 {
     	visible = true
 	sound_play(asset_get("mfx_star"))
 	spawn_hit_fx(x, y-30, 305)
@@ -1104,8 +1000,25 @@ if isyellow {
 	window_timer = 1
     }
     
-	if get_gameplay_time() > 60 && get_gameplay_time() < 80 {
-		spawn_hit_fx (x - 600 + (get_gameplay_time()-60)*30 , y - 10, saillusion)
+	if get_gameplay_time() > 60 && get_gameplay_time() < 86 {
+		spawn_hit_fx (x - (600 - (get_gameplay_time()-60)*30)*spr_dir , y + 200 - (get_gameplay_time() - 60)*10, saillusion)
+	}
+	
+	if get_gameplay_time() > 70 && get_gameplay_time() < 96 {
+		spawn_hit_fx (x - (600 - (get_gameplay_time()-70)*30)*spr_dir , y - 200 + (get_gameplay_time() - 70)*10, saillusion)
+	}
+	
+	if get_gameplay_time() > 80 && get_gameplay_time() < 106 {
+		spawn_hit_fx (x - (600 - (get_gameplay_time()-80)*30)*spr_dir , y - 10, saillusion)
+	}
+	
+	
+	if get_gameplay_time() > 90 && get_gameplay_time() < 116 {
+		spawn_hit_fx (x - (600 - (get_gameplay_time()-90)*30)*spr_dir , y - 100 + (get_gameplay_time() - 90)*5 , saillusion)
+	}
+	
+		if get_gameplay_time() > 100 && get_gameplay_time() < 126 {
+		spawn_hit_fx (x - (600 - (get_gameplay_time()-100)*30)*spr_dir , y + 100 - (get_gameplay_time() - 100)*5 , saillusion)
 	}
 	
 }

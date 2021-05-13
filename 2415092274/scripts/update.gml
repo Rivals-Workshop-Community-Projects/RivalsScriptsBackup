@@ -21,8 +21,31 @@ if (usp_d_done){
 		move_cooldown[AT_FSPECIAL] = 0;
 	}
 }
+if (usp_did){
+	move_cooldown[AT_USPECIAL] = 2;
+	if (!free||state==PS_WALL_JUMP){
+		usp_did = false;
+		move_cooldown[AT_USPECIAL] = 0;
+	}
+}
 if (fsp_buffer>0){
 	fsp_buffer--;
+}
+
+if (!optimalmodeEX){
+	if (state==PS_SPAWN){
+		if (taunt_down&&shield_down){
+			optimalmodeEX = true;
+			white_flash_timer = 18;
+			sound_play(sound_get("gui_decline"));
+		}
+	}else{
+		if (down_down&&taunt_down&&shield_down){
+			optimalmodeEX = true;
+			white_flash_timer = 18;
+			sound_play(sound_get("gui_decline"));
+		}
+	}
 }
 
 if (state_timer == 0 && state == PS_PARRY){
@@ -31,6 +54,7 @@ sound_play(sound_get("SE034_low"));
 
 //var testset = (jump_down)?"F":(special_down)?"B":(attack_down)?"D":(!shield_down)?"E":"A"
 var testset = (jump_down)?(special_down)?"B":"F":(attack_down)?"D":(!shield_down)?"E":"A"
+
 //copied from rsnm
 with (asset_get("oPlayer")){
 	if (id != other.id){
@@ -42,9 +66,11 @@ with (asset_get("oPlayer")){
 				if (last_attack == AT_USPECIAL && (last_hbox_num == 2||last_hbox_num == 3)){
 					//with (other){print_debug( "last attack detect" )}
 					if (!hitpause){
-						//with (other){print_debug( "hitpause detect" )}
-						hsp = 0;
-						//vsp = -5;
+						if (state_timer == 1||state_timer == 0){
+							//with (other){print_debug( "hitpause detect" )}
+							hsp = hsp / 1.8;
+							//vsp = -5;
+						}
 					}
 				}
 				if (last_attack == AT_USPECIAL && (last_hbox_num == 4)){
@@ -57,6 +83,7 @@ with (asset_get("oPlayer")){
 		//---" )}
 	}
 }
+
 
 if ((state==PS_SPAWN||taunt_down)&&testset=="B"&&mode!=testset&&get_player_color(player)!=11){mode=testset;init_shader();}
 if (!music_init){

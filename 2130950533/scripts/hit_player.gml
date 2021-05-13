@@ -38,6 +38,11 @@ with (asset_get("obj_article1")){
     }
 }
 
+// Allow jump-cancel of dtilt
+if (my_hitboxID.attack == AT_DTILT) {
+    dtilt_jump_cancel_allowed = true;
+}
+
 // Play pop sound when fspecial projectile dissipates
 if (my_hitboxID.attack == AT_FSPECIAL) {
     sound_play( sound_get("pop") );

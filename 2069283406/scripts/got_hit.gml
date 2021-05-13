@@ -20,8 +20,16 @@ if firerange > 0 {
 }
 
 
-if fireon < 3 && firerange < 0{
+if enemy_hitboxID.type == 1 && fireon > 0 {
+	     spawn_hit_fx(floor ( hit_player_obj.x) , floor ( hit_player_obj.y) , firepar1 );
+	    firetimer -= 1
     firerange = -100
+    if fireon == 3 {
+    sound_play(asset_get("sfx_burnapplied"));
+        sound_play(asset_get("sfx_spin"));
+    sound_play(asset_get("sfx_ori_grenade_aim"),false,noone,1,1.6);
+    }
+      fireon = 0 
 }
 
 

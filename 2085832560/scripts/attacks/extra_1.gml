@@ -167,7 +167,7 @@ set_window_value(AT_EXTRA_1, 17, AG_WINDOW_SFX_FRAME, 1);
 
 
 set_window_value(AT_EXTRA_1, 18, AG_WINDOW_TYPE, 1);
-set_window_value(AT_EXTRA_1, 18, AG_WINDOW_LENGTH, 24);
+set_window_value(AT_EXTRA_1, 18, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_EXTRA_1, 18, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_EXTRA_1, 18, AG_WINDOW_ANIM_FRAME_START, 69);
 set_window_value(AT_EXTRA_1, 18, AG_WINDOW_HAS_SFX, 1);
@@ -526,11 +526,12 @@ set_hitbox_value(AT_EXTRA_1, 9, HG_WIDTH, 1100);
 set_hitbox_value(AT_EXTRA_1, 9, HG_HEIGHT, 60);
 set_hitbox_value(AT_EXTRA_1, 9, HG_SHAPE, 2);
 set_hitbox_value(AT_EXTRA_1, 9, HG_DAMAGE, 0.1);
-set_hitbox_value(AT_EXTRA_1, 9, HG_ANGLE, 70);
+set_hitbox_value(AT_EXTRA_1, 9, HG_ANGLE, 60);
 set_hitbox_value(AT_EXTRA_1, 9, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_EXTRA_1, 9, HG_BASE_KNOCKBACK, 14);
 set_hitbox_value(AT_EXTRA_1, 9, HG_KNOCKBACK_SCALING, 0.3);
 set_hitbox_value(AT_EXTRA_1, 9, HG_BASE_HITPAUSE, 0);
+set_hitbox_value(AT_EXTRA_1, 9, HG_EXTRA_HITPAUSE, 1);
 set_hitbox_value(AT_EXTRA_1, 9, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_EXTRA_1, 9, HG_HIT_SFX, asset_get("sfx_boss_laser_hit"));
 set_hitbox_value(AT_EXTRA_1, 9, HG_HITBOX_GROUP, -1);
@@ -540,6 +541,7 @@ set_hitbox_value(AT_EXTRA_1, 9, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_EXTRA_1, 9, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_EXTRA_1, 9, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_EXTRA_1, 9, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_EXTRA_1, 9, HG_SDI_MULTIPLIER, 0.1);
 
 set_hitbox_value(AT_EXTRA_1, 10, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_EXTRA_1, 10, HG_WINDOW, 11);
@@ -562,11 +564,12 @@ set_hitbox_value(AT_EXTRA_1, 10, HG_WIDTH, 1100);
 set_hitbox_value(AT_EXTRA_1, 10, HG_HEIGHT, 60);
 set_hitbox_value(AT_EXTRA_1, 10, HG_SHAPE, 2);
 set_hitbox_value(AT_EXTRA_1, 10, HG_DAMAGE, 1);
-set_hitbox_value(AT_EXTRA_1, 10, HG_ANGLE, 70);
+set_hitbox_value(AT_EXTRA_1, 10, HG_ANGLE, 60);
 set_hitbox_value(AT_EXTRA_1, 10, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_EXTRA_1, 10, HG_BASE_KNOCKBACK, 14);
 set_hitbox_value(AT_EXTRA_1, 10, HG_KNOCKBACK_SCALING, 0.3);
-set_hitbox_value(AT_EXTRA_1, 10, HG_BASE_HITPAUSE, 2);
+set_hitbox_value(AT_EXTRA_1, 10, HG_BASE_HITPAUSE, 0);
+set_hitbox_value(AT_EXTRA_1, 10, HG_EXTRA_HITPAUSE, 2);
 set_hitbox_value(AT_EXTRA_1, 10, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_EXTRA_1, 10, HG_HIT_SFX, asset_get("sfx_boss_laser_hit"));
 set_hitbox_value(AT_EXTRA_1, 10, HG_HITBOX_GROUP, -1);
@@ -576,6 +579,7 @@ set_hitbox_value(AT_EXTRA_1, 10, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_EXTRA_1, 10, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_EXTRA_1, 10, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_EXTRA_1, 10, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_EXTRA_1, 10, HG_SDI_MULTIPLIER, 0.1);
 
 set_hitbox_value(AT_EXTRA_1, 11, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_EXTRA_1, 11, HG_WINDOW, 11);
@@ -597,12 +601,13 @@ set_hitbox_value(AT_EXTRA_1, 11, HG_PROJECTILE_DESTROY_EFFECT, 303);
 set_hitbox_value(AT_EXTRA_1, 11, HG_WIDTH, 1100);
 set_hitbox_value(AT_EXTRA_1, 11, HG_HEIGHT, 60);
 set_hitbox_value(AT_EXTRA_1, 11, HG_SHAPE, 2);
+set_hitbox_value(AT_EXTRA_1, 11, HG_EXTRA_HITPAUSE, 2);
 set_hitbox_value(AT_EXTRA_1, 11, HG_DAMAGE, 0.1);
-set_hitbox_value(AT_EXTRA_1, 11, HG_ANGLE, 70);
+set_hitbox_value(AT_EXTRA_1, 11, HG_ANGLE, 60);
 set_hitbox_value(AT_EXTRA_1, 11, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_EXTRA_1, 11, HG_BASE_KNOCKBACK, 14);
 set_hitbox_value(AT_EXTRA_1, 11, HG_KNOCKBACK_SCALING, 0.3);
-set_hitbox_value(AT_EXTRA_1, 11, HG_BASE_HITPAUSE, 1);
+set_hitbox_value(AT_EXTRA_1, 11, HG_BASE_HITPAUSE, 0);
 set_hitbox_value(AT_EXTRA_1, 11, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_EXTRA_1, 11, HG_HIT_SFX, asset_get("sfx_boss_laser_hit"));
 set_hitbox_value(AT_EXTRA_1, 11, HG_HITBOX_GROUP, -1);
@@ -612,7 +617,7 @@ set_hitbox_value(AT_EXTRA_1, 11, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_EXTRA_1, 11, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_EXTRA_1, 11, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_EXTRA_1, 11, HG_PROJECTILE_IS_TRANSCENDENT, true);
-
+set_hitbox_value(AT_EXTRA_1, 11, HG_SDI_MULTIPLIER, 0.1);
 
 ///// Unholy Hand Grenade
 

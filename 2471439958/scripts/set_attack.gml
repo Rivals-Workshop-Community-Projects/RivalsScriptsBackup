@@ -3,8 +3,7 @@
 if (attack == AT_TAUNT){
     if attack_down{
         attack = AT_TAUNT_2;
-    }
-    
+    } 
 }
 
 if (attack == AT_NSPECIAL){

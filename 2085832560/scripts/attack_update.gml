@@ -287,7 +287,7 @@ if attack == AT_USTRONG {
     }
     
     
-    if window == 5 && uhit == 1 {
+    if window == 5 && uhit == 1 && move_cooldown[AT_UTILT] == 0{
       create_hitbox(AT_EXTRA_3 , 3 ,hit_player_obj.x   , hit_player_obj.y - 300 );
        create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x - random_func(12, 100, true)  , hit_player_obj.y - 300 - random_func(10, 100, true));
         create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x + random_func(13, 100, true)  , hit_player_obj.y - 300 - random_func(11, 100, true));
@@ -295,6 +295,7 @@ if attack == AT_USTRONG {
         create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x - random_func(10, 100, true) + 50  , hit_player_obj.y - 400 - random_func(12, 100, true));
         create_hitbox(AT_EXTRA_3 , 5 ,hit_player_obj.x + random_func(11, 100, true) + 50  , hit_player_obj.y - 400 - random_func(13, 100, true));
       uhit = 0
+      move_cooldown[AT_UTILT] = 5
       sound_play(asset_get("sfx_ori_bash_projectile"));
     }
     

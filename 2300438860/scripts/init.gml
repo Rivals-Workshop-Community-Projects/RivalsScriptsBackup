@@ -183,7 +183,11 @@ shit4 = hit_fx_create( sprite_get( "shit4" ), 60 );
 
 shit5 = hit_fx_create( sprite_get( "shit5" ), 60 );
 
+fxslash1 = hit_fx_create( sprite_get( "fxslash1" ), 11 );
+fxslash3= hit_fx_create( sprite_get( "fxslash3" ), 11 );
 
+sprite_change_offset("fxslash1", 100, 200); 
+sprite_change_offset("fxslash3", floor(75/1.5), floor(150/1.5) );
 
 sprite_change_offset("shit1", 100, 100);
 sprite_change_offset("shit4", 100, 100);

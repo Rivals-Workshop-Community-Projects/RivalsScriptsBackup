@@ -1,7 +1,13 @@
 ///
 
 
-
+	    	if state == PS_AIR_DODGE && state_timer > 15 && move_cooldown[AT_UAIR] != 0{
+	    		move_cooldown[AT_UAIR] = 0
+	    		set_attack(AT_DAIR)
+					window = 5
+					vsp = -12
+					hsp = dohsp
+	    	}
 
 if !instance_exists(hit_player_obj){
 
@@ -9,6 +15,9 @@ hit_player_obj = self
 
 }
 
+if fireon < 1 && firerange != -100 {
+	firerange = -100
+}
 if move_cooldown[AT_EXTRA_3] <= 5 && move_cooldown[AT_EXTRA_3] > 1{
 	outline_color = [255-255/move_cooldown[AT_EXTRA_3] , 255-255/move_cooldown[AT_EXTRA_3], 255-255/move_cooldown[AT_EXTRA_3]]
         init_shader();
@@ -278,9 +287,9 @@ if state == PS_AIR_DODGE and state_timer < 15 {
 }
 
 if state == PS_WAVELAND {
-	if state_timer == 1 &&hsp != 0{
-		 spawn_hit_fx( x  , y  , dsshadow)
-	}
+	if hsp > 0 spr_dir = 1;
+
+	if hsp < 0 spr_dir = -1;
 
 }
 
@@ -379,8 +388,9 @@ if firetimer == 0 && get_gameplay_time() >= 120 {
     firetimer -= 1
     firerange = -100
     fireon = 0
-    sound_play(asset_get("sfx_spin"));
-    sound_play(asset_get("sfx_ori_grenade_aim"));
+    sound_play(asset_get("sfx_burnapplied"));
+        sound_play(asset_get("sfx_spin"));
+    sound_play(asset_get("sfx_ori_grenade_aim"),false,noone,1,1.6);
      spawn_hit_fx(floor ( hit_player_obj.x) , floor ( hit_player_obj.y) , firepar1 );
 }
 

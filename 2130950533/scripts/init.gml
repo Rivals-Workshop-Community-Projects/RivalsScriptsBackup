@@ -143,3 +143,5 @@ joke_reached_full = false;
 comedy_zone_charges_granted = 0;
 // Limit increased by rune
 comedy_charge_limit = has_rune("B") ? 10 : 1;
+// If dtilt hits, allow it to be jump-cancelled
+dtilt_jump_cancel_allowed = false;

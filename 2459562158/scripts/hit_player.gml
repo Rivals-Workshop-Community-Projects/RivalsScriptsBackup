@@ -14,7 +14,7 @@ switch(my_hitboxID.attack)
 	            }
 	        }
 			
-			if (obj != noone)
+			if (obj != noone) and (!hit_player_obj.super_armor)
 			{
 				var ang = find_angle( hit_player_obj.x, hit_player_obj.y,obj.x, obj.y);
 	            hit_player_obj.old_hsp = lengthdir_x(12, ang);
@@ -23,7 +23,7 @@ switch(my_hitboxID.attack)
 		}
 	break;
     case AT_UTILT:
-        if (my_hitboxID.hbox_num == 4) 
+        if (my_hitboxID.hbox_num == 4) and (!hit_player_obj.super_armor)
         {
             var ang = find_angle( hit_player_obj.x, hit_player_obj.y,x - 6, y- 106);
             hit_player_obj.old_hsp = lengthdir_x(10, ang);

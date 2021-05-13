@@ -26,6 +26,9 @@ if drawing > 3 {
 }
 
 
+if alt == 14 && drawtime == 1{
+  sound_play(sound_get("drip")) 
+}
 
 
 
@@ -45,6 +48,9 @@ var palette_names = [
   "Grab",
   "Daisho no Hebi",
   "w a t e r m e l o n",
+  "Sai Drip",
+  "Susanyes",
+  "BLW", 
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

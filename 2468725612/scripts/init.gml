@@ -238,6 +238,10 @@ dspecial_rune = false;
 pratfall_cont = false;
 hold_on = true;
 shake_on = true;
+time_out = false;
+
+holo_check = false;
+holo_clock = 0;
 
 my_x = 0;
 my_y = 0;

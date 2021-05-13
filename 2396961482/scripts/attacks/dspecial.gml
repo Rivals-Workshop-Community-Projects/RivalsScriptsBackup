@@ -79,3 +79,4 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, lanternfx);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_ice_shatter_small"));
 set_hitbox_value(AT_DSPECIAL, 2, HG_IGNORES_PROJECTILES, 1);
 //set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_LOCKOUT, 15);
+

@@ -32,26 +32,6 @@ set_window_value(AT_USPECIAL_GROUND, 3, AG_WINDOW_ANIM_FRAME_START, 10);
 
 set_num_hitboxes(AT_USPECIAL_GROUND, 2);
 
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_PARENT_HITBOX, 1);
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_LIFETIME, 1);
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_HITBOX_X, -2);
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_HITBOX_Y, -44);
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_WIDTH, 35);
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_HEIGHT, 35);
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_SHAPE, 0);
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_PRIORITY, 1);
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_DAMAGE, 9);
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_ANGLE, 75);
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_BASE_KNOCKBACK, 11);
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_KNOCKBACK_SCALING, .6);
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_BASE_HITPAUSE, 7);
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_HITPAUSE_SCALING, .6);
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_VISUAL_EFFECT, 19);
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_VISUAL_EFFECT_Y_OFFSET, 10);
-set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_HIT_SFX, sound_get("jabb"));
-
 set_hitbox_value(AT_USPECIAL_GROUND, 2, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_USPECIAL_GROUND, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USPECIAL_GROUND, 2, HG_WINDOW, 3);
@@ -75,4 +55,4 @@ set_hitbox_value(AT_USPECIAL_GROUND, 2, HG_PROJECTILE_MASK, sprite_get("uspecial
 set_hitbox_value(AT_USPECIAL_GROUND, 2, HG_PROJECTILE_ANIM_SPEED, .20);
 set_hitbox_value(AT_USPECIAL_GROUND, 2, HG_PROJECTILE_VSPEED, -5);
 set_hitbox_value(AT_USPECIAL_GROUND, 2, HG_PROJECTILE_HSPEED, 2);
-set_hitbox_value(AT_USPECIAL_GROUND, 2, HG_HIT_SFX, sound_get("jabb"));
+set_hitbox_value(AT_USPECIAL_GROUND, 2, HG_HIT_SFX, sound_get("bash"));

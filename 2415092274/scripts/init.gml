@@ -21,8 +21,8 @@ walk_speed = 4;
 walk_accel = 0.2;
 walk_turn_time = 2;
 initial_dash_time = 12;
-initial_dash_speed = 7;
-dash_speed = 6.5;//6.2
+initial_dash_speed = 7.5;//7
+dash_speed = 6.8;//6.2//6.5
 dash_turn_time = 10;
 dash_turn_accel = 1.8;
 dash_stop_time = 6;
@@ -56,7 +56,7 @@ land_time = 4; //normal landing frames
 prat_land_time = 3;
 wave_land_time = 12;//7;
 wave_land_adj = 1.1; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .03; //grounded deceleration when wavelanding
+wave_friction = 0.02;//0.03 //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 1;
@@ -124,10 +124,14 @@ fsp_t_max = 16;
 fsp_a_time = 0;
 fsp_a_t_max = 16;
 fsp_buffer = 0;
+fsp_jc_confirm = false;
+
+usp_did = false;
 
 usp_d_able = false;
 usp_d_done = false;
 
+optimalmodeEX = false;
 fake_mhID = -4;
 
 Hikaru_Title = "Starry Magic";

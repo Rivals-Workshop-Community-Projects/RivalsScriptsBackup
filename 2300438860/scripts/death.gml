@@ -1,5 +1,5 @@
 ///
-
+  esave = 0
 dmgmul = 0
 attackbar = 0
 heartbroke = 0

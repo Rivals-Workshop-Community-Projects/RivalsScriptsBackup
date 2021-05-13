@@ -1,6 +1,7 @@
 if(AT_DSPECIAL == my_hitboxID.attack){
     if(instance_exists(my_article)){
         instance_destroy(my_article);
+        move_cooldown[AT_DSPECIAL] = 240;
     }
 }
 

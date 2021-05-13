@@ -325,7 +325,7 @@ if (attack == AT_NSPECIAL) {
 	if (window == 5) {
 		if (window_timer == 1) {
 		    if (nspecial_article.window == 2 || nspecial_article.window == 4 || nspecial_article.window == 6) {
-		        nspecial_article.window_timer = 290;
+		        nspecial_article.window_timer = 299;
 		    }
 		}
 	}
@@ -362,7 +362,7 @@ if (attack == AT_FSPECIAL){
     	}
     }
     if (window == 4) {
-    	var recovery_time = 10 * fspecial_times
+    	var recovery_time = 6 * fspecial_times
         if (special_down && window_timer == recovery_time / 2 && fspecial_times < 3){
             window = 1;
             window_timer = 0;
@@ -523,6 +523,73 @@ if (attack == AT_TAUNT) {
             }
         }
     }
+}
+
+//Final Smash
+if (attack == 49) {
+	if (window == 1) {	
+		ds_list_clear(fs_players)
+	}
+	
+	if (window == 6 || window == 7) {
+		with (oPlayer) {
+			if (id != other.id) {
+				hitstop = 2;
+				hitpause = true;
+				attack_invince = true;
+				invince_time = 2
+			}
+		}
+	}
+	
+	if (window == 6) {
+		shake_camera(12, 2);
+	}
+	
+	if (window == 7) {
+		if (window_timer == 90) {
+			sound_play(sound_get("sfx_anthem_final2"));
+		}
+		if (window_timer == 256) {
+			sound_play(sound_get("sfx_anthem_final3a"));
+		}
+		if (window_timer == 276) {
+			sound_play(sound_get("sfx_anthem_final3b"));
+		}
+	}
+	if (window == 8) {
+		
+		for (var i = 0; i < ds_list_size(fs_players); i++) {
+			if (window_timer == 1) {
+				fs_players[| i].hitstop = 0;
+				fs_players[| i].hitpause = false;
+				fs_players[| i].invincible = false;
+				fs_players[| i].invince_time = 0;
+			}
+			if (window_timer == 2) {
+				var hb = create_hitbox(49, 4, fs_players[| i].x, fs_players[| i].y - 24)
+				hb.type = 1;
+				hb.x_pos = fs_players[| i].x - x;
+				hb.y_pos = fs_players[| i].y - y;
+				hb.anthem_track_player = fs_players[| i];
+			    var random_effect = random_func(i+1, 2, true);
+			    
+			    switch (random_effect) {
+			        case 0:
+			            hb.effect = 1;
+			            break;
+			        case 1:
+			            hb.effect = 10;
+			            break;
+			        case 2:
+			            hb.effect = 11;
+			            break;
+			    }
+	    
+				shake_camera(14, 12);
+			}
+		}
+	}
 }
 //-------------------------------------------------------------------------------------------------------------
 //Alternate stage collide function. This must go at the end of attack_update.

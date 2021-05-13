@@ -220,6 +220,11 @@ if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR && window == 2){
         }
 }
 }
+
+//Fspecial Anti Racism Stop Gap
+if (attack == AT_FSPECIAL){
+    move_cooldown[AT_FSPECIAL] = 40;}
+
 //Dspecial Get off me hitbox
 if (attack == AT_DSPECIAL && window == 2 && window_timer == 1){
     create_hitbox(AT_DSPECIAL, 2, x, y)}

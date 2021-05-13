@@ -1,7 +1,29 @@
 ///
 
-
+if my_hitboxID.type == 1 && my_hitboxID.attack != AT_DSTRONG && my_hitboxID.attack != AT_NSPECIAL
+&& my_hitboxID.attack != AT_DTILT && my_hitboxID.attack != AT_DSPECIAL{
+if  my_hitboxID.damage <= 4 {
+	sound_play(sound_get("slice"),false,noone,1,1.1)
+	     var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
+			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+}
  
+ if  my_hitboxID.damage > 4  && my_hitboxID.damage < 8 {
+ 	sound_play(sound_get("slice"),false,noone,1,1)
+	     var hfx2 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash1 )
+			hfx2.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+ }
+
+ if  my_hitboxID.damage >= 8 {
+ 	sound_play(sound_get("slice"),false,noone,1,0.9)
+ 	var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 60, fxslash3 )
+			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4 + 90
+			
+	     var hfx2 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash1 )
+			hfx2.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+ }
+
+}
 if cosmetic = 1{
 if get_player_color(player) = 1 {
 
@@ -39,6 +61,8 @@ if cdamage2 > 9999 {
 dx2 = hit_player_obj.x
 dy2 = hit_player_obj.y
 }
+
+
 
 
 if move_cooldown[AT_EXTRA_1] == 0 {

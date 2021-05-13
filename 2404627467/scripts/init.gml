@@ -142,6 +142,12 @@ fx_slashheavy = hit_fx_create(sprite_get("fx_slashheavy"), 12);
 ║                                                                              ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 */
+//Hikaru
+Hikaru_Title = "Overgrown Reaper";
+//Mt. Dedede
+arena_title = "The Overgrown Reaper";
+//Soulbound Conflict
+battle_text = "* Vines prevents you from going further."
 
 //Feri
 sprite_change_offset("costume_anthem", 84, 114);
@@ -178,3 +184,8 @@ page++;
 dracula_speaker[page] = 0;
 dracula_text[page] = "You silent types really get on my nerves.[glass] Perhaps a beating will teach you to go against Count Dracula!";
 page++;
+
+//Final Smash
+fs_char_portrait_y  = 132;
+fs_char_chosen_final_smash = "custom";
+fs_players = ds_list_create();

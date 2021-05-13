@@ -8,7 +8,7 @@ set_window_value(AT_FTILT, 1, AG_WINDOW_HSPEED, 2);
 set_window_value(AT_FTILT, 1, AG_WINDOW_HSPEED_TYPE, -2);
 set_window_value(AT_FTILT, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FTILT, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 6);
+set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_FTILT, 1, AG_WINDOW_SFX, sound_get("hoo7"));
 
 

@@ -458,6 +458,9 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.31", "11 May, 2021");
+	initPatchWords_ext("- Buffy should hopefully work in timed battles/time outs now", fa_left, c_white, 0, 0);
+	
 	initPatch("1.3", "9 May, 2021");
 	initPatchWords_ext("- Buffy no longer slides off-stage with DSpecial_Air when landing on the ground", fa_left, c_white, 0, 0);
 	initPatchWords_ext("- The hologram doesn't travel as far when getting hit", fa_left, c_white, 0, 0);

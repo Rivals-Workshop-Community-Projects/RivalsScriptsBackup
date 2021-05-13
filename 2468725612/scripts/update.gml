@@ -7,9 +7,20 @@ if (lockout_timer <= 5){
     lockout_timer++;    
 }
 
+holo_clock = get_game_timer();
+
+if (holo_clock == 5){
+	holo_check = true;
+}
+
+if (get_game_timer() == 0 && holo_check == true) {
+	time_out = true;
+	instance_destroy(hologram);
+}
+
 if (object_index != oTestPlayer){
 
-if (hologram_exists == false){
+if (hologram_exists == false && time_out == false){
 	hologram_start = true;
 }
 

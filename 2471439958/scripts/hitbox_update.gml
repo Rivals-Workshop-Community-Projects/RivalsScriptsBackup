@@ -87,6 +87,7 @@ if (attack == AT_DSPECIAL && hbox_num == 1)
 		create_hitbox( AT_DSPECIAL, 2, x + 1*spr_dir, y + 4*spr_dir );
 	}
 }
+
 if (attack == AT_DSPECIAL && hbox_num == 1)
 {		
 	// Estas son las condiciones para que rebote el dspecial
@@ -102,7 +103,6 @@ if (attack == AT_DSPECIAL && hbox_num == 1)
 				sound_play(asset_get("sfx_blow_medium3"));
 			}
 		} else if player_id.spr_dir == -1{
-			sound_play(asset_get("sfx_blow_medium3"));	
 			if x > player_id.x - 120 {
 				vsp = -6;
 				hsp = -9;
@@ -114,6 +114,29 @@ if (attack == AT_DSPECIAL && hbox_num == 1)
 			}
 		}
 		//Podrias aumentar la duracion del proyectil por esta nueva funcionalidad
+	}
+
+	//Otra nueva interaccion: Uair y Dspecial
+	if  player_id.attack == AT_UAIR  &&  player_id.state == PS_ATTACK_AIR && ( y < player_id.y -35 &&  y > player_id.y - 90) {
+		if  (player_id.window == 2 && player_id.window_timer <= 6)  || player_id.window == 4{
+				if x < (player_id.x + 28) && x > (player_id.x - 28) {					//Con estos valores se forma la caja de deteccion, se puede variar
+				x = player_id.x + 4*player_id.spr_dir;
+				y = player_id.y - 62;
+				if player_id.window == 2 && player_id.window_timer <= 6 {
+					player_id.window = 4;
+					player_id.window_timer = 1;
+					spawn_hit_fx( x, y + 10, 302 );
+					sound_play(asset_get("sfx_blow_medium2"));									//SONIDO VA AQUI
+				}
+				hsp = 0;
+				vsp =0;
+				//Y por supuesto, aqui iria un posible sound effect
+			}
+		} if player_id.window == 5 && abs(hsp) < 1 && abs (vsp) <1{
+			vsp = 6;													//Aqui puedes cambiar el boost que recibe
+			hsp = 5*player_id.spr_dir + 3*player_id.right_down -3*player_id.left_down;	
+			sound_play(asset_get("sfx_blow_medium3"));									//SONIDO VA AQUI
+		}
 	}
 }
 

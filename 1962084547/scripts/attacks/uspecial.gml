@@ -12,7 +12,7 @@ set_attack_value(AT_USPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
 
 // Windows
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_TYPE, 0);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 13);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_CUSTOM_AIR_FRICTION, .8);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);

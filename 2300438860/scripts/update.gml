@@ -145,11 +145,7 @@ if esave > 1 && !hitpause{
 	esave -= 1
 }
 
-if hit_player_obj.state == PS_DEAD or hit_player_obj.state == PS_RESPAWN {
 
-  esave = 0
-
-}
 
 if state == PS_AIR_DODGE && state_timer == 2{
 	sound_play(sound_get("ting"))
@@ -158,7 +154,7 @@ if state == PS_AIR_DODGE && state_timer == 2{
 if esave == 2 {
 	shake_camera (2,4)
 	sound_play(sound_get("ting"))
-	spawn_hit_fx (hit_player_obj.x, hit_player_obj.y- 20, 302)
+	spawn_hit_fx (saveid.x, saveid.y - 20, 302)
 	saveid.x = esavex
 	saveid.y = esavey
 	esave = 0

@@ -8,9 +8,18 @@ ncode1 = "A proclaimed Historian who wanders around Venam's Edge."
 ncode2 = "If it wasn't for their works, history and events happened prio"
 ncode3 = "to 'Hell Impact' would be lost or become a vague folktale.."
 
+ui1x = 0
+ui1y = 0
+
+ui2x = 0
+ui2y = 0
+
 inkshield = -1
 inkshield_buildup = 0
 ink = 100
+
+drip_sound = sound_play(sound_get("drip"))
+sound_stop(drip_sound)
 
 gotink = 0
 isyellow = 0
@@ -74,7 +83,7 @@ hitstun_grav = .53;
 knockback_adj = 1.05;//the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 10;
+prat_land_time = 20;
 wave_land_time = 8;
 wave_land_adj = 1.14; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .01; //grounded deceleration when wavelanding
@@ -125,6 +134,9 @@ air_dodge_sound = asset_get("sfx_waveland_orc");
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
+
+esp = hit_fx_create( sprite_get( "esp2" ), 9 );
+sprite_change_offset("esp", 32, 32);
 
 bh = hit_fx_create( sprite_get( "bluehit" ), 12);
 

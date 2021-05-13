@@ -385,7 +385,7 @@ if attack == AT_DSPECIAL {
     
     
 }
-        if attack == AT_TAUNT {
+    if attack == AT_TAUNT {
         	can_jump = true
         	
      if window == 4 {

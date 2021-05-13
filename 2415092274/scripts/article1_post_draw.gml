@@ -5,6 +5,8 @@
 //
 //0.25 //0.2
 
+if (!player_id.optimalmodeEX){
+
 var spr_oldstar = sprite_get("stars")
 var spr_bgstar = sprite_get("stars3")
 var optimalmode = false;
@@ -56,4 +58,6 @@ var f_alpha = ease_quartIn( 0.1*100, 0, r_timer, r_dur )/100
 	draw_sprite_ext( spr_oldstar, 0, x, y-2, 2, 2, image_angle, -1, f_alpha );
 	draw_sprite_ext( spr_oldstar, 0, x, y, 2, 2, image_angle, -1, f_alpha*5 );
 	
+}
+
 }

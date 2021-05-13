@@ -1,6 +1,6 @@
 set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrong"));
 set_attack_value(AT_USTRONG, AG_NUM_WINDOWS, 5);
-set_attack_value(AT_USTRONG, AG_CATEGORY, 2);
+set_attack_value(AT_USTRONG, AG_CATEGORY, 0);
 set_attack_value(AT_USTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_USTRONG, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get("ustrong_hurt"));

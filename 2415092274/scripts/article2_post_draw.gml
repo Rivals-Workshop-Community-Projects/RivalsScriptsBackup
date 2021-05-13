@@ -5,6 +5,8 @@
 //
 //0.25 //0.2
 
+if (!player_id.optimalmodeEX){
+
 var spr_oldstar = (altmoon)?(sprite_get("moon_stars_alt")):(sprite_get("moon_stars"))
 var optimalmode = false;
 
@@ -51,3 +53,5 @@ var f_alpha = alp_start/9;
 }
 
 	draw_sprite_ext( sprite_index, image_index, x, y, 2, 2, 0, -1, 1 );
+	
+	}

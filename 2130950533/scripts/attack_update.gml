@@ -347,9 +347,15 @@ if (attack == AT_FTILT) {
     }
 }
 
-// Make this move jump-cancellable during endlag
+// Allow the player to jump-cancel dtilt after hitpause and only if it wasn't parried
 if (attack == AT_DTILT) {
-    if (window >= 4) {
+    if ((window == 1) && (window_timer == 1)) {
+        // Reset before the hitboxes come out
+        dtilt_jump_cancel_allowed = false;
+    } else if (dtilt_jump_cancel_allowed
+               && (!was_parried)
+               && (!hitpause))
+    {
         can_jump = true;
     }
 }

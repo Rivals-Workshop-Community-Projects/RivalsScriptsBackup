@@ -3,6 +3,14 @@ if (my_hitboxID.attack == AT_JAB) {
     parry_lag = 0;
 }  
 
+if esave > 1 {
+      esave = 0
+	sound_play(sound_get("ting"))
+	
+    spawn_hit_fx(esavex,esavey + 10, 302)
+    spawn_hit_fx(esaveid.x,esaveid.y + 10, 302)
+  
+}
 
 if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.type == 2) {
     

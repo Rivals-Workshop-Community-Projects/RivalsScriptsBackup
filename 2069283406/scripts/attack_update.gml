@@ -99,54 +99,57 @@ if attack == AT_JAB{
 		 if up_down  {
         set_attack (AT_UTILT)
         window = 1
-        window_timer = 0
+        window_timer = 5
        }
        
        if down_down {
         set_attack (AT_DTILT)
         window = 1
-        window_timer = 0
+        window_timer = 5
+        sound_play(asset_get("sfx_swipe_weak2"));
        }
        
        if (left_down && spr_dir == -1) or (right_down && spr_dir == 1){
         set_attack (AT_FTILT)
         window = 1
-        window_timer = 0
+        window_timer = 5
        }
        
        if (left_down && spr_dir == 1) or (right_down && spr_dir == -1){
        	spr_dir *= -1
         set_attack (AT_FTILT)
         window = 1
-        window_timer = 0
+        window_timer = 5
        }
 	}
 	
-	 if window == 6 && window_timer >= 2 && attack_pressed {
+	 if window == 6 && attack_pressed {
                
        if up_down  {
+       	hsp = 3*spr_dir
         set_attack (AT_UTILT)
         window = 1
-        window_timer = 0
+        window_timer = 5
        }
        
        if down_down {
         set_attack (AT_DTILT)
+         sound_play(asset_get("sfx_swipe_weak2"));
         window = 1
-        window_timer = 0
+        window_timer = 5
        }
        
        if (left_down && spr_dir == -1) or (right_down && spr_dir == 1){
         set_attack (AT_FTILT)
         window = 1
-        window_timer = 0
+        window_timer = 5
        }
        
        if (left_down && spr_dir == 1) or (right_down && spr_dir == -1){
        	spr_dir *= -1
         set_attack (AT_FTILT)
         window = 1
-        window_timer = 0
+        window_timer = 5
        }
        
        
@@ -183,16 +186,18 @@ if attack == AT_BAIR{
 }
 
 if attack == AT_USTRONG{
-	
+	can_move = false
 	can_fast_fall = false 
 	
 	if window == 2 && window_timer == 1 && !hitpause{
+			sound_play(asset_get("sfx_bird_sidespecial_start"));
 		sound_play(asset_get("sfx_swipe_heavy2"));
 	}
 	
 	
 	if window == 2 && window_timer == 5 && !hitpause{
 		vsp = -12
+		hsp = 2*spr_dir
 	}
 	
 	if window == 3 && window_timer > 11 && !has_hit{
@@ -383,7 +388,27 @@ if attack == AT_DAIR{
 
 if attack == AT_NSPECIAL{
 	
-	if fireon == 3 {
+	if fireon == 3 && state_timer < 30 {
+		if state_timer % 5 == 0 {
+		spawn_hit_fx( (hit_player_obj.x*2 + x)/3 - 20 + random_func(1,40,true) , (hit_player_obj.y*2 + y)/3 - 20 + random_func(2,40,true), firepar1)
+		}
+			
+		if state_timer % 5 == 1 {
+		spawn_hit_fx( (hit_player_obj.x + x)/2 - 20 + random_func(1,40,true) , (hit_player_obj.y + y)/2 - 20 + random_func(2,40,true), firepar1)
+		}
+		
+		if state_timer % 5 == 2 {
+		spawn_hit_fx( (hit_player_obj.x + x*2)/3 - 20 + random_func(1,40,true) , (hit_player_obj.y + y*2)/3 - 20 + random_func(2,40,true) , firepar1)
+		}
+		
+	   if state_timer % 5 == 3 {
+		spawn_hit_fx( (hit_player_obj.x*3 + x)/4 - 20 + random_func(1,40,true) , (hit_player_obj.y*3 + y)/4 - 20 + random_func(2,40,true) , firepar1)
+		}
+		
+		if state_timer % 5 == 4 {
+		spawn_hit_fx( (hit_player_obj.x + x*3)/4 - 20 + random_func(1,40,true) , (hit_player_obj.y + y*3)/4 - 20 + random_func(2,40,true) , firepar1)
+		}
+		
 		
 		if window == 1 && window_timer == 5{
 			state_timer = 15
@@ -486,6 +511,10 @@ if attack == AT_NSPECIAL{
 	
 	
 	if window == 3 && firerange > 0 && inrange  {
+
+		
+
+		
 		move_cooldown[AT_TAUNT_2] = 15
 		firetimer += 1
 		mask_index = asset_get("empty_sprite");
@@ -642,7 +671,7 @@ if attack == AT_DSPECIAL {
 
 		sound_play(asset_get("sfx_burnapplied"))
 		
-		if (fireon >= 3 && inrange) or dspecon = 1{
+		if dspecon = 1{
 		create_hitbox(AT_DSPECIAL , 2 , hit_player_obj.x , y - 20 );
 		sound_play(asset_get("sfx_ori_bash_launch"))
 		}

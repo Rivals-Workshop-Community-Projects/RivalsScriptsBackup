@@ -5,433 +5,58 @@ if attack == AT_FAIR && has_hit && !hitpause {
 window_timer += 0.2	
 }
 
-if !hitpause && !isyellow{
-    
-    if attack == AT_DATTACK {
-    if window == 1 && window_timer == 1 {
-        sound_play(asset_get("sfx_shovel_swing_heavy1"))
-    }
-    if window == 2 && window_timer == 1 {
-        spawn_hit_fx (x, y + 4, i1)
-         sound_play(asset_get("sfx_bird_nspecial"))
-         x += 30*spr_dir
-    }
-    
-     if window == 2 {
-        if window_timer % 2 == 0 && window_timer > 2 {
-        create_hitbox(AT_DATTACK , 1 , x , y  );
-        }
-    if has_hit_player && hit_player_obj.state_cat == SC_HITSTUN {
-        hit_player_obj.x += ((x + 40*spr_dir) - hit_player_obj.x)/3
-        hit_player_obj.vsp = ((y) - hit_player_obj.y)/4
-    }
-    
-    }
-    
-}
 
-
-if attack == AT_FTILT {
-    if window == 1 && window_timer == 1 {
-        sound_play(asset_get("sfx_shovel_swing_light2"))
-    }
-}
-
-if attack == AT_UTILT {
-    if window == 2 && window_timer == 7 {
-        sound_play(asset_get("sfx_swipe_weak2"))
-    }
-    
-    if has_hit_player && window < 3 && hit_player_obj.state_cat == SC_HITSTUN{
-        hit_player_obj.hsp = ((x + 30*spr_dir) - hit_player_obj.x)/4 
-        hit_player_obj.vsp = ((y - 70) - hit_player_obj.y)/4 
-    }
-}
-
-
-if attack == AT_DSTRONG {
-    if window == 2 && window_timer == 10 {
-        sound_play(asset_get("sfx_bird_nspecial"))
-    }
-
-}
-
-if attack == AT_FSTRONG {
-    vsp = 0
-    if window == 2 && window_timer == 8 {
-        sound_play(asset_get("sfx_bird_sidespecial"))
-    }
-    if window == 3 && window_timer == 1 {
-        sound_play(asset_get("sfx_forsburn_disappear"))
-    }
-    if window == 2 && window_timer == 1 {
-        sound_play(asset_get("sfx_orca_soak"))
-    }
-    
-    if window == 2 {
-        if !free {
-        x += 4*spr_dir
-        }
-        if window_timer % 3 == 0 && window_timer > 4 {
-        create_hitbox(AT_FSTRONG , 1 , x , y  );
-        }
-    if has_hit_player && hit_player_obj.state_cat == SC_HITSTUN {
-        hit_player_obj.hsp = ((x + 50*spr_dir) - hit_player_obj.x)/6 
-        hit_player_obj.vsp = ((y) - hit_player_obj.y)/6 
-    }
-    
-    }
-}
-
-if attack == AT_USTRONG {
-        if window == 2 && window_timer == 1 {
-        sound_play(asset_get("sfx_bird_nspecial"))    
-        sound_play(asset_get("sfx_orca_soak"))
-    }
-        if window == 2 && window_timer == 1 {
-        sound_play(asset_get("sfx_forsburn_disappear"))
-    }
-            if window == 1 && window_timer == 1 {
-        sound_play(asset_get("sfx_forsburn_reappear"))
-    }
-    
-    if window == 2 && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN{
-        hit_player_obj.hsp = ((x) - hit_player_obj.x)/6 
-    }
-}
-
-if attack == AT_UAIR {
-    if window == 2 && window_timer == 1 {
-        sound_play(asset_get("sfx_ice_on_player")) 
-    }
-}
-
-if attack == AT_DAIR {
-
- fall_through = true
- 
- if y > room_height/2 + 300 {
-     set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 50);
- } else {
-     set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 270);
- }
-    if window == 1 && window_timer == 1 {
-        if vsp > 0 {
-            vsp = -2
-        }
-        sound_play(asset_get("sfx_shovel_swing_heavy1"))
-    }
-    if window == 2 && window_timer == 1 {
-        spawn_hit_fx (x, y + 4, i1)
-        spawn_hit_fx (x, y + 4, i2)
-         sound_play(asset_get("sfx_bird_nspecial"))
-    }
-    
-     if window == 2 {
-         
-     if (y > room_height/2 + 300){
-    	if shield_pressed or jump_pressed or special_pressed{
-    	    set_attack (AT_DSPECIAL)
-    	    window = 1
-    	    window_timer = 1
-    	}
-     }
-    
-         hsp = 0
-                 can_move = false
-        if window_timer % 3 == 0 && window_timer > 2 {
-        create_hitbox(AT_DAIR , 1 , x , y  );
-        }
-
-    
-    if free && window_timer == 12 {
-        window_timer = 2
-    }
-    if !free {
-            	sound_play(asset_get("sfx_ori_stomp_hit"));
-        if left_down && !right_down {
-            spr_dir = -1
-        }
-        if !left_down && right_down {
-            spr_dir = 1
-        }
-        window = 3
-        window_timer = 0
-    }
-    
-    }
-    
-}
-
-if attack == AT_NSPECIAL {
-    if window >= 2 {
-    vsp /= 1.2
-    hsp /= 2
-    }
-    move_cooldown[AT_NSPECIAL] = 30
-    if window == 1 && window_timer == 1 {
-        sound_play(asset_get("sfx_spin")) 
-    }
-    if window == 1 && window_timer == 1 {
-        sound_play(asset_get("sfx_orca_absorb")) 
-    }
-}
-
-if attack == AT_FSPECIAL {
-    if vsp > 0 && window < 3 {
-        vsp /= 2
-    }
-    move_cooldown[AT_FSPECIAL] = 20
-    hsp /= 1.01
-    can_fast_fall = false
-    
-    if window == 1 && window_timer == 1 {
-        sound_play(asset_get("sfx_orca_soak")) 
-    }
-    if window == 2 && window_timer == 2 {
-        sound_play(asset_get("sfx_bird_nspecial")) 
-    }
-    if window == 2 && free && window_timer == 4 {
-        vsp = -7
-        hsp = -4 * spr_dir
-    }
-    
-    if window == 2 && window_timer == 4{
-        sound_play(asset_get("sfx_orca_absorb")) 
-        if inkshield < 0 {
-            create_hitbox(AT_FSPECIAL , 3 , x + 40*spr_dir , y - 36  );
-        } else {
-        	inkshield = 0
-            sound_play(sound_get("SpaceCut")) 
-            spawn_hit_fx(x, y - 32, 304)
-            create_hitbox(AT_FSPECIAL , 4 , x + 40*spr_dir , y - 36  );
-            create_hitbox(AT_FSPECIAL , 5 , x + 40*spr_dir , y - 36  );
-            create_hitbox(AT_FSPECIAL , 6 , x + 40*spr_dir , y - 36  );
-        }
-
-    }
-}
-
-if attack == AT_USPECIAL {
-	can_fast_fall = false
-    if window = 1 {
-        vsp /= 1.2
-        hsp /= 1.05
-        
-    }
-    if window == 1 && window_timer == 6 {
-        sound_play(asset_get("sfx_forsburn_disappear")) 
-    }
-    if window == 1 && window_timer == 6 {
-        sound_play(asset_get("sfx_bird_downspecial")) 
-    }
-    if window == 3 && window_timer == 6 {
-        if inkshield > 0 {
-            window_timer += 1
-            move_cooldown[AT_USPECIAL] = 999 
-        } else {
-            vsp = -11
-            set_state (PS_PRATFALL)
-        }
-    }
-}
-
-if attack == AT_DSPECIAL {
-    
-    if taunt_pressed && ink >= 300 && !free{
-    	sasdh = instance_create(x + 80*spr_dir,y,"oPlayer");
-    	set_attack (AT_FSPECIAL)
-    	window = 2
-    	window_timer = 4
-    	shake_camera(6,12)
-    	sound_play(sound_get("counterhit")) 	
-    	sound_play(asset_get("sfx_bird_downspecial")) 
-    	sound_play(asset_get("sfx_orca_absorb")) 
-    	spawn_hit_fx(x,y - 30,306)
-    	spawn_hit_fx(x,y - 30,305)
-    	ink = 0
-    	x -= 40*spr_dir
-    }
-        if joy_dir < 45 || joy_dir >= 315 {
-            summon = 0
-        }
-        
-        if joy_dir < 135 and joy_dir >= 45 {
-            summon = 1
-        }
-        
-        if joy_dir < 225 and joy_dir >= 135 {
-            summon = 2
-        }
-        
-        if joy_dir < 315 and joy_dir >= 225 {
-            summon = 3
-        }
-        
-        if joy_pad_idle {
-            summon = 4
-        }
-        
-        
-        if jump_pressed or shield_pressed {
-            set_state (PS_IDLE)
-        }
-        
-    if window == 1 && window_timer == 12 && free {
-        set_state (PS_PRATFALL)
-        spawn_hit_fx (x, y + 4, i1)
-        vsp = 100
-        spawn_hit_fx (x, y + 4, i2)
-        sound_play(asset_get("sfx_ori_bash_use"))
-        visible = false
-        sound_stop(asset_get("sfx_ori_grenade_aim"))
-    }
-    
-    if window == 1 && window_timer == 1 && !free {
-        //create_hitbox(AT_DSPECIAL, 21, x, y - 30)
-        spawn_hit_fx (x, y - 50, 305)
-        shake_camera(2,4)
-    }
+/////////////////////////////////////////////////////
+if isyellow && !hitpause {
     
     
-    
-      if vsp > 0 {
-        vsp /= 2
-      }
-        hsp /= 1.2
-    if window == 1 && window_timer == 1 {
-        sound_play(asset_get("sfx_forsburn_disappear")) 
-    }
-    
-    if window == 1 && window_timer == 20 && !free && (!special_pressed and !attack_pressed) {
-        window_timer -= 1
-    }
-    
-    if window == 2 && window_timer == 1 {
-             
-            if summon%5 = 0 {
-                if ink >= 100 + zettachoose{
-                sound_play(asset_get("sfx_orca_absorb"))     
-                create_hitbox(AT_DSPECIAL, 1, x + 62*spr_dir, y - 30)
-                ink -= 100 + zettachoose
-                if zettachoose < 200 {
-                zettachoose += 100
-                }
-                move_cooldown[AT_DSPECIAL] = 30
-                } else {
-                window = 1
-                window_timer = 10
-                sound_play(asset_get("mfx_back"))  
-                }
-                
-            }
-            
-            if summon%5 = 1 {
-                if ink >= 100 + sajichoose{
-                sound_play(asset_get("sfx_orca_absorb"))     
-                create_hitbox(AT_DSPECIAL, 4, x + 62*spr_dir, y - 30)
-                ink -= 100 + sajichoose
-                if sajichoose < 200 {
-                sajichoose += 100
-                }
-                move_cooldown[AT_DSPECIAL] = 30
-                } else {
-                window = 1
-                window_timer = 10
-                sound_play(asset_get("mfx_back"))  
-                }
-            }
-            
-            if summon%5 = 2 {
-                if ink >= 100 + mayuchoose{
-                sound_play(asset_get("sfx_orca_absorb"))     
-                create_hitbox(AT_DSPECIAL, 3, x + 62*spr_dir, y - 30)
-                ink -= 100 + mayuchoose
-                if mayuchoose < 200 {
-                mayuchoose += 100
-                }
-                move_cooldown[AT_DSPECIAL] = 30
-                } else {
-                window = 1
-                window_timer = 10
-                sound_play(asset_get("mfx_back"))  
-                }
-            }
-            
-            if summon%5 = 3 {
-                if ink >= 100 + alexchoose{
-                sound_play(asset_get("sfx_orca_absorb"))     
-                create_hitbox(AT_DSPECIAL, 2, x + 62*spr_dir, y - 30)
-                ink -= 100 + alexchoose
-                if alexchoose < 200 {
-                alexchoose += 100
-                }
-                move_cooldown[AT_DSPECIAL] = 30
-                } else {
-                window = 1
-                window_timer = 10
-                sound_play(asset_get("mfx_back"))  
-                }
-            }
-            
-            if summon%5 = 4 {
-                if ink >= 100 + akaichoose{
-                sound_play(asset_get("sfx_orca_absorb"))     
-                create_hitbox(AT_DSPECIAL, 5, x + 62*spr_dir, y - 30)
-                ink -= 100 + akaichoose
-                if akaichoose < 200 {
-                akaichoose += 100
-                }
-                move_cooldown[AT_DSPECIAL] = 30
-                } else {
-                window = 1
-                window_timer = 10
-                sound_play(asset_get("mfx_back"))  
-                }
-            }
-            
-    }
-    
-    
-}
         if attack == AT_TAUNT {
+        	can_jump = true
+        	
+     if window == 4 {
+     	if window_timer >= 57 && taunt_down {
+     		window_timer -= 1
+     	}
+     	if state_timer % 5 == 0 {
+     		state_timer = 0
+     		ui1x = 30 - random_func(1,60,true)
+            ui1y = 20 - random_func(2,80,true)
+            
+            ui2x = 30 - random_func(3,60,true)
+            ui2y = 20 - random_func(4,80,true)
+     	}
+     	
+     	spawn_hit_fx(x - 32*spr_dir + ui1x, y - 90 - ui1y - state_timer*4, esp) 
+     	spawn_hit_fx(x - 32*spr_dir + ui2x, y - 90 - ui2y - state_timer*4, esp) 
+     	
+     }
+     
     if window == 1 && window_timer == 1 {
         sound_play(asset_get("sfx_forsburn_disappear"))
         
     }
     
-    if window == 2 && window_timer == 1 {
-             if get_gameplay_time()%5 = 0 {
-               spawn_hit_fx (x - 50*spr_dir ,y, tauntzetta)
-            }
-            
-            if get_gameplay_time()%5 = 1 {
-               spawn_hit_fx (x - 50*spr_dir ,y + 16, tauntsaji)
-            }
-            
-            if get_gameplay_time()%5 = 2 {
-                spawn_hit_fx (x - 50*spr_dir ,y, tauntmayu)
-            }
-            
-            if get_gameplay_time()%5 = 3 {
-                spawn_hit_fx (x - 50*spr_dir ,y - 8, tauntalex)
-            }
-            
-            if get_gameplay_time()%5 = 4 {
-                spawn_hit_fx (x - 50*spr_dir ,y, tauntakai)
-            }
+    if window == 4 && window_timer == 59 {
+    	window = 3 
+    	window_timer = 8
+    	sound_play(asset_get("sfx_forsburn_reappear"))
+    }
     
+    if window == 1 && window_timer == 12 {
+    	
+    	 if get_player_color(player) == 14{
+    	 	shake_camera(4,6)
+    		 sound_stop(sound_get("drip")) 
+            sound_play(sound_get("drip")) 
+            window = 4
+        }
     }
     
         if window == 3 && window_timer == 1 {
         sound_play(asset_get("sfx_forsburn_reappear"))
     }
-        }
-}
-
-/////////////////////////////////////////////////////
-if isyellow && !hitpause {
-    
+     }
+        
     if attack == AT_JAB && window == 3 && attack_pressed && window_timer <= 6 && joy_pad_idle {
         set_attack (AT_UTILT)
         window = 5
@@ -473,14 +98,10 @@ if isyellow && !hitpause {
         window = 3 
         window_timer = 4
     }
-    
-    if attack == AT_DAIR && window == 3 && window_timer == 8 {
-        set_attack (AT_BAIR)
-        window = 4
-        window_timer = 0
-    }
+
     
     if attack == AT_FSPECIAL{
+    	prat_land_time = 10;
     	can_wall_jump = true
         if window == 1 {
         hsp /= 1.2
@@ -557,6 +178,7 @@ if isyellow && !hitpause {
         
         
         if attack == AT_USPECIAL{
+        	prat_land_time = 20;
             if down_down {
                 fall_through = true
             }

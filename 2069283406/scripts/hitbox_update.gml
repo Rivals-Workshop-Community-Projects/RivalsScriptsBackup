@@ -59,7 +59,7 @@ if attack == AT_USPECIAL && hbox_num == 11  {
 
 if attack == AT_FSPECIAL && hbox_num >= 2 && hbox_num < 9  {
 
-if y > room_height {
+if y - 60 > room_height {
 	destroyed = 1
 }
 player_id.move_cooldown[AT_FSPECIAL] = 6
@@ -120,10 +120,10 @@ if player_id.move_cooldown[AT_TAUNT_2] != 0{
 	spawn_hit_fx( x , y + 60 - random_func(13, 40, true) , firepar1 )
 	
 	with player_id {
-		other.x += floor((hit_player_obj.x - other.x) / 24)
-		other.y += floor((hit_player_obj.y - other.y) / 24)
-		other.hsp = (hit_player_obj.x - other.x) / 24
-		other.vsp = (hit_player_obj.y - other.y) / 24
+		other.x += floor((x - other.x) / 24)
+		other.y += floor((y - other.y) / 24)
+		other.hsp = (x - other.x) / 24
+		other.vsp = (y - other.y) / 24
     }
 
 	
@@ -160,13 +160,16 @@ if (place_meeting(x+hsp, y, asset_get("par_block"))) && !has_rune("J") {
    hsp = 0	
 }
 
-			  if (place_meeting(x + hsp, y + vsp, asset_get("par_block"))) {
-                 y -= 5
+			 if (place_meeting(x + hsp, y - 40, asset_get("par_block")))  && hit_priority == 0 {
+                 x -= 5*spr_dir
+             } 
+             
+            if (place_meeting(x , y + vsp, asset_get("par_block"))) {
                  vsp -= 0.6
              } 
              
              if free && hit_priority = 0{
-             	vsp += 0.06
+             	vsp += 0.04
              }
              
 
@@ -176,20 +179,13 @@ with oPlayer{
 	if (heal_player != noone) {
 	
     	if  url != other.player_id.url && state == PS_AIR_DODGE {
-			other.destroyed = 1
-			sound_play(asset_get("sfx_burnapplied"))
-			other.player_id.move_cooldown[AT_EXTRA_3] = 5
+			other.x += hsp * 5
+			other.y += vsp * 5
         }
         
 	    if  url == other.player_id.url {
 	    	
-	    	if state == PS_AIR_DODGE && state_timer > 15 {
-	    		move_cooldown[AT_TAUNT_2] = 0
-	    		set_attack(AT_DAIR)
-					window = 5
-					vsp = -12
-					hsp = dohsp
-	    	}
+
 	    	
 	    	
 	        if ((state == PS_AIR_DODGE and state_timer > 2) or state == PS_PRATFALL or
@@ -197,11 +193,12 @@ with oPlayer{
 		))){
 			
 
-
+              
 
 			other.hitbox_timer = 0
 			shake_camera(2,4)
-		if move_cooldown[AT_TAUNT_2] = 0 {		
+		if move_cooldown[AT_UAIR] = 0 {	
+			move_cooldown[AT_UAIR] = 3
 		sound_play(asset_get("sfx_burnapplied"))
 		sound_play(sound_get("RI2"))
 					spawn_hit_fx(other.x - 10*spr_dir ,other.y - 10, ffireh)
@@ -209,10 +206,10 @@ with oPlayer{
 		
 				if state == PS_PRATFALL or  player != other.player{
 				    other.destroyed = true
-				    set_attack(AT_DAIR)
-					window = 5
-					vsp = -12
-					
+				    set_attack(AT_USPECIAL)
+					window = 1
+					window_timer = 5
+					vsp = -8
                      move_cooldown[AT_FSPECIAL] = 30
                      move_cooldown[AT_EXTRA_3] = 40
 
@@ -225,8 +222,7 @@ with oPlayer{
 					window_timer = 15
 					has_airdodge = false
 					dohsp = hsp
-					other.hsp = hsp*1.2
-					other.vsp = vsp*1.5 - 2	
+					other.destroyed = true
 				}
 				
 				
@@ -272,7 +268,7 @@ if kb_value = 8 {
 	sprite_index = sprite_get("ffires2")
 } else {
 	if (hitbox_timer == 1 or hitbox_timer % 5 = 0) && (hsp > 2 or hsp < -2) {
-	create_hitbox(AT_FSPECIAL,9,x,y)
+	create_hitbox(AT_FSPECIAL,9,floor(x),floor(y))
 	spawn_hit_fx(x,y,305)
 	}
 	var firepar1 = hit_fx_create( sprite_get( "firepar1" ), 20);

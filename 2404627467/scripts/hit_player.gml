@@ -55,3 +55,24 @@ if (my_hitboxID.attack == AT_DAIR && (my_hitboxID.hbox_num == 1 || my_hitboxID.h
 		}
 	}
 }
+
+if (my_hitboxID.attack == 49 && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3)) {
+	if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
+	  && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)
+    	  && was_parried == false
+	  && hit_player_obj.clone == false && !hit_player_obj.super_armor && !hit_player_obj.invincible)  {
+		
+		//transition to the 'throw' part of the attack.
+		destroy_hitboxes();
+		attack_end();
+		window = 6;
+		window_timer = 0;
+		wall_player_x = y;
+		wall_player_xoffset = 0;
+		
+		//if this attack hasn't grabbed a player yet, grab the player we just hit.
+		if (ds_list_find_index(fs_players, hit_player_obj) <= -1) {
+			ds_list_add(fs_players, hit_player_obj);
+		}
+	}
+}

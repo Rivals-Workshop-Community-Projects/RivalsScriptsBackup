@@ -261,17 +261,21 @@ if (attack==AT_DSPECIAL){
 
 if (attack==AT_USPECIAL){
 	can_fast_fall = false;
-	if (window==1&&window_timer==15){
+	usp_did = true;
+	if (window==1&&window_timer>=13){
 		if (((spr_dir==1 && right_down) || (spr_dir==-1 && left_down))&&special_down&&!up_down){
 			usp_d_able = true;
 		}
 	}
-	if (window==1&&window_timer==15){
+	if (window==1&&window_timer>=13){
 		if (usp_d_able){
 				set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 8);
 				window = 7;
 				window_timer = 0;
 				usp_d_done = true;
+				if (window_timer!=15){
+					sound_play(sound_get("SWB1"))
+				}
 		}
 	}
 	if (window==1||window==2||window==3){
@@ -279,7 +283,7 @@ if (attack==AT_USPECIAL){
 		//hsp = clamp(hsp+(right_down-left_down)*0.5, -1, 1)
 		hsp = clamp(hsp, -3, 3)
 	}
-	if (window==2||window==3){
+	if (window==3){
 		if (!was_parried&&!hitpause){
 			can_shield = true;
 		}
@@ -368,6 +372,15 @@ if (attack==AT_FSPECIAL){
 		}
 		vsp = clamp(vsp, (tmp_v+2)*-1, tmp_v+2)
 	}
+	if (window==2){
+		if (!was_parried){
+			if (has_hit_player){
+				if (jump_pressed || (tap_jump_pressed && can_tap_jump()) ){
+					fsp_jc_confirm = true;
+				}
+			}
+		}
+	}
 	if (window>=3){//5
 		if (!was_parried){
 			if (has_hit_player){
@@ -375,7 +388,7 @@ if (attack==AT_FSPECIAL){
 					fsp_buffer = 20
 				}
 				//"fake jump"
-				if (jump_pressed){
+				if (jump_pressed || (tap_jump_pressed && can_tap_jump()) || fsp_jc_confirm ){
 					if (fsp_level<4){
 						vsp = -12;
 						window = 0;

@@ -1,0 +1,1 @@
+ds_list_destroy(fs_players);

@@ -22,7 +22,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 69);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 5);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 14);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 13);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, sound_get("hoo1"));
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 2);

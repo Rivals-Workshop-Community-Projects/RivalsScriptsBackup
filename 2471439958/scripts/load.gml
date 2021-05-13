@@ -67,6 +67,7 @@ sprite_change_offset("fspecial", 52, 90);
 sprite_change_offset("uspecial", 50, 90);
    sprite_change_offset("uspecial_ground", 50, 90);
 sprite_change_offset("taunt", 60, 110);
+    sprite_change_offset("tauntwave", 50, 90);
 
 sprite_change_offset("stinger", 90, 90);
 sprite_change_offset("chainsaw", 62, 126);

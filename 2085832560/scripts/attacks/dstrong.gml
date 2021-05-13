@@ -177,7 +177,8 @@ set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT_X_OFFSET, 10);
 set_hitbox_value(AT_DSTRONG, 5, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_GROUP, 4);
 set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, 306);
-
+set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, 306);
+set_hitbox_value(AT_DSTRONG, 5,  HG_HIT_LOCKOUT, 5);
 
 set_hitbox_value(AT_DSTRONG, 6, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DSTRONG, 6, HG_HITBOX_TYPE, 1);
@@ -200,3 +201,4 @@ set_hitbox_value(AT_DSTRONG, 6, HG_VISUAL_EFFECT_X_OFFSET, 10);
 set_hitbox_value(AT_DSTRONG, 6, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_DSTRONG, 6, HG_HITBOX_GROUP, 4);
 set_hitbox_value(AT_DSTRONG, 6, HG_VISUAL_EFFECT, 306);
+set_hitbox_value(AT_DSTRONG, 6,  HG_HIT_LOCKOUT, 5);

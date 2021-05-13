@@ -53,6 +53,8 @@ sprite_change_offset("uspecial_ground", 96, 158);
 sprite_change_offset("dspecial", 128, 158);
 sprite_change_offset("dspecial_air", 128, 158);
 sprite_change_offset("taunt", 128, 192);
+sprite_change_offset("final_smash", 128, 222);
+sprite_change_offset("final_smash_cinematic", 288, 224);
 
 sprite_change_offset("plat", 64, 0);
 
@@ -85,3 +87,9 @@ sprite_change_offset("fx_nspecial3_attack", 48, 80);
 
 sprite_change_offset("uspecial_part", 0, 32); 
 sprite_change_offset("uspecial_part2", 32, 32); 
+
+
+sprite_change_offset("fs_bg2", 128, 128); 
+sprite_change_offset("fs_bg4", 96, 96); 
+sprite_change_offset("fs_fx1", 192, 288); 
+sprite_change_offset("fs_bg1", 0, 0); 

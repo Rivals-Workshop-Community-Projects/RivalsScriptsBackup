@@ -9,7 +9,7 @@ if introtimer > 0 {
     
         draw_sprite(sprite_get("interaction"), 0, temp_x - 20, temp_y - 170);
     
-    if introhit = -1 && introtimer < 150{
+    if introhit != 1 && introtimer < 150{
          if introtimer == 150 {
   spawn_hit_fx( temp_x + 300 , temp_y + 60  , SC )
         sound_play(sound_get("RI"));
@@ -24,7 +24,7 @@ if introtimer > 0 {
 
 //Zetta
   if hit_player_obj.url == "1913869515"  {
-      if introhit = -1 && introtimer < 150{
+      if introhit != 1 && introtimer < 150{
            draw_debug_text(temp_x - 10,temp_y - 28,"Oh dear, you will be surprise");
             draw_debug_text(temp_x - 12,temp_y - 12,"at what i can still do in this.");
       }
@@ -37,7 +37,7 @@ if introtimer > 0 {
 
 //Alex
   if hit_player_obj.url == "2069283406"  {
-      if introhit = -1 && introtimer < 150{
+      if introhit != 1 && introtimer < 150{
            draw_debug_text(temp_x + 42,temp_y - 28,"Hah, good boy.");
             draw_debug_text(temp_x + 44,temp_y - 12,"I like your spirit.");
       }
@@ -51,7 +51,7 @@ if introtimer > 0 {
   
  //Mayu
   if hit_player_obj.url == "1997619532"  {
-      if introhit = -1 && introtimer < 150{
+      if introhit != 1 && introtimer < 150{
            draw_debug_text(temp_x + 32,temp_y - 28,"Didn't pay attention");
             draw_debug_text(temp_x + 34,temp_y - 12,"in history class, I see.");
       }
@@ -65,7 +65,7 @@ if introtimer > 0 {
   
    //Katie
   if hit_player_obj.url == "2085832560"  {
-      if introhit = -1 && introtimer < 150{
+      if introhit != 1 && introtimer < 150{
            draw_debug_text(temp_x + 36,temp_y - 28,"Basically, i'm a ghost.");
       }
       
@@ -80,7 +80,7 @@ if introtimer > 0 {
 
 //Saji
   if hit_player_obj.url == "2108469290"  {
-      if introhit = -1 && introtimer < 150{
+      if introhit != 1 && introtimer < 150{
            draw_debug_text(temp_x + 44,temp_y - 28,"Really.. ?");
       }
       
@@ -93,7 +93,7 @@ if introtimer > 0 {
 
 //Uza
   if hit_player_obj.url == "2047413648"  {
-      if introhit = -1 && introtimer < 150{
+      if introhit != 1 && introtimer < 150{
            draw_debug_text(temp_x + 24,temp_y - 28,"Ooo the legendary AE..");
             draw_debug_text(temp_x + 26,temp_y - 12,"Just as painful as i remember.");
       }
@@ -108,7 +108,7 @@ if introtimer > 0 {
   
 ///Nolan
   if hit_player_obj.url == "2154720280"  {
-      if introhit = -1 && introtimer < 150{
+      if introhit != 1 && introtimer < 150{
              draw_debug_text(temp_x + 40,temp_y - 28,"Gotta tell Zetta to add");
             draw_debug_text(temp_x + 42,temp_y - 12,"tasting function first..");
       }
@@ -123,7 +123,7 @@ if introtimer > 0 {
 
 ///Elice
     if hit_player_obj.url == "2136624834"  {
-      if introhit = -1 && introtimer < 150{
+      if introhit != 1 && introtimer < 150{
            draw_debug_text(temp_x + 30,temp_y - 28,"Are you too, an icecream?");
       }
       

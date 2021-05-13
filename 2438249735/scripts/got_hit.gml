@@ -12,7 +12,7 @@ if(player_id == other.id) {
 
 invitimer = 0
 
-    hitstop += 20
+    hitstop += 10
     hit_player_obj.hitstop += 5
     
                       spawn_hit_fx(x  , y - 30, lpar1)              

@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 3, 2, 15 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 14 );
+set_num_palettes( 17 );
 
 // Astra
 set_color_profile_slot( 1, 0, 255, 203, 59 ); //Energy
@@ -168,6 +168,34 @@ set_color_profile_slot( 13, 5, 20, 23, 21 ); //Dark parts
 set_color_profile_slot( 13, 6, 255, 255, 255 ); //Fur
 set_color_profile_slot( 13, 7, 108, 138, 108 ); //Fur shading
 
+// Sai Drip
+set_color_profile_slot( 14, 0, 255, 13, 13 ); //Energy
+set_color_profile_slot( 14, 1, 28, 28, 28 ); //Top shading
+set_color_profile_slot( 14, 2, 54, 54, 54 ); //Top
+set_color_profile_slot( 14, 3, 247, 247, 247 ); //Pattern1
+set_color_profile_slot( 14, 4, 204, 204, 204 ); //Pattern2
+set_color_profile_slot( 14, 5, 33, 33, 33 ); //Dark parts
+set_color_profile_slot( 14, 6, 255, 255, 255 ); //Fur
+set_color_profile_slot( 14, 7, 178, 177, 182 ); //Fur shading
+
+// Susanyes
+set_color_profile_slot( 15, 0, 80, 255, 139 ); //Energy
+set_color_profile_slot( 15, 1, 52, 70, 82 ); //Top shading
+set_color_profile_slot( 15, 2, 100, 135, 158 ); //Top
+set_color_profile_slot( 15, 3, 119, 255, 187 ); //Pattern1
+set_color_profile_slot( 15, 4, 52, 254, 86 ); //Pattern2
+set_color_profile_slot( 15, 5, 32, 45, 34 ); //Dark parts
+set_color_profile_slot( 15, 6, 31, 64, 69 ); //Fur
+set_color_profile_slot( 15, 7, 13, 18, 26 ); //Fur shading
+// BLW
+set_color_profile_slot( 16, 0, 255, 208, 0 ); //Energy
+set_color_profile_slot( 16, 1, 214, 214, 214 ); //Top shading
+set_color_profile_slot( 16, 2, 240, 240, 240 ); //Top
+set_color_profile_slot( 16, 3, 255, 208, 0 ); //Pattern1
+set_color_profile_slot( 16, 4, 255, 208, 0 ); //Pattern2
+set_color_profile_slot( 16, 5, 0, 0, 0 ); //Dark parts
+set_color_profile_slot( 16, 6, 166, 93, 33 ); //Fur
+set_color_profile_slot( 16, 7, 130, 63, 8 ); //Fur shading
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

@@ -559,7 +559,7 @@ if (attack == AT_DATTACK) {
 		sound_play(sound_get("step-grass"));
 	}
 	
-	if (window == 3 && window_timer > 10 || window > 3) && has_hit && !hitpause {
+	if (window == 3 && window_timer > 10 || window > 3) && has_hit && !hitpause && !was_parried {
 		if (jump_down || attack_down) && !free {
 			attack_end();
 			attack = AT_FSPECIAL_AIR;
