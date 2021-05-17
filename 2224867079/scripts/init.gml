@@ -115,6 +115,7 @@ redupb = hit_fx_create( sprite_get( "UpB_Sweetspot" ), 34 );
 redupb2 = hit_fx_create( sprite_get( "UpB_Sweetspot2" ), 34 );
 blue_recovery = hit_fx_create( sprite_get( "BlueRecovery" ), 8 );
 red_recovery = hit_fx_create( sprite_get( "RedRecovery" ), 8 );
+fsmash = hit_fx_create( sprite_get( "fx_fsmash" ), 30 );
 meffectb = false
 
 //Projectile Stuff
@@ -235,5 +236,11 @@ else{
    air_accel = .3;
 }
     
+//Final Smash
+fs_char_portrait_y = 62;
+fs_char_chosen_final_smash = "custom";
+fs_char_attack_index = 49;
+fs_char_chosen_trigger = "ori";
+fs_anim = false;
 
 user_event(14)

@@ -22,6 +22,8 @@ constellationTime = 0;
 isBig = has_rune("H");
 checkMerge = false;
 cracked = false;
+crackedTimer = 0;
+crackedMax = 69;
 
 randomIndex = random_func(0, 3, 1);
 closestStarMem = -4;

@@ -136,6 +136,8 @@ if (shadowmario == true){
 	sfx_hammer_hit_normal = asset_get("sfx_poison_hit_strong")
 	sfx_hammer_hit_spike = asset_get("sfx_poison_hit_weak")
 	set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, sfx_hammer_swing);
+	set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sfx_hammer_hit_normal);
+	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, sfx_hammer_hit_spike);
 	set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_paintbrush"));
 } else if (shadowmario == false){
 	sfx_hammer_land = sound_get("sfx_hammer_land");
@@ -143,6 +145,8 @@ if (shadowmario == true){
 	sfx_hammer_hit_normal = asset_get("sfx_shovel_hit_heavy2")
 	sfx_hammer_hit_spike = asset_get("sfx_shovel_hit_heavy1")
 	set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, sfx_hammer_swing);
+	set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sfx_hammer_hit_normal);
+	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, sfx_hammer_hit_spike);
 	set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong"));
 }
 

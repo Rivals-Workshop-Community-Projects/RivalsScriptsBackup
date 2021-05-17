@@ -1,4 +1,10 @@
 /*
+-- V2.24 --
+
+Log now has a final smash!
+
+- You can activate it through the final smash buddy or through munophone cheats.
+
 -- V2.23 --
 Balance Changes:
 - Red Dattack should now be easier to hit

@@ -1,6 +1,5 @@
 ///
 
-inkshield = 0
 
 if (my_hitboxID.attack == AT_NSPECIAL) {
     set_state (PS_PRATFALL)

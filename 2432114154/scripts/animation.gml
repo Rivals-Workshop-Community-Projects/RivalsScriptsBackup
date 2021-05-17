@@ -1,9 +1,20 @@
 ///
 
-
+if move_cooldown[AT_NAIR] > 0 {
+    
+  if move_cooldown[AT_NAIR] >= 48 {
+          sound_stop(asset_get("sfx_boss_vortex_end"))
+          sound_play(asset_get("sfx_boss_vortex_end"),false,noone,1.2,1)
+  }
+if move_cooldown[AT_NAIR] % 2 == 0   draw_y = 1 ;
+if move_cooldown[AT_NAIR] % 2 == 1   draw_y = -1  ;
+ 
+} else {
+    draw_y = 0
+}
 if isyellow {
     if (state == PS_ROLL_BACKWARD or state == PS_ROLL_FORWARD or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD){
-     sprite_index = sprite_get("pratfall");
+     sprite_index = sprite_get("rollin");
      image_index = state_timer/5    
     }
     

@@ -13,12 +13,12 @@ sprite_change_offset("dashstart", 46, 92);
 sprite_change_offset("dashstop", 46, 92);;
 sprite_change_offset("dashturn", 46, 92);;
 
-
+sprite_change_offset("rollin", 100, 124);
 sprite_change_offset("jumpstart", 46, 92);
 sprite_change_offset("jump", 46, 92);
 sprite_change_offset("doublejump", 46, 92);
 sprite_change_offset("walljump", 46, 92);
-sprite_change_offset("pratfall", 102, 124);
+sprite_change_offset("pratfall", 102, 94);
 sprite_change_offset("land", 46, 92);
 sprite_change_offset("landinglag", 46, 92);
 
@@ -67,8 +67,8 @@ sprite_change_offset("dstrong", 102, 124);
 sprite_change_offset("dstrong2", 102, 124);
 sprite_change_offset("DSshadow", 102, 124);
 
-sprite_change_offset("extra1", 102, 124);
-
+sprite_change_offset("extra_1", 102, 124);
+sprite_change_offset("inkring", 80, 80);
 
 sprite_change_offset("nspecial", 102, 124);
 sprite_change_offset("fspecial", 102, 124);

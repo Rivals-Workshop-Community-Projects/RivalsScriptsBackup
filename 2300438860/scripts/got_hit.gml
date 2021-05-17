@@ -1,5 +1,5 @@
 ///
-
+mask_index = sprite_get("stand_box");
 if savex != 0 {
     spawn_hit_fx(x,y - 30,305)
          spawn_hit_fx (x,y - 40, shit5)
@@ -12,7 +12,7 @@ if savex != 0 {
          savex = 0
 }
 
-if attackbar > 0  && enemy_hitboxID.type == 1 {
+if attackbar > 0  && enemy_hitboxID.type == 1 && barpause == 0 {
 	take_damage(player, -1, floor(enemy_hitboxID.damage * -0.5))
      sound_play(sound_get("hextra"))
      set_state (PS_HITSTUN)
@@ -26,6 +26,7 @@ if attackbar > 0  && enemy_hitboxID.type == 1 {
      move_cooldown [AT_NSPECIAL] = 180
      dmgmul = 0
 attackbar = 0
+sound_stop(sound_get("buzzing"))
 }
 
 /////if attackbar > 0  && enemy_hitboxID.type != 1{
@@ -62,7 +63,7 @@ attackbar = 0
 /////}
 /////
 
-sound_stop(sound_get("buzzing"))
+
 
 
 if super_armor {

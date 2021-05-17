@@ -137,7 +137,7 @@ if (heal_player != noone) {
 		
 
 
-if attack == AT_DSPECIAL && hbox_num < 4 && hitbox_timer < 60 {
+if attack == AT_DSPECIAL && hbox_num < 4 && player_id.move_cooldown[AT_DSPECIAL] > 0{
 	player_id.move_cooldown[AT_DSPECIAL] = 2
 }		
 

@@ -95,6 +95,8 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 302);
+set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_X_OFFSET, 12);
 
 //Getup Hitbox
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
@@ -108,7 +110,10 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 39);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 5);
 set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 50);
+set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .45);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 301);
+set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT_X_OFFSET, 10);

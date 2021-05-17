@@ -10,6 +10,8 @@ walk_anim_speed = .100;
 dash_anim_speed = .7;
 pratfall_anim_speed = .25;
 
+var slippery = has_rune("C");
+
 walk_speed = 2.5;
 walk_accel = 0.2;
 walk_turn_time = 6;
@@ -20,7 +22,7 @@ dash_turn_time = 6;
 dash_turn_accel = 2;
 dash_stop_time = 8;
 dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .4;
+ground_friction = slippery ? .03 : .4;
 moonwalk_accel = 1.4;
 
 jump_start_time = 6;

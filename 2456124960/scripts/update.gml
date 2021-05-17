@@ -1,6 +1,8 @@
 test1 = lengthdir_x(2, joy_dir);
 test2 = lengthdir_y(2, joy_dir);
 
+print(string(y));
+
 if (actionMeterStatus == 1) {actionMeterFill+= 0.15;}
 actionMeterFill = clamp(actionMeterFill, 0, 200);
 

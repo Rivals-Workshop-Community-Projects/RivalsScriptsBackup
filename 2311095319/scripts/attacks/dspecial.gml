@@ -124,7 +124,8 @@ set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_VSPEED, -5);
 set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_GRAVITY, 0.45);
 set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_HSPEED, -5);
 set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_GROUND_BEHAVIOR, 2);
-set_hitbox_value(AT_NSPECIAL, 7, HG_VISUAL_EFFECT, 3);
+set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_DESTROY_EFFECT, fireball_normal_explode);
+set_hitbox_value(AT_NSPECIAL, 7, HG_VISUAL_EFFECT, fireball_normal_explode);
 set_hitbox_value(AT_NSPECIAL, 7, HG_HIT_SFX, sound_get("sfx_mario_fireball_hit"));
 set_hitbox_value(AT_NSPECIAL, 7, HG_BASE_HITPAUSE, 6);
 
@@ -149,6 +150,7 @@ set_hitbox_value(AT_NSPECIAL, 9, HG_PROJECTILE_VSPEED, -9);
 set_hitbox_value(AT_NSPECIAL, 9, HG_PROJECTILE_GRAVITY, 0.45);
 set_hitbox_value(AT_NSPECIAL, 9, HG_PROJECTILE_HSPEED, 0);
 set_hitbox_value(AT_NSPECIAL, 9, HG_PROJECTILE_GROUND_BEHAVIOR, 2);
-set_hitbox_value(AT_NSPECIAL, 9, HG_VISUAL_EFFECT, 3);
+set_hitbox_value(AT_NSPECIAL, 9, HG_PROJECTILE_DESTROY_EFFECT, fireball_normal_explode);
+set_hitbox_value(AT_NSPECIAL, 9, HG_VISUAL_EFFECT, fireball_normal_explode);
 set_hitbox_value(AT_NSPECIAL, 9, HG_HIT_SFX, sound_get("sfx_mario_fireball_hit"))
 set_hitbox_value(AT_NSPECIAL, 9, HG_BASE_HITPAUSE, 6);

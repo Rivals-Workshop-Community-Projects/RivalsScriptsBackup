@@ -28,7 +28,22 @@ if (RedMode == true)
 */
 
 if(introTimer >= liteModeTime)
+
+//Final Smash
+if (fs_anim == true){
+    if (attack == 49 && window == 1){
+        if (spr_dir == 1){
+        draw_sprite_ext(sprite_get("death"), round(window_timer/ 6), temp_x - 258  , temp_y - 490 , 1, 1 , 0, c_white, 1);
+        }
+        if (spr_dir == -1){
+        draw_sprite_ext(sprite_get("death"), round(window_timer/ 6), temp_x + 702 , temp_y - 490 , -1, 1 , 0, c_white, 1);
+        }
+    }
+}
+
 user_event(11);
+
+
 
 //textDraw code by muno
 #define textDraw(x1, y1, font, color, lineb, linew, align, scale, outline, alpha, text, array_bool)

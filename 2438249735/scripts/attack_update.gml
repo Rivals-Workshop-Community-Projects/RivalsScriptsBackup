@@ -224,6 +224,8 @@ if !hitpause {
                 vsp = -6
                 window = 4
                 window_timer = 0
+            spawn_hit_fx(x  , y, ds) 
+            	
             }
             
 
@@ -307,14 +309,28 @@ if !hitpause {
      	  sound_play(sound_get("hs"),false,noone,1)
      }
      
+     if window == 1 {
+     	     switch get_gameplay_time() % 2 {
+    	         case 0:
+	 	         spawn_hit_fx(x - 160 - 20 + random_func(2,40,true) , y + 12 - random_func(3,60,true), lpar2)
+	 	          spawn_hit_fx(x + 160 - 20 + random_func(2,40,true) , y + 12 - random_func(3,60,true), lpar2)
+    	         break ;
+          
+    	         case 1:
+	 	         spawn_hit_fx(x - 160 - 20 + random_func(2,40,true) , y  - random_func(3,60,true), lpar1)
+	 	         spawn_hit_fx(x + 160 - 20 + random_func(2,40,true) , y  - random_func(3,60,true), lpar1)
+    	         break ;
+           	 }
+     }
+     
      if window_timer == 18 {
      	shake_camera(4,4)
      	 sound_play(sound_get("hs2"),false,noone,1.5)
      	                   spawn_hit_fx(x  , y, ds)  
      	                   
      	        set_attack(AT_FSTRONG)
-     	        window = 2
-     	        window_timer = 0
+     	        window = 1
+     	        window_timer = 11
      	        
      	        if !left_down and !right_down {
                     spr_dir *= -1
@@ -499,6 +515,8 @@ if !hitpause {
 
       	 if !free {
       	 	
+
+      	 	
       	 	sound_play(asset_get("sfx_bird_sidespecial_start")); 
       	 	
       	 	      spawn_hit_fx(x  , y - 30, lpar1)              
@@ -545,7 +563,7 @@ if !hitpause {
         	
         	if  has_hit_player && hit_player_obj.state_cat == SC_HITSTUN {
                 	hit_player_obj.hsp = (x + 20*spr_dir - hit_player_obj.x) / 10
-		            hit_player_obj.vsp = ((y) + 10 - hit_player_obj.y) / 2
+		            hit_player_obj.vsp = ((y) - 10 - hit_player_obj.y) / 2
             }
             
             
@@ -557,6 +575,8 @@ if !hitpause {
         	can_wall_jump = true
         	
         	if !free {
+     
+      	 	
         		              	     create_hitbox(AT_NSPECIAL,2,x + 50,y - 22)
         		              	     create_hitbox(AT_NSPECIAL,2,x - 50,y - 22)
         		sound_play(asset_get("sfx_bird_downspecial_end"),false,noone,1)
@@ -565,17 +585,36 @@ if !hitpause {
         		shake_camera(2,4)
         	}
         }
+        
+        if window == 4 {
+        	    if has_hit {
+                 fancyfx();
+                if window_timer == 19 {
+                	attack_end();
+             sound_play(asset_get("sfx_bird_nspecial"),false,noone,0.4)
+    	     sound_play(sound_get("steath"),false,noone,1)
+                	 move_cooldown[AT_FSPECIAL_2] = 0	
+                    set_attack (AT_EXTRA_1)
+                    invitimer = 0
+                    djumped = 1
+                    invisound = -1
+                }  
+      	     	}   
+        }
      
      break ; 
   
   
        case AT_USPECIAL: 
        
-       
+
                can_fast_fall = false 
         can_wall_jump = true
         
         if window == 3 {
+        	
+        	       		mask_index = asset_get("empty_sprite");
+        	       
          hsp /= 1.4
         vsp = -0.5
         shake_camera(1,4)
@@ -695,8 +734,8 @@ if !hitpause {
        	
        	if !up_down  {
        		uspec = 0
-                x += 130*spr_dir
-                hsp = 20*spr_dir
+                x += 80*spr_dir
+                hsp = 10*spr_dir
 
                 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -26);
                 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_Y, -26);
@@ -705,8 +744,8 @@ if !hitpause {
        	
        	if up_down  {
        		uspec = 1
-                x += 130*spr_dir
-                hsp = 20*spr_dir
+                x += 80*spr_dir
+                hsp = 10*spr_dir
                 y -= 60
                 vsp = -20
                 

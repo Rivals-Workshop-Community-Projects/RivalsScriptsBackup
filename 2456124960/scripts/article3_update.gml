@@ -92,7 +92,11 @@ if (state == 1){
     lifetime--;
 	
 	if(myHSpeed < 15) {
-		myHSpeed += 0.5;
+		if (frostbolt == 1) {
+			myHSpeed -= 0.2;
+		} else {
+			myHSpeed += 0.5;
+		}
 	}
 	
     if (lifetime < 0) {
@@ -111,7 +115,11 @@ if (state == 1){
 		hb.y = y+vsp;
     } else {
 		state = 4;
-		state_timer = 0;
+		if (frostbolt == 1) {
+			state_timer = 14;
+		} else {
+			state_timer = 0;
+		}
 	}
 	
 	if (place_meeting(x, y, asset_get("par_block"))) {
@@ -176,7 +184,7 @@ if (state == 4){
 	
 	if (state_timer > 2 && state_timer % 6 == 0) {
 			if (state_timer > 16) {
-				hb = create_hitbox(AT_FSPECIAL, 3, x, y);
+				hb = create_hitbox(AT_FSPECIAL, 3 + (2*frostbolt), x, y);
 			} else {
 				hb = create_hitbox(AT_FSPECIAL, 2, x, y);
 			}
@@ -276,7 +284,11 @@ switch(state){
         break;
     case 4: 
 	case 6:
-		new_sprite = sprite_get("fspec_explosion");
+		if (frostbolt) {
+			new_sprite = sprite_get("fspec_explosionSml");
+		} else {
+			new_sprite = sprite_get("fspec_explosion");
+		}
         animation_type = 4;
 		break;
     case 5: //Since all of these guys are just kinda in a row, without any "break;" lines to

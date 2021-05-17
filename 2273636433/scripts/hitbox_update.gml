@@ -188,11 +188,7 @@ if attack == AT_NSPECIAL{
 				
 				coord_x = player_id.x + 64*player_id.spr_dir;
 				coord_y = player_id.y - 38;
-				kb_value= kb_value*1.25;
-				damage = damage*1.25;
-				C_knock += 1;
-				C_dam  += 1;
-				player_id.show = 1;
+
 				//ROLLING DTRONG PROYECTILES
 				if	pill_state ==4{
 					prev_grav = 0;
@@ -216,6 +212,11 @@ if attack == AT_NSPECIAL{
 					hsp = 0;
 					vsp = 0;
 					grav = 0;
+					kb_value= kb_value*1.25;
+					damage = damage*1.25;
+					C_knock += 1;
+					C_dam  += 1;
+					player_id.show = 1;
 					charge = player_id.strong_charge;
 					pill_state = 2;
 				}
@@ -339,6 +340,6 @@ if forced == 1 {
 
 
 
-if y > 1500 {
+if y > player_id.phone_blastzone_b + + 300 {
 	destroyed = true;
 }

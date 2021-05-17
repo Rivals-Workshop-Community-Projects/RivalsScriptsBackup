@@ -19,6 +19,8 @@ if attack == AT_USPECIAL && (hbox_num != 2) && (hbox_num < 5){
 
 
 
+
+
 if attack == AT_USPECIAL && (hbox_num == 2 ){
     can_hit_self = true
     

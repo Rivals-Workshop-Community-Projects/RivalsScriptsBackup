@@ -2,7 +2,7 @@
 set_attack_value(AT_USTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrong"));
 set_attack_value(AT_USTRONG, AG_NUM_WINDOWS, 4);
-set_attack_value(AT_USTRONG, AG_CATEGORY, 2);
+set_attack_value(AT_USTRONG, AG_CATEGORY, 1);
 set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get("ustrong_hurt"));
 
 set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 12);

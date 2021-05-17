@@ -16,6 +16,8 @@ switch (state)
         if (cracked)
         {
             if (state_timer % 5 == 0) x += state_timer%2==0?-4:4;
+            ++crackedTimer;
+            if (crackedTimer > crackedMax) isDespawn = true;
         }
         else
         {
@@ -31,6 +33,7 @@ switch (state)
 		    		&& get_player_team(player) != get_player_team(other.player))
 		    	{
                     other.cracked = true;
+                    other.crackedTimer = 0;
 		        }
 		    }
         }

@@ -49,7 +49,7 @@ for (i = 0; i < num_flutters; i++) {
 
 // Endlag
 set_window_value(AT_DAIR, 3 + (num_flutters * 4), AG_WINDOW_TYPE, 1);
-set_window_value(AT_DAIR, 3 + (num_flutters * 4), AG_WINDOW_LENGTH, 20);
+set_window_value(AT_DAIR, 3 + (num_flutters * 4), AG_WINDOW_LENGTH, 15);
 set_window_value(AT_DAIR, 3 + (num_flutters * 4), AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DAIR, 3 + (num_flutters * 4), AG_WINDOW_ANIM_FRAME_START, 10);
 

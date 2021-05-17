@@ -2,7 +2,7 @@ set_attack_value(AT_BAIR, AG_CATEGORY, 1);
 set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair"));
 set_attack_value(AT_BAIR, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_BAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_BAIR, AG_LANDING_LAG, 10);
+set_attack_value(AT_BAIR, AG_LANDING_LAG, 8);
 set_attack_value(AT_BAIR, AG_HURTBOX_SPRITE, sprite_get("bair_hurt"));
 
 
@@ -59,7 +59,7 @@ set_hitbox_value(AT_BAIR, 2, HG_WIDTH, 52);
 set_hitbox_value(AT_BAIR, 2, HG_HEIGHT, 52);
 set_hitbox_value(AT_BAIR, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 6);
-set_hitbox_value(AT_BAIR, 2, HG_ANGLE, 110);
+set_hitbox_value(AT_BAIR, 2, HG_ANGLE, 140);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 6);

@@ -8,11 +8,11 @@ if (get_player_color(player) != 0){
 	draw_sprite(sprite_get("SLEEVES_BUT_RED"),0,x + 8,y + 8);
 }
 
-//GB Icon
 if (get_player_color(player) == 7){
 	draw_sprite(sprite_get("css_ea_outline"),0,x + 8,y + 8);
-} 
- 
+}
+
+
 if (get_color_profile_slot_r(0, 0) == 238) {
     sound_play(sound_get("cssvoice"));
     set_color_profile_slot(0, 0, get_color_profile_slot_r(0, 0) + 1, get_color_profile_slot_g(0, 0), get_color_profile_slot_b(0, 0));
@@ -73,14 +73,25 @@ if (alt_cur < 16){
 	draw_sprite(sprite_get("colorgrid_part2"),alt_cur,x + 8, y - 24);
 	draw_sprite(sprite_get("colorgrid_pagenum2"),alt_cur,x + 202, y - 28);
 }
-
 //Special Icons n shit
 if (get_player_color(player) == 6){
 	draw_sprite(sprite_get("css_icon_abyss"),0,x+10,y+42);
 } else if (get_player_color(player) == 7){
+	//draw_sprite(sprite_get("css_ea_outline"),0,x + 8,y + 8);
 	draw_sprite(sprite_get("css_icon_ea"),0,x+10,y+42);
-} else if (get_player_color(player) == 11){
+} else if (get_player_color(player) == 18){
+	draw_sprite(sprite_get("css_icon_ranked"),0,x+10,y+46);
+} else if (get_player_color(player) == 11 || get_player_color(player) == 16 || get_player_color(player) == 17 || get_player_color(player) == 19){
+	if (get_player_color(player) == 17){
+		draw_sprite(sprite_get("css_gold_outline"),0,x + 8,y + 8);
+	}
 	draw_sprite(sprite_get("css_icon_special"),0,x+10,y+42);
+} 
+
+
+//Outlines
+if (get_player_color(player) == 7){
+	draw_sprite(sprite_get("css_ea_outline"),0,x + 8,y + 8);
 } 
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)

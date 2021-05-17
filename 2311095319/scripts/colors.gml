@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 24 );
+set_num_palettes( 28 );
 
 // Blue - Arcade
 set_color_profile_slot( 1, 0, 0, 60, 173 ); //Hat
@@ -196,25 +196,25 @@ set_color_profile_slot( 16, 5, 211, 69, 254 ); //Button
 set_color_profile_slot( 16, 6, 72, 77, 87 ); //Shoes
 set_color_profile_slot( 16, 7, 4, 122, 213 ); //Eye Color
 
-// Ranked Gold
-set_color_profile_slot( 17, 0, 247, 227, 61 ); //Hat
-set_color_profile_slot( 17, 1, 145, 147, 227 ); //Undershirt
-set_color_profile_slot( 17, 2, 247, 227, 61 ); //Overalls
-set_color_profile_slot( 17, 3, 255, 184, 133 ); //Skin
-set_color_profile_slot( 17, 4, 242, 238, 226 ); //Gloves
-set_color_profile_slot( 17, 5, 227, 227, 227 ); //Button
-set_color_profile_slot( 17, 6, 64, 35, 0 ); //Shoes
-set_color_profile_slot( 17, 7, 215, 127, 15 ); //Eye Color
-
 // Pure Gold - SMRPG Statue
-set_color_profile_slot( 18, 0, 224, 192, 0 ); //Hat
-set_color_profile_slot( 18, 1, 224, 192, 0 ); //Undershirt
-set_color_profile_slot( 18, 2, 176, 112, 32 ); //Overalls
-set_color_profile_slot( 18, 3, 248, 235, 141 ); //Skin
-set_color_profile_slot( 18, 4, 248, 242, 198 ); //Gloves
-set_color_profile_slot( 18, 5, 252, 212, 53 ); //Button
-set_color_profile_slot( 18, 6, 104, 56, 8 ); //Shoes
-set_color_profile_slot( 18, 7, 104, 56, 8 ); //Eye Color
+set_color_profile_slot( 17, 0, 224, 192, 0 ); //Hat
+set_color_profile_slot( 17, 1, 224, 192, 0 ); //Undershirt
+set_color_profile_slot( 17, 2, 176, 112, 32 ); //Overalls
+set_color_profile_slot( 17, 3, 248, 235, 141 ); //Skin
+set_color_profile_slot( 17, 4, 248, 242, 198 ); //Gloves
+set_color_profile_slot( 17, 5, 252, 212, 53 ); //Button
+set_color_profile_slot( 17, 6, 104, 56, 8 ); //Shoes
+set_color_profile_slot( 17, 7, 104, 56, 8 ); //Eye Color
+
+// Ranked Gold
+set_color_profile_slot( 18, 0, 247, 227, 61 ); //Hat
+set_color_profile_slot( 18, 1, 145, 147, 227 ); //Undershirt
+set_color_profile_slot( 18, 2, 247, 227, 61 ); //Overalls
+set_color_profile_slot( 18, 3, 255, 184, 133 ); //Skin
+set_color_profile_slot( 18, 4, 242, 238, 226 ); //Gloves
+set_color_profile_slot( 18, 5, 227, 227, 227 ); //Button
+set_color_profile_slot( 18, 6, 64, 35, 0 ); //Shoes
+set_color_profile_slot( 18, 7, 215, 127, 15 ); //Eye Color
 
 // Deep Gray - Champion
 set_color_profile_slot( 19, 0, 70, 75, 84 ); //Hat
@@ -266,35 +266,45 @@ set_color_profile_slot( 23, 5, 200, 126, 30 ); //Button
 set_color_profile_slot( 23, 6, 89, 46, 19 ); //Shoes
 set_color_profile_slot( 23, 7, 17, 96, 127 ); //Eye Color
 
-// MariotheBrowser19 (Why?)
-set_color_profile_slot( 24, 0, 0, 0, 0 ); //Hat
-set_color_profile_slot( 24, 1, 0, 0, 0 ); //Undershirt
-set_color_profile_slot( 24, 2, 73, 128, 218 ); //Overalls
-set_color_profile_slot( 24, 3, 252, 199, 155 ); //Skin
-set_color_profile_slot( 24, 4, 255, 255, 255 ); //Gloves
+// Teal
+set_color_profile_slot( 24, 0, 0, 103, 102 ); //Hat
+set_color_profile_slot( 24, 1, 240, 116, 0 ); //Undershirt
+set_color_profile_slot( 24, 2, 0, 103, 102 ); //Overalls
+set_color_profile_slot( 24, 3, 255, 205, 133 ); //Skin
+set_color_profile_slot( 24, 4, 220, 241, 243 ); //Gloves
 set_color_profile_slot( 24, 5, 255, 255, 0 ); //Button
-set_color_profile_slot( 24, 6, 0, 0, 0 ); //Shoes
-set_color_profile_slot( 24, 7, 40, 123, 189 ); //Eye Color
+set_color_profile_slot( 24, 6, 101, 56, 35 ); //Shoes
+set_color_profile_slot( 24, 7, 4, 122, 213 ); //Eye Color
+
+// Pink - Peach
+set_color_profile_slot( 25, 0, 255, 159, 203 ); //Hat
+set_color_profile_slot( 25, 1, 255, 159, 203 ); //Undershirt
+set_color_profile_slot( 25, 2, 245, 80, 136 ); //Overalls
+set_color_profile_slot( 25, 3, 255, 205, 133 ); //Skin
+set_color_profile_slot( 25, 4, 220, 241, 243 ); //Gloves
+set_color_profile_slot( 25, 5, 0, 179, 251 ); //Button
+set_color_profile_slot( 25, 6, 247, 230, 102 ); //Shoes
+set_color_profile_slot( 25, 7, 4, 122, 213 ); //Eye Color
 
 // Evil Mario
-set_color_profile_slot( 25, 0, 96, 42, 36 ); //Hat
-set_color_profile_slot( 25, 1, 208, 78, 52 ); //Undershirt
-set_color_profile_slot( 25, 2, 63, 15, 10 ); //Overalls
-set_color_profile_slot( 25, 3, 182, 56, 48 ); //Skin
-set_color_profile_slot( 25, 4, 248, 179, 59 ); //Gloves
-set_color_profile_slot( 25, 5, 208, 78, 52 ); //Button
-set_color_profile_slot( 25, 6, 96, 42, 36 ); //Shoes
-set_color_profile_slot( 25, 7, 0, 0, 0 ); //Eye Color
+set_color_profile_slot( 26, 0, 96, 42, 36 ); //Hat
+set_color_profile_slot( 26, 1, 208, 78, 52 ); //Undershirt
+set_color_profile_slot( 26, 2, 63, 15, 10 ); //Overalls
+set_color_profile_slot( 26, 3, 182, 56, 48 ); //Skin
+set_color_profile_slot( 26, 4, 248, 179, 59 ); //Gloves
+set_color_profile_slot( 26, 5, 208, 78, 52 ); //Button
+set_color_profile_slot( 26, 6, 96, 42, 36 ); //Shoes
+set_color_profile_slot( 26, 7, 0, 0, 0 ); //Eye Color
 
-// All Black - BLM
-set_color_profile_slot( 26, 0, 41, 41, 41 ); //Hat
-set_color_profile_slot( 26, 1, 255, 255, 255 ); //Undershirt
-set_color_profile_slot( 26, 2, 41, 41, 41 ); //Overalls
-set_color_profile_slot( 26, 3, 151, 86, 65 ); //Skin
-set_color_profile_slot( 26, 4, 220, 241, 243 ); //Gloves
-set_color_profile_slot( 26, 5, 255, 255, 0 ); //Button
-set_color_profile_slot( 26, 6, 20, 20, 20 ); //Shoes
-set_color_profile_slot( 26, 7, 255, 255, 0 ); //Eye Color
+// Yellow - SMBZ
+set_color_profile_slot( 27, 0, 255, 242, 0 ); //Hat
+set_color_profile_slot( 27, 1, 255, 242, 0 ); //Undershirt
+set_color_profile_slot( 27, 2, 255, 255, 255 ); //Overalls
+set_color_profile_slot( 27, 3, 255, 205, 133 ); //Skin
+set_color_profile_slot( 27, 4, 220, 241, 243 ); //Gloves
+set_color_profile_slot( 27, 5, 255, 255, 0 ); //Button
+set_color_profile_slot( 27, 6, 101, 56, 35 ); //Shoes
+set_color_profile_slot( 27, 7, 4, 122, 213 ); //Eye Color
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

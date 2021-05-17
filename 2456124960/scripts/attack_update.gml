@@ -375,6 +375,8 @@ if (attack == AT_FSPECIAL) {
 		if (actionMeterFill > 199) {
 			fastFSpec = true;
 		}
+		clear_button_buffer(PC_SPECIAL_PRESSED);
+		smolFspec = 0;
 	}
 	if (window == 2) {
 		if (actionMeterFill > 199) {
@@ -388,8 +390,13 @@ if (attack == AT_FSPECIAL) {
 			if (shield_down) {
 				window = 6;
 				window_timer = 0;
-				actionMeterFill /= 2;
+				actionMeterFill *= 0.75;
 				actionMeterStatus = 0;
+			}
+			if (special_pressed && actionMeterFill > 0) {	
+				window = 3;
+				window_timer = 0;	
+				smolFspec = 1;
 			}
 		}
 		if (window_timer == 5) {
@@ -411,11 +418,12 @@ if (attack == AT_FSPECIAL) {
 	}
 	if (window == 4 && window_timer == 1 && !hitpause) {
 		flash = instance_create(x+(32*spr_dir), y-32, "obj_article3");
-		flash.myHSpeed = 1;
+		flash.myHSpeed = 1 + (smolFspec * 8);
 		flash.myVSpeed = 0;
-		flash.lifetime = 36;
+		flash.lifetime = 36 - (smolFspec * 16);;
 		flash.version = 3;
 		flash.state_timer = 4;
+		flash.frostbolt = smolFspec;
 	}
 	
 	can_fast_fall = false;
@@ -431,7 +439,7 @@ if (attack == AT_USPECIAL || attack == AT_USPECIAL_GROUND){
 			actionMeterStatus = 0;
 			canMakePlat = 1;
 		}
-		if (canMakePlat == 1) {
+		if (canMakePlat == 1 && !shield_down) {
 			var platform = instance_create(x, y-8, "obj_article_platform");
 			platform.y = floor(platform.y);
 			//print_debug("making a platform!");

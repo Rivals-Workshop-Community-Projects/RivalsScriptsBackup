@@ -458,6 +458,10 @@ with phone{
 //	initPatchWords("Fnuuy joke
 //	- waog");
 //	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0);
+	//2.24
+	initPatch("2.24	", "15 May 2021");
+	initPatchWords_ext("Log now has a final smash!", fa_center, c_red, 1, 0);
+	initPatchWords("- You can activate it through the final smash buddy or through munophone cheats.")
 	//2.23
 	initPatch("2.23	", "8 May 2021");
 	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);

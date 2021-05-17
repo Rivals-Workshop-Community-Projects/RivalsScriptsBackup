@@ -2,6 +2,12 @@
 
 
 if attack == AT_NSPECIAL && hbox_num == 1 {
+	
+	       if player_id.attack == AT_USPECIAL && player_id.window == 1 && hitbox_timer < 294 {
+		    hitbox_timer = 294
+			shake_camera(1,2)
+			spawn_hit_fx(x,y,lpar4)
+        }
     
                      switch hitbox_timer % 3 + 1 {
                     	case 1:
@@ -18,16 +24,23 @@ if attack == AT_NSPECIAL && hbox_num == 1 {
                     	break ;
                 	 }
                 	 
-                	 if !free {
-                	     create_hitbox(AT_NSPECIAL,2,x,y + 1)
-                	     create_hitbox(AT_NSPECIAL,2,x + 15*spr_dir,y + 1)
-                	     create_hitbox(AT_NSPECIAL,2,x + 22*spr_dir,y + 1)
+                	 if vsp < 0 {
+                	     create_hitbox(AT_NSPECIAL,2,x,y + 3)
+                	     create_hitbox(AT_NSPECIAL,2,x + 15*spr_dir,y + 3)
+                	     create_hitbox(AT_NSPECIAL,2,x + 22*spr_dir,y + 3)
                 	     sound_play(asset_get("sfx_plant_ready"))
                 	     destroyed = 1 
                 	 }
 }
 
 if attack == AT_NSPECIAL && hbox_num == 3 {
+	
+	       if player_id.attack == AT_USPECIAL && player_id.window == 1 && hitbox_timer < 294 {
+		    hitbox_timer = 294
+			shake_camera(1,2)
+			spawn_hit_fx(x,y,lpar4)
+        }
+        
 hsp /= 1.01
   if vsp > 3 {
       vsp = 3
@@ -91,14 +104,23 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
 	}else {
 	    image_index = 3
 	}
+       if player_id.attack == AT_USPECIAL && player_id.window == 1 && hitbox_timer < 294 {
+		    hitbox_timer = 294
+			shake_camera(1,2)
+        }
         
     
     with oPlayer{
+    	
+
+        
+        
 	if clone continue
 	var heal_player = instance_place(x, y, other)
 	if (heal_player != noone) {
 	    
-	    	      
+
+        
 	    	       
     	if  !free && url != other.player_id.url && other.hitbox_timer < 294 {
 			other.hitbox_timer = 294
@@ -150,10 +172,10 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
            
 
     	        
-    	        if invitimer == 0{
+    	        if invitimer == 0 && (state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD or state == PS_WAVELAND){
     	        sound_play(asset_get("sfx_bird_nspecial"),false,noone,0.4)
     	     sound_play(sound_get("steath"),false,noone,1)
-    	     
+    	     spawn_hit_fx(x  , y, ds)  
     	     invitimer = 1
     	            shake_camera(1,4)
     	         
@@ -282,4 +304,56 @@ if hitbox_timer == 1 {
 
     
     
+}
+
+
+if attack == AT_USPECIAL && hbox_num == 12 {
+	
+	x = player_id.x
+	y = player_id.y
+	
+	        	  if (place_meeting(x, y, asset_get("par_block"))) &&  player_id.hitpause == false {
+	        	    player_id.y -= 2
+        	      }
+	
+}
+
+
+if attack == AT_USPECIAL && hbox_num == 13{
+	
+	x = player_id.x
+	y = player_id.y - 30
+	
+	        	  if (place_meeting(x, y, asset_get("par_block"))) &&  player_id.hitpause == false {
+	        	    if player_id.hitpause == false {
+	        	     switch hitbox_timer % 3 + 1 {
+                    	case 1:
+                	 	spawn_hit_fx(x - 20 + random_func(2,40,true) , y  - random_func(3,40,true), lpar2)
+                    	break ;
+                 
+                    	case 2:
+                	 	spawn_hit_fx(x - 20 + random_func(2,40,true) , y - random_func(3,40,true), lpar3)
+                    	break ;
+                    	    	
+                
+                    	case 3:
+                	 	spawn_hit_fx(x - 20 + random_func(2,40,true) , y  - random_func(3,40,true), lpar5)
+                    	break ;
+                	 }
+                	 
+                    
+                     player_id.x -= 2*player_id.spr_dir
+                    player_id.hsp -= 0.2*player_id.spr_dir
+                    if player_id.window < 6 and (hitbox_timer % 4 == 0 or hitbox_timer == 0){
+                    	
+                    	shake_camera(4,2)
+                    	spawn_hit_fx(x - 10 + random_func(3,20,true),y - random_func(4,40,true),13)
+                    	spawn_hit_fx(x,y  - random_func(2,40,true),14)
+                    	player_id.x -= 20*spr_dir
+                    	sound_play(asset_get("sfx_blow_medium3"),false,noone,1,0.8 + random_func(1,5,true)/10)
+                    	sound_play(asset_get("sfx_kragg_rock_shatter"),false,noone,1,0.8 + random_func(1,5,true)/10)
+                    }
+	        	    }
+        	      }
+	
 }

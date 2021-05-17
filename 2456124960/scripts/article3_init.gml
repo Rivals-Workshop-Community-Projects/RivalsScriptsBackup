@@ -13,6 +13,7 @@ flashAngle = 0;
 hitPlayer = 0;
 totalLifetime = 0;
 hitCrystal = 0;
+frostbolt = 0;
 
 gotParried = 0;
 parriedPlayer = noone;

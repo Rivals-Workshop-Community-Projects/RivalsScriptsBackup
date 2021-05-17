@@ -16,7 +16,7 @@ if attacking && attack == AT_DATTACK{
 
 if attacking && attack == AT_FSTRONG{
 	if savex != 0 {
-	 draw_sprite_ext(sprite_get("roll_backward"), state_timer % 4, savex + 6*spr_dir , savey, 1 * spr_dir, 1, 0 , c_white , 0.5);
+	 draw_sprite_ext(sprite_get("roll_backward"), get_gameplay_time() % 4, savex + 6*spr_dir , savey, 1 * spr_dir, 1, 0 , c_white , 0.5);
 	}
 	if window == 3 {
 	 draw_sprite_ext(sprite_index, image_index-1, x  - shsp*2 , y  - svsp*2, 1 * spr_dir, 1, 0 , c_white , 0.3);
@@ -118,3 +118,91 @@ if super_armor {
 		draw_sprite_ext(sprite_index, image_index, x + 2*spr_dir + random_func(1,4,true)*spr_dir , y + random_func(2,6,true), spr_dir, 1.1, 0 , -1 , 0.4);
 
 }
+
+
+shader_start();
+
+if neointro > 0 {
+	
+	
+var spr = get_char_info(player, INFO_PORTRAIT);
+var img = select;
+
+	
+	
+	if neointro >= 150 && neointro < 390 {
+		draw_sprite_ext(spr, image_index, room_width/2 - 450 - 200*neoside + 330*neoside + floor((neointro - 150)*neoside/2)  , room_height/2 - 100 - 50 - floor((neointro - 150)/2) ,  2, 2, 0 , c_black , 0.4 - random_func(1,2,true)/10 );
+	}
+
+
+	if neointro >= 390 {
+		draw_sprite_ext(spr, image_index, room_width/2 - 450 - 200*neoside + 330*neoside + floor((neointro - 150)*neoside/2)   , room_height/2 - 100  - 50 - floor((neointro - 150)/2), 2, 2, 0 , c_black , 0.4 - (neointro - 390)/40 );
+	}
+	
+	  gpu_set_blendmode(bm_add);    	
+	if neointro > 120 && neointro < 150 {
+		draw_sprite_ext(spr, 0, room_width/2 - 450 - 200*neoside  + 300*neoside + (neointro - 120)*neoside  , room_height/2 - 100  + 100 - neointro, 2, 2, 0 , -1 , (neointro - 120)/50);
+	}
+	
+	
+	if neointro >= 150 && neointro < 390 {
+		draw_sprite_ext(spr, image_index, room_width/2 - 450 - 200*neoside + 330*neoside + floor((neointro - 150)*neoside/2)  , room_height/2 - 100 - 50 - floor((neointro - 150)/2) ,  2, 2, 0 , -1 , 0.7 - random_func(1,2,true)/10 );
+	}
+
+
+	if neointro >= 390 {
+		draw_sprite_ext(spr, image_index, room_width/2 - 450 - 200*neoside + 330*neoside + floor((neointro - 150)*neoside/2)   , room_height/2 - 100  - 50 - floor((neointro - 150)/2), 2, 2, 0 , -1 , 0.8 - (neointro - 390)/30 );
+	}
+	
+  gpu_set_blendmode(bm_normal); 
+  
+   	if neointro == 391 {
+		sound_play(sound_get("nspecdis"))
+	}
+	
+  
+  	if neointro == 131 {
+		sound_play(sound_get("tauntflash"))
+		sound_play(sound_get("tauntspeak"))
+	}
+	
+
+	
+	if neointro == 191 {
+		sound_play(sound_get("tauntflash"))
+		sound_play(sound_get("tauntspeak"),false,noone,1,0.98)
+	}
+	
+	if neointro == 251 && neointro3 != "" {
+		sound_play(sound_get("tauntflash"))
+		sound_play(sound_get("tauntspeak"),false,noone,1,0.96)
+	}
+	
+	
+	if neointro < 390 {
+	if neointro > 130 {
+		draw_debug_text(floor(room_width/2 - 80 + 100*neoside + neointro*neoside/7) , floor(room_height/2 + 40 - neointro/2), neointro1);
+	}
+	
+   	if neointro > 191 {
+		draw_debug_text(floor(room_width/2 - 120 + 200*neoside - neointro*neoside/7) , floor(room_height/2 + 100 - neointro/2), neointro2);
+	}
+	
+	if neointro > 251 {
+		draw_debug_text(floor(room_width/2 - 120 + 340*neoside - neointro*neoside/2) , floor(room_height/2 + 160 - neointro/2), neointro3);
+	}
+	
+	} else if neointro % 4 <= 1{
+		
+		draw_debug_text(floor(room_width/2 - 80 + 100*neoside + neointro*neoside/7) , floor(room_height/2 + 40 - neointro/2), neointro1);
+		draw_debug_text(floor(room_width/2 - 120 + 200*neoside - neointro*neoside/7) , floor(room_height/2 + 100 - neointro/2), neointro2);
+		draw_debug_text(floor(room_width/2 - 120 + 340*neoside - neointro*neoside/2) , floor(room_height/2 + 160 - neointro/2), neointro3);
+	
+	}
+	if neointro > 120 && neointro < 150 {
+		draw_sprite_ext(spr, 0, room_width/2 - 450 - 200*neoside  + 300*neoside + (neointro - 120)*neoside  , room_height/2 - 100  + 100 - neointro, 2, 2, 0 , c_black , (neointro - 120)/70);
+	}
+	
+}
+
+shader_end() 

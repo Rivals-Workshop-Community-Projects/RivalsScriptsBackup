@@ -168,6 +168,10 @@ if (attack == AT_NSPECIAL_2 && hologram_is_alive == true){
     }
 }
 
+if (move_cooldown[AT_NSPECIAL_2] != 0){
+	hologram_act = false;
+}
+
 if (can_command && joy_pad_idle && special_pressed){
     can_special = true;
     can_command = false;

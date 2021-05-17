@@ -1,7 +1,10 @@
 ///
 
+finishercd = 0
+
 if my_hitboxID.type == 1 && my_hitboxID.attack != AT_DSTRONG && my_hitboxID.attack != AT_NSPECIAL
-&& my_hitboxID.attack != AT_DTILT && my_hitboxID.attack != AT_DSPECIAL{
+&& my_hitboxID.attack != AT_DTILT && my_hitboxID.attack != AT_DSPECIAL && 
+(my_hitboxID.attack != AT_FSTRONG or (my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num < 3)){
 if  my_hitboxID.damage <= 4 {
 	sound_play(sound_get("slice"),false,noone,1,1.1)
 	     var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
@@ -34,7 +37,7 @@ if get_player_color(player) = 1 {
 }
 
 
-finishercd = 0
+
 
 
 

@@ -129,7 +129,7 @@ if (attack == AT_FSTRONG_2){
 
 if (attack == AT_USTRONG){
 	if (window == 1){
-		ustrong_charge = (strong_charge / 12)
+		ustrong_charge = (strong_charge / 19)
 		ustrong_charge = ustrong_charge * -1
 		if (window_timer == 1){
 			sound_stop(sfx_dattack);
@@ -144,17 +144,19 @@ if (attack == AT_USTRONG){
 	}
 	if (window == 2){
 		if (window_timer == 1){
-			set_window_value(AT_USTRONG, 3, AG_WINDOW_VSPEED, -7.5 + ustrong_charge);
+			set_window_value(AT_USTRONG, 3, AG_WINDOW_VSPEED, -9.5 + ustrong_charge);
 		}
 		if (window_timer == 3){
 			window = 3
 			window_timer = 0
 			//vsp =  vsp + ustrong_charge
+			y = y - 2
 		}
 	}
 	if (window == 4){
 		ustrong_charge = 0
-		//set_window_value(AT_USTRONG, 3, AG_WINDOW_VSPEED, -7.5);
+		//set_window_value(AT_USTRONG, 3, AG_WINDOW_VSPEED, -9.5);
+		vsp = vsp + 0.125
 	}
 }
 
@@ -299,6 +301,7 @@ if (attack == AT_FSPECIAL){
 		}
 		if (has_hit){
 			can_jump = true;
+			//can_attack = true;
 		}
 	}
 	if (window == 7){
@@ -348,20 +351,23 @@ if (attack == AT_USPECIAL){
 		can_fast_fall = false;
 	}
 	if (window == 2){
+		//Upward Input
 		if (left_down && spr_dir == 1 || right_down && spr_dir == -1){
 			set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 0.5);
 			set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);
-			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -13.5);
-			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);		
+			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -15.2);
+			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
+		//Downward Input
 		} else if (right_down && spr_dir == 1 || left_down && spr_dir == -1){
 			set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 2);
 			set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);
-			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -10.2);
+			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -11.2);
 			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
+		//No Input
 		} else {
 			set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 1);
 			set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);
-			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -11.6);
+			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -13.6);
 			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
 		}
 	}
@@ -369,6 +375,7 @@ if (attack == AT_USPECIAL){
 		if (window_timer == 1){
 			vsp = -6.5
 		}
+		vsp = vsp + 0.125
 	}
 	if (window != 2 && window != 3){
 		//Reseting hitbox sizes just in case.

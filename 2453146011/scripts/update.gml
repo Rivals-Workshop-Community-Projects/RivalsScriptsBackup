@@ -830,6 +830,8 @@ if(charges == 0)
 with(oPlayer)
 if(!("is_monarch" in self) || player == other.player)
 {
+	// Failsafe teleported reset
+	if(portal_afterimage.timer == 0 && teleported) teleported = false;
 	
 	// Tick down afterimage and white
 	if(portal_afterimage.timer > 0) portal_afterimage.timer--;

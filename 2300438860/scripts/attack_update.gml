@@ -40,16 +40,48 @@ if !hitpause {
             sound_play(asset_get("sfx_ice_shieldup"))
         }
         if window == 1 && window_timer == 11{
-            sound_play(asset_get("sfx_ice_on_player"))
+            sound_play(asset_get("sfx_ice_on_player"),false,noone,1,0.95)
         }
     }
     
     if attack == AT_FSTRONG {
+    	can_fast_fall = false
     	vsp /= 1.04
+    	
+    	if !free {
+    		state_timer = 0
+    	} else {
+    		strong_charge = 60
+    	}
+    	
+    	if state_timer > 5 && free && (window < 4 && window != 1 or (window == 1 && window_timer > 10)){
+    		sound_stop(sound_get("fstrong1"))
+    		window = 5
+    		window_timer = 1
+    		mask_index = asset_get("empty_sprite");
+    		vsp = -4
+    		sound_play(sound_get("uspec"))
+    		
+    	}
+    	
+    	 if  window == 5{
+    	 	create_hitbox(AT_FSTRONG,5,x,y)
+    	 	vsp -= 0.02
+    		if window_timer == 18 window_timer = 1
+    		if !free && vsp < 0{
+    			spawn_hit_fx(x,y + 14,14)
+    			shake_camera(4,4)
+    		sound_play(sound_get("uspec"))
+    		sound_play(asset_get("sfx_blow_medium1"))
+            vsp = -6
+            hsp = 6*spr_dir
+    		}
+    	}
     	
         if window == 1 && window_timer == 1{
             savex = x
             savey = y
+            sound_play(sound_get("hstrong"))
         }
         
         if window == 1 && window_timer % 4 == 0 && window_timer < 11 {
@@ -70,7 +102,21 @@ if !hitpause {
             sound_play(asset_get("sfx_orcane_dsmash"))
         }
         
-        if window == 4 && image_index == 11 && savex != 0{
+        if window == 4 {
+        	hsp = 0
+        	vsp = 0
+        }
+        
+        if window == 3 or window == 5 {
+        	set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 20 + abs(x - savex)/10);
+        }
+        
+        if (window == 4 && image_index == 11 && savex != 0) or (y + vsp > room_height){
+        	mask_index = sprite_get("stand_box");
+        	y += 10
+        	window = 4 {
+        		window_timer = 14
+        	}
             sound_play(sound_get("fstrong2"))
             take_damage (player, -1, -6)
             x = savex
@@ -85,7 +131,7 @@ if !hitpause {
             sound_play(asset_get("sfx_ice_shieldup"))
         }
         if window == 2 && window_timer == 1{
-            sound_play(asset_get("sfx_ice_on_player"))
+            sound_play(asset_get("sfx_ice_on_player"),false,noone,1,0.9)
         }
     }
     
@@ -126,7 +172,7 @@ if !hitpause {
                 sound_play(asset_get("sfx_swipe_medium2"))
         }
         if window == 1 && window_timer == 6 {
-              sound_play(asset_get("sfx_ice_on_player"))
+              sound_play(asset_get("sfx_ice_on_player"),false,noone,1,0.9)
         }
 	
     }
@@ -141,7 +187,7 @@ if !hitpause {
     
     if attack == AT_BAIR {
         if window == 1 && window_timer == 6 {
-              sound_play(asset_get("sfx_ice_on_player"))
+              sound_play(asset_get("sfx_ice_on_player"),false,noone,1,1.1)
         }
          if window == 1 && window_timer == 8 {
               sound_play(asset_get("sfx_swipe_medium1"))
@@ -151,7 +197,7 @@ if !hitpause {
     
     if attack == AT_FAIR {
         if window == 2 && window_timer == 1 {
-              sound_play(asset_get("sfx_ice_on_player"))
+              sound_play(asset_get("sfx_ice_on_player"),false,noone,1,0.9)
               sound_play(asset_get("sfx_bird_sidespecial_start"))
               x += 30*spr_dir
         }
@@ -177,7 +223,7 @@ if !hitpause {
         		sound_play(sound_get("buzzing"),false,noone,0.4)
         } else {
         	        	sound_play(sound_get("heartbeat"),false,noone,1.6)
-        	take_damage(player,-1,2)
+        	take_damage(player,-1,5)
         	shake_camera(3,3)
         		sound_stop(cur_sound)
                 sound_play(sound_get("buzzing"),false,noone,0.4)		
@@ -422,13 +468,13 @@ if !hitpause {
           		shake_camera (4,6)
           		sound_play(sound_get("uspec"))
           		sound_play(asset_get("sfx_abyss_explosion"))
-          		          		take_damage(player, -1, 3)
           		          		spawn_hit_fx (x + 26*spr_dir,y - 38, 194)
           		          		move_cooldown[AT_DSPECIAL] = 60
           		if !free {
-          		set_state(PS_PRATLAND)
-          		hsp = -6*spr_dir
-          		        	    	prat_land_time = 30;
+          		set_state(PS_PRATFALL)
+          		hsp = -4*spr_dir
+          		vsp = -8
+          		        	    	prat_land_time = 15;
           	    }
           	    
           	    if free {

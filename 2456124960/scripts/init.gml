@@ -60,6 +60,7 @@ mySwirl2 = noone;
 mySwirl3 = noone;
 mySwirl4 = noone;
 chargingBeam = 0;
+smolFspec = 0;
 
 outlineR = 0;
 outlineG = 0;

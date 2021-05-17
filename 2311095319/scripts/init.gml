@@ -39,6 +39,8 @@ hasfirebrand = false
 fireball_explode = hit_fx_create(sprite_get("fireball_explode"), 12);
 firebrand_cheat = 0
 fireball_charge_needed_for_firebrand = 5
+fireball_normal_explode = hit_fx_create(sprite_get("fireball_normal_explode"),22);
+fireball_big_explode = hit_fx_create(sprite_get("fireball_big_explode"),16);
 
 //Forward Special: Dive
 divelandtimesfx = 0
@@ -162,6 +164,7 @@ sfx_dattack = sound_get("sfx_dattack");
 sfx_doublejump = sound_get("sfx_doublejump");
 sfx_empty = sound_get("sfx_empty");
 sfx_fair_spike = sound_get("sfx_fair_spike");
+sfx_firebrand_use = sound_get("sfx_firebrand_use");
 sfx_hammer_blow = sound_get("sfx_hammer_blow");
 sfx_hammer_land = sound_get("sfx_hammer_land");
 sfx_hammer_swing = sound_get("sfx_hammer_swing");
@@ -215,7 +218,7 @@ if (get_player_color( player ) == 4){
 
 
 //Is Shadow Mario?
-if (get_player_color( player ) == 11){
+if (get_player_color( player ) == 11 || get_player_color( player ) == 23){
 	shadowmario = true
 } else {
 	shadowmario = false

@@ -67,6 +67,18 @@ if move_cooldown[AT_NSPECIAL_2] > 0 {
 	
 }
 
+if move_cooldown[AT_USTRONG_2] > 0 {
+	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, 3 - random_func(1,6,true));
+	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_VSPEED, -4 - random_func(2,4,true));
+	create_hitbox(AT_NSPECIAL, 3, hit_player_obj.x, hit_player_obj.y - 40)
+}
+
+if move_cooldown[AT_DSTRONG_2] > 0 {
+		set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, 0 - random_func(1,6,true));
+		set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_VSPEED, 0.5);
+
+	create_hitbox(AT_NSPECIAL, 3, x, y - 40)
+}
 
 if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 	attacking = true
@@ -91,9 +103,10 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 		set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_VSPEED, -4 - random_func(2,4,true));
 	}
 	
-	if has_hit_player && hitpause && get_gameplay_time() % 4 == 0 && invitimer == 0 && window != 4{
+	if (has_hit_player && hitpause && get_gameplay_time() % 4 == 0 && invitimer == 0 && window != 4) or move_cooldown[AT_NSPECIAL_2] > 0{
 		create_hitbox(AT_NSPECIAL, 3, hit_player_obj.x, hit_player_obj.y - 40)
 	}
+	
 	
 	if invitimer != 0 && attack != AT_EXTRA_1 {
 	 
@@ -117,6 +130,7 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 	
 } else {
 	attacking = false
+			mask_index = sprite_get("stand_box");
 	if invitimer != 0 {
 	invitimer += 1
     draw_indicator = false

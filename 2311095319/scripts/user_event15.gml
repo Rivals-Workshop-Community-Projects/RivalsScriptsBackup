@@ -295,7 +295,7 @@ pho_has_agentn_cdc = 1; // Agent N's codec
 pho_has_drac_codec = 0;	// Dialogue for the Dracula boss fight
 pho_has_miivs_post = 1;	// Posts for the Miiverse stage
 pho_has_dede_title = 1;	// Title for the Mt Dedede Stadium stage
-pho_has_soul_title = 0; // Text for the Soulbound Conflict stage
+pho_has_soul_title = 1; // Text for the Soulbound Conflict stage
 pho_has_been_found = 0; // Death sprite for the Trial Grounds stage
 pho_has_resort_pic = 1; // Portrait for the Last Resort stage
 pho_has_pkmn_image = 0; // Battle sprite for Pokémon Stadium
@@ -558,6 +558,39 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	
+	initPatch("1.12", "May 14, 2021");
+	initPatchWords("General
+	~ Mario’s AI is slightly better.
+	~ Added 4 new alternate color palettes.
+	~ Added Soulbound Conflict support.
+	~ Adjusted Trummel codec.
+	~ Switched the color slots of the Ranked Gold and Pure Gold alternate colors so the gold shine appears on the proper alt.
+	~ The special premium icon appears for the Infamous, Pure Gold and Champion colors on the CSS.
+	~ The Ranked Gold color has a special icon on the CSS.
+	~ The Pure Gold color has a slightly brown outline color.
+	~ Adjusted dashstop animation.");
+	initPatchWords("Jab (Right Punch, Left Punch, Kick)
+	+ Jab 2 Hitbox size increased. The full jab combo should now properly work.");
+	initPatchWords("Forward Tilt (Cappy Toss)
+	~ Adjusted the hit fx and hit fx offsets.
+	~ Final Hitbox Angle: 65 -> 75");
+	initPatchWords("Down Tilt (Raccoon Tail)
+	~ Adjusted the hit fx offset.");
+	initPatchWords("Forward Strong (Hammer Swing)
+	~ Adjusted the hit sfx for when Shadow Mario uses it.");
+	initPatchWords("Forward Strong 2 (Firebrand)
+	~ Angle: 45 -> 361
+	~ Adjusted sound effects and hit fx.");
+	initPatchWords("Up Strong (Rising Uppercut)
+	~ Adjusted physics.");
+	initPatchWords("Neutral Special (Fireball)
+	~ The vfx for when either version of the fireballs explode has been altered to not be in the same color group as Mario’s buttons.
+	~ The destroy fx for either fireball has been corrected.");
+	initPatchWords("Forward Special (Dive)
+	~ Adjusted hit fx and fx offset.");
+	initPatchWords("Up Special (Super Jump Punch)
+	~ Adjusted physics.");
 	
 	initPatch("1.11", "April 23, 2021");
 	initPatchWords("General
@@ -1103,6 +1136,7 @@ if pho_has_trum_codec{
 	initCodecPage(SPK_ALTO, 2, 0, "Mario?");
 	initCodecPage(SPK_ECHO, 6, 0, "Mario...");
 	initCodecPage(SPK_OTTO, 5, 0, "Mario Mario?");
+	initCodecPage(SPK_CODA, 3, 0, "...Mario.");
 	initCodecPage(SPK_MARO, 0, 0, "It's a me, Mario!");
 	initCodecPage(SPK_TRUM, 6, 0, "holy frikc its mario");
 
@@ -1319,7 +1353,7 @@ if pho_has_dede_title{
 
 if pho_has_soul_title{
 	
-	battle_text = "* woag";
+	battle_text = "* Mario leaps into sight!";
 	
 }
 

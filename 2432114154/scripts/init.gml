@@ -18,8 +18,23 @@ inkshield = -1
 inkshield_buildup = 0
 ink = 100
 
+finalx = 0
+finalattack = 0
+finalframe = 0
+finaldir = 0
+
+shsp = 0
+svsp = 0
+
+uphit = 0
+downhit = 0
+sidehit = 0
+neutralhit = 0
+allhit = 0
 drip_sound = sound_play(sound_get("drip"))
 sound_stop(drip_sound)
+
+inkvictim = 0
 
 gotink = 0
 isyellow = 0
@@ -135,6 +150,21 @@ air_dodge_sound = asset_get("sfx_waveland_orc");
 bubble_x = 0;
 bubble_y = 8;
 
+
+sh1 = hit_fx_create( sprite_get( "sh1" ), 30);
+sh2 = hit_fx_create( sprite_get( "sh2" ), 30);
+sh3 = hit_fx_create( sprite_get( "sh3" ), 30);
+sh4 = hit_fx_create( sprite_get( "sh4" ), 30)
+
+sprite_change_offset("sh1", 102, 94);
+sprite_change_offset("sh2", 102, 94);
+sprite_change_offset("sh3", 102, 94);
+sprite_change_offset("sh4", 102, 94);
+
+bh3 = hit_fx_create( sprite_get( "blackhit" ), 12);
+
+bh2 = hit_fx_create( sprite_get( "bluehit" ), 12);		
+		
 esp = hit_fx_create( sprite_get( "esp2" ), 9 );
 sprite_change_offset("esp", 32, 32);
 
@@ -142,26 +172,20 @@ bh = hit_fx_create( sprite_get( "bluehit" ), 12);
 
 i1 = hit_fx_create( sprite_get( "inkpar5" ), 16);
 sprite_change_offset("inkpar5", 46, 92);
+
 i2 = hit_fx_create( sprite_get( "inkpar6" ), 16);
 sprite_change_offset("inkpar6", 46, 92);
+
 SC = hit_fx_create( sprite_get( "SC" ), 20 );
 sprite_change_offset("SC", 100, 100);
+
 summon = hit_fx_create( sprite_get( "summon" ), 45 );
 sprite_change_offset("summon", 100, 80);
 
+
+fxslash3= hit_fx_create( sprite_get( "fxslash3" ), 22 );
+sprite_change_offset("fxslash3", floor(75/1.5), floor(150/1.5) );
+
+
 saillusion = hit_fx_create( sprite_get( "saillusion" ), 8);
 
-tauntzetta = hit_fx_create( sprite_get( "tauntzetta" ), 48);
-sprite_change_offset("tauntzetta", 102, 124);
-
-tauntalex = hit_fx_create( sprite_get( "tauntalex" ), 44);
-sprite_change_offset("tauntalex", 102, 124);
-
-tauntmayu = hit_fx_create( sprite_get( "tauntmayu" ), 40);
-sprite_change_offset("tauntmayu", 102, 124);
-
-tauntsaji = hit_fx_create( sprite_get( "tauntsaji" ), 40);
-sprite_change_offset("tauntsaji", 102, 124);
-
-tauntakai = hit_fx_create( sprite_get( "tauntakai" ), 40);
-sprite_change_offset("tauntakai", 102, 124);

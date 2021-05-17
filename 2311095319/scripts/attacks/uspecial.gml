@@ -14,7 +14,7 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, sfx_upspecial);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 6);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 7);
 
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 2);
@@ -27,8 +27,9 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -11.6);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -13.6);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
+//psst check attack update
 
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 18);

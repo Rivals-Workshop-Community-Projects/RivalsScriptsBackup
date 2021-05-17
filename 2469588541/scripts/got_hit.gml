@@ -1,13 +1,12 @@
 if (canDespawn)
 {
-	with (asset_get("obj_article1")) if (player_id == other.id && state == 1 && cracked) isDespawn = true;
+	//with (asset_get("obj_article1")) if (player_id == other.id && state == 1 && cracked) isDespawn = true; // despawn cracked stars
 	var star = GetFarthestStar();
 	if (star != noone)
 	{
 		star.isDespawn = true;
 		canDespawn = false;
 	}
-	
 }
 
 #define GetFarthestStar()

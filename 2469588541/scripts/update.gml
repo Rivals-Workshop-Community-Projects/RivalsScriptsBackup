@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 6;
+	var noOfPatches = 7;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -26,7 +26,7 @@ if (practice)
 			break;
 		case 1: // main menu
 			Invince();
-			MenuNav(5, 0, MainMenuNext());
+			MenuNav(6, 0, MainMenuNext());
 			break;
 		case 2: // Basic Tut Menu
 			Invince();
@@ -55,6 +55,7 @@ if (practice)
 			}
 			break;
 		case 7: // Discord Link
+		case 8: // Lore
 			Invince();
 			MenuNav(0, 1, -1);
 			break;
@@ -161,6 +162,8 @@ for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i]
 		case 3:
 			return 7;
 		case 4:
+			return 8;
+		case 5:
 			if (attack_down && !attack_counter)
 			{
 				instance_create(x, y-30, "obj_article1");

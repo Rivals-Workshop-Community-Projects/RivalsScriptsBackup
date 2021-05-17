@@ -157,21 +157,11 @@ if (state == 4){
 
 
 //Destroy when offstage
-var stage_y = get_stage_data( SD_Y_POS );
-var stage_xl = get_stage_data( SD_X_POS ) - 400;
-var stage_xr = get_stage_data( SD_X_POS ) + 1100;
-var stage_b = get_stage_data( SD_BOTTOM_BLASTZONE );
-if (stage_y + stage_b < y){
-	shoulddie = true;
-}
 
-if (stage_xl > x){
-	shoulddie = true;
-}
-
-if (stage_xr < x){
-	shoulddie = true;
-}
+if ((y + vsp) < 10) || ((x + hsp) < 10)
+|| ((x + hsp) > (room_width + 70)) || ((y + vsp) >= (room_height + 70)){
+		shoulddie = true;
+	}
 
 
 if (shoulddie == true){

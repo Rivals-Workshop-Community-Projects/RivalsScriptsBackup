@@ -1,142 +1,67 @@
 shader_start();
 
-if !isyellow {
-if attacking && attack == AT_DSPECIAL && window == 1 && window_timer >= 10 && !free{
+
+
+
+if uphit != 0 {
+	draw_sprite_ext(sprite_get("inkring"), 0, x - shsp*2 , y - svsp*2 - 28, 1,1,0,-1, 0.6);
+	if uphit > 1 {
+	draw_sprite_ext(sprite_get("inkring"), 1, x - shsp*2 , y - svsp*2 - 28, 1,1,0,-1, uphit/30);
+	uphit -= 1
+   }	
+
+}	
+
+if sidehit != 0 {
+	draw_sprite_ext(sprite_get("inkring"), 2, x - shsp*2 , y - svsp*2 - 40, 1,1,0,-1, 0.6);
+	if sidehit > 1 {
+	draw_sprite_ext(sprite_get("inkring"), 3, x - shsp*2 , y - svsp*2 - 40, 1,1,0,-1, sidehit/30);
+	sidehit -= 1
+   }	
+
+}	
+
+if downhit != 0 {
+	draw_sprite_ext(sprite_get("inkring"), 4, x - shsp*2 , y - svsp*2 - 46, 1,1,0,-1, 0.6 );
+	if downhit > 1 {
+	draw_sprite_ext(sprite_get("inkring"), 5, x - shsp*2 , y - svsp*2 - 46, 1,1,0,-1, downhit/30);
+	downhit -= 1
+   }	
+}
+
+if neutralhit != 0 {
+	draw_sprite_ext(sprite_get("inkring"), 6, x - shsp*2 , y - svsp*2 - 36, 1,1,0,-1, 0.6 );
+	if neutralhit > 1 {
+	draw_sprite_ext(sprite_get("inkring"), 7, x - shsp*2 , y - svsp*2 - 36, 1,1,0,-1, neutralhit/30);
+	neutralhit -= 1
+   }	
+}
+
+if 	allhit != 0 {
+	allhit -= 1
+	draw_sprite_ext(sprite_get("inkring"), 7, x - shsp*2 , y - svsp*2 - 36, 1,1,0,-1, allhit/30);
+	draw_sprite_ext(sprite_get("inkring"), 5, x - shsp*2 , y - svsp*2 - 46, 1,1,0,-1, allhit/30);
+	draw_sprite_ext(sprite_get("inkring"), 3, x - shsp*2 , y - svsp*2 - 40, 1,1,0,-1, allhit/30);
+	draw_sprite_ext(sprite_get("inkring"), 1, x - shsp*2 , y - svsp*2 - 22, 1,1,0,-1, allhit/30);
+}
+
+if attacking && attack == AT_EXTRA_2  {
     
-
-    draw_sprite_ext(sprite_get("hud_mini"), floor(ink/32), x - 8 , y - 194, 1,1,0,-1, 1);
-if ink >= 100 {
-    draw_sprite_ext(sprite_get("hud_mini"), 3, x - 8 , y - 194, 1,1,0,-1, 1);
-}
-
-if ink >= 200 {
-    draw_sprite_ext(sprite_get("hud_mini"), 6, x - 8 , y - 194, 1,1,0,-1, 1);
-}
-
-if ink >= 300 {
-    draw_sprite_ext(sprite_get("hud_mini"), 9, x - 8 , y - 14, 1,1,0,-1, 1);
-}
-
-switch (summon) {
-  case 0:
-    draw_sprite_ext(sprite_get("hud_minicost"), floor((zettachoose + 100)/32), x - 8 , y - 194, 1,1,0,-1, 1);
-  break;
-
-  case 1:
-    draw_sprite_ext(sprite_get("hud_minicost"), floor((sajichoose + 100)/32), x - 8 , y - 194, 1,1,0,-1, 1);
-  break;
+    if window == 6 {
+        draw_sprite_ext(sprite_index , image_index - 1, x - shsp , y - svsp  , spr_dir, 1, 0 , -1 , 0.4 - window_timer/30);
+        draw_sprite_ext(sprite_index , image_index  - 2, x - shsp*2 , y - svsp*2  , spr_dir, 1, 0 , -1 , 0.2 - window_timer/30);
   
-  case 2:
-    draw_sprite_ext(sprite_get("hud_minicost"), floor((mayuchoose + 100)/32), x - 8 , y - 194, 1,1,0,-1, 1);
-  break;
-  
- case 3:
-    draw_sprite_ext(sprite_get("hud_minicost"), floor((alexchoose + 100)/32), x - 8 , y - 194, 1,1,0,-1, 1);
-  break;
-  
- case 4:
-    draw_sprite_ext(sprite_get("hud_minicost"), floor((akaichoose + 100)/32), x - 8 , y - 194, 1,1,0,-1, 1);
-  break;
-}
-
-    draw_sprite_ext(sprite_get("hud_summon"), 0, x - 54+45 , y - 145, 0.8, 0.8, 0, -1, 0.4); 
-    draw_sprite_ext(sprite_get("hud_summon"), 1, x - 54 , y - 180, 0.8, 0.8, 0, -1, 0.4); 
-    draw_sprite_ext(sprite_get("hud_summon"), 2,  x - 54-35 , y - 145, 0.8, 0.8, 0, -1, 0.4); 
-    draw_sprite_ext(sprite_get("hud_summon"), 3, x - 54 , y - 110, 0.8, 0.8, 0, -1, 0.4); 
-    draw_sprite_ext(sprite_get("hud_summon"), 4, x - 54 , y - 145, 0.8, 0.8, 0, -1, 0.4); 
-if get_gameplay_time()%60 >= 30 {   
- switch (summon) {
-  case 0:
-    draw_sprite_ext(sprite_get("hud_summon"), 0, x - 54+45 , y - 145, 0.8,0.8,0,-1, 1.4 - (get_gameplay_time()%30)/30);
-  break;
-
-  case 1:
-    draw_sprite_ext(sprite_get("hud_summon"), 1, x - 54 , y - 180, 0.8,0.8,0,-1, 1.4 - (get_gameplay_time()%30)/30);
-  break;
-  
-  case 2:
-  draw_sprite_ext(sprite_get("hud_summon"), 2, x - 54-35 , y - 145, 0.8,0.8,0,-1, 1.4 - (get_gameplay_time()%30)/30);
-  break;
-  
- case 3:
-  draw_sprite_ext(sprite_get("hud_summon"), 3, x - 54 , y - 110, 0.8,0.8,0,-1, 1.4 - (get_gameplay_time()%30)/30);
-  break;
-  
- case 4:
-  draw_sprite_ext(sprite_get("hud_summon"), 4, x - 54 , y - 145, 0.8,0.8,0,-1, 1.4 - (get_gameplay_time()%30)/30);
-  break;
-}
-
-
-} else {
- switch (summon) {
-  case 0:
-    draw_sprite_ext(sprite_get("hud_summon"), 0, x - 54+45 , y - 145, 0.8,0.8,0,-1, 1.4 + (get_gameplay_time()%30)/30);
-  break;
-
-  case 1:
-    draw_sprite_ext(sprite_get("hud_summon"), 1, x - 54 , y - 180, 0.8,0.8,0,-1, 1.4 + (get_gameplay_time()%30)/30);
-  break;
-  
-  case 2:
-  draw_sprite_ext(sprite_get("hud_summon"), 2, x - 54-35 , y - 145, 0.8,0.8,0,-1, 1.4 + (get_gameplay_time()%30)/30);
-  break;
-  
- case 3:
-  draw_sprite_ext(sprite_get("hud_summon"), 3, x - 54 , y - 110, 0.8,0.8,0,-1, 1.4 + (get_gameplay_time()%30)/30);
-  break;
-  
- case 4:
-  draw_sprite_ext(sprite_get("hud_summon"), 4, x - 54 , y - 145, 0.8,0.8,0,-1, 1.4 + (get_gameplay_time()%30)/30);
-  break;
-}
-}
-
-if summon % 5 == 0 {
-draw_debug_text(x + 20 ,y -102,"Zetta");
-}
-if summon % 5 == 1{
-draw_debug_text(x + 20 ,y -102,"Saji");
-}
-if summon % 5 == 2{
-draw_debug_text(x + 20 ,y -102,"Mayu");
-}
-if summon % 5 == 3{
-draw_debug_text(x + 20 ,y -102,"Alex");
-}
-if summon % 5 == 4{
-draw_debug_text(x + 20 ,y -102,"Akai");
-}
-}
-if draw_indicator = true{
-if inkshield {
-    draw_sprite_ext(sprite_get("blackhit"), get_gameplay_time() / 2, x, y - 32, 0.5 + (inkshield/300)/2, 0.5 + (inkshield/300)/2, 0, -1, 0.6 + (inkshield/300)/1.5) ; 
-    draw_sprite_ext(sprite_get("bluehit"), (get_gameplay_time() / 2) + 1, x, y - 32, 0.5 + (inkshield/300)/2, 0.5 + (inkshield/300)/2, 0, -1, 0.6 + (inkshield/300)/1.5); 
-    
-    if !attacking {
-    		draw_sprite_ext(sprite_index, image_index, x - 3 + random_func(1,6,true) , y + random_func(2,6,true), 1.1 * spr_dir, 1.1, 0 , c_white , 0.3 + (inkshield/300)/2);
+    } else {
+        draw_sprite_ext(sprite_index , image_index - 1, x - shsp , y - svsp  , spr_dir, 1, 0 , -1 , 0.4)
+        draw_sprite_ext(sprite_index , image_index  - 2, x - shsp*2 , y - svsp*2  , spr_dir, 1, 0 , -1 , 0.2);
     }
-	
+    
+    if window == 6 {
+            draw_sprite_ext(finalattack, finalframe  + window_timer/4, finalx, y , spr_dir*1, 1, 0 , -1 , 1 - window_timer/30 );
+    
+    }
+    
 }
 
-
-
-
-
-
-draw_sprite_ext(sprite_get("hud_mini"), floor(ink/32), x - 32 , y - 22, 1,1,0,-1, move_cooldown[AT_EXTRA_2]/60);
-if ink >= 100 {
-    draw_sprite_ext(sprite_get("hud_mini"), 3, x - 32 , y - 22, 1,1,0,-1, move_cooldown[AT_EXTRA_2]/60);
-}
-
-if ink >= 200 {
-    draw_sprite_ext(sprite_get("hud_mini"), 6, x - 32 , y - 22, 1,1,0,-1, move_cooldown[AT_EXTRA_2]/60);
-}
-
-if ink >= 300 {
-    draw_sprite_ext(sprite_get("hud_mini"), 9, x - 32 , y - 22, 1,1,0,-1, move_cooldown[AT_EXTRA_2]/60);
-}
-}
-}
 shader_end() 
 

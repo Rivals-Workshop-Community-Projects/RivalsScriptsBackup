@@ -16,6 +16,11 @@ hue = 2
 saveid = 0
 barpause = 0
 
+neointro = 0
+neointro1 = " "
+neointro2 = " "
+neointro3 = " "
+neoside = 0
 
 finisher = 0
 finishercd = 0
@@ -163,6 +168,9 @@ bubble_y = 8;
 can_jump_capped = false;
 
  i5 = hit_fx_create( sprite_get( "np5" ), 20);	
+
+exp1 = hit_fx_create( sprite_get( "exp1" ), 28 );
+sprite_change_offset("exp1", 80, 80);
 
 lighten3 = hit_fx_create( sprite_get( "lighten" ), 4);	
 lighten2 = hit_fx_create( sprite_get( "lighten" ), 8);	

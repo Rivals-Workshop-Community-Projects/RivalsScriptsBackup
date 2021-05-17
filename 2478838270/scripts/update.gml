@@ -352,6 +352,9 @@ with(oPlayer)
 							//Gravity Cancels
 							if(gravity_cancel != 0)
 							{
+								print_debug(string(invincible));
+								// initial_invince = 0;
+								// attack_invince = false;
 								has_airdodge = false;
 								if(state_timer == 0)
 								{
@@ -395,66 +398,43 @@ with(oPlayer)
 							free = true;
 							gravity_cancel = 0;
 						}
-
 						//Check for neutral airdodge.
 						if(state == PS_AIR_DODGE && hsp == 0 && vsp == 0 && gravity_cancel == 0)
 						{
+							move_cooldown[AT_DATTACK] = 3;
 							//Check for attack inputs
-							if(attack_pressed || taunt_pressed)
+							if(attack_pressed || (up_strong_pressed || down_strong_pressed || left_strong_pressed || right_strong_pressed) && url != CH_SYLVANOS || taunt_pressed)
 							{	
 								gravity_cancel = 1;
-								// free=false;
-								if(taunt_pressed)
-								{
-									attack = AT_TAUNT;
-									set_attack(AT_TAUNT);
-								}
-								else if(joy_pad_idle)
-								{
-									attack = AT_JAB;
-									set_attack(AT_JAB);
-								}
-								else if(((right_pressed || right_down)) || (left_down || left_pressed) && !up_down && !down_down)
-								{
-									attack = AT_FTILT;
-									set_attack(AT_FTILT);
-								}
-								else if(!up_down && down_down)
-								{
-									attack = AT_DTILT;
-									set_attack(AT_DTILT);
-								}
-								else if(up_down && !down_down)
-								{
-									attack = AT_UTILT;
-									set_attack(AT_UTILT);
-								}
+								free=false;
+								can_attack = true;
+								can_strong = true;
 								set_attack_value(attack, AG_CATEGORY, 2);
 							}	
-							//STRONG INPUTS
-							if(up_strong_pressed || down_strong_pressed || left_strong_pressed || right_strong_pressed)
-							{
-								gravity_cancel = 1;
-								if(up_strong_pressed)
-								{
-									attack = AT_USTRONG;
-									set_attack(AT_USTRONG);
-								}
-								else if(down_strong_pressed)
-								{
-									attack = AT_DSTRONG;
-									set_attack(AT_DSTRONG);
-								}	
-								else
-								{
-									if(left_strong_pressed)
-										spr_dir = -1;
-									else if(right_strong_pressed)
-										spr_dir = 1;
-									attack = AT_FSTRONG;
-									set_attack(AT_FSTRONG);
-								}
-							}
+							// //STRONG INPUTS
+							// if(up_strong_pressed || down_strong_pressed || left_strong_pressed || right_strong_pressed)
+							// {
+							// 	gravity_cancel = 1;
+							// 	if(up_strong_pressed)
+							// 	{
+							// 		attack = AT_USTRONG;
+							// 		set_attack(AT_USTRONG);
+							// 	}
+							// 	else if(down_strong_pressed)
+							// 	{
+							// 		attack = AT_DSTRONG;
+							// 		set_attack(AT_DSTRONG);
+							// 	}	
+							// 	else
+							// 	{
+							// 		if(left_strong_pressed)
+							// 			spr_dir = -1;
+							// 		else if(right_strong_pressed)
+							// 			spr_dir = 1;
+							// 		attack = AT_FSTRONG;
+							// 		set_attack(AT_FSTRONG);
+							// 	}
+							// }
 							set_attack_value(attack, AG_CATEGORY, 2);
 						}
 							
@@ -684,8 +664,8 @@ with(oPlayer)
 					break;
 				case 6: //HAL LABATORIES.
 					has_airdodge = false;
-					hitstun = hitstun_full * 1.25;
-					hitstun_grav = .3;
+					// hitstun = hitstun_full * 1.25;
+					// hitstun_grav = .3;
 						
 					//No more fspecial
 					if(url == CH_ORI)
@@ -773,7 +753,9 @@ with(oPlayer)
 						for(i = 1; i < get_num_hitboxes(attack)+1; i++)
 						{
 							reset_hitbox_value(attack, i, HG_BASE_KNOCKBACK);
-							set_hitbox_value(attack, i, HG_BASE_KNOCKBACK, ceil(get_hitbox_value(attack, i, HG_BASE_KNOCKBACK) * (dmg_rage * 0.00135 + 1)));
+							reset_hitbox_value(attack, i, KNOCKBACK_SCALING);
+							set_hitbox_value(attack, i, HG_BASE_KNOCKBACK, get_hitbox_value(attack, i, HG_BASE_KNOCKBACK) * (dmg_rage * 0.002 + 1));
+							set_hitbox_value(attack, i,  KNOCKBACK_SCALING, get_hitbox_value(attack, i,  KNOCKBACK_SCALING) * (dmg_rage * 0.002 + 1));
 						}
 					}
 					//rage dust

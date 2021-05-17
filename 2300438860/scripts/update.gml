@@ -143,6 +143,12 @@ init_shader();
 
 if esave > 1 && !hitpause{
 	esave -= 1
+	move_cooldown[AT_DSTRONG] = 2
+	
+	if saveid.state == PS_DEAD or saveid.state == PS_RESPAWN {
+	esave = 0
+    }  
+
 }
 
 
@@ -160,9 +166,13 @@ if esave == 2 {
 	esave = 0
 }
 
+
+
+
 if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 	attacking = true
 } else {
+	mask_index = sprite_get("stand_box");
 	attacking = false
 	specialing = 0
 }
@@ -402,4 +412,184 @@ if finisher = 20 {
 }
 
 
+}
+
+
+
+
+
+if(neointro == 0) {
+
+           var shortest_dist = 9999; 
+			var shortest_id = noone;
+			
+			with (asset_get("oPlayer")) {
+				if (player != other.player) {
+					var curr_dist = point_distance(x,y,other.x,other.y);
+					if (curr_dist < shortest_dist) {
+						shortest_dist = curr_dist;
+						shortest_id = id;
+					}
+				}
+			}
+			
+var spr = get_char_info(player, INFO_CHARSELECT);
+var img = select;
+	
+	if string_count("omori", string_lower( get_char_info(shortest_id.player, INFO_STR_NAME) )) > 0 {
+		neointro = 1
+        neointro1 = "Hoh ? Is that a TOY knife ?"
+        neointro2 = "Real confident aren't cha ?"
+        neointro3 = ""
+	}
+			
+	if string_count("reimu", string_lower( get_char_info(shortest_id.player, INFO_STR_NAME) )) > 0 {
+		neointro = 1
+        neointro1 = "Oh, so I'm a demon ? "
+        neointro2 = "Good luck exterminating me then."
+        neointro3 = ""
+	}		
+			
+	if string_count("anglara", string_lower( get_char_info(shortest_id.player, INFO_STR_NAME) )) > 0 {
+		neointro = 1
+        neointro1 = "A fish... monster... person..."
+        neointro2 = "Oh, you're bringing back a bad memory..."
+        neointro3 = ""
+	}
+	
+	if string_count("callie", string_lower( get_char_info(shortest_id.player, INFO_STR_NAME) )) > 0 {
+		neointro = 1
+        neointro1 = "Aw... c'mon.."
+        neointro2 = "Show me some of that LOVE !"
+        neointro3 = ""
+	}
+	
+	if string_count("kris", string_lower( get_char_info(shortest_id.player, INFO_STR_NAME) )) > 0 {
+		neointro = 1
+        neointro1 = "Hello there, strange not-stranger"
+        neointro2 = "What does your DSPECIAL do again ?"
+        neointro3 = ""
+	}
+	
+	if string_count("clover", string_lower( get_char_info(shortest_id.player, INFO_STR_NAME) )) > 0 {
+		neointro = 1
+        neointro1 = "That's called... a gun?"
+        neointro2 = "Humans just keep getting better "
+        neointro3 = "at killing themselves, don't they?"
+	}
+	
+	if string_count("ralsei", string_lower( get_char_info(shortest_id.player, INFO_STR_NAME) )) > 0 {
+		neointro = 1
+        neointro1 = "Oh... "
+        neointro2 = "I like you already. "
+        neointro3 = " "
+	}
+	
+	if string_count("sans", string_lower( get_char_info(shortest_id.player, INFO_STR_NAME) )) > 0 {
+		neointro = 1
+        neointro1 = "How many times do I have to "
+        neointro2 = "teach you this lesson, old man? "
+        neointro3 = ""
+	}
+
+	if string_count("astra", string_lower( get_char_info(shortest_id.player, INFO_STR_NAME) )) > 0 {
+		neointro = 1
+        neointro1 = "I didn't come here to play a "
+        neointro2 = "children's card game, Mrs. Fox "
+        neointro3 = ""
+	}
+
+	if string_count("acidrainbow", string_lower( get_char_info(shortest_id.player, INFO_STR_NAME) )) > 0 {
+		neointro = 1
+        neointro1 = "That's a huge sword you rarely use."
+        neointro2 = "What a wasted potential."
+        neointro3 = ""
+	}
+
+	if string_count("tenru", string_lower( get_char_info(shortest_id.player, INFO_STR_NAME) )) > 0 {
+		neointro = 1
+        neointro1 = "Mmmhmmm~"
+        neointro2 = "monke..."
+        neointro3 = ""
+	}
+
+	if string_count("hodan", string_lower( get_char_info(shortest_id.player, INFO_STR_NAME) )) > 0 {
+		neointro = 1
+        neointro1 = "Mmmhmmm~"
+        neointro2 = "monke..."
+        neointro3 = ""
+	}
+
+	if string_count("Ao", get_char_info(shortest_id.player, INFO_STR_NAME) ) > 0 {
+		neointro = 1
+        neointro1 = "Oh... a monster who isn't made of dust."
+        neointro2 = "Would you be more durable than them..?"
+        neointro3 = "I wonder..."
+	}
+
+	if string_count("ceae", string_lower( get_char_info(shortest_id.player, INFO_STR_NAME) )) > 0 {
+		neointro = 1
+        neointro1 = "Oh... a monster who isn't made of dust."
+        neointro2 = "Would you be more durable than them..?"
+        neointro3 = "I wonder..."
+	}
+
+	if string_count("feri", string_lower( get_char_info(shortest_id.player, INFO_STR_NAME) )) > 0 {
+		neointro = 1
+        neointro1 = "Oh... a monster who isn't made of dust."
+        neointro2 = "Would you be more durable than them..?"
+        neointro3 = "I wonder..."
+	}
+
+	if string_count("mystia", string_lower( get_char_info(shortest_id.player, INFO_STR_NAME) )) > 0 {
+		neointro = 1
+        neointro1 = "You are singing.."
+        neointro2 = "Bird are singing...."
+        neointro3 = "On days like these......"
+	}
+
+
+	
+	if string_count("hime", string_lower( get_char_info(shortest_id.player, INFO_STR_NAME) )) > 0 {
+		neointro = 1
+        neointro1 = "That knife you hold..."
+        neointro2 = "Have you fallen down as well?"
+        neointro3 = ""
+	}
+	
+    if string_count("cupcake", string_lower( get_char_info(shortest_id.player, INFO_STR_NAME) )) > 0 {
+		neointro = 1
+        neointro1 = "Uh... Another goat..."
+        neointro2 = "Can't believe I have to stab another one."
+        neointro3 = ""
+	}
+	
+	if string_count("crewmate", string_lower( get_char_info(shortest_id.player, INFO_STR_NAME) )) > 0 {
+		neointro = 1
+        neointro1 = "What's so funny"
+        neointro2 = "about Sus Sus Amogus?"
+        neointro3 = ""
+	}
+
+	if string_count("papyrus", string_lower( get_char_info(shortest_id.player, INFO_STR_NAME) )) > 0 {
+		neointro = 1
+        neointro1 = "What a believer you are..."
+        neointro2 = "I will enjoy crushing your trust."
+        neointro3 = "Again... and again..."
+	}
+	
+	if x < shortest_id.x {
+		neoside = -1
+	} else {
+		neoside = 1
+	}
+
+}
+
+if neointro > 0 {
+	neointro += 1
+	
+	if neointro >= 420 {
+		neointro = -1
+	}
 }

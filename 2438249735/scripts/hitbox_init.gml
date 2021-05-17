@@ -13,4 +13,11 @@ djumped = 0
 
 if AT_NSPECIAL && (hbox_num == 2 or hbox_num == 3){
     player_id.fp = self
+    plasma_safe = true
+}
+
+
+
+if AT_USPECIAL {
+    plasma_safe = true
 }

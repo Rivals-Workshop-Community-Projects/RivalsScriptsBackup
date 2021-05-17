@@ -52,6 +52,7 @@ sprite_change_offset("nspecial", 108, 154);
 sprite_change_offset("nspecial2", 108, 154);
 sprite_change_offset("fspecial", 108, 154);
 sprite_change_offset("fspec_explosion", 100, 100);
+sprite_change_offset("fspec_explosionSml", 100, 100);
 sprite_change_offset("fspec_projectile_travel", 49, 49);
 sprite_change_offset("fspec_charge_lv1", 32, 32);
 sprite_change_offset("fspec_charge_lv2", 32, 32);

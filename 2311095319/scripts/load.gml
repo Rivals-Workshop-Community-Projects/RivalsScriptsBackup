@@ -6,7 +6,7 @@ sprite_change_offset("walk", 26, 66);
 sprite_change_offset("walkturn", 24, 64);
 sprite_change_offset("dash", 24, 64);
 sprite_change_offset("dashstart", 28, 60);
-sprite_change_offset("dashstop", 30, 60);
+sprite_change_offset("dashstop", 48, 64);
 sprite_change_offset("dashturn", 36, 68);
 
 //Hurts
@@ -65,7 +65,9 @@ sprite_change_offset("dstrong", 64, 64);
 sprite_change_offset("nspecial", 68, 118);
 sprite_change_offset("nspecialbig", 68, 118);
 sprite_change_offset("fireball", 20, 40);
-sprite_change_offset("fireball_explode", 50, 58);
+//sprite_change_offset("fireball_explode", 50, 58);
+sprite_change_offset("fireball_normal_explode", 50, 48);
+sprite_change_offset("fireball_big_explode", 48, 86);
 sprite_change_offset("fireballgauge", 20, 40);
 sprite_change_offset("fireball_left", 20, 40);
 sprite_change_offset("fireball_muno", 22, 38);

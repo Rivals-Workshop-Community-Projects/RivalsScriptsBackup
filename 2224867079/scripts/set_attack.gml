@@ -27,7 +27,7 @@ if (attack == AT_DSPECIAL && RedMode){
 }
 
 if (phone_cheats[jab_fsmash] == 1) {
-	if (attack == AT_JAB){
+	if (attack == AT_NSPECIAL){
 		attack = 49;
 	}
 }

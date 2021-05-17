@@ -23,6 +23,7 @@ if ("practice" in self)
 				AddText("Advanced Tutorials");
 				AddText("Change Notes");
 				AddText("Shrine of Light Discord");
+				AddText("Lore / Story");
 				AddText("Spawn Star");
 				DrawTutBlock();
 				DrawTutText();
@@ -139,6 +140,16 @@ if ("practice" in self)
 						AddText("Spawning new stars prioritizes despawning cracked stars when reaching star limit");
 						AddText("Fusing stars will remove the cracked status");
 						break;
+					case 6:
+						AddText("v1.6 - 13 May 2021");
+						AddText("");
+						AddText("Cracked stars no longer despawn after Lukastar gets hit");
+						AddText("Cracked stars now instead despawn after 69 frames");
+						AddText("");
+						AddText("Added a Lore / Story page");
+						AddText("");
+						AddText("I am currently in army. Don't expect frequent balance changes.");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -227,6 +238,23 @@ if ("practice" in self)
 				DrawTutorialText();
 				draw_sprite_ext(sprite_get("discord"), 0, 16, temp_y-76+floor(tutAlpha*4)*2-8, 2, 2, 0, c_white, tutAlpha);
 				draw_sprite_ext(sprite_get("hikaru"), state_timer/(43/16), 64, temp_y-96+floor(tutAlpha*4)*2-8, 2, 2, 0, c_white, tutAlpha);
+				break;
+			case 8:
+				AddText("Lore / Story");
+				AddText("");
+				AddText("Lukastars, also known as the Star Foxes, live above the Archai and Xue Hua Mountains.");
+				AddText("They defend Aether from threats from outer space, as well as most meteor strikes.");
+				AddText("");
+				AddText("Lukastars are often seen sparring with each other on Xue Hua Mountain.");
+				AddText("They're most known for creating brilliant and stunning constellations when they turn into their feral form.");
+				AddText("");
+				AddText("Lukastars are sometimes mistaken for actual stars by other creatures on the ground.");
+				AddText("");
+				AddText("Occasionally, Lukastars fall from the sky to learn other creatures' fighting techniques.");
+				AddText("Moves that they have tried to replicate are:");
+				AddText("Zetterburn Shine, Forsburn BAir, Forsburn FAir, Ranno NAir, Maypul Drill, Maypul FSpec, and Absa USpec.");
+				DrawTutorialBlock();
+				DrawTutorialText();
 				break;
 		}
 		draw_set_alpha(1);

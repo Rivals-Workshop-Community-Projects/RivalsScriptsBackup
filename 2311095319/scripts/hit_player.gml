@@ -1,10 +1,18 @@
 //hit_player.gml
 
+//Forward Air (Forward Knuckle)
+if (my_hitboxID.attack == AT_FAIR && my_hitboxID.hbox_num == 1){
+	//spawn_hit_fx( hit_player_obj.x, hit_player_obj.y, 4 );
+}
+
 //Down Air (Stomp)
 if (my_hitboxID.attack == AT_DAIR && window < 3){
+	old_vsp = -7.5;
+	//if (!down_down){
+	//	old_vsp = -7.5;
+	//}
 	window = 3;
     window_timer = 0;
-    old_vsp = -7.5;
 	sound_play(sfx_stomp)
 	destroy_hitboxes();
 	if (dairtimeshit != 9){
@@ -19,7 +27,7 @@ if (my_hitboxID.attack == AT_DAIR && window < 3){
 }
 
 //Forward Special (Dive)
-if (attack == AT_FSPECIAL){
+if (my_hitboxID.attack == AT_FSPECIAL){
 	if (window > 5){
 		hsp = hsp * 0.24
 	}

@@ -342,6 +342,7 @@ if (attack == AT_FSPECIAL){
 if (attack == AT_USPECIAL){
 	if(window < 3) portal_white+=2;
 	if(window == 3 && window_timer == 1) portal_white = 10;
+
 	
 	can_move = true;
 	

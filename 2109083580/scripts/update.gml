@@ -427,8 +427,8 @@ if (slActive)
     
     //Fstrong Kill Version
     for(var i = 1; i <= 12; ++i){
-    	set_hitbox_value(AT_FSTRONG, i, HG_BASE_KNOCKBACK, 10);
-    	set_hitbox_value(AT_FSTRONG, i, HG_KNOCKBACK_SCALING, 1.4);
+    	set_hitbox_value(AT_FSTRONG, i, HG_BASE_KNOCKBACK, 8);
+    	set_hitbox_value(AT_FSTRONG, i, HG_KNOCKBACK_SCALING, 1.2);
     	set_hitbox_value(AT_FSTRONG, i, HG_ANGLE, 40);
     	set_hitbox_value(AT_FSTRONG, i, HG_BASE_HITPAUSE, 18);
     	set_hitbox_value(AT_FSTRONG, i, HG_HITPAUSE_SCALING, 1);

@@ -18,6 +18,12 @@ if attack == AT_DSPECIAL{
 	set_hitbox_value(AT_DSPECIAL, 4, HG_BASE_KNOCKBACK, 7);
 }
 
+//Bug FIX
+if attack == AT_FSPECIAL{
+	if vsp< 0  {
+		cyclone = 0;
+	}
+}
 
 
 user_event(13);

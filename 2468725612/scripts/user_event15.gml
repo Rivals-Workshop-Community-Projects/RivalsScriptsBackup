@@ -458,6 +458,10 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.32", "14 May, 2021");
+	initPatchWords_ext("- Fixed a bug with commanding the hologram when it gets hit", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- Fixed a bug with the hat despawning when it's in certain positions in ''giant'' stages", fa_left, c_white, 0, 0);
+	
 	initPatch("1.31", "11 May, 2021");
 	initPatchWords_ext("- Buffy should hopefully work in timed battles/time outs now", fa_left, c_white, 0, 0);
 	

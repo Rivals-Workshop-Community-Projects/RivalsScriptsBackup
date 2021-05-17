@@ -31,7 +31,10 @@ hsp = round(fake_hsp);
 vsp = round(fake_vsp);
 
 if (exist_timer > 40) {fake_vsp += 0.001*(exist_timer - 40);}
-if (y > 1100) {instance_destroy();}
+//if (y > 1100) {instance_destroy();}
+
+phone_blastzone_b = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE);
+if (y > phone_blastzone_b + 500) {instance_destroy();}
 
 fake_hsp *= 0.9;
 

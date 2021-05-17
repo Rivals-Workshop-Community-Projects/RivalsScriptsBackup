@@ -283,22 +283,6 @@ if has_rune("L") {
 	}
 }
 
-//Final Smash
-if (attack == 49)
-{
-	can_fast_fall = false;
-	can_move = false;
-    if (window == 1)
-    {
-        create_hitbox( 49, 1, x + (500 * spr_dir), y - 50 );
-    }
-    
-    if (window == 2)
-    {
-        create_hitbox( 49, 1, x + (500 * spr_dir), y - 50 );
-    }
-    
-}
 
 //Blue Ustrong Spawns Article
 /*
@@ -539,4 +523,35 @@ if (attack == AT_DATTACK && RedMode == true && !hitstun){
 	if (window == 4 && window_timer == 1){
 		shake_camera(2,2);
 	}
+}
+
+//Final Smash
+if (attack == 49){
+    can_fast_fall = false;
+    can_move = false;
+    
+    if (window == 1){
+    	fs_anim = true;
+    	if (window_timer == 2)
+    	{
+			sound_play(sound_get("charge"))
+    	}
+    	create_hitbox(49, 1, x + (500 * spr_dir), y - 50 );
+    }
+    if (window == 2){
+    	fs_anim = false;
+    	create_hitbox(49, 1, x + (500 * spr_dir), y - 50 );
+    }
+    if (window == 2 && window_timer == 25)
+    {
+    	sound_stop(sound_get("charge"))
+		sound_play(sound_get("fsmash"))
+    }
+    if (window == 3 && window_timer == 8){
+    	hsp = 0
+    }
+    if (window == 3 && window_timer == 2){
+    	spawn_hit_fx(x-300*spr_dir,y-50,fsmash);
+    }
+    
 }

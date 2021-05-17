@@ -455,7 +455,12 @@ with phone{
 	 * put the version number and full date.
 	 */
 	 
-	initPatch("1.4", "May 9th, 2021");
+	initPatch("1.4.2", "May 16th, 2021");
+	initPatchWords("Misc. Updates
+	~ Fixed the changelog for 1.4
+	~ FSpecial and DSpecial's cooldowns now reset by being hit or on death");
+	
+	initPatch("1.4", "May 10th, 2021");
 	initPatchWords("Attack Nerfs
 	- Set the DSpecial to only go upwards if activated on the ground
 	- Lowered the knockback and knockback scaling on UStrong
@@ -470,7 +475,8 @@ with phone{
 	* Color separation added to allow for cleaner alternate colors
 	* Changed some of the alternate colors to benefit from the color separation update
 	* Removed the Invert color palette
-	* Added the Lovely color palette");
+	* Added the Lovely color palette
+	* Feri's costume updated, using a sprite created by That Azazel Fire himself");
 	 
 	initPatch("1.3.2", "May 6th, 2021");
 	initPatchWords("Misc. Updates
