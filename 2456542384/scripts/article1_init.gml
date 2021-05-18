@@ -30,7 +30,7 @@ fly_activate_endlag = 18; //endlag frames
 fly_die_time = 42; //post-activation endlag
 
 //hold time
-fly_hold_time = 60; //how long the enemy is held for in frames
+fly_hold_time = 40; //how long the enemy is held for in frames
 
 
 //flower

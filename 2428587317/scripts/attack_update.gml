@@ -244,7 +244,7 @@ if (attack == AT_FSPECIAL){
     if(window == 1 && window_timer == 11){
         torndir = spr_dir;
     }
-    if(window == 4){
+    if(window == 4 || (window == 3 && window_timer > 3)){
         iasa_script();
         move_cooldown[AT_FSPECIAL] = 30;
     }

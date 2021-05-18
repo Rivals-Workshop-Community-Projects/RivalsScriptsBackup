@@ -15,7 +15,7 @@ set_attack_value(49, AG_OFF_LEDGE, 1);
 	    		set_window_value(49, 1, AG_WINDOW_VSPEED_TYPE,2);
 	    		set_window_value(49, 1, AG_WINDOW_HAS_SFX,1);
 	    		set_window_value(49, 1, AG_WINDOW_SFX, sound_get("sfx_pill"));
-	    		set_window_value(49, 1, AG_WINDOW_SFX_FRAME,10);
+	    		set_window_value(49, 1, AG_WINDOW_SFX_FRAME, 29);
 		    	set_window_value(49, 1, AG_WINDOW_INVINCIBILITY,1);
 				
 				set_window_value(49, 2, AG_WINDOW_LENGTH, 10);

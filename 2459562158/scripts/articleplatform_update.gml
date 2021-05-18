@@ -98,7 +98,10 @@ with(oPlayer)
         }
         else
         {
-            if (vsp > -15 - has_rune("F") * 8)
+            var max_s = (-15 - has_rune("F") * 8) * (gravity_speed + 0.3)
+            
+            
+            if (vsp > max_s)
             {
                 vsp -= 1 + has_rune("F") * 2;
             }
