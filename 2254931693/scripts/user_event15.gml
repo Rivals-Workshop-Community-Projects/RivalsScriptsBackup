@@ -578,6 +578,14 @@ with phone{
 	 * put the version number and full date.
 	 */
 
+	initPatch("2.0.2", "May 19th, 2021");
+	initPatchWords("-Increased attached Neutral-Special endlag (11 -> 15)
+	-Added 5 frames of lag to on-grab window of attached Neutral-Special
+	-Added cooldown to attached and detached Neutral-Special
+	-Decreased Down-Strong grab box lifetime (12 -> 6)
+	-Down-Strong grab box now comes out 1 frame later
+	-Decreased Up-Air first hitbox damage (9 -> 8)");
+
 	initPatch("2.0.1", "May 8th, 2021");
 	initPatchWords("-Fixed compatibility with Final Smash Buddy");
 

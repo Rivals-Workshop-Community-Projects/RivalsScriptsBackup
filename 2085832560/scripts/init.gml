@@ -6,7 +6,7 @@ hitstun_hurtbox_spr = -1;
 Hikaru_Title = "Infernal Fuel"
 
 nname = "[ ? ? ? ]"
-ncode1 = "Sorry dude, peeping into this girl data is a no-no."
+ncode1 = "Sorry dude, peeping into this girl's data is a no-no."
 ncode2 = "We would like to keep our secrets, even to the government"
 ncode3 = "                         ---:Lynk:--- ;) "
 

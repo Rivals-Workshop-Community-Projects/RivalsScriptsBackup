@@ -4,6 +4,7 @@ set_attack_value(AT_NSPECIAL_2, AG_AIR_SPRITE, sprite_get("nspecial_2_air"));
 set_attack_value(AT_NSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("nspecial_2_hurt"));
 set_attack_value(AT_NSPECIAL_2, AG_HURTBOX_AIR_SPRITE, sprite_get("nspecial_2_air_hurt"));
 
+
 set_attack_value(AT_NSPECIAL_2, AG_NUM_WINDOWS, 3);
 
 set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_TYPE, 0);

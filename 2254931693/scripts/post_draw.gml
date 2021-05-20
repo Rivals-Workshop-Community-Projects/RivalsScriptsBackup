@@ -1,5 +1,6 @@
 //post-draw
 
+print(move_cooldown[AT_NSPECIAL]);
 
  
 if ((state = PS_ATTACK_GROUND || state = PS_ATTACK_AIR) && attack == AT_NSPECIAL && window = 8 && image_index = 21){

@@ -1,6 +1,7 @@
 //update
 
 
+
 /*
 if (state == PS_ATTACK_GROUND && attack == AT_FTILT && window == 1 && window_timer == 5){
     with (oPlayer){
@@ -137,3 +138,49 @@ if (introTimer < 8) {
 //this stops the overhead HUD from getting in the way of the animation. 
 //If your animation does not involve much movement, this may not be necessary.
 
+if get_player_color(player) = 16 {
+
+if (cor_dir == 1){
+    corG+=1.5;
+    corB+=1.5;
+}
+
+if (corG >= 255){
+    cor_dir = 2;
+}
+
+if (cor_dir == 2){
+    corR-= .48;
+    corG-= 1.5;
+}
+
+if (corR <= 178){
+    cor_dir = 3;
+    corG = 23;
+    corB = 255;
+}
+
+if (cor_dir == 3){
+    corR+= .5;
+    corG-= .08;
+    corB-= 1.6;
+}
+
+if (corR > 255 && corG != 255){
+    cor_dir = 1;
+    corR = 255;
+    corG = -50;
+    corB = -50;
+}
+
+round(corR);
+round(corG);
+round(corB);
+
+set_color_profile_slot( 16, 2, corR,corG,corB); 
+
+set_color_profile_slot( 16, 5, corR,corG,corB); 
+
+set_color_profile_slot( 16, 6, corR-70,corG+20,corB+20); 
+//uses that variable to set the slot's new colours
+}

@@ -18,7 +18,7 @@ set_window_value(AT_FTILT, 2, AG_WINDOW_SFX, asset_get("sfx_birdclap"));
 set_window_value(AT_FTILT, 2, AG_WINDOW_SFX_FRAME, 2);
 
 set_window_value(AT_FTILT, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 5);

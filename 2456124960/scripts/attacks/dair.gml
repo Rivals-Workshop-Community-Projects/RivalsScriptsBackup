@@ -44,6 +44,7 @@ set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, 0.4);
 set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_DAIR, 1, HG_HITBOX_COLOR, 1);
 
 set_hitbox_value(AT_DAIR, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_TYPE, 1);

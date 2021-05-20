@@ -72,6 +72,7 @@ set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_icehit_heavy2"));
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 27);
 set_hitbox_value(AT_FSTRONG, 2, HG_HIT_LOCKOUT, 8);
+set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_COLOR, 1);
 
 set_hitbox_value(AT_FSTRONG, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_TYPE, 1);

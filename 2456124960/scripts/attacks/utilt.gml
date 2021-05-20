@@ -58,3 +58,4 @@ set_hitbox_value(AT_UTILT, 2, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(AT_UTILT, 2, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_UTILT, 2, HG_HITBOX_COLOR, 1);

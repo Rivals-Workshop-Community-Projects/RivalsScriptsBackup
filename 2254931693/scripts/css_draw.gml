@@ -2,8 +2,8 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-patch_ver = "2.0.1";
-patch_day = "8";
+patch_ver = "2.0.2";
+patch_day = "19";
 patch_month = "MAY";
  
 if get_player_color(player) == 7 {

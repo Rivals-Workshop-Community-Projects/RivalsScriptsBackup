@@ -73,6 +73,12 @@ buffFXTimer = 0;
 buffFXPosX = 0;
 buffFXPosY = 0;
 
+HG_HITBOX_COLOR = 69;
+hboxShape = -2;
+shape_circle = sprite_get("hitbox_circle")
+shape_rect = sprite_get("hitbox_rect")
+shape_roundrect = sprite_get("hitbox_roundrect")
+
 char_height = 52;
 idle_anim_speed = .26;
 crouch_anim_speed = .1;

@@ -39,6 +39,12 @@ if (get_player_color(player) == 5){
 	gpu_set_fog(0, c_white, 0, 0);
 }
 
+if (get_player_color(player) == 16){
+	FlagPart(make_colour_rgb(178, 23, 255), 1, 0); // mayablue
+	FlagPart(make_colour_rgb(255, 0, 0), 1/2, 1/2); // pink
+	gpu_set_fog(0, c_white, 0, 0);
+}
+
 #define FlagPart(_colour, _heightRatio, _xOffsetRatio)
 {
 	gpu_set_fog(1, _colour, 0, 1);

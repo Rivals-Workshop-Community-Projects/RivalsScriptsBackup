@@ -138,6 +138,11 @@ levei_parry = false;
 
 tokens = 0;
 
+cor_dir = 1;
+corR = 255;
+corG = 0;
+corB = 0;
+
 claw_effect = hit_fx_create( sprite_get( "claw_effect" ), 20 );
 
 //Compaaaatablitiesilies

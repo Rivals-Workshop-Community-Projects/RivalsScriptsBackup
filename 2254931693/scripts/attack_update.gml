@@ -7,7 +7,9 @@ if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_2 || attack == AT_FSPECIAL ||
     trigger_b_reverse();
 }
 
-
+if (attack == AT_NSPECIAL_2 && window_timer = 1){
+    detached_cooldown = 58;
+}
 
 
 if (attack == AT_DATTACK){
@@ -177,26 +179,33 @@ if (attack == AT_NSPECIAL && window = 8){
     with (nspecial_grabbedplayer){ 
             hsp = 0;
     vsp = 0;
-    hitstun = 10;
+    hitstun = 5;
     old_hsp = 0;
     old_vsp = 0;
      }
 }
 }
 
-if (attack == AT_NSPECIAL && has_hit_player){
-    move_cooldown[AT_NSPECIAL] = 70;
-    
-}
 
-if (attack == AT_NSPECIAL && window > 5 && window != 8 && has_hit_player){
+
+
+if (attack == AT_NSPECIAL && window = 6 && window_timer > 5 && has_hit_player){
+    move_cooldown[AT_NSPECIAL] = 48;
     iasa_script();
     frog_movetimer = 0;
 
 }
 
+if (attack == AT_NSPECIAL && window = 7 && has_hit_player){
+    iasa_script();
+    frog_movetimer = 0;
 
-if (attack == AT_NSPECIAL && window = 7 && window_timer = 11){
+}
+
+if (attack == AT_NSPECIAL && window = 7 && window_timer = 14){
+    if (!has_hit_player){
+            move_cooldown[AT_NSPECIAL] = 15;
+    }
         if (free = 0){
             set_state(PS_IDLE);
         }

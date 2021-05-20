@@ -189,7 +189,7 @@ set_color_profile_slot( 15, 7, 138, 221, 78 ); //Brown Claw
 // Takky
 set_color_profile_slot( 16, 0, 71, 71, 71 ); //Black Fur
 set_color_profile_slot( 16, 1, 56, 56, 56 ); //Black Fur Shading
-set_color_profile_slot( 16, 2, 234, 234, 234 ); //Green Bracelet
+set_color_profile_slot( 16, 2, 255, 0, 0 ); //Green Bracelet
 set_color_profile_slot( 16, 3, 178, 23, 255 ); //White Hair
 set_color_profile_slot( 16, 4, 132, 17, 189 ); //White Hair Shading
 set_color_profile_slot( 16, 5, 255, 0, 0 ); //Green Mask

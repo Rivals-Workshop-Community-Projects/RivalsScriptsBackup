@@ -104,10 +104,12 @@ set_victory_bg( sprite_get( "bonbyvictorybackground" ))
 set_victory_theme( sound_get( "bonby_victory" ));
 
 frog_exists = 0;
-frog_deathtimer = 0;
+frog_deathtimer = -1;
 fspecial_charge = 0;
 frog_pausetime = 0;
 frog_movetimer = 0;
+
+detached_cooldown = 0
 
 nspecial_grabbedplayer = 0;
 

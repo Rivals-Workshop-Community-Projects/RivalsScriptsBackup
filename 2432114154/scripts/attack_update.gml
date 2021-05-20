@@ -244,7 +244,7 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
     }
     
         if attack == AT_NSPECIAL{
-        	
+        	create_hitbox(AT_NSPECIAL,2,x,y - 30)
          if window < 3 {    
          vsp = 0
          hsp = 0

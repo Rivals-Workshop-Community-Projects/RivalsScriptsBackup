@@ -146,5 +146,28 @@ if (instance_exists(buffFX) && buffFXTimer > 0) {
 	}
 }
 
-//move_cooldown[AT_FSPECIAL] = 10;
-//move_cooldown[AT_DATTACK] = 10;
+
+with (pHitBox) {
+    if (player_id == other.id) {
+		hboxShape = -2;
+		with (other) {
+			if (get_hitbox_value(other.attack, other.hbox_num, HG_HITBOX_COLOR) != 0) {
+				other.hboxShape = get_hitbox_value(other.attack, other.hbox_num, HG_SHAPE);
+			}
+		}
+		
+		switch(hboxShape) {
+			case 0: 
+				sprite_index = other.shape_circle;
+				break;
+			case 1: 
+				sprite_index = other.shape_rect;
+				break;
+			case 2:
+				sprite_index = other.shape_roundrect;
+				break;
+			default:
+				break;
+		}
+    }
+}

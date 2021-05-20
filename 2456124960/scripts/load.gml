@@ -141,3 +141,11 @@ sprite_change_offset("dodge_effect", 32, 40);
 set_victory_theme( sound_get( "Victory!Nate" ));
 
 sprite_change_offset("miiverse", 60, 30);
+
+sprite_change_collision_mask("hitbox_circle", 0, 0, 0, 0, 0, 0, 0);
+sprite_change_collision_mask("hitbox_rect", 0, 0, 0, 0, 0, 0, 0);
+sprite_change_collision_mask("hitbox_roundrect", 0, 0, 0, 0, 0, 0, 0);
+
+sprite_change_offset("hitbox_circle", 100, 100);
+sprite_change_offset("hitbox_rect", 100, 100);
+sprite_change_offset("hitbox_roundrect", 100, 100);

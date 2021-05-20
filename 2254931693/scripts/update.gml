@@ -9,6 +9,9 @@ with (asset_get("pHitBox")) //references all hitbox objects
 	}
 }
 
+if (detached_cooldown > 0){
+	detached_cooldown = detached_cooldown - 1;
+}
 
 if (frog_exists = 1){
 	if (frog.spr_dir = 1){
@@ -127,27 +130,40 @@ if(state = PS_DASH_TURN && state_timer = 0){
 }
 
 if (frog_exists = 1 && frog.state != PS_IDLE){
+	if (detached_cooldown = 0){
     move_cooldown[AT_NSPECIAL] = 9999;
+    move_cooldown[AT_NSPECIAL_2] = 9999; 
+	}
     move_cooldown[AT_DSPECIAL] = 9999;
-    move_cooldown[AT_NSPECIAL_2] = 9999;
     move_cooldown[AT_DSPECIAL_2] = 9999;
     move_cooldown[48] = 9999;    
 }
 
 
 if (frog_exists = 1 && frog.state = PS_IDLE){
+	if (detached_cooldown = 0){
     move_cooldown[AT_NSPECIAL] = 0;
-    move_cooldown[AT_DSPECIAL] = 0;
     move_cooldown[AT_NSPECIAL_2] = 0;
+	}
+    move_cooldown[AT_DSPECIAL] = 0;
     move_cooldown[AT_DSPECIAL_2] = 0;
     move_cooldown[48] = 0;        
 }
 
-if (frog_exists = 0 && frog_deathtimer > 0){
+if (detached_cooldown > 0 && frog_exists = 1){
+    move_cooldown[AT_NSPECIAL] = 9999;
+    move_cooldown[AT_NSPECIAL_2] = 9999; 	
+}
+
+
+
+
+if (frog_exists = 0 && frog_deathtimer > -1){
 move_cooldown[AT_NSPECIAL] = 9999;
 move_cooldown[AT_DSPECIAL] = 9999;
 frog_deathtimer = frog_deathtimer - 1;
 }
+
 
 if (frog_deathtimer = 0 && frog_exists = 0){
     move_cooldown[AT_NSPECIAL] = 0;

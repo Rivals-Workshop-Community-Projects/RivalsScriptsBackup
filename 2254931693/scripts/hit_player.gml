@@ -12,13 +12,13 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num = 1){
     if  (hit_player_obj.state_cat = SC_HITSTUN){
     window = 8;
     nspecial_grabbedplayer = hit_player_obj;
-    move_cooldown[AT_NSPECIAL] = 90;
     }
 }
 
 
 if (my_hitboxID.attack == 39 && my_hitboxID.hbox_num = 1){
     if  (hit_player_obj.state_cat = SC_HITSTUN){
+    detached_cooldown = 90;
     frog.grabbedplayer = hit_player_obj;
     frog.state = PS_WRAPPED;
     }

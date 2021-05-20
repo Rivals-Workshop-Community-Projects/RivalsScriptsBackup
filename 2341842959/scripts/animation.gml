@@ -23,3 +23,4 @@ if (get_player_color(player) == 16){
         set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, sound_get("fart_old"));
         set_victory_theme(vict);
 }
+
