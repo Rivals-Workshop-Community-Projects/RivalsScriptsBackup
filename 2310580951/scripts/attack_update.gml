@@ -82,10 +82,16 @@ if attack == AT_FSPECIAL {
 	if window == 1 && free {
 		set_state(PS_IDLE_AIR);
 	}
+	
+	if window == 1 && window_timer == 6 {
+		spawn_base_dust(x, y, "jump");
+	}
+	
 	if (window == 2 && window_timer > 4) || window == 3 {
 		if !free {
 			window = 4;
 			window_timer = 0;
+			spawn_base_dust(x, y, "land");
 		}
 		if !was_parried {
 			can_attack = true;
@@ -150,6 +156,7 @@ if attack == AT_FSPECIAL_AIR && !hitpause {
 		if !free {
 			window = 4;
 			window_timer = 0;
+			spawn_base_dust(x, y, "land");
 		}
 		if window_timer == 14 && free {
 			window_timer = 10;
@@ -190,10 +197,9 @@ if attack == AT_FSPECIAL_AIR && !hitpause {
 //USpecial
 if attack == AT_USPECIAL {
 	can_fast_fall = false;
-	if window == 1 && window_timer == 1 && free {
-		vsp = clamp(vsp, -100, -10);
-		window = 3;
-		window_timer = 0;
+	
+	if window == 1 && window_timer == 6 {
+		spawn_base_dust(x, y, "jump");
 	}
 	
 	if window == 3 && down_down {
@@ -531,6 +537,7 @@ if (attack == AT_FTHROW) {
 
 //DAir - Ground Pound (lol copied from big yoshi)
 if (attack == AT_DAIR) {
+	can_move = false;
 	can_fast_fall = false;
 	
 	if window == 4 {
@@ -557,6 +564,7 @@ if (attack == AT_DATTACK) {
 	if (window == 2 || window == 3 || window == 4 && window_timer < 6) && !free && !hitpause {
 		vsp = -3;
 		sound_play(sound_get("step-grass"));
+		spawn_base_dust(x, y, "land");
 	}
 	
 	if (window == 3 && window_timer > 10 || window > 3) && has_hit && !hitpause && !was_parried {
@@ -709,3 +717,35 @@ if ItsAMeMario && !hitpause {
 		}
 	}		
 }
+
+#define spawn_base_dust
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dfa = 0; //draw_angle value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir = argument_count > 3 ? argument[3] : 0;
+
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = dfa;
+return newdust;

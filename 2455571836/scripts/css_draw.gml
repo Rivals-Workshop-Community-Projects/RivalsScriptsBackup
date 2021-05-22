@@ -1,3 +1,5 @@
+user_event(12);
+
 //Fancy CSS template by Muno
 //Put in css_draw.gml
  

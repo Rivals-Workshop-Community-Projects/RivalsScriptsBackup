@@ -71,7 +71,7 @@ if attack == AT_TAUNT && hbox_num <= 4 {
     }
     
     if hitbox_timer > 68 && hitbox_timer < 75 {
-    	if player_id.thundervictim.up_pressed = true {
+    	if player_id.thundervictim.up_down = true {
     		destroyed = true
     		spawn_hit_fx(x + 18*spr_dir,y - 54,305)
     		player_id.move_cooldown[AT_NSPECIAL_2] = 15
@@ -102,7 +102,7 @@ if attack == AT_TAUNT && hbox_num <= 4 {
     }
     
     if hitbox_timer > 68 && hitbox_timer < 75 {
-    	if player_id.thundervictim.down_pressed = true {
+    	if player_id.thundervictim.down_down= true {
     		destroyed = true
     		spawn_hit_fx(x - 20*spr_dir,y - 54,305)
     		player_id.move_cooldown[AT_NSPECIAL_2] = 15
@@ -132,7 +132,7 @@ if attack == AT_TAUNT && hbox_num <= 4 {
     
     if hitbox_timer > 68 && hitbox_timer < 75 {
     	if player_id.spr_dir == 1 {
-    	        if player_id.thundervictim.left_pressed = true {
+    	        if player_id.thundervictim.left_down = true {
     	        	destroyed = true
     	        	spawn_hit_fx(x - 60*spr_dir,y - 54,305)
     	        	player_id.move_cooldown[AT_NSPECIAL_2] = 15
@@ -150,7 +150,7 @@ if attack == AT_TAUNT && hbox_num <= 4 {
     	        
     	
         } else {
-        	    if player_id.thundervictim.right_pressed = true {
+        	    if player_id.thundervictim.right_down = true {
     	        	destroyed = true
     	        	spawn_hit_fx(x + 60*spr_dir,y - 54,305)
     	        	player_id.move_cooldown[AT_NSPECIAL_2] = 15
@@ -422,6 +422,9 @@ if attack == AT_EXTRA_1 {
         
 		if type == 1 && hit_priority > 0 && throws_rock != 1.111{
 			
+			if player != other.orig_player {
+				other.player_id.move_cooldown[AT_EXTRA_2] = 60
+			}
 					other.hit_priority = 9 
 		other.damage = 5
         other.kb_scaling = 0.4
@@ -582,7 +585,7 @@ if attack == AT_EXTRA_1 {
       spawn_hit_fx( x + 20 - random_func(1, 40, true) , y + 20 -  random_func(2, 60, true) , hpar3)
     }
     
-    if vsp < 0.5 && vsp > -0.5 && hsp = 0 {
+    if player_id.move_cooldown[AT_EXTRA_2] > 0 or (vsp < 0.5 && vsp > -0.5 && hsp = 0) {
         image_index = 2
     } else {
         image_index = get_gameplay_time() / 3

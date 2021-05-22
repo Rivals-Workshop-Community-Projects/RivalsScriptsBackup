@@ -1,6 +1,12 @@
 ///
 
 shader_start();
+
+if move_cooldown[AT_EXTRA_2] > 0 {
+    draw_sprite_ext(sprite_get("hhhproj"), get_gameplay_time(), famix , famiy , 1.05, 1.05, 0 , c_black , 0.6);	
+}
+
+
 if state == PS_PARRY or move_cooldown [AT_EXTRA_3] != 0 {
     
     draw_sprite_ext(sprite_index, image_index, x , y , spr_dir, 1, 0 , c_white ,  1);	

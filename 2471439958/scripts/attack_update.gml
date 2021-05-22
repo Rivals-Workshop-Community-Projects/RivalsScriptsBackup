@@ -172,7 +172,10 @@ if (attack == AT_DATTACK) {
 		spawn_hit_fx( x + 10*spr_dir, y + -20, 306);
 		if (caleb==1){
 			sound_play(sound_get("maniatic_laugh"));
-	}
+		}
+		if (machina==1){
+		sound_play(sound_get("machina_furious_blades_burst_3"));
+			}
 		}
 	}
 	
@@ -192,7 +195,8 @@ if (attack == AT_DATTACK) {
 	if window == 11 && window_timer = 8 {
 		window = 12;
 	
-		}
+		
+	}
 }
 
 if (attack == AT_DAIR){
@@ -251,10 +255,14 @@ if (attack == AT_DAIR) {
 		spawn_hit_fx( x + 10*spr_dir, y + -20, 306);
 		if (caleb==1){
 			sound_play(sound_get("maniatic_laugh"));
+		}
+		if (machina==1){
+		sound_play(sound_get("machina_brv_attack"));
+		}
 	}
 	}
 }
-}
+
 //Ftilt stick? (wtf) 
 if (attack == AT_FTILT) {
 	if window == 3 && window_timer >= 4{
@@ -389,4 +397,25 @@ if(caleb==1){
 	if(attack==AT_JAB)&&(window==7)&&(window_timer==1){sound_play(sound_get("maniatic_laugh"));}
 	if(attack==AT_DSPECIAL)&&(window==1)&&(window_timer==1){sound_play(sound_get("must_pay"));}
 	if(attack==AT_FSPECIAL)&&(window==1)&&(window_timer==1){sound_play(sound_get("huh"));}
+}
+//MACHINA TIME
+if(machina==1){
+	if(attack==AT_BAIR)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_cyclone_drive"));}
+	if(attack==AT_UAIR)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_brv_attack"));}
+	if(attack==AT_DSTRONG)&&(window==2)&&(window_timer==1){sound_play(sound_get("machina_spiral_lynchpin"));}
+	if(attack==AT_FSTRONG)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_light_of_the_future_5"));}
+	if(attack==AT_NSPECIAL)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_light_of_the_future_1"));}
+	if(attack==AT_NSPECIAL_2)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_light_of_the_future_1"));}
+	if(attack==AT_USTRONG)&&(window==2)&&(window_timer==1){sound_play(sound_get("machina_furious_blades_burst_2"));}
+	if(attack==AT_FTILT)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_stunning_slash"));}
+	if(attack==AT_UTILT)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_light_of_the_future_2"));}
+	if(attack==AT_DATTACK)&&(window==1)&&(window_timer==2){sound_play(sound_get("machina_furious_blades_burst_1"));}
+	if(attack==AT_FAIR)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_awakening_longer"));}
+	if(attack==AT_NAIR)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_furious_blades"));}
+	if(attack==AT_DAIR)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_light_of_the_future_1"));}
+	if(attack==AT_JAB)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_brv_attack"));}
+	if(attack==AT_JAB)&&(window==4)&&(window_timer==1){sound_play(sound_get("machina_awakening_longer"));}
+	if(attack==AT_JAB)&&(window==7)&&(window_timer==1){sound_play(sound_get("machina_light_of_the_future_5"));}
+	if(attack==AT_DSPECIAL)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_awakening"));}
+	if(attack==AT_FSPECIAL)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_brv_attack"));}
 }

@@ -14,7 +14,7 @@ patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_cha
 //patch_month = "APRIL";
 image_alpha = max(image_alpha-0.02, 0);
 
-var num_alts = 30;
+var num_alts = 31;
 var alt_new = get_player_color(player);
 if ((alt_new != 30 && alt_new != image_index - 1) || (alt_new == 30 && (image_index == 15 || image_index == 1))) // image_index is global
 	image_alpha = 1.5;
@@ -34,8 +34,8 @@ alt_name[8]  = "Yuuto Ichika";
 alt_name[9]  = "Cupcake";
 alt_name[10] = "Squigly";
 alt_name[11] = "Pico";
-alt_name[12]  = "Type-0";
-alt_name[13]  = "Deadweight";
+alt_name[12] = "Machina Kunagiri";
+alt_name[13] = "Deadweight";
 alt_name[14]  ="Dante";
 alt_name[15] = "Garland";
 alt_name[16] = "Firion";
@@ -52,6 +52,7 @@ alt_name[26] = "Alternate Reality";
 alt_name[27] = "Margaret Moonlight";
 alt_name[28] = "Whitty";
 alt_name[29] = "Bat Bat";
+alt_name[30] = "Doom Slayer";
  
  
 draw_set_halign(fa_left);

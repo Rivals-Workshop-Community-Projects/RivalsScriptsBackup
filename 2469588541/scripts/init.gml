@@ -155,6 +155,7 @@ upThrow = 0; // tutorial
 
 // shine
 nspecCharge = 0;
+nspecJC = false;
 
 // despawn on hit
 canDespawn = true;
@@ -162,6 +163,7 @@ canDespawn = true;
 // constellations
 starKB = has_rune("K")?8:5;
 starDamage = 2;
+hudColour = get_player_hud_color(player);
 
 // afterimage
 afterImageTimer = 0;

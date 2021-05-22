@@ -455,6 +455,14 @@ with phone{
 	 * put the version number and full date.
 	 */
 	 
+	initPatch("1.4.5", "May 20th, 2021");
+	initPatchWords("Misc. Updates
+	~ Added a new cheat code");
+	
+	initPatchWords("Visual Updates
+	* Added a hit effect for NSpecial
+	* Added a Character Version visual on the CSS"); 
+	 
 	initPatch("1.4.2", "May 16th, 2021");
 	initPatchWords("Misc. Updates
 	~ Fixed the changelog for 1.4
@@ -615,6 +623,9 @@ with self{
 	
 	// update.gml
 	initCheat("Enable All Runes", "cheat_all_runes", [0, 1], ["Off", "On"], "Equips all the Abyss Runes, besides Rune A (go to Max Jumps for that).");
+	
+	// attack_update.gml
+	initCheat("Enable Special Hitfall", "cheat_hit_faller", [0, 1], ["Off", "On"], "Enables the ability to hitfall USPECIAL, FSPECIAL, and DSPECIAL.");	
 	
 	//Unused Cheat Codes//
 	// post_draw.gml

@@ -564,7 +564,14 @@ if get_gameplay_time() <= 120 && caleb == 0 and taunt_pressed && get_player_colo
 	sound_play(sound_get("I_live_again"));
 	set_victory_theme(sound_get("caleb_victory"));
 }
+//SERVANT OF THE CRYSTAL
 
+if get_gameplay_time() <= 120 && machina == 0 and taunt_pressed && get_player_color(player) == 12{
+	machina = 1
+	sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"));
+	sound_play(sound_get("machina_intro"));
+	set_victory_theme(sound_get("machina_victory"));
+}
 //CALEB SOUNDS
 
 if (state == PS_FIRST_JUMP)&&(state_timer==1) {

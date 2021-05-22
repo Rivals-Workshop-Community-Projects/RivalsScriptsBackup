@@ -150,6 +150,22 @@ if ("practice" in self)
 						AddText("");
 						AddText("I am currently in army. Don't expect frequent balance changes.");
 						break;
+					case 7:
+						AddText("v1.7 - 20 May 2021");
+						AddText("");
+						AddText("Stars now glow with the player's hud colour");
+						AddText("");
+						AddText("NSpecial now can be jump cancelled more consistently");
+						AddText("");
+						AddText("DAttack Endlag 12 -> 16 (before whifflag multiplier)");
+						AddText("");
+						AddText("DAir Multihit - Hitpause 2 -> 3");
+						AddText("DAir Final - Hitpause 5 -> 7");
+						AddText("DAir Multihit - Damage 2 -> 1");
+						AddText("DAir Multihit - Hitstun Multiplier 0.65 -> 0.58");
+						AddText("");
+						AddText("NAir hitboxes are now smaller and has less range");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 9 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 30 );
+set_num_palettes( 31 );
 
 // Ice Blue
 set_color_profile_slot( 1, 0, 245, 255, 255 ); //white
@@ -146,13 +146,13 @@ set_color_profile_slot( 11, 5, 209, 0, 63 ); //blood
 set_color_profile_slot( 11, 6, 255, 255, 255 ); //eyes
 set_color_profile_slot( 11, 7, 87, 87, 87 ); //cleaver
 
-// Type-0
-set_color_profile_slot( 12, 0, 255, 255, 255 ); //white
+// Machina Kunagiri
+set_color_profile_slot( 12, 0, 255, 248, 242 ); //white
 set_color_profile_slot( 12, 1, 184, 29, 29 ); //scarf
-set_color_profile_slot( 12, 2, 74, 84, 97 ); //hair
-set_color_profile_slot( 12, 3, 31, 31, 31 ); //hoodie
+set_color_profile_slot( 12, 2, 77, 83, 92 ); //hair
+set_color_profile_slot( 12, 3, 41, 41, 41 ); //hoodie
 set_color_profile_slot( 12, 4, 145, 145, 145 ); //wood
-set_color_profile_slot( 12, 5, 140, 0, 0 ); //blood
+set_color_profile_slot( 12, 5, 196, 42, 42 ); //blood
 set_color_profile_slot( 12, 6, 255, 255, 255 ); //eyes
 set_color_profile_slot( 12, 7, 82, 82, 82 ); //cleaver
 
@@ -325,6 +325,17 @@ set_color_profile_slot( 29, 4, 212, 101, 255 ); //wood
 set_color_profile_slot( 29, 5, 179, 11, 255 ); //blood
 set_color_profile_slot( 29, 6, 94, 94, 94 ); //eyes
 set_color_profile_slot( 29, 7, 134, 11, 255 ); //cleaver
+
+// Doom Slayer
+set_color_profile_slot( 30, 0, 252, 199, 179 ); //white
+set_color_profile_slot( 30, 1, 160, 105, 65 ); //scarf
+set_color_profile_slot( 30, 2, 130, 107, 84 ); //hair
+set_color_profile_slot( 30, 3, 150, 158, 58 ); //hoodie
+set_color_profile_slot( 30, 4, 99, 69, 54 ); //wood
+set_color_profile_slot( 30, 5, 130, 135, 140 ); //blood
+set_color_profile_slot( 30, 6, 117, 164, 171 ); //eyes
+set_color_profile_slot( 30, 7, 120, 134, 133 ); //cleaver
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

@@ -88,7 +88,8 @@ if(hit_player_obj.last_attack == AT_DSPECIAL){
             max_djumps = 0;
             air_max_speed = 0;
             air_accel = 0;
-            knockback_adj = knockback_adj * .375;
+            tempknockback_adj = knockback_adj * .375;
+            knockback_adj = tempknockback_adj;
             
             y = y - 2;
             free = true;
@@ -115,7 +116,9 @@ if(hit_player_obj.last_attack == AT_DSPECIAL){
 }
 else{
     canTrap = true;
-    
+    if(hit_player_obj.timer0g > 0){
+        hit_player_obj.shortTimer = 1;
+    }
 }
 if(hit_player_obj.last_attack == AT_FSPECIAL){
     hit_player_obj.sidebhit = 10;

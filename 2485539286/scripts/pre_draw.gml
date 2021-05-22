@@ -2,6 +2,7 @@
 
 shader_start();
 
+
 if move_cooldown[AT_EXTRA_1] > 0 && hhh == 0 && move_cooldown[AT_EXTRA_1] < 290{
     
             draw_sprite_ext(sprite_get("hhh2"), get_gameplay_time()/3 , famix , famiy , spr_dir, 1, 0 , c_white,  0.6 - move_cooldown[AT_USPECIAL_GROUND]/30);

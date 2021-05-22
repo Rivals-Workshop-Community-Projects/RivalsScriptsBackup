@@ -458,6 +458,19 @@ with phone{
 //	initPatchWords("Fnuuy joke
 //	- waog");
 //	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0);
+	//2.25
+	initPatch("2.23	", "21 May 2021");
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Changed Dattack Smear
+	- Changed Fair Smear
+	- Blurs no longer show up during wavedash
+	- Kunai Bombs now have a new sound effect")
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Nair now gives you a slight vertical boost
+	- Blue Fstrong should be harder to di out of
+	- Uair now does more damage
+	- Fair is now slightly bigger
+	- Fixed an error in the logs - (Thanks to blu)");
 	//2.24
 	initPatch("2.24	", "15 May 2021");
 	initPatchWords_ext("Log now has a final smash!", fa_center, c_red, 1, 0);

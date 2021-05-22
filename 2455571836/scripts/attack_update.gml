@@ -15,6 +15,10 @@ if (attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     can_fast_fall = false;
 }
 
+if (phone_cheats[cheat_hit_faller] == 1 && attack == AT_FSPECIAL || phone_cheats[cheat_hit_faller] == 1 && attack == AT_DSPECIAL || phone_cheats[cheat_hit_faller] == 1 && attack == AT_USPECIAL){
+	can_fast_fall = true;
+}
+
 //Jab
 if (attack == AT_JAB && window == 2 && window_timer == 11){
         window = 7;

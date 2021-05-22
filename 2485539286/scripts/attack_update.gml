@@ -906,8 +906,9 @@ case AT_BAIR :
   	}
     move_cooldown[AT_USPECIAL_GROUND] += 5
     
-
+    if window_timer < 6 {	
     window_timer -= 0.5
+    }
     
   	
   	}

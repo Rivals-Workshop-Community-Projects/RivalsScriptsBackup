@@ -81,6 +81,7 @@ if(mastermonkey){//makes sure this code only runs once if there is multiple Zogo
 with(oPlayer){
     if(timer0g > 0 && !("can0g" in self)){
         timer0g--;
+        knockback_adj = tempknockback_adj;
         if(timer0g == 118){
             hsp = 0;
             //has_airdodge = false;
@@ -95,7 +96,7 @@ with(oPlayer){
             myPhysics0g.x = x;
             myPhysics0g.y = y;
         }
-        else if(state != PS_HITSTUN && state != PS_DEAD && state != PS_RESPAWN && state != PS_WALL_JUMP){
+        else if(/*state != PS_HITSTUN*/shortTimer <= 0 && state != PS_DEAD && state != PS_RESPAWN && state != PS_WALL_JUMP){//none hitstun block
             if(myPhysics0g.vsp < 0 && timer0g > 85){// && state_cat != SC_HITSTUN){//timer0g > 100 && 
                 myPhysics0g.vsp += .125;
             }
@@ -106,12 +107,15 @@ with(oPlayer){
             vsp = myPhysics0g.vsp;
             hsp = myPhysics0g.hsp;
         }
-        else if(state != PS_DEAD && state != PS_RESPAWN){
+        else if(state != PS_DEAD && state != PS_RESPAWN){//hitstun block
             //if(vsp < 0 && timer0g > 85){// && state_cat != SC_HITSTUN){//timer0g > 100 && 
             //    vsp += .125;
             //}
+            
             if(abs(vsp) > abs(myPhysics0g.vsp)) myPhysics0g.vsp = vsp;
             if(abs(hsp) > abs(myPhysics0g.hsp)) myPhysics0g.hsp = hsp;
+            //if(myPhysics0g.vsp != 0 || myPhysics0g.hsp != 0)shortTimer--;
+            if(myPhysics0g.vsp < -1 || myPhysics0g.vsp > 1 || myPhysics0g.hsp < -1 || myPhysics0g.hsp > 1)shortTimer--;
             x = myPhysics0g.x;
             y = myPhysics0g.y;
             //myPhysics0g.x = x;
@@ -119,10 +123,12 @@ with(oPlayer){
         }
         
         stx=get_stage_data(SD_X_POS);
-        if(!free || state == PS_DEAD || state == PS_RESPAWN || (state != PS_HITSTUN && (x < stx - 275 || x > (room_width - stx) + 275 || y < get_stage_data( SD_Y_POS ) - get_stage_data( SD_TOP_BLASTZONE ) + 100))){
+        sblast=get_stage_data(SD_SIDE_BLASTZONE);
+        if(!free || state == PS_DEAD || state == PS_RESPAWN || (state != PS_HITSTUN && (x < (stx - sblast)+120 || x > (((room_width - stx)+sblast) - 120) || y < get_stage_data( SD_Y_POS ) - get_stage_data( SD_TOP_BLASTZONE ) + 100))){
             timer0g = 0;
             myPhysics0g.timer = 0;
-            
+            vsp = 0;
+            hsp = 0;
         }
         
         //if(state != PS_HITSTUN && (x < stx - 275 || x > (room_width - stx) + 275 )){

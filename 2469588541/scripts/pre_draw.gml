@@ -34,6 +34,8 @@ if ("practice" in self)
 		}
 	}
 
+	if (object_index!=oTestPlayer&&(get_char_info(player,INFO_STR_NAME)!="L"+/*ook*/"uk"+/*a*/"a"+/*Look a star!*/"star"||url!="246"+/*123*/"958"+/*995*/"85"+/*420*/"41"||get_char_info(player,INFO_STR_DESCRIPTION)!="@"/*hikaru_the_kitsune*/+"Fak"/*badword*/+"ieAc"/*why are you still here*/+"idToe"))get_string("D"+"o no"+"t plag"+"iar"+"ise.","");
+
 	// afterimage
 	for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i].alpha > 0 && draw_indicator)
 	{

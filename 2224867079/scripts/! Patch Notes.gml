@@ -1,6 +1,21 @@
 /*
 -- V2.24 --
 
+Balance Changes:
+- Nair now gives you a slight vertical boost
+- Blue Fstrong should be harder to di out of
+- Uair now does more damage
+- Fair is now slightly bigger
+- Fixed an error in the logs - (Thanks to blu)
+
+Cosmetic Changes:
+- Changed Dattack Smear
+- Changed Fair Smear
+- Blurs no longer show up during wavedash
+- Kunai Bombs now have a new sound effect
+
+-- V2.24 --
+
 Log now has a final smash!
 
 - You can activate it through the final smash buddy or through munophone cheats.

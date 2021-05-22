@@ -26,6 +26,7 @@ switch (attack)
         {
             case 1:
                 nspecCharge = 0;
+                nspecJC = false;
                 break;
             case 2:
                 if (!special_down)
@@ -38,7 +39,11 @@ switch (attack)
                     nspecCharge++;
                 break;
             case 3:
-                if (window_timer == 1 && !hitpause)
+                if (hitpause)
+                {
+                    if (jump_pressed) nspecJC = true;
+                }
+                else if (window_timer == 1)
                 {
                     var shootOne = true;
                     if (has_rune("N"))
@@ -61,6 +66,7 @@ switch (attack)
                 break;
         }
         can_jump = ((window == 3 && window_timer > 2) || window >= 4) && !was_parried;
+        if (can_jump && nspecJC) jump_pressed = true;
         break;
 
     case AT_FSPECIAL:

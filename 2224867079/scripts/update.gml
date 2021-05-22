@@ -64,7 +64,7 @@ for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i]
 
 //After image attacks
 if (attack == AT_DATTACK && window==1&&window_timer==1&&!hitpause){
-	afterImageTimer = 20;
+	afterImageTimer = 14;
 }
 if (attack == AT_UTILT && window==1&&window_timer==1&&!hitpause){
 	afterImageTimer = 24;

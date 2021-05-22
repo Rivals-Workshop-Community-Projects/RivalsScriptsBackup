@@ -35,8 +35,8 @@ if (state == 0){ //growing
 		y++; //go 1 pixel down
 	}*/
 	//play sound
-    if (state_timer == floor(summon_time*.55)){
-		sound_play(asset_get("sfx_plant_ready"));
+    if (state_timer == 1){
+		sound_play(sound_get("RedKunaiImpact"));
 	}
     if (state_timer == summon_time){
         state = 1; //go to idle

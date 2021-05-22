@@ -275,21 +275,21 @@ if(attack == AT_UAIR && RedMode){
     set_attack_value(AT_UAIR, AG_SPRITE, sprite_get ( "red_uair" ) );
     set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, sound_get("RedSwish1"));
     set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 8);
-    set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 3);
+    set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 4);
     set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, red_new_stab_1);
     set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, sound_get("RedHit2"));
     set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 8);
-    set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 3);
+    set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 4);
     set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, red_new_stab_1);
     set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, sound_get("RedHit2"));
     
     set_hitbox_value(AT_UAIR, 3, HG_BASE_KNOCKBACK, 7);
-    set_hitbox_value(AT_UAIR, 3, HG_DAMAGE, 3);
+    set_hitbox_value(AT_UAIR, 3, HG_DAMAGE, 4);
     set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, red_new_stab_1);
     set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, sound_get("RedHit2"));
     
     set_hitbox_value(AT_UAIR, 4, HG_BASE_KNOCKBACK, 5);
-    set_hitbox_value(AT_UAIR, 4, HG_DAMAGE, 2);
+    set_hitbox_value(AT_UAIR, 4, HG_DAMAGE, 3);
     set_hitbox_value(AT_UAIR, 4, HG_VISUAL_EFFECT, red_new_stab_1);
     set_hitbox_value(AT_UAIR, 4, HG_HIT_SFX, sound_get("RedHit3"));
 	set_hitbox_value(AT_UAIR, 1, HG_HIT_PARTICLE_NUM, 2);

@@ -1,6 +1,7 @@
 hurtbox_spr = sprite_get("hurtbox");
 
 caleb = 0;
+machina = 0;
 
 fire = 1;
 ice = 0;

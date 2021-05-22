@@ -18,6 +18,8 @@ enemyknockback_adj = knockback_adj;
 physics0gsetup = false;
 lastx = x;
 lasty = y;
+shortTimer = 0;
+tempknockback_adj = 0;
 //0gID = noone;
 //myself = other_player_id;
 

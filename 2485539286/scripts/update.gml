@@ -91,7 +91,7 @@ if hhh == 0 && dash_speed != 7 {
     max_jump_hsp = 6;
 	air_max_speed = 6;
 	jump_change = 4;
-	air_accel = .35;
+	air_accel = .3;
     jump_speed = 13;
     short_hop_speed = 9;
     djump_speed = 13;
@@ -370,6 +370,11 @@ spawn_hit_fx( x + 20 - random_func(1, 40, true), y - 10 -  random_func(2, 60, tr
 	vsp = 0
 }
 
+if move_cooldown[AT_EXTRA_2] > 0 {
+	move_cooldown[AT_FSPECIAL] = 2
+	move_cooldown[AT_USPECIAL] = 2
+	move_cooldown[AT_DSPECIAL] = 2
+}
 #define spawn_base_dust(x, y, name, dir)
 var dlen;
 var dfx;
