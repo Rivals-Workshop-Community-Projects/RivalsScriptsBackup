@@ -1,3 +1,7 @@
+// Natsumi Colors.gml
+// Coded entirely using my catfriend's ROA Colors.gml generator/helper!
+// TAke a look, y'all: https://cl-9a.github.io/RoAColorsGmlHelper/
+
 // DEFAULT COLOR
 
 // pink
@@ -34,7 +38,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 18 );
 
 // apotos
 set_color_profile_slot( 1, 0, 190, 196, 209 ); //pink
@@ -156,35 +160,55 @@ set_color_profile_slot( 12, 5, 166, 95, 121 ); //dress
 set_color_profile_slot( 12, 6, 59, 21, 46 ); //eyes
 set_color_profile_slot( 12, 7, 235, 140, 178 ); //blush
 
+// natsumi 2
+set_color_profile_slot( 13, 0, 196, 94, 121 ); //pink
+set_color_profile_slot( 13, 1, 204, 88, 119 ); //hair
+set_color_profile_slot( 13, 2, 242, 193, 165 ); //skin
+set_color_profile_slot( 13, 3, 50, 148, 130 ); //red
+set_color_profile_slot( 13, 4, 255, 243, 156 ); //sleeves
+set_color_profile_slot( 13, 5, 245, 128, 33 ); //dress
+set_color_profile_slot( 13, 6, 102, 63, 0 ); //eyes
+set_color_profile_slot( 13, 7, 230, 114, 102 ); //blush
+
+// twilight
+set_color_profile_slot( 14, 0, 86, 44, 224 ); //pink
+set_color_profile_slot( 14, 1, 148, 210, 255 ); //hair
+set_color_profile_slot( 14, 2, 252, 232, 219 ); //skin
+set_color_profile_slot( 14, 3, 148, 234, 255 ); //red
+set_color_profile_slot( 14, 4, 106, 98, 252 ); //sleeves
+set_color_profile_slot( 14, 5, 181, 71, 255 ); //dress
+set_color_profile_slot( 14, 6, 77, 17, 130 ); //eyes
+set_color_profile_slot( 14, 7, 199, 138, 255 ); //blush
+
 // koishi
-set_color_profile_slot( 13, 0, 30, 69, 19 ); //pink
-set_color_profile_slot( 13, 1, 141, 199, 154 ); //hair
-set_color_profile_slot( 13, 2, 250, 227, 195 ); //skin
-set_color_profile_slot( 13, 3, 232, 170, 19 ); //red
-set_color_profile_slot( 13, 4, 219, 171, 55 ); //sleeves
-set_color_profile_slot( 13, 5, 90, 173, 90 ); //dress
-set_color_profile_slot( 13, 6, 15, 54, 20 ); //eyes
-set_color_profile_slot( 13, 7, 255, 135, 122 ); //blush
+set_color_profile_slot( 15, 0, 30, 69, 19 ); //pink
+set_color_profile_slot( 15, 1, 141, 199, 154 ); //hair
+set_color_profile_slot( 15, 2, 250, 227, 195 ); //skin
+set_color_profile_slot( 15, 3, 232, 170, 19 ); //red
+set_color_profile_slot( 15, 4, 219, 171, 55 ); //sleeves
+set_color_profile_slot( 15, 5, 90, 173, 90 ); //dress
+set_color_profile_slot( 15, 6, 15, 54, 20 ); //eyes
+set_color_profile_slot( 15, 7, 255, 135, 122 ); //blush
 
 // ballin
-set_color_profile_slot( 14, 0, 196, 92, 191 ); //pink
-set_color_profile_slot( 14, 1, 90, 73, 107 ); //hair
-set_color_profile_slot( 14, 2, 255, 227, 196 ); //skin
-set_color_profile_slot( 14, 3, 94, 75, 153 ); //red
-set_color_profile_slot( 14, 4, 196, 92, 191 ); //sleeves
-set_color_profile_slot( 14, 5, 94, 75, 153 ); //dress
-set_color_profile_slot( 14, 6, 17, 17, 18 ); //eyes
-set_color_profile_slot( 14, 7, 255, 227, 196 ); //blush
+set_color_profile_slot( 16, 0, 196, 92, 191 ); //pink
+set_color_profile_slot( 16, 1, 90, 73, 107 ); //hair
+set_color_profile_slot( 16, 2, 255, 227, 196 ); //skin
+set_color_profile_slot( 16, 3, 94, 75, 153 ); //red
+set_color_profile_slot( 16, 4, 196, 92, 191 ); //sleeves
+set_color_profile_slot( 16, 5, 94, 75, 153 ); //dress
+set_color_profile_slot( 16, 6, 17, 17, 18 ); //eyes
+set_color_profile_slot( 16, 7, 255, 227, 196 ); //blush
 
 // inu
-set_color_profile_slot( 15, 0, 61, 45, 37 ); //pink
-set_color_profile_slot( 15, 1, 125, 60, 45 ); //hair
-set_color_profile_slot( 15, 2, 255, 217, 176 ); //skin
-set_color_profile_slot( 15, 3, 181, 17, 58 ); //red
-set_color_profile_slot( 15, 4, 181, 17, 58 ); //sleeves
-set_color_profile_slot( 15, 5, 250, 112, 188 ); //dress
-set_color_profile_slot( 15, 6, 79, 24, 24 ); //eyes
-set_color_profile_slot( 15, 7, 255, 122, 88 ); //blush
+set_color_profile_slot( 17, 0, 61, 45, 37 ); //pink
+set_color_profile_slot( 17, 1, 125, 60, 45 ); //hair
+set_color_profile_slot( 17, 2, 255, 217, 176 ); //skin
+set_color_profile_slot( 17, 3, 181, 17, 58 ); //red
+set_color_profile_slot( 17, 4, 181, 17, 58 ); //sleeves
+set_color_profile_slot( 17, 5, 250, 112, 188 ); //dress
+set_color_profile_slot( 17, 6, 79, 24, 24 ); //eyes
+set_color_profile_slot( 17, 7, 255, 122, 88 ); //blush
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

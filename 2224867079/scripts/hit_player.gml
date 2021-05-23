@@ -11,6 +11,12 @@ if (hitmove == 49 && my_hitboxID.hbox_num == 1)
     hit_player_obj.hitstop_full = 2;
 }
 
+if (RedMode == true){
+	if (hitmove == AT_DAIR && my_hitboxID.hbox_num == 2){
+		spawn_hit_fx(x-180*spr_dir,y-250, red_spike)		
+	}
+}
+
 
 //Double Uspecial
 /*
@@ -21,6 +27,7 @@ if (hitmove == AT_USPECIAL)
 */
 
 //Visual Effects
+
 //stab1
 with (hit_fx_obj)
   if (hit_fx == other.blue_new_stab_1)

@@ -3,7 +3,7 @@
 timer++;
 
 if (timer == 4 && !player_id.has_hit) || (hitstop == 0 && hitpause == true) {
-	var orb_hitbox = create_hitbox(AT_FSPECIAL, 3, x, y);
+	var orb_hitbox = create_hitbox(AT_FSPECIAL, 3, round(x), round(y));
         orb_hitbox.owner = id;
         orb_hitbox.spr_dir = sign(hsp);
 }
@@ -20,7 +20,7 @@ if timer < 30 && image_index < 4 {
 if pulse && pulse_cooldown == 0 {
 	pulse_timer++;
 	if pulse_timer == 6 {
-		create_hitbox(AT_DSPECIAL, 1, x, y)
+		create_hitbox(AT_DSPECIAL, 1, round(x), round(y))
 	}
 	sprite_index = sprite_get("orb_pulse")
 	image_index = floor(pulse_timer/3)

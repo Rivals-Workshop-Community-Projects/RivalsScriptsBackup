@@ -18,10 +18,12 @@ if swift_mode = true{
 	dash_anim_speed = .35;
 	initial_dash_speed = 9.25;
 	air_dodge_speed = 8.5;
-	air_max_speed = 6.5;
+	air_max_speed = 6;
 	air_accel = 0.45;
-	jump_speed = 9.75;
-	djump_speed = 9.75;
+	jump_speed = 9;
+	djump_speed = 9;
+	leave_ground_max = 7.5;
+	max_jump_hsp = 7.5;
 }
 
 if swift_timer > 666{
@@ -39,6 +41,8 @@ if swift_mode = false{
 	air_accel = 0.3;
 	jump_speed = 10.5;
 	djump_speed = 10.5;
+	leave_ground_max = 6;
+	max_jump_hsp = 6;
 }
 
 if swift_timer = 666{

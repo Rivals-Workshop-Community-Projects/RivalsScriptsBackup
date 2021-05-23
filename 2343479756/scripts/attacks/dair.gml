@@ -20,11 +20,11 @@ set_window_value(AT_DAIR, 3, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DAIR, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DAIR, 3, AG_WINDOW_ANIM_FRAMES, 1);
 
-set_window_value(AT_DAIR, 4, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_DAIR, 4, AG_WINDOW_LENGTH, 8);//6
 set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAMES, 2);
 
-set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 16);//14
 set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -62,7 +62,7 @@ set_hitbox_value(AT_DAIR, 2, HG_ANGLE, 80);
 set_hitbox_value(AT_DAIR, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_DAIR, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DAIR, 2, HG_KNOCKBACK_SCALING, 0.45);
-set_hitbox_value(AT_DAIR, 2, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_DAIR, 2, HG_BASE_HITPAUSE, 7);//6
 set_hitbox_value(AT_DAIR, 2, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, sound_get("hit_strong_1"));
@@ -80,7 +80,7 @@ set_hitbox_value(AT_DAIR, 3, HG_ANGLE, 85);
 set_hitbox_value(AT_DAIR, 3, HG_PRIORITY, 4);
 set_hitbox_value(AT_DAIR, 3, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DAIR, 3, HG_KNOCKBACK_SCALING, 0.35);
-set_hitbox_value(AT_DAIR, 3, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(AT_DAIR, 3, HG_BASE_HITPAUSE, 6);//5
 set_hitbox_value(AT_DAIR, 3, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_DAIR, 3, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DAIR, 3, HG_HIT_SFX, sound_get("hit_strong_1"));
@@ -98,7 +98,7 @@ set_hitbox_value(AT_DAIR, 4, HG_ANGLE, 120);
 set_hitbox_value(AT_DAIR, 4, HG_PRIORITY, 2);
 set_hitbox_value(AT_DAIR, 4, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DAIR, 4, HG_KNOCKBACK_SCALING, 0.35);
-set_hitbox_value(AT_DAIR, 4, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(AT_DAIR, 4, HG_BASE_HITPAUSE, 6);//5
 set_hitbox_value(AT_DAIR, 4, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_DAIR, 4, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DAIR, 4, HG_HIT_SFX, sound_get("hit_strong_1"));

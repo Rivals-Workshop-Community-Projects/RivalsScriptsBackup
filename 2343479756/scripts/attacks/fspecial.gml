@@ -4,14 +4,14 @@ set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
 set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 7);
 set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1);
 
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 10);//8
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 9);//8//10
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, sound_get("fspecial_prompt"));
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 6);//4
 
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 11);//10
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 10);//10//11
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 2);
 
@@ -38,14 +38,14 @@ set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_VSPEED, 0);
 
-set_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH, 9);//10
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-set_window_value(AT_FSPECIAL, 7, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_FSPECIAL, 7, AG_WINDOW_LENGTH, 8);//10
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_HAS_WHIFFLAG, 1);

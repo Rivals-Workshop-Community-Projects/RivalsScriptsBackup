@@ -115,6 +115,7 @@ redupb = hit_fx_create( sprite_get( "UpB_Sweetspot" ), 34 );
 redupb2 = hit_fx_create( sprite_get( "UpB_Sweetspot2" ), 34 );
 blue_recovery = hit_fx_create( sprite_get( "BlueRecovery" ), 8 );
 red_recovery = hit_fx_create( sprite_get( "RedRecovery" ), 8 );
+red_spike = hit_fx_create( sprite_get( "fx_red_spike" ), 20 );
 fsmash = hit_fx_create( sprite_get( "fx_fsmash" ), 30 );
 meffectb = false
 

@@ -15,15 +15,17 @@ set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTILT, 2, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_FTILT, 2, AG_WINDOW_HSPEED, 6);
 
-set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);//wasnt here before
 
-set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 5);//9
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_FTILT, 4, AG_WINDOW_HAS_WHIFFLAG, 1);//wasnt here before
 
-set_window_value(AT_FTILT, 5, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_FTILT, 5, AG_WINDOW_LENGTH, 8);//9
 set_window_value(AT_FTILT, 5, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_FTILT, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FTILT, 5, AG_WINDOW_HAS_WHIFFLAG, 1);

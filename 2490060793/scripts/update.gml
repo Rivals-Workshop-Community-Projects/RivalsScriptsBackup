@@ -22,7 +22,7 @@ if get_player_color(player) = 12 {
 	set_color_profile_slot(get_player_color(player),3,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
 	set_color_profile_slot(get_player_color(player),6,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
 	set_article_color_slot(3,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
-	set_article_color_slot(6,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
+	//set_article_color_slot(6,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
 	//set the new color using rgb values from the gamemaker color
 }
 
@@ -99,6 +99,7 @@ if meter_cur < gun_value {
 }
 
 if meter_flash_timer > 0 meter_flash_timer--;
+if spark_timer > 0 spark_timer--;
 
 var num_orbs = 0;
 with obj_article1 {

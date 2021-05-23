@@ -3,6 +3,8 @@
 //draw_debug_text(x,y,string(id));
 //draw_debug_text(x,y,string(enemykirby));
 
+//draw_debug_text(x,y,string(usp_cd_state));
+
 if (natdev == true){
 	
 	var scrleft = floor(view_get_xview());

@@ -24,6 +24,9 @@ meter_flipped = false;
 meter_prev = meter_cur;
 meter_flash_timer = 0;
 meter_flash_val = 10;
+spark_timer = 0;
+spark_val = 20;
+spark_sprite = undefined;
 
 orb_value = 20;
 gun_value = 10;

@@ -1,5 +1,27 @@
 // pre-draw
 
+
+if (usp_cd_state != 0){
+	if (usp_cd_state == 1){
+		var tmp_m_a = ease_quadOut( 0, 100, usp_cd_timer, usp_cd_end )/100;
+	}
+	if (usp_cd_state == 2){
+		var tmp_m_a = 1;
+	}
+	if (usp_cd_state == 3){
+		var tmp_m_a = ease_quadOut( 100, 0, usp_cd_timer, usp_cd_end )/100;
+	}
+	var tmp_meter = ease_linear( 0, 15, usp_cd_dur-move_cooldown[AT_USPECIAL], usp_cd_dur )
+	draw_sprite_ext( sprite_get("meter"), tmp_meter, x, y, 2, 2, 0, -1, tmp_m_a )
+	if (usp_cd_state == 3){
+		var tmp_mh_a1 = ease_expoOut( 0, 100, usp_cd_timer, usp_cd_end )/100;
+		var tmp_mh_a2 = ease_cubeIn( 0, 100, usp_cd_timer, usp_cd_end )/100;
+		var tmp_mh_a3 = tmp_mh_a1-tmp_mh_a2;
+		draw_sprite_ext( sprite_get("meter"), 16, x, y, 2, 2, 0, -1, tmp_mh_a3 )
+	}
+}
+
+
 if (attack==AT_FSPECIAL && (state==PS_ATTACK_GROUND||state==PS_ATTACK_AIR)){
 	var tmp_w = get_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH);
 	var tmp_x = get_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X);

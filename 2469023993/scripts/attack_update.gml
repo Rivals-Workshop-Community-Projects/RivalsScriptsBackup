@@ -12,10 +12,10 @@ if swift_mode = true{
 	set_hitbox_value(AT_UTILT, 5, HG_BASE_KNOCKBACK, 9);
 	set_hitbox_value(AT_UTILT, 6, HG_BASE_KNOCKBACK, 9);
 	set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 9);
-	set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 10);
+	set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 9);
 	set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_BAIR, 3, HG_BASE_KNOCKBACK, 6);
-	set_hitbox_value(AT_BAIR, 4, HG_BASE_KNOCKBACK, 10);
+	set_hitbox_value(AT_BAIR, 4, HG_BASE_KNOCKBACK, 9);
 	set_hitbox_value(AT_BAIR, 5, HG_BASE_KNOCKBACK, 5);
 	set_hitbox_value(AT_DAIR, 5, HG_BASE_KNOCKBACK, 7);
 	set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 12);
@@ -26,7 +26,7 @@ if swift_mode = true{
 	set_hitbox_value(AT_DTILT, 4, HG_BASE_KNOCKBACK, 12);
 	set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_FAIR, 6, HG_BASE_KNOCKBACK, 8.5);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 14);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 12);
 	set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 9);
 	set_hitbox_value(AT_FTILT, 2, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_JAB, 3, HG_BASE_KNOCKBACK, 8);
@@ -120,7 +120,7 @@ if swift_mode = true{
 	set_hitbox_value(AT_DTILT, 3, HG_BASE_HITPAUSE, 12);
 	set_hitbox_value(AT_DTILT, 4, HG_BASE_HITPAUSE, 20);
 	set_hitbox_value(AT_FAIR, 6, HG_BASE_HITPAUSE, 12);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 18);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 16);
 	set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 14);
 	set_hitbox_value(AT_FTILT, 2, HG_BASE_HITPAUSE, 6);
 	set_hitbox_value(AT_JAB, 3, HG_BASE_HITPAUSE, 12);
@@ -250,7 +250,7 @@ if swift_mode = false{
 	set_hitbox_value(AT_DTILT, 3, HG_BASE_HITPAUSE, 8);
 	set_hitbox_value(AT_DTILT, 4, HG_BASE_HITPAUSE, 12);
 	set_hitbox_value(AT_FAIR, 6, HG_BASE_HITPAUSE, 8);
-	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 12);
+	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 8);
 	set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 10);
 	set_hitbox_value(AT_FTILT, 2, HG_BASE_HITPAUSE, 4);
 	set_hitbox_value(AT_JAB, 3, HG_BASE_HITPAUSE, 8);
@@ -407,5 +407,15 @@ if attack == AT_TAUNT_2 {
 if (attack == AT_FSPECIAL){
 	if (window < 4 && has_walljump){
 		can_wall_jump = true;
+	}
+}
+
+if (attack == AT_FSPECIAL){
+	if (window > 4){
+		move_cooldown[AT_NSPECIAL] = 30;
+		move_cooldown[AT_FSTRONG] = 15;
+		move_cooldown[AT_DSTRONG] = 15;
+		move_cooldown[AT_USTRONG] = 15;
+		move_cooldown[AT_DSPECIAL] = 15;
 	}
 }

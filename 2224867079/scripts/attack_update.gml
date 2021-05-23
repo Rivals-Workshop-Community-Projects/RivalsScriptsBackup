@@ -86,17 +86,15 @@ if (attack == AT_DTILT){
 		can_fast_fall = false
 }
 
+//Dair
 if (attack == AT_DAIR){
 	can_fast_fall = false
+	can_wall_jump = true;
 	if (!free){
 		set_state(PS_PRATLAND)
 	}
 }
 
-//Dair wall jump
-if(attack == AT_DAIR){
-        can_wall_jump = true;
-    }
 /*
 //Red Fstrong Stuff
 #region Fspecial Main

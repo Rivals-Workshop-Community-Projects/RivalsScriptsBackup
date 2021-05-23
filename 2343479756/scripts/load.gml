@@ -55,3 +55,4 @@ sprite_change_offset("downhurt", 79, 114);
 
 sprite_change_offset("locket", 16, 16);
 sprite_change_offset("car", 79, 114);
+sprite_change_offset("meter", 40, 57);

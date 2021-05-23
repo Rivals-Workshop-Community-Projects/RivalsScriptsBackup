@@ -3,6 +3,10 @@
 shader_end();
 draw_sprite_ext(sprite_get("aaa_vernum"),1,x+10,y+118,2,2,0,-1,1);
 
+if (get_player_color( player ) == 7){
+draw_sprite_ext(sprite_get("ea_outline"),1,x+8,y+8,2,2,0,-1,1);
+}
+
 /*
  
 There are two pictures of a
@@ -24,7 +28,6 @@ all.
 What happened?
 
 */
-
 
 //--- ---
 //
@@ -96,7 +99,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = sound_get("altsel"); // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 15; // number of alternate color palettes. 0 is the default color, count it accordingly.
+	col_max = 17; // number of alternate color palettes. 0 is the default color, count it accordingly.
 	
 	//first array index is for alternate color. second array index is for distinguishing the information in it.
 	ce[0,0] = make_color_rgb(255, 171, 171)
@@ -138,15 +141,21 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[12,0] = make_color_rgb(166, 95, 121)
 	ce[12,1] = "Diary"
 	ce[12,2] = ""
-	ce[13,0] = make_color_rgb(141, 199, 154)
-	ce[13,1] = "Unconscious"
+	ce[13,0] = make_color_rgb(204, 88, 119)
+	ce[13,1] = "Other Natsumi"
 	ce[13,2] = ""
-	ce[14,0] = make_color_rgb(196, 92, 191)
-	ce[14,1] = "Miasma"
+	ce[14,0] = make_color_rgb(86, 44, 224)
+	ce[14,1] = "Twilight"
 	ce[14,2] = ""
-	ce[15,0] = make_color_rgb(181, 17, 58)
-	ce[15,1] = "Inu"
+	ce[15,0] = make_color_rgb(141, 199, 154)
+	ce[15,1] = "Unconscious"
 	ce[15,2] = ""
+	ce[16,0] = make_color_rgb(196, 92, 191)
+	ce[16,1] = "Miasma"
+	ce[16,2] = ""
+	ce[17,0] = make_color_rgb(181, 17, 58)
+	ce[17,1] = "Inu"
+	ce[17,2] = ""
 	// you can add more, by copypasting and changing the first index of the array accordingly.
 	// ! changing part end.
 	// you can ignore the mess below...

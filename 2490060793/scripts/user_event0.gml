@@ -11,7 +11,7 @@ hbox_w = undefined;
 hbox_h = undefined;
 vfx_xoffset = undefined;
 vfx_yoffset = undefined;
-__hitbox_num = undefined;
+_hitbox_num = undefined;
 
 switch attack {
     case AT_FTILT:
@@ -180,6 +180,7 @@ if meter_flipped {
 }
 set_hitbox_value(attack, _hitbox_num[tipper_num], HG_PRIORITY, 7);
 set_hitbox_value(attack, _hitbox_num[sour_num], HG_PRIORITY, 4);
+reset_hitbox_value(attack, _hitbox_num[1], HG_WINDOW);
 
 reset_hitbox_value(attack, _hitbox_num[sour_num], HG_HITBOX_X);
 reset_hitbox_value(attack, _hitbox_num[sour_num], HG_HITBOX_Y);

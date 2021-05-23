@@ -4,12 +4,12 @@ set_attack_value(AT_DATTACK, AG_HURTBOX_SPRITE, sprite_get("dattack_hurt"));
 set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 1);
 
-set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 11);//12
 set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX, sound_get("swing_high_1"));
-set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, 11);
+set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, 10);//11
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 4.5);
 
@@ -21,11 +21,11 @@ set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 6);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_VSPEED, -7);
 
-set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 5);//7
 set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAMES, 1);
 
-set_window_value(AT_DATTACK, 4, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_DATTACK, 4, AG_WINDOW_LENGTH, 5);//6
 set_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_HAS_WHIFFLAG, 1);

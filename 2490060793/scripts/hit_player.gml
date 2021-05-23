@@ -26,6 +26,8 @@ if my_hitboxID.effect == 99 || my_hitboxID.effect == 11 {
         meter_cur = clamp(meter_cur + hit_value, 0, meter_max)
     }
     meter_flash_timer = meter_flash_val;
+    spark_timer = spark_val;
+    spark_sprite = sprite_get("sparks" + string((timer mod 2) + 1));
 }
 
 if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 3 {

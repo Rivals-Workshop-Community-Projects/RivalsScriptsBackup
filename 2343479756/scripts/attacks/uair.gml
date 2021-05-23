@@ -97,8 +97,8 @@ set_hitbox_value(AT_UAIR, 5, HG_PRIORITY, 1);
 set_hitbox_value(AT_UAIR, 5, HG_HITBOX_GROUP, 5);
 set_hitbox_value(AT_UAIR, 5, HG_BASE_KNOCKBACK, 6);//7//6
 set_hitbox_value(AT_UAIR, 5, HG_KNOCKBACK_SCALING, 0.75);//8//0.75
-set_hitbox_value(AT_UAIR, 5, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_UAIR, 5, HG_HITPAUSE_SCALING, 0.5);
+set_hitbox_value(AT_UAIR, 5, HG_BASE_HITPAUSE, 7);//6
+set_hitbox_value(AT_UAIR, 5, HG_HITPAUSE_SCALING, 0.5);//0.5
 set_hitbox_value(AT_UAIR, 5, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_UAIR, 5, HG_HIT_SFX, sound_get("hit_weak_3"));
 

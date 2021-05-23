@@ -441,7 +441,7 @@ if(attack == AT_DAIR && RedMode){
     set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, sound_get("RedHit1"));
     set_hitbox_value(AT_DAIR, 2, HG_BASE_KNOCKBACK, 11);
     set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 9);
-    set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, red_new_stab_1);
+    set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 0);
     set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, sound_get("Meteor Smash"));
 	set_hitbox_value(AT_DAIR, 1, HG_HIT_PARTICLE_NUM, 2);
 	set_hitbox_value(AT_DAIR, 2, HG_HIT_PARTICLE_NUM, 2);

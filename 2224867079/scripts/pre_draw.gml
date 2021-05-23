@@ -31,6 +31,8 @@ for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i]
     shader_end();
 }
 }
+
+
 /*
 	////////////////////////////////////////////Dattack////////////////////////////////////////////////////////
     if (RedMode == false && attack = AT_DATTACK && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR )) {

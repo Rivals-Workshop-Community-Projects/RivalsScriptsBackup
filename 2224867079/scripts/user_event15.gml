@@ -458,8 +458,15 @@ with phone{
 //	initPatchWords("Fnuuy joke
 //	- waog");
 //	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0);
+	//2.26
+	initPatch("2.26	", "23 May 2021");
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Red Dair's Spike has new VFX")
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Blue Kunai Explosion (Blue->Red) has less bkb (12->9)
+	- Blue Kunai Explosion (Blue->Red) has less kb scaling (0.2->0.7)");
 	//2.25
-	initPatch("2.23	", "21 May 2021");
+	initPatch("2.25	", "21 May 2021");
 	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
 	initPatchWords("- Changed Dattack Smear
 	- Changed Fair Smear

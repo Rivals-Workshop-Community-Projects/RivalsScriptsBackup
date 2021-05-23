@@ -1,5 +1,14 @@
 /*
--- V2.24 --
+-- V2.26 --
+
+Cosmetic Changes:
+- Red Dair's Spike has new VFX
+
+Balance Changes:
+- Blue Kunai Explosion (Blue->Red) has less bkb (12->9)
+- Blue Kunai Explosion (Blue->Red) has less kb scaling (0.2->0.7)
+
+-- V2.25 --
 
 Balance Changes:
 - Nair now gives you a slight vertical boost

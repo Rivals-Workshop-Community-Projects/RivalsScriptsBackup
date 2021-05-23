@@ -29,6 +29,11 @@ if (attack==AT_FTILT){
 		iasa_script();
 	}
 }
+if (attack==AT_BAIR){
+	if (window==5){
+		iasa_script();
+	}
+}
 if (attack==AT_UTILT){
 	if (window==5){
 		iasa_script();
@@ -45,6 +50,14 @@ if (attack==AT_UTILT){
 	}
 }
 if (attack==AT_DTILT){
+	if (window==3){
+		if (!hitpause){
+			if (down_stick_pressed){
+				window=4;
+				window_timer=0;
+			}
+		}
+	}
 	if (window==7){
 		//iasa_script(); //decided not to use iasa because cancelling it with crouch kinda wrecked my intention
 		can_move = true;
@@ -67,7 +80,7 @@ if (attack==AT_USPECIAL){
 
 
 if (attack==AT_FSTRONG){
-	if (window == 2 && window_timer == 13){
+	if (window == 2 && window_timer == 11){
 		shake_camera(8,3);
 	}
 }
@@ -211,8 +224,10 @@ if (attack==AT_NSPECIAL){
 			spawn_hit_fx( x+(25*spr_dir), y-78, 113 )
 		}
 	}
-	hsp = clamp(hsp,-5,5)
-	vsp = clamp(vsp,-60,5)
+	if (!fsp_did&&!usp_did){
+		hsp = clamp(hsp,-4,4)//5
+		vsp = clamp(vsp,-60,5)
+	}
 }
 
 if (attack==AT_TAUNT){

@@ -64,6 +64,9 @@ sprite_change_offset("uspec_indicator", 80, 158);
 sprite_change_offset("fspecial_vfx", 80, 158);
 sprite_change_offset("orb_explosion_vfx", 80, 80);
 
+sprite_change_offset("sparks1", 40, 20);
+sprite_change_offset("sparks2", 40, 20);
+
 sprite_change_collision_mask("hitbox_circle", 0, 0, 0, 0, 0, 0, 0);
 sprite_change_collision_mask("hitbox_rect", 0, 0, 0, 0, 0, 0, 0);
 sprite_change_collision_mask("hitbox_roundrect", 0, 0, 0, 0, 0, 0, 0);

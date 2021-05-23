@@ -84,7 +84,7 @@ air_friction = .04;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 6;
-walljump_vsp = 12;
+walljump_vsp = 11;//12
 walljump_time = 32;
 max_fall = 9.5; //maximum fall speed without fastfalling
 fast_fall = 12; //fast fall speed
@@ -152,6 +152,11 @@ fsp_did = false;
 dsp_target = -4;
 pre_fsp_x = 0;
 
+usp_cd_state = 0;
+usp_cd_timer = 0;
+usp_cd_end = 0;
+usp_cd_dur = 180;//180
+
 Hikaru_Title = "Vector Art";
 arena_title = "Flash Emissary"
 battle_text = "* Smells like 2003.";
@@ -169,6 +174,12 @@ set_victory_theme( sound_get( "victory" ));
 set_victory_bg( sprite_get( "natsumi_victorybg" ));
 
 extra_col = 0;
+
+
+
+
+
+
 
 
 
