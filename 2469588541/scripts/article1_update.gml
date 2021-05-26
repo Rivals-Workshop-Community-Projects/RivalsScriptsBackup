@@ -3,6 +3,7 @@
 #macro AS_DESPAWN       2
 #macro AS_CONSTELLATION 3
 #macro AS_NSPEC         4
+#macro AS_SMASH         5
 if (newState != state) SetArticleState(newState);
 depth = isBig?0:-5;
 SlowDown();
@@ -76,6 +77,29 @@ switch (state)
         for (var i = 0; i < floor(dist); i+=12)
         {
             var owo = create_hitbox(AT_NSPECIAL, 2+isBig, floor(x+hsp-i*hsp/dist), floor(y+vsp-i*vsp/dist));
+            owo.spr_dir = hsp==0?1:sign(hsp);
+        }
+        var uwu = spawn_hit_fx(x, y, player_id.startrail_effect); uwu.spr_dir = hsp==0?1:sign(hsp);
+        uwu.depth = depth+1;
+        break;
+    case AS_SMASH:
+        var tempAngle = (player_id.hit_player_obj != noone)?(point_direction(x, y, player_id.hit_player_obj.x, floor(player_id.hit_player_obj.y - player_id.hit_player_obj.char_height/2))):270;
+        if (state_timer < replacedCount*20)
+        {
+            break;
+        }
+        else if (state_timer < 20+replacedCount*20)
+        {
+            hsp = lengthdir_x(30, tempAngle);
+            vsp = lengthdir_y(30, tempAngle);
+        }
+        checkMerge = false;
+        ignores_walls = true;
+        var dist = point_distance(0, 0, hsp, vsp);
+        if (dist < 5 || (player_id.hit_player_obj != noone && (player_id.hit_player_obj.state == PS_RESPAWN || player_id.hit_player_obj.state == PS_DEAD || point_distance(x, y, player_id.hit_player_obj.x, floor(player_id.hit_player_obj.y - player_id.hit_player_obj.char_height/2)) < 20))) SetArticleState(AS_DESPAWN);
+        for (var i = 0; i < floor(dist); i+=12)
+        {
+            var owo = create_hitbox(49, 2, floor(x+hsp-i*hsp/dist), floor(y+vsp-i*vsp/dist));
             owo.spr_dir = hsp==0?1:sign(hsp);
         }
         var uwu = spawn_hit_fx(x, y, player_id.startrail_effect); uwu.spr_dir = hsp==0?1:sign(hsp);

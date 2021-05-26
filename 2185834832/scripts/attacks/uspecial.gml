@@ -82,7 +82,6 @@ set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, 0.82);
 set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 45);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 45);
-set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("bubbleBombHugeEmpty"));
 set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_MASK, -1);

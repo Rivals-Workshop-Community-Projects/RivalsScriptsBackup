@@ -157,6 +157,11 @@ upThrow = 0; // tutorial
 nspecCharge = 0;
 nspecJC = false;
 
+// final smash
+fSmashCharge = 0;
+fSmashAngle = 0;
+fSmashAngleSpeed = 0;
+
 // despawn on hit
 canDespawn = true;
 
@@ -180,7 +185,8 @@ ncode1 = "Wait a minute, this is just star fox";
 ncode2 = "DMCA!";
 ncode3 = "Up Throw Up Air";
 steve_death_message = "Transphobia is gone";
-//fs_char_chosen_final_smash = "custom";
-//fs_char_portrait_y = 96;
+fs_char_chosen_final_smash = "custom";
+fs_char_portrait_y = 96;
+fs_portrait_x = 96;
 //kirbyability = 16;
 //swallowed = 0;

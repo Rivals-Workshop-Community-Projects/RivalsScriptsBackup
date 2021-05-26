@@ -20,6 +20,71 @@ switch (attack)
         }
         if (window == 2 && window_timer == get_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH) && (attack_invince || taunt_down)) window_timer = 0;
         break;
+
+    case 49:
+        can_move = false;
+        fSmashAngleSpeed /= 1.3;
+        fSmashAngleSpeed += (right_down-left_down)/3;
+        fSmashAngleSpeed = clamp(fSmashAngleSpeed, -2, 2);
+        fSmashAngle += fSmashAngleSpeed;
+        switch (window)
+        {
+            case 1:
+                if (window_timer == 2)
+                {
+                    nspecCharge = 10;
+                    fSmashCharge = 20;
+                    fSmashAngle = 270;
+                    sound_play(asset_get("sfx_boss_vortex_start"));
+                    sound_play(asset_get("sfx_boss_vortex"));
+                }
+                var uwu = spawn_hit_fx(x, y-floor(char_height/2), startrail_effect); uwu.spr_dir = spr_dir;
+                x += (room_width/2 - x)/4;
+                y += (room_height/4 - y)/4;
+                break;
+            case 2:
+                sound_play(asset_get("sfx_boss_final_cannon"));
+                break;
+            case 3:
+                shake_camera(3, 6);
+	            var dist = room_width+room_height;
+	            var offsetX = lengthdir_x(dist, fSmashAngle);
+	            var offsetY = lengthdir_y(dist, fSmashAngle);
+                for (var i = 0; i < floor(dist); i+=50)
+                {
+                    var owo = create_hitbox(49, 1, floor(x+i*offsetX/dist), floor(y+i*offsetY/dist-char_height/2));
+                    if (state_timer % 2) owo.damage = 0;
+                    if (fSmashCharge == 0) owo.hit_flipper = 0;
+                }
+                break;
+            case 4:
+                if (window_timer == 2 && fSmashCharge > 0)
+                {
+                    window_timer = 0;
+                    window = 3;
+                    --fSmashCharge;
+                    sound_play(get_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX));
+                }
+                break;
+            case 5:
+                if (window_timer == 1)
+                {
+                    with (asset_get("obj_article1")) if (player_id == other.id) newState = 2;
+                    sound_stop(asset_get("sfx_boss_vortex"));
+                }
+                else if (window_timer == get_window_value(49, 5, AG_WINDOW_LENGTH)-1)
+                {
+                    for (var i = 0; i < 5; ++i)
+                    {
+                    	var star = instance_create(x, y, "obj_article1");
+	                    star.hsp = lengthdir_x(10, i*72+90);
+	                    star.vsp = lengthdir_y(10, i*72+90);
+	                    star.newState = 5;
+                    }
+                }
+                break;
+        }
+        break;
         
     case AT_NSPECIAL:
         switch (window)
@@ -45,7 +110,6 @@ switch (attack)
                 }
                 else if (window_timer == 1)
                 {
-                    var shootOne = true;
                     if (has_rune("N"))
                     {
                         var star = instance_create(x,y-30,"obj_article1");

@@ -26,7 +26,17 @@ if meter_flipped {
     meter_draw_xscale *= -1;
     flash_draw_xscale *= -1;
 }
-if draw_meter draw_sprite_ext(sprite_get("hud_meter_red"), 0, meter_draw_x, temp_y - 14, meter_draw_xscale, 1, 0, c_white, 1)
+if draw_meter {
+    draw_sprite_ext(sprite_get("hud_meter_red"), 0, meter_draw_x, temp_y - 14, meter_draw_xscale, 1, 0, c_white, 1)
+    
+    /*
+    var blend = gpu_get_blendmode(); //gets the current blend mode
+    gpu_set_blendmode(bm_add); //use additive blending for next draw_* calls
+    draw_sprite_ext(sprite_get("hud_meter_red"), 0, meter_draw_x - 1, temp_y - 15, meter_draw_xscale + 0.01, 1.2, 0, c_white, dsin(timer)/4 + 0.1)
+    gpu_set_blendmode(blend); //goes back to whatever blend mode you were in.
+    */
+}
+
 shader_end()
 
 
@@ -38,11 +48,14 @@ if meter_flash_timer > 0 {
     }
 }
 
-if practice_mode {
+if !("fs_using_final_smash" in self) fs_using_final_smash = false;
+if practice_mode && !fs_using_final_smash {
     //draw text
     draw_debug_text(temp_x, temp_y - 46, "Practice mode:")
     draw_debug_text(temp_x, temp_y - 32, "Taunt + up/down to edit meter")
 }
+
+shader_start()
 
 if spark_val > 0 {
     var spark_index = floor((spark_val - spark_timer)/4);
@@ -57,3 +70,4 @@ if spark_val > 0 {
     }
 }
 
+shader_end()

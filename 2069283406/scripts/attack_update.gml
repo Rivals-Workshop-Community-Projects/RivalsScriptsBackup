@@ -255,6 +255,7 @@ if attack == AT_DSTRONG {
 	
 	
 	if window == 4  { 
+	    move_cooldown[AT_FSPECIAL_AIR] = 999
 		move_cooldown[AT_NSPECIAL_2] = 30
 				firetimer += 1
 			if window_timer == 1 {
@@ -512,7 +513,7 @@ if attack == AT_NSPECIAL{
 	
 	if window == 3 && firerange > 0 && inrange  {
 
-		
+		move_cooldown[AT_FSPECIAL_AIR] = 999
 
 		
 		move_cooldown[AT_TAUNT_2] = 15
@@ -698,14 +699,10 @@ if attack == AT_DSPECIAL {
 	}
 	
 	if window == 2 && window_timer == 10 {
-		if fireon >= 3 && !has_hit_player && dspecon = 0 {
-			fireon = 0
-			firerange = -100
-		}
-		dspecon = 0
+
 	}
 	
-	if (window == 2 && window_timer < 10 && fireon >= 3 && inrange) or dspecon = 1{
+	if dspecon = 1{
 		
 		if sakura = 1 {
 		if window_timer == 1 {
@@ -729,8 +726,9 @@ if attack == AT_DSPECIAL {
    	}
 		}
 		
-      spawn_hit_fx( x + 300 - random_func(10, 600, true) , y + 20 , firepar1 )
-		
+      spawn_hit_fx( x + 500 - random_func(10, 1000, true) , y + 20 + random_func(2,10,true) , firepar1 )
+	      spawn_hit_fx( x + 500 - random_func(11, 1000, true) , y + 20 + random_func(3,10,true) , firepar1 )
+			
 	}
 
 	

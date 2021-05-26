@@ -15,6 +15,11 @@ hit_player_obj = self
 
 }
 
+if  move_cooldown[AT_FSPECIAL_AIR] > 0 && (!attacking or (attack != AT_NSPECIAL and attack != AT_DSTRONG)){
+	fireon = 0
+	firerange = -100
+}
+
 if fireon < 1 && firerange != -100 {
 	firerange = -100
 }
@@ -395,6 +400,7 @@ if firetimer == 0 && get_gameplay_time() >= 120 {
 }
 
 if !free or state == PS_WALL_JUMP {
+	move_cooldown[AT_FSPECIAL_AIR] = 0
     move_cooldown[AT_NSPECIAL] = 0
     move_cooldown[AT_USPECIAL] = 0
     lattack = 0

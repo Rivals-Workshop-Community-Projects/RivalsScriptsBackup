@@ -21,6 +21,9 @@ if (runeM)
 	recharge2 = 0;
 }
 
+prevState = state;
+prevDjumps = djumps;
+
 dspecshivertimer = (canShoot==0&&down_down&&special_pressed&&(state_cat==SC_GROUND_NEUTRAL||state_cat==SC_AIR_NEUTRAL)?15:dspecshivertimer-1);
 dspecshiver = (dspecshivertimer<=0?0:dspecshiver+(floor(get_gameplay_time()/3)%2==0?2:-2));
 if (canShoot == 0)

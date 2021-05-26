@@ -36,12 +36,19 @@ if(attack == AT_DTILT){
 	if(window == 4 && window_timer == 15){
 		set_state(PS_IDLE);
 	}
-	if(window == 6 && window_timer > 3){
-		can_attack = true
-		can_jump = true
-		can_special = true
-		can_ustrong = true
-		can_strong = true
+	if(window == 6){
+		if(window_timer > 3){
+			can_attack = true
+			can_jump = true
+			can_special = true
+			can_ustrong = true
+			can_strong = true
+		}
+		if(window_timer > 8){
+			if(left_down || right_down || left_pressed || right_pressed){
+				set_state(PS_IDLE)
+			}
+		}
 	}
 }
 
@@ -269,6 +276,7 @@ if(attack == AT_FSPECIAL){
 }
 
 if(attack == AT_USTRONG){
+	can_fast_fall = false
 	if(window == 1){
 		can_action = false
 		if(free){
@@ -331,8 +339,8 @@ if(attack == AT_NSPECIAL){
 		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 7 + state_timer / 150);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.2 + state_timer / 150);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
-		set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 120);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 120);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 130);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 130);
 		//Extra endlag
 		
 		if(window_timer == 19 && special_down){
@@ -355,8 +363,8 @@ if(attack == AT_NSPECIAL){
 			set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_air_full"));
 			sound_play(asset_get("sfx_ell_fist_explode"))
 			spawn_hit_fx(x, y - 45, nspec_large)
-			set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 170);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 170);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 180);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 180);
 		}
 	}
 	combatTimer = 5

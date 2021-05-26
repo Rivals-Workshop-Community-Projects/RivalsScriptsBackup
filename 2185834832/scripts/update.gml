@@ -207,3 +207,7 @@ if(enemykirby != undefined){
 		}
 	}
 }
+
+if(state == PS_WALL_JUMP){
+	move_cooldown[AT_USPECIAL] = 0
+}

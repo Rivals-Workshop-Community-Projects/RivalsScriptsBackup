@@ -18,7 +18,7 @@ switch attack {
     _hitbox_num = [1,2];
     hbox_x = 18 + 44*meter_percent;
     hbox_w = 90*meter_percent;
-    vfx_xoffset = 40*meter_percent;
+    //vfx_xoffset = 40*meter_percent;
     set_hitbox()
     break;
     
@@ -167,9 +167,12 @@ switch attack {
 
 #define set_hitbox()
 
-if meter_flipped && meter_cur == meter_max {
+if meter_flipped && meter_cur >= meter_max {
+	set_hitbox_value(attack, _hitbox_num[0], HG_WINDOW, 0);
     hbox_w = 0;
     hbox_h = 0;
+} else {
+	reset_hitbox_value(attack, _hitbox_num[0], HG_WINDOW);
 }
 
 var tipper_num = 1;
@@ -186,7 +189,7 @@ reset_hitbox_value(attack, _hitbox_num[sour_num], HG_HITBOX_X);
 reset_hitbox_value(attack, _hitbox_num[sour_num], HG_HITBOX_Y);
 reset_hitbox_value(attack, _hitbox_num[sour_num], HG_WIDTH);
 reset_hitbox_value(attack, _hitbox_num[sour_num], HG_HEIGHT);
-reset_hitbox_value(attack, _hitbox_num[sour_num], HG_VISUAL_EFFECT_X_OFFSET);
+//reset_hitbox_value(attack, _hitbox_num[sour_num], HG_VISUAL_EFFECT_X_OFFSET);
 
 if hbox_x != undefined set_hitbox_value(attack, _hitbox_num[tipper_num], HG_HITBOX_X, hbox_x) else reset_hitbox_value(attack, _hitbox_num[tipper_num], HG_HITBOX_X);
 if hbox_y != undefined set_hitbox_value(attack, _hitbox_num[tipper_num], HG_HITBOX_Y, hbox_y) else reset_hitbox_value(attack, _hitbox_num[tipper_num], HG_HITBOX_Y);

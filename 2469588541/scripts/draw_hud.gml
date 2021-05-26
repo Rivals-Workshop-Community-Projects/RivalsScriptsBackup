@@ -25,6 +25,7 @@ if ("practice" in self)
 				AddText("Shrine of Light Discord");
 				AddText("Lore / Story");
 				AddText("Spawn Star");
+				AddText("Final Smash");
 				DrawTutBlock();
 				DrawTutText();
 				break;
@@ -165,6 +166,11 @@ if ("practice" in self)
 						AddText("DAir Multihit - Hitstun Multiplier 0.65 -> 0.58");
 						AddText("");
 						AddText("NAir hitboxes are now smaller and has less range");
+						break;
+					case 8:
+						AddText("v1.8 - 24 May 2021");
+						AddText("");
+						AddText("Added Final Smash");
 						break;
 				}
 				DrawTutorialBlock();

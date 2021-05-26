@@ -73,10 +73,6 @@ draw_set_halign(fa_left);
  
 //include alt. name
 textDraw(temp_x + 2, temp_y + 124 - 5*(ceil(array_length(alt_name)/16)-1), "fName", c_white, 0, 1000, 1, true, 1, "" + (alt_cur < 9 ? "0" : "") + string(alt_cur+1) + ": " + alt_name[alt_cur]);
-
-if ((alt_cur) > 15 && player == 0) { //draw a warning that extra skins won't work online
-  textDraw(temp_x + 2, temp_y + 110 - 5*(ceil(array_length(alt_name)/16)-1), "fName", c_white, 0, 1000, 1, true, 1, "WILL NOT WORK ONLINE");
-}
  
  
 user_event(12);

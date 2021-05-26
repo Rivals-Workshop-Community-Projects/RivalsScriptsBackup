@@ -19,9 +19,8 @@ if get_player_color(player) = 12 {
 	//shift that colour by Hue, make sure it also loops
 	var color_hsv1=make_color_hsv(hue1,color_get_saturation(color_rgb1),color_get_value(color_rgb1)); 
 	//make a gamemaker color variable using the new hue
-	set_color_profile_slot(get_player_color(player),3,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
-	set_color_profile_slot(get_player_color(player),6,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
-	set_article_color_slot(3,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
+	set_color_profile_slot(get_player_color(player),4,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
+	set_article_color_slot(4,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
 	//set_article_color_slot(6,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
 	//set the new color using rgb values from the gamemaker color
 }
@@ -29,20 +28,6 @@ if get_player_color(player) = 12 {
 if state == PS_LANDING_LAG || state == PS_LAND {
     destroy_hitboxes()
 }
-
-if meter_flipped {
-    set_color_profile_slot( 0, 6, 255, 0, 0 );
-} else {
-    set_color_profile_slot( 0, 6, 26, 0, 0 );
-}
-
-var meter_mod = 10;
-
-if meter_cur/meter_max < 0.5 {
-    meter_mod = -10;
-}
-
-set_color_profile_slot_range( 6, 1, 1, round((meter_cur*91/meter_max)-1));
 
 init_shader()
 
@@ -141,3 +126,40 @@ with pHitBox {
 
 //runes
 user_event(2)
+
+//intro anim
+var intro_time = get_gameplay_time();
+if intro_time == 36 sound_play(asset_get("sfx_clairen_fspecial_dash"))
+if intro_time == 66 sound_play(asset_get("sfx_swipe_medium2"))
+if intro_time == 69 sound_play(asset_get("sfx_blow_medium3"))
+if intro_time == 69 shake_camera(8, 6)
+if intro_time == 74 sound_play(asset_get("sfx_bounce"))
+if intro_time == 74 spawn_base_dust(x, y, "n_wavedash", 1)
+if intro_time == 96 sound_play(asset_get("sfx_land"))
+if intro_time == 96 spawn_base_dust(x, y, "land", 1)
+
+#define spawn_base_dust(x, y, name, dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dust_color = 0;
+
+switch (name) {
+    default: 
+    case "dash_start": dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+return newdust;

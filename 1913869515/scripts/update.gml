@@ -1,5 +1,18 @@
 
 
+
+
+if instance_number(oPlayer) == 2 {
+	
+	
+	
+}
+
+   	if !hitpause { 
+   		finisher = 0
+        finisherinc = 0
+   	}
+   	
 if !hitpause && (state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR){
 	shsp = (shsp + hsp)/2
     svsp = (svsp + vsp)/2
@@ -23,17 +36,7 @@ if hitpause {
 	move_cooldown[AT_EXTRA_1] += 1
 }
 
-if offense = 0 {
-	    walk_speed = 2;
-        dash_speed = 5;
-        air_max_speed = 4;
-}
 
-if offense = 1 {
-	    walk_speed = 4;
-        dash_speed = 9;
-        air_max_speed = 5;
-}
 if hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 {
 zbayo = 0 
 dmhit = 0
@@ -507,12 +510,6 @@ if get_player_color(player) == 3 {
 
 }
 
-if offense = 1 {
-	air_dodge_speed = 10;
-} else {
-	
-	air_dodge_speed = 8;
-}
 
 if offensetimer > 0 && !hitpause {
   
@@ -555,21 +552,11 @@ ztrashes = random_func(15, 3, false);
 
 
 
-if (state == PS_AIR_DODGE  && state_timer == 1 && offense = 1) {
+if (state == PS_AIR_DODGE  && state_timer == 1 ) {
 	spawn_hit_fx( x - (10 * spr_dir) , y - 50 , shit1 )
-        sound_play (asset_get("sfx_bird_sidespecial"));		
 
 }
 	
-if (state == PS_AIR_DODGE  && state_timer == 7) {
-	 create_hitbox(AT_DSPECIAL , 1 , x + (-110 * spr_dir) , y - 110 ); 
-	 
-	 if offense == 1 {
-	 set_attack (PS_IDLE_AIR)
-     spawn_hit_fx( x - (10 * spr_dir) , y - 30 , shit7 )
-    has_airdodge = false		
-	 }
-}
 
 
 
@@ -1550,11 +1537,13 @@ if finisher = 60 {
 
 if finisher = 40 {
     sound_play(sound_get("tstrong"),false,noone,0.6)
+
 }
 
 if finisher = 20 {
 
     sound_play(sound_get("tstrong"),false,noone,0.2)
+
 }
  if finisher > 0{
 	finisher -= 1

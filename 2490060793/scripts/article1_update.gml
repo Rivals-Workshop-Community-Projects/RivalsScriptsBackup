@@ -247,8 +247,6 @@ if (hitbox != noone) {
 	            vsp = 0;
             }
             
-            if hitbox.attack == AT_NSPECIAL instance_destroy(hitbox)
-            
             if is_tipper {
             	spawn_hit_fx(other.x, other.y, 115)
             	sound_play(asset_get("sfx_absa_kickhit"))
@@ -283,6 +281,10 @@ if (hitbox != noone) {
 				create_hitbox(AT_FSPECIAL, 2, round(other.x), round(other.y))
 				sound_play(tipper_sfx);
 				
+            	
+            	if hitbox.attack == AT_NSPECIAL {
+	            	instance_destroy(hitbox)
+	            }
 				instance_destroy(other)
             	exit;
             } else if is_opp {

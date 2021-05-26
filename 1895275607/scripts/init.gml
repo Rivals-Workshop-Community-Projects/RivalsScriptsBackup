@@ -134,6 +134,9 @@ bubble_y = 8;
 
 Hikaru_Title = "Demagnetizer";
 
+prevState = -4;
+prevDjumps = 0;
+
 //Rune Support
 abyssEnabled = false;
 abyss_paused = false;

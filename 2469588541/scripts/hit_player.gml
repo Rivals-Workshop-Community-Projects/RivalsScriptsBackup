@@ -83,6 +83,7 @@ else
 		!(my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num >= 2) &&
 		!(my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) &&
 		!(my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num == 1) &&
+		!(my_hitboxID.attack == 49) &&
 		(my_hitboxID.attack != AT_DAIR || dairTimes < 2))
 	{
 		SpawnStar(my_hitboxID.attack == AT_NSPECIAL?18:8);

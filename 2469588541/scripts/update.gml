@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 8;
+	var noOfPatches = 9;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -26,7 +26,7 @@ if (practice)
 			break;
 		case 1: // main menu
 			Invince();
-			MenuNav(6, 0, MainMenuNext());
+			MenuNav(7, 0, MainMenuNext());
 			break;
 		case 2: // Basic Tut Menu
 			Invince();
@@ -168,6 +168,13 @@ for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i]
 			{
 				instance_create(x, y-30, "obj_article1");
 				sound_play(asset_get("mfx_star"));
+			}
+			break;
+		case 6:
+			if (attack_down && !attack_counter)
+			{
+				set_attack(49);
+				menuStateBuffer = 0;
 			}
 			break;
 	}

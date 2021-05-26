@@ -6,25 +6,42 @@ if ("practice" in self)
 	{
 		switch (attack)
 		{
-			//case AT_USPECIAL:
-			//	if (window == 2 || window == 3)
-			//	{
-			//		var starPos = {x:uspecPos.x, y:uspecPos.y};
-			//		var totalDist = point_distance(uspecPos.x, uspecPos.y, x, y);
-			//		var tempDist = 0;
-			//		var dist = 32;
-			//		shader_start();
-			//		while (tempDist < totalDist)
-			//		{
-			//			var tempDir = point_direction(uspecPos.x, uspecPos.y, x, y);
-			//		    draw_sprite_ext(sprite_get("startrail"), tempDist/dist+state_timer/2, starPos.x, starPos.y-floor(char_height/2), 1, 1, tempDir, c_white, 1);
-			//		    starPos.x += lengthdir_x(dist, tempDir);
-			//		    starPos.y += lengthdir_y(dist, tempDir);
-			//		    tempDist += dist;
-			//		}
-			//		shader_end();
-			//	}
-			//	break;
+			case 49:
+				var fSmashColour = GetColourPlayer(1);
+				switch (window)
+				{
+					case 2:
+						var alpha = 0.6*window_timer/get_window_value(49, 2, AG_WINDOW_LENGTH);
+						draw_set_alpha(alpha/2);
+						draw_rectangle_color(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
+						draw_set_alpha(alpha);
+						draw_circle_colour(x, floor(y - char_height/2), ease_quartIn(256, 48, window_timer, get_window_value(49, 2, AG_WINDOW_LENGTH)), fSmashColour, c_white, false);
+						FinalSmashBeam(ease_quartIn(0, 48, window_timer, get_window_value(49, 2, AG_WINDOW_LENGTH)), c_white, alpha);
+						draw_set_alpha(1);
+						break;
+					case 3:
+					case 4:
+						draw_set_alpha(0.5);
+						draw_rectangle_color(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
+						draw_set_alpha(1);
+						var size = 48;
+						FinalSmashBeam(size, fSmashColour, 1);
+						size -= 4;
+						FinalSmashBeam(size, c_white, 0.5);
+						size -= 4;
+						FinalSmashBeam(size, c_white, 1);
+						break;
+					case 5:
+						var alpha = 0.6*(1-window_timer/get_window_value(49, 5, AG_WINDOW_LENGTH));
+						draw_set_alpha(alpha/2);
+						draw_rectangle_color(0,0,room_width,room_height,c_black,c_black,c_black,c_black,false);
+						draw_set_alpha(alpha);
+						draw_circle_colour(x, floor(y - char_height/2), ease_quartIn(48, 256, window_timer, get_window_value(49, 5, AG_WINDOW_LENGTH)), fSmashColour, c_white, false);
+						FinalSmashBeam(ease_quartIn(48, 64, window_timer, get_window_value(49, 5, AG_WINDOW_LENGTH)), fSmashColour, alpha);
+						draw_set_alpha(1);
+						break;
+				}
+				break;
 
 			case AT_DSPECIAL:
 				draw_set_alpha(0.15);
@@ -92,4 +109,35 @@ if ("practice" in self)
 	gpu_set_fog(1, _colour, 0, 1);
 	for (i = -1; i < 2; ++i) for (j = -1; j < 2; ++j)
 		draw_sprite_part_ext(sprite_index, image_index, 0, sprite_height*_xOffsetRatio, sprite_width*spr_dir, sprite_height*_heightRatio, x+i*2+draw_x-sprite_xoffset*(1+small_sprites), y+j*2+(draw_y-sprite_yoffset+sprite_height*_xOffsetRatio)*(1+small_sprites), spr_dir*(1+small_sprites), 1+small_sprites, c_white, 1);
+}
+
+#define DrawLine(_x, _y, _x2, _y2, _offsetWidth, _colour)
+{
+	var dir = point_direction(_x, _y, _x2, _y2);
+	var offsetX = lengthdir_x(_offsetWidth, dir+90);
+	var offsetY = lengthdir_y(_offsetWidth, dir+90);
+	draw_rectangle(_x+offsetX, _y+offsetY, _x-offsetX, _y-offsetY, _x2+offsetX, _y2+offsetY, _x2-offsetX, _y2-offsetY, _colour, _colour);
+}
+
+#define draw_rectangle(x1, y1, x2, y2, x3, y3, x4, y4, colour1, colour2)
+{
+	draw_triangle_colour(x1, y1, x2, y2, x3, y3, colour1, colour1, colour2, false);
+	draw_triangle_colour(x2, y2, x3, y3, x4, y4, colour1, colour2, colour2, false);
+}
+
+#define FinalSmashBeam(_width, _colour, _alpha)
+{
+	var heightOffset = floor(char_height/2);
+
+	var startX = lengthdir_x(-heightOffset, fSmashAngle);
+	var startY = lengthdir_y(-heightOffset, fSmashAngle);
+	
+	var dist = room_width+room_height;
+	var offsetX = lengthdir_x(dist, fSmashAngle);
+	var offsetY = lengthdir_y(dist, fSmashAngle);
+	
+	draw_set_alpha(_alpha);
+	draw_circle_colour(x, y-heightOffset, _width*2, _colour, _colour, 0);
+	DrawLine(x+startX, y-heightOffset+startY, x+offsetX, y-heightOffset+offsetY, _width, _colour);
+	draw_set_alpha(1);
 }

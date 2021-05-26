@@ -81,6 +81,13 @@ if attack == AT_FSPECIAL {
         //var col_b = get_color_profile_slot_b(alt_cur, 3);
         //set_article_color_slot(3, col_r, col_g, col_b, 1);
     }
+    /*
+    if window == 2 && window_timer == 1 {
+        if free {
+            vsp -= 8;
+        }
+    }
+    */
 }
 
 /*
@@ -105,6 +112,7 @@ if attack == AT_USPECIAL {
     
     
     if window == 1 {
+        can_shield = true;
         if window_timer > 4 && meter_cur <= 0 {
             window++;
             window_timer = 0;
@@ -139,9 +147,12 @@ if attack == AT_USPECIAL {
         hsp *= 0.2
     }
     
-    if window == 6 {
-        if !free || has_hit set_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE, 0);
-        else reset_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE);
+    if window >= 5 {
+        if !free || has_hit {
+            set_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE, 0);
+            //can_jump = true;
+            //can_attack = true;
+        } else reset_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE);
     }
 }
 

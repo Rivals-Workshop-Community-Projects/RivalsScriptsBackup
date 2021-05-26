@@ -455,6 +455,14 @@ with phone{
 	 * put the version number and full date.
 	 */
 	 
+	initPatch("1.4.8", "May 23rd, 2021");
+	initPatchWords("Visual Updates
+	* Added Boxing Ring compatability");
+	
+	initPatchWords("Attack Buffs/Nerfs
+	+ Adjusted the way her dash turning works
+	");
+	 
 	initPatch("1.4.5", "May 20th, 2021");
 	initPatchWords("Misc. Updates
 	~ Added a new cheat code");

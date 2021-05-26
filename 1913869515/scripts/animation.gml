@@ -19,33 +19,11 @@ if (state == PS_SPAWN) {
     }
 }
 
-if (state == PS_DASH) {
-   if offense == 0 {
-        sprite_index = sprite_get("walk");
-        image_index = state_timer / 3.5;
-   } else { 
-       
-        sprite_index = sprite_get("dash");
-        image_index = state_timer / 2;
-       
-   }
-}
 
-
-if (state == PS_DASH_START) {
-   if offense == 0 {
-        sprite_index = sprite_get("walk");
-        image_index = state_timer / 4;
-   } else { 
-       
-        sprite_index = sprite_get("dashstart");
-        image_index = state_timer / 2;
-       
-   }
-}
-
-if (state == PS_WALK) {
-   if offense == 0 {
+if (state == PS_CROUCH) {
+   if left_down {
+       spr_dir = -1
+       hsp = -2
         sprite_index = sprite_get("walk2");
         image_index = state_timer / 8
        if state_timer % 52 == 0 {
@@ -54,12 +32,20 @@ if (state == PS_WALK) {
        if state_timer % 52 == 26 {
            sound_play(asset_get("sfx_jumpair"),false, noone, 0.4)   ;
        }
-       
-       
-   } else { 
-       
-        sprite_index = sprite_get("walk");
-        image_index = state_timer / 6;
-       
    }
+       
+    if right_down {
+       spr_dir = 1
+       hsp = 2
+        sprite_index = sprite_get("walk2");
+        image_index = state_timer / 8
+       if state_timer % 52 == 0 {
+           sound_play(asset_get("sfx_jumpair"));
+       }
+       if state_timer % 52 == 26 {
+           sound_play(asset_get("sfx_jumpair"),false, noone, 0.4)   ;
+       }
+   }
+   
+
 }

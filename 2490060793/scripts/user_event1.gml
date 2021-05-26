@@ -25,7 +25,7 @@ if get_player_color(player) = 12 {
 	//shift that colour by Hue, make sure it also loops
 	var color_hsv1=make_color_hsv(hue1,color_get_saturation(color_rgb1),color_get_value(color_rgb1)); 
 	//make a gamemaker color variable using the new hue
-	set_color_profile_slot(get_player_color(player),3,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
+	set_color_profile_slot(get_player_color(player),4,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
 	//set the new color using rgb values from the gamemaker color
 }
 init_shader()
@@ -38,7 +38,7 @@ patch_ver = "1.21";
 patch_day = "2";
 patch_month = "APR";
  
-var num_alts = 14;
+var num_alts = 16;
 var alt_cur = get_player_color(player);
  
  
@@ -59,8 +59,8 @@ alt_name[10] = "Exodus";
 alt_name[11] = "The Second Coming";
 alt_name[12] = "Rainbow";
 alt_name[13] = "Early Access";
-alt_name[14] = "";
-alt_name[15] = "";
+alt_name[14] = "Mr Red";
+alt_name[15] = "Henry Stickmin";
  
  
  

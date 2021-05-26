@@ -62,12 +62,12 @@ moonwalk_accel = 0.7;
 
 jump_start_time = 5;
 jump_frames = 8;
-jump_speed = 13;
+jump_speed = 14;
 short_hop_speed = 7;
-djump_speed = 13;
+djump_speed = 14;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 4; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 3; //the maximum hsp you can accelerate to when in a normal aerial state
+max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = 0.30;
 prat_fall_accel = 0.4; //multiplier of air_accel while in pratfall

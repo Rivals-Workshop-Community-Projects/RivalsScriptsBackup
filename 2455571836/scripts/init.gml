@@ -1,6 +1,9 @@
 //The Last Resort
 resort_portrait = sprite_get("sal_portrait")
 
+//Boxing Ring
+boxing_title = "The Frozen Kitten";
+
 //King Dedede's Arena
 arena_title = "The Cold Adventurer";
 
@@ -177,8 +180,8 @@ walk_turn_time = 10;
 initial_dash_time = 0;
 initial_dash_speed = 10;
 dash_speed = 5.5;
-dash_turn_time = 3.5;
-dash_turn_accel = 8;
+dash_turn_time = 5.5;
+dash_turn_accel = 0.4;
 dash_stop_time = 20;
 dash_stop_percent = .02; //the value to multiply your hsp by when going into idle from dash or dashstop
 ground_friction = .2;
