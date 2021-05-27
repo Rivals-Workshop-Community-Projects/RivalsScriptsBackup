@@ -5,7 +5,7 @@ hsp *= 0.98;
 
 with(pHitBox)
 {
-    if(collision_circle(other.x,other.y,50,self,true,false) && proj_break == 0 && player_id != other.player_id)
+    if(collision_circle(other.x,other.y,50,self,true,false) && hit_priority != 0 && proj_break == 0 && player_id != other.player_id)
         other.state = 2;
 }
 
@@ -51,6 +51,27 @@ switch(state)
     break;
 
     case 1: //return to player.
+        hsp -= (x - player_id.x) / 200;
+        vsp -= (y - player_id.y+10) / 200;
+        if(player_id.parasiteLevel != 2 || player_id.parasiteLevel != 1 && player_id.parasiteTimer2 > 0)
+            player_id.move_cooldown[AT_NSPECIAL] = 20;
+            
+        with(oPlayer)
+        {
+            if(collision_circle(other.x,other.y-15,10,self,true,false))
+            {
+                if(player == other.player)
+                    instance_destroy();
+            }
+        }
+    break;
+
+    case 2: //Broken/Death
+        spawn_hit_fx(x, y, 301);
+        player_id.move_cooldown[AT_NSPECIAL] = 120;
+        instance_destroy();
+    
+    case 4://Combust
         if(player_id.parasiteLevel == 2 || player_id.parasiteLevel == 1 && player_id.parasiteTimer2 > 0)
         {
             fx=spawn_hit_fx(x, y-20, 143);
@@ -72,26 +93,7 @@ switch(state)
                 }
             }
         }
-        else
-        {
-            hsp -= (x - player_id.x) / 200;
-            vsp -= (y - player_id.y+10) / 200; 
-            player_id.move_cooldown[AT_NSPECIAL] = 20;
-        }
-            
-        with(oPlayer)
-        {
-            if(collision_circle(other.x,other.y-15,10,self,true,false))
-            {
-                if(player == other.player)
-                    instance_destroy();
-            }
-        }
-    break;
-
-    case 2: //Broken/Death
-        spawn_hit_fx(x, y, 301);
-        player_id.move_cooldown[AT_NSPECIAL] = 120;
         instance_destroy();
+
     break;
 }

@@ -1,27 +1,15 @@
 //If landing fix stuff
-if(!free || state == PS_WALL_JUMP || state == PS_HITSTUN)
+if(!free && (state != PS_ATTACK_AIR || state == PS_ATTACK_AIR) || state == PS_WALL_JUMP || state == PS_HITSTUN)
 {
     fspec_Used = false;
     fspec_Air = false;
     set_attack_value(AT_FSPECIAL, AG_CATEGORY, 2);
     set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, 0);
-    set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, 0);
-    set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 0);
-    set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, 0);
-    set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 160);
-    set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 30);
 }
 else
 {
     if(state != PS_ATTACK_AIR || state == PS_ATTACK_AIR && state_timer == 1)
-    {
         reset_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED);
-        reset_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED);
-        reset_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE);
-        reset_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED);
-        reset_hitbox_value(AT_USPECIAL, 1, HG_ANGLE);
-        reset_hitbox_value(AT_USPECIAL, 2, HG_ANGLE);
-    }
 }
 
 if(fspec_Used)
@@ -56,22 +44,22 @@ else if(state != PS_RESPAWN)//Once game has started start the timer.
         {
             parasiteLevel = 0;
             walk_speed = 4.75;
-            initial_dash_speed = 8;
-            dash_speed = 7;
+            initial_dash_speed = 7.5;
+            dash_speed = 6.5;
         }
         else if (parasiteTimer < 60*60)
         {    
             parasiteLevel = 1;
             walk_speed = 5.05;
-            initial_dash_speed = 8.30;
-            dash_speed = 7.30;
+            initial_dash_speed = 7.8;
+            dash_speed = 6.8;
         }
         else if (parasiteTimer < 60*90)
         {    
             parasiteLevel = 2;
             walk_speed = 5.35;
-            initial_dash_speed = 8.6;
-            dash_speed = 7.6;
+            initial_dash_speed = 9.0;
+            dash_speed = 8.0;
         }
         else
         {

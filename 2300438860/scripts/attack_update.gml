@@ -50,8 +50,14 @@ if !hitpause {
     	
     	if !free {
     		state_timer = 0
+    		set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 12);
+            set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 9);
+            set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.2);
     	} else {
     		strong_charge = 60
+    		set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 6);
+            set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 8);
+            set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.9);
     	}
     	
     	if state_timer > 5 && free && (window < 4 && window != 1 or (window == 1 && window_timer > 10)){
@@ -108,7 +114,11 @@ if !hitpause {
         }
         
         if window == 3 or window == 5 {
+        	if !free {
         	set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 20 + abs(x - savex)/10);
+        	} else {
+        	set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 40)	
+        	}
         }
         
         if (window == 4 && image_index == 11 && savex != 0) or (y + vsp > room_height){

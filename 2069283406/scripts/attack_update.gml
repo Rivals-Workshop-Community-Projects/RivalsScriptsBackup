@@ -24,14 +24,14 @@ if attack != AT_NSPECIAL && attack != AT_DSPECIAL && attack != AT_USPECIAL && at
 		
          
          if attack != AT_BAIR {
-		x += (hit_player_obj.x + hit_player_obj.hsp - 20*spr_dir - x) / 20
+		x += (hit_player_obj.x + hit_player_obj.hsp - 20*spr_dir - x) / 12
          } else {
-         x += (hit_player_obj.x + hit_player_obj.hsp + 40*spr_dir - x) / 20
+         x += (hit_player_obj.x + hit_player_obj.hsp + 40*spr_dir - x) / 12
          }
-		y += ((hit_player_obj.y) - y + hit_player_obj.vsp*2) / 20
+		y += ((hit_player_obj.y) - y + hit_player_obj.vsp*2) / 12
 
         
-       	y += (hit_player_obj.y - y) / 20
+       	y += (hit_player_obj.y - y) / 12
        
 		
 

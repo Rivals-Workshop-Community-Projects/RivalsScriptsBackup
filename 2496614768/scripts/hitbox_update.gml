@@ -12,7 +12,6 @@ if attack == AT_USTRONG && hbox_num == 4 {
 		}
 		
 		if y + vsp > room_height {
-			other.kb_scaling = 1.6
 			vsp = -4
 			y = room_height - 60
 			other.hit_priority = 9
@@ -34,37 +33,60 @@ if attack == AT_NSPECIAL && hbox_num == 1 {
 	if (heal_player != noone) {
 	
     	if  id != other.player_id {
-             other.soft_armor = 999
+    		
              
-             if !can_attack or free{
-		     if state == PS_PARRY or state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD
-		     or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD  or state == PS_AIR_DODGE or state == PS_TECH_GROUND or super_armor or soft_armor{
-		     	if state == PS_PARRY or super_armor or soft_armor or perfect_dodging{
+            with  other.player_id {
+            	soft_armor = 999
+            	set_attack(AT_NSPECIAL)
+            	window = 2
+            	window_timer = 10
+            }
+           // Actually marth btw  
+           //  if !can_attack or free{
+		   //  if state == PS_PARRY or state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD
+		   //  or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD  or state == PS_AIR_DODGE or state == PS_TECH_GROUND or super_armor or soft_armor{
+		   //  	if state == PS_PARRY or super_armor or soft_armor or perfect_dodging{
+		   //      shake_camera(6,6)
+		   //      with other {
+		   //     sound_play(sound_get("RI"))
+		   //      }
+		   //     spawn_hit_fx (x,y-40, 306)
+		   //     spawn_hit_fx (x,y-40, 156)
+		   //     take_damage( player, -1 , 10);
+		   //     super_armor = false
+		   //     soft_armor = false
+		   //  }
+		   // 
+		   // state_timer = 15
+		   // window_timer = 15
+		   // invincible = false
+		   // perfect_dodging = false
+		   // visible = true
+		   // if !free {
+		   // set_state(PS_PRATFALL)	
+		   // }
+		   // }
+           //  } else {
+           //  	perfect_dodging = true
+           //  }
+		    
+
+		   if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND or super_armor or soft_armor{
 		         shake_camera(6,6)
 		         with other {
 		        sound_play(sound_get("RI"))
 		         }
-		        spawn_hit_fx (x,y-40, 306)
-		        spawn_hit_fx (x,y-40, 156)
-		        take_damage( player, -1 , 10);
+		          with  other.player_id {
+		             shock += 1
+		          	
+		          }
+		        spawn_hit_fx (x,y-40, 304)
+		        spawn_hit_fx (x,y-40, 302)
+		        take_damage( player, -1 , 5);
 		        super_armor = false
 		        soft_armor = false
-		     	}
-		    
-		    state_timer = 15
-		    window_timer = 15
-		    invincible = false
-		    perfect_dodging = false
-		    visible = true
-		    if !free {
-		    set_state(PS_PRATFALL)	
-		    }
-		    }
-             } else {
-             	perfect_dodging = true
-             }
-		    
-		    
+		     }
+		     
 		   
 		   with other {
 		       create_hitbox(AT_NSPECIAL,2,x,y)
@@ -90,16 +112,16 @@ if attack == AT_NSPECIAL && hbox_num == 7 {
 		nearbyhitbox = collision_circle( x-12, y-12, 34,other, true, true ) 
 	
 	    
-	    if nearbyhitbox != noone && player_id != other.player_id  && type == 2 && hit_priority != 0{
+	    if nearbyhitbox != noone && player != other.player  && type == 2 && hit_priority != 0{
 	    	
-	    	
+	    	hit_priority = 10
 	    	
 	    	damage *= 2
 	    	
 	    	transcendent = true
 	    	hitbox_timer = 0
-	    	player_id = other.player_id 
 	    	can_hit_self = true
+	    	player = other.player
 	    	
 	    	with other.player_id {
 	    	    
@@ -120,8 +142,8 @@ if attack == AT_NSPECIAL && hbox_num == 7 {
 	    	
             spawn_hit_fx (x - 10 + random_func(2,20,true), y  - random_func(2,40,true) , 302 )
 	    	
-			hsp *= -2
-			vsp *= -2
+			hsp *= -1.5
+			vsp *= -1.5
 			spr_dir *= -1
 			//nearbyhitbox.grav = 0.2 + abs(nearbyhitbox.hsp/40)
 	       	//nearbyhitbox.hitbox_timer = 1

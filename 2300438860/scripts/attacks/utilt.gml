@@ -30,7 +30,7 @@ set_hitbox_value(AT_UTILT, 1, HG_WIDTH, 66);
 set_hitbox_value(AT_UTILT, 1, HG_HEIGHT, 86);
 set_hitbox_value(AT_UTILT, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_UTILT, 1, HG_PRIORITY, 4);
-set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 6);
+set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 8);
 set_hitbox_value(AT_UTILT, 1, HG_ANGLE, 87);
 set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, .2);
@@ -58,7 +58,7 @@ set_hitbox_value(AT_UTILT, 2, HG_KNOCKBACK_SCALING, .2);
 set_hitbox_value(AT_UTILT, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_UTILT, 2, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT_X_OFFSET, 19);
-set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, sound_get("hmed"));
+set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, sound_get("hweak"));
 set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_UTILT, 2, HG_HITSTUN_MULTIPLIER, 0.96);
 

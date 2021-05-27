@@ -40,31 +40,31 @@ prev_alt = alt;
      
  
     if drawing == 1 {
-     draw_sprite_ext(sprite_get("charselect2"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
+     draw_sprite_ext(sprite_get("charselect"),1,temp_x-2,temp_y-2,2,2,0,-1,1);
      }
      
        if drawing == 2 {
-     draw_sprite_ext(sprite_get("charselect3"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
+     draw_sprite_ext(sprite_get("charselect"),2,temp_x-2,temp_y-2,2,2,0,-1,1);
      }
      
        if drawing == 3 {
-     draw_sprite_ext(sprite_get("charselect4"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
+     draw_sprite_ext(sprite_get("charselect"),3,temp_x-2,temp_y-2,2,2,0,-1,1);
      }
      
        if drawing == 4 {
-     draw_sprite_ext(sprite_get("charselect5"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
+     draw_sprite_ext(sprite_get("charselect"),4,temp_x-2,temp_y-2,2,2,0,-1,1);
      }
      
        if drawing == 5 {
-     draw_sprite_ext(sprite_get("charselect6"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
+     draw_sprite_ext(sprite_get("charselect"),5,temp_x-2,temp_y-2,2,2,0,-1,1);
      }
      
        if drawing == 6 {
-     draw_sprite_ext(sprite_get("charselect7"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
+     draw_sprite_ext(sprite_get("charselect"),6,temp_x-2,temp_y-2,2,2,0,-1,1);
      }
      
        if drawing == 7 {
-     draw_sprite_ext(sprite_get("charselect8"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
+     draw_sprite_ext(sprite_get("charselect"),7,temp_x-2,temp_y-2,2,2,0,-1,1);
      }
      
 

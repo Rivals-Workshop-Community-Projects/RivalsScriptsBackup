@@ -513,6 +513,10 @@ if ("rollArray" in self)
 						AddText("UTilt - Extra Hitpause 8 -> 4");
 						AddText("");
 						AddText("I'm going into army tomorrow. Don't expect frequent balance changes anymore.");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.32.1 - 5 May 2021");
+						AddText("Updated song list");
 						break;
 				}
 				DrawTutorialBlock();
@@ -748,8 +752,10 @@ if ("rollArray" in self)
 				return "Bill Kiley - You Will Never Know";
 			else if (string_count("2392386094", get_stage_data(SD_ID)) > 0)
 				return "ARCHYTAS AAAAAAAAAAAAAA";
-			else if (string_count("2457173325", get_stage_data(SD_ID)) > 0)
+			else if (string_count("2499100511", get_stage_data(SD_ID)) > 0)
 				return "Hyper Potions - Porta Vista";
+			else if (string_count("2498298211", get_stage_data(SD_ID)) > 0)
+				return "Pokemon Masters EX - Lillie Battle Theme";
 			return "Darude - Sandstorm";
 	}
 }

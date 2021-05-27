@@ -11,7 +11,7 @@ set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
@@ -27,7 +27,7 @@ set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, -2);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 2);
 
-//Bite my neck so fucking hard daddy
+// Bite my neck so fucking hard daddy
 set_window_value(AT_DSPECIAL, 5, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL, 5, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_DSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 3);
@@ -54,7 +54,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_Y, -24);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 108);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 47);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 1);
-set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 3);
+set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 4);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, .1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 1);
@@ -70,7 +70,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 85);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 73);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, 8);
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 40);
-set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 12);
+set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 8);
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 13);

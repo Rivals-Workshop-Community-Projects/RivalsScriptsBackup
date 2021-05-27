@@ -100,7 +100,7 @@ if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 2 {
  
 if my_hitboxID.attack == AT_FAIR or my_hitboxID.attack == AT_BAIR or (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1)
 
-or ((my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_USTRONG) && my_hitboxID.hbox_num <= 2) {
+or ((my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_USTRONG or my_hitboxID.attack == AT_TAUNT) && my_hitboxID.hbox_num <= 2) {
  	shock += 1
 }   
 
@@ -115,7 +115,7 @@ if my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 1 {
     uspechit = 1
 }
 
-if my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1 {
+if my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1 && my_hitboxID.type == 1{
     timebreak = floor(shock*shock*1.8)
     timebreakmax = floor(shock*shock*1.8)
     shocktimer = 0
@@ -155,3 +155,5 @@ if my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 4 {
          
         }
     }
+    
+    

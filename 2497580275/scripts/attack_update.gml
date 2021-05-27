@@ -7,8 +7,8 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 if (attack == AT_NSPECIAL){
     with(obj_article2)
     {
-        if(player == other.player && other.window == 1)
-            other.attack = AT_NSPECIAL_2;
+        if(player == other.player && other.window == 1 && other.window_timer == 1)
+            other.attack = (state != 1 ? AT_NSPECIAL_2 : AT_USPECIAL_2);
     }
     if (window == 2 && window_timer == 1)
        instance_create(x,y, "obj_article2");
@@ -16,14 +16,14 @@ if (attack == AT_NSPECIAL){
 
 if (attack == AT_NSPECIAL_2)
 {
-    if(parasiteLevel == 2  || parasiteLevel == 1 && parasiteTimer2 > 0)
-        attack = AT_USPECIAL_2;
-    else
+    if(state_timer == 4)
     {
-        if(state_timer == 2)
+        if((parasiteLevel == 2  || parasiteLevel == 1 && parasiteTimer2 > 0) && special_down && !shield_down)
+            attack = AT_USPECIAL_2;
+        else
             recallKnife();
-        set_attack_value(AT_NSPECIAL_2, AG_SPRITE, sprite_get("nspecial2"));
     }
+    set_attack_value(AT_NSPECIAL_2, AG_SPRITE, sprite_get("nspecial2"));
 }
 if (attack == AT_USPECIAL_2)
 {
@@ -32,7 +32,13 @@ if (attack == AT_USPECIAL_2)
         set_attack_value(AT_USPECIAL_2, AG_SPRITE, sprite_get("precombust"));
         set_attack_value(AT_USPECIAL_2, AG_AIR_SPRITE, sprite_get("precombust"));
         if(window_timer == 20)
-            recallKnife();
+        {
+            with(obj_article2)
+            {
+                if(player == other.player)
+                    state = 4;
+            }
+        }
     }
     if(window == 2)
     {
@@ -61,6 +67,9 @@ if (attack == AT_FSPECIAL){
     }
     if(window == 3)
     {
+        if(window_timer <= 12)
+            hsp /= 5;
+
         set_attack_value(AT_FSPECIAL, AG_CATEGORY, 1);
         if(window_timer < 20)
             vsp /= 1.2;
@@ -89,11 +98,35 @@ if (attack == AT_USPECIAL){
         if(left_down)
             hsp -= 0.25;
     }
+    if(window == 1 && window_timer < 2)
+    {
+        if(!free)
+        {
+            set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, 0);
+            set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 0);
+            set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, 0);
+            set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 160);
+            set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 30);
+            set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 0);
+        }
+        else
+        {
+            reset_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED);
+            reset_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE);
+            reset_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED);
+            reset_hitbox_value(AT_USPECIAL, 1, HG_ANGLE);
+            reset_hitbox_value(AT_USPECIAL, 2, HG_ANGLE);
+            reset_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE);
+        }
+    }
     if(window == 2)
     {
-        if(window_timer % 8 == 0 && !hitpause)
+        if(window_timer % 6 == 0 && !hitpause)
             sound_play(sound_get("dagger_swing1"));
     }
+    if(window == 3 && free)
+        reset_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE);
+
     if((parasiteLevel == 2  || parasiteLevel == 1 && parasiteTimer2 > 0) && special_down && window == 3 && window_timer == 5)
     {
         with(obj_article2)
@@ -151,7 +184,7 @@ if (attack == AT_DSPECIAL){
 		shake_camera( 12, 4);
 }
 //lose access to strongs.
-if(parasiteLevel == 0 && parasiteTimer2 < 0 && state_timer <= 2)
+if(parasiteLevel == 0 && parasiteTimer2 < 0 && state_timer <= 4)
 {
     if(attack == AT_FSTRONG)
         attack = AT_FTILT;

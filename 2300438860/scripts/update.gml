@@ -38,6 +38,10 @@ hit_player_obj = self
 
 }
 
+if attackbar != 0 or barpause {
+	suppress_stage_music( 0.3, 10 );
+}
+
 if attackbar != 0 && !hitpause && state_cat != SC_HITSTUN{
 	
 	///with (pHitBox) {
@@ -47,7 +51,7 @@ if attackbar != 0 && !hitpause && state_cat != SC_HITSTUN{
 		if get_gameplay_time() % 2 == 0 {
 		shake_camera (1,1)
 		}
-		suppress_stage_music( 0.3, 10 );	
+			
 		
 	if barpause <= 0 {	
 	attackbar += 1 
