@@ -43,7 +43,7 @@ set_hitbox_value(AT_DAIR, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 8);
 set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 270);
 set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, .8);
+set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, sound_get("dagger_stab2"));

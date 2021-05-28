@@ -40,7 +40,7 @@ set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, 19);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_UTILT, 1, HG_HITSTUN_MULTIPLIER, .76);
 set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 303);
-set_hitbox_value(AT_UTILT, 1, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_UTILT, 1, HG_HITSTUN_MULTIPLIER, 1.1);
 
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 2);
@@ -61,4 +61,4 @@ set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT_X_OFFSET, 19);
 set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_UTILT, 2, HG_HITSTUN_MULTIPLIER, .76);
 set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT, 304);
-set_hitbox_value(AT_UTILT, 1, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_UTILT, 1, HG_HITSTUN_MULTIPLIER, 1.1);

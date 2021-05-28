@@ -52,7 +52,7 @@ if (attack == AT_FSTRONG && window == 1 && window_timer == 18){
 if (attack == AT_DSTRONG && window == 1 && window_timer == 13){
         sound_play( asset_get( "sfx_forsburn_consume" ) );
     }    
-if (attack == AT_USTRONG && window == 1 && window_timer == 23){
+if (attack == AT_USTRONG && window == 1 && window_timer == 17){
         sound_play( asset_get( "sfx_forsburn_consume" ) );
     }    
     

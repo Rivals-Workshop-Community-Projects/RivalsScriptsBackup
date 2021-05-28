@@ -1,7 +1,7 @@
 ///
 
 if golden != 0 and get_gameplay_time() % 2 == 0{
-       draw_debug_text(x - 190, y - 160,"This player have reject the competitiveness of the game.");
+       draw_debug_text(x - 60, y - 120,"LOL look, a cheapie.");
 }
 
 

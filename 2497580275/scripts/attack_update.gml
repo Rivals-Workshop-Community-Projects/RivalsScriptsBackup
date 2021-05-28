@@ -67,7 +67,7 @@ if (attack == AT_FSPECIAL){
     }
     if(window == 3)
     {
-        if(window_timer <= 12)
+        if(window_timer <= 12 && free)
             hsp /= 5;
 
         set_attack_value(AT_FSPECIAL, AG_CATEGORY, 1);
@@ -75,14 +75,9 @@ if (attack == AT_FSPECIAL){
             vsp /= 1.2;
         else if(fspec_Air)
             iasa_script();
+
         if((parasiteLevel == 2  || parasiteLevel == 1 && parasiteTimer2 > 0) && special_down && window_timer == 3)
-        {
-            with(obj_article2)
-            {
-                if(player == other.player)
-                    state = 1;
-            }
-        }
+            Combust();
     }
     can_fast_fall = false;
     fspec_Used = true;
@@ -128,13 +123,7 @@ if (attack == AT_USPECIAL){
         reset_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE);
 
     if((parasiteLevel == 2  || parasiteLevel == 1 && parasiteTimer2 > 0) && special_down && window == 3 && window_timer == 5)
-    {
-        with(obj_article2)
-        {
-            if(player == other.player)
-                state = 1;
-        }
-    }
+        Combust();
 }
 
 if (attack == AT_DSPECIAL){
@@ -234,4 +223,11 @@ init_shader();
     {
         if(player == other.player)
             state = 1;
+    }
+
+#define Combust()
+    with(obj_article2)
+    {
+        if(player == other.player)
+            state = 4;
     }

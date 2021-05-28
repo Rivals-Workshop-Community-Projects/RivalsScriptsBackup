@@ -4,7 +4,7 @@ user_event(12);
 
 var temp_x = x + 8;
 var temp_y = y + 9;
-var numAlts = 24;
+var numAlts = 25;
 
 patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1);
 image_alpha = max(image_alpha-0.02, 0);
@@ -48,8 +48,9 @@ alt_name[18] = "Psychicpebbles";
 alt_name[19] = "Sylvanos";
 alt_name[20] = "Doomkin";
 alt_name[21] = "Void";
-alt_name[22] = "Habanero";
+alt_name[22] = "Habanero (Zetta)";
 alt_name[23] = "Feri";
+alt_name[24] = "Infamous (Kingdoge)";
 
 draw_set_halign(fa_right);
 textDraw(temp_x + 198, temp_y + 106, "fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);

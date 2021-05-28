@@ -88,6 +88,11 @@ if my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 2 {
 
 }
 
+if my_hitboxID.attack == AT_FAIR && my_hitboxID.hbox_num == 3 {
+	halo += 1   
+	sound_play(sound_get("RI2"))
+}
+
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 2) {
 	 halo -= 1   
 	 wavehit = 8

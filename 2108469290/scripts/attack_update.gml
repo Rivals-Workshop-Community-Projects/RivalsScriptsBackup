@@ -64,15 +64,6 @@ if attack == AT_DTILT && has_hit {
     window_timer += 1
     hsp /= 1.1
     
-    if "ai_target" in self && !hitpause {
-     	jump_pressed = true
-     }
-     
-     
-    if jump_pressed{
-        set_state (PS_IDLE)
-        
-    }
 }
 
 if attack == AT_DAIR {

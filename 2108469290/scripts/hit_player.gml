@@ -16,9 +16,9 @@ if lockon == 1 && my_hitboxID.type == 1 && move_cooldown[AT_FSPECIAL_2] == 0 && 
 	hhalo = 240
 	lockon = 0
 	spawn_hit_fx(x - 10*spr_dir,y - 30, 306)
-var halodmg = floor(my_hitboxID.damage/2)
+var halodmg = floor(my_hitboxID.damage/3)
 with hit_player_obj {
-		take_damage( player, -1 , halodmg)
+		take_damage( player, -1 , floor(halodmg))
 }	
 
 }
@@ -37,7 +37,7 @@ if my_hitboxID.type == 1 {
 }
 
 if my_hitboxID.attack != AT_EXTRA_2 {	
-	var halodmg = floor(my_hitboxID.damage / 2)
+	var halodmg = floor(my_hitboxID.damage / 3)
 with hit_player_obj {
 		take_damage( player, -1 , halodmg)
 }		

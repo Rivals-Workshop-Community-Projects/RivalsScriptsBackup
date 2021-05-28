@@ -52,6 +52,7 @@ sprite_change_offset("scoville_hurtbox", 64, 126);
 sprite_change_offset("scoville_crouch_hurtbox", 64, 126);
 
 sprite_change_offset("nspecial_proj", 64, 126);
+sprite_change_offset("knspecial_proj", 64, 126);
 sprite_change_offset("phone_open", 64, 126);
 
 sprite_change_offset("hurtground", 64, 126);
@@ -59,3 +60,5 @@ sprite_change_offset("bighurt", 64, 126);
 
 sprite_change_offset("uphurt", 64, 126);
 sprite_change_offset("downhurt", 64, 126);
+
+sprite_change_offset("nspecial_kirb", 32, 54);

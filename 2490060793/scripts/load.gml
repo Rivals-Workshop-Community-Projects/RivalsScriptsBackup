@@ -49,6 +49,11 @@ sprite_change_offset("dspecial", 80, 158);
 sprite_change_offset("dspecial_air", 80, 118);
 sprite_change_offset("taunt", 80, 158);
 
+sprite_change_offset("limit_charge", 80, 158);
+sprite_change_offset("limit_vfx_large", 31, 31);
+sprite_change_offset("limit_vfx_small", 31, 31);
+sprite_change_offset("limit_vfx_finish", 80, 158);
+
 sprite_change_offset("fs", 160, 198);
 
 sprite_change_offset("plat", 60, 0);
@@ -59,6 +64,7 @@ sprite_change_offset("hud_meter", 0, 0);
 sprite_change_offset("hud_meter_red", 0, 0);
 sprite_change_offset("hud_meter_flash", 0, 0);
 sprite_change_offset("orb", 32, 32);
+sprite_change_offset("orb_idle", 32, 32);
 sprite_change_offset("orb_pulse", 60, 60);
 sprite_change_offset("uspec_indicator", 80, 158);
 sprite_change_offset("fspecial_vfx", 80, 158);

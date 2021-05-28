@@ -3,6 +3,31 @@ if y > (room_height/2 + 400) {
 		destroyed = 1
 }
 	
+	if attack == AT_DTILT && hbox_num == 2 {
+    if hitbox_timer < 56 {
+    	image_index = 0
+    }
+
+    if hitbox_timer == 56 {
+    	image_index = 1
+    		sound_play(asset_get("sfx_crunch"),false,noone,1,1.5);
+    }
+    
+    if hitbox_timer >= 60 && hitbox_timer < 294{
+    	image_index = 2
+    	can_hit_self = true
+    	hit_priority = 9
+    }
+    
+    if hitbox_timer == 294 {
+    	image_index = 1
+    		sound_play(asset_get("sfx_bite"),false,noone,1,1.3);
+    	hit_priority = 0	
+    }
+    
+	}
+	
+	
 var tauntpar1 = hit_fx_create( sprite_get( "tauntpar1" ), 20);
 var tauntpar2 = hit_fx_create( sprite_get( "tauntpar2" ), 20);
 	
@@ -129,11 +154,7 @@ if (heal_player != noone) {
 		
 		
 		
-		if attack == AT_DTILT && hbox_num == 2 {
-			
-			hitbox_timer -= 1
-			
-		}
+
 		
 
 

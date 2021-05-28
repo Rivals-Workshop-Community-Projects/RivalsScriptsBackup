@@ -38,7 +38,7 @@ set_window_value(AT_DATTACK, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.6);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.3);
 
 //endlag
-set_window_value(AT_DATTACK, 4, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DATTACK, 4, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -56,7 +56,7 @@ set_hitbox_value(AT_DATTACK, 1, HG_WIDTH, 30);
 set_hitbox_value(AT_DATTACK, 1, HG_HEIGHT, 40);
 set_hitbox_value(AT_DATTACK, 1, HG_PRIORITY, 4);
 set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 3);
-set_hitbox_value(AT_DATTACK, 1, HG_ANGLE, 28);
+set_hitbox_value(AT_DATTACK, 1, HG_ANGLE, 35);
 set_hitbox_value(AT_DATTACK, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DATTACK, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 10);
@@ -66,6 +66,7 @@ set_hitbox_value(AT_DATTACK, 1, HG_EXTRA_HITPAUSE, 0);
 set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_med2"));
 set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 19);
+set_hitbox_value(AT_DATTACK, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_GROUP, 1);
 
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_TYPE, 1);

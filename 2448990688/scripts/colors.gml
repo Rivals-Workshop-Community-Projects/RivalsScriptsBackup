@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 2, 12, 26 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 24 );
+set_num_palettes( 25 );
 
 // Blueberry
 set_color_profile_slot( 1, 0, 50, 44, 184 ); //Body
@@ -239,6 +239,14 @@ set_color_profile_slot( 23, 4, 229, 115, 255 ); //Fire
 set_color_profile_slot( 23, 5, 255, 122, 202 ); //White
 set_color_profile_slot( 23, 6, 255, 110, 201 ); //Ghost
 
+// KingDoge
+set_color_profile_slot( 24, 0, 0, 234, 255 ); //Body
+set_color_profile_slot( 24, 1, 255, 0, 187 ); //Cap
+set_color_profile_slot( 24, 2, 255, 0, 132 ); //Face
+set_color_profile_slot( 24, 3, 255, 0, 187 ); //Knife
+set_color_profile_slot( 24, 4, 0, 255, 0 ); //Fire
+set_color_profile_slot( 24, 5, 255, 0, 187 ); //White
+set_color_profile_slot( 24, 6, 255, 140, 224 ); //Ghost
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

@@ -8,9 +8,9 @@ set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"))
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_jumpground"));
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, 1);
@@ -77,7 +77,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 305);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.9);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 4);

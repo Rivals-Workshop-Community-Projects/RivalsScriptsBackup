@@ -458,6 +458,22 @@ with phone{
 //	initPatchWords("Fnuuy joke
 //	- waog");
 //	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0);
+	//2.27
+	initPatch("2.27	", "25 May 2021");
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- knockback_adj increased (1->1.2)
+	- gravity accel lowered (.65->.5) 
+	- air friction increased (0.01 -> 0.03)
+	- max fall speed lowered (13->10)
+	- ground friction increased (.5->.7)
+	- initial dash speed lowered (10->9)
+	- initial dash time increased (8->14)
+	- dash stop time increased (4->6)
+	- red dash turn increased (1.5->2)
+	- walk accel increased (0.25->0.5)
+	- wave friction increased (0.4->0.6)
+	- jump start time increased (4->5)
+	- jump speed lowered (14->10.5)");
 	//2.26
 	initPatch("2.26	", "23 May 2021");
 	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);

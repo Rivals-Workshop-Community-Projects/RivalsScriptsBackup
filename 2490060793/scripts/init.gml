@@ -28,6 +28,24 @@ spark_timer = 0;
 spark_val = 20;
 spark_sprite = undefined;
 
+draw_limit = false;
+limit_loop = sound_get("limit_loop_sfx");
+limit_vfx_large = sprite_get("limit_vfx_large")
+limit_vfx_small = sprite_get("limit_vfx_small")
+limit_vfx_finish = sprite_get("limit_vfx_finish")
+limit_vfx_counter = 0;
+limit_timer = 0;
+
+limit_large = hit_fx_create(limit_vfx_large, 18)
+limit_small = hit_fx_create(limit_vfx_small, 18)
+limit_finish = hit_fx_create(limit_vfx_finish, 16)
+draw_limit_flash = false;
+limit_flash_timer = 0;
+
+limit_circle_radius = 0;
+limit_circle_alpha = 0;
+limit_circle_col = c_yellow;
+
 orb_value = 20;
 gun_value = 10;
 hit_value = 8;

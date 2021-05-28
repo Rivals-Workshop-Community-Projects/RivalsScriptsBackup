@@ -20,7 +20,7 @@ free = true;                                        //Whether the article is in 
 hit_wall = false;                                   //If the article moves into a wall on its own, this variable will be true.
 
 vertMove = -1;
-if(player_id.down_down)
-    vertMove = -15;
-else if(player_id.up_down)
-    vertMove = 15;
+// if(player_id.down_down)
+//     vertMove = -15;
+// else if(player_id.up_down)
+//     vertMove = 15;

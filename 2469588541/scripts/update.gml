@@ -26,7 +26,7 @@ if (practice)
 			break;
 		case 1: // main menu
 			Invince();
-			MenuNav(7, 0, MainMenuNext());
+			MenuNav(8, 0, MainMenuNext());
 			break;
 		case 2: // Basic Tut Menu
 			Invince();
@@ -174,6 +174,14 @@ for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i]
 			if (attack_down && !attack_counter)
 			{
 				set_attack(49);
+				menuStateBuffer = 0;
+			}
+			break;
+		case 7:
+			if (attack_down && !attack_counter)
+			{
+				gpu_set_alphatestfunc(1);
+				end_match(player);
 				menuStateBuffer = 0;
 			}
 			break;

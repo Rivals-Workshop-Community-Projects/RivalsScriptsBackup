@@ -9,3 +9,9 @@ if attack == AT_NSPECIAL {
     attack = 49;
 }
 */
+
+/*
+if attack == AT_TAUNT {
+    attack = AT_TAUNT_2
+}
+*/

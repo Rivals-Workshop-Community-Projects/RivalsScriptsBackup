@@ -6,24 +6,30 @@ if (RedMode == true){
 dash_speed = 9;
 initial_dash_time = 5;
 initial_dash_speed = 9.5;
-jump_speed = 12;
+jump_speed = 10.5;
 jump_start_time = 5;
 air_friction = .02;
+air_max_speed = 6;
 air_accel = .3;
 djump_speed = 11;
 dash_turn_time = 8;
+dash_turn_accel = 2;
+walk_speed = 4.25;
 }
 
 if (RedMode == false){
 dash_speed = 8;
 initial_dash_time = 8;
 initial_dash_speed = 8.5;
-jump_speed = 13;
+jump_speed = 11.5;
 jump_start_time = 4;
 air_friction = .01;
+air_max_speed = 7;
 air_accel = .4;
 djump_speed = 12;
 dash_turn_time = 10;
+dash_turn_accel = 1.5;
+walk_speed = 3.25;
 }
 
 /*

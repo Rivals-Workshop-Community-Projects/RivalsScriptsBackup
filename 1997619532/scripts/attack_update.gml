@@ -257,7 +257,7 @@ if attack == AT_FSPECIAL {
     	if window_timer == 17 {
     		sound_play(asset_get("sfx_swipe_weak1")); 
     	}
-    	     if (place_meeting(x-10*spr_dir, y, asset_get("par_block"))) {
+    	     if (place_meeting(x+10*spr_dir, y, asset_get("par_block"))) {
                  set_attack (AT_UAIR)
                  window = 1
                  window_timer = 10
@@ -270,7 +270,7 @@ if attack == AT_FSPECIAL {
              }
     }
     	if window == 2 {
-		vsp /= 1.2
+		vsp /= 1.3
 	}
 	
     if window == 1 && window_timer % 3 = 0 {
@@ -301,10 +301,7 @@ if attack == AT_FSPECIAL {
     
 }
 
-if window == 2 && window_timer == 1 && free {
-    
-    vsp = 0
-}
+
 
 
 if window == 2 {

@@ -58,11 +58,14 @@ else if(state != PS_RESPAWN)//Once game has started start the timer.
         {    
             parasiteLevel = 2;
             walk_speed = 5.35;
-            initial_dash_speed = 9.0;
-            dash_speed = 8.0;
+            initial_dash_speed = 8.1;
+            dash_speed = 7.1;
         }
         else
         {
+            if(parasiteTimer == 60*90)
+                sound_play(asset_get("sfx_bigplant_eat"))
+
             parasiteLevel = 3; //Death.
             can_attack = false;
             can_special = false;
@@ -84,7 +87,7 @@ else if(state != PS_RESPAWN)//Once game has started start the timer.
         if(parasiteTimer > 60*90)
         {
             parasiteLevel = 2;
-            parasiteTimer = floor(60*89.8);
+            parasiteTimer = floor(60*90) - 1;
         }
         parasiteTimer2 --;
     }
@@ -94,6 +97,14 @@ if(initial_invince == 1)
     parasiteTimer2 = -1; //reset on death
     parasiteTimer = 0; //reset on death
     
+}
+
+//If an opponent dies, the parasite goes slurp slurp
+if(hit_player_obj != -4 && hit_player_obj.state == PS_RESPAWN)
+{
+    hit_player_obj = noone;
+    parasiteTimer2 = 60*10;
+    parasiteTimerMax = parasiteTimer2;
 }
 //Debug things
 if (get_training_cpu_action() != CPU_FIGHT) 

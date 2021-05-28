@@ -24,14 +24,14 @@ switch attack {
     
     case AT_USTRONG:
     _hitbox_num = [2,3];
-    hbox_y = -45 - 40*meter_percent;
+    hbox_y = -55 - 40*meter_percent;
     hbox_h = 80*meter_percent;
     set_hitbox()
     break;
     
     case AT_UAIR:
     _hitbox_num = [1,2];
-    hbox_y = -45 - 35*meter_percent;
+    hbox_y = -55 - 35*meter_percent;
     hbox_h = 60*meter_percent;
     set_hitbox()
     break;

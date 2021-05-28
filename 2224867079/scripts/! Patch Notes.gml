@@ -1,4 +1,24 @@
 /*
+-- V2.27 --
+Stat change time!!
+
+Balance Changes:
+- knockback_adj increased (1->1.2)
+- gravity accel lowered (.65->.5) 
+- air friction increased (0.01 -> 0.03)
+- max fall speed lowered (13->10)
+- ground friction increased (.5->.7)
+- initial dash speed lowered (10->9)
+- initial dash time increased (8->14)
+- dash stop time increased (4->6)
+- red dash turn increased (1.5->2)
+- walk accel increased (0.25->0.5)
+- wave friction increased (0.4->0.6)
+- jump start time increased (4->5)
+- jump speed lowered (14->10.5)
+
+
+
 -- V2.26 --
 
 Cosmetic Changes:

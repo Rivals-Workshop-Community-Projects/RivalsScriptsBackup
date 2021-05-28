@@ -13,6 +13,7 @@ if attack == AT_DSPECIAL && hbox_num == 3 {
 		}
 		
 		if y + vsp > room_height {
+			other.kb_scaling = 1.4
 			vsp = -4
 			y = room_height - 60
 			other.hit_priority = 9
@@ -179,7 +180,7 @@ if attack == AT_TAUNT && hbox_num <= 4 {
     
      	if hitbox_timer > 68 && hitbox_timer < 75 {
  	    	if player_id.spr_dir == 1 {
-    	            if player_id.thundervictim.right_pressed = true {
+    	            if player_id.thundervictim.right_pdown= true {
     	            	destroyed = true
     	            	spawn_hit_fx(x - 60*spr_dir,y - 54,305)
     	            	player_id.move_cooldown[AT_NSPECIAL_2] = 15
@@ -193,7 +194,7 @@ if attack == AT_TAUNT && hbox_num <= 4 {
     	                }   
     	            }
         } else {
-        	  if player_id.thundervictim.left_pressed = true {
+        	  if player_id.thundervictim.left_down = true {
     	        	destroyed = true
     	        	spawn_hit_fx(x + 60*spr_dir,y - 54,305)
     	        	player_id.move_cooldown[AT_NSPECIAL_2] = 15

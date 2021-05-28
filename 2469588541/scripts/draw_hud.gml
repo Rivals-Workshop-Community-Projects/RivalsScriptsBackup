@@ -26,6 +26,7 @@ if ("practice" in self)
 				AddText("Lore / Story");
 				AddText("Spawn Star");
 				AddText("Final Smash");
+				AddText("Make a wish");
 				DrawTutBlock();
 				DrawTutText();
 				break;
@@ -171,6 +172,11 @@ if ("practice" in self)
 						AddText("v1.8 - 24 May 2021");
 						AddText("");
 						AddText("Added Final Smash");
+						AddText("");
+						AddText("-----------------");
+						AddText("v1.8.1 - 25 May 2021");
+						AddText("");
+						AddText("Added a wish");
 						break;
 				}
 				DrawTutorialBlock();

@@ -39,7 +39,7 @@ if state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND {
 } else if state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND {
     switch attack {
         case AT_UAIR:
-        var end_char_height = 90;
+        var end_char_height = 100;
         if window != 3 {
             char_height = clamp(ease_quadOut(start_char_height, end_char_height, clamp(state_timer, 0, 10), 10), start_char_height, end_char_height);
         } else {
@@ -48,7 +48,7 @@ if state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND {
         break;
         
         case AT_USTRONG:
-        var end_char_height = 100;
+        var end_char_height = 110;
         if window != 5 {
             char_height = clamp(ease_quadOut(start_char_height, end_char_height, clamp(height_timer, 0, 4), 4), start_char_height, end_char_height);
         } else {
@@ -64,7 +64,7 @@ if state == PS_CROUCH && prev_prev_state == PS_ATTACK_GROUND && attack == AT_DSP
 
 //debug meter managment
 
-if taunt_down && (debugMode == true || practice_mode) {
+if (taunt_down || attack == AT_TAUNT) && (debugMode == true || practice_mode) {
     if up_down {
         meter_cur++;
     } else if down_down {
@@ -124,6 +124,51 @@ with pHitBox {
     }
 }
 
+if draw_limit {
+	if limit_timer mod 2 == 0 meter_cur++;
+	limit_timer++;
+	if limit_timer mod 4 == 0 limit_vfx_counter++;
+	
+	if limit_timer mod 8 == 0 {
+		var randvar = random_func(0, 50, true) - 25;
+		var limitfx = spawn_hit_fx(x + randvar, y - 2, limit_large)
+			limitfx.barvar = true;
+	}
+	
+	if limit_timer mod 6 == 0 {
+		var randvar = random_func(1, 50, true) - 25;
+		var limitfx = spawn_hit_fx(x + randvar, y - 2, limit_small)
+			limitfx.barvar = true;
+	}
+	
+	if limit_timer mod 12 == 1 {
+		spawn_base_dust(x, y, "jump", 1)
+	}
+	
+	//circle draw
+	var circle_timer = limit_timer mod 14;
+	if circle_timer == 0 {
+		if limit_circle_col == c_yellow limit_circle_col = c_aqua;
+		else if limit_circle_col == c_aqua limit_circle_col = c_yellow;
+	}
+	limit_circle_radius = 60 + dsin(limit_timer*14*2)*5
+	limit_circle_alpha = 0.2 + dsin(limit_timer*14*2)*0.1
+}
+
+with hit_fx_obj {
+	if "barvar" in self {
+		y -= 5;
+	}
+}
+
+
+if draw_limit_flash {
+	limit_flash_timer++;
+	if limit_flash_timer = 30 {
+		limit_flash_timer = 0;
+		draw_limit_flash = false;
+	}
+}
 //runes
 user_event(2)
 
