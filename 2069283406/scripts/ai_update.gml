@@ -1,40 +1,7 @@
 //ai_init - setting the basic AI attack behaviors
 if (get_training_cpu_action() == CPU_FIGHT){
     
-    if attack == AT_NSPECIAL && window == 3 {
-    	if !inrange {
-    		x += 2 * spr_dir
-    		hsp = 4 *spr_dir
-    	}
-    	
-    	if window < 3{
-    		
-    		if x > ai_target.x{
-    			spr_dir = -1
-    		} else {
-    			spr_dir = 1
-    		}
-    		
-    	}
-    	
-    	if !ai_recovering {
-    		if x > ai_target.x{
-    			left_down = true
-    			right_down = false
-    		} else {
-    			left_down = false
-    			right_down = true
-    		}
-    		
-    		if y > ai_target.y{
-    			up_down = true
-    			down_down = false
-    		} else if y + 20 < ai_target.y {
-    			up_down = false
-    			down_down = true
-    		}
-    	}
-    }
+
     if ai_target.state == PS_ATTACK_AIR or ai_target.state == PS_ATTACK_GROUND {
 	
    if xdist < 100 && can_attack && ai_target.window == 1 && ((x < ai_target.x && ai_target.spr_dir == -1) or (x > ai_target.x && ai_target.spr_dir == 1))  {
@@ -421,11 +388,7 @@ if state_cat == SC_HITSTUN {
 	
 	//Prevent from attackign if recovering low
 	if(ai_recovering){
-		if(y + char_height >= stagey){
-			if !(can_boost and vsp < -1){
-				do_not_attack = true;
-			}
-		}
+
 	}
 	
     //Attacks
@@ -772,52 +735,11 @@ if state_cat == SC_HITSTUN {
 
 if (ai_recovering){
 	
-	if x < 120 or x > room_width - 120 {
-		if(move_cooldown[AT_FSPECIAL] == 0){
-    		if x > room_width/2{
-				Fspecial(-1);
-				
-			}else {
-				Fspecial(1);
-				
-			}
-			
-    	}
-	}
-    
-    if ((x < stagex and x > stagex - 100) or (x > room_width - stagex and x < room_width - stagex + 100)) and !ai_target_offstage{
-    	if y - char_height - 10 > stagey{
-    		if(djumps == max_djumps and has_walljump and stall and !state == PS_DOUBLE_JUMP){
-        		
-        		Fspecial(0);
-        		stall = 0;
-        	}
-    	}
-    	
-    }
-    
-    if !has_walljump{
-    	if attack == AT_USPECIAL and window == 1 and can_boost{
-    		special_down = true;
-    	}
-    }else{
-    	if(state == PS_PRATFALL){
-			facestage();
-			jump_pressed = true;
-		}
-    	// facestage();
-    	// jump_pressed = true;
-    	// jump_down = true;
-    }
-    
-    if (state == PS_WALL_JUMP and ai_target.smash_charging and y < (stagey + room_height)/2){
-    	jump_pressed = true;
-    	jump_down = true;
-    }
-    
+
+
 
 }else{
-	stall = 1;
+	
 }
 
 if(state == PS_PRATFALL){

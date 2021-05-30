@@ -29,7 +29,7 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 
 
 
-set_num_hitboxes(AT_FSPECIAL, 2);
+set_num_hitboxes(AT_FSPECIAL, z);
 
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 2);

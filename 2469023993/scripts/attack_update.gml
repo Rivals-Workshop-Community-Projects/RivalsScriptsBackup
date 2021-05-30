@@ -4,10 +4,10 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 }
 
 if swift_mode = true{
-	set_hitbox_value(AT_FSTRONG, 5, HG_BASE_KNOCKBACK, 10);
+	set_hitbox_value(AT_FSTRONG, 5, HG_BASE_KNOCKBACK, 9);
 	set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 10);
 	set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 10);
-	set_hitbox_value(AT_USTRONG, 5, HG_BASE_KNOCKBACK, 10);
+	set_hitbox_value(AT_USTRONG, 5, HG_BASE_KNOCKBACK, 9);
 	set_hitbox_value(AT_UTILT, 4, HG_BASE_KNOCKBACK, 9);
 	set_hitbox_value(AT_UTILT, 5, HG_BASE_KNOCKBACK, 9);
 	set_hitbox_value(AT_UTILT, 6, HG_BASE_KNOCKBACK, 9);
@@ -21,9 +21,7 @@ if swift_mode = true{
 	set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 12);
 	set_hitbox_value(AT_DATTACK, 2, HG_BASE_KNOCKBACK, 8);
 	set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 12);
-	set_hitbox_value(AT_DTILT, 2, HG_BASE_KNOCKBACK, 12);
-	set_hitbox_value(AT_DTILT, 3, HG_BASE_KNOCKBACK, 12);
-	set_hitbox_value(AT_DTILT, 4, HG_BASE_KNOCKBACK, 12);
+	set_hitbox_value(AT_DTILT, 2, HG_BASE_KNOCKBACK, 11);
 	set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_FAIR, 6, HG_BASE_KNOCKBACK, 8.5);
 	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 12);
@@ -54,9 +52,7 @@ if swift_mode = true{
 	set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 10);
 	set_hitbox_value(AT_DATTACK, 2, HG_DAMAGE, 7);
 	set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 9);
-	set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 9);
-	set_hitbox_value(AT_DTILT, 3, HG_DAMAGE, 9);
-	set_hitbox_value(AT_DTILT, 4, HG_DAMAGE, 11);
+	set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 11);
 	set_hitbox_value(AT_FAIR, 6, HG_DAMAGE, 5);
 	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 12);
 	set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 10);
@@ -92,9 +88,7 @@ if swift_mode = true{
 	set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 	set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 	set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-	set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-	set_hitbox_value(AT_DTILT, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-	set_hitbox_value(AT_DTILT, 4, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+	set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
 	set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 	set_hitbox_value(AT_FAIR, 6, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_burnconsume"));
@@ -116,9 +110,7 @@ if swift_mode = true{
 	set_hitbox_value(AT_DAIR, 5, HG_BASE_HITPAUSE, 8);
 	set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 16);
 	set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 12);
-	set_hitbox_value(AT_DTILT, 2, HG_BASE_HITPAUSE, 12);
-	set_hitbox_value(AT_DTILT, 3, HG_BASE_HITPAUSE, 12);
-	set_hitbox_value(AT_DTILT, 4, HG_BASE_HITPAUSE, 20);
+	set_hitbox_value(AT_DTILT, 2, HG_BASE_HITPAUSE, 20);
 	set_hitbox_value(AT_FAIR, 6, HG_BASE_HITPAUSE, 12);
 	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 16);
 	set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 14);
@@ -152,8 +144,6 @@ if swift_mode = false{
 	set_hitbox_value(AT_DATTACK, 2, HG_BASE_KNOCKBACK, 5);
 	set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 8);
 	set_hitbox_value(AT_DTILT, 2, HG_BASE_KNOCKBACK, 8);
-	set_hitbox_value(AT_DTILT, 3, HG_BASE_KNOCKBACK, 8);
-	set_hitbox_value(AT_DTILT, 4, HG_BASE_KNOCKBACK, 8);
 	set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 5.5);
 	set_hitbox_value(AT_FAIR, 6, HG_BASE_KNOCKBACK, 5.75);
 	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
@@ -184,9 +174,7 @@ if swift_mode = false{
 	set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 8);
 	set_hitbox_value(AT_DATTACK, 2, HG_DAMAGE, 5);
 	set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 7);
-	set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 7);
-	set_hitbox_value(AT_DTILT, 3, HG_DAMAGE, 7);
-	set_hitbox_value(AT_DTILT, 4, HG_DAMAGE, 9);
+	set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 9);
 	set_hitbox_value(AT_FAIR, 6, HG_DAMAGE, 3);
 	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 10);
 	set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 8);
@@ -222,9 +210,7 @@ if swift_mode = false{
 	set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 	set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 	set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
-	set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
-	set_hitbox_value(AT_DTILT, 3, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
-	set_hitbox_value(AT_DTILT, 4, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+	set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 	set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 	set_hitbox_value(AT_FAIR, 6, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ori_sein_fstrong_hit_final"));
@@ -246,9 +232,7 @@ if swift_mode = false{
 	set_hitbox_value(AT_DAIR, 5, HG_BASE_HITPAUSE, 3);
 	set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 10);
 	set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 8);
-	set_hitbox_value(AT_DTILT, 2, HG_BASE_HITPAUSE, 8);
-	set_hitbox_value(AT_DTILT, 3, HG_BASE_HITPAUSE, 8);
-	set_hitbox_value(AT_DTILT, 4, HG_BASE_HITPAUSE, 12);
+	set_hitbox_value(AT_DTILT, 2, HG_BASE_HITPAUSE, 12);
 	set_hitbox_value(AT_FAIR, 6, HG_BASE_HITPAUSE, 8);
 	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 8);
 	set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 10);

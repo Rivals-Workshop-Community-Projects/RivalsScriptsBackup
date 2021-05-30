@@ -190,3 +190,4 @@ fs_char_portrait_y = 96;
 fs_portrait_x = 96;
 //kirbyability = 16;
 //swallowed = 0;
+gpu_set_alphatestfunc(0);

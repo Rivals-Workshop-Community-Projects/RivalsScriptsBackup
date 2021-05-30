@@ -740,25 +740,6 @@ switch attack {
         }
         
         
-        if left_down or right_down {
-            move_cooldown[AT_NSPECIAL] = 60
-             sound_play(sound_get("sideb"),false,noone,1,0.9 + random_func(1,3,true)/20)
-             create_hitbox(AT_NSPECIAL,8,x,y)
-            if left_down && !right_down {
-                hit_player_obj.x = x - 40
-                spr_dir = -1
-            }
-  
-            if !left_down && right_down {
-                hit_player_obj.x = x + 40
-                spr_dir = 1
-            }
-        set_attack(AT_FSPECIAL)    
-           window = 2
-           window_timer = 0
-
-        }
-        
         if up_down{
             ais2 = sprite_index
             aii2 = image_index
@@ -787,6 +768,26 @@ switch attack {
             window_timer = 1
            sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1,0.9 + random_func(1,3,true)/20)
         }
+        
+         if left_down or right_down {
+            move_cooldown[AT_NSPECIAL] = 60
+             sound_play(sound_get("sideb"),false,noone,1,0.9 + random_func(1,3,true)/20)
+             create_hitbox(AT_NSPECIAL,8,x,y)
+            if left_down && !right_down {
+                hit_player_obj.x = x - 40
+                spr_dir = -1
+            }
+  
+            if !left_down && right_down {
+                hit_player_obj.x = x + 40
+                spr_dir = 1
+            }
+        set_attack(AT_FSPECIAL)    
+           window = 2
+           window_timer = 0
+
+        }
+        
         
     }
     

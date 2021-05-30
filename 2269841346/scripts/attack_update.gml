@@ -464,7 +464,7 @@ if window == 6 {
 
 if attack == AT_TAUNT {
 	
-	if window == 2 
+
 	draw_indicator = false
 	
 	if cheapmode = 0 && hit_player_obj.url != "2273636433" && hit_player_obj.url != "1870768156"

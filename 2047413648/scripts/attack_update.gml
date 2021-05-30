@@ -1175,7 +1175,7 @@ if attack == AT_TAUNT{
    	}
    }
 	
-	if window == 2 && window_timer >= 29 && (taunt_down or get_gameplay_time() <= 100) {
+	if window == 2 && window_timer >= 29 && (taunt_down or get_gameplay_time() <= 120) {
 		
 		if get_player_color(player) == 7 {
 		sound_play(sound_get("Balesi"));

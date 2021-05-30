@@ -71,7 +71,7 @@ set_hitbox_value(AT_NSPECIAL, 8, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(AT_NSPECIAL, 8, HG_LIFETIME, 180);
 set_hitbox_value(AT_NSPECIAL, 8, HG_HITBOX_X, -8);
 set_hitbox_value(AT_NSPECIAL, 8, HG_HITBOX_Y, -30);
-set_hitbox_value(AT_NSPECIAL, 8, HG_PRIORITY, -1);
+set_hitbox_value(AT_NSPECIAL, 8, HG_PRIORITY, 0);
 set_hitbox_value(AT_NSPECIAL, 8, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 8, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 8, HG_PROJECTILE_SPRITE, sprite_get("floatink"));

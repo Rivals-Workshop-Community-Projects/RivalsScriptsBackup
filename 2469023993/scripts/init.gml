@@ -118,6 +118,13 @@ Hikaru_Title = "Shadow Trickster";
 
 arena_title = "The Shadow Trickster";
 
+boxing_title = "Numbra's Darkness";
+
 tcoart = sprite_get("noxtcodraw");
 
 miiverse_post = sprite_get("noxmiis");
+
+has_fail = true;
+fail_text = "Now you're but
+a shadow of your
+former self.";

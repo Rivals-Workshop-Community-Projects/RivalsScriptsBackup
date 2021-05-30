@@ -13,8 +13,8 @@ set_color_profile_slot( 0, 2, 0, 71, 237 );
 set_color_profile_slot_range( 2, 1, 1, 34 );
 
 // Skin
-set_color_profile_slot( 0, 3, 255, 185, 64 );
-set_color_profile_slot_range( 3, 7, 15, 11 );
+set_color_profile_slot( 0, 3, 255, 159, 41 );
+set_color_profile_slot_range( 3, 7, 6, 17 );
 
 // Gloves / Scarf
 set_color_profile_slot( 0, 4, 44, 45, 48 );
@@ -50,7 +50,7 @@ set_color_profile_slot( 1, 7, 36, 56, 63 ); //Shoes / Wand 2
 set_color_profile_slot( 2, 0, 252, 30, 30 ); //Cap
 set_color_profile_slot( 2, 1, 60, 17, 61 ); //Shirt
 set_color_profile_slot( 2, 2, 30, 159, 252 ); //Pants
-set_color_profile_slot( 2, 3, 255, 185, 64 ); //Skin
+set_color_profile_slot( 2, 3, 255, 159, 41 ); //Skin
 set_color_profile_slot( 2, 4, 255, 230, 230 ); //Gloves / Scarf
 set_color_profile_slot( 2, 5, 55, 28, 9 ); //Hair
 set_color_profile_slot( 2, 6, 255, 1, 1 ); //Shoes / Wand
@@ -100,7 +100,7 @@ set_color_profile_slot( 6, 7, 124, 111, 90 ); //Shoes / Wand 2
 set_color_profile_slot( 7, 0, 196, 196, 196 ); //Cap
 set_color_profile_slot( 7, 1, 59, 61, 61 ); //Shirt
 set_color_profile_slot( 7, 2, 30, 31, 31 ); //Pants
-set_color_profile_slot( 7, 3, 148, 92, 58 ); //Skin
+set_color_profile_slot( 7, 3, 117, 64, 33 ); //Skin
 set_color_profile_slot( 7, 4, 232, 231, 225 ); //Gloves / Scarf
 set_color_profile_slot( 7, 5, 26, 11, 0 ); //Hair
 set_color_profile_slot( 7, 6, 38, 25, 11 ); //Shoes / Wand
@@ -110,7 +110,7 @@ set_color_profile_slot( 7, 7, 255, 208, 43 ); //Shoes / Wand 2
 set_color_profile_slot( 8, 0, 51, 51, 255 ); //Cap
 set_color_profile_slot( 8, 1, 51, 51, 255 ); //Shirt
 set_color_profile_slot( 8, 2, 190, 190, 255 ); //Pants
-set_color_profile_slot( 8, 3, 255, 185, 64 ); //Skin
+set_color_profile_slot( 8, 3, 255, 159, 41 ); //Skin
 set_color_profile_slot( 8, 4, 190, 190, 255 ); //Gloves / Scarf
 set_color_profile_slot( 8, 5, 53, 24, 10 ); //Hair
 set_color_profile_slot( 8, 6, 2, 2, 150 ); //Shoes / Wand
@@ -120,7 +120,7 @@ set_color_profile_slot( 8, 7, 190, 190, 255 ); //Shoes / Wand 2
 set_color_profile_slot( 9, 0, 109, 0, 125 ); //Cap
 set_color_profile_slot( 9, 1, 109, 0, 125 ); //Shirt
 set_color_profile_slot( 9, 2, 234, 179, 0 ); //Pants
-set_color_profile_slot( 9, 3, 255, 185, 64 ); //Skin
+set_color_profile_slot( 9, 3, 255, 159, 41 ); //Skin
 set_color_profile_slot( 9, 4, 234, 179, 0 ); //Gloves / Scarf
 set_color_profile_slot( 9, 5, 55, 28, 9 ); //Hair
 set_color_profile_slot( 9, 6, 109, 0, 125 ); //Shoes / Wand
@@ -150,7 +150,7 @@ set_color_profile_slot( 11, 7, 168, 110, 32 ); //Shoes / Wand 2
 set_color_profile_slot( 12, 0, 128, 128, 133 ); //Cap
 set_color_profile_slot( 12, 1, 62, 62, 66 ); //Shirt
 set_color_profile_slot( 12, 2, 128, 128, 133 ); //Pants
-set_color_profile_slot( 12, 3, 219, 164, 71 ); //Skin
+set_color_profile_slot( 12, 3, 255, 159, 41 ); //Skin
 set_color_profile_slot( 12, 4, 99, 163, 101 ); //Gloves / Scarf
 set_color_profile_slot( 12, 5, 53, 37, 29 ); //Hair
 set_color_profile_slot( 12, 6, 52, 52, 62 ); //Shoes / Wand
@@ -160,7 +160,7 @@ set_color_profile_slot( 12, 7, 99, 163, 101 ); //Shoes / Wand 2
 set_color_profile_slot( 13, 0, 0, 0, 255 ); //Cap
 set_color_profile_slot( 13, 1, 2, 0, 117 ); //Shirt
 set_color_profile_slot( 13, 2, 0, 255, 255 ); //Pants
-set_color_profile_slot( 13, 3, 255, 185, 64 ); //Skin
+set_color_profile_slot( 13, 3, 255, 159, 41 ); //Skin
 set_color_profile_slot( 13, 4, 0, 255, 255 ); //Gloves / Scarf
 set_color_profile_slot( 13, 5, 53, 24, 10 ); //Hair
 set_color_profile_slot( 13, 6, 0, 5, 92 ); //Shoes / Wand
@@ -189,6 +189,6 @@ set_color_profile_slot( 15, 7, 0, 112, 232 ); //Shoes / Wand 2
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"Cap","colors":[{"r":34,"g":50,"b":255,"main":true},{"r":20,"g":31,"b":173}]},{"name":"Shirt","colors":[{"r":16,"g":12,"b":88,"main":true},{"r":9,"g":7,"b":51}]},{"name":"Pants","colors":[{"r":0,"g":71,"b":237,"main":true},{"r":0,"g":46,"b":153}]},{"name":"Skin","colors":[{"r":255,"g":185,"b":64,"main":true},{"r":230,"g":134,"b":25}]},{"name":"Gloves / Scarf","colors":[{"r":44,"g":45,"b":48,"main":true},{"r":24,"g":25,"b":27}]},{"name":"Hair","colors":[{"r":55,"g":28,"b":9,"main":true},{"r":36,"g":18,"b":6}]},{"name":"Shoes / Wand","colors":[{"r":157,"g":157,"b":255,"main":true},{"r":127,"g":127,"b":207}]},{"name":"Shoes / Wand 2","colors":[{"r":38,"g":241,"b":255,"main":true},{"r":0,"g":188,"b":201}]}]}
+{"formatversion":1,"data":[{"name":"Cap","colors":[{"r":34,"g":50,"b":255,"main":true},{"r":20,"g":31,"b":173}]},{"name":"Shirt","colors":[{"r":16,"g":12,"b":88,"main":true},{"r":9,"g":7,"b":51}]},{"name":"Pants","colors":[{"r":0,"g":71,"b":237,"main":true},{"r":0,"g":46,"b":153}]},{"name":"Skin","colors":[{"r":255,"g":159,"b":41,"main":true},{"r":213,"g":110,"b":24}]},{"name":"Gloves / Scarf","colors":[{"r":44,"g":45,"b":48,"main":true},{"r":24,"g":25,"b":27}]},{"name":"Hair","colors":[{"r":55,"g":28,"b":9,"main":true},{"r":36,"g":18,"b":6}]},{"name":"Shoes / Wand","colors":[{"r":157,"g":157,"b":255,"main":true},{"r":127,"g":127,"b":207}]},{"name":"Shoes / Wand 2","colors":[{"r":38,"g":241,"b":255,"main":true},{"r":0,"g":188,"b":201}]}]}
 === END JSON PALETTE ===
 */

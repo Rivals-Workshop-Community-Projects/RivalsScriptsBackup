@@ -173,10 +173,16 @@ if ("practice" in self)
 						AddText("");
 						AddText("Added Final Smash");
 						AddText("");
-						AddText("-----------------");
+						LineBreak();
 						AddText("v1.8.1 - 25 May 2021");
 						AddText("");
 						AddText("Added a wish");
+						AddText("");
+						LineBreak();
+						AddText("v1.8.2 - 28 May 2021");
+						AddText("");
+						AddText("Bugfix Wish - Reduced the chance of false positives in regular battles");
+						AddText("Bugfix Wish - Mashing A now doesn't skip gaining coins");
 						break;
 				}
 				DrawTutorialBlock();
@@ -364,4 +370,9 @@ if ("practice" in self)
 	for (var i = 0; i < tutLength; ++i)
 		length = max(length, string_width_ext(tutText[i], 0, room_width));
 	return length;
+}
+
+#define LineBreak()
+{
+	AddText("-----------------");
 }

@@ -971,9 +971,9 @@ nfloat = 0
   	y -= 5
   }
   
-    if has_hit_player && window == 3 && window_timer < 15 && hitpause {
-  		hit_player_obj.x += floor((x + 20*spr_dir - hit_player_obj.x) / 7)
-  		hit_player_obj.y += floor((y - 20 - hit_player_obj.y) / 7)
+    if has_hit_player && window == 3 && window_timer < 15 && hitpause && hit_player_obj.state_cat == SC_HITSTUN{
+  		hit_player_obj.x += floor((x + 20*spr_dir - hit_player_obj.x) / 4)
+  		hit_player_obj.y += floor((y - 20 - hit_player_obj.y) / 4)
   	}
   	
   if window == 1 && window_timer == 2 && !hitpause{
@@ -1058,9 +1058,9 @@ nfloat = 0
   }
   
   
-    if has_hit_player && window == 3 && window_timer < 15 && hitpause {
-  		hit_player_obj.x += floor((x  - hit_player_obj.x) / 7)
-  		hit_player_obj.y += floor((y - 30 - hit_player_obj.y) / 7)
+    if has_hit_player && window == 3 && window_timer < 15 && hitpause && hit_player_obj.state_cat == SC_HITSTUN {
+  		hit_player_obj.x += floor((x  - hit_player_obj.x) / 4)
+  		hit_player_obj.y += floor((y - 30 - hit_player_obj.y) / 4)
   	}
   	
   if window == 1 && window_timer == 2 && !hitpause{

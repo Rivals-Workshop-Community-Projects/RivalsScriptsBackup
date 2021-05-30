@@ -192,6 +192,9 @@ tco_random = 0;
 arena_title = "The Legendary Lightener";
 arena_short_name = "Kris"
 
+has_fail = true;
+fail_text = "Curated";
+
 // Battle Text
 spr_getfucked = sprite_get("spookymonth")
 

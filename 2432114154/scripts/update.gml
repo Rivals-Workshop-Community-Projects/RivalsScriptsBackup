@@ -534,8 +534,8 @@ set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("mfx_star"));
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 0);
 
 
-set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 4);
+set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 8);
 
@@ -544,7 +544,7 @@ set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 12);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 0);
-set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 100);
