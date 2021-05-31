@@ -154,6 +154,7 @@ if my_hitboxID.attack != AT_USTRONG and my_hitboxID.attack != AT_FSTRONG and my_
 if uphit == 0 && (attack == AT_UAIR or (my_hitboxID.attack == AT_UTILT and my_hitboxID.hbox_num != 3)
 or my_hitboxID.attack == AT_USTRONG or my_hitboxID.attack == AT_USPECIAL ){
 	uphit = 30
+	downhit = 30
 	sound_play(asset_get("sfx_waterwarp_start"),false,noone,1.2,1.35)
 		sound_play(asset_get("sfx_boss_vortex_end"),false,noone,1,1.8)
 	with hit_player_obj {
@@ -166,6 +167,7 @@ or my_hitboxID.attack == AT_USTRONG or my_hitboxID.attack == AT_USPECIAL ){
 if downhit == 0 && (my_hitboxID.attack == AT_DSPECIAL or my_hitboxID.attack == AT_DAIR or my_hitboxID.attack == AT_EXTRA_3
 or my_hitboxID.attack == AT_DTILT or my_hitboxID.attack == AT_DSTRONG){
 	downhit = 30
+	uphit = 30
 	sound_play(asset_get("sfx_waterwarp_start"),false,noone,1.2,0.8)
 	sound_play(asset_get("sfx_boss_vortex_end"),false,noone,1,1.4)
 	with hit_player_obj {

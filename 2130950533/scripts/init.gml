@@ -102,6 +102,7 @@ bubble_y = 8;
 
 emoji_splat = hit_fx_create(sprite_get("emoji_splat"), 12);
 laugh_splat = hit_fx_create(sprite_get("laugh_splat"), 120);
+emoji_rising = hit_fx_create(sprite_get("emoji_rising"), 26);
 reverse_laugh_splat = hit_fx_create(sprite_get("reverse_laugh_splat"), 120);
 set_hit_particle_sprite(1, sprite_get("emoji_particle"));
 
@@ -128,6 +129,9 @@ weak_outline_color = [25, 25, 25];
 outline_off_duration = 18;
 outline_off_countdown = 0;
 default_outline_color = outline_color;
+// fspecial
+num_emojis_active = 0;
+max_num_emojis_active = 3;
 // These only apply to rune G - rapid-fire emojis
 prev_throw_angle = 0;
 max_throw_increment = 7;

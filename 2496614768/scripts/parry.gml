@@ -1,5 +1,5 @@
 sound_play(sound_get("RI"))
-sound_play(sound_get("hit2"))
+sound_play(sound_get("hith2"))
 
 
 if !timebreak {

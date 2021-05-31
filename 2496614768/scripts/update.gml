@@ -89,7 +89,7 @@ if shocktimer > 0 && !hitpause && hit_player_obj.state_cat != SC_HITSTUN{
 }
 
 if shocktimer <= 0 && shock > 0{
-	 shocktimer = 300
+	 shocktimer += 300
 	 shock -= 1
 	 sound_play(asset_get("sfx_absa_singlezap1"),false,noone,0.7,0.6 + random_func(1,3,true)/10) 
 	  	    ais2 = sprite_index

@@ -5,7 +5,7 @@ set_attack_value(AT_FAIR, AG_CATEGORY, 1);
 set_attack_value(AT_FAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_FAIR, AG_LANDING_LAG, 8);
 
-set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 11);
 set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, asset_get("sfx_shovel_swing_heavy2"));
@@ -23,7 +23,7 @@ set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 
 
-set_window_value(AT_FAIR, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FAIR, 4, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_FAIR, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FAIR, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_FAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);

@@ -4,6 +4,20 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 }
 
 if (attack == AT_NSPECIAL) {
+    // Decrease overall momentum during this move
+    var limit = 2;
+    var ease_amount = 0.3;
+    if (vsp > limit) {
+        vsp -= ease_amount;
+    } else if (abs(vsp) > limit) {
+        vsp += ease_amount;
+    }
+    if (hsp > limit) {
+        hsp -= ease_amount;
+    } else if (abs(hsp) > limit) {
+        hsp += ease_amount;
+    }
+    
     // If the joke is ready, fire
     if (window == 1) {
         if (joke_primed) {
@@ -116,7 +130,7 @@ if (attack == AT_FSPECIAL) {
     
     if (has_rune("G")) { // Rapid-fire emojis
         if (window == 2) {
-            if (window_timer == get_window_value(attack, 2, AG_WINDOW_LENGTH)) {
+            if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
                 // Decide which direction to throw, and slowly change the angle in that direction
                 var curr_throw_angle = prev_throw_angle;
                 if (up_down) {
@@ -152,7 +166,7 @@ if (attack == AT_FSPECIAL) {
                 prev_throw_angle = curr_throw_angle;
             }
         } else if (window == 3) {
-            if (window_timer == get_window_value(attack, 3, AG_WINDOW_LENGTH)) {
+            if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
                 if (special_down) {
                     window = 1;
                     window_timer = 0;
@@ -178,7 +192,7 @@ if (attack == AT_FSPECIAL) {
         }
     } else { // Default throw
         if (window == 2) {
-            if (window_timer == get_window_value(attack, 2, AG_WINDOW_LENGTH)) {
+            if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
                 // Decide which direction to throw
                 if (up_down) {
                     window = 6;
@@ -193,7 +207,8 @@ if (attack == AT_FSPECIAL) {
             }
         } else if (window == 3) {
             if ((window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))
-                && (special_down))
+                && (special_down)
+                && (num_emojis_active < max_num_emojis_active))
             {
                 window = 1;
                 window_timer = 0;

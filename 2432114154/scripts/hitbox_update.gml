@@ -4,6 +4,14 @@ plasma_safe = true
 
 if attack == AT_EXTRA_2 && hbox_num < 5{
 	
+	with player_id {
+		if other.hitbox_timer < 10 {
+		uphit = 0
+		downhit = 0
+		sidehit = 0
+		neutralhit = 0
+		}
+	}
 
 	spr_dir = player_id.finaldir 
 	

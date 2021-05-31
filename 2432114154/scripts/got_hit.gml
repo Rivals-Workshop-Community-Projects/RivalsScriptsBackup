@@ -41,6 +41,7 @@ if (hit_player_obj.attack == AT_FTILT or hit_player_obj.attack == AT_FAIR or hit
 if (hit_player_obj.attack == AT_UTILT or hit_player_obj.attack == AT_UAIR or hit_player_obj.attack == AT_USTRONG)
    && uphit != 0{
     uphit = 0
+    downhit = 0
     allhit = 20
     sound_play(asset_get("sfx_waterhit_medium"),false,noone,1,1.3)
 }
@@ -48,6 +49,7 @@ if (hit_player_obj.attack == AT_UTILT or hit_player_obj.attack == AT_UAIR or hit
 if (hit_player_obj.attack == AT_DTILT or hit_player_obj.attack == AT_DAIR or hit_player_obj.attack == AT_DSTRONG)
    && downhit != 0{
     downhit = 0
+    uphit = 0
     allhit = 20
     sound_play(asset_get("sfx_waterhit_medium"),false,noone,1,0.7)
 }

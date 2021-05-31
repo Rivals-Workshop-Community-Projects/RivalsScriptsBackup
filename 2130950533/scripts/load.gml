@@ -47,6 +47,7 @@ sprite_change_offset("plat", 65, 94);
 
 sprite_change_offset("emoji_splat", 31, 31);
 sprite_change_offset("laugh_splat", 65, 63);
+sprite_change_offset("emoji_rising", 19, 79);
 sprite_change_offset("reverse_laugh_splat", 64, 63);
 sprite_change_offset("emoji_particle", 31, 31);
 sprite_change_offset("nspecial_proj", 65, 94);

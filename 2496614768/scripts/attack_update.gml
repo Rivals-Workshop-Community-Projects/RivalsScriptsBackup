@@ -111,8 +111,8 @@ switch attack {
     }
     
     if window == 2 && has_hit_player && !hitpause && hit_player_obj.state_cat == SC_HITSTUN {
-        hit_player_obj.x += floor((x + 50*spr_dir - hit_player_obj.x)/10) 
-        hit_player_obj.y += floor((y + 10 - hit_player_obj.y)/4) 
+        hit_player_obj.hsp = (x + 50*spr_dir - hit_player_obj.x)/4
+        hit_player_obj.vsp = (y + 10 - hit_player_obj.y)/4
         window_timer += 0.3
     }
         
@@ -272,6 +272,9 @@ switch attack {
     }
     
     if has_hit_player && window < 5 && hitpause && hit_player_obj.state_cat == SC_HITSTUN{
+        if hitpause {
+            window_timer += 1
+        }
         hit_player_obj.x += floor((x + 10*spr_dir - hit_player_obj.x)/8) 
         hit_player_obj.y += floor((y + 30 - hit_player_obj.y)/8) 
         if old_vsp > 0 {
@@ -515,7 +518,7 @@ switch attack {
         state_timer -= 1
     }
     if window == 1 {
-        hsp /= 1.2
+        hsp /= 1.1
     }
     
     if window < 5 && free {

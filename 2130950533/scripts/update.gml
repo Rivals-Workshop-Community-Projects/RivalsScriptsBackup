@@ -1,7 +1,15 @@
 // Update the emoji aura timer
 if (comedy_zone_charges_granted > 0) {
     joke_aura_timer = (joke_aura_timer + 1) % joke_aura_timer_max;
+    
+    // Make emojis emanate at slightly random offsets
+    if ((joke_aura_timer % 8) == 0) {
+        var x_offset = random_func(0, 50, false) - 25;
+        var y_offset = random_func(1, 40, false) - 20 - (char_height/2);
+        spawn_hit_fx(x + x_offset, y + y_offset, emoji_rising);
+    }
 }
+
 // Flash intermittently while fully charged
  if (flash_countdown > 0) {
     flash_countdown--;
@@ -42,6 +50,21 @@ if (((state != PS_ATTACK_AIR) && (state != PS_ATTACK_GROUND))
     prev_throw_angle = 0;
 }
 
+// Detect number of active projectiles and limit usage beyond a limit
+num_emojis_active = 0;
+with (asset_get("pHitBox")) {
+    if ((attack == AT_FSPECIAL) && (player == other.player)) {
+        other.num_emojis_active++;
+    }
+}
+//print_debug("Num emojis active = " + string(num_emojis_active));
+// Don't apply the limit to rapid-fire emojis
+if ((num_emojis_active >= max_num_emojis_active)
+    && (!has_rune("G"))) // Rapid-fire emojis
+{
+    move_cooldown[AT_FSPECIAL] = 2;
+}
+
 // Move name thingy to avoid overlapping during certain moves
 // It has to be set the frame before the window in question begins and repealed the frame before it ends.
 default_height = 53;
@@ -63,33 +86,38 @@ if (state_cat != SC_GROUND_NEUTRAL) {
             if (!has_hit) {
                 extra_frames = 1;
             }
-            if (((window == 2) && (window_timer == get_window_value(attack, 2, AG_WINDOW_LENGTH)))
-                || ((window == 3) && (window_timer < get_window_value(attack, 3, AG_WINDOW_LENGTH))))
+            if (((window == 2) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)))
+                || ((window == 3) && (window_timer < 3)))
             {
-                char_height = 128;
-            }  else if (((window == 3) && (window_timer == get_window_value(attack, 3, AG_WINDOW_LENGTH)))
-                || ((window == 4) && (window_timer < get_window_value(attack, 4, AG_WINDOW_LENGTH))))
+                char_height = 142;
+            }  else if (((window == 3) && (window_timer >= 3))
+                || ((window == 3) && (window_timer < get_window_value(attack, window, AG_WINDOW_LENGTH))))
             {
-                char_height = 116;
-            } else if (((window == 4) && (window_timer == get_window_value(attack, 4, AG_WINDOW_LENGTH)))
-                || ((window == 5) && (window_timer < extra_frames + get_window_value(attack, 5, AG_WINDOW_LENGTH))))
+                char_height = 132;
+            }  else if (((window == 3) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)))
+                || ((window == 4) && (window_timer < get_window_value(attack, window, AG_WINDOW_LENGTH))))
             {
-                char_height = 88;
-            } else if (((window == 5) && (window_timer == get_window_value(attack, 5, AG_WINDOW_LENGTH)))
-                || ((window == 6) && (window_timer < extra_frames + get_window_value(attack, 6, AG_WINDOW_LENGTH))))
+                char_height = 122;
+            } else if (((window == 4) && (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)))
+                || ((window == 5) && (window_timer < extra_frames + 2)))
             {
-                char_height = 66;
-            } else if (((window == 6) && (window_timer == get_window_value(attack, 6, AG_WINDOW_LENGTH)))
-                || ((window == 7) && (window_timer < extra_frames + get_window_value(attack, 7, AG_WINDOW_LENGTH))))
+                char_height = 94;
+            } else if (((window == 5) && (window_timer >= extra_frames + 2))
+                && ((window == 5) && (window_timer <= (extra_frames * 2) + 3)))
             {
-                char_height = 60;
-            } else if (((window == 7) && (window_timer == get_window_value(attack, 7, AG_WINDOW_LENGTH)))
-                || ((window == 8) && (window_timer < extra_frames + get_window_value(attack, 8, AG_WINDOW_LENGTH))))
+                char_height = 68;
+            } else if (((window == 5) && (window_timer > (extra_frames * 2) + 3))
+                && ((window == 5) && (window_timer < (extra_frames * 3) + 6)))
+            {
+                char_height = 62;
+            } else if (((window == 5) && (window_timer >= (extra_frames * 3) + 6))
+                && ((window == 5) && (window_timer < (extra_frames * 4) + get_window_value(attack, window, AG_WINDOW_LENGTH))))
             {
                 char_height = 58;
             } else {
                 char_height = default_height;
             }
+            //print_debug("window = " + string(window) + ", window_timer =  " + string(window_timer) + ", char_height = " + string(char_height));
             break;
         case AT_USPECIAL :
             if (((window == 6) && (window_timer >= 8))

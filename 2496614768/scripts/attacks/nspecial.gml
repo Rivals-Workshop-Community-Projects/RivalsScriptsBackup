@@ -15,7 +15,7 @@ set_window_value(AT_NSPECIAL, 7, AG_WINDOW_INVINCIBILITY, 2);
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_INVINCIBILITY, 2);
 
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_ori_bash_projectile"));

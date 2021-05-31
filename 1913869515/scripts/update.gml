@@ -1,17 +1,7 @@
-
-
-
-
-if instance_number(oPlayer) == 2 {
-	
-	
-	
+if !hitpause { 
+    finisher = 0
+    finisherinc = 0
 }
-
-   	if !hitpause { 
-   		finisher = 0
-        finisherinc = 0
-   	}
    	
 if !hitpause && (state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR){
 	shsp = (shsp + hsp)/2
@@ -19,14 +9,11 @@ if !hitpause && (state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR){
 }
 
 if !instance_exists(hit_player_obj){
-
-hit_player_obj = self
-
+    hit_player_obj = self
 }
 
 if state == PS_PRATFALL {
-	can_fast_fall = true
-	
+	can_fast_fall = true	
 }
 if state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND {
 	zbayo = 0
@@ -36,221 +23,193 @@ if hitpause {
 	move_cooldown[AT_EXTRA_1] += 1
 }
 
-
 if hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 {
-zbayo = 0 
-dmhit = 0
- if get_player_color(player) == 7{
-     
-     sound_play(sound_get("bruh"));
-     
- }
- 
+    zbayo = 0 
+    dmhit = 0
+    if get_player_color(player) == 7{
+        sound_play(sound_get("bruh")); 
+    }
 }
 
 if hit_player_obj.state == PS_DEAD {
 	dmhit = 0
- if get_player_color(player) == 7{
-     
-     sound_play(sound_get("bruh"));
-     
- }
- 
+    if get_player_color(player) == 7{ 
+        sound_play(sound_get("bruh"));     
+    }
 }
 
 
 if(get_gameplay_time() == 1){
-
-inx = x
-iny = y
-	
+    inx = x
+    iny = y
 }
 
-if(get_gameplay_time() == 2){
-	
-
-var shortest_dist = 9999;
-			var shortest_id = noone;
+if(get_gameplay_time() == 2) {
+    var shortest_dist = 9999;
+    var shortest_id = noone;
 			
-			with (asset_get("oPlayer")) {
-				if (player != other.player) {
-					var curr_dist = point_distance(x,y,other.x,other.y);
-					if (curr_dist < shortest_dist) {
-						shortest_dist = curr_dist;
-						shortest_id = id;
-					}
-				}
-			}
+    with (asset_get("oPlayer")) {
+        if (player != other.player) {
+            var curr_dist = point_distance(x,y,other.x,other.y);
+            if (curr_dist < shortest_dist) {
+                shortest_dist = curr_dist;
+                shortest_id = id;
+            }
+        }
+    }
 			
-if x < shortest_id.x {			
-if shortest_id.url == "1913869515" or shortest_id.url == "2069283406" or shortest_id.url == "1997619532" 
-or shortest_id.url == "2085832560" or shortest_id.url == "2108469290" or shortest_id.url == "2047413648"
-or shortest_id.url == "2154720280" or shortest_id.url == "2136624834"
-{
-create_hitbox(AT_NSPECIAL , 20 , shortest_id.x , shortest_id.y );      		
-}
-}
-
-
+    if x < shortest_id.x {			
+        if shortest_id.url == "1913869515" or shortest_id.url == "2069283406" or shortest_id.url == "1997619532" 
+        or shortest_id.url == "2085832560" or shortest_id.url == "2108469290" or shortest_id.url == "2047413648"
+        or shortest_id.url == "2154720280" or shortest_id.url == "2136624834" {
+            create_hitbox(AT_NSPECIAL , 20 , shortest_id.x , shortest_id.y );      		
+        }
+    }
 }
 
 
 if hit_player_obj != self {
-if introtimer = 1 {
-	        visible = true
-		  spawn_hit_fx( x, y, lighten)
-	x = inx + (45 * introhit)
-	y = iny
-	introtimer = 0
-	hitpause = 0
-	spawn_hit_fx( x, y, SC)
-	
-	if introhit = 1 {
-		sound_play(asset_get("sfx_abyss_explosion"),false, noone, );
-		sound_play(sound_get("counterhit"),false, noone, 2);
-		hsp = -7
-		vsp = 0
-		spr_dir = 1
-		
-	}
-	
-	if introhit = -1 {
-		hsp = 7
-		vsp = 0
-		spr_dir = -1
-	}
-	
-}
+    if introtimer = 1 {
+        visible = true
+        spawn_hit_fx( x, y, lighten)
+        x = inx + (45 * introhit)
+        y = iny
+        introtimer = 0
+        hitpause = 0
+        spawn_hit_fx( x, y, SC)
+        
+        if introhit = 1 {
+            sound_play(asset_get("sfx_abyss_explosion"),false, noone, );
+            sound_play(sound_get("counterhit"),false, noone, 2);
+            hsp = -7
+            vsp = 0
+            spr_dir = 1
+            
+        }
+        
+        if introhit = -1 {
+            hsp = 7
+            vsp = 0
+            spr_dir = -1
+        }   
+    }
 
-	
+    if intro = 1 && instance_number(oPlayer) == 2 {
 
-if intro = 1 && instance_number(oPlayer) == 2 {
+        if (hit_player_obj.url == "1913869515" or hit_player_obj.url == "2069283406" or hit_player_obj.url == "1997619532" 
+        or hit_player_obj.url == "2085832560" or hit_player_obj.url == "2108469290" or hit_player_obj.url == "2047413648"
+        or hit_player_obj.url == "2154720280" or hit_player_obj.url == "2136624834")
+        &&  hit_player_obj.introtimer != 0 {
+            /// Zetta Alex Mayu Katie Saji Uza Nolan Elice
+            take_damage( player, -1 , -1 )		
+                
+            if introtimer = -1 {
+                introtimer = 300
+            }
 
-if (hit_player_obj.url == "1913869515" or hit_player_obj.url == "2069283406" or hit_player_obj.url == "1997619532" 
-or hit_player_obj.url == "2085832560" or hit_player_obj.url == "2108469290" or hit_player_obj.url == "2047413648"
-or hit_player_obj.url == "2154720280" or hit_player_obj.url == "2136624834")
-&&  hit_player_obj.introtimer != 0{
-
-	take_damage( player, -1 , -1 )		
-	/// Zetta Alex Mayu Katie Saji Uza Nolan Elice
-if introtimer = -1{
-	introtimer = 300
-	
-}
-
-if get_gameplay_time() % 30 == 0 {
-        spawn_hit_fx( x, y , shit5 )
-        spr_dir *= -1
-}
+            if get_gameplay_time() % 30 == 0 {
+                spawn_hit_fx( x, y , shit5 )
+                spr_dir *= -1
+            }
 
 
-if get_gameplay_time() % 20 == 0 {
+            if get_gameplay_time() % 20 == 0 {
+                spawn_hit_fx( x, y , shit3 )
+            }
 
-        spawn_hit_fx( x, y , shit3 )
-}
+            if get_gameplay_time() % 10 == 0 {
+                spawn_hit_fx( x, y , shit1 )
+            }
 
-if get_gameplay_time() % 10 == 0 {
-        spawn_hit_fx( x, y , shit1 )
-}
+            if state != PS_IDLE_AIR && introtimer > 1 && get_gameplay_time() % 5 = 0  {
+                set_state (PS_DOUBLE_JUMP)
+            }
+            if introhit == 1 {
+                if get_gameplay_time() % 20 = random_func(10, 20, true) {
+                sound_play(asset_get("sfx_quick_dodge"),false, noone, 0.6);	
+                sound_play(sound_get("RI"),false, noone, 0.8);
+                spawn_hit_fx( x, y, lighten)
+                }
+                
+                if get_gameplay_time() % 20 = 10 {
+                    spawn_hit_fx( x, y, 302)
+                    sound_play(asset_get("Spacecut"),false, noone, 0.6);
+                }
+                
+                if get_gameplay_time() % 30 = 15 {
+                    spawn_hit_fx( x, y, 305)
+                    sound_play(sound_get("slicel"),false, noone, 0.6);
+                }
+                
+                if get_gameplay_time() % 40 = 20 {
+                    visible *= -1
+                    draw_indicator *= -1		
+                    spawn_hit_fx( x, y, SC)
+                    sound_play(asset_get("counterhit"),false, noone, 0.6);
+                }
+            }
 
-if state != PS_IDLE_AIR && introtimer > 1 && get_gameplay_time() % 5 = 0  {
-	set_state (PS_DOUBLE_JUMP)
-}
-if introhit == 1 {
-	if get_gameplay_time() % 20 = random_func(10, 20, true) {
-	  sound_play(asset_get("sfx_quick_dodge"),false, noone, 0.6);	
-      sound_play(sound_get("RI"),false, noone, 0.8);
-	  spawn_hit_fx( x, y, lighten)
-	}
-	
-	if get_gameplay_time() % 20 = 10 {
-		spawn_hit_fx( x, y, 302)
-		sound_play(asset_get("Spacecut"),false, noone, 0.6);
-	}
-	
-	if get_gameplay_time() % 30 = 15 {
-		spawn_hit_fx( x, y, 305)
-		sound_play(sound_get("slicel"),false, noone, 0.6);
-	}
-	
-	if get_gameplay_time() % 40 = 20 {
-visible *= -1
-draw_indicator *= -1		
-		spawn_hit_fx( x, y, SC)
-		sound_play(asset_get("counterhit"),false, noone, 0.6);
-	}
-}
+            if introhit == -1 {
+                if get_gameplay_time() % 20 = random_func(10, 20, true) - 10 {
+                sound_play(asset_get("sfx_roll"),false, noone, 0.6);	
+                sound_play(sound_get("counterhit"),false, noone, 0.8);
+                spawn_hit_fx( x, y , darken )	
+                }
+                if get_gameplay_time() % 20 = 0 {
+                    spawn_hit_fx( x, y, 302)
+                    sound_play(asset_get("Spacecut"),false, noone, 0.6);
+                }
+                
+                if get_gameplay_time() % 30 = 0 {
+                    spawn_hit_fx( x, y, 305)
+                        sound_play(sound_get("RI2"),false, noone, 0.6);
+                }
+                
+                if get_gameplay_time() % 40 = 0 {
+                    spawn_hit_fx( x, y, SC)
+                    sound_play(asset_get("counterhit"),false, noone, 0.6);
+                }
+            }
 
-if introhit == -1 {
-	if get_gameplay_time() % 20 = random_func(10, 20, true) - 10 {
-	  sound_play(asset_get("sfx_roll"),false, noone, 0.6);	
-	   sound_play(sound_get("counterhit"),false, noone, 0.8);
-	  spawn_hit_fx( x, y , darken )	
-	}
-	if get_gameplay_time() % 20 = 0 {
-		spawn_hit_fx( x, y, 302)
-		sound_play(asset_get("Spacecut"),false, noone, 0.6);
-	}
-	
-	if get_gameplay_time() % 30 = 0 {
-		spawn_hit_fx( x, y, 305)
-			sound_play(sound_get("RI2"),false, noone, 0.6);
-	}
-	
-	if get_gameplay_time() % 40 = 0 {
-		spawn_hit_fx( x, y, SC)
-		sound_play(asset_get("counterhit"),false, noone, 0.6);
-	}
-}
+            if get_gameplay_time() % 2 = 1 && introtimer > 1 {
+                visible = 0
+            }
+            if get_gameplay_time() % 2 = 0 && introtimer > 1 {
+                visible = true
+            }
+                
+            if get_gameplay_time() % 3 = 0 && introtimer > 1 {
+                hsp = (room_width/2 - x + 100  - random_func(1, 200, true)) / 2 
+                vsp = (room_height/2 - y - 80  - random_func(2, 160, true)) / 4
+            }
 
-if get_gameplay_time() % 2 = 1 && introtimer > 1 {
-				visible = 0
-}
-if get_gameplay_time() % 2 = 0 && introtimer > 1 {
-				visible = true
-}
-	
-if get_gameplay_time() % 3 = 0 && introtimer > 1 {
-hsp = (room_width/2 - x + 100  - random_func(1, 200, true)) / 2 
-vsp = (room_height/2 - y - 80  - random_func(2, 160, true)) / 4
-}
-
-if introtimer > 0 {
-	
-		 with (asset_get("oPlayer")) {
-	if (player != other.player) {
-		
-		if hitpause {
-		with (asset_get("pHitBox")) {
-        if player_id == other.id {
-          destroyed = true;
+            if introtimer > 0 {
+                with (asset_get("oPlayer")) {
+                    if (player != other.player) {
+                        if hitpause {
+                            with (asset_get("pHitBox")) {
+                                if player_id == other.id {
+                                    destroyed = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            
+                with (asset_get("pHitBox")) {
+                    if(player_id == other.id) {
+                        destroyed = true;
+                    }
+                }
+                introtimer -= 1
+                if introhit = -1 {
+                    if get_gameplay_time() % 2 = 0 {
+                        spawn_hit_fx( x, y , darken )
+                    }
+                }
+            }
         }
     }
-	}
-    
-    
-	}
-	
-   }
-   
-				with (asset_get("pHitBox")) {
-if(player_id == other.id) {
-    destroyed = true;
-}
-			}
-	introtimer -= 1
-	
-	
-	 if introhit = -1 {
-	if get_gameplay_time() % 2 = 0 {
-		spawn_hit_fx( x, y , darken )	
-	}
-	}
-}
-
-}
-
-}
 }
 
 ////////////////
@@ -289,238 +248,185 @@ if zbayo == -1 && state_timer % 3 = 0 && !hitpause {
 }
 
 if zbayo > 0 {
-	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 1);
-	set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 1);
-	set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 3);
-	
-	set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 3);
-	set_hitbox_value(AT_UAIR, 3, HG_DAMAGE, 3);
-	set_hitbox_value(AT_UAIR, 3, HG_ANGLE, 80);
-	
-	set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 65);
-	set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 65);
+    set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 1);
+    set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 1);
+    set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 3);
 
-set_hitbox_value(AT_UAIR, 3, HG_WIDTH, 151);
-set_hitbox_value(AT_UAIR, 3, HG_HEIGHT, 171);
+    set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 3);
+    set_hitbox_value(AT_UAIR, 3, HG_DAMAGE, 3);
+    set_hitbox_value(AT_UAIR, 3, HG_ANGLE, 80);
 
-set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 205);
-set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 200);
+    set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 65);
+    set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 65);
 
-set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, 0);
-set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, 0);
+    set_hitbox_value(AT_UAIR, 3, HG_WIDTH, 151);
+    set_hitbox_value(AT_UAIR, 3, HG_HEIGHT, 171);
 
-set_window_value(AT_UAIR, 4, AG_WINDOW_TYPE, 7);
+    set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 205);
+    set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 200);
+
+    set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, 0);
+    set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, 0);
+
+    set_window_value(AT_UAIR, 4, AG_WINDOW_TYPE, 7);
 
 	if get_gameplay_time() % 2 == 0 {
-	create_hitbox(AT_DSPECIAL , 1 , floor(x + ( -80  - random_func(3, 50, true)) * spr_dir)  ,floor( y - 125 + random_func(4, 50, true)))
+	    create_hitbox(AT_DSPECIAL , 1 , floor(x + ( -80  - random_func(3, 50, true)) * spr_dir)  ,floor( y - 125 + random_func(4, 50, true)))
 	}
 } else {
-	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 7);
-	set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 5);
-	set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 7);
-	set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 9);
-	set_hitbox_value(AT_UAIR, 3, HG_DAMAGE, 8);
-	
-	set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 45);
-	set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 55);
+    set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 7);
+    set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 5);
+    set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 7);
+    set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 9);
+    set_hitbox_value(AT_UAIR, 3, HG_DAMAGE, 8);
+    
+    set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 45);
+    set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 55);
     
     set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 55);
     set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 50);
 
     set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .5);
     set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .4);
-
 }
 
 if zFhittimer == 1 {
 	move_cooldown[AT_EXTRA_2] = 100
-		sound_play(sound_get("counterhit"));
+    sound_play(sound_get("counterhit"));
 	if zFhit = 0 {
-			move_cooldown[AT_USPECIAL] = 0
- 
-		
-
-	 if !left_down and !right_down{
-            	
-            	
-      
+        move_cooldown[AT_USPECIAL] = 0
+        if !left_down and !right_down{
 			if (ztarget.x < x) {
 				spr_dir = 1;
 			} else {
 				spr_dir = -1;
 			}
-			x = ztarget.x + (-40 * spr_dir)
-			y = ztarget.y + (0 * spr_dir)
-	 }
-		
-
-			if left_down {
+            x = ztarget.x + (-40 * spr_dir)
+            y = ztarget.y + (0 * spr_dir)
+        }
+		if left_down {
 			x = ztarget.x + (40)
 			y = ztarget.y + (0 * spr_dir)
-			}
+        }
 			
-			if right_down {
-
+        if right_down {
 			x = ztarget.x - (40)
 			y = ztarget.y + (0 * spr_dir)
-			}
+        }
 			
-			sound_play(asset_get("sfx_holy_lightning"));
-
-			set_attack(AT_UTILT)
-		   	window = 2;
-            window_timer = -1;	
-
+        sound_play(asset_get("sfx_holy_lightning"));
+        set_attack(AT_UTILT)
+        window = 2;
+        window_timer = -1;	
 	}
 	
 	if zFhit = 1 {
-		
 		hsp = 0
-		
+        if (ztarget.x < x) {
+            spr_dir = 1;
+        } else {
+            spr_dir = -1;
+        }
+        x = ztarget.x 
+        y = ztarget.y 
+        vsp = -3
 
-    
-
-			if (ztarget.x < x) {
-				spr_dir = 1;
-			} else {
-				spr_dir = -1;
-			}
-			x = ztarget.x 
-			 y = ztarget.y 
-			 vsp = -3
-
-			sound_play(asset_get("sfx_holy_lightning"));
-			if zvoice == 1{
-			 if get_player_color(player) == 1{
-            	      sound_play(sound_get("perfectJ3V"));
-            
-            } 
+        sound_play(asset_get("sfx_holy_lightning"));
+        if zvoice == 1{
+            if get_player_color(player) == 1{
+                sound_play(sound_get("perfectJ3V"));
+            }
             
             if get_player_color(player) == 4{
-            	      sound_play(sound_get("startUSTRONGD"));
-            
+                sound_play(sound_get("startUSTRONGD"));            
             } 
             
             if get_player_color(player) != 1 and get_player_color(player) != 4  {
-            sound_play(sound_get("perfectJ3"));
+                sound_play(sound_get("perfectJ3"));
             }
-			}
-			set_attack(AT_UTILT)
-		   	window = 2;
-            window_timer = -1;	
-            zbayo = 7 
+        }
+        set_attack(AT_UTILT)
+        window = 2;
+        window_timer = -1;	
+        zbayo = 7 
 	}
-	
 }
 
 if zFhittimer == 2 {
 	create_hitbox(AT_DSPECIAL , 1 , x + (( -80  - random_func(3, 50, true)) * spr_dir)  , y - 105 ); 
-	spawn_hit_fx( x, y - 30 + random_func(1, 10, true), shit5 )	
+	spawn_hit_fx(x, y - 30 + random_func(1, 10, true), shit5 )	
 	
 }
-
-
 
 if state == PS_JUMPSQUAT {
 	move_cooldown[AT_NSPECIAL] = 0
-
 }
 
 
-
-if (state == PS_WALL_JUMP) {move_cooldown[AT_USPECIAL] = 0};
-
-
-
-
+if (state == PS_WALL_JUMP) {
+    move_cooldown[AT_USPECIAL] = 0
+}
 
 if state != PS_ATTACK_GROUND and state != PS_ATTACK_AIR {
-		set_attack_value(AT_USPECIAL, AG_CATEGORY, 2);
+    set_attack_value(AT_USPECIAL, AG_CATEGORY, 2);
 }
 
 if get_player_color(player) == 5 && zvoice == 1 && hit_player_obj.state_cat == SC_HITSTUN {
-	
-	
-
-		
-	
 	if get_gameplay_time() % 24 == 0 {
     	spawn_hit_fx( hit_player_obj.x + random_func(3, 10, true), hit_player_obj.y - 30 + random_func(1, 10, true), shit7 )
-    
-
 	}
 	
-  	if get_gameplay_time() % 24 == 12 {
-   var hit8 = spawn_hit_fx( hit_player_obj.x + random_func(3, 10, true), hit_player_obj.y - 30 + random_func(1, 10, true), shit8 )
-   
+    if get_gameplay_time() % 24 == 12 {
+        var hit8 = spawn_hit_fx( hit_player_obj.x + random_func(3, 10, true), hit_player_obj.y - 30 + random_func(1, 10, true), shit8 )
+    }
 
-     }
-	
-	
-	
-if get_gameplay_time() % 5 == 0 && (hit_player_obj.hsp > 10 or hit_player_obj.hsp < -10) {
-		spawn_hit_fx( hit_player_obj.x + random_func(3, 10, true), hit_player_obj.y - 30 + random_func(1, 10, true), shit6 )
-    	
-	}
-
-
-	
+    if get_gameplay_time() % 5 == 0 && (hit_player_obj.hsp > 10 or hit_player_obj.hsp < -10) {
+        spawn_hit_fx( hit_player_obj.x + random_func(3, 10, true), hit_player_obj.y - 30 + random_func(1, 10, true), shit6 )
+    }	
 }
 
 if get_gameplay_time() <= 120 && zvoice == 0 {
-
-
 	if taunt_down {
 		sound_play(asset_get("sfx_gem_collect"));
 		zvoice = 1
 	}
-	
 }
 
 if get_gameplay_time() == 130 {
-if zvoice == 0 {
-            	set_victory_theme(sound_get("MONG"));
+    if zvoice == 0 {
+        set_victory_theme(sound_get("MONG"));
+    }
+                
+    if zvoice == 1{
+        if get_player_color(player) < 1 {
+            set_victory_theme(sound_get("VictoryTheme1"));
+        } 
+        if get_player_color(player) == 1{
+            set_victory_theme(sound_get("VictoryThemeV"));
+        }  
+        if get_player_color(player) == 2 {
+            set_victory_theme(sound_get("VictoryTheme1"));
         }
-            
-if zvoice == 1{
- if get_player_color(player) < 1 {
-            	set_victory_theme(sound_get("VictoryTheme1"));
-            }
-            
-if get_player_color(player) == 2 {
-            	set_victory_theme(sound_get("VictoryTheme1"));
-            }
-
- if get_player_color(player) == 1{
-            	      set_victory_theme(sound_get("VictoryThemeV"));
- }
-            
-if get_player_color(player) == 5 {
-            	set_victory_theme(sound_get("VictoryThemeS"));
-            }
-            
-if get_player_color(player) == 4 {
-            	set_victory_theme(sound_get("VictoryThemeD"));
-            }
-            
-if get_player_color(player) == 3 {
-            	set_victory_theme(sound_get("VictoryThemeG7"));
-            }
-}
-
+        if get_player_color(player) == 3 {
+            set_victory_theme(sound_get("VictoryThemeG7"));
+        }
+        if get_player_color(player) == 4 {
+            set_victory_theme(sound_get("VictoryThemeD"));
+        }
+        if get_player_color(player) == 5 {
+            set_victory_theme(sound_get("VictoryThemeS"));
+        }
+    }
 }
 
 
 if offensetimer > 0 && !hitpause {
-  
-  offensetimer += 1
-	
+    offensetimer += 1
 }
 
 if hit_player_obj.state_cat == SC_HITSTUN {
 	move_cooldown[AT_EXTRA_3] += 1
 }
-
 
 if dmhit > 0 && move_cooldown[AT_EXTRA_3] <= 0 {
 	dmhit -= 1
@@ -531,53 +437,34 @@ if dmhit > 0 && move_cooldown[AT_EXTRA_3] <= 0 {
 if offensetimer > 160 and offense > 0{
 	offense = 0
 	offensetimer = 0
-		var halodeact = spawn_hit_fx( x - (16 * spr_dir) , y - 50 , 302 )
-    		halodeact.depth = depth + 10
-    		
-    	sound_play(asset_get("sfx_ice_shieldup"));	
-		sound_play(asset_get("sfx_jumpair"));
+    var halodeact = spawn_hit_fx( x - (16 * spr_dir) , y - 50 , 302 )
+    halodeact.depth = depth + 10
+    sound_play(asset_get("sfx_ice_shieldup"));	
+    sound_play(asset_get("sfx_jumpair"));
 }
 
 if (state_cat == SC_HITSTUN) {
- with (asset_get("pHitBox")) {
+    with (asset_get("pHitBox")) {
         if player_id == other.id {
-          destroyed = true;
+            destroyed = true;
         }
     }
 }
 
-
-
 ztrashes = random_func(15, 3, false);
 
-
-
 if (state == PS_AIR_DODGE  && state_timer == 1 ) {
-	spawn_hit_fx( x - (10 * spr_dir) , y - 50 , shit1 )
-
+    spawn_hit_fx( x - (10 * spr_dir) , y - 50 , shit1 )
 }
 	
-
-
-
-
-
-
-
 if (state == PS_TECH_FORWARD  && state_timer > 5 && state_timer < 15 && state_timer % 3 = 0) {
 	create_hitbox(AT_DSPECIAL , 1 , x + (-110 * spr_dir) , y - 105 ); 
-
-
-	
 }
 
 if (state == PS_TECH_BACKWARD  && state_timer > 5 && state_timer < 15 && state_timer % 3 = 0) {
 	create_hitbox(AT_DSPECIAL , 1 , x + (-110 * spr_dir) , y - 105 ); 
-
 }
 	
-
-
 if (state == PS_ROLL_FORWARD  && state_timer == 7) {
 	create_hitbox(AT_DSPECIAL , 1 , x + (-110 * spr_dir) , y - 105 ); 
 }
@@ -598,9 +485,6 @@ if (state == PS_ROLL_BACKWARD  && state_timer == 13) {
 if (state == PS_AIR_DODGE  && state_timer == 2) {
 	create_hitbox(AT_DSPECIAL , 1 , x + (-110 * spr_dir) , y - 110 ); 
 }
-
-
-
 
 if (introTimer2 < 3) {
     introTimer2++;
@@ -628,101 +512,80 @@ if (introTimer2 == 0 && introTimer == 10) {
 }
 
 if zvoice == 1{
-	
-     if get_player_color(player) == 1{
+     if get_player_color(player) == 1 {
      	if (introTimer2 == 0 && introTimer == 11) {
-            	      sound_play(sound_get("introV"));
-     }
-     }
+            sound_play(sound_get("introV"));
+        }
+    }
      
-     if get_player_color(player) == 3{
+    if get_player_color(player) == 3{
      	if (introTimer2 == 0 && introTimer == 0) {
-            	      sound_play(sound_get("introG7"));       
-     }
-     }
+            sound_play(sound_get("introG7"));       
+        }
+    }
      
-     if get_player_color(player) == (5) {
-     	if (introTimer2 == 0 && introTimer == 0) {
-            	      
-            	sound_play(sound_get("introS"));
-            }
-            
-            
-     	if (introTimer2 == 0 && introTimer == 8) {
-            	      
-            	sound_play(sound_get("perfectUS"));
-            }
-     }
+    if get_player_color(player) == (5) {
+     	if (introTimer2 == 0 && introTimer == 0) {       	      
+            sound_play(sound_get("introS"));
+        }      
+     	if (introTimer2 == 0 && introTimer == 8) {	      
+            sound_play(sound_get("perfectUS"));
+        }
+    }
+    if get_player_color(player) == (2) {
+        if (introTimer2 == 0 && introTimer == 11) {    	      
+            sound_play(sound_get("intro"));
+        }
+    }
      
-        if get_player_color(player) == (2) {
+    if get_player_color(player) >= (8) {
      	if (introTimer2 == 0 && introTimer == 11) {
-            	      
+            sound_play(sound_get("intro"));
+        }
+    }
+     
+    if get_player_color(player) == (7) {
+     	if (introTimer2 == 0 && introTimer == 11) {        	      
+            sound_play(sound_get("bruh"));
+        }
+    }
+     
+     
+    if get_player_color(player) == (4) {
+     	if (introTimer2 == 0 && introTimer == 11) {        	      
+            sound_play(sound_get("introD"));
+        }
+    }
+     
+    if get_player_color(player) < 1 {
+     	if (introTimer2 == 0 && introTimer == 11) {        	      
             	sound_play(sound_get("intro"));
-            }
-     }
-     
-             if get_player_color(player) >= (8) {
-     	if (introTimer2 == 0 && introTimer == 11) {
-            	      
-            	sound_play(sound_get("intro"));
-            }
-     }
-     
-                  if get_player_color(player) == (7) {
-     	if (introTimer2 == 0 && introTimer == 11) {
-            	      
-            	sound_play(sound_get("bruh"));
-            }
-     }
-     
-     
-      if get_player_color(player) == (4) {
-     	if (introTimer2 == 0 && introTimer == 11) {
-            	      
-            	sound_play(sound_get("introD"));
-            }
-     }
-     
-       if get_player_color(player) < 1 {
-     	if (introTimer2 == 0 && introTimer == 11) {
-            	      
-            	sound_play(sound_get("intro"));
-            }
-     }
-     
-     
+        }
+    }
 }
 
 
 
 if get_player_color(player) == 3 {
-	
-    	outline_color = [30, 0, 0]
-        init_shader();
+    outline_color = [30, 0, 0]
+    init_shader();
         
-     
-     if zvoice == 1 {
-      if get_gameplay_time() % 63 = random_func(6, 30, true){ 
-     create_hitbox(AT_DSPECIAL , 1 , x + (-110 * spr_dir) , y - 105 ); 
-     
-      }
+    if zvoice == 1 {
+        if get_gameplay_time() % 63 = random_func(6, 30, true){ 
+            create_hitbox(AT_DSPECIAL , 1 , x + (-110 * spr_dir) , y - 105 ); 
+        }
       
-      if get_gameplay_time() % 63 = random_func(7, 30, true){ 
-     create_hitbox(AT_DSPECIAL , 1 , x + (-115 * spr_dir) , y - 105 ); 
-      	
-      } 
-     
-     
-     
-      if ((get_gameplay_time() % 73 = random_func(5, 30, true)) && state == PS_IDLE) { 
-     
-        set_attack (AT_TAUNT);
-      	window = 16;
-      	window_timer = 95;
-      } 
-     }
+        if get_gameplay_time() % 63 = random_func(7, 30, true){ 
+            create_hitbox(AT_DSPECIAL , 1 , x + (-115 * spr_dir) , y - 105 );     
+        }    
+        if ((get_gameplay_time() % 73 = random_func(5, 30, true)) && state == PS_IDLE) { 
+            set_attack (AT_TAUNT);
+            window = 16;
+            window_timer = 95;
+        } 
+    }
       
-    if (spr_dir == 1){  
+    if (spr_dir == 1) {  
         set_hitbox_value(AT_FSPECIAL, 9, HG_PROJECTILE_SPRITE, sprite_get("B"));   
         set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_SPRITE, sprite_get("B"));
     } else {
@@ -745,170 +608,157 @@ if get_player_color(player) == 3 {
     
     set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT, SB);
     set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_SPRITE, sprite_get("X"));
-    
-     
-   }
+}
 
 
-if get_player_color(player) == 1{
-	
-	    var outlineclr = (sin((get_gameplay_time() - 1) * 0.1) * -20) + 20
-		outline_color = [5 + outlineclr, 5 + outlineclr, 18 + outlineclr * 2]
-        init_shader(); 
+if get_player_color(player) == 1 {
+    var outlineclr = (sin((get_gameplay_time() - 1) * 0.1) * -20) + 20
+    outline_color = [5 + outlineclr, 5 + outlineclr, 18 + outlineclr * 2]
+    init_shader(); 
 }
 	
-if get_player_color(player) == 5{
-	
+if get_player_color(player) == 5 {
 	outline_color = [9, 5, 18]
         init_shader();
-   
-	
 }
 
-if get_player_color(player) == 6{
-	
-	set_hitbox_value(AT_NSPECIAL, 1, HG_PARENT_HITBOX, 1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 5);
-set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 6);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X,  100);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -30);
-set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 110);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 60);
-set_hitbox_value(AT_NSPECIAL, 1, HG_SHAPE, 0);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 3);
-set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 6);
-set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 75);
-set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.5);
-set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 3);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.2);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("SC2"));
-set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 3);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("SpaceCut"));
-set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, SC);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .8);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
+if get_player_color(player) == 6 {
+        set_hitbox_value(AT_NSPECIAL, 1, HG_PARENT_HITBOX, 1);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 5);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 6);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X,  100);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -30);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 110);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 60);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_SHAPE, 0);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 3);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 6);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 75);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.5);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 3);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.2);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("SC2"));
+        set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 3);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("SpaceCut"));
+        set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, SC);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .8);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, -1);
+        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 
+        set_hitbox_value(AT_NSPECIAL, 2, HG_PARENT_HITBOX, 2);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 7);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 6);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X,  100);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_Y, -30);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 3);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 110);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 60);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_SHAPE, 0);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 3);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 5);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 90);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 3);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.4);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 14);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, 1.5);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("SC2"));
+        set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, sound_get("SpaceCut"));
+        set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, SC);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_MASK, -1);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_ANIM_SPEED, .8);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_GROUP, -1);
+        set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
 
-set_hitbox_value(AT_NSPECIAL, 2, HG_PARENT_HITBOX, 2);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 7);
-set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 6);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X,  100);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_Y, -30);
-set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 3);
-set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 110);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 60);
-set_hitbox_value(AT_NSPECIAL, 2, HG_SHAPE, 0);
-set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 3);
-set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 5);
-set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 90);
-set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 3);
-set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.4);
-set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 14);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, 1.5);
-set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1);
-set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
-set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("SC2"));
-set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, sound_get("SpaceCut"));
-set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, SC);
-set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_ANIM_SPEED, .8);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_PARENT_HITBOX, 3);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 8);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 6);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 3);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_X,  130);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_Y, -30);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, 110);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, 60);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_SHAPE, 0);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_PRIORITY, 3);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 4);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE, 90);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, 3);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.4);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 14);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, 1.5);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("SC1"));
+        set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, sound_get("counterhit"));
+        set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, SC);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_MASK, -1);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_ANIM_SPEED, .8);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT_X_OFFSET, -6);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT_Y_OFFSET, -10);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_GROUP, -1);
+        set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, 1);
 
-set_hitbox_value(AT_NSPECIAL, 3, HG_PARENT_HITBOX, 3);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 8);
-set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 6);
-set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 3);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_X,  130);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_Y, -30);
-set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, 110);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, 60);
-set_hitbox_value(AT_NSPECIAL, 3, HG_SHAPE, 0);
-set_hitbox_value(AT_NSPECIAL, 3, HG_PRIORITY, 3);
-set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 4);
-set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE, 90);
-set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, 3);
-set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.4);
-set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 14);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, 1.5);
-set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_WALL_BEHAVIOR, 1);
-set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
-set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("SC1"));
-set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, sound_get("counterhit"));
-set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, SC);
-set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_ANIM_SPEED, .8);
-set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT_X_OFFSET, -6);
-set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT_Y_OFFSET, -10);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, 1);
-
-set_hitbox_value(AT_NSPECIAL, 4, HG_PARENT_HITBOX, 4);
-set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_NSPECIAL, 4, HG_WINDOW, 9);
-set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 6);
-set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_X,  160);
-set_hitbox_value(AT_NSPECIAL, 4, HG_WINDOW_CREATION_FRAME, 3);
-set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_Y, -30);
-set_hitbox_value(AT_NSPECIAL, 4, HG_WIDTH, 110);
-set_hitbox_value(AT_NSPECIAL, 4, HG_HEIGHT, 60);
-set_hitbox_value(AT_NSPECIAL, 4, HG_SHAPE, 0);
-set_hitbox_value(AT_NSPECIAL, 4, HG_PRIORITY, 3);
-set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 4);
-set_hitbox_value(AT_NSPECIAL, 4, HG_ANGLE, 75);
-set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_NSPECIAL, 4, HG_KNOCKBACK_SCALING, 0.6);
-set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_HITPAUSE, 14);
-set_hitbox_value(AT_NSPECIAL, 4, HG_HITPAUSE_SCALING, 1.5);
-set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_WALL_BEHAVIOR, 1);
-set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
-set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_SPRITE, sprite_get("SC2"));
-set_hitbox_value(AT_NSPECIAL, 4, HG_HIT_SFX, sound_get("SpaceCut"));
-set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT, SC);
-set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT_X_OFFSET, 5);
-set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT_Y_OFFSET, 10);
-set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_ANIM_SPEED, .8);
-set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_NSPECIAL, 4, HG_EXTRA_CAMERA_SHAKE, 1);
-set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_PARRY_STUN, 1);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_PARENT_HITBOX, 4);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_TYPE, 2);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_WINDOW, 9);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 6);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_X,  160);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_WINDOW_CREATION_FRAME, 3);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_Y, -30);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_WIDTH, 110);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_HEIGHT, 60);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_SHAPE, 0);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_PRIORITY, 3);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 4);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_ANGLE, 75);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_KNOCKBACK, 7);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_KNOCKBACK_SCALING, 0.6);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_HITPAUSE, 14);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_HITPAUSE_SCALING, 1.5);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_SPRITE, sprite_get("SC2"));
+        set_hitbox_value(AT_NSPECIAL, 4, HG_HIT_SFX, sound_get("SpaceCut"));
+        set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT, SC);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_MASK, -1);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT_X_OFFSET, 5);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT_Y_OFFSET, 10);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_ANIM_SPEED, .8);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_GROUP, -1);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_EXTRA_CAMERA_SHAKE, 1);
+        set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_PARRY_STUN, 1);
 
         if get_gameplay_time() % 22 = 0{
             if get_player_damage( player ) > 0{
                 set_player_damage( player, get_player_damage( player ) - 1 )
             }
         }
-        
-           if get_gameplay_time() % 22 = 0{     
-  create_hitbox(AT_FSTRONG , 9 , x - 150 + random_func(1, 300, true) , y - 300 + random_func(2, 30, true) );
+            
+        if get_gameplay_time() % 22 = 0{     
+            create_hitbox(AT_FSTRONG , 9 , x - 150 + random_func(1, 300, true) , y - 300 + random_func(2, 30, true) );
+        }
+    
+        if get_gameplay_time() % 22 = 10{     
+            create_hitbox(AT_NSPECIAL , 6 , x - 150 + random_func(1, 300, true) , y - 300 + random_func(2, 30, true) );
+        }
+    
+        if get_gameplay_time() % 52 = random_func(9, 30, true) {
+            create_hitbox(AT_NSPECIAL , 4 , x - 100 + random_func(1, 200, true) , y - 105 + random_func(2, 80, true) );
+            sound_play(sound_get("SpaceCut2"));
+        }
 
-   }
-   
-              if get_gameplay_time() % 22 = 10{     
-  create_hitbox(AT_NSPECIAL , 6 , x - 150 + random_func(1, 300, true) , y - 300 + random_func(2, 30, true) );
-
-   }
-   
-   
-   if get_gameplay_time() % 52 = random_func(9, 30, true){     
-  create_hitbox(AT_NSPECIAL , 4 , x - 100 + random_func(1, 200, true) , y - 105 + random_func(2, 80, true) );
-   sound_play(sound_get("SpaceCut2"));
-   }
-   
-   
-   
-   if get_gameplay_time() % 42 = random_func(10, 30, true){     
-  create_hitbox(AT_NSPECIAL , 3 , x - 100 + random_func(1, 200, true) , y - 105 + random_func(2, 80, true) );
-   sound_play(sound_get("SpaceCut2"));
-   }
+        if get_gameplay_time() % 42 = random_func(10, 30, true) {
+            create_hitbox(AT_NSPECIAL , 3 , x - 100 + random_func(1, 200, true) , y - 105 + random_func(2, 80, true) );
+            sound_play(sound_get("SpaceCut2"));
+        }
         walk_speed = 5;
         walk_accel = 2;
         walk_turn_time = 1;
@@ -927,193 +777,175 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_PARRY_STUN, 1);
         var outlineclr = (sin((get_gameplay_time() - 100) * 0.1) * -148) + 168
         outline_color = [ outlineclr * 4, outlineclr * 2, outlineclr];
         init_shader();
+            
+    /////////////////////
+
+    if ((state == PS_AIR_DODGE|| state == PS_ROLL_BACKWARD ||
+        state == PS_ROLL_FORWARD) && state_timer == 7)
+    {
+        create_hitbox(AT_DSPECIAL , 1 , x , y - 105 );    
+    }
+
+    if ((state == PS_AIR_DODGE|| state == PS_ROLL_BACKWARD ||
+    state == PS_ROLL_FORWARD) && state_timer == 1)
+    {
+        create_hitbox(AT_FSPECIAL , 3 , x , y -40 );    
+    }
+
+    if ((state == PS_AIR_DODGE) && state_timer == 8) {    
+        var shortest_dist = 9999;
+        var shortest_id = noone;
         
-/////////////////////
+        with (asset_get("oPlayer")) {
+            if (player != other.player) {
+                var curr_dist = point_distance(x,y,other.x,other.y);
+                if (curr_dist < shortest_dist) {
+                    shortest_dist = curr_dist;
+                    shortest_id = id;
+                }
+            }
+        }
 
-if ((state == PS_AIR_DODGE|| state == PS_ROLL_BACKWARD ||
-state == PS_ROLL_FORWARD) && state_timer == 7){
-create_hitbox(AT_DSPECIAL , 1 , x , y - 105 );    
-}
+        if (shortest_id.x < x) {
+            spr_dir = 1;
+        } else {
+            spr_dir = -1;
+        }
+        x = shortest_id.x + (-60 * spr_dir)
+        y = shortest_id.y + (-20 * spr_dir)
+        set_state (PS_IDLE)
+        create_hitbox(AT_DSPECIAL , 1 , x , y - 105 );   		
+    }
 
-if ((state == PS_AIR_DODGE|| state == PS_ROLL_BACKWARD ||
-state == PS_ROLL_FORWARD) && state_timer == 1){
-create_hitbox(AT_FSPECIAL , 3 , x , y -40 );    
+    if ((state == PS_ROLL_BACKWARD ||
+        state == PS_ROLL_FORWARD) && state_timer == 18)
+    {   
+        var shortest_dist = 9999;
+        var shortest_id = noone;
+        
+        with (asset_get("oPlayer")) {
+            if (player != other.player) {
+                var curr_dist = point_distance(x,y,other.x,other.y);
+                if (curr_dist < shortest_dist) {
+                    shortest_dist = curr_dist;
+                    shortest_id = id;
+                }
+            }
+        }
 
-}
-
-if ((state == PS_AIR_DODGE) && state_timer == 8){
-
-	
-    
-    var shortest_dist = 9999;
-			var shortest_id = noone;
-			
-			with (asset_get("oPlayer")) {
-				if (player != other.player) {
-					var curr_dist = point_distance(x,y,other.x,other.y);
-					if (curr_dist < shortest_dist) {
-						shortest_dist = curr_dist;
-						shortest_id = id;
-					}
-				}
-			}
-
-			if (shortest_id.x < x) {
-				spr_dir = 1;
-			} else {
-				spr_dir = -1;
-			}
-			x = shortest_id.x + (-60 * spr_dir)
-			y = shortest_id.y + (-20 * spr_dir)
-			set_state (PS_IDLE)
-		create_hitbox(AT_DSPECIAL , 1 , x , y - 105 );   
-
-
-		
-}
-
-        if ((state == PS_ROLL_BACKWARD ||
-state == PS_ROLL_FORWARD) && state_timer == 18){
-	
-    
-    var shortest_dist = 9999;
-			var shortest_id = noone;
-			
-			with (asset_get("oPlayer")) {
-				if (player != other.player) {
-					var curr_dist = point_distance(x,y,other.x,other.y);
-					if (curr_dist < shortest_dist) {
-						shortest_dist = curr_dist;
-						shortest_id = id;
-					}
-				}
-			}
-
-			if (shortest_id.x < x) {
-				spr_dir = 1;
-			} else {
-				spr_dir = -1;
-			}
-			x = shortest_id.x + (-60 * spr_dir)
-			y = shortest_id.y + (0 * spr_dir)
-			set_state (PS_IDLE)
-create_hitbox(AT_DSPECIAL , 1 , x , y - 105 );   
-
-		
-}
+        if (shortest_id.x < x) {
+            spr_dir = 1;
+        } else {
+            spr_dir = -1;
+        }
+        x = shortest_id.x + (-60 * spr_dir)
+        y = shortest_id.y + (0 * spr_dir)
+        set_state (PS_IDLE)
+        create_hitbox(AT_DSPECIAL , 1 , x , y - 105 );   		
+    }
 
 }
-    
-    
-    
-
-
 
 if swallowed { 
     swallowed = 0
-        var ability_spr = sprite_get("kspecial");
-        var ability_hurt = sprite_get("kspecial_hurt");
-        var sound = sound_get("SpaceCut");
-        var sound2 = sound_get("SpaceCutB")
-        var sound3 = sound_get("korb");
-        var cut = sprite_get("SCK")
-        var myicon = sprite_get("kicon")
+    var ability_spr = sprite_get("kspecial");
+    var ability_hurt = sprite_get("kspecial_hurt");
+    var sound = sound_get("SpaceCut");
+    var sound2 = sound_get("SpaceCutB")
+    var sound3 = sound_get("korb");
+    var cut = sprite_get("SCK")
+    var myicon = sprite_get("kicon")
     with enemykirby { 
-    	
     	air_dodge_speed = 10;
-    	
-newicon = myicon        
-set_attack_value(AT_EXTRA_3, AG_SPRITE, ability_spr );
-set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2 );
-set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 5);
-set_attack_value(AT_EXTRA_3, AG_HAS_LANDING_LAG, 4);
-set_attack_value(AT_EXTRA_3, AG_OFF_LEDGE, 1);
-set_attack_value(AT_EXTRA_3, AG_USES_CUSTOM_GRAVITY, 1);
-set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, ability_hurt);
+        newicon = myicon        
+        set_attack_value(AT_EXTRA_3, AG_SPRITE, ability_spr );
+        set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2 );
+        set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 5);
+        set_attack_value(AT_EXTRA_3, AG_HAS_LANDING_LAG, 4);
+        set_attack_value(AT_EXTRA_3, AG_OFF_LEDGE, 1);
+        set_attack_value(AT_EXTRA_3, AG_USES_CUSTOM_GRAVITY, 1);
+        set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, ability_hurt);
 
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 4);
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HSPEED, -7);
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HSPEED_TYPE, 2);
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_VSPEED, 0);
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX, sound3);
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX_FRAME, 1);
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
-
-
-set_window_value(AT_EXTRA_3, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_EXTRA_3, 2, AG_WINDOW_HSPEED, 0);
-set_window_value(AT_EXTRA_3, 2, AG_WINDOW_HSPEED_TYPE, 2);
-set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 12);
-set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAMES, 4);
-set_window_value(AT_EXTRA_3, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
-set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAME_START, 2);
-
-set_window_value(AT_EXTRA_3, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 5);
-set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_EXTRA_3, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
-set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAME_START, 5);
+        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
+        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 4);
+        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HSPEED, -7);
+        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HSPEED_TYPE, 2);
+        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_VSPEED, 0);
+        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_VSPEED_TYPE, 2);
+        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HAS_SFX, 1);
+        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX, sound3);
+        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX_FRAME, 1);
+        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 2);
+        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
 
 
+        set_window_value(AT_EXTRA_3, 2, AG_WINDOW_TYPE, 1);
+        set_window_value(AT_EXTRA_3, 2, AG_WINDOW_HSPEED, 0);
+        set_window_value(AT_EXTRA_3, 2, AG_WINDOW_HSPEED_TYPE, 2);
+        set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 12);
+        set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAMES, 4);
+        set_window_value(AT_EXTRA_3, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
+        set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 
-set_window_value(AT_EXTRA_3, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_EXTRA_3, 4, AG_WINDOW_LENGTH, 12);
-set_window_value(AT_EXTRA_3, 4, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_EXTRA_3, 4, AG_WINDOW_ANIM_FRAME_START, 8);
-set_window_value(AT_EXTRA_3, 4, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_EXTRA_3, 4, AG_WINDOW_SFX, sound2);
-set_window_value(AT_EXTRA_3, 4, AG_WINDOW_SFX_FRAME, 1);
-set_window_value(AT_EXTRA_3, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
-
-set_window_value(AT_EXTRA_3, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_EXTRA_3, 5, AG_WINDOW_LENGTH, 8);
-set_window_value(AT_EXTRA_3, 5, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_EXTRA_3, 5, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
-set_window_value(AT_EXTRA_3, 5, AG_WINDOW_ANIM_FRAME_START, 11);
+        set_window_value(AT_EXTRA_3, 3, AG_WINDOW_TYPE, 1);
+        set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 5);
+        set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAMES, 1);
+        set_window_value(AT_EXTRA_3, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
+        set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 
 
 
+        set_window_value(AT_EXTRA_3, 4, AG_WINDOW_TYPE, 1);
+        set_window_value(AT_EXTRA_3, 4, AG_WINDOW_LENGTH, 12);
+        set_window_value(AT_EXTRA_3, 4, AG_WINDOW_ANIM_FRAMES, 3);
+        set_window_value(AT_EXTRA_3, 4, AG_WINDOW_ANIM_FRAME_START, 8);
+        set_window_value(AT_EXTRA_3, 4, AG_WINDOW_HAS_SFX, 1);
+        set_window_value(AT_EXTRA_3, 4, AG_WINDOW_SFX, sound2);
+        set_window_value(AT_EXTRA_3, 4, AG_WINDOW_SFX_FRAME, 1);
+        set_window_value(AT_EXTRA_3, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
 
-set_num_hitboxes(AT_EXTRA_3, 1);
-
-
-set_hitbox_value(AT_EXTRA_3, 1, HG_PARENT_HITBOX, 1);
-set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 4);
-set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW_CREATION_FRAME, 3);
-set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 10);
-set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X,  100);
-set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, -15);
-set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 120);
-set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 80);
-set_hitbox_value(AT_EXTRA_3, 1, HG_SHAPE, 2);
-set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 3);
-set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 5);
-set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 50);
-set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 4);
-set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.3);
-set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 3);
-set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 0.3);
-set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
-set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
-set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_SPRITE, cut);
-set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, sound);
-set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 304);
-set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_ANIM_SPEED, 1);
-set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_GROUP, -1);
+        set_window_value(AT_EXTRA_3, 5, AG_WINDOW_TYPE, 1);
+        set_window_value(AT_EXTRA_3, 5, AG_WINDOW_LENGTH, 8);
+        set_window_value(AT_EXTRA_3, 5, AG_WINDOW_ANIM_FRAMES, 2);
+        set_window_value(AT_EXTRA_3, 5, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
+        set_window_value(AT_EXTRA_3, 5, AG_WINDOW_ANIM_FRAME_START, 11);
 
 
-} 
+
+
+        set_num_hitboxes(AT_EXTRA_3, 1);
+
+
+        set_hitbox_value(AT_EXTRA_3, 1, HG_PARENT_HITBOX, 1);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 2);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 4);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW_CREATION_FRAME, 3);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 10);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X,  100);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, -15);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 120);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 80);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_SHAPE, 2);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 3);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 5);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 50);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 4);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.3);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 3);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 0.3);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_SPRITE, cut);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, sound);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 304);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_MASK, -1);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_ANIM_SPEED, 1);
+        set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_GROUP, -1);
+    } 
 }
 
 
 ///trum codec
-
 
 if trummelcodecneeded{
     trummelcodec = 17;
@@ -1356,128 +1188,86 @@ if trummelcodecneeded{
 }
 
 
-
-
-
-
-
-
-
-
 if (state == PS_ROLL_BACKWARD or state == PS_ROLL_FORWARD or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD) and state_timer > 6 and state_timer < 16 and state_timer % 5 = 0 {
-	 
 	 if get_player_color(player) == 5 && zvoice == 1 {
-			spawn_hit_fx( x, y - 30, shit1 )
-    		
+			spawn_hit_fx( x, y - 30, shit1 )		
 	}
-    	
-	}
+}
 
- if (state == PS_PARRY_START or state == PS_AIR_DODGE) and get_player_color(player) == 5 && zvoice == 1 and state_timer < 2 {
-			spawn_hit_fx( x, y - 30, shit2 )
-    		
-	}	
-	
-	
+if (state == PS_PARRY_START or state == PS_AIR_DODGE) and get_player_color(player) == 5 && zvoice == 1 and state_timer < 2 {
+    spawn_hit_fx( x, y - 30, shit2 )
+}	
 	
 if (state == PS_LAND or state == PS_LANDING_LAG or state == PS_WALL_JUMP) && get_player_color(player) == 5 && zvoice == 1{
-	
-	if state_timer == 1{
-	spawn_hit_fx( x, y, shit6 )
-
-		
+    if state_timer == 1{
+	    spawn_hit_fx( x, y, shit6 )
 	}
 	
 	if state_timer == 2{
-	spawn_hit_fx( x, y, shit7 )
-    	
-		
+    	spawn_hit_fx( x, y, shit7 )	
 	}
 }
 
 if (state == PS_FIRST_JUMP or state == PS_DOUBLE_JUMP) && get_player_color(player) == 5 && zvoice == 1 {
 	if state_timer == 3{
-			spawn_hit_fx( x, y, shit8 )
-    	
-		
+        spawn_hit_fx( x, y, shit8 )
 	}
 	
 	if state == PS_DOUBLE_JUMP && state_timer == 1 {
 		spawn_hit_fx( x, y, shit5 )
 	}
 	if state_timer == 12{
-			spawn_hit_fx( x, y, shit7 )
-    		
-		
+        spawn_hit_fx( x, y, shit7 )	
 	}
 	
-	
 	if state_timer == 20{
-			spawn_hit_fx( x, y, shit6 )
-    		
-		
+			spawn_hit_fx( x, y, shit6 )	
 	}
 }
 
 if state == PS_DASH && get_player_color(player) == 5 && zvoice == 1 {
-	
-	
 	if state_timer % 15 == 0{
-			 spawn_hit_fx( x, y - 30, shit8 )
-    	
-		
+        spawn_hit_fx( x, y - 30, shit8 )
 	}
 	
 	if state_timer % 20 == 0{
 		spawn_hit_fx( x, y - 30, shit7 )
-    	
-		
 	}
-	
-	
 	if state_timer % 25 == 0{
-			var hit6 = spawn_hit_fx( x, y - 30, shit6 )
-    		hit6.depth = -1000
-		
+        var hit6 = spawn_hit_fx( x, y - 30, shit6 )
+        hit6.depth = -1000
 	}
 }
 
-
 /// setstock 
-
-
-
-
 if get_player_color(player) == 8 {
 	outline_color = [19, 15, 28]
-   if visible {  
-   	if !hitpause {
-	if get_gameplay_time() % 40 == 0	 {
-   	set_color_profile_slot(get_player_color(player),0, 255, 196, 244); 
-	} 
-	
-	if get_gameplay_time() % 40 == 26{
-	set_color_profile_slot(get_player_color(player),0, 0, 191, 255 );	
-	}
-	
-    if get_gameplay_time() % 40 == 13 {
-	set_color_profile_slot(get_player_color(player),0, 160, 195, 250 );	
-	}
-   	}
-   	
-   	if hitpause {
-	if get_gameplay_time() % 8 == 0	 {
-   	set_color_profile_slot(get_player_color(player),0, 255, 196, 244); 
-	} 
-	
-	if get_gameplay_time() % 8 == 6{
-	set_color_profile_slot(get_player_color(player),0, 0, 191, 255 );	
-	}
-	
-    if get_gameplay_time() % 8 == 3 {
-	set_color_profile_slot(get_player_color(player),0, 160, 195, 250 );	
-	}
-   	}
+    if visible {  
+        if !hitpause {
+            if get_gameplay_time() % 40 == 0 {
+                set_color_profile_slot(get_player_color(player),0, 255, 196, 244); 
+            } 
+            
+            if get_gameplay_time() % 40 == 26{
+                set_color_profile_slot(get_player_color(player),0, 0, 191, 255 );	
+            }
+            
+            if get_gameplay_time() % 40 == 13 {
+                set_color_profile_slot(get_player_color(player),0, 160, 195, 250 );	
+            }
+        } else {
+            if get_gameplay_time() % 8 == 0	 {
+                set_color_profile_slot(get_player_color(player),0, 255, 196, 244); 
+            } 
+            
+            if get_gameplay_time() % 8 == 6{
+                set_color_profile_slot(get_player_color(player),0, 0, 191, 255 );	
+            }
+            
+            if get_gameplay_time() % 8 == 3 {
+                set_color_profile_slot(get_player_color(player),0, 160, 195, 250 );	
+            }
+        }
 	}
     init_shader();	 
 }
@@ -1486,71 +1276,63 @@ if slashdraw > 0 {
 	slashdraw -= 1
 }
 if instance_number(oPlayer) == 2 {
+    if finisher > 0 {
+        galx += shsp/90*finisher
+        galy += svsp/150*finisher
+    }
 
-
-
-if finisher > 0 {
-	galx += shsp/90*finisher
-    galy += svsp/150*finisher
-}
-
-if finishercd == 0 {
-with oPlayer if (activated_kill_effect) {
-  if hit_player_obj == other {
-  	with other {
-  		galx = x
-        galy = y
-        if svsp < 3 && svsp > 0 {
-        svsp = 3
+    if finishercd == 0 {
+        with oPlayer if (activated_kill_effect) {
+            if hit_player_obj == other {
+                with other {
+                    galx = x
+                    galy = y
+                    if svsp < 3 && svsp > 0 {
+                        svsp = 3
+                    }
+                
+                    if svsp > -3 && svsp < 0 {
+                        svsp = -3
+                    }
+                    
+                    if shsp < 6 && shsp > 0 {
+                        shsp = 6
+                    }
+                
+                    if shsp > -6 && shsp < 0 {
+                        shsp = -6
+                    }
+                    
+                    finisher = 60 
+                    finishercd = 120 
+                    finisherinc = 0
+                }
+            }
         }
-      
-        if svsp > -3 && svsp < 0 {
-        svsp = -3
+    }
+
+
+    if finisher = 60 {
+        if hitpause  {
+            hitstop += 32
+            hit_player_obj.hitstop += 32
         }
-        
-        if shsp < 6 && shsp > 0 {
-        shsp = 6
+        spawn_hit_fx(x,y,lighten)
+        sound_stop(sound_get("tstrong"))
+        sound_play(sound_get("tstrong"),false,noone,1)
+    }
+
+    if finisher = 40 {
+        sound_play(sound_get("tstrong"),false,noone,0.6)
+    }
+
+    if finisher = 20 {
+        sound_play(sound_get("tstrong"),false,noone,0.2)
+    }
+    if finisher > 0{
+        finisher -= 1
+        if finisherinc < 24 {
+           finisherinc += 1
         }
-      
-        if shsp > -6 && shsp < 0 {
-        shsp = -6
-        }
-        
-  	    finisher = 60 
-  	    finishercd = 120 
-  	    finisherinc = 0
-  	}
-  }
-}
-}
-
-
-if finisher = 60 {
-	if hitpause  {
-		hitstop += 32
-		hit_player_obj.hitstop += 32
-	}
-	spawn_hit_fx(x,y,lighten)
-    sound_stop(sound_get("tstrong"))
-    sound_play(sound_get("tstrong"),false,noone,1)
-}
-
-if finisher = 40 {
-    sound_play(sound_get("tstrong"),false,noone,0.6)
-
-}
-
-if finisher = 20 {
-
-    sound_play(sound_get("tstrong"),false,noone,0.2)
-
-}
- if finisher > 0{
-	finisher -= 1
-	if finisherinc < 24 {
-	finisherinc += 1
-	}
-}
-
-
+    }
 }

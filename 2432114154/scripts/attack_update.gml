@@ -319,26 +319,40 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
          }
          
          if window == 3  {
+         	if hsp > 0 {
+         		spr_dir = 1
+         	}
+         	
+         	if hsp < 0 {
+         		spr_dir = -1
+         	}
          	move_cooldown[AT_DAIR] = 10
             if has_hit_player {
+
+            	
                         hsp = floor(hit_player_obj.x - x) / 20 + (5 * spr_dir)
                 		vsp = floor((hit_player_obj.y * 1.2) - y) / 30
                 
                         
                         if (hit_player_obj.x - x < 30) and (hit_player_obj.x - x > -30) {
-                        		y += floor(hit_player_obj.y - y) / 40
+                        		y += floor(hit_player_obj.y - y) / 20
                         }
-                		
+                	
+                    if	(hit_player_obj.y - y > 20) or (hit_player_obj.y - y < -20) {	
                 	if hit_player_obj.y - y < 0 {
                 		y -= 10
                 	} else {
                 	    y += 10
                 	} 
+                    }
+                    
+                     if	(hit_player_obj.x - x > 20) or (hit_player_obj.x - x < -20) {	
                    		if hit_player_obj.x - x < 0 {
                 		x -= 10
                 	} else {
                 	    x += 10
                 	} 
+                     }
              }
              
              can_wall_jump = true

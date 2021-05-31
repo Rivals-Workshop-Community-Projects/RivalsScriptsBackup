@@ -21,7 +21,7 @@ if isyellow {
     switch (state) {
     
     case PS_IDLE :
-     sprite_index = sprite_get("idle2");
+     sprite_index = sprite_get("idle");
      image_index = state_timer/6    
     break;
     
