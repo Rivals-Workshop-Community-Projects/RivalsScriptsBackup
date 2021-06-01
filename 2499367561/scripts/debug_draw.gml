@@ -1,0 +1,1 @@
+//draw_debug_text( x - 10, y - 10,  + string(crouchsoundtimer) );

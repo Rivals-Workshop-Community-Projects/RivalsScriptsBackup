@@ -45,7 +45,7 @@ set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 64);
 set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 64);
 set_hitbox_value(AT_BAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 10);
-set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 50);
+set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 145);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 8);
@@ -54,7 +54,7 @@ set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, -32);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_forsburn_combust"));
-set_hitbox_value(AT_BAIR, 1, HG_ANGLE_FLIPPER, 3);
+set_hitbox_value(AT_BAIR, 1, HG_ANGLE_FLIPPER, 0);
 
 // Saffron
 set_hitbox_value(AT_BAIR, 2, HG_PARENT_HITBOX, 2);
@@ -76,5 +76,5 @@ set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, 139);
 set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, -32);
 set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
-set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_BAIR, 2, HG_ANGLE_FLIPPER, 0);

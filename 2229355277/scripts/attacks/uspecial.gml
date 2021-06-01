@@ -15,6 +15,8 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_bird_upspecial"));
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED, 0);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 2);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, 3);
 
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE, 0);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 18);

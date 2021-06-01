@@ -33,7 +33,7 @@ var ColorNext = [0, 0, 0];
 
 // Updating image_alpha when a new color is selected
 if (color <= 16){
-    if (color != image_index){ 
+    if (color != image_index){
     	image_alpha = 1; //Set to 3 to make it take a long time for the text to fade
     	sound_stop(asset_get("mfx_change_color"));
     	sound_stop(sound_get("CSS_select"));
@@ -42,7 +42,7 @@ if (color <= 16){
 }
 
 if (color >= 17){
-    if (color != image_index + 17){ 
+    if (color != image_index + 17){
     	image_alpha = 1; //Set to 3 to make it take a long time for the text to fade
     	sound_stop(asset_get("mfx_change_color"));
     	sound_stop(sound_get("CSS_select"));
@@ -57,7 +57,7 @@ image_index = color;
 //	case 1:
 		switch(color) {
 				case 0:
-			name = " 1: Saffron"; 
+			name = " 1: Saffron";
 			var position = 0;
 			ColorPrev = make_color_rgb(67, 0, 156);
 			ColorNext = make_color_rgb(98, 87, 227 );
@@ -66,9 +66,9 @@ image_index = color;
 				path_position = 1;
 			}
 				break;
-			
-				case 1: 
-			name = " 2: Selicy"; 
+
+				case 1:
+			name = " 2: Selicy";
 			var position = 1;
 			ColorPrev = make_color_rgb(250, 212, 122);
 			ColorNext = make_color_rgb(81, 28, 31);
@@ -77,9 +77,9 @@ image_index = color;
 				path_position = 2;
 			}
 				break;
-			
-				case 2: 
-			name = " 3: Hazel"; 
+
+				case 2:
+			name = " 3: Hazel";
 			var position = 2;
 			ColorPrev = make_color_rgb(98, 87, 227 );
 			ColorNext = make_color_rgb(138, 211, 167);
@@ -88,9 +88,9 @@ image_index = color;
 				path_position = 3;
 			}
 				break;
-			
-				case 3: 
-			name = " 4: Violette"; 
+
+				case 3:
+			name = " 4: Violette";
 			var position = 3;
 			ColorPrev = make_color_rgb(81, 28, 31);
 			ColorNext = make_color_rgb(58, 47, 64  );
@@ -99,9 +99,9 @@ image_index = color;
 				path_position = 4;
 			}
 				break;
-				
-				case 4: 
-			name = " 5: Terra"; 
+
+				case 4:
+			name = " 5: Terra";
 			var position = 4;
 			ColorPrev = make_color_rgb(138, 211, 167);
 			ColorNext = make_color_rgb(109, 92, 66);
@@ -110,9 +110,9 @@ image_index = color;
 				path_position = 5;
 			}
 			    break;
-			
-				case 5: 
-			name = " 6: Gunner"; 
+
+				case 5:
+			name = " 6: Gunner";
 			var position = 5;
 			ColorPrev = make_color_rgb(58, 47, 64);
 			ColorNext = make_color_rgb(71, 59, 83);
@@ -121,9 +121,9 @@ image_index = color;
 				path_position = 6;
 			}
 			    break;
-			
-				case 6: 
-			name = " 7: Abyssal"; 
+
+				case 6:
+			name = " 7: Abyssal";
 			var position = 6;
 			ColorPrev = make_color_rgb(109, 92, 66);
 			ColorNext = make_color_rgb(137, 223, 189);
@@ -132,9 +132,9 @@ image_index = color;
 				path_position = 7;
 			}
 			    break;
-			
+
 				case 7:
-			name = " 8: Reva"; 	
+			name = " 8: Reva";
 			var position = 7;
 			ColorPrev = make_color_rgb(71, 59, 83);
 			ColorNext = make_color_rgb(46, 66, 156);
@@ -143,9 +143,9 @@ image_index = color;
 				path_position = 8;
 			}
 			    break;
-			
-				case 8: 
-			name = " 9: Shiso"; 
+
+				case 8:
+			name = " 9: Shiso";
 			var position = 8;
 			ColorPrev = make_color_rgb(137, 223, 189);
 			ColorNext = make_color_rgb(195, 163, 131);
@@ -154,9 +154,9 @@ image_index = color;
 				path_position = 9;
 			}
 			    break;
-			
-				case 9: 
-			name = " 10: Shopkeeper"; 
+
+				case 9:
+			name = " 10: Shopkeeper";
 			var position = 9;
 			ColorPrev = make_color_rgb(46, 66, 156);
 			ColorNext = make_color_rgb(163, 121, 98);
@@ -165,9 +165,9 @@ image_index = color;
 				path_position = 10;
 			}
 			    break;
-			
-				case 10: 
-			name = " 11: Player 2"; 
+
+				case 10:
+			name = " 11: Player 2";
 			var position = 10;
 			ColorPrev = make_color_rgb(195, 163, 131);
 			ColorNext = make_color_rgb(255, 154, 67);
@@ -175,10 +175,10 @@ image_index = color;
 			if (path_position == 10 && path_scale == 0){
 				path_position = 11;
 			}
-			    break;	
-			
-				case 11: 
-			name = " 12: Sonia"; 
+			    break;
+
+				case 11:
+			name = " 12: Sonia";
 			var position = 11;
 			ColorPrev = make_color_rgb(163, 121, 98);
 			ColorNext = make_color_rgb(121, 11, 34 );
@@ -187,20 +187,20 @@ image_index = color;
 				path_position = 12;
 			}
 			    break;
-			
-				case 12: 
-			name = " 13: Exusiai"; 
-			var position = 12;	
+
+				case 12:
+			name = " 13: Exusiai";
+			var position = 12;
 			ColorPrev = make_color_rgb(255, 154, 67);
-			ColorNext = make_color_rgb(255, 255, 255);		
+			ColorNext = make_color_rgb(255, 255, 255);
 			ColorNextNext = make_color_rgb(205, 230, 249);
 			if (path_position == 12 && path_scale == 0){
 				path_position = 13;
 			}
-				break;	
-			
-				case 13: 
-			name = " 14: Ashley"; 
+				break;
+
+				case 13:
+			name = " 14: Ashley";
 			var position = 13;
 			ColorPrev = make_color_rgb(121, 11, 34 );
 			ColorNext = make_color_rgb(205, 230, 249);
@@ -208,10 +208,10 @@ image_index = color;
 			if (path_position == 13 && path_scale == 0){
 				path_position = 14;
 			}
-				break;	
-				
-				case 14: 
-			name = " 15: smol"; 
+				break;
+
+				case 14:
+			name = " 15: smol";
 			var position = 14;
 			ColorPrev = make_color_rgb(255, 255, 255);
 			ColorNext = make_color_rgb(130, 125, 255);
@@ -219,10 +219,10 @@ image_index = color;
 			if (path_position == 14 && path_scale == 0){
 				path_position = 15;
 			}
-				break;	
-				
-				case 15: 
-			name = " 16: Lea"; 
+				break;
+
+				case 15:
+			name = " 16: Lea";
 			var position = 15;
 			ColorPrev = make_color_rgb(205, 230, 249);
 			ColorNext = make_color_rgb(232, 74, 42);
@@ -230,10 +230,10 @@ image_index = color;
 			if (path_position == 15 && path_scale == 0){
 				path_position = 16;
 			}
-				break;	
-				
-				case 16: 
-			name = " 17: Archytas"; 
+				break;
+
+				case 16:
+			name = " 17: Archytas";
 			var position = 16;
 			ColorPrev = make_color_rgb(130, 125, 255);
 			ColorNext = make_color_rgb(111, 160, 83);
@@ -242,9 +242,9 @@ image_index = color;
 				path_position = 17;
 			}
 			    break;
-			
-				case 17: 
-			name = " 18: Album"; 
+
+				case 17:
+			name = " 18: Album";
 			var position = 17;
 			ColorPrev = make_color_rgb(232, 74, 42);
 			ColorNext = make_color_rgb(237, 179, 21);
@@ -252,10 +252,10 @@ image_index = color;
 			if (path_position == 17 && path_scale == 0){
 				path_position = 18;
 			}
-			    break;	
-			
-				case 18: 
-			name = " 19: Golden"; 
+			    break;
+
+				case 18:
+			name = " 19: Golden";
 			var position = 18;
 			ColorPrev = make_color_rgb(111, 160, 83);
 			ColorNext = make_color_rgb(30, 34, 71 );
@@ -264,9 +264,9 @@ image_index = color;
 				path_position = 19;
 			}
 			    break;
-			
-				case 19: 
-			name = " 19: Mega Man.EXE"; 
+
+				case 19:
+			name = " 19: Mega Man.EXE";
 			var position = 19;
 			ColorPrev = make_color_rgb(237, 179, 21);
 			ColorNext = make_color_rgb(72, 71, 111 );
@@ -275,20 +275,20 @@ image_index = color;
 				path_position = 20;
 			}
 			    break;
-			
-				case 20: 
-			name = " 20: Sabrina"; 
-			var position = 20;	
+
+				case 20:
+			name = " 20: Sabrina";
+			var position = 20;
 			ColorPrev = make_color_rgb(30, 34, 71);
-			ColorNext = make_color_rgb(209, 111, 19);		
+			ColorNext = make_color_rgb(209, 111, 19);
 			ColorNextNext = make_color_rgb(107, 125, 215);
 			if (path_position == 20 && path_scale == 0){
 				path_position = 21;
 			}
-				break;	
-			
-				case 21: 
-			name = " 21: Athena Cykes"; 
+				break;
+
+				case 21:
+			name = " 21: Athena Cykes";
 			var position = 21;
 			ColorPrev = make_color_rgb(72, 71, 111 );
 			ColorNext = make_color_rgb(107, 125, 215);
@@ -296,10 +296,10 @@ image_index = color;
 			if (path_position == 21 && path_scale == 0){
 				path_position = 22;
 			}
-				break;	
-				
-				case 22: 
-			name = " 22: Miyuki"; 
+				break;
+
+				case 22:
+			name = " 22: Miyuki";
 			var position = 22;
 			ColorPrev = make_color_rgb(209, 111, 19);
 			ColorNext = make_color_rgb(31, 31, 31);
@@ -307,10 +307,10 @@ image_index = color;
 			if (path_position == 22 && path_scale == 0){
 				path_position = 23;
 			}
-				break;	
-				
-				case 23: 
-			name = " 23: Cotton Candy"; 
+				break;
+
+				case 23:
+			name = " 23: Cotton Candy";
 			var position = 23;
 			ColorPrev = make_color_rgb(107, 125, 215);
 			ColorNext = make_color_rgb(227, 118, 40);
@@ -319,9 +319,9 @@ image_index = color;
 				path_position = 24;
 			}
 				break;
-				
-				case 24: 
-			name = " 24: Daisy"; 
+
+				case 24:
+			name = " 24: Daisy";
 			var position = 24;
 			ColorPrev = make_color_rgb(31, 31, 31);
 			ColorNext = make_color_rgb(73, 54, 48);
@@ -330,9 +330,9 @@ image_index = color;
 				path_position = 25;
 			}
 			    break;
-			
-				case 25: 
-			name = " 25: Reimu"; 
+
+				case 25:
+			name = " 25: Reimu";
 			var position = 25;
 			ColorPrev = make_color_rgb(227, 118, 40);
 			ColorNext = make_color_rgb(41, 41, 41);
@@ -340,10 +340,10 @@ image_index = color;
 			if (path_position == 25 && path_scale == 0){
 				path_position = 26;
 			}
-			    break;	
-			
-				case 26: 
-			name = " 26: Oreo"; 
+			    break;
+
+				case 26:
+			name = " 26: Oreo";
 			var position = 26;
 			ColorPrev = make_color_rgb(73, 54, 48);
 			ColorNext = make_color_rgb(67, 0, 156 );
@@ -352,18 +352,18 @@ image_index = color;
 				path_position = 27;
 			}
 			    break;
-			
-				case 27: 
-			name = " 27: Aesthetic"; 
-			var position = 27;	
+
+				case 27:
+			name = " 27: Aesthetic";
+			var position = 27;
 			ColorPrev = make_color_rgb(41, 41, 41);
-			ColorNext = make_color_rgb(250, 212, 122);		
+			ColorNext = make_color_rgb(250, 212, 122);
 			ColorNextNext = make_color_rgb(98, 87, 227);
 			if (path_position == 27 && path_scale == 0){
 				path_position = 0;
 			}
-				break;	
-				
+				break;
+
 		}
 	//break;
 //}
@@ -372,13 +372,13 @@ image_index = color;
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
-draw_text_color(x + 10, y - 6, "Version 1.1.0", c_white, c_white, c_white, c_white, 1);
+draw_text_color(x + 10, y - 6, "Version 1.2.1", c_white, c_white, c_white, c_white, 1);
 
 // Date Display
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_right);
 draw_set_valign(fa_top);
-draw_text_color(x + 210, y - 6, "April 3rd, 2021", c_white, c_white, c_white, c_white, 1);
+draw_text_color(x + 210, y - 6, "May 31st, 2021", c_white, c_white, c_white, c_white, 1);
 
 var css_y = y + 94;
 var css_prevc_x = x + 12;   // previous
@@ -390,12 +390,12 @@ if (image_alpha == 0){
 	// The Selected Color
 	draw_sprite_ext(sprite_get("CSSicon"), 1, css_cc_x, css_y, 2, 2, 0, -1, 1);
 	draw_sprite_ext(sprite_get("CSSicon"), 0, css_cc_x, css_y, 2, 2, 0, -1, 1);
-	
+
 	// The Previous Color
 	draw_sprite_ext(sprite_get("CSSicon"), 1, css_prevc_x, css_y, 2, 2, 0, -1, 0.6);
 	draw_sprite_ext(sprite_get("CSSicon"), 2, css_prevc_x, css_y, 2, 2, 0, -1, 1);
 	draw_sprite_ext(sprite_get("CSSicon"), 2, css_prevc_x, css_y, 2, 2, 0, ColorPrev, 0.6);
-	
+
 	// The Next Color
 	draw_sprite_ext(sprite_get("CSSicon"), 1, css_nc_x, css_y, 2, 2, 0, -1, 0.6);
 	draw_sprite_ext(sprite_get("CSSicon"), 2, css_nc_x, css_y, 2, 2, 0, -1, 1);
@@ -411,15 +411,15 @@ if (image_alpha != 0 && position == color){
 	// The Selected Color
 	draw_sprite_ext(sprite_get("CSSicon"), 1, css_cc_x - display, css_y, 2, 2, 0, -1, 1 - image_alpha);
 	draw_sprite_ext(sprite_get("CSSicon"), 0, css_cc_x - display, css_y, 2, 2, 0, -1, 1 - image_alpha);
-	
+
 	// The Previous Color
 	draw_sprite_ext(sprite_get("CSSicon"), 1, css_prevc_x - display, css_y, 2, 2, 0, -1, .6 - image_alpha);
 	draw_sprite_ext(sprite_get("CSSicon"), 2, css_prevc_x - display, css_y, 2, 2, 0, ColorPrev, .6 - image_alpha);
-	
+
 	// The Next Color
 	draw_sprite_ext(sprite_get("CSSicon"), 1, css_nc_x - display, css_y, 2, 2, 0, -1, .6 - image_alpha);
 	draw_sprite_ext(sprite_get("CSSicon"), 2, css_nc_x - display, css_y, 2, 2, 0, ColorNext, .6 - image_alpha);
-	
+
 	// The NextNext Color
 	draw_sprite_ext(sprite_get("CSSicon"), 1, css_nnc_x - display, css_y, 2, 2, 0, -1, .4 - image_alpha);
 	draw_sprite_ext(sprite_get("CSSicon"), 2, css_nnc_x - display, css_y, 2, 2, 0, ColorNextNext, .4 - image_alpha);
@@ -429,11 +429,11 @@ if (image_alpha != 0 && position == color){
 	// The Selected Color
 	draw_sprite_ext(sprite_get("CSSicon"), 1, css_cc_x + display, css_y, 2, 2, 0, -1, 1.6 - image_alpha);
 	draw_sprite_ext(sprite_get("CSSicon"), 0, css_cc_x + display, css_y, 2, 2, 0, -1, 1.6 - image_alpha);
-	
+
 	// The Previous Color
 	draw_sprite_ext(sprite_get("CSSicon"), 1, css_prevc_x + display, css_y, 2, 2, 0, -1, .6 - image_alpha);
 	draw_sprite_ext(sprite_get("CSSicon"), 2, css_prevc_x + display, css_y, 2, 2, 0, ColorPrev, .6 - image_alpha);
-	
+
 	// The Next Color
 	draw_sprite_ext(sprite_get("CSSicon"), 1, css_nc_x + display, css_y, 2, 2, 0, -1, .6 - image_alpha);
 	draw_sprite_ext(sprite_get("CSSicon"), 2, css_nc_x + display, css_y, 2, 2, 0, ColorNext, .6 - image_alpha);

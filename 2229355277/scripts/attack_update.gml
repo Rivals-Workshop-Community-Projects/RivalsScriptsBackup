@@ -613,7 +613,7 @@ if attack == AT_GUILLOTINE{
 }
 // crossfire
 if attack == AT_CROSSFIRE{
-	if window == 1 and window_timer == 1{
+	if window == 1 and window_timer == 8{
 		var p;
 		for(p = 1; p < 17; p++){
 			var newfx = spawn_hit_fx(x + get_hitbox_value(AT_CROSSFIRE, p, HG_HITBOX_X), y + get_hitbox_value(AT_CROSSFIRE, p, HG_HITBOX_Y), fx_sprites[6]);
