@@ -1,0 +1,62 @@
+sprite_change_offset("idle", 100, 128);
+sprite_change_offset("hurt", 100, 128);
+sprite_change_offset("hurtground", 100, 128);
+sprite_change_offset("bighurt", 100, 128);
+sprite_change_offset("uphurt", 100, 128);
+sprite_change_offset("downhurt", 100, 128);
+sprite_change_offset("bouncehurt", 100, 128);
+sprite_change_offset("spinhurt", 100, 128);
+sprite_change_offset("crouch", 100, 128);
+sprite_change_offset("walk", 100, 128);
+sprite_change_offset("walkturn", 100, 128);
+sprite_change_offset("dash", 100, 128);
+sprite_change_offset("dashstart", 100, 128);
+sprite_change_offset("dashstop", 100, 128);
+sprite_change_offset("dashturn", 100, 128);
+
+sprite_change_offset("jumpstart", 100, 128);
+sprite_change_offset("jump", 100, 128);
+sprite_change_offset("doublejump", 100, 128);
+sprite_change_offset("walljump", 100, 128);
+sprite_change_offset("pratfall", 100, 128);
+sprite_change_offset("land", 100, 128);
+sprite_change_offset("landinglag", 100, 128);
+
+sprite_change_offset("parry", 100, 128);
+sprite_change_offset("roll_forward", 100, 128);
+sprite_change_offset("roll_backward", 100, 128);
+sprite_change_offset("airdodge", 100, 128);
+sprite_change_offset("waveland", 100, 128);
+sprite_change_offset("tech", 100, 128);
+
+sprite_change_offset("jab", 100, 128);
+sprite_change_offset("dattack", 100, 128);
+sprite_change_offset("ftilt", 100, 128);
+sprite_change_offset("dtilt", 100, 128);
+sprite_change_offset("utilt", 100, 128);
+sprite_change_offset("nair", 100, 128);
+sprite_change_offset("fair", 100, 128);
+sprite_change_offset("bair", 100, 128);
+sprite_change_offset("uair", 100, 128);
+sprite_change_offset("dair", 100, 128);
+sprite_change_offset("fstrong", 100, 128);
+sprite_change_offset("ustrong", 100, 128);
+sprite_change_offset("dstrong", 100, 128);
+sprite_change_offset("nspecial", 100, 128);
+sprite_change_offset("nspecial_air", 100, 128);
+sprite_change_offset("fspecial", 100, 128);
+sprite_change_offset("fspecial_air", 100, 128);
+sprite_change_offset("uspecial", 100, 128);
+sprite_change_offset("dspecial", 100, 128);
+sprite_change_offset("nspecial_star", 100, 128);
+sprite_change_offset("nspecial_star_air", 100, 128);
+sprite_change_offset("fspecial_star", 100, 128);
+sprite_change_offset("fspecial_star_air", 100, 128);
+sprite_change_offset("uspecial_star", 100, 128);
+sprite_change_offset("taunt", 100, 128);
+sprite_change_offset("phone_open", 100, 128);
+sprite_change_offset("intro", 100, 128);
+
+sprite_change_offset("plat", 54, 94);
+
+sprite_change_offset("miiverse", 60, 30);

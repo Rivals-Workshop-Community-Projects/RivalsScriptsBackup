@@ -109,3 +109,4 @@ set_hitbox_value(AT_USPECIAL, 5, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_USPECIAL, 5, HG_VISUAL_EFFECT, fspecSmallHit);
 set_hitbox_value(AT_USPECIAL, 5, HG_HIT_SFX, sound_get("dagger_stab2"));
 set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_USPECIAL, 5, HG_HIT_LOCKOUT, 15);

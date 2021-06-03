@@ -64,3 +64,4 @@ set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_UAIR, 2, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, sound_get("dagger_slash1"));
+set_hitbox_value(AT_UAIR, 2, HG_HIT_LOCKOUT, 15);

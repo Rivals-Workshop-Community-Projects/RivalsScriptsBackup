@@ -1,5 +1,9 @@
 hurtbox_spr = sprite_get("hurtbox");
 
+introTimer = -4;
+//setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening. If it's slightly off, feel free to mess with it.
+introTimer2 = 0;
+
 caleb = 0;
 machina = 0;
 
@@ -27,9 +31,9 @@ pratfall_anim_speed = .25;
 walk_speed = 3.75;
 walk_accel = 0.3;
 walk_turn_time = 12;
-initial_dash_time = 8;
-initial_dash_speed = 9;
-dash_speed = 7.8;
+initial_dash_time = 12;
+initial_dash_speed = 8;
+dash_speed = 6.9;
 dash_turn_time = 10;
 dash_turn_accel = 1.5;
 dash_stop_time = 6;
@@ -44,7 +48,7 @@ short_hop_speed = 7;
 djump_speed = 10;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state
+air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .35;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
@@ -62,9 +66,9 @@ knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = ligh
 
 land_time = 6; //normal landing frames
 prat_land_time = 3;
-wave_land_time = 8;
-wave_land_adj = 1.4; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .06; //grounded deceleration when wavelanding
+wave_land_time = 7;
+wave_land_adj = 1.5; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_friction = .07; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 1;

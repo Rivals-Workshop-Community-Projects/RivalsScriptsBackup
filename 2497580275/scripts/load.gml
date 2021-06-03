@@ -63,3 +63,6 @@ sprite_change_offset("deathbg", 900, 350);
 sprite_change_offset("nspecial_proj", 64, 94);
 sprite_change_offset("small_hitfx", 128, 128);
 sprite_change_offset("big_hitfx", 128, 128);
+
+set_victory_theme(sound_get("victory"));
+set_victory_bg(sprite_get("victory_bg"));

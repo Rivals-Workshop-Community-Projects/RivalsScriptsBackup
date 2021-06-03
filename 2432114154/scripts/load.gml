@@ -71,6 +71,7 @@ sprite_change_offset("extra_1", 102, 124);
 sprite_change_offset("inkring", 80, 80);
 
 sprite_change_offset("nspecial", 102, 124);
+sprite_change_offset("nspecialf", 102, 124);
 sprite_change_offset("fspecial", 102, 124);
 sprite_change_offset("fspecial2", 102, 124);
 sprite_change_offset("saillusion", 102, 124);

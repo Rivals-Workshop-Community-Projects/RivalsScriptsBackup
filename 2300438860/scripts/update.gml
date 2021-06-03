@@ -419,10 +419,11 @@ if finisher = 20 {
 }
 
 
+if cosmetic = 0{
+neointro = -1
+}
 
-
-
-if(neointro == 0) {
+if(neointro == 0) && cosmetic = 1{
 
            var shortest_dist = 9999; 
 			var shortest_id = noone;

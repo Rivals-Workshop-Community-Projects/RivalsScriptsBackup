@@ -44,7 +44,7 @@ var palette_names = [
   "Melee Sai",
   "Paint Tool Sai",
   "Osu Dab",
-  "Cmon!",
+  "Spacies",
   "Grab",
   "Daisho no Hebi",
   "w a t e r m e l o n",

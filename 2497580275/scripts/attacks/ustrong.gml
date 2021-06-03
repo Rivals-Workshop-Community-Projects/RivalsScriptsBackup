@@ -48,6 +48,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, -20);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, fspecSmallHit);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, sound_get("dagger_stab1"));
+set_hitbox_value(AT_USTRONG, 1, HG_HIT_LOCKOUT, 10);
 
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_WINDOW, 2);
@@ -65,3 +66,4 @@ set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 1.2);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, fspecBigHit);
 set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, sound_get("dagger_stab2"));
+set_hitbox_value(AT_USTRONG, 2, HG_HIT_LOCKOUT, 10);

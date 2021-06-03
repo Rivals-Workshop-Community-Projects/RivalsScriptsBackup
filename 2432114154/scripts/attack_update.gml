@@ -190,13 +190,20 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
         vsp = 0
         
         if !hitpause && window_timer == 1{
-            spawn_hit_fx (x + 20*spr_dir, y - 58, 305)
+        	if get_player_color(player) == 10 {
+            	sound_play(sound_get("fox_illusion_ding"),false,noone,1,0.85 + (random_func(1,30,true)/100))
+            }
+
+            spawn_hit_fx (x + 20*spr_dir, y - 58, 27)
             sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"))
         }
         }
         
         if window == 2 && window_timer <= 6 {
             if window_timer == 1{
+            if get_player_color(player) == 10 {
+            	sound_play(sound_get("fox_illusion_swoosh"),false,noone,1,0.85 + (random_func(1,30,true)/100))
+            }
             			set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 60);
                 sound_play(asset_get("sfx_clairen_swing_mega_instant"))
             	sound_play(asset_get("sfx_ori_bash_use"))
@@ -253,8 +260,10 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
          vsp /= 1.1   
          }
          
-         if window == 1 {
-
+         if window == 1 && window_timer == 1 && !hitpause {
+if get_player_color(player) == 10 {
+	sound_play(sound_get("fox_shine"),false,noone,1,0.85 + (random_func(1,30,true)/100))
+}
          }
          
          if (has_hit or window == 3 or (window == 2 && window_timer > 3)) && get_gameplay_time() > 120{

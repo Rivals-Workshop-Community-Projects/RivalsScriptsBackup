@@ -1,6 +1,8 @@
 ///
 
+if cosmetic = 1 {
 finishercd = 0
+}
 
 if my_hitboxID.type == 1 && my_hitboxID.attack != AT_DSTRONG && my_hitboxID.attack != AT_NSPECIAL
 && my_hitboxID.attack != AT_DTILT && my_hitboxID.attack != AT_DSPECIAL && 

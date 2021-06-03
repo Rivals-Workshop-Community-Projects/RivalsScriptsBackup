@@ -183,6 +183,13 @@ if intro_time == 74 spawn_base_dust(x, y, "n_wavedash", 1)
 if intro_time == 96 sound_play(asset_get("sfx_land"))
 if intro_time == 96 spawn_base_dust(x, y, "land", 1)
 
+//hitfx colour
+/*
+with hit_fx_obj {
+	
+}
+*/
+
 #define spawn_base_dust(x, y, name, dir)
 //This function spawns base cast dusts. Names can be found below.
 var dlen; //dust_length value

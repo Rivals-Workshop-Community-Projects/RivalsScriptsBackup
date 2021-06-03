@@ -1,3 +1,5 @@
+sprite_change_offset("intro", 50, 186);
+
 sprite_change_offset("idle", 50, 90);
     sprite_change_offset("idle_EX", 50, 90);
     sprite_change_offset("idle_EX1", 50, 90);
@@ -43,6 +45,7 @@ sprite_change_offset("dattack", 60, 100);
 sprite_change_offset("ftilt", 90, 90);
 sprite_change_offset("dtilt", 50, 86);
 sprite_change_offset("utilt", 70, 128);
+    sprite_change_offset("nair2", 72, 98);
 sprite_change_offset("nair", 80, 98);
 sprite_change_offset("fair", 80, 106);
  sprite_change_offset("fairB", 62, 88);

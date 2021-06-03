@@ -1,5 +1,21 @@
 //update
 
+if (introTimer2 < 4) {
+    introTimer2++;
+} else {
+    introTimer2 = 0;
+    introTimer++;
+}
+//this increments introTimer every few frames, depending on the number entered
+
+if (introTimer < 17) {
+    draw_indicator = false;
+} else {
+    draw_indicator = true;
+}
+//this stops the overhead HUD from getting in the way of the animation. If your animation does not involve much movement, this may not be necessary.
+
+
 if ((attack == AT_USPECIAL)  || state_cat == SC_HITSTUN)
 {
 	//Corta la generaci�n de meter cuando eres golpeado o mientras estas realizando la recovery
@@ -169,14 +185,14 @@ if (taunt_pressed){
 	
 	set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 16);
 	
-	set_num_hitboxes(AT_FAIR, 2);
+	set_num_hitboxes(AT_FAIR, 3);
 	
 	set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 5);
 	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 12);
-	set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 45);
+	set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 40);
 	set_hitbox_value(AT_FAIR, 1, HG_EFFECT, 0);
-	set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 8);
-	set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, 1.0);
+	set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 6);
+	set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .85);
 	set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 20);
 	set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .5);
 	set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
@@ -184,13 +200,23 @@ if (taunt_pressed){
 	
 	set_hitbox_value(AT_FAIR, 2, HG_PRIORITY, 5);
 	set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 10);
-	set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 65);
+	set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 361);
 	set_hitbox_value(AT_FAIR, 2, HG_EFFECT, 0);
-	set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, 1.0);
+	set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 5);
+	set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .9);
 	set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 15);
 	set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 	set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 155);
+	
+	set_hitbox_value(AT_FAIR, 3, HG_PRIORITY, 5);
+	set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 10);
+	set_hitbox_value(AT_FAIR, 3, HG_ANGLE, 361);
+	set_hitbox_value(AT_FAIR, 3, HG_EFFECT, 0);
+	set_hitbox_value(AT_FAIR, 3, HG_BASE_KNOCKBACK, 5);
+	set_hitbox_value(AT_FAIR, 3, HG_KNOCKBACK_SCALING, .9);
+	set_hitbox_value(AT_FAIR, 3, HG_BASE_HITPAUSE, 15);
+	set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+	set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, 155);
 	
 }
 	if right_down && (element_change == 5){
@@ -288,7 +314,7 @@ if (taunt_pressed){
 	
 	set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 12);
 	
-	set_num_hitboxes(AT_FAIR, 2);
+	set_num_hitboxes(AT_FAIR, 3);
 	
 	set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 5);
 	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 9);
@@ -310,6 +336,16 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 15);
 	set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, sound_get("sfx_blow_ice_heavy1"));
 	set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 199);
+	
+	set_hitbox_value(AT_FAIR, 3, HG_PRIORITY, 5);
+	set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 7);
+	set_hitbox_value(AT_FAIR, 3, HG_ANGLE, 65);
+	set_hitbox_value(AT_FAIR, 3, HG_EFFECT, 0);
+	set_hitbox_value(AT_FAIR, 3, HG_BASE_KNOCKBACK, 6);
+	set_hitbox_value(AT_FAIR, 3, HG_KNOCKBACK_SCALING, .6);
+	set_hitbox_value(AT_FAIR, 3, HG_BASE_HITPAUSE, 15);
+	set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, sound_get("sfx_blow_ice_heavy1"));
+	set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, 199);
 }
 	if left_down && (element_change == 5){
 
@@ -391,7 +427,7 @@ if (taunt_pressed){
 	
 	set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 10);
 	
-	set_num_hitboxes(AT_FAIR, 2);
+	set_num_hitboxes(AT_FAIR, 3);
 	
 	set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 5);
 	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 7);
@@ -413,6 +449,16 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 9);
 	set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
 	set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 124);
+	
+	set_hitbox_value(AT_FAIR, 3, HG_PRIORITY, 5);
+	set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 5);
+	set_hitbox_value(AT_FAIR, 3, HG_ANGLE, 60);
+	set_hitbox_value(AT_FAIR, 3, HG_EFFECT, 0);
+	set_hitbox_value(AT_FAIR, 3, HG_BASE_KNOCKBACK, 6);
+	set_hitbox_value(AT_FAIR, 3, HG_KNOCKBACK_SCALING, .5);
+	set_hitbox_value(AT_FAIR, 3, HG_BASE_HITPAUSE, 9);
+	set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
+	set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, 124);
 }
 	if up_down && (element_change == 5){
 	
@@ -531,6 +577,16 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 	set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 204);
 	
+	set_hitbox_value(AT_FAIR, 3, HG_PRIORITY, 7);
+	set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 7);
+	set_hitbox_value(AT_FAIR, 3, HG_ANGLE, 65);
+	set_hitbox_value(AT_FAIR, 3, HG_EFFECT, 1);
+	set_hitbox_value(AT_FAIR, 3, HG_BASE_KNOCKBACK, 6);
+	set_hitbox_value(AT_FAIR, 3, HG_KNOCKBACK_SCALING, .6);
+	set_hitbox_value(AT_FAIR, 3, HG_BASE_HITPAUSE, 10);
+	set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
+	set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, 204);
+	
 }
 	if (!joy_pad_idle){
 		element_change++;
@@ -583,4 +639,28 @@ if(caleb==1)&&(state==14)&&(state_timer==80){
 		sound_play( sound_get("am_not_dead_yet"));
 	} 
 	
-	
+
+if get_gameplay_time() == 30 {
+		sound_play(asset_get("sfx_blow_medium3"))
+}
+if get_gameplay_time() == 34 {
+		sound_play(asset_get("sfx_swipe_weak1"))
+}
+if get_gameplay_time() == 39 {
+		sound_play(asset_get("sfx_swipe_weak1"))
+}
+if get_gameplay_time() == 45 {
+		sound_play(asset_get("sfx_swipe_weak1"))
+}
+if get_gameplay_time() == 50 {
+		sound_play(asset_get("sfx_swipe_medium2"))
+}
+if get_gameplay_time() == 60 {
+		sound_play(asset_get("sfx_swipe_medium2"))
+}
+if get_gameplay_time() == 70 {
+		sound_play(asset_get("sfx_swipe_medium2"))
+}
+if get_gameplay_time() == 80 {
+		sound_play(sound_get("axe_hit"))
+}

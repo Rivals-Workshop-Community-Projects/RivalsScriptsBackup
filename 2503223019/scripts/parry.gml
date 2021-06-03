@@ -1,0 +1,1 @@
+sound_play( asset_get("sfx_sand_yell"));

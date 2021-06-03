@@ -38,7 +38,7 @@ patch_ver = "1.21";
 patch_day = "2";
 patch_month = "APR";
  
-var num_alts = 16;
+var num_alts = 21;
 var alt_cur = get_player_color(player);
  
  
@@ -61,6 +61,12 @@ alt_name[12] = "Rainbow";
 alt_name[13] = "Early Access";
 alt_name[14] = "Mr Red";
 alt_name[15] = "Henry Stickmin";
+alt_name[16] = "The Chosen One";
+alt_name[17] = "Yellow";
+alt_name[18] = "Green";
+alt_name[19] = "Brown";
+alt_name[20] = "Pink";
+alt_name[21] = "Clairen";
  
  
  
@@ -75,7 +81,8 @@ draw_set_halign(fa_left);
  
  
 //Alt
- 
+
+/* 
 rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
  
 for(i = 0; i < num_alts; i++){
@@ -83,11 +90,12 @@ for(i = 0; i < num_alts; i++){
     var draw_x = temp_x + 2 + 10 * i;
     rectDraw(draw_x, temp_y + 137, draw_x + 7, temp_y + 140, draw_color);
 }
+*/
  
 draw_set_halign(fa_left);
  
 //include alt. name
-textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1) + ": " + alt_name[alt_cur]);
+textDraw(temp_x + 2, temp_y + 130, "fName", c_white, 0, 1000, 1, true, 1, (alt_cur < 9 ? "0" : "") + string(alt_cur + 1) + ": " + alt_name[alt_cur]);
  
 //exclude alt. name
 //textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));

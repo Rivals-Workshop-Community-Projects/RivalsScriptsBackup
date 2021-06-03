@@ -520,6 +520,9 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, -1);
 
 ///Nspecial
 
+if get_player_color(player) == 10 {
+	set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecialf"));
+}
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_INVINCIBILITY, 2);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_INVINCIBILITY, 2);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_INVINCIBILITY, 2);

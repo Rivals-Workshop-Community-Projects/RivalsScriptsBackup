@@ -76,3 +76,18 @@ if move_cooldown[AT_NSPECIAL_2] == 1{
 sound_play(sound_get("cooldown"));
 		spawn_hit_fx( x + 0*spr_dir, y + -20, 139);
 }
+
+if (state == PS_SPAWN) {
+    if (introTimer < 17 && introTimer >= 0) {
+        sprite_index = sprite_get("intro");
+        image_index = introTimer;
+    } else if (introTimer < 0) {
+        sprite_index = sprite_get("intro");
+        image_index = 0;
+    } else if get_player_color(player) == 2  or get_player_color(player) == 3 or get_player_color(player) == 4 or get_player_color(player) == 11 or get_player_color(player) == 12 or get_player_color(player) == 15 or get_player_color(player) == 16 or get_player_color(player) == 18 or get_player_color(player) == 19 or get_player_color(player) == 26{
+		sprite_index = sprite_get( "idle_EX" );
+    } else {
+        sprite_index = sprite_get("idle");
+    }
+}
+	
