@@ -50,3 +50,4 @@ set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_FTHROW, 1, HG_EXTENDED_PARRY_STUN, true);
 set_hitbox_value(AT_FTHROW, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_FTHROW, 1, HG_FORCE_FLINCH, 2);
+set_hitbox_value(AT_FTHROW, 1, HG_IGNORES_PROJECTILES, 1);

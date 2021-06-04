@@ -10,13 +10,13 @@ if holding_house_id == noone {
 }
 
 
-
+/*
 if (state == PS_AIR_DODGE or state == PS_PARRY_START) && holding_house_is {
 	holding_house_id.state = 4;//zdrop
 	holding_house_id.state_timer = 0;
 	holding_house_id.thrown_hitbox_type = 4;
 	holding_house_id = noone;
-}
+}*/
 
 //uspecial bounces restore
 if !free or state == PS_DEAD {
@@ -29,6 +29,7 @@ if boosting_minions {
 		sound_play(sound_get("may_woom"),false,0,0.85,1)
 		started_boosting_minions = true
 	}
+	boosting_field_timer += 1;
 	boosting_timer_rn += 1;
 	with(obj_article2) {
 		if player_id == other.id {
@@ -41,6 +42,7 @@ if boosting_minions {
 	}
 } else {
 	started_boosting_minions = false
+	boosting_field_timer = 0;
 	with(obj_article2) {
 		if player_id == other.id {
 			overworking_active = false;
@@ -57,6 +59,13 @@ if state_cat == SC_HITSTUN {
 			attack_timer_rn = 0;
 		}
 	}
+}
+
+//kragg
+if holding_house_is {
+	has_rock = true;
+} else {
+	has_rock = false;
 }
 
 /*

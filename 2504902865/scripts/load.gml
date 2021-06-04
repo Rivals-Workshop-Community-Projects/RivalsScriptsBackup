@@ -72,6 +72,7 @@ sprite_change_offset("uthrow_hurt", 146, 166);
 //house moves
 for(var i=0;i<=3;i++) {
     sprite_change_offset("house_idle_lv"+string(i), 76, 146);
+    sprite_change_offset("house_hurt_lv"+string(i), 76, 146);
     sprite_change_offset("house_crouch_lv"+string(i), 76, 146);
     sprite_change_offset("house_walk_lv"+string(i), 76, 146);
     sprite_change_offset("house_walkturn_lv"+string(i), 76, 146);

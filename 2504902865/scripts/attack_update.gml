@@ -170,18 +170,18 @@ if (attack == AT_FSPECIAL) { //grabble
                 reset_hitbox_value(AT_FSPECIAL,3,HG_HITPAUSE_SCALING);
                     break;
                 case 2:
-                set_hitbox_value(AT_FSPECIAL,3,HG_DAMAGE,7);
-                set_hitbox_value(AT_FSPECIAL,3,HG_BASE_KNOCKBACK,9);
-                set_hitbox_value(AT_FSPECIAL,3,HG_KNOCKBACK_SCALING,0.55);
-                set_hitbox_value(AT_FSPECIAL,3,HG_BASE_HITPAUSE,10);
-                set_hitbox_value(AT_FSPECIAL,3,HG_HITPAUSE_SCALING,0.45);
+                set_hitbox_value(AT_FSPECIAL,3,HG_DAMAGE,8);
+                set_hitbox_value(AT_FSPECIAL,3,HG_BASE_KNOCKBACK,7);
+                set_hitbox_value(AT_FSPECIAL,3,HG_KNOCKBACK_SCALING,1); 
+                set_hitbox_value(AT_FSPECIAL,3,HG_BASE_HITPAUSE,7);
+                set_hitbox_value(AT_FSPECIAL,3,HG_HITPAUSE_SCALING,0.95);
                     break;
                 case 3:
                 set_hitbox_value(AT_FSPECIAL,3,HG_DAMAGE,9);
-                set_hitbox_value(AT_FSPECIAL,3,HG_BASE_KNOCKBACK,10);
-                set_hitbox_value(AT_FSPECIAL,3,HG_KNOCKBACK_SCALING,0.75);
-                set_hitbox_value(AT_FSPECIAL,3,HG_BASE_HITPAUSE,12);
-                set_hitbox_value(AT_FSPECIAL,3,HG_HITPAUSE_SCALING,0.75);
+                set_hitbox_value(AT_FSPECIAL,3,HG_BASE_KNOCKBACK,8);
+                set_hitbox_value(AT_FSPECIAL,3,HG_KNOCKBACK_SCALING,1.3);
+                set_hitbox_value(AT_FSPECIAL,3,HG_BASE_HITPAUSE,8);
+                set_hitbox_value(AT_FSPECIAL,3,HG_HITPAUSE_SCALING,1.3);
                     break;
             }
             consume_house.state = 5;
@@ -200,11 +200,6 @@ if (attack == AT_FSPECIAL) { //grabble
 	        hsp += right_down ? 0.15 : 0;
 	        hsp += left_down ? -0.15 : 0;
 	    }
-	}
-	//househit boost
-	if window == 12 && has_hit_player {
-		boosting_minions = true;
-		boosting_timer_rn = 0;
 	}
 }
 

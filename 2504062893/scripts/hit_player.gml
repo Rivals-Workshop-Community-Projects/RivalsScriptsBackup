@@ -20,7 +20,7 @@ if (attack == AT_FSPECIAL){
         	lifespan = 300;
             image_angle = 0;
         	hsp = -3*sign(spr_dir);
-        	vsp = -7;
+        	vsp = -6;
         }
     }
 }

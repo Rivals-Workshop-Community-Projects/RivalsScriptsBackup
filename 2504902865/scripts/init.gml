@@ -12,6 +12,8 @@ boosting_minions = false;
 boosting_timer_rn = 0;
 boosting_timer_max = 270;
 dspecial_cooldown = 45;
+boosting_field_timer = 0;
+
 
 //grabble
 grabbed_player_obj = noone;    //the player object currently being grabbed.

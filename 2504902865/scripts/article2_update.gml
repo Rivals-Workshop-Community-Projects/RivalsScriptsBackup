@@ -124,8 +124,8 @@ switch(state) {
     	    case 1:
     	        attack_window_frame_first = 0;
     	        attack_window_frame_last = 1;
-    	        window_length = 16//startup
-    	        if window_timer == 15 {
+    	        window_length = 13//startup
+    	        if window_timer == window_length-1 {
     	        	var randomsound = random_func(5,2,true);
     	        	switch(randomsound){
     	        		case 0:sound_play(asset_get("sfx_swipe_weak2")) break;

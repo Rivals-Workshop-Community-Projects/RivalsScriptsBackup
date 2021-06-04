@@ -54,7 +54,7 @@ set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 8);
 set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .4);
+set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .6); //check if this ruins combos or not
 set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 0);

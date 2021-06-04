@@ -8,7 +8,7 @@ set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED_TYPE, 0);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_DATTACK, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, -0.5);
+set_window_value(AT_DATTACK, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, -0.1); //-0.5
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, get_window_value(AT_DATTACK,1,AG_WINDOW_LENGTH)-1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX, asset_get("sfx_spin"));

@@ -46,4 +46,7 @@ if holding_house_is {
             sprite_index = sprite_get("house_dashturn_lv"+string(holding_house_level))
             break;
     }
+    if state_cat == SC_HITSTUN {
+        sprite_index = sprite_get("house_hurt_lv"+string(holding_house_level))
+    }
 }
