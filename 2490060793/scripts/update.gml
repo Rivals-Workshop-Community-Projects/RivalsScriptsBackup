@@ -64,7 +64,7 @@ if state == PS_CROUCH && prev_prev_state == PS_ATTACK_GROUND && attack == AT_DSP
 
 //debug meter managment
 
-if (taunt_down || attack == AT_TAUNT) && (debugMode == true || practice_mode) {
+if (taunt_down) && (debugMode == true || practice_mode) {
     if up_down {
         meter_cur++;
     } else if down_down {

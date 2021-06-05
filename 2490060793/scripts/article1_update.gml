@@ -288,6 +288,12 @@ if (hitbox != noone) {
             	if hitbox.attack == AT_NSPECIAL {
 	            	instance_destroy(hitbox)
 	            }
+	            meter_prev = meter_cur;
+	            meter_cur = clamp(meter_cur + other.refund_amount, 0, meter_max);
+	            meter_flash_timer = meter_flash_val;
+		        spark_timer = spark_val;
+		        spark_sprite = sprite_get("sparks" + string((timer mod 2) + 1));
+		        has_increased = true;
 				instance_destroy(other)
             	exit;
             } else if is_opp {
@@ -314,6 +320,12 @@ if (hitbox != noone) {
 	            old_vsp = vsp;
 	            hsp = 0;
 	            vsp = 0;
+	            
+	            meter_prev = meter_cur;
+	            meter_cur = clamp(meter_cur + hit_value, 0, meter_max);
+	            meter_flash_timer = meter_flash_val;
+	            spark_timer = spark_val;
+    			spark_sprite = sprite_get("sparks" + string((timer mod 2) + 1));
             }
         }
     }

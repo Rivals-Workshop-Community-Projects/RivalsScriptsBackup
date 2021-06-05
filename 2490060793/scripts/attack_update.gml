@@ -57,11 +57,21 @@ if attack == AT_NSPECIAL {
         meter_prev = meter_cur;
         meter_cur -= gun_value;
         meter_flash_timer = meter_flash_val;
+        meter_flash_timer = 15;
     }
     
     if window == 2 {
-        can_shield = true;
+        //can_shield = true;
         if special_down strong_down = true;
+        
+        if window_timer > 4 && meter_cur <= gun_value {
+            strong_down = false;
+        }
+        
+        if strong_charge != 0 && strong_charge mod 3 == 0 {
+            meter_cur -= nspec_value;
+        }
+        
         set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 15 + floor(strong_charge/4));
         set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8 + floor(strong_charge/12));
         set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 3 + floor(strong_charge/8));

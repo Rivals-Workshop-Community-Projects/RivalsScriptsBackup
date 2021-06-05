@@ -18,16 +18,24 @@ if my_hitboxID.effect == 99 || my_hitboxID.effect == 11 {
         meter_flash_timer = 30;
         has_reduced = true;
     }
-} else if hit_player_obj != id && meter_cur != meter_max {
+} else if hit_player_obj != id && meter_cur != meter_max && my_hitboxID.type == 1 {
     meter_prev = meter_cur;
+    /*
     if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1 {
         meter_cur = clamp(meter_cur + hit_value*2, 0, meter_max)
     } else {
         meter_cur = clamp(meter_cur + hit_value, 0, meter_max)
     }
-    meter_flash_timer = meter_flash_val;
-    spark_timer = spark_val;
-    spark_sprite = sprite_get("sparks" + string((timer mod 2) + 1));
+    */
+    
+    if !has_increased || my_hitboxID.attack != AT_NAIR {
+        meter_cur = clamp(meter_cur + hit_value, 0, meter_max)
+        meter_flash_timer = meter_flash_val;
+        spark_timer = spark_val;
+        spark_sprite = sprite_get("sparks" + string((timer mod 2) + 1));
+        has_increased = true;
+    }
+    
 }
 
 if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 3 {

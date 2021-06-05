@@ -3,6 +3,7 @@
 user_event(0)
 
 has_reduced = false;
+has_increased = false;
 
 /*
 if attack == AT_NSPECIAL {

@@ -13,14 +13,15 @@ if y > (room_height/2 + 400) {
     		sound_play(asset_get("sfx_crunch"),false,noone,1,1.5);
     }
     
-    if hitbox_timer >= 60 && hitbox_timer < 294{
+    if hitbox_timer >= 60 && hitbox_timer < 596{
     	image_index = 2
     	can_hit_self = true
     	hit_priority = 9
     }
     
-    if hitbox_timer == 294 {
+    if hitbox_timer == 596 {
     	image_index = 1
+    	    	    create_hitbox(AT_DSPECIAL , 6 , x , y );
     		sound_play(asset_get("sfx_bite"),false,noone,1,1.3);
     	hit_priority = 0	
     }

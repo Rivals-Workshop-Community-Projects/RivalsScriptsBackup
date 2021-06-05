@@ -17,7 +17,7 @@ shape_circle = sprite_get("hitbox_circle")
 shape_rect = sprite_get("hitbox_rect")
 shape_roundrect = sprite_get("hitbox_roundrect")
 
-meter_cur = 20;
+meter_cur = 40;
 meter_max = 100;
 meter_flipped = false;
 
@@ -47,12 +47,14 @@ limit_circle_alpha = 0;
 limit_circle_col = c_yellow;
 
 orb_value = 20;
-gun_value = 10;
-hit_value = 8;
-reduce_value = 5;
+gun_value = 4;
+hit_value = 7;
+reduce_value = 7;
 upb_value = 1;
+nspec_value = 1;
 
 has_reduced = false;
+has_increased = false
 
 upb_coords = [x,y];
 
