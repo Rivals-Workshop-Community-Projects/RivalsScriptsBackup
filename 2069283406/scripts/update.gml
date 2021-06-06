@@ -253,8 +253,13 @@ if (state == PS_ROLL_BACKWARD or state == PS_ROLL_FORWARD or state == PS_TECH_FO
     	spr_dir *= -1
     }
     
-    if state_timer > 8 and state_timer < 18 and state_timer % 2 = 0 { 
-	 spawn_hit_fx( x + (10 * spr_dir)  , y  , dsshadow)
+    if state_timer == 21 {
+    	spr_dir *= -1
+    }
+    
+    
+    if state_timer > 8 and state_timer < 18 and state_timer % 3 = 0 { 
+	 spawn_hit_fx( x + (30 * spr_dir)  , y  , dsshadow)
     }
     
     if state_timer == 1 {
@@ -269,8 +274,10 @@ if (state == PS_ROLL_BACKWARD or state == PS_ROLL_FORWARD or state == PS_TECH_FO
 	     hsp = -1.5 * spr_dir
 	 }
 	 
-	 if state_timer > 9 && state_timer < 25 {
+	 if state_timer > 9 && state_timer < 21 {
 	     hsp = (27 - state_timer) * spr_dir
+	 } else {
+	 	hsp /= 1.2
 	 }
 	 
 

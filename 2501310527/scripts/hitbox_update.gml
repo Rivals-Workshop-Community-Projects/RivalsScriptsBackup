@@ -29,7 +29,7 @@ if (attack == AT_DSPECIAL){
 
 	//If the Mini Bill is close to the Blaster's head
 	if ((x > player_id.blaster.x-40 && x < player_id.blaster.x+40)  
-	&& (y > player_id.blaster.y-30 && y < player_id.blaster.y+30)){
+	&& (y > player_id.blaster.y-30 && y < player_id.blaster.y+50)){
     
     //Each of the Mini Bill SFX when entering the Blaster
     if (player_id.blaster_mini < 5 && hbox_num < 8 && hitbox_timer > 3){

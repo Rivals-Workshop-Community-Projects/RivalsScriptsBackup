@@ -1,6 +1,6 @@
 //parry.gml
 
-sound_play(sound_get("RI"));
+sound_play(sound_get("parried"));
 shake_camera(4, 12)
 
 if has_rune("K") {

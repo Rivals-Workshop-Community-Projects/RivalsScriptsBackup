@@ -189,6 +189,7 @@ blaster_mini_shoot = 0;
 mini_dir = 1;
 
 tanooki_turn = false;
+tanooki_blaster = false;
 
 scope_aim = 0;
 scope_aim_proj = 0;

@@ -262,8 +262,9 @@ if (attack == AT_FSPECIAL){
 //USpecial - Tannoki Tail
 if (attack == AT_USPECIAL){
     //Resets the variable
-    if (window == 1){
+    if (window == 1 && window_timer == 1){
         tanooki_turn = false;
+        tanooki_blaster = false;
     }
     //On the ground it doesn go up into pratfall, unlike the air version
     if (!free){
@@ -276,6 +277,7 @@ if (attack == AT_USPECIAL){
         
         set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_Y, -33);
         set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -34);
+        set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_Y, -38);
     }
     else {
         set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 2);

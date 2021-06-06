@@ -6,7 +6,7 @@ set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 2);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_DATTACK, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.7);
+set_window_value(AT_DATTACK, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.3);
 
 
 set_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH, 2);
@@ -49,6 +49,7 @@ set_hitbox_value(AT_DATTACK, 1, HG_WIDTH, 68);
 set_hitbox_value(AT_DATTACK, 1, HG_HEIGHT, 45);
 set_hitbox_value(AT_DATTACK, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 1);
+set_hitbox_value(AT_DATTACK, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_DATTACK, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, .2);

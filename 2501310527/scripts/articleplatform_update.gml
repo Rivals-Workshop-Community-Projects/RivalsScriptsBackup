@@ -89,9 +89,11 @@ if (attack == AT_FSPECIAL && (place_meeting(x,y,other.id) && other.player_id = p
     }
 
 //Hitting with the Tanooki Tail   
-if (attack == AT_USPECIAL && (place_meeting(x,y,other.id) && other.player_id = player_id)){
+if (attack == AT_USPECIAL && (place_meeting(x,y,other.id) && other.player_id = player_id 
+&& player_id.tanooki_blaster == false)){
 	other.state = 4;
 	other.state_timer = 0;
+	
 }
     
 }
@@ -185,7 +187,6 @@ if (state >= 1 && state < 4 && state_timer == 1){
 
 //State 4: Launch Upward Tanooki
 if (state == 4){
-	
 	if (state_timer > 2 && vsp < 0){
 		create_hitbox(AT_NSPECIAL, 2, x+5*spr_dir, y);
 	}
@@ -201,6 +202,9 @@ if (state == 4){
 		spr_dir = player_id.spr_dir
 		vsp = -5;
 		hsp = 2*spr_dir;
+	}
+	if (state_timer == 2){
+		player_id.tanooki_blaster = true;
 	}
 	if (state_timer > 5 && vsp < 5){
 		vsp += .5;

@@ -418,6 +418,7 @@ if attack == AT_NSPECIAL{
 		}
 	}
 	
+
 	can_fast_fall = false
 	move_cooldown[AT_NSPECIAL] = 999
 	
@@ -426,7 +427,7 @@ if attack == AT_NSPECIAL{
 	}
 
    if window == 4 && window_timer == 1{
-		vsp = -11
+		vsp = -2
 		move_cooldown[AT_TAUNT_2] = 0
 	}
 	
@@ -449,6 +450,11 @@ if attack == AT_NSPECIAL{
 		if fireon < 3 && window == 3 {
 	 	window_timer += 2
      	}
+     	
+     		if fireon != 3 {
+		can_jump = true
+	}
+	
 	
 		if attack_pressed or up_stick_down or down_stick_down or left_stick_down or up_stick_down {
 			if  firerange > 0 {

@@ -3,7 +3,7 @@ set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_DATTACK, AG_AIR_SPRITE, sprite_get("dattack"));
 set_attack_value(AT_DATTACK, AG_HURTBOX_SPRITE, sprite_get("dattack_hurt"));
 
-set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX, sound_get("firemove_smb3"));
@@ -39,7 +39,7 @@ set_num_hitboxes(AT_DATTACK, 3);
 
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DATTACK, 1, HG_WINDOW, 1);
-set_hitbox_value(AT_DATTACK, 1, HG_WINDOW_CREATION_FRAME, 6);
+set_hitbox_value(AT_DATTACK, 1, HG_WINDOW_CREATION_FRAME, 8);
 set_hitbox_value(AT_DATTACK, 1, HG_LIFETIME, 4);
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_X, 17);
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_Y, -12);
