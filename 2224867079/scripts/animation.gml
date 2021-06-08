@@ -83,11 +83,11 @@ if (state == PS_RESPAWN && RedMode == true) {
 }
 
 if (state == PS_FIRST_JUMP && state_timer == 1) {
-	afterImageTimer = 24;
+	afterImageTimer = 16;
 }
 
 if (state == PS_DOUBLE_JUMP && state_timer == 1) {
-	afterImageTimer = 24;
+	afterImageTimer = 16;
 }
 /*
 

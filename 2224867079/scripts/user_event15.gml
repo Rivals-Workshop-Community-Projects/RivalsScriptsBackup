@@ -459,6 +459,13 @@ with phone{
 //	- waog");
 //	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0);
 	//2.27
+	initPatch("2.28	", "2 June 2021");
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Dair now has more friction when landing on the ground after performing it");
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Redesigned Dair
+	- Toned down some of the afterimages")
+	//2.27
 	initPatch("2.27	", "25 May 2021");
 	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
 	initPatchWords("- knockback_adj increased (1->1.2)

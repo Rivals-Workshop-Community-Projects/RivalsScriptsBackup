@@ -37,19 +37,19 @@ set_hitbox_value(AT_DATTACK, 1, HG_WIDTH, 80);
 set_hitbox_value(AT_DATTACK, 1, HG_HEIGHT, 35);
 set_hitbox_value(AT_DATTACK, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 1);
-set_hitbox_value(AT_DATTACK, 1, HG_ANGLE, 40);
-set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 8);
-//set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, .3);
+set_hitbox_value(AT_DATTACK, 1, HG_ANGLE, 35);
+set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, .3);
+set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, .15);
 set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT_X_OFFSET, 8);
 set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT_Y_OFFSET, 8);
 set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_weak"));
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_DATTACK, 1, HG_ANGLE_FLIPPER, 9);
+//set_hitbox_value(AT_DATTACK, 1, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_DATTACK, 1, HG_HIT_PARTICLE_NUM, 1)
 set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, plasma_line );
-set_hitbox_value(AT_DATTACK, 1, HG_TECHABLE, 3 );
+//set_hitbox_value(AT_DATTACK, 1, HG_TECHABLE, 3 );
 
 
 

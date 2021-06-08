@@ -11,7 +11,7 @@ set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("excuse_me_start"));
 set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX_FRAME, 0);
 
 //cuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
-set_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH, 490); //490
+set_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH, 476); //490
 set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAME_START, 8);
 

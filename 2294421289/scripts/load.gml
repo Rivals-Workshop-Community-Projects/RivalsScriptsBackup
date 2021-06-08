@@ -4,7 +4,7 @@ sprite_change_offset("uphurt", 23, 72);
 sprite_change_offset("downhurt", 36, 62);
 sprite_change_offset("crouch", 32, 69);
 sprite_change_offset("walk", 39, 78);
-sprite_change_offset("walkturn", 29, 73);
+sprite_change_offset("walkturn", 29, 71);
 sprite_change_offset("dash", 52, 94);
 sprite_change_offset("dashcolor", 39, 65);
 sprite_change_offset("dashstart", 34, 71);
@@ -39,10 +39,10 @@ sprite_change_offset("dair", 32, 69);
 sprite_change_offset("fstrong", 50, 76);
 sprite_change_offset("ustrong", 60, 107);
 sprite_change_offset("dstrong", 80, 100);
-sprite_change_offset("nspecial", 38, 72); //55 73
+sprite_change_offset("nspecial", 38, 72); 
 sprite_change_offset("fspecial", 50, 74);
-sprite_change_offset("uspecial", 38, 72); //55 80
-sprite_change_offset("dspecial", 60, 76); //38 72
+sprite_change_offset("uspecial", 48, 72); 
+sprite_change_offset("dspecial", 60, 76); 
 sprite_change_offset("taunt", 56, 93);
 sprite_change_offset("ring", 0, 0);
 sprite_change_offset("ringmask", 20, 12);
@@ -58,7 +58,5 @@ sprite_change_offset("dugato", 36, 85);
 sprite_change_offset("classe", 56, 93);
 
 sprite_change_offset("final_smash", 100, 93);
-
-soundbreak = hit_fx_create(sprite_get("soundbreak"), 18);
 
 set_victory_theme( sound_get( "colors" ));

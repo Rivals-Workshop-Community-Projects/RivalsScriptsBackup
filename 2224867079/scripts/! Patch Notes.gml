@@ -1,4 +1,13 @@
 /*
+-- V2.28 --
+
+Balance Changes:
+- Dair now has more friction when landing on the ground after performing it
+
+Cosmetic Changes:
+- Redesigned Dair
+- Toned down some of the afterimages
+
 -- V2.27 --
 Stat change time!!
 

@@ -19,6 +19,12 @@ with (asset_get("obj_article1")){
                 }
                 // Inflict the "sick burn, bro" status effect
                 ds_map_set(burning_counter_map, other.hit_player_obj.player, laughter_burn_duration);
+                // Check if this hit did enough damage to increase the damage over time effect
+                var calculated_dot = floor(other.my_hitboxID.damage * .75);
+                if (calculated_dot > laughter_total_dot) {
+                    laughter_total_dot = calculated_dot;
+                }
+                
                 // Refresh Comedy Zone laughter if needed
                 if (laughter_audio_countdown == 0) {
                     laughter_audio_countdown = laughter_audio_duration;

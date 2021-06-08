@@ -126,6 +126,11 @@ if attack == AT_DSPECIAL {
     if window == 2 {
         if window_timer == 1 {
             sound_play(asset_get("sfx_zetter_shine"))
+            hsp *= 0.2
+            vsp *= 0.2
+        } else if window_timer < 20 {
+            hsp *= 0.9
+            vsp *= 0.9
         }
         if (window_timer <= 12 && !has_rune("F")) || (window_timer <= 18 && has_rune("F")) {
             super_armor = true;
@@ -156,6 +161,13 @@ if attack == AT_DSPECIAL {
             window++;
             window_timer = 0;
         }
+        has_breversed = false;
+        if window_timer <= 10 && !has_breversed{
+            if (spr_dir == 1 && left_pressed) || (spr_dir == -1 && right_pressed) {
+                spr_dir *= -1
+                has_breversed = true
+            }
+        }
     }
     
     if window == 5 {
@@ -166,16 +178,17 @@ if attack == AT_DSPECIAL {
         }
         
         if absorbedCube && window_timer == 3 {
+            
             sound_play(asset_get("sfx_ell_strong_attack_explosion"))
             var cube = create_hitbox(AT_NSPECIAL, 1, x, y - 25);
                 cube.hsp = 12*spr_dir + hsp;
                 cube.vsp = -3 + vsp;
                 cube.bounceHsp = -1;
                 cube.bounceVsp = -4;
-                cube.power = compactTimer;
-                cube.willExplode = heldExplode;
-                cube.explodeTimer = heldExplodeTimer - compactTimer*7;
-                cube.explodeThreshhold = heldExplodeThreshhold;
+                cube.power = 60;
+                cube.willExplode = true;
+                cube.explodeTimer = 30;
+                cube.explodeThreshhold = 30;
                 cube.hitCooldown = 0;
                 cube.was_grounded = false;
                 

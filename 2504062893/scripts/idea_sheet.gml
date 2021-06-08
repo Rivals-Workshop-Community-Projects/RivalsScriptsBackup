@@ -1,7 +1,14 @@
 abc = 3;
 
 /*
-----   IDEAS   ------
+--- POST RELEASE IDEAS ----
+- Rework Nspecial to some actual attack with hitbox, make it synergize with other specials
+- Actually synergize all specials with each other, such as throwing shuriken at ghost
+- Deception element for Nspecial maybe?
+- 
+
+
+----  (old) IDEAS   ------
 - turnip-like projectile: ghost
 -> can be thrown and re-caught again
 -> has to be bad at long distance or camping

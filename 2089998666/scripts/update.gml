@@ -12,6 +12,12 @@ if (state == PS_IDLE_AIR || state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP ||
 	set_attack(AT_EXTRA_1);
 }
 
+if (state == PS_ATTACK_AIR) and (attack == AT_EXTRA_1) {
+	air_accel = .55;
+} else {
+	air_accel = .3;
+	}
+
 var naenae = up_down;
 if !free {
 	flutterTimer = 50;
@@ -19,6 +25,7 @@ if !free {
 }
 
 if state == PS_WALL_JUMP {
+	flutterTimer = 30;	
 	if (state_timer == 1) && (attack == AT_USPECIAL) {
 		spawn_hit_fx(x, y, eggBreak);
 		sound_play(sound_get("ssbm_eggbreak"));
@@ -74,7 +81,7 @@ if bossmode = 1 {
     djump_speed = 9;
     air_max_speed = 5; 
 	max_jump_hsp = 7; 
-	air_friction = .02;
+	air_friction = .03;
 	hitstun_grav = .47;
     
     if (has_rune("M")) { //SL iroh stats
@@ -89,7 +96,6 @@ if bossmode = 1 {
 
 }
     else { //these stats won't be changed
-    air_accel = .3;
     idle_anim_speed = .12;    
     dash_anim_speed = .4;
     walk_anim_speed = .14;
@@ -123,9 +129,9 @@ if bossmode = 1 {
         knockback_adj = .9;
         wave_land_adj = 1.2;
         walk_speed = 3;
-        initial_dash_speed = 6.5;
-        dash_speed = 6;
-		air_friction = .04;
+        initial_dash_speed = 6.75;
+        dash_speed = 6.25;
+		air_friction = .05;
 		hitstun_grav = .52;
     }
 }

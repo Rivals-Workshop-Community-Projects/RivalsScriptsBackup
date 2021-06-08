@@ -125,33 +125,33 @@ shader_start();
 if neointro > 0 {
 	
 	
-var spr = get_char_info(player, INFO_PORTRAIT);
-var img = select;
+var spr = sprite_get("_intro")
+
 
 	
 	
 	if neointro >= 150 && neointro < 390 {
-		draw_sprite_ext(spr, image_index, room_width/2 - 450 - 200*neoside + 330*neoside + floor((neointro - 150)*neoside/2)  , room_height/2 - 100 - 50 - floor((neointro - 150)/2) ,  2, 2, 0 , c_black , 0.4 - random_func(1,2,true)/10 );
+		draw_sprite_ext(spr, image_index, room_width/2 - 450 - 200*neoside + 230*neoside + floor((neointro - 150)*neoside/2)  , room_height/2  - 50 - floor((neointro - 150)/2) ,  2, 2, 0 , c_black , 0.4 - random_func(1,2,true)/10 );
 	}
 
 
 	if neointro >= 390 {
-		draw_sprite_ext(spr, image_index, room_width/2 - 450 - 200*neoside + 330*neoside + floor((neointro - 150)*neoside/2)   , room_height/2 - 100  - 50 - floor((neointro - 150)/2), 2, 2, 0 , c_black , 0.4 - (neointro - 390)/40 );
+		draw_sprite_ext(spr, image_index, room_width/2 - 450 - 200*neoside + 230*neoside + floor((neointro - 150)*neoside/2)   , room_height/2   - 50 - floor((neointro - 150)/2), 2, 2, 0 , c_black , 0.4 - (neointro - 390)/40 );
 	}
 	
 	  gpu_set_blendmode(bm_add);    	
 	if neointro > 120 && neointro < 150 {
-		draw_sprite_ext(spr, 0, room_width/2 - 450 - 200*neoside  + 300*neoside + (neointro - 120)*neoside  , room_height/2 - 100  + 100 - neointro, 2, 2, 0 , -1 , (neointro - 120)/50);
+		draw_sprite_ext(spr, 0, room_width/2 - 450 - 200*neoside  + 200*neoside + (neointro - 120)*neoside  , room_height/2   + 100 - neointro, 2, 2, 0 , -1 , (neointro - 120)/50);
 	}
 	
 	
 	if neointro >= 150 && neointro < 390 {
-		draw_sprite_ext(spr, image_index, room_width/2 - 450 - 200*neoside + 330*neoside + floor((neointro - 150)*neoside/2)  , room_height/2 - 100 - 50 - floor((neointro - 150)/2) ,  2, 2, 0 , -1 , 0.7 - random_func(1,2,true)/10 );
+		draw_sprite_ext(spr, image_index, room_width/2 - 450 - 200*neoside + 230*neoside + floor((neointro - 150)*neoside/2)  , room_height/2 - 50 - floor((neointro - 150)/2) ,  2, 2, 0 , -1 , 0.7 - random_func(1,2,true)/10 );
 	}
 
 
 	if neointro >= 390 {
-		draw_sprite_ext(spr, image_index, room_width/2 - 450 - 200*neoside + 330*neoside + floor((neointro - 150)*neoside/2)   , room_height/2 - 100  - 50 - floor((neointro - 150)/2), 2, 2, 0 , -1 , 0.8 - (neointro - 390)/30 );
+		draw_sprite_ext(spr, image_index, room_width/2 - 450 - 200*neoside + 230*neoside + floor((neointro - 150)*neoside/2)   , room_height/2   - 50 - floor((neointro - 150)/2), 2, 2, 0 , -1 , 0.8 - (neointro - 390)/30 );
 	}
 	
   gpu_set_blendmode(bm_normal); 
@@ -199,9 +199,7 @@ var img = select;
 		draw_debug_text(floor(room_width/2 - 120 + 340*neoside - neointro*neoside/2) , floor(room_height/2 + 160 - neointro/2), neointro3);
 	
 	}
-	if neointro > 120 && neointro < 150 {
-		draw_sprite_ext(spr, 0, room_width/2 - 450 - 200*neoside  + 300*neoside + (neointro - 120)*neoside  , room_height/2 - 100  + 100 - neointro, 2, 2, 0 , c_black , (neointro - 120)/70);
-	}
+
 	
 }
 

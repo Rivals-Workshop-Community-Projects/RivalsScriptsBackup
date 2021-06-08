@@ -323,7 +323,9 @@ if (attack == AT_NAIR) {
     }
     if (!free && (window == 5 || window == 6)) { //landing creation
     
-            sound_play(asset_get("sfx_clairen_swing_strong"))
+            sound_play(asset_get("sfx_clairen_tip_strong"))
+          //  sound_play(asset_get("sfx_clairen_swing_strong"))
+
 
         destroy_hitboxes()
         window = 7

@@ -1,8 +1,13 @@
+
+minion_heals_do = false;
+minion_heals_house = noone;
 if (my_hitboxID.attack == AT_NTHROW or my_hitboxID.attack == AT_FTHROW or my_hitboxID.attack == AT_UTHROW or my_hitboxID.attack == AT_DTHROW){
     with(obj_article1) {
         if player_id == other.id && other.my_hitboxID == thrown_hitbox_id {
             hsp *= -0.3
             vsp = -8;
+            other.minion_heals_do = true;
+            other.minion_heals_house = self;
             if house_level < 3 {
                 house_level += 1
             } else {
@@ -15,8 +20,25 @@ if (my_hitboxID.attack == AT_NTHROW or my_hitboxID.attack == AT_FTHROW or my_hit
             	}
     			//these WILL towards the cap
             }
+            //heal a bit
+            hp_rn += hp_rn < hp_max ? 2 : 0;
+            if hp_rn > hp_max {
+            	hp_rn = hp_max;
+            }
         }
     }
+}
+if minion_heals_do { //heals minions on house hit
+	with(obj_article2) {
+		if player_id == other.id {
+			if minion_house == other.minion_heals_house {
+				hp_rn += hp_rn < hp_max ? 3 : 0;
+	            if hp_rn > hp_max {
+	            	hp_rn = hp_max;
+	            }
+			}
+		}
+	}
 }
 
 //uspecial enemy hit

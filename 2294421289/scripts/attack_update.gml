@@ -59,7 +59,7 @@ if (attack == AT_USPECIAL)
   if (was_parried = false)
   {
 	can_wall_jump = true;
-  if ((window == 3 ) && !free)
+  if ((window == 2 ) && (!free) && (window_timer == 12))
   {
     set_state( PS_LANDING_LAG );
     landing_lag_time = 10;
@@ -90,17 +90,23 @@ if (attack == AT_USPECIAL)
 
   if (window == 3)
   { 
-   set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, (2 * cos(degtorad(upb_dir)) ) * spr_dir);
-   set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, (-2 * sin(degtorad(upb_dir)) ));
+   set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, (1.5 * cos(degtorad(upb_dir)) ) * spr_dir);
+   set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, (-1.5 * sin(degtorad(upb_dir)) ));
+  }
+
+  if (window == 4)
+  { 
+   set_window_value(AT_USPECIAL, 4, AG_WINDOW_HSPEED, (1.5 * cos(degtorad(upb_dir)) ) * spr_dir);
+   set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, (-1.5 * sin(degtorad(upb_dir)) ));
   }
 
   if (has_hit)
   {
-   set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
+   set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
   }
   else
   {
-   set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 7);
+   set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
   }
 
   if (special_down = true)
@@ -111,60 +117,86 @@ if (attack == AT_USPECIAL)
   {
    fall_through = false;
   }
+
+  if (window == 2) and (window_timer == 12)
+  {
+    sound_play( asset_get( "sfx_swipe_medium2" ) );
+  }
   
 }
 
 if (attack == AT_NSPECIAL)
 {
-  if (left_down) and (window = 2)
+  if (was_parried == true)
   {
-   spr_dir = -1;
-  }                                                                                                                                                // Turning during charge
-   if (right_down) and (window = 2)
-  {
-   spr_dir = 1;
+  	window = 4;
+  	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_TYPE, 1);
+    set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED, 0);
+    set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 0);
+    set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 0)
   }
+
   can_wall_jump = true;
-  if (special_down = true) and (window != 3)
-  { 
-   set_window_value(AT_NSPECIAL, 2, AG_WINDOW_TYPE, 9);
-   var spin_timer = state_timer / 2;
-   set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED, spin_timer);
-   set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, spin_timer * 1.9);                                                                           // Loop and timer init
-   set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, spin_timer * 1.9);
+
+  if (window == 1)
+  {
+    spindash_timer = spindash_timer_start;
   }
 
-  if (special_down = false )
+  if (spindash_timer > spindash_limit)
   {
-   set_window_value(AT_NSPECIAL, 2, AG_WINDOW_TYPE, 1);                                                                                            // Loop end
-   spin_timer = 0;
+    spindash_timer = spindash_limit;
   }
 
-  if (spin_timer > 18) 
+  if (has_hit == true) and (window == 3)
   {
-   set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED, 18);
-   set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 18);                                                                                         // speed charge limit 
-   set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 18);
+    can_jump = 1;
+  }
+
+  if (shield_down == true)
+  {
+    if (window == 2)
+    {
+      window = 4;
+    }
+    if (window == 3)
+    {
+      window_timer = spindash_timer;
+    }
+  }
+
+  if (window == 2)
+  {
+    if (right_down == true)
+    {
+      spr_dir = 1;
+    }
+    if (left_down == true)
+    {
+      spr_dir = -1;
+    }
+
+    if (special_down == true)
+    {
+      spindash_timer += spindash_force;
+      set_window_value(AT_NSPECIAL, 2, AG_WINDOW_TYPE, 9);
+    }
+    else
+    {
+      set_window_value(AT_NSPECIAL, 2, AG_WINDOW_TYPE, 1);
+      set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED, spindash_timer);
+      set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, spindash_timer);
+      set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, spindash_timer);
+    }
   }
 
   if (window == 4)
   {
-   state_timer = 0;
-   off_edge = 0;                                                                                                                                    // End timer
-  }
-
-  if ((shield_down) and (window == 2) || (shield_down) and (window == 3)) || (was_parried)
-  {
-   window = 4;   
-   state_timer = 0;
-   instance_destroy(pHitBox);                                                                                                                       // Charge and speed cancel
-  } 
-
-  if (has_hit) and (window == 3) and (was_parried = false) //or (has_hit) and (window == 2) and (was_parried = false)
-  {
-   can_jump = true;                                                                                                                                 // Jump cancel
+    off_edge = 0; 
+    destroy_hitboxes();
   }
 }
+ 
 
 //After-image
 
@@ -192,6 +224,7 @@ if (attack == AT_USPECIAL)
   }
 }
 
+/*
 if (attack == AT_NSPECIAL)
 {
   if (window == 3)
@@ -203,6 +236,7 @@ if (attack == AT_NSPECIAL)
     }
   }
 }
+*/
 
 if (attack == AT_FSTRONG)
 {
@@ -277,7 +311,7 @@ if (attack == AT_FSTRONG)
    }
 }
 
-// Fstrong woo
+//Fstrong woo
 
 if (attack == AT_FSTRONG) && (hsp > 13 || hsp < -13) && (window == 3) && (window_timer > 1) && (window_timer < 3)
 {
@@ -292,6 +326,20 @@ if (attack == AT_FSTRONG) && (hsp > 13 || hsp < -13) && (window == 3) && (window
  {
   sound_play( sound_get( "uwa" ) );
  }
+}
+
+//Dstrong cancel
+
+if (attack == AT_DSTRONG)
+{
+	if (window == 1) and (window_timer == 1)
+	{
+		dstrong_cancel = 0;
+	}
+	if (dstrong_cancel = 1) and (was_parried = false)
+	{
+		set_state( PS_IDLE );
+	}
 }
 
 //Dattack

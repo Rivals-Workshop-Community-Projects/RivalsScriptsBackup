@@ -23,6 +23,11 @@ spr_dir = hsp > 0 ? 1 : -1;
 
 if (is_boosted){
 	sprite_index = sprite_get("throwingstar_boosted"); 
+	with (ghost_box){
+		kb_value = 7;
+		kb_scale = 0.5;
+		damage = 7;
+	}
 }
 
 if (lifespan < 1 
@@ -46,9 +51,10 @@ var article2 = noone;
 with(asset_get("obj_article2")){
         if (player_id == other.player_id){ //other.id
             article2_count++;
-            article2 = player_id; // id
+            article2 = id; // don't put player_id here wtf
         }
     }
+
 
 if (place_meeting(x, y, asset_get("par_block")) && !has_bounced){
 	has_bounced = true;
@@ -62,22 +68,18 @@ if (place_meeting(x, y, asset_get("par_block")) && !has_bounced){
 }
 
 // if (place_meeting(x, y, article2)){
-if (article2 != noone && distance_to_point(article2.x, article2.y) < 4){
+if (article2 != noone && distance_to_point(article2.x, article2.y) < 16 && !has_bounced && article2.boosting){ // doesn't get detected for some reason? except it does now wtf
 	// print("don't hit your friend :(")
 	has_bounced = true;
 	is_boosted = true;
-	sound_play(player_id.snd_Uair_hit);
-	grav = 0.2;
-	lifespan = 300;
-    image_angle = 90;
-	hsp = 0;
-	vsp = -10;
+	sound_play(player_id.snd_Fspecial_hit);
+	spawn_hit_fx(x, y, player_id.fx_ghost_hit);
+	// grav = 0.1;
+	lifespan = 60;
+    // image_angle = 90;
+	hsp = hsp * -2;
+	vsp = vsp * -2;
 }
-
-// if (place_meeting(x, y, article2)){
-	// hsp = -4*hsp;
-	// vsp = -6;
-// }
 
 if (hsp == 0 && vsp != 0){
 	image_angle = sign(vsp) > 0 ? 90 : 270;

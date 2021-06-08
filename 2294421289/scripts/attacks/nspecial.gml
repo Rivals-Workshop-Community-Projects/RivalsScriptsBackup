@@ -16,25 +16,28 @@ set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, sound_get("spindash"));
 
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 3);
-set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 4);  
+set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 3);  
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2); 
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.6)
 
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 1);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1); 
-
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 1)
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX, sound_get("spindash release"));
 
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 36); 
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 38); 
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 8);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 9);  
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 1)
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_SFX, sound_get("brake"));
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_SFX_FRAME, 3);
+
 
 set_num_hitboxes(AT_NSPECIAL,2);
 

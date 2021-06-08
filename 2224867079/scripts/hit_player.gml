@@ -13,7 +13,7 @@ if (hitmove == 49 && my_hitboxID.hbox_num == 1)
 
 if (RedMode == true){
 	if (hitmove == AT_DAIR && my_hitboxID.hbox_num == 2){
-		spawn_hit_fx(x-180*spr_dir,y-250, red_spike)		
+		spawn_hit_fx(x-180*spr_dir,y-220, red_spike)		
 	}
 }
 

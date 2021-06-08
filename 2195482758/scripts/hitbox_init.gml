@@ -28,7 +28,11 @@ if(sprite_index == sprite_get("firecracker_single_spin") || sprite_index == spri
 {
     is_spin = true;
     
-} else through_platforms = 9999;
+} 
+else 
+{
+    through_platforms = 9999999;
+}
 
 lastPlayer = player_id;
 currentPlayer = player_id;

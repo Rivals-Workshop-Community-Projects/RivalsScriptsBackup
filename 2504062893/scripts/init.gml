@@ -70,6 +70,8 @@ can_Bturn = true; // UNUSED?? Nspecial custom B-reverse
 
 // JAB (bug)
 jab_sound = true; //prevent stacked sounds
+// JAB parry
+last_hit_stun = false;
 
 //TEMP
 temp_hurtboxes_set = false;
@@ -83,6 +85,7 @@ wall_timer = -1;
 // CAUGHT SHURIKEN: FSPECIAL
 has_teleported = false; //teleport stalling prevention
 catch_radius = 6; //increase this to make it easier to catch
+holding_boosted = false;
 
 caught_fspecial = 0;
 can_throw = true;

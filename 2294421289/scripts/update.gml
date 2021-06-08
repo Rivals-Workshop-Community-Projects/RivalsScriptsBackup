@@ -16,3 +16,4 @@ if (state == PS_DOUBLE_JUMP) and (state_timer == 0) and (hsp > 10 || hsp < -10)
   sound_play( sound_get( "woohoo" ) );
  }
 } 
+

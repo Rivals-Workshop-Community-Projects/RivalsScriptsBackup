@@ -1,4 +1,10 @@
 /*
+-- V1.7 --
+
+Balance Changes:
+- Ustrong should connect slightly better
+- Dair Offstage now has more knockback
+
 -- V1.6 --
 
 Cosmetic Changes:

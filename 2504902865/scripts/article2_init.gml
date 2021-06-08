@@ -7,7 +7,7 @@ minion_level = 1; //level
 attack_timer_rn = 0;
 attack_timer_max = 180; //time until minions spawn while in idle
 
-hp_max = 20; //health max
+hp_max = get_match_setting( SET_TEAMS) ? 30 : 20; //health max
 hp_rn = hp_max;
 should_die = false;
 
@@ -21,9 +21,9 @@ attack_window_frame_last = 0;
 
 is_moving = false;
 air_frict = 0.02;
-air_accel = 0.15;
+air_accel = 0.2;
 base_accel = air_accel;
-air_max_speed = 1.75;
+air_max_speed = 2.5;
 base_max_speed = air_max_speed;
 
 target_player = noone;

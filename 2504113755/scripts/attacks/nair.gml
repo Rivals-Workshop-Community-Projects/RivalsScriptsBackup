@@ -29,7 +29,7 @@ set_window_value(AT_NAIR, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NAIR, 4, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_NAIR, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NAIR, 4, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_mega_instant"));
-set_window_value(AT_NAIR, 4, AG_WINDOW_SFX_FRAME, 2);
+set_window_value(AT_NAIR, 4, AG_WINDOW_SFX_FRAME, 4);
 
 //spike initial
 set_window_value(AT_NAIR, 5, AG_WINDOW_LENGTH, 5);
@@ -180,7 +180,7 @@ set_hitbox_value(AT_NAIR, 6, HG_PRIORITY, 1);
 set_hitbox_value(AT_NAIR, 6, HG_DAMAGE, 5);
 set_hitbox_value(AT_NAIR, 6, HG_ANGLE, 270);
 set_hitbox_value(AT_NAIR, 6, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_NAIR, 6, HG_KNOCKBACK_SCALING, .7);
+set_hitbox_value(AT_NAIR, 6, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_NAIR, 6, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_NAIR, 6, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_NAIR, 6, HG_VISUAL_EFFECT, plasma_t_big);
@@ -204,7 +204,7 @@ set_hitbox_value(AT_NAIR, 7, HG_HEIGHT, 65);
 set_hitbox_value(AT_NAIR, 7, HG_PRIORITY, 1);
 set_hitbox_value(AT_NAIR, 7, HG_DAMAGE, 4);
 set_hitbox_value(AT_NAIR, 7, HG_ANGLE, 270);
-set_hitbox_value(AT_NAIR, 7, HG_BASE_KNOCKBACK, 4);
+set_hitbox_value(AT_NAIR, 7, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_NAIR, 7, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_NAIR, 7, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_NAIR, 7, HG_HITPAUSE_SCALING, .4);

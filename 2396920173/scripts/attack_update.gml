@@ -389,7 +389,7 @@ if attack == AT_DSPECIAL_2 {
     
     if window == 2 {
         range_dist = 0;
-        if window_timer mod 7 == 0 {
+        if window_timer mod 8 == 0 {
             sound_play(sound_get("beep"))
         }
     }

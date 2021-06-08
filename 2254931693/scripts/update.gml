@@ -165,7 +165,7 @@ frog_deathtimer = frog_deathtimer - 1;
 }
 
 
-if (frog_deathtimer = 0 && frog_exists = 0){
+if (frog_deathtimer = -1 && frog_exists = 0){
     move_cooldown[AT_NSPECIAL] = 0;
     move_cooldown[AT_DSPECIAL] = 0;
 }

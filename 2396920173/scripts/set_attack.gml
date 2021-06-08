@@ -166,7 +166,7 @@ if attack == AT_NSPECIAL && special_counter == 4 && move_cooldown[AT_NSPECIAL] <
         }
     }
     if !has_rune("B") { //NSPECIAL cooldown and pratland removed.
-        move_cooldown[AT_NSPECIAL] = 40;
+        move_cooldown[AT_NSPECIAL] = 80;
     }
     
     //state = PS_IDLE;

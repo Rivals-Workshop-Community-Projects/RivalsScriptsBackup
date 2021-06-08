@@ -6,7 +6,7 @@ set_attack_value(AT_FAIR, AG_HURTBOX_SPRITE, sprite_get("fair_hurt"));
 
 set_attack_value(AT_FAIR, AG_NUM_WINDOWS, 3);
 
-set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 18);
+set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));

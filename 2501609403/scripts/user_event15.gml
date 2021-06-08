@@ -495,7 +495,12 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
-	//1.5
+	//1.7
+	initPatch("1.7", "30 May 2021");
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Ustrong should connect slightly better
+	- Dair Offstage now has more knockback");
+	//1.6
 	initPatch("1.6", "2 June 2021");
 	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
 	initPatchWords("- You can now change the speed of the rage ball by angling");
@@ -504,7 +509,6 @@ with phone{
 	initPatchWords_ext("Bug Fixes:", fa_center, c_gray, 1, 0);
 	initPatchWords("- Fixed Weight's sprite teleporting around if you turn around before it hits the ground
 	- Fixed Lognes Alt");
-
 	//1.5
 	initPatch("1.5", "30 May 2021");
 	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);

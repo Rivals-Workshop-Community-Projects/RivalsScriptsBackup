@@ -8,14 +8,20 @@ if (uspec_cancel_alarm > -1) {
 	move_cooldown[AT_USPECIAL] = 30;
 }
 
+// hello
 if (atk_cooldown > 0) {
 	can_attack = false;
+		can_throw = false;
+	can_throw_timer = 20;
+	// print(can_throw)
 	atk_cooldown--;
 }
-if (atk_cooldown == 0 && (state_cat == SC_AIR_NEUTRAL || state_cat == SC_GROUND_NEUTRAL)){
+if (atk_cooldown == 0){// && (state_cat == SC_AIR_NEUTRAL || state_cat == SC_GROUND_NEUTRAL)){
+	state = PS_IDLE_AIR;
 	can_attack = true;
-}
 
+	atk_cooldown--;
+}
 
 if (uspec_cancel_alarm == 0){
 	// can_attack = true;
@@ -89,8 +95,19 @@ if (can_throw_timer > 0){
 // 			set_attack_value(i, AG_HURTBOX_SPRITE, temp_hurtbox);
 // 		}		
 // 	}
-// 	temp_hurtboxes_set = false;
+// 	temp_hurtboxes_set = true;
 // }
+
+// TEMP HURTBOX SOLUTION (ONLY MISSING HURTBOXES)
+if (!temp_hurtboxes_set){
+	var temp_hurtbox = asset_get("ex_guy_hurt_box");
+	for (i=0; i<42; i++){
+		if (i == AT_DSPECIAL){
+			set_attack_value(i, AG_HURTBOX_SPRITE, temp_hurtbox);
+		}		
+	}
+	temp_hurtboxes_set = true;
+}
 
 
 var articlesolid_count = 0;
@@ -118,10 +135,11 @@ if (article2 != noone && distance_to_point(article2.x, article2.y) < 8){
 			// case PS_AIR_DODGE:
 			case PS_ATTACK_GROUND:
 			case PS_ATTACK_AIR:
-				if (attack != AT_DSPECIAL && !has_been_boosted){
+				if (/*attack != AT_DSPECIAL && */!has_been_boosted){
 					if (bigskull_cooldown < 1){
 						bigskull_cooldown = 30;
 						// hsp = 0; // TODO: Think about purpose of helping hand mechanic (chasing opponents?)
+						hsp *= 1.2;
 						vsp = -13;
 						// set_attack(AT_NAIR);
 						has_been_boosted = true;
@@ -204,6 +222,9 @@ if (distance_to_object(article1) < catch_radius){
 	&& (shield_pressed || attack_pressed || left_strong_pressed || right_strong_pressed || down_strong_pressed || up_strong_pressed) 
 	&& can_throw){
 		// print_debug("catch");
+		if (article1.is_boosted){
+			holding_boosted = true;
+		}
 		caught_fspecial = 1;
 		can_throw = false;
 		can_throw_timer = 10;

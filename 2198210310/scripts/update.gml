@@ -236,8 +236,13 @@ with pHitBox {
 }
 
 if holdingCube {
+	if walljump_orig == undefined {
+		walljump_orig = has_walljump
+	}
     cubeCounter++;
 }
+
+
 
 //find nearest cube
 user_event(0);
@@ -292,6 +297,7 @@ if holdingCube {
         holdingCube = false;
         heldExplode = false;
         heldExplodeTimer = heldExplodeMax;
+        has_airdodge = true;
     } else {
         if heldPower >= compactThreshhold {
             var freq = floor(10 * 60/heldPower);
@@ -330,6 +336,7 @@ if holdingCube {
         max_jump_hsp = 4;
         move_cooldown[AT_TAUNT] = 10;
         move_cooldown[AT_TAUNT_2] = 10;
+        has_walljump = false;
         /*
         move_cooldown[AT_JAB] = 10;
         move_cooldown[AT_FTILT] = 10;
@@ -356,6 +363,11 @@ if holdingCube {
     initial_dash_speed = initial_dash_speed_orig;
     max_djumps = 1;
     max_jump_hsp = max_jump_hsp_orig;
+    
+    if walljump_orig != undefined {
+    	has_walljump = walljump_orig
+    	walljump_orig = undefined;
+    }
 }
 
 //RAINBOWS

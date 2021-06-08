@@ -105,6 +105,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_GROUP, -1)
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_MASK, -1)
 
 
+set_hitbox_value(AT_DSPECIAL, 1, HG_MUNO_HITBOX_EXCLUDE, 2);
 
 
 /*

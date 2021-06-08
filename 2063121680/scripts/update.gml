@@ -675,7 +675,7 @@ if (stasisType == "box") {
                     hitboxStasisAngle = get_hitbox_angle(instance);
                 }
                 
-            } else if state != PS_RESPAWN {
+            } else if state != PS_RESPAWN && state != PS_DEAD {
                 invincible = false;
                 invince_time = 0;
             }

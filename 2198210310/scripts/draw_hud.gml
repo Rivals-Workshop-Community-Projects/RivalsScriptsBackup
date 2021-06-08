@@ -5,6 +5,8 @@ draw_set_halign(fa_center);
 var iconX = temp_x + 200;
 var iconY = temp_y - 4;
 
+if !'compactTimer' in self exit;
+
 if compactTimer >= compactThreshhold {
     var colour = c_red;
 } else {

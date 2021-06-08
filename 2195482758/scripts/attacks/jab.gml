@@ -3,8 +3,8 @@ set_attack_value(AT_JAB, AG_NUM_WINDOWS, 9);
 set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
 
 //jab1 start
-set_window_value(AT_JAB, 1, AG_WINDOW_LENGTH, 4);
-set_window_value(AT_JAB, 1, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_JAB, 1, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_JAB, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_JAB, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_JAB, 1, AG_WINDOW_SFX_FRAME, 2);
@@ -15,7 +15,7 @@ set_window_value(AT_JAB, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
 set_window_value(AT_JAB, 2, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(AT_JAB, 2, AG_WINDOW_HSPEED, 2);
+set_window_value(AT_JAB, 2, AG_WINDOW_HSPEED, 3);
 set_window_value(AT_JAB, 2, AG_WINDOW_HSPEED_TYPE, 2);
 
 //jab1 end
@@ -39,7 +39,7 @@ set_window_value(AT_JAB, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
 set_window_value(AT_JAB, 5, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_JAB, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, 5, AG_WINDOW_ANIM_FRAME_START, 8);
-set_window_value(AT_JAB, 5, AG_WINDOW_HSPEED, 6);
+set_window_value(AT_JAB, 5, AG_WINDOW_HSPEED, 7);
 set_window_value(AT_JAB, 5, AG_WINDOW_HSPEED_TYPE, 2);
 
 
@@ -64,7 +64,7 @@ set_window_value(AT_JAB, 7, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_JAB, 8, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_JAB, 8, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, 8, AG_WINDOW_ANIM_FRAME_START, 19);
-set_window_value(AT_JAB, 8, AG_WINDOW_HSPEED, 5);
+set_window_value(AT_JAB, 8, AG_WINDOW_HSPEED, 6);
 set_window_value(AT_JAB, 8, AG_WINDOW_HSPEED_TYPE, 2);
 
 

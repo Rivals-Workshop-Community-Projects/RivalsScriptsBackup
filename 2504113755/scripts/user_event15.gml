@@ -437,6 +437,45 @@ with phone{
 	- waog");
 	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0); */
 	
+	
+	initPatch("1.3", "2 June, 2021");
+		
+			initPatchWords_ext("The 'Day 1 Nova Montage' Patch", fa_center, c_white, 0, 0);
+
+		
+	initPatchWords_ext("Nspecial cooldown now applies to on hit cancels.
+	Nspecial wraith dies on death.
+	Fspecial multihits have less hitpause.
+	Uspecial late hit bkb 6-7 .6-.7.", fa_left, c_white, 0, 0);
+	
+	initPatchWords_ext("Ftilt kbs 0.5-0.55.
+	Dattack multihits are no longer untechable.
+	Dattack multihits bkb 8-6.
+	Dattack multihits hitpause scaling .3-.15.
+	Dattack multihits no longer have an angle flipper. Now uses lerping to connect.", fa_left, c_white, 0, 0);
+	
+	
+	initPatchWords_ext("Fair strong hit bkb 6-7, kbs 0.75-0.85.
+	Nair landing hit has different sfx.
+	Nair initial spike kbs .7-.8.
+	Nair falling spike bkb 4-5.", fa_left, c_white, 0, 0);
+
+	
+	initPatchWords_ext("Ustrong final hit kbs 0.9-1.0
+	Fstrong bkb 7-8, kbs 0.9-1.0.
+	Dstrong startup 13-10 frames.
+	Dstrong front hit angle 55-45.", fa_left, c_white, 0, 0);
+	
+
+ 			initPatchWords_ext("Walljump has different hsp/vsp values. Goes higher and not as far out now.
+ 			
+ 			*In the future ill add more interactions with nspecial, thank you all for playing Nova!", fa_left, c_white, 0, 0);
+
+
+
+
+
+	
 		initPatch("1.2", "31 May, 2021");
 	initPatchWords_ext("Fspecial hits now ignore projectiles.", fa_center, c_white, 0, 0);
 	initPatchWords_ext("Fspecial endlag 25-33.", fa_center, c_white, 0, 0);
@@ -666,12 +705,12 @@ with phone{
 	 * if you want. AND you can have multiple of these
 	 */
 	
-	initAbout("About Sandbert", "character made by daniel fornaniel and his team, follow them on facebook
+/*	initAbout("About Sandbert", "character made by daniel fornaniel and his team, follow them on facebook
 	
 	
 	
 	
-	please im begging you can we get to 50 followers");
+	please im begging you can we get to 50 followers"); */
 	
 }
 

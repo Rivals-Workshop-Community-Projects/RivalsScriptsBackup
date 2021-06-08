@@ -154,7 +154,7 @@ shadow_clone = noone;
 
 proj_tap = 0;
 
-kart_sprite = sprite_get("kart_ryu");
+wily_robotmaster_img = sprite_get("hayabusa_robotmaster");
 
 //clone_indicator = false;
 //clone_timer = 0;
@@ -480,6 +480,10 @@ blur = array_create(10);
 
 clone_hit = hit_fx_create( sprite_get( "clone_hit" ), 13 );
 
+boxing_title = "The Dragon Ninja";
+boxing_short_name = "Ryu Hayabusa";
+
+
 //Rune Support
 var rune_letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"];
 for (var rune_num = 0; rune_num < array_length(rune_letters); rune_num++){
@@ -534,5 +538,293 @@ spr_proj2 = sprite_get("proj2");
 spr_idle_clone = sprite_get("idle_clone");
 spr_izuna3 = sprite_get("izuna3");
 spr_wall_jump = sprite_get("walljump");
+
+
+//Date Girl Support. Generated using McDucky's Date Girl Generator! 
+{
+Chatting = true;
+DG_portrait = sprite_get("DG_portrait");
+var DG_page = 0;
+
+//Page 0 - Start---------------------------------------------------
+DG_page = 0;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = false;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"Hello Ms. Callie, it's a beautiful day isn't it? There are 
+flying swallows in the air, the smell of the grass.
+It's perfect!"
+
+DG_nextindex[DG_page] = 1;
+
+//Page 1 - First Question---------------------------------------------------
+DG_page = 1;
+DG_chat_type[DG_page] = 1;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"Anyway, are you ready for your training today?
+
+"
+
+DG_options[DG_page] = 
+"I'm ready to learn more about the Ninja Way!!!
+I want to learn about the Izuna Drop Hayabusa Sensei!
+Can't we just appreciate this perfect day and chill?"
+			
+DG_answers[DG_page] = [2,4,5];
+
+
+//Page 2 - Ninja Way Answer---------------------------------------------------
+DG_page = 2;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"That's what I'm talking about Ms. Callie! 
+The first lesson on being a Master Ninja is...
+be aware of your surroundings "
+
+DG_nextindex[DG_page] = 3;
+
+//Page 3 - Second Question---------------------------------------------------
+DG_page = 3;
+DG_chat_type[DG_page] = 1;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"A Ninja must always be prepared for anything, even
+the impossible! Now tell me Ms. Callie, if I were to attack
+you with a grab right now, how would you counter attack?"
+
+DG_options[DG_page] = 
+"I would quickly dodge out of the way and attack back!
+I would stand my ground and parry your attempt!
+I would just let you grab me right now Hayabusa Sensei!"
+			
+DG_answers[DG_page] = [8,9,10];
+
+
+//Page 4 - Izuna Answer---------------------------------------------------
+DG_page = 4;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"Hahaha, you're quite a hasty one Ms. Callie! However
+you must have patience first and foremost, so we need
+to start with the basics."
+
+DG_nextindex[DG_page] = 7;
+
+//Page 5 - Chill Answer---------------------------------------------------
+DG_page = 5;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"Yes you are very much right. Meditating is a key part
+of being a Ninja. So now let's just sit here, for hours and
+hours, and find true peace in our mind."
+
+DG_nextindex[DG_page] = 6;
+
+//Page 6 - Chill Ending---------------------------------------------------
+DG_page = 6;
+DG_chat_type[DG_page] = 3;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = true;
+
+DG_dialogue[DG_page] = 
+"
+
+"
+
+DG_dialogue_right[DG_page] = 
+"(That is not what I meant, but alright,
+I guess I can just meditate a little bit.)
+"
+//Page 7 - Izuna Cont.---------------------------------------------------
+DG_page = 7;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"But don't worry Ms. Callie, with enough practice and
+training, and specially an Unbreakable Determination, you'll
+be a master of the Izuna Drop Technique! "
+
+DG_nextindex[DG_page] = 3;
+
+//Page 8 - Dodge and Attack---------------------------------------------------
+DG_page = 8;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"That is a great choice Ms. Callie, a Ninja should avoid 
+getting hit as much as possible, always move out of the way
+and strike when they least expect!"
+
+DG_nextindex[DG_page] = 11;
+
+//Page 9 - Parry Back---------------------------------------------------
+DG_page = 9;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"That could be a risky maneuver, however the payoff can
+also be much bigger, if you're confident you can land that
+Parry, that should for sure turn the tide of battle!"
+
+DG_nextindex[DG_page] = 11;
+
+//Page 10 - Getting Hit
+DG_page = 10;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = true;
+
+DG_dialogue[DG_page] = 
+"That wouldn't work Ms. Callie, if an enemy attacks you,
+you should always find a way to avoid getting hit by it.
+I thought you knew better than that."
+
+DG_dialogue_right[DG_page] = 
+"(I don't think he understood what I meant...) 
+
+"
+DG_nextindex[DG_page] = 11;
+
+//Page 11 - Normal Ending
+DG_page = 11;
+DG_chat_type[DG_page] = 3;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"That should be enough theory for now Ms. Callie,
+now onto some actual practice! Keep your mind focused
+and this battle should be yours."
+}
 
 user_event(14);

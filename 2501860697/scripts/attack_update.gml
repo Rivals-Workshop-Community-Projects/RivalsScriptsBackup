@@ -93,6 +93,15 @@ if (attack == AT_USPECIAL)
 	}
 }
 
+if attack == AT_USPECIAL && has_hit = true && window == 4  {
+	set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 0);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 20);
+} else {
+reset_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE);
+reset_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH);
+}
+
+
 
 if (attack == AT_DSPECIAL && window == 2 && window_timer == 1 && venom > 0 && short = 0)
 {

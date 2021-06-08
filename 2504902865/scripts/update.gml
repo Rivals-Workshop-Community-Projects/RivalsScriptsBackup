@@ -1,4 +1,4 @@
-user_event(14);
+//user_event(14);
 
 if holding_house_id == noone {
 	holding_house_is = false;

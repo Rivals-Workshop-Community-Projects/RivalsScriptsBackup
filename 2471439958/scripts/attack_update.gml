@@ -179,7 +179,7 @@ if (attack == AT_DATTACK) {
 		}
 	}
 	
-	if window == 4 && window_timer == 20 {
+	if window == 4 && window_timer == 19 {
 		window = 14;
 	}
 	if window == 11 && attack_pressed {

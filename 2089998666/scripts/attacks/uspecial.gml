@@ -9,11 +9,11 @@ set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
 
 //Startup
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, sound_get("ssbm_eggthing"));
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 5);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 3);
 
 //Charge
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE, 1);
@@ -30,7 +30,7 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -14);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -18);
 
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 5);

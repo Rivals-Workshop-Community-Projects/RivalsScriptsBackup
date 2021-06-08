@@ -86,6 +86,7 @@ if (attack == AT_NSPECIAL) {
         } else {
             joke_reached_full = true;
             joke_primed = true;
+            joke_interrupted = false;
             window = 6;
             window_timer = 0;
         }

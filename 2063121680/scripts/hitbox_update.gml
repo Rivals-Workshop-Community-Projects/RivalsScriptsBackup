@@ -28,7 +28,7 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
 }
 
 if (attack == AT_FSTRONG) && (hbox_num == 1) {
-    if (!free) || (place_meeting(x, y, asset_get("par_block"))) {
+    if (!free) || (place_meeting(x, y, asset_get("par_block"))) || boostedBox {
         destroyed = true;
         with oPlayer {
             if (id == other.player_id) {

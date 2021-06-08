@@ -9,7 +9,7 @@ minions_spawn_rn = 0;
 minion_spawn_timer_rn = 0;
 minion_spawn_timer_max = 170; //time until minions spawn while in idle
 
-hp_max = 30; //health max
+hp_max = get_match_setting( SET_TEAMS) ? 45 : 30; //health max
 hp_rn = hp_max;
 should_die = false;
 

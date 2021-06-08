@@ -399,7 +399,7 @@ if (attack == AT_USPECIAL) {
         if (uspecRepeat) {
             set_num_hitboxes(AT_USPECIAL, 0);
         } else {
-            set_num_hitboxes(AT_USPECIAL, 5);
+            reset_num_hitboxes(AT_USPECIAL);
         }
     }
     

@@ -15,6 +15,8 @@ hasHit = false;
 hasMoved = false; //hit in the air with a hitbox
 was_bashed = false;
 
+prevHitbox = undefined;
+
 if (attack == AT_NSPECIAL) && (hbox_num == 1) {
     isTrash = true;
     if power >= player_id.compactThreshhold {

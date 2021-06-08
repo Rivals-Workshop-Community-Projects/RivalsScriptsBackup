@@ -69,7 +69,8 @@ sprite_change_offset("nair", 60, 80);
 sprite_change_offset("fair", 32, 90);
 sprite_change_offset("bair", 110, 90);
 sprite_change_offset("uair", 62, 105);
-sprite_change_offset("dair", 42, 95);
+//sprite_change_offset("dair", 42, 95);
+sprite_change_offset("dair", 66, 86);
 sprite_change_offset("fstrong", 76, 102);
 sprite_change_offset("ustrong", 32, 150);
 sprite_change_offset("dstrong", 36, 66);
@@ -132,7 +133,7 @@ sprite_change_offset("red_nair", 60, 80);
 sprite_change_offset("red_fair", 28, 90);
 sprite_change_offset("red_bair", 110, 90);
 sprite_change_offset("red_uair", 62, 105);
-sprite_change_offset("red_dair", 42, 95);
+sprite_change_offset("red_dair", 66, 86);
 sprite_change_offset("red_fstrong", 60, 96);
 sprite_change_offset("red_up_fstrong", 42, 96);
 sprite_change_offset("red_ustrong", 42, 96);
@@ -170,6 +171,11 @@ sprite_change_offset("nspecial_air_mask", 45, 45);
 //Final Smash
 sprite_change_offset("final_smash", 74, 106);
 sprite_change_offset("final_smash_proj", 72, 80);
+
+sprite_change_offset("fx_dairslash", 66, 68);
+fx_dairslash = hit_fx_create(sprite_get("fx_dairslash"), 14);
+sprite_change_offset("fx_red_dairslash", 66, 68);
+fx_red_dairslash = hit_fx_create(sprite_get("fx_red_dairslash"), 14);
 
 //Trail
 fx_star_trail = hit_fx_create(sprite_get("star_trail"), 30);

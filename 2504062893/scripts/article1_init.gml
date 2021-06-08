@@ -4,6 +4,7 @@ lifespan = 60;
 time_alive = 0;
 grav = 0;
 
+uses_shader = true; //match alt colors please
 sprite_index = sprite_get("throwingstar"); //sprite_get("ghost_proj");
 image_speed = 1;
 mask_index = sprite_get("throwingstar");

@@ -56,7 +56,7 @@ set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .6); //check if this ruins combos or not
 set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .25);
+set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 0);
 // set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 32);
 // set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
@@ -68,7 +68,7 @@ set_hitbox_value(AT_FAIR, 2, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 5);
 set_hitbox_value(AT_FAIR, 2, HG_WINDOW_CREATION_FRAME, 1);
-set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 12);
+set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 8);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 32);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_Y, -40);
 set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 66);

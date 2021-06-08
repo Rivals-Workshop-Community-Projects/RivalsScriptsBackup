@@ -51,8 +51,8 @@ djump_speed         = 11.5;		// 6    -  12       absa's is -1 because of her flo
 djump_accel         = 0;        // -1.4 -  0        absa's is -1.4, all other chars are 0. only works if the   djump_accel_end_time   variable is also set. floaty djumps should be adjusted by feel based on your char's gravity
 djump_accel_end_time= 0;        //                  the amount of time that   djump_accel   is applied for
 max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has hover instead
-walljump_hsp        = 7;		// 4    -  7
-walljump_vsp        = 10;		// 7    -  10
+walljump_hsp        = 4;		// 4    -  7
+walljump_vsp        = 12;		// 7    -  10
 land_time           = 4;		// 4    -  6
 prat_land_time      = 10;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 

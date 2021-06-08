@@ -18,7 +18,7 @@ if (move_cooldown[AT_NSPECIAL] > 0){
 }
 
 //Izuna Drop
-if (hit_player_obj.clone = false && hit_player_obj.super_armor = false){
+if (hit_player_obj.clone == false && hit_player_obj.super_armor == false){
 
 if (attack == AT_USPECIAL){
 	if (my_hitboxID.attack == AT_USPECIAL || my_hitboxID.attack == AT_NSPECIAL){

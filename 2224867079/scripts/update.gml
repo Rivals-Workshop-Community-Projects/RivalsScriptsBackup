@@ -70,16 +70,16 @@ for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i]
 
 //After image attacks
 if (attack == AT_DATTACK && window==1&&window_timer==1&&!hitpause){
-	afterImageTimer = 14;
+	afterImageTimer = 12;
 }
 if (attack == AT_UTILT && window==1&&window_timer==1&&!hitpause){
-	afterImageTimer = 24;
+	afterImageTimer = 12;
 }
 if (attack == AT_DAIR && window==1&&window_timer==1&&!hitpause){
-	afterImageTimer = 24;
+	afterImageTimer = 12;
 }
 if (attack == AT_NAIR && window==1&&window_timer==1&&!hitpause){
-	afterImageTimer = 24;
+	afterImageTimer = 12;
 }
 if (attack == AT_FSPECIAL_2 && window==1&&window_timer==1&&!hitpause){
 	afterImageTimer = 24;
@@ -213,6 +213,26 @@ if(!free){
 if(state == SC_GROUND_NEUTRAL || SC_AIR_NEUTRAL ){
 	dotheeffect = true
 }
+
+//Sick ass Dair
+if(!lite){
+if (attack == AT_DAIR && window == 2 && state != PS_AIR_DODGE ||
+attack == AT_DAIR && window == 3 && state != PS_AIR_DODGE ){
+	with (hit_fx_obj){
+		if (hit_fx == other.fx_dairslash){
+    		depth = -5;
+		}
+	}
+	if(state_timer % 4 == 2){
+		if (RedMode == true){
+			spawn_hit_fx(x+35*spr_dir,y,fx_red_dairslash)
+		} else {
+			spawn_hit_fx(x+35*spr_dir,y,fx_dairslash)
+		}
+	}
+}
+}
+
 
 //Trail Effects
 if(state == PS_AIR_DODGE){

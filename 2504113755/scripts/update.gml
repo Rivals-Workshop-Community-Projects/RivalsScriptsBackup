@@ -5,6 +5,20 @@ user_event(14);
 if (abs(hud_offset) < 1)  {hud_offset = 0 }
 
 
+if (state == PS_DEAD || state == PS_RESPAWN || state == PS_SPAWN) {
+	
+with (obj_article1) if player_id == other {
+		if (state != 3) {
+		state = 3 
+		state_timer = 0
+		}
+	}
+
+	
+}
+
+
+
 
 #region fspec cooldown
 
@@ -279,10 +293,6 @@ if rival_players==1 and !noturn {
 
  
 
-} else if (has_hit_article) {
-	
-		can_blink = true
-
 	
 } else {
 
@@ -303,7 +313,7 @@ if (blink_countdown > 0) {
 
 
 	//for ccancels out of attacks
-	if (can_blink && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && joy_pad_idle && !has_cancelled && special_pressed) {
+	if (can_blink && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && joy_pad_idle && !has_cancelled && special_pressed && blink_countdown <= 0) {
 	blink_state_timer = 0
 	has_cancelled = true
 		
@@ -349,13 +359,14 @@ return_airdodge = false
 
 		if (blink_state_timer == (blink_start_frame - 1)) {
 			sound_play(asset_get("sfx_clairen_nspecial_grab_success"))
-			instance_create(x, y, "obj_article1");
+			nova_clone = instance_create(x, y, "obj_article1");
 		}
 		
 	}
 	else if (blink_state_timer >= (blink_start_frame) && blink_state_timer <= (blink_start_frame + 7)) {
 		
-		
+		        destroy_hitboxes()
+
 		if (has_airdodge) {
 			
 			has_airdodge = false

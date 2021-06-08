@@ -6,6 +6,8 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 #region Nspecial
 if (attack == AT_NSPECIAL){
 	
+	can_fast_fall = window > 1 && window < 3;
+	
 	// Reset angle
 	if(window == 1 && window_timer == 1)
 	{
@@ -264,7 +266,7 @@ if (attack == AT_NSPECIAL){
 		
 
 		set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, fc_base_x + dcos(firecracker_angle)*40);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, fc_base_y + -dsin(firecracker_angle)*35);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, fc_base_y + -dsin(firecracker_angle)*35 - 5);
 		
 		// Set firecracker sprite
 		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get(fc_string));
@@ -445,7 +447,7 @@ if (attack == AT_FSPECIAL){
 			{
 				if((is_bashable == 0 && is_transcendent == 0 && (has_hsp != 0 || has_vsp != 0)) || tempProj.player_id.url == CH_WRASTOR)
 				{
-					
+
 								
 					// I wish I could delete these but this move is so jank
 					prev_hsp = hsp;
@@ -544,6 +546,8 @@ if (attack == AT_FSPECIAL){
 		   	spawn_hit_fx(x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir)
 		   	, y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y))
 		   	, 19 );
+		   	
+		   	free = true;
 		}
 	}
    //print_debug(string(window_timer));

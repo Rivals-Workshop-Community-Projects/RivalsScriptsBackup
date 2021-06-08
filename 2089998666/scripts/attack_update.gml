@@ -12,6 +12,7 @@ if (attack == AT_EXTRA_1) {
 	can_attack = true;
 	can_special = true;
 	can_shield = true;
+	can_jump = true;
 	//hsp = clamp(hsp, -(air_max_speed-1), air_max_speed-1);
 	
 	if 3 > vsp {
@@ -23,7 +24,7 @@ if (attack == AT_EXTRA_1) {
 			vsp -= .7;
 		} 
 		else {
-			vsp -= .3;
+			vsp -= .35;
 		}
 	}
 	
@@ -31,24 +32,44 @@ if (attack == AT_EXTRA_1) {
 	window_timer = 0;
 	}
 	
-	if attack_pressed && !flutterAttack {
-	vsp = clamp(vsp, -100, -6);
-	flutterAttack = 1;
-	
-		if right_down {
-		hsp = 5.5;
+	if !flutterAttack {
+		if attack_pressed {
+			vsp = clamp(vsp, -100, -5);
+			flutterAttack = 1;
+			spawn_base_dust(x, y, "doublejump");
+			sound_play(sound_get( "yoshi_jump" ), false, noone, 1, 1.05);
+			
+			if right_down {
+				hsp = 6;
+			}
+			else if left_down {
+				hsp = -6;
+			}
 		}
-		else if left_down {
-		hsp = -5.5;
+		
+		if special_pressed && !up_down {
+		vsp = clamp(vsp, -100, -4);
+		}
+		
+		if left_strong_pressed || up_strong_pressed || right_strong_pressed {
+			vsp = clamp(vsp, -100, -4);
+			flutterAttack = 1;
+			spawn_base_dust(x, y, "doublejump");
+			sound_play(sound_get( "yoshi_jump" ), false, noone, 1, 1.05);
+			
+			if left_strong_pressed {
+				hsp = -6;
+			}		
+			if right_strong_pressed {
+				hsp = 6;
+			}	
+			if up_strong_pressed {
+				vsp = -8;
+			}				
 		}
 	}
-	
-	if special_pressed && !up_down {
-	vsp = clamp(vsp, -100, -4);
-	}
-	
 	if has_rune("O") {
-	soft_armor = 10;
+	soft_armor = 12;
 	}
 }
 
@@ -76,6 +97,7 @@ if (attack == AT_DAIR) {
 	if window == 5 && window_timer == 0 {
 		destroy_hitboxes();
 		if !hitpause {
+			sound_play(sound_get("yoshi_groundpound2"));
 			spawn_hit_fx( x+40*spr_dir, y-2, beegsmokeR);
 			spawn_hit_fx( x-40*spr_dir, y-2, beegsmokeL);
 		}
@@ -163,7 +185,7 @@ if (attack == AT_USPECIAL) {
 	if window == 2 {
 		if special_down && 10 > eggcharge {
 			eggcharge++;
-			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -14-(eggcharge*.35));
+			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -18-(eggcharge*.35));
 			set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 7+(eggcharge*.5));
 			set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 6+(eggcharge*.4));
 			
@@ -171,13 +193,9 @@ if (attack == AT_USPECIAL) {
 				window_timer = 0;
 			}
 		}
-	}
-	if window > 2 && 3 > vsp {
-	hsp = clamp(hsp, -2, 2);
-	}
-	
+	}	
 	if window == 3 {
-		soft_armor = 4;
+		soft_armor = 12;
 		if window_timer == 1 {
 			eggcharge = 0;
 			reset_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED);
@@ -195,11 +213,13 @@ if (attack == AT_USPECIAL) {
 		if window_timer == 4 {
 			window_timer = 0;
 		}
-		
-		
+		if 13 > vsp {
+			vsp += .2;
+		}
 	}
 
 	if window == 5	{
+		can_move = true;
 		if window_timer == 0 && !hitpause {
 		soft_armor = 0;
 		destroy_hitboxes();
@@ -449,6 +469,56 @@ if (has_rune("J")){
 if (has_rune("F")){
 	cookieMeter = 3;
 }
+
+#define spawn_base_dust
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dfa = 0; //draw_angle value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir = argument_count > 3 ? argument[3] : 0;
+
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = dfa;
+return newdust;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ////////// YOSHI SWORD ???
 if !hitpause && yosword == 1 {

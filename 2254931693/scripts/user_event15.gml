@@ -578,6 +578,14 @@ with phone{
 	 * put the version number and full date.
 	 */
 
+	initPatch("2.0.3", "June 8th, 2021");
+	initPatchWords("-Decreased max air speed (6.25 -> 5.75)
+	-Decreased max jump horizontal speed (7.25 -> 6.5)
+	-Decreased Forward-Air damage (8 -> 7)
+	-Decreased Forward-Air base knockback (7 -> 6)
+	-Fixed a bug that prevented DSpecial from being usable even after cooldown was over");
+
+
 	initPatch("2.0.2", "May 19th, 2021");
 	initPatchWords("-Increased attached Neutral-Special endlag (11 -> 15)
 	-Added 5 frames of lag to on-grab window of attached Neutral-Special

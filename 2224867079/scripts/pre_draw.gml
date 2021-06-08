@@ -32,6 +32,21 @@ for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i]
 }
 }
 
+//Sick ass Dair
+/*
+if (attack == AT_DAIR && window == 2){
+	//First
+	if (window_timer == 1){
+		draw_sprite_ext(sprite_get("fx_dairslash"), 0,
+		(x + 40*spr_dir), y, 1*spr_dir, 1, 0, -1, 1)
+	} 
+	//Second
+	if (window_timer == 2){
+		draw_sprite_ext(sprite_get("fx_dairslash"), 1,
+		(x + 40*spr_dir), y, 1*spr_dir, 1, 0, -1, 1)
+	} 
+}
+*/
 
 /*
 	////////////////////////////////////////////Dattack////////////////////////////////////////////////////////

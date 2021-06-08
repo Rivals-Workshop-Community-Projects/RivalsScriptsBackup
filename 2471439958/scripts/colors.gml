@@ -77,7 +77,7 @@ set_color_profile_slot( 4, 6, 255, 72, 0 ); //eyes
 set_color_profile_slot( 4, 7, 36, 36, 36 ); //cleaver
 
 // Acid Rainbows
-set_color_profile_slot( 5, 0, 255, 214, 181 ); //white
+set_color_profile_slot( 5, 0, 255, 231, 222 ); //white
 set_color_profile_slot( 5, 1, 176, 0, 129 ); //scarf
 set_color_profile_slot( 5, 2, 171, 58, 181 ); //hair
 set_color_profile_slot( 5, 3, 113, 222, 98 ); //hoodie
@@ -87,9 +87,9 @@ set_color_profile_slot( 5, 6, 255, 255, 255 ); //eyes
 set_color_profile_slot( 5, 7, 219, 44, 44 ); //cleaver
 
 // Liz
-set_color_profile_slot( 6, 0, 245, 158, 132 ); //white
-set_color_profile_slot( 6, 1, 49, 167, 181 ); //scarf
-set_color_profile_slot( 6, 2, 238, 90, 132 ); //hair
+set_color_profile_slot( 6, 0, 245, 203, 191 ); //white
+set_color_profile_slot( 6, 1, 113, 196, 207 ); //scarf
+set_color_profile_slot( 6, 2, 250, 67, 171 ); //hair
 set_color_profile_slot( 6, 3, 87, 87, 122 ); //hoodie
 set_color_profile_slot( 6, 4, 0, 0, 0 ); //wood
 set_color_profile_slot( 6, 5, 54, 168, 249 ); //blood
@@ -176,15 +176,15 @@ set_color_profile_slot( 14, 5, 173, 0, 0 ); //blood
 set_color_profile_slot( 14, 6, 255, 255, 255 ); //eyes
 set_color_profile_slot( 14, 7, 130, 130, 130 ); //cleaver
 
-// Garland
-set_color_profile_slot( 15, 0, 201, 201, 201 ); //white
-set_color_profile_slot( 15, 1, 62, 56, 97 ); //scarf
-set_color_profile_slot( 15, 2, 81, 77, 97 ); //hair
-set_color_profile_slot( 15, 3, 123, 124, 135 ); //hoodie
-set_color_profile_slot( 15, 4, 77, 77, 77 ); //wood
-set_color_profile_slot( 15, 5, 255, 233, 89 ); //blood
-set_color_profile_slot( 15, 6, 246, 255, 115 ); //eyes
-set_color_profile_slot( 15, 7, 249, 255, 158 ); //cleaver
+// Serah
+set_color_profile_slot( 15, 0, 255, 231, 222 ); //white
+set_color_profile_slot( 15, 1, 173, 117, 161 ); //scarf
+set_color_profile_slot( 15, 2, 237, 135, 174 ); //hair
+set_color_profile_slot( 15, 3, 255, 255, 255 ); //hoodie
+set_color_profile_slot( 15, 4, 126, 104, 158 ); //wood
+set_color_profile_slot( 15, 5, 135, 255, 255 ); //blood
+set_color_profile_slot( 15, 6, 186, 220, 255 ); //eyes
+set_color_profile_slot( 15, 7, 223, 224, 136 ); //cleaver
 
 // Firion
 set_color_profile_slot( 16, 0, 255, 217, 189 ); //white
@@ -309,7 +309,7 @@ set_color_profile_slot( 27, 7, 225, 193, 115 ); //cleaver
 // Bomb Ghost
 set_color_profile_slot( 28, 0, 10, 1, 23 ); //white
 set_color_profile_slot( 28, 1, 0, 65, 123 ); //scarf
-set_color_profile_slot( 28, 2, 13, 2, 28 ); //hair
+set_color_profile_slot( 28, 2, 32, 4, 71 ); //hair
 set_color_profile_slot( 28, 3, 0, 65, 123 ); //hoodie
 set_color_profile_slot( 28, 4, 255, 198, 186 ); //wood
 set_color_profile_slot( 28, 5, 255, 47, 0 ); //blood

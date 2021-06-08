@@ -56,7 +56,9 @@ if getting_bashed {
                     old_vsp = vsp;
                     other.was_hit = true;
                     sound_play(get_hitbox_value(hitbox.attack, hitbox.hbox_num, HG_HIT_SFX));
-                    spawn_hit_fx(other.x, other.y, get_hitbox_value(hitbox.attack, hitbox.hbox_num, HG_VISUAL_EFFECT));
+                    var vfx = get_hitbox_value(hitbox.attack, hitbox.hbox_num, HG_VISUAL_EFFECT);
+                    if vfx == 0 vfx = 301;
+                    spawn_hit_fx(other.x, other.y, vfx);
                 }
             }
         } else if ("isWalle" in hitbox.player_id) && hitbox.hbox_num == 1 && hitbox.attack == AT_DSPECIAL { //dspecial absorb cube
@@ -64,10 +66,10 @@ if getting_bashed {
                 window = 4;
                 window_timer = 0;
                 absorbedCube = true;
-                compactTimer = other.power;
-                heldExplode = other.willExplode;
-                heldExplodeTimer = other.explodeTimer + compactTimer*7;
-                heldExplodeThreshhold = other.explodeThreshhold;
+                //compactTimer = other.power;
+                //heldExplode = other.willExplode;
+                //heldExplodeTimer = other.explodeTimer + compactTimer*7;
+                //heldExplodeThreshhold = other.explodeThreshhold;
                 sound_play(asset_get("sfx_ell_utilt_fire"));
             }
             instance_destroy()
@@ -154,7 +156,7 @@ if getting_bashed {
                 spawn_hit_fx(other.x, other.y - 15, 141);
             }
             var boom create_hitbox(AT_NSPECIAL, 2, x, y - 10);
-                boom.can_hit_self = true;
+                boom.can_hit_self = false;
             instance_destroy();
             exit;
         }

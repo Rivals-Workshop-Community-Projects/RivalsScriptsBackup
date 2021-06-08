@@ -107,7 +107,7 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
                     spawn_hit_fx(other.x, other.y - 15, 141);
                 }
                 var boom = create_hitbox(AT_NSPECIAL, 2, x, y - 10);
-                    boom.can_hit_self = true;
+                    boom.can_hit_self = false;
                 destroyed = true;
                 exit;
             } else {
@@ -205,7 +205,7 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
                     boom.can_hit_self = false;
                 destroyed = true;
                 exit;
-            } else if free && !hasMoved && !(variable_instance_exists(hitbox.player_id, "isWalle") && hitbox.attack == AT_NSPECIAL) {
+            } else if free && !hasMoved && !(variable_instance_exists(hitbox.player_id, "isWalle") && hitbox.attack == AT_NSPECIAL) && !(prevHitbox != undefined && prevHitbox == hitbox.id) {
                 movePlayerID = hitbox.player_id;
                 with movePlayerID {
                     var hitboxBKB = get_hitbox_value(hitbox.attack, hitbox.hbox_num, HG_BASE_KNOCKBACK);
@@ -257,6 +257,8 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
                             var hitfx = get_hitbox_value(hitbox.attack, hitbox.hbox_num, HG_VISUAL_EFFECT);
                             if hitfx == 0 hitfx = 301;
                             spawn_hit_fx(other.x, other.y, hitfx);
+                            
+                            other.prevHitbox = hitbox;
                         }
                     }
                     with movePlayerID {
@@ -318,7 +320,7 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
             spawn_hit_fx(other.x, other.y - 15, 141);
         }
         var boom = create_hitbox(AT_NSPECIAL, 2, x, y - 10);
-            boom.can_hit_self = true;
+            boom.can_hit_self = false;
         destroyed = true;
         exit;
     }

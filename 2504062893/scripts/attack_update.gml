@@ -3,6 +3,7 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+
 // article1 = throwable ghost projectile
 var article1_count = 0;
 var article1 = noone;
@@ -49,8 +50,11 @@ if (attack == AT_USPECIAL) {
 			x = article_x;
 			y = article_y;
 			has_teleported = true;
+			window = 2;
 			if (!article1.is_boosted){
 				atk_cooldown = 15; // todo: tweak based on feedback
+			} else {
+				atk_cooldown = 3;
 			}
 			if (article1 != noone){
 				with (article1){
@@ -58,18 +62,20 @@ if (attack == AT_USPECIAL) {
 				}
 			}
 			spawn_hit_fx(x, y, 127);
-			state = PS_IDLE_AIR;
 			vsp = -5;
 			hsp = 0;
 		}
 	}  else {
 		// REGULAR RECOVERY
 		if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1){
-		vsp = -10;
-		window = 3;
-		window_timer = 0;
-	}
+			vsp = -10;
+			window = 3;
+			window_timer = 0;
+		}
 	
+	}
+	if (window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1 && has_teleported){
+		window += 10;
 	}
 	if (caught_fspecial == 1 && can_throw_timer > 0 && !captain_mode){
 		throw_hsp = 0;
@@ -181,7 +187,7 @@ if (attack == AT_FSPECIAL){
 		var ghost_proj = instance_create(x+16*spr_dir, y-48, "obj_article1");
 		ghost_proj.spr_dir = spr_dir;
 	
-		if (caught_fspecial == 1){
+		if (caught_fspecial == 1 && holding_boosted){
 			sound_play(snd_Fspecial_throw); //insert different throw sound
 			ghost_proj.sprite_index = sprite_get("throwingstar_boosted");
 			ghost_proj.is_boosted = true;
@@ -236,9 +242,24 @@ if (attack == AT_DAIR){
 // 	}
 // }
 
+// JAB PARRY STUN FIX (MULTI HIT JAB)
+if(attack == AT_JAB){
+    if(window == 1 && window_timer == 1){
+        last_hit_stun = false;
+    }
+    if(was_parried && window < 4){
+        was_parried = false;
+        last_hit_stun = true;
+    }
+    if(window >= 4 && last_hit_stun){
+        was_parried = true;
+    }
+}
+
 if (attack == AT_JAB){
 	if ((window == 1 || window == 2) && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1 && !attack_down){
 		window = 6; // skip to end
+		window_timer = 1;
 	}	
 // if window == 4 || ((hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND) && hit_player_obj.state_timer == 0){
 // if window == 4{

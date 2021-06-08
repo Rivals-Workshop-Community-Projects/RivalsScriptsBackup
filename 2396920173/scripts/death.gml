@@ -1,10 +1,10 @@
 // called when the character gets KO'd
 piece = "P"
 
-pawn_meter = pawn_meter_default;
+//pawn_meter = pawn_meter_default;
 can_increment = true;
 shake_timer = 0;
-pawn_move_timer = 0;
+//pawn_move_timer = 0;
 rook_cannon = undefined; //[x, y, rotation, image_index]
 missile_timer = 0;
 range_dist = 0;

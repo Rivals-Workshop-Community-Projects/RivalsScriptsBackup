@@ -47,42 +47,42 @@ if !hitpause {
     if attack == AT_FSTRONG {
     	can_fast_fall = false
     	vsp /= 1.04
+    	prat_land_time = 60
+    	///if !free {
+    	///	state_timer = 0
+    	///	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 12);
+        ///    set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 9);
+        ///    set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.2);
+    	///} else {
+    	///	strong_charge = 60
+    	///	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 6);
+        ///    set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 8);
+        ///    set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.9);
+    	///}
+    	///
+    	///if state_timer > 5 && free && (window < 4 && window != 1 or (window == 1 && window_timer > 10)){
+    	///	sound_stop(sound_get("fstrong1"))
+    	///	window = 5
+    	///	window_timer = 1
+    	///	mask_index = asset_get("empty_sprite");
+    	///	vsp = -4
+    	///	sound_play(sound_get("uspec"))
+    	///	
+    	///}
     	
-    	if !free {
-    		state_timer = 0
-    		set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 12);
-            set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 9);
-            set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.2);
-    	} else {
-    		strong_charge = 60
-    		set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 6);
-            set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 8);
-            set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.9);
-    	}
-    	
-    	if state_timer > 5 && free && (window < 4 && window != 1 or (window == 1 && window_timer > 10)){
-    		sound_stop(sound_get("fstrong1"))
-    		window = 5
-    		window_timer = 1
-    		mask_index = asset_get("empty_sprite");
-    		vsp = -4
-    		sound_play(sound_get("uspec"))
-    		
-    	}
-    	
-    	 if  window == 5{
-    	 	create_hitbox(AT_FSTRONG,5,x,y)
-    	 	vsp -= 0.02
-    		if window_timer == 18 window_timer = 1
-    		if !free && vsp < 0{
-    			spawn_hit_fx(x,y + 14,14)
-    			shake_camera(4,4)
-    		sound_play(sound_get("uspec"))
-    		sound_play(asset_get("sfx_blow_medium1"))
-            vsp = -6
-            hsp = 6*spr_dir
-    		}
-    	}
+    //	 if  window == 5{
+    //	 	create_hitbox(AT_FSTRONG,5,x,y)
+    //	 	vsp -= 0.02
+    //		if window_timer == 18 window_timer = 1
+    //		if !free && vsp < 0{
+    //			spawn_hit_fx(x,y + 14,14)
+    //			shake_camera(4,4)
+    //		sound_play(sound_get("uspec"))
+    //		sound_play(asset_get("sfx_blow_medium1"))
+    //        vsp = -6
+    //        hsp = 6*spr_dir
+    //		}
+    //	}
     	
         if window == 1 && window_timer == 1{
             savex = x
@@ -121,17 +121,29 @@ if !hitpause {
         	}
         }
         
-        if (window == 4 && image_index == 11 && savex != 0) or (y + vsp > room_height){
+        if (window == 4 && image_index == 10 && savex != 0) {
         	mask_index = sprite_get("stand_box");
         	y += 10
-        	window = 4 {
-        		window_timer = 14
-        	}
+        	window = 4 
+        	window_timer = 10
+
             sound_play(sound_get("fstrong2"))
             take_damage (player, -1, -6)
             x = savex
             y = savey
             savex = 0
+        }
+         
+        if (y + vsp > room_height && savex != 0) {
+        	sound_play(sound_get("fstrong2"))
+        	 sound_play(sound_get("uspec"))
+        	 set_state(PS_PRATFALL)
+                    take_damage (player, -1, -6)
+                    hsp = 0
+            x = savex
+            y = savey
+            savex = 0
+        	
         }
         
     }

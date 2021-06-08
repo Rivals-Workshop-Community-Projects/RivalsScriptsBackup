@@ -104,6 +104,8 @@ if (my_hitboxID.attack == AT_FSPECIAL){
         last_grabbedid = grabbedid;
 	    grabbedid.ungrab = 0;
 	    
+	    vsp = 0;
+	    
 	    sound_play(sound_get("tenru_grab"));
 	    window = 5;
 	    window_timer = 1;

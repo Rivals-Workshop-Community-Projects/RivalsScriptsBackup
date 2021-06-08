@@ -126,6 +126,21 @@ if (!inStasis) && (player_id.stasisID != id) {
     vsp = 0;
 }
 
+var _hitbox = place_meeting(x, y, pHitBox);
+if _hitbox {
+    var hitboxObj = instance_place(x, y, pHitBox);
+    if ('boostedBox' in hitboxObj) && hitboxObj.player_id == player_id && hitboxObj.attack == AT_FSTRONG {
+        if !hitboxObj.boostedBox {
+            hitboxObj.boostedBox = true;
+        }
+        
+        if hitboxObj.hbox_num == 2 { //explosion]
+            hsp = hitboxObj.spr_dir*8;
+            vsp = -12;
+        }
+    }
+}
+
 if (x > player_id.room_width + 100) || (x < -100) || (y > player_id.room_height + 100) {
     player_id.boxActive = false;
     if (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && (player_id.attack == AT_FSPECIAL) && (player_id.window != 4) {

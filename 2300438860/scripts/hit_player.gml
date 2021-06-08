@@ -4,31 +4,167 @@ if cosmetic = 1 {
 finishercd = 0
 }
 
-if my_hitboxID.type == 1 && my_hitboxID.attack != AT_DSTRONG && my_hitboxID.attack != AT_NSPECIAL
-&& my_hitboxID.attack != AT_DTILT && my_hitboxID.attack != AT_DSPECIAL && 
-(my_hitboxID.attack != AT_FSTRONG or (my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num < 3)){
-if  my_hitboxID.damage <= 4 {
-	sound_play(sound_get("slice"),false,noone,1,1.1)
-	     var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
-			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
-}
- 
- if  my_hitboxID.damage > 4  && my_hitboxID.damage < 8 {
- 	sound_play(sound_get("slice"),false,noone,1,1)
-	     var hfx2 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash1 )
-			hfx2.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
- }
+switch my_hitboxID.attack {
 
- if  my_hitboxID.damage >= 8 {
- 	sound_play(sound_get("slice"),false,noone,1,0.9)
- 	var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 60, fxslash3 )
+       case AT_JAB :
+       		sound_play(sound_get("slice"),false,noone,1,1.1)
+       	     var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
+       			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+       break;
+
+       case AT_FTILT :
+       		sound_play(sound_get("slice"),false,noone,1,1.1)
+       	     var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
+       			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+       break;
+
+       case AT_UTILT :
+       		sound_play(sound_get("slice"),false,noone,1,1.1)
+       	     var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
+       			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+       		 var hfx3 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
+       		 hfx3.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4 + 90
+       break;
+       
+       case AT_NAIR :
+       sound_play(sound_get("slice"),false,noone,1,1.1)
+       
+       if my_hitboxID.damage == 3 {
+       	     var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
+       			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+       }
+       
+      if my_hitboxID.damage > 3 {
+       	     var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
+       			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+       		 var hfx3 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
+       		 hfx3.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4 + 90
+       }
+       
+      break; 
+       
+       case AT_FAIR :
+       sound_play(sound_get("slice"),false,noone,1, 0.9)
+       
+       if my_hitboxID.damage == 9 {
+           	var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 60, fxslash3 )
 			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4 + 90
 			
-	     var hfx2 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash1 )
+	        var hfx2 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash1 )
 			hfx2.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
- }
+			
+       } else {
+       	     var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
+       			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+       }
+       
+       break;  
+       
+       case AT_DAIR :
+       sound_play(sound_get("slice"),false,noone,1, 0.9)
+       
+           	var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 60, fxslash3 )
+			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4 + 90
+			
+	        var hfx2 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash1 )
+			hfx2.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+      
+      break;  
 
+	   case AT_BAIR :
+       sound_play(sound_get("slice"),false,noone,1, 1)
+       
+       if my_hitboxID.damage > 7 {
+           	var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 60, fxslash3 )
+			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4 + 90
+			
+	        var hfx2 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash1 )
+			hfx2.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+			
+       } else {
+       	     var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
+       			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+       }
+       
+       break;  
+
+	   case AT_UAIR :
+       sound_play(sound_get("slice"),false,noone,1, 1)
+       
+       if my_hitboxID.damage > 7 {
+       	     var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
+       			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+       		 var hfx3 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
+       		 hfx3.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4 + 90
+			
+       } else {
+       	     var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
+       			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+       }
+       
+       break;  
+       
+       case AT_FSPECIAL :
+       
+       
+       if my_hitboxID.type == 1{
+       	sound_play(sound_get("slice"),false,noone,1, 1)
+       	     var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
+       			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+       		 var hfx3 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
+       		 hfx3.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4 + 90
+			
+       } else {
+       	sound_play(asset_get("sfx_waterhit_medium"),false,noone,1.2, 0.8)
+
+       }
+       
+       break;
+       
+       case AT_DATTACK :
+       sound_play(sound_get("slice"),false,noone,1, 0.9)
+       
+           	var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 60, fxslash3 )
+			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4 + 90
+			
+	        var hfx2 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash1 )
+			hfx2.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+      
+      break; 
+   
+       case AT_USTRONG :
+       sound_play(sound_get("slice"),false,noone,1, 0.9)
+       
+           	var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 60, fxslash3 )
+			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4 + 90
+			
+	        var hfx2 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash1 )
+			hfx2.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+      
+      break; 
+      
+      
+      case AT_FSTRONG :
+       
+       
+       if my_hitboxID.damage > 7 {
+       	sound_play(asset_get("sfx_waterhit_heavy"),false,noone,1.2, 0.8)
+       	     var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
+       			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+       		 var hfx3 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
+       		 hfx3.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4 + 90
+			
+       } else {
+       	     sound_play(sound_get("slice"),false,noone,1, 1)
+       	     var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )
+       			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+       }
+       
+       break;  
+      
 }
+
+
 if cosmetic = 1{
 if get_player_color(player) = 1 {
 

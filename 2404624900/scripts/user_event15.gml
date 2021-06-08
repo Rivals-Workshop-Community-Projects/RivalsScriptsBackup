@@ -507,6 +507,12 @@ with phone{
 	initPatchWords_ext("The initial distance travelled for the strongs is a bit higher, however the Max Charge version doesn't go as far anymore", fa_left, c_white, 0, 0);
 	initPatchImage(other.spr_fstrong, -5, fa_center, 1, c_white, 0);
 	
+	initPatch("1.21", "06 June, 2021");
+	initPatchWords_ext("USpecial now has more Knockback Growth", fa_left, c_white, 0, 0);
+	initPatchWords_ext("Strongs all have more Knockback Growth", fa_left, c_white, 0, 0);
+	initPatchWords_ext("Added some new Compatibility Stuff", fa_left, c_white, 0, 0);
+	initPatchImage(other.spr_fstrong, -5, fa_center, 1, c_white, 0);
+	
 }
 
 

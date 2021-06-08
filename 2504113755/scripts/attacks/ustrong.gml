@@ -148,7 +148,7 @@ set_hitbox_value(AT_USTRONG, 7, HG_PRIORITY, 1);
 set_hitbox_value(AT_USTRONG, 7, HG_DAMAGE, 6);
 set_hitbox_value(AT_USTRONG, 7, HG_ANGLE, 90);
 set_hitbox_value(AT_USTRONG, 7, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_USTRONG, 7, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(AT_USTRONG, 7, HG_KNOCKBACK_SCALING, 1.0);
 set_hitbox_value(AT_USTRONG, 7, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_USTRONG, 7, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_USTRONG, 7, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));

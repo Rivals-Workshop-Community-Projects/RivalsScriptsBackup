@@ -16,6 +16,11 @@ Welcome to the state machine
 */
 
 //behaviour handling
+if instance_exists(target_player) { //find enemy's position + their speed
+	var target_position_x = target_player.x + (target_player.hsp *6);
+	var target_position_y = target_player.y + (target_player.vsp *6) - 25;
+}
+
 switch(state) {
 	case -2: //debug/placeholder
 		vsp = lerp(vsp,0,air_frict*2)
@@ -34,9 +39,12 @@ switch(state) {
             vsp = lerp(vsp,0,air_frict*2)
             hsp = lerp(hsp,0,air_frict*2) //slow down, no move during a
         } else { //move_towards_player
-            if point_distance(x,y,target_player.x,target_player.y) >= 45 {
-                hsp += x < target_player.x ? air_accel : air_accel*-1
-                vsp += y < target_player.y - 25 ? air_accel : air_accel*-1
+            if point_distance(x,y,target_position_x,target_position_y) >= 45 {
+            	//old targeting
+                //hsp += x < target_player.x ? air_accel : air_accel*-1
+                //vsp += y < target_player.y - 25 ? air_accel : air_accel*-1
+                hsp += x < target_position_x ? air_accel : air_accel*-1
+                vsp += y < target_position_y ? air_accel : air_accel*-1
             } else {
                 vsp = lerp(vsp,0,air_frict)
                 hsp = lerp(hsp,0,air_frict)
@@ -49,7 +57,7 @@ switch(state) {
         reset_hitbox();
     	detect_hit();
     	
-    	if attack_timer_rn >= round(attack_timer_max * overworking_bonus) && instance_exists(target_player) && point_distance(x,y,target_player.x,target_player.y) <= 55 { //do attack if time for attack
+    	if attack_timer_rn >= round(attack_timer_max * overworking_bonus) && instance_exists(target_player) && point_distance(x,y,target_position_x,target_position_y) <= 55 { //do attack if time for attack
     		set_attack();
     		attack_timer_rn = 0;
     	}
@@ -106,8 +114,19 @@ switch(state) {
         break;
         
     case 7: //atac
-        vsp = lerp(vsp,0,air_frict*3)
-        hsp = lerp(hsp,0,air_frict*3) //slow down, no move during atac
+        if !instance_exists(target_player) {
+            find_target_player()
+            vsp = lerp(vsp,0,air_frict*2)
+            hsp = lerp(hsp,0,air_frict*2) //slow down, no move during a
+        } else { //move_towards_player
+        //old targeting
+            //hsp += x < target_player.x ? air_accel*0.9 : air_accel*-0.9
+            //vsp += y < target_player.y - 25 ? air_accel*0.9 : air_accel*-0.9
+            hsp += x < target_position_x ? air_accel*0.9 : air_accel*-0.9
+            vsp += y < target_position_y ? air_accel*0.9 : air_accel*-0.9
+            hsp = clamp(hsp,air_max_speed*-0.9,air_max_speed*0.9)
+            vsp = clamp(vsp,air_max_speed*-0.9,air_max_speed*0.9)
+        }
         if !instance_exists(minion_house) {
     	    set_state(5)
     	}
@@ -124,7 +143,7 @@ switch(state) {
     	    case 1:
     	        attack_window_frame_first = 0;
     	        attack_window_frame_last = 1;
-    	        window_length = 13//startup
+    	        window_length = 12//startup
     	        if window_timer == window_length-1 {
     	        	var randomsound = random_func(5,2,true);
     	        	switch(randomsound){
@@ -194,8 +213,8 @@ if instance_exists(minion_house) {
     minion_level = minion_house.house_level;
 }
 if overworking_active {
-	air_accel = base_accel*2;
-	air_max_speed = base_max_speed*2;
+	air_accel = base_accel*1.5;
+	air_max_speed = base_max_speed*1.5;
     overworking_bonus = 0.50; //less means faster
     //funny fx
     if get_gameplay_time() mod 2 == 0 {
@@ -347,7 +366,7 @@ if ((x < 0 or x > room_width) or (y < 0 or y > room_height)){
 #define find_target_player()
 //code to find a target if none available
 with(oPlayer){
-    if self != other.player_id && point_distance(x,y,other.x,other.y - 15) <= 185 && get_player_team(player) != get_player_team(other.player_id.player) {
+    if self != other.player_id && point_distance(x,y,other.x,other.y - 15) <= 235 && get_player_team(player) != get_player_team(other.player_id.player) {
         other.target_player = self;   
     }
 }

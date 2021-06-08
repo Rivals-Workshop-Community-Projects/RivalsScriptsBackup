@@ -48,6 +48,8 @@ smoke_vfx = hit_fx_create(sprite_get("cube_smoke_vfx"), 32);
 cubeCounter = 0;
 trashCounter = 0;
 
+walljump_orig = undefined;
+
 hurtbox_spr = sprite_get("walle_hurtbox");
 crouchbox_spr = sprite_get("walle_crouchbox");
 air_hurtbox_spr = -1;

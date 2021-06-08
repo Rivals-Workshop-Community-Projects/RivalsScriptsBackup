@@ -136,3 +136,12 @@ move_cooldown[AT_DAIR] = 15;
 if attack == AT_FSPECIAL_AIR && window == 4 {
 move_cooldown[AT_FSPECIAL_AIR] = 20;
 }
+
+
+if(free && attack == AT_USPECIAL || attack == AT_USPECIAL_2) && (state == PS_ATTACK_AIR){
+    move_cooldown[AT_USPECIAL] = 999;
+}
+
+if(!free || state == PS_WALL_JUMP || state == PS_HITSTUN){
+    move_cooldown[AT_USPECIAL] = 0;
+}

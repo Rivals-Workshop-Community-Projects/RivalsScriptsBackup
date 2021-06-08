@@ -90,8 +90,9 @@ if (attack == AT_DTILT){
 if (attack == AT_DAIR){
 	can_fast_fall = false
 	can_wall_jump = true;
-	if (!free){
-		set_state(PS_PRATLAND)
+	if (window == 2 && !free || window == 3 && !free){
+		window = 4
+		window_timer = 0
 	}
 }
 

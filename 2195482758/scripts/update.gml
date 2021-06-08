@@ -3,6 +3,9 @@
 // Muno's meme
 user_event(14);
 
+// I am me
+is_tenru = true;
+
 // if(shield_down)
 // {
 // 	set_state(PS_IDLE);

@@ -46,7 +46,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
-set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 9);
+set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 4);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_USPECIAL, 2, HG_MUNO_HITBOX_NAME, "Multihit 1");
