@@ -213,8 +213,8 @@ if instance_exists(minion_house) {
     minion_level = minion_house.house_level;
 }
 if overworking_active {
-	air_accel = base_accel*1.5;
-	air_max_speed = base_max_speed*1.5;
+	air_accel = field_accel;
+	air_max_speed = field_max_speed;
     overworking_bonus = 0.50; //less means faster
     //funny fx
     if get_gameplay_time() mod 2 == 0 {

@@ -47,6 +47,7 @@ if attack == AT_NAIR {
                 }
                 destroy_hitboxes();
                 attack_end();
+                spawn_base_dust(x,y,"land")
                 var bouncebox = create_hitbox(AT_NAIR,1,x+get_hitbox_value(AT_NAIR,1,HG_HITBOX_X),y+get_hitbox_value(AT_NAIR,1,HG_HITBOX_Y));
                 bouncebox.hitbox_timer = window_timer;
             } else {
@@ -69,6 +70,10 @@ if attack == AT_DAIR {
 //house setup
 if attack == AT_NSPECIAL {
     //spawn house if none close/existing
+    if window == 1 && (shield_pressed or shield_down) && window_timer < 6 {
+    	window = 7;
+    	set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 9);
+    }
     if window == 2 && window_timer == 1 && !instance_exists(holding_house_id) && houses_amount_rn < houses_amount_max {
         holding_house_id = instance_create(x,y,"obj_article1");
     }
@@ -126,6 +131,7 @@ if (attack == AT_FSPECIAL) { //grabble
     		 
     		//on the first window, pull the opponent into the grab.
     		if (window == 4 or window == 5 or window == 6) { 
+    			fspecial_prev_window = window;
     		    grabbed_player_obj.visible = false;
     			//change as necessary. by default, this grab will pull the opponent to (30, 0) in front of the player.
     			var pull_to_x = 55 * spr_dir;
@@ -141,13 +147,23 @@ if (attack == AT_FSPECIAL) { //grabble
     		
     	}
     	if window == 7 {
+    		if fspecial_prev_window != window {
+				fspecial_prev_window = window;
+				sound_play(asset_get("sfx_blow_medium2"),false,0,0.95,1.25);
+				sound_play(asset_get("sfx_kragg_rock_shatter"),false,0,0.65,0.85);
+				spawn_base_dust(x,y,"land")
+				shake_camera(2,3);
+			}
     		//landing grab now grants boost field
     		boosting_minions = true;
 			boosting_timer_rn = 0;
-			//a
+			//b
     	    grabbed_player_obj.visible = true;
     	    grabbed_player_obj = noone;
     	}
+	}
+	if window == 7 && window_timer == get_window_value(AT_FSPECIAL,7,AG_WINDOW_LENGTH) {
+		spawn_hit_fx(x+45*spr_dir,y,fx_fspecial_land)//spawn funny post hit effect
 	}
 	
 	//house grab
@@ -196,10 +212,23 @@ if (attack == AT_FSPECIAL) { //grabble
 		can_wall_jump = true;
 	}
 	if (window == 10 or window == 11) {
+		fspecial_prev_window = window;
 	    if abs(hsp) < air_max_speed {
 	        hsp += right_down ? 0.15 : 0;
 	        hsp += left_down ? -0.15 : 0;
 	    }
+	}
+	if window == 12 {
+		if fspecial_prev_window != window {
+			fspecial_prev_window = window;
+			sound_play(asset_get("sfx_blow_medium2"),false,0,1,1.25);
+			sound_play(asset_get("sfx_kragg_rock_shatter"),false,0,0.8,0.85);
+			spawn_base_dust(x,y,"land")
+			shake_camera(2,3);
+		}
+		if window_timer == get_window_value(AT_FSPECIAL,12,AG_WINDOW_LENGTH) {
+			spawn_hit_fx(x+45*spr_dir,y,fx_fspecial_land)//spawn funny post hit effect
+		}
 	}
 }
 
@@ -280,4 +309,34 @@ house_thrown.hsp = _hsp * spr_dir;
 house_thrown.vsp = _vsp;
 holding_house_id = noone;
 
+#define spawn_base_dust
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dfa = 0; //draw_angle value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir = argument_count > 3 ? argument[3] : 0;
 
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = dfa;
+return newdust;

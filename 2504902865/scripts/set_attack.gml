@@ -32,15 +32,15 @@ if attack == AT_NSPECIAL {
             }
         }
     }
-    if !should_pickup && houses_amount_rn >= houses_amount_max {
+    if (!should_pickup && houses_amount_rn >= houses_amount_max) or (house_cooldown_rn > 0){
         should_shine = true
     }
-    if should_pickup {
-        set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 6);
-        window = 4
-    } else if should_shine {
+    if should_shine {
         set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 9);
         window = 7
+    } else if should_pickup {
+        set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 6);
+        window = 4
     } else {
         set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 3);
     }

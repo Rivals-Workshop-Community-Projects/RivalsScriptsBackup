@@ -12,6 +12,7 @@ state_timer = 0;                                    //The point in time during t
 hitstop = 0;                                        //The frames remaining in hitpause. Hitpause automatically prevents movement
 hsp = 0;                                            //The horizontal speed of the article. Multiply by spr_dir to correctly handle forward (+) or backward (-) movement
 vsp = 0;                                            //The vertical speed of the article.
+has_raised = 0;
 
 //Terrain behavior
 can_be_grounded = true;                            //Determines if the article follows platforms when free == false.

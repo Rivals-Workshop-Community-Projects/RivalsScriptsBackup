@@ -43,4 +43,3 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 60);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 6);
-set_hitbox_value(AT_DSPECIAL, 1, HG_TECHABLE, 1);

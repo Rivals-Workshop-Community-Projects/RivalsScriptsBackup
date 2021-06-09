@@ -75,6 +75,8 @@ switch(state) {
             hsp = lerp(hsp,0,air_frict)
         } else {
         	hsp = lerp(hsp,0,ground_frict)
+        	sound_play(asset_get("sfx_land_light"))
+        	spawn_base_dust(x,y,"land")
         	set_state(1)
         }
         reset_hitbox();
@@ -89,6 +91,8 @@ switch(state) {
             hsp = lerp(hsp,0,air_frict)
         } else {
         	hsp = lerp(hsp,0,ground_frict)
+        	sound_play(asset_get("sfx_land_light"))
+        	spawn_base_dust(x,y,"land")
         	set_state(1)
         }
         //later make hitbox
@@ -108,6 +112,7 @@ switch(state) {
     	if state_timer == die_timer {
     		sound_play(asset_get("sfx_orca_crunch"))
     		player_id.houses_amount_rn -= 1;
+    		player_id.house_cooldown_rn = player_id.house_cooldown_max;
     		instance_destroy();
     		exit;
     	}
@@ -119,6 +124,7 @@ switch(state) {
     	hsp = 0;
     	vsp = 0;
     	player_id.houses_amount_rn -= 1;
+    	player_id.house_cooldown_rn = player_id.house_cooldown_max;
     	sound_play(asset_get("sfx_orca_crunch"))
     	reset_hitbox();
     	instance_destroy();
@@ -141,6 +147,7 @@ switch(state) {
     		var spawn_minion = instance_create(x, y - 10,"obj_article2");
     		minions_spawn_rn += 1;
     		spawn_minion.minion_house = self
+    		spawn_base_dust(x,y,"djump")
     	}
     	if state_timer >= spawn_timer_finish {
     		set_state(1);
@@ -319,5 +326,35 @@ if ((x < 0 or x > room_width) or (y < 0 or y > room_height)){
 
 
 
+#define spawn_base_dust
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dfa = 0; //draw_angle value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir = argument_count > 3 ? argument[3] : 0;
 
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = dfa;
+return newdust;
 

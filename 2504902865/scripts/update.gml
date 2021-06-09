@@ -68,6 +68,10 @@ if holding_house_is {
 	has_rock = false;
 }
 
+if house_cooldown_rn > 0 {
+	house_cooldown_rn -= 1;
+}
+
 /*
 
 

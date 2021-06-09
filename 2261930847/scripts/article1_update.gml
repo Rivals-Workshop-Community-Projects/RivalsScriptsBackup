@@ -116,6 +116,10 @@ if (state == 1){
     
     //Stop the movement from state 0
     hsp = 0;
+    if (has_raised == 0){ //Realign with stage
+        y -= 2;
+        has_raised = 1;
+    }
     
     //Die if should die2.
     if shoulddie{

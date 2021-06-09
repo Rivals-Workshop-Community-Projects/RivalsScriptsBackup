@@ -26,13 +26,32 @@ if (state != PS_ATTACK_GROUND)
 }
 
 //CHARACTER HEIGHT
-if(attack == AT_USPECIAL || attack == AT_USPECIAL_2) && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
-	char_height = 78;
-} else {char_height = 46;}
-
-if(state == PS_PRATFALL){
-	char_height = 56;
+if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
+    if (state == PS_PRATFALL){
+	    char_height = 56;
+    }
+    else{
+        char_height = 46;
+    }
 }
+else if (attack == AT_USPECIAL || attack == AT_USPECIAL_2) && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
+	char_height = 78;
+}
+else if (attack == AT_USTRONG){
+    if (window == 3 && window_timer > 12 && char_height < 94){
+        char_height += 12;
+    }
+    else if (window == 5 && window_timer > 3 && char_height > 46){
+        char_height -= 2;
+    }
+    else if (window == 6 && char_height > 46){
+        char_height -= 4;
+        if (char_height < 46){
+            char_height = 46;
+        }
+    }
+}
+
 
 if(free && attack == AT_USPECIAL || attack == AT_USPECIAL_2) && (state == PS_ATTACK_AIR){
     move_cooldown[AT_USPECIAL] = 999;
@@ -88,8 +107,10 @@ moist_anim += 0.075;
 if moist_anim > 3 {
     moist_anim = 0;
 }
-//dehydration
-moist_rn -= 0.06;
+//dehydration (Do not dehydrate if using dspecial on mud)
+if (moist_rn != 0 && (!on_mud || attack != AT_DSPECIAL || state != PS_ATTACK_GROUND)){
+    moist_rn -= 0.08;
+}
 
 on_mud = false;
 with (asset_get("obj_article1"))
@@ -117,7 +138,6 @@ if (nyoom == true){
 	moist_rn -= 0.35;
 } else{
 	dash_speed = 5.5;
-	moist_rn += 0.05;
 	initial_dash_speed = 7;
 }
 
@@ -455,10 +475,8 @@ if trummelcodecneeded{
 	  
 	  
 	  if has_rune("A") {
-moist_rn += 0.07;
-} else {
-	moist_rn -= 0.07;
-}
+        moist_rn += 0.07;
+      }
 
 if has_rune("B") {
 reset_hitbox_value(AT_DSPECIAL_2, 4, HG_BASE_KNOCKBACK);

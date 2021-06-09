@@ -63,10 +63,9 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_FSPECIAL, 2, HG_EFFECT, 6);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 7);
-set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_waterhit_strong"));
+set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 150);
-set_hitbox_value(AT_FSPECIAL, 2, HG_DRIFT_MULTIPLIER, 0.2);
 
 set_hitbox_value(AT_FSPECIAL, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 1);

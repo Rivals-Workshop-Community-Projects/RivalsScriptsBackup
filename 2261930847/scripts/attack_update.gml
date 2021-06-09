@@ -73,10 +73,16 @@ if(attack == AT_TAUNT_2){
 switch moist_level {
 	//LEVEL 1
     case 1:
+
+     //reset DAttack
+     reset_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED);
+     reset_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED);
     
      //reset ftilt kb
      reset_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK);
      reset_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING);
+     reset_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE);
+     reset_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING);
      reset_attack_value(AT_FTILT, AG_SPRITE);
   //reset friction
     ground_friction = 0.5;
@@ -98,7 +104,8 @@ wave_land_adj = 1.15;
 
 
         reset_attack_value(AT_USTRONG, AG_SPRITE);
-        reset_hitbox_value(AT_USTRONG, 6, HG_BASE_HITPAUSE);
+        reset_hitbox_value(AT_USTRONG, 7, HG_BASE_HITPAUSE);
+        reset_hitbox_value(AT_USTRONG, 7, HG_HITPAUSE_SCALING);
        	reset_hitbox_value(AT_USTRONG, 7, HG_KNOCKBACK_SCALING);
        	reset_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT);
 		reset_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT);
@@ -117,16 +124,22 @@ wave_land_adj = 1.15;
     //slow dash turn / walk turn
     dash_turn_time = 14;
     walk_turn_time = 10;
+
+     //DATTACK
+     set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 7);
+     set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 6);
+
     
      //FTILT
  set_num_hitboxes(AT_FTILT, 1);
                 set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 8.5);
                 set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, 0.7);
+                set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 8);
+                set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, .6);
      set_attack_value(AT_FTILT, AG_SPRITE, sprite_get("ftilt_mud"));
 
 	//DTILT
     if(attack == AT_DTILT){
-        set_hitbox_value(AT_DTILT, 1, HG_LIFETIME, 12);
   		set_attack_value(AT_DTILT, AG_SPRITE, sprite_get("dtilt_mud"));
   		set_attack_value(AT_DTILT, AG_HURTBOX_SPRITE, sprite_get("dtilt_mud_hurt"));
   		set_hitbox_value(AT_DTILT, 1, HG_HITBOX_X, 0);
@@ -158,11 +171,11 @@ ground_friction = 0.25;
     
     
        set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrong_mud"));
-       set_hitbox_value(AT_USTRONG, 6, HG_BASE_HITPAUSE, 12);
+       set_hitbox_value(AT_USTRONG, 7, HG_BASE_HITPAUSE, 10);
+       set_hitbox_value(AT_USTRONG, 7, HG_HITPAUSE_SCALING, 1.0);
        set_hitbox_value(AT_USTRONG, 7, HG_KNOCKBACK_SCALING, 1.3);      
     	//DTILT
     if(attack == AT_DTILT){
-        set_hitbox_value(AT_DTILT, 1, HG_LIFETIME, 12);
   		set_attack_value(AT_DTILT, AG_SPRITE, sprite_get("dtilt_mud"));
   		set_attack_value(AT_DTILT, AG_HURTBOX_SPRITE, sprite_get("dtilt_mud_hurt"));
   		set_hitbox_value(AT_DTILT, 1, HG_HITBOX_X, 0);
@@ -240,9 +253,9 @@ if (attack == AT_FSPECIAL_AIR){
 //no mud dspecial && moist code
 if attack == AT_DSPECIAL {
     //mud & mudless sprites
-    if on_mud == false {
+    if (on_mud == false) {
         set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get("dspecial_no_mud"));
-         set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecial_no_mud"));
+        set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecial_no_mud"));
     }
     else {
         reset_attack_value(AT_DSPECIAL, AG_SPRITE);
@@ -251,14 +264,17 @@ if attack == AT_DSPECIAL {
     //gaining moist
     if window == 2 && !moist_gained && on_mud && window_timer == 1 {
         moist_rn += 30;
-        if has_rune("F"){
+        if (has_rune("F")){
         	moist_rn += 45;
         }
         moist_gained = true;
-    } if (window_timer == 25 && special_down){
-    	window_timer = 1;
+    } 
+    if (window_timer == 25 && special_down){
+        attack_end(); //"ends" attack, really just frees hitboxes from "has already hit" status
+    	window_timer = 0;
+
     	if (on_mud = true){
-    	moist_rn += 30;
+    	    moist_rn += 30;
     	}
     }
 }

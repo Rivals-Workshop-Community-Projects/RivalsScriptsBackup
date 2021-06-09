@@ -23,8 +23,10 @@ is_moving = false;
 air_frict = 0.02;
 air_accel = 0.2;
 base_accel = air_accel;
-air_max_speed = 2.5;
+field_accel = 0.3;
+air_max_speed = 2.25;
 base_max_speed = air_max_speed;
+field_max_speed = 3.5;
 
 target_player = noone;
 

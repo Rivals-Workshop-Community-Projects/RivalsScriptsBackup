@@ -52,6 +52,7 @@ if (attack == AT_FSPECIAL)
             attack = AT_FSPECIAL;
         break;
         case 3:
+            moist_rn -= 50;
             attack = AT_FSPECIAL_2;
              if (attack == AT_FSPECIAL_2 && free)
              {attack = AT_FSPECIAL;}

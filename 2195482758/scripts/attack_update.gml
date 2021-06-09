@@ -290,7 +290,7 @@ if (attack == AT_FSPECIAL){
 			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_down_air"));
 			fspec_yoff = 30;
 		}
-		else if((joy_dir > 30 && joy_dir < 200 && spr_dir == 1) || (joy_dir < 150 && joy_dir > 100 && spr_dir == -1) || up_stick_down)
+		else if((joy_dir > 30 && joy_dir < 200 && spr_dir == 1) || (joy_dir < 150 && joy_dir > 0 && spr_dir == -1) || up_stick_down)
 		{
 			set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_up"));
 			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_up_air"));

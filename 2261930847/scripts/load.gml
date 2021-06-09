@@ -1,5 +1,5 @@
 sprite_change_offset("intro", 54, 510);
-sprite_change_offset("idle", 41, 59);
+sprite_change_offset("idle", 41, 61);
 sprite_change_offset("hurtbox", 36, 58);
 sprite_change_offset("hurt", 68, 89);
 sprite_change_offset("hurtground", 68, 89);
@@ -8,8 +8,8 @@ sprite_change_offset("downhurt", 68, 89);
 sprite_change_offset("uphurt", 68, 89);
 sprite_change_offset("spinhurt", 68, 89);
 sprite_change_offset("crouch", 40, 52);
-sprite_change_offset("walk", 40, 62);
-sprite_change_offset("walkturn", 34, 62);
+sprite_change_offset("walk", 40, 64);
+sprite_change_offset("walkturn", 34, 64);
 sprite_change_offset("dash", 40, 62);
 sprite_change_offset("muddash", 74, 40);
 sprite_change_offset("dashstart", 40, 62);
@@ -33,18 +33,18 @@ sprite_change_offset("waveland", 38, 62);
 sprite_change_offset("waveland_mud", 38, 62);
 sprite_change_offset("tech", 54, 62);
 
-sprite_change_offset("jab", 66, 62);
+sprite_change_offset("jab", 66, 64);
 sprite_change_offset("dattack", 46, 58);
-sprite_change_offset("ftilt", 52, 60);
-sprite_change_offset("ftilt_mud", 52, 60);
+sprite_change_offset("ftilt", 52, 62);
+sprite_change_offset("ftilt_mud", 52, 62);
 sprite_change_offset("dtilt", 42, 62);
 sprite_change_offset("dtilt_mud", 102, 62);
-sprite_change_offset("utilt", 42, 90);
-sprite_change_offset("utilt_mud", 52, 110);
+sprite_change_offset("utilt", 42, 92);
+sprite_change_offset("utilt_mud", 52, 112);
 sprite_change_offset("nair", 40, 60);
 sprite_change_offset("fair", 44, 84);
 sprite_change_offset("fair2", 42, 68);
-sprite_change_offset("bair", 52, 62);
+sprite_change_offset("bair", 60, 62);
 sprite_change_offset("uair", 60, 78);
 sprite_change_offset("dair", 40, 66);
 sprite_change_offset("fstrong", 40, 62);
@@ -52,8 +52,8 @@ sprite_change_offset("fstrong_mud", 40, 61);
 sprite_change_offset("ustrong", 58, 122);
 sprite_change_offset("ustrong_mud", 58, 122);
 sprite_change_offset("ustrong_2", 40, 256);
-sprite_change_offset("dstrong", 70, 62);
-sprite_change_offset("dstrong_mud", 74, 62);
+sprite_change_offset("dstrong", 70, 64);
+sprite_change_offset("dstrong_mud", 74, 64);
 sprite_change_offset("nspecial", 66, 98);
 sprite_change_offset("fspecial", 36, 56);
 sprite_change_offset("fspecial_air", 38, 56);
@@ -61,8 +61,8 @@ sprite_change_offset("fspecial2", 56, 86);
 sprite_change_offset("fspecial2_air", 46, 72);
 sprite_change_offset("uspecial", 44, 102);
 sprite_change_offset("uspecial_mud", 38, 100);
-sprite_change_offset("dspecial", 64, 66);
-sprite_change_offset("dspecial_no_mud", 64, 66)
+sprite_change_offset("dspecial", 64, 68);
+sprite_change_offset("dspecial_no_mud", 64, 68)
 sprite_change_offset("dspecial_air", 74, 78)
 
 sprite_change_offset("taunt", 40, 88);

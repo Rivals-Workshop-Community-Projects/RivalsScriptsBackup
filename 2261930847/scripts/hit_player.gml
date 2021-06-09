@@ -1,7 +1,3 @@
-if(attack == AT_FSTRONG){
-    sound_play(asset_get("sfx_blow_heavy1"));
-}
-
 if (attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1) // I guess
 {    
        var k = spawn_hit_fx(my_hitboxID.x, my_hitboxID.y, mud_hit_fx1);

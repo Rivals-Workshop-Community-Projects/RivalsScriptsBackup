@@ -4,6 +4,9 @@ holding_house_is = false;
 holding_house_level = 1;
 houses_amount_rn = 0;
 houses_amount_max = 1; //limited to 1 house because you article fucks keep lagging the game
+house_cooldown_rn = 0; //gotta code in the cooldown yet
+house_cooldown_max = 120;
+
 
 should_consume = false;
 
@@ -25,6 +28,7 @@ grabbed_player_relative_y = 0;   //we store this coordinate to smoothly repositi
 fx_bubble_small = hit_fx_create(sprite_get("fx_bubble_small"),27)
 fx_bubble_smallest = hit_fx_create(sprite_get("fx_bubble_smallest"),18)
 fx_bubble_boost = hit_fx_create(sprite_get("fx_bubble_boost"),24)
+fx_fspecial_land = hit_fx_create(sprite_get("fx_fspecial_land"),16)
 
 //stuff
 last_hit_stun = false;
@@ -61,7 +65,7 @@ dash_turn_time      = 12;		// 8    -  20
 dash_turn_accel     = 0.1;		// 0.1  -  2
 dash_stop_time      = 4;		// 4    -  6
 dash_stop_percent   = 0.35;		// 0.25 -  0.5
-ground_friction     = 0.15;		// 0.3  -  1
+ground_friction     = 0.25;		// 0.3  -  1
 moonwalk_accel      = 1.35;		// 1.2  -  1.4
     
 // Air movement
@@ -91,7 +95,7 @@ land_time           = 4;		// 4    -  6
 prat_land_time      = 16;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
-wave_friction       = 0.04;		// 0    -  0.15
+wave_friction       = 0.06;		// 0    -  0.15
 roll_forward_max    = 9;        // 9    -  11
 roll_backward_max   = 9;        // 9    -  11       always the same as forward
 wave_land_time      = 12;		// 6    -  12
