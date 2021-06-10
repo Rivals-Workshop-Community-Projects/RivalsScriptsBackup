@@ -184,6 +184,18 @@ if ("practice" in self)
 						AddText("Bugfix Wish - Reduced the chance of false positives in regular battles");
 						AddText("Bugfix Wish - Mashing A now doesn't skip gaining coins");
 						break;
+					case 9:
+						AddText("v1.9 - 10 Jun 2021");
+						AddText("");
+						AddText("NAir All - Angle 361 -> 50");
+						AddText("NAir All - KBS 0.6 -> 0.4");
+						AddText("NAir Weak - BKB 6 -> 5");
+						AddText("");
+						AddText("Shinestar speed scaling 2.5 -> 3");
+						AddText("Shinestar base speed 30 -> 40");
+						AddText("Cracked stars despawn time 69 -> 35");
+						AddText("Using USpecial will now crack all your stars");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

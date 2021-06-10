@@ -13,7 +13,7 @@ set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 5);//3
 
 set_window_value(AT_FTILT, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FTILT, 2, AG_WINDOW_LENGTH, 3);
-set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 
 

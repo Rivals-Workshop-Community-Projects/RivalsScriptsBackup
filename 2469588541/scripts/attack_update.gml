@@ -232,9 +232,15 @@ switch (attack)
                 }
                 break;
             case 4:
-                if (window_timer == 1 && (uspecLanded || !free || (has_rune("F") && has_hit_player)))
+                if (window_timer == 1)
                 {
-                    set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
+                    if (uspecLanded || !free || (has_rune("F") && has_hit_player))
+                        set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
+                    with(asset_get("obj_article1")) if (player_id == other.id && state == 1 && !cracked)
+                    {
+                        cracked = true;
+                        crackedTimer = 0;
+                    }
                 }
                 break;
         }
@@ -409,18 +415,19 @@ switch (attack)
     with(asset_get("obj_article1")) if (player_id == other.id && state == 1 && (_big^^!isBig) && point_distance(x, y, other.x, other.y) < (isBig?128:96))
     {
         var opponent = noone;
-        var baseSpeed = has_rune("G")?60:30;
+        var baseSpeed = has_rune("G")?80:40;
+        var speedScaling = 3;
         with (other) opponent = NearestOpponentDir();
         if (opponent == noone)
         {
-            hsp = other.spr_dir * (baseSpeed+other.nspecCharge*2);
+            hsp = other.spr_dir * (baseSpeed+other.nspecCharge*speedScaling);
             vsp = 0;
         }
         else
         {
             var dir = point_direction(x, y, opponent.x + opponent.hsp*4, opponent.y-floor(opponent.char_height/2) + opponent.vsp*4);
-            hsp = lengthdir_x(baseSpeed+other.nspecCharge*2.5, dir);
-            vsp = lengthdir_y(baseSpeed+other.nspecCharge*2.5, dir);
+            hsp = lengthdir_x(baseSpeed+other.nspecCharge*speedScaling, dir);
+            vsp = lengthdir_y(baseSpeed+other.nspecCharge*speedScaling, dir);
         }
         newState = 4;
         ignores_walls = true;
