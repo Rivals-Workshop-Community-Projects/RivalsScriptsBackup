@@ -1,3 +1,13 @@
+//training mode - highlight sweetspots
+if (get_match_setting(SET_PRACTICE)) {
+	with (pHitBox) {
+		if (player_id == other && hitbox_timer == 0 && (hit_priority == 5 || hit_priority == 8) && type == 1) {
+			sprite_index = sprite_get("sweetspot_hitbox");
+			depth = -10;
+		}
+	}
+}
+
 
 switch (state){
     case PS_IDLE:
@@ -45,7 +55,7 @@ switch (state){
     break;
 	
 	case PS_DASH:
-		if (state_timer < 16) {
+		if (state_timer < 32) {
 			sprite_index = sprite_get("dashstart2");
 			image_index = floor(state_timer / 4);
 			
@@ -109,15 +119,20 @@ switch (state){
 		switch (attack) {
 			case AT_DSPECIAL_AIR:
 				if (hitpause) {
-					var hitpause_frame = get_hitbox_value(AT_DSPECIAL_AIR, window, AG_WINDOW_HITPAUSE_FRAME);
+					var hitpause_frame = get_window_value(AT_DSPECIAL_AIR, window, AG_WINDOW_HITPAUSE_FRAME);
 					if (hitpause_frame != 0) image_index = hitpause_frame;
 				}
 			break;
 			case AT_BAIR:
-				if (window == 1) image_index = clamp(window_timer, 0, 3);
+				//if (window == 1) image_index = clamp(window_timer, 0, 3);
+				if (window == 1) image_index = clamp(2 + (window_timer / 2), 0, 3);
 				else if (window == 3) {
 					if (hitpause && hitstop >= hitstop_full - 3) image_index = 4;
 				}
+			break;
+			case AT_DSTRONG:
+				//fix hitpause frame to last after hitpause. epinel_charge_timer is set in attack_update.gml.
+				if (window >= 6 && epinel_charge_timer > 0) image_index = max(image_index, get_window_value(AT_DSTRONG, 6, AG_WINDOW_HITPAUSE_FRAME));
 			break;
 		}
 		

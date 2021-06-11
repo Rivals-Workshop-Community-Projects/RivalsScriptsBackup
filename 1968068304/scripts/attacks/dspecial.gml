@@ -1,6 +1,6 @@
-set_attack_value(AT_DSPECIAL, AG_CATEGORY, 1); //
+set_attack_value(AT_DSPECIAL, AG_CATEGORY, 2); //
 set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get("dspecial"));
-set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 8);
+set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 11);
 set_attack_value(AT_DSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_DSPECIAL, AG_OFF_LEDGE, 0);
 set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecial"));
@@ -8,6 +8,104 @@ set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
 
 
 
+
+//initial startup
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 2);
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_syl_ustrong_part1"));
+
+//main startup
+set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 1);
+
+//start surfing
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
+
+//loop surfing
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_TYPE, 9);
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 4);
+
+//raise platform startup
+set_window_value(AT_DSPECIAL, 5, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_DSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_DSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 7);
+set_window_value(AT_DSPECIAL, 5, AG_WINDOW_HSPEED_TYPE, 1);
+
+//raise platform pause frame
+//set_window_value(AT_DSPECIAL, 6, AG_WINDOW_TYPE, 9);
+set_window_value(AT_DSPECIAL, 6, AG_WINDOW_LENGTH, 1);
+set_window_value(AT_DSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 8);
+set_window_value(AT_DSPECIAL, 6, AG_WINDOW_HSPEED_TYPE, 1);
+
+//raise platform post-charge
+set_window_value(AT_DSPECIAL, 7, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_DSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_DSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 8);
+set_window_value(AT_DSPECIAL, 7, AG_WINDOW_HSPEED_TYPE, 1);
+
+//raise platform active
+set_window_value(AT_DSPECIAL, 8, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_DSPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DSPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, 10);
+set_window_value(AT_DSPECIAL, 8, AG_WINDOW_HSPEED_TYPE, 1);
+
+//raise platform recovery (go to 'main startup' if the button is held)
+set_window_value(AT_DSPECIAL, 9, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_DSPECIAL, 9, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_DSPECIAL, 9, AG_WINDOW_ANIM_FRAME_START, 11);
+
+//move end
+set_window_value(AT_DSPECIAL, 10, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_DSPECIAL, 10, AG_WINDOW_ANIM_FRAMES, -1);
+set_window_value(AT_DSPECIAL, 10, AG_WINDOW_ANIM_FRAME_START, 1);
+
+//final frame
+set_window_value(AT_DSPECIAL, 11, AG_WINDOW_LENGTH, 1);
+set_window_value(AT_DSPECIAL, 11, AG_WINDOW_ANIM_FRAMES, 0);
+set_window_value(AT_DSPECIAL, 11, AG_WINDOW_ANIM_FRAME_START, 0);
+
+set_num_hitboxes(AT_DSPECIAL, 1);
+
+//normal hit 1.
+set_hitbox_value(AT_DSPECIAL, 1, HG_PARENT_HITBOX, 0);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 8);
+set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 1);
+set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 3);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_X, 0);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_Y, -20);
+set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 100);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 40);
+set_hitbox_value(AT_DSPECIAL, 1, HG_SHAPE, 2); //rounded rectangle
+set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 1);
+set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 5);
+//knockback
+set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_DSPECIAL, 1, HG_FINAL_BASE_KNOCKBACK, 2);
+set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.5); //KOs at high percents.
+set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 80);
+set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 6); //hit away from epinel
+//stun
+set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 11);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, 1);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
+//effects
+set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_kragg_rock_shatter"));
+set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_LOCKOUT, 6);
+set_hitbox_value(AT_DSPECIAL, 1, HG_THROWS_ROCK, 1);
+
+
+
+
+/*
 //initial startup.
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 6);
@@ -351,6 +449,6 @@ set_hitbox_value(AT_DSPECIAL, 7, HG_PROJECTILE_DESTROY_EFFECT, 0);
 set_hitbox_value(AT_DSPECIAL, 7, HG_PROJECTILE_GRAVITY, 0);
 set_hitbox_value(AT_DSPECIAL, 7, HG_PROJECTILE_VSPEED, 0);
 
-
+*/
 
 

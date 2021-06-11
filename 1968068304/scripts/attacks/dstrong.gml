@@ -38,13 +38,14 @@ set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 9);
 
 //final attack
 set_window_value(AT_DSTRONG, 6, AG_WINDOW_TYPE, 0);
-set_window_value(AT_DSTRONG, 6, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_DSTRONG, 6, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_DSTRONG, 6, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_DSTRONG, 6, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 6, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_DSTRONG, 6, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DSTRONG, 6, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
+set_window_value(AT_DSTRONG, 6, AG_WINDOW_HITPAUSE_FRAME, 11);
 
 //recovery
 set_window_value(AT_DSTRONG, 7, AG_WINDOW_TYPE, 0);
@@ -141,7 +142,7 @@ set_hitbox_value(AT_DSTRONG, 5, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_GROUP, 3);
 set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 5, HG_WINDOW, 6);
-set_hitbox_value(AT_DSTRONG, 5, HG_LIFETIME, 4);
+set_hitbox_value(AT_DSTRONG, 5, HG_LIFETIME, 2);
 set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_X, 2);
 set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_Y, -39);
 set_hitbox_value(AT_DSTRONG, 5, HG_WIDTH, 114);

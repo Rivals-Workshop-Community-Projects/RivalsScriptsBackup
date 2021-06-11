@@ -10,8 +10,9 @@ set_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE, asset_get("ex_guy_hurt_box"));
 //set_attack_value(AT_EXTRA_1, AG_LANDING_LAG, 4);
 
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_EXTRA_1, 1, AG_WINDOW_LENGTH, 42);
-set_window_value(AT_EXTRA_1, 1, AG_WINDOW_ANIM_FRAMES, 6);
+set_window_value(AT_EXTRA_1, 1, AG_WINDOW_LENGTH, 30);
+set_window_value(AT_EXTRA_1, 1, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_EXTRA_1, 1, AG_WINDOW_ANIM_FRAMES, -5);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_VSPEED, 1);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_VSPEED_TYPE, 2);
 //set_window_value(AT_EXTRA_1, 1, AG_WINDOW_HAS_SFX, 1);

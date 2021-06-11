@@ -62,3 +62,6 @@ draw_debug_text(x, y-200, "hitpause: " + string(hitpause));
 draw_debug_text(x, y-220, "was_parried: " + string(was_parried));
 draw_debug_text(x, y-240, "is_armored: " + string(epinel_is_armored));
 */
+
+//munophone
+//user_event(12);

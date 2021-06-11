@@ -38,6 +38,10 @@ if (state_cat == SC_HITSTUN || state == PS_HITSTUN_LAND) {
 	}
 	else {
 		epinel_is_armored = 0;
+		//make sure epinel doesn't inertia on himself while getting hit by someone else
+		if (epinel_other_weightless_inflicted > 0 && epinel_other_player_that_inflicted_weightless_id == id) {
+			epinel_other_weightless_inflicted = 0;
+		}
 	}
 	
 }

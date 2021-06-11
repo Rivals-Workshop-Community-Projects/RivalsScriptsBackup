@@ -2149,6 +2149,17 @@ if ("yes" in self && yes)
 					nooflines = 3;
 					textwidth = 440;
 					break;
+				case 24:
+					text[0] = "Removed invince from USpec-cancelled Hyperjump";
+					text[1] = "";
+					text[2] = "Removed extra hitpause from NSpec 4 - 6";
+					text[3] = "";
+					text[4] = "DAir linking hits are now faster";
+					text[5] = "";
+					text[6] = "Taunt now accounts for small_sprites";
+					nooflines = 7;
+					textwidth = 380;
+					break;
 			}
 			break;
 	}

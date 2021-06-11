@@ -28,7 +28,7 @@ switch (state) {
 		image_index = random_func( random_index + 1, 3, false );
 		hsp += random_func( random_index, 5, false ) - 2.5;
 		vsp -= random_func( random_index + 2, 3, false );
-		expire_time = 60;
+		expire_time = 50;
 	break;
 	
 	case 102: //taunt pebble.

@@ -169,7 +169,7 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_EXTRA_CAMERA_SHAKE, -1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_THROWS_ROCK, 2);
 set_hitbox_value(AT_NSPECIAL, 4, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_HITPAUSE, 1);
-set_hitbox_value(AT_NSPECIAL, 4, HG_EXTRA_HITPAUSE, 8);
+set_hitbox_value(AT_NSPECIAL, 4, HG_EXTRA_HITPAUSE, 2);
 set_hitbox_value(AT_NSPECIAL, 4, HG_DRIFT_MULTIPLIER, 0);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITSTUN_MULTIPLIER, 1.5);
 
@@ -192,7 +192,7 @@ set_hitbox_value(AT_NSPECIAL, 5, HG_EXTRA_CAMERA_SHAKE, -1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_THROWS_ROCK, 2);
 set_hitbox_value(AT_NSPECIAL, 5, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_BASE_HITPAUSE, 1);
-set_hitbox_value(AT_NSPECIAL, 5, HG_EXTRA_HITPAUSE, 12);
+set_hitbox_value(AT_NSPECIAL, 5, HG_EXTRA_HITPAUSE, 2);
 set_hitbox_value(AT_NSPECIAL, 5, HG_DRIFT_MULTIPLIER, 0);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITSTUN_MULTIPLIER, 1.5);
 
@@ -215,6 +215,6 @@ set_hitbox_value(AT_NSPECIAL, 6, HG_EXTRA_CAMERA_SHAKE, -1);
 set_hitbox_value(AT_NSPECIAL, 6, HG_THROWS_ROCK, 2);
 set_hitbox_value(AT_NSPECIAL, 6, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_NSPECIAL, 6, HG_BASE_HITPAUSE, 1);
-set_hitbox_value(AT_NSPECIAL, 6, HG_EXTRA_HITPAUSE, 20);
+set_hitbox_value(AT_NSPECIAL, 6, HG_EXTRA_HITPAUSE, 2);
 set_hitbox_value(AT_NSPECIAL, 6, HG_DRIFT_MULTIPLIER, 0);
 set_hitbox_value(AT_NSPECIAL, 6, HG_HITSTUN_MULTIPLIER, 1.5);

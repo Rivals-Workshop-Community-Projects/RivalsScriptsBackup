@@ -1,5 +1,7 @@
 //set_attack.gml
 
+
+
 if (free) {
 	switch (attack) {
 		case AT_FSPECIAL:
@@ -15,7 +17,7 @@ if (free) {
 				&& y <= epinel_buffered_standing_on_platform_id.y + 20
 				) {
 			
-				y = epinel_buffered_standing_on_platform_id.y;
+				y = epinel_buffered_standing_on_platform_id.y + epinel_buffered_standing_on_platform_id.vsp;
 				epinel_other_standing_on_platform_id = epinel_buffered_standing_on_platform_id;
 				epinel_other_platform_collision_check_timer = 4;
 				vsp = 1;
@@ -92,6 +94,10 @@ else {
 	//buffers
 	scr_epinel_reset_consecutive_move_counters_and_buffers();
 }
+
+//munophone
+//user_event(13);
+
 
 #define scr_epinel_reset_consecutive_move_counters_and_buffers
 epinel_consecutive_uair_jumps = 0;

@@ -11,11 +11,11 @@ if (css_mode == 0) {
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-patch_ver = "1.0";
+patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR));
 patch_day = "04";
 patch_month = "MAR";
  
-var num_alts = 14;
+var num_alts = 15;
 var alt_cur = get_player_color(player);
  
  
@@ -36,7 +36,7 @@ alt_name[10] = "Gold (Jblockman1)";
 alt_name[11] = "Tech (Supersonic)";
 alt_name[12] = "Thirteen";
 alt_name[13] = "Virulisk";
-alt_name[14] = "woag";
+alt_name[14] = "Alkaline";
 alt_name[15] = "woag";
  
  
@@ -45,7 +45,7 @@ alt_name[15] = "woag";
  
 draw_set_halign(fa_left);
  
-//textDraw(temp_x + 2, temp_y + 30, "medFont", c_white, 0, 1000, 1, true, 1, patch_ver);
+textDraw(temp_x + 2, temp_y + 30, "medFont", c_white, 0, 1000, 1, true, 1, patch_ver);
  
 //textDraw(temp_x + 2, temp_y + 50, "fName", c_white, 0, 1000, 1, true, 1, patch_day + " " + patch_month);
  
@@ -72,6 +72,11 @@ textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. 
 else {
     
 }
+
+
+//munophone
+user_event(12);
+
 
  
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)

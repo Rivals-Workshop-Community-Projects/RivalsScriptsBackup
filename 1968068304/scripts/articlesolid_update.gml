@@ -19,16 +19,15 @@ with (oPlayer) {
 	
 		var plat_check = (epinel_other_standing_on_platform_id == noone 
 							&& vsp >= 0 
-							&& (epinel_other_freeprevious || epinel_other_yprevious != y) );
-							//&& (state_timer <= 1 || epinel_other_standing_on_platform_id == noone) ); 
+							&& (epinel_other_freeprevious || epinel_other_yprevious != y || state_timer <= 1 || state == PS_WAVELAND) ) ;
+							///&& (state_timer <= 1) ); 
 		
 		//check for landing on platforms.
 		if (plat_check) {
 			with (obj_article_platform) {
 				//find out if we landed on one of Epinel's platforms.
 				if ( (other.y != y) || (!instance_exists(player_id)) || (!player_id.epinel_other_is_epinel) 
-				  //|| !(invul_timer <= 0 || other.epinel_other_is_epinel) // other.id == this_epinel_instance_id) 
-				  || !(place_meeting(x, y-1, other.id)) ) { continue; }  
+				  || !(place_meeting(x, y-1, other.id)) ) { continue; }  //|| !(place_meeting(x, y-1, other.id)) ) { continue; }  
 					
 				//damage the platform
 				if (invul_timer <= 0) { 
@@ -55,17 +54,6 @@ with (oPlayer) {
 				scr_epinel_create_platform_landing_particles(id, other.id);
 				
 				break; //break here; we are only looking for one platform
-			}
-		}
-		
-		//if standing on a platform, make that platform's health tick faster when away from the stage.
-		if (instance_exists(epinel_other_standing_on_platform_id)) {
-			with (epinel_other_standing_on_platform_id) {
-				if (x > 250 && x <= room_width - 250) break;
-				if (hp > 4) {
-					hp -= 1;
-				}
-				else if (hp == 1 && time_until_crumble >= 2) time_until_crumble -= 1;
 			}
 		}
 	}
@@ -284,7 +272,7 @@ if (!free && state != PS_ATTACK_GROUND && (!epinel_other_is_epinel || (attack !=
 	}
 	else {
 		y -= 1;
-		vsp = min(0, vsp);
+		vsp = min(-1, vsp);
 		free = true;
 	}
 }

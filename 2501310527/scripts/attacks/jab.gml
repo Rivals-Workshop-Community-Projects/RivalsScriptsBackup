@@ -16,7 +16,6 @@ set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_JAB, 3, AG_WINDOW_CANCEL_TYPE, 1);
 set_window_value(AT_JAB, 3, AG_WINDOW_CANCEL_FRAME, 4);
-set_window_value(AT_JAB, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_window_value(AT_JAB, 4, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_JAB, 4, AG_WINDOW_ANIM_FRAMES, 3);

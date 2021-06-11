@@ -61,9 +61,9 @@ switch (my_hitboxID.attack) {
 		//	window_timer = get_window_value( AT_FAIR, 3, AG_WINDOW_LENGTH ) - 1;
 		//}
 		//artificially make this move harder to combo.
-		if ((my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 6) && state == PS_ATTACK_AIR) {
-			old_hsp -= spr_dir * 0.15;
-		}
+		//if ((my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 6) && state == PS_ATTACK_AIR) {
+		//	old_hsp -= spr_dir * 0.15;
+		//}
 	break;
 	
 	case AT_UAIR:
@@ -79,18 +79,24 @@ switch (my_hitboxID.attack) {
 	
 	case AT_DSTRONG:
 		if (hit_player_obj.state_cat != SC_HITSTUN) break;
-		//drag the hit player with epinel.
-		if (my_hitboxID.hbox_num <= 4) {
-			//hit_player_obj.old_hsp += old_hsp;
-			//hit_player_obj.old_hsp = min(-0.01, hit_player_obj.old_hsp);
-			if (instance_exists(epinel_other_standing_on_platform_id) && hit_player_obj.epinel_other_standing_on_platform_id != epinel_other_standing_on_platform_id) {
-				hit_player_obj.old_hsp += clamp(epinel_other_standing_on_platform_id.hsp * 1.25, -6, 6);
-				//add platform hitstop
-				if (epinel_other_standing_on_platform_id.vsp == 0 ) {
-					epinel_other_standing_on_platform_id.hitstop = ceil(hitstop);
-					epinel_other_standing_on_platform_id.old_hsp = epinel_other_standing_on_platform_id.hsp;
+		//'drag' the hit player if they are not standing on the same platform as epinel
+		if (instance_exists(epinel_other_standing_on_platform_id)) {
+			if (my_hitboxID.hbox_num <= 4) {
+			
+			
+				if (hit_player_obj.epinel_other_standing_on_platform_id != epinel_other_standing_on_platform_id) {
+					hit_player_obj.old_hsp += clamp(epinel_other_standing_on_platform_id.hsp * 1.25, -6, 6);
 				}
 			}
+//add platform hitstop
+				//if (epinel_other_standing_on_platform_id.vsp == 0 ) {
+					//epinel_other_standing_on_platform_id.hitstop = ceil(hitstop);
+					//epinel_other_standing_on_platform_id.old_hsp = epinel_other_standing_on_platform_id.hsp;
+					//epinel_other_standing_on_platform_id.vsp = 0;
+				//}
+
+				
+				
 		}
 		//push the player away from epinel's center
 		if (my_hitboxID.hbox_num <= 1 || my_hitboxID.hbox_num >= 5) break;
@@ -339,33 +345,23 @@ switch (my_hitboxID.attack) {
 		if (my_hitboxID.hbox_num == 1 && window < 3) { //sweetspot
 			window = 3; //skip to window 3
 			window_timer = 0;
-			invince_time = max(10, invince_time); //extra invincibility
+			invince_time = max(15, invince_time); //extra invincibility
 			sound_play(asset_get("sfx_may_arc_cointoss"));
+			epinel_charge_timer = 1;
+			if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) {
+				old_hsp = -2.25 * spr_dir;
+				if (free) old_vsp = -1;
+			}
 		}
 		else if (my_hitboxID.hbox_num == 6 && activated_kill_effect) {
 			sound_play(sound_get("slice"));
-			
 		}
 		else {
 			sound_play(sound_get("sharpen_edited_freesounds_nicktermer"));
 		}
-		//"grab" this player. (nspecial makes Epinel track the player he hits, instead of pulling the opponent)
-		if (my_hitboxID.hbox_num <= 5) {
-			if ( epinel_grabbed_player_object_id == noone || epinel_grabbed_player_object_id == hit_player_obj
-			|| scr_get_player_obj_id_with_highest_damage( hit_player_obj, epinel_grabbed_player_object_id ) == hit_player_obj ) {
-			
-				
-				epinel_grabbed_player_object_id = hit_player_obj;
-				
-				if (hit_player_obj.hurtbox_spr <= 0) { 
-					epinel_grabbed_player_y_offset = -30 * spr_dir; 
-					epinel_grabbed_player_y_offset = 0; 
-				}
-				else { 
-					epinel_grabbed_player_x_offset = (ceil(scr_get_player_width(hit_player_obj) / 2) + 10) * (-spr_dir); 
-					epinel_grabbed_player_y_offset = round( ( char_height - scr_get_player_height(hit_player_obj) ) / 2 ); 
-				}
-			}
+		//pull the player to epinel's height during multihits
+		if (my_hitboxID.hbox_num <= 5 && hit_player_obj.state == PS_HITSTUN && hit_player_obj.hitpause) {
+			hit_player_obj.old_vsp += clamp((y - hit_player_obj.y) / 10, -5, 5);
 		}
 	break;
 	
@@ -400,6 +396,9 @@ switch (my_hitboxID.attack) {
 		
 		//otherwise, confirm that a grab connected.
 		epinel_grab_connected = true;
+		
+		//restore epinel's double-jump if he lost it.
+		djumps = 0;
 		
 		//shorten this hitbox's lifespan so it doesn't hit anyone next frame.
 		my_hitboxID.length = 1;
@@ -479,6 +478,7 @@ epinel_uair_jump_counter = 0;
 #define scr_spawn_attack_fx_slash_small
 var fx_id = 0;
 var fx_dir = 0;
+var fx_offset_x = 0;
 switch (my_hitboxID.attack) {
 	case AT_JAB:
 		fx_id = epinel_fx_slash_small;
@@ -509,7 +509,7 @@ switch (my_hitboxID.attack) {
 		fx_id = epinel_fx_slash_small; fx_dir = 120; 
 	break;
 	case AT_NSPECIAL:
-		
+		fx_offset_x = 16;
 		switch (my_hitboxID.hbox_num) {
 			case 6: fx_id = epinel_fx_narrowcross; break;
 			case 4: 
@@ -519,9 +519,20 @@ switch (my_hitboxID.attack) {
 	case AT_NAIR:
 		if (my_hitboxID.hbox_num != 2) break;
 	case AT_DAIR:
-	case AT_FAIR:
 		fx_id = epinel_fx_slash_curve;
 		fx_dir = round( point_direction(x, y - char_height/2, hit_player_obj.x, hit_player_obj.y - hit_player_obj.char_height / 2) / 24) * 24;
+	break;
+	case AT_FAIR:
+		switch (my_hitboxID.hbox_num) {
+			case 2: 
+			case 3: fx_offset_x = 16; fx_id = epinel_fx_narrowcut; fx_dir = 270 * spr_dir; break;
+			case 1: fx_offset_x = 8; fx_id = epinel_fx_bigslash; break;
+			default: 
+				fx_id = epinel_fx_slash_curve; 
+				fx_dir = round( point_direction(x, y - char_height/2, hit_player_obj.x, hit_player_obj.y - hit_player_obj.char_height / 2) / 24) * 24;
+			break;  
+		}
+		
 	break;
 	case AT_FSTRONG:
 		if (my_hitboxID.hbox_num == 1) fx_id = epinel_fx_bigslash;
@@ -547,7 +558,7 @@ switch (my_hitboxID.attack) {
 }
 if (fx_id == 0) exit;
 
-var newfx = spawn_hit_fx( round((my_hitboxID.x + hit_player_obj.x * 2) / 3), round((my_hitboxID.y + (hit_player_obj.y * 2 - hit_player_obj.char_height)) / 3), fx_id );
+var newfx = spawn_hit_fx( round((my_hitboxID.x + hit_player_obj.x * 2) / 3) + fx_offset_x * spr_dir, round((my_hitboxID.y + (hit_player_obj.y * 2 - hit_player_obj.char_height)) / 3), fx_id );
 //if (fx_id != epinel_fx_bigslash) 
 newfx.depth = depth-1; 
 newfx.draw_angle = fx_dir;

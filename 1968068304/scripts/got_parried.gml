@@ -5,42 +5,32 @@ if (my_hitboxID.player != my_hitboxID.orig_player) exit;
 
 
 if (my_hitboxID.type == 1 && (my_hitboxID.attack != AT_JAB || window >= 8) ) {
-	//if this attack was a melee attack, make epinel's 'crumbling' platforms break.
-
-	with (obj_article_platform) {
-		if (player_id != other.id || draw_hp > 1) continue;
-		
-		hp = min(hp, 0);
-		draw_hp = min(draw_hp, hp);
-		time_until_crumble = min(time_until_crumble, 0);
-		sound_play(asset_get("sfx_kragg_roll_end"));
-		break_when_not_stood_on = true;
-	}
 	
-	//if this attack was a melee attack, destroy inertia pillar articles.
-	with (obj_article3) {
-		if (player_id != other.id) continue;
-		lifetime = 0;
-		image_alpha = min(0.9, image_alpha);
-		max_xscale *= 0.9;
-		image_xscale = max_xscale;
-	}
-	
-	//if epinel is standing on one of his platforms, slow that platform's movement speed.
-	if (!free && instance_exists(epinel_other_standing_on_platform_id)) {
+	//if this attack was a melee attack (and not uair/dair), make any platform epinel was standing on crumble.
+	if (instance_exists(epinel_other_standing_on_platform_id) && my_hitboxID.attack != AT_UAIR && my_hitboxID.attack != AT_DAIR) {
 		with (epinel_other_standing_on_platform_id) {
-			hsp = clamp(hsp, -1, 1);
+			scr_destroy_platform_on_parry(0);
 		}
 	}
 	
-	//finally, reset epinel's heavy state
+	//reset epinel's heavy state
 	epinel_heavy_state = 0;
 }
 
 
 switch (my_hitboxID.attack) {
-
-
+	case AT_USPECIAL:
+	//only applies to platform projectiles
+		if (my_hitboxID.type != 2) break;
+		//destroy the platform associated with this projectile
+		if (instance_exists(my_hitboxID.spawned_by_platform_id)) {
+			with (my_hitboxID.spawned_by_platform_id) {
+				scr_destroy_platform_on_parry(1);
+			}
+		}
+		
+	break;
+	
 	case AT_DSPECIAL:
 		//projectile 6 can be parried. extend length, remove gravity.
 		switch (my_hitboxID.hbox_num) {
@@ -61,7 +51,7 @@ switch (my_hitboxID.attack) {
 			case 4:
 			case 5:
 				was_parried = true;
-				parry_lag = 40; //normal parry stun
+				//parry_lag = 40; //normal parry stun; doesn't need to be set manually?
 			    if (window < 5) {
 					window = get_attack_value( AT_DSPECIAL, AG_NUM_WINDOWS ) - 2;
 					window_timer = 1;
@@ -93,3 +83,23 @@ switch (my_hitboxID.attack) {
 
 }
 
+#define scr_destroy_platform_on_parry
+var destroyfast = argument0;
+//damage the platform
+hp = min(hp, 0);
+draw_hp = hp;
+//slow movement speed
+hsp = clamp(hsp, -1, 1);
+vsp = 0;
+//make sure the crumble duration is extended to at least 1.5, so that epinel can't slip off before it despawns
+time_until_crumble = min(time_until_crumble, 0);
+if (destroyfast) {
+	crumble = min(crumble, 1.5);
+}
+else {
+	if (crumble > 1) crumble = max(crumble, 1.5);
+}
+
+sound_play(asset_get("sfx_kragg_roll_end"));
+break_when_not_stood_on = true;
+return;

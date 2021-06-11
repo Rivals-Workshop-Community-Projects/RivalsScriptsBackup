@@ -55,7 +55,7 @@ set_window_value(AT_USPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 2);
 
 set_num_hitboxes(AT_USPECIAL, 1);
 
-
+//melee hitbox
 set_hitbox_value(AT_USPECIAL, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_WINDOW, 2);
@@ -75,3 +75,32 @@ set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hi
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, -1);
 
+//platform hitboxes
+set_hitbox_value(AT_USPECIAL, 2, HG_PARENT_HITBOX, 2);
+set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 20);
+set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 2);
+set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -30);
+set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 140);
+set_hitbox_value(AT_USPECIAL, 2, HG_HEIGHT, 140);
+set_hitbox_value(AT_USPECIAL, 2, HG_SHAPE, 0);
+set_hitbox_value(AT_USPECIAL, 2, HG_PRIORITY, 5);
+set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 0);
+set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 90);
+set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 0);
+set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 0);
+set_hitbox_value(AT_USPECIAL, 2, HG_HITSTUN_MULTIPLIER, 0);
+set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
+set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_GROUP, -1);
+
+set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));// sprite_get("rockshard_two"));
+set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1 );
+set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1 );
+set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1 );
+set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_UNBASHABLE, 1 );
+set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 0 );
+set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1 );
+set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1 );
+set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 0);

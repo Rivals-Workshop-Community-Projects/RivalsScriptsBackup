@@ -192,7 +192,7 @@ set_hitbox_value(AT_DATTACK, 4, HG_VISUAL_EFFECT, 192 ); //"rock large"
 set_hitbox_value(AT_DATTACK, 4, HG_HIT_SFX, asset_get("sfx_swipe_heavy2"));
 set_hitbox_value(AT_DATTACK, 4, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DATTACK, 4, HG_HITSTUN_MULTIPLIER, 1);
-set_hitbox_value(AT_DATTACK, 4, HG_DRIFT_MULTIPLIER, 0.5); //!!
+set_hitbox_value(AT_DATTACK, 4, HG_DRIFT_MULTIPLIER, 1); 
 
 //re-angle hitbox 1
 set_hitbox_value(AT_DATTACK, 5, HG_PARENT_HITBOX, 0);

@@ -8,18 +8,23 @@ spr_dir = 1;
 image_xscale = 1;
 
 
+boundary_l = get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE) + 320;
+boundary_r = room_width - get_stage_data(SD_X_POS) + get_stage_data(SD_SIDE_BLASTZONE) - 320;
+boundary_hp = 20;
 
-can_be_grounded = false;
-ignores_walls = true; //
-free = true;
+//can_be_grounded = false;
+//ignores_walls = true; //
+//free = true;
 
 //these values poll for speed adjustment every x frames.
 friction_poll = 0;
 gravity_poll = 0;
 hsp_poll = 0;
+rise_poll = 0;
 rise_distance = 0;
 
-hp = 1000; //platform becomes unstable when hp falls to 1, and breaks when it falls to zero
+hp = 1200; //platform becomes unstable when hp falls to 1, and breaks when it falls to zero
+hp_threshold = 400; //platform hp stops falling temporarily at this value, until a player lands on it again
 invul_timer = 40; //above zero when the platform can't take more damage
 landing_damage = 50;
 landed_on = false;
@@ -29,11 +34,11 @@ top_speed_low = 8;
 top_speed_high = 12;
 time_until_crumble = 120; //when health runs out, this timer begins to tick to 0. at 0, the platform starts crumbling.
 crumble = 2; //reduces gradually to zero when crumbling 
+plat_hitbox_id = noone; //id of the hitbox attached to this platform when uspecial is used
 
 break_when_not_stood_on = false; //spawn platforms have this set to true.
 pillar_lifetime_factor = 1; //pillar lifespan is multiplied by this value
 
-//this value checks if there is a player standing on the solid or not.
 //grab some random seeds for drawing effects.
 draw_timer = 0;
 draw_timer_decimal = 0;
@@ -41,14 +46,8 @@ draw_state = 0;
 draw_seed = random_func(5, 10, true) + 50; //180
 draw_glow = 50;
 draw_hp = hp;
-//draw_seed = floor(random(80)) + 120;//random_func2( 5, 80, true ) + 120; 
 
-//draw_seed = random_func( 0, 80, true ) + 120;
 time_created = get_gameplay_time();
-
-//player = null;
-//player_id = 0;
-
 
 //if there are more than 3 epinel platforms, find the epinel platform with the least health and destroy it.
 var plat_count = 0;

@@ -14,7 +14,7 @@ walk_speed = 1.2; //op af
 walk_accel = 0.25;
 walk_turn_time = 8;
 initial_dash_time = 15;
-initial_dash_speed = 4.6;
+initial_dash_speed = 4.75; //4.6
 dash_speed = 4;
 dash_turn_time = 10;
 dash_turn_accel = 1.5;
@@ -44,7 +44,7 @@ max_fall = 10.5; //maximum fall speed without fastfalling
 fast_fall = 13.5; //fast fall speed
 gravity_speed = .7; 
 hitstun_grav = .51;
-knockback_adj = 0.98; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
                    
 
 //absa jump
@@ -176,7 +176,7 @@ epinel_fx_sweetspot = hit_fx_create( sprite_get( "fx_sweetspot" ), 10 );
 epinel_fx_armorbreak = hit_fx_create( sprite_get( "fx_armorbreak" ), 15 );
 epinel_fx_jump = hit_fx_create( sprite_get( "fx_jump" ), 14 );
 epinel_fx_arrows = hit_fx_create( sprite_get( "fx_arrows" ), 9 );
-
+epinel_fx_cannot = hit_fx_create( sprite_get( "fx_cannot" ), 14 );
 
 epinel_sprite_inertia = sprite_get("inertia_fx_by_NeXus");
 epinel_sprite_heavy = sprite_get("fx_heavy");
@@ -289,3 +289,6 @@ for(var n = 0; n < 3; n++) {
 
 //low gravity
 if (runeO) { gravity_speed = .525; hitstun_grav = 0.5; }
+
+//munophone
+//user_event(14);

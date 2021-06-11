@@ -1,6 +1,9 @@
 
+//munophone
+//user_event(14);
+
+//inertia logic: reset other_update_performed for the next frame.
 with (oPlayer) {
-	//inertia logic: reset other_update_performed for the next frame.
 	epinel_other_update_performed = false;
 }
 
@@ -23,6 +26,9 @@ if (free)
 	
 	image_alpha = c_gray;
 	
+	
+
+	
 	//increase air acceleration only when falling.
 	if (vsp >= fast_fall) //fastfalling
 	{
@@ -37,19 +43,23 @@ if (free)
 		air_accel = 0.156;
 		
 		//stop old_jump when rising too quickly upwards.
-		if (vsp <= -10) old_jump = false;
+		if (!hitpause && vsp <= -10) old_jump = false;
 	}
+	//if (state == PS_ATTACK_AIR && was_parried) {
+	//	air_accel *= 0.5;
+	//}
 	
 	//allow fastfalling at an earlier threshold than normal.
-	if (epinel_heavy_state == 0 && down_hard_pressed && can_fast_fall && vsp < 0.01 && vsp >= -1.24) { //1.25
+	if (!hitpause && epinel_heavy_state == 0 && down_hard_pressed && can_fast_fall && vsp < 0.01 && vsp >= -1.24) { //1.25
 		vsp = -0.01;
 		clear_button_buffer( PC_DOWN_STRONG_PRESSED );
 	}
+
 	
 	//floaty jump code. we do this before setting epinel's gravity, 
 	// in case a different player changed Epinel's gravity last frame in the other_update script.
 	
-	if (epinel_heavy_state == 0 && (state_cat == SC_AIR_NEUTRAL || (state == PS_PRATFALL && !was_parried) || (state == PS_ATTACK_AIR && attack != AT_FSPECIAL && attack != AT_DSPECIAL_AIR)) )
+	if (!hitpause && epinel_heavy_state == 0 && (state_cat == SC_AIR_NEUTRAL || (state == PS_PRATFALL && !was_parried) || (state == PS_ATTACK_AIR && attack != AT_FSPECIAL && attack != AT_DSPECIAL_AIR)) )
 	{
 		//reset platform buffer.
 		if (state_timer == 5) {
@@ -80,7 +90,7 @@ if (free)
 		move_cooldown[AT_USPECIAL] = 0;
 		epinel_heavy_state = 0;
 	}
-	
+
 	
 }
 else //if not free
@@ -88,15 +98,11 @@ else //if not free
     //increase dash speed over time.
     switch (state) {
     	case PS_DASH:
-    		epinel_dash_momentum += 1 + runeD * 1.5; //runeD = doubles dash acceleration
-			//dash_speed = 3.25 + min(5.75, sqrt(max(2.25, epinel_dash_momentum)) / 1.5);
-			//dash_speed = 3.25 + min(5.75, sqrt(max(3.25, epinel_dash_momentum)) / 1.8);
+    		epinel_dash_momentum += 1 + runeD * 1.5; //runeD = increases dash acceleration
 			dash_speed = 3.25 + min(5.25, sqrt(max(2.56, epinel_dash_momentum)) / 1.5);
     	break;
     	case PS_JUMPSQUAT:
-    		if (epinel_heavy_state > 0) {
-				set_attack(AT_EXTRA_3);
-			}
+    		recover_from_heavy_state_if_epinel_is_not_in_inertia();
     	break;
     	case PS_DASH_TURN:
     	case PS_DASH_STOP:
@@ -111,10 +117,7 @@ else //if not free
 			}
 		case PS_HITSTUN_LAND:
 		case PS_PRATLAND:
-			if (epinel_heavy_state > 0) {
-				set_attack(AT_EXTRA_3);
-				//spawn_hit_fx(x, y, epinel_fx_absorb).depth = depth + 1;
-			}
+			recover_from_heavy_state_if_epinel_is_not_in_inertia();
 			epinel_dash_momentum = 0;
 			dash_speed = 3.25;
 			
@@ -141,19 +144,19 @@ else //if not free
     			}
     			spawn_hit_fx(x, y, epinel_fx_inertia_small).depth = depth - 1;
     		}
-    		else if (epinel_heavy_state > 0) {
-				set_attack(AT_EXTRA_3);
+    		else {
+				recover_from_heavy_state_and_reset_inertia();
+				//recover_from_heavy_state_if_epinel_is_not_in_inertia()
 			}
     		//continue; no break
     	case PS_IDLE:
-    		if (epinel_heavy_state > 0) {
-				set_attack(AT_EXTRA_3);
-    		}
-    		else if (state_timer > 2500) {
-    			set_state(PS_ATTACK_GROUND);
-    			attack = AT_EXTRA_2;
-    			window = 1;
-    			window_timer = 0;
+    		if (recover_from_heavy_state_if_epinel_is_not_in_inertia() == false) {
+    			if (state_timer > 2500) {
+	    			set_state(PS_ATTACK_GROUND);
+	    			attack = AT_EXTRA_2;
+	    			window = 1;
+	    			window_timer = 0;
+    			}
     		}
     		//continue; no break
     	default:
@@ -172,7 +175,7 @@ else //if not free
 		if (is_epinel_performing_a_move_that_maintains_heavy_state()) {
 			epinel_heavy_state = min(epinel_heavy_state, 1);
 		}
-		else epinel_heavy_state = 0;
+		else if (epinel_other_weightless_timer <= 0) epinel_heavy_state = 0;
 		
 	}
 	
@@ -271,6 +274,8 @@ else if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack != AT_F
 #define is_epinel_performing_a_move_that_maintains_heavy_state
 if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) return false;
 switch (attack) {
+	case AT_NSPECIAL:
+	case AT_NSPECIAL_2:
 	case AT_FSPECIAL:
 	case AT_FSPECIAL_AIR:
 	case AT_DSPECIAL_AIR:
@@ -280,5 +285,18 @@ switch (attack) {
 }
 
 
+#define recover_from_heavy_state_if_epinel_is_not_in_inertia
+if (epinel_heavy_state > 0 && epinel_other_weightless_timer <= 0) {
+	set_attack(AT_EXTRA_3);
+	return true;
+}
+return false;
 
+#define recover_from_heavy_state_and_reset_inertia
+if (epinel_heavy_state > 0) {
+	epinel_other_weightless_timer = 0;
+	set_attack(AT_EXTRA_3);
+	return true;
+}
+return false;
 

@@ -140,9 +140,9 @@ set_hitbox_value(AT_FTILT, 3, HG_SHAPE, 0);
 //knockback
 set_hitbox_value(AT_FTILT, 3, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_FTILT, 3, HG_KNOCKBACK_SCALING, 0.4); 
-set_hitbox_value(AT_FTILT, 3, HG_ANGLE, 40);
+set_hitbox_value(AT_FTILT, 3, HG_ANGLE, 45);
 //stun
-set_hitbox_value(AT_FTILT, 3, HG_BASE_HITPAUSE, 4);
+set_hitbox_value(AT_FTILT, 3, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_FTILT, 3, HG_HITPAUSE_SCALING, 0.25);
 set_hitbox_value(AT_FTILT, 3, HG_HITSTUN_MULTIPLIER, 1);
 

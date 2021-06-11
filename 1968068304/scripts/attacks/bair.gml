@@ -7,8 +7,9 @@ set_attack_value(AT_BAIR, AG_HURTBOX_SPRITE, sprite_get("bair_sprite_star_edit_h
 
 //startup 1
 set_window_value(AT_BAIR, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 7);
-set_window_value(AT_BAIR, 1, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 8); //7
+set_window_value(AT_BAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_BAIR, 1, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_BAIR, 1, AG_WINDOW_VSPEED, -0.25);
 //set_window_value(AT_BAIR, 1, AG_WINDOW_CUSTOM_GRAVITY, 1.0);
 set_window_value(AT_BAIR, 1, AG_WINDOW_HAS_SFX, 1);
@@ -21,7 +22,9 @@ set_window_value(AT_BAIR, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_BAIR, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_BAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 set_window_value(AT_BAIR, 2, AG_WINDOW_SFX_FRAME, 0);
-set_window_value(AT_BAIR, 2, AG_WINDOW_HSPEED, -0.25); //slight boost to make up for its tiny range
+//set_window_value(AT_BAIR, 2, AG_WINDOW_HSPEED, -0.25); //slight boost to make up for its tiny range
+set_window_value(AT_BAIR, 2, AG_WINDOW_HITPAUSE_FRAME, 5);
+
 
 //recovery for hit 1 - move ends at this window if throw is not buffered
 set_window_value(AT_BAIR, 3, AG_WINDOW_TYPE, 1);
@@ -93,7 +96,7 @@ set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 46);
 set_hitbox_value(AT_BAIR, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 50);
-set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 7.5);
+set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .75);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0.6);

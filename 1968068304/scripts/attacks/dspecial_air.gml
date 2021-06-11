@@ -12,7 +12,7 @@ set_attack_value(AT_DSPECIAL_AIR, AG_USES_CUSTOM_GRAVITY, 1);
 set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_TYPE, 0);
 set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 11);
 set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.6);
+set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.65);
 
 
 //2: upward grab
@@ -23,28 +23,28 @@ set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_HAS_SFX, 1); //play sound.
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_SFX, asset_get("sfx_waveland_kra"));
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_SFX_FRAME, 1);
-set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.6);
+set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.65);
 
 //3: begin to fall (did not grab player)
 set_window_value(AT_DSPECIAL_AIR, 3, AG_WINDOW_TYPE, 0);
 set_window_value(AT_DSPECIAL_AIR, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DSPECIAL_AIR, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL_AIR, 3, AG_WINDOW_ANIM_FRAME_START, 5);
-set_window_value(AT_DSPECIAL_AIR, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.6);
+set_window_value(AT_DSPECIAL_AIR, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.65);
 
 //4: fall (did not grab player)
 set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_TYPE, 9); //loops until hitting the ground
 set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_ANIM_FRAME_START, 7);
-set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.6);
+set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.65);
 
 //5: hit surface while falling (did not grab player) -> transition
 set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_TYPE, 0);
 set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_ANIM_FRAME_START, 10);
-set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_CUSTOM_GRAVITY, 0.6);
+set_window_value(AT_DSPECIAL_AIR, 5, AG_WINDOW_CUSTOM_GRAVITY, 0.65);
 
 //6: hit epinel-platform while falling
 set_window_value(AT_DSPECIAL_AIR, 6, AG_WINDOW_TYPE, 0);
@@ -55,7 +55,7 @@ set_window_value(AT_DSPECIAL_AIR, 6, AG_WINDOW_VSPEED, 0); //halt here
 set_window_value(AT_DSPECIAL_AIR, 6, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL_AIR, 6, AG_WINDOW_HSPEED, 0); //halt here
 set_window_value(AT_DSPECIAL_AIR, 6, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_DSPECIAL_AIR, 6, AG_WINDOW_CUSTOM_GRAVITY, 0.6);
+set_window_value(AT_DSPECIAL_AIR, 6, AG_WINDOW_CUSTOM_GRAVITY, 0.65);
 
 
 //7: hit player with first rising grab
@@ -63,21 +63,21 @@ set_window_value(AT_DSPECIAL_AIR, 7, AG_WINDOW_TYPE, 0);
 set_window_value(AT_DSPECIAL_AIR, 7, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DSPECIAL_AIR, 7, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL_AIR, 7, AG_WINDOW_ANIM_FRAME_START, 3);
-set_window_value(AT_DSPECIAL_AIR, 7, AG_WINDOW_CUSTOM_GRAVITY, 0.6);
+set_window_value(AT_DSPECIAL_AIR, 7, AG_WINDOW_CUSTOM_GRAVITY, 0.65);
 
 //8: hit player on rising grab, begin to fall (grabbed player)
 set_window_value(AT_DSPECIAL_AIR, 8, AG_WINDOW_TYPE, 0);
 set_window_value(AT_DSPECIAL_AIR, 8, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_DSPECIAL_AIR, 8, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL_AIR, 8, AG_WINDOW_ANIM_FRAME_START, 4); //extra frame
-set_window_value(AT_DSPECIAL_AIR, 8, AG_WINDOW_CUSTOM_GRAVITY, 0.6);
+set_window_value(AT_DSPECIAL_AIR, 8, AG_WINDOW_CUSTOM_GRAVITY, 0.65);
 
 //9: fall (grabbed player)
 set_window_value(AT_DSPECIAL_AIR, 9, AG_WINDOW_TYPE, 9); //loops until hitting the ground
 set_window_value(AT_DSPECIAL_AIR, 9, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_DSPECIAL_AIR, 9, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL_AIR, 9, AG_WINDOW_ANIM_FRAME_START, 7);
-set_window_value(AT_DSPECIAL_AIR, 9, AG_WINDOW_CUSTOM_GRAVITY, 0.6);
+set_window_value(AT_DSPECIAL_AIR, 9, AG_WINDOW_CUSTOM_GRAVITY, 0.65);
 
 
 //10: hit surface while falling (grabbed player) -> transition
@@ -85,7 +85,7 @@ set_window_value(AT_DSPECIAL_AIR, 10, AG_WINDOW_TYPE, 0);
 set_window_value(AT_DSPECIAL_AIR, 10, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_DSPECIAL_AIR, 10, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSPECIAL_AIR, 10, AG_WINDOW_ANIM_FRAME_START, 10);
-set_window_value(AT_DSPECIAL_AIR, 10, AG_WINDOW_CUSTOM_GRAVITY, 0.6);
+set_window_value(AT_DSPECIAL_AIR, 10, AG_WINDOW_CUSTOM_GRAVITY, 0.65);
 set_hitbox_value(AT_DSPECIAL_AIR, 10, AG_WINDOW_HITPAUSE_FRAME, 7); //
 
 //11: hit player into epinel platform
@@ -93,7 +93,7 @@ set_window_value(AT_DSPECIAL_AIR, 11, AG_WINDOW_TYPE, 0);
 set_window_value(AT_DSPECIAL_AIR, 11, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DSPECIAL_AIR, 11, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSPECIAL_AIR, 11, AG_WINDOW_ANIM_FRAME_START, 11);
-set_window_value(AT_DSPECIAL_AIR, 11, AG_WINDOW_CUSTOM_GRAVITY, 0.6);
+set_window_value(AT_DSPECIAL_AIR, 11, AG_WINDOW_CUSTOM_GRAVITY, 0.65);
 set_hitbox_value(AT_DSPECIAL_AIR, 11, AG_WINDOW_HITPAUSE_FRAME, 7); //
 
 //12: rebound after hitting player into epinel platform (then return to 8)
@@ -113,7 +113,7 @@ set_window_value(AT_DSPECIAL_AIR, 13, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_DSPECIAL_AIR, 13, AG_WINDOW_HAS_SFX, 1); //play sound.
 set_window_value(AT_DSPECIAL_AIR, 13, AG_WINDOW_SFX, asset_get("sfx_kragg_rock_shatter"));
 set_window_value(AT_DSPECIAL_AIR, 13, AG_WINDOW_SFX_FRAME, 1);
-set_window_value(AT_DSPECIAL_AIR, 13, AG_WINDOW_CUSTOM_GRAVITY, 0.6);
+set_window_value(AT_DSPECIAL_AIR, 13, AG_WINDOW_CUSTOM_GRAVITY, 0.65);
 
 
 //14: recovery after ground slam (transition to crouch)
@@ -122,7 +122,7 @@ set_window_value(AT_DSPECIAL_AIR, 14, AG_WINDOW_LENGTH, 27);
 set_window_value(AT_DSPECIAL_AIR, 14, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DSPECIAL_AIR, 14, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_DSPECIAL_AIR, 14, AG_WINDOW_HAS_WHIFFLAG, 1);
-set_window_value(AT_DSPECIAL_AIR, 14, AG_WINDOW_CUSTOM_GRAVITY, 0.6);
+set_window_value(AT_DSPECIAL_AIR, 14, AG_WINDOW_CUSTOM_GRAVITY, 0.65);
 
 //15: airborne move cancel 1
 set_window_value(AT_DSPECIAL_AIR, 15, AG_WINDOW_TYPE, 0);
@@ -256,7 +256,7 @@ set_hitbox_value(AT_DSPECIAL_AIR, 4, HG_HITBOX_GROUP, 3);
 //shape
 set_hitbox_value(AT_DSPECIAL_AIR, 4, HG_HITBOX_X, 0);
 set_hitbox_value(AT_DSPECIAL_AIR, 4, HG_HITBOX_Y, -12);
-set_hitbox_value(AT_DSPECIAL_AIR, 4, HG_WIDTH, 60);
+set_hitbox_value(AT_DSPECIAL_AIR, 4, HG_WIDTH, 80);
 set_hitbox_value(AT_DSPECIAL_AIR, 4, HG_HEIGHT, 20);
 set_hitbox_value(AT_DSPECIAL_AIR, 4, HG_SHAPE, 0); //circle
 //knockback
@@ -292,8 +292,8 @@ set_hitbox_value(AT_DSPECIAL_AIR, 5, HG_WIDTH, 16);
 set_hitbox_value(AT_DSPECIAL_AIR, 5, HG_HEIGHT, 16);
 set_hitbox_value(AT_DSPECIAL_AIR, 5, HG_SHAPE, 0); //circle
 //knockback
-set_hitbox_value(AT_DSPECIAL_AIR, 5, HG_BASE_KNOCKBACK, 3.5);
-set_hitbox_value(AT_DSPECIAL_AIR, 5, HG_KNOCKBACK_SCALING, 1.1); 
+set_hitbox_value(AT_DSPECIAL_AIR, 5, HG_BASE_KNOCKBACK, 4);
+set_hitbox_value(AT_DSPECIAL_AIR, 5, HG_KNOCKBACK_SCALING, 1.15); 
 set_hitbox_value(AT_DSPECIAL_AIR, 5, HG_ANGLE, 361);
 //set_hitbox_value(AT_DSPECIAL_AIR, 5, HG_ANGLE_FLIPPER, 6); //horizontally sends away from the enemy
 //stun
@@ -395,8 +395,8 @@ set_hitbox_value(AT_DSPECIAL_AIR, 8, HG_WIDTH, 45);
 set_hitbox_value(AT_DSPECIAL_AIR, 8, HG_HEIGHT, 45);
 set_hitbox_value(AT_DSPECIAL_AIR, 8, HG_SHAPE, 0); //circle
 //knockback
-set_hitbox_value(AT_DSPECIAL_AIR, 8, HG_BASE_KNOCKBACK, 3.5); //varies?
-set_hitbox_value(AT_DSPECIAL_AIR, 8, HG_KNOCKBACK_SCALING, 1); 
+set_hitbox_value(AT_DSPECIAL_AIR, 8, HG_BASE_KNOCKBACK, 4); //varies?
+set_hitbox_value(AT_DSPECIAL_AIR, 8, HG_KNOCKBACK_SCALING, 1.15); 
 set_hitbox_value(AT_DSPECIAL_AIR, 8, HG_ANGLE, 361);
 //set_hitbox_value(AT_DSPECIAL_AIR, 8, HG_ANGLE_FLIPPER, 6); //horizontally sends away from the enemy
 //stun

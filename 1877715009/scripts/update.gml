@@ -219,7 +219,7 @@ if (practiceinit && !stupidbossbool && object_index != oTestPlayer && get_gamepl
 				break;
 			case 11:
 				tutstring = "Doublejump then immediately USPEC to the ground to do a USPEC cancelled Hyperjump.";
-				tutstring2 = "This will give you a few frames of invincibility as a reward. You can only execute it when Special isn't held down.";
+				tutstring2 = "You can only execute it when Special isn't held down.";
 				break;
 			case 12:
 				tutstring = "The thrid hit of the JAB combo can be charged like a strong attack, only on hit.";
@@ -523,7 +523,7 @@ if (practiceinit && !stupidbossbool && object_index != oTestPlayer && get_gamepl
 					noofsubV = 29;
 					break;
 				case 8:
-					noofsubV = 24; // ctrl+f here
+					noofsubV = 25; // ctrl+f here
 					break;
 			}
 			if (shield_pressed)
@@ -2501,8 +2501,8 @@ if (floatjumptime && state_cat != SC_HITSTUN && !hitpause){ // absa jump
 				if (!special_down)
 				{
 					set_state(PS_IDLE);
-					invincible = true;
-					invince_time = floor(jumptimeee*1.5);
+					//invincible = true;
+					//invince_time = floor(jumptimeee*1.5);
 					move_cooldown[AT_USPECIAL] = jumptimeee * 2;
 					techdone[11] = true;
 				}
@@ -2535,6 +2535,10 @@ else if (!hitpause)
 {
 	floatjumptime = 0;
 }
+
+small_sprites = false;
+if (counterid != noone && attack == AT_TAUNT_2 && state == PS_ATTACK_GROUND)
+	small_sprites = counterid.small_sprites;
 
 if (djumpTimer) djumpTimer--;
 if (djumpTimer && !hitpause) djumpArray[djumpTimer-1]={djumpSprite:sprite_index,djumpImage:image_index,djumpX:x,djumpY:y,djumpDir:spr_dir,djumpAlpha:10};
