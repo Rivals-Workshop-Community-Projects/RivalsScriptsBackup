@@ -25,12 +25,6 @@ set_character_color_shading(i, 0);
 }
 }
 
-if (get_player_color(player) == 17){
-for(i = 0; i < 7; i++){
-set_character_color_shading(i, 0);
-}
-}
-
 if (get_player_color(player) == 18){
 for(i = 0; i < 7; i++){
 outline_color = [90, 31, 7];

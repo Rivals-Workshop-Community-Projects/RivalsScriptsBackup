@@ -3,13 +3,16 @@
 switch(my_hitboxID.attack)
 {
     case AT_DAIR:
-        if (my_hitboxID.hbox_num != 3)
+        if (state_cat != SC_HITSTUN)
         {
-            old_vsp = -1;
-        }
-        else
-        {
-            old_vsp = -4.5;
+            if (my_hitboxID.hbox_num != 3)
+            {
+                old_vsp = -1;
+            }
+            else
+            {
+                old_vsp = -4.5;
+            }
         }
     break;
     case AT_USPECIAL:

@@ -157,6 +157,7 @@ switch(state)
                         
                     }
                 }
+                /*
                 else
                 {
                     if (!hitboxHit.transcendent)
@@ -164,6 +165,7 @@ switch(state)
                         hitboxHit.destroyed = true;
                     }
                 }
+                */
             }
            
         }

@@ -26,7 +26,6 @@ if (wario_grab == true && grab_timer >= 0){
 		}
 	}
 	
-	has_walljump = false;
 	djumps = 1;
 	
 	

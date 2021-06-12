@@ -7,6 +7,8 @@ if (my_hitboxID.type == 2){
         old_hsp = hsp;
         old_vsp = vsp;
     }
+    
+
 
 //if (attack == AT_DATTACK){
 //    window_timer = 1;

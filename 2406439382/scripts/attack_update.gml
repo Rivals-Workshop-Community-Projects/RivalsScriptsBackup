@@ -527,7 +527,7 @@ switch (attack)
         {
             with (pHitBox)
             {
-                if (player_id != other) or (attack == AT_DSPECIAL)
+                if ((player_id != other) or (attack == AT_DSPECIAL)) and (hit_priority != 0)
                 {
                     if (place_meeting( x,y,other))
                     {

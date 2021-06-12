@@ -37,44 +37,44 @@ set_color_profile_slot_range( 7, 34, 28, 87 );
 set_num_palettes( 32 );
 
 // Red
-set_color_profile_slot( 1, 0, 182, 37, 36 ); //hat
-set_color_profile_slot( 1, 1, 33, 47, 92 ); //overalls
-set_color_profile_slot( 1, 2, 133, 74, 56 ); //shoes
-set_color_profile_slot( 1, 3, 246, 193, 128 ); //skin
+set_color_profile_slot( 1, 0, 189, 27, 27 ); //hat
+set_color_profile_slot( 1, 1, 41, 48, 122 ); //overalls
+set_color_profile_slot( 1, 2, 105, 39, 18 ); //shoes
+set_color_profile_slot( 1, 3, 246, 186, 113 ); //skin
 set_color_profile_slot( 1, 4, 247, 253, 255 ); //gloves
-set_color_profile_slot( 1, 5, 125, 74, 0 ); //hair
+set_color_profile_slot( 1, 5, 102, 62, 0 ); //hair
 set_color_profile_slot( 1, 6, 246, 155, 106 ); //nose
 set_color_profile_slot( 1, 7, 77, 77, 77 ); //Blues
 
 // Green
-set_color_profile_slot( 2, 0, 75, 140, 47 ); //hat
-set_color_profile_slot( 2, 1, 111, 76, 181 ); //overalls
-set_color_profile_slot( 2, 2, 133, 74, 56 ); //shoes
-set_color_profile_slot( 2, 3, 246, 193, 128 ); //skin
+set_color_profile_slot( 2, 0, 8, 133, 45 ); //hat
+set_color_profile_slot( 2, 1, 77, 49, 143 ); //overalls
+set_color_profile_slot( 2, 2, 105, 39, 18 ); //shoes
+set_color_profile_slot( 2, 3, 246, 186, 113 ); //skin
 set_color_profile_slot( 2, 4, 247, 253, 255 ); //gloves
-set_color_profile_slot( 2, 5, 125, 74, 0 ); //hair
+set_color_profile_slot( 2, 5, 102, 62, 0 ); //hair
 set_color_profile_slot( 2, 6, 246, 155, 106 ); //nose
 set_color_profile_slot( 2, 7, 77, 77, 77 ); //Blues
 
 // Purple
-set_color_profile_slot( 3, 0, 105, 44, 192 ); //hat
-set_color_profile_slot( 3, 1, 43, 51, 64 ); //overalls
+set_color_profile_slot( 3, 0, 121, 45, 196 ); //hat
+set_color_profile_slot( 3, 1, 65, 52, 79 ); //overalls
 set_color_profile_slot( 3, 2, 140, 89, 40 ); //shoes
 set_color_profile_slot( 3, 3, 246, 193, 128 ); //skin
 set_color_profile_slot( 3, 4, 247, 253, 255 ); //gloves
 set_color_profile_slot( 3, 5, 159, 74, 33 ); //hair
 set_color_profile_slot( 3, 6, 222, 81, 132 ); //nose
-set_color_profile_slot( 3, 7, 240, 168, 101 ); //Blues
+set_color_profile_slot( 3, 7, 240, 173, 110 ); //Blues
 
 // Blue
-set_color_profile_slot( 4, 0, 86, 90, 168 ); //hat
-set_color_profile_slot( 4, 1, 207, 54, 18 ); //overalls
+set_color_profile_slot( 4, 0, 71, 75, 171 ); //hat
+set_color_profile_slot( 4, 1, 212, 55, 18 ); //overalls
 set_color_profile_slot( 4, 2, 73, 43, 117 ); //shoes
 set_color_profile_slot( 4, 3, 246, 188, 118 ); //skin
 set_color_profile_slot( 4, 4, 237, 244, 245 ); //gloves
-set_color_profile_slot( 4, 5, 97, 46, 0 ); //hair
+set_color_profile_slot( 4, 5, 156, 74, 0 ); //hair
 set_color_profile_slot( 4, 6, 222, 81, 132 ); //nose
-set_color_profile_slot( 4, 7, 133, 27, 0 ); //Blues
+set_color_profile_slot( 4, 7, 176, 0, 20 ); //Blues
 
 // Old-School
 set_color_profile_slot( 5, 0, 217, 220, 224 ); //hat
@@ -87,9 +87,9 @@ set_color_profile_slot( 5, 6, 222, 102, 145 ); //nose
 set_color_profile_slot( 5, 7, 47, 48, 48 ); //Blues
 
 // Teal
-set_color_profile_slot( 6, 0, 0, 166, 134 ); //hat
+set_color_profile_slot( 6, 0, 3, 184, 150 ); //hat
 set_color_profile_slot( 6, 1, 89, 0, 77 ); //overalls
-set_color_profile_slot( 6, 2, 0, 82, 92 ); //shoes
+set_color_profile_slot( 6, 2, 0, 103, 115 ); //shoes
 set_color_profile_slot( 6, 3, 246, 193, 128 ); //skin
 set_color_profile_slot( 6, 4, 247, 253, 255 ); //gloves
 set_color_profile_slot( 6, 5, 159, 74, 33 ); //hair
@@ -99,15 +99,15 @@ set_color_profile_slot( 6, 7, 63, 143, 31 ); //Blues
 // Orange
 set_color_profile_slot( 7, 0, 250, 115, 5 ); //hat
 set_color_profile_slot( 7, 1, 36, 40, 56 ); //overalls
-set_color_profile_slot( 7, 2, 163, 82, 38 ); //shoes
+set_color_profile_slot( 7, 2, 80, 120, 28 ); //shoes
 set_color_profile_slot( 7, 3, 246, 191, 143 ); //skin
 set_color_profile_slot( 7, 4, 239, 236, 234 ); //gloves
-set_color_profile_slot( 7, 5, 144, 76, 32 ); //hair
+set_color_profile_slot( 7, 5, 144, 69, 32 ); //hair
 set_color_profile_slot( 7, 6, 240, 132, 170 ); //nose
 set_color_profile_slot( 7, 7, 77, 77, 77 ); //Blues
 
 // Real Original
-set_color_profile_slot( 8, 0, 247, 204, 32 ); //hat
+set_color_profile_slot( 8, 0, 247, 197, 32 ); //hat
 set_color_profile_slot( 8, 1, 166, 30, 71 ); //overalls
 set_color_profile_slot( 8, 2, 61, 107, 51 ); //shoes
 set_color_profile_slot( 8, 3, 246, 176, 91 ); //skin
@@ -143,7 +143,7 @@ set_color_profile_slot( 11, 2, 255, 150, 150 ); //shoes
 set_color_profile_slot( 11, 3, 246, 221, 197 ); //skin
 set_color_profile_slot( 11, 4, 230, 249, 255 ); //gloves
 set_color_profile_slot( 11, 5, 164, 164, 164 ); //hair
-set_color_profile_slot( 11, 6, 246, 204, 162 ); //nose
+set_color_profile_slot( 11, 6, 246, 183, 121 ); //nose
 set_color_profile_slot( 11, 7, 132, 227, 221 ); //Blues
 
 // Black and Yellow
@@ -153,7 +153,7 @@ set_color_profile_slot( 12, 2, 255, 255, 255 ); //shoes
 set_color_profile_slot( 12, 3, 150, 112, 70 ); //skin
 set_color_profile_slot( 12, 4, 247, 253, 255 ); //gloves
 set_color_profile_slot( 12, 5, 66, 66, 66 ); //hair
-set_color_profile_slot( 12, 6, 222, 130, 102 ); //nose
+set_color_profile_slot( 12, 6, 222, 111, 75 ); //nose
 set_color_profile_slot( 12, 7, 61, 61, 61 ); //Blues
 
 // Rad Mat
@@ -269,7 +269,7 @@ set_color_profile_slot( 23, 7, 161, 0, 0 ); //Blues
 // Thanos
 set_color_profile_slot( 24, 0, 227, 181, 71 ); //hat
 set_color_profile_slot( 24, 1, 57, 67, 120 ); //overalls
-set_color_profile_slot( 24, 2, 227, 181, 71 ); //shoes
+set_color_profile_slot( 24, 2, 150, 120, 47 ); //shoes
 set_color_profile_slot( 24, 3, 175, 159, 199 ); //skin
 set_color_profile_slot( 24, 4, 227, 181, 71 ); //gloves
 set_color_profile_slot( 24, 5, 175, 159, 199 ); //hair
@@ -289,7 +289,7 @@ set_color_profile_slot( 25, 7, 0, 0, 0 ); //Blues
 // Bubblegum
 set_color_profile_slot( 26, 0, 168, 222, 247 ); //hat
 set_color_profile_slot( 26, 1, 235, 129, 173 ); //overalls
-set_color_profile_slot( 26, 2, 167, 222, 247 ); //shoes
+set_color_profile_slot( 26, 2, 111, 205, 247 ); //shoes
 set_color_profile_slot( 26, 3, 253, 215, 154 ); //skin
 set_color_profile_slot( 26, 4, 247, 253, 255 ); //gloves
 set_color_profile_slot( 26, 5, 198, 42, 130 ); //hair
@@ -344,7 +344,7 @@ set_color_profile_slot( 31, 3, 246, 193, 128 ); //skin
 set_color_profile_slot( 31, 4, 247, 253, 255 ); //gloves
 set_color_profile_slot( 31, 5, 159, 74, 33 ); //hair
 set_color_profile_slot( 31, 6, 222, 81, 132 ); //nose
-set_color_profile_slot( 31, 7, 70, 250, 112 ); //Blues
+set_color_profile_slot( 31, 7, 17, 61, 28 ); //Blues
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
