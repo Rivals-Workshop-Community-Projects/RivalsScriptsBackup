@@ -2,6 +2,10 @@
 
 draw_sprite_ext(sprite_get("aaa_vernum"),1,x+180,y+94,2,2,0,-1,1);
 
+if (get_player_color( player ) == 7){
+draw_sprite_ext(sprite_get("ea_outline"),1,x+8,y+8,2,2,0,-1,1);
+}
+
 /*
  
 There are two pictures of a
@@ -55,7 +59,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ie = 0;
 	ye = false;
 	
-	col_max = 15;
+	col_max = 18;
 	ce[0,0] = make_color_rgb(214, 240, 245)
 	ce[0,1] = "Reckless"
 	ce[1,0] = make_color_rgb(0, 200, 222)
@@ -68,26 +72,32 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[4,1] = "Silver"
 	ce[5,0] = make_color_rgb(255, 92, 132)
 	ce[5,1] = "Pink"
-	ce[6,0] = make_color_rgb(48, 51, 54)
+	ce[6,0] = make_color_rgb(64, 71, 74)
 	ce[6,1] = "Kuro"
 	ce[7,0] = make_color_rgb(83, 122, 62)
 	ce[7,1] = "Game Boy"
-	ce[8,0] = make_color_rgb(148, 4, 4)
+	ce[8,0] = make_color_rgb(163, 4, 4)
 	ce[8,1] = "Wii Mini"
-	ce[9,0] = make_color_rgb(168, 14, 28)
+	ce[9,0] = make_color_rgb(227, 18, 39)
 	ce[9,1] = "Mario"
 	ce[10,0] = make_color_rgb(26, 171, 60)
 	ce[10,1] = "Luigi"
 	ce[11,0] = make_color_rgb(252, 86, 168)
 	ce[11,1] = "Peach"
-	ce[12,0] = make_color_rgb(118, 217, 52)
-	ce[12,1] = "Yoshi"
-	ce[13,0] = make_color_rgb(204, 164, 69)
-	ce[13,1] = "Link"
-	ce[14,0] = make_color_rgb(81, 71, 168)
-	ce[14,1] = "GameCube Indigo"
+	ce[12,0] = make_color_rgb(255, 199, 59)
+	ce[12,1] = "Bowser"
+	ce[13,0] = make_color_rgb(230, 255, 252)
+	ce[13,1] = "Toad"
+	ce[14,0] = make_color_rgb(118, 217, 52)
+	ce[14,1] = "Yoshi"
 	ce[15,0] = make_color_rgb(255, 119, 0)
 	ce[15,1] = "Matt"
+	ce[16,0] = make_color_rgb(54, 48, 133)
+	ce[16,1] = "GameCube Indigo"
+	ce[17,0] = make_color_rgb(140, 157, 163)
+	ce[17,1] = "Prototype"
+	ce[18,0] = make_color_rgb(204, 164, 69)
+	ce[18,1] = "Link"
 }
 
 if (ae == "ae"){

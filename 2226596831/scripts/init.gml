@@ -14,11 +14,11 @@ walk_speed = 3.5;
 walk_accel = 0.4;
 walk_turn_time = 6;
 initial_dash_time = 10;
-initial_dash_speed = 7.8;
-dash_speed = 7.2;
+initial_dash_speed = 7.5;//7.8
+dash_speed = 6.8;//7.2
 dash_turn_time = 8;
 dash_turn_accel = 0.8;
-dash_stop_time = 8;
+dash_stop_time = 8;//8
 dash_stop_percent = .5; //the value to multiply your hsp by when going into idle from dash or dashstop
 ground_friction = .6;
 moonwalk_accel = 2;
@@ -113,7 +113,13 @@ dsp_air_max = 2;
 
 dsp_dir = 0;
 
+t2_yes = false;
+
 grav_altered = false;
+nair_did = 0;
+dair_canthit = [0,0,0,0,0]
+damage_track = [0,0,0,0,0]
+death_detect = -4;
 
 safety_strap = "on";
 safety_strap_timer = 0;
@@ -132,7 +138,9 @@ arena_short_name = "RSNM";
 battle_text = "* A Wii Remote, watch out.";
 Hikaru_Title = "Reckless Health & Safety Notice Fox";
 
-
+ncode1 = "A silhouette of an unstoppable force."
+ncode2 = "Violates multiple safety protocols."
+ncode3 = "Capture and arrest if able."
 
 
 

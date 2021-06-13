@@ -30,6 +30,18 @@ if (state == 0){
 	
 	vsp = 10;
 	
+	if (position_meeting(x,y, asset_get("plasma_field_obj"))){
+		state = 4;
+		state_timer = 0;
+		if (tv_hb_link != -4){
+			tv_hb_link.destroyed = true;
+			tv_hb_link = -4;
+		}
+		sound_play(asset_get("sfx_absa_cloud_crackle"));
+		sound_play(asset_get("sfx_clairen_hit_med"));
+		spawn_hit_fx( x, y, 124 );
+	}
+	
     if (!free){
         state = 2;
         state_timer = 0;

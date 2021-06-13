@@ -1,5 +1,6 @@
 //update
 
+
 if (bowling_timer>0){
 	if (bowling_timer == 50){
 		sound_play(sound_get("ding_1"));
@@ -21,6 +22,46 @@ if (bowling_timer>0){
 	bowling_timer--;
 }
 
+//idk if this works or not but
+if (death_detect==-4){
+	var check_yes = false;
+	with (oPlayer){
+		//if (id != other.id){
+			if (state==PS_RESPAWN||state==PS_DEAD){//when someone's ded
+				other.death_detect = id;
+				check_yes = true;
+			}
+		//}
+	}
+	if (check_yes){
+		//print(string(damage_track[death_detect.player]))
+		//print(string(get_player_damage(death_detect.player)))
+		if (damage_track[death_detect.player] == 0){
+			sound_play(sound_get("nice_throw_3"));
+		}
+	}
+}
+if (death_detect!=-4){
+	
+	with (death_detect){
+		if (state!=PS_RESPAWN&&state!=PS_DEAD){
+			other.death_detect = -4;
+		}
+	}
+}
+with (oPlayer){
+	//if (id != other.id){
+		other.damage_track[player] = get_player_damage(player)
+	//}
+}
+//
+
+if (nair_did > 0){
+	if (!free){
+		nair_did = 0;
+	}
+}
+
 if (track_altered = true){
 	if (!free){
 		fsp_air_track = fsp_air_max;
@@ -33,6 +74,22 @@ if (grav_altered = true){
 		gravity_speed = orig_grav;
 		grav_altered = false;
 	}
+	if (nair_did > 2){
+		gravity_speed = orig_grav;
+		grav_altered = false;
+	}
+}
+
+if (get_player_color( player ) == 7){ //towerofheaven
+if (outline_color[0] == 0 && outline_color[1] == 0 && outline_color[2] == 0){
+outline_color=[35, 67, 49]
+init_shader();
+}
+}
+
+if (t2_yes&&(state!=PS_ATTACK_GROUND||attack!=AT_TAUNT_2)){
+	t2_yes = false;
+	sound_stop(sound_get("wii"))
 }
 
 with (asset_get("oPlayer")){
@@ -81,7 +138,18 @@ if (safety_strap_timer>0){
 		sound_play(sound_get("on"));
 		safety_strap = "on"
 	}
-	safety_strap_timer--;
+	
+	//if timer is 1 and youre in attack
+	/*if (state == PS_ATTACK_GROUND && state == PS_ATTACK_GROUND){
+		if (safety_strap_timer==1||safety_strap_timer==2){
+			safety_strap_timer=2
+		}else{
+		safety_strap_timer--;
+		}
+	}else{*/
+		safety_strap_timer--;
+	//}
+	
 	if (safety_strap_timer%2==0){
 		spawn_hit_fx( x-40+random_func( 1, 80, true ), y-(char_height/2)-48+random_func( 8, 96, true ), flamefx );
 	}

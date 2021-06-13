@@ -28,7 +28,7 @@ set_window_value(AT_BAIR, 4, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_BAIR, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_BAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-set_window_value(AT_BAIR, 5, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_BAIR, 5, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_BAIR, 5, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_BAIR, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_BAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -53,7 +53,7 @@ set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.6);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0.5);
-set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 303);
+set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 128);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("hit_stab_1"));
 
 //sweet stab hit
@@ -101,7 +101,7 @@ set_hitbox_value(AT_BAIR, 3, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_BAIR, 3, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_BAIR, 3, HG_HIT_SFX, sound_get("hit_medium_1"));
 
-set_hitbox_value(AT_BAIR, 3, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_BAIR, 3, HG_PROJECTILE_PLASMA_SAFE, 0);
 set_hitbox_value(AT_BAIR, 3, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_BAIR, 3, HG_EXTENDED_PARRY_STUN, 1);
 

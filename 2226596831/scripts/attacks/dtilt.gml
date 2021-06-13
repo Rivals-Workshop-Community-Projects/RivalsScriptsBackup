@@ -5,12 +5,12 @@ set_attack_value(AT_DTILT, AG_NUM_WINDOWS, 4);
 //dts   dta   dth   dtr
 //0-0:1 1-1:1 2-2:1 3-3:1
 
-set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 6);//5
 set_window_value(AT_DTILT, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_DTILT, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DTILT, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, sound_get("swing_2"));
-set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 4);
+set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 5);
 
 set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAME_START, 1);
@@ -65,7 +65,7 @@ set_hitbox_value(AT_DTILT, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DTILT, 2, HG_KNOCKBACK_SCALING, 0.68);
 set_hitbox_value(AT_DTILT, 2, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DTILT, 2, HG_HITPAUSE_SCALING, 0.6);
-set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT, 305);
+set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT, 128);
 set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, sound_get("hit_stab_1"));
 
 
@@ -91,7 +91,7 @@ set_hitbox_value(AT_DTILT, 3, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_DTILT, 3, HG_HIT_SFX, sound_get("hit_medium_2"));
 
-set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_PLASMA_SAFE, 0);
 set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_DTILT, 3, HG_EXTENDED_PARRY_STUN, 1);
 

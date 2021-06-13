@@ -54,6 +54,8 @@ sprite_change_offset("uspecial", 78, 114);
 sprite_change_offset("dspecial", 78, 114);
 sprite_change_offset("taunt", 78, 114+64);
 sprite_change_offset("taunt_over", 78, 114+64);
+sprite_change_offset("t", 78, 114);
+sprite_change_offset("t_v", 78, 114);
 
 sprite_change_offset("hurt", 78, 114);
 sprite_change_offset("bighurt", 78, 114);
@@ -80,3 +82,4 @@ sprite_change_offset("strap_ui", 80, 114);
 sprite_change_offset("strap_meter", 45, -34);
 sprite_change_offset("arrow", 7, 10);
 
+sprite_change_offset("sweetspot_circle", 100, 100);

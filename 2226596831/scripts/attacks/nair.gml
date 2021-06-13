@@ -101,7 +101,7 @@ set_hitbox_value(AT_NAIR, 5, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_NAIR, 5, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_NAIR, 5, HG_HIT_SFX, sound_get("hit_medium_2"));
 
-set_hitbox_value(AT_NAIR, 5, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_NAIR, 5, HG_PROJECTILE_PLASMA_SAFE, 0);
 set_hitbox_value(AT_NAIR, 5, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NAIR, 5, HG_EXTENDED_PARRY_STUN, 1);
 

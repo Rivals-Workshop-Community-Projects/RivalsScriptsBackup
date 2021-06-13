@@ -1,1 +1,0 @@
-has_hit = false;

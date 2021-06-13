@@ -71,3 +71,18 @@ if (safety_strap == "off"){
 		}
 	}
 }
+
+with(pHitBox){
+	if (player_id == other.id){
+		if (attack == AT_DAIR){
+			if (hbox_num == 4){
+				//print_debug("test")
+				sprite_index = sprite_get("sweetspot_circle")
+			}
+		}
+	}
+}
+
+
+
+

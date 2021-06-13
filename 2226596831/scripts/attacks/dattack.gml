@@ -46,10 +46,10 @@ set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 9);
 set_hitbox_value(AT_DATTACK, 1, HG_ANGLE, 50);
 set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 7.8);
-set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, 0.88);//0.9
 set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 7.5);
 set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, 0.5);
-set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 303);
+set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 110);
 set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, sound_get("hit_hard_1"));
 
 
@@ -68,13 +68,13 @@ set_hitbox_value(AT_DATTACK, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_DATTACK, 2, HG_DAMAGE, 9);
 set_hitbox_value(AT_DATTACK, 2, HG_ANGLE, 50);
 set_hitbox_value(AT_DATTACK, 2, HG_BASE_KNOCKBACK, 7.8);
-set_hitbox_value(AT_DATTACK, 2, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(AT_DATTACK, 2, HG_KNOCKBACK_SCALING, 0.88);//0.9
 set_hitbox_value(AT_DATTACK, 2, HG_BASE_HITPAUSE, 7.5);
 set_hitbox_value(AT_DATTACK, 2, HG_HITPAUSE_SCALING, 0.5);
-set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT, 303);
+set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT, 110);
 set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, sound_get("hit_hard_1"));
 
-set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_PLASMA_SAFE, 0);
 set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_DATTACK, 2, HG_EXTENDED_PARRY_STUN, 1);

@@ -65,7 +65,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 143);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_DESTROY_EFFECT, 143);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, sound_get("explosion"));
 
-set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_PLASMA_SAFE, 0);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_UNBASHABLE, 1);

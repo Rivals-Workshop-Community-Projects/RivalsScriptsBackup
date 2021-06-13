@@ -131,6 +131,7 @@ sprite_change_offset("intro_portal", 128, 164);
 sprite_change_offset("intro_portal_glow", 128, 164);
 
 sprite_change_offset("wario_miiverse", 60, 30);
+sprite_change_offset("portrait_wario", 27, 39);
 sprite_change_offset("sign", 18, 41);
 sprite_change_offset("feri_costume_wario", 84, 114);
 sprite_change_offset("wario_goomba", 27, 39);

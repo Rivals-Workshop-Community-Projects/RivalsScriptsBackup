@@ -235,6 +235,8 @@ childsupport = 1;
 boxing_title = "Gold-Hungry Fiend";
 has_fail = true;
 fail_text = "Something about days being rotten";
+pkmn_stadium_front_img = sprite_get("pokemonstadium1");
+pkmn_stadium_back_img = sprite_get("pokemonstadium2");
 
 fspecialblur = hit_fx_create( sprite_get( "fspecial_blur" ), 20 );
 //Dspecial

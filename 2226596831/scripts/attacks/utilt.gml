@@ -5,12 +5,12 @@ set_attack_value(AT_UTILT, AG_NUM_WINDOWS, 4);
 //uts   uta   uth   utr
 //0-0:1 1-2:2 3-4:2 5-5:1
 
-set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 8);//7
 set_window_value(AT_UTILT, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_UTILT, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_UTILT, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
-set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 6);
+set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 7);
 
 //5/4
 set_window_value(AT_UTILT, 2, AG_WINDOW_LENGTH, 9);
@@ -20,12 +20,12 @@ set_window_value(AT_UTILT, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UTILT, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 set_window_value(AT_UTILT, 2, AG_WINDOW_SFX_FRAME, 4);
 
-set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 8);//8
 set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 6);//5
 set_window_value(AT_UTILT, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_UTILT, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_UTILT, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -117,7 +117,7 @@ set_hitbox_value(AT_UTILT, 4, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_UTILT, 4, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_UTILT, 4, HG_HIT_SFX, sound_get("hit_medium_2"));
 
-set_hitbox_value(AT_UTILT, 4, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_UTILT, 4, HG_PROJECTILE_PLASMA_SAFE, 0);
 set_hitbox_value(AT_UTILT, 4, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_UTILT, 4, HG_EXTENDED_PARRY_STUN, 1);
 

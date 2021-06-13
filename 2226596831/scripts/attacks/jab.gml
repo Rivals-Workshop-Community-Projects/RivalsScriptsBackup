@@ -6,7 +6,7 @@ set_attack_value(AT_JAB, AG_NUM_WINDOWS, 7);
 //0-1:2 2-3:2 4-5:2 | 6-6:1 7-7:1 8-9:2 10-11:2
 
 //j1
-set_window_value(AT_JAB, 1, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_JAB, 1, AG_WINDOW_LENGTH, 5);//4
 set_window_value(AT_JAB, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_JAB, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 1, AG_WINDOW_HAS_SFX, 1);

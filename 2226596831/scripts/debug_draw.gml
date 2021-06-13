@@ -6,3 +6,4 @@
 //draw_debug_text( x, y, string(window_timer) )
 //draw_debug_text( x, y, string(state_timer) )
 //draw_debug_text( x, y+32, string(dsp_dir) )
+//draw_debug_text( x, y+32, string(parry_lag) )

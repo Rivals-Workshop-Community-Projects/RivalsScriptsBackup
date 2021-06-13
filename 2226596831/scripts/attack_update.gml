@@ -6,8 +6,9 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 }
 
 if (attack == AT_NSPECIAL){
-	hsp = clamp(hsp, -2, 2)
-	vsp = clamp(vsp, -15, 2)
+	hsp = clamp(hsp, -3, 3)
+	//hsp = clamp(hsp, -2, 2)
+	//vsp = clamp(vsp, -15, 2)
 	can_fast_fall = false;
 	
 	move_cooldown[AT_NSPECIAL] = 20
@@ -59,16 +60,36 @@ if (attack == AT_JAB){
 }
 
 if (attack == AT_NAIR){
-	if (attack_down){
-		if (window == 2){
-			gravity_speed = 0.2;
-		}else{
-			gravity_speed = 0.25;
+	if (window == 1){
+		if (window_timer == 1){
+			nair_did++;
 		}
-		grav_altered = true;
-	}else{
-		gravity_speed = orig_grav;
-		grav_altered = false;
+	}
+	if (nair_did <= 1){
+		if (attack_down){
+			if (window == 2){
+				gravity_speed = 0.2;
+			}else{
+				gravity_speed = 0.25;
+			}
+			grav_altered = true;
+		}else{
+			gravity_speed = orig_grav;
+			grav_altered = false;
+		}
+	}
+	if (nair_did == 2){
+		if (attack_down){
+			if (window == 2){
+				gravity_speed = 0.3;
+			}else{
+				gravity_speed = 0.35;
+			}
+			grav_altered = true;
+		}else{
+			gravity_speed = orig_grav;
+			grav_altered = false;
+		}
 	}
 }
 
@@ -85,7 +106,24 @@ if (attack == AT_USTRONG){
 	}
 }
 
+if (attack == AT_TAUNT_2){
+	if (window==1){
+		if (window_timer == 1){
+			clear_button_buffer( PC_TAUNT_PRESSED )
+		}
+		if (taunt_pressed&&down_down){
+			window_timer = 0;
+			sound_stop(sound_get("wii"))
+		}
+	}
+	if (window==2){
+		t2_yes = true;
+		iasa_script();
+	}
+}
+
 if (attack == AT_USPECIAL){
+	can_fast_fall = false;
 	if (window>1 && window < 10){
 		//can_move = false;
 	}
@@ -221,11 +259,13 @@ if (attack == AT_FSTRONG){
 						if (safety_strap == "off"){
 						var hb_tmp = create_hitbox( AT_FSTRONG, 2, x+(18*spr_dir), y-32)
 						hb_tmp.grav = 0.5
+						hb_tmp.hsp = 1*spr_dir
 						hb_tmp.proj_angle = -15*spr_dir
 						}else{
 						var hb_tmp = create_hitbox( AT_FSTRONG, 1, x+(18*spr_dir), y-32)
 						}
 						hb_tmp.vsp = 1.5
+						hb_tmp.hsp = 1*spr_dir
 						hb_tmp.length = 30
 						hb_tmp.kb_scale = 0
 						hb_tmp.sound_effect = sound_get("hit_bowling_weak")
@@ -235,11 +275,13 @@ if (attack == AT_FSTRONG){
 						if (safety_strap == "off"){
 						var hb_tmp = create_hitbox( AT_FSTRONG, 2, x+(-4*spr_dir), y-8)
 						hb_tmp.grav = 0.5
+						hb_tmp.hsp = -2*spr_dir
 						hb_tmp.proj_angle = -100*spr_dir
 						}else{
 						var hb_tmp = create_hitbox( AT_FSTRONG, 1, x+(-4*spr_dir), y-8)
 						}
 						hb_tmp.vsp = 1.5
+						hb_tmp.hsp = -2*spr_dir
 						hb_tmp.length = 20
 						hb_tmp.kb_scale = 0
 						hb_tmp.sound_effect = sound_get("hit_bowling_weak")
@@ -451,7 +493,7 @@ if (safety_strap == "off"){
 			if (window_timer == 9){
 				var tmp_x_off = (1*spr_dir)
 				var tmp_y_off = 15
-				var hb_tmp = create_hitbox( AT_DAIR, 4, x+tmp_x_off, y+tmp_y_off )
+				var hb_tmp = create_hitbox( AT_DAIR, 5, x+tmp_x_off, y+tmp_y_off )
 				spawn_hit_fx( x+tmp_x_off, y+tmp_y_off, 14 )
 				hb_tmp.hsp = (2*spr_dir)+(hsp/2)
 				hb_tmp.vsp = 11+(vsp/2)

@@ -3,6 +3,9 @@ var yview = view_get_yview()
 if (state==PS_ATTACK_GROUND&&attack==AT_TAUNT){
 	draw_sprite( sprite_get("taunt_over"), image_index, x-xview, y-yview )
 }
+if (state==PS_ATTACK_GROUND&&attack==AT_TAUNT_2){
+	draw_sprite( sprite_get("t_v"), 0, x-xview, y-yview )
+}
 
 //abyss gui code
 ab_hud_x = temp_x;

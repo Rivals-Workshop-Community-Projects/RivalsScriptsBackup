@@ -8,12 +8,12 @@ set_attack_value(AT_UAIR, AG_NUM_WINDOWS, 4);
 //uas   uaa   uah   uar
 //0-0:1 1-1:1 2-4:3 5-5:1
 
-set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 8);//8
+set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 9);//8
 set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_UAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, sound_get("swing_3"));
-set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 7);
+set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 8);
 
 set_window_value(AT_UAIR, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_UAIR, 2, AG_WINDOW_ANIM_FRAME_START, 1);
@@ -93,7 +93,7 @@ set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_UAIR, 3, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, sound_get("hit_medium_2"));
 
-set_hitbox_value(AT_UAIR, 3, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_UAIR, 3, HG_PROJECTILE_PLASMA_SAFE, 0);
 set_hitbox_value(AT_UAIR, 3, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_UAIR, 3, HG_EXTENDED_PARRY_STUN, 1);
 
