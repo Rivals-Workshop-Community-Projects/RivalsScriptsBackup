@@ -46,11 +46,7 @@ if (attack == AT_EXTRA_1) {
 				hsp = -6;
 			}
 		}
-		
-		if special_pressed && !up_down {
-		vsp = clamp(vsp, -100, -4);
-		}
-		
+
 		if left_strong_pressed || up_strong_pressed || right_strong_pressed {
 			vsp = clamp(vsp, -100, -4);
 			flutterAttack = 1;
@@ -185,7 +181,7 @@ if (attack == AT_USPECIAL) {
 	if window == 2 {
 		if special_down && 10 > eggcharge {
 			eggcharge++;
-			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -18-(eggcharge*.35));
+			set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -18-(eggcharge*.25));
 			set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 7+(eggcharge*.5));
 			set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 6+(eggcharge*.4));
 			
@@ -209,6 +205,9 @@ if (attack == AT_USPECIAL) {
 			window = 5;
 			window_timer = 0;
 			vsp = -5;
+		}
+		if vsp > -1 {
+			soft_armor = 0;
 		}
 		if window_timer == 4 {
 			window_timer = 0;
