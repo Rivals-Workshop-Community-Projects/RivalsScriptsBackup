@@ -15,8 +15,8 @@ curse_target = 0
 rekarma = 0
 karma = 0
 karmacom = 0
-admw = 0
-admb = 0
+admw = 3
+admb = 1
 karmatimer = 0
 nshit = 0
 souldmg = 0
@@ -72,7 +72,7 @@ air_friction = .0522;
 max_djumps = 1;
 double_jump_time = 40; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 3;
-walljump_vsp = 12;
+walljump_vsp = 9;
 walljump_time = 36;
 wall_frames = 2; //anim frames before you leave the wall
 max_fall = 7.5; //maximum fall speed without fastfalling
@@ -164,3 +164,4 @@ sprite_change_offset("shit3", 100, 100);
 sprite_change_offset("shit4", 100, 100);
 sprite_change_offset("shit5", 100, 100);
 sprite_change_offset("shit6", 100, 100);
+sprite_change_offset("yinyang", 1000, 1000);

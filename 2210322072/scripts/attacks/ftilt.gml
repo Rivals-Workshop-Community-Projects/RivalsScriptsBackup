@@ -19,7 +19,7 @@ set_window_value(AT_FTILT, 2, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 
 
-set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -39,15 +39,15 @@ set_hitbox_value(AT_FTILT, 1, HG_WIDTH, 76);
 set_hitbox_value(AT_FTILT, 1, HG_HEIGHT, 66);
 set_hitbox_value(AT_FTILT, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_FTILT, 1, HG_PRIORITY, 3);
-set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 6);
-set_hitbox_value(AT_FTILT, 1, HG_ANGLE, 50);
+set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 8);
+set_hitbox_value(AT_FTILT, 1, HG_ANGLE, 65);
 set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, .1);
+set_hitbox_value(AT_FTILT, 1, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, sound_get("slice1"));
-set_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER, .95);
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 303);
 
 

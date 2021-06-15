@@ -46,13 +46,13 @@ set_hitbox_value(AT_TAUNT, 1, HG_HEIGHT, 96);
 set_hitbox_value(AT_TAUNT, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_TAUNT, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_TAUNT, 1, HG_DAMAGE, 10);
-set_hitbox_value(AT_TAUNT, 1, HG_ANGLE, 45);
-set_hitbox_value(AT_TAUNT, 1, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_TAUNT, 1, HG_KNOCKBACK_SCALING, 1.2);
-set_hitbox_value(AT_TAUNT, 1, HG_BASE_HITPAUSE, 1);
+set_hitbox_value(AT_TAUNT, 1, HG_ANGLE, 300);
+set_hitbox_value(AT_TAUNT, 1, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_TAUNT, 1, HG_KNOCKBACK_SCALING, 0.4);
+set_hitbox_value(AT_TAUNT, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_TAUNT, 1, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_TAUNT, 1, HG_VISUAL_EFFECT_X_OFFSET, 16);
-set_hitbox_value(AT_TAUNT, 1, HG_HITSTUN_MULTIPLIER, .01);
+set_hitbox_value(AT_TAUNT, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_TAUNT, 1, HG_VISUAL_EFFECT, 1);
 
 

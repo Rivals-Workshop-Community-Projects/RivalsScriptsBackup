@@ -5,14 +5,69 @@
 	}
 
 
-if !instance_exists(curse_target){
-
- curse_target = self
- admw = 0
- admb = 0 
-
+if admw < 0 {
+	admw = 0
 }
 
+
+switch admw {
+
+    case 0 :
+    
+        with (pHitBox) {
+		if player_id == other.id {
+		     		kb_scale = hitpause/10
+		     		hitpause_growth = hitpause/10
+  		     }
+  	    }
+  	    
+    break;
+    
+    case 1:
+       with (pHitBox) {
+		if player_id == other.id {
+		     		kb_scale = hitpause/50
+		     		hitpause_growth = hitpause/50
+  		     }
+  	    }
+    
+    break;
+    
+    
+    case 2:
+             	with (pHitBox) {
+		     if player_id == other.id {
+		     	extra_hitpause = floor(damage/2)
+		     		kb_scale = hitpause/80
+		     		hitpause_growth = hitpause/80
+  		     }
+  	    }
+    
+    break;
+
+
+    case 3:
+         	with (pHitBox) {
+		     if player_id == other.id {
+		     	extra_hitpause = floor(damage/2)
+		     		kb_scale = hitpause/80
+		     		hitpause_growth = hitpause/80
+  		     }
+  	    }
+    break;
+     
+     
+    case 4 :
+     	with (pHitBox) {
+		     if player_id == other.id {
+		     	extra_hitpause = floor(damage)
+		     		kb_scale = hitpause/100
+		     		hitpause_growth = hitpause/100
+  		     }
+  	    }
+    break; 
+
+}
 
 
 /////
@@ -229,20 +284,13 @@ if get_gameplay_time() == 90 {
 	window = 2
 	window_timer = 0
 	visible = true
-	spawn_hit_fx ( curse_target.x, curse_target.y - 40, SC )
-    spawn_hit_fx ( curse_target.x, curse_target.y - 40, wh )
-    spawn_hit_fx ( curse_target.x, curse_target.y - 40, bh )
+	spawn_hit_fx ( x, y - 40, SC )
+    spawn_hit_fx ( x, y - 40, wh )
+    spawn_hit_fx ( x, y - 40, bh )
     
 }
 
-if curse_target != 0 && (curse_target.state == PS_RESPAWN or curse_target.state == PS_DEAD){
-karma = 0
-karmatimer = 0
-karmacom = 0
-admw = 0
-admb = 0
-curse_target = self
-}
+
 
 if state == PS_WAVELAND && (state_timer % 5 == 0 or state_timer == 1) {
 	spawn_hit_fx(x - 10*spr_dir, y , ai)
@@ -252,9 +300,7 @@ if state == PS_WAVELAND && (state_timer % 5 == 0 or state_timer == 1) {
 if state == PS_AIR_DODGE && state_timer % 5 == 0 && state_timer < 10 {
 	spawn_hit_fx(x - 10*spr_dir, y , ai)
 }
-if curse_target != 0 && curse_target.state == PS_DEAD {
-   curse_target = 0
-}
+
 
 if !free or state == PS_WALL_JUMP {
 	move_cooldown[AT_FSPECIAL] = 0;
@@ -262,28 +308,69 @@ if !free or state == PS_WALL_JUMP {
 	move_cooldown[AT_USPECIAL] = 0;
 }
 
-if admb >= 3 && admw >= 4 && !hitpause {
+if admb >= 3 && admw >= 4  {
 	if  get_player_color(player) == 5 {
-sound_play(sound_get("CARAMELFN"))
-}
+    sound_play(sound_get("CARAMELFN"))
+    }
+    
+    spawn_hit_fx(x,y,darken)
+    
 
+    spawn_hit_fx ( x, y + 30, 302 )
+    spawn_hit_fx ( x, y + 30, wh )
+    spawn_hit_fx ( x, y + 30, bh )
+    
+    
     sound_play(sound_get("ADfull"))
+   
+
+  	    
     admb = -1
     admw = -1
-    spawn_hit_fx ( curse_target.x, curse_target.y + 30, 302 )
-    spawn_hit_fx ( curse_target.x, curse_target.y + 30, wh )
-    spawn_hit_fx ( curse_target.x, curse_target.y + 30, bh )
     karmatimer = 360
+    
+
+  	    
 }
+
+if karmatimer > 2 {
+	
+	  with (asset_get("oPlayer")) {
+	    		
+	    		if x + hsp > room_width - 20 {
+	    			x = 10
+	    		}
+	    		
+	    		    		
+	    		if x + hsp < 20 {
+	    			x = room_width - 10
+	    		}	
+	    		
+	    		
+	    		if y + vsp > room_height - 20 {
+	    			y = 10 
+	    			x = room_width/2
+	    		}
+	    		
+	    		
+	    		if y + vsp < 0 {
+	    			y = 10 
+	    		}
+	    		
+	  }
+	  
+	  
+
+} 
 
 if (karmatimer > 2) && !hitpause {
 	
 
- if get_player_damage(curse_target.player) > 0 {
- 	 with  curse_target {
+ if get_player_damage(player) > 0 {
+
  	  take_damage( player, -1 , -2)
- 	 }
- 	  karmacom += 2.5
+      
+ 	  karmacom += 2
  }
 	
 if soultimer < -1 {
@@ -301,6 +388,7 @@ if soultimer < -1 {
                      window = 4
                      window_timer = 0
 }
+
   	move_cooldown[AT_DSPECIAL] = 5 ;
 
     karmatimer -= 1
@@ -312,22 +400,24 @@ if karmatimer == 70 && !hitpause {
 }
 
 if karmatimer == 2 {
+	
+	    
+  	    
+  	    
+	sound_play(sound_get("ADfinish"))
 karmatimer = 1
     var karmaredis = karma
     var karmaredis2 = floor(karmacom)
-with  curse_target {
-		take_damage( player, -1 , karmaredis)
-		take_damage( player, -1 , karmaredis2)
-}
+
+		take_damage( player, -1 , karmacom)
+
 }
 
 if karmatimer == 1 {
-	spawn_hit_fx(  curse_target.x ,  curse_target.y - 40, shit5 )
-	spawn_hit_fx(  curse_target.x ,  curse_target.y - 40, shit6 )
+	spawn_hit_fx(  x ,  y - 40, shit5 )
+	spawn_hit_fx(  x ,  y - 40, shit6 )
     karmatimer = -1
-    create_hitbox(AT_EXTRA_3 , 1 ,  curse_target.x  ,  curse_target.y ); 
     
-       curse_target = 0
        
 }
 
@@ -348,12 +438,7 @@ if nshit == 2 {
 }
 
 if nshit > 3 {
-	if get_gameplay_time() % 2 == 0 {
-	spawn_hit_fx( x + 40 - random_func(5, 80, true) - (10*spr_dir), y - 20 - random_func(4, 80, true) , esp1 )
-	}
-	if get_gameplay_time() % 2 == 1 {
-	spawn_hit_fx( x + 40 - random_func(5, 80, true) - (10*spr_dir), y - 20 - random_func(4, 80, true) , esp2 )
-	}
+
 	if !hitpause {
 	nshit -= 1
 	}
@@ -365,6 +450,18 @@ if nshit == 3 {
 }
 
 
+if admb == 3 {
+		if get_gameplay_time() % 2 == 0 {
+	spawn_hit_fx( x + 40 - random_func(5, 80, true) - (10*spr_dir), y - 20 - random_func(4, 80, true) , esp1 )
+	}
+
+}
+
+if admw == 4 {
+		if get_gameplay_time() % 2 == 1 {
+	spawn_hit_fx( x + 40 - random_func(5, 80, true) - (10*spr_dir), y - 20 - random_func(4, 80, true) , esp2 )
+	}
+}
 // Soul
 if soultimer <= -240 && !hitpause {
 
@@ -418,7 +515,7 @@ if soultimer < 0 && get_gameplay_time() % 60 == 0 && soulfree == 1 {
     spawn_hit_fx (soulx,souly - 30, bh )
 	}
 
-if soultimer < -1 && soultimer > -240 && down_down && special_down {
+if soultimer < -1 && soultimer > -240 && down_down && special_down && can_attack {
 	outline_color = [0, 0, 0]
 	init_shader();
     spawn_hit_fx (x,y -30 , 302 )
@@ -538,7 +635,7 @@ if (y >= room_height - vsp) or ( x + hsp > room_width) or ( x + hsp < 0) or (y <
     spawn_hit_fx (x,y - 30, bh )
 	sound_play(asset_get("sfx_holy_lightning"))
 	sound_play(sound_get("slicen"))
-	sound_play(sound_get("strong1"))
+	sound_play(sound_get("strong3"))
 soultimer = 0
 x = soulx
 y = souly

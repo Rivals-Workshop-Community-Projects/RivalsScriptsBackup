@@ -2,8 +2,7 @@
 // Runs once when the player is created
 // Where most player variables are assigned
 
-Platform_Text = [ [44, "She cute tho"], [32, "Doki Doki"], [48, "100% Real Girl"], [32, "Date Girl"], [32, "Data Girl"], [46, "S U C C E S S"], [46, "World is Mine"], [34, "Digital Girl"], [44, "Do your best!"], [38, "Keep going!"], [28, "Press F"] ];
-platform_number = 0;
+HITPLAYERDURINGUSPECIALIDKWHYTHISDOESNTWORK = false;
 
 trailer_effect = false;
 tsj_check = false;
@@ -14,6 +13,18 @@ tsj_y1 = 0;
 tsj_y2 = 0;
 tsj_y3 = 0;
 tsj_timer = 0;
+
+death_chime = false;
+death_chime_counter = 0;
+death_chime_sound = noone;
+FF14_meme_text = "Rather than playing Rivals of Aether
+	you should try the critically acclaimed MMORPG 
+	Final Fantasy XIV which has a free trial 
+	and includes the entirety of A Realm Reborn 
+	AND the award-winning Heavensward expansion up to 
+	level 60 with no restrictions on playtime! 
+	Sign up, and enjoy Eorzea today! 
+	https://secure.square-enix.com/account/app/svc/ffxivregister?lng=en-gb"
 
 SecretColor = 0;
 ColorLock = 0;
@@ -91,7 +102,7 @@ crouchbox_spr = sprite_get("crouch_hurtbox");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
-char_height = 40;
+char_height = 34;
 idle_anim_speed = .092;
 crouch_anim_speed = .2;
 walk_anim_speed = .12;
@@ -129,7 +140,7 @@ walljump_vsp = 9;
 walljump_time = 32;
 max_fall = 9; //maximum fall speed without fastfalling
 fast_fall = 13; //fast fall speed
-gravity_speed = .4;
+gravity_speed = .45;
 hitstun_grav = .45;
 knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 

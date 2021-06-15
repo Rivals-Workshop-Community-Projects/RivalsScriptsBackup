@@ -442,6 +442,9 @@ if (create_moving){
 	if (get_player_color(player) == 11){
 		movingbox.sprite_index = sprite_get("macka_spin");
 	}
+	if (get_player_color(player) == 15){
+		movingbox.sprite_index = sprite_get("moff_spin");
+	}
 }
 
 if (instance_exists(movingbox) && movingbox.destroy && movingbox.solid_timer == 0){
@@ -457,6 +460,9 @@ if (instance_exists(movingbox) && movingbox.destroy && movingbox.solid_timer == 
 		if (get_player_color(player) == 11){
 			Box.sprite_index = sprite_get("macka");
 		}
+		if (get_player_color(player) == 15){
+			Box.sprite_index = sprite_get("moff");
+		}
 		if (get_player_color(player) == 12 || get_player_color(player) == 14 || get_player_color(player) == 10 || get_player_color(player) == 1 || SecretColor == 2 || SecretColor == 3){
 			Box.flag = false;
 		}		
@@ -467,6 +473,21 @@ if (instance_exists(movingbox) && movingbox.destroy && movingbox.solid_timer == 
 	}
 	instance_destroy(movingbox.boxhitbox) 
 	instance_destroy(movingbox);
+}
+
+if (!death_chime){
+	if (oPlayer.state == PS_DEAD || oPlayer.state == PS_RESPAWN){
+		death_chime = true;
+	}
+}
+
+if (death_chime){
+	death_chime_counter++;
+}
+
+if (death_chime_counter >= 120){
+	death_chime = false;
+	death_chime_counter = 0;
 }
 
 
@@ -508,7 +529,7 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 		
 		if (get_player_color(player) == 3){ // Color 4 Melon Secret Alt
 
-			// THE - Alt color Down + Attack + Jump
+			// TAG - Alt color Down + Attack + Jump
 			if (!up_down && down_down && !left_down && !right_down && !shield_down && attack_down && !special_down){
 				SecretColor = 3;
 				hit_big = hit_fx_create( sprite_get("bighit_custom1_fx"), 44);

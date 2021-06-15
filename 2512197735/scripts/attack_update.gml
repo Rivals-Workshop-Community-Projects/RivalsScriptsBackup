@@ -189,8 +189,8 @@ if (attack == AT_DSPECIAL){
     	}
     }
     can_fast_fall = false;
-    can_move = false
-    if(window == 5 && window_time_is(1)){
+ can_move = true;
+ if(window == 5 && window_time_is(1)){
     	shake_camera(8,9);
     	spawn_hit_fx( x, y, 301 );
     }
@@ -199,6 +199,8 @@ if (attack == AT_DSPECIAL){
 if (attack == AT_DSPECIAL){
     fall_through = true;
 	can_wall_jump=true;	
+	can_move=true;
+	can_shield=true;
 }
 
 if(attack == AT_DSTRONG){
@@ -225,7 +227,7 @@ if(attack == AT_USTRONG){
 		sound_play(sound_get("land"));
 	}
 	if(strong_charge >= 15 && window == 2 && window_time_is(1)){
-		vsp -= 1.1;
+		vsp -= 5;
 	}
 }
 if(attack == AT_FSTRONG){

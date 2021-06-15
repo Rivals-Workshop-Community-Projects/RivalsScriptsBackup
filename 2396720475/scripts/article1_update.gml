@@ -4,7 +4,7 @@
 state_timer++
 //image_alpha = 0.5;
 
-if (get_player_color(player) == 13 || get_player_color(player) == 11 ){
+if (get_player_color(player) == 13 || get_player_color(player) == 11  || get_player_color(player) == 15 ){
 	if (image_index < 3){
 		image_index += 0.25;
 	}
@@ -70,7 +70,7 @@ if (state == 1){
 					other.hitpause = true;
 					other.hitstop = hitpause + extra_hitpause;
 
-					other.owner = pHitBox.player;
+					other.owner = player;
 					
 					other.health_check = true;
 
@@ -85,7 +85,7 @@ if (state == 1){
 					}
 					*/
 
-					sound_play(pHitBox.sound_effect);	
+					sound_play(sound_effect);	
 					spawn_hit_fx(other.x, other.y, hit_effect);
 					
 					if (other.state_timer > 10 && type == 1){ // This is mainly to avoid weird momentum stoppage when you hit a box that's not moving initially
@@ -181,7 +181,7 @@ if (destroy_check){
 }
 
 if (state_timer == 990){	
-	if (get_player_color(player) == 13 || get_player_color(player) == 11){
+	if (get_player_color(player) == 13 || get_player_color(player) == 11 || get_player_color(player) == 15){
 		sound_play(sound_get("squeak_sfx"));
 		}
 		else {
@@ -207,7 +207,7 @@ if ((state_timer < 985 && state_timer > 980) || (state_timer < 975 && state_time
 
 if (y < 0 - 300 || y > room_height + 300 || x > room_width + 300 || x < - 300 ){
 //	player_id.move_cooldown[AT_DSPECIAL] = 0;
-	if (get_player_color(player) == 13 || get_player_color(player) == 11){
+	if (get_player_color(player) == 13 || get_player_color(player) == 15 || get_player_color(player) == 11){
 		sound_play(sound_get("squeak_sfx"));
 	}
 	else {

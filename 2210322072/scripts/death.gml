@@ -1,8 +1,8 @@
 ///
 
 
-admw = 0
-admb = 0
+admw = 3
+admb = 1
 
 
 if karmatimer > 0  {

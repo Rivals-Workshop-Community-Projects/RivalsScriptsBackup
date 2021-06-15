@@ -50,10 +50,10 @@ set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, sound_get("strong1"));
-set_hitbox_value(AT_DSTRONG, 1, HG_HITSTUN_MULTIPLIER, .9);
+set_hitbox_value(AT_DSTRONG, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_TECHABLE, 2);
-set_hitbox_value(AT_DSTRONG, 1, HG_SDI_MULTIPLIER, 0.8);
+set_hitbox_value(AT_DSTRONG, 1, HG_SDI_MULTIPLIER, 0.9);
 
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW, 2);
@@ -73,8 +73,8 @@ set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, sound_get("strong1"));
-set_hitbox_value(AT_DSTRONG, 2, HG_HITSTUN_MULTIPLIER, .9);
+set_hitbox_value(AT_DSTRONG, 2, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_TECHABLE, 2);
-set_hitbox_value(AT_DSTRONG, 2, HG_SDI_MULTIPLIER, 0.8);
+set_hitbox_value(AT_DSTRONG, 2, HG_SDI_MULTIPLIER, 0.9);
 

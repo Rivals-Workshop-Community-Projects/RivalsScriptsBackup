@@ -1,11 +1,34 @@
 ///
 ///
 
+		with hit_player_obj {
+		take_damage(player,-1, other.admb*-1)
+	}
+	
+if admw == 4 && (my_hitboxID.sound_effect == sound_get("slice1") or my_hitboxID.sound_effect == sound_get("slice2")
+or my_hitboxID.sound_effect == sound_get("slice3")) {
+	
 
-
-if (curse_target == 0 or (admw == 0 and admb == 0)) and  hit_player_obj != self{
-	curse_target = hit_player_obj
+	
+	sound_play(sound_get("strong3"),false,noone,0.6,0.9 + random_func(1,20,true)/30)
 }
+
+
+if my_hitboxID.sound_effect != sound_get("slice1") && my_hitboxID.sound_effect != sound_get("slice2")
+&& my_hitboxID.sound_effect != sound_get("slice3") && my_hitboxID.sound_effect != asset_get("sfx_holy_lightning") {
+	
+
+	if  admb == 3 {
+	sound_play(sound_get("strong3"),false,noone,0.7,0.6 + random_func(1,10,true)/30)
+	}
+}
+
+
+move_cooldown[AT_EXTRA_1] = 20 + my_hitboxID.damage*4
+
+
+
+
 
 if introhit = 0 {
 	introhit = 1
@@ -13,7 +36,15 @@ if introhit = 0 {
 
 intro = 1
 
-if hit_player_obj == curse_target {
+
+if  karmatimer > 2 {
+	with hit_player_obj {
+		take_damage(player,-1,floor(other.my_hitboxID.damage/2))
+	}
+	
+	
+}
+
 
 
 if my_hitboxID.attack == AT_FTILT or my_hitboxID.attack == AT_DTILT or my_hitboxID.attack == AT_JAB 
@@ -23,11 +54,21 @@ or my_hitboxID.attack == AT_UTILT or my_hitboxID.attack == AT_DATTACK {
 	
     if karmatimer == 0 and soultimer == 0 {
     if admw < 4 {
+  
+  if admw == 1 {
+  	admw += 1
+  }
+  
   admw += 1
+  
+
+  if admb > 0 {
+  admb -= 1
+  }
     }
     } else {
     spawn_hit_fx (hit_player_obj.x,hit_player_obj.y - 40, wh )
-}
+    }
 }
 
 if my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_DSTRONG or my_hitboxID.attack == AT_USTRONG{
@@ -36,21 +77,20 @@ if my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_DSTRONG or my_hi
 	
 
 
-	var hits = random_func(5, 4, true) ;
 	
-	if (hits == 0 ){
+	if (random_func(5, 4, true) == 0 ){
     	spawn_hit_fx( hit_player_obj.x + random_func(3, 40, true)*spr_dir, hit_player_obj.y - 50 + random_func(1, 10, true), shit3 )
     }
 	
-  	if (hits == 1 ){
+  	if (random_func(5, 4, true) == 1 ){
         	spawn_hit_fx( hit_player_obj.x + random_func(3, 40, true)*spr_dir, hit_player_obj.y - 50 + random_func(1, 10, true), shit4 )
      }
      
-     if (hits == 2){
+     if (random_func(5, 4, true) == 2){
     	spawn_hit_fx( hit_player_obj.x + random_func(3, 40, true)*spr_dir, hit_player_obj.y - 50 + random_func(1, 10, true), shit5 )
      }
      
-    if (hits == 3){
+    if (random_func(5, 4, true) == 3){
     	spawn_hit_fx( hit_player_obj.x + random_func(3, 40, true)*spr_dir, hit_player_obj.y - 50 + random_func(1, 10, true), shit6 )
      }
 	
@@ -66,6 +106,11 @@ var ADdmg = floor(my_hitboxID.damage)
     if karmatimer == 0 and soultimer == 0 {
     if admb < 3 {
   admb += 1
+  
+  admw -= 1
+    if admw == 2 {
+  	admw -= 1
+  }
     }
     } else {
     
@@ -77,7 +122,6 @@ var ADdmg = floor(my_hitboxID.damage)
 if karmatimer > 0 or soultimer < 0 {	
     	var ADdmg = floor(my_hitboxID.damage)
 with hit_player_obj {
-		take_damage( player, -1 , ADdmg * -1)
 		
 }		
 
@@ -92,21 +136,20 @@ if soultimer < 0 {
 
 
 if my_hitboxID.attack == AT_FSPECIAL or my_hitboxID.attack == AT_USPECIAL {
-		var hits = random_func(5, 4, true) ;
 	
-	if (hits == 0 ){
+	if (random_func(5, 4, true) == 0 ){
     	spawn_hit_fx( hit_player_obj.x + random_func(3, 40, true)*spr_dir, hit_player_obj.y - 50 + random_func(1, 10, true), shit3 )
     }
 	
-  	if (hits == 1 ){
+  	if (random_func(5, 4, true) == 1 ){
         	spawn_hit_fx( hit_player_obj.x + random_func(3, 40, true)*spr_dir, hit_player_obj.y - 50 + random_func(1, 10, true), shit4 )
      }
      
-     if (hits == 2){
+     if (random_func(5, 4, true) == 2){
     	spawn_hit_fx( hit_player_obj.x + random_func(3, 40, true)*spr_dir, hit_player_obj.y - 50 + random_func(1, 10, true), shit5 )
      }
      
-    if (hits == 3){
+    if (random_func(5, 4, true) == 3){
     	spawn_hit_fx( hit_player_obj.x + random_func(3, 40, true)*spr_dir, hit_player_obj.y - 50 + random_func(1, 10, true), shit6 )
      }
      
@@ -120,20 +163,7 @@ if my_hitboxID.attack == AT_FSPECIAL or my_hitboxID.attack == AT_USPECIAL {
 	}
 	}
 	if my_hitboxID.hbox_num == 1 {
-	   		    if karmatimer == 0 and soultimer == 0 {
-                if admb < 3 {
-              admb += 1
-                }
-                } else {
-                spawn_hit_fx (hit_player_obj.x,hit_player_obj.y - 40, bh )
-                }
-                if karmatimer == 0 and soultimer == 0 {
-                if admw < 4 {
-              admw += 1
-                }
-                } else {
-                spawn_hit_fx (hit_player_obj.x,hit_player_obj.y - 40, wh )
-                }
+
 	}
 	
 }
@@ -144,20 +174,7 @@ if my_hitboxID.attack == AT_NSPECIAL {
 
 if my_hitboxID.hbox_num == 1 or my_hitboxID.hbox_num == 4 {
 
-	   		    if karmatimer == 0 and soultimer == 0 {
-                if admb < 3 {
-              admb += 1
-                }
-                } else {
-                spawn_hit_fx (hit_player_obj.x,hit_player_obj.y - 40, bh )
-                }
-                if karmatimer == 0 and soultimer == 0 {
-                if admw < 4 {
-              admw += 1
-                }
-                } else {
-                spawn_hit_fx (hit_player_obj.x,hit_player_obj.y - 40, wh )
-                }
+
 	    }
 if my_hitboxID.hbox_num == 3 {
 	if karmatimer == 0 and soultimer == 0 {
@@ -186,66 +203,81 @@ or my_hitboxID.attack == AT_UAIR or  my_hitboxID.attack == AT_DAIR{
 	if my_hitboxID.hbox_num <= 2 {
 
 	
-	if karmatimer == 0 and soultimer == 0 {
-                if admw < 4 {
-              admw += 1
-                }
-                } else {
-                spawn_hit_fx (hit_player_obj.x,hit_player_obj.y - 40, wh )
-                }
+    if karmatimer == 0 and soultimer == 0 {
+    if admw < 4 {
+  
+  if admw == 1 {
+  	admw += 1
+  }
+  
+  admw += 1
+  
+
+  if admb > 0 {
+  admb -= 1
+  }
+    }
+    } else {
+    spawn_hit_fx (hit_player_obj.x,hit_player_obj.y - 40, wh )
+    }
    }
 	
-	if my_hitboxID.hbox_num > 2 {	
+if my_hitboxID.hbox_num > 2 {	
 		
-			var hits = random_func(5, 4, true) ;
 	
-	if (hits == 0 ){
+	if (random_func(5, 4, true) == 0 ){
     	spawn_hit_fx( hit_player_obj.x + random_func(3, 40, true)*spr_dir, hit_player_obj.y - 50 + random_func(1, 10, true), shit3 )
     }
 	
-  	if (hits == 1 ){
+  	if (random_func(5, 4, true) == 1 ){
         	spawn_hit_fx( hit_player_obj.x + random_func(3, 40, true)*spr_dir, hit_player_obj.y - 50 + random_func(1, 10, true), shit4 )
      }
      
-     if (hits == 2){
+     if (random_func(5, 4, true) == 2){
     	spawn_hit_fx( hit_player_obj.x + random_func(3, 40, true)*spr_dir, hit_player_obj.y - 50 + random_func(1, 10, true), shit5 )
      }
      
-    if (hits == 3){
+    if (random_func(5, 4, true) == 3){
     	spawn_hit_fx( hit_player_obj.x + random_func(3, 40, true)*spr_dir, hit_player_obj.y - 50 + random_func(1, 10, true), shit6 )
      }
      
 
 		
-	if karmatimer == 0 and soultimer == 0 {
-                if admb < 3 {
-              admb += 1
-                }
-                } else {
-                spawn_hit_fx (hit_player_obj.x,hit_player_obj.y - 40, bh )
-                }
+    if karmatimer == 0 and soultimer == 0 {
+    if admb < 3 {
+  admb += 1
+  
+  admw -= 1
+    if admw == 2 {
+  	admw -= 1
+  }
+    }
+    } else {
+    
+    spawn_hit_fx (hit_player_obj.x,hit_player_obj.y - 40, bh )
+}
 }
 	
 }
-}
+
 
 if my_hitboxID.attack == AT_NSPECIAL {
 	
-		var hits = random_func(5, 4, true) ;
+
 	
-	if (hits == 0 ){
+	if (random_func(5, 4, true)== 0 ){
     	spawn_hit_fx( hit_player_obj.x + random_func(3, 40, true)*spr_dir, hit_player_obj.y - 50 + random_func(1, 10, true), shit3 )
     }
 	
-  	if (hits == 1 ){
+  	if (random_func(5, 4, true) == 1 ){
         	spawn_hit_fx( hit_player_obj.x + random_func(3, 40, true)*spr_dir, hit_player_obj.y - 50 + random_func(1, 10, true), shit4 )
      }
      
-     if (hits == 2){
+     if (random_func(5, 4, true) == 2){
     	spawn_hit_fx( hit_player_obj.x + random_func(3, 40, true)*spr_dir, hit_player_obj.y - 50 + random_func(1, 10, true), shit5 )
      }
      
-    if (hits == 3){
+    if (random_func(5, 4, true) == 3){
     	spawn_hit_fx( hit_player_obj.x + random_func(3, 40, true)*spr_dir, hit_player_obj.y - 50 + random_func(1, 10, true), shit6 )
      }
      
@@ -266,14 +298,18 @@ if my_hitboxID.hbox_num == 1 or my_hitboxID.hbox_num == 4 {
 	
 }
 
-if move_cooldown[AT_NSPECIAL] == 0 && my_hitboxID.attack == AT_FSPECIAL or my_hitboxID.attack == AT_USPECIAL or my_hitboxID.sound_effect == sound_get("strong1") {
-	
+if (my_hitboxID.attack == AT_FSPECIAL or my_hitboxID.attack == AT_USPECIAL  or 
+(my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.type == 1 )) {
+
+if my_hitboxID.attack == AT_NSPECIAL {
+	sound_play(sound_get("slicef"))
+}	
 	 move_cooldown[AT_NSPECIAL] = 10
 	 
 	if nshit < 2{
-	nshit += 1
+	nshit = 2
 	}
-	if nshit == 2 {
-		sound_play(sound_get("slicef"))
-	}
+
+		
+	
 }

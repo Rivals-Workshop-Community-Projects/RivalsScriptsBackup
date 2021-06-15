@@ -125,6 +125,7 @@ set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT_X_OFFSET, 30);
 set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_DSTRONG, 3, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITSTUN_MULTIPLIER, 1.0);
+set_hitbox_value(AT_DSTRONG, 3, HG_HIT_LOCKOUT, 16);
 
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, -1);

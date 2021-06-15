@@ -15,3 +15,9 @@ if (attack == AT_FSPECIAL){
 	chargedash = 0;
 	usedFspecial = false;
 }
+
+
+if (death_chime_sound){
+	sound_stop(death_chime_sound);
+	death_chime_sound = noone;
+}

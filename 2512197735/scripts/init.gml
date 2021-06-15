@@ -30,7 +30,7 @@ moonwalk_accel      = 1.4;		// 1.2  -  1.4
 // Air movement
 leave_ground_max    = 6;		// 4    -  8
 max_jump_hsp        = 7;		// 4    -  8
-air_max_speed       = 4.3;  		// 3    -  7
+air_max_speed       = 4.7;  		// 3    -  7
 jump_change         = 3;		// 3
 air_accel           = 0.4;		// 0.2  -  0.4
 prat_fall_accel     = 0.83;		// 0.25 -  1.5

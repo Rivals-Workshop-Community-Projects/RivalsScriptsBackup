@@ -16,6 +16,28 @@ if (taunt_down && attack == AT_EXTRA_1 && state == PS_ATTACK_GROUND && window ==
 	window_timer = 1;
 }
 
+// Slime Taunt
+if (attack == AT_TAUNT){
+	if (get_player_color(player) == 14){
+		
+		if (state_timer == 1){
+	
+			if (death_chime){
+				death_chime_sound =	sound_play(sound_get("Slime Taunt Theme"));		
+			}
+			else {
+				sound_play(sound_get("FFXIV_Open_Window"));
+			}
+
+		}
+
+		if (window_timer == 4 && window == 3){
+			sound_stop(death_chime_sound);
+			death_chime_sound = noone;
+		}
+	}
+}
+
 if (attack == AT_EXTRA_2 && state == PS_ATTACK_GROUND && window == 1 && window_timer == 4){
 	
 	if (yai_hold_sound != 0){
@@ -110,7 +132,7 @@ if (attack == AT_DSPECIAL){
 			if (instance_exists(Box)){
 				spawn_hit_fx(Box.x, Box.y, hit_small1);
 
-				if (get_player_color(player) == 13 || get_player_color(player) == 11){
+				if (get_player_color(player) == 13 || get_player_color(player) == 15 || get_player_color(player) == 11){
 					sound_play(sound_get("squeak_sfx"));
 				}
 				else {
@@ -146,6 +168,9 @@ if (attack == AT_DSPECIAL){
 			if (get_player_color(player) == 11){
 				movingbox.sprite_index = sprite_get("macka");
 			}
+			if (get_player_color(player) == 15){
+				movingbox.sprite_index = sprite_get("moff");
+			}
 		}
 	}
 }
@@ -157,6 +182,7 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL){
 
 // Forward Special
 if (attack == AT_FSPECIAL){	
+	can_fast_fall = false;
 	move_cooldown[AT_FSPECIAL] = 40;
 	if (window == 2){
 		
@@ -296,6 +322,7 @@ if (attack == AT_USPECIAL){
 }
 
 if (attack == AT_USPECIAL){
+	can_fast_fall = false;
 	if (window == 1 && window_timer == 1){
 		usedUspecial_Again++;
 	}
@@ -304,53 +331,83 @@ if (attack == AT_USPECIAL){
 	//	needle_angle = floor(joy_dir / 22.5) * 22.5;
 		needle_angle = joy_dir;
 	}
-	/*
-		if ((needle_angle <= 22.5 || needle_angle >= 337.5) && needle_angle != 0){
-			needle_angle = 0;
-		}		
-		if (needle_angle < 67.5 && needle_angle > 22.5){
-			needle_angle = 45;
-		}
-		if (needle_angle <= 112.5 && needle_angle >= 67.5){
-			needle_angle = 90;
-		}
-		if (needle_angle < 157.5 && needle_angle > 112.5){
-			needle_angle = 135;
-		}
-		if (needle_angle <= 202.5 && needle_angle >= 157.5){
-			needle_angle = 180;
-		}
-		if (needle_angle < 247.5 && needle_angle > 202.5){
-			needle_angle = 225;
-		}
-		if (needle_angle <= 292.5 && needle_angle >= 247.5){
-			needle_angle = 270;
-		}
-		if (needle_angle < 337.5 && needle_angle > 292.5){
-			needle_angle = 315;
-		}
-	*/
-		angle = (needle_angle / 180) * -pi;
 
-		if (window_timer == 15){
-			needleland = false;
-			needleplatform = instance_create(x, y - 15, "obj_article2")
-			needleplatform.angle = needle_angle;
-			needleplatform.player = player;
-			needleplatform.player_id = id;
-			needle_sprite = 0;
-			
-			needle_hitbox = create_hitbox(AT_USPECIAL, 1, x, y);
-			needle_hitbox.length = 999;
-		}
+	angle = (needle_angle / 180) * -pi;
+
+	if (window_timer == 15 && window == 2){
+		needleland = false;
+		needleplatform = instance_create(x, y - 15, "obj_article2")
+		needleplatform.angle = needle_angle;
+		needleplatform.player = player;
+		needleplatform.player_id = id;
+		needle_sprite = 0;
 		
-		if (window == 3 && state == PS_ATTACK_AIR){
-			can_attack = true;
-		}
+		needle_hitbox = create_hitbox(AT_USPECIAL, 1, x, y);
+		needle_hitbox.length = 999;
+	}
+	
+	if (window == 3 && has_hit){
+		can_attack = true;
+		can_special = true;
+	}
 }
 else {
 	if (!instance_exists(needleplatform) && instance_exists(needleplatform_solid)){
 		needle_angle = 0;
 		angle = 0;
+	}
+}
+
+if (attack == AT_UAIR){
+	if (state_timer == 1){
+		hud_offset = 10;
+	}
+	
+	hud_offset = clamp(state_timer * 4 + 12, 10, 60);
+}
+
+if (attack == AT_FAIR){
+	if (state_timer == 1){
+		hud_offset = 10;
+	}
+	
+	hud_offset = clamp(state_timer * 4 + 12, 10, 45);
+}
+
+if (attack == AT_UTILT){
+	if (state_timer == 1){
+		hud_offset = 20;
+	}
+	
+	hud_offset = clamp(state_timer * 8 + 12, 10, 80);
+}
+
+if (attack == AT_FSTRONG){
+	if (state_timer == 1){
+		hud_offset = 20;
+	}
+	
+	hud_offset = clamp(state_timer * 4 + 12, 20, 60);
+}
+
+if (attack == AT_USTRONG){
+	if (window > 2){
+		draw_indicator = false
+	}
+}
+
+if (attack == AT_BAIR){
+	if (window < 7 && !down_hard_pressed){
+		if (has_hit_player || has_hit){
+			vsp = clamp(vsp, -2, 2);
+		}
+	}
+}
+
+if (attack == AT_NSPECIAL){
+	if (window <= 3 && !down_hard_pressed){
+		if (has_hit_player || has_hit){
+			hsp = clamp(hsp, -6, 6);
+		}
 	}
 }

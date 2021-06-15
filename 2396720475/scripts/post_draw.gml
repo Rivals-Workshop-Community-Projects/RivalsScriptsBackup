@@ -160,8 +160,8 @@ with (needleplatform_solid){
 }
 */
 
-//draw_debug_text(x, y - 80, "VSP: " + string(vsp));
-//draw_debug_text(temp_x + 300, temp_y - 80, "y pos: " + string(y));
+//draw_debug_text(x, y - 80, "wind: " + string(window));
+//draw_debug_text(x, y - 100, "wind timer: " + string(window_timer));
 
 //draw_debug_text(temp_x + 200, temp_y - 80, "usedUspecial1: " + string(usedUspecial ));
 //draw_debug_text(temp_x + 200, temp_y - 100, "can_pull: " + string(can_pull));

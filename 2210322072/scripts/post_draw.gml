@@ -1,5 +1,12 @@
 shader_start();
 
+if nshit > 3 {
+
+        draw_sprite_ext(sprite_index, image_index , x , y - (get_gameplay_time() % 10)/2  , spr_dir*1.05, 1.05, 0 , -1 , 0.5 - (get_gameplay_time() % 10/30));
+        draw_sprite_ext(sprite_index, image_index , x , y   , spr_dir*1.05, 1.05, 0 , -1 , 0.2);
+   
+}
+
 if soultimer < -350 {
     if soulfree == -1{
     if souldir = -1 {
@@ -18,6 +25,15 @@ if soultimer < -350 {
     draw_sprite(sprite_get("dspecra"), state_timer / 5, soulx, souly); 
     } 
     }
+    
+}
+
+
+if karmatimer != 0 { 
+    	  gpu_set_blendmode(bm_add);
+        draw_sprite_ext(sprite_index, image_index , x - 1 - hsp  - random_func(1,2,true), y - 1 - vsp - random_func(2,2,true)  , spr_dir*1.05, 1.05, 0 , -1 , 0.3);
+		draw_sprite_ext(sprite_index, image_index , x + 1 - hsp*2 + random_func(1,2,true) , y + 1 - vsp*2 + random_func(2,2,true)  , spr_dir*1.05, 1.05, 0 , -1 , 0.3);
+  gpu_set_blendmode(bm_normal);
     
 }
 

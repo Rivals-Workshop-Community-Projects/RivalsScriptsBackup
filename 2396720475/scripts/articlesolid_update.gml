@@ -97,7 +97,7 @@ if (health_check){
 if (state_timer == 990){
 //	player_id.trailer_effect = true;
 	player_id.move_cooldown[AT_DSPECIAL] = 80;			
-	if (get_player_color(player) == 13 || get_player_color(player) == 11){
+	if (get_player_color(player) == 13 || get_player_color(player) == 11 || get_player_color(player) == 15){
 		sound_play(sound_get("squeak_sfx"));
 		}
 		else {
@@ -120,7 +120,7 @@ if (y < 0 - 300 || y > room_height + 300 || x > room_width + 300 || x < - 300 ){
 //	player_id.move_cooldown[AT_DSPECIAL] = 0;
 
 	spawn_hit_fx(x, y, player_id.hit_small1);
-	if (get_player_color(player) == 13 || get_player_color(player) == 11){
+	if (get_player_color(player) == 13 || get_player_color(player) == 11 || get_player_color(player) == 15){
 		sound_play(sound_get("squeak_sfx"));
 	}
 	else {

@@ -28,13 +28,19 @@ if (state == 1){
 		sound_play(sound_get("needle2_sfx"));
 		if (touched_player){
 			y = y - 20;
-			create_hitbox(AT_USPECIAL, 1, hit_x, hit_y);
+			needlehitbox = create_hitbox(AT_USPECIAL, 1, hit_x, hit_y);
+			needlehitbox.player_id = player_id;
+			needlehitbox.player = player;
+			needlehitbox.orig_player = player;
+			
+			player_id.has_hit = true;
+			
 		}
 		
-		if (!player_parry && !player_dodge){					
+		if (!player_parry && !player_dodge){				
 			with(player_id){
 				move_cooldown[AT_USPECIAL] = 60;
-
+				
 				if (point_distance( x, y, other.x, other.y) < 25 && y > other.y && other.angle == 270){
 				}
 				
@@ -77,27 +83,6 @@ if (state == 1){
 		ignores_walls = true;
 		state_timer = 900;
 	}
-
-/*
-	with (oPlayer){
-		if (place_meeting(x, y, other)){
-			if (player != other.player){
-				if (state == PS_PARRY && state_timer <= 4){
-					other.player_parry = true;
-				}
-
-				if (super_armor || invincible || state == PS_AIR_DODGE || state == PS_ROLL_BACKWARD || state == PS_ROLL_BACKWARD || state == PS_TECH_GROUND || state == PS_TECH_BACKWARD || state == PS_TECH_FORWARD){
-					other.player_dodge = true;
-				}
-				else{
-					other.touched_player = true;
-					other.hit_y = y - 20;
-					other.hit_x = x;
-				}
-			}
-		}
-	}
-*/
 	
 	if (vsp == 0 && hsp == 0 && !hit_wall){
 		state = 4;

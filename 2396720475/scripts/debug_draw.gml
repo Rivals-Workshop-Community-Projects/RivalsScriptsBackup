@@ -1,32 +1,25 @@
 // debug_draw.gml
 // draws debug text/sprites in front of everything
 
-// Lol there is nothing here, this is a beta, no secret knowledge for you.
+if (attack == AT_TAUNT && state == PS_ATTACK_GROUND){
+	if (get_player_color(player) == 14){
+		if (death_chime_sound){
+			
+			draw_sprite_ext(sprite_get("final_crimes"), -1, view_get_xview() + 70, view_get_yview() + 56, 1, 1, 0, c_white, 1);
+			
+			draw_set_font(asset_get("fName"));
+			
+			draw_text_color(view_get_xview() + 874, view_get_yview() + 68, string(fps) + "FPS", c_white, c_white, c_white, c_white, 1);
 
-// This just some test code I wanna leave in
-//with (oPlayer){
-//	draw_debug_text(x - 10, y - 80, "State: " + string(state));
-//	draw_debug_text(x - 10, y - 100, "X: " + string(x));
-//	draw_debug_text(x - 10, y - 120, "Y: " + string(y));
-//}
-
-/*
-var text = "
-			Love will protect this world
-			";
-
-draw_set_font(3);
-
-draw_text_color(300 + 4, 130, text, c_black, c_black, c_black, c_black, 1);
-draw_text_color(300 - 4, 130, text, c_black, c_black, c_black, c_black, 1);
-draw_text_color(300, 130 + 4, text, c_black, c_black, c_black, c_black, 1);
-draw_text_color(300, 130 - 4, text, c_black, c_black, c_black, c_black, 1);
-draw_text_color(300 + 4, 130 + 4, text, c_black, c_black, c_black, c_black, 1);
-draw_text_color(300 - 4, 130 + 4, text, c_black, c_black, c_black, c_black, 1);
-draw_text_color(300 + 4, 130 - 4, text, c_black, c_black, c_black, c_black, 1);
-draw_text_color(300 - 4, 130 - 4, text, c_black, c_black, c_black, c_black, 1);
-draw_text_color(190, 130, text, c_white, c_white, c_white, c_white, 1);
-*/
+			draw_set_font(asset_get("medFont"));
+			draw_set_halign(fa_center);
+			draw_set_valign(fa_middle);
+			
+			draw_text_color(view_get_xview() + 500, view_get_yview() + 200, string(FF14_meme_text), c_white, c_white, c_white, c_white, 1);
+			depth = 10;
+		}
+	}
+}
 
 
 if(tomoyai){

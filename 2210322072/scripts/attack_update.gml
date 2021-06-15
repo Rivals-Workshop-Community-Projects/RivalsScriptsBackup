@@ -288,9 +288,7 @@ if attack == AT_FSPECIAL {
 			vsp = -3
 	}
 	
-	if has_hit_player && window == 2 {
-		x = hit_player_obj.x + (50*spr_dir)
-	}
+
 	
 	if window == 1 && window_timer > 23 && !hitpause {
 		spawn_hit_fx(x , y - 36, 302)
@@ -402,7 +400,7 @@ if attack == AT_USPECIAL {
 	  }
 	
 	if window == 1 && free{
-		hsp /= 1.03
+		hsp /= 1.1
 		vsp /= 1.4
 	}
 	
@@ -477,7 +475,16 @@ if attack == AT_DSPECIAL {
 	if window == 2 && window_timer == 29{
 		spawn_hit_fx(x , y - 36, 306)
 	}
-	if window == 3 && window_timer == 1 {
+	if window == 3 && window_timer == 1 && !hitpause {
+
+if admw == 4 {
+	admb = 3
+	admw = 0
+} else if admb = 3 {
+	admb = 0
+	admw = 4
+}
+
 
 if  get_player_color(player) == 5 {
 sound_play(sound_get("CARAMEL"))
@@ -510,6 +517,17 @@ sound_play(sound_get("CARAMEL"))
 		has_airdodge = true
 		hsp = 0
         vsp = 0
+	}
+	
+	if window == 4 && window_timer == 1 && !hitpause{
+		if admw == 4 {
+        	admb = 3
+        	admw = 0
+        } else if admb = 3 {
+        	admb = 0
+        	admw = 4
+        }
+
 	}
 	if window == 4 && window_timer == 44 && free {
 		set_state (PS_PRATFALL)

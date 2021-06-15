@@ -18,7 +18,7 @@ set_color_profile_slot_range( 3, 6, 26, 43 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 15 );
+set_num_palettes( 16 );
 
 // Blue
 set_color_profile_slot( 1, 0, 57, 116, 204 ); //Body
@@ -103,6 +103,12 @@ set_color_profile_slot( 14, 0, 212, 51, 78 ); //Body
 set_color_profile_slot( 14, 1, 88, 252, 104 ); //Leaf
 set_color_profile_slot( 14, 2, 225, 233, 246 ); //Needle
 set_color_profile_slot( 14, 3, 206, 154, 52 ); //Box
+
+// VaporMo
+set_color_profile_slot( 15, 0, 216, 62, 219 ); //Body
+set_color_profile_slot( 15, 1, 0, 240, 236 ); //Leaf
+set_color_profile_slot( 15, 2, 122, 255, 192 ); //Needle
+set_color_profile_slot( 15, 3, 240, 163, 255 ); //Box
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

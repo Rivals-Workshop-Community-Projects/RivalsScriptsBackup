@@ -107,7 +107,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(255, 208, 14) // "color preview square" color. can be any color!
-    ce[0,1] = "Wario 1.3" // the name of the alternate color.
+    ce[0,1] = "Wario 1.5" // the name of the alternate color.
     
     ce[1,0] = make_color_rgb(182, 37, 36)
     ce[1,1] = "Red Wario"

@@ -1,19 +1,9 @@
 ///
 shader_start();
 
-if soultimer < 0 or karmatimer > 0 {
-    
-    set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 0.1);
-set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.7 + (karma)/300); 
-set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 30);
-set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, (karma)/80);
-set_hitbox_value(AT_EXTRA_3, 1, HG_TECHABLE, 1);
+if  karmatimer > 0 {
 
-       draw_debug_text(temp_x + 0, temp_y - 25,"KR Damage:   "+ string(floor(karma + karmacom)));
-
-
-        draw_debug_text(temp_x + 00, temp_y - 10,"KR Power:    KRD x"+ string(get_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING)));
+       draw_debug_text(temp_x + 0, temp_y - 10,"Karma:  "+ string(floor(karmacom)));
 
 
 }

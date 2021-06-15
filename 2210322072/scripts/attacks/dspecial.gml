@@ -30,7 +30,7 @@ set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 16);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 45);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 9);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSPECIAL, 4, AG_WINDOW_SFX, sound_get("strong1"));
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_SFX, sound_get("strong3"));
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_SFX_FRAME, 10);
 
 set_num_hitboxes(AT_DSPECIAL, 2);
@@ -93,6 +93,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 8);
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 0);
+set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, sound_get("slice2"));
 
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW, 9);
