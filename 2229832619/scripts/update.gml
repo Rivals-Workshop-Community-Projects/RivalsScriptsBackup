@@ -22,6 +22,10 @@ if (get_player_color( player ) == 7){ //towerofheaven
 	}
 }
 
+if (state == PS_AIR_DODGE && attack == AT_USPECIAL){
+	sound_stop(sound_get("dimensional"));
+}
+
 if ((get_gameplay_time() == 2 && get_training_cpu_action() != CPU_FIGHT) || was_reloaded){
 	practice = true;
 }
@@ -52,6 +56,22 @@ if (state==PS_HITSTUN){
 	air_friction = air_friction_hitstun
 }else if(air_friction != air_friction_orig){
 	air_friction = air_friction_orig
+}*/
+
+if (state==PS_RESPAWN){
+	if (clock_n_deathstore > 0){
+		clock_dur = 100;
+		clock_n_dur = 60;
+		if (state_timer == ((practice)?9:90)){
+			sound_play(sound_get("tic_down"));
+			clock_lock = false;
+			clock_timer = clock_dur;
+			clock_n_cur = round(clamp(-360*(clock_n_deathstore / dspmax),-360,360))
+		}
+	}
+}/*else if (state != PS_RESPAWN && clock_dur != clock_dur_orig){
+	clock_dur = clock_dur_orig;
+	clock_n_dur = clock_n_dur_orig;
 }*/
 
 if ((state==PS_ATTACK_AIR || state==PS_ATTACK_GROUND) && (attack==AT_DSPECIAL || attack==AT_DSPECIAL_AIR)){
@@ -182,15 +202,27 @@ if (clock_s_timer>0){
 }
 var tmptmp_angle = round(clamp(-360*(na_dsp_charge / dspmax),-360,360))
 if (tmptmp_angle != clock_n_prev){
-	if (clock_n_timer==0){
+	if (clock_n_timer==0 && !clock_lock){
+		//print("old prev "+string(clock_n_prev))
+		//print("old cur "+string(clock_n_cur))
+		if (state!=PS_RESPAWN){
+			clock_dur = clock_dur_orig;
+			clock_n_dur = clock_n_dur_orig;
+		}
 		clock_n_timer = clock_n_dur
 		clock_n_prev = clock_n_cur
 		clock_n_cur = tmptmp_angle
+		//print("prev "+string(clock_n_prev))
+		//print("cur "+string(clock_n_cur))
 	}
 }
 if (clock_n_timer>0){
 	clock_n_timer--;
+	//print("time "+string(clock_n_timer))
 }
+//print(string(clock_n_timer))
+//print("state "+get_state_name( state ))
+//print("state "+string(state_timer))
 
 /*
 if (quake_timer>0){

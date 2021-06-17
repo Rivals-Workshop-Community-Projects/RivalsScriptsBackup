@@ -85,5 +85,6 @@ sprite_change_offset("na_halo", -10, 70);
 
 sprite_change_offset("na_feri", 84, 114);
 
+sprite_change_offset("sweetspot_circle", 100, 100);
 
 

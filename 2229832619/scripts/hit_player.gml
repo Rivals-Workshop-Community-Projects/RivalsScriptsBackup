@@ -87,18 +87,19 @@ if (my_hitboxID.attack == AT_UTILT){
 if (my_hitboxID.attack == AT_FSPECIAL){
 	if (my_hitboxID.hbox_num<=3){
 		if (na_dsp_charge < dspmax){
-			na_dsp_charge += 4-my_hitboxID.hbox_num;
+			print(string(ceil((4-my_hitboxID.hbox_num)*1.5)))
+			na_dsp_charge += ceil((4-my_hitboxID.hbox_num)*1.5);
 			white_flash_timer = 6;
 			sound_play(sound_get("tic"));
 			clock_timer = clock_dur;
-		}
-		
-		if (na_dsp_charge >= dspmax){
-			if (attack!=AT_DSPECIAL){
-				sound_play(sound_get("filled"), false, noone, 2, 1);
-				white_flash_timer = 18;
+			if (na_dsp_charge >= dspmax){
+				if (attack!=AT_DSPECIAL){
+					sound_play(sound_get("filled"), false, noone, 2, 1);
+					white_flash_timer = 18;
+				}
 			}
 		}
+		
 	}
 	if (my_hitboxID.hbox_num>=4){
 		//a
@@ -108,14 +109,14 @@ if (my_hitboxID.attack == AT_FSPECIAL){
 			white_flash_timer = 6;
 			sound_play(sound_get("tic"));
 			clock_timer = clock_dur;
-		}
-		
-		if (na_dsp_charge >= dspmax){
-			if (attack!=AT_DSPECIAL){
-				sound_play(sound_get("filled"), false, noone, 2, 1);
-				white_flash_timer = 18;
+			if (na_dsp_charge >= dspmax){
+				if (attack!=AT_DSPECIAL){
+					sound_play(sound_get("filled"), false, noone, 2, 1);
+					white_flash_timer = 18;
+				}
 			}
 		}
+		
 		
 	}
 }

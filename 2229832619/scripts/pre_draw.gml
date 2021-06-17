@@ -98,11 +98,21 @@ if (clock_s_timer>0){
 		var tmp_a1 = clamp(ease_quartOut( 0, 40, clock_s_timer, clock_s_dur ),0,100)/100
 		var tmp_a2 = clamp(ease_quartOut( 0, 80, clock_s_timer, clock_s_dur ),0,100)/100
 	}
+	if (clock_dur != clock_dur_orig){
+	var tmp_angle = ease_cubeIn( clock_n_cur, clock_n_prev, clock_n_timer, clock_n_dur )
+	}else{
 	var tmp_angle = ease_quartIn( clock_n_cur, clock_n_prev, clock_n_timer, clock_n_dur )
+	}
+	//print(string(tmp_angle)+" = "+string(clock_n_cur)+", "+string(clock_n_prev)+", "+string(clock_n_timer)+", "+string(clock_n_dur))
 	draw_sprite_ext( sprite_get("na_clock"), 0, x-6, y+4, 1, 1, 0, -1, tmp_a1 )
 	draw_sprite_ext( sprite_get("na_clock_needle"), 0, x+1, y-24, 1, 1, tmp_angle, -1, tmp_a2 )
 }else if (clock_show){
+	if (clock_dur != clock_dur_orig){
+	var tmp_angle = ease_cubeIn( clock_n_cur, clock_n_prev, clock_n_timer, clock_n_dur )
+	}else{
 	var tmp_angle = ease_quartIn( clock_n_cur, clock_n_prev, clock_n_timer, clock_n_dur )
+	}
+	//print(string(tmp_angle)+" = "+string(clock_n_cur)+", "+string(clock_n_prev)+", "+string(clock_n_timer)+", "+string(clock_n_dur))
 	draw_sprite_ext( sprite_get("na_clock"), 3, x-6, y+4, 1, 1, 0, -1, 0.4 )
 	draw_sprite_ext( sprite_get("na_clock_needle"), 0, x+1, y-24, 1, 1, tmp_angle, -1, 0.8 )
 }

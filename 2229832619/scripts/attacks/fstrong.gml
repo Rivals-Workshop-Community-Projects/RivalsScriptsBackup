@@ -6,12 +6,12 @@ set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 3);
 //fstst fstas fstw1 |wait| fstw2 fstaw fstat fsthld fstrcvr
 //0-2:3 3-3:1 4-5:2 |wait| 6-6:1 7-7:1 8-8:1 9-10:2 11-13:3
 
-set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 10);//14
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 9);//14//10
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
-set_window_value(AT_FSTRONG, 1, AG_WINDOW_SFX_FRAME, 10-5);
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_SFX_FRAME, 9-5);
 
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 3);

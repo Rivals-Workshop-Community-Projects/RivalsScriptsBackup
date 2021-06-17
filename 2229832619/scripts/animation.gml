@@ -28,3 +28,14 @@ if (state == PS_WALL_JUMP){
 		break;
 	}
 }
+
+with(pHitBox){
+	if (player_id == other.id){
+		if (attack == AT_BAIR){
+			if (hbox_num == 2){
+				//print_debug("test")
+				sprite_index = sprite_get("sweetspot_circle")
+			}
+		}
+	}
+}

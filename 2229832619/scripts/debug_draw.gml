@@ -18,6 +18,14 @@ if (nadev){
 		draw_debug_text(scrleft+16,scrtop+(16*9),string(hsp))
 		draw_debug_text(scrleft+16,scrtop+(16*10),string(air_friction))
 		draw_debug_text(scrleft+16,scrtop+(16*11),string(usp_ls_cooldown))
+		draw_debug_text(scrleft+16,scrtop+(16*12),string(joy_dir))
+	if (clock_dur != clock_dur_orig){
+	var tmp_angle = ease_cubeIn( clock_n_cur, clock_n_prev, clock_n_timer, clock_n_dur )
+	}else{
+	var tmp_angle = ease_quartIn( clock_n_cur, clock_n_prev, clock_n_timer, clock_n_dur )
+	}
+		draw_debug_text(scrleft+16,scrtop+(16*13),string(tmp_angle)+" = "+string(clock_n_cur)+", "+string(clock_n_prev)+", "+string(clock_n_timer)+", "+string(clock_n_dur))
+		draw_debug_text(scrleft+16,scrtop+(16*14),string(joy_dir))
 		/*
 		with ("dust_fx_obj"){
 		draw_debug_text(x,y+30,"here");

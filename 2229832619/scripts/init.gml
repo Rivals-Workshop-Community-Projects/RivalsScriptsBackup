@@ -160,6 +160,11 @@ steve_death_message = "death.attack.void";
 tcoart = sprite_get("na_stickman");
 feri_costume = sprite_get("na_feri");
 
+//table of contents:
+//article1 is abyss bubble
+//article2 is nspecial rift
+//article3 is lingering slash
+
 nadev = false;
 nadev_display = true;
 nadev_cooldown = 0;
@@ -182,6 +187,7 @@ trummelcodec_id = -4;
 
 clock_show = false;
 clock_timer = 0;
+clock_dur_orig = 80;
 clock_dur = 80;
 clock_s_type = 0;
 clock_s_timer = 0;
@@ -189,7 +195,10 @@ clock_s_dur = 20;
 clock_n_prev = 0;
 clock_n_cur = 0;
 clock_n_timer = 0;
+clock_n_dur_orig = 6;
 clock_n_dur = 6;
+clock_n_deathstore = 0;
+clock_lock = false;
 
 dsp_air_track = 0;
 /*

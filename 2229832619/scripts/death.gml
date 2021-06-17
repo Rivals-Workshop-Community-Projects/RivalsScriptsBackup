@@ -1,5 +1,9 @@
 // called when the character gets KO'd
 
+clock_n_deathstore = na_dsp_charge
+if (clock_n_deathstore > 0){
+	clock_lock = true;
+}
 na_dsp_charge = round(na_dsp_charge/2)
 
 with (asset_get("obj_article1")){

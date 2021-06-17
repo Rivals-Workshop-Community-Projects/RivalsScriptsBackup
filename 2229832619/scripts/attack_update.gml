@@ -69,11 +69,19 @@ if (attack==AT_DAIR){
 	if (window==5 && !hitpause){
 		if (window_timer==1){
 			if (((spr_dir == -1 && left_down) || (spr_dir == 1 && right_down))&&!free){
+				//forward
 				hsp = 6*spr_dir;//-3.5
 				vsp = dairvsp/1.5;
 				sound_stop(sound_get("metalhit"));
 				sound_play(sound_get("bounce"));
 				dair_mark = true;
+			}else if (((spr_dir == 1 && left_down) || (spr_dir == -1 && right_down))&&!free){
+				//backward
+				hsp = -5*spr_dir;//-3.5
+				vsp = dairvsp/1.3;
+				sound_stop(sound_get("metalhit"));
+				sound_play(sound_get("bounce"));
+				//dair_mark = true;
 			}else{
 				hsp = -2.5*spr_dir;//-3.5
 				vsp = dairvsp;
@@ -101,6 +109,71 @@ if (attack==AT_DAIR){
 		}
 	}
 }
+
+//shift-out land
+
+if (attack==AT_UAIR){
+	//55 -14
+	if ((window==1&&window_timer==6)||window==2||window==3||window==4){
+		var maxattempts = 80
+		var attempts = 0
+		while(attempts < maxattempts && place_meeting(x+(55*spr_dir), y-25, asset_get("par_block"))){
+			x = x+(-1*(spr_dir))
+			hsp = 0;
+			attempts++;
+		}
+	}
+}
+if (attack==AT_DAIR){
+	//67 -18
+	if ((window==2&&window_timer==5)||window==3){
+		var maxattempts = 80
+		var attempts = 0
+		while(attempts < maxattempts && place_meeting(x+(40*spr_dir), y-18, asset_get("par_block"))){
+			x = x+(-1*(spr_dir))
+			hsp = -2*spr_dir;
+			attempts++;
+		}
+	}
+}
+if (attack==AT_NAIR){
+	//68 -16
+	if ((window==1&&window_timer==9)||window==2||window==3){
+		var maxattempts = 80
+		var attempts = 0
+		while(attempts < maxattempts && place_meeting(x+(40*spr_dir), y-16, asset_get("par_block"))){
+			x = x+(-1*(spr_dir))
+			hsp = 0;
+			attempts++;
+		}
+	}
+}
+
+if (attack==AT_DTILT){
+	//88 -29
+	if ((window==2&&window_timer==4)||window==3){
+		var maxattempts = 80
+		var attempts = 0
+		while(attempts < maxattempts && place_meeting(x+(50*spr_dir), y-29, asset_get("par_block"))){
+			x = x+(-1*(spr_dir))
+			hsp = 0;
+			attempts++;
+		}
+	}
+}
+if (attack==AT_UTILT){
+	//72 -50
+	if ((window==2&&window_timer==2)||window==3){
+		var maxattempts = 80
+		var attempts = 0
+		while(attempts < maxattempts && place_meeting(x+(56*spr_dir), y-50, asset_get("par_block"))){
+			x = x+(-1*(spr_dir))
+			hsp = 0;
+			attempts++;
+		}
+	}
+}
+
 if (attack==AT_DATTACK){
 	if (window==1){
 		if (window_timer==1&&!hitpause){
@@ -338,6 +411,9 @@ if (attack == AT_USPECIAL){
 		reset_window_value(AT_USPECIAL, 8, AG_WINDOW_LENGTH);
 		reset_window_value(AT_USPECIAL, 9, AG_WINDOW_LENGTH);
 	}
+	if (window<=2||window==3&&window_timer<=16){
+		can_shield = true;
+	}
 	if (window<=3){
 		usp_hsp_storage=usp_hsp_storage/1.12;
 		usp_vsp_storage=usp_vsp_storage/1.12;
@@ -378,6 +454,7 @@ if (attack == AT_USPECIAL){
 			sound_play(sound_get("shine"), false, noone, 1, 0.8);
 		}
 	}
+	//"buffer"
 	if (window==4&&!hitpause){
 		if (window_timer==1){
 			if (!joy_pad_idle){//is not idle
@@ -393,6 +470,67 @@ if (attack == AT_USPECIAL){
 				//hsp_decide = 0;
 				//vsp_decide = -distance;
 			}
+			
+			//hitbox angle set...
+			//if (spr_dir == 1){
+				if (joy_pad_idle){
+						set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 80)
+				}else if (joy_dir > 90 && joy_dir <= 180){ //top left
+					set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, ((spr_dir)?clamp(joy_dir-50, 100, 180):180-(clamp(joy_dir-50, 90, 270) )) );
+				}else if (joy_dir >= 0 && joy_dir < 90){ //top right
+					set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, ((spr_dir)?clamp(joy_dir+50, 0, 80):180-(clamp(joy_dir+50, 0, 90) )) );
+				}else if (joy_dir == 90){ //directly up
+					set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 90)
+				}else if (joy_dir == 270){ //directly down
+					set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 270)
+				}else{ //if lower half
+					if (joy_dir > 270){
+						set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, ((spr_dir)?45:180-45))
+					}else{
+						set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, (((spr_dir)?135:180-135)))
+					}
+				}
+			//}
+			/*
+			if (spr_dir == -1){
+				if (joy_dir > 90 && joy_dir < 270){ //(right) half
+					set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, (clamp(joy_dir+50, 90, 270) - 180) );
+				}else{
+					if (joy_dir >= 0 && joy_dir <= 90){ //top (left)
+						set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, (clamp(joy_dir-50, 0, 90) - 180) );
+					}
+					if (joy_dir >= 270 && joy_dir < 360){ //bottom (left)
+						set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, (joy_dir-50) - 180);
+					}
+				}
+			}*/
+			
+			/*
+			if (spr_dir == 1){
+				if (joy_dir > 90 && joy_dir < 270){ //left half
+					set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, (clamp(joy_dir-50, 90, 270) ) );
+				}else{
+					if (joy_dir >= 0 && joy_dir <= 90){ //top right
+						set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, (clamp(joy_dir+50, 0, 90) ) );
+					}
+					if (joy_dir >= 270 && joy_dir < 360){ //bottom right
+						set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, (joy_dir+50) );
+					}
+				}
+			}
+			if (spr_dir == -1){
+				if (joy_dir > 90 && joy_dir < 270){ //(right) half
+					set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, (clamp(joy_dir+50, 90, 270) - 180) );
+				}else{
+					if (joy_dir >= 0 && joy_dir <= 90){ //top (left)
+						set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, (clamp(joy_dir-50, 0, 90) - 180) );
+					}
+					if (joy_dir >= 270 && joy_dir < 360){ //bottom (left)
+						set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, (joy_dir-50) - 180);
+					}
+				}
+			}
+			*/
 		}
 		if (window_timer==9){
 			sound_stop(sound_get("dimensional"));
