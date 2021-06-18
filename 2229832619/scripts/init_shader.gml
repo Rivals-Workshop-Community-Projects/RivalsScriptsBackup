@@ -204,6 +204,25 @@ set_article_color_slot(6, 169, 108, 66 ); //blade
 set_article_color_slot(7, 107, 67, 39 ); //blade.2
 base_col = make_colour_rgb(255, 220, 100 );
 }
+if (extra_col==8){//redtilt "red"
+// shade, r, g, b, alpha
+set_character_color_slot(0, 181, 18, 18 ); //main
+set_character_color_slot(1, 125, 27, 35 ); //main.2
+set_character_color_slot(2, 82, 8, 8 ); //main.3
+set_character_color_slot(3, 230, 239, 245 ); //purple
+set_character_color_slot(4, 255, 255, 255 ); //white_eye
+set_character_color_slot(5, 255, 153, 0 ); //abyss_eye
+set_character_color_slot(6, 217, 45, 17 ); //blade
+set_character_color_slot(7, 140, 9, 9 ); //blade.2
+set_article_color_slot(0, 181, 18, 18 ); //main
+set_article_color_slot(1, 125, 27, 35 ); //main.2
+set_article_color_slot(2, 82, 8, 8 ); //main.3
+set_article_color_slot(3, 230, 239, 245 ); //purple
+set_article_color_slot(4, 255, 255, 255 ); //white_eye
+set_article_color_slot(5, 255, 153, 0 ); //abyss_eye
+set_article_color_slot(6, 217, 45, 17 ); //blade
+set_article_color_slot(7, 140, 9, 9 ); //blade.2
+}
 
 if (variable_instance_exists(id, "state")){
 if ((state==PS_ATTACK_AIR || state==PS_ATTACK_GROUND) && (attack==AT_DSPECIAL || attack==AT_DSPECIAL_AIR)){

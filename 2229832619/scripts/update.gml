@@ -131,6 +131,12 @@ if (state==PS_SPAWN && extra_col == 0 && taunt_down){
 		sound_play(sound_get("shine"));
 		init_shader();
 	}
+	if (special_down){
+		extra_col = 8
+		white_flash_timer = 18;
+		sound_play(sound_get("shine"));
+		init_shader();
+	}
 }
 
 if (attack==AT_FSTRONG&&state!=PS_ATTACK_GROUND){

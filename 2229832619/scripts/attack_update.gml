@@ -163,7 +163,7 @@ if (attack==AT_DTILT){
 }
 if (attack==AT_UTILT){
 	//72 -50
-	if ((window==2&&window_timer==2)||window==3){
+	if ((window==2&&window_timer==2)||window==3||window==4){
 		var maxattempts = 80
 		var attempts = 0
 		while(attempts < maxattempts && place_meeting(x+(56*spr_dir), y-50, asset_get("par_block"))){
