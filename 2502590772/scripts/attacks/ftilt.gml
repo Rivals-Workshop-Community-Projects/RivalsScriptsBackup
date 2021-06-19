@@ -49,7 +49,7 @@ set_hitbox_value(this_attack, 1, HG_KNOCKBACK_SCALING, .65);
 set_hitbox_value(this_attack, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(this_attack, 1, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(this_attack, 1, HG_VISUAL_EFFECT_X_OFFSET, 16);
-set_hitbox_value(this_attack, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(this_attack, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
 #define sprite_get_pm
 var sprite_name = argument0; if (species_id == 1) sprite_name = "m_" + sprite_name; return sprite_get(sprite_name);

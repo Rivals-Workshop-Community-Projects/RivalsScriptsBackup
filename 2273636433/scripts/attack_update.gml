@@ -346,7 +346,7 @@ if (has_rune("D")){
 
 
 if (has_rune("F")){
-	set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, 1);
+	set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, 1.1);
 	set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 3);
 	set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -15);
 	set_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE, 1);

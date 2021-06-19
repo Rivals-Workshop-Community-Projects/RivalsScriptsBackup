@@ -31,7 +31,7 @@ short_hop_speed = 6.5;
 djump_speed = 10;
 leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 4.5; //the maximum hsp you can accelerate to when in a normal aerial state
+air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .25;
 prat_fall_accel = .8; //multiplier of air_accel while in pratfall
@@ -135,16 +135,13 @@ cyclone = 0;
 shoryuken = 0;
 pilleffect = 0;
 gustav = 0;
-thunder_x = 0;
-thunder_y = 0;
-thunder_life=0;
 grabbedid = undefined;
 
 //Pill_Hit = hit_fx_create( sprite_get("pill_hit"), 6 );
 next_group = 0;
-show = 0;
 snolid = 0;
 pill_counter = 0;
+doc_ditto = 0;
 
 
 // ---------------------------------------TETRIS RNG VARIABLES : This was hell to program lmao------------------------------------

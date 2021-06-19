@@ -10,6 +10,11 @@ if ("css_mode" not in self) {
     css_mode = 0;
 }
 
+if ("what_does_dspecial_do" not in self) {
+    what_does_dspecial_do = 0;
+}
+
+
 
 if (css_mode == 0) {
 
@@ -19,7 +24,7 @@ var temp_x = x + 8;
 var temp_y = y + 9;
 
  
-var num_alts = 26;
+var num_alts = 30;
 var alt_cur = get_player_color(player);
  
 
@@ -69,7 +74,7 @@ rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
 for(i = 0; i < num_alts; i++){
     var draw_color = (i == alt_cur) ? c_white : c_gray;
     var draw_x = temp_x + 2 + 10 * (i mod 16);
-    var draw_y = temp_y + 140 - (i >= 16) * 4
+    var draw_y = temp_y + 137 + (i >= 16) * 4
     rectDraw(draw_x, draw_y, draw_x + 7, draw_y + 1, draw_color);
 }
  
@@ -94,6 +99,18 @@ textDraw(temp_x + 2, temp_y + 116, "fName", c_white, 0, 1000, 1, true, 1, "Alt. 
  
 //exclude alt. name
 //textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
+
+    
+if (what_does_dspecial_do < 150) {
+    what_does_dspecial_do++;
+    var arrow_height = round(140 - (abs(sin(what_does_dspecial_do / 20)) * 10) );
+    draw_sprite(sprite_get("whatdoesdspecialdo"), 0, temp_x + 104, temp_y + arrow_height);
+    
+    if (what_does_dspecial_do mod 40 < 20) {
+        draw_sprite(sprite_get("noreallyidontknowwhatitdoes"), 0, temp_x + 98, temp_y + 165);
+    }
+}
+    
 }
 
 

@@ -8,6 +8,8 @@ hp = 3;
 move_speed = 1;
 move_accel = 0.075;
 sprite_index = sprite_get("fspecial_proj_minun");
+mask_index = sprite_get("fspecial_proj_minun_article_mask");
+ignores_walls = false;
 
 // variables
 hitbox_id = create_hitbox(AT_FSPECIAL_2, 1, x, y);
@@ -23,3 +25,4 @@ trigger_respawn_hitbox = 0;
 destroy = 0;
 should_create_hitbox_upon_destroy = 1;
 travel_sound = noone;//sound_play(asset_get("sfx_absa_jabloop"), true, noone, 0.1, 0.9);
+parried_by_player = player_id.player;

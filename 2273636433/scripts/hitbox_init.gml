@@ -11,6 +11,8 @@ if (attack == AT_NSPECIAL){
 	 charge = 0;
 	 roll = 0;
 	 limit = 1;
+	 show = 0;
+
 
 	 //KNOCKBACK
 	 if (kb_value) == 4{ //Starts at 0

@@ -75,6 +75,7 @@ set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, hit_small3);
 set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT_X_OFFSET, 42);
 set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_JAB, 1, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_JAB, 1, HG_FORCE_FLINCH, 1);
 
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 2, HG_WINDOW, 5);

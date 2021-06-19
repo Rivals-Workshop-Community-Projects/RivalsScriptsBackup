@@ -49,9 +49,10 @@ set_hitbox_value(this_attack, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(this_attack, 1, HG_EXTRA_HITPAUSE, 0);
 set_hitbox_value(this_attack, 1, HG_VISUAL_EFFECT, 22);
 set_hitbox_value(this_attack, 1, HG_HIT_SFX, asset_get("sfx_absa_jab1"));
+set_hitbox_value(this_attack, 1, HG_HITBOX_GROUP, 1);
 
 set_hitbox_value(this_attack, 2, HG_HITBOX_TYPE, 1);
-set_hitbox_value(this_attack, 2, HG_WINDOW, 2);
+set_hitbox_value(this_attack, 2, HG_WINDOW, 20);
 set_hitbox_value(this_attack, 2, HG_LIFETIME, 1);
 set_hitbox_value(this_attack, 2, HG_HITBOX_Y, -20);
 set_hitbox_value(this_attack, 2, HG_HITBOX_X, 10);
@@ -66,6 +67,7 @@ set_hitbox_value(this_attack, 2, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(this_attack, 2, HG_EXTRA_HITPAUSE, 0);
 set_hitbox_value(this_attack, 2, HG_VISUAL_EFFECT, 22);
 set_hitbox_value(this_attack, 2, HG_HIT_SFX, asset_get("sfx_absa_jab1"));
+set_hitbox_value(this_attack, 2, HG_HITBOX_GROUP, 2);
 
 set_hitbox_value(this_attack, 3, HG_PARENT_HITBOX, 3);
 set_hitbox_value(this_attack, 3, HG_HITBOX_TYPE, 1);
@@ -77,7 +79,7 @@ set_hitbox_value(this_attack, 3, HG_HITBOX_X, 10);
 set_hitbox_value(this_attack, 3, HG_WIDTH, 60);
 set_hitbox_value(this_attack, 3, HG_HEIGHT, 60);
 set_hitbox_value(this_attack, 3, HG_PRIORITY, 2);
-set_hitbox_value(this_attack, 3, HG_DAMAGE, 1);
+set_hitbox_value(this_attack, 3, HG_DAMAGE, 3);
 set_hitbox_value(this_attack, 3, HG_ANGLE, 70);
 set_hitbox_value(this_attack, 3, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(this_attack, 3, HG_KNOCKBACK_SCALING, .65);
@@ -91,7 +93,7 @@ set_hitbox_value(this_attack, 3, HG_VISUAL_EFFECT_Y_OFFSET, -5);
 set_hitbox_value(this_attack, 3, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(this_attack, 3, HG_VISUAL_EFFECT, 22);
 set_hitbox_value(this_attack, 3, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
-set_hitbox_value(this_attack, 3, HG_HITBOX_GROUP, 2);
+set_hitbox_value(this_attack, 3, HG_HITBOX_GROUP, 3);
 
 
 
@@ -112,7 +114,7 @@ set_hitbox_value(this_attack, 4, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(this_attack, 4, HG_EXTRA_HITPAUSE, 0);
 set_hitbox_value(this_attack, 4, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(this_attack, 4, HG_HIT_SFX, asset_get("sfx_absa_jab1"));
-//set_hitbox_value(this_attack, 4, HG_HITBOX_GROUP, 1);
+set_hitbox_value(this_attack, 4, HG_HITBOX_GROUP, 1);
 
 set_hitbox_value(this_attack, 5, HG_PARENT_HITBOX, 4);
 set_hitbox_value(this_attack, 5, HG_HITBOX_TYPE, 1);

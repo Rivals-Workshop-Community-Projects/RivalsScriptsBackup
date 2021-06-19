@@ -43,7 +43,7 @@ set_window_value(AT_FSTRONG_2, 3, AG_WINDOW_VSPEED_TYPE, 1); //don't fall
 
 //didn'thit wall/player -> recovery
 set_window_value(AT_FSTRONG_2, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSTRONG_2, 4, AG_WINDOW_LENGTH, 21);
+set_window_value(AT_FSTRONG_2, 4, AG_WINDOW_LENGTH, 28);
 set_window_value(AT_FSTRONG_2, 4, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_FSTRONG_2, 4, AG_WINDOW_ANIM_FRAME_START, 33);
 set_window_value(AT_FSTRONG_2, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);

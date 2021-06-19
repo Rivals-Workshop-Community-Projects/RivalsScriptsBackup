@@ -1,12 +1,13 @@
 if (is_master_player) exit; //efficiency: don't load attacks on master player
 
 var this_attack = AT_FSTRONG;
-if (species_id == 1) this_attack = 40;
+//if (species_id == 1) this_attack = 40;
+repeat (2) {
 
 set_attack_value(this_attack, AG_SPRITE, sprite_get_pm("fstrong"));
 set_attack_value(this_attack, AG_NUM_WINDOWS, 4);
 set_attack_value(this_attack, AG_HAS_LANDING_LAG, 3);
-set_attack_value(this_attack, AG_STRONG_CHARGE_WINDOW, 1);
+set_attack_value(this_attack, AG_STRONG_CHARGE_WINDOW, (this_attack == AT_FSTRONG));
 set_attack_value(this_attack, AG_HURTBOX_SPRITE, sprite_get("fstrong_hurt"));
 
 set_window_value(this_attack, 1, AG_WINDOW_TYPE, 1);
@@ -82,6 +83,10 @@ set_hitbox_value(this_attack, 2, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(this_attack, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(this_attack, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(this_attack, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+
+//repeat this and assign it to AT_FTHROW
+this_attack = AT_FTHROW;
+}
 
 #define sprite_get_pm
 var sprite_name = argument0; if (species_id == 1) sprite_name = "m_" + sprite_name; return sprite_get(sprite_name);

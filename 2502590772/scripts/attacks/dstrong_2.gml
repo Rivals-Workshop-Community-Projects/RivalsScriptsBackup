@@ -110,7 +110,7 @@ set_hitbox_value(AT_DSTRONG_2, 3, HG_ANGLE, 270);
 set_hitbox_value(AT_DSTRONG_2, 3, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_DSTRONG_2, 3, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_DSTRONG_2, 3, HG_BASE_HITPAUSE, 11);
-//set_hitbox_value(AT_DSTRONG_2, 3, HG_EXTRA_HITPAUSE, -2);
+set_hitbox_value(AT_DSTRONG_2, 3, HG_EXTRA_HITPAUSE, -4);
 set_hitbox_value(AT_DSTRONG_2, 3, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_DSTRONG_2, 3, HG_HIT_SFX, sound_get("bair1"));
 set_hitbox_value(AT_DSTRONG_2, 3, HG_VISUAL_EFFECT_Y_OFFSET, 600);

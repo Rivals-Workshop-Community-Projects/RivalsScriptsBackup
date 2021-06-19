@@ -13,6 +13,15 @@ if (state == PS_SPAWN && taunt_down )||  get_player_color(player) == 24 {
 	set_victory_theme(sound_get("pringlesvictory"));
 }
 
+if doc_ditto == 0 {
+	if variable_instance_exists(oPlayer, "pilleffect"){
+		doc_ditto= 1;
+	} else {
+		doc_ditto=-1;
+	}
+}
+
+
 //-------------------------------------------------PILL RNG CODE----------------------------------------------
 
 pill_counter = 0;
@@ -135,10 +144,6 @@ if pilleffect ==1 {								//Fire
 	sound_play( asset_get("sfx_blow_heavy2"));
 	set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_WHIFFLAG, 0);
 } else if pilleffect ==5 {							//fstrong Thunder
-	thunder_x = x +72*spr_dir;
-	thunder_y = y-38;
-	thunder_life = 89 + strong_charge;
-	spawn_hit_fx( x +72*spr_dir, y-38, 20 );
 	pilleffect=0;
 	sound_play(  asset_get("sfx_absa_uair"));
 	set_window_value(AT_FSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 0);
@@ -163,17 +168,7 @@ if pilleffect ==1 {								//Fire
 	sound_play( asset_get("sfx_blow_heavy2"));
 	set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_WHIFFLAG, 0);
 }
-if thunder_x !=0 && thunder_y !=0 {				
-	if( thunder_life % 15 == 0){
-			spawn_hit_fx( thunder_x, thunder_y, 20 );
-			sound_play(  asset_get("sfx_absa_jab1"));
-	}
-	thunder_life--;
-	if  thunder_life < 1 {
-		thunder_x = 0;
-		thunder_y = 0;
-	}
-}
+
 
 //Release grab logic
 
@@ -193,12 +188,6 @@ if state == PS_DOUBLE_JUMP && state_timer == 1{
 if state == PS_WALL_JUMP  && state_timer == 1 {
 	sound_play(asset_get("sfx_jumpair"));
 }
-
-//Pill Power indicator
-
-	if show > 30 {
-		show = 0;
-	}
 
 
 //----------------------------------------------COMPATIBILITY STUFF-------------------------------------------------
@@ -339,7 +328,7 @@ if (has_rune("C")){
 	walk_accel = 0.5;
 	initial_dash_speed = 7.5;
 	dash_speed = 7;
-	air_max_speed = 5.5;
+	air_max_speed = 6;
 	air_accel = .3;
 	jump_change = 4; 
 	ground_friction = .40;
@@ -405,7 +394,7 @@ if (phone_cheats[cheat_floaty]) {
 	short_hop_speed = 6.5;
 	djump_speed = 10;
 	double_jump_time = 32;
-	air_max_speed = 4.5;
+	air_max_speed = 5;
 }
 if (phone_cheats[cheat_jump] != 1) {
 	max_djumps = phone_cheats[cheat_jump];

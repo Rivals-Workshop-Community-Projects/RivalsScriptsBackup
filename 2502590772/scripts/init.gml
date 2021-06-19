@@ -105,6 +105,7 @@ nspecial_can_use_baton = true;
 nspecial_buffer_into_dspecial = false;
 trigger_leader_swap = 0;
 dir_correct = 0; //corrects fstrong when neutral strong button is pressed. referenced in set_player and animation.gml. don't know what's breaking it in the first place.
+jab2_input_was_buffered = false; //equals true when a repeat jab2 is buffered. used in attack_update.gml.
 
 uspecial_angle = 0;
 uspecial_used_angle = noone;
@@ -117,10 +118,11 @@ visual_hud_icon_offset_x = 0;
 
 visual_hh_buff_x = 1;
 visual_hh_buff_y = 1;
+visual_hh_powerup_counter = 0;
 visual_hh_buff_counter = 0;
 visual_batonpass_counter = 7;
 
-visual_low_quality = get_local_setting(SET_FX_QUALITY) <= 2; //save every frame possible on pcs that can't handle it
+visual_low_quality = get_local_setting(SET_FX_QUALITY) <= 1; //save every frame possible on pcs that can't handle it
 
 // partner input buffer variables
 partner_efficient_sync = false;

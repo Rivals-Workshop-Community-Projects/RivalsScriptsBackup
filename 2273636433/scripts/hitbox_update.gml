@@ -4,6 +4,10 @@ if attack == AT_NSPECIAL{
 	player_id.pill_counter+=1;
 	if was_parried { reset++;}								//parrying a pill
 	if reset == 1 {  hitbox_timer =0; }
+	if show > 30 {
+		show = 0;
+	}
+
 
 	
 	//DAMAGE AND KNOCKBACK RESTRICTIONS
@@ -51,20 +55,18 @@ if attack == AT_NSPECIAL{
 						pill_state =0;
 					}else if (pill_state == 4){				//Dstrong1 // No Gravity
 						vsp = 0;
-						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 3/4;}
+						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 4/5;}
 						else{ hsp = hsp*-1.25; }
-						length = 150;
 						pill_state = 4;
 					}else if (pill_state == 5){				//Dstrong2 // No Gravity
 						vsp = 0;
-						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 3/4;}
+						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 4/5;}
 						else{ hsp = hsp*-1.25; }
-						length = 150;
 						pill_state = 5;
 					}
 					else {
 						vsp = -abs(vsp);
-						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 3/4;}
+						if spr_dir == player_id.spr_dir { hsp = abs(hsp)*1.5*player_id.spr_dir; length = length* 4/5;}
 						else{ hsp = hsp*-1.25; }
 						if abs(hsp) < 1 { hsp = 4.5*player_id.spr_dir; }
 						//grav = 0.56;
@@ -76,7 +78,7 @@ if attack == AT_NSPECIAL{
 					spr_dir = player_id.spr_dir;		//Can Turn Around
 					kb_value = kb_value*1.5;
 					C_knock += 2;
-					player_id.show = 1;
+					show = 1;
 				}
 		}
 	}
@@ -112,7 +114,7 @@ if attack == AT_NSPECIAL{
 				C_dam  += 2;
 				pill_state =0;
 				spr_dir = player_id.spr_dir;		//Can Turn Around
-				player_id.show = 1;
+				show = 1;
 				player_id.has_hit = true;
 			}
 		}
@@ -134,7 +136,7 @@ if attack == AT_NSPECIAL{
 				player_id.pilleffect=8;
 				kb_value = kb_value*1.5;
 				C_knock += 2;
-				player_id.show = 1;
+				show = 1;
 			}
 		}
 	}
@@ -154,7 +156,7 @@ if attack == AT_NSPECIAL{
 				player_id.pilleffect=4;
 				kb_value = kb_value*1.5;
 				C_knock += 2;
-				player_id.show = 1;
+				show = 1;
 			}
 		}
 	}
@@ -174,7 +176,7 @@ if attack == AT_NSPECIAL{
 				player_id.pilleffect=9;
 				kb_value = kb_value*1.5;
 				C_knock += 2;
-				player_id.show = 1;
+				show = 1;
 			}
 		}
 	}
@@ -216,7 +218,7 @@ if attack == AT_NSPECIAL{
 					damage = damage*1.25;
 					C_knock += 1;
 					C_dam  += 1;
-					player_id.show = 1;
+					show = 1;
 					charge = player_id.strong_charge;
 					pill_state = 2;
 				}
@@ -243,7 +245,7 @@ if attack == AT_NSPECIAL{
 				damage = damage*1.25;
 				C_knock += 1;
 				C_dam  += 1;
-				player_id.show = 1;
+				show = 1;
 			}
 		}
 	}
@@ -258,7 +260,7 @@ if attack == AT_NSPECIAL{
 				pill_state = 4;
 				damage = damage*1.5;
 				C_dam  += 2;
-				player_id.show = 1;
+				show = 1;
 				vsp = -abs(vsp/2);
 				if abs(hsp) < 1{hsp = player_id.spr_dir*(4.5+ player_id.strong_charge/10);}
 				else{hsp = player_id.spr_dir*(abs(hsp*2)+ player_id.strong_charge/10);}
@@ -277,7 +279,7 @@ if attack == AT_NSPECIAL{
 				pill_state = 5;
 				damage = damage*1.5;
 				C_dam  += 2;
-				player_id.show = 1;
+				show = 1;
 				vsp = -abs(vsp/2);
 				if (hsp ==0){hsp = -player_id.spr_dir*(4.5+ player_id.strong_charge/10); }
 				else{hsp = -player_id.spr_dir*(abs(hsp*2)+ player_id.strong_charge/10);}
@@ -305,6 +307,10 @@ if attack == AT_NSPECIAL{
 
 		}else{
 			proj_angle = (hitbox_timer*1)*-spr_dir;					//Frozen in place
+			if( hitbox_timer % 15 == 0){
+				spawn_hit_fx( x, y, 20 );
+				sound_play(  asset_get("sfx_absa_jab1"));
+			}
 			//ADJUST COORDINATES
 			if y < (coord_y) { y+=1;}
 			if y > (coord_y) { y-=1;}
@@ -334,7 +340,7 @@ if attack == AT_NSPECIAL{
 
 //Force Show - FOR DITTO
 if forced == 1 {
-	player_id.show = 1
+	show = 1
 	forced = 0;
 }
 

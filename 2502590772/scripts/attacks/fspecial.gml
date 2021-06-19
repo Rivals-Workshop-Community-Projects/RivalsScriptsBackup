@@ -1,5 +1,7 @@
 if (is_master_player || species_id == 1) exit; //efficiency: don't load attacks on master player
 
+var fspecial_fx_proj_destroy = hit_fx_create(sprite_get("fxstaticminus"), 21);
+
 set_attack_value(AT_FSPECIAL, AG_CATEGORY, 2);
 set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial"));
 set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 3);
@@ -49,3 +51,4 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, 42);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("bair1"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 197);
+set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, fspecial_fx_proj_destroy);

@@ -475,9 +475,11 @@ if (instance_exists(movingbox) && movingbox.destroy && movingbox.solid_timer == 
 	instance_destroy(movingbox);
 }
 
-if (!death_chime){
-	if (oPlayer.state == PS_DEAD || oPlayer.state == PS_RESPAWN){
-		death_chime = true;
+if (hit_player_obj != noone){
+	if (!death_chime){
+		if (hit_player_obj.state == PS_DEAD || hit_player_obj.state == PS_RESPAWN){
+			death_chime = true;
+		}
 	}
 }
 

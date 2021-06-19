@@ -8,7 +8,7 @@ font_fname = asset_get("fName");
 // Hurtbox sprites
 hurtbox_spr         = sprite_get("pm_hurtbox");//asset_get("ex_guy_hurt_box");
 crouchbox_spr       = sprite_get("pm_hurtbox_crouch");//asset_get("ex_guy_crouch_box");
-air_hurtbox_spr     = sprite_get("pm_hurtbox"); // -1 = use hurtbox_spr
+air_hurtbox_spr     = sprite_get("pm_hurtbox_air"); // -1 = use hurtbox_spr
 hitstun_hurtbox_spr = sprite_get("pm_hurtbox_air"); // -1 = use hurtbox_spr
 
 // Victory
@@ -31,7 +31,11 @@ spr_active_hud = sprite_get("active_hud");
 spr_active_hud_back = sprite_get("active_hud_back");
 spr_hud_baton = sprite_get("hud_baton");
 spr_hud_plusminus = sprite_get("hud_plusminus");
+
 spr_hh_buff_arrow_effect = get_fx_sprite_pm("fxarrow");
+spr_hh_buff_powerup_effect = get_fx_sprite_pm("fxpowerup");
+spr_hh_buff_powerup_front_effect = get_fx_sprite_pm("fxpowerupfront");
+
 spr_batoncaught = sprite_get( "fxbatoncaught" );
 spr_thunder = get_fx_sprite_pm("fxthunder");
 spr_hurtbox_dash = sprite_get("pm_hurtbox_dash");

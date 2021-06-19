@@ -82,8 +82,9 @@ set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 7.5);
 set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, 0.9); //scales more than minun's
 set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_USPECIAL, 2, HG_EXTRA_HITPAUSE, 10); //!
-set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, 19); //extra large
+set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, 157); 
 set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_GROUP, 1);
+
 //set_hitbox_value(AT_USPECIAL, 2, HG_SDI_MULTIPLIER, 0.5); //less SDI
 

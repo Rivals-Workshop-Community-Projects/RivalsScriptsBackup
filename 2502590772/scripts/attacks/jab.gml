@@ -43,7 +43,7 @@ set_window_value(this_attack, 3, AG_WINDOW_CANCEL_FRAME, 4);
 //Jab2
 //startup
 set_window_value(this_attack, 4, AG_WINDOW_TYPE, 1);
-set_window_value(this_attack, 4, AG_WINDOW_LENGTH, 10);
+set_window_value(this_attack, 4, AG_WINDOW_LENGTH, 5);
 set_window_value(this_attack, 4, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(this_attack, 4, AG_WINDOW_HSPEED, 1);
 set_window_value(this_attack, 4, AG_WINDOW_HSPEED_TYPE, 1);

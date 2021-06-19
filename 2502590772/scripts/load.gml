@@ -1,9 +1,9 @@
 
 
-sprite_change_offset_pm("pm_hurtbox", 20, 56);
-sprite_change_offset_pm("pm_hurtbox_crouch", 21, 32);
-sprite_change_offset_pm("pm_hurtbox_air", 20, 56);
-sprite_change_offset_pm("pm_hurtbox_dash", 22, 40);
+sprite_change_offset("pm_hurtbox", 20, 56);
+sprite_change_offset("pm_hurtbox_crouch", 21, 30);
+sprite_change_offset("pm_hurtbox_air", 20, 52);
+sprite_change_offset("pm_hurtbox_dash", 22, 42);
 
 sprite_change_offset_pm("idle", 40, 78);
 sprite_change_offset_pm("crouch", 32, 64);
@@ -85,6 +85,7 @@ sprite_change_offset_pm("nspecial_proj", 160, 94);
 //articles/projectiles
 sprite_change_offset("fspecial_proj_plusle", 108, 32);
 sprite_change_offset("fspecial_proj_minun",  42, 38);
+sprite_change_offset("fspecial_proj_minun_article_mask",  8, 8);
 sprite_change_offset("pluszap", 80, 130);
 
 sprite_change_offset("baton", 60, 60);
@@ -98,6 +99,9 @@ sprite_change_offset_pm_fx("fxchargeboom3", 64, 64);
 sprite_change_offset_pm_fx("fxchargedespawn1", 64, 64);
 sprite_change_offset_pm_fx("fxchargedespawn2", 64, 64);
 sprite_change_offset_pm_fx("fxchargedespawn3", 64, 64);
+
+sprite_change_offset_pm_fx("fxpowerup", 48, 50); //48, 56
+sprite_change_offset_pm_fx("fxpowerupfront", 30, 82);
 
 sprite_change_offset_pm_fx("fxarrow", 14, 40);
 sprite_change_offset_pm_fx("fxbuff", 89, 89);

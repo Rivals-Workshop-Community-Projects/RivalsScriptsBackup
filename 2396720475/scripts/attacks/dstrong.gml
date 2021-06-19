@@ -103,6 +103,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITSTUN_MULTIPLIER, 1.0);
 set_hitbox_value(AT_DSTRONG, 2, HG_EXTRA_HITPAUSE, 1);
+set_hitbox_value(AT_DSTRONG, 2, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW, 7);

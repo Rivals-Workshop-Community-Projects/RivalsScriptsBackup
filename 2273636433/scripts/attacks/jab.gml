@@ -108,8 +108,8 @@ set_hitbox_value(AT_JAB, 2, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_JAB, 2, HG_LIFETIME, 3);					//CHANGE JAB 2 ACTIVE FRAMES HERE TOO
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_X, 45);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_Y, -25);
-set_hitbox_value(AT_JAB, 2, HG_WIDTH, 58);
-set_hitbox_value(AT_JAB, 2, HG_HEIGHT, 38);
+set_hitbox_value(AT_JAB, 2, HG_WIDTH, 60);
+set_hitbox_value(AT_JAB, 2, HG_HEIGHT, 40);
 set_hitbox_value(AT_JAB, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 4);
 set_hitbox_value(AT_JAB, 2, HG_ANGLE, 60);
@@ -127,11 +127,11 @@ set_hitbox_value(AT_JAB, 3, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_JAB, 3, HG_LIFETIME, 2);					//CHANGE JAB 1 ACTIVE FRAMES HERE TOO
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_X, 46);
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_Y, -48);
-set_hitbox_value(AT_JAB, 3, HG_WIDTH, 60);
-set_hitbox_value(AT_JAB, 3, HG_HEIGHT, 76);
+set_hitbox_value(AT_JAB, 3, HG_WIDTH, 64);
+set_hitbox_value(AT_JAB, 3, HG_HEIGHT, 80);
 set_hitbox_value(AT_JAB, 3, HG_PRIORITY, 2);
 set_hitbox_value(AT_JAB, 3, HG_DAMAGE, 5);
-set_hitbox_value(AT_JAB, 3, HG_ANGLE, 60);
+set_hitbox_value(AT_JAB, 3, HG_ANGLE, 70);
 set_hitbox_value(AT_JAB, 3, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_JAB, 3, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(AT_JAB, 3, HG_BASE_HITPAUSE, 9);

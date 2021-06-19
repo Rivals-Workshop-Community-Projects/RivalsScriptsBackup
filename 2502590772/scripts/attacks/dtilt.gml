@@ -4,7 +4,7 @@ var this_attack = AT_DTILT;
 if (species_id == 1) this_attack = 3;
 
 set_attack_value(this_attack, AG_SPRITE, sprite_get_pm("dtilt"));
-set_attack_value(this_attack, AG_NUM_WINDOWS, 3);
+set_attack_value(this_attack, AG_NUM_WINDOWS, 4);
 set_attack_value(this_attack, AG_HURTBOX_SPRITE, sprite_get("dtilt_hurt"));
 
 set_window_value(this_attack, 1, AG_WINDOW_TYPE, 1);
@@ -24,6 +24,12 @@ set_window_value(this_attack, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(this_attack, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(this_attack, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(this_attack, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
+
+//final frame - in attack_update this transitions directly to PS_CROUCH
+set_window_value(this_attack, 4, AG_WINDOW_TYPE, 1);
+set_window_value(this_attack, 4, AG_WINDOW_LENGTH, 1);
+set_window_value(this_attack, 4, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(this_attack, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 
 set_num_hitboxes(this_attack,1);
 
@@ -45,7 +51,7 @@ set_hitbox_value(this_attack, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(this_attack, 1, HG_HITPAUSE_SCALING, .35);
 set_hitbox_value(this_attack, 1, HG_VISUAL_EFFECT_X_OFFSET, 30);
 set_hitbox_value(this_attack, 1, HG_VISUAL_EFFECT_Y_OFFSET, 10);
-set_hitbox_value(this_attack, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(this_attack, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 
 #define sprite_get_pm
 var sprite_name = argument0; if (species_id == 1) sprite_name = "m_" + sprite_name; return sprite_get(sprite_name);

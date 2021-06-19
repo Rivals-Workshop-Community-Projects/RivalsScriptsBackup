@@ -25,8 +25,14 @@ else {
         draw_sprite(spr_batoncaught, floor(visual_batonpass_counter), x, y - 30);
     }
     //helping hand buff visual
-    if (has_been_buffed_by_helping_hand && visual_hh_buff_counter != 0) {
-        draw_sprite(teammate_player_id.spr_hh_buff_arrow_effect, visual_hh_buff_counter - 1, x + visual_hh_buff_x, y + visual_hh_buff_y - visual_hh_buff_counter * 2 );
+    if (has_been_buffed_by_helping_hand) {
+        if (visual_hh_buff_counter != 0) {
+            draw_sprite(teammate_player_id.spr_hh_buff_arrow_effect, visual_hh_buff_counter - 1, x + visual_hh_buff_x, y + visual_hh_buff_y - visual_hh_buff_counter * 2 );
+        }
+
+        if (visual_hh_powerup_counter < 56) {
+            draw_sprite(spr_hh_buff_powerup_effect, visual_hh_powerup_counter / 3, x, y);
+        }
     }
     //dstrong2 thunder visual
     if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) {
@@ -59,7 +65,7 @@ else {
 //remnants of debug hell, c. 2021 commentized
 //with (obj_article3) draw_debug_text(x, y - 100, string(state))
 //var xx = x + 150 * (species_id * 2 - 1);
-//draw_debug_text(xx, y - 200, "left_down: " + string(left_down));
+//draw_debug_text(xx, y - 200, "window: " + string(window));
 //draw_debug_text(xx, y - 240, "state: " + get_state_name(state));
 //var i = -300;
 //var n = 16;

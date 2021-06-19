@@ -11,7 +11,7 @@ display = image_alpha * 10;
 // Variables for positioning of visuals
 var temp_x = x + 12;
 var temp_y = y + 140;
-var alts = 14;
+var alts = 15;
 
 var color = get_player_color(player);
 var name = " ";
@@ -19,23 +19,21 @@ var name = " ";
 var ColorPrev = [0, 0, 0];
 var ColorNext = [0, 0, 0];
 
-//path_scale = 0;
-//path_position = 0;
-
-//switch (path_position){
-//	case 0:
-//		var cPage = 1;
-//	break;
-//	case 1:
-//		var cPage = 2;
-//	break;
-//}
-
 // Updating image_alpha when a new color is selected
-if (color != image_index){ 
-	image_alpha = 1; //Set to 3 to make it take a long time for the text to fade
-	sound_stop(sound_get("CSS_select"));
-	sound_play(sound_get("CSS_select"));
+if (color <= 16){
+	if (color != image_index){ 
+		image_alpha = 1; //Set to 3 to make it take a long time for the text to fade
+		sound_stop(sound_get("CSS_select"));
+		sound_play(sound_get("CSS_select"));
+	}
+}
+
+if (color >= 17){
+	if (color != image_index + 17){ 
+		image_alpha = 1; //Set to 3 to make it take a long time for the text to fade
+		sound_stop(sound_get("CSS_select"));
+		sound_play(sound_get("CSS_select"));
+	}
 }
 
 image_index = color;
@@ -193,7 +191,7 @@ image_index = color;
 			var position = 13;
 			ColorPrev = make_color_rgb(222, 95, 131 );
 			ColorNext = make_color_rgb(53, 186, 255);
-			ColorNextNext = make_color_rgb(212, 51, 78);
+			ColorNextNext = make_color_rgb(216, 62, 219);
 				break;	
 				
 				case 14: 
@@ -220,13 +218,13 @@ image_index = color;
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
-draw_text_color(x + 10, y - 6, "Version 1.7.0", c_white, c_white, c_white, c_white, 1);
+draw_text_color(x + 10, y - 6, "Version 1.7.3", c_white, c_white, c_white, c_white, 1);
 
 // Date Display
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_right);
 draw_set_valign(fa_top);
-draw_text_color(x + 210, y - 6, "June 14th, 2021", c_white, c_white, c_white, c_white, 1);
+draw_text_color(x + 210, y - 6, "June 18th, 2021", c_white, c_white, c_white, c_white, 1);
 
 
 if (image_alpha == 0){

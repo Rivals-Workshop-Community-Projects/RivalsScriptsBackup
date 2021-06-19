@@ -39,7 +39,7 @@ if (my_hitboxID.player != my_hitboxID.orig_player) exit;
             && (hit_player_obj.y - (hit_player_obj.char_height / 2) < my_hitboxID.y )
             && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)  {
                 with (hit_player_obj) {
-                    if (!place_meeting(x, y + 2, asset_get("par_solid"))) y += 2;
+                    if (!place_meeting(x, y + 4, asset_get("par_solid"))) y += 4;
                 }
             }
         break;
@@ -88,7 +88,7 @@ if (my_hitboxID.type == 1 && hitpause && point_distance(x, y, teammate_player_id
 }
 
 
-//if the teammate is using helping hand, add the damage dealt to the charge level
+//if the teammate is using helping hand add the damage dealt to the charge level
 if (is_teammate_using_helping_hand() && has_been_buffed_by_helping_hand) {
     var teammate_id = teammate_player_id;
     var damage_dealt = my_hitboxID.damage;

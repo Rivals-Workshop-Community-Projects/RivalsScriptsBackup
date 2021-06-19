@@ -51,17 +51,20 @@ if (is_master_player) {
 					x = leader_unit.x + leader_unit.spr_dir * 10;
 					y = leader_unit.y;
 					has_been_knocked_out = false;
+					invincible = teammate_player_id.invincible;
+					invince_time = teammate_player_id.invince_time;
+					initial_invince = teammate_player_id.initial_invince;
 				}
 			}
 		}
 		//keep track of the special button being held
 		if (special_down || special_pressed || (leader_unit.attack == AT_TAUNT_2 && leader_unit.state == PS_ATTACK_GROUND)) {
 			special_held_counter = max(0, special_held_counter + 1);
-			if (special_held_counter > 8) special_held = true;
+			if (special_held_counter > 7) special_held = true;
 		}
 		else {
 			special_held_counter = min(0, special_held_counter - 1);
-			if (special_held_counter > -12) special_held = false;
+			if (special_held_counter < -20) special_held = false;
 		}
 	}
 
@@ -89,7 +92,11 @@ if (attack == AT_EXTRA_3) {
 if (has_been_knocked_out) {
 	//go invincible and invisible, and follow the master player around.
     set_state(PS_ATTACK_AIR);
-    set_attack(AT_EXTRA_3); 
+    state_timer = 0;
+    window = 0;
+    window_timer = 0;
+    attack = AT_EXTRA_3;
+    //set_attack(AT_EXTRA_3); 
     visible = false;
     hitstun = 0;
     hitstop = 2;
@@ -107,6 +114,8 @@ if (has_been_knocked_out) {
     	//mark the teammate as having no teammate for now
     	teammate_player_id.teammate_player_id = noone;
     }
+    //mark this instance as having no teammate
+    teammate_player_id = noone;
     exit;
 }
 
@@ -202,7 +211,11 @@ if (!custom_clone) {
 		case PS_RESPAWN:
 			//reset helping hand charge level on respawn.
     		master_player_id.hh_charge_level = 0;
+    		//don't draw the hud until respawned
+    		if (state_timer < 40) draw_indicator = false;
     	break;
+    	
+
 	}
 	
 	//update health variable every frame
@@ -267,6 +280,54 @@ else {
 				break;
 			}
 		break;
+		
+		case PS_RESPAWN:
+			//share invincibility time
+			if (state_timer > 40 && instance_exists(teammate_player_id)) {
+				if (teammate_player_id.state == PS_RESPAWN) {
+					//share respawn invulnerability
+					invincible = 1;
+					invince_time = 90;
+					initial_invince = teammate_player_id.initial_invince;
+				}
+				else if (teammate_player_id.state != PS_ATTACK_AIR || teammate_player_id.attack != AT_NSPECIAL) {
+                    //get off of the respawn platform
+                    set_state(PS_IDLE_AIR);
+                }
+			}
+			force_depth = true;
+			depth = -3.5;
+		break;
+								
+		
+		case PS_ROLL_FORWARD:
+        case PS_TECH_FORWARD:
+        case PS_ROLL_BACKWARD:
+        case PS_TECH_BACKWARD:
+        	//if the leader is at a lower altitude than the partner, roll towards the partner
+        	if (state_timer <= 0 && instance_exists(teammate_player_id) && y < teammate_player_id.y && !(master_player_id.special_held) && x != teammate_player_id.x) {
+        		spr_dir = sign(x - teammate_player_id.x);
+        	}
+        	//draw the partner behind the leader
+			force_depth = true;
+			depth = -3.5;
+        break;
+		
+		
+		case PS_FIRST_JUMP:
+        case PS_DOUBLE_JUMP:
+        	//artificially change the jump trajectory so that the partner doesn't stray too far from the player
+        if (state_timer <= 0) {
+            var holding_dir = right_down - left_down;//(ai_inputs & INP_RIGHT != 0) - (ai_inputs & INP_LEFT != 0);
+            if ( !(master_player_id.special_held) && instance_exists(teammate_player_id) && sign(teammate_player_id.x - x) == -holding_dir && sign(hsp) == holding_dir && !hitpause ) {
+                hsp += sign(teammate_player_id.x - x) * jump_change;
+                //if (sign(hsp) == holding_dir) hsp = 0;
+            }
+        }
+        
+        
+        
+		//don't break
 		default:
 			//draw the partner behind the leader
 			force_depth = true;
@@ -354,7 +415,7 @@ if (shield_pressed) this_frame_inputs |= INP_SHIELD_PRESSED
 if (left_stick_pressed) this_frame_inputs |= INP_LEFT_STICK
 if (right_stick_pressed) this_frame_inputs |= INP_RIGHT_STICK
 if (up_stick_pressed) this_frame_inputs |= INP_UP_STICK
-if (down_stick_pressed) this_frame_inputs |= INP_DOWN_STICK && (free || state == PS_JUMPSQUAT || state == PS_FIRST_JUMP || master_player_id.special_held)
+if (down_stick_pressed) this_frame_inputs |= INP_DOWN_STICK;// && (free || state == PS_JUMPSQUAT || state == PS_FIRST_JUMP || master_player_id.special_held)
 
 buffer_ai_inputs[buffer_counter] = this_frame_inputs;
 
@@ -648,8 +709,19 @@ if (!custom_clone) {
 			//visual_hh_buff_x += sign(visual_hh_buff_x) * 10;
 			visual_hh_buff_y = random_func(player + 4, 20, true) * 2 - 20;
 		}
+		if (visual_hh_powerup_counter == 0) {
+			sound_play(sound_get("stat_up"), false, noone, 0.35, 1);
+		}
+		if (visual_hh_powerup_counter < 60) {
+			if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) {
+				visual_hh_powerup_counter = clamp(visual_hh_powerup_counter + 1, 40, 60);
+			}
+			else visual_hh_powerup_counter++;
+		}
+	}
+	else {
+		visual_hh_powerup_counter = max(visual_hh_powerup_counter - 1, 0);
 	}
 }
-
 
 

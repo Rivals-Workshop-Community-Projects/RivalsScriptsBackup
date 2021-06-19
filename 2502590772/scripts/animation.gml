@@ -10,6 +10,10 @@ if (!custom_clone) {
     if (damage_percent_as_teammate < 0) take_damage(player, -1, damage_percent_as_teammate);
     damage_percent_as_teammate = get_player_damage(player);
 }
+else {
+	//update health
+	damage_percent_as_teammate = clamp(damage_percent_as_teammate, 0, 999);
+}
 
 
 switch (state) {
@@ -43,7 +47,8 @@ switch (state) {
             //don't break
             
             case AT_FSTRONG:
-            case 40: //index for AT_MINUN_FSTRONG
+            case AT_FTHROW: //index for partner FStrong
+            case 40: //index for AT_MINUN_FSTRONG (no longer used)
                 //fix for fstrong going in the wrong direction.
                 if (dir_correct == 0) break;
             	spr_dir = dir_correct;
@@ -100,9 +105,10 @@ switch (state) {
         else {
             if (state_timer >= 75 + intro_delay) {
                 //replace the sprite according to the reskin array
-                var img_index = image_index;
+                //var img_index = image_index;
                 sprite_index = spr_minun_reskin[state];
-                image_index = img_index;
+                //image_index = img_index;
+                image_index = teammate_player_id.image_index + 6;
             }
             else {
                 sprite_index = sprite_get("m_intro");

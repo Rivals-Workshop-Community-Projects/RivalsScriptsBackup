@@ -14,6 +14,9 @@ set_player_damage(player, teammate_player_id.damage_percent_as_teammate);
 //make the leader a follower
 custom_clone = true;
 
+//give the leader's aerials a short delay - prevents instant-buffered aerials from occuring before the AI attempts a recovery
+put_aerials_on_cooldown();
+
 //copy the partner's buffer
 repeat (partner_input_buffer_delay) {
 
@@ -30,6 +33,8 @@ repeat (partner_input_buffer_delay) {
     i++;
 }
 
+//reset buff aesthetic variables
+visual_hh_powerup_counter = 0;
 
 //make the follower a leader
 with (teammate_player_id) {
@@ -85,4 +90,13 @@ with (teammate_player_id) {
 attack_end();
 destroy_hitboxes();
 set_state(argument0);
+return;
+
+
+#define put_aerials_on_cooldown
+move_cooldown[AT_NAIR] = 2;
+move_cooldown[AT_UAIR] = 2;
+move_cooldown[AT_DAIR] = 2;
+move_cooldown[AT_FAIR] = 2;
+move_cooldown[AT_BAIR] = 2;
 return;

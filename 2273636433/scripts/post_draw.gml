@@ -3,7 +3,7 @@
 
 //draw_debug_text(x  ,y, string(docscore));
 //draw_debug_text(x , y-20 , string(doc_score));
-//draw_debug_text(x , y-40 , string(pill_counter));
+//draw_debug_text(x , y-40 , string(doc_ditto));
 //draw_debug_text(x , y-60 , string(reroll));
 //draw_debug_text(x ,y+20, string(previo[0]));
 //draw_debug_text(x , y-80 , string(valido));
@@ -149,13 +149,18 @@ if state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR {
 	}
 }
 
-
-//DRAWING DAMAGE AND KNOCKBACK INDICATORS FOR PROJECITLES
-if pill_counter > 0 && (show > 0){
-	if (pHitBox.attack == AT_NSPECIAL) && ((pHitBox.C_dam + pHitBox.C_knock) >1)  {
-		if (!hitpause) {show++;}
-		draw_sprite( sprite_get("I_D"), pHitBox.C_dam, pHitBox.x -6, pHitBox.y-22);
-		draw_sprite( sprite_get("I_K"), pHitBox.C_knock, pHitBox.x + 6, pHitBox.y-22);
+//Show Ownership projectiles
+if pill_counter > 0{
+	with pHitBox {
+		if attack == AT_NSPECIAL && type ==2 && player == orig_player &&  player_id.url == 2273636433{
+			if player_id.doc_ditto == 1 {draw_sprite(sprite_get("owner"), player , x - 7, y-30);}
+			//DRAWING DAMAGE AND KNOCKBACK INDICATORS FOR PROJECITLES
+			if (C_dam + C_knock) >1  && show < 30 {
+				if !in_hitpause{show++;}
+				draw_sprite( sprite_get("I_D"), C_dam, x -6, y-28);
+				draw_sprite( sprite_get("I_K"), C_knock, x + 6, y-28);
+			}
+		}
 	}
 }
 

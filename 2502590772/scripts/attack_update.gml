@@ -18,7 +18,7 @@ if (is_master_player) exit;
 
 
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_FSPECIAL_2 || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == AT_USPECIAL_2){
     trigger_b_reverse();
 }
 
@@ -68,9 +68,12 @@ switch (attack) {
 case AT_FSTRONG:
 case AT_DSTRONG:
 case AT_USTRONG:
-case AT_MINUN_FSTRONG:
-case AT_MINUN_DSTRONG:
-case AT_MINUN_USTRONG:
+case AT_FTHROW: //fstrong when used by partner
+case AT_DTHROW: //dstrong when used by partner
+case AT_UTHROW: //ustrong when used by partner
+//case AT_MINUN_FSTRONG:
+//case AT_MINUN_DSTRONG:
+//case AT_MINUN_USTRONG:
 	if (!custom_clone || window != 1 || hitpause) break;
 	//ai can't charge strongs.
 	if (window_timer == 1) skip_strong_charge = 0;
@@ -84,7 +87,17 @@ case AT_MINUN_USTRONG:
 	}
 break;
 
-
+case AT_DTILT:
+case AT_MINUN_DTILT:
+	//hard code crouching at the end of the attack
+	if (window >= 4) {
+		if (was_parried) safely_set_state(PS_PRATLAND);
+		else {
+			safely_set_state(PS_CROUCH);
+			state_timer = 6;
+		}
+	}
+break;
 
 case AT_DAIR:
 case AT_MINUN_DAIR:
@@ -97,7 +110,6 @@ case AT_NAIR:
 case AT_FAIR:
 case AT_BAIR:
 case AT_UAIR:
-case AT_MINUN_JAB:
 case AT_MINUN_FAIR:
 case AT_MINUN_BAIR:
 case AT_MINUN_UAIR:
@@ -113,19 +125,30 @@ case AT_MINUN_JAB:
 		case 1:
 			if (window_timer == 1 && !hitpause) {
 				//only the leader's jab flinches
-				set_hitbox_value(attack, 1, HG_FORCE_FLINCH, !species_id);
+				set_hitbox_value(attack, 1, HG_FORCE_FLINCH, !custom_clone);
 			}
 		break;
-
+		
+		case 4:
+			if (window_timer == 1 && !hitpause) {
+				//reset jab2 buffer variable
+				jab2_input_was_buffered = false;
+			}
+		break;
+		
 		case 5:
+			if (is_attack_pressed(DIR_ANY)) jab2_input_was_buffered = true;
 			if (hitpause) break;
 			if (window_timer == 1) sound_play(asset_get("sfx_absa_jab1"), 0, noone, 0.3);
 			else if (window_timer == 13) sound_play(asset_get("sfx_absa_jab2"), 0, noone, 0.3);
 		break;
 		case 6:
-			if (attack_down && !was_parried) {
+			if ((jab2_input_was_buffered || attack_down || attack_pressed) && !was_parried) {
 				window = 5;
 				window_timer = 0;
+				jab2_input_was_buffered = 0;
+				clear_button_buffer(PC_ATTACK_PRESSED);
+				if (custom_clone) attack_counter = 10; //fix for ai buffer
 				attack_end();
 				destroy_hitboxes();
 			}
@@ -162,13 +185,15 @@ break;
 
 case AT_FSPECIAL: //plusle projectile
 case AT_FSPECIAL_2: //minun projectile
-	if (window == 1) can_move = false;
+	if (window == 1) { can_move = false; can_wall_jump = true; }
 	can_fast_fall = true;
 	if (window_timer != 1 || hitpause) break;
     switch (window) {
     	case 1:
     		//clear the button buffer on the AI teammate
     		clear_teammate_special_inputs_as_leader();
+    		//startup is walljump-cancellable
+    		can_wall_jump = true;
     	break;
     	case 2:
     		if (attack == AT_FSPECIAL_2) {
@@ -279,9 +304,14 @@ case AT_USPECIAL_2:
     if (hitpause) break;
     switch (window) {
     	case 1:
+    		//initial variables
     		if (window_timer == 1) {
     			uspecial_used_angle = noone;
     			uspecial_angle = 90;
+    		}
+    		//stop falling if at the blastzone
+    		if (vsp > 0 && y >= master_player_id.blastzone_b - 16) {
+    			vsp = 0;
     		}
     	break;
     		
@@ -307,6 +337,11 @@ case AT_USPECIAL_2:
     		}
 			uspecial_drag_teammate();
 			
+			//stop falling if at the blastzone
+    		if (vsp > 0 && y >= master_player_id.blastzone_b - 16) {
+    			vsp = 0;
+    		}
+			
     	break;
     	
     	case 3:
@@ -323,11 +358,13 @@ case AT_USPECIAL_2:
     			spawn_hit_fx(round(x + hsp), round(y - 30 + vsp), vfx_uspecial_sweetspot_marker);
     		}
     		//drag teammate - final frame
-    		else if (window_timer <= 1) uspecial_drag_teammate();
+    		//else if (window_timer <= 1) 
+    		uspecial_drag_teammate();
     	break;
     	
     	case 4:
-    		
+    		if (window_timer <= 1) 
+    		uspecial_drag_teammate();
     		
 			//if the teammate is still holding on and special is pressed again, use their special too
 			if (!was_parried && uspecial_used_angle == noone && (special_pressed || special_down) 
@@ -504,6 +541,8 @@ case AT_FSTRONG_2:
 		case 1: //startup: slow fall if sliding off the edge
 			vsp = min(vsp, 4);
 			if (free) can_move = false;
+			
+			spawn_empowered_strong_attack_dust_fx();
 		break;
 		
 		
@@ -524,13 +563,20 @@ case AT_FSTRONG_2:
 			if (window_timer > 1 && hsp == 0 && !hitpause && place_meeting(x + spr_dir, y, asset_get("par_block"))) {
 				window = 5;
 				window_timer = 0;
+				hitpause = true;
+				hitstop = 3;
+				hsp = 0;
+				vsp = 0;
 				old_hsp = -spr_dir * 4;
 				old_vsp = -7;
 				has_hit = true;
+				sound_play(asset_get("sfx_blow_weak3"), false, noone, 0.5, 1.25);
 				break;
 			}
 			
-
+			if (!free && state_timer mod 6 == 0 && !hitpause) {
+				spawn_base_dust(x, y, "dash");
+			}
 			
 			//if (hitpause) break;
 			hsp = get_window_value(attack, window, AG_WINDOW_HSPEED) * spr_dir  * (1 + strong_charge / 120);
@@ -542,12 +588,15 @@ case AT_FSTRONG_2:
 		
 		case 4: //didn't hit wall/player: recovery
 			if (!free) can_move = 0;
-			vsp = min(vsp, 2);
+			
 			if (!hitpause) {
 				if (window_timer == 1) {
 					destroy_hitboxes();
 					hsp *= 0.5;
 				}
+				
+				if (window_timer < 5) vsp = min(vsp, 0);
+				
 				//if the hitbox hits on the very last frame, still transition to window 5
 				if (has_hit) {
 					window = 5;
@@ -556,6 +605,16 @@ case AT_FSTRONG_2:
 					old_vsp = -7;
 					break;
 				}
+				//transition to ps_land early
+				if (!free && window_timer > get_window_value(attack, window, AG_WINDOW_LENGTH) * 0.75) {
+					window = 7;
+					window_timer = 0;
+				}
+				
+				if (!free && window_timer == 0) {
+					spawn_base_dust(x, y, "dash", -spr_dir);
+				}
+				
 			}
 			if (is_end_of_window()) {
 				window = 7;
@@ -570,24 +629,31 @@ case AT_FSTRONG_2:
 		case 6:
 			if (has_hit && !was_parried) iasa_script();
 		break;
-
+	
 		case 7: //final frame
-			if (is_end_of_window() && !has_hit && !was_parried) {
+			if (is_end_of_window() && !was_parried) {
 				if (free) {
-					safely_set_state(PS_PRATFALL);
+					safely_set_state(PS_IDLE_AIR);
 				}
-				else safely_set_state(PS_PRATLAND);
+				else safely_set_state(PS_LANDING_LAG);
 			}
 		break;
 	}
 break;
 
 case AT_DSTRONG_2:
-	if (window_timer == 1 && window == 1 && strong_charge == 0 && !hitpause) {
+	if (window != 1) break;
+	spawn_empowered_strong_attack_dust_fx();
+	if (window_timer == 1 && strong_charge == 0 && !hitpause) {
 		var new_fx = spawn_hit_fx(x, y - 60, vfx_dstrong_thundertell);
 		new_fx.spr_dir *= 2;
 		new_fx.image_yscale = 2;
 	}
+break;
+
+case AT_USTRONG_2:
+	if (window != 1) break;
+	spawn_empowered_strong_attack_dust_fx();
 break;
 
 
@@ -742,7 +808,7 @@ for (step /= 2; step < 1; step /= 2) {
 
 #define uspecial_drag_teammate
 
-if (!instance_exists(teammate_player_id)) return;
+if (!instance_exists(teammate_player_id) || (teammate_player_id.attack == AT_USPECIAL_GROUND && (teammate_player_id.state == PS_ATTACK_AIR || teammate_player_id.state == PS_ATTACK_GROUND))) return;
 var teammate_dist = point_distance(x - spr_dir * 30, y + 30, teammate_player_id.x, teammate_player_id.y);
 if (teammate_dist <= uspecial_maximum_team_up_distance) { // && y < teammate_player_id.y) {
 
@@ -792,7 +858,10 @@ if (teammate_dist <= uspecial_maximum_team_up_distance) { // && y < teammate_pla
 		
 		
 		
-		if (can_transition) safely_set_attack(AT_USPECIAL_GROUND);
+		if (can_transition) {
+			safely_set_attack(AT_USPECIAL_GROUND);
+			sound_play(asset_get("sfx_absa_cloud_placepop"), 0, noone, 1, 1);
+		}
 	}
 }
 
@@ -812,3 +881,48 @@ var new_fx = spawn_hit_fx(x_pos, y_pos, fx);
 new_fx.spr_dir *= 2;
 new_fx.image_yscale = 2;
 new_fx.image_index = 3;
+
+#define spawn_empowered_strong_attack_dust_fx
+var end_of_window = get_window_value(attack, window, AG_WINDOW_LENGTH) - 1;
+if (window_timer != end_of_window || ((state_timer - end_of_window) mod 15) != 0 || hitpause) return;
+//spawn_hit_fx(x + 8, y, teammate_player_id.vfx_hh_dashboost).spr_dir = -1;
+//spawn_hit_fx(x - 8, y, teammate_player_id.vfx_hh_dashboost).spr_dir = 1;
+//if (attack == AT_FSTRONG_2) spawn_base_dust(x, y, "dash_start");
+//else spawn_base_dust(x, y, "jump");
+
+spawn_base_dust(x - 16, y, "dash", 1);
+spawn_base_dust(x + 16, y, "dash",  -1);
+
+#define spawn_base_dust
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+//made by Supersonic. 
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dfa = 0; //draw_angle value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir = argument_count > 3 ? argument[3] : 0;
+
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = dfa;
+return newdust;
+

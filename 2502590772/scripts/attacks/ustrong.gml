@@ -1,12 +1,14 @@
 if (is_master_player) exit; //efficiency: don't load attacks on master player
 
 var this_attack = AT_USTRONG;
-if (species_id == 1) this_attack = 43;
+//if (species_id == 1) this_attack = 43;
+
+repeat (2) {
 
 set_attack_value(this_attack, AG_SPRITE, sprite_get_pm("ustrong"));
 set_attack_value(this_attack, AG_NUM_WINDOWS, 5);
 set_attack_value(this_attack, AG_HAS_LANDING_LAG, 3);
-set_attack_value(this_attack, AG_STRONG_CHARGE_WINDOW, 1);
+set_attack_value(this_attack, AG_STRONG_CHARGE_WINDOW, (this_attack == AT_USTRONG));
 set_attack_value(this_attack, AG_HURTBOX_SPRITE, sprite_get("ustrong_hurt"));
 
 //startup
@@ -58,7 +60,7 @@ set_hitbox_value(this_attack, 1, HG_HITBOX_X, -2);
 set_hitbox_value(this_attack, 1, HG_WIDTH, 84);
 set_hitbox_value(this_attack, 1, HG_HEIGHT, 76);
 set_hitbox_value(this_attack, 1, HG_PRIORITY, 2);
-set_hitbox_value(this_attack, 1, HG_DAMAGE, 5);
+set_hitbox_value(this_attack, 1, HG_DAMAGE, 6);
 set_hitbox_value(this_attack, 1, HG_ANGLE, 90);
 set_hitbox_value(this_attack, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(this_attack, 1, HG_KNOCKBACK_SCALING, 1);
@@ -88,6 +90,10 @@ set_hitbox_value(this_attack, 2, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(this_attack, 2, HG_EXTRA_HITPAUSE, 3);
 set_hitbox_value(this_attack, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(this_attack, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+
+//repeat this and assign it to AT_UTHROW
+this_attack = AT_UTHROW;
+}
 
 #define sprite_get_pm
 var sprite_name = argument0; if (species_id == 1) sprite_name = "m_" + sprite_name; return sprite_get(sprite_name);

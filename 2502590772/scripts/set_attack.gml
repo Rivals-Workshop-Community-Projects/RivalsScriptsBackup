@@ -17,6 +17,8 @@ if (is_master_player || move_cooldown[attack] > 0) exit;
 
 #macro INP_LEFT 1 << 4
 #macro INP_RIGHT 1 << 5
+#macro INP_UP 1 << 6
+#macro INP_DOWN 1 << 7
 #macro INP_LEFT_HARD 1 << 8
 #macro INP_RIGHT_HARD 1 << 9
 #macro INP_LEFT_STICK 1 << 21
@@ -36,78 +38,115 @@ switch (attack) {
     
     case AT_FSTRONG:
         //there's some weird code I can't find that keeps flipping fstrong's direction to the right. therefore:
-        if (left_down - right_down == 0 && is_strong_pressed(DIR_LEFT) - is_strong_pressed(DIR_RIGHT) == 0) dir_correct = spr_dir;
+        if (is_strong_pressed(DIR_LEFT) - is_strong_pressed(DIR_RIGHT) == 0) {
+            if (species_id == 1 && !master_player_id.special_held) {
+                var raw_input_dir = (ai_inputs_raw & INP_RIGHT != 0) - (ai_inputs_raw & INP_LEFT != 0);
+                if (raw_input_dir != 0) {
+                    dir_correct = raw_input_dir;
+                }
+                else dir_correct = spr_dir;
+            }
+            else dir_correct = spr_dir;
+            
+        }
         else dir_correct = 0;
-        /*
-        print("fstrong_any: " + string(is_strong_pressed(DIR_ANY)))
-        var fstrong_dir = (is_strong_pressed(DIR_RIGHT) - is_strong_pressed(DIR_LEFT));
-        print("fstrong_dir: " + string(fstrong_dir))
-        print("spr_dir: " + string(spr_dir));
-        if (fstrong_dir != 0) spr_dir = fstrong_dir;
-        */
+
         if (has_been_buffed_by_helping_hand) attack = AT_FSTRONG_2;
-        else if (species_id == 1) attack = get_minun_attack(attack);
+        else if (custom_clone) attack = AT_FTHROW;
     break;
     
     case AT_USTRONG:
         if (has_been_buffed_by_helping_hand) attack = AT_USTRONG_2;
-        else if (species_id == 1) attack = get_minun_attack(attack);
+        else if (custom_clone) attack = AT_UTHROW;
     break;
     
     case AT_DSTRONG:
         if (has_been_buffed_by_helping_hand) attack = AT_DSTRONG_2;
-        else if (species_id == 1) attack = get_minun_attack(attack);
+        else if (custom_clone) attack = AT_DTHROW;
     break;
+    
+    /*
+    case AT_FAIR:
+    case AT_BAIR:
+        //correct to a different aerial if required
+        if (custom_clone && !(master_player_id.special_held)) {
+            var dir_front, dir_back;
+            if (spr_dir == 1)   { dir_front = DIR_RIGHT; dir_back = DIR_LEFT; }
+                else            { dir_front = DIR_LEFT;  dir_back = DIR_RIGHT; }
+            if ((attack == AT_FAIR && is_attack_pressed(dir_front)) ){// || (attack == AT_BAIR && is_attack_pressed(dir_back))) {
+                //do nothing
+            }
+            else {
+                var raw_input_front, raw_input_back;
+                if (spr_dir == 1)   { raw_input_front = ai_inputs_raw & INP_RIGHT != 0; raw_input_back = ai_inputs_raw & INP_LEFT != 0;  }
+                else                { raw_input_front = ai_inputs_raw & INP_LEFT != 0;  raw_input_back = ai_inputs_raw & INP_RIGHT != 0; }
+                
+                if (raw_input_front) {attack = AT_FAIR; print("corrected fair") }
+                else if (raw_input_back) {attack = AT_BAIR; print("corrected bair") }
+            }
+        }
+        
+        if (species_id == 1) attack = get_minun_attack(attack);
+    
+    break;
+    
+    
+    case AT_FAIR:
+        //correct to bair if required
+        if (custom_clone 
+        && !(master_player_id.special_held) 
+        && !check_attack_input_forward() //check_attack_input()//
+        && check_raw_input_backward()) {
+            attack = AT_BAIR;
+            print("corrected to bair")
+        }
+    if (species_id == 1) attack = get_minun_attack(attack);
+    break;
+        
+    case AT_BAIR:
+        //correct to fair if required
+        if (custom_clone 
+        && !(master_player_id.special_held) 
+        && !check_attack_input_backward() //not a typo
+        && check_raw_input_forward()) {
+            attack = AT_FAIR;
+            print("corrected to fair")
+        }
+    if (species_id == 1) attack = get_minun_attack(attack);
+    break;
+    */
     
     case AT_NAIR:
         //correct to a different aerial if required
-        /*
+        
          if (custom_clone && !(master_player_id.special_held)) {
             //use the real intended attack if the player didn't intend for a nair
-            if (ai_prev_inputs_raw & INP_LEFT |= 0) attack = AT_UAIR;
-            else if (down_down) attack = AT_DAIR;
+            //if (ai_inputs_raw & INP_LEFT = 0) attack = AT_UAIR;
+            
+            if (ai_inputs_raw & INP_UP != 0) attack = AT_UAIR;
+            else if (ai_inputs_raw & INP_DOWN != 0) attack = AT_DAIR;
             else {
-                var dir_front, dir_back;
-                if (spr_dir == 1)   { dir_front = right_down; dir_back = left_down;  }
-                else                { dir_front = left_down;  dir_back = right_down; }
+                var raw_input_front, raw_input_back;
+                if (spr_dir == 1)   { raw_input_front = ai_inputs_raw & INP_RIGHT != 0; raw_input_back = ai_inputs_raw & INP_LEFT != 0;  }
+                else                { raw_input_front = ai_inputs_raw & INP_LEFT != 0;  raw_input_back = ai_inputs_raw & INP_RIGHT != 0; }
                 
-                if (dir_front) attack = AT_FAIR;
-                else if (dir_back) attack = AT_BAIR;
+                if (raw_input_front) attack = AT_FAIR;
+                else if (raw_input_back) attack = AT_BAIR;
             }
         }
-        
-        if (custom_clone && !(master_player_id.special_held) && (is_attack_pressed(DIR_ANY) || is_strong_pressed(DIR_ANY))) {
-            print(" DIR_LEFT " + string(is_attack_pressed(DIR_LEFT) || is_strong_pressed(DIR_LEFT)) 
-            + " DIR_UP " + string(is_attack_pressed(DIR_UP) || is_strong_pressed(DIR_UP)) 
-            + " DIR_RIGHT " + string(is_attack_pressed(DIR_RIGHT) || is_strong_pressed(DIR_RIGHT)) 
-            + " DIR_DOWN " + string(is_attack_pressed(DIR_DOWN) || is_strong_pressed(DIR_DOWN)) )
-            //use the real intended attack if the player didn't intend for a nair
-            if (is_attack_pressed(DIR_UP) || is_strong_pressed(DIR_UP)) attack = AT_UAIR;
-            else if (is_attack_pressed(DIR_DOWN) || is_strong_pressed(DIR_DOWN)) attack = AT_DAIR;
-            else {
-                var dir_front, dir_back;
-                if (spr_dir == 1)   { dir_front = DIR_RIGHT; dir_back = DIR_LEFT;  }
-                else                { dir_front = DIR_LEFT;  dir_back = DIR_RIGHT; }
-                
-                if (is_attack_pressed(dir_front) || is_strong_pressed(dir_front)) attack = AT_FAIR;
-                else if (is_attack_pressed(dir_back) || is_strong_pressed(dir_back)) attack = AT_BAIR;
-            }
-        }
-        */
-        
         
         if (species_id == 1) attack = get_minun_attack(attack);
     break;
     
     case AT_JAB:
-        //swap the attack if minun is using it
-        //if (species_id == 1) attack = get_minun_attack(attack);
-        
-        //the partner should always use this move towards the teammate UNLESS the player is forcing a desync with the special button
-        if (custom_clone && instance_exists(teammate_player_id) && prev_state != PS_ATTACK_GROUND && !master_player_id.special_held) {
-            var teammate_dir = sign(teammate_player_id.x - x);
-            if (teammate_dir != 0) spr_dir = teammate_dir;
-            else spr_dir = teammate_player_id.spr_dir;
+    
+        if (custom_clone && !(master_player_id.special_held)) {
+           //the partner should always use this move towards the teammate UNLESS the player is forcing a desync with the special button
+            if (instance_exists(teammate_player_id) && prev_state != PS_ATTACK_GROUND) {
+                var teammate_dir = sign(teammate_player_id.x - x);
+                if (teammate_dir != 0) spr_dir = teammate_dir;
+                else spr_dir = teammate_player_id.spr_dir;
+            } 
         }
     break;
     
@@ -123,29 +162,6 @@ switch (attack) {
             else attack = AT_JAB;
         }
         
-        /*
-        if (custom_clone && instance_exists(teammate_player_id)) {
-            //print("dattack predicted state: " + get_state_name(sync_next_predicted_state))
-            if (sync_next_predicted_state == PS_DASH_STOP && (teammate_player_id.attack != AT_DATTACK && teammate_player_id.attack != AT_MINUN_DATTACK)) {
-                switch (teammate_player_id.attack) {
-                    case AT_JAB:
-                    case AT_MINUN_JAB:
-                        attack = AT_JAB; break;
-                    case AT_FTILT:
-                    case AT_MINUN_FTILT:
-                        hsp = clamp(hsp, -walk_speed, walk_speed); attack = AT_FTILT; break;
-                    case AT_DTILT:
-                    case AT_MINUN_DTILT:
-                        hsp = clamp(hsp, -walk_speed, walk_speed); attack = AT_DTILT; break;
-                    case AT_UTILT:
-                    case AT_MINUN_UTILT:
-                        hsp = clamp(hsp, -walk_speed, walk_speed); attack = AT_UTILT; break;
-                    //shouldn't be possible to use any other attack in this clause, leave in the default dash attack
-                }
-                //attack = teammate_player_id;
-            }
-        }
-        */
         if (species_id == 1) attack = get_minun_attack(attack);
         
     break;
@@ -189,13 +205,14 @@ switch (attack) {
 #define get_minun_attack(atk_value)
 
 switch (atk_value) {
-    case AT_JAB: return 0;
+    //case AT_JAB: return 0;
     case AT_FTILT: return 2;
     case AT_DTILT: return 3;
     case AT_UTILT: return 39;
-    case AT_FSTRONG: return 40;
-    case AT_DSTRONG: return 42;
-    case AT_USTRONG: return 43;
+    //case AT_FSTRONG: return 40;
+    //case AT_DSTRONG: return 42;
+    //case AT_USTRONG: return 43;
+    case AT_DSTRONG: return AT_DTHROW;
     case AT_DATTACK: return 44;
     case AT_FAIR: return 45;
     case AT_BAIR: return 46;
@@ -204,3 +221,18 @@ switch (atk_value) {
     case AT_NAIR: return 49;
     default: return atk_value;
 }
+
+
+#define check_attack_input_forward
+if (spr_dir = 1) return is_attack_pressed(DIR_RIGHT);
+else return is_attack_pressed(DIR_LEFT);
+
+#define check_attack_input_backward
+if (spr_dir = -1) return is_attack_pressed(DIR_RIGHT);
+else return is_attack_pressed(DIR_LEFT);
+
+#define check_raw_input_forward
+return ( (ai_inputs_raw & INP_RIGHT != 0) - (ai_inputs_raw & INP_LEFT != 0) == spr_dir );
+
+#define check_raw_input_backward
+return ( (ai_inputs_raw & INP_LEFT != 0) - (ai_inputs_raw & INP_RIGHT != 0) == spr_dir );

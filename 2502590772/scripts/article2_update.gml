@@ -36,6 +36,12 @@ else if (hitbox_respawn_time > 0) {
     hitbox_respawn_time--;
 }
 else {
+    //destroy when bumping into walls
+    //if (hb_exists && hsp == 0 && place_meeting(x + spr_dir, y, asset_get("par_block"))) {
+    if (hb_exists && hit_wall) {
+        hitbox_id.destroyed = true;
+        hb_exists = false;
+    }
     move_speed += move_accel;
     hsp = spr_dir * move_speed;
     image_index += 0.33;
@@ -82,7 +88,7 @@ if (destroy) {
 #define handle_got_parried
 if (!trigger_got_parried) return;
 trigger_got_parried = false;
-was_parried = true;
+was_parried = (parried_by_player != player_id.player);
 spr_dir *= -1;
 exist_timer = 0;
 

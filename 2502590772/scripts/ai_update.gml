@@ -67,9 +67,7 @@ disable_ai = true;
 #macro AT_MINUN_FTILT 2
 #macro AT_MINUN_DTILT 3
 #macro AT_MINUN_UTILT 39
-#macro AT_MINUN_FSTRONG 40
-#macro AT_MINUN_DSTRONG 42
-#macro AT_MINUN_USTRONG 43
+
 #macro AT_MINUN_DATTACK 44
 #macro AT_MINUN_FAIR 45
 #macro AT_MINUN_BAIR 46
@@ -98,11 +96,11 @@ process_inputs();
 // the main AI "hub" script that controls stuff 
 #define main()
     disable_ai = true;
-    var i 
+    var b 
     var leader_x;
     with (teammate_player_id) {
-        i = (buffer_counter);
-        leader_x = buffer_x_position[i];// + round(hsp * 6 - spr_dir * (40 * (state != PS_WALK_TURN && state != PS_DASH_TURN)));
+        b = (buffer_counter);
+        leader_x = buffer_x_position[b];// + round(hsp * 6 - spr_dir * (40 * (state != PS_WALK_TURN && state != PS_DASH_TURN)));
         
     }
     predicted_x = predict_x_position();
@@ -113,9 +111,6 @@ process_inputs();
     var leader_target_x_distance = abs(leader_x - x);
     var leader_target_x_direction = sign(leader_x - x);
     
-    if (master_player_id.special_held) {
-        
-    }
     
     artificial_dash = false;
     
@@ -124,14 +119,15 @@ process_inputs();
     clear_ai_inputs();
     
     ai_prev_inputs_raw = ai_inputs_raw;
-    ai_inputs = teammate_player_id.buffer_ai_inputs[i];
-    ai_inputs_raw = teammate_player_id.buffer_ai_inputs[i];
-    joy_dir = teammate_player_id.buffer_joy_dir[i];
-    joy_pad_idle = teammate_player_id.buffer_joy_pad_idle[i];
-
+    ai_inputs = teammate_player_id.buffer_ai_inputs[b];
+    ai_inputs_raw = teammate_player_id.buffer_ai_inputs[b];
+    joy_dir = teammate_player_id.buffer_joy_dir[b];
+    joy_pad_idle = teammate_player_id.buffer_joy_pad_idle[b];
+    do_not_jump = false;
     
     var run_predicted_routine = false;
     var run_recovery_routine = false;
+    var master_special_held = master_player_id.special_held;
     
     /*
     var made_an_attack_input = 
@@ -142,23 +138,51 @@ process_inputs();
     */
     
     //to be tested
+    /*
     var made_an_attack_input = 
     //(state_cat == SC_GROUND_NEUTRAL || state_cat == SC_AIR_NEUTRAL)
-     (shield_pressed || jump_pressed //|| (taunt_pressed && !free)
-    ||  (is_attack_pressed(DIR_ANY) && can_attack)
+     (shield_pressed //|| (taunt_pressed && !free)
+    ||  (is_attack_pressed(DIR_ANY) )//&& can_attack)
     || (is_strong_pressed(DIR_ANY) && (
         (is_strong_pressed(DIR_UP) && can_ustrong) 
         || ((is_strong_pressed(DIR_LEFT) || is_strong_pressed(DIR_RIGHT) || is_strong_pressed(DIR_DOWN)) && can_strong) ) ) );
+    */
+    var made_an_attack_input = 
+     ( ((ai_inputs & INP_SHIELD_PRESSED) != 0) //|| ((ai_inputs |= INP_TAUNT) != 0 && !free)
+    || (can_attack && (ai_inputs & INP_ATTACK_PRESSED) != 0)
+    || (can_strong && ( (ai_inputs & INP_LEFT_STRONG) != 0 || (ai_inputs & INP_RIGHT_STRONG) != 0 || (ai_inputs & INP_DOWN_STRONG) != 0 ) )
+    || (can_ustrong && (ai_inputs & INP_UP_STRONG) != 0)  );
     
     
-    
-    if (made_an_attack_input && state != PS_PRATFALL) {
-        run_predicted_routine = false;
-        if (teammate_player_id.buffer_sync_state[i] == PS_JUMPSQUAT && state == PS_JUMPSQUAT && teammate_player_id.free && !(master_player_id.special_held) ) {
-            spr_dir = teammate_player_id.spr_dir;
+    //don't jump if grounded and the leader is way lower down - unless the player also inputted an attack.
+    //if (!free && !made_an_attack_input && teammate_player_id.buffer_y_position[b] > y) {
+    if (!master_special_held) {
+        if (!made_an_attack_input && teammate_player_id.buffer_y_position[b] > y + (free) * djump_height) {
+            ai_inputs &= ~(INP_JUMP_PRESSED | INP_JUMP);
+            //jump_pressed = false;
+            jump_counter = 10;
+            do_not_jump = true;
+        }
+        
+        //don't fastfall if below the leader and the leader is grounded
+        else if (free && y > teammate_player_id.buffer_y_position[b] + (!(teammate_player_id.free)) * djump_height) {
+            ai_inputs &= INP_DOWN_HARD;
+            down_hard_counter = 10;
         }
     }
+    
+
+    
+    if ((made_an_attack_input || jump_pressed) && state != PS_PRATFALL && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) {
+        run_predicted_routine = false;
+        //face the right direction when jumping off of the ground
+        if (teammate_player_id.buffer_sync_state[b]== PS_JUMPSQUAT && state == PS_JUMPSQUAT && teammate_player_id.free && !master_special_held ) {
+            spr_dir = teammate_player_id.spr_dir;
+        }
+
+    }
     else {
+
         switch (state) {
             case PS_HITSTUN:
             case PS_HITSTUN_LAND:
@@ -180,7 +204,19 @@ process_inputs();
             
             
             case PS_DOUBLE_JUMP:
-                if (state_timer <= 0) { jump_counter = 10; up_hard_counter = 10; }
+                if (state_timer <= 0) { 
+                    jump_counter = 10; up_hard_counter = 10; 
+                }
+                /*
+                else if (state_timer == 2) {
+                    print("leader x dir: " + string(leader_x_direction));
+                    print("holding dir: " + string((ai_inputs & INP_LEFT != 0) - (ai_inputs & INP_RIGHT != 0)))
+                    if ( !(master_player_id.special_held) && leader_x_direction == (ai_inputs & INP_LEFT != 0) - (ai_inputs & INP_RIGHT != 0) && !hitpause ) {
+                        hsp -= leader_x_direction * jump_change;
+                        print("don't jump too far -- hsp changed by " + string(leader_x_direction * jump_change));
+                    }
+                }
+                */
                 run_recovery_routine = true;
             break;
             
@@ -204,7 +240,7 @@ process_inputs();
                 if ((teammate_player_id.state != PS_PRATFALL && get_floor_from(x, y) == noone) || teammate_player_id.activated_kill_effect) {
                     recover_x = round(room_width / 2);
                 }
-                else if (!master_player_id.special_held) {
+                else if (!master_special_held) {
                     recover_x = teammate_player_id.x;
                 }
                 //still drift to the leader if the player wants to desync, but on a delay.
@@ -219,34 +255,34 @@ process_inputs();
             break;
             
             case PS_DASH:
-                if (master_player_id.special_held) break;
+                if (master_special_held) break;
                 //var holding_dir = (ai_inputs & INP_RIGHT != 0) - (ai_inputs & INP_LEFT != 0);
                 run_predicted_routine = true;
             break;
             
             case PS_DASH_START:
-                if (master_player_id.special_held) break;
+                if (master_special_held) break;
                 //var holding_dir = (ai_inputs & INP_RIGHT != 0) - (ai_inputs & INP_LEFT != 0);
                 //clause for moonwalk inputs
-                if (sign(hsp) == spr_dir) run_predicted_routine = true;
+                if (sign(hsp) == spr_dir || state_timer <= 0) run_predicted_routine = true;
             break;
             
             case PS_FIRST_JUMP:
                 if (state_timer <= 0) jump_counter = 10;
                 
-                if (!master_player_id.special_held) {
+                if (!master_special_held) {
                     
                     //if we're jumping out of sync with the player, input a long jump if the player is way higher up AND not in a committed state AND the player doesn't want to desync.
                     if (state_timer <= 0 
                      && teammate_player_id.state_cat != SC_AIR_COMMITTED 
-                     && teammate_player_id.buffer_y_position[i] < y - 30 
+                     && teammate_player_id.buffer_y_position[b]< y - 30 
                      && teammate_player_id.y < y - 30) {
                         ai_inputs |= INP_JUMP;
                     }
                     //double jump if necessary
-                    else if (state_timer > 0 && vsp > 1 
+                    else if (state_timer > 0 && vsp > 0.5 
                      && !teammate_player_id.free 
-                     && teammate_player_id.buffer_y_position[i] < y 
+                     && teammate_player_id.buffer_y_position[b]< y 
                      && teammate_player_id.y < y - 100 ) {
                          ai_inputs |= INP_JUMP_PRESSED;
                      }
@@ -279,10 +315,6 @@ process_inputs();
             
             
             case PS_RESPAWN:
-                //get off of the respawn platform immediately.
-                if (state_timer > 40 && teammate_player_id.state != PS_RESPAWN) {
-                    set_state(PS_IDLE_AIR);
-                }
             break;
             
             
@@ -296,7 +328,7 @@ process_inputs();
                     left_stick_counter = 10; 
                     down_stick_counter = 10;
                     right_stick_counter = 10;
-                    break; 
+                    //break; 
                 }
 
                 switch (attack) {
@@ -345,8 +377,9 @@ process_inputs();
                     case AT_MINUN_DAIR:
                     case AT_MINUN_UAIR:
                     case AT_MINUN_NAIR:
-                    case AT_USPECIAL_GROUND:
-                        if (state_timer <= 1 || window == get_attack_value(attack, AG_NUM_WINDOWS)) {
+                    //case AT_USPECIAL_GROUND:
+                        //if (state_timer <= 1 || window == get_attack_value(attack, AG_NUM_WINDOWS)) {
+                        if (state_timer >= 1) {
                             move_towards_x_position_unless_player_is_holding_opposite_direction(leader_x, true);
                             break;
                         } 
@@ -356,6 +389,11 @@ process_inputs();
                             jump_pressed = true;
                         }
                     break;
+                    
+                    case AT_EXTRA_3:
+                        //the partner is ko'd; this script shouldn't be doing anything anyway in this case, but just in case it is, do nothing.
+                    break;
+                    
                     //all the other non-ground inputs:    
                     
                     default:
@@ -373,13 +411,21 @@ process_inputs();
             break;
         }
     }
-        
+    
+    var should_recover = (!hitpause && free && (vsp >= 0 || y > teammate_player_id.y + djump_height) && ( (state != PS_DOUBLE_JUMP && state != PS_FIRST_JUMP) || state_timer >= 10) && get_floor_from(predicted_x, y) == noone);
+    
+    if (should_recover && !master_special_held) {
+        put_aerials_on_cooldown();
+    } 
+    
     if (run_recovery_routine) {
         //do the predicted routines too
-        run_predicted_routine = !master_player_id.special_held;
+        run_predicted_routine = !master_special_held;
         //print("running recovery routine")
-        if (!hitpause && vsp >= 0 && free && state != PS_DOUBLE_JUMP && (state != PS_FIRST_JUMP || state_timer >= 10) && get_floor_from(predicted_x, y) == noone) {
-
+        if (should_recover) {
+            
+            
+            
             var recover_dir = sign((room_width / 2) - x);
             
             //print("can_special: " + string(can_special))
@@ -416,21 +462,21 @@ process_inputs();
                 }
             }
             //as a last resort, jump when barely touching the blastzone.
-            //else if (djumps < max_djumps && y > master_player_id.blastzone_b - 100) {
-            //    ai_inputs |= INP_JUMP_PRESSED;
-            //}
+            else if (djumps < max_djumps && y > master_player_id.blastzone_b - 100 && y > teammate_player_id.y + djump_height) {
+                ai_inputs |= INP_JUMP_PRESSED;
+            }
         }
     }
 
 
 
 
-    if (run_predicted_routine) {
+    if (!made_an_attack_input && run_predicted_routine) {
     
 
     
     //switch (sync_next_predicted_state) {
-    switch (teammate_player_id.buffer_sync_state[i]) {
+    switch (teammate_player_id.buffer_sync_state[b]) {
         
         case PS_IDLE:
         case PS_WALK:
@@ -439,19 +485,21 @@ process_inputs();
         case PS_LANDING_LAG:
         case PS_PRATFALL:
         case PS_PRATLAND:
+        //case PS_ATTACK_GROUND:
+        //case PS_ATTACK_AIR:
        
             //if in a grounded neutral state, jump or fall.
             if (!free && state_cat == SC_GROUND_NEUTRAL) {
-                if (teammate_player_id.buffer_y_position[i] > y) {
+                if (teammate_player_id.buffer_y_position[b]> y) {
                     ai_inputs |= INP_DOWN_HARD;
                 }
-                else if (teammate_player_id.buffer_y_position[i] < y && teammate_player_id.y < y) {
+                else if (teammate_player_id.buffer_y_position[b]< y && teammate_player_id.y < y) {
                     ai_inputs |= INP_JUMP_PRESSED;
                 }
             }
         
             if (leader_x_distance > follow_distance * 3 && (state == PS_IDLE || state == PS_WALK || state == PS_WALK_TURN)) {
-                if (teammate_player_id.buffer_sync_state[i]) == PS_WALK_TURN {
+                if (teammate_player_id.buffer_sync_state[b]) == PS_WALK_TURN {
                     //move_towards_x_position(leader_x, true);
                     move_towards_x_position_unless_player_is_holding_opposite_direction(leader_x, true);
                 }
@@ -533,28 +581,32 @@ process_inputs();
         break;
         
         case PS_FIRST_JUMP:
+            move_towards_x_position_unless_player_is_holding_opposite_direction(leader_x, false);
         break;
         
         case PS_IDLE_AIR:
         case PS_TUMBLE:
         case PS_DOUBLE_JUMP:
-            //if in a grounded neutral state, jump or fall.
+            //if in a grounded neutral state, fall.
             if (!free && state_cat == SC_GROUND_NEUTRAL) {
-                if (teammate_player_id.buffer_y_position[i] > y) {
+                if (teammate_player_id.buffer_y_position[b]> y) {
                     ai_inputs |= INP_DOWN_HARD;
                 }
             }
-            if ((ai_inputs & INP_RIGHT == 0) && (ai_inputs & INP_LEFT == 0)) {
-                move_towards_x_position_unless_player_is_holding_opposite_direction(leader_x, false);
+
+            move_towards_x_position_unless_player_is_holding_opposite_direction(leader_x, leader_x_distance > follow_distance * 3);
+            //if ((ai_inputs & INP_RIGHT == 0) && (ai_inputs & INP_LEFT == 0)) {
+                //move_towards_x_position_unless_player_is_holding_opposite_direction(leader_x, false);
+                //move_towards_x_position(leader_x, false);
                 //go_to_target_position(leader_x, y, noone, 10, false);
-            }
+            //}
             
         break;
         /*
         case PS_DOUBLE_JUMP:
             //if in a grounded neutral state, jump or fall.
             if (!free && state_cat == SC_GROUND_NEUTRAL) {
-                if (teammate_player_id.buffer_y_position[i] > y) {
+                if (teammate_player_id.buffer_y_position[b]> y) {
                     ai_inputs |= INP_DOWN_HARD;
                 }
             }
@@ -577,26 +629,29 @@ process_inputs();
         case PS_ATTACK_AIR:
             //don't do anything special for attacks
             //print(get_state_name(sync_next_predicted_state))
-            if (sync_next_predicted_state != PS_ATTACK_GROUND && sync_next_predicted_state != PS_ATTACK_AIR) break;
+            //if (sync_next_predicted_state != PS_ATTACK_GROUND && sync_next_predicted_state != PS_ATTACK_AIR) break;
         
         default:
             //return to the player if special is held.
-            if (master_player_id.special_held) break;
+            //if (master_player_id.special_held) break;
             
             if (leader_x_distance < follow_distance * 2 && (state == PS_DASH || state == PS_DASH_START || state == PS_DASH_TURN)) {
                 ai_inputs &= ~(INP_LEFT_HARD | INP_RIGHT_HARD | INP_LEFT | INP_RIGHT);
                 artificial_dash = true;
                 break;
             }
-            else if (leader_target_x_distance > 10) {
+            else if (leader_target_x_distance > 10 && leader_x_distance > 10) {
                 //go to the player
                 move_towards_x_position(leader_x, false);
                 if (state == PS_WALK_TURN && sign(hsp) != leader_x_direction) hsp *= 0.5;
             }
-            else if (spr_dir != teammate_player_id.spr_dir && !master_player_id.special_down && teammate_player_id.state != PS_WALK_TURN) {
-                //face the same direction as the player
-                move_in_x_direction(-spr_dir, false);
+            else {
+                ai_inputs &= ~(INP_LEFT_HARD | INP_RIGHT_HARD | INP_LEFT | INP_RIGHT);
             }
+            //else if (spr_dir != teammate_player_id.spr_dir && !master_player_id.special_down && teammate_player_id.state != PS_WALK_TURN) {
+                //face the same direction as the player
+                //move_in_x_direction(-spr_dir, false);
+            //}
             
             //if (free || leader_x_distance <= follow_distance * 3)
             //    move_towards_x_position_unless_player_is_holding_opposite_direction(leader_x, false);
@@ -608,7 +663,7 @@ process_inputs();
     }
         
 
-    sync_next_predicted_state = teammate_player_id.buffer_sync_state[i];
+    sync_next_predicted_state = teammate_player_id.buffer_sync_state[b];
 
  
 
@@ -783,7 +838,7 @@ process_inputs();
 // used at the start to prevent anything from happening without explicit commands
 #define clear_ai_inputs()
   
-  if (do_a_fast_fall) down_hard_counter = 8;
+  if (do_a_fast_fall || (!free && state_timer == 0)) down_hard_counter = 10;
   
   /*
   up_stick_pressed    = up_stick_counter    < 7;
@@ -791,13 +846,13 @@ process_inputs();
   down_stick_pressed  = down_stick_counter  < 7;
   right_stick_pressed = right_stick_counter < 7;
   */
-  attack_pressed    = attack_counter    < 7 && (up_stick_pressed + down_stick_pressed + left_stick_pressed + right_stick_pressed == 0);
-  special_pressed   = special_counter   < 7;
+  attack_pressed    = attack_counter    < 6 && (up_stick_pressed + down_stick_pressed + left_stick_pressed + right_stick_pressed == 0);
+  special_pressed   = special_counter   < 6;
   jump_pressed      = jump_counter      < 7;
   shield_pressed    = shield_counter    < 3;
   
   up_hard_pressed   = up_hard_counter   < 3;
-  down_hard_pressed = down_hard_counter < 2;
+  down_hard_pressed = down_hard_counter < 3;
 
   //up_stick_counter    = min(up_stick_counter+1, 7);
   //left_stick_counter  = min(left_stick_counter+1, 7);
@@ -809,8 +864,8 @@ process_inputs();
   jump_counter      = min(jump_counter+1, 10);
   shield_counter    = min(shield_counter+1, 10);
   
-  up_hard_counter   = min(up_hard_counter+1, 3);
-  down_hard_counter = min(down_hard_counter+1, 3);
+  up_hard_counter   = min(up_hard_counter+1, 10);
+  down_hard_counter = min(down_hard_counter+1, 10);
   
   //jump_pressed = false;
   //shield_pressed = false;
@@ -821,7 +876,7 @@ process_inputs();
   jump_pressed = false;
   shield_pressed = false;
   taunt_pressed = false;
-    */
+  */
   
   left_strong_pressed = false;
   right_strong_pressed = false;
@@ -878,10 +933,6 @@ process_inputs();
 
 // presses attack, special, jump, or shield based on the "ai_inputs" variable.
 // automatically switches between "pressed" and "down" variants
-
-
-
-
 #define process_inputs()
 
 var inputs = [
@@ -926,24 +977,10 @@ for (var i = 0; i < len; i++) {
             case 0: 
             if (ai_prev_inputs_raw & input == 0) { attack_pressed = true; attack_counter = 0; } break;
             case 2: 
-            if (ai_prev_inputs_raw & input == 0) { jump_pressed = true; jump_counter = 0; } break;
+            if (ai_prev_inputs_raw & input == 0 && !do_not_jump) { jump_pressed = true; jump_counter = 0; } break;
             case 3: 
             if (ai_prev_inputs_raw & input == 0) { shield_pressed = true; shield_counter = 0; } break;
             
-            //case 17: attack_counter     = 0; break;
-            //case 18: special_counter    = 0; break;
-            //case 19: jump_counter       = 0; break;
-            //case 20: shield_counter     = 0; break;
-            /*
-            case 21: 
-            if (ai_prev_inputs_raw & input == 0) { left_stick_counter = 0; } break;
-            case 22: 
-            if (ai_prev_inputs_raw & input == 0) { right_stick_counter = 0; } break;
-            case 23: 
-            if (ai_prev_inputs_raw & input == 0) { up_stick_counter = 0; } break;
-            case 24: 
-            if (ai_prev_inputs_raw & input == 0) { down_stick_counter = 0; } break;
-            */
         }
     }
     if ai_inputs & input != 0 {
@@ -951,119 +988,6 @@ for (var i = 0; i < len; i++) {
     }
  }
 
-#define process_inputs_OLD2()
-
-var inputs = [
-[INP_ATTACK, "attack_down"],
-[INP_SPECIAL, "special_down"],
-[INP_JUMP, "jump_down"],
-[INP_SHIELD, "shield_down"],
-[INP_LEFT, "left_down"],
-[INP_RIGHT, "right_down"],
-[INP_UP, "up_down"],
-[INP_DOWN, "down_down"],
-[INP_LEFT_HARD, "left_hard_pressed"],
-[INP_RIGHT_HARD, "right_hard_pressed"],
-[INP_UP_HARD, "up_hard_pressed"],
-[INP_DOWN_HARD, "down_hard_pressed"],
-[INP_LEFT_STRONG, "left_strong_pressed"],
-[INP_RIGHT_STRONG, "right_strong_pressed"],
-[INP_UP_STRONG, "up_strong_pressed"],
-[INP_DOWN_STRONG, "down_strong_pressed"],
-[INP_TAUNT, "taunt_pressed"],
-[INP_ATTACK_PRESSED, "attack_pressed"],
-[INP_SPECIAL_PRESSED, "special_pressed"],
-[INP_JUMP_PRESSED, "jump_pressed"],
-[INP_SHIELD_PRESSED, "shield_pressed"],
-[INP_LEFT_STICK, "left_stick_pressed"],
-[INP_RIGHT_STICK, "right_stick_pressed"],
-[INP_UP_STICK, "up_stick_pressed"],
-[INP_DOWN_STICK, "down_stick_pressed"]
-];
-
-var len = array_length_1d(inputs);
-//var hard_inputs = INP_LEFT_HARD | INP_RIGHT_HARD | INP_UP_HARD | INP_DOWN_HARD;
-//var strong_inputs = INP_LEFT_STRONG | INP_RIGHT_STRONG | INP_UP_STRONG | INP_DOWN_STRONG;
-//var dir_inputs = INP_LEFT | INP_RIGHT | INP_UP | INP_DOWN;
-  
-for (var i = 0; i < len; i++) {
-    var input = inputs[@ i][@ 0];
-    var input_name = inputs[@ i][@ 1];
-    
-    if (ai_inputs & input != 0) {
-            switch (i) {
-            case 10: up_hard_counter    = 0; break;
-            case 11: down_hard_counter  = 0; break;
-            
-            case 17: attack_counter     = 0; break;
-            case 18: special_counter    = 0; break;
-            case 19: jump_counter       = 0; break;
-            case 20: shield_counter     = 0; break;
-            
-            //case 12: down_hard_counter = 0; break;
-            //case 13: down_hard_counter = 0; break;
-            //case 14: down_hard_counter = 0; break;
-            //case 15: down_hard_counter = 0; break;
-            
-        }
-
-          //if (ai_prev_inputs & input == 0) variable_instance_set(self, `${input_name}_pressed`, true);
-          //if (input & (hard_inputs | strong_inputs) == 0) variable_instance_set(self, `${input_name}_down`, true);
-          if (input) variable_instance_set(self, `${input_name}`, true);
-    }
- }
-
-//ai_prev_inputs = ai_inputs;
-
-
-
-#define process_inputs_OLD()
-
-  var inputs = [
-    [INP_ATTACK, "attack_down"],
-    [INP_SPECIAL, "special_down"],
-    [INP_JUMP, "jump_down"],
-    [INP_SHIELD, "shield_down"],
-    [INP_LEFT, "left_down"],
-    [INP_RIGHT, "right_down"],
-    [INP_UP, "up_down"],
-    [INP_DOWN, "down_down"],
-    [INP_LEFT_HARD, "left_hard_pressed"],
-    [INP_RIGHT_HARD, "right_hard_pressed"],
-    [INP_UP_HARD, "up_hard_pressed"],
-    [INP_DOWN_HARD, "down_hard_pressed"],
-    [INP_LEFT_STRONG, "left_strong_pressed"],
-    [INP_RIGHT_STRONG, "right_strong_pressed"],
-    [INP_UP_STRONG, "up_strong_pressed"],
-    [INP_DOWN_STRONG, "down_strong_pressed"],
-    [INP_TAUNT, "taunt_pressed"],
-    [INP_ATTACK_PRESSED, "attack_pressed"],
-    [INP_SPECIAL_PRESSED, "special_pressed"],
-    [INP_JUMP_PRESSED, "jump_pressed"],
-    [INP_SHIELD_PRESSED, "shield_pressed"],
-    [INP_LEFT_STICK, "left_stick_pressed"],
-    [INP_RIGHT_STICK, "right_stick_pressed"],
-    [INP_UP_STICK, "up_stick_pressed"],
-    [INP_DOWN_STICK, "down_stick_pressed"]
-  ];
-
-  var len = array_length_1d(inputs);
-  //var hard_inputs = INP_LEFT_HARD | INP_RIGHT_HARD | INP_UP_HARD | INP_DOWN_HARD;
-  //var strong_inputs = INP_LEFT_STRONG | INP_RIGHT_STRONG | INP_UP_STRONG | INP_DOWN_STRONG;
-  //var dir_inputs = INP_LEFT | INP_RIGHT | INP_UP | INP_DOWN;
-  
-  for (var i = 0; i < len; i++) {
-    var input = inputs[@ i][@ 0];
-    var input_name = inputs[@ i][@ 1];
-    if (ai_inputs & input != 0) {
-      //if (ai_prev_inputs & input == 0) variable_instance_set(self, `${input_name}_pressed`, true);
-      //if (input & (hard_inputs | strong_inputs) == 0) variable_instance_set(self, `${input_name}_down`, true);
-      if (input) variable_instance_set(self, `${input_name}`, true);
-    }
-  }
-
-  //ai_prev_inputs = ai_inputs;
-  
 
 #define obtain_stage_bboxes()
   with (platform_asset) {
@@ -1253,4 +1177,10 @@ if (x_dir == 1) { ai_inputs |= INP_RIGHT; if (add_dash) ai_inputs |= INP_RIGHT_H
 #define is_end_of_window
 return (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 1);
 
-
+#define put_aerials_on_cooldown
+move_cooldown[AT_NAIR] = 2;
+move_cooldown[AT_UAIR] = 2;
+move_cooldown[AT_DAIR] = 2;
+move_cooldown[AT_FAIR] = 2;
+move_cooldown[AT_BAIR] = 2;
+return;

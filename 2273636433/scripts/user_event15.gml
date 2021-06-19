@@ -366,6 +366,66 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	 
+	initPatch("1.5", "18 June, 2021");
+	initPatchWords("Added ownership indicator for pills in the ditto
+Fixed some visual bugs with the pill effects.
+
+Various slight hitbox size tweaks all across the moveset to improve gamefeel.
+
+Max air speed: 4.5 -> 5
+
+Added the small Vertical boost that some aerials have on startup to Uair
+
+Dspecial mult hit hitboxes Size 72 -> 68
+Dspecial Finisher Hitbox Size: 72 -> 76
+Dspecial Finisher Hitbox BKS: .85 -> .9
+Dspecial Finisher Hitbox Hitpause 9 -> 10
+
+Dtilt farthest hitbox launch angle: 80 -> 90
+
+Nair active time 16 -> 18
+Fixed a Bug with one of Nair hitboxes decreasing its knockback for a couple of frames.
+
+Utilt late hitbox angle 96 -> 90
+
+Bair Hitboxes are now Shape 2 and extends closer to the body.
+
+Uair Front-most hitbox angle 70 -> 80
+Uair Top hitbox angle 70 -> 75
+Uair Front Hitbox now has the highest priority
+
+Fair Sourspots KBS .7 -> .8
+Fair BKB 8 -> 8.5
+
+Ustrong BKB 7.5 -> 8
+
+FStrong Sweetspot Damage 12 -> 13
+FStrong SourSpot KBS .9 -> .95
+FStrong SourSpot BKB 9 -> 8.5
+FStrong SweetSpot BKB 8 -> 8.5
+FStrong Sourspot Damage 9 -> 10
+
+Dstrong Front Hitbox Damage  10->11 
+Dstrong Front Hit BKB 8 -> 8.5
+
+Dattack early hit angle 70 -> 75
+Dattack early hit damage 6 -> 7
+Dattack hitboxes are now  Shape 2 and no longer clip into the floor.
+
+Nspecial projectile (Pill) size increased: 30 -> 32
+
+Jab 3 Angle 60 -> 70
+
+Uspecial Sweetspot activator hitbox is now more accurate to the visual
+0.2 KBS Added to the initial Hit of Uspecial so it can eventually break soft armor.
+Theres now a 2 frame gap  in which no hitboxes are active when whiffing the sweetspot of Uspecial
+Uspecial weak hit BKB 9 -> 8
+
+Uspecial sweetspot BKB 9 -> 8.5
+Uspecial sweetspot KBS .9 -> 1
+Uspecial Total Damage 12 -> 14")
+	
 	
 	initPatch("1.44", "17 May, 2021");
 	initPatchWords("Bair")
