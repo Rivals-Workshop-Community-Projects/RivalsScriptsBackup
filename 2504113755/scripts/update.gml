@@ -1,6 +1,13 @@
 user_event(14);
 
 
+if ((state == PS_FIRST_JUMP && image_index == 0 ) || (state == PS_WALL_JUMP && image_index == 1)) {
+	        hud_offset = 20
+
+	
+}
+
+
 //hud edits
 if (abs(hud_offset) < 1)  {hud_offset = 0 }
 
@@ -36,7 +43,7 @@ move_cooldown[AT_NSPECIAL]	 = 100
 
 /// afterimage
 // afterimage
-if (afterImageTimer > 0)
+if (afterImageTimer > 0 && !hitpause)
 {
 	
 	
@@ -173,6 +180,10 @@ switch(attack)
 	
 	break;
 		case AT_DSPECIAL:
+	set_skin(-1)
+	
+	break;
+		case AT_USPECIAL:
 	set_skin(-1)
 	
 	break;
@@ -420,7 +431,25 @@ return_airdodge = false
 	
 }
 
+
+
+
+
+
 #endregion
+
+
+
+
+
+
+	with (hit_fx_obj) if ( player_id == other.id) {
+		
+	depth = -10
+	}
+
+
+
 
 #define set_skin(skin)
 ///Sets the active skin. You can supply a name or an index.
@@ -443,3 +472,6 @@ with obj {
         else _ssnksprites.skin_active = skin;
     }
 }
+
+
+

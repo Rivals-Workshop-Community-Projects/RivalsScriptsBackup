@@ -86,6 +86,7 @@ sprite_change_offset( "dspecial_hurt", 68*2, 65*2);
 sprite_change_offset( "uspecial_hurt", 68*2, 65*2);
 
 sprite_change_offset( "idle_hurtbox", 64/2, 64);
+sprite_change_offset( "wraith_hurtbox", 32/2, 32);
 
 
 

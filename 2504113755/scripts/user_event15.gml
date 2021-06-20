@@ -360,25 +360,43 @@ with phone{
 	// variables. See init.gml for an example of this with spr_nspecial_proj.
 	
 	initTip("NSpecial: Blink");
-	initTipWords("After 5 frames, this move 'teleports' you a distance based on your current speed and direction. Lacks invulnerability. Can be used after landing any normal.");
+	initTipWords("After 5 frames, this move 'teleports' you a distance based on your current speed and direction. 
+	
+	Lacks invulnerability. 
+	Can be used after landing any normal (minus strongs).");
 //	if ("spr_nspecial_proj" in player_id) initTipImage_ext(player_id.spr_nspecial_proj, -5, fa_right, 1, c_white, 3, 40, 30, 60, 0);
 //	initTipImage_ext(player_id.spr_nspecial, 2, fa_left, 1, c_white, 0, 24, 40, 64, 0);
 
     initTip("NSpecial: Vulnerability");
-	initTipWords("Nspecial leaves behind a time wraith; if hit, you will teleport to its location and take damage yourself. Disappears after 6 seconds");
+	initTipWords("Nspecial leaves behind a time wraith; if hit, you will teleport to its location and take damage yourself. 
+	
+	Disappears after 6 seconds");
+	
+	
 	
 	initTip("DSpecial and Nspecial");
-	initTipWords("Using Dspecial while an Nspecial wraith is out causes the wraith to copy Dspecial's explosion.");
+	initTipWords("Time wraiths copy Dspecial explosion!");
+	
+	initTip("NSpecial: Hit it!");
+	initTipWords("You can hit the time wraiths, making them explode! 
+	
+	They can hit each other!
+	
+	You can blink off of them!");
 	
 	
 	initTip("Dspecial Movement");
-	initTipWords("Dspecial makes you floatier during the move. At the start it keeps some of your momentum, and during the first 3 frames you can reverse your horizontal momentum.");
+	initTipWords("Dspecial makes you floatier! It keeps your momentum too.
+	
+	You can reverse the horizontal momentum in the beginning!");
 //	initTipImage(player_id.spr_uspecial, 3, fa_left, 1, c_white, 0);
 //	initTipImage(player_id.spr_uspecial, 9, fa_right, 1, c_white, 0);
 
 	
 	initTip("Nair Spike");
-	initTipWords("Pressing attack again or holding attack during nair has you slam towards the ground! Can be activated after the first spin by pressing attack early enough.");
+	initTipWords("Pressing attack again or holding attack during nair has you slam towards the ground! 
+	
+	Can be activated after the first spin!");
 	//initTipImage(player_id.spr_nair, -5, fa_center, 2, c_white, 3);
 //	initTipImage_ext(player_id.spr_nair, -5, fa_center, 1, c_white, 0, 50, 50, 50, 50)
 	
@@ -386,6 +404,57 @@ with phone{
 
 	initTip("Did you know?");
 	initTipWords("The 1.0 version of this character was made in a single month for Zetta's Another Workshop Jam. And I submitted super duper late!");
+	
+	initTip("Did you know? (2)");
+	initTipWords("They are a small bear
+	
+	beawr
+	
+	
+	they use they/them pronouns
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	hi
+	
+	thank you for reading these
+	");
+	
+	initTip("Lore???");
+	initTipWords("Nova originally only had one sword
+	they just went back in time and stole their own sword from themselves
+	
+	
+	
+	
+	");
+	
+	initTip("Lore??????");
+	initTipWords("
+	
+	it took a long time for nova to properly control their time travel
+	
+	for years, they bounced around the centuries
+	
+	their own origin has been lost even to themselves, as each time jump required a new identity
+	
+	was it an experiment? a surprise at birth? 
+	
+	
+	
+	time won't tell
+	
+	
+	
+	");
 	
 
 	
@@ -436,6 +505,63 @@ with phone{
 	initPatchWords("Fnuuy joke
 	- waog");
 	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0); */
+	
+		initPatch("1.5", "19 June, 2021");
+		
+			initPatchWords_ext("Hotfixes", fa_center, c_white, 0, 0);
+				initPatchWords_ext("Wraith now has extended parry stun
+				
+				wraith can be hit by fspecial
+				dspecial and wraiths have more hitpause
+				fair has a diff sfx/hfx for the heavy hit
+				
+				
+				
+				
+				", fa_left, c_white, 0, 0);
+	
+	
+	
+		initPatch("1.4", "14 June, 2021");
+		
+			initPatchWords_ext("Gimmick PLUS", fa_center, c_white, 0, 0);
+				initPatchWords_ext("Hitfx are now drawn in front of the player! (Includes some changes to hit particles too)
+				Uspecial now properly applies the unmerged sword skin on use
+				When a time wraith is hit you now teleport to the time wraith, not the hitbox's center
+				Fspecial/Uspecial afterimages fade more nicely during hitpause
+
+				Dtilt bkb 7-8,
+				Dattack bkb 5-6
+				Dattack hsp now added in attack update (tldr blinking in dattack distance is more consistent)
+
+				Dstrong hitbox frames now match the move... (one less active frame, one more frame total in the move)
+
+				Fair hitbox sizes adjusted, sweetspot is bigger
+				Changed nair's second hit sfx
+				Uair uses proper hitfx now
+				Dair has lower hitpause scaling 0.2-0.15
+				Dair multihits are now techable
+				Dair has a different hitbox for grounded opponents with a different angle flipper
+				Dair now uses *some* on hit lerping
+				
+				hit the wraith! it explodes
+				
+				Fspecial startup 14-12 frames
+				Dspecial damage 8-10
+				Dspecial kbs 0.5-0.7
+				Dspecial endlag 20-16 frames
+				Dspecial rises slightly lower when used on the ground
+				More vsp/hsp is conserved during dspecial
+				Dspecial angle 45-40
+				Uspecial kbs (both hits) .7-.8
+				Uspecial final hit angle 80-90
+				
+				
+				
+				i might have forgotten something
+				", fa_left, c_white, 0, 0);
+
+	
 	
 	
 	initPatch("1.3", "2 June, 2021");
@@ -803,7 +929,7 @@ if pho_has_otto_bhead{
 
 if pho_has_steve_dmsg{
 	
-	steve_death_message = "Steve got canceled on Twitter";
+	steve_death_message = "Steve experienced time dilation"
 	
 }
 

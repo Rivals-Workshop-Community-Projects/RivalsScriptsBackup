@@ -18,6 +18,27 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 #endregion
 
 
+#region dattack
+
+if (attack == AT_DATTACK) {
+	
+	
+	        if ((window == 2 || (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) && !hitpause) {
+
+hsp = 7*spr_dir
+
+	        } else if (window == 3 && window_timer == 1) {
+	        	
+	        hsp = 3*spr_dir	
+	        }
+	
+}
+
+
+
+#endregion
+
+
 if (window == 1 && window_timer == 1) {
     
     has_cancelled = false
@@ -64,13 +85,13 @@ if (attack == AT_DSPECIAL) {
     
 if (window == 1 && window_timer == 1 &&!free) {
     
-    vsp = -3.5
-    hsp = clamp(hsp, -3, 3)
+    vsp = -3.3
+    hsp = clamp(hsp, -5, 5)
     dspecial_started_from_ground = true
     
 } else if (window == 1 && window_timer == 1 && dspecial_not_used_yet_in_air) {
     
-    vsp =  clamp(vsp, -1.5, 1.5)
+    vsp =  clamp(vsp, -2.5, 1.5)
     
     dspecial_started_from_ground = false
 }

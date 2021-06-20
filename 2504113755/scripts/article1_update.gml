@@ -2,7 +2,7 @@
 
 
 state_timer += 1
-
+//mask_index = asset_get("ex_guy_hurt_box");
 
 	//	clonehitbox = 	create_hitbox(AT_DSPECIAL, 2, floor(x), floor(y) ); 
 
@@ -23,7 +23,7 @@ if (state == 0) {
 		image_xscale = 2
 		image_yscale = 2
 
-if ((player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.attack == AT_DSPECIAL && player_id.window == 1 && player_id.window_timer == 0) {
+if ((player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.attack == AT_DSPECIAL && player_id.window == 1 && player_id.window_timer == 0 && state != 1) {
 	
 state_timer = 0
 	state = 1
@@ -37,20 +37,29 @@ if (state_timer < 3) {
 	
 	
 	
-} else if (state_timer < 15) {
+} else if (state_timer < 15 + explosion_frame_offset) {
 	image_index = 1
 
 
 
 
-} else if (state_timer < 19) {
+} else if (state_timer < 19 + explosion_frame_offset) {
 	image_index = 2
 
+
+	hsp *= 0.75
+	vsp *= 0.75
 		
 	
-} else if (state_timer < 23){
+} else if (state_timer < 23 + explosion_frame_offset){
 	
-	if (state_timer == 19) {
+		hsp *= 0.75
+	vsp *= 0.75
+
+	if (state_timer == 19 + explosion_frame_offset) {
+		
+		        sound_play(asset_get("sfx_clairen_dspecial_counter_active"))
+
 		clonehitbox = 	create_hitbox(AT_DSPECIAL, 2, floor(x), floor(y) - 33 ); }
 		
 		with (clonehitbox) {
@@ -62,7 +71,8 @@ if (state_timer < 3) {
 				}
 				
 			}
-			
+			x = other.x
+			y = other.y - 33
 		}
 
 	
@@ -76,22 +86,34 @@ if (state_timer < 3) {
 		
 		
 //	}
-} else if (state_timer < 28){					
+} else if (state_timer < 27 + explosion_frame_offset){					
 	image_index = 4
 
+
+	hsp *= 0.75
+	vsp *= 0.75
 //	if (clonehitbox.hitpause = true)
 }
- else if (state_timer < 33){	
+ else if (state_timer < 31 + explosion_frame_offset){	
 	image_index = 5
+	
+		hsp *= 0.75
+	vsp *= 0.75
 	//		instance_destroy(clonehitbox)
 		
 
 }
- else if (state_timer < 38){
+ else if (state_timer < 35 + explosion_frame_offset){
 		image_index = 6
+		
+			hsp *= 0.75
+	vsp *= 0.75
 
 }
- else if (state_timer < 43){
+ else if (state_timer < 39 + explosion_frame_offset){
+ 	
+ 		hsp *= 0.75
+	vsp *= 0.75
 			image_index = 7
 			player_id.num_articles -= 1
 			instance_destroy()
@@ -113,13 +135,37 @@ if (state == 3) {
 	
 }
 
-if (state == 0 || (state == 1 && state_timer < 19)) {
+
+
+
+            
+            
+		
+	
+			
+			
+		
+		
+		
+	
+	
+	
+
+
+
+
+
+
+
+
+if ((state == 0 && state_timer > 1)|| (state == 1 && state_timer < 19)) {
 //article#_update
 if hitstop <= 0 {
     if hit_lockout <= 0 
     
     with pHitBox {
-        if place_meeting(x,y,other) && "hitbox_has_hit_article" not in self   && player_id != other.player_id {
+        if place_meeting(x,y,other) && "hitbox_has_hit_article" not in self   && ((player_id != other.player_id) || (player_id == other.player_id && !(attack == AT_FSTRONG && hbox_num == 2 ) && !(attack == AT_USPECIAL && hbox_num == 2 ))) {
+        	
         	
         	
         	
@@ -127,9 +173,19 @@ if hitstop <= 0 {
             
          //   can_hit_self = true
           //  damage = 0
-            other.player_id.x = x
-            other.player_id.y = y
+          
+          if ( player_id != other.player_id)  {
+            other.player_id.x = other.x
+            other.player_id.y = other.y
             other.player_id.num_articles -= 1
+            
+            with(other.player_id) {
+            	destroy_hitboxes()
+            		hurtboxID.sprite_index = hurtbox_spr
+            	
+            }
+            
+          }
         //    player_id.state = PS_HITSTUN
           //  with (player_id) {
             	
@@ -161,15 +217,107 @@ if hitstop <= 0 {
     ds_list_clear(colliding_hitboxes);
             
     if currentHighestPriority != noone with currentHighestPriority {
-           // var angle = get_hitbox_angle(self);
-          //  other.hsp = lengthdir_x(kb_value,angle);
-          //  other.vsp = lengthdir_y(kb_value,angle);
-            other.hit_lockout = 10;
+    	
+    	
+    	
+    	
+    	//STUFF FOR IF ITS YOU HITTING THE THING
+    	          if ( player_id == other.player_id)  {
+    	          	
+    	          	       	other.spr_dir = spr_dir
+
+           var angle = get_hitbox_angle(self);
+           
+           other.state = 1
+           other.state_timer = 0
+           
+           
+           if (attack == AT_DSTRONG || attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DATTACK || attack == AT_USPECIAL) {
+           other.explosion_frame_offset = 6 }
+           else { other.explosion_frame_offset = 2 }
+           
+           
+           //FAIR, NAIR, FTILT, DSTRONG, FSTRONG
+           if (attack == AT_FAIR || attack == AT_FSPECIAL || attack == AT_NAIR || attack == AT_FTILT || attack == AT_DSTRONG || attack == AT_FSTRONG || attack == AT_DATTACK || attack == AT_DSPECIAL) {
+           	
+           	if (spr_dir == 1) {
+           	angle = 15 }
+           	else {angle = 180-15 }
+           	if (attack == AT_DSTRONG && hbox_num == 2) {
+           			if (spr_dir == 1) {
+           	angle = 180-15 }
+           	else {angle = 15 }
+           	}
+           	
+           		if (attack == AT_NAIR && (hbox_num == 6 || hbox_num == 7)) {
+           		angle = 270 }
+           		if (attack == AT_NAIR && hbox_num == 8) {
+           		angle = 90 }
+           		
+           		
+           		
+           		
+           		
+           	}
+           	
+           	
+           	
+           
+           //HITS IT UP
+           if (attack == AT_UAIR || attack == AT_JAB || attack == AT_UTILT || attack == AT_USTRONG || attack == AT_DTILT) {
+           	
+           	angle = 90
+           	
+           	
+           	
+           	
+          
+           	
+           }
+           
+           
+           if (attack == AT_BAIR) {
+           	if (spr_dir == 1) {
+           	angle = 180-35 }
+           	else { angle = 35 }
+           	}
+           	if (attack == AT_DAIR  || attack == AT_JAB) {
+           	if (spr_dir == -1) {
+           	angle = 180-35 }
+           	else { angle = 35 }
+           	}
+           	
+           		if (attack == AT_USPECIAL) {
+           	if (spr_dir == -1) {
+           	angle = 180-45 }
+           	else { angle = 45 }
+           	}
+           	
+           
+           
+           
+           
+           if ((attack == AT_USTRONG && hbox_num == 7) || (attack == AT_DAIR && hbox_num == 5) || (attack == AT_DATTACK && hbox_num == 6) || (attack != AT_USTRONG && attack != AT_DAIR && attack != AT_DATTACK)) {
+            other.hsp = 1*lengthdir_x(kb_value + 5*kb_scale,angle);
+            other.vsp = 1*lengthdir_y(kb_value + 5*kb_scale,angle); 
+           } else if (attack == AT_DATTACK) {
+           	other.hsp = 3/4*lengthdir_x(kb_value + 3*kb_scale,angle);
+            other.vsp = 3/4*lengthdir_y(kb_value + 3*kb_scale,angle); }
+           	
+           	
+           	else{  other.hsp = 1/2*lengthdir_x(kb_value + 3*kb_scale,angle);
+            other.vsp = 1/2*lengthdir_y(kb_value + 3*kb_scale,angle); }
+    	          	
+    	          	
+    	          	 		sound_play(sound_effect);
+            spawn_hit_fx(other.x+hit_effect_x,other.y+hit_effect_y,hit_effect);
+    	          	
+    	          }
+            other.hit_lockout = 4;
             
             hitbox_has_hit_article = true;
             
-         //  sound_play(sound_effect);
-          //  spawn_hit_fx(other.x+hit_effect_x,other.y+hit_effect_y,hit_effect);
+        
             with player_id {
                 old_hsp = hsp;
                 old_vsp = vsp;                      
@@ -181,11 +329,11 @@ if hitstop <= 0 {
             player_id.hitstop = ceil(hitpause+hitpause_growth*.05-2);
             other.hitstop = ceil(hitpause+hitpause_growth*.05-2);
             //	player_id.num_articles -= 1
-            instance_destroy()
+             if ( player_id != other.player_id)  {
+            instance_destroy() }
     }
 
-  //  hsp *= 0.9;
-    //vsp *= 0.9;
+ 
 }
 
 }

@@ -201,6 +201,8 @@ plasma_line = hit_fx_create( sprite_get( "plasma_line" ), 21 );
 plasma_x_big = hit_fx_create( sprite_get( "plasma_x_big" ), 21 );
 plasma_circle_big = hit_fx_create( sprite_get( "plasma_circle" ), 20 );
 
+
+
 num_articles = 0
 
 

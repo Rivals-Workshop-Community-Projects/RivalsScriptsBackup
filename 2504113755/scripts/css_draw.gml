@@ -66,7 +66,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 15; // number of alternate color palettes. 0 is the default color, count it accordingly.
+	col_max = 23; // number of alternate color palettes. 0 is the default color, count it accordingly.
 	
 	//first array index is for alternate color. second array index is for distinguishing the information in it.
 	ce[0,0] = make_color_rgb(255, 57, 124 ) // "color preview square" color. can be any color!
@@ -78,25 +78,25 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[2,0] = make_color_rgb(204, 41, 41 )
 	ce[2,1] = ""
 	ce[2,2] = ""
-	ce[3,0] = make_color_rgb(222, 56, 56)
+	ce[3,0] = make_color_rgb(114, 162, 234)
 	ce[3,1] = ""
 	ce[3,2] = ""
 	ce[4,0] = make_color_rgb(109, 91, 141)
 	ce[4,1] = ""
 	ce[4,2] = ""
-	ce[5,0] = make_color_rgb(31, 149, 163)
+	ce[5,0] = make_color_rgb(177, 80, 123)
 	ce[5,1] = ""
 	ce[5,2] = ""
-	ce[6,0] = make_color_rgb(167, 45, 15)
+	ce[6,0] = make_color_rgb(31, 94, 161)
 	ce[6,1] = ""
 	ce[6,2] = ""
 	ce[7,0] = make_color_rgb(90, 75, 130)
 	ce[7,1] = ""
 	ce[7,2] = ""
-	ce[8,0] = make_color_rgb(215, 104, 14)
+	ce[8,0] = make_color_rgb(201, 79, 0)
 	ce[8,1] = ""
 	ce[8,2] = ""
-	ce[9,0] = make_color_rgb(59, 211, 212)
+	ce[9,0] = make_color_rgb(121, 110, 196)
 	ce[9,1] = ""
 	ce[9,2] = ""
 	ce[10,0] = make_color_rgb(142, 49, 181)
@@ -105,18 +105,43 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[11,0] = make_color_rgb(173, 91, 199)
 	ce[11,1] = ""
 	ce[11,2] = ""
-	ce[12,0] = make_color_rgb(205, 150, 231)
+	ce[12,0] = make_color_rgb(226, 91, 123)
 	ce[12,1] = ""
 	ce[12,2] = ""
-	ce[13,0] = make_color_rgb(248, 113, 117)
+	ce[13,0] = make_color_rgb(207, 32, 230)
 	ce[13,1] = ""
 	ce[13,2] = ""
-	ce[14,0] = make_color_rgb(216, 61, 4)
+	ce[14,0] = make_color_rgb(83, 122, 62)
 	ce[14,1] = ""
 	ce[14,2] = ""
-	ce[15,0] = make_color_rgb(70, 108, 145)
+	ce[15,0] = make_color_rgb(248, 113, 117)
 	ce[15,1] = ""
 	ce[15,2] = ""
+	ce[16,0] = make_color_rgb(216, 61, 4)
+	ce[16,1] = ""
+	ce[16,2] = ""
+	ce[17,0] = make_color_rgb(227, 67, 103)
+	ce[17,1] = ""
+	ce[17,2] = ""
+	ce[18,0] = make_color_rgb(255, 134, 0)
+	ce[18,1] = ""
+	ce[18,2] = ""
+	ce[19,0] = make_color_rgb( 227, 58, 173)
+	ce[19,1] = ""
+	ce[19,2] = ""
+	ce[20,0] = make_color_rgb( 0, 180, 224)
+	ce[20,1] = ""
+	ce[20,2] = ""
+	ce[21,0] = make_color_rgb(217, 129, 168)
+	ce[21,1] = ""
+	ce[21,2] = ""
+	ce[22,0] = make_color_rgb(30, 30, 30)
+	ce[22,1] = ""
+	ce[22,2] = ""
+	ce[23,0] = make_color_rgb( 163, 191, 217)
+	ce[23,1] = ""
+	ce[23,2] = ""
+	
 	// you can add more, by copypasting and changing the first index of the array accordingly.
 	// ! changing part end.
 	// you can ignore the mess below...

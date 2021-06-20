@@ -57,7 +57,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_ANGLE_FLIPPER, 4);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_PARTICLE_NUM, 1)
-set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, plasma_x_circle_small )
+set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, plasma_line )
     
 //first frame sword hitbox (hitpause matches above)
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
@@ -80,7 +80,7 @@ set_hitbox_value(AT_USTRONG, 2, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_TECHABLE, 3);
 set_hitbox_value(AT_USTRONG, 2, HG_HIT_PARTICLE_NUM, 1)
-set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, plasma_x_circle_small )
+set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, plasma_line )
 
 
 
@@ -106,7 +106,7 @@ set_hitbox_value(AT_USTRONG, 3, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_USTRONG, 3, HG_TECHABLE, 3);
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_USTRONG, 3, HG_HIT_PARTICLE_NUM, 1)
-set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, plasma_x_circle_small )
+set_hitbox_value(AT_USTRONG, 3, HG_VISUAL_EFFECT, plasma_line )
 
 
 set_hitbox_value(AT_USTRONG, 4, HG_PARENT_HITBOX, 3);
@@ -136,6 +136,7 @@ set_hitbox_value(AT_USTRONG, 6, HG_HITBOX_Y, -88);
 set_hitbox_value(AT_USTRONG, 6, HG_HITBOX_X, 7);
 set_hitbox_value(AT_USTRONG, 6, HG_HITBOX_GROUP, -1);
 
+//LAUNCHER
 set_hitbox_value(AT_USTRONG, 7, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 7, HG_WINDOW, 4);
 set_hitbox_value(AT_USTRONG, 7, HG_LIFETIME, 3);

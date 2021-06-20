@@ -9,7 +9,7 @@ set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1); //cuz too good an edgeguard
 
 
 
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
@@ -55,13 +55,15 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 361);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .2);
-set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .2);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
+set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 3);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("plasma_line"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_PARTICLE_NUM, 1)
-set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, plasma_x_circle_big );
+set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, plasma_x_circle_small );
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, -1 );
 set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, 1 );
+
+
 
 
 
@@ -82,9 +84,10 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_weak"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_PARTICLE_NUM, 1)
-set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, plasma_x_circle_big );
+set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, plasma_t_small );
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, -1 );
 set_hitbox_value(AT_FSPECIAL, 2, HG_IGNORES_PROJECTILES, 1 );
+set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT_X_OFFSET, 20 );
 
 
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 1);
@@ -104,9 +107,10 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
 set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_PARTICLE_NUM, 1)
-set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, plasma_x_circle_big );
+set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, plasma_x_circle_small );
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_GROUP, -1 );
 set_hitbox_value(AT_FSPECIAL, 3, HG_IGNORES_PROJECTILES, 1 );
+set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT_X_OFFSET, 20 );
 
 
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_TYPE, 1);
@@ -126,14 +130,15 @@ set_hitbox_value(AT_FSPECIAL, 4, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_clairen_hit_weak"));
 set_hitbox_value(AT_FSPECIAL, 4, HG_HIT_PARTICLE_NUM, 1)
-set_hitbox_value(AT_FSPECIAL, 4, HG_VISUAL_EFFECT, plasma_x_circle_big );
+set_hitbox_value(AT_FSPECIAL, 4, HG_VISUAL_EFFECT, plasma_x );
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_GROUP, -1 );
 set_hitbox_value(AT_FSPECIAL, 4, HG_IGNORES_PROJECTILES, 1 );
+set_hitbox_value(AT_FSPECIAL, 4, HG_VISUAL_EFFECT_X_OFFSET, 20 );
 
 
 set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 5, HG_WINDOW, 2);
-set_hitbox_value(AT_FSPECIAL, 5, HG_WINDOW_CREATION_FRAME, 33);
+set_hitbox_value(AT_FSPECIAL, 5, HG_WINDOW_CREATION_FRAME, 33); 
 set_hitbox_value(AT_FSPECIAL, 5, HG_LIFETIME, 3);
 set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_X, 58);
 set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_Y, -63);
@@ -148,9 +153,10 @@ set_hitbox_value(AT_FSPECIAL, 5, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_FSPECIAL, 5, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_FSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
 set_hitbox_value(AT_FSPECIAL, 5, HG_HIT_PARTICLE_NUM, 1)
-set_hitbox_value(AT_FSPECIAL, 5, HG_VISUAL_EFFECT, plasma_x_circle_big );
+set_hitbox_value(AT_FSPECIAL, 5, HG_VISUAL_EFFECT, plasma_x_circle_small );
 set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_GROUP, -1 );
 set_hitbox_value(AT_FSPECIAL, 5, HG_IGNORES_PROJECTILES, 1 );
+set_hitbox_value(AT_FSPECIAL, 5, HG_VISUAL_EFFECT_X_OFFSET, 20 );
 
 
 set_hitbox_value(AT_FSPECIAL, 6, HG_HITBOX_TYPE, 1);
@@ -173,6 +179,7 @@ set_hitbox_value(AT_FSPECIAL, 6, HG_HIT_PARTICLE_NUM, 1)
 set_hitbox_value(AT_FSPECIAL, 6, HG_VISUAL_EFFECT, plasma_circle_big );
 set_hitbox_value(AT_FSPECIAL, 6, HG_HITBOX_GROUP, -1 );
 set_hitbox_value(AT_FSPECIAL, 6, HG_IGNORES_PROJECTILES, 1 );
+set_hitbox_value(AT_FSPECIAL, 6, HG_VISUAL_EFFECT_X_OFFSET, 20 );
 
 /*
 
