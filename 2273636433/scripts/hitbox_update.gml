@@ -237,7 +237,7 @@ if attack == AT_NSPECIAL{
 				vsp = - 15;
 				hsp = 0;
 				hitbox_timer =0;
-				length = 300;
+				length = 250;
 				walls = 0;
 				player_id.pilleffect=3;
 				pill_state =3;

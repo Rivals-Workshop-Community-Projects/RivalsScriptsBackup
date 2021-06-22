@@ -224,7 +224,7 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_EXTRA_CAMERA_SHAKE, 1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_IS_TRANSCENDENT, true );
-
+set_hitbox_value(AT_NSPECIAL, 4, HG_IGNORES_PROJECTILES, 1);
 
 
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_TYPE, 2);

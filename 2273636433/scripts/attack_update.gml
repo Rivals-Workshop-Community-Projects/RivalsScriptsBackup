@@ -155,7 +155,7 @@ if(attack==AT_DSPECIAL){
 }
 
 if attack == AT_FSTRONG {
-	if window== 3 && window_timer == 6 && ! has_hit {
+	if window== 3 && window_timer == 5 && ! has_hit {
 		hit_fx_create(20, 6 );
 		spawn_hit_fx( x +72*spr_dir, y-38, 20 );
 		sound_play(  asset_get("sfx_absa_dattack"));

@@ -1,6 +1,6 @@
 //pre_draw.gml
 if get_player_color(player) == 6 and get_gameplay_time() % 2 == 0{
-       draw_debug_text(x - 140, y - 160,"Oh look a cheapie, win game how cool LOL.");
+       draw_debug_text(x - 150, y - 160,"Oh look a cheapie, win game how cool LOL.");
 }
 
 

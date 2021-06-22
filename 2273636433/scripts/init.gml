@@ -45,7 +45,7 @@ hitstun_grav = .51;
 knockback_adj = 1.0;			//the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 
-prat_land_time = 11;
+prat_land_time = 12;
 wave_land_time = 7;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .12; //grounded deceleration when wavelanding

@@ -1,9 +1,10 @@
 //article1_init
 
 init = 0;
-sprite_index = sprite_get("blue_proj_grounded");
+sprite_index = sprite_get("_pho_empty");
 mask_index = sprite_get("article_collision_mask");
 
+stance = 0;
 state = 0;
 state_timer = 0;
 idle_cycle = 0;

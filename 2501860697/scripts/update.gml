@@ -93,6 +93,9 @@ if venom_recharge = 100 {
 	venom_recharge = 0;
 }
 
+if venom_stack > 3 {
+	venom_stack = 3;
+}
 
 if short = 1 {
     if (short_timer == 100)
@@ -134,7 +137,7 @@ move_cooldown[AT_DAIR] = 15;
 }
 
 if attack == AT_FSPECIAL_AIR && window == 4 {
-move_cooldown[AT_FSPECIAL_AIR] = 20;
+move_cooldown[AT_FSPECIAL_AIR] = 26;
 }
 
 

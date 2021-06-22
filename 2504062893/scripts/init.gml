@@ -25,7 +25,7 @@ snd_Nspecial = sound_get("doge");
 snd_Fspecial_throw = sound_get("throwstar");
 snd_Fspecial_hit = sound_get("hit_s09");
 
-snd_Nair = sound_get("swing02");
+// snd_Nair = sound_get("swing02");
 
 snd_Fair = sound_get("hit_s03_a");
 snd_Fair_hit = sound_get("hit70");
@@ -37,8 +37,10 @@ snd_Dair_hit = sound_get("punchdrive");
 
 snd_Taunt = sound_get("192146__brassknucklesfilms__bone-crunch-fast");
 snd_catch = sound_get("hit67");
-snd_float = sound_get("float");
+// snd_float = sound_get("float");
+snd_float = sound_get("snd_SURF_LAYERED2");
 
+snd_slash = sound_get("snd_SLASH_LAYERED2");
 
 // hit fx
 // hit_fx_create("")
@@ -86,6 +88,8 @@ wall_timer = -1;
 has_teleported = false; //teleport stalling prevention
 catch_radius = 6; //increase this to make it easier to catch
 holding_boosted = false;
+teleport_x = 0;
+teleport_y = 0;
 
 caught_fspecial = 0;
 can_throw = true;
@@ -97,6 +101,15 @@ throw_vsp = -30; //value here doesn't matter
 // MOBILITY BOOST (DSPECIAL)
 has_been_boosted = false;
 skull_radius = 24;
+
+// SOUND LAYERING / PLAYING SOUND ONLY ONCE
+hit_sound_played = false;
+
+prev_X = x;
+prev_Y = y;
+float_sound_playing = false;
+vfx_float = hit_fx_create(sprite_get("fx_float"), 1);
+vfx_round_zap = hit_fx_create(sprite_get("roundzap"), 28);
 
 //float stuff, original code by RubyNights (for Pomme)
 floating = 0;

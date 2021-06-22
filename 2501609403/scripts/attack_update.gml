@@ -100,6 +100,7 @@ if (attack == AT_FSTRONG){
 }
 }
 
+
 //OLD DSPECIAL
 /*
 if (attack == AT_DSPECIAL){
@@ -362,6 +363,24 @@ if (attack == AT_FSPECIAL_2 && instance_exists(grabbed_player_obj)) {
 		}
 		//the above block can be copied for as many windows as necessary.
 		//e.g. for an attack like Clairen's back throw, you might have an additional window where the grabbed player is pulled behind.
+	}
+}
+
+//Gattling
+if (attack == AT_FTILT || attack == AT_JAB || attack == AT_DTILT && window != 3 || attack == AT_NAIR || attack == AT_FSTRONG
+|| attack == AT_USTRONG || attack == AT_DSTRONG || attack == AT_USPECIAL || attack == AT_UTILT || attack == AT_FAIR || attack == AT_BAIR
+|| attack == AT_BAIR || attack == AT_UAIR || attack == AT_DATTACK){
+	if (proj_stored == true) {
+		if (has_hit){
+			if (special_down){
+				destroy_hitboxes();
+				attack_end();
+				attack = AT_NSPECIAL
+				CorrectHurtboxes();
+				window = 1
+				window_timer = 0
+			}
+		}
 	}
 }
 
@@ -735,4 +754,10 @@ if attack == AT_NSPECIAL {
     if (window == 4 && window_timer == 1){
         move_cooldown[AT_NSPECIAL] = 40;
     }
+}
+
+//BY LUKARU!!
+#define CorrectHurtboxes()
+{
+    hurtboxID.sprite_index = get_attack_value(attack, (free && get_attack_value(attack, AG_HURTBOX_AIR_SPRITE) != 0) ? AG_HURTBOX_AIR_SPRITE : AG_HURTBOX_SPRITE);
 }

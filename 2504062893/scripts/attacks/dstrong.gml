@@ -47,7 +47,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_DSTRONG, 1, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 12); //12   aah why isnt it working
 set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, 1.0); //whyyy
-set_hitbox_value(AT_DSTRONG, 1, HG_EXTRA_HITPAUSE, 5); // only for the player getting hit
+set_hitbox_value(AT_DSTRONG, 1, HG_EXTRA_HITPAUSE, 10); // only for the player getting hit
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, fx_strong_sweetspot);
 // set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT_X_OFFSET, 10);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, snd_Fstrong_hit);
@@ -71,7 +71,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, 0.8);
-set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 13);
+set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT_X_OFFSET, 10);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX,  asset_get("sfx_blow_heavy2"));
 // set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 6);

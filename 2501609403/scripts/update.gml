@@ -35,7 +35,7 @@ if (state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD) {
 }
 
 //Wacky Double JUmp
-if state == PS_DOUBLE_JUMP{
+if (state == PS_DOUBLE_JUMP && djumps == 2){
     if state_timer == 1{
         vsp = -5
     }
@@ -219,6 +219,11 @@ if (store_timer > 0){
 } if (store_timer2 < 10){
 	store_timer2++;
 }
+
+//Ani Alt
+ani_x = view_get_xview()
+ani_y = view_get_yview()
+
 
 //Visual Effects
 //EXplosion

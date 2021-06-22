@@ -120,7 +120,9 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num >= 2 && my_hitboxI
 	
 	 with (asset_get("pHitBox")) {
         if player_id == other.id {
-          destroyed = true;
+        	if attack == AT_FSPECIAL {
+              destroyed = true;
+        	}
         }
     }
     
@@ -129,9 +131,9 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num >= 2 && my_hitboxI
     
     sound_play(asset_get("sfx_holy_lightning"));
     sound_play(sound_get("SpaceCutB"));
-    zFhit = 1
+    zFhit = 0
     if zFhittimer == 0 {
-    zFhittimer = 40
+    zFhittimer = 30
     }
 }
 

@@ -66,7 +66,6 @@ if (attack == AT_FSTRONG && RedMode){
 }
 
 if(attack == AT_DATTACK && RedMode){
-	
 	set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 5);
 	set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 1);
 	set_attack_value(AT_DATTACK, AG_CATEGORY, 2);
@@ -169,6 +168,7 @@ if(attack == AT_DATTACK && RedMode){
 	reset_hitbox_value(AT_DATTACK, 1, HG_SHAPE);
     
 }
+
 
 if(attack == AT_DTILT && RedMode){
     set_attack_value(AT_DTILT, AG_SPRITE, sprite_get ( "red_utilt" ) );
@@ -553,6 +553,8 @@ if(attack == AT_JAB && RedMode){
     reset_hitbox_value(AT_JAB, 1, HG_HIT_PARTICLE_NUM);
 	reset_hitbox_value(AT_JAB, 2, HG_HIT_PARTICLE_NUM);
 }
+
+
 /*
 if(attack == AT_USPECIAL && doubleUspecial == 1){
 	set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);

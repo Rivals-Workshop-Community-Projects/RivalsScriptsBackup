@@ -22,7 +22,7 @@ set_color_profile_slot_range( 4, 6, 13, 12 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 13 );
+set_num_palettes( 15 );
 
 // Toxic
 set_color_profile_slot( 1, 0, 49, 94, 78 ); //Pink
@@ -59,7 +59,7 @@ set_color_profile_slot( 5, 2, 28, 201, 217 ); //wator
 set_color_profile_slot( 5, 3, 217, 28, 28 ); //brown
 set_color_profile_slot( 5, 4, 217, 28, 28 ); //gray
 
-// Magma Bucket
+// Lava Bucket
 set_color_profile_slot( 6, 0, 97, 63, 61 ); //Pink
 set_color_profile_slot( 6, 1, 163, 83, 83 ); //pearl
 set_color_profile_slot( 6, 2, 224, 95, 31 ); //wator
@@ -87,7 +87,7 @@ set_color_profile_slot( 9, 2, 161, 73, 23 ); //wator
 set_color_profile_slot( 9, 3, 189, 123, 79 ); //brown
 set_color_profile_slot( 9, 4, 189, 45, 32 ); //gray
 
-// the shitty alt
+// random alt
 set_color_profile_slot( 10, 0, 84, 71, 59 ); //Pink
 set_color_profile_slot( 10, 1, 227, 152, 132 ); //pearl
 set_color_profile_slot( 10, 2, 84, 71, 59 ); //wator
@@ -107,6 +107,20 @@ set_color_profile_slot( 12, 1, 176, 224, 245 ); //pearl
 set_color_profile_slot( 12, 2, 110, 160, 240 ); //wator
 set_color_profile_slot( 12, 3, 245, 171, 68 ); //brown
 set_color_profile_slot( 12, 4, 105, 103, 135 ); //gray
+
+// Not Binary
+set_color_profile_slot( 13, 0, 153, 96, 219 ); //Pink
+set_color_profile_slot( 13, 1, 232, 225, 110 ); //pearl
+set_color_profile_slot( 13, 2, 153, 96, 219 ); //wator
+set_color_profile_slot( 13, 3, 67, 61, 89 ); //brown
+set_color_profile_slot( 13, 4, 228, 240, 242 ); //gray
+
+// Clam
+set_color_profile_slot( 14, 0, 78, 87, 102 ); //Pink
+set_color_profile_slot( 14, 1, 28, 173, 112 ); //pearl
+set_color_profile_slot( 14, 2, 173, 138, 103 ); //wator
+set_color_profile_slot( 14, 3, 90, 102, 78 ); //brown
+set_color_profile_slot( 14, 4, 190, 209, 204 ); //gray
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -17,15 +17,15 @@ x -= 20 * spr_dir
 }
 sound_stop(asset_get("sfx_troupple_rumble"))
 
-if countering == 1 {
-    sound_play(asset_get("sfx_frog_fspecial_charge_gained_full"))
-             window = 2
-             window_timer = 9
-             create_hitbox(AT_EXTRA_3, 3, x, y)
-             spawn_hit_fx(x+70*spr_dir,y - 30, 304)
-             sound_play(sound_get("Fstrong"))
-             countering = 0
-}
+//if countering == 1 {
+//    sound_play(asset_get("sfx_frog_fspecial_charge_gained_full"))
+//             window = 2
+//             window_timer = 9
+//             create_hitbox(AT_EXTRA_3, 3, x, y)
+//             spawn_hit_fx(x+70*spr_dir,y - 30, 304)
+//             sound_play(sound_get("Fstrong"))
+//             countering = 0
+//}
 
 if !super_armor {
 

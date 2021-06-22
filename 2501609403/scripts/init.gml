@@ -9,6 +9,17 @@ if (get_player_color(player) == 11){
     log_alt = false
 }
 
+if (get_player_color(player) == 4){
+    ani_alt = true
+} else {
+    ani_alt = false
+}
+
+    
+//compat
+toonlink_photo = sprite_get("_bug_toonlink_photo");
+kirbyability = 16;
+
 dash_sfx = true;
 funny_dash = 0;
 funny_fx = 0;
@@ -62,20 +73,20 @@ pratfall_anim_speed = .25;
 walk_speed = 0;
 walk_accel = 0.2;
 walk_turn_time = 6;
-initial_dash_time = 15;
-initial_dash_speed = 0;
-dash_speed = 13;
-dash_turn_time = 14;
-dash_turn_accel = 1.5;
+initial_dash_time = 10;
+initial_dash_speed = 3.5;
+dash_speed = 12.8;
+dash_turn_time = 6;
+dash_turn_accel = 2;
 dash_stop_time = 4;
 dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .3;
+ground_friction = .6;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
-jump_speed = 11.4;
+jump_speed = 9.2;
 short_hop_speed = 7;
-djump_speed = 10;
+djump_speed = 8.8;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 8; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state
@@ -83,7 +94,7 @@ jump_change = 3; //maximum hsp when double jumping. If already going faster, it 
 air_accel = .3;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
 air_friction = .07;
-max_djumps = 1;
+max_djumps = 2;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 7;
 walljump_vsp = 8;
@@ -98,7 +109,7 @@ land_time = 4; //normal landing frames
 prat_land_time = 3;
 wave_land_time = 12;
 wave_land_adj = 1.25; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = 0; //grounded deceleration when wavelanding
+wave_friction = 0.07; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 2;
@@ -150,5 +161,549 @@ bubble_y = 8;
 
 //Collisions
 sprite_change_collision_mask("idle", false, 2, 0, 0, 0, 50, 0 );
+
+//Date Girl Support. Generated using McDucky's Date Girl Generator! 
+Chatting = true;
+DG_portrait = sprite_get("DG_portrait");
+var DG_page = 0;
+
+//Page 0 - Start
+//---------------------------------------------------
+DG_page = 0;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 1;
+DG_right_strip[DG_page] = 18;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"I sense a strange disturbance in the force
+
+"
+
+DG_nextindex[DG_page] = 1;
+
+//Page 1 - 
+//---------------------------------------------------
+DG_page = 1;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = true;
+
+DG_dialogue[DG_page] = 
+"
+
+"
+
+DG_dialogue_right[DG_page] = 
+"BUGINGI
+
+"
+DG_nextindex[DG_page] = 2;
+
+//Page 2 - 
+//---------------------------------------------------
+DG_page = 2;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 1;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"Yeah yeah, I'm amazing and handsome.
+I kinda need you to move out the way though.
+You're blocking out the wifi."
+
+DG_nextindex[DG_page] = 3;
+
+//Page 3 - BRANCHING PATHS
+//---------------------------------------------------
+DG_page = 3;
+DG_chat_type[DG_page] = 1;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 1;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"I'm trying to play Bingy's Adventure for the Nintendo 64
+
+"
+
+DG_options[DG_page] = 
+"What's Bingy's Adventure?
+No, have a date with me NOW
+Oh sorry, I'll move out the way for you"
+			
+DG_answers[DG_page] = [4,21,21];
+
+
+//Page 4 - Bingy's Adventure
+//---------------------------------------------------
+DG_page = 4;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"Hmm... It makes sense that you don't know all
+that much about it honestly.
+"
+
+DG_nextindex[DG_page] = 5;
+
+//Page 5 - Bingy's Adventure
+//---------------------------------------------------
+DG_page = 5;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"It's this very experimental action platformer with top down
+roguelike elements
+"
+
+DG_nextindex[DG_page] = 6;
+
+//Page 6 - Bingy's Adventure
+//---------------------------------------------------
+DG_page = 6;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"It did like super badly in sales though
+first off they like didn't advertise it at all so no one
+even knew about it"
+
+DG_nextindex[DG_page] = 7;
+
+//Page 7 - Bingy's Adventure
+//---------------------------------------------------
+DG_page = 7;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = true;
+
+DG_dialogue[DG_page] = 
+"
+
+"
+
+DG_dialogue_right[DG_page] = 
+"Interesting...
+
+"
+DG_nextindex[DG_page] = 8;
+
+//Page 8 - Bingy's Adventure
+//---------------------------------------------------
+DG_page = 8;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"Also the whole dying makes us leak where you live
+mechanic was really poorly received 
+"
+
+DG_nextindex[DG_page] = 9;
+
+//Page 9 - Bingy's Adventure
+//---------------------------------------------------
+DG_page = 9;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = true;
+
+DG_dialogue[DG_page] = 
+"
+
+"
+
+DG_dialogue_right[DG_page] = 
+"Wait what
+
+"
+DG_nextindex[DG_page] = 11;
+
+//Page 10 - Bingy's Adventure
+//---------------------------------------------------
+DG_page = 10;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = true;
+
+DG_dialogue[DG_page] = 
+"
+
+"
+
+DG_dialogue_right[DG_page] = 
+"How did something like that even get past production
+
+"
+DG_nextindex[DG_page] = 11;
+
+//Page 11 - Bingy's Adventure
+//---------------------------------------------------
+DG_page = 11;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"Yeah i know right
+
+"
+
+DG_nextindex[DG_page] = 12;
+
+//Page 12 - Bingy's Adventure
+//---------------------------------------------------
+DG_page = 12;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"oh oh and get this
+despite the horrible sales figures and outcry from gamers
+there was a spin off sequel released for the bingy wingy"
+
+DG_nextindex[DG_page] = 13;
+
+//Page 13 - Bingy's Adventure
+//---------------------------------------------------
+DG_page = 13;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = true;
+
+DG_dialogue[DG_page] = 
+"
+
+"
+
+DG_dialogue_right[DG_page] = 
+"The bingy wingy???
+
+"
+DG_nextindex[DG_page] = 14;
+
+//Page 14 - Bingy's Adventure
+//---------------------------------------------------
+DG_page = 14;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"Oh you dont know about the bingy wingy either?
+
+"
+
+DG_nextindex[DG_page] = 15;
+
+//Page 15 - Bingy's Adventure
+//---------------------------------------------------
+DG_page = 15;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"It was a weird prototype of the gamecube developed
+by panasonic and had like blueray support
+"
+
+DG_nextindex[DG_page] = 16;
+
+//Page 16 - Bingy's Adventure
+//---------------------------------------------------
+DG_page = 16;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"And it had chibi graphics and everything and was aimed
+towards children
+it was really weird"
+
+DG_nextindex[DG_page] = 17;
+
+//Page 17 - Bingy's Adventure
+//---------------------------------------------------
+DG_page = 17;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = true;
+
+DG_dialogue[DG_page] = 
+"
+
+"
+
+DG_dialogue_right[DG_page] = 
+"ok you're definitely pulling my leg
+there's no way they would make a console
+called the bingy wingy"
+DG_nextindex[DG_page] = 18;
+
+//Page 18 - Bingy's Adventure
+//---------------------------------------------------
+DG_page = 18;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"what?
+what's the bingy wingy
+"
+
+DG_nextindex[DG_page] = 19;
+
+//Page 19 - Bingy's Adventure
+//---------------------------------------------------
+DG_page = 19;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = true;
+
+DG_dialogue[DG_page] = 
+"
+
+"
+
+DG_dialogue_right[DG_page] = 
+"?????
+
+"
+DG_nextindex[DG_page] = 20;
+
+//Page 20 - Bingy's Adventure
+//---------------------------------------------------
+DG_page = 20;
+DG_chat_type[DG_page] = 2;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"you're a weird lady..
+
+"
+
+DG_nextindex[DG_page] = 21;
+
+//Page 21 - Bingy's Adventure
+//---------------------------------------------------
+DG_page = 21;
+DG_chat_type[DG_page] = 3;
+
+DG_adopts_color_left[DG_page] = true;
+DG_adopts_color_right[DG_page] = true;
+
+DG_left_strip[DG_page] = 0;
+DG_right_strip[DG_page] = 0;
+
+DG_custom_left_portrait[DG_page] = true;
+DG_custom_right_portrait[DG_page] = false;
+
+DG_right_speaker[DG_page] = false;
+
+DG_dialogue[DG_page] = 
+"I'm going to engage in combat with you now because of how
+strange you are
+"
+
 
 user_event(14);

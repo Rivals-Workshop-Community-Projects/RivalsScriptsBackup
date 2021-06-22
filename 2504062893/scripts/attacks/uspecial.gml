@@ -28,16 +28,18 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 5);
 
 // JET BOOST
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 1);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 2);
 // set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
 // set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -30);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.5);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_clairen_dspecial_counter_success"));
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX_FRAME, 1);
 
 // ENDLAG/PRATFALL
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
@@ -48,6 +50,19 @@ set_window_value(AT_USPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.9);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_HAS_CUSTOM_FRICTION,1);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.1);
 
+// TELELPORT AFTER (NEW!)
+set_window_value(AT_USPECIAL,5, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_USPECIAL,5, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_USPECIAL,5, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(AT_USPECIAL,5, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(AT_USPECIAL,5, AG_WINDOW_HSPEED, 2);
+// set_window_value(AT_USPECIAL,5, AG_WINDOW_VSPEED_TYPE, 2);
+// set_window_value(AT_USPECIAL,5, AG_WINDOW_VSPEED, -30);
+set_window_value(AT_USPECIAL,5, AG_WINDOW_CUSTOM_GRAVITY, 1);
+set_window_value(AT_USPECIAL,5, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(AT_USPECIAL,5, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.5);
+set_window_value(AT_USPECIAL,5, AG_WINDOW_SFX, asset_get("sfx_clairen_dspecial_counter_success"));
+set_window_value(AT_USPECIAL,5, AG_WINDOW_SFX_FRAME, 1);
 
 set_num_hitboxes(AT_USPECIAL, 1); //todo: add sweeet sweeetspot for that off the top kill
 
@@ -65,7 +80,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, 0.7);
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 80);
-set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 302);
+set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
@@ -74,4 +89,4 @@ set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_HSPEED, 23);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_USPECIAL, 1, HG_EXTENDED_PARRY_STUN, true);
-set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));

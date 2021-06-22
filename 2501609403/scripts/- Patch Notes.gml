@@ -1,4 +1,33 @@
 /*
+-- V1.8 --
+
+Movement Changes:
+- Bugingi now has 3 jumps, The third being the old double jump
+- Jump speed has decreased to 9.2
+- Dash turn time reduced (6->14)
+- Dash turn accel increased (1.5->2)
+- Dash start speed increased (0->3)
+- Dash start time reduced (15->10)
+- Ground friction Increased (.3->.6)
+- Waveland Friction Increased to 0.07
+
+Balance Changes:
+- Added Projectile Gatling. If you have a projectile stored, you can now cancel any move after hitting someone to throw the projectile.
+- Utilt, Changed Angle (90->80)
+- Fair damage increased (5->6)
+- Utilt damage increased by 1
+- Extended Fspecial's hurtbox out a bit
+- Every Aerial now give a slight vertical boost
+
+Cosmetic Changes:
+- Added lore to the munophone
+- Added tips to the munophone
+- Added Combat for *breathes in*: Truml Codec, Anguish Kirby, Otto , Steve, Feri, Hikaru, Rat, TCO, Toon Link, Wall-E, Moonchild,
+Amber, Agent N, Dracula, Miiverse, Callie (kinda, i only did one path)
+- Added an Añi alt (atleast i tried to)
+- Added Trans alt for pride month
+
+
 -- V1.7 --
 
 Balance Changes:

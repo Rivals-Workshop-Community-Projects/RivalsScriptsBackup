@@ -65,6 +65,8 @@ sprite_change_offset("frog_idle", 148, 328);
 sprite_change_offset("frog_idle_outline", 148, 328);
 sprite_change_offset("frog_idle_air", 148, 328);
 sprite_change_offset("frog_land", 148, 328);
+sprite_change_offset("frog_hit", 148, 328);
+sprite_change_offset("frog_hitland", 148, 328);
 sprite_change_offset("frog_tongue", 148, 328);
 sprite_change_offset("frog_grabbing", 148, 328);
 sprite_change_offset("frog_parried", 148, 328);

@@ -25,8 +25,9 @@ if (is_boosted){
 	sprite_index = sprite_get("throwingstar_boosted"); 
 	with (ghost_box){
 		kb_value = 7;
-		kb_scale = 0.5;
+		kb_scale = 0.4;
 		damage = 7;
+		effect = 0;
 	}
 }
 

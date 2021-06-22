@@ -225,7 +225,7 @@ if (state == PS_WALL_JUMP) {
 
  if get_player_color(player) == 1 && omega == 1 {
  	
- 	if get_gameplay_time() % 6 == 0 and ((state != PS_ATTACK_GROUND and state != PS_DASH)  or (attack != AT_TAUNT and (state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR))) {
+ 	if visible && get_gameplay_time() % 6 == 0 and ((state != PS_ATTACK_GROUND and state != PS_DASH)  or (attack != AT_TAUNT and (state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR))) {
  	spawn_hit_fx( floor(x - 7 + (random_func(1, 60, true)/4)) , floor(y) , auram )
  	}
  	
@@ -337,7 +337,7 @@ if (state == PS_WALL_JUMP) {
  				sound_play(sound_get("OZS1"));
  			}
  			
- 			if window == 2 && window_timer < 1 {
+ 			if window == 1 && window_timer == 15 {
  				sound_play(sound_get("OZS2"));
  			}
  		}

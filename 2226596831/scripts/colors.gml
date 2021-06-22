@@ -196,9 +196,9 @@ set_color_profile_slot( 16, 1, 0, 194, 149 ); //trail
 set_color_profile_slot( 16, 2, 0, 194, 149 ); //sein
 set_color_profile_slot( 16, 3, 94, 82, 196 ); //wiimote
 set_color_profile_slot( 16, 4, 194, 0, 55 ); //strap
-set_color_profile_slot( 16, 5, 0, 194, 149 ); //stab
+set_color_profile_slot( 16, 5, 224, 36, 58 ); //stab
 set_color_profile_slot( 16, 6, 255, 53, 28 ); //stop
-set_color_profile_slot( 16, 7, 174, 200, 209 ); //wind
+set_color_profile_slot( 16, 7, 255, 217, 0 ); //wind
 
 // prototype
 set_color_profile_slot( 17, 0, 20, 130, 140 ); //silhouette

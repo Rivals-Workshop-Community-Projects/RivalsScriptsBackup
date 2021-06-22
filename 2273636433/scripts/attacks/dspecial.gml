@@ -140,7 +140,7 @@ set_hitbox_value(AT_DSPECIAL, 5, HG_DAMAGE, 3);
 set_hitbox_value(AT_DSPECIAL, 5, HG_ANGLE, 90);
 set_hitbox_value(AT_DSPECIAL, 5, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DSPECIAL, 5, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(AT_DSPECIAL, 5, HG_KNOCKBACK_SCALING, .9);
+set_hitbox_value(AT_DSPECIAL, 5, HG_KNOCKBACK_SCALING, .85);
 set_hitbox_value(AT_DSPECIAL, 5, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_DSPECIAL, 5, HG_HIT_SFX, sound_get("melee_wack"));
 set_hitbox_value(AT_DSPECIAL, 5, HG_HITBOX_GROUP, -1);

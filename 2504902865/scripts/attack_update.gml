@@ -238,7 +238,7 @@ if attack == AT_USPECIAL { //dolph
     if window >= 2 && window <= 4 { //can walljump during the ride
         can_wall_jump = true;
     }
-    if (window == 3 or window == 4) && window_timer > 1 && hsp == 0 { //wallbounce
+    if (window == 3 or window == 4) && window_timer > 1 && hsp == 0 && place_meeting(x+2*spr_dir,y-15,asset_get("par_block")) { //wallbounce
         if uspecial_bounces_rn < uspecial_bounces_max {
             window = 5;
             window_timer = 0;
@@ -310,6 +310,7 @@ house_thrown.vsp = _vsp;
 holding_house_id = noone;
 
 #define spawn_base_dust
+/// spawn_base_dust(x, y, name, dir = 0)
 ///spawn_base_dust(x, y, name, ?dir)
 //This function spawns base cast dusts. Names can be found below.
 var dlen; //dust_length value

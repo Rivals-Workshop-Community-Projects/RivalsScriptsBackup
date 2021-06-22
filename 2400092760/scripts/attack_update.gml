@@ -16,7 +16,7 @@ if(attack == AT_NSPECIAL){
     if(window == 2 && window_timer == 1){
         Dgrab = false;
         reset_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER);
-        take_damage(player,1,5);
+        take_damage(player,1,8);
         with(obj_article1){
             if(player_id == other.id){
                 plimit -= 1;
@@ -181,7 +181,7 @@ if (attack == AT_FSPECIAL){
     
     if(window == 3){
         if(window_timer == 8){
-            move_cooldown[AT_FSPECIAL] = 60
+            move_cooldown[AT_FSPECIAL] = 999
         }
     }
     
@@ -243,7 +243,7 @@ if (attack == AT_DSPECIAL){
     
     if(window = 2){
         if(window_timer = 3){
-            take_damage(player,1,3);
+            take_damage(player,1,4);
             with(obj_article1){
                 if(player_id == other.id){
                     plimit -= 1;
@@ -279,7 +279,7 @@ if(attack == AT_DSPECIAL_AIR){
         if(window_timer == 1){
             getup_dir = spr_dir;
             
-            take_damage(player,1,5);
+            take_damage(player,1,6);
             DSPA_grab = false;
             with(obj_article1){
                 if(player_id == other.id){
@@ -405,7 +405,7 @@ if(attack == AT_DSTRONG && window == 5){
 if(attack == AT_DSTRONG && window == 6){
     if(window_timer == 1){
         var lifesteal = create_hitbox(AT_DSTRONG, 3, x +42, y -50)
-            lifesteal.damage = 8 * (1 + strong_charge/100)
+            lifesteal.damage = 10 * (1 + strong_charge/100)
             sound_play(asset_get("sfx_burnconsume"))
     }
     attack_invince = true;
@@ -618,7 +618,7 @@ if(attack == AT_DTILT){
 }
     
 if(attack == AT_DTILT && instance_exists(obj_article1) && window == 2 && window_timer == 1){
-    take_damage(player,1,1);
+    take_damage(player,1,2);
         with(obj_article1){
             if(player_id == other.id){
 

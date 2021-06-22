@@ -22,8 +22,10 @@ for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i]
 {
     shader_start();
     gpu_set_blendmode(bm_add);
-    if (RedMode == true){
+    if (RedMode == 1){
     	draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index, afterImage[i].x, afterImage[i].y, afterImage[i].spr_dir*1, 1, 0, $001DFF, afterImage[i].alpha/10);
+    } else if (RedMode == 2){
+    	draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index, afterImage[i].x, afterImage[i].y, afterImage[i].spr_dir*1, 1, 0, $FF00C9, afterImage[i].alpha/10);
     } else {
     	draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index, afterImage[i].x, afterImage[i].y, afterImage[i].spr_dir*1, 1, 0, $FFEA00, afterImage[i].alpha/10);
     }
@@ -222,6 +224,13 @@ if(recharged = 0){
 }
 }
 }
+
+//Purple Mode
+/*
+if (RedMode == 2){
+	draw_sprite_ext(sprite_get("dim_screen"), 1, 0, 0, 1, 1 , 0, 0 , .8)
+}
+*/
 #define draw_rectangle(x1, y1, x2, y2, x3, y3, x4, y4, colour1, colour2)
 {
 	draw_triangle_colour(x1, y1, x2, y2, x3, y3, colour1, colour1, colour2, false);

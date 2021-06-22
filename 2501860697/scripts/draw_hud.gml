@@ -10,6 +10,16 @@ if venom = 3 {
 	draw_sprite(sprite_get("charge"), 0, temp_x + 130, temp_y - 47);
 }
 
+if venom_timer > 0 && venom_current = 3 {
+	draw_sprite(sprite_get("chargeuse"), 3, temp_x + 130, temp_y - 47);
+} else if venom_current = 2 {
+	draw_sprite(sprite_get("chargeuse"), 2, temp_x + 130, temp_y - 47);
+} else if venom_current = 1 {
+	draw_sprite(sprite_get("chargeuse"), 1, temp_x + 130, temp_y - 47);
+} else if venom = 0 {
+	draw_sprite(sprite_get("chargeuse"), 0, temp_x + 130, temp_y - 47);
+}
+
 var charge_full = sprite_get("meterblue");
 var charge_height = sprite_get_height(charge_full);
 var charge_width = sprite_get_width(charge_full);

@@ -1,4 +1,33 @@
 /*
+-- V2.29 --
+
+Cosmetic Changes:
+- Added Dust Effects to some moves
+- Fixed Red Down-Taunt
+- Fixed the Dair Effect showing up at the wrong times
+
+Balance Changes:
+- Strongs now come out a little bit after you let go of charge
+- Red Ustrong should now be much easier to hit
+- Every aerial now gives a slight vertical boost
+- Nspecial now has a 45 frame cooldown instead of 10
+- Body hit of blue fstrong damage reduced (4%-1%)
+- All moves now have whifflag
+- Utilt now goes a lot less higher
+- Dair Landing lag increased (6->8)
+- Red Uspecial BKB decreased (12->9)
+- Fstrong hurtbox should no longer cover the effects
+
+Movement Changes:
+- Red mode inital dash speed reduced (9.5->9)
+- Red mode air max speed reduced (6->4) 
+- Blue dash speed reduced (8->6.5)
+- Blue Initial dash speed reduced (8.5->7)
+- Blue Air max speed reduced (7->6)
+- Blue Double jump speed reduced (12->11)
+- Both air friction increased to 0.04
+- Pratland time increased (5->10)
+
 -- V2.28 --
 
 Balance Changes:

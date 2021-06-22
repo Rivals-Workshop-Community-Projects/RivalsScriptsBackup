@@ -11,15 +11,16 @@ if (uspec_cancel_alarm > -1) {
 // hello
 if (atk_cooldown > 0) {
 	can_attack = false;
-		can_throw = false;
+	// has_airdodge = false;
+	can_throw = false;
 	can_throw_timer = 20;
 	// print(can_throw)
 	atk_cooldown--;
 }
-if (atk_cooldown == 0){// && (state_cat == SC_AIR_NEUTRAL || state_cat == SC_GROUND_NEUTRAL)){
+if (atk_cooldown == 0 && get_gameplay_time() > 126){// && (state_cat == SC_AIR_NEUTRAL || state_cat == SC_GROUND_NEUTRAL)){
 	state = PS_IDLE_AIR;
 	can_attack = true;
-
+	// has_airdodge = true; // would cause situations of having 2 airdodges in one jump
 	atk_cooldown--;
 }
 
@@ -27,9 +28,13 @@ if (uspec_cancel_alarm == 0){
 	// can_attack = true;
 	state = PS_IDLE_AIR;
 	can_jump = true;
-	if (pHurtBox.dodging){
-		pHurtBox.dodging = false; // check if this fixes Uspecial invincibility bug
-	}
+	// if (pHurtBox.dodging){
+	// 	pHurtBox.dodging = false; // check if this fixes Uspecial invincibility bug
+	// }
+}
+
+if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
+	hit_sound_played = false;
 }
 
 if (captain_timer > 0) captain_timer--;
@@ -134,13 +139,14 @@ if (article2 != noone && distance_to_point(article2.x, article2.y) < 8){
 				break;
 			// case PS_AIR_DODGE:
 			case PS_ATTACK_GROUND:
+				break;
 			case PS_ATTACK_AIR:
 				if (/*attack != AT_DSPECIAL && */!has_been_boosted){
 					if (bigskull_cooldown < 1){
 						bigskull_cooldown = 30;
 						// hsp = 0; // TODO: Think about purpose of helping hand mechanic (chasing opponents?)
-						hsp *= 1.2;
-						vsp = -13;
+						hsp = clamp(hsp*1.5, -14, 14);
+						vsp = -11;
 						// set_attack(AT_NAIR);
 						has_been_boosted = true;
 						set_state(PS_DOUBLE_JUMP);
@@ -267,11 +273,18 @@ if (caught_fspecial == 1){
 //Floating, code from Pomme by RubyNights
 var air = (state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP || state == PS_IDLE_AIR);
 
-if((state == PS_IDLE_AIR 
-|| (air && vsp > 0)) && (jump_down) && floating == 0 
-|| (state == PS_IDLE_AIR || (air)) 
-&& (jump_down && (down_down)) 
-&& floating == 0){
+if(
+	(
+		state == PS_IDLE_AIR 
+		|| (state = PS_ATTACK_AIR && attack != AT_NSPECIAL && attack != AT_USPECIAL && state_timer > 1) // custom line
+		|| (air && vsp > 0)
+	) 
+	&& (jump_down) && floating == 0 
+	|| (state == PS_IDLE_AIR || (air)) 
+	
+	&& (jump_down && (down_down)) 
+	&& floating == 0
+){
     floating = 1;
     floatTimer = floatMax;
     floatAnimTimer = 0;
@@ -284,8 +297,9 @@ if((state == PS_IDLE_AIR
 }
 
 //snd
-if (floatTimer == floatMax){
+if (floatTimer == floatMax && !float_sound_playing){
 	sound_play(snd_float);
+	float_sound_playing = true;
 }
 
 if (floating){
@@ -328,7 +342,17 @@ if (floating){
     }
     
 
-    if(!((jump_down || up_down & can_tap_jump()) && (state == PS_ATTACK_AIR || air))){
+    if(
+	    !(
+	    	(
+			    jump_down 
+			    || up_down 
+			    & can_tap_jump()
+		    )
+	    && 
+		    (state == PS_ATTACK_AIR || air)
+	    )
+    ){
     	can_fast_fall = 1;
 		floating = -1;
 	}
@@ -349,6 +373,7 @@ if (floating){
 } else {
 	if (floating == -1){
 		sound_stop(snd_float);
+		float_sound_playing = false;
 	}
 	air_accel = air_accel_base;
 }
@@ -367,3 +392,8 @@ if(state == PS_IDLE || state == PS_CROUCH || state == PS_JUMPSQUAT || state == P
 if (freeFloat > 0){
 	freeFloat -= 1;
 }
+
+// uhh 
+// if (get_gameplay_time() < 126) {
+// 	attack = AT_TAUNT;
+// }

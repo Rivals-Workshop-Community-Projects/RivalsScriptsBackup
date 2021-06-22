@@ -58,11 +58,11 @@ if (attack == AT_FSPECIAL) && window >= 4 {
 
 //Red Mode Stuff
 
-if (state == PS_WALK_TURN && RedMode == true) {
+if (state == PS_WALK_TURN && RedMode == 1) {
 	sprite_index = sprite_get( "red_walkturn" );
 }
 
-if (state == PS_CROUCH && RedMode == true) {
+if (state == PS_CROUCH && RedMode == 1) {
 	sprite_index = sprite_get( "red_crouch" );
 }
 
@@ -72,12 +72,12 @@ if (state == PS_IDLE && RedMode == false) {
 	image_index = floor(image_number*state_timer/(image_number*5));
 }
 
-if (state == PS_IDLE && RedMode == true) {
+if (state == PS_IDLE && RedMode == 1) {
 	sprite_index = sprite_get( "red_idle" );
 	image_index = floor(image_number*state_timer/(image_number*5));
 }
 
-if (state == PS_RESPAWN && RedMode == true) {
+if (state == PS_RESPAWN && RedMode == 1) {
 	sprite_index = sprite_get( "red_idle" );
 	image_index = floor(image_number*state_timer/(image_number*5));
 }
@@ -89,6 +89,11 @@ if (state == PS_FIRST_JUMP && state_timer == 1) {
 if (state == PS_DOUBLE_JUMP && state_timer == 1) {
 	afterImageTimer = 16;
 }
+
+if (state == PS_DASH && RedMode == true) {
+	image_index = floor(image_number*state_timer/(image_number*4));
+}
+
 /*
 
 if (state == PS_CROUCH && RedMode == true) {
@@ -99,10 +104,7 @@ if (state == PS_WALK && RedMode == true) {
 	sprite_index = sprite_get( "red_walk" );
 	image_index = floor(image_number*state_timer/(image_number*5));
 }
-if (state == PS_DASH && RedMode == true) {
-	sprite_index = sprite_get( "red_dash" );
-	image_index = floor(image_number*state_timer/(image_number*3));
-}
+
 
 if (state == PS_DASH_START && RedMode == true) {
 	sprite_index = sprite_get( "red_dashstart" );

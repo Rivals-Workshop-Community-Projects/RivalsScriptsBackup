@@ -94,6 +94,21 @@ switch (my_hitboxID.attack)
     break;
 }
 
+///Sai stuffs
+//if my_hitboxID.damage <= 3 {
+//       sound_play(asset_get("sfx_waterhit_medium"),false,noone, 0.6 + my_hitboxID.damage/20 )
+//}
+
+//if my_hitboxID.damage <= 9 and my_hitboxID.damage > 4 {
+//        sound_play(asset_get("sfx_waterhit_medium"))
+//        sound_play(asset_get("sfx_ori_energyhit_medium"))    
+//}
+
+//if my_hitboxID.damage > 9 {
+//        sound_play(asset_get("sfx_ori_energyhit_heavy"))       
+//        sound_play(asset_get("sfx_waterhit_heavy2"))
+//}
+
 //#region Specials
     //#region N-special
 

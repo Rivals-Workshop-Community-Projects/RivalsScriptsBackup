@@ -39,7 +39,7 @@ sprite_change_offset("utilt", 64, 128);
 sprite_change_offset("nair", 60, 76);
 sprite_change_offset("fair", 54, 88);
 sprite_change_offset("bair", 80, 98);
-sprite_change_offset("uair", 100, 154);
+sprite_change_offset("uair", 96, 148);
 sprite_change_offset("dair", 72, 124);
 sprite_change_offset("fstrong", 52, 118);
 sprite_change_offset("ustrong", 84, 158);

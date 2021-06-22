@@ -60,7 +60,7 @@ switch admw {
     case 4 :
      	with (pHitBox) {
 		     if player_id == other.id {
-		     	extra_hitpause = floor(damage)
+		     	extra_hitpause = floor(damage/1.3)
 		     		kb_scale = hitpause/100
 		     		hitpause_growth = hitpause/100
   		     }
@@ -438,7 +438,7 @@ if nshit == 2 {
 }
 
 if nshit > 3 {
-
+    spawn_hit_fx( x + 40 - random_func(6, 80, true) - (10*spr_dir), y - 20 - random_func(7, 80, true) , esp )
 	if !hitpause {
 	nshit -= 1
 	}

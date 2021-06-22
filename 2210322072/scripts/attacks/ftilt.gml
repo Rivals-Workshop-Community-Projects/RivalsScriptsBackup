@@ -47,7 +47,7 @@ set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, sound_get("slice1"));
-set_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER, .95);
+set_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 303);
 
 

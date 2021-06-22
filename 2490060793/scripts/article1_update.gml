@@ -103,7 +103,7 @@ if instance_place(x, y, pHitBox) {
 	}
 }
 
-if (hitbox != noone) {
+if (hitbox != noone) && (timer > 10) {
     with hitbox.player_id {
         var hitboxParent = get_hitbox_value(hitbox.attack, hitbox.hbox_num, HG_PARENT_HITBOX);
         var hboxNum = hitbox.hbox_num;

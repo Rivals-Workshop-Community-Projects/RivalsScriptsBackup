@@ -90,7 +90,7 @@ set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 6);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, sound_get("slice2"));
 set_hitbox_value(AT_DAIR, 1, HG_SHAPE, 0);
-set_hitbox_value(AT_DAIR, 1, HG_HITSTUN_MULTIPLIER, .9);
+set_hitbox_value(AT_DAIR, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_DAIR, 1, HG_SDI_MULTIPLIER, 0.9);
 
 set_hitbox_value(AT_DAIR, 3, HG_HITBOX_TYPE, 1);

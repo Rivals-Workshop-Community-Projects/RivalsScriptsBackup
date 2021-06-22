@@ -1,7 +1,5 @@
 //post-draw
 
-print(move_cooldown[AT_NSPECIAL]);
-
  
 if ((state = PS_ATTACK_GROUND || state = PS_ATTACK_AIR) && attack == AT_NSPECIAL && window = 8 && image_index = 21){
     draw_sprite_pos(sprite_get("fspecialrope"), -1, x + 24 * spr_dir, y - 50,  hit_player_obj.x, hit_player_obj.y - 34,  hit_player_obj.x, hit_player_obj.y - 24, x + 24 * spr_dir, y - 40, 1);

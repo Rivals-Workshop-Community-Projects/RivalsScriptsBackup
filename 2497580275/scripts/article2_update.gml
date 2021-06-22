@@ -82,8 +82,8 @@ switch(state)
             {
                 if(player == other.player)
                 {
-                    x = other.x;
-                    y = other.y;
+                    x = floor(other.x);
+                    y = floor(other.y);
                     state = PS_ATTACK_AIR;
                     attack = AT_USPECIAL_2;
                     window = 2;

@@ -2,14 +2,14 @@
 user_event(14);
 
 //Stat Changes
-if (RedMode == true){
+if (RedMode == 1){
 dash_speed = 9;
 initial_dash_time = 5;
-initial_dash_speed = 9.5;
-jump_speed = 10.5;
+initial_dash_speed = 9;
+jump_speed = 11;
 jump_start_time = 5;
-air_friction = .02;
-air_max_speed = 6;
+air_friction = .04;
+air_max_speed = 4;
 air_accel = .3;
 djump_speed = 11;
 dash_turn_time = 8;
@@ -18,19 +18,35 @@ walk_speed = 4.25;
 }
 
 if (RedMode == false){
-dash_speed = 8;
+dash_speed = 6.5;
 initial_dash_time = 8;
-initial_dash_speed = 8.5;
+initial_dash_speed = 7;
 jump_speed = 11.5;
 jump_start_time = 4;
-air_friction = .01;
-air_max_speed = 7;
+air_friction = .04;
+air_max_speed = 6;
 air_accel = .4;
-djump_speed = 12;
+djump_speed = 11;
 dash_turn_time = 10;
 dash_turn_accel = 1.5;
 walk_speed = 3.25;
 }
+
+if (RedMode == 2){
+dash_speed = 9;
+initial_dash_time = 8;
+initial_dash_speed = 9.5;
+jump_speed = 11.5;
+jump_start_time = 5;
+air_friction = .01;
+air_max_speed = 7;
+air_accel = .4;
+djump_speed = 12;
+dash_turn_time = 8;
+dash_turn_accel = 1.5;
+walk_speed = 4.25;
+}
+//RedMode = 2
 
 /*
 if(dotheeffect == false){
@@ -214,25 +230,6 @@ if(state == SC_GROUND_NEUTRAL || SC_AIR_NEUTRAL ){
 	dotheeffect = true
 }
 
-//Sick ass Dair
-if(!lite){
-if (attack == AT_DAIR && window == 2 && state != PS_AIR_DODGE ||
-attack == AT_DAIR && window == 3 && state != PS_AIR_DODGE ){
-	with (hit_fx_obj){
-		if (hit_fx == other.fx_dairslash){
-    		depth = -5;
-		}
-	}
-	if(state_timer % 4 == 2){
-		if (RedMode == true){
-			spawn_hit_fx(x+35*spr_dir,y,fx_red_dairslash)
-		} else {
-			spawn_hit_fx(x+35*spr_dir,y,fx_dairslash)
-		}
-	}
-}
-}
-
 
 //Trail Effects
 if(state == PS_AIR_DODGE){
@@ -284,6 +281,26 @@ if(has_hit_player && (attack == AT_USPECIAL_2 && window == 2))
 
 if(hitpause == false) black_screen = false;
 
+//Sick ass Dair
+if(!lite){
+if (attack == AT_DAIR && window == 2 && state != PS_AIR_DODGE && state != PS_PARRY && state != PS_ROLL_FORWARD && state != PS_ROLL_BACKWARD||
+attack == AT_DAIR && window == 3 && state != PS_AIR_DODGE && state != PS_PARRY && state != PS_ROLL_FORWARD && state != PS_ROLL_BACKWARD){
+	with (hit_fx_obj){
+		if (hit_fx == other.fx_dairslash){
+    		depth = -5;
+		} else {
+			
+		}
+	}
+	if(state_timer % 4 == 2){
+		if (RedMode == true){
+			spawn_hit_fx(x+35*spr_dir,y,fx_red_dairslash)
+		} else {
+			spawn_hit_fx(x+35*spr_dir,y,fx_dairslash)
+		}
+	}
+}
+}
 /*
 // roll vfx
 for (var i = 0; i < 6; ++i) if (rollArray[i] != -1 && rollArray[i].rollAlpha > 0) rollArray[i].rollAlpha--;

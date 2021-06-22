@@ -47,6 +47,7 @@ set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .9);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, sound_get("dagger_stab2"));
+set_hitbox_value(AT_UAIR, 1, HG_HIT_LOCKOUT, 15);
 
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UAIR, 2, HG_WINDOW, 2);
@@ -64,4 +65,3 @@ set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_UAIR, 2, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, sound_get("dagger_slash1"));
-set_hitbox_value(AT_UAIR, 2, HG_HIT_LOCKOUT, 15);

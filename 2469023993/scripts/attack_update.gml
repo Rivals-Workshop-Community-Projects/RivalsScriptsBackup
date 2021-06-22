@@ -17,13 +17,13 @@ if swift_mode = true{
 	set_hitbox_value(AT_BAIR, 3, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_BAIR, 4, HG_BASE_KNOCKBACK, 9);
 	set_hitbox_value(AT_BAIR, 5, HG_BASE_KNOCKBACK, 5);
-	set_hitbox_value(AT_DAIR, 5, HG_BASE_KNOCKBACK, 7);
+	set_hitbox_value(AT_DAIR, 5, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 12);
 	set_hitbox_value(AT_DATTACK, 2, HG_BASE_KNOCKBACK, 8);
 	set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 12);
 	set_hitbox_value(AT_DTILT, 2, HG_BASE_KNOCKBACK, 11);
 	set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 6);
-	set_hitbox_value(AT_FAIR, 6, HG_BASE_KNOCKBACK, 8.5);
+	set_hitbox_value(AT_FAIR, 6, HG_BASE_KNOCKBACK, 8);
 	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 12);
 	set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 9);
 	set_hitbox_value(AT_FTILT, 2, HG_BASE_KNOCKBACK, 6);
@@ -123,13 +123,15 @@ if swift_mode = true{
 	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 8.25);
 	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 16);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 14);
+	set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 304);
+	set_hitbox_value(AT_DAIR, 5, HG_VISUAL_EFFECT, 304);
 }
 
 if swift_mode = false{
 	set_hitbox_value(AT_FSTRONG, 5, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 7);
 	set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_USTRONG, 5, HG_BASE_KNOCKBACK, 5);
+	set_hitbox_value(AT_USTRONG, 5, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_UTILT, 4, HG_BASE_KNOCKBACK, 7);
 	set_hitbox_value(AT_UTILT, 5, HG_BASE_KNOCKBACK, 7);
 	set_hitbox_value(AT_UTILT, 6, HG_BASE_KNOCKBACK, 7);
@@ -245,6 +247,8 @@ if swift_mode = false{
 	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 6.12);
 	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 20);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 16);
+	set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 301);
+	set_hitbox_value(AT_DAIR, 5, HG_VISUAL_EFFECT, 301);
 }
 
 

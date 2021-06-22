@@ -853,11 +853,6 @@ process_inputs();
   
   up_hard_pressed   = up_hard_counter   < 3;
   down_hard_pressed = down_hard_counter < 3;
-
-  //up_stick_counter    = min(up_stick_counter+1, 7);
-  //left_stick_counter  = min(left_stick_counter+1, 7);
-  //down_stick_counter  = min(down_stick_counter+1, 7);
-  //right_stick_counter = min(right_stick_counter+1, 7);
   
   attack_counter    = min(attack_counter+1, 10);
   special_counter   = min(special_counter+1, 10);
@@ -875,8 +870,9 @@ process_inputs();
   special_pressed = false;
   jump_pressed = false;
   shield_pressed = false;
-  taunt_pressed = false;
   */
+  taunt_pressed = false;
+  
   
   left_strong_pressed = false;
   right_strong_pressed = false;

@@ -514,7 +514,7 @@ with phone{
 	initTipImage(player_id.spr_frogoutline, -5, fa_center, 1, c_white, 0);		
 
 	initTip("Explaining Frog (4)");
-	initTipWords("Lastly, if your frog falls offstage or gets parried, you'll be unable to use NSpecial or Dspecial for a short time.");
+	initTipWords("Lastly, remember that your frog can be attacked by opponents. If it gets parried or knocked offstage, you'll be unable to use NSpecial or Dspecial for a short time.");
 	initTipImage(player_id.spr_frogparry, -5, fa_center, 1, c_white, 0);		
 
 	initTip("F-Special Charge");
@@ -577,6 +577,9 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+
+	initPatch("2.1", "June 13th, 2021");
+	initPatchWords("-Frog can now be attacked by opponents");
 
 	initPatch("2.0.3", "June 8th, 2021");
 	initPatchWords("-Decreased max air speed (6.25 -> 5.75)
@@ -1082,7 +1085,10 @@ Playtesting:
 -Gnome
 
 Alt color #21 'Brigade Leader' designed by:
--Zerks");
+-Zerks
+
+Article hit detection code:
+Supersonic");
 
 	
 }

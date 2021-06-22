@@ -8,7 +8,7 @@ prevheal_player = 0
 if (heal_player != noone) && heal_player.id != player_id && hitbox_timer > 0 && heal_player != prevheal_player
 && heal_player.visible == true{
 	create_hitbox(AT_EXTRA_1, 3 , heal_player.x, heal_player.y - 40)
-	spawn_hit_fx(heal_player.x, heal_player.y - 40, slashc)
+	spawn_hit_fx( floor(heal_player.x), floor(heal_player.y) - 40, slashc)
 	sound_play(asset_get("sfx_bird_sidespecial_start"))
 	hitbox_timer = -6
 	shake_camera(2,5)

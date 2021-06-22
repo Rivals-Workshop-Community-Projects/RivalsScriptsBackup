@@ -128,3 +128,13 @@ has_fail = true;
 fail_text = "Now you're but
 a shadow of your
 former self.";
+
+if (get_player_color( player ) == 29){
+	set_victory_theme(sound_get("bowservictory"));
+} else if (get_player_color( player ) == 18){
+	set_victory_theme(sound_get("pepsivictory"));
+} else if (get_player_color( player ) == 25){
+	set_victory_theme(sound_get("meatvictory"));
+} else if (get_player_color( player ) != 18 && get_player_color( player ) != 29 && get_player_color( player ) != 25){
+	set_victory_theme(sound_get("nox_victory"));
+}

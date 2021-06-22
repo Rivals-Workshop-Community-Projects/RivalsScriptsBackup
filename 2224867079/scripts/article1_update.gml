@@ -2,6 +2,12 @@
 
 //a modified version of feri's nspecial
 
+if (stance == 0){
+	sprite_index = sprite_get("blue_proj_grounded");
+} else if (stance == 1){
+	sprite_index = sprite_get("red_proj_grounded");
+}
+
 if (init == 0){
     init = 1;
     
@@ -36,7 +42,11 @@ if (state == 0){ //growing
 	}*/
 	//play sound
     if (state_timer == 1){
-		sound_play(sound_get("BlueKunaiImpact"));
+    	if (stance == 0)
+			sound_play(sound_get("BlueKunaiImpact"));
+		else if (stance == 1){
+			sound_play(sound_get("RedKunaiImpact"));
+		}
 	}
     if (state_timer == summon_time){
         state = 1; //go to idle
@@ -145,8 +155,12 @@ if (state == 3){ //charging
 		
 		//the explosion hitbox is defined in nspecial
 		//at hitbox number 2
-		create_hitbox(AT_NSPECIAL, 2, x+8, y-5);
-		
+		if (stance == 0){
+			create_hitbox(AT_NSPECIAL, 2, x+8, y-5);
+		}
+		if (stance == 1){
+			create_hitbox(AT_NSPECIAL, 3, x+8, y-5);
+		}
 		state = 4; //go to exploding state
         state_timer = 0; //reset timer manually
     }

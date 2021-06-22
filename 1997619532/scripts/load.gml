@@ -135,6 +135,7 @@ sprite_change_offset("dspecial", 74, 102);
 sprite_change_offset("dspecial_air", 42, 75);
 
 
+
 sprite_change_offset("taunt", 54, 92);
 
 

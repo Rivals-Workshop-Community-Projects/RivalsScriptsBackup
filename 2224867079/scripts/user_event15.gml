@@ -458,7 +458,33 @@ with phone{
 //	initPatchWords("Fnuuy joke
 //	- waog");
 //	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0);
-	//2.27
+	//2.29
+	initPatch("2.29	", "20 June 2021");
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Added Dust Effects to some moves
+	- Fixed Red Down-Taunt
+	- Fixed the Dair Effect showing up at the wrong times");
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Strongs now come out a little bit after you let go of charge
+	- Red Ustrong should now be much easier to hit
+	- Every aerial now gives a slight vertical boost
+	- Nspecial now has a 45 frame cooldown instead of 10
+	- Body hit of blue fstrong damage reduced (4%-1%)
+	- All moves now have whifflag
+	- Utilt now goes a lot less higher
+	- Dair Landing lag increased (6->8)
+	- Red Uspecial BKB decreased (12->9)
+	- Fstrong hurtbox should no longer cover the effects");	
+	initPatchWords_ext("Movement Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Red mode inital dash speed reduced (9.5->9)
+	- Red mode air max speed reduced (6->4) 
+	- Blue dash speed reduced (8->6.5)
+	- Blue Initial dash speed reduced (8.5->7)
+	- Blue Air max speed reduced (7->6)
+	- Blue Double jump speed reduced (12->11)
+	- Both air friction increased to 0.04
+	- Pratland time increased (5->10)")
+	//2.28
 	initPatch("2.28	", "2 June 2021");
 	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
 	initPatchWords("- Dair now has more friction when landing on the ground after performing it");

@@ -30,6 +30,7 @@ sprite_change_offset("dashturn", 128, 256);
 sprite_change_offset("jumpstart", 128, 256);
 sprite_change_offset("jump", 128, 160);
 sprite_change_offset("float", 128, 160);
+sprite_change_offset("fx_float", 128, 160);
 sprite_change_offset("doublejump", 128, 160);
 sprite_change_offset("walljump", 128, 160);
 sprite_change_offset("pratfall", 128, 160);

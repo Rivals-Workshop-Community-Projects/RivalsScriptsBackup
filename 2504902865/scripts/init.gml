@@ -65,7 +65,7 @@ dash_turn_time      = 12;		// 8    -  20
 dash_turn_accel     = 0.1;		// 0.1  -  2
 dash_stop_time      = 4;		// 4    -  6
 dash_stop_percent   = 0.35;		// 0.25 -  0.5
-ground_friction     = 0.25;		// 0.3  -  1
+ground_friction     = 0.2;		// 0.3  -  1
 moonwalk_accel      = 1.35;		// 1.2  -  1.4
     
 // Air movement
@@ -99,7 +99,7 @@ wave_friction       = 0.06;		// 0    -  0.15
 roll_forward_max    = 9;        // 9    -  11
 roll_backward_max   = 9;        // 9    -  11       always the same as forward
 wave_land_time      = 12;		// 6    -  12
-wave_land_adj       = 1.3;		// 1.2  -  1.5      idk what zetterburn's is
+wave_land_adj       = 1.15;		// 1.2  -  1.5      idk what zetterburn's is
 air_dodge_speed     = 7.5;      // 7.5  -  8
 techroll_speed      = 10;       // 8    -  11
 

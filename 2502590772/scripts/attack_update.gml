@@ -102,7 +102,7 @@ break;
 case AT_DAIR:
 case AT_MINUN_DAIR:
 	//stall and fall
-	if (window <= 3 && !hitpause) hsp = clamp(hsp, -2.5, 2.5);
+	if (window <= 3 && !hitpause) hsp = clamp(hsp, -4, 4);
 //don't break
 
 //all other aerials:
@@ -130,9 +130,13 @@ case AT_MINUN_JAB:
 		break;
 		
 		case 4:
-			if (window_timer == 1 && !hitpause) {
+			if (hitpause) break;
+			if (is_end_of_window()) {
 				//reset jab2 buffer variable
 				jab2_input_was_buffered = false;
+				//reset button buffer
+				clear_button_buffer(PC_ATTACK_PRESSED);
+				if (custom_clone) attack_counter = 10; //fix for ai buffer
 			}
 		break;
 		

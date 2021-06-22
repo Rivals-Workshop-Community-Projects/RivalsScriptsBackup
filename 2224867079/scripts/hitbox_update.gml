@@ -5,11 +5,12 @@ if (attack == AT_NSPECIAL_AIR && hbox_num == 1){
     if !free {
         if !was_parried {
 		destroy_fx = 1;
-		var blue_kunai = instance_create(x, y+18, "obj_article1");
-		blue_kunai.player_id = player_id;
-		blue_kunai.player = player;
-		blue_kunai.spr_dir = 1;
-		blue_kunai.state = false;
+		var kunai = instance_create(x, y+18, "obj_article1");
+		kunai.player_id = player_id;
+		kunai.player = player;
+		kunai.spr_dir = 1;
+		kunai.state = false;
+		kunai.stance = 0;
         }
     instance_destroy(); exit;
     }
@@ -19,11 +20,12 @@ if (attack == AT_EXTRA_1 && hbox_num == 1){
     if !free {
         if !was_parried {
 		destroy_fx = 1;
-		var red_kunai = instance_create(x, y+18, "obj_article2");
-		red_kunai.player_id = player_id;
-		red_kunai.player = player;
-		red_kunai.spr_dir = 1;
-		red_kunai.state = false;
+		var kunai = instance_create(x, y+18, "obj_article1");
+		kunai.player_id = player_id;
+		kunai.player = player;
+		kunai.spr_dir = 1;
+		kunai.state = false;
+		kunai.stance = 1;
         }
     instance_destroy(); exit;
     }

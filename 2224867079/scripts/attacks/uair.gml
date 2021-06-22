@@ -9,6 +9,8 @@ set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_UAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, sound_get("BlueSwish1"));
+set_window_value(AT_UAIR, 1, AG_WINDOW_VSPEED_TYPE, 0);
+set_window_value(AT_UAIR, 1, AG_WINDOW_VSPEED, -1);
 
 set_window_value(AT_UAIR, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_UAIR, 2, AG_WINDOW_LENGTH, 7);

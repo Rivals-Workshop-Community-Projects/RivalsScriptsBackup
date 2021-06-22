@@ -48,7 +48,7 @@ if state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND {
         break;
         
         case AT_USTRONG:
-        var end_char_height = 110;
+        var end_char_height = 130;
         if window != 5 {
             char_height = clamp(ease_quadOut(start_char_height, end_char_height, clamp(height_timer, 0, 4), 4), start_char_height, end_char_height);
         } else {

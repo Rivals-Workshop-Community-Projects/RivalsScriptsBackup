@@ -34,7 +34,7 @@ if attack == AT_UAIR && has_hit_player && window <= 3 && hit_player_obj.state_ca
 }
 
 if attack == AT_NAIR and has_hit and !hitstop {
-    window_timer += 0.8
+    window_timer += 0.4
     if window == 3 && window_timer == 4 {
     vsp -= 2.5
     hsp = 0 

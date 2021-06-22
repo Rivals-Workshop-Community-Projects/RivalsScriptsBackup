@@ -26,7 +26,7 @@ set_color_profile_slot_range( 5, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 26 );
+set_num_palettes( 32 );
 
 // Cult of the Lost Angels
 set_color_profile_slot( 1, 0, 155, 0, 232 ); //Robes
@@ -140,7 +140,7 @@ set_color_profile_slot( 14, 3, 74, 74, 74 ); //Skin Dark
 set_color_profile_slot( 14, 4, 245, 255, 252 ); //Skin Light
 set_color_profile_slot( 14, 5, 176, 89, 7 ); //RobeShading
 
-// Cult of Transcendence 
+// Cult of Transcendence
 set_color_profile_slot( 15, 0, 255, 153, 252 ); //Robes
 set_color_profile_slot( 15, 1, 255, 255, 255 ); //Trim And Eye
 set_color_profile_slot( 15, 2, 0, 111, 255 ); //Dagger
@@ -217,7 +217,7 @@ set_color_profile_slot( 24, 0, 255, 245, 245 ); //Robes
 set_color_profile_slot( 24, 1, 255, 38, 38 ); //Trim And Eye
 set_color_profile_slot( 24, 2, 255, 122, 237 ); //Dagger
 set_color_profile_slot( 24, 3, 176, 40, 40 ); //Skin Dark
-set_color_profile_slot( 24, 4, 140, 107, 102 ); //Skin Light
+set_color_profile_slot( 24, 4, 130, 86, 53 ); //Skin Light
 set_color_profile_slot( 24, 5, 201, 178, 178 ); //RobeShading
 
 // Cult of the Undivided
@@ -227,6 +227,54 @@ set_color_profile_slot( 25, 2, 166, 100, 0 ); //Dagger
 set_color_profile_slot( 25, 3, 133, 112, 81 ); //Skin Dark
 set_color_profile_slot( 25, 4, 173, 167, 126 ); //Skin Light
 set_color_profile_slot( 25, 5, 48, 32, 32 ); //RobeShading
+
+// Cult of the Dreamer
+set_color_profile_slot( 26, 0, 29, 27, 33 ); //Robes
+set_color_profile_slot( 26, 1, 255, 0, 157 ); //Trim And Eye
+set_color_profile_slot( 26, 2, 255, 69, 100 ); //Dagger
+set_color_profile_slot( 26, 3, 175, 184, 207 ); //Skin Dark
+set_color_profile_slot( 26, 4, 84, 235, 255 ); //Skin Light
+set_color_profile_slot( 26, 5, 9, 8, 10 ); //RobeShading
+
+// Cult of the Demon
+set_color_profile_slot( 27, 0, 92, 81, 156 ); //Robes
+set_color_profile_slot( 27, 1, 224, 0, 0 ); //Trim And Eye
+set_color_profile_slot( 27, 2, 98, 0, 255 ); //Dagger
+set_color_profile_slot( 27, 3, 51, 86, 97 ); //Skin Dark
+set_color_profile_slot( 27, 4, 105, 177, 199 ); //Skin Light
+set_color_profile_slot( 27, 5, 68, 44, 112 ); //RobeShading
+
+// Cult of the Blueberry
+set_color_profile_slot( 28, 0, 49, 58, 245 ); //Robes
+set_color_profile_slot( 28, 1, 162, 0, 255 ); //Trim And Eye
+set_color_profile_slot( 28, 2, 255, 81, 0 ); //Dagger
+set_color_profile_slot( 28, 3, 7, 84, 0 ); //Skin Dark
+set_color_profile_slot( 28, 4, 12, 145, 0 ); //Skin Light
+set_color_profile_slot( 28, 5, 44, 0, 186 ); //RobeShading
+
+// Cult of the Cards
+set_color_profile_slot( 29, 0, 64, 64, 64 ); //Robes
+set_color_profile_slot( 29, 1, 181, 0, 0 ); //Trim And Eye
+set_color_profile_slot( 29, 2, 255, 195, 0 ); //Dagger
+set_color_profile_slot( 29, 3, 80, 86, 112 ); //Skin Dark
+set_color_profile_slot( 29, 4, 135, 175, 201 ); //Skin Light
+set_color_profile_slot( 29, 5, 43, 43, 43 ); //RobeShading
+
+// Cult of the Doom
+set_color_profile_slot( 30, 0, 255, 123, 0 ); //Robes
+set_color_profile_slot( 30, 1, 0, 214, 6 ); //Trim And Eye
+set_color_profile_slot( 30, 2, 64, 255, 0 ); //Dagger
+set_color_profile_slot( 30, 3, 48, 32, 17 ); //Skin Dark
+set_color_profile_slot( 30, 4, 110, 73, 39 ); //Skin Light
+set_color_profile_slot( 30, 5, 176, 100, 0 ); //RobeShading
+
+// Cult of the Darkstalker
+set_color_profile_slot( 31, 0, 235, 42, 68 ); //Robes
+set_color_profile_slot( 31, 1, 176, 235, 225 ); //Trim And Eye
+set_color_profile_slot( 31, 2, 178, 199, 240 ); //Dagger
+set_color_profile_slot( 31, 3, 209, 189, 32 ); //Skin Dark
+set_color_profile_slot( 31, 4, 49, 125, 166 ); //Skin Light
+set_color_profile_slot( 31, 5, 115, 23, 36 ); //RobeShading
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

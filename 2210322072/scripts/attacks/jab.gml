@@ -43,6 +43,6 @@ set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT_X_OFFSET, 6);
 set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, sound_get("slice3"));
 set_hitbox_value(AT_JAB, 1, HG_SHAPE, 0);
-set_hitbox_value(AT_JAB, 1, HG_HITSTUN_MULTIPLIER, .9);
+set_hitbox_value(AT_JAB, 1, HG_HITSTUN_MULTIPLIER, 1);
 
 

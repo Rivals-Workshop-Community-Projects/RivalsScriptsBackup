@@ -58,9 +58,12 @@ if ("phone_inited" in self && phone_inited && !phone_lightweight){
 			
 			swallowed = 0; // don't touch this line please im begging you
 			
-			var copy_spr = sprite_get("copy_sprite");
-			var copy_hrt = sprite_get("copy_hurt");
-			var copy_icn = sprite_get("copy_icon");
+			var copy_spr = sprite_get("_bug_kirb");
+			var copy_hrt = sprite_get("_bug_kirb");
+			var copy_icn = sprite_get("_bug_ability");
+			var copy_rage = sprite_get("nspecial_proj5");
+			var copy_rage2 = sprite_get("nspecial_proj5.2");
+			var copy_rage3 = sprite_get("nspecial_proj5.3");
 			// add more to transfer other sprites, or sfx
 			
 			with enemykirby{
@@ -70,35 +73,73 @@ if ("phone_inited" in self && phone_inited && !phone_lightweight){
 				set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
 				set_attack_value(AT_EXTRA_3, AG_SPRITE, copy_spr);
 				set_attack_value(AT_EXTRA_3, AG_AIR_SPRITE, copy_spr);
-				set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 1);
+				set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 4);
 				set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, copy_hrt);
 				set_attack_value(AT_EXTRA_3, AG_HURTBOX_AIR_SPRITE, copy_hrt);
 				
 				// edit the below (and, indeed, the above!) just like a regular attack script
 				
-				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 10);
+				//Mouth Closed
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 5);
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX_FRAME, 0);
 				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 2);
+
+				//Mouth Opened
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_TYPE, 1);
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 16);
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_SFX_FRAME, 0);
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAME_START, 2);
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAMES, 4);
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_HAS_SFX, 1);
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_SFX, asset_get("sfx_syl_fspecial_bite"));
+
+				//Item Thrown
+				set_window_value(AT_EXTRA_3, 3, AG_WINDOW_TYPE, 1);
+				set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 10);
+				set_window_value(AT_EXTRA_3, 3, AG_WINDOW_SFX_FRAME, 0);
+				set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAME_START, 7);
+				set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAMES, 2);
+				set_window_value(AT_EXTRA_3, 3, AG_WINDOW_HAS_SFX, 1);
+				set_window_value(AT_EXTRA_3, 3, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
+
+				//Recovery
+				set_window_value(AT_EXTRA_3, 4, AG_WINDOW_TYPE, 1);
+				set_window_value(AT_EXTRA_3, 4, AG_WINDOW_LENGTH, 10);
+				set_window_value(AT_EXTRA_3, 4, AG_WINDOW_SFX_FRAME, 0);
+				set_window_value(AT_EXTRA_3, 4, AG_WINDOW_ANIM_FRAME_START, 9);
+				set_window_value(AT_EXTRA_3, 4, AG_WINDOW_ANIM_FRAMES, 2);
+				set_window_value(AT_EXTRA_3, 4, AG_WINDOW_HAS_SFX, 1);
+				set_window_value(AT_EXTRA_3, 4, AG_WINDOW_SFX, asset_get("sfx_bite"));
+
 				
 				set_num_hitboxes(AT_EXTRA_3, 1);
 				
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 1);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 3);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 8);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, 50);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, -10);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 66);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 75);
+				//Rage Ball
+				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 2);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 99);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 60);
 				set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 3);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 14);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 90);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 10);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.8);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 12);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 1.0);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITSTUN_MULTIPLIER, 1.15);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DRIFT_MULTIPLIER, 0);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 1);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 361);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT_Y_OFFSET, -0);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 5);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.5);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 4);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 0.4);
 				set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 0);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
+				set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, asset_get("sfx_boss_fireball"));
+				set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_SPRITE, copy_rage);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_MASK, copy_rage);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_ANIM_SPEED, 0.8);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_HSPEED, 7.5);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_DESTROY_EFFECT, 0);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_IS_TRANSCENDENT, false);
+				
 			}
 		}
 		
@@ -108,7 +149,15 @@ if ("phone_inited" in self && phone_inited && !phone_lightweight){
 		
 		with oPlayer if "muno_last_swallowed" in self && muno_last_swallowed == other && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_EXTRA_3{
 			// you can treat this like an attack_update.gml for when kirby is using your character's ability
-			
+			//Rage Ball
+			if (attack == AT_EXTRA_3){
+				move_cooldown[AT_EXTRA_3] = 40
+				if (window == 3 && window_timer == 1){
+					create_hitbox(AT_EXTRA_3,1,x+15*spr_dir,y-35)
+				}
+				//Updates Damage of Rage Ball
+				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, (1.6 + (0.114 * get_player_damage( player ))));
+			}
 			// this system avoids conflicts between 2 swallowed chars IF they both use the munophone system for copy abilities.
 		}
 	}
@@ -174,7 +223,40 @@ if ("phone_inited" in self && phone_inited && !phone_lightweight){
 		    with amber_herObj{ // Access Amber's player object and set the values
 		        // Set the window values for Amber's hugging. DO NOT change Amber's sprites
 		        // in the attack_values
-		        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
+		        set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
+				set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 3);
+				set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, asset_get("hurtbox"));
+
+				//Enter
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 9);
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 6);
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HAS_SFX, 1);
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX, asset_get("sfx_diamond_collect"));
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX_FRAME, 8);
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HSPEED, 0);
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HSPEED_TYPE, 1);
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_VSPEED, 0);
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_VSPEED_TYPE, 0);
+
+				//Loop
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_TYPE, 9);
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 50);
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_SFX_FRAME, 0);
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAME_START, 6);
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAMES, 6);
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_HAS_SFX, 0);
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_VSPEED, 0);
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_VSPEED_TYPE, 0);
+
+				//Item Thrown
+				set_window_value(AT_EXTRA_3, 3, AG_WINDOW_TYPE, 1);
+				set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 9);
+				set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAME_START, 14);
+				set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAMES, 3);
+				set_window_value(AT_EXTRA_3, 3, AG_WINDOW_HAS_SFX, 0);
+				set_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED, 0);
+				set_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED_TYPE, 0);
 		        // etc....
 		
 		        // Important. Puts Amber in startup hug state (2).
@@ -223,27 +305,27 @@ if ("phone_inited" in self && phone_inited && !phone_lightweight){
 // Gameplay-relevant, and codecs because im biased :>
 pho_has_muno_phone = 1;	// MunoPhone support		(should always be 1, obviously...)
 pho_has_trum_codec = 1;	// Trummel & Alto codec
-pho_has_copy_power = 0;	// Kirby Copy Ability
+pho_has_copy_power = 1;	// Kirby Copy Ability
 pho_has_btt_layout = 0;	// Break the Targets stage
 
 // Character cosmetics
 pho_has_otto_bhead = 1;	// Bobblehead for Otto's bike
 pho_has_steve_dmsg = 1;	// Death message for Steve
-pho_has_feri_taunt = 0;	// Costume for Feri's taunt
-pho_has_hikaru_fak = 0;	// Title for Hikaru's fakie
-pho_has_rat_allout = 0;	// Quip for Rat's all-out attack
-pho_has_tco_sketch = 0;	// Drawing for The Chosen One's down taunt
-pho_has_ahime_dead = 0;	// Sprite for Abyss Hime's slicing effect
-pho_has_tink_picto = 0;	// Photograph for Toon Link's picto box
+pho_has_feri_taunt = 1;	// Costume for Feri's taunt
+pho_has_hikaru_fak = 1;	// Title for Hikaru's fakie
+pho_has_rat_allout = 1;	// Quip for Rat's all-out attack
+pho_has_tco_sketch = 1;	// Drawing for The Chosen One's down taunt
+pho_has_ahime_dead = 1;	// Sprite for Abyss Hime's slicing effect
+pho_has_tink_picto = 1;	// Photograph for Toon Link's picto box
 pho_has_fire_taunt = 0; // Fire's Taunt
-pho_has_wall_e_ost = 0; // Wall-E's music
-pho_has_amber_love = 0; // Amber's plush and/or hug
-pho_has_moon_music = 0; // Moonchild's taunt music
-pho_has_agentn_cdc = 0; // Agent N's codec
+pho_has_wall_e_ost = 1; // Wall-E's music
+pho_has_amber_love = 1; // Amber's plush and/or hug
+pho_has_moon_music = 1; // Moonchild's taunt music
+pho_has_agentn_cdc = 1; // Agent N's codec
 
 // Stage cosmetics
-pho_has_drac_codec = 0;	// Dialogue for the Dracula boss fight
-pho_has_miivs_post = 0;	// Posts for the Miiverse stage
+pho_has_drac_codec = 1;	// Dialogue for the Dracula boss fight
+pho_has_miivs_post = 1;	// Posts for the Miiverse stage
 pho_has_dede_title = 0;	// Title for the Mt Dedede Stadium stage
 pho_has_soul_title = 0; // Text for the Soulbound Conflict stage
 pho_has_been_found = 0; // Death sprite for the Trial Grounds stage
@@ -254,7 +336,7 @@ pho_has_daro_codec = 0; // Dialogue for the Daroach boss fight
 
 
 if (object_index == asset_get("cs_playerbg_obj")){
-	num_alts = 12; // Number of alt costumes; controls how many appear on the CSS
+	num_alts = 14; // Number of alt costumes; controls how many appear on the CSS
 	exit;
 }
 
@@ -359,9 +441,76 @@ with phone{
 	// NOTE: Using sprite_get() does not work here, so sprites must be saved as
 	// variables. See init.gml for an example of this with spr_nspecial_proj.
 	
-	initTip("THEY'RE NOT READY");
-	initTipWords("AHHH");
-	if ("spr_nspecial_proj" in player_id) initTipImage_ext(player_id.spr_nspecial_proj, -5, fa_right, 1, c_white, 3, 40, 30, 60, 0);
+	initTip("Movement");
+	initTipWords("Bugingi's movement is very unnatural");
+	initTipWords("His dash has an insanely slow startup speed, Though after a few frames you will speed up a ludicrous amount");
+	initTipImage(player_id.spr_dash, -5, fa_right, 1, c_white, 3);
+	initTipWords("His walk creates afterimages, and instead of walking at a consistant speed he teleports every couple of frames.
+	A good tip for knowing which one is actually you is that you're always the frontmost bugingi");
+	initTipImage(player_id.spr_OLDwalk, -5, fa_right, 1, c_white, 3);
+	initTipWords("And finally his triple jump, The first two jumps are normal for the most part except for the final jump.
+	Bugingi proceeds to bounce up and down for a while before finally going straight up at the end.
+	The third jump can be used for a multitude of things, for example:
+	if you use it right before inputting a move it can be treated as a third short hop in the air.
+	if you wait until the final jump you can chain it with uair to get some serious height
+	it's also great for stalling and the niche case where you need to go down and perform a move.");
+	initTipImage(player_id.spr_doublejump, -5, fa_center, 1, c_white, 0);
+	
+	
+	initTip("Nspecial");
+	initTipWords("Bugingi's nspecial throws out a completely random projectile");
+	initTipWords("By pressing nspecial you're able to to throw 10 different projectiles. There's also a 1 in 10 chance for you to throw a jackpot projectile which there are two of.");
+	initTipImage(player_id.spr_nspecial, -5, fa_center, 1, c_white, 0);
+	
+	
+	initTip("Nspecial: Projectiles");
+	initTipImage(player_id.spr_inventory, 0, fa_left, 1, c_white, 0);
+	initTipWords("100 Ton Weight:");
+	initTipWords("The 100 Ton weight is a projectile that has a very weak hitbox until it lands on the ground. The inner part of the hitbox deals a decent amount of damage and knockback whereas the outer part just stuns.
+	Try not to throw this offstage lol.");
+	initTipImage(player_id.spr_inventory, 1, fa_left, 1, c_white, 0);
+	initTipWords("Mini Bugingi:");
+	initTipWords("Mini Bugingi is a slow moving projectile which will block all incoming projectiles. Mini Bugingi will only start moving forward once it land's on the ground and will have much less damage and knockback than the grounded version.
+	When you get the mini bugingi try to throw it while at either mid range or long range so that they don't unintentionally break the airborne bugingi.");
+	initTipImage(player_id.spr_inventory, 2, fa_left, 1, c_white, 0);
+	initTipWords("Wrench:");
+	initTipWords("Wrench is a pretty standard projectile which is good for just getting decent damage.
+	Wrench is good in pretty much all cases. It can be great for edge guarding if you angle it backwards while throwing it since it stalls in midair for a short while or as just a good long ranged projectile in order to secure an approach.");
+	initTipImage(player_id.spr_inventory, 3, fa_left, 1, c_white, 0);
+	initTipWords("Dumbell:");
+	initTipWords("The Dumbell spikes.
+	You can also use this as a tool to hit an opponent slightly above you by holding the stick towards you while throwing it.");
+	initTipImage(player_id.spr_inventory, 4, fa_left, 1, c_white, 0);
+	initTipWords("Rage Ball:");
+	initTipWords("The Rage ball is a green projectile that grows in size and damage the more damage you take.");
+	initTipImage(player_id.spr_inventory, 5, fa_left, 1, c_white, 0);
+	initTipWords("Bomb:");
+	initTipWords("The Bomb is a projectile which will explode after a certain amount of time. While it is on the ground you can hit it in order to reposition it. You're also able to get damaged by the explosion yourself so be careful.
+	A good way of hitting the bomb onto a platform is by doing falling Nair->Utilt.");
+	
+	initTip("Nspecial: Special Projectiles");
+	initTipImage(player_id.spr_inventory, 7, fa_left, 1, c_white, 0);
+	initTipWords("Ball:");
+	initTipWords("The ball is a special projectile which you can only obtain by countering and hitting someone with Dspecial. It shares all the same stats as wrench except for damage and knockback which are increased.");
+	initTipImage(player_id.spr_jack1, 0, fa_left, 1, c_white, 0);
+	initTipWords("1000 Ton Weight:");
+	initTipWords("The 1000 Ton Weight is a Jackpot projectile which combines the properties of the Dumbell and the 100 Ton Weight. It also does more damage and knockback but removes the ability to stun. Since the airborne version spikes now, you can throw it offstage without being too worried.");
+	initTipImage(player_id.spr_jack2, 0, fa_left, 1, c_white, 0);
+	initTipWords("Mega Bugingi:");
+	initTipWords("The Mega Bugingi is a Jackpot projectile which is just a bigger version of the mini bugingi.");
+	
+	initTip("Nspecial: Misc");
+	initTipWords("Projectile Angling:");
+	initTipWords("While performing nspecial you can angle the projectile you're about to throw by tilting the joystick in a certain direction.");
+	initTipWords("Projectile Storing:");
+	initTipWords("While performing nspecial you can press the parry button to save the projectile for later.
+	While a projectile is stored, Upon hitting a move you can cancel out of it with nspecial and throw the projectile you stored.");
+	initTipImage(player_id.spr_wrench, -3, fa_left, 1, c_white, 3);
+	
+	initTip("Heat");
+	initTipWords("By Dash Dancing you're able to build up heat. Doing this will increase your dash speed and jump height for a short while.");
+	
+	
 	/*
 	initTip("Shortening the FSpecial");
 	initTipWords("Press the special button again after performing FSpecial to stop the dash prematurely. You'll travel a shorter distance as a mixup.");
@@ -495,6 +644,31 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	//1.8
+	initPatch("1.8", "17 June 2021");
+	initPatchWords_ext("Movement Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Bugingi now has 3 jumps, The third being the old double jump
+	- Jump speed has decreased to 9.2
+	- Dash turn time reduced (6->14)
+	- Dash turn accel increased (1.5->2)
+	- Dash start speed increased (0->3)
+	- Dash start time reduced (15->10)
+	- Ground friction Increased (.3->.6)
+	- Waveland Friction Increased to 0.07");
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Added Projectile Gatling. If you have a projectile stored, you can now cancel any move after hitting someone to throw the projectile.
+	- Utilt, Changed Angle (90->80)
+	- Fair damage increased (5->6)
+	- Utilt damage increased by 1
+	- Extended Fspecial's hurtbox out a bit
+	- Every Aerial now give a slight vertical boost");
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Added lore to the munophone
+	- Added tips to the munophone
+	- Added Combat for *breathes in*: Truml Codec, Anguish Kirby, Otto , Steve, Feri, Hikaru, Rat, TCO, Toon Link, Wall-E, Moonchild,
+	Amber, Agent N, Dracula, Miiverse, Callie (kinda, i only did one path)
+	- Added an Añi alt (atleast i tried to)
+	- Added Trans alt for pride month");
 	//1.7
 	initPatch("1.7", "30 May 2021");
 	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
@@ -751,6 +925,45 @@ with phone{
 	 * Useful for credits or etc. The page can also scroll, so they can be long
 	 * if you want. AND you can have multiple of these
 	 */
+	initAbout("About Bugingi: Lore", "Bugingi is a god of matter and is a member of a hivemind with the same name.
+	They wonder the realm of the gods and observe, Learning how to create many different kinds of contraptions.
+	
+	Personality:
+	Bugingi is mostly nonsensical. pretty much constantly spewing non sequitur statements and occasionally breaking the fourth wall.
+	Despite this, Bugingi is mostly chilled out and doesnt really ever come off as agressive or anything.
+	
+	The Hivemind:
+	The Bugingi Hivemind are a collection of small pink worms which come together and form larger humanoid creatures.
+	They use their matter abilities to create a green shell around their body to give themselves a more appealing look.
+	The more worms that come together the higher tier bugingi you will get. The one in rivals is a low tier Bugingi.
+	
+	The Hierarchy goes as follows:
+	Bug - Lowest tier, is one of the projectiles that bugingi can throw out
+	Worker - Second lowest tier, have a lot of shell but are generally dumber and weaker than soldiers. This is seen as one of the Jackpot Projectiles.
+	Soldier - This is the form seen in rivals. Soldier bugingi are the most common and is the first tier to be able to display intelligence.
+	Commander - Much stronger and more intelligent than the previous tier, a lot less common.
+	Royal - Almost never seen, Royal bugingi generally stop creating weapons with matter and use the matter itself as a weapon.
+	Queen - The queen is formed once every single worm congregates into one place.
+	
+	Backstory:
+	Before coming a god, The hivemind were an incredibly invasive species.
+	after eliminating life on their home planet, They would hitchike onto nearby space ships and invade their home planets.
+	Due to Being a hivemind and the only living species on that planet. That planet's god soul was placed into the hivemind.
+	Being a hivemind they all shared one soul, Which transported the entire species to the realm of the gods upon ascension.
+
+	Becoming a god did not stop them however. They would continue to try to invade and eliminate other species.
+	The catch being that they were fighting other gods now. They were completely powerless against the other gods.
+	if they ever wanted to stand a fighting chance they would have to all combine into the queen.
+	The only problem with that was how scattered the species was when transported to the realm of the gods.
+
+	So they tried to all converge into one spot. But along the way something happened to them.
+	They would observe many different gods along their journey. Being completely powerless ended up making them see other beings in a new light.
+	They would grow attatched to the gods. Becoming ever curious about them. Slowly the bugingi would come to interact with these gods.
+	forming friendships and learning about the universe. Eventually the time came where the Bugingi reached their conversion point.
+	They have changed. The conversion was no longer for its original purpose to become all powerful.
+	They spend a brief time as the queen taking one last moment in this form. At which they demerge and journey out again.
+	Forever to wonder the realm.");
+	
 	
 	initAbout("About Bugingi: Gameplay", "Bugingi is an unorthodox fighter that specializes in using random projectiles and strange movement in order to confuse your opponent.
 	
@@ -824,15 +1037,22 @@ if pho_has_trum_codec{
 	
 	// Custom speaker setup - use 1, 2, 3, 4, ... for the index
 	
-	SPK_SAND = initSpeaker(1, "Sandbert", sprite_get("_pho_example_speaker"));
-	SPK_TWIN = initSpeaker(2, "Sandbert's evil twin", sprite_get("_pho_example_speaker"));
+	SPK_BUG = initSpeaker(1, "Bugingi", sprite_get("_bug_speaker"));
 	
 	trummel_codecs = [];
 	
 	initCodec(0);
-	initCodecPage(SPK_TRUM, 0, 0, "wow is that sandbert with a phone");
-	initCodecPage(SPK_ALTO, 4, 0, "UNBLOCK ME ON FACEBOOK, COWARD");
-	initCodecPage(SPK_SAND, 0, GIM_COLOR, "no");
+	initCodecPage(SPK_TRUM, 0, 0, "literally what is that");
+	initCodecPage(SPK_ALTO, 0, 0, "Beats me");
+	initCodecPage(SPK_BUG, 1, 0, "Hmm..");
+	initCodecPage(SPK_BUG, 1, 0, "I think i might know what it is");
+	initCodecPage(SPK_BUG, 0, 0, "That's bugingi");
+	initCodecPage(SPK_BUG, 0, 0, "He has this really stupid dumb gimmick where he throws out a random projectile out during nspecial");
+	initCodecPage(SPK_BUG, 0, 0, "He's also able to store the projectile for later, this is good for you because you'll know what he's about to throw out");
+	initCodecPage(SPK_BUG, 0, 0, "Also his dash and double jump are really stupid lol. Chances are the person playing as him doesnt know how to use them properly");
+	initCodecPage(SPK_TRUM, 0, 0, "oh, thanks for the help bugingi");
+	initCodecPage(SPK_BUG, 0, 0, "No problem fam");
+	initCodecPage(SPK_ALTO, 0, 0, "what");
 	
 	spr_custom_trummel_color = c_red;
 	
@@ -844,7 +1064,7 @@ if pho_has_trum_codec{
 
 if pho_has_otto_bhead{
 	
-	otto_bobblehead_sprite = sprite_get("_pho_example_bobble_head");
+	otto_bobblehead_sprite = sprite_get("_pho_bobble");
 	otto_bobblebody_sprite = sprite_get("_pho_example_bobble_body"); // you only need to change this one if you REALLY want to. most chars just use the head sprite
 	
 }
@@ -855,7 +1075,7 @@ if pho_has_otto_bhead{
 
 if pho_has_steve_dmsg{
 	
-	steve_death_message = "Steve got canceled on Twitter";
+	steve_death_message = "Steve got bugingigigingigingigi'd";
 	
 }
 
@@ -869,8 +1089,8 @@ if !phone_lightweight{
 	
 	if pho_has_feri_taunt{
 		
-		sprite_change_offset("feri_costume", 84, 114);
-		feri_costume = sprite_get("feri_costume");
+		sprite_change_offset("_bug_feri_costume", 84, 114);
+		feri_costume = sprite_get("_bug_feri_costume");
 		
 	}
 	
@@ -880,7 +1100,7 @@ if !phone_lightweight{
 	
 	if pho_has_hikaru_fak{
 		
-		Hikaru_Title = "woaf";
+		Hikaru_Title = "Bugingi";
 		
 	}
 	
@@ -890,7 +1110,7 @@ if !phone_lightweight{
 	
 	if pho_has_rat_allout{
 		
-		personaQuips[10] = "woaf";
+		personaQuips[10] = "Bugingi";
 		
 	}
 	
@@ -900,7 +1120,7 @@ if !phone_lightweight{
 	
 	if pho_has_tco_sketch{
 		
-		tcoart = sprite_get("tco_sketch");
+		tcoart = sprite_get("_bug_tco");
 		
 	}
 	
@@ -910,8 +1130,7 @@ if !phone_lightweight{
 	
 	if pho_has_ahime_dead{
 		
-		sprite_change_offset("ahime_dead", 0, 0);
-		abyssHime_deathspr = sprite_get("ahime_dead");
+		abyssHime_deathspr = sprite_get("hurt");
 		
 	}
 	
@@ -936,7 +1155,7 @@ if !phone_lightweight{
 	
 	if pho_has_wall_e_ost{
 		
-		walle_taunt_sound = sound_get("wall_e_sound");
+		walle_taunt_sound = sound_get("Bugingi Mode");
 		walle_taunt_type = 1;
 		
 	}
@@ -947,11 +1166,11 @@ if !phone_lightweight{
 	
 	if pho_has_amber_love{
 		
-		plushForAmber = sprite_get("amber_plushie");
+		plushForAmber = sprite_get("_bug_plush");
 		
 		// Amber interaction variables
 		amber_herObj = noone; // The object ID of Amber when she hugs. Amber's own script will set this when the hug is inititated
-		amber_thisHugSprite = sprite_get("sandbert_hug");
+		amber_thisHugSprite = sprite_get("_bug_hug");
 		amber_herHugSprite = sprite_get("amber_hug");
 		amber_startHug = false; // This variable is set true from Amber's scripts
 		amber_thisSpriteInFront = true; // When true, this character's sprite is rendered over Amber's sprite
@@ -971,7 +1190,7 @@ if !phone_lightweight{
 		amber_hugExitTimer = 30; // How many frames should pass before either player can exit the hug window loop
 		amber_hugExitWindow = 3; // The window to jump to when either player presses a button to exit hug loop
 		
-		sprite_change_offset("sandbert_hug", 32, 62);
+		sprite_change_offset("_bug_hug", 32, 84);
 		sprite_change_offset("amber_hug", 32, 62);
 		
 	}
@@ -992,9 +1211,9 @@ if !phone_lightweight{
 	
 	if pho_has_agentn_cdc{
 		
-		ncode1 = "line1";
-		ncode2 = "line2";
-		ncode3 = "line3";
+		ncode1 = "The Hivemind";
+		ncode2 = "A god of matter and an ex-destroyer of worlds";
+		ncode3 = "Now extremely passive with a positive outlook";
 		
 	}
 	
@@ -1004,19 +1223,49 @@ if !phone_lightweight{
 	
 	if pho_has_drac_codec{
 		
-		dracula_portrait = sprite_get("drac_portrait");
+		dracula_portrait = sprite_get("_bug_dracula_portrait");
 		dracula_portrait2 = asset_get("empty_sprite");
 		dracula_portrait3 = asset_get("empty_sprite");
 		var page = 0;
 		
 		// Page 0
 		dracula_speaker[page] = 0;
-		dracula_text[page] = "holy frick";
+		dracula_text[page] = "Ah, It seems a Bugingi has wandered into my domain";
 		page++;
 		
 		// Page 1
 		dracula_speaker[page] = 0;
-		dracula_text[page] = "im dracula";
+		dracula_text[page] = "I assume you come here to research the countless technology I have here in my castle";
+		page++;
+
+		// Page 2
+		dracula_speaker[page] = 1;
+		dracula_text[page] = "Yeah something like that";
+		page++;
+		
+		// Page 3
+		dracula_speaker[page] = 1;
+		dracula_text[page] = "I think you'll make a perfect actor in my brand new movie";
+		page++;
+		
+		// Page 4
+		dracula_speaker[page] = 1;
+		dracula_text[page] = "You'll be a star, Dracula";
+		page++;
+		
+		// Page 5
+		dracula_speaker[page] = 0;
+		dracula_text[page] = "... What?";
+		page++;
+		
+		// Page 6
+		dracula_speaker[page] = 1;
+		dracula_text[page] = "I call it";
+		page++;
+		
+		// Page 7
+		dracula_speaker[page] = 1;
+		dracula_text[page] = "WESRWE ,MRBHJIWEHFIJUKL	q";
 		page++;
 		
 		// repeat...
@@ -1029,8 +1278,8 @@ if !phone_lightweight{
 	
 	if pho_has_miivs_post{
 		
-		sprite_change_offset("miiverse_post", 60, 30);
-		miiverse_post = sprite_get("miiverse_post");
+		sprite_change_offset("_bug_miiverset", 60, 30);
+		miiverse_post = sprite_get("_bug_miiverse");
 		
 	}
 	
@@ -1040,8 +1289,8 @@ if !phone_lightweight{
 	
 	if pho_has_dede_title{
 		
-		arena_title = "woag";
-		arena_short_name = "woaf";
+		arena_title = "The Hivemind";
+		arena_short_name = "Bugingi";
 		
 	}
 	
@@ -1051,7 +1300,7 @@ if !phone_lightweight{
 	
 	if pho_has_soul_title{
 		
-		battle_text = "* woag";
+		battle_text = "* OMG IS THAT BUGINGI???";
 		
 	}
 	

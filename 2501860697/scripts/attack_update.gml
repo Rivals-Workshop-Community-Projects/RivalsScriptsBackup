@@ -127,6 +127,9 @@ if (attack == AT_FSTRONG){
 
 if attack == AT_DAIR && window == 2 {
 	can_wall_jump = true;
+	if state_timer > 33 {
+		can_jump = true;
+	}
 	if has_hit {
 	window = 4;
 	window_timer = 0;

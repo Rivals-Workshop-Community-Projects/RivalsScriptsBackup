@@ -57,9 +57,9 @@ else if(state != PS_RESPAWN)//Once game has started start the timer.
         else if (parasiteTimer < 60*90)
         {    
             parasiteLevel = 2;
-            walk_speed = 5.35;
-            initial_dash_speed = 8.1;
-            dash_speed = 7.1;
+            walk_speed = 6.0;
+            initial_dash_speed = 9.5;
+            dash_speed = 9.0;
         }
         else
         {

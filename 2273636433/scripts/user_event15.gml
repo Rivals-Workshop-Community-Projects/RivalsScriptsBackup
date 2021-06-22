@@ -366,6 +366,14 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+
+	initPatch("1.51", "20 June, 2021");
+	initPatchWords("Dspec")
+	initPatchWords_ext("Scaling decreased .9 > .85
+	Pill affected by dspec lifetime decreased by 50 frames (300 > 250)", fa_left, c_gray, 1, 0);
+	initPatchWords("Fstrong")
+	initPatchWords_ext("Lifetime decreased (6 > 5)", fa_left, c_gray, 1, 0);
+	initPatchWords("Pratland increased (11 > 12)")
 	 
 	initPatch("1.5", "18 June, 2021");
 	initPatchWords("Added ownership indicator for pills in the ditto

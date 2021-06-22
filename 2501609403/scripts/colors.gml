@@ -26,7 +26,7 @@ set_color_profile_slot_range( 5, 9, 14, 22 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 12 );
+set_num_palettes( 14 );
 
 // Feri
 set_color_profile_slot( 1, 0, 161, 0, 255 ); //Shell
@@ -52,69 +52,85 @@ set_color_profile_slot( 3, 3, 206, 24, 76 ); //Internals
 set_color_profile_slot( 3, 4, 153, 0, 52 ); //Internals 2
 set_color_profile_slot( 3, 5, 232, 59, 59 ); //Reserved
 
-// Sackboy
-set_color_profile_slot( 4, 0, 107, 70, 65 ); //Shell
-set_color_profile_slot( 4, 1, 41, 25, 25 ); //Shell Shading
-set_color_profile_slot( 4, 2, 181, 178, 166 ); //Lining
-set_color_profile_slot( 4, 3, 50, 25, 25 ); //Internals
-set_color_profile_slot( 4, 4, 115, 58, 58 ); //Internals 2
-set_color_profile_slot( 4, 5, 232, 59, 59 ); //Reserved
+// Añi
+set_color_profile_slot( 4, 0, 255, 132, 232 ); //Shell
+set_color_profile_slot( 4, 1, 255, 48, 48 ); //Shell Shading
+set_color_profile_slot( 4, 2, 255, 244, 76 ); //Lining
+set_color_profile_slot( 4, 3, 255, 244, 76 ); //Internals
+set_color_profile_slot( 4, 4, 255, 48, 48 ); //Internals 2
+set_color_profile_slot( 4, 5, 255, 244, 76 ); //Reserved
 
-// Calda
-set_color_profile_slot( 5, 0, 251, 185, 84 ); //Shell
-set_color_profile_slot( 5, 1, 230, 144, 78 ); //Shell Shading
-set_color_profile_slot( 5, 2, 46, 34, 47 ); //Lining
-set_color_profile_slot( 5, 3, 212, 212, 212 ); //Internals
-set_color_profile_slot( 5, 4, 196, 123, 67 ); //Internals 2
+// Sackboy
+set_color_profile_slot( 5, 0, 107, 70, 65 ); //Shell
+set_color_profile_slot( 5, 1, 41, 25, 25 ); //Shell Shading
+set_color_profile_slot( 5, 2, 181, 178, 166 ); //Lining
+set_color_profile_slot( 5, 3, 50, 25, 25 ); //Internals
+set_color_profile_slot( 5, 4, 115, 58, 58 ); //Internals 2
 set_color_profile_slot( 5, 5, 232, 59, 59 ); //Reserved
 
-// Quil
-set_color_profile_slot( 6, 0, 165, 160, 0 ); //Shell
-set_color_profile_slot( 6, 1, 46, 36, 0 ); //Shell Shading
-set_color_profile_slot( 6, 2, 93, 0, 0 ); //Lining
-set_color_profile_slot( 6, 3, 23, 24, 35 ); //Internals
-set_color_profile_slot( 6, 4, 99, 78, 0 ); //Internals 2
+// Calda
+set_color_profile_slot( 6, 0, 251, 185, 84 ); //Shell
+set_color_profile_slot( 6, 1, 230, 144, 78 ); //Shell Shading
+set_color_profile_slot( 6, 2, 46, 34, 47 ); //Lining
+set_color_profile_slot( 6, 3, 212, 212, 212 ); //Internals
+set_color_profile_slot( 6, 4, 196, 123, 67 ); //Internals 2
 set_color_profile_slot( 6, 5, 232, 59, 59 ); //Reserved
 
-// Bingy
-set_color_profile_slot( 7, 0, 247, 110, 191 ); //Shell
-set_color_profile_slot( 7, 1, 71, 84, 145 ); //Shell Shading
-set_color_profile_slot( 7, 2, 59, 59, 59 ); //Lining
-set_color_profile_slot( 7, 3, 19, 82, 140 ); //Internals
-set_color_profile_slot( 7, 4, 64, 76, 130 ); //Internals 2
+// Quil
+set_color_profile_slot( 7, 0, 165, 160, 0 ); //Shell
+set_color_profile_slot( 7, 1, 46, 36, 0 ); //Shell Shading
+set_color_profile_slot( 7, 2, 93, 0, 0 ); //Lining
+set_color_profile_slot( 7, 3, 23, 24, 35 ); //Internals
+set_color_profile_slot( 7, 4, 99, 78, 0 ); //Internals 2
 set_color_profile_slot( 7, 5, 232, 59, 59 ); //Reserved
 
-// Niko
-set_color_profile_slot( 8, 0, 255, 228, 189 ); //Shell
-set_color_profile_slot( 8, 1, 209, 175, 125 ); //Shell Shading
-set_color_profile_slot( 8, 2, 49, 49, 49 ); //Lining
-set_color_profile_slot( 8, 3, 0, 168, 230 ); //Internals
-set_color_profile_slot( 8, 4, 0, 101, 138 ); //Internals 2
+// Bingy
+set_color_profile_slot( 8, 0, 247, 110, 191 ); //Shell
+set_color_profile_slot( 8, 1, 71, 84, 145 ); //Shell Shading
+set_color_profile_slot( 8, 2, 59, 59, 59 ); //Lining
+set_color_profile_slot( 8, 3, 19, 82, 140 ); //Internals
+set_color_profile_slot( 8, 4, 64, 76, 130 ); //Internals 2
 set_color_profile_slot( 8, 5, 232, 59, 59 ); //Reserved
 
-// Pesce
-set_color_profile_slot( 9, 0, 143, 211, 255 ); //Shell
-set_color_profile_slot( 9, 1, 77, 155, 230 ); //Shell Shading
-set_color_profile_slot( 9, 2, 227, 227, 227 ); //Lining
+// Niko
+set_color_profile_slot( 9, 0, 255, 228, 189 ); //Shell
+set_color_profile_slot( 9, 1, 209, 175, 125 ); //Shell Shading
+set_color_profile_slot( 9, 2, 49, 49, 49 ); //Lining
 set_color_profile_slot( 9, 3, 0, 168, 230 ); //Internals
-set_color_profile_slot( 9, 4, 0, 99, 135 ); //Internals 2
+set_color_profile_slot( 9, 4, 0, 101, 138 ); //Internals 2
 set_color_profile_slot( 9, 5, 232, 59, 59 ); //Reserved
 
-// Nega
-set_color_profile_slot( 10, 0, 56, 56, 56 ); //Shell
-set_color_profile_slot( 10, 1, 0, 0, 0 ); //Shell Shading
-set_color_profile_slot( 10, 2, 0, 0, 0 ); //Lining
-set_color_profile_slot( 10, 3, 29, 31, 31 ); //Internals
-set_color_profile_slot( 10, 4, 255, 255, 255 ); //Internals 2
+// Pesce
+set_color_profile_slot( 10, 0, 143, 211, 255 ); //Shell
+set_color_profile_slot( 10, 1, 77, 155, 230 ); //Shell Shading
+set_color_profile_slot( 10, 2, 227, 227, 227 ); //Lining
+set_color_profile_slot( 10, 3, 0, 168, 230 ); //Internals
+set_color_profile_slot( 10, 4, 0, 99, 135 ); //Internals 2
 set_color_profile_slot( 10, 5, 232, 59, 59 ); //Reserved
 
-// Lognes
-set_color_profile_slot( 11, 0, 255, 255, 255 ); //Shell
-set_color_profile_slot( 11, 1, 163, 163, 163 ); //Shell Shading
-set_color_profile_slot( 11, 2, 20, 20, 20 ); //Lining
-set_color_profile_slot( 11, 3, 41, 41, 41 ); //Internals
-set_color_profile_slot( 11, 4, 82, 82, 82 ); //Internals 2
+// Nega
+set_color_profile_slot( 11, 0, 56, 56, 56 ); //Shell
+set_color_profile_slot( 11, 1, 0, 0, 0 ); //Shell Shading
+set_color_profile_slot( 11, 2, 0, 0, 0 ); //Lining
+set_color_profile_slot( 11, 3, 29, 31, 31 ); //Internals
+set_color_profile_slot( 11, 4, 255, 255, 255 ); //Internals 2
 set_color_profile_slot( 11, 5, 232, 59, 59 ); //Reserved
+
+// Lognes
+set_color_profile_slot( 12, 0, 255, 255, 255 ); //Shell
+set_color_profile_slot( 12, 1, 163, 163, 163 ); //Shell Shading
+set_color_profile_slot( 12, 2, 20, 20, 20 ); //Lining
+set_color_profile_slot( 12, 3, 41, 41, 41 ); //Internals
+set_color_profile_slot( 12, 4, 82, 82, 82 ); //Internals 2
+set_color_profile_slot( 12, 5, 232, 59, 59 ); //Reserved
+
+// Gender?
+set_color_profile_slot( 13, 0, 91, 206, 250 ); //Shell
+set_color_profile_slot( 13, 1, 65, 126, 201 ); //Shell Shading
+set_color_profile_slot( 13, 2, 245, 169, 184 ); //Lining
+set_color_profile_slot( 13, 3, 255, 255, 255 ); //Internals
+set_color_profile_slot( 13, 4, 184, 184, 184 ); //Internals 2
+set_color_profile_slot( 13, 5, 232, 59, 59 ); //Reserved
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

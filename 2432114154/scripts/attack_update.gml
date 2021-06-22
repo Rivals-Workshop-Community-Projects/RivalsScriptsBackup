@@ -381,9 +381,9 @@ if get_player_color(player) == 10 {
         
         if attack == AT_DSPECIAL{ 
          if free && window <= 2{
-         vsp/=2
-         vsp-=0.4
-         hsp/=2
+         vsp/=1.2
+         vsp-=0.7
+         hsp/=1.2
          }
          
          if free && window > 2 {
@@ -396,7 +396,7 @@ if get_player_color(player) == 10 {
                  
                  sound_play(asset_get("sfx_swipe_weak1"))
              }
-             if window_timer == 7 {
+             if window_timer == 1 {
                  sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"))
                  super_armor = true
                  countering = 1
@@ -450,12 +450,17 @@ if get_player_color(player) == 10 {
             if strong_charge % 2 == 0 && strong_charge > 0 && window == 1 {
                 
                 if hit_player_obj != self {
-                if x + 40*spr_dir > hit_player_obj.x && hit_player_obj.x + 300 > x {
-                	hit_player_obj.x += 1 + floor(strong_charge/8)
+                	
+                	if strong_charge % 6 == 0 {
+                	spawn_base_dust(x - (10 + random_func(2,30,true))*spr_dir,y, "dash_start",spr_dir)
+                	spawn_base_dust(x + (20 + random_func(1,40,true))*spr_dir,y, "dash",spr_dir*-1)
+                	}
+                if x + 40*spr_dir > hit_player_obj.x && hit_player_obj.x + 350 > x {
+                	hit_player_obj.x += 1 + floor(strong_charge/5)
                 }
                 
-                if x + 40*spr_dir < hit_player_obj.x && hit_player_obj.x - 300 < x  {
-                	hit_player_obj.x -= 1 + floor(strong_charge/8)
+                if x + 40*spr_dir < hit_player_obj.x && hit_player_obj.x - 350 < x  {
+                	hit_player_obj.x -= 1 + floor(strong_charge/5)
                 }
                 }
                 
@@ -500,3 +505,38 @@ if get_player_color(player) == 10 {
 }
 
 
+#define spawn_base_dust(x, y, name, dir)
+var dlen;
+var dfx;
+var dfg;
+var dust_color = 0;
+
+switch (name) {
+    default:
+    case "dash_start":
+        dlen = 21;
+        dfx = 3;
+        dfg = 2626;
+    break;
+    case "dash":
+        dlen = 16;
+        dfx = 4;
+        dfg = 2656;
+    break;
+    case "jump":
+        dlen = 12;
+        dfx = 11;
+        dfg = 2646;
+    break;
+    case "doublejump":
+    case "djump":
+        dlen = 21;
+        dfx = 2;
+        dfg = 2624;
+    break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx;
+if dfg != -1 newdust.fg_sprite = dfg;
+newdust.dust_color = dust_color;
+newdust.spr_dir = dir;

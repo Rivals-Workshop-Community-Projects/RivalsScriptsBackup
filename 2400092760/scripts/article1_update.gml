@@ -565,7 +565,7 @@ if(state == 15){
             player_id.state = PS_IDLE_AIR;
             player_id.hurtboxID.sprite_index = sprite_get("ar_hurtbox");
         }
-        player_id.vsp = -9;
+        player_id.vsp = -12;
     }
     depth = 10;
     x = player_id.x -2*player_id.spr_dir;

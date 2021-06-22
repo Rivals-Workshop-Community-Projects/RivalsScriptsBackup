@@ -34,7 +34,7 @@ if draw_limit_flash {
 }
 
 
-with obj_article1 if player_id == other.id {
+with obj_article1 if player_id == other.id && !was_bashed {
 	var blend = gpu_get_blendmode(); //gets the current blend mode
 	var playercol = get_player_color(player);
     var orbcol = make_color_rgb(get_color_profile_slot_r(playercol,4),get_color_profile_slot_g(playercol,4),get_color_profile_slot_b(playercol,4))

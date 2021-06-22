@@ -93,8 +93,9 @@ sprite_change_offset("intro", 54, 52);
 sprite_change_offset("hud_inventory", 38, 24);
 sprite_change_offset("hud_inventory2", 12, 12);
 
-sprite_change_offset("_pho_idle", 10, 90);
+sprite_change_offset("_pho_idle", 10, 88);
 sprite_change_offset("_pho_speaker", 24, 60);
+sprite_change_offset("_bug_kirb", 32, 54);
 
 set_victory_bg( sprite_get( "custom" ));
 set_victory_theme( sound_get( "bugingi_fanfare" ));

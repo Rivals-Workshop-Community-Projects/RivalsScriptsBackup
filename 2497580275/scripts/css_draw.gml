@@ -2,7 +2,7 @@
 
 var temp_x = x + 8;
 var temp_y = y + 9;
-var numAlts = 26;
+var numAlts = 32;
 
 patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1);
 image_alpha = max(image_alpha-0.02, 0);
@@ -50,12 +50,12 @@ alt_name[22] = "Cult of the Gungeon";
 alt_name[23] = "Cult of The Fool";
 alt_name[24] = "Cult of the White Mage";
 alt_name[25] = "Cult of the Undivided";
-alt_name[26] = "";
-alt_name[27] = "";
-alt_name[28] = "";
-alt_name[29] = "";
-alt_name[30] = "";
-
+alt_name[26] = "Cult of the Dreamer";
+alt_name[27] = "Cult of the Demon";
+alt_name[28] = "Cult of the Blueberry";
+alt_name[29] = "Cult of the Cards";
+alt_name[30] = "Cult of the Doom";
+alt_name[31] = "Cult of the Darkstalker";
 
 draw_set_halign(fa_right);
 textDraw(temp_x + 198, temp_y + 106, "fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);

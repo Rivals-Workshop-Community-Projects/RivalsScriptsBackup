@@ -4,11 +4,11 @@ set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
 
 //JAB 1
 
-set_window_value(AT_JAB, 1, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_JAB, 1, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_JAB, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_JAB, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"))
-set_window_value(AT_JAB, 1, AG_WINDOW_SFX_FRAME, 3)
+set_window_value(AT_JAB, 1, AG_WINDOW_SFX_FRAME, 2)
 
 set_window_value(AT_JAB, 2, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAMES, 2);
@@ -131,7 +131,7 @@ set_hitbox_value(AT_JAB, 3, HG_DAMAGE, 6);
 set_hitbox_value(AT_JAB, 3, HG_ANGLE, 300);
 set_hitbox_value(AT_JAB, 3, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_JAB, 3, HG_KNOCKBACK_SCALING, .25);
-set_hitbox_value(AT_JAB, 3, HG_BASE_HITPAUSE, 14);
+set_hitbox_value(AT_JAB, 3, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_JAB, 3, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_JAB, 3, HG_VISUAL_EFFECT_X_OFFSET, 24);
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_GROUP, 3);

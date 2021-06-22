@@ -144,6 +144,9 @@ sprite_change_offset("whitehit", 80, 80);
 bh = hit_fx_create( sprite_get( "blackhit" ), 22 );
 sprite_change_offset("blackhit", 80, 80);
 
+esp = hit_fx_create( sprite_get( "esp" ), 9 );
+sprite_change_offset("esp", 32, 32);
+
 esp1 = hit_fx_create( sprite_get( "esp1" ), 9 );
 sprite_change_offset("esp1", 32, 32);
 

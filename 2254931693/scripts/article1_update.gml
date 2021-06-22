@@ -1,12 +1,16 @@
 // article_update
 
 
-if (free = 1 && state != PS_HITSTUN){
+if (free = 1 && (state != PS_HITSTUN && state != PS_PRATFALL)){
 vsp = vsp + 1;
 }
 
 if (free = 1 && state = PS_HITSTUN){
 vsp = vsp + 0.75;
+}
+
+if (free = 1 && state = PS_PRATFALL){
+vsp = vsp + 0.65;
 }
 
 if (y > room_height + 100){
@@ -31,7 +35,7 @@ switch(state){
             state = PS_JUMPSQUAT;
             state_timer = 0;
         }        
-        if free = 1{
+        if free = 1 && hitstun = 0{
             state = PS_IDLE_AIR;
             state_timer = 0;
         }
@@ -62,6 +66,20 @@ switch(state){
             state_timer = 0;
         }        
         break;
+    
+    //Hit Landing
+    case PS_PRATLAND:
+        sprite_index = sprite_get("frog_hitland");
+        image_index = state_timer / 7;
+        if state_timer = 20{
+            state = PS_IDLE;
+            state_timer = 0;
+        }
+        if free = 1{
+            state = PS_IDLE_AIR;
+            state_timer = 0;
+        }        
+        break;        
         
     //NSpecial
     case PS_ATTACK_GROUND:
@@ -254,15 +272,106 @@ if (state_timer > 0 && free = 1){
     case PS_HITSTUN:
         sprite_index = sprite_get("frog_parried");
         image_index = state_timer / 4;
+        mask_index = asset_get("empty_sprite")       
         depth = -10;
-        can_be_grounded = false;
-        ignores_walls = true;
+
         if (state_timer = 1){
             vsp = -10;
             hsp = -3 * spr_dir;
         }
     break;
+    
+    //Got Hit        
+    case PS_PRATFALL:
+        sprite_index = sprite_get("frog_hit");
+        image_index = state_timer / 4;
+        if (state_timer > 2 && hitstop = 0 && free = 0){
+            sound_play(sound_get("bonby_frog_land"))
+            hsp = 0;
+            state = PS_PRATLAND;
+            state_timer = 0;
+        }
+        if hsp > 0{
+            spr_dir = -1;
+        }
+        if hsp < 0{
+            spr_dir = 1;
+        }        
+    break;    
    
 }
 
 state_timer++;
+
+
+if lockout <= 0 {
+    var article = self;
+    //reset hitbox groups when necessary
+    with (oPlayer)
+        if (state == clamp(state, 5, 6) && window == 1 && window_timer == 1) {
+            other.hbox_group[@ player-1][@ attack] = array_create(10,0);
+            //with other print_debug(`${article}: reset hb group for ${other.player},${other.attack}`);
+        }
+    
+    var currentHighestPriority = noone;
+    with (pHitBox) 
+        if `hit_${article}` not in self
+            if place_meeting(x,y,other) && (groundedness == 0 || groundedness == 1+free) && hit_priority != 0 && player_id != other.player_id {
+                if hbox_group == -1 || ( hbox_group != -1 && other.hbox_group[@ orig_player-1][@ attack][@ hbox_group] == 0) {
+                    //hit
+                    if currentHighestPriority != noone {
+                        if currentHighestPriority.hit_priority < hit_priority
+                            currentHighestPriority = self;
+                    } else {
+                        currentHighestPriority = self;
+                    }
+                    
+                    variable_instance_set(self, `hit_${article}`, true);
+                }
+            } else if (place_meeting(x,y,other) && hbox_group != -1 && other.hbox_group[@ orig_player-1][@ attack][@ hbox_group] == 1) || (hit_priority == 0) {
+                //prevent from running hit detection for optimization sake
+                //with other print_debug("hit but also not");
+                variable_instance_set(self, `hit_${article}`, true);
+            }
+    
+    if instance_exists(currentHighestPriority) with currentHighestPriority {
+        sound_play(sound_effect);
+        spawn_hit_fx(other.x+hit_effect_x,other.y+hit_effect_y,hit_effect);
+        //this handles the knockback; hitstun, speed, etc.
+        with other {
+            //print_debug(`hit_${article}`);
+            state = PS_PRATFALL;
+            y = y - 5;
+            state_timer = 0;
+            hitstun = (other.kb_value * 4 * ((kb_adj - 1) * 0.6 + 1) + other.damage * 0.12 * other.kb_scale * 4 * 0.65 * kb_adj) + 12;
+            hitstun_full = hitstun;
+            
+            hit_lockout = other.no_other_hit;
+            // for you archy. 
+            // if other.force_flinch && !other.free orig_knock = 0; //uncomment this line for enemies
+            if other.force_flinch orig_knock = 0.3; //comment out this line for enemies.
+            else orig_knock = other.kb_value + other.damage * other.kb_scale * 0.12 * kb_adj;
+            kb_dir = get_hitbox_angle(other);
+            
+            hsp = (lengthdir_x(orig_knock, kb_dir) * 1.25);
+            vsp = (lengthdir_y(orig_knock, kb_dir) * 1.35);
+            
+            hit_player_obj = other.player_id;
+            hit_player_num = other.player;
+        }
+        //apply hitpause (where applicable)
+        var desired_hitstop = hitpause + damage * hitpause_growth * 0.05;
+        if type == 1 with player_id {
+            old_vsp = vsp;
+            old_hsp = hsp;
+            hitpause = true;
+            has_hit = true;
+            if hitstop < desired_hitstop {
+                hitstop = desired_hitstop;
+                hitstop_full = desired_hitstop;
+            }
+        }
+        other.hitstop = floor(desired_hitstop);
+        if hbox_group != -1 other.hbox_group[@ orig_player-1][@ attack][@ hbox_group] = 1;
+    }
+} else hit_lockout--;

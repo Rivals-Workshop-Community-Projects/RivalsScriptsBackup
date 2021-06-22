@@ -294,6 +294,7 @@ pho_has_daro_codec = 0; // Dialogue for the Daroach boss fight
 spr_idle = sprite_get("idle");
 spr_crouch = sprite_get("crouch");
 spr_walk = sprite_get("walk");
+spr_OLDwalk = sprite_get("OLDwalk");
 spr_walkturn = sprite_get("walkturn");
 spr_dash = sprite_get("dash");
 spr_dashstart = sprite_get("dashstart");
@@ -345,6 +346,10 @@ spr_fspecial = sprite_get("fspecial");
 spr_uspecial = sprite_get("uspecial");
 spr_dspecial = sprite_get("dspecial");
 spr_taunt = sprite_get("taunt");
+spr_inventory = sprite_get("hud_inventory2");
+spr_jack1 = sprite_get("nspecial_jack_proj1");
+spr_jack2 = sprite_get("nspecial_jack_proj2.2");
+spr_wrench = sprite_get("nspecial_proj3");
 
 
 

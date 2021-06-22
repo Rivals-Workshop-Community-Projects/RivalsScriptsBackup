@@ -1,10 +1,10 @@
 shader_start();
 
 if nshit > 3 {
-
-        draw_sprite_ext(sprite_index, image_index , x , y - (get_gameplay_time() % 10)/2  , spr_dir*1.05, 1.05, 0 , -1 , 0.5 - (get_gameplay_time() % 10/30));
+     gpu_set_blendmode(bm_add);
+        draw_sprite_ext(sprite_index, image_index , x , y - (get_gameplay_time() % 10)/2  , spr_dir*1, 1, 0 , -1 , 0.5 - (get_gameplay_time() % 10/30));
         draw_sprite_ext(sprite_index, image_index , x , y   , spr_dir*1.05, 1.05, 0 , -1 , 0.2);
-   
+     gpu_set_blendmode(bm_normal);
 }
 
 if soultimer < -350 {

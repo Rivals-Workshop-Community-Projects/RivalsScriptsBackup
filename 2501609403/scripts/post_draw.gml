@@ -23,4 +23,4 @@ if(funny_dash >= 40 && funny_dash < 80 ){
     gpu_set_blendmode(bm_normal);
 }
 
-user_event(12);  
+//draw_sprite(sprite_get("ani"),1,ani_x,ani_y);

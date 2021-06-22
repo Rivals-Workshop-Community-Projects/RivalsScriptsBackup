@@ -11,6 +11,8 @@ set_window_value(AT_BAIR, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_BAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_BAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 12);
+set_window_value(AT_BAIR, 1, AG_WINDOW_VSPEED_TYPE, 0);
+set_window_value(AT_BAIR, 1, AG_WINDOW_VSPEED, -1);
 
 set_window_value(AT_BAIR, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_BAIR, 2, AG_WINDOW_LENGTH, 5);

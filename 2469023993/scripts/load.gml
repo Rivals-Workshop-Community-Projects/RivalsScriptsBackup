@@ -58,8 +58,6 @@ sprite_change_offset("nspecial_proj", 125, 158);
 
 set_victory_bg( sprite_get("noxground"));
 
-set_victory_theme( sound_get( "nox_victory" ) );
-
 sprite_change_offset("kirbothrow", 125, 158);
 
 sprite_change_offset("noxmiis", 60, 30);

@@ -24,8 +24,8 @@ switch attack {
     
     case AT_USTRONG:
     _hitbox_num = [2,3];
-    hbox_y = -55 - 40*meter_percent;
-    hbox_h = 80*meter_percent;
+    hbox_y = -55 - 45*meter_percent;
+    hbox_h = 90*meter_percent;
     set_hitbox()
     break;
     

@@ -214,3 +214,7 @@ nname = "Papyrus";
 ncode1 = "A talking skeleton who likes puzzles and spaghetti. He";
 ncode2 = "also seems proficient in strength and can turn his";
 ncode3 = "foes blue to make them heavier. That isn't his only benefit.";
+
+
+boxing_title = "The Future 
+Royal Guardsman";

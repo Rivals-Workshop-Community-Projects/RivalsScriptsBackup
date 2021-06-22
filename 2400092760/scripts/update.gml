@@ -3,7 +3,9 @@
 // {
 // 	if type == 1 sprite_index = other.hitbox_test
 // }
-
+if(!free || free && (state == PS_WALL_JUMP || state == PS_WALL_TECH || state == PS_HITSTUN)){
+    move_cooldown[AT_FSPECIAL] = 0;
+}
 //Dtilt Cooldown
 if(instance_exists(obj_article1) && obj_article1.player_id == id){
     if(obj_article1.state != 3 && obj_article1.state != 0){

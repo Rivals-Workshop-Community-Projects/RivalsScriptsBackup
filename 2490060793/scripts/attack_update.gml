@@ -87,6 +87,7 @@ if attack == AT_NSPECIAL {
 if attack == AT_DSPECIAL {
     if window_timer == 3 {
         meter_flipped = !meter_flipped;
+        init_shader()
         with obj_article1 {
             if player_id == other.id && pulse_cooldown == 0 {
                 pulse = true;

@@ -233,6 +233,23 @@ switch(state) {
 }
 
 sprite_index = new_sprite
+//change offset if on platform for the small polish
+if place_meeting(x,y+1,asset_get("par_jumpthrough")) {
+	for(var i=0;i<=3;i++) {
+		sprite_change_offset("house_article_idle_lv"+string(i), 76, 95);
+		sprite_change_offset("house_article_hurt_lv"+string(i), 76, 95);
+    	sprite_change_offset("house_article_die_lv"+string(i), 76, 95);
+    	sprite_change_offset("house_article_spawn_lv"+string(i), 76, 95);
+	}
+} else {
+	for(var i=0;i<=3;i++) {
+		sprite_change_offset("house_article_idle_lv"+string(i), 76, 94);
+		sprite_change_offset("house_article_hurt_lv"+string(i), 76, 94);
+    	sprite_change_offset("house_article_die_lv"+string(i), 76, 94);
+    	sprite_change_offset("house_article_spawn_lv"+string(i), 76, 94);
+	}
+}
+	
 
 
 #define set_state(_state)
@@ -327,6 +344,7 @@ if ((x < 0 or x > room_width) or (y < 0 or y > room_height)){
 
 
 #define spawn_base_dust
+/// spawn_base_dust(x, y, name, dir = 0)
 ///spawn_base_dust(x, y, name, ?dir)
 //This function spawns base cast dusts. Names can be found below.
 var dlen; //dust_length value
