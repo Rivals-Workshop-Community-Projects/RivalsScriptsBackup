@@ -33,8 +33,8 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 4);
 set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 1000);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_X, 10);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_Y, -45);
-set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 28);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 28);
+set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 40);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 40);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 10);
 set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 9);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 70);
@@ -54,6 +54,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 16);
 set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_CAMERA_SHAKE, 50);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 143);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
 
 // generic hitbox
 set_hitbox_value(AT_DSPECIAL, 2, HG_PARENT_HITBOX, 0);
@@ -79,3 +80,4 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("empty"));
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 143);
 set_hitbox_value(AT_DSPECIAL, 2, HG_EXTRA_CAMERA_SHAKE, 50);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);

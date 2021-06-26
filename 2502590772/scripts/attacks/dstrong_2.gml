@@ -17,7 +17,7 @@ set_window_value(AT_DSTRONG_2, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 
 //post-charge startup
 set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_LENGTH, 13);
 set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_ANIM_FRAME_START, 3);
@@ -82,7 +82,7 @@ set_hitbox_value(AT_DSTRONG_2, 2, HG_PRIORITY, 7);
 set_hitbox_value(AT_DSTRONG_2, 2, HG_DAMAGE, 9);
 set_hitbox_value(AT_DSTRONG_2, 2, HG_ANGLE, 65);
 set_hitbox_value(AT_DSTRONG_2, 2, HG_ANGLE_FLIPPER, 6); //away from the attacker
-set_hitbox_value(AT_DSTRONG_2, 2, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_DSTRONG_2, 2, HG_BASE_KNOCKBACK, 9.2);
 set_hitbox_value(AT_DSTRONG_2, 2, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_DSTRONG_2, 2, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_DSTRONG_2, 2, HG_HITPAUSE_SCALING, 1);

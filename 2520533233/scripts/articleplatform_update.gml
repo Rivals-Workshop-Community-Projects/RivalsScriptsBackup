@@ -17,9 +17,9 @@ glow_phase =  0 < glow_timer < glow_time ? glow_phase : -glow_phase;
 //rock animation stuffs
 rock_anim_frame = rock_anim_frame <= rock_anim_max ? rock_anim_frame + rock_anim_spd : 0.0;
 image_index = floor(rock_anim_frame);
-if(rock_state != ROCK.KABOOM){
+if(rock_state != ROCK.KABOOM and rock_state != ROCK.MOVE and rock_state != ROCK.IDLE_1){
 	with(pHitBox){
-		if(place_meeting(x, y, other) and (player_id.free or type == 2 or !player_id.free and player_id.y > other.y)){
+		if(place_meeting(x, y, other) and (player_id.free or type == 2 or !player_id.free and player_id.y > other.y) and other.rock_state != ROCK.KABOOM){
 			player_id.hitstop = floor(hitpause * 1.3);
 			sound_play(sound_effect);
 			sound_play(asset_get("sfx_kragg_rock_shatter"));
@@ -32,7 +32,7 @@ if(rock_state != ROCK.KABOOM){
 switch rock_state{
     //setes up movement before the timer starts ticking
     case ROCK.INIT:
-        rock_move_timer_max = max(5, min(point_distance(x,y, rock_goal_x, rock_goal_y)/25, 30));
+        rock_move_timer_max = max(15, min(point_distance(x,y, rock_goal_x, rock_goal_y)/25, 45));
         rock_init_x = x;
         rock_init_y = y;
         rock_y_offset = -(abs(rock_init_x - rock_goal_x))/10;
@@ -73,6 +73,7 @@ switch rock_state{
         if(hold_timer > hold_time){
         	float_y = y;
             rock_state = ROCK.IDLE_2;
+            sound_play(asset_get("sfx_kragg_roll_land"), false, noone, .3);
             hold_timer = 0;
         }
         break;
@@ -134,7 +135,6 @@ switch rock_state{
 			if(hold_timer > 8){
 				with(oPlayer){
 					if(place_meeting(x, y+5, other) and !free){
-						print_debug("ok les fall");
 						free = true;
 						state = PS_PRATFALL;
 					}	

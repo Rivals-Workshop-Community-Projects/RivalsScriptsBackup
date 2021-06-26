@@ -13,7 +13,7 @@ pratfall_anim_speed = .25;
 walk_speed = 4;
 walk_accel = 0.35;
 walk_turn_time = 6;
-initial_dash_time = 12;
+initial_dash_time = 10;
 initial_dash_speed = 7;
 dash_speed = 6.5;
 dash_turn_time = 8;
@@ -37,7 +37,7 @@ air_friction = .02;
 max_djumps = 1;
 double_jump_time = 31; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 6;
-walljump_vsp = 7;
+walljump_vsp = 8;
 walljump_time = 20;
 max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 14; //fast fall speed
@@ -108,7 +108,8 @@ randomTaunt = 0;
 hue_offset=0;
 hue_speed=2; //change this to change the speed of the hueshift
 nspecialAfter = hit_fx_create( sprite_get( "nspecial_proj_after" ),16);
-nspecialAfter2 = hit_fx_create( sprite_get( "nspecial_proj3_after" ),14);
+nspecialAfter2 = hit_fx_create( sprite_get( "nspecial_proj2_after" ),14);
+nspecialAfter3 = hit_fx_create( sprite_get( "nspecial_proj3_after" ),14);
 fspecialAfter = hit_fx_create( sprite_get( "fspecial_proj_after" ),8);
 fspecialAfter2 = hit_fx_create( sprite_get( "fspecial_proj2_after" ),8);
 
@@ -119,7 +120,6 @@ trummelcodecneeded = false;
 trummelcodec_id = noone;
 feri_costume = sprite_get("feri_costume_ex");
 arena_title = "The Blue Wonder";
-Hikaru_Title = "Blue Wonder";
 showHUD = false;
 otto_bobblehead_sprite = sprite_get("hudbobblehead");
 otto_bobblehead_body_sprite = sprite_get("hudbobblebody");
@@ -155,12 +155,6 @@ page++;
 dracula_speaker[page] = 1;
 dracula_text[page] = "Alright, then.[taunt] Bring it on, old man!";
 page++;
-
-///agent n codec
-nname = "Blue"
-ncode1 = "Human interloper from [???]. Known as 'Bluey'."
-ncode2 = "Wields a gadget capable of storing multiple tools and weapons."
-ncode3 = "Seems to really like the color blue."
 
 
 user_event(14); 

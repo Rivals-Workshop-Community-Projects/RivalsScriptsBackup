@@ -35,6 +35,7 @@ if (uspec_cancel_alarm == 0){
 
 if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
 	hit_sound_played = false;
+	opponent_stunned = false;
 }
 
 if (captain_timer > 0) captain_timer--;
@@ -279,9 +280,9 @@ if(
 		|| (state = PS_ATTACK_AIR && attack != AT_NSPECIAL && attack != AT_USPECIAL && state_timer > 1) // custom line
 		|| (air && vsp > 0)
 	) 
-	&& (jump_down) && floating == 0 
-	|| (state == PS_IDLE_AIR || (air)) 
+	&& (jump_down /*??*/ &&  down_down /*??*/) && floating == 0 
 	
+	|| (state == PS_IDLE_AIR || (air)) 
 	&& (jump_down && (down_down)) 
 	&& floating == 0
 ){

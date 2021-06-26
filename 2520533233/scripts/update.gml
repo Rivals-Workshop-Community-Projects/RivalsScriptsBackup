@@ -165,17 +165,23 @@ if(tenshi_graze_outline_timer > 0){
     tenshi_graze = false;
 }
 if(!dragon_install and tenshi_magic > tenshi_magic_max){
-	if(can_vo){
+	if(can_vo == 0){
 		sound_play(sound_get("magical_max"));
-		can_vo = false;
+		can_vo = 60;
 	}
 	
 	tenshi_magic = tenshi_magic_max;
 }
-if(!can_vo and cur_time%300 == 1){
-		can_vo = true;
+if(can_vo > 0){
+	can_vo--;
 }
 
+if(tenshi_magic > old_tenshi_magic and can_vo == 0){
+	sound_play(sound_get("graze_vo"));
+	can_vo = 60;
+}
+
+old_tenshi_magic = tenshi_magic;
 #endregion
 //---------------------------ROCK PLATFORM--------------------------------------
 #region ROCK_PLAT
@@ -183,22 +189,27 @@ if(!can_vo and cur_time%300 == 1){
 //this is such a hacky solution why can't article plats use hit fx
 if(rock_proj != noone and rock_proj.kaboom){
 	
-	spawn_hit_fx(rock_proj.x, rock_proj.y, 143);
-	spawn_hit_fx(rock_proj.x, rock_proj.y, 204);
+
 	sound_stop(sound_get("drop"));
-	sound_play(sound_get("a_not_as_large_kaboom"), false, noone, .6);
-	shake_camera(8, 8);
-	sound_play(asset_get("sfx_abyss_explosion_big"), false, noone, .7);
-	if(instance_exists(rock_proj.hitbox)){
-		rock_proj.hitbox.length = 0;
-	}
-	var temp = create_hitbox(AT_NSPECIAL, 2, rock_proj.x, rock_proj.y);
-	if(rock_proj.owner != noone){
-		print_debug(rock_proj.owner)
-		temp.player = rock_proj.owner;
-		temp.can_hit_self = false;
+	if(rock_proj.warm){
+		spawn_hit_fx(rock_proj.x, rock_proj.y, 143);
+		spawn_hit_fx(rock_proj.x, rock_proj.y, 204);
+		sound_play(sound_get("a_not_as_large_kaboom"), false, noone, .6);
+		shake_camera(8, 8);
+		sound_play(asset_get("sfx_abyss_explosion_big"), false, noone, .7);
+		if(instance_exists(rock_proj.hitbox)){
+			rock_proj.hitbox.length = 0;
+		}
+		var temp = create_hitbox(AT_NSPECIAL, 2, rock_proj.x, rock_proj.y);
+		if(rock_proj.owner != noone){
+			print_debug(rock_proj.owner)
+			temp.player = rock_proj.owner;
+			temp.can_hit_self = false;
+		} else {
+			temp.can_hit_self = true;
+		}
 	} else {
-		temp.can_hit_self = true;
+		spawn_hit_fx(rock_proj.x, rock_proj.y, 192);
 	}
 	instance_destroy(rock_proj);
 	rock_proj = noone;
@@ -218,6 +229,9 @@ if(!free){
 	if(!place_meeting(x, y+4, obj_article_platform) and state != PS_ATTACK_GROUND){
 		can_move_rock = true;
 	}
+}
+if(!free and move_cooldown[AT_FSPECIAL] > 0){
+    move_cooldown[AT_FSPECIAL] = 0;
 }
 #endregion
 //------------------------EASTEREGG INPUTS--------------------------------------

@@ -24,6 +24,18 @@ if (aimed_id != noone)
 	y_target = aimed_id.y + aimed_id.vsp - 30;
 }
 
+if (instance_exists(my_hitbox))
+{
+	my_hitbox.x = x + hsp;
+	my_hitbox.y = y + vsp;
+}
+else
+{
+	explode = true;
+}
+
+
+
 switch(state)
 {
     case 0:
@@ -97,6 +109,7 @@ if(place_meeting(x + hsp,y + vsp,asset_get("par_block")))
     explode = true;
 }
 
+/*
 with (oPlayer)
 {
     if (self != other.player_id) and (state != PS_DEAD) and (state != PS_RESPAWN) and (self != other.player_id.grab_id) and ((collision_circle(other.x,other.y,16,hurtboxID,false,true)))
@@ -107,7 +120,7 @@ with (oPlayer)
         }
     }
 }
-
+*/
 if (!free)
 {
     explode = true;
@@ -141,12 +154,13 @@ if (explode)
     
     sound_play(asset_get("sfx_ori_grenade_hit"))
     
-    create_hitbox( AT_DSPECIAL, 1, x, y );
+    //create_hitbox( AT_DSPECIAL, 1, x, y );
 	destroyed = true;
 }
 
 if (destroyed)
 {
+	instance_destroy(my_hitbox);
     instance_destroy(self);
 }
 

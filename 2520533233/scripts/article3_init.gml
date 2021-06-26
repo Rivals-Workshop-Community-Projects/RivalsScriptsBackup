@@ -6,4 +6,6 @@ warm = false;
 life = 0;
 lifetime = 45;
 kaboom = false;
+amdead = false;
+hitbox = noone;
 owner = noone;

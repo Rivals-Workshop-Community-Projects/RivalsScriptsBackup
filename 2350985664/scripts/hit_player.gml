@@ -39,19 +39,23 @@ switch(my_hitboxID.attack)
                 window_timer = 0;
                 destroy_hitboxes()
                 grab_id = hit_player_obj;
-                
-           
         }
     break;
     case AT_FSTRONG:
-        hit_player_obj.blinded = 720;
-        hit_player_obj.blinded_id = self;
+        if (hit_player_obj.blind_immune_time == 0)
+        {
+            hit_player_obj.blinded = 720;
+            hit_player_obj.blinded_id = self;
+        }
     break;
     case AT_NSPECIAL:
-        if (hit_player_obj.blinded < 540)
+        if (ds_list_find_index(caged_list,hit_player_obj) == -1) and (hit_player_obj.blind_immune_time == 0)
         {
-            hit_player_obj.blinded = 540;
-            hit_player_obj.blinded_id = self;
+            if (hit_player_obj.blinded < 540)
+            {
+                hit_player_obj.blinded = 540;
+                hit_player_obj.blinded_id = self;
+            }
         }
     break;
     case AT_DTILT:
@@ -147,7 +151,13 @@ if (!skip)
 
 
 
-
+if (hit_player_obj.blind_immune_time > 0)
+{
+    if (my_hitboxID.attack != AT_NSPECIAL) and (my_hitboxID.attack != AT_FSTRONG)
+    {
+        hit_player_obj.blind_immune_time = 0;
+    }
+}
 
 
 

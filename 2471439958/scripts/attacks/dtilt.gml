@@ -13,7 +13,7 @@ set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
 
 set_window_value(AT_DTILT, 2, AG_WINDOW_TYPE, 0);
-set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 13);
+set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 

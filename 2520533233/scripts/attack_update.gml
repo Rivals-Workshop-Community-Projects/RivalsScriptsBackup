@@ -34,7 +34,10 @@ if(state_timer < 5 and (attack_pressed and special_pressed  or di_input == 5 and
     } else if (taunt_pressed) {
         true_input2 = true;
     }
-    set_attack(AT_EXTRA_1);
+    window_timer = 0;
+    window = 0;
+    attack = AT_EXTRA_1;
+    hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
 }
 
 //B - Reversals
@@ -54,6 +57,9 @@ if(attack == AT_DSPECIAL or attack == AT_DSPECIAL_AIR or attack == AT_FSPECIAL o
 switch(attack){
     //------------------- JAB -------------------------
     case AT_JAB:
+    	if(window < 6){
+    		was_parried = false;
+    	}
         set_window_value(AT_JAB, 6, AG_WINDOW_CANCEL_TYPE, has_hit);
         if(!has_hit){
             set_attack_value(AT_JAB, AG_NUM_WINDOWS, 6);
@@ -151,9 +157,18 @@ switch(attack){
         	} else {
         		hsp -= spr_dir*2;
         	}
+        	if(fspec_start){
+        		move_cooldown[AT_FSPECIAL] = 20;
+        	}
         }
-        if(!free and window > 1){
+        if(!free and window > 2){
             can_jump = true;
+            if((window == 4 or window == 3 and window_timer > 5) and special_pressed){
+				window = 0;
+				window_timer = 0;
+            	attack = AT_EXTRA_3;
+            	hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+            }
         }
         break;
     //------------------ USPECIAL --------------------- 
@@ -189,7 +204,7 @@ switch(attack){
             window_timer = 1;
         }
         if(window == 3 and window_timer == 6){
-        	if(rock_proj != noone or !can_move_rock){
+        	if(rock_proj != noone or !can_move_rock or !can_rock){
         		
         		set_state(PS_PRATFALL);
         	} else { 
@@ -198,6 +213,9 @@ switch(attack){
         }
         break;
     case AT_EXTRA_1:
+    	if(window == 1 and window_timer == 1){
+    		hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+    	}
     	if(tenshi_magic >= tenshi_magic_max/2 and !dragon_install){
     		//mute stage music if entering dragon install
         	if(!dragon_install){
@@ -389,7 +407,7 @@ switch(attack){
     		cfx.image_xscale = 2;
     		cfx.image_yscale = 2;
     		cfx.depth = -10;
-    	} else if (window == 2 and strong_charge > 58 and charge_level < 2){
+    	} else if (window == 2 and strong_charge > 30 and charge_level < 2){
     		strong_charge = 0;
     		charge_level++;
     		if(charge_level > 1){
@@ -434,6 +452,7 @@ switch(attack){
     			
     			if(tenshi_uspecial_rock == noone and can_rock and can_move_rock and rock_proj == noone){
     		    	tenshi_uspecial_rock = instance_create(x < room_width/2 ? 0 : room_width, 0, "obj_article_platform");
+    		    	can_rock = false;
             		tenshi_uspecial_rock.rock_goal_y = floor(room_height*.33);
                 	tenshi_uspecial_rock.rock_goal_x = x+hsp*9;
                 	tenshi_uspecial_rock.rock_state = ROCK.INIT;
@@ -528,7 +547,7 @@ switch(attack){
     		cfx.image_xscale = 2;
     		cfx.image_yscale = 2;
     		cfx.depth = -10;
-    	} else if (window == 1 and strong_charge > 58 and charge_level < 2){
+    	} else if (window == 1 and strong_charge > 30 and charge_level < 2){
     		strong_charge = 0;
     		charge_level++;
     		if(charge_level > 1){
@@ -612,7 +631,7 @@ switch(attack){
     		cfx.image_xscale = 2;
     		cfx.image_yscale = 2;
     		cfx.depth = -10;
-    	} else if (window == 1 and strong_charge > 58 and charge_level < 2){
+    	} else if (window == 1 and strong_charge > 30 and charge_level < 2){
     		strong_charge = 0;
     		charge_level++;
     		if(charge_level > 1){
@@ -639,7 +658,7 @@ switch(attack){
 					set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 84);
 					set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 74);
 					set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 8);
-					set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.05);
+					set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1);
     				break;
     			case 1:
     			    set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 60);
@@ -654,7 +673,7 @@ switch(attack){
 					set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 114);
 					set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 94);
 					set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 10);
-					set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.15);
+					set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.1);
 					break;
 				case 2:
 				    set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 70);
@@ -669,7 +688,7 @@ switch(attack){
 					set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 124);
 					set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 104);
 					set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 12);
-					set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.3);
+					set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.2);
 					break;
     		}
     	}
@@ -694,6 +713,37 @@ switch(attack){
     	}
     	if(window > 1 and vsp < -5 and !dragon_install){
     		vsp+=2;
+    	}
+    	break;
+    case AT_EXTRA_3:
+    	if(window == 1){
+    		grabbed_player = noone;
+    	}
+    	if(has_hit){
+    		if((window == 2 or window == 3) and grabbed_player != noone){
+    			grabbed_player.hitstop = 2;
+    			grabbed_player.x = lerp(floor(grabbed_player.x), x+40*spr_dir, .5);
+    			grabbed_player.y = lerp(floor(grabbed_player.y), y, .3);
+    		}
+    		//hsp = 0;
+    	}
+    	if(has_hit and window == 3){
+    		window = 6;
+    		window_timer = 0;
+    	}
+    	if(window == 6){
+    		if(window_timer < 7){
+    			grabbed_player.hitstop = 2;
+    			grabbed_player.x = lerp(floor(grabbed_player.x), x+40*spr_dir, .5);
+    			grabbed_player.y = lerp(floor(grabbed_player.y), y, .3);
+    		} else if (window_timer < 9){
+    			grabbed_player.hitstop = 2;
+    			grabbed_player.x = lerp(floor(grabbed_player.x), x-40*spr_dir, .5);
+    			grabbed_player.y = lerp(floor(grabbed_player.y), y-20, .3);
+    		}
+    	}
+    	if(window == 5 and window_timer == 6){
+    		window = 8;
     	}
 }
 

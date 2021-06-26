@@ -117,16 +117,16 @@ move_cooldown[AT_TAUNT] = 20
 }
 
 if attack == AT_DSPECIAL and window = 3 and window_timer = 1 {
-move_cooldown[AT_DSPECIAL] = 70
+move_cooldown[AT_DSPECIAL] = 60
 }
 
 if attack == AT_UAIR and window = 2 and window_timer = 1 {
 move_cooldown[AT_UAIR] = 20
 }
 
-if attack == AT_DAIR and window = 7 and window_timer = 1 {
-move_cooldown[AT_DAIR] = 150
-move_cooldown[AT_DATTACK] = 150
+if attack == AT_DAIR and window = 8 and window_timer = 1 {
+move_cooldown[AT_DAIR] = 120
+move_cooldown[AT_DATTACK] = 120
 }
 
 
@@ -200,7 +200,7 @@ if (attack == AT_DATTACK) {
 }
 
 if (attack == AT_DAIR){
-    if (window < 4 && state_timer % 4 == 0){
+    if (window < 5 && state_timer % 4 == 0){
       	instance_create(x , y, "obj_article1");
     }
 }
@@ -219,28 +219,25 @@ if (attack == AT_FAIR){
 
 //Down Air Fall
 if (attack == AT_DAIR) {
-	can_fast_fall = false;
-	
-	if window == 3 {
-		if window_timer == 7 {
-		window_timer = 1;
-		}
-		if window_timer > 1 {
+		can_fast_fall = false;
 		can_jump = false;
 		can_shield = false;
-		}
-		if !hitpause {
-		window_timer = 2;
-		}
-		if vsp = 0 && hitpause = 0 {
-		window_timer = 8;
+		
+	if window == 3{
+	if vsp = 0 && hitpause = 0 {
+		window = 4;
 		}
 	}
-	if window == 5 {
-		window = 8;
+	if window == 4{
+		can_jump = true;
+		can_shield = true;
+	}	
+	
+	if window == 6 {
+		window = 9;
 		
 	}
-	if window == 4 && window_timer == 1 {
+	if window == 5 && window_timer == 1 {
 		sound_play(asset_get("sfx_shovel_hit_heavy2"));
 		destroy_hitboxes();
 		camera_shake = 1;
@@ -250,9 +247,9 @@ if (attack == AT_DAIR) {
 if (attack == AT_DAIR) {
 	if window == 2 && window_timer > 1{
 		if attack_pressed or down_strong_pressed{
-		window = 5;
+		window = 6;
 		sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
-		spawn_hit_fx( x + 10*spr_dir, y + -20, 306);
+		spawn_hit_fx( x + 10*spr_dir, y + -20, 254);
 		if (caleb==1){
 			sound_play(sound_get("maniatic_laugh"));
 		}
@@ -298,7 +295,7 @@ if (attack == AT_JAB) {
 }
 
 if (attack == AT_JAB){
-	if window == 5 && window_timer == 13 {
+	if window == 5 && window_timer == 12 {
 		window = 13;
 		set_window_value(AT_JAB, 13, AG_WINDOW_ANIM_FRAME_START, 13);
 	}

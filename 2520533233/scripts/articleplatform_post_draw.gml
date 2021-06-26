@@ -33,6 +33,8 @@ if(rock_state == ROCK.DROP){
     */
 }
 
+
+
 if(rock_state != ROCK.MOVE){
         
         
@@ -149,6 +151,10 @@ if(rock_state != ROCK.MOVE){
 if((!player_id.can_rock or !player_id.can_move_rock) and (rock_state == ROCK.IDLE_1 or rock_state == ROCK.IDLE_2)){
 
     draw_sprite(sprite_get("rock_inactive"), image_index, x, y);
+}
+
+if(rock_state == ROCK.IDLE_2){
+    draw_sprite(sprite_get("rock_cracked"), image_index, x, y)
 }
 
 

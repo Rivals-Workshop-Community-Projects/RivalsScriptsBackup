@@ -69,8 +69,8 @@ if my_hitboxID.attack != AT_USTRONG and my_hitboxID.attack != AT_FSTRONG and my_
 	create_hitbox(AT_EXTRA_2,1,x,y)
     create_hitbox(AT_EXTRA_2,2,x,y)
     create_hitbox(AT_EXTRA_2,3,x,y)
-    hitstop += 50
-    move_cooldown[AT_NAIR] = 50 
+    hitstop += 40
+    move_cooldown[AT_NAIR] = 40 
     
 
 	

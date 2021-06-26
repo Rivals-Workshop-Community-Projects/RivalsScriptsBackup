@@ -12,3 +12,7 @@ if(attack == AT_DATTACK and my_hitboxID.hbox_num != 6){
 if(attack == AT_DAIR and my_hitboxID.hbox_num != 1 and my_hitboxID.hbox_num != 6){
     hit_player_obj.y = lerp(floor(hit_player_obj.y), y+25, .4);
 }
+
+if(attack == AT_EXTRA_3){
+    grabbed_player = hit_player_obj;
+}

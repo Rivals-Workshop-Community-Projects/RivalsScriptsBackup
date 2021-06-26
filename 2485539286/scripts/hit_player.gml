@@ -8,6 +8,11 @@
 ///sound_play(asset_get("sfx_blow_weak2"),false,noone,99);
 ///sound_play(asset_get("sfx_blow_weak1"),false,noone,99);
 
+if hit_player_obj != self  {
+move_cooldown[AT_EXTRA_2] = 0 
+
+}
+
 if my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num <= 2{ 
  thundervictim = hit_player_obj
  create_hitbox(AT_DSPECIAL,3,hit_player_obj.x,hit_player_obj.y)

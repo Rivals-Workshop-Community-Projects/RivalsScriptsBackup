@@ -400,6 +400,8 @@ with phone{
 	
 	The dash is jump cancelable on the ground, but not in the air. Try dashing into platforms while airborne to jump cancel for fancy movement.
 	
+	Press Special to cancel fspecial into a grab while on the ground!
+	
 	Peach Install buffs the speed of the dash while grounded and allows it to be charged longer.
 	
 	If you use Fspecial while standing on your Uspecial rock it will cause the rock to fall to the ground but give you extra height on the dash. Useful as an attack and recovery option!");
@@ -536,6 +538,83 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	initPatch("1.06", "22, June 2021");
+	initPatchWords("Strong charge buffs, bugfixes, and more fspecial air nerfs
+	
+
+Patch 1.06:
+
+Bugfix:
+
+Fixed a bug where Tenshi could graze in respawn state.
+Fixed a bug where Tenshi's hurtbox wouldn't correctly change if install stun happened during a move.
+
+Qol:
+
+Base install theme: Now lasts entire install durration and loops!
+
+Buffs:
+
+Strong charge time Decreased: 58 > 30
+Ustrong: Base Knockback: 7-6 > 8
+
+Nerfs:
+Fstrong: Lv1 KBG: 1.05 > 1
+Fstrong: Lv2 KBG: 1.15 > 1.1
+Fstrong: Lv3 KBG: 1.3 > 1.2
+
+Fspecial Air: Now has 20f move lockout after use.");
+	 
+	initPatch("1.05: The Grab Update", "22, June 2021");
+	initPatchWords("Introducing Fspecial Grabs
+	Patch 1.05:
+
+New!!!!:
+
++Fspecial Ground Grab: Pressing the special button during the grounded version of fspecial will perform a new grab move!
+
+
+Bugfix:
+Fspecial can no longer be jump canceled at unintended times. (This happened from a mistake last patch)
+Fixed a bug where Tenshi would not go into pratfall during rock lockout time on Uspecial under certain conditions.
+Fixed a bug where Install activation hurtboxes would not match properly on a buffered install.
+
+QoL:
+Added a new UI icon for rock lockout.
+Changed graze audio to better reflect when you actually get meter.
+Added line to meter background showing when install is available.
+Changed meter hotbar color when not ready for install. Should be easier to see.
+
+Changes:
+| Rock: Now has visuals for it it can be broken or not.
++ Rock: Cannot be broken while flying.
++ Rock: Cannot be broken for a short period of time after being moved.
++ Rock: Cannot be broken when hitbox is active. Hitbox no longer breakable by other hitboxes.
+- Rock: Can be broken during throw startup.
+- Rock: Minimum rock travel time: 5 > 15f
+- Rock: Maximum rock travel time: 30 > 45f
+(The 30f travel time was a bug it was supposed to be 90)
+
+Buffs:
++Jab 1: Now forces flinch
++Jab 1: Now untechable
++Jab 2: No longer puts Tenshi in parry stun.
++Jab 2: Now untechable
+-Jab 2: Crouch now armors the hit
+(Jab should now feel more consistent and rewarding.)
+
++Fstrong Hit 1: Now has 3 frames extra hitpause
++Fstrong Hit 1: Now forces flinch
+|Ftrong Hit 1: Removed angle flipper
+(Should improve consistency.)
+
+Nerfs:
+-Dair: Landing hit width: 90 > 82 
+|Dair: Landing hit X: 5 > 3
+(Should match animation better.)
+
+");
+	 
 	initPatch("1.04", "20, June 2021");
 	initPatchWords("Day 2 Patch:
 

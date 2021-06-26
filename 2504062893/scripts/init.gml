@@ -105,6 +105,10 @@ skull_radius = 24;
 // SOUND LAYERING / PLAYING SOUND ONLY ONCE
 hit_sound_played = false;
 
+opponent_stunned = false;
+stored_hsp = 0;
+stored_vsp = 0;
+
 prev_X = x;
 prev_Y = y;
 float_sound_playing = false;

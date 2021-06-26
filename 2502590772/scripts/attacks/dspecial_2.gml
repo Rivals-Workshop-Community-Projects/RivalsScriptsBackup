@@ -20,14 +20,14 @@ set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_SFX, sound_get("charge_tell"));
 
 //armor window
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 41);
 
 //startup 2
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 43);

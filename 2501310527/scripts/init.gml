@@ -187,6 +187,9 @@ kamikaze_hitme = false;
 blaster_mini = 0;
 blaster_mini_shoot = 0;
 mini_dir = 1;
+blaster_mini_time = 0;
+blaster_mini_x = 0;
+blaster_mini_y = 0;
 
 tanooki_turn = false;
 tanooki_blaster = false;

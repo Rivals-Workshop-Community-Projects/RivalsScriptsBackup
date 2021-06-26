@@ -441,7 +441,7 @@ if get_player_color(player) == 10 {
         
         if attack == AT_USTRONG {
             
-            set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 15 + strong_charge/8);
+            set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 12 + strong_charge/8);
             
             if window == 1 && strong_charge == 0 {
                 hsp = 1*spr_dir
@@ -455,11 +455,11 @@ if get_player_color(player) == 10 {
                 	spawn_base_dust(x - (10 + random_func(2,30,true))*spr_dir,y, "dash_start",spr_dir)
                 	spawn_base_dust(x + (20 + random_func(1,40,true))*spr_dir,y, "dash",spr_dir*-1)
                 	}
-                if x + 40*spr_dir > hit_player_obj.x && hit_player_obj.x + 350 > x {
+                if x + 24*spr_dir > hit_player_obj.x && hit_player_obj.x + 350 > x {
                 	hit_player_obj.x += 1 + floor(strong_charge/5)
                 }
                 
-                if x + 40*spr_dir < hit_player_obj.x && hit_player_obj.x - 350 < x  {
+                if x + 24*spr_dir < hit_player_obj.x && hit_player_obj.x - 350 < x  {
                 	hit_player_obj.x -= 1 + floor(strong_charge/5)
                 }
                 }

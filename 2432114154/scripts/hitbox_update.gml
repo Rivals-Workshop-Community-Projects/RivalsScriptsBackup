@@ -11,6 +11,10 @@ if attack == AT_EXTRA_2 && hbox_num < 5{
 		sidehit = 0
 		neutralhit = 0
 		}
+	    	
+	    if other.hitbox_timer > 2 && other.hitbox_timer < 10 && attack != AT_EXTRA_2 {
+	    	other.hitbox_timer = 20
+	    }
 	}
 
 	spr_dir = player_id.finaldir 

@@ -1,4 +1,4 @@
-print (was_parried);
+print (blaster_mini_time);
 
 //DSpecial Arm
 shader_start();

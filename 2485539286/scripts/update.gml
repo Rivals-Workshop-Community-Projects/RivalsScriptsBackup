@@ -82,14 +82,15 @@ if hhh > 0 && dash_speed == 7 {
     gravity_speed = .4;
     max_fall = 6; 
     fast_fall = 12;
+    knockback_adj = 1.05;
 }
 
 if hhh == 0 && dash_speed != 7 {
 	initial_dash_speed = 7.5;
 	dash_speed = 7
-	leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-    max_jump_hsp = 6;
-	air_max_speed = 6;
+	leave_ground_max = 5; //the maximum hsp you can have when you go from grounded to aerial without jumping
+    max_jump_hsp = 5;
+	air_max_speed = 5;
 	jump_change = 4;
 	air_accel = .3;
     jump_speed = 13;
@@ -98,6 +99,7 @@ if hhh == 0 && dash_speed != 7 {
     gravity_speed = .7;
     max_fall = 8; 
     fast_fall = 16;
+    knockback_adj = 1.15;
 }
 
 
@@ -182,9 +184,11 @@ spawn_hit_fx( x + 20 - random_func(1, 40, true) , y - 10 -  random_func(2, 60, t
 if get_gameplay_time() % 2 == 1 {
 spawn_hit_fx( x + 20 - random_func(1, 40, true) , y - 10 -  random_func(2, 60, true) , hpar3)
 }
+
 if state_timer == 1 {
-    	sound_play(asset_get("sfx_bird_sidespecial_start"),false,noone,0.5);
+    	sound_play(asset_get("sfx_bird_sidespecial_start"),false,0,0.5);
 }
+
 }
 
 

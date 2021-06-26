@@ -54,8 +54,8 @@ if(dragon_install){
     draw_sprite_ext(sprite_get("peachbar_peach"), dragon_install, temp_x+36, temp_y - 14, 1+small_sprites, 1+small_sprites, 0, c_white, 1);
 } else {
     if(tenshi_magic > 0 and tenshi_magic < tenshi_magic_max/2){
-        draw_sprite_ext(sprite_get("peachbar_bar"), 0, temp_x+34, temp_y - 14, (1+small_sprites)*(tenshi_magic/tenshi_magic_max), 1+small_sprites, 0, c_maroon, 1);
-        draw_sprite_ext(sprite_get("peachbar_bar"), 1, temp_x+32, temp_y - 14, (1+small_sprites), 1+small_sprites, 0, c_maroon, 1);
+        draw_sprite_ext(sprite_get("peachbar_bar"), 0, temp_x+34, temp_y - 14, (1+small_sprites)*(tenshi_magic/tenshi_magic_max), 1+small_sprites, 0, hotbar_color, 1);
+        draw_sprite_ext(sprite_get("peachbar_bar"), 1, temp_x+32, temp_y - 14, (1+small_sprites), 1+small_sprites, 0, hotbar_color, 1);
         draw_sprite_ext(sprite_get("peachbar_peach"), 0, temp_x+36, temp_y - 14, 1+small_sprites, 1+small_sprites, 0, c_white, 1);
     } else if(tenshi_magic >= tenshi_magic_max/2){
         draw_sprite_ext(sprite_get("peachbar_bar"), 0, temp_x+34, temp_y - 14, (1+small_sprites)*(tenshi_magic/tenshi_magic_max), 1+small_sprites, 0, c_red, 1);

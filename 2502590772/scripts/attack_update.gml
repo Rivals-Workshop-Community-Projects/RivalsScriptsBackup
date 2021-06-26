@@ -413,7 +413,7 @@ case AT_DSPECIAL:
     //fall slowly
     vsp = clamp(vsp, -4, 2);
     
-    if (state_timer == 30 && !hitpause && instance_exists(teammate_player_id)) {
+    if (state_timer == 20 && !hitpause && instance_exists(teammate_player_id)) {
     	with (teammate_player_id) { helping_hand_buff_activate(); }
     }
     else if (state_timer < 2) {
@@ -559,7 +559,7 @@ case AT_FSTRONG_2:
 			if ((has_hit && hitpause)) {
 				window = 5;
 				window_timer = 0;
-				old_hsp = -spr_dir * 4;
+				old_hsp = -spr_dir * 5;
 				old_vsp = -7;
 				break;
 			}

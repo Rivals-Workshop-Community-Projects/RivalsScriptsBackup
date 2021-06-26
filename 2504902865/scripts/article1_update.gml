@@ -281,9 +281,11 @@ with asset_get("pHitBox") {
 				if "hit_effect" in self {
 					spawn_hit_fx(x,y,hit_effect)
 				}
-				player_id.hitpause = true;
-				player_id.hitstop = hitpause
-				player_id.hitstop_full = hitpause
+				if type != 2 { //so that jank doesn't happen
+					player_id.hitpause = true;
+					player_id.hitstop = hitpause
+					player_id.hitstop_full = hitpause
+				}
 				player_id.old_vsp = player_id.vsp;
 				player_id.old_hsp = player_id.hsp;
 				other.hit_cooldown = player_id.hitstop_full;
@@ -327,7 +329,7 @@ if !instance_exists(thrown_hitbox_id) {
 			break;
 		
 		case 3: //uthrow
-			thrown_hitbox_id = create_hitbox(AT_DTHROW,1,x,y);
+			thrown_hitbox_id = create_hitbox(AT_UTHROW,1,x,y);
 			break;
 		
 		case 4: //dthrow

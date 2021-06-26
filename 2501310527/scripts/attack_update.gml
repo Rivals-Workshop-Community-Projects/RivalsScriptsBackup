@@ -90,7 +90,7 @@ if (attack == AT_NSPECIAL_AIR){
                 spawn_hit_fx( blaster.x, blaster.y, 306 );
                 sound_play(sound_get("blaster_smb3"));
                 sound_play(sound_get("kamihit_yi"));
-                take_damage(player, -1, 10);
+                take_damage(player, -1, 13);
                 blaster_dir = spr_dir;
                 destroy_hitboxes();
                 kamikaze = 1;
@@ -177,7 +177,7 @@ if (attack == AT_NSPECIAL_AIR){
         move_cooldown[AT_NSPECIAL_AIR] = 999;
         
         sound_play(sound_get("kamikazemiss_smw"));
-        take_damage(player, -1, 5);
+        take_damage(player, -1, 8);
         window += 1;
         window_timer = 1;
     }
@@ -307,10 +307,10 @@ if (attack == AT_DSPECIAL){
         }
         //Hold Special and move up/down to aim
         else {
-            if (up_down && scope_aim >= -30 && scope_aim <= 30){
+            if (up_down && scope_aim >= -30 && scope_aim <= 30 && state_timer > 20){
                 scope_aim += spr_dir*2;
             }
-            if (down_down && scope_aim >= -30 && scope_aim <= 30){
+            if (down_down && scope_aim >= -30 && scope_aim <= 30 && state_timer > 20){
                 scope_aim -= spr_dir*2;
             }
             if (scope_aim <= -30){
@@ -392,6 +392,36 @@ if (attack == AT_DSPECIAL){
     }
 }
 
+if (attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_USTRONG){
+    if (window == 1 && blaster_out == true && blaster_close == true){
+        if (attack == AT_FSTRONG){
+            set_window_value(AT_STRONG, 1, AG_WINDOW_ANIM_FRAME_START, 0);
+            set_window_value(AT_STRONG, 12, AG_WINDOW_GOTO, 2);
+            set_attack_value(AT_STRONG, AG_SPRITE, sprite_get("blaster_top_shoot"));
+            hurtboxID.sprite_index = sprite_get("strong_hurt1");
+            strong_direction = 0; 
+        }
+        if (attack == AT_USTRONG){
+            set_window_value(AT_STRONG, 1, AG_WINDOW_ANIM_FRAME_START, 0);
+            set_window_value(AT_STRONG, 12, AG_WINDOW_GOTO, 6);
+            set_attack_value(AT_STRONG, AG_SPRITE, sprite_get("blaster_top_shoot_up"));
+            hurtboxID.sprite_index = sprite_get("strong_hurt2");
+            strong_direction = 1; 
+        }
+        if (attack == AT_DSTRONG){
+            set_window_value(AT_STRONG, 1, AG_WINDOW_ANIM_FRAME_START, 0);
+            set_window_value(AT_STRONG, 12, AG_WINDOW_GOTO, 10);
+            set_attack_value(AT_STRONG, AG_SPRITE, sprite_get("blaster_top_shoot_down"));
+            hurtboxID.sprite_index = sprite_get("strong_hurt3");
+            strong_direction = 2; 
+        }
+        spawn_hit_fx( x, y-20, blaster_smoke_big );
+        attack = AT_STRONG;
+        window = 1;
+        window_timer = 0;
+    }
+}
+
 //Strong Gimmick - Blaster Blast
 if (attack == AT_STRONG){
     
@@ -404,7 +434,8 @@ if (attack == AT_STRONG){
         set_window_value(AT_STRONG, 8, AG_WINDOW_VSPEED, 7.5+strong_charge/3);
         set_window_value(AT_STRONG, 10, AG_WINDOW_HSPEED, 6+strong_charge/3);
         set_window_value(AT_STRONG, 10, AG_WINDOW_VSPEED, 6+strong_charge/3);
-        
+    
+    
     //Charging the Strong
     if (window == 1 || window == 12){
         if ((right_strong_down || left_strong_down || up_strong_down || down_strong_down) && window == 1){

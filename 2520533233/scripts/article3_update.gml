@@ -3,6 +3,16 @@ player_id.rock_lockout = 60;
 player_id.can_rock = false;
 
 if(!warm){
+    with(pHitBox){
+		if(place_meeting(x, y, other) and (player_id.free or type == 2 or !player_id.free and player_id.y > other.y) and !other.amdead){
+			player_id.hitstop = floor(hitpause * 1.3);
+			sound_play(sound_effect);
+			sound_play(asset_get("sfx_kragg_rock_shatter"));
+			other.amdead = true;
+
+		}
+	}
+	if(!amdead){
     image_index = 0;
     life++;
     if(life == 1){
@@ -18,6 +28,10 @@ if(!warm){
         x = orig_x;
         y = orig_y;
     }
+	} else {
+		kaboom = true;
+		player_id.rock_lockout = 120;
+	}
 
 } else {
     life++;

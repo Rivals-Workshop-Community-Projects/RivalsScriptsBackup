@@ -201,7 +201,7 @@ if (state == 4){
 	if (state_timer == 0){
 		spr_dir = player_id.spr_dir
 		vsp = -5;
-		hsp = 2*spr_dir;
+		hsp = 3*spr_dir;
 	}
 	if (state_timer == 2){
 		player_id.tanooki_blaster = true;

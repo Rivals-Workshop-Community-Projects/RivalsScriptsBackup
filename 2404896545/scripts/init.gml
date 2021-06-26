@@ -36,7 +36,7 @@ djump_speed = 11;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5.5; //the maximum hsp you can accelerate to when in a normal aerial state
-jump_change = 7; //maximum hsp when double jumping. If already going faster, it will not slow you down
+jump_change = 4.5; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
 air_friction = .04;
@@ -226,60 +226,9 @@ pkmn_stadium_front_img = sprite_get("pokemon_front");
 pkmn_stadium_back_img = sprite_get("pokemon_back");
 pkmn_stadium_name_override = "Maribel";
 
-//Break the Targets
-get_btt_data = false;
-
 //Assist
 assistAttack = AT_NSPECIAL; //The attack to use as the assist
 assistOffsetX = 40; //The horizontal distance they spawn from the player
 assistOffsetY = -20; //The vertical distance they spawn from the player
 assistGroundOnly = false; //Whether or not they are forced to the ground
 assistFloat = true; //Whether or not they stay in place vertically
-
-//Abyss Runes
-//this var makes f5 not break the buddy if developing with more than one
-//workshop character or buddy in the match
-//abyss_devmode = true;
-//
-abyssEnabled = false;
-enum runes {A = 1,B = 2,C = 3,D = 4,E = 5,F = 6,G = 7,H = 8,I = 9,J = 10,K = 11,L = 12,M = 13,N = 14,O = 15}
-runeA = false; runeB = false; runeC = false; runeD = false; runeE = false; runeF = false; runeG = false; runeH = false; runeI = false; runeJ = false; runeK = false; runeL = false; runeM = false; runeN = false; runeO = false; runesUpdated = get_match_setting(SET_RUNES);
-ab_hud_x = 0;
-ab_hud_y = 0;
-
-//abyssMods[1 to 15] = [type, description];
-//types are: -1 - disabled
-// 0 - object mod: Modifies a static object left behind after an attack.
-// 1 - ranged mod: Modifies a projectile attack.
-// 2 - hit mod: Modifies a direct physical interaction with an opponent.
-// 3 - ability boost: Powers up a character attribute or action.
-abyssMods = array_create(16,[-1,"Not Implemented."]);
-abyssMods[@ runes.A] = [3, "DSPECIAL Stilts are taller."];
-abyssMods[@ runes.B] = [1, "DAIR Carrot semi-spikes."];
-abyssMods[@ runes.C] = [2, "If the final hit of UAIR is landed, you'll get an upwards burst and can attack cancel."];
-abyssMods[@ runes.D] = [3, "DSTRONG Ostro running distance increased."];
-abyssMods[@ runes.E] = [3, "DSPECIAL stepping speed increased."];
-abyssMods[@ runes.F] = [2, "Normal TAUNT can be cancelled with non-attack actions."];
-
-// Level 2
-abyssMods[@ runes.G] = [3, "UTILT range extended."];
-abyssMods[@ runes.H] = [3, "USTRONG endlag reduced."];
-abyssMods[@ runes.I] = [2, "NAIR hits deal burn."];
-abyssMods[@ runes.J] = [2, "FTILT bursts forwards."];
-abyssMods[@ runes.K] = [3, "Additional Double Jump"];
-
-// Level 3
-abyssMods[@ runes.L] = [3, "Autobomb NSPECIAL startup reduced."];
-abyssMods[@ runes.M] = [2, "DSTRONG can be jump cancelled on hit."];
-abyssMods[@ runes.N] = [0, "FSPECIAL Magic Carpet timer limit reduced."];
-abyssMods[@ runes.O] = [3, "USPECIAL is jump-cancellable if jumps are available."];
-
-//Sets the variables runeA, runeB, etc according to whether or not that rune was selected
- 
-var rune_letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"];
- 
-for (var rune_num = 0; rune_num < array_length(rune_letters); rune_num++){
-    variable_instance_set(self, "rune" + rune_letters[rune_num], has_rune(rune_letters[rune_num]));
-}
-
-//abyss init code over

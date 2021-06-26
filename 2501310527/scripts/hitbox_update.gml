@@ -38,16 +38,22 @@ if (attack == AT_DSPECIAL){
     	}
     	if (player_id.blaster_mini == 1){
     		sound_play(sound_get("minid_yi"));
+    		player_id.blaster_mini_time = 10;
     	}
     	if (player_id.blaster_mini == 2){
     		sound_play(sound_get("minie_yi"));
+    		player_id.blaster_mini_time = 20;
     	}
     	if (player_id.blaster_mini == 3){
     		sound_play(sound_get("minif_yi"));
+    		player_id.blaster_mini_time = 30;
     	}
     	if (player_id.blaster_mini == 4){
     		sound_play(sound_get("minig_yi"));
+    		player_id.blaster_mini_time = 40;
     	}
+    	player_id.blaster_mini_x = x;
+    	player_id.blaster_mini_y = y;
     	//And of course, adds the ammo number
     	player_id.blaster_mini++;
     	destroyed = true;

@@ -196,6 +196,18 @@ if ("practice" in self)
 						AddText("Cracked stars despawn time 69 -> 35");
 						AddText("Using USpecial will now crack all your stars");
 						break;
+					case 10:
+						AddText("v1.10 - 21 Jun 2021");
+						AddText("");
+						AddText("Using USpecial no longer cracks all your stars");
+						AddText("USpecial Endlag now has whifflag");
+						AddText("");
+						AddText("UAir and FStrong now has less range");
+						AddText("");
+						AddText("UAir startup 14 -> 9");
+						AddText("UAir landing lag 8 -> 6");
+						AddText("UAir Sourspot BKB 4 -> 5");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

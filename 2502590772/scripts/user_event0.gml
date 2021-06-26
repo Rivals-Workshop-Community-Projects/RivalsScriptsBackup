@@ -9,7 +9,7 @@ if (is_master_player) {
     hh_base_knockback_increment = 4;	//additive
     
     hh_percent_per_level = 5;
-    hh_charge_percent_array = [1, 15, 30];
+    hh_charge_percent_array = [1, 15, 25];
     hh_maximum_charge_level = 3;
     
     hh_maximum_charge_expiry_timer = 30;

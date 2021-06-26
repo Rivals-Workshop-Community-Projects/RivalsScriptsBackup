@@ -68,7 +68,7 @@ max_fall = 6; //maximum fall speed without fastfalling
 fast_fall = 12; //fast fall speed
 gravity_speed = .4;
 hitstun_grav = .50;
-knockback_adj = 1.2;//the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 69;//the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 20;
@@ -196,3 +196,5 @@ sprite_change_offset("hground1", 30, 10);
 sprite_change_offset("hground2", 30, 10);
 
 sprite_change_offset("fstrong1", 50, 50);
+
+knockback_adj = 1.05;

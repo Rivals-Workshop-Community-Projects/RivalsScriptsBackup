@@ -100,7 +100,7 @@ set_color_profile_slot( 6, 7, 124, 111, 90 ); //Shoes / Wand 2
 set_color_profile_slot( 7, 0, 196, 196, 196 ); //Cap
 set_color_profile_slot( 7, 1, 59, 61, 61 ); //Shirt
 set_color_profile_slot( 7, 2, 30, 31, 31 ); //Pants
-set_color_profile_slot( 7, 3, 117, 64, 33 ); //Skin
+set_color_profile_slot( 7, 3, 122, 64, 28 ); //Skin
 set_color_profile_slot( 7, 4, 232, 231, 225 ); //Gloves / Scarf
 set_color_profile_slot( 7, 5, 26, 11, 0 ); //Hair
 set_color_profile_slot( 7, 6, 38, 25, 11 ); //Shoes / Wand

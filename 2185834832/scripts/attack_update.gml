@@ -109,7 +109,7 @@ if (attack == AT_DSPECIAL){
 if(attack == AT_EXTRA_1){
 	was_parried = false
 	if(window == 1 && window_timer == 21){
-		if(instance_exists(saw_blade)){
+		if(instance_exists(saw_blade) && !was_parried){
 		spawn_hit_fx(x, y, waterPort);
 		x = saw_blade.x
 		y = saw_blade.y + 69
@@ -261,13 +261,17 @@ if(attack == AT_FSPECIAL){
 		}
 	}else if(free && fspecVar > 0){
 		if(window == 1 && window_timer == 5){
-			vsp = -3
+			if(vsp > -3){
+				vsp = -3
+				hsp += 1 * spr_dir
+			}
 			fspecVar -= 1
 			spawn_hit_fx(x, y, bouncePad)
 			sound_play(asset_get("sfx_watergun_fire"))
 		}
 		if(window == 4 && window_timer == 2){
 			vsp -= 3
+			hsp += 0.5 * spr_dir
 			fspecVar -= 1
 			spawn_hit_fx(x, y, bouncePad)
 			sound_play(asset_get("sfx_watergun_fire"))
@@ -278,6 +282,7 @@ if(attack == AT_FSPECIAL){
 if(attack == AT_USTRONG){
 	can_fast_fall = false
 	if(window == 1){
+		ustrong_cycle = false
 		can_action = false
 		if(free){
 			window_timer = 16
@@ -290,9 +295,13 @@ if(attack == AT_USTRONG){
 		can_shield = true
 	}
 	if(window == 4){
-		if(window_timer == 30){
+		if(window_timer == 15){
 			window_timer = 0
-			can_action = true
+			if(ustrong_cycle){
+				can_action = true
+			}else{
+				ustrong_cycle = true
+			}
 		}
 		if(!free){
 			window = 5
@@ -348,9 +357,19 @@ if(attack == AT_NSPECIAL){
 			window_timer = 0
 		}
 		if(!special_down){
+			if(free){
+				if(vsp > -2){
+					vsp = -2
+				}
+			}
 			window = 3
 			window_timer = 20
 		}else if(state_timer > 70){
+			if(free){
+				if(vsp > -2){
+					vsp = -2
+				}
+			}
 			window = 3
 			window_timer = 20
 			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 14);
@@ -446,6 +465,7 @@ if(attack == AT_DSTRONG){
 	}
 }
 
+/*
 //inner bullshit (jk jk)
 if(alt_cur == 20){
     if(attack == AT_TAUNT && window == 1 && window_timer == 2 && inner_audio = false){
@@ -453,3 +473,4 @@ if(alt_cur == 20){
         inner_audio = true
     }
 }
+*/

@@ -14,14 +14,15 @@ set_window_value(AT_DAIR, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DAIR, 2, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_DAIR, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DAIR, 2, AG_WINDOW_ANIM_FRAME_START, 1);
+set_window_value(AT_DAIR, 2, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_DAIR, 2, AG_WINDOW_SFX, asset_get("sfx_ori_stomp_spin"));
+set_window_value(AT_DAIR, 2, AG_WINDOW_SFX_FRAME, 3);
 
 set_window_value(AT_DAIR, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DAIR, 3, AG_WINDOW_LENGTH, 13);
 set_window_value(AT_DAIR, 3, AG_WINDOW_ANIM_FRAMES, 8);
 set_window_value(AT_DAIR, 3, AG_WINDOW_ANIM_FRAME_START, 3);
-set_window_value(AT_DAIR, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DAIR, 3, AG_WINDOW_VSPEED, -1);
-set_window_value(AT_DAIR, 3, AG_WINDOW_SFX, asset_get("sfx_ori_stomp_spin"));
 
 set_window_value(AT_DAIR, 4, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DAIR, 4, AG_WINDOW_LENGTH, 6);

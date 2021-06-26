@@ -50,13 +50,14 @@ sprite_change_offset("dspecial_air", 18, 37, true);
 sprite_change_offset("taunt", 12, 36, true);
 sprite_change_offset("extra", 18, 35, true);
 sprite_change_offset("extra2", 38, 39, true);
-
+sprite_change_offset("extra3", 24, 36, true);
 sprite_change_offset("plat", 27, 0);
 
 sprite_change_offset("hurtbox", 20, 58);
 sprite_change_offset("hurtbox_hitstunt", 34, 58);
 //custom
 //fx
+sprite_change_offset("rock_lockout_icon", 9, 0)
 sprite_change_offset("fspecial_charge", 50, 62);
 sprite_change_offset("fspecial_dashfx", 0, 102);
 sprite_change_offset("fspecial_groundfx", 40, 94);
@@ -74,6 +75,8 @@ sprite_change_offset("rock_collision", 76, 0);
 sprite_change_offset("rock_overlay", 76, 20);
 sprite_change_offset("rock_proj", 74, 60);
 sprite_change_offset("rock_inactive", 76, 0);
+sprite_change_offset("rock_cracked", 76, 0);
+
 //strongs
 sprite_change_offset("dstrong_rock", 70, 102);
 sprite_change_offset("ustrong_hitbox", 128, 172);

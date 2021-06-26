@@ -1125,7 +1125,7 @@ if window > 2{
 
   		  move_cooldown[AT_USPECIAL_GROUND] = 20
   		  
-prat_land_time = 30;
+prat_land_time = 5;
 nfloat = 0
   if  move_cooldown[AT_EXTRA_1] == 0 && window == 1 && window_timer == 1{
   	set_attack (AT_EXTRA_1)

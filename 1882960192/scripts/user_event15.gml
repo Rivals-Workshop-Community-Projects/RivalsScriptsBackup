@@ -340,6 +340,7 @@ phone.dont_fast = 0;									// Set this to 1, and Fast Graphics will not automa
 // Sprites (you could also include things like these in init.gml if you like)
 
 spr_nspecial_proj = sprite_get("nspecial_proj");
+spr_nspecial_proj2 = sprite_get("nspecial_proj2");
 spr_nspecial_proj3 = sprite_get("nspecial_proj3");
 spr_fspecial_proj = sprite_get("fspecial_proj");
 spr_fspecial_proj2 = sprite_get("fspecial_proj2");
@@ -347,6 +348,7 @@ spr_ftilt_r = sprite_get("ftilt_r");
 spr_ftilt_p = sprite_get("ftilt_p");
 spr_ftilt_s = sprite_get("ftilt_s");
 spr_ftilt_gottem = sprite_get("ftilt_gottem");
+spr_dspecial2 = sprite_get("dspecial2");
 
 /*
 
@@ -420,11 +422,11 @@ with phone{
 	 */
 	
 	initTip("NSpecial: Charging Blasts");
-	initTipWords("You can hold NSpecial in order to shoot more magic blasts. The fourth charge will give you a bigger and stronger B-last! Press shield during charging to stop and store some magic.");
-	initTipImage(player_id.spr_nspecial_proj3, -2, fa_right, 1, c_white, 0);
+	initTipWords("You can hold NSpecial in order to shoot bigger charge shots. The third charge will shoot the biggest and strongest shot! Press shield during charging to stop and store some magic.");
 	initTipImage(player_id.spr_nspecial, -4, fa_left, 1, c_white, 0);
-	initTipImage(player_id.spr_nspecial_proj, -2, fa_center, 1, c_white, 0);
-	
+	initTipImage(player_id.spr_nspecial_proj, -2, fa_right, 1, c_white, 0);
+	initTipImage(player_id.spr_nspecial_proj2, -2, fa_left, 1, c_white, 0);
+	initTipImage(player_id.spr_nspecial_proj3, -2, fa_right, 1, c_white, 0);
 	
 	initTip("Souped Up Specials");
 	initTipWords("If you have some magic charge, you can hold the special button during other specials in order to soup them up!");
@@ -435,17 +437,14 @@ with phone{
 	initTipWords("USpecial will make you go higher as you hold the special button.");
 	initTipImage(player_id.spr_uspecial, 2, fa_left, 1, c_white, 0);
 	
-	initTipWords("DSpecial will launch you even further. The back explosion will also deal more damage, should you manage to land it.");
+	initTipWords("DSpecial will make you dash even further forward. Landing the aerial version also unleashes magic blasts on the ground.");
 	initTipImage(player_id.spr_dspecial, -3, fa_left, 1, c_white, 3);
-	
+	initTipImage(player_id.spr_dspecial2, -3, fa_right, 1, c_white, 3);			
 	
 	initTip("Souped Up Normals");
 	initTipWords("But wait, there's more! You can also use magic charge to power up regular attacks that use Bluey's magic wand.");
 	initTipWords("DTilt inflicts a stun effect similar to full charge NSpecial.");
 	initTipImage(player_id.spr_dtilt, -3, fa_left, 1, c_white, 1);
-	
-	initTipWords("BAir increases the size of the sweetspot.");
-	initTipImage(player_id.spr_bair, -3, fa_left, 1, c_white, 1);
 	
 	initTipWords("UStrong deals more blasts and thus more damage.");
 	initTipImage(player_id.spr_ustrong, -3, fa_left, 1, c_white, 1);
@@ -491,11 +490,6 @@ with phone{
 	initTipWords(" ");
 	initTipImage(player_id.spr_ftilt_gottem, -3, fa_left, 1, c_white, 1);
 	initTipWords("haha gottem");	
-
-	initTip("DSpecial: Cancelling");
-	initTipWords("DSpecial may seem like a boring move that doesn't really do much other than being a decent movement option(which I agree with), but a few frames after its activation, you can cancel it with an aerial. It is most helpful when cancelled with a NAir, Bluey's fastest attack. Zoom!");
-	initTipImage(player_id.spr_nair, -3, fa_left, 1, c_white, 3);
-	initTipImage(player_id.spr_dspecial, -3, fa_right, 1, c_white, 3);
 }
 
 

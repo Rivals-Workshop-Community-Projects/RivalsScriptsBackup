@@ -69,6 +69,8 @@ if (ice == 1){
 	set_hitbox_value(AT_NSPECIAL, 2, HG_EFFECT, 5);
 	set_hitbox_value(AT_NSPECIAL, 3, HG_EFFECT, 5);
 	
+	set_hitbox_value(AT_FSTRONG, 1, HG_EFFECT, 5);
+	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 5);
 	set_hitbox_value(AT_FSTRONG, 2, HG_EFFECT, 5);
 	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 5);
 	
@@ -80,6 +82,8 @@ if (ice == 1){
 	set_hitbox_value(AT_NSPECIAL, 2, HG_EFFECT, 0);
 	set_hitbox_value(AT_NSPECIAL, 3, HG_EFFECT, 0);
 	
+	set_hitbox_value(AT_FSTRONG, 1, HG_EFFECT, 0);
+	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 20);
 	set_hitbox_value(AT_FSTRONG, 2, HG_EFFECT, 0);
 	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 30);
 	
@@ -154,10 +158,10 @@ if (taunt_pressed){
 	set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_PROJECTILE_DESTROY_EFFECT, 193);
 	set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_PROJECTILE_SPRITE, sprite_get("dirt_effect"));
 	
-	set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 12);
+	set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 13);
 	set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_rock"));	
 	
-	set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
+	set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
 				
 	set_num_hitboxes(AT_FSTRONG, 2);
 	
@@ -227,7 +231,7 @@ if (taunt_pressed){
 	thunder = 0
 	pistols = 0
 			
-	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 10);	
+	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 8);	
 	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
 	
 	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 2);
@@ -285,7 +289,7 @@ if (taunt_pressed){
 	set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_PROJECTILE_DESTROY_EFFECT, 199);
 	set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_PROJECTILE_SPRITE, sprite_get("ice_effect"));
 	
-	set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 7);
+	set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 9);
 	set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_ice"));		
 	
 	set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
@@ -357,7 +361,7 @@ if (taunt_pressed){
 	thunder = 1
 	pistols = 0
 	
-	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 17);
+	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 18);
 	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, sound_get("TESLA_CHARGE"));
 	
 	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 2);
@@ -400,7 +404,7 @@ if (taunt_pressed){
 	set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_PROJECTILE_DESTROY_EFFECT, 124);
 	set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_PROJECTILE_SPRITE, sprite_get("thunder_effect"));
 	
-	set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 8);
+	set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 7);
 	set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_plasma"));	
 	
 	set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_strong"));

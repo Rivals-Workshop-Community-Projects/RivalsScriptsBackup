@@ -2,7 +2,7 @@
 user_event(14); 
 
 if !superbluey and !(get_player_color( player ) == 15) { 
-	if (wblastcharge >= 55) { 
+	if (wblastcharge >= 45) { 
 		var outlineclr = (sin((get_gameplay_time() - wblastcharge) * 0.2) * -50) + 50
 		outline_color = [ 0, outlineclr * 1.05, outlineclr * 2];
 		}
@@ -31,7 +31,7 @@ if ballDown > 0 {
 }
 
 if (get_player_color( player ) == 15) {
-	if (wblastcharge >= 55) and ((get_gameplay_time() mod 10) > 5) {
+	if (wblastcharge >= 45) and ((get_gameplay_time() mod 10) > 5) {
 	outline_color = [ 168, 224, 248 ];
 	}
 	else	{	
@@ -41,283 +41,15 @@ if (get_player_color( player ) == 15) {
 
 init_shader();
 
-///Rainbow alt
-if (get_player_color( player ) == 13) {
-hue_offset+=hue_speed;
-hue_offset=hue_offset mod 255; //keeps hue_offset within the 0-255 range
-
-color_rgb=make_color_rgb( 255, 0, 0 ); //input rgb values here, uses rgb to create a gamemaker colour variable
-hue=(color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
-color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
-set_color_profile_slot( 13, 0, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
-init_shader();
-set_color_profile_slot( 13, 2, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
-init_shader();
-set_color_profile_slot( 13, 4, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
-init_shader();
-set_color_profile_slot( 13, 7, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
-init_shader();
-
-hue=(color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
-color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
-set_color_profile_slot( 13, 0, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
-init_shader();
-set_color_profile_slot( 13, 2, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
-init_shader();
-set_color_profile_slot( 13, 4, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
-init_shader();
-set_color_profile_slot( 13, 7, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv)); //uses that variable to set the slot's new colours
-init_shader();
-}
-
-if (wblastcharge > 55) { //Ensure wblastcharge never goes above 55
-	wblastcharge = 55;
+if (wblastcharge > 45) { //Ensure wblastcharge never goes above 55
+	wblastcharge = 45;
 }
 
 if (0 > wblastcharge) { //Ensure wblastcharge never goes below zero
 	wblastcharge = 0;
 }
-
-//Trummel & Alto Codec
 if !(url == 1882960192) {
 	set_state(PS_DEAD);
-}
-if trummelcodecneeded{
-    trummelcodec = 17;
-    trummelcodecmax = 24;
-    trummelcodecsprite1 = sprite_get("talk");
-    trummelcodecsprite2 = sprite_get("talk");
-    var page = 0;
-
-    //Page 0
-    trummelcodecspeaker[page] = 2; //trummel
-    trummelcodecexpression[page] = 0;
-
-    trummelcodecline[page,1] = "wow what a blue guy";
-    trummelcodecline[page,2] = "";
-    trummelcodecline[page,3] = "";
-    trummelcodecline[page,4] = "";
-    page++;
-
-    //Page 1
-    trummelcodecspeaker[page] = 1; //alto
-    trummelcodecexpression[page] = 0;
-
-    trummelcodecline[page,1] = "Yeahh, he's pretty...";
-    trummelcodecline[page,2] = "...bluey, if I'd say so.";
-    trummelcodecline[page,3] = "";
-    trummelcodecline[page,4] = "";
-    page++;
-
-    //Page 2
-    trummelcodecspeaker[page] = 3; //bluey
-    trummelcodecexpression[page] = 0;
-
-    trummelcodecline[page,1] = "Yeahh, well that's";
-    trummelcodecline[page,2] = "my name.";
-    trummelcodecline[page,3] = "";
-    trummelcodecline[page,4] = "";
-    page++;
-	
-    //Page 3
-    trummelcodecspeaker[page] = 1; //alto
-    trummelcodecexpression[page] = 1;
-
-    trummelcodecline[page,1] = "Yes, ye...Hey, were";
-    trummelcodecline[page,2] = "you eavesdropping";
-    trummelcodecline[page,3] = "on us?";
-    trummelcodecline[page,4] = "";
-    page++;
-
-    //Page 4
-    trummelcodecspeaker[page] = 3; //bluey
-    trummelcodecexpression[page] = 1;
-
-    trummelcodecline[page,1] = "I'm very positive";
-    trummelcodecline[page,2] = "you WERE talking about";
-    trummelcodecline[page,3] = "me. Weren't you?";
-    trummelcodecline[page,4] = "";
-    page++;
-	
-    //Page 5
-    trummelcodecspeaker[page] = 1; //alto
-    trummelcodecexpression[page] = 1;
-
-    trummelcodecline[page,1] = "Well...I guess.";
-    trummelcodecline[page,2] = "...You know, you";
-    trummelcodecline[page,3] = "aren't from around";
-    trummelcodecline[page,4] = "here, are you?";
-    page++;
-	
-    //Page 6
-    trummelcodecspeaker[page] = 3; //bluey
-    trummelcodecexpression[page] = 0;
-
-    trummelcodecline[page,1] = "Nope! I'm from,";
-    trummelcodecline[page,2] = "like, an alternate";
-    trummelcodecline[page,3] = "world.";
-    trummelcodecline[page,4] = "";
-    page++;
-	
-    //Page 7
-    trummelcodecspeaker[page] = 2; //trummel
-    trummelcodecexpression[page] = 2;
-
-    trummelcodecline[page,1] = "why are you here";
-    trummelcodecline[page,2] = "then";
-    trummelcodecline[page,3] = "";
-    trummelcodecline[page,4] = "";
-    page++;
-	
-    //Page 8
-    trummelcodecspeaker[page] = 3; //bluey
-    trummelcodecexpression[page] = 0;
-
-    trummelcodecline[page,1] = "Honestly? I";
-    trummelcodecline[page,2] = "don't even know.";
-    trummelcodecline[page,3] = "";
-    trummelcodecline[page,4] = "";
-    page++;
-	
-    //Page 9
-    trummelcodecspeaker[page] = 2; //trummel
-    trummelcodecexpression[page] = 0;
-
-    trummelcodecline[page,1] = "yeah that happens";
-    trummelcodecline[page,2] = "";
-    trummelcodecline[page,3] = "also alto please";
-    trummelcodecline[page,4] = "give strategy";
-    page++;
-	
-    //Page 10
-    trummelcodecspeaker[page] = 1; //alto
-    trummelcodecexpression[page] = 5;
-
-    trummelcodecline[page,1] = "O-oh. Right.";
-    trummelcodecline[page,2] = "Strategy, coming";
-    trummelcodecline[page,3] = "right up!";
-    trummelcodecline[page,4] = "";
-    page++;
-	
-    //Page 11
-    trummelcodecspeaker[page] = 1; //alto
-    trummelcodecexpression[page] = 0;
-
-    trummelcodecline[page,1] = "Alright, so blue guy";
-    trummelcodecline[page,2] = "here has a wand";
-    trummelcodecline[page,3] = "that can carry a";
-    trummelcodecline[page,4] = "load of stuff,";
-    page++;
-	
-    //Page 12
-    trummelcodecspeaker[page] = 1; //alto
-    trummelcodecexpression[page] = 0;
-
-    trummelcodecline[page,1] = "including but not";
-    trummelcodecline[page,2] = "limited to: a pickaxe,";
-    trummelcodecline[page,3] = "an umbrella, a hand on a";
-    trummelcodecline[page,4] = "stick, an exhaust pipe...";
-    page++;
-	
-    //Page 13
-    trummelcodecspeaker[page] = 1; //alto
-    trummelcodecexpression[page] = 0;
-
-    trummelcodecline[page,1] = "Of particular note are";
-    trummelcodecline[page,2] = "his hammer and magic rod.";
-    trummelcodecline[page,3] = "He likes to use 'em the";
-    trummelcodecline[page,4] = "most, and are the deadliest.";
-    page++;
-	
-    //Page 14
-    trummelcodecspeaker[page] = 1; //alto
-    trummelcodecexpression[page] = 0;
-
-    trummelcodecline[page,1] = "His hammer is one of the";
-    trummelcodecline[page,2] = "harder hitting stuff on";
-    trummelcodecline[page,3] = "his kit, and he uses it";
-    trummelcodecline[page,4] = "to launch bowling balls.";
-    page++;
-	
-    //Page 15
-    trummelcodecspeaker[page] = 1; //alto
-    trummelcodecexpression[page] = 0;
-
-    trummelcodecline[page,1] = "His magic wand can be";
-    trummelcodecline[page,2] = "charged to launch powerful";
-    trummelcodecline[page,3] = "B-lasts, or to power up";
-    trummelcodecline[page,4] = "other moves!";
-    page++;
-	
-    //Page 15
-    trummelcodecspeaker[page] = 2; //trummel
-    trummelcodecexpression[page] = 0;
-
-    trummelcodecline[page,1] = "what is a bee last";
-    trummelcodecline[page,2] = "";
-    trummelcodecline[page,3] = "";
-    trummelcodecline[page,4] = "";
-    page++;
-	
-    //Page 16
-    trummelcodecspeaker[page] = 1; //alto
-    trummelcodecexpression[page] = 1;
-
-    trummelcodecline[page,1] = "Uhh...a pun. Y'know,";
-    trummelcodecline[page,2] = "'cause his blasts are";
-    trummelcodecline[page,3] = "B shaped? Hahahaha...";
-    trummelcodecline[page,4] = "";
-    page++;
-	
-    //Page 17
-    trummelcodecspeaker[page] = 2; //trummel
-    trummelcodecexpression[page] = 4;
-
-    trummelcodecline[page,1] = "not funny";
-    trummelcodecline[page,2] = "";
-    trummelcodecline[page,3] = "";
-    trummelcodecline[page,4] = "didn't laugh";
-    page++;
-	
-    //Page 18
-    trummelcodecspeaker[page] = 1; //alto
-    trummelcodecexpression[page] = 4;
-
-    trummelcodecline[page,1] = "Yeah, yeah, whatever.";
-    trummelcodecline[page,2] = "";
-    trummelcodecline[page,3] = "";
-    trummelcodecline[page,4] = "";
-    page++;
-	
-	//Page 19
-    trummelcodecspeaker[page] = 3; //bluey
-    trummelcodecexpression[page] = 1;
-
-    trummelcodecline[page,1] = "I'm guessing you";
-    trummelcodecline[page,2] = "REALLY like talking about";
-    trummelcodecline[page,3] = "someone even while";
-    trummelcodecline[page,4] = "they're listening.";
-    page++;
-	
-    //Page 20
-    trummelcodecspeaker[page] = 1; //alto
-    trummelcodecexpression[page] = 0;
-
-    trummelcodecline[page,1] = "Uhh, it's in our";
-    trummelcodecline[page,2] = "contract.";
-    trummelcodecline[page,3] = "Or something.";
-    trummelcodecline[page,4] = "";
-    page++;
-	
-    //Page 21
-    trummelcodecspeaker[page] = 2; //trummel
-    trummelcodecexpression[page] = 4;
-
-    trummelcodecline[page,1] = "what";
-    trummelcodecline[page,2] = "";
-    trummelcodecline[page,3] = "";
-    trummelcodecline[page,4] = "";
-    page++;
 }
 
 
@@ -425,7 +157,7 @@ if swallowed { //Kirby ability script starts here
 
 ///runes thing
 if has_rune("G") { //Rune G: Charging NSpecial boosts stats.
-	if wblastcharge >= 55 {
+	if wblastcharge >= 45 {
 	walk_anim_speed = .31;
 	dash_anim_speed = .5;
 	

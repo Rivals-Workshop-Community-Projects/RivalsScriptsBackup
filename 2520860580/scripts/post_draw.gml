@@ -1,0 +1,280 @@
+shader_start();
+
+if move_cooldown[AT_EXTRA_3] > 0 && hit_player_obj != self{
+        	draw_sprite_ext(sprite_get("slosh"), 0, hit_player_obj.x , hit_player_obj.y - 36,
+        	1 - (move_cooldown[AT_EXTRA_3]/maxdraw)/2,
+        	1 - (move_cooldown[AT_EXTRA_3]/maxdraw)/2, 
+        	angledraw , -1 , move_cooldown[AT_EXTRA_3]/maxdraw + 0.2);
+
+}
+
+if state == PS_PARRY && state_timer < 20{
+   draw_sprite_ext(sprite_get("parryfx"), state_timer/5, x, y, spr_dir,1,0, -1, 1 - state_timer/20); 
+}
+
+if state_cat == SC_HITSTUN {
+		draw_sprite_ext(sprite_index, image_index, x  , y  , spr_dir, 1, 0 , c_red, 0.3);
+}
+
+
+if attacking && attack == AT_DSTRONG {
+	if window == 1 {
+		draw_sprite_ext(sprite_index, image_index, x + 4 - random_func(1,8,true) , y - random_func(2,8,true)  , spr_dir, 1, 0 , c_white , 0.4);
+}
+
+ if hitstop > 6 {     
+ 	draw_sprite_ext(sprite_get("RCEE"), state_timer  / 3, x , y, 1, 1, 0, -1, random_func(1,14,true)/15 );
+ }
+ 
+if window == 1 {
+
+ if  window_timer % 12 > 6 {     
+ 	draw_sprite_ext(sprite_get("RCEE"), state_timer  / 3, x , y, 1, 1, 0, -1, random_func(1,14,true)/10 );
+ }
+ 
+ if  window_timer % 2 == 0 {     
+ 	draw_sprite_ext(sprite_get("RCEm"), state_timer  / 3, x , y, 1, 1, 0, -1, random_func(2,14,true)/10  )
+ }
+ 
+ if  window_timer % 12 > 4 {     
+ 	draw_sprite_ext(sprite_get("RCEs"), state_timer  / 3, x , y, 1, 1, 0, -1, random_func(3,14,true)/10  );
+ }
+
+}
+
+if window == 3 && window_timer > 20{
+     if  window_timer % 3 == 0 {     
+ 	draw_sprite_ext(sprite_get("RCEE"), state_timer  / 3, x , y, random_func(1,3,true)/10 + 0.7, random_func(1,3,true)/10 + 0.7, 0, -1, 1  )
+ }
+      if  window_timer % 3 == 0 {     
+ 	draw_sprite_ext(sprite_get("RCEE"), state_timer  / 3, x , y, 1, 1, 0, -1, 1  )
+ }
+ 
+ if  window_timer % 3 ==  1 {     
+ 	draw_sprite_ext(sprite_get("RCEs"), state_timer  / 3, x , y, 1, 1, 0, -1, 1  );
+ }
+    
+     if  window_timer % 3 ==  1 {     
+ 	draw_sprite_ext(sprite_get("RCEs"), state_timer  / 3, x , y, random_func(1,3,true)/10 + 0.7, random_func(1,3,true)/10 + 0.7, 0, -1, 1  );
+ }
+
+}   
+
+
+if window == 2{
+   if window_timer <= 10 {
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x - 60 - window_timer*6, y , 1, 1,0, -1,0.7 - window_timer/10  );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x - 120- window_timer*3, y , 1, 1,0, -1,0.7 - window_timer/10   );
+      
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x - 40 - window_timer*4, y - 40 - window_timer*4 , 1, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x - 80 - window_timer*2, y - 80 - window_timer*2 , 1, 1,0, -1,0.7 - window_timer/10   );
+      
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x , y - 60 - window_timer*6 , 1, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x , y - 120 - window_timer*3 , 1, 1,0, -1,0.7 - window_timer/10   );
+
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x + 40 + window_timer*4, y - 40 - window_timer*4 , 1, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x + 80 + window_timer*2, y - 80 - window_timer*2 , 1, 1,0, -1,0.7 - window_timer/10   );
+      
+            
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x + 60 + window_timer*6, y , 1, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x + 120 + window_timer*3, y , 1, 1,0, -1,0.7 - window_timer/10  );
+  }  
+}
+
+if window == 4{
+   if window_timer <= 10 {
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x - 60 + window_timer*6, y , spr_dir, 1,0, -1,0.7 - window_timer/10  );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x - 120 + window_timer*3, y , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x - 40 + window_timer*4, y - 40 + window_timer*4 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x - 80 + window_timer*2, y - 80 + window_timer*2 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x , y - 60 + window_timer*6 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x , y - 120 + window_timer*3 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x + 40 - window_timer*4, y - 40 + window_timer*4 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x + 80 - window_timer*2, y - 80 + window_timer*2 , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      
+            
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x + 60 - window_timer*6, y , spr_dir, 1,0, -1,0.7 - window_timer/10   );
+      draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x + 120 - window_timer*3, y , spr_dir, 1,0, -1,0.7 - window_timer/10  );
+  }  
+}
+
+if window == 3 && window_timer >= 20 {
+	
+ if  window_timer % 3 == 0  or window_timer == 20{     
+       RSE1 = random_func(11, 300, true);
+		 RSE2 = random_func(12, 300, true);
+ }
+		 
+		 
+ if  window_timer % 3 == 1 or window_timer == 20 {     
+ 	 RSE3 = random_func(13, 300, true);
+	 RSE4 = random_func(14, 300, true);
+ }
+		 
+       
+
+ 
+
+         draw_sprite_ext(sprite_get("slashc"), window_timer / 2, x - 150 + RSE1, y - 150 + RSE2, spr_dir, 1,0, -1,0.6 );
+         draw_sprite_ext(sprite_get("SC"), window_timer / 1, x - 150 + RSE3, y - 150 + RSE4, spr_dir, 1,0, -1,0.6  );
+         draw_sprite_ext(sprite_get("airdodge"), window_timer / 2, x + 150 - RSE1, y + 150 - RSE2, spr_dir, 1,0, -1,0.6  );
+         draw_sprite_ext(sprite_get("roll_backward"), window_timer / 2, x + 150 - RSE3, y + 150 - RSE4, spr_dir, 1,0, -1,0.6  );
+         draw_sprite_ext(sprite_get("nair"), window_timer / 2, x + 150 - RSE4, y + 150 - RSE3, spr_dir, 1,0, -1,0.6  );
+         draw_sprite_ext(sprite_get("dattack"), window_timer / 2, x + 150 - RSE2, y + 150 - RSE1, spr_dir, 1,0, -1,0.6  );
+
+}
+
+
+}
+
+
+if phase >= 3 && get_gameplay_time() % 5 < 3 && downed == 0{
+	  gpu_set_blendmode(bm_add);
+	  
+	  switch get_player_color(player) {
+	  	case 0 :
+        draw_sprite_ext(sprite_index, image_index, x + 2 - shsp*1.1 - random_func(1,4,true) , y - 2 - (10 * triggered) - svsp*1.1 + random_func(2,4,true)  , spr_dir, 1, 0 , c_purple , 0.2);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - shsp*1.05 + random_func(1,4,true) , y + 2 - (10 * triggered) - svsp*1.05 - random_func(2,4,true)  , spr_dir, 1, 0 , c_aqua , 0.3);
+        break ;
+
+	  	case 1 :
+        draw_sprite_ext(sprite_index, image_index, x + 2 - shsp*1.1 - random_func(1,4,true) , y - 2 - (10 * triggered) - svsp*1.1 + random_func(2,4,true)  , spr_dir, 1, 0 , c_red , 0.2);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - shsp*1.05 + random_func(1,4,true) , y + 2 - (10 * triggered) - svsp*1.05 - random_func(2,4,true)  , spr_dir, 1, 0 , c_red , 0.3);
+        break ;
+
+	  	case 2 :
+        draw_sprite_ext(sprite_index, image_index, x + 2 - shsp*1.1 - random_func(1,4,true) , y - 2 - (10 * triggered) - svsp*1.1 + random_func(2,4,true)  , spr_dir, 1, 0 , c_purple , 0.2);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - shsp*1.05 + random_func(1,4,true) , y + 2 - (10 * triggered) - svsp*1.05 - random_func(2,4,true)  , spr_dir, 1, 0 , c_blue  , 0.3);
+        break ;
+
+	  	case 3 :
+        draw_sprite_ext(sprite_index, image_index, x + 2 - shsp*1.1 - random_func(1,4,true) , y - 2 - (10 * triggered) - svsp*1.1 + random_func(2,4,true)  , spr_dir, 1, 0 , -1 , 0.1);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - shsp*1.05 + random_func(1,4,true) , y + 2 - (10 * triggered) - svsp*1.05 - random_func(2,4,true)  , spr_dir, 1, 0 , -1 , 0.2);
+        break ;
+        
+	  	case 4 :
+        draw_sprite_ext(sprite_index, image_index, x + 2 - shsp*1.1 - random_func(1,4,true) , y - 2 - (10 * triggered) - svsp*1.1 + random_func(2,4,true)  , spr_dir, 1, 0 , c_fuchsia , 0.2);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - shsp*1.05 + random_func(1,4,true) , y + 2 - (10 * triggered) - svsp*1.05 - random_func(2,4,true)  , spr_dir, 1, 0 , c_blue , 0.3);
+        break ;
+
+	  	case 5 :
+        draw_sprite_ext(sprite_index, image_index, x + 2 - shsp*1.1 - random_func(1,4,true) , y - 2 - (10 * triggered) - svsp*1.1 + random_func(2,4,true)  , spr_dir, 1, 0 , c_red , 0.2);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - shsp*1.05 + random_func(1,4,true) , y + 2 - (10 * triggered) - svsp*1.05 - random_func(2,4,true)  , spr_dir, 1, 0 , c_yellow , 0.3);
+        break ;
+
+	  	case 6 :
+        draw_sprite_ext(sprite_index, image_index, x + 2 - shsp*1.1 - random_func(1,4,true) , y - 2 - (10 * triggered) - svsp*1.1 + random_func(2,4,true)  , spr_dir, 1, 0 , c_aqua , 0.2);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - shsp*1.05 + random_func(1,4,true) , y + 2 - (10 * triggered) - svsp*1.05 - random_func(2,4,true)  , spr_dir, 1, 0 , c_blue , 0.3);
+        break ;
+
+	  	case 7 :
+        draw_sprite_ext(sprite_index, image_index, x + 2 - shsp*1.1 - random_func(1,4,true) , y - 2 - (10 * triggered) - svsp*1.1 + random_func(2,4,true)  , spr_dir, 1, 0 , c_fuchsia , 0.2);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - shsp*1.05 + random_func(1,4,true) , y + 2 - (10 * triggered) - svsp*1.05 - random_func(2,4,true)  , spr_dir, 1, 0 , c_blue , 0.3);
+        break ;        
+
+	  	case 8 :
+        draw_sprite_ext(sprite_index, image_index, x + 2 - shsp*1.1 - random_func(1,4,true) , y - 2 - (10 * triggered) - svsp*1.1 + random_func(2,4,true)  , spr_dir, 1, 0 , c_green , 0.2);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - shsp*1.05 + random_func(1,4,true) , y + 2 - (10 * triggered) - svsp*1.05 - random_func(2,4,true)  , spr_dir, 1, 0 , c_lime , 0.3);
+        break ;      
+        
+	  }
+ 
+  gpu_set_blendmode(bm_normal);
+  
+}
+
+
+if ending > 0 {
+		draw_set_alpha(0.4);
+        draw_rectangle_color(0,0,room_width,room_height,0,0,0,0,false);
+    	draw_set_alpha(1);
+    	
+    	total = stock + time + style
+
+         draw_debug_text(room_width/2 - 80,room_height/2 - 115,"!!!BOSS DEFEATED!!!");
+         if temp_level == 1 {
+         draw_debug_text(room_width/2 - 80,room_height/2 - 100,"Difficulty: Dante Must Die");	
+         }
+         if temp_level > 1 && temp_level < 6 {
+         draw_debug_text(room_width/2 - 80,room_height/2 - 100,"Difficulty: Human");	
+         }
+         if temp_level > 6 && temp_level < 9 {
+         draw_debug_text(room_width/2 - 80,room_height/2 - 100,"Difficulty: Demon Hunter");	
+         }
+         if temp_level >= 9{
+         draw_debug_text(room_width/2 - 80,room_height/2 - 100,"Difficulty: Sons of Sparda");	
+         }         
+         
+    	if ending < 520 {
+    		   draw_debug_text(room_width/2 - 60,room_height/2 - 80,"Stock:  " + string(stock));
+    	}
+    	    	
+    	if ending < 500 {
+    		   draw_debug_text(room_width/2 - 60,room_height/2 - 65,"Style:  " + string(style));
+    	}
+    	
+    	if ending < 480 {
+    		   draw_debug_text(room_width/2 - 60,room_height/2 - 50,"Time:  " + string(time));
+    	}
+    	
+    	if ending < 460 {
+    		   draw_debug_text(room_width/2 - 60,room_height/2 - 35,"Total:  " + string(total));
+    	}
+    	
+    	if ending < 400 {
+    		   draw_debug_text(room_width/2 - 80,room_height/2 - 0,"RANK:");
+    		   
+    		   
+
+    	             if total < 800 {
+    	             	  draw_sprite_ext(sprite_get("rank"), 5, room_width/2 ,room_height/2 - 0 , 1, 1,0, -1,1  );
+    		   		      draw_sprite_ext(sprite_get("rank"), 10, room_width/2 ,room_height/2 - 0 , 1, 1,0, -1, (ending - 360)/40  );
+	                
+                     }
+	                 
+	                 if total >= 800 && total < 1200{
+	                      draw_sprite_ext(sprite_get("rank"), 6, room_width/2 ,room_height/2 - 0 , 1, 1,0, -1,1  );
+    		   		      draw_sprite_ext(sprite_get("rank"), 11, room_width/2 ,room_height/2 - 0 , 1, 1,0, -1, (ending - 360)/40  );
+	                 }
+                 
+	                 if total >= 1200 && total < 1600{
+	                 	  draw_sprite_ext(sprite_get("rank"), 7, room_width/2 ,room_height/2 - 0 , 1, 1,0, -1,1  );
+    		   		      draw_sprite_ext(sprite_get("rank"), 12, room_width/2 ,room_height/2 - 0 , 1, 1,0, -1, (ending - 360)/40  );
+	                 }
+                 
+	                 if total >= 1600 && total < 2000{
+	                 	  draw_sprite_ext(sprite_get("rank"), 8, room_width/2 ,room_height/2 - 0 , 1, 1,0, -1,1  );
+    		   		      draw_sprite_ext(sprite_get("rank"), 13, room_width/2 ,room_height/2 - 0 , 1, 1,0, -1, (ending - 360)/40  );
+	                 }
+                 
+	                 if total >= 2000 && total < 2400{
+	                  	  draw_sprite_ext(sprite_get("rank"), 9, room_width/2 ,room_height/2 - 0 , 1, 1,0, -1,1  );
+    		   		      draw_sprite_ext(sprite_get("rank"), 14, room_width/2 ,room_height/2 - 0 , 1, 1,0, -1, (ending - 360)/40  );
+	                 }
+	                 
+	                 if total >= 2400 && total < 2800{
+	                  	  draw_sprite_ext(sprite_get("rank"), 9, room_width/2 ,room_height/2 + 6 , 1, 1,0, -1,1  );
+    		   		      draw_sprite_ext(sprite_get("rank"), 14, room_width/2 ,room_height/2 + 6 , 1, 1,0, -1, (ending - 360)/40  );	                 	
+	                   	  draw_sprite_ext(sprite_get("rank"), 9, room_width/2 + 14,room_height/2 - 0 , 1, 1,0, -1,1  );
+    		   		      draw_sprite_ext(sprite_get("rank"), 14, room_width/2 + 14 ,room_height/2 - 0 , 1, 1,0, -1, (ending - 360)/40  );
+	                 }
+	                 
+	                 if total >= 2800 {
+	                  	  draw_sprite_ext(sprite_get("rank"), 9, room_width/2 ,room_height/2 + 6 , 1, 1,0, -1,1  );
+    		   		      draw_sprite_ext(sprite_get("rank"), 14, room_width/2 ,room_height/2 + 6 , 1, 1,0, -1, (ending - 360)/40  );	                 	
+	                   	  draw_sprite_ext(sprite_get("rank"), 9, room_width/2 + 14,room_height/2 - 0 , 1, 1,0, -1,1  );
+    		   		      draw_sprite_ext(sprite_get("rank"), 14, room_width/2 + 14 ,room_height/2 - 0 , 1, 1,0, -1, (ending - 360)/40  );
+	                   	  draw_sprite_ext(sprite_get("rank"), 9, room_width/2 - 14,room_height/2 - 0 , 1, 1,0, -1,1  );
+    		   		      draw_sprite_ext(sprite_get("rank"), 14, room_width/2 - 14 ,room_height/2 - 0 , 1, 1,0, -1, (ending - 360)/40  );    		   		      
+	                 }
+	                 
+    	}
+}
+
+shader_end() 
+
+
+

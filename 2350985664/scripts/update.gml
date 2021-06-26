@@ -51,6 +51,7 @@ for (var i = 0; i < ds_list_size(caged_list); i += 1)
     opp.hitpause = true;
     opp.hitstop = 1;
     opp.hitstop_full = 2;
+    opp.blind_immune_time = 24;
     
     if (cage_time_list[|i] % 4 == 0) and (cage_time_list[|i] < 30)
     {
@@ -99,6 +100,11 @@ with (oPlayer)
     if (self!= other)
     {
         blinded -= 1;
+        
+        if (blind_immune_time > 0)
+        {
+            blind_immune_time -= 1
+        }
     }
     switch(state)
     {

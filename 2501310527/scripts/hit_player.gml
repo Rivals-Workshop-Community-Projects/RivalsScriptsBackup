@@ -11,7 +11,7 @@ if (my_hitboxID.attack == AT_NSPECIAL_AIR){
         else {
         	spawn_hit_fx( blaster.x, blaster.y, 306 );
         	kamikaze_dir = spr_dir;
-        	take_damage(player, -1, 5);
+        	take_damage(player, -1, 8);
         	destroy_hitboxes();
 //        	sound_play(sound_get("kamikazehit_smw"));
         	visible = false;

@@ -31,8 +31,6 @@ set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 1);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_NSPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_NSPECIAL, 4, AG_WINDOW_VSPEED, -2);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_SFX, asset_get("sfx_waterhit_heavy"));
 

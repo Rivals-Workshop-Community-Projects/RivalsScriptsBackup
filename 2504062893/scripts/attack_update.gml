@@ -1,6 +1,14 @@
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (/*attack == AT_NSPECIAL || */attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
+}
+if (attack == AT_NSPECIAL){
+	if ((left_down && window == 1 && spr_dir == 1) || (right_down && window == 1 && spr_dir == -1) && (reversed == false)) {
+	    spr_dir *= -1;
+	    reversed = true;
+	} else if (window == 2) {
+	    reversed = false;
+	}	
 }
 
 

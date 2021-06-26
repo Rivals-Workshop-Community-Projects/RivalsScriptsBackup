@@ -1,16 +1,25 @@
 //hitbox_update
 if (attack == AT_NSPECIAL) {
-	if !(hbox_num == 3) {
+	if hbox_num == 1 {
 		if hitbox_timer == 1 || hitbox_timer mod 4 == 0 {
 			spawn_hit_fx(x, y, player_id.nspecialAfter);
 		}
 	}
-	
-	else if hitbox_timer == 1 || hitbox_timer mod 5 == 0 {
-			spawn_hit_fx(x-10*spr_dir, y, player_id.nspecialAfter2);
-			spawn_hit_fx(x-20*spr_dir, y+26, player_id.nspecialAfter);
-			spawn_hit_fx(x-20*spr_dir, y-26, player_id.nspecialAfter);
+
+	if hbox_num == 2 {
+		if hitbox_timer == 1 || hitbox_timer mod 4 == 0 {
+			spawn_hit_fx(x, y, player_id.nspecialAfter2);
+			spawn_hit_fx(x-30*spr_dir, y, player_id.nspecialAfter);			
 		}
+	}
+
+	if hbox_num == 3 { 
+		if hitbox_timer == 1 || hitbox_timer mod 5 == 0 {
+				spawn_hit_fx(x-10*spr_dir, y, player_id.nspecialAfter2);
+				spawn_hit_fx(x-20*spr_dir, y+26, player_id.nspecialAfter);
+				spawn_hit_fx(x-20*spr_dir, y-26, player_id.nspecialAfter);
+		}
+	}
 }
 
 if (attack == AT_FSPECIAL) {
@@ -81,7 +90,7 @@ if (attack == AT_FSPECIAL) {
 				
 				if (attack == AT_FSTRONG) {
 					other.old_vsp = -6;
-					other.old_hsp = 8.5 * (spr_dir);
+					other.old_hsp = 9 * (spr_dir);
 				}
 				
 				if (attack == AT_DSTRONG) {
@@ -207,7 +216,7 @@ if (attack == AT_FSPECIAL_2) {
 				
 				if (attack == AT_FSTRONG) {
 					other.old_vsp = -6;
-					other.old_hsp = 9.5 * (spr_dir);
+					other.old_hsp = 9 * (spr_dir);
 				}
 				
 				if (attack == AT_FSPECIAL_AIR) {

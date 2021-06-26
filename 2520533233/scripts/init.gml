@@ -40,8 +40,10 @@ rainbow_color_ULTRADARK = c_white;
 
 //possible meter idea
 tenshi_magic = 0;
+old_tenshi_magic = 0;
 tenshi_magic_max = 1800;
-can_vo = true;
+can_vo = 0;
+hotbar_color = make_colour_hsv(0, 212, 208);
 
 //objects
 tenshi_grazebox = noone;

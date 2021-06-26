@@ -1,7 +1,6 @@
 shader_end();
 draw_sprite_ext(sprite_get("rock_overlay"),0, x, y, 1, 1, image_angle, c_white, abs(((get_gameplay_time()/4)%10 - 5)/10));
 
-
         
         
         // OFFSCREEN

@@ -150,7 +150,7 @@ set_hitbox_value(AT_DSTRONG, 6, HG_WIDTH, 160);
 set_hitbox_value(AT_DSTRONG, 6, HG_HEIGHT, 80);
 set_hitbox_value(AT_DSTRONG, 6, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSTRONG, 6, HG_DAMAGE, 7);
-set_hitbox_value(AT_DSTRONG, 6, HG_ANGLE, 40);
+set_hitbox_value(AT_DSTRONG, 6, HG_ANGLE, 45);
 set_hitbox_value(AT_DSTRONG, 6, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_DSTRONG, 6, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DSTRONG, 6, HG_BASE_HITPAUSE, 9);

@@ -2,19 +2,13 @@
 
 if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) and wblastcharge > 0 and showHUD == true {
 		{
-		if wblastcharge >= 55 {
-		draw_sprite_ext(sprite_get("nspecialcharge"), 4, x, y-60, 1, 1, 0, c_white, .8);
+		if wblastcharge >= 45 {
+		draw_sprite_ext(sprite_get("nspecialcharge"), 2, x, y-60, 1, 1, 0, c_white, .8);
 		}
 	
 		else
 	
-		if wblastcharge >= 35 {
-		draw_sprite_ext(sprite_get("nspecialcharge"), 2, x, y-60, 1, 1, 0, c_white, .6);
-		}
-	
-		else
-	
-		if wblastcharge >= 15 {
+		if wblastcharge >= 25 {
 		draw_sprite_ext(sprite_get("nspecialcharge"), 1, x, y-60, 1, 1, 0, c_white, .6);
 		}
 	

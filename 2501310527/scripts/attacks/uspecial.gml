@@ -35,7 +35,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_WIDTH, 54);
 set_hitbox_value(AT_USPECIAL, 1, HG_HEIGHT, 33);
 set_hitbox_value(AT_USPECIAL, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 3);
-set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 80);
+set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 30);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, 1);
 
@@ -49,7 +49,7 @@ set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 71);
 set_hitbox_value(AT_USPECIAL, 2, HG_HEIGHT, 36);
 set_hitbox_value(AT_USPECIAL, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 3);
-set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 80);
+set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 30);
 set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_GROUP, 1);
 
@@ -63,7 +63,7 @@ set_hitbox_value(AT_USPECIAL, 3, HG_WIDTH, 65);
 set_hitbox_value(AT_USPECIAL, 3, HG_HEIGHT, 28);
 set_hitbox_value(AT_USPECIAL, 3, HG_PRIORITY, 3);
 set_hitbox_value(AT_USPECIAL, 3, HG_DAMAGE, 3);
-set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE, 80);
+set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE, 30);
 set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_GROUP, 1);
 

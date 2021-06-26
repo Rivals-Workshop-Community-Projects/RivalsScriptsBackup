@@ -37,7 +37,7 @@ set_window_value(AT_FSTRONG_2, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSTRONG_2, 3, AG_WINDOW_LENGTH, 40); //variable duration, set in attack_update.gml
 set_window_value(AT_FSTRONG_2, 3, AG_WINDOW_ANIM_FRAMES, 8); //looping; animated in animation.gml
 set_window_value(AT_FSTRONG_2, 3, AG_WINDOW_ANIM_FRAME_START, 13);
-set_window_value(AT_FSTRONG_2, 3, AG_WINDOW_HSPEED, 8.5); //attack_update pulls this value and scales up to 1.5x depending on charge time
+set_window_value(AT_FSTRONG_2, 3, AG_WINDOW_HSPEED, 9); //attack_update pulls this value and scales up to 1.5x depending on charge time
 set_window_value(AT_FSTRONG_2, 3, AG_WINDOW_HSPEED_TYPE, 2); //don't maintain speed here, attack_update maintains speed
 set_window_value(AT_FSTRONG_2, 3, AG_WINDOW_VSPEED_TYPE, 1); //don't fall
 

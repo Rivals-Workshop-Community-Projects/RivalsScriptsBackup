@@ -42,3 +42,7 @@ explode = false;
 destroyed = false;
 
 aimed_id = noone;
+
+my_hitbox = create_hitbox( AT_DSPECIAL, 1, x, y )
+
+

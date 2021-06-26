@@ -23,6 +23,7 @@ if(state == 0){
 //State 1, stay in one spot, calculate next movement, detect if hit
 if(state == 1){
 	var hitboxhit = noone;
+	hitplayer = player;
 	with (pHitBox){
 		if (place_meeting(x,y,other) and (other.id != player_id) and (attack != AT_NSPECIAL)) {
 			if(other.hitconnect == false){
@@ -40,7 +41,11 @@ if(state == 1){
 		            hitconnect = true;
 		        }
 		        hitplayer = other.player;
-		        hitstrength = other.kb_value;
+		        if(other.kb_value != 0){
+		        	hitstrength = other.kb_value;
+		        } else {
+		        	hitstrength = 5;
+		        }
 		        hitpausing = other.hitpause;
 		        //print_debug(string(hitpausing));
 		        hitboxhit = other.id;
@@ -100,7 +105,9 @@ if(state == 2){
 		state = 1;
 		state_timer = 0;
 		death_timer = 0;
-		create_hitbox( AT_NSPECIAL, 1, x - 10*spr_dir, y );
+		if(hitplayer == player or hitplayer == 0){
+			create_hitbox( AT_NSPECIAL, 1, x - 10*spr_dir, y );
+		}
 	}
 }
 

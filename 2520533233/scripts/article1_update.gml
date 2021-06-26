@@ -20,13 +20,12 @@ var hit = false;
 var hitID = noone;
 
 //only graze if its available
-if(can_graze){
+if(can_graze and player_id.state != PS_RESPAWN){
 	with pHitBox{
     	if(place_meeting(x, y, other) and (player != other.player or can_hit_self) and hit_priority != 0){
     		other.counter_graze = false;
     		if(other.tenshi.attack == AT_EXTRA_2 and (other.tenshi.state == PS_ATTACK_GROUND or other.tenshi.state == PS_ATTACK_AIR)){
     			other.counter_graze = true;
-    			
     		}
         	hit = true;
         	hitID = id;
@@ -59,7 +58,7 @@ if((graze_timer == graze_lockout and can_graze and !counter_graze) or (graze_tim
 		blue = true;
 	}
 	if(!counter_graze){
-    	sound_play(sound_get("graze_vo"));
+    	sound_play(sound_get("graze_collect4"));
 	}
     for(i = 0; i < 9; i++){
     	var xrng = -graze_dir * (20 - random_func(i, 30, true));
@@ -83,7 +82,7 @@ if((graze_timer == graze_lockout and can_graze and !counter_graze) or (graze_tim
 } else if (graze_timer <= graze_lockout*4+1){
 	graze_timer++;
 	if(graze_timer == 4 and counter_graze){
-		sound_play(sound_get("graze_vo"));
+		sound_play(sound_get("graze_collect4"));
 	} 
 }
 

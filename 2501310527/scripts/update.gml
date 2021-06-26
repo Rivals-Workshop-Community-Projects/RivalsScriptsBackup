@@ -18,8 +18,37 @@ if (state == PS_ATTACK_AIR && attack == AT_NSPECIAL_AIR){
 move_cooldown[AT_STRONG] = 999;
 
 //Spawns the Smoke VFX when entering the Blaster with Strong
-if (state == PS_ATTACK_GROUND && attack == AT_STRONG && window == 1 && window_timer == 0){
+if (state == PS_ATTACK_GROUND && attack == AT_STRONG && window == 1 && window_timer == 1){
 	spawn_hit_fx( x, y-20, blaster_smoke_big );
+	
+}
+
+if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_STRONG && window != 1 && window != 12){
+	set_attack_value(AT_STRONG, AG_SPRITE, sprite_get("strong"));
+    hurtboxID.sprite_index = sprite_get("strong_hurt");
+    blaster_strong_draw = true;
+    //Going forward
+    if (window == 2 && window_timer == 0){
+        x = blaster.x +50*spr_dir;
+        y = blaster.y +30;
+    }
+    //Going diagonally up
+    if (window == 4 && window_timer == 0){
+        x = blaster.x +40*spr_dir;
+        y = blaster.y;
+    }
+    //Going diagonally down
+    if (window == 10 && window_timer == 0){
+        x = blaster.x +40*spr_dir;
+        y = blaster.y +50;
+    }
+    //Going Up or Down
+    if ((window == 6 || window == 8) && window_timer == 0){
+        x = blaster.x +10*spr_dir;
+    }
+    if (window == 8 && window_timer == 0){
+        y = blaster.y +50;
+    }
 }
 
 //Going from Kamikaze to Blaster
@@ -199,6 +228,13 @@ if (torpedo_grab == true){
 }
 
 //DSpecial Blaster stuff
+if (blaster_mini_time > 0){
+	blaster_mini_time--;
+	if (blaster_mini_time == 1 || blaster_mini_time == 11 || blaster_mini_time == 21 || blaster_mini_time == 31){
+		spawn_hit_fx( blaster_mini_x, blaster_mini_y, blaster_smoke_tiny );	
+	}
+}
+
 if (blaster_mini_shoot == 1){
 	if (blaster_mini == round(blaster_mini) && blaster_mini > 0){
 		create_hitbox(AT_DSPECIAL, 8, blaster.x, blaster.y);

@@ -172,7 +172,8 @@ forceNoWater = false
 stupid_hit_var = false
 can_action = false
 enemykirby = noone
-inner_audio = false
+inner_audio = true
+ustrong_cycle = true
 alt_cur = get_player_color(player);
 
 //Pokemon Stadium

@@ -102,6 +102,24 @@ if (my_hitboxID.attack == AT_USPECIAL){
 	// move_cooldown[AT_USPECIAL] = 60; //doesn't work this way
 }
 
+if (my_hitboxID.attack == AT_NSPECIAL){
+	if (!opponent_stunned){
+		stored_hsp = hsp;
+		stored_vsp = vsp;
+	}
+	
+	if (hit_player_obj.state == PS_HITSTUN){
+		if (hit_player.state_timer <= 1){
+			opponent_stunned = true;
+			hsp = 0;
+			vsp = 0;
+		}
+	} else {
+		hsp = stored_hsp;
+		vsp = stored_vsp;
+	}
+}
+
 // if (attack == AT_JAB){
 // 	// print("jab")
 // 	// if window == 4 || ((hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND) && hit_player_obj.state_timer == 0){

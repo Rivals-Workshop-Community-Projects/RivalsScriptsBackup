@@ -20,6 +20,8 @@ if (get_player_color( player ) == 1) {
 	set_character_color_shading(3, 1.5);
 	set_character_color_shading(4, 1.5);
 	set_character_color_shading(7, .8);
+	winner_name = "bluy win!";
+	char_name = "bluy";
 }
 
 if (get_player_color( player ) == 2) {

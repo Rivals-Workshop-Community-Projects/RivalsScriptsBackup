@@ -2,6 +2,15 @@
 
 switch(my_hitboxID.attack)
 {
+	case AT_DSPECIAL:
+		with (obj_article3)
+        {
+        	if (player_id == other)
+        	{
+        		explode = true;
+        	}
+        }
+	break;
 	case AT_NSPECIAL:
 		if (my_hitboxID.hbox_num == 1) or (my_hitboxID.hbox_num == 2)
 		{

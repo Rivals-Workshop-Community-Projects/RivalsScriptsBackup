@@ -236,11 +236,6 @@ switch (attack)
                 {
                     if (uspecLanded || !free || (has_rune("F") && has_hit_player))
                         set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
-                    with(asset_get("obj_article1")) if (player_id == other.id && state == 1 && !cracked)
-                    {
-                        cracked = true;
-                        crackedTimer = 0;
-                    }
                 }
                 break;
         }
@@ -267,7 +262,7 @@ switch (attack)
             {
                 var uwu = spawn_hit_fx(x, y-floor(char_height/2), 305); uwu.depth = -10;
             	x = other.x;
-                y = other.y - 115;
+                y = other.y - 95;
                 hsp = 0;
                 vsp = 0;
                 old_hsp = 0;
