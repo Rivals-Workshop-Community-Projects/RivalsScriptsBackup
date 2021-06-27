@@ -236,9 +236,19 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+if (attack == AT_USPECIAL_2 && window == 3){
+	can_jump = true;
+	has_airdodge = true;
+	if has_walljump = true {
+		can_walljump = true;
+	}
+}
+
 if (attack == AT_NSPECIAL){
     move_cooldown[AT_NSPECIAL] = 25;
 } 
+
+
 
 if (attack == AT_FSPECIAL_AIR){ 
     if(window == 3){
@@ -263,13 +273,13 @@ if attack == AT_DSPECIAL {
     }
     //gaining moist
     if window == 2 && !moist_gained && on_mud && window_timer == 1 {
-        moist_rn += 30;
+        moist_rn += 25;
         if (has_rune("F")){
         	moist_rn += 45;
         }
         moist_gained = true;
     } 
-    if (window_timer == 25 && special_down){
+    if (window_timer == 19 && special_down){
         attack_end(); //"ends" attack, really just frees hitboxes from "has already hit" status
     	window_timer = 0;
 

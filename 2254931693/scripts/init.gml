@@ -123,6 +123,8 @@ fspecial_waveeffect = hit_fx_create( sprite_get( "fspecial_trumpetwave" ), 20 );
 taunt_flasheffect = hit_fx_create( sprite_get( "tauntflash" ), 16 );
 frog_despawneffect = hit_fx_create( sprite_get( "frog_despawn" ), 16 );
 
+user_event(1);
+
 indicator_color = get_player_hud_color( player );
 
 //character/stage support

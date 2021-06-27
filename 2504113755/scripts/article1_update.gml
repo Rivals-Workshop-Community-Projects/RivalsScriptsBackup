@@ -128,7 +128,7 @@ if (state == 3) {
 	image_index += 0.15
 	if (state_timer == 26) {
 			instance_destroy()
-			player_id.num_articles -= 1
+		//	player_id.num_articles -= 1
 			exit;
 		
 	}
@@ -164,7 +164,7 @@ if hitstop <= 0 {
     if hit_lockout <= 0 
     
     with pHitBox {
-        if place_meeting(x,y,other) && "hitbox_has_hit_article" not in self   && ((player_id != other.player_id) || (player_id == other.player_id && !(attack == AT_FSTRONG && hbox_num == 2 ) && !(attack == AT_USPECIAL && hbox_num == 2 ))) {
+        if place_meeting(x,y,other) && "hitbox_has_hit_article" not in self   && ((player_id != other.player_id) || (player_id == other.player_id && !(attack == AT_FSTRONG && hbox_num == 2 ) && !(attack == AT_USPECIAL && hbox_num == 2 ))) && hit_priority > 0 {
         	
         	
         	
@@ -232,7 +232,7 @@ if hitstop <= 0 {
            other.state_timer = 0
            
            
-           if (attack == AT_DSTRONG || attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DATTACK || attack == AT_USPECIAL) {
+           if (attack == AT_DSTRONG || attack == AT_FSTRONG || attack == AT_USTRONG  || attack == AT_USPECIAL) {
            other.explosion_frame_offset = 6 }
            else { other.explosion_frame_offset = 2 }
            
@@ -260,7 +260,49 @@ if hitstop <= 0 {
            		
            	}
            	
-           	
+           	if (attack == AT_DATTACK) {
+           		
+           		
+           			var lerpam
+	lerpam = [0.5, 0.5]
+	
+
+	other.x = lerp(floor(other.x), x + 10*spr_dir, lerpam[0])
+	other.y = lerp(floor(other.y), y + 10, lerpam[1])
+           	} else if (attack == AT_USTRONG){
+           		
+           		     			var lerpam
+	lerpam = [0.5, 0.5]
+	
+
+	other.x = lerp(floor(other.x), x , lerpam[0])
+	other.y = lerp(floor(other.y), y + 30, lerpam[1])
+           		
+           		
+           		
+           	}else if (attack == AT_FSPECIAL){
+           		
+           		     			var lerpam
+	lerpam = [0.5, 0.5]
+	
+
+	other.x = lerp(floor(other.x), x - 10*spr_dir, lerpam[0])
+	other.y = lerp(floor(other.y), y + 25, lerpam[1])
+           		
+           		
+           		
+           	} else if (attack == AT_DAIR){
+           		
+           		     			var lerpam
+	lerpam = [0.5, 0.5]
+	
+
+	other.x = lerp(floor(other.x), x , lerpam[0])
+	other.y = lerp(floor(other.y), y + 15, lerpam[1])
+           		
+           		
+           		
+           	}
            	
            
            //HITS IT UP

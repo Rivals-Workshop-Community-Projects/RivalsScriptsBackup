@@ -18,6 +18,75 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 #endregion
 
 
+
+#region jab
+
+if (attack == AT_JAB) {
+	if (window == 1) {
+		set_attack_value(AT_JAB, AG_NUM_WINDOWS, 3);
+transition_to_jab_two = false
+transition_to_jab_one = false
+}
+
+
+if (window == 3 && attack_pressed) {
+	transition_to_jab_two = true
+	
+}
+if (joy_pad_idle && (transition_to_jab_two && window == 3) && ((has_hit_player && window_timer > 6) || (!has_hit_player && window_timer > 11))) {
+	
+			set_attack_value(AT_JAB, AG_NUM_WINDOWS, 6);
+window = 4
+window_timer = 0
+	
+}
+
+
+
+if ((window == 3 || window == 6) && window_timer == 9 && has_hit_player) {
+	
+	iasa_script()
+} 
+
+
+
+}
+
+#endregion
+
+
+
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #region dattack
 
 if (attack == AT_DATTACK) {
@@ -142,73 +211,67 @@ if (attack == AT_DSTRONG) {
 #region fspecial
 
 if (attack == AT_FSPECIAL) {
+	
+	
+	                if (place_meeting(x + hsp, y, asset_get("par_block")) && free) {
+	                	for (var i = 1; i < 35; i++){
+                        if (!place_meeting(x + hsp, y- i ,asset_get("par_block"))) {
+	                	
+	                	
+	                	                            y -= i;
+break;
+                        }
+	                }
+}
+	
+	if (!has_hit && free) {
+		
+		set_window_value(AT_FSPECIAL, 13, AG_WINDOW_TYPE, 7);
+
+		
+		
+	} 	else 	set_window_value(AT_FSPECIAL, 13, AG_WINDOW_TYPE, 0);
+
     
     
-    if (window == 3 && window_timer > 10) {
+    if (window == 13 && window_timer > 10) {
         
                 can_wall_jump = true
 
     }
     can_fast_fall = false
-    	move_cooldown[AT_FSPECIAL] = 99999
+   // 	move_cooldown[AT_FSPECIAL] = 99999
 
+
+if (window == 1 && window_timer == 10) {
+	
+//	 sound_play(asset_get("sfx_bird_downspecial"))
+    
+	 
+}
     
     if !hitpause {
         
         //movement
-        if (window == 2 || (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
-            if (window_timer >= 0 && window_timer < 3) {
-                hsp = 7*spr_dir
-                
-            } else if (window_timer > 5 && window_timer < 12) {
-                hsp = 7*spr_dir
-                
-            } else if (window_timer > 14 && window_timer < 21) {
-                hsp = 7*spr_dir
-                
-            } else if (window_timer > 23 && window_timer < 30) {
-                hsp = 7*spr_dir
-                
-            } else if (window_timer > 32 && window_timer < 39) {
-                hsp = 7*spr_dir
-                
-            } else {hsp = 0}
-            
-            
-            
-        }
         
-        
-        
-    if (window == 2 && ( window_timer == 14 ||  window_timer == 32)) {
-        
-                sound_play(asset_get("sfx_clairen_swing_med"))
-
-        
-        
-    }
-     if (window == 2 && (window_timer == 5  || window_timer == 23 )) {
-        
-                sound_play(asset_get("sfx_clairen_swing_weak"))
-
+        if (window > 1 && window < 12) {
+        	
+      if ((image_index == 3 || image_index == 6 || image_index == 9 || image_index == 12 || image_index == 15) || ((window == 5 || window == 7 || window == 9 || window == 11) && window_timer == 2)) {
       
-        
-    }
-    if (window == 2 && window_timer == 41) {
-        
-                sound_play(asset_get("sfx_clairen_swing_mega_instant"))
-
+      hsp = 0
       
+        } else hsp = 9*spr_dir }
         
-    } }
+        
+     }
     
-      if ((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 2) {
+      if ((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || (window >=  2 && window < 12)) {
             
             draw_indicator = false
         } 
         
 }
-if (attack == AT_FSPECIAL && has_hit_player && window == 2 && window_timer < 42 && !hitpause) { //hi delta
+if (attack == AT_FSPECIAL && has_hit_player && window < 12 && !hitpause) { //hi delta
 if (!hit_player_obj.activated_kill_effect) {
 if (hit_player_obj.state == PS_HITSTUN) {
 	var lerpam
@@ -297,7 +360,7 @@ if (attack == AT_USTRONG) {
     }
     
       
-    if (window == 3 && window_timer == 1) {
+    if (window == 3 && window_timer == 1 && !hitpause) {
         
         sound_play(asset_get("sfx_clairen_spin"))
     }
@@ -380,6 +443,12 @@ if (attack == AT_NAIR) {
 if (attack == AT_USPECIAL) {
     can_fast_fall = false
    // can_move = false
+    
+    if (window == 1 && window_timer == 6) {
+    	
+    	sound_play(asset_get("sfx_bird_sidespecial_start"))
+    }
+    
     
     if  ((window == 2 || (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) && !hitpause) {
         

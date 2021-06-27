@@ -46,10 +46,14 @@ if (attack == AT_JAB) {
 	if (window == 8 && window_timer == 10) {sound_play(asset_get("sfx_bird_sidespecial_start"), false, noone, 0.8, 1);}
 }
 
-if (attack == AT_DATTACK){
+if (attack == AT_DATTACK) {
 	if (window == 1) {
 		dattackCancelPower = 0;
 		set_attack_value(AT_DATTACK, AG_CATEGORY, 2);
+		set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 14);
+		set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED_TYPE, 1);
+		set_window_value(AT_DATTACK, 2, AG_WINDOW_VSPEED, -8);
+		set_window_value(AT_DATTACK, 2, AG_WINDOW_VSPEED_TYPE, 1);
 	}
 	if (window == 3) {
 		set_attack_value(AT_DATTACK, AG_CATEGORY, 1);
@@ -60,7 +64,7 @@ if (attack == AT_DATTACK){
 	if (!free) {
 		dattackCancelPower++;
 	}
-	if (dattackCancelPower > 16) {
+	if (dattackCancelPower > 14) {
 		can_attack = true;
 		can_jump = true;
 		can_shield = true;
@@ -95,6 +99,11 @@ if (attack == AT_DATTACK){
 	}	
 	
 	if (window > 2) {can_wall_jump = true;}
+	
+	if (window == 3 && !hitpause && window_timer < 12) {
+		x += right_down - left_down;
+		y += (down_down - up_down) * 2;
+	}
 }
 
 if (attack == AT_DAIR) {
@@ -118,6 +127,7 @@ if (attack == AT_DAIR) {
 
 if (attack == AT_DTILT) {
 	if (window == 1 && window_timer == 1) {
+		if (right_down - left_down != 0) {spr_dir = right_down - left_down;}
 		if (instance_exists (construct)) {instance_destroy(construct);}
 		construct = instance_create(x, y, "obj_article2");
 		construct.spr_dir = spr_dir;
@@ -131,6 +141,7 @@ if (attack == AT_DTILT) {
 
 if (attack == AT_UTILT) {
 	if (window == 1 && window_timer == 1) {
+		if (right_down - left_down != 0) {spr_dir = right_down - left_down;}
 		if (instance_exists (construct)) {instance_destroy(construct);}
 		construct = instance_create(x, y, "obj_article2");
 		construct.spr_dir = spr_dir;
@@ -140,6 +151,12 @@ if (attack == AT_UTILT) {
 	}
 	if (window == 1 && window_timer == 6) {sound_play(asset_get("sfx_charge_blade_swing"), false, noone, 0.7, 1.2);}
 	if (window == 2) {construct.fall_forward = true;}
+}
+
+if (attack == AT_FTILT) {
+	if (window == 1 && window_timer == 1) {
+		if (right_down - left_down != 0) {spr_dir = right_down - left_down;}
+	}
 }
 
 if (attack == AT_DSTRONG) {
@@ -433,7 +450,7 @@ if (attack == AT_FSPECIAL) {
 if (attack == AT_USPECIAL || attack == AT_USPECIAL_GROUND){
 	if (window == 2 && window_timer == 2) {
 		madePlat = 0;
-		if (canMakePlat == 0 && actionMeterFill >= 199) {
+		if (canMakePlat == 0 && actionMeterFill >= 199 && !shield_down) {
 			spawn_hit_fx(x, y, empoweredFX);	
 			actionMeterFill = 0;
 			actionMeterStatus = 0;

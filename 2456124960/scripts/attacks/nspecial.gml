@@ -6,7 +6,7 @@ set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 set_attack_value(AT_NSPECIAL, AG_CATEGORY, 2);
 
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
 
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_TYPE, 1);
@@ -52,6 +52,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, hitA);
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
@@ -74,6 +75,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, hitA);
 
 set_hitbox_value(AT_NSPECIAL, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 1);
@@ -93,6 +95,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, .45);
 set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, .35);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
+set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, hitA);
 
 set_hitbox_value(AT_NSPECIAL, 4, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_TYPE, 2);
@@ -117,6 +120,7 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT, hitB);
 
 set_hitbox_value(AT_NSPECIAL, 5, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_TYPE, 2);
@@ -141,3 +145,4 @@ set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 5, HG_VISUAL_EFFECT, hitC);

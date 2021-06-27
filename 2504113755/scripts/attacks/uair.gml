@@ -41,6 +41,8 @@ set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_weak"));
 set_hitbox_value(AT_UAIR, 1, HG_HIT_PARTICLE_NUM, 1)
 set_hitbox_value(AT_UAIR, 1, HG_HITBOX_GROUP, 3)
 set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, plasma_x);
+set_window_value(AT_UAIR, 1, AG_WINDOW_VSPEED, -1);
+
 
 
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_TYPE, 1);

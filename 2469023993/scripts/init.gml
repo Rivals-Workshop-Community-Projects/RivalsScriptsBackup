@@ -133,8 +133,24 @@ if (get_player_color( player ) == 29){
 	set_victory_theme(sound_get("bowservictory"));
 } else if (get_player_color( player ) == 18){
 	set_victory_theme(sound_get("pepsivictory"));
+} else if (get_player_color( player ) == 31){
+	set_victory_theme(sound_get("z3ke"));
+} else if (get_player_color( player ) == 16){
+	set_victory_theme(sound_get("hollow"));
+} else if (get_player_color( player ) == 24){
+	set_victory_theme(sound_get("halland"));
+} else if (get_player_color( player ) == 30){
+	set_victory_theme(sound_get("yoyoyo"));
+} else if (get_player_color( player ) == 23){
+	set_victory_theme(sound_get("geometryvictory"));
 } else if (get_player_color( player ) == 25){
-	set_victory_theme(sound_get("meatvictory"));
-} else if (get_player_color( player ) != 18 && get_player_color( player ) != 29 && get_player_color( player ) != 25){
+	set_victory_theme(sound_get("meatvictory2"));
+} else if (get_player_color( player ) == 26){
+	set_victory_theme(sound_get("saltvictory"));
+} else if (get_player_color( player ) == 27){
+	set_victory_theme(sound_get("mousevictory"));
+} else if (get_player_color( player ) == 28){
+	set_victory_theme(sound_get("catvictory"));
+} else if (get_player_color( player ) != 18 && get_player_color( player ) != 29 && get_player_color( player ) != 23 && get_player_color( player ) != 25 && get_player_color( player ) != 26 && get_player_color( player ) != 27 && get_player_color( player ) != 28 && get_player_color( player ) != 30 && get_player_color( player ) != 31 && get_player_color( player ) != 24 && get_player_color( player ) != 16){
 	set_victory_theme(sound_get("nox_victory"));
 }

@@ -1030,6 +1030,9 @@ if window > 2 {
     famiy += floor((y-56-famiy)/4)
 }
 
+if has_hit_player && vsp > 0{
+	vsp /= 2
+}
 	
 prat_land_time = 10;
 nfloat = 0

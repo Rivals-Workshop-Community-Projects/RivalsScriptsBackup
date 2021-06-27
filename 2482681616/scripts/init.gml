@@ -134,7 +134,7 @@ slowstart_knockback_mult = 0.7; //Slow Start's KB multiplier (Apply to KB)
 slowstart_knockbackscale_mult = 0.7; //Slow Start's KBS multiplier (Apply to KBS)
 slowstart_movement_mult = 0.75; //Slow Start's movement multiplier (Apply to stats)
 
-slowstart_duration = 90 * 60; //Duration of Slow Start (in frames)
+slowstart_duration = 60 * 60; //Duration of Slow Start (in frames)
 slowstart_timer = slowstart_duration;
 
 slowstart_stateffect_duration = 60;

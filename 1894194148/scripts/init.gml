@@ -327,9 +327,10 @@ dracula_speaker[page] = 1;
 dracula_text[page] = "Enough talk... have at you.";
 page++;
 
-user_event(14);
-
-
+phone_disable = true;
+phone_manual_init = 0;
+AT_PHONE = 40;
+phone_arrow_cooldown = 0;
 
 
 

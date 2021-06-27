@@ -67,7 +67,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 40);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, .7);
+set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
@@ -90,18 +90,18 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true)
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 2);
 
 set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, 7);
-set_hitbox_value(AT_DSPECIAL, 2, HG_PARENT_HITBOX, 1);
-set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 400);
+//set_hitbox_value(AT_DSPECIAL, 2, HG_PARENT_HITBOX, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 5);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_Y, -33);
 set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 110);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 110);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, 1);
-set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 10);
+set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 6);
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 45);
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, .8);
-set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, 0.8);
+set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, .5);
+set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 9);
+set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE_FLIPPER, 3);
 //set_hitbox_value(AT_DSPECIAL, 1, HG_TECHABLE, 1);
@@ -119,7 +119,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_EXTENDED_PARRY_STUN, true)
 
 
 
-
+/*
 set_hitbox_value(AT_DSPECIAL, 1, HG_MUNO_HITBOX_EXCLUDE, 2);
 
 

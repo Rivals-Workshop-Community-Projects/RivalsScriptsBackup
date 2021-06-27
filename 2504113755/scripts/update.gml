@@ -31,7 +31,7 @@ with (obj_article1) if player_id == other {
 
 if (!free || state == PS_WALL_JUMP || state == PS_HITSTUN) {
 	
-	move_cooldown[AT_FSPECIAL] = 0
+//	move_cooldown[AT_FSPECIAL] = 0
 	dspecial_not_used_yet_in_air = true
 }
 
@@ -43,34 +43,48 @@ move_cooldown[AT_NSPECIAL]	 = 100
 
 /// afterimage
 // afterimage
-if (afterImageTimer > 0 && !hitpause)
-{
+
+
+if (((attack == AT_FSPECIAL && !(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)) && !(blink_state_timer <= 12))) {
 	
+			afterImageTimer = 0
+
+	
+}
+
+
+
 	
 
-    	
-    	afterImage[afterImageTimer-1]={sprite_index:sprite_index,image_index:image_index,x:x,y:y,spr_dir:spr_dir,alpha:10};
-    afterImageTimer--;
-    	
-    
-}
-else
+
+	
+if (afterImageTimer > 0 && !hitpause) 
 {
-	if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && window < 3) {
-	//	if (window == 2 && window_timer == 4) {
-			
-		//	
-		//	if (window == 2) {
-				
-				
-			//	if (window_timer == 0 || window_timer == 3 || window_timer == 5)
-				afterImageTimer = 1
-		//	} else  {afterImageTimer = 0 }
+	
+	
+		//	for  (var i = afterImageTimer - 1; i > 0; i--){
+
+    //	if !(attack == AT_FSPECIAL && afterImageTimer < 2) {
+    	afterImage[afterImageTimer - 1]={sprite_index:sprite_index,image_index:image_index,x:x,y:y,spr_dir:spr_dir,alpha:10,window:window,window_timer:window_timer};
+    afterImageTimer--;
+    //	}
+    
+    
+		//	}
+    
+} else {
+
+if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && ((window < 13) || (window == 13 && window_timer < 4))) {
+
+
+
+				afterImageTimer = 16
+
 		
 		
 	
 		
-	} else  if (blink_state_timer <= blink_start_frame && blink_state_timer > (blink_start_frame - 3))
+	}  else if (blink_state_timer <= blink_start_frame && blink_state_timer > (blink_start_frame - 3))
 	
 	{afterImageTimer = 8 }
 		else if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && window == 1 && window_timer == 3) {
@@ -79,13 +93,13 @@ else
 	}
 	else {afterImageTimer = 0}
 	
- 
+}
 	
 	
 	
 //	afterImageTimer = torren_speedforce?16:0; //variable = condition ? <expression1 (if true)> : <expression2 (if false)>
-}
-for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i].alpha > 0) afterImage[i].alpha--;
+
+for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i].alpha > -1) afterImage[i].alpha--;
 
 
 
@@ -93,6 +107,7 @@ for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i]
 if (abs(hud_offset) < 1)  {hud_offset = 0 }
 
 
+	
 
 
 
@@ -293,7 +308,7 @@ if rival_players==1 and !noturn {
 #region blink
 
 
- if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && has_hit && attack != AT_FSPECIAL && attack != AT_DSPECIAL && attack != AT_USPECIAL && attack != AT_FSTRONG && attack != AT_USTRONG && attack != AT_DSTRONG) {
+ if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && has_hit_player && attack != AT_FSPECIAL && attack != AT_DSPECIAL && attack != AT_USPECIAL && attack != AT_FSTRONG && attack != AT_USTRONG && attack != AT_DSTRONG) {
 	
 	can_blink = true
 
@@ -309,6 +324,15 @@ if rival_players==1 and !noturn {
 
 
 can_blink = false }
+
+if has_rune("A") {
+ if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && has_hit && attack != AT_FSPECIAL && attack != AT_DSPECIAL && attack != AT_USPECIAL && attack != AT_FSTRONG && attack != AT_USTRONG && attack != AT_DSTRONG) {
+	
+	can_blink = true
+
+	
+} }
+
 
 
 if (was_parried) {
@@ -370,6 +394,10 @@ return_airdodge = false
 
 		if (blink_state_timer == (blink_start_frame - 1)) {
 			sound_play(asset_get("sfx_clairen_nspecial_grab_success"))
+				//		sound_play(asset_get("sfx_absa_singlezap1"))
+
+			//	 
+
 			nova_clone = instance_create(x, y, "obj_article1");
 		}
 		
@@ -377,7 +405,7 @@ return_airdodge = false
 	else if (blink_state_timer >= (blink_start_frame) && blink_state_timer <= (blink_start_frame + 7)) {
 		
 		        destroy_hitboxes()
-
+state_timer -= 1
 		if (has_airdodge) {
 			
 			has_airdodge = false
@@ -404,7 +432,7 @@ return_airdodge = false
 		
 	}
 	//only goes to teleport if NOT in hitpause
-	if (hitpause && blink_state_timer < blink_start_frame) {
+	if (hitpause && blink_state_timer < (blink_start_frame - 1)) {
 	blink_state_timer = (blink_start_frame - 3) } else  {	blink_state_timer += 1 }
 	
 	

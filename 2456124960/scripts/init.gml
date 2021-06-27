@@ -174,7 +174,13 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
+hitA = hit_fx_create( sprite_get( "illidrium_hfx_sml" ), 18 );
+hitB = hit_fx_create( sprite_get( "illidrium_hfx_med" ), 18 );
+hitC = hit_fx_create( sprite_get( "illidrium_hfx_lrg" ), 18 );
+
 empoweredFX = hit_fx_create( sprite_get( "fxEmpowered" ), 28 );
+powerhit = hit_fx_create( sprite_get( "vfx_powerhit" ), 18 );
+armorblock = hit_fx_create( sprite_get( "vfx_armorblock" ), 18 );
 
 gbeamFail = hit_fx_create( sprite_get( "nspecial_beam_fail" ), 30 );
 gbeamSmall = hit_fx_create( sprite_get( "nspecial_beam_small" ), 30 );
@@ -213,5 +219,7 @@ set_victory_portrait(sprite_get("portrait_ext"));
 
 steve_death_message = "Steve took critical damage!!";
 arena_title = "Crafty Constructor";
+boxing_title = "Illidrium Wielder";
+boxing_short_name = "Nate";
 battle_text = "* Purple sparks fizzle through the air.";
 miiverse_post = sprite_get("miiverse");

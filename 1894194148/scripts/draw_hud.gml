@@ -36,6 +36,15 @@ txt[32]="AND THE WEB CONSUMES US ALL";
 draw_debug_text( temp_x, temp_y - 20, string(txt[id % 33]));
 }
 
+
+if (variable_instance_exists(id,"phone_disable")){
+	if (!phone_disable){
+		if (phone_manual_init >= 1){
+			user_event(11);
+		}
+	}
+}
+
 //abyss gui code
 ab_hud_x = temp_x;
 ab_hud_y = temp_y;

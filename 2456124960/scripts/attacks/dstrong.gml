@@ -47,3 +47,4 @@ set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_LOCKOUT, 8);
+set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, hitC);

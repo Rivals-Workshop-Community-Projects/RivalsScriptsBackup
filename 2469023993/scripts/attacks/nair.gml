@@ -56,7 +56,7 @@ set_hitbox_value(AT_NAIR, 2, HG_DAMAGE, 2);
 set_hitbox_value(AT_NAIR, 2, HG_ANGLE, 0);
 set_hitbox_value(AT_NAIR, 2, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_NAIR, 2, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(AT_NAIR, 2, HG_VISUAL_EFFECT, 301);
+set_hitbox_value(AT_NAIR, 2, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_NAIR, 2, HG_HIT_SFX, asset_get("sfx_ori_seinhit_weak"));
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NAIR, 2, HG_ANGLE_FLIPPER, 9);

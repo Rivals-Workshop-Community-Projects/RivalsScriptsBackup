@@ -83,27 +83,27 @@ ground_friction = 0.7;
 moonwalk_accel = 1.0;
 
 jump_start_time = 5;
-jump_speed = 15.3;
-short_hop_speed = 9.37;
-djump_speed = 17.49;
+jump_speed = 12;
+short_hop_speed = 7;
+djump_speed = 12.5;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
-jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
+max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 5.5; //the maximum hsp you can accelerate to when in a normal aerial state
+jump_change = 4; //maximum hsp when double jumping. If already going faster, it will not slow you down //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = 0.30;
 prat_fall_accel = 0.85; //multiplier of air_accel while in pratfall
-air_friction = 0.03;
+air_friction = 0.04;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 6;
 walljump_vsp = 11;
 walljump_time = 10;
 wall_frames = 2;
-max_fall = 11.70; //maximum fall speed without fastfalling
-fast_fall = 14.21; //fast fall speed
-gravity_speed = 0.90;
-hitstun_grav = 0.55;
-knockback_adj = 1.14; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+max_fall = 10; //maximum fall speed without fastfalling
+fast_fall = 15; //fast fall speed
+gravity_speed = .65;
+hitstun_grav = .5;
+knockback_adj = 1.1;  //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 14;
@@ -214,8 +214,11 @@ set_hitbox_value(AT_JAB, 2, HG_HITPAUSE_SCALING, .4);
 
 
 ///Fair 
+set_attack_value(AT_FAIR, AG_LANDING_LAG, 6);
+
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
+
 
 set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 5);
@@ -291,6 +294,7 @@ set_hitbox_value(AT_NAIR, 2, HG_TECHABLE, 0);
 set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_UAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
 set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_attack_value(AT_UAIR, AG_LANDING_LAG, 7);
 
 set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 8);
 ///Dair 
@@ -299,7 +303,7 @@ set_attack_value(AT_DAIR, AG_CATEGORY, 1);
 set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("dair"));
 set_attack_value(AT_DAIR, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_DAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_DAIR, AG_LANDING_LAG, 6);
+set_attack_value(AT_DAIR, AG_LANDING_LAG, 5);
 set_attack_value(AT_DAIR, AG_HURTBOX_SPRITE, sprite_get("dair_hurt"));
 
 set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 6);
@@ -627,10 +631,10 @@ set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_WINDOW, 3);
 set_hitbox_value(AT_USPECIAL, 3, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_USPECIAL, 3, HG_LIFETIME, 1); 
-set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_X, -2);
-set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_Y, -28);
-set_hitbox_value(AT_USPECIAL, 3, HG_WIDTH, 40);
-set_hitbox_value(AT_USPECIAL, 3, HG_HEIGHT, 40);
+set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_X, 0);
+set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_Y, -30);
+set_hitbox_value(AT_USPECIAL, 3, HG_WIDTH, 50);
+set_hitbox_value(AT_USPECIAL, 3, HG_HEIGHT, 50);
 set_hitbox_value(AT_USPECIAL, 3, HG_PRIORITY, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_DAMAGE, 9);
 set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE, 40);
@@ -670,7 +674,7 @@ set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_GROUP, 1);
 
 /// Dspec 
 set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 3);
-set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 5);

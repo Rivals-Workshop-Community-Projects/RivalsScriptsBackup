@@ -60,6 +60,7 @@ set_hitbox_value(AT_USPECIAL_2, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HITBOX_GROUP, 0);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_DRIFT_MULTIPLIER, 0.1);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_SDI_MULTIPLIER, 0.1);
+set_hitbox_value(AT_USPECIAL_2, 1, HG_VISUAL_EFFECT, 1);
 
 set_hitbox_value(AT_USPECIAL_2, 2, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_HITBOX_TYPE, 1);
@@ -83,6 +84,7 @@ set_hitbox_value(AT_USPECIAL_2, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_DRIFT_MULTIPLIER, 0.1);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_SDI_MULTIPLIER, 0.1);
+set_hitbox_value(AT_USPECIAL_2, 2, HG_VISUAL_EFFECT, 1);
 
 set_hitbox_value(AT_USPECIAL_2, 3, HG_PARENT_HITBOX, 3);
 set_hitbox_value(AT_USPECIAL_2, 3, HG_HITBOX_TYPE, 1);
@@ -106,6 +108,7 @@ set_hitbox_value(AT_USPECIAL_2, 3, HG_TECHABLE, 1);
 set_hitbox_value(AT_USPECIAL_2, 3, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_USPECIAL_2, 3, HG_DRIFT_MULTIPLIER, 0.1);
 set_hitbox_value(AT_USPECIAL_2, 3, HG_SDI_MULTIPLIER, 0.1);
+set_hitbox_value(AT_USPECIAL_2, 3, HG_VISUAL_EFFECT, 1);
 
 set_hitbox_value(AT_USPECIAL_2, 4, HG_PARENT_HITBOX, 4);
 set_hitbox_value(AT_USPECIAL_2, 4, HG_HITBOX_TYPE, 1);
@@ -129,6 +132,7 @@ set_hitbox_value(AT_USPECIAL_2, 4, HG_TECHABLE, 1);
 set_hitbox_value(AT_USPECIAL_2, 4, HG_HITBOX_GROUP, 3);
 set_hitbox_value(AT_USPECIAL_2, 4, HG_DRIFT_MULTIPLIER, 0.1);
 set_hitbox_value(AT_USPECIAL_2, 4, HG_SDI_MULTIPLIER, 0.1);
+set_hitbox_value(AT_USPECIAL_2, 4, HG_VISUAL_EFFECT, 1);
 
 set_hitbox_value(AT_USPECIAL_2, 5, HG_PARENT_HITBOX, 5);
 set_hitbox_value(AT_USPECIAL_2, 5, HG_HITBOX_TYPE, 1);
@@ -152,6 +156,7 @@ set_hitbox_value(AT_USPECIAL_2, 5, HG_TECHABLE, 1);
 set_hitbox_value(AT_USPECIAL_2, 5, HG_HITBOX_GROUP, 4);
 set_hitbox_value(AT_USPECIAL_2, 5, HG_DRIFT_MULTIPLIER, 0.1);
 set_hitbox_value(AT_USPECIAL_2, 5, HG_SDI_MULTIPLIER, 0.1);
+set_hitbox_value(AT_USPECIAL_2, 5, HG_VISUAL_EFFECT, 1);
 
 set_hitbox_value(AT_USPECIAL_2, 6, HG_PARENT_HITBOX, 6);
 set_hitbox_value(AT_USPECIAL_2, 6, HG_HITBOX_TYPE, 1);
@@ -174,3 +179,4 @@ set_hitbox_value(AT_USPECIAL_2, 6, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_USPECIAL_2, 6, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_USPECIAL_2, 6, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));
 set_hitbox_value(AT_USPECIAL_2, 6, HG_HITBOX_GROUP, 5);
+set_hitbox_value(AT_USPECIAL_2, 6, HG_VISUAL_EFFECT, 1);

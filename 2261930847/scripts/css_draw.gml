@@ -4,8 +4,8 @@ shader_end();
 
 var alt_cur = get_player_color(player);
  
-patch_ver = "3.0";
-patch_day = "8";
+patch_ver = "3.1";
+patch_day = "24";
 patch_month = "JUN";
  
 var alt_cur = get_player_color(player);

@@ -59,4 +59,8 @@ with (asset_get("obj_article2")){
 //	draw_sprite_ext( get_sprite("lightning"), (floor(lightn_state/2)), lightconfirm_x, lightcenter_y, 1, lighttemp_ys, 0, c_white, 1 );	
 //	}
 
-user_event(12);
+if (!phone_disable){
+	if (phone_manual_init >= 1){
+		user_event(12);
+	}
+}

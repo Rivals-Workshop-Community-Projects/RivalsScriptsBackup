@@ -1,11 +1,10 @@
 // Muno template - [CORE] set_attack
 
-// Edit this file only if you know what you're doing - only user_event15.gml
-// contains user-defined content.
+// DO NOT EDIT - Only edit user_event15.gml
 
 
 
-if get_attack_value(attack, AG_MUNO_ATTACK_COOLDOWN) != 0 switch (get_attack_value(attack, AG_MUNO_ATTACK_CD_SPECIAL)){
+if !phone_lightweight && get_attack_value(attack, AG_MUNO_ATTACK_COOLDOWN) != 0 switch (get_attack_value(attack, AG_MUNO_ATTACK_CD_SPECIAL)){
 	case 1:
 		move_cooldown[attack] = phone_arrow_cooldown;
 		break;
@@ -17,7 +16,7 @@ if get_attack_value(attack, AG_MUNO_ATTACK_COOLDOWN) != 0 switch (get_attack_val
 
 
 if (attack == AT_TAUNT){
-	if (joy_pad_idle && phone_practice && (muno_char_id != noone || phone.stage_id != noone)){ // phone
+	if (joy_pad_idle && phone_practice){ // phone
 		attack = AT_PHONE;
 		phone.state = (phone.state == 0) ? 1 : 6;
 		phone.state_timer = 0;

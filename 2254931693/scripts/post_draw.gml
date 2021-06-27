@@ -6,5 +6,6 @@ if ((state = PS_ATTACK_GROUND || state = PS_ATTACK_AIR) && attack == AT_NSPECIAL
     draw_sprite_ext(sprite_get("fspecialropeend"), -1, hit_player_obj.x, hit_player_obj.y - 38, spr_dir, 1, 0, c_white, 1 );
 } 
 
+user_event(8);
 
 user_event(12);

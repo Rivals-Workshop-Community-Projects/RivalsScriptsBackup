@@ -55,13 +55,13 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, .5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 30);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 90);
-set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 127);
+set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 112);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("nspecial_proj"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .5);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 17);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 15);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_UNBASHABLE, 1);

@@ -2,8 +2,10 @@
 
 shader_start();
 
+if !attacking or (attacking && attack != AT_FSPECIAL && attack != AT_DSPECIAL  && attack != AT_USPECIAL ) {
 if move_cooldown[AT_EXTRA_2] > 0 {
     draw_sprite_ext(sprite_get("hhhproj"), get_gameplay_time(), famix , famiy , 1.05, 1.05, 0 , c_black , 0.6);	
+}
 }
 
 

@@ -95,7 +95,7 @@ pratfall_anim_speed = 0.25;
 
 // Jumps
 double_jump_time    = 33;		// 24   -  40
-walljump_time       = 32;		// 18   -  32
+walljump_time       = 45;		// 18   -  32
 wall_frames         = 1;		// may or may not actually work... dan pls
 
 // Parry
@@ -177,12 +177,18 @@ blink_countdown = 0
 blink_state_timer = 20
 can_blink = true
 
+
+ x_offset = 0
+ y_offset = 0
+
+
 walking_backward_counter = 0
 
 swords_merged = false
 dspecial_not_used_yet_in_air = true
 dspecial_started_from_ground = false
 has_cancelled = false
+old_y_offset = 0
 
 blink_start_frame = 5 //sorry suckers!
 

@@ -1,9 +1,9 @@
 
 //64//128//192//256//320//384//448//512//576//640//704//768//832//896//960//1024//1088//1152//1216//1280//1344//1408//1472//1536//1600//1664//1728//1792//1856//1920//1984//2048
 //2112//2176//2240//2304//2368//2432//2496//2560//2624//2688//2752//2816//2880//2944//3008//3072//3136//3200//3264//3328//3392//////////////////
-set_view_position(x+1300, y +500);//1p視点
+set_view_position(x+1300, y +500);
 
-set_view_position(x+view_x, y +view_y);//1p視点
+set_view_position(x+view_x, y +view_y);
 
 
 
@@ -34,7 +34,7 @@ with oPlayer {//oPlayer
 if (get_player_team( player ) == 1) {
 
 }else{
-//set_view_position(x+player, y+player);//1p視点
+//set_view_position(x+player, y+player);
 //    if (variable_instance_exists(id, "temp_level")) {
 		x = room_width / 3;
 		y = room_width / 4;

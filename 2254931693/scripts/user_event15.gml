@@ -577,6 +577,17 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	initPatch("2.1.1", "June 25th, 2021");
+	initPatchWords("-Forward-Special can no longer be jump-canceled during the charge window
+	-Increased Forward-Special base hitpause (8.5 -> 10)
+	-Increased Forward-Special hitpause scaling (0.8 -> 1.1)
+	-Decreased Foward-Special base damage (9 -> 8)
+	-Decreased Up-Special final hit base knockback (7 -> 6)
+	-Decreased Up-Special final hit knockback scaling (0.75 -> 0.7)	
+	-Decreased Up-Special vertical speed (-7.75 -> -7, -10 -> -9)
+	-Increased Down-Strong throw window speed
+	-Decreased movement speed during Down-Strong throw window
+	-Decreased vertical speed of Down-Air (18 -> 13, 14 -> 11)");
 
 	initPatch("2.1", "June 13th, 2021");
 	initPatchWords("-Frog can now be attacked by opponents");

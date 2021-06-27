@@ -6,6 +6,31 @@ hit_player_obj = self
 
 }
 
+if state == PS_PRATFALL {
+    
+    if hhh > 0 {	 
+    } else {
+      vsp -= 0.3
+    }
+
+}
+
+
+if can_attack && special_pressed && !left_down && !right_down && !up_down && !down_down && 	move_cooldown [AT_NSPECIAL] > 0{
+	 sound_play(asset_get("sfx_ell_overheat"))
+	 sound_play(asset_get("sfx_ell_steam_release"))
+	 set_state(PS_PRATFALL)
+	 prat_land_time = 12;
+if hhh > 0 {	 
+	 vsp = -8
+} else {
+	vsp = -8
+}
+	       	spawn_base_dust(x, y, "djump", spr_dir)
+	       	spawn_base_dust(x, y, "land", spr_dir)
+	 shake_camera(2,2)
+}
+
 if get_gameplay_time() <= 120 {
 
 	if get_gameplay_time() == 2 {
@@ -73,7 +98,7 @@ if hhh > 0 && dash_speed == 7 {
 	dash_speed = 6
 	leave_ground_max = 3.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
     max_jump_hsp = 3.5;
-	air_max_speed = 3.5;
+	air_max_speed = 4;
 	jump_change = 2.5;
 	air_accel = .25;
     jump_speed = 9;
@@ -86,11 +111,11 @@ if hhh > 0 && dash_speed == 7 {
 }
 
 if hhh == 0 && dash_speed != 7 {
-	initial_dash_speed = 7.5;
+	initial_dash_speed = 7;
 	dash_speed = 7
 	leave_ground_max = 5; //the maximum hsp you can have when you go from grounded to aerial without jumping
     max_jump_hsp = 5;
-	air_max_speed = 5;
+	air_max_speed = 5.5;
 	jump_change = 4;
 	air_accel = .3;
     jump_speed = 13;

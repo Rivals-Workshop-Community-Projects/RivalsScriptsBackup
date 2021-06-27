@@ -15,6 +15,7 @@ if (activeBuff == 2) {
 		}
 		activeBuffUses--;
 		sound_play(asset_get("sfx_bird_sidespecial_start"));
+		spawn_hit_fx(x, y - 30, armorblock)
 	}
 }
 

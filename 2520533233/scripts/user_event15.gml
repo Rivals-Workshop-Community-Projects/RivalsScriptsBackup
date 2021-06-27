@@ -538,6 +538,47 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	initPatch("1.08", "25, June 2021");
+	initPatchWords("Patch 1.08
+	
+	Bugfix:
+	
+	Fixed a bug where hit fx weren't colored properly.")
+	initPatch("1.07", "25, June 2021");
+	initPatchWords("Patch 1.07
+
+Bugfix:
+
+Fixed a bug where tenshi could graze while dead.
+
+QoL:
+
+Multihit correction no longer applies to characters with armor.
+
+Buffs:
+
+Fspecial Grab Throw: Base Hitpause 0 > 5
+Fspecial Grab Throw: Hitpause Scaling: 0 > .4
+Fspecial Grab: Damage: 6 > 10
+
+Bair: Startup: 15 > 11 (Active frames: 16-19 > 12>15)
+(Should make the sauce saucier)
+
+Uspecial: Rock Summoning Behavior: Changed to now work more like Kragg pillars.
+Uspecial: New minimum height added to rock summon.
+Uspecial: Using uspecial while the rock cannot be moved will break the rock, sending players standing on it into pratfall.
+Uspecial: If shield/parry is held during the pratfall version of uspecial the rock will not break.
+
+Fstrong: Multihit Consistency improved.
+
+Rock: All: Base Knockback: 7 > 8
+Rock: All: Knockback Growth: .67 > .75
+Rock: Falling: Angle: 55 > 45
+(Should make rock a much scarrier threat)
+
+Uair: Tail Spike: Lifetime: 1 > 2
+Uair: Tail Spike: Active Frames: 11 > 9-10 
+(Should make it much easier to hit while still being fairly difficult)");
 	initPatch("1.06", "22, June 2021");
 	initPatchWords("Strong charge buffs, bugfixes, and more fspecial air nerfs
 	

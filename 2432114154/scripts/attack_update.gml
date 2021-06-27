@@ -141,7 +141,7 @@ if isyellow && !hitpause {
         sound_play(asset_get("sfx_swipe_weak2"))
     } 
     
-    if attack == AT_JAB && window == 3 && attack_pressed && window_timer <= 6 && !joy_pad_idle && has_hit {
+    if attack == AT_JAB && window == 3 && attack_pressed && window_timer <= 6 && !joy_pad_idle{
         set_state (PS_IDLE)
     } 
     
@@ -298,7 +298,9 @@ if get_player_color(player) == 10 {
                 hsp /= 1.2
             }
             if window == 2 {
+            	if free {
                 can_shield = true
+            	}
                 vsp = 0
                 hsp = 0
                 if has_hit_player && window_timer < 24{
@@ -317,10 +319,10 @@ if get_player_color(player) == 10 {
 		var angle = (round(joy_dir / 11.25) * 11.25) / 180 * -3.14; //45)*45)/180
 		if (joy_pad_idle){
 			hsp = 4*spr_dir;
-			vsp = -15;
+			vsp = -13;
 		}else{
-			hsp = (14 * cos(angle));
-			vsp = (12 * sin(angle)) - 4;
+			hsp = (12 * cos(angle));
+			vsp = (11 * sin(angle)) - 3;
 		}
 		
 		///thanks you so much hyu
@@ -338,6 +340,34 @@ if get_player_color(player) == 10 {
          	move_cooldown[AT_DAIR] = 10
             if has_hit_player {
 
+                  with hit_player_obj{
+                  	
+                  	                  
+                  if state == PS_RESPAWN {
+                  	attack_end();
+                      with other {
+                      	window = 4
+                      	window_timer = 1
+                      spawn_hit_fx(x,y - 10, 302)
+                      hsp /= 4
+                      vsp = -6
+                      	
+                      }
+
+                      sound_play(asset_get("sfx_roll"))
+
+                  }
+                  
+                  	if x + hsp < 100 or x + hsp > (room_width - 100) {
+                  		x -= hsp
+                  	}
+                  	
+                  	
+                  if y + vsp < 100 or y + vsp > room_height - 100 {
+                  		y -= vsp
+                  	}
+                  	
+                  }
             	
                         hsp = floor(hit_player_obj.x - x) / 20 + (5 * spr_dir)
                 		vsp = floor((hit_player_obj.y * 1.2) - y) / 30
@@ -380,6 +410,7 @@ if get_player_color(player) == 10 {
                 
         
         if attack == AT_DSPECIAL{ 
+        	hitpause = 0
          if free && window <= 2{
          vsp/=1.2
          vsp-=0.7
@@ -404,7 +435,7 @@ if get_player_color(player) == 10 {
                  spawn_hit_fx (x, y - 30, 302)
              }
              
-             if window_timer == 18 {
+             if window_timer == 14 {
                  countering = 0
                  super_armor = false
              }
@@ -455,14 +486,18 @@ if get_player_color(player) == 10 {
                 	spawn_base_dust(x - (10 + random_func(2,30,true))*spr_dir,y, "dash_start",spr_dir)
                 	spawn_base_dust(x + (20 + random_func(1,40,true))*spr_dir,y, "dash",spr_dir*-1)
                 	}
-                if x + 24*spr_dir > hit_player_obj.x && hit_player_obj.x + 350 > x {
-                	hit_player_obj.x += 1 + floor(strong_charge/5)
+                	
+                if (spr_dir = 1 && hit_player_obj.x > x) or	(spr_dir = -1 && hit_player_obj.x < x){
+                if x + 24*spr_dir > hit_player_obj.x && hit_player_obj.x + 250 > x {
+                	hit_player_obj.x += 1 + floor(strong_charge/7)
                 }
                 
-                if x + 24*spr_dir < hit_player_obj.x && hit_player_obj.x - 350 < x  {
-                	hit_player_obj.x -= 1 + floor(strong_charge/5)
+                if x + 24*spr_dir < hit_player_obj.x && hit_player_obj.x - 250 < x  {
+                	hit_player_obj.x -= 1 + floor(strong_charge/7)
                 }
                 }
+                }
+                
                 
                 if strong_charge % 8 == 0 && strong_charge < 50  {
                 sound_play(asset_get("sfx_troupple_rumble"))

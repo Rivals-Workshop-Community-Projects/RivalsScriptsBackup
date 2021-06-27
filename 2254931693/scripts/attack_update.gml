@@ -42,6 +42,20 @@ if (attack == AT_DSTRONG && window = 4 && window_timer = 1){
 
 if (attack == AT_DSTRONG && window = 4){
     can_move = 0;
+
+}
+
+if (attack == AT_DSTRONG && window = 5){
+    can_move = false;
+    vsp = vsp + 0.35;
+}
+
+if (attack == AT_DSTRONG && (window = 5 || window = 4) && left_down){
+    hsp = hsp - 0.035;
+}
+
+if (attack == AT_DSTRONG &&  (window = 5 || window = 4) && right_down){
+    hsp = hsp + 0.035;
 }
 
 if (attack == AT_DSTRONG && has_hit_player){
@@ -306,9 +320,9 @@ if (attack == AT_FSPECIAL && ((window = 2 && !special_down) || (fspecial_charge 
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, (-3 - ((fspecial_charge / 44) * 12)));
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 0);
-set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 9 + ((fspecial_charge / 44) * 5));
-set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 9 + ((fspecial_charge / 44) * 5));
-set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 9 + ((fspecial_charge / 44) * 5));
+set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 8 + ((fspecial_charge / 44) * 5));
+set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 8 + ((fspecial_charge / 44) * 5));
+set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 8 + ((fspecial_charge / 44) * 5));
 }
 
 if (attack == AT_FSPECIAL && fspecial_charge > 25){
@@ -321,13 +335,7 @@ set_num_hitboxes(AT_FSPECIAL, 3);
 
 
 
-if (attack == AT_FSPECIAL && (window = 2)){
-    can_jump = true;
-    can_wall_jump = true;
-}
-
-
-if (attack == AT_FSPECIAL && (window = 2 || window = 3 || window = 4)){
+if (attack == AT_FSPECIAL && (window = 3 || window = 4)){
     can_wall_jump = true;
 }
 

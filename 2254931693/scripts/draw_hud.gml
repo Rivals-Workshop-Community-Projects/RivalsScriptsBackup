@@ -12,6 +12,9 @@ draw_sprite_ext( sprite_get( "frogmeterbarwhite" ), -1, temp_x + 186, temp_y - 1
 }
 
 
+
+
+
 // Final Smash graphics
 if (attack == 49){
     if (window = 1){
@@ -331,6 +334,10 @@ sprite_change_offset("hurt", 48, 88);
 }
 
 
+user_event(5);
+
+
 user_event(11);
+
 
 

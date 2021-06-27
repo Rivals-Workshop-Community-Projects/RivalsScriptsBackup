@@ -9,6 +9,7 @@ with (asset_get("pHitBox")) //references all hitbox objects
 	}
 }
 
+
 if (detached_cooldown > 0){
 	detached_cooldown = detached_cooldown - 1;
 }
@@ -125,6 +126,7 @@ sound_stop(chargelongSFX);
 }
 
 
+
 if(state = PS_DASH_TURN && state_timer = 0){
     sound_play(sound_get("dashturnskid"))
 }
@@ -196,4 +198,7 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_SFX, sound_get("family"));
 
 
 user_event(14);
+
+user_event(6);
+
 

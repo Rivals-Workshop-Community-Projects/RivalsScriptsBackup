@@ -136,6 +136,13 @@ sprite_change_offset("effect_dattack", 122, 154);
 sprite_change_offset("effect_dattack2", 122, 154);
 sprite_change_offset("effect_taunt", 108, 154);
 
+sprite_change_offset("illidrium_hfx_sml", 65, 65);
+sprite_change_offset("illidrium_hfx_med", 65, 65);
+sprite_change_offset("illidrium_hfx_lrg", 95, 95);
+
+sprite_change_offset("vfx_powerhit", 60, 60);
+sprite_change_offset("vfx_armorblock", 60, 60);
+
 sprite_change_offset("dodge_effect", 32, 40);
 
 set_victory_theme( sound_get( "Victory!Nate" ));

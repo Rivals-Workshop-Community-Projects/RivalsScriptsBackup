@@ -64,41 +64,41 @@ if ("phone_inited" in self && phone_inited && !phone_lightweight){
 			// add more to transfer other sprites, or sfx
 			
 			with enemykirby{
-				newicon = copy_icn;
-				muno_last_swallowed = other.id;
-				
-				set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
-				set_attack_value(AT_EXTRA_3, AG_SPRITE, copy_spr);
-				set_attack_value(AT_EXTRA_3, AG_AIR_SPRITE, copy_spr);
-				set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 1);
-				set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, copy_hrt);
-				set_attack_value(AT_EXTRA_3, AG_HURTBOX_AIR_SPRITE, copy_hrt);
-				
-				// edit the below (and, indeed, the above!) just like a regular attack script
-				
-				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 10);
-				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 2);
-				
-				set_num_hitboxes(AT_EXTRA_3, 1);
-				
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 1);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 3);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 8);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, 50);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, -10);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 66);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 75);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 3);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 14);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 90);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 10);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.8);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 12);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 1.0);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITSTUN_MULTIPLIER, 1.15);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DRIFT_MULTIPLIER, 0);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 0);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
+newicon = copy_icn;
+muno_last_swallowed = other.id;
+
+set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
+set_attack_value(AT_EXTRA_3, AG_SPRITE, copy_spr);
+set_attack_value(AT_EXTRA_3, AG_AIR_SPRITE, copy_spr);
+set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 1);
+set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, copy_hrt);
+set_attack_value(AT_EXTRA_3, AG_HURTBOX_AIR_SPRITE, copy_hrt);
+
+// edit the below (and, indeed, the above!) just like a regular attack script
+
+set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 2);
+
+set_num_hitboxes(AT_EXTRA_3, 1);
+
+set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 3);
+set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 8);
+set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, 50);
+set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, -10);
+set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 66);
+set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 75);
+set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 3);
+set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 14);
+set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 90);
+set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.8);
+set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 12);
+set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 1.0);
+set_hitbox_value(AT_EXTRA_3, 1, HG_HITSTUN_MULTIPLIER, 1.15);
+set_hitbox_value(AT_EXTRA_3, 1, HG_DRIFT_MULTIPLIER, 0);
+set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 0);
+set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 			}
 		}
 		
@@ -129,17 +129,17 @@ if ("phone_inited" in self && phone_inited && !phone_lightweight){
 			        [0,0], // Cell Coordinates
 			        [
 			        	// Targets
-				        [10, 4, 55, 0, -5, [0, 0, 32, [[0,0],[0,-3]], 0, 0, 0, 0], [0]],
-				        [10, 40, 30.5, 0, -5, [1, 0, 60, [[-10,0],[5,0]], 0, 0, 0, 0], [0]],
-				        [10, 87, 46, 0, -5, [2, 0, 0, 0, 0, 0, 0, 0], [0]],
-				        [10, 52, 44, 0, -5, [3, 0, 0, 0, 0, 0, 0, 0], [0]],
-				        [10, 55, 75, 0, -5, [3, 0, 0, 0, 0, 0, 0, 0], [0]],
-				        [10, 125, 55, 0, -5, [4, 0, 32, [[0,0],[0,-1]], 0, 0, 0, 0], [0]],
-				        // Solid Ground
-				    	[1, 2, 2, 2, 0, [sprite_get("btt_solid"), 0, 0, 0, 0, 0, 0, 0], [0]],
-				    	// Plats
-				    	[1, 46, 49, 1, 0, [sprite_get("btt_plat_64"), 0, 0, 0, 0, 0, 0, 0], [0]],
-				    	[1, 64, 71, 1, 0, [sprite_get("btt_plat_64"), 0, 0, 0, 0, 0, 0, 0], [0]]
+        [10, 4, 55, 0, -5, [0, 0, 32, [[0,0],[0,-3]], 0, 0, 0, 0], [0]],
+        [10, 40, 30.5, 0, -5, [1, 0, 60, [[-10,0],[5,0]], 0, 0, 0, 0], [0]],
+        [10, 87, 46, 0, -5, [2, 0, 0, 0, 0, 0, 0, 0], [0]],
+        [10, 52, 44, 0, -5, [3, 0, 0, 0, 0, 0, 0, 0], [0]],
+        [10, 55, 75, 0, -5, [3, 0, 0, 0, 0, 0, 0, 0], [0]],
+        [10, 125, 55, 0, -5, [4, 0, 32, [[0,0],[0,-1]], 0, 0, 0, 0], [0]],
+        // Solid Ground
+    	[1, 2, 2, 2, 0, [sprite_get("btt_solid"), 0, 0, 0, 0, 0, 0, 0], [0]],
+    	// Plats
+    	[1, 46, 49, 1, 0, [sprite_get("btt_plat_64"), 0, 0, 0, 0, 0, 0, 0], [0]],
+    	[1, 64, 71, 1, 0, [sprite_get("btt_plat_64"), 0, 0, 0, 0, 0, 0, 0], [0]]
 			            ]
 			        ],
 			    // Blastzones
@@ -274,13 +274,13 @@ muno_char_name = get_char_info(player, INFO_STR_NAME);	// Name of the character,
 
 muno_char_icon = get_char_info(player, INFO_ICON);		// CSS icon of the character. You can replace this with an arbitrary sprite, using sprite_get(), and it'll be used in the upper left of the phone's big screen. (Make it the same size pls, thank u)
 
-phone.taunt_hint_x = 0;									// Sideways offset of the "Taunt!" thing that shows in Practice Mode until you've opened the MunoPhone. You can move it sideways if it covers up your HUD elements.
-phone.taunt_hint_y = 0;									// Vertical offset
-phone.shader = 0;										// Whether or not to apply the character's palette to the phone and non-TrainingTown sidebar (change color with alt costumes)
+phone.taunt_hint_x = 0;	// Sideways offset of the "Taunt!" thing that shows in Practice Mode until you've opened the MunoPhone. You can move it sideways if it covers up your HUD elements.
+phone.taunt_hint_y = 0;	// Vertical offset
+phone.shader = 0;		// Whether or not to apply the character's palette to the phone and non-TrainingTown sidebar (change color with alt costumes)
 
-phone.dont_fast = 0;									// Set to 1, and Fast Graphics will NOT automatically be set when the FPS dips below 60.
-phone_lightweight = 0;									// Set to 1 to disable certain features, possibly improving performance a little bit. See _readme.gml.
-phone.frame_data_loaded = 0;							// Set to 1 to disable the frame data guide, which MIGHT improve performance on bad computers? (This is just a guess. It has no impact on code run during gameplay, but gets rid of a TON of data stored in memory in Practice Mode...)
+phone.dont_fast = 0;	// Set to 1, and Fast Graphics will NOT automatically be set when the FPS dips below 60.
+phone_lightweight = 0;	// Set to 1 to disable certain features, possibly improving performance a little bit. See _readme.gml.
+phone.frame_data_loaded = 0;			// Set to 1 to disable the frame data guide, which MIGHT improve performance on bad computers? (This is just a guess. It has no impact on code run during gameplay, but gets rid of a TON of data stored in memory in Practice Mode...)
 
 
 
@@ -288,7 +288,7 @@ phone.frame_data_loaded = 0;							// Set to 1 to disable the frame data guide, 
 
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                                                                              ║
-║ Tips					                                                       ║
+║ Tips	                                                       ║
 ║                                                                              ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 
@@ -359,7 +359,7 @@ with phone{
 	// NOTE: Using sprite_get() does not work here, so sprites must be saved as
 	// variables. See init.gml for an example of this with spr_nspecial_proj.
 	
-	initTip("NSpecial: Blink");
+	initTip("Nspecial: Blink");
 	initTipWords("After 5 frames, this move 'teleports' you a distance based on your current speed and direction. 
 	
 	Lacks invulnerability. 
@@ -367,22 +367,27 @@ with phone{
 //	if ("spr_nspecial_proj" in player_id) initTipImage_ext(player_id.spr_nspecial_proj, -5, fa_right, 1, c_white, 3, 40, 30, 60, 0);
 //	initTipImage_ext(player_id.spr_nspecial, 2, fa_left, 1, c_white, 0, 24, 40, 64, 0);
 
-    initTip("NSpecial: Vulnerability");
+    initTip("Nspecial: Vulnerability");
 	initTipWords("Nspecial leaves behind a time wraith; if hit, you will teleport to its location and take damage yourself. 
 	
 	Disappears after 6 seconds");
 	
 	
 	
-	initTip("DSpecial and Nspecial");
+	initTip("Dspecial and Nspecial");
 	initTipWords("Time wraiths copy Dspecial explosion!");
 	
-	initTip("NSpecial: Hit it!");
+	initTip("Nspecial: Hit it!");
 	initTipWords("You can hit the time wraiths, making them explode! 
 	
 	They can hit each other!
 	
-	You can blink off of them!");
+	You canNOT blink off of them! Try a rune");
+	
+	initTip("Nspecial: Hit it with Fspecial!");
+	initTipWords("FSpecial has pratfall, unless you hit something. This includes the wraith!
+	
+	Hit wraiths to not go into pratfall when using Fspecial offstage");
 	
 	
 	initTip("Dspecial Movement");
@@ -411,7 +416,7 @@ with phone{
 	beawr
 	
 	
-	they use they/them pronouns
+	they use any pronouns, i refer to them with they/them pronouns
 	
 	
 	
@@ -505,61 +510,138 @@ with phone{
 	initPatchWords("Fnuuy joke
 	- waog");
 	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0); */
+		initPatch("1.7", "24 June, 2021");
+		
+			initPatchWords_ext("Balance?", fa_center, c_white, 0, 0);
+initPatchWords_ext("Dattack anim adjusted. Hitbox moved in and made much smaller.
+jab2 angle 80-105
+if not landing jab1, jab2 can be cancelled into a frame sooner (12-11)
+
+", fa_left, c_white, 0, 0);
+	
+		initPatch("1.6", "24 June, 2021");
+		
+			initPatchWords_ext("Balance?", fa_center, c_white, 0, 0);
+initPatchWords_ext("last patch I accidentally reused a version number, causing desyncs. My apologies!
+
+BIG CHANGES:
+jab TWO!
+fspecial is faster and stronger, but now has pratfall
+wraiths cannot be blink cancelled off of
+dattack nerfs
+afterimage visuals polish
+and more!
+
+jab damage 6-4
+jab has an additional frame of lag on whiff
+jab2! Its just like jab1, but bigger!
+jab1 is unchanged, but now uses an iasa script in place of less animation frames.
+if attack is pressed in the endlag of jab1, jab2 comes out!
+jab2 has the same stats as jab1, and a much bigger hitbox
+
+utilt has lower hitpause scaling
+dattack final hit damage 4-3
+dattack startup 9-10
+dattack endlag 12-14 frames
+dattack bkb 6-5
+dattack kbs 0.6-0.7
+
+fstrong early hit damage 11-12
+ustrong startup 7-9 frames
+ustrong total damage 12-11
+ustrong connecting hits have less hitpause
+dstrong base hitpause increased to 8 and 9 for the front and back hit, respectively
+
+fair sweetspot moved in a tiiny bit
+fair sourspot hitfx changed
+bair base hitpause 6-7
+uair has a small amount of vertical speed gain at the start
+
+nspecial can no longer occasionally spawn 2 wraiths
+wraiths now ignore priority 0 hitboxes
+wraiths can no longer be blink cancelled off of. This is now a rune!
+if the wraith lands during dattack (or dair), opponents no longer lerp (teleport towards) Nova
+wraiths explode sooner after dattack
+wraiths lerp during multihits, so they should always get hit by the full dattack/ustrong/dair/fspec
+
+wraith damage 10-6
+wraith kbs 0.8-0.5
+wraith hitpause lowered
+(dspecial values unchanged)
+
+fspecial is much faster and has less hitpause, but covers about the same distance.
+fspecial startup 12-14 frames
+fspecial kbs 0.7-0.85
+fspecial now has pratfall on whiff
+fspecial can be used multiple times midair (if it lands)
+fspecial ledge snaps
+
+uspecial late hit angle 90-85
+
+
+filled in an empty pixel on fspec and airdodge
+dstrong startup is 200% clearer
+fixed the ustrong sound glitch
+afterimages have been adjusted visually. For nspec, they use logic to not go through floors, walls, or plats
+sfx additions on uspec and dspec
+
+updated tips!", fa_left, c_white, 0, 0);
+	
 	
 		initPatch("1.5", "19 June, 2021");
 		
 			initPatchWords_ext("Hotfixes", fa_center, c_white, 0, 0);
-				initPatchWords_ext("Wraith now has extended parry stun
-				
-				wraith can be hit by fspecial
-				dspecial and wraiths have more hitpause
-				fair has a diff sfx/hfx for the heavy hit
-				
-				
-				
-				
-				", fa_left, c_white, 0, 0);
+initPatchWords_ext("Wraith now has extended parry stun
+
+wraith can be hit by fspecial
+dspecial and wraiths have more hitpause
+fair has a diff sfx/hfx for the heavy hit
+
+
+
+
+", fa_left, c_white, 0, 0);
 	
 	
 	
 		initPatch("1.4", "14 June, 2021");
 		
 			initPatchWords_ext("Gimmick PLUS", fa_center, c_white, 0, 0);
-				initPatchWords_ext("Hitfx are now drawn in front of the player! (Includes some changes to hit particles too)
-				Uspecial now properly applies the unmerged sword skin on use
-				When a time wraith is hit you now teleport to the time wraith, not the hitbox's center
-				Fspecial/Uspecial afterimages fade more nicely during hitpause
+initPatchWords_ext("Hitfx are now drawn in front of the player! (Includes some changes to hit particles too)
+Uspecial now properly applies the unmerged sword skin on use
+When a time wraith is hit you now teleport to the time wraith, not the hitbox's center
+Fspecial/Uspecial afterimages fade more nicely during hitpause
 
-				Dtilt bkb 7-8,
-				Dattack bkb 5-6
-				Dattack hsp now added in attack update (tldr blinking in dattack distance is more consistent)
+Dtilt bkb 7-8,
+Dattack bkb 5-6
+Dattack hsp now added in attack update (tldr blinking in dattack distance is more consistent)
 
-				Dstrong hitbox frames now match the move... (one less active frame, one more frame total in the move)
+Dstrong hitbox frames now match the move... (one less active frame, one more frame total in the move)
 
-				Fair hitbox sizes adjusted, sweetspot is bigger
-				Changed nair's second hit sfx
-				Uair uses proper hitfx now
-				Dair has lower hitpause scaling 0.2-0.15
-				Dair multihits are now techable
-				Dair has a different hitbox for grounded opponents with a different angle flipper
-				Dair now uses *some* on hit lerping
-				
-				hit the wraith! it explodes
-				
-				Fspecial startup 14-12 frames
-				Dspecial damage 8-10
-				Dspecial kbs 0.5-0.7
-				Dspecial endlag 20-16 frames
-				Dspecial rises slightly lower when used on the ground
-				More vsp/hsp is conserved during dspecial
-				Dspecial angle 45-40
-				Uspecial kbs (both hits) .7-.8
-				Uspecial final hit angle 80-90
-				
-				
-				
-				i might have forgotten something
-				", fa_left, c_white, 0, 0);
+Fair hitbox sizes adjusted, sweetspot is bigger
+Changed nair's second hit sfx
+Uair uses proper hitfx now
+Dair has lower hitpause scaling 0.2-0.15
+Dair multihits are now techable
+Dair has a different hitbox for grounded opponents with a different angle flipper
+Dair now uses *some* on hit lerping
+
+hit the wraith! it explodes
+
+Fspecial startup 14-12 frames
+Dspecial damage 8-10
+Dspecial kbs 0.5-0.7
+Dspecial endlag 20-16 frames
+Dspecial rises slightly lower when used on the ground
+More vsp/hsp is conserved during dspecial
+Dspecial angle 45-40
+Uspecial kbs (both hits) .7-.8
+Uspecial final hit angle 80-90
+
+
+
+i might have forgotten something
+", fa_left, c_white, 0, 0);
 
 	
 	
@@ -814,7 +896,7 @@ with phone{
 
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                                                                              ║
-║ About					                                                       ║
+║ About	                                                       ║
 ║                                                                              ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 
@@ -887,7 +969,7 @@ if pho_has_trum_codec{
 	 * GIM_SKIP   			advance the page immediately when the text finishes
 	 * GIM_DIE    			die
 	 * GIM_SHUT_UP			no chatter sfx
-	 * GIM_HOWL				make the enemy dspecial
+	 * GIM_HOWLmake the enemy dspecial
 	 * GIM_SHADER			use your char's shaders (palette swaps) for the speaker portrait
 	 * GIM_TEXTBOX			text color             is set to the value of the   spr_custom_trummel_textbox   variable in the player object
 	 * GIM_COLOR			textbox sprite index   is set to the value of the   spr_custom_trummel_color     variable in the player object
@@ -1198,7 +1280,7 @@ if !phone_lightweight{
 
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                                                                              ║
-║ The End				                                                       ║
+║ The End                                                       ║
 ║                                                                              ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 

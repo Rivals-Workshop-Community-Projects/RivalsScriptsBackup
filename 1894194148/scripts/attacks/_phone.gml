@@ -6,7 +6,7 @@ set_attack_value(AT_PHONE, AG_OFF_LEDGE, 1);
 set_attack_value(AT_PHONE, AG_HURTBOX_SPRITE, sprite_get("_pho_empty"));
 set_attack_value(AT_PHONE, AG_USES_CUSTOM_GRAVITY, 1);
 
-set_attack_value(AT_PHONE, AG_MUNO_ATTACK_EXCLUDE, 1);
+set_attack_value(AT_PHONE, 80, 1);
 
 //Opening window
 

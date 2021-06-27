@@ -8,6 +8,11 @@
 ///sound_play(asset_get("sfx_blow_weak2"),false,noone,99);
 ///sound_play(asset_get("sfx_blow_weak1"),false,noone,99);
 
+if my_hitboxID.attack == AT_USPECIAL {
+    
+    old_vsp /= 1.2
+}
+
 if hit_player_obj != self  {
 move_cooldown[AT_EXTRA_2] = 0 
 

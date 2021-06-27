@@ -67,8 +67,11 @@ if runesUpdated {
 	}
 	runesUpdated = false;
 }
-
-user_event(14);
+if (!phone_disable){
+	if (phone_manual_init >= 1){
+		user_event(14);
+	}
+}
 
 if (fakeparry_got){
 	if (fakeparry_id != -4){
@@ -343,21 +346,36 @@ if (jiseffect>0){
 	jiseffect--;
 }
 
-if (phone_cheats[cheat_mado] == 1) { runeE = false; }
-if (phone_cheats[cheat_mado] == 2) { runeE = true; }
-if (phone_cheats[cheat_jis] == 1) {
-	if (runeO){
-	sound_play(sound_get("gui_decline"));
-	runeO = false;
-	}else{
-	sound_play(sound_get("jischarge"));
-	runeO = true;
+//print(string(get_stage_data( SD_ID )))
+if (phone_manual_init == 1){
+	if (get_stage_data( SD_ID ) == 416499||!phone_disable){
+		phone_disable = false;
+		user_event(14);
+		phone_manual_init++;
 	}
-	runesUpdated = true;
-	white_flash_timer = 16;
-	phone.cheats[cheat_jis].on = 0;
-	phone_cheats[cheat_jis] = 0;
 }
+if (phone_manual_init >= 1 && !phone_disable){
+	if (phone_cheats[cheat_mado] == 1) { runeE = false; }
+	if (phone_cheats[cheat_mado] == 2) { runeE = true; }
+	if (phone_cheats[cheat_jis] == 1) {
+		if (runeO){
+		sound_play(sound_get("gui_decline"));
+		runeO = false;
+		}else{
+		sound_play(sound_get("jischarge"));
+		runeO = true;
+		}
+		runesUpdated = true;
+		white_flash_timer = 16;
+		phone.cheats[cheat_jis].on = 0;
+		phone_cheats[cheat_jis] = 0;
+	}
+}
+if (phone_manual_init == 0){
+	phone_manual_init++;
+}
+
+
 
 if swallowed {
 swallowed = 0;

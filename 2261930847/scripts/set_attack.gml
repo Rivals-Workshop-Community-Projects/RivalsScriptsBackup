@@ -62,7 +62,7 @@ if ((attack == AT_UTILT) && (moist_level = 2 || moist_level = 3)){
 	attack = AT_UTILT_2;
 }
 
-if ((attack == AT_USPECIAL) && !free && moist_level = 3) 
+if (attack == AT_USPECIAL&& moist_level = 3) 
 {attack = AT_USPECIAL_2;}
 
 if ((attack == AT_DSTRONG) && moist_level = 3) 

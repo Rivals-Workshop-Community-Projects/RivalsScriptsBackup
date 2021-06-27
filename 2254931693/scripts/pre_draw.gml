@@ -11,3 +11,5 @@ if ((state = PS_ATTACK_GROUND || state = PS_ATTACK_AIR) && attack == AT_FSPECIAL
 if ((state = PS_ATTACK_GROUND || state = PS_ATTACK_AIR) && (attack == AT_USPECIAL || attack == AT_USPECIAL_GROUND) && window = 3 && window_timer = 1 && !hitpause){
     spawn_hit_fx(x, y, uspecial_effect)
 }
+
+user_event(7);

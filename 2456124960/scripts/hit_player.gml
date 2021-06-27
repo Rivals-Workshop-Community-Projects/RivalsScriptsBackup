@@ -3,7 +3,7 @@ if (attack == AT_FAIR && true) {
 		old_vsp = -4;
 	}
 	if (abs(old_hsp) > 4) {
-		old_hsp *= 0.8;
+		//old_hsp *= 0.8;
 	}
 }
 
@@ -34,7 +34,13 @@ if (attack == AT_DAIR && true) {
 }
 
 if (attack == AT_DATTACK) {
-	dattackCancelPower += 5;
+	dattackCancelPower += 10;
+	if (my_hitboxID.hbox_num == 2) {
+		set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 0);
+		set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED_TYPE, 0);
+		set_window_value(AT_DATTACK, 2, AG_WINDOW_VSPEED, 0);
+		set_window_value(AT_DATTACK, 2, AG_WINDOW_VSPEED_TYPE, 0);
+	}
 }
 
 outgoingDamage = get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_DAMAGE);
@@ -61,6 +67,7 @@ if (activeBuff == 1 && my_hitboxID.attack != AT_NSPECIAL && my_hitboxID.attack !
 	}
 	activeBuffUses--;
 	sound_play(get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HIT_SFX), false, noone, 0.8);
+	spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - 30, powerhit)
 }
 
 if (attack == AT_FTILT) {

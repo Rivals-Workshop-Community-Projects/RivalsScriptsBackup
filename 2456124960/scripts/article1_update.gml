@@ -95,86 +95,90 @@ if (article_mode == 0) {
 	
 	
 	with (asset_get("pHitBox")){
-		if (place_meeting(x,y,other.id) && (other.player_id != player_id || attack != AT_NSPECIAL) && other.hit_lockout < 0){
-			player_id.old_vsp = player_id.vsp;
-			player_id.old_hsp = player_id.hsp;
-			//maintains the attacking player's velocity through hitpause
-			
-			other.hitstop = 5; //Article freeze frames
+		if (place_meeting(x,y,other.id) && (other.player_id != player_id || attack != AT_NSPECIAL) && other.hit_lockout < 0) {
 			if (type == 1) {
-				player_id.hitpause = true;   //Player freeze frames
-				player_id.hitstop = 5;      //Player freeze frames, cont.
-			}
-			player_id.has_hit = true;    //Does not incur whifflag on the player that hit the crystal
-			other.hitbox_hit = self;
-			sound_play(other.hitbox_hit.sound_effect);
-			
-			other.hitMode = 1; //telling the article it's time to take knockback
-			other.hitAngle = kb_angle; //storing data of the attack that was hit with
-			other.hitForce = kb_value; //''
-			other.hitDir = spr_dir; //''
-
-			other.hit_lockout = 10; //prevents the attacker from hitting again in hitpause
-			
-			other.decay_timer = 0; //resets the despawn timer when hit
-			other.image_index = 0; //''
-			other.free = true;
-			
-			other.hitPlayer = player;
-			
-			if (player_id.nateFromPowervale == 1 && attack == AT_NSPECIAL) {
-				if (x < other.x) {
-					other.hitAngle = 70;
-				} else {
-					other.hitAngle = 110;
+				player_id.old_vsp = player_id.vsp;
+				player_id.old_hsp = player_id.hsp;
+				//maintains the attacking player's velocity through hitpause
+				
+				other.hitstop = 5; //Article freeze frames
+				if (type == 1) {
+					player_id.hitpause = true;   //Player freeze frames
+					player_id.hitstop = 5;      //Player freeze frames, cont.
 				}
-			}
-			
-			if (other.player_id != player_id) {
-				print_debug("hit by another player");
-				hitByOpponent = 1;
-			} else if (true) {
-				if (attack == AT_FAIR) {
-					if (player_id.old_vsp > -5) {
-						player_id.old_vsp = -5;
-					}
-					if (abs(player_id.old_hsp) > 4) {
-						player_id.old_hsp *= 0.8;
+				player_id.has_hit = true;    //Does not incur whifflag on the player that hit the crystal
+				other.hitbox_hit = self;
+				sound_play(other.hitbox_hit.sound_effect);
+				
+				other.hitMode = 1; //telling the article it's time to take knockback
+				other.hitAngle = kb_angle; //storing data of the attack that was hit with
+				other.hitForce = kb_value; //''
+				other.hitDir = spr_dir; //''
+
+				other.hit_lockout = 10; //prevents the attacker from hitting again in hitpause
+				
+				other.decay_timer = 0; //resets the despawn timer when hit
+				other.image_index = 0; //''
+				other.free = true;
+				
+				other.hitPlayer = player;
+				
+				if (player_id.nateFromPowervale == 1 && attack == AT_NSPECIAL) {
+					if (x < other.x) {
+						other.hitAngle = 70;
+					} else {
+						other.hitAngle = 110;
 					}
 				}
 				
-				if (attack == AT_BAIR) {
-					player_id.old_hsp += 7 * spr_dir;
-					if (player_id.old_vsp > -4) {
-						player_id.old_vsp = -4;
-					}
-					player_id.old_vsp -= 2;
-				}
-
-				if (attack == AT_DAIR) {
-					spawn_hit_fx( x, y+15, 14 );
-					if (hbox_num == 1) {
-						if (player_id.old_vsp > -12) {
-							player_id.old_vsp = -12;
-						}
-						if (abs(player_id.old_hsp) > 3) {
-							player_id.old_hsp *= 0.6;
-						}
-					} else {
-						if (player_id.old_vsp > -8) {
-							player_id.old_vsp = -8;
+				if (other.player_id != player_id) {
+					print_debug("hit by another player");
+					hitByOpponent = 1;
+				} else if (true) {
+					if (attack == AT_FAIR) {
+						if (player_id.old_vsp > -5) {
+							player_id.old_vsp = -5;
 						}
 						if (abs(player_id.old_hsp) > 4) {
-							player_id.old_hsp *= 0.9;
+							player_id.old_hsp *= 0.8;
 						}
 					}
-				}
-			} else if (attack == AT_FSPECIAL) {
-				player_id.flash.hitCrystal = 1;		
-				other.hit_lockout = 4; //prevents the attacker from hitting again in hitpause			
-				other.hitstop = 20; //Article freeze frames	
-				other.hitForce *= 1.5;
-			}		
+					
+					if (attack == AT_BAIR) {
+						player_id.old_hsp += 7 * spr_dir;
+						if (player_id.old_vsp > -4) {
+							player_id.old_vsp = -4;
+						}
+						player_id.old_vsp -= 2;
+					}
+
+					if (attack == AT_DAIR) {
+						spawn_hit_fx( x, y+15, 14 );
+						if (hbox_num == 1) {
+							if (player_id.old_vsp > -12) {
+								player_id.old_vsp = -12;
+							}
+							if (abs(player_id.old_hsp) > 3) {
+								player_id.old_hsp *= 0.6;
+							}
+						} else {
+							if (player_id.old_vsp > -8) {
+								player_id.old_vsp = -8;
+							}
+							if (abs(player_id.old_hsp) > 4) {
+								player_id.old_hsp *= 0.9;
+							}
+						}
+					}
+				} else if (attack == AT_FSPECIAL) {
+					player_id.flash.hitCrystal = 1;		
+					other.hit_lockout = 4; //prevents the attacker from hitting again in hitpause			
+					other.hitstop = 20; //Article freeze frames	
+					other.hitForce *= 1.5;
+				}	
+			} else {
+				destroyed = true;
+			}
 		}
 	}
 	

@@ -57,9 +57,9 @@ set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 //tail spike
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_UAIR, 2, HG_WINDOW, 3);
-set_hitbox_value(AT_UAIR, 2, HG_WINDOW_CREATION_FRAME, 0);
-set_hitbox_value(AT_UAIR, 2, HG_LIFETIME, 1);
+set_hitbox_value(AT_UAIR, 2, HG_WINDOW, 2);
+set_hitbox_value(AT_UAIR, 2, HG_WINDOW_CREATION_FRAME, 2);
+set_hitbox_value(AT_UAIR, 2, HG_LIFETIME, 2);
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_X, -32);
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_Y, -18);
 set_hitbox_value(AT_UAIR, 2, HG_SHAPE, 0);

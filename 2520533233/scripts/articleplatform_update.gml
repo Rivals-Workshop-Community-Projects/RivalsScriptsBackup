@@ -49,18 +49,32 @@ switch rock_state{
             var timer_ratio = rock_move_timer/rock_move_timer_max
             var smooth = smoothstep(timer_ratio);
             var squared = squarestep(timer_ratio);
-            var new_y = rock_apply_ymod ? lerp(y, rock_goal_y, timer_ratio) : (squared*rock_goal_y) + (rock_init_y * (1-squared));
+            //var new_y = rock_apply_ymod ? lerp(y, rock_goal_y+10, timer_ratio) : (squared*rock_goal_y) + (rock_init_y * (1-squared));
             var new_x = (smooth*rock_goal_x) + (rock_init_x * (1-smooth));
             smooth = smooth <.5 ? smooth*2 : 2*(1-smooth);
-            var ymod = (smooth * (rock_y_offset)) + (0 * (1-smooth));
-            vsp = floor(new_y - ymod - y);
-            hsp = floor(new_x - x);
+            //var ymod = (smooth * (rock_y_offset)) + (0 * (1-smooth));
+			if(rock_apply_ymod){
+				y = round(lerp(y, rock_goal_y, timer_ratio));
+			} else {
+				y = round(lerp(y, rock_goal_y + 200*(1-timer_ratio), timer_ratio));
+			}
+            
+            //x = round(ease_expoInOut(x, player_id.x, rock_move_timer, rock_move_timer_max));
+            x = round(new_x);
         } else {
-            mask_index = sprite_get("rock_collision");
-            hsp = 0;
-		    vsp = 0;
-		    hold_timer = 0;
-		    rock_state = ROCK.IDLE_1;
+        	if(player_id.attack == AT_USPECIAL and player_id.free and (player_id.state == PS_ATTACK_AIR or player_id.state == PS_ATTACK_GROUND)){
+        		y = round(lerp(y, player_id.y, .6))
+        		x = round(lerp(x, player_id.x, .6))
+        		hsp = 0;
+			    vsp = 0;
+        	} else {
+        		mask_index = sprite_get("rock_collision");
+	            hsp = 0;
+			    vsp = 0;
+			    hold_timer = 0;
+			    rock_state = ROCK.IDLE_1;
+        	}
+
         }
         if(rock_move_timer == 1){
         	sound_play(sound_get("rock_shift"));

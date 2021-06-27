@@ -1,9 +1,6 @@
 // Muno template - [CORE] init, update
 
-// Edit this file only if you know what you're doing - only user_event15.gml
-// contains user-defined content.
-
-// print_debug(string(fps_real))
+// DO NOT EDIT - Only edit user_event15.gml
 
 
 
@@ -13,10 +10,10 @@ if ("phone_inited" in self){
 		if phone_lagging == 0 phone_lagging = 0.1;
 		else{
 			if (phone_online && keyboard_key == 48){
-				//print_debug("FAST GRAPHICS ENABLED - 0 KEY PRESSED");
+				print_debug("FAST GRAPHICS ENABLED - 0 KEY PRESSED");
 			}
 			else{
-				//print_debug("FAST GRAPHICS ENABLED - FPS REACHED " + string(fps_real));
+				print_debug("FAST GRAPHICS ENABLED - FPS REACHED " + string(fps_real));
 			}
 			phone.settings[phone.setting_fast_graphics].on = 1;
 			phone.phone_settings[phone.setting_fast_graphics] = 1;
@@ -28,120 +25,143 @@ if ("phone_inited" in self){
 	
 	
 	
-	// char id for ALL
-	
-	if !phone.char_ided{
-		with oPlayer if self != other{
-			if "muno_char_id" not in self muno_char_id = noone;
-			if "muno_char_name" not in self muno_char_name = get_char_info(player, INFO_STR_NAME);
-			if "muno_char_icon" not in self muno_char_icon = get_char_info(player, INFO_ICON);
-			if (muno_char_id == other.muno_char_id && muno_char_id != noone) || "url" in self && url == other.url{
-				other.phone_ditto = true;
-				phone_ditto = true;
+	if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
+		phone_attacking = 1;
+	}
+	else{
+		if phone_attacking && (state == PS_LANDING_LAG || state == PS_PRATLAND || state_cat == SC_HITSTUN || !visible){
+			if !array_equals(phone_stopped_sounds, []){
+				for (var ii = 0; ii < array_length(phone_stopped_sounds); ii++){
+					sound_stop(phone_stopped_sounds[ii]);
+				}
+				phone_stopped_sounds = [];
 			}
 		}
-		phone.char_ided = true;
+		phone_attacking = 0;
 	}
 	
 	
 	
-	// Attack stuff
+	if !phone_lightweight{
 	
-	if phone_arrow_cooldown > 0 phone_arrow_cooldown--;
-	if phone_invis_cooldown > 0 phone_invis_cooldown--;
-	
-	phone_attacking = (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND);
-	
-	if phone_using_landing_cd == noone{
-		phone_using_landing_cd = 0;
-		phone_using_invul = 0;
-		muno_cooldown_checked = [];
-		muno_invul_checked = [];
-		for (var checked_move = 0; checked_move < 50; checked_move++){
-			if (get_attack_value(checked_move, AG_MUNO_ATTACK_COOLDOWN) < 0){
-				phone_using_landing_cd = 1;
-				array_push(muno_cooldown_checked, checked_move);
+		// char id for ALL
+		
+		if !phone.char_ided && fps_real >= 60{
+			with oPlayer if self != other{
+				if "muno_char_id" not in self muno_char_id = noone;
+				if "muno_char_name" not in self muno_char_name = get_char_info(player, INFO_STR_NAME);
+				if "muno_char_icon" not in self muno_char_icon = get_char_info(player, INFO_ICON);
+				if (muno_char_id == other.muno_char_id && muno_char_id != noone) || "url" in self && url == other.url{
+					other.phone_ditto = true;
+					phone_ditto = true;
+				}
 			}
-			for (var checked_window = 1; get_window_value(checked_move, checked_window, AG_WINDOW_LENGTH) > 0; checked_window++){
-				if (get_window_value(checked_move, checked_window, AG_MUNO_WINDOW_INVUL) != 0){
-					phone_using_invul = 1;
-					array_push(muno_invul_checked, checked_move);
+			phone.char_ided = true;
+		}
+		
+		
+		
+		// Attack stuff
+		
+		if phone_arrow_cooldown > 0 phone_arrow_cooldown--;
+		if phone_invis_cooldown > 0 phone_invis_cooldown--;
+		
+		phone_landing = (!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN || state == PS_RESPAWN);
+		
+		if phone_using_landing_cd == noone{
+			phone_using_landing_cd = 0;
+			phone_using_invul = 0;
+			muno_cooldown_checked = [];
+			muno_invul_checked = [];
+			for (var checked_move = 0; checked_move < 50; checked_move++){
+				if (get_attack_value(checked_move, AG_MUNO_ATTACK_COOLDOWN) < 0){
+					phone_using_landing_cd = 1;
+					array_push(muno_cooldown_checked, checked_move);
+				}
+				for (var checked_window = 1; get_window_value(checked_move, checked_window, AG_WINDOW_LENGTH) > 0; checked_window++){
+					if (get_window_value(checked_move, checked_window, AG_MUNO_WINDOW_INVUL) != 0){
+						phone_using_invul = 1;
+						array_push(muno_invul_checked, checked_move);
+					}
 				}
 			}
 		}
-	}
-	
-	if phone_attacking{
-		phone_window_end = floor(get_window_value(attack, window, AG_WINDOW_LENGTH) * ((get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !has_hit) ? 1.5 : 1));
 		
-		if phone_using_invul && !phone_invul_override && array_find_index(muno_invul_checked, attack) != -1{
-			super_armor = false;
-			invincible = false;
-			soft_armor = 0;
+		if phone_attacking{
+			phone_window_end = floor(get_window_value(attack, window, AG_WINDOW_LENGTH) * ((get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !has_hit) ? 1.5 : 1));
 			
-			switch(get_window_value(attack, window, AG_MUNO_WINDOW_INVUL)){
-				case -1:
-					invincible = true;
-					break;
-				case -2:
-					super_armor = true;
-					break;
-				case 0:
-					break;
-				default:
-					soft_armor = get_window_value(attack, window, AG_MUNO_WINDOW_INVUL);
-					break;
+			if phone_using_invul && !phone_invul_override && array_find_index(muno_invul_checked, attack) != -1{
+				super_armor = false;
+				invincible = false;
+				soft_armor = 0;
+				
+				switch(get_window_value(attack, window, AG_MUNO_WINDOW_INVUL)){
+					case -1:
+						invincible = true;
+						break;
+					case -2:
+						super_armor = true;
+						break;
+					case 0:
+						break;
+					default:
+						soft_armor = get_window_value(attack, window, AG_MUNO_WINDOW_INVUL);
+						break;
+				}
+			}
+			
+			phone_invul_override = 0;
+			
+			if get_attack_value(attack, AG_MUNO_ATTACK_COOLDOWN) != 0{
+				var set_amt = abs(get_attack_value(attack, AG_MUNO_ATTACK_COOLDOWN));
+				
+				switch (get_window_value(attack, window, AG_MUNO_WINDOW_CD_SPECIAL)){
+					case 1:
+						set_amt = -1;
+						break;
+					case 2:
+						set_amt = 0;
+						break;
+					case 3:
+						if has_hit set_amt = 0;
+						break;
+					case 4:
+						if has_hit_player set_amt = 0;
+						break;
+				}
+				
+				if set_amt != -1 switch (get_attack_value(attack, AG_MUNO_ATTACK_CD_SPECIAL)){
+					case 0:
+						move_cooldown[attack] = set_amt;
+						break;
+					case 1:
+						phone_arrow_cooldown = set_amt;
+						break;
+					case 2:
+						phone_invis_cooldown = set_amt;
+						break;
+				}
 			}
 		}
 		
-		phone_invul_override = 0;
+		if phone_using_landing_cd && phone_landing{
+			for (var checked_move = 0; checked_move < array_length(muno_cooldown_checked); checked_move++){
+				switch (get_attack_value(muno_cooldown_checked[checked_move], AG_MUNO_ATTACK_CD_SPECIAL)){
+					case 0:
+						move_cooldown[muno_cooldown_checked[checked_move]] = 0;
+						break;
+					case 1:
+						phone_arrow_cooldown = 0;
+						break;
+					case 2:
+						phone_invis_cooldown = 0;
+						break;
+				}
+			}
+		}
 		
-		if get_attack_value(attack, AG_MUNO_ATTACK_COOLDOWN) != 0{
-			var set_amt = abs(get_attack_value(attack, AG_MUNO_ATTACK_COOLDOWN));
-			
-			switch (get_window_value(attack, window, AG_MUNO_WINDOW_CD_SPECIAL)){
-				case 1:
-					set_amt = -1;
-					break;
-				case 2:
-					set_amt = 0;
-					break;
-				case 3:
-					if has_hit set_amt = 0;
-					break;
-				case 4:
-					if has_hit_player set_amt = 0;
-					break;
-			}
-			
-			if set_amt != -1 switch (get_attack_value(attack, AG_MUNO_ATTACK_CD_SPECIAL)){
-				case 0:
-					move_cooldown[attack] = set_amt;
-					break;
-				case 1:
-					phone_arrow_cooldown = set_amt;
-					break;
-				case 2:
-					phone_invis_cooldown = set_amt;
-					break;
-			}
-		}
-	}
-	
-	if phone_using_landing_cd && (!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN || state == PS_RESPAWN){
-		for (var checked_move = 0; checked_move < array_length(muno_cooldown_checked); checked_move++){
-			switch (get_attack_value(muno_cooldown_checked[checked_move], AG_MUNO_ATTACK_CD_SPECIAL)){
-				case 0:
-					move_cooldown[muno_cooldown_checked[checked_move]] = 0;
-					break;
-				case 1:
-					phone_arrow_cooldown = 0;
-					break;
-				case 2:
-					phone_invis_cooldown = 0;
-					break;
-			}
-		}
+		if phone_practice && state == PS_RESPAWN visible = 1;
+		
 	}
 
 
@@ -166,9 +186,7 @@ if ("phone_inited" in self){
 		}
 	}
 	
-	if phone_practice && state == PS_RESPAWN visible = 1;
-	
-	if muno_char_id != noone user_event(10);
+	user_event(10);
 	user_event(15);
 	
 	exit;
@@ -179,9 +197,12 @@ if ("phone_inited" in self){
 muno_char_id = noone;
 phone_inited = false;
 phone_playtest = (object_index == oTestPlayer);
-phone_practice = (get_training_cpu_action() != CPU_FIGHT) && !phone_playtest && get_player_hud_color(player) != c_gray;
+phone_practice = get_match_setting(SET_PRACTICE) && !phone_playtest && get_player_hud_color(player) != c_gray;
+phone_hud_hidden = !(get_local_setting(SET_HUD_SIZE) || get_local_setting(SET_HUD_NAMES));
 phone_online = 0;
-with oPlayer if get_player_hud_color(player) == $64e542 other.phone_online = 1;
+for (var cur = 0; cur < 4; cur++){
+	if get_player_hud_color(cur+1) == $64e542 phone_online = 1;
+}
 swallowed = 0; // He is    anguish.
 trummel_id = noone;
 get_btt_data = false;
@@ -189,7 +210,11 @@ amber_startHug = false;
 phone_ditto = false;
 phone_user_id = self;
 phone_attacking = 0;
+phone_landing = 0;
+phone_lightweight = 0;
+phone_offscreen = [];
 phone_invul_override = 0;
+phone_stopped_sounds = [];
 
 phone_darkened_player_color = make_color_rgb(
 	color_get_red	(get_player_hud_color(player)) * 0.25,
@@ -324,12 +349,16 @@ spr_taunt = sprite_get("taunt");
 
 
 phone = {
-	firmware: 5,
+	firmware: 12, // latest public: 11, 02 mar 2021
 	stage_id: noone,
 	
 	hint_opac: 2,
 	char_ided: 0,
 	dont_fast: 0,
+	
+	taunt_hint_x: 0,
+	taunt_hint_y: 0,
+	shader: 0,
 	
 	frame_data_loaded: false,	// Whether frame data has been loaded yet
 	state: 0,					// State of phone, i.e. rising/lowering/etc
@@ -490,7 +519,7 @@ with phone{
 
 // Sprites, sfx init
 
-with phone{ // for GML autocomplete lol
+if 0{ // for GML autocomplete lol
 
 	spr_pho_idle = 0;
 	spr_pho_roundtangle_small = 0;
@@ -500,7 +529,6 @@ with phone{ // for GML autocomplete lol
 	spr_pho_cursor = 0;
 	spr_pho_slider = 0;
 	spr_pho_side_mask = 0;
-	spr_pho_wallpaper = 0;
 	spr_pho_arrow = 0;
 	spr_pho_compatibility_badges = 0;
 	
@@ -514,7 +542,6 @@ phone.spr_pho_app_icons = sprite_get("_pho_app_icons");
 phone.spr_pho_cursor = sprite_get("_pho_cursor");
 phone.spr_pho_slider = sprite_get("_pho_slider");
 phone.spr_pho_side_mask = sprite_get("_pho_side_mask");
-phone.spr_pho_wallpaper = sprite_get("_pho_wallpaper");
 phone.spr_pho_arrow = sprite_get("_pho_arrow");
 phone.spr_pho_compatibility_badges = sprite_get("_pho_compatibility_badges");
 
@@ -529,6 +556,7 @@ sfx_pho_select1 = sound_get("_pho_select1");
 sfx_pho_select2 = sound_get("_pho_select2");
 
 spr_pho_cooldown_arrow = sprite_get("_pho_cooldown_arrow");
+spr_pho_offscreen = sprite_get("_pho_offscreen");
 
 phone.sprite_index = phone.spr_pho_idle;
 phone.side_bar.sprite_index = phone.spr_pho_slider;
@@ -590,6 +618,8 @@ with phone{
 	 */
 	
 	initSetting("Clock Format", "setting_military_time", [0, 1], ["12-Hour", "24-Hour"], "Change the format of the phone's clock.");
+
+// with other print(phone.settings)
 	initSetting("Graphics", "setting_fast_graphics", [0, 1], ["Fancy", "Fast"], "Fast Graphics disables the clock and transparency. Unless the character dev specifies otherwise, it will trigger automatically if the FPS drops below 60 for 2+ frames while the MunoPhone is closed.
 	
 	In online matches, it won't automatically trigger; instead, press the 0 (zero) key on the keyboard to enable Fast Graphics.");

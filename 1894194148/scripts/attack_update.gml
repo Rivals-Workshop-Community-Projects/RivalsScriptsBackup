@@ -37,10 +37,10 @@ if (attack==AT_UAIR&&window==1&&window_timer==1) {
 if (attack==AT_UAIR && has_hit_player) {
 	set_attack_value(AT_UAIR, AG_LANDING_LAG, 5);
 }
-
+/*
 if (attack==AT_BAIR && window == 1 && window_timer == 10) {
 	sound_play( sound_get( "SWFS5" ) );
-}
+}*/
 
 if (attack==AT_DSPECIAL && window == 4 && window_timer == 1) {
 	sound_stop( sound_get( "scopCD" ) );

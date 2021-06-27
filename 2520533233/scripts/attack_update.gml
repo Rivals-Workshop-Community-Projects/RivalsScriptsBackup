@@ -6,7 +6,10 @@ enum ROCK{
     MOVE,
     DROP,
     IDLE_1,
-    IDLE_2
+    IDLE_2,
+    RETURN,
+    KABOOM,
+    THROW
 }
 
 enum FX{
@@ -173,24 +176,41 @@ switch(attack){
         break;
     //------------------ USPECIAL --------------------- 
     case AT_USPECIAL:
-        if(window = 1 and window_timer = 3){
+    	can_fast_fall = false;
+    	if(window == 1 and window_timer == 7 and (!can_rock or !can_move_rock) and tenshi_uspecial_rock != noone){
+    		if(!shield_down){
+    			sound_play(asset_get("sfx_kragg_rock_shatter"));
+    			tenshi_uspecial_rock.rock_state = ROCK.KABOOM;
+    			tenshi_uspecial_rock.hold_timer = 0;
+    		} 
+    	}
+    	
+        if(window == 1 and window_timer == 3){
+        	y_goal = y;
         	if(can_move_rock and can_rock){
-            	var rock_ymod = 0;
             	if(!free){
-            	    vsp = -16;
-            	    rock_ymod -= 200;
+            	    y_goal = floor(room_height*.33);
             	    spawn_base_dust(x, y, "jump", 0);
             	} else {
-            	    vsp = -6;
+            		if(y > room_height*.88){
+            			y_goal = floor(room_height*.88);
+            		} else if(y < room_height*.33){
+            			y_goal = floor(room_height*.33);
+            		} else {
+            			y_goal -= 50;
+            		}
+            	    
             	    spawn_base_dust(x, y, "doublejump", 0);
             	}
             	if(tenshi_uspecial_rock == noone){
             	    tenshi_uspecial_rock = instance_create(x < room_width/2 ? 0 : room_width, 0, "obj_article_platform");
-            	    tenshi_uspecial_rock.rock_goal_y = max(y + rock_ymod, floor(room_height*.33));
+            	    //tenshi_uspecial_rock.rock_goal_y = max(y + rock_ymod, floor(room_height*.33));
+            	    tenshi_uspecial_rock.rock_goal_y = y_goal+4;
             	    tenshi_uspecial_rock.rock_goal_x = x;
             	} else {
             	    tenshi_uspecial_rock.rock_goal_x = x;
-            	    tenshi_uspecial_rock.rock_goal_y = max(y + rock_ymod, floor(room_height*.33));
+            	    //tenshi_uspecial_rock.rock_goal_y = max(y + rock_ymod, floor(room_height*.33));
+            	    tenshi_uspecial_rock.rock_goal_y = y_goal+4;
             	    tenshi_uspecial_rock.rock_state = ROCK.INIT;
             	}
         	} else {
@@ -198,9 +218,13 @@ switch(attack){
         		vsp = -10;
         	}
         }
+        if(window == 1 and window_timer > 3 and y_goal != 0 and can_rock and can_move_rock){
+        	y = lerp(y, y_goal, .1);
+        }
         
-        if(window == 2 and tenshi_uspecial_rock != noone and tenshi_uspecial_rock.rock_state == ROCK.MOVE){
-            vsp = vsp < 1 ? vsp : 1;
+        if(window == 2 and tenshi_uspecial_rock != noone and free and can_rock and can_move_rock){
+            y = lerp(y, y_goal, .2);
+            vsp = vsp < 0 ? vsp : 0;
             window_timer = 1;
         }
         if(window == 3 and window_timer == 6){

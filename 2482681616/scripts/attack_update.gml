@@ -199,16 +199,18 @@ if (attack == AT_FSPECIAL) {
         can_move = false;
         max_fall = 32;
         
+		hsp = clamp(hsp + air_accel * (right_down - left_down), -air_max_speed, air_max_speed)
+		
 		//Damage checking
+		/*
 		var my_damage = get_player_damage(player);
 		var opponent_damage = get_player_damage(grabbed_player_obj.player);
-		
-		hsp = clamp(hsp + air_accel * (right_down - left_down), -air_max_speed, air_max_speed)
 		
 		
 		if (opponent_damage >= my_damage) {
 			hsp = clamp(hsp + air_accel * 1.75 * (grabbed_player_obj.right_down - grabbed_player_obj.left_down), -air_max_speed, air_max_speed)
 		}
+		*/
     }
     else {
         can_move = false;
@@ -436,6 +438,7 @@ if (attack == AT_USPECIAL){
     if (window == 4 || window == 5 || window == 6 || window == 7) {
         grav = 0;
         can_move = false;
+        djumps = 0;
         var wall_test3 = spr_dir == 1 ? collision_rectangle(x + collision_x1, y + collision_y1, x + collision_x2 + 2, y + collision_y2, asset_get("par_block"), 1, 1) 
             : collision_rectangle(x - collision_x2 - 2, y + collision_y1, x - collision_x1, y + collision_y2, asset_get("par_block"), 1, 1)
         if (!wall_test3) {
@@ -486,18 +489,17 @@ if (attack == AT_DSPECIAL){
 	}
 	
 	if (window == 1) {
-		if (window_timer >= 5 && window_timer < 11 && ((left_pressed && spr_dir == 1) || right_pressed && spr_dir == -1)) {
-			window = 5;
+		if (window_timer < 11 && ((left_pressed && spr_dir == 1) || right_pressed && spr_dir == -1)) {
 			window_timer = 0;
 			spr_dir = -spr_dir;
 		}
 	}
 	
 	if (!free) {
-	    if (window == 2 || window == 6) {
+	    if (window == 2) {
 	        super_armor = true;
 	    }
-	    else if ((window == 1 && window_timer >= 25) || (window == 5 && window_timer >= 25)) {
+	    else if ((window == 1 && window_timer >= 12)) {
 	        super_armor = true;
 	    }
 	    else {
@@ -506,17 +508,17 @@ if (attack == AT_DSPECIAL){
 	}
 	else {
 		grav = 0.25;
-		vsp = min(vsp, 4);
-	
-		if (window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
-			window = 10;
-			window_timer = 0;
-		}
-		if (window == 7 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
-			window = 11;
-			window_timer = 0;
-		}
-	
+		vsp = min(vsp, 2);
+		
+	    if (window == 2) {
+	        super_armor = true;
+	    }
+	    else if ((window == 1 && window_timer >= 20)) {
+	        super_armor = true;
+	    }
+	    else {
+	        super_armor = false;
+	    }
 	}
 }
 

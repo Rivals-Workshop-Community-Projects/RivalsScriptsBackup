@@ -25,7 +25,7 @@
 
 */
 
-if ("phone_inited" in self && phone_inited){
+if ("phone_inited" in self && phone_inited && !phone_lightweight){
 
 	/*
 	 * update.gml Code - this runs every frame, edit the below sections as you
@@ -101,8 +101,12 @@ muno_char_name = "A.R.";								// Here I replace the name, because "Acid Rainbo
 muno_char_icon = get_char_info(player, INFO_ICON);		// CSS icon of the character. You can replace this with an arbitrary sprite, using sprite_get(), and it'll be used in the upper left of the phone's big screen. (Make it the same size pls, thank u)
 
 phone.taunt_hint_x = 0;									// Sideways offset of the "Taunt!" thing that shows in Practice Mode until you've opened the MunoPhone. You can move it sideways if it covers up your HUD elements.
+phone.taunt_hint_y = 0;									// Vertical offset
+phone.shader = 0;										// Whether or not to apply the character's palette to the phone and non-TrainingTown sidebar (change color with alt costumes)
 
 phone.dont_fast = 0;									// Set this to 1, and Fast Graphics will not automatically be set when the FPS dips below 60.
+phone_lightweight = 0;									// Set to 1 to disable certain features, possibly improving performance a little bit. See _readme.gml.
+phone.frame_data_loaded = 0;							// Set to 1 to disable the frame data guide, which MIGHT improve performance on bad computers? (This is just a guess. It has no impact on code run during gameplay, but gets rid of a TON of data stored in memory in Practice Mode...)
 
 
 
@@ -359,6 +363,15 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	
+	initPatch("4.0", "2021-6-27 (YMD)");
+	initPatchWords_ext("Changes", fa_left, c_yellow, 1, 0);
+	initPatchWords("- munophone's firmware version has been updated. it was important that you guys were able to read munophone. something important might be going on in there. (no additional entries or anything though.) you still can only open it in training town though.");
+	initPatchWords_ext("Fixes", fa_left, c_yellow, 1, 0);
+	initPatchWords("- fixed the issue where bair sound was too loud (it was playing twice in the same frame)");
+	
+	initPatchWords_ext("Notes", fa_left, c_yellow, 1, 0);
+	initPatchWords("version 4.0.......... doesnt add anything significant tho. sorry!");
 	
 	initPatch("3.9", "2021-4-29 (YMD)");
 	initPatchWords_ext("Fixes", fa_left, c_yellow, 1, 0);

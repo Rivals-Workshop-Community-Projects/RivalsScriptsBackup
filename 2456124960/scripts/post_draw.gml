@@ -10,7 +10,7 @@ shader_start();
 if (state == PS_ATTACK_GROUND && attack == AT_NSPECIAL) {
 	switch (window) {
 		case 1:
-			if (window_timer > 5 && window_timer < 9) {
+			if (window_timer > 5 && window_timer < 7) {
 				draw_sprite(sprite_get("usmash_chargelaunch"), 0, x + crystalOffset, y);		
 			} else if (strong_charge > 0) {
 				draw_sprite(sprite_get("usmash_chargeglow"), (strong_charge / 4) % 4, x + crystalOffset, y);

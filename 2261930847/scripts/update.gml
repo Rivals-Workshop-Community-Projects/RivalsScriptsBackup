@@ -51,13 +51,13 @@ else if (attack == AT_USTRONG){
         }
     }
 }
-
-
-if(free && attack == AT_USPECIAL || attack == AT_USPECIAL_2) && (state == PS_ATTACK_AIR){
-    move_cooldown[AT_USPECIAL] = 999;
+if(attack == AT_USPECIAL_2 && state == PS_ATTACK_AIR){
+    move_cooldown[AT_USPECIAL_2] = 999;
+} else if !free || state == PS_HITSTUN || state == PS_WALL_JUMP {
+	move_cooldown[AT_USPECIAL_2] = 0;
 }
 
-if(!free || state == PS_WALL_JUMP){
+if(!free || state == PS_WALL_JUMP || state == PS_HITSTUN){
     move_cooldown[AT_USPECIAL] = 0;
 }
 

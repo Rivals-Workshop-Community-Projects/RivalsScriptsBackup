@@ -6,7 +6,7 @@ set_attack_value(AT_BAIR, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_BAIR, AG_LANDING_LAG, 9);
 
 // Startup
-set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 11);
 set_window_value(AT_BAIR, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_BAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_BAIR, 1, AG_WINDOW_SFX, sound_get("bair"));
