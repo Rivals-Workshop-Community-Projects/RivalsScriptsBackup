@@ -3,7 +3,7 @@ if (captain_mode){
 }
 
 
-// draw_debug_text(x-64, y-180, "jab_sound " + string(jab_sound))
+// draw_debug_text(x-64, y-180, "jab_continue " + string(jab_continue))
 // draw_debug_text(x-64, y-220, "throw_hsp: " + string(throw_hsp))
 // draw_debug_text(x-64, y-200, "throw_vsp: " + string(throw_vsp))
 // draw_debug_text(x-64, y-180, "caught_fspecial: " + string(caught_fspecial))

@@ -8,7 +8,7 @@ if ("portrait" in self){
     draw_sprite_ext(sprite_get("charselectbg"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
     }
     if ("prev_alt" in self && prev_alt != current_alt){
-        portrait = random_func(0, 1500, true);
+        portrait = random_func(0, 500, true);
         if(portrait == 0){
             //set_victory_portrait(sprite_get("portrait1"));
             set_victory_sidebar(sprite_get("result_small_normal"));
@@ -107,7 +107,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(255, 208, 14) // "color preview square" color. can be any color!
-    ce[0,1] = "Wario 1.6" // the name of the alternate color.
+    ce[0,1] = "Wario 1.7" // the name of the alternate color.
     
     ce[1,0] = make_color_rgb(182, 37, 36)
     ce[1,1] = "Red Wario"

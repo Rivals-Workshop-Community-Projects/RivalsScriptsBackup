@@ -5,6 +5,7 @@ if (/*attack == AT_NSPECIAL || */attack == AT_FSPECIAL || attack == AT_DSPECIAL 
 if (attack == AT_NSPECIAL){
 	if ((left_down && window == 1 && spr_dir == 1) || (right_down && window == 1 && spr_dir == -1) && (reversed == false)) {
 	    spr_dir *= -1;
+		hsp *= -1; //changed for b reversing to swap momentum
 	    reversed = true;
 	} else if (window == 2) {
 	    reversed = false;
@@ -33,6 +34,11 @@ with(asset_get("obj_article2")){
 
 // USPECIAL OPTION 2: Teleport to ghost
 if (attack == AT_USPECIAL) {
+	if has_hit_player{
+		set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
+	} else {
+		set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
+	}
 	can_fast_fall = false; //?? more specific or not?
 
 		if (window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1){
@@ -53,7 +59,7 @@ if (attack == AT_USPECIAL) {
 			x = teleport_x;
 			y = teleport_y;
 			has_teleported = true;
-			// hurtboxID.sprite_index = sprite_get("idle_hurt"); //gnome solution test
+			hurtboxID.sprite_index = asset_get("ex_guy_hurt_box"); //gnome solution test
 			// window = 2;
 
 			if (article1 != noone){
@@ -66,13 +72,14 @@ if (attack == AT_USPECIAL) {
 					lifespan = 1;
 				}
 			}
-			spawn_hit_fx(x, y, 127);
+			spawn_hit_fx(x, y-16, fx_teleport);
 			vsp = -5;
 			hsp = 0;
 		} 		
 		
 	// IF TELEPORT
-	if (article1_count > 0 && caught_fspecial == 0 && !has_teleported){
+	if (article1_count > 0 && caught_fspecial == 0 && !has_teleported && !article1.inside_wall 
+	&& article1.y - get_stage_data(SD_BOTTOM_BLASTZONE) < 128){
 		if (window == 1){
 			window = 2;	
 			sound_play(asset_get("sfx_clairen_fspecial_dash"))
@@ -81,7 +88,8 @@ if (attack == AT_USPECIAL) {
 		// REGULAR RECOVERY
 		if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1){
 			spawn_hit_fx(x-16*spr_dir, y, fx_shuriken_dissolve);
-			vsp = -12;
+			hurtboxID.sprite_index = get_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE);
+			vsp = -13;
 			window = 3;
 			window_timer = 0;
 		}
@@ -103,6 +111,7 @@ if (attack == AT_NSPECIAL){
 		// sprite_index = sprite_get("waveland");
 		if (window_timer == 1){
 			spawn_hit_fx(x, y-24, 113);
+			sound_play(snd_float, 0, noone, 1.0, 1.1);
 		}
 	}
 	// no infinite nspecial stalling
@@ -116,14 +125,14 @@ if (attack == AT_NSPECIAL){
 		nspec_multiplier = 1;
 	}
 
-	 if (window == 2){
+	 if (window == 2 && window_timer == 1 && !hitpause){
 		// if (window_timer == 1){
 		// 	spr_dir *= reverse;
 		// 	nspec_multiplier = 0.9;
 		// 	vsp = -2; // TODO: tweak until satisfied
 		// }
 		vsp = 4;
-		hsp = 10*spr_dir//*nspec_multiplier;
+		hsp = 12*spr_dir//*nspec_multiplier;
     }
     
     // if (window == get_attack_value(attack, AG_NUM_WINDOWS) && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1){
@@ -133,8 +142,13 @@ if (attack == AT_NSPECIAL){
 
 
 if (attack == AT_DSPECIAL){
+	if (caught_fspecial == 1 && can_throw_timer > 0 && !captain_mode){
+		throw_hsp = 0;
+		throw_vsp = 12;
+		attack = AT_FSPECIAL;
+	}
 	// HELPING FRIEND
-	if (window == 1 && window_timer == 1){
+	else if (window == 1 && window_timer == 1){
 		with (article2){
 			spawn_hit_fx(x,y,302);
 			sound_play(asset_get("sfx_shovel_dig"));
@@ -162,13 +176,6 @@ if (attack == AT_DSPECIAL){
 	// 	// wall_y = y+16;
 	// }
 	// // ====================================================================
-	
-	if (caught_fspecial == 1 && can_throw_timer > 0 && !captain_mode){
-		throw_hsp = 0;
-		throw_vsp = 12;
-		attack = AT_FSPECIAL;
-	}
-	
 	
 	// ----- OTHER Dspecial just for messing around (teleports behind you, notthing personnell) ----
 	// if (window == 2 && window_timer == 1){
@@ -285,7 +292,14 @@ if(attack == AT_JAB){
 }
 
 if (attack == AT_JAB){
-	if ((window == 1 || window == 2) && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1 && !attack_down){
+	if (attack_pressed && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1){
+		jab_continue = window;
+	}
+	if window == 4{
+		jab_continue = 4;
+	}
+	
+	if ((window == 1 || window == 2 || /*window == 3||*/ window == 4) && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1 && jab_continue != window){
 		window = 6; // skip to end
 		window_timer = 1;
 	}	
@@ -300,5 +314,14 @@ if (attack == AT_JAB){
 		// jab_sound = true;
 		window = 4;
 		attack_end();
+	}
+}
+
+if attack == AT_DTILT {
+	if has_hit && !hitpause {
+		can_jump = true;
+		if jump_pressed && !hitpause{
+			hsp = 9 * spr_dir;
+		}
 	}
 }

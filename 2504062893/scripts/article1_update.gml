@@ -19,7 +19,7 @@ if (time_alive > 5 ){
 	hsp *= 0.92;
 }
 
-spr_dir = hsp > 0 ? 1 : -1;
+// spr_dir = hsp > 0 ? 1 : -1;
 
 if (is_boosted){
 	sprite_index = sprite_get("throwingstar_boosted"); 
@@ -36,7 +36,7 @@ if (lifespan < 1
 || y > get_stage_data(SD_BOTTOM_BLASTZONE) + get_stage_data(SD_Y_POS)
 || x < get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE)
 || x > room_width + get_stage_data(SD_X_POS) + get_stage_data(SD_SIDE_BLASTZONE)){
-	
+	// print("shuriken gone")
 	// spawn_hit_fx(x, y, player_id.fx_shuriken_dissolve);
 	// if (ghost_box != noone){
 		with (ghost_box){ destroyed = true;}
@@ -63,27 +63,50 @@ if (place_meeting(x, y, asset_get("par_block")) && !has_bounced){
 	sound_play(player_id.snd_Uair_hit);
 	grav = 0.2;
 	lifespan = 300;
-    image_angle = 0;
-	hsp = -3*sign(spr_dir);
-	vsp = -7;
+
+    if (vsp == 0){ //h
+        // image_angle = 0;
+		hsp = -3*spr_dir;
+		vsp = -7;
+    } else{ //v
+    	// hsp = 8*sign(spr_dir);
+		vsp = -vsp*0.9;
+		if (!ghost_bounced){
+			image_angle = 90;
+		}
+    }
+}
+if place_meeting(x, y, asset_get("par_block")){ //
+	inside_wall = true;
+}else{
+	inside_wall = false;
 }
 
 // if (place_meeting(x, y, article2)){
-if (article2 != noone && distance_to_point(article2.x, article2.y) < 16 && !has_bounced && article2.boosting){ // doesn't get detected for some reason? except it does now wtf
+if (article2 != noone && distance_to_point(article2.x, article2.y) < 18 && !ghost_bounced && article2.boosting){ // doesn't get detected for some reason? except it does now wtf
 	// print("don't hit your friend :(")
-	has_bounced = true;
+	ghost_bounced = true; //test
 	is_boosted = true;
 	sound_play(player_id.snd_Fspecial_hit);
 	spawn_hit_fx(x, y, player_id.fx_ghost_hit);
-	// grav = 0.1;
 	lifespan = 60;
     // image_angle = 90;
-	hsp = hsp * -2;
-	vsp = vsp * -2;
+    if (vsp == 0){
+		hsp = hsp * -2;
+		grav = 0;
+		image_angle = 0;
+    } else {
+    	// print(spr_dir)
+		vsp = -vsp;
+		hsp = 2*spr_dir;
+		grav = 0.1;
+		image_angle = 90;
+    }
+    
 }
 
-if (hsp == 0 && vsp != 0){
-	image_angle = sign(vsp) > 0 ? 90 : 270;
+if (!ghost_bounced && !has_bounced && hsp == 0 && vsp !=0){
+	image_angle = 90;
 }
 
 

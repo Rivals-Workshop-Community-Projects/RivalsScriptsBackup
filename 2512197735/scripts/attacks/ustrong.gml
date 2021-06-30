@@ -14,7 +14,7 @@ set_window_value(AT_USTRONG, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_USTRONG, 2, AG_WINDOW_VSPEED, -5);
+set_window_value(AT_USTRONG, 2, AG_WINDOW_VSPEED, -10);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_springswitch"));

@@ -47,7 +47,7 @@ snd_slash = sound_get("snd_SLASH_LAYERED2");
 fx_strong_sweetspot = hit_fx_create(sprite_get("strong_sweetspot"), 30);
 fx_shuriken_dissolve = hit_fx_create(sprite_get("shuriken_dissolve"), 8);
 fx_ghost_hit = hit_fx_create(sprite_get("roundzap"), 14);
-// fx_ellipse_hit = hit_fx_create(sprite_get("roundzap"), 14);
+fx_teleport = hit_fx_create(sprite_get("fx_teleport"), 21);
 
 friend_created = false;
 
@@ -66,11 +66,12 @@ attack_canceled = false;
 
 // NSPECIAL
 has_nspecialed = false;
-reverse = -1;
+reversed = 0;
 nspec_multiplier = 1.4;
 can_Bturn = true; // UNUSED?? Nspecial custom B-reverse
 
 // JAB (bug)
+jab_continue = 0;
 jab_sound = true; //prevent stacked sounds
 // JAB parry
 last_hit_stun = false;

@@ -227,7 +227,7 @@ if(attack == AT_USTRONG){
 		sound_play(sound_get("land"));
 	}
 	if(strong_charge >= 15 && window == 2 && window_time_is(1)){
-		vsp -= 5;
+		vsp -= 2;
 	}
 }
 if(attack == AT_FSTRONG){

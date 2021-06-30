@@ -89,19 +89,29 @@ if (attack == AT_FSPECIAL){
         	grav = 0.2;
         	lifespan = 300;
             image_angle = 0;
-        	hsp = -3*sign(spr_dir);
-        	vsp = -6;
+            if (hsp == 0){ //v
+	        	hsp = 0;
+	        	vsp = -5;
+        	} else{ // h
+        		hsp = -3*sign(spr_dir);
+        		vsp = -5;
+        	}
         }
     }
 }
-
+if (my_hitboxID.attack == AT_NSPECIAL) {
+	move_cooldown[AT_NSPECIAL] = 30;
+}
+/*
 if (my_hitboxID.attack == AT_USPECIAL){
 	uspec_cancel_alarm = 15;
 	attack_canceled = true;
+	hurtboxID.sprite_index = asset_get("ex_guy_hurt_box");
 	attack_end();
 	// move_cooldown[AT_USPECIAL] = 60; //doesn't work this way
-}
-
+}*/
+/*
+//commented this out for now, not sure why or how its used but it seemed arbitrary
 if (my_hitboxID.attack == AT_NSPECIAL){
 	if (!opponent_stunned){
 		stored_hsp = hsp;
@@ -118,7 +128,7 @@ if (my_hitboxID.attack == AT_NSPECIAL){
 		hsp = stored_hsp;
 		vsp = stored_vsp;
 	}
-}
+}*/
 
 // if (attack == AT_JAB){
 // 	// print("jab")

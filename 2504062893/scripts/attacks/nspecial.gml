@@ -18,7 +18,7 @@ set_window_value(AT_NSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_VSPEED, -1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HSPEED, 0);
-// set_window_value(AT_NSPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.2);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.2);
 
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 8);

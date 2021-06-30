@@ -12,7 +12,7 @@ sprite_change_offset("bigskull", 96, 96);
 sprite_change_offset("ghost_wall_inactive", 96, 128);
 sprite_change_offset("roundzap", 96, 96);
 sprite_change_offset("strong_sweetspot", 102, 108);
-
+sprite_change_offset("fx_teleport", 71, 94);
 
 // basic
 sprite_change_offset("idle", 128, 256);

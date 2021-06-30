@@ -17,7 +17,7 @@ if (atk_cooldown > 0) {
 	// print(can_throw)
 	atk_cooldown--;
 }
-if (atk_cooldown == 0 && get_gameplay_time() > 126){// && (state_cat == SC_AIR_NEUTRAL || state_cat == SC_GROUND_NEUTRAL)){
+if (atk_cooldown == 0 && get_gameplay_time() > 126 && free){// && (state_cat == SC_AIR_NEUTRAL || state_cat == SC_GROUND_NEUTRAL)){
 	state = PS_IDLE_AIR;
 	can_attack = true;
 	// has_airdodge = true; // would cause situations of having 2 airdodges in one jump
@@ -36,6 +36,10 @@ if (uspec_cancel_alarm == 0){
 if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
 	hit_sound_played = false;
 	opponent_stunned = false;
+}
+
+if (state != PS_ATTACK_GROUND && window < 1){
+	jab_continue = 0;
 }
 
 if (captain_timer > 0) captain_timer--;
@@ -130,6 +134,7 @@ if (bigskull_cooldown > 0) {bigskull_cooldown--;}
 if (article2 != noone && distance_to_point(article2.x, article2.y) < 8){
 	if (article2.boosting){
 		switch(state){
+			/*
 			case PS_HITSTUN:
 				// print_debug("touch)");
 				if (shield_down){
@@ -137,7 +142,7 @@ if (article2 != noone && distance_to_point(article2.x, article2.y) < 8){
 					set_state(PS_WALL_JUMP);
 					spawn_hit_fx(x,y,302);
 				}
-				break;
+				break;*/
 			// case PS_AIR_DODGE:
 			case PS_ATTACK_GROUND:
 				break;
@@ -147,7 +152,7 @@ if (article2 != noone && distance_to_point(article2.x, article2.y) < 8){
 						bigskull_cooldown = 30;
 						// hsp = 0; // TODO: Think about purpose of helping hand mechanic (chasing opponents?)
 						hsp = clamp(hsp*1.5, -14, 14);
-						vsp = -11;
+						vsp = -9;
 						// set_attack(AT_NAIR);
 						has_been_boosted = true;
 						set_state(PS_DOUBLE_JUMP);
@@ -248,15 +253,15 @@ if (caught_fspecial == 1){
 	// if (can_attack){
 	
 		// EAT THE SHURIKEN (todo, later update)
-		if (down_down && special_pressed && !free && !captain_mode){
+		// if (down_down && special_pressed && !free && !captain_mode){
 			// captain_mode = true;
 			// captain_timer = 180;
 			// caught_fspecial = 0;
 			// attack = AT_FSPECIAL;
 			// window = 4;
-		}
+		// }
 		// THROW THE SHURIKEN AGAIN
-		else if (!joy_pad_idle && special_pressed && can_throw && !captain_mode){ 
+		if (!joy_pad_idle && special_pressed && can_throw && !captain_mode){ 
 			// sound_play(asset_get("sfx_frog_fspecial_fire"));
 			// print_debug("attack_throw");
 			can_throw_timer = 10;
@@ -284,6 +289,8 @@ if(
 	
 	|| (state == PS_IDLE_AIR || (air)) 
 	&& (jump_down && (down_down)) 
+	&& floating == 0
+	|| (state == PS_FIRST_JUMP && jump_down && vsp > 0 || state == PS_DOUBLE_JUMP && jump_down && vsp > 0)
 	&& floating == 0
 ){
     floating = 1;

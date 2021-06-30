@@ -13,7 +13,10 @@ mask_index = sprite_get("throwingstar");
 ignores_walls = true;
 ghost_box = create_hitbox(AT_FSPECIAL, 1, x, y);
 
+inside_wall = false;
 is_boosted = false;
+has_bounced = false;
+ghost_bounced = false;
 has_bounced = false;
 
  state = "active";

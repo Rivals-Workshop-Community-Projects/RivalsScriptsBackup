@@ -296,7 +296,7 @@ if (hitbox != noone) && (timer > 10) {
 		        has_increased = true;
 				instance_destroy(other)
             	exit;
-            } else if is_opp {
+            } else if is_opp && hitbox.type == 1 {
             	with other {
             		spawn_hit_fx(x, y, player_id.orb_explosion_vfx)
             	}
