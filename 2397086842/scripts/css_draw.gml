@@ -57,6 +57,7 @@ if alt == 12 {
 
 //define the palette names
 var palette_names = [
+    
   "Bat Bat",
   "Void Power",
   "Stun Cat",
@@ -66,12 +67,18 @@ var palette_names = [
   "Deltadude", 
   "Circus Goat",   
   "Hey Spar, Love the character",     
-   "Lum",   
-     "Air Better",   
-         "Abyss Learner",  
-           "Equaliza",
-          "Blue Berry Bat Bat", 
+  "Lum",   
+  "Air Better",   
+  "Tak Tak",  
+  "Equaliza",
+  "Blue Berry Bat Bat", 
+  "Stylish Ghost",   
+  "Hermit of Senkai",  
+  "Miko of Paradise",
+  "Flipping Youkai",   
+  
 ];
+
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check
 if drawtime < 120 {

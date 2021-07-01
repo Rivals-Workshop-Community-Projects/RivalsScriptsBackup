@@ -34,8 +34,10 @@ if move_cooldown[AT_TAUNT] == 0 && !soft_armor && !super_armor && enemy_hitboxID
 ///}
 
 if sagemode > 0 && enemy_hitboxID.type == 1 && move_cooldown[AT_EXTRA_3] == 0{
-    sagemode -= 1
+    sagemode = 0
+    sound_play(asset_get("sfx_absa_whip3"),false,noone,1)
     move_cooldown[AT_EXTRA_3] = 45
+    spawn_hit_fx(x, y - 36, 306)
 }
 
     

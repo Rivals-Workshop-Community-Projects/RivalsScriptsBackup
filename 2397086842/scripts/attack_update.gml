@@ -233,7 +233,12 @@ if !hitpause {
     
         if attack == AT_NSPECIAL {
             
+
+            if ncharge < 65 {
                 move_cooldown[AT_NSPECIAL] = 10
+            } else {
+            	move_cooldown[AT_NSPECIAL] = 0
+            }
             
         if window == 1 {
             
@@ -272,24 +277,55 @@ if !hitpause {
                 ncharge += 5
             }
             
-            if (special_down and ncharge <= 50) && window_timer > 1 {
+            if (special_down and ncharge <= 20) && window_timer > 1 {
                 ncharge += 1
                 window_timer = 4
             }
         }
         
         if window == 2 && window_timer == 1 {
-             if ncharge < 25 {
+             if ncharge < 20 {
                create_hitbox(AT_NSPECIAL,1,x+20*spr_dir,y-56)
            }
            
-           if ncharge >= 25 && ncharge < 50 {
+           if ncharge >= 20 && ncharge < 50 {
                create_hitbox(AT_NSPECIAL,2,x+20*spr_dir,y-56)
            }
            
-           if ncharge >= 50 {
+           if ncharge >= 50 && ncharge < 65 {
                create_hitbox(AT_NSPECIAL,3,x+20*spr_dir,y-56)
            }    
+           
+           if ncharge >= 65 {
+               
+               if sagemode > 0 {
+               	create_hitbox(AT_NSPECIAL,3,x+20*spr_dir,y-56)
+               }
+                        sagefx1 = x
+                        sagefy1 = y
+                    
+                    
+                        sagefx2 = x
+                        sagefy2 = y
+                    
+                        sagefx3 = x
+                        sagefy3 = y
+                    
+                    
+                        sagefx4 = x
+                        sagefy4 = y
+                        
+                    
+                        sagefx5 = x
+                        sagefy5 = y
+    
+                sound_play(sound_get("sage"),false,noone,1.2)
+                sound_play(asset_get("sfx_absa_whip3"),false,noone,1)
+                sound_play(asset_get("sfx_bird_downspecial"),false,noone,1)
+                    spawn_hit_fx(x, y - 36, 306)
+                    sagemode = 6
+           }   
+           
         }
         
           if state_timer <= 5 {

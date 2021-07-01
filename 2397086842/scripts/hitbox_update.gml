@@ -56,16 +56,61 @@ if attack == AT_FSPECIAL {
 }
 	
 
-if attack == AT_NSPECIAL{
+if attack == AT_NSPECIAL && hbox_num > 3{
 	
 	if x < room_width and x > 0 and y < room_height { 
-		if player_id.move_cooldown[AT_NSPECIAL] > 0{
-        	player_id.move_cooldown[AT_NSPECIAL] = 5
-		}
+
 	} else {
 			destroyed = true
 		sound_play(asset_get("sfx_absa_singlezap1"))
 	}
+	
+
+}
+
+if attack == AT_NSPECIAL && hbox_num <= 3{
+	
+	if hitbox_timer == 259 {
+		destroyed = true
+		sound_play(asset_get("sfx_spin"),false,noone,1,1.3)
+	}
+
+		if player_id.move_cooldown[AT_NSPECIAL] > 0{
+        	player_id.move_cooldown[AT_NSPECIAL] = 5
+		}
+		
+           
+           if x > room_width  {
+           	vsp = -14
+           	hsp = -10
+            shake_camera(2,4)
+            sound_stop(asset_get("sfx_absa_singlezap1"))
+	    	sound_play(asset_get("sfx_absa_singlezap1"),false,noone,0.7)
+	    	sound_stop(asset_get("sfx_blow_medium1"))
+	    	sound_play(asset_get("sfx_blow_medium1"))
+           }
+
+           if x < 0 {
+            vsp = -14
+           	hsp = 10
+           	shake_camera(2,4)
+           	sound_stop(asset_get("sfx_absa_singlezap1"))
+	    	sound_play(asset_get("sfx_absa_singlezap1"),false,noone,0.7)
+	    	sound_stop(asset_get("sfx_blow_medium1"))
+	    	sound_play(asset_get("sfx_blow_medium1"))
+           }
+           
+           if y > room_height {
+           	  vsp = -18
+           	  shake_camera(2,4)
+           	  sound_stop(asset_get("sfx_absa_singlezap1"))
+	          sound_play(asset_get("sfx_absa_singlezap1"),false,noone,0.7)
+	          sound_stop(asset_get("sfx_blow_medium1"))
+	    	  sound_play(asset_get("sfx_blow_medium1"))
+           }
+           
+
+
 	
 
 }
@@ -163,9 +208,8 @@ if lockouttimer < 0 {
         }
         
       if (place_meeting(x, y + vsp, asset_get("par_block"))) && vsp > 0  {
-        vsp *= -0.7
+        vsp *= -1
         hsp *= 0.8
-        vsp -= 1
     	spawn_hit_fx(x - 8*spr_dir ,y + vsp + 30,14)
     	shake_camera(2,2)	
     	sound_play(asset_get("sfx_blow_medium1"))
@@ -409,8 +453,30 @@ if lockouttimer < 0 {
                
                case 3 :
                with nearbyhitbox.player_id {
-               create_hitbox(AT_NSPECIAL,3,other.x,other.y)
-               create_hitbox(AT_NSPECIAL,10,other.x,other.y + 20)
+                                       sagefx1 = x
+                        sagefy1 = y
+                    
+                    
+                        sagefx2 = x
+                        sagefy2 = y
+                    
+                        sagefx3 = x
+                        sagefy3 = y
+                    
+                    
+                        sagefx4 = x
+                        sagefy4 = y
+                        
+                    
+                        sagefx5 = x
+                        sagefy5 = y
+    
+                sound_play(sound_get("sage"),false,noone,1.2)
+                sound_play(asset_get("sfx_absa_whip3"),false,noone,1)
+                sound_play(asset_get("sfx_bird_downspecial"),false,noone,1)
+                    spawn_hit_fx(x, y - 36, 306)
+                    sagemode = 6
+               
                }
                break;
               }

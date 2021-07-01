@@ -1,0 +1,1 @@
+if !fast_graphics time = get_gameplay_time()

@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 4, 3, 15 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 14 );
+set_num_palettes( 18 );
 
 // Void
 set_color_profile_slot( 1, 0, 36, 255, 156 ); //Energy
@@ -136,15 +136,15 @@ set_color_profile_slot( 10, 5, 62, 201, 76 ); //body
 set_color_profile_slot( 10, 6, 13, 15, 14 ); //skirt
 set_color_profile_slot( 10, 7, 57, 66, 62 ); //ears
 
-// Abyss Learner
-set_color_profile_slot( 11, 0, 255, 204, 0 ); //Energy
-set_color_profile_slot( 11, 1, 69, 74, 69 ); //Hair + parts
-set_color_profile_slot( 11, 2, 63, 44, 79 ); //shirt
-set_color_profile_slot( 11, 3, 45, 25, 61 ); //cloak1 + sock
-set_color_profile_slot( 11, 4, 255, 229, 0 ); //eyes
-set_color_profile_slot( 11, 5, 86, 94, 89 ); //body
-set_color_profile_slot( 11, 6, 189, 139, 0 ); //skirt
-set_color_profile_slot( 11, 7, 91, 72, 94 ); //ears
+// Tak Tak
+set_color_profile_slot( 11, 0, 49, 222, 161 ); //Energy
+set_color_profile_slot( 11, 1, 157, 27, 184 ); //Hair + parts
+set_color_profile_slot( 11, 2, 205, 52, 54 ); //shirt
+set_color_profile_slot( 11, 3, 87, 24, 23 ); //cloak1 + sock
+set_color_profile_slot( 11, 4, 205, 52, 54 ); //eyes
+set_color_profile_slot( 11, 5, 255, 255, 255 ); //body
+set_color_profile_slot( 11, 6, 67, 55, 71 ); //skirt
+set_color_profile_slot( 11, 7, 67, 55, 71 ); //ears
 
 // Equaliza
 set_color_profile_slot( 12, 0, 89, 244, 255 ); //Energy
@@ -165,6 +165,46 @@ set_color_profile_slot( 13, 4, 60, 31, 99 ); //eyes
 set_color_profile_slot( 13, 5, 100, 100, 143 ); //body
 set_color_profile_slot( 13, 6, 34, 25, 56 ); //skirt
 set_color_profile_slot( 13, 7, 75, 150, 44 ); //ears
+
+// Stylish Ghost
+set_color_profile_slot( 14, 0, 255, 0, 0 ); //Energy
+set_color_profile_slot( 14, 1, 82, 82, 82 ); //Hair + parts
+set_color_profile_slot( 14, 2, 148, 148, 148 ); //shirt
+set_color_profile_slot( 14, 3, 54, 54, 54 ); //cloak1 + sock
+set_color_profile_slot( 14, 4, 255, 255, 255 ); //eyes
+set_color_profile_slot( 14, 5, 212, 212, 212 ); //body
+set_color_profile_slot( 14, 6, 33, 33, 33 ); //skirt
+set_color_profile_slot( 14, 7, 135, 135, 135 ); //ears
+
+// Hermit of Senkai
+set_color_profile_slot( 15, 0, 255, 229, 0 ); //Energy
+set_color_profile_slot( 15, 1, 247, 197, 57 ); //Hair + parts
+set_color_profile_slot( 15, 2, 205, 41, 43 ); //shirt
+set_color_profile_slot( 15, 3, 103, 47, 186 ); //cloak1 + sock
+set_color_profile_slot( 15, 4, 255, 229, 0 ); //eyes
+set_color_profile_slot( 15, 5, 255, 207, 173 ); //body
+set_color_profile_slot( 15, 6, 163, 47, 186 ); //skirt
+set_color_profile_slot( 15, 7, 186, 151, 126 ); //ears
+
+// Miko of Paradise
+set_color_profile_slot( 16, 0, 255, 0, 0 ); //Energy
+set_color_profile_slot( 16, 1, 43, 41, 37 ); //Hair + parts
+set_color_profile_slot( 16, 2, 240, 46, 48 ); //shirt
+set_color_profile_slot( 16, 3, 255, 255, 255 ); //cloak1 + sock
+set_color_profile_slot( 16, 4, 255, 255, 255 ); //eyes
+set_color_profile_slot( 16, 5, 255, 234, 230 ); //body
+set_color_profile_slot( 16, 6, 43, 41, 37 ); //skirt
+set_color_profile_slot( 16, 7, 186, 151, 126 ); //ears
+
+// Flipping Youkai
+set_color_profile_slot( 17, 0, 99, 91, 186 ); //Energy
+set_color_profile_slot( 17, 1, 41, 18, 18 ); //Hair + parts
+set_color_profile_slot( 17, 2, 219, 225, 255 ); //shirt
+set_color_profile_slot( 17, 3, 204, 27, 27 ); //cloak1 + sock
+set_color_profile_slot( 17, 4, 255, 0, 0 ); //eyes
+set_color_profile_slot( 17, 5, 255, 222, 199 ); //body
+set_color_profile_slot( 17, 6, 99, 91, 186 ); //skirt
+set_color_profile_slot( 17, 7, 255, 194, 148 ); //ears
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

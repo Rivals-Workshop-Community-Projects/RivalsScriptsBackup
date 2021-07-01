@@ -33,7 +33,7 @@ if sagemode >= 0 and sagemode <= 5 and  move_cooldown[AT_EXTRA_3] = 0 and hit_pl
                     spawn_hit_fx(x, y - 36, 306)
     }
 
-sagemode += 1
+//sagemode += 1
 
 if my_hitboxID.attack == AT_FSTRONG {
     move_cooldown[AT_EXTRA_3] = 40 
