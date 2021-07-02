@@ -68,6 +68,7 @@ sprite_change_offset("fireedge2", 74, 142);
 sprite_change_offset("fstrong", 72, 92);
 sprite_change_offset("ustrong", 72, 92);
 sprite_change_offset("dstrong", 72, 92);
+sprite_change_offset("senku", 72, 92);
 sprite_change_offset("DSshadow", 72, 92);
 
 sprite_change_offset("ffires1", 72, 52);

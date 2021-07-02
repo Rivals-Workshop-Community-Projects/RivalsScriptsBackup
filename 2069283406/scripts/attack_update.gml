@@ -189,6 +189,9 @@ if attack == AT_USTRONG{
 	can_move = false
 	can_fast_fall = false 
 	
+	if window == 1 && free {
+		set_state(PS_IDLE)
+	}
 	if window == 2 && window_timer == 1 && !hitpause{
 			sound_play(asset_get("sfx_bird_sidespecial_start"));
 		sound_play(asset_get("sfx_swipe_heavy2"));
@@ -200,16 +203,16 @@ if attack == AT_USTRONG{
 		hsp = 2*spr_dir
 	}
 	
-	if window == 3 && window_timer > 11 && !has_hit{
+	if window == 3 && window_timer > 11 {
 		set_state (PS_PRATFALL)
 	}
 	
-	if window == 3 && has_hit_player && special_down  && firerange > 0 && inrange {
-		shunpo = 1
-	    set_attack (AT_DSTRONG)
-		window = 4
-		window_timer = 0
-	}
+	///if window == 3 && has_hit_player && special_down  && firerange > 0 && inrange {
+	///	shunpo = 1
+	///    set_attack (AT_DSTRONG)
+	///	window = 4
+	///	window_timer = 0
+	///}
 	
 
 	
@@ -225,16 +228,47 @@ if attack == AT_FSTRONG{
 		sound_play(asset_get("sfx_burnapplied"));
 	}
 	
-		if window == 3 && has_hit_player && special_down  && firerange > 0 && inrange{
-		shunpo = 2
-	    set_attack (AT_DSTRONG)
-		window = 4
-		window_timer = 0
-	}
+	////	if window == 3 && has_hit_player && special_down  && firerange > 0 && inrange{
+	////	shunpo = 2
+	////    set_attack (AT_DSTRONG)
+	////	window = 4
+	////	window_timer = 0
+	////}
 }
 
 
 if attack == AT_DSTRONG {
+	
+	if hitstop < 14  && (left_down or right_down) {
+		hitstop = 0
+		hitpause = 0
+	}
+	
+	if has_hit_player && window < 3 && !hitpause{
+		if left_down && !right_down {
+			spr_dir = 1
+            window = 3
+            window_timer = 0
+            vsp = 0
+            hsp = -9
+            		sound_play(sound_get("RZ2"),false, noone, 0.8);
+		}
+		
+		if !left_down && right_down {
+			spr_dir = -1
+            window = 3
+            window_timer = 0
+            vsp = 0
+            hsp = 9
+            		sound_play(sound_get("RZ2"),false, noone, 0.8);
+		}
+	}
+	
+	if has_hit_player && hitstop < 11{
+		can_attack = true
+		hitstop = 0
+		hitpause = 0
+	}
 	
 	if window == 2 {
 		
@@ -247,48 +281,48 @@ if attack == AT_DSTRONG {
 		
 	}
 	
-	if window == 2 && window_timer > 12 && has_hit_player && special_down  && firerange > 0 && inrange{
-		window = 4
-		window_timer = 0
-		shunpo = 0
-	}
+	///if window == 2 && window_timer > 12 && has_hit_player && special_down  && firerange > 0 && inrange{
+	///	   window = 4
+	///	   window_timer = 0
+	///	   shunpo = 0
+	///}
 	
 	
-	if window == 4  { 
-	    move_cooldown[AT_FSPECIAL_AIR] = 999
-		move_cooldown[AT_NSPECIAL_2] = 30
-				firetimer += 1
-			if window_timer == 1 {
-		  spawn_hit_fx( x   , y , firepar2 )	
-		}
-		
-		if window_timer % 3 = 0 {
-		spawn_hit_fx( x   , y , dsshadow )
-		}
-
-		if window_timer == 1 {
-			sound_play(sound_get("RZ"));
-		}
-	if hit_player_obj.x > x {
-		spr_dir = 1 
-	} else {
-		spr_dir = -1
-	}
-		hsp = (hit_player_obj.x - x) / 30 + (5 * spr_dir)
-		vsp = (hit_player_obj.y - y) / 16
-		
-		x += (hit_player_obj.x - x) / 20 + (6 * spr_dir)
-		y += (hit_player_obj.y - y) / 10
-		
-	
-		hit_player_obj.vsp /= 1.04
-		hit_player_obj.hsp /= 1.04	
-		
-			if window_timer == 6 {
-			window_timer = 2
-		}
-		
-	}
+	//if window == 4  { 
+	//    move_cooldown[AT_FSPECIAL_AIR] = 999
+	//	move_cooldown[AT_NSPECIAL_2] = 30
+	//			firetimer += 1
+	//		if window_timer == 1 {
+	//	  spawn_hit_fx( x   , y , firepar2 )	
+	//	}
+	//	
+	//	if window_timer % 3 = 0 {
+	//	spawn_hit_fx( x   , y , dsshadow )
+	//	}
+//
+	//	if window_timer == 1 {
+	//		sound_play(sound_get("RZ"));
+	//	}
+	//if hit_player_obj.x > x {
+	//	spr_dir = 1 
+	//} else {
+	//	spr_dir = -1
+	//}
+	//	hsp = (hit_player_obj.x - x) / 30 + (5 * spr_dir)
+	//	vsp = (hit_player_obj.y - y) / 16
+	//	
+	//	x += (hit_player_obj.x - x) / 20 + (6 * spr_dir)
+	//	y += (hit_player_obj.y - y) / 10
+	//	
+	//
+	//	hit_player_obj.vsp /= 1.04
+	//	hit_player_obj.hsp /= 1.04	
+	//	
+	//		if window_timer == 6 {
+	//		window_timer = 2
+	//	}
+	//	
+	//}
 }
 
 

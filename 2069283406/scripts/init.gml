@@ -57,7 +57,7 @@ dash_turn_time = 10;
 dash_turn_accel = 1.7;
 dash_stop_time = 6;
 dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .7;
+ground_friction = .73;
 moonwalk_accel = 0.7;
 
 jump_start_time = 5;
@@ -137,6 +137,8 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
+
+senku = hit_fx_create( sprite_get( "senku" ), 40 );
 
 shit1 = hit_fx_create( sprite_get( "shit1" ), 60 );
 

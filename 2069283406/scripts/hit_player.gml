@@ -162,6 +162,11 @@ sound_play(asset_get("sfx_burnapplied"));
 
 }
 
+if my_hitboxID.attack == AT_DSTRONG {
+				spawn_hit_fx(x,y,senku)
+	move_cooldown[AT_DSTRONG] = 60
+}
+
 if my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num == 4 {
     
     vsp = -6
@@ -226,7 +231,9 @@ if (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num < 4) or attack == A
     
     if fireon > 2{
     
-        
+        with hit_player_obj {
+        	take_damage(player,-1,5)
+        }
     fireon = 3
  firerange = 100
  
