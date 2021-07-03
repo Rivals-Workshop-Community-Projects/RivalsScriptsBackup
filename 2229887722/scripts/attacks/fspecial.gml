@@ -31,7 +31,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.8);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.025);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.45);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.5);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_ori_sein_strong_start"));
 
@@ -77,7 +77,7 @@ set_window_value(AT_FSPECIAL, 5, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.9);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_CUSTOM_GRAVITY, 0.4);
 
 //Recovery window
-set_window_value(AT_FSPECIAL, 6, AG_WINDOW_TYPE, 7); //Modified both by hit_player and attack_update. Becomes 1 if an enemy is hit. (This doesn't work due to number of windows bug)
+set_window_value(AT_FSPECIAL, 6, AG_WINDOW_TYPE, 1); //Modified both by hit_player and attack_update. Becomes 1 if an enemy is hit. (This doesn't work due to number of windows bug)
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 1);
@@ -124,7 +124,7 @@ set_window_value(AT_FSPECIAL, 8, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.5);
 set_window_value(AT_FSPECIAL, 8, AG_WINDOW_CUSTOM_GRAVITY, 0.4);
 
 //Critical Finisher Recovery
-set_window_value(AT_FSPECIAL, 9, AG_WINDOW_TYPE, 7); //Modified both by hit_player and attack_update. Becomes 1 if an enemy is hit
+set_window_value(AT_FSPECIAL, 9, AG_WINDOW_TYPE, 1); //Modified both by hit_player and attack_update. Becomes 1 if an enemy is hit
 set_window_value(AT_FSPECIAL, 9, AG_WINDOW_LENGTH, 32);
 set_window_value(AT_FSPECIAL, 9, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_FSPECIAL, 9, AG_WINDOW_ANIM_FRAMES, 8);

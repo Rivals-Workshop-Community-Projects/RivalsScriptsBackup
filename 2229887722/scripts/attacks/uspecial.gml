@@ -15,6 +15,9 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_ori_dsmash_skitter_alone"));
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 3);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.25);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.04);
+
 //set_window_value(AT_USPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.2);
 
 
@@ -29,11 +32,15 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 2);
 //set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 2);
 //set_window_value(AT_USPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 //set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_ori_dsmash_skitter_alone"));
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.25);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.04);
 
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 7); //7 goes into pratfall
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 9);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.25);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.04);
 //set_window_value(AT_USPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.8);
 
 //==========================

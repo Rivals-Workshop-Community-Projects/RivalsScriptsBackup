@@ -149,11 +149,13 @@ if (my_hitboxID.attack == AT_USPECIAL_2)
         //sound_play( asset_get("sfx_ori_energyhit_medium"), false, false, 1, 1.1 );
         //sound_play( asset_get("sfx_absa_kickhit") );
         
-        
-        old_vsp = -20;
+        if (old_vsp < -15)
+            old_vsp = -23;
+        else
+            old_vsp = -20;
     }
     
-    if (my_hitboxID.hbox_num >= 2 && my_hitboxID.hbox_num <= 5)
+    if (my_hitboxID.hbox_num >= 2 && my_hitboxID.hbox_num <= 5 || my_hitboxID.hbox_num >= 8)
     {
         if (hit_player_obj.url != 1928599994 && hit_player_obj.state_cat == SC_HITSTUN)
             hit_player_obj.y = y + -25;
@@ -372,7 +374,8 @@ if (my_hitboxID.attack == AT_BAIR)
         
         //sound_play( asset_get("sfx_ori_energyhit_heavy") );
     }
-    old_vsp = -4;
+    if (!down_hard_pressed)
+        old_vsp = -4;
     
 }
 
@@ -423,8 +426,8 @@ if (my_hitboxID.attack == AT_FSPECIAL)
                 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.3);
                 shurikatLoopCount = 10;
                 
-                //Increase finisher damage
-                set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 10); //Modified from attack_update. Ranges from 5-10, based on charge length
+                //Adjust finisher damage
+                set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 3); //Modified from attack_update. Ranges from 5-10, based on charge length
             }
         }
         else if (my_hitboxID.hbox_num == 4 && shurikatChargeLevel < 5)
@@ -452,7 +455,7 @@ if (my_hitboxID.attack == AT_FSPECIAL)
                     set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 2);
                 break;
                 case 4:
-                    set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
+                    set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 8);
                     set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.3);
                     set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 22);
                     set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 2);
@@ -879,6 +882,12 @@ if (my_hitboxID.attack == AT_DSPECIAL)
             my_hitboxID.vsp = 0;
         }
         
+        if (my_hitboxID.yBallHasHitstun == true)
+        {
+            hit_player_obj.hitstop = 12;
+            hit_player_obj.hitpause = true;
+        }
+        
     }
     
     if (my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 4 )
@@ -994,10 +1003,12 @@ if (my_hitboxID.attack == AT_DSPECIAL_2)
                 spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - (char_height * 0.5) - 12, 19);
             }
             
-            
-            yarnTieArticle = instance_create(hit_player_obj.x, hit_player_obj.y - (char_height * 0.5), "obj_article1");
-            yarnTieArticle.yarnType = 1;
-            yarnTieArticle.targetTiedUpEnemy = hit_player_obj;
+            if (hit_player_obj.clone == false) //Don't spawn the article on a fors clone
+            {
+                yarnTieArticle = instance_create(hit_player_obj.x, hit_player_obj.y - (char_height * 0.5), "obj_article1");
+                yarnTieArticle.yarnType = 1;
+                yarnTieArticle.targetTiedUpEnemy = hit_player_obj;
+            }
         }
         else
         {
@@ -1021,7 +1032,7 @@ if (hit_player_obj != self)
         {
             if (variable_instance_exists(yarnBallObject, "yBallIsProjectile") && yarnBallObject.player_id == self)
             {
-                if (yarnBallObject.yBallIsProjectile == true && yarnBallObject.yBallIsTouchingEnemy == true)
+                if (yarnBallObject.yBallIsProjectile == true && yarnBallObject.yBallIsTouchingEnemy == true && hit_player_obj.clone == false) //Ignore forsburn clone
                 {
                     //if (yarnBallObject.yBallIsTouchingEnemy == true)
                     //{
@@ -1038,7 +1049,7 @@ if (hit_player_obj != self)
                     //}
                     //exit;
                 }
-                else if (hit_player_obj.enemyTouchingYarnBall[player - 1] == true)
+                else if (hit_player_obj.enemyTouchingYarnBall[player - 1] == true && hit_player_obj.clone == false)
                 {
                     var oldYarnBallObj = yarnBallObject;
                     //sound_play(asset_get("sfx_blow_weak1"));
@@ -1077,6 +1088,12 @@ if (hit_player_obj != self)
             //else
             //{
                 addDamageBoost(1);
+                //Play a raising pitch star sfx each time Amber lands hits on yarn marked enemies
+                if (totalDamageDealt < totalDamageDealtCap && !(my_hitboxID.attack == AT_USPECIAL_2 || my_hitboxID.attack == AT_FSPECIAL && shurikatChargeLevel == 5 || my_hitboxID.attack == AT_DSPECIAL_2)
+                    && !(my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1))
+                {
+                    sound_play( asset_get("mfx_star"), false, false, 1.5, 0.5 + (totalDamageDealt * 0.025) );
+                }
             //}
         }
     }

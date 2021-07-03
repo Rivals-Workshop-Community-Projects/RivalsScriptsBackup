@@ -248,7 +248,7 @@ if (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num < 4) or attack == A
     spawn_hit_fx( floor(hit_player_obj.x - 130 - (0.7*firerange)) , floor(hit_player_obj.y  + 45 - random_func(7, 40, true)) , firepar1 )
     spawn_hit_fx( floor(hit_player_obj.x - 110 - (0.7*firerange)) , floor(hit_player_obj.y  + 05 - random_func(8, 40, true)) , firepar1 )
 
-     sound_play(sound_get("RI"));
+     sound_play(asset_get("sfx_ori_energyhit_heavy"));
     sound_play(asset_get("sfx_ori_grenade_launch"));
     
     }

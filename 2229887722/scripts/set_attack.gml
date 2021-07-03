@@ -1,6 +1,10 @@
 //set attack
 switch (attack)
 {
+    case AT_DATTACK:
+        dashAttackCancelBuffer = false;
+    break;
+    
     case AT_FTILT:
         attack_end();
         if (isHoldingYarnBall == false)
@@ -133,6 +137,9 @@ switch (attack)
         speedlinesEnable = false;
         superShurikatHitChargedTotalDamage = 0;
         shurikatHitFirstHitbox = false;
+        
+        set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 0);
+        set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, 0);
     break;
     
     case AT_DSPECIAL:

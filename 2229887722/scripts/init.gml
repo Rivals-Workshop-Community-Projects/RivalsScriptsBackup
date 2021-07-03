@@ -1,5 +1,7 @@
 debugDrawEnabled = false;
 
+amber_hardMode = false; //When enabled she becomes even lighter and loses all meter when hit
+
 hurtbox_spr = sprite_get("kitty_hurtbox");
 crouchbox_spr = asset_get("cat_crouchbox");
 air_hurtbox_spr = -1;
@@ -21,7 +23,7 @@ initial_dash_time = 8;
 initial_dash_speed = 8;
 
 //custom variables for her initial dash speed
-originInitialDashSpeed = 11;
+originInitialDashSpeed = 9.5;
 cooldownInitialDashSpeed = 8;
 
 lastDashDir = 0; //If Amber dashes in the same direction twice, her init dash speed becomes cooldownInitialDashSpeed
@@ -39,7 +41,7 @@ moonwalk_accel = 1.4;
 jump_start_time = 5;
 jump_speed = 12;
 short_hop_speed = 7;
-djump_speed = 10;
+djump_speed = 11;
 //djump_accel = -8;
 //djump_accel_start_time = 1;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
@@ -65,7 +67,7 @@ fast_fall = 15; //fast fall speed
 gravity_speed = .6;
 
 //Effective Weight
-knockback_adj = 1.35; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.31; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 hitstun_grav = .45;
 air_friction = .04;
 
@@ -155,7 +157,7 @@ chargePunishedIconAnimTimer = 0;
 originOutlineColor = outline_color;
 chargeAttackReadyOutlineColor = [ 95, 200, 228 ];
 empoweredCooldownTimer = 0;
-empoweredCooldownLength = 360;
+empoweredCooldownLength = 240;
 
 //Wall jump variables
 wallJumpCount = 0; //Used for allowing Amber to wall jump 2 times
@@ -204,6 +206,8 @@ yarnDashPrevYPos = 0; //Used to fix the stuck on dropdown platforms
 yarnDashSpeed = 15; //Changes between 10 and 15 if the yarnball is sitting on stage or not
 yarnBallFollowedEnemy = noone;
 yarnDashFrontHitbox = noone;
+yarnDashAgainstWall = false; //Becomes true if Amber is dashing against the wall
+yarnDashLedgeBoostTimer = 0;
 yarnBallMarkedEnemies[0] = false;
 yarnBallMarkedEnemies[1] = false;
 yarnBallMarkedEnemies[2] = false;
@@ -217,6 +221,8 @@ yarnDashCooldown = 120; //How long Amber's yarn dash cooldown is in frames
 yarnDashCooldownTimer = 0; //The current yarn dash cooldown timer
 //yarnBallWasHitByEnemy = false;
 yarnBallPunishCooldown = 300; //How long Amber can't use yarn ball if enemy knocks out yarn ball
+yarnThrowDodgeHsp = 0; //Amber's previous hsp and vsp when she was air dodging or rolling right before throwing
+yarnThrowDodgeVsp = 0; 
 
 yarnDashSprite = sprite_get("dspecial_dash");
 originYarnDashSprite = sprite_get("dspecial_dash");
@@ -234,6 +240,7 @@ yarnTieArticle = noone;
 hasUsedUSpecial = false;
 previousDairDirection = 0; //becomes 1 or -1 based on the spr_dir when using dair
 secondaryDairCooldown = 0; //move cooldown itself seems to mess up the dair. Use our own cooldown so that the player can at least use dair
+dashAttackCancelBuffer = false; //Used to help link into jab or other attacks after landing sweetspot dattack cancel
 
 //VFX Variables
 drawChargeVfx = false; //When true, the charge vfx around Amber will be drawn. Becomes false when Amber is attacking with charge attacks or not charged
@@ -282,7 +289,7 @@ smokeBombVfx_sprite = sprite_get("smoke_bomb_vfx2");
 //smokeBombVfxTimer = 0; //Used to keep track of animation time for the 
 
 //Afterimage variables
-afterImageMaxCount = 24; //How many afterimages can be visible at a time
+afterImageMaxCount = 6; //How many afterimages can be visible at a time
 afterImageXPos[afterImageMaxCount] = 0; 
 afterImageYPos[afterImageMaxCount] = 0;
 afterImageAlpha[afterImageMaxCount] = 0;
@@ -517,6 +524,7 @@ amberHugCanExitTimer = 0; //For looping windows. Pressing shield, attack, etc. w
 amberHugExitWindow = 0;
 amberHugSprite = noone;
 targetPlayerHugID = noone;
+targetPlayerHugIDTwo = noone;
 //otherPlayerUrls[3] = 0;
 targetPlushSprite = sprite_get("plushies");
 targetPlushIndex = 0; 
@@ -524,6 +532,12 @@ tauntCancelTimer = 0; //When this is 0, Amber's plush or hugging taunt can be ca
 
 teamRedColor = make_colour_rgb(250, 85, 85);
 teamBlueColor = make_colour_rgb(85, 100, 255);
+
+amberHugA2ZReady = 0; //1 means almost ready. (One of the compatible characters is in range). 2 means all characters are ready and in range
+amberHugA2ZSpriteBase = sprite_get("a2z_base");
+amberHugA2ZSpriteAmber = sprite_get("a2z_amber");
+amberHugA2ZSpriteAstra = sprite_get("a2z_astra");
+amberHugA2ZSpriteZerra = sprite_get("a2z_zerra");
 #endregion
 
 #region//Character interaction variables

@@ -239,6 +239,16 @@ if attack == AT_FSTRONG{
 
 if attack == AT_DSTRONG {
 	
+	if state_timer <= 1 {
+		if left_down && !right_down {
+            hsp = -7
+		}
+		
+		if !left_down && right_down {
+            hsp = 7
+		}
+	}
+	
 	if hitstop < 14  && (left_down or right_down) {
 		hitstop = 0
 		hitpause = 0
@@ -250,7 +260,7 @@ if attack == AT_DSTRONG {
             window = 3
             window_timer = 0
             vsp = 0
-            hsp = -9
+            hsp = -9.5
             		sound_play(sound_get("RZ2"),false, noone, 0.8);
 		}
 		
@@ -259,19 +269,16 @@ if attack == AT_DSTRONG {
             window = 3
             window_timer = 0
             vsp = 0
-            hsp = 9
+            hsp = 9.5
             		sound_play(sound_get("RZ2"),false, noone, 0.8);
 		}
 	}
 	
-	if has_hit_player && hitstop < 11{
+	if has_hit_player && !hitstop{
 		can_attack = true
-		hitstop = 0
-		hitpause = 0
 	}
 	
 	if window == 2 {
-		
 		if window_timer <= 1 && !hitpause{
 			shake_camera(4,6)
 			sound_play(asset_get("sfx_forsburn_combust"));

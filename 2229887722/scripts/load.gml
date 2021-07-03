@@ -44,7 +44,7 @@ sprite_change_offset("dtilt", 40, 50);
 sprite_change_offset("utilt", 40, 92);
 sprite_change_offset("nair", 34, 56);
 sprite_change_offset("fair", 60, 98);
-sprite_change_offset("bair", 50, 46);
+sprite_change_offset("bair", 50, 52);
 sprite_change_offset("uair", 50, 76);
 sprite_change_offset("dair", 42, 54);
 sprite_change_offset("fstrong", 58, 66);
@@ -86,7 +86,7 @@ sprite_change_offset("plat", 64, 94);
 sprite_change_offset("plat_behind", 64, 94);
 sprite_change_offset("plat_front", 64, 94);
 
-sprite_change_offset("kitty_hurtbox", 16, 46);
+sprite_change_offset("kitty_hurtbox", 24, 44);
 
 sprite_change_offset("yarnball", 8, 8);
 sprite_change_offset("yarnball_cmask", 8, 8);
@@ -117,4 +117,9 @@ sprite_change_offset("speech_bubble", 34, 30);
 //Character interactions
 sprite_change_offset("feri_costume_amber", 84, 114);
 sprite_change_offset("amber_sonic_sign_complete", 18, 41);
+
+sprite_change_offset("a2z_base", 55, 108);
+sprite_change_offset("a2z_amber", 55, 108);
+sprite_change_offset("a2z_astra", 55, 108);
+sprite_change_offset("a2z_zerra", 55, 108);
 

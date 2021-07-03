@@ -13,19 +13,9 @@ if (attack == AT_DSPECIAL)
 		if (yBallCanMarkEnemyTimer > 0)
 			yBallCanMarkEnemyTimer--;
 			
-		//If there is a bash timer on this hitbox, ease the position towards Ori
-		/*
-		if (variable_instance_exists(self, "yBallBashEaseTimer"))
-		{
-			if (yBallBashEaseTimer < 16)
-			{
-				yBallBashEaseTimer++;
-				
-				x = ease_quadOut( yBallPreBashXPos, 100, yBallBashEaseTimer, 16);
-			}
+		if (yBallCanHitStunTimer > 0)
+			yBallCanHitStunTimer--;
 			
-		}
-		*/
 		//Prevent the projectile from despawning, so reset the timer
 		if (hitbox_timer > (length - 2))
 		{
@@ -194,7 +184,7 @@ if (attack == AT_DSPECIAL)
 		    }
 		}
 		
-		if (yBallFollowingEnemy != noone)
+		if (yBallFollowingEnemy != noone && instance_exists(yBallFollowingEnemy) )
 		{
 			if (yBallFollowingEnemy.state_cat == SC_HITSTUN || yBallFollowEnemyTimer > 0 || yBallStickEnemyWhenThrown == true || yBallFollowingEnemy.state_cat == SC_AIR_NEUTRAL
 				|| yBallFollowingEnemy.state_cat == SC_AIR_COMMITTED)
@@ -207,11 +197,15 @@ if (attack == AT_DSPECIAL)
 				}
 				else if (yBallFollowEnemyTimer > 0)
 					yBallFollowEnemyTimer--;
-				hsp = yBallFollowingEnemy.hsp;
-				vsp = yBallFollowingEnemy.vsp;
 				
-				x = yBallFollowingEnemy.x;
-				y = yBallFollowingEnemy.y - round(yBallFollowingEnemy.char_height * 0.5);
+				if (yBallFollowingEnemy.clone == false) //Don't teleport yarnball to Fors clone
+				{
+					hsp = yBallFollowingEnemy.hsp;
+					vsp = yBallFollowingEnemy.vsp;
+					
+					x = yBallFollowingEnemy.x;
+					y = yBallFollowingEnemy.y - round(yBallFollowingEnemy.char_height * 0.5);
+				}
 			}
 			
 			//Despawn the yarnball if it was following the enemy and they get KO'd
@@ -240,8 +234,6 @@ if (attack == AT_DSPECIAL)
 		}
 		*/
 		//If the yarn ball is idle (or moving very slowly on the ground), get rid of the damage
-		//Note. Trying to prevent enemies from parrying it and disabling knockback on the yarn ball. Gonna keep this
-		//as a "tripping" hazard for the enemy
 		if (vsp == 0 && hsp < 1 && hsp > -1 && free == false)
 		{
 			destroy_fx = 1;
@@ -275,7 +267,7 @@ if (variable_instance_exists(self, "yBallWasHitByEnemy"))
 }
 else
 	sound_play( asset_get("mfx_coin") );
-if (yBallFollowingEnemy != noone && instance_exists(player_id))
+if (yBallFollowingEnemy != noone && instance_exists(player_id) && instance_exists(yBallFollowingEnemy))
 {
 	yBallFollowEnemyTimer = 0;
 	yBallFollowingEnemy.enemyTouchingYarnBall[player_id.player - 1] = false;

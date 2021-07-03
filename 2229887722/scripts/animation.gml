@@ -135,6 +135,16 @@ if (attack == AT_EXTRA_3)
             oPlayerHugAmberIndex = oPlayerAmberID.image_index;
         }
     }
+    if (targetPlayerHugIDTwo != noone)
+    {
+        with (targetPlayerHugIDTwo)
+        {
+            if (oPlayerHugAmberState == 3)
+            {
+                oPlayerHugAmberIndex = oPlayerAmberID.image_index;
+            }
+        }
+    }
     
     
 }

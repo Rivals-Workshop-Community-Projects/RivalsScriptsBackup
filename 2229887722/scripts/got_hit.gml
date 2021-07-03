@@ -107,8 +107,8 @@ if (enemy_hitboxID != yarnBallObject)
         
         calculatedEnemyDamage = (enemy_hitboxID.damage * (1 + (enemy_hitboxID.player_id.strong_charge * 0.01)));
         
-        if (totalDamageDealt > calculatedEnemyDamage * 0.5)
-            totalDamageDealt -= calculatedEnemyDamage * 0.5;
+        if (totalDamageDealt > calculatedEnemyDamage * 0.25)
+            totalDamageDealt -= calculatedEnemyDamage * 0.25;
         else 
             totalDamageDealt = 0;
         

@@ -27,7 +27,7 @@ if (enemyIsYarnDizzy == true)
 {
     draw_sprite(other_player_id.dizzyVfxSprite, enemyDizzyTimer, x, y - char_height - 16);
 }
-
+//draw_debug_text( x - 40, y + 20, "Index:" + string( oPlayerHugAmberIndex));
 
 /*
 if (oPlayerHugAmberState > 2)
@@ -36,7 +36,10 @@ if (oPlayerHugAmberState > 2)
     draw_sprite_ext( oPlayerHugAmberSprite, oPlayerHugAmberIndex, oPlayerAmberID.x,oPlayerAmberID.y, 1, 1, 0, c_white, 1);
     shader_end();
 }
+
+
 */
+/*
 if (instance_exists(other_player_id))
 if ("debugDrawEnabled" in other_player_id)
 if (other_player_id.debugDrawEnabled && "thisIsAmber" not in self)
@@ -46,8 +49,9 @@ if (other_player_id.debugDrawEnabled && "thisIsAmber" not in self)
     draw_debug_text( x - 40, y + 40, "Marked by:" + string( enemyTouchingYarnBall[1]));
     draw_debug_text( x - 40, y + 60, "Marked by:" + string( enemyTouchingYarnBall[2]));
     draw_debug_text( x - 40, y + 80, "Marked by:" + string( enemyTouchingYarnBall[3]));
-    */
+    
     
     draw_debug_text( x - 40, y + 20, "Player #" + string(player));
     draw_debug_text( x - 40, y + 40, "Player KB" + string(orig_knock));
 }
+*/

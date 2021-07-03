@@ -19,37 +19,21 @@ if (debugDrawEnabled)
     draw_debug_text(x,y+80,string(window_timer));
     */
     
-    draw_debug_text(x,y+20,string(hud_offset));
-    //draw_debug_text(x,y+40,string(origin_hud_offset));
-    draw_debug_text(x,y+60,string(state));
-    draw_debug_text(x,y+80,string(state_timer));
-    //draw_debug_text(x,y+60,"Unleash State: " + string(chargeAttackReady));
-    
-    
-    //draw_debug_text(x,y+20,string(isHoldingYarnBall));
-    //draw_debug_text(x,y+20,string (get_stage_data( SD_ID )));
-    
-    //Dracula stage
-    /*
-    if (string (get_stage_data( SD_ID )) == "t\383980\2132275518")
-    {
-        draw_debug_text(x,y+20,string("At Dracula Stage"));
-    }
-    */
-    /*
-    if (instance_exists(yarnBallObject))
-    {
-    draw_debug_text(yarnBallObject.x,yarnBallObject.y+20, "Free: " + string(yarnBallObject.free));
-    draw_debug_text(yarnBallObject.x,yarnBallObject.y+40, "VSP: " + string(yarnBallObject.vsp));
-    }
-    */
+    //draw_debug_text(x,y+20,string(amberHugA2ZReady));
+    //draw_debug_text(x,y+40,string(targetPlayerHugID));
+    //draw_debug_text(x,y+60,string(targetPlayerHugIDTwo));
     if (instance_exists(yarnBallObject))
     {
     draw_debug_text(yarnBallObject.x - 60,yarnBallObject.y+20, "Yarn Touching Enemy : " + string(yarnBallObject.yBallIsTouchingEnemy));
     }
     
+    
+    draw_debug_text(x,y+20, "Was Aiming Right Stick: " + string(yarnBallWasAimingRightStick));
+    draw_debug_text(x,y+40, "Joy Idle : " + string(joy_pad_idle));
     //draw_debug_text(x,y+20, "State: " + string(state));
     //draw_debug_text(x,y+40, "State Timer: " + string(state_timer));
+    //draw_debug_text(x,y+60,string(window));
+    //draw_debug_text(x,y+80,string(window_timer));
     //draw_debug_text(x,y+40, "Wall Jumped: " + string(hasWallJumped));
     
     /*

@@ -74,6 +74,11 @@ set_window_value(AT_DTILT, 6, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1);
 set_window_value(AT_DTILT, 6, AG_WINDOW_CUSTOM_AIR_FRICTION, 1);
 set_window_value(AT_DTILT, 6, AG_WINDOW_CUSTOM_GRAVITY, 0.25);
 
+set_window_value(AT_DTILT, 7, AG_WINDOW_TYPE, 1);
+set_window_value(AT_DTILT, 7, AG_WINDOW_LENGTH, 1);
+set_window_value(AT_DTILT, 7, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DTILT, 7, AG_WINDOW_ANIM_FRAME_START, 17);
+
 set_num_hitboxes(AT_DTILT, 3);
 
 set_hitbox_value(AT_DTILT, 1, HG_PARENT_HITBOX, 1);
@@ -87,7 +92,7 @@ set_hitbox_value(AT_DTILT, 1, HG_WIDTH, 60);
 set_hitbox_value(AT_DTILT, 1, HG_HEIGHT, 45);
 set_hitbox_value(AT_DTILT, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_DTILT, 1, HG_PRIORITY, 1);
-set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 1);
+set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 2);
 set_hitbox_value(AT_DTILT, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_DTILT, 1, HG_HITSTUN_MULTIPLIER, 0.8);

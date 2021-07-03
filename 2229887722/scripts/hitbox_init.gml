@@ -18,6 +18,8 @@ yBallIsTouchingEnemy = true;
 yBallCanMarkEnemyTimer = 0; //To prevent immediate marking when throwing the yarnball up close, put a timer
 yBallFollowEnemyTimer = 0; //Becomes 12 as soon as the enemy is in hitstun. Timer goes down as soon as enemy leaves hitstun
 yBallWasFree = true;
+yBallHasHitstun = false; //Becomes true if hit by a hard hitting knockback move or was strong throw
+yBallCanHitStunTimer = 6; //When this timer reaches 0, the yarn ball can hitstun enemy if conditions apply
 //yBallTouchedFloorYHeight = 0; //To prevent the yarn ball from dropping through the platforms, keep track of the height
 
 if (!(variable_instance_exists(self, "yBallStickEnemyWhenThrown")))

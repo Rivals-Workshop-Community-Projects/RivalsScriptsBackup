@@ -1,16 +1,9 @@
 //Update scripts execute every frame in-game
 
-//Animate the scarf behind Amber while she's walking
-/*
-if (state == PS_WALK)
-{
-    scarfWalkAnimTimer += 0.33;
-}
-*/
-
 introInputs();
 checkForClonedAmbers();
 initRuneStats();
+
 //Allow Amber to wall jump 2 times
 //=================================
 if (state == PS_WALL_JUMP && prev_state != PS_WALL_JUMP)
@@ -91,6 +84,7 @@ else if (char_height != originCharHeight && attack != AT_DSTRONG && attack != AT
     char_height = originCharHeight;
 }
 
+
 //if (miniBoostMeterTargetAlpha > 0)
   //  miniBoostMeterTargetAlpha -= 0.1;
 
@@ -109,6 +103,7 @@ else if (totalDamageDealt <= 0 && knockback_adj != meterlessKbAdj)
 //======================================
 //Neutral Special Charge Update
 //=======================================
+/*
 if (isCharging == true)
 {
     if (can_wall_cling == true)
@@ -132,7 +127,7 @@ if (isCharging == true)
         currentChargeTime += chargeTimeSpeed;
     }
 }
-
+*/
 
 if (totalDamageDealt >= totalDamageDealtCap)
 {
@@ -212,14 +207,10 @@ if (secondaryDairCooldown > 0)
 //else if (secondaryDairCooldown && previousDairDirection != 0)
 
 
-//if (move_cooldown[AT_DAIR] <= 0 && previousDairDirection != 0)
-  //  previousDairDirection = 0;
-  
-//if (yarnBallCooldownTimer > 0)
-//{
-  //  yarnBallCooldownTimer--;  
-    //move_cooldown[AT_DSPECIAL] = yarnBallCooldownTimer;
-//}
+if (move_cooldown[AT_DATTACK] > 0 && ((state == PS_DASH || state == PS_DASH_START) && attack_pressed))
+{
+    set_attack(AT_FTILT);
+}
 
 //Yarndash cooldown timer. Only set it to 0 if Amber is grounded
 if ((state_cat == SC_GROUND_NEUTRAL || state_cat == SC_GROUND_COMMITTED) &&
@@ -286,30 +277,44 @@ if (isHoldingYarnBall == true)
     
     
     //Input to start aiming the yarn ball, and set aiming power
-    if (window < 4 && state_cat != SC_HITSTUN )
+    if (window < 4 && state_cat != SC_HITSTUN && !(state == PS_AIR_DODGE && state_timer == 0))
     {
-        yarnBallWasAimingRightStick = false;
         if (strong_down && yarnBallAimingPower != 3 || (right_stick_down || left_stick_down || up_stick_down || down_stick_down) && yarnBallAimingPower != 3 && yarnBallRightStickTargetPower == 3)
         {
-            yarnBallAimingPower = 3;
-            move_cooldown[AT_DSPECIAL] = 0;
-            set_attack( AT_DSPECIAL );
-            
-            window = 4;
+            yarnThrowAntiIFrame();
+            if (!(state == PS_PRATFALL && state_timer > 1) && !(state == PS_AIR_DODGE && state_timer > 3 && state_timer < 1) && !(state == PS_PARRY || state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD || state == PS_TECH_GROUND || state == PS_TECH_BACKWARD || state == PS_TECH_FORWARD))
+            {
+                yarnBallAimingPower = 3;
+                yarnBallWasAimingRightStick = (right_stick_down || left_stick_down || up_stick_down || down_stick_down);
+                move_cooldown[AT_DSPECIAL] = 0;
+                set_attack( AT_DSPECIAL );
+                window = 4;
+            }
         }
         else if (special_pressed || (right_stick_down || left_stick_down || up_stick_down || down_stick_down) && yarnBallAimingPower != 2 && yarnBallRightStickTargetPower == 2)
         {
-            yarnBallAimingPower = 2;
-            move_cooldown[AT_DSPECIAL] = 0;
-            set_attack( AT_DSPECIAL );
-            window = 4;
+            yarnThrowAntiIFrame();
+            if ( !(state == PS_PRATFALL && state_timer > 1) && !(state == PS_AIR_DODGE && state_timer > 3 && state_timer < 1) && !(state == PS_PARRY || state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD || state == PS_TECH_GROUND || state == PS_TECH_BACKWARD || state == PS_TECH_FORWARD))
+            {
+                yarnBallAimingPower = 2;
+                yarnBallWasAimingRightStick = (right_stick_down || left_stick_down || up_stick_down || down_stick_down);
+                move_cooldown[AT_DSPECIAL] = 0;
+                set_attack( AT_DSPECIAL );
+                window = 4;
+            }
         }
         else if (attack_down || (right_stick_down || left_stick_down || up_stick_down || down_stick_down) && yarnBallAimingPower != 1 && yarnBallRightStickTargetPower == 1)
         {
-            yarnBallAimingPower = 1;
-            move_cooldown[AT_DSPECIAL] = 0;
-            set_attack( AT_DSPECIAL );
-            window = 4;
+            yarnThrowAntiIFrame();
+            
+            if (!(state == PS_PRATFALL && state_timer > 1) && !(state == PS_AIR_DODGE && state_timer > 3 && state_timer < 1) && !(state == PS_PARRY || state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD || state == PS_TECH_GROUND || state == PS_TECH_BACKWARD || state == PS_TECH_FORWARD))
+            {
+                yarnBallAimingPower = 1;
+                yarnBallWasAimingRightStick = (right_stick_down || left_stick_down || up_stick_down || down_stick_down);
+                move_cooldown[AT_DSPECIAL] = 0;
+                set_attack( AT_DSPECIAL );
+                window = 4;
+            }
         }
     }
     
@@ -370,7 +375,7 @@ if (isHoldingYarnBall == true)
         if (keyboardModeEnabled == true && yarnBallThrowAngle != joy_dir)
         {
             if (joy_pad_idle == false)
-                    yarnBallTargetJoyAngle = joy_dir;
+                yarnBallTargetJoyAngle = joy_dir;
             
             var angDiff = angle_difference(yarnBallThrowAngle, yarnBallTargetJoyAngle);
             yarnBallThrowAngle -= min(abs(angDiff), (3 + (abs(angDiff * 0.1)))) * sign(angDiff);
@@ -532,13 +537,6 @@ if (isChargePunished == true)
 {
     if (state_cat != SC_HITSTUN)
         isChargePunished = false;
-    /*else if (special_pressed && state_cat == SC_HITSTUN) 
-    {
-        //Allow Amber to cancel her charge status while in hitstun
-        isCharging = false;
-        isCharged = false;
-    }
-    */
 }
 
 if (chargeAttackReady == true && hasSetChargedHurtboxes == false)
@@ -591,8 +589,13 @@ if (state == PS_DASH_START)
         cooldownDashTimer = cooldownDashLength;
     }
     
-    if (state_timer > 4 && initial_dash_speed != cooldownInitialDashSpeed && !runeA)
-        initial_dash_speed = cooldownInitialDashSpeed;
+    if (initial_dash_speed != cooldownInitialDashSpeed && !runeA)
+    {
+        if (state_timer > 4)
+            initial_dash_speed = cooldownInitialDashSpeed;
+        else if (state_timer > 2 && state_timer <= 4)
+            initial_dash_speed = 9.5;
+    }
     
     //if (lastDashDir != spr_dir)
         //initial_dash_speed = ease_linear(originInitialDashSpeed, cooldownInitialDashSpeed, state_timer, 6);
@@ -1048,10 +1051,12 @@ move_cooldown[AT_DTHROW] = 2;
 
 #define spawnYarnBall
 hasYarnBall = false;
+set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 0);
 switch (yarnBallAimingPower)
 {
     case 3:
-    yarnBallThrowPower = 15;
+        yarnBallThrowPower = 15;
+        set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 1);
     break;
     case 2:
     yarnBallThrowPower = 10;
@@ -1067,8 +1072,9 @@ switch (yarnBallAimingPower)
 //other.vsp = lengthdir_y(1*kb_value, get_hitbox_angle(id));
 yarnBallObject = create_hitbox( AT_DSPECIAL, 1, x + floor(lengthdir_x(yarnBallThrowPower, yarnBallThrowAngle)), y - 32);
 yarnBallObject.yBallStickEnemyWhenThrown = true;
-yarnBallObject.hsp = lengthdir_x(yarnBallThrowPower, yarnBallThrowAngle) + hsp;
-yarnBallObject.vsp = lengthdir_y(yarnBallThrowPower, yarnBallThrowAngle) + vsp;
+yarnBallObject.hsp = lengthdir_x(yarnBallThrowPower, yarnBallThrowAngle) + (hsp * 0.5);
+yarnBallObject.vsp = lengthdir_y(yarnBallThrowPower, yarnBallThrowAngle) + (vsp * 0.5);
+yarnBallObject.yBallHasHitstun = (yarnBallAimingPower == 3);
 
 #define transformYarnBallToArticle
 var oldYarnBallObj = yarnBallObject;
@@ -1257,5 +1263,50 @@ if (get_gameplay_time() == 1)
 if (get_gameplay_time() == 1 && lethalLeague_stage)
 {
     
+}
+
+#define yarnThrowAntiIFrame
+//Amber can cancel her air dodge or rolling or parrying with a yarn throw. This leads to perma i-frame bug. Prevent this from happening
+switch(state)
+{
+    /*
+    case PS_ROLL_FORWARD:
+        if (window < 2)
+        {
+            window = 1;
+            window_timer = 14;
+        }
+    break;
+    
+    case PS_ROLL_BACKWARD:
+        if (window < 2)
+        {
+            window = 1;
+            window_timer = 14;
+        }
+    break;
+    
+    case PS_PARRY:
+        if (window < 2)
+        {
+            window = 1;
+            window_timer = 7;
+        }
+    break;
+    */
+    case PS_AIR_DODGE:
+        
+        if (state_timer < 3)
+        {
+            //window = 1;
+            //window_timer = 12;
+            
+            state = PS_PRATFALL;
+            state_timer = 0;
+            //window = 0;
+            //window_timer = 12;
+        }
+        
+    break;
 }
 

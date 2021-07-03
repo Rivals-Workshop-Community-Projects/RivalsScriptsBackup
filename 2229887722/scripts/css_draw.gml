@@ -13,9 +13,9 @@ if ("currentAlt" not in self)
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-patch_ver = "2.50";
-patch_day = "30";
-patch_month = "NOV";
+patch_ver = "2.8";
+patch_day = "02";
+patch_month = "JUL";
 
 var num_alts = 16;
 

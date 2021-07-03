@@ -92,15 +92,18 @@ switch (attack)
             //Set the player to normal air idle state once the attack
             //finishes
             can_fast_fall = false;
-            /*
+            
             if (window == 2 && has_hit)
             {
+                //can_fast_fall = true;
                 if (attack_down && up_down || up_stick_down)
                 {
+                    can_fast_fall = true;
                     set_attack(AT_UAIR);
                 }
                 if (attack_down && down_down || down_stick_down)
                 {
+                    can_fast_fall = true;
                     set_attack(AT_DAIR);
                 }
                 if (attack_down && right_down && spr_dir == 1 || 
@@ -108,6 +111,7 @@ switch (attack)
                     attack_down && left_down && spr_dir == -1 ||
                     left_stick_down && spr_dir == -1 )
                 {
+                    can_fast_fall = true;
                     set_attack(AT_FAIR);
                 }
                 else if (attack_down && right_down && spr_dir == -1 || 
@@ -115,12 +119,16 @@ switch (attack)
                     attack_down && left_down && spr_dir == 1 ||
                     left_stick_down && spr_dir == 1 )
                 {
+                    can_fast_fall = true;
                     set_attack(AT_BAIR);
                 }
                 else if (attack_down && joy_pad_idle)
+                {
+                    can_fast_fall = true;
                     set_attack(AT_NAIR);
+                }
             }
-            */
+            
             if(window == 3 && window_timer == 4 && (has_hit || runeF))
             {
                 set_state(PS_IDLE_AIR);
@@ -165,6 +173,11 @@ switch (attack)
         {
             sound_stop(asset_get( "sfx_ori_grenade_aim" ));
             sound_play(asset_get("sfx_ori_grenade_launch"));
+            
+            if (free)
+                set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -15);
+            else
+                set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -16);
         }
         
        
@@ -243,18 +256,33 @@ switch (attack)
         //Prevent Amber from auto transitioning to Jab 2 from tapping Attack,
         //But don't clear the button buffer on frame 1 to allow workshop dialogue
         //compatibility (such as Dracula)
-        if (window == 1 && window_timer == 1)
+        if ((window == 1 || window == 4) && window_timer == 1)
         {
             clear_button_buffer(PC_ATTACK_PRESSED);
+        }
+        
+        if (window == 4 && window_timer == 1 && !hitpause)
+        {
+            sound_play(asset_get("sfx_swipe_medium2"), false, false, 1, 1.1);
         }
         
         //A weird bug happened from a workshop update, causing tilt cancels to use
         //the HSP from the jab's next window. We have to remove the HSP from the jab
         //and use it manually for proper jab chains
-        if (window == 4 && window_timer == 1)
-            hsp = spr_dir * 8;
+        if (window == 7)
+        {
+            if (window_timer == 1)
+                hsp = spr_dir * 8;
+                
+            if (attack_down == false)
+            {
+                window = 9;
+                window_timer = 0;
+            }
+        }
+            
         
-        if (window == 5)
+        if (window == 8)
         {
             if ((window_timer == 6 || window_timer == 12) && hitpause == false)
                 sound_play(asset_get("sfx_swipe_weak2"));
@@ -263,9 +291,15 @@ switch (attack)
                 attack_end();
             if (attack_down == false)
             {
-                window = 6;
+                window = 9;
                 window_timer = 0;
             }
+        }
+        
+        if (has_hit && window < 10)
+        {
+            if (up_down && special_pressed)
+                set_attack(AT_USPECIAL);
         }
     break;
     case AT_FTILT:
@@ -367,30 +401,48 @@ switch (attack)
     break;
     case AT_UTILT:
         can_fast_fall = false;
-        
-        if (window == 2 || window == 3)
+        can_move = false;
+        //Allow for snappy movement with utilt instead of an accelerating movement
+        /*
+        if (window == 1 && window_timer == get_window_value(AT_UTILT, AG_WINDOW_LENGTH, 1) - 1)
         {
-            if (hitpause == false)
-            {
-            if (left_down)
-                    hsp -= 0.5;
-                if (right_down)
-                    hsp += 0.5;
-            }
-            hsp = clamp(hsp, -7, 7);
-            if (has_hit && window == 3)
-                iasa_script();
+            if (spr_dir == (right_down || -left_down))
+                set_window_value(AT_UTILT, 2, AG_WINDOW_HSPEED, 4);
+            else if (spr_dir == (-right_down || left_down))
+                set_window_value(AT_UTILT, 2, AG_WINDOW_HSPEED, -4);
+            else
+                set_window_value(AT_UTILT, 2, AG_WINDOW_HSPEED, 0);
         }
+        */
+        
+        if (window == 2)
+        {
+            if (hitpause == false && window_timer == 1)
+            {
+                if (left_down)
+                    hsp = -4;
+                if (right_down)
+                    hsp = 4;
+            }
+            //hsp = clamp(hsp, -7, 7);
+            
+            
+        }
+        
+        if (window == 3 && has_hit)
+            iasa_script();
     break;
     case AT_DTILT:
         switch (window)
         {
             case 2:
                 //Prevent hitfalling during hitpause
+                
                 if (hitpause && has_hit)
                     can_fast_fall = false;
                 else if (can_fast_fall == false && !hitpause && has_hit)
                     can_fast_fall = true;
+                    
             break;
             case 3:
                 can_jump = true;
@@ -400,8 +452,10 @@ switch (attack)
                     window = 5;
                     window_timer = 0;
                 }
+                
+                
                 //Prevent dtilt jump, waveland, spam
-                if (jump_pressed)
+                if (jump_pressed || shield_pressed)
                     move_cooldown[AT_DTILT] = 15;
                 
                 if (free == false)
@@ -420,11 +474,13 @@ switch (attack)
                     window = 6;
                     window_timer = 18 * 1.5;
                 }
+                else if (window_timer >= 5)
+                    iasa_script();
             break;
         }
     break;
     case AT_USTRONG:
-        can_move = false;
+        //can_move = false;
         can_fast_fall = false;
         
         vanishingStrikeChargeParam();
@@ -466,10 +522,13 @@ switch (attack)
                 }
             }
         }
+        if (window >= 5)
+            can_move = false;
         
         if (window == 7 && window_timer == 6 && has_hit_player == false && free)
         {
             prat_land_time = 12;
+            hurtboxID.sprite_index = hurtbox_spr;
             state = PS_PRATFALL;
         }
     break;
@@ -625,6 +684,10 @@ switch (attack)
                         hsp += get_window_value(AT_FAIR, window, AG_WINDOW_HSPEED) * spr_dir;
                     clear_button_buffer( PC_ATTACK_PRESSED  );
                 }
+                else if (down_stick_down || down_strong_pressed)
+                    set_attack(AT_DAIR);
+                else if (up_stick_down || up_strong_pressed)
+                    set_attack(AT_UAIR);
             }
             else if (window == 13 && window_timer <= 1) //Redundant claw combo reset in case the reset doesn't register when Amber uses the 5th attack
             {
@@ -755,7 +818,8 @@ switch (attack)
                 }
                 */
             }
-            old_vsp = -4;
+            //if (!down_hard_pressed)
+              //  old_vsp = -4;
         }
         else if (window == 3 && window_timer == 1 && simpleModeEnabled == false && !has_hit)
         {
@@ -790,6 +854,7 @@ switch (attack)
         }
     break;
     case AT_DATTACK:
+        can_ustrong = false;
         //Allow Amber to cancel the dash attack by releasing the attack button during the attack
         if (has_hit_player)
         {
@@ -797,17 +862,22 @@ switch (attack)
             {
                 if (window_timer <= 1)
                 {
-                    if (attack_down == false && simpleModeEnabled == false)
+                    if (attack_down == false && simpleModeEnabled == false || dashAttackCancelBuffer == true)
                     {
-                        hitpause = false;
-                        hitstop = 0;
-                        move_cooldown[AT_DATTACK] = 60;
+                        dashAttackCancelBuffer = true;
+                        //hitpause = false;
+                        //hitstop = 0;
                         
-                        clear_button_buffer( PC_SHIELD_PRESSED  );
-                        clear_button_buffer( PC_ATTACK_PRESSED  );
-                        window = 4;
-                        window_timer = 0;
-                        hsp = 12 * spr_dir;
+                        
+                        //clear_button_buffer( PC_SHIELD_PRESSED  );
+                        //clear_button_buffer( PC_ATTACK_PRESSED  );
+                        if (hitpause == false)
+                        {
+                            move_cooldown[AT_DATTACK] = 60;
+                            window = 4;
+                            window_timer = 0;
+                            hsp = 12 * spr_dir;
+                        }
                     }
                 }
                 else if (window_timer == 2 && hitpause == false)
@@ -850,10 +920,10 @@ switch (attack)
             case 2:
                 can_move = false;
                 //max_fall = 3;
-                if (vsp > 3)
+                if (vsp > 6)
                 {
                     set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
-                    set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, 3);
+                    set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, 6);
                 }
                 else
                 {
@@ -863,16 +933,15 @@ switch (attack)
                 //If special is held down, player will charge up and prepare for Shurikat attack
                 if (special_down == true && shurikatChargeLevel != 5)
                 {
-                        if (window_timer >= 89 && shurikatChargeLevel != 1 && chargeAttackReady == false && shurikatChargeLevel != 5)
+                        if (window_timer >= 70 && shurikatChargeLevel != 1 && chargeAttackReady == false && shurikatChargeLevel != 5)
                         {
                             shurikatChargeLevel = 4;
-                            spawn_hit_fx(x + (18 * spr_dir), y, shurikenFullChargeFx);
+                            if (window_timer == 89 && !hitpause)
+                                spawn_hit_fx(x + (18 * spr_dir), y, shurikenFullChargeFx);
                         }
-                        else if (window_timer >= 80 && window_timer < 89)
+                        else if (window_timer >= 50 && window_timer < 70)
                             shurikatChargeLevel = 3;
-                        else if (window_timer >= 50 && window_timer < 80)
-                            shurikatChargeLevel = 3;
-                        else if (window_timer >= 30 && window_timer < 50)
+                        else if (window_timer >= 20 && window_timer < 50)
                             shurikatChargeLevel = 2;
                         else
                             shurikatChargeLevel = 1;
@@ -907,7 +976,7 @@ switch (attack)
                     set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_LOCKOUT, 4); //2 for super, 4 for normal
                 
                 create_hitbox( AT_FSPECIAL, 1, x, y - 40 );
-                shurikatBreakRockBugFix();
+                //shurikatBreakRockBugFix();
                 //Before the end of the window, reset the window loop until
                 //the loop count reaches the max
                 if (window_timer >= 4 && shurikatCurrentLoopCount < shurikatLoopCount)
@@ -998,14 +1067,14 @@ switch (attack)
         {
             //Force into pratland as soon as the player lands on the ground and has
             //not hit an enemy
-            if (has_hit_player == false && free == false && window_timer < floor((get_window_value( attack, window, AG_WINDOW_LENGTH ) * 1.5) + 0.5) - 4)
+            if (has_hit == false && free == false && window_timer < floor((get_window_value( attack, window, AG_WINDOW_LENGTH ) * 1.5) + 0.5) - 4)
             {
                 attack_end();
                 prat_land_time = floor((get_window_value( attack, window, AG_WINDOW_LENGTH ) * 1.5) + 0.5) - window_timer - 1;
                 state = PS_PRATFALL;
                 //window = 10;
             }
-            else if (has_hit_player == true && free == false)
+            else if (has_hit == true && free == false)
             {
                 attack_end();
                 prat_land_time = get_window_value( attack, window, AG_WINDOW_LENGTH ) - window_timer - 1;
@@ -1282,7 +1351,7 @@ switch (attack)
             clear_button_buffer( PC_SPECIAL_PRESSED  );
         }
         
-        if (window == 3)
+        if (window == 3 || window == 2 && (left_down || right_down || jump_pressed))
             iasa_script();
         
         if (window <= 3)
@@ -1340,6 +1409,10 @@ switch (attack)
             set_hitbox_value(AT_DSPECIAL, 5, HG_HITBOX_Y, -22);
             create_hitbox( AT_DSPECIAL, 5, x, y - 22);
             create_hitbox( AT_DSPECIAL, 6, x + floor(lengthdir_x(14, yarnDashHitboxDirection)) * spr_dir, y - 24 + floor(lengthdir_y(14, yarnDashHitboxDirection)));
+            
+            
+            yarnDashAgainstWall = false;
+            yarnDashLedgeBoostTimer = 0;
         }
         
         if (window == 11)
@@ -1437,9 +1510,25 @@ switch (attack)
                     if ((yarnDashPrevXPos - x) == 0 && (yarnBallObject.x > x || yarnBallObject.x < x) && window_timer > 1 && 
                         ((yarnDashPrevYPos - y) <= 5 && (yarnDashPrevYPos - y) >= -5))
                     {
-                        window_timer = 1;
-                        window = 12;
-                        destroy_hitboxes();
+                        //Push Amber up slightly if she yarn dashes at the wall ledge
+                        if (yarnDashAgainstWall == false && yarnDashLedgeBoostTimer <= 0)
+                        {
+                            yarnDashAgainstWall = true;
+                            yarnDashLedgeBoostTimer = 60;
+                        }
+                        else if (yarnDashAgainstWall == true && yarnDashLedgeBoostTimer > 0)
+                        {
+                            //vsp = lengthdir_y(yarnDashSpeed, yarnDashAngleDirection) + (yarnDashLedgeBoostTimer - 15);
+                            y -= 4;
+                            yarnDashLedgeBoostTimer--;
+                            
+                        }
+                        else if (yarnDashAgainstWall == true && yarnDashLedgeBoostTimer <= 0)
+                        {
+                            window_timer = 1;
+                            window = 12;
+                            destroy_hitboxes();
+                        }
                     }
                     yarnDashPrevXPos = x;
                     yarnDashPrevYPos = y;
@@ -1510,7 +1599,7 @@ switch (attack)
             {
                 set_hitbox_value(AT_DSPECIAL_2, 5, HG_HITBOX_X, -50);
                 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_HSPEED, 5);
-                set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_HSPEED, 30);
+                set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_HSPEED, 20);
             }
         }
         
@@ -2013,7 +2102,7 @@ switch (shurikatChargeLevel)
         if (totalDamageDealtPrevious == totalDamageDealtCap)
         {
             set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 10);
-            set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.75);
+            set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.1);
             set_hitbox_value(AT_FSPECIAL, 3, HG_KNOCKBACK_SCALING, 1.3);
             set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 25); 
             
@@ -2024,7 +2113,7 @@ switch (shurikatChargeLevel)
         else
         {
             set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 6);
-            set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.4);
+            set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.75);
             set_hitbox_value(AT_FSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.9);
             set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 18); 
             
@@ -2033,8 +2122,8 @@ switch (shurikatChargeLevel)
         }
     break;
     case 4:
-        set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 20); // 30 if fully charged, 20 for normal
-        set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED, 20); //Modified from attack_update. Ranges from 10-20, based on charge rate
+        set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 16); // 30 if fully charged, 20 for normal
+        set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED, 15); //Modified from attack_update. Ranges from 10-20, based on charge rate
         set_window_value(AT_FSPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.4);
         set_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH, 15);
         //set_window_value(AT_FSPECIAL, 6, AG_WINDOW_TYPE, 1); 
@@ -2044,7 +2133,7 @@ switch (shurikatChargeLevel)
         set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
         set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 6); //Modified from attack_update. Ranges from 5-10, based on charge length
         set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 9); //modified from attack_update. Ranges from 6-12
-        set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.75);
+        set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1);
         set_hitbox_value(AT_FSPECIAL, 2, HG_DRIFT_MULTIPLIER, 1);
         set_hitbox_value(AT_FSPECIAL, 4, HG_DAMAGE, 8); //Modified from attack_update
         
@@ -2052,7 +2141,7 @@ switch (shurikatChargeLevel)
         set_hitbox_value(AT_FSPECIAL, 3, HG_KNOCKBACK_SCALING, 1.3);
         set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 20); 
         
-        shurikatHitHsp = 6;
+        shurikatHitHsp = 4;
         shurikatLoopCount = 6 - (3 * lethalLeague_stage);
     break;
     case 3:
@@ -2460,7 +2549,22 @@ with (asset_get("oPlayer"))
     {
         other.targetPlayerHugID = self;
         var targetPlayerUrl = real(url);
-        
+        /*
+        if (targetPlayerUrl == 2108764588) //Zerra
+        {
+            if (other.amberHugA2ZReady == 0)
+                other.amberHugA2ZReady = 1;
+            else
+                other.amberHugA2ZReady = 2;
+        }
+        else if (targetPlayerUrl == 1904437331) //Astra
+        {
+            if (other.amberHugA2ZReady == 0)
+                other.amberHugA2ZReady = 1;
+            else
+                other.amberHugA2ZReady = 2;
+        }
+        */
         if ("oPlayerHugAmberState" in self) //Don't check ourselves
         {
             //First check if there is a CPU on STAND state. This will allow Amber to hug CPUs
@@ -2474,12 +2578,47 @@ with (asset_get("oPlayer"))
                     //print_debug(string (distance_to_object(targetPlayerHugID)));
                     if (distance_to_object(targetPlayerHugID) < 25) //If close to Amber
                     {
-                        if (targetPlayerUrl < 16 || targetPlayerUrl == 1865940669 && !("amber_herObj" in targetPlayerHugID)) //From the base cast or public version Sandbert
+                        if (amberHugA2ZReady == 0)
                         {
-                            user_event(1);
+                            if (targetPlayerUrl < 16 || targetPlayerUrl == 1865940669 && !("amber_herObj" in targetPlayerHugID)) //From the base cast or public version Sandbert
+                            {
+                                user_event(1);
+                            }
+                            else
+                                user_event(2);
                         }
-                        else
-                            user_event(2);
+                        else if (amberHugA2ZReady == 1) //Check again
+                        {
+                            print_debug("Called 1");
+                            with (asset_get("oPlayer"))
+                            {
+                                if ("oPlayerHugAmberState" in self && self != other)
+                                {
+                                    print_debug("Called 2");
+                                    playerAmberHug.targetPlayerHugIDTwo = self;
+                                    var targetPlayerUrlTwo = real(url);
+                                    
+                                    if (targetPlayerUrlTwo == 2108764588) //Zerra
+                                    {
+                                        if (other.amberHugA2ZReady == 0)
+                                            other.amberHugA2ZReady = 1;
+                                        else
+                                            other.amberHugA2ZReady = 2;
+                                    }
+                                    else if (targetPlayerUrlTwo == 1904437331) //Astra
+                                    {
+                                        if (other.amberHugA2ZReady == 0)
+                                            other.amberHugA2ZReady = 1;
+                                        else
+                                            other.amberHugA2ZReady = 2;
+                                    }
+                                }
+                            }
+                            if (amberHugA2ZReady == 2)
+                                user_event(5);
+                        }
+                        else if (amberHugA2ZReady == 2)
+                            user_event(5);
                     }
                 }
             }
@@ -2558,6 +2697,78 @@ if (targetPlayerHugID != noone)
                 if (oPlayerHugAmberIndex == 16)
                     state = PS_IDLE;
             break;
+        }
+    }
+    if (targetPlayerHugIDTwo != noone)
+    {
+        with (targetPlayerHugIDTwo)
+        {
+            if (url == CH_ORI) //Sein, no attacking!
+            {
+                state = PS_PRATLAND;
+                was_parried = true;
+            }
+            
+            switch (oPlayerHugAmberState)
+            {
+                case 2: //Entering hug state
+                    //Move towards ideal Amber position. Ease quad
+                    state = PS_SPAWN;
+                    x = ease_linear( oPlayerInitHugPos[0], oPlayerHugStartPos[0], oPlayerEaseTime, oPlayerTargetEaseTime);
+                    y = ease_linear( oPlayerInitHugPos[1], oPlayerHugStartPos[1], oPlayerEaseTime, oPlayerTargetEaseTime);
+                    
+                    if (oPlayerEaseTime < oPlayerTargetEaseTime)
+                        oPlayerEaseTime++;
+                    //Once in position, activate the actual hug state
+                    if (floor(x + 0.5) == oPlayerHugStartPos[0] && floor(y + 0.5) == oPlayerHugStartPos[1])
+                    {
+                        oPlayerHugAmberState = 3;
+                        oPlayerHugAmberIndex = 0;
+                        with (oPlayerAmberID){
+                            
+                            amberHugState = 3;
+                            set_attack(AT_EXTRA_3);
+                            image_index = 0;
+                            window = 1;
+                            window_timer = 0;
+                        }
+                    }
+                break;
+                case 3: //Actual hug
+                    if (url != CH_ORI)
+                        state = PS_SPAWN;
+                    state_timer = 0;
+                    visible = false;
+                    
+                    if (other.amberHugCanExitTimer <= 0)
+                    {
+                        if (shield_pressed || attack_pressed || special_pressed)
+                        {
+                            oPlayerHugAmberState = 4;
+                            //visible = true;
+                            with(oPlayerAmberID)
+                            {
+                                amberHugState = 4;
+                                targetPlayerHugID.oPlayerHugAmberState = 4;
+                                window = amberHugExitWindow;
+                                window_timer = 0;
+                            }
+                        }
+                    }
+                    else
+                        other.amberHugCanExitTimer--;
+                break;
+                case 4:
+                    x = oPlayerHugExitPos[0];
+                    y = oPlayerHugExitPos[1];
+                    oPlayerHugAmberIndex = oPlayerAmberID.image_index;
+                    
+                    //special case for Ori. Return to idle state right before they turn visible due to the
+                    //pratland frame
+                    if (oPlayerHugAmberIndex == 16)
+                        state = PS_IDLE;
+                break;
+            }
         }
     }
 }

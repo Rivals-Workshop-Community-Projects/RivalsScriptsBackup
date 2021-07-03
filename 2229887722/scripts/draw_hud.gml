@@ -1,6 +1,15 @@
 //Draw hud script
-shader_start();
-if (variable_instance_exists(self, "hasYarnBall")) 
+if (debugDrawEnabled)
+{
+    draw_debug_text(20, 20, "FPS: " + string(fps));
+    draw_debug_text(20, 40, "Real FPS: " + string(fps_real));
+}
+
+
+
+if (thisIsAmber == true)
+{
+    shader_start();
     if (hasYarnBall == true)
     {
         var temp_color = c_white;
@@ -14,12 +23,10 @@ if (variable_instance_exists(self, "hasYarnBall"))
         if (yarnDashCooldownTimer > 0) temp_color2 = c_gray;
         draw_sprite_ext(sprite_get("yarndash_icon"), 0, temp_x+176, temp_y-12, 2, 2, 0, temp_color2, 1);
     }
-shader_end();
-
-//Draw meter
-//var temp_color3 = c_white;
-if (variable_instance_exists(self, "totalDamageDealt")) 
-{
+    shader_end();
+    //===========
+    
+    //Draw Meter
     draw_sprite_ext(sprite_get("meter_hud"), floor(totalDamageDealt + 0.5), temp_x+0, temp_y-12, 2, 2, 0, c_white, 1);
     
     //Draw meter glow when full boost
@@ -67,12 +74,8 @@ if (variable_instance_exists(self, "totalDamageDealt"))
         else
             draw_sprite_ext(sprite_get("hud_control_swapping"), 35 - keyboardSwappingAnimTimer, temp_x + 108, temp_y - 92, 2, 2, 0, c_white, 1);
     }
-}
-
-
     
-
-
+}
 
 #region//Scroll Menu HUD
 if (attack == AT_TAUNT && tauntType == 10 && tutCurrentMenuCategory == 2 && state == PS_ATTACK_GROUND)
@@ -167,11 +170,7 @@ if (attack == AT_TAUNT && tauntType == 10 && tutCurrentMenuCategory == 2 && stat
 }
 #endregion
 
-if (debugDrawEnabled)
-{
-    draw_debug_text(20, 20, "FPS: " + string(fps));
-    draw_debug_text(20, 40, "Real FPS: " + string(fps_real));
-}
+
 
 
 
@@ -224,7 +223,7 @@ switch(tutScrollCurrentMove)
         draw_sprite_ext( sprite_get("dair"), 2, 768, 150, 1, 1, 0, c_white, 1);
     break;
     case 9: //B-Air
-        draw_sprite_ext( sprite_get("bair"), 2, 764, 150, 1, 1, 0, c_white, 1);
+        draw_sprite_ext( sprite_get("bair"), 3, 764, 150, 1, 1, 0, c_white, 1);
     break;
     case 10: //U-Strong
         draw_sprite_ext( sprite_get("ustrong"), 10, 766, 164, 1, 1, 0, c_white, 1);

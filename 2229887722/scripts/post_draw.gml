@@ -50,55 +50,237 @@ if (state_cat == SC_HITSTUN && totalDamageDealt <= 0)
     draw_sprite(charge_punished_sprite,0,(x + 10),y-86);
 }
 */
-if (attack == AT_BAIR)
-{
-    //Spawn a spark vfx on window 2 to show the tipper hitbox. This needs to be drawn
-    //in post_draw since hit_fx is rendered behind the player. The spark should be rendered in front
-    //of the player
-    if (smallSparkVfxBairTimer <= 1)
-    {
-        if (spr_dir == -1)
-            draw_sprite(small_spark_vfx_sprite, smallSparkVfxBairTimer, playersLastXPos + (36), playersLastYPos-28);
-        else
-            draw_sprite(small_spark_vfx_sprite, smallSparkVfxBairTimer, playersLastXPos - (70), playersLastYPos-28);
-    }
-}
 
-if (attack == AT_FSPECIAL)
+switch (attack)
 {
-    if (shurikatChargeLevel < 5 && window == 2 && window_timer > 4 && 
-        state != PS_ROLL_FORWARD && state != PS_ROLL_BACKWARD &&
-        state != PS_AIR_DODGE && state != PS_PARRY)
-    {
-        draw_sprite_ext( shurikenVfxSprite, shurikatChargeLevel - 1, x + (18 * spr_dir), y, spr_dir, 1, 0, c_white, 1);
-    }
-    if (shurikatChargeLevel == 5 && window == 4)
-    {
-        draw_sprite_ext( superShurikenVfxSprite, superShurikenVfxTimer, x, y, spr_dir, 1, 0, c_white, 1);
-        //draw_sprite(superShurikenVfxSprite, superShurikenVfxTimer, x, y);
-    }
+    case AT_BAIR:
+        //Spawn a spark vfx on window 2 to show the tipper hitbox. This needs to be drawn
+        //in post_draw since hit_fx is rendered behind the player. The spark should be rendered in front
+        //of the player
+        if (smallSparkVfxBairTimer <= 1)
+        {
+            if (spr_dir == -1)
+                draw_sprite(small_spark_vfx_sprite, smallSparkVfxBairTimer, playersLastXPos + (36), playersLastYPos-28);
+            else
+                draw_sprite(small_spark_vfx_sprite, smallSparkVfxBairTimer, playersLastXPos - (70), playersLastYPos-28);
+        }
+    break;
+    
+    case AT_FSPECIAL:
+        if (shurikatChargeLevel < 5 && window == 2 && window_timer > 4 && 
+            state != PS_ROLL_FORWARD && state != PS_ROLL_BACKWARD &&
+            state != PS_AIR_DODGE && state != PS_PARRY)
+        {
+            draw_sprite_ext( shurikenVfxSprite, shurikatChargeLevel - 1, x + (18 * spr_dir), y, spr_dir, 1, 0, c_white, 1);
+        }
+        if (shurikatChargeLevel == 5 && window == 4)
+        {
+            draw_sprite_ext( superShurikenVfxSprite, superShurikenVfxTimer, x, y, spr_dir, 1, 0, c_white, 1);
+            //draw_sprite(superShurikenVfxSprite, superShurikenVfxTimer, x, y);
+        }
+    break;
+    
+    case AT_DSPECIAL:
+        //Affected by pallet change
+        shader_start();
+        
+        //Draw aiming arrow
+        if (window == 4 || window == 5)
+            draw_sprite_ext( aimingArrowSprite, yarnBallAimingPower - 1, x, y - 32, 1, 1, yarnBallThrowAngle, c_white, 1);
+            
+        if (window == 11 && state != PS_PRATFALL)
+        {
+            if (spr_dir == 1)
+                draw_sprite_ext( yarnDashSprite, 0, x - (6 * spr_dir), y - 20, spr_dir, 1, yarnDashAngleDirection, c_white, 1);
+            else if (spr_dir == -1)
+                draw_sprite_ext( yarnDashSprite, 0, x - (6 * spr_dir), y - 20, spr_dir, 1, yarnDashAngleDirection - 180, c_white, 1);
+        }
+        
+        shader_end();
+    break;
+    
+    case AT_TAUNT:
+        switch (tauntType)
+        {
+            case 2: //Hugging Plush
+                if (state == PS_ATTACK_GROUND)
+                {
+                    if (image_index == 4)
+                        draw_sprite_ext( targetPlushSprite, targetPlushIndex, x - (4 * spr_dir), y - 22, spr_dir * 2, 2, 0, c_white, 1);
+                    else if (window == 2)
+                    {
+                        draw_sprite_ext( targetPlushSprite, targetPlushIndex, x - (10 * spr_dir), y - 20, spr_dir * 2, 2, 0, c_white, 1);
+                    }
+                }
+            break;
+            case 3:
+                if (amberHugState == 1 && window == 1)
+                {
+                    draw_sprite_ext( sprite_get("speech_bubble"), 0, x - 1, y - char_height - 20, 2, 2, 0, c_white, 1);
+                    draw_debug_text( x - 52, y - char_height - 58, "Taunt near me!" );
+                }
+            break;
+            case 10: //Tutorial Bubble Menu
+                if (tutCurrentMenuCategory == 1 && state == PS_ATTACK_GROUND)
+                {
+                    #region //Draw the Tutorial Bubble Menu
+                    t_bubbleX = ( x + (254));
+                    t_bubbleY = y - 240;
+                    
+                    t_bubbleLeftSideX = t_bubbleX - 170;
+                    
+                    //Startup animation
+                    if (window == 1)
+                    {
+                        draw_sprite_ext( sprite_get("t_bubble_menu"), image_index, t_bubbleX, t_bubbleY, 2, 2, 0, c_white, 1);
+                    }
+                    else if (window == 2)
+                    {
+                        draw_sprite_ext( sprite_get("t_bubble_menu"), 3, t_bubbleX, t_bubbleY, 2, 2, 0, c_white, 1);
+                        
+                        //Draw the headline
+                        draw_sprite_ext( sprite_get("t_bubble_menu_headline"), 0, t_bubbleX + 10, t_bubbleY, 2, 2, 0, c_white, 1);
+                        
+                        switch (tutSelectedMenuIndex)
+                        {
+                            case 0:
+                            /*
+                                draw_debug_text( t_bubbleLeftSideX + 10, t_bubbleY + 60, "Moveset" );
+                                draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 80, "Tutorial" );
+                                draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 100, "Patch Notes" );
+                                draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 120, "Toggle Inf. Meter" );
+                                */
+                                draw_debug_text( t_bubbleLeftSideX + 10, t_bubbleY + 70, "Moveset" );
+                                draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 110, "Toggle Inf. Meter" );
+                                draw_debug_text( t_bubbleLeftSideX - 10, t_bubbleY + 70 + (20 *  tutSelectedMenuIndex), ">" );
+                            break;
+                            case 1:
+                            /*
+                                draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 60, "Moveset" );
+                                draw_debug_text( t_bubbleLeftSideX + 10, t_bubbleY + 80, "Tutorial" );
+                                draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 100, "Patch Notes" );
+                                draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 120, "Toggle Inf. Meter" );
+                                */
+                            break;
+                            case 2:
+                            /*
+                                draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 60, "Moveset" );
+                                draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 80, "Tutorial" );
+                                draw_debug_text( t_bubbleLeftSideX + 10, t_bubbleY + 100, "Patch Notes" );
+                                draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 120, "Toggle Inf. Meter" );
+                                */
+                            break;
+                            case 3:
+                            /*
+                                draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 60, "Moveset" );
+                                draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 80, "Tutorial" );
+                                draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 100, "Patch Notes" );
+                                draw_debug_text( t_bubbleLeftSideX + 10, t_bubbleY + 120, "Toggle Inf. Meter" );
+                                */
+                                
+                                draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 70, "Moveset" );
+                                draw_debug_text( t_bubbleLeftSideX + 10, t_bubbleY + 110, "Toggle Inf. Meter" );
+                                draw_debug_text( t_bubbleLeftSideX - 10, t_bubbleY + 70 + (40 *  1), ">" );
+                                
+                            break;
+                            default:
+                            /*
+                                draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 60, "Moveset" );
+                                draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 80, "Tutorial" );
+                                draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 100, "Patch Notes" );
+                                draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 120, "Toggle Inf. Meter" );
+                                */
+                            break;
+                        }
+                        //draw_debug_text( t_bubbleLeftSideX - 10, t_bubbleY + 60 + (20 *  tutSelectedMenuIndex), ">" );
+                    }
+                    
+                    #endregion
+                }
+            break;
+        }
+    break;
+    
+    //Hugging Animation. Draw the other player's sprite and Amber's own sprite (we draw Amber's sprite here due to team outline inconsistencies)
+    case AT_EXTRA_3:
+        if (amberHugState > 2)
+        {
+            /*
+            //Draw team outline around them if on same team. A heart!
+            if (targetPlayerHugID.url == CH_ORI)
+            {
+                if (get_player_team(player) == get_player_team(targetPlayerHugID.player))
+                {
+                    if (get_player_team(player) == 1)
+                        draw_sprite_ext( sprite_get("heart_team_outline"), 0, x + (6 * spr_dir),y, 2, 2, 0, teamRedColor, 1);
+                    else
+                        draw_sprite_ext( sprite_get("heart_team_outline"), 0, x + (6 * spr_dir),y, 2, 2, 0, teamBlueColor, 1);
+                }
+            }
+            */
+            if (amberHugA2ZReady == 2)
+            {
+                with (targetPlayerHugID)
+                {
+                    shader_start();
+                    
+                    if (real(url) == 2108764588) //Zerra
+                        draw_sprite_ext( other.amberHugA2ZSpriteZerra, oPlayerHugAmberIndex, other.x,other.y, 2, 2, 0, c_white, 1);
+                    else if (real(url) == 1904437331) //Astra
+                        draw_sprite_ext( other.amberHugA2ZSpriteAstra, oPlayerHugAmberIndex, other.x,other.y, 2, 2, 0, c_white, 1);
+                    
+                        
+                    shader_end();
+                }
+                with (targetPlayerHugIDTwo)
+                {
+                    shader_start();
+                    
+                        if (real(url) == 2108764588) //Zerra
+                        draw_sprite_ext( other.amberHugA2ZSpriteZerra, oPlayerHugAmberIndex, other.x,other.y, 2, 2, 0, c_white, 1);
+                    else if (real(url) == 1904437331) //Astra
+                        draw_sprite_ext( other.amberHugA2ZSpriteAstra, oPlayerHugAmberIndex, other.x,other.y, 2, 2, 0, c_white, 1);
+                        
+                    shader_end();
+                }
+                shader_start();
+                draw_sprite_ext( sprite_get("a2z_amber"), image_index, x,y, 2, 2, 0, c_white, 1);
+                shader_end();
+                draw_sprite_ext( amberHugA2ZSpriteBase, image_index, x,y, 2, 2, 0, c_white, 1);
+            }
+            else
+            {
+                if (targetPlayerHugID.oPlayerHugAmberSpriteLayer == 0)
+                {
+                    with (targetPlayerHugID)
+                    {
+                        shader_start();
+                        draw_sprite_ext( oPlayerHugAmberSprite, oPlayerHugAmberIndex, oPlayerAmberID.x,oPlayerAmberID.y, oPlayerAmberID.spr_dir, 1, 0, c_white, 1);
+                        shader_end();
+                    }
+                    shader_start();
+                    draw_sprite_ext( amberHugSprite, image_index, x,y, spr_dir, 1, 0, c_white, 1);
+                    shader_end();
+                }
+                else if (targetPlayerHugID.oPlayerHugAmberSpriteLayer == 1)
+                {
+                    shader_start();
+                    draw_sprite_ext( amberHugSprite, image_index, x,y, spr_dir, 1, 0, c_white, 1);
+                    shader_end();
+                    with (targetPlayerHugID)
+                    {
+                        shader_start();
+                        draw_sprite_ext( oPlayerHugAmberSprite, oPlayerHugAmberIndex, oPlayerAmberID.x,oPlayerAmberID.y, oPlayerAmberID.spr_dir, 1, 0, c_white, 1);
+                        shader_end();
+                    }
+                }
+            }
+        }
+    break;
 }
 
 //Sprites affected by pallet change
 shader_start();
-//Draw aiming arrow
-if (attack == AT_DSPECIAL && window == 5 ||
-    attack == AT_DSPECIAL && window == 4)
-{
-    draw_sprite_ext( aimingArrowSprite, yarnBallAimingPower - 1, x, y - 32, 1, 1, yarnBallThrowAngle, c_white, 1);
-   // draw_sprite(charge_attack_ready_sprite,chargeAttackReadyTimer,x,y);
-}
-
-//Draw Amber dashing frame with rotation and adjusted y pos
-if (attack == AT_DSPECIAL && window == 11 && state != PS_PRATFALL)
-{
-    if (spr_dir == 1)
-        draw_sprite_ext( yarnDashSprite, 0, x - (6 * spr_dir), y - 20, spr_dir, 1, yarnDashAngleDirection, c_white, 1);
-    else if (spr_dir == -1)
-        draw_sprite_ext( yarnDashSprite, 0, x - (6 * spr_dir), y - 20, spr_dir, 1, yarnDashAngleDirection - 180, c_white, 1);
-    
-}
-
 //Show cooldown above Amber
 if (hasYarnBall == true && move_cooldown[AT_DSPECIAL] > 2 && state != PS_SPAWN)
 {
@@ -204,162 +386,8 @@ if (isHoldingYarnBall)
 
 shader_end();
 
-//Respawn Platform Drawing
-if (state == PS_RESPAWN)
-{
-    //draw_sprite(respawnPlatFrontSprite,floor(respawnPlatAnimTimer),x,y);
-}
-
 //Show tutorial bubble if Amber uses Unleash Power (N Special) while in training mode
 if (inTraining == true && chargeAttackReady == true && tutSuccessUsedEmpowered == false && tutEmpoweredBubbleAnimTimer < tutEmpoweredBubbleShowLength)
 {
     draw_sprite_ext( sprite_get("tut_special_ui"), tutEmpoweredBubbleAnimTimer, x - 70, y - 126, 1, 1, 0, c_white, 1);
-}
-if (attack == AT_TAUNT)
-{
-    switch (tauntType)
-    {
-        case 2: //Hugging Plush
-            if (state == PS_ATTACK_GROUND)
-            {
-                if (image_index == 4)
-                    draw_sprite_ext( targetPlushSprite, targetPlushIndex, x - (4 * spr_dir), y - 22, spr_dir * 2, 2, 0, c_white, 1);
-                else if (window == 2)
-                {
-                    draw_sprite_ext( targetPlushSprite, targetPlushIndex, x - (10 * spr_dir), y - 20, spr_dir * 2, 2, 0, c_white, 1);
-                }
-            }
-        break;
-        case 3:
-            if (amberHugState == 1 && window == 1)
-            {
-                draw_sprite_ext( sprite_get("speech_bubble"), 0, x - 1, y - char_height - 20, 2, 2, 0, c_white, 1);
-                draw_debug_text( x - 52, y - char_height - 58, "Taunt near me!" );
-            }
-        break;
-        case 10: //Tutorial Bubble Menu
-            if (tutCurrentMenuCategory == 1 && state == PS_ATTACK_GROUND)
-            {
-                #region //Draw the Tutorial Bubble Menu
-                t_bubbleX = ( x + (254));
-                t_bubbleY = y - 240;
-                
-                t_bubbleLeftSideX = t_bubbleX - 170;
-                
-                //Startup animation
-                if (window == 1)
-                {
-                    draw_sprite_ext( sprite_get("t_bubble_menu"), image_index, t_bubbleX, t_bubbleY, 2, 2, 0, c_white, 1);
-                }
-                else if (window == 2)
-                {
-                    draw_sprite_ext( sprite_get("t_bubble_menu"), 3, t_bubbleX, t_bubbleY, 2, 2, 0, c_white, 1);
-                    
-                    //Draw the headline
-                    draw_sprite_ext( sprite_get("t_bubble_menu_headline"), 0, t_bubbleX + 10, t_bubbleY, 2, 2, 0, c_white, 1);
-                    
-                    switch (tutSelectedMenuIndex)
-                    {
-                        case 0:
-                        /*
-                            draw_debug_text( t_bubbleLeftSideX + 10, t_bubbleY + 60, "Moveset" );
-                            draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 80, "Tutorial" );
-                            draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 100, "Patch Notes" );
-                            draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 120, "Toggle Inf. Meter" );
-                            */
-                            draw_debug_text( t_bubbleLeftSideX + 10, t_bubbleY + 70, "Moveset" );
-                            draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 110, "Toggle Inf. Meter" );
-                            draw_debug_text( t_bubbleLeftSideX - 10, t_bubbleY + 70 + (20 *  tutSelectedMenuIndex), ">" );
-                        break;
-                        case 1:
-                        /*
-                            draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 60, "Moveset" );
-                            draw_debug_text( t_bubbleLeftSideX + 10, t_bubbleY + 80, "Tutorial" );
-                            draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 100, "Patch Notes" );
-                            draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 120, "Toggle Inf. Meter" );
-                            */
-                        break;
-                        case 2:
-                        /*
-                            draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 60, "Moveset" );
-                            draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 80, "Tutorial" );
-                            draw_debug_text( t_bubbleLeftSideX + 10, t_bubbleY + 100, "Patch Notes" );
-                            draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 120, "Toggle Inf. Meter" );
-                            */
-                        break;
-                        case 3:
-                        /*
-                            draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 60, "Moveset" );
-                            draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 80, "Tutorial" );
-                            draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 100, "Patch Notes" );
-                            draw_debug_text( t_bubbleLeftSideX + 10, t_bubbleY + 120, "Toggle Inf. Meter" );
-                            */
-                            
-                            draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 70, "Moveset" );
-                            draw_debug_text( t_bubbleLeftSideX + 10, t_bubbleY + 110, "Toggle Inf. Meter" );
-                            draw_debug_text( t_bubbleLeftSideX - 10, t_bubbleY + 70 + (40 *  1), ">" );
-                            
-                        break;
-                        default:
-                        /*
-                            draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 60, "Moveset" );
-                            draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 80, "Tutorial" );
-                            draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 100, "Patch Notes" );
-                            draw_debug_text( t_bubbleLeftSideX, t_bubbleY + 120, "Toggle Inf. Meter" );
-                            */
-                        break;
-                    }
-                    //draw_debug_text( t_bubbleLeftSideX - 10, t_bubbleY + 60 + (20 *  tutSelectedMenuIndex), ">" );
-                }
-                
-                #endregion
-            }
-        break;
-    }
-}
-
-
-//Hugging Animation. Draw the other player's sprite and Amber's own sprite (we draw Amber's sprite here due to team outline inconsistencies)
-if (attack == AT_EXTRA_3)
-{
-    if (amberHugState > 2)
-    {
-        /*
-        //Draw team outline around them if on same team. A heart!
-        if (targetPlayerHugID.url == CH_ORI)
-        {
-            if (get_player_team(player) == get_player_team(targetPlayerHugID.player))
-            {
-                if (get_player_team(player) == 1)
-                    draw_sprite_ext( sprite_get("heart_team_outline"), 0, x + (6 * spr_dir),y, 2, 2, 0, teamRedColor, 1);
-                else
-                    draw_sprite_ext( sprite_get("heart_team_outline"), 0, x + (6 * spr_dir),y, 2, 2, 0, teamBlueColor, 1);
-            }
-        }
-        */
-        if (targetPlayerHugID.oPlayerHugAmberSpriteLayer == 0)
-        {
-            with (targetPlayerHugID)
-            {
-                shader_start();
-                draw_sprite_ext( oPlayerHugAmberSprite, oPlayerHugAmberIndex, oPlayerAmberID.x,oPlayerAmberID.y, oPlayerAmberID.spr_dir, 1, 0, c_white, 1);
-                shader_end();
-            }
-            shader_start();
-            draw_sprite_ext( amberHugSprite, image_index, x,y, spr_dir, 1, 0, c_white, 1);
-            shader_end();
-        }
-        else if (targetPlayerHugID.oPlayerHugAmberSpriteLayer == 1)
-        {
-            shader_start();
-            draw_sprite_ext( amberHugSprite, image_index, x,y, spr_dir, 1, 0, c_white, 1);
-            shader_end();
-            with (targetPlayerHugID)
-            {
-                shader_start();
-                draw_sprite_ext( oPlayerHugAmberSprite, oPlayerHugAmberIndex, oPlayerAmberID.x,oPlayerAmberID.y, oPlayerAmberID.spr_dir, 1, 0, c_white, 1);
-                shader_end();
-            }
-        }
-    }
 }

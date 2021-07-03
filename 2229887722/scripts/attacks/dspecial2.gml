@@ -250,8 +250,8 @@ set_hitbox_value(AT_DSPECIAL_2, 5, HG_HITBOX_Y, -22);
 set_hitbox_value(AT_DSPECIAL_2, 5, HG_SHAPE, 2 );
 set_hitbox_value(AT_DSPECIAL_2, 5, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL_2, 5, HG_DAMAGE, 0);
-set_hitbox_value(AT_DSPECIAL_2, 5, HG_ANGLE, 45);
-set_hitbox_value(AT_DSPECIAL_2, 5, HG_BASE_KNOCKBACK, 12);
+set_hitbox_value(AT_DSPECIAL_2, 5, HG_ANGLE, 40);
+set_hitbox_value(AT_DSPECIAL_2, 5, HG_BASE_KNOCKBACK, 12); //modified from attack update
 set_hitbox_value(AT_DSPECIAL_2, 5, HG_KNOCKBACK_SCALING, 3); //modified from attack update. Ranges from 1 - 2
 set_hitbox_value(AT_DSPECIAL_2, 5, HG_BASE_HITPAUSE, 20);
 set_hitbox_value(AT_DSPECIAL_2, 5, HG_EXTRA_HITPAUSE, 20); //modified from attack update and hit_player. Ranges from 10 - 40
