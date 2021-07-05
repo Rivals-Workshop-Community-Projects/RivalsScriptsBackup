@@ -14,11 +14,15 @@ end_dragon_install = false;
 play_theme = false;
 install_armor = 5;
 
-
 install_trail_size = 8;
 for(var i = 0; i < install_trail_size; i++){
     install_trail[i] = 
     {x:x, y:y, sprite_index:sprite_index, image_index:0, color:c_white, spr_dir:spr_dir, life:0};
+}
+install_part_size = 8;
+for(var i = 0; i < install_part_size; i++){
+    install_part[i] = 
+    {x:x, y:y, sprite_index:sprite_get("install_part"), image_index:0, color:c_white, life:0};
 }
 
 //strong attack stuff
@@ -41,7 +45,7 @@ rainbow_color_ULTRADARK = c_white;
 //possible meter idea
 tenshi_magic = 0;
 old_tenshi_magic = 0;
-tenshi_magic_max = 1800;
+tenshi_magic_max = 2400;
 can_vo = 0;
 hotbar_color = make_colour_hsv(0, 212, 208);
 
@@ -97,14 +101,14 @@ ground_friction = .5;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
-jump_speed = 13;
+jump_speed = 12;
 short_hop_speed = 7.2;
 djump_speed = 11;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .2;
+air_accel = .25;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
 air_friction = .03;
 max_djumps = 1;
@@ -114,7 +118,7 @@ walljump_vsp = 11;
 walljump_time = 32;
 max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed
-gravity_speed = .6;
+gravity_speed = .55;
 hitstun_grav = .5;
 knockback_adj = .95; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
@@ -184,6 +188,7 @@ install_wave_land_adj = 1.4; //the multiplier to your initial hsp when wavelandi
 install_wave_friction = .02;
 install_air_max_speed = 8;
 install_max_jump_hsp = 9;
+install_leave_ground_max = 9;
 
 //base stats
 base_initial_dash_speed = initial_dash_speed;
@@ -196,7 +201,9 @@ base_wave_friction = wave_friction;
 base_air_accel = air_accel;
 base_air_friction = air_friction;
 base_max_jump_hsp = max_jump_hsp;
-base_air_max_speed = air_max_speed
+base_air_max_speed = air_max_speed;
+base_knockback_adj = knockback_adj;
+base_leave_ground_max = leave_ground_max;
 
 spr_extra = sprite_get("extra");
 

@@ -21,8 +21,18 @@ if(rock_lockout > 0 and rock_proj == noone){
     } else {
         draw_sprite(sprite_get("rock_lockout_icon"), (get_gameplay_time()/3%17), x+22 + 8*floor(dmg/100), y - 98);
     }
-    
-
 }
+
+if(dragon_install){
+    for(var t = 0; t < install_trail_size; t++){
+        var i = install_part[t];
+        if(i.life > 0){
+            gpu_set_fog(true, i.color, 0, 0);
+            draw_sprite_ext(i.sprite_index, floor(i.life/6), i.x, i.y, 1, 1, 0, i.color, (i.life/30)/1.5);
+        }
+    }
+    gpu_set_fog(false, c_white, 0, 0);
+}
+
 //Muno Phone
 user_event(12);

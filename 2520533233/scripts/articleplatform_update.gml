@@ -20,7 +20,10 @@ image_index = floor(rock_anim_frame);
 if(rock_state != ROCK.KABOOM and rock_state != ROCK.MOVE and rock_state != ROCK.IDLE_1){
 	with(pHitBox){
 		if(place_meeting(x, y, other) and (player_id.free or type == 2 or !player_id.free and player_id.y > other.y) and other.rock_state != ROCK.KABOOM){
+			player_id.hitpause = true;
 			player_id.hitstop = floor(hitpause * 1.3);
+			player_id.old_vsp = player_id.vsp;
+			player_id.old_hsp = player_id.hsp;
 			sound_play(sound_effect);
 			sound_play(asset_get("sfx_kragg_rock_shatter"));
 			other.hold_timer = 0;
@@ -44,7 +47,7 @@ switch rock_state{
     case ROCK.MOVE:
         //move rock while timer ticks, apply smoothing in both X and Y
         //Y smoothing should vary depending of the rock is above or below tenshi
-        if(rock_move_timer < rock_move_timer_max){
+        if(rock_move_timer <= rock_move_timer_max){
             mask_index = sprite_get("projectile_invis")
             var timer_ratio = rock_move_timer/rock_move_timer_max
             var smooth = smoothstep(timer_ratio);
@@ -53,12 +56,17 @@ switch rock_state{
             var new_x = (smooth*rock_goal_x) + (rock_init_x * (1-smooth));
             smooth = smooth <.5 ? smooth*2 : 2*(1-smooth);
             //var ymod = (smooth * (rock_y_offset)) + (0 * (1-smooth));
-			if(rock_apply_ymod){
-				y = round(lerp(y, rock_goal_y, timer_ratio));
+			if(!rock_first_move){
+				y = round(lerp(y, rock_goal_y + min((200*(abs(rock_init_x-rock_goal_x)/600))*(1-timer_ratio), 200), timer_ratio));
 			} else {
-				y = round(lerp(y, rock_goal_y + 200*(1-timer_ratio), timer_ratio));
+				if(timer_ratio <= .5){
+					y = round(lerp(y, rock_goal_y - 200*(1-timer_ratio*2), timer_ratio*(2)));
+				} else {
+					y = round(lerp(y, rock_goal_y + 50*(1-(timer_ratio-.5)*2), (timer_ratio-.5)*2));
+					//print_debug((timer_ratio-.5)*2)
+				}
+
 			}
-            
             //x = round(ease_expoInOut(x, player_id.x, rock_move_timer, rock_move_timer_max));
             x = round(new_x);
         } else {
@@ -73,6 +81,7 @@ switch rock_state{
 			    vsp = 0;
 			    hold_timer = 0;
 			    rock_state = ROCK.IDLE_1;
+			    rock_first_move = false;
         	}
 
         }
@@ -90,6 +99,14 @@ switch rock_state{
             sound_play(asset_get("sfx_kragg_roll_land"), false, noone, .3);
             hold_timer = 0;
         }
+        if(fast_fire){
+    		player_id.can_move_rock = false;
+            player_id.rock_proj = instance_create(x, y+20, "obj_article3");
+			player_id.rock_proj.image_index = image_index;
+            player_id.tenshi_uspecial_rock = noone;
+    		player_id.rock_proj.image_angle = fast_fire_angle;
+    		instance_destroy(self);
+    	}
         break;
     //for when the rock falls slowly while you stand on it
     case ROCK.IDLE_2:
@@ -148,7 +165,7 @@ switch rock_state{
 			hold_timer++;
 			if(hold_timer > 8){
 				with(oPlayer){
-					if(place_meeting(x, y+5, other) and !free){
+					if(place_meeting(x, y+5, other) and !free and other.y >= y){
 						free = true;
 						state = PS_PRATFALL;
 					}	

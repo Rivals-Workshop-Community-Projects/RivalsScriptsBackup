@@ -22,11 +22,14 @@ glow_timer = 0;
 glow_time = 60;
 glow_phase = 1;
 
+fast_fire = false;
+fast_fire_angle = 0;
 
 rock_y_offset = 0;
 rock_init_y = 0;
 rock_apply_ymod = true;
 rock_state = ROCK.INIT;
+rock_first_move = true;
 rock_goal_y = 0;
 rock_goal_x = 0;
 rock_init_x = 0;

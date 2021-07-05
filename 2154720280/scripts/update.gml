@@ -379,3 +379,252 @@ if get_player_color(player) == 11 {
   			projectile_parry_stun = 1 
   		}
   	}
+
+if "superTrue" in self {
+if superTrue == 1 {
+	 superTrue = 0
+	hit_player_obj.hitpause = 1
+	hit_player_obj.hitstop = 40
+	hit_player_obj.old_hsp = hit_player_obj.hsp
+	hit_player_obj.old_vsp = hit_player_obj.vsp
+	
+         set_attack (AT_EXTRA_2)
+         window = 2
+         window_timer = 0
+    move_cooldown [AT_FTILT] = 200 
+       
+}
+}
+
+if move_cooldown [AT_FTILT] > 1 {
+	can_move = false
+	supply = 20
+	if free {
+		vsp -= 0.35
+	}
+	
+if move_cooldown[AT_FTILT] > 60 && move_cooldown[AT_FTILT] < 100{
+	
+	if move_cooldown[AT_FTILT] % 7 == 0 {
+		sound_play(sound_get("throw"),false,noone,0.6,0.9);
+    		create_hitbox(AT_FSPECIAL , 1 + random_func(1,3,true), floor(x + (32 * spr_dir) + 50 - random_func(10, 100, true)) , floor (y - 5 - (random_func(11, 100, true) / 2)) );
+    		spawn_hit_fx( floor(x + (32 * spr_dir) + 50 - random_func(10, 100, true)) , floor (y - 5 - (random_func(11, 100, true) / 2))  , 305 )
+	}
+	
+}	
+if move_cooldown [AT_FTILT] ==  180 {
+	move_cooldown[AT_FSPECIAL] = 0
+	sound_play(sound_get("throw"));
+	     set_attack (AT_FSPECIAL)
+         window = 2
+         window_timer = 2
+	create_hitbox(AT_FSPECIAL , 1 , x + (32 * spr_dir) , y - 32 );
+} 
+
+if move_cooldown [AT_FTILT] ==  175 {
+	move_cooldown[AT_FSPECIAL] = 0
+	sound_play(sound_get("throw"));
+	     set_attack (AT_FSPECIAL)
+         window = 2
+         window_timer = 2
+	create_hitbox(AT_FSPECIAL , 1 , x + (32 * spr_dir) , y - 32 );
+} 
+
+if move_cooldown [AT_FTILT] == 170 {
+				set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -3);
+			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_VSPEED, -4.3);
+			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_VSPEED, -5);
+	move_cooldown[AT_FSPECIAL] = 0
+	sound_play(sound_get("shing"));
+	     set_attack (AT_FSPECIAL)
+         window = 3
+         window_timer = 2
+	
+} 
+
+if move_cooldown [AT_FTILT] == 150 {
+	move_cooldown[AT_FSPECIAL] = 0
+	sound_play(sound_get("throw"));
+	      set_attack (AT_FSPECIAL)
+         window = 2
+         window_timer = 2
+	create_hitbox(AT_FSPECIAL , 1 , x + (32 * spr_dir) , y - 32 );
+} 
+
+if move_cooldown [AT_FTILT] == 145 {
+	move_cooldown[AT_FSPECIAL] = 0
+	sound_play(sound_get("throw"));
+	      set_attack (AT_FSPECIAL)
+         window = 2
+         window_timer = 2
+	create_hitbox(AT_FSPECIAL , 1 , x + (32 * spr_dir) , y - 32 );
+} 
+
+if move_cooldown [AT_FTILT] == 140 {
+				set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, 2);
+			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_VSPEED, 4.4);
+			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_VSPEED, 6);
+	move_cooldown[AT_FSPECIAL] = 0
+	sound_play(sound_get("shing"));
+	      set_attack (AT_FSPECIAL)
+         window = 5
+         window_timer = 2
+         vsp = -6
+	
+} 
+
+if move_cooldown [AT_FTILT] ==  125 {
+	move_cooldown[AT_FSPECIAL] = 0
+	sound_play(sound_get("throw"));
+	     set_attack (AT_FSPECIAL)
+         window = 2
+         window_timer = 2
+	create_hitbox(AT_FSPECIAL , 1 , x + (32 * spr_dir) , y - 32 );
+} 
+
+if move_cooldown [AT_FTILT] == 120 {
+				set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -3);
+			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_VSPEED, -4.3);
+			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_VSPEED, -5);
+	move_cooldown[AT_FSPECIAL] = 0
+	sound_play(sound_get("shing"));
+	      set_attack (AT_FSPECIAL)
+         window = 3
+         hsp = -6*spr_dir
+         window_timer = 2
+         vsp = -3
+	
+} 
+
+if move_cooldown [AT_FTILT] ==  105 {
+	move_cooldown[AT_FSPECIAL] = 0
+	sound_play(sound_get("throw"));
+	     set_attack (AT_FSPECIAL)
+         window = 2
+         window_timer = 2
+	create_hitbox(AT_FSPECIAL , 1 , x + (32 * spr_dir) , y - 32 );
+} 
+
+
+if move_cooldown [AT_FTILT] == 100 {
+				set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, 2);
+			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_VSPEED, 4.4);
+			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_VSPEED, 6);
+	move_cooldown[AT_FSPECIAL] = 0
+	sound_play(sound_get("shing"));
+	      set_attack (AT_FSPECIAL)
+         window = 5
+         window_timer = 2
+         vsp = -6
+	
+} 
+
+if move_cooldown [AT_FTILT] ==  85 {
+	move_cooldown[AT_FSPECIAL] = 0
+	sound_play(sound_get("throw"));
+	     set_attack (AT_FSPECIAL)
+         window = 2
+         window_timer = 2
+	create_hitbox(AT_FSPECIAL , 1 , x + (32 * spr_dir) , y - 32 );
+} 
+
+if move_cooldown [AT_FTILT] == 80 {
+				set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -3);
+			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_VSPEED, -4.3);
+			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_VSPEED, -5);
+	move_cooldown[AT_FSPECIAL] = 0
+	sound_play(sound_get("shing"));
+	      set_attack (AT_FSPECIAL)
+         window = 3
+         window_timer = 2
+         vsp = -3
+	hsp = -6*spr_dir
+}
+
+if move_cooldown [AT_FTILT] ==  65 {
+	move_cooldown[AT_FSPECIAL] = 0
+	sound_play(sound_get("throw"));
+	     set_attack (AT_FSPECIAL)
+         window = 2
+         window_timer = 2
+	create_hitbox(AT_FSPECIAL , 1 , x + (32 * spr_dir) , y - 32 );
+} 
+
+if move_cooldown [AT_FTILT] == 60 {
+	move_cooldown[AT_DSPECIAL] = 0
+	      set_attack (AT_DSPECIAL)
+         window = 4
+         window_timer = 16
+         hsp = 13*spr_dir
+         vsp = -6
+	       sound_play(sound_get("throwshake"));
+    		sound_play(asset_get("sfx_spin"));
+        	supply -= 3
+    	create_hitbox(AT_DSPECIAL , 1 , x , y - 42 );
+}
+
+if move_cooldown [AT_FTILT] == 50 {
+	move_cooldown[AT_DSPECIAL] = 0
+	      set_attack (AT_DSPECIAL)
+         window = 4
+         window_timer = 16
+         hsp = 13*spr_dir
+	       sound_play(sound_get("throwshake"));
+    		sound_play(asset_get("sfx_spin"));
+        	supply -= 3
+    	create_hitbox(AT_DSPECIAL , 1 , x , y - 42 );
+}
+
+
+if move_cooldown [AT_FTILT] == 40 {
+	move_cooldown[AT_DSPECIAL] = 0
+	      set_attack (AT_DSPECIAL)
+         window = 4
+         window_timer = 16
+         hsp = 13*spr_dir
+	       sound_play(sound_get("throwshake"));
+    		sound_play(asset_get("sfx_spin"));
+        	supply -= 3
+    	create_hitbox(AT_DSPECIAL , 1 , x , y - 42 );
+}
+
+if move_cooldown [AT_FTILT] == 30 {
+
+	move_cooldown[AT_DSPECIAL] = 0
+	      set_attack (AT_DSPECIAL)
+         window = 4
+         window_timer = 16
+         hsp = 13*spr_dir
+	       sound_play(sound_get("throwshake"));
+    		sound_play(asset_get("sfx_spin"));
+        	supply -= 3
+    	create_hitbox(AT_DSPECIAL , 1 , x , y - 42 );
+}
+
+if move_cooldown [AT_FTILT] == 20 {
+
+	move_cooldown[AT_DSPECIAL] = 0
+	      set_attack (AT_DSPECIAL)
+         window = 4
+         window_timer = 16
+         hsp = 13*spr_dir
+	       sound_play(sound_get("throwshake"));
+    		sound_play(asset_get("sfx_spin"));
+        	supply -= 3
+    	create_hitbox(AT_DSPECIAL , 1 , x , y - 42 );
+}
+
+if move_cooldown [AT_FTILT] == 10 {
+
+	move_cooldown[AT_DSPECIAL] = 0
+	      set_attack (AT_DSPECIAL)
+         window = 4
+         window_timer = 16
+         hsp = 13*spr_dir
+	       sound_play(sound_get("throwshake"));
+    		sound_play(asset_get("sfx_spin"));
+        	supply -= 3
+    	create_hitbox(AT_DSPECIAL , 1 , x , y - 42 );
+}
+
+}

@@ -254,7 +254,7 @@ pho_has_daro_codec = 0; // Dialogue for the Daroach boss fight
 
 
 if (object_index == asset_get("cs_playerbg_obj")){
-	num_alts = 6; // Number of alt costumes; controls how many appear on the CSS
+	num_alts = 31; // Number of alt costumes; controls how many appear on the CSS
 	exit;
 }
 
@@ -398,11 +398,15 @@ with phone{
 	
 	You can hold the button down to  increase the distance fspecial will travel.
 	
-	The dash is jump cancelable on the ground, but not in the air. Try dashing into platforms while airborne to jump cancel for fancy movement.
+	Fspecial can only be used once per air time.
+	
+	The dash is jump cancelable on the ground, but not in the air. Try dashing into platforms while airborne to jump cancel for fancy movement, this refreshes the use of fspecial in the air.
 	
 	Press Special to cancel fspecial into a grab while on the ground!
 	
 	Peach Install buffs the speed of the dash while grounded and allows it to be charged longer.
+	
+	If you are in install, you can press special while in the air during this move to do a unique finisher grab that spikes the oponent in the direction held on the joy stick!
 	
 	If you use Fspecial while standing on your Uspecial rock it will cause the rock to fall to the ground but give you extra height on the dash. Useful as an attack and recovery option!");
 	initTipImage(player_id.spr_fspecial, -8, fa_center, 2, c_white, 3);
@@ -419,8 +423,8 @@ with phone{
 	initTipWords_ext("If you counter a falling rock while the opponent is in hitstun, your counter will teleport you to wherever your opponent is! This can be a bit tricky to pull of but can land you some very early kills if successful.", fa_left, c_red, 0, 0);
 	initTipImage(other.spr_dspecial, -4, fa_center, 2, c_white, 0);
 	
-	initTip("Wavebounce with Nspecial");
-	initTipWords("You can wavebounce with nspecial by B reversing the move in the air!");
+	initTip("Nspecial");
+	initTipWords("You can flick the control stick to throw the rock with nspecial, or hold the button for more precise aim. You can use nspecial to throw the rock at any time, but you can only move it once per air time.");
 	initTipImage(player_id.spr_nspecial, -6, fa_center, 2, c_white, 0);
 	
 	initTip("funny dair");
@@ -538,6 +542,300 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	initPatch("1.1.1", "4, July 2021");
+	initPatchWords("Hotfix time.
+	
+	v1.1.1
+Hotfix Micro Patch:
+
+Removed Bad Apple alt due to a bug of unknown origin with the skin.
+
+Removed Parry Stun from Rock
+
+Fixed a bug where multiple Tenshis in the same game using install at the same time would not pass assets correctly.
+Fixed a bug where install themes could play through lightweight's mute if multiple Tenshis were in the same game.
+
+Install Time: 30-60 > 20-40
+
+Dtilt: Startup: 9 > 6 
+Dtilt: Recovery: 11 > 10
+Install Dtilt: Changed Hitfx
+(OK idk what im doing)
+
+Dspecial Air: Active Frames: 7-21 > 7-23 (Made to match ground version)
+
+Changed Install Theme for Kokoro Alt
+Extended Install Theme for Patchouli Alt
+Extended Install Theme for Reisen Alt
+Extended Install Theme for Youmu Alt
+Extended/Changed Install Theme for Sans Alt
+(These themes were shorter than the new time)")
+	initPatch("1.1.0", "4, July 2021");
+	initPatchWords("Ok this time we're actually overhauling the install. This is how the character should have released.
+	
+	
+Performance Optimizations: Install is now now significantly lighter, should see large performance increase, upwards of +30% fps. Grazing should no longer cause frame dips on low end PCs.
+
+Install Changes:
+
+Install had been said to be generally underwhelming to fight. This patch aims to make the install significantly scarier to face while adding more counterplay to the install aside from running away.
+
+Install Stun: Self Damage Reduced: 20 > 10
+Install Stun: Length: 120 > 90
+Install Strongs: Base Level: Lv2 > Lv3
+Install Soft Armor: Removed from strongs and specials.
+Install Soft Armor: Attacks: Now only applies to attack startup.
+Install Durration: 15-30s > 30-60s
+Install Durration: Now Loses Time When Hit
+Install Meter: Now loses 10s of time on death.
+Install: All sword normals now multi hit. Except jabs.
+
+Install Move Buffs:
+
+Install Nair: Startup: 5 > 4
+Install Nair: Now a 2 hit multihit dealing 3 + 6 damage. 9 total.
+
+Install Bair: Startup: 13 > 9 (First Active: 14 > 10)
+Install Bair: Now 2 hit multi hit dealing 4 + 8 damage. 12 total.
+
+Install Dair: Startup: 15 > 9 (First Active: 16 > 10)
+
+Install Fair: Startup: 11 > 7 (First Active: 12 > 8)
+Install Fair: Now 3 hit multi hit dealing 3 + 3 + 4 damage. 10 total.
+
+Install Uair: Startup: 6 > 4 (First Active: 7 > 5)
+
+Install Utilt: Startup: 7 > 5 (First Active: 8 > 6)
+Install Utilt: Now a 3 hit multihit dealing 2 + 2 + 6 damage. 10 total.
+
+Install Ftilt: Startup: 10 > 7 (First Active: 11 > 8)
+
+Install Dtilt: Startup: 7 > 4 (First Active: 8 > 5)
+Install Dtilt: Now a 2 hit multihit dealing 3 + 6 damage. 9 total.
+Install Dtilt: No longer has a sour spot.
+
+Install Jab: Retains Armor through first hit, remaining hits have no armor.
+
+Install Fspecial Air: Can now be canceled into a new grab finisher. Hold a direction to decide the angle.
+
+
+QoL/Bugfix:
+
+Idle: Reduced blink frequency.
+
+Graze: Parrying a move will no longer force the next graze to be blue if the parry cannot trigger a graze (see below for why)
+Graze: Parrying or countering a move will always trigger a graze even during graze lockout.
+(This should increase meter gain somewhat in practice.)
+
+Install Hotbar: Bugfix: Fixed a bug where the meter could extend past the end of the bar.
+
+Dstrong: Bugfix: Hitlockout was missing on one set of rocks. Fixed.
+Fspecial Air: Bugfix: Platform Jump canceling on rock now works as intended.
+
+DAir: Bugfix: No longer applies momentum in hitstop.
+DAir: Bugfix: Sprite Alignment corrected.
+Dair: Hitpause Scaling: .9 > .8
+(Dair wasn't actually applying hitpause properly due to the ducktales bounce triggering in hitpause. This is fixed.)
+
+Fair: Bugfix: Startup buffs had cut off the dash sfx, it now plays properly again.
+
+Landing Lag: Bugfix: Sprite Alignment corrected.
+
+Dstrong: Rocks now properly adjust for Y position when player is on a moving platform.
+
+Utilt: Resprited. Frame data remains the same.
+
+QoL Fixing Fstrong:
+
+FStrong: Removed Multihit Correction
+FStrong: Hit 1: Now Untechable
+Fstrong: Hit 1: Now has 2 Hitboxes.
+Fstrong: Hit 1: New Hitbox: Higher priority to pull from behind.
+Fstrong: Hit 2: Angle: 361 > 45
+(This should make fstrong feel much more natural. It should consistently link except for the times where it very obviously shouldn't.)
+
+
+Rebalancing Nair:
+
++Nair: Startup: 7 > 5 (First Active: 8 > 6)
+-Nair: Lifetime: 6 > 4
+-Nair: Recovery: 8(13) > 15(24) 
+-Nair: Total Length: 21(26) > 24(33)
++Nair: Width: 56 > 70
+|Nair: Hitbox X: 52 > 44
++Nair: Angle: 60 > 55
++Nair: Added new hitbox above the head. Same knockback and damage with half the lifetime. Should make the move feel like it hits where it looks like it hits.
+(Making nair a slightly faster more useful tool with more recovery. Should feel akin to Shovel Knight nair)
+
+Rebalancing Dash Attack:
+
+DAttack: Reduced multihit correction.
+DAttack: Final Hit: Base Knockback: 8 > 6
+DAttack: Final Hit: Knockback Scaling: .93 > .4
+(Before it had a lot of knockback and could kill at high % but its general use was fairly clunky. It can't kill anymore but now following up dash attack should be possible.)
+
+Rebalancing Nspecial:
+
++Nspecial: Rock Projectle: Knockback Growth: .75 > .8
++Nspecial: Rock Explosion: Knockback Growth: .75 > 1
++Nspecial: Rock Explosion: Angle: 60 > 45
+|Nspecial: Rock: Base Hitpause: 4 > 10 (Thought I did this earlier)
+|Nspecial: Explosion: Base Hitpause: 9 > 12 (It is stronger now.)
+|Nspecial: Now on cooldown when the move can't be used. (This fixes a bug where Tenshi could clone rock projectiles by mashing B while throwing a rock.)
+-Nspecial: Rock: Now puts tenshi in parry stun when parried by someone other than herself.
+(While the rock already carried a lot of risk and was easy to parry, it not having extended parry stun does feel very off to play against. Giving the rock some more power should help keep it a relevant tool despite now having parry stun.)
+
+Uspecial Rock Platform: Now Destroyed on death, the nspecial projectile is not.
+
+Buffs: 
+Air Accel: .2 > .25
+(A lot of people felt the character's movement especially in the air was too limiting, this should help alleviate that while still keeping it fairly poor.) 
+Gravity Accel: .6 > .55
+(Should be more reflective of the characters actual weight)
+Jump Speed: 13 > 12
+(Maintains original jump height but with a better double jump comparatively.)
+
+This may seem like a really odd change but the character's base stat movement was a near equivalent to Kragg, actually worse in the air. While she has a lot of movement tools, her general base stat movement feel was not properly reflecting her wait class nor does she have the long range zoning abilities of characters that typically have movement of this type.
+
+Ftilt: Damage: 9 > 11
+Ftilt: Sweetspot Damage: 11 > 12
+(Ftilt is a fairly low range high knockback tilt that is much slower than most base cast normals, with a lot of recovery too. It doing the same damage as orcane Ftilt did not sit right.)
+
+(The rest are minor mostly for gamefeel reasons)
+
+Dspecial: Counter Hitbox Size increased. (This is realatively unimpactful but it should help make counter more consistent)
+
+
+Fair: Hitbox 1: Width: 40 > 60
+Fair: Hitbox 1: Hitbox X: 54 > 34
+(Should make the move feel more consistent, effective range is the same)
+Fair: Hitbox 1: Height: 60 > 70
+Fair: Hitbox 1: Hitbox Y: -34 > -32
+Fair: Hitbox 2: Width: 70 > 90
+Fair: Hitbox 2: X > 20 > 10
+(Should help make the move feel better to use. The hitboxes did not match the animation properly before.)
+
+Uair: Normal Hitbox: Lifetime: 2 > 3
+Uair: Sourspot Hitbox: Lifetime: 2 > 3 
+
+Dspecial: Active Frames: 7-21 > 7-23 (Made to match clarien)
+
+Nerfs:
+
+Fspecial can only be performed once in the air.
+The Hud has been changed to reflect this.
+Platform jump canceling fspecial restores the use.
+
+Fspecial Air: Platform Jump Cancel: Vsp Capped at 8 (Uncapped in install)
+Fspecial: Jump cancel velocity lowered.
+(This is in part caused by the air mobility changes, but also the jump cancel on platforms was way too cracked.)
+
+Fair: Reduced shorten and extension hsp modifiers when holding directions to compensate for increased air mobility.
+
+Because of the increase in mobility and other buffs I'm taking power out of frame data.
+
+Dtilt: Recovery: 9(13) > 11(16)
+(The move was too fast for the range it has.)
+Dtilt: Startup: 7 > 9 (First Active: 8 > 10)
+(Dtilt became a bit too risk free after the range buff.)
+
+-Utilt: Recovery: 10(15) >  12(18) (Reverting buff)
++Utilt: Back Hit: Lifetime: 2 > 4
+-Utilt: Foot Hitbox Removed.
+|Utilt: New animation.
+(Opening up more options to punish this move if used poorly.)
+
+Bair: Landing Lag: 9 > 11 
+(Aiming to make bair less of your go to neutral button)
+
+Uair: Recovery: 8(13) > 11(18)
+(Bringing total length more in line with base cast.)
+
+Ustrong: Recovery: 20(25) > 26(34)
+(With lv 3 strongs at base this move needs more recovery, probably even more than this.)
+
+Dstrong: Recovery: Now has whifflag (Should have had it before im a dumb)
+Dstrong: Recovery (From first hit): 34 > 34(47) 
+(Another change because of the level 3s in install. Do not whiff.)");
+	
+	initPatch("1.1", "29, June 2021");
+	initPatchWords("Patch 1.1
+
+Big Tenshi Overhaul Patch
+
+This patch is a little experimental. I'm testing more extreme balance changes to try and see if I can make the character encourage more interaction.
+
+Uspecial: Holding parry no longer saves the rock.
+Uspecial: Holding parry while rock is available will perform the pratfall version instead. (This is similar to Kragg FSpecial Feint)
+Uspecial: Bugfix: Rock no longer stops momentum when hit.
+
+Install Stun: Bugfix: Now (hopefully) cannot be invincble during the stun
+Install Stun: Bugfix: Kba now always properly adjusted (It was almost never applied before due to a bug, this should feel like a very heavy nerf)
+Install Stun: Kba: 1.58 > 1.4
+
+Taunt: Now stops meter drain while in install.
+Rock: Parrying the rock while in install rewards extra meter. Can be used to extend the durration of the install.
+ 
+Utilt: Startup: 8f > 7f (First active: 9 > 8)
+Utilt: Endlag: 14(21) > 10(15)
+Utilt: Angle: 70 > 80
+(Utilt was basically worse Clarien Utilt where DI away had no follow ups. This should fix that.)
+
+Ftilt: Startup:  11 > 10 (Active: 12f > 11f)
+Ftilt: Recovery: 19(29) > 14(22)
+(Ftilt's frame data was bad, too bad)
+
+Nair: Recovery: 10(16) > 8(12)
+ 
+Bair: Startup: 11f > 13f (First active: 12 > 14)
+Bair: Knockback Scaling: .83 > .95 
+(It kill more good)
+
+Dair: Multihit correction improved Y only.
+
+Fair: Can now be lengthened by holding into the direction of the attack.
+Fair: Can now be shortened by holding away from the direction of the attack.
+
+Uair: Tail Spike Active: 9-10 > 11-12
+Uair: Tail Spike X: -32 > -22
+Uair: Tail Spike Width: 40 > 60
+
+Nspec: Move pretty much completely reworked. Should feel more consistent and easy to use while retaining its original use.
+Nspec: Added new flick motion to throw rock faster.
+Nspec: Wavebounce removed.
+Nspec: Can now throw the rock at any time.
+
+Fspec: Throw: Knockback Scaling: .6 > .8
+Fspec: Re-added the jump cancel on platforms while in the air.
+Fspec: Now retains more momentum when jump canceled.
+
+Peach Install: Leave Ground Max adjusted to match double jump speed.
+Peach Install: Parrying the rock now rewards massive bonus meter when in install. Used to deal with excessive camping.
+Peach Install: Taunting now stops install drain.
+(Experimenting with changes to encourage more interaction while in install.)
+
+Dstrong: Hilt: Damage: 4 > 2
+Dstrong: Hilt: Hitbox Width : 40 > 90
+Dstrong Rock Lv 1: Now acts like other rocks, but does not spawn on the side of the stage.
+Dstrong Rock Lv 1: Initial offset: 30 > 50 (Large range buff)
+Dstrong Rock Lv 1: Base Knockback: 6 > 9
+Dstrong Rock Lv 1: Damage: 4-6 > 8
+Dstrong Rock Lv 2: Base Knockback: 6 > 9
+Dstrong Rock Lv 2: Damage: 6 > 10
+Dstrong Rock Lv 3: Base Knockback: 9 > 9
+Dstrong Rock Lv 3: Damage: 6 > 12
+Dstrong Rock ALl: Angle: 361 > 45
+
+Dstrong Rock Lv 2: Offset 38 > 45 
+Dstrong Rock Lv 3: Offset 38 > 55
+(Dstrong was garbage. It should feel better now as a wide area coverage tool.)
+
+
+Ustrong: Fixed a bug where the first hitbox would not reset its damage at level 1
+Ustrong: Lv1: Knockback Scaling 1 > 1.1
+Ustrong: Lv2: Knockback Scaling 1.1 > 1.2
+Ustrong: Lv3: Knockback Scaling 1.2 > 1.3
+(Did some digging through basecase. Ustrong was underperforming.)");
 	initPatch("1.08", "25, June 2021");
 	initPatchWords("Patch 1.08
 	
@@ -1171,7 +1469,7 @@ with phone{
 	
 	17. Utsuho Reiuji - The Solar Sect of Mystic Wisdom ~ Nuclear Fusion | Touhou 12.3 OST
 	
-	18. Temkyuu Chimata - Where is that Bustling Marketplace ~ Immemorial Marketeers | Touhou 18 OST
+	18. Tenkyuu Chimata - Where is that Bustling Marketplace ~ Immemorial Marketeers | Touhou 18 OST
 	
 	19. Eiki Shiki - Judgement in the Sixtieth Year ~ Fate of Sixty Years | Touhou 9 OST
 	
@@ -1291,7 +1589,7 @@ if pho_has_otto_bhead{
 
 if pho_has_steve_dmsg{
 	
-	steve_death_message = "Steve got canceled on Twitter";
+	steve_death_message = "Steve didn't dodge.";
 	
 }
 

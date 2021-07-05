@@ -18,13 +18,13 @@ if(attack == AT_DAIR){
     sound_stop(sound_get("drill_loop"));
     sound_stop(sound_get("drill_long"));
 }
-
-
-//increase knockback during stun
-if(attack == AT_NSPECIAL_2 and state == PS_ATTACK_GROUND){
-    orig_knock = orig_knock*1.6;
+/*
+if(move_cooldown[AT_FSPECIAL] > 0){
+    move_cooldown[AT_FSPECIAL] = 0;
+}*/
+if(dragon_install){
+    install_time += enemy_hitboxID.damage*20;
 }
-
 if(attack == AT_DSPECIAL and (window == 2 or window == 3)){
     set_attack(AT_EXTRA_1);
 }

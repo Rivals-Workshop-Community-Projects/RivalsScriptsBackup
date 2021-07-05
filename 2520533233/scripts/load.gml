@@ -15,7 +15,7 @@ sprite_change_offset("doublejump", 17, 44);
 sprite_change_offset("walljump", 14, 37);
 sprite_change_offset("pratfall", 20, 27);
 sprite_change_offset("land", 16, 28);
-sprite_change_offset("landinglag", 16, 27);
+sprite_change_offset("landinglag", 16, 28);
 
 sprite_change_offset("parry", 22, 35);
 sprite_change_offset("roll_forward", 18, 35);
@@ -37,7 +37,7 @@ sprite_change_offset("nair", 16, 32, true);
 sprite_change_offset("fair", 24, 48, true);
 sprite_change_offset("bair", 50, 40, true);
 sprite_change_offset("uair", 27, 52, true);
-sprite_change_offset("dair", 23, 44, true);
+sprite_change_offset("dair", 23, 45, true);
 sprite_change_offset("fstrong", 30, 58, true);
 sprite_change_offset("ustrong", 19, 36, true);
 sprite_change_offset("dstrong", 23, 49, true);
@@ -51,6 +51,7 @@ sprite_change_offset("taunt", 12, 36, true);
 sprite_change_offset("extra", 18, 35, true);
 sprite_change_offset("extra2", 38, 39, true);
 sprite_change_offset("extra3", 24, 36, true);
+sprite_change_offset("fspecial_2", 15, 38, true);
 sprite_change_offset("plat", 27, 0);
 
 sprite_change_offset("hurtbox", 20, 58);

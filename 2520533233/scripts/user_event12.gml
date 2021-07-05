@@ -2,7 +2,40 @@
 
 // DO NOT EDIT - Only edit user_event15.gml
 
-
+var pal_names = [
+	"Tenshi Hinanawi",
+	"Reimu Hakurei",
+	"Marisa Kirisame",
+	"Sakuya Izayoi",
+	"Alice Margatroid",
+	"Patchouli Knowledge",
+	"Youmu Konpaku",
+	"Remilia Scarlet",
+	"Yuyuko Saigyouji",
+	"Yukari Yakumo",
+	"Suika Ibuki",
+	"Reisen Udongein Inaba",
+	"Aya Shameimaru",
+	"Komachi Onozuka",
+	"Iku Nagae",
+	"Flandre Scarlet",
+	"Shinmyoumaru Sukuna",
+	"Utsuho Reiuji",
+	"Tenkyuu Chimata",
+	"Eiki Shiki",
+	"Clownpiece",
+	"Junko",
+	"Sans Undertale",
+	"Nitori Kawashiro",
+	"Cirno",
+	"Doremy Sweet",
+	"Mike Goutokuji",
+	"Kasen Ibaraki",
+	"Mystia Lorelei",
+	"Hata no Kokoro",
+	"Seija Kijin",
+	"Bad Apple"
+	];
 
 if (object_index == oPlayer || object_index == oTestPlayer){
 	if phone_arrow_cooldown && !(phone_arrow_cooldown - 1 < 25 && (phone_arrow_cooldown - 1) % 10 >= 5){
@@ -19,12 +52,12 @@ shader_end();
 
 // Version
 
-textDraw(x + 220, y + 210, "fName", c_white, 100, 1000, fa_right, 1, false, 0.25, "char ver. " + string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)));
+textDraw(x + 220, y + 210, "fName", c_white, 100, 1000, fa_right, 1, false, 0.25, "char ver. 1.1.1");
 
 
 
 // Compatibility
-
+/*
 var displayed = [
 	pho_has_muno_phone,
 	pho_has_trum_codec,
@@ -71,26 +104,32 @@ for (i = 0; i < len; i++){
 		iters++;
 	}
 }
-
+*/
 
 
 // Alt costume
 
 var alt_cur = get_player_color(player);
 
-rectDraw(x + 10, y + 10, 201, 5, c_black);
- 
+rectDraw(x + 10, y + 140, 127, 16, c_black);
+rectDraw(x + 137, y + 142, 2, 14, c_black);
+rectDraw(x + 139, y + 144, 2, 12, c_black);
+rectDraw(x + 141, y + 146, 2, 10, c_black);
+rectDraw(x + 143, y + 148, 2, 8, c_black);
+rectDraw(x + 145, y + 150, 2, 6, c_black);
+rectDraw(x + 147, y + 152, 2, 4, c_black);
+rectDraw(x + 149, y + 154, 2, 2, c_black);
 for(i = 0; i < num_alts; i++){
     var draw_color = (i == alt_cur) ? c_white : c_gray;
-    var draw_x = x + 78 + 8 * i;
-    rectDraw(draw_x, y + 10, 5, 3, draw_color);
+    var draw_y = i > 15 ? 6 : 0
+    var draw_x = i > 15 ? x + 10 + 8 * (i-16): x + 10 + 8 * i;
+    rectDraw(draw_x, y + 148 - draw_y, 5, 3, draw_color);
 }
 
-var txt = "#" + string(alt_cur);
-
-rectDraw(x + 76, y + 15, 41, 20, c_black);
-
-textDraw(x + 82, y + 19, "fName", c_white, 20, 1000, fa_left, 1, false, 1, txt);
+var txt = pal_names[alt_cur];
+draw_debug_text(floor(x+10), floor(y + 128), string(txt));
+//rectDraw(x + 8, y + 128, 41, 20, c_black);
+//textDraw(x + 10, y + 128, "fName", c_white, 20, 1000, fa_left, 1, false, 1, txt);
 
 
 

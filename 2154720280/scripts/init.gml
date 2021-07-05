@@ -15,6 +15,8 @@ intro = 0
 introtimer = -1
 
 
+superMove = 14
+
 daired = 0
 golden = 0
 drop = 0

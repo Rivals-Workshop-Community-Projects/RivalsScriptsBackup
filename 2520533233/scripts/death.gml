@@ -9,12 +9,32 @@ enum FX{
     bad_load
 }
 
+enum ROCK{
+    INIT,
+    MOVE,
+    DROP,
+    IDLE_1,
+    IDLE_2,
+    RETURN,
+    KABOOM,
+    THROW
+}
+
 // called when the character gets KO'd
+if(tenshi_uspecial_rock != noone){
+	tenshi_uspecial_rock.rock_state = ROCK.KABOOM
+}
 sound_stop(sound_get("drill_loop"));
 sound_stop(sound_get("drill_long"));
 sound_play(sound_get("DETH"));
+tenshi_magic -= 600;
+if(tenshi_magic < 0){
+	tenshi_magic = 0;
+}
 if(dragon_install){
+    deactivate_install();
     end_install();
+    
 }
 
 #define end_install()
@@ -65,3 +85,62 @@ if(dragon_install){
 	
 	end_dragon_install = true;
 }
+
+#define deactivate_install()
+//fair
+set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 8);
+set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
+set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 2);
+set_hitbox_value(AT_FAIR, 3, HG_WINDOW, 99);
+set_hitbox_value(AT_FAIR, 4, HG_WINDOW, 99);
+set_hitbox_value(AT_FAIR, 5, HG_WINDOW, 99);
+set_hitbox_value(AT_FAIR, 6, HG_WINDOW, 99);
+set_hitbox_value(AT_FAIR, 7, HG_WINDOW, 99);
+set_hitbox_value(AT_FAIR, 8, HG_WINDOW, 99);
+//dair
+set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_DAIR, 1, AG_WINDOW_SFX_FRAME, 12);
+//uair
+set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 6);
+//bair
+set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 13);
+set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);
+set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 99);
+set_hitbox_value(AT_BAIR, 3, HG_WINDOW, 99);
+//nair
+set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 4);
+set_hitbox_value(AT_NAIR, 1, HG_WINDOW, 2);
+set_hitbox_value(AT_NAIR, 2, HG_WINDOW, 2);
+set_hitbox_value(AT_NAIR, 3, HG_WINDOW, 99);
+set_hitbox_value(AT_NAIR, 4, HG_WINDOW, 99);
+set_hitbox_value(AT_NAIR, 5, HG_WINDOW, 99);
+set_hitbox_value(AT_NAIR, 6, HG_WINDOW, 99);
+//utilt
+set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 5);
+set_hitbox_value(AT_UTILT, 1, HG_WINDOW, 2);
+set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 2);
+set_hitbox_value(AT_UTILT, 3, HG_WINDOW, 99);
+set_hitbox_value(AT_UTILT, 4, HG_WINDOW, 99);
+set_hitbox_value(AT_UTILT, 5, HG_WINDOW, 99);
+set_hitbox_value(AT_UTILT, 6, HG_WINDOW, 99);
+set_hitbox_value(AT_UTILT, 7, HG_WINDOW, 99);
+set_hitbox_value(AT_UTILT, 8, HG_WINDOW, 99);
+set_hitbox_value(AT_UTILT, 9, HG_WINDOW, 99);
+set_hitbox_value(AT_UTILT, 10, HG_WINDOW, 99);
+set_hitbox_value(AT_UTILT, 11, HG_WINDOW, 99);
+set_hitbox_value(AT_UTILT, 12, HG_WINDOW, 99);
+//ftilt
+set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 8);
+//dtilt
+set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 5);
+set_hitbox_value(AT_DTILT, 1, HG_WINDOW, 2);
+set_hitbox_value(AT_DTILT, 2, HG_WINDOW, 2);
+set_hitbox_value(AT_DTILT, 3, HG_WINDOW, 99);
+set_hitbox_value(AT_DTILT, 4, HG_WINDOW, 99);
+set_hitbox_value(AT_DTILT, 5, HG_WINDOW, 99);
+set_hitbox_value(AT_DTILT, 6, HG_WINDOW, 99);
+//fspecial grab
+set_hitbox_value(AT_EXTRA_3, 2, HG_KNOCKBACK_SCALING, 0.8);

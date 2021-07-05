@@ -18,6 +18,7 @@ vo_timer = 0;
 hit_lockout = 60;
 hit_timer = 0;
 counter_graze = false;
+force_graze = false;
 graze_lockout = 7;
 graze_timer = graze_lockout+1;
 
@@ -26,3 +27,4 @@ graze_y = 0;
 graze_dir = 0;
 
 blue = false;
+

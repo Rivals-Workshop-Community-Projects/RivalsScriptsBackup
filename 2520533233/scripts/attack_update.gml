@@ -44,7 +44,7 @@ if(state_timer < 5 and (attack_pressed and special_pressed  or di_input == 5 and
 }
 
 //B - Reversals
-if (attack == AT_NSPECIAL){
+/*if (attack == AT_NSPECIAL){
     if ((left_down && state_timer <= 5 && spr_dir == 1) || (right_down && state_timer <= 5 && spr_dir == -1) &&     
      (b_reversed == false)) {
       hsp *= -1;
@@ -53,7 +53,8 @@ if (attack == AT_NSPECIAL){
 } else if (state_timer == 6) {
     b_reversed = false;
   }
-}
+}*/
+
 if(attack == AT_DSPECIAL or attack == AT_DSPECIAL_AIR or attack == AT_FSPECIAL or attack == AT_USPECIAL){
 	trigger_b_reverse();
 }
@@ -62,6 +63,13 @@ switch(attack){
     case AT_JAB:
     	if(window < 6){
     		was_parried = false;
+    		if(dragon_install and window < 3){
+    			soft_armor = install_armor;
+    			add_install_trail(10, 30);
+    		} else if (dragon_install) {
+    			soft_armor = 0;
+    			add_install_trail(10, 20);
+    		}
     	}
         set_window_value(AT_JAB, 6, AG_WINDOW_CANCEL_TYPE, has_hit);
         if(!has_hit){
@@ -71,24 +79,36 @@ switch(attack){
         }
         break;
     case AT_DTILT:
-    	if(dragon_install and has_hit_player){
-    		can_jump = true;	
+    	if(dragon_install and window == 1){
+    		soft_armor = install_armor;
+    		add_install_trail(10, 30);
+    	} else if (dragon_install) {
+    		soft_armor = 0;
+    		add_install_trail(10, 20);
     	}
     	break;
     case AT_FTILT:
-        if(dragon_install and has_hit_player){
-    		can_jump = true;	
+        if(window == 1 and dragon_install){
+        	soft_armor = install_armor;
+        	add_install_trail(10, 30);
+        }else if (dragon_install){
+    		soft_armor = 0;
+    		add_install_trail(10, 20);
     	}
     	break;
     case AT_UTILT:
-    	if(dragon_install and has_hit_player){
-    		can_jump = true;	
+		if(dragon_install and window == 1){
+			soft_armor = install_armor;
+			add_install_trail(10, 30);
+		}else if (dragon_install){
+    		soft_armor = 0;
+    		add_install_trail(10, 20);
     	}
     	break;
     //------------------ FSPECIAL ---------------------    
     case AT_FSPECIAL:
         can_wall_jump = true; //allow walljump at any time
-    
+    	
         if(window == 1){
             tenshi_fsp_charge = 0;
             if(window_timer == 1){
@@ -161,7 +181,7 @@ switch(attack){
         		hsp -= spr_dir*2;
         	}
         	if(fspec_start){
-        		move_cooldown[AT_FSPECIAL] = 20;
+        		move_cooldown[AT_FSPECIAL] = 20000;
         	}
         }
         if(!free and window > 2){
@@ -172,22 +192,43 @@ switch(attack){
             	attack = AT_EXTRA_3;
             	hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
             }
+        } else if (free and window > 2){
+        	if(special_pressed and dragon_install){
+				window = 0;
+				window_timer = 0;
+            	attack = AT_FSPECIAL_2;
+            	hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+            }
+        	
+        	if(place_meeting(x, y, asset_get("par_jumpthrough"))){
+        		can_jump = true;
+        		if(jump_down and djumps == 0){
+        			if(abs(hsp) > 8 and !dragon_install){
+        				hsp = spr_dir *8;
+        			}
+        			move_cooldown[AT_FSPECIAL] = 2;
+        			sound_play(sound_get("uspec"))
+        		}
+        	}
         }
         break;
     //------------------ USPECIAL --------------------- 
     case AT_USPECIAL:
     	can_fast_fall = false;
-    	if(window == 1 and window_timer == 7 and (!can_rock or !can_move_rock) and tenshi_uspecial_rock != noone){
-    		if(!shield_down){
+    	if(window == 1 and window_timer == 5){
+    		uspec_feint = false;
+    		if((!can_rock or !can_move_rock) and tenshi_uspecial_rock != noone){
     			sound_play(asset_get("sfx_kragg_rock_shatter"));
     			tenshi_uspecial_rock.rock_state = ROCK.KABOOM;
     			tenshi_uspecial_rock.hold_timer = 0;
-    		} 
+    		} else if (can_rock and can_move_rock and (shield_down or shield_pressed)){
+    			uspec_feint = true;
+    		}
     	}
     	
-        if(window == 1 and window_timer == 3){
+        if(window == 1 and window_timer == 6){
         	y_goal = y;
-        	if(can_move_rock and can_rock){
+        	if(can_move_rock and can_rock and !uspec_feint){
             	if(!free){
             	    y_goal = floor(room_height*.33);
             	    spawn_base_dust(x, y, "jump", 0);
@@ -218,17 +259,17 @@ switch(attack){
         		vsp = -10;
         	}
         }
-        if(window == 1 and window_timer > 3 and y_goal != 0 and can_rock and can_move_rock){
+        if(window == 1 and window_timer > 6 and y_goal != 0 and can_rock and can_move_rock and !uspec_feint){
         	y = lerp(y, y_goal, .1);
         }
         
-        if(window == 2 and tenshi_uspecial_rock != noone and free and can_rock and can_move_rock){
+        if(window == 2 and tenshi_uspecial_rock != noone and free and can_rock and can_move_rock and !uspec_feint){
             y = lerp(y, y_goal, .2);
             vsp = vsp < 0 ? vsp : 0;
             window_timer = 1;
         }
         if(window == 3 and window_timer == 6){
-        	if(rock_proj != noone or !can_move_rock or !can_rock){
+        	if(rock_proj != noone or !can_move_rock or !can_rock or uspec_feint){
         		
         		set_state(PS_PRATFALL);
         	} else { 
@@ -260,18 +301,19 @@ switch(attack){
         		dragon_install = true;
             	//run only if we moved into DI
             	if(dragon_install){
+            		activate_install();
             		install_time = 0;
             		shake_camera(8,10);
             		//start theme 
             		install_theme = get_player_color(player);
             		if(true_input){
-            			install_theme = 30;
+            			install_theme = 33;
             			true_input = false;
             		} else if (true_input2){
-            			install_theme = 29;
+            			install_theme = 32;
             			true_input2 = false;
             		}
-            		sound_play(sound_get("install" + string(install_theme)), true, 0, 1, 1);
+
             		//clear trail so 2 installs in one game isnt weird
             		for(var i = 0; i < install_trail_size; i++){
 						install_trail[i].life = 0;
@@ -303,7 +345,11 @@ switch(attack){
 	            			}
 	            		}
 	            	}
+	            	if(!temp_lw){
+            			sound_play(sound_get("install" + string(install_theme)), true, 0, 1, 1);
+            		}
 	            	if(!other_DI and !temp_lw){
+	            		
 	            		var temp_bg = instance_create(0, 0, "obj_article2");
             			temp_bg.tenshi = self;
             			temp_bg.fx_type = FX.install_bg;
@@ -311,7 +357,7 @@ switch(attack){
             			temp_bg.image_xscale = room_width/10;
 		    			temp_bg.image_yscale = room_height/10;
 		    			temp_bg.image_alpha = 0;
-	    	        	for(var i = 0; i < 8; i++){
+	    	        	//for(var i = 0; i < 8; i++){
         					var temp_cloud1 = instance_create(floor(i * (room_width+400)/8), -20, "obj_article2");
         					temp_cloud1.tenshi = self;
     	    	    		temp_cloud1.fx_type = FX.install_cloud;
@@ -319,15 +365,15 @@ switch(attack){
         		    		temp_cloud1.sprite_index = sprite_get("cloud");
         	    			temp_cloud1.image_alpha = 0;
         	    			temp_cloud1.sub_alpha = 1;
-        	    		
+        	    		/*
         	    			var temp_cloud2 = instance_create(floor(i * (room_width+400)/8), 30, "obj_article2");
 	        				temp_cloud2.tenshi = self;
     	    	    		temp_cloud2.fx_type = FX.install_cloud;
         		    		temp_cloud2.seed = 1;
         		    		temp_cloud2.sprite_index = sprite_get("cloud");
         	    			temp_cloud2.image_alpha = 0;
-        	    			temp_cloud2.sub_alpha = .4;
-        				}
+        	    			temp_cloud2.sub_alpha = .4;*/
+        				//}
 	            	} else {
 	            		with(obj_article2){
 	            			if ("tenshi" in self){
@@ -364,12 +410,12 @@ switch(attack){
         break;
     case AT_NSPECIAL_2:
     	if(window == 1 and window_timer == 1){
-    		invincible = false;
+    		knockback_adj = 1.4;
     		vsp = 0;
     		hsp = 0;
     		shake_camera(15, 10);
     		sound_play(sound_get("stun"));
-    		set_player_damage(player, get_player_damage(player)+20);
+    		set_player_damage(player, get_player_damage(player)+10);
     		spawn_hit_fx(x, y-30, 157);
 
     	} else if (window == 3 and window_timer ==1){
@@ -379,9 +425,20 @@ switch(attack){
     		iku.image_xscale = -spr_dir;
     		iku.image_alpha = 0;
     	}
+
+    	if(window == 7 and window_timer = 24){
+    		knockback_adj = base_knockback_adj;
+    	}
     	
     	break;
     case AT_DAIR:
+    	if(window == 1 and dragon_install){
+    		soft_armor = install_armor;
+    		add_install_trail(10, 30);
+    	}else {
+    		soft_armor = 0;
+    		add_install_trail(10, 20);
+    	}
     	can_wall_jump = true;
     	if(state_timer <= 5 and down_down){
     		fall_through = true;
@@ -390,7 +447,7 @@ switch(attack){
     		window = 3;
     		window_timer = 0;
     	}
-    	if(window == 2 and has_hit){
+    	if(window == 2 and has_hit and hitstop == 0){
     		vsp = -6;
     	}
     	if(window == 2 and window_timer == 8){
@@ -422,7 +479,7 @@ switch(attack){
     	}
     
     	if(window == 1 and window_timer == 7){
-    		charge_level = dragon_install;
+    		charge_level = dragon_install * 2;
     		var cfx = instance_create(x, y, "obj_article2");
     		cfx.visible =0;
     		cfx.fx_type = FX.dstrong_charge;
@@ -446,23 +503,37 @@ switch(attack){
     	} else if (window == 3){
     		if(window_timer == 1){
     			
-    			var h = instance_create(x+spr_dir*30, y, "obj_article2");
+    			var h = instance_create(x+spr_dir*50, y, "obj_article2");
     			h.fx_type = FX.dstrong_hitbox;
     			h.sprite_index = sprite_get("dstrong_rock");
     			h.spr_dir = spr_dir;
-    			h.seed = 0;
     			h.tenshi = self;
     			h.depth = -10;
     			h.seed = 0;
+    			var i = 0;
+    			while(!position_meeting(h.x+h.spr_dir*16, h.y, asset_get("par_block")) and !position_meeting(h.x+h.spr_dir*16, h.y, asset_get("par_jumpthrough"))){
+    				h.x-= h.spr_dir*4;
+    				i++;
+    				if(i > 10){
+    					break;
+    				}
+    			}
     			
-    			h = instance_create(x-spr_dir*30, y, "obj_article2");
+    			h = instance_create(x-spr_dir*50, y, "obj_article2");
     			h.fx_type = FX.dstrong_hitbox;
     			h.sprite_index = sprite_get("dstrong_rock");
     			h.spr_dir = -spr_dir;
-    			h.seed = 0;
     			h.tenshi = self;
     			h.depth = -10;
-    			h.seed = 0;    			
+    			h.seed = 0;   
+    			i = 0;
+    			while(!position_meeting(h.x+h.spr_dir*16, h.y, asset_get("par_block")) and !position_meeting(h.x+h.spr_dir*16, h.y, asset_get("par_jumpthrough"))){
+    				h.x-= h.spr_dir*4;
+    				i++;
+    				if(i > 10){
+    					break;
+    				}
+    			}
     			//h = create_hitbox(AT_DSTRONG, 2, x - spr_dir * 20, y);
     			//h.spr_dir = -spr_dir;
     			if(charge_level > 0){
@@ -472,6 +543,88 @@ switch(attack){
     	}
     	break;
     case AT_NSPECIAL:
+    	if(window == 1 and window_timer == 1){
+    		nspec_angle_reg = false;
+    		nspec_spawn_throw = false;
+    	}
+    	if(window < 3 and !joy_pad_idle){
+    		if(!nspec_angle_reg){
+    			if(tenshi_uspecial_rock != noone){//----------Set throw on rock
+    				can_move_rock = false;
+                	rock_proj = instance_create(tenshi_uspecial_rock.x, tenshi_uspecial_rock.y+20, "obj_article3");
+					rock_proj.image_index = tenshi_uspecial_rock.image_index;
+					instance_destroy(tenshi_uspecial_rock);
+                	tenshi_uspecial_rock = noone;
+    			} else if (can_rock and can_move_rock){ //----------Spawn Rock if not there and set throw
+    				nspec_spawn_throw = true;
+    				can_rock = false;
+    				tenshi_uspecial_rock = instance_create(x < room_width/2 ? 0 : room_width, 0, "obj_article_platform");
+    				tenshi_uspecial_rock.fast_fire = true;
+            		tenshi_uspecial_rock.rock_goal_y = floor(room_height*.33);
+                	tenshi_uspecial_rock.rock_goal_x = x+hsp*9;
+                	tenshi_uspecial_rock.rock_state = ROCK.INIT;
+    			}
+    		}
+    		nspec_angle = joy_dir+90;
+    		nspec_angle_reg = true;
+    		if(nspec_spawn_throw){
+    			tenshi_uspecial_rock.fast_fire_angle = nspec_angle
+    		} else if (rock_proj != noone){
+    			rock_proj.image_angle = nspec_angle;
+    		}
+    	} else if(window == 3){
+    		if(!special_down){
+	    		if(!nspec_angle_reg){
+	    			if(can_rock and can_move_rock and tenshi_uspecial_rock!= noone){
+	    				tenshi_uspecial_rock.rock_goal_y = floor(room_height*.33);
+	                	tenshi_uspecial_rock.rock_goal_x = x+hsp*9;
+	                	tenshi_uspecial_rock.rock_state = ROCK.INIT;
+	                	can_move_rock = false;
+	    			} else if (can_rock and can_move_rock){
+	    				tenshi_uspecial_rock = instance_create(x < room_width/2 ? 0 : room_width, 0, "obj_article_platform");
+	    		    	can_rock = false;
+	            		tenshi_uspecial_rock.rock_goal_y = floor(room_height*.33);
+	                	tenshi_uspecial_rock.rock_goal_x = x+hsp*9;
+	                	tenshi_uspecial_rock.rock_state = ROCK.INIT;
+	    			}
+	    			nspec_angle_reg = true;
+	    		}
+    		} else {
+    			if(window_timer > 5){
+    				window_timer = 0;
+    			}
+    			if(tenshi_uspecial_rock != noone){
+    				if(tenshi_uspecial_rock.rock_state != ROCK.MOVE and tenshi_uspecial_rock.rock_state != ROCK.INIT){
+    					rock_proj = instance_create(tenshi_uspecial_rock.x, tenshi_uspecial_rock.y+20, "obj_article3");
+						rock_proj.image_index = tenshi_uspecial_rock.image_index;
+						instance_destroy(tenshi_uspecial_rock);
+                		tenshi_uspecial_rock = noone;
+    				}
+    			} else if (rock_proj != noone){
+    				rock_proj.life = 0;
+    				if(!joy_pad_idle){
+    					rock_proj.image_angle = joy_dir+90;
+    				}
+    			} else if (tenshi_uspecial_rock == noone and can_rock and can_move_rock){
+    					tenshi_uspecial_rock = instance_create(x < room_width/2 ? 0 : room_width, 0, "obj_article_platform");
+	    		    	can_rock = false;
+	            		tenshi_uspecial_rock.rock_goal_y = floor(room_height*.33);
+	                	tenshi_uspecial_rock.rock_goal_x = x+hsp*9;
+	                	tenshi_uspecial_rock.rock_state = ROCK.INIT;
+    			}
+    		}
+    	}
+		/*
+    	if(window == 1 and !joy_pad_idle){
+    			if(window_timer == 5 and tenshi_uspecial_rock != noone){ 
+					window = 3;
+					window_timer = 0;
+    			}
+				fast_nspec = true;
+				fast_nspec_angle = joy_dir+90;
+    	} else {
+    		fast_nspec = false;
+    	}
     	if(window == 2 and window_timer == 4){
     			
     			if(tenshi_uspecial_rock == noone and can_rock and can_move_rock and rock_proj == noone){
@@ -481,8 +634,15 @@ switch(attack){
                 	tenshi_uspecial_rock.rock_goal_x = x+hsp*9;
                 	tenshi_uspecial_rock.rock_state = ROCK.INIT;
                 	if(!special_down){
-                		window = 4;
-            			window_timer = 0;
+                		if(fast_nspec){
+                			window = 3;
+                			window_timer = 0;
+                			tenshi_uspecial_rock.fast_fire = true;
+                			tenshi_uspecial_rock.fast_fire_angle = fast_nspec_angle;
+                		} else {
+                			window = 4;
+            				window_timer = 0;
+                		}
                 	} else {
                 		window_timer = 1;
                 	}
@@ -504,9 +664,16 @@ switch(attack){
     					window_timer = 1;
     				}
     			}
-    	} else if (window == 3 and special_down and rock_proj != noone and !rock_proj.warm){
+    	} else if (window == 3 and special_down and rock_proj != noone and !rock_proj.warm and !fast_nspec){
     			if(!joy_pad_idle) rock_proj.image_angle = joy_dir+90;
     			if(window_timer == 9) window_timer = 0;
+    	} else if (window == 3 and fast_nspec){
+    		can_move_rock = false;
+            rock_proj = instance_create(tenshi_uspecial_rock.x, tenshi_uspecial_rock.y+20, "obj_article3");
+			rock_proj.image_index = tenshi_uspecial_rock.image_index;
+			instance_destroy(tenshi_uspecial_rock);
+            tenshi_uspecial_rock = noone;
+    		rock_proj.image_angle = fast_nspec_angle;
     	}
     	
     	if((window == 2 or window == 3)){
@@ -521,7 +688,7 @@ switch(attack){
     		}
     		air_accel = 0;
 
-    	}
+    	}*/
     	break;
     case AT_DSPECIAL_AIR:
     	if(window < 3){
@@ -535,6 +702,8 @@ switch(attack){
     case AT_EXTRA_2:
     	if(window < 5){
     		invincible = true;
+    		vsp = 0;
+    		can_fast_fall = false;
     	}
     	if(counter_target != noone){
     		if(window == 1 and window_timer == 4){
@@ -561,7 +730,7 @@ switch(attack){
     
     
     	if(window == 1 and window_timer == 10){
-    		charge_level = dragon_install;
+    		charge_level = dragon_install * 2;
     		var cfx = instance_create(x, y, "obj_article2");
     		cfx.visible =0;
     		cfx.fx_type = FX.ustrong_charge;
@@ -586,10 +755,11 @@ switch(attack){
     	} else if (window == 2 and window_timer == 1){
     		switch(charge_level){
     			case 0:
+
     				set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -55);
 					set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_X, 10);
 					set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 90);
-					set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 11);
+					set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 11);
 					set_hitbox_value(AT_USTRONG, 1, HG_HEIGHT, 90);
 					set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 1);
 					
@@ -645,7 +815,7 @@ switch(attack){
     	}
     
     	if(window == 1 and window_timer == 8){
-    		charge_level = dragon_install;
+    		charge_level = dragon_install * 2;
     		var cfx = instance_create(x-spr_dir*40, y+16, "obj_article2");
     		cfx.visible =0;
     		cfx.fx_type = FX.fstrong_charge;
@@ -731,9 +901,26 @@ switch(attack){
     	}
     	break;
     case AT_FAIR:
-    	if(window == 2 and window_timer == 1 and vsp > 0){
-    		vsp = 0;
-
+    	if(window < 3 and dragon_install){
+    		soft_armor = install_armor;
+    		add_install_trail(10, 30);
+    		
+    	}else {
+    		soft_armor = 0;
+    		add_install_trail(10, 20);
+    	}
+    	if(window == 2 and window_timer == 1){
+    		if(vsp > 0){
+    			vsp = 0;
+    		}
+    		if(hsp < 7 and hsp > -7){
+    			hsp = 7*spr_dir;
+    		}
+    		if(left_down and spr_dir == -1 or right_down and spr_dir = 1){
+    			hsp += 1.5*spr_dir;
+    		} else if(left_down and spr_dir == 1 or right_down and spr_dir = -1){
+    			hsp -= 1.5*spr_dir;
+    		}
     	}
     	if(window > 1 and vsp < -5 and !dragon_install){
     		vsp+=2;
@@ -743,7 +930,7 @@ switch(attack){
     	if(window == 1){
     		grabbed_player = noone;
     	}
-    	if(has_hit){
+    	if(has_hit_player){
     		if((window == 2 or window == 3) and grabbed_player != noone){
     			grabbed_player.hitstop = 2;
     			grabbed_player.x = lerp(floor(grabbed_player.x), x+40*spr_dir, .5);
@@ -751,7 +938,7 @@ switch(attack){
     		}
     		//hsp = 0;
     	}
-    	if(has_hit and window == 3){
+    	if(has_hit_player and window == 3){
     		window = 6;
     		window_timer = 0;
     	}
@@ -769,6 +956,118 @@ switch(attack){
     	if(window == 5 and window_timer == 6){
     		window = 8;
     	}
+    	break;
+    case AT_FSPECIAL_2:
+    	if(window > 3 and window < 6){
+    		can_fast_fall = false;
+    	}
+    	if(window == 1){
+    		grabbed_player = noone;
+    	} 
+    	else if(has_hit_player and window == 2){
+    		grabbed_player.x = lerp(floor(grabbed_player.x), x+40*spr_dir, .5);
+    		grabbed_player.y = lerp(floor(grabbed_player.y), y, .3);
+    		grabbed_player.hitstop = 2;
+    		if(hitstop == 0){
+	    		window = 4;
+	    		window_timer = 0;
+	    		throw_count = 0;
+	    		throw_max = min(4, floor(get_player_damage(grabbed_player.player)/20));
+    		}
+    	}
+    	else if(window == 3 and window_timer == 11){
+    		window = 8;
+    	}
+    	else if (window == 4){
+
+    		grabbed_player.x = lerp(floor(grabbed_player.x), x+40*spr_dir, .5);
+    		grabbed_player.y = lerp(floor(grabbed_player.y), y, .3);
+    		grabbed_player.hitstop = 2;
+    		vsp = floor(vsp/2);
+    		hsp = floor(hsp/2);
+    	}
+    	else if (window == 5){
+    		force_depth = true;
+    		grabbed_player.hitstop = 2;
+    		hsp = 0;
+    		vsp = 0;
+    		//print_debug(image_index)
+    		switch(image_index){
+    			case 5:
+    				grabbed_player.x = lerp(floor(grabbed_player.x), x+40*spr_dir, .5);
+    				grabbed_player.y = lerp(floor(grabbed_player.y), y, .3);
+    				depth = grabbed_player.depth - 1;
+    				break;
+    				
+    			case 6:
+    				grabbed_player.x = lerp(floor(grabbed_player.x), x+10*spr_dir, .5);
+    				grabbed_player.y = lerp(floor(grabbed_player.y), y+10, .3);
+    				depth = grabbed_player.depth + 1;
+    				break;
+    			case 7:
+    				grabbed_player.x = lerp(floor(grabbed_player.x), x-10*spr_dir, .5);
+    				grabbed_player.y = lerp(floor(grabbed_player.y), y+10, .3);
+    				depth = grabbed_player.depth + 1;
+    				break;
+    			case 8:
+    				grabbed_player.x = lerp(floor(grabbed_player.x), x-40*spr_dir, .5);
+    				grabbed_player.y = lerp(floor(grabbed_player.y), y, .3);
+    				depth = grabbed_player.depth - 1;
+    				break;
+    			case 9:
+    				grabbed_player.x = lerp(floor(grabbed_player.x), x-10*spr_dir, .5);
+    				grabbed_player.y = lerp(floor(grabbed_player.y), y-10, .3);
+    				depth = grabbed_player.depth - 1;
+    				break;
+    			case 10:
+    				grabbed_player.x = lerp(floor(grabbed_player.x), x+10*spr_dir, .5);
+    				grabbed_player.y = lerp(floor(grabbed_player.y), y-10, .3);
+    				depth = grabbed_player.depth - 1;
+    				break;
+    		}
+    		if(throw_count < throw_max and window_timer == 11){
+    			throw_count++;
+    			window_timer = 0;
+    		} else if (throw_count == throw_max and window_timer > 8){
+	    		if(left_pressed or left_down){
+	    			spr_dir = -1;
+	    		} else if (right_pressed or right_down){
+	    			spr_dir = 1;
+	    		}
+    		}
+    	} else if (window == 6 and window_timer < 6){
+    		vsp = 0;
+    		hsp = 0;
+    	}
+    	break;
+    case AT_NAIR:
+    	if(dragon_install and window == 1){
+    		soft_armor = install_armor;
+    		add_install_trail(10, 30);
+    		
+    	}else {
+    		soft_armor = 0;
+    		add_install_trail(10, 20);
+    	}
+    	break;
+    case AT_BAIR:
+    	if(dragon_install and window == 1){
+    		soft_armor = install_armor;
+    		add_install_trail(10, 30);
+    	}else {
+    		soft_armor = 0;
+    		add_install_trail(10, 20);
+    	}
+    	break;
+	case AT_UAIR:
+    	if(dragon_install and window == 1){
+    		soft_armor = install_armor;
+    		add_install_trail(10, 30);
+    	}else {
+    		soft_armor = 0;
+    		add_install_trail(10, 20);
+    	}
+    	break;
 }
 
 #define counter(teleport_target){
@@ -799,12 +1098,14 @@ switch(attack){
     			}
     		}
     		if(counter){
+    			tenshi_grazebox.counter_graze = true;
+    			tenshi_grazebox.force_graze = true;
     			set_hitbox_value(AT_EXTRA_2, 1, HG_DAMAGE, max(floor(dmg*1.2), 6));
     			set_hitbox_value(AT_EXTRA_2, 1, HG_BASE_KNOCKBACK, max(floor(kb*1.2), 6));
     			//spawn_hit_fx(x, y-30, 108);
     			sound_play(sound_get("nuthinpersonal"));
     			countered.hitpause = true;
-    			countered.hitstop = 20;
+    			countered.hitstop = 24;
     			counter_target = countered;
     			set_attack(AT_EXTRA_2);
     		}
@@ -895,3 +1196,77 @@ newdust.dust_color = dust_color; //set the dust color
 if dir != 0 newdust.spr_dir = dir; //set the spr_dir
 newdust.draw_angle = dfa;
 return newdust;
+
+#define activate_install()
+//fair
+set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 4);
+set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 99);
+set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 99);
+set_hitbox_value(AT_FAIR, 3, HG_WINDOW, 2);
+set_hitbox_value(AT_FAIR, 4, HG_WINDOW, 2);
+set_hitbox_value(AT_FAIR, 5, HG_WINDOW, 3);
+set_hitbox_value(AT_FAIR, 6, HG_WINDOW, 3);
+set_hitbox_value(AT_FAIR, 7, HG_WINDOW, 4);
+set_hitbox_value(AT_FAIR, 8, HG_WINDOW, 4);
+//dair
+set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_DAIR, 1, AG_WINDOW_SFX_FRAME, 8);
+//uair
+set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 4);
+//bair
+set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 9);
+set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 99);
+set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 2);
+set_hitbox_value(AT_BAIR, 3, HG_WINDOW, 2);
+//nair
+set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 3);
+set_hitbox_value(AT_NAIR, 1, HG_WINDOW, 99);
+set_hitbox_value(AT_NAIR, 2, HG_WINDOW, 99);
+set_hitbox_value(AT_NAIR, 3, HG_WINDOW, 2);
+set_hitbox_value(AT_NAIR, 4, HG_WINDOW, 2);
+set_hitbox_value(AT_NAIR, 5, HG_WINDOW, 3);
+set_hitbox_value(AT_NAIR, 6, HG_WINDOW, 3);
+//utilt
+set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 3);
+set_hitbox_value(AT_UTILT, 1, HG_WINDOW, 99);
+set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 99);
+
+set_hitbox_value(AT_UTILT, 4, HG_WINDOW, 2);
+set_hitbox_value(AT_UTILT, 5, HG_WINDOW, 2);
+
+set_hitbox_value(AT_UTILT, 7, HG_WINDOW, 2);
+set_hitbox_value(AT_UTILT, 8, HG_WINDOW, 2);
+
+set_hitbox_value(AT_UTILT, 10, HG_WINDOW, 2);
+set_hitbox_value(AT_UTILT, 11, HG_WINDOW, 2);
+
+//ftilt
+set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 5);
+//dtilt
+set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 3);
+set_hitbox_value(AT_DTILT, 1, HG_WINDOW, 99);
+set_hitbox_value(AT_DTILT, 2, HG_WINDOW, 99);
+set_hitbox_value(AT_DTILT, 3, HG_WINDOW, 2);
+set_hitbox_value(AT_DTILT, 4, HG_WINDOW, 2);
+set_hitbox_value(AT_DTILT, 5, HG_WINDOW, 2);
+set_hitbox_value(AT_DTILT, 6, HG_WINDOW, 2);
+//fspecial grab
+set_hitbox_value(AT_EXTRA_3, 2, HG_KNOCKBACK_SCALING, 1.1);
+
+#define add_install_trail(frequency, durration)
+		var cur_time = get_gameplay_time();
+		var current_trail = install_trail[floor(cur_time/frequency)%8];
+		if(current_trail.life <= 0){
+			current_trail.x = x;
+			current_trail.y = y;
+			current_trail.sprite_index = sprite_index;
+			current_trail.image_index = image_index;
+			current_trail.color = rainbow_dark;
+			current_trail.spr_dir = spr_dir;
+			
+			//if we walk we make the trail last longer so it looks cooler
+				current_trail.life = durration;
+		}

@@ -20,11 +20,13 @@ visible = 1;
 sprite_index = sprite_get("graze_pink");
 tenshi = noone;
 blue = false;
+super_blue = false;
 lifetime = 100;
 life = 0;
 delay = 9;
 seed = 0;
 valid_graze = true;
+
 
 //animation tools for fx
 anim_spd = 0.0;

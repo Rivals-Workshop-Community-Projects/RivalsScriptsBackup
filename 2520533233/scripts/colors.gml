@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 60, 1, 50 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 29 );
+set_num_palettes( 32 );
 
 // Reimu
 set_color_profile_slot( 1, 0, 43, 3, 3 ); //Hat
@@ -316,9 +316,40 @@ set_color_profile_slot( 28, 5, 156, 61, 143 ); //Eyes
 set_color_profile_slot( 28, 6, 71, 34, 0 ); //Detailing
 set_color_profile_slot( 28, 7, 0, 255, 0 ); //Rainbow
 
+// Hata no Kokoro
+set_color_profile_slot( 29, 0, 0, 92, 150 ); //Hat
+set_color_profile_slot( 29, 1, 21, 87, 153 ); //Clothes
+set_color_profile_slot( 29, 2, 173, 92, 45 ); //Skirt
+set_color_profile_slot( 29, 3, 43, 35, 61 ); //Bow Front
+set_color_profile_slot( 29, 4, 247, 151, 178 ); //Hair
+set_color_profile_slot( 29, 5, 255, 0, 225 ); //Eyes
+set_color_profile_slot( 29, 6, 22, 45, 61 ); //Detailing
+set_color_profile_slot( 29, 7, 0, 255, 0 ); //Rainbow
+
+// Seija Kijin
+set_color_profile_slot( 30, 0, 0, 0, 0 ); //Hat
+set_color_profile_slot( 30, 1, 255, 199, 199 ); //Clothes
+set_color_profile_slot( 30, 2, 148, 13, 13 ); //Skirt
+set_color_profile_slot( 30, 3, 8, 15, 28 ); //Bow Front
+set_color_profile_slot( 30, 4, 28, 28, 28 ); //Hair
+set_color_profile_slot( 30, 5, 161, 0, 0 ); //Eyes
+set_color_profile_slot( 30, 6, 16, 0, 135 ); //Detailing
+set_color_profile_slot( 30, 7, 0, 255, 0 ); //Rainbow
+/*
+// Bad Apple
+set_color_profile_slot( 31, 0, 0, 0, 0 ); //Hat
+set_color_profile_slot( 31, 1, 0, 0, 0 ); //Clothes
+set_color_profile_slot( 31, 2, 214, 214, 214 ); //Skirt
+set_color_profile_slot( 31, 3, 0, 0, 0 ); //Bow Front
+set_color_profile_slot( 31, 4, 255, 255, 255 ); //Hair
+set_color_profile_slot( 31, 5, 0, 0, 0 ); //Eyes
+set_color_profile_slot( 31, 6, 255, 255, 255 ); //Detailing
+set_color_profile_slot( 31, 7, 0, 255, 0 ); //Rainbow
+*/
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
 {"formatversion":1,"data":[{"name":"Hat","colors":[{"r":35,"g":0,"b":26,"main":true},{"r":145,"g":121,"b":130}]},{"name":"Clothes","colors":[{"r":240,"g":180,"b":189,"main":true},{"r":255,"g":233,"b":236},{"r":204,"g":118,"b":128}]},{"name":"Skirt","colors":[{"r":63,"g":63,"b":116},{"r":38,"g":32,"b":82,"main":true}]},{"name":"Bow Front","colors":[{"r":108,"g":12,"b":12,"main":true},{"r":255,"g":31,"b":20},{"r":82,"g":31,"b":0}]},{"name":"Hair","colors":[{"r":39,"g":83,"b":187,"main":true},{"r":26,"g":38,"b":128},{"r":92,"g":155,"b":204}]},{"name":"Eyes","colors":[{"r":121,"g":22,"b":26},{"r":255,"g":68,"b":52,"main":true}]},{"name":"Detailing","colors":[{"r":225,"g":0,"b":255},{"r":70,"g":3,"b":70,"main":true}]},{"name":"Rainbow","colors":[{"r":249,"g":255,"b":0},{"r":129,"g":131,"b":0},{"r":1,"g":255,"b":0,"main":true},{"r":0,"g":130,"b":0}]}]}
 === END JSON PALETTE ===
 */
+

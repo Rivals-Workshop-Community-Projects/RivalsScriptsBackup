@@ -5,11 +5,11 @@ if (attack == AT_NSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
-if attack == AT_JAB{
+if attack == AT_JAB && !hitpause{
 
 	
 	if window < 3 && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN{
-			hit_player_obj.x += ((x + (50 * spr_dir)) - hit_player_obj.x) / 10
+			hit_player_obj.hsp = ((x + (40 * spr_dir)) - hit_player_obj.x) / 10
 	}
 	
 

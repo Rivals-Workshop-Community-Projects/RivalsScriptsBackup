@@ -17,24 +17,35 @@ enum FX{
 
 switch(fx_type){
 	case FX.graze:
-		if(life%2){
-			var aft = instance_create(floor(x), floor(y), "obj_article2");
-			aft.fx_type = FX.graze_after;
-			aft.lifetime = 9;
-			aft.image_alpha = .5
-			aft.sprite_index = sprite_get("graze_trail")
+		if(life == 1){
+			trail_pos[0] = {x:x, y:y, life:0}
+			for(var i = 0; i < 4; i++){
+				trail_pos[i] = {x:x, y:y, life:0}  
+			}
+		}
+		if(life > 1){
+			for(var i = 0; i < 4; i++){
+				trail_pos[i].life--;  
+			}
+			var pos = life/2%4;
+			if(trail_pos[pos].life <= 0){
+				trail_pos[pos].x = x;
+				trail_pos[pos].y = y;
+				trail_pos[pos].life = 6;
+			}
+			
 		}
 		if(valid_graze){
 			if (life > delay){
-				x = round(ease_quartIn(x, tenshi.x, life, lifetime/2 + delay));
-				y = round(ease_quartIn(y, tenshi.y-30, life, lifetime/2 + delay));
+				x = round(ease_quartIn(x, player_id.x, life, lifetime/2 + delay));
+				y = round(ease_quartIn(y, player_id.y-30, life, lifetime/2 + delay));
 				if(life < lifetime/3){
 					if(seed){
-						y += round((y -round(ease_circInOut(y, tenshi.y + 30, life, round(lifetime/2) + delay)))/10);
+						y += round((y -round(ease_circInOut(y, player_id.y + 30, life, round(lifetime/2) + delay)))/10);
 					} else {
-						y += round((y -round(ease_circInOut(y, tenshi.y - 90, life, round(lifetime/2) + delay)))/10);
+						y += round((y -round(ease_circInOut(y, player_id.y - 90, life, round(lifetime/2) + delay)))/10);
 					}
-					x += tenshi.spr_dir*round((x  - ease_circInOut(x, tenshi.x, life, lifetime/2 + delay))/10);
+					x += player_id.spr_dir*round((x  - ease_circInOut(x, player_id.x, life, lifetime/2 + delay))/10);
 				}
 			} else if(life == 0 and blue){
 				sprite_index = sprite_get("graze_blue");
@@ -42,8 +53,8 @@ switch(fx_type){
 			
 		} else {
 			if(life > delay){
-				x += spr_dir*round((x - ease_quartOut(x, tenshi.x, life, lifetime/2 + delay))/10);
-				y += round((y-ease_quartOut(y, tenshi.y-30, life, lifetime/2 + delay))/10);
+				x += spr_dir*round((x - ease_quartOut(x, player_id.x, life, lifetime/2 + delay))/10);
+				y += round((y-ease_quartOut(y, player_id.y-30, life, lifetime/2 + delay))/10);
 			} else if (life == 0 and blue){
 					sprite_index = sprite_get("graze_blue");
 			}
@@ -52,58 +63,39 @@ switch(fx_type){
 		life++;
 		if(life > lifetime){
 			instance_destroy(self);
-		} else if(place_meeting(x, y, tenshi) and life > 20){
-			tenshi.tenshi_graze = true;
-			tenshi.tenshi_graze_outline_timer = 1;
+		} else if(place_meeting(x, y, player_id) and life > 20){
+			player_id.tenshi_graze = true;
+			player_id.tenshi_graze_outline_timer = 1;
 			if(blue){
-			tenshi.tenshi_magic+= 20;
+			player_id.tenshi_magic+= 24;
+				if(super_blue){
+					player_id.tenshi_magic+= 48;
+				}
 			}else{
-				tenshi.tenshi_magic+= 10;
+				player_id.tenshi_magic+= 12;
 			}
 			sound_play(sound_get("graze_collect2"));
 			instance_destroy(self);
 		}
 
 		break;
-	case FX.graze_after:
-		image_alpha-= .02;
-		image_index = floor(life/3);
-		life++;
-		if(life > lifetime){
-			instance_destroy(self);
-		}
-		break;
-		
 	case FX.fspecial:
 		depth = -20;
 		if(tenshi == noone){
 			instance_destroy(self);
 		} else {
 			
-			image_alpha = tenshi.tenshi_fsp_charge < 30 ? tenshi.tenshi_fsp_charge/30 : 1;
+			image_alpha = player_id.tenshi_fsp_charge < 30 ? player_id.tenshi_fsp_charge/30 : 1;
 			anim_frame = anim_frame <= anim_max ? anim_frame + anim_spd : 0.0;
 			image_index = floor(anim_frame);
 			
-			x = tenshi.x + tenshi.hsp;
-			y = tenshi.y + tenshi.vsp;
-			if(tenshi.attack != AT_FSPECIAL or tenshi.window > 2){
+			x = player_id.x + player_id.hsp;
+			y = player_id.y + player_id.vsp;
+			if(player_id.attack != AT_FSPECIAL or player_id.window > 2){
 				instance_destroy(self);
 			}
 		}
 		break;
-		
-	case FX.install:
-		y-= 2;
-		life++
-		sub_alpha = (1-(life/30))/1.5;
-		image_alpha = 0;
-		image_index = floor(life/6);
-		//hsp = tenshi.hsp * (1- life/40);
-		if(life >= 30){
-			instance_destroy(self);
-		}
-		break;
-		
 	case FX.install_bg:
 		depth = 10;
 		if(tenshi.dragon_install or (tenshi.attack == AT_NSPECIAL_2 and tenshi.window < 6 and tenshi.state_cat != SC_HITSTUN)){
@@ -118,13 +110,13 @@ switch(fx_type){
 		
 		break;
 	case FX.install_cloud:
-		//print_debug(tenshi.player);
+		//print_debug(player_id.player);
+		life++;
 		depth = 8+seed;
-		x+= 1+seed;
-		if(x > room_width + 200){
-			x = -200;
-		}
 		if(!tenshi.dragon_install){
+			if(life > 41){
+				life = 0;
+			}
 			//40 frame death buffer
 			life++;
 			image_alpha = 1-life/40;
@@ -134,36 +126,47 @@ switch(fx_type){
 		}
 		break;
 	case FX.dstrong_charge:
-		x = tenshi.x + spr_dir * (-54);
-		y = tenshi.y - 122;
+		x = player_id.x + spr_dir * (-54);
+		y = player_id.y - 122;
 		life++;
 		visible = 1;
-		image_index = tenshi.charge_level*4 + floor((life%12)/3);
-		if(tenshi.state_cat == SC_HITSTUN or tenshi.window == 3){
+		image_index = player_id.charge_level*4 + floor((life%12)/3);
+		if(player_id.state_cat == SC_HITSTUN or player_id.window == 3){
 			instance_destroy(self);
 		}
 		break;
 	case FX.ustrong_charge:
-		x = tenshi.x + spr_dir * (-54);
-		y = tenshi.y - 122;
+		x = player_id.x + spr_dir * (-54);
+		y = player_id.y - 122;
 		life++;
 		visible = 1;
-		image_index = tenshi.charge_level*4 + floor((life%12)/3);
-		if(tenshi.state_cat == SC_HITSTUN or tenshi.window == 2){
+		image_index = player_id.charge_level*4 + floor((life%12)/3);
+		if(player_id.state_cat == SC_HITSTUN or player_id.window == 2){
 			instance_destroy(self);
 		}
 		break;
 	case FX.dstrong_hitbox:
 		life++;
+		if(life == 1){
+			xoffset = player_id.x - x;
+			yoffset = player_id.y - y;
+		}
+		if(seed == 0){
+			y = player_id.y;
+		}
+		if(collision_point(x, y, asset_get("par_jumpthrough"), false, true)){
+			x = player_id.x - xoffset;
+
+		}
 		if(life == 4){
 			if(seed == 0){ //little rocks got 0 seed
-				if(tenshi.charge_level == seed){
+				if(player_id.charge_level == seed){
 					create_hitbox(AT_DSTRONG, 2, x, y-20);
 				}else {
 					create_hitbox(AT_DSTRONG, 3, x, y-20);
 				}
 			} else if (seed == 1){//medium rock
-				if(tenshi.charge_level == seed){
+				if(player_id.charge_level == seed){
 					create_hitbox(AT_DSTRONG, 4, x, y-20);
 				}else {
 					create_hitbox(AT_DSTRONG, 5, x, y-20);
@@ -177,7 +180,7 @@ switch(fx_type){
 			}
 		}
 		image_index = seed*6 + floor((life%24)/4);
-		if(tenshi.charge_level > seed){
+		if(player_id.charge_level > seed){
 			
 			if(life==5){
 				check_spawn_rock();
@@ -210,12 +213,12 @@ switch(fx_type){
 		}
 		break;
 	case FX.fstrong_charge:
-		x = tenshi.x;
-		y = tenshi.y;
+		x = player_id.x;
+		y = player_id.y;
 		life++;
 		visible = 1;
-		image_index = tenshi.charge_level*4 + floor((life%12)/3);
-		if(tenshi.state_cat == SC_HITSTUN or tenshi.window == 2){
+		image_index = player_id.charge_level*4 + floor((life%12)/3);
+		if(player_id.state_cat == SC_HITSTUN or player_id.window == 2){
 			instance_destroy(self);
 		}
 		break;
@@ -228,7 +231,10 @@ switch(fx_type){
 #define check_spawn_rock()
 {
 		spawn_y = y;
-        spawn_x = x + 38 * spr_dir;
+        spawn_x = x + 45 * spr_dir;
+        if(seed == 1){
+        	spawn_x += 10*spr_dir;
+        }
         can_spawn = true;
         can_spawn_side = false;
 	    while ((!(position_meeting(spawn_x, spawn_y, asset_get("par_block")) || position_meeting(spawn_x, spawn_y, asset_get("par_jumpthrough")))) || position_meeting(spawn_x, (spawn_y - 2), asset_get("par_block")) || position_meeting(spawn_x, (spawn_y - 2), asset_get("par_jumpthrough")))
