@@ -78,7 +78,7 @@ set_hitbox_value(AT_FAIR, 4, HG_DAMAGE, 6);
 set_hitbox_value(AT_FAIR, 4, HG_ANGLE, 45);
 set_hitbox_value(AT_FAIR, 4, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_FAIR, 4, HG_KNOCKBACK_SCALING, 0.3);
-set_hitbox_value(AT_FAIR, 4, HG_BASE_HITPAUSE, 14);
+set_hitbox_value(AT_FAIR, 4, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_FAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_FAIR, 4, HG_HITBOX_GROUP, 1);
 

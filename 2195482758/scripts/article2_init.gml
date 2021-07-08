@@ -2,7 +2,7 @@
 
 sprite_index = asset_get("empty_sprite");
 fc_timer = 2;
-max_despawn_timer = 55;
+max_despawn_timer = 65;
 explosions_to_do = 0;
 despawn_timer = max_despawn_timer;
 img_ind = 10;

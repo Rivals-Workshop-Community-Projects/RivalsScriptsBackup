@@ -111,7 +111,7 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
     
 
     //REMEMBER, up each image index by 1 in your head
-    if (afterImage[i].image_index = 1 && afterImage[i].window == 1 && afterImage[i].window_timer == 10) {
+    if (afterImage[i].image_index = 1 && afterImage[i].window == 1 && afterImage[i].window_timer == 11) {
     y_offset = 0 
     	
     } //initial dash
@@ -139,11 +139,19 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
     
     else { afterImage[i].alpha = 0 }
     
-    if afterImage[i].image_index
-    x_offset = 30*spr_dir
-    image_index_offset = 1
+    if afterImage[i].image_index = 1 {
+    x_offset = -27*spr_dir 
+    	afterimage_division_offset = 2
+	afterimage_division_multiplier = 30
+    	
+    	
+    } else { x_offset = 30*spr_dir
     afterimage_division_offset = 0.5
     afterimage_division_multiplier = 40
+    	
+    }
+    image_index_offset = 1
+    
     final_variable_for_afterimage_because_i_am_ocd = -1
     
 } else if   (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && afterImage[i].sprite_index == sprite_index) {

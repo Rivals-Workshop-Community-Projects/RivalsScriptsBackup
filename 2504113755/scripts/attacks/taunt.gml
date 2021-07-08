@@ -9,8 +9,8 @@ set_window_value(AT_TAUNT, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, asset_get("sfx_clairen_sword_activate"));
-set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX_FRAME, 0);
+set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, asset_get("sfx_diamond_collect"));
+set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX_FRAME, 8);
 
 set_window_value(AT_TAUNT, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH, 21);

@@ -98,9 +98,33 @@ if attack == AT_DSTRONG {
 }
 }
 
-//ftilt mini special cancelling
+// mini special cancelling
 
-if (attack == AT_FTILT && has_hit && window == 5 && window_timer >= 8){
+if (attack == AT_FTILT && has_hit && window == 5 && window_timer >= 6){
+	can_special = true
+	}
+
+if (attack == AT_FAIR && has_hit && window == 4 && window_timer >= 3){
+	can_special = true
+	}
+
+if (attack == AT_DATTACK && has_hit && window == 3 && window_timer >= 7){
+	can_special = true
+	}
+	
+if (attack == AT_DAIR && has_hit && window == 3 && window_timer >= 2){
+	can_special = true
+	}
+	
+if (attack == AT_UAIR && has_hit && window == 3 && window_timer >= 7){
+	can_special = true
+	}
+	
+if (attack == AT_NAIR && has_hit && window == 4 && window_timer >= 2){
+	can_special = true
+	}
+
+if (attack == AT_BAIR && has_hit && window == 4 && window_timer >= 3){
 	can_special = true
 	}
 
@@ -108,7 +132,7 @@ if (attack == AT_FTILT && has_hit && window == 5 && window_timer >= 8){
 
 if (attack == AT_NSPECIAL && window == 1 && window_timer == 1)
 {
-    move_cooldown[AT_NSPECIAL] = 180;
+    move_cooldown[AT_NSPECIAL] = 210;
     if instance_exists(hexDebuffID)
     {
         /// IF DEBUFFED PERSON EXISTS, SPAWN A HITBOX AT THEIR LOCATION, OFFSET BY A CERTAIN AMOUNT
@@ -135,13 +159,13 @@ if (attack == AT_NSPECIAL && window == 1 && window_timer == 1)
     }
 }
 
-if (attack == AT_NSPECIAL && window == 3 && window_timer >= 8){
+if (attack == AT_NSPECIAL && window == 3 && window_timer >= 7){
 	can_special = true
 }
 	
 if (attack == AT_DSPECIAL && window == 1 && window_timer == 1)
 {
-	move_cooldown[AT_DSPECIAL] = 180;
+	move_cooldown[AT_DSPECIAL] = 210;
     if instance_exists(hexDebuffID)
     {
         /// IF DEBUFFED PERSON EXISTS, SPAWN A HITBOX AT THEIR LOCATION, OFFSET BY A CERTAIN AMOUNT
@@ -168,13 +192,13 @@ if (attack == AT_DSPECIAL && window == 1 && window_timer == 1)
     }
 }
 
-if (attack == AT_DSPECIAL && window == 3 && window_timer >= 8){
+if (attack == AT_DSPECIAL && window == 3 && window_timer >= 7){
 	can_special = true
 	}
 	
 if (attack == AT_FSPECIAL && window == 1 && window_timer == 1)
 {
-    move_cooldown[AT_FSPECIAL] = 180;
+    move_cooldown[AT_FSPECIAL] = 210;
     if instance_exists(hexDebuffID)
     {
         /// IF DEBUFFED PERSON EXISTS, SPAWN A HITBOX AT THEIR LOCATION, OFFSET BY A CERTAIN AMOUNT
@@ -202,6 +226,6 @@ if (attack == AT_FSPECIAL && window == 1 && window_timer == 1)
 }
 
 
-if (attack == AT_FSPECIAL && window == 3 && window_timer >= 8){
+if (attack == AT_FSPECIAL && window == 3 && window_timer >= 7){
 	can_special = true
 	}

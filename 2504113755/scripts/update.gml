@@ -1,7 +1,13 @@
-user_event(14);
+if get_training_cpu_action() != CPU_FIGHT || trainingMode == 1 {
+    user_event(14);
+} else {
+    if get_training_cpu_action() == CPU_STAND {
+        trainingMode = 1
+    }
+}
 
 
-if ((state == PS_FIRST_JUMP && image_index == 0 ) || (state == PS_WALL_JUMP && image_index == 1)) {
+if ((state == PS_FIRST_JUMP && image_index == 0 ) || (state == PS_WALL_JUMP && image_index == 1) || (state == PS_DOUBLE_JUMP && image_index == 0)) {
 	        hud_offset = 20
 
 	
@@ -236,7 +242,7 @@ switch(attack)
 
 
 
-
+/*
 if ((state==PS_WALK || state == PS_WALK_TURN) && (left_down || left_pressed)) {
 //	walking_backward_counter -= 1
 //	if (walking_backward_counter > 0 && state==PS_WALK ||)
@@ -245,23 +251,25 @@ if ((state==PS_WALK || state == PS_WALK_TURN) && (left_down || left_pressed)) {
 } else if ((state==PS_WALK || state == PS_WALK_TURN) &&  (right_down || right_pressed)) {
 //	walking_backward_counter += 1
 
+}*/
+
+if (state != PS_WALK_TURN) {
+	
+	direction = spr_dir
 }
 
-if (state != PS_WALK && state != PS_WALK_TURN && state != PS_IDLE && state != PS_CROUCH) {
-	
-	walking_backward_counter = 0
-	
-}
 if (state == PS_WALK || state == PS_WALK_TURN) {
-	if (left_down || left_pressed) {
+	if ((left_down || left_pressed)) && (direction != 1) {
 		if (hsp > -3.2) {
-			
+				//		sound_play(asset_get("sfx_clairen_nspecial_grab_success"))
+
 			hsp -= 0.8
 		}
 		
-	} else if  (right_down || right_pressed) {
+	} else  if  (right_down || right_pressed) {
 			if (hsp < 3.2) {
-			
+				//		sound_play(asset_get("sfx_clairen_nspecial_grab_success"))
+
 			hsp += 0.8
 		
 	}

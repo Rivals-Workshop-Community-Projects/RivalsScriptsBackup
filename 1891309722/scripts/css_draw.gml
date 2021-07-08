@@ -4,9 +4,9 @@ if (!"css_hue" in self) {
 	css_hue = 0;
 }
 
-patch_ver = "1.62";
-patch_day = "13";
-patch_month = "DEC";
+patch_ver = "1.63";
+patch_day = "JUL";
+patch_month = "7";
 
 var num_alts = 16;
 var alt_cur = get_player_color(player);

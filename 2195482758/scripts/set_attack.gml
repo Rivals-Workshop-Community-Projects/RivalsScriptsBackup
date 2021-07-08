@@ -16,7 +16,7 @@ switch(attack){
             if(can_throw == false && move_cooldown[AT_NSPECIAL] <= 1)
             {
                 state = PS_IDLE_AIR;
-                move_cooldown[AT_NSPECIAL] = 1;
+                move_cooldown[AT_NSPECIAL] = max(move_cooldown[AT_NSPECIAL],1);
             }
         }
         case(AT_TAUNT):

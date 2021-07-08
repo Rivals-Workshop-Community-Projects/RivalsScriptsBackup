@@ -58,6 +58,8 @@ set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_ANGLE_FLIPPER, 4);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_PARTICLE_NUM, 1)
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, plasma_line )
+set_hitbox_value(AT_USTRONG, 1, HG_DRIFT_MULTIPLIER, 0 )
+
     
 //first frame sword hitbox (hitpause matches above)
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);

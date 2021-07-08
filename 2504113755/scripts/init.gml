@@ -54,7 +54,7 @@ max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has h
 walljump_hsp        = 4;		// 4    -  7
 walljump_vsp        = 12;		// 7    -  10
 land_time           = 4;		// 4    -  6
-prat_land_time      = 10;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
+prat_land_time      = 14;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
 wave_friction       = 0.12;		// 0    -  0.15
@@ -63,7 +63,7 @@ roll_backward_max   = 9;        // 9    -  11       always the same as forward
 wave_land_time      = 8;		// 6    -  12
 wave_land_adj       = 1.3;		// 1.2  -  1.5      idk what zetterburn's is
 air_dodge_speed     = 7.5;      // 7.5  -  8
-techroll_speed      = 10;       // 8    -  11
+techroll_speed      = 14;       // 8    -  11
 
 
 
@@ -183,7 +183,7 @@ can_blink = true
 
 
 walking_backward_counter = 0
-
+direction = 1
 swords_merged = false
 dspecial_not_used_yet_in_air = true
 dspecial_started_from_ground = false
@@ -208,6 +208,7 @@ plasma_x_big = hit_fx_create( sprite_get( "plasma_x_big" ), 21 );
 plasma_circle_big = hit_fx_create( sprite_get( "plasma_circle" ), 20 );
 
 
+trainingMode = 0
 
 num_articles = 0
 

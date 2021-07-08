@@ -1,7 +1,13 @@
 //update
 
 // Muno's meme
-user_event(14);
+if get_training_cpu_action() != CPU_FIGHT || trainingMode == 1 {
+    user_event(14);
+} else {
+    if get_training_cpu_action() == CPU_STAND {
+        trainingMode = 1
+    }
+}
 
 // I am me
 is_tenru = true;
@@ -240,7 +246,6 @@ if(grabbedid != noone && !grabbed_solid){
 	}
 }
 
-
 // Grab release backup
 if(last_grabbedid != noone && (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR)){
 	with(last_grabbedid)
@@ -262,8 +267,9 @@ if(!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN || uspecial_ground 
 	
 	with (pHitBox) 
 		if (orig_player == other.player && (attack == AT_NSPECIAL) && hbox_num == 1) 
-			if("ungrab" in self) move_cooldown[AT_NSPECIAL] = 1;
-			//else can_can_throw = false;
+			if("ungrab" in self)
+				other.move_cooldown[AT_NSPECIAL] = max(other.move_cooldown[AT_NSPECIAL],1);
+				
 				
 	can_throw = uspecial_ground == true ? true : can_can_throw;
 	uspecial_ground = false;
@@ -329,6 +335,25 @@ else scream_timer--;
 // 	screaming = false;
 // }
 
+with(oPlayer)
+{
+	if(self != other)
+	{
+		// Populate the array of variable names and object ID
+	 //   var arrayNames = variable_instance_get_names(self);
+
+	    
+	 //   for (var i = 0; i < array_length_1d(arrayNames); i++) {
+  //      	if(string_pos("roll", arrayNames[i]) != 0 )
+  //      	{
+  //      		print_debug(arrayNames[i]);
+  //      	}
+		// }
+
+		//perfect_dodging = true;
+	}
+}
+
 
 
 
@@ -364,6 +389,7 @@ with(pHitBox){
         if(was_parried && !reset)
         {
         	hitbox_timer = 0;
+			with(parrybox) hitbox_timer = 0;
         	
         	
         	// Set up variables
@@ -552,6 +578,7 @@ with(pHitBox){
          expl.img_ind = image_index;
          expl.image_index = image_index;
          
+         instance_destroy(parrybox);
          
          if(reflected || is_kirby == 1)
          {
@@ -573,6 +600,8 @@ with(pHitBox){
         other.fc_array[my_slot] = 0;
         other.last_fc_vsp[my_slot] = 0;
         other.last_fc_hsp[my_slot] = 0;
+        
+        instance_destroy(parrybox);
     }
     
         

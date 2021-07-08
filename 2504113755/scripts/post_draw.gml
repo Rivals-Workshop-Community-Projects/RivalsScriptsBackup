@@ -4,12 +4,13 @@
 //draw_debug_text( x, y + 40, "angle:" + string( attackangle ) + "  tgzn:" + string( torren_go_zoom_now ) + "  zmtim:" + string(zoom_time));
 draw_debug_text( x, y + 40, "index" + string( sprite_index ) + "  swords:" + string( swords_merged ));
 //draw_debug_text( x, y + 55, " rvrs:" + string(shouldreverse) );
+*/
+
+//draw_debug_text( x, y + 40, string(direction));
 
 
 
-
-
-user_event(12);*/
+user_event(12);
 
 var tempColour = c_white;
 

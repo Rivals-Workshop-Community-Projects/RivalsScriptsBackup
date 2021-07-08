@@ -246,10 +246,13 @@ last_last_color = 0;
 
 
 
+// Muno jank
+trainingMode = 0
 
 
 
 user_event(14);
+
 
 // Tenru test url
 //2098340585

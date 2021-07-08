@@ -27,6 +27,12 @@ if (attack == AT_TAUNT){
 	}
 }
 
+if (attack == AT_TAUNT_2){
+	if window == 6 and taunt_down{
+		window_timer--;
+	}
+}
+
 if (attack == AT_FAIR)
   {
   if (window == 3)
@@ -175,10 +181,15 @@ if (attack == AT_USTRONG){
 if (attack == AT_FSPECIAL)
   {
   move_cooldown[AT_FSPECIAL] = 30;
-  if (has_hit and window == 4)
+  if (has_hit and !was_parried and window == 4)
     {
-    can_jump = true;
+    	can_jump = true;
     }
+  if (!has_hit or was_parried){
+  	if window == 4 and window_timer == get_window_value(attack, 4, AG_WINDOW_LENGTH){
+  		set_state(PS_PRATFALL);
+  	}
+  }
   }
 
 if (attack == AT_FSTRONG){

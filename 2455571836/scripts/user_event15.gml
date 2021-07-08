@@ -294,7 +294,7 @@ muno_char_icon = get_char_info(player, INFO_ICON);		// CSS icon of the character
 
 phone.taunt_hint_x = 0;									// Sideways offset of the "Taunt!" thing that shows in Practice Mode until you've opened the MunoPhone. You can move it sideways if it covers up your HUD elements.
 phone.taunt_hint_y = 0;									// Vertical offset
-phone.shader = 0;										// Whether or not to apply the character's palette to the phone and non-TrainingTown sidebar (change color with alt costumes)
+phone.shader = 1;										// Whether or not to apply the character's palette to the phone and non-TrainingTown sidebar (change color with alt costumes)
 
 phone.dont_fast = 0;									// Set to 1, and Fast Graphics will NOT automatically be set when the FPS dips below 60.
 phone_lightweight = 0;									// Set to 1 to disable certain features, possibly improving performance a little bit. See _readme.gml.
@@ -375,8 +375,8 @@ with phone{
 	// NOTE: Using sprite_get() does not work here, so sprites must be saved as
 	// variables. See init.gml for an example of this with spr_nspecial_proj.
 	
-	initTip("NSpecial: Snowball");
-	initTipWords("Low damage, low knockback, but all the annoying. Will you stop throwing snowballs? Up to you.");
+	initTip("NSpecial: Snowball Move Cancel");
+	initTipWords("Throwing the snowball is one thing, but if you land a hit you can cancel out into any move besides another snowball.y");
 	initTipImage(player_id.spr_nspecial, -5, fa_left, 1, c_white, 0);
 	
 	initTip("FSpecial: Kitty Pounce -> Roll");
@@ -454,7 +454,22 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
-	 
+	
+	initPatch("1.5", "July 5th, 2021");
+	initPatchWords("Attack Buffs/Nerfs
+	+ Changed the NSpecial snowball to be more focused on hitpausing, as well, you can now cancel out into other moves except NSPECIAL itself.
+	");
+	
+	initPatchWords("Visual Updates
+	* Added a new Double Jump animation
+	* Added a new Roll Forward and Roll Backward animation
+	* Added a couple more frames for the Dash Stop animation
+	* Added an Intro animation
+	* Workshop: Wall-E sound added compatibility");
+	
+	initPatchWords("Misc. Updates
+	~ Added a tip about the NSpecial move cancel");
+	
 	initPatch("1.4.8", "May 23rd, 2021");
 	initPatchWords("Visual Updates
 	* Added Boxing Ring compatability");
@@ -979,7 +994,7 @@ if !phone_lightweight{
 		fire_taunt_sound = sound_get("glace_kirby_taunt");
 		fire_taunt_sound_frame = 3;
 		
-	}
+	}*/
 	
 	
 	
@@ -987,10 +1002,10 @@ if !phone_lightweight{
 	
 	if pho_has_wall_e_ost{
 		
-		walle_taunt_sound = sound_get("wall_e_sound");
+		walle_taunt_sound = sound_get("glace_meow");
 		walle_taunt_type = 1;
 		
-	}*/
+	}
 	
 	
 	

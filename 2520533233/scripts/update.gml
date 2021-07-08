@@ -447,7 +447,7 @@ set_hitbox_value(AT_UTILT, 12, HG_WINDOW, 99);
 //ftilt
 set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 8);
 //dtilt
-set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 5);
 set_hitbox_value(AT_DTILT, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DTILT, 2, HG_WINDOW, 2);

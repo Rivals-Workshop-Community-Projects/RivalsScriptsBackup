@@ -383,11 +383,14 @@ if get_player_color(player) == 11 {
 if "superTrue" in self {
 if superTrue == 1 {
 	 superTrue = 0
+	 		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -3);
+			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_VSPEED, -4.3);
+			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_VSPEED, -5);
 	hit_player_obj.hitpause = 1
-	hit_player_obj.hitstop = 40
+	hit_player_obj.hitstop = 20
 	hit_player_obj.old_hsp = hit_player_obj.hsp
 	hit_player_obj.old_vsp = hit_player_obj.vsp
-	
+	hit_player_obj.canUseCounterTimer = 60
          set_attack (AT_EXTRA_2)
          window = 2
          window_timer = 0
@@ -397,14 +400,16 @@ if superTrue == 1 {
 }
 
 if move_cooldown [AT_FTILT] > 1 {
+		 hit_player_obj.canUseCounterTimer = 15
+	state_timer = 0
 	can_move = false
 	supply = 20
 	if free {
 		vsp -= 0.35
 	}
 	
-if move_cooldown[AT_FTILT] > 60 && move_cooldown[AT_FTILT] < 100{
-	
+if move_cooldown[AT_FTILT] > 10 && move_cooldown[AT_FTILT] < 100{
+		 
 	if move_cooldown[AT_FTILT] % 7 == 0 {
 		sound_play(sound_get("throw"),false,noone,0.6,0.9);
     		create_hitbox(AT_FSPECIAL , 1 + random_func(1,3,true), floor(x + (32 * spr_dir) + 50 - random_func(10, 100, true)) , floor (y - 5 - (random_func(11, 100, true) / 2)) );
@@ -413,6 +418,9 @@ if move_cooldown[AT_FTILT] > 60 && move_cooldown[AT_FTILT] < 100{
 	
 }	
 if move_cooldown [AT_FTILT] ==  180 {
+		 		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -3);
+			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_VSPEED, -4.3);
+			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_VSPEED, -5);
 	move_cooldown[AT_FSPECIAL] = 0
 	sound_play(sound_get("throw"));
 	     set_attack (AT_FSPECIAL)
@@ -449,6 +457,7 @@ if move_cooldown [AT_FTILT] == 150 {
          window = 2
          window_timer = 2
 	create_hitbox(AT_FSPECIAL , 1 , x + (32 * spr_dir) , y - 32 );
+		create_hitbox(AT_DSPECIAL , 3 , x , y - 42 );
 } 
 
 if move_cooldown [AT_FTILT] == 145 {
@@ -480,12 +489,13 @@ if move_cooldown [AT_FTILT] ==  125 {
          window = 2
          window_timer = 2
 	create_hitbox(AT_FSPECIAL , 1 , x + (32 * spr_dir) , y - 32 );
+	create_hitbox(AT_DSPECIAL , 3 , x , y - 42 );
 } 
 
 if move_cooldown [AT_FTILT] == 120 {
-				set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -3);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_VSPEED, -4.3);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_VSPEED, -5);
+				set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -1);
+			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_VSPEED, -2);
+			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_VSPEED, -3);
 	move_cooldown[AT_FSPECIAL] = 0
 	sound_play(sound_get("shing"));
 	      set_attack (AT_FSPECIAL)
@@ -526,12 +536,13 @@ if move_cooldown [AT_FTILT] ==  85 {
          window = 2
          window_timer = 2
 	create_hitbox(AT_FSPECIAL , 1 , x + (32 * spr_dir) , y - 32 );
+	create_hitbox(AT_DSPECIAL , 3 , x , y - 42 );
 } 
 
 if move_cooldown [AT_FTILT] == 80 {
-				set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -3);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_VSPEED, -4.3);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_VSPEED, -5);
+				set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, 2);
+			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_VSPEED, 4.4);
+			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_VSPEED, 6);
 	move_cooldown[AT_FSPECIAL] = 0
 	sound_play(sound_get("shing"));
 	      set_attack (AT_FSPECIAL)

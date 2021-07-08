@@ -382,12 +382,20 @@ with phone{
 	
 	They can hit each other!
 	
-	You canNOT blink off of them! Try a rune");
+	You canNOT blink off of them! Try a rune.");
+	
+	initTip("Fspecial");
+	initTipWords("FSpecial is a quick dash.
+	
+	If it hits a player, it transitions into a flashy cutscene.");
 	
 	initTip("Nspecial: Hit it with Fspecial!");
 	initTipWords("FSpecial has pratfall, unless you hit something. This includes the wraith!
 	
 	Hit wraiths to not go into pratfall when using Fspecial offstage");
+	
+	
+	
 	
 	
 	initTip("Dspecial Movement");
@@ -510,6 +518,62 @@ with phone{
 	initPatchWords("Fnuuy joke
 	- waog");
 	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0); */
+		initPatch("1.8", "24 June, 2021");
+		
+			initPatchWords_ext("Weeklies pls...?", fa_center, c_white, 0, 0);
+initPatchWords_ext("Alt names! Guess 'em all! They are cryptic!
+some alt adjustments as well
+new alt for JPEG Warrior
+funny walkturn is now intentional and in both directions
+
++ftilt adds a small amount of hsp on use
+
++dattack endlag 14-12
+-dattack now has whifflag (whoops!)
+~dattack multihits bkb 6-5
+~dattack multihits kbs 0.3-0.5
++dattack lerping is much more powerful
++dattack multihit hitboxes made taller
+
++ustrong grounded connecter hit now has a drift multiplier of 0.
+
+~nair first hit has less hitpause, 6-5
+~nair first hit hitpause scaling 0.2-0.1
+~nair final hit base hitpause 6-7
+-nair initial spike kbs 0.8-0.7
+-nair falling spike kbs 0.6-0.5
+-nair landing now has 4 more frames on lag on hit, 6 more on whiff
+-nair spike can now be cancelled on frame 18 (from 12)
+~fixed a nair glitch where the landing hitbox wouldnt come out
+
++fair sweetspot damage 7-8
+
++dair has bigger hitboxes
++dair hitboxes now change when rising to connect better
+
+~fspecial rework! Now a quick dash forward. If the dash hits a player, the cutscene occurs
+~more animation frames for fspecial lag
++fspecial ledge snap is now 40 frames below ledge (from 35)
++fspecial lag 33-30
++fspecial cutscene travels slightly further
++fspecial falls slower in the endlag
++fspecial can be controlled more freely in endlag
++fspecial cutscene will stop moving forward at side blastzones
+
++wraiths hitboxes are now transcendent
+~teleporting to a wraith now sets your hsp and vsp to 0 if not dodging
+
+-prat land time 10-14
+
++new rune! allows you to turnaround fspecial after it first lands.
++updated tips to reflect changes
+
+
+
++(very important) taunt now uses diff sfx", fa_left, c_white, 0, 0);
+	
+	
+	
 		initPatch("1.7", "24 June, 2021");
 		
 			initPatchWords_ext("Balance?", fa_center, c_white, 0, 0);

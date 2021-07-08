@@ -30,7 +30,7 @@ if(my_hitboxID.attack == AT_DSPECIAL)
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1)
 {
 	
-	move_cooldown[AT_NSPECIAL] = 1;
+	move_cooldown[AT_NSPECIAL] = max(move_cooldown[AT_NSPECIAL],1);
 
     // Find what slot this is in
     for (var i = 0; i < 10; i++;)
@@ -71,7 +71,7 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1)
 			}
 			else
 			{
-		    	expl.fc_timer = 3;
+		    	expl.fc_timer = 0;
 			}
 		    
 		    expl.explosions_to_do = num_fc;

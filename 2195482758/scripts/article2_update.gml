@@ -61,6 +61,12 @@ with(player_id)
         set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 0);
         set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 0);
     }
+    
+    // if(other.explosions_to_do == 3 && expl_can_hit)
+    // {
+    //     set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 4);
+    //     set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 2);
+    // }
 }
 
 // Get the current animation frame, and spawn 3 hitboxes accordingly

@@ -474,7 +474,7 @@ if (attack == AT_FSPECIAL){
 						hsp = 0;
 						vsp = 0;
 						hitbox_timer = 0;
-						
+						damage = damage + 3;
 						
 						
 						// Grabbing projectiles
@@ -1131,7 +1131,13 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 if (attack == AT_USPECIAL){
 
 	uspecial_ground = false;
-
+	
+	// Cooldown
+	if(window == 8 && !grabbedid)
+	{
+		move_cooldown[AT_USPECIAL] = 10;
+	}
+	
     // Ground attributes
 	if(state == PS_ATTACK_GROUND && window_timer == 1 && window == 2)
 	{
@@ -1330,6 +1336,7 @@ if (attack == AT_USPECIAL){
 					hsp = 0;
 					vsp = 0;
 					hitbox_timer = 0;
+					damage = damage + 3;
 					
 					// Grabbing projectiles
 					grabbed = 1;
@@ -1932,6 +1939,7 @@ if (attack == AT_AIR_DSPECIAL){
 					hsp = 0;
 					vsp = 0;
 					hitbox_timer = 0;
+					damage = damage + 3;
 					
 					// Grabbing projectiles
 					grabbed = 1;
@@ -2555,6 +2563,8 @@ if(attack == AT_BAIR){
 #region FStrong
 //FStrong code
 if(attack == AT_FSTRONG){
+
+	can_fast_fall = false;
 
 	// Init
 	if(window == 1 && window_timer == 1){

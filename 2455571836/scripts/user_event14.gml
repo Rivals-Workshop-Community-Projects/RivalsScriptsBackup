@@ -260,33 +260,33 @@ GIM_COLOR  			= 29;
 // Gameplay-relevant, and codecs because im biased :>
 pho_has_muno_phone = 1;	// MunoPhone support		(should always be 1, obviously...)
 pho_has_trum_codec = 1;	// Trummel & Alto codec
-pho_has_copy_power = 0;	// Kirby Copy Ability
+pho_has_copy_power = 1;	// Kirby Copy Ability
 pho_has_btt_layout = 0;	// Break the Targets stage
 
 // Character cosmetics
 pho_has_otto_bhead = 1;	// Bobblehead for Otto's bike
 pho_has_steve_dmsg = 1;	// Death message for Steve
-pho_has_feri_taunt = 0;	// Costume for Feri's taunt
-pho_has_hikaru_fak = 0;	// Title for Hikaru's fakie
-pho_has_rat_allout = 0;	// Quip for Rat's all-out attack
-pho_has_tco_sketch = 0;	// Drawing for The Chosen One's down taunt
-pho_has_ahime_dead = 0;	// Sprite for Abyss Hime's slicing effect
-pho_has_tink_picto = 0;	// Photograph for Toon Link's picto box
+pho_has_feri_taunt = 1;	// Costume for Feri's taunt
+pho_has_hikaru_fak = 1;	// Title for Hikaru's fakie
+pho_has_rat_allout = 1;	// Quip for Rat's all-out attack
+pho_has_tco_sketch = 1;	// Drawing for The Chosen One's down taunt
+pho_has_ahime_dead = 1;	// Sprite for Abyss Hime's slicing effect
+pho_has_tink_picto = 1;	// Photograph for Toon Link's picto box
 pho_has_fire_taunt = 0; // Fire's Taunt
 pho_has_wall_e_ost = 0; // Wall-E's music
-pho_has_amber_love = 0; // Amber's plush and/or hug
+pho_has_amber_love = 1; // Amber's plush and/or hug
 pho_has_moon_music = 0; // Moonchild's taunt music
-pho_has_agentn_cdc = 0; // Agent N's codec
+pho_has_agentn_cdc = 1; // Agent N's codec
 
 // Stage cosmetics
-pho_has_drac_codec = 0;	// Dialogue for the Dracula boss fight
-pho_has_miivs_post = 0;	// Posts for the Miiverse stage
-pho_has_dede_title = 0;	// Title for the Mt Dedede Stadium stage
-pho_has_soul_title = 0; // Text for the Soulbound Conflict stage
-pho_has_been_found = 0; // Death sprite for the Trial Grounds stage
-pho_has_resort_pic = 0; // Portrait for the Last Resort stage
-pho_has_pkmn_image = 0; // Battle sprite for Pokémon Stadium
-pho_has_daro_codec = 0; // Dialogue for the Daroach boss fight
+pho_has_drac_codec = 1;	// Dialogue for the Dracula boss fight
+pho_has_miivs_post = 1;	// Posts for the Miiverse stage
+pho_has_dede_title = 1;	// Title for the Mt Dedede Stadium stage
+pho_has_soul_title = 1; // Text for the Soulbound Conflict stage
+pho_has_been_found = 1; // Death sprite for the Trial Grounds stage
+pho_has_resort_pic = 1; // Portrait for the Last Resort stage
+pho_has_pkmn_image = 1; // Battle sprite for Pokémon Stadium
+pho_has_daro_codec = 1; // Dialogue for the Daroach boss fight
 
 // Sprites init, handy for easy sprite referencing as you can do   spr_whatever   instead of   sprite_get("whatever")   and it autocompletes in GMEdit
 
@@ -634,9 +634,9 @@ with phone{
 	In online matches, it won't automatically trigger; instead, press the 0 (zero) key on the keyboard to enable Fast Graphics.");
 
 
-	/*initSetting("Debug Print", "setting_print_debug", [0, 1], ["Off", "On"], "With this setting enabled, press Ctrl+8 to monitor important values such as current speed, frames per second, and current state.
+	initSetting("Debug Print", "setting_print_debug", [0, 1], ["Off", "On"], "With this setting enabled, press Ctrl+8 to monitor important values such as current speed, frames per second, and current state.
 	
-	As the developer of this character, you can define three custom variables to track; see user_event15.gml for details.");*/
+	As the developer of this character, you can define three custom variables to track; see user_event15.gml for details.");
 	initSetting("FPS Warning", "setting_fps_warn", [1, 0], ["On", "Off"], "Display a warning onscreen when the FPS drops below 60.");
 	
 }

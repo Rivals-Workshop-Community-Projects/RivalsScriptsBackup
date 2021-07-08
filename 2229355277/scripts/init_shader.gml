@@ -10,6 +10,10 @@ if get_player_color(player) == 0{
     set_character_color_slot(4, 211, 209, 210);
 }
 
+if get_player_color(player) == 28{
+    set_character_color_slot( 2, 171, 185, 204, .75 ); //Coat
+}
+
 if get_player_color(player) == 1 or get_player_color(player) == 8 or get_player_color(player) == 13 or get_player_color(player) == 15{
     set_character_color_shading(7, 2);
 }

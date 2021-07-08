@@ -53,6 +53,13 @@ if (attack == AT_DAIR){
     }
 }
 
+if (attack == AT_NSPECIAL){
+        if (has_hit_player){
+			iasa_script();
+			move_cooldown[AT_NSPECIAL] = 20;
+        }
+    }
+
 //Up Special
 /*if (attack == AT_USPECIAL){
         move_cooldown[AT_USPECIAL] = 999;

@@ -13,20 +13,20 @@ sprite_change_offset("walk", 33, 70);
 sprite_change_offset("walkturn", 45, 68);
 sprite_change_offset("dash", 37, 66);
 sprite_change_offset("dashstart", 37, 66);
-sprite_change_offset("dashstop", 52, 66);
+sprite_change_offset("dashstop", 45, 64);
 sprite_change_offset("dashturn", 43, 70);
 
 sprite_change_offset("jumpstart", 34, 64);
 sprite_change_offset("jump", 37, 72);
-sprite_change_offset("doublejump", 37, 72);
+sprite_change_offset("doublejump", 42, 66);
 sprite_change_offset("walljump", 45, 73);
 sprite_change_offset("pratfall", 37, 77);
 sprite_change_offset("land", 34, 64);
 sprite_change_offset("landinglag", 34, 64);
 
 sprite_change_offset("parry", 37, 68);
-sprite_change_offset("roll_forward", 24, 44);
-sprite_change_offset("roll_backward", 24, 44);
+sprite_change_offset("roll_forward", 35, 70);
+sprite_change_offset("roll_backward", 43, 64);
 sprite_change_offset("airdodge", 30, 65);
 sprite_change_offset("waveland", 30, 65);
 sprite_change_offset("tech", 43, 72);
@@ -60,6 +60,8 @@ sprite_change_offset("plat", 64, 28);
 sprite_change_offset("nspecial_proj", 64, 94);
 
 sprite_change_offset("glace_final_smash_spike", 0, 0);
+
+sprite_change_offset("intro", 39, 72);
 
 //Workshop stuff
 sprite_change_offset("glace_signpost", 17, 45);

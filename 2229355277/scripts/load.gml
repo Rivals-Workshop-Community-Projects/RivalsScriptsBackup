@@ -58,6 +58,7 @@ sprite_change_offset("dspecial", 98, 180);  // Finished (Handled By Equi)   - Re
 sprite_change_offset("fstrong", 98, 180);  // Finished (Handled By Equi)
 sprite_change_offset("ustrong", 100, 180);  // Finished (Handled By Equi)
 sprite_change_offset("taunt", 98, 180); // Finished (Handled By Equi)       - Plushie Hug / Dab idk which
+sprite_change_offset("champ", 100, 180); // Finished (Handled By Equi)
 sprite_change_offset("uair", 98, 180);  // Finished (Handled By Equi)
 sprite_change_offset("fair", 98, 180);  // Finished (Handled By Equi)
 

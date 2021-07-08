@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 60, 1, 50 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 32 );
+set_num_palettes( 31 );
 
 // Reimu
 set_color_profile_slot( 1, 0, 43, 3, 3 ); //Hat

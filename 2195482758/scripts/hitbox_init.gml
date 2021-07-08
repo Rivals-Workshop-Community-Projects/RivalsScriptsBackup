@@ -9,6 +9,8 @@ reset = false;
 bounced = 0;
 grabbed = 0;
 is_bunt = player_id.fc_bunt;
+walls = 2;
+grounds = 2;
 
  // Figure out what sprite I am
 if(sprite_index == sprite_get("firecracker_single") || sprite_index == sprite_get("firecracker_single_spin"))
@@ -27,7 +29,7 @@ else if(sprite_index == sprite_get("firecracker_triple") || sprite_index == spri
 if(sprite_index == sprite_get("firecracker_single_spin") || sprite_index == sprite_get("firecracker_double_spin") || sprite_index == sprite_get("firecracker_triple_spin"))
 {
     is_spin = true;
-    
+
 } 
 else 
 {
@@ -36,6 +38,11 @@ else
 
 lastPlayer = player_id;
 currentPlayer = player_id;
+
+if(attack == AT_NSPECIAL && hbox_num == 1)
+{
+    parrybox = create_hitbox(AT_NSPECIAL,3,floor(x),floor(y));
+}
 
 // Note - I really wish I knew this was a thing before
 // I set up this complex ID storage system to track hitboxes

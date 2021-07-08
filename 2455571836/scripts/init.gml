@@ -243,10 +243,10 @@ air_dodge_speed = 7.5;
 
 //roll animation frames
 roll_forward_startup_frames = 2;
-roll_forward_active_frames = 4;
+roll_forward_active_frames = 7;
 roll_forward_recovery_frames = 2;
-roll_back_startup_frames = 2;
-roll_back_active_frames = 4;
+roll_back_startup_frames = 1;
+roll_back_active_frames = 1;
 roll_back_recovery_frames = 2;
 roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
@@ -261,5 +261,10 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
+
+//Intro
+introTimer = -4;
+//setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening. If it's slightly off, feel free to mess with it.
+introTimer2 = 0;
 
 user_event(14);

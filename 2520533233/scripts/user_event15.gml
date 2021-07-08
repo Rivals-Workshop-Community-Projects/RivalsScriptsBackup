@@ -542,6 +542,20 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	 initPatch("1.1.3", "5, July 2021");
+	initPatchWords("1.1.3
+
+Fixed CSS colors for base skin.
+
+Re-removed Bad Apple Skin.")
+	initPatch("1.1.2", "5, July 2021");
+	initPatchWords("
+	Bugfix:
+	
+	Fixed a bug where dtilt frame data did not reset after using install properly.
+	
+	
+	Meter Loss on Death: 10s > 6s (Forgot to lower it with shorter install durration.)");
 	initPatch("1.1.1", "4, July 2021");
 	initPatchWords("Hotfix time.
 	

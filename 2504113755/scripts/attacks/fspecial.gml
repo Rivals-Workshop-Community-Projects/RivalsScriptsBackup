@@ -92,20 +92,33 @@ set_window_value(AT_FSPECIAL, 12, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_FSPECIAL, 12, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 12, AG_WINDOW_ANIM_FRAME_START, 16);
 set_window_value(AT_FSPECIAL, 12, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_FSPECIAL, 12, AG_WINDOW_CUSTOM_AIR_FRICTION, 5);
+set_window_value(AT_FSPECIAL, 12, AG_WINDOW_CUSTOM_AIR_FRICTION, 1);
 set_window_value(AT_FSPECIAL, 12, AG_WINDOW_CUSTOM_GROUND_FRICTION, 5);
 set_window_value(AT_FSPECIAL, 12, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
 
 //endlag
-set_window_value(AT_FSPECIAL, 13, AG_WINDOW_LENGTH, 33);
-set_window_value(AT_FSPECIAL, 13, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_FSPECIAL, 13, AG_WINDOW_LENGTH, 30);
+set_window_value(AT_FSPECIAL, 13, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSPECIAL, 13, AG_WINDOW_ANIM_FRAME_START, 17);
 set_window_value(AT_FSPECIAL, 13, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_FSPECIAL, 13, AG_WINDOW_CUSTOM_AIR_FRICTION, 5);
+set_window_value(AT_FSPECIAL, 13, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.2);
 set_window_value(AT_FSPECIAL, 13, AG_WINDOW_CUSTOM_GROUND_FRICTION, 5);
-set_window_value(AT_FSPECIAL, 13, AG_WINDOW_CUSTOM_GRAVITY, 0.5);
+set_window_value(AT_FSPECIAL, 13, AG_WINDOW_CUSTOM_GRAVITY, 0.4);
 
 
+
+set_window_value(AT_FSPECIAL, 14, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_FSPECIAL, 14, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_FSPECIAL, 14, AG_WINDOW_ANIM_FRAME_START, 2);
+//endlag without the cutscene
+set_window_value(AT_FSPECIAL, 15, AG_WINDOW_TYPE, 7);
+set_window_value(AT_FSPECIAL, 15, AG_WINDOW_LENGTH, 30);
+set_window_value(AT_FSPECIAL, 15, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_FSPECIAL, 15, AG_WINDOW_ANIM_FRAME_START, 22);
+set_window_value(AT_FSPECIAL, 15, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(AT_FSPECIAL, 15, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.2);
+set_window_value(AT_FSPECIAL, 15, AG_WINDOW_CUSTOM_GROUND_FRICTION, 5);
+set_window_value(AT_FSPECIAL, 15, AG_WINDOW_CUSTOM_GRAVITY, 0.4);
 
 
 
@@ -113,10 +126,10 @@ set_window_value(AT_FSPECIAL, 13, AG_WINDOW_CUSTOM_GRAVITY, 0.5);
 set_num_hitboxes(AT_FSPECIAL, 6);
 
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 2);
+set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 14);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 0);
-set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 3);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 47);
+set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 5);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 17);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -25);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 90);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 70);

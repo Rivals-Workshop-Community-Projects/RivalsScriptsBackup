@@ -181,7 +181,13 @@ if hitstop <= 0 {
             
             with(other.player_id) {
             	destroy_hitboxes()
-            		hurtboxID.sprite_index = hurtbox_spr
+            		
+            		if (state != PS_AIR_DODGE && state != PS_PARRY && state != PS_ROLL_BACKWARD && state != PS_ROLL_FORWARD) {
+            			hsp = 0
+            			vsp = 0
+            			            		hurtboxID.sprite_index = hurtbox_spr
+
+            		}
             	
             }
             
@@ -280,7 +286,7 @@ if hitstop <= 0 {
            		
            		
            		
-           	}else if (attack == AT_FSPECIAL){
+           	}else if (attack == AT_FSPECIAL && hbox_num != 1){
            		
            		     			var lerpam
 	lerpam = [0.5, 0.5]

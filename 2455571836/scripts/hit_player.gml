@@ -15,3 +15,7 @@
 //	hit_player_obj.glace_Freeze_TIMER = 0;
 //	hit_player_obj.glace_Freeze = false;
 //}
+
+if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.type == 2 && attack == AT_NSPECIAL){
+        has_hit_player = true;
+    }

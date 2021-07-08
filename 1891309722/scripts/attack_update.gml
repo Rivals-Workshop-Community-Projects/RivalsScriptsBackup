@@ -32,6 +32,7 @@ if (attack == AT_NSPECIAL){
     if (window == 5 && window_timer == 8) {
 		if (shield_down) {
 			neutralBStored = 1;
+			clear_button_buffer(PC_SHIELD_PRESSED);
 			set_state( PS_IDLE );
 		} else {
 			window = 9;

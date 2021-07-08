@@ -57,7 +57,33 @@ if ((window == 3 || window == 6) && window_timer == 9 && has_hit_player) {
 
 
 	
+#region dair
+
+if (attack == AT_DAIR) {
 	
+	
+if (vsp < -2)	{
+	
+	set_num_hitboxes(AT_DAIR,5);
+set_hitbox_value(AT_DAIR, 1, HG_GROUNDEDNESS, 0) //aerial only
+
+	
+} else {
+	
+		set_num_hitboxes(AT_DAIR,9);
+
+	set_hitbox_value(AT_DAIR, 1, HG_GROUNDEDNESS, 2) //aerial only
+
+	
+}
+	
+	
+}
+
+
+
+
+#endregion
 	
 	
 	
@@ -212,9 +238,10 @@ if (attack == AT_DSTRONG) {
 
 if (attack == AT_FSPECIAL) {
 	
+if (window != 1 && window != 13 && window != 15) {
 	
 	                if (place_meeting(x + hsp, y, asset_get("par_block")) && free) {
-	                	for (var i = 1; i < 35; i++){
+	                	for (var i = 1; i < 40; i++){
                         if (!place_meeting(x + hsp, y- i ,asset_get("par_block"))) {
 	                	
 	                	
@@ -222,19 +249,63 @@ if (attack == AT_FSPECIAL) {
 break;
                         }
 	                }
-}
+} }
+	if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
+		
+		window = 14
+		window_timer = 0
+		
+	}
+	
+	
+	if (window == 14 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !has_hit_player) {
+		window = 15
+		window_timer = 0
+		
+		
+	} 
+	
+	if (window == 14 && has_hit_player && !hitpause) {
+		
+		window = 2
+		window_timer = 0
+		
+		
+		
+		if has_rune("B") {
+
+		if (spr_dir == 1 && (left_pressed || left_down)) || (spr_dir == -1 && (right_pressed || right_down)) {
+			
+			spr_dir *= -1
+		}
+		}
+		
+		
+		
+		
+		
+	}
+	
+	if (((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) || window == 14)) && !hitpause) {
+		hsp = 20*spr_dir
+		vsp = 0
+	}
+	if (window == 15 && window_timer == 1) {
+		
+		hsp = 3*spr_dir
+	}
 	
 	if (!has_hit && free) {
 		
-		set_window_value(AT_FSPECIAL, 13, AG_WINDOW_TYPE, 7);
+		set_window_value(AT_FSPECIAL, 15, AG_WINDOW_TYPE, 7);
 
 		
 		
-	} 	else 	set_window_value(AT_FSPECIAL, 13, AG_WINDOW_TYPE, 0);
+	} 	else 	set_window_value(AT_FSPECIAL, 15, AG_WINDOW_TYPE, 0);
 
     
     
-    if (window == 13 && window_timer > 10) {
+    if ((window == 13 || window == 15) && window_timer > 10) {
         
                 can_wall_jump = true
 
@@ -259,8 +330,15 @@ if (window == 1 && window_timer == 10) {
       if ((image_index == 3 || image_index == 6 || image_index == 9 || image_index == 12 || image_index == 15) || ((window == 5 || window == 7 || window == 9 || window == 11) && window_timer == 2)) {
       
       hsp = 0
-      
-        } else hsp = 9*spr_dir }
+     
+        } else if (x - 30 > 0) && (x + 30 < room_width) {
+        	
+        	
+        	
+        	hsp = 9.5*spr_dir } else {hsp = 0}
+        	vsp = 0
+        	
+        } 
         
         
      }
@@ -271,9 +349,9 @@ if (window == 1 && window_timer == 10) {
         } 
         
 }
-if (attack == AT_FSPECIAL && has_hit_player && window < 12 && !hitpause) { //hi delta
+if (attack == AT_FSPECIAL && has_hit_player && window < 12 && !hitpause && !hit_player_obj.clone) { //hi delta
 if (!hit_player_obj.activated_kill_effect) {
-if (hit_player_obj.state == PS_HITSTUN) {
+if (hit_player_obj.state == PS_HITSTUN ) {
 	var lerpam
 	lerpam = [0.15, 0.15]
 	
@@ -282,8 +360,8 @@ if instance_exists(hit_player_obj) {
 	hit_player_obj.x = lerp(floor(hit_player_obj.x), x+65*spr_dir, lerpam[0])
 	hit_player_obj.y = lerp(floor(hit_player_obj.y), y-20, lerpam[1])
 
-} }
 } } }
+} } 
 
 
 
@@ -371,6 +449,8 @@ if (attack == AT_USTRONG) {
 
 #region nair
 if (attack == AT_NAIR) {
+	
+
     if (window < 4) {
         
         nair_spike = false
@@ -405,7 +485,7 @@ if (attack == AT_NAIR) {
         window_timer = 0
         
     }
-    if (!free && (window == 5 || window == 6)) { //landing creation
+    if (!free && (window == 5 || window == 6) && !hitpause) { //landing creation
     
             sound_play(asset_get("sfx_clairen_tip_strong"))
           //  sound_play(asset_get("sfx_clairen_swing_strong"))
@@ -426,7 +506,7 @@ if (attack == AT_NAIR) {
     if (window == 6) {
         can_wall_jump = true
         
-        if (window_timer > 12) {
+        if (window_timer > 18) {
             can_shield = true
             can_special = true
            //can_jump = true
