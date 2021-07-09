@@ -118,11 +118,11 @@ set_color_profile_slot( 16, 1, 255, 255, 255 ); //Mask
 set_color_profile_slot( 16, 2, 44, 49, 86 ); //Body
 set_color_profile_slot( 16, 3, 179, 0, 57 ); //Skin
 
-// Funny Kitty
-set_color_profile_slot( 17, 0, 255, 115, 203 ); //Cuffs
-set_color_profile_slot( 17, 1, 250, 250, 250 ); //Mask
-set_color_profile_slot( 17, 2, 207, 27, 135 ); //Skin
-set_color_profile_slot( 17, 3, 255, 99, 13 ); //Body
+// Blue
+set_color_profile_slot( 17, 0, 163, 163, 163 ); //Cuffs
+set_color_profile_slot( 17, 1, 25, 18, 170 ); //Mask
+set_color_profile_slot( 17, 2, 60, 60, 73 ); //Skin
+set_color_profile_slot( 17, 3, 0, 100, 255 ); //Body 
 
 // MONKEY'S FURY
 set_color_profile_slot( 18, 0, 69, 69, 69 ); //Cuffs

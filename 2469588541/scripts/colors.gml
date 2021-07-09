@@ -194,14 +194,14 @@ set_color_profile_slot( 18, 4, 253, 243, 255 ); //Eye2
 set_color_profile_slot( 18, 5, 171, 121, 237 ); //Limbs
 set_color_profile_slot( 18, 6, 128, 97, 224 ); //Limbs2
 
-// Fubuki
-set_color_profile_slot( 19, 0, 160, 218, 246 ); //Scarf
-set_color_profile_slot( 19, 1, 254, 255, 249 ); //Fur tone
-set_color_profile_slot( 19, 2, 60, 55, 61 ); //Fur tone2
-set_color_profile_slot( 19, 3, 122, 135, 159 ); //Eye
-set_color_profile_slot( 19, 4, 151, 248, 179 ); //Eye2
-set_color_profile_slot( 19, 5, 254, 223, 196 ); //Limbs
-set_color_profile_slot( 19, 6, 254, 230, 215 ); //Limbs2
+// Sai M
+set_color_profile_slot( 19, 0, 58, 102, 37 ); //Scarf
+set_color_profile_slot( 19, 1, 250, 242, 242 ); //Fur tone
+set_color_profile_slot( 19, 2, 176, 247, 255 ); //Fur tone2
+set_color_profile_slot( 19, 3, 223, 240, 230 ); //Eye
+set_color_profile_slot( 19, 4, 0, 225, 255 ); //Eye2
+set_color_profile_slot( 19, 5, 50, 69, 60 ); //Limbs
+set_color_profile_slot( 19, 6, 17, 23, 20 ); //Limbs2
 
 // Swiper
 set_color_profile_slot( 20, 0, 0, 91, 170 ); //Scarf

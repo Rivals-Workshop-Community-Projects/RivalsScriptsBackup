@@ -18,7 +18,7 @@ set_color_profile_slot_range( 3, 49, 24, 54 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 31 );
+set_num_palettes( 32 );
 
 // Future
 set_color_profile_slot( 1, 0, 29, 82, 161 ); //Skin
@@ -199,6 +199,12 @@ set_color_profile_slot( 30, 0, 74, 72, 179 ); //Skin
 set_color_profile_slot( 30, 1, 150, 34, 34 ); //Color
 set_color_profile_slot( 30, 2, 54, 54, 54 ); //Fin
 set_color_profile_slot( 30, 3, 225, 255, 0 ); //Lantern
+
+// Jacklom (Player)
+set_color_profile_slot( 31, 0, 204, 163, 255 ); //Skin
+set_color_profile_slot( 31, 1, 118, 239, 245 ); //Color
+set_color_profile_slot( 31, 2, 255, 209, 153 ); //Fin
+set_color_profile_slot( 31, 3, 110, 191, 255 ); //Lantern
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

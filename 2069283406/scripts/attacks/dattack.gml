@@ -58,6 +58,7 @@ set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT_X_OFFSET, 24);
 set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_zetter_downb"));
 set_hitbox_value(AT_DATTACK, 1, HG_HITSTUN_MULTIPLIER, 2);
+set_hitbox_value(AT_DATTACK, 1, HG_TECHABLE, 3);
 
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DATTACK, 2, HG_WINDOW, 5);
@@ -78,3 +79,4 @@ set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT_X_OFFSET, 24);
 set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_ori_glide_start"));
 set_hitbox_value(AT_DATTACK, 2, HG_HITSTUN_MULTIPLIER, .4);
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_DATTACK, 2, HG_TECHABLE, 3);

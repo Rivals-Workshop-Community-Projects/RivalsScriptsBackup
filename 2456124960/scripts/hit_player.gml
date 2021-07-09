@@ -1,10 +1,15 @@
-if (attack == AT_FAIR && true) {
+if (attack == AT_FAIR && false) {
 	if (old_vsp > -4) {
 		old_vsp = -4;
 	}
 	if (abs(old_hsp) > 4) {
 		//old_hsp *= 0.8;
 	}
+}
+
+if (attack == AT_FAIR) {
+	sound_play(asset_get("sfx_icehit_medium1"), false, noone, 0.4);
+	sound_play(asset_get("sfx_blow_medium2"), false, noone, 0.6);
 }
 
 if (attack == AT_BAIR && true) {

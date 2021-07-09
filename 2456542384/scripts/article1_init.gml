@@ -30,8 +30,8 @@ fly_activate_endlag = 18; //endlag frames
 fly_die_time = 42; //post-activation endlag
 
 //hold time
-fly_hold_time = 40; //how long the enemy is held for in frames
-
+fly_hold_time = 20; //how long the enemy is held for in frames
+fly_hold_time_base = fly_hold_time; //change the regular fly hold time if you want to change the base one, since the regular is changed in code later on
 
 //flower
 flower_lifetime = 600; //how long flower stays on field until it dies

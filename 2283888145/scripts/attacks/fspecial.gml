@@ -183,19 +183,23 @@ set_hitbox_value(AT_FSPECIAL, 6, HG_EXTENDED_PARRY_STUN, 1);
 
 //Dodge
 set_hitbox_value(AT_FSPECIAL, 7, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_FSPECIAL, 7, HG_LIFETIME, 1000);
+//set_hitbox_value(AT_FSPECIAL, 7, HG_LIFETIME, 1000);
+set_hitbox_value(AT_FSPECIAL, 7, HG_LIFETIME, 5);				//community patch
 set_hitbox_value(AT_FSPECIAL, 7, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_FSPECIAL, 7, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSPECIAL, 7, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
-set_hitbox_value(AT_FSPECIAL, 7, HG_WIDTH, 80);
-set_hitbox_value(AT_FSPECIAL, 7, HG_HEIGHT, 50);
+//set_hitbox_value(AT_FSPECIAL, 7, HG_WIDTH, 80);
+//set_hitbox_value(AT_FSPECIAL, 7, HG_HEIGHT, 50);
+set_hitbox_value(AT_FSPECIAL, 7, HG_WIDTH, 120);				//community patch
+set_hitbox_value(AT_FSPECIAL, 7, HG_HEIGHT, 120);				// V
 set_hitbox_value(AT_FSPECIAL, 7, HG_DAMAGE, 11);
 set_hitbox_value(AT_FSPECIAL, 7, HG_ANGLE, 90);
 set_hitbox_value(AT_FSPECIAL, 7, HG_PRIORITY, 5);
 set_hitbox_value(AT_FSPECIAL, 7, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_FSPECIAL, 7, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_FSPECIAL, 7, HG_BASE_HITPAUSE, 9);
-set_hitbox_value(AT_FSPECIAL, 7, HG_HITPAUSE_SCALING, 0.6);
+//set_hitbox_value(AT_FSPECIAL, 7, HG_HITPAUSE_SCALING, 0.6);
+set_hitbox_value(AT_FSPECIAL, 7, HG_HITPAUSE_SCALING, 0.8);		//c
 set_hitbox_value(AT_FSPECIAL, 7, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FSPECIAL, 7, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FSPECIAL, 7, HG_MUNO_HITBOX_NAME, "Dodge");

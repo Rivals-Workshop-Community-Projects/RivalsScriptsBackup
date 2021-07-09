@@ -108,18 +108,28 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
                 }
                 var boom = create_hitbox(AT_NSPECIAL, 2, x, y - 10);
                     boom.can_hit_self = false;
+                player_id.cubeCooldown = 0;
                 destroyed = true;
                 exit;
             } else {
                 var spawnX = x;
                 
                 if !hasHit && player_id.attack != AT_DTHROW {
-                    while position_meeting(spawnX, y, pHurtBox) {
-                        var hurtbox = place_meeting(spawnX, y, pHurtBox);
-                        if hurtbox != noone && hurtbox != undefined && hurtbox.x < x {
-                            spawnX -= 10;
-                        } else {
-                            spawnX += 10;
+                    var nearLedge = false;
+                    /*
+                    print(position_meeting(x, y+20, asset_get("par_block")))
+                    if !position_meeting(x, y+5, asset_get("par_block")) {
+                        
+                    }
+                    */
+                    if !nearLedge {
+                        while position_meeting(spawnX, y, pHurtBox) {
+                            var hurtbox = place_meeting(spawnX, y, pHurtBox);
+                            if hurtbox != noone && hurtbox != undefined && hurtbox.x < x {
+                                spawnX -= 10;
+                            } else {
+                                spawnX += 10;
+                            }
                         }
                     }
                 }
@@ -130,6 +140,7 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
                         junk.power = power;
                         junk.scraped = true;
                     sound_play(asset_get("sfx_may_root"))
+                    player_id.cubeCooldown = 0;
                 } else {
                     var cube = instance_create(spawnX, y, "obj_article_solid");
                         cube.player_id = player_id;
@@ -181,6 +192,7 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
                     spawn_hit_fx(other.x, other.y - 20, 143);
                 }
                 create_hitbox(AT_NSPECIAL, 3, x, y - 20);
+                player_id.cubeCooldown = 0;
                 destroyed = true;
                 exit;
             } else if ("isWalle" in hitbox.player_id) && hitbox.hbox_num == 1 && hitbox.attack == AT_DSPECIAL { //dspecial absorb cube
@@ -203,6 +215,7 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
                 }
                 var boom = create_hitbox(AT_NSPECIAL, 2, x, y - 10);
                     boom.can_hit_self = false;
+                player_id.cubeCooldown = 0;
                 destroyed = true;
                 exit;
             } else if free && !hasMoved && !(variable_instance_exists(hitbox.player_id, "isWalle") && hitbox.attack == AT_NSPECIAL) && !(prevHitbox != undefined && prevHitbox == hitbox.id) {
@@ -321,6 +334,7 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
         }
         var boom = create_hitbox(AT_NSPECIAL, 2, x, y - 10);
             boom.can_hit_self = false;
+        player_id.cubeCooldown = 0;
         destroyed = true;
         exit;
     }
@@ -330,7 +344,7 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
     }
 }
 
-if attack == AT_USPECIAL && hbox_num == 5 {
+if attack == AT_USPECIAL && hbox_num == 6 {
     hsp *= 0.9;
     vsp *= 0.9;
 }

@@ -203,7 +203,7 @@ if attack == AT_USTRONG{
 		hsp = 2*spr_dir
 	}
 	
-	if window == 3 && window_timer > 11 {
+	if window == 3 && window_timer > 11 && !has_hit{
 		set_state (PS_PRATFALL)
 	}
 	
@@ -220,7 +220,14 @@ if attack == AT_USTRONG{
 
 if attack == AT_FSTRONG{
 
+
+   if has_hit_player {
+   	window_timer += 0.3
+   }
 		if window == 1 && window_timer == 1 {
+			set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 40);
+			set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 9);
+			set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 9);
 		sound_play(asset_get("sfx_ori_charged_flame_release"));
 	}
 	
@@ -295,41 +302,37 @@ if attack == AT_DSTRONG {
 	///}
 	
 	
-	//if window == 4  { 
-	//    move_cooldown[AT_FSPECIAL_AIR] = 999
-	//	move_cooldown[AT_NSPECIAL_2] = 30
-	//			firetimer += 1
-	//		if window_timer == 1 {
-	//	  spawn_hit_fx( x   , y , firepar2 )	
-	//	}
-	//	
-	//	if window_timer % 3 = 0 {
-	//	spawn_hit_fx( x   , y , dsshadow )
-	//	}
-//
-	//	if window_timer == 1 {
-	//		sound_play(sound_get("RZ"));
-	//	}
-	//if hit_player_obj.x > x {
-	//	spr_dir = 1 
-	//} else {
-	//	spr_dir = -1
-	//}
-	//	hsp = (hit_player_obj.x - x) / 30 + (5 * spr_dir)
-	//	vsp = (hit_player_obj.y - y) / 16
-	//	
-	//	x += (hit_player_obj.x - x) / 20 + (6 * spr_dir)
-	//	y += (hit_player_obj.y - y) / 10
-	//	
-	//
-	//	hit_player_obj.vsp /= 1.04
-	//	hit_player_obj.hsp /= 1.04	
-	//	
-	//		if window_timer == 6 {
-	//		window_timer = 2
-	//	}
-	//	
-	//}
+   if window == 5  { 
+            move_cooldown[AT_FSPECIAL_AIR] = 999
+        	move_cooldown[AT_NSPECIAL_2] = 30
+        			firetimer += 1
+        		if window_timer == 1 {
+        	  spawn_hit_fx( x   , y , firepar2 )	
+        	}
+        	
+        	if window_timer % 3 = 0 {
+        	spawn_hit_fx( x   , y , dsshadow )
+        	}   
+        if hit_player_obj.x > x {
+        	spr_dir = 1 
+        } else {
+        	spr_dir = -1
+        }
+        	hsp = (hit_player_obj.x - x) / 30 + (5 * spr_dir)
+        	vsp = (hit_player_obj.y - y) / 16
+        	
+        	x += (hit_player_obj.x - x) / 20 + (6 * spr_dir)
+        	y += (hit_player_obj.y - y) / 10
+        	
+        
+        	hit_player_obj.vsp /= 1.04
+        	hit_player_obj.hsp /= 1.04	
+        	
+        		if window_timer == 6 {
+        		window_timer = 2
+        	}
+   	
+   }
 }
 
 
@@ -486,7 +489,7 @@ if attack == AT_NSPECIAL{
 			}
 	}
 	
-	if window >= 3 && state_timer >= 35 {
+	if window >= 3 && state_timer >= 25 {
 		
 		if fireon < 3 && window == 3 {
 	 	window_timer += 2

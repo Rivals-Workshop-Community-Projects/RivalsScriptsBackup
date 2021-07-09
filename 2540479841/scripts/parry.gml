@@ -1,0 +1,1 @@
+sound_play(parry_voice);

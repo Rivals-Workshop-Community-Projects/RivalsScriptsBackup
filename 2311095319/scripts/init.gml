@@ -14,6 +14,12 @@ isundershirtunfixed = false
 //0 is false, 1 is true.
 voiced = 0
 
+deathvoiceline = 0
+
+voicelinework = 0
+
+phone_voiced_toggle = 0
+
 //Dash Attack Slide Visual Effect
 //Why is this even here lol im not using this in the actual build
 dattack_veffect = hit_fx_create( sprite_get( "dattack_slideeffect" ), 16 );
@@ -99,8 +105,8 @@ air_friction = .02;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
 wall_frames = 3;
-walljump_hsp = 7;
-walljump_vsp = 11;
+walljump_hsp = 6;
+walljump_vsp = 9;
 walljump_time = 32;
 max_fall = 11; //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed
@@ -187,6 +193,27 @@ sfx_uptaunt_grow = sound_get("sfx_uptaunt_grow");
 sfx_uptaunt_shrink = sound_get("sfx_uptaunt_shrink");
 sfx_walljump = sound_get("sfx_walljump");
 sfx_waveland = sound_get("sfx_waveland");
+
+//Voice Clips
+vc_mario_doh = sound_get("vc_mario_doh");
+vc_mario_doublejump = sound_get("vc_mario_doublejump");
+vc_mario_grunt = sound_get("vc_mario_grunt");
+vc_mario_haha = sound_get("vc_mario_haha");
+vc_mario_herewego = sound_get("vc_mario_herewego");
+vc_mario_hooh = sound_get("vc_mario_hooh");
+vc_mario_jump = sound_get("vc_mario_jump");
+vc_mario_letsago = sound_get("cssvoice");
+vc_mario_oof = sound_get("vc_mario_oof");
+vc_mario_sleep1 = sound_get("vc_mario_sleep1");
+vc_mario_sleep2 = sound_get("vc_mario_sleep2");
+vc_mario_starko = sound_get("vc_mario_starko");
+vc_mario_tired = sound_get("vc_mario_tired");
+vc_mario_uhh = sound_get("vc_mario_uhh");
+vc_mario_wah = sound_get("vc_mario_wah");
+vc_mario_wahah = sound_get("vc_mario_wahah");
+vc_mario_woah = sound_get("vc_mario_woah");
+vc_mario_yah = sound_get("vc_mario_yah");
+vc_mario_yeehaw = sound_get("vc_mario_yeehaw");
 
 //ok these are base game sfx but this is for easy use for changing shit with shadow mario fstrong.
 sfx_hammer_hit_normal = asset_get("sfx_shovel_hit_heavy2")

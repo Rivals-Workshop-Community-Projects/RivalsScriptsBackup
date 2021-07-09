@@ -23,7 +23,7 @@ set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 
 //Endlag
-set_window_value(AT_NSPECIAL_2, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_NSPECIAL_2, 4, AG_WINDOW_LENGTH,9);
 set_window_value(AT_NSPECIAL_2, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL_2, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 

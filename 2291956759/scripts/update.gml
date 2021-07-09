@@ -1301,3 +1301,114 @@ if other.state == PS_DEAD or other.state == PS_RESPAWN {
 init_shader();
 
 }
+
+
+if "superTrue" in self {
+    if superTrue == 1 {
+    	 superTrue = 0
+    	 sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"))
+    	hit_player_obj.canUseCounterTimer = 60
+       if free {
+       	spawn_hit_fx(x,y-30,302)
+        move_cooldown[AT_DTILT] = 90 
+        set_attack(AT_NAIR)
+        window = 1
+        window_timer = 0
+        vsp = -7
+       } else {
+       	move_cooldown[AT_UTILT] = 90
+       	set_attack(AT_NSPECIAL)
+       	window = 1
+       	window_timer = 0 
+       }
+       
+    }
+}
+
+
+
+if free && move_cooldown[AT_DTILT] > 20 &&  move_cooldown[AT_DTILT] < 80 {
+		 hit_player_obj.canUseCounterTimer = 20
+	hitpause = 0
+	
+	hsp = -3*spr_dir
+	
+	
+	vsp -= 0.3
+	if move_cooldown[AT_DTILT] % 9 == 0 {
+		spawn_hit_fx(x,y-30,302)
+		set_attack(AT_FAIR)
+        window = 2
+        window_timer = 3
+		            create_hitbox(AT_FSPECIAL , 4 , x + 40*spr_dir , y - 36  );
+		            sound_play(sound_get("SpaceCut")) 
+	}
+	
+		if move_cooldown[AT_DTILT] % 9 == 6 {
+			create_hitbox(AT_DSPECIAL , 17 , x  , y - 30  );
+			spawn_hit_fx(x,y-30,305)
+		set_attack(AT_FAIR)
+        window = 2
+        window_timer = 3
+		            create_hitbox(AT_FSPECIAL , 5 , x + 40*spr_dir , y - 36  );
+		            sound_play(sound_get("SpaceCut")) 
+	}
+	
+	if move_cooldown[AT_DTILT] % 9 == 3 {
+		spawn_hit_fx(x,y-30,303)
+		set_attack(AT_FAIR)
+        window = 2
+        window_timer = 3
+		            create_hitbox(AT_FSPECIAL , 6 , x + 40*spr_dir , y - 36  );
+		            sound_play(sound_get("SpaceCut")) 
+	}
+	
+	
+}
+
+
+if move_cooldown[AT_UTILT] >= 10  {
+	 hit_player_obj.canUseCounterTimer = 20
+	hitpause = 0
+    if move_cooldown[AT_UTILT]  > 70 { 	
+    	if hit_player_obj.hitpause == true {
+    		hit_player_obj.hitstop = 60
+    	}
+    	
+    }
+
+
+	
+		if move_cooldown[AT_UTILT]  == 89 {
+                create_hitbox(AT_DSPECIAL, 5, x + 62*spr_dir, y - 30)
+                   sound_play(asset_get("sfx_orca_absorb"))   
+		            sound_play(sound_get("SpaceCut")) 
+	}
+	
+		if move_cooldown[AT_UTILT]  == 60 {
+                create_hitbox(AT_DSPECIAL, 3, x -62*spr_dir, y - 30)
+                  sound_play(asset_get("sfx_orca_absorb"))   
+		            sound_play(sound_get("SpaceCut")) 
+	}
+	
+		if move_cooldown[AT_UTILT]  == 40 {
+		        create_hitbox(AT_DSPECIAL, 2, x -62*spr_dir, y - 30)
+                sound_play(asset_get("sfx_orca_absorb"))   
+		            sound_play(sound_get("SpaceCut")) 
+		            
+	}
+	
+		if move_cooldown[AT_UTILT]  == 20 {
+			create_hitbox(AT_DSPECIAL, 4, x -62*spr_dir, y - 30)
+                sound_play(asset_get("sfx_orca_absorb"))   
+		            sound_play(sound_get("SpaceCut")) 
+	}
+	
+		if move_cooldown[AT_UTILT]  == 1 {
+		create_hitbox(AT_DSPECIAL, 1, x -62*spr_dir, y - 30)
+                sound_play(asset_get("sfx_orca_absorb"))   
+		            sound_play(sound_get("SpaceCut")) 
+	}
+	
+	
+}

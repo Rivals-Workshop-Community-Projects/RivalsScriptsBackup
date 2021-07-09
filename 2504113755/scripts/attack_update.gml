@@ -238,6 +238,20 @@ if (attack == AT_DSTRONG) {
 
 if (attack == AT_FSPECIAL) {
 	
+	
+	if (window == 15 || window == 13) {
+		
+		fspec_air_friction = 0.25 - (window_timer + 1)/(34) * 0.25
+	//	set_window_value(AT_FSPECIAL, 13, AG_WINDOW_CUSTOM_AIR_FRICTION, fspec_air_friction);
+		set_window_value(AT_FSPECIAL, 15, AG_WINDOW_CUSTOM_AIR_FRICTION, fspec_air_friction);
+
+		fspec_gravity = 0.1 + (window_timer + 1)/(34) * 0.5
+	//	set_window_value(AT_FSPECIAL, 13, AG_WINDOW_CUSTOM_GRAVITY, fspec_gravity);
+		set_window_value(AT_FSPECIAL, 15, AG_WINDOW_CUSTOM_GRAVITY, fspec_gravity);
+
+	}
+	
+	
 if (window != 1 && window != 13 && window != 15) {
 	
 	                if (place_meeting(x + hsp, y, asset_get("par_block")) && free) {
@@ -258,14 +272,15 @@ break;
 	}
 	
 	
-	if (window == 14 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !has_hit_player) {
+	if (window == 14 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !has_hit) {
 		window = 15
 		window_timer = 0
 		
 		
+		
 	} 
 	
-	if (window == 14 && has_hit_player && !hitpause) {
+	if (window == 14 && has_hit && !hitpause) {
 		
 		window = 2
 		window_timer = 0
@@ -287,7 +302,7 @@ break;
 	}
 	
 	if (((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) || window == 14)) && !hitpause) {
-		hsp = 20*spr_dir
+		hsp = 27*spr_dir
 		vsp = 0
 	}
 	if (window == 15 && window_timer == 1) {
@@ -331,11 +346,11 @@ if (window == 1 && window_timer == 10) {
       
       hsp = 0
      
-        } else if (x - 30 > 0) && (x + 30 < room_width) {
+        } else  {
         	
         	
         	
-        	hsp = 9.5*spr_dir } else {hsp = 0}
+        	hsp = 6.5*spr_dir } 
         	vsp = 0
         	
         } 

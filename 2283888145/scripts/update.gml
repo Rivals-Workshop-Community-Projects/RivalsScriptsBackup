@@ -441,7 +441,8 @@ switch(chord_handler_timer){
 		
 		if guitar.stun_chord{
 			set_hitbox_value(AT_FSPECIAL, 3, HG_EFFECT, 11);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_EXTRA_HITPAUSE, 30);
+			//set_hitbox_value(AT_FSPECIAL, 3, HG_EXTRA_HITPAUSE, 30);
+			set_hitbox_value(AT_FSPECIAL, 3, HG_EXTRA_HITPAUSE, 50);		//community patch
 		}
 		break;
 	case 2:
@@ -524,11 +525,12 @@ if ((allowed_state || allowed_state_2) && state != PS_RESPAWN && state != PS_JUM
     set_attack(AT_NSPECIAL);
 }
 
-if (special_pressed && joy_pad_idle && !chord_menu_state && !(phone_attacking && attack == AT_TAUNT) && phone.state != 2 && !was_parried /* && !(phone_attacking && state_timer < 10 && (attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL))*/ ){
+if (special_pressed && joy_pad_idle && !chord_menu_state && !(phone_attacking && (attack == AT_TAUNT || attack == AT_FSPECIAL || attack == AT_DSPECIAL)) && phone.state != 2 && !was_parried /* && !(phone_attacking && state_timer < 10 && (attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL))*/ ){
     clear_button_buffer(PC_SPECIAL_PRESSED);
     chord_menu_state = 1;
     if reverse_chord && !hitpause && !(state_cat == SC_HITSTUN){
-    	if vsp == fast_fall guitar.chord_juice -= 60;
+    	//if vsp == fast_fall guitar.chord_juice -= 60;
+    	if vsp == fast_fall guitar.chord_juice -= 80;		//community patch
     	hsp *= -1;
     	vsp *= -1;
     	old_hsp *= -1;

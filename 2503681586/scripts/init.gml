@@ -286,7 +286,7 @@ walljump_time = 16;
 max_fall = 7; //maximum fall speed without fastfalling
 fast_fall = 11; //fast fall speed
 gravity_speed = .5;
-hitstun_grav = .6;
+hitstun_grav = .5;
 knockback_adj = .95; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames

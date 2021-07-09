@@ -183,14 +183,22 @@ if (slTimer > slTimerLimit)
 	
 if (slTimer >= floor(slTimerLimit/3))
 {
-	if ((attack_down && special_down)
+	if ((attack_down && special_down) //&& !slActive
 		&& (	(state_cat != SC_HITSTUN
 				&& state_cat != SC_GROUND_COMMITTED
 				&& state_cat != SC_AIR_COMMITTED)
-			|| ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && state_timer < 2))
+			|| ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) //&& state_timer < 2
+				)
+			)
 		)
 	{
 		set_state(free?PS_IDLE_AIR:PS_IDLE);
+		if(hsp > 5 || hsp < -5 ){
+			hsp *= 0.7
+		}
+		if(vsp > 5 || vsp < -5 ){
+			vsp *= 0.7
+		}
 	}
 }
 

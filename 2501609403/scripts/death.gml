@@ -4,3 +4,6 @@ with(asset_get("oPlayer")){
         visible = true
     }
 }
+
+proj_stored = false;
+nspecial_number = 0;

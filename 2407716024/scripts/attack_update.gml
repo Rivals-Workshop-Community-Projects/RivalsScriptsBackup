@@ -95,18 +95,16 @@ switch (attack) {
         //don't allow cancels on parry, or while using ground normals in the air for some reason.
         if (!was_parried && !free) {
             //allow special cancels, if not currently in late endlag frames.
-            if (window < get_attack_value(attack, AG_NUM_WINDOWS) || window_timer <= 5) { // get_window_value(attack, window, AG_WINDOW_LENGTH) / 3 ) {
+            if (window < get_attack_value(attack, AG_NUM_WINDOWS) || window_timer >= 2) { // get_window_value(attack, window, AG_WINDOW_LENGTH) / 3 ) {
 	            can_special = 1;
 	            //only allow normal and strong cancels on hit, and not during hitpause.
-	            if (has_hit_player && !hitpause) {
+	            if (has_hit_player && !hitpause && window_timer >= 2) {
 	                can_attack = 1;
 	                can_strong = 1;
 	                can_ustrong = 1;
 	            }
             }
         }
-                //save facing direction, for ground uspecial
-        peacock_uspecial_attack_cancel_dir = spr_dir;
     break;
     
     case AT_DAIR:
@@ -224,7 +222,7 @@ switch (attack) {
 			//case 5:
 			//case 6:
 				//allow endlag cancels if the attack hit
-				if (has_hit && !was_parried) {
+				if (has_hit && !was_parried && window_timer >= 3) {
 					can_attack = true;
 					can_special = true;
 					//move_cooldown[AT_NAIR] = 2;
@@ -354,19 +352,13 @@ switch (attack) {
 	case AT_USPECIAL_GROUND:
 		switch (window) {
 			case 2:
-				//if cancelled, lock this move's facing direction
-				if (window_timer == 1 && peacock_uspecial_was_attack_canceled_into) {
-					spr_dir = peacock_uspecial_attack_cancel_dir; 
-				}
 				if (is_end_of_window()) {
 					if (joy_pad_idle) peacock_uspec_move_speed = 0;
 					else { 
-						peacock_uspec_move_speed = lengthdir_x(46, joy_dir);
+						peacock_uspec_move_speed = lengthdir_x(34, joy_dir);
 						
-						//peacock can't teleport backwards.
-						if (sign(peacock_uspec_move_speed) != spr_dir) {
-							peacock_uspec_move_speed = 0;
-						}
+						//peacock can teleport backwards now :)
+
 					}
 				}
 			break;

@@ -164,7 +164,7 @@ if attack == AT_NAIR {
 if attack == AT_FAIR{
 
 	if window == 1 && window_timer == 1 && !hitpause {
-		sound_play(asset_get("sfx_swipe_medium2"))
+		sound_play(asset_get("sfx_swipe_heavy2"))
 	}
 	
 }
@@ -657,7 +657,7 @@ if attack == AT_DSPECIAL {
      	}
      }
      
-     if window_timer = 24 {
+     if window_timer = 14 {
      	cloneout = 1
      	create_hitbox(AT_DSPECIAL, 1, ogx - (x - ogx), y - 40)
      }

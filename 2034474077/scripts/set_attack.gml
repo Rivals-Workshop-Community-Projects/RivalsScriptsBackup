@@ -1,3 +1,5 @@
+can_final_spark = true;
+
 switch (attack){
     
     case AT_NSPECIAL:

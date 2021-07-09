@@ -1,5 +1,7 @@
 // attack_update
 
+var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
+
 //B - Reversals
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
@@ -80,7 +82,7 @@ if attack == AT_NSPECIAL {
         if has_rune("L") {
             max_cubes = 3;
         }
-        if cubeCounter < max_cubes {
+        if cubeCounter < max_cubes && cubeCooldown >= cubeCooldownMax {
             if window_timer == 1 {
                 sound_play(asset_get("sfx_ell_utilt_fire"));
             }
@@ -277,6 +279,7 @@ if attack == AT_USPECIAL {
     can_wall_jump = true;
     if window == 1 {
         vsp *= 0.95;
+        uspec_window_counter = 0
     }
     if window == 2 || window == 3 {
         hsp *= 0.95;
@@ -284,7 +287,11 @@ if attack == AT_USPECIAL {
         vsp = clamp(vsp, -8, 8);
     }
     
-    if window == 3 && ((state_timer == 44 && !has_rune("E")) || (state_timer == 60 && has_rune("E"))) {
+    if window == 3 && window_timer == window_length {
+        uspec_window_counter += 1
+    }
+    
+    if window == 3 && ((uspec_window_counter == 2 && !has_rune("E")) || (uspec_window_counter == 3 && has_rune("E"))) {
         window++;
         window_timer = 0;
         //sound_stop(sound_get("extinguisher3"));
@@ -295,7 +302,7 @@ if attack == AT_USPECIAL {
     }
     
     if window == 3 || window == 2 {
-        if window_timer == 0 || window_timer == 6 {
+        if window_timer == 0 || window_timer == 4 || window_timer == 8 {
             attack_end();
         }
         
@@ -303,7 +310,7 @@ if attack == AT_USPECIAL {
         var randvar2 = random_func_2((get_gameplay_time()+id) mod 200, 4, false);
         
         if window_timer mod 2 == 0 {
-            var hitbox = create_hitbox(AT_USPECIAL, 5, x - 8*spr_dir, y - 20);
+            var hitbox = create_hitbox(AT_USPECIAL, 6, x - 8*spr_dir, y - 20);
                 hitbox.vsp = randvar + 2;
                 hitbox.hsp = randvar2 - 2;
         }

@@ -18,10 +18,10 @@ if pattern = 0 {
 if ending == 0 {
 	
 if !hitstop {
-	timescore += 0
+	timescore += 1
 }	
 
-if timescore  > 10800 {
+if timescore  > 10000 {
 	time -= 0.5
 }
 

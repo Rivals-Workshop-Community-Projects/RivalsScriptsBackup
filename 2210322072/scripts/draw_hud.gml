@@ -3,7 +3,7 @@ shader_start();
 
 if  karmatimer > 0 {
 
-       draw_debug_text(temp_x + 0, temp_y - 10,"Karma:  "+ string(floor(karmacom)));
+       //draw_debug_text(temp_x + 0, temp_y - 10,"Karma:  "+ string(floor(karmacom)));
 
 
 }

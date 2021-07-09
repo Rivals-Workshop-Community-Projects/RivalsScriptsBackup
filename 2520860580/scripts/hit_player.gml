@@ -12,7 +12,7 @@ if get_player_color(player) == 7 {
 }
 
 if hit_player_obj.soft_armor = 0 && hit_player_obj.super_armor = 0 {
-style -= my_hitboxID.damage
+style -= my_hitboxID.damage*4
 }
 
 motivation += my_hitboxID.damage

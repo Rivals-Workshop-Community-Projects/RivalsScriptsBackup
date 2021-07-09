@@ -60,7 +60,7 @@ if has_rune("H") && my_hitboxID.attack == AT_FSPECIAL &&  move_cooldown[AT_DSTRO
 	
 		shunpo = random_func(3,3,true)
 	    set_attack (AT_DSTRONG)
-		window = 4
+		window = 5
 		window_timer = 1
 	    move_cooldown[AT_DSTRONG] = 20
 	    sound_play(sound_get("RZ"))
@@ -164,10 +164,14 @@ sound_play(asset_get("sfx_burnapplied"));
 
 if my_hitboxID.attack == AT_DSTRONG {
 				spawn_hit_fx(x,y,senku)
-	move_cooldown[AT_DSTRONG] = 60
+	move_cooldown[AT_DSTRONG] = 90
 }
 
 if my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num == 4 {
+    
+    if move_cooldown[AT_NAIR] > 0 {
+    	move_cooldown[AT_UAIR] = 120
+    }
     
     vsp = -6
     hsp = 3*spr_dir
@@ -224,7 +228,14 @@ if my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num == 4 {
  firerange = -100
  }
  
-
+  if shunpo == 3 {
+ set_attack (AT_DSTRONG)
+ window = 2
+ window_timer = 0
+ create_hitbox(AT_DAIR,1,x,y)
+ y = hit_player_obj.y
+ }
+ 
 }
 
 if (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num < 4) or attack == AT_FSTRONG or attack == AT_USTRONG  {

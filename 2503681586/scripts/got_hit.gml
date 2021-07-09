@@ -50,7 +50,7 @@ if enemy_hitboxID.orig_player == player  {
 			hitstun_full = enemy_hitboxID.kb_value * 4 * ((knockback_adj - 1) * 0.6 + 1) + army_leader.nanaDamag * 0.12 * enemy_hitboxID.kb_scaling * 4 * 0.65 * knockback_adj
 		}
 		if clownState = 0 {
-			if orig_knock >= 10 {
+			if (orig_knock >= 10) || (enemy_hitboxID.attack = AT_FSTRONG || enemy_hitboxID.attack = AT_USTRONG  || enemy_hitboxID.attack = AT_DSTRONG) {
 				clownState = 1
 				sound_play(asset_get("sfx_orca_absorb"))
 				state = PS_HITSTUN

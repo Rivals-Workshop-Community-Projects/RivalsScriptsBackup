@@ -2,6 +2,8 @@ crouch_counter = 0;
 isWalle = true; //for other walle players to detect
 fspecCooldown = 0;
 
+always_holding_rock = false;
+
 //kirby
 kirbyability = 16;
 swallowed = 0;
@@ -32,6 +34,9 @@ bounceHsp = 0; //hsp of cube when bounce of enemy
 bounceVsp = 0;
 
 absorbedCube = false; //dspecial cube absorb
+
+cubeCooldownMax = 60;
+cubeCooldown = cubeCooldownMax;
 
 heldPower = 0; //power of held cube
 heldExplode = false; //inherits willExplode

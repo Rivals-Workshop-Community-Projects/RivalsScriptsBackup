@@ -184,9 +184,18 @@ if (attack == AT_FSPECIAL && window_timer == 1 && window == 2){
 if (attack == AT_USPECIAL && window_timer == 1 && window == 4 || attack == AT_USPECIAL && window_timer == 1 && window == 2){
     spawn_base_dust(x, y, "n_wavedash");}
 
+//pratfall on fspecial
+if (attack == AT_FSPECIAL && free && window == 3){
+    state = PS_PRATFALL;}
+    
 //funny taunt cancel
-if (attack == AT_FSPECIAL && window == 2 && taunt_pressed){
+if (attack == AT_FSPECIAL && window == 2 && taunt_pressed && !free){
         set_attack(AT_TAUNT);
+}
+
+//tastu finisher
+if (attack == AT_FSPECIAL && has_hit && window == 3 && special_pressed && !free){
+        set_attack(AT_FSPECIAL_2);
 }
 
 //jump cancel from fspecial jank
@@ -228,6 +237,7 @@ if (attack == AT_FSPECIAL){
 //Dspecial Get off me hitbox
 if (attack == AT_DSPECIAL && window == 2 && window_timer == 1){
     create_hitbox(AT_DSPECIAL, 2, x, y)}
+    
 //Nspecial Jank
 if (attack == AT_NSPECIAL && window == 1 && free == true){
     vsp = 0;

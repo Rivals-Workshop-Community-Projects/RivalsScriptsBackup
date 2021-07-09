@@ -30,7 +30,7 @@ if (attack == AT_DSPECIAL){
             var idk = false;
             if (!was_parried){
                 with (pHitBox){
-                    if (player == other.player){
+                    if (orig_player == other.player){
                         if ((attack == AT_DSPECIAL && hbox_num == 2) || player_id.star_cooldown > 0){
                             var idk = true;
                         }
@@ -187,7 +187,7 @@ if (attack == AT_FSPECIAL_2){
         }
         if (!was_parried){
             with (pHitBox){
-                if (player == other.player){
+                if (orig_player == other.player){
                     if (attack == AT_DSPECIAL && hbox_num == 2){
                         var idk = true;
                     }
@@ -283,7 +283,7 @@ if (has_rune("I")){
             if (window_timer == 2){
                 if (!was_parried){ 
                     with (pHitBox){
-                        if (player == other.player){
+                        if (orig_player == other.player){
                             if (attack == AT_DSPECIAL && hbox_num == 2){
                                 var idk = true;
                                 other.bababooey = true;

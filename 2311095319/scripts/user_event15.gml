@@ -525,6 +525,53 @@ with phone{
 	Resembles Mario's appearance in Super Mario Bros. 3 for the NES.");
 	initTipImage(player_id.spr_alts, 15, fa_left, 1, c_white, 0);
 	
+	initTipWords("Alt 17: Infamous
+	Resembles the Infamous color palletes found in Rivals.");
+	initTipImage(player_id.spr_alts, 16, fa_left, 1, c_white, 0);
+	
+	initTipWords("Alt 18: Pure Gold
+	Resembles the Pure Gold color palletes found in Rivals. This also references the gold statue of Mario found in Super Mario RPG.");
+	initTipImage(player_id.spr_alts, 17, fa_left, 1, c_white, 0);
+	
+	initTipWords("Alt 19: Ranked Gold
+	Resembles the Ranked Gold color palletes found in Rivals.");
+	initTipImage(player_id.spr_alts, 18, fa_left, 1, c_white, 0);
+	
+	initTipWords("Alt 20: Champion
+	Resembles the Champion color palletes found in Rivals.");
+	initTipImage(player_id.spr_alts, 19, fa_left, 1, c_white, 0);
+	
+	initTipWords("Alt 21: Teal
+	Resembles one of the color palletes that appears when Mario grabs a Starman in Super Mario RPG.");
+	initTipImage(player_id.spr_alts, 20, fa_left, 1, c_white, 0);
+	
+	initTipWords("Alt 22: Light Blue
+	Resembles Mario's 4th alternate color from Mario Golf.");
+	initTipImage(player_id.spr_alts, 21, fa_left, 1, c_white, 0);
+	
+	initTipWords("Alt 23: Baby Blue
+	Resembles Mario's appearance under the effects of the Boomerang Flower.");
+	initTipImage(player_id.spr_alts, 22, fa_left, 1, c_white, 0);
+	
+	initTipWords("Alt 24: Mixture
+	pelee pablo");
+	initTipImage(player_id.spr_alts, 23, fa_left, 1, c_white, 0);
+	
+	initTipWords("Alt 25: Teal (Again)
+	Original color scheme.");
+	initTipImage(player_id.spr_alts, 24, fa_left, 1, c_white, 0);
+	
+	initTipWords("Alt 26: Pink
+	Resembles Princess Peach.");
+	initTipImage(player_id.spr_alts, 25, fa_left, 1, c_white, 0);
+	
+	initTipWords("Alt 27: Dark
+	Evil Mario.");
+	initTipImage(player_id.spr_alts, 26, fa_left, 1, c_white, 0);
+	
+	initTipWords("Alt 28: SMBZ
+	Resembles Mario's appearance in Super Mario Bros. Z.");
+	initTipImage(player_id.spr_alts, 27, fa_left, 1, c_white, 0);
 }
 
 
@@ -558,6 +605,31 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	
+	initPatch("1.15", "July 7, 2021");
+	initPatchWords("General
+	~ Debug text turned off (I forgot to turn it off.)");
+	
+	initPatch("1.14", "July 6, 2021");
+	initPatchWords("General
+	~ Minor hotfixes to some stats oops Lol!
+	~ Max Air Speed: 4.5 -> 5
+	~ Walljump HSP: 5 -> 6");
+	
+	initPatch("1.13", "July 6, 2021");
+	initPatchWords("General
+	~ Mario now has a voiced mode! Press Taunt during a match's countdown to activate it, or when in practice mode (which you are right now!), use the cheat code to activate it.
+	~ The alternate color section of the Munophone has been updated with all of the new alternate colors.
+	- Max Air Speed: 5 -> 4.5
+	- Walljump VSP: 11 -> 9
+	- Walljump HSP: 7 -> 5");
+	initPatchWords("Back Air (Backward Dropkick)
+	~ Adjusted hit fx.");
+	initPatchWords("Forward Special (Dive)
+	- Endlag (2nd Part on Ground): 16 -> 21");
+	initPatchWords("Down Special (Mario Tornado)
+	- Endlag: 16 -> 17
+	- Mario gains less height when using the move.");
 	
 	initPatch("1.12", "May 14, 2021");
 	initPatchWords("General
@@ -883,9 +955,10 @@ with self{
 	// you which files reference it.
 	
 	// post_draw.gml
-	//initCheat("Enable Voiced Mode", "cheat_voiced_mode", [0, 1], ["Muted", "Voiced"], "Enable Mario's voice. In an actual battle, you can enable Mario's voice by taunting during the match's countdown.");
 
 	//initCheat("Infinite Firebrand", "cheat_firebrand", [false, true], ["Disabled", "Enabled"], "Always have fireball fully charged.");
+	initCheat("Voiced Mode", "cheat_voice", [0, 1], ["Disabled", "Enabled"], "Turn On or Off Mario's voice whenever you want.
+	To turn on Mario's voice in a match, press Taunt during the countdown.");
 	initCheat("More Double Jumps", "cheat_more_djumps", [1, 2, 3, 4, 5, 0], ["1", "2", "3", "4", "5", "Real Life"], "Change the amount of doublejumps Mario has.");
 	initCheat("Dash Attack Jump Cancel", "cheat_da_jc", [false, true], ["Disabled", "Enabled"], "Mario will be able to jump cancel Dash Attack whenever he wants.");
 	initCheat("funny fair", "cheat_fair_very_funy", [false, true], ["Disabled", "Enabled"], "funy fair go brrrrrr");

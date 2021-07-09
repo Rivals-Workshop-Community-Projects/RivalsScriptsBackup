@@ -158,6 +158,7 @@ if (attack == AT_FSPECIAL){
     		sound_play(asset_get("sfx_blow_weak1"))
 			sound_play(asset_get("sfx_plant_eat"))
     	}
+    	move_cooldown[AT_FSPECIAL] = 20; //no more wallgrab spamming vineboom
     }
     //grab
     if instance_exists(grabbed_player_obj){

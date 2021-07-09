@@ -65,8 +65,10 @@ if(!menu_open){
 
 //Hud Indicators for Ultimate Uppercut, Suplex, and Feint Jump
 if(specialnums[0] == 1 && ultupper == 6){
-    if(shinetimer > 0 && shinetimer <= 14){
-        draw_sprite_ext(sprite_get("hud_nspec_2_charge"), 0, temp_x + 40, temp_y - 26, 1, 1, 0, c_white, (shinetimer * 0.071));
+    if(shinetimer > -1 && shinetimer < 16){
+        draw_sprite_ext(sprite_get("hud_nspec_2_charge"), 0, temp_x + 40, temp_y - 26, 1, 1, 0, c_white, (shinetimer * 0.066));
+    }else if(shinetimer > 16 && shinetimer < 31){
+        draw_sprite_ext(sprite_get("hud_nspec_2_charge"), 0, temp_x + 40, temp_y - 26, 1, 1, 0, c_white, 1 - (shinetimer * 0.033));
     }
 }
 if(specialnums[1] == 2 && !has_suplex){

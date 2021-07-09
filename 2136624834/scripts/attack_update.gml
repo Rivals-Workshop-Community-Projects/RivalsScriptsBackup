@@ -49,6 +49,7 @@ if attack == AT_DSPECIAL && !hitpause  {
 
 if window == 5 && window_timer == 1 {
 		create_hitbox(AT_USPECIAL , 3 , x, y );
+		sound_stop(sound_get("RI"));
 		sound_play(sound_get("RI"));
 	spawn_hit_fx( x - (10 * spr_dir) , y - 40 , 306 )
 	spawn_hit_fx( x - (10 * spr_dir) , y - 40 , 302 )
@@ -57,10 +58,13 @@ if window == 5 && window_timer == 2 && has_hit_player{
 	create_hitbox(AT_USPECIAL , 3 , x, y );
 	timehit = 0
 	timestop = 0
+	sound_stop(sound_get("RI"));
 	suppress_stage_music( 0, 0.001 );
 	sound_play(sound_get("RI"));
 	sound_play(sound_get("timestop"),false, noone, 2);
-	sound_play(asset_get("sfx_ori_charged_flame_charge"),false, noone, 0.5);
+	sound_play(asset_get("sfx_ori_charged_flame_charge"),false, noone, 0.5,1);
+	sound_play(asset_get("sfx_ori_charged_flame_charge"),false, noone, 0.5,0.9);
+	sound_play(asset_get("sfx_spin"),false, noone, 1.4,0.2);
 	spawn_hit_fx( x - (10 * spr_dir) , y - 40 , 306 )
 	spawn_hit_fx( x - (10 * spr_dir) , y - 40 , 302 )
 	timefreeze = 360
@@ -1264,6 +1268,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 
 
 if attack == AT_NSPECIAL {
+
 
 	if window = 1 {
 		if usednsp = 0 {

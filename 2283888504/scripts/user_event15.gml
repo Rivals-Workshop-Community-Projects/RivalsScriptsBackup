@@ -486,6 +486,31 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.17", "29 June, 2021");
+	initPatchWords_ext("- Community Patch: JPEG Warrior -", fa_center, apps[2].color, 1, 0);
+	if other.echo{
+		initPatchWords("Power Chords - Nerfs");
+		initPatchWords_ext("Reverse now changes knockback_adj to 1.2, while also multiplying knockback dealt by 0.6 and damage taken by 1.1.
+		Reverse momentum-flip meter consumption 60 --> 80.", fa_left, c_gray, 1, 0);
+		initPatchWords("FSpecial - Buffs, Nerfs, Bugfixes");
+		initPatchWords_ext("Tempo's FSpecial no longer auto-charges.
+		Dodge FSpecial has a larger hitbox, hitpause scaling 0.6 --> 0.8, and shorter travel distance.
+		Stun FSpecial extra hitpause 30 --> 50.
+		Fixed a bug where FSpecial would still retain Stun's effects even after the Chord ended.
+		It is no longer possible to open the Power Chord dial during FSpecial or DSpecial.", fa_left, c_gray, 1, 0);
+	}
+	else{
+		initPatchWords("Power Chords - Nerfs");
+		initPatchWords_ext("Jump Chord air speed 8 --> 7, air accel 0.4 --> 0.35, jump/djump heights 17/16 --> 16/15.
+		Buster damage multiplier 1.5 --> 1.4.", fa_left, c_gray, 1, 0);
+		initPatchWords("FSpecial - Bugfixes");
+		initPatchWords_ext("It is no longer possible to open the Power Chord dial during FSpecial or DSpecial.", fa_left, c_gray, 1, 0);
+	}
+	initPatchWords("DAir - Nerfs");
+	initPatchWords_ext("Sweetspot angle 280 --> 270.", fa_left, c_gray, 1, 0);
+	initPatchWords("USpecial - Adjustments");
+	initPatchWords_ext("Knockback 9/0.5 --> 8/0.55.", fa_left, c_gray, 1, 0);
+	
 	initPatch("1.16", "31 January, 2021");
 	if other.echo{
 		initPatchWords("Parity update to go along with Coda's.");
@@ -823,9 +848,18 @@ with phone{
 		initCFDBody("Damage Dealt: " + string(other.chord_objs[4].damage_multiplier) + "x
 		Knockback Dealt: " + string(other.chord_objs[4].launch_multiplier) + "x
 		Damage Taken: " + string(other.chord_objs[4].dtaken_multiplier) + "x");
+		
+		initCFDHeader("Reverse Chord");
+		initCFDBody("Damage Dealt: " + string(other.chord_objs[5].dtaken_multiplier) + "x
+		Knockback Taken: " + string(other.chord_objs[5].knockback_adj) + "x
+		Knockback Dealt: " + string(other.chord_objs[5].launch_multiplier) + "x");
 	}
 	
 	else{
+		initCFDHeader("Jump Chord");
+		initCFDBody("Damage Dealt: " + string(other.chord_objs[1].dtaken_multiplier) + "x
+		Knockback Taken: " + string(other.chord_objs[1].knockback_adj) + "x");
+		
 		initCFDHeader("Speed Chord");
 		initCFDBody("Damage Dealt: " + string(other.chord_objs[2].damage_multiplier) + "x
 		Knockback Dealt: " + string(other.chord_objs[2].launch_multiplier) + "x");

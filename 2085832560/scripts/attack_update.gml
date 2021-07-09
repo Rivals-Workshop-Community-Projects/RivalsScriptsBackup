@@ -8,7 +8,7 @@ if (attack == AT_DSPECIAL || attack == AT_FSPECIAL
 
 
 if !hitpause && attack == 49{
-	
+	  hitpause = false
 	    super_armor = false 
         soft_armor = 621
         

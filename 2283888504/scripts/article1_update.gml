@@ -425,9 +425,12 @@ if (state == 12){
 		}
 		
 		if dodge_chord{
-			x += 200 * spr_dir;
-			fastness = 16;
-			spawn_hit_fx(x + 32 * spr_dir, y, 143);
+			//x += 200 * spr_dir;
+			//fastness = 16;
+			x += 180 * spr_dir;								//community patch
+			fastness = 13;									// |
+			spawn_hit_fx(x + 40 * spr_dir, y - 15, 143);	// V
+			//spawn_hit_fx(x + 32 * spr_dir, y, 143);
 			sound_play(asset_get("sfx_ell_explosion_medium"))
 		}
 		
@@ -661,6 +664,14 @@ slide_follow = 0;
 
 
 #define projectileHitbox(atk)
+
+
+if !stun_chord{
+	with player_id{
+    	set_hitbox_value(AT_FSPECIAL, 3, HG_EFFECT, 0); // h
+    	set_hitbox_value(AT_FSPECIAL, 3, HG_EXTRA_HITPAUSE, 0);
+	}
+}
 
 if !instance_exists(hitbox) hitbox = noone;
 

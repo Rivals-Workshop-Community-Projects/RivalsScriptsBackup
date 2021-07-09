@@ -1,4 +1,27 @@
 /*
+-- V1.9 --
+Movement Changes:
+- Reduced Dash Speed (12.8->12.3)
+- Jump Speed Reduced to 7.2
+- Double Jump Speed Reduced to 8
+- Increased Knockback Adjustment (1->1.1)
+- Air Friction Reduced (0.07->0.04)
+- Max Fall Reduced (10->8)
+
+Balance Changes:
+- Fspecial now has more kbs (.8->1)
+- Fstrong now has more kbs (.8-1.2)
+- Ustrong now has more kbs (1->1.1)
+- Ustrong now goes through platforms
+- Dstrong now has more kbs (1->1.1)
+- Uspecial now has a smaller hitbox
+- Fspecial now has more knockback
+- You can now do the dtilt multihit with the right stick
+- You can now store the taunt projectile
+- You can now cancel fstrong into any special after enough time has passed
+(i.e. when you use it off the stage and cant get back)
+- You now loose your stored projectile on death
+
 -- V1.8 --
 
 Movement Changes:
@@ -22,7 +45,7 @@ Balance Changes:
 Cosmetic Changes:
 - Added lore to the munophone
 - Added tips to the munophone
-- Added Combat for *breathes in*: Truml Codec, Anguish Kirby, Otto , Steve, Feri, Hikaru, Rat, TCO, Toon Link, Wall-E, Moonchild,
+- Added Compat for *breathes in*: Truml Codec, Anguish Kirby, Otto , Steve, Feri, Hikaru, Rat, TCO, Toon Link, Wall-E, Moonchild,
 Amber, Agent N, Dracula, Miiverse, Callie (kinda, i only did one path)
 - Added an Añi alt (atleast i tried to)
 - Added Trans alt for pride month

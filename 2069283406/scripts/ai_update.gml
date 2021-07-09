@@ -1,5 +1,5 @@
 //ai_init - setting the basic AI attack behaviors
-if (get_training_cpu_action() == CPU_FIGHT){
+if (get_training_cpu_action() == CPU_FIGHT) && get_gameplay_time() > 120{
     
 
     if ai_target.state == PS_ATTACK_AIR or ai_target.state == PS_ATTACK_GROUND {
@@ -20,10 +20,13 @@ if state == PS_RESPAWN && visible{
 	move_cooldown[AT_TAUNT] = 0 ;
 	set_attack(AT_TAUNT)
 }
-if (can_attack and attack != (AT_TAUNT) and targetbusy and move_cooldown[AT_TAUNT] == 0){
-    taunt_pressed = true;
-    
-}
+
+
+
+
+
+
+
 if attack == AT_TAUNT {
 	down_down = true
 }
@@ -42,12 +45,6 @@ if ai_target.state_cat == SC_HITSTUN && fireon >= 3 && firerange > 100 && can_at
     	        attack_pressed = false;
 }
 
-if state_cat == SC_HITSTUN {
-	hsp /= 1.008
-	if x > room_width/2 - 400 and x < room_width/2 - 400 {
-		vsp += 0.4
-	} 
-}
 
     //This code is a Frankenstein of Otto's ai code and Ronalds ai code with additions of mine (Danilo-PJ#3122)
     
@@ -84,6 +81,62 @@ if state_cat == SC_HITSTUN {
     
     
     //------------------ Wait time
+
+    
+if "superTrue" in self {
+	
+if state == PS_DASH or state == PS_DASH_START or state == PS_DASH_TURN or state == PS_DASH_STOP {
+	can_attack = true
+}
+
+if state_cat != SC_HITSTUN {
+
+if state == PS_ATTACK_GROUND {
+	move_cooldown[attack] = 60
+}
+
+if window == 1 && window_timer <= 3 && (attack == AT_USTRONG or attack == AT_FSTRONG) && move_cooldown[AT_DSTRONG] == 0 {
+	set_attack(AT_DSTRONG)
+	window = 1
+	window_timer = 1
+}
+
+if can_attack && hitpause && attack != AT_USTRONG{
+	set_state(PS_IDLE)
+	state_timer = 1
+}
+
+if can_attack && hitpause && attack == AT_USTRONG{
+	set_attack(AT_USPECIAL)
+	window = 1 
+	window_timer = 0
+}
+
+}
+
+
+
+if (targetdamage == 20 && get_gameplay_time() > 120 && hitpause && state_cat != SC_HITSTUN){
+    taunt_pressed = true    
+}
+
+
+
+} else {
+	if (can_attack and attack != (AT_TAUNT) and targetbusy and move_cooldown[AT_TAUNT] == 0 && state_cat != SC_HITSTUN){
+    taunt_pressed = true;
+   }
+} 
+
+ if state_cat == SC_HITSTUN {
+	hsp /= 1.008
+	if x > room_width/2 - 400 and x < room_width/2 - 400 {
+		vsp += 0.4
+	} 
+	taunt_pressed = false
+	taunt_down = false
+} 
+   
     if(state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR){
     	attacking = true;
     	if wait_time == 0{
@@ -701,6 +754,7 @@ if state_cat == SC_HITSTUN {
 			predictlocTarget(10);
 			if (xtrag < x + 50 and xtrag > x - 50) and (y - 10 < ytrag and ytrag < y + char_height + 10){
 				set_attack(AT_DSPECIAL);
+				y -= 10
 			}
 			
 		}

@@ -644,6 +644,29 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	//1.9
+	initPatch("1.9", "4 July 2021");
+	initPatchWords_ext("Movement Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Reduced Dash Speed (12.8->12.3)
+	- Jump Speed Reduced to 7.2
+	- Double Jump Speed Reduced to 8
+	- Increased Knockback Adjustment (1->1.1)
+	- Air Friction Reduced (0.07->0.04)
+	- Max Fall Reduced (10->8)
+	");
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Fspecial now has more kbs (.8->1)
+	- Fstrong now has more kbs (.8-1.2)
+	- Ustrong now has more kbs (1->1.1)
+	- Ustrong now goes through platforms
+	- Dstrong now has more kbs (1->1.1)
+	- Uspecial now has a smaller hitbox
+	- Fspecial now has more knockback
+	- You can now do the dtilt multihit with the right stick
+	- You can now store the taunt projectile
+	- You can now cancel fstrong into any special after enough time has passed
+	(i.e. when you use it off the stage and cant get back)
+	- You now loose your stored projectile on death");
 	//1.8
 	initPatch("1.8", "17 June 2021");
 	initPatchWords_ext("Movement Changes:", fa_center, c_gray, 1, 0);

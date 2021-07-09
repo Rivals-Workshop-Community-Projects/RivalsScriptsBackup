@@ -357,6 +357,48 @@ with phone{
 	- UAir startup increased (10 -> 12)
 	- UAir base hitpause increased (7 -> 8)")
 	initPatchWords_ext("UAir change was bad, so I'm reverting it.", fa_left, c_gray, 1, 0);
+	
+	initPatch("2.9.5.5", "30 June, 2021");
+	initPatchWords("Buffs
+	
+	FTILT
+	- Startup Decreased (7 -> 6)
+	
+	FSTRONG
+	- Sourspot Base Knockback Increased (6 -> 7)
+	- Sourspot Knockback Scaling Increased (0.7 -> 1.0)
+	- Sourspot Angle Adjusted (50 -> 45)
+	
+	NSPECIAL
+	- Damage Increased (8 -> 10)
+	
+	DAIR
+	- Final Hit Angle Adjusted (60 -> 90)
+	
+	USTRONG
+	- Sweetspot Knockback Scaling Increased (1.10 -> 1.15)");
+	initPatchWords_ext("FTilt and FStrong saw little to no use from what I know, hopefully this encourages some more use from them? I also wanted to increase NSpecial's damage a bit due to a cooldown nerf. Finally, with this change to DAir, it might help with combos?", fa_left, c_gray, 1, 0);
+	initPatchWords("Nerfs
+	
+	DTILT
+	- Startup Increased (6 -> 7)
+	
+	UTILT
+	- Startup Increased (7 -> 9)
+	
+	NSPECIAL
+	- Cooldown Increased (115 -> 250)
+	
+	USTRONG
+	- Sweetspot Base Knockback Decreased (8 -> 7)
+	
+	FAir
+	- Sweetspot Base Knockback Decreased (7 -> 6)");
+	initPatchWords_ext("DTilt had no business being faster than FTilt, so I swapped their frame data. FAir's change was just to make it more in line with base cast values. I gave NSpecial a longer cooldown due to some complaints, and UTilt felt a little too good for how massive it was. UStrong got tanked slightly to give FStrong more focus, but it shouldnt be too big of a difference.", fa_left, c_gray, 1, 0);
+	initPatchWords("Misc.
+	
+	- Fixed a bug where parrying Reimu's Yin-Yang Orb would also reflect every other projectile on the screen.");
+	initPatchWords_ext("Pretty silly bug, pretty simple fix.", fa_left, c_gray, 1, 0);
 
 }
 

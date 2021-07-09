@@ -12,6 +12,8 @@ ncode3 = "she is capable of creating astra projection of herself."
 
 curse_target = 0
 
+superMove = 14
+
 rekarma = 0
 karma = 0
 karmacom = 0

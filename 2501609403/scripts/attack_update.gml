@@ -51,7 +51,7 @@ if attack == AT_USPECIAL {
 //Multihit Dtilt Teleport
 if attack == AT_DTILT {
     if (window == 2 && window_timer >= 3){
-        if (attack_pressed){
+        if (attack_pressed || down_stick_pressed){
             dtilt_start = true;
         }
     }
@@ -86,18 +86,23 @@ if (attack == AT_FSTRONG){
 	can_wall_jump = true;
 	if (window == 3 && shield_pressed || window == 4 && shield_pressed){
 		state = PS_PRATFALL
-	} 
-	if (attack == AT_FSTRONG){
+	}
     if (window == 4 && window_timer == 4) {
     	window_timer = 0
+    	fstrong_counter += 1;
         attack_end()
+    }
+    if (window == 4 && fstrong_counter >= 8 && fstrong_no_glow = false){
+    	fstrong_glow = true;
+    }
+    if (window == 4 && fstrong_cancel = true){
+		can_special = true; 	
     }
     if (window == 5){
     	set_hitbox_value(AT_FSTRONG, 5, HG_LIFETIME, 60); 
     }else{
     	reset_hitbox_value(AT_FSTRONG, 5, HG_LIFETIME); 
     }
-}
 }
 
 
@@ -194,6 +199,11 @@ if (attack == AT_DAIR) {
     	grabbed_player_obj = noone; 
     	grabbed_player_relative_x = 0;
     	grabbed_player_relative_y = 0;
+    }
+    if (window == 2){
+    	set_attack_value(AT_DAIR, AG_USES_CUSTOM_GRAVITY, 1);
+    } else {
+    	reset_attack_value(AT_DAIR, AG_USES_CUSTOM_GRAVITY);
     }
     if (window == 3){
     	move_cooldown[AT_DAIR] = 40;
@@ -737,6 +747,10 @@ if attack == AT_NSPECIAL {
                 case(7):
                     create_hitbox(AT_NSPECIAL,10,x+5*spr_dir,y-45)
                     break;
+                //Taunt
+                case(8):
+                    create_hitbox(AT_TAUNT,1,x+15*spr_dir,y-25)
+                    break;
             }
         if (jackpot == true){
             switch (jackpot_item){
@@ -756,6 +770,18 @@ if attack == AT_NSPECIAL {
     }
 }
 
+if (attack == AT_TAUNT){
+	if (window == 2 && window_timer >= 8){
+		if (shield_down){
+        	window = 5;
+        	nspecial_number = 8;
+        	window_timer = 0;
+        	proj_stored = true;
+        	store_timer = 8;
+        	store_timer2 = 2;
+		}
+	}
+}
 //BY LUKARU!!
 #define CorrectHurtboxes()
 {

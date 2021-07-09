@@ -35,7 +35,7 @@ switch (attack) {
         if (!free) {
             attack = AT_USPECIAL_GROUND;
             //skip some of the teleport's startup if this move is used as an attack cancel
-            if (has_hit_player && peacock_consecutive_cancelled_attacks > 0) { window = 2; }
+            if (has_hit_player && peacock_consecutive_cancelled_attacks > 0) { window = 1; }
         }
     break;
 }

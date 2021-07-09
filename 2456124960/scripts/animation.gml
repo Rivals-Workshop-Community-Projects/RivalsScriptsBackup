@@ -94,7 +94,7 @@ if (state == PS_LANDING_LAG) {
 	var maxFrames = get_attack_value( attack, AG_LANDING_LAG );
 	if (has_hit == 0) {maxFrames *= 1.5;}
 	
-	if (attack == AT_FAIR) {
+	if (attack == AT_FAIR && false) {
 		sprite_index = sprite_get("landinglag_fair_" + string(progressCheck));
 		if (progressCheck == 2) {
 			if (state_timer < maxFrames / 3) {

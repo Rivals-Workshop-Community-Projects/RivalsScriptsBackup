@@ -519,7 +519,8 @@ switch(window){
     	    hsp = clamp(hsp, -3, 3);
     	    can_fast_fall = false;
         }
-        fspecial_fully_charged = (fspecial_charge == fspecial_charge_max) || (echo && guitar.following);
+        //fspecial_fully_charged = (fspecial_charge == fspecial_charge_max) || (echo && guitar.following);
+        fspecial_fully_charged = (fspecial_charge == fspecial_charge_max); //community change
         break;
     case 3: //startup 2
         if fspecial_fully_charged && window_timer == 1 with guitar sound_play(asset_get("sfx_diamond_small_collect"));

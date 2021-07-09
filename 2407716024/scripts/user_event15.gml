@@ -428,6 +428,29 @@ with phone{
 	 * put the version number and full date.
 	 */
 	 
+	 	initPatch("1.8", "4 July, 2021");
+	
+	initPatchWords("Adjustments");
+	initPatchWords_ext("Slightly altered general stats:
+	-Increased falling and fastfall speed
+	-Slightly increased knockback weight
+	-Decresed dash speed", fa_left, c_gray, 1, 0);
+	
+	initPatchWords_ext("Fixed a palette bug that her gloves will change color in certian skins", fa_left, c_gray, 1, 0);
+
+	initPatchWords("Buffs");
+	initPatchWords_ext("Peacock can now teleport backwards with grounded USpecial", fa_left, c_gray, 1, 0);
+	initPatchWords_ext("Final Smash can now spray", fa_left, c_gray, 1, 0);
+	initPatchWords_ext("Increased UTilt base knockback", fa_left, c_gray, 1, 0);
+	initPatchWords_ext("Jab's 2nd hitbox now force flinches instead of knocking them off a bit", fa_left, c_gray, 1, 0);
+	
+	initPatchWords("Nerfs");
+	initPatchWords_ext("Weak attacks can no longer cancel out of the first frame after hitting someone", fa_left, c_gray, 1, 0);
+	initPatchWords_ext("All strong attacks now have slightly more startup lag", fa_left, c_gray, 1, 0);
+	initPatchWords_ext("Slightly increased FTilt startup and ending lag", fa_left, c_gray, 1, 0);
+	initPatchWords_ext("Grounded USpecial no longers starts at window 2 if you cancel an attack to it", fa_left, c_gray, 1, 0);
+	
+	 
 	initPatch("1.6", "16 March, 2021");
 	
 	initPatchWords("Adjustments");

@@ -3,6 +3,17 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+//Jab
+if (attack == AT_JAB){
+	if (window == 7){
+		if (window_timer == 2){
+			if (voiced == 1){
+				sound_play(vc_mario_wah);
+			}
+		}
+	}
+}
+
 //Dash Attack (Slide)
 if (attack == AT_DATTACK){
 	can_fast_fall = false;
@@ -10,6 +21,9 @@ if (attack == AT_DATTACK){
 		can_ustrong = true
 		if (window_timer == 5 && !free){
 			//spawn_hit_fx( x, y, 204 );
+			if (voiced == 1){
+				sound_play(vc_mario_yah);
+			}
 		}
 	}
 	if (da_cheat_active = false){
@@ -73,10 +87,18 @@ if (attack == AT_DTILT){
 	}
 }
 
-//Down Air (Stomp)
-//There's no code for this move in here, it's in hit_player.gml.
+//Forward Air: Forward Knuckle
+if (attack == AT_FAIR){
+	if (window == 1){
+		if (window_timer == 8){
+			if (voiced == 1){
+				sound_play(vc_mario_yah);
+			}
+		}
+	}
+}
 
-//Up Air
+//Up Air: Air Slash
 if (attack == AT_UAIR){
 	if (window == 2){
 		if (window_timer == 2 || window_timer == 3){
@@ -85,9 +107,17 @@ if (attack == AT_UAIR){
 	}
 }
 
+//Down Air (Stomp)
+//There's no code for this move in here, it's in hit_player.gml.
+
 //Forward Strong (Hammer)
 if (attack == AT_FSTRONG){
 	if (window == 2){
+		if (window_timer == 4){
+			if (voiced == 1){
+				sound_play(vc_mario_yah);
+			}
+		}
 		if (window_timer == 8){
 			shake_camera( 8, 4 )
 			sound_play(sfx_hammer_land);
@@ -145,6 +175,9 @@ if (attack == AT_USTRONG){
 	if (window == 2){
 		if (window_timer == 1){
 			set_window_value(AT_USTRONG, 3, AG_WINDOW_VSPEED, -9.5 + ustrong_charge);
+			if (voiced == 1){
+				sound_play(vc_mario_wah);
+			}
 		}
 		if (window_timer == 3){
 			window = 3
@@ -157,6 +190,17 @@ if (attack == AT_USTRONG){
 		ustrong_charge = 0
 		//set_window_value(AT_USTRONG, 3, AG_WINDOW_VSPEED, -9.5);
 		vsp = vsp + 0.125
+	}
+}
+
+//Down Strong: Sweep Kick
+if (attack == AT_DSTRONG){
+	if (window == 2){
+		if (window_timer == 2){
+			if (voiced == 1){
+				sound_play(vc_mario_haha);
+			}
+		}
 	}
 }
 
@@ -271,6 +315,18 @@ if (attack == AT_FSPECIAL){
 				//window_timer = 0
 			}
 		}
+		/*
+		if (attack_pressed == true){
+			spawn_hit_fx( x, y - 18, 302 );
+			vsp = -6
+			hsp = 0
+			sound_play(asset_get("sfx_blow_weak2"));
+			if (voiced == true){
+				sound_play(vc_mario_uhh);
+			}
+			set_state(PS_PRATFALL);
+		}
+		*/
 	}
 	if (window != 3){
 		can_jump = false;
@@ -293,6 +349,7 @@ if (attack == AT_FSPECIAL){
 		if (window_timer == 4){
 			hsp = 10 * spr_dir
 			vsp = -3.62
+			window_timer = 5
 		}
 		if (window_timer == 13){
 			hsp = 7.2 * spr_dir
@@ -317,6 +374,10 @@ if (attack == AT_FSPECIAL){
 					sound_play(sfx_land);
 				}
 			}
+		}
+		if (window_timer > 8 && !free){
+			window = 8
+			window_timer = 0
 		}
 	}
 	if (window == 8){
@@ -446,6 +507,12 @@ if (attack == AT_DSPECIAL){
 			set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 8);
 			set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.85);
 		}
+		if (window_timer == 4){
+			voicelinework = random_func( 0, 2, true );
+			if (voiced == 1 && voicelinework == 1){
+				sound_play(vc_mario_yeehaw);
+			}
+		}
 	}
 	if (window != 1 && tornadoair == true && !free){
 		set_state(PS_LANDING_LAG);
@@ -464,9 +531,9 @@ if (attack == AT_DSPECIAL){
 		if (tornadoboost == true && special_pressed && tornadoused == false){
 			//This checks if attack is pressed during the move. If it is pressed, Mario will gain some height.
 			if (tornadoair == false){
-				vsp = vsp - 6
+				vsp = vsp - 5.5
 			} else {
-				vsp = vsp - 6.5
+				vsp = vsp - 5.45
 			}
 			tornadoboost = false
 			tornadoboosttimes++;
@@ -538,6 +605,11 @@ if (attack == AT_TAUNT){
 		if (window_timer == 3){
 			//spawn_hit_fx( x + 190, y - 50, 148 );
 			//also 148
+		}
+		if (window_timer == 18){
+			if (voiced == 1){
+				sound_play(vc_mario_herewego);
+			}
 		}
 	}
 }

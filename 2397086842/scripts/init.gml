@@ -13,7 +13,9 @@ ncode3 = "as creating electric infused projectiles."
 voiced = 1 
 
 fs_char_chosen_final_smash = "custom";
+
 fs_char_chosen_trigger = "ori";
+
 fs_char_portrait_y = 115;
  
 shsp = 0

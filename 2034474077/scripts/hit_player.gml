@@ -29,6 +29,8 @@ switch(my_hitboxID.attack){
 			if(window < 8){
 				hit_player_obj.should_make_shockwave = false;
 			}
+			//hit_player_obj.x = lerp(hit_player_obj.x, (x + (40 * spr_dir) + hsp), 0.1)
+			//hit_player_obj.y = lerp(hit_player_obj.y, (y - 10 + vsp), 0.1)
 		}
 		break;
 

@@ -386,7 +386,6 @@ if attack == AT_DSPECIAL{
 
 if attack == AT_USPECIAL{
 	
-			move_cooldown[AT_USPECIAL] = 999 
 			
 	if window == 1 && window_timer == 1 && !hitpause {
 		prat_land_time = 10;

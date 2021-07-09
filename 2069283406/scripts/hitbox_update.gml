@@ -197,8 +197,8 @@ with oPlayer{
 
 			other.hitbox_timer = 0
 			shake_camera(2,4)
-		if move_cooldown[AT_UAIR] = 0 {	
-			move_cooldown[AT_UAIR] = 3
+		if move_cooldown[AT_DAIR] = 0 {	
+			move_cooldown[AT_DAIR] = 3
 		sound_play(asset_get("sfx_burnapplied"))
 		sound_play(sound_get("RI2"))
 					spawn_hit_fx(other.x - 10*spr_dir ,other.y - 10, ffireh)

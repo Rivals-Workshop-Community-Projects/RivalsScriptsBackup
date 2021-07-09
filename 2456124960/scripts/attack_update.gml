@@ -36,6 +36,10 @@ if (attack == AT_TAUNT){
 		actionMeterStatus = 1;
 		actionMeterFill += 2;
 	}
+	
+	if (window == 1 && window_timer == 17) {
+		sound_play(asset_get("sfx_land_med"));
+	}
 }
 
 if (attack == AT_FSTRONG && window == 2 && window_timer == 5) {sound_play(asset_get("sfx_bird_sidespecial_start"));}

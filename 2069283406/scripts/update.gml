@@ -596,6 +596,243 @@ if move_cooldown[AT_FSPECIAL_2] > 0 && hitpause{
 }
 if move_cooldown[AT_FSPECIAL_2] = 60 {
 	spawn_hit_fx(x,y,lighten)
+	sound_stop(sound_get("mesatsu"))
     sound_play(sound_get("mesatsu"),false,noone,1)
 }
+}
+
+if "superTrue" in self {
+if superTrue == 1 {
+	
+	if hit_player_obj == self {
+			var shortest_dist = 9999;
+			var shortest_id = noone;
+			
+			with (asset_get("oPlayer")) {
+				if (player != other.player) {
+					var curr_dist = point_distance(x,y,other.x,other.y);
+					if (curr_dist < shortest_dist) {
+						shortest_dist = curr_dist;
+						shortest_id = id;
+					}
+				}
+			}
+			hit_player_obj = shortest_id
+	}
+	
+	 superTrue = 0
+	 hit_player_obj.canUseCounterTimer = 60
+	 set_num_hitboxes(AT_DSTRONG, 0);
+	move_cooldown [AT_DSTRONG] = 0
+	move_cooldown [AT_NAIR] = 170 
+	
+	hit_player_obj.hitpause = 1
+	hit_player_obj.hitstop = 40
+	hit_player_obj.old_hsp = hit_player_obj.hsp
+	hit_player_obj.old_vsp = hit_player_obj.vsp
+	
+	set_attack_value(AT_FSTRONG, AG_CATEGORY, 2);
+	set_attack_value(AT_DSTRONG, AG_CATEGORY, 2);
+    set_attack_value(AT_USTRONG, AG_CATEGORY, 2);
+    set_attack_value(AT_DTILT, AG_CATEGORY, 2);
+    set_attack_value(AT_FTILT, AG_CATEGORY, 2);
+    set_attack_value(AT_UTILT, AG_CATEGORY, 2);
+    set_attack_value(AT_JAB, AG_CATEGORY, 2);
+
+
+set_attack(AT_DSTRONG) 
+window = 1
+window_timer = 0
+window = 1
+supery = y
+    sound_play(asset_get("sfx_burnconsume"),false,noone,1.2,0.9)
+    
+}    
+}
+
+if move_cooldown[AT_NAIR] > 110 {
+  vsp = 0
+  hsp = 0
+  y = supery
+}
+
+
+
+if move_cooldown[AT_NAIR] == 130 {
+	set_num_hitboxes(AT_DSTRONG, 4);
+	set_attack(AT_DSTRONG)
+	window = 5
+	window_timer = 0
+	    shunpo = 3
+		move_cooldown[AT_DSTRONG] = 20
+	    sound_play(sound_get("RZ"))
+	    spawn_hit_fx(x,y , senku)
+}
+
+
+if move_cooldown[AT_NAIR] == 110 {
+	move_cooldown[AT_NAIR] = 0
+		set_attack(AT_NAIR)
+		vsp = -5
+		hsp = 5*spr_dir
+	window = 1
+	window_timer = 0
+    
+	
+}
+
+if move_cooldown[AT_UAIR] > 0 {
+	hit_player_obj.canUseCounterTimer = 15
+	if move_cooldown[AT_UAIR] > 10 {
+		set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 1);
+		set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 1);
+		set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 1);
+		 set_hitbox_value(AT_JAB, 1, HG_DAMAGE, 1);
+		 set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 1);
+		 set_hitbox_value(AT_JAB, 3, HG_DAMAGE, 1);
+	   set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 1);
+	   set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 1);
+	   set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 1);
+		set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 0);
+		set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 0);
+		set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 0);
+		set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 0);
+		
+   hitpause = false
+	}
+	 	soft_armor = 999
+ 		draw_indicator = false
+ 		spawn_hit_fx(x + 100 - random_func(3,200,true), y + 120 - random_func(4,200,true), dsshadow )
+ 		
+	if move_cooldown[AT_UAIR] == 110 {
+		sound_play(sound_get("RZ"),false,noone,0.4,1.4 + random_func(1,10,true)/50)
+		set_attack(AT_JAB)
+		window = 4
+		window_timer = 0
+		x = hit_player_obj.x - 30*spr_dir
+		y = hit_player_obj.y
+		vsp = -5
+	}
+	
+	if move_cooldown[AT_UAIR] == 95 {
+		spr_dir *= -1
+		sound_play(sound_get("RZ"),false,noone,0.4,1.4 + random_func(1,10,true)/50)
+		set_attack(AT_FTILT)
+		window = 1
+		window_timer = 6
+		x = hit_player_obj.x - 30*spr_dir
+		y = hit_player_obj.y
+		vsp = -5
+	}	
+
+	if move_cooldown[AT_UAIR] == 85 {
+		spr_dir *= -1
+		sound_play(sound_get("RZ"),false,noone,0.4,1.4 + random_func(1,10,true)/50)
+		set_attack(AT_DTILT)
+		window = 1
+		window_timer = 6
+		x = hit_player_obj.x - 30*spr_dir
+		y = hit_player_obj.y - 20
+		vsp = -5
+	}	
+
+	if move_cooldown[AT_UAIR] == 75 {
+		spr_dir *= -1
+		sound_play(sound_get("RZ"),false,noone,0.4,1.4 + random_func(1,10,true)/50)
+		set_attack(AT_FAIR)
+		window = 2
+		window_timer = 0
+		x = hit_player_obj.x - 30*spr_dir
+		y = hit_player_obj.y - 20
+		vsp = -5
+	}
+
+	if move_cooldown[AT_UAIR] == 65 {
+		sound_play(sound_get("RZ"),false,noone,0.4,1.4 + random_func(1,10,true)/50)
+		set_attack(AT_BAIR)
+		window = 1
+		window_timer = 9
+		x = hit_player_obj.x + 30*spr_dir
+		y = hit_player_obj.y - 20
+		vsp = -5
+	}	
+
+	if move_cooldown[AT_UAIR] == 55 {
+		spr_dir *= -1
+		sound_play(sound_get("RZ"),false,noone,0.4,1.4 + random_func(1,10,true)/50)
+		set_attack(AT_FTILT)
+		window = 1
+		window_timer = 10
+		x = hit_player_obj.x - 30*spr_dir
+		y = hit_player_obj.y
+		vsp = -5
+	}
+
+	if move_cooldown[AT_UAIR] == 45 {
+		spr_dir *= -1
+		sound_play(sound_get("RZ"),false,noone,0.4,1.4 + random_func(1,10,true)/50)
+		set_attack(AT_UTILT)
+		window = 1
+		window_timer = 10
+		x = hit_player_obj.x - 20*spr_dir
+		y = hit_player_obj.y
+		vsp = -5
+	}
+	
+	if move_cooldown[AT_UAIR] == 35 {
+		spr_dir *= -1
+		sound_play(sound_get("RZ"),false,noone,0.4,1.4 + random_func(1,10,true)/50)
+		set_attack(AT_USTRONG)
+		window = 2
+		window_timer = 0
+		x = hit_player_obj.x - 20*spr_dir
+		y = hit_player_obj.y
+		vsp = -5
+	}
+
+	if move_cooldown[AT_UAIR] == 25 {
+		spr_dir *= -1
+		sound_play(sound_get("RZ"),false,noone,0.4,1.4 + random_func(1,10,true)/50)
+		set_attack(AT_DSTRONG)
+		window = 2
+		window_timer = 0
+		x = hit_player_obj.x - 20*spr_dir
+		y = hit_player_obj.y
+		vsp = -5
+	}
+	
+	if move_cooldown[AT_UAIR] == 10 {
+		  	hitstop += 20
+  			hit_player_obj.hitstop += 20
+  			    sound_play(sound_get("mesatsu"),false,noone,1)
+  		galx = x
+        galy = y
+  	    move_cooldown[AT_FSPECIAL_2] = 60 
+  	    move_cooldown[AT_NSPECIAL_2] = 120 
+  	    
+		set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 5);
+		set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 5);
+		set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 7);
+		set_hitbox_value(AT_JAB, 1, HG_DAMAGE, 3);
+		set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 2);
+		set_hitbox_value(AT_JAB, 3, HG_DAMAGE, 2);
+		set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 8);
+		set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 8);
+		set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 7);
+		set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 7);
+		set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 7);
+		set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 8);
+		set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 8);
+		set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 0);
+		set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 50);
+
+		spr_dir *= -1
+		sound_play(sound_get("RZ"),false,noone,0.4,1.4 + random_func(1,10,true)/50)
+		set_attack(AT_FSTRONG)
+		window = 2
+		window_timer = 0
+		x = hit_player_obj.x - 30*spr_dir
+		y = hit_player_obj.y
+	}
+ 
 }

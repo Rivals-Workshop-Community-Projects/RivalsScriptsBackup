@@ -12,6 +12,37 @@ if state == PS_DOUBLE_JUMP {
     }
 }
 
+//fstrong stuff
+
+if (attack != AT_FSTRONG || attack == AT_FSTRONG && window == 1 && window_timer == 1){
+	fstrong_counter = 0;
+	fstrong_glow = false;
+	fstrong_no_glow = false;
+	fstrong_glow_count = 0;
+	fstrong_cancel = false;
+}
+
+if (fstrong_glow_count > 0){
+	fstrong_glow_count -= 1;
+}
+
+if (fstrong_glow_count >= 9){
+	sound_play(asset_get("sfx_zetter_shine"));
+}
+
+if (fstrong_glow_count == 1){
+	fstrong_cancel = true;
+}
+
+if (attack == AT_FSTRONG){
+	if (fstrong_glow == true){
+		fstrong_glow = false
+		fstrong_no_glow = true
+		fstrong_glow_count = 10;
+	}
+}
+
+
 //Movement Sound Effects
 if (state != PS_DASH_START) || (state != PS_IDLE){
     dash_sfx = true;

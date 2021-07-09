@@ -1,9 +1,10 @@
 //ai_update - called every frame for this character as a CPU
-if (get_training_cpu_action() == CPU_FIGHT){
+if (get_training_cpu_action() == CPU_FIGHT) && get_gameplay_time() > 120{
 rangedtimer -= 1
 xdist = abs(ai_target.x - x);
 ydist = abs(ai_target.y - y);
 damage = get_player_damage( ai_target.player );
+targetdamage = get_player_damage( ai_target.player );
 facing = false;
 cuttertimer -= 1
 if 90 > xdist and 90 > ydist AIwait -= 1
@@ -12,6 +13,31 @@ fsmashpercent = 0
 dsmashpercent = 0
 uspecialpercent = 0
 bairpercent = 0
+
+if "superTrue" in self {
+	
+if state == PS_DASH or state == PS_DASH_START or state == PS_DASH_TURN or state == PS_DASH_STOP {
+	can_attack = true
+}
+
+if can_attack && hitpause {
+	set_state(PS_IDLE)
+	state_timer = 1
+	if !free {
+		hsp = (ai_target.x - x)/6
+	}
+}
+
+if (targetdamage == 20 && get_gameplay_time() > 120 && hitpause && state_cat != SC_HITSTUN){
+    taunt_pressed = true    
+}
+
+
+} else {
+	if (can_attack and attack != (AT_TAUNT) and targetbusy and move_cooldown[AT_TAUNT] == 0){
+    taunt_pressed = true;
+    }
+}
 
 if (ai_target.state == PS_DEAD or ai_target.state == PS_RESPAWN){
     targetbusy = true;
@@ -30,9 +56,7 @@ if state == PS_RESPAWN && visible {
 	set_attack(AT_TAUNT)
 }
 
-if (can_attack and attack != (AT_TAUNT) and targetbusy and move_cooldown[AT_TAUNT] == 0){
-    taunt_pressed = true;
-}
+
 
 if get_gameplay_time() > 100 and !targetbusy or state_cat = SC_HITSTUN {
 	move_cooldown[AT_TAUNT] = 80 ;

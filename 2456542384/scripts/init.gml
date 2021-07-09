@@ -122,6 +122,7 @@ pratfall_anim_speed = 0.25;
 double_jump_time    = 36;		// 24   -  40
 walljump_time       = 32;		// 18   -  32
 wall_frames         = 2;		// may or may not actually work... dan pls
+can_wall_cling      = true;     //wall cling
 
 // Parry
 dodge_startup_frames    = 1;

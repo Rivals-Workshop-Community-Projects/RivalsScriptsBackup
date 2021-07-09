@@ -23,6 +23,8 @@ finalattack = 0
 finalframe = 0
 finaldir = 0
 
+superMove = 14
+
 shsp = 0
 svsp = 0
 

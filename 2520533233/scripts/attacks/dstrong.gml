@@ -58,7 +58,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, sound_get("hisou_hit4"));
 
 //weak rock
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_DSTRONG, 2, HG_HIT_LOCKOUT, 2);
+set_hitbox_value(AT_DSTRONG, 2, HG_HIT_LOCKOUT, 8);
 set_hitbox_value(AT_DSTRONG, 2, HG_LIFETIME, 4);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW, 99);
@@ -114,12 +114,13 @@ set_hitbox_value(AT_DSTRONG, 3, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, 193 );
 set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(AT_DSTRONG, 3, HG_HIT_LOCKOUT, 8);
 
 
 //medium rock
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSTRONG, 4, HG_LIFETIME, 4);
-set_hitbox_value(AT_DSTRONG, 4, HG_HIT_LOCKOUT, 2);
+set_hitbox_value(AT_DSTRONG, 4, HG_HIT_LOCKOUT, 8);
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_DSTRONG, 4, HG_WINDOW, 99);
 set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_MASK, -1);
@@ -173,6 +174,7 @@ set_hitbox_value(AT_DSTRONG, 5, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DSTRONG, 5, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, 193 );
 set_hitbox_value(AT_DSTRONG, 5, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(AT_DSTRONG, 5, HG_HIT_LOCKOUT, 8);
 
 
 //large rock
@@ -203,6 +205,7 @@ set_hitbox_value(AT_DSTRONG, 6, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSTRONG, 6, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_DSTRONG, 6, HG_VISUAL_EFFECT, 193 );
 set_hitbox_value(AT_DSTRONG, 6, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(AT_DSTRONG, 6, HG_HIT_LOCKOUT, 8);
 
 //////////////////////////////////////////////////////////////
 /*

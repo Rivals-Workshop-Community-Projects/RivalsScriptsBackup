@@ -26,7 +26,7 @@ if (draw_alpha < 1)
 
 
 // To prevent the use of the attack while the orb is present
-player_id.move_cooldown[AT_NSPECIAL] = 115;
+player_id.move_cooldown[AT_NSPECIAL] = 250;
 
 var bounce = false;
 var damageless_bounce = false;

@@ -542,6 +542,43 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	 initPatch("1.1.5", "9, July 2021");
+	 initPatchWords("1.1.5
+	 Taking back some power from install today.
+
+Made various performance optimizations that shouldn't really have a noticeable impact at all.(Could cause new bugs though.)
+
+Fixed a bug where Tenshi could summon rock twice in the same air time with usepcial if hit during the middle part of uspecial.
+
+Fixed a bug where using the air fspecial throw in install would not put fspecial on cooldown.
+
+Adjustments:
+
+-Dstrong: Rock Hit Lockout: 2 > 8 (Rocks can no longer combo into themselves 50 times for 400% or do 50% if all 3 connect. Yes it was still happening ;~;)
+
++DAttack: Reverted multihit correction for first hit only of dash attack. (People were dropping out, especially with the increased speed in install.)
+|DAttack: Multihit Base Hitpause: 4 > 3
+|Dattack: Multihit Hitpause Scaling: .25 > .1 
+|Dattack: Initial Hit Hitpause Scaling: .4 > .1
+(Its not strong anymore. Shouldn't feel like a cutscene getting hit by this anymore.)
+
+Fstrong Lv 3: Hit 1: Width: 114 > 144
+Fstrong Lv 3: Hit 2: Y offset: -62 > -52
+(Lv 3 fstrong now better matches the visual)
+
+Nerfs:
+
+-Install: Fspecial Air Throw: Angle: -45 > -25
+-Install: Fspecial Air Throw: Base Knockback: 8 > 5
+
+-Install: Strongs now start at level 2 instead of level 3.")
+	 
+	 initPatch("1.1.4", "6, July 2021");
+	 initPatchWords("1.1.4
+
+Bugfix:
+Fixed a bug where Tenshi could uspecial twice if rock cooldown ended during the last window of uspecial.
+Fixed a bug where Tenshi would stick to platforms if using uspecial from underneath them.");
 	 initPatch("1.1.3", "5, July 2021");
 	initPatchWords("1.1.3
 

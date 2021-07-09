@@ -110,6 +110,7 @@ has_suplex = true;
 ultupper = 0;                       //Ultimate Uppercut charge
 ultupperflash = -1;                 //(gonna be honest i dont remember what this one does but its probably important)
 shinetimer = 0;                     //used for when the player glows when they have Ult Upper charged fully
+can_final_spark = false;                    //whether the final spark sound should play
 shovel_knight_exists = false;       //see no evil
 if(get_training_cpu_action() == CPU_FIGHT){
     practice = false;               //whether or not you're in training mode

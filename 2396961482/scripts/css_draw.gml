@@ -2,7 +2,7 @@
 
 var temp_x = x + 8;
 var temp_y = y + 9;
-var numAlts = 31;
+var numAlts = 32;
 
 patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1);
 image_alpha = max(image_alpha-0.02, 0);
@@ -55,7 +55,7 @@ alt_name[27] = "Trans Rights";
 alt_name[28] = "Sans Rights";
 alt_name[29] = "You're Going to Brazil";
 alt_name[30] = "Top 8 Zora";
-
+alt_name[31] = "Top 8 Jacklom";
 
 draw_set_halign(fa_right);
 textDraw(temp_x + 198, temp_y + 106, "fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);

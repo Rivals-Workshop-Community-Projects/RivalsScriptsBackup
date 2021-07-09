@@ -108,6 +108,7 @@ frog_deathtimer = -1;
 fspecial_charge = 0;
 frog_pausetime = 0;
 frog_movetimer = 0;
+frogjump = 0;
 
 detached_cooldown = 0
 
@@ -142,6 +143,10 @@ fs_char_attack_index = 49;
 fs_ball_offset_x = -50;
 fs_ball_offset_y = -32;
 finalhitsprite = 0;
+
+if ("superTrue" in self){
+    set_hitbox_value(49, 2, HG_DAMAGE, 75);
+}
 
 
 user_event(14);

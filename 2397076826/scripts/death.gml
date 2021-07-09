@@ -6,6 +6,13 @@ smark = 0
 		fspechit2 = 0
 cloneout = 0
 clonetime = 0
+
+karma = 0
+karmatimer = 0
+karmacom = 0
+admw = 0
+admb = 0
+
 with (asset_get("pHitBox")) {
 if(player_id == other.id) {
     destroyed = true;

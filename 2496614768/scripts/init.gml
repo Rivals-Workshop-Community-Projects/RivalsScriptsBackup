@@ -12,6 +12,8 @@ ncode3 = "with his ex-boss Mr.Green."
 shsp = 0
 svsp = 0
 
+superMove = 14
+
 countered = 0
 victim = 0
 

@@ -42,7 +42,7 @@ set_color_profile_slot( 1, 5, 45, 45, 45 ); //pants/other
 set_color_profile_slot( 1, 6, 255, 220, 138 ); //hair
 
 // gunner
-set_color_profile_slot( 2, 0, 254, 191, 75 ); //shirt
+set_color_profile_slot( 2, 0, 250, 188, 74 ); //shirt
 set_color_profile_slot( 2, 1, 197, 193, 196 ); //shoes
 set_color_profile_slot( 2, 2, 197, 193, 196 ); //belt
 set_color_profile_slot( 2, 3, 255, 213, 162 ); //skin
@@ -105,7 +105,7 @@ set_color_profile_slot( 8, 5, 33, 37, 40 ); //pants/other
 set_color_profile_slot( 8, 6, 56, 217, 216 ); //hair
 
 // purple :)
-set_color_profile_slot( 9, 0, 114, 0, 211 ); //shirt
+set_color_profile_slot( 9, 0, 136, 54, 204 ); //shirt
 set_color_profile_slot( 9, 1, 255, 107, 235 ); //shoes
 set_color_profile_slot( 9, 2, 255, 107, 235 ); //belt
 set_color_profile_slot( 9, 3, 255, 213, 162 ); //skin

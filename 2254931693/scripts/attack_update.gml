@@ -424,7 +424,6 @@ if (window = 3){
  
  if (window = 9 && window_timer = 1){
     initial_invince = 0;
- create_hitbox(49, 2, hit_player_obj.x, hit_player_obj.y - 30);
 
 }
 

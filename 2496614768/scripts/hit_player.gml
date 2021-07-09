@@ -13,6 +13,9 @@ if my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num == 5  {
 	jabhit = 1
 }
 
+if my_hitboxID.attack == AT_JAB  {
+   hit_player_obj.x += floor((x + 50*spr_dir - hit_player_obj.x)/4)
+}
 
 shocktimer = 300
 }

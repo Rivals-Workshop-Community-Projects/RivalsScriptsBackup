@@ -94,7 +94,9 @@ if (my_hitboxID.attack == AT_USPECIAL) {
 	//-The opponent is in hitstun
 	//-The player did not get parried, and
 	//-The opponent is not a Forsburn clone.
-
+	if !can_use_uspecial { //now you get uspecial back whenever you hit em
+	   can_use_uspecial = true;
+	}
 	if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 	  && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)
     	  && was_parried == false
@@ -103,9 +105,6 @@ if (my_hitboxID.attack == AT_USPECIAL) {
 	    set_attack_value(AT_USPECIAL,AG_NUM_WINDOWS,5);
 	    //make launcher spike if target is above 50%
 	    if get_player_damage(hit_player_obj.player) >= 50 {
-	    	if !can_use_uspecial {
-	    		can_use_uspecial = true;
-	    	}
 	    	set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE, 270);
 	    }
 	    if window == 2 {
@@ -170,7 +169,10 @@ if (my_hitboxID.attack == AT_DSPECIAL) {
 			var new_grab_distance = point_distance(dros_flower.x, dros_flower.y,     hit_player_obj.x,     hit_player_obj.y);
 			if (new_grab_distance < old_grab_distance) { dros_flower.fly_grabbed_player_obj = hit_player_obj; }
 		}
-	
+		//change grab duration based on grabbed player %
+		with (dros_flower) {
+			fly_hold_time = fly_hold_time_base + floor(get_player_damage(fly_grabbed_player_obj.player)/3)
+		}
 	}
 }else {
 	if instance_exists(dros_flower) && dros_flower.fly_grabbed_player_obj == hit_player_obj {

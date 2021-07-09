@@ -10,6 +10,7 @@ if admw < 0 {
 }
 
 
+if karmatimer < 2 {
 switch admw {
 
     case 0 :
@@ -69,7 +70,15 @@ switch admw {
 
 }
 
-
+} else {
+	
+	   with (pHitBox) {
+		     if player_id == other.id {
+		     	damage = hitpause*2
+		     	extra_hitpause = 20
+  		     }
+  	    }
+}
 /////
 
 //if(get_gameplay_time() == 1){
@@ -307,8 +316,11 @@ if !free or state == PS_WALL_JUMP {
 	move_cooldown[AT_NSPECIAL] = 0;
 	move_cooldown[AT_USPECIAL] = 0;
 }
-
-if admb >= 3 && admw >= 4  {
+if "superTrue" in self {
+if superTrue == 1 {
+	
+	superTrue = 0
+	
 	if  get_player_color(player) == 5 {
     sound_play(sound_get("CARAMELFN"))
     }
@@ -325,12 +337,12 @@ if admb >= 3 && admw >= 4  {
    
 
   	    
-    admb = -1
-    admw = -1
+
     karmatimer = 360
     
 
   	    
+}
 }
 
 if karmatimer > 2 {
@@ -368,7 +380,7 @@ if (karmatimer > 2) && !hitpause {
 
  if get_player_damage(player) > 0 {
 
- 	  take_damage( player, -1 , -2)
+ 	  //take_damage( player, -1 , -2)
       
  	  karmacom += 2
  }
@@ -409,7 +421,7 @@ karmatimer = 1
     var karmaredis = karma
     var karmaredis2 = floor(karmacom)
 
-		take_damage( player, -1 , karmacom)
+		///take_damage( player, -1 , karmacom)
 
 }
 

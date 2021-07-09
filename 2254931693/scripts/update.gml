@@ -191,9 +191,6 @@ if (family = 1){
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_SFX, sound_get("family"));
 }
 
-
-
-
 //character/stage support
 
 

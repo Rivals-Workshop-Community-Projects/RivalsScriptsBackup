@@ -121,8 +121,7 @@ switch(attack){
                 charge_fx.image_alpha = 0;
             }
         }
-        
-        if(window == 2 and special_down and tenshi_fsp_charge < 80 * (1+dragon_install)){
+        else if(window == 2 and special_down and tenshi_fsp_charge < 80 * (1+dragon_install)){
             //spawn_hit_fx(x, y, fspec_hitfx);
             if(dragon_install){
                 shake_camera(floor(tenshi_fsp_charge/20),4);
@@ -135,7 +134,7 @@ switch(attack){
             tenshi_fsp_charge++;
             white_flash_timer_set(8);
         }
-        if(window == 3){
+        else if(window == 3){
             if(window_timer == 1){
                 fspec_start = free;
                 if(free){
@@ -174,7 +173,7 @@ switch(attack){
             	}
             }
         }
-        if(window == 4 and window_timer = 1){
+        else if(window == 4 and window_timer = 1){
         	if(free){
         		hsp -= spr_dir*5;
         	} else {
@@ -194,6 +193,9 @@ switch(attack){
             }
         } else if (free and window > 2){
         	if(special_pressed and dragon_install){
+        		if(fspec_start){
+        			move_cooldown[AT_FSPECIAL] = 20000;
+        		}
 				window = 0;
 				window_timer = 0;
             	attack = AT_FSPECIAL_2;
@@ -202,7 +204,7 @@ switch(attack){
         	
         	if(place_meeting(x, y, asset_get("par_jumpthrough"))){
         		can_jump = true;
-        		if(jump_down and djumps == 0){
+        		if(jump_down){
         			if(abs(hsp) > 8 and !dragon_install){
         				hsp = spr_dir *8;
         			}
@@ -229,6 +231,8 @@ switch(attack){
         if(window == 1 and window_timer == 6){
         	y_goal = y;
         	if(can_move_rock and can_rock and !uspec_feint){
+        		uspecial_summon = true;
+        		can_move_rock = false;
             	if(!free){
             	    y_goal = floor(room_height*.33);
             	    spawn_base_dust(x, y, "jump", 0);
@@ -255,6 +259,7 @@ switch(attack){
             	    tenshi_uspecial_rock.rock_state = ROCK.INIT;
             	}
         	} else {
+        		uspecial_summon = false;
         		spawn_base_dust(x, y, "doublejump", 0);
         		vsp = -10;
         	}
@@ -263,17 +268,15 @@ switch(attack){
         	y = lerp(y, y_goal, .1);
         }
         
-        if(window == 2 and tenshi_uspecial_rock != noone and free and can_rock and can_move_rock and !uspec_feint){
+        if(window == 2 and tenshi_uspecial_rock != noone and uspecial_summon and !uspec_feint and tenshi_uspecial_rock.rock_state == ROCK.MOVE){
             y = lerp(y, y_goal, .2);
             vsp = vsp < 0 ? vsp : 0;
             window_timer = 1;
         }
         if(window == 3 and window_timer == 6){
-        	if(rock_proj != noone or !can_move_rock or !can_rock or uspec_feint){
+        	if(rock_proj != noone or !uspecial_summon or uspec_feint){
         		
         		set_state(PS_PRATFALL);
-        	} else { 
-        		can_move_rock = false;
         	}
         }
         break;
@@ -479,7 +482,7 @@ switch(attack){
     	}
     
     	if(window == 1 and window_timer == 7){
-    		charge_level = dragon_install * 2;
+    		charge_level = dragon_install;
     		var cfx = instance_create(x, y, "obj_article2");
     		cfx.visible =0;
     		cfx.fx_type = FX.dstrong_charge;
@@ -730,7 +733,7 @@ switch(attack){
     
     
     	if(window == 1 and window_timer == 10){
-    		charge_level = dragon_install * 2;
+    		charge_level = dragon_install;
     		var cfx = instance_create(x, y, "obj_article2");
     		cfx.visible =0;
     		cfx.fx_type = FX.ustrong_charge;
@@ -815,7 +818,7 @@ switch(attack){
     	}
     
     	if(window == 1 and window_timer == 8){
-    		charge_level = dragon_install * 2;
+    		charge_level = dragon_install;
     		var cfx = instance_create(x-spr_dir*40, y+16, "obj_article2");
     		cfx.visible =0;
     		cfx.fx_type = FX.fstrong_charge;
@@ -872,13 +875,13 @@ switch(attack){
 				case 2:
 				    set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 70);
 					set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_Y, -32);
-					set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 114);
+					set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 144);
 					set_hitbox_value(AT_FSTRONG, 1, HG_HEIGHT, 74);
 					set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 6);
 					set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.01);
 				
 					set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X, 80);
-					set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_Y, -62);
+					set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_Y, -52);
 					set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 124);
 					set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 104);
 					set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 12);

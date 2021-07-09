@@ -21,6 +21,8 @@ ink = 100
 drip_sound = sound_play(sound_get("drip"))
 sound_stop(drip_sound)
 
+superMove = 14
+
 gotink = 0
 isyellow = 0
 summon = 0

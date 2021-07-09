@@ -387,14 +387,9 @@ with phone{
 	initTip("Fspecial");
 	initTipWords("FSpecial is a quick dash.
 	
-	If it hits a player, it transitions into a flashy cutscene.");
+	If it hits a player or wraith, it transitions into a flashy cutscene (without pratfall).");
 	
-	initTip("Nspecial: Hit it with Fspecial!");
-	initTipWords("FSpecial has pratfall, unless you hit something. This includes the wraith!
-	
-	Hit wraiths to not go into pratfall when using Fspecial offstage");
-	
-	
+
 	
 	
 	
@@ -518,7 +513,31 @@ with phone{
 	initPatchWords("Fnuuy joke
 	- waog");
 	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0); */
-		initPatch("1.8", "24 June, 2021");
+		initPatch("1.9", "8 July, 2021");
+		
+			initPatchWords_ext("AUGHHHH", fa_center, c_white, 0, 0);
+initPatchWords_ext("-fspecial initial hitbox smaller
+~fspecial initial dash goes further
+~fspecial cutscene goes much less far
++fspecial final hit bkb 5-6
++fspecial final hit kbs 0.85-1
++fspecial startup 14-12
+-fspecial endlag 30-34
++fspecial cutscene now activates on hitting a wraith
+~fspecial no longer checks for blastzones
+-cutscene endlag has more aerial friction
+~fspecial gravity now scales from 0.1 to 0.6 throughout the dash endlag
+~fspecial aerial friction scales from 0.25 to 0 throughout the dash endlag
+
++pratfall accel 0.85-1
+
+
+
+", fa_left, c_white, 0, 0);
+	
+	
+	
+		initPatch("1.8", "7 July, 2021");
 		
 			initPatchWords_ext("Weeklies pls...?", fa_center, c_white, 0, 0);
 initPatchWords_ext("Alt names! Guess 'em all! They are cryptic!

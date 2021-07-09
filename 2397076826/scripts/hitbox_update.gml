@@ -37,9 +37,15 @@ if attack == AT_USPECIAL  {
 
 if attack == AT_DSPECIAL && hbox_num == 1{
 
+if player_id.state == PS_PARRY {
+	x += (floor((player_id.x - x)/10))
+	y += (floor((player_id.y - y)/10))
+
+}
+
 if hitbox_timer = 1 {
-	vsp = player_id.vsp
-	hsp = player_id.hsp
+	vsp = 0
+	hsp = 0
 }
 	nearbyhitbox = collision_circle( x-12, y-12, 34, asset_get("pHitBox"), true, true ) 
 	
@@ -228,10 +234,10 @@ if player_id.attacking and player_id.attack = AT_DSPECIAL && player_id.cloneout 
     if player_id.window == 1 {
     	vsp /= 2
     }	
-        if free {
-      vsp -= 0.2
+        if free && vsp > -4{
+      vsp -= 0.5
         }
-      hsp /= 1.1
+      hsp /= 1.07
     }
             
     }

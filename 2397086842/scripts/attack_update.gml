@@ -10,6 +10,10 @@ if !hitpause {
     
     if attack == 49 {
         
+        if window > 1 {
+        	hitpause = false
+        }
+        
         if window == 1 {
             
             if window_timer == 2 {

@@ -17,7 +17,7 @@ walk_accel = 0.2;
 walk_turn_time = 8;
 initial_dash_time = 6;
 initial_dash_speed = 5;
-dash_speed = 6;
+dash_speed = 5.4;
 dash_turn_time = 16;
 dash_turn_accel = 1.2;
 dash_stop_time = 4;
@@ -41,11 +41,11 @@ double_jump_time = 32; //the number of frames to play the djump animation. Can't
 walljump_hsp = 5;
 walljump_vsp = 9;
 walljump_time = 32;
-max_fall = 10; //maximum fall speed without fastfalling
-fast_fall = 13; //fast fall speed
+max_fall = 12; //maximum fall speed without fastfalling
+fast_fall = 14; //fast fall speed
 gravity_speed = .50;
 hitstun_grav = .45;
-knockback_adj = 1.05; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.02; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 3;

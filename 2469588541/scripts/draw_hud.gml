@@ -208,6 +208,13 @@ if ("practice" in self)
 						AddText("UAir landing lag 8 -> 6");
 						AddText("UAir Sourspot BKB 4 -> 5");
 						break;
+					case 11:
+						AddText("v1.11 - 2 Jul 2021");
+						AddText("");
+						AddText("UAir - Removed Sweetest sweetspot");
+						AddText("");
+						AddText("Replaced Weeb alt with Sai M alt");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

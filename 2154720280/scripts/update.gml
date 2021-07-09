@@ -382,6 +382,7 @@ if get_player_color(player) == 11 {
 
 if "superTrue" in self {
 if superTrue == 1 {
+	
 	 superTrue = 0
 	 		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -3);
 			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_VSPEED, -4.3);
@@ -400,10 +401,15 @@ if superTrue == 1 {
 }
 
 if move_cooldown [AT_FTILT] > 1 {
+	
+	if state_cat == SC_HITSTUN {
+		move_cooldown [AT_FTILT] = 0
+	}
 		 hit_player_obj.canUseCounterTimer = 15
 	state_timer = 0
 	can_move = false
 	supply = 20
+	batt = 4
 	if free {
 		vsp -= 0.35
 	}

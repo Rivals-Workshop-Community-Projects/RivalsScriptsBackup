@@ -70,11 +70,12 @@ set_window_value(AT_FSPECIAL, 7, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 15);
 
-//Canceling the move. Lol!
+//MORE ENDLAG WOOOOOOOOOOOOOOOOOOOOOO
 set_window_value(AT_FSPECIAL, 8, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 8, AG_WINDOW_LENGTH, 10);
-set_window_value(AT_FSPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_FSPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, 13);
+set_window_value(AT_FSPECIAL, 8, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_FSPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_FSPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, 17);
+set_window_value(AT_FSPECIAL, 8, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_FSPECIAL, 2);
 

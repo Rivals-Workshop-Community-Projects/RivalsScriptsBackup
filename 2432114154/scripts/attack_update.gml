@@ -461,6 +461,10 @@ if get_player_color(player) == 10 {
          }
         }
         
+        if attack == AT_DSTRONG && !hitpause && window == 3 && window_timer < 4 && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN {
+        	hit_player_obj.hsp = (floor(x - 40*spr_dir - hit_player_obj.x)/4)
+        	hit_player_obj.vsp = (floor(y - 20 - hit_player_obj.y)/4)
+        }   
         
         if attack == AT_DSTRONG or attack == AT_FSTRONG {
 

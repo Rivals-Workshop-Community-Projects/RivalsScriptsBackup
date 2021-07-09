@@ -206,6 +206,78 @@ if fspecCooldown > 0 {
     fspecCooldown--;
 }
 
+if cubeCooldown < cubeCooldownMax {
+	cubeCooldown++;
+}
+
+//no explanation needed
+if always_holding_rock {
+	holdingCube = true;
+	
+	if (state == PS_IDLE || state == PS_WALK || state == PS_DASH || state == PS_FIRST_JUMP || state == PS_CROUCH || state == PS_IDLE_AIR) && (attack_down || special_down) {
+		if free {
+			set_state(PS_ATTACK_AIR)
+		} else {
+			set_state(PS_ATTACK_GROUND)
+		}
+		
+		if (down_down && !up_down) {
+	        attack = AT_DTHROW;
+	        if has_rune("J") {
+	            throwHsp = 0;
+	            throwVsp = 11;
+	        } else {
+	            throwHsp = 0;
+	            throwVsp = 8;
+	        }
+	        bounceHsp = 0;
+	        bounceVsp = -6;
+	    } else if (left_down && !right_down) || (right_down && !left_down) {
+	        if (left_down && !right_down) {
+	            spr_dir = -1;
+	        } else {
+	        	spr_dir = 1
+	        }
+	        attack = AT_FTHROW;
+	        if has_rune("J") {
+	            throwHsp = 15;
+	            throwVsp = -3;
+	        } else {
+	            throwHsp = 11;
+	            throwVsp = -2;
+	        }
+	        bounceHsp = -5;
+	        bounceVsp = -3;
+	    } else if (up_down && !down_down) {
+	        attack = AT_UTHROW;
+	        if has_rune("J") {
+	            throwHsp = 0;
+	            throwVsp = -15;
+	        } else {
+	            throwHsp = 0;
+	            throwVsp = -12;
+	        }
+	        bounceHsp = 0;
+	        bounceVsp = -6;
+	    } else {
+	        attack = AT_FTHROW;
+	        if has_rune("J") {
+	            throwHsp = 7;
+	            throwVsp = -12;
+	        } else {
+	            throwHsp = 5;
+	            throwVsp = -9;
+	        }
+	        bounceHsp = -4;
+	        bounceVsp = -6;
+	    }
+	    
+	    
+	    
+	    
+	}
+}
+
 if !((attack == AT_NSPECIAL || attack == AT_DSPECIAL_2) && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)) {
     sound_stop(sound_get("compact"));
     sound_stop(sound_get("compact1"));
@@ -473,3 +545,11 @@ if fspecCooldown > 0 {
 	}
 }
 */
+
+//uspecial multihits
+with pHitBox {
+	if player_id == other.id && ("grabID" in self) {
+		grabID.x = lerp(grabID.x, x, 0.2);
+		grabID.y = lerp(grabID.y, y + 20, 0.2);
+	}
+}

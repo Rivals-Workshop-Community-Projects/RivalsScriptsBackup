@@ -10,7 +10,7 @@ if !instance_exists(hit_player_obj){
 hit_player_obj = self
 }
 
-if visible && free && !attacking && can_attack && taunt_pressed {
+if visible && free && !attacking && can_attack && taunt_pressed && down_down{
 	    		set_attack(AT_TAUNT)
 	    		window = 2
 	    		window_timer = 0
@@ -197,7 +197,7 @@ if timebreak > 0 {
 	      		
 	      	   	if other.timebreak > (other.timebreakmax - 30) {
 	      	    	x -= floor((other.timebreak - (other.timebreakmax - 30)))/5*spr_dir
-	      	    	y -= floor((other.timebreak - (other.timebreakmax - 30)))/6
+	      	    	y -= floor((other.timebreak - (other.timebreakmax - 30)))/20
 	      		}
 	      		
 	      		x -= (1 - (get_gameplay_time()%2)*2)*2
@@ -377,6 +377,37 @@ if (state == PS_PARRY)  && state_timer == 1 {
 
 }
 
+if "superTrue" in self {
+if superTrue == 1 {
+	
+	superTrue = 0
+    hit_player_obj.canUseCounterTimer = 400
+	
+	move_cooldown[AT_DSPECIAL] = 0
+	
+	sound_play(asset_get("sfx_burnconsume"),false,noone,1.2,0.9)
+	spawn_hit_fx(x,y - 40, 304)
+	
+	move_cooldown[AT_FTILT] = 60
+	shock = 15
+	
+	set_attack(AT_DSPECIAL)
+    window = 1
+    window_timer = 0
+    
+   spawn_hit_fx(x,y,lighten)
+   shake_camera(5,5)
+   
+  		x = hit_player_obj.x - 30*hit_player_obj.spr_dir
+		y = hit_player_obj.y    
+}
+
+}
+
+if move_cooldown[AT_FTILT] > 0 {
+	shock = 15
+	
+}
 
 
 #define spawn_base_dust(x, y, name, dir)

@@ -13,7 +13,13 @@ if compactTimer >= compactThreshhold {
     var colour = c_white;
 }
 
-draw_sprite_ext(sprite_get("cube_hud"), 0, iconX, iconY, 1, 1, 0, c_gray, 1);
+if cubeCooldown < cubeCooldownMax {
+    var cubeCol = c_dkgray
+} else {
+    var cubeCol = c_gray
+}
+
+draw_sprite_ext(sprite_get("cube_hud"), 0, iconX, iconY, 1, 1, 0, cubeCol, 1);
 draw_sprite_part_ext(sprite_get("cube_hud"), 0, 0, 16 - (compactTimer/compactMax)*16, 16, (compactTimer/compactMax)*16, iconX - 8, iconY + 8 - (compactTimer/compactMax)*16, 1, 1, colour, 1);
 //draw_debug_text(temp_x, temp_y - 16, "compactTimer: " + string(compactTimer));
 

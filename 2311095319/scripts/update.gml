@@ -1,5 +1,7 @@
 //update.gml
 
+phone_voiced_toggle = phone_cheats[cheat_voice];
+
 max_djumps = phone_cheats[cheat_more_djumps];
 
 fireball_charge_needed_for_firebrand = phone_cheats[cheat_insta_fire];
@@ -9,6 +11,20 @@ tornado_cheat_active = phone_cheats[cheat_mario_tornado];
 da_cheat_active = phone_cheats[cheat_da_jc];
 
 fair_cheat_active = phone_cheats[cheat_fair_very_funy];
+
+if (phone_practice == true){
+	if (phone_voiced_toggle == 1){
+		voiced = 1
+	} else if (phone_voiced_toggle == 0){
+		voiced = 0
+	}
+} else if (phone_practice == false){
+	if (normal_voiced_toggle == 1){
+		voiced = 1
+	} else if (normal_voiced_toggle == 0){
+		voiced = 0
+	}
+}
 
 if (fair_cheat_active == true){
 
@@ -69,55 +85,77 @@ if (!free){
 	tornadoused = false
 }
 
-if (state == PS_LANDING_LAG){
-	if (attack == AT_DSPECIAL){
-		hasfirebrand = false
-	}
-}
+deathvoiceline = random_func( 0, 5, true );
 
-//Actually playing the Jump Sound Effect
-if (state == PS_FIRST_JUMP && state_timer == 1){
-	//sound_play(sfx_jump);
-}
-
-//Stopping the Jump Sound Effect if Mario Airdodges
-if (state == PS_AIR_DODGE){
-	sound_stop(sfx_jump);
-}
-
-//Crouch Sound Effect
-if (state == PS_CROUCH){
-	if (state_timer == 2){
-		sound_play(sfx_crouch);
-	}
-}
-
-//Dash Start Sound Effect
-if (state == PS_DASH_START){
-	if (state_timer == 0){
-		//sound_play(sfx_dashstart);
-	}
-}
-
-
-//Dash Stop Sound Effect
-if (state == PS_DASH_STOP){
-	if (state_timer == 2){
-		sound_play(sfx_dashstop);
-	}
-}
-
-//Stopping the Dash Attack Sound Effect
-if (state == PS_DOUBLE_JUMP){
-	sound_stop(sfx_dattack);
-}
-
-//walljump stuff
-if (state == PS_WALL_JUMP){
-	tornadoused = false
-	if (state_timer == 1){
-		sound_play(sfx_walljump)
-	}
+switch (state){
+	case PS_SPAWN:
+		//Turning on Voiced Mode Normally.
+		if (state_timer <= 100 && voiced == 0 && taunt_pressed && phone_practice == false){//>
+			voiced = 1
+			sound_play(sfx_coin);
+			sound_play(vc_mario_herewego);
+		}
+		break;
+	case PS_CROUCH:
+		//Crouch Sound Effect.
+		if (state_timer == 2){
+			sound_play(sfx_crouch);
+		}
+		break;
+	case PS_DASH_START:
+		if (state_timer == 0){
+			//sound_play(sfx_dashstart);
+		}	
+		break;
+	case PS_DASH_STOP:
+		//Dash Stop Sound Effect.
+		if (state_timer == 2){
+			sound_play(sfx_dashstop);
+		}	
+		break;
+	case PS_JUMPSQUAT:
+		if (state_timer == 3 && voiced == 1){
+			sound_play(vc_mario_jump);
+		}
+		break;
+	case PS_FIRST_JUMP:
+		//
+		break;
+	case PS_DOUBLE_JUMP:
+		//Stopping the Dash Attack Sound Effect
+		if (state == PS_DOUBLE_JUMP){
+			sound_stop(sfx_dattack);
+		}
+		if (state_timer == 0){
+			if (voiced == 1){
+				sound_stop(vc_mario_doublejump);
+				sound_play(vc_mario_doublejump);
+			}
+		}
+		break;
+	case PS_WALL_JUMP:
+		//Reseting Mario Tornado usage and playing a sound effect.
+		tornadoused = false
+		if (state_timer == 1){
+			sound_play(sfx_walljump)
+		}
+		break;
+	case PS_LANDING_LAG:
+		//Removing Firebrand charge if Mario lands during aerial Mario Tornado with Firebrand.
+		if (attack == AT_DSPECIAL){
+			hasfirebrand = false
+		}	
+		break;
+	case PS_AIR_DODGE:
+		//Stopping the Jump Sound Effect if Mario Airdodges.
+		sound_stop(sfx_jump);	
+		break;
+	case PS_WAVELAND:
+		if (state_timer == 0){
+			sound_stop(sfx_airdodge)
+			sound_stop(sfx_jump)
+		}	
+		break;
 }
 
 //Reseting Down Air Counter
@@ -148,16 +186,6 @@ if (shadowmario == true){
 	set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sfx_hammer_hit_normal);
 	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, sfx_hammer_hit_spike);
 	set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong"));
-}
-
-//Stopping Airdodge Sound on Wavedash
-if (state == PS_WAVELAND){
-	sound_stop(sfx_airdodge)
-	sound_stop(sfx_jump)
-}
-
-if (state == PS_WALL_JUMP){
-	tornadoused = false
 }
 
 //MunoPhone

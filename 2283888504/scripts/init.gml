@@ -305,6 +305,9 @@ if echo{
         // knockback_adj = 1.2;
         // damage_multiplier = 0.7;
         // launch_multiplier = 0.9;
+        knockback_adj = 1.2;        //community patch
+        dtaken_multiplier = 1.1;    // |
+        launch_multiplier = 0.6;    // V
     }
     
 }
@@ -317,14 +320,18 @@ else{
         knockback_adj =         1.2;
         dtaken_multiplier =     1.2; // 1
         damage_multiplier =     0.8; // 1
-        air_max_speed =         8;
-        air_accel =             0.4; // 0.5
+        //air_max_speed =         8;
+        //air_accel =             0.4; // 0.5
         max_fall =              12;
         fast_fall =             17;
         gravity_speed =         0.8;
-        jump_speed =            17; // 19
+        //jump_speed =            17; // 19
         short_hop_speed =       9; // 11
-        djump_speed =           16; // 18
+        //djump_speed =           16; // 18
+        air_max_speed =           7;    //community patch
+        air_accel =             0.35;   // |
+        jump_speed =            16;     // |
+        djump_speed =           15;     // V
         walljump_hsp =          8;
         walljump_vsp =          10;
     }
@@ -373,7 +380,8 @@ else{
     
     with chord_objs[4]{ //Buster
         knockback_adj = 1.1;
-        damage_multiplier = 1.5;
+        //damage_multiplier = 1.5;
+        damage_multiplier = 1.4;    //community patch
         launch_multiplier = 0.7;
         dtaken_multiplier = 1.3;
     }

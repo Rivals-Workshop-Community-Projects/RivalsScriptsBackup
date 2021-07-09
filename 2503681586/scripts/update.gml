@@ -59,7 +59,7 @@ if "nana_state" in self && "is_bubble" !in self {
 
 
 if !is_nana {
-if (state == PS_RESPAWN) || (attack == AT_TAUNT) {
+if (state == PS_RESPAWN) || (attack == AT_TAUNT && invince_time > 0) {
 		sprite_change_offset("plat", 48, 70);
 		if spawnClown != 0 {
 		if !instance_exists(army) {
@@ -124,7 +124,7 @@ if is_nana && "is_bubble" !in self {
 	max_fall = 5;
 	fast_fall = 8;
 	gravity_speed = .35;
-	hitstun_grav = .4;
+	hitstun_grav = .45;
 	knockback_adj = .5; //Calculation Only :monkaS:
 	air_dodge_speed = 7;
 	roll_forward_max = 4; //roll speed
@@ -162,7 +162,7 @@ if is_nana && "is_bubble" !in self {
 	max_fall = 5;
 	fast_fall = 8;
 	gravity_speed = .7;
-	hitstun_grav = .35;
+	hitstun_grav = .45;
 	knockback_adj = 1.2;
 	air_dodge_speed = 7;
 	roll_forward_max = 4; //roll speed

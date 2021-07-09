@@ -36,6 +36,7 @@ if getting_bashed {
             cubeHitbox.can_hit_self = true;
             cubeHitbox.was_bashed = true;
             cubeHitbox.was_grounded = false
+        player_id.cubeCooldown = 0;
         instance_destroy();
         exit;
     }
@@ -83,6 +84,7 @@ if getting_bashed {
                     spawn_hit_fx(other.x, other.y - 20, 143);
                 }
                 create_hitbox(AT_NSPECIAL, 3, x, y - 20);
+                player_id.cubeCooldown = 0;
                 instance_destroy();
                 exit; 
             } else if (variable_instance_exists(hitboxOwner, "isWalle") && hitbox.attack == AT_FTILT) { //ftilt explosion
@@ -92,6 +94,7 @@ if getting_bashed {
                 }
                 var boom = create_hitbox(AT_NSPECIAL, 2, x, y - 10);
                     boom.can_hit_self = false;
+                player_id.cubeCooldown = 0;
                 instance_destroy();
                 exit;
             } else if !(variable_instance_exists(hitboxOwner, "isWalle") && 
@@ -129,6 +132,7 @@ if getting_bashed {
                 junk.power = power;
             sound_play(asset_get("sfx_may_root"))
             var destroyID = player_id;
+            player_id.cubeCooldown = 0;
             instance_destroy();
             with destroyID {
                 user_event(0);
@@ -157,6 +161,7 @@ if getting_bashed {
             }
             var boom create_hitbox(AT_NSPECIAL, 2, x, y - 10);
                 boom.can_hit_self = false;
+            player_id.cubeCooldown = 0;
             instance_destroy();
             exit;
         }
@@ -164,6 +169,7 @@ if getting_bashed {
     }
     
     if (x > player_id.room_width + 100) || (x < -100) || (y > player_id.room_height + 100) {
+        player_id.cubeCooldown = 0;
         instance_destroy();
         exit;
     }

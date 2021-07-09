@@ -51,7 +51,7 @@ if(state == PS_SPAWN){
 //-----------------------------------ROCK---------------------------------------
 if(rock_lockout>0){
 	rock_lockout--;
-} else {
+} else if(attack != AT_USTRONG and state != PS_ATTACK_AIR){
 	can_rock = true;
 }
 

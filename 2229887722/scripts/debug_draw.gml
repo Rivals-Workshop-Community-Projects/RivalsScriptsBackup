@@ -28,10 +28,10 @@ if (debugDrawEnabled)
     }
     
     
-    draw_debug_text(x,y+20, "Was Aiming Right Stick: " + string(yarnBallWasAimingRightStick));
-    draw_debug_text(x,y+40, "Joy Idle : " + string(joy_pad_idle));
-    //draw_debug_text(x,y+20, "State: " + string(state));
-    //draw_debug_text(x,y+40, "State Timer: " + string(state_timer));
+    //draw_debug_text(x,y+20, "Was Aiming Right Stick: " + string(yarnBallWasAimingRightStick));
+    //draw_debug_text(x,y+40, "Joy Idle : " + string(joy_pad_idle));
+    draw_debug_text(x,y+20, "State: " + string(state));
+    draw_debug_text(x,y+40, "State Timer: " + string(state_timer));
     //draw_debug_text(x,y+60,string(window));
     //draw_debug_text(x,y+80,string(window_timer));
     //draw_debug_text(x,y+40, "Wall Jumped: " + string(hasWallJumped));

@@ -45,6 +45,8 @@ if (attack == AT_USPECIAL_2)
         reset_attack_value(AT_USPECIAL_2, AG_SPRITE);
         reset_attack_value(AT_USPECIAL_2, AG_AIR_SPRITE);
     }
+    //prevent the infinite
+    move_cooldown[AT_NSPECIAL] = 10;
 }
 if (attack == AT_FSPECIAL){
     can_wall_jump = true;
@@ -65,6 +67,18 @@ if (attack == AT_FSPECIAL){
             instance_create(x,y, "obj_article1");
         }
     }
+    if(window == 2 && !hitpause)
+    {
+        set_attack_value(AT_FSPECIAL, AG_CATEGORY, 1);
+        x += 25*spr_dir-hsp;
+        if(window_timer == 4)
+            hsp = 13*spr_dir;
+        else if(window_timer == 3)
+            hsp = 18*spr_dir;
+        else
+            hsp = 12*spr_dir;
+    }
+
     if(window == 3)
     {
         if(window_timer <= 12 && free)
@@ -185,6 +199,7 @@ if(parasiteLevel == 0 && parasiteTimer2 < 0 && state_timer <= 4)
 
 if(attack == AT_DAIR)
 {
+    can_fast_fall = false;
     if(has_hit)
     {
         old_vsp = -8;

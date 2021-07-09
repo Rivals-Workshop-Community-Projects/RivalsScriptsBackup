@@ -19,15 +19,13 @@ if(multihit != noone){
 
 if(!has_fjump && free){
     move_cooldown[AT_DSPECIAL] = 2;
-}
-if(!has_fjump && !free){
+}else if(!has_fjump && !free){
     has_fjump = true;
-    has_fjump = true;
+    //has_fjump = true; //what
 }
 if(!has_suplex && free){
     move_cooldown[AT_FSPECIAL] = 2;
-}
-if(!has_suplex && !free){
+}else if(!has_suplex && !free){
     has_suplex = true;
     move_cooldown[AT_FSPECIAL] = 0;
 }
@@ -321,6 +319,17 @@ if ("enemykirby" in self && enemykirby != undefined) { //if kirby is in a match 
     }
 } 
 
+//kill sound on galaxy
+with(oPlayer) if(activated_kill_effect) {
+    if(hit_player_obj == other && other.can_final_spark && get_player_stocks(player) == 1){
+        with(other){
+            sound_play(sound_get("final_spark"));
+            can_final_spark = false;
+            hitstop = 45;
+            hit_player_obj.hitstop = 45;
+        }
+    }
+}
 
 //peace
 if(shovel_knight_exists){

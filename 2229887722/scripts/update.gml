@@ -277,7 +277,7 @@ if (isHoldingYarnBall == true)
     
     
     //Input to start aiming the yarn ball, and set aiming power
-    if (window < 4 && state_cat != SC_HITSTUN && !(state == PS_AIR_DODGE && state_timer == 0))
+    if (window < 4 && state_cat != SC_HITSTUN && !(state == PS_AIR_DODGE && ((state_timer == 0 || state_timer > 3))))
     {
         if (strong_down && yarnBallAimingPower != 3 || (right_stick_down || left_stick_down || up_stick_down || down_stick_down) && yarnBallAimingPower != 3 && yarnBallRightStickTargetPower == 3)
         {
@@ -306,7 +306,6 @@ if (isHoldingYarnBall == true)
         else if (attack_down || (right_stick_down || left_stick_down || up_stick_down || down_stick_down) && yarnBallAimingPower != 1 && yarnBallRightStickTargetPower == 1)
         {
             yarnThrowAntiIFrame();
-            
             if (!(state == PS_PRATFALL && state_timer > 1) && !(state == PS_AIR_DODGE && state_timer > 3 && state_timer < 1) && !(state == PS_PARRY || state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD || state == PS_TECH_GROUND || state == PS_TECH_BACKWARD || state == PS_TECH_FORWARD))
             {
                 yarnBallAimingPower = 1;

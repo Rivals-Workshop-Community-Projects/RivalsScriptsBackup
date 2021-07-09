@@ -19,6 +19,8 @@ autodash = 0
 dashing = 0
 daigomode = 0
 
+superMove = 14
+
 galx = 0
 galy = 0
 

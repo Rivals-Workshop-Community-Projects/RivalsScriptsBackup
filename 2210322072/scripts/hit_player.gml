@@ -1,16 +1,20 @@
 ///
 ///
 
-		with hit_player_obj {
-		take_damage(player,-1, other.admb*-1)
-	}
+
 	
-if admw == 4 && (my_hitboxID.sound_effect == sound_get("slice1") or my_hitboxID.sound_effect == sound_get("slice2")
+if (my_hitboxID.sound_effect == sound_get("slice1") or my_hitboxID.sound_effect == sound_get("slice2")
 or my_hitboxID.sound_effect == sound_get("slice3")) {
 	
 
-	
+
+	if admw < 4 {
+	    with hit_player_obj {
+        	take_damage(player,-1, 3)
+        }
+        
 	sound_play(sound_get("strong3"),false,noone,0.6,0.9 + random_func(1,20,true)/30)
+	}
 }
 
 
@@ -18,7 +22,13 @@ if my_hitboxID.sound_effect != sound_get("slice1") && my_hitboxID.sound_effect !
 && my_hitboxID.sound_effect != sound_get("slice3") && my_hitboxID.sound_effect != asset_get("sfx_holy_lightning") {
 	
 
-	if  admb == 3 {
+        
+	if  admb < 3 {
+		
+	    with hit_player_obj {
+        	take_damage(player,-1, 6)
+        }
+        
 	sound_play(sound_get("strong3"),false,noone,0.7,0.6 + random_func(1,10,true)/30)
 	}
 }

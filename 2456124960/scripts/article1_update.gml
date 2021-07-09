@@ -135,7 +135,7 @@ if (article_mode == 0) {
 					print_debug("hit by another player");
 					hitByOpponent = 1;
 				} else if (true) {
-					if (attack == AT_FAIR) {
+					if (attack == AT_FAIR && false) {
 						if (player_id.old_vsp > -5) {
 							player_id.old_vsp = -5;
 						}

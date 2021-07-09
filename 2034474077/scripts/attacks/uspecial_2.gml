@@ -60,12 +60,12 @@ set_window_value(AT_USPECIAL, 6, AG_WINDOW_CUSTOM_GRAVITY, -0.1);
 
 //finisher startup
 set_window_value(AT_USPECIAL, 7, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 7, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_USPECIAL, 7, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_USPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_USPECIAL, 7, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 7, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
-set_window_value(AT_USPECIAL, 7, AG_WINDOW_SFX_FRAME, 4);
+set_window_value(AT_USPECIAL, 7, AG_WINDOW_SFX_FRAME, 2);
 set_window_value(AT_USPECIAL, 7, AG_WINDOW_CUSTOM_GRAVITY, -0.1);
 
 //finisher
@@ -97,6 +97,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_USPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 43);
+set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 4); //0
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 302);
