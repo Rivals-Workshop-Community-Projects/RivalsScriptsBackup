@@ -6,7 +6,7 @@ draw_debug_text( x, y + 40, "index" + string( sprite_index ) + "  swords:" + str
 //draw_debug_text( x, y + 55, " rvrs:" + string(shouldreverse) );
 */
 
-//draw_debug_text( x, y + 40, string(direction));
+draw_debug_text( x, y + 40, string(hsp));
 
 
 

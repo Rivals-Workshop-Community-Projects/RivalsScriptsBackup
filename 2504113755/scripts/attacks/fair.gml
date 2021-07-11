@@ -55,8 +55,8 @@ set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 8);
 set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 361);
 set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .85);
-set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 7);
-set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, .4);
+set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
 set_hitbox_value(AT_FAIR, 2, HG_HIT_PARTICLE_NUM, 1)
 set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, plasma_x_circle_big )

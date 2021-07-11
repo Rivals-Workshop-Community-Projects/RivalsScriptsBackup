@@ -36,7 +36,7 @@ set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 120);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 7);
-set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .3);
+set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
 //set_hitbox_value(AT_BAIR, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_PARTICLE_NUM, 1)

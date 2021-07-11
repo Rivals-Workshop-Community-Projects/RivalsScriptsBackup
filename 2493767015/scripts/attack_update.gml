@@ -138,17 +138,17 @@ if (attack == AT_NSPECIAL_2){
         invince_time = 5;
         reset_attack_value(AT_NSPECIAL_2, AG_NUM_WINDOWS);
         set_hitbox_value(AT_NSPECIAL_2, 1, HG_DAMAGE, 12 * (0.5 + (star_meter/2)));
-        set_hitbox_value(AT_NSPECIAL_2, 1, HG_KNOCKBACK_SCALING, .9 * star_meter);
-        set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITPAUSE_SCALING, .9 * star_meter);
+        set_hitbox_value(AT_NSPECIAL_2, 1, HG_BASE_KNOCKBACK, 12 * (0.75 + (star_meter/4)));
+        set_hitbox_value(AT_NSPECIAL_2, 1, HG_BASE_HITPAUSE, 14 * (0.75 + (star_meter/4)));
         set_hitbox_value(AT_NSPECIAL_2, 2, HG_DAMAGE, 10 * (0.5 + (star_meter/2)));
-        set_hitbox_value(AT_NSPECIAL_2, 2, HG_KNOCKBACK_SCALING, .8 * star_meter);
-        set_hitbox_value(AT_NSPECIAL_2, 2, HG_HITPAUSE_SCALING, .8 * star_meter);
+        set_hitbox_value(AT_NSPECIAL_2, 2, HG_BASE_KNOCKBACK, 10 * (0.75 + (star_meter/4)));
+        set_hitbox_value(AT_NSPECIAL_2, 2, HG_BASE_HITPAUSE, 12 * (0.75 + (star_meter/4)));
         set_hitbox_value(AT_NSPECIAL_2, 3, HG_DAMAGE, 12 * (0.5 + (star_meter/2)));
-        set_hitbox_value(AT_NSPECIAL_2, 3, HG_KNOCKBACK_SCALING, .9 * star_meter);
-        set_hitbox_value(AT_NSPECIAL_2, 3, HG_HITPAUSE_SCALING, .9 * star_meter);
+        set_hitbox_value(AT_NSPECIAL_2, 3, HG_BASE_KNOCKBACK, 14 * (0.75 + (star_meter/4)));
+        set_hitbox_value(AT_NSPECIAL_2, 3, HG_BASE_HITPAUSE, 16 * (0.75 + (star_meter/4)));
         set_hitbox_value(AT_NSPECIAL_2, 4, HG_DAMAGE, 12 * (0.5 + (star_meter/2)));
-        set_hitbox_value(AT_NSPECIAL_2, 4, HG_KNOCKBACK_SCALING, .9 * star_meter);
-        set_hitbox_value(AT_NSPECIAL_2, 4, HG_HITPAUSE_SCALING, .9 * star_meter);
+        set_hitbox_value(AT_NSPECIAL_2, 4, HG_BASE_KNOCKBACK, 14 * (0.75 + (star_meter/4)));
+        set_hitbox_value(AT_NSPECIAL_2, 4, HG_BASE_HITPAUSE, 16 * (0.75 + (star_meter/4)));
         if (window_timer == 6){  
             if (up_down){
                 window = 5;
@@ -209,11 +209,11 @@ if (attack == AT_FSPECIAL_2){
         invincible = true;
         invince_time = 10;
         set_hitbox_value(AT_FSPECIAL_2, 1, HG_DAMAGE, 10 * (0.75 + (star_meter/4)));
-        set_hitbox_value(AT_FSPECIAL_2, 1, HG_KNOCKBACK_SCALING, .8 * (star_meter/2));
-        set_hitbox_value(AT_FSPECIAL_2, 1, HG_HITPAUSE_SCALING, .8 * (star_meter/2));
+        set_hitbox_value(AT_FSPECIAL_2, 1, HG_BASE_KNOCKBACK, 10 * (0.75 + (star_meter/4)));
+        set_hitbox_value(AT_FSPECIAL_2, 1, HG_BASE_HITPAUSE, 12 * (0.75 + (star_meter/4)));
         set_hitbox_value(AT_FSPECIAL_2, 2, HG_DAMAGE, 10 * (0.75 + (star_meter/4)));
-        set_hitbox_value(AT_FSPECIAL_2, 2, HG_KNOCKBACK_SCALING, .8 * (star_meter/2));
-        set_hitbox_value(AT_FSPECIAL_2, 2, HG_HITPAUSE_SCALING, .8 * (star_meter/2));
+        set_hitbox_value(AT_FSPECIAL_2, 2, HG_BASE_KNOCKBACK, 10 * (0.75 + (star_meter/4)));
+        set_hitbox_value(AT_FSPECIAL_2, 2, HG_BASE_HITPAUSE, 12 * (0.75 + (star_meter/4)));
     }
     if (window == 3){
         if (window_timer <= 6){
@@ -308,20 +308,36 @@ if (attack == AT_DSPECIAL){
                 }
             }
         }
-            if (special_pressed && dodge_actions == true){
+        if (dodge_actions == true){
+            can_jump = true;
+            if (right_hard_pressed && !free){
+                spr_dir = 1;
+                state = PS_DASH_START;
+                sound_play(asset_get("sfx_dash_start"));
+            }
+            if (left_hard_pressed && !free){
+                spr_dir = -1;
+                state = PS_DASH_START;
+                sound_play(asset_get("sfx_dash_start"));
+            }
+            if (attack_pressed){
+                state = AT_JAB;
+            }
+            if (special_pressed){
                 set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 5);
                 window = 4;
                 window_timer = 0;
                 invincible = false;
                 already_dodged = true;
             }
-            if (down_down && special_pressed && dodge_actions == true){
+            if (down_down && special_pressed){
                 window = 1;
                 window_timer = 0;
                 clear_button_buffer(PC_SPECIAL_PRESSED);
                 dodge_actions = false;
                 already_dodged = true;
             }
+        }
     }
     if (window == 3){
         already_dodged = true;

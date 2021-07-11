@@ -422,6 +422,44 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.5", "July 9, 2021");
+	initPatchWords_ext("Up Strong:
+-Hit sounds adjusted. Now plays both a heavy hit and Forsburn combust on sweetspot.
+
+Down Special:
+-After successfully dodging an attack, Mac can now dash, jump, or attack afterwards!
+
+Star Mechanic:
+-Formula adjusted for Nspecial and Fspecial to calculate Base Knockback and Hitpause, instead of the Growth.
+-Star moves adjusted to have more Base Knockback and less Knockback Growth.
+
+Neutral Special (Star Enhanced):
+-Angle Changed (Hitbox 1): 30 > 40
+-Angle Changed (Hitbox 2): 30 > 45
+
+Up Special (Star Enhanced):
+-Hitboxes added when Mac is rising. Acts the same as his ground hitbox.", fa_left, c_white, 0, 0);
+	
+	initPatch("1.4", "June 2, 2021");
+	initPatchWords_ext("Dash Attack:
+-Window Length Increased (Window 3): 10 > 15
+
+Neutral Air:
+-Landing Lag Increased: 5 > 8
+
+Forward Air:
+-Landing Lag Increased: 7 > 10
+-Window Length Increased (Window 3): 10 > 14
+
+Forward Strong:
+-Knockback/Hitpause Scaling Decreased (Hitbox 1/4): 1.0 > .95
+
+Up Strong:
+-Knockback/Hitpause Scaling Decreased (Hitbox 1): 1.2 > 1.0
+
+Misc.:
+-Fixed an issue with stars being gained infinitely, after hitting an opponent while they're taunting.", fa_left, c_white, 0, 0);
+	
 	initPatch("1.3", "May 26, 2021");
 	initPatchWords_ext("Dash Attack:
 -Fixed an issue with sfx_obstacle_hit repeating after the last hit.

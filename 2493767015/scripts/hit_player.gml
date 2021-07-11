@@ -17,6 +17,10 @@ if (attack == AT_NAIR){
 	}
 }
 
+if (attack == AT_USTRONG && my_hitboxID.hbox_num == 1){
+	sound_play(asset_get("sfx_forsburn_combust"));
+}
+
 if (attack == AT_USPECIAL){
 	combo_timer = 0;
 	if (my_hitboxID.hbox_num == 6){

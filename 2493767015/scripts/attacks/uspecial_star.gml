@@ -42,34 +42,123 @@ set_hitbox_value(AT_USPECIAL_2, 1, HG_HITBOX_Y, -38);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_WIDTH, 35);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HEIGHT, 85);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_PRIORITY, 1);
-set_hitbox_value(AT_USPECIAL_2, 1, HG_DAMAGE, 7);
-set_hitbox_value(AT_USPECIAL_2, 1, HG_ANGLE, 40);
-set_hitbox_value(AT_USPECIAL_2, 1, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_USPECIAL_2, 1, HG_KNOCKBACK_SCALING, .3);
-set_hitbox_value(AT_USPECIAL_2, 1, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(AT_USPECIAL_2, 1, HG_HITPAUSE_SCALING, .3);
-set_hitbox_value(AT_USPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_USPECIAL_2, 1, HG_DAMAGE, 12);
+set_hitbox_value(AT_USPECIAL_2, 1, HG_ANGLE, 70);
+set_hitbox_value(AT_USPECIAL_2, 1, HG_BASE_KNOCKBACK, 12);
+set_hitbox_value(AT_USPECIAL_2, 1, HG_KNOCKBACK_SCALING, .4);
+set_hitbox_value(AT_USPECIAL_2, 1, HG_BASE_HITPAUSE, 14);
+set_hitbox_value(AT_USPECIAL_2, 1, HG_HITPAUSE_SCALING, .4);
+set_hitbox_value(AT_USPECIAL_2, 1, HG_HIT_SFX, sound_get("star_hit"));
 
-set_hitbox_value(AT_USPECIAL_2, 2, HG_MUNO_HITBOX_NAME, "Launcher");
+set_hitbox_value(AT_USPECIAL_2, 2, HG_MUNO_HITBOX_NAME, "Spin Hit 1");
 
 set_hitbox_value(AT_USPECIAL_2, 2, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_USPECIAL_2, 2, HG_WINDOW, 3);
-set_hitbox_value(AT_USPECIAL_2, 2, HG_WINDOW_CREATION_FRAME, 2);
+set_hitbox_value(AT_USPECIAL_2, 2, HG_WINDOW, 2);
+set_hitbox_value(AT_USPECIAL_2, 2, HG_WINDOW_CREATION_FRAME, 4);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_LIFETIME, 2);
-set_hitbox_value(AT_USPECIAL_2, 2, HG_HITBOX_X, -8);
-set_hitbox_value(AT_USPECIAL_2, 2, HG_HITBOX_Y, -80);
-set_hitbox_value(AT_USPECIAL_2, 2, HG_WIDTH, 40);
+set_hitbox_value(AT_USPECIAL_2, 2, HG_HITBOX_X, -2);
+set_hitbox_value(AT_USPECIAL_2, 2, HG_HITBOX_Y, -76);
+set_hitbox_value(AT_USPECIAL_2, 2, HG_WIDTH, 25);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_HEIGHT, 45);
+set_hitbox_value(AT_USPECIAL_2, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_PRIORITY, 1);
-set_hitbox_value(AT_USPECIAL_2, 2, HG_DAMAGE, 9);
-set_hitbox_value(AT_USPECIAL_2, 2, HG_ANGLE, 85);
-set_hitbox_value(AT_USPECIAL_2, 2, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_USPECIAL_2, 2, HG_KNOCKBACK_SCALING, .75);
-set_hitbox_value(AT_USPECIAL_2, 2, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(AT_USPECIAL_2, 2, HG_HITPAUSE_SCALING, .75);
-set_hitbox_value(AT_USPECIAL_2, 2, HG_VISUAL_EFFECT, star_hit);
-set_hitbox_value(AT_USPECIAL_2, 2, HG_VISUAL_EFFECT_X_OFFSET, -90);
-set_hitbox_value(AT_USPECIAL_2, 2, HG_VISUAL_EFFECT_Y_OFFSET, -128);
-set_hitbox_value(AT_USPECIAL_2, 2, HG_HIT_PARTICLE_NUM, 1);
+set_hitbox_value(AT_USPECIAL_2, 2, HG_DAMAGE, 12);
+set_hitbox_value(AT_USPECIAL_2, 2, HG_ANGLE, 70);
+set_hitbox_value(AT_USPECIAL_2, 2, HG_BASE_KNOCKBACK, 12);
+set_hitbox_value(AT_USPECIAL_2, 2, HG_KNOCKBACK_SCALING, .4);
+set_hitbox_value(AT_USPECIAL_2, 2, HG_BASE_HITPAUSE, 14);
+set_hitbox_value(AT_USPECIAL_2, 2, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_USPECIAL_2, 2, HG_HIT_SFX, sound_get("star_hit"));
-set_hitbox_value(AT_USPECIAL_2, 2, HG_HITBOX_GROUP, -1);
+
+set_hitbox_value(AT_USPECIAL_2, 3, HG_MUNO_HITBOX_NAME, "Spin Hit 2");
+
+set_hitbox_value(AT_USPECIAL_2, 3, HG_PARENT_HITBOX, 2);
+set_hitbox_value(AT_USPECIAL_2, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_USPECIAL_2, 3, HG_WINDOW, 2);
+set_hitbox_value(AT_USPECIAL_2, 3, HG_WINDOW_CREATION_FRAME, 8);
+set_hitbox_value(AT_USPECIAL_2, 3, HG_LIFETIME, 1);
+set_hitbox_value(AT_USPECIAL_2, 3, HG_HITBOX_X, -10);
+set_hitbox_value(AT_USPECIAL_2, 3, HG_HITBOX_Y, -74);
+
+set_hitbox_value(AT_USPECIAL_2, 4, HG_MUNO_HITBOX_NAME, "Spin Hit 3");
+
+set_hitbox_value(AT_USPECIAL_2, 4, HG_PARENT_HITBOX, 2);
+set_hitbox_value(AT_USPECIAL_2, 4, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_USPECIAL_2, 4, HG_WINDOW, 2);
+set_hitbox_value(AT_USPECIAL_2, 4, HG_WINDOW_CREATION_FRAME, 12);
+set_hitbox_value(AT_USPECIAL_2, 4, HG_LIFETIME, 1);
+set_hitbox_value(AT_USPECIAL_2, 4, HG_HITBOX_X, -2);
+set_hitbox_value(AT_USPECIAL_2, 4, HG_HITBOX_Y, -74);
+
+set_hitbox_value(AT_USPECIAL_2, 5, HG_MUNO_HITBOX_NAME, "Spin Hit 4");
+
+set_hitbox_value(AT_USPECIAL_2, 5, HG_PARENT_HITBOX, 2);
+set_hitbox_value(AT_USPECIAL_2, 5, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_USPECIAL_2, 5, HG_WINDOW, 2);
+set_hitbox_value(AT_USPECIAL_2, 5, HG_WINDOW_CREATION_FRAME, 16);
+set_hitbox_value(AT_USPECIAL_2, 5, HG_LIFETIME, 1);
+set_hitbox_value(AT_USPECIAL_2, 5, HG_HITBOX_X, 8);
+set_hitbox_value(AT_USPECIAL_2, 5, HG_HITBOX_Y, -74);
+
+set_hitbox_value(AT_USPECIAL_2, 6, HG_MUNO_HITBOX_NAME, "Spin Hit 5");
+
+set_hitbox_value(AT_USPECIAL_2, 6, HG_PARENT_HITBOX, 2);
+set_hitbox_value(AT_USPECIAL_2, 6, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_USPECIAL_2, 6, HG_WINDOW, 2);
+set_hitbox_value(AT_USPECIAL_2, 6, HG_WINDOW_CREATION_FRAME, 20);
+set_hitbox_value(AT_USPECIAL_2, 6, HG_LIFETIME, 1);
+set_hitbox_value(AT_USPECIAL_2, 6, HG_HITBOX_X, -2);
+set_hitbox_value(AT_USPECIAL_2, 6, HG_HITBOX_Y, -74);
+
+set_hitbox_value(AT_USPECIAL_2, 7, HG_MUNO_HITBOX_NAME, "Spin Hit 2");
+
+set_hitbox_value(AT_USPECIAL_2, 7, HG_PARENT_HITBOX, 2);
+set_hitbox_value(AT_USPECIAL_2, 7, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_USPECIAL_2, 7, HG_WINDOW, 2);
+set_hitbox_value(AT_USPECIAL_2, 7, HG_WINDOW_CREATION_FRAME, 24);
+set_hitbox_value(AT_USPECIAL_2, 7, HG_LIFETIME, 1);
+set_hitbox_value(AT_USPECIAL_2, 7, HG_HITBOX_X, -10);
+set_hitbox_value(AT_USPECIAL_2, 7, HG_HITBOX_Y, -74);
+
+set_hitbox_value(AT_USPECIAL_2, 8, HG_MUNO_HITBOX_NAME, "Spin Hit 3");
+
+set_hitbox_value(AT_USPECIAL_2, 8, HG_PARENT_HITBOX, 2);
+set_hitbox_value(AT_USPECIAL_2, 8, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_USPECIAL_2, 8, HG_WINDOW, 2);
+set_hitbox_value(AT_USPECIAL_2, 8, HG_WINDOW_CREATION_FRAME, 28);
+set_hitbox_value(AT_USPECIAL_2, 8, HG_LIFETIME, 1);
+set_hitbox_value(AT_USPECIAL_2, 8, HG_HITBOX_X, -2);
+set_hitbox_value(AT_USPECIAL_2, 8, HG_HITBOX_Y, -74);
+
+set_hitbox_value(AT_USPECIAL_2, 9, HG_MUNO_HITBOX_NAME, "Spin Hit 4");
+
+set_hitbox_value(AT_USPECIAL_2, 9, HG_PARENT_HITBOX, 2);
+set_hitbox_value(AT_USPECIAL_2, 9, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_USPECIAL_2, 9, HG_WINDOW, 2);
+set_hitbox_value(AT_USPECIAL_2, 9, HG_WINDOW_CREATION_FRAME, 32);
+set_hitbox_value(AT_USPECIAL_2, 9, HG_LIFETIME, 1);
+set_hitbox_value(AT_USPECIAL_2, 9, HG_HITBOX_X, 8);
+set_hitbox_value(AT_USPECIAL_2, 9, HG_HITBOX_Y, -74);
+
+set_hitbox_value(AT_USPECIAL_2, 10, HG_MUNO_HITBOX_NAME, "Launcher");
+
+set_hitbox_value(AT_USPECIAL_2, 10, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_USPECIAL_2, 10, HG_WINDOW, 3);
+set_hitbox_value(AT_USPECIAL_2, 10, HG_WINDOW_CREATION_FRAME, 2);
+set_hitbox_value(AT_USPECIAL_2, 10, HG_LIFETIME, 2);
+set_hitbox_value(AT_USPECIAL_2, 10, HG_HITBOX_X, -8);
+set_hitbox_value(AT_USPECIAL_2, 10, HG_HITBOX_Y, -80);
+set_hitbox_value(AT_USPECIAL_2, 10, HG_WIDTH, 40);
+set_hitbox_value(AT_USPECIAL_2, 10, HG_HEIGHT, 45);
+set_hitbox_value(AT_USPECIAL_2, 10, HG_PRIORITY, 1);
+set_hitbox_value(AT_USPECIAL_2, 10, HG_DAMAGE, 14);
+set_hitbox_value(AT_USPECIAL_2, 10, HG_ANGLE, 85);
+set_hitbox_value(AT_USPECIAL_2, 10, HG_BASE_KNOCKBACK, 12);
+set_hitbox_value(AT_USPECIAL_2, 10, HG_KNOCKBACK_SCALING, .75);
+set_hitbox_value(AT_USPECIAL_2, 10, HG_BASE_HITPAUSE, 14);
+set_hitbox_value(AT_USPECIAL_2, 10, HG_HITPAUSE_SCALING, .75);
+set_hitbox_value(AT_USPECIAL_2, 10, HG_VISUAL_EFFECT, star_hit);
+set_hitbox_value(AT_USPECIAL_2, 10, HG_VISUAL_EFFECT_X_OFFSET, -90);
+set_hitbox_value(AT_USPECIAL_2, 10, HG_VISUAL_EFFECT_Y_OFFSET, -128);
+set_hitbox_value(AT_USPECIAL_2, 10, HG_HIT_PARTICLE_NUM, 1);
+set_hitbox_value(AT_USPECIAL_2, 10, HG_HIT_SFX, sound_get("star_hit"));

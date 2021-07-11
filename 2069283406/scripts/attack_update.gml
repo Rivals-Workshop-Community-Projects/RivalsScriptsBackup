@@ -433,6 +433,47 @@ if attack == AT_DAIR{
 
 if attack == AT_NSPECIAL{
 	
+		if window == 3 && (!inrange or firerange <= 0){
+		
+		if window_timer > 1{
+			if left_down && spr_dir = 1 {
+				hsp -= 0.2
+			}
+			
+			if right_down && spr_dir = -1 {
+				hsp += 0.2
+			}
+		}
+		
+			///if up_down{
+         	///	y -= 2
+         	///} 
+         	///if down_down{
+         	///    y += 2
+         	///} 
+		
+		if window_timer <= 1 && "ai_target" not in self{
+			if left_down {
+				spr_dir = -1
+			}
+			
+			if right_down {
+				spr_dir = 1
+			}
+			hsp = 5 * spr_dir
+			
+		}
+		
+			if window_timer % 5 = 0 {
+		spawn_hit_fx( x   , y , dsshadow )
+		}
+
+		
+		x += 7 * spr_dir
+		vsp = 0
+		
+	}
+	
 	if fireon == 3 && state_timer < 30 {
 		if state_timer % 5 == 0 {
 		spawn_hit_fx( (hit_player_obj.x*2 + x)/3 - 20 + random_func(1,40,true) , (hit_player_obj.y*2 + y)/3 - 20 + random_func(2,40,true), firepar1)
@@ -613,46 +654,7 @@ if attack == AT_NSPECIAL{
 		}
 		
 		
-	if window == 3 && (!inrange or firerange <= 0){
-		
-		if window_timer > 1{
-			if left_down && spr_dir = 1 {
-				hsp -= 0.2
-			}
-			
-			if right_down && spr_dir = -1 {
-				hsp += 0.2
-			}
-		}
-		
-			///if up_down{
-         	///	y -= 2
-         	///} 
-         	///if down_down{
-         	///    y += 2
-         	///} 
-		
-		if window_timer <= 1 && "ai_target" not in self{
-			if left_down {
-				spr_dir = -1
-			}
-			
-			if right_down {
-				spr_dir = 1
-			}
-			hsp = 5 * spr_dir
-			
-		}
-		
-			if window_timer % 5 = 0 {
-		spawn_hit_fx( x   , y , dsshadow )
-		}
 
-		
-		x += 7 * spr_dir
-		vsp = 0
-		
-	}
 	
 	if window == 1 && window_timer == 1{
 		sound_play(asset_get("sfx_burnapplied"))

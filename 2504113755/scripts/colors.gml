@@ -36,131 +36,131 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 // ALTERNATE COLORS
 set_num_palettes( 25 );
 
-// unnamed alt palette
-set_color_profile_slot( 1, 0, 54, 173, 101 ); //Sword
-set_color_profile_slot( 1, 1, 161, 222, 80 ); //Sword 2
-set_color_profile_slot( 1, 2, 242, 186, 92 ); //line
-set_color_profile_slot( 1, 3, 186, 101, 41 ); //line (s)
-set_color_profile_slot( 1, 4, 240, 107, 67 ); //cloak
-set_color_profile_slot( 1, 5, 194, 32, 12 ); //cloak (s)
-set_color_profile_slot( 1, 6, 184, 95, 7 ); //fur (s)
-set_color_profile_slot( 1, 7, 245, 172, 76 ); //fur
+// Apple Watch A
+set_color_profile_slot( 1, 0, 32, 85, 120 ); //Sword
+set_color_profile_slot( 1, 1, 105, 168, 214 ); //Sword 2
+set_color_profile_slot( 1, 2, 247, 120, 79 ); //line
+set_color_profile_slot( 1, 3, 168, 67, 27 ); //line (s)
+set_color_profile_slot( 1, 4, 40, 43, 62 ); //cloak
+set_color_profile_slot( 1, 5, 18, 22, 43 ); //cloak (s)
+set_color_profile_slot( 1, 6, 83, 86, 117 ); //fur (s)
+set_color_profile_slot( 1, 7, 139, 153, 181 ); //fur
 
-// unnamed alt palette
-set_color_profile_slot( 2, 0, 204, 41, 41 ); //Sword
-set_color_profile_slot( 2, 1, 250, 122, 164 ); //Sword 2
-set_color_profile_slot( 2, 2, 50, 36, 171 ); //line
-set_color_profile_slot( 2, 3, 14, 26, 120 ); //line (s)
-set_color_profile_slot( 2, 4, 111, 132, 217 ); //cloak
-set_color_profile_slot( 2, 5, 28, 104, 184 ); //cloak (s)
-set_color_profile_slot( 2, 6, 204, 117, 28 ); //fur (s)
-set_color_profile_slot( 2, 7, 255, 192, 110 ); //fur
+// Apple Watch B
+set_color_profile_slot( 2, 0, 207, 134, 0 ); //Sword
+set_color_profile_slot( 2, 1, 242, 199, 0 ); //Sword 2
+set_color_profile_slot( 2, 2, 212, 206, 242 ); //line
+set_color_profile_slot( 2, 3, 138, 140, 179 ); //line (s)
+set_color_profile_slot( 2, 4, 73, 73, 110 ); //cloak
+set_color_profile_slot( 2, 5, 27, 28, 65 ); //cloak (s)
+set_color_profile_slot( 2, 6, 131, 104, 140 ); //fur (s)
+set_color_profile_slot( 2, 7, 166, 153, 166 ); //fur
+
+// Apple Watch C
+set_color_profile_slot( 3, 0, 213, 95, 97 ); //Sword
+set_color_profile_slot( 3, 1, 235, 149, 155 ); //Sword 2
+set_color_profile_slot( 3, 2, 227, 230, 64 ); //line
+set_color_profile_slot( 3, 3, 209, 155, 29 ); //line (s)
+set_color_profile_slot( 3, 4, 103, 98, 109 ); //cloak
+set_color_profile_slot( 3, 5, 60, 53, 71 ); //cloak (s)
+set_color_profile_slot( 3, 6, 194, 132, 141 ); //fur (s)
+set_color_profile_slot( 3, 7, 207, 186, 202 ); //fur
 
 // arsene
-set_color_profile_slot( 3, 0, 114, 162, 234 ); //Sword
-set_color_profile_slot( 3, 1, 220, 180, 242 ); //Sword 2
-set_color_profile_slot( 3, 2, 146, 59, 163 ); //line
-set_color_profile_slot( 3, 3, 80, 32, 108 ); //line (s)
-set_color_profile_slot( 3, 4, 242, 105, 123 ); //cloak
-set_color_profile_slot( 3, 5, 147, 59, 107 ); //cloak (s)
-set_color_profile_slot( 3, 6, 59, 26, 105 ); //fur (s)
-set_color_profile_slot( 3, 7, 87, 41, 105 ); //fur
+set_color_profile_slot( 4, 0, 114, 162, 234 ); //Sword
+set_color_profile_slot( 4, 1, 220, 180, 242 ); //Sword 2
+set_color_profile_slot( 4, 2, 146, 59, 163 ); //line
+set_color_profile_slot( 4, 3, 80, 32, 108 ); //line (s)
+set_color_profile_slot( 4, 4, 242, 105, 123 ); //cloak
+set_color_profile_slot( 4, 5, 147, 59, 107 ); //cloak (s)
+set_color_profile_slot( 4, 6, 59, 26, 105 ); //fur (s)
+set_color_profile_slot( 4, 7, 87, 41, 105 ); //fur
 
 // ylink
-set_color_profile_slot( 4, 0, 109, 91, 141 ); //Sword
-set_color_profile_slot( 4, 1, 131, 157, 206 ); //Sword 2
-set_color_profile_slot( 4, 2, 228, 154, 167 ); //line
-set_color_profile_slot( 4, 3, 198, 107, 122 ); //line (s)
-set_color_profile_slot( 4, 4, 136, 64, 88 ); //cloak
-set_color_profile_slot( 4, 5, 75, 33, 53 ); //cloak (s)
-set_color_profile_slot( 4, 6, 189, 87, 79 ); //fur (s)
-set_color_profile_slot( 4, 7, 240, 182, 142 ); //fur
+set_color_profile_slot( 5, 0, 109, 91, 141 ); //Sword
+set_color_profile_slot( 5, 1, 131, 157, 206 ); //Sword 2
+set_color_profile_slot( 5, 2, 250, 178, 190 ); //line
+set_color_profile_slot( 5, 3, 230, 124, 142 ); //line (s)
+set_color_profile_slot( 5, 4, 136, 64, 88 ); //cloak
+set_color_profile_slot( 5, 5, 75, 33, 53 ); //cloak (s)
+set_color_profile_slot( 5, 6, 189, 87, 79 ); //fur (s)
+set_color_profile_slot( 5, 7, 240, 182, 142 ); //fur
 
-// cloud
-set_color_profile_slot( 5, 0, 177, 80, 123 ); //Sword
-set_color_profile_slot( 5, 1, 115, 32, 71 ); //Sword 2
-set_color_profile_slot( 5, 2, 172, 96, 199 ); //line
-set_color_profile_slot( 5, 3, 127, 61, 173 ); //line (s)
-set_color_profile_slot( 5, 4, 87, 213, 172 ); //cloak
-set_color_profile_slot( 5, 5, 42, 160, 160 ); //cloak (s)
-set_color_profile_slot( 5, 6, 190, 118, 194 ); //fur (s)
-set_color_profile_slot( 5, 7, 237, 197, 237 ); //fur
+// WOLF (new)
+set_color_profile_slot( 6, 0, 242, 71, 91 ); //Sword
+set_color_profile_slot( 6, 1, 194, 51, 123 ); //Sword 2
+set_color_profile_slot( 6, 2, 255, 219, 105 ); //line
+set_color_profile_slot( 6, 3, 250, 153, 79 ); //line (s)
+set_color_profile_slot( 6, 4, 229, 97, 70 ); //cloak
+set_color_profile_slot( 6, 5, 175, 51, 81 ); //cloak (s)
+set_color_profile_slot( 6, 6, 101, 31, 92 ); //fur (s)
+set_color_profile_slot( 6, 7, 156, 49, 92 ); //fur
 
 // fox
-set_color_profile_slot( 6, 0, 31, 94, 161 ); //Sword
-set_color_profile_slot( 6, 1, 73, 187, 213 ); //Sword 2
-set_color_profile_slot( 6, 2, 225, 87, 51 ); //line
-set_color_profile_slot( 6, 3, 163, 48, 17 ); //line (s)
-set_color_profile_slot( 6, 4, 155, 72, 90 ); //cloak
-set_color_profile_slot( 6, 5, 135, 44, 62 ); //cloak (s)
-set_color_profile_slot( 6, 6, 247, 149, 84 ); //fur (s)
-set_color_profile_slot( 6, 7, 248, 221, 134 ); //fur
+set_color_profile_slot( 7, 0, 31, 94, 161 ); //Sword
+set_color_profile_slot( 7, 1, 73, 187, 213 ); //Sword 2
+set_color_profile_slot( 7, 2, 180, 208, 235 ); //line
+set_color_profile_slot( 7, 3, 134, 151, 204 ); //line (s)
+set_color_profile_slot( 7, 4, 181, 60, 60 ); //cloak
+set_color_profile_slot( 7, 5, 130, 28, 45 ); //cloak (s)
+set_color_profile_slot( 7, 6, 239, 73, 67 ); //fur (s)
+set_color_profile_slot( 7, 7, 249, 154, 137 ); //fur
 
 // falco
-set_color_profile_slot( 7, 0, 90, 75, 130 ); //Sword
-set_color_profile_slot( 7, 1, 106, 124, 199 ); //Sword 2
-set_color_profile_slot( 7, 2, 173, 78, 118 ); //line
-set_color_profile_slot( 7, 3, 99, 47, 83 ); //line (s)
-set_color_profile_slot( 7, 4, 255, 192, 211 ); //cloak
-set_color_profile_slot( 7, 5, 219, 125, 159 ); //cloak (s)
-set_color_profile_slot( 7, 6, 232, 105, 64 ); //fur (s)
-set_color_profile_slot( 7, 7, 246, 200, 114 ); //fur
+set_color_profile_slot( 8, 0, 90, 75, 130 ); //Sword
+set_color_profile_slot( 8, 1, 106, 124, 199 ); //Sword 2
+set_color_profile_slot( 8, 2, 161, 67, 132 ); //line
+set_color_profile_slot( 8, 3, 120, 57, 106 ); //line (s)
+set_color_profile_slot( 8, 4, 255, 192, 211 ); //cloak
+set_color_profile_slot( 8, 5, 219, 125, 159 ); //cloak (s)
+set_color_profile_slot( 8, 6, 210, 112, 97 ); //fur (s)
+set_color_profile_slot( 8, 7, 251, 184, 125 ); //fur
 
 // Link
-set_color_profile_slot( 8, 0, 201, 79, 0 ); //Sword
-set_color_profile_slot( 8, 1, 203, 196, 115 ); //Sword 2
-set_color_profile_slot( 8, 2, 108, 188, 163 ); //line
-set_color_profile_slot( 8, 3, 84, 158, 135 ); //line (s)
-set_color_profile_slot( 8, 4, 128, 77, 73 ); //cloak
-set_color_profile_slot( 8, 5, 70, 44, 57 ); //cloak (s)
-set_color_profile_slot( 8, 6, 210, 106, 97 ); //fur (s)
-set_color_profile_slot( 8, 7, 251, 173, 125 ); //fur
+set_color_profile_slot( 9, 0, 224, 75, 0 ); //Sword
+set_color_profile_slot( 9, 1, 255, 153, 38 ); //Sword 2
+set_color_profile_slot( 9, 2, 81, 188, 90 ); //line
+set_color_profile_slot( 9, 3, 72, 138, 55 ); //line (s)
+set_color_profile_slot( 9, 4, 128, 58, 54 ); //cloak
+set_color_profile_slot( 9, 5, 70, 29, 49 ); //cloak (s)
+set_color_profile_slot( 9, 6, 210, 106, 97 ); //fur (s)
+set_color_profile_slot( 9, 7, 251, 173, 125 ); //fur
 
 // mewtwo
-set_color_profile_slot( 9, 0, 59, 211, 212 ); //Sword
-set_color_profile_slot( 9, 1, 121, 110, 196 ); //Sword 2
-set_color_profile_slot( 9, 2, 133, 71, 145 ); //line
-set_color_profile_slot( 9, 3, 81, 37, 90 ); //line (s)
-set_color_profile_slot( 9, 4, 157, 150, 192 ); //cloak
-set_color_profile_slot( 9, 5, 168, 102, 173 ); //cloak (s)
-set_color_profile_slot( 9, 6, 65, 104, 159 ); //fur (s)
-set_color_profile_slot( 9, 7, 93, 140, 191 ); //fur
+set_color_profile_slot( 10, 0, 59, 211, 212 ); //Sword
+set_color_profile_slot( 10, 1, 121, 110, 196 ); //Sword 2
+set_color_profile_slot( 10, 2, 110, 60, 158 ); //line
+set_color_profile_slot( 10, 3, 88, 22, 102 ); //line (s)
+set_color_profile_slot( 10, 4, 157, 150, 192 ); //cloak
+set_color_profile_slot( 10, 5, 168, 102, 173 ); //cloak (s)
+set_color_profile_slot( 10, 6, 65, 104, 159 ); //fur (s)
+set_color_profile_slot( 10, 7, 93, 140, 191 ); //fur
 
 // daisy
-set_color_profile_slot( 10, 0, 142, 49, 181 ); //Sword
-set_color_profile_slot( 10, 1, 203, 110, 163 ); //Sword 2
-set_color_profile_slot( 10, 2, 125, 38, 62 ); //line
-set_color_profile_slot( 10, 3, 77, 14, 44 ); //line (s)
-set_color_profile_slot( 10, 4, 239, 121, 51 ); //cloak
-set_color_profile_slot( 10, 5, 184, 77, 50 ); //cloak (s)
-set_color_profile_slot( 10, 6, 247, 148, 63 ); //fur (s)
-set_color_profile_slot( 10, 7, 250, 197, 143 ); //fur
+set_color_profile_slot( 11, 0, 142, 49, 181 ); //Sword
+set_color_profile_slot( 11, 1, 203, 110, 163 ); //Sword 2
+set_color_profile_slot( 11, 2, 255, 141, 63 ); //line
+set_color_profile_slot( 11, 3, 240, 99, 43 ); //line (s)
+set_color_profile_slot( 11, 4, 148, 56, 78 ); //cloak
+set_color_profile_slot( 11, 5, 107, 34, 65 ); //cloak (s)
+set_color_profile_slot( 11, 6, 247, 148, 63 ); //fur (s)
+set_color_profile_slot( 11, 7, 250, 197, 143 ); //fur
 
 // lucas
-set_color_profile_slot( 11, 0, 173, 91, 199 ); //Sword
-set_color_profile_slot( 11, 1, 239, 161, 203 ); //Sword 2
-set_color_profile_slot( 11, 2, 158, 176, 240 ); //line
-set_color_profile_slot( 11, 3, 101, 121, 207 ); //line (s)
-set_color_profile_slot( 11, 4, 69, 55, 92 ); //cloak
-set_color_profile_slot( 11, 5, 17, 39, 63 ); //cloak (s)
-set_color_profile_slot( 11, 6, 180, 127, 133 ); //fur (s)
-set_color_profile_slot( 11, 7, 223, 186, 177 ); //fur
-
-// banjo and kazooie
-set_color_profile_slot( 12, 0, 226, 91, 123 ); //Sword
-set_color_profile_slot( 12, 1, 205, 150, 231 ); //Sword 2
-set_color_profile_slot( 12, 2, 217, 237, 246 ); //line
-set_color_profile_slot( 12, 3, 122, 199, 207 ); //line (s)
-set_color_profile_slot( 12, 4, 17, 89, 161 ); //cloak
-set_color_profile_slot( 12, 5, 4, 43, 144 ); //cloak (s)
-set_color_profile_slot( 12, 6, 190, 118, 122 ); //fur (s)
-set_color_profile_slot( 12, 7, 228, 168, 168 ); //fur
+set_color_profile_slot( 12, 0, 173, 91, 199 ); //Sword
+set_color_profile_slot( 12, 1, 239, 161, 203 ); //Sword 2
+set_color_profile_slot( 12, 2, 158, 176, 240 ); //line
+set_color_profile_slot( 12, 3, 101, 121, 207 ); //line (s)
+set_color_profile_slot( 12, 4, 69, 55, 92 ); //cloak
+set_color_profile_slot( 12, 5, 17, 39, 63 ); //cloak (s)
+set_color_profile_slot( 12, 6, 158, 107, 101 ); //fur (s)
+set_color_profile_slot( 12, 7, 223, 198, 165 ); //fur
 
 // ABYSS
-set_color_profile_slot( 13, 0, 207, 32, 230 ); //Sword
-set_color_profile_slot( 13, 1, 97, 16, 143 ); //Sword 2
-set_color_profile_slot( 13, 2, 198, 91, 217 ); //line
-set_color_profile_slot( 13, 3, 122, 52, 163 ); //line (s)
+set_color_profile_slot( 13, 0, 115, 19, 171 ); //Sword
+set_color_profile_slot( 13, 1, 213, 80, 230 ); //Sword 2
+set_color_profile_slot( 13, 2, 204, 130, 217 ); //line
+set_color_profile_slot( 13, 3, 137, 72, 176 ); //line (s)
 set_color_profile_slot( 13, 4, 65, 41, 69 ); //cloak
 set_color_profile_slot( 13, 5, 43, 23, 51 ); //cloak (s)
 set_color_profile_slot( 13, 6, 56, 52, 105 ); //fur (s)
@@ -176,58 +176,58 @@ set_color_profile_slot( 14, 5, 83, 122, 62 ); //cloak (s)
 set_color_profile_slot( 14, 6, 211, 226, 154 ); //fur (s)
 set_color_profile_slot( 14, 7, 211, 226, 154 ); //fur
 
-// dedede
-set_color_profile_slot( 15, 0, 248, 113, 117 ); //Sword
-set_color_profile_slot( 15, 1, 249, 178, 134 ); //Sword 2
-set_color_profile_slot( 15, 2, 252, 227, 163 ); //line
-set_color_profile_slot( 15, 3, 231, 173, 123 ); //line (s)
-set_color_profile_slot( 15, 4, 46, 77, 123 ); //cloak
-set_color_profile_slot( 15, 5, 11, 44, 87 ); //cloak (s)
-set_color_profile_slot( 15, 6, 192, 126, 198 ); //fur (s)
-set_color_profile_slot( 15, 7, 228, 184, 219 ); //fur
+// MY N/A  ALT
+set_color_profile_slot( 15, 0, 230, 60, 138 ); //Sword
+set_color_profile_slot( 15, 1, 255, 138, 148 ); //Sword 2
+set_color_profile_slot( 15, 2, 64, 202, 250 ); //line
+set_color_profile_slot( 15, 3, 24, 135, 204 ); //line (s)
+set_color_profile_slot( 15, 4, 17, 74, 92 ); //cloak
+set_color_profile_slot( 15, 5, 10, 45, 56 ); //cloak (s)
+set_color_profile_slot( 15, 6, 230, 103, 109 ); //fur (s)
+set_color_profile_slot( 15, 7, 250, 185, 110 ); //fur
 
-// kirby
-set_color_profile_slot( 16, 0, 216, 61, 4 ); //Sword
-set_color_profile_slot( 16, 1, 254, 194, 134 ); //Sword 2
-set_color_profile_slot( 16, 2, 95, 147, 220 ); //line
-set_color_profile_slot( 16, 3, 25, 94, 133 ); //line (s)
-set_color_profile_slot( 16, 4, 241, 220, 239 ); //cloak
-set_color_profile_slot( 16, 5, 139, 165, 222 ); //cloak (s)
-set_color_profile_slot( 16, 6, 130, 83, 163 ); //fur (s)
-set_color_profile_slot( 16, 7, 186, 149, 192 ); //fur
+// ROY (new)
+set_color_profile_slot( 16, 0, 135, 76, 166 ); //Sword
+set_color_profile_slot( 16, 1, 185, 137, 212 ); //Sword 2
+set_color_profile_slot( 16, 2, 252, 207, 176 ); //line
+set_color_profile_slot( 16, 3, 245, 133, 133 ); //line (s)
+set_color_profile_slot( 16, 4, 172, 41, 80 ); //cloak
+set_color_profile_slot( 16, 5, 130, 6, 51 ); //cloak (s)
+set_color_profile_slot( 16, 6, 30, 30, 97 ); //fur (s)
+set_color_profile_slot( 16, 7, 54, 53, 133 ); //fur
 
-// ice climbers
-set_color_profile_slot( 17, 0, 227, 67, 103 ); //Sword
-set_color_profile_slot( 17, 1, 70, 108, 145 ); //Sword 2
-set_color_profile_slot( 17, 2, 129, 58, 92 ); //line
-set_color_profile_slot( 17, 3, 80, 47, 74 ); //line (s)
-set_color_profile_slot( 17, 4, 203, 220, 188 ); //cloak
-set_color_profile_slot( 17, 5, 167, 112, 133 ); //cloak (s)
-set_color_profile_slot( 17, 6, 73, 105, 162 ); //fur (s)
-set_color_profile_slot( 17, 7, 104, 162, 208 ); //fur
+// PEACH (NEW)
+set_color_profile_slot( 17, 0, 191, 48, 60 ); //Sword
+set_color_profile_slot( 17, 1, 233, 145, 158 ); //Sword 2
+set_color_profile_slot( 17, 2, 196, 58, 37 ); //line
+set_color_profile_slot( 17, 3, 168, 30, 30 ); //line (s)
+set_color_profile_slot( 17, 4, 224, 211, 217 ); //cloak
+set_color_profile_slot( 17, 5, 196, 157, 168 ); //cloak (s)
+set_color_profile_slot( 17, 6, 189, 100, 110 ); //fur (s)
+set_color_profile_slot( 17, 7, 240, 163, 162 ); //fur
 
 // SHINY
 set_color_profile_slot( 18, 0, 148, 94, 0 ); //Sword
 set_color_profile_slot( 18, 1, 219, 171, 0 ); //Sword 2
-set_color_profile_slot( 18, 2, 222, 132, 53 ); //line
-set_color_profile_slot( 18, 3, 173, 87, 54 ); //line (s)
-set_color_profile_slot( 18, 4, 248, 251, 238 ); //cloak
-set_color_profile_slot( 18, 5, 235, 193, 145 ); //cloak (s)
-set_color_profile_slot( 18, 6, 149, 99, 224 ); //fur (s)
-set_color_profile_slot( 18, 7, 184, 173, 204 ); //fur
+set_color_profile_slot( 18, 2, 222, 112, 53 ); //line
+set_color_profile_slot( 18, 3, 173, 64, 54 ); //line (s)
+set_color_profile_slot( 18, 4, 255, 253, 251 ); //cloak
+set_color_profile_slot( 18, 5, 180, 180, 180 ); //cloak (s)
+set_color_profile_slot( 18, 6, 227, 138, 66 ); //fur (s)
+set_color_profile_slot( 18, 7, 237, 202, 100 ); //fur
 
-// pikachu
-set_color_profile_slot( 19, 0, 227, 58, 173 ); //Sword
-set_color_profile_slot( 19, 1, 101, 255, 252 ); //Sword 2
-set_color_profile_slot( 19, 2, 77, 60, 100 ); //line
-set_color_profile_slot( 19, 3, 63, 44, 77 ); //line (s)
-set_color_profile_slot( 19, 4, 214, 199, 240 ); //cloak
-set_color_profile_slot( 19, 5, 146, 129, 204 ); //cloak (s)
-set_color_profile_slot( 19, 6, 183, 117, 144 ); //fur (s)
-set_color_profile_slot( 19, 7, 227, 182, 201 ); //fur
+// SAKURAI (NEW)
+set_color_profile_slot( 19, 0, 158, 158, 158 ); //Sword
+set_color_profile_slot( 19, 1, 209, 209, 209 ); //Sword 2
+set_color_profile_slot( 19, 2, 189, 149, 28 ); //line
+set_color_profile_slot( 19, 3, 153, 87, 23 ); //line (s)
+set_color_profile_slot( 19, 4, 52, 52, 52 ); //cloak
+set_color_profile_slot( 19, 5, 28, 28, 28 ); //cloak (s)
+set_color_profile_slot( 19, 6, 63, 64, 64 ); //fur (s)
+set_color_profile_slot( 19, 7, 102, 102, 102 ); //fur
 
 // bearf blue
-set_color_profile_slot( 20, 0, 0, 180, 224 ); //Sword
+set_color_profile_slot( 20, 0, 0, 145, 181 ); //Sword
 set_color_profile_slot( 20, 1, 77, 224, 177 ); //Sword 2
 set_color_profile_slot( 20, 2, 50, 168, 137 ); //line
 set_color_profile_slot( 20, 3, 26, 115, 97 ); //line (s)
@@ -238,9 +238,9 @@ set_color_profile_slot( 20, 7, 223, 233, 237 ); //fur
 
 // bearf pink
 set_color_profile_slot( 21, 0, 217, 54, 89 ); //Sword
-set_color_profile_slot( 21, 1, 217, 129, 168 ); //Sword 2
-set_color_profile_slot( 21, 2, 186, 34, 118 ); //line
-set_color_profile_slot( 21, 3, 145, 15, 50 ); //line (s)
+set_color_profile_slot( 21, 1, 217, 115, 198 ); //Sword 2
+set_color_profile_slot( 21, 2, 186, 34, 64 ); //line
+set_color_profile_slot( 21, 3, 145, 15, 15 ); //line (s)
 set_color_profile_slot( 21, 4, 233, 125, 250 ); //cloak
 set_color_profile_slot( 21, 5, 212, 65, 151 ); //cloak (s)
 set_color_profile_slot( 21, 6, 153, 79, 109 ); //fur (s)

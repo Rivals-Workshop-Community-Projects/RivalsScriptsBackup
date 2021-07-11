@@ -513,6 +513,20 @@ with phone{
 	initPatchWords("Fnuuy joke
 	- waog");
 	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0); */
+	
+		initPatch("1.10", "9 July, 2021");
+		
+			initPatchWords_ext("Color Revamp", fa_center, c_white, 0, 0);
+initPatchWords_ext("Alt colors have been revamped! Most have either been replaced or changed significantly.
+
+~Hitpause values have been adjusted across the board.
+
+~Dair no longer does 13 damage occasionally 
+
+~Fixed a lack of detail on the first frame of airdodge", fa_left, c_white, 0, 0);
+	
+	
+	
 		initPatch("1.9", "8 July, 2021");
 		
 			initPatchWords_ext("AUGHHHH", fa_center, c_white, 0, 0);

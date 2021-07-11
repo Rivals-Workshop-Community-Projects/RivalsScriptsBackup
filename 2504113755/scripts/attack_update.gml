@@ -254,6 +254,8 @@ if (attack == AT_FSPECIAL) {
 	
 if (window != 1 && window != 13 && window != 15) {
 	
+	
+	
 	                if (place_meeting(x + hsp, y, asset_get("par_block")) && free) {
 	                	for (var i = 1; i < 40; i++){
                         if (!place_meeting(x + hsp, y- i ,asset_get("par_block"))) {
@@ -263,7 +265,12 @@ if (window != 1 && window != 13 && window != 15) {
 break;
                         }
 	                }
-} }
+} 
+	
+	
+	
+	
+}
 	if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
 		
 		window = 14
