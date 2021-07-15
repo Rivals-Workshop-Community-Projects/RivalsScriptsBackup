@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 10, 18, 15 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 22 );
 
 // RoA Blue
 set_color_profile_slot( 1, 0, 152, 213, 245 ); //Skin
@@ -185,6 +185,66 @@ set_color_profile_slot( 15, 4, 84, 58, 44 ); //Green Tips
 set_color_profile_slot( 15, 5, 148, 102, 78 ); //Broom Tip
 set_color_profile_slot( 15, 6, 230, 225, 216 ); //Broom
 set_color_profile_slot( 15, 7, 230, 225, 216 ); //Eye
+
+// R-Mochi
+set_color_profile_slot( 16, 0, 239, 255, 219 ); //Skin
+set_color_profile_slot( 16, 1, 122, 204, 157 ); //Hat Light Blue
+set_color_profile_slot( 16, 2, 198, 251, 161 ); //Body Light Blue
+set_color_profile_slot( 16, 3, 255, 157, 172 ); //Hat Green
+set_color_profile_slot( 16, 4, 50, 162, 173 ); //Green Tips
+set_color_profile_slot( 16, 5, 198, 251, 161 ); //Broom Tip
+set_color_profile_slot( 16, 6, 255, 157, 172 ); //Broom
+set_color_profile_slot( 16, 7, 239, 255, 219 ); //Eye
+
+// S-Esper
+set_color_profile_slot( 17, 0, 247, 220, 240 ); //Skin
+set_color_profile_slot( 17, 1, 153, 255, 236 ); //Hat Light Blue
+set_color_profile_slot( 17, 2, 177, 161, 255 ); //Body Light Blue
+set_color_profile_slot( 17, 3, 177, 161, 255 ); //Hat Green
+set_color_profile_slot( 17, 4, 255, 210, 112 ); //Green Tips
+set_color_profile_slot( 17, 5, 177, 161, 255 ); //Broom Tip
+set_color_profile_slot( 17, 6, 251, 161, 255 ); //Broom
+set_color_profile_slot( 17, 7, 153, 255, 236 ); //Eye
+
+// Flask Clone
+set_color_profile_slot( 18, 0, 90, 201, 139 ); //Skin
+set_color_profile_slot( 18, 1, 90, 201, 139 ); //Hat Light Blue
+set_color_profile_slot( 18, 2, 90, 201, 139 ); //Body Light Blue
+set_color_profile_slot( 18, 3, 156, 255, 127 ); //Hat Green
+set_color_profile_slot( 18, 4, 90, 201, 139 ); //Green Tips
+set_color_profile_slot( 18, 5, 90, 201, 139 ); //Broom Tip
+set_color_profile_slot( 18, 6, 90, 201, 139 ); //Broom
+set_color_profile_slot( 18, 7, 90, 201, 139 ); //Eye
+
+// C-Iris
+set_color_profile_slot( 19, 0, 254, 205, 132 ); //Skin
+set_color_profile_slot( 19, 1, 255, 248, 122 ); //Hat Light Blue
+set_color_profile_slot( 19, 2, 255, 161, 183 ); //Body Light Blue
+set_color_profile_slot( 19, 3, 255, 161, 183 ); //Hat Green
+set_color_profile_slot( 19, 4, 255, 245, 74 ); //Green Tips
+set_color_profile_slot( 19, 5, 255, 161, 183 ); //Broom Tip
+set_color_profile_slot( 19, 6, 182, 157, 206 ); //Broom
+set_color_profile_slot( 19, 7, 169, 23, 168 ); //Eye
+
+// Esmeralda Tusspells
+set_color_profile_slot( 20, 0, 240, 189, 168 ); //Skin
+set_color_profile_slot( 20, 1, 49, 85, 89 ); //Hat Light Blue
+set_color_profile_slot( 20, 2, 49, 85, 89 ); //Body Light Blue
+set_color_profile_slot( 20, 3, 152, 107, 145 ); //Hat Green
+set_color_profile_slot( 20, 4, 224, 150, 192 ); //Green Tips
+set_color_profile_slot( 20, 5, 49, 85, 89 ); //Broom Tip
+set_color_profile_slot( 20, 6, 121, 176, 103 ); //Broom
+set_color_profile_slot( 20, 7, 168, 84, 90 ); //Eye
+
+// MEDUSA (OMORI)
+set_color_profile_slot( 21, 0, 199, 231, 221 ); //Skin
+set_color_profile_slot( 21, 1, 120, 203, 146 ); //Hat Light Blue
+set_color_profile_slot( 21, 2, 151, 226, 206 ); //Body Light Blue
+set_color_profile_slot( 21, 3, 151, 226, 206 ); //Hat Green
+set_color_profile_slot( 21, 4, 67, 214, 136 ); //Green Tips
+set_color_profile_slot( 21, 5, 151, 226, 206 ); //Broom Tip
+set_color_profile_slot( 21, 6, 219, 248, 220 ); //Broom
+set_color_profile_slot( 21, 7, 222, 155, 128 ); //Eye
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

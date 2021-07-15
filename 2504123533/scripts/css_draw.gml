@@ -1,7 +1,7 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-var num_alts = 16;
+var num_alts = 22;
 var alt_cur = get_player_color(player);
  
  
@@ -19,11 +19,17 @@ alt_name[7]  = "EA";
 alt_name[8]  = "Heir of Miasma";
 alt_name[9]  = "Bubble Squid";
 alt_name[10]  = "Flowers of Antimony";
-alt_name[11]  = "Silent";
+alt_name[11]  = "Hatterene Rights";
 alt_name[12] = "Rusted Dusk"
 alt_name[13] = "The Owl Lady";
 alt_name[14] = "Stay Winning"
 alt_name[15] = "Choccy Milk";
+alt_name[16] = "Apprentice";
+alt_name[17] = "Kinetic Orbit";
+alt_name[18] = "Flask Clone";
+alt_name[19] = "Fashionista";
+alt_name[20] = "Tusspells";
+alt_name[21] = "Slime Girl";
 
 //Alt
  
@@ -31,8 +37,8 @@ rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
  
 for(i = 0; i < num_alts; i++){
     var draw_color = (i == alt_cur) ? c_white : c_gray;
-    var draw_x = temp_x + 2 + 10 * i;
-    rectDraw(draw_x, temp_y + 137, draw_x + 7, temp_y + 140, draw_color);
+    var draw_x = temp_x + 8 * i;
+    rectDraw(draw_x, temp_y + 137, draw_x + 5, temp_y + 140, draw_color);
 }
  
 draw_set_halign(fa_left);

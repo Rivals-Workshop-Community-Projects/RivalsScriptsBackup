@@ -2,7 +2,27 @@
 
 state_timer += 1;
 timer += 1;
+star_timer += 1;
 
+/*
+if (star_timer % 4 == 0) {
+    image_index += 1;
+}*/
+
+if (destroy) {
+    if (destroy_delay > 0) {
+        destroy_delay -= 1;
+    } else {
+        for (var i = -1; i < 2; i += 1) {
+            for (var j = -1; j < 2; j += 1) {
+                spawn_hit_fx(floor(x + 30 * i), floor(y + 30 * j), destroy_particle == 0 ? 144 : 66);                
+            }
+        }
+        instance_destroy();
+    }
+}
+
+/*
 if (destroy) {
     if (destroy_delay > 0) {
         destroy_delay -= 1;
@@ -11,7 +31,7 @@ if (destroy) {
         instance_destroy();
     }
 } else if (state == 0) {
-
+    /*
     real_goal_x = goal_x + 2 * sin((timer + goal_y) / 20);
     real_goal_y = goal_y + 2 * cos((timer + goal_x) / 20);
 
@@ -50,8 +70,9 @@ if (destroy) {
     if ((!moving_x && !moving_y) || state_timer > 100) {
         state_timer = 0;
         state = 1;
-    }
-} else if (state == 1) {
+    }*/
+//} else if (state == 1)
+    /*
     var pid = player_id
     var gothit = false;
     with (asset_get("pHitBox")) {
@@ -68,4 +89,6 @@ if (destroy) {
     if (gothit) {
         destroy = true;
     }
-}
+    */
+//}
+

@@ -61,3 +61,16 @@ if (attack == AT_NSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 if ((clinging && state == PS_WALL_JUMP) || state == PS_WALL_TECH) {
     sprite_index = sprite_get("wallcling");
 }
+
+
+if (climbing != 0) {
+    if (window == 1) {
+        if (abs(vsp) > 1.0) {
+            image_index = floor(state_timer / 8.0);
+        } else {
+            image_index = 0;
+        }
+    } else {
+        sprite_index = sprite_get("jump");
+    }
+}

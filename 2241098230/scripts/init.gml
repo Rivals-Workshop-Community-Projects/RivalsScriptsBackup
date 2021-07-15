@@ -20,7 +20,7 @@ dash_turn_time = 15;
 dash_turn_accel = 1;
 dash_stop_time = 6;
 dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .8;
+ground_friction = .6;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
@@ -103,6 +103,8 @@ speedboost_timer = 0;
 grabbedid = noone;
 grab_timer = 0;
 grab_time_max = 30;
+
+dspecial_charge = 0;
 
 smoked_fx = hit_fx_create(sprite_get("smoke_debuff"), 12)
 smoked = false; //The smoked status effect

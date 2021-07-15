@@ -1,5 +1,18 @@
 mist_timer += 1;
 
+// First check if walls are close, then if they are further away
+// Climbing can only be done on close walls, wallbounce can be on either
+adjacent_wall = 0;
+if (place_meeting(x + 2, y, asset_get("par_block"))) {
+    adjacent_wall = 1;
+} else if (place_meeting(x - 2, y, asset_get("par_block"))) {
+    adjacent_wall = -1;
+} else if (place_meeting(x + 6, y, asset_get("par_block"))) {
+    adjacent_wall = 2;
+} else if (place_meeting(x - 6, y, asset_get("par_block"))) {
+    adjacent_wall = -2;
+}
+
 // Refresh Dash
 if (dash_count <= 0 && dash_timer > 0) {
     dash_timer -= 1;
@@ -11,12 +24,18 @@ if (runeJ && dash_count < 2 && !free) {
     dash_delay = 0;
 } else if (!free && dash_count <= 0) {
     if (dash_timer <= 0) {
-        dash_count = 1;
+        if (stamina >= stamina_cost_dash) {
+            dash_count = 1;
+        }
         refresh_hair = 8;
     }
 }
 
-if (!can_nspecial || dash_count >= 2) {
+if (stamina < stamina_cost_dash) {
+    dash_count = 0;
+}
+
+if (!can_nspecial || (dash_count >= 2 && stamina >= max_stamina)) {
     move_cooldown[AT_NSPECIAL] = 2;
 }
 
@@ -40,6 +59,83 @@ if (dash_count <= 0 || dash_delay > 0) {
 if (dash_delay > 0) {
     dash_delay -= 1;
 }
+
+// Trigger wall climb
+if (state == PS_IDLE_AIR || (state == PS_AIR_DODGE && state_timer <= 1) ||
+    (state == PS_ATTACK_AIR && attack == AT_EXTRA_1 && window >= 3)) {
+    if (!joy_pad_idle && shield_down) {
+        var dir = (floor((joy_dir + 22.5) / 45.0) * 45.0) % 360;
+        if (adjacent_wall == 1 && dir == 0) {
+            destroy_hitboxes();
+            set_state(PS_ATTACK_AIR);
+            attack = AT_EXTRA_2;
+            window = 1;
+            window_timer = 0;
+            climbing = 1;
+            climb_timer = 0;
+        } else if (adjacent_wall == -1 && dir == 180) {
+            destroy_hitboxes();
+            set_state(PS_ATTACK_AIR);
+            attack = AT_EXTRA_2;
+            window = 1;
+            window_timer = 0;
+            climbing = -1;
+            climb_timer = 0;
+        }
+    }
+}
+
+stamina_timer += 1;
+
+if (climbing != 0) {
+    if (adjacent_wall != climbing || !shield_down || attack != AT_EXTRA_2 || stamina <= 0) {
+        climbing = 0;
+        set_state(free ? PS_IDLE_AIR : PS_IDLE);
+    } else if (window == 1) {
+        window = 1;
+        window_timer = 0;
+        hsp = 0;
+        vsp = 0;
+        spr_dir = -climbing;
+        last_climbing = climbing;
+        climb_timer += 1;
+        if (climb_timer > 4 && stamina > 0) {
+            stamina -= 1;
+        }
+        if (!joy_pad_idle) {
+            var dir = (floor((joy_dir + 45.0) / 90.0) * 90.0) % 360;
+            if (dir == 90) {
+                if (place_meeting(x + 2, y - 16, asset_get("par_block")) || place_meeting(x - 2, y - 16, asset_get("par_block"))) {
+                    vsp = -climbing_speed;
+                } else {
+                    window = 2;
+                    spr_dir = climbing;
+                    hsp = climbing * 5.0;
+                    vsp = -5.0;
+                }
+            } else if (dir == 270) {
+                vsp = climbing_speed;
+            }
+        }
+        if (jump_down) {
+            climbing = 0;
+            set_state(PS_WALL_JUMP);
+            clinging = true;
+        }
+        can_fast_fall = false;
+    }
+} else if (!free && stamina < max_stamina) {
+    if ((state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) || (attack != AT_EXTRA_2 && attack != AT_EXTRA_1 && attack != AT_FSPECIAL)) {
+        stamina += 1;
+    }
+}
+
+if (stamina < max_stamina) {
+    stamina_linger = 30;
+} else if (stamina_linger > 0) {
+    stamina_linger -= 1;
+}
+
 
 if ((((state == PS_AIR_DODGE && state_timer <= 1) || state == PS_PARRY_START || state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD) && !joy_pad_idle) &&
         dash_count > 0 && dash_jump_delay <= 0) {
@@ -146,6 +242,7 @@ if (dash_block != noone) {
     }
 }
 
+/*
 if (badeline_shots < 3) {
     badeline_shot_timer += 1;
     if (badeline_shot_timer >= badeline_shot_charge_time) {
@@ -155,6 +252,7 @@ if (badeline_shots < 3) {
 } else {
     badeline_shot_timer = 0;
 }
+*/
 
 if (runeK) {
     if ((badeline != noone && move_cooldown[AT_DSPECIAL] <= 2) || !can_dspecial) {
@@ -170,7 +268,7 @@ if (badeline != noone) {
     move_cooldown[AT_USPECIAL] = 2;
 }
 
-if (badeline_shots <= 0 || badeline != noone) {
+if (badeline != noone /*|| stamina < stamina_cost_fspecial*/) {
     move_cooldown[AT_FSPECIAL] = 2;
 }
 
@@ -184,22 +282,13 @@ if (badeline != noone) {
             orb.walls = 1;
             orb.grounds = 1;
             var bx = badeline[1];
-            var by = badeline[2]
-            target_obj = noone;
-            for (i = 0; i < instance_number(oPlayer); i++) {
-                instance = instance_find(oPlayer, i);
-                if (instance != noone) {
-                    if (instance != id && (target_obj == noone || point_distance(bx, by, instance.x, instance.y) < point_distance(bx, by, target_obj.x, target_obj.y))) {
-                        target_obj = instance;
-                    }
-                }
-            }
+            var by = badeline[2];
             angle_set = false;
             if (target_obj != noone && target_obj != id) {
-                angle = point_direction(badeline[1] - (badeline[4] * 22), badeline[2] - 44, target_obj.x, target_obj.y - target_obj.char_height / 2);
-                if ((badeline[4] == 1.0 && (angle <= 90 || angle >= 270)) || (badeline[4] == -1.0 && (angle >= 90 && angle <= 270))) {
-                    orb.hsp = lengthdir_x(6, angle);
-                    orb.vsp = lengthdir_y(6, angle);
+                if ((badeline[4] == 1.0 && (badeline_shot_angle <= 90 || badeline_shot_angle >= 270)) ||
+                    (badeline[4] == -1.0 && (badeline_shot_angle >= 90 && badeline_shot_angle <= 270))) {
+                    orb.hsp = lengthdir_x(6, badeline_shot_angle);
+                    orb.vsp = lengthdir_y(6, badeline_shot_angle);
                     angle_set = true;
                 }
             }
@@ -256,13 +345,36 @@ if (!free) {
 
 draw_indicator = true;
 if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) &&
-    (attack == AT_NSPECIAL || attack == AT_UAIR || attack == AT_UTILT || (attack == AT_USTRONG && window >= 2))) {
+    (attack == AT_NSPECIAL || attack == AT_UAIR || attack == AT_UTILT || attack == AT_FSPECIAL || (attack == AT_USTRONG && window >= 2))) {
     if (char_height < (attack == AT_UTILT ? max_char_height + 20 : max_char_height)) {
         char_height += 8;
     }
 } else {
     if (char_height > min_char_height) {
         char_height -= 8;
+    }
+}
+
+if (wallbounce > 0) {
+    hsp = wallbounce_speed;
+    wallbounce -= 1;
+}
+
+if (super_dash) {
+    if ((!free && super_dash_timer > 2) || (abs(vsp) < 4 && abs(hsp) < 4)) {
+        super_dash = false;
+    } else {
+        super_dash_timer += 1;
+        if (super_dash_timer % 10 == 0) {
+            dash_circle = array_create(6);
+            dash_circle[0] = x;
+            dash_circle[1] = y - 14;
+            dash_circle[2] = spr_dir;
+            dash_circle[3] = point_direction(0, 0, hsp, vsp) + 90;
+            dash_circle[4] = 16;
+            dash_circle[5] = -1;
+            dash_circles[floor(super_dash_timer / 10) - 1] = dash_circle;
+        }
     }
 }
 

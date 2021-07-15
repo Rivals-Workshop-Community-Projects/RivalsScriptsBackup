@@ -12,20 +12,6 @@ if (runeG) {
 }
 draw_sprite_ext(sprite_get("ustrong_cooldown_icon"), 0, temp_x+164, temp_y-16, 2, 2, 0, temp_color2, 1);
 
-for (i = 0; i < 3; i += 1) {
-    if (badeline_shots > i) {
-        draw_sprite_ext(sprite_get("fspecial_cooldown_icon"), 0, temp_x + i*18, temp_y-12, 2, 2, 0, c_white, 1);
-    } else if (badeline_shots == i) {
-        for (j = 0; j < 4; j += 1) {
-            temp_color3 = c_gray;
-            if (floor(badeline_shot_timer * 4 / badeline_shot_charge_time) > j) temp_color3 = c_white;
-            draw_sprite_ext(sprite_get("fspecial_cooldown_charge"), j, temp_x + i*18 + j*4, temp_y-12, 2, 2, 0, temp_color3, 1);
-        }
-    } else {
-        draw_sprite_ext(sprite_get("fspecial_cooldown_icon"), 0, temp_x + i*18, temp_y-12, 2, 2, 0, c_gray, 1);
-    }
-}
-
 if (death_effect != noone) {
     var frame = floor(death_effect[2] / 4);
     if (frame >= 6) {

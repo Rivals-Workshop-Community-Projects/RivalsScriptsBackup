@@ -9,6 +9,12 @@ fspecial_fx = hit_fx_create( sprite_get( "fspecial_fx" ), 8 );
 cancel_chance = hit_fx_create( sprite_get( "cancel_chance" ), 12 );
 cancel_chance2 = hit_fx_create( sprite_get( "cancel_chance_star" ), 12 );
 dizzy = hit_fx_create( sprite_get( "dizzy" ), 28 );
+kart_sprite = sprite_get("car");
+
+superMove = 14
+superTrue = 0
+
+ru_wind = hit_fx_create( sprite_get( "rocket_uppercut_wind" ), 30 );
 
 char_height = 52;
 idle_anim_speed = .15;

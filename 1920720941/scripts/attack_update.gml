@@ -16,17 +16,17 @@ if (attack == AT_EXTRA_1){
             grounded_dash = !free;
             dash_count_at_dash = dash_count;
             jump_held = jump_down;
-            dash_effect = array_create(4);
-            dash_effect[0] = x;
-            dash_effect[1] = y;
-            dash_effect[2] = 16;
-            dash_effect[3] = dash_count_at_dash;
             dash_count -= 1;
             dash_timer = 10;
             dash_delay = 15;
+            stamina -= stamina_cost_dash;
         }
     } else if (window == 2) {
-        sound_play(sound_get("dash"));
+        dash_effect = array_create(4);
+        dash_effect[0] = x;
+        dash_effect[1] = y;
+        dash_effect[2] = 16;
+        dash_effect[3] = dash_count_at_dash;
         dash_jump = false;
         if (!joy_pad_idle) {
             dash_dir = (floor((joy_dir + 22.5) / 45.0) * 45.0) % 360;
@@ -36,6 +36,11 @@ if (attack == AT_EXTRA_1){
             dash_dir = spr_dir == 1 ? 0 : 180;
             dash_x = lengthdir_x(16, dash_dir);
             dash_y = 0;
+        }
+        if (dash_count_at_dash > 1) {
+            sound_play(sound_get(spr_dir == 1 ? "dash_pink_right" : "dash_pink_left"));
+        } else {
+            sound_play(sound_get(spr_dir == 1 ? "dash_red_right" : "dash_red_left"));
         }
         window = 3;
         window_timer = 0;
@@ -131,24 +136,11 @@ if (attack == AT_EXTRA_1){
         }
     }
     if (mist_dash && !in_mist && !out_of_mist) {
-        var distances = array_create(25);
-        var shortest_dist = 1000;
-        for (i = 0; i < 9; i+=1) {
-            if (dream_mist[i] != noone) {
-                distances[i] = round(point_distance(x, y, dream_mist[i].x + 20, dream_mist[i].y + 20));
-                if (shortest_dist > distances[i]) {
-                    shortest_dist = distances[i];
-                }
-            } else {
-                distances[i] = 1000;
-            }
-        }
         if (!runeA) {
-            for (i = 0; i < 9; i+=1) {
-                if (dream_mist[i] != noone) {
-                    dream_mist[i].destroy = true;
-                    dream_mist[i].destroy_delay = (distances[i] - shortest_dist) / 4;
-                }
+            if (dream_mist != noone) {
+                dream_mist.destroy = true;
+                dream_mist.destroy_delay = 20;
+                dream_mist = noone;
             }
         }
         destroy_hitboxes();
@@ -197,10 +189,9 @@ if (attack == AT_EXTRA_1){
                         create_deathbox(x, y, 10, 10, player, true, 0, 1, 0)
                     }
                     if (!free) set_state(PS_PRATLAND);
-                    for (i = 0; i < 25; i+=1) {
-                        if (dream_mist[i] != noone) {
-                            dream_mist[i].destroy = true;
-                        }
+                    if (dream_mist != noone) {
+                        dream_mist.destroy = true;
+                        dream_mist = noone;
                     }
                     out_of_mist = true;
                     window = 5;
@@ -224,16 +215,31 @@ if (attack == AT_EXTRA_1){
                 dash_jump_delay = 10;
                 window = 5;
                 window_timer = 0;
-                if (grounded_dash && (dash_dir == 225 || dash_dir == 315)) {
-                    vsp = -6.00;
+                if (dash_dir == 225 || dash_dir == 315) {
+                    vsp = -7.50;
                     hsp = dash_x * (runeH ? 1.7 : 1.2);
+                    sound_play(sound_get("dash_hyper"));
                 } else if (dash_dir % 180 == 0) {
-                    vsp = -10.00;
+                    vsp = -jump_speed;
                     hsp = dash_x * (runeH ? 0.9 : 0.7);
-                } else {
-                    vsp = -9.00;
-                    hsp = dash_x;
+                    sound_play(sound_get("dash_super"));
                 }
+                super_dash = true;
+                super_dash_timer = 0;
+            } else if (dash_dir % 360 == 90) {
+                if (adjacent_wall != 0) {
+                    destroy_hitboxes();
+                    dash_jump_delay = 10;
+                    window = 5;
+                    window_timer = 0;
+                    wallbounce = 1;
+                    vsp = -15.00;
+                    hsp = -walljump_hsp * (adjacent_wall > 0 ? 1 : -1);
+                    wallbounce_speed = hsp;
+                    sound_play(sound_get("dash_wallbounce"));
+                }
+                super_dash = true;
+                super_dash_timer = 0;
             }
         }
         
@@ -257,6 +263,7 @@ if (attack == AT_NSPECIAL) {
     if (window == 4 && window_timer == 12){
         dash_count = 2;
         refresh_hair = 8;
+        stamina = max_stamina;
     }
 }
 
@@ -275,14 +282,49 @@ if (attack == AT_FSPECIAL) {
     can_fast_fall = false;
     if (window == 1) {
         if (window_timer == 1) {
+            badeline_shots = 0;
+            badeline_shot_timer = 0;
+        }
+    } else if (window == 2) {
+        badeline_shot_timer += 1;
+        if (window_timer + 1 == get_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH)) {
+            badeline_shots += 1;
+            badeline_shot_timer = 0;
+            //stamina -= stamina_cost_fspecial;
+            if (special_down && badeline_shots < 3 /*&& stamina >= stamina_cost_fspecial*/ ) {
+                window_timer = 0;
+                window = 2;
+            }
+        }
+        /* <- Remove this to make fspecial cancellable mid charge
+        if (!special_down && badeline_shots > 0) {
+            badeline_shot_timer = 0;
+            window = 3;
+            window_timer = 0;
+        }*/
+    } else if (window == 3) {
+        if (window_timer == 1) {
             badeline = array_create(5);
             badeline[0] = AT_FSPECIAL;
             badeline[1] = x;
             badeline[2] = y;
             badeline[3] = 60;
             badeline[4] = spr_dir;
+            target_obj = noone;
+            for (i = 0; i < instance_number(oPlayer); i++) {
+                instance = instance_find(oPlayer, i);
+                if (instance != noone) {
+                    if (instance != id && (target_obj == noone || point_distance(x, y, instance.x, instance.y) < point_distance(bx, by, target_obj.x, target_obj.y))) {
+                        target_obj = instance;
+                    }
+                }
+            }
+            badeline_shot_angle = point_direction(x - (spr_dir * 22), y - 44, target_obj.x, target_obj.y - target_obj.char_height / 2);
         }
     }
+} else if (badeline == noone) {
+    badeline_shots = 0;
+    badeline_shot_timer = 0;
 }
 
 if (attack == AT_USPECIAL){
@@ -370,36 +412,23 @@ if (attack == AT_DSPECIAL) {
         }
         if (window == 1 && window_timer == 1) {
             if (dream_mist != noone) {
-                var i;
-                for (i = 0; i < 25; i+=1) {
-                    if (dream_mist[i] != noone) {
-                        dream_mist[i].destroy = true;
-                    }
-                }
+                dream_mist.destroy = true;
                 dream_mist = noone;
             }
         }
         if (dream_mist == noone) {
             move_cooldown[AT_DSPECIAL] = 180
-            dream_mist = array_create(9);
-            var mist_x; var mist_y;
-            for (var i = 0; i < 9; i+=1) {
-                mist_x = x + (((i + 1) % 3) - 1) * 30;
-                mist_y = y + (floor(i / 3) - 1) * 30;
-                dream_mist[i] = instance_create(x - 22, y - 40, "obj_article2");
-                dream_mist[i].goal_x = mist_x - 22;
-                if (free) {
-                    dream_mist[i].goal_y = mist_y - 40;
-                } else {
-                    dream_mist[i].goal_y = mist_y - 66;
-                }
-                dream_mist[i].player_id = id;
-                dream_mist[i].player = player;
-            }
+            dream_mist = instance_create(x, y - 22, "obj_article2");
+            dream_mist.player_id = id;
+            dream_mist.player = player;
         }
     }
 }
 
 if (attack == AT_USPECIAL && badeline != noone) {
     badeline = noone;
+}
+
+if (attack == AT_EXTRA_2 && window == 2) {
+    hsp = last_climbing * 3.0;
 }

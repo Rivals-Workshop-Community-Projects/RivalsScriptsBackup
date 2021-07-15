@@ -15,6 +15,7 @@ sprite_change_offset("fastfall", 48, 62);
 sprite_change_offset("doublejump", 48, 62);
 sprite_change_offset("walljump", 48, 62);
 sprite_change_offset("wallcling", 48, 62);
+sprite_change_offset("wallclimb", 48, 62);
 sprite_change_offset("pratfall", 48, 62);
 sprite_change_offset("land", 48, 62);
 sprite_change_offset("landinglag", 48, 62);
@@ -76,6 +77,7 @@ sprite_change_offset("dash_effect2", 48, 56);
 sprite_change_offset("dash_effect_theo", 48, 56);
 sprite_change_offset("dash_effect_badeline", 48, 56);
 sprite_change_offset("mist_dash", 48, 56);
+sprite_change_offset("dash_circle", 30, 14);
 
 // AFTERIMAGES
 sprite_change_offset("celeste_afterimage_leftright", 48, 62);
@@ -98,6 +100,9 @@ sprite_change_offset("celeste_afterimage_badeline_diagup", 48, 62);
 sprite_change_offset("celeste_afterimage_badeline_diagdown", 48, 62);
 sprite_change_offset("celeste_afterimage_badeline_up", 48, 62);
 sprite_change_offset("celeste_afterimage_badeline_down", 48, 62);
+
+sprite_change_offset("dream_mist", 52, 52);
+sprite_change_offset("dream_mist_blank", 52, 52);
 
 // DASHBLOCK
 sprite_change_offset("dash_block", 42, 42);

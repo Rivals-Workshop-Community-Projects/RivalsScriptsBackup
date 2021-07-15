@@ -1,5 +1,3 @@
-var destroyed = false;//Clone use
-
 //auto-recharge
 //also handles point clamping
 if PotionHeldDown
@@ -73,23 +71,6 @@ if(attack == AT_DSPECIAL)
 if !free || state == PS_WALL_JUMP
 	move_cooldown[AT_USPECIAL] = 0;
 
-//Clone Killer
-if custom_clone
-{
-	//print("Clone Alive");
-	if state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND
-	{
-		print("Destroyed Clone");
-		destroyed = true;
-	}
-	else
-	{
-		if !visible
-			makeGooey();
-		visible = true;
-	}
-}
-
 //clay junk below
 
 if !canDraw{
@@ -115,8 +96,11 @@ switch (state)
     }break;
 }
 
-if destroyed
-	instance_destroy();
+with(obj_article2)
+{
+	if player_id == other
+		other.strong_charge = charge;
+}
 
 hit_fx_depth(sting,-4)
 hit_fx_depth(splsh,-5)

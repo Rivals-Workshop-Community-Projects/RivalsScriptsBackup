@@ -417,6 +417,19 @@ if attack == AT_USPECIAL and window == 3{
 	}
 }
 
+if attack == AT_NSPECIAL_2 and window == 2 and window_timer == 3 and que_count < 10{
+	window = 1
+	window_timer = 0
+	instance_create(x+32, y-49, "obj_article3");
+	//obj_article1.state = 9
+	//obj_article1.state_timer = 0
+	//obj_article3.vsp = random_func(-5, -25, true)
+	//obj_article3.hsp = random_func(1, 25, true)
+	que_count += 1
+	
+	
+}
+
 /*if attack == AT_TAUNT_2 and window_timer >= 118{
 	if taunt_down{
 		window_timer = 0;

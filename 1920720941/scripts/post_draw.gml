@@ -55,5 +55,19 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) {
                 view_get_xview(), view_get_yview(), 1.0, 1.0,
                 c_white, 1.0 - (window_timer / 12.0));
         }
+    } else if (attack == AT_FSPECIAL) {
+        for (i = 0; i < 3; i += 1) {
+            if (badeline_shots > i) {
+                draw_sprite_ext(sprite_get("fspecial_cooldown_icon"), 0, x - 24 + i*18, y-78, 2, 2, 0, c_white, 1);
+            } else if (badeline_shots == i) {
+                for (j = 0; j < 4; j += 1) {
+                    temp_color3 = c_gray;
+                    if (floor(badeline_shot_timer * 4 / get_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH)) > j) temp_color3 = c_white;
+                    draw_sprite_ext(sprite_get("fspecial_cooldown_charge"), j, x - 24 + i*18 + j*4, y-78, 2, 2, 0, temp_color3, 1);
+                }
+            } else {
+                draw_sprite_ext(sprite_get("fspecial_cooldown_icon"), 0, x - 24 + i*18, y-78, 2, 2, 0, c_gray, 1);
+            }
+        }
     }
 }

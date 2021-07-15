@@ -5,6 +5,9 @@ hitstun_hurtbox_spr = -1;
 
 killarticles = false;
 
+superMove = 14
+superTrue = 0
+
 char_height = 52;
 idle_anim_speed = .1;
 crouch_anim_speed = .1;
@@ -23,12 +26,16 @@ has_cake = 0;
 party_cooldown = 0;
 pbc = 0;
 happy_birthday = 0;
+beffect_timer = 0;
+que_count = 0;
+que_timer = 0;
 //fcountdown = random_func( 0, 14, true );
 camera_obj = asset_get("camera_obj");
 confetti = hit_fx_create( sprite_get( "confetti" ), 60 );
 confetti_side = hit_fx_create( sprite_get( "confetti_launch_horizontal" ), 60 );
 confetti_diag = hit_fx_create( sprite_get( "confetti_launch_diagonal" ), 60 );
 gunshot = hit_fx_create( sprite_get( "gun_shot" ), 60 );
+beffect = hit_fx_create(sprite_get("walk_bugingi_fade"), 30);
 //dance_timer = noone;
 //dance_timer_innitd = 0;
 

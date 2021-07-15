@@ -35,30 +35,30 @@ if (attack == AT_DATTACK) {
 if (attack = AT_FSTRONG) {
     if (window == 4 && window_timer == 1 && hitstop == 0) {
     	if (strong_charge >= 60)
-    		create_smoke(x + 48 * spr_dir, y - 24, 8, 30, 0, 45, 6 + (has_rune("H") * 6), 22 + (has_rune("H") * 6), 0.18)
+    		create_smoke(x + 48 * spr_dir, y - 24, 8, 45, 0, 45, 6 + (has_rune("H") * 6), 22 + (has_rune("H") * 6), 0.18)
     	else
-    		create_smoke(x + 48 * spr_dir, y - 24, 8, 30, 0, 45, 4 + (has_rune("H") * 6), 12 + (has_rune("H") * 6), 0.18)
+    		create_smoke(x + 48 * spr_dir, y - 24, 8, 45, 0, 45, 4 + (has_rune("H") * 6), 12 + (has_rune("H") * 6), 0.18)
     }
 }
 
 if (attack = AT_USTRONG) {
     if (window == 4 && window_timer == 1 && hitstop == 0) {
     	if (strong_charge >= 60)
-    		create_smoke(x, y - 88, 8, 30, 40, 140, 6 + (has_rune("H") * 6), 22 + (has_rune("H") * 6), 0.18)
+    		create_smoke(x, y - 88, 8, 45, 40, 140, 6 + (has_rune("H") * 6), 22 + (has_rune("H") * 6), 0.18)
     	else
-    		create_smoke(x, y - 88, 8, 30, 60, 120, 4 + (has_rune("H") * 6), 12 + (has_rune("H") * 6), 0.18)
+    		create_smoke(x, y - 88, 8, 45, 60, 120, 4 + (has_rune("H") * 6), 12 + (has_rune("H") * 6), 0.18)
     }
 }
 
 if (attack = AT_DSTRONG) {
     if (window == 4 && window_timer == 2 && hitstop == 0) {
     	if (strong_charge >= 60) {
-	       create_smoke(x, y + 24, 6, 30, 125, 180, 6 + (has_rune("H") * 6), 18 + (has_rune("H") * 6), 0.18)
-	       create_smoke(x, y + 24, 6, 30, 0, 45, 6 + (has_rune("H") * 6), 18 + (has_rune("H") * 6), 0.18)
+	       create_smoke(x, y + 24, 6, 45, 125, 180, 6 + (has_rune("H") * 6), 18 + (has_rune("H") * 6), 0.18)
+	       create_smoke(x, y + 24, 6, 45, 0, 45, 6 + (has_rune("H") * 6), 18 + (has_rune("H") * 6), 0.18)
     	}
     	else {
-	       create_smoke(x, y + 24, 6, 30, 135, 180, 4 + (has_rune("H") * 6), 9 + (has_rune("H") * 6), 0.18)
-	       create_smoke(x, y + 24, 6, 30, 0, 45, 4 + (has_rune("H") * 6), 9 + (has_rune("H") * 6), 0.18)
+	       create_smoke(x, y + 24, 6, 45, 135, 180, 4 + (has_rune("H") * 6), 9 + (has_rune("H") * 6), 0.18)
+	       create_smoke(x, y + 24, 6, 45, 0, 45, 4 + (has_rune("H") * 6), 9 + (has_rune("H") * 6), 0.18)
     	}
     }
 }
@@ -560,7 +560,6 @@ if (attack == AT_UTHROW) {
 }
 
 if (attack == AT_FSPECIAL){
-	moev_cooldown[AT_FSPECIAL] = 15;
 	if (window == 3) {
         if (window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)) {
         	window = 25
@@ -581,6 +580,7 @@ if (attack == AT_FSPECIAL){
 	}
     
     if (grabbedid != noone) {
+    	off_edge = false;
 	    grabbedid.ungrab = 0;
         grabbedid.spr_dir = -spr_dir;
         grabbedid.depth = depth - 0.1;
@@ -635,7 +635,7 @@ if (attack == AT_FSPECIAL){
 		if (window == 5) {
 	        grabbedid.x = x + spr_dir * 48
 	        grabbedid.y = y + 2;
-	        if (y >= room_height - abs(vsp) && has_rune("K")) {
+	        if (y >= room_height - abs(vsp) && (has_rune("K") || grabbedid.smoked)) {
 		        grabbedid.x = x;
 		        grabbedid.y = room_height + 256;
 	        }
@@ -658,7 +658,22 @@ if (attack == AT_FSPECIAL){
 	        grabbedid.x = x + spr_dir * 26
 	        grabbedid.y = y;
     	}
-    }
+    	
+    	if (shield_pressed && window <= 5 && vsp > 0.5) {
+			move_cooldown[AT_FSPECIAL] = 15;
+            window = 25;
+            window_timer = 0;
+			grab_timer = 0;
+            vsp -= 8;
+            hsp /= 2.5;
+			grabbedid.hsp = hsp;
+			grabbedid.vsp = vsp * 2;
+			grabbedid = noone;
+            attack_end();
+            djumps = 0;
+            clear_button_buffer(PC_SHIELD_PRESSED);
+    	}
+    } 
     else {
     	can_wall_jump = true;
     }
@@ -726,13 +741,15 @@ if (attack == AT_USPECIAL){
 }
 
 if (attack == AT_DSPECIAL){
+	if (window == 1) {
+		dspecial_charge = 0;
+	}
     if (window == 2){
+    	dspecial_charge = ease_linear(100, 200, window_timer, get_window_value(attack, window, AG_WINDOW_LENGTH)) / 100;
     	if (!special_down) {
     		window = 3;
     		window_timer = 0
     	}
-    }
-	if (window == 2) {
         if (window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)) {
     		window = 5;
     		window_timer = 0
@@ -746,12 +763,16 @@ if (attack == AT_DSPECIAL){
         }
     }
     
-    if (window == 3 && window_timer == 2 && hitstop == 0) {
-       create_smoke(x, y - 32, 8, 15, 0, 359, 4 + (has_rune("L") * 6), 8 + (has_rune("L") * 6), 0.18)
+    if (window == 3 || window == 5) {
+    	vsp = 0;
     }
     
-    if (window == 5 && window_timer == 2 && hitstop == 0) {
-       create_smoke(x, y - 32, 16, 35, 0, 359, 12 + (has_rune("L") * 14), 16 + (has_rune("L") * 14), 0.18)
+    if (window == 3 && window_timer == 2 && !hitpause) {
+       create_smoke(x, y - 32, 8, 45, 0, 359, 4, 8 * dspecial_charge + (has_rune("L") * 6), 0.18)
+    }
+    
+    if (window == 5 && window_timer == 2  && !hitpause) {
+       create_smoke(x, y - 32, 24, 55, 0, 359, 4, 8 * dspecial_charge + (has_rune("L") * 14), 0.18)
     }
     
     if (window == 5 && has_hit_player) {

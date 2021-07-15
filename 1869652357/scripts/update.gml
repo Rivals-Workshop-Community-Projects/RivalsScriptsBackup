@@ -346,3 +346,12 @@ if ("swallowed" in self && swallowed) {
         set_hitbox_value(AT_EXTRA_3, 5, HG_HIT_LOCKOUT, 1);
     }
 }
+
+if superTrue == 1 {
+	superTrue = 0
+	attack = AT_NSPECIAL_2
+	set_attack(AT_NSPECIAL_2)
+	vsp = 0
+	window = 1
+	window_timer = 0
+}

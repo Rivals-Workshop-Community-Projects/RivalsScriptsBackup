@@ -57,7 +57,7 @@ switch (get_player_color( player_id.player ))
     case 21: sprite_index = sprite_get("wind_boulder"); break;
     case 22: sprite_index = sprite_get("amethyst_boulder"); break;
     case 23: sprite_index = sprite_get("spacey_boulder"); break;
-    case 24: sprite_index = sprite_get("stone_boulder"); break;
+    case 24: sprite_index = sprite_get("birder"); break;
     case 25: sprite_index = sprite_get("phoenix_boulder"); break;
     case 27: sprite_index = sprite_get("baked_boulder"); break;
     case 29: sprite_index = sprite_get("spook_boulder"); break;

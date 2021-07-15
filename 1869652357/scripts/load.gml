@@ -15,7 +15,7 @@ sprite_change_offset("dashturn", 48, 95);
 sprite_change_offset("jumpstart", 48, 95);
 sprite_change_offset("jump", 48, 95);
 sprite_change_offset("doublejump", 48, 95);
-sprite_change_offset("walljump", 48, 119);
+sprite_change_offset("walljump", 64, 119);
 sprite_change_offset("pratfall", 64, 126);
 sprite_change_offset("land", 48, 95);
 sprite_change_offset("landinglag", 48, 95);
@@ -57,6 +57,10 @@ sprite_change_offset("cancel_chance_star", 64, 126);
 sprite_change_offset("dizzy", 64, 126);
 sprite_change_offset("nspecial_proj", 64, 94);
 sprite_change_offset("taunt3", 64, 126);
+sprite_change_offset("rocket_uppercut", 64, 192);
+sprite_change_offset("rocket_uppercut_wind", 64, 192);
+
+sprite_change_offset("car", 6, 6);
 
 sprite_change_offset("intro", 64, 126);
 

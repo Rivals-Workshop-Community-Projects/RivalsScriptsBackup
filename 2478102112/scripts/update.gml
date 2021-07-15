@@ -109,3 +109,36 @@ if party_cooldown > 0{
 else{
 	pbc = 0;
 }
+
+if get_player_color(player) == 25{
+	if window == 1 and window_timer == 0{
+		set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("utilt_bugingi"));
+	}
+	if state == PS_WALK{
+		beffect_timer +=1
+	}
+}
+
+if beffect_timer >= 20{
+	spawn_hit_fx(x, y, beffect)
+	beffect_timer = 0 
+}
+
+if que_timer > 0{
+	que_timer -= 1
+	obj_article3.maxarticles = 10
+}
+
+if superTrue == 1 {
+	print("cat")
+	superTrue = 0
+	attack = AT_NSPECIAL_2
+	set_attack(AT_NSPECIAL_2)
+	//vsp = 0
+	window = 1
+	window_timer = 1
+	que_timer = 200
+}
+if attack == AT_NSPECIAL_2 and window == 3{
+	que_count = 0
+}

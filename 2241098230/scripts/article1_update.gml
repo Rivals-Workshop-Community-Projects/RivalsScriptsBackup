@@ -5,7 +5,7 @@ if (_init) {
             other.smoke_objects[i] = instance_create(other.x, other.y, "obj_article2")
         }
         smoke_objects[i].dir = smoke_spread_dir_min + ((smoke_spread_dir_max - smoke_spread_dir_min) * (i/smoke_particle_amount))
-        smoke_objects[i].spd =  smoke_speed_min + random_func(i+2, (smoke_speed_max - smoke_speed_min), true) 
+        smoke_objects[i].spd =  smoke_speed_min + (random_func(i+2, round(smoke_speed_max - smoke_speed_min), false))
         smoke_objects[i].x = x + lengthdir_x(smoke_objects[i].spd*2, smoke_objects[i].dir) * spr_dir;
         smoke_objects[i].y = y + lengthdir_y(smoke_objects[i].spd*2, smoke_objects[i].dir);
         smoke_objects[i].size = random_func(i, 3, true);

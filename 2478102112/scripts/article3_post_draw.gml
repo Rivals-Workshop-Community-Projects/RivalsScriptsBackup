@@ -12,7 +12,12 @@ if anim_time > 78{
     print("meow");
 }
 
-if fired_gun == 1{
+if fired_gun == 1 and itemnum == 12{
     spawn_hit_fx(x + (548 * spr_dir), y-20, hit_fx_create( sprite_get( "gun_shot" ), 30 ));
+    print("flea");
+}
+
+if fired_gun == 1 and itemnum == 15{
+    spawn_hit_fx(x - (548 * spr_dir), y-20, hit_fx_create( sprite_get( "gun_shot" ), 30 ));
     print("flea");
 }

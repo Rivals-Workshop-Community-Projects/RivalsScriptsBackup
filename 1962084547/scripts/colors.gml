@@ -176,7 +176,7 @@ set_color_profile_slot( 14, 5, 212, 212, 212 ); //EggD
 set_color_profile_slot( 14, 6, 8, 8, 8 ); //Eye Whites
 set_color_profile_slot( 14, 7, 255, 255, 255 ); //Eye Black
 
-// Pilot
+// Angel
 set_color_profile_slot( 15, 0, 103, 60, 64 ); //featherrB
 set_color_profile_slot( 15, 1, 69, 40, 43 ); //Feather D
 set_color_profile_slot( 15, 2, 239, 169, 181 ); //beakkB
@@ -267,14 +267,14 @@ set_color_profile_slot( 23, 6, 238, 243, 253 ); //Eye Whites
 set_color_profile_slot( 23, 7, 0, 0, 0 ); //Eye Black
 
 // Stone
-set_color_profile_slot( 24, 0, 230, 221, 208 ); //featherrB
-set_color_profile_slot( 24, 1, 184, 177, 167 ); //Feather D
-set_color_profile_slot( 24, 2, 230, 221, 208 ); //beakkB
-set_color_profile_slot( 24, 3, 184, 177, 167 ); //BeaKD
-set_color_profile_slot( 24, 4, 230, 221, 208 ); //EggB
-set_color_profile_slot( 24, 5, 184, 177, 167 ); //EggD
-set_color_profile_slot( 24, 6, 230, 221, 208 ); //Eye Whites
-set_color_profile_slot( 24, 7, 184, 177, 167 ); //Eye Black
+set_color_profile_slot( 24, 0, 255, 254, 226 ); //featherrB
+set_color_profile_slot( 24, 1, 233, 220, 192 ); //Feather D
+set_color_profile_slot( 24, 2, 255, 254, 226 ); //beakkB
+set_color_profile_slot( 24, 3, 233, 220, 192 ); //BeaKD
+set_color_profile_slot( 24, 4, 255, 254, 226 ); //EggB
+set_color_profile_slot( 24, 5, 233, 220, 192 ); //EggD
+set_color_profile_slot( 24, 6, 255, 254, 226 ); //Eye Whites
+set_color_profile_slot( 24, 7, 255, 254, 226 ); //Eye Black
 
 // Phoenix Guy
 set_color_profile_slot( 25, 0, 255, 115, 28 ); //featherrB

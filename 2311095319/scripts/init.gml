@@ -13,6 +13,8 @@ isundershirtunfixed = false
 //Voiced Mode Stuff
 //0 is false, 1 is true.
 voiced = 0
+voiced_in_vs = false
+normal_voiced_toggle = 0
 
 deathvoiceline = 0
 

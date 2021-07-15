@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 15 );
+set_num_palettes( 21 );
 
 // cyan
 set_color_profile_slot( 1, 0, 54, 255, 218 ); //body
@@ -157,6 +157,60 @@ set_color_profile_slot( 14, 3, 123, 125, 173 ); //face shade
 set_color_profile_slot( 14, 4, 190, 209, 222 ); //face highlight
 set_color_profile_slot( 14, 5, 190, 209, 222 ); //vent
 set_color_profile_slot( 14, 6, 123, 125, 173 ); //vent shade
+
+// maroon
+set_color_profile_slot( 15, 0, 95, 29, 46 ); //body
+set_color_profile_slot( 15, 1, 61, 12, 23 ); //body shade
+set_color_profile_slot( 15, 2, 149, 201, 220 ); //face
+set_color_profile_slot( 15, 3, 76, 111, 166 ); //face shade
+set_color_profile_slot( 15, 4, 189, 238, 240 ); //face highlight
+set_color_profile_slot( 15, 5, 150, 94, 109 ); //vent
+set_color_profile_slot( 15, 6, 111, 53, 117 ); //vent shade
+
+// rose
+set_color_profile_slot( 16, 0, 236, 192, 211 ); //body
+set_color_profile_slot( 16, 1, 173, 107, 161 ); //body shade
+set_color_profile_slot( 16, 2, 149, 201, 220 ); //face
+set_color_profile_slot( 16, 3, 76, 111, 166 ); //face shade
+set_color_profile_slot( 16, 4, 189, 238, 240 ); //face highlight
+set_color_profile_slot( 16, 5, 219, 160, 186 ); //vent
+set_color_profile_slot( 16, 6, 183, 114, 194 ); //vent shade
+
+// banana
+set_color_profile_slot( 17, 0, 240, 231, 168 ); //body
+set_color_profile_slot( 17, 1, 184, 144, 101 ); //body shade
+set_color_profile_slot( 17, 2, 149, 201, 220 ); //face
+set_color_profile_slot( 17, 3, 76, 111, 166 ); //face shade
+set_color_profile_slot( 17, 4, 189, 238, 240 ); //face highlight
+set_color_profile_slot( 17, 5, 0, 255, 0 ); //vent
+set_color_profile_slot( 17, 6, 0, 255, 0 ); //vent shade
+
+// gray
+set_color_profile_slot( 18, 0, 117, 133, 147 ); //body
+set_color_profile_slot( 18, 1, 80, 85, 133 ); //body shade
+set_color_profile_slot( 18, 2, 149, 201, 220 ); //face
+set_color_profile_slot( 18, 3, 76, 111, 166 ); //face shade
+set_color_profile_slot( 18, 4, 189, 238, 240 ); //face highlight
+set_color_profile_slot( 18, 5, 166, 189, 209 ); //vent
+set_color_profile_slot( 18, 6, 113, 132, 179 ); //vent shade
+
+// tan
+set_color_profile_slot( 19, 0, 145, 136, 119 ); //body
+set_color_profile_slot( 19, 1, 102, 84, 71 ); //body shade
+set_color_profile_slot( 19, 2, 149, 201, 220 ); //face
+set_color_profile_slot( 19, 3, 76, 111, 166 ); //face shade
+set_color_profile_slot( 19, 4, 189, 238, 240 ); //face highlight
+set_color_profile_slot( 19, 5, 166, 159, 146 ); //vent
+set_color_profile_slot( 19, 6, 140, 127, 111 ); //vent shade
+
+// coral
+set_color_profile_slot( 20, 0, 215, 100, 100 ); //body
+set_color_profile_slot( 20, 1, 158, 57, 68 ); //body shade
+set_color_profile_slot( 20, 2, 149, 201, 220 ); //face
+set_color_profile_slot( 20, 3, 76, 111, 166 ); //face shade
+set_color_profile_slot( 20, 4, 189, 238, 240 ); //face highlight
+set_color_profile_slot( 20, 5, 240, 170, 170 ); //vent
+set_color_profile_slot( 20, 6, 199, 113, 126 ); //vent shade
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

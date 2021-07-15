@@ -18,7 +18,11 @@ if "item_ins" in my_hitboxID{
             item_ins.owner.x = item_ins.x
             item_ins.owner.y = item_ins.y
         }
-        if item_ins.itemnum >= 1{
+        if item_ins.itemnum == 16 {//masti
+            item_ins.state = 8;
+            item_ins.state_timer = 0;
+        }
+        if item_ins.itemnum >= 1 and item_ins.itemnum != 14 and item_ins.itemnum != 16{
             item_ins.state = 2;
             item_ins.state_timer = 0;
             instance_destroy();

@@ -606,6 +606,14 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.17", "July 9, 2021");
+	initPatchWords("General
+	~ Adjusted Steam Preview picture.");
+	
+	initPatch("1.16", "July 9, 2021");
+	initPatchWords("General
+	~ Fixed Voiced Mode not working in VS. Mode.");
+	
 	initPatch("1.15", "July 7, 2021");
 	initPatchWords("General
 	~ Debug text turned off (I forgot to turn it off.)");

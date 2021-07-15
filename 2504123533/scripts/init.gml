@@ -10,7 +10,7 @@ walk_anim_speed = .15;
 dash_anim_speed = .2;
 pratfall_anim_speed = .25;
 
-walk_speed = 2.25;
+walk_speed = 3.00;
 walk_accel = 0.2;
 walk_turn_time = 6;
 initial_dash_time = 8;
@@ -32,7 +32,7 @@ djump_accel_start_time = 4;
 djump_accel_end_time = 15;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 7; //the maximum hsp you can accelerate to when in a normal aerial state
+air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
@@ -46,10 +46,10 @@ max_fall = 10.5; //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed
 gravity_speed = .30;
 hitstun_grav = .5;
-knockback_adj = 1.0; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.05; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 3;
+prat_land_time = 10;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .04; //grounded deceleration when wavelanding
@@ -139,3 +139,8 @@ PotionHeldDown = false;
 //fspec
 FSpecBounce = false;
 CauldronBounce = noone;
+
+//fuck it
+myCloneOwner = noone;
+myGooClone = noone;//instance_create(x,y,"oPlayer");
+//myGooClone.custom_clone = true;

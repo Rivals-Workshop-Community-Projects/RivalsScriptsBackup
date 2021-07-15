@@ -1,5 +1,5 @@
 // on respawn
-
+/*
 if (dream_mist != noone) {
     var i;
     for (i = 0; i < 25; i+=1) {
@@ -8,7 +8,7 @@ if (dream_mist != noone) {
         }
     }
     dream_mist = noone;
-}
+}*/
 
 if (!has_died) {
     if (has_dashed) {
@@ -29,3 +29,5 @@ death_effect[3] = 0.8;
 death_effect[4] = dash_count;
 
 dash_count = 1;
+climbing = 0;
+stamina = max_stamina;

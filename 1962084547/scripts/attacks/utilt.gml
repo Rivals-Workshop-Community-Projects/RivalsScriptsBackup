@@ -38,7 +38,7 @@ set_hitbox_value(AT_UTILT, 1, HG_ANGLE, 80);
 set_hitbox_value(AT_UTILT, 1, HG_SDI_MULTIPLIER, 1.1);
 set_hitbox_value(AT_UTILT, 1, HG_DRIFT_MULTIPLIER, 1.1);
 set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, .7);
+set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));

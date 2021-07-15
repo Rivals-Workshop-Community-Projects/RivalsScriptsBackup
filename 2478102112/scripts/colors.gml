@@ -22,7 +22,7 @@ set_color_profile_slot_range( 4, 1, 31, 23 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 25 );
+set_num_palettes( 26 );
 
 // Año
 set_color_profile_slot( 1, 0, 255, 225, 0 ); //Red
@@ -191,6 +191,13 @@ set_color_profile_slot( 24, 1, 0, 255, 0 ); //Pink
 set_color_profile_slot( 24, 2, 255, 242, 0 ); //Blue
 set_color_profile_slot( 24, 3, 0, 10, 156 ); //Green
 set_color_profile_slot( 24, 4, 255, 242, 0 ); //Yellow
+
+// Bugingi
+set_color_profile_slot( 25, 0, 130, 255, 33 ); //Red
+set_color_profile_slot( 25, 1, 43, 122, 43 ); //Pink
+set_color_profile_slot( 25, 2, 130, 255, 33 ); //Blue
+set_color_profile_slot( 25, 3, 43, 122, 43 ); //Green
+set_color_profile_slot( 25, 4, 255, 128, 156 ); //Yellow
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

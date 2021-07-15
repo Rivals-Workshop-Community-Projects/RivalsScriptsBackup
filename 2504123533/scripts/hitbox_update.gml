@@ -1,5 +1,9 @@
 //sd
 
+if attack == AT_FSTRONG_2 || attack == AT_FSTRONG_2 || attack == AT_USTRONG_2
+{
+}
+
 if attack == AT_FTILT || attack == AT_UAIR
 {
     if hitbox_timer >= 20

@@ -12,13 +12,13 @@ da_cheat_active = phone_cheats[cheat_da_jc];
 
 fair_cheat_active = phone_cheats[cheat_fair_very_funy];
 
-if (phone_practice == true){
+if (get_training_cpu_action() != CPU_FIGHT){
 	if (phone_voiced_toggle == 1){
 		voiced = 1
 	} else if (phone_voiced_toggle == 0){
 		voiced = 0
 	}
-} else if (phone_practice == false){
+} else if (get_training_cpu_action() == CPU_FIGHT){
 	if (normal_voiced_toggle == 1){
 		voiced = 1
 	} else if (normal_voiced_toggle == 0){
@@ -90,8 +90,8 @@ deathvoiceline = random_func( 0, 5, true );
 switch (state){
 	case PS_SPAWN:
 		//Turning on Voiced Mode Normally.
-		if (state_timer <= 100 && voiced == 0 && taunt_pressed && phone_practice == false){//>
-			voiced = 1
+		if (state == PS_SPAWN && state_timer <= 100 && normal_voiced_toggle == 0 && taunt_pressed && get_training_cpu_action() == CPU_FIGHT){
+			normal_voiced_toggle = 1
 			sound_play(sfx_coin);
 			sound_play(vc_mario_herewego);
 		}

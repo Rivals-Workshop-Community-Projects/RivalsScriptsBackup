@@ -270,31 +270,49 @@ if detonated && !hasDetonated
 				if barPoints >= barAmount
 				{
 					print("Creating Clone");
-					barPoints -= (barPoints%barAmount)*barAmount;
+					var curCharge = (floor(barPoints/barAmount))/barNumber*60;
+					barPoints -= floor(barPoints/barAmount);
 					
 					var f = spawn_hit_fx(other.x,other.y,spawnCloneFX);
 					f.depth = other.depth-1;
 					
 					var c = instance_create(other.x,other.y,"obj_article2");
-					c.sprite_index = sprite_get("fstrongGooCharged");
 					
+					var thisAttack = 0;
+					var windows = array_create(0);
+					var hitboxes = array_create(0);
+					
+					if cAttack == AT_FSTRONG
+					{
+						c.sprite_index = sprite_get("fstrongGooCharged");
+						thisAttack = AT_FSTRONG_2;
+						windows = [1,2];
+						hitboxes = [1];
+					}
 					if cAttack == AT_DSTRONG
 					{
 						c.sprite_index = sprite_get("dstrongGooCharged");
+						thisAttack = AT_DSTRONG_2;
+						windows = [1,2,3];
+						hitboxes = [1,2];
 					}
 					if cAttack == AT_USTRONG
 					{
 						c.sprite_index = sprite_get("ustrongGooCharged");
+						thisAttack = AT_USTRONG_2;
+						windows = [1,2];
+						hitboxes = [1,2];
 					}
 					c.image_index = 0;//get_window_value( cAttack, 3, AG_WINDOW_ANIM_FRAME_START);
-					c.img_spd = (c.image_number)/(get_window_value( cAttack, 1, AG_WINDOW_LENGTH) + get_window_value( cAttack, 3, AG_WINDOW_LENGTH));
 					
 					c.image_xscale = 2;
 					c.image_yscale = 2;
 					c.spr_dir = spr_dir;
 					
-					c.storedAttack = cAttack;
-					c.spawnFrame = get_window_value( cAttack, 3, AG_WINDOW_ANIM_FRAME_START);
+					c.storedAttack = thisAttack;
+					c.hitboxes = hitboxes;
+					c.windows = windows;
+					c.charge = curCharge;
 				}
 				else
 				{
@@ -383,4 +401,12 @@ if destroyed
 #define atFrame(frame)
 {
 	return image_index >= frame;
+}
+
+#define combineWindowLength(att, arr)
+{
+	var total = 0;
+	for(var i=0; i<array_length(arr); i++)
+		total += get_window_value( att, arr[i], AG_WINDOW_LENGTH);
+	return total;
 }

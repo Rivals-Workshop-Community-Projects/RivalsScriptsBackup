@@ -6,12 +6,15 @@ set_attack_value(AT_DSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("dspecial_air_hu
 set_attack_value(AT_DSPECIAL, AG_LANDING_LAG, 6);
 
 set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 6);
-set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 19 - (has_rune("F") * 10));
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 14 - (has_rune("F") * 10));
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
 
-set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 24 - (has_rune("F") * 10));
+set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 20 - (has_rune("F") * 10));
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(AT_DSPECIAL, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.7);
+set_window_value(AT_DSPECIAL, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.2);
 
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
@@ -21,7 +24,7 @@ set_window_value(AT_DSPECIAL, 3, AG_WINDOW_SFX,  sound_get("sfx_ryk_steam_burst"
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_SFX_FRAME, 3);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.7);
-set_window_value(AT_DSPECIAL, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.03);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.2);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
 
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 32);

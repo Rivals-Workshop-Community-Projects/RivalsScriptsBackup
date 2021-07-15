@@ -15,7 +15,7 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, sound_get("badeline_launch_start"));
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, sound_get("badeline_launch_begin"));
 
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE, 7);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 10);
@@ -26,7 +26,7 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -12);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX, sound_get("badeline_launch"));
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX, sound_get("badeline_launch_throw"));
 
 
 set_num_hitboxes(AT_USPECIAL, 1);

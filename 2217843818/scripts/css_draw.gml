@@ -8,7 +8,7 @@ patch_ver = " ";
 patch_day = " ";
 patch_month = " ";
  
-var num_alts = 15;
+var num_alts = 20;
 var alt_cur = get_player_color(player);
  
  
@@ -29,7 +29,12 @@ alt_name[11] = "Brown";
 alt_name[12] = "Orange";
 alt_name[13] = "Blue";
 alt_name[14] = "Snowman";
-alt_name[15] = "Extra 4";
+alt_name[15] = "Maroon";
+alt_name[16] = "Rose";
+alt_name[17] = "Banana";
+alt_name[18] = "Gray";
+alt_name[19] = "Tan";
+alt_name[20] = "Coral";
 
 
 //Patch

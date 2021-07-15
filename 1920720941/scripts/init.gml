@@ -7,7 +7,7 @@ char_height = 42;
 min_char_height = 40;
 max_char_height = 70;
 idle_anim_speed = .1;
-crouch_anim_speed = .1;
+crouch_anim_speed = .2;
 walk_anim_speed = .125;
 dash_anim_speed = .4;
 pratfall_anim_speed = .25;
@@ -46,7 +46,6 @@ fast_fall = 16; //fast fall speed
 gravity_speed = .60;
 hitstun_grav = .50;
 knockback_adj = 1.2; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
-can_wall_cling = true;
 
 land_time = 4; //normal landing frames
 prat_land_time = 10;
@@ -107,6 +106,7 @@ badeline = noone;
 badeline_shots = 3;
 badeline_shot_timer = 0;
 badeline_shot_charge_time = 120;
+badeline_shot_angle = 0;
 
 //dash direction storage
 dash_x = 0;
@@ -119,6 +119,7 @@ dash_jump = false;
 dash_jump_delay = 0;
 jump_held = false;
 after_images = array_create(6, 0);
+dash_circles = array_create(3, 0);
 has_dashed = false;
 has_died = false;
 refresh_hair = 0;
@@ -126,6 +127,25 @@ grounded_dash = false;
 dash_cancel = false;
 prev_x = x;
 prev_y = y;
+wallbounce = 0;
+wallbounce_speed = 0;
+super_dash = false;
+super_dash_timer = 0;
+
+// climbing
+climbing = 0;
+last_climbing = 0;
+climb_timer = 0;
+adjacent_wall = 0;
+climbing_speed = 2.0;
+
+// stamina
+max_stamina = 200;
+stamina = max_stamina;
+stamina_timer = 0;
+stamina_linger = 0;
+stamina_cost_dash = floor(max_stamina / 4);
+stamina_cost_fspecial = floor(max_stamina / 3);
 
 //objects
 winged_strawberry = noone;
@@ -204,11 +224,9 @@ if (pcolor == 1 || pcolor == 3) {
     hair_charged_sprite = sprite_get("hair_circles_charged_theo");
 }
 
+stamina_sprite = sprite_get("stamina_gauge");
+
 //dream mist
-dream_mist_outline = sprite_get("dream_mist_layer1");
-dream_mist_fill = sprite_get("dream_mist_layer2");
-dream_mist_stars1 = sprite_get("dream_mist_bg");
-dream_mist_stars2 = sprite_get("dream_mist_fg");
 dream_mist = noone;
 mist_timer = 0;
 in_mist = false;

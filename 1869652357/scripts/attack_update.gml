@@ -81,6 +81,26 @@ if (attack == AT_USPECIAL){
     can_fast_fall = false;
 }
 
+if (attack == AT_NSPECIAL_2) and (window == 3 or window == 4) and window_timer == 1 and right_down and spr_dir == -1 {
+    spr_dir = 1
+    print("meow")
+}
+
+if (attack == AT_NSPECIAL_2) and (window == 3 or window == 4) and window_timer == 1 and left_down and spr_dir == 1 {
+    spr_dir = -1
+    print("woof")
+}
+
+if (attack == AT_NSPECIAL_2) and (window == 4) and window_timer == 8{
+    spawn_hit_fx( x, y-64, ru_wind );
+}
+
+if (attack == AT_NSPECIAL_2) and (window == 3 or window == 4) and window_timer == 1 and left_down and spr_dir == 1 {
+    spr_dir = -1
+   print("woof")
+}
+
+
 if (attack == AT_NSPECIAL){
     can_fast_fall = false;
     if window == 6 {
@@ -208,4 +228,8 @@ if attack == AT_TAUNT && down_down && window == 1 && window_timer < 5 {
 
 if attack == AT_TAUNT && window == 2 && window_timer = 33 {
     set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt"));
+}
+
+if attack == AT_NSPECIAL_2{
+    can_jump = false
 }

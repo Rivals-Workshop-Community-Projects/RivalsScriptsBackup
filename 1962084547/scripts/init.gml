@@ -195,7 +195,7 @@ BOULDER_COOLDOWN = 1.3;  // Cooldown in seconds for Up-B
 BOULDER_BASE_DAMAGE    = 7;
 BOULDER_BASE_KNOCKBACK = 6;
 BOULDER_FLIPPER = 1;
-BOULDER_KNOCKBACK_SCALING = 0.4;
+BOULDER_KNOCKBACK_SCALING = 0.55;
 
 BOULDER_BOUNCE_DAMAGE = 3;
 BOULDER_BOUNCE_KNOCKBACK = 7;
@@ -227,7 +227,7 @@ glide_used = 0;
 
 //D-special
 
-dspecial_limit = 100; //D-special won't damage more than this to match %s.
+dspecial_limit = 120; //D-special won't damage more than this to match %s.
 dspecial_drainrate = .065; //This is per frame. 0.1 will heal back 1 every 10 frames. setting this to 0 will disable the drain entirely.
 
 archen_dspecial_damage = 0; //this is just for keeping track of damage for draining. changing this won't do anything useful.

@@ -1,86 +1,3 @@
-
-if (draw_mist_here) {
-    if (dream_mist != noone) {
-        var mist;
-        var i;
-        var l;
-        var tmp_x;
-        var tmp_y;
-
-        var all_gone = true;
-        for (i = 0; i < 9; i+=1) {
-            mist = dream_mist[i];
-            if (mist != noone) {
-                if (!instance_exists(mist)) {
-                    dream_mist[i] = noone;
-                } else {
-                    all_gone = false;
-                }
-            }
-        }
-
-        if (all_gone) {
-            dream_mist = noone;
-        } else {
-
-            // White outline
-            for (i = 0; i < 9; i+=1) {
-                mist = dream_mist[i];
-                if (mist != noone) {
-                    draw_sprite_ext(
-                        dream_mist_outline,
-                        0, mist.x, mist.y,
-                        1.0, 1.0, 0.0,
-                        c_white, 1.0);
-                }
-            }
-
-            // Black fill
-            for (i = 0; i < 9; i+=1) {
-                mist = dream_mist[i];
-                if (mist != noone) {
-                    draw_sprite_ext(
-                        dream_mist_fill,
-                        0, mist.x, mist.y,
-                        1.0, 1.0, 0.0,
-                        c_white, 1.0);
-                }
-            }
-
-            // Background stars
-            for (i = 0; i < 9; i+= 1) {
-                mist = dream_mist[i];
-                if (mist != noone) {
-                    tmp_x = (view_get_xview() / 8 + mist.x) % 160;
-                    tmp_y = (view_get_yview() / 8 + mist.y) % 160;
-                    draw_sprite_part_ext(
-                        dream_mist_stars1,
-                        0, tmp_x, tmp_y, 30, 30,
-                        mist.x + 6, mist.y + 6, 1.0, 1.0,
-                        c_white, 1.0);
-                }
-            }
-
-            
-            // Foreground stars
-            for (i = 0; i < 9; i+= 1) {
-                mist = dream_mist[i];
-                if (mist != noone) {
-                    tmp_x = (view_get_xview() / 3 + mist.x) % 160;
-                    tmp_y = (view_get_yview() / 3 + mist.y) % 160;
-                    draw_sprite_part_ext(
-                        dream_mist_stars2,
-                        floor(mist_timer / 16), tmp_x, tmp_y, 30, 30,
-                        mist.x + 6, mist.y + 6, 1.0, 1.0,
-                        c_white, 1.0);
-                }
-            }
-            
-        }
-
-    }
-}
-
 texture_global_scale(2);
 
 var i;
@@ -131,6 +48,23 @@ for (i = 0; i < 6; i += 1) {
             if (after_images[i, 4] <= 0) {
                 after_images[i] = 0;
             }
+        }
+    }
+}
+
+for (i = 0; i < 3; i += 1) {
+    if (dash_circles[i] != 0) {
+        var ax = dash_circles[i, 0];
+        var ay = dash_circles[i, 1];
+        var facing = dash_circles[i, 2];
+        var dir = dash_circles[i, 3];
+        var time = dash_circles[i, 4];
+        var color = dash_circles[i, 5];
+        var suffix = "";
+        draw_sprite_ext(sprite_get("dash_circle"), 0, ax, ay, 1.4 - (time / 20.0), 1.4 - (time / 20.0), dir, c_white, time / 20.0);
+        dash_circles[i, 4] = time - 1;
+        if (dash_circles[i, 4] <= 0) {
+            dash_circles[i] = 0;
         }
     }
 }
@@ -275,11 +209,26 @@ hair_dir = 1.0;
 hair_zoom_x = 1.0;
 if (sprite_index == sprite_get("fastfall")) {
     hair_zoom_x = 0.7;
-} else if (sprite_index == sprite_get("jump")) {
-} else if (sprite_index == sprite_get("pratfall")) {
+} else if (sprite_index == sprite_get("jump") || sprite_index == sprite_get("pratfall") || sprite_index == sprite_get("uspecial")) {
+    hair_offset[1] = 2;
 } else if (sprite_index == sprite_get("land")) {
+    if (image_index == 0) {
+        hair_offset[1] = 2;
+    } else if (image_index == 1) {
+        hair_offset[1] = -2;
+    }
 } else if (sprite_index == sprite_get("landinglag")) {
+    if (image_index == 0) {
+        hair_offset[1] = 2;
+    } else if (image_index == 1 || image_index == 2) {
+        hair_offset[1] = -6;
+    } else if (image_index == 3) {
+        hair_offset[1] = -2;
+    }
 } else if (sprite_index == sprite_get("jumpstart")) {
+    if (image_index > 1) {
+        hair_offset[1] = 2;
+    }
 } else if (sprite_index == sprite_get("idle") || sprite_index == sprite_get("taunt")) {
     hair_offset[1] = (image_index % 8 <= 2 || image_index % 8 >= 7) ? 0 : 2;
 } else if (sprite_index == sprite_get("dashstart")) {
@@ -306,15 +255,21 @@ if (sprite_index == sprite_get("fastfall")) {
     }
     hair_offset[1] = 2;
 } else if (sprite_index == sprite_get("crouch")) {
-    if (image_index == 2) {
-        hair_offset[1] = -6;
-    } else {
+    if (image_index == 0) {
+        hair_offset[1] = -16;
+        hair_offset[0] = 4;
+        hair_zoom_x = 1.2;
+    } else if (image_index == 1) {
         hair_offset[1] = -12;
+    } else if (image_index == 2) {
+        hair_offset[1] = 8;
+        hair_offset[0] = -2;
+        hair_zoom_x = 0.8;
     }
 } else if (sprite_index == sprite_get("ustrong") || sprite_index == sprite_get("ustrong_charged") || sprite_index == sprite_get("nspecial") || sprite_index == sprite_get("nspecial_red") || sprite_index == sprite_get("nspecial_blue") || sprite_index == sprite_get("nspecial_yellow")) {
     hair_offset[0] = 6;
     hair_offset[1] = 4;
-} else if (sprite_index == sprite_get("wallcling")) {
+} else if (sprite_index == sprite_get("wallcling") || sprite_index == sprite_get("wallclimb")) {
     hair_offset[0] = -6;
     hair_offset[1] = 2;
     //hair_zoom_x = 0.8
@@ -396,13 +351,13 @@ if (sprite_index == sprite_get("fastfall")) {
     }
 }
 if (spr_dir == -1.0) {
-    if ((!(sprite_index == sprite_get("dashturn") || sprite_index == sprite_get("walkturn")) || image_index >= 2) && sprite_index != sprite_get("wallcling")) {
+    if ((!(sprite_index == sprite_get("dashturn") || sprite_index == sprite_get("walkturn")) || image_index >= 2) && sprite_index != sprite_get("wallcling") && sprite_index != sprite_get("wallclimb")) {
         hair_offset[0] = -hair_offset[0];
         hair_offset[0] += 16;
         hair_dir = -1.0;
     }
 } else {
-    if (((sprite_index == sprite_get("dashturn") || sprite_index == sprite_get("walkturn")) && image_index < 2) || sprite_index == sprite_get("wallcling")) {
+    if (((sprite_index == sprite_get("dashturn") || sprite_index == sprite_get("walkturn")) && image_index < 2) || sprite_index == sprite_get("wallcling") || sprite_index == sprite_get("wallclimb")) {
         hair_offset[0] = -hair_offset[0];
         hair_offset[0] += 16;
         hair_dir = -1.0;
@@ -422,7 +377,7 @@ for (i = 1; i < 5; i++) {
     var hair_y = hair_joints[i, 1] + hair_joints[i, 4];
     var resting_x = (hair_dir == 1.0) ? (hair_start_x + hair_joints[i, 2]) : (hair_start_x - hair_joints[i, 2]);
     var resting_y = hair_start_y + hair_joints[i, 3];
-    if (sprite_index == sprite_get("wallcling")) {
+    if (sprite_index == sprite_get("wallcling") || sprite_index == sprite_get("wallclimb")) {
         resting_y += 2 * (i - 1);
         if (i <= 2) resting_x += 2;
         if (i == 2) resting_y += 2;
@@ -521,4 +476,19 @@ for (i = 4; i >= 0; i-=1) {
         x + floor(hair_joints[i][0] / 2) * 2, y + floor(hair_joints[i][1] / 2) * 2,
         hair_zoom_x, 1.0, hair_color, 1.0);
     }
+}
+
+
+if (stamina == 0 && free) {
+    draw_sprite_part_ext(
+        stamina_sprite,
+        (stamina_timer % 10 <= 4) ? 0 : 21, 0, 0, 8, 8,
+        x + 18, y - 62, 2.0, 2.0, c_white, 1.0
+    );
+} else if (stamina < max_stamina || stamina_linger > 0) {
+    draw_sprite_part_ext(
+        stamina_sprite,
+        floor(20 * stamina / max_stamina), 0, 0, 8, 8,
+        x + 18, y - 62, 2.0, 2.0, c_white, 1.0
+    );
 }

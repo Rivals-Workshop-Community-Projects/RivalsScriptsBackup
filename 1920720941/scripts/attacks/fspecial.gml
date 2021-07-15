@@ -1,6 +1,6 @@
 set_attack_value(AT_FSPECIAL, AG_CATEGORY, 2);
 set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial"));
-set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 2);
+set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_FSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("jump"));
 set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
@@ -8,18 +8,32 @@ set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1);
 
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 16);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 0);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 0);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, sound_get("badeline_orb"));
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 5);
 
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 12);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 30);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 1);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 0);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 0);
+
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 0);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 0);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_SFX, sound_get("badeline_orb"));
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX_FRAME, 5);
+
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 1);
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 
 set_num_hitboxes(AT_FSPECIAL, 0);
 

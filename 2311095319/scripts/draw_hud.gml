@@ -15,12 +15,16 @@ if (hasfirebrand == true){
 	draw_sprite(sprite_get("fireball"), floor(1), temp_x + 26, temp_y + 999999999999999999999999999999);
 }
 
-if (state == PS_SPAWN && state_timer <= 100){
-	if (phone_practice == true){
+
+if (state == PS_SPAWN && state_timer <= 100 && voiced == 0){
+	if (get_training_cpu_action() != CPU_FIGHT){//true
 		//draw_debug_text( temp_x + 20, temp_y - 40, string( "Voiced Mode can be enabled in the Cheat Codes Menu" ));
-    } else if (phone_practice == false){
+		voiced_in_vs = false
+    } else if (get_training_cpu_action() == CPU_FIGHT){//false
 		draw_debug_text( temp_x + 50, temp_y - 20, string( "Taunt: Voiced" ));
+		voiced_in_vs = true
 	}
 }
+
 
 user_event(11);

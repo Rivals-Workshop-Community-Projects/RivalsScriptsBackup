@@ -1,14 +1,35 @@
-switch (state){
-    case PS_IDLE:
-    case PS_RESPAWN:
-    case PS_SPAWN:
-        image_index = floor(image_number*state_timer/(image_number*6.5));
-    break;
-    
-    case PS_WALK:
-        image_index = floor(image_number*state_timer/(image_number*5));
-    break;
+if get_player_color(player) == 25 {
+	switch (state){
+	    case PS_IDLE:
+	    	sprite_index = sprite_get("idle_bugingi");
+	    	image_index = floor(image_number*state_timer/(image_number*6.5)); 
+	    case PS_RESPAWN:
+	    case PS_SPAWN:
+	        image_index = floor(image_number*state_timer/(image_number*6.5));
+	    break;
+	    
+	    case PS_WALK:
+	    	sprite_index = sprite_get("walk_bugingi");
+	        image_index = floor(image_number*state_timer/(image_number*5));
+	    break;
+	}
 }
+else{
+	switch (state){
+	    case PS_IDLE:
+	    //sprite_index = sprite_get("Lady_Añitresu");
+	      image_index = floor(image_number*state_timer/(image_number*6.5)); 
+	    case PS_RESPAWN:
+	    case PS_SPAWN:
+	        image_index = floor(image_number*state_timer/(image_number*6.5));
+	    break;
+	    
+	    case PS_WALK:
+	        image_index = floor(image_number*state_timer/(image_number*5));
+	    break;
+	}
+}
+
 
 
 /*with (oPlayer) { //run through every player

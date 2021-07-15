@@ -20,7 +20,7 @@ if attack == AT_TAUNT
         barPoints += barAmount;
 }
 
-print(window)
+//print(window)
 
 //use Dstrong as the example on how to set up the rest
 if (attack == AT_FSTRONG)
@@ -30,31 +30,21 @@ if (attack == AT_FSTRONG)
 	{
 		if ((attack_down || strong_down)//Determine inputs (or custom clone)
 		&& barPoints >= barAmount)
-		|| custom_clone == true//check if we have bars (but not clone)
 		{
-			window = 3;
-			window_timer = 0;
 			
+			set_attack(AT_FSTRONG_2);
+			window = 2;
+			window_timer = 0;
 			strong_charge = checkBars()/barNumber*60;
-			set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrongCharged"));
 			
 			if !custom_clone
 			{
-				
 				removeFullBars();
 			}
 		}
-		else
-		{
-			set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong"));
-		}
 	}
-	
-	//put the last window of the UNCHARGED version here in this:
-	cancelWindow(2);
 }
 
-//Strong System
 //use Dstrong as the example on how to set up the rest
 if (attack == AT_DSTRONG)
 {
@@ -63,14 +53,12 @@ if (attack == AT_DSTRONG)
 	{
 		if ((attack_down || strong_down)//Determine inputs (or custom clone)
 		&& barPoints >= barAmount)
-		|| custom_clone == true//check if we have bars (but not clone)
 		{
-			window = 3;
-			window_timer = 0;
 			
+			set_attack(AT_DSTRONG_2);
+			window = 2;
+			window_timer = 0;
 			strong_charge = checkBars()/barNumber*60;
-			set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrongCharged"));
-			set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrongCharged_hurt"));
 			
 			if !custom_clone
 			{
@@ -78,15 +66,7 @@ if (attack == AT_DSTRONG)
 				removeFullBars();
 			}
 		}
-		else
-		{
-			set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong"));
-			set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
-		}
 	}
-	
-	//put the last window of the UNCHARGED version here in this:
-	cancelWindow(2);
 }
 
 if (attack == AT_USTRONG)
@@ -96,25 +76,19 @@ if (attack == AT_USTRONG)
 	{
 		if ((attack_down || strong_down)//Determine inputs (or custom clone)
 		&& barPoints >= barAmount)
-		|| custom_clone == true//check if we have bars (but not clone)
 		{
-			window = 3;
-			window_timer = 0;
-			set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrongCharged"));
-			set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get("ustrongCharged_hurt"));
 			
-			if !custom_clone
+			set_attack(AT_USTRONG_2);
+			window = 2;
+			window_timer = 0;
+			strong_charge = checkBars()/barNumber*60;
+			
+			if !custom_clone 
+			{
 				removeFullBars();
-		}
-		else
-		{
-			set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrong"));
-			set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get("ustrong"));
+			}
 		}
 	}
-	
-	//put the last window of the UNCHARGED version here in this:
-	cancelWindow(2);
 }
 
 if (attack == AT_BAIR)
@@ -130,7 +104,7 @@ if (attack == AT_DAIR)
 	if window == 2 && window_timer == 1 && !hitpause 
 	&& (collision_line(x,y,x,y+40,asset_get("par_block"), true, false) || collision_line(x,y,x,y+40,asset_get("par_jumpthrough"), true, false))
 	{
-		print("w")
+		//print("w")
 	}
 }
 
@@ -185,6 +159,32 @@ if (attack == AT_FTILT)
 				
 				case 3:
 				{
+					var bhsp = 1.2+random_func(4,6, false);
+					var bvsp = 0.3;
+					var b1 = createBubble(mx, my, bhsp, bvsp);
+					b1.length += bhsp;
+					
+					var bhsp = 1.2+random_func(5,7, false);
+					var bvsp = 0.4;
+					var b2 = createBubble(mx, my, bhsp, bvsp);
+					b2.length += bhsp;
+				}break;
+				
+				case 4:
+				{
+					var bhsp = 1.2+random_func(4,6, false);
+					var bvsp = 0.3;
+					var b1 = createBubble(mx, my, bhsp, bvsp);
+					b1.length += bhsp;
+					
+					var bhsp = 1.2+random_func(5,7, false);
+					var bvsp = 0.4;
+					var b2 = createBubble(mx, my, bhsp, bvsp);
+					b2.length += bhsp;
+				}break;
+				
+				case 5:
+				{
 					var bhsp = 1.2+random_func(6,6, false);
 					var bvsp = 0.4;
 					var b2 = createBubble(mx, my, bhsp, bvsp);
@@ -208,7 +208,7 @@ if (attack == AT_UAIR)
 		
 		if !hitpause
 		{
-			var create = inArray(window_timer,[2,4,6,8,10]);
+			var create = inArray(window_timer,[2,3,4,5,6,8,10]);
 			var yOff = -98;
 			var bVSP = 0;
 			var bLength = 0;
@@ -221,11 +221,25 @@ if (attack == AT_UAIR)
 					bVSP = -2;
 				}break;
 				
+				case 3:
+				{
+					bHSP = 0.4;
+					bLength = 42;
+					bVSP = -2;
+				}break;
+				
 				case 4:
 				{
 					bHSP = -0.4;
 					bLength = 38;
 					bVSP = -2.1;
+				}break;
+				
+				case 5:
+				{
+					bHSP = 0.4;
+					bLength = 42;
+					bVSP = -2;
 				}break;
 				
 				case 6:
@@ -425,7 +439,7 @@ if (attack == AT_NSPECIAL){
 
 if (attack == AT_USPECIAL){
 	
-	//Add insnae cooldown to prevent use
+	//Add insane cooldown to prevent use
 	//we set it to zero when landing or getting hit
 	move_cooldown[AT_USPECIAL] = 60*60;
 	
@@ -444,8 +458,15 @@ if (attack == AT_USPECIAL){
 	//Boost Window
 	else if(window == 2)
 	{
-		if window_timer >= get_window_value( attack, window, AG_WINDOW_LENGTH )
-			set_state(PS_IDLE_AIR);
+		if(has_hit_player = true)
+		{
+			if window_timer >= get_window_value( attack, window, AG_WINDOW_LENGTH )
+				set_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE, 0);
+		}
+		if(window_timer == 1)
+		{
+			reset_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE);
+		}
 	}
 	
 	//Recharge window if not enough points
@@ -468,6 +489,8 @@ if (attack == AT_USPECIAL){
 			vsp = get_window_value( attack, 2, AG_WINDOW_VSPEED);
 		}
 	}
+	
+	
 }
 
 //Select Potion
@@ -499,6 +522,14 @@ if (attack == AT_DSPECIAL)
 		//print_debug(string(special_down));
 	}
 }
+
+// No Jab Parrystun
+
+if (attack == AT_JAB)
+{
+was_parried = false 
+}
+
 
 #define window_advance_switch()
 {
