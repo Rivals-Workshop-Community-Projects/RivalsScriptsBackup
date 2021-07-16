@@ -17,13 +17,11 @@ if (my_hitboxID.attack == AT_FSPECIAL){
         old_hsp = hsp;
         old_vsp = vsp;
 	}
-	//If hit the player with Full Charge
-	if (my_hitboxID.hbox_num > 4){
+
 		whirlwind_player = hit_player_obj;
 		whirlwind_punch = false;
 		whirlwind_punch_effect = true;
 		whirlwind_player.whirlwind_effect = true;
-	}
 }
 
 //Dspecial - First Whirlwind

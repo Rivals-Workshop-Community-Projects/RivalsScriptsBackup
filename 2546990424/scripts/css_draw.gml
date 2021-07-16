@@ -153,6 +153,12 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[27,0] = make_color_rgb(97, 204, 246)
     ce[27,1] = "Tianguis"
     ce[27,2] = ""
+    ce[28,0] = make_color_rgb(93, 74, 73)
+    ce[28,1] = "Drums"
+    ce[28,2] = ""
+    ce[29,0] = make_color_rgb(253, 232, 2)
+    ce[29,1] = "Neo Machine"
+    ce[29,2] = ""
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
     // you can ignore the mess below...

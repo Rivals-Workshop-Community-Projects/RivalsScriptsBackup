@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 2, 34, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 28 );
+set_num_palettes( 30 );
 
 // Country
 set_color_profile_slot( 1, 0, 117, 35, 27 ); //skin 1
@@ -274,6 +274,24 @@ set_color_profile_slot( 27, 3, 247, 169, 182 ); //jacket 2
 set_color_profile_slot( 27, 4, 247, 169, 182 ); //glasses
 set_color_profile_slot( 27, 5, 255, 255, 255 ); //teeth
 set_color_profile_slot( 27, 6, 145, 218, 246 ); //wind
+
+// Rillaboom
+set_color_profile_slot( 28, 0, 93, 74, 73 ); //skin 1
+set_color_profile_slot( 28, 1, 168, 153, 138 ); //skin 2
+set_color_profile_slot( 28, 2, 0, 133, 66 ); //jacket 1
+set_color_profile_slot( 28, 3, 132, 196, 96 ); //jacket 2
+set_color_profile_slot( 28, 4, 237, 117, 71 ); //glasses
+set_color_profile_slot( 28, 5, 173, 173, 173 ); //teeth
+set_color_profile_slot( 28, 6, 117, 171, 85 ); //wind
+
+// Great Ape Baby
+set_color_profile_slot( 29, 0, 253, 232, 2 ); //skin 1
+set_color_profile_slot( 29, 1, 108, 115, 156 ); //skin 2
+set_color_profile_slot( 29, 2, 250, 6, 7 ); //jacket 1
+set_color_profile_slot( 29, 3, 226, 233, 151 ); //jacket 2
+set_color_profile_slot( 29, 4, 228, 9, 12 ); //glasses
+set_color_profile_slot( 29, 5, 157, 157, 157 ); //teeth
+set_color_profile_slot( 29, 6, 194, 186, 230 ); //wind
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

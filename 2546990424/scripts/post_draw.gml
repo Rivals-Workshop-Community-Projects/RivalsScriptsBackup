@@ -1,4 +1,4 @@
-print (stored_player);
+print (turbine_cont);
 
 shader_start();
 

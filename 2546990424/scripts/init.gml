@@ -197,6 +197,8 @@ whirlwind_hud = 0;
 whirlwind_active_hitbox = 0;
 whirlwind2_active_hitbox = 0;
 
+whirlWallJump = 1;
+
 whirlwind_punch = false;
 whirlwind_punch_active = false;
 whirlwind_punch_effect = false;

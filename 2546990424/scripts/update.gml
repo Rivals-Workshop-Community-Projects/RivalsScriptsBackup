@@ -1,3 +1,16 @@
+//Whirlwind doesn't give you Walljump
+if (!free) {
+    whirlWallJump = 1
+} 
+else {
+    if (whirlWallJump == 0) {
+        has_walljump = 0
+    }
+}
+if (state == PS_WALL_JUMP) {
+    whirlWallJump = 0
+}
+
 //Reached Max Charge
 if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_FSPECIAL 
 && window == 2 && turbine_cont == 69){
@@ -112,7 +125,7 @@ else {
 }
 
 //Pulls the target into the Whirlwind
-if (whirlwind_hit == true){
+if (whirlwind_hit == true && hit_player_obj.state == PS_HITSTUN){
 	hit_player_obj.x = lerp(hit_player_obj.x, whirlwind.x+whirlwind.whirlwind_x_hitbox, 0.2);
 	hit_player_obj.y = lerp(hit_player_obj.y, whirlwind.y+whirlwind.whirlwind_y_hitbox, 0.2);
 }
@@ -123,12 +136,12 @@ if (whirlwind2_hit == true){
 
 //Pulls the target into the Grab
 if (cargo_hit_right == true){
-	hit_player_obj.x = lerp(hit_player_obj.x, x+40*spr_dir, 0.1);
-	hit_player_obj.y = lerp(hit_player_obj.y, y, 0.1);
+	hit_player_obj.x = lerp(hit_player_obj.x, x+40*spr_dir, 0.8);
+	hit_player_obj.y = lerp(hit_player_obj.y, y, 0.8);
 }
 if (cargo_hit_left == true){
-	hit_player_obj.x = lerp(hit_player_obj.x, x+40*spr_dir, 0.1);
-	hit_player_obj.y = lerp(hit_player_obj.y, y, 0.1);
+	hit_player_obj.x = lerp(hit_player_obj.x, x+40*spr_dir, 0.8);
+	hit_player_obj.y = lerp(hit_player_obj.y, y, 0.8);
 }
 
 // Grabbing state

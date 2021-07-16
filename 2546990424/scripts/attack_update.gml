@@ -91,7 +91,9 @@ if (attack == AT_FSPECIAL){
         turbine_counting = true;
         turbine_cont++;
         can_jump = true;
-        can_shield = true;
+        if (shield_pressed){
+            state = PS_IDLE;
+        }
         //Finished Charging
         if (turbine_cont >= 70){
             window = 6;
@@ -110,6 +112,9 @@ if (attack == AT_FSPECIAL){
     }
     //Resets the Charge and hitboxes
     if (window == 4){
+        if (turbine_cont >= 70 && free){
+            hsp = -8*spr_dir;
+        }
         turbine_cont = 0;
         set_window_value(AT_FSPECIAL, 1, AG_WINDOW_GOTO, 2);
     	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 25);
@@ -131,6 +136,7 @@ if (attack == AT_DSPECIAL){
     can_fast_fall = false;
     //Start of the move
     if (window == 1){
+        whirlwind_myself = false;
         //Sets the default Whirlwind
         if (window_timer < 12){
             set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 1);
@@ -266,6 +272,7 @@ if (attack == AT_USPECIAL){
    if (!free){
        set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, 0);
        set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
+       set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 2);
        
        //Horizontal Movement
        if (window == 2){
@@ -281,6 +288,7 @@ if (attack == AT_USPECIAL){
    else {
        set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -3.5);
        set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
+       set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 4);
    }
     
 }
