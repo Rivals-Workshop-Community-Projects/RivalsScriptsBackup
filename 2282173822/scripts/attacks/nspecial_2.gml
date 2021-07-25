@@ -31,7 +31,7 @@ for (var i = 0; i < 4; i++){
 	set_hitbox_value(AT_NSPECIAL_2, 1 + i, HG_HITBOX_TYPE, 1);
 	set_hitbox_value(AT_NSPECIAL_2, 1 + i, HG_WINDOW, 2);
 	set_hitbox_value(AT_NSPECIAL_2, 1 + i, HG_LIFETIME, 6);
-	set_hitbox_value(AT_NSPECIAL_2, 1 + i, HG_HITBOX_X, 62);	// 72
+	set_hitbox_value(AT_NSPECIAL_2, 1 + i, HG_HITBOX_X, 50);	// 72
 	set_hitbox_value(AT_NSPECIAL_2, 1 + i, HG_HITBOX_Y, -24);	// -16
 	set_hitbox_value(AT_NSPECIAL_2, 1 + i, HG_WIDTH, 176);  	// 156
 	set_hitbox_value(AT_NSPECIAL_2, 1 + i, HG_HEIGHT, 156); 	// 128
@@ -48,4 +48,5 @@ for (var i = 0; i < 4; i++){
 	set_hitbox_value(AT_NSPECIAL_2, 1 + i, HG_VISUAL_EFFECT, 304);
 	set_hitbox_value(AT_NSPECIAL_2, 1 + i, HG_HIT_LOCKOUT, 30);
 	set_hitbox_value(AT_NSPECIAL_2, 1 + i, HG_MUNO_HITBOX_NAME, string(i) + "-Cloud");
+	set_hitbox_value(AT_NSPECIAL_2, 1 + i, HG_DRIFT_MULTIPLIER, 1);
 }

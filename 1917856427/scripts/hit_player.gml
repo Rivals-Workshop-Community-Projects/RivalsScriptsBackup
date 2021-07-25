@@ -17,13 +17,14 @@ with hit_player_obj
 
 //hit_player.gml
 if (my_hitboxID.attack == AT_FSPECIAL){
-    if (window == 2 && grabbedid == noone){
+    if (window == 1 && grabbedid == noone){
         hit_player_obj.grabbed = 1;
         grabbedid = hit_player_obj;
 	    grabbedid.ungrab = 0;
     }
 
 }
+
 
 
 

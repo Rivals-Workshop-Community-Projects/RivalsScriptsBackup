@@ -31,3 +31,47 @@ if (instance_exists(nspecial_article)) {
         nspecial_article.window_timer = 0;
     }
 }
+
+//New FSPECIAL handler
+with (oPlayer) {
+	if ("anthem_marked" not in self) {
+		anthem_marked = false;
+		anthem_marked_id = noone;
+		anthem_marked_timer = 0;
+		anthem_marked_amount = 0;
+		anthem_marked_hboxes = array_create(other.fspecial_amount_max, noone);
+	}
+	if (anthem_marked) {
+		if (anthem_marked_timer > 0)
+			anthem_marked_timer --;
+		else {
+			anthem_marked = false;
+			anthem_marked_timer = 0;
+			anthem_marked_amount = 0;
+		}
+	}
+	if (state == PS_RESPAWN && anthem_marked) {
+		anthem_marked = false;
+		anthem_marked_id = noone;
+		anthem_marked_timer = 0;
+		anthem_marked_amount = 0;
+		for (var i = 0; i < array_length(anthem_marked_hboxes); i++) {
+			if (instance_exists(anthem_marked_hboxes[i]))
+				instance_destroy(anthem_marked_hboxes[i]);
+		}
+	}
+}
+
+//Rivals of Fighter compatibility
+if ("superTrue" in self) {
+	if (superTrue == 1) {
+		superTrue = 0
+		
+		if (instance_exists(hit_player_obj))
+			hit_player_obj.canUseCounterTimer = 500
+		
+		set_hitbox_value(49, 4, HG_DAMAGE, 75);
+		/// X is roughly how many frames until your super finish if it's an attack, it's unessessary for status effect supers
+		
+		}
+}

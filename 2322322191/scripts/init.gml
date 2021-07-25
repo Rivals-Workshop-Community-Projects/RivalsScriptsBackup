@@ -12,6 +12,7 @@ ustrong_char = noone;
 
 flowy_active = false;
 fuckingdie = false;
+flowy_cooldown = 0;
 
 is_frisk = true;
 cur_plr = noone;
@@ -63,27 +64,27 @@ pratfall_anim_speed = .25;
 walk_speed = 3.25;
 walk_accel = 0.2;
 walk_turn_time = 6;
-initial_dash_time = 14;
-initial_dash_speed = 7;
+initial_dash_time = 16;
+initial_dash_speed = 7.5;
 dash_speed = 6.5;
 dash_turn_time = 10;
 dash_turn_accel = 1.5;
-dash_stop_time = 4;
+dash_stop_time = 6;
 dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .5;
+ground_friction = .4;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
-jump_speed = 9.45;
+jump_speed = 9.5;
 short_hop_speed = 6;
-djump_speed = 8.75;
+djump_speed = 9;
 leave_ground_max = 7.35; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 6.38; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state
+max_jump_hsp = 6.00; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = 0.35;
 prat_fall_accel = .65; //multiplier of air_accel while in pratfall
-air_friction = 0.04;
+air_friction = 0.02;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 5;
@@ -96,10 +97,10 @@ hitstun_grav = 0.50;
 knockback_adj = 1.10; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 17;
+prat_land_time = 10;
 wave_land_time = 8;
-wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .04; //grounded deceleration when wavelanding
+wave_land_adj = 1.20; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_friction = .13; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 1;
@@ -145,6 +146,15 @@ djump_sound = asset_get("sfx_jumpair");
 air_dodge_sound = asset_get("sfx_quick_dodge");
 
 save_hfx = hit_fx_create(sprite_get("SAVE_FX"), 30);
+save_destroy = hit_fx_create(sprite_get("SAVE_FX"), 15);
+tp_death_cd = 0;
+
+pitch_random = 0;
+
+//Dspec
+invalid_option = 0;
+selection_cd = 0;
+option_hotkey_used = 0;
 
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;

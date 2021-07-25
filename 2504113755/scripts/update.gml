@@ -7,6 +7,21 @@ if get_training_cpu_action() != CPU_FIGHT || trainingMode == 1 {
 }
 
 
+	
+
+
+
+if (get_player_color( player ) == 26) {
+hue_offset+=hue_speed;
+init_shader();
+
+
+
+
+
+
+}
+
 if ((state == PS_FIRST_JUMP && image_index == 0 ) || (state == PS_WALL_JUMP && image_index == 1) || (state == PS_DOUBLE_JUMP && image_index == 0)) {
 	        hud_offset = 20
 
@@ -17,18 +32,7 @@ if ((state == PS_FIRST_JUMP && image_index == 0 ) || (state == PS_WALL_JUMP && i
 //hud edits
 if (abs(hud_offset) < 1)  {hud_offset = 0 }
 
-
-if (state == PS_DEAD || state == PS_RESPAWN || state == PS_SPAWN) {
 	
-with (obj_article1) if player_id == other {
-		if (state != 3) {
-		state = 3 
-		state_timer = 0
-		}
-	}
-
-	
-}
 
 
 

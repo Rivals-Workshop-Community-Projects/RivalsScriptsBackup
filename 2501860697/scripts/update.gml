@@ -41,6 +41,8 @@ if(introTimer == 9) {
 if (charge > 0 && short = 0)
 {charge -= charge_drain_rate;}
 
+
+
 // current charge % for math
 var charge_percent = (charge / charge_max);
 
@@ -67,6 +69,7 @@ venom_timer = venom_timer_min;}
 
 if venom >= 0 && venom_timer = 1 {
 	short = 1;
+	venom_stack = 0;
 }
 if venom =  3 {
 	venom_current = 3;
@@ -134,6 +137,10 @@ roll_backward_max = roll_backward_max_base + (charge_percent * roll_backward_max
 
 if attack == AT_DAIR && window == 4 {
 move_cooldown[AT_DAIR] = 15;
+}
+
+if attack == AT_FSPECIAL && window == 2 {
+move_cooldown[AT_FSPECIAL] = 10;
 }
 
 if attack == AT_FSPECIAL_AIR && window == 4 {

@@ -83,10 +83,12 @@ if (my_hitboxID.attack == AT_FAIR){
 
 //Dspecial
 if (my_hitboxID.attack == AT_DSPECIAL){
-	jackpot = false
+	jackpot_number = 0;
+	jackpot = false;
 	nspecial_number = 7;
 	proj_stored = true;
 }
+
 
 if(has_hit_player){
     if (instance_exists(grabbed_player_obj && (!super_armor || !invincible))){

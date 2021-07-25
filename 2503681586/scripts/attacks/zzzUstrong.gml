@@ -14,7 +14,7 @@ set_window_value( AT_USTRONG_2, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value( AT_USTRONG_2, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value( AT_USTRONG_2, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value( AT_USTRONG_2, 2, AG_WINDOW_SFX, asset_get("sfx_swish_medium"));
-set_window_value( AT_USTRONG_2, 2, AG_WINDOW_SFX_FRAME, 0);
+set_window_value( AT_USTRONG_2, 2, AG_WINDOW_SFX_FRAME, 5);
 
 set_window_value( AT_USTRONG_2, 3, AG_WINDOW_TYPE, 1);
 set_window_value( AT_USTRONG_2, 3, AG_WINDOW_LENGTH, 12);

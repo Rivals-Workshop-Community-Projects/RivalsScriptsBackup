@@ -387,9 +387,11 @@ with codec_handler{
 	state_timer++;
 	
 }
-	  
 
-	  
+
+
+// cancel the codec
+
 if (phone_attacking && (attack == AT_TAUNT || attack == AT_TAUNT_2)){
 	if (window == 1 && window_timer == 5){
 		if codec_handler.state{
@@ -399,6 +401,9 @@ if (phone_attacking && (attack == AT_TAUNT || attack == AT_TAUNT_2)){
 		}
 	}
 	
+	
+	
+	// access the codec by holding taunt
 	
 	if (window == 3 && taunt_time == 120){
 		loadEnemyCodecs();

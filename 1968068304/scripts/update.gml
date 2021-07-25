@@ -169,14 +169,17 @@ else //if not free
 	max_jump_hsp = dash_speed;
 	
 		//regain uair jump when on the ground.
-	if (/*epinel_uair_jump_counter > 0 &&*/ state_cat != SC_AIR_COMMITTED && (state != PS_ATTACK_GROUND || attack != AT_USPECIAL)) { 
+	//if (/*epinel_uair_jump_counter > 0 &&*/ state_cat != SC_AIR_COMMITTED && (state != PS_ATTACK_GROUND || attack != AT_USPECIAL)) { 
+	if (attack != AT_USPECIAL) {
 		epinel_uair_jump_counter = 0; epinel_consecutive_uair_jumps = 0; epinel_consecutive_dair_jumps = 0; epinel_nspecial_halt_vsp = true; 
 		move_cooldown[AT_USPECIAL] = 0;
+		
 		if (is_epinel_performing_a_move_that_maintains_heavy_state()) {
 			epinel_heavy_state = min(epinel_heavy_state, 1);
 		}
-		else if (epinel_other_weightless_timer <= 0) epinel_heavy_state = 0;
-		
+		else {
+			recover_from_heavy_state_if_epinel_is_not_in_inertia();
+		}
 	}
 	
 }
@@ -279,6 +282,8 @@ switch (attack) {
 	case AT_FSPECIAL:
 	case AT_FSPECIAL_AIR:
 	case AT_DSPECIAL_AIR:
+	case AT_DAIR:
+	case AT_UAIR:
 		return true;
 	default:
 		return false;
@@ -288,7 +293,9 @@ switch (attack) {
 #define recover_from_heavy_state_if_epinel_is_not_in_inertia
 if (epinel_heavy_state > 0 && epinel_other_weightless_timer <= 0) {
 	set_attack(AT_EXTRA_3);
+	epinel_heavy_state = 0;
 	return true;
+	
 }
 return false;
 
@@ -296,6 +303,7 @@ return false;
 if (epinel_heavy_state > 0) {
 	epinel_other_weightless_timer = 0;
 	set_attack(AT_EXTRA_3);
+	epinel_heavy_state = 0;
 	return true;
 }
 return false;

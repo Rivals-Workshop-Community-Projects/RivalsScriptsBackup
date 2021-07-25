@@ -6,8 +6,8 @@ switch (state){
             var grov_gearx = 26;
             if spr_dir == 1 grov_gearx = -28;
             var grov_glow = 0;
-            if get_player_color(player) == 14 grov_glow = 1;
-            if get_player_color(player) == 15 grov_glow = 2;
+            if get_player_color(player) == 13 grov_glow = 1;
+            if get_player_color(player) == 14 grov_glow = 2;
             var glow_size = 2;
             if has_rune("O") glow_size = 4.5;
             

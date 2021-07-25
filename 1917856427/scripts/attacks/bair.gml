@@ -48,7 +48,7 @@ set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.6);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_BAIR, 1, HG_EXTRA_HITPAUSE, 3);
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0.5);
-set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 127);
+set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, large_plasma_hfx);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_ori_spirit_flame_hit_1"));
 set_hitbox_value(AT_BAIR, 1, HG_EXTRA_CAMERA_SHAKE, 1);

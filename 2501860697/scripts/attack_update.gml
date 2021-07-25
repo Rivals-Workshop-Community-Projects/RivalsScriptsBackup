@@ -3,6 +3,10 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+if (attack == AT_JAB && was_parried = true) {
+    was_parried = false;
+}
+
 
 if attack == AT_FSPECIAL_AIR && window == 1 && venom_timer > 0 {
 	attack_down = special_down;
@@ -16,30 +20,30 @@ if attack == AT_FSPECIAL_AIR && window == 1 && strong_charge > 20 {
 	set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 4);
 }
 
-
-if (attack == AT_NSPECIAL && window == 1 && window_timer == 1){
-    if (venom_timer > 0){
-		if venom_current = 3 {
+if (attack == AT_NSPECIAL && window ==  1 && window == 1 && short != 1){
+	if (venom_current = 3){
 		window = 3;
 		window_timer = 0;
 		set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 4);
-        } else if venom_current = 2 {
+		set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 9);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5);
+		set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX_FRAME, 8);
+
+	} else if (venom_current = 2){
 		window = 3;
 		window_timer = 0;
-		set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 4);
-        }
-}else { 		set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 2);}}
-
-if (attack == AT_NSPECIAL && window == 1 && window_timer == 1 && venom_timer > 0 ){
-	window = 5;
+	} else if (venom_current = 1){
+		window = 5;
 		window_timer = 0;
 		set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 6);
+	}
+} else if (attack != AT_NSPECIAL && state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) {
+		reset_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS);
+		reset_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH);
+		reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK);
+		reset_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX_FRAME);
 } 
 
-if (attack == AT_NSPECIAL && window == 5 && window_timer == 1 && venom_stack != 3 ){
-	window = 3;
-		set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 4);
-}
 
 if (attack == AT_NSPECIAL && window == 4 && has_hit = true && venom_stack = 2) {
 	can_jump = true;
@@ -50,10 +54,16 @@ if attack == AT_NSPECIAL && window == 5 && window_timer == 10 {
 	short = 1;
 	venom_stack = 0;
 	venom_recharge_active = true;
+} else if state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND {
+				reset_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS);
+		reset_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH);
+		reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK);
+		reset_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX_FRAME);
 }
 
 if (attack == AT_USPECIAL)
 {
+	can_wall_jump = true;
 	can_fast_fall = false;
 	if (window == 1)
 	{
@@ -93,12 +103,21 @@ if (attack == AT_USPECIAL)
 	}
 }
 
-if attack == AT_USPECIAL && has_hit = true && window == 4  {
-	set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 0);
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 20);
-} else {
-reset_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE);
-reset_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH);
+
+if (attack == AT_USPECIAL && window > 2 && !free){
+    hsp = hsp / 2;
+    if (!has_hit){
+        set_state(PS_PRATLAND);
+    }
+    else{
+        set_state(PS_LAND);
+    }
+}
+
+
+if attack == AT_USPECIAL && has_hit = true && window == 3  {
+window = 5;
+window_timer = 0;
 }
 
 
@@ -127,13 +146,19 @@ if (attack == AT_FSTRONG){
 
 if attack == AT_DAIR && window == 2 {
 	can_wall_jump = true;
-	if state_timer > 33 {
+	dairtimer += 1;
+	if dairtimer > 20 {
 		can_jump = true;
+		dairtimer = 0;
 	}
 	if has_hit {
 	window = 4;
 	window_timer = 0;
-	}}
+	dairtimer = 0;
+	}
+} else {
+	dairtimer = 0;
+}
 	
 
 if (attack == AT_DAIR){
@@ -164,3 +189,4 @@ if attack == AT_FSPECIAL_2 && window == 2 && window_timer == 20 {
 	venom_recharge_active = true;
 	venom_stack = 0;
 }
+

@@ -51,7 +51,7 @@ if(state == PS_SPAWN){
 //-----------------------------------ROCK---------------------------------------
 if(rock_lockout>0){
 	rock_lockout--;
-} else if(attack != AT_USTRONG and state != PS_ATTACK_AIR){
+} else {
 	can_rock = true;
 }
 
@@ -77,9 +77,11 @@ if(attack == AT_FSPECIAL and !free and (state == PS_ATTACK_GROUND or state == PS
 }
 
 //---------------------------------Reset Kba------------------------------------
-if(knockback_adj != base_knockback_adj and (attack != AT_NSPECIAL_2 or state_cat == SC_HITSTUN)){
-	
-	knockback_adj = base_knockback_adj;
+if(knockback_adj != base_knockback_adj){
+	kba_timer--;
+	if(kba_timer <= 0){
+		knockback_adj = base_knockback_adj;
+	}
 }
 //--------------------------------RAINBOWS--------------------------------------
 #region RAINBOWS
@@ -166,8 +168,9 @@ if(dragon_install){
 	//this is basically a control value to make sure music is always playing when
 	//an install is up when multiple of this character are in the same game
 	if(play_theme and !lightweight){
-	
-		sound_play(sound_get("install" + string(install_theme)), true, 0, 1, 1);
+		var volume = 0;
+        volume = get_local_setting(3);
+		sound_play(sound_get("install" + string(install_theme)), true, 0, min(2*volume, 1), 1);
 		play_theme = !play_theme;
 	}
 

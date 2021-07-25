@@ -338,38 +338,26 @@ if (attack == AT_NSPECIAL) {
 
 if (attack == AT_FSPECIAL){
 	can_fast_fall = false;
-	move_cooldown[AT_FSPECIAL] = 30;
+	grav = 0.25;
+	vsp = min(vsp, 6);
     if (state_timer == 1 ){
     	fspecial_times = 0;
-    	fspecial_dir = spr_dir == 1 ? 0 : 180;
     }
-    if (window == 2){
-    	if (window_timer == 1 && fspecial_times < 3) {
-    		fspecial_times++;
-    		if (!joy_pad_idle) {
-				var dd = angle_difference(fspecial_dir, joy_dir);
-    			fspecial_dir += min(abs(dd), fspecial_dir_inc) * -sign(dd);
-    		}
-    		var xdir = lengthdir_x(48 * fspecial_times, fspecial_dir);
-    		var ydir = lengthdir_y(48 * fspecial_times, fspecial_dir);
-    		create_hitbox(AT_FSPECIAL, fspecial_times, round(x + (48 * spr_dir) + xdir), round(y - 24 + ydir))
-    		if (fspecial_times == 2) {
-    			sound_play(asset_get("sfx_abyss_explosion_big"));
-    		}
-    		else {
-    			sound_play(asset_get("sfx_abyss_explosion"));
-    		}
+    if (window == 1) {
+    	if (window_timer == 1) {
+    		if (free && vsp >= -1) vsp += -1
+    	}
+    	if (!special_down) {
+    		window = 3;
+    		window_timer = 0;
     	}
     }
-    if (window == 4) {
-    	var recovery_time = 6 * fspecial_times
-        if (special_down && window_timer == recovery_time / 2 && fspecial_times < 3){
-            window = 1;
-            window_timer = 0;
-        }
-    	if (window_timer >= recovery_time) {
-            window = 5;
-            window_timer = 0;
+    if (window == 2) {
+		fspecial_times = 1;
+	}
+    if (window == 3) {
+    	if (window_timer == 3) {
+    		create_hitbox(AT_FSPECIAL, fspecial_times >= 1 ? 2 : 1, round(x + (48 * spr_dir)), round(y - 32))
     	}
     }
 }

@@ -1,0 +1,1 @@
+if (attack == AT_JAB || attack == AT_USTRONG) {no_absorb = true;}

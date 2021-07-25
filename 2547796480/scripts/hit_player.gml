@@ -1,5 +1,8 @@
 ///
-
+if ANwounded > 0 && my_hitboxID.type == 1 && hit_player_obj.char_height != 60.1412{ 
+	 ANwounded -= 1
+}
+	
 if my_hitboxID.type == 1 && my_hitboxID.attack == AT_NSPECIAL  {
    batt = 5
    if hit_player_obj.ANwounded < 1 {
@@ -11,6 +14,7 @@ if my_hitboxID.type == 1 && my_hitboxID.attack == AT_NSPECIAL  {
     hit_player_obj.ANtimeslow = 50
     sound_stop(asset_get("sfx_ori_energyhit_medium")); 
     sound_play(asset_get("sfx_ori_energyhit_medium"));   
+    sound_play(sound_get("Fstrong"),false,noone,1.4,0.8);   
    }
 
    if hit_player_obj.ANwounded == 2 {
@@ -18,6 +22,7 @@ if my_hitboxID.type == 1 && my_hitboxID.attack == AT_NSPECIAL  {
     hit_player_obj.ANtimeslow = 60
     sound_stop(asset_get("sfx_ori_energyhit_medium")); 
     sound_play(asset_get("sfx_ori_energyhit_medium")); 
+    sound_play(sound_get("Fstrong"),false,noone,1.5,0.7);  
    }
    
    if hit_player_obj.ANwounded == 3 {
@@ -25,8 +30,11 @@ if my_hitboxID.type == 1 && my_hitboxID.attack == AT_NSPECIAL  {
     hit_player_obj.ANtimeslow = 70
     sound_stop(asset_get("sfx_ori_energyhit_medium")); 
     sound_play(asset_get("sfx_ori_energyhit_heavy")); 
+    sound_play(sound_get("Fstrong"),false,noone,1.6,0.6);  
    }
    
+   hit_player_obj.ANwounded = 0
+
 }
 
 if my_hitboxID.attack != AT_NSPECIAL  {
@@ -41,16 +49,15 @@ if my_hitboxID.type == 1  {
  
  if hit_player_obj != self  {       
     if hit_player_obj.ANwounded == 1 {
-    	hitstop += 5
-    	hit_player_obj.hitstop += 5
+    	hitstop += 1
+    	hit_player_obj.hitstop += 1
     	move_cooldown[AT_EXTRA_3] = 6
         var halodmg = floor(my_hitboxID.damage/2)
         with hit_player_obj {
-		take_damage( player, -1 , halodmg + 2)
+		take_damage( player, -1 , floor(halodmg/1.5))
         }
         
-	   	 sound_play(sound_get("slice"));   
-        sound_play(sound_get("slice3")); 
+	   	 sound_play(sound_get("slice"),false, 0, 0.8 + my_hitboxID.damage/20, 0.9 + random_func(2,10,true)/100);   
 
         
          if spr_dir = -1 {       
@@ -61,21 +68,20 @@ if my_hitboxID.type == 1  {
            	var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 60, fxslash3 )
 			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4 + 90
 			
-	        var hfx2 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash1 )
-			hfx2.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
+
     } 
     
         if hit_player_obj.ANwounded == 2 {
-        	hitstop += 8
-    	hit_player_obj.hitstop += 8
+        	hitstop += 2
+    	hit_player_obj.hitstop += 2
            move_cooldown[AT_EXTRA_3] = 14
            var halodmg = floor(my_hitboxID.damage/2)
            with hit_player_obj {
-		   take_damage( player, -1 , halodmg + 4)
+		   take_damage( player, -1 , floor(halodmg/1.2))
            }  
 
-	   	 sound_play(sound_get("slicel"));   
-        sound_play(sound_get("slice1"));  
+	   	 sound_play(sound_get("slice"),false, 0, 0.8 + my_hitboxID.damage/20, 0.9 + random_func(2,10,true)/100);   
+        sound_play(sound_get("slice3"),false, 0, 0.8 + my_hitboxID.damage/20, 0.9 + random_func(3,10,true)/100);  
          if spr_dir = 1 {       
          spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - 140, km2r );
          } else {
@@ -85,38 +91,31 @@ if my_hitboxID.type == 1  {
             var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 60, fxslash3 )
 			hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4 + 90
 			
-	        var hfx2 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash1 )
-			hfx2.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
-			
- 	     batt += 1
+ 	     
         }
     
         if hit_player_obj.ANwounded == 3 {
-        	hitstop += 11
-    	hit_player_obj.hitstop += 11
+        	hitstop += 4
+    	hit_player_obj.hitstop += 4
                 move_cooldown[AT_EXTRA_3] = 20 		   
                         var halodmg = floor(my_hitboxID.damage/2)
                          with hit_player_obj {
-              		      take_damage( player, -1 , halodmg + 8)
+              		      take_damage( player, -1 , floor(halodmg))
                          } 
-                       sound_play(sound_get("slice1"));  
-              	   	 sound_play(sound_get("slice3"));  
+                       sound_play(sound_get("slice"),false, 0, 0.8 + my_hitboxID.damage/20, 0.9 + random_func(2,10,true)/100);  
+              	   	 sound_play(sound_get("slice1"),false, 0, 0.8 + my_hitboxID.damage/20, 0.9 + random_func(3,10,true)/100);  
               	   	 
                if spr_dir = 1 {       
                spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - 140, km3r );
                } else {
                 spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - 140, km3l );	
                }
-                var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 60, fxslash3 )
-			    hfx1.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4 + 90
-			    
+
 	            var hfx2 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash1 )
 			    hfx2.draw_angle = random_func(9,360,true) + my_hitboxID.x* 4
-                     	batt += 2
+                     	
         }
 
-
-hit_player_obj.ANwounded = 0
 
 
 }

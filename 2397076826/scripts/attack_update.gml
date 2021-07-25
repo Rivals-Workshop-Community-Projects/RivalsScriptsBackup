@@ -61,7 +61,7 @@ if window == 1 && window_timer == 1 && free {
 	    	set_attack (AT_NSPECIAL)
 	    	window = 4
 	    	window_timer = 11
-	    	iaijump = 2
+	    	iaijump = 1
 	    	spawn_hit_fx(x,y-40,305)
 	    	}
 }
@@ -123,7 +123,7 @@ if attack == AT_UTILT {
 	
 	if has_hit_player && hit_player_obj.state_cat == SC_HITSTUN && !hitpause && window == 3 && window_timer < 6 {
 				hit_player_obj.hsp = ((x + (50 * spr_dir)) - hit_player_obj.x) / 10
-				hit_player_obj.vsp = ((y - (20)) - hit_player_obj.y) / 6
+				hit_player_obj.vsp = ((y - (50)) - hit_player_obj.y) / 6
 	}
 	
 	if window == 5 && has_hit {
@@ -255,7 +255,7 @@ if attack == AT_NSPECIAL {
   	    }
     }
     
-    if window == 7 && window_timer == 10 {
+    if window == 7 && window_timer == 8 {
     	if right_down && (!special_down )  {
     		if spr_dir = -1 {
     			window = 6
@@ -352,7 +352,7 @@ if attack == AT_NSPECIAL {
 	  	window_timer = 11
 	  }	
 	  
-	  	  	if jump_pressed && iaijump < 3 {
+	  	  	if jump_pressed && iaijump < 2 {
 	  	  		spawn_base_dust(x-10*spr_dir,y,"jump",spr_dir);
     			vsp = -9
     			window = 4
@@ -403,7 +403,7 @@ if attack == AT_NSPECIAL {
 	}
 	
 	if window == 2 {
-		if jump_pressed && iaijump < 3{
+		if jump_pressed && iaijump < 2{
     			hsp = -7 *spr_dir
     			vsp = -9
     			window = 4
@@ -413,7 +413,7 @@ if attack == AT_NSPECIAL {
 	}
 	
 	if window == 3 {
-		if jump_pressed && iaijump < 3{
+		if jump_pressed && iaijump < 2{
     			hsp = 7*spr_dir
     			vsp = -9
     			window = 4
@@ -457,7 +457,7 @@ if attack == AT_NSPECIAL {
     	  	hsp = -7
     	  }
     	  
-    	  if window_timer >= 12 && iaijump < 3 && jump_pressed {
+    	  if window_timer >= 12 && iaijump < 2 && jump_pressed {
     	  	window_timer = 0
     	  	iaijump += 1
     	  	spawn_base_dust(x-10*spr_dir,y,"djump",spr_dir);
@@ -479,12 +479,17 @@ if attack == AT_NSPECIAL {
 if attack == AT_FSPECIAL {
  
  can_fast_fall = false
- if has_hit_player && window < 4 {
+ if has_hit_player && window < 4  {
+ 	set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 1);
  	if vsp > -6 {
  	vsp -= 1
  	}
+ 	
+ 	if hit_player_obj.state_cat == SC_HITSTUN {
 		hit_player_obj.x += ((x + (65 * spr_dir)) - hit_player_obj.x) / 6
 		hit_player_obj.y += (y - 35 - hit_player_obj.y) / 6
+ 	}
+ 	
  }
  
 
@@ -494,15 +499,11 @@ if attack == AT_FSPECIAL {
 		create_hitbox(AT_FSPECIAL, 7, x, y)
 			 if cloneout = 0 {
 	 	fspechit2 = 1	
-     	create_hitbox(AT_DSPECIAL, 1, x, y - 40)
+     	//create_hitbox(AT_DSPECIAL, 1, x, y - 40)
      	cloneout = 1
 	 }
 	}
-	if window = 4 && window_timer == 14 {
-		set_state(PS_IDLE_AIR)
-		fspechit = 0
-		fspechit2 = 0
-	}
+
 	}
 	
 	if window == 4 {
@@ -525,6 +526,7 @@ if attack == AT_FSPECIAL {
 	}
 	
 	if window = 1 {
+		set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 7);
 		hsp /= 1.1
 		vsp /= 1.1
 	}
@@ -599,7 +601,7 @@ if attack == AT_USPECIAL {
 }
 
 if attack == AT_DSPECIAL {
-
+  
   if window == 1 {
   	if window_timer % 2 == 0 {
   			draw_indicator = false

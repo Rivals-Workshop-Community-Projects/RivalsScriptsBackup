@@ -1,10 +1,16 @@
 //Makes the Gust Wind Hitbox Grow
 if (attack == AT_FSPECIAL && hbox_num == 6){
-	if (hitbox_timer > 2 && hitbox_timer < 5){
+	if (hitbox_timer == 1){
+		player_id.turbine_gustx = x;	
+		player_id.turbine_gusty = y;
+		player_id.turbine_gust_spr = spr_dir;
+	}
+	 
+	if (hitbox_timer > 2){
 		image_xscale = 129/200;
 		image_yscale = 78/200;
 	}
-	if (hitbox_timer >= 5){
+	if (hitbox_timer >= 4){
 		image_xscale = 171/200;
 		image_yscale = 112/200;
 	}
@@ -12,7 +18,12 @@ if (attack == AT_FSPECIAL && hbox_num == 6){
 
 //Allows the Whirlwind to hit Maverick
 if (attack == AT_DSPECIAL){
-	can_hit_self = true;
+	if (player_id.state != PS_ATTACK_GROUND && player_id.state != PS_ATTACK_AIR){
+		can_hit_self = true;
+	}
+	else {
+		can_hit_self = false;
+	}
 }
 
 //DSpecial - Whirlwind
@@ -25,7 +36,7 @@ if (attack == AT_DSPECIAL){
 	//The Explosion Hitbox for the opponent with the Whirlwind Effect
 	if (player_id.whirlwind_punch_active == true && hbox_num > 1 && hbox_num < 10 
 	&& player_id.whirlwind_myself == false){
-		damage = 15;
+		damage = 10;
 		kb_scale = .7;
 		hitpause = 15;
 		hitpause_growth = 1.5;

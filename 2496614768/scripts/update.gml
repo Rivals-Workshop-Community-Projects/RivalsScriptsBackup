@@ -10,7 +10,7 @@ if !instance_exists(hit_player_obj){
 hit_player_obj = self
 }
 
-if visible && free && !attacking && can_attack && taunt_pressed && down_down{
+if visible && free && !attacking && can_attack && taunt_pressed {
 	    		set_attack(AT_TAUNT)
 	    		window = 2
 	    		window_timer = 0

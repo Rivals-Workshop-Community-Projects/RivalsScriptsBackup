@@ -12,7 +12,7 @@ var temp_y = y + 9;
  
 var num_alts = 25;
 num_colors = 25;
-patch_ver = "2.1"; 
+patch_ver = "2.2"; 
 //Alt name init. var doesn't work with arrays lol
  
 alt_name[0]  = "Default";

@@ -1,6 +1,17 @@
 // afterimage
 var tempColour = c_white;
-col1 = GetColourPlayer(0)
+if (get_player_color(player) == 26) {
+
+
+
+
+
+
+col1 = make_colour_rgb(color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv))
+
+
+} else { col1 = GetColourPlayer(0) }
+
 col2 = GetColourPlayer(1)
 
 image_index_offset = 0
@@ -11,7 +22,7 @@ afterimage_division_offset = 0
     
 afterimage_division_multiplier = 40
 
-
+second_x_offset_lmao = 0
 
 
 
@@ -107,34 +118,34 @@ for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i]
 {
 
 
-if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && afterImage[i].sprite_index == sprite_index) {
+if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && (afterImage[i].sprite_index == sprite_index || afterImage[i].sprite_index = sprite_get( "fspecial_afterimage" ) )) {
     
-
+afterImage[i].sprite_index = sprite_get( "fspecial_afterimage" ) 
     //REMEMBER, up each image index by 1 in your head
-    if (afterImage[i].image_index = 1 && afterImage[i].window == 1 && afterImage[i].window_timer == 9) {
+    if (afterImage[i].image_index = 1 && afterImage[i].window == 1 && afterImage[i].window_timer == 11) {  //&& afterImage[i].window_timer
     y_offset = 0 
     	
     } //initial dash
-    else if (afterImage[i].image_index = 2  && afterImage[i].window == 2 && afterImage[i].window_timer == 2) {
+    else if (afterImage[i].image_index = 2  && afterImage[i].window == 2  && afterImage[i].window_timer == 1) {
     y_offset = -15 } //start 1
-    else if (afterImage[i].image_index = 3  && afterImage[i].window == 3 && afterImage[i].window_timer == 1) {
+    else if (afterImage[i].image_index = 3  && afterImage[i].window == 3  && afterImage[i].window_timer == 1) {
     y_offset = -15 } //attack 1
-    else if (afterImage[i].image_index = 5 && afterImage[i].window == 5 && afterImage[i].window_timer == 1) {
-    y_offset = 6 }
-    else if (afterImage[i].image_index = 6 && afterImage[i].window == 5 && afterImage[i].window_timer == 3) {
-    y_offset = 6 }
-    else if (afterImage[i].image_index = 8 && afterImage[i].window == 7 && afterImage[i].window_timer == 1) {
-    y_offset = -17 }
-    else if (afterImage[i].image_index = 9 && afterImage[i].window == 7 && afterImage[i].window_timer == 3) {
-    y_offset = -17 }
-    else if (afterImage[i].image_index = 11  && afterImage[i].window == 9 && afterImage[i].window_timer == 1) {
-    y_offset = 8 }
-    else if (afterImage[i].image_index = 12  && afterImage[i].window == 9 && afterImage[i].window_timer == 3) {
-    y_offset = 8 }
-    else if (afterImage[i].image_index = 14  && afterImage[i].window == 11 && afterImage[i].window_timer == 1) {
-    y_offset = -4 }
-    else if (afterImage[i].image_index = 15  && afterImage[i].window == 11 && afterImage[i].window_timer == 3) {
-    y_offset = -4 }
+    else if (afterImage[i].image_index = 4 && afterImage[i].window == 4  && afterImage[i].window_timer == 1) {
+    y_offset = 6 } //start 2
+    else if (afterImage[i].image_index = 5 && afterImage[i].window == 5  && afterImage[i].window_timer == 1) {
+    y_offset = 6 } //attack 2
+    else if (afterImage[i].image_index = 6 && afterImage[i].window == 6  && afterImage[i].window_timer == 1) {
+    y_offset = -17 } //start 3
+    else if (afterImage[i].image_index = 7 && afterImage[i].window == 7  && afterImage[i].window_timer == 1) {
+    y_offset = -17 } //attack 3
+    else if (afterImage[i].image_index = 8  && afterImage[i].window == 8  && afterImage[i].window_timer == 1) {
+    y_offset = 8 } //start 4
+    else if (afterImage[i].image_index = 9  && afterImage[i].window == 9  && afterImage[i].window_timer == 1) {
+    y_offset = 8 } //attack 4
+    else if (afterImage[i].image_index = 10  && afterImage[i].window == 10  && afterImage[i].window_timer == 1) {
+    y_offset = -4 } //start 5
+    else if (afterImage[i].image_index = 11  && afterImage[i].window == 11  && afterImage[i].window_timer == 1) {
+    y_offset = -4 } //attack 5
 
     
     else { afterImage[i].alpha = 0 }
@@ -143,13 +154,20 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
     x_offset = -40*spr_dir 
     	afterimage_division_offset = 2
 	afterimage_division_multiplier = 30
-    	
-    	
+  	
     } else { x_offset = 30*spr_dir
     afterimage_division_offset = 0.5
-    afterimage_division_multiplier = 40
-    	
+    afterimage_division_multiplier = 50
+
     }
+    
+    if (afterImage[i].image_index = 2 || afterImage[i].image_index = 4 || afterImage[i].image_index = 6 ||  afterImage[i].image_index = 8 || afterImage[i].image_index = 10) {
+    	
+    	
+    	
+    	    	    	second_x_offset_lmao = 5*3*spr_dir
+
+    } else {second_x_offset_lmao = 0 }
     image_index_offset = 1
     
     final_variable_for_afterimage_because_i_am_ocd = -1
@@ -158,7 +176,7 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 	
 	y_offset = -18*1.15
 	x_offset = -14*1.15*spr_dir
-    image_index_offset = 1
+    image_index_offset = 2
     afterimage_division_offset = 2
 	afterimage_division_multiplier = 30
 	    final_variable_for_afterimage_because_i_am_ocd = 1
@@ -178,12 +196,12 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 
 
 
-if (afterimage_division_multiplier = 40) { gpu_set_fog(1, c_white, 0, 1); } else { gpu_set_fog(1, col1, 0, 1); }
+if (afterimage_division_multiplier = 50) { gpu_set_fog(1, c_white, 0, 1); } else { gpu_set_fog(1, col1, 0, 1); }
        
         
-			draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index + image_index_offset, afterImage[i].x - x_offset, afterImage[i].y + y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, (afterImage[i].alpha - (1 + final_variable_for_afterimage_because_i_am_ocd))/(afterimage_division_multiplier*afterimage_division_offset));
+			draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index + image_index_offset, afterImage[i].x - x_offset + second_x_offset_lmao, afterImage[i].y + y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, (afterImage[i].alpha - (1 + final_variable_for_afterimage_because_i_am_ocd))/(afterimage_division_multiplier*afterimage_division_offset));
         	gpu_set_blendmode(bm_add);
-                        draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index  + image_index_offset, afterImage[i].x - x_offset, afterImage[i].y + y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, afterImage[i].alpha/(afterimage_division_multiplier*afterimage_division_offset));
+                        draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index  + image_index_offset, afterImage[i].x - x_offset  + second_x_offset_lmao, afterImage[i].y + y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, afterImage[i].alpha/(afterimage_division_multiplier*afterimage_division_offset));
 
         gpu_set_blendmode(bm_normal);
 
@@ -191,21 +209,21 @@ if (afterimage_division_multiplier = 40) { gpu_set_fog(1, c_white, 0, 1); } else
     gpu_set_fog(1, col2, 0, 1);
 
 
-                draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index + image_index_offset, afterImage[i].x - 2*x_offset, afterImage[i].y + 2*y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, (afterImage[i].alpha - 1)/afterimage_division_multiplier);
+                draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index + image_index_offset, afterImage[i].x - 2*x_offset  + second_x_offset_lmao, afterImage[i].y + 2*y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, (afterImage[i].alpha - 1)/afterimage_division_multiplier);
         gpu_set_blendmode(bm_add);
-                        draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index + image_index_offset , afterImage[i].x - 2*x_offset, afterImage[i].y + 2*y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, afterImage[i].alpha/afterimage_division_multiplier);
+                        draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index + image_index_offset , afterImage[i].x - 2*x_offset  + second_x_offset_lmao, afterImage[i].y + 2*y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, afterImage[i].alpha/afterimage_division_multiplier);
 
         gpu_set_blendmode(bm_normal);
           
           
           
           
-       if (afterimage_division_multiplier = 40) { gpu_set_fog(1, col1, 0, 1); } else  { gpu_set_fog(1, c_white, 0, 1); }
+       if (afterimage_division_multiplier = 50) { gpu_set_fog(1, col1, 0, 1); } else  { gpu_set_fog(1, c_white, 0, 1); }
                   
        // gpu_set_fog(1, col1, 0, 1);
-                 draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index  + image_index_offset, afterImage[i].x - 3*x_offset, afterImage[i].y + 3*y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, (afterImage[i].alpha - (1 - final_variable_for_afterimage_because_i_am_ocd))/(afterimage_division_multiplier/afterimage_division_offset));
+                 draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index  + image_index_offset, afterImage[i].x - 3*x_offset  + second_x_offset_lmao, afterImage[i].y + 3*y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, (afterImage[i].alpha - (1 - final_variable_for_afterimage_because_i_am_ocd))/(afterimage_division_multiplier/afterimage_division_offset));
         gpu_set_blendmode(bm_add);
-                        draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index  + image_index_offset, afterImage[i].x - 3*x_offset, afterImage[i].y + 3*y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, afterImage[i].alpha/(afterimage_division_multiplier/afterimage_division_offset));
+                        draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index  + image_index_offset, afterImage[i].x - 3*x_offset  + second_x_offset_lmao, afterImage[i].y + 3*y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, afterImage[i].alpha/(afterimage_division_multiplier/afterimage_division_offset));
 
          gpu_set_blendmode(bm_normal);
     
@@ -235,8 +253,18 @@ for (var i = 0; i < afterImageMax; ++i) if (afterImage[i] != -1 && afterImage[i]
 }}
 */
 
+if (get_player_color(player) == 26) {
 
-col1 = GetColourPlayer(0)
+
+
+
+
+
+col1 = make_colour_rgb(color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv))
+
+
+} else { col1 = GetColourPlayer(0) }
+
 col2 = GetColourPlayer(1)
 /*
 if (attack == AT_FSPECIAL) {

@@ -1,0 +1,35 @@
+//article2_init
+life_timer = 0;
+DJ = false
+sprite_index = sprite_get("blank");
+spr_dir = player_id.spr_dir;       
+image_index = 0;
+state = 0;
+can_be_grounded = true;
+ignores_walls = true;
+statetimer = 0;
+uses_shader = true;
+type = 0;
+death_timer = 0;
+endermove = 0;
+movetimer = 0;
+enderhit = 0;
+grabcont = 0;
+ender_effect = hit_fx_create(sprite_get("enderparticles"),30);
+enderright = 0;
+grabtimer = 0;
+noteblock = false;
+notetimer = 0;
+byebye = false;
+notetimer2 = 0;
+note = false;
+note_col = 0;
+creetouchtnt = false;
+endertnttimer = 0;
+endermovetnt = 0;
+//endermove explanation
+// 1 = up
+// 2 = left
+// 3 = right
+// 4 = up left
+// 5 = up right

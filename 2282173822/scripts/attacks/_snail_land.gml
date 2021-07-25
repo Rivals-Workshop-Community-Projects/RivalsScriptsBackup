@@ -5,6 +5,7 @@ set_attack_value(AT_EXTRA_1, AG_OFF_LEDGE, 1);
 set_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE, hurtbox_spr);
 set_attack_value(AT_EXTRA_1, AG_USES_CUSTOM_GRAVITY, 1);
 set_attack_value(AT_EXTRA_1, AG_MUNO_ATTACK_NAME, "Landing in Cloud");
+set_attack_value(AT_EXTRA_1, AG_MUNO_ATTACK_MISC_ADD, "Lightning version can be canceled from f7.");
 
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_LENGTH, 6);

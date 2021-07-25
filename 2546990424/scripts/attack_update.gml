@@ -47,18 +47,27 @@ if (attack == AT_FAIR){
 }
 }
 
+//Strongs Wind SFXs
+if (((attack == AT_FSTRONG && window == 2 && window_timer == 12) 
+|| (attack == AT_USTRONG && window == 2 && window_timer == 12) 
+|| (attack == AT_DSTRONG && window == 2 && window_timer == 6)) && !hitpause){
+    sound_play(asset_get("sfx_bird_nspecial"));
+}
+
 //NSpecial - Cargo Hit
 if (attack == AT_NSPECIAL){
     if (window == 1){
         cargo_up = false;
+        cargo_down = false;
     }
 }
 
 //NSpecial2 - Cargo Hold
 if (attack == AT_NSPECIAL_2){
+    grab_timer = 5;
     if (window == 1 && window_timer == 1){
         //Throw Forward
-        if (cargo_up == false){
+        if (cargo_up == false && cargo_down == false){
             //Turns around if facing the other way
             if (free && (spr_dir == 1 && left_down == true) || (spr_dir == -1 && right_down == true)){
                 spr_dir *= -1;
@@ -66,18 +75,53 @@ if (attack == AT_NSPECIAL_2){
             //Hitbox for the Forward Throw
             set_attack_value(AT_NSPECIAL_2, AG_SPRITE, sprite_get("nspecial_throw1"));
             hurtboxID.sprite_index = sprite_get("nspecial_throw1_hurt");
+            set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 2);
+            set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 2);
             set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 2);
+            set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_LENGTH, 6);
+            set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 5);
             set_hitbox_value(AT_NSPECIAL_2, 1, HG_LIFETIME, 3);
             set_hitbox_value(AT_NSPECIAL_2, 2, HG_LIFETIME, 0);
+            set_hitbox_value(AT_NSPECIAL_2, 3, HG_LIFETIME, 0);
         }
         //Up Throw
-        else {
+        if (cargo_up == true && cargo_down == false) {
             //Hitbox for the Up Throw
             set_attack_value(AT_NSPECIAL_2, AG_SPRITE, sprite_get("nspecial_throw2"));
             hurtboxID.sprite_index = sprite_get("nspecial_throw2_hurt");
+            set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 2);
+            set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 2);
             set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 4);
+            set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_LENGTH, 6);
+            set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 5);
             set_hitbox_value(AT_NSPECIAL_2, 1, HG_LIFETIME, 0);
             set_hitbox_value(AT_NSPECIAL_2, 2, HG_LIFETIME, 3);
+            set_hitbox_value(AT_NSPECIAL_2, 3, HG_LIFETIME, 0);
+        }
+        //Down Throw
+        if (cargo_up == false && cargo_down == true) {
+            //Hitbox for the Down Throw
+            set_attack_value(AT_NSPECIAL_2, AG_SPRITE, sprite_get("nspecial_throw3"));
+            hurtboxID.sprite_index = sprite_get("nspecial_throw3_hurt");
+            set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 4);
+            set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 4);
+            set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 2);
+            set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 7);
+            set_hitbox_value(AT_NSPECIAL_2, 1, HG_LIFETIME, 0);
+            set_hitbox_value(AT_NSPECIAL_2, 2, HG_LIFETIME, 0);
+            set_hitbox_value(AT_NSPECIAL_2, 3, HG_LIFETIME, 3);
+            
+            if (!free){
+                set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_LENGTH, 6);
+                vsp = -9;
+                set_hitbox_value(AT_NSPECIAL_2, 3, HG_BASE_KNOCKBACK, 8);
+                set_hitbox_value(AT_NSPECIAL_2, 3, HG_KNOCKBACK_SCALING, .4);
+            }
+            else {
+                set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_LENGTH, 10);
+                set_hitbox_value(AT_NSPECIAL_2, 3, HG_BASE_KNOCKBACK, 3.5);
+                set_hitbox_value(AT_NSPECIAL_2, 3, HG_KNOCKBACK_SCALING, .2);
+            }
         }
     }
 }
@@ -92,7 +136,9 @@ if (attack == AT_FSPECIAL){
         turbine_cont++;
         can_jump = true;
         if (shield_pressed){
-            state = PS_IDLE;
+            window = 1;
+            window_timer = 1;
+            attack = AT_TAUNT_2;
         }
         //Finished Charging
         if (turbine_cont >= 70){
@@ -166,7 +212,7 @@ if (attack == AT_DSPECIAL){
                     whirlwind_angle = -45;
                     whirlwind_x = 15;
                     whirlwind_y = 5;
-                    whirlwind_x_hitbox = 30;
+                    whirlwind_x_hitbox = 40;
                     whirlwind_y_hitbox = 20;
                     whirlwind_hitbox_num = 3;
                 }
@@ -174,7 +220,7 @@ if (attack == AT_DSPECIAL){
                     whirlwind_angle = -90;
                     whirlwind_x = 30;
                     whirlwind_y = 30;
-                    whirlwind_x_hitbox = 40;
+                    whirlwind_x_hitbox = 50;
                     whirlwind_y_hitbox = 50;
                     whirlwind_hitbox_num = 4;
                 }
@@ -182,31 +228,31 @@ if (attack == AT_DSPECIAL){
                     whirlwind_angle = -135;
                     whirlwind_x = 30;
                     whirlwind_y = 60;
-                    whirlwind_x_hitbox = 30;
-                    whirlwind_y_hitbox = 70;
+                    whirlwind_x_hitbox = 35;
+                    whirlwind_y_hitbox = 85;
                     whirlwind_hitbox_num = 5;
                 }
             if (down_down && !right_down && !left_down){
                     whirlwind_angle = 180;
                     whirlwind_x = 5;
                     whirlwind_y = 60;
-                    whirlwind_x_hitbox = 5;
-                    whirlwind_y_hitbox = 90;
+                    whirlwind_x_hitbox = -5;
+                    whirlwind_y_hitbox = 95;
                     whirlwind_hitbox_num = 6;
                 }
             if (up_down && !down_down && left_down){
                     whirlwind_angle = 45;
                     whirlwind_x = -15;
                     whirlwind_y = 5;
-                    whirlwind_x_hitbox = -30;
-                    whirlwind_y_hitbox = 20;
+                    whirlwind_x_hitbox = -35;
+                    whirlwind_y_hitbox = 15;
                     whirlwind_hitbox_num = 7;
                 }
             if (!up_down && !down_down && left_down){
                     whirlwind_angle = 90;
                     whirlwind_x = -30;
                     whirlwind_y = 30;
-                    whirlwind_x_hitbox = -40;
+                    whirlwind_x_hitbox = -55;
                     whirlwind_y_hitbox = 50;
                     whirlwind_hitbox_num = 8;
                 }
@@ -214,8 +260,8 @@ if (attack == AT_DSPECIAL){
                     whirlwind_angle = 135;
                     whirlwind_x = -30;
                     whirlwind_y = 60;
-                    whirlwind_x_hitbox = -30;
-                    whirlwind_y_hitbox = 70;
+                    whirlwind_x_hitbox = -40;
+                    whirlwind_y_hitbox = 80;
                     whirlwind_hitbox_num = 9;
                 }
             if (!special_down){
@@ -235,7 +281,7 @@ if (attack == AT_DSPECIAL){
             }
         //Creates the Whirlwind
         if (whirlwind_off == false && whirlwind_cooldown == 0){
-            whirlwind_cooldown = 90;
+            whirlwind_cooldown = 60;
             //If there's no Whirlwind made
             if (whirlwind_first == true){
                     whirlwind2 = instance_create( x-whirlwind_x, y-whirlwind_y, "obj_article1"); 
@@ -286,9 +332,29 @@ if (attack == AT_USPECIAL){
    }
    //If aerial, move upwards and enters pratfall
    else {
-       set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -3.5);
+       set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -4);
        set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
-       set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 4);
+       set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 5);
+       
+       //Horizontal Movement
+       if (window == 2){
+           if (right_down){
+               if (hsp < 6 && hsp >= 0){
+                   hsp += 1;
+               }
+               if (hsp < 0){
+                   hsp += .25;
+               }
+           }
+           if (left_down){
+               if (hsp > -6 && hsp <= 0){
+                   hsp -= 1;
+               }
+               if (hsp > 0){
+                   hsp -= .25;
+               }
+           }
+       }
    }
     
 }
@@ -298,5 +364,9 @@ if (attack == AT_TAUNT){
     if (window == 2 && taunt_down){
         window_timer = 1;
     }
+}
+
+if (attack == AT_TAUNT_2 && window_timer == 4){
+    spawn_hit_fx( x, y-20, 194);
 }
 

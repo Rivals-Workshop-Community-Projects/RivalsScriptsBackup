@@ -17,6 +17,12 @@ if (cargo_grab){
         
         if (up_strong_pressed || up_down || is_special_pressed(DIR_UP) || is_attack_pressed(DIR_UP)){
             cargo_up = true;
+            cargo_down = false;
+        }
+        
+        if (down_strong_pressed || down_down || is_special_pressed(DIR_DOWN) || is_attack_pressed(DIR_DOWN)){
+            cargo_up = false;
+            cargo_down = true;
         }
         
         window = 1;

@@ -97,7 +97,13 @@ if attack == AT_DAIR {
 
 if attack == AT_NSPECIAL  {
 	if window == 1 && window_timer < 5{
-		state_timer = 0
+	    if left_down && !right_down {
+  	    	spr_dir = -1
+  	    }
+  	    
+  	    if !left_down && right_down {
+  	    	spr_dir = 1
+  	    }
 	}
 	
 	if window == 1 && window_timer == 1 {
@@ -123,6 +129,7 @@ if attack == AT_NSPECIAL  {
   	sound_play(asset_get("sfx_spin"),false,noone,1.4,0.6);
   	shake_camera(4,4)
   	move_cooldown[AT_NSPECIAL_2] = 5
+  	move_cooldown[AT_NSPECIAL] = 60
   }
 }
 
@@ -156,6 +163,7 @@ if attack == AT_NAIR{
 	}
 	
 	if window == 3 && ethrow != 0 && !hitpause {
+		y -= 50
 		set_attack(AT_DSPECIAL)
 		window = 2
 		window_timer = 0
@@ -317,11 +325,12 @@ if attack == AT_FSPECIAL{
 
 if attack == AT_DSPECIAL{
 	if window == 1 && window_timer == 1 {
+		set_window_value(AT_DSPECIAL, 2, AG_WINDOW_TYPE, 1);
 		ethrow = 0
 		if !free {
 			vsp = -14
 		} else {
-			vsp = -8
+			vsp = -9
 		}
 		sound_play(asset_get("sfx_bird_sidespecial_start"));
 	}
@@ -417,7 +426,7 @@ if attack == AT_DSPECIAL{
    	            	sound_play(asset_get("sfx_bird_sidespecial"));
    	            	sound_play(asset_get("sfx_bird_sidespecial_start"));
 		            sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,1,1.4);
-   	            	vsp = -8
+   	            	vsp = -10
    	            }
    	            
 
@@ -427,7 +436,7 @@ if attack == AT_DSPECIAL{
    	            	sound_play(asset_get("sfx_ice_shieldup"));
    	            	sound_play(asset_get("sfx_bird_sidespecial_start"));
 		            sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,1,1.4);
-   	            	vsp = -8
+   	            	vsp = -10
    	            }
 
    	            if window_timer == 5 && ethrow >= 1 {
@@ -436,7 +445,7 @@ if attack == AT_DSPECIAL{
    	            	sound_play(asset_get("sfx_ice_shieldup"));
    	            	sound_play(asset_get("sfx_bird_sidespecial_start"));
 		            sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,1,1.4);
-		            vsp = -8
+		            vsp = -10
    	           }	
    	    }
    }
@@ -444,12 +453,19 @@ if attack == AT_DSPECIAL{
 
 
 if attack == AT_USPECIAL{
+	move_cooldown[AT_DSPECIAL] = 0
 		set_attack_value(AT_NAIR, AG_CATEGORY, 2);
 	draw_indicator = false
 	hsp = 0
 	vsp = 0
-	if window != 1 {
-	state_timer = 0
+	if window == 2{
+	    if left_down && !right_down {
+	    	spr_dir = -1
+	    }
+	    
+	    if !left_down && right_down {
+	    	spr_dir = 1
+	    }
 	}
 	can_fast_fall = 0
 	
@@ -506,10 +522,12 @@ if attack == AT_USPECIAL{
     }
     
     if window == 3 && ethrow != 0 && !hitpause && !has_hit_player{
+    	y -= 50
 		set_attack(AT_DSPECIAL)
 		window = 2
 		window_timer = 0
 		vsp = -7
+		set_window_value(AT_DSPECIAL, 2, AG_WINDOW_TYPE, 7);
 	}
 }
 	

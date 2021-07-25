@@ -74,7 +74,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong")
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 3);
 //set_hitbox_value(AT_DSPECIAL, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_PARTICLE_NUM, 1)
-set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, plasma_t_small );
+set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, plasma_x_big );
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("empty_sprite") );
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1 );
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR,1 );
@@ -106,7 +106,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong")
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE_FLIPPER, 3);
 //set_hitbox_value(AT_DSPECIAL, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_PARTICLE_NUM, 1)
-set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, plasma_t_small );
+set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, plasma_x );
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("empty_sprite") );
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1 );
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_GROUND_BEHAVIOR,1 );

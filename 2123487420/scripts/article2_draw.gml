@@ -1,0 +1,1 @@
+draw_sprite_ext( sprite_get("rainbow"), obj_stage_main.yallgonmakemelosemycool, x+2, y-14, 576, 206, 0, c_white, 1);

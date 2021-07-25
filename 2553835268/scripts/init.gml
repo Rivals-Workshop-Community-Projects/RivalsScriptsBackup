@@ -1,0 +1,1 @@
+songpicked = 1 + current_second%40;

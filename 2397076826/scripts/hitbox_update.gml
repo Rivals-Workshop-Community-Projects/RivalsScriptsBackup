@@ -57,7 +57,7 @@ if hitbox_timer = 1 {
                   spawn_hit_fx (x+10*spr_dir, y - 20, 305)
                   sound_play(asset_get("sfx_holy_lightning")); 
                   sound_play(asset_get("sfx_clairen_hit_strong"))	
-                   create_hitbox (AT_NSPECIAL, 11, player_id.x, player_id.y - 30)
+                  // create_hitbox (AT_NSPECIAL, 11, player_id.x, player_id.y - 30)
                   clonetime = 0
 	    }
 	    
@@ -114,7 +114,7 @@ if y > (room_height/2 + 400) {
 			player_id.cloneout = 0
                  destroyed = 1
                  clonetime = 0
-                  create_hitbox (AT_NSPECIAL, 11, player_id.x, player_id.y - 30)
+                  // create_hitbox (AT_NSPECIAL, 11, player_id.x, player_id.y - 30)
                   sound_play(asset_get("sfx_holy_lightning")); 
                   sound_play(asset_get("sfx_clairen_hit_strong"))	
 }
@@ -123,6 +123,7 @@ if player_id.attacking and player_id.attack = AT_DSPECIAL && player_id.cloneout 
         
     
     if player_id.window == 1 && player_id.window_timer > 6{
+    	player_id.move_cooldown[AT_DSPECIAL] = 60
         spawn_hit_fx(player_id.x, player_id.y - 40, 305)
         player_id.window = 3
         player_id.window_timer = 0
@@ -163,6 +164,14 @@ if player_id.attacking and player_id.attack = AT_DSPECIAL && player_id.cloneout 
     		other.hsp /= 1.06
     		}
     	}
+    	
+    	if player_id.window == 3 && player_id.window_timer > 10 {
+    		destroyed = 1
+    		spawn_hit_fx(x, y , 305)
+    		sound_play(asset_get("sfx_bird_sidespecial_start")); 
+    		sound_play(asset_get("sfx_spin"));
+    		shake_camera(4,4)
+    	}
     }
     
 
@@ -198,6 +207,15 @@ if player_id.attacking and player_id.attack = AT_DSPECIAL && player_id.cloneout 
             create_hitbox(AT_NSPECIAL, 8, 0, 0)
         }
         }
+        
+        if (player_id.window == 6 or player_id.window == 8 ) && player_id.window_timer > 16 {
+    		destroyed = 1
+    		spawn_hit_fx(x, y , 305)
+    		sound_play(asset_get("sfx_bird_sidespecial_start")); 
+    		sound_play(asset_get("sfx_spin"));
+    		shake_camera(4,4)
+    	}
+    	
     }
     
     
@@ -205,11 +223,27 @@ if player_id.attacking and player_id.attack = AT_DSPECIAL && player_id.cloneout 
         vsp = player_id.vsp
         hsp /= 1.08
         spr_dir =  player_id.spr_dir
+         if player_id.window == 4  && player_id.window_timer > 16 {
+    		destroyed = 1
+    		spawn_hit_fx(x, y , 305)
+    		sound_play(asset_get("sfx_bird_sidespecial_start")); 
+    		sound_play(asset_get("sfx_spin")); 
+    		shake_camera(4,4)
+    	}
     }
 
     
         
     if player_id.attacking and player_id.attack = AT_FSPECIAL and player_id.hitpause == false {
+    	
+    	if player_id.window == 4  && player_id.window_timer > 16 {
+    		destroyed = 1
+    		spawn_hit_fx(x, y , 305)
+    		sound_play(asset_get("sfx_bird_sidespecial_start")); 
+    		sound_play(asset_get("sfx_spin")); 
+    		shake_camera(4,4)
+    	}
+    	
     	        spr_dir =  player_id.spr_dir
     if player_id.window == 3 {
     x += floor((player_id.x - x) / 20)

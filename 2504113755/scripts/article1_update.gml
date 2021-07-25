@@ -115,7 +115,6 @@ if (state_timer < 3) {
  		hsp *= 0.75
 	vsp *= 0.75
 			image_index = 7
-			player_id.num_articles -= 1
 			instance_destroy()
 			exit;
 
@@ -164,10 +163,12 @@ if hitstop <= 0 {
     if hit_lockout <= 0 
     
     with pHitBox {
-        if place_meeting(x,y,other) && "hitbox_has_hit_article" not in self   && ((player_id != other.player_id) || (player_id == other.player_id && !(attack == AT_FSTRONG && hbox_num == 2 ) && !(attack == AT_USPECIAL && hbox_num == 2 ))) && hit_priority > 0 {
+        if can_hit[other.player_id.player] && place_meeting(x,y,other) && "hitbox_has_hit_article" not in self   && ((player_id != other.player_id) || (player_id == other.player_id && !(attack == AT_FSTRONG && hbox_num == 2 ) && !(attack == AT_USPECIAL && hbox_num == 2 ))) && hit_priority > 0 {
         	
         	
-        	
+        	  	
+          		can_hit[other.player_id.player] = 1
+          		          		can_hit[other.player_id.player] = true
         	
             ds_list_add(other.colliding_hitboxes,id);
             
@@ -175,6 +176,14 @@ if hitstop <= 0 {
           //  damage = 0
           
           if ( player_id != other.player_id)  {
+        
+
+    	
+          		
+          		
+          	if (other.player_id.state != PS_DEAD && other.player_id.state != PS_RESPAWN && other.player_id.state != PS_SPAWN) {
+          		
+          		
             other.player_id.x = other.x
             other.player_id.y = other.y
             other.player_id.num_articles -= 1
@@ -191,7 +200,7 @@ if hitstop <= 0 {
             	
             }
             
-          }
+          } }
         //    player_id.state = PS_HITSTUN
           //  with (player_id) {
             	
@@ -201,7 +210,7 @@ if hitstop <= 0 {
         //    player_id.hitstop_full = 1
          //   player_id.blink_countdown = 0
            // player_id.has_hit_article = true
-           player_id.djumps = 0
+          // player_id.djumps = 0
         }
     } else if hit_lockout > 0 hit_lockout--;
         
@@ -362,6 +371,13 @@ if hitstop <= 0 {
     	          	
     	          }
             other.hit_lockout = 4;
+            
+            if (attack == AT_FSPECIAL) {
+            	
+            	            other.hit_lockout = 2;
+
+            	
+            }
             
             hitbox_has_hit_article = true;
             

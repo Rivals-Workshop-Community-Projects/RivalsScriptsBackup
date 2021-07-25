@@ -73,9 +73,21 @@ if (turbine_cont >= 70){
     set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 0);
     set_hitbox_value(AT_FSPECIAL, 4, HG_LIFETIME, 0);
     set_hitbox_value(AT_FSPECIAL, 5, HG_LIFETIME, 3);
-    set_hitbox_value(AT_FSPECIAL, 6, HG_LIFETIME, 10);
+    set_hitbox_value(AT_FSPECIAL, 6, HG_LIFETIME, 5);
 
 }
+}
+
+if (turbine_gust_cont != 0){
+	if (!hitpause){
+		turbine_gust_cont += .75;	
+	}
+	else {
+		turbine_gust_cont += .25;	
+	}
+	if (turbine_gust_cont >= 7){
+		turbine_gust_cont = 0;
+	}
 }
 
 //Stops charging
@@ -136,104 +148,15 @@ if (whirlwind2_hit == true){
 
 //Pulls the target into the Grab
 if (cargo_hit_right == true){
-	hit_player_obj.x = lerp(hit_player_obj.x, x+40*spr_dir, 0.8);
-	hit_player_obj.y = lerp(hit_player_obj.y, y, 0.8);
+	hit_player_obj.x = lerp(hit_player_obj.x, x+40*spr_dir, 0.6);
+	hit_player_obj.y = lerp(hit_player_obj.y, y, 0.6);
 }
 if (cargo_hit_left == true){
-	hit_player_obj.x = lerp(hit_player_obj.x, x+40*spr_dir, 0.8);
-	hit_player_obj.y = lerp(hit_player_obj.y, y, 0.8);
+	hit_player_obj.x = lerp(hit_player_obj.x, x+40*spr_dir, 0.6);
+	hit_player_obj.y = lerp(hit_player_obj.y, y, 0.6);
 }
 
-// Grabbing state
-if (cargo_grab == true && grab_timer >= 0){
-	can_wall_jump = false;
-	hit_player_obj.x = x+40*spr_dir;
-	hit_player_obj.y = y;
-	hit_player_obj.spr_dir = spr_dir;
-	hit_player_obj.hitstop = 1;
-	grab_timer --;
-	
-	hit_player_obj.depth = -6;
-	
-	initial_dash_speed  = 3;
-	dash_speed          = 3;
-	dash_turn_time      = 6;
-	depth = -1;
-	
-	if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
-		hit_player_obj.x = x-40*spr_dir;
-		hit_player_obj.y = y-30;
-	}
-		
-	if (state == PS_WALL_JUMP){
-		cargo_grab = false;
-	}
-	
-	
-	// Moving opponent when turning
-	if (state == PS_WALK_TURN || state == PS_DASH_TURN){
-		if (state_timer < 3){
-			hit_player_obj.x = x+40*spr_dir;
-			hit_player_obj.y = y-20;
-		}
-		if (state_timer == 3){
-			hit_player_obj.x = x;
-			hit_player_obj.y = y-20;
-		}
-		if (state_timer > 3){
-			hit_player_obj.x = x-40*spr_dir;
-			hit_player_obj.y = y-20;
-		}
-	}
-	
-	
-	djumps = 1;
-	
-	
-	if (state == PS_CROUCH){
-		state = PS_IDLE;
-	}
-	
-	// Moving opponent when getting ready to launch
-	if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
-		if (attack == AT_NSPECIAL_2){
-			if (window == 1){
-			hit_player_obj.x = x-40*spr_dir;
-			hit_player_obj.y = y-25;	
-		}
-			if (window == 2){
-			if (cargo_up == false){
-				hit_player_obj.x = x+60*spr_dir;
-				hit_player_obj.y = y;		
-			}
-			else {
-				hit_player_obj.x = x+1*spr_dir;
-				hit_player_obj.y = y-60;		
-			}
-		}	
-		}
-		if (attack == AT_TAUNT){
-			if (window == 1 && window_timer < 15){
-				hit_player_obj.x = x-30*spr_dir;
-				hit_player_obj.y = y-30;	
-			}
-			else {
-				hit_player_obj.x = x-40*spr_dir;
-				hit_player_obj.y = y-30;
-			}
-			
-		}
-		
-	}
-	if(has_hit_player &&  attack != AT_NSPECIAL){
-		cargo_grab = false;
-	}
-	
-	if (shield_pressed && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
-		cargo_grab = false;
-		move_cooldown[AT_NSPECIAL] = 60;
-	}
-}
+
 
 // Grab timer ended
 if (grab_timer < 0){

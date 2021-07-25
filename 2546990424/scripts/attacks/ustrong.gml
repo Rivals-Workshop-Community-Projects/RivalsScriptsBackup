@@ -11,14 +11,14 @@ set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX_FRAME, 9);
+set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX_FRAME, 10);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
 
 set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 5);
-set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_USTRONG, 3, AG_WINDOW_SFX, asset_get("sfx_bird_nspecial"));
+//set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_SFX, 1);
+//set_window_value(AT_USTRONG, 3, AG_WINDOW_SFX, asset_get("sfx_bird_nspecial"));
 
 set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAMES, 6);

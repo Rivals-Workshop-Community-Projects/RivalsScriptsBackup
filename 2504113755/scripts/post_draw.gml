@@ -6,7 +6,7 @@ draw_debug_text( x, y + 40, "index" + string( sprite_index ) + "  swords:" + str
 //draw_debug_text( x, y + 55, " rvrs:" + string(shouldreverse) );
 */
 
-draw_debug_text( x, y + 40, string(hsp));
+//draw_debug_text( x, y + 40, string(hsp));
 
 
 
@@ -32,13 +32,26 @@ if (blink_state_timer < blink_start_frame) {
 	 gpu_set_fog(0, c_white, 0, 0);
 
 }
+if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)) {
+	
+
+shader_start()
+if (image_index == 3 || image_index == 5 || image_index == 7 || image_index == 9 || image_index == 11) {
+fspecial_sprite_index = sprite_get( "fspecial_afterimage" )
+
+if (window_timer == 0) {
+x_blah = x } else {
+
+	
+}
 
 
+                draw_sprite_ext(fspecial_sprite_index, image_index, x_blah, y, 2*spr_dir, 2, 1, tempColour, 1);
 
 
-
-
-
+}
+shader_end()
+}
 
 
 

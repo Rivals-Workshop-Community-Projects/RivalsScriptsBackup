@@ -1,3 +1,4 @@
+dairtimer = 0;
 charge_max = 100;
 charge = charge_max;
 charge_drain_rate = 0.05;

@@ -24,7 +24,7 @@ set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 
-set_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 8);
 
@@ -45,6 +45,8 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 10);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_LOCKOUT, 3);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, 9);
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 2);
@@ -61,16 +63,18 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_NSPECIAL, 2, HG_EXTRA_HITPAUSE, 10);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_LOCKOUT, 3);
+set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_GROUP, 9);
 
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 5);
-set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 2);
+set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 3);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_X, 34);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_Y, -45);
 set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, 93);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, 60);
-set_hitbox_value(AT_NSPECIAL, 3, HG_PRIORITY, 5);
+set_hitbox_value(AT_NSPECIAL, 3, HG_PRIORITY, 9);
 set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE, 60);
 set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, 1);
@@ -78,3 +82,4 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_clairen_nspecial_grab_success"));
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_LOCKOUT, 15);

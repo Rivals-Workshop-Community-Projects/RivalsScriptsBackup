@@ -46,12 +46,17 @@ if !is_nana {
 	case AT_USPECIAL:
 		can_wall_jump = true
 		if window == 1 {
-			uspecialSpin = 5
+			if free {
+			set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 6); //2
+			} else {
+			set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 2); //2
+			}
+			uspecialSpin = 2 //5
 		}
 		if window == 2 {
 			if !hitpause {
 				if free {
-					vsp = -2
+					vsp = -4 // -2 on 5
 					set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 7);
 				}  else {
 					hsp = spr_dir * 2

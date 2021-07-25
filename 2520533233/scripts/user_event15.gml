@@ -542,6 +542,22 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	 initPatch("1.1.7", "16, July 2021");
+	 initPatchWords("v1.1.7 Patchnotes:
+
+Dair no longer breaks uspecial rock when landing on it.
+
+Made it so weight correction during stun is applied through multihits. (Characters with multihit strongs would not recieve proper weight correction due to it expiring after the first hit when punishing install stun.)
+Hitting Tenshi while stunned extends the weight correction by 15 frames.
+
+Fixed muno phone attack names. (Hitboxes on strongs other than dstrong are still wrong.)
+
+Fixed a bug where if the player used Ustrong while the rock was on cooldown they could not use nspecial to summon the rock until using an aerial attack. (Don't ask why.)");
+	 initPatch("1.1.6", "12, July 2021");
+	 initPatchWords("1.1.6
+	 Install Themes now Adjust with Local Volume.
+	 Lightweight mode nolonger mutes the install theme.");
+	 
 	 initPatch("1.1.5", "9, July 2021");
 	 initPatchWords("1.1.5
 	 Taking back some power from install today.

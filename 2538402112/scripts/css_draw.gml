@@ -4,7 +4,7 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-patch_ver = "1.3";
+patch_ver = "1.4";
 patch_day = "N";
 patch_month = "A";
 
@@ -44,9 +44,9 @@ alt_name[9]  = "Virizion";
 alt_name[10] = "Hydregion";
 alt_name[11] = "Nuzleaf";
 alt_name[12] = "Krookodile";
-alt_name[13] = "Shiny";
-alt_name[14] = "Abyss";
-alt_name[15] = "Early Access";
+alt_name[15] = "Shiny";
+alt_name[13] = "Abyss";
+alt_name[14] = "Early Access";
 // "Marshtomp"
 // "Combusken"
  
@@ -86,10 +86,31 @@ draw_set_alpha(1)
 
 shader_end();
 
-if (get_player_color(player) == 14)
-	draw_sprite_ext(sprite_get("css"), 0, x+176, y+110, 2, 2, 0, c_white, 1);
-if (get_player_color(player) == 15)
-	draw_sprite_ext(sprite_get("css"), 1, x+176, y+110, 2, 2, 0, c_white, 1);
+switch (get_player_color(player))
+{
+	// case 1:
+	// case 2:
+	// case 3:
+	// case 4:
+	// case 5:
+	// case 6:
+	// case 7:
+	// case 8:
+	// case 9:
+	// case 10:
+	// case 11:
+	// case 12:
+	case 13:
+		draw_sprite_ext(sprite_get("css_icons"), 5, x+176, y+110, 2, 2, 0, c_white, 1);
+		break;
+	case 14:
+		draw_sprite_ext(sprite_get("css_icons"), 6, x+176, y+110, 2, 2, 0, c_white, 1);
+		break;
+}
+// if (get_player_color(player) == 14)
+// 	draw_sprite_ext(sprite_get("css_icons"), 5, x+176, y+110, 2, 2, 0, c_white, 1);
+// if (get_player_color(player) == 15)
+// 	draw_sprite_ext(sprite_get("css_icons"), 6, x+176, y+110, 2, 2, 0, c_white, 1);
  
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
  

@@ -1,0 +1,1 @@
+bar_alpha = 0;

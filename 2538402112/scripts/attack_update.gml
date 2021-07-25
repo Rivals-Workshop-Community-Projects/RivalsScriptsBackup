@@ -1,7 +1,7 @@
 // attack_update
 
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_2 || attack == AT_EXTRA_1 || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (attack == AT_NSPECIAL || attack == AT_EXTRA_1 || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
 }
 
@@ -9,33 +9,32 @@ switch(attack)
 {
     case AT_JAB:
         if (window == 4 && window_timer == 1)
-            hsp += (3*spr_dir);
+            hsp += (2*spr_dir);
         else if (window == 7 && window_timer == 1)
             hsp += (6*spr_dir);
-        break;
-    case AT_UTILT:
-        if (window == 1 && window_timer < get_window_value(attack, window, AG_WINDOW_LENGTH)){
-            reset_hitbox_value(AT_UTILT, 1, HG_PROJECTILE_HSPEED);
-            reset_hitbox_value(AT_UTILT, 1, HG_PROJECTILE_VSPEED);
-            if (up_down && attack_down){
-                set_hitbox_value(AT_UTILT, 1, HG_PROJECTILE_HSPEED, 2.5);
-                set_hitbox_value(AT_UTILT, 1, HG_PROJECTILE_VSPEED, -10);
-            }
-        }
         break;
     case AT_DATTACK:
         can_move = false
         can_fast_fall = false
-        if (window == 1 && window_timer < get_window_value(attack, window, AG_WINDOW_LENGTH)-1) || window >= 3{
-            set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 0);
+        set_attack_value(AT_DATTACK, AG_CATEGORY, 2);
+        set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 1)
+        
+        if (window == 1){
+            if window_timer < get_window_value(attack, window, AG_WINDOW_LENGTH)-1{
+                set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 0);
+                set_attack_value(AT_DATTACK, AG_CATEGORY, 0);
+            }
+            else if window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) spawn_base_dust(x,y, "jump")
         }
-        else set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 1);
+        
+        if window >= 3 set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 0);
         
         if (window == 3 && !free){
             window = 4;
             window_timer = 0;
             destroy_hitboxes();
             spawn_hit_fx( x+(30*spr_dir), y, 193 );
+            spawn_base_dust(x+(30*spr_dir),y, "land");
         }
         break;
     case AT_USTRONG:
@@ -61,8 +60,10 @@ switch(attack)
         break;
     case AT_EXTRA_1:
         if (window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-            grov_current_nspecial = 0;
-            move_cooldown[AT_NSPECIAL] = 60;
+            if !has_rune("M"){
+                grov_current_nspecial = 0;
+                move_cooldown[AT_NSPECIAL] = 60;
+            }
             var boom = instance_create(x+(25*spr_dir),y-39,"obj_article2")
             boom.effect_num = 1
             boom.sprite_index = sprite_get("blastseed_explosion");
@@ -110,7 +111,7 @@ switch(attack)
             var pounce_dir = point_direction(x, y, grov_pouncex, grov_pouncey);
             hsp = lengthdir_x(pounce_speed,pounce_dir);
             vsp = lengthdir_y(pounce_speed,pounce_dir);
-            if (point_distance(x, y, grov_pouncex, grov_pouncey) < 96){
+            if (point_distance(x, y, grov_pouncex, grov_pouncey) < 96) || window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH){
                 if !free{
                     set_state(PS_IDLE);
                     hsp = 5*spr_dir;
@@ -129,7 +130,7 @@ switch(attack)
         else set_attack_value(AT_FSPECIAL,AG_OFF_LEDGE,0)
         break;
     case AT_USPECIAL:
-        can_move = false
+        // if window == 1 can_move = false
         can_fast_fall = false
         if (window == 2 && window_timer == 1) move_cooldown[AT_USPECIAL] = 9999;
         if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
@@ -155,9 +156,9 @@ switch(attack)
                 sound_play(asset_get("sfx_spin_longer"))
                 sound_play(asset_get("sfx_spin"))
             }
-            if !free user_event(0)
+            if !free downb_article_check()
         }
-        else grov_dspecial_loops = 0
+        else grov_dspecial_loops = 0    
         
         if (window == 3 && window_timer == 0) destroy_hitboxes();
         
@@ -178,12 +179,12 @@ switch(attack)
                 can_wall_jump = true
                 // spr_dir = grov_digdir
                 if grov_digdir == 1 || grov_digdir == -1{
-                    hsp = 9 * spr_dir;
-                    vsp = -7;
+                    hsp = 8.5 * spr_dir;
+                    vsp = -5.5;
                 }
                 else{
-                    hsp = 7 * spr_dir;
-                    vsp = -10;
+                    hsp = 5.5 * spr_dir;
+                    vsp = -9;
                 }
                 move_cooldown[AT_DSPECIAL] = 9999;
             }
@@ -191,7 +192,7 @@ switch(attack)
         
         if (window == 6 && window_timer > 5){
             can_move = true
-            if !free user_event(0)
+            if !free downb_article_check()
         }
         
         //RUNES
@@ -205,7 +206,7 @@ switch(attack)
             switch(window)
             {
                 case 1:
-                    if !free user_event(0)
+                    if !free downb_article_check()
                     else{
                         window = 2;
                         window_timer = 0;
@@ -262,4 +263,57 @@ switch(attack)
             }
         }
         break;
+}
+
+//Thanks
+#define spawn_base_dust
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dfa = 0; //draw_angle value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
+
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = dfa;
+return newdust;
+
+#define downb_article_check
+window = 3
+window_timer = 0
+
+with asset_get("obj_article_solid"){
+    if collision_line(other.x-19,other.y+1,other.x+18,other.y+1,self,false,false) != noone{
+        other.window = 7;
+    }
+}
+with asset_get("pillar_obj"){
+    if collision_line(other.x-19,other.y+1,other.x+18,other.y+1,self,false,false) != noone{
+        other.window = 7;
+    }
+}
+with asset_get("rock_obj"){
+    if collision_line(other.x-19,other.y+1,other.x+18,other.y+1,self,false,false) != noone{
+        other.window = 7;
+    }
 }

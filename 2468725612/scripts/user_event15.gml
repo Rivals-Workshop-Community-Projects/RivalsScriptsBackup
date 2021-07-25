@@ -458,6 +458,17 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.33", "23 July, 2021");
+	initPatchWords_ext("- Fixed a bug where the hologram would be in 'hitstun' even when hit by moves that doesn't deal Knockback", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- Fixed a bug where Buffy could have her hat on the field and on her head", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- Added a 'shockwave' hitbox for the DStrong when Buffy shoots the gun", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- Changed the timing on the SFX on DStrong", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- Increased the hitbox size on NAir (80 -> 90)", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- DSpecial doesn't travel as far anymore (4 -> 3.5)", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- DSpecial Air has less KBS on the spike hitbox (.6 -> .5)", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- Added a couple more recolors", fa_left, c_white, 0, 0);
+	initPatchWords_ext("- Visual changes might come in the future, alongside some compatibility stuff", fa_left, c_white, 0, 0);
+
 	initPatch("1.32", "14 May, 2021");
 	initPatchWords_ext("- Fixed a bug with commanding the hologram when it gets hit", fa_left, c_white, 0, 0);
 	initPatchWords_ext("- Fixed a bug with the hat despawning when it's in certain positions in ''giant'' stages", fa_left, c_white, 0, 0);

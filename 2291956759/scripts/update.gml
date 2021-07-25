@@ -248,9 +248,21 @@ if hitpause {
 if !free or state == PS_WALL_JUMP {
 	move_cooldown[AT_USPECIAL] = 0
 }
-if hit_player_obj.state_cat == SC_HITSTUN && hit_player_obj.free && move_cooldown[AT_EXTRA_1] = 0 && ink < 300 {
+if ink < 300 {
+	
 	if get_gameplay_time() % 8 == 0 {
-		create_hitbox (AT_NSPECIAL, 8, floor(hit_player_obj.x), floor(hit_player_obj.y - 40) )
+		with oPlayer {
+			if player != other.player {
+			
+			    if state_cat == SC_HITSTUN && hit_player_obj = other {	
+			    	with other {
+			         create_hitbox (AT_NSPECIAL, 8, floor(other.x), floor(other.y - 40) )
+			    	}
+			    }
+			
+			}
+		}
+		
 	}
 }
 

@@ -10,10 +10,12 @@ set_attack_value(AT_DSPECIAL_AIR, AG_USES_CUSTOM_GRAVITY, 1);
 
 //1: startup
 set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_TYPE, 0);
-set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 11);
+set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.65);
-
+set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_HAS_SFX, 1); //play sound.
+set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_SFX, asset_get("sfx_syl_ustrong_part1"));
+set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME, 1);
 
 //2: upward grab
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_TYPE, 0);
@@ -423,8 +425,8 @@ set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_HITBOX_GROUP, 1);
 //shape
 set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_HITBOX_X, -3);
-set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_HITBOX_Y, -66);
-set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_WIDTH, 40);
+set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_HITBOX_Y, -60);
+set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_WIDTH, 36);
 set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_HEIGHT, 36);
 set_hitbox_value(AT_DSPECIAL_AIR, 9, HG_SHAPE, 0); //circle
 //knockback

@@ -379,6 +379,10 @@ sfx_pho_select2 = sound_get("_pho_select2");
 user_event(14);
 user_event(1);
 
+// phone_practice = 0;
+// phone_cheats[cheat_hide_hud] = 1;
+codec_video = 0;
+
 
 
 #define cgr(col)

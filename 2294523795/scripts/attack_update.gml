@@ -485,7 +485,7 @@ if attack == AT_USPECIAL {
     if window == 5 && state_timer > 0 && (!special_down or scharge >= 180) {
         if scharge < 60 {
             set_num_hitboxes(AT_USPECIAL, 2);
-            vsp = -16
+            vsp = -12
         }
         if scharge >= 60 && scharge < 120 {
             set_num_hitboxes(AT_USPECIAL, 3);

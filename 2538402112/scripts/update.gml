@@ -4,6 +4,7 @@ if (!free || (free && (state = PS_WALL_JUMP || state = PS_WALL_TECH || state = P
     move_cooldown[AT_USPECIAL] = 0
     move_cooldown[AT_DSPECIAL] = 0
     grov_fspecial_airuse = false
+    grov_fspecial_cooldown = 0
 }
 
 if grov_fspecial_cooldown > 0 grov_fspecial_cooldown--
@@ -49,4 +50,25 @@ if (amber_startHug == true) //Amber will set this bool to true when this player 
     oPlayerHugAmberState = 2;
     //Set this bool back to false so that this doesn't loop
     amber_startHug = false;
+}
+
+// Hikaru test
+with asset_get("oPlayer")
+{
+    if url == 1877715009{
+        if grov_hikaru_tauntglow == 0 grov_hikaru_tauntglow = other.hikaru_gearglow
+        if (counterid == other && aura && !beast_deity){
+            if grov_hikaru == false{
+                grov_hikaru = true
+                theirAnim = other.hikaru_walkclone
+                theirAnimSpeed = other.walk_anim_speed;
+                transProj = true;
+                
+                abyssHime_deathspr = theirAnim;
+                set_attack_value(AT_EXTRA_1, AG_SPRITE, other.hikaru_dairclone);
+                set_attack_value(AT_TAUNT_2, AG_SPRITE, other.hikaru_tauntclone);
+            }
+        }
+        else grov_hikaru = false
+    }
 }

@@ -59,6 +59,7 @@ set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_BAIR, 1, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_BAIR, 1,  HG_VISUAL_EFFECT_Y_OFFSET, 1);
 
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 4);

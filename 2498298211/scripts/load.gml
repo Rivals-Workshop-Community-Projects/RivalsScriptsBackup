@@ -1,0 +1,1 @@
+sprite_change_offset("plat", 48, 0);

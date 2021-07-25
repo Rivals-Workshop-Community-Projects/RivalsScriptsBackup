@@ -119,43 +119,43 @@ if ("phone_inited" in self && phone_inited){
 			// Set the collision of the solid sprites to precise
 			sprite_change_collision_mask("btt_solid",true, 1, 0, 0, 0, 0, 0 );  
 			room_add(1,[
-			    [ // Each Cell
-			        [0,0], // Cell Coordinates
-			        [
-			        	// Targets
-				        [10, 4, 55, 0, -5, [0, 0, 32, [[0,0],[0,-3]], 0, 0, 0, 0], [0]],
-				        [10, 40, 30.5, 0, -5, [1, 0, 60, [[-10,0],[5,0]], 0, 0, 0, 0], [0]],
-				        [10, 87, 46, 0, -5, [2, 0, 0, 0, 0, 0, 0, 0], [0]],
-				        [10, 52, 44, 0, -5, [3, 0, 0, 0, 0, 0, 0, 0], [0]],
-				        [10, 55, 75, 0, -5, [3, 0, 0, 0, 0, 0, 0, 0], [0]],
-				        [10, 125, 55, 0, -5, [4, 0, 32, [[0,0],[0,-1]], 0, 0, 0, 0], [0]],
-				        // Solid Ground
-				    	[1, 2, 2, 2, 0, [sprite_get("btt_solid"), 0, 0, 0, 0, 0, 0, 0], [0]],
-				    	// Plats
-				    	[1, 46, 49, 1, 0, [sprite_get("btt_plat_64"), 0, 0, 0, 0, 0, 0, 0], [0]],
-				    	[1, 64, 71, 1, 0, [sprite_get("btt_plat_64"), 0, 0, 0, 0, 0, 0, 0], [0]]
-			            ]
-			        ],
-			    // Blastzones
-			    [ // Each Cell
-			        [0,1], // Cell Coordinates
-			        [
-			            [4, 0, 32, 0, 0, [4, 0, 0, 0, 0, 2608, 20, 0], [0,0]]
-			            ]
-			        ],
-			    [
-			        [1,1],
-			        [
-			        	[4, 0, 32, 0, 0, [4, 0, 0, 0, 0, 2608, 20, 0], [0,0]]
-			            ]
-			        ],
-			    [ // Each Cell
-			        [-1,1], // Cell Coordinates
-			        [
-			        	[4, 0, 32, 0, 0, [4, 0, 0, 0, 0, 2608, 20, 0], [0,0]]
-			            ]
-			        ]
-			    ]);
+				[ // Each Cell
+					[0,0], // Cell Coordinates
+					[
+						// Targets
+						[10, 4, 55, 0, -5, [0, 0, 32, [[0,0],[0,-3]], 0, 0, 0, 0], [0]],
+						[10, 40, 30.5, 0, -5, [1, 0, 60, [[-10,0],[5,0]], 0, 0, 0, 0], [0]],
+						[10, 87, 46, 0, -5, [2, 0, 0, 0, 0, 0, 0, 0], [0]],
+						[10, 52, 44, 0, -5, [3, 0, 0, 0, 0, 0, 0, 0], [0]],
+						[10, 55, 75, 0, -5, [3, 0, 0, 0, 0, 0, 0, 0], [0]],
+						[10, 125, 55, 0, -5, [4, 0, 32, [[0,0],[0,-1]], 0, 0, 0, 0], [0]],
+						// Solid Ground
+						[1, 2, 2, 2, 0, [sprite_get("btt_solid"), 0, 0, 0, 0, 0, 0, 0], [0]],
+						// Plats
+						[1, 46, 49, 1, 0, [sprite_get("btt_plat_64"), 0, 0, 0, 0, 0, 0, 0], [0]],
+						[1, 64, 71, 1, 0, [sprite_get("btt_plat_64"), 0, 0, 0, 0, 0, 0, 0], [0]]
+						]
+					],
+				// Blastzones
+				[ // Each Cell
+					[0,1], // Cell Coordinates
+					[
+						[4, 0, 32, 0, 0, [4, 0, 0, 0, 0, 2608, 20, 0], [0,0]]
+						]
+					],
+				[
+					[1,1],
+					[
+						[4, 0, 32, 0, 0, [4, 0, 0, 0, 0, 2608, 20, 0], [0,0]]
+						]
+					],
+				[ // Each Cell
+					[-1,1], // Cell Coordinates
+					[
+						[4, 0, 32, 0, 0, [4, 0, 0, 0, 0, 2608, 20, 0], [0,0]]
+						]
+					]
+				]);
 		}
 	}
 	
@@ -165,22 +165,22 @@ if ("phone_inited" in self && phone_inited){
 	
 	if pho_has_amber_love{
 		if amber_startHug{ // Amber will set this bool to true when this player accepts the hug
-		    with amber_herObj{ // Access Amber's player object and set the values
-		        // Set the window values for Amber's hugging. DO NOT change Amber's sprites
-		        // in the attack_values
-		        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
-		        // etc....
+			with amber_herObj{ // Access Amber's player object and set the values
+				// Set the window values for Amber's hugging. DO NOT change Amber's sprites
+				// in the attack_values
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
+				// etc....
 		
-		        // Important. Puts Amber in startup hug state (2).
-		        // Editing this variable not recommended
-		        amberHugState = 2; 
-		    }
-		    // Important. Puts this character in startup hug state (2).
-		    // Editing this variable not recommended
-		    oPlayerHugAmberState = 2;
-		    
-		    // Set this bool back to false so that this doesn't loop
-		    amber_startHug = false;
+				// Important. Puts Amber in startup hug state (2).
+				// Editing this variable not recommended
+				amberHugState = 2; 
+			}
+			// Important. Puts this character in startup hug state (2).
+			// Editing this variable not recommended
+			oPlayerHugAmberState = 2;
+			
+			// Set this bool back to false so that this doesn't loop
+			amber_startHug = false;
 		}
 	}
 	
@@ -409,6 +409,29 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	
+	/*
+	lightning transform IASA
+	no transcendent
+	bair kbg
+	nspecial fix
+	cloud lose on get hit
+	*/
+	
+	initPatch("1.12", "20 July, 2021");
+	initPatchWords("Clouds - Nerfs, Buffs");
+	initPatchWords_ext("You now lose a cloud when getting hit with a hitbox that has knockback growth, or when getting parried.
+	The animation when entering lightning state can now be canceled after a few frames.", fa_left, c_gray, 1, 0);
+	initPatchWords("NSpecial - Bugfixes");
+	initPatchWords_ext("Added code to make the sax hit ignore crouch-canceling.
+	Improved code to manipulate the enemy's horizontal velocity.
+	Drift DI multiplier of sax hit 1 --> 0.001. (trumpet hit still has normal drift)
+	Trumpet hitbox moved slightly back.", fa_left, c_gray, 1, 0);
+	initPatchWords("UStrong, DStrong - Buffs");
+	initPatchWords_ext("Projectiles are no longer transcendent.", fa_left, c_gray, 1, 0);
+	initPatchWords("BAir - Adjustments");
+	initPatchWords_ext("Angle 135 --> 140.
+	Knockback growth 0.6 --> 0.8.", fa_left, c_gray, 1, 0);
 	
 	initPatch("1.11", "03 March, 2021");
 	initPatchWords("NSpecial - Nerfs");
@@ -700,7 +723,7 @@ if pho_has_trum_codec{
 	 * GIM_CLONE 			display 2 speakers
 	 * GIM_LAUGH_TRACK		play the funny haha sound
 	 * GIM_SKIP   			advance the page immediately when the text finishes
-	 * GIM_DIE    			die
+	 * GIM_DIE				die
 	 */
 	
 	trummel_codecs = [];
@@ -1278,11 +1301,11 @@ i++;
 with obj_stage_article if num == 5 {
 	var _room_id_ind = array_find_index(array_room_ID,_room_id);
 	if _room_id_ind == - 1 {
-	    if debug print_debug("[RM] Adding... "+string(_room_id));
-	    array_push(array_room_data,room_data);
-	    array_push(array_room_ID,_room_id);
+		if debug print_debug("[RM] Adding... "+string(_room_id));
+		array_push(array_room_data,room_data);
+		array_push(array_room_ID,_room_id);
 	} else {
-	    array_room_data[_room_id_ind] = room_data;
-	    array_room_ID[_room_id_ind] = _room_id;
+		array_room_data[_room_id_ind] = room_data;
+		array_room_ID[_room_id_ind] = _room_id;
 	}
 }

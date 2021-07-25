@@ -1,0 +1,1 @@
+disappearFX = hit_fx_create(sprite_get("dissipatearrow"), 8);

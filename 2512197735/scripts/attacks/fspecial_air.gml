@@ -16,7 +16,7 @@ set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_HSPEED, 8);
+set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_HSPEED, 7);
 
 
 set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_TYPE, 1);
@@ -26,10 +26,12 @@ set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 
 
 
+
 set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_ANIM_FRAME_START, 8);
+set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_HAS_WHIFFLAG, 5);
 
 set_num_hitboxes(AT_FSPECIAL_AIR, 1);
 
@@ -37,11 +39,11 @@ set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_WINDOW, 1);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_LIFETIME, 29);
-set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_WINDOW_CREATION_FRAME, 5);
-set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HITBOX_X, 28);
-set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HITBOX_Y, -34);
-set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_WIDTH, 57);
-set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HEIGHT, 48);
+set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_WINDOW_CREATION_FRAME, 9);
+set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HITBOX_X, 13);
+set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HITBOX_Y, -26);
+set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_WIDTH, 48);
+set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HEIGHT, 38);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_ANGLE, 50);

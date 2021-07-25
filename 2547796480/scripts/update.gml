@@ -216,7 +216,7 @@ if ANtimeslow > 1 {
     	spawn_hit_fx(other.x - 10 + random_func(1,20,true),other.y - 50 + random_func(2,20,true), kFinal)
     	spawn_hit_fx(other.x - 10 + random_func(3,20,true),other.y - 50 + random_func(4,20,true), 305)
     	}	
-    	take_damage(player,-1,1)
+    	take_damage(player,-1,2)
     	shake_camera(4,4)
 	   
 	}
@@ -228,7 +228,7 @@ if ANtimeslow > 1 {
     	spawn_hit_fx(other.x - 10 + random_func(1,20,true),other.y - 50 + random_func(2,20,true), kFinal)
     	spawn_hit_fx(other.x - 10 + random_func(3,20,true),other.y - 50 + random_func(4,20,true), 305)
     	}	
-    	take_damage(player,-1,1)
+    	take_damage(player,-1,2)
     	shake_camera(4,4)
 	}
 	
@@ -239,7 +239,7 @@ if ANtimeslow > 1 {
     	spawn_hit_fx(other.x - 10 + random_func(1,20,true),other.y - 50 + random_func(2,20,true), kFinal)
     	spawn_hit_fx(other.x - 10 + random_func(3,20,true),other.y - 50 + random_func(4,20,true), 305)
     	}	
-    	take_damage(player,-1,1)
+    	take_damage(player,-1,2)
     	shake_camera(4,4)
 	}
 	
@@ -250,7 +250,7 @@ if ANtimeslow > 1 {
     	spawn_hit_fx(other.x - 10 + random_func(1,20,true),other.y - 50 + random_func(2,20,true), kFinal)
     	spawn_hit_fx(other.x - 10 + random_func(3,20,true),other.y - 50 + random_func(4,20,true), 305)
     	}
-    	take_damage(player,-1,1)
+    	take_damage(player,-1,2)
     	shake_camera(4,4)
 	}
 	
@@ -259,7 +259,7 @@ if ANtimeslow > 1 {
 		sound_play(sound_get("slice")); 	
     	spawn_hit_fx(other.x - 10 + random_func(1,20,true),other.y - 50 + random_func(2,20,true), 305)
     	}
-    	take_damage(player,-1,1)
+    	take_damage(player,-1,2)
     	shake_camera(4,4)
 	}
 	
@@ -291,9 +291,7 @@ if ANtimeslow == 1 {
 
 }
 
-if ANwounded > 0 {
-	ANwounded = 0
-}
+
 
 if batt > 5 {
     batt = 5

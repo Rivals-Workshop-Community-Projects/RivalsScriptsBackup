@@ -96,7 +96,7 @@ with(oPlayer)
         {
             
         }
-        else
+        else if (free)
         {
             var max_s = (-15 - has_rune("F") * 8) * (gravity_speed + 0.3)
             

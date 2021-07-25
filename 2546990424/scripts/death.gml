@@ -1,9 +1,9 @@
 //Destroys the Whirlwind hitbox
 with (asset_get("pHitBox")){
-    if (attack == AT_DSPECIAL && hbox_num == 1){
+    if (attack == AT_DSPECIAL && hbox_num == 1 && player == other.player){
         destroyed = true;
     }
-    if (attack == AT_DSPECIAL && hbox_num == 10){
+    if (attack == AT_DSPECIAL && hbox_num == 10 && player == other.player){
         destroyed = true;
     }
 }

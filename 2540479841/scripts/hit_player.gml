@@ -11,7 +11,7 @@ if (attack == AT_NSPECIAL){
 }
 
 if (attack == AT_NSPECIAL){
-    waft_timer = waft_timer + 60;
+    waft_timer = waft_timer + 300;
 }
 
 //Shoulder Bash Shenanigans

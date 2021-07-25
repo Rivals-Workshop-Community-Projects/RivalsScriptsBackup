@@ -31,7 +31,7 @@ if(attack == AT_NSPECIAL && hbox_num == 1)
     {
         parrybox.x = x;
         parrybox.y = y;
-        parrybox.transcendent = false;
+        parrybox.transcendent = transcendent;
         parrybox.hitbox_timer = hitbox_timer;
     }
     else if(!was_parried)

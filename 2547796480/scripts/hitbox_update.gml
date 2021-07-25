@@ -67,6 +67,7 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
     }
 
     if hitbox_timer == 20 {
+    	enemies = 0
     	spawn_hit_fx(x,y,timeS2)
         shsp = hsp*5
         svsp = vsp*5
@@ -111,6 +112,7 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
     	player = orig_player
     	hit_priority = 9
     	spawn_hit_fx(x,y,timeS2)
+    	for (var i = 1; i < 20; i++) can_hit[i] = true
     }  
     
     with (pHitBox) {
@@ -154,11 +156,12 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
     if nearbyhitbox != noone && type == 1 && hitpause != 1.1412 && other.hitbox_timer > 0{
 			
           with other {
+          	enemies = 0
           	spawn_hit_fx(x,y,timeS2)
           	hit_priority = 10
 			for (var i = 1; i < 20; i++) can_hit[i] = true
 		    player = other.player
-            hitbox_timer = -120
+            hitbox_timer = -999
             sound_stop(asset_get("sfx_shovel_hit_light1"))
 		    sound_play(asset_get("sfx_shovel_hit_light1"),false,noone,1,1.4)
             shake_camera(4, 4)

@@ -3,7 +3,7 @@ crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
-if (get_player_color(player) == 11){
+if (get_player_color(player) == 14){
     log_alt = true
 } else {
     log_alt = false

@@ -9,6 +9,22 @@ if (place_meeting(x, y, asset_get("plasma_field_obj")) && state_timer > 0) {
 	state_timer = -40;
 }
 
+with (asset_get("pHitBox")){
+	if (damage > 0 && kb_value > 0 && hit_priority > 0 && other.state_timer > 0){
+		if (place_meeting(x,y,other.id) && other.player != player){
+			if !(get_player_team(other.player_id.player ) == get_player_team( player_id.player )){
+					if (other.whirlwind_second == false){
+						other.whirlwind_active_hitbox.destroyed = true;	
+					}
+					else {
+						other.whirlwind2_active_hitbox.destroyed = true;	
+					}
+				other.state_timer = -24;
+		    }
+		}
+	}
+}
+
 //Creates the initial hitbox after 20 frames
 if (state_timer == 20){
 	if (whirlwind_second == false){

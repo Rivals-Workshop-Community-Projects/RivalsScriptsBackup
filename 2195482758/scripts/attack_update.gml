@@ -27,6 +27,7 @@ if (attack == AT_NSPECIAL){
 		set_attack_value(AT_NSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("nspecial_hurt_air"));
 		reset_hitbox_value(AT_NSPECIAL,1,HG_PROJECTILE_AIR_FRICTION);
 		reset_hitbox_value(AT_NSPECIAL,1,HG_PROJECTILE_GRAVITY);
+		reset_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_GROUND_BEHAVIOR);
 		
 		with(pHurtBox) 
 			if(other.player == player && !other.free) sprite_index = sprite_get("nspecial_hurt");
@@ -139,10 +140,24 @@ if (attack == AT_NSPECIAL){
 		window_timer = fc_max_hold_time;
 		fc_backspin = !(left_strong_pressed || right_strong_pressed || up_strong_pressed || down_strong_pressed);
 		fc_bunt = left_strong_pressed || right_strong_pressed || up_strong_pressed || down_strong_pressed;
+		
+		// Bunt attributes
+		if(fc_bunt)
+		{
+			set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_bunt"));
+			set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_bunt_air"));
+			set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_bunt_hurt"));
+			set_attack_value(AT_NSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("nspecial_bunt_hurt_air"));
+			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.7);
+			
+			with(pHurtBox) 
+				if(other.player == player && !other.free) sprite_index = sprite_get("nspecial_bunt_hurt");
+				else if(other.player == player && other.free) sprite_index = sprite_get("nspecial_bunt_hurt_air");	
+		}
 	}
 	
 	// Spin attributes
-	if(window < 3 && (attack_down || left_strong_pressed || right_strong_pressed || up_strong_pressed || down_strong_pressed || shield_down))
+	if(window < 3 && (attack_down || left_strong_pressed || right_strong_pressed || up_strong_pressed || down_strong_pressed || shield_down) && !fc_bunt)
 	{
 		
 		// Spin sprites
@@ -151,6 +166,7 @@ if (attack == AT_NSPECIAL){
 		set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_spin_hurt"));
 		set_attack_value(AT_NSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("nspecial_spin_hurt_air"));
 		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.7);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 2);
 		
 		with(pHurtBox) 
 			if(other.player == player && !other.free) sprite_index = sprite_get("nspecial_spin_hurt");
@@ -182,7 +198,27 @@ if (attack == AT_NSPECIAL){
 
 
     // Determine the sprite of the projectile and animation
-    if(fc_backspin == false)
+    if(fc_bunt)
+    {
+		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.7);
+		
+		switch(fc_count)
+	    {
+	    	case 1:
+	    	fc_string = "firecracker_single_bunt";
+	    	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 16);
+	    	break;
+	    	case 2:
+	    	fc_string = "firecracker_double_bunt";
+	    	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 26);
+	    	break;
+	    	case 3:
+	    	fc_string = "firecracker_triple_bunt";
+	    	set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 36);
+	    	break;
+	    }	
+    }
+    else if(fc_backspin == false)
     {
 	    switch(fc_count)
 	    {
@@ -657,7 +693,6 @@ if (attack == AT_FSPECIAL){
 			}
 			
 			KRAGG = true;
-		    
 
 		   	spawn_hit_fx(x+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X)*spr_dir)
 		   	, y+(get_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y))
@@ -1087,13 +1122,8 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
             // Wall/platform code
             if(grabbed_solid)
             {
-            	// Hijacking this for firecracker launch code
-            	if(grabbedProj != noone)
-            	{
-            		grabbedProj.in_hitpause = false;
-            		grabbedProj.hsp = -13.5*spr_dir;
-            		grabbedProj.vsp = -6;
-            	}
+            	
+            	free = true;
             	
             	hsp = 10.5*spr_dir;
             	
@@ -1101,6 +1131,16 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
             		vsp = -6 + (fspec_yoff/10);
             	else
             		vsp = -6;
+            		
+            	// Hijacking this for firecracker launch code
+            	if(grabbedProj != noone)
+            	{
+            		grabbedProj.in_hitpause = false;
+            		grabbedProj.hsp = -13.5*spr_dir;
+            		grabbedProj.vsp = -6;
+            		vsp = -7.5;
+            		hsp = 12*spr_dir;
+            	}
             		
             	sound_play(asset_get("sfx_may_whip2"));
             }
@@ -1132,11 +1172,6 @@ if (attack == AT_USPECIAL){
 
 	uspecial_ground = false;
 	
-	// Cooldown
-	if(window == 8 && !grabbedid)
-	{
-		move_cooldown[AT_USPECIAL] = 10;
-	}
 	
     // Ground attributes
 	if(state == PS_ATTACK_GROUND && window_timer == 1 && window == 2)

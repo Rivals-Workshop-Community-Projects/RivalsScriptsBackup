@@ -1,0 +1,1 @@
+owner_thing = noone;

@@ -85,7 +85,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 100);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 40);
 set_hitbox_value(AT_DSPECIAL, 1, HG_SHAPE, 2); //rounded rectangle
 set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 1);
-set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 5);
+set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 7);
 //knockback
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_DSPECIAL, 1, HG_FINAL_BASE_KNOCKBACK, 2);

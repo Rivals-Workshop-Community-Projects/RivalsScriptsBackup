@@ -50,6 +50,7 @@ sprite_change_offset("ustrong", 68, 65);
 sprite_change_offset("dstrong", 68, 65);
 sprite_change_offset("nspecial", 64, 94);
 sprite_change_offset("fspecial", 68, 65);
+sprite_change_offset("fspecial_afterimage", 68, 65);
 sprite_change_offset("uspecial",68, 65);
 sprite_change_offset("dspecial", 68, 65);
 sprite_change_offset("dspecial_proj", 68, 65);

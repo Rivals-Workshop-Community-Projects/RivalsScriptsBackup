@@ -98,11 +98,13 @@ var h = 0;
 with codec_handler{
 	
 	initCodec(noone, 0);
-	initCodecPage(SPK_ALTO,  5,  0, "Who is THAT?");
-	initCodecPage(SPK_CODA,  6,  0, "I have no data on this fighter. I can't believe it!");
-	initCodecPage(SPK_ECHO,  6,  0, "It must be an intruder from another dimension!");
-	initCodecPage(SPK_ALTO,  4,  0, "Whatever it is, the goal remains the same: to fight and win!");
-	initCodecPage(SPK_TRUM,  0,  0, "ok palutena");
+	initCodecPage(SPK_TRUM,  0,  0, "the tournament of burger with buns and burgers without buns begins news flash buns are the only way to eat it");
+	// initCodec(noone, 0);
+	// initCodecPage(SPK_ALTO,  5,  0, "Who is THAT?");
+	// initCodecPage(SPK_CODA,  6,  0, "I have no data on this fighter. I can't believe it!");
+	// initCodecPage(SPK_ECHO,  6,  0, "It must be an intruder from another dimension!");
+	// initCodecPage(SPK_ALTO,  4,  0, "Whatever it is, the goal remains the same: to fight and win!");
+	// initCodecPage(SPK_TRUM,  0,  0, "ok palutena");
 	
 }
 

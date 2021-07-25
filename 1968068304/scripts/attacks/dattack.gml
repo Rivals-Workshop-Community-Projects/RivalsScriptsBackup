@@ -40,7 +40,7 @@ set_window_value(AT_DATTACK, 4, AG_WINDOW_CUSTOM_GROUND_FRICTION, .75);
 
 //whiff cooldown 2
 set_window_value(AT_DATTACK, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DATTACK, 5, AG_WINDOW_LENGTH, 11);
+set_window_value(AT_DATTACK, 5, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DATTACK, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DATTACK, 5, AG_WINDOW_ANIM_FRAME_START, 6);
 
@@ -155,7 +155,7 @@ set_hitbox_value(AT_DATTACK, 3, HG_HITBOX_Y, -25);
 set_hitbox_value(AT_DATTACK, 3, HG_WIDTH, 66);
 set_hitbox_value(AT_DATTACK, 3, HG_HEIGHT, 70);
 set_hitbox_value(AT_DATTACK, 3, HG_PRIORITY, 2);
-set_hitbox_value(AT_DATTACK, 3, HG_DAMAGE, 9);
+set_hitbox_value(AT_DATTACK, 3, HG_DAMAGE, 10);
 set_hitbox_value(AT_DATTACK, 3, HG_ANGLE, 90);
 set_hitbox_value(AT_DATTACK, 3, HG_BASE_KNOCKBACK, 9.5);
 set_hitbox_value(AT_DATTACK, 3, HG_KNOCKBACK_SCALING, .95);
@@ -237,7 +237,7 @@ set_hitbox_value(AT_DATTACK, 6, HG_ANGLE, 270); //meteor
 set_hitbox_value(AT_DATTACK, 6, HG_BASE_KNOCKBACK, 9.5);
 set_hitbox_value(AT_DATTACK, 6, HG_KNOCKBACK_SCALING, .75);
 set_hitbox_value(AT_DATTACK, 6, HG_BASE_HITPAUSE, 1); //low hitpause
-set_hitbox_value(AT_DATTACK, 6, HG_HITPAUSE_SCALING, 0); 
+set_hitbox_value(AT_DATTACK, 6, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_DATTACK, 6, HG_VISUAL_EFFECT, 304 ); //"basic large"
 set_hitbox_value(AT_DATTACK, 6, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DATTACK, 6, HG_HITSTUN_MULTIPLIER, 1);

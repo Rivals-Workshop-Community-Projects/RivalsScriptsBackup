@@ -1,5 +1,9 @@
 if "hud_handler" not in self exit;
 
+// draw_debug_text(20, 20, "Speedrunner Link
+
+// by RuberCuber")
+
 if !phone_cheats[cheat_hide_hud]{
 
 	shader_start();

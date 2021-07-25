@@ -214,8 +214,14 @@ if (attack == AT_DAIR) {
 if (attack == AT_EXTRA_1 && instance_exists(grabbed_player_obj)) {
 	
 	//first, drop the grabbed player if this is the last window of the attack, or if they somehow escaped hitstun.
-	if (window >= get_attack_value(attack, AG_NUM_WINDOWS)  || window == 3 && window_timer == 24) { grabbed_player_obj = noone;  }
-	else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { grabbed_player_obj = noone; }
+	if (window >= get_attack_value(attack, AG_NUM_WINDOWS)  || window == 3 && window_timer == 24) { 
+		grabbed_player_obj = noone;
+		grabbed_player_obj.visible = true;
+	}
+	else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { 
+		grabbed_player_obj = noone;
+		grabbed_player_obj.visible = true;
+	}
 
 	else {
 		//keep the grabbed player in hitstop until the grab is complete.
@@ -266,10 +272,17 @@ if (attack == AT_EXTRA_1 && instance_exists(grabbed_player_obj)) {
 if (attack == AT_EXTRA_2 && instance_exists(grabbed_player_obj)) {
 	
 	//first, drop the grabbed player if this is the last window of the attack, or if they somehow escaped hitstun.
-	if (window >= get_attack_value(attack, AG_NUM_WINDOWS)  || window == 2 && window_timer == 24) { grabbed_player_obj = noone;  }
-	else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { grabbed_player_obj = noone; }
-
-	else {
+	if (window >= get_attack_value(attack, AG_NUM_WINDOWS)  || window == 2 && window_timer == 24) {
+		grabbed_player_obj = noone;  
+	}
+	else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { 
+		grabbed_player_obj = noone;
+	}
+	else if (state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND and grabbedplayer != noone){
+		grabbed_player_obj = noone;
+		grabbed_player_obj.visible = true;
+	}
+	else{
 		//keep the grabbed player in hitstop until the grab is complete.
 		grabbed_player_obj.hitstop = 2;
 		grabbed_player_obj.hitpause = true;
@@ -325,8 +338,14 @@ if (attack == AT_FSPECIAL) {
 if (attack == AT_FSPECIAL_2 && instance_exists(grabbed_player_obj)) {
 	
 	//first, drop the grabbed player if this is the last window of the attack, or if they somehow escaped hitstun.
-	if (window >= get_attack_value(attack, AG_NUM_WINDOWS) || window == 3 && window_timer == 2) { grabbed_player_obj = noone; }
-	else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { grabbed_player_obj = noone; }
+	if (window >= get_attack_value(attack, AG_NUM_WINDOWS) || window == 3 && window_timer == 2) { 
+		grabbed_player_obj = noone;
+		grabbed_player_obj.visible = true;
+	}
+	else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { 
+		grabbed_player_obj = noone;
+		grabbed_player_obj.visible = true;
+	}
 
 	else {
 		//keep the grabbed player in hitstop until the grab is complete.
@@ -711,7 +730,7 @@ if attack == AT_NSPECIAL {
         	proj_stored = true;
         	store_timer = 8;
         	store_timer2 = 2;
-        	move_cooldown[AT_NSPECIAL] = 60;
+        	move_cooldown[AT_NSPECIAL] = 30;
         }
     }
     if (window == 3 && window_timer == 1){

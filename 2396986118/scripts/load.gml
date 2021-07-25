@@ -1,0 +1,1 @@
+sprite_change_offset("burd", 20, 18);

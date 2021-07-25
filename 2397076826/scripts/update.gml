@@ -172,7 +172,6 @@ if state == PS_IDLE_AIR or state == PS_IDLE or state == PS_FIRST_JUMP or state =
                   	sword = true
                   }
      
-  		     		throws_rock = 3
   		     }
   	    }
   	    
@@ -181,10 +180,11 @@ if state == PS_IDLE_AIR or state == PS_IDLE or state == PS_FIRST_JUMP or state =
   		if player_id == other.id && damage > 2 {
   		  if sword{	
   	         extra_hitpause = 15 + damage*2
-  	         kb_scale = hitpause/14
+  	         kb_scale = hitpause/18 + hit_effect_y/8
   	         no_other_hit = 1
   		  } else {
-  		  	kb_scale = hitpause/10
+  		  	extra_hitpause = 10 + damage*2
+  		  	kb_scale = hitpause/18
   		  	no_other_hit = 1
   		  }
   		}
@@ -194,10 +194,11 @@ if state == PS_IDLE_AIR or state == PS_IDLE or state == PS_FIRST_JUMP or state =
   		if player_id == other.id && damage > 2{
   		   if sword {
   	           extra_hitpause = 0
-  	           kb_scale = hitpause/30 + hit_effect_y/4
+  	           kb_scale = hitpause/18 + hit_effect_y/8
   	           no_other_hit = 1
   		   } else {
-  		   	   kb_scale = hitpause/20
+  		   	   extra_hitpause = 0
+  		   	   kb_scale = hitpause/18 
   		   }
   		}
   	}

@@ -19,7 +19,7 @@ if (attack == AT_FTILT && window == 2 && window_timer == 5){
 if (attack == AT_UTILT && window == 1 && window_timer == 1){
     sound_play(utilt_voice);
 }
-if (attack == AT_DTILT && window == 1 && window_timer == 5){
+if (attack == AT_DTILT && window == 1 && window_timer == 3){
     sound_play(dtilt_voice);
 }
 
@@ -75,7 +75,13 @@ if (attack == AT_DAIR) && (dairbounce == true) && ((window == 4)){
 
 if (attack == AT_DAIR){
     if window == 1 {dairbounce = true};
-    can_move = false;
+    if window > 1{
+    	can_move = false;
+    }
+    if (window == 2 || window == 3 || (window == 1 && window_timer > 10)) && free == false{
+    	window = 3;
+    	window_timer = 1;
+    }
 }
 
 //DOWN SMASH BOOM
@@ -125,6 +131,11 @@ if (attack == AT_FSPECIAL){
             	window = 4;
             	window_timer = 17;
             	set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 5);
+            }
+            if free = false{
+            	shoulderbashair = false;
+            	set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 1);
+            	set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED, 0);
             }
             }
         }
@@ -181,6 +192,9 @@ if (attack == AT_USPECIAL) {
     	grabbed_player_relative_x = 0;
     	grabbed_player_relative_y = 0;
     	set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 4);
+    }
+    if window == 4{
+    	can_wall_jump = true;
     }
 }
 
@@ -252,7 +266,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
+var dir = argument_count > 3 ? argument[3] : 0;
 
 switch (name) {
     default: 

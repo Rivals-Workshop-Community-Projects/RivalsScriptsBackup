@@ -9,19 +9,19 @@ reset = false;
 bounced = 0;
 grabbed = 0;
 is_bunt = player_id.fc_bunt;
-walls = 2;
-grounds = 2;
+// walls = 2;
+// grounds = 2;
 
  // Figure out what sprite I am
-if(sprite_index == sprite_get("firecracker_single") || sprite_index == sprite_get("firecracker_single_spin"))
+if(sprite_index == sprite_get("firecracker_single") || sprite_index == sprite_get("firecracker_single_spin") || sprite_index == sprite_get("firecracker_single_bunt"))
 {
     num_fc = 1;
 }
-else if(sprite_index == sprite_get("firecracker_double") || sprite_index == sprite_get("firecracker_double_spin"))
+else if(sprite_index == sprite_get("firecracker_double") || sprite_index == sprite_get("firecracker_double_spin") || sprite_index == sprite_get("firecracker_double_bunt"))
 {
     num_fc = 2;
 }
-else if(sprite_index == sprite_get("firecracker_triple") || sprite_index == sprite_get("firecracker_triple_spin"))
+else if(sprite_index == sprite_get("firecracker_triple") || sprite_index == sprite_get("firecracker_triple_spin") || sprite_index == sprite_get("firecracker_triple_bunt"))
 {
     num_fc = 3;
 }

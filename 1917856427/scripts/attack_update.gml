@@ -3,76 +3,39 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR 
 }
 
 if (attack == AT_FSPECIAL) && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
-    if (window == 2 && grabbedid != noone){
-	grabbedid.ungrab = 0;
+    if (window == 1 && grabbedid != noone){
+	    grabbedid.ungrab = 0;
         grabbedid.invincible = true; //DELETE THIS LINE TO MAKE THE GRABBED PLAYER HITTABLE
         //grabbedid.visible = false; //UNCOMMENT THIS LINE TO MAKE THE GRABBED PLAYER INVISIBLE
-        grabbedid.x = lerp(grabbedid.x, x + spr_dir * 50, 0.6); //SET GRABBED PLAYER X TO BE RELATIVE TO PLAYER X
+        grabbedid.x = lerp(grabbedid.x, x + spr_dir * 80, 0.6); //SET GRABBED PLAYER X TO BE RELATIVE TO PLAYER X
         grabbedid.y = y; //SET GRABBED PLAYER Y TO BE RELATIVE TO PLAYER Y
         grabbedid.spr_dir = -spr_dir; //TURN THE GRABBED PLAYER TO FACE THE GRABBING PLAYER
         grabbedid.wrap_time = 6000;
         grabbedid.state = PS_WRAPPED;
     } 
-       if(window_timer = 12){ //REPLACE THIS IF CONDITION WITH WHAT YOU WANT TO RELEASE THE GRAB
+       if(window == 2 && has_hit_player && grabbedid != noone){ //REPLACE THIS IF CONDITION WITH WHAT YOU WANT TO RELEASE THE GRAB
             
             grabbedid.x = lerp(grabbedid.x, x + spr_dir * 45, 0.6);
             grabbedid.y = y;
             grabbedid = noone;
         }
-    if (window == 1 && window_timer == 1){
-    	reset_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH);
-		reset_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW_CREATION_FRAME);
-        reset_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE);
-        reset_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE);
-        reset_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE);
-        reset_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK);
-        reset_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE);
-        reset_hitbox_value(AT_FSPECIAL, 3, HG_ANGLE);
-        reset_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK);
-        reset_hitbox_value(AT_FSPECIAL, 3, HG_EXTRA_HITPAUSE);
-        reset_hitbox_value(AT_FSPECIAL, 3, HG_EXTRA_HITPAUSE);
-        reset_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE);
-        reset_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE);
-        reset_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH);
-        reset_hitbox_value(AT_FSPECIAL, 3, HG_HITSTUN_MULTIPLIER);
-       
-    if(!shield_down && GAUGE_NAME_CURRENT >=55){ //detects when you time the attack correctly
-		set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 13);
-		set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 9);
-		set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 2);
-		set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 8);
-	
-
-        set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 5);
-        set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 90);
-        set_hitbox_value(AT_FSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 1.4);
-        set_hitbox_value(AT_FSPECIAL, 2, HG_EXTRA_HITPAUSE, 3);
-       
-    
-        set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 8);
-        set_hitbox_value(AT_FSPECIAL, 3, HG_ANGLE, 90);
-        set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 5);
-        set_hitbox_value(AT_FSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 1.4);
-        set_hitbox_value(AT_FSPECIAL, 3, HG_EXTRA_HITPAUSE, 3);
-        set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 10);
-    }
-	}
-	if window == 3 && window_timer == 1
+	if window == 3 && window_timer == 8
 	{
-	move_cooldown[AT_FSPECIAL] = 70;
+	move_cooldown[AT_FSPECIAL] = 55;
 	dichal = 0;
 	}
-           if left_down && window == 2 && window_timer = 10 && has_hit_player && dichal = 0{
+           if left_down && window == 1 && window_timer >= 12 && has_hit_player && dichal = 0{
              spr_dir = -1;
              dichal = 1;
              destroy_hitboxes();
          }
-          if right_down && window == 2 && window_timer = 10 && has_hit_player && dichal = 0{
+          if right_down && window == 1 && window_timer >= 12 && has_hit_player && dichal = 0{
              spr_dir = 1;
              dichal = 1;
              destroy_hitboxes();
          }    
 	}
+
 
 //////////////////////
 //USPECIAL 
@@ -117,7 +80,6 @@ if (attack == AT_USPECIAL) && move_cooldown[AT_USPECIAL] = 0{
          can_shield = true;
          char_height = 52;
          used_aird = true;
-         max_djumps = 0;
             }
     if (window == 1 && window_timer == 1){
 		if(!shield_down && GAUGE_NAME_CURRENT >=55){
@@ -295,7 +257,7 @@ if (attack == AT_UAIR){
     if (window == 1 && window_timer == 1){
 		if(!shield_down && GAUGE_NAME_CURRENT >=55){
 
-            set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 6);
+            set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 11);
             set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 5);
             set_hitbox_value(AT_UAIR, 1, HG_EXTRA_HITPAUSE, 5);
             set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .4);
@@ -353,10 +315,10 @@ if (attack == AT_DSPECIAL){
          set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1.0);
 		}
     }
-    if (window == 2 && window_timer > 1) && HITD = 1 
+    if (window == 2 && window_timer > 1)
     {
         can_jump= true;
-        move_cooldown[AT_DSPECIAL] = 12
+        move_cooldown[AT_DSPECIAL] = 3
      
         move_cooldown[AT_FSPECIAL] = 7
         move_cooldown[AT_NSPECIAL] = 7
@@ -429,9 +391,9 @@ if (attack == AT_USTRONG){
 ///JAB 
 if (attack == AT_JAB){
 	if (window == 1 && window_timer == 1) {
-			reset_hitbox_value(AT_JAB, 1, HG_DAMAGE);
-            reset_hitbox_value(AT_JAB, 1, HG_HITSTUN_MULTIPLIER);
-	        reset_window_value(AT_JAB, 1, AG_WINDOW_HSPEED);
+		reset_hitbox_value(AT_JAB, 1, HG_DAMAGE);
+        reset_hitbox_value(AT_JAB, 1, HG_HITSTUN_MULTIPLIER);
+	    reset_window_value(AT_JAB, 1, AG_WINDOW_HSPEED);
            
 	}
     if (window == 1 && window_timer == 1){
@@ -472,6 +434,8 @@ if (attack == AT_NAIR){
 //////////////////////
 //DTILT
 if (attack == AT_DTILT){
+	if (has_hit)
+		can_jump = true;
 	if (window == 1 && window_timer == 1) {
 			reset_hitbox_value(AT_DTILT, 1, HG_DAMAGE);
 	        reset_hitbox_value(AT_DTILT, 2, HG_DAMAGE);
@@ -499,22 +463,27 @@ if (attack == AT_DTILT){
 //////////////////////
 //FTILT
 if (attack == AT_FTILT){
+	if (has_hit)
+	{
+		if (down_down && attack_pressed)
+		{
+			if (window == 2 && window_timer >= 2)
+			{
+				set_attack( AT_DTILT );
+			}
+			
+		}
+	}
 	if (window == 1 && window_timer == 1) {
 			reset_hitbox_value(AT_FTILT, 1, HG_DAMAGE);
-	        reset_hitbox_value(AT_FTILT, 2, HG_DAMAGE);
 	        reset_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER);
 	        reset_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH);
-            reset_hitbox_value(AT_FTILT, 2, HG_HITSTUN_MULTIPLIER);
-            reset_hitbox_value(AT_FTILT, 2, HG_ANGLE);
+
 	}
     if (window == 1 && window_timer == 1){
 		if(!shield_down && GAUGE_NAME_CURRENT >=55){
-		    set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 6);
-		    set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, 8);
-            set_hitbox_value(AT_FTILT, 1, HG_HITSTUN_MULTIPLIER, 1.2);
-            set_hitbox_value(AT_FTILT, 2, HG_HITSTUN_MULTIPLIER, 1.2);
+		    set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 11);
             set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 5);
-		    set_hitbox_value(AT_FTILT, 2, HG_ANGLE, 50);
 		}
     }
 }
@@ -591,6 +560,7 @@ if (attack == AT_NSPECIAL){
 	if (window == 1 && window_timer == 1) {
         reset_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE);
         reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE);
+        reset_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING);
         reset_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH);
         reset_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH);
         reset_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH);
@@ -663,13 +633,13 @@ if (attack == AT_TAUNT){
             
             set_hitbox_value(AT_UAIR, 4, HG_BASE_KNOCKBACK, 9);
             set_hitbox_value(AT_UAIR, 4, HG_BASE_HITPAUSE, 25);
-            set_hitbox_value(AT_UAIR, 4, HG_KNOCKBACK_SCALING, .7);
+            set_hitbox_value(AT_UAIR, 4, HG_KNOCKBACK_SCALING, .9);
             set_hitbox_value(AT_UAIR, 4, HG_DAMAGE, 12);
             set_hitbox_value(AT_UAIR, 4, HG_VISUAL_EFFECT, large_clock_hfx);
         
      ///BAIR
      		set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 9);
-            set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.9);
+            set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 1.0);
 			set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 25);
 			set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 135);
 			set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 17);
@@ -692,7 +662,8 @@ if (attack == AT_TAUNT){
 			set_hitbox_value(AT_DAIR, 4, HG_VISUAL_EFFECT, large_clock_hfx);
 			
 	  ///NSPECIAL 
-	        set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
+	        set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
+	        set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.8);//old 0.5
 	        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 19);
 	        set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 16);
 	        set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, large_clock_hfx);

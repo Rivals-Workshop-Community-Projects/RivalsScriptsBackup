@@ -47,9 +47,9 @@ sprite_change_offset("ustrong", 64, 164);
 sprite_change_offset("dstrong", 64, 110);
 sprite_change_offset("nspecial", 92, 148);
 sprite_change_offset("fspecial", 50, 82);
-sprite_change_offset("fspecial_proj1", 50, 52);
-sprite_change_offset("fspecial_proj2", 50, 56);
-sprite_change_offset("fspecial_proj2hit", 48, 82);
+sprite_change_offset("fspecial_proj1", 44, 50);
+sprite_change_offset("fspecial_proj2", 36, 28);
+sprite_change_offset("fspecial_proj2hit", 48, 62);
 sprite_change_offset("fspecial_laser", 15, 62);
 sprite_change_offset("uspecial", 74, 98);
 sprite_change_offset("dspecial", 68, 88);
@@ -59,6 +59,8 @@ sprite_change_offset("phone_open", 32, 64);
 
 sprite_change_offset("lightning1", 14, 35);
 sprite_change_offset("lightning2", 14, 35);
+sprite_change_offset("lightning3", 14, 35);
+sprite_change_offset("lightning4", 14, 35);
 
 sprite_change_offset("uspecialarrow", 39, 66);
 sprite_change_offset("vfx_footcharge", 80, 28);

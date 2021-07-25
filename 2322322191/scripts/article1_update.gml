@@ -86,8 +86,8 @@ if object_type == 1 // this means ur a fuckin bullet
         }
         if instance_exists(hitid)
         {
-            hitid.x = x;
-            hitid.y = y;   
+            hitid.x = x + 10*spr_dir;
+            hitid.y = y    
         }
 
 

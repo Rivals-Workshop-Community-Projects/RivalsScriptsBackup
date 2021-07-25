@@ -14,7 +14,7 @@
 //
 // now, please change this string to your character's name. used for resetting the values after other characters.
 //--- ---
-var qe_b = "template"
+var qe_b = "Buffy"
 // ! you can now scroll down until you reach "the primary part you should change."
  
 var tmp_cur = 0;
@@ -132,6 +132,18 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[20,0] = make_color_rgb(64, 87, 113)
     ce[20,1] = "Are you lucky?"
     ce[20,2] = ""
+    ce[21,0] = make_color_rgb(30, 25, 44)
+    ce[21,1] = "Tournament"
+    ce[21,2] = ""
+    ce[22,0] = make_color_rgb(98, 60, 63)
+    ce[22,1] = "Whirlwind"
+    ce[22,2] = ""
+    ce[23,0] = make_color_rgb(0, 166, 166)
+    ce[23,1] = "Lonely"
+    ce[23,2] = ""
+    ce[24,0] = make_color_rgb(81, 102, 43)
+    ce[24,1] = "Classic"
+    ce[24,2] = ""
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
     // you can ignore the mess below...

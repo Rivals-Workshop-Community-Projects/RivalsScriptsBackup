@@ -336,7 +336,7 @@ pho_has_daro_codec = 0; // Dialogue for the Daroach boss fight
 
 
 if (object_index == asset_get("cs_playerbg_obj")){
-	num_alts = 14; // Number of alt costumes; controls how many appear on the CSS
+	num_alts = 16; // Number of alt costumes; controls how many appear on the CSS
 	exit;
 }
 
@@ -644,6 +644,18 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	//1.11
+	initPatch("1.11", "17 July 2021");
+	initPatchWords("- While im here i might aswell add a few more colours");
+	//1.10
+	initPatch("1.10", "17 July 2021");
+	initPatchWords_ext("Bug Fixes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Enemies now become visible again if you're hit during fspecial or dair
+	- Dspecial projectile now overwrites the jackpot projectile");
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Dspecial is now active for slightly longer
+	- Dspecial will now activate upon hitting a projectile but wont store the special projectile unless it hits an enemy
+	- Storing projectiles has a shorter cooldown [60->30]");	
 	//1.9
 	initPatch("1.9", "4 July 2021");
 	initPatchWords_ext("Movement Changes:", fa_center, c_gray, 1, 0);

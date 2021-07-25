@@ -184,8 +184,8 @@ ai_airdodge_direction = 90;
 ai_state = 0;
 disable_ai = true;
 sync = 1;
-sync_distance = 200;
-follow_distance = 40;
+sync_distance = 100;
+follow_distance = 20;
 sync_next_predicted_state = state;
 
 

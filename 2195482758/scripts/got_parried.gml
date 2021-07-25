@@ -6,11 +6,13 @@
 
 if(my_hitboxID.attack == AT_NSPECIAL && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 3)){
     with(pHitBox)
-    if((attack == AT_EXTRA_3 && player_id == other.enemykirby) || (orig_player == other.player && (attack == AT_NSPECIAL) && hbox_num == 1)){
-        reset = false;
-        currentPlayer = other.hit_player_obj;
+    {
+	    if((attack == AT_EXTRA_3 && player_id == other.enemykirby) || (orig_player == other.player && (attack == AT_NSPECIAL) && hbox_num == 1)){
+	        reset = false;
+	        currentPlayer = other.hit_player_obj;
+	    }
+
     }
-    
     move_cooldown[AT_NSPECIAL] = 60;
     
 //     var scream = random_func( 0, 3, true );

@@ -50,7 +50,7 @@ idle_anim_speed = .15;
 crouch_anim_speed = .15;
 walk_anim_speed = .2;
 dash_anim_speed = .3;
-pratfall_anim_speed = .4;
+pratfall_anim_speed = .2;
 
 
 ustronghit = 0

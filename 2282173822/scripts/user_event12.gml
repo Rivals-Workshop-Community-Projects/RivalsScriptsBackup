@@ -79,9 +79,11 @@ for (i = 0; i < len; i++){
 var alt_cur = get_player_color(player);
 
 rectDraw(x + 10, y + 10, 201, 5, c_black);
+
+var offset = (alt_cur > 15) * 16;
  
-for(i = 0; i < num_alts; i++){
-    var draw_color = (i == alt_cur) ? c_white : c_gray;
+for(i = 0; i < (num_alts - offset) && i < 16; i++){
+    var draw_color = (i == alt_cur - offset) ? c_white : c_gray * 0.5;
     var draw_x = x + 78 + 8 * i;
     rectDraw(draw_x, y + 10, 5, 3, draw_color);
 }

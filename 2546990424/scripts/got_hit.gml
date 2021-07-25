@@ -1,3 +1,10 @@
+//Resets the Grab Variables
+if ((enemy_hitboxID.player == player) || (enemy_hitboxID.damage > 0 && enemy_hitboxID.kb_value > 0)){
+    cargo_hit_right = false;
+    cargo_hit_left = false;
+    cargo_grab = false;
+}
+
 if (enemy_hitboxID.damage > 0 && enemy_hitboxID.kb_value > 0){
 
 //If gets hit while charging the Punch
@@ -27,12 +34,7 @@ whirlwind_myself = false;
 
 }
 
-//Resets the Grab Variables
-if ((enemy_hitboxID.player == player) || (enemy_hitboxID.damage > 0 && enemy_hitboxID.kb_value > 0)){
-    cargo_hit_right = false;
-    cargo_hit_left = false;
-    cargo_grab = false;
-}
+
 
 //Whirlwind doesn't give you Walljump
 if (enemy_hitboxID.player != player) {

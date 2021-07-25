@@ -77,10 +77,10 @@ set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HIT_SFX, asset_get("sfx_orca_crunch"));
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_PROJECTILE_ANIM_SPEED, 0.1);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_PROJECTILE_HSPEED, 0);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_PROJECTILE_VSPEED, 4);
-set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_PROJECTILE_PARRY_STUN, true);
-set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_PROJECTILE_GRAVITY, 0.5);
+set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_PROJECTILE_PARRY_STUN, false);
+set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_PROJECTILE_GRAVITY, 0.3);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_PROJECTILE_IS_TRANSCENDENT, 0);
-set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_EXTENDED_PARRY_STUN, true);
+set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_EXTENDED_PARRY_STUN, false);
 

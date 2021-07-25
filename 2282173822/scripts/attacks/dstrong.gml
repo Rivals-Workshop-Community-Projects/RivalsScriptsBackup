@@ -54,6 +54,6 @@ set_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_SPRITE, spr_dstrong_proj);
 set_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_AIR_FRICTION, 0);
 set_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_WALL_BEHAVIOR, 2);
-set_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_IS_TRANSCENDENT, 0); // 1
 // set_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_MUNO_HITBOX_MISC_ADD, "Power does not scale with charge");

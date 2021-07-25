@@ -53,3 +53,4 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sfx_brass_hit);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1.3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_SDI_MULTIPLIER, 0.001);
+set_hitbox_value(AT_NSPECIAL, 1, HG_DRIFT_MULTIPLIER, 0.001);

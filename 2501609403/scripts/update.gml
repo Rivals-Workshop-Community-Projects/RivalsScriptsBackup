@@ -256,5 +256,9 @@ ani_x = view_get_xview()
 ani_y = view_get_yview()
 
 
+//Grab stuff
+if (state_cat == SC_HITSTUN){
+	grabbed_player_obj = noone;
+}
 //Visual Effects
 //EXplosion

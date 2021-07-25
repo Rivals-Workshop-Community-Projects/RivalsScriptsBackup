@@ -17,6 +17,7 @@ switch(attack){
 					vsp = -short_hop_speed;
 					hsp = clamp(hsp, -5, 5);
                     spawn_hit_fx(x, y, vfx_rain_splash);
+                    has_done_stupid_vsp_thing = false;
 				}
 				break;
 			case 2: //jumping
@@ -65,7 +66,14 @@ switch(attack){
 				can_move = false;
 				hsp = 0;
 				vsp = 0;
-				if has_hit_player && nspecial_target.state_cat == SC_HITSTUN nspecial_target.hsp = 3 * spr_dir; // 5
+				if has_hit_player && nspecial_target.state_cat == SC_HITSTUN && !hitpause{
+					nspecial_target.hsp = 5 * spr_dir - sign(nspecial_target.x - x);
+					if !has_done_stupid_vsp_thing || 1{
+						has_done_stupid_vsp_thing = true;
+						nspecial_target.vsp = -10;
+						nspecial_target.old_vsp = -10;
+					}
+				}
 				break;
 		}
 		
@@ -83,7 +91,7 @@ switch(attack){
 				if (window_timer == 1){
 					orig_x = x;
 					orig_y = y;
-				    if nspecial_target.state_cat == SC_HITSTUN nspecial_target.hsp = 3 * spr_dir; // 5
+				    if nspecial_target.state_cat == SC_HITSTUN nspecial_target.hsp = 5 * spr_dir - sign(nspecial_target.x - x);
 				}
 				if (window_timer == phone_window_end){
 					sound_play(sfx_brass_1);
@@ -302,7 +310,10 @@ switch(attack){
         vsp *= 0.9;
         // can_move = false;
         super_armor = false;
-        if lightning lightning = lightning_max + 1;
+        if lightning{
+        	lightning = lightning_max + 1;
+        	if window > 1 iasa_script();
+        }
         
         // if (window == 1) super_armor = true;
         
@@ -571,7 +582,7 @@ switch(attack){
     			taunt_time = 0;
     			break;
     		case 3:
-    			if (window_timer == phone_window_end && taunt_down){
+    			if (window_timer == phone_window_end && (taunt_down || (codec_video && !shield_down))){
     				window_timer--;
     				taunt_time++;
     			}

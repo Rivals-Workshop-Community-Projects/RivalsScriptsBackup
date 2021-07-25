@@ -56,6 +56,7 @@ alt_name[20]  = "Ice Doll";
 alt_name[21]  = "Sweet Leonin";
 alt_name[22]  = "Falling Stars";
 alt_name[23]  = "Lorekeeper";
+alt_name[24]  = "Acolyte";
 var num_alts = array_length_1d(alt_name);
 
 sprite_change_offset("snowflake", 11, 11);

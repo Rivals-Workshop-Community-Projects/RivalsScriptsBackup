@@ -3,6 +3,8 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+prev_attack_used = attack;
+
 if attack == AT_FSPECIAL_2 //Can't fastfall during Explosion
   {
   can_fast_fall = false;

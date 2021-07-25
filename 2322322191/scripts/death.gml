@@ -19,6 +19,8 @@ buff_active = false;
 armor_active = false;
 speedbuff_active = false;
 
+tp_death_cd = 180;
+
 if ustrong_char != noone
 {
     timer = 0;

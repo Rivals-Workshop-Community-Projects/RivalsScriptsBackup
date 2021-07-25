@@ -135,7 +135,26 @@ with (oPlayer) {
 					epinel_buffered_standing_on_platform_id = epinel_other_standing_on_platform_id;
 				}
 				//give a hsp boost for jumping off this platform.
-				if ((state_cat == SC_AIR_NEUTRAL || (state == PS_ATTACK_AIR && attack != AT_DSPECIAL && attack != AT_DSPECIAL_AIR)) && !hitpause && state_timer < 1) hsp += other.hsp;// * 0.75;
+				if (state_cat == SC_AIR_NEUTRAL) hsp += other.hsp;
+				else if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && !hitpause) {
+					switch (attack) {
+						case AT_DSPECIAL:
+						case AT_DSPECIAL_AIR:
+						case AT_FSPECIAL:
+						case AT_FSPECIAL_AIR:
+						case AT_USPECIAL:
+						case AT_USPECIAL_2:
+						case AT_NSPECIAL:
+							//do nothing
+							break;
+						case AT_UTILT:
+							 hsp += other.hsp;
+						break;
+						default:
+							if (state_timer < 1) hsp += other.hsp;
+						break;
+					}
+				}
 			}
 			epinel_other_standing_on_platform_id = noone;
 			

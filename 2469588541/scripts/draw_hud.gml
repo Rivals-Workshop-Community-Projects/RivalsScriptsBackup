@@ -215,6 +215,20 @@ if ("practice" in self)
 						AddText("");
 						AddText("Replaced Weeb alt with Sai M alt");
 						break;
+					case 12:
+						AddText("v1.12 - 14 Jul 2021");
+						AddText("");
+						AddText("leave_ground_max 7 -> 5.5");
+						AddText("max_jump_hsp 7 -> 5.5");
+						AddText("hitstun_grav 0.5 -> 0.6");
+						AddText("knockback_adj 1.1 -> 1.15 (Ori Weight)");
+						AddText("");
+						AddText("NAir Landing Lag 4 -> 5");
+						AddText("DAir Landing Lag 5 -> 6");
+						AddText("");
+						AddText("FSpec 1 Damage 1 -> 0");
+						AddText("FSpec 2 Damage 8 -> 9");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

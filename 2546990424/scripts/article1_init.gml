@@ -10,6 +10,8 @@ image_yscale *= 2;
 shoulddie = false;
 image_angle = 0;
 
+mask_index = sprite_get("dspecial_mask");
+
 //State
 state = 0;                                          //The behavior state the article should start in.
 state_timer = 0;                                    //The point in time during that state the article should start in. (0 = beginning)

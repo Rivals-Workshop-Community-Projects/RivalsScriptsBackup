@@ -3,6 +3,7 @@ set_attack_value(AT_NSPECIAL_2, AG_SPRITE, sprite_get("nspecial2"));
 set_attack_value(AT_NSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("nspecial2_hurt"));
 set_attack_value(AT_NSPECIAL_2, AG_NUM_WINDOWS, 7);
 
+set_attack_value(AT_NSPECIAL_2, AG_MUNO_ATTACK_NAME, "Install Stun");
 
 set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 2);

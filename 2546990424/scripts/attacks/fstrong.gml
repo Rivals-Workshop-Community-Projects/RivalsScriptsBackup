@@ -11,14 +11,14 @@ set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX_FRAME, 9);
+set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX_FRAME, 10);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
 
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 5);
-set_window_value(AT_FSTRONG, 3, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FSTRONG, 3, AG_WINDOW_SFX, asset_get("sfx_bird_nspecial"));
+//set_window_value(AT_FSTRONG, 3, AG_WINDOW_HAS_SFX, 1);
+//set_window_value(AT_FSTRONG, 3, AG_WINDOW_SFX, asset_get("sfx_bird_nspecial"));
 
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 17);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 5);
@@ -72,7 +72,7 @@ set_hitbox_value(AT_FSTRONG, 3, HG_PRIORITY, 9);
 set_hitbox_value(AT_FSTRONG, 3, HG_DAMAGE, 11);
 set_hitbox_value(AT_FSTRONG, 3, HG_ANGLE, 361);
 set_hitbox_value(AT_FSTRONG, 3, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_FSTRONG, 3, HG_KNOCKBACK_SCALING, 1.15);
+set_hitbox_value(AT_FSTRONG, 3, HG_KNOCKBACK_SCALING, 1.0);
 set_hitbox_value(AT_FSTRONG, 3, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_FSTRONG, 3, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, 196);

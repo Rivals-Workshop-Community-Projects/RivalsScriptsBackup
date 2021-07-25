@@ -304,6 +304,10 @@ switch(attack){
         		dragon_install = true;
             	//run only if we moved into DI
             	if(dragon_install){
+            		
+            		var volume = 0;
+            		volume = get_local_setting(3);
+            		print_debug(volume);
             		activate_install();
             		install_time = 0;
             		shake_camera(8,10);
@@ -348,9 +352,9 @@ switch(attack){
 	            			}
 	            		}
 	            	}
-	            	if(!temp_lw){
-            			sound_play(sound_get("install" + string(install_theme)), true, 0, 1, 1);
-            		}
+	            	
+            		sound_play(sound_get("install" + string(install_theme)), true, 0, min(volume*2, 1), 1);
+            		
 	            	if(!other_DI and !temp_lw){
 	            		
 	            		var temp_bg = instance_create(0, 0, "obj_article2");
@@ -414,6 +418,7 @@ switch(attack){
     case AT_NSPECIAL_2:
     	if(window == 1 and window_timer == 1){
     		knockback_adj = 1.4;
+    		kba_timer = 90;
     		vsp = 0;
     		hsp = 0;
     		shake_camera(15, 10);

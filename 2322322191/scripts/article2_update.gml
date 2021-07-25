@@ -7,6 +7,7 @@
     Hee hee hee.
 
 */
+	
 if player_id.fuckingdie
     {
         if state != 0
@@ -25,6 +26,7 @@ if playsound = true
     sound_play(sound_get("snd_ehurt1"));
     sound_play(asset_get("sfx_blow_medium2"))
     playsound = false;
+
 }
 
 with (asset_get("pHitBox"))  
@@ -32,6 +34,7 @@ with (asset_get("pHitBox"))
     
     if place_meeting(x,y,other) && player_id != other.player_id
     {
+		
         if (other.state = 1 || other.state = 3 || other.state = 4)
         {
             other.playsound=true;
@@ -44,6 +47,7 @@ with (asset_get("pHitBox"))
                 old_vsp = vsp;                      
                 hitpause = true;
                 has_hit = true;
+				
             }   
         }
     }
@@ -64,8 +68,8 @@ if (state == 0)
     }
     if instance_exists(hitid)//checks if the ball exists so it can follow it
     {
-        hitid.x = x
-        hitid.y = y
+        hitid.x = x + 15*spr_dir;
+        hitid.y = y + -15;
     }
     if state_timer == 1
     {
@@ -216,7 +220,9 @@ if (state == 5)
 
     if image_index == 11
     {
-        player_id.flowy_active = false;
+		player_id.flowy_cooldown = 120;						//Change cooldown here
+        //player_id.flowy_active = false;
+		//I think a sound effect could be added right here
         player_id.fuckingdie = false;
         instance_destroy();
         exit;

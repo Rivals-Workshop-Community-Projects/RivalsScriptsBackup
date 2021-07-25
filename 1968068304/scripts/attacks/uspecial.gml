@@ -43,7 +43,7 @@ set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 2);
 //pratfall.
 //set_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE, 7);
 set_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 6, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_USPECIAL, 6, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_USPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 2);
 //set_window_value(AT_USPECIAL, 6, AG_WINDOW_HSPEED_TYPE, 1);

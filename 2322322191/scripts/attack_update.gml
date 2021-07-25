@@ -24,7 +24,8 @@ if (attack == AT_DSPECIAL)
         window = 2;
         window_timer = 0;
     }
-    if (down_down && special_pressed && window == 2) || (shield_pressed && window == 2)
+    
+    if (down_down && special_pressed && window == 2) //|| (shield_pressed && window == 2)
     {
         window = 3;
         window_timer = 0;
@@ -36,7 +37,20 @@ if (attack == AT_DSPECIAL)
 
     if item_menu_active = true
     {
-        if attack_pressed
+        //Option Hotkeys
+        if (special_pressed || jump_pressed || shield_pressed){
+            option_hotkey_used = 1;
+            if (special_pressed){
+                chosen_item = 1;
+            }
+            else if (jump_pressed){
+                chosen_item = 2;
+            }
+            else if (shield_pressed){
+                chosen_item = 3;
+            }
+        }
+        if ((attack_pressed || option_hotkey_used) && selection_cd == 0)
         {
             switch (chosen_item)
             {
@@ -46,25 +60,28 @@ if (attack == AT_DSPECIAL)
                         sound_play(sound_get("snd_hero")); 
                         legend_used = 1;
                         general_cooldown = 600;
-                        cd_hero = 1200;
+                        cd_hero = 1800;
                         buff_active = true;
                     }
                     else
                     {
                         sound_play(sound_get("h"));
+                        invalid_option = 1;
                     }
                 break;
                 case 1:
                     if ribbon_used = 0 && general_cooldown = 0
                     {
+                        sound_play(sound_get("snd_item"), false, noone, 2);
                         ribbon_used = 1;
                         general_cooldown = 600;
-                        cd_ribbon = 1200;
+                        cd_ribbon = 1800;
                         armor_active = true;
                     }
                     else
                     {
                         sound_play(sound_get("h"));
+                        invalid_option = 1;
                     }
                 break;                
                 case 2:
@@ -74,22 +91,26 @@ if (attack == AT_DSPECIAL)
                         tea_used = 1;
                         general_cooldown = 900;
                         cd_tea = 1800;
-                        initial_dash_speed = 10;
-                        dash_speed = 9.5;
+                        initial_dash_speed = 8;
+                        dash_speed = 7.5;
                         walk_speed = 5.25;
-                        walk_accel = 0.4;
+                        walk_accel = 0.5;
                         leave_ground_max = 10;
-                        air_accel = .8;
+                        air_accel = .4;
+                        air_max_speed = 5;
+                        wave_land_adj = 1.45
                         speedbuff_active = true;
                     }
                     else
                     {
                         sound_play(sound_get("h"));
+                        invalid_option = 1;
                     }
                 break;
                 case 3:
                     if sandwich_used = 0 && general_cooldown = 0
                     {
+                        sound_play(sound_get("snd_spooky"), false, noone, 1.25); 
                         sandwich_used = 1;
                         general_cooldown = 300;
                         cd_sandwich = 300;
@@ -97,15 +118,27 @@ if (attack == AT_DSPECIAL)
                     else
                     {
                         sound_play(sound_get("h"));
+                        invalid_option = 1;
                     }
                 break;
             }
             sound_play(sound_get("snd_select"));
-            window = 3;
-            window_timer = 0;
-            item_menu_active = false;
-            char_height = 52;
-            chosen_item = 0;
+            if (!invalid_option || (invalid_option && option_hotkey_used)){ //If item is valid
+                window = 3;
+                window_timer = 0;
+                item_menu_active = false;
+                char_height = 52;
+                chosen_item = 0;
+                option_hotkey_used = 0;
+            }
+            else{ //Invalid, reset
+                clear_button_buffer( PC_SPECIAL_PRESSED );
+                clear_button_buffer( PC_JUMP_PRESSED );
+                clear_button_buffer( PC_SHIELD_PRESSED );
+                invalid_option = 0;
+                selection_cd = 10;
+                option_hotkey_used = 0;
+            }
         }
         if left_pressed && chosen_item>0
         {
@@ -249,3 +282,19 @@ if (attack == AT_USPECIAL)
     can_wall_jump = true;
     move_cooldown[AT_USPECIAL] = 99999999999;
 }
+
+//Custom sfx_leaves
+if (attack == AT_UAIR){
+    if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 1){
+        sound_play(asset_get("sfx_leaves"), false, noone, 2);
+    }
+}
+
+if (attack == AT_UTILT){
+    if (window == 1 && window_timer == get_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH) - 3){
+        sound_play(asset_get("sfx_leaves"), false, noone, 2);
+    }
+}
+
+
+

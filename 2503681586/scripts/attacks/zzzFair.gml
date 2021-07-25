@@ -7,14 +7,15 @@ set_attack_value(AT_FSPECIAL_AIR, AG_HURTBOX_SPRITE, sprite_get("f_fair_hurt"));
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_TYPE, 8);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX, asset_get("sfx_spin"));
+set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME, 5);
 
 set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_TYPE, 8);
 set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_SFX, asset_get("sfx_spin"));
-set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_SFX_FRAME, 0);
+
 
 set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_TYPE, 8);
 set_window_value(AT_FSPECIAL_AIR, 3, AG_WINDOW_LENGTH, 8);

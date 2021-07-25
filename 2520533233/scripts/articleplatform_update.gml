@@ -20,6 +20,7 @@ image_index = floor(rock_anim_frame);
 if(rock_state != ROCK.KABOOM and rock_state != ROCK.MOVE and rock_state != ROCK.IDLE_1){
 	with(pHitBox){
 		if(place_meeting(x, y, other) and (player_id.free or type == 2 or !player_id.free and player_id.y > other.y) and other.rock_state != ROCK.KABOOM){
+			if(!(player_id == other.player_id and attack == AT_DAIR)){
 			player_id.hitpause = true;
 			player_id.hitstop = floor(hitpause * 1.3);
 			player_id.old_vsp = player_id.vsp;
@@ -28,6 +29,7 @@ if(rock_state != ROCK.KABOOM and rock_state != ROCK.MOVE and rock_state != ROCK.
 			sound_play(asset_get("sfx_kragg_rock_shatter"));
 			other.hold_timer = 0;
 			other.rock_state = ROCK.KABOOM;
+			}
 
 		}
 	}

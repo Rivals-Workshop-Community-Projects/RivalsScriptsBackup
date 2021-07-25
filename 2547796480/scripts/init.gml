@@ -35,7 +35,7 @@ attra = 0
 milkpizz = 0
 meleehit = 0
 
-char_height = 60;
+char_height = 60.1412;
 idle_anim_speed = .13;
 crouch_anim_speed = .1;
 walk_anim_speed = .16;

@@ -6,6 +6,15 @@ if hudspd>2
     hudspd=0;
 }
 
+//Tick down teleport cooldown timer (Can't teleport to walls while dead)
+if (tp_death_cd > 0){
+    tp_death_cd--;
+}
+
+if (selection_cd > 0){
+    selection_cd--;
+}
+
 if general_cooldown > 0
 {
     general_cooldown--;
@@ -13,12 +22,15 @@ if general_cooldown > 0
 }
 else
 {
-    initial_dash_speed = 7;
+    initial_dash_speed = 7.5;
     dash_speed = 6.5;
     walk_speed = 3.25;
     walk_accel = 0.2;
     leave_ground_max = 7.35;
     air_accel = 0.35;
+    air_max_speed = 4;
+    wave_land_adj = 1.10
+    knockback_adj = 1.10
     
     buff_active = false;
     armor_active = false;
@@ -78,7 +90,7 @@ if attack ==  AT_USTRONG
             hitpause = true;
             x = floor(lerp(x,other.x+30*other.spr_dir,0.1));
             y = floor(lerp(y,other.y-79,0.2));
-            if other.window = 3 && other.window_timer > 4
+            if other.window = 3 && other.window_timer > 3
             {
                 other.ustrong_char = noone;
                 hitstop = false;
@@ -122,6 +134,15 @@ if state_cat == (SC_HITSTUN) && ustrong_char != noone
 {
     timer = 0;
     ustrong_char = noone;       
+}
+
+if flowy_cooldown > 0{
+	flowy_active = true;
+	if flowy_cooldown == 1{
+		flowy_active = false;	
+	}
+	flowy_cooldown--;	
+
 }
 //copypaste description
 /*

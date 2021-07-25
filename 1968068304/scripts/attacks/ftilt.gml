@@ -132,10 +132,10 @@ set_hitbox_value(AT_FTILT, 3, HG_HITBOX_GROUP, 1);
 
 //position
 set_hitbox_value(AT_FTILT, 3, HG_HITBOX_X, 45);
-set_hitbox_value(AT_FTILT, 3, HG_HITBOX_Y, -30);
+set_hitbox_value(AT_FTILT, 3, HG_HITBOX_Y, -28);
 //shape
 set_hitbox_value(AT_FTILT, 3, HG_WIDTH, 44);
-set_hitbox_value(AT_FTILT, 3, HG_HEIGHT, 34);
+set_hitbox_value(AT_FTILT, 3, HG_HEIGHT, 38);
 set_hitbox_value(AT_FTILT, 3, HG_SHAPE, 0);
 //knockback
 set_hitbox_value(AT_FTILT, 3, HG_BASE_KNOCKBACK, 6);

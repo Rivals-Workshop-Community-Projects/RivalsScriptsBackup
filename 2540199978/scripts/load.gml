@@ -51,5 +51,7 @@ sprite_change_offset("nspecial_proj", 64, 94);
 sprite_change_offset("snowflake", 11, 11);
 sprite_change_offset("nspecialCharge", 3, 7);
 sprite_change_offset("uspec_hurt2", 40, 80);
+sprite_change_offset("particle", 4, 4);
+sprite_change_offset("maid", 40, 72);
 set_victory_theme(CH_ETALUS);
 set_victory_bg(sprite_get("vic"));

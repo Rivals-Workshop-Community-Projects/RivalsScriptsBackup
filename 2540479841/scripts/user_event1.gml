@@ -50,7 +50,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 16);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 35);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 1.25);
+set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_X, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, 10);
@@ -78,6 +78,9 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, sound_get("nothing"));
+set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 0);
+set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, 0);
 
 set_hitbox_value(AT_DSPECIAL, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_TYPE, 2);

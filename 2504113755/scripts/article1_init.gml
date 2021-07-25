@@ -15,4 +15,10 @@ explosion_frame_offset = 0
 
 //ignores_walls = false
 
+
+//	init_shader();
+
+
+
+
 mask_index = sprite_get("wraith_hurtbox");

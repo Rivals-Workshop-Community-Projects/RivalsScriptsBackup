@@ -13,6 +13,9 @@ crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
+// Victory
+set_victory_bg(sprite_get("victory_bg")); // victory_background.png
+
 //Final Smash
 fs_char_portrait_y = 60;
 fs_char_chosen_final_smash = "custom";
@@ -65,7 +68,7 @@ max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 13; //fast fall speed
 gravity_speed = .50;
 hitstun_grav = .5;
-knockback_adj = 1.2; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 16;

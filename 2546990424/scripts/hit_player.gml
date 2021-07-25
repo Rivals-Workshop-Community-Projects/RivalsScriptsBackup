@@ -34,6 +34,9 @@ if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1){
 	if (hit_player_obj = my_hitboxID.player_id && hit_player_obj.prev_state != PS_HITSTUN){
 		whirlwind_myself = true;
 	}
+	else {
+		cargo_grab = false;
+	}
 }
 else {
 	whirlwind_hit = false;
@@ -64,7 +67,8 @@ if (my_hitboxID.attack == AT_DSPECIAL && hit_player_obj = my_hitboxID.player_id
 } 
 
 //Resets the Whirlwind Effect
-if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num != 1 && my_hitboxID.hbox_num != 10){
+if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num != 1 && my_hitboxID.hbox_num != 10
+&& hit_player_obj != my_hitboxID.player_id){
 	whirlwind_player.whirlwind_effect = false;
 	whirlwind_punch_effect = false;
 	whirlwind_punch_active = false;
@@ -78,7 +82,7 @@ if (my_hitboxID.attack == AT_NSPECIAL && cargo_grab == false){
 	  && hit_player_obj.clone == false){
 	        
 	        //Grabs them on the Right
-	        if (my_hitboxID.hbox_num == 1){
+	        if (my_hitboxID.hbox_num == 1 && my_hitboxID.length == 3 && my_hitboxID.hbox_group == 9){
 	        	cargo_hit_right = true;
 	        	window = 4;
 	        	window_timer = 1;
@@ -87,7 +91,7 @@ if (my_hitboxID.attack == AT_NSPECIAL && cargo_grab == false){
 	        	cargo_hit_right = false;
 	        }
 	        //Grabs them on the Left
-	        if (my_hitboxID.hbox_num == 2){
+	        if (my_hitboxID.hbox_num == 2 && my_hitboxID.length == 3 && my_hitboxID.hbox_group == 9){
 	        	cargo_hit_left = true;
 	        	window = 4;
 	        	window_timer = 1;
@@ -100,7 +104,7 @@ if (my_hitboxID.attack == AT_NSPECIAL && cargo_grab == false){
 	        //Initiates the Cargo Hold (sets the variables)
 	        if (my_hitboxID.hbox_num == 3){
 	        	//Timer is the opponent percentage + 60
-	    		grab_timer = get_player_damage(hit_player_obj.player) + 60;
+	    		grab_timer = get_player_damage(hit_player_obj.player) + 18;
 		        cargo_grab = true;
 	            window = 5;
 	            window_timer = 1;

@@ -52,6 +52,16 @@ if (runeJ && my_hitboxID.type == 1 && hit_player_obj.epinel_other_weightless_tim
 
 scr_spawn_attack_fx_slash_small();
 
+
+if (!free && my_hitboxID.type == 1 && instance_exists(epinel_other_standing_on_platform_id)) {
+	with (epinel_other_standing_on_platform_id) {
+		if (hsp != 0) {
+			hsp = sign(hsp) * (abs(hsp) - 1);
+		}
+	}
+}
+
+
 switch (my_hitboxID.attack) {
 	
 	case AT_FAIR:
@@ -119,6 +129,10 @@ switch (my_hitboxID.attack) {
 		//don't drag if the opponent's standing on the same platform.
 		if (hit_player_obj.epinel_other_standing_on_platform_id == epinel_other_standing_on_platform_id) break;
 		hit_player_obj.old_hsp += clamp(epinel_other_standing_on_platform_id.hsp, -6, 6);
+		//cap the platform's speed
+		with (epinel_other_standing_on_platform_id) {
+			hsp = clamp(hsp, -4, 4);
+		}
 		
 		//add platform hitstop
 		if (epinel_other_standing_on_platform_id.vsp == 0 ) {
@@ -184,6 +198,7 @@ switch (my_hitboxID.attack) {
 				
 				if (my_hitboxID.hbox_num == 3) {
 					sound_play(asset_get("sfx_kragg_roll_land"));
+					sound_play(sound_get("smallexplosion"), 0, noone, 0.5, 1.4);
 					//break platform if epinel is standing on one.
 					if (epinel_grabbed_player_object_id == hit_player_obj && is_standing_on_platform) {
 						hit_player_obj.hitstop = 8;
@@ -317,6 +332,10 @@ switch (my_hitboxID.attack) {
 					epinel_other_standing_on_platform_id.hitstop = round(hitstop);
 					epinel_other_standing_on_platform_id.old_hsp = epinel_other_standing_on_platform_id.hsp;
 				}
+				//shorten the hitbox's lifetime if in hitpause.
+				if (hitpause) {
+					my_hitboxID.length = 1;
+				}
 			break;
 			
 			//make falling platform projectiles reset opponent's state to pratfall if they hit too early.
@@ -361,7 +380,12 @@ switch (my_hitboxID.attack) {
 		}
 		//pull the player to epinel's height during multihits
 		if (my_hitboxID.hbox_num <= 5 && hit_player_obj.state == PS_HITSTUN && hit_player_obj.hitpause) {
-			hit_player_obj.old_vsp += clamp((y - hit_player_obj.y) / 10, -5, 5);
+			hit_player_obj.old_vsp += clamp((y - hit_player_obj.y) / 5, -5, 5);
+			//if on a platform, slow it down
+			if (instance_exists(epinel_other_standing_on_platform_id)) {
+				with (epinel_other_standing_on_platform_id) hsp = clamp(hsp, -1, 1);
+
+			}
 		}
 	break;
 	

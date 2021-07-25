@@ -100,7 +100,6 @@ bubble_y = 8;
 
 //local
 air_dodge_fx_state = 0;
-
 last_hit_stun = false;
 
 grabbed_player_obj = noone;    //the player object currently being grabbed.
@@ -116,6 +115,8 @@ fair_wall_timer_max = 120;
 fspecial_times = 0;
 fspecial_dir = 0;
 fspecial_dir_inc = 6;
+fspecial_amount_max = 3;
+fspecial_timer_max = 300;
 nspecial_article = noone;
 uspecial_nodestart_x = 0;
 uspecial_nodestart_y = 0;

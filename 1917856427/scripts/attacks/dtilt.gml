@@ -33,17 +33,17 @@ set_num_hitboxes(AT_DTILT,1);
 set_hitbox_value(AT_DTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DTILT, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DTILT, 1, HG_LIFETIME, 14);
-set_hitbox_value(AT_DTILT, 1, HG_HITBOX_Y, -12);
-set_hitbox_value(AT_DTILT, 1, HG_HITBOX_X, 28);
-set_hitbox_value(AT_DTILT, 1, HG_WIDTH,56);
-set_hitbox_value(AT_DTILT, 1, HG_HEIGHT, 40);
-set_hitbox_value(AT_DTILT, 1, HG_SHAPE, 0);
+set_hitbox_value(AT_DTILT, 1, HG_HITBOX_Y, -24);
+set_hitbox_value(AT_DTILT, 1, HG_HITBOX_X, 30);
+set_hitbox_value(AT_DTILT, 1, HG_WIDTH,66);
+set_hitbox_value(AT_DTILT, 1, HG_HEIGHT, 48);
+set_hitbox_value(AT_DTILT, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_DTILT, 1, HG_PRIORITY, 10);
 set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 7);
-set_hitbox_value(AT_DTILT, 1, HG_ANGLE, 70);
-set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 3);
-set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, .7);
+set_hitbox_value(AT_DTILT, 1, HG_ANGLE, 55);//old 70
+set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 7); //old 3
+set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, .3);//old .7
 set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT_Y_OFFSET, 20);
-set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));

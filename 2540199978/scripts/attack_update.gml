@@ -23,6 +23,13 @@ switch (attack)
         if (window == 2 && window_timer == get_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH) && (attack_invince || taunt_down)) window_timer--;
         break;
 
+    case AT_EXTRA_1:
+        can_jump = true;
+        if (state_timer == 1) spawn_base_dust(x, y-floor(char_height/2), "anime", spr_dir);
+        if (taunt_down && !jump_pressed) window_timer = 0;
+        else sound_stop(sound_get("boa"));
+        break;
+
     case AT_NSPECIAL:
         ++nspecCharge;
         if (nspecCharge%(15*nspecChargeMax/75)==0 && window < 3) sound_play(asset_get("sfx_ice_on_player"));
@@ -41,6 +48,7 @@ switch (attack)
             case 2:
                 can_shield = true;
                 can_jump = true;
+                if (!free && state_timer%12 == 0) spawn_base_dust(x-spr_dir*20, y, "wavedash", spr_dir);
                 if ((!special_down && state_timer > (nspecChargeMax+10)/5) || nspecCharge > nspecChargeMax+10)
                 {
                     window = 3;
@@ -125,11 +133,14 @@ switch (attack)
             }
             else
             {
-                can_fast_fall = false;
-                can_move = false;
                 flake.x += ((x + spr_dir * 40) - flake.x)/3;
                 flake.y += ((y - 35) - flake.y)/3;
                 tutDoneAdv[1] = true;
+            }
+            if (hitpause)
+            {
+                can_fast_fall = false;
+                can_move = false;
             }
         }
         if (window == 4)
@@ -200,6 +211,7 @@ switch (attack)
                         set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_Y, flake.y-y);
                         create_hitbox(AT_DSPECIAL, 1, 0, 0);
                         spawn_hit_fx(flake.x, flake.y, 302);
+                        spawn_base_dust(flake.x, flake.y, "flake");
                         sound_play(asset_get("sfx_ice_shatter"));
                     }
                 }
@@ -230,19 +242,42 @@ switch (attack)
         }
         break;
 
-    case AT_DTILT:
-        down_down = true;
-        move_cooldown[AT_DTILT] = 1;
+    case AT_FSTRONG:
+        if (window == 2 && window_timer == 1)
+        {
+            spawn_base_dust(x-spr_dir*10, y, "dash_start", spr_dir);
+        }
         break;
 
-    case AT_UAIR:
-        if (state_timer == 4) sound_play(asset_get("sfx_swipe_heavy2"));
-        if (window >= 2) draw_indicator = false;
+    case AT_FTILT:
+        if (window == 2 && window_timer == 1)
+            spawn_base_dust(x, y, "dash", spr_dir);
+        break;
+
+    case AT_UTILT:
+        if (window == 3 && window_timer == 1)
+            spawn_base_dust(x+spr_dir*50, y, "dash", -spr_dir);
         break;
 
     case AT_DATTACK:
         if (window == 2 && !hitpause && window_timer%4 == 0)
             create_hitbox(AT_DATTACK, 1, 0, 0);
+        if (window < 3 && !hitpause && window_timer%4 == 0)
+            spawn_base_dust(x-spr_dir*20, y, "dash", spr_dir);
+        if (window == 3 && window_timer == 1)
+            spawn_base_dust(x+spr_dir*60, y, "walk", -spr_dir);
+        break;
+
+    case AT_DTILT:
+        down_down = true;
+        move_cooldown[AT_DTILT] = 1;
+        if (window == 2 && window_timer == 1)
+            spawn_base_dust(x-spr_dir*20, y, "dash", spr_dir);
+        break;
+
+    case AT_UAIR:
+        if (state_timer == 4) sound_play(asset_get("sfx_swipe_heavy2"));
+        if (window >= 2) draw_indicator = false;
         break;
 
     case AT_JAB:
@@ -258,6 +293,7 @@ switch (attack)
                 {
                     if (state_timer%3 == 1) create_hitbox(AT_JAB, 1, 0, 0);
                     if (state_timer%6 == 0) sound_play(asset_get("sfx_swipe_medium1"));
+                    if (state_timer%10 == 0) spawn_base_dust(x-spr_dir*16, y, "dash", spr_dir);
                     else if (state_timer > 5)
                     {  
                         ++jabLag;
@@ -266,6 +302,7 @@ switch (attack)
                         {
                             window = 3;
                             window_timer = 0;
+                            was_parried = false;
                         }
                         can_attack = true;
                     }
@@ -416,3 +453,39 @@ switch (attack)
         nspecCharge += nspecChargeMax/5;
     }
 }
+
+#define spawn_base_dust
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+{
+    var dlen; //dust_length value
+    var dfx; //dust_fx value
+    var dfg; //fg_sprite value
+    var dfa = 0; //draw_angle value
+    var dust_color = 0;
+    var x = argument[0], y = argument[1], name = argument[2];
+    var dir = argument_count > 3 ? argument[3] : 0;
+    
+    switch (name) {
+        default: 
+        case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+        case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+        case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+        case "doublejump": 
+        case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+        case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+        case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+        case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+        case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+        case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+        case "anime": dlen = 1; dfx = 22; dfg = 2656; dust_color = 1; break;
+        case "flake": dlen = 1; dfx = 14; dfg = 2656; dust_color = 1; break;
+    }
+    var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+    newdust.dust_fx = dfx; //set the fx id
+    if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+    newdust.dust_color = dust_color; //set the dust color
+    if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+    newdust.draw_angle = dfa;
+    return newdust;
+} // Supersonic

@@ -71,10 +71,33 @@ if ("practice" in self)
 						AddText("");
 						AddText("Speed changes to FSpecial");
 						AddText("");
-						AddText("DSpecial now has aim assist cuz some of you cant aim smh");
+						AddText("DSpecial now has aim assist cuz some of you can't aim smh");
 						AddText("");
 						AddText("Minor bugfixes:");
 						AddText("-DTilt buffer");
+						break;
+					case 3:
+						AddText("v1.3 - 14 Jul 2021");
+						AddText("");
+						AddText("Increased prat_land_time 12 -> 14");
+						AddText("");
+						AddText("BAir startup 15 -> 13");
+						AddText("BAir endlag 17 -> 15");
+						AddText("BAir BKB 7 -> 6.5");
+						AddText("BAir Angle 145 (35) -> 140 (40)");
+						AddText("BAir Base Hitpause 7 -> 10");
+						AddText("BAir Hitpause Scaling 0.95 -> 1");
+						AddText("");
+						AddText("You now can't drift while in hitpause when hitting FSpec");
+						AddText("");
+						AddText("DStrong Base Hitpause 8 -> 11 cuz some of you can't tech smh");
+						AddText("");
+						AddText("Added dust effects to attacks");
+						AddText("Added snow effects to Snowflake");
+						AddText("");
+						AddText("Funny down taunt");
+						AddText("");
+						AddText("Added Acolyte alt");
 						break;
 				}
 				DrawTutorialBlock();

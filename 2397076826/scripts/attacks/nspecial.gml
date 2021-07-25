@@ -50,7 +50,7 @@ set_window_value(AT_NSPECIAL, 6, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_SFX, sound_get("Fstrong"));
 
 
-set_window_value(AT_NSPECIAL, 7, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_NSPECIAL, 7, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_NSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 23);
 
@@ -84,8 +84,8 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 303);
-set_hitbox_value(AT_NSPECIAL, 1, HG_TECHABLE, 3);
-set_hitbox_value(AT_NSPECIAL, 1, HG_SDI_MULTIPLIER, 0.1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_TECHABLE, 00);
+set_hitbox_value(AT_NSPECIAL, 1, HG_SDI_MULTIPLIER, 1);
 
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_WINDOW, 6);
@@ -107,8 +107,8 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT_Y_OFFSET, 1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT, 303);
-set_hitbox_value(AT_NSPECIAL, 4, HG_TECHABLE, 3);
-set_hitbox_value(AT_NSPECIAL, 4, HG_SDI_MULTIPLIER, 0.1);
+set_hitbox_value(AT_NSPECIAL, 4, HG_TECHABLE, 00);
+set_hitbox_value(AT_NSPECIAL, 4, HG_SDI_MULTIPLIER, 1);
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 8);
@@ -180,8 +180,8 @@ set_hitbox_value(AT_NSPECIAL, 5, HG_VISUAL_EFFECT_Y_OFFSET, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_VISUAL_EFFECT, 303);
-set_hitbox_value(AT_NSPECIAL, 5, HG_TECHABLE, 3);
-set_hitbox_value(AT_NSPECIAL, 5, HG_SDI_MULTIPLIER, 0.1);
+set_hitbox_value(AT_NSPECIAL, 5, HG_TECHABLE, 00);
+set_hitbox_value(AT_NSPECIAL, 5, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_GROUP, 2);
 
 set_hitbox_value(AT_NSPECIAL, 6, HG_HITBOX_TYPE, 1);
@@ -204,8 +204,8 @@ set_hitbox_value(AT_NSPECIAL, 6, HG_VISUAL_EFFECT_Y_OFFSET, 1);
 set_hitbox_value(AT_NSPECIAL, 6, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_NSPECIAL, 6, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 6, HG_VISUAL_EFFECT, 303);
-set_hitbox_value(AT_NSPECIAL, 6, HG_TECHABLE, 3);
-set_hitbox_value(AT_NSPECIAL, 6, HG_SDI_MULTIPLIER, 0.1);
+set_hitbox_value(AT_NSPECIAL, 6, HG_TECHABLE, 00);
+set_hitbox_value(AT_NSPECIAL, 6, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 6, HG_HITBOX_GROUP, 2);
 
 set_hitbox_value(AT_NSPECIAL, 7, HG_HITBOX_TYPE, 1);

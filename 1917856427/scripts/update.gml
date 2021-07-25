@@ -59,17 +59,26 @@ if used_aird = true && (state != PS_AIR_DODGE)
     if  state = PS_WAVELAND || state == PS_DEAD || state == PS_RESPAWN
     {
         used_aird = false;
-        max_djumps = 1;
     }
     else if state != PS_WAVELAND
         {
-            used_aird = false;
-            if state != PS_HITSTUN
-            {
-            state = PS_PRATFALL
-            }
-            max_djumps = 1;
+			//do literally nothing bitch
         }
+}
+if (free)
+{
+	if (used_aird)
+	{
+		move_cooldown[AT_USPECIAL] = 99999999;
+	}
+}
+else
+{
+	if(used_aird)
+	{
+		used_aird = false;
+		move_cooldown[AT_USPECIAL] = 0;
+	}
 }
 if(grabbedid != noone){
 	grabbedid.ungrab++;
@@ -78,7 +87,6 @@ if(grabbedid != noone){
 		grabbedid.invincible = false; //Feel free to remove this line if the grab does not make the opponent invincible.
 		grabbedid.state = PS_TUMBLE;
 		grabbedid.ungrab = 0;
-		grabbedid = noone;
 	}
 }
 
@@ -243,6 +251,7 @@ switch (state)
   TIMED = 0;
    break;
  case PS_WALL_JUMP:
+ used_aird = false;
  move_cooldown[AT_USPECIAL] = 0;
   TIMED = 0;
    break;

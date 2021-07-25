@@ -65,8 +65,8 @@ if canTutorial == 1 {
 		shader_end();
 			//Header Text
 			draw_debug_text(tutorialX, tutorialY, "Page " + string(tutorialPage) + " / " + string(tutorialPageTotal))
-			draw_debug_text(tutorialX + 540, tutorialY,  "Version: V1.1.1" )
-			draw_debug_text(tutorialX + 540, tutorialY + 20,  "Release: 7/3/2020" )
+			draw_debug_text(tutorialX + 540, tutorialY,  "Version: V1.2.1" )
+			draw_debug_text(tutorialX + 540, tutorialY + 20,  "Release: 7/15/2020" )
 			//Footer Text End
 			
 			//Footer Text

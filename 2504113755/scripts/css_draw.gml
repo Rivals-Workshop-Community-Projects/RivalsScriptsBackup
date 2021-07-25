@@ -66,7 +66,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 24; // number of alternate color palettes. 0 is the default color, count it accordingly.
+	col_max = 27; // number of alternate color palettes. 0 is the default color, count it accordingly.
 	
 	//first array index is for alternate color. second array index is for distinguishing the information in it.
 	ce[0,0] = make_color_rgb(255, 57, 124 ) // "color preview square" color. can be any color!
@@ -75,7 +75,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[1,0] = make_color_rgb(32, 85, 120 )
 	ce[1,1] = "Deep Navy"
 	ce[1,2] = ""
-	ce[2,0] = make_color_rgb(213, 95, 97 )
+	ce[2,0] = make_color_rgb(207, 134, 0)
 	ce[2,1] = "Sea Salt"
 	ce[2,2] = ""
 	ce[3,0] = make_color_rgb(213, 95, 97)
@@ -144,6 +144,16 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[24,0] = make_color_rgb( 177, 20, 224)
 	ce[24,1] = "nova_alt.png"
 	ce[24,2] = ""
+	ce[25,0] = make_color_rgb( 227, 151, 0)
+	ce[25,1] = "BLM"
+	ce[25,2] = ""
+	ce[26,0] = make_color_rgb( 215, 215, 215)
+	ce[26,1] = "Shattered Prism"
+	ce[26,2] = ""
+	ce[27,0] = make_color_rgb( 39, 158, 96)
+	ce[27,1] = "Genji-Ish"
+	ce[27,2] = ""
+
 	
 	// you can add more, by copypasting and changing the first index of the array accordingly.
 	// ! changing part end.
@@ -240,6 +250,50 @@ if (color_desc_activate){
 //--- ---
 // altered version of muno's functions. if you have other css codes, this part needs to be at the bottom of the code.
 //--- ---
+
+
+//CODE FOR CSS OUTLINES
+if (get_player_color(player) == 14) { //AND 26
+    
+    
+	draw_sprite_ext(sprite_get("charselect_gb"),1,x+8,y+8,2,2,0,-1,1);
+} else if (get_player_color(player) == 26) { //AND 26
+    
+    
+	draw_sprite_ext(sprite_get("charselect_prism"),1,x+8,y+8,2,2,0,-1,1);
+}
+
+
+//rainboW UWU code
+	if (!variable_instance_exists(id, "hue_offset")){
+
+hue_offset=0; }
+
+hue_speed=1; //change this to change the speed of the hueshift
+
+
+
+hue_offset+=hue_speed;
+hue_offset=hue_offset mod 255; //keeps hue_offset within the 0-255 range
+
+color_rgb=make_color_rgb(255, 27, 24); //input rgb values here, uses rgb to create a gamemaker colour variable
+hue=(color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
+color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
+set_color_profile_slot(26, 0, 215,215,215); //uses that variable to set the slot's new colours
+
+color_rgb_2=make_color_rgb(255, 145, 208); //input rgb values here, uses rgb to create a gamemaker colour variable
+hue_2=(color_get_hue(color_rgb_2)+hue_offset) mod 255; //finds the hue and shifts it
+color_hsv_2=make_color_hsv(hue_2,color_get_saturation(color_rgb_2),color_get_value(color_rgb_2)); //creates a new gamemaker colour variable using the shifted hue
+set_color_profile_slot(26, 1, color_get_red(color_hsv_2),color_get_green(color_hsv_2),color_get_blue(color_hsv_2)); //uses that variable to set the slot's new colours
+
+
+
+
+init_shader()
+
+
+
+
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
 

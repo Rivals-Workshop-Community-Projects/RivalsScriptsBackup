@@ -34,9 +34,9 @@ min_acc = 2;
 hsp = 7;
 vsp = -7;
 
-aim_acc = 0.35
+aim_acc = 0.45
 aim_spd = 0;
-aim_spd_max = 14
+aim_spd_max = 26
 
 explode = false;
 destroyed = false;

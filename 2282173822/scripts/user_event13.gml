@@ -4,7 +4,11 @@
 
 
 
-if get_attack_value(attack, AG_MUNO_ATTACK_COOLDOWN) != 0 switch (get_attack_value(attack, AG_MUNO_ATTACK_CD_SPECIAL)){
+phone_stopped_sounds = [];
+
+
+
+if !phone_lightweight && get_attack_value(attack, AG_MUNO_ATTACK_COOLDOWN) != 0 switch (get_attack_value(attack, AG_MUNO_ATTACK_CD_SPECIAL)){
 	case 1:
 		move_cooldown[attack] = phone_arrow_cooldown;
 		break;

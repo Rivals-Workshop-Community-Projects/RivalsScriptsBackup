@@ -51,7 +51,7 @@ hitstun_grav = .5;
 knockback_adj = 1.0; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 12;
+prat_land_time = 14;
 wave_land_time = 6;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = 0; //grounded deceleration when wavelanding
@@ -146,6 +146,7 @@ fspecGrabbedObj = noone;
 // snowflake
 flake = {x:x==0?room_width/2:x, y:y==0?room_height/2:y, hsp:0, vsp:0, isOut:false};
 renderer = instance_create(0,0,"obj_article2");
+particle = hit_fx_create(sprite_get("particle"), 21);
 
 // uspec
 uspecTarget = false;

@@ -1,4 +1,19 @@
 /*
+-- V1.11 --
+
+- While im here i might aswell add a few more colours
+
+-- V1.10 --
+Bug Fixes:
+- Enemies now become visible again if you're hit during fspecial or dair
+- Dspecial projectile now overwrites the jackpot projectile
+
+Balance Changes:
+- Dspecial is now active for slightly longer
+- Dspecial will now activate upon hitting a projectile but wont store the special projectile unless it hits an enemy
+- Storing projectiles has a shorter cooldown [60->30]
+
+
 -- V1.9 --
 Movement Changes:
 - Reduced Dash Speed (12.8->12.3)

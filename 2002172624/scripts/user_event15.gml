@@ -372,6 +372,15 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	//Update 1.21 - Small Balance and Bugfixes
+	initPatch("1.21", "9 July, 2021");
+	initPatchWords("Down Special 'King's Army' (bugfix)
+	- Cats created in the air no long put Briggs into parry stun'");
+	initPatchWords_ext("I forgot to update the air version of the cats when I cahnged the ground ones", fa_left, c_gray, 1, 0);
+
+	initPatchWords("Up Strong 'The Throne'
+	- Lowered knockback scaling on tip of the crown from 1.5 to 1.2");
+
 	//Update 1.20 - Skins + Punishment  Time
 	initPatch("1.20", "7 March, 2021");
 	initPatchWords("Up Special 'Grappling Hook'

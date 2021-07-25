@@ -129,6 +129,11 @@ time_y = 0;
 duration = 60;
 dest_y = -50;
 
+// Rune
+prev_attack_used = AT_JAB;
+do_fancy_land = false;
+psuedo_waveland_speed = 8;
+
 hurtbox_spr = sprite_get("saffronhitbox");
 crouchbox_spr = sprite_get("saffroncrouchbox");
 air_hurtbox_spr = -1;

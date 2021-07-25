@@ -1,4 +1,4 @@
-print (turbine_cont);
+print (grab_timer);
 
 shader_start();
 
@@ -35,6 +35,11 @@ if (attack == AT_DSPECIAL && window == 2 && window_timer > 0
 		draw_sprite_ext(sprite_get("arrows"), 7, x-40, y-70, 2, 2, 0, c_white, 1);
 	}
 	
+}
+
+if (turbine_gust_cont != 0){
+	draw_sprite_ext(sprite_get("fspecial_projectile"), turbine_gust_cont-1, 
+	turbine_gustx, turbine_gusty, turbine_gust_spr, 1, 0, c_white, 1);
 }
 
 shader_end();

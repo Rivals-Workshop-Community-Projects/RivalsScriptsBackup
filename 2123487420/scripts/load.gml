@@ -1,0 +1,1 @@
+sprite_change_offset("randall", 33, 0);

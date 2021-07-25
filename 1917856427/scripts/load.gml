@@ -54,7 +54,7 @@ sprite_change_offset("ustrong", 63, 130);
 sprite_change_offset("dstrong", 63, 110);
 sprite_change_offset("nspecial", 63, 110);
 sprite_change_offset("nspecial_air", 63, 110);
-sprite_change_offset("fspecial", 63, 110);
+sprite_change_offset("fspecial", 63, 150);
 sprite_change_offset("uspecial", 63, 110);
 sprite_change_offset("dspecial", 63, 110);
 sprite_change_offset("taunt", 63, 110);
@@ -69,6 +69,7 @@ sprite_change_offset("intro2", 63, 110);
 
 sprite_change_offset("plat", 92, 14);
 sprite_change_offset("hfx_clock_large", 128, 128);
+sprite_change_offset("PLASMA_FX", 128, 128);
 sprite_change_offset("hfx_clock_specialt", 128, 128);
 set_victory_bg( sprite_get( "victoryroyalebg" ));
 set_victory_theme( sound_get( "victorytheme" ));

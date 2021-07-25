@@ -116,6 +116,7 @@ prevent_dair1 = false;
 grabbedid = noone;
 kirbyability = 13;
 tcoart = sprite_get("tharatcoart");
+plushForAmber = sprite_get("plushForAmber");
 
 nname = "Thara"
 

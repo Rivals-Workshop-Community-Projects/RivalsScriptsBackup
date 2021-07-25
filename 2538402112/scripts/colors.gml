@@ -157,34 +157,34 @@ set_color_profile_slot( 12, 6, 0, 0, 0 ); //EyeBlack2
 set_color_profile_slot( 12, 7, 18, 149, 173 ); //Orb/Gear
 
 // Shiny
-set_color_profile_slot( 13, 0, 76, 194, 189 ); //Green
-set_color_profile_slot( 13, 1, 196, 155, 162 ); //Red
-set_color_profile_slot( 13, 2, 255, 255, 85 ); //Eye
-set_color_profile_slot( 13, 3, 219, 71, 87 ); //Leaf
-set_color_profile_slot( 13, 4, 196, 94, 111 ); //Mouth
-set_color_profile_slot( 13, 5, 0, 0, 0 ); //EyeBlack
-set_color_profile_slot( 13, 6, 0, 0, 0 ); //EyeBlack2
-set_color_profile_slot( 13, 7, 18, 149, 173 ); //Orb/Gear
-
-// Abyss
-set_color_profile_slot( 14, 0, 73, 59, 111 ); //Green
-set_color_profile_slot( 14, 1, 105, 122, 144 ); //Red
-set_color_profile_slot( 14, 2, 54, 18, 104 ); //Eye
-set_color_profile_slot( 14, 3, 201, 63, 193 ); //Leaf
-set_color_profile_slot( 14, 4, 54, 18, 104 ); //Mouth
-set_color_profile_slot( 14, 5, 0, 0, 0 ); //EyeBlack
-set_color_profile_slot( 14, 6, 0, 0, 0 ); //EyeBlack2
-set_color_profile_slot( 14, 7, 89, 61, 161 ); //Orb/Gear
-
-// Early Access
-set_color_profile_slot( 15, 0, 83, 122, 62 ); //Green
-set_color_profile_slot( 15, 1, 211, 226, 154 ); //Red
-set_color_profile_slot( 15, 2, 255, 249, 249 ); //Eye
-set_color_profile_slot( 15, 3, 35, 67, 49 ); //Leaf
-set_color_profile_slot( 15, 4, 255, 249, 249 ); //Mouth
+set_color_profile_slot( 15, 0, 76, 194, 189 ); //Green
+set_color_profile_slot( 15, 1, 196, 155, 162 ); //Red
+set_color_profile_slot( 15, 2, 255, 255, 85 ); //Eye
+set_color_profile_slot( 15, 3, 219, 71, 87 ); //Leaf
+set_color_profile_slot( 15, 4, 196, 94, 111 ); //Mouth
 set_color_profile_slot( 15, 5, 0, 0, 0 ); //EyeBlack
 set_color_profile_slot( 15, 6, 0, 0, 0 ); //EyeBlack2
-set_color_profile_slot( 15, 7, 35, 67, 49 ); //Orb/Gear
+set_color_profile_slot( 15, 7, 18, 149, 173 ); //Orb/Gear
+
+// Abyss
+set_color_profile_slot( 13, 0, 73, 59, 111 ); //Green
+set_color_profile_slot( 13, 1, 105, 122, 144 ); //Red
+set_color_profile_slot( 13, 2, 54, 18, 104 ); //Eye
+set_color_profile_slot( 13, 3, 201, 63, 193 ); //Leaf
+set_color_profile_slot( 13, 4, 54, 18, 104 ); //Mouth
+set_color_profile_slot( 13, 5, 0, 0, 0 ); //EyeBlack
+set_color_profile_slot( 13, 6, 0, 0, 0 ); //EyeBlack2
+set_color_profile_slot( 13, 7, 89, 61, 161 ); //Orb/Gear
+
+// Early Access
+set_color_profile_slot( 14, 0, 83, 122, 62 ); //Green
+set_color_profile_slot( 14, 1, 211, 226, 154 ); //Red
+set_color_profile_slot( 14, 2, 255, 249, 249 ); //Eye
+set_color_profile_slot( 14, 3, 35, 67, 49 ); //Leaf
+set_color_profile_slot( 14, 4, 255, 249, 249 ); //Mouth
+set_color_profile_slot( 14, 5, 0, 0, 0 ); //EyeBlack
+set_color_profile_slot( 14, 6, 0, 0, 0 ); //EyeBlack2
+set_color_profile_slot( 14, 7, 35, 67, 49 ); //Orb/Gear
 
 // Marshtomp
 set_color_profile_slot( 16, 0, 86, 173, 166 ); //Green

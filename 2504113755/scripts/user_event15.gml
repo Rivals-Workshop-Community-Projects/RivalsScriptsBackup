@@ -387,7 +387,9 @@ with phone{
 	initTip("Fspecial");
 	initTipWords("FSpecial is a quick dash.
 	
-	If it hits a player or wraith, it transitions into a flashy cutscene (without pratfall).");
+	If it hits a player it transitions into a flashy cutscene (without pratfall).
+	If it hits a wraith, it has no pratfall.
+	");
 	
 
 	
@@ -513,6 +515,79 @@ with phone{
 	initPatchWords("Fnuuy joke
 	- waog");
 	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0); */
+	
+	initPatch("1.13", "16 July, 2021");
+		
+			initPatchWords_ext("Feedback", fa_center, c_white, 0, 0);
+initPatchWords_ext("3 new alts! 2 for Inner and one for Civic for winning RWL with Nova.
+added proper outlines for 2 alts on the css
+
+~dash and dashstart anims are 1 pixel longer
+
++ftilt endlag 13-12
++ftilt hsp 3-4
++ftilt bkb 7-8
++ftilt kbs 0.55-0.6
++ftilt hitbox is more generous
+~ftilt angle 361-40
+
++jab2 damage 4-5
++jab1 hitbox bigger
++jab2 hitbox bigger
++jabs no longer have angle flipper 6
+~jab2 angle 105-100
+
+jab iasa script is 1 frame earlier
+
++ustrong hitboxes more generous
++ustrong foot launcher hitbox now slightly bigger
+~ustrong foot hitbox now centered on the spinning hitboxes rather than the player
+
+~nair late spike bkb 5-4
+~nair late spike kbs 0.5-0.7
+
+-fair endlag 13-14 frames
+-fair landing lag 6-7 frames
+
+-bair landing lag 4-5 frames
++bair damage 6-7
+
+-uair endlag 12-13 frames
++uair damage 6-7
+
++dair on hit lerping is stronger
+-dair hitboxes made smaller to better match anim
+
+-fspecial startup 12-15 frames
+-fspecial initial hitbox made smaller
+~fspecial cutscene is much faster
++fspecial endlag 34-25 frames
+-fspecial damage 14-12
+-hitting a wraith with fspecial no longer does the cutscene (still removes pratfall)
+~fspecial now tries to keep the opponent in the blastzone before the final hit
+
+~fspecial multihits kbs 0.2-0
+~fspecial multihits hitpause scaling 0.15-0.1
+~fspecial multihits bkb 4-5
++fspecial hit 1 bkb 5-7 (for the wraith)
+
+-uspecial startup 7-8 frames
+~uspecial sfx/hitfx edited
+~uspecial first outward hitbox has a new animation for that specific hitbox
+~uspecial first outward hitbox has new sfx to differentiate from the upward hit
++uspecial first hit kbs 0.8-0.85
+
++dspecial uses stronger hfx on land
+
+~wraith checks if youve already been hit by a hitbox? maybe works in some situations?
+~platform being moved to random places SHOULD be fixed, lmk if not", fa_left, c_white, 0, 0);
+	
+	
+		initPatch("1.11-1.12", "9+11 July, 2021");
+		
+			initPatchWords_ext("Whoops", fa_center, c_white, 0, 0);
+initPatchWords_ext("Removed the debug HSP value that draws below Nova
+Removed the debug sprites from the portrait", fa_left, c_white, 0, 0);
 	
 		initPatch("1.10", "9 July, 2021");
 		

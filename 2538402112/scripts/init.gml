@@ -18,7 +18,7 @@ walk_accel = 0.35;
 walk_turn_time = 6;
 initial_dash_time = 7;
 initial_dash_speed = 8;
-dash_speed = 8;
+dash_speed = 7.5;
 dash_turn_time = 10;
 dash_turn_accel = 1.5;
 dash_stop_time = 4;
@@ -31,15 +31,15 @@ jump_speed = 10.5;
 short_hop_speed = 6.5;
 djump_speed = 10;
 leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
+max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
-jump_change = 2.5; //maximum hsp when double jumping. If already going faster, it will not slow you down
+jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .25;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
 air_friction = .025;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
-walljump_hsp = 7;
+walljump_hsp = 6;
 walljump_vsp = 11;
 walljump_time = 32;
 max_fall = 11; //maximum fall speed without fastfalling
@@ -108,10 +108,9 @@ grov_pounce_foe = false
 grov_digdir = 1
 grov_wandangle = 0
 grov_dspecial_loops = 0
-grov_current_nspecial = 0 //0 Iron Thorn /1 Blast Seed /2 Stun Seed
+grov_current_nspecial = 1 //0 Iron Thorn /1 Blast Seed
 grov_fspecial_cooldown = 0
 grov_fspecial_airuse = false
-
 
 //workshop support
 plushForAmber = sprite_get("plushForAmber");
@@ -149,6 +148,12 @@ amber_hugExitPos[1] = 0; //The y target offset point.
 amber_useSprDirOffset = true; 
 amber_hugExitTimer = 30; //How many frames should pass before either player can exit the hug window loop
 amber_hugExitWindow = 3; //The window to jump to when either player presses a button to exit hug loop
+
+Hikaru_Title = "Time Gear Theif";
+hikaru_walkclone = sprite_get("walk_hikaruclone");
+hikaru_dairclone = sprite_get("dair_hikaruclone");
+hikaru_tauntclone = sprite_get("tauntHikaru");
+hikaru_gearglow = sprite_get("timegearglow");
 
 //RUNES
 if has_rune("A"){

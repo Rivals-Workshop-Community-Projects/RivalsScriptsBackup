@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 25 );
+set_num_palettes( 28 );
 
 // Apple Watch A
 set_color_profile_slot( 1, 0, 32, 85, 120 ); //Sword
@@ -247,14 +247,14 @@ set_color_profile_slot( 21, 6, 153, 79, 109 ); //fur (s)
 set_color_profile_slot( 21, 7, 201, 143, 193 ); //fur
 
 // bearf b+w
-set_color_profile_slot( 22, 0, 30, 30, 30 ); //Sword
-set_color_profile_slot( 22, 1, 30, 30, 30 ); //Sword 2
-set_color_profile_slot( 22, 2, 158, 194, 230 ); //line
-set_color_profile_slot( 22, 3, 113, 147, 189 ); //line (s)
-set_color_profile_slot( 22, 4, 67, 82, 97 ); //cloak
-set_color_profile_slot( 22, 5, 34, 45, 56 ); //cloak (s)
-set_color_profile_slot( 22, 6, 123, 133, 156 ); //fur (s)
-set_color_profile_slot( 22, 7, 179, 180, 181 ); //fur
+set_color_profile_slot( 22, 0, 30, 158, 96 ); //Sword
+set_color_profile_slot( 22, 1, 59, 237, 110 ); //Sword 2
+set_color_profile_slot( 22, 2, 48, 230, 91 ); //line
+set_color_profile_slot( 22, 3, 36, 158, 105 ); //line (s)
+set_color_profile_slot( 22, 4, 230, 234, 237 ); //cloak
+set_color_profile_slot( 22, 5, 164, 171, 165 ); //cloak (s)
+set_color_profile_slot( 22, 6, 48, 51, 56 ); //fur (s)
+set_color_profile_slot( 22, 7, 86, 86, 87 ); //fur
 
 // unnamed alt palette
 set_color_profile_slot( 23, 0, 163, 191, 217 ); //Sword
@@ -275,6 +275,36 @@ set_color_profile_slot( 24, 4, 74, 45, 105 ); //cloak
 set_color_profile_slot( 24, 5, 45, 21, 79 ); //cloak (s)
 set_color_profile_slot( 24, 6, 139, 122, 158 ); //fur (s)
 set_color_profile_slot( 24, 7, 191, 174, 202 ); //fur
+
+// BLM
+set_color_profile_slot( 25, 0, 227, 151, 0 ); //Sword
+set_color_profile_slot( 25, 1, 255, 222, 92 ); //Sword 2
+set_color_profile_slot( 25, 2, 225, 225, 225 ); //line
+set_color_profile_slot( 25, 3, 157, 168, 201 ); //line (s)
+set_color_profile_slot( 25, 4, 42, 46, 54 ); //cloak
+set_color_profile_slot( 25, 5, 20, 24, 28 ); //cloak (s)
+set_color_profile_slot( 25, 6, 92, 41, 26 ); //fur (s)
+set_color_profile_slot( 25, 7, 110, 70, 37 ); //fur
+
+// Prism
+set_color_profile_slot( 26, 0, 215, 215, 215 ); //Sword
+set_color_profile_slot( 26, 1, 255, 255, 255 ); //Sword 2
+set_color_profile_slot( 26, 2, 224, 224, 224 ); //line
+set_color_profile_slot( 26, 3, 171, 171, 171 ); //line (s)
+set_color_profile_slot( 26, 4, 87, 87, 87 ); //cloak
+set_color_profile_slot( 26, 5, 46, 46, 46 ); //cloak (s)
+set_color_profile_slot( 26, 6, 122, 122, 122 ); //fur (s)
+set_color_profile_slot( 26, 7, 172, 172, 172 ); //fur
+
+// Genji-ish
+set_color_profile_slot( 27, 0, 39, 158, 96 ); //Sword
+set_color_profile_slot( 27, 1, 59, 237, 110 ); //Sword 2
+set_color_profile_slot( 27, 2, 48, 230, 91 ); //line
+set_color_profile_slot( 27, 3, 36, 158, 105 ); //line (s)
+set_color_profile_slot( 27, 4, 230, 234, 237 ); //cloak
+set_color_profile_slot( 27, 5, 164, 171, 165 ); //cloak (s)
+set_color_profile_slot( 27, 6, 48, 51, 56 ); //fur (s)
+set_color_profile_slot( 27, 7, 86, 86, 87 ); //fur
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

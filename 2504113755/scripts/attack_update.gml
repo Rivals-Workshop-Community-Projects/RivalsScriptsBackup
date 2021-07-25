@@ -19,6 +19,30 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 
 
+#region funny rainbow color
+
+
+
+
+if (get_player_color( player ) == 26) {
+
+lalalala = get_num_hitboxes(attack)
+
+for (var i = 1; i <= lalalala; i += 1) {
+
+set_hitbox_value(attack, i, HG_HIT_PARTICLE_NUM, 2)
+}
+
+}
+
+
+
+#endregion
+
+
+
+
+
 #region jab
 
 if (attack == AT_JAB) {
@@ -43,7 +67,7 @@ window_timer = 0
 
 
 
-if ((window == 3 || window == 6) && window_timer == 9 && has_hit_player) {
+if ((window == 3 || window == 6) && window_timer == 8 && has_hit_player) {
 	
 	iasa_script()
 } 
@@ -60,7 +84,12 @@ if ((window == 3 || window == 6) && window_timer == 9 && has_hit_player) {
 #region dair
 
 if (attack == AT_DAIR) {
-	
+	  if (window == 2 && window_timer == 1 && !hitpause) {
+        
+             //   sound_play(asset_get("sfx_spin"))
+
+    }
+    
 	
 if (vsp < -2)	{
 	
@@ -239,19 +268,29 @@ if (attack == AT_DSTRONG) {
 if (attack == AT_FSPECIAL) {
 	
 	
+	if (window == 1 && window_timer == 1) {
+		
+		        sound_play(asset_get("sfx_ori_charged_flame_hit"))
+
+		
+	}
+	
+	
+	//FSPECIAL STUPID FUCKING AIR FRICTION THING I DONT KNOW WHY I DID THIS
 	if (window == 15 || window == 13) {
 		
-		fspec_air_friction = 0.25 - (window_timer + 1)/(34) * 0.25
+		fspec_air_friction = 0.15 - (window_timer + 1)/(25) * 0.15
 	//	set_window_value(AT_FSPECIAL, 13, AG_WINDOW_CUSTOM_AIR_FRICTION, fspec_air_friction);
 		set_window_value(AT_FSPECIAL, 15, AG_WINDOW_CUSTOM_AIR_FRICTION, fspec_air_friction);
 
-		fspec_gravity = 0.1 + (window_timer + 1)/(34) * 0.5
+		fspec_gravity = 0.1 + (window_timer + 1)/(25) * 0.5
 	//	set_window_value(AT_FSPECIAL, 13, AG_WINDOW_CUSTOM_GRAVITY, fspec_gravity);
 		set_window_value(AT_FSPECIAL, 15, AG_WINDOW_CUSTOM_GRAVITY, fspec_gravity);
 
 	}
 	
-	
+		//FSPECIAL LEDGE CASE
+
 if (window != 1 && window != 13 && window != 15) {
 	
 	
@@ -271,6 +310,9 @@ break;
 	
 	
 }
+
+
+
 	if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
 		
 		window = 14
@@ -279,7 +321,7 @@ break;
 	}
 	
 	
-	if (window == 14 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !has_hit) {
+	if (window == 14 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !has_hit_player) {
 		window = 15
 		window_timer = 0
 		
@@ -287,13 +329,14 @@ break;
 		
 	} 
 	
-	if (window == 14 && has_hit && !hitpause) {
+	if (window == 14 && has_hit_player && !hitpause) {
 		
 		window = 2
 		window_timer = 0
 		
 		
-		
+				//FSPECIAL funny reverse rune
+
 		if has_rune("B") {
 
 		if (spr_dir == 1 && (left_pressed || left_down)) || (spr_dir == -1 && (right_pressed || right_down)) {
@@ -349,18 +392,20 @@ if (window == 1 && window_timer == 10) {
         
         if (window > 1 && window < 12) {
         	
-      if ((image_index == 3 || image_index == 6 || image_index == 9 || image_index == 12 || image_index == 15) || ((window == 5 || window == 7 || window == 9 || window == 11) && window_timer == 2)) {
-      
-      hsp = 0
-     
-        } else  {
         	
         	
         	
-        	hsp = 6.5*spr_dir } 
+    
+        	
+        	
+        	hsp = 5*spr_dir 
         	vsp = 0
         	
-        } 
+        } else if (window == 12 && window_timer == 1) {
+        	
+        	hsp = 0
+        	
+        }
         
         
      }
@@ -379,7 +424,10 @@ if (hit_player_obj.state == PS_HITSTUN ) {
 	
 	if "hit_player_obj" in self {
 if instance_exists(hit_player_obj) {
-	hit_player_obj.x = lerp(floor(hit_player_obj.x), x+65*spr_dir, lerpam[0])
+	
+	
+	blah_variable_omg = clamp(x+65*spr_dir, 32, room_width - 32)
+	hit_player_obj.x = lerp(floor(hit_player_obj.x), blah_variable_omg, lerpam[0])
 	hit_player_obj.y = lerp(floor(hit_player_obj.y), y-20, lerpam[1])
 
 } } }
@@ -463,6 +511,8 @@ if (attack == AT_USTRONG) {
     if (window == 3 && window_timer == 1 && !hitpause) {
         
         sound_play(asset_get("sfx_clairen_spin"))
+                sound_play(asset_get("sfx_spin"))
+
     }
     
     
@@ -552,13 +602,13 @@ if (attack == AT_USPECIAL) {
     }
     
     
-    if  ((window == 2 || (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) && !hitpause) {
+    if  ((window == 2 || window == 3 || (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) && !hitpause) {
         
         vsp = -18
         hsp = 13*spr_dir
         
     }
-    if (window == 3) {
+    if (window == 4) {
         if (vsp < -1 ) {
         vsp = clamp(vsp, vsp + 2, -1) }
         
@@ -570,7 +620,7 @@ if (attack == AT_USPECIAL) {
 
     }
     
-    if (window == 3) {
+    if (window == 4) {
         
         can_wall_jump = true
     }

@@ -2,6 +2,7 @@ set_attack_value(AT_EXTRA_2, AG_CATEGORY, 2);
 set_attack_value(AT_EXTRA_2, AG_SPRITE, sprite_get("extra2"));
 set_attack_value(AT_EXTRA_2, AG_HURTBOX_SPRITE, sprite_get("extra2_hurt"));
 set_attack_value(AT_EXTRA_2, AG_NUM_WINDOWS, 5);
+set_attack_value(AT_NSPECIAL_2, AG_MUNO_ATTACK_NAME, "Dspecial Counter Hit");
 
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_ANIM_FRAMES, 2);

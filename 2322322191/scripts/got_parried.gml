@@ -11,3 +11,15 @@ if my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num = 3
         }
     }
 }
+
+
+// Ghost Sandwich Invincibility Dissapearing On Parry
+
+    invincible = false;
+    cd_sandwich = 0;
+
+// Yellow Soul Projectile Lifetime Reset
+
+if (my_hitboxID.type == 2) {
+  my_hitboxID.hitbox_timer = 0
+}

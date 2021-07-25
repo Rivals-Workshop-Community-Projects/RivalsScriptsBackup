@@ -67,8 +67,8 @@ switch (attack)
                     if (get_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE) == 0  && special_pressed)
                     {
                         hitstop = 20;
-                        set_attack(AT_USPECIAL);
-                        window = 4;
+                        set_attack(AT_USPECIAL_2);
+                        window = 1;
                     }
                     break;
             }
@@ -83,9 +83,17 @@ switch (attack)
                     break;
                 case 3:
                     can_wall_jump = true;
+                    if (get_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE) == 0  && special_pressed)
+                    {
+                        hitstop = 5;
+                        set_attack(AT_USPECIAL_2);
+                        window = 1;
+                    }
                 case 2:
+                    can_wall_jump = true;
                     if (place_meeting( x, y, my_article))
                     {
+                        window_timer = 0;
                         set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 0);
                         create_hitbox(AT_USPECIAL, 1, x, y);
                         hitpause = true;
@@ -181,11 +189,13 @@ switch (attack)
 // dust
 if (attack == AT_FSPECIAL && window_timer == 1 && window == 2){
     spawn_base_dust(x, y, "dash_start");}
-if (attack == AT_USPECIAL && window_timer == 1 && window == 4 || attack == AT_USPECIAL && window_timer == 1 && window == 2){
+if (attack == AT_USPECIAL && window_timer == 1 && window == 2){
+    spawn_base_dust(x, y, "n_wavedash");}
+if (attack == AT_USPECIAL_2 && window_timer == 1 && window == 2){
     spawn_base_dust(x, y, "n_wavedash");}
 
 //pratfall on fspecial
-if (attack == AT_FSPECIAL && free && window == 3){
+if (attack == AT_FSPECIAL && free && window == 4){
     state = PS_PRATFALL;}
     
 //funny taunt cancel
@@ -193,9 +203,14 @@ if (attack == AT_FSPECIAL && window == 2 && taunt_pressed && !free){
         set_attack(AT_TAUNT);
 }
 
-//tastu finisher
+//grounded fspecial finisher
 if (attack == AT_FSPECIAL && has_hit && window == 3 && special_pressed && !free){
         set_attack(AT_FSPECIAL_2);
+}
+
+//air fspecial finisher
+if (attack == AT_FSPECIAL && has_hit && window == 3 && special_pressed && free){
+        set_attack(AT_EXTRA_2);
 }
 
 //jump cancel from fspecial jank
@@ -203,9 +218,9 @@ if (attack == AT_FSPECIAL && has_hit && window == 2){
     can_jump = true;
 }
 //Stop
-if (attack == AT_FSPECIAL && has_hit && window == 2){
-    go_through = false;
-}
+//if (attack == AT_FSPECIAL && has_hit && window == 2){
+//    go_through = false;
+//}
 //Ledge Snap    
 if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR && window == 2){
     can_fast_fall = false;

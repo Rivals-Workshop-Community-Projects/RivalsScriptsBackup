@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 3;
+	var noOfPatches = 4;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -175,6 +175,13 @@ else if (attack != AT_DSPECIAL || !(state == PS_ATTACK_AIR || state == PS_ATTACK
 }
 flake.x += flake.hsp;
 flake.y += flake.vsp;
+if ((move_cooldown[AT_DSPECIAL] == 0 || flake.isOut) && get_gameplay_time() % 4 == 0)
+{
+	var angle = random_func(0, 360, 0);
+	var dist = random_func(1, 15, 0)-30;
+	var p = spawn_hit_fx(flake.x+lengthdir_x(dist, angle), flake.y+lengthdir_y(dist, angle), particle);
+	p.depth = depth+1;
+}
 
 // hue
 //hue+=3;

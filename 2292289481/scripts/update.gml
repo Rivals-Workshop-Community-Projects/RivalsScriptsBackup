@@ -33,7 +33,7 @@ with(asset_get("oPlayer")){
             outline_color = [ 11, 107, 73 ];
 			damage_scaling = 1.25;
         }
-	   if (poisoned_timer == 249){
+	   if (poisoned_timer == 349){
             sound_play(asset_get("sfx_absa_taunt"), false, noone, 1, 0.8);
        }
 	   if (poisoned_timer == 1){

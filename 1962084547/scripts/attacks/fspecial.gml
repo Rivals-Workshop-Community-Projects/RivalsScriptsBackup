@@ -10,8 +10,10 @@ set_attack_value(AT_FSPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 2);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED, -2);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 2)
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED, -1)
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_bird_sidespecial_start"));
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED, -1.5);

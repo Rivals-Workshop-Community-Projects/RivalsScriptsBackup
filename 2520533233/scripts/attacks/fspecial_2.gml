@@ -87,4 +87,4 @@ set_hitbox_value(AT_FSPECIAL_2, 2, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_FSPECIAL_2, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FSPECIAL_2, 2, HG_EXTRA_CAMERA_SHAKE, -1);
 
-set_attack_value(AT_FSPECIAL_2, AG_MUNO_ATTACK_NAME, "Fspecial Ground Grab");
+set_attack_value(AT_FSPECIAL_2, AG_MUNO_ATTACK_NAME, "Install Fspecial Air Grab");

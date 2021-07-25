@@ -316,8 +316,14 @@ if (state == PS_SPAWN) {
     }
 }
 
+if ((state == PS_ATTACK_GROUND || PS_ATTACK_AIR) && attack == AT_DSTRONG 
+&& window == 4 && window_timer == 1 && !hitpause){
+	spawn_hit_fx( x-20, y-20, 154);
+	spawn_hit_fx( x+50, y-20, 154);
 }
 
+}
+//
 
 if (state == PS_PARRY){
 	if (hat_on && !custom_clone){

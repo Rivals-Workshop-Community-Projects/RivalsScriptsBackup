@@ -36,7 +36,7 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1)
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.4);
 
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 27);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 8);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 5);

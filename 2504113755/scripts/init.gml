@@ -63,7 +63,7 @@ roll_backward_max   = 9;        // 9    -  11       always the same as forward
 wave_land_time      = 8;		// 6    -  12
 wave_land_adj       = 1.3;		// 1.2  -  1.5      idk what zetterburn's is
 air_dodge_speed     = 7.5;      // 7.5  -  8
-techroll_speed      = 14;       // 8    -  11
+techroll_speed      = 9;       // 8    -  11
 
 
 
@@ -197,6 +197,7 @@ wavebounced_downspec = false
 
 
 set_hit_particle_sprite( 1, sprite_get( "hfx_part_plasma" ) );
+set_hit_particle_sprite( 2, sprite_get( "hfx_part_plasma_white" ) );
 
 plasma_x = hit_fx_create( sprite_get( "plasma_x" ), 21 );
 plasma_x_circle_small = hit_fx_create( sprite_get( "plasma_x_circle_small" ), 21 );
@@ -217,6 +218,16 @@ num_articles = 0
 afterImageTimer = 0;
 afterImageMax = 16;
 afterImage = array_create(afterImageMax, -1);
+
+
+
+x_blah = 0
+
+//rainboW UWU code
+hue_offset=0;
+hue_speed=1; //change this to change the speed of the hueshift
+
+
 
 
 // Muno template: (don't change)

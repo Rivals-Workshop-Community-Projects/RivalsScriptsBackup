@@ -16,7 +16,7 @@ set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX, sound_get("shotgun3"));
-set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX_FRAME, 4);
+set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX_FRAME, 2);
 
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 2);
@@ -35,7 +35,7 @@ set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 14);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-set_num_hitboxes(AT_DSTRONG, 6);
+set_num_hitboxes(AT_DSTRONG, 8);
 
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_WINDOW, 2);
@@ -169,6 +169,35 @@ set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_PLASMA_SAFE, 1);
+
+set_hitbox_value(AT_DSTRONG, 7, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DSTRONG, 7, HG_WINDOW, 4);
+set_hitbox_value(AT_DSTRONG, 7, HG_WINDOW_CREATION_FRAME, 1);
+set_hitbox_value(AT_DSTRONG, 7, HG_LIFETIME, 3);
+set_hitbox_value(AT_DSTRONG, 7, HG_SHAPE, 2);
+set_hitbox_value(AT_DSTRONG, 7, HG_HITBOX_X, 20);
+set_hitbox_value(AT_DSTRONG, 7, HG_HITBOX_Y, -19);
+set_hitbox_value(AT_DSTRONG, 7, HG_WIDTH, 149);
+set_hitbox_value(AT_DSTRONG, 7, HG_HEIGHT, 54);
+set_hitbox_value(AT_DSTRONG, 7, HG_PRIORITY, 7);
+set_hitbox_value(AT_DSTRONG, 7, HG_DAMAGE, 9);
+set_hitbox_value(AT_DSTRONG, 7, HG_ANGLE, 60);
+set_hitbox_value(AT_DSTRONG, 7, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(AT_DSTRONG, 7, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_DSTRONG, 7, HG_KNOCKBACK_SCALING, .6);
+set_hitbox_value(AT_DSTRONG, 7, HG_BASE_HITPAUSE, 4);
+set_hitbox_value(AT_DSTRONG, 7, HG_EXTRA_HITPAUSE, 5);
+set_hitbox_value(AT_DSTRONG, 7, HG_HITPAUSE_SCALING, .4);
+set_hitbox_value(AT_DSTRONG, 7, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_DSTRONG, 7, HG_HIT_SFX, sound_get("sfx_blow_heavy2"));
+set_hitbox_value(AT_DSTRONG, 7, HG_HIT_LOCKOUT, 2);
+set_hitbox_value(AT_DSTRONG, 7, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_DSTRONG, 7, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
+set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_DSTRONG, 7, HG_PROJECTILE_PLASMA_SAFE, 1);
 
 set_hitbox_value(AT_DSTRONG, 1, HG_EFFECT, 0);
 set_hitbox_value(AT_DSTRONG, 2, HG_EFFECT, 0);

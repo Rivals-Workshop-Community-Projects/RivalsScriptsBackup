@@ -266,17 +266,15 @@ switch (attack) { //open switch(attack)
 	
 	
 	case AT_UTILT:
-		can_move = true;
+		can_move = (window > 1);
 		//can't fastfall unless it hits.
 		can_fast_fall = has_hit;
-		if (window_timer == 1) {
+		if (window_timer == 1 && !hitpause) {
 			switch (window) {
 				case 1:
 					//workaround to give a grounded move landing lag.
 					set_attack_value(AT_UTILT, AG_CATEGORY, 2);
 					set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 19);
-					//shorten recovery if lightweight.
-					//set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 10 + (epinel_lightweight_time == 0) * 10);
 				break;
 				
 				case 2:
@@ -1073,8 +1071,21 @@ switch (attack) { //open switch(attack)
 			
 			case 3: //start surfing
 			case 5: //create platform startup
-				//the player can jump-cancel at any of these points
-				can_jump = (epinel_charge_timer < 2);
+				//the player can jump-cancel  or drop-cancel at any of these points
+				if (epinel_charge_timer < 2) {
+					can_jump = true;
+					if (jump_down == false && down_hard_pressed == true && instance_exists(epinel_other_standing_on_platform_id)) {
+						set_state(PS_IDLE);
+						apply_short_ground_cooldowns();
+						//y += 4;
+						//vsp = 1;
+						//free = true;
+						//clear_button_buffer(PC_DOWN_HARD_PRESSED);
+						//hsp = epinel_other_standing_on_platform_id.hsp;
+						//epinel_other_standing_on_platform_id = noone;
+						
+					}
+				}
 			break;
 			
 			case 10: //final endlag
@@ -1270,7 +1281,12 @@ switch (attack) { //open switch(attack)
 		switch (window) {
 			//1: startup
 			case 1:
+				can_move = true;
 				if (hitpause) break;
+				
+				
+				
+				//hsp *= 0.99;
 				
 				if (window_timer == 1) {
 				//remove landing lag.
@@ -1284,8 +1300,9 @@ switch (attack) { //open switch(attack)
 				epinel_air_dspecial_max_fall_speed = 11;
 				
 				//stop movement.
-				vsp = clamp(vsp / 3, -3, 0);
-				hsp = clamp(hsp, -5, 5);
+				//vsp = -3;
+				//vsp = clamp(vsp / 3, -3, 0);
+				//hsp = clamp(hsp, -5, 5);
 				
 				//grab escape variables
 				epinel_grabbed_player_break_points = -18;
@@ -1309,10 +1326,12 @@ switch (attack) { //open switch(attack)
 			//2: upward grab
 			case 2:
 				//upward movement.
-				if (window_timer == 1) {
+				if (window_timer == 1 && !hitpause) {
 					epinel_uair_jump_counter++;
 					
-					vsp = min(vsp, (-7 / epinel_uair_jump_counter));
+					hsp *= 0.9;
+					vsp = -7;
+					//vsp = min(vsp, (-7 / epinel_uair_jump_counter));
 					
 					//don't jump if still holding down+special.
 					//if (down_down && special_down) {
@@ -1320,8 +1339,9 @@ switch (attack) { //open switch(attack)
 					//}
 					
 					//move in direction held.
-					hsp += right_down - left_down * 0.75;
-					if (right_down - left_down == -sign(hsp)) { hsp -= sign(hsp); } 
+					//hsp += right_down - left_down * 0.75;
+					//if (right_down - left_down == -sign(hsp)) { hsp -= sign(hsp); } 
+					old_jump = false;
 				}
 				
 				//shorten vertical height if a fastfall is input
@@ -1540,7 +1560,7 @@ switch (attack) { //open switch(attack)
 				if (epinel_air_dspecial_platform_hits > 3) epinel_air_dspecial_platform_hits = 3;
 				if (window_timer == 1) {
 					//update damage depending on length charged.
-					var newdmg = clamp(floor(6 + (epinel_air_dspecial_fall_distance / 20) ), 7, 14);
+					var newdmg = clamp(floor(6 + (epinel_air_dspecial_fall_distance / 20) ), 7, 15);
 					set_hitbox_value(AT_DSPECIAL_AIR, 5, HG_DAMAGE, newdmg );
 					set_hitbox_value(AT_DSPECIAL_AIR, 8, HG_DAMAGE, newdmg + epinel_air_dspecial_platform_hits );
 					
@@ -1549,7 +1569,7 @@ switch (attack) { //open switch(attack)
 					
 					//var newscaling = 1.1 + epinel_air_dspecial_fall_distance / 700;
 					//print("fall distance: " + string(round(epinel_air_dspecial_fall_distance)))
-					var fall_distance_bonus = min(epinel_air_dspecial_fall_distance / 75, 8);
+					var fall_distance_bonus = min(epinel_air_dspecial_fall_distance / 60, 8);
 					set_hitbox_value(AT_DSPECIAL_AIR, 8, HG_BASE_KNOCKBACK, 4 + epinel_air_dspecial_platform_hits + fall_distance_bonus);
 					
 					//update attack frame for the landing hit.
@@ -2566,8 +2586,21 @@ move_cooldown[AT_FSPECIAL] = 3;
 move_cooldown[AT_DSPECIAL] = 3;
 return;
 
+#define apply_short_ground_cooldowns
+move_cooldown[AT_JAB]      = 3;
+move_cooldown[AT_DATTACK]  = 3;
+move_cooldown[AT_FTILT]    = 3;
+move_cooldown[AT_DTILT]    = 3;
+move_cooldown[AT_UTILT]    = 3;
+move_cooldown[AT_NSPECIAL] = 3;
+move_cooldown[AT_FSPECIAL] = 3;
+move_cooldown[AT_DSPECIAL] = 3;
+return;
+
+
+
 #define check_if_epinel_has_room_to_spawn_dspecial_platform
-var plat_radius = 57 *  (1 + runeG / 3);
+var plat_radius = 48 *  (1 + runeG / 3);
 var check =  (!free
 	&& position_meeting(x, y+1, asset_get("par_block") )
 	&& position_meeting(x + plat_radius, y+1, asset_get("par_block") )

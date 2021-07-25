@@ -28,6 +28,11 @@ if(dragon_install){
 if(attack == AT_DSPECIAL and (window == 2 or window == 3)){
     set_attack(AT_EXTRA_1);
 }
+
+if(knockback_adj != base_knockback_adj){
+    kba_timer = 15;
+}
+
 //if graze particles exist send them away from tenshi
 with(obj_article2){
     if("tenshi" in self and tenshi == other){

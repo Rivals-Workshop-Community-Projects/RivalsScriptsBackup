@@ -1,4 +1,5 @@
 turbine_cont = 0;
+whirlwind_cooldown = 90;
 
 //Resets the Whirlwind Effect
 whirlwind_player.whirlwind_effect = false;

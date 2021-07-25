@@ -12,7 +12,7 @@ if (my_hitboxID.attack == AT_DATTACK) {
 
 if (my_hitboxID.attack == AT_DAIR) {
 	var lerpam
-	lerpam = [0.1, 0.1]
+	lerpam = [0.2, 0.2]
 	
 
 	hit_player_obj.x = lerp(floor(hit_player_obj.x), x, lerpam[0])
@@ -26,7 +26,17 @@ if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1) {
 				sound_play(asset_get("sfx_ori_energyhit_medium"))
 
 }
-if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 2) {
+else if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 2) {
+	
+				sound_play(asset_get("sfx_ori_energyhit_weak"))
+
+}
+else if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 1) {
+	
+				sound_play(asset_get("sfx_ori_energyhit_medium"))
+
+}
+else if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 2) {
 	
 				sound_play(asset_get("sfx_ori_energyhit_weak"))
 

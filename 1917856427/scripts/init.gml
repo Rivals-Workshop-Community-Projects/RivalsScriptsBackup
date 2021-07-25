@@ -62,7 +62,7 @@ air_accel = .33;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
 air_friction = .05;
 max_djumps = 1;
-double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
+double_jump_time = 31; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 6;
 walljump_vsp = 8;
 walljump_time = 32;
@@ -80,7 +80,7 @@ wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usu
 wave_friction = .04; //grounded deceleration when wavelanding
 
 //crouch animation frames
-crouch_startup_frames = 4;
+crouch_startup_frames = 2;
 crouch_active_frames = 1;
 crouch_recovery_frames = 2;
 
@@ -126,6 +126,7 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
+large_plasma_hfx = hit_fx_create(sprite_get("PLASMA_FX"), 30);
 large_clock_hfx = hit_fx_create(sprite_get("hfx_clock_large"), 30);
 smash_hfx = hit_fx_create(sprite_get("smash"), 60);
 smashmirror_hfx = hit_fx_create(sprite_get("smashmirror"), 60);

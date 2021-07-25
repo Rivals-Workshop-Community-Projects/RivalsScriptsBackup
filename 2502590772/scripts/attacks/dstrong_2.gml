@@ -17,7 +17,7 @@ set_window_value(AT_DSTRONG_2, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 
 //post-charge startup
 set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_LENGTH, 13);
+set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_ANIM_FRAME_START, 3);
@@ -34,7 +34,7 @@ set_window_value(AT_DSTRONG_2, 3, AG_WINDOW_ANIM_FRAME_START, 8);
 
 //recovery 2
 set_window_value(AT_DSTRONG_2, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG_2, 4, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_DSTRONG_2, 4, AG_WINDOW_LENGTH, 22);
 set_window_value(AT_DSTRONG_2, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSTRONG_2, 4, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(AT_DSTRONG_2, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
