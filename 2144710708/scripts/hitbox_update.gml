@@ -16,22 +16,23 @@ if (attack == AT_NSPECIAL) {
 
 // smg altfire (bomb, abyss rune)
 if (attack == AT_DSTRONG_2) {
-
-	if ((vsp < 1) && (hitbox_timer > 1)) || (hsp == 0) || (shoe_collide == true) {
+	
+	if ((vsp < 1) && (hitbox_timer > 1)) || (hsp == 0) || (shoe_collide == true) || (has_hit) {
 		
 		if (spr_dir == -1) {
 			spawn_hit_fx(x+25, y-25, 143);
-			create_hitbox( remotehitbox, 2, x+25, y-25);
+			create_hitbox( remotehitbox, 3, x+25, y-25);
 		}
 		if (spr_dir == 1) {
 			spawn_hit_fx(x-25, y-25, 143);
-			create_hitbox( remotehitbox, 2, x-25, y-25);
+			create_hitbox( remotehitbox, 3, x-25, y-25);
 		}
 		
 		sound_play(remotesound, false, noone, 1, 1);		
 		destroyed = true;
 
 	}
+
 }
 
 // dspecial actions handler (oh no)

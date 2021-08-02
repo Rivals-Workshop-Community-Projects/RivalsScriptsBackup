@@ -8,7 +8,7 @@ if(attack == AT_JAB)
         hsp = hsp - (1.25 * spr_dir); // makes it so that it boomerangs
         if(!was_parried && player_id.hitstop == 0)
         {
-            if(get_gameplay_time() mod 3 == 0) //every couple frames
+            if(get_gameplay_time() mod 1 == 0) //every couple frames
                 create_hitbox(AT_JAB,4, x, y);
         }
         else
@@ -106,6 +106,7 @@ else if(player_id != orig_player)
                     effect = 1;
                     damage = ceil(damage * 1.3);
                     kb_scale = kb_scale * 0.8;
+                    hit_effect = 3;
                     break;
                 case 2: //electric
                     sprite_index = sprite_get("elecgo");
@@ -113,17 +114,20 @@ else if(player_id != orig_player)
                     kb_value = kb_value * 0.8;
                     extra_hitpause = 12;
                     length = length + 20;
+                    hit_effect = 21;
                     break;
                 case 3: //ice
                     sprite_index = sprite_get("icego");
                     damage = damage * 0.8;
                     kb_value = kb_value * 1.2;
+                    hit_effect = 26;
                     break;
                 case 4: //rock
                     sprite_index = sprite_get("rockgo");
                     damage = damage * 0.8;
                     kb_value = kb_value * 0.7;
                     kb_angle = 270;
+                    hit_effect = 193;
                     break;
             }
         }
@@ -196,7 +200,7 @@ else if(player_id != orig_player)
                 destroyed = true;
             }
         }
-
+        player_id.move_cooldown[attack] = 10;
         if(hitbox_timer == length-1)
         {   hfx = spawn_hit_fx( x, y, disappearFX ); 
             hfx.draw_angle = proj_angle;}

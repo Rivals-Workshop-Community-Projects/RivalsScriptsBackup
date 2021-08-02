@@ -7,9 +7,15 @@ if(lite || phone_playtest) exit;
 
 shader_start();
 
+
+
 // Small sprites check
 var small = small_sprites+1;
-	
+
+// Debug code to view portal line positions
+// draw_rectangle_color(t1-10,t2-10,t1+10,t2+10,monBlue,monBlue,monBlue,monBlue,false);
+// draw_rectangle_color(b1-10,b2-10,b1+10,b2+10,monRed,monRed,monRed,monRed,false);
+// draw_rectangle_color(c1-10,c2-10,c1+10,c2+10,monPurple,monPurple,monPurple,monPurple,false);
 
 // if(state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD)
 // {

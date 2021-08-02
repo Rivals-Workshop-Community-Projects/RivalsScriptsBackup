@@ -52,7 +52,7 @@ shader_end();
 
 // Version
 
-textDraw(x + 220, y + 210, "fName", c_white, 100, 1000, fa_right, 1, false, 0.25, "char ver. 1.1.7");
+textDraw(x + 220, y + 210, "fName", c_white, 100, 1000, fa_right, 1, false, 0.25, "char ver. 1.1.9");
 
 
 

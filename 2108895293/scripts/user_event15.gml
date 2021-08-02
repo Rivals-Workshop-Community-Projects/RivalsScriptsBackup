@@ -25,7 +25,7 @@
 
 */
 
-if ("phone_inited" in self && phone_inited){
+if ("phone_inited" in self && phone_inited && !phone_lightweight){
 
 	/*
 	 * update.gml Code - this runs every frame, edit the below sections as you
@@ -101,8 +101,12 @@ muno_char_name = "Lumina";								// Here I replace the name, because "Acid Rain
 muno_char_icon = get_char_info(player, INFO_ICON);		// CSS icon of the character. You can replace this with an arbitrary sprite, using sprite_get(), and it'll be used in the upper left of the phone's big screen. (Make it the same size pls, thank u)
 
 phone.taunt_hint_x = 0;									// Sideways offset of the "Taunt!" thing that shows in Practice Mode until you've opened the MunoPhone. You can move it sideways if it covers up your HUD elements.
+phone.taunt_hint_y = 0;									// Vertical offset
+phone.shader = 0;										// Whether or not to apply the character's palette to the phone and non-TrainingTown sidebar (change color with alt costumes)
 
 phone.dont_fast = 0;									// Set this to 1, and Fast Graphics will not automatically be set when the FPS dips below 60.
+phone_lightweight = 0;									// Set to 1 to disable certain features, possibly improving performance a little bit. See _readme.gml.
+phone.frame_data_loaded = 0;							// Set to 1 to disable the frame data guide, which MIGHT improve performance on bad computers? (This is just a guess. It has no impact on code run during gameplay, but gets rid of a TON of data stored in memory in Practice Mode...)
 
 
 
@@ -256,6 +260,95 @@ with phone{
 	
 	/*initPatch("1.9 [WIP]", "2020-?-? (YMD)");
 	initPatchWords("this patch is wip... copypaste changelog later...");*/
+	
+	initPatch("2.1", "2021-07-31 (YMD)");
+	initPatchWords_ext("Additions", fa_left, c_yellow, 1, 0);
+	initPatchWords("- added the changelogs in munophone oops.");
+	
+	initPatchWords_ext("Changes", fa_left, c_yellow, 1, 0);
+	initPatchWords("- you can't go into uair2 if you have been parried now.")
+	
+	initPatchWords_ext("Fixes", fa_left, c_yellow, 1, 0);
+	initPatchWords("- fixed the issue getting parried the fspecial field shatter bullet and parrying it back gave the player who shot the projectile at first invincibility
+	- fixed the issue where uair1 doesnt get parry stun pratfall anymore if you dont land.");
+	
+	initPatchWords_ext("Notes", fa_left, c_yellow, 1, 0);
+	initPatchWords("open for inputs!");
+	
+	
+	//
+	
+	
+	initPatch("2.0", "2021-07-30 (YMD)");
+	initPatchWords_ext("Additions", fa_left, c_yellow, 1, 0);
+	initPatchWords("- new landing lag animation exclusive to uspecial. yes
+	- new alt colors: (New) Blue, Hallow, Ki, Lilliana, Wishes, Berry Berry and Ranked Gold. the old blue color has been moved to non-ROAACO slots.
+	- new secret alt added. if you're the creator of the color, you've already been informed of its inputs.
+	- various dialogues for dialogue buddy
+	- various new or tweaked animations!
+	- new 2nd swing for uair!?!?! what does it do? check it out yourself!");
+	
+	initPatchWords_ext("Changes", fa_left, c_yellow, 1, 0);
+	initPatchWords("- - - - cosmetic/visual
+	- jab2's sound reduction has been increased. (0.5 -> 0.3 minimum)
+	- some of the 'attack trails' in animations have new changes.
+	- the fabled munophone update (it was sooo outdated before it couldnt even boot)
+	- switch the secret alt thing over to the modern method
+	- removed the 'knockback dependant different sound' for fair.
+	- utilt sound tweaked.
+	- ftilt sound tweaked.
+	- new bair animation!
+	- dattack animation has (basically) been redone!
+	- sparkly particles (for e.g. dspecial) have a bit longer lifetime.
+	- various things now have particles to go with it! e.g. charged nspecial, fspecial shatter bullets, etc...
+	- tco art reverted.
+
+	- - - - gameplay
+	- utilt animation has been tweaked, with her wand extending the vertical hitbox reach!
+	- ftilt animation has been redone! along with a slight frame data change im too lazy to document, but it should feel better overall!
+	- dspecial animation has been tweaked, including the aerial version!
+	- fstrong has been entirely redone!
+	- when you are on ground, you can now turn around when you release the fully charged nspecial! (not in air because you can drift)
+	- adjusted the curve of the field shatter light bullets.
+	- light sentry's collision box has been adjusted, and is now allowed to hit walls again.
+	- light sentry now stops at wall instead of disappearing altogether.
+	- light sentry shatter light bullets doesn't put you in parry stun anymore, however they will now all reflect toward you at the same time!
+	- dair can now be turned around?? by holding attack and the opposite direction before she starts shooting downwards. (experimental)
+	- i think i messed around with dattack physics a bit, im not sure i dont remember
+	- field shatter bullets now go through walls! (experimental)
+	- field can be activated with projectile hitboxes too now!");
+	
+	initPatchWords_ext("Fixes", fa_left, c_yellow, 1, 0);
+	initPatchWords("- fixed the velocity of parrying back charged nspecial.");
+	
+	initPatchWords_ext("Balances", fa_left, c_yellow, 1, 0);
+	initPatchWords_ext("-- -- idk", fa_left, c_olive, 1, 0);
+	initPatchWords("- fair knockback growth has been increased by 0.1 (0.7 -> 0.8)
+	- charged nspecial bullet's knockback growth has been increased by 0.1 (0.6 -> 0.7)
+	- charged nspecial bullet, when parried, does not put you in parry stun anymore
+	- fspecial field light bullet, when parried, does not put you in parry stun anymore");
+	initPatchWords_ext("-- -- beneficial", fa_left, c_olive, 1, 0);
+	initPatchWords("- aerial dspecial spike hitbox's knockback growth has been increased by 0.1 (0.7 -> 0.8)
+	- uspecial base landing lag has been reduced by 4 frames. (28 -> 24)
+	- uspecial startup has been reduced by... 1 frame.
+	- hitbox size for grounded dspecial has been increased according to the new pose!
+	- nair landing lag decreased by 2 points (6 -> 4)
+	- bair landing lag decreased by 3 points (11 -> 8)
+	- uair landing lag decreased by 2 points (6 -> 4)
+	- dair landing lag decreased by 1 point (11 -> 10)");
+	initPatchWords_ext("-- -- counterplay", fa_left, c_olive, 1, 0);
+	initPatchWords("- uh oh there are no real counterplay changes (yet) sorry
+	- nerfed her moonwalk (1.6 -> 1.4)");
+	
+	initPatchWords_ext("Notes", fa_left, c_yellow, 1, 0);
+	initPatchWords("after months of anim attempts and 4 takes of beta, lumina 2.0 achieved!
+	i always say 'open for inputs!' but please god give me inputs please please give people inputs on LATEST versions like betas or whatever
+	thank yall to people who have helped with the feedback on the update!!
+	special thanks to sir sparx21!");
+	
+	
+	//
+	
 	
 	initPatch("1.8", "2020-11-26 (YMD)");
 	initPatchWords_ext("Fixes", fa_left, c_yellow, 1, 0);
@@ -749,267 +842,6 @@ if pho_has_trum_codec{
 	initCodecPage(SPK_ALTO, 0, 0, "Please read the codec on the old version of Trummel & Alto for now.");
 	initCodecPage(SPK_ALTO, 0, 0, "...Yes, 'for now'. They will add a proper version later.");
 	initCodecPage(SPK_TRUM, 0, 0, "til then");
-	
-}
-
-
-
-// Otto bobblehead
-
-if pho_has_otto_bhead{
-	
-	otto_bobblehead_sprite = sprite_get("_pho_example_bobble_head");
-	otto_bobblebody_sprite = sprite_get("_pho_example_bobble_body"); // you only need to change this one if you REALLY want to. most chars just use the head sprite
-	
-}
-
-
-
-// Steve death message
-
-if pho_has_steve_dmsg{
-	
-	steve_death_message = "Steve got canceled on Twitter";
-	
-}
-
-
-
-// Feri taunt costume
-
-if pho_has_feri_taunt{
-	
-	sprite_change_offset("feri_costume", 84, 114);
-	feri_costume = sprite_get("feri_costume");
-	
-}
-
-
-
-// Hikaru fakie title
-
-if pho_has_hikaru_fak{
-	
-	Hikaru_Title = "woaf";
-	
-}
-
-
-
-// Rat all-out quote
-
-if pho_has_rat_allout{
-	
-	personaQuips[10] = "woaf";
-	
-}
-
-
-
-// The Chosen One sketch
-
-if pho_has_tco_sketch{
-	
-	tcoart = sprite_get("tco_sketch");
-	
-}
-
-
-
-// Abyss Hime death sprite
-
-if pho_has_ahime_dead{
-	
-	sprite_change_offset("ahime_dead", 0, 0);
-	abyssHime_deathspr = sprite_get("ahime_dead");
-	
-}
-
-
-
-// Fire's taunt
-
-if pho_has_fire_taunt{
-	
-	sprite_change_offset("fire_taunt", 0, 0);
-	fire_taunt = sprite_get("fire_taunt");
-	fire_taunt_duration = 420;
-	fire_taunt_frames = 69;
-	fire_taunt_sound = sound_get("woagf");
-	fire_taunt_sound_frame = 3;
-	
-}
-
-
-
-// Wall-E's radio
-
-if pho_has_wall_e_ost{
-	
-	walle_taunt_sound = sound_get("wall_e_sound");
-	walle_taunt_type = 1;
-	
-}
-
-
-
-// Amber's plushie and hug
-
-if pho_has_amber_love{
-	
-	plushForAmber = sprite_get("amber_plushie");
-	
-	// Amber interaction variables
-	amber_herObj = noone; // The object ID of Amber when she hugs. Amber's own script will set this when the hug is inititated
-	amber_thisHugSprite = sprite_get("sandbert_hug");
-	amber_herHugSprite = sprite_get("amber_hug");
-	amber_startHug = false; // This variable is set true from Amber's scripts
-	amber_thisSpriteInFront = true; // When true, this character's sprite is rendered over Amber's sprite
-	amber_autoTurnToHer = true; // This character will automatically face towards Amber upon hug activatation when true
-	
-	amber_hugStartPos[0] = 42; // The x target offset point (from Amber's pos) where the player should hug Amber at. 
-	amber_hugStartPos[1] = 0; // The y target offset point. Recommended to keep this at 0 for grounded interaction
-	
-	amber_hugExitPos[0] = 42; // The x target offset point (from Amber's pos) where the player stands at when exiting hug state.
-	amber_hugExitPos[1] = 0; // The y target offset point.
-	
-	// The x target offset positions will inherit the character's spr_dir when this is true.
-	// Set this to true for character interactions that face toward each other such as hugging
-	// Set this to false for centered interaction animations
-	amber_useSprDirOffset = true; 
-	
-	amber_hugExitTimer = 30; // How many frames should pass before either player can exit the hug window loop
-	amber_hugExitWindow = 3; // The window to jump to when either player presses a button to exit hug loop
-	
-	sprite_change_offset("sandbert_hug", 32, 62);
-	sprite_change_offset("amber_hug", 32, 62);
-	
-}
-
-
-
-// Moonchild music
-
-if pho_has_moon_music{
-	
-	childsupport = true; // this is so sad
-	
-}
-
-
-
-// Agent N codec
-
-if pho_has_agentn_cdc{
-	
-	ncode1 = "line1";
-	ncode2 = "line2";
-	ncode3 = "line3";
-	
-}
-
-
-
-// Dracula dialogue
-
-if pho_has_drac_codec{
-	
-	dracula_portrait = sprite_get("drac_portrait");
-	dracula_portrait2 = asset_get("empty_sprite");
-	dracula_portrait3 = asset_get("empty_sprite");
-	var page = 0;
-	
-	// Page 0
-	dracula_speaker[page] = 0;
-	dracula_text[page] = "holy frick";
-	page++;
-	
-	// Page 1
-	dracula_speaker[page] = 0;
-	dracula_text[page] = "im dracula";
-	page++;
-	
-	// repeat...
-	
-}
-
-
-
-// Miiverse post
-
-if pho_has_miivs_post{
-	
-	sprite_change_offset("miiverse_post", 60, 30);
-	miiverse_post = sprite_get("miiverse_post");
-	
-}
-
-
-
-// Mt Dedede title
-
-if pho_has_dede_title{
-	
-	arena_title = "woag";
-	arena_short_name = "woaf";
-	
-}
-
-
-
-// Soulbound Conflict
-
-if pho_has_soul_title{
-	
-	battle_text = "* woag";
-	
-}
-
-
-
-// Last Resort painting
-
-if pho_has_resort_pic{
-	
-	sprite_change_offset("last_resort", 27, 39);
-	resort_portrait = sprite_get("last_resort");
-	
-}
-
-
-
-// PKMN Stadium battle portraits
-
-if pho_has_pkmn_image{
-	
-	pkmn_stadium_front_img = sprite_get("pkmn_front");
-	pkmn_stadium_back_img = sprite_get("pkmn_back");
-	pkmn_stadium_name_override = "sdkhjfskhgfkslhfglkha";
-	
-}
-
-
-
-// Daroach dialogue
-
-if pho_has_daro_codec{
-	
-	daroach_portrait = sprite_get("daro_portrait");
-	daroach_portrait2 = asset_get("empty_sprite");
-	daroach_portrait3 = asset_get("empty_sprite");
-	var page = 0;
-	
-	// Page 0
-	daroach_speaker[page] = 0;
-	daroach_text[page] = "holy frick";
-	page++;
-	
-	// Page 1
-	daroach_speaker[page] = 0;
-	daroach_text[page] = "im dracula";
-	page++;
-	
-	// repeat...
 	
 }
 

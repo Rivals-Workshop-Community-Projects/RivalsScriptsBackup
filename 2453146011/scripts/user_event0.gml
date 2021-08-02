@@ -137,8 +137,35 @@ if(!inPosition)
     {
         platform = instance_nearest(x,y,asset_get("par_jumpthrough"));
     }
+    
+
+}
+
+// Set center coords and face dir
+if(!inPosition)
+{
+	centerx = x;
+	centery = y;
+	
+	if(!isWall && !isCeil)
+	{
+		facedir = "up";
+	}
+	else if(isCeil)
+	{
+		facedir = "down";
+	}
+	else if(leftWall)
+	{
+		facedir = "right";
+	}
+	else
+	{
+		facedir = "left";
+	}
 }
 inPosition = true;
+
 
 //#region Ceiling corrections
 if(isCeil && platform != noone)
@@ -161,6 +188,7 @@ stuff_to_teleport[0] = pHitBox; //pHitBox
 stuff_to_teleport[1] = oPlayer;
 stuff_to_teleport[2] = player_id.fspecial_obj;
 
+var checks = 0;
 
 // Teleport to other portal
 if(monarch.portal_1 != noone && monarch.portal_2 != noone && monarch.global_portal_cooldown == 0)
@@ -180,9 +208,7 @@ with(stuff_to_teleport[i])
     var collidedPlayer = collision_rectangle(x-10 + (hsp/2), y- (i == 2 ? 35 : monarch.original_char_height*1.5), x+10 + (hsp/2), y- (i == 2 ? -35 : 5) +(vsp/2), other, false, true);
     
 
-    
    
-    
     var correctPos = false;
     
     // If on floor, must be above
@@ -231,9 +257,7 @@ with(stuff_to_teleport[i])
 		}
 	}
 	
-	
-
-    
+	// Start portal logic
     if(collidedPlayer != noone && correctPos)
     {
         if(in_portal == false && portal_cooldown == 0)
@@ -246,79 +270,6 @@ with(stuff_to_teleport[i])
             var thisWall = other.isWall;
             var thisCeil = other.isCeil;
             
-			
-
-            // // Check what portal this is and teleport 
-            // if(other.portal_id == 1)
-            // {
-                                
-            //     var lastX = x;
-            //     var lastY = y;
-                
-            //     x += other.player_id.portal_2.x - other.player_id.portal_1.x;
-            //     y += other.player_id.portal_2.y - other.player_id.portal_1.y;
-                
-
-    
-            //     // Set other wall bool
-            //     otherWall = other.player_id.portal_2.isWall;
-            //     otherCeil = other.player_id.portal_2.isCeil;
-            //     onRight = other.player_id.portal_2.rightWall;
-            //     onLeft = other.player_id.portal_2.leftWall;
-                
-            //     if(!((otherWall && thisWall) || (otherCeil && thisCeil)))
-            //     {
-            //         y -= lastX - other.player_id.portal_1.x;
-            //         x += char_height * 0.5;
-                    
-            //         var shift = lastY - other.player_id.portal_1.y;
-            //         shift/=2;
-            //         shift = clamp(shift,-33,33);
-            //         x+= shift;
-                    
-            //         if(otherWall)
-            //             x = other.player_id.portal_2.x;
-                        
-            //         if(otherCeil)
-            //             y = other.player_id.portal_2.y
-            //     }
-            // }
-            
-            // if(other.portal_id == 2)
-            // {
-                
-            //     var lastX = x;
-            //     var lastY = y;
-                
-            //     x += other.player_id.portal_1.x - other.player_id.portal_2.x;
-            //     y += other.player_id.portal_1.y - other.player_id.portal_2.y;
-                
-            //     // Set other wall bool
-            //     otherWall = other.player_id.portal_1.isWall;
-            //     otherCeil = other.player_id.portal_1.isCeil;
-            //     onRight = other.player_id.portal_1.rightWall;
-            //     onLeft = other.player_id.portal_1.leftWall;
-                
-            //     if(!((otherWall && thisWall) || (otherCeil && thisCeil)))
-            //     {
-            //         y -= lastX - other.player_id.portal_2.x;
-            //         x += char_height * 0.5;
-                    
-            //         var shift = lastY - other.player_id.portal_2.y;
-            //         shift/=2;
-            //         shift = clamp(shift,-33,33);
-            //         x+= shift;
-                    
-            //         if(otherWall)
-            //             x = other.player_id.portal_1.x;
-                        
-            //         if(otherCeil)
-            //             y = other.player_id.portal_1.y
-                    
-            //     }
-            // }
-            
-
             
             // Check what portal this is and teleport 
             if(other.portal_id == 1)
@@ -335,6 +286,9 @@ with(stuff_to_teleport[i])
                                 
             var lastX = x;
             var lastY = y;
+            
+            if("last_teleport_x" in self) last_teleport_x = x;
+            if("last_teleport_y" in self) last_teleport_y = y;
             
             x += secondPortal.x - firstPortal.x;
             y += secondPortal.y - firstPortal.y;
@@ -535,14 +489,34 @@ with(stuff_to_teleport[i])
         
         // Set portal timer variables
         // This prevents infinate portal loop jank
-        in_portal = true;
-        portal_timer = 2;
-        portal_cooldown = 30;
-        if(teleported)portal_white = 15;
-        firstPortal.portal_white = 10;
-        secondPortal.portal_white = 15;
-        last_pcolor = other.portal_id;
-        monarch.global_portal_cooldown = 10;
+        if(portal_cooldown == 0)
+        {
+	        in_portal = true;
+	        portal_timer = 2;
+	        portal_cooldown = 30;
+	       
+	        last_pcolor = other.portal_id;
+	        monarch.global_portal_cooldown = 10;
+	        
+	        if(teleported)
+	        {
+	        	other.portal_white = 15;
+		        portal_delay = max_portal_delay;
+		        old_hsp = hsp;
+		        old_vsp = vsp;
+		        
+		        // Disable hitboxes
+		        // SHUT UP IT'S THE ONLY THING THAT WORKS
+		        with(pHitBox)
+		        {
+		        	if(player_id == other && type == 1)
+		        	{
+		        		image_xscale = 0;
+		        		image_yscale = 0;
+		        	}
+		        }
+	        }
+        }
     }
     }
 }

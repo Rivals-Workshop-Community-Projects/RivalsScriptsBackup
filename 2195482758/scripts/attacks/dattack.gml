@@ -24,6 +24,7 @@ set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 6); // 6
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, .04);
+set_window_value(AT_DATTACK, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, .04);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_CUSTOM_GRAVITY, 0);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_SFX, asset_get("sfx_spin"));
@@ -35,7 +36,8 @@ set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, .04);
-set_window_value(AT_DATTACK, 3, AG_WINDOW_CUSTOM_GRAVITY, .1);
+set_window_value(AT_DATTACK, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, .04);
+set_window_value(AT_DATTACK, 3, AG_WINDOW_CUSTOM_GRAVITY, 0);
 
 // Spin 3
 set_window_value(AT_DATTACK, 4, AG_WINDOW_TYPE, 1);
@@ -44,7 +46,8 @@ set_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_CUSTOM_GROUND_FRICTION, .04);
-set_window_value(AT_DATTACK, 4, AG_WINDOW_CUSTOM_GRAVITY, .2);
+set_window_value(AT_DATTACK, 4, AG_WINDOW_CUSTOM_AIR_FRICTION, .04);
+set_window_value(AT_DATTACK, 4, AG_WINDOW_CUSTOM_GRAVITY, .1);
 
 // Spin 4
 set_window_value(AT_DATTACK, 5, AG_WINDOW_TYPE, 1);
@@ -53,7 +56,8 @@ set_window_value(AT_DATTACK, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DATTACK, 5, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_DATTACK, 5, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DATTACK, 5, AG_WINDOW_CUSTOM_GROUND_FRICTION, .04);
-set_window_value(AT_DATTACK, 5, AG_WINDOW_CUSTOM_GRAVITY, .3);
+set_window_value(AT_DATTACK, 5, AG_WINDOW_CUSTOM_AIR_FRICTION, .04);
+set_window_value(AT_DATTACK, 5, AG_WINDOW_CUSTOM_GRAVITY, .1);
 
 // Spin 5
 set_window_value(AT_DATTACK, 6, AG_WINDOW_TYPE, 1);
@@ -62,7 +66,8 @@ set_window_value(AT_DATTACK, 6, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DATTACK, 6, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_DATTACK, 6, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DATTACK, 6, AG_WINDOW_CUSTOM_GROUND_FRICTION, .04);
-set_window_value(AT_DATTACK, 6, AG_WINDOW_CUSTOM_GRAVITY, .4);
+set_window_value(AT_DATTACK, 6, AG_WINDOW_CUSTOM_AIR_FRICTION, .04);
+set_window_value(AT_DATTACK, 6, AG_WINDOW_CUSTOM_GRAVITY, .2);
 
 // Spin 6
 set_window_value(AT_DATTACK, 7, AG_WINDOW_TYPE, 1);
@@ -71,7 +76,8 @@ set_window_value(AT_DATTACK, 7, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DATTACK, 7, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_DATTACK, 7, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DATTACK, 7, AG_WINDOW_CUSTOM_GROUND_FRICTION, .04);
-set_window_value(AT_DATTACK, 7, AG_WINDOW_CUSTOM_GRAVITY, .5);
+set_window_value(AT_DATTACK, 7, AG_WINDOW_CUSTOM_AIR_FRICTION, .04);
+set_window_value(AT_DATTACK, 7, AG_WINDOW_CUSTOM_GRAVITY, .2);
 
 // Spin 7
 set_window_value(AT_DATTACK, 8, AG_WINDOW_TYPE, 1);
@@ -80,7 +86,8 @@ set_window_value(AT_DATTACK, 8, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DATTACK, 8, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_DATTACK, 8, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DATTACK, 8, AG_WINDOW_CUSTOM_GROUND_FRICTION, .04);
-set_window_value(AT_DATTACK, 8, AG_WINDOW_CUSTOM_GRAVITY, .6);
+set_window_value(AT_DATTACK, 8, AG_WINDOW_CUSTOM_AIR_FRICTION, .04);
+set_window_value(AT_DATTACK, 8, AG_WINDOW_CUSTOM_GRAVITY, .3);
 
 
 // end
@@ -92,7 +99,7 @@ set_window_value(AT_DATTACK, 9, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DATTACK, 9, AG_WINDOW_CUSTOM_AIR_FRICTION, .1);
 set_window_value(AT_DATTACK, 9, AG_WINDOW_CUSTOM_GROUND_FRICTION, .4);
 set_window_value(AT_DATTACK, 9, AG_WINDOW_HAS_WHIFFLAG, 1);
-set_window_value(AT_DATTACK, 9, AG_WINDOW_CUSTOM_GRAVITY, 1);
+set_window_value(AT_DATTACK, 9, AG_WINDOW_CUSTOM_GRAVITY, .8);
 
 
 set_num_hitboxes(AT_DATTACK, 4);

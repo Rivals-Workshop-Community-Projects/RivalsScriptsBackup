@@ -52,7 +52,7 @@ sprite_change_offset("dspecial", 50, 78);
 sprite_change_offset("taunt", 40, 98);
 sprite_change_offset("fspecial2", 50, 98);
 sprite_change_offset("fspecial3", 50, 98);
-sprite_change_offset("plat", 64, 94);
+sprite_change_offset("plat", 120, 162);
 
 sprite_change_offset("lanternfx", 90, 140);
 sprite_change_offset("nspecial_proj", 40, 68);

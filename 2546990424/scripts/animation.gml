@@ -160,6 +160,10 @@ if (cargo_grab == true && grab_timer >= 0){
 		cargo_grab = false;
 		move_cooldown[AT_NSPECIAL] = 60;
 	}
+	
+	if (y > get_stage_data(SD_Y_POS) + 270){
+	    cargo_grab = false;
+	}
 }
 
 //Grab stuff, mostly changing the sprites when using it

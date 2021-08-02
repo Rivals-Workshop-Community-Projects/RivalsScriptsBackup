@@ -40,18 +40,19 @@ switch (attack)
             }
             break;
 
-        case AT_FSPECIAL:
+        case AT_FSPECIAL://barrier break fspecial
             switch (window)
             {
                 case 1:
-                    if (window_timer == 1) reset_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE);
+                    if (window_timer == 1) 
+                    	reset_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE);
                     break;
                 case 2:
                     can_wall_jump = true;
                     if (place_meeting( x, y, my_article))
                     {
                         window_timer = 0;
-                        set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 0);
+                        set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 0);
                         hitpause = true;
                         hitstop = 10;
                         old_hsp = hsp;
@@ -64,7 +65,7 @@ switch (attack)
                     break;
                 case 3:
                     can_wall_jump = true;
-                    if (get_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE) == 0  && special_pressed)
+                    if (get_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE) == 0 && !was_parried && special_pressed)//3
                     {
                         hitstop = 20;
                         set_attack(AT_USPECIAL_2);
@@ -74,7 +75,7 @@ switch (attack)
             }
             break;
 
-        case AT_USPECIAL:
+        case AT_USPECIAL://barrier break uspecial
             switch (window)
             {
                 case 1:
@@ -83,7 +84,7 @@ switch (attack)
                     break;
                 case 3:
                     can_wall_jump = true;
-                    if (get_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE) == 0  && special_pressed)
+                    if (get_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE) == 0 && !was_parried && special_pressed)
                     {
                         hitstop = 5;
                         set_attack(AT_USPECIAL_2);
@@ -157,8 +158,8 @@ switch (attack)
                     {
                         if(window_timer == 1 && !has_hit)
                         {
-                            set_attack(AT_USPECIAL);
-                            window = 4;
+                            set_attack(AT_USPECIAL_2);
+                            window = 1;
                         }
                         break;
                     }
@@ -194,9 +195,12 @@ if (attack == AT_USPECIAL && window_timer == 1 && window == 2){
 if (attack == AT_USPECIAL_2 && window_timer == 1 && window == 2){
     spawn_base_dust(x, y, "n_wavedash");}
 
-//pratfall on fspecial
-if (attack == AT_FSPECIAL && free && window == 4){
-    state = PS_PRATFALL;}
+//pratfall on fspecial whiff
+if (attack == AT_FSPECIAL && free && has_hit && window == 4){
+    set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 0);}
+    
+if (attack == AT_FSPECIAL && !free && window == 4){
+    set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 0);}
     
 //funny taunt cancel
 if (attack == AT_FSPECIAL && window == 2 && taunt_pressed && !free){
@@ -208,6 +212,16 @@ if (attack == AT_FSPECIAL && has_hit && window == 3 && special_pressed && !free)
         set_attack(AT_FSPECIAL_2);
 }
 
+//SFX Fspecial & Uspecial
+if (attack == AT_FSPECIAL && window == 1 && window_timer == 12){
+        sound_play(asset_get("sfx_clairen_uspecial_rise"));
+}
+if (attack == AT_USPECIAL && window == 1 && window_timer == 8){
+        sound_play(asset_get("sfx_clairen_uspecial_swing"));
+}
+if (attack == AT_USPECIAL_2 && window == 1 && window_timer == 1){
+        sound_play(asset_get("sfx_spin"));
+}
 //air fspecial finisher
 if (attack == AT_FSPECIAL && has_hit && window == 3 && special_pressed && free){
         set_attack(AT_EXTRA_2);
@@ -217,10 +231,12 @@ if (attack == AT_FSPECIAL && has_hit && window == 3 && special_pressed && free){
 if (attack == AT_FSPECIAL && has_hit && window == 2){
     can_jump = true;
 }
+
 //Stop
 //if (attack == AT_FSPECIAL && has_hit && window == 2){
 //    go_through = false;
 //}
+
 //Ledge Snap    
 if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR && window == 2){
     can_fast_fall = false;
@@ -245,7 +261,17 @@ if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR && window == 2){
 }
 }
 
-//Fspecial Anti Racism Stop Gap
+//Barrier Break Hurtboxes
+if (attack = AT_FSPECIAL_2) {
+	hurtboxID.sprite_index = get_attack_value(attack,AG_HURTBOX_SPRITE);
+    }
+if (attack = AT_USPECIAL_2) {
+	hurtboxID.sprite_index = get_attack_value(attack,AG_HURTBOX_SPRITE);
+    }
+if (attack = AT_EXTRA_2) {
+	hurtboxID.sprite_index = get_attack_value(attack,AG_HURTBOX_SPRITE);
+    }
+//Fspecial Spam Limiter
 if (attack == AT_FSPECIAL){
     move_cooldown[AT_FSPECIAL] = 40;}
 

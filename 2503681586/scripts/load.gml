@@ -103,6 +103,7 @@ sprite_change_offset("hudArrow", 23, 33);
 sprite_change_offset("hudFish", 17, 17);
 sprite_change_offset("hudBubble", 17, 17);
 sprite_change_offset("f_other_hurt", 50, 98);
+sprite_change_offset("f_bubble_hurt", 45, 90);
 //Tutorial
 sprite_change_offset("hudScreen", 384, 256);
 sprite_change_offset("hudArrow",  9, 9);

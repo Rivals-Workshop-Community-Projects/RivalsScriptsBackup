@@ -32,7 +32,7 @@ shader_end();
 if(select_cooldown != 0)
 {
     rectDraw(temp_x + 110, temp_y - 2, temp_x + 180, temp_y - 12, c_black)
-    rectDraw(temp_x + 112, temp_y - 4, temp_x + 112 + (66 * select_cooldown/(60*5)), temp_y - 10, c_aqua);
+    rectDraw(temp_x + 112, temp_y - 4, temp_x + 112 + (66 * select_cooldown/20), temp_y - 10, c_aqua);
 }
 
 

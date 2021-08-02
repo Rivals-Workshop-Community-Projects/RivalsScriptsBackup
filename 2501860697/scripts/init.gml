@@ -232,6 +232,8 @@ roll_forward_max_short = 6;
 roll_backward_max_short = 6;
 
 
+lasercharged = false;
+
 //Uspecial
 ztc_uspecial_angle = 90; //current direction
 

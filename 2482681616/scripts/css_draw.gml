@@ -111,14 +111,14 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[13,0] = make_color_rgb(get_color_profile_slot_r(13, 1), get_color_profile_slot_g(13, 1), get_color_profile_slot_b(13, 1));
     ce[13,1] = "RegiBLM"
     ce[13,2] = ""
-    ce[14,0] = make_color_rgb(get_color_profile_slot_r(14, 1), get_color_profile_slot_g(14, 1), get_color_profile_slot_b(14, 1));
-    ce[14,1] = "RegiKragg 'The Rock'"
+    ce[14,0] = make_color_rgb(get_color_profile_slot_r(15, 1), get_color_profile_slot_g(15, 1), get_color_profile_slot_b(15, 1));
+    ce[14,1] = "HeartGold"
     ce[14,2] = ""
-    ce[15,0] = make_color_rgb(get_color_profile_slot_r(15, 1), get_color_profile_slot_g(15, 1), get_color_profile_slot_b(15, 1));
-    ce[15,1] = "HeartGold"
+    ce[15,0] = make_color_rgb(get_color_profile_slot_r(14, 1), get_color_profile_slot_g(14, 1), get_color_profile_slot_b(14, 1));
+    ce[15,1] = "SoulSilver"
     ce[15,2] = ""
     ce[16,0] = make_color_rgb(get_color_profile_slot_r(16, 1), get_color_profile_slot_g(16, 1), get_color_profile_slot_b(16, 1));
-    ce[16,1] = "SoulSilver"
+    ce[16,1] = "RegiKragg 'The Rock'"
     ce[16,2] = ""
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.

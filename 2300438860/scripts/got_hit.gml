@@ -1,5 +1,9 @@
 ///
-mask_index = sprite_get("stand_box");
+
+if hit_player_obj != self {
+wjcap = 0
+}
+
 if savex != 0 {
     spawn_hit_fx(x,y - 30,305)
          spawn_hit_fx (x,y - 40, shit5)

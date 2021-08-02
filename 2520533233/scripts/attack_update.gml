@@ -204,7 +204,7 @@ switch(attack){
         	
         	if(place_meeting(x, y, asset_get("par_jumpthrough"))){
         		can_jump = true;
-        		if(jump_down){
+        		if(jump_down and djumps < max_djumps){
         			if(abs(hsp) > 8 and !dragon_install){
         				hsp = spr_dir *8;
         			}

@@ -42,7 +42,7 @@ set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITBOX_Y, -30);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_WIDTH, 30);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HEIGHT, 20);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PRIORITY, 3);
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_DAMAGE, 10);
+set_hitbox_value(AT_NSPECIAL_2, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
@@ -50,6 +50,7 @@ set_hitbox_value(AT_NSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_crunch"));
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_MASK, -1);
-
+set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL_2, 1, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_HSPEED, 12);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_VISUAL_EFFECT, hit_sprites[7]);

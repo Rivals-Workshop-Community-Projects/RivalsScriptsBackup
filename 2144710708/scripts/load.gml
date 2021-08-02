@@ -1,4 +1,4 @@
-sprite_change_offset("idle", 80, 110);
+sprite_change_offset("idle", 40, 70);
 sprite_change_offset("idle_blink", 80, 110);
 sprite_change_offset("crouch", 80, 110);
 sprite_change_offset("walk", 80, 110);
@@ -62,7 +62,7 @@ sprite_change_offset("uspecial_proj_tracer", 16, 256);
 sprite_change_offset("uspecial_proj_tracer_ball", 16, 256);
 sprite_change_offset("uspecial_proj_big", 40, 256);
 
-sprite_change_offset("hurt", 80, 110);
+sprite_change_offset("hurt", 40, 70);
 sprite_change_offset("bouncehurt", 80, 110);
 sprite_change_offset("bighurt", 80, 110);
 sprite_change_offset("downhurt", 80, 110);

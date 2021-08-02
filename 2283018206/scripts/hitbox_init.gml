@@ -22,9 +22,11 @@ orig_length = length;
 
 has_been_recalled = false;
 
-bounce_charge_time = 20;
+bounce_charge_time = 10;
 
 
+
+hit_lockout_timer = 0;
 
 //BY SUPERSONIC
 

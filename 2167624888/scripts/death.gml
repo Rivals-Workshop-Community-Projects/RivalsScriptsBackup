@@ -1,8 +1,15 @@
 with (fspec_article) state = 2
 
 nspec_charge = 0
+uspec_first = true;
 
 repeat (3) add_wisp(x,y)
+
+with (oPlayer)
+{
+	if player != other.player nspec_steal_effect = 0
+}
+
 
 
 #define add_wisp(x, y)

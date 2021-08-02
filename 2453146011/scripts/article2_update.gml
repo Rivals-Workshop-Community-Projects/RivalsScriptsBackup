@@ -83,7 +83,28 @@ if(in_portal == true)
 
 //#endregion
 
+//#region portal delay
+if(portal_delay > 1)
+{
+	portal_delay--;
+	despawn_timer++;
+	
+	hsp = 0;
+	vsp = 0;
+	
+	visible = false;
+}
+else if(portal_delay == 1)
+{
+	portal_delay--;
+	
+	hsp = old_hsp;
+	vsp = old_vsp;
+	
+	visible = true;
+}
 
+//#endregion
 
 
 //#region release

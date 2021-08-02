@@ -28,6 +28,7 @@ switch(t) {
 	case 13: t = "Outdated"; break;
 	case 14: t = "Shii"; break;
 	case 15: t = "Alien"; break;
+	case 16: t = "Snakebandit"; break;
 }
 if image_alpha > 0 {
 draw_set_font(1)

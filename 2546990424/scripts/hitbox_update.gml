@@ -5,15 +5,6 @@ if (attack == AT_FSPECIAL && hbox_num == 6){
 		player_id.turbine_gusty = y;
 		player_id.turbine_gust_spr = spr_dir;
 	}
-	 
-	if (hitbox_timer > 2){
-		image_xscale = 129/200;
-		image_yscale = 78/200;
-	}
-	if (hitbox_timer >= 4){
-		image_xscale = 171/200;
-		image_yscale = 112/200;
-	}
 }
 
 //Allows the Whirlwind to hit Maverick
@@ -37,7 +28,8 @@ if (attack == AT_DSPECIAL){
 	if (player_id.whirlwind_punch_active == true && hbox_num > 1 && hbox_num < 10 
 	&& player_id.whirlwind_myself == false){
 		damage = 10;
-		kb_scale = .7;
+		kb_value = kb_value-2;
+		kb_scale = .9;
 		hitpause = 15;
 		hitpause_growth = 1.5;
 		hit_effect = 143;

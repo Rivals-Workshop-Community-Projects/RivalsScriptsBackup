@@ -3,7 +3,7 @@
 if my_hitboxID.effect == 99 || my_hitboxID.effect == 11 {
     //sound_play(asset_get("sfx_clairen_hit_strong"))
     switch my_hitboxID.attack {
-        case AT_JAB: case AT_UTILT: case AT_NAIR: case AT_FTILT: case AT_UAIR:
+        case AT_JAB: case AT_UTILT: case AT_NAIR: case AT_FTILT: case AT_UAIR: case AT_USPECIAL:
         sound_play(sound_get("bar_hit"))
         break;
         
@@ -28,7 +28,7 @@ if my_hitboxID.effect == 99 || my_hitboxID.effect == 11 {
     }
     */
     
-    if !has_increased || my_hitboxID.attack != AT_NAIR {
+    if !has_increased || (my_hitboxID.attack != AT_NAIR && my_hitboxID.attack != AT_USPECIAL) {
         meter_cur = clamp(meter_cur + hit_value, 0, meter_max)
         meter_flash_timer = meter_flash_val;
         spark_timer = spark_val;
@@ -40,4 +40,9 @@ if my_hitboxID.effect == 99 || my_hitboxID.effect == 11 {
 
 if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 3 {
     spawn_hit_fx(my_hitboxID.x + my_hitboxID.hsp, my_hitboxID.y + my_hitboxID.vsp, 304)
+}
+
+if my_hitboxID.attack == AT_USPECIAL && (my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3) {
+    hit_player_obj.hsp = 0;
+    hit_player_obj.old_hsp = 0;
 }

@@ -5,7 +5,7 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1 && hit_player
     grabbed_id = hit_player_obj;
     with(asset_get("obj_article3")){
         if (player_id == other.id){
-            
+            /*
             switch(get_player_color(player)){
     
                 case 13: //Beach
@@ -16,8 +16,8 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1 && hit_player
                     sprite_index = sprite_get("bodyguardthrow");
                     break;
      
-            }
-            
+            }*/
+            sprite_index = sprite_get("bodyguardthrow");
             grabbed = true;
             state = 1;
             state_timer = 0;

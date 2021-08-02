@@ -26,11 +26,11 @@ set_color_profile_slot( 1, 1, 181, 0, 0 ); //Color
 set_color_profile_slot( 1, 2, 181, 0, 0 ); //Fin
 set_color_profile_slot( 1, 3, 85, 255, 0 ); //Lantern
 
-// Guardian
-set_color_profile_slot( 2, 0, 95, 212, 74 ); //Skin
-set_color_profile_slot( 2, 1, 255, 54, 54 ); //Color
-set_color_profile_slot( 2, 2, 255, 229, 61 ); //Fin
-set_color_profile_slot( 2, 3, 79, 255, 211 ); //Lantern
+// Riptide
+set_color_profile_slot( 2, 0, 0, 185, 222 ); //Skin
+set_color_profile_slot( 2, 1, 255, 134, 36 ); //Color
+set_color_profile_slot( 2, 2, 255, 247, 0 ); //Fin
+set_color_profile_slot( 2, 3, 255, 238, 0 ); //Lantern
 
 // Blazing
 set_color_profile_slot( 3, 0, 191, 21, 21 ); //Skin

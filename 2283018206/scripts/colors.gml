@@ -231,6 +231,16 @@ switch(get_match_setting(SET_SEASON)){
 		
 }
 
+// Riptide
+colorSet(a, 0, $283861); //Yellow
+colorSet(a, 1, $151147); //Yellow (S)
+colorSet(a, 2, $1ae0d6); //Brown
+colorSet(a, 3, $0066a1); //Brown (S)
+colorSet(a, 4, $ffde2d); //Gray
+colorSet(a, 5, $d77c00); //Gray (S)
+colorSet(a, 6, $f2e4d6); //Blue (R)
+colorSet(a, 7, $ff8c36); //Tan (R)
+
 a++;
 
 

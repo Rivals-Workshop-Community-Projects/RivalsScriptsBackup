@@ -48,4 +48,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GRAVITY, .3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
+set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_may_arc_coineat"));
+set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, note_hfx1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_X_OFFSET, 16);
+set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);

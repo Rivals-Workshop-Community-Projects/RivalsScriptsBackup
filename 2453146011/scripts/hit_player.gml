@@ -25,31 +25,35 @@ if(my_hitboxID.attack = AT_USPECIAL){
 }
 
 if(my_hitboxID.attack = AT_BAIR && my_hitboxID.hbox_num == 1 && hit_player_obj.clone == false){
-	var BKB = get_hitbox_value(AT_BAIR,1,HG_BASE_KNOCKBACK);
-    var KBA = hit_player_obj.knockback_adj;
-    var KBS = get_hitbox_value(AT_BAIR,1,HG_KNOCKBACK_SCALING);
-    var DMG = get_hitbox_value(AT_BAIR,1,HG_DAMAGE);
-    var BHP = get_hitbox_value(AT_BAIR,1,HG_BASE_HITPAUSE);
-    var HPS = get_hitbox_value(AT_BAIR,1,HG_HITPAUSE_SCALING);
-    
-    spike_time = BKB * 4 * ((KBA - 1) * 0.6 + 1) + DMG * 0.12 * KBS * 4 * 0.65 * KBA;
-    spike_time+=BHP+HPS*.5;
-    
-    spawn_hit_fx(x,y,teleport_lite_start_smaller);
-    butterflyFX(70,70,4,-10*spr_dir,-40);
-    
-    
-    
-    can_fast_fall = false;
-    fast_falling = false;
-    do_a_fast_fall = false;
-    free = true;
-    play_sound = true;
+	
+	if(attack_down || (left_stick_down && spr_dir == 1) || (right_stick_down && spr_dir == -1))
+	{
+		var BKB = get_hitbox_value(AT_BAIR,1,HG_BASE_KNOCKBACK);
+	    var KBA = hit_player_obj.knockback_adj;
+	    var KBS = get_hitbox_value(AT_BAIR,1,HG_KNOCKBACK_SCALING);
+	    var DMG = get_hitbox_value(AT_BAIR,1,HG_DAMAGE);
+	    var BHP = get_hitbox_value(AT_BAIR,1,HG_BASE_HITPAUSE);
+	    var HPS = get_hitbox_value(AT_BAIR,1,HG_HITPAUSE_SCALING);
+	    
+	    spike_time = BKB * 4 * ((KBA - 1) * 0.6 + 1) + DMG * 0.12 * KBS * 4 * 0.65 * KBA;
+	    spike_time+=BHP+HPS*.5;
+	    
+	    spawn_hit_fx(x,y,teleport_lite_start_smaller);
+	    butterflyFX(70,70,4,-10*spr_dir,-40);
+	    
+	    
+	    
+	    can_fast_fall = false;
+	    fast_falling = false;
+	    do_a_fast_fall = false;
+	    free = true;
+	    play_sound = true;
+	}
 }
 
 // Up air jank
 if(my_hitboxID.attack = AT_UAIR && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 3) && hit_player_obj.clone == false) {
-	move_cooldown[AT_UAIR] = 45;
+	move_cooldown[AT_UAIR] = 60;
 	
 	spawn_hit_fx(x,y,teleport_lite_start_smaller);
 	spawn_hit_fx(hit_player_obj.x-80*spr_dir,hit_player_obj.y-60,hitfx9);
@@ -61,6 +65,9 @@ if(my_hitboxID.attack = AT_UAIR && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbo
     free = true;
     old_vsp = -10;
     vsp = -10;
+    
+    last_teleport_x = x;
+    last_teleport_y = y;
     
     if(state != PS_ATTACK_AIR || my_hitboxID.hbox_num == 3)
     {
@@ -98,7 +105,7 @@ if(my_hitboxID.attack = AT_FSPECIAL){
 	var hpTime = 15;
 	
 	// Cooldown
-	move_cooldown[AT_FSPECIAL] = 20;
+	move_cooldown[AT_FSPECIAL] = 40;
 	
     //Afterimage
     with(hit_player_obj)

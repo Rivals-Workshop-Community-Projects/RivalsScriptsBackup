@@ -318,7 +318,7 @@ if ((state == PS_DASH_STOP || state == PS_DASH_TURN) && bike){
 //Mount and dismount bike
 
 if bike{
-	if (state_cat == SC_HITSTUN) bike = false;
+	if (state_cat == SC_HITSTUN || state == PS_WALL_JUMP) bike = false;
 	
     else switch(state){
         case PS_PARRY_START:
@@ -489,7 +489,7 @@ badly_damaged = (get_player_damage(player) >= 100);
 
 prev_bike = bike;
 prev_state_timer = state_timer;
-nspecial_buffer--;
+if !(phone_attacking && attack == AT_DAIR && has_hit_ball && hitpause) nspecial_buffer--;
 
 
 

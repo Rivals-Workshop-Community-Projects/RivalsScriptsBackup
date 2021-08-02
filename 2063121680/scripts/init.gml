@@ -49,6 +49,13 @@ runesUpdated = true;
 ab_hud_x = 0;
 ab_hud_y = 0;
 
+//final smash
+fs_hit = false;
+fs_timer = 0;
+fs_hitID = noone;
+fs_char_chosen_final_smash = "custom";
+fs_char_portrait_y = 80;
+
 //abyssMods[1 to 15] = [type, description];
 //types are: -1 - disabled
 // 0 - object mod: Modifies a static object left behind after an attack.
@@ -125,6 +132,7 @@ stasisType = undefined;
 fstrongExplosionVfx = hit_fx_create(sprite_get("stock_explosion_large_blue"), 32);
 dtiltExplosionVfx = hit_fx_create(sprite_get("stock_explosion"), 32);
 bairExplosionVfx = hit_fx_create(sprite_get("stock_explosion_red"), 32);
+fsExplosionVfx = hit_fx_create(sprite_get("stock_explosion_large"), 32);
 
 //dattack vars
 dattackHitPlayer = false;

@@ -6,7 +6,7 @@ set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get("ustrong_hurt"));
 
 // Startup
 set_window_value(AT_USTRONG, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_USTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, .5); //.5
@@ -47,7 +47,7 @@ set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 14);
 
 // Recovery
 set_window_value(AT_USTRONG, 6, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 6, AG_WINDOW_LENGTH, 19);
+set_window_value(AT_USTRONG, 6, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 19);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_HAS_WHIFFLAG, 1);

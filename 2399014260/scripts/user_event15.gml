@@ -435,6 +435,27 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.3", "17 July, 2021");
+	initPatchWords_ext("- Community Patch: BowlingKing -", fa_center, apps[2].color, 1, 0);
+	initPatchWords("FSpecial - Nerfs");
+	initPatchWords_ext("Luma Shot damage 9 --> 7.
+	Luma cooldown when killed by enemy 25f --> 60f.", fa_left, c_gray, 1, 0);
+	initPatchWords("USpecial - Buffs");
+	initPatchWords_ext("Upward travel speed increased.", fa_left, c_gray, 1, 0);
+	initPatchWords("DTilt - Buffs");
+	initPatchWords_ext("Can now be jump-canceled instantly on hit.", fa_left, c_gray, 1, 0);
+	initPatchWords("FStrong - Buffs");
+	initPatchWords_ext("Damage 10 --> 12.
+	Knockback growth 1.1 --> 1.2.", fa_left, c_gray, 1, 0);
+	initPatchWords("UStrong - Nerfs");
+	initPatchWords_ext("Startup 12f --> 15f.
+	Knockback growth 1.2 --> 1.1.", fa_left, c_gray, 1, 0);
+	initPatchWords("UAir - Buffs, Adjustments");
+	initPatchWords_ext("Damage 5 --> 6.
+	Angle 80 --> 90.
+	Base knockback 8 --> 9.
+	Knockback growth 0.8 --> 0.7.", fa_left, c_gray, 1, 0);
+	
 	initPatch("1.2", "27 February, 2021");
 	initPatchWords("DSpecial Air - Buffs, Adjustments, Clarity");
 	initPatchWords_ext("Midair usage limit and stall removed.

@@ -109,7 +109,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_DSTRONG, 2, HG_EXTENDED_PARRY_STUN, true);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 1);
-set_hitbox_value(AT_DSTRONG, 2, HG_HITSTUN_MULTIPLIER, 0.6);
+set_hitbox_value(AT_DSTRONG, 2, HG_HITSTUN_MULTIPLIER, 0.8);
 set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 
@@ -143,5 +143,5 @@ set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_DSTRONG, 3, HG_EXTENDED_PARRY_STUN, true);
 set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, 304);
-set_hitbox_value(AT_DSTRONG, 3, HG_HITSTUN_MULTIPLIER,1);
+set_hitbox_value(AT_DSTRONG, 3, HG_HITSTUN_MULTIPLIER, 2);
 set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));

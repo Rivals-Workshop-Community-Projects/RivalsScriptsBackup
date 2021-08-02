@@ -320,17 +320,20 @@ if (attack == AT_FSPECIAL){
 	if(window == 1)
 	{
 		fspec_yoff = 0;
+		fspec_xoff = 10;
 		if((joy_dir < 350 && joy_dir > 200 && spr_dir == 1) || (joy_dir > 210 && joy_dir < 300 && spr_dir == -1) || down_stick_down)
 		{
 			set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_down"));
 			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_down_air"));
 			fspec_yoff = 30;
+			fspec_xoff = -10;
 		}
 		else if((joy_dir > 30 && joy_dir < 200 && spr_dir == 1) || (joy_dir < 150 && joy_dir > 0 && spr_dir == -1) || up_stick_down)
 		{
 			set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial_up"));
 			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_up_air"));
 			fspec_yoff = -22;
+			fspec_xoff = -10;
 		}
 		else
 		{
@@ -349,6 +352,10 @@ if (attack == AT_FSPECIAL){
 			
 			set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -36 + fspec_yoff);
 			set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, -35 + fspec_yoff);
+			
+						
+			set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 76 + fspec_xoff);
+			set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, 66 + fspec_xoff);
 	    }
 	}
 	
@@ -1264,13 +1271,13 @@ if (attack == AT_USPECIAL){
 	// Dspec buffer
     if(has_hit_player && special_pressed && joy_dir >= 225 && joy_dir <= 315) dspec_buffer = true;
     
-    // Cancel into dspecial
-    if(window >= 8  && window_timer > 4 && ( (special_pressed && joy_dir >= 225 && joy_dir <= 315) || dspec_buffer)  ) {
-    	set_state(PS_IDLE_AIR);
-    	set_attack(AT_DSPECIAL);
-    	from_uspecial = true;
-    	dspec_buffer = false;
-    }
+    // // Cancel into dspecial
+    // if(window >= 8  && window_timer > 4 && ( (special_pressed && joy_dir >= 225 && joy_dir <= 315) || dspec_buffer)  ) {
+    // 	set_state(PS_IDLE_AIR);
+    // 	set_attack(AT_DSPECIAL);
+    // 	from_uspecial = true;
+    // 	dspec_buffer = false;
+    // }
     
     // Grabbing projectile
 	if(grabbedProj == noone && (window < 7 && window > 2))
@@ -1582,7 +1589,7 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
     			window = 7;
     			window_timer = 1;
     			vsp = -15;
-    			hsp = 3*spr_dir;
+    			hsp = 2.2*spr_dir;
     		}
     	
     	// Window stuff for grab
@@ -1678,7 +1685,17 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 if (attack == AT_DSPECIAL){
 	move_cooldown[AT_DSPECIAL] = 10;
 	
-	//can_move = false;
+	//can_move = true;
+	
+	// Drift forward
+	if(right_down && spr_dir == 1)
+	{
+		hsp+=.05;
+	}
+	if(left_down && spr_dir == -1)
+	{
+		hsp -= .05;
+	}
 	
 	if(window == 1 && window_timer == 1)
 	{
@@ -1784,7 +1801,7 @@ if (attack == AT_AIR_DSPECIAL){
 		prev_hsp = 0;
 		caught_projectile = false;
 		throw_dir = "whiff";
-		can_air_dspecial = false;
+		//can_air_dspecial = false;
 		
 		if(!from_dspecial) set_window_value(AT_AIR_DSPECIAL, 1, AG_WINDOW_LENGTH, 11);
 		else set_window_value(AT_AIR_DSPECIAL, 1, AG_WINDOW_LENGTH, 9);
@@ -2412,6 +2429,9 @@ if(attack == AT_UTILT){
 		
 	// }
 	
+	// Raise height a bit
+	hud_offset = lerp(hud_offset, char_height, 0.5);
+	
 	// Compensate for whifflag
 	var whifflag_offset = 1.0;
 	if(has_hit_player)
@@ -2549,11 +2569,24 @@ if(attack == AT_DAIR){
 }
 #endregion
 
+#region Ustrong
+//Ustrong code
+if(attack == AT_USTRONG){
+
+	// Raise height a bit
+	if(window > 2 && window < 8) hud_offset = lerp(hud_offset, char_height, 0.5);
+	
+}
+#endregion
+
 #region Uair
-//Dair code
+//Uair code
 if(attack == AT_UAIR){
 	// Wall jump
 	can_wall_jump = window == 5 || window == 3;
+	
+	// Raise height a bit
+	hud_offset = lerp(hud_offset, char_height*.5, 0.5);
 	
 	// Landing lag
 	if(window < 3 && has_hit_player) set_attack_value(AT_UAIR, AG_LANDING_LAG, 0);
@@ -2562,7 +2595,7 @@ if(attack == AT_UAIR){
 #endregion
 
 #region Bair
-//Dair code
+//Bair code
 if(attack == AT_BAIR){
 
 	can_wall_jump = window == 3 || window == 5 || window == 7;
@@ -2570,6 +2603,23 @@ if(attack == AT_BAIR){
 	// Landing lag
 	if(window < 6 && has_hit_player) set_attack_value(AT_BAIR, AG_LANDING_LAG, 0);
 	else reset_attack_value(AT_BAIR, AG_LANDING_LAG);
+}
+#endregion
+
+#region Ftilt
+//Ftilt code
+if(attack == AT_FTILT){
+	if(!hitpause)
+	{
+		if(!has_hit_player && window == 2)
+		{
+			hsp = -3 * spr_dir;
+		}
+		else if(window == 2)
+		{
+			hsp = 3 * spr_dir;
+		}
+	}
 }
 #endregion
 
@@ -2600,6 +2650,7 @@ if(attack == AT_BAIR){
 if(attack == AT_FSTRONG){
 
 	can_fast_fall = false;
+	can_wall_jump = window >= 5;
 
 	// Init
 	if(window == 1 && window_timer == 1){
@@ -2627,11 +2678,10 @@ if(attack == AT_FSTRONG){
 	if(right_down && spr_dir == -1)
 		hsp += 1;
 	}
-
+	
 	// Endlag movement
 	if(((window == 5 && window_timer > 10) || window > 5))
 	{
-		
 		if(left_down ) hsp = -7.8 + (window > 5 ? window_timer/2.5 : 0);
 		else if(right_down) hsp = 7.8 - (window > 5 ? window_timer/2.5 : 0);
 	}
@@ -2678,6 +2728,12 @@ if(attack == AT_JAB){
 	
 	// Little backwards hsp
 	if(window == 9 && window_timer == 7) hsp -= 2*spr_dir;
+	
+	// Stop on jab2 connect
+	if(window == 5 && has_hit_player)
+	{
+		hsp *=.7;
+	}
 }
 #endregion
 
@@ -2688,7 +2744,11 @@ if(attack == AT_DATTACK){
 	if((right_strong_pressed || left_strong_pressed) && (window == 1 && window_timer <= 3))
 	{
 		set_attack(AT_FSTRONG);
+		hsp *=1.05;
 	}
+	can_wall_jump = window == 9;
+	
+
 }
 #endregion
 

@@ -68,6 +68,7 @@ sprite_change_offset("vfx_tiny", 30, 30);
 sprite_change_offset("vfx_bike_mount", 100, 140);
 sprite_change_offset("vfx_spin_u", 100, 140);
 sprite_change_offset("vfx_spin_d", 100, 140);
+sprite_change_offset("vfx_bair", 100, 140);
 
 sprite_change_offset("bike_idle", 100, 140);
 sprite_change_offset("bike_walk", 100, 140);

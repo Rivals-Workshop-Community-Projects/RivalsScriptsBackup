@@ -6,9 +6,13 @@ set_character_color_shading( slot_num, 0 );
 }
 }
 
-if (get_player_color( player ) == 1) { //blue
+if (get_player_color( player ) == 12) { //(old) blue
 set_character_color_shading( 3, 2 );
 set_character_color_shading( 0, 1.3 );
+}
+if (get_player_color( player ) == 1) { //(new) blue
+set_character_color_shading( 3, 1.6 );
+set_character_color_shading( 0, 1.6 );
 }
 if (get_player_color( player ) == 2) { //red
 set_character_color_shading( 3, 1.2 );
@@ -41,15 +45,198 @@ set_character_color_shading( 0, 1.4 );
 if (get_player_color( player ) == 11) { //lalala
 set_character_color_shading( 0, 0.6 );
 }
-if (get_player_color( player ) == 12) { //mix
+if (get_player_color( player ) == 13) { //hallow
+set_character_color_shading( 0, 1.6 );
+}
+if (get_player_color( player ) == 14) { //ki
+set_character_color_shading( 3, 1.6 );
+set_character_color_shading( 0, 1.6 );
+}
+if (get_player_color( player ) == 16) { //lilliana
+set_character_color_shading( 0, 1.6 );
+}
+if (get_player_color( player ) == 19) { //mix
 set_character_color_shading( 1, 0.6 );
 set_character_color_shading( 3, 0.6 );
 set_character_color_shading( 0, 1.4 );
 }
 
+
+if (variable_instance_exists(id, "extra_col")){
+if (extra_col==1){//mirage
+// shade, r, g, b, alpha
+set_character_color_slot( 0, 97, 70, 62 );
+set_character_color_slot( 1, 255, 235, 222 );
+set_character_color_slot( 2, 255, 200, 0 );
+set_character_color_slot( 3, 255, 221, 135 );
+set_character_color_slot( 4, 43, 255, 174 );
+set_character_color_slot( 5, 148, 255, 180 );
+set_character_color_slot( 6, 71, 227, 144 );
+set_character_color_slot( 7, 186, 118, 39 );
+
+set_character_color_shading( 0, 1 );
+set_character_color_shading( 1, 1 );
+set_character_color_shading( 2, 1 );
+set_character_color_shading( 3, 1 );
+
+set_article_color_slot( 2, 255, 200, 0 );
+set_article_color_slot( 5, 148, 255, 180 );
+set_article_color_slot( 6, 71, 227, 144 );
+set_article_color_slot( 7, 186, 118, 39 );
+}
+if (extra_col==2){//
+// shade, r, g, b, alpha
+set_character_color_slot( 0, 56, 102, 58 );
+set_character_color_slot( 1, 0, 0, 0 );
+set_character_color_slot( 2, 81, 219, 120 );
+set_character_color_slot( 3, 81, 219, 120 );
+set_character_color_slot( 4, 0, 0, 0 );
+set_character_color_slot( 5, 255, 0, 0 );
+set_character_color_slot( 6, 255, 0, 0 );
+set_character_color_slot( 7, 61, 189, 100 );
+
+set_character_color_shading( 0, 1 );
+set_character_color_shading( 1, 1 );
+set_character_color_shading( 2, 1 );
+set_character_color_shading( 3, 1 );
+
+set_article_color_slot( 2, 81, 219, 120 );
+set_article_color_slot( 5, 255, 0, 0 );
+set_article_color_slot( 6, 255, 0, 0 );
+set_article_color_slot( 7, 61, 189, 100 );
+}
+if (extra_col==3){//margret
+set_character_color_slot( 0, 120, 135, 120 );
+set_character_color_slot( 1, 255, 234, 214 );
+set_character_color_slot( 2, 255, 191, 0 );
+set_character_color_slot( 3, 235, 153, 221 );
+set_character_color_slot( 4, 255, 179, 244 );
+set_character_color_slot( 5, 255, 231, 251 );
+set_character_color_slot( 6, 255, 179, 215 );
+set_character_color_slot( 7, 186, 118, 39 );
+
+set_character_color_shading( 0, 1 );
+set_character_color_shading( 1, 1 );
+set_character_color_shading( 2, 1 );
+set_character_color_shading( 3, 1.5 );
+
+set_article_color_slot( 2, 255, 191, 0 );
+set_article_color_slot( 5, 255, 231, 251 );
+set_article_color_slot( 6, 255, 179, 215 );
+set_article_color_slot( 7, 186, 118, 39 );
+}
+if (extra_col==4){//arry
+set_character_color_slot( 0, 39, 48, 39 );
+set_character_color_slot( 1, 255, 234, 214 );
+set_character_color_slot( 2, 227, 255, 227 );
+set_character_color_slot( 3, 230, 255, 239 );
+set_character_color_slot( 4, 255, 173, 242 );
+set_character_color_slot( 5, 153, 255, 0 );
+set_character_color_slot( 6, 208, 255, 38 );
+set_character_color_slot( 7, 160, 191, 160 );
+
+set_character_color_shading( 0, 0.5 );
+set_character_color_shading( 1, 1 );
+set_character_color_shading( 2, 1 );
+set_character_color_shading( 3, 1.5 );
+
+set_article_color_slot( 2, 227, 255, 227 );
+set_article_color_slot( 5, 153, 255, 0 );
+set_article_color_slot( 6, 208, 255, 38 );
+set_article_color_slot( 7, 160, 191, 160 );
+}
+if (extra_col==5){//cookie
+set_character_color_slot( 0, 54, 171, 255 ); //blue
+set_character_color_slot( 1, 255, 235, 214 ); //skin
+set_character_color_slot( 2, 52, 26, 145 ); //yellow
+set_character_color_slot( 3, 255, 238, 105 ); //orange
+set_character_color_slot( 4, 255, 153, 192 ); //blush
+set_character_color_slot( 5, 140, 255, 196 ); //light
+set_character_color_slot( 6, 68, 255, 124 ); //ori_replace
+set_character_color_slot( 7, 19, 19, 54 ); //yellow.2
+
+set_character_color_shading( 0, 1.7 );
+set_character_color_shading( 1, 1 );
+set_character_color_shading( 2, 1 );
+set_character_color_shading( 3, 1.5 );
+
+set_article_color_slot( 2, 52, 26, 145 ); //yellow
+set_article_color_slot( 5, 140, 255, 196 ); //light
+set_article_color_slot( 6, 68, 255, 124 ); //ori_replace
+set_article_color_slot( 7, 34, 35, 84 ); //yellow.2
+}
+if (extra_col==6){//lightmagic
+set_character_color_slot( 0, 194, 134, 43, 0.6 ); //blue
+set_character_color_slot( 1, 194, 134, 43, 0.6 ); //skin
+set_character_color_slot( 2, 194, 134, 43, 0.6 ); //yellow
+set_character_color_slot( 3, 194, 134, 43, 0.6 ); //orange
+set_character_color_slot( 4, 194, 134, 43, 0.6 ); //blush
+set_character_color_slot( 5, 194, 134, 43, 1 ); //light
+set_character_color_slot( 6, 194, 134, 43, 1 ); //ori_replace
+set_character_color_slot( 7, 194, 134, 43, 0.6 ); //yellow.2
+
+set_character_color_shading( 0, 0 );
+set_character_color_shading( 1, 0 );
+set_character_color_shading( 2, 0 );
+set_character_color_shading( 3, 0 );
+set_character_color_shading( 4, 0 );
+set_character_color_shading( 5, 0 );
+set_character_color_shading( 6, 0 );
+set_character_color_shading( 7, 0 );
+
+set_article_color_slot( 2, 255, 214, 0 ); //yellow
+set_article_color_slot( 5, 255, 214, 0 ); //light
+set_article_color_slot( 6, 255, 214, 0 ); //ori_replace
+set_article_color_slot( 7, 255, 214, 0 ); //yellow.2
+}
+
+if (extra_col==7){//rankedgold alt1
+set_character_color_slot( 0, 232, 235, 255 ); //blue
+set_character_color_slot( 1, 255, 239, 232 ); //skin
+set_character_color_slot( 2, 255, 220, 23 ); //yellow
+set_character_color_slot( 3, 255, 122, 0 ); //orange
+set_character_color_slot( 4, 233, 126, 139 ); //blush
+set_character_color_slot( 5, 255, 255, 145 ); //light
+set_character_color_slot( 6, 255, 166, 23 ); //ori_replace
+set_character_color_slot( 7, 230, 138, 18 ); //yellow.2
+
+set_character_color_shading( 0, 1 );
+set_character_color_shading( 1, 1 );
+set_character_color_shading( 2, 1 );
+set_character_color_shading( 3, 1 );
+
+set_article_color_slot( 2, 255, 220, 23 ); //yellow
+set_article_color_slot( 5, 255, 255, 145 ); //light
+set_article_color_slot( 6, 255, 166, 23 ); //ori_replace
+set_article_color_slot( 7, 230, 138, 18 ); //yellow.2
+}
+if (extra_col==8){//rankedgold alt2
+set_character_color_slot( 0, 232, 235, 255 ); //blue
+set_character_color_slot( 1, 255, 239, 232 ); //skin
+set_character_color_slot( 2, 160, 151, 204 ); //yellow
+set_character_color_slot( 3, 160, 151, 204 ); //orange
+set_character_color_slot( 4, 160, 151, 204 ); //blush
+set_character_color_slot( 5, 190, 188, 204 ); //light
+set_character_color_slot( 6, 255, 166, 23 ); //ori_replace
+set_character_color_slot( 7, 111, 101, 161 ); //yellow.2
+
+set_character_color_shading( 0, 1 );
+set_character_color_shading( 1, 1 );
+set_character_color_shading( 2, 1 );
+set_character_color_shading( 3, 1 );
+
+set_article_color_slot( 2, 160, 151, 204 ); //yellow
+set_article_color_slot( 5, 190, 188, 204 ); //light
+set_article_color_slot( 6, 255, 166, 23 ); //ori_replace
+set_article_color_slot( 7, 111, 101, 161 ); //yellow.2
+}
+}
+
+/* outdated extra alts...
 if (variable_instance_exists(id, "hypal")){
 	if (hypal == 1){
 		// shade, r, g, b, alpha
+		// mirage
 		set_character_color_slot( 0, 97, 70, 62 );
 		set_character_color_slot( 1, 255, 235, 222 );
 		set_character_color_slot( 2, 255, 200, 0 );
@@ -94,7 +281,8 @@ if (variable_instance_exists(id, "hypal")){
 		set_character_color_slot( 6, 208, 255, 38 );
 		set_character_color_slot( 7, 160, 191, 160 );
 	}
-}
+} outdated extra alts...
+*/
 
 if (variable_instance_exists(id, "hylalala")){
 	if (get_player_color( player ) == 11){

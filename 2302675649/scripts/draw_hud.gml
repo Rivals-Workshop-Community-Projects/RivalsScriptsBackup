@@ -55,7 +55,7 @@ if ("rollArray" in self)
 				AddText("NSpec cancelling");
 				AddText("USpec cancelling");
 				AddText("FSpec hit-cancelling");
-				AddText("Discord ping");
+				AddText("Thonk ping");
 				AddText("DAir cancel");
 				AddText("FSpec into Spike");
 				AddText("Lonin Drip");
@@ -400,7 +400,7 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("Void Dragon can now be toggled by holding Shield while performing a normal taunt");
 						AddText("");
-						AddText("Discord ping can now be performed with the Bravo alt taunt");
+						AddText("Thonk ping can now be performed with the Bravo alt taunt");
 						AddText("");
 						AddText("Added Spectrum alt");
 						break;
@@ -518,6 +518,16 @@ if ("rollArray" in self)
 						AddText("v1.32.1 - 5 May 2021");
 						AddText("Updated song list");
 						break;
+					case 33:
+						AddText("v1.33 - 29 May 2021");
+						AddText("");
+						AddText("Replaced End's High alt with Riptide alt");
+						AddText("");
+						AddText("USpec Sour Damage 1 -> 4");
+						AddText("USpec Sweet Damage 4 -> 9");
+						AddText("");
+						AddText("Removed Lonin drip for Riptide :(");
+						AddText("Changed the Ping sound on taunt");
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

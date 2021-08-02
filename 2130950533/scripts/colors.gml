@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 12 );
+set_num_palettes( 13 );
 
 // Obligatory classic "hehe i hav teh funni"
 set_color_profile_slot( 1, 0, 255, 0, 0 ); //Shoes
@@ -127,13 +127,13 @@ set_color_profile_slot( 9, 6, 14, 94, 0 ); //Emoji
 set_color_profile_slot( 9, 7, 0, 255, 0 ); //Indicator
 
 // Yo, check it out.  He turned himself into a pickle.  I kid you not - funniest thing I've ever seen.
-set_color_profile_slot( 10, 0, 0, 143, 7 ); //Shoes
+set_color_profile_slot( 10, 0, 102, 51, 0 ); //Shoes
 set_color_profile_slot( 10, 1, 0, 167, 204 ); //Hat
 set_color_profile_slot( 10, 2, 255, 255, 255 ); //Eyes
 set_color_profile_slot( 10, 3, 0, 102, 0 ); //Fur
 set_color_profile_slot( 10, 4, 0, 184, 0 ); //Tummy
 set_color_profile_slot( 10, 5, 255, 255, 255 ); //Gloves
-set_color_profile_slot( 10, 6, 0, 201, 0 ); //Emoji
+set_color_profile_slot( 10, 6, 245, 191, 157 ); //Emoji
 set_color_profile_slot( 10, 7, 0, 255, 0 ); //Indicator
 
 // funny bad time haha
@@ -145,6 +145,26 @@ set_color_profile_slot( 11, 4, 23, 100, 255 ); //Tummy
 set_color_profile_slot( 11, 5, 255, 255, 255 ); //Gloves
 set_color_profile_slot( 11, 6, 69, 159, 255 ); //Emoji
 set_color_profile_slot( 11, 7, 0, 255, 0 ); //Indicator
+
+// Soft Fuzzy Man
+set_color_profile_slot( 12, 0, 255, 38, 255 ); //Shoes
+set_color_profile_slot( 12, 1, 255, 38, 255 ); //Hat
+set_color_profile_slot( 12, 2, 159, 246, 255 ); //Eyes
+set_color_profile_slot( 12, 3, 255, 178, 253 ); //Fur
+set_color_profile_slot( 12, 4, 159, 246, 255 ); //Tummy
+set_color_profile_slot( 12, 5, 159, 246, 255 ); //Gloves
+set_color_profile_slot( 12, 6, 240, 195, 83 ); //Emoji
+set_color_profile_slot( 12, 7, 0, 255, 0 ); //Indicator
+
+// Retro
+set_color_profile_slot( 13, 0, 162, 0, 255 ); //Shoes
+set_color_profile_slot( 13, 1, 162, 0, 255 ); //Hat
+set_color_profile_slot( 13, 2, 255, 255, 255 ); //Eyes
+set_color_profile_slot( 13, 3, 235, 141, 0 ); //Fur
+set_color_profile_slot( 13, 4, 23, 100, 255 ); //Tummy
+set_color_profile_slot( 13, 5, 255, 255, 255 ); //Gloves
+set_color_profile_slot( 13, 6, 0, 255, 0 ); //Emoji
+set_color_profile_slot( 13, 7, 0, 255, 0 ); //Indicator
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

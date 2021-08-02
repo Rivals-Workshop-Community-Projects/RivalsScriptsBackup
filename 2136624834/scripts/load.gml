@@ -75,8 +75,12 @@ sprite_change_offset("snowball1", 32, 32);
 sprite_change_offset("snowball2", 32, 32);
 sprite_change_offset("snowball3", 48, 48);
 
+sprite_change_offset("sno1", 8, 8);
+sprite_change_offset("sno2", 8, 8);
+
 sprite_change_offset("flake1", 200, 200);
 sprite_change_offset("flake2", 150, 150);
+sprite_change_offset("flake3", 46, 50);
 
 sprite_change_offset("flakedio1", 110, 120);
 sprite_change_offset("flakedio2", 90, 120);

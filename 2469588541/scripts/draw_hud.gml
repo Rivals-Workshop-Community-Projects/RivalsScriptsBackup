@@ -229,6 +229,34 @@ if ("practice" in self)
 						AddText("FSpec 1 Damage 1 -> 0");
 						AddText("FSpec 2 Damage 8 -> 9");
 						break;
+					case 13:
+						AddText("v1.13 - 18 Jul 2021");
+						AddText("");
+						AddText("Slightly updated the Lore page");
+						AddText("");
+						AddText("BAir Landing lag 6 -> 7");
+						AddText("");
+						AddText("DAir Final Hitstun Multiplier 1 -> 0.9");
+						AddText("");
+						AddText("UTilt Damage 7 -> 6");
+						AddText("");
+						AddText("USpec Damage 4 -> 2");
+						AddText("Prat land time 16 -> 17");
+						AddText("");
+						AddText("FSpec2 Hitpause 12 -> 15");
+						AddText("FSpec2 KBS 1.1 -> 0.9");
+						AddText("FSpec2 Endlag 32 -> 38");
+						AddText("FSpec Endlag has reduced air acceleration and gravity");
+						AddText("");
+						AddText("UStrong Window 1 6 -> 8 (startup 10 -> 12)");
+						break;
+					case 14:
+						AddText("v1.14 - 29 Jul 2021");
+						AddText("");
+						AddText("Redone Portrait and CSS! Thanks Regina!");
+						AddText("");
+						AddText("Replaced Ori alt with Riptide alt");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -328,6 +356,8 @@ if ("practice" in self)
 				AddText("They're most known for creating brilliant and stunning constellations when they turn into their feral form.");
 				AddText("");
 				AddText("Lukastars are sometimes mistaken for actual stars by other creatures on the ground.");
+				AddText("They're close friends with Flake, who lives on Xue Hua Mountains.");
+				AddText("They love listening to him play the Erhu.");
 				AddText("");
 				AddText("Occasionally, Lukastars fall from the sky to learn other creatures' fighting techniques.");
 				AddText("Moves that they have tried to replicate are:");

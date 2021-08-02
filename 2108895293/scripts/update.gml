@@ -1,5 +1,10 @@
 //update
 
+if (!phone_disable){
+	if (phone_manual_init >= 1){
+		user_event(14);
+	}
+}
 if (!lu_ds){
 	if (state == PS_DASH_STOP){
 		lu_ds = true;
@@ -15,6 +20,71 @@ if (!lu_ds){
 	}
 }
 
+
+if (state==PS_SPAWN && extra_col == 0){
+	if (taunt_down&&down_down){//mirage
+		extra_col = 1
+		white_flash_timer = 18;
+		sound_play(sound_get("ting"));
+		sound_play(sound_get("antici_2"));
+		init_shader();
+	}
+	/*if (){//
+		extra_col = 2
+		white_flash_timer = 18;
+		sound_play(sound_get("ting"));
+		sound_play(sound_get("antici_2"));
+		init_shader();
+	}*/
+	if (taunt_down&&right_down){//cookie
+		extra_col = 5
+		white_flash_timer = 18;
+		sound_play(sound_get("ting"));
+		sound_play(sound_get("antici_2"));
+		init_shader();
+	}
+	if (taunt_down&&left_down){//lightmagic
+		extra_col = 6
+		white_flash_timer = 18;
+		sound_play(sound_get("ting"));
+		sound_play(sound_get("antici_2"));
+		init_shader();
+	}
+	
+	if (special_down&&right_down){//margret
+		extra_col = 3
+		white_flash_timer = 18;
+		sound_play(sound_get("ting"));
+		sound_play(sound_get("antici_2"));
+		init_shader();
+	}
+	if (special_down&&left_down){//arry
+		extra_col = 4
+		white_flash_timer = 18;
+		sound_play(sound_get("ting"));
+		sound_play(sound_get("antici_2"));
+		init_shader();
+	}
+	
+	if (get_player_color( player ) == 18){
+		if (jump_down&&right_down){//alt 1
+			extra_col = 7
+			white_flash_timer = 18;
+			sound_play(sound_get("ting"));
+			sound_play(sound_get("antici_4"));
+			init_shader();
+		}
+		if (jump_down&&left_down){//alt 2
+			extra_col = 8
+			white_flash_timer = 18;
+			sound_play(sound_get("ting"));
+			sound_play(sound_get("antici_4"));
+			init_shader();
+		}
+	}
+}
+
+/* outdated extra alts...
 if (hypal == 0){
 	if (taunt_down){
 		if (down_down){
@@ -106,7 +176,8 @@ if (hypal == 2){
 			hyae = 0;
 		}
 	}
-}
+} outdated extra alts...
+*/
 
 if (get_player_color( player ) == 11){
 	if (hylalala > 0 && hylalala <= 120){
@@ -140,6 +211,18 @@ outline_color=[35, 67, 49]
 init_shader();
 }
 }
+if (get_player_color( player ) == 15){ //lilliana
+if (outline_color[0] == 0 && outline_color[1] == 0 && outline_color[2] == 0){
+outline_color=[70, 60, 70]
+init_shader();
+}
+}
+if (extra_col == 6){ //towerofheaven
+if (outline_color[0] == 0 && outline_color[1] == 0 && outline_color[2] == 0){
+outline_color=[255, 214, 0]
+init_shader();
+}
+}
 
 // - - - abyss rune
 if runesUpdated {
@@ -152,7 +235,27 @@ if runesUpdated {
 	}
 }
 
-user_event(14);
+//print(string(get_stage_data( SD_ID )))
+if (phone_manual_init == 1){
+	//if (get_stage_data( SD_ID ) == 416499||!phone_disable){
+	//if (variable_instance_exists(id, "obj_stage_main")||!phone_disable){
+		//print ("yes 1")
+	if (variable_instance_exists(obj_stage_main, "phone_user_id")||!phone_disable){
+		//print ("yes 2")
+		phone_disable = false;
+		user_event(14);
+		phone_manual_init++;
+	}else{
+		phone_manual_init = -1
+	}
+	//}
+}
+if (phone_manual_init >= 1 && !phone_disable){
+	//test
+}
+if (phone_manual_init == 0){
+	phone_manual_init++;
+}
 
 // - - - kirbycopy
 
@@ -792,6 +895,203 @@ if trummelcodecneeded{
     page++;
 	
 }
+
+
+if(variable_instance_exists(id,"diag"))
+{
+//Change their name whenever
+    diag_name = "Lumina"
+	diag_portrait=sprite_get("lumina_face");
+//  ADDING REGULAR DIALOGUE
+
+    //Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!
+    diagchoice = [
+    "Follow my light! Yes, now get punched by me!",
+    "My light isn't bright enough to hurt your eyes, but they sure can hurt you otherwise!",
+    "May my light lead the days.",
+    "May my light lead the night.",
+    "May my light lead the heavens.",
+    "May my light lead the abyss.",
+    "May my light lead the end.",
+    "May my light lead your way!",
+    "Did you know this variant of me is not canon to where I originate from?",
+    "Did you know actual randomness sometimes feels not random to consciousness?"]
+
+//  Specific Character Interactions
+
+//  Regular dialogue
+    if(otherUrl == "1894194148" && diag != ""){ //A.R.
+        diag = "Hey! ...You want to fight me? I-I'm not sure if I can beat you... Take it easy on me, Arelle!!";
+        diag_index = 4;
+    }
+    /*if(otherUrl == "2108895293" && diag != ""){ //Lumina (mirror match)
+        diag = "should use NRS";
+        diag_index = 0;
+    }*/
+    if(otherUrl == "2226596831" && diag != ""){ //Reckless
+        diag = "H-hey, keep your distance, stop swinging that remote around! You might hurt someone!";
+        diag_index = 5;
+    }
+    if(otherUrl == "2229832619" && diag != ""){ //N/A
+        diag = "They say 'Brighter the light, darker its shadow'... This axolotl, it's as if there's light much brighter than mine.";
+        diag_index = 7;
+    }
+    if(otherUrl == "2343479756" && diag != ""){ //Natsumi
+        diag = "...I sense sadness from you. What do you hide behind your cheery look?";
+        diag_index = 7;
+    }
+    if(otherUrl == "2415092274" && diag != ""){ //Ao
+        diag = "Pretty stars you have! And your magic, Windy, Spinny, ow, a bit dizzy...";
+        diag_index = 4;
+    }
+	
+    if(otherUrl == "19*19" && diag != ""){ //???
+        diag = "...You've finally reached us, then. Nobody around me who can help... Looks like I'll have to put an end to this myself, once. And. For. All.";
+        diag_index = 6;
+    }
+	
+    if(otherUrl == "1877715009" && diag != ""){ //Hikaru
+        diag = "A burning passionate light I feel from your power! I want to learn from your magic!";
+        diag_index = 1;
+    }
+    if(otherUrl == "2540199978" && diag != ""){ //Flake
+        diag = "Hello, would you like me to lead your way? Where would you like to- ...Whuh? You can beat me up without looking?? You want to FIGHT ME??? Oh no I'm sorr- OW";
+        diag_index = 5;
+    }
+    if(otherUrl == "2478102112" && diag != ""){ //Anyi
+        diag = "Kyah! That scared me a little, what're you doing throwing all these toys AT ME?";
+        diag_index = 5;
+    }
+    if(otherUrl == "2504902865" && diag != ""){ //Beryl
+        diag = "...You carry around a house? Or do you make them on-the-fly? Can I know, how comfy is it!?!?";
+        diag_index = 2;
+    }
+    if(otherUrl == "2456124960" && diag != ""){ //Nate
+        diag = "Nice crystal you have! I sense a much different magic from it, perhaps much more sophisticated than mine... Wait, you have TWO magic elements!?";
+        diag_index = 2;
+    }
+    /*if(otherUrl == "2552853220" && diag != ""){ //Fumo Reimu
+        diag = "Cute plushie just sitting there! ... ... I think there's something intimidating about this plushie.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2557400455" && diag != ""){ //Fumo Reisen
+        diag = "Cute plushie just sitting there! ... ... I think there's something inherently wrong about this plushie.";
+        diag_index = 0;
+    }*/
+    /*if(otherUrl == "2504123533" && diag != ""){ //Visselle
+        diag = "Gummies! Can I eat them?????";
+        diag_index = 0;
+    }*/
+    if(otherUrl == "2504402693" && diag != ""){ //Mall Knight
+        diag = "What are you riding on? Is it like a bicycle? It looks so cool!! Can I ride it??";
+        diag_index = 2;
+    }
+    if((otherUrl == "1871575669" || otherUrl == "1870831102" || otherUrl == "1895586961" || otherUrl == "2284823424") && diag != ""){ //Steves
+        diag = "You can sleep only at night... and when I don't have a bright light cast on your face!!";
+        diag_index = 3;
+    }
+    if(otherUrl == "2504071554" && diag != ""){ //
+        diag = "Ever heard of the term 'Old World Blues'? It refers to those so obsessed with the past they can't see the present, much less the future, for what it is. ...You can move on, you know.";
+        diag_index = 7;
+    }
+	/*
+    if(otherUrl == "" && diag != ""){ //
+        diag = "";
+        diag_index = 0;
+    }
+	*/
+	/*scrapped dialogues
+        diag = "Is that Ice magic? I love the ice element! It reminds me of my homeland, too!";
+	*/
+    
+//  NRS/3-Part dialogue
+    if(otherUrl == "2108895293"){ with(pet_obj){ //Lumina (mirror match)
+            if(variable_instance_exists(id,"diag_text")){
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                diag_nrs_diag = [
+                "Hey, you're...",
+                "Oh hey! It's... me...",
+                "...Actually, considering where I come from, this isn't even any surprising."]
+            }
+            switch(diag_nrs_state) {
+                case 0: //First Message
+                    other.diag_index = 4;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 4;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 7;
+                    break;
+            }
+    } }
+    if(otherUrl == "2504123533"){ with(pet_obj){ //Visselle
+            if(variable_instance_exists(id,"diag_text")){
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                diag_nrs_diag = [
+                "Gummies! Can I eat them?????",
+                "From one phosphorescent sorcerer to another, my wares are more than just jellies, kiddo.", // thanks to reiga themselvs for dialogue writing!!!!!
+                "I'll give up on eating them, then, but I love how they look! Can I see more of your stuff after this?"]
+            }
+            switch(diag_nrs_state) {
+                case 0: //First Message
+                    other.diag_index = 2;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 0;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 1;
+                    break;
+            }
+    } }
+    if(otherUrl == "2552853220"){ with(pet_obj){ //Fumo Reimu
+            if(variable_instance_exists(id,"diag_text")){
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                diag_nrs_diag = [
+                "Cute plushie just sitting there! ...",
+                "...",
+                "... I think there's something inherently wrong about this plushie."]
+            }
+            switch(diag_nrs_state) {
+                case 0: //First Message
+                    other.diag_index = 2;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 0;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 4;
+                    break;
+            }
+    } }
+    if(otherUrl == "2557400455"){ with(pet_obj){ //Fumo Reisen
+            if(variable_instance_exists(id,"diag_text")){
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                diag_nrs_diag = [
+                "Cute plushie just sitting there! ...",
+                "...",
+                "... Why do I hear boss music?"]
+            }
+            switch(diag_nrs_state) {
+                case 0: //First Message
+                    other.diag_index = 2;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 0;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 4;
+                    break;
+            }
+    } }
+}
+
+
 
 
 

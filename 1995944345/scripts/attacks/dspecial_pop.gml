@@ -23,6 +23,8 @@ set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 
 set_num_hitboxes(AT_DSPECIAL_2, 0);
 
+set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_DSPECIAL_2, 1, HG_EXTENDED_PARRY_STUN, 1)
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_WINDOW, 4);
@@ -35,7 +37,7 @@ set_hitbox_value(AT_DSPECIAL_2, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_DAMAGE, 0);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_DSPECIAL_2, 1, HG_KNOCKBACK_SCALING, 0.5);
+set_hitbox_value(AT_DSPECIAL_2, 1, HG_KNOCKBACK_SCALING, 0.85);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_VISUAL_EFFECT, hit_sprites[3]);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));

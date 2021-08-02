@@ -5,6 +5,8 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL || a
     trigger_b_reverse();
 }
 
+
+
 // removes nametag during respective moves
 if (attack == AT_UAIR) {
 	if (window > 1 && window < 9) {
@@ -28,15 +30,8 @@ if (phone_cheats[cheat_hit_jumps] != 0) {
 // when meter is active, make aerials jump and attack cancellable
 if (gimmick_activated == true) {
 	if (hype_active == true) {
-		if (attack == AT_DAIR || attack == AT_BAIR || attack == AT_FAIR || attack == AT_UAIR) {
+		if (attack == AT_DAIR || attack == AT_BAIR || attack == AT_FAIR || attack == AT_UAIR || attack == AT_NAIR) {
 			if (window > 2) {
-				can_jump = true;
-				can_attack = true;
-			}
-		}
-		
-		if (attack == AT_NAIR) {
-			if (window > 5) {
 				can_jump = true;
 				can_attack = true;
 			}
@@ -297,8 +292,7 @@ if (attack == AT_DAIR){
 
 
 if (attack == AT_USPECIAL){
-	
-	// no fastfall for upspecial since it makes no sense
+
 	
 	if (window == 2) {
 		if (window_timer == 5 && hitpause == false && !free) {
@@ -446,7 +440,9 @@ if (attack == AT_TAUNT) {
 		if (runeF == true) {
 			if (!hype_active) {
 				prat_land_time = 200;
-				set_state( PS_PRATFALL );
+				if (!has_hit) {
+					set_state( PS_PRATFALL );
+				}
 			}
 		}
 	}

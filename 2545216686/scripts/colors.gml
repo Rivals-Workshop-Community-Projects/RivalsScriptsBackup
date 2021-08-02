@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 20 );
+set_num_palettes( 24 );
 
 // Blue - Sonic
 set_color_profile_slot( 1, 0, 22, 62, 212 ); //Fur
@@ -225,6 +225,46 @@ set_color_profile_slot( 19, 4, 74, 240, 96 ); //Gloves
 set_color_profile_slot( 19, 5, 153, 187, 187 ); //Tail Tips
 set_color_profile_slot( 19, 6, 153, 187, 187 ); //"Skin"
 set_color_profile_slot( 19, 7, 140, 140, 140 ); //Eye Color
+
+// Red (Again) - Fiona
+set_color_profile_slot( 20, 0, 233, 34, 39 ); //Fur
+set_color_profile_slot( 20, 1, 162, 13, 19 ); //Fur 2
+set_color_profile_slot( 20, 2, 39, 28, 35 ); //Shoe 1
+set_color_profile_slot( 20, 3, 74, 112, 135 ); //Shoe 2
+set_color_profile_slot( 20, 4, 39, 28, 35 ); //Gloves
+set_color_profile_slot( 20, 5, 252, 249, 154 ); //Tail Tips
+set_color_profile_slot( 20, 6, 252, 249, 154 ); //"Skin"
+set_color_profile_slot( 20, 7, 25, 114, 181 ); //Eye Color
+
+// Brown - SATAM/AOSTH
+set_color_profile_slot( 21, 0, 140, 57, 0 ); //Fur
+set_color_profile_slot( 21, 1, 110, 45, 0 ); //Fur 2
+set_color_profile_slot( 21, 2, 219, 17, 27 ); //Shoe 1
+set_color_profile_slot( 21, 3, 214, 229, 246 ); //Shoe 2
+set_color_profile_slot( 21, 4, 214, 229, 246 ); //Gloves
+set_color_profile_slot( 21, 5, 239, 221, 182 ); //Tail Tips
+set_color_profile_slot( 21, 6, 239, 221, 182 ); //"Skin"
+set_color_profile_slot( 21, 7, 0, 0, 0 ); //Eye Color
+
+// Light Green - Cosmo
+set_color_profile_slot( 22, 0, 81, 211, 42 ); //Fur
+set_color_profile_slot( 22, 1, 57, 148, 29 ); //Fur 2
+set_color_profile_slot( 22, 2, 255, 255, 255 ); //Shoe 1
+set_color_profile_slot( 22, 3, 81, 211, 42 ); //Shoe 2
+set_color_profile_slot( 22, 4, 255, 255, 255 ); //Gloves
+set_color_profile_slot( 22, 5, 255, 255, 255 ); //Tail Tips
+set_color_profile_slot( 22, 6, 255, 255, 255 ); //"Skin"
+set_color_profile_slot( 22, 7, 0, 183, 255 ); //Eye Color
+
+// Mix - Unmapped
+set_color_profile_slot( 23, 0, 255, 159, 0 ); //Fur
+set_color_profile_slot( 23, 1, 193, 94, 13 ); //Fur 2
+set_color_profile_slot( 23, 2, 255, 0, 0 ); //Shoe 1
+set_color_profile_slot( 23, 3, 170, 51, 255 ); //Shoe 2
+set_color_profile_slot( 23, 4, 51, 255, 238 ); //Gloves
+set_color_profile_slot( 23, 5, 255, 51, 119 ); //Tail Tips
+set_color_profile_slot( 23, 6, 136, 255, 51 ); //"Skin"
+set_color_profile_slot( 23, 7, 9, 78, 183 ); //Eye Color
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -1,0 +1,1 @@
+if (attack == AT_NSPECIAL_2) hitbox_timer = 0;

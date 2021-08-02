@@ -33,26 +33,74 @@ else if g7skin = 1
     }
 }
 
-/*if (attack == (AT_USPECIAL)) && (left_down) && (spr_dir = 1)
+if (attack == AT_USPECIAL and (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))
 {
-spr_angle += 1
+    
+    hurtboxID.image_angle = spr_angle;
+}
+else
+{
+    hurtboxID.image_angle = 0;   
 }
 
-if (attack == (AT_USPECIAL)) && (right_down) && (spr_dir = -1)
-
+if (attack == AT_USPECIAL and (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))
 {
-spr_angle -= 1
+    if (spr_dir = 1)
+    {
+        if (left_down) and !(right_down)
+        {
+        spr_angle += 1;
+        }
+        if (right_down) and !(left_down)
+        {
+        spr_angle -= 1;
+        }
+        if (left_down and right_down)
+        {
+            spr_angle -= 1;
+        }
+        if !(left_down and right_down)
+        {
+            spr_angle = lerp(spr_angle,0,0.1);
+        }
+    }
+    else
+    {
+        
+        if (left_down) and !(right_down)
+        {
+        spr_angle += 1;
+        }
+        if (right_down) and !(left_down)
+        {
+        spr_angle -= 1;
+        }
+        if (left_down and right_down)
+        {
+            spr_angle -= 1;
+        }
+        if !(left_down and right_down)
+        {
+            spr_angle = lerp(spr_angle,0,0.1);
+        }    
+    }
+    
 }
 
-if spr_angle > 10 
+
+if (attack == (AT_USPECIAL))
 {
-spr_angle = 10
+    if spr_angle > 10 
+    {
+    spr_angle = 10
+    }
+    
+    if spr_angle < -10 
+    {
+    spr_angle = -10
+    }    
 }
 
-if spr_angle < -10 
-{
-spr_angle = -10
-}
 
 ///changes the angle of the sprite when going left or right during USPECIAL
 /*if (attack == (AT_USPECIAL)) && (left_down) && (spr_dir = -1)

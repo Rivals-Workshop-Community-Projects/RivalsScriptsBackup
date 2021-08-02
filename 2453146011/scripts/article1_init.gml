@@ -40,3 +40,8 @@ with(player_id){
 
 x = floor(x);
 y = floor(y);
+
+centerx = x;
+centery = y;
+
+facedir = "none";

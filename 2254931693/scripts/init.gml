@@ -124,8 +124,6 @@ fspecial_waveeffect = hit_fx_create( sprite_get( "fspecial_trumpetwave" ), 20 );
 taunt_flasheffect = hit_fx_create( sprite_get( "tauntflash" ), 16 );
 frog_despawneffect = hit_fx_create( sprite_get( "frog_despawn" ), 16 );
 
-user_event(1);
-
 indicator_color = get_player_hud_color( player );
 
 //character/stage support
@@ -148,5 +146,6 @@ if ("superTrue" in self){
     set_hitbox_value(49, 2, HG_DAMAGE, 75);
 }
 
+diag_portrait = sprite_get("diag_portrait"); // This will allow you to put any custom portrait onto the dialogue buddy!
 
 user_event(14);

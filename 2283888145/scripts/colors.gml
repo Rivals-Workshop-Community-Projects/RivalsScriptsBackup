@@ -201,7 +201,7 @@ switch(get_match_setting(SET_SEASON)){
 		colorSet(a, 1, $3570ba); //Red (S)
 		colorSet(a, 2, $fefa74); //Tan
 		colorSet(a, 3, $d8b14a); //Tan (S)
-		colorSet(a, 4, $fba7ee); //Green
+		colorSet(a, 4, $fba733); //Green
 		colorSet(a, 5, $c74b0d); //Green (S)
 		colorSet(a, 6, $64c3c0); //Blue (R)
 		colorSet(a, 7, $ffd7a1); //White (R)
@@ -230,6 +230,16 @@ switch(get_match_setting(SET_SEASON)){
 		break;
 		
 }
+
+// Riptide
+colorSet(a, 0, $ff8c36); //Red
+colorSet(a, 1, $a84700); //Red (S)
+colorSet(a, 2, $ffde2d); //Tan
+colorSet(a, 3, $d77c00); //Tan (S)
+colorSet(a, 4, $1ae0d6); //Green
+colorSet(a, 5, $0066a1); //Green (S)
+colorSet(a, 6, $283861); //Blue (R)
+colorSet(a, 7, $f2e4d6); //White (R)
 
 a++;
 

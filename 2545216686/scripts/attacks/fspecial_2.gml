@@ -22,7 +22,7 @@ set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 //Fly Up
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_LENGTH, 32);
+set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_LENGTH, 22);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 11);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_HSPEED, 4);
@@ -32,7 +32,7 @@ set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 0);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_SFX, sfx_swipe1);
-set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_SFX_FRAME, 30);
+set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_SFX_FRAME, 21);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.6);
 
 //Kick

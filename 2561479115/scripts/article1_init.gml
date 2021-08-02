@@ -1,0 +1,10 @@
+sprite_index = sprite_get("article1");
+depth -= 50;
+position_table = ds_list_create();
+spd = 13;
+passed_field = false;
+can_be_grounded = false;
+ignores_walls = false;
+image_speed = 0;
+im_ch = 0;
+spr = 0;

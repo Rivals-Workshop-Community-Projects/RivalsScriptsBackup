@@ -147,6 +147,9 @@ fspecGrabbedObj = noone;
 flake = {x:x==0?room_width/2:x, y:y==0?room_height/2:y, hsp:0, vsp:0, isOut:false};
 renderer = instance_create(0,0,"obj_article2");
 particle = hit_fx_create(sprite_get("particle"), 21);
+aura = 0;
+hue = 0;
+moyai_effect = hit_fx_create(sprite_get("moyai"), 10);
 
 // uspec
 uspecTarget = false;
@@ -172,3 +175,6 @@ ncode1 = "Stay away from those icicles.";
 ncode2 = "Those are extremely dangerous.";
 ncode3 = "";
 steve_death_message = "Transphobia is gone";
+fs_char_chosen_final_smash = "custom";
+fs_char_is_attack_grid = false;
+fs_char_portrait_y = 96;

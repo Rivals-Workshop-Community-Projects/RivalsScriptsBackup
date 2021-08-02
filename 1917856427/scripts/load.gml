@@ -71,5 +71,6 @@ sprite_change_offset("plat", 92, 14);
 sprite_change_offset("hfx_clock_large", 128, 128);
 sprite_change_offset("PLASMA_FX", 128, 128);
 sprite_change_offset("hfx_clock_specialt", 128, 128);
+sprite_change_offset("hfx_clock_cd", 64, 64);
 set_victory_bg( sprite_get( "victoryroyalebg" ));
 set_victory_theme( sound_get( "victorytheme" ));

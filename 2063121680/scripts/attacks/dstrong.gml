@@ -60,6 +60,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DSTRONG, 1, HG_EXTRA_HITPAUSE, 10);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_DSTRONG, 1, HG_SDI_MULTIPLIER, 0.33);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_LOCKOUT, 11);

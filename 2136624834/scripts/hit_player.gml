@@ -1,5 +1,10 @@
 ///
 intro = 1
+
+if timestop < 100 {
+move_cooldown[AT_FSPECIAL_2] = min(10 + hit_player_obj.hitstop*5, 60)
+}
+
 if introhit = 0 {
 	introhit = 1
 }

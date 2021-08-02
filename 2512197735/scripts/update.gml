@@ -147,3 +147,9 @@ if (introTimer < 15) {
                 other.waluigi_target = self;
             }
         }
+		
+
+	
+	
+	
+	

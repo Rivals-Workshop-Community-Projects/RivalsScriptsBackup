@@ -233,8 +233,8 @@ with (oPlayer) {
 							mycolich_sporetick = 0;
 							take_damage(player, other.player, 1)
 							if !activated_kill_effect {
-								hsp *= 0.9;//clamp(knockback_adj-0.1, 0.8, 1.0)
-								vsp *= 0.9;//clamp(knockback_adj-0.1, 0.8, 1.0)
+								hsp *= clamp(knockback_adj-0.1, 0.8, 1.0)
+								vsp *= clamp(knockback_adj-0.1, 0.8, 1.0)
 							}
 							sound_play(spsn)
 							//take_damage(other.player, 0, -1)

@@ -149,6 +149,6 @@ set_hitbox_value(AT_JAB, 4, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_JAB, 4, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_JAB, 4, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_JAB, 4, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
-set_hitbox_value(AT_JAB, 4, HG_PROJECTILE_SPRITE, sprite_get("bowjab"));
+set_hitbox_value(AT_JAB, 4, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_JAB, 4, HG_HIT_LOCKOUT, 2);
 set_hitbox_value(AT_JAB, 4, HG_PROJECTILE_WALL_BEHAVIOR, 1);

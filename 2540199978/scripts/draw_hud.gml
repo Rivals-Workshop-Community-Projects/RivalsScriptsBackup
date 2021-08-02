@@ -99,6 +99,19 @@ if ("practice" in self)
 						AddText("");
 						AddText("Added Acolyte alt");
 						break;
+					case 4:
+						AddText("v1.4 - 17 Jul 2021");
+						AddText("");
+						AddText("Added Victory theme");
+						AddText("Thanks Delta Parallax!");
+						break;
+					case 5:
+						AddText("v1.5 - 25 Jul 2021");
+						AddText("");
+						AddText("Added Final Smash support");
+						AddText("");
+						AddText("'Fixed' a 'bug' with icicles :moyai:");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

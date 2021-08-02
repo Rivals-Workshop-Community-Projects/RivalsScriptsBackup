@@ -57,12 +57,12 @@ var ky = y - random_func(2, char_height + 30, true);
 if (venom_timer > 0 && charge % .1 == 0){
 var kx = x + floor(char_height/2.5) - random_func(0, char_height, true);
 var ky = y - random_func(2, char_height + 30, true);
-    if venom_current == 3 {
+    if venom_stack == 1 {
        spawn_hit_fx(kx, ky, lightning_fx2);
-    } else if venom_current == 2 {
-       spawn_hit_fx(kx, ky, lightning_fx3);
-    } else if venom_current == 1 {
+    } else if venom_stack == 2 {
        spawn_hit_fx(kx, ky, lightning_fx4);
+    } else if venom_stack == 3 {
+       spawn_hit_fx(kx, ky, lightning_fx3);
 
     }
 }

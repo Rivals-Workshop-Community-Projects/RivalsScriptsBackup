@@ -13,4 +13,4 @@
 */
 
 //draw_debug_text(x,y,"otherPomme: " + string(otherPomme_id));
-//draw_debug_text(x,y+16,"myPomme: " + string(id));
+//draw_debug_text(x,y+16,"in songfield: " + string(in_songfield));

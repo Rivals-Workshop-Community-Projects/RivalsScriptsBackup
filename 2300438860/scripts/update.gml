@@ -182,19 +182,16 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 }
 
 
-if !free or (state_cat == SC_HITSTUN && hit_player_obj != self) {
-	move_cooldown[AT_USPECIAL] = 0
-	if state_cat == SC_HITSTUN {
-	move_cooldown[AT_FSPECIAL] = 0
-	}
-	wjcap = 0
-}
 
 
 if (state == PS_WALL_JUMP){
 	wjcap += 1
 move_cooldown[AT_USPECIAL] = 0
 move_cooldown[AT_FSPECIAL] = 0
+}
+if !free {
+	wjcap = 0
+	move_cooldown[AT_USPECIAL] = 0
 }
 
 if wjcap > 0 {

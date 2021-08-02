@@ -84,6 +84,7 @@ var palette_names = [
   "Deepsea",
   "nonsense tournament winner alt",
   "Equaliza",
+  "Riptide",
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

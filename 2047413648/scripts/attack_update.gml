@@ -12,8 +12,23 @@ if attack == AT_FTILT or attack == AT_DTILT or attack == AT_JAB {
 	if has_hit_player{
 		hsp = 0
 	}
+
 }
 
+	
+	if attack == AT_DTILT && window == 1 && window_timer == 1 && !hitpause {
+		sound_play(asset_get("sfx_spin"),false,noone,0.8,1.2);
+		sound_play(asset_get("sfx_ice_on_player"),false,noone,1);
+	}
+	
+	if attack == AT_FTILT && window == 1 && window_timer == 1 && !hitpause {
+		sound_play(asset_get("sfx_ice_on_player"),false,noone,1);
+	}
+	
+	if attack == AT_UTILT && window == 1 && window_timer == 1 && !hitpause {
+		sound_play(asset_get("sfx_ice_on_player"),false,noone,0.8,1.1);
+	}
+	
 if (attack_pressed ){
      set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
      set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, 0);
@@ -97,7 +112,6 @@ if (attack == AT_DAIR){
 	}
 	
 	if window == 5 && window_timer >= 5 && !has_hit{
-			take_damage(player, -1, 4)
 		prat_land_time = 30;	
 		set_state (PS_PRATLAND)
 	}
@@ -157,6 +171,7 @@ if (attack == AT_DAIR){
 		
 		if (!free) {
 			
+			shake_camera(4,6)
 			if get_player_color(player) == 5 && sakura == 1 {
               spawn_hit_fx( x + 80, y - 10, shit7 )
               spawn_hit_fx( x - 80, y - 10, shit7 )
@@ -177,6 +192,7 @@ if (attack == AT_DAIR){
        }
 	}
 if attack == AT_FSTRONG  {
+	
   if state_timer == 1 {
   	scharge = 0
   }
@@ -189,13 +205,13 @@ if attack == AT_FSTRONG  {
   	hit_player_obj.x += floor((x + 110*spr_dir - hit_player_obj.x) / 4 )
   	hit_player_obj.y += floor((y - 30 - hit_player_obj.y) / 4 )
   }
+  
  if window == 1 && window_timer >= 18 && (strong_down or left_strong_pressed or right_strong_pressed) && scharge < 300 && dashed = 0{
  	 window_timer -= 1
  	 scharge += 3
  }
  
   if fcharge >= 1 && window == 1 && (left_pressed or right_pressed) && dashed = 0 {
-  	set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 24);
   	dashed = 1
   	    	if left_pressed {
     		 hsp = -10.5
@@ -237,7 +253,7 @@ if attack == AT_USTRONG {
  	 scharge += 3
  }
   if fcharge >= 1 && window == 1 && (left_pressed or right_pressed) && dashed = 0{
-  	 set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 26);
+  	 set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 22);
   	   	 dashed = 1
   	    	if left_pressed {
   	    	scharge /= 2	
@@ -282,7 +298,6 @@ if attack == AT_DSTRONG {
  }
  
   if fcharge >= 1 && window <= 2 && (left_pressed or right_pressed) && dashed = 0{
-  	 set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 24);
   	 dashed = 1
   	    	if left_pressed {
   	    		scharge /= 2	
@@ -313,7 +328,15 @@ if attack == AT_DSTRONG {
 
 if attack == AT_NSPECIAL{
     
-    if down_down or special_down {
+    can_fast_fall = false
+    
+    hsp /= 1.05
+    
+    if window == 1 {
+    	clear_button_buffer( PC_SPECIAL_PRESSED );
+    }
+    
+    if !has_hit_player && (down_down or special_down) {
     	    	fall_through = 1
     }
     
@@ -355,8 +378,11 @@ if attack == AT_NSPECIAL{
      window = 2	
     }
     
-    if window == 4 && window_timer == 4 {
+    if window == 4 && window_timer == 4 && !hitpause{
     	sound_play(sound_get("RI"));
+    	sound_play(asset_get("sfx_abyss_explosion"),false,noone,1,1.4);
+    	sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1);
+    	shake_camera(6,10)
     }
     
     if window == 4 && window_timer == 3 && free {
@@ -368,14 +394,18 @@ if attack == AT_NSPECIAL{
     
     if window == 6 {
     	if free {
+    		hsp /= 1.2
     		window_timer = 3
     		vsp *= 1.05
     	}
     	
-    	if !free {
+    	if !free && !hitpause {
     		sound_play(sound_get("RI"));
+    	    sound_play(asset_get("sfx_abyss_explosion"),false,noone,1,1.4);
+    	    sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1);
+    	    shake_camera(6,10)
     	window = 4
-    	window_timer = 10
+    	window_timer = 9
     		
     	}
     }
@@ -404,13 +434,15 @@ if attack == AT_NSPECIAL{
     
     if  window == 2 or window == 3 {
     if move_cooldown[AT_FSPECIAL] == 0 and !free and (special_pressed  and left_down) and dairv = 0 {
-        hsp = -6.5
+        hsp = -9
+        
         fcharge -= 1
 		fchargetimer = 0
 		dairv = 1
         move_cooldown[AT_FSPECIAL] = 10
        	var trait = spawn_hit_fx( x - 20 * spr_dir  , y - 45 , ushadow)
     		 trait.depth = 11
+    		 x -= 10
         sound_play(asset_get("sfx_ori_bash_launch"));
         sound_play(asset_get("sfx_ori_bash_launch"));
         sound_play(asset_get("sfx_ori_glide_end"));
@@ -418,12 +450,14 @@ if attack == AT_NSPECIAL{
     } 
     
     if move_cooldown[AT_FSPECIAL] == 0 and !free and (special_pressed  and right_down) and dairv = 0 {
-        hsp = 6.5
+        hsp = 9
+        
         fcharge -= 1
         dairv = 1
 		fchargetimer = 0
         	var trait = spawn_hit_fx( x - 20 * spr_dir  , y - 45 , ushadow)
     		 trait.depth = 11
+    		 x += 10
         move_cooldown[AT_FSPECIAL] = 60
         sound_play(asset_get("sfx_ori_bash_launch"));
          sound_play(asset_get("sfx_ori_bash_launch"));
@@ -450,6 +484,10 @@ if attack == AT_NSPECIAL{
 
 if (attack == AT_NAIR && window == 1 && window_timer == 1 ){
     sound_play(asset_get("sfx_ori_ustrong_charge"))
+}
+
+if (attack == AT_FAIR && window == 1 && window_timer == 1 ){
+    sound_play(asset_get("sfx_ice_on_player"),false,noone,1,1.2)
 }
 
 
@@ -595,7 +633,7 @@ if (attack == AT_DTILT && window == 3 && !has_hit){
     
 }
 
-if (attack == AT_FTILT && window == 5 && window_timer == 15){
+if (attack == AT_FTILT && window == 5 && window_timer == 6){
     set_attack (AT_DTILT)
     window = 5
     
@@ -1175,7 +1213,7 @@ if attack == AT_TAUNT{
    	}
    }
 	
-	if window == 2 && window_timer >= 29 && (taunt_down or get_gameplay_time() <= 120) {
+	if window == 2 && window_timer >= 29 && (taunt_down or get_gameplay_time() <= 112) {
 		
 		if get_player_color(player) == 7 {
 		sound_play(sound_get("Balesi"));

@@ -43,30 +43,51 @@ if my_hitboxID.attack == AT_NSPECIAL {
 				if instance_exists(mushins) && mushins.state == 0 {
 					mushins.damage = max(mushins.damage-floor(my_hitboxID.damage/healdiv), 0)
 				}
-				
+				var s = 10
+				var ins = instance_create(hit_player_obj.x,floor(hit_player_obj.y-(hit_player_obj.char_height/2)),"obj_article2")
+				ins.timer = 200
+				ins.image_xscale = 0
+				ins.hsp = s
+				ins.vsp = s
+				ins = instance_create(ins.x,ins.y,"obj_article2")
+				ins.timer = 200
+				ins.image_xscale = 0
+				ins.hsp = -s
+				ins.vsp = s
+				ins = instance_create(ins.x,ins.y,"obj_article2")
+				ins.timer = 200
+				ins.image_xscale = 0
+				ins.hsp = s
+				ins.vsp = -s
+				ins = instance_create(ins.x,ins.y,"obj_article2")
+				ins.timer = 200
+				ins.image_xscale = 0
+				ins.hsp = -s
+				ins.vsp = -s				
 }
+
 
 if my_hitboxID.attack == AT_NSPECIAL_2 {
 	selfstab = 0;
 	
 		var s = 10
 		var ins = instance_create(hit_player_obj.x,floor(hit_player_obj.y-(hit_player_obj.char_height/2)),"obj_article2")
-		ins.timer = 30
+		ins.timer = 200
 		ins.image_xscale = 0
 		ins.hsp = s
 		ins.vsp = s
 		ins = instance_create(ins.x,ins.y,"obj_article2")
-		ins.timer = 30
+		ins.timer = 200
 		ins.image_xscale = 0
 		ins.hsp = -s
 		ins.vsp = s
 		ins = instance_create(ins.x,ins.y,"obj_article2")
-		ins.timer = 30
+		ins.timer = 200
 		ins.image_xscale = 0
 		ins.hsp = s
 		ins.vsp = -s
 		ins = instance_create(ins.x,ins.y,"obj_article2")
-		ins.timer = 30
+		ins.timer = 200
 		ins.image_xscale = 0
 		ins.hsp = -s
 		ins.vsp = -s

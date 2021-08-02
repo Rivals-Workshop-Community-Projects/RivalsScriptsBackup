@@ -1,4 +1,8 @@
 //play sound
+spawnclock --;
+
+
+
 if (window == 1 && window_timer == 1)
 {
 	if(!shield_down && GAUGE_NAME_CURRENT >=55)
@@ -26,8 +30,9 @@ if (window == 1 && window_timer == 1)
                 }   
                 if  (attack != AT_DSPECIAL)
                 {
-                MUS_NOTE +=1
+                MUS_NOTE +=1;
                 }
+               
                 if (attack = AT_DSPECIAL && MUS_NOTE == 8)
                 {
                 MUS_NOTE +=1;
@@ -334,27 +339,25 @@ if trigger = 1
 
 
 
-if GAUGE_NAME_CURRENT >55{
 
 
-
-hue+=1;
+hue+=0.2;
 if (hue>255) {hue-=255;}
 
 color_rgb=make_color_rgb(60, 188, 252); 
 hue2=(color_get_hue(color_rgb)+hue) mod 255;
 color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
-set_color_profile_slot(8, 0, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+set_color_profile_slot(8, 1, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
 init_shader();
 
 
-hue+=0.10;
+hue+=0.2;
 if (hue>255) {hue-=255;}
 
 color_rgb=make_color_rgb(164, 228, 252); 
 hue2=(color_get_hue(color_rgb)+hue) mod 255;
 color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
-set_color_profile_slot(8, 2, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+set_color_profile_slot(8, 0, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
 init_shader();
 
 
@@ -365,10 +368,6 @@ hue2=(color_get_hue(color_rgb)+hue) mod 255;
 color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
 set_color_profile_slot(8, 6, color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
 init_shader();
-
-
-}
-
 
 
 //god of destruction support 

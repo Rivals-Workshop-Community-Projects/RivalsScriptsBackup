@@ -123,4 +123,11 @@ case 3:
 	}
 	player_id.mushalpha += 0.1
 break;
+case 4: //Dying without pop
+state_timer++;
+var l = 40;
+sprite_index = sprite_get("nodedie");
+image_index = (state_timer/l)*image_number;
+if state_timer >= l instance_destroy();
+break;
 }

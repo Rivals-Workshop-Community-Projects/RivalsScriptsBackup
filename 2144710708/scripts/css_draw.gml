@@ -109,7 +109,7 @@ alt_name[26] = "Mae"; // mae browski from a night in the woods
 alt_name[27] = "Banana Cat"; // banana rat steam profile pic
 alt_name[28] = "Skitty"; // skitty from pokemon
 alt_name[29] = "Splat"; // maeko, splat oc 
-alt_name[30] = "Shepard"; // adrian shepard
+alt_name[30] = "Shephard"; // adrian shephard
 
 alt_name[31] = "unused"; // alt 31 doesn't work :(
 

@@ -93,3 +93,4 @@ sprite_change_offset("abyss_boulder", 16, 16);
 sprite_change_offset("frozen_boulder", 16, 16);
 sprite_change_offset("spook_boulder", 16, 16);
 sprite_change_offset("birder", 16, 16);
+sprite_change_offset("boulderriptide", 16, 16);

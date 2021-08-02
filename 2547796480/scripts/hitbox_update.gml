@@ -10,8 +10,9 @@ if attack == AT_FSPECIAL && hbox_num == 5 {
 		spr_dir = -1
 	}
 	
-	spawn_hit_fx (x , y + 10 - random_func(1,20,true) , hamsd)
 	spawn_hit_fx (x , y + 20 - random_func(2,40,true) , hams)
+
+	
 }
 
 if attack == AT_FSPECIAL && hbox_num <= 4 {
@@ -108,7 +109,7 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
     if player_id.move_cooldown[AT_NSPECIAL_2] == 4 && hitbox_timer >= 20 {
     	hsp = shsp
         vsp = svsp
-    	hitbox_timer = -60
+    	hitbox_timer = -30
     	player = orig_player
     	hit_priority = 9
     	spawn_hit_fx(x,y,timeS2)
@@ -135,8 +136,11 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
     
     if nearbyhitbox != noone && type == 1 && hitpause == 1.1133  {
     	
-    	nearbyhitbox.player_id.ethrow += 1
-    	nearbyhitbox.player_id.move_cooldown[AT_DTILT] = 60
+    	with nearbyhitbox.player_id {
+    	    move_cooldown[AT_DTILT] = 60
+    	    ethrow += 1
+    	}
+    	
     	with other {
     		destroyed = true
     	sound_stop(asset_get("sfx_ori_energyhit_heavy"))
@@ -147,7 +151,9 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
     if nearbyhitbox != noone && type == 1 && hitpause == 1.1412  {
     	with other {
     		destroyed = true
-    		create_hitbox(AT_FSPECIAL,5,x,y)
+    		with player_id {
+    		create_hitbox(AT_FSPECIAL,5,other.x,other.y)
+    		}
     	sound_stop(asset_get("sfx_ori_energyhit_heavy"))
 		sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,1,1.4)
     	}

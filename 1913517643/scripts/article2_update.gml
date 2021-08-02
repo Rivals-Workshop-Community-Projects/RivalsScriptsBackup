@@ -20,7 +20,10 @@ if (lifetime < 10) {
 }
 
 if (lifetime = 0) {
+    
+    
     instance_destroy();
+    exit;
 }
 
 if (player_id.special_pressed && player_id.down_down && player_id.attack == AT_DSPECIAL && player_id.move_cooldown[AT_DSPECIAL] == 0){

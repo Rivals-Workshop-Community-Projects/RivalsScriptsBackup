@@ -15,10 +15,12 @@ if (state == 0) // idle lol
     {
         with (asset_get("pHitBox"))
         {
-            if (attack == AT_NSPECIAL && hbox_num == 1 && player_id == other.player_id && place_meeting(x,y,other))
+            if (attack == AT_NSPECIAL && hbox_num == 1 && place_meeting(x,y,other))
             {
-                with (other) SetState(1);
-                destroyed = true;
+                if(player_id != other.player_id && player_id.url == other.player_id.url) //Same character
+                { with (other){ SetState(2); hboxhsp = other.hsp; } destroyed = true; }
+                else if(player_id == other.player_id)
+                { with (other){ SetState(1);} destroyed = true; }
             }
         }
     }
@@ -30,7 +32,14 @@ else if (state == 1) // nspec hit
     instance_destroy(self);
     exit;
 }
-
+else if (state == 2) // nspec other angalara hit
+{
+    sound_play(asset_get("sfx_ice_shatter_big"));
+    hbox = create_hitbox(AT_NSPECIAL, 2, x+0, y+40);
+    hbox.hsp = -hboxhsp;
+    instance_destroy(self);
+    exit;
+}
 ++state_timer;
 
 #define SetState(_state)

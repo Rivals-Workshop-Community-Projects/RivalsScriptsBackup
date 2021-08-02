@@ -26,7 +26,7 @@ moonwalk_accel = 1.4;
 jump_start_time = 5;
 jump_speed = 10;
 short_hop_speed = 6.5;
-djump_speed = 9;
+djump_speed = 9.5;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4.5; //the maximum hsp you can accelerate to when in a normal aerial state
@@ -128,7 +128,7 @@ nspec_wispconsume = false;
 blue_arrow_sprite = sprite_get("bluearrow");
 red_arrow_sprite = sprite_get("redarrow");
 should_red_arrow = false;
-
+red_explosion = hit_fx_create( sprite_get( "bigexplosion" ), 30 );
 nspec_hitenemy_red = hit_fx_create( sprite_get( "arrowhit_red" ), 15 );
 nspec_hitenemy = hit_fx_create( sprite_get( "arrowhit_blue" ), 15 );
 blue_charge = hit_fx_create( sprite_get( "arrowhit_bluenew" ), 15 );

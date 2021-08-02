@@ -17,6 +17,6 @@ if (image_index == sprite_get("jump")){
 	hurtboxID.sprite_index = asset_get("ex_guy_hurt_box");
 }
 
-if (attack == AT_FSPECIAL_2){
+if (attack == AT_FSPECIAL_2 || attack == AT_FSPECIAL_AIR){
 	hurtboxID.sprite_index = asset_get("ex_guy_hurt_box");
 }

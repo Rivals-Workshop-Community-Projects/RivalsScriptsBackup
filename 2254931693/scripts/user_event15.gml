@@ -577,6 +577,10 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	initPatch("2.1.3", "July 26th, 2021");
+	initPatchWords("-Added compatibility with Dialogue Buddy with 5 unique dialogue portraits");	 	 
+	 
+	 
 	initPatch("2.1.2", "July 8th, 2021");
 	initPatchWords("-Final Smash/Super now deals increased damage on Rivals of Fighter stage (30 -> 75)
 	-Fixed a bug that caused Final Smash hitbox to hit twice when facing left");	 

@@ -1,6 +1,6 @@
 selfstab = 0;
 with (mushins) {
-	state = 2;
+	state = 4;
 	damage = 0;
 	
 }

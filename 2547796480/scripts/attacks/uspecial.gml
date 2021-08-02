@@ -45,6 +45,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 1.1133);
 set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_USPECIAL, 1, HG_HIT_LOCKOUT, 30);
 
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 3);

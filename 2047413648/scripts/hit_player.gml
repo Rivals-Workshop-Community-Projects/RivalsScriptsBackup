@@ -58,35 +58,15 @@ if get_player_color(player) == 5 {
  	
  }
  
- if get_player_color(player) != 5{
-
-	var hits = random_func(20, 3, true) ;
-
-
+if get_player_color(player) != 5 && my_hitboxID.sound_effect != sound_get("RI") && my_hitboxID.sound_effect != sound_get("RI2"){
 	
-	if (hits == 0 ){
-    	var hit1 = spawn_hit_fx( hit_player_obj.x + random_func(3, 10, true), hit_player_obj.y - 30 + random_func(1, 10, true), slash )
-    		hit1.depth = -1000
+move_cooldown[AT_EXTRA_3] = hit_player_obj.hitstop/1.2
+maxdraw = hit_player_obj.hitstop/1.2
+hitdmg = my_hitboxID.damage/10
 
-	}
-	
-  	if (hits == 1 ){
-    var hit2 = spawn_hit_fx( hit_player_obj.x + random_func(3, 10, true), hit_player_obj.y - 30 + random_func(1, 10, true), slash2 )
-    	hit2.depth = -1000
+angledraw = random_func(1,360,true)  
 
-     }
-     
-     if (hits == 2){
-    	var hit3 = spawn_hit_fx( hit_player_obj.x + random_func(3, 10, true), hit_player_obj.y - 30 + random_func(1, 10, true), slash3 )
-    		hit3.depth = -1000
-
-     }
-     
-       	if (hits == 3){
- 	var hit4 = spawn_hit_fx( hit_player_obj.x + random_func(3, 10, true), hit_player_obj.y - 30 + random_func(1, 10, true), slash4 )
- 		hit4.depth = -1000
-     }
-	
+         
 }
    
 if (my_hitboxID.attack != AT_USPECIAL && drops == 1 && !free){

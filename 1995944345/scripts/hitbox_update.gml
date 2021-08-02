@@ -16,6 +16,11 @@ if attack == AT_NSPECIAL_2 {
 		ins.timer = 2
 		ins.image_xscale = 0
 	}
+
+
+
+
+
 }
 
 if attack == AT_DSPECIAL && hbox_num == 1{

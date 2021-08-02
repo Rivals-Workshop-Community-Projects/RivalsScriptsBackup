@@ -1,5 +1,9 @@
-
-
+/*
+draw_debug_text(x - 200, y + 80, "TRUE KB: " + string(orig_knock))
+draw_debug_text(x - 200, y + 60, "Should KB: " + string(debugA + (get_player_damage(player) * debugB * 0.12 * knockback_adj )))
+draw_debug_text(x - 200, y + 40, "Fake KB: " + string(debugA + (get_player_damage(player) * debugB * 0.12 * knockback_adj )))
+draw_debug_text(x - 200, y + 0, "Hitstun: " + string(hitstun))
+*/
 
 if army_leader.debug == 1 {
 	draw_debug_text(x, y + 20, "Is Clone: "+ string(is_nana))

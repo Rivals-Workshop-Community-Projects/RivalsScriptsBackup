@@ -3,7 +3,7 @@ if (attack == AT_DSPECIAL){
     trigger_b_reverse();
 }
 
-
+var teleport_afterimage_time = 0;
 
 //#region NSpecial
 if (attack == AT_NSPECIAL){
@@ -354,7 +354,7 @@ if (attack == AT_USPECIAL){
 	// }
 
 	// Charged
-	if(teleported) {
+	if(portal_delay > 0) {
 		if(!uspec_charged)  sound_play(sound_get("monarch_zap"),false,0,0.5);
 		uspec_charged = true;
 	}
@@ -532,7 +532,8 @@ if (attack == AT_DSPECIAL_2){
 	
 	// Spawn fx
 	if(window == 2 && window_timer == get_window_value(AT_DSPECIAL_2,2,AG_WINDOW_LENGTH)){ circ = spawn_hit_fx(x,y,dspec_circle); circ.depth = depth-1; }
-	
+
+
 	// Trigger teleport
 	if(window == 4 && window_timer == 1 && time_knife != noone){time_knife.early_trigger = true; sound_stop(sound_get("monarch_countdown"))}
 }
@@ -545,11 +546,12 @@ if(attack == AT_FTILT)
 	var ttime = 1;
 	
 	// FX
-	
 	if(window == 1 && window_timer == get_window_value(AT_FTILT,1,AG_WINDOW_LENGTH)-1) sound_play(sound_get("monarch_smallblink2"),false,0,.7,1)
 	
 	// Start teleport
-	if(window == 2 && window_timer == ttime){
+	if(window == 1 && window_timer == windowend(1)){
+		
+
 		
 		tmid = spawn_hit_fx( x, y, teleport_lite_start );
 		tmid.depth = -100;	
@@ -557,14 +559,31 @@ if(attack == AT_FTILT)
 		// Move forward
 		teleport(100 * spr_dir);
 		
-		// Spawn effect
-		treturn = spawn_hit_fx( x, y, teleport_lite_return );
-		treturn.depth = -100;
 		
 
 		
 		// Flip direction
 		spr_dir *= -1;
+
+	    portal_afterimage.timer = teleport_afterimage_time;
+	    portal_afterimage.sprite_index = sprite_index;
+	    portal_afterimage.image_index = image_index+2;
+	    portal_afterimage.x = x+dir(10);
+	    portal_afterimage.y = y;
+	    portal_afterimage.spr_dir = spr_dir;
+	    last_pcolor = 1;
+	    
+	    portal_line_timer = teleport_afterimage_time;
+	}
+	
+	// Return teleport
+	if(window == 2 && window_timer == windowend(2))
+	{
+		// Spawn effect
+		treturn = spawn_hit_fx( x, y, teleport_lite_return );
+		treturn.depth = -100;
+		
+		
 	}
 	
 	// Butterfly FX
@@ -580,6 +599,9 @@ if(attack == AT_FTILT)
 		var tbutterflies2 = spawn_hit_fx( x, y, teleport_lite_butterflies2 );
 		tbutterflies2.image_xscale *= -1;
 	}
+	
+	
+
 }
 
 
@@ -592,33 +614,43 @@ if(attack == AT_FSTRONG)
 	var tdistance = 145;
 	
 	// Make % thing dissapear
-	if(window == 6) draw_indicator = false;
+	if(window == 7) draw_indicator = false;
 	else draw_indicator = true;
 
 	// Shift position on return
-	if(window == 6 && window_timer == get_window_value(AT_FSTRONG,6,AG_WINDOW_LENGTH)) x+= 60*spr_dir;
+	if(window == 7 && window_timer == get_window_value(AT_FSTRONG,6,AG_WINDOW_LENGTH)) x+= 60*spr_dir;
 	
 	// Teleport
 	if(window == 2 && window_timer == get_window_value(AT_FSTRONG,2,AG_WINDOW_LENGTH)){
 		tmid = spawn_hit_fx( x, y, teleport_lite_start );
 		tmid.depth = -100;	
 		
-		portal_afterimage.timer = 15;
+
+		
+		// Move Backward
+		teleport(-(tdistance * spr_dir));
+		
+		portal_afterimage.timer = teleport_afterimage_time;
 	    portal_afterimage.sprite_index = sprite_index;
 	    portal_afterimage.image_index = image_index;
 	    portal_afterimage.x = x;
 	    portal_afterimage.y = y;
 	    portal_afterimage.spr_dir = spr_dir;
 	    last_pcolor = 1;
-		
-		// Move Backward
-		teleport(-(tdistance * spr_dir));
-		
+	    
+	    portal_line_timer = teleport_afterimage_time;
+	    current_teleport_y-=10;
+	}
+	
+	// Teleport return
+	if(window == 3 && window_timer == windowend(3))
+	{
 		// Spawn effect
 		spr_dir *= -1;
 		treturn = spawn_hit_fx( x - (5*spr_dir), y, teleport_lite_return );
 		spr_dir *= -1;
 		treturn.depth = -100;
+
 	}
 	
 	// Butterfly FX
@@ -636,13 +668,13 @@ if(attack == AT_FSTRONG)
 		tbutterflies2.image_xscale *= -1;
 	}
 	
-	if(window == 6 && window_timer == 8){
+	if(window == 7 && window_timer == 8){
 		in_portal = false;
 		portal_timer = max(portal_timer,20);
 	}
 	
 	// Return
-	if(window == 7 && window_timer == 2)
+	if(window == 8 && window_timer == 2)
 	{
 		var tbutterflies3 = spawn_hit_fx( x-(10*spr_dir), y, teleport_lite_butterflies_right );
 		black_screen = false;
@@ -866,44 +898,61 @@ if (attack == AT_DSTRONG){
 	can_move = true;
 
 	// check ground
-	if(  (collision_line( x, y, x, y+95, asset_get("par_block"), false, true ) == noone) && (collision_line( x, y, x, y+95, asset_get("par_jumpthrough"), false, true ) == noone) && teleported = false){
+	if((collision_line( x, y, x, y+95, asset_get("par_block"), false, true ) == noone) && (collision_line( x, y, x, y+95, asset_get("par_jumpthrough"), false, true ) == noone) && teleported = false && !hitpause){
 		x = (xprevious-sign(hsp));
 		hsp = 0;
 		can_move = false;
 	}
 	
 	// Teleport
-	if(window == 2){
+	if(window == 2 && window_timer == 1){
 		tmid = spawn_hit_fx( x+dir(2), y+10, teleport_lite_start_smaller );
 		tmid.depth = -100;	
 		
 		
 		sound_play(sound_get("monarch_smallblink1"),false,0,.5,.98)
 		
-		butterflyFX(80,80,3,0,-20);
+		if(lite) spawn_hit_fx( x, y, teleport_lite_butterflies );
+		else butterflyFX(80,80,3,0,-20);
 		
-	    portal_afterimage.timer = 20;
+
+		
+		
+		// Teleport
+		last_teleport_x = x;
+		last_teleport_y = y+(char_height/2);
+		y-=90;
+		current_teleport_x = x;
+		current_teleport_x -= dir(16);
+		current_teleport_y = y+(char_height/2);
+		
+		
+		portal_afterimage.timer = teleport_afterimage_time;
 	    portal_afterimage.sprite_index = sprite_index;
-	    portal_afterimage.image_index = image_index;
+	    portal_afterimage.image_index = image_index+1;
 	    portal_afterimage.x = x;
 	    portal_afterimage.y = y;
 	    portal_afterimage.spr_dir = spr_dir;
 	    last_pcolor = 1;
 		
-		
-		// Teleport
-		y-=90;
-		
 		in_portal = false;
 		portal_cooldown = 0;
 		
+		portal_line_timer = teleport_afterimage_time;
+		
+		if(lite) spawn_hit_fx( x, y, teleport_lite_butterflies );
+		else butterflyFX(80,80,5,0,-40);
+	}
+	if(window == 4 && window_timer == get_window_value(AT_DSTRONG,4,AG_WINDOW_LENGTH) && !teleported) y+=45;
+	
+	// Return teleport
+	if(window == 3 && window_timer == 1)
+	{
 		// Spawn end fx
 		treturn = spawn_hit_fx(x, y-10, teleport_lite_return );
 		treturn.depth = -100;
-		
-		butterflyFX(80,80,3,0,-40);
+
 	}
-	if(window == 4 && window_timer == get_window_value(AT_DSTRONG,4,AG_WINDOW_LENGTH) && !teleported) y+=45;
 	
 	// Butterflies
 	if(window_timer % 2 == 0) with(pHitBox) if(orig_player == other.player) with(other) butterflyFX(floor(get_hitbox_value(AT_DSTRONG,other.hbox_num,HG_WIDTH)*1.2),floor(get_hitbox_value(AT_DSTRONG,other.hbox_num,HG_HEIGHT)*1.2),1,other.x-x,other.y-y);
@@ -986,8 +1035,11 @@ if (attack == AT_FAIR){
 
 	// Stick inputs
 	var stickPressed = spr_dir == 1 ? right_stick_pressed : left_stick_pressed
-	var stickDown = spr_dir == 1 ? right_stick_down : left_stick_down
-
+	var stickDown = spr_dir == 1 ? right_stick_down : left_stick_down;
+	var strong_pressed = right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed;
+	var strong_down = right_strong_down|| left_strong_down || up_strong_down || down_strong_down;
+	var anyStickDown = right_stick_down || left_stick_down;
+	
 	
 	if(window == 1) shot_queued = true;
 	if(window >= 4 && window <= 6 && (!attack_down && !stickDown)) shot_queued = false;
@@ -996,33 +1048,82 @@ if (attack == AT_FAIR){
 	
 	//Cancels
 	
+	
 	// First
-	if(window == 3 && window_timer >= 4 && (stickPressed || attack_pressed)){
-		window = 4;
-		window_timer = 0;
+	if(window == 3 && window_timer >= 4 && (anyStickDown || attack_down || strong_down)){
+		// Bair cancel
+		
+		if ((spr_dir == 1 && (left_stick_down || (left_down && (attack_pressed || strong_pressed)) )) || 
+		(spr_dir == -1 && (right_stick_down || (right_down && (attack_pressed || strong_pressed)) )))
+		{
+
+			set_attack(AT_BAIR);
+			spr_dir *= -1;
+		}
+		else
+		{
+			window = 4;
+			window_timer = 0;
+		}
 	}
 	
-	
-	if(window == 6 && window_timer >= 2 && (attack_pressed || stickPressed))
+	// Second
+	if(window == 6 && window_timer >= 2 && (attack_down || anyStickDown || strong_down))
 	{
+		// Bair cancel
+		if ((spr_dir == 1 && (left_stick_down  || (left_down && (attack_pressed || strong_pressed)) )) || 
+		(spr_dir == -1 && (right_stick_down || (right_down && (attack_pressed || strong_pressed)))))
+		{
+			set_attack(AT_BAIR);
+			spr_dir *= -1;
+		}
+		else
+		{
+		 	window = 10;
+		 	window_timer = 0;
+		}
+		
 		clear_button_buffer(PC_ATTACK_PRESSED);
 		clear_button_buffer(PC_RIGHT_STICK_PRESSED);
 		clear_button_buffer(PC_LEFT_STICK_PRESSED);
-		
-	 	window = 10;
-	 	window_timer = 0;
+
 	}
 	
+	// Third
 	if((window == 6 || (window == 5 && window_timer >=5)) && shot_queued)
 	{
+		
 		clear_button_buffer(PC_ATTACK_PRESSED);
 		clear_button_buffer(PC_RIGHT_STICK_PRESSED);
 		clear_button_buffer(PC_LEFT_STICK_PRESSED);
 		
-		if(attack_down || stickDown){
+		if(attack_down || anyStickDown || strong_down){
 			window = 7;
 			window_timer = 0;
 		}
+	}
+	
+	// Fourth
+	if(window == 9 && window_timer >=4 && (attack_down || anyStickDown || strong_down))
+	{
+		// Bair cancel
+		if ((spr_dir == 1 && (left_stick_down  || (left_down && (attack_pressed || strong_pressed)) )) || 
+		(spr_dir == -1 && (right_stick_down || (right_down && (attack_pressed || strong_pressed)))))
+		{
+			set_attack(AT_BAIR);
+			spr_dir *= -1;
+		}
+		else
+		{
+			window = 10;
+			window_timer = 0;
+		}
+		
+		clear_button_buffer(PC_ATTACK_PRESSED);
+		clear_button_buffer(PC_RIGHT_STICK_PRESSED);
+		clear_button_buffer(PC_LEFT_STICK_PRESSED);
+		
+
 	}
 	
 	//landing lag
@@ -1145,6 +1246,7 @@ if(attack == AT_UAIR)
 		// Freeze movement
 		hsp = 0;
 		vsp = -4;
+	
 		
 		sound_play(sound_get("monarch_twinkle"));
 		sound_play(sound_get("monarch_smallblink1"))
@@ -1170,6 +1272,11 @@ if(attack == AT_UAIR)
 		treturn = spawn_hit_fx(x,y,teleport_lite_return_smaller);
 		treturn.depth = depth-1;
     	butterflyFX(70,70,4,-10*spr_dir,-40);	
+    	
+    	// Line
+    	current_teleport_x = x - dir(20);
+    	current_teleport_y = y;
+    	portal_line_timer = 10;
     	
     	sound_play(sound_get("monarch_smallblink2"))
 	}
@@ -1219,6 +1326,11 @@ if(attack == AT_PHONE)
 return(_x*spr_dir);
 
 #define teleport(_dist)
+{
+	last_teleport_x = x;
+	last_teleport_y = y;
+	
+	
 	repeat(abs(_dist))
 		if(!place_meeting(x, y, asset_get("par_block")))
 		if((place_meeting(x + (sign(_dist) * 25), y+15, asset_get("par_block")) || place_meeting(x + (sign(_dist) * 25), y+15, asset_get("par_jumpthrough")))) {
@@ -1228,8 +1340,10 @@ return(_x*spr_dir);
 			
 			x+=sign(_dist);
 		}
-
-
+	
+	current_teleport_x = x;
+	current_teleport_y = y;
+}
 #define butterflyFX(_xrange,_yrange,_density,_xoff,_yoff)
 {
 	if(lite) return;

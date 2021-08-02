@@ -542,6 +542,22 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	 initPatch("1.1.9", "23, July 2021");
+	 initPatchWords("Fixed a bug where attempting to platform jump cancel fspecial without double jumps available would repeatedly play the cancel audio.")
+	 initPatch("1.1.8", "23, July 2021");
+	 initPatchWords("Strongs buffed endlag, Uair landing lag slight nerf, throw hitpause adjustments. 
+
++ Dstrong: Endlag: 34(47) > 20(28)
++ Ustrong: Endlag: 26(34) < 20(26)
+- Ustrong: Lifetime: 16-26 > 16-22
++ Fstrong: Endlag: 24(34) > 19(27)
+(I'm just using basecast references here to be kind of like shovel knight but slightly worse overall?)
+
+-Uair: Landing Lag: 5 > 6
+
+| Fspecial Grab Throw: Base Hitpause: 5 > 8
+| Fspecuak Grab Throw Air: Hitpause Scaling: .4 > .8")
+	 
 	 initPatch("1.1.7", "16, July 2021");
 	 initPatchWords("v1.1.7 Patchnotes:
 

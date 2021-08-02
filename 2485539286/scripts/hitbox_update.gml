@@ -217,7 +217,9 @@ if attack == AT_TAUNT && hbox_num <= 4 {
 
 if attack == AT_DSTRONG {
 
-
+if player_id.hitpause == true {
+	destroyed = true
+}
 
 if hbox_num == 1 && sentrymode == 0 {
 	
@@ -529,7 +531,7 @@ if attack == AT_EXTRA_1 {
         vsp /= 1.2
         hsp /= 1.2
         with player_id {
-            if window == 1 && window_timer == 15 {
+            if window == 1 && window_timer == 11 {
                 x = other.x
                 y = other.y + 30
                 other.destroyed = true

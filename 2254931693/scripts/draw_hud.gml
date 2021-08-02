@@ -334,9 +334,6 @@ sprite_change_offset("hurt", 48, 88);
 }
 
 
-user_event(5);
-
-
 user_event(11);
 
 

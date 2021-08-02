@@ -168,6 +168,11 @@ if attack == AT_USTRONG {
         ustronghit = 0
     }
     
+    if window == 5 && has_hit_player && lockon == 1 {
+    hhalo = 240
+	lockon = 0
+	spawn_hit_fx(x - 10*spr_dir,y - 30, 306)
+    }
     if window == 1 && window_timer > 10{
         fcharge += 1
         

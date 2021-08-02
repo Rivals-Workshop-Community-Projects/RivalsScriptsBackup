@@ -39,7 +39,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.6); //old 0.8
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_FSTRONG, 1, HG_EXTRA_HITPAUSE, 2);
-set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, large_plasma_hfx);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_heavy"));
 
@@ -60,7 +60,7 @@ set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 0.6); //old 0.8
 set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_FSTRONG, 2, HG_EXTRA_HITPAUSE, 2);
-set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, large_plasma_hfx);
 set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_ori_energyhit_heavy"));
 
@@ -77,11 +77,11 @@ set_hitbox_value(AT_FSTRONG, 3, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSTRONG, 3, HG_DAMAGE, 14);
 set_hitbox_value(AT_FSTRONG, 3, HG_ANGLE, 35);
 set_hitbox_value(AT_FSTRONG, 3, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_FSTRONG, 3, HG_KNOCKBACK_SCALING, 0.7);  //old 0.9
+set_hitbox_value(AT_FSTRONG, 3, HG_KNOCKBACK_SCALING, 0.8);  //old 0.9
 set_hitbox_value(AT_FSTRONG, 3, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_FSTRONG, 3, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_FSTRONG, 3, HG_EXTRA_HITPAUSE, 2);
-set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, large_plasma_hfx);
 set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_FSTRONG, 3, HG_HIT_SFX, asset_get("sfx_ori_energyhit_heavy"));
 

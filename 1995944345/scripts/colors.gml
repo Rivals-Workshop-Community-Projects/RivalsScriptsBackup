@@ -1,4 +1,4 @@
-set_num_palettes(16);
+set_num_palettes(17);
 
 //DEFAULT COLOR (R,G,B)
 set_color_profile_slot(0, 0, 51, 81, 36); //MIDDLE CAP
@@ -161,3 +161,11 @@ set_color_profile_slot(15, 2, 125, 82, 151); //BOTTOM CAP
 set_color_profile_slot(15, 3, 100, 44, 127); //STALKS
 set_color_profile_slot(15, 4, 209, 234, 239); //LIGHTS
 set_color_profile_slot(15, 5, 221, 236, 242); //BONES
+
+//snakebandit
+set_color_profile_slot(16, 0, 51, 60, 71); //MIDDLE CAP                   
+set_color_profile_slot(16, 1, 147, 130, 178); //TOP CAP
+set_color_profile_slot(16, 2, 109, 87, 150); //BOTTOM CAP
+set_color_profile_slot(16, 3, 51, 60, 71); //STALKS                     
+set_color_profile_slot(16, 4, 240, 211, 24); //LIGHTS
+set_color_profile_slot(16, 5, 204, 41, 41); //BONES

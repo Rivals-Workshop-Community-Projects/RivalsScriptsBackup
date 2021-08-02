@@ -3,5 +3,6 @@ article_anim_speed = 0.2;
 article_friction = 0.0;
 article_gravity = 0.0;
 article_max_fall_speed = 0;
+playerurl = player_id.url;
 state_timer = 0;
 state = 0;

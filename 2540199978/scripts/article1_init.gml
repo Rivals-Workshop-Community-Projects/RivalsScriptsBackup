@@ -29,5 +29,6 @@ fspecReturn = false;
 offsetTimer = 0;
 leaderObj = self;
 index = 0;
+smash = false;
 
 hbox = noone;

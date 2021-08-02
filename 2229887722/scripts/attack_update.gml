@@ -783,7 +783,7 @@ switch (attack)
             hsp = clamp(hsp, -12, 12);
         }
     
-        if (has_hit)
+        if (has_hit && was_parried == false)
         {
             if (simpleModeEnabled == false)
             {
@@ -821,7 +821,7 @@ switch (attack)
             //if (!down_hard_pressed)
               //  old_vsp = -4;
         }
-        else if (window == 3 && window_timer == 1 && simpleModeEnabled == false && !has_hit)
+        else if (window == 3 && window_timer == 1 && simpleModeEnabled == false && !has_hit && was_parried == false)
         {
             if (spr_dir == 1)
             {

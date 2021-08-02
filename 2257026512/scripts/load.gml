@@ -1,1 +1,0 @@
-sprite_change_offset("bababooey", 162, 160);

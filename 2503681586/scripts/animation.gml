@@ -88,6 +88,10 @@ if custom_clone {
 					//Weird
 					case PS_AIR_DODGE:
 						sprite_index = sprite_get("f_airdodge")
+						hurtboxID.sprite_index  = sprite_get("empty")
+						if (window == 1) {
+							invincible = 1
+						}
 					break;
 					
 					case PS_PARRY:
@@ -112,8 +116,10 @@ if custom_clone {
 					case PS_FROZEN:
 					case PS_HITSTUN_LAND:
 					case PS_HITSTUN:
-						hurtboxID.sprite_index  = sprite_get("f_other_hurt")
-						sprite_index = sprite_get("f_hurt")
+					case PS_TUMBLE:
+						//hurtboxID.sprite_index  = sprite_get("f_other_hurt")
+						hurtboxID.sprite_index  = sprite_get("f_idle_hurt")
+						sprite_index = sprite_get("f_bubble_hurt")
 					break;
 
 

@@ -24,3 +24,6 @@ hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE)
 if attack == AT_DAIR && (attack_down or down_stick_down) {
 attack = AT_DTHROW;
 }
+if attack == AT_TAUNT && get_player_color(player) == 16 {
+	attack = AT_TAUNT_2;
+}

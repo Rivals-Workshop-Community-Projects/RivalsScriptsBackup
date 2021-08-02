@@ -746,3 +746,5 @@ with oPlayer {
         }
     }
 }
+
+if fs_hit fs_timer++;

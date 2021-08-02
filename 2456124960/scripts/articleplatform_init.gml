@@ -10,3 +10,5 @@ exist_timer = 0;
 
 fake_hsp = 0;
 fake_vsp = 0;
+
+madeHigh = 0;

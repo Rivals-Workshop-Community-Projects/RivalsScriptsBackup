@@ -42,7 +42,7 @@ set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, 0.4);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_med1"));
-set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 306);
+set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_UAIR, 1, HG_HITBOX_GROUP, 1);
 
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_TYPE, 1);
@@ -65,5 +65,5 @@ set_hitbox_value(AT_UAIR, 2, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_UAIR, 2, HG_EXTRA_HITPAUSE, 4);
 set_hitbox_value(AT_UAIR, 2, HG_EFFECT, 99);
 set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_shovel_hit_heavy1"));
-set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 197);
+set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 306);
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_GROUP, 1);

@@ -69,5 +69,6 @@ sprite_change_offset("chunhit", 80, 80);
 sprite_change_offset("bunnyhit", 80, 80);
 sprite_change_offset("drip", 52, 122);
 sprite_change_offset("nspecialKirby", 34, 56);
+sprite_change_offset("oldLonin", 24, 58);
 set_victory_bg(sprite_get("vic"));
 set_victory_theme(sound_get("lonin2"));

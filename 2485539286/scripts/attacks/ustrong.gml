@@ -98,5 +98,5 @@ set_hitbox_value(AT_USTRONG, 2, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_SDI_MULTIPLIER, 0.4);
-set_hitbox_value(AT_USTRONG, 2, HG_HITSTUN_MULTIPLIER, 0.1);
+set_hitbox_value(AT_USTRONG, 2, HG_HITSTUN_MULTIPLIER, 0.5);
 

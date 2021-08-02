@@ -74,12 +74,19 @@ if (grabbed &! (state == 1 && state_timer >= 19)){
     if (state == 1 && state_timer >14){
         player_id.grabbed_id.x = lerp(player_id.grabbed_id.x, x+52*spr_dir, 0.4);
         player_id.grabbed_id.y = lerp(player_id.grabbed_id.y, y, 0.4);
-        player_id.grabbedid.invincible = true;
+        //player_id.grabbedid.invincible = true;
     } else {
         player_id.grabbed_id.x = x+42*spr_dir;
         player_id.grabbed_id.y = y-28;
-        player_id.grabbedid.invincible = true;
+        //player_id.grabbedid.invincible = true;
     }
     
+}
+
+with (asset_get("pHitBox")){
+    if (player_id != other.player_id && type == 2 && place_meeting(x,y,other) && !transcendent && !plasma_safe){
+        destroyed = true;
+        
+    }
     
 }

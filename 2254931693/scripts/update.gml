@@ -193,9 +193,60 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_SFX, sound_get("family"));
 
 //character/stage support
 
+//dialogue buddy
+
+var url_wow = [CH_RANNO, 2546990424, 2201608216]
+var url_shocked = [2497580275, 2396817161, 1962084547]
+var url_confused = [CH_SYLVANOS, 2217843818, 2520247938]
+
+if(variable_instance_exists(id,"diag"))
+{
+//  ADDING REGULAR DIALOGUE
+
+    //Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!
+    diagchoice = [
+    "...",
+    "...",
+    "..."]
+
+//  Specific Character Interactions
+
+//  Regular dialogue
+
+	//"wow" expression
+    if(array_find_index(url_wow, otherUrl) != -1 && diag != "") //Change the url into a specific character's
+    {
+        diag = "...!";
+        diag_index = 1; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+    
+	//"shocked" expression
+    if(array_find_index(url_shocked, otherUrl) != -1 && diag != "") //Change the url into a specific character's
+    {
+        diag = "...!?";
+        diag_index = 2; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+    
+	//"confused" expression    
+    if(array_find_index(url_confused, otherUrl) != -1 && diag != "") //Change the url into a specific character's
+    {
+        diag = "...?";
+        diag_index = 3; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+ 
+	//mirror match   
+    if(otherUrl == url && diag != "") //Change the url into a specific character's
+    {
+        diag = "...!?";
+        diag_index = 4; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }          
+          
+           
+    
+}
+
 
 user_event(14);
 
-user_event(6);
 
 

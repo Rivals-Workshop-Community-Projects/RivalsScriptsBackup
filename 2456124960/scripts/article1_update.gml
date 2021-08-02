@@ -176,7 +176,7 @@ if (article_mode == 0) {
 					other.hitstop = 20; //Article freeze frames	
 					other.hitForce *= 1.5;
 				}	
-			} else {
+			} else if (plasma_safe == false && transcendent == false) {
 				destroyed = true;
 			}
 		}
@@ -199,6 +199,7 @@ if (article_mode == 0) {
 		instance_destroy(hb);
 		hb = create_hitbox(AT_NSPECIAL, 1, round(x + fake_hsp), round(y + fake_vsp));
 		hb.player = hitPlayer;
+		hb.hit_effect = 1;
 	}
 	vsp = round(fake_vsp);
 	hsp = round(fake_hsp);
@@ -207,6 +208,9 @@ if (article_mode == 0) {
 		if (obj_timer % 2 != 0) {
 			obj_timer++;
 		}
+			
+		player_id.actionMeterFill = 0;
+		player_id.actionMeterStatus = 0;
 	}
 	if (obj_timer < 3) {
 		instance_destroy(hb);

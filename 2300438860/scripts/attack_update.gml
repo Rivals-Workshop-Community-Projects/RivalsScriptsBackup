@@ -1,4 +1,9 @@
 ///
+
+if (attack == AT_NSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || attack == AT_FSPECIAL){
+    trigger_b_reverse();
+}
+
 if attackbar == 1 && !hitpause {
 	              sound_stop(cur_sound)
 	sound_play(sound_get("buzzing"),false,noone,0.4)
@@ -153,7 +158,13 @@ if !hitpause {
             sound_play(asset_get("sfx_ice_shieldup"))
         }
         if window == 2 && window_timer == 1{
-            sound_play(asset_get("sfx_ice_on_player"),false,noone,1,0.9)
+            sound_play(asset_get("sfx_ice_on_player"),false,noone,1,0.8)
+        }
+    }
+    
+    if attack == AT_FTILT {
+        if window == 1 && window_timer == 5{
+            sound_play(asset_get("sfx_ice_on_player"),false,noone,1,1.1)
         }
     }
     

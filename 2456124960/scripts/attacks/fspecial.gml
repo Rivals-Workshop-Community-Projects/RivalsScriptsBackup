@@ -65,6 +65,27 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 
+set_hitbox_value(AT_FSPECIAL, 6, HG_PARENT_HITBOX, 0);
+set_hitbox_value(AT_FSPECIAL, 6, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_FSPECIAL, 6, HG_WINDOW, 40);
+set_hitbox_value(AT_FSPECIAL, 6, HG_LIFETIME, 40);
+set_hitbox_value(AT_FSPECIAL, 6, HG_HITBOX_X, 32);
+set_hitbox_value(AT_FSPECIAL, 6, HG_HITBOX_Y, -32);
+set_hitbox_value(AT_FSPECIAL, 6, HG_WIDTH, 20);
+set_hitbox_value(AT_FSPECIAL, 6, HG_HEIGHT, 20);
+set_hitbox_value(AT_FSPECIAL, 6, HG_PRIORITY, 3);
+set_hitbox_value(AT_FSPECIAL, 6, HG_DAMAGE, 2);
+set_hitbox_value(AT_FSPECIAL, 6, HG_BASE_KNOCKBACK, 4);
+set_hitbox_value(AT_FSPECIAL, 6, HG_ANGLE, 90);
+set_hitbox_value(AT_FSPECIAL, 6, HG_PROJECTILE_SPRITE, sprite_get("null"));
+set_hitbox_value(AT_FSPECIAL, 6, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_FSPECIAL, 6, HG_VISUAL_EFFECT, 27);
+set_hitbox_value(AT_FSPECIAL, 6, HG_BASE_HITPAUSE, 3);
+set_hitbox_value(AT_FSPECIAL, 6, HG_HIT_SFX, asset_get("sfx_icehit_medium1"));
+set_hitbox_value(AT_FSPECIAL, 6, HG_PROJECTILE_UNBASHABLE, 1);
+set_hitbox_value(AT_FSPECIAL, 6, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+set_hitbox_value(AT_FSPECIAL, 6, HG_PROJECTILE_DESTROY_EFFECT, 111);
+
 set_hitbox_value(AT_FSPECIAL, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 40);

@@ -66,9 +66,10 @@ set_hitbox_value(AT_JAB, 2, HG_HEIGHT, 35);
 set_hitbox_value(AT_JAB, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 3);
 set_hitbox_value(AT_JAB, 2, HG_ANGLE, 361);
-set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, .1)
-set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, .4)
+set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_JAB, 2, HG_HITPAUSE_SCALING, .4)
 //set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, small_wood_hfx);
 set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT_X_OFFSET, 24);
 set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_blow_weak2"));

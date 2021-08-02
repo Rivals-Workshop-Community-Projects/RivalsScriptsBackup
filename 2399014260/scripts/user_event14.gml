@@ -31,8 +31,8 @@ if ("phone_inited" in self){
 	else{
 		if phone_attacking && (state == PS_LANDING_LAG || state == PS_PRATLAND || state_cat == SC_HITSTUN || !visible){
 			if !array_equals(phone_stopped_sounds, []){
-				for (var i = 0; i < array_length(phone_stopped_sounds); i++){
-					sound_stop(phone_stopped_sounds[i]);
+				for (var ii = 0; ii < array_length(phone_stopped_sounds); ii++){
+					sound_stop(phone_stopped_sounds[ii]);
 				}
 				phone_stopped_sounds = [];
 			}
@@ -349,7 +349,7 @@ spr_taunt = sprite_get("taunt");
 
 
 phone = {
-	firmware: 11, // latest public: 11, 27 feb 2021
+	firmware: 12, // latest public: 11, 02 mar 2021
 	stage_id: noone,
 	
 	hint_opac: 2,
@@ -618,6 +618,8 @@ with phone{
 	 */
 	
 	initSetting("Clock Format", "setting_military_time", [0, 1], ["12-Hour", "24-Hour"], "Change the format of the phone's clock.");
+
+// with other print(phone.settings)
 	initSetting("Graphics", "setting_fast_graphics", [0, 1], ["Fancy", "Fast"], "Fast Graphics disables the clock and transparency. Unless the character dev specifies otherwise, it will trigger automatically if the FPS drops below 60 for 2+ frames while the MunoPhone is closed.
 	
 	In online matches, it won't automatically trigger; instead, press the 0 (zero) key on the keyboard to enable Fast Graphics.");

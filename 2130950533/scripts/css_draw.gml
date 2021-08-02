@@ -13,6 +13,8 @@ if (get_player_color(player) == 9) {
 	draw_sprite_ext(sprite_get("charselect_pickle"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
 } else if (get_player_color(player) == 11) {
 	draw_sprite_ext(sprite_get("charselect_sans"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
+} else if (get_player_color(player) == 12) {
+	draw_sprite_ext(sprite_get("charselect_fuzzy"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
 }
 
 // End of Bloppi-specific code
@@ -34,7 +36,7 @@ if (get_player_color(player) == 9) {
 //
 // now, please change this string to your character's name. used for resetting the values after other characters.
 //--- ---
-var qe_b = "template"
+var qe_b = "Bloppi"
 // ! you can now scroll down until you reach "the primary part you should change."
 
 var tmp_cur = 0;
@@ -86,7 +88,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 11; // number of alternate color palettes. 0 is the default color, count it accordingly.
+	col_max = 12; // number of alternate color palettes. 0 is the default color, count it accordingly.
 	
 	//first array index is for alternate color. second array index is for distinguishing the information in it.
 	ce[0,0] = make_color_rgb(102, 51, 0) // "color preview square" color. can be any color!
@@ -125,6 +127,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[11,0] = make_color_rgb(255, 255, 255)
 	ce[11,1] = "Funny Skeleton"
 	ce[11,2] = "funny bad time haha"
+	ce[12,0] = make_color_rgb(255, 38, 255)
+	ce[12,1] = "Soft Fuzzy Man"
+	ce[12,2] = "I'm not like other guys who have a surface."
 	// you can add more, by copypasting and changing the first index of the array accordingly.
 	// ! changing part end.
 	// you can ignore the mess below...

@@ -2,6 +2,9 @@
 
 user_event(3); //Echo t/f init
 
+var no_copyright = !echo && (current_day == clamp(current_day, 10, 13) && current_month == 9 && current_year == 2021);
+if no_copyright print("No-Copyright mode enabled, due to the computer's current date (" + string(current_year) + "-" + string(current_month) + "-" + string(current_day) + ")");
+
 
 //TEMP
 
@@ -523,7 +526,7 @@ hitstun_hurtbox_spr = -1;
 
 //Victory
 set_victory_bg(sprite_get("victory"));
-set_victory_theme(sound_get("win_coda"));
+set_victory_theme(sound_get(no_copyright ? "win_trummel" : "win_coda"));
 
 //SFX
 land_sound = asset_get("sfx_land_light");

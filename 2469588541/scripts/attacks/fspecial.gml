@@ -31,7 +31,7 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 32);
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 38);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 11);
 
@@ -69,8 +69,8 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 9);
 set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 361);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.1);
-set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 12);
+set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_EFFECT, 6);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));

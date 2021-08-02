@@ -342,3 +342,6 @@ fs_timer = 0;
 waluigi_x = x + 40;
 waluigi_y = y - 40;
 waluigi_explode = false;
+
+
+

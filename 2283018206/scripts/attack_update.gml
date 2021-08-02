@@ -14,6 +14,70 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 
 switch(attack){
+	
+	case AT_BAIR: // old bair didn't have any atk update code btw
+	
+    can_fast_fall = false;
+    can_wall_jump = true;
+    var dir_mod = (attack == AT_BAIR) ? -1 : 1;
+    var airdashes_used = 0;
+    switch(window){
+        case 1:
+            vsp = clamp(vsp, ((vsp > -short_hop_speed) ? -5 : -100), 3 + airdashes_used * 2);
+            if (window_timer == 1){
+                sound_play(asset_get("sfx_ori_ustrong_charge"));
+            }
+            if (window_timer == window_end){
+            	var h = spawn_hit_fx(x + 8 * spr_dir, y - 48, vfx_bair);
+            	h.spr_dir = 1;
+            	h.draw_angle = 90 + 180 * (spr_dir == -1);
+            	
+                vsp -= 6 - airdashes_used * 2;
+                vsp = clamp(vsp, -7, 0)
+                hsp = clamp(12 - airdashes_used * 3, 0, 12) * spr_dir * dir_mod;
+                x += 30 * spr_dir * dir_mod;
+                sound_play(asset_get("sfx_ell_arc_taunt_end"));
+                // var ring = spawn_hit_fx(x+10*spr_dir*dir_mod, y-38, vfx_dash_blast);
+                // ring.spr_dir = spr_dir*dir_mod;
+                if (!place_meeting(x+spr_dir*dir_mod,y,asset_get("par_block")) && abs(hsp) > 2){
+                    // var zoop = spawn_hit_fx(x-30*spr_dir*dir_mod, y-74, vfx_dash_trail);
+                    // zoop.spr_dir = spr_dir*dir_mod;
+                }
+            }
+            break;
+        case 2:
+            hsp = lerp(hsp, clamp(hsp, -air_max_speed, air_max_speed), 0.1);
+            vsp = clamp(vsp, -100, 1 + airdashes_used * 2);
+            if has_hit{
+                vsp = clamp(vsp, -100, 0.4)
+            }
+            vsp = 0;
+            //vsp = 0;
+            break;
+        case 3:
+            hsp = lerp(hsp, clamp(hsp, -air_max_speed, air_max_speed), 0.8)
+            
+            if (window_timer == 1){
+                airdashes_used++;
+            }
+            
+            if (has_hit && !down_down){
+                vsp = clamp(vsp, -100, 1)
+            }
+            
+            if (has_hit && window_timer > 5 && !was_parried){
+                can_attack = true;
+                can_jump = true;
+                can_shield = true;
+                can_special = true;
+                can_fast_fall = true;
+                if (attack_pressed || jump_pressed) && !up_down && abs(right_down - left_down){
+                	spr_dir = (right_down - left_down);
+                }
+            }
+    }
+    
+    break;
     
     case AT_DTILT:
     
@@ -316,7 +380,7 @@ switch(attack){
                 break;
             case 3:
                 if (window_timer == 1){
-                    cancel = has_hit && !has_uspecialed;
+                    cancel = has_hit && !has_uspecialed && false;
                     set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, cancel ? 1 : 7);
                 }
                 
@@ -370,7 +434,7 @@ switch(attack){
                 break;
             case 3:
                 if (window_timer == 1){
-                    cancel = has_hit && !has_uspecialed;
+                    cancel = has_hit && !has_uspecialed && false;
                     set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, cancel ? 1 : 7);
                 }
                 break;

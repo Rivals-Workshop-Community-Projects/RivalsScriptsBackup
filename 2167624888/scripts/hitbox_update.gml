@@ -12,7 +12,7 @@ if (attack == AT_NSPECIAL && hbox_num == 1)
 		xpos = hsp < 2 ? random_func(7, 20, false)*flip : 0;
 		with (player_id)
 		{
-			createParticle(particles,1,0,0,sprite_get("fireeffect"),0,x,y,0, -1, .3, 0, 0, 1, 0, 40, true, true)
+			createParticle(particles,1,0,0,sprite_get("fireeffect"),0,other.x,other.y,0, -1, .3, 0, 0, 1, 0, 40, true, true)
 		}
     }
     
@@ -37,10 +37,13 @@ if ((attack == AT_NSPECIAL && hbox_num <= 3) or (attack == AT_USPECIAL || attack
         
         hit_article = true;
 	}
-    if ((hbox_num == 1 && /*((player_id.attack == AT_NSPECIAL_2 && player_id.window == 2) ||*/ position_meeting(x,y+5,asset_get("par_block"))) || hit_article) // hitbox_timer includes the firing time
+	
+	var can_plat = position_meeting(x,y+5,asset_get("par_jumpthrough")) and hitbox_timer > 3
+	
+    if ((hbox_num == 1 && (position_meeting(x,y+5,asset_get("par_block")) || can_plat)) || hit_article)  // hitbox_timer includes the firing time
     {
-    	
         destroyed = true;
+        player_id.move_cooldown[AT_NSPECIAL] = 30 + (30*(!player_id.should_red_arrow));
         
         if (hit_article)
         {
@@ -73,12 +76,12 @@ if ((attack == AT_NSPECIAL && hbox_num <= 3) or (attack == AT_USPECIAL || attack
 	            if (player_id.should_red_arrow == false) // if blue arrow
 	            {
 	                spawn_hit_fx(x,y,player_id.nspec_effect);
-	                create_hitbox(AT_NSPECIAL, 2, x, y-16);
+	                //create_hitbox(AT_NSPECIAL, 2, x, y-16);
 	            }
 	            else
 	            {
 	                spawn_hit_fx(x,y,player_id.nspec_effect_red);
-	                create_hitbox(AT_NSPECIAL, 3, x, y-16);
+	                //create_hitbox(AT_NSPECIAL, 3, x, y-16);
 	            }
         	//}
         }

@@ -18,6 +18,7 @@ switch (state)
         hsp = lengthdir_x(shootSpeed, angle);
         vsp = lengthdir_y(shootSpeed, angle);
 
+        AntiCheat();
         if (hbox == noone)
         {
             hbox = create_hitbox(AT_NSPECIAL_2, 1, x, y);
@@ -31,7 +32,8 @@ switch (state)
     case AS_IDLE:
         if (hbox != noone)
         {
-            hbox.destroyed = true;
+            if (instance_exists(hbox))
+                hbox.destroyed = true;
             hbox = noone;
         }
         hsp = 0;
@@ -66,7 +68,9 @@ switch (state)
         break;
     case AS_RETURN:
         var coords = {x:player_id.x+fspecReturn*player_id.spr_dir*40, y:player_id.y-floor(player_id.char_height/2)};
-        if (player_id.flake.isOut && !fspecReturn)
+        if (smash && player_id.hit_player_obj != noone)
+            coords = {x:player_id.hit_player_obj.x, y:player_id.hit_player_obj.y};
+        else if (player_id.flake.isOut && !fspecReturn)
             coords = {x:player_id.flake.x, y:player_id.flake.y};
         if (state_timer == 1 || !player_id.flake.isOut || fspecReturn)
         {
@@ -75,6 +79,7 @@ switch (state)
             vsp = lengthdir_y(returnSpeed, angle);
         }
         
+        AntiCheat();
         if (hbox == noone)
         {
             hbox = create_hitbox(AT_NSPECIAL_2, 2, x, y);
@@ -85,7 +90,7 @@ switch (state)
         hbox.x = x+hsp;
         hbox.y = y+vsp;
 
-        if (player_id.flake.isOut && !fspecReturn)
+        if (player_id.flake.isOut && !fspecReturn && !smash)
         {
             if (snowflakeTime == 0)
             {
@@ -106,7 +111,8 @@ switch (state)
     case AS_DESPAWN:
         if (hbox != noone)
         {
-            hbox.destroyed = true;
+            if (instance_exists(hbox))
+                hbox.destroyed = true;
             hbox = noone;
         }
         if (state_timer >= dieTime)
@@ -144,5 +150,29 @@ if (state_timer % animSpeed == 0 && state_timer != 0)
             sprite_index = sprite_get("nspecialCharge");
             animSpeed = 1;
             break;
+    }
+}
+
+#define AntiCheat()
+{
+    if (hbox != noone && !instance_exists(hbox))
+    {
+        hbox = create_hitbox(AT_NSPECIAL_2, 2, x, y);
+        hbox.type = 1;
+        hbox.damage = 999;
+        hbox.kb_angle = 90;
+        hbox.kb_value = 1;
+        hbox.kb_scale = 100;
+        hbox.image_xscale = 50;
+        hbox.image_yscale = 50;
+        hbox.camera_shake = -1;
+        hbox.extra_hitpause = 0;
+        hbox.hitpause = 0;
+        hbox.hitpause_growth = 0;
+        hbox.no_other_hit = 10;
+        hbox.sound_effect = sound_get("vineboom");
+        hbox.hit_effect = player_id.moyai_effect;
+        print("Stop cheating.");
+        player_id.aura = 600;
     }
 }

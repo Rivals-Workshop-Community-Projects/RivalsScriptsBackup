@@ -12,6 +12,12 @@ if (my_hitboxID.attack == AT_USPECIAL)
 	air_accel = 0.1;
 }
 
+if (my_hitboxID.attack == AT_BAIR)
+{
+	hsp = 0;
+	//air_accel = 0.1;
+}
+
 if (my_hitboxID.attack == AT_FSPECIAL)
 {
 	state = PS_PRATFALL;

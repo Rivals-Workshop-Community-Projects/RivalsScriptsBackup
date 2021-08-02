@@ -306,15 +306,15 @@ set_color_profile_slot( 27, 5, 48, 133, 88 ); //EggD
 set_color_profile_slot( 27, 6, 0, 0, 0 ); //Eye Whites
 set_color_profile_slot( 27, 7, 255, 85, 66 ); //Eye Black
 
-// Fierce
-set_color_profile_slot( 28, 0, 186, 84, 0 ); //featherrB
-set_color_profile_slot( 28, 1, 135, 23, 0 ); //Feather D
-set_color_profile_slot( 28, 2, 240, 188, 46 ); //beakkB
-set_color_profile_slot( 28, 3, 194, 93, 37 ); //BeaKD
-set_color_profile_slot( 28, 4, 189, 137, 123 ); //EggB
-set_color_profile_slot( 28, 5, 163, 105, 90 ); //EggD
-set_color_profile_slot( 28, 6, 0, 0, 0 ); //Eye Whites
-set_color_profile_slot( 28, 7, 237, 237, 237 ); //Eye Black
+// Riptide
+set_color_profile_slot( 28, 0, 0, 199, 209 ); //featherrB
+set_color_profile_slot( 28, 1, 0, 125, 209 ); //Feather D
+set_color_profile_slot( 28, 2, 240, 204, 46 ); //beakkB
+set_color_profile_slot( 28, 3, 240, 93, 67 ); //BeaKD
+set_color_profile_slot( 28, 4, 255, 142, 71 ); //EggB
+set_color_profile_slot( 28, 5, 222, 61, 53 ); //EggD
+set_color_profile_slot( 28, 6, 255, 255, 255 ); //Eye Whites
+set_color_profile_slot( 28, 7, 0, 0, 0 ); //Eye Black
 
 // Spook
 set_color_profile_slot( 29, 0, 255, 106, 0 ); //featherrB

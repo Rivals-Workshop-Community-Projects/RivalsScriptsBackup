@@ -1,7 +1,6 @@
 // Muno template - [CORE] css_draw, post_draw
 
-// Edit this file only if you know what you're doing - only user_event15.gml
-// contains user-defined content.
+// DO NOT EDIT - Only edit user_event15.gml
 
 
 

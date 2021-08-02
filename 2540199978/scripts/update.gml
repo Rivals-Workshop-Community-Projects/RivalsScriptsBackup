@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 4;
+	var noOfPatches = 6;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -184,8 +184,15 @@ if ((move_cooldown[AT_DSPECIAL] == 0 || flake.isOut) && get_gameplay_time() % 4 
 }
 
 // hue
-//hue+=3;
-//hue%=255;
+hue+=3;
+hue%=255;
+
+if ("fs_using_final_smash" in self && fs_using_final_smash)
+{
+	if (aura == 0) aura = 300;
+	else if (aura == 1) fs_using_final_smash = false;
+}
+if (aura > 0) aura--;
 
 // topcustom
 if (!free && place_meeting(x, y, asset_get("par_block")))

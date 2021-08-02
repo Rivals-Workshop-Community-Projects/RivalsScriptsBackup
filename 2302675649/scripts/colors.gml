@@ -336,15 +336,15 @@ set_color_profile_slot( 30, 5, 164, 164, 164 ); //skin
 set_color_profile_slot( 30, 6, 91, 92, 125 ); //skin2
 set_color_profile_slot( 30, 7, 37, 34, 34 ); //hair
 
-// End's High
-set_color_profile_slot( 31, 0, 255, 77, 124 ); //sword
-set_color_profile_slot( 31, 1, 255, 224, 102 ); //shirt
-set_color_profile_slot( 31, 2, 227, 135, 54 ); //shirt2
-set_color_profile_slot( 31, 3, 183, 255, 105 ); //pants
-set_color_profile_slot( 31, 4, 78, 201, 50 ); //pants2
-set_color_profile_slot( 31, 5, 255, 204, 153 ); //skin
+// Riptide
+set_color_profile_slot( 31, 0, 0, 199, 218 ); //sword
+set_color_profile_slot( 31, 1, 254, 184, 0 ); //shirt
+set_color_profile_slot( 31, 2, 218, 93, 0 ); //shirt2
+set_color_profile_slot( 31, 3, 0, 199, 218 ); //pants
+set_color_profile_slot( 31, 4, 0, 85, 168 ); //pants2
+set_color_profile_slot( 31, 5, 242, 228, 214 ); //skin
 set_color_profile_slot( 31, 6, 219, 175, 131 ); //skin2
-set_color_profile_slot( 31, 7, 17, 35, 48 ); //hair
+set_color_profile_slot( 31, 7, 12, 25, 58 ); //hair
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

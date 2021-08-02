@@ -11,11 +11,12 @@ var appear_time = 8;
 if (state == 0){ //Appearing
     image_index = state_timer * 4 / appear_time;
     if (state_timer == appear_time){
+        player_id.hasNote = 1;
         state = 1;
         state_timer = 0;
     }
     
-    player_id.hasNote = 1;
+    
 }
 
 var standby_time =  16;
@@ -26,7 +27,6 @@ if (state == 1){ //Standby
     x = lerp(x, player_id.x - 25*player_id.spr_dir, 0.4);
     y = lerp(y, (player_id.y - 52) + (player_id.state == PS_CROUCH)*20, .4);
     
-    player_id.hasNote = 1;
 
 }
 
@@ -48,7 +48,6 @@ if (state == 2) { //Tossed
         var tossed = create_hitbox(AT_NSPECIAL, 1, x, y);
         tossed.vsp = -1.5;
         tossed.hsp = 3.5 * player_id.spr_dir;
-        player_id.hasNote = 0;
          
         
                 

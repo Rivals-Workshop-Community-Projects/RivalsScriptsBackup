@@ -185,9 +185,9 @@ if (attack == AT_USTRONG) {
 		construct = instance_create(x, y, "obj_article2");
 		construct.spr_dir = spr_dir;
 		construct.displayMove = 2;
-		construct.lifetime = 70;
+		construct.lifetime = 60;
 	}
-	if (window == 2 && window_timer == 1) {construct.lifetime = 65;}
+	if (window == 2 && window_timer == 1) {construct.lifetime = 60;}
 	if (window == 4 && window_timer == 1) {sound_play(asset_get("sfx_ori_bash_use"));}
 	if (window == 5 && window_timer == 5) {sound_play(asset_get("sfx_charge_blade_swing"), false, noone, 0.8, 1);}
 	if (window == 6) {construct.fall_forward = true;}
@@ -311,9 +311,6 @@ if (attack == AT_NSPECIAL_2){
 			spawn_hit_fx(crystal.x, crystal.y, empoweredFX);
 			
 			crystal.empowered = 1;
-			
-			actionMeterFill = 0;
-			actionMeterStatus = 0;
 		} else {
 			set_hitbox_value(AT_NSPECIAL, 4, HG_WIDTH, 80);
 			set_hitbox_value(AT_NSPECIAL, 4, HG_HEIGHT, 80);	
@@ -452,29 +449,34 @@ if (attack == AT_FSPECIAL) {
 }
 
 if (attack == AT_USPECIAL || attack == AT_USPECIAL_GROUND){
-	if (window == 2 && window_timer == 2) {
-		madePlat = 0;
-		if (canMakePlat == 0 && actionMeterFill >= 199 && !shield_down) {
-			spawn_hit_fx(x, y, empoweredFX);	
-			actionMeterFill = 0;
-			actionMeterStatus = 0;
-			canMakePlat = 1;
-		}
-		if (canMakePlat == 1 && !shield_down) {
-			var platform = instance_create(x, y-8, "obj_article_platform");
-			platform.y = floor(platform.y);
-			//print_debug("making a platform!");
-			madePlat = 1;
-			canMakePlat = 0;
-			set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_frog_fspecial_charge_full"));
-			set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
-			set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, -2);
-			set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 5);
-		} else {
-			set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_bird_nspecial2"));
-			set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
-			set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, -7);
-			set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 4);
+	if (window == 2) {
+		if (window_timer == 2) {
+			madePlat = 0;
+			if (canMakePlat < 3 && actionMeterFill >= 199 && !shield_down) {
+				spawn_hit_fx(x, y, empoweredFX);	
+				actionMeterFill = 0;
+				actionMeterStatus = 0;
+				canMakePlat = 3;
+			}
+			if (canMakePlat >= 3 && !shield_down) {
+				myPlatform = instance_create(x, y-8, "obj_article_platform");
+				myPlatform.y = floor(myPlatform.y);
+				//print_debug("making a platform!");
+				madePlat = 1;
+				canMakePlat = 0;
+				set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_frog_fspecial_charge_full"));
+				set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
+				set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, -2);
+				set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 5);
+			} else {
+				set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_bird_nspecial2"));
+				set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
+				set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, -7);
+				set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 4);
+			}
+		} else if (window_timer == 3 && madePlat == 1) {
+			x = myPlatform.x;
+			y = myPlatform.y + 6;			
 		}
 	}
 	if (window == 5 && special_down && madePlat) {

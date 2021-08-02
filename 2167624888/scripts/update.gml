@@ -189,7 +189,7 @@ if(!uspec_first && !free && state != PS_ATTACK_AIR && state !=PS_ATTACK_GROUND |
 var in_attack, in_state, interval_ready;
 in_attack = (attack == AT_DSPECIAL or attack == AT_DATTACK) and window > 1 // if it's in the correct attack
 in_state = (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) // if you're in the right state
-interval_ready = (get_gameplay_time() mod 5 == 0) //used for tracking an interval without creating a new "variable"
+interval_ready = (get_gameplay_time() mod 8 == 0) //used for tracking an interval without creating a new "variable"
 
 if (in_attack and in_state and interval_ready)
 {

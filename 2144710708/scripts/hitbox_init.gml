@@ -6,7 +6,7 @@ times_played = 0;
 shoe_collide = false;
 
 // prevents crashes when smg bomb is parried by storing sound_get and hitbox data in variable
-remotehitbox = AT_DSTRONG_2;
+remotehitbox = AT_USPECIAL;
 remotesound = sound_get("explode5");
 
 // boot sprite/sound stuff

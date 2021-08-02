@@ -1,6 +1,7 @@
 switch (attack)
 {
 	case AT_NSPECIAL:
+		if (aura > 0) nspecCharge = nspecChargeMax+20;
 		if (nspecCharge > nspecChargeMax+10) attack = AT_NSPECIAL_2;
 		break;
 

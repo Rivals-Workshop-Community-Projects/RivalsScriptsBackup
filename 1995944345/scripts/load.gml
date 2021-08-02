@@ -66,6 +66,7 @@ sprite_change_offset("dspecial_air", 56, 84);
 sprite_change_offset("dspecial_2", 30, 60);
 sprite_change_offset("dspecial_2_air", 26, 70);
 sprite_change_offset("taunt", 28, 68);
+sprite_change_offset("taunt_snake", 46, 76);
 
 sprite_change_offset("block_fx", 36, 74);
 
@@ -81,6 +82,7 @@ sprite_change_offset("nodeidle", 28, 38);
 sprite_change_offset("nodeready", 22, 38);
 sprite_change_offset("nodepop", 84, 130);
 sprite_change_offset("nodemask", 12, 36);
+sprite_change_offset("nodedie", 28, 60);
 
 sprite_change_offset("numbers", 0, 26);
 sprite_change_offset("hud", 40, 38);

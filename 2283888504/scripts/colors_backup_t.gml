@@ -201,7 +201,7 @@ switch(get_match_setting(SET_SEASON)){
 		colorSet(a, 1, $3570ba); //Blue (S)
 		colorSet(a, 2, $fefa74); //Tan
 		colorSet(a, 3, $d8b14a); //Tan (S)
-		colorSet(a, 4, $fba7ee); //Yellow
+		colorSet(a, 4, $fba733); //Yellow
 		colorSet(a, 5, $c74b0d); //Yellow (S)
 		colorSet(a, 6, $64c3c0); //dBlue (R)
 		colorSet(a, 7, $ffd7a1); //White (R)

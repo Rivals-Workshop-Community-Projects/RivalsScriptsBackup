@@ -1,6 +1,6 @@
 set_attack_value(AT_USPECIAL, AG_CATEGORY, 2);
 set_attack_value(AT_USPECIAL, AG_SPRITE, sprite_get("uspecial"));
-set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 5);
+set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 6);
 set_attack_value(AT_USPECIAL, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_USPECIAL, AG_LANDING_LAG, 4);
 set_attack_value(AT_USPECIAL, AG_OFF_LEDGE, 1);
@@ -37,11 +37,17 @@ set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.8);
 
-set_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE, 7);
+set_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 20);
-set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_CUSTOM_GRAVITY, 1);
+
+set_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE, 9);
+set_window_value(AT_USPECIAL, 6, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_USPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_USPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 11);
+set_window_value(AT_USPECIAL, 6, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 set_num_hitboxes(AT_USPECIAL, 2);
 

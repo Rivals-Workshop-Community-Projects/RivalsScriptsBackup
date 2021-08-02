@@ -2,6 +2,8 @@
 //draw_set_font(asset_get("medFont"));
 //draw_text_color(temp_x + 160, temp_y - 20, string(nanaDamage) +"%", c_white, c_white, c_white, c_white, 1)
 //draw_set_font(asset_get("fName"));
+if !is_nana {
+	
 
 if "nana_state" !in self && !custom_clone {
 	shader_start();
@@ -65,8 +67,8 @@ if canTutorial == 1 {
 		shader_end();
 			//Header Text
 			draw_debug_text(tutorialX, tutorialY, "Page " + string(tutorialPage) + " / " + string(tutorialPageTotal))
-			draw_debug_text(tutorialX + 540, tutorialY,  "Version: V1.2.1" )
-			draw_debug_text(tutorialX + 540, tutorialY + 20,  "Release: 7/15/2020" )
+			draw_debug_text(tutorialX + 540, tutorialY,  "Version: V1.3" )
+			draw_debug_text(tutorialX + 540, tutorialY + 20,  "Release: 8/2/2020" )
 			//Footer Text End
 			
 			//Footer Text
@@ -129,7 +131,7 @@ if canTutorial == 1 {
 					
 					draw_debug_text(tutorialX , tutorialY + 200, "Personal Experience:" )
 					draw_debug_text(tutorialX + 20 , tutorialY + 220, "Mone should try to get most kills off the top because of his strong Vertical Angled Moves." )
-					draw_debug_text(tutorialX + 20 , tutorialY + 240, "NSPECIAL is quite risky so protect Mone with Kash's armored strongs." )
+					draw_debug_text(tutorialX + 20 , tutorialY + 240, "NSPECIAL is quite risky so protect Mone with Kash's quick moves" )
 					
 					draw_debug_text(tutorialX , tutorialY + 280, "Cancels/Other:" )
 					draw_debug_text(tutorialX + 20 , tutorialY + 300, "UTILT can be held to increase damage a bit. Kash can attack during this to get more damage/kills." )
@@ -224,7 +226,7 @@ if canTutorial == 1 {
 					
 					draw_debug_text(tutorialX, tutorialY + 240, "DSPECIAL spawns in a bubble that acts like a player, but cannot attack." )
 					draw_debug_text(tutorialX + 20, tutorialY + 260, "Bubble will slowly move if it's too close to a blastzone" )
-					draw_debug_text(tutorialX + 20, tutorialY + 280, "Bubble is exetremely fragile and breaks off of one hit" )
+					draw_debug_text(tutorialX + 20, tutorialY + 280, "Bubble is extremely fragile and breaks off of one hit" )
 					draw_debug_text(tutorialX, tutorialY + 300, "DAIR can be used to get a vertical boost off of Bubble/Kash" )
 					draw_debug_text(tutorialX, tutorialY + 320, "Kash can recover his bubble state by being inside of Bubble when he has no bubble" )
 
@@ -242,8 +244,8 @@ if canTutorial == 1 {
 					draw_debug_text(tutorialX, tutorialY + 20,  "Kash - General")
 					//Body
 					draw_debug_text(tutorialX, tutorialY + 60, "Kash has two states: Bubble and No Bubble. He will always want to have Bubble." )
-					draw_debug_text(tutorialX + 20, tutorialY + 80, "Bubble state makes Kash floaty and have Soft Armor on everything." )
-					draw_debug_text(tutorialX + 20, tutorialY + 100, "Bubbleless state makes Kash fall quickly and go into pratfall on hit." )
+					draw_debug_text(tutorialX + 20, tutorialY + 80, "Bubble state makes Kash floaty and have .5 kb_adj." )
+					draw_debug_text(tutorialX + 20, tutorialY + 100, "Bubbleless state makes Kash weak and go into pratfall on hit." )
 					draw_debug_text(tutorialX + 40, tutorialY + 120, "He only has one attack that gives him a slight vertical boost in this state" )
 					draw_debug_text(tutorialX, tutorialY + 140, "Bubble can be restored on Death, Being grabbed by Mone, or Being in a placed Bubble" )
 					draw_debug_text(tutorialX, tutorialY + 180, "Kash loses access to specials when Mone is in normal states so that Kash won't SD easily" )
@@ -361,4 +363,10 @@ if canTutorial == 1 {
 	} else {
 		draw_debug_text( temp_x - 8, temp_y - 64, "Shield + Taunt for Tutorial Menu")
 	}
+}
+
+}
+
+if attack_pressed {
+	print("Squish, Squish")
 }

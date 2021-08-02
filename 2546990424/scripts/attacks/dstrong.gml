@@ -20,7 +20,7 @@ set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 //set_window_value(AT_DSTRONG, 3, AG_WINDOW_HAS_SFX, 1);
 //set_window_value(AT_DSTRONG, 3, AG_WINDOW_SFX, asset_get("sfx_bird_nspecial"));
 
-set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);

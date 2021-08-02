@@ -20,6 +20,7 @@ parasiteLevel = 0; //1- Gives Strongs. 2- Gives extra actions.
 parasiteSpawn = -1;
 
 //tauntDebug
+dbg_ParasiteStage = 0;
 dbg_ParasiteMax = false;
 dbg_ParasiteDeath = false;
 dbg_Msg = "";
@@ -73,7 +74,7 @@ hitstun_grav = .5;
 knockback_adj = 1.05; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 5;
+prat_land_time = 16;//5
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .12; //grounded deceleration when wavelanding

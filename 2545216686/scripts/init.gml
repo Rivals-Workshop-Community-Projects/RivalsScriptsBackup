@@ -26,7 +26,11 @@ bombcharge = -2 //Variable for Ustrong's bomb charge height modifier.
 
 ring_dstrong_vfx = hit_fx_create(sprite_get("dstrong_vfx"), 15);
 
+nspec_air_window_timer = 0
+
 //Fspecial: Air Dive
+
+tailsdidhesidebrobot = false
 
 tailsgrabbedrobot = false
 
@@ -97,11 +101,11 @@ moonwalk_accel = 1.4;
 
 jump_start_time = 5;
 jump_speed = 10;
-short_hop_speed = 4.95;
+short_hop_speed = 5;
 djump_speed = 9;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 5.5; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state
+max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 4; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .35;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
@@ -121,7 +125,7 @@ knockback_adj = 1.15; //the multiplier to KB dealt to you.
 land_time = 4; //normal landing frames
 prat_land_time = 20;
 wave_land_time = 8;
-wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_land_adj = 1.3; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .04; //grounded deceleration when wavelanding
 
 //crouch animation frames
@@ -168,6 +172,7 @@ sfx_blow_3 = sound_get("sfx_blow_3")
 sfx_dashstart = sound_get("sfx_dashstart")
 sfx_dive = sound_get("sfx_dive")
 sfx_dstrong_use = sound_get("sfx_dstrong_use")
+sfx_energyshot = sound_get("sfx_energyshot")
 sfx_flight = sound_get("sfx_flight")
 sfx_flight_cheat = sound_get("sfx_flight_cheat")
 sfx_flight_stop = sound_get("sfx_flight_stop")
@@ -214,7 +219,7 @@ bubble_y = 8;
 //MunoPhone Sprites
 spr_alts = sprite_get("alts");
 spr_nspec = sprite_get("nspecial_muno");
-spr_nspec_bomb = sprite_get("nspecial_bomb");
+spr_energy = sprite_get("energy_shot");
 spr_fspec = sprite_get("fspecial_muno");
 spr_fspec2 = sprite_get("fspecial_2_muno");
 spr_uspec = sprite_get("uspecial_muno");

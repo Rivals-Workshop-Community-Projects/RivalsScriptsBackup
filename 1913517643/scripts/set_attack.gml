@@ -6,6 +6,7 @@ if (attack == AT_NSPECIAL){
     }
 }
 
+/*
 if down_down && attack == AT_TAUNT
 {
     
@@ -27,4 +28,4 @@ if down_down && attack == AT_TAUNT
     
 }
    
-}
+}*/

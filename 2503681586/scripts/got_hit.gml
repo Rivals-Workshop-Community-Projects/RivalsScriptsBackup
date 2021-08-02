@@ -41,16 +41,18 @@ if enemy_hitboxID.orig_player == player  {
 	} 
 } else {
 	if is_nana && "is_bubble" !in self {
+		
+		//sound_play(asset_get("sfx_orca_absorb"))
 		should_make_shockwave = false
 		army_leader.nanaDamage += enemy_hitboxID.damage
 		take_damage(player, player, floor(-1 * enemy_hitboxID.damage))
+
 		orig_knock = enemy_hitboxID.kb_value + (army_leader.nanaDamage * enemy_hitboxID.kb_scale * 0.12 * knockback_adj )
 		hitstop_full = enemy_hitboxID.hitpause + (army_leader.nanaDamage * enemy_hitboxID.hitpause_growth* .05)
-		if clownState == 1 {
-			hitstun_full = enemy_hitboxID.kb_value * 4 * ((knockback_adj - 1) * 0.6 + 1) + army_leader.nanaDamag * 0.12 * enemy_hitboxID.kb_scaling * 4 * 0.65 * knockback_adj
-		}
+		hitstun = enemy_hitboxID.kb_value * 4 * ((knockback_adj - 1) * 0.6 + 1) + army_leader.nanaDamage * 0.12 * enemy_hitboxID.kb_scale * 4 * 0.65 * knockback_adj
+
 		if clownState = 0 {
-			if (orig_knock >= 10) || (enemy_hitboxID.attack = AT_FSTRONG || enemy_hitboxID.attack = AT_USTRONG  || enemy_hitboxID.attack = AT_DSTRONG) {
+			if (orig_knock >= 10) {
 				clownState = 1
 				sound_play(asset_get("sfx_orca_absorb"))
 				state = PS_HITSTUN

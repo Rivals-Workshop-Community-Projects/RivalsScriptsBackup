@@ -5,7 +5,8 @@ if ("lanternhud_CURRENT" in self)
 	var lanternhud_width = sprite_get_width(lanternhud_full);
 	
 	var meter_percentage = lanternhud_CURRENT / lanternhud_MAX;
-	
+	shader_start();
 	draw_sprite(sprite_get("lanternhud_empty"),0, temp_x + 155, temp_y + -18);
 	draw_sprite_part(lanternhud_full,0, 0, lanternhud_height * (1 - meter_percentage), lanternhud_width, lanternhud_height * meter_percentage, temp_x + 155, temp_y + -18);
+	shader_end();
 }

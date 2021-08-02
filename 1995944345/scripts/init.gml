@@ -42,7 +42,7 @@ max_reflects = 3;
 reflect_spin = 0;
 
 selfstab = 0;
-selfstab_damage = 10;
+selfstab_damage = 6;
 selfstab_x = 0;
 selfstab_y = 0;
 selfstab_angle = 0;
@@ -175,7 +175,7 @@ air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aeri
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .4;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
-air_friction = .08;
+air_friction = .07;
 max_djumps = 2;
 double_jump_time = 40; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 0;

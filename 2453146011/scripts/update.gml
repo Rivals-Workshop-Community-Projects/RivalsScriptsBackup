@@ -22,7 +22,13 @@ else if(frameTimer < 100)
 }
 
 // Munophone
-user_event(14);
+if get_training_cpu_action() != CPU_FIGHT || trainingMode == 1 {
+    user_event(14);
+} else {
+    if get_training_cpu_action() == CPU_STAND {
+        trainingMode = 1
+    }
+}
 
 //gatling
 if (state != PS_ATTACK_GROUND) and phone_cheats[canGatle] == 1
@@ -36,7 +42,7 @@ if (state != PS_ATTACK_GROUND) and phone_cheats[canGatle] == 1
 if(!lite)
 with(oPlayer) if(player != other.player) if(last_monarch == monarch)
 {
-	if(!(state == 12 || state == 7 || state == 0 || state == SC_HITSTUN) && other_arrayindex > 0) other_array_cleared = false;
+	if(!(state == 12 || state == 7 || state == 0 || state == SC_HITSTUN || state == PS_RESPAWN) && other_arrayindex > 0) other_array_cleared = false;
 	
 	if((state == 12 || state == 7 || state == 0 || state == SC_HITSTUN) && hit_player_obj == other && !hitpause)
 	{
@@ -60,7 +66,7 @@ with(oPlayer) if(player != other.player) if(last_monarch == monarch)
 		var i = 0;
 		repeat(100)
 		{
-			other_afterimage_array[i] = -1;
+			if(i != 0) other_afterimage_array[i] = -1;
 			i++;
 		}
 	}
@@ -269,6 +275,20 @@ repeat(2)
 }
 
 
+//#region Portal trail
+if(portal_1 != noone && portal_2 != noone || portal_delay > 0)
+{
+	with(oPlayer) portalTrails(monarch,false);
+	with(obj_article2) if("is_monarch" in player_id) portalTrails(monarch,true);
+	with(obj_article3) if("is_monarch" in player_id) portalTrails(monarch,true);
+}
+else
+{
+	portallineindex = 0;
+}
+//#endregion
+
+
 // Airdodge stuff
 if(state == PS_AIR_DODGE)
 {
@@ -428,15 +448,16 @@ else if(array_cleared == false)
 	}
 }
 
-// // Leaving this here in case I need it - get var names
-// with(hit_player_obj){
+// Leaving this here in case I need it - get var names
+// with(pHitBox){
 // 	var p = variable_instance_get_names(self)
 // 	var i = 0;
-// 	repeat(590){
-// 		if(variable_instance_get(self,p[i]) == hsp)print_debug(p[i])
+	
+// 	if(hitbox_timer==1) other.test_index+=16;
+// 	repeat(16){
+// 		print_debug(p[i+other.test_index])
 // 		i++;
 // 	}
-// 	print_debug("hsp = " + string(hsp))
 // }
 
 // Respawn animation
@@ -519,6 +540,7 @@ if(hitpause == false) black_screen = false;
 // Fspecial timer
 if(fspec_line_timer > 0) fspec_line_timer--;
 if(knife_line_timer > 0) knife_line_timer--;
+if(portal_line_timer > 0) portal_line_timer--;
 
 // With hitbox stuff
 with(pHitBox){
@@ -830,57 +852,125 @@ if(charges == 0)
 with(oPlayer)
 if(!("is_monarch" in self) || player == other.player)
 {
-	// Failsafe teleported reset
-	if(portal_afterimage.timer == 0 && teleported) teleported = false;
-	
-	// Tick down afterimage and white
-	if(portal_afterimage.timer > 0) portal_afterimage.timer--;
-	if(portal_white > 0) portal_white--;
-	
-    if(in_portal == true)
-    {
-    	// Draw afterimage
-    	if(portal_afterimage.timer == 0 && teleported)
-    	{
-    		teleported = false;
-    		// Clear pratfall
-    		if(state == PS_PRATFALL) set_state(PS_IDLE_AIR);
-    		if("uspecial_buffer" in self) uspecial_buffer = false;
-    		
-    		
-    		// Flash fx
-            with(monarch) { var s= spawn_hit_fx(other.x,other.y+vsp,teleport_lite_start); s.depth = depth-1; 
-            }
-    		
-	    	portal_afterimage.timer = 10;
-	    	portal_afterimage.sprite_index = sprite_index;
-	    	portal_afterimage.image_index = image_index;
-	    	portal_afterimage.x = xprevious;
-	    	portal_afterimage.y = yprevious;
-	    	portal_afterimage.spr_dir = last_spr_dir;
-    	}
-    	
-        if(portal_timer == 0 )
+	// Delay end
+	if(portal_delay > 0 && portal_delay <= 1)
+	{
+		hitstop = 0;
+		hitpause = false;
+		
+		hsp = old_hsp;
+		vsp = old_vsp;
+		
+		// Portal white fx
+		if(instance_exists(monarch.portal_1) && instance_exists(monarch.portal_2))
+		{
+			if(last_pcolor == 2)
+			{	monarch.portal_1.portal_white = 15;	}
+			else 
+			{	monarch.portal_2.portal_white = 15;	}
+		}
+		
+		visible = true;
+		
+	    // Flash fx
+        with(monarch) { var s= spawn_hit_fx(other.x,other.y+vsp,teleport_lite_return); s.depth = depth-1; }
+        
+        // Enable hitboxes
+        with(pHitBox)
         {
-        	if(portal_cooldown == 0)
+        	if(player_id == other && type == 1)
         	{
-	            in_portal = false;
-	            portal_timer = 2;
+        		with(player_id)
+        		{
+	        		other.image_xscale = get_hitbox_value(other.attack,other.hbox_num,HG_WIDTH)/200;
+	        		other.image_yscale = get_hitbox_value(other.attack,other.hbox_num,HG_HEIGHT)/200;
+        		}
         	}
         }
-        else
-        {
-            portal_timer--;
-        }
-    }
-    
-    // Portal cooldown
-    if(portal_cooldown > 0) portal_cooldown--;
-    
-    if(state == PS_JUMPSQUAT) portal_cooldown = 0;
-    
-    // Misc
-	last_spr_dir = spr_dir;
+	}
+	
+	// Delay subtract
+	if(portal_delay > 0)
+	{
+		portal_delay--;
+	}
+	
+
+
+	// Portal delay
+	if(portal_delay > 1)
+	{
+		if(portal_delay == max_portal_delay)
+		{
+			// Flash fx
+    		with(monarch) { var s= spawn_hit_fx(other.last_teleport_x,other.last_teleport_y+vsp,teleport_lite_start); s.depth = depth-1; }
+		}
+		
+		// Afterimage and hitpause
+		hitpause = true;
+		hitstop = portal_delay;
+		
+		visible = false;
+		
+    	portal_afterimage.timer = 10;
+    	portal_afterimage.sprite_index = sprite_index;
+    	portal_afterimage.image_index = image_index;
+    	portal_afterimage.x = xprevious;
+    	portal_afterimage.y = yprevious;
+    	portal_afterimage.spr_dir = last_spr_dir;
+	}
+	else
+	{
+		// Failsafe teleported reset
+		if(portal_afterimage.timer == 0 && teleported) teleported = false;
+		
+		// Tick down afterimage and white
+		if(portal_afterimage.timer > 0) portal_afterimage.timer--;
+		if(portal_white > 0) portal_white--;
+		
+	    if(in_portal == true)
+	    {
+	    	// Draw afterimage
+	    	if(portal_afterimage.timer == 0 && teleported)
+	    	{
+	    		teleported = false;
+	    		// Clear pratfall
+	    		if(state == PS_PRATFALL) set_state(PS_IDLE_AIR);
+	    		if("uspecial_buffer" in self) uspecial_buffer = false;
+	    		
+	    		
+
+	    		
+		    	portal_afterimage.timer = 10;
+		    	portal_afterimage.sprite_index = sprite_index;
+		    	portal_afterimage.image_index = image_index;
+		    	portal_afterimage.x = xprevious;
+		    	portal_afterimage.y = yprevious;
+		    	portal_afterimage.spr_dir = last_spr_dir;
+	    	}
+	    	
+	        if(portal_timer == 0 )
+	        {
+	        	if(portal_cooldown == 0)
+	        	{
+		            in_portal = false;
+		            portal_timer = 2;
+	        	}
+	        }
+	        else
+	        {
+	            portal_timer--;
+	        }
+	    }
+	    
+	    // Portal cooldown
+	    if(portal_cooldown > 0) portal_cooldown--;
+	    
+	    if(state == PS_JUMPSQUAT) portal_cooldown = 0;
+	    
+	    // Misc
+		last_spr_dir = spr_dir;
+	}
 }
 
 // Blink reset
@@ -950,4 +1040,151 @@ if(!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN)
 	
 	spr_dir = dir_storage;
 }
+#define portalTrails(monarch, _projectile)
+{
+	//if(portal_delay > 0)
+	{
+		if(portal_delay == max_portal_delay && instance_exists(monarch.portal_1) && instance_exists(monarch.portal_2))
+		{
+			var monportal1 = monarch.portal_1;
+			var monportal2 = monarch.portal_2;
+			
+			var trailid = _projectile ? article_trailid : player;
+			
+			portal_speed = point_distance(monportal1.x,monportal1.y,monportal2.x,monportal2.y)/ (_projectile ? 10 : 15);
+		
+	
+			// 3 Points
+			
+			// Find get coords of portals consistent
+			port1x = monportal1.centerx > monportal2.centerx ? monportal2.centerx : monportal1.centerx;
+			port1y = monportal1.centerx > monportal2.centerx ? monportal2.centery : monportal1.centery;
+			
+			port2x = monportal1.centerx > monportal2.centerx ? monportal1.centerx : monportal2.centerx;
+			port2y = monportal1.centerx > monportal2.centerx ? monportal1.centery : monportal2.centery;
+			
+			port1 = monportal1.centerx > monportal2.centerx ? monportal2 : monportal1;
+			port2 = monportal1.centerx > monportal2.centerx ? monportal1 : monportal2;
+			
+			// Left or right?
+			monarch.portaltrails[trailid].right = last_pcolor == 1 ? monportal1.centerx < monportal2.centerx : monportal1.centerx > monportal2.centerx;
+			monarch.portaltrails[trailid].up = last_pcolor == 1 ? monportal1.centery < monportal2.centery : monportal1.centery > monportal2.centery;
+			
+			var upangle = true;
+			
+			// x1,y1
+			var x1 = port1x;
+			var y1 = port1y;
+			
+			// x3,y3
+			var x3 = port2x;
+			var y3 = port2y;
+			
+			var x2 = 0;
+			var y2 = 0;
+			
+			// Select high or low angle
+			if(last_pcolor == port1.portal_id ? port2.isCeil : port1.isCeil)
+			{
+				// High angle
+				upangle = true;
+				x2 = dcos(60) * (x1 - x3) - dsin(60) * (y1 - y3) + x3;
+				y2 = dsin(60) * (x1 - x3) + dcos(60) * (y1 - y3) + y3;
+			}
+			else
+			{
+				// Low angle
+				upangle = false;
+				x2 = (x1 + x3 + sqrt(3) * (y1 - y3) )/2
+				y2 = (y1 + y3 + sqrt(3) * (x3 - x1) )/2
+			}
 
+
+			// Curve calcs
+			var xtemp = x2;
+			var ytemp = y2;
+			
+			y2 = (y1+y3)/2;
+			x2 = (x1+x3)/2;
+			
+			x2-=abs(xtemp - (x1+x3)/2)/10 * ((abs(hsp))/2) * ((x2 < ((x1+x3)/2)) ? 1 : -1);
+			y2+=(abs(ytemp - (y1+y3)/2)/10) * (upangle ? -1 : 1) * ((abs(vsp))/2);
+
+
+		
+			// Debug values
+			t1 = x2;
+			t2 = y2;
+			
+			b1 = x1;
+			b2 = y1;
+			
+			c1 = x3;
+			c2 = y3;
+
+			// Calulating middle point of line
+			denom = (x1-x2) * (x1-x3) * (x2-x3);
+			line_A = (x3 * (y2-y1) + x2 * (y1-y3) + x1 * (y3-y2)) / denom;
+			line_B = (x3*x3 * (y1-y2) + x2*x2 * (y3-y1) + x1*x1 * (y2-y3)) / denom;
+			line_C = (x2 * x3 * (x2-x3) * y1+x3 * x1 * (x3-x1) * y2+x1 * x2 * (x1-x2) * y3) / denom;
+				
+			monarch.portaltrails[trailid].x = last_pcolor == 1 ? monportal1.centerx : monportal2.centerx;
+			monarch.portaltrails[trailid].y = last_pcolor == 1 ? monportal1.centery: monportal2.centery;
+
+		}
+
+	
+		var num = monarch.lite ? 1 : 5;
+		repeat(num)
+			{
+			
+			// Weird above/below check
+			var nanthreshhold = 30;
+			
+			// Why do I have to set this again? Perhaps we'll never know.
+			trailid = _projectile ? article_trailid : player;
+			
+			// Wall line code
+			if(abs(port1x-port2x)<nanthreshhold)
+			{
+				if(portal_delay == max_portal_delay) portal_delay -= 7;
+				
+				monarch.portaltrails[trailid].y -= ((portal_speed * (_projectile ? 1.2 : 2) )/num) * (monarch.portaltrails[trailid].up ? -1 : 1);
+				monarch.portaltrails[trailid].x -= (((port1y + port2y)/2 - monarch.portaltrails[trailid].y)/60) * (monarch.portaltrails[trailid].up ? -1 : 1);
+				
+			}
+			else
+			{
+				// Update pos
+				monarch.portaltrails[trailid].x+= (portal_speed * (monarch.portaltrails[trailid].right ? 1 : -1))/num;
+				
+				var tx = monarch.portaltrails[trailid].x;
+				
+				monarch.portaltrails[trailid].y = ceil(line_A*tx*tx + line_B*tx + line_C);
+			}
+	
+			// Spawn fx
+			if(portal_delay > 0 && 
+			((monarch.portaltrails[trailid].x > port1x && monarch.portaltrails[trailid].x < port2x) || port1x==port2x) )
+			{
+				with(monarch)
+				{
+					var tfx = noone;
+					
+					tfx = spawn_hit_fx(ceil(portaltrails[trailid].x),portaltrails[trailid].y, (other.last_pcolor == 1 ? (_projectile ? portaltrail_proj_blue : portaltrail_blue) : (_projectile ? portaltrail_proj_red : portaltrail_red)));
+					tfx.depth = depth - 1;
+					
+					
+					//Align to grid
+					if(tfx.x%2 != x%2) tfx.x+=sign(portaltrails[trailid].hsp);
+					if(tfx.y%2 != y%2) tfx.y+=sign(portaltrails[trailid].vsp);
+				}
+			}
+			else if(portal_delay > 1)
+			{
+				portal_delay = 1
+			}
+			
+		}
+	}
+}

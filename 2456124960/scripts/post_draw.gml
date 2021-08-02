@@ -98,17 +98,36 @@ if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_FSPECI
 }
 
 
+
+
 if (get_player_color(player) == 9 && state == PS_SPAWN) {
 	if (state_timer == 1) {
-		set_article_color_slot(4, 255, 130, 213 ); //N+M Light
-		set_article_color_slot(5, 241, 39, 227 ); //Necklace+Magic
-		set_article_color_slot(6, 171, 10, 168 ); //N+M Dark		
+		set_article_color_slot(3, 255, 130, 213 ); //N+M Light
+		set_article_color_slot(4, 241, 39, 227 ); //Necklace+Magic
+		set_article_color_slot(5, 171, 10, 168 ); //N+M Dark
+		set_color_profile_slot(9, 3, 255, 130, 213 ); //N+M Light
+		set_color_profile_slot(9, 4, 241, 39, 227 ); //Necklace+Magic
+		set_color_profile_slot(9, 5, 171, 10, 168 ); //N+M Dark
+		set_color_profile_slot(9, 2, 120, 21, 114 ); //Shorts	
 	}
 	if (shield_down) {
-		set_article_color_slot(4, 171, 255, 175 ); //N+M Light
-		set_article_color_slot(5, 39, 241, 49 ); //Necklace+Magic
-		set_article_color_slot(6, 10, 171, 18 ); //N+M Dark
+		set_article_color_slot(3, 171, 255, 175 ); //N+M Light
+		set_article_color_slot(4, 39, 241, 49 ); //Necklace+Magic
+		set_article_color_slot(5, 10, 171, 18 ); //N+M Dark
+		set_color_profile_slot(9, 3, 171, 255, 175 ); //N+M Light
+		set_color_profile_slot(9, 4, 39, 241, 49 ); //Necklace+Magic
+		set_color_profile_slot(9, 5, 10, 171, 18 ); //N+M Dark
+		set_color_profile_slot(9, 2, 18, 100, 35 ); //Shorts
 	}
+}
+
+if (activeBuffUses > 0) {
+	if (activeBuff == 1) {
+		draw_sprite(sprite_get("hud_icons"), 0, x - 20, y - 115);
+	} else {
+		draw_sprite(sprite_get("hud_icons"), 1, x - 20, y - 115);	
+	}
+	draw_sprite(sprite_get("hud_icons"), activeBuffUses + 8, x + 12, y - 115);
 }
 
 //print_debug(string(fps_real));

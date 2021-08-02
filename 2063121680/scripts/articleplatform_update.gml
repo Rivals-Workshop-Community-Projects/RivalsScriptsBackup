@@ -129,7 +129,7 @@ if (!inStasis) && (player_id.stasisID != id) {
 var _hitbox = place_meeting(x, y, pHitBox);
 if _hitbox {
     var hitboxObj = instance_place(x, y, pHitBox);
-    if ('boostedBox' in hitboxObj) && hitboxObj.player_id == player_id && hitboxObj.attack == AT_FSTRONG {
+    if ('boostedBox' in hitboxObj) && hitboxObj.player_id == player_id && hitboxObj.attack == AT_FSTRONG && !inStasis {
         if !hitboxObj.boostedBox {
             hitboxObj.boostedBox = true;
         }

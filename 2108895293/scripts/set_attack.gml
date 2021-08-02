@@ -1,6 +1,10 @@
 //set_attack
 
-user_event(13);
+if (!phone_disable){
+	if (phone_manual_init >= 1){
+		user_event(13);
+	}
+}
 
 if (attack==AT_DSPECIAL && free){
 	attack=AT_DSPECIAL_AIR

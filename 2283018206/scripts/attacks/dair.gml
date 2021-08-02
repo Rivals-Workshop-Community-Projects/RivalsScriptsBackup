@@ -61,4 +61,5 @@ set_hitbox_value(AT_DAIR, 2, HG_HITPAUSE_SCALING, 0.6);
 // set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_DAIR, 2, HG_MUNO_OBJECT_LAUNCH_ANGLE, 270);
 set_hitbox_value(AT_DAIR, 2, HG_MUNO_HITBOX_NAME, "Sourspot");

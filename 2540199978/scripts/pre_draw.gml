@@ -77,15 +77,15 @@ if ("rollArray" in self)
 			gpu_set_fog(0, c_white, 0, 0);
 			break;
 
-		// aura
+		// final smash
 		default:
-			//if (aura)
-			//{
-			//	var color_rgb=make_color_rgb(255, 0, 255);
-			//	var color_hsv=make_color_hsv((color_get_hue(color_rgb)+hue)%255,color_get_saturation(color_rgb),color_get_value(color_rgb));
-			//	FlagPart(color_hsv, 1, 0);
-			//	gpu_set_fog(0, c_white, 0, 0);
-			//}
+			if (aura > 0)
+			{
+				var color_rgb=make_color_rgb(255, 0, 255);
+				var color_hsv=make_color_hsv((color_get_hue(color_rgb)+hue)%255,color_get_saturation(color_rgb),color_get_value(color_rgb));
+				FlagPart(color_hsv, 1, 0);
+				gpu_set_fog(0, c_white, 0, 0);
+			}
 			break;
 	}
 }

@@ -16,7 +16,7 @@ set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX, asset_get("sfx_spin"));
 set_window_value(AT_DATTACK, 1, AG_USES_CUSTOM_GRAVITY, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.25);
 
-// active
+// active (part 1, part 2 is in a seperate gml)
 set_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAME_START, 2);

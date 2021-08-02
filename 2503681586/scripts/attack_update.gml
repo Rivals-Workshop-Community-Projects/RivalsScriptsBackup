@@ -204,10 +204,12 @@ if !is_nana {
 			case 2:
 				invincible = 1
 				invince_time = 1
-				anemoneGrab.invincible = 0
-				anemoneGrab.invince_time = 0
-				anemoneGrab.x = x
-				anemoneGrab.y = y - 96
+				if anemoneGrab != -4 {
+					anemoneGrab.invincible = 0
+					anemoneGrab.invince_time = 0
+					anemoneGrab.x = x
+					anemoneGrab.y = y - 96
+				}
 				if instance_exists(army) {
 					if anemoneGrab == army.id {
 						move_cooldown[AT_NSPECIAL] = 30

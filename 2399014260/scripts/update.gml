@@ -38,7 +38,7 @@ bee_ui_alpha = lerp(bee_ui_alpha, (bee_moment || bee_time < bee_time_max), 0.3);
 
 
 
-if phone_arrow_cooldown > 25 && arrow_free_refresh && (!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN) phone_arrow_cooldown = 25;
+if phone_arrow_cooldown > 25 && "arrow_free_refresh" in self && arrow_free_refresh && (!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN) phone_arrow_cooldown = 25;
 
 
 

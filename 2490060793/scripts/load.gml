@@ -58,16 +58,14 @@ sprite_change_offset("fs", 160, 198);
 
 sprite_change_offset("plat", 60, 0);
 
-sprite_change_offset("nspecial_proj", 29, 10);
-sprite_change_offset("nspecial_vfx", 18, 18);
 sprite_change_offset("hud_meter", 0, 0);
 sprite_change_offset("hud_meter_red", 0, 0);
 sprite_change_offset("hud_meter_flash", 0, 0);
 sprite_change_offset("orb", 32, 32);
 sprite_change_offset("orb_idle", 32, 32);
 sprite_change_offset("orb_pulse", 60, 60);
-sprite_change_offset("uspec_indicator", 80, 158);
-sprite_change_offset("fspecial_vfx", 80, 158);
+sprite_change_offset("fspec_indicator", 80, 158);
+sprite_change_offset("nspecial_vfx", 80, 158);
 sprite_change_offset("orb_explosion_vfx", 80, 80);
 
 sprite_change_offset("intro", 80, 158);

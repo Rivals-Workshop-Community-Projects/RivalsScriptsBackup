@@ -327,7 +327,7 @@ set_hitbox_value(AT_NSPECIAL, 11, HG_HITBOX_X, 48);
 set_hitbox_value(AT_NSPECIAL, 11, HG_HITBOX_Y, -30);
 
 set_hitbox_value(AT_NSPECIAL, 11, HG_PROJECTILE_SPRITE, sprite_get("bullet3"));
-set_hitbox_value(AT_NSPECIAL, 11, HG_PROJECTILE_ANIM_SPEED, 0.3);
+set_hitbox_value(AT_NSPECIAL, 11, HG_PROJECTILE_ANIM_SPEED, 0.15);
 set_hitbox_value(AT_NSPECIAL, 11, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 11, HG_PROJECTILE_HSPEED, 5.5);//4.8
 
@@ -339,15 +339,15 @@ set_hitbox_value(AT_NSPECIAL, 11, HG_DAMAGE, 8);
 set_hitbox_value(AT_NSPECIAL, 11, HG_ANGLE, 50);
 set_hitbox_value(AT_NSPECIAL, 11, HG_PRIORITY, 1);
 set_hitbox_value(AT_NSPECIAL, 11, HG_BASE_KNOCKBACK, 6.5);
-set_hitbox_value(AT_NSPECIAL, 11, HG_KNOCKBACK_SCALING, 0.6);
+set_hitbox_value(AT_NSPECIAL, 11, HG_KNOCKBACK_SCALING, 0.7);//0.6
 set_hitbox_value(AT_NSPECIAL, 11, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_NSPECIAL, 11, HG_HITPAUSE_SCALING, .6);
-set_hitbox_value(AT_NSPECIAL, 11, HG_VISUAL_EFFECT, 109);
+set_hitbox_value(AT_NSPECIAL, 11, HG_VISUAL_EFFECT, 110);
 set_hitbox_value(AT_NSPECIAL, 11, HG_PROJECTILE_DESTROY_EFFECT, 109);
 set_hitbox_value(AT_NSPECIAL, 11, HG_HIT_SFX, asset_get("sfx_holy_lightning"));
 
-set_hitbox_value(AT_NSPECIAL, 11, HG_PROJECTILE_DOES_NOT_REFLECT, 0);
-set_hitbox_value(AT_NSPECIAL, 11, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 11, HG_PROJECTILE_DOES_NOT_REFLECT, 0);//0
+set_hitbox_value(AT_NSPECIAL, 11, HG_PROJECTILE_PARRY_STUN, 0);//1
 
 
 

@@ -47,13 +47,15 @@ switch attack {
     
     case AT_DSTRONG:
     _hitbox_num = [1,3];
-    hbox_x = -25 - 15*meter_percent;
-    hbox_w = 60*meter_percent;
+    hbox_x = -14 - 28*meter_percent;
+    hbox_w = 10 + 70*meter_percent;
+    hbox_h = 10 + 25*meter_percent;
     set_hitbox()
     
     _hitbox_num = [2,4];
-    hbox_x = 20 + 22*meter_percent;
-    hbox_w = 60*meter_percent;
+    hbox_x = 30 + 25*meter_percent;
+    hbox_w = 20 + 50*meter_percent;
+    hbox_h = 20 + 30*meter_percent;
     set_hitbox()
     break;
     
@@ -96,7 +98,7 @@ switch attack {
     set_hitbox()
     break;
     
-    case AT_USPECIAL:
+    case AT_FSPECIAL:
     _hitbox_num = [1,2];
     hbox_x = 20 + 20*meter_percent
     hbox_y = -30 - 10*meter_percent
@@ -161,6 +163,23 @@ switch attack {
     hbox_x = 30 + 15*meter_percent;
     hbox_w = 20 + 60*meter_percent;
     hbox_h = 25 + 35*meter_percent;
+    set_hitbox()
+    break;
+    
+    case AT_USPECIAL:
+    _hitbox_num = [1,5];
+    hbox_x = 55*meter_percent
+    hbox_w = 55*meter_percent
+    set_hitbox()
+    
+    _hitbox_num = [2,6];
+    hbox_x = 32*meter_percent
+    hbox_w = 56*meter_percent
+    set_hitbox()
+    
+    _hitbox_num = [3,7];
+    hbox_x = 30*meter_percent
+    hbox_w = 56*meter_percent
     set_hitbox()
     break;
 }

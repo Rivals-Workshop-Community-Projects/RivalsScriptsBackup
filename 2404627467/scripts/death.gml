@@ -10,3 +10,9 @@ with (oPlayer) {
 		}
 	}
 }
+
+
+if (instance_exists(nspecial_article)) {
+    nspecial_article.window = 8;
+    nspecial_article.window_timer = 0;
+}

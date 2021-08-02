@@ -12,6 +12,8 @@ if nspec_charge >= blue_arrow_timer
     gpu_set_blendmode(bm_normal)
 }
 
+//draw_debug_text(x,y-70,"move_cooldown: "+string(move_cooldown[AT_NSPECIAL]))
+
 if (fspec_article != noone and "inPractice" in self and crouch_pshow)
 {
 	var xx, yy, diff;

@@ -17,24 +17,25 @@ set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME, 8);
 
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_HSPEED, 4);
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_VSPEED, 9);
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_VSPEED_TYPE, 1);
 
 set_window_value(AT_DSPECIAL_AIR, 3, AG_WINDOW_LENGTH, 11);
-set_window_value(AT_DSPECIAL_AIR, 3, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_DSPECIAL_AIR, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_DSPECIAL_AIR, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL_AIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_LENGTH, 14); //Landing lag
-set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_ANIM_FRAME_START, 5);
-set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_ANIM_FRAME_START, 8);
+set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_DSPECIAL_AIR, 0); 
 
+//spike
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_LIFETIME, 1);
@@ -44,10 +45,10 @@ set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_WIDTH, 48);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HEIGHT, 60);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_DAMAGE, 9);
-set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_ANGLE, 272); //292
+set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_ANGLE, 272); //292 
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_BASE_KNOCKBACK, 6); //7
-set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_KNOCKBACK_SCALING, 0.7); //0.6
+set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_KNOCKBACK_SCALING, 0.8); //0.6//0.7
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_VISUAL_EFFECT, 304);

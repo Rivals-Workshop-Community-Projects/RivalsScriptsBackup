@@ -360,6 +360,10 @@ if !hitpause {
              if window_timer == 11 && voiced == 1{
                  sound_play(sound_get("fspec"),false,noone,0.8)
              }
+             
+             if window_timer == 11 && voiced == 0{
+             	sound_play(sound_get("b1"),false,noone,0.8,0.9)
+             }
         }
         }
        
@@ -457,10 +461,33 @@ if !hitpause {
         }
        
        if attack == AT_TAUNT {
+       	
+       	   if voiced == 1 {
            if window < 10 {
            	suppress_stage_music( 0.5, 100 );
            }
-           if window == 1 taunt_sound = sound_play(sound_get("tauntdance"));
+              if window == 1 taunt_sound = sound_play(sound_get("tauntdance"));
+       	   }
+       	   
+       	   if voiced == 0 {
+              if window == 1 && window_timer == 1 {
+              	sound_stop(asset_get("sfx_spin"))
+              	taunt_sound = sound_play(asset_get("sfx_spin"))
+              }
+              if window == 4 && window_timer == 1 {
+              	sound_stop(asset_get("sfx_spin"))
+              	taunt_sound = sound_play(asset_get("sfx_spin"),false,noone,1,0.85)
+              }
+              if window == 6 && window_timer == 1 {
+              	sound_stop(asset_get("sfx_spin"))
+              	taunt_sound = sound_play(asset_get("sfx_spin"),false,noone,1,0.7)
+              }
+
+       	    }
+       	   
+       	   
+       	   
+       	   
            if window >= 3 && !taunt_down {
                set_state(PS_IDLE)
                sound_stop(taunt_sound);

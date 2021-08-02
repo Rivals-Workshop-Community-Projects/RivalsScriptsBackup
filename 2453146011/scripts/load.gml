@@ -203,4 +203,10 @@ sprite_change_offset("hitfx10", 196, 196);
 sprite_change_offset("hitfx11", 128, 128);
 sprite_change_offset("hitfx12", 128, 128);
 
+sprite_change_offset("portaltrail_blue", 64, 64);
+sprite_change_offset("portaltrail_red", 64, 64);
+
+sprite_change_offset("portaltrail_proj_blue", 64, 64);
+sprite_change_offset("portaltrail_proj_red", 64, 64);
+
 set_victory_theme( sound_get( "monarch_victory" ));

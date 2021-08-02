@@ -14,6 +14,7 @@ sprite_change_offset("walljump", 74, 114);
 sprite_change_offset("pratfall", 74, 114);
 sprite_change_offset("land", 74, 114);
 sprite_change_offset("landinglag", 74, 114);
+sprite_change_offset("land_uspecial", 74, 114);
 
 sprite_change_offset("parry", 74, 114);
 sprite_change_offset("roll_forward", 74, 114);
@@ -65,6 +66,7 @@ sprite_change_offset("particle1", 16, 16);
 sprite_change_offset("particle2", 16, 16);
 sprite_change_offset("particle3", 16, 16);
 sprite_change_offset("lightsentry", 80, 80);
+sprite_change_offset("uair_bomb", 80, 80);
 
 sprite_change_offset("bullet1_ball", 16, 16);
 sprite_change_offset("feri_costume_lumina", 84, 114);
@@ -76,7 +78,9 @@ sprite_change_offset("bullet3_kirby_strip8", 80, 80);
 sprite_change_offset("lumina_phonepose", 74, 114);
 sprite_change_offset("plat", 74, 114);
 
-sprite_change_collision_mask("lightsentry", true, 2, 50, 50, 100, 100, 1);
+sprite_change_collision_mask("lightsentry", true, 2, 25*2, 25*2, 53*2, 53*2, 1);//50 50 100 100
+sprite_change_collision_mask("uair_bomb", true, 2, 20*2, 35*2, 58*2, 43*2, 1);
+sprite_change_collision_mask("bullet3", true, 2, 32*2, 23*2, 47*2, 55*2, 1);
 
 
 

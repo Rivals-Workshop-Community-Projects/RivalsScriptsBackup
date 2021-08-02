@@ -183,6 +183,7 @@ if (attack == AT_DAIR) {
         hsp = clamp(hsp, -2, 2)
         vsp = 0.8;
         if (window == 2) && (window_timer >= 6) {
+            can_wall_jump = true;
             if (shield_pressed && has_airdodge) {
                 state = PS_IDLE_AIR;
                 state_timer = 0;
@@ -205,14 +206,16 @@ if (attack == AT_DAIR) {
                 }
             }
         }
-        if !(stasisID != undefined && stasisID.hitboxStasisPlayerID == id && stasisID.hitboxStasisAttack == AT_DAIR) {
+        if !(stasisID != undefined && stasisID.hitboxStasisPlayerID == id && stasisID.hitboxStasisAttack == AT_DAIR && !hitpause) {
             create_hitbox(AT_DAIR, 1, x, y);
+            create_hitbox(AT_DAIR, 2, x, y);
         }
         
     } else if (window == 3) {
         if (window_timer == 1) {
+            move_cooldown[AT_DAIR] = 4;
             sound_stop(sound_get("bullet_time"));
-            vsp = -16;
+            vsp = -13;
             hsp = bulletHsp*5;
         } else if (window_timer == get_window_value(AT_DAIR, 3, AG_WINDOW_LENGTH)) {
             state = PS_DOUBLE_JUMP;
@@ -319,7 +322,7 @@ if (attack == AT_DATTACK) {
         window_timer = 1;
     }
     
-    if (window == 3) && (window_timer == 14) {
+    if (window == 3) && (window_timer == 10) {
         state = PS_IDLE_AIR;
         state_timer = 0;
         hurtboxID.sprite_index = hurtbox_spr;
@@ -739,5 +742,43 @@ if (attack == AT_FSPECIAL) {
 if (attack == AT_BAIR) {
     if (window == 1) && (window_timer == get_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH)) {
         spr_dir *= -1;
+    }
+}
+
+//fs
+if attack == 49 {
+    if window == 1 {
+        hurtboxID.sprite_index = get_attack_value(49, AG_HURTBOX_SPRITE);
+        fs_hit = false;
+        fs_timer = 0;
+        hit_player_obj = noone;
+        reset_window_value(49, 3, AG_WINDOW_LENGTH);
+    }
+    
+    if window == 2 && fs_hit {
+        set_window_value(49, 3, AG_WINDOW_LENGTH, 470);
+    }
+    
+    if fs_hit {
+        if fs_timer == 55 {
+            sound_play(sound_get("splat"), false, 0)
+            shake_camera(10, 2)
+        }
+        if fs_timer == 105 {
+            sound_play(sound_get("fs_sfx"), false, 0)
+        }
+        if fs_timer == 430 {
+            sound_play(sound_get("explosion"), false, 0)
+            //var hitfx = spawn_hit_fx(1000, 300, fsExplosionVfx)
+            //    hitfx.depth = 10;
+        }
+    }
+    
+    if window == 3 && window_timer == 470 {
+        create_hitbox(49, 3, x, y)
+    }
+    
+    if window == 4 && fs_hit {
+        set_state(PS_IDLE)
     }
 }

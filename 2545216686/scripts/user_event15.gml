@@ -359,17 +359,14 @@ with phone{
 	// NOTE: Using sprite_get() does not work here, so sprites must be saved as
 	// variables. See init.gml for an example of this with spr_nspecial_proj.
 	
-	initTip("Neutral Special: Regular Bombs");
-	initTipWords("A basic projectile that packs a punch at later percents.
-	
-	...there's not really much to this.");
+	initTip("Neutral Special: Energy Shot");
+	initTipWords("An electric projectile that briefly stuns opponents.");
 	initTipImage(player_id.spr_nspec, -4, fa_left, 1, c_white, 4);
-	initTipImage(player_id.spr_nspec_bomb, -3, fa_center, 1, c_white, 3);
+	initTipImage(player_id.spr_energy, -3, fa_center, 1, c_white, 3);
 	
 	initTip("Forward Special: Air Dive");
 	initTipWords("Tails dives forward in the air with wide open arms to catch anyone in his path. If you whiff, you'll go into pratfall, so be sure to not miss!
-	If you grab someone, Tails will fly up, then kick them upward. Useful as a vertical combo tool.
-	If you start the move from the ground and land the move, you can use the move again in the air!");
+	If you grab someone, Tails will fly up, then kick them upward. Useful as a vertical combo tool.");
 	initTipImage(player_id.spr_fspec, -4, fa_left, 1, c_white, 0);
 	initTipImage(player_id.spr_fspec2, -4, fa_right, 1, c_white, 0);
 	
@@ -389,7 +386,8 @@ with phone{
 	Press Down Special again while Remote Robot is out to make it jump up, almost like it hit an opponent.");
 	initTipImage(player_id.spr_robot_walk, -5, fa_center, 1, c_white, 3);
 	initTipWords("Remote Robot also has some synergy with the rest of Tails' moveset.
-	Neutral Special causes the robot to instantly explode with increased knockback.");
+	Neutral Special causes the robot to instantly explode with increased knockback
+	Forward Special grabs the robot, and is then thrown forward.");
 
 	initTip("Down Tilt: Slide");
 	initTipWords("A basic slide you've seen a ton of times on different characters.
@@ -488,6 +486,22 @@ with phone{
 	Resembles the Champion color palletes found in Rivals.");
 	initTipImage(player_id.spr_alts, 19, fa_left, 1, c_white, 0);
 	
+	initTipWords("Alt 21: Red (Again)
+	Resembles Fiona from the Archie comics.");
+	initTipImage(player_id.spr_alts, 20, fa_left, 1, c_white, 0);
+	
+	initTipWords("Alt 22: Brown
+	Resembles Tails' appearance in the SATAM and the Adventures of Sonic the Hedgehog cartoon.");
+	initTipImage(player_id.spr_alts, 21, fa_left, 1, c_white, 0);
+	
+	initTipWords("Alt 23: Lime
+	Resembles Cosmo from Sonic X.");
+	initTipImage(player_id.spr_alts, 22, fa_left, 1, c_white, 0);
+	
+	initTipWords("Alt 24: Mix
+	This is what Tails' sprites are internally in the mod, but not recolored on default alt.");
+	initTipImage(player_id.spr_alts, 23, fa_left, 1, c_white, 0);
+	
 }
 
 
@@ -522,10 +536,50 @@ with phone{
 	 * put the version number and full date.
 	 */
 	 
-	/*Up Special (Flight)
-	~ Tails can rise with the jump button as an alternative to the special button.
-
-	*/
+	
+	initPatch("1.5", "July 22, 2021");
+	initPatchWords("General
+	~ 4 new alternate palettes have been added! The first two are courtesy of Zerks.
+	~ You can hold taunt.");
+	initPatchWords("Dash Attack (Running Kick)
+	~ A sound effect plays when Tails lands.");
+	initPatchWords("Neutral Special (Energy Shot)
+	~ Fixed the destroy effect being offset and being the default destroy effect.
+	~ A sound effect plays when the shot bounces off the stage.");
+	initPatchWords("Forward Special (Air Dive)
+	- Grabbing hitbox size reduced.
+	~ The throwing animation has been sped up (32 frames -> 22 frames). This also applies to when you grab Remote Robot.
+	- HSP during Dive: 10 -> 8.5");
+	
+	initPatch("1.4", "July 21, 2021");
+	initPatchWords("General
+	- Short Hop Speed: 4.95 -> 5
+	- Max Jump HSP: 5.5 -> 5
+	- Air Max Speed: 6 -> 5");
+	initPatchWords("Down Tilt
+	- Less speed is granted from edgecanceling the move.");
+	initPatchWords("Forward Air
+	- Angle: 40 -> 45
+	- Knockback Scaling: .7 -> .6");
+	initPatchWords("Down Air
+	- Landing Lag: 6 -> 7
+	~ Sourspot Angle: 65 -> 70
+	~ Sourspot Base Knockback: 5 -> 6
+	~ Sourspot Knockback Scaling: .45 -> .5");
+	initPatchWords("Back Air
+	- Landing Lag: 5 -> 6");
+	initPatchWords("Up Strong
+	- Sourspot Damage: 11 -> 9
+	- Sourspot Knockback Scaling: 1.0 -> 0.95
+	- Sweetspot Damage: 14 -> 11
+	- Sweetspot Knockback Scaling: 1.1 -> 1.05");
+	initPatchWords("Neutral Special
+	~ Reworked to how it was on Tails 1. Bombs were removed because they were far too powerful of a tool: they were fast and killed pretty early.");
+	initPatchWords("Forward Special
+	+ Added the ability to grab Remote Robot.
+	- Tails cannot use Air Dive again in the air after he used it from the ground.");
+	initPatchWords("Up Special
+	- VSP: -6 -> -4.5 (He goes up less high.)");
 	
 	initPatch("1.3", "July 13, 2021");
 	initPatchWords("General

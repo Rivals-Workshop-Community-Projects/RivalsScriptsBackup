@@ -76,10 +76,6 @@ if (taunt_down) && (debugMode == true || practice_mode) {
 meter_cur = clamp(meter_cur, 0, meter_max)
 
 if meter_cur < orb_value {
-    move_cooldown[AT_FSPECIAL] = 2;
-}
-
-if meter_cur < gun_value {
     move_cooldown[AT_NSPECIAL] = 2;
 }
 

@@ -91,8 +91,8 @@ if(floating){
 	}
 	
 	if(special_pressed){
-		can_fast_fall = 1;
-		floating = -1;
+		//can_fast_fall = 1;
+		//floating = -1;
 	}
     
     if(floatTimer > 0){
@@ -107,7 +107,6 @@ if(floating){
 
 if(state == PS_IDLE || state == PS_CROUCH || state == PS_JUMPSQUAT || state == PS_WALK || state == PS_DASH){
     floating = 0;
-    escapedPratfall = 0;
     move_cooldown[AT_USPECIAL] = 0;
     floatCancel = 0;
     freeFloat = 0;
@@ -134,7 +133,13 @@ with asset_get("oPlayer"){
 }
 
 with(obj_article2){
-	if (real(player_id.url == 1913517643) && place_meeting(x,y,other)){
+	
+	if (real(player_id.url == 1913517643) && place_meeting(x,y,other)){ //Pomme's song field
+	
+		if (other.in_songfield == 0){
+			other.in_songfield = 1;
+		}
+		
 		if (other.freeFloatStop){
 			if (other.up_down){
 				other.freeFloatStop = 0;
@@ -143,36 +148,39 @@ with(obj_article2){
 	
 	    other.freeFloat = 20;  //.33 secs of free float refunded each time song is entered
 	    
-	    
-	    
-	    
-	    if (other.state == PS_ATTACK_AIR && other.attack == AT_USPECIAL && other.window == 4){
-	    	if (other.floatRestore == 0 && other.jump_down) {
+	    if (other.state == PS_ATTACK_AIR && other.attack == AT_USPECIAL ){
+	    	
+	    	
+	    	if (other.floatRestore == 0 && other.window == 4 && other.window_timer == 7) {
 	    		other.floatRestore = 1;
 	    		other.floating = 0;
+		    	
 	    	}
 	    	
-	    	other.window = 5;
-	    	other.escapedPratfall = 1;
-	    	other.move_cooldown[AT_USPECIAL] = 99999;
-	    	
-	    } else if (other.state == PS_PRATFALL) {
-	    	if (other.floatRestore == 0 && other.jump_down) {
-	    		other.floatRestore = 1;
-	    		other.floating = 0;
+	    	if (other.window == 4 && other.window_timer == 7){
+		    	other.window = 5;
+		    	//other.state = PS_IDLE_AIR;
+		    	other.move_cooldown[AT_USPECIAL] = 99999;
+		    	
 	    	}
-	    
-	    	other.state = PS_IDLE_AIR;
-	    	other.escapedPratfall = 1;
-	    	other.move_cooldown[AT_USPECIAL] = 99999;
-	    }
+	    	
+	    } 
 	 
 	    
+	} else {
+		if (other.in_songfield == 1){
+			other.in_songfield = 0;
+		}
 	}
 
 }
 
-
+if (!instance_exists(obj_article2)){
+	
+	if (in_songfield == 1){
+		in_songfield = 0;
+	}
+}
 
 
 if (state == PS_RESPAWN){
@@ -217,10 +225,10 @@ if (voiceEnabled){
 	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 0);
 }
 
-
+/*
 if (freemd && groundLevel != y){
 	groundLevel = y;
-}
+}*/
 
 if (!moved_up && floating){
     if (free && place_meeting(x+hsp,y,asset_get("par_block"))){

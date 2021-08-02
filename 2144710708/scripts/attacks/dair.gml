@@ -14,7 +14,7 @@ set_window_value(AT_DAIR, 1, AG_WINDOW_SFX_FRAME, 11);
 set_window_value(AT_DAIR, 1, AG_WINDOW_VSPEED_TYPE, 0); // base cast moment
 set_window_value(AT_DAIR, 1, AG_WINDOW_VSPEED, -1);
 
-// active (strong)
+// active
 set_window_value(AT_DAIR, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DAIR, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DAIR, 2, AG_WINDOW_ANIM_FRAME_START, 3);
@@ -28,7 +28,6 @@ set_window_value(AT_DAIR, 4, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 
-// also endlag
 set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAME_START, 6);

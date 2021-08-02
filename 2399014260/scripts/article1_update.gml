@@ -222,7 +222,7 @@ switch(state){
 				if (window == 1 && window_timer == 1) sound_play(player_id.sfx_ssbu_rosa_swing_1);
 				if (window == 1 && window_timer == win_length) sound_play(player_id.sfx_ssbu_luma_shoot);
 				
-				player_id.phone_arrow_cooldown = 25;
+				player_id.phone_arrow_cooldown = max(player_id.phone_arrow_cooldown, 25);
 				
 				player_id.arrow_free_refresh = 0;
 				
@@ -373,7 +373,7 @@ if hit_lockout <= 0 {
         with other {
             //print_debug(`hit_${article}`);
             setState(PS_DEAD);
-            player_id.phone_arrow_cooldown = 25;
+            player_id.phone_arrow_cooldown = 60; // 25
             player_id.arrow_free_refresh = 0;
             hitstun = (other.kb_value * 4 * ((kb_adj - 1) * 0.6 + 1) + other.damage * 0.12 * other.kb_scale * 4 * 0.65 * kb_adj) + 12;
             hitstun_full = hitstun;

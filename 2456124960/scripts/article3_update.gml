@@ -77,7 +77,7 @@ if (state == 0){
     if (state_timer >= 8){
         state = 1;
         state_timer = 0;
-		hb = create_hitbox(AT_FSPECIAL, 1, x, y);
+		hb = create_hitbox(AT_FSPECIAL, 1 + (5 * frostbolt), x, y);
     }
 }
 
@@ -136,7 +136,7 @@ if (state == 1){
 		spr_dir *= -1;
 		myHSpeed *= 2;	
 		lifetime = 26;
-		hb = create_hitbox(AT_FSPECIAL, 1, x, y);
+		hb = create_hitbox(AT_FSPECIAL, 1 + (5 * frostbolt), x, y);
 		hb.player = parriedPlayer;
 		gotParried = 2;
 	}

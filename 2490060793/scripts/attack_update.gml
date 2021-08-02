@@ -35,55 +35,6 @@ if attack == AT_USTRONG {
     else height_timer = 0;
 }
 
-if attack == AT_NSPECIAL {
-    //dust vfx when grounded
-    if !free {
-        if window == 2 {
-            if state_timer mod 15 == 0 {
-                var xmod = random_func(0, 10, true) - 5;
-                spawn_base_dust(x + xmod, y, "dash", spr_dir);
-            }
-            if state_timer mod 11 == 0 {
-                var xmod = random_func(1, 10, true) - 5;
-                spawn_base_dust(x + xmod, y, "walk", spr_dir);
-            }
-        }
-        if window == 4 && window_timer == 1 {
-            spawn_base_dust(x, y, "dash_start", spr_dir);
-        }
-    }
-    
-    if window == 3 && window_timer == 1 {
-        meter_prev = meter_cur;
-        meter_cur -= gun_value;
-        meter_flash_timer = meter_flash_val;
-        meter_flash_timer = 15;
-    }
-    
-    if window == 2 {
-        //can_shield = true;
-        if special_down strong_down = true;
-        
-        if window_timer > 4 && meter_cur <= gun_value {
-            strong_down = false;
-        }
-        
-        if strong_charge != 0 && strong_charge mod 3 == 0 {
-            meter_cur -= nspec_value;
-        }
-        
-        set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 15 + floor(strong_charge/4));
-        set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8 + floor(strong_charge/12));
-        set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 3 + floor(strong_charge/8));
-        /*
-        if !special_down && window_timer > 3 {
-            window++;
-            window_timer = 0;
-        }
-        */
-    }
-}
-
 if attack == AT_DSPECIAL {
     if window_timer == 3 {
         meter_flipped = !meter_flipped;
@@ -96,7 +47,7 @@ if attack == AT_DSPECIAL {
     }
 }
 
-if attack == AT_FSPECIAL {
+if attack == AT_NSPECIAL {
     if window == 1 && window_timer == window_length {
         var spawn_x = x + spr_dir*60;
         var orb = instance_create(spawn_x, y - 40, "obj_article1");
@@ -105,43 +56,28 @@ if attack == AT_FSPECIAL {
         meter_cur -= orb_value;
         meter_flash_timer = meter_flash_val;
         if !free spawn_base_dust(x, y, "dash_start", spr_dir);
-        //var col_r = get_color_profile_slot_r(alt_cur, 3);
-        //var col_g = get_color_profile_slot_g(alt_cur, 3);
-        //var col_b = get_color_profile_slot_b(alt_cur, 3);
-        //set_article_color_slot(3, col_r, col_g, col_b, 1);
     }
-    /*
-    if window == 2 && window_timer == 1 {
-        if free {
-            vsp -= 8;
-        }
-    }
-    */
 }
 
-/*
-if hitstop == hitstop_full-1 {
-    meter_cur += hit_value;
-}
-*/
 
-if attack == AT_USPECIAL {
-    if state_timer == 1 upb_coords = [x, y - 100];
+if attack == AT_FSPECIAL {
+    if state_timer == 1 fspec_coords = [x + 30*spr_dir, y];
     else if window == 1 {
-        if up_down && !down_down upb_coords[1] -= 3;
-        else if down_down && !up_down upb_coords[1] += 3;
+        if up_down && !down_down fspec_coords[1] -= 2;
+        else if down_down && !up_down fspec_coords[1] += 2;
         
         if left_down && !right_down {
-            upb_coords[0] -= 3;
+            fspec_coords[0] -= 4;
         } else if right_down && !left_down {
-            upb_coords[0] += 3;
+            fspec_coords[0] += 4;
         }
     }
     
     
     
     if window == 1 {
-        can_shield = true;
+        has_snapped = false;
+        //can_shield = true;
         if window_timer > 4 && meter_cur <= 0 {
             window++;
             window_timer = 0;
@@ -150,20 +86,22 @@ if attack == AT_USPECIAL {
         hsp = clamp(hsp, -4, 4)
         vsp = clamp(vsp, -4, 4)
         if strong_charge != 0 && strong_charge mod 2 == 0 {
-            meter_cur -= upb_value;
+            meter_cur -= fspec_value;
         }
-        set_window_value(AT_USPECIAL, 4, AG_WINDOW_HSPEED, 15 + floor(strong_charge/4));
+        set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED, 15 + floor(strong_charge/8));
     }
     can_move = false;
     can_wall_jump = true
     if special_down && meter_cur > 0 strong_down = true;
     
     if window == 3 && window_timer == window_length-1 {
-        x = upb_coords[0]
-        y = upb_coords[1]
+        x = fspec_coords[0]
+        y = fspec_coords[1]
         //x -= spr_dir*50
     }
     
+    //change spr_dir
+    /*
     if window == 1 || (window == 2 && window_timer == window_length) {
         if left_down && !right_down {
             spr_dir = -1;
@@ -171,6 +109,7 @@ if attack == AT_USPECIAL {
             spr_dir = 1;
         }
     }
+    */
     
     if window == 5 && window_timer == 1 {
         hsp *= 0.2
@@ -178,10 +117,57 @@ if attack == AT_USPECIAL {
     
     if window >= 5 {
         if !free || has_hit {
-            set_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE, 0);
+            set_window_value(AT_FSPECIAL, 6, AG_WINDOW_TYPE, 0);
             //can_jump = true;
             //can_attack = true;
-        } else reset_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE);
+        } else reset_window_value(AT_FSPECIAL, 6, AG_WINDOW_TYPE);
+        
+        if has_hit can_jump = true;
+    }
+    
+    //40px ledge snap
+    if (window == 4 || window == 5) && !has_snapped && free && place_meeting(x + hsp, y, asset_get("par_block")) {
+        for (var i = 0; i < 40; i++) {
+            if (!place_meeting(x + hsp, y-(i+1), asset_get("par_block"))) {
+                y -= i;
+                has_snapped = true;
+                break;
+            }
+        }
+    }
+}
+
+if attack == AT_USPECIAL {
+    can_wall_jump = true;
+    
+    if window == 1 {
+        uspec_pratfall = true;
+    }
+    if window == 3 && special_pressed {
+        uspec_pratfall = false;
+    }
+    
+    if window == 4 && window_timer == 1 sound_play(asset_get("sfx_ori_stomp_spin"))
+    
+    if uspec_pratfall && window == 3 && window_timer == window_length {
+        window = 8;
+        window_timer = 0;
+    }
+    
+    if window == 5 {
+        if !free {
+            window = 7;
+            window_timer = 0;
+            destroy_hitboxes()
+        }
+    }
+    if window == 7 && window_timer == 0 {
+        destroy_hitboxes()
+    }
+    
+    if window == 6 && window_timer > 30 {
+        can_jump = true;
+        can_shield = true;
     }
 }
 
@@ -249,16 +235,7 @@ if attack == AT_TAUNT_2 {
     }
 }
 
-/*
-if attack == AT_JAB {
-    if window == 3 && special_pressed {
-        set_attack(AT_FSPECIAL)
-    }
-}
-*/
-
 if window <= 2 user_event(0)
-
 #define spawn_base_dust(x, y, name, dir)
 //This function spawns base cast dusts. Names can be found below.
 var dlen; //dust_length value

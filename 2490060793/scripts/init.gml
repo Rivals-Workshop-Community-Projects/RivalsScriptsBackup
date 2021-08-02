@@ -47,21 +47,18 @@ limit_circle_alpha = 0;
 limit_circle_col = c_yellow;
 
 orb_value = 20;
-gun_value = 4;
 hit_value = 7;
 reduce_value = 7;
-upb_value = 1;
-nspec_value = 1;
+fspec_value = 1;
 
 has_reduced = false;
 has_increased = false
 
-upb_coords = [x,y];
+fspec_coords = [x,y];
 
 timer = 0;
 height_timer = 0;
 
-nspec_vfx = hit_fx_create(sprite_get("nspecial_vfx"), 9);
 orb_explosion_vfx = hit_fx_create(sprite_get("orb_explosion_vfx"), 14);
 
 hurtbox_spr = asset_get("ex_guy_hurt_box");
@@ -164,3 +161,36 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
+
+/*
+rune O desc="At full meter, press parry + taunt to unleash a powerful attack."
+rune O type="A"
+rune N desc="You can have 3 orbs out at once"
+rune N type="O"
+rune M desc="Press down + taunt to charge meter"
+rune M type="A"
+rune L desc="Sweetspots stun."
+rune L type="H"
+rune K desc="All special attacks are more powerful at full meter."
+rune K type="O"
+rune J desc="FSPECIAL uses less meter and travels further."
+rune J type="A"
+rune I desc="Hitting orbs with meter attacks creates much stronger hitboxes."
+rune I type="H"
+rune H desc="DSPECIAL orb hitbox size increased."
+rune H type="O"
+rune G desc="Charging strongs increases meter."
+rune G type="A"
+rune F desc="Orbs can't be destroyed by opponents."
+rune F type="O"
+rune E desc=""
+rune E type="R"
+rune D desc="FSPECIAL has a hitbox on the orb when it spawns."
+rune D type="R"
+rune C desc="NSPECIAL travels faster and uses less meter"
+rune C type="R"
+rune B desc="USPECIAL aiming speed increased and aiming starts centered on current position."
+rune B type="A"
+rune A desc="Meter gain rate increased."
+rune A type="A"
+*/

@@ -16,18 +16,18 @@ set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 
 
 //active
-set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_HAS_SFX, true);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_SFX, sound_get("utilt"));
 
 //hold
-set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 //endlag
-set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 25);
+set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAME_START,5);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, true);

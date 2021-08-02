@@ -7,7 +7,7 @@ set_attack_value(AT_USPECIAL, AG_OFF_LEDGE, 1);
 //usps1 usps2 usph  uspac uspe  uspr
 //0-0:1 1-2:2 3-3:1 4-5:2 6-7:2 8-8:1
 
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 6);//7
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 1);
 

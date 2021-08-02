@@ -1111,7 +1111,7 @@ switch (attack) { //open switch(attack)
 						dig.image_xscale = (1 + runeG / 3);
 						if (special_down) dig.vsp = -4;
 						else dig.vsp = -2;
-						dig.hsp = right_down - left_down;
+						dig.hsp = (right_down - left_down) * 2;
 						
 						
 						spawn_hit_fx( x, y, 193);
@@ -1850,6 +1850,10 @@ switch (attack) { //open switch(attack)
 			
 			case 2:
 				//uncharged ver active
+				
+				//can airdodge if on the ground.
+				can_airdodge = (!free && window_timer > 1);
+				
 				if (window_timer == 1 && hitpause == false) {
 					
 					
@@ -1994,6 +1998,9 @@ switch (attack) { //open switch(attack)
 			break;
 			
 			case 2:
+				//can airdodge if on the ground.
+				can_airdodge = (!free && window_timer > 1);
+				
 				//uncharged ver active
 				if (window_timer == 1 && hitpause == false) {
 					

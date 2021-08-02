@@ -68,4 +68,6 @@ sprite_change_offset("bair_proj", 35, 35);
 sprite_change_offset("feri_costume_link", 84, 114);
 sprite_change_offset("kirby_ability", 48, 64);
 
+sprite_change_offset("fs", 50, 280);
+
 set_victory_theme(sound_get("victory_music"));

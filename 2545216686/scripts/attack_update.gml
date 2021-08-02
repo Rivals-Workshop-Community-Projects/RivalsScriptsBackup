@@ -19,10 +19,11 @@ if (attack == AT_DATTACK){
 		}
 	}
 	if (window == 3){
-		if (image_index == 6){
+		if (image_index == 5){
 			tailsdattackvar++;
 			if (tailsdattackvar == 1){
-				hsp = 2 * spr_dir
+				sound_play(sfx_land);
+				hsp = 6.5 * spr_dir
 			}
 		}
 	}
@@ -64,7 +65,7 @@ if (attack == AT_DTILT){
 			if (hsp < -9){ //>
 				hsp = -10
 			}
-			hsp *= 0.725
+			hsp *= 0.55
 		}
 	}
 	if (has_hit == true && was_parried == false){
@@ -115,6 +116,7 @@ if (attack == AT_DSTRONG){
 }
 
 //Neutral Special: Regular Bombs
+/*
 if (attack == AT_NSPECIAL){
 	if (window == 1){
         if (window_timer == 4){
@@ -124,6 +126,53 @@ if (attack == AT_NSPECIAL){
     if (window == 3){
         move_cooldown[AT_NSPECIAL] = 120;
     }
+}
+*/
+if (attack == AT_NSPECIAL){
+	if (window == 1){
+		nspec_air_window_timer = window_timer
+		if (window_timer == 26){
+			create_hitbox(AT_NSPECIAL, 1, x + 20 * spr_dir, y - 12);
+			window++;
+			window_timer = 0
+		}
+	} else {
+		nspec_air_window_timer = 0
+	}
+	if (window == 2){
+		move_cooldown[AT_NSPECIAL] = 150;
+		move_cooldown[AT_NSPECIAL_AIR] = 150;
+	}
+}
+if (attack == AT_NSPECIAL_AIR){
+	if (window == 1){
+		nspec_air_window_timer = window_timer
+		if (window_timer == 0 || window_timer == 1){
+			sound_stop(sfx_flight);
+			sound_stop(sfx_flight_cheat);
+		}
+		if (window_timer == 26){
+			create_hitbox(AT_NSPECIAL_AIR, 1, x + 20 * spr_dir, y + 6);
+			window++;
+			window_timer = 0
+			vsp = -4
+			hsp = -6 * spr_dir
+		}
+	}
+	if (window == 2){
+		move_cooldown[AT_NSPECIAL] = 150;
+		move_cooldown[AT_NSPECIAL_AIR] = 150;
+	}
+}
+if (attack == AT_NSPECIAL_AIR){
+	if (!free){
+		if (window == 1){
+			set_attack(AT_NSPECIAL);
+			window_timer = nspec_air_window_timer
+		} else {
+			set_state(PS_LAND);
+		}
+	}
 }
 
 //Forward Special: Air Dive
@@ -149,7 +198,7 @@ if (attack == AT_FSPECIAL){
 	if (window == 2){
 		if (window_timer == 11){
 			vsp = -7
-			hsp = 10 * spr_dir
+			hsp = 8.5 * spr_dir
 			window = 3
 			window_timer = 0
 		}
@@ -161,6 +210,9 @@ if (attack == AT_FSPECIAL){
 				window_timer = 0
 				fspec_loop++;
 			}
+		}
+		if (tailsdidhesidebrobot == true){
+			set_attack(AT_FSPECIAL_AIR);
 		}
 	}
 	if (window == 4){
@@ -225,9 +277,29 @@ if (attack == AT_FSPECIAL_2 && instance_exists(grabbed_player_obj)) {
 					move_cooldown[AT_FSPECIAL] = 9999999999;
 				}
 			} else if (phone_dive == 1){
-				move_cooldown[AT_FSPECIAL] = 0;
+				//move_cooldown[AT_FSPECIAL] = 0;
+				move_cooldown[AT_FSPECIAL] = 9999999999;
 			}
 		}		
+	}
+	move_cooldown[AT_FSPECIAL] = 9999999999;
+}
+
+if (attack == AT_FSPECIAL_AIR){
+	if (window == 2){
+		if (window_timer == 31){
+			window = 3
+			window_timer = 1
+		}
+	}
+	if (window == 3){
+		sound_stop(sfx_flight);
+		if (window_timer == 0){
+			window_timer++;
+		}
+		if (window_timer == 1 && !hitpause){
+			create_hitbox(AT_FSPECIAL_AIR, 2, x + 20 * spr_dir, y - 35);
+		}
 	}
 }
 
@@ -251,7 +323,7 @@ if (attack == AT_USPECIAL){
 			hsp = -7
 		}
 		if (jump_pressed || jump_down || special_pressed || special_down){
-			vsp = -6
+			vsp = -4.5
 			aerialattack = 0
 		} else {
 			vsp = vsp + 0.2
@@ -344,9 +416,15 @@ if (attack == AT_DSPECIAL_2){
     }
 }
 
-
-
-
+if (attack == AT_TAUNT){
+	if (window == 3){
+		if (window_timer == 5){
+			if (taunt_down){
+				window_timer = 4
+			}
+		}
+	}
+}
 
 //puttin old ustrong code here for ref in case i need it lol
 //if (attack == AT_USTRONG){

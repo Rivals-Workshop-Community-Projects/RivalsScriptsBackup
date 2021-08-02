@@ -11,6 +11,7 @@ if lockon == 1 && my_hitboxID.type == 1 && move_cooldown[AT_FSPECIAL_2] == 0 && 
 	shake_camera(4,10)
 	hitstop += 4
 	hit_player_obj.hitstop += 4
+	sound_stop(sound_get("RI"));
 	sound_play(sound_get("RI"));
 	sound_play(sound_get("SpaceCut"));
 	hhalo = 240
@@ -46,9 +47,9 @@ with hit_player_obj {
 spawn_hit_fx (hit_player_obj.x - (10 * spr_dir), hit_player_obj.y - 40, 303)
 if my_hitboxID.hitstun_factor != 6 {
 if get_gameplay_time() % 2 == 0 {
-sound_play(sound_get("RI"),false,noone, 0.4 + my_hitboxID.damage/20)
+sound_play(sound_get("RI"),false,noone, 0.3 + my_hitboxID.damage/20)
 } else {
-sound_play(sound_get("RI2"),false,noone, 0.6 + my_hitboxID.damage/20)	
+sound_play(sound_get("RI2"),false,noone, 0.35 + my_hitboxID.damage/20)	
 }
 }
 }	

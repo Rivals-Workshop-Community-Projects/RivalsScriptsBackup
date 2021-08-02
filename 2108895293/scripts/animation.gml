@@ -7,6 +7,18 @@ switch (state){
 }
 
 
+if (state == PS_LANDING_LAG){
+	if (prev_state == PS_ATTACK_GROUND || prev_state == PS_ATTACK_AIR){
+		if (attack == AT_USPECIAL){
+			if (usp_land){
+				sprite_index = sprite_get("land_uspecial")
+				image_index = 0 + state_timer * 5 / 28;
+			}
+		}
+	}
+}
+
+
 if (lu_ds){
 	if (lu_ds_timer<lu_ds_max){
 		lu_ds_timer++;

@@ -59,9 +59,9 @@ sprite_change_offset("nspecial_rock_side", 0, 40);
 sprite_change_offset("nspecial_rock_mask", 48, 126);
 sprite_change_offset("nspecial_rock_side_mask", 0, 40);
 sprite_change_offset("nspecial_rock_hitbox", 48, 126);
-sprite_change_offset("nspecial_rock_side_hitbox", 0, 40);
+sprite_change_offset("nspecial_rock_side_hurt", 0, 40);
 sprite_change_collision_mask("nspecial_rock_hitbox", 1, 0, 0, 0, 0, 0, 0);
-sprite_change_collision_mask("nspecial_rock_side_hitbox", 1, 0, 0, 0, 0, 0, 0);
+sprite_change_collision_mask("nspecial_rock_side_hurt", 1, 0, 0, 0, 0, 0, 0);
 
 //Hit FX
 

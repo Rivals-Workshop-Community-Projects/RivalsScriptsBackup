@@ -13,9 +13,13 @@ switch (my_hitboxID.attack){
 			sound_play(asset_get("mfx_ring_bell"));
 		}
 		break;
-	case AT_NSPECIAL:
-		shake_camera( 6, 3 )
+	case AT_FSPECIAL_AIR:
+		my_hitboxID.RemoteRobotThrownWithFspecHitSomeone = true
+		spawn_hit_fx( hit_player_obj.x, hit_player_obj.y - 12, 143);
+		create_hitbox(AT_DSPECIAL, 2, hit_player_obj.x, hit_player_obj.y - 12);
+		//sound_play(sfx_krtd_bomb_explode)
 		sound_play(asset_get("sfx_ell_big_missile_fire"))
+		shake_camera( 6, 3 )
 		break;
 	case AT_DSPECIAL:
 		if (my_hitboxID.hbox_num == 3){

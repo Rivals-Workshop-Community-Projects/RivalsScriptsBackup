@@ -25,7 +25,10 @@ if (my_hitboxID.attack == AT_FSPECIAL){
 
 }
 
-
+if (my_hitboxID.attack == AT_NSPECIAL)
+{
+	sound_play(asset_get("mfx_ring_bell"));
+}
 
 
 

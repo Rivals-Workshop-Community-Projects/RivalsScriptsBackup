@@ -26,15 +26,21 @@ if(state_timer == 1)
                 case 4: //rock
                     hbox_kbscale = 0.7; break;
             }
-            set_hitbox_value(attack, atkHitbox, HG_BASE_KNOCKBACK, floor(get_hitbox_value(attack, atkHitbox, HG_BASE_KNOCKBACK)*hbox_kbscale));
+            set_hitbox_value(attack, atkHitbox, HG_BASE_KNOCKBACK, ceil(get_hitbox_value(attack, atkHitbox, HG_BASE_KNOCKBACK)*hbox_kbscale));
             set_hitbox_value(attack, atkHitbox, HG_KNOCKBACK_SCALING, get_hitbox_value(attack, atkHitbox, HG_KNOCKBACK_SCALING)*hbox_kbscale);
-            set_hitbox_value(attack, atkHitbox, HG_DAMAGE, floor(get_hitbox_value(attack, atkHitbox, HG_DAMAGE)*hbox_dmgscale));
+            set_hitbox_value(attack, atkHitbox, HG_DAMAGE, ceil(get_hitbox_value(attack, atkHitbox, HG_DAMAGE)*hbox_dmgscale));
         }
     }
 }
 
 
 if (attack == AT_NSPECIAL){
+    if (free && !nspec_stall)
+    {
+        if(vsp > -3)
+            vsp /= 2;
+        nspec_stall = true;
+    }
     if (window == 1)
         aim_angle = (spr_dir - 1) * 180 / 2;
 
@@ -202,7 +208,7 @@ if (attack == AT_DSPECIAL){
         if (get_gameplay_time() mod 4 == 0){
             instance_create( x, y, "obj_article1" );
         }
-        if(window_timer > 10)
+        if(window_timer > 5)
         {
             can_attack = true;
             can_special = true;

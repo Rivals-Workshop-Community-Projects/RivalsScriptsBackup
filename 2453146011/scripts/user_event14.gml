@@ -683,6 +683,9 @@ user_event(15); // Char specific init
 
 phone_inited = true;
 
+// Piggybacking here for lite-mode only ver
+//lite = true;
+
 
 
 #define initIndexes

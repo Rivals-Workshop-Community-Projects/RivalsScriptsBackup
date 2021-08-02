@@ -7,18 +7,37 @@ if (attack == AT_JAB && was_parried = true) {
     was_parried = false;
 }
 
+if state == PS_HITSTUN {
+		reset_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS);
+		reset_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH);
+		reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK);
+		reset_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX_FRAME);
+}
 
 if attack == AT_FSPECIAL_AIR && window == 1 && venom_timer > 0 {
 	attack_down = special_down;
+	if lasercharged = true {
+		attack = AT_FSPECIAL_2;
+		lasercharged = false;
+	}
 } else {
 	special_down = special_down;
 }
 
-if attack == AT_FSPECIAL_AIR && window == 1 && strong_charge > 20 {
+if attack == AT_FSPECIAL_AIR && venom_stack = 3 && strong_charge > 30 && shield_pressed && has_airdodge	= true {
+set_state( PS_PARRY );
+lasercharged = true;
+            sound_play(sound_get("lasercharge"));
+}
+
+if attack == AT_FSPECIAL_AIR && window == 1 && ((strong_charge > 20 && !special_down) || (strong_charge > 40 && venom_stack != 3)) {
 	window = 3;
 	window_timer = 0;
 	set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 4);
+} else if venom_stack = 3 && strong_charge > 59 {
+    attack = AT_FSPECIAL_2;
 }
+
 
 if (attack == AT_NSPECIAL && window ==  1 && window == 1 && short != 1){
 	if (venom_current = 3){
@@ -54,7 +73,7 @@ if attack == AT_NSPECIAL && window == 5 && window_timer == 10 {
 	short = 1;
 	venom_stack = 0;
 	venom_recharge_active = true;
-} else if state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND {
+} else if window == 6 && window_timer == 24 {
 				reset_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS);
 		reset_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH);
 		reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK);

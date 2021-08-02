@@ -3,12 +3,123 @@
 // muno phone support (has to be a the top, unlike other supports)
 user_event(14);
 
+// dialogue buddy support thing
+if(variable_instance_exists(id,"diag"))
+{
+//Change their name whenever
+    diag_name = "Owen"
+//  ADDING REGULAR DIALOGUE
+
+    //Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!
+    diagchoice = [
+    "hi",
+	"can i kill you real quick",
+	"coconut",
+	":)",
+	"i am about to commit a war crime",
+	"steam is down for routine maintenence every tuseday",
+	"mom of mia",
+	"you have forfeited your life privileges",
+	"i don't see any cringe around he-",
+	"got milk?",
+	"la creatura",
+	"fuck",
+	"in a moment i will commit an action that you won't consider very ethical of me",
+	"kill",
+	"im on xbox",
+	"did you know that garry's mod works with the kinect",
+	"u good?",
+	"ASMR | **INSANE GUN SOUNDS** For SLEEP And Relaxation Whispers , Tapping . Soothing Triggers Etc..",
+	"we engage in a mild amount of tomfoolery",
+	"we do a little trolling",
+	"did you know pomme's dacus allows her to powerslide like a true popstar",
+	"can you parry boot in 100 ping",
+	"your bingus is in another castle",
+	"what is wrong with you",
+	"hold on i have the perfect funny message for this situation",
+	"ujiohiugyihlh;;'jhu'jh",
+	"adapt deez nuts lmao",
+	"chuck norris doesn't turn on the shower",
+	"that is one of the worst takes i have ever seen",
+	"*crys* why...",
+	"cry about it",
+	"adapt",
+	"will you help me bring chaos to the world",
+	"79 6f 75 20 6a 75 73 74 20 77 61 73 74 65 64 20 79 6f 75 72 20 74 69 6d 65",
+	"the most optimal decision is to turn off pc and touch grass", // -gengis
+	"do you like gus from half life",
+	"we do quite a considerable amount of mental trickery and mockery of those who are unfortunate enough to fall victim to our clever little trap of social teasing",
+	"i've fucking had it with you",
+	"bruh",
+	"you look like a sonic oc",
+	"ddeath",
+	"h",
+	"have you seen my friend r",
+	"my fps is too high",
+	"hello, how are you? why are you looking at me like that?",
+	"42 Cheesy Foods You Need To Eat In Your Lifetime | The Ultimate List",
+	"zoo wee mama",
+	"you washed man",
+	"you, me, gas station. what are we getting for dinner? sushi of course.",
+	"did you know eliana had an infinite for 6 months"
+	]
+
+//  Specific Character Interactions
+
+//  Regular dialogue
+    if(otherUrl == "2310580951" && diag != "2310580951") //Change the url into a specific character's
+    { // 64 mario
+        diag = "hi sakk";
+    }
+	
+    if(otherUrl == "2234517080" && diag != "2234517080") //Change the url into a specific character's
+    { // rocky
+        diag = "blaboa";
+    }
+	
+    if(otherUrl == "2202646888" && diag != "2202646888") //Change the url into a specific character's
+    { // eggdog
+        diag = "so true";
+    }
+	
+//  NRS/3-Part dialogue
+    if(otherUrl == url) //Change the url into a specific character's
+    { // owen
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                diag_nrs_diag = [
+                "hi",
+                "hi",
+                "ok lets fight"]
+            }
+        }
+    }
+}
+
 // afk timer thing
 if (state_timer > afk_timer) && (state == PS_IDLE) {
 	is_afk = true;
 }
 else {
 	is_afk = false;
+}
+
+
+
+// special taunt for specific alts
+if (get_player_color( player ) == 30) {
+	set_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH, 50);
+	set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("hecu_letsgo"));
+}
+
+if (get_player_color( player ) == 6) {
+	if (window == 1) {
+		set_window_value(AT_TAUNT, 1, AG_WINDOW_HAS_SFX, 0)
+	}
 }
 
 

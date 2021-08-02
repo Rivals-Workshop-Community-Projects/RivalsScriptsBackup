@@ -47,7 +47,7 @@ set_num_hitboxes(AT_FSPECIAL_AIR, 4);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_WINDOW_CREATION_FRAME, 0);
-set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_LIFETIME, 20);
+set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_LIFETIME, 25);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HITBOX_X, 56);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_WIDTH, 50);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HEIGHT, 50);
@@ -64,7 +64,7 @@ set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_PROJECTILE_MASK, sprite_get("fspecial_proj1"));
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_PROJECTILE_DESTROY_EFFECT, 21);
-set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_PROJECTILE_HSPEED, 12);
+set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_PROJECTILE_HSPEED, 10);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HIT_SFX, asset_get("sfx_absa_singlezap1"));
 
 //mid projectile

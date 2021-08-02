@@ -1,30 +1,31 @@
 ///
 shader_start();
-    if ncharge >= 20 && ncharge < 60 {
-         draw_sprite_ext(sprite_get("sno1"), 0, temp_x + 35, temp_y-18, 2, 2, 0, -1, 1);    
-    }
+//    if ncharge >= 20 && ncharge < 60 {
+//         draw_sprite_ext(sprite_get("sno1"), 0, temp_x + 35, temp_y-18, 2, 2, 0, -1, 1);    
+//    }
+//    
+//     if ncharge >= 60 {
+//         draw_sprite_ext(sprite_get("sno2"), 0, temp_x + 35, temp_y-18, 2, 2, 0, -1, 1);    
+//    }
     
-     if ncharge >= 60 {
-         draw_sprite_ext(sprite_get("sno2"), 0, temp_x + 35, temp_y-18, 2, 2, 0, -1, 1);    
-    }
     
-    
-
-
+draw_sprite_ext(sprite_get("flake3"),  26  , temp_x+ 68, temp_y -12,1,1,0,-1,0.6);
+draw_sprite_ext(sprite_get("flake3"),  0  , temp_x+ 68, temp_y -12,1,1,0,-1,0.7  );
     
     if timefreeze < 1 {
-        draw_sprite(sprite_get("flake3"),  13*timestop / 100   , temp_x+ 40, temp_y -52  );
+        draw_sprite(sprite_get("flake3"),  26*timestop / 100   , temp_x+ 68, temp_y -12  );
     }
     
     
     if timefreeze > 1 {
-        draw_sprite(sprite_get("flake3"),   14*timefreeze/ 360  , temp_x+ 40, temp_y -52  );
+        draw_sprite(sprite_get("flake3"),  26*timefreeze/ 360  , temp_x+ 68, temp_y -12  );
     }
     
     
 if timestop >= 100 {
-        draw_sprite(sprite_get("flake3"),  13  , temp_x+ 40, temp_y -52  );
+        draw_sprite(sprite_get("flake3"),  26  , temp_x+ 68, temp_y -12  );
 }    
+
 
 
 if introtimer > 0 {

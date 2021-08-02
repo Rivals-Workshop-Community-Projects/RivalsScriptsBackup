@@ -26,7 +26,7 @@ set_color_profile_slot_range( 5, 1, 1, 30 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 22 );
+set_num_palettes( 24 );
 
 // Clairvoyant
 set_color_profile_slot( 1, 0, 43, 37, 51 ); //Shirt
@@ -195,6 +195,22 @@ set_color_profile_slot( 21, 2, 133, 237, 235 ); //Shorts
 set_color_profile_slot( 21, 3, 246, 213, 121 ); //N+M Light
 set_color_profile_slot( 21, 4, 194, 133, 11 ); //Necklace+Magic
 set_color_profile_slot( 21, 5, 135, 65, 8 ); //N+M Dark
+
+// whitemage
+set_color_profile_slot( 22, 0, 201, 190, 190 ); //Shirt
+set_color_profile_slot( 22, 1, 201, 134, 8 ); //Hair
+set_color_profile_slot( 22, 2, 194, 11, 11 ); //Shorts
+set_color_profile_slot( 22, 3, 246, 250, 230 ); //N+M Light
+set_color_profile_slot( 22, 4, 217, 217, 175 ); //Necklace+Magic
+set_color_profile_slot( 22, 5, 176, 169, 124 ); //N+M Dark
+
+// riptide
+set_color_profile_slot( 23, 0, 232, 188, 77 ); //Shirt
+set_color_profile_slot( 23, 1, 71, 38, 24 ); //Hair
+set_color_profile_slot( 23, 2, 0, 171, 235 ); //Shorts
+set_color_profile_slot( 23, 3, 250, 154, 80 ); //N+M Light
+set_color_profile_slot( 23, 4, 237, 94, 43 ); //Necklace+Magic
+set_color_profile_slot( 23, 5, 191, 60, 13 ); //N+M Dark
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -68,6 +68,19 @@ if (state == 1){ //idle
 	//number of anim frame in the duration /
 	//time it takes
 	
+		if (state_timer %6 == 0){
+			var dsp_particle_rand = random_func( 0, 2, true )
+			if (dsp_particle_rand == 0){
+			spawn_hit_fx( x-50+random_func( 1, 100, true ), y-50+random_func( 4, 100, true ), player_id.particle1 );
+			}
+			if (dsp_particle_rand == 1){
+			spawn_hit_fx( x-50+random_func( 2, 100, true ), y-50+random_func( 5, 100, true ), player_id.particle2 );
+			}
+			if (dsp_particle_rand == 2){
+			spawn_hit_fx( x-50+random_func( 3, 100, true ), y-50+random_func( 6, 100, true ), player_id.particle3 );
+			}
+		}
+	
 	//this will remove the sentry when it detects clairen field
 	if (position_meeting(x,y, asset_get("plasma_field_obj"))){
 		state = 2; //go to disappearing state
@@ -94,7 +107,7 @@ if (state == 1){ //idle
 
 // // IDLE EXPIRED
 var idle_max = 25; //amount of idle loop it can do until it ends
-if (idle_cycle == idle_max && state == 1 || hit_wall){
+if (idle_cycle == idle_max && state == 1/* || hit_wall*/){
 	state = 2; //go to disappearing state
 	state_timer = 0; //reset timer manually
 	sound_play(sound_get("twinkles"));

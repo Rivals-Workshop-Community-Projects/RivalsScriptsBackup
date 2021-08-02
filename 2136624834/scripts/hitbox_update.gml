@@ -212,7 +212,7 @@ if attack == AT_NSPECIAL  {
 	
         
 	if get_gameplay_time() % 6 == 0 && !free {
-	    sound_play(sound_get("ballroll"));
+	    sound_play(sound_get("ballroll"),false,noone,0.6);
 	}
 	
 	if y > room_height {
@@ -224,6 +224,10 @@ if attack == AT_NSPECIAL  {
 
 if attack == AT_FSPECIAL {
 	
+	if player_id.state_cat == SC_HITSTUN {
+		destroyed = 1
+	}
+	
 	if player_id.fstronghit > 3{
 		destroyed = 1
 	}
@@ -233,7 +237,7 @@ if attack == AT_FSPECIAL {
 	spawn_hit_fx( x , y + 10 - random_func(5, 20, true) , tauntpar1 )
 	 }
 	 
-		x = player_id.x + ((hitbox_timer * 8) * spr_dir)
+		x = player_id.x + ((hitbox_timer * 11) * spr_dir)
 		y = player_id.y - 40 + player_id.fver * 6
 		
 		if player_id.window > 2 {

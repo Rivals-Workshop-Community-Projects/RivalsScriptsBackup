@@ -78,7 +78,7 @@ switch(state){
 
 		if player_id.nspecial_buffer == 6{
 			setState(3);
-			track_special_held = 1;
+			track_special_held = 0;
 		}
 		
 		break;
@@ -118,7 +118,7 @@ switch(state){
 				proj_angle -= lerp(30, 60, state_timer / 30);
 				if state_timer == bounce_charge_time{
 					setState(2);
-					bounce_charge_time = min(bounce_charge_time + 10, 60);
+					// bounce_charge_time = min(bounce_charge_time + 10, 60);
 				}
 			}
 		}
@@ -336,6 +336,11 @@ if y != clamped_y{
 
 #define hitbox_detection //BY SUPERSONIC
 //estimated like 80% accurate imo
+
+if hit_lockout_timer{
+	hit_lockout_timer--;
+	return;
+}
  
 var article = self;
 var ret = 0;
@@ -404,6 +409,8 @@ if instance_exists(currentHighestPriority) with currentHighestPriority {
         else orig_knock = other.kb_value + other.damage * other.kb_scale * 0.12 * kb_adj;
         orig_knock = 22;
         kb_dir = get_hitbox_angle(other);
+        
+        hit_lockout_timer = 15;
         
         var hitbox = other;
         var muno_angle = 0;

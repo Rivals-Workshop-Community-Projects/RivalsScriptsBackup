@@ -400,6 +400,7 @@ switch (attack)
         icicle.tint = TransIcicleTint();
     }
     icicle.index = nspecFired+1;
+    if (aura > 0) icicle.smash = true;
     sound_play(asset_get("sfx_swipe_medium1"));
     return icicle;
 }

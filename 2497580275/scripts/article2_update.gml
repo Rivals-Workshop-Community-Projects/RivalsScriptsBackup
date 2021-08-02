@@ -51,8 +51,8 @@ switch(state)
     break;
 
     case 1: //return to player.
-        hsp -= (x - player_id.x) / 200;
-        vsp -= (y - player_id.y+10) / 200;
+        hsp -= floor(x - player_id.x) / 200;
+        vsp -= floor(y - player_id.y+10) / 200;
         if(player_id.parasiteLevel != 2 || player_id.parasiteLevel != 1 && player_id.parasiteTimer2 > 0)
             player_id.move_cooldown[AT_NSPECIAL] = 20;
             
@@ -70,6 +70,7 @@ switch(state)
         spawn_hit_fx(x, y, 301);
         player_id.move_cooldown[AT_NSPECIAL] = 120;
         instance_destroy();
+    break;
     
     case 4://Combust
         if(player_id.parasiteLevel == 2 || player_id.parasiteLevel == 1 && player_id.parasiteTimer2 > 0)
@@ -94,6 +95,5 @@ switch(state)
             }
         }
         instance_destroy();
-
     break;
 }

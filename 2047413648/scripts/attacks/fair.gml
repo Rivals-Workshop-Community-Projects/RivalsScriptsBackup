@@ -25,7 +25,7 @@ set_window_value(AT_FAIR, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAME_START, 9);
-
+set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_FAIR, 8);
 
@@ -164,7 +164,7 @@ set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_GROUP, 3);
 set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, 305);
-set_hitbox_value(AT_FAIR, 3, HG_HITSTUN_MULTIPLIER, .7);
+set_hitbox_value(AT_FAIR, 3, HG_HITSTUN_MULTIPLIER, 1);
 
 set_hitbox_value(AT_FAIR, 8, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_FAIR, 8, HG_HITBOX_TYPE, 1);
@@ -187,5 +187,5 @@ set_hitbox_value(AT_FAIR, 8, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_FAIR, 8, HG_HIT_SFX, sound_get("slicel"));
 set_hitbox_value(AT_FAIR, 8, HG_HITBOX_GROUP, 3);
 set_hitbox_value(AT_FAIR, 8, HG_VISUAL_EFFECT, 302);
-set_hitbox_value(AT_FAIR, 8, HG_HITSTUN_MULTIPLIER, .85);
+set_hitbox_value(AT_FAIR, 8, HG_HITSTUN_MULTIPLIER, 1);
 

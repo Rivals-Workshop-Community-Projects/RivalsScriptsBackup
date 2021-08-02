@@ -183,7 +183,7 @@ if (slTimer > slTimerLimit)
 	
 if (slTimer >= floor(slTimerLimit/3))
 {
-	if ((attack_down && special_down) //&& !slActive
+	if ((attack_down && special_down) && (slTimer-miniSL_timer) > 200
 		&& (	(state_cat != SC_HITSTUN
 				&& state_cat != SC_GROUND_COMMITTED
 				&& state_cat != SC_AIR_COMMITTED)
@@ -216,7 +216,8 @@ if (slTimer >= floor(slTimerLimit/3) - 2
 	&& state_cat != SC_HITSTUN
 	&& state_cat != SC_GROUND_COMMITTED
 	&& state_cat != SC_AIR_COMMITTED
-	&& !hitpause)
+//	&& !hitpause
+	)
 {
 	slActive = true;
 	miniSL_timer = round(slTimerLimit/3);

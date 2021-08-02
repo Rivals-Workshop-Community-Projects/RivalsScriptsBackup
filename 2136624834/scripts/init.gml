@@ -7,6 +7,9 @@ Hikaru_Title = "Frozen World"
 
 uspechit = 0
 
+snox = 0
+snoy = 0
+
 grabbed = false
 fairhit = 0
 
@@ -30,7 +33,7 @@ fstronghit = 0
 
 timeinv = -1
 
-ncharge = 30
+ncharge = 0
 fcharge = 0
 fver = 0
 

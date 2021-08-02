@@ -1,3 +1,5 @@
+var monarch = self;
+
 hurtbox_spr = asset_get("ex_guy_hurt_box");
 crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;
@@ -122,6 +124,25 @@ is_spin = false;
 global_portal_cooldown = 0;
 blue_indicator = 0;
 red_indicator = 0;
+portal_line_timer = 0;
+
+last_teleport_x = 0;
+last_teleport_y = 0;
+current_teleport_x = 0;
+current_teleport_y = 0;
+
+// Portal line stuff
+port1x = 0;
+port1y = 0;
+port2x = 0;
+port2y = 0;
+port1  = 0;
+port2  = 0;
+portal_speed = 0;
+denom  = 0;
+line_A = 0;
+line_B = 0;
+line_C = 0;
 
 // Change according to other init
 in_portal = false;
@@ -132,7 +153,8 @@ portal_cooldown = 0;
 portal_afterimage = {x:x,y:y,sprite_index:sprite_index,image_index:image_index,spr_dir:spr_dir,timer:0};
 portal_white = 0;
 last_spr_dir = 1;
-
+portal_delay = 0;
+max_portal_delay = 15;
 
 is_monarch = true;
 
@@ -246,8 +268,23 @@ hitfx11 = hit_fx_create(sprite_get("hitfx11"),24);
 hitfx12 = hit_fx_create(sprite_get("hitfx12"),12 * 2);
 
 trail = hit_fx_create(sprite_get("trail"),6);
+
+portaltrail_red = hit_fx_create(sprite_get("portaltrail_red"),13);
+portaltrail_blue = hit_fx_create(sprite_get("portaltrail_blue"),13);
+
+portaltrail_proj_blue = hit_fx_create(sprite_get("portaltrail_proj_blue"),13);
+portaltrail_proj_red = hit_fx_create(sprite_get("portaltrail_proj_red"),13);
+
 trailfx[0] = {x:x,y:y,vsp:0,hsp:0,lifetime:0};
 trailfx[1] = {x:x,y:y,vsp:0,hsp:0,lifetime:0};
+
+// Store portal trails for each player
+portaltrails[0] = {x:x,y:y,vsp:0,hsp:0,lifetime:0,right:true};
+with(oPlayer)
+{
+    monarch.portaltrails[player] = {x:x,y:y,vsp:0,hsp:0,lifetime:0,right:true,up:true};
+}
+
 
 blood = hit_fx_create(sprite_get("blood"),18);
 blood2 = hit_fx_create(sprite_get("blood2"),18);
@@ -369,7 +406,18 @@ else
     monDarkPurple = make_colour_rgb(get_color_profile_slot_r(get_player_color(player), 3)-28, get_color_profile_slot_g(get_player_color(player), 3)-10, get_color_profile_slot_b(get_player_color(player), 3)-47);
 }
 
+// Debug values for drawing
+t1 = 0;
+t2 = 0;
 
+b1 = 0;
+b2 = 0;
+
+c1 = 0;
+c2 = 0;
+
+test_index = -16;
 
 // Munophone
+trainingMode = 0
 user_event(14);

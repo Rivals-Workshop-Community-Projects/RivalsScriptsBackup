@@ -72,12 +72,29 @@ if attack == AT_DSPECIAL_2 && window == 2 && window_timer == 1 {
 		
 	}
 }
+
 if attack == AT_DTILT {
-normal_charge = (normal_charge > 0) && (attack_down or down_stick_down)
+	normal_charge = (normal_charge > 0) && (attack_down or down_stick_down)
 
 	if has_hit_player && window == 4 {
-		can_attack = true;
-		can_jump = true;
+		
+		// dash cancel code by muno
+		
+		var hard_press_dir = (right_hard_pressed - left_hard_pressed);
+		
+		if hard_press_dir != 0 {
+			spr_dir = hard_press_dir;
+			set_state(PS_DASH_START);
+		}
+		
+		else {
+			can_attack = true;
+			can_jump = true;
+		    can_ustrong = true;
+			can_strong =true;
+			can_special = true;
+		}
+		
 	}
 }
 
@@ -454,4 +471,18 @@ if attack == AT_TAUNT {
 			image_index = 0
 		}
 		
+}
+if attack == AT_TAUNT_2 {
+	if state_timer == 1 {
+		times_through = 0;
+	}
+	if window == 3 {
+		if window_timer == 1 {
+			times_through++;
+		}
+		if !taunt_down && times_through > 1 {
+			window++;
+			window_timer = 0;
+		}
+	}
 }

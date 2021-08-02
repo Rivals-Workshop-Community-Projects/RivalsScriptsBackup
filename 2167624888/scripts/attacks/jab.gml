@@ -10,6 +10,7 @@ set_window_value(AT_JAB, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_JAB, 1, AG_WINDOW_HAS_SFX, 1)
 set_window_value(AT_JAB, 1, AG_WINDOW_SFX_FRAME, 3)
 set_window_value(AT_JAB, 1, AG_WINDOW_SFX, sound_get("swing1"))
+set_window_value(AT_JAB, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 
 set_window_value(AT_JAB, 2, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAMES, 2);
@@ -112,17 +113,14 @@ set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 //i dunno what hitbox 3 and 5 are for, so i will ask later. for now i will change hitbox 4
 
 //HITBOX 3
-set_hitbox_value(AT_JAB, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_JAB, 3, HG_SHAPE, 0);
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_X, 30);
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_JAB, 3, HG_WIDTH, 100);
 set_hitbox_value(AT_JAB, 3, HG_HEIGHT, 45);
-set_hitbox_value(AT_JAB, 3, HG_PARENT_HITBOX, 0);
-set_hitbox_value(AT_JAB, 3, HG_SHAPE, 0);
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 3, HG_WINDOW, 8);
-set_hitbox_value(AT_JAB, 3, HG_LIFETIME, 4);
+set_hitbox_value(AT_JAB, 3, HG_LIFETIME, 3);
 set_hitbox_value(AT_JAB, 3, HG_PRIORITY, 2);
 set_hitbox_value(AT_JAB, 3, HG_DAMAGE, 4);
 set_hitbox_value(AT_JAB, 3, HG_ANGLE, 40);

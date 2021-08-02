@@ -110,14 +110,6 @@ else
         case AT_DSTRONG:
             set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong"));
             set_num_hitboxes(AT_DSTRONG, 2);
-            set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_X, 8);
-            set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_Y, -18);
-            set_hitbox_value(AT_DSTRONG, 1, HG_WIDTH, 132);
-            set_hitbox_value(AT_DSTRONG, 1, HG_HEIGHT, 51);
-            set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_X, 8);
-            set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_Y, -13);
-            set_hitbox_value(AT_DSTRONG, 2, HG_WIDTH, 78);
-            set_hitbox_value(AT_DSTRONG, 2, HG_HEIGHT, 33);
             break;
         case AT_DSPECIAL:
         

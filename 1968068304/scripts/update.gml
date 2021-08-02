@@ -273,6 +273,12 @@ else if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack != AT_F
 }
 
 
+//dialogue buddy
+if(variable_instance_exists(id,"diag"))
+{
+	user_event(1);
+}
+
 
 #define is_epinel_performing_a_move_that_maintains_heavy_state
 if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) return false;

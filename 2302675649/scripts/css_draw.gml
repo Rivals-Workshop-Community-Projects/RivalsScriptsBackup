@@ -54,7 +54,7 @@ alt_name[27] = "Redline";
 alt_name[28] = "AK Mortal";
 alt_name[29] = "Enby";
 alt_name[30] = "Ace";
-alt_name[31] = "End's High";
+alt_name[31] = "Riptide";
 var num_alts = array_length_1d(alt_name);
 shader_end();
 

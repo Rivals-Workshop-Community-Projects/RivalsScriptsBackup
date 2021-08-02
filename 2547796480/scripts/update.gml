@@ -292,6 +292,9 @@ if ANtimeslow == 1 {
 }
 
 
+if ANwounded > 1 {
+	ANwounded = 1
+}
 
 if batt > 5 {
     batt = 5

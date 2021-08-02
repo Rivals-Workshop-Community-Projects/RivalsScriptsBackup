@@ -26,7 +26,7 @@ set_color_profile_slot_range( 5, 37, 20, 21 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 22 );
+set_num_palettes( 24 );
 
 // Yoyo
 set_color_profile_slot( 1, 0, 63, 63, 116 ); //Body main
@@ -156,21 +156,21 @@ set_color_profile_slot( 16, 3, 255, 255, 255 ); //Meter White
 set_color_profile_slot( 16, 4, 0, 255, 238 ); //Meter main
 set_color_profile_slot( 16, 5, 201, 255, 252 ); //Sparks
 
-// Yellow
-set_color_profile_slot( 17, 0, 255, 213, 0 ); //Body main
-set_color_profile_slot( 17, 1, 240, 152, 0 ); //Body shade
-set_color_profile_slot( 17, 2, 37, 35, 41 ); //Eyes
-set_color_profile_slot( 17, 3, 255, 255, 255 ); //Meter White
-set_color_profile_slot( 17, 4, 34, 69, 181 ); //Meter main
-set_color_profile_slot( 17, 5, 67, 114, 196 ); //Sparks
-
 // Green
-set_color_profile_slot( 18, 0, 90, 214, 32 ); //Body main
-set_color_profile_slot( 18, 1, 18, 173, 16 ); //Body shade
-set_color_profile_slot( 18, 2, 250, 255, 255 ); //Eyes
+set_color_profile_slot( 17, 0, 90, 214, 32 ); //Body main
+set_color_profile_slot( 17, 1, 18, 173, 16 ); //Body shade
+set_color_profile_slot( 17, 2, 250, 255, 255 ); //Eyes
+set_color_profile_slot( 17, 3, 255, 255, 255 ); //Meter White
+set_color_profile_slot( 17, 4, 104, 19, 214 ); //Meter main
+set_color_profile_slot( 17, 5, 98, 36, 179 ); //Sparks
+
+// Gold
+set_color_profile_slot( 18, 0, 240, 152, 0 ); //Body main
+set_color_profile_slot( 18, 1, 173, 70, 0 ); //Body shade
+set_color_profile_slot( 18, 2, 255, 255, 255 ); //Eyes
 set_color_profile_slot( 18, 3, 255, 255, 255 ); //Meter White
-set_color_profile_slot( 18, 4, 104, 19, 214 ); //Meter main
-set_color_profile_slot( 18, 5, 98, 36, 179 ); //Sparks
+set_color_profile_slot( 18, 4, 252, 80, 28 ); //Meter main
+set_color_profile_slot( 18, 5, 250, 127, 45 ); //Sparks
 
 // Brown
 set_color_profile_slot( 19, 0, 115, 70, 43 ); //Body main
@@ -180,21 +180,37 @@ set_color_profile_slot( 19, 3, 255, 255, 255 ); //Meter White
 set_color_profile_slot( 19, 4, 235, 180, 5 ); //Meter main
 set_color_profile_slot( 19, 5, 230, 140, 23 ); //Sparks
 
-// Pink
-set_color_profile_slot( 20, 0, 255, 158, 242 ); //Body main
-set_color_profile_slot( 20, 1, 230, 101, 175 ); //Body shade
-set_color_profile_slot( 20, 2, 250, 255, 255 ); //Eyes
+// Yellow
+set_color_profile_slot( 20, 0, 255, 213, 0 ); //Body main
+set_color_profile_slot( 20, 1, 240, 152, 0 ); //Body shade
+set_color_profile_slot( 20, 2, 37, 35, 41 ); //Eyes
 set_color_profile_slot( 20, 3, 255, 255, 255 ); //Meter White
-set_color_profile_slot( 20, 4, 49, 219, 232 ); //Meter main
-set_color_profile_slot( 20, 5, 129, 227, 230 ); //Sparks
+set_color_profile_slot( 20, 4, 34, 69, 181 ); //Meter main
+set_color_profile_slot( 20, 5, 67, 114, 196 ); //Sparks
+
+// Pink
+set_color_profile_slot( 21, 0, 255, 158, 242 ); //Body main
+set_color_profile_slot( 21, 1, 230, 101, 175 ); //Body shade
+set_color_profile_slot( 21, 2, 250, 255, 255 ); //Eyes
+set_color_profile_slot( 21, 3, 255, 255, 255 ); //Meter White
+set_color_profile_slot( 21, 4, 49, 219, 232 ); //Meter main
+set_color_profile_slot( 21, 5, 129, 227, 230 ); //Sparks
 
 // Clairen
-set_color_profile_slot( 21, 0, 66, 66, 66 ); //Body main
-set_color_profile_slot( 21, 1, 41, 41, 41 ); //Body shade
-set_color_profile_slot( 21, 2, 214, 214, 214 ); //Eyes
-set_color_profile_slot( 21, 3, 240, 22, 142 ); //Meter White
-set_color_profile_slot( 21, 4, 69, 255, 255 ); //Meter main
-set_color_profile_slot( 21, 5, 158, 9, 143 ); //Sparks
+set_color_profile_slot( 22, 0, 66, 66, 66 ); //Body main
+set_color_profile_slot( 22, 1, 41, 41, 41 ); //Body shade
+set_color_profile_slot( 22, 2, 214, 214, 214 ); //Eyes
+set_color_profile_slot( 22, 3, 240, 22, 142 ); //Meter White
+set_color_profile_slot( 22, 4, 69, 255, 255 ); //Meter main
+set_color_profile_slot( 22, 5, 158, 9, 143 ); //Sparks
+
+// Riptide
+set_color_profile_slot( 23, 0, 235, 134, 59 ); //Body main
+set_color_profile_slot( 23, 1, 196, 63, 22 ); //Body shade
+set_color_profile_slot( 23, 2, 242, 228, 214 ); //Eyes
+set_color_profile_slot( 23, 3, 255, 218, 117 ); //Meter White
+set_color_profile_slot( 23, 4, 0, 156, 204 ); //Meter main
+set_color_profile_slot( 23, 5, 255, 212, 133 ); //Sparks
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

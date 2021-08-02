@@ -23,7 +23,7 @@ dash_turn_accel = 1.5;
 dash_stop_time = 6;
 dash_stop_percent = .4; //the value to multiply your hsp by when going into idle from dash or dashstop
 ground_friction = .5;
-moonwalk_accel = 1.6;
+moonwalk_accel = 1.4;//1.6
 
 jump_start_time = 5;
 jump_speed = 10;
@@ -123,7 +123,7 @@ lu_ds_max = 16;
 
 trummelcodecneeded = false;
 otto_bobblehead_sprite = sprite_get("lumina_bobblehead");
-tcoart = sprite_get("luminatcoart");
+tcoart = sprite_get("luminatcoart_old");
 Hikaru_Title = "Light magic little miss";
 feri_costume = sprite_get("feri_costume_lumina"); //i coded this!
 miiverse_post = sprite_get("lumina_miiverse_1");
@@ -139,6 +139,15 @@ toonlink_photo2 = 0;
 kirbyability = 16;
 enemykirby = noone;
 swallowed = 0;
+
+extra_col = 0;
+
+
+phone_disable = true;
+phone_manual_init = 0;
+AT_PHONE = 40;
+phone_arrow_cooldown = 0;
+
 
 ncode1 = "A child capable of light magic."
 ncode2 = "Incapable of causing significant harm."
@@ -168,12 +177,12 @@ dracula_speaker[page] = 0;
 dracula_text[page] = "You dare bring light to my lair?![glass] You must die!";
 page++;
 
-particle1 = hit_fx_create( sprite_get("particle1"), 9 );
-particle2 = hit_fx_create( sprite_get("particle2"), 9 );
-particle3 = hit_fx_create( sprite_get("particle3"), 6 );
+particle1 = hit_fx_create( sprite_get("particle1"), 12 );//9
+particle2 = hit_fx_create( sprite_get("particle2"), 12 );//9
+particle3 = hit_fx_create( sprite_get("particle3"), 8 );//6
 lumihitfx1 = hit_fx_create( sprite_get("hit_effect_test"), 25 );
 
-
+I_would_not_like_Sephiroth_to_impale_my_character = true; //yes
 
 set_victory_theme( sound_get( "lumina_victory" ));//twinklesky by fether
 set_victory_bg( sprite_get( "lumina_victorybg" ));
@@ -198,8 +207,6 @@ abyssMods = array_create(16,[-1,"Not Implemented, open for any ideas."]);
 abyssMods[@ runes.A] = [1, "DAIR lasts a bit longer, and ends quicker."];
 
 abyssMods[@ runes.L] = [1, "NSPECIAL charge is instant."];
-
-user_event(14);
 
 
 

@@ -481,14 +481,14 @@ if attack == AT_USPECIAL{
     if window == 2 && window_timer == 1 && !hitpause {
     	var angle = (round(joy_dir / 11.25) * 11.25) / 180 * -3.14; //45)*45)/180
 		if (joy_pad_idle){
-			vsp += -30
-			y += -100;
+			vsp += -10
+			y += -120;
 			
 		}else{
-			hsp += (30 * cos(angle));
-			vsp += (30 * sin(angle));
-			x += (100 * cos(angle));
-			y += (100 * sin(angle)) + 10;
+			hsp += (10 * cos(angle));
+			vsp += (10 * sin(angle));
+			x += (120 * cos(angle));
+			y += (120 * sin(angle)) + 10;
 			
 		}
 		

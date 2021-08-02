@@ -28,6 +28,7 @@
 if (my_hitboxID.attack == AT_NSPECIAL && ( (should_red_arrow && my_hitboxID.hbox_num == 1) or my_hitboxID.hbox_num != 1 ) )
 {
 	wisp_helper()
+	move_cooldown[AT_NSPECIAL] = 30
 }
 
 		//[DELTA CHECK] only makes wisps with red arrows
@@ -37,11 +38,10 @@ if (my_hitboxID.attack == AT_NSPECIAL && ( (should_red_arrow && my_hitboxID.hbox
 	move_cooldown[AT_DSPECIAL] = 0;
 }*/
 
-if((my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 1) || (my_hitboxID.attack == AT_USTRONG && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2)) || my_hitboxID.attack == AT_DSTRONG){ 
-	//hit_player_obj.should_make_shockwave = false;
-	if(flamecharge){
-		//destroy_wisp(find_wisp())
-	}
+if (my_hitboxID.attack == AT_FAIR and my_hitboxID.hbox_num == 1 and !hit_player_obj.clone)
+{
+	hit_player_obj.x = lerp(hit_player_obj.x, x + (spr_dir*40),0.16)
+	hit_player_obj.y = lerp(hit_player_obj.y, y-10,0.14)
 }
 
 if (my_hitboxID.attack == AT_DSPECIAL) {

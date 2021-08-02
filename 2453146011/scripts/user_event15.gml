@@ -425,7 +425,8 @@ with phone{
 	initTip("Back Air");
 	initTipWords("Stab behind you, and spike if it connects!
 	
-	After landing the stab, you will disappear. Once the opponent is almost out of hitstun, you will reappear and perform a spike shot.");
+	If you keep holding down attack as bair lands, you will disappear and prepare a follow up hit.
+	Once the opponent is almost out of hitstun, you will reappear and perform a spike shot.");
 	initTipImage(player_id.spr_bair, -5, fa_center, 1, c_white, 0);
 	
 	initTip("funny dair");
@@ -436,7 +437,9 @@ with phone{
 	initTip("Forward Air");
 	initTipWords("Monarch fair is 4 hit move with a bunch of interesting properties. You can cancel the move after any time, for starters, making it like an aerial jab (Although the first hit does have parrystun fortunately), and if you hold after the second hit, you shoot your gun.
 
-	Interestingly, while gun seems at first to be a secondary finisher hit, you can actually still finish with the final hit which has the most knockback, effectively making it a 4 hit with the correct timing: Tap, hold, tap. Its pretty hard to gett used to, but once you figure it out its a super versatile move in your kit.
+	Interestingly, while gun seems at first to be a secondary finisher hit, you can actually still finish with the final hit which has the most knockback, effectively making it a 4 hit with the correct timing: Tap, hold, tap. Its pretty hard to get used to, but once you figure it out its a super versatile move in your kit.
+	
+	You can also cancel any of the fair hits into a reverse bair by holding back and attack, allowing you to use an alternate mix-up finisher.
 	
 	A final note, this also shifts your vertical and horizontal momentum slightly, with the last hit boosting you up if you're already travelling upward, which lets you schmove.");
 	initTipImage(player_id.spr_bair, -5, fa_center, 1, c_white, 0);

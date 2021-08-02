@@ -19,6 +19,97 @@ if (attack == AT_DTILT){
 	}
 }
 
+if (attack == AT_UTILT){
+	if (window == 1 && window_timer == 5){
+		sound_play(sound_get("antici_3"),false,noone,0.5);
+	}
+}
+
+if (attack == AT_FTILT){
+	if (window >= 6 && !was_parried){
+		iasa_script();
+	}
+}
+if (attack == AT_DATTACK){
+	if (window >= 5 && !was_parried){
+		iasa_script();
+	}
+}
+if (attack == AT_UTILT){
+	if (window > 1||(window==1&&window_timer==5)){
+		hud_offset = 40
+	}
+}
+if (attack == AT_UAIR){
+	if (window == 1 && window_timer == 1){
+		reset_attack_value(AT_UAIR, AG_LANDING_LAG);//yeah
+		dir_store = 0;
+	}
+	if (window == 3 && window_timer > 5){
+	//if (window == 3 && window_timer == 13){
+		if (!was_parried){
+			if ((attack_down && !attack_pressed)||up_stick_down){
+				window = 4;
+				window_timer = 0;
+			}
+		}
+	}
+	if (window == 3 && window_timer == 13){
+		if (was_parried){
+			attack_end()
+			set_state( PS_PRATFALL )
+		}
+	}
+	if (window == 4){
+		vsp = -4;
+		if (window_timer == 1){
+			if (left_down){
+				if (hsp > -3){
+				hsp = -3;
+				}
+				dir_store = -1;
+			}
+			if (right_down){
+				if (hsp < 3){
+				hsp = 3;
+				}
+				dir_store = 1;
+			}
+		}
+	}
+	if (window == 5 && window_timer == 1){
+		set_attack_value(AT_UAIR, AG_LANDING_LAG, 8);
+		var testset = false;
+		with (asset_get("obj_article2")){
+			if (player_id == other.id){
+				testset = true;
+			}
+		}
+		if (testset == false){
+			sound_play(sound_get("antici_4_short"));
+			var LBomb = instance_create(x+(5*spr_dir), y-90, "obj_article2");
+			LBomb.player_id = id;
+			LBomb.player = player;
+			if (dir_store == -1){
+				LBomb.hsp = -3;
+				//hsp = -4;
+			}
+			if (dir_store == 1){
+				LBomb.hsp = 3;
+				//hsp = 4;
+			}
+		}else{
+			sound_play(sound_get("cant_2"));
+		}
+	}
+	
+	
+	//iasa
+	if (window > 4||(window==4&&window_timer==6)){
+		hud_offset = 60
+	}
+}
+
 if (attack == AT_NSPECIAL){
 	var max_nsp = 20 //24
 	hsp = clamp(hsp, -3, 3);
@@ -56,6 +147,14 @@ if (attack == AT_NSPECIAL){
 	if ((window == 2||window==3) && !special_down){
 		white_flash_timer = 0;
 		if (nsp_charge > max_nsp){
+			if (!free){
+				if (left_down && spr_dir == 1){
+					spr_dir = -1;
+				}
+				if (right_down && spr_dir == -1){
+					spr_dir = 1;
+				}
+			}
 			sound_stop(sound_get("beam_charge"));
 			set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 11);
 			window = 7;
@@ -296,6 +395,7 @@ if (attack == AT_USPECIAL){
 			reset_window_value(AT_USPECIAL, 6, AG_WINDOW_LENGTH);
 			reset_window_value(AT_USPECIAL, 7, AG_WINDOW_LENGTH);
 			reset_window_value(AT_USPECIAL, 7, AG_WINDOW_TYPE);
+			usp_land = false;
 		}
 		hsp = clamp(usp_hsp_storage, -2.5, 2.5);
 		vsp = clamp(usp_vsp_storage, -2.5, 1);
@@ -308,6 +408,10 @@ if (attack == AT_USPECIAL){
 		}
 	}
 	if (window == 3 && window_timer == 8){
+		spawn_hit_fx( x-16+random_func( 1, 32, true ), y-(char_height/2)-24+random_func( 8, 48, true ), particle1 );
+		spawn_hit_fx( x-16+random_func( 2, 32, true ), y-(char_height/2)-24+random_func( 9, 48, true ), particle3 );
+		spawn_hit_fx( x-16+random_func( 3, 32, true ), y-(char_height/2)-24+random_func( 10, 48, true ), particle2 );
+		spawn_hit_fx( x-16+random_func( 4, 32, true ), y-(char_height/2)-24+random_func( 11, 48, true ), particle1 );
 		var distance = 100;
 		var angle = (round(joy_dir / 11.25) * 11.25) / 180 * -3.14; //45)*45)/180
 		if (joy_pad_idle){
@@ -325,6 +429,7 @@ if (attack == AT_USPECIAL){
 	if ((window == 4||window == 5) && !free){
 			hsp = clamp(hsp, -9.5, 9.5); //9//8
 			vsp = clamp(vsp, -9, 9);
+		usp_land = true;
 		set_state( PS_LANDING_LAG );
 		//this is the cancel thing, grounded
 		if (latest_light_sentry != -4){
@@ -339,10 +444,10 @@ if (attack == AT_USPECIAL){
 					move_cooldown[AT_FSPECIAL] = clamp(move_cooldown[AT_FSPECIAL] - 50, 0, 200);
 				}
 			} else {
-				landing_lag_time = 28;
+				landing_lag_time = 24;//28
 			}
 		} else {
-			landing_lag_time = 28;
+			landing_lag_time = 24;//28
 		}
 	}
 	if (window == 5){
@@ -430,7 +535,7 @@ if (attack == AT_JAB){
 		if (spark_timer%5 == 0){
 			sound_stop(sound_get("spark"));
 			sound_play(sound_get("spark"), false, noone, (spark_volume));
-			spark_volume = clamp(spark_volume-0.03, 0.5, 1);
+			spark_volume = clamp(spark_volume-0.03, 0.3, 1);
 		}
 		
 		if (jab_timer%(get_hitbox_value(AT_JAB, 2, HG_LIFETIME)+1) == 0 && !hitpause){
@@ -454,6 +559,9 @@ if (attack == AT_DAIR){
     }
 	if (window == 3 && window_timer == 8){
 		vsp = vsp-2;
+		if (((right_down && spr_dir == -1) || (left_down && spr_dir == 1))&&(attack_down||down_stick_down)){
+			spr_dir = spr_dir*-1
+		}
 	}
 	if (window == 4){
 		dair_timer++;
@@ -466,5 +574,12 @@ if (attack == AT_DAIR){
 		dair_timer = 0;
 	}
 }
+
+
+
+
+
+
+
 
 //you will lead me to the ark

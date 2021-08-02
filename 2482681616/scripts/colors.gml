@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 17 );
 
 // Shiny
 set_color_profile_slot( 1, 0, 231, 255, 255 ); //White
@@ -149,16 +149,6 @@ set_color_profile_slot( 13, 4, 239, 123, 140 ); //Red
 set_color_profile_slot( 13, 5, 90, 198, 247 ); //Blue
 set_color_profile_slot( 13, 6, 181, 189, 198 ); //Gray
 
-// RegiKragg "The Rock"
-set_color_profile_slot( 16, 0, 39, 168, 75 ); //White
-set_color_profile_slot( 16, 1, 166, 149, 113 ); //Yellow
-set_color_profile_slot( 16, 2, 214, 204, 182 ); //Green
-set_color_profile_slot( 16, 3, 74, 165, 99 ); //Black
-set_color_profile_slot( 16, 4, 255, 215, 87 ); //Red
-set_color_profile_slot( 16, 5, 255, 217, 94 ); //Blue
-set_color_profile_slot( 16, 6, 255, 217, 97 ); //Gray
-
-
 // HeartGold
 set_color_profile_slot( 14, 0, 255, 238, 150 ); //White
 set_color_profile_slot( 14, 1, 255, 238, 150 ); //Yellow
@@ -176,6 +166,16 @@ set_color_profile_slot( 15, 3, 204, 204, 204 ); //Black
 set_color_profile_slot( 15, 4, 204, 204, 204 ); //Red
 set_color_profile_slot( 15, 5, 204, 204, 204 ); //Blue
 set_color_profile_slot( 15, 6, 204, 204, 204 ); //Gray
+
+// RegiKragg "The Rock"
+set_color_profile_slot( 16, 0, 39, 168, 75 ); //White
+set_color_profile_slot( 16, 1, 166, 149, 113 ); //Yellow
+set_color_profile_slot( 16, 2, 214, 204, 182 ); //Green
+set_color_profile_slot( 16, 3, 74, 165, 99 ); //Black
+set_color_profile_slot( 16, 4, 255, 215, 87 ); //Red
+set_color_profile_slot( 16, 5, 255, 217, 94 ); //Blue
+set_color_profile_slot( 16, 6, 255, 217, 97 ); //Gray
+
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

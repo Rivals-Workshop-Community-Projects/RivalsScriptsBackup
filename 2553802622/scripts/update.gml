@@ -160,13 +160,13 @@ if(select_timer != 0)
     }
     else
     {
-        if(up_pressed)
+        if(up_pressed || up_strong_pressed)
             select_cur = 1;
-        if(right_pressed)
+        if(right_pressed || right_strong_pressed)
             select_cur = 2;
-        if(down_pressed)
+        if(down_pressed || down_strong_pressed)
             select_cur = 3;
-        if(left_pressed)
+        if(left_pressed || left_strong_pressed)
             select_cur = 4; 
         if(shield_pressed)
         {
@@ -189,7 +189,7 @@ else //when out of selection
         power_color = select_cur; 
         white_flash_timer = 10;
         if(power_color != 0 && select_timer == 0)
-            select_cooldown = 60*5;
+            select_cooldown = 20;
         hudstrip_mode = 1;
         hudstrip_timer = 0;
         init_shader();
@@ -206,7 +206,7 @@ else //when out of selection
             knockback_adj = 1.0;
             walk_speed = 2.5;
             dash_speed = 7.5;
-            ground_friction = 1.5;
+            ground_friction = .8;
             air_friction = .02;
             break;
         case 1:
@@ -214,7 +214,7 @@ else //when out of selection
             knockback_adj = 1.05;
             walk_speed = 2.5;
             dash_speed = 7.5;
-            ground_friction = 1.5;
+            ground_friction = .8;
             air_friction = .02;
             break;
         case 2:
@@ -222,7 +222,7 @@ else //when out of selection
             knockback_adj = 1.1;
             walk_speed = 3.5;
             dash_speed = 9;
-            ground_friction = 1.2;
+            ground_friction = .7;
             air_friction = .01;
             break;
         case 3:
@@ -230,7 +230,7 @@ else //when out of selection
             knockback_adj = 1.05;
             walk_speed = 2.5;
             dash_speed = 7.5;
-            ground_friction = 1.5;
+            ground_friction = .7;
             air_friction = .02;
             break;
         case 4:
@@ -238,7 +238,7 @@ else //when out of selection
             knockback_adj = 0.95;
             walk_speed = 1.5;
             dash_speed = 5;
-            ground_friction = 1.7;
+            ground_friction = 1;
             air_friction = .04;
             break;
     }
@@ -264,6 +264,7 @@ if(!free || state == (PS_WALL_JUMP || PS_HITSTUN)) // has landed
     has_zss = false;
     has_flown = false;
     fspec_reset = false;
+    nspec_stall = false;
     set_attack_value(AT_USPECIAL, AG_CATEGORY, 2);
     reset_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED);
 }
@@ -298,9 +299,117 @@ if(hit_id != noone)
 }
 
 if(iceslip >= 4)
-    ground_friction = 1.5;
+{}
 else
 {  
     ground_friction = 0;
     iceslip ++;
+}
+
+//TUTORIAL MODE
+if(variable_instance_exists(id,"bTut_mssn_mode") && bTut_mssn_mode) //Checks if mission mode is on!
+{
+    switch(bTut_mssn) //checks what mission youre on
+    {
+        //F-Special
+        case 0:
+            with(oPlayer) { bTut_mssn_cmbo = false; } //If just showing off mechanics put this!
+            bTut_mssn_cmbo_moves[0] = "F-Special (Hit Opponent)";
+            bTut_mssn_cmbo_moves[1] = "> Pull (Hold nothing)";
+            bTut_mssn_cmbo_moves[2] = "F-Special (Hit Anything)";
+            bTut_mssn_cmbo_moves[3] = "> Fly towards (Hold Special)";
+            bTut_mssn_cmbo_moves[4] = "F-Special (Hit Anything)";
+            bTut_mssn_cmbo_moves[5] = "> Jump (Hold Jump)";
+            
+            switch(bTut_mssn_part) //This checks what the player is doing!
+            {
+                case 0:	
+                case 2:	
+                case 4:	
+                    if((attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR) && window == 5)
+                        missionNext();  break;
+                case 1:	
+                    if(state == PS_IDLE || state == PS_IDLE_AIR) bTut_mssn_part --;
+                    if((attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR) && window == 6)
+                    { missionNext();} break;
+                case 3:	
+                    if(state == PS_IDLE || state == PS_IDLE_AIR) bTut_mssn_part --;
+                    if((attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR) && window == 7)
+                    { missionNext();} break;
+                case 5:	
+                    if(state == PS_IDLE || state == PS_IDLE_AIR) bTut_mssn_part --;
+                    if((attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR) && window == 8)
+                    { missionNext();} break;
+            }
+            break;
+        
+        //Jab to Down-Tilt
+        case 1:
+            with(oPlayer) { bTut_mssn_cmbo = false; } //If just showing off mechanics put this!
+            bTut_mssn_cmbo_moves[0] = "N-Special";
+            bTut_mssn_cmbo_moves[1] = "Change Element into Fire (Taunt)";
+            bTut_mssn_cmbo_moves[2] = "N-Special (burns Opponents)";
+            bTut_mssn_cmbo_moves[3] = "Change Element into Electricity (Taunt)";
+            bTut_mssn_cmbo_moves[4] = "N-Special (Shocks Opponents)";
+            bTut_mssn_cmbo_moves[5] = "Change Element into Ice (Taunt)";
+            bTut_mssn_cmbo_moves[6] = "N-Special / D-Air (Create Ice Floor)";
+            bTut_mssn_cmbo_moves[7] = "Change Element into Rock (Taunt)";
+            bTut_mssn_cmbo_moves[8] = "N-Special (Causes Spikes)";
+            
+            select_cooldown = 0;
+            for(arws = 1; arws<5; arws++)
+                arrowsremain[arws] = arrowsmax[arws];
+
+            switch(bTut_mssn_part) //This checks what the player is doing!
+            {
+                case 0:	
+                    with(pHitBox) if(attack == AT_NSPECIAL && orig_player == other.player && has_hit) other.missionNext(); break;
+                case 1: if(power_color == 1) { missionNext(); } break;
+                case 2:	
+                    with(pHitBox) if(attack == AT_NSPECIAL && other.power_color == 1 && orig_player == other.player && has_hit) other.missionNext(); break;
+                case 3: if(power_color == 2) { missionNext(); } break;
+                case 4:	
+                    with(pHitBox) if(attack == AT_NSPECIAL && other.power_color == 2 && orig_player == other.player && has_hit) other.missionNext(); break;
+                case 5: if(power_color == 3) { missionNext(); } break;
+                case 6:	
+                    with(pHitBox) if(attack == AT_NSPECIAL && hbox_num == 2 && orig_player == other.player) {other.missionNext(); other.bTut_mssn_reset = true; } break;
+                case 7: if(state == PS_IDLE) bTut_mssn_reset = false; if(power_color == 4) { missionNext(); } break;
+                case 8:	
+                    with(pHitBox) if(attack == AT_NSPECIAL && other.power_color == 4 && orig_player == other.player && has_hit) other.missionNext(); break;
+            }
+            break;
+
+        //F-Special
+        case 2:
+            with(oPlayer) { bTut_mssn_cmbo = false; } //If just showing off mechanics put this!
+            bTut_mssn_cmbo_moves[0] = "D-Tilt";
+            bTut_mssn_cmbo_moves[1] = "> Hold to extend!";
+            bTut_mssn_cmbo_moves[2] = "U-Tilt";
+            bTut_mssn_cmbo_moves[3] = "> Hold to extend!";
+            
+            if(bTut_mssn_part == 1 || bTut_mssn_part == 3)
+            {
+                if(state == PS_IDLE) bTut_mssn_part --;
+            }
+
+            switch(bTut_mssn_part) //This checks what the player is doing!
+            {
+                case 0:	if(attack == AT_DTILT && state == PS_ATTACK_GROUND && has_hit) missionNext(); break;
+                case 1:	if(attack == AT_DTILT && window == 4 && window_timer > 1 && hitpause) missionNext();  break;
+                case 2:	if(attack == AT_UTILT && window == 2 && has_hit) missionNext(); break;
+                case 3:	if(attack == AT_UTILT && window == 5 && hitpause) missionNext();  break;
+            }
+            break;
+    }
+}
+
+#define missionNext() //This lets the buddy know that you are going to the next part of the mission.
+{
+    if(!bTut_mssn_reset) //Prevents you from completing multiple tasks at the same time!
+    {
+        bTut_mssn_part++; 
+        sound_play(asset_get("mfx_coin"));
+        if(array_length(bTut_mssn_cmbo_moves) <= bTut_mssn_part)
+            bTut_mssn_finish = true;
+    }
 }

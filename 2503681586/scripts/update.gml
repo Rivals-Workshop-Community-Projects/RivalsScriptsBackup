@@ -86,16 +86,20 @@ if is_nana && "is_bubble" !in self {
 		case 0: //Bubble
 
 	//Comment out if issues occur
+	/*
 	if state_cat == SC_HITSTUN {
 		sound_play(asset_get("sfx_orca_absorb"))
 		clownState = 1
 	}
+	*/
 
+/*
 	if !((attack == AT_FSPECIAL_2) && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && window != 1){ //Unarmoed Attacks
 		soft_armor = 999
 	} else {
 		soft_armor = 0
 	}
+*/
 		
 		
 	wall_speed = 4

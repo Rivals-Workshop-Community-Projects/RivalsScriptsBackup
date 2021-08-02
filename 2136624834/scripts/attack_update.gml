@@ -418,10 +418,7 @@ if attack == AT_NSPECIAL && !hitpause {
 
 if attack == AT_FSPECIAL && !hitpause {
 	
-	set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 12);
-set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.6);
-set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 15);
-set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 0.3);
+
 
 	 if window = 3 && window_timer == 1 {
 	 	sound_play(asset_get("sfx_ori_bash_launch"));
@@ -502,10 +499,12 @@ if window = 3 && window_timer = 1 {
 		sound_play(asset_get("sfx_ori_bash_launch"));
 	}
 	
-	 if window == 2 && (window_timer % 2 == 0 or window_timer == 0) && !hitpause{
+	 if window == 2 && (get_gameplay_time() % 4 == 0 or ((get_gameplay_time() % 4 == 2 or window_timer == 0) && !hitpause)) {
 	 		
 	 sound_play(asset_get("sfx_ice_shieldup"));	
+	 if !hitpause {
 	 spawn_hit_fx( x  , y - 50 + random_func(2, 40, true) , tauntpar1 )
+	 }
 	 }
      
      if window == 2 or window == 3 {
@@ -570,9 +569,8 @@ spawn_hit_fx( x + ((60 + (fcharge * 8)) * spr_dir) , y - 40 + fver*6 , 305 )
 
 
 if window == 4 && window_timer = 1 {
-
-spawn_hit_fx( x + ((2 + (fcharge * 8)) * spr_dir) , y - 44 + fver*6 , icicle3 )
-create_hitbox(AT_FSPECIAL , 2,  x + ((36 + (fcharge * 8)) * spr_dir) , y - 43 + fver*6);	
+spawn_hit_fx( floor(x + ((2 + (fcharge * 8)) * spr_dir)) , y - 44 + fver*6 , icicle3 )
+create_hitbox(AT_FSPECIAL , 2,  floor(x + ((56 + (fcharge * 8)) * spr_dir)) , y - 43 + fver*6);	
 }	
 
 if window == 4 && window_timer == 2 {
@@ -589,14 +587,14 @@ if (window == 1 and window_timer > 8) {
 if window = 2 {
 	
 	if up_down {
-		fver -= 1 
+		fver -= 1
 	}
 	
 	if down_down {
 		fver += 1
 	}
 	
-	fcharge += 1
+	fcharge += 1.5
 	
 if window == 2 {
 	
@@ -627,13 +625,13 @@ if attack == AT_NSPECIAL {
 	
 	if window == 2 && special_down {
 		
-		if ncharge % 10 == 0 {
+		if ncharge % 10 == 0 or ncharge == 0{
 			sound_play(asset_get("sfx_bird_sidespecial"));
 			
 		}
 		
 		
-		if window_timer % 6 == 0 {
+		if window_timer % 6 == 0 or window_timer == 0 {
 			sound_play(sound_get("skating"));
 			
 		}

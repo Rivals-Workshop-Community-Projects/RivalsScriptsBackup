@@ -78,6 +78,9 @@ if (selected_color == 0) { // Default win/loss portraits are miscolored, replace
 } else if (selected_color == 11) { // sans
     set_victory_portrait(sprite_get("portrait_sans"));
     set_victory_sidebar(sprite_get("result_small_sans"));
+} else if (selected_color == 12) { // fuzzy
+    set_victory_portrait(sprite_get("portrait_fuzzy"));
+    set_victory_sidebar(sprite_get("result_small_fuzzy"));
 }
 
 // Get player color and assign to slot 7 to color indicator

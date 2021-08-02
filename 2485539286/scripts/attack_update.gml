@@ -1382,7 +1382,7 @@ if window == 2 {
 		window_timer = 0
 	}
 	
-	if state_timer > 20 &&  (free or 
+	if state_timer > 10 &&  (free or 
 	(!strong_down and !left_strong_pressed and !right_strong_pressed and !left_stick_down and !right_stick_down)){
 	    shake_camera(2,40)
       	spawn_base_dust(x, y, "dash_start", spr_dir)

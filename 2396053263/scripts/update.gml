@@ -35,7 +35,7 @@ if (free && taunt_pressed && has_brake = 1 && state_cat == SC_AIR_NEUTRAL && air
     has_brake = 0;
 }
 
-if (free && taunt_down && has_brake = 1 && (state == PS_ATTACK_AIR || state == PS_PRATFALL) && air_timer >= 4 && !hitpause){
+if (free && taunt_down && has_brake = 1 && (state == PS_ATTACK_AIR) && air_timer >= 4 && !hitpause){
     if ((left_down && spr_dir == -1) || (right_down && spr_dir == 1)){
         vsp = -1.5;
 		hsp = 6*spr_dir;

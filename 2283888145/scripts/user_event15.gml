@@ -486,6 +486,17 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.18", "29 July, 2021");
+	if other.echo{
+		initPatchWords("Parity update to go along with Coda's.");
+	}
+	else{
+		initPatchWords("Coda is in the upcoming Riptide tournament's Workshop side event! This patch just gets a couple of things ready for that event.")
+		initPatchWords("Cosmetics");
+		initPatchWords_ext("Seasonal alt replaced with a special Riptide-colored alt.
+		To avoid copyright issues, during 10-13 September, 2021, Coda's victory theme will be replaced with Trummel's.", fa_left, c_gray, 1, 0);
+	}
+	
 	initPatch("1.17", "29 June, 2021");
 	initPatchWords_ext("- Community Patch: JPEG Warrior -", fa_center, apps[2].color, 1, 0);
 	if other.echo{

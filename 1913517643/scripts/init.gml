@@ -30,6 +30,8 @@ jump_start_time = 5;
 jump_speed = 9; //9
 short_hop_speed = 4.5; //4.5
 djump_speed = 8; //8
+
+
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 8; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5.5; //the maximum hsp you can accelerate to when in a normal aerial state
@@ -120,25 +122,34 @@ floateffectAnimStripLength = 14;
 floateffectAnimTimer = 0;
 floateffectAnimSpeed = 0.25;
 
+
+
 downBuffer = 0;
 
 otherPomme_id = noone;
 
+//Hit FX
+note_hfx1_spr = sprite_get("hfx1");
+note_hfx1 = hit_fx_create(note_hfx1_spr, 21);
+shout_hfx1_spr = sprite_get("hfx2");
+shout_hfx1 = hit_fx_create(shout_hfx1_spr, 40);
+shout_hfx2_spr = sprite_get("hfx3");
+shout_hfx2 = hit_fx_create(shout_hfx2_spr, 40);
+notefade1_spr = sprite_get("hfx4");
+notefade1 = hit_fx_create(notefade1_spr, 15);
+notefade2_spr = sprite_get("hfx5");
+notefade2 = hit_fx_create(notefade2_spr, 15);
+
 //song field stuff
-songAir = 0;
+songAir = 0; //limits one song field per airtime
+in_songfield = 0;
 
 //music note stuff
-hasNote =  0;
 singsfxCounter = 0;
+hasNote = 0;
 
 //grab stuff
 grabbed_id = noone;
-
-//special stuff
-escapedPratfall = 0;
-
-//wall detection
-moved_up = 0;
 
 //voice stuff
 voiceEnabled = 0;
@@ -152,7 +163,7 @@ otto_bobblehead_sprite = sprite_get("my_bobblehead_sprite");
 
 
 //Beach Skin
-
+/*
 beachprops = sprite_get("taunt2_beachprops");
 beachpropsAnimStripLength = 26;
 beachpropsAnimTimer = 0;
@@ -218,78 +229,18 @@ spr_plat = sprite_get("plat");
 spr_float = sprite_get("float");
 
 set_victory_portrait(sprite_get("portrait"));
-set_victory_sidebar(sprite_get("result_small"));
+set_victory_sidebar(sprite_get("result_small"));*/
 
 //Alts
-
+/*
 switch(get_player_color(player)){
     case 13: //Beach
-        spr_idle = sprite_get("idle_beach");
-        spr_crouch = sprite_get("crouch_beach");        
-        spr_walk = sprite_get("walk_beach");
-        spr_walkturn = sprite_get("walkturn_beach");
-        spr_dash = sprite_get("dash_beach");
-        spr_dashstart = sprite_get("dashstart_beach");
-        spr_dashstop = sprite_get("dashstop_beach");
-        spr_dashturn = sprite_get("dashturn_beach");
-        
-        spr_float = sprite_get("float_beach");
-        spr_jump = sprite_get("jump_beach");
-        spr_jumpstart = sprite_get("jumpstart_beach");
-        spr_doublejump = sprite_get("doublejump_beach");
-        spr_walljump = sprite_get("walljump_beach");
-        spr_pratfall = sprite_get("pratfall_beach");
-        spr_land = sprite_get("land_beach");
-        spr_landinglag = sprite_get("landinglag_beach");
-        
-        spr_parry = sprite_get("parry_beach");
-        spr_roll_forward = sprite_get("roll_forward_beach");
-        spr_roll_backward = sprite_get("roll_backward_beach");
-        spr_airdodge = sprite_get("airdodge_beach");
-        spr_airdodge_waveland = sprite_get("waveland_beach");
-        spr_tech = sprite_get("tech_beach");
-        
-        spr_hurt = sprite_get("hurt_beach");
-        spr_bighurt = sprite_get("bighurt_beach");
-        spr_hurtground = sprite_get("hurtground_beach");
-        spr_uphurt = sprite_get("uphurt_beach");
-        spr_downhurt = sprite_get("downhurt_beach");
-        spr_bouncehurt = sprite_get("bouncehurt_beach");
-        spr_spinhurt = sprite_get("spinhurt_beach");
-        
-        
-        spr_jab = sprite_get("jab_beach");
-        spr_dattack = sprite_get("dattack_beach");
-        spr_dattacktwo = sprite_get("dattacktwo_beach");
-        spr_ftilt = sprite_get("ftilt_beach");
-        spr_dtilt = sprite_get("dtilt_beach");
-        spr_utilt = sprite_get("utilt_beach");
-        spr_nair = sprite_get("nair_beach");
-        spr_fair = sprite_get("fair_beach");
-        spr_bair = sprite_get("bair_beach");
-        spr_uair = sprite_get("uair_beach");
-        spr_dair = sprite_get("dair_beach");
-        spr_fstrong = sprite_get("fstrong_beach");
-        spr_ustrong = sprite_get("ustrong_beach");
-        spr_dstrong = sprite_get("dstrong_beach");
-        spr_nspecial = sprite_get("nspecial_beach");
-        spr_nspecial_2 = sprite_get("nspecial_2_beach");
-        spr_fspecial = sprite_get("fspecial_beach");
-        spr_uspecial = sprite_get("uspecial_beach");
-        spr_dspecial = sprite_get("dspecial_beach");
-        spr_taunt = sprite_get("taunt_beach");
-        
-        
-        useskins = true;
-        
-        set_victory_portrait(sprite_get("portrait_beach"));
-        set_victory_sidebar(sprite_get("result_small_beach"));
         
         break;
     case 14: //Kimono
         break;
         
-}
+}*/
 
 //Miiverse
 

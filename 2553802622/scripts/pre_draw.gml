@@ -27,11 +27,11 @@ if(attack == AT_NSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND
   switch(window)
   {
     case 2:
-      draw_sprite_ext(sprite_get("n_hand_special"), 0, x-14*spr_dir, y-38, 1, 1*spr_dir, abs(aim_angle), c_white, 1);
+      draw_sprite_ext(sprite_get("n_hand_special"), 0, x-14*spr_dir, y-38, 1, 1*spr_dir, aim_angle, c_white, 1);
       draw_sprite_ext(sprite_get("n_head"), head_aim, x-4*spr_dir, y-38, spr_dir, 1, 0, c_white, 1);
       break;
     case 3:
-      draw_sprite_ext(sprite_get("n_hand_special"), 1, x-14*spr_dir, y-38, 1, 1*spr_dir, abs(aim_angle), c_white, 1);
+      draw_sprite_ext(sprite_get("n_hand_special"), 1, x-14*spr_dir, y-38, 1, 1*spr_dir, aim_angle, c_white, 1);
       draw_sprite_ext(sprite_get("n_head"), head_aim, x-4*spr_dir, y-38, spr_dir, 1, 0, c_white, 1);
       break;
   }

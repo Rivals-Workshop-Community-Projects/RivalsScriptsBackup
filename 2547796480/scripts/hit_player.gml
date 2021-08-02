@@ -46,13 +46,16 @@ if my_hitboxID.attack != AT_NSPECIAL  {
 if my_hitboxID.type == 1  {
  move_cooldown[AT_TAUNT] = 16
  batt += 1
- 
+ var halodmg = floor(my_hitboxID.damage/2)
+    with hit_player_obj {
+		take_damage( player, -1 , floor(enemy_hitboxID.damage/-5))
+    }     
  if hit_player_obj != self  {       
     if hit_player_obj.ANwounded == 1 {
     	hitstop += 1
     	hit_player_obj.hitstop += 1
     	move_cooldown[AT_EXTRA_3] = 6
-        var halodmg = floor(my_hitboxID.damage/2)
+
         with hit_player_obj {
 		take_damage( player, -1 , floor(halodmg/1.5))
         }
@@ -75,7 +78,6 @@ if my_hitboxID.type == 1  {
         	hitstop += 2
     	hit_player_obj.hitstop += 2
            move_cooldown[AT_EXTRA_3] = 14
-           var halodmg = floor(my_hitboxID.damage/2)
            with hit_player_obj {
 		   take_damage( player, -1 , floor(halodmg/1.2))
            }  
@@ -98,7 +100,6 @@ if my_hitboxID.type == 1  {
         	hitstop += 4
     	hit_player_obj.hitstop += 4
                 move_cooldown[AT_EXTRA_3] = 20 		   
-                        var halodmg = floor(my_hitboxID.damage/2)
                          with hit_player_obj {
               		      take_damage( player, -1 , floor(halodmg))
                          } 

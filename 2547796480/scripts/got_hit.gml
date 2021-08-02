@@ -24,7 +24,7 @@ if  cheapmode = 1{
 }
 
 
-if ANwounded > 0 && hit_player_obj.char_height != 60.1412 {
+if ANwounded > 0 && hit_player_obj.char_height != 60.1412 && enemy_hitboxID.type == 1 && enemy_hitboxID.damage > 1 {
 
       if ANwounded == 1 {
     	hitstop += 1

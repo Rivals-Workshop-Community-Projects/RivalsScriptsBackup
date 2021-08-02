@@ -122,12 +122,16 @@ emoji_color = [get_color_profile_slot_r(color_profile, emoji_color_slot),
                get_color_profile_slot_g(color_profile, emoji_color_slot),
                get_color_profile_slot_b(color_profile, emoji_color_slot)];
 // Make outline flash while fully charged
+
 flash_outline_color = [200, 200, 200];
 flash_duration = 7;
 flash_countdown = 0;
 weak_outline_color = [25, 25, 25];
 outline_off_duration = 18;
 outline_off_countdown = 0;
+if (get_player_color(player) == 12) {
+    outline_color =  [255, 38, 255]
+}
 default_outline_color = outline_color;
 // fspecial
 num_emojis_active = 0;

@@ -38,6 +38,20 @@ if (place_meeting(x, y, asset_get("pHitBox")) && can_get_hit && state != 8) { //
 			if (place_meeting(x, y, other)){
 				other.hitbox_hit = self;
 			}
+		} else {
+			if ((place_meeting(x, y, other)) && (type == 1)){
+				if (attack != AT_FSPECIAL){
+					//no
+				} else {
+					player_id.tailsdidhesidebrobot = true
+					player_id.tailsisrobotout = false
+					player_id.tailsdspechbox3destroyplease = true
+					player_id.move_cooldown[AT_DSPECIAL] = 150;
+					sound_play(player_id.sfx_krtd_grab)
+					instance_destroy();
+					exit;
+				}
+			}
 		}
 	}
 	if (hitbox_hit != noone){
@@ -261,9 +275,10 @@ if (state == 8){ //Get Hit
 if (state == 9){ //Explode but better
 	player_id.tailsisrobotout = false
     if (state_timer == 0){ //Make a hitbox 10 frames after entering state 1
-		spawn_hit_fx( x, y, 143 );
-		sound_play(asset_get("sfx_ell_big_missile_fire"));
-        create_hitbox(AT_DSPECIAL, 4, x, y); //Spawns NSPECIAL hitbox 1 at article's position. Hitboxes MUST be projectiles for articles
+		//spawn_hit_fx( x, y, 143 );
+		spawn_hit_fx( x, y - 20, 157 );
+		sound_play(asset_get("sfx_absa_kickhit"));
+        create_hitbox(AT_DSPECIAL, 4, x, y - 20); //Spawns NSPECIAL hitbox 1 at article's position. Hitboxes MUST be projectiles for articles
 	}
 	if (state_timer == 1){
 		player_id.move_cooldown[AT_DSPECIAL] = 150;

@@ -18,8 +18,8 @@ set_window_value(AT_UTILT, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
 set_window_value(AT_UTILT, 2, AG_WINDOW_SFX_FRAME, 13);
 
 set_window_value(AT_UTILT, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 17);
-set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 
 
@@ -87,6 +87,6 @@ set_hitbox_value(AT_UTILT, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_UTILT, 2, HG_TECHABLE, 1);
-set_hitbox_value(AT_UTILT, 2, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_UTILT, 2, HG_HITSTUN_MULTIPLIER, 1.4);
 
 

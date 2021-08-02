@@ -7,12 +7,24 @@ hit_player_obj = self
 }
 
 
+
+
 if state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND {
 	 	uspechit = 0
    attacking = 0
 	
 }else {
 	attacking = 1
+}
+
+if !hitpause {
+   snox += floor(((x-44*spr_dir)-snox)/5)
+   if (attacking and attack != AT_NSPECIAL) or !attacking {
+   snoy += floor((y-56-snoy)/5)
+   }
+   if attacking and attack == AT_NSPECIAL {
+   	snoy += floor((y-snoy)/5)
+   }
 }
 
 if get_gameplay_time() < 36 {

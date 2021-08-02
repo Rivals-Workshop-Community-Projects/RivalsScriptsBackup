@@ -4,11 +4,11 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-patch_ver = "1.31";
-patch_day = "JUN";
+patch_ver = "1.35";
+patch_day = "JUL";
 patch_month = "29";
  
-var num_alts = 22;
+var num_alts = 24;
 var alt_cur = get_player_color(player);
  
  
@@ -37,6 +37,8 @@ alt_name[18] = "two paths";
 alt_name[19] = "void";
 alt_name[20] = "Vaporwave";
 alt_name[21] = "Golden Fool";
+alt_name[22] = "Dregun";
+alt_name[23] = "Riptide";
  
  
  
@@ -57,8 +59,8 @@ rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
  
 for(i = 0; i < num_alts; i++){
 	var draw_color = (i == alt_cur) ? c_white : c_gray;
-	var draw_x = temp_x + 2 + 8 * i;
-	rectDraw(draw_x, temp_y + 137, draw_x + 5, temp_y + 140, draw_color);
+	var draw_x = temp_x + 2 + 7 * i;
+	rectDraw(draw_x, temp_y + 137, draw_x + 4, temp_y + 140, draw_color);
 }
  
 draw_set_halign(fa_left);

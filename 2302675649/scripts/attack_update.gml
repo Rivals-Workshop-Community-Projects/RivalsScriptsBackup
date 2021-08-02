@@ -51,12 +51,13 @@ switch (attack)
     case AT_EXTRA_1:
         tutDoneAdv[7] = true;
         can_jump = true;
-        if (taunt_down)
+        if (taunt_down && !jump_pressed)
         {
             window_timer = 0;
-            hud_offset = 84;
+            //hud_offset = 84;
             if (state_timer == 1)
             {
+                spawn_base_dust(x, y-floor(char_height/2), "anime", spr_dir);
                 sound_play(asset_get("sfx_ghost_glove"));
                 spawn_base_dust(floor(x), floor(y), "drip", spr_dir);
                 if (aura)
@@ -77,7 +78,7 @@ switch (attack)
         }
         else
         {
-            sound_stop(sound_get("drip"));
+            sound_stop(get_window_value(AT_EXTRA_1, 1, AG_WINDOW_SFX));
         }
         break;
     case AT_JAB:
@@ -720,6 +721,7 @@ switch (attack)
         case "land": dlen = 24; dfx = 0; dfg = 2620; break;
         case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
         case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+        case "anime": dlen = 1; dfx = 22; dfg = 2656; dust_color = 1; break;
     }
     var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
     newdust.dust_fx = dfx; //set the fx id

@@ -9,7 +9,7 @@ if intro_active && (state == PS_IDLE or state == PS_SPAWN) {
 	
 	
 	image_index = (state_timer*intro_speed) - plrnum;
-	if state_timer == 1 { 
+	if state_timer == 2 { 
 		sound_play(sound_get("horno"))
 	}
 	if image_index >= image_number-1 {intro_active = 0;}

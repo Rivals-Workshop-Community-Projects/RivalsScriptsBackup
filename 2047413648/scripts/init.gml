@@ -40,7 +40,7 @@ walk_accel = 0.5;
 walk_turn_time = 4;
 initial_dash_time = 10;
 initial_dash_speed = 6;
-dash_speed = 4.8;
+dash_speed = 6;
 dash_turn_time = 6;
 dash_turn_accel = 0.4;
 dash_stop_time = 6;
@@ -177,3 +177,5 @@ sprite_change_offset("lighten", 1000, 1000);
 
 darken = hit_fx_create( sprite_get( "darken" ), 10);
 sprite_change_offset("darken", 1000, 1000);
+
+sprite_change_offset("slosh", 200, 200);

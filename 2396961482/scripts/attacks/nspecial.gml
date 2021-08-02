@@ -73,7 +73,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 20);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 1.1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, lanternfx);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_infinidagger"));//sfx_ice_shatter_big
+set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_clairen_fspecial_slash"));//sfx_ice_shatter_big
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("nspecial2_proj"));
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_MASK, sprite_get("nspecial2_proj"));
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 90);

@@ -45,23 +45,26 @@ if my_hitboxID.attack == AT_FSTRONG {
 
 if (my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_DSTRONG or my_hitboxID.attack == AT_USTRONG) {
     
-    with hit_player_obj {
-    if get_player_damage(player) >= 70/(knockback_adj*knockback_adj) {
-        with other {
-            sound_play(sound_get("bat2"),false,noone,1)	
-        }
-    }
-    }
+            if voiced == 1 {
+               sound_play(sound_get("bat2"),false,noone,1)	
+            } else {
+                sound_play(asset_get("sfx_blow_heavy1"),false,noone,1.4,0.8)	
+            }
+
 }
 
 if (my_hitboxID.attack == AT_FAIR and my_hitboxID.damage == 12 ) {
     
-            sound_play(sound_get("bat2"),false,noone,1)	
+            if voiced == 1 {
+               sound_play(sound_get("bat2"),false,noone,1)	
+            } else {
+                sound_play(asset_get("sfx_blow_heavy1"),false,noone,1.2,0.8)		
+            }
 
 }
 
 if my_hitboxID.type == 1 && my_hitboxID.damage >= 8 {
-    sound_play(asset_get("sfx_kragg_rock_land"),false,noone, 0.7 + my_hitboxID.damage/20)
+    sound_play(asset_get("sfx_kragg_rock_land"),false,noone, 0.7 + my_hitboxID.damage/20, 1.1 - random_func(5,200,true)/100)
    if get_gameplay_time() %2 == 0 {
             sound_play(asset_get("sfx_shovel_hit_heavy2"),false,noone, 0.5 + my_hitboxID.damage/20)
    } else {

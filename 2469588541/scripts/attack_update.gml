@@ -181,9 +181,14 @@ switch (attack)
                 break;
 
             case 4:
-                if (window_timer == 6 && !free) hsp = -8*spr_dir;
+                if (window_timer == 10 && !free) hsp = -8*spr_dir;
                 can_jump = has_hit && !was_parried;
                 can_wall_jump = true;
+                if (free)
+                {
+                    hsp /= 1.15;
+                    vsp /= 1.05;
+                }
                 break;
         }
         break;

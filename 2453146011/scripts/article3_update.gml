@@ -1,9 +1,18 @@
 // a3 update
 
+
+//#region Dspec2
+if(player_id.attack == AT_DSPECIAL_2)
+{
+	dspec2 = true;
+}
+
+//#endregion
+
 //#region Sprite and mask
 sprite_index = sprite_get("dspecial_proj_1");
 despawn_timer--;
-if(despawn_timer <= 30) clock_timer++;
+if(despawn_timer <= 30 && !dspec2) clock_timer++;
 if(despawn_timer == 30) sound_play(sound_get("monarch_countdown"),false,0,1.5);
 
 afterimage_array[0] = {x:x,y:y,sprite_index:sprite_index,image_index:image_index,spr_dir:spr_dir};
@@ -44,6 +53,28 @@ black_screen = player_id.black_screen;
 
 //#endregion
 
+
+//#region portal delay
+if(portal_delay > 1)
+{
+	portal_delay--;
+
+	hsp = 0;
+	vsp = 0;
+	
+	visible = false;
+}
+else if(portal_delay == 1)
+{
+	portal_delay--;
+	
+	hsp = old_hsp;
+	vsp = old_vsp;
+	
+	visible = true;
+}
+
+//#endregion
 
 
 //if(despawn_timer <= 30 && !grounded) ignores_walls = false;
@@ -147,7 +178,7 @@ if(shake_timer > 0){
 
 //#region outside stage
 
-if(x < 0 || x > room_width || y > room_height || player_id.state == PS_RESPAWN)
+if(x < 0 || x > room_width || y > room_height || player_id.state == PS_RESPAWN || (dspec2 && (player_id.state != PS_ATTACK_AIR && player_id.state != PS_ATTACK_GROUND)))
 {
     // Reset stuff
     sound_stop(sound_get("monarch_countdown"))

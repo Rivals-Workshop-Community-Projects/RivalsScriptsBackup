@@ -55,22 +55,22 @@ if(state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD || state == PS_AIR_DODG
     gpu_set_blendmode(bm_normal);
 }
 
-// Portal line
-if(portal_1 != noone && portal_2 != noone ){
-	if(portal_1.portal_white > 0 || portal_2.portal_white > 0){
+// // Portal line
+// if(portal_1 != noone && portal_2 != noone ){
+// 	if(portal_1.portal_white > 0 || portal_2.portal_white > 0){
 	
-		var pTime = portal_1.portal_white > portal_2.portal_white ? portal_1.portal_white : portal_2.portal_white;
+// 		var pTime = portal_1.portal_white > portal_2.portal_white ? portal_1.portal_white : portal_2.portal_white;
 	
-		var FirstPort = last_pcolor == 2 ? portal_1 : portal_2;
-		var SecondPort = last_pcolor == 1 ? portal_1 : portal_2;
+// 		var FirstPort = last_pcolor == 2 ? portal_1 : portal_2;
+// 		var SecondPort = last_pcolor == 1 ? portal_1 : portal_2;
 		
-		gpu_set_blendmode(bm_add);
-		draw_set_alpha(pTime/15);
-		draw_triangle(FirstPort.x - (FirstPort.rightWall ? 5 : FirstPort.leftWall ? -5 : 0), FirstPort.y - (FirstPort.isFloor ? 8 : FirstPort.isCeil ? -4 : 0), SecondPort.x - (SecondPort.rightWall ? 5 : SecondPort.leftWall ? -5 : 0), SecondPort.y- (SecondPort.isFloor ? 8 : FirstPort.isCeil ? -4 : 0), last_pcolor == 1 ? monRed : monLightBlue, last_pcolor == 2 ? monRed : monLightBlue,pTime/2);
-		draw_set_alpha(1);
-		gpu_set_blendmode(bm_normal);
-	}
-}
+// 		gpu_set_blendmode(bm_add);
+// 		draw_set_alpha(pTime/15);
+// 		draw_triangle(FirstPort.x - (FirstPort.rightWall ? 5 : FirstPort.leftWall ? -5 : 0), FirstPort.y - (FirstPort.isFloor ? 8 : FirstPort.isCeil ? -4 : 0), SecondPort.x - (SecondPort.rightWall ? 5 : SecondPort.leftWall ? -5 : 0), SecondPort.y- (SecondPort.isFloor ? 8 : FirstPort.isCeil ? -4 : 0), last_pcolor == 1 ? monRed : monLightBlue, last_pcolor == 2 ? monRed : monLightBlue,pTime/2);
+// 		draw_set_alpha(1);
+// 		gpu_set_blendmode(bm_normal);
+// 	}
+// }
 
 
 // Fspecial line
@@ -91,6 +91,15 @@ if(knife_line_timer > 0){
 	gpu_set_blendmode(bm_add);
 	draw_set_alpha(knife_line_timer/15);
 	draw_triangle(last_knife_pos.x , last_knife_pos.y , last_player_pos.x , last_player_pos.y,  monRed, monLightBlue,knife_line_timer/2);
+	draw_set_alpha(1);
+	gpu_set_blendmode(bm_normal);
+}
+
+// Teleport line
+if(portal_line_timer > 0){
+	gpu_set_blendmode(bm_add);
+	draw_set_alpha(portal_line_timer/80);
+	draw_triangle(current_teleport_x + (spr_dir*16), current_teleport_y-char_height/2-10, last_teleport_x , last_teleport_y-char_height/2, monLightBlue, monLightBlue,portal_line_timer);
 	draw_set_alpha(1);
 	gpu_set_blendmode(bm_normal);
 }

@@ -84,6 +84,18 @@ else if(state != PS_RESPAWN)//Once game has started start the timer.
     }
     else if(!hitpause)
     {
+        if(parasiteLevel == 0)
+        {
+            walk_speed = 5.05;
+            initial_dash_speed = 7.8;
+            dash_speed = 6.8;
+        }
+        if(parasiteLevel == 1)
+        {
+            walk_speed = 6.0;
+            initial_dash_speed = 9.5;
+            dash_speed = 9.0;
+        }
         if(parasiteTimer > 60*90)
         {
             parasiteLevel = 2;
@@ -106,11 +118,24 @@ if(hit_player_obj != -4 && hit_player_obj.state == PS_RESPAWN)
     parasiteTimer2 = 60*10;
     parasiteTimerMax = parasiteTimer2;
 }
+
+if(hit_player_obj != -4)
+{
+    if(hit_player_obj.activated_kill_effect && hitpause)
+    {
+        with(obj_article2)
+        {
+            if(player == other.player)
+                state = 2;
+        }
+    }
+}
+
 //Debug things
 if (get_training_cpu_action() != CPU_FIGHT) 
 {
-    if(dbg_ParasiteMax)
-        parasiteTimer = 60*60;
+    if(dbg_ParasiteStage != 0)
+        parasiteTimer = 60*(30*(dbg_ParasiteStage-1)+1);
 
     if(dbg_ParasiteDeath)
     {
@@ -125,10 +150,15 @@ if (get_training_cpu_action() != CPU_FIGHT)
         if(up_down)
         {
             dbg_Timer = 80;
-            dbg_Msg = "Level 3 Parasite" + (!dbg_ParasiteMax ? " enabled" : " disabled");
-            dbg_ParasiteMax = !dbg_ParasiteMax;
-            if(!dbg_ParasiteMax)
+            dbg_ParasiteStage ++;
+            if(dbg_ParasiteStage > 3)
+            {
+                dbg_ParasiteStage = 0;
                 parasiteTimer = 0;
+                dbg_Msg = "Deactivated Set Parasite.";
+            }
+            else
+                dbg_Msg = "Level " + string(dbg_ParasiteStage) + " Parasite activated.";
         }
         if(down_down)
         {

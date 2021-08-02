@@ -53,6 +53,15 @@ switch (get_player_color(player)) {
 		set_character_color_shading( 1, 0.8 );
 		set_character_color_shading( 2, 2 );
 		break;
+	case 22:
+		set_character_color_shading( 0, 1.2 );		
+		set_character_color_shading( 1, 2 );		
+		set_character_color_shading( 2, 1.2 );		
+		break;
+	case 23:
+		set_character_color_shading( 0, 1.2 );
+		set_character_color_shading( 2, 1.2 );
+		break;
 	default:
 		break;
 }

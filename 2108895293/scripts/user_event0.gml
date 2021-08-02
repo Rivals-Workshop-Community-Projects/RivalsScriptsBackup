@@ -18,6 +18,25 @@
 				var lb6 = create_hitbox( AT_FSPECIAL, 1, latest_light_sentry.x, latest_light_sentry.y );
 				var lb7 = create_hitbox( AT_FSPECIAL, 1, latest_light_sentry.x, latest_light_sentry.y );
 				var lb8 = create_hitbox( AT_FSPECIAL, 1, latest_light_sentry.x, latest_light_sentry.y );
+					lb1.leader_hb = lb1;
+					lb2.leader_hb = lb1;
+					lb3.leader_hb = lb1;
+					lb4.leader_hb = lb1;
+					lb5.leader_hb = lb1;
+					lb6.leader_hb = lb1;
+					lb7.leader_hb = lb1;
+					lb8.leader_hb = lb1;
+					
+					lb1.hblist[1] = lb1;
+					lb1.hblist[2] = lb2;
+					lb1.hblist[3] = lb3;
+					lb1.hblist[4] = lb4;
+					lb1.hblist[5] = lb5;
+					lb1.hblist[6] = lb6;
+					lb1.hblist[7] = lb7;
+					lb1.hblist[8] = lb8;
+				
+				
 				
 				if (parried_storage!=-4){
 					print_debug("parriedstorage happened");
@@ -84,15 +103,25 @@
 				}
 				}
 				
-				lb1.vsp = -3;
-				lb2.vsp = 3;
-				lb3.vsp = -1.6;
-				lb4.vsp = 1.6;
-				lb5.vsp = -3.5;
-				lb6.vsp = 3.5;
-				lb7.vsp = -0.8;
-				lb8.vsp = 0.8;
-				
+				//from the top, number
+				lb1.vsp = -2.7;//2 
+				lb2.vsp = 2.7;//7
+				lb3.vsp = -1.8;//3
+				lb4.vsp = 1.8;//6
+				lb5.vsp = -3.5;//1
+				lb6.vsp = 3.5;//8
+				lb7.vsp = -0.65;//4
+				lb8.vsp = 0.65;//5
+				/* old
+				lb1.vsp = -3;//2 
+				lb2.vsp = 3;//7
+				lb3.vsp = -1.6;//3
+				lb4.vsp = 1.6;//6
+				lb5.vsp = -3.5;//1
+				lb6.vsp = 3.5;//8
+				lb7.vsp = -0.8;//4
+				lb8.vsp = 0.8;//5
+				*/
 				
 				
 				

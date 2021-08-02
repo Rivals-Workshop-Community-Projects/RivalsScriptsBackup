@@ -13,10 +13,18 @@ if ((attack == AT_NSPECIAL || attack == AT_DSPECIAL || attack == AT_FSPECIAL || 
 
 }
 
-if (attack == AT_NSPECIAL && window == 2 && window_timer == 16){ //Create article 1 for neutral special
-    //hasNote = 1;
+if (attack == AT_NSPECIAL && window == 2 && window_timer == 1){ //Create article 1 for neutral special
+    hasNote = 1;
     var musicnote = instance_create(x-25*spr_dir,y-52,"obj_article1");
     musicnote.depth = 3;
+    /*
+    move_cooldown[AT_NSPECIAL] = 45;
+    var note = create_hitbox(AT_NSPECIAL, 1, x+32*spr_dir, y-40);
+    note.vsp = -1.5;
+    note.hsp = 3.5 * spr_dir;
+    */
+    
+    
     if (singsfxCounter <= 0) {
         singsfxCounter = 75;
     }
@@ -33,17 +41,30 @@ if (attack == AT_JAB && window == 1){
     clear_button_buffer( PC_ATTACK_PRESSED );
 }
 
-if (attack == AT_DSPECIAL && window == 2 && window_timer == 16){ //Create article 2 for down special
+if (attack == AT_DSPECIAL){ //Create article 2 for down special
 
-    var song = instance_create(x,y,"obj_article2");
-    song.depth = 6;
-    
-    if (free){
-        songAir = 1;
-        move_cooldown[AT_DSPECIAL] = 99999;
-    } else{
-        move_cooldown[AT_DSPECIAL] = 40;
+    if (window == 1 && window_timer == 1){
+        
+        if (floating){
+            can_fast_fall = 1;
+		    floating = -1;
+        }
+        
     }
+
+    if (window == 2 && window_timer == 16){
+        var song = instance_create(x,y,"obj_article2");
+        song.depth = 6;
+        
+        if (free){
+            songAir = 1;
+            move_cooldown[AT_DSPECIAL] = 99999;
+        } else{
+            move_cooldown[AT_DSPECIAL] = 40;
+        }
+    }
+
+
 
 }
 
@@ -130,11 +151,27 @@ if (attack == AT_USTRONG){
 }
 
 if (attack == AT_USPECIAL){
-    //floating = 0;
+    
+    if (window == 1 && window_timer == 1){
+        set_attack_value(AT_USPECIAL, AG_SPRITE, sprite_get("uspecial"));
+        
+        if (floating){
+            can_fast_fall = 1;
+		    floating = -1;
+        }
+        
+    }
     
     if (window == 4){
         can_wall_jump = true;
     }
+    
+    if (window == 3 && window_timer == 7 && in_songfield){
+        set_attack_value(AT_USPECIAL, AG_SPRITE, sprite_get("uspecial_song"));
+        sound_play(asset_get("sfx_bird_cheer"));
+    }
+    
+    
 }
 
 if (attack == AT_TAUNT && window == 3){
@@ -171,18 +208,12 @@ if (floatCancel){
 
 
 //sfx
-if (attack == AT_FSTRONG && window == 2 && window_timer == 7){
-    
-    sound_play(asset_get("sfx_swipe_medium2"));
-    
-    if (voiceEnabled){
-        sound_play(sound_get("pomme_scream4"));
-    } else {
-        sound_play(asset_get("sfx_may_arc_hit"));
-    }
+
+if (attack == AT_FSTRONG && window == 2 && window_timer == 15 && !has_hit){
+    sound_play(asset_get("sfx_shovel_hit_light1"));
 }
 
-if (attack == AT_USTRONG && window == 2 && window_timer == 15){
+if (attack == AT_USTRONG && window == 2 && window_timer == 9){
 
     sound_play(asset_get("sfx_swipe_medium2"));
     

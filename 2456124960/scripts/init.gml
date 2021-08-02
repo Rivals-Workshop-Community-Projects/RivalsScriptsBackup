@@ -40,6 +40,7 @@ gliderOffset = 0;
 
 canMakePlat = 1;
 madePlat = 0;
+myPlatform = noone;
 
 introTimer = -16;
 introTimer2 = 0;
@@ -65,6 +66,8 @@ smolFspec = 0;
 outlineR = 0;
 outlineG = 0;
 outlineB = 0;
+outlineDirection = 0;
+timeUntilFlow = 0;
 
 fastFSpec = false;
 

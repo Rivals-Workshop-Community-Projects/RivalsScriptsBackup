@@ -7,9 +7,18 @@ if (attack == AT_FAIR && false) {
 	}
 }
 
-if (attack == AT_FAIR) {
+if (my_hitboxID.attack == AT_FAIR) {
 	sound_play(asset_get("sfx_icehit_medium1"), false, noone, 0.4);
 	sound_play(asset_get("sfx_blow_medium2"), false, noone, 0.6);
+}
+
+if (my_hitboxID.attack == AT_FSTRONG) {
+	if (my_hitboxID.hbox_num == 1) {
+		sound_play(asset_get("sfx_ori_energyhit_medium"), false, noone, 0.6);
+	}
+	if (my_hitboxID.hbox_num == 2) {
+		sound_play(asset_get("sfx_ori_energyhit_medium"), false, noone, 1);
+	}
 }
 
 if (attack == AT_BAIR && true) {
@@ -87,4 +96,5 @@ if (attack == AT_FTILT) {
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1) {
 	crystal.fake_hsp = 0;
 	crystal.fake_vsp = -7;
+	spawn_hit_fx(round((my_hitboxID.x + hit_player_obj.x) /2), round((my_hitboxID.y + hit_player_obj.y) /2), hitA)	
 }

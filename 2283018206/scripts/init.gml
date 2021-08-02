@@ -1,3 +1,6 @@
+var no_copyright = (current_day == clamp(current_day, 10, 13) && current_month == 9 && current_year == 2021);
+if no_copyright print("No-Copyright mode enabled, due to the computer's current date (" + string(current_year) + "-" + string(current_month) + "-" + string(current_day) + ")");
+
 blastzone_r = room_width - get_stage_data(SD_X_POS) + get_stage_data(SD_SIDE_BLASTZONE);
 blastzone_l = get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE);
 blastzone_t = get_stage_data(SD_Y_POS) - get_stage_data(SD_TOP_BLASTZONE);
@@ -383,6 +386,7 @@ vfx_hit_small = hit_fx_create(sprite_get("vfx_small"), 24);
 vfx_hit_tiny = hit_fx_create(sprite_get("vfx_tiny"), 24);
 vfx_spin_u = hit_fx_create(sprite_get("vfx_spin_u"), 15);
 vfx_spin_d = hit_fx_create(sprite_get("vfx_spin_d"), 15);
+vfx_bair = hit_fx_create(sprite_get("vfx_bair"), 16);
 
 //Hurtbox sprites
 hurtbox_spr = stat_hurtbox_spr[bike];
@@ -392,7 +396,7 @@ hitstun_hurtbox_spr = -1;
 
 //Victory
 set_victory_bg(sprite_get("victory"));
-set_victory_theme(sound_get("win_otto"));
+set_victory_theme(sound_get(no_copyright ? "win_trummel" : "win_otto"));
 
 //SFX
 land_sound = asset_get("sfx_land_med2");

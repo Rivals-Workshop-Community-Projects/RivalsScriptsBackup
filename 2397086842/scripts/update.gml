@@ -159,8 +159,17 @@ with oPlayer if (activated_kill_effect) {
   		farx = floor((x - hit_player_obj.x)/1.5)
   		fary = floor((y - hit_player_obj.y)/1.5)
   		move_cooldown[AT_NSPECIAL_2] = 130
-  		  	sound_play(sound_get("bat2"))
-  			sound_play(sound_get("finish"),false,noone,2)
+  		
+  		if voiced == 1 {
+               sound_play(sound_get("bat2"),false,noone,1)	
+               sound_play(sound_get("finish"),false,noone,2)
+            } else {
+            	sound_play(asset_get("sfx_bird_nspecial"),false,noone,1)
+                sound_play(asset_get("sfx_spin"),false,noone,2,0.6)	
+                sound_play(sound_get("finishm"),false,noone,1.4)
+            }
+  		  	
+  			
   	}
   }
 }
@@ -185,16 +194,20 @@ if killwho != 0 && move_cooldown[AT_NSPECIAL_2] < 80 && !hitpause {
 			if get_gameplay_time() % 4 == 3 {
 					sound_play(sound_get("RT"),false,noone,1)	
 			}
+			} else {
+				sound_play(asset_get("sfx_frog_gong_hit"),false,0,5)
 			}
 		}
 	}
 	
 	if killtimer == 1 {
+			sound_play(asset_get("sfx_bird_sidespecial"),false,noone,1)
 		spawn_hit_fx (killwho.x,killwho.y - 30, 304)
 		       sound_play(sound_get("b1"),false,noone,1)
                sound_play(asset_get("sfx_clairen_tip_strong"),false,noone,1.2)
                sound_play(asset_get("sfx_absa_whip3"),false,noone,1.2)
 	}
+	
 	killtimer += 1
 	killwho.state_timer -= 1
 	killwho.fall_through = true
@@ -387,12 +400,12 @@ if get_player_color(player) == 12 {
 }
 
 
-if get_gameplay_time() <= 120 && voiced == 1 {
+if get_gameplay_time() <= 120 && voiced == 0 {
 
 
 	if taunt_down {
 		sound_play(asset_get("sfx_gem_collect"));
-		voiced = 0
+		voiced = 1
 	}
 	
 }

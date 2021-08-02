@@ -356,11 +356,6 @@ with phone{
 	initTipWords("Your ball and bike are actually the exact same thing. So, use a Bike Special while the ball is out, and you'll teleport to the ball! You can do this at any time when the ball projectile is in play, so get creative!");
 	initTipImage_ext(ball_comp_spr, -5, fa_center, 1, c_white, 0, 100, 100, 100, 30);
 	
-	initTip("Repeated Bike Specials");
-	initTipWords("USpecial and FSpecial normally cause pratfall when ending in midair, but you can avoid this once per airtime by hitting an enemy.");
-	initTipImage(other.spr_uspecial, -5, fa_left, 1, c_white, 0);
-	initTipImage(other.spr_fspecial, -5, fa_right, 1, c_white, 0);
-	
 	initTip("DSpecial's Variants");
 	initTipWords("The regular DSpecial is a downward slam with the bike. If performed while grounded, bikeless, and with no ball in play, it's instead a quick bike mount.");
 	initTipImage(dspecial_air_spr, -5, fa_left, 1, c_white, 0);
@@ -379,6 +374,10 @@ with phone{
 	initTipWords("While performing a DTilt or DAttack, you can go over the edge of the stage or platform - and DTilt even lets you cancel the move early to combo.");
 	initTipImage(other.spr_dtilt, -5, fa_left, 1, c_white, 0);
 	initTipImage(other.spr_dattack, -5, fa_right, 1, c_white, 0);
+	
+	initTip("BAir Attack Cancel");
+	initTipWords("After hitting an enemy with BAir, jumping/attacking and holding left or right will cause Otto to turn around - so you can pursue with a FAir.");
+	initTipImage(other.spr_bair, -5, fa_center, 1, c_white, 0);
 	
 }
 
@@ -405,6 +404,38 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	
+	initPatch("1.26", "01 August, 2021");
+	initPatchWords("NSpecial - Nerfs, Bugfixes");
+	initPatchWords_ext("You can no longer spin-bounce the ball when it's in the bouncing state after hitting an opponent.
+	After it gets hit by something, the ball cannot get hit again for 15 frames (not counting hitpause).", fa_left, c_gray, 1, 0);
+	initPatchWords("FTilt - Buffs");
+	initPatchWords_ext("Startup 12 --> 9.", fa_left, c_gray, 1, 0);
+	
+	initPatch("1.25", "31 July, 2021");
+	initPatchWords("BAir - Bugfixes");
+	initPatchWords_ext("Added missing hurtbox. (oops)", fa_left, c_gray, 1, 0);
+	
+	initPatch("1.24", "31 July, 2021");
+	initPatchWords("BAir - Reworks");
+	initPatchWords_ext("Attack replaced with Otto 1's BAir!", fa_left, c_gray, 1, 0);
+	initPatchWords("UAir - Reworks");
+	initPatchWords_ext("Attack replaced with an altered version of Otto 2's old BAir!", fa_left, c_gray, 1, 0);
+	initPatchWords("USpecial, FSpecial - Nerfs, Buffs");
+	initPatchWords_ext("These moves now have pratfall even on hit.
+	USpecial knockback scaling 0.8 --> 0.95.", fa_left, c_gray, 1, 0);
+	initPatchWords("NSpecial - Buffs");
+	initPatchWords_ext("Charge time for spinning ricochet 20f --> 10f, and no longer increases by 10f for each repeated use.", fa_left, c_gray, 1, 0);
+	initPatchWords("Bike - Adjustments");
+	initPatchWords_ext("Otto now leaves bike state when wall jumping.", fa_left, c_gray, 1, 0);
+	initPatchWords("DAir - Bugfixes");
+	initPatchWords_ext("Made adjustments to prevent an infinte stall.", fa_left, c_gray, 1, 0);
+	
+	initPatch("1.23", "29 July, 2021");
+	initPatchWords("Otto is in the upcoming Riptide tournament's Workshop side event! This patch just gets a couple of things ready for that event.")
+	initPatchWords("Cosmetics");
+	initPatchWords_ext("Seasonal alt replaced with a special Riptide-colored alt.
+	To avoid copyright issues, during 10-13 September, 2021, Otto's victory theme will be replaced with Trummel's.", fa_left, c_gray, 1, 0);
 	
 	initPatch("1.22", "16 February, 2021");
 	initPatchWords("DSpecial - Nerfs, Adjustments");

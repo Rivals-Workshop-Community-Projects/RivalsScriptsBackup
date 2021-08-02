@@ -1,3 +1,56 @@
+//fs
+if "fs_hit" in self && fs_hit && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == 49 {
+    var fs_anim_speed = 5;
+    var fs_intro_time = 40;
+    var fs_index = (fs_timer - fs_intro_time)/fs_anim_speed;
+    var lonk1 = sprite_get("lonk1")
+    var lonk2 = sprite_get("lonk2")
+    var lonk3 = sprite_get("lonk3")
+    var lonk4 = sprite_get("lonk4")
+    
+    
+    
+    var fs_spr = asset_get("empty_sprite");
+    var fs_index_mod = 0;
+    var draw_hurt = false;
+    var draw_hurt_outtro = false;
+    if fs_index < 0 {
+        draw_set_alpha(fs_timer/fs_intro_time)
+        draw_rectangle_color(0, 0, 1000, 1000, c_white,c_white,c_white,c_white, false)
+    } else if fs_index < 14 {
+        fs_spr = lonk1;
+        draw_hurt = true;
+    } else if fs_index < 34 {
+        fs_spr = lonk2;
+        fs_index_mod = -14;
+    } else if fs_index < 60 {
+        fs_spr = lonk3;
+        fs_index_mod = -34;
+    } else if fs_index < 89 {
+        fs_spr = lonk4;
+        fs_index_mod = -60;
+        if fs_index > 74 && fs_index < 78 draw_hurt_outtro = true;
+    } else {
+        fs_spr = asset_get("empty_sprite")
+    }
+    draw_sprite_ext(fs_spr, fs_index + fs_index_mod, -20, -20, 1, 1, 0, c_white, 1)
+    
+    if draw_hurt {
+        draw_sprite_ext(fs_hitID.sprite_index, 0, 460, clamp(-260 + (fs_timer - fs_intro_time)*35, -1000, 290), 1, 1, 0, c_white, 1)
+    }
+    
+    if draw_hurt_outtro {
+        draw_sprite_ext(fs_hitID.sprite_index, 0, 570, 210, 1, 1, 0, c_white, 1)
+    }
+    
+    if fs_timer >= 430 && (fs_timer-430)/2 < 16 {
+        draw_sprite_ext(sprite_get("stock_explosion_large"), (fs_timer-430)/2, 590, 190, 1, 1, 0, c_white, 1)
+        draw_sprite_ext(sprite_get("stock_explosion_large"), (fs_timer-430)/2, 630, 190, 1, 1, 0, c_white, 1)
+    }
+}
+
+
+
 //abyss gui code
 ab_hud_x = temp_x;
 ab_hud_y = temp_y;

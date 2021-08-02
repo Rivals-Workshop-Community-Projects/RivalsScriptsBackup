@@ -60,7 +60,8 @@ set_hitbox_value(ca, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(ca, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(ca, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(ca, 1, HG_PROJECTILE_PARRY_STUN, 1);
-
+set_hitbox_value(ca, 1, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(ca, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(ca, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(ca, 2, HG_WINDOW, 99);
 set_hitbox_value(ca, 2, HG_LIFETIME, 4);

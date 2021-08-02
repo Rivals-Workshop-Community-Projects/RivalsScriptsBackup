@@ -52,7 +52,7 @@ if (attack == AT_USPECIAL) {
 		if destroyed sound_play(break_sound)
     }
 
-    if (x < 0 || x > room_width || y > room_height) {
+    if (x < 0 ||  y > room_height) {
         // Destroy when offstage
         destroyed = true;
     }

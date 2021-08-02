@@ -924,3 +924,8 @@ wily_robotmaster_img = sprite_get("owen_wily");
 // pacman support
 Namco_Taunt = sprite_get("owen_pacman");
 Namco_Taunt_Sound = sound_get("vineboom")
+
+// dialogue buddy support
+
+//diag_portrait=sprite_get(""); // This will allow you to put any custom portrait onto the dialogue buddy!
+

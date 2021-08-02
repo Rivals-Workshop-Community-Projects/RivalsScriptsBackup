@@ -20,12 +20,25 @@ if (my_hitboxID.attack == AT_BAIR){
 }
 if (my_hitboxID.attack == AT_FAIR){
 	if (hit_player_obj.should_make_shockwave){
-		sound_play(asset_get("sfx_blow_heavy2"));
+		//sound_play(asset_get("sfx_blow_heavy2"));
+		
+		//sound_play(sound_get("shatterlight"));
 		
 		hitstop = round(hitstop*1.2)
 		hitstop_full = round(hitstop_full*1.2)
 		hit_player_obj.hitstop = round(hit_player_obj.hitstop*1.2)
 		hit_player_obj.hitstop_full = round(hit_player_obj.hitstop_full*1.2)
+	}
+}
+if (my_hitboxID.attack == AT_FTILT){
+	if (my_hitboxID.hbox_num==1){
+		sound_play(sound_get("click2"));
+	}
+	if (my_hitboxID.hbox_num==2){
+		sound_play(sound_get("click2"));
+	}
+	if (my_hitboxID.hbox_num==3){
+		sound_play(sound_get("click3"));
 	}
 }
 if (my_hitboxID.attack == AT_DAIR && my_hitboxID.type == 2){
@@ -38,7 +51,7 @@ if (my_hitboxID.attack == AT_DSPECIAL_AIR && my_hitboxID.hbox_num == 1){
 	}
 }
 
-if (my_hitboxID.type == 1){
+//if (my_hitboxID.type == 1){ //deprecated
 	if (latest_light_sentry != -4){
 		if (point_distance(x, y-(char_height/2), latest_light_sentry.x, latest_light_sentry.y) <= 80 ||
 			point_distance(hit_player_obj.x, hit_player_obj.y-(hit_player_obj.char_height/2), latest_light_sentry.x, latest_light_sentry.y) <= 80 ||
@@ -63,4 +76,4 @@ if (my_hitboxID.type == 1){
 			}
 		}
 	}
-}
+//}

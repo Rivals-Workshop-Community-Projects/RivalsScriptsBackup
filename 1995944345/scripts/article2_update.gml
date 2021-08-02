@@ -11,7 +11,7 @@ image_yscale = image_xscale
 	
 	with (oPlayer) {
 	
-		if id != other.player_id && !mycolich_spored && place_meeting(x,y,other) && mycolich_type == 0 {
+		if id != other.player_id && !mycolich_spored && place_meeting(x,y,other){
 		
 			mycolich_spored = 1;
 			mycolich_player = other.player_id.player;

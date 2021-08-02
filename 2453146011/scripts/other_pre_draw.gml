@@ -1,5 +1,5 @@
 var otherexists;
-otherexists = instance_exists(other_player_id)
+otherexists = "other_player_id" in self;
 
 if !otherexists exit;
 if (otherexists and (!("lite" in other_player_id) or other_player_id.lite)) exit;
@@ -35,7 +35,7 @@ if(hit_player_obj == other_player_id && hitpause && !has_hit_player && last_mona
 	var i = 0;
 	repeat(100)
 	{
-	    other_afterimage_array[i] = -1;
+	    if(i != 0) other_afterimage_array[i] = -1;
 	    i++;
 	}
     

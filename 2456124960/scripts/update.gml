@@ -9,20 +9,37 @@ actionMeterFill = clamp(actionMeterFill, 0, 200);
 if (actionMeterFill > 199 && playedMeterSfx == 0) {
 	sound_play(asset_get("mfx_star"));
 	playedMeterSfx = 1;
+	timeUntilFlow = 30;
 	outlineR = 255;
 	outlineG = 128;
 	outlineB = 255;
 }
 
-if (outlineB > 0) {
-	outlineR -= 20;
-	outlineG -= 10;
-	outlineB -= 20;	
-}
+timeUntilFlow--;
+if (actionMeterFill > 199 && timeUntilFlow < 0) {
+	if (outlineDirection == 0) {
+		outlineR += 4.2;
+		outlineB += 4.6;
+	} else {
+		outlineR -= 4.2;
+		outlineB -= 4.6;
+	}
+	if (outlineR > 100) {
+		outlineDirection = 1;
+	} else if (outlineR < 5) {
+		outlineDirection = 0;
+	}
+} else {
+	if (outlineB > 0) {
+		outlineR -= 20;
+		outlineG -= 10;
+		outlineB -= 20;	
+	}
 
-if (outlineR < 0) {outlineR = 0;}
-if (outlineG < 0) {outlineG = 0;}
-if (outlineB < 0) {outlineB = 0;}
+	if (outlineR < 0) {outlineR = 0;}
+	if (outlineG < 0) {outlineG = 0;}
+	if (outlineB < 0) {outlineB = 0;}
+}
 
 outline_color = [ outlineR, outlineG, outlineB ];
 init_shader();
@@ -47,6 +64,7 @@ switch (get_player_color(player)) {
 	case 19:
 	case 20:
 	case 21:
+	case 22:
 		usesAltHud = 1;
 		break;
 	default:
@@ -98,8 +116,8 @@ if (state == PS_WALL_JUMP && state_timer < 16 && state_timer > 2) {
 	mySlide.depth = -10;
 }
 
-if (place_meeting(x, y + 2, asset_get("par_block")) || place_meeting(x, y + 2, asset_get("jumpthrough_32_obj")) || place_meeting(x, y + 2, asset_get("obj_stage_article_platform"))) {
-	canMakePlat = 1;
+if (!free && (place_meeting(x, y + 12, asset_get("par_block")) || place_meeting(x, y + 12, asset_get("jumpthrough_32_obj")) || place_meeting(x, y + 12, asset_get("obj_stage_article_platform")))) {
+	canMakePlat++;
 }
 
 if (state == PS_SPAWN) {
@@ -170,4 +188,17 @@ with (pHitBox) {
 				break;
 		}
     }
+}
+
+
+
+if(variable_instance_exists(id,"diag")) {
+//  ADDING REGULAR DIALOGUE
+
+    //Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!
+    diagchoice = [
+    "Alright, let's see what I can learn out of this match.",
+    "I can't afford to lose! I'm representing my world, so there's no way I can let myself look foolish.",
+    "Improvise. Overcome. Adapt.",
+    "I'd like this to be an honest match, so please don't hold in on FAir. For your own sake."]
 }

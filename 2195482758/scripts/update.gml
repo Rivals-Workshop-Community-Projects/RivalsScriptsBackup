@@ -69,6 +69,8 @@ if(instance_exists(asset_get("obj_article2")))
 	}
 }
 
+// HUD correction
+if abs(hud_offset) < 1 hud_offset = 0;
 
 
 // Intro

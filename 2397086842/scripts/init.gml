@@ -10,7 +10,7 @@ ncode1 = "Decendant of Sound Deity"
 ncode2 = "Capable of creating high shockwave as well "
 ncode3 = "as creating electric infused projectiles."
 
-voiced = 1 
+voiced = 0 
 
 fs_char_chosen_final_smash = "custom";
 

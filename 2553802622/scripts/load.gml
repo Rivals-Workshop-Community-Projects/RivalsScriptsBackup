@@ -15,7 +15,7 @@ sprite_change_offset("dashstop", 36, 72);
 sprite_change_offset("dashturn", 36, 72);
 
 sprite_change_offset("jumpstart", 32, 64);
-sprite_change_offset("jump", 32, 100);
+sprite_change_offset("jump", 44, 96);
 sprite_change_offset("doublejump", 32, 62);
 sprite_change_offset("walljump", 32, 100);
 sprite_change_offset("pratfall", 32, 62);

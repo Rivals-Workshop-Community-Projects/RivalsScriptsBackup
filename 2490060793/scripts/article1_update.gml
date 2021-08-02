@@ -3,7 +3,7 @@
 timer++;
 
 if (timer == 4 && !player_id.has_hit) || (hitstop == 0 && hitpause == true) {
-	var orb_hitbox = create_hitbox(AT_FSPECIAL, 3, round(x), round(y));
+	var orb_hitbox = create_hitbox(AT_NSPECIAL, 3, round(x), round(y));
         orb_hitbox.owner = id;
         orb_hitbox.spr_dir = sign(hsp);
 }
@@ -161,7 +161,7 @@ if (hitbox != noone) && (timer > 10) {
 		if hitbox.player_id != player_id is_opp = true;
         
         var is_tipper = false;
-        if (hitbox.player_id == player_id && !(hitbox.attack == AT_FSPECIAL || hitbox.attack == AT_DSPECIAL || hitbox.attack == AT_DTILT || hitbox.attack == AT_BAIR || hitbox.attack == AT_DATTACK || (hitbox.attack == AT_JAB && hitbox.hbox_num == 1))) {
+        if (hitbox.player_id == player_id && !(hitbox.attack == AT_NSPECIAL || hitbox.attack == AT_DSPECIAL || hitbox.attack == AT_DTILT || hitbox.attack == AT_BAIR || hitbox.attack == AT_DATTACK || (hitbox.attack == AT_JAB && hitbox.hbox_num == 1))) {
         	is_tipper = true;
         }
         
@@ -207,7 +207,7 @@ if (hitbox != noone) && (timer > 10) {
 			    }
 			    break;
 			    
-			    case AT_USPECIAL:
+			    case AT_FSPECIAL:
 			    tipper_num = 2;
 			    break;
 			    
@@ -227,8 +227,13 @@ if (hitbox != noone) && (timer > 10) {
 			    tipper_num = 3;
 			    break;
 			    
-			    case AT_NSPECIAL:
-			    tipper_num = 2;
+			    case AT_USPECIAL:
+			    switch hitbox.hbox_num {
+			    	case 1: case 5: tipper_num = 5 break;
+			    	case 2: case 6: tipper_num = 6 break;
+			    	case 3: case 7: tipper_num = 7 break;
+			    	case 4: tipper_num = 4 break;
+			    }
 			    break;
 			}
         }
@@ -267,27 +272,22 @@ if (hitbox != noone) && (timer > 10) {
 				
 				if tipper_vfx == 0 tipper_vfx = 301
 	            
-				set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, tipper_dmg);
-				set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, tipper_angle);
-				set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE_FLIPPER, tipper_flipper);
-				set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, tipper_bkb);
-				set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, tipper_kbs);
-				set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, tipper_bhp);
-				set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, tipper_hps);
-				set_hitbox_value(AT_FSPECIAL, 2, HG_EFFECT, tipper_effect);
-				set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, tipper_sfx);
-				set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, tipper_vfx);
-				//set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, hitboxSound);
-				//set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, hitboxVfx);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, tipper_dmg);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, tipper_angle);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE_FLIPPER, tipper_flipper);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, tipper_bkb);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, tipper_kbs);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, tipper_bhp);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, tipper_hps);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_EFFECT, tipper_effect);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, tipper_sfx);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, tipper_vfx);
 				
 				spawn_hit_fx(other.x, other.y, tipper_vfx);
-				create_hitbox(AT_FSPECIAL, 2, round(other.x), round(other.y))
+				create_hitbox(AT_NSPECIAL, 2, round(other.x), round(other.y))
 				sound_play(tipper_sfx);
 				
             	
-            	if hitbox.attack == AT_NSPECIAL {
-	            	instance_destroy(hitbox)
-	            }
 	            meter_prev = meter_cur;
 	            meter_cur = clamp(meter_cur + other.refund_amount, 0, meter_max);
 	            meter_flash_timer = meter_flash_val;

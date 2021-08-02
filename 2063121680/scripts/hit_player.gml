@@ -1,6 +1,6 @@
 //hit-player
 
-if (my_hitboxID.attack == AT_DAIR) && (my_hitboxID.hbox_num == 1) {
+if (my_hitboxID.attack == AT_DAIR) && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2) {
     bulletBounce = true;
     sound_stop(sound_get("bullet_time"));
     if runeA { //DAIR can be used again after hitting an opponent with it.
@@ -65,4 +65,10 @@ if (my_hitboxID.attack == AT_NSPECIAL) && (my_hitboxID.hbox_num == 1) {
         sound_play(sound_get("arrow_crit"));
         arrowCrit = false;
     }
+}
+
+if my_hitboxID.attack == 49 && my_hitboxID.hbox_num <= 2 {
+    fs_hit = true;
+    fs_hitID = hit_player_obj.id;
+    fs_timer = 0;
 }
