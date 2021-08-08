@@ -15,7 +15,7 @@ set_window_value(AT_DTILT, 2, AG_WINDOW_SFX, asset_get("sfx_charge_blade_swing")
 set_window_value(AT_DTILT, 2, AG_WINDOW_SFX_FRAME, 2);
 
 set_window_value(AT_DTILT, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 

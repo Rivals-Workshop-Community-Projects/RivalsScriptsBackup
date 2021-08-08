@@ -7,11 +7,26 @@ if get_training_cpu_action() != CPU_FIGHT || trainingMode == 1 {
 }
 
 
+if (attack == AT_TAUNT && window == 2 && window_timer == 1) {
+	
+			//	sssadsads = instance_create(x, y, "obj_article2");
+
+	
+	
+}
+
 	
 
+if (get_gameplay_time() < 10 && (taunt_down || taunt_pressed) && get_player_color( player ) == 14) {
+	
+	nes_enabled = true
+	
+	
+}
 
 
-if (get_player_color( player ) == 26) {
+
+if (get_player_color( player ) == 25) {
 hue_offset+=hue_speed;
 init_shader();
 
@@ -43,6 +58,7 @@ if (!free || state == PS_WALL_JUMP || state == PS_HITSTUN) {
 	
 //	move_cooldown[AT_FSPECIAL] = 0
 	dspecial_not_used_yet_in_air = true
+	nair_used = 0
 }
 
 
@@ -389,7 +405,16 @@ return_airdodge = false
 	}
 	if (abs(blink_vsp) < abs(vsp)) {
 		
-			blink_vsp = vsp
+			blink_vsp = clamp(vsp, -10, 10)
+			if state == PS_WALL_JUMP {
+				
+							blink_vsp = clamp(vsp, -7, 10)
+
+				
+			}
+			
+			
+			
 	}
 		
 		
@@ -410,7 +435,7 @@ return_airdodge = false
 
 			//	 
 
-			nova_clone = instance_create(x, y, "obj_article1");
+			nova_clone = instance_create(x, y, "obj_article2");
 		}
 		
 	}

@@ -323,12 +323,14 @@ switch (attack)
         {
             case 1:
                 uspecTarget = false;
+                reset_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE);
                 break;
             case 2:
                 if (window_timer == 1 && flake.isOut && special_down)
                 {
                     uspecTarget = true;
                     uspecAngle = point_direction(x, y-floor(char_height/2), flake.x, flake.y);
+                    set_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE, 1);
                 }
                 if (uspecTarget)
                 {
@@ -344,7 +346,7 @@ switch (attack)
                 var angle = uspecTarget?uspecAngle:90;
                 if (window_timer == 1)
                 {
-                    var dist = uspecTarget?25:20;
+                    var dist = uspecTarget?20:25;
                     hsp = lengthdir_x(dist, angle);
                     vsp = lengthdir_y(dist, angle);
 

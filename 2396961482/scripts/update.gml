@@ -1,5 +1,6 @@
 if (!free) airLock = false;
 
+	
 move_cooldown[AT_DSPECIAL] = instance_exists(my_article)?60:move_cooldown[AT_DSPECIAL]<2&&airLock?2:move_cooldown[AT_DSPECIAL];
 
 
@@ -28,6 +29,7 @@ if (dategirl_init < 9) {
 //Dspecial indicator
 if move_cooldown[AT_DSPECIAL] = 1{
     sound_play(asset_get("mfx_star"));
+	white_flash_timer = 10;
 	lanternhud_CURRENT = 100;
 }
 

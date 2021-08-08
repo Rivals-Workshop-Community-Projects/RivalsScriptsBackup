@@ -16,6 +16,6 @@
 //draw_debug_text(x, y + 35, "short:" +string(short));
 //draw_debug_text(x, y + 75, "short_timer:" +string(short_timer));
 //draw_debug_text(x, y + 75, "dairtimer:" +string(dairtimer));
-//draw_debug_text(x, y + 95, "dairtimer:" +string(state));
+//draw_debug_text(x, y + 95, "dairtimer:" +string(state_cat));
 
 

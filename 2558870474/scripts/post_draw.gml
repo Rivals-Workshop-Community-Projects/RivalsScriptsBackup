@@ -43,6 +43,7 @@ if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND{
 }
 shader_end();
 
+draw_sprite_ext(sprite_get("arrow"), 0, x, y - char_height - 22, 1, 1, 0, col_arrow, 1);
 draw_sprite_ext(sprite_get("chargemeter"), charge, x - 22, y - char_height - 30, 2, 2, 0, c_white, 1);
 
 user_event(12);

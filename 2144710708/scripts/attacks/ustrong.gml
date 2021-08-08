@@ -3,7 +3,10 @@ set_attack_value(AT_USTRONG, AG_NUM_WINDOWS, 6);
 set_attack_value(AT_USTRONG, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_USTRONG, AG_STRONG_CHARGE_WINDOW, 2);
 set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get("ustrong_hurt"));
-set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 1);
+
+// offstage ustrong (maybe someday)
+//set_attack_value(AT_USTRONG, AG_CATEGORY, 2);
+//set_attack_value(AT_USTRONG, AG_OFF_LEDGE, 1);
 
 // startup
 set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 9);

@@ -56,7 +56,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 111);
 
 //visual hitboxes for eve
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 100);
+set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 108);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("fspec_summon"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_AIR_FRICTION, 0.3);
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_ANIM_SPEED, 0.25);

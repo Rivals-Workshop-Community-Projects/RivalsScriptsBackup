@@ -86,15 +86,15 @@ if (card_count >= 100) {
     cards_spr = sprite_get("5_card");
 }
 
-if (get_gameplay_time() <= 120) {
+if (get_gameplay_time() <= 120 && !is_ai) {
        draw_debug_text(temp_x- 16,temp_y - 68,"Press TAUNT to swap dash inputs");
 }
 
-if (!dash_enabled && get_gameplay_time() <= 120) {
+if (!dash_enabled && get_gameplay_time() <= 120 && !is_ai) {
        draw_debug_text(temp_x,temp_y - 48,"Mid-air Dash Input: TAUNT");
 }
 
-if (dash_enabled && get_gameplay_time() <= 120) {
+if (dash_enabled && get_gameplay_time() <= 120 && !is_ai) {
        draw_debug_text(temp_x,temp_y - 48,"Mid-air Dash Input: Dash");
 }
 

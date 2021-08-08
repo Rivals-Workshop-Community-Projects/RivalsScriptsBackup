@@ -62,6 +62,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_TECHABLE, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_EFFECT, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 0);
+set_hitbox_value(AT_NSPECIAL, 2, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_LOCKOUT, 10);
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
@@ -73,6 +74,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HSPEED, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_UNBASHABLE, 1);
+set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PLASMA_SAFE, 1);
 
 //spawn hitbox
@@ -96,6 +98,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_TECHABLE, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_EFFECT, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 0);
+set_hitbox_value(AT_NSPECIAL, 3, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_LOCKOUT, 10);
 
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
@@ -108,4 +111,5 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);

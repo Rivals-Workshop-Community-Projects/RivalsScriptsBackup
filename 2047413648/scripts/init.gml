@@ -11,6 +11,8 @@ ncode1 = "Aka [Xenoverse] among ICRC community."
 ncode2 = "she possesses the [AE] and uses it as a mutil-functional "
 ncode3 = "weapon, she is slow but capable of making sudden movements."
 
+stax = 0
+stay = 0
 
 introhit = 0
 dashed = 0
@@ -23,7 +25,9 @@ dcharge = 0
 spintime = 0
 dairv = 0
 usedfspecial = 0
-fcharge = 6
+fcharge = 3
+fchargeold = 3
+fchargecd = 0
 fchargetimer = 0
 scharge = 0
 sakura = 0

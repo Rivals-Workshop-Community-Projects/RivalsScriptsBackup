@@ -53,19 +53,13 @@ var ky = y - random_func(2, char_height + 30, true);
        spawn_hit_fx(kx, ky, lightning_fx1);
     } 
 
-
+ 
 if (venom_timer > 0 && charge % .1 == 0){
 var kx = x + floor(char_height/2.5) - random_func(0, char_height, true);
 var ky = y - random_func(2, char_height + 30, true);
-    if venom_stack == 1 {
        spawn_hit_fx(kx, ky, lightning_fx2);
-    } else if venom_stack == 2 {
-       spawn_hit_fx(kx, ky, lightning_fx4);
-    } else if venom_stack == 3 {
-       spawn_hit_fx(kx, ky, lightning_fx3);
+    } 
 
-    }
-}
 /*
 var anim_spark_timer = 0;
 anim_spark_timer += 2;

@@ -22,8 +22,8 @@ sprite[1]     = player_id.spr_clone_dash;           // Speeding Forward
 sprite[2]     = player_id.spr_clone_startup;        // Start-up
 sprite[3]     = player_id.spr_clone_active;         // Hitting
 sprite[4]     = player_id.spr_clone_endlag;         // Endlag
-sprite[5]     = asset_get("empty_sprite");          // Despawning
-sprite[6]     = asset_get("empty_sprite");          // Despawning Dash
+sprite[5]     = player_id.spr_clone_die;            // Despawning
+sprite[6]     = player_id.spr_clone_die_dash;       // Despawning Dash
 
 clonevf_x = 6 * spr_dir
 
@@ -34,8 +34,8 @@ anim_type[1] = 3;
 anim_type[2] = 4;
 anim_type[3] = 5;
 anim_type[4] = 6;
-anim_type[5] = 1;
-anim_type[6] = 1;
+anim_type[5] = 7;
+anim_type[6] = 7;
 
 //
 image_index = 0;            // Animates the sprite

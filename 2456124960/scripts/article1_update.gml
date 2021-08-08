@@ -177,7 +177,7 @@ if (article_mode == 0) {
 					other.hitForce *= 1.5;
 				}	
 			} else if (plasma_safe == false && transcendent == false) {
-				destroyed = true;
+				//destroyed = true;
 			}
 		}
 	}

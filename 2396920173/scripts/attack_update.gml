@@ -21,6 +21,12 @@ if attack == AT_DAIR {
     }
 }
 
+if attack == AT_DATTACK {
+    if has_hit {
+        can_jump = true;
+    }
+}
+
 if attack == AT_DSTRONG {
     if window == 1 && window_timer == 1 {
        destroy_piece();
@@ -103,6 +109,12 @@ if attack == AT_USPECIAL {
             sound_play(asset_get("mfx_input_back"))
         }
         prev_uspec_dir = uspec_dir;
+        
+        if piece == "P" && !free {
+            set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 0);
+        } else {
+            reset_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE);
+        }
     }
     
     
@@ -144,6 +156,11 @@ if attack == AT_USPECIAL {
             case "K": launch_spd = 10 break;
             case "Q": launch_spd = 15 break;
         }
+        
+        if piece == "P" && get_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE) != 7 {
+            launch_spd += 6
+        }
+        
         if window_timer <= 4 {
             if !hitpause {
                 hsp = -launch_spd*dsin(launch_angle);
@@ -199,6 +216,7 @@ if attack == AT_USPECIAL {
 
 //Knight
 if attack == AT_UTHROW {
+    move_cooldown[AT_UTHROW] = 20;
     if has_rune("L") { //All FSPECIAl/DSPECIAL attacks have been enhanced.
         if window == 3 && (window_timer == 1 || window_timer == 3) {
             var hbox1 = create_hitbox(AT_UTHROW, 1, x, y - 30)
@@ -451,9 +469,10 @@ if attack == AT_DSPECIAL_2 {
     }
 }
 
-if king_armour && !(attack == AT_JAB || attack == AT_NAIR || (has_rune("J") && (attack == AT_FSTRONG || attack == AT_DSTRONG))) { //Knight has 2 extra jumps, and King retains FSPECIAL super armour on FSTRONG and DSTRONG.
+if king_armour && !(/*attack == AT_JAB || attack == AT_NAIR ||*/ (has_rune("J") && (attack == AT_FSTRONG || attack == AT_DSTRONG))) { //Knight has 2 extra jumps, and King retains FSPECIAL super armour on FSTRONG and DSTRONG.
     king_armour = false;
     super_armor = false;
+    soft_armor = 0;
     armour_cooldown = 120;
     if state_timer == 1 {
         //sound_play(asset_get("sfx_metal_hit_weak"))

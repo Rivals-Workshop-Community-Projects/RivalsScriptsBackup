@@ -94,7 +94,7 @@ if attack == AT_NSPECIAL {
                     cube.bounceVsp = -4;
                     cube.power = compactTimer;
                     cube.willExplode = heldExplode;
-                    cube.explodeTimer = heldExplodeTimer - compactTimer*7;
+                    cube.explodeTimer = heldExplodeTimer - compactTimer*8;
                     cube.explodeThreshhold = heldExplodeThreshhold;
                     cube.hitCooldown = 0;
                     cube.was_grounded = false;
@@ -184,7 +184,7 @@ if attack == AT_DSPECIAL {
             sound_play(asset_get("sfx_ell_strong_attack_explosion"))
             var cube = create_hitbox(AT_NSPECIAL, 1, x, y - 25);
                 cube.hsp = 12*spr_dir + hsp;
-                cube.vsp = -3 + vsp;
+                cube.vsp = -3;
                 cube.bounceHsp = -1;
                 cube.bounceVsp = -4;
                 cube.power = 60;

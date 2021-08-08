@@ -22,3 +22,19 @@ explosion_frame_offset = 0
 
 
 mask_index = sprite_get("wraith_hurtbox");
+
+
+
+
+
+
+
+
+hbox_group = array_create(4,array_create(50,array_create(10,0))); //ew
+ 
+hitstun = 0;
+hitstun_full = 0;
+ 
+kb_adj = 1;
+kb_dir = 0;
+orig_knock = 0;

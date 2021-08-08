@@ -22,6 +22,11 @@ set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 //set_window_value(AT_NSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, .1);
 
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_TYPE, 1);
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, -3);
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 3);
+
 set_num_hitboxes(AT_NSPECIAL, 6);
 
 //blob ball moving hitbox

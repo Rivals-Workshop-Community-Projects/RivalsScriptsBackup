@@ -12,11 +12,11 @@ if (my_hitboxID.attack == AT_DATTACK) {
 
 if (my_hitboxID.attack == AT_DAIR) {
 	var lerpam
-	lerpam = [0.2, 0.2]
+	lerpam = [0.25, 0.25]
 	
 
-	hit_player_obj.x = lerp(floor(hit_player_obj.x), x, lerpam[0])
-	hit_player_obj.y = lerp(floor(hit_player_obj.y), y+10, lerpam[1])
+	hit_player_obj.x = lerp(floor(hit_player_obj.x), x + hsp, lerpam[0])
+	hit_player_obj.y = lerp(floor(hit_player_obj.y), y+10 + vsp, lerpam[1])
 	
 }
 

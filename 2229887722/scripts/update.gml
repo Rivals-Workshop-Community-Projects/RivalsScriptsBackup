@@ -1082,6 +1082,7 @@ yarnBallObject.free = false;
 yarnBallObject.ignores_walls = false;
 yarnBallObject.yarnType = 0;
 yarnBallObject.unbashable = 0;
+set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 0);
 
 var yarnBallArticleHitbox = instance_create( oldYarnBallObj.x, oldYarnBallObj.y + 2, "obj_article2" );
 yarnBallObject.yBallArticleHitbox = yarnBallArticleHitbox;

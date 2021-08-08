@@ -371,6 +371,7 @@ with phone{
 	initTipImage(player_id.spr_nspecial2, -5, fa_left, 1, c_white, 0);
 	initTipImage(player_id.spr_jab_holo, -5, fa_right, 1, c_white, 0);
 	initTipWords_ext("Tip: Whenever you hit the hologram with any non special move, you can instantly cancel your move with either a NSpecial Tap or Hold!", fa_center, c_gray, 0, 0);
+	initTipWords_ext("Tip: When you're using any move, you can press Parry/Shield to instantly save that to the hologram!", fa_center, c_gray, 0, 0);
 	
 	initTip("About the Hologram");
 	initTipWords("Buffy's Hologram can be hit around by either herself or other players. It doesn't have a ''damage percentage'' of its own, so it will always fly the same distance depending on the attack's base knockback. However then the hologram gets hit by an enemy attack, its hat will enter into a ''hurt'' state for 30 frames, during this time, Buffy can't give the hologram new commands or attacks.");
@@ -457,6 +458,9 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	 
+	initPatch("1.4", "08 August, 2021");
+	initPatchWords_ext("- Made so you can save moves to the hologram when performing said move by pressing Parry/Shield", fa_left, c_white, 0, 0);
 	
 	initPatch("1.33", "23 July, 2021");
 	initPatchWords_ext("- Fixed a bug where the hologram would be in 'hitstun' even when hit by moves that doesn't deal Knockback", fa_left, c_white, 0, 0);

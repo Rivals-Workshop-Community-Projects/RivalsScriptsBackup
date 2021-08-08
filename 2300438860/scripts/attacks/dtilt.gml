@@ -52,5 +52,5 @@ set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, 20);
 set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, sound_get("hweak"));
-set_hitbox_value(AT_DTILT, 1, HG_HITSTUN_MULTIPLIER, 0.7);
+set_hitbox_value(AT_DTILT, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 303);

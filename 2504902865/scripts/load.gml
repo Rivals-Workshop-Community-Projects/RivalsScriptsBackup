@@ -99,5 +99,6 @@ for(var i=0;i<=3;i++) {
     sprite_change_offset("minion_article_hurt_lv"+string(i), 146, 166);
     sprite_change_offset("minion_article_die_lv"+string(i), 146, 166);
     sprite_change_offset("minion_article_attack_lv"+string(i), 146, 166);
+    sprite_change_offset("minion_article_dspecial_lv"+string(i), 146, 146);
     
 }

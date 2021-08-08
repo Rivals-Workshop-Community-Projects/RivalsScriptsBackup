@@ -58,7 +58,7 @@ if get_player_color(player) == 5 {
  	
  }
  
-if get_player_color(player) != 5 && my_hitboxID.sound_effect != sound_get("RI") && my_hitboxID.sound_effect != sound_get("RI2"){
+if get_player_color(player) != 5 && my_hitboxID.attack != AT_DAIR {
 	
 move_cooldown[AT_EXTRA_3] = hit_player_obj.hitstop/1.2
 maxdraw = hit_player_obj.hitstop/1.2

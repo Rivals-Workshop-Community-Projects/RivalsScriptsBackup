@@ -113,7 +113,7 @@ switch(state){
 		vsp *= 0.75;
 		
 		if track_special_held{
-			if !player_id.special_down track_special_held = 0;
+			if !player_id.special_down || player_id.state_cat == SC_HITSTUN track_special_held = 0;
 			else{
 				proj_angle -= lerp(30, 60, state_timer / 30);
 				if state_timer == bounce_charge_time{

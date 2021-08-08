@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 12, 42 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 18 );
+set_num_palettes( 19 );
 
 // Blake
 set_color_profile_slot( 1, 0, 150, 149, 154 ); //Metal 1
@@ -205,6 +205,16 @@ set_color_profile_slot( 17, 4, 255, 155, 81 ); //Cloth
 set_color_profile_slot( 17, 5, 80, 85, 107 ); //Clothes
 set_color_profile_slot( 17, 6, 218, 0, 0 ); //Battery Back
 set_color_profile_slot( 17, 7, 230, 0, 0 ); //Yellow Eye
+
+// riptide
+set_color_profile_slot( 18, 0, 36, 73, 158 ); //Metal 1
+set_color_profile_slot( 18, 1, 0, 221, 255 ); //Metal 2
+set_color_profile_slot( 18, 2, 255, 200, 0 ); //Battery Highlights
+set_color_profile_slot( 18, 3, 255, 98, 0 ); //Battery Shadows
+set_color_profile_slot( 18, 4, 255, 141, 110 ); //Cloth
+set_color_profile_slot( 18, 5, 0, 255, 247 ); //Clothes
+set_color_profile_slot( 18, 6, 0, 74, 176 ); //Battery Back
+set_color_profile_slot( 18, 7, 255, 88, 77 ); //Yellow Eye
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

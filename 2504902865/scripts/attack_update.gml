@@ -10,6 +10,7 @@ if attack == AT_JAB {
     }
     if(window == 1 && window_timer == 1){
         last_hit_stun = false;
+        set_attack_value(AT_JAB,AG_NUM_WINDOWS,6);
     }
     if(was_parried && window < 4){
         was_parried = false;
@@ -18,9 +19,12 @@ if attack == AT_JAB {
     if(window >= 4 && last_hit_stun){
         was_parried = true;
     }
+    //special cancel
     if window == 3 && window_timer >= get_window_value(AT_JAB,3,AG_WINDOW_CANCEL_FRAME) {
-    	if down_down && special_pressed && !last_hit_stun {
-    		set_attack(AT_DSPECIAL) //jab cancel into special pogmires
+    	if special_pressed{
+    		window = 7;
+    		window_timer = 0;
+    		set_attack_value(AT_JAB,AG_NUM_WINDOWS,9);
     	}
     }
 }
@@ -193,7 +197,7 @@ if (attack == AT_FSPECIAL) { //grabble
                 set_hitbox_value(AT_FSPECIAL,3,HG_HITPAUSE_SCALING,0.95);
                     break;
                 case 3:
-                set_hitbox_value(AT_FSPECIAL,3,HG_DAMAGE,9);
+                set_hitbox_value(AT_FSPECIAL,3,HG_DAMAGE,10);
                 set_hitbox_value(AT_FSPECIAL,3,HG_BASE_KNOCKBACK,8);
                 set_hitbox_value(AT_FSPECIAL,3,HG_KNOCKBACK_SCALING,1.3);
                 set_hitbox_value(AT_FSPECIAL,3,HG_BASE_HITPAUSE,8);
@@ -264,15 +268,36 @@ if attack == AT_USPECIAL { //dolph
     }
 }
 
-//needs minions to work so do minions first dummy
-if attack == AT_DSPECIAL { //AEGIS
-	if window == 2 && has_hit_player {
-		boosting_minions = true;
-		boosting_timer_rn = 0;
+//rework this
+if attack == AT_DSPECIAL {
+	if window == 2{
+		if window_timer == 1 {
+			with(obj_article2){
+				if player_id == other.id {
+					if state == 1 {
+						window = 1;
+						window_timer = 0;
+						window_length = 16;
+						attack_window_frame_first = 0;
+						attack_window_frame_last = 1;
+						state = 9;
+						state_timer = 0;
+						attack_timer_rn = 0;
+						dspec_dir = point_direction(x,y,other.x,other.y);
+						spr_dir = 1
+					}
+				}
+			}
+		}
+		if window_timer == get_window_value(AT_DSPECIAL,2,AG_WINDOW_LENGTH)-1 {
+			sound_play(asset_get("sfx_waterwarp"),false,0,0.75,1.75)
+			sound_play(asset_get("sfx_waveland_ori"),false,0,1.25,1.55)
+			sound_play(asset_get("sfx_frog_dstrong"),false,0,0.45,0.95)
+		}
 	}
-    if window == 3 {
-    	move_cooldown[AT_DSPECIAL] = dspecial_cooldown;
-    }
+	if window == 3 { //cool up
+		move_cooldown[AT_DSPECIAL] = 135;
+	}
 }
 
 
@@ -284,8 +309,9 @@ if attack == AT_TAUNT {
 		sound_play(asset_get("sfx_watergun_splash"));
 		var randomsound = random_func(6,2,true);
 		switch(randomsound){
-			case 0:sound_play(asset_get("sfx_blow_medium2")) break;
-			case 1:sound_play(asset_get("sfx_blow_weak1")) break;
+			case 0:sound_play(asset_get("sfx_blow_medium2"),false,0,0.85,1) break;
+			case 1:sound_play(asset_get("sfx_blow_weak1"),false,0,0.85,1) break;
+			
 		}
 	}
 }

@@ -24,6 +24,10 @@ with (hit_player){
 		BalloonCounter = 0;
 		isBalloon = false;
 		balloon_id = noone;
+				
+		if (Balloon_hitstun_grav != 0){
+			hitstun_grav = Balloon_hitstun_grav;
+		}
 	}
 	
 	if (isThorn){

@@ -232,8 +232,10 @@ if (attack == AT_FSPECIAL){
 		}
 	}
 	
-	// cancel fspecial with walljump anytime
-	can_wall_jump = true;
+	// cancel fspecial with walljump after/during window 3
+	if (window >= 3) {
+		can_wall_jump = true;
+	}
 
 	// reset double jumps upon hit
 	if (has_hit == true) {
@@ -365,6 +367,15 @@ if (attack == AT_USPECIAL){
 		can_fast_fall = true;
 		set_state( PS_PRATFALL );
 
+	}
+	
+	if (has_hit) {
+		set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
+	}
+	else {
+		if (!runeC) {
+			set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
+		}
 	}
 
 }

@@ -53,12 +53,11 @@ if (get_player_color(player) == 10){
 
 //Patch Info - Format borrowed from Hime
 
-patch_ver = "1.95";
-patch_day = "9";
-patch_month = "FEB";
-patch_year = "21";
+patch_day = "4";
+patch_month = "AUG";
+patch_year = "2021";
  
-textDraw(temp_x + 6, temp_y + 129, "fName", c_white, 0, 1000, 1, true, 1, "VER " + patch_ver + " - " + patch_month + " " + patch_day + ", " + patch_year); 
+textDraw(temp_x + 70, temp_y - 11, "fName", c_white, 0, 1000, 1, true, 1, patch_month + " " + patch_day + ". " + patch_year); 
  
 //textDraw(temp_x + 48, temp_y + 120, "fName", c_white, 0, 1000, 1, true, 1, alt_name[alt_cur]);
  

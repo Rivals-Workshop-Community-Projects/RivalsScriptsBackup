@@ -37,7 +37,7 @@ init_shader();
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-var num_alts = 9;
+var num_alts = 12;
  
 //Alt name init. var doesn't work with arrays lol
  
@@ -50,6 +50,9 @@ alt_name[5]  = "Blue";
 alt_name[6]  = "Red";
 alt_name[7]  = "Early Access";
 alt_name[8]  = "Rainbow";
+alt_name[9]  = "Yellow";
+alt_name[10]  = "Aqua";
+alt_name[11]  = "Orange";
  
 //Alt
  

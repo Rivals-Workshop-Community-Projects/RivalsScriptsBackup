@@ -333,6 +333,9 @@ switch (attack)
                 if (!free) hsp = 4 * spr_dir;
                 tutDone[1] = true;
                 break;
+            case 5:
+                if (window_timer > 12 && is_special_pressed(DIR_UP)) set_attack(AT_USPECIAL);
+                break;
         }
         if (aura)
         {

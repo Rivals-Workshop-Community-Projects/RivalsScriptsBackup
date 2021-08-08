@@ -153,10 +153,32 @@ switch (attack) {
 		}
 	break;
     case AT_DSTRONG:
+    	roke_dstrong_grabbing = true;
+    	
+    	switch (window) {
+    		default: 
+    			xtarget = 0;
+    			ytarget = -2;
+    		break;
+    		case 2:
+    			xtarget = -40;
+    			ytarget = -2;
+    		break;
+    		case 3:
+    			xtarget = 40;
+    			ytarget = -2;
+    		break;
+    		case 4:
+    		case 5:
+    		case 6:
+    			xtarget = 40;
+    			ytarget = -2;
+    		break;
+    	}
 		if (window == 6 && window_timer == 1) {
 			hsp = -8*spr_dir;
 		}
-		if (has_hit && !hitpause) {
+		/*if (has_hit && !hitpause) {
 			if window == 3 {
 				create_hitbox(attack,5,x,y);
 				has_hit = false;
@@ -165,7 +187,7 @@ switch (attack) {
 				create_hitbox(attack,6,x,y);
 				has_hit = false;
 			}
-		}
+		}*/
 	break;
 	case AT_BAIR:
 		if (window == 4) {
@@ -199,11 +221,18 @@ switch (attack) {
 			//sound_play(asset_get("sfx_zetter_fireball_fire"),false,-4,0.5,1.05)
 		}
 	break;
+	case AT_DATTACK:
+		can_fast_fall = false;
+		grav = 0.3;
+		if free && window == 4 {
+			set_state(PS_IDLE_AIR);
+		}
+	break;
 }
 
 
 //#region Roke Text Easter Egg
-if (attack == AT_TAUNT && state_timer == 1 && down_down) {
+if (attack == AT_TAUNT && state_timer == 1 && down_down && get_match_setting(SET_PRACTICE)) {
     if (instance_number(oPlayer) == 2  && !t_active) {
         with (oPlayer) {
             if (id != other.id) {

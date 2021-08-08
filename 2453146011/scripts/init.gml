@@ -360,6 +360,7 @@ last_player_pos = {x:0,y:0};
 
 // Fair shiz
 shot_queued = false;
+bair_queue = false;
 
 // Bair Shiz
 bair_tp_queue = false;

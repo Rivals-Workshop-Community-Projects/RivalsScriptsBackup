@@ -42,7 +42,7 @@ if getting_bashed {
     }
     var hitbox = instance_place(x, y, pHitBox);
     
-    if hitbox != noone {
+    if hitbox != noone && ((hitbox.hit_priority != 0 && hitbox.kb_value != 0) || hitbox.player_id == player_id) {
         var hitboxOwner = hitbox.player_id;
         if hitbox.kb_value > 0 && !(hitbox.player_id == player_id && hitbox.attack == AT_NSPECIAL && hitbox.hbox_num == 1) {
             with hitboxOwner {
@@ -83,7 +83,8 @@ if getting_bashed {
                 with player_id {
                     spawn_hit_fx(other.x, other.y - 20, 143);
                 }
-                create_hitbox(AT_NSPECIAL, 3, x, y - 20);
+                var boom = create_hitbox(AT_NSPECIAL, 3, x, y - 20);
+                    boom.hit_flipper = 3;
                 player_id.cubeCooldown = 0;
                 instance_destroy();
                 exit; 
@@ -94,6 +95,7 @@ if getting_bashed {
                 }
                 var boom = create_hitbox(AT_NSPECIAL, 2, x, y - 10);
                     boom.can_hit_self = false;
+                    boom.hit_flipper = 3;
                 player_id.cubeCooldown = 0;
                 instance_destroy();
                 exit;
@@ -161,6 +163,7 @@ if getting_bashed {
             }
             var boom create_hitbox(AT_NSPECIAL, 2, x, y - 10);
                 boom.can_hit_self = false;
+                boom.hit_flipper = 3;
             player_id.cubeCooldown = 0;
             instance_destroy();
             exit;

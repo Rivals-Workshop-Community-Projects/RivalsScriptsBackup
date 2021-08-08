@@ -29,7 +29,7 @@ set_window_value(AT_UTILT, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UTILT, 4, AG_WINDOW_SFX, asset_get("sfx_clairen_hit_strong"));
 
 set_window_value(AT_UTILT, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UTILT, 5, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_UTILT, 5, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_UTILT, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UTILT, 5, AG_WINDOW_ANIM_FRAME_START, 9);
 

@@ -81,6 +81,9 @@ ex_cost_multiplier = 1;
 parry_multiplier = 1;
 n_double_jumped = false;
 
+
+is_ai = false;
+
 //training room stuff - borrowed from kris
 timer1 = get_game_timer();
 timer2 = 0;    
@@ -219,8 +222,8 @@ knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lig
 land_time = 4; //normal landing frames
 prat_land_time = 20;
 wave_land_time = 8;
-wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .04; //grounded deceleration when wavelanding
+wave_land_adj = 1.2; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_friction = .07; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 1;

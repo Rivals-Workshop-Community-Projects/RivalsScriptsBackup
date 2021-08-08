@@ -13,7 +13,7 @@ if (attack == AT_USPECIAL_2){
 
 // Down Air Cooldown (Reduces Spamming but also infinite flight from a single move, I want to make you work for your infinite aerial time)
 if (attack == AT_DAIR){
-	move_cooldown[AT_DAIR] = 60;
+	move_cooldown[AT_DAIR] = 9999;
 }
 
 //Fair and Bair work the same / Fairy Wind
@@ -85,7 +85,7 @@ if (attack == AT_FSPECIAL){
 	if (window == 1){
 	set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 0);
 	set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED, 0);
-	move_cooldown[AT_FSPECIAL] = 600;
+	move_cooldown[AT_FSPECIAL] = 120;
 	}
 
 	if (state_timer == 13 && free){

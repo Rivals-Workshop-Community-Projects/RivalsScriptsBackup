@@ -46,7 +46,7 @@ limit_circle_radius = 0;
 limit_circle_alpha = 0;
 limit_circle_col = c_yellow;
 
-orb_value = 20;
+orb_value = 15;
 hit_value = 7;
 reduce_value = 7;
 fspec_value = 1;

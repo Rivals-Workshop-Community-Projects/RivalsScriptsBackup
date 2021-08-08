@@ -326,6 +326,14 @@ set_color_profile_slot( 30, 3, 210, 210, 210 ); //shorts
 set_color_profile_slot( 30, 4, 125, 117, 77 ); //crowbar
 set_color_profile_slot( 30, 5, 87, 208, 87 ); //crowbar edges
 
+// funy riptide alt
+set_color_profile_slot( 31, 0, 242, 228, 214 ); //body
+set_color_profile_slot( 31, 1, 253, 183, 1 ); //hair
+set_color_profile_slot( 31, 2, 1, 199, 217 ); //shirt
+set_color_profile_slot( 31, 3, 12, 25, 58 ); //shorts
+set_color_profile_slot( 31, 4, 216, 93, 1 ); //crowbar
+set_color_profile_slot( 31, 5, 253, 183, 1 ); //crowbar edges
+
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
 {"formatversion":1,"data":[{"name":"body","colors":[{"r":255,"g":213,"b":255,"main":true},{"r":244,"g":193,"b":255}]},{"name":"hair","colors":[{"r":255,"g":170,"b":255,"main":true},{"r":237,"g":153,"b":255}]},{"name":"shirt","colors":[{"r":255,"g":140,"b":230,"main":true},{"r":239,"g":117,"b":233}]},{"name":"shorts","colors":[{"r":87,"g":87,"b":87,"main":true},{"r":71,"g":71,"b":71}]},{"name":"crowbar","colors":[{"r":166,"g":58,"b":58,"main":true},{"r":153,"g":45,"b":45}]},{"name":"crowbar edges","colors":[{"r":147,"g":147,"b":147,"main":true},{"r":135,"g":128,"b":128}]}]}

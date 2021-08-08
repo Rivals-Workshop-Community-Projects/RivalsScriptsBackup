@@ -1,6 +1,6 @@
 if (!custom_clone){
 
-print (hologram_exists);
+print (window_end);
 
 if (get_player_color(player) != 18){
        shader_start();

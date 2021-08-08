@@ -663,6 +663,16 @@ if attack == AT_DSPECIAL && !hitpause {
 	
 	can_fast_fall = false
 
+if window == 5 && window_timer > 10 {
+	if window_timer == 1 {
+		if free {
+			vsp = -6
+		}
+	}
+   hsp /= 1.2
+   vsp /= 1.2
+}
+
 if window == 1{
 	spintime = 0
 	dcharge = 0

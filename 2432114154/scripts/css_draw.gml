@@ -59,6 +59,7 @@ var palette_names = [
   "Three Wisps", 
   "Still can't kill", 
   "The wild from breath", 
+  "Hey Sprite Star",  
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

@@ -45,6 +45,16 @@ with pHitBox {
 	}
 }
 
+if move_cooldown[AT_FSTRONG] != 0{
+	col_arrow = c_dkgray;
+	if move_cooldown[AT_FSTRONG] == 1{
+		// Play Sound
+		sound_play(asset_get("mfx_star"));
+	}
+} else {
+	col_arrow = get_player_hud_color(player);
+}
+
 if(variable_instance_exists(id,"diag"))
 {
 //  ADDING REGULAR DIALOGUE
@@ -79,7 +89,7 @@ switch(get_player_color(player)){
 }
 if state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD{
 	if state_timer == 1{
-		spawn_hit_fx(x, y, vfx_roll_clone);
+		spawn_hit_fx(x-6, y-8, vfx_roll_clone);
 	}
 }
 
@@ -138,12 +148,6 @@ if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND{
 if proposed_balance{
     // Balance Change Script:
     user_event(1);
-}
-
-if illusion != noone{
-	if illusion.hsp == 0 and illusion.state == 6{
-		spawn_hit_fx(illusion.x - (58 * spr_dir), illusion.y - 70, vfx_clonedashing_melt);
-	}
 }
 
 //Update.gml

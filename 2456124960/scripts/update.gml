@@ -3,7 +3,13 @@ test2 = lengthdir_y(2, joy_dir);
 
 //print(string(strong_charge));
 
-if (actionMeterStatus == 1) {actionMeterFill+= 0.15;}
+if (actionMeterStatus == 1) {
+	if (activeBuffUses > 0) {
+		actionMeterFill+= 0.08;	
+	} else {
+		actionMeterFill+= 0.15;
+	}
+}
 actionMeterFill = clamp(actionMeterFill, 0, 200);
 
 if (actionMeterFill > 199 && playedMeterSfx == 0) {

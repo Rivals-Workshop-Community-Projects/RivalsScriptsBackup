@@ -30,29 +30,49 @@ if (attack == AT_FSPECIAL && state != PS_HITSTUN){
 	other.isThorn = false;
 	other.isRibbon = false;
 	other.isBalloon = false;
-	other.isCandy = false;
+	
+	if (GrappleMode != 1){
+		other.isCandy = false;
+		other.CandyCounter = 0;
+		other.candy_id = noone;
+		other.CCheck = 0;
+	//	print("remove candy");
+	}
+	
+	if (other.isCandy){
+	//	print("pain");
+		other.Candy_SecondAttack = true;
+	}
+	else {
+	//	print("bain");
+		other.Candy_SecondAttack = false;
+	}
 	
 	other.ThornCounter = 0;
 	other.RibbonCounter = 0;
 	other.BalloonCounter = 0;
-	other.CandyCounter = 0;
 
 	other.thorn_id = noone;
 	other.ribbon_id = noone;
 	other.balloon_id = noone;
-	other.candy_id = noone;
-	
-	other.CCheck = 0;
+	other.BalloonStrength = 1.0;
 
-	dthrowCheck = false;
+	other.initial_candy_land = false;
 	
+	dthrowCheck = false;
+
 	ThornKB = 8;
 	CandyKB = 4;
 	
-	RibbonVSP = -11;
-	RibbonHSP = -5;
 	RibbonKB = 8;
+	RibbonHP = 14;
+	RibbonRights = 0;
+	Calliecide = false;
 
+	if (other.Balloon_hitstun_grav != 0){
+		other.hitstun_grav = other.Balloon_hitstun_grav;
+	}
+		
 	attack_end();
 	if (!other.super_armor){ // Checks if the opponent has super armor and doesn't activate if they are
 		switch(GrappleMode){
@@ -66,18 +86,54 @@ if (attack == AT_FSPECIAL && state != PS_HITSTUN){
 			case 1:
 				hurtboxID.sprite_index = get_attack_value(AT_DTHROW, AG_HURTBOX_SPRITE);
 				CandyKB = floor(CandyKB + (LoveMeter/100));
-				set_hitbox_value(AT_DTHROW, 1, HG_BASE_KNOCKBACK, CandyKB);
-				set_hitbox_value(AT_DTHROW, 1, HG_BASE_HITPAUSE, CandyKB + 5);
+				
+				if (!other.Candy_SecondAttack){
+					set_hitbox_value(AT_DTHROW, 1, HG_BASE_KNOCKBACK, CandyKB);
+					set_hitbox_value(AT_DTHROW, 1, HG_BASE_HITPAUSE, CandyKB + 2);
+				
+					set_hitbox_value(AT_DTHROW, 1, HG_WINDOW, 2);
+					set_hitbox_value(AT_DTHROW, 2, HG_WINDOW, 20);
+				//	print("Sticky Mode")
+				}
+				else {
+					set_hitbox_value(AT_DTHROW, 2, HG_BASE_KNOCKBACK, CandyKB);
+					set_hitbox_value(AT_DTHROW, 2, HG_BASE_HITPAUSE, CandyKB + 2);
+				
+					set_hitbox_value(AT_DTHROW, 1, HG_WINDOW, 20);
+					set_hitbox_value(AT_DTHROW, 2, HG_WINDOW, 2);
+				//	print("Candy mode")
+				}
+				
 				attack = AT_DTHROW;
 			break;
 			case 2:	
-				hurtboxID.sprite_index = get_attack_value(AT_NTHROW, AG_HURTBOX_SPRITE);	
+				hurtboxID.sprite_index = get_attack_value(AT_NTHROW, AG_HURTBOX_SPRITE);
+				
+				RibbonKB = 8 + (.5 * floor(LoveMeter/50));
+				RibbonHP = floor(14 + (2 * floor(LoveMeter/50)));
 
+				if (LoveMeter >= 100){
+					Calliecide = true;
+				}
+				if (LoveMeter >= 100){
+					RibbonRights = 1;
+				}
+				if (LoveMeter >= 200){
+					RibbonRights = 2;
+				}
+				
+				set_hitbox_value(AT_NTHROW, 2, HG_BASE_KNOCKBACK, RibbonKB);
+				set_hitbox_value(AT_NTHROW, 2, HG_BASE_HITPAUSE, RibbonHP);
+				
+//				print(RibbonKB);
+//				print(RibbonHP);
+				
+/*
 				RibbonHSP = floor(RibbonHSP - (LoveMeter/60));
 				RibbonVSP = floor((RibbonVSP - (LoveMeter/100)));
 
-//				set_window_value(AT_NTHROW, 2, AG_WINDOW_HSPEED, RibbonHSP);
-//				set_window_value(AT_NTHROW, 2, AG_WINDOW_VSPEED, RibbonVSP);
+				set_window_value(AT_NTHROW, 2, AG_WINDOW_HSPEED, RibbonHSP);
+				set_window_value(AT_NTHROW, 2, AG_WINDOW_VSPEED, RibbonVSP);
 				
 				//print(RibbonHSP);
 				//print(RibbonVSP);
@@ -85,7 +141,10 @@ if (attack == AT_FSPECIAL && state != PS_HITSTUN){
 				RibbonKB = floor(RibbonKB + floor(LoveMeter/30));
 				//print("pain");
 				set_hitbox_value(AT_NTHROW, 1, HG_BASE_KNOCKBACK, RibbonKB);
+*/
 				attack = AT_NTHROW;
+
+
 			break;
 			case 3:
 				hurtboxID.sprite_index = get_attack_value(AT_UTHROW, AG_HURTBOX_SPRITE);
@@ -112,6 +171,7 @@ if (attack == AT_FTHROW){
 if (attack == AT_DTHROW){
 	other.isCandy = true;
 	other.candy_id = id;
+	other.initial_candy_land = true;
 	if (other.CandyCounter == 0){
 		other.CandyCounter = (LoveMeter/2) + 60;
 		LoveMeter = 0;

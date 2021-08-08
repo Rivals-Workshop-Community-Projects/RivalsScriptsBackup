@@ -253,9 +253,42 @@ if ("practice" in self)
 					case 14:
 						AddText("v1.14 - 29 Jul 2021");
 						AddText("");
-						AddText("Redone Portrait and CSS! Thanks Regina!");
+						AddText("Redone Portrait and CSS art! Thanks Regina!");
 						AddText("");
 						AddText("Replaced Ori alt with Riptide alt");
+						AddText("");
+						AddText("---------------------");
+						AddText("v1.14.1 - 29 Jul 2021");
+						AddText("");
+						AddText("Slightly changed CSS art");
+						AddText("");
+						AddText("Altered NAir sprites to match the smaller hitboxes");
+						AddText("");
+						AddText("Removed sfx from CSS");
+						break;
+					case 15:
+						AddText("v1.15 - 2 Aug 2021");
+						AddText("");
+						AddText("New Victory Theme! Thanks Delta Parallax!");
+						AddText("");
+						AddText("DAttack HSpeed 12 -> 10");
+						AddText("");
+						AddText("Raised all NAir hitboxes upwards by 4");
+						AddText("");
+						AddText("FAir startup 6 -> 4");
+						AddText("Altered FAir hiboxes to match smears better");
+						AddText("FAir KBS 0.5 -> 0.7");
+						AddText("");
+						AddText("UTilt hurtbox now covers smear");
+						AddText("Shrinked UTilt hitboxes");
+						AddText("UTilt Endlag 10 -> 9 (Before whifflag multiplier)");
+						AddText("");
+						AddText("Hitting Lukastar now despawns (not crack) 2 stars instead of 1");
+						AddText("");
+						AddText("---------------------");
+						AddText("v1.15.1 - 3 Aug 2021");
+						AddText("");
+						AddText("FAir sfx frame 6 -> 2");
 						break;
 				}
 				DrawTutorialBlock();

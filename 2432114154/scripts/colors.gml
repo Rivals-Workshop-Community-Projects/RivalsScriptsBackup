@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 3, 2, 15 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 25 );
+set_num_palettes( 26 );
 
 // Astra
 set_color_profile_slot( 1, 0, 255, 203, 59 ); //Energy
@@ -96,7 +96,6 @@ set_color_profile_slot( 6, 5, 24, 26, 54 ); //Dark parts
 set_color_profile_slot( 6, 6, 217, 188, 130 ); //Fur
 set_color_profile_slot( 6, 7, 189, 147, 91 ); //Fur shading
 
-
 // Melee Sai
 set_color_profile_slot( 7, 0, 228, 255, 77 ); //Energy
 set_color_profile_slot( 7, 1, 26, 36, 22 ); //Top shading
@@ -116,7 +115,6 @@ set_color_profile_slot( 8, 4, 17, 122, 19 ); //Pattern2
 set_color_profile_slot( 8, 5, 0, 79, 0 ); //Dark parts
 set_color_profile_slot( 8, 6, 255, 255, 255 ); //Fur
 set_color_profile_slot( 8, 7, 86, 199, 86 ); //Fur shading
-
 
 // Melee Dab
 set_color_profile_slot( 9, 0, 23, 212, 255 ); //Energy
@@ -187,6 +185,7 @@ set_color_profile_slot( 15, 4, 52, 254, 86 ); //Pattern2
 set_color_profile_slot( 15, 5, 32, 45, 34 ); //Dark parts
 set_color_profile_slot( 15, 6, 31, 64, 69 ); //Fur
 set_color_profile_slot( 15, 7, 13, 18, 26 ); //Fur shading
+
 // BLW
 set_color_profile_slot( 16, 0, 255, 208, 0 ); //Energy
 set_color_profile_slot( 16, 1, 214, 214, 214 ); //Top shading
@@ -225,10 +224,9 @@ set_color_profile_slot( 19, 3, 248, 245, 253 ); //Pattern1
 set_color_profile_slot( 19, 4, 248, 245, 252 ); //Pattern2
 set_color_profile_slot( 19, 5, 69, 69, 90 ); //Dark parts
 set_color_profile_slot( 19, 6, 116, 67, 247 ); //Fur
-set_color_profile_slot( 19, 7, 50, 23, 119 );
-//Fur shading
+set_color_profile_slot( 19, 7, 50, 23, 119 ); //Fur shading
 
-// Tails
+// Fur shading
 set_color_profile_slot( 20, 0, 41, 132, 248 ); //Energy
 set_color_profile_slot( 20, 1, 189, 97, 7 ); //Top shading
 set_color_profile_slot( 20, 2, 255, 171, 10 ); //Top
@@ -238,7 +236,7 @@ set_color_profile_slot( 20, 5, 210, 0, 1 ); //Dark parts
 set_color_profile_slot( 20, 6, 255, 171, 10 ); //Fur
 set_color_profile_slot( 20, 7, 189, 97, 7 ); //Fur shading
 
-// Yuki Nagato
+// Tails
 set_color_profile_slot( 21, 0, 171, 157, 98 ); //Energy
 set_color_profile_slot( 21, 1, 37, 22, 19 ); //Top shading
 set_color_profile_slot( 21, 2, 55, 32, 34 ); //Top
@@ -248,7 +246,7 @@ set_color_profile_slot( 21, 5, 71, 131, 170 ); //Dark parts
 set_color_profile_slot( 21, 6, 121, 99, 114 ); //Fur
 set_color_profile_slot( 21, 7, 86, 59, 74 ); //Fur shading
 
-// Lyca
+// Yuki Nagato
 set_color_profile_slot( 22, 0, 235, 51, 31 ); //Energy
 set_color_profile_slot( 22, 1, 72, 130, 172 ); //Top shading
 set_color_profile_slot( 22, 2, 74, 208, 223 ); //Top
@@ -258,7 +256,7 @@ set_color_profile_slot( 22, 5, 86, 74, 151 ); //Dark parts
 set_color_profile_slot( 22, 6, 247, 123, 45 ); //Fur
 set_color_profile_slot( 22, 7, 180, 67, 33 ); //Fur shading
 
-// Iroh
+// Lyca
 set_color_profile_slot( 23, 0, 220, 120, 101 ); //Energy
 set_color_profile_slot( 23, 1, 207, 135, 16 ); //Top shading
 set_color_profile_slot( 23, 2, 239, 221, 0 ); //Top
@@ -268,8 +266,8 @@ set_color_profile_slot( 23, 5, 65, 66, 86 ); //Dark parts
 set_color_profile_slot( 23, 6, 201, 201, 240 ); //Fur
 set_color_profile_slot( 23, 7, 130, 100, 169 ); //Fur shading
 
-// Link
-set_color_profile_slot( 24, 0, 47, 193, 234 );//Energy
+// Iroh
+set_color_profile_slot( 24, 0, 47, 193, 234 ); //Energy
 set_color_profile_slot( 24, 1, 31, 112, 177 ); //Top shading
 set_color_profile_slot( 24, 2, 47, 193, 234 ); //Top
 set_color_profile_slot( 24, 3, 167, 183, 156 ); //Pattern1
@@ -277,6 +275,18 @@ set_color_profile_slot( 24, 4, 252, 253, 253 ); //Pattern2
 set_color_profile_slot( 24, 5, 248, 250, 223 ); //Dark parts
 set_color_profile_slot( 24, 6, 216, 165, 73 ); //Fur
 set_color_profile_slot( 24, 7, 143, 103, 47 ); //Fur shading
+
+// Hey Spar
+set_color_profile_slot( 25, 0, 219, 36, 110 ); //Energy
+set_color_profile_slot( 25, 1, 77, 15, 0 ); //Top shading
+set_color_profile_slot( 25, 2, 158, 0, 1 ); //Top
+set_color_profile_slot( 25, 3, 252, 253, 253 ); //Pattern1
+set_color_profile_slot( 25, 4, 158, 0, 1 ); //Pattern2
+set_color_profile_slot( 25, 5, 37, 22, 19 ); //Dark parts
+set_color_profile_slot( 25, 6, 87, 51, 53 ); //Fur
+set_color_profile_slot( 25, 7, 48, 24, 31 ); //Fur shading
+
+
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
 {"formatversion":1,"data":[{"name":"Energy","colors":[{"r":0,"g":241,"b":255,"main":true},{"r":134,"g":248,"b":255}]},{"name":"Top shading","colors":[{"r":26,"g":36,"b":22,"main":true}]},{"name":"Top","colors":[{"r":39,"g":59,"b":32,"main":true}]},{"name":"Pattern1","colors":[{"r":116,"g":173,"b":36,"main":true}]},{"name":"Pattern2","colors":[{"r":53,"g":73,"b":26,"main":true}]},{"name":"Dark parts","colors":[{"r":24,"g":33,"b":36,"main":true},{"r":18,"g":25,"b":27}]},{"name":"Fur","colors":[{"r":255,"g":255,"b":255,"main":true}]},{"name":"Fur shading","colors":[{"r":178,"g":177,"b":182,"main":true},{"r":141,"g":140,"b":146}]}]}

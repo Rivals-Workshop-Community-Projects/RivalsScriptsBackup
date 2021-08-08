@@ -43,3 +43,21 @@ if (attack == AT_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 	}
 }
 
+
+shader_start();
+// Calle Nthrow visual
+if (attack == AT_NTHROW && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
+	
+	if (window > 2 && window < 7){
+		if (tsj_timer < 56){
+			draw_sprite_ext(sprite_index, image_index, tsj_x1, tsj_y1, spr_dir, 1, 0, c_white, 0.75); 
+		}
+		if (tsj_timer < 58){
+			draw_sprite_ext(sprite_index, image_index, tsj_x2, tsj_y2, spr_dir, 1, 0, c_white, 0.5); 
+		}
+		
+		draw_sprite_ext(sprite_index, image_index, tsj_x3, tsj_y3, spr_dir, 1, 0, c_white, 0.2); 
+	}
+}
+
+shader_end();

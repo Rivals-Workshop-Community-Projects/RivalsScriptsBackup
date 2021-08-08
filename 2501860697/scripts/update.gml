@@ -101,6 +101,7 @@ if venom_stack > 3 {
 }
 
 if short = 1 {
+	lasercharged = false;
     if (short_timer == 100)
         short_drain = lerp(short_drain_min, short_drain_max, venom_stack / 3);
     short_timer -= short_drain;
@@ -110,7 +111,6 @@ if short_timer < 0 {
     short_timer = 100;
     short = 0;
 }
-
 
 
 if short = 1 {
@@ -149,9 +149,14 @@ move_cooldown[AT_FSPECIAL_AIR] = 26;
 
 
 if(free && attack == AT_USPECIAL || attack == AT_USPECIAL_2) && (state == PS_ATTACK_AIR){
-    move_cooldown[AT_USPECIAL] = 999;
+    if (has_hit)
+    	move_cooldown[AT_USPECIAL] = 0;
+    else {
+    	move_cooldown[AT_USPECIAL] = 999;
+    }
 }
 
 if(!free || state == PS_WALL_JUMP || state == PS_HITSTUN){
     move_cooldown[AT_USPECIAL] = 0;
+		uspecialtimer = 0;
 }

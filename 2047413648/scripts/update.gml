@@ -5,8 +5,26 @@ hit_player_obj = self
 
 }
 
+if !hitpause {
+   stax += floor(((x-40*spr_dir)-stax)/5)
+   stay += floor((y-56-stay)/5)
+}
 
+if fchargeold != fcharge  {
+	
+	if fchargeold < fcharge && fcharge <= 3 && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR {
+	sound_play(asset_get("sfx_ori_bash_use"),false,noone,1,0.7 + fcharge/10)
+	shake_camera(2,2)
+	}
+	
+	fchargecd = 40
+	
+	fchargeold = fcharge
+}
 
+if fchargecd > 0 {
+	fchargecd -= 1.5
+}
 /// screw this
 
 if(get_gameplay_time() == 1){

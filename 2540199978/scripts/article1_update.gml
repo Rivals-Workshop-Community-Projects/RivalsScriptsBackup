@@ -38,6 +38,7 @@ switch (state)
         }
         hsp = 0;
         vsp = 0;
+        if (state_timer > 1 && player_id.state_cat == SC_HITSTUN) state_timer--;
         if (state_timer+offsetTimer >= idleTime-30 && state_timer % 5 == 0) x += state_timer%2==0?-4:4;
         if (state_timer+offsetTimer >= idleTime)
         {
@@ -157,22 +158,9 @@ if (state_timer % animSpeed == 0 && state_timer != 0)
 {
     if (hbox != noone && !instance_exists(hbox))
     {
-        hbox = create_hitbox(AT_NSPECIAL_2, 2, x, y);
-        hbox.type = 1;
-        hbox.damage = 999;
-        hbox.kb_angle = 90;
-        hbox.kb_value = 1;
-        hbox.kb_scale = 100;
-        hbox.image_xscale = 50;
-        hbox.image_yscale = 50;
-        hbox.camera_shake = -1;
-        hbox.extra_hitpause = 0;
-        hbox.hitpause = 0;
-        hbox.hitpause_growth = 0;
-        hbox.no_other_hit = 10;
-        hbox.sound_effect = sound_get("vineboom");
-        hbox.hit_effect = player_id.moyai_effect;
-        print("Stop cheating.");
-        player_id.aura = 600;
+        hbox = create_hitbox(AT_NSPECIAL_2, state==AS_SPAWN?1:2, x, y);
+        sound_play(sound_get("vineboom"));
+        spawn_hit_fx(x, y, player_id.moyai_effect);
+        print("...");
     }
 }

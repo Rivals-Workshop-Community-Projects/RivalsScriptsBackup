@@ -82,6 +82,15 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) {
 	}
 }
 
+//jab special
+if my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num == 3 {
+	boosting_minions = true;
+	boosting_timer_rn = 0;
+}
+
+
+
+
 //minion targeting
 with(obj_article2) {
 	if player_id == other.id && get_player_team(player_id.player) != get_player_team(other.hit_player) {

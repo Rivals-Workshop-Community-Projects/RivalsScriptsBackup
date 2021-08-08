@@ -11,6 +11,11 @@ GrappleMode = 0;
 LoveMeter = 0;
 LoveStorage = 0;
 
+PreviousMeter = 0;
+MiniM_display_timer = 0;
+MiniM_Alpha = 0;
+
+
 Platform_Text = [ [44, "She cute tho"], [32, "Doki Doki"], [48, "100% Real Girl"], [32, "Date Girl"], [32, "Data Girl"], [46, "S U C C E S S"], [46, "World is Mine"], [34, "Digital Girl"], [44, "Do your best!"], [38, "Keep going!"], [28, "Press F"] ];
 platform_number = 0;
 
@@ -19,6 +24,14 @@ up1 = 1;
 up2 = 1;
 up3 = 1;
 
+	tsj_x1 = 0;
+	tsj_x2 = 0;
+	tsj_x3 = 0;
+	tsj_y1 = 0;
+	tsj_y2 = 0;
+	tsj_y3 = 0;
+	tsj_timer = 0;
+	
 nspecial_charge = 0;
 
 focus_attack = false;
@@ -45,11 +58,20 @@ isCandy = false;
 isRibbon = false;
 isBalloon = false;
 
-HeartPop = 0;
+Balloon_hitstun_grav = 0;
+Candy_SecondAttack = false;
 
-RibbonVSP = -11;
-RibbonHSP = -5;
+dash_cancel_endlag = 15;
+dash_cancel_counter = 0;
+
+HeartPop = 0;
+spinbox = noone;
+
 RibbonKB = 8;
+RibbonHP = 14;
+RibbonRights = 0;
+Calliecide = false;
+
 ThornKB = 8;
 CandyKB = 4;
 
@@ -98,8 +120,8 @@ walk_speed = 3.25;
 walk_accel = 0.3;
 walk_turn_time = 6;
 initial_dash_time = 10;
-initial_dash_speed = 7;
-dash_speed = 6.5;
+initial_dash_speed = 7.0;
+dash_speed = 6.0;
 dash_turn_time = 12;
 dash_turn_accel = 1.6;
 dash_stop_time = 6;
@@ -111,9 +133,9 @@ jump_start_time = 5;
 jump_speed = 12;
 short_hop_speed = 7;
 djump_speed = 11.5;
-leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
+leave_ground_max = 5; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 4.5; //the maximum hsp you can accelerate to when in a normal aerial state
+air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
@@ -127,13 +149,13 @@ max_fall = 11; //maximum fall speed without fastfalling
 fast_fall = 14; //fast fall speed
 gravity_speed = .6;
 hitstun_grav = .45;
-knockback_adj = 0.95; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.00; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 12;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .06; //grounded deceleration when wavelanding
+wave_friction = .10; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 1;

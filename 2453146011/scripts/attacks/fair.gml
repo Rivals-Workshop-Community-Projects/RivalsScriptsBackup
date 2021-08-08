@@ -7,7 +7,7 @@ set_attack_value(AT_FAIR, AG_LANDING_LAG, 5);
 set_attack_value(AT_FAIR, AG_HURTBOX_SPRITE, sprite_get("fair_hurt"));
 
 //jab1 start
-set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_FAIR, 1, AG_WINDOW_CUSTOM_GRAVITY, .9);
@@ -139,7 +139,7 @@ set_hitbox_value(AT_FAIR, 2, HG_HEIGHT, 55);
 set_hitbox_value(AT_FAIR, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 2);
 set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 30);
-set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .2);
 set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, .35);

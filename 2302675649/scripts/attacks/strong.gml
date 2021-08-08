@@ -49,4 +49,4 @@ set_hitbox_value(AT_NTHROW, 1, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_NTHROW, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_NTHROW, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_NTHROW, 1, HG_ANGLE_FLIPPER, 0);
-set_hitbox_value(AT_NTHROW, 1, HG_HITSTUN_MULTIPLIER, has_rune("M")?1:0.7);
+set_hitbox_value(AT_NTHROW, 1, HG_HITSTUN_MULTIPLIER, has_rune("M")?1.15:0.85);

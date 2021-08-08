@@ -84,11 +84,54 @@ if ((window == 3 || window == 6) && window_timer == 8 && has_hit_player) {
 #region dair
 
 if (attack == AT_DAIR) {
+	
+	
+	
+	if (spr_dir == 1 && hsp < 0) || (spr_dir != 1 && hsp > 0) {
+		
+		set_hitbox_value(AT_DAIR, 5, HG_ANGLE_FLIPPER, 5);
+
+		
+		
+	} else {
+		
+		
+				set_hitbox_value(AT_DAIR, 5, HG_ANGLE_FLIPPER, 0);
+
+	}
+	if (window == 1 && window_timer == 1) {
+		
+		nair_used++
+		
+	}
+	
+	
 	  if (window == 2 && window_timer == 1 && !hitpause) {
         
              //   sound_play(asset_get("sfx_spin"))
 
     }
+   
+    if ((attack_down || down_strong_down) && window == 2 && nair_used < 4) {
+    	
+    	set_attack_value(AT_DAIR, AG_USES_CUSTOM_GRAVITY, 1);
+
+
+if (nair_used = 1) {
+    	set_window_value(AT_DAIR, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.1); }
+    	if (nair_used = 2)  {	
+    		    	set_window_value(AT_DAIR, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.35); }
+    	if (nair_used = 3)  {	
+    		    	set_window_value(AT_DAIR, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.6); }
+
+    	
+
+    	
+    	
+    	
+    } else {	    set_attack_value(AT_DAIR, AG_USES_CUSTOM_GRAVITY, 0);
+
+} 
     
 	
 if (vsp < -2)	{
@@ -185,11 +228,11 @@ if (attack == AT_DSPECIAL) {
     
     if (window == 1 && hsp > 0 && (left_pressed || left_down)) {
         
-        hsp = -hsp
+        hsp = -0.75*hsp
         wavebounced_downspec = true
     } else if (window == 1 && hsp < 0 && (right_pressed || right_down)) {
         
-        hsp = -hsp
+        hsp = -0.75*hsp
         wavebounced_downspec = true
     }
     }
@@ -207,18 +250,27 @@ if (attack == AT_DSPECIAL) {
     
     
     
-if (window == 1 && window_timer == 1 &&!free) {
+if (window == 1 && window_timer == 1) {
     
+    
+    if !free {
     vsp = -3.3
-    hsp = clamp(hsp, -5, 5)
-    dspecial_started_from_ground = true
+    hsp = clamp(hsp, -5, 5) } 
     
-} else if (window == 1 && window_timer == 1 && dspecial_not_used_yet_in_air) {
+        dspecial_started_from_ground = true
+
+    if free {
+    	
+    	 hsp = clamp(hsp, -4, 4)
+    	      //   sound_play(asset_get("sfx_clairen_poke_med"))
+
+    	if dspecial_not_used_yet_in_air {
+    	    vsp =  clamp(vsp, -2.5, 1.5) }
+
+    	    dspecial_started_from_ground = false
+
+    } }
     
-    vsp =  clamp(vsp, -2.5, 1.5)
-    
-    dspecial_started_from_ground = false
-}
 
 
 
@@ -272,7 +324,7 @@ if (attack == AT_FSPECIAL) {
 		
 		        sound_play(asset_get("sfx_ori_charged_flame_hit"))
 
-		
+		slower_hsp = false
 	}
 	
 	
@@ -291,18 +343,21 @@ if (attack == AT_FSPECIAL) {
 	
 		//FSPECIAL LEDGE CASE
 
-if (window != 1 && window != 13 && window != 15) {
+if (window != 1  && window != 12 && window != 13 && window != 15) {
 	
 	
 	
-	                if (place_meeting(x + hsp, y, asset_get("par_block")) && free) {
+	                if ((place_meeting(x + 27*spr_dir, y, asset_get("par_block"))) && free && !hitpause) {
 	                	for (var i = 1; i < 40; i++){
-                        if (!place_meeting(x + hsp, y- i ,asset_get("par_block"))) {
+                        if (!place_meeting(x + 27*spr_dir, y- i ,asset_get("par_block"))) {
 	                	
 	                	
 	                	                            y -= i;
 break;
                         }
+                       
+                        
+                        
 	                }
 } 
 	
@@ -351,13 +406,24 @@ break;
 		
 	}
 	
+	if (window == 1 && window_timer == 11 && special_down) {
+		
+	//	slower_hsp = true
+		
+	} 
+	
+	
 	if (((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) || window == 14)) && !hitpause) {
-		hsp = 27*spr_dir
+	
+	if !slower_hsp {
+		hsp = 27*spr_dir } else {	hsp = 18*spr_dir			}
 		vsp = 0
 	}
 	if (window == 15 && window_timer == 1) {
 		
-		hsp = 3*spr_dir
+	if !slower_hsp {
+		hsp = 3*spr_dir } else {	hsp = 1*spr_dir			}	
+		
 	}
 	
 	if (!has_hit && free) {
@@ -426,8 +492,7 @@ if (hit_player_obj.state == PS_HITSTUN ) {
 if instance_exists(hit_player_obj) {
 	
 	
-	blah_variable_omg = clamp(x+65*spr_dir, 32, room_width - 32)
-	hit_player_obj.x = lerp(floor(hit_player_obj.x), blah_variable_omg, lerpam[0])
+	hit_player_obj.x = lerp(floor(hit_player_obj.x), x+65*spr_dir, lerpam[0])
 	hit_player_obj.y = lerp(floor(hit_player_obj.y), y-20, lerpam[1])
 
 } } }
@@ -522,14 +587,14 @@ if (attack == AT_USTRONG) {
 #region nair
 if (attack == AT_NAIR) {
 	
-
-    if (window < 4) {
-        
-        nair_spike = false
+if (window == 1 && window_timer < 2) {
+	
+	
+	clear_button_buffer( PC_ATTACK_PRESSED );
+nair_spike = false
                 set_attack_value(AT_NAIR, AG_CATEGORY, 1);
-
-    }
-    
+}
+   
     
     if (window > 4) {
         
@@ -557,6 +622,13 @@ if (attack == AT_NAIR) {
         window_timer = 0
         
     }
+    
+    if (window == 4 || window == 5 || window == 6) {
+    	
+    	    can_fast_fall = false
+
+    }
+    
     if (!free && (window == 5 || window == 6) && !hitpause) { //landing creation
     
             sound_play(asset_get("sfx_clairen_tip_strong"))
@@ -578,11 +650,14 @@ if (attack == AT_NAIR) {
     if (window == 6) {
         can_wall_jump = true
         
-        if (window_timer > 18) {
+        if ((window_timer > 18 && has_hit) || (window_timer > 24)) {
             can_shield = true
             can_special = true
+            
            //can_jump = true
+        //   iasa_script()
         }
+
         
     }
     

@@ -111,7 +111,7 @@ alt_name[28] = "Skitty"; // skitty from pokemon
 alt_name[29] = "Splat"; // maeko, splat oc 
 alt_name[30] = "Shephard"; // adrian shephard
 
-alt_name[31] = "unused"; // alt 31 doesn't work :(
+alt_name[31] = "Riptide"; // alt 31 doesn't work :(
 
 
 

@@ -18,7 +18,7 @@ set_color_profile_slot_range( 3, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 9 );
+set_num_palettes( 12 );
 
 // white
 set_color_profile_slot( 1, 0, 217, 216, 212 ); //med
@@ -67,6 +67,24 @@ set_color_profile_slot( 8, 0, 255, 0, 0 ); //med
 set_color_profile_slot( 8, 1, 181, 0, 0 ); //dark
 set_color_profile_slot( 8, 2, 255, 112, 112 ); //light
 set_color_profile_slot( 8, 3, 255, 255, 255 ); //smear white
+
+// yellow
+set_color_profile_slot( 9, 0, 253, 183, 1 ); //med
+set_color_profile_slot( 9, 1, 207, 104, 25 ); //dark
+set_color_profile_slot( 9, 2, 253, 218, 129 ); //light
+set_color_profile_slot( 9, 3, 255, 255, 255 ); //smear white
+
+// aqua
+set_color_profile_slot( 10, 0, 1, 199, 217 ); //med
+set_color_profile_slot( 10, 1, 1, 109, 186 ); //dark
+set_color_profile_slot( 10, 2, 107, 255, 235 ); //light
+set_color_profile_slot( 10, 3, 255, 255, 255 ); //smear white
+
+// orange
+set_color_profile_slot( 11, 0, 216, 93, 1 ); //med
+set_color_profile_slot( 11, 1, 153, 33, 0 ); //dark
+set_color_profile_slot( 11, 2, 255, 181, 125 ); //light
+set_color_profile_slot( 11, 3, 255, 238, 224 ); //smear white
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

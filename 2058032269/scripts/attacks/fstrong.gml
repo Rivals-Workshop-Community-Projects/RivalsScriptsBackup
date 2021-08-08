@@ -23,7 +23,7 @@ set_window_value(AT_FSTRONG, 3, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
 
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 13);
-set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 

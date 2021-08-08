@@ -66,7 +66,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 27; // number of alternate color palettes. 0 is the default color, count it accordingly.
+	col_max = 28; // number of alternate color palettes. 0 is the default color, count it accordingly.
 	
 	//first array index is for alternate color. second array index is for distinguishing the information in it.
 	ce[0,0] = make_color_rgb(255, 57, 124 ) // "color preview square" color. can be any color!
@@ -84,7 +84,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[4,0] = make_color_rgb(114, 162, 234)
 	ce[4,1] = "「ARCHANGEL」"
 	ce[4,2] = ""
-	ce[5,0] = make_color_rgb(109, 91, 141) //Young Link
+	ce[5,0] = make_color_rgb(95, 73, 116) //Young Link
 	ce[5,1] = "Kokiri Clone"
 	ce[5,2] = ""
 	ce[6,0] = make_color_rgb(242, 71, 91) //woolf
@@ -93,19 +93,19 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[7,0] = make_color_rgb(31, 94, 161) //fox
 	ce[7,1] = "Melee Menace"
 	ce[7,2] = ""
-	ce[8,0] = make_color_rgb(90, 75, 130) //falco
+	ce[8,0] = make_color_rgb(6, 37, 125) //falco
 	ce[8,1] = "Foul-Mouthed Fowl"
 	ce[8,2] = ""
-	ce[9,0] = make_color_rgb(224, 75, 0) //link
+	ce[9,0] = make_color_rgb(13, 128, 21) //link
 	ce[9,1] = "Herbal Hero"
 	ce[9,2] = ""
-	ce[10,0] = make_color_rgb(59, 211, 212)
+	ce[10,0] = make_color_rgb(0, 146, 179)
 	ce[10,1] = "Lab Cat"
 	ce[10,2] = ""
-	ce[11,0] = make_color_rgb(142, 49, 181)
+	ce[11,0] = make_color_rgb(138, 99, 49)
 	ce[11,1] = "Perennis Princess"
 	ce[11,2] = ""
-	ce[12,0] = make_color_rgb(173, 91, 199) //Lucas
+	ce[12,0] = make_color_rgb(99, 58, 153) //Lucas
 	ce[12,1] = "Duster Buster"
 	ce[12,2] = ""
 	ce[13,0] = make_color_rgb(115, 19, 171)
@@ -129,30 +129,33 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[19,0] = make_color_rgb( 158, 158, 158) //SAKURAI
 	ce[19,1] = "Smash Original"
 	ce[19,2] = ""
-	ce[20,0] = make_color_rgb( 0, 145, 181)
-	ce[20,1] = "Monoblue"
+	ce[20,0] = make_color_rgb(179, 2, 53)
+	ce[20,1] = "Bullet Beau"
 	ce[20,2] = ""
-	ce[21,0] = make_color_rgb(217, 54, 89)
-	ce[21,1] = "Monopink"
+	ce[21,0] = make_color_rgb(30, 30, 30)
+	ce[21,1] = "Monogrey"
 	ce[21,2] = ""
-	ce[22,0] = make_color_rgb(30, 30, 30)
-	ce[22,1] = "Monogrey. Gray?"
+	ce[22,0] = make_color_rgb( 117, 137, 156)
+	ce[22,1] = "Silver Fox"
 	ce[22,2] = ""
-	ce[23,0] = make_color_rgb( 163, 191, 217)
-	ce[23,1] = "Silver Fox"
+	ce[23,0] = make_color_rgb( 177, 20, 224)
+	ce[23,1] = "nova_alt.png"
 	ce[23,2] = ""
-	ce[24,0] = make_color_rgb( 177, 20, 224)
-	ce[24,1] = "nova_alt.png"
+	ce[24,0] = make_color_rgb( 227, 151, 0)
+	ce[24,1] = "BLM"
 	ce[24,2] = ""
-	ce[25,0] = make_color_rgb( 227, 151, 0)
-	ce[25,1] = "BLM"
+	ce[25,0] = make_color_rgb( 215, 215, 215)
+	ce[25,1] = "Shattered Prism"
 	ce[25,2] = ""
-	ce[26,0] = make_color_rgb( 215, 215, 215)
-	ce[26,1] = "Shattered Prism"
+	ce[26,0] = make_color_rgb( 39, 158, 96)
+	ce[26,1] = "Genji-Ish"
 	ce[26,2] = ""
-	ce[27,0] = make_color_rgb( 39, 158, 96)
-	ce[27,1] = "Genji-Ish"
+	ce[27,0] = make_color_rgb( 232, 16, 16)
+	ce[27,1] = "Phantom Menace"
 	ce[27,2] = ""
+	ce[28,0] = make_color_rgb( 39, 111, 163)
+	ce[28,1] = "Riptide"
+	ce[28,2] = ""
 
 	
 	// you can add more, by copypasting and changing the first index of the array accordingly.
@@ -257,7 +260,7 @@ if (get_player_color(player) == 14) { //AND 26
     
     
 	draw_sprite_ext(sprite_get("charselect_gb"),1,x+8,y+8,2,2,0,-1,1);
-} else if (get_player_color(player) == 26) { //AND 26
+} else if (get_player_color(player) == 25) { //AND 26
     
     
 	draw_sprite_ext(sprite_get("charselect_prism"),1,x+8,y+8,2,2,0,-1,1);
@@ -279,12 +282,12 @@ hue_offset=hue_offset mod 255; //keeps hue_offset within the 0-255 range
 color_rgb=make_color_rgb(255, 27, 24); //input rgb values here, uses rgb to create a gamemaker colour variable
 hue=(color_get_hue(color_rgb)+hue_offset) mod 255; //finds the hue and shifts it
 color_hsv=make_color_hsv(hue,color_get_saturation(color_rgb),color_get_value(color_rgb)); //creates a new gamemaker colour variable using the shifted hue
-set_color_profile_slot(26, 0, 215,215,215); //uses that variable to set the slot's new colours
+set_color_profile_slot(25, 0, 215,215,215); //uses that variable to set the slot's new colours
 
 color_rgb_2=make_color_rgb(255, 145, 208); //input rgb values here, uses rgb to create a gamemaker colour variable
 hue_2=(color_get_hue(color_rgb_2)+hue_offset) mod 255; //finds the hue and shifts it
 color_hsv_2=make_color_hsv(hue_2,color_get_saturation(color_rgb_2),color_get_value(color_rgb_2)); //creates a new gamemaker colour variable using the shifted hue
-set_color_profile_slot(26, 1, color_get_red(color_hsv_2),color_get_green(color_hsv_2),color_get_blue(color_hsv_2)); //uses that variable to set the slot's new colours
+set_color_profile_slot(25, 1, color_get_red(color_hsv_2),color_get_green(color_hsv_2),color_get_blue(color_hsv_2)); //uses that variable to set the slot's new colours
 
 
 

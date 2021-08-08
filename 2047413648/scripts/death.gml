@@ -3,3 +3,6 @@
           destroyed = true;
         }
     }
+    
+    sound_play(sound_get("RI"));
+    fcharge = 3

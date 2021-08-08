@@ -10,6 +10,8 @@ Welcome to the state machine
 -state 5: death (visible)
 -state 6: death (offscreen)
 -state 7: attack
+-state 8: stun
+-state 9: dspecial
 
 //then animation/stuff handling
 
@@ -52,6 +54,13 @@ switch(state) {
             hsp = clamp(hsp,air_max_speed*-1,air_max_speed)
             vsp = clamp(vsp,air_max_speed*-1,air_max_speed)
             spr_dir = x < target_player.x ? 1 : -1
+        }
+        with obj_article2 {
+        	if player_id == other.player_id {
+        		if place_meeting(x,y,other) {
+        			x += x < other.x ? -2 : 2;
+        		}
+        	}
         }
         attack_timer_rn += 1
         reset_hitbox();
@@ -199,6 +208,92 @@ switch(state) {
     	    set_state(5)
     	}
         break;
+    case 9: //dspecial
+    	window_timer += 1;
+    	if window_timer > window_length {
+    	    if window < 3 {
+    	        window++;
+    	        window_timer = 0;
+    	    } else {
+    	        set_state(1);
+    	    }
+    	}
+    	switch(window) {
+    		case 1:
+    			attack_window_frame_first = 0;
+    	        attack_window_frame_last = 1;
+    	        window_length = 12//startup
+    	        if window_timer == window_length-1 {
+    	        	var randomsound = random_func(5,2,true);
+    	        	switch(randomsound){
+    	        		case 0:sound_play(asset_get("sfx_swipe_medium2"),false,0,0.55);sound_play(asset_get("sfx_swish_weak"),false,0,0.35) break;
+    	        		case 1:sound_play(asset_get("sfx_swipe_medium1"),false,0,0.55);sound_play(asset_get("sfx_swish_weak"),false,0,0.35) break;
+    	        	}
+    	        	switch(minion_level) {
+    	        		case 1:
+    	        			if overworking_active {
+    	        				dspec_boost = 0.95;
+    	        			} else {
+    	        				dspec_boost = 0.7;
+    	        			}
+    	        			break;
+    	        		case 2:
+    	        			if overworking_active {
+    	        				dspec_boost = 1.1;
+    	        			} else {
+    	        				dspec_boost = 0.85;
+    	        			}
+    	        			break;
+    	        		case 3:
+    	        			if overworking_active {
+    	        				dspec_boost = 1.25;
+    	        			} else {
+    	        				dspec_boost = 1;
+    	        			}
+    	        			break;
+    	        	}
+    	        }
+    			break;
+    		
+    		case 2: //dash
+    			attack_window_frame_first = 2;
+    	        attack_window_frame_last = 4;
+    	        window_length = 24//active
+    	        //speeds vary with level & boost
+    	        hsp = lengthdir_x(floor(10*dspec_boost),dspec_dir);
+    	        vsp = lengthdir_y(floor(10*dspec_boost),dspec_dir);
+    	        if !instance_exists(attack_hitbox_id) {
+        	        switch(minion_level) { //hitbox depends on minion level
+        	            case 1:
+        	            //waga
+        	                attack_hitbox_id = create_hitbox(AT_DSPECIAL,5,x, y)
+        	                break;
+        	            case 2:
+        	                attack_hitbox_id = create_hitbox(AT_DSPECIAL,6,x, y)
+        	            //baga
+        	                break;
+        	            case 3:
+        	                attack_hitbox_id = create_hitbox(AT_DSPECIAL,7,x, y)
+        	            //bobo
+        	                break;
+        	        }
+    	        } else {
+    	        	attack_hitbox_id.x = x;
+    	        	attack_hitbox_id.y = y;
+    	        	attack_hitbox_id.image_angle = dspec_dir; //rotate hitboxes, does happen but isn't visible due to a dan moment, propably
+    	        }
+    			break;
+    			
+    		case 3:
+    			reset_hitbox();
+    	        attack_window_frame_first = 5;
+    	        attack_window_frame_last = 7;
+    	        window_length = 24//lag
+    	        vsp = lerp(vsp,0,air_frict*5)
+        		hsp = lerp(hsp,0,air_frict*5) //slow down
+    			break;
+    	}
+    	break;
 }
 
 //state timer plus equals one
@@ -206,8 +301,14 @@ state_timer += 1
 if hit_cooldown > 0 {
 	hit_cooldown -= 1;
 }
+if hit_cooldown < 0 {
+	hit_cooldown = 0;
+}
 if hit_attack_cooldown > 0 {
 	hit_attack_cooldown -= 1;
+}
+if hit_attack_cooldown < 0 {
+	hit_attack_cooldown = 0;
 }
 if instance_exists(minion_house) {
     minion_level = minion_house.house_level;
@@ -233,18 +334,20 @@ switch(state) {
 	case -2: //debug idk
     visible = true;
 	new_sprite = sprite_get("minion_article_idle_lv"+string(minion_level))
+	image_angle = 0
 		break;
 	
     case -1: //invisible/intangible
     visible = false;
     new_sprite = sprite_get("minion_article_idle_lv"+string(minion_level))
+    image_angle = 0
         break;
     
     case 1: //idle
     visible = true;
     new_sprite = sprite_get("minion_article_idle_lv"+string(minion_level))
     image_index = state_timer*idle_anim_speed
-    
+    image_angle = 0
         break;
     
     case 2: //hurt
@@ -252,7 +355,7 @@ switch(state) {
     //make hurt sprite
     new_sprite = sprite_get("minion_article_hurt_lv"+string(minion_level))
     image_index = ease_linear(0,1,state_timer,hurt_timer)
-    
+    image_angle = 0
         break;
     
     case 5: //death
@@ -260,19 +363,21 @@ switch(state) {
     //make sprite
     new_sprite = sprite_get("minion_article_die_lv"+string(minion_level))
     image_index = ease_linear(0,6,state_timer,die_timer)
-    
+    image_angle = 0
         break;
         
     case 6: //death 2 water boogaloo
     visible = false;
     //make sprite
     new_sprite = sprite_get("minion_article_idle_lv"+string(minion_level))
+    image_angle = 0
     	break;
     	
     case 7: //atac
     visible = true;
     new_sprite = sprite_get("minion_article_attack_lv"+string(minion_level))
     image_index = ease_linear(attack_window_frame_first,attack_window_frame_last,window_timer,window_length)
+    image_angle = 0
     	break;
     	
     case 8: //stun
@@ -280,6 +385,23 @@ switch(state) {
     //make hurt sprite
     new_sprite = sprite_get("minion_article_hurt_lv"+string(minion_level))
     image_index = ease_linear(0,1,state_timer,stun_timer)
+    image_angle = 0
+    	break;
+    
+    case 9: //dspec
+    visible = true;
+    new_sprite = sprite_get("minion_article_dspecial_lv"+string(minion_level))
+    if window == 1 or window == 3 {
+    	image_index = ease_linear(attack_window_frame_first,attack_window_frame_last,window_timer,window_length)
+    } else {
+    	if image_index <= attack_window_frame_last {
+    		image_index += 0.2
+    	} else {
+    		image_index = attack_window_frame_first;
+    	}
+    }
+    image_angle = dspec_dir
+    	break;
 }
 
 sprite_index = new_sprite

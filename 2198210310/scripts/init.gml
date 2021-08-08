@@ -2,7 +2,16 @@ crouch_counter = 0;
 isWalle = true; //for other walle players to detect
 fspecCooldown = 0;
 
+timer = 0;
+
 always_holding_rock = false;
+
+//fspec trail
+max_fspec = 1;
+fspec_count = 0;
+fspec_trail_vfx = hit_fx_create(sprite_get("fspecial_proj_strong_trail"), 12);
+fspec_trail_arrays = array_create(1, (array_create(20, undefined)));
+fspec_id_array = array_create(1, undefined) //used to match fspec proj id to array num
 
 //kirby
 kirbyability = 16;

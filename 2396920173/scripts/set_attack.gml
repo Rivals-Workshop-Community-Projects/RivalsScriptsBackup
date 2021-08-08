@@ -99,77 +99,12 @@ switch attack {
     //case AT_TAUNT: piece = "Q" break;
 }
 
-if attack == AT_NSPECIAL && special_counter == 4 && move_cooldown[AT_NSPECIAL] <= 5 {
-    if piece_id != undefined && !piece_id.perform_attack && !piece_id.gonnadie {
-        var cur_x = x;
-        var cur_y = y;
-        var cur_hsp = hsp;
-        var cur_vsp = vsp;
-        var cur_dir = spr_dir;
-        var cur_piece = piece;
-        var cur_free = free;
-        var cur_armour = king_armour;
-        var cur_armour_timer = armour_timer;
-        
-        var new_x = piece_id.x;
-        var new_y = piece_id.y;
-        var new_hsp = piece_id.hsp;
-        var new_vsp = piece_id.vsp;
-        var new_dir = piece_id.spr_dir;
-        var new_piece = piece_id.piece;
-        var new_free = piece_id.free;
-        var new_armour = piece_id.king_armour;
-        var new_armour_timer = piece_id.armour_timer;
-        
-        x = new_x
-        y = new_y + 2
-        hsp = new_hsp
-        vsp = new_vsp
-        spr_dir = new_dir
-        piece = new_piece
-        king_armour = new_armour
-        armour_timer = new_armour_timer
-        
-        piece_id.x = cur_x
-        piece_id.y = cur_y
-        piece_id.hsp = cur_hsp
-        piece_id.vsp = cur_vsp
-        piece_id.spr_dir = cur_dir
-        piece_id.piece = cur_piece
-        piece_id.king_armour = cur_armour
-        piece_id.armour_timer = cur_armour_timer
-        if !cur_armour piece_id.outline_color = [0,0,0]
-        piece_id.mask_index = sprite_get(cur_piece + "hurtbox")
-        
-        piece_id.bishop_cooldown = 120;
-        
-        spawn_hit_fx(cur_x, cur_y, 13)
-        spawn_hit_fx(new_x, new_y, 13)
-        sound_play(asset_get("mfx_star"))
-        
-        switch cur_piece {
-            case "P": piece_id.hp = hp_P; break;
-            case "B": piece_id.hp = hp_B; break;
-            case "N": piece_id.hp = hp_N; break;
-            case "K": piece_id.hp = hp_K; break;
-            case "R": piece_id.hp = hp_R; break;
-            case "Q": piece_id.hp = hp_Q; break;
-        }
-        
-        if cur_free && !has_rune("B") { //NSPECIAL cooldown and pratland removed.+
-            next_state = free ? PS_PRATFALL : PS_PRATLAND;
-            prat_land_time = 26;
-        }
-        
-        if has_rune("H") { //NSPECIAL has a hitbox.
-            create_hitbox(AT_NSPECIAL, 1, new_x, new_y - 30);
-        }
+if attack == AT_NSPECIAL && move_cooldown[AT_NSPECIAL] <= 1 {
+    if special_counter == 1 {
+        if piece_id != undefined sound_play(asset_get("sfx_ori_ustrong_charge"))
+        else sound_play(sound_get("lmao"))
+        swap_timer = 10;
     }
-    if !has_rune("B") { //NSPECIAL cooldown and pratland removed.
-        move_cooldown[AT_NSPECIAL] = 80;
-    }
-    
-    //state = PS_IDLE;
 }
 
 if attack == AT_USPECIAL {

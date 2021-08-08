@@ -2,6 +2,8 @@
 
 if hit_player_obj != self {
 wjcap = 0
+move_cooldown[AT_USPECIAL] = 0
+move_cooldown[AT_FSPECIAL] = 0
 }
 
 if savex != 0 {

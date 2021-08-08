@@ -1,5 +1,7 @@
 //ai_update - called every frame for this character as a CPU
 
+is_ai = true;
+
 h_range = abs(ai_target.x - x);
 v_range = abs(y - ai_target.y);
 x_dist = (ai_target.x - x);

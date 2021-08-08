@@ -17,8 +17,8 @@ if (!"currAlt" in self)
 else if (alt_new != currAlt)
 {
 	image_alpha = 1.5;
-	sound_stop(asset_get("mfx_change_color"));
-	sound_play(sound_get("sfx_alt"), 0, 0, 2);
+	//sound_stop(asset_get("mfx_change_color"));
+	//sound_play(sound_get("sfx_alt"), 0, 0, 2);
 	offset = sign(alt_new - currAlt)*16;
 	currAlt = alt_new;
 }

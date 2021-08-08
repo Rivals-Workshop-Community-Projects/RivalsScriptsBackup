@@ -174,7 +174,7 @@ roke_mark_destroytime2 = 60; // time between drone destruction afterwards
 roke_nspecial_charge = 0;
 roke_nspecial_max_charge = 60;
 
-training = false;
+training = get_match_setting(SET_PRACTICE);
 playtest = (object_index == oTestPlayer);
 killarticles = false;
 temp_ecolor = [make_color_rgb(get_color_profile_slot_r(get_player_color(player),3),
@@ -205,6 +205,11 @@ abyssMods = array_create(16,[-1,"Not Implemented."]);
 pkmn_stadium_front_img = sprite_get("pkmnstadium_front");
 pkmn_stadium_back_img = sprite_get("pkmnstadium_back");
 pkmn_name_override = "Rokesha";
+
+roke_dstrong_grabbing = false;
+roke_dstrong_targets = ds_list_create();
+xtarget = 0;
+ytarget = 0;
 
 //----------------------------------------------
 //  Particle System

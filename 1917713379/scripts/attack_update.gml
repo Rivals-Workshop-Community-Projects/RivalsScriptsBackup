@@ -89,6 +89,8 @@ if attack == AT_USPECIAL {
 				iasa_script();
 				vsp = vsp/1.2
 				hsp = hsp/1.2
+				if jump_pressed vsp = vsp/1.3
+				if jump_pressed hsp = hsp/1.3
 				uspecialcancel = 0
 				spawn_hit_fx( x, y, seal_hit_weak_heal )
 				sound_play(asset_get("sfx_ori_glide_start"))
@@ -103,6 +105,8 @@ if attack == AT_USPECIAL {
 				iasa_script();
 				vsp = vsp/1.2
 				hsp = hsp/1.2
+				if jump_pressed vsp = vsp/1.3
+				if jump_pressed hsp = hsp/1.3
 				uspecialcancel = 0
 				spawn_hit_fx( x, y, seal_hit_weak_heal )
 				sound_play(asset_get("sfx_ori_glide_start"))

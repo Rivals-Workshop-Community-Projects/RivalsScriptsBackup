@@ -4,12 +4,21 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-patch_ver = "1.3";
-patch_day = "30";
-patch_month = "JUL";
+patch_ver = "1.4";
+patch_day = "1";
+patch_month = "AUG";
 
 var num_alts = 16;
 var alt_cur = get_player_color(player);
+
+var alt_cur_2 = alt_cur;
+
+var page_num = "Page 1";
+
+if alt_cur > 15{
+	alt_cur_2 = alt_cur - 16;
+	page_num = "Page 2";
+}
 
 
 
@@ -65,7 +74,7 @@ textDraw(temp_x + 2, temp_y + 50, "fName", c_white, 0, 1000, 1, true, 1, patch_d
 rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
 
 for(i = 0; i < num_alts; i++){
-	var draw_color = (i == alt_cur) ? c_white : c_gray;
+	var draw_color = (i == alt_cur_2) ? c_white : c_gray;
 	var draw_x = temp_x + 2 + 10 * i;
 	rectDraw(draw_x, temp_y + 137, draw_x + 7, temp_y + 140, draw_color);
 }
@@ -73,7 +82,10 @@ for(i = 0; i < num_alts; i++){
 draw_set_halign(fa_left);
 
 //include alt. name
-textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1) + ": " + alt_name[alt_cur]);
+textDraw(temp_x + 2, temp_y + 120, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1) + ": " + alt_name[alt_cur]);
+
+//Page Number
+textDraw(temp_x + 152, temp_y + 100, "fName", c_white, 0, 1000, 1, true, 1, page_num);
 
 //exclude alt. name
 //textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));

@@ -48,10 +48,6 @@ if (state != PS_HITSTUN && attack != AT_NSPECIAL){
 	}
 }
 
-if (attack == AT_JAB && was_parried){
-	was_parried = false;
-}
-
 if (state != PS_ATTACK_GROUND  && state != PS_ATTACK_AIR){
 	attack_anim_timer = 0;
 	attack_anim_timer_2 = 0;

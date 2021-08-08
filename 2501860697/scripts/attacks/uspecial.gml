@@ -43,7 +43,7 @@ set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
-set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_CUSTOM_GRAVITY, 1);

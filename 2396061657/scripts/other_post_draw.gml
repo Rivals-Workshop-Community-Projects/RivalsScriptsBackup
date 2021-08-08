@@ -15,9 +15,8 @@ if ("isCandy" in self && isCandy && !free){
 	}
 }
 
-
 /*
-draw_debug_text(x, y - 40, "check: " + string(CCheck));
+draw_debug_text(x, y - 40, "HS_Grav: " + string(hitstun_grav));
 draw_debug_text(x, y - 60, "Counter: " + string(CandyCounter));
 draw_debug_text(x, y - 80, "Is:: " + string(isCandy));
 */

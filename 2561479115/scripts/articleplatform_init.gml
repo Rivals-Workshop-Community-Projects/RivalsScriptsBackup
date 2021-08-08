@@ -155,7 +155,7 @@ reg_contents[cur, 2] = t_prefixes[@ 1]+  "PUBLIC ENDANGERMENT, DESTRUCTION OF PR
 reg_contents[cur, 3] = t_prefixes[@ 2]+  "TERMINATE AT ALL COSTS";
 reg_contents[cur++, 4] = "What happened... what did you do to her!?";
 
-reg_contents[cur, 0] = "1"; //Rokesha
+reg_contents[cur, 0] = "2561479115"; //Rokesha
 reg_contents[cur, 1] = t_prefixes[@ 0]+  "ROKESHA ISOBE";
 reg_contents[cur, 2] = t_prefixes[@ 1]+  "NONE";
 reg_contents[cur, 3] = t_prefixes[@ 2]+  "OBEY THE EMPEROR AND ELIMINATE THREATS TO NEO FIRE CAPITAL";

@@ -70,6 +70,12 @@ set_window_value(AT_FSPECIAL, 9, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSPECIAL, 9, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_FSPECIAL, 9, AG_WINDOW_CUSTOM_GRAVITY, .25);
 
+set_window_value(AT_FSPECIAL, 10, AG_WINDOW_TYPE, 1);
+set_window_value(AT_FSPECIAL, 10, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FSPECIAL, 10, AG_WINDOW_ANIM_FRAMES, -3);
+set_window_value(AT_FSPECIAL, 10, AG_WINDOW_ANIM_FRAME_START, 7);
+set_window_value(AT_FSPECIAL, 10, AG_WINDOW_CUSTOM_GRAVITY, 1);
+
 set_num_hitboxes(AT_FSPECIAL, 5);
 
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);
@@ -91,7 +97,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
 //steam cloud hitbox
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 10);
+set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 20);
 set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 14);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 65);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 65);
@@ -117,7 +123,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_UNBASHABLE, true);
 
 //steam cloud projectile
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW, 10);
+set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW, 20);
 set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 120);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_X, 30);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, -30);
@@ -145,7 +151,7 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, fx_empty);
 
 //laser
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_FSPECIAL, 4, HG_WINDOW, 10);
+set_hitbox_value(AT_FSPECIAL, 4, HG_WINDOW, 20);
 set_hitbox_value(AT_FSPECIAL, 4, HG_LIFETIME, 5);
 set_hitbox_value(AT_FSPECIAL, 4, HG_WIDTH, 1200);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HEIGHT, 45);
@@ -172,7 +178,7 @@ set_hitbox_value(AT_FSPECIAL, 4, HG_SDI_MULTIPLIER, 0);
 
 //laser finisher
 set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_FSPECIAL, 5, HG_WINDOW, 10);
+set_hitbox_value(AT_FSPECIAL, 5, HG_WINDOW, 20);
 set_hitbox_value(AT_FSPECIAL, 5, HG_LIFETIME, 20);
 set_hitbox_value(AT_FSPECIAL, 5, HG_WIDTH, 1200);
 set_hitbox_value(AT_FSPECIAL, 5, HG_HEIGHT, 45);

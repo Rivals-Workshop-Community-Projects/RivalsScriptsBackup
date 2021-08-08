@@ -44,42 +44,47 @@ if (my_hitboxID.type == 2 && my_hitboxID.hits_tag == 2) {
     hit_player_obj.hitstop = hit_player_obj.hitstop_full;
 }
 
-//sound layering stuff
-if (my_hitboxID.attack == AT_UAIR) {
-    sound_play(asset_get("sfx_blow_weak1"));
-}
-if my_hitboxID.attack == AT_UTILT && my_hitboxID.hbox_num == 1 {
-    sound_play(asset_get("sfx_shovel_hit_med2"),false,noone,0.8,0.9);
-    sound_play(asset_get("sfx_blow_medium2"),false,noone,1,1);
-}
-if my_hitboxID.attack == AT_FTILT && my_hitboxID.hbox_num == 1 {
-    sound_play(asset_get("sfx_shovel_hit_med2"),false,noone,0.75,0.8);
-    //sound_play(asset_get("sfx_blow_medium2"),false,noone,1,1);
-}
-if my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num == 1 {
-    sound_play(asset_get("sfx_shovel_hit_light1"),false,noone,0.75,0.9);
-}
-if my_hitboxID.attack == AT_DATTACK {
-    sound_play(asset_get("sfx_shovel_hit_med2"),false,noone,0.6,0.8);
-}
-if my_hitboxID.attack == AT_FAIR && my_hitboxID.hbox_num == 1 {
-    sound_play(asset_get("sfx_shovel_hit_heavy1"),false,noone,0.5,1);
-}
-if my_hitboxID.attack == AT_FAIR && my_hitboxID.hbox_num == 2 {
-    sound_play(asset_get("sfx_shovel_hit_heavy2"),false,noone,0.8,1);
-}
-if my_hitboxID.attack == AT_NAIR {
-    sound_play(asset_get("sfx_clairen_hit_med"),false,noone,0.8,1);
-}
-if my_hitboxID.attack == AT_FSPECIAL {
-    sound_play(asset_get("sfx_shovel_hit_light1"),false,-4,0.6,1.04);
+switch (my_hitboxID.attack) {
+    case AT_JAB: if my_hitboxID.hbox_num == 1 sound_play(asset_get("sfx_shovel_hit_light1"),false,noone,0.75,0.9); break;
+    case AT_DATTACK: sound_play(asset_get("sfx_shovel_hit_med2"),false,noone,0.6,0.8); break;
+    case AT_UTILT: 
+        sound_play(asset_get("sfx_shovel_hit_med2"),false,noone,0.8,0.9);
+        sound_play(asset_get("sfx_blow_medium2"),false,noone,1,1);
+    break;
+    case AT_FTILT: if my_hitboxID.hbox_num == 1 sound_play(asset_get("sfx_shovel_hit_med2"),false,noone,0.75,0.8); break;
+
+    case AT_UAIR: sound_play(asset_get("sfx_blow_weak1")); break;
+    case AT_FAIR: 
+        if my_hitboxID.hbox_num == 1 sound_play(asset_get("sfx_shovel_hit_heavy1"),false,noone,0.5,1); 
+    break;
+    case AT_NAIR: sound_play(asset_get("sfx_clairen_hit_med"),false,noone,0.8,1); break;
+    case AT_FSPECIAL: sound_play(asset_get("sfx_shovel_hit_light1"),false,-4,0.6,1.04); break;
+    case AT_USTRONG:
+        switch my_hitboxID.hbox_num {
+            case 2:
+            case 1: sound_play(asset_get("sfx_clairen_hit_strong")); break;
+            case 3: sound_play(asset_get("sfx_clairen_hit_med")); break;
+        }
+    break;
+    case AT_FSTRONG: sound_play(asset_get("sfx_blow_heavy2")); break;
+    case AT_DSTRONG: 
+        switch my_hitboxID.hbox_num {
+            case 3:
+            case 4:
+                if ds_list_find_index(roke_dstrong_targets, hit_player_obj) != -1 {
+                    print("r")
+                    ds_list_remove(roke_dstrong_targets, hit_player_obj)
+                }
+            break;
+            default:
+                if ds_list_find_index(roke_dstrong_targets, hit_player_obj) == -1 {
+                    print("a")
+                    ds_list_add(roke_dstrong_targets, hit_player_obj);
+                }
+            break;
+        }
+    break;
 }
 
-if my_hitboxID.attack == AT_USTRONG {
-    switch my_hitboxID.hbox_num {
-        case 2:
-        case 1: sound_play(asset_get("sfx_clairen_hit_strong")); break;
-        case 3: sound_play(asset_get("sfx_clairen_hit_med")); break;
-    }
-}
-if my_hitboxID.attack == AT_FSTRONG sound_play(asset_get("sfx_blow_heavy2"));
+
+

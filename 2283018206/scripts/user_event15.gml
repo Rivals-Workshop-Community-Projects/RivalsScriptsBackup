@@ -405,6 +405,10 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("1.27", "04 August, 2021");
+	initPatchWords("NSpecial - Nerfs");
+	initPatchWords_ext("You can no longer spin-bounce the ball while in hitstun.", fa_left, c_gray, 1, 0);
+	
 	initPatch("1.26", "01 August, 2021");
 	initPatchWords("NSpecial - Nerfs, Bugfixes");
 	initPatchWords_ext("You can no longer spin-bounce the ball when it's in the bouncing state after hitting an opponent.

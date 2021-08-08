@@ -206,6 +206,8 @@ attack_holo_nome = "Jab";
 attack_holo_icon = 0;
 attack_holo_size = -12;
 hologram_icon = 1;
+attack_config = false;
+window_end = 0;
 
 shotgun_cont = 0;
 shotgun_shot = false;

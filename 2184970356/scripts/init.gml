@@ -124,7 +124,207 @@ bubble_x = 0;
 bubble_y = 8;
 
 // ----------------- A A A A A This is where all the support stuff goes ----------------- //
+// Date Girl Support
+	Chatting = true; 									// Determines if the player is a workshop character
 
+	DG_portrait = sprite_get("DG_portrait"); 			// .png strip of your character portraits
+	var DG_page = 0; 									// The current page of dialogue - Always set this to 0 
+	
+// Page 0
+	DG_page = 0;										// Defines the next page
+	DG_chat_type[DG_page] = 1; 							// 1, Option select.. 2, More dialogue... 3, Ends dialogue
+	
+	DG_adopts_color_left[DG_page] = true; 				// If true, the portrait will adopt the color alt of the character on screen	
+	DG_adopts_color_right[DG_page] =  true;			// If true, the portrait will adopt the color alt of the character on screen
+
+	DG_left_strip[DG_page] = 0; 						// The strip number of the sprite portrait for the left side of the visual
+														// 0 represents the first sprite of the strip
+	DG_right_strip[DG_page] = 0;						// The strip number of the sprite portrait for the right side of the visual
+														// 0 represents the first sprite of the strip
+														// If DG_custom_[left/right]_portrait is false the list of base characters in order are:
+								   
+														// Name:   Callie  'You'   Zetter   Orcane   Wrastor   Kragg   Forsburn   Maypul   Absa   Etalus   Ori   Ranno   Clairen   Sylvanos   Elliana   Shovel Knight   Sandbert   Siren   Empty_Sprite
+														// Cases:     0      1       2        3         4        5        6         7        8      9      10      11      12         13        14           15            16	   17          18
+	DG_custom_left_portrait[DG_page] = true; 			// If true, uses custom character portrait sprites
+														// If false, uses base cast + Callie, You, and Siren portraits
+														// Set this every page
+	DG_custom_right_portrait[DG_page] = false;			// If true, uses custom character portrait sprites
+														// If false, uses base cast + Callie, You, and Siren portraits
+														// Set this every page
+	// Dialogue of the character on the Left Side
+	DG_dialogue[DG_page] = "Brrrr it's so cold!
+							
+							";
+	// Dialogue to select for the character on the Right Side
+	DG_options[DG_page] =  "You always seem to be cold!
+							Aren't you an ice type? How can you be cold?
+							Brrr, it's chilly.";	
+
+	DG_answers[DG_page] = [1, 2, 3]; 					// The page their respective answers should point to
+
+
+		
+// Page 1
+	DG_page = 1;										// Defines the next page
+	DG_chat_type[DG_page] = 2; 							// 1, Option select.. 2, More dialogue... 3, Ends dialogue
+
+	DG_adopts_color_left[DG_page] = true;   			// If true, the left portrait will adopt the color alt of the character on screen
+	DG_adopts_color_right[DG_page] = true; 			// If true, the right portrait will adopt the color alt of the character on screen
+
+	DG_left_strip[DG_page] = 0;  						// The strip number of the sprite portrait for the left side of the visual
+	DG_right_strip[DG_page] = 0; 						// The strip number of the sprite portrait for the right side of the visual
+	
+	DG_custom_left_portrait[DG_page] = true;  			// If true, uses custom character portrait sprites on the left side
+	DG_custom_right_portrait[DG_page] = false; 			// If true, uses custom character portrait sprites on the right side
+
+	// Dialogue of the character on the Left Side
+	DG_dialogue[DG_page] = "Well obviously! I'm a chilly ol' bug!
+							
+							";
+	DG_nextindex[DG_page] = 4;  						// The Next page the dialogue should point to
+	
+// Page 2	
+	DG_page = 2;										// Defines the next page
+	DG_chat_type[DG_page] = 2; 							// 1, Option select.. 2, More dialogue... 3, Ends dialogue
+
+	DG_adopts_color_left[DG_page] = true;   			// If true, the left portrait will adopt the color alt of the character on screen
+	DG_adopts_color_right[DG_page] = true; 			// If true, the right portrait will adopt the color alt of the character on screen
+
+	DG_left_strip[DG_page] = 0;  						// The strip number of the sprite portrait for the left side of the visual
+	DG_right_strip[DG_page] = 0; 						// The strip number of the sprite portrait for the right side of the visual
+	
+	DG_custom_left_portrait[DG_page] = true;  			// If true, uses custom character portrait sprites on the left side
+	DG_custom_right_portrait[DG_page] = false; 			// If true, uses custom character portrait sprites on the right side
+
+	// Dialogue of the character on the Left Side
+	DG_dialogue[DG_page] = "Haha yep! Ice types are always cold duh!
+	
+							";
+	
+	DG_nextindex[DG_page] = 4;  						// The Next page the dialogue should point to
+	
+// Page 3
+	DG_page = 3;										// Defines the next page
+	DG_chat_type[DG_page] = 2; 							// 1, Option select.. 2, More dialogue... 3, Ends dialogue
+
+	DG_adopts_color_left[DG_page] = true;   			// If true, the left portrait will adopt the color alt of the character on screen
+	DG_adopts_color_right[DG_page] = true; 			// If true, the right portrait will adopt the color alt of the character on screen
+
+	DG_left_strip[DG_page] = 0;  						// The strip number of the sprite portrait for the left side of the visual
+	DG_right_strip[DG_page] = 0; 						// The strip number of the sprite portrait for the right side of the visual
+	
+	DG_custom_left_portrait[DG_page] = true;  			// If true, uses custom character portrait sprites on the left side
+	DG_custom_right_portrait[DG_page] = false; 			// If true, uses custom character portrait sprites on the right side
+
+	// Dialogue of the character on the Left Side
+	DG_dialogue[DG_page] = "Oh no! I didn't mean to make you cold too!
+	
+							";
+	DG_nextindex[DG_page] = 4;  						// The Next page the dialogue should point to
+	
+// Page 4
+	DG_page = 4;										// Defines the next page
+	DG_chat_type[DG_page] = 2; 							// 1, Option select.. 2, More dialogue... 3, Ends dialogue
+
+	DG_adopts_color_left[DG_page] = true;   			// If true, the left portrait will adopt the color alt of the character on screen
+	DG_adopts_color_right[DG_page] = true; 			// If true, the right portrait will adopt the color alt of the character on screen
+
+	DG_left_strip[DG_page] = 0;  						// The strip number of the sprite portrait for the left side of the visual
+	DG_right_strip[DG_page] = 0; 						// The strip number of the sprite portrait for the right side of the visual
+	
+	DG_custom_left_portrait[DG_page] = true;  			// If true, uses custom character portrait sprites on the left side
+	DG_custom_right_portrait[DG_page] = false; 			// If true, uses custom character portrait sprites on the right side
+
+	// Dialogue of the character on the Left Side
+	DG_dialogue[DG_page] = "Well anyways, I didn't expect to see you here Callie.
+						You said you had some questions for me right?
+						";
+	
+	DG_nextindex[DG_page] = 5;  						// The Next page the dialogue should point to
+	
+// Page 5
+	DG_page = 5;										// Defines the next page
+	DG_chat_type[DG_page] = 1; 							// 1, Option select.. 2, More dialogue... 3, Ends dialogue
+
+	DG_adopts_color_left[DG_page] = true;   			// If true, the left portrait will adopt the color alt of the character on screen
+	DG_adopts_color_right[DG_page] = true; 			// If true, the right portrait will adopt the color alt of the character on screen
+
+	DG_left_strip[DG_page] = 0;  						// The strip number of the sprite portrait for the left side of the visual
+	DG_right_strip[DG_page] = 0; 						// The strip number of the sprite portrait for the right side of the visual
+	
+	DG_custom_left_portrait[DG_page] = true;  			// If true, uses custom character portrait sprites on the left side
+	DG_custom_right_portrait[DG_page] = false; 			// If true, uses custom character portrait sprites on the right side
+
+	// Dialogue of the character on the Left Side
+	DG_dialogue[DG_page] = "What's on your mind I can tell you as much as I know!
+						Which is to say not a lot haha!
+						";
+	// Dialogue to select for the character on the Right Side
+	DG_options[DG_page] =  "Why are you fighting in Aether?
+							Why are you so small?
+							Don't worry about it, let's fight!";	
+
+	DG_answers[DG_page] = [52, 53, 6]; 					// The page their respective answers should point to
+
+	// Page 52
+		DG_page = 52;										// Defines the next page
+		DG_chat_type[DG_page] = 3; 							// 1, Option select.. 2, More dialogue... 3, Ends dialogue
+
+		DG_adopts_color_left[DG_page] = true;   			// If true, the left portrait will adopt the color alt of the character on screen
+		DG_adopts_color_right[DG_page] = true; 			// If true, the right portrait will adopt the color alt of the character on screen
+
+		DG_left_strip[DG_page] = 0;  						// The strip number of the sprite portrait for the left side of the visual
+		DG_right_strip[DG_page] = 0; 						// The strip number of the sprite portrait for the right side of the visual
+
+		DG_custom_left_portrait[DG_page] = true;  			// If true, uses custom character portrait sprites on the left side
+		DG_custom_right_portrait[DG_page] = false; 			// If true, uses custom character portrait sprites on the right side
+
+		// Dialogue of the character on the Left Side
+		DG_dialogue[DG_page] = "I've got nothin better to do! Plus life in a Pokeball is 
+							so boring! I like being free and being able to fight! So let's
+							do exactly that!";
+
+		// HELPFUL TIP ! ! !
+		// Now that this special dialogue is over it will jump back to the main dialogue on Page 6
+
+	// Page 53
+		DG_page = 53;										// Defines the next page
+		DG_chat_type[DG_page] = 3; 							// 1, Option select.. 2, More dialogue... 3, Ends dialogue
+
+		DG_adopts_color_left[DG_page] = true;   			// If true, the left portrait will adopt the color alt of the character on screen
+		DG_adopts_color_right[DG_page] = true
+		DG_left_strip[DG_page] = 0;  						// The strip number of the sprite portrait for the left side of the visual
+		DG_right_strip[DG_page] = 0;  						// The strip number of the sprite portrait for the right side of the visual
+
+		DG_custom_left_portrait[DG_page] = true;  			// If true, uses custom character portrait sprites on the left side
+		DG_custom_right_portrait[DG_page] = false; 			// If true, uses custom character portrait sprites on the right side
+
+		// Dialogue of the character on the Left Side
+		DG_dialogue[DG_page] = "Heyyy!! I am NOT small I'm fun sized!
+							
+							";
+
+		// HELPFUL TIP ! ! !
+		// Now that this special dialogue is over it will jump back to the main dialogue on Page 6
+	
+// Page 6
+	DG_page = 6;										// Defines the next page
+	DG_chat_type[DG_page] = 3; 							// 1, Option select.. 2, More dialogue... 3, Ends dialogue
+
+	DG_adopts_color_left[DG_page] = true;   			// If true, the left portrait will adopt the color alt of the character on screen
+	DG_adopts_color_right[DG_page] = true; 			// If true, the right portrait will adopt the color alt of the character on screen
+
+	DG_left_strip[DG_page] = 0;  						// The strip number of the sprite portrait for the left side of the visual
+	DG_right_strip[DG_page] = 0; 						// The strip number of the sprite portrait for the right side of the visual
+	
+	DG_custom_left_portrait[DG_page] = true;  			// If true, uses custom character portrait sprites on the left side
+	DG_custom_right_portrait[DG_page] = false; 			// If true, uses custom character portrait sprites on the right side
+
+	// Dialogue of the character on the Left Side
+	DG_dialogue[DG_page] = "Awesome! I'd love to fight!
+	
+						";
+						
 // Trum and Alto Support
 trummelcodecneeded = false;
 trummelcodec_id = noone;

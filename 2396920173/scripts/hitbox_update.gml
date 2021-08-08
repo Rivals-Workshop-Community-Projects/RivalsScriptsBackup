@@ -149,6 +149,7 @@ if attack == AT_DSPECIAL_2 && hbox_num == 2 {
     y = owner.y - 30
     if owner.window == 4 {
         instance_destroy();
+        exit;
     }
 }
 

@@ -79,10 +79,10 @@ if (state == PS_WALK){
 	state = PS_DASH;
 }
 
-// Siren Difficulty
+// Snom Difficulty
 
 var enemy_strength = 0;
-// Weak Form 1-4
+// Weak Form 2-4
 if (temp_level > 1 && temp_level < 5){
 	enemy_strength = 1;
 }
@@ -226,6 +226,10 @@ if (state != PS_SPAWN){
 		}
 	}
 //}
+
+if (enemy_strength == 4){
+	dash_speed = 8;
+}
 
 // Should Dash Attack
 if (xDistanceTot < 135 && xDistanceTot > 90 && facing_target && !free && state == PS_DASH && yDistanceTot < 40){

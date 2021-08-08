@@ -272,6 +272,9 @@ if proposed_balance{
                 				break;
                 		}
                 	}
+                	if window_timer == 1{
+                		charging = true;
+                	}
                     // stuff in the active frames (aka hitbox creation)
                     if (window_timer == 9){
                         // spawn hitboxes
@@ -298,6 +301,8 @@ if proposed_balance{
                         		create_hitbox(AT_NSPECIAL, 6, x-10, y-30);
                         	}
                         	//move_cooldown[AT_NSPECIAL] = 200;
+                        } else {
+                        	charging = false;
                         }
                         // remove charge
                         charge = 0;

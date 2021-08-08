@@ -73,6 +73,27 @@ if attack == AT_FSPECIAL {
         }
     }
     
+    //jump cancel
+    if window == 1 {
+		has_jumped = 0;
+	}
+	
+	if has_hit && window == 4 && window_timer <= window_length - 6 && jump_pressed {
+		has_jumped = true;
+	}
+	
+	if has_jumped && !hitpause && !was_parried {
+		attack_end();
+		destroy_hitboxes();
+		if !free set_state(PS_JUMPSQUAT);
+		else {
+			set_state(PS_DOUBLE_JUMP)
+			vsp = -djump_speed
+			old_vsp = -djump_speed
+		}
+		hsp = old_hsp/2
+	}
+    
     
     
     if window == 1 {
@@ -143,7 +164,7 @@ if attack == AT_USPECIAL {
     if window == 1 {
         uspec_pratfall = true;
     }
-    if window == 3 && special_pressed {
+    if window == 3 && window_timer == window_length && (special_down || special_pressed) {
         uspec_pratfall = false;
     }
     

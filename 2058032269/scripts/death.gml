@@ -2,6 +2,8 @@
 
 card_count = 0;
 
+uspecial_used = false;
+
 sound_play(sound_get("cupbroken"));
 
 chargeshot_charge = 0;

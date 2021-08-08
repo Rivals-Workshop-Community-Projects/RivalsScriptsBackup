@@ -268,39 +268,6 @@ if (attack == AT_DSPECIAL) {
 				// do nothing xd
 				
 			}
-			else if (attack == AT_DSTRONG && player_id.url == (2144710708)) { // for the owen ditto
-			
-				player_id.has_hit = 1;		
-				
-				if (player_id.strong_charge < 15) {
-					sound_play(boot_weakhit_sound_h, false, noone, 1, 1);
-					spawn_hit_fx(other.x, other.y, 14);
-					other.hitstop = 10;
-					other.in_hitpause = 1;
-					other.old_hsp = (spr_dir) * (3.5);	
-				}
-				else if (player_id.strong_charge >= 15 && player_id.strong_charge < 45) {
-					sound_play(boot_medhit_sound_h, false, noone, 1, 1);
-					spawn_hit_fx(other.x, other.y, 14);
-					other.hitstop = 10;
-					other.in_hitpause = 1;
-					other.old_hsp = (spr_dir) * (7);	
-				}
-				else if (player_id.strong_charge >= 45) {
-					sound_play(boot_heavyhit_sound_h, false, noone, 1, 1);
-					spawn_hit_fx(other.x, other.y, 13);
-					other.hitstop = 10;
-					other.in_hitpause = 1;
-					other.old_hsp = (spr_dir) * (12);	
-					//other.kb_value = other.kb_value * 1.25;
-					//other.kb_scale = other.kb_scale * 1.25;
-				}
-
-				other.old_vsp = -5;
-	
-				other.player = player_id.player;
-				other.spr_dir = spr_dir;
-			}
 			else if ((attack == AT_USPECIAL || attack == AT_DSTRONG_2) && player_id.url == (2144710708)) {
 				player_id.has_hit = 1;		
 				
@@ -398,7 +365,7 @@ if (attack == AT_DSPECIAL) {
 						other.hitstop = 10;
 						other.in_hitpause = 1;
 	
-						// e
+						// player hitpause upon hitting boot
 						/*
 						player_id.old_vsp = player_id.vsp;	
 						player_id.old_hsp = player_id.hsp;
@@ -406,88 +373,47 @@ if (attack == AT_DSPECIAL) {
 						player_id.hitstop = 10;
 						player_id.hitstop_full = 7;			
 						*/
-						
+
+
 						// im so sorry
-						var temp_kb_angle = kb_angle;
-						
+						var horizontal_chungus = 0;		
 						var vertical_chungus = 0;
-						var horizontal_chungus = 0;
-						
-						if (temp_kb_angle == 0) {
-							horizontal_chungus = 1;
-							vertical_chungus = 0;
-						}
-						else if (temp_kb_angle > 0 && temp_kb_angle <= 30) {
-							horizontal_chungus = 0.75;
-							vertical_chungus = 0.25;
-						}
-						else if (temp_kb_angle > 30 && temp_kb_angle <= 60) {
-							horizontal_chungus = 0.5;
-							vertical_chungus = 0.5;
-						}
-						else if (temp_kb_angle > 60 && temp_kb_angle < 90) {
-							horizontal_chungus = 0.25;
-							vertical_chungus = 0.75;
-						}
-						else if (temp_kb_angle == 90) {
-							horizontal_chungus = 0;
-							vertical_chungus = 1;
+
+						if (kb_angle >= 0 && kb_angle < 90) {
+							// chungus 1
+							horizontal_chungus = 1 - kb_angle / 90;	
+							vertical_chungus = kb_angle / 90;
 						} 
-						else if (temp_kb_angle > 90 && temp_kb_angle <= 120) {
-							horizontal_chungus = -0.25;
-							vertical_chungus = 0.75;
+						else if (kb_angle >= 90 && kb_angle < 180) {
+							// chungus 2
+							horizontal_chungus = -((kb_angle-90) / 90);
+							vertical_chungus = (1 - (kb_angle-90) / 90);	
 						}
-						else if (temp_kb_angle > 120 && temp_kb_angle <= 150) {
-							horizontal_chungus = -0.5;
-							vertical_chungus = 0.5;
+						else if (kb_angle >= 180 && kb_angle < 270) {
+							// chungus 3
+							horizontal_chungus = -(1 - (kb_angle-180) / 90);	
+							vertical_chungus = -((kb_angle-180) / 90);	
 						}
-						else if (temp_kb_angle > 150 && temp_kb_angle < 180) {
-							horizontal_chungus = -0.75;
-							vertical_chungus = 0.25;
+						else if (kb_angle >= 270 && kb_angle <= 360) {
+							// chungus 4
+							horizontal_chungus = (kb_angle-270) / 90;	
+							vertical_chungus = -(1 - (kb_angle-270) / 90);
 						}
-						else if (temp_kb_angle == 180) {
-							horizontal_chungus = -1;
-							vertical_chungus = 0;
-						}
-						else if (temp_kb_angle > 180 && temp_kb_angle <= 210) {
-							horizontal_chungus = -0.75;
-							vertical_chungus = -0.25;
-						}
-						else if (temp_kb_angle > 210 && temp_kb_angle <= 240) {
-							horizontal_chungus = -0.5;
-							vertical_chungus = -0.5;
-						}
-						else if (temp_kb_angle > 240 && temp_kb_angle < 270) {
-							horizontal_chungus = -0.25;
-							vertical_chungus = -0.75;
-						}
-						else if (temp_kb_angle == 270) {
-							horizontal_chungus = 0;
-							vertical_chungus = -1;
-						}
-						else if (temp_kb_angle > 270 && temp_kb_angle <= 300) {
-							horizontal_chungus = 0.25;
-							vertical_chungus = -0.75;
-						}
-						else if (temp_kb_angle > 300 && temp_kb_angle <= 330) {
-							horizontal_chungus = 0.5;
-							vertical_chungus = -0.5;
-						}
-						else if (temp_kb_angle > 300 && temp_kb_angle < 360) {
-							horizontal_chungus = 0.75;
-							vertical_chungus = -0.25;
-						}
-						else if (temp_kb_angle == 360) {
-							horizontal_chungus = 1;
-							vertical_chungus = 0;
-						}
-						else if (temp_kb_angle == 361) {
+						else {
+							// weird case
 							horizontal_chungus = 0.5;
 							vertical_chungus = 0.5;
 						}
 
-						other.old_hsp = ((spr_dir * horizontal_chungus) * ((2+((kb_value)*((kb_scale + ((player_id.strong_charge/60) * 0.35))/1.5))*2))/3) * 3;
-						other.old_vsp = ((-vertical_chungus) * (((2+((kb_value)*((kb_scale + ((player_id.strong_charge/60) * 0.35))/1.5))*2))/3)) * 3;
+						other.old_hsp = (((spr_dir * horizontal_chungus) * ((((kb_value)*((kb_scale + ((player_id.strong_charge/60) * 0.35))/1.5))*2))/3) * 1.2) + ((spr_dir * horizontal_chungus) * kb_value);
+						other.old_vsp = (((-vertical_chungus) * (((((kb_value)*((kb_scale + ((player_id.strong_charge/60) * 0.35))/1.5))*2))/3)) * 1.2) + ((-vertical_chungus) * kb_value);
+
+						//other.old_hsp = ((spr_dir * horizontal_chungus) * ((2+((kb_value)*((kb_scale + ((player_id.strong_charge/60) * 0.35))/1.5))*2))/3) * 3;
+						//other.old_vsp = ((-vertical_chungus) * (((2+((kb_value)*((kb_scale + ((player_id.strong_charge/60) * 0.35))/1.5))*2))/3)) * 3;
+						
+						//other.old_hsp = (spr_dir * horizontal_chungus) * kb_value;
+						//other.old_vsp = (-vertical_chungus) * kb_value;
+						
 					}
 				}
 			}
@@ -532,39 +458,6 @@ if (attack == AT_DSPECIAL) {
 			else if ((attack == AT_DSPECIAL || attack == AT_NSPECIAL_AIR || attack == AT_DSPECIAL_2) && player_id.url == (2144710708)) {
 				// do nothing xd
 				
-			}
-			else if (attack == AT_DSTRONG && player_id.url == (2144710708)) { // for the owen ditto
-			
-				player_id.has_hit = 1;		
-				
-				if (player_id.strong_charge < 15) {
-					sound_play(boot_weakhit_sound_h, false, noone, 1, 1);
-					spawn_hit_fx(other.x, other.y, 14);
-					other.hitstop = 10;
-					other.in_hitpause = 1;
-					other.old_hsp = (spr_dir) * (3.5);	
-				}
-				else if (player_id.strong_charge >= 15 && player_id.strong_charge < 45) {
-					sound_play(boot_medhit_sound_h, false, noone, 1, 1);
-					spawn_hit_fx(other.x, other.y, 14);
-					other.hitstop = 10;
-					other.in_hitpause = 1;
-					other.old_hsp = (spr_dir) * (7);	
-				}
-				else if (player_id.strong_charge >= 45) {
-					sound_play(boot_heavyhit_sound_h, false, noone, 1, 1);
-					spawn_hit_fx(other.x, other.y, 13);
-					other.hitstop = 10;
-					other.in_hitpause = 1;
-					other.old_hsp = (spr_dir) * (12);	
-					//other.kb_value = other.kb_value * 1.25;
-					//other.kb_scale = other.kb_scale * 1.25;
-				}
-
-				other.old_vsp = -5;
-	
-				other.player = player_id.player;
-				other.spr_dir = spr_dir;
 			}
 			else if ((attack == AT_USPECIAL || attack == AT_DSTRONG_2) && player_id.url == (2144710708)) {
 				
@@ -673,86 +566,37 @@ if (attack == AT_DSPECIAL) {
 
 							
 						// im so sorry
-						var temp_kb_angle = kb_angle;
-						
+						var horizontal_chungus = 0;		
 						var vertical_chungus = 0;
-						var horizontal_chungus = 0;
-						
-						if (temp_kb_angle == 0) {
-							horizontal_chungus = 1;
-							vertical_chungus = 0;
-						}
-						else if (temp_kb_angle > 0 && temp_kb_angle <= 30) {
-							horizontal_chungus = 0.75;
-							vertical_chungus = 0.25;
-						}
-						else if (temp_kb_angle > 30 && temp_kb_angle <= 60) {
-							horizontal_chungus = 0.5;
-							vertical_chungus = 0.5;
-						}
-						else if (temp_kb_angle > 60 && temp_kb_angle < 90) {
-							horizontal_chungus = 0.25;
-							vertical_chungus = 0.75;
-						}
-						else if (temp_kb_angle == 90) {
-							horizontal_chungus = 0;
-							vertical_chungus = 1;
+
+						if (kb_angle >= 0 && kb_angle < 90) {
+							// chungus 1
+							horizontal_chungus = 1 - kb_angle / 90;	
+							vertical_chungus = kb_angle / 90;
 						} 
-						else if (temp_kb_angle > 90 && temp_kb_angle <= 120) {
-							horizontal_chungus = -0.25;
-							vertical_chungus = 0.75;
+						else if (kb_angle >= 90 && kb_angle < 180) {
+							// chungus 2
+							horizontal_chungus = -((kb_angle-90) / 90);
+							vertical_chungus = (1 - (kb_angle-90) / 90);	
 						}
-						else if (temp_kb_angle > 120 && temp_kb_angle <= 150) {
-							horizontal_chungus = -0.5;
-							vertical_chungus = 0.5;
+						else if (kb_angle >= 180 && kb_angle < 270) {
+							// chungus 3
+							horizontal_chungus = -(1 - (kb_angle-180) / 90);	
+							vertical_chungus = -((kb_angle-180) / 90);	
 						}
-						else if (temp_kb_angle > 150 && temp_kb_angle < 180) {
-							horizontal_chungus = -0.75;
-							vertical_chungus = 0.25;
+						else if (kb_angle >= 270 && kb_angle <= 360) {
+							// chungus 4
+							horizontal_chungus = (kb_angle-270) / 90;	
+							vertical_chungus = -(1 - (kb_angle-270) / 90);
 						}
-						else if (temp_kb_angle == 180) {
-							horizontal_chungus = -1;
-							vertical_chungus = 0;
-						}
-						else if (temp_kb_angle > 180 && temp_kb_angle <= 210) {
-							horizontal_chungus = -0.75;
-							vertical_chungus = -0.25;
-						}
-						else if (temp_kb_angle > 210 && temp_kb_angle <= 240) {
-							horizontal_chungus = -0.5;
-							vertical_chungus = -0.5;
-						}
-						else if (temp_kb_angle > 240 && temp_kb_angle < 270) {
-							horizontal_chungus = -0.25;
-							vertical_chungus = -0.75;
-						}
-						else if (temp_kb_angle == 270) {
-							horizontal_chungus = 0;
-							vertical_chungus = -1;
-						}
-						else if (temp_kb_angle > 270 && temp_kb_angle <= 300) {
-							horizontal_chungus = 0.25;
-							vertical_chungus = -0.75;
-						}
-						else if (temp_kb_angle > 300 && temp_kb_angle <= 330) {
-							horizontal_chungus = 0.5;
-							vertical_chungus = -0.5;
-						}
-						else if (temp_kb_angle > 300 && temp_kb_angle < 360) {
-							horizontal_chungus = 0.75;
-							vertical_chungus = -0.25;
-						}
-						else if (temp_kb_angle == 360) {
-							horizontal_chungus = 1;
-							vertical_chungus = 0;
-						}
-						else if (temp_kb_angle == 361) {
+						else {
+							// weird case
 							horizontal_chungus = 0.5;
 							vertical_chungus = 0.5;
 						}
 
-						other.old_hsp = ((spr_dir * horizontal_chungus) * ((2+((kb_value)*((kb_scale + ((player_id.strong_charge/60) * 0.35))/1.5))*2))/3) * 3;
-						other.old_vsp = ((-vertical_chungus) * (((2+((kb_value)*((kb_scale + ((player_id.strong_charge/60) * 0.35))/1.5))*2))/3)) * 3;
+						other.old_hsp = (((spr_dir * horizontal_chungus) * ((((kb_value)*((kb_scale + ((player_id.strong_charge/60) * 0.35))/1.5))*2))/3) * 1.1) + ((spr_dir * horizontal_chungus) * kb_value);
+						other.old_vsp = (((-vertical_chungus) * (((((kb_value)*((kb_scale + ((player_id.strong_charge/60) * 0.35))/1.5))*2))/3)) * 1.1) + ((-vertical_chungus) * kb_value);
 
 						
 					}

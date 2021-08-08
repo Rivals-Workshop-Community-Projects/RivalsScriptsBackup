@@ -11,6 +11,12 @@ if (attack != AT_FSTRONG && attack != AT_USTRONG && attack != AT_DSTRONG
     shotgun_shot = false;
 }
 
+if (shield_pressed && window > 1 && attack_config == false && hologram_is_alive == true){
+	shotgun_shot = false;
+}
+
+window_end = get_attack_value( attack, AG_NUM_WINDOWS);
+
 if (attack != AT_NSPECIAL && attack != AT_NSPECIAL_2 && attack != AT_USPECIAL 
 && attack != AT_TAUNT && attack != AT_PHONE && shotgun_shot == false){
     attack_meu = attack;
@@ -46,6 +52,19 @@ if (attack != AT_NSPECIAL && attack != AT_NSPECIAL_2 && attack != AT_USPECIAL
     if (attack == AT_DSPECIAL_AIR && window == 3){
         attack_meu = AT_DTHROW;
         shotgun_shot = true;
+    }
+    if (shield_pressed && window < window_end && attack_config == false && hologram_is_alive == true){
+	    attack_hologram = attack_meu;
+        attack_holo_nome = attack_nome;
+        attack_holo_icon = attack_icon;
+        attack_holo_size = attack_size;
+        sound_play(sound_get("nspecial_pick"));	
+        spawn_hit_fx( x, y-20, 111);
+        spawn_hit_fx( hologram.x, hologram.y-20, 111);
+        attack_config = true;
+    }
+    if (window == 1 && window_timer == 1){
+    	attack_config = false;
     }
     
 }
@@ -159,8 +178,11 @@ if (attack == AT_NSPECIAL_2 && hologram_is_alive == true){
         }
         
         spawn_hit_fx( x+(10*spr_dir), y-52, 256);
+        spawn_hit_fx( hologram.x+(10*hologram.spr_dir), hologram.y-52, 256);
     }
     if (window == 5 && window_timer == 10){
+    	spawn_hit_fx( x, y-20, 111);
+        spawn_hit_fx( hologram.x, hologram.y-20, 111);
         attack_hologram = attack_meu;
         attack_holo_nome = attack_nome;
         attack_holo_icon = attack_icon;

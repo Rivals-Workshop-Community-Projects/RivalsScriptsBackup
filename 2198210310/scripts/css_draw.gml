@@ -39,7 +39,7 @@ patch_ver = "1.21";
 patch_day = "2";
 patch_month = "APR";
  
-var num_alts = 14;
+var num_alts = 19;
 var alt_cur = get_player_color(player);
  
  
@@ -60,8 +60,11 @@ alt_name[10] = "HAL 9000";
 alt_name[11] = "Bumblebee";
 alt_name[12] = "Kragg";
 alt_name[13] = "Rainbow";
-alt_name[14] = "";
-alt_name[15] = "";
+alt_name[14] = "Metal Slug";
+alt_name[15] = "Advance Wars";
+alt_name[16] = "Johnny 5";
+alt_name[17] = "Loxodont";
+alt_name[18] = "Gold";
  
  
  
@@ -76,7 +79,7 @@ draw_set_halign(fa_left);
  
  
 //Alt
- 
+/*
 rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
  
 for(i = 0; i < num_alts; i++){
@@ -84,6 +87,7 @@ for(i = 0; i < num_alts; i++){
     var draw_x = temp_x + 2 + 10 * i;
     rectDraw(draw_x, temp_y + 137, draw_x + 7, temp_y + 140, draw_color);
 }
+*/
  
 draw_set_halign(fa_left);
  

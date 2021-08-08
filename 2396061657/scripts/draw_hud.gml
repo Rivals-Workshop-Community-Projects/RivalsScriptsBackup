@@ -36,3 +36,15 @@ if ("DG_chat_num" in self && DG_chat_num < 1){
 
 
 //draw_debug_text( temp_x, temp_y, string(get_stage_data(SD_ID)));
+
+/*
+draw_debug_text(temp_x - 250, temp_y - 140, "X: " + string(x));
+draw_debug_text(temp_x - 250, temp_y - 160, "Y: " + string(y));
+
+draw_debug_text(temp_x - 250, temp_y - 200, "State: " + string(state));
+draw_debug_text(temp_x - 250, temp_y - 220, "State Timer: " + string(state_timer));
+
+draw_debug_text(temp_x - 250, temp_y - 260, "Window: " + string(window));
+draw_debug_text(temp_x - 250, temp_y - 280, "Window Timer: " + string(window_timer));
+*/
+

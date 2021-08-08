@@ -308,7 +308,7 @@ if get_player_color(player) == 10 {
                 }
             }
             
-         if window == 1 && window_timer == 18 {
+         if window == 1 && window_timer == 14 {
              shake_camera(6,6)
               sound_play(sound_get("RI"))
          }   
@@ -413,7 +413,7 @@ if get_player_color(player) == 10 {
         	hitpause = 0
          if free && window <= 2{
          vsp/=1.2
-         vsp-=0.7
+         vsp-=0.5
          hsp/=1.2
          }
          
@@ -435,16 +435,24 @@ if get_player_color(player) == 10 {
                  spawn_hit_fx (x, y - 30, 302)
              }
              
-             if window_timer == 14 {
-                 countering = 0
-                 super_armor = false
-             }
+
              
              
          }   
            
          if window == 2 {
 
+             if window_timer == 4 {
+             	if left_down && !right_down {
+             		spr_dir = -1 
+             	}
+             	if !left_down && right_down {
+             		spr_dir = 1 
+             	}
+                 countering = 0
+                 super_armor = false
+             }
+             
              
              if window_timer == 9 {
                  create_hitbox(AT_EXTRA_3, 1, x, y)

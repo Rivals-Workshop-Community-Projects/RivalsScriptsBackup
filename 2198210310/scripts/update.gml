@@ -1,5 +1,74 @@
 //update
 
+timer++;
+
+//fspecial trail code
+fspec_count = 0;
+with pHitBox {
+    
+    if attack == AT_FSPECIAL && hbox_num == 1 && player_id == other.id {
+        //increment fspec count
+        other.fspec_count++;
+        
+        //check if id exists in array already
+        var fspec_present = false;
+        for (var i = 0; i < array_length(other.fspec_id_array); i++) {
+            if other.fspec_id_array[i] == id fspec_present = true;
+        }
+        
+        //if id doesnt exist in array, insert id into first undefined slot
+        if !fspec_present {
+            for (var i = 0; i < array_length(other.fspec_id_array); i++) {
+                if other.fspec_id_array[i] == undefined && !fspec_present {
+                    other.fspec_id_array[i] = id;
+                    fspec_present = true;
+                }
+            }
+        }
+    }
+}
+
+//fspec
+if fspec_count >= 2 {
+    var oldest_hitbox_id = undefined;
+    var oldest_timer = 0;
+    with pHitBox {
+        if attack == AT_FTHROW && hbox_num == 1 && player_id == other.id {
+            if hitbox_timer > oldest_timer {
+                oldest_timer = hitbox_timer;
+                oldest_hitbox_id = id;
+            }
+        }
+    }
+    oldest_hitbox_id.destroyed = true;
+}
+
+//if id doesnt exist, delete it
+for (var i = 0; i < array_length(fspec_id_array); i++) {
+    if fspec_id_array[i] != undefined && !instance_exists(fspec_id_array[i]) {
+        fspec_id_array[i] = undefined;
+    }
+}
+
+//if id exists, fill out trail stuff in trail array
+for (var i = 0; i < array_length_1d(fspec_id_array); i++) {
+    var fspec_id = fspec_id_array[i]
+    if fspec_id != undefined && instance_exists(fspec_id) {
+        if ("trailArray" in fspec_id) {
+            fspec_trail_arrays[i] = fspec_id.trailArray;
+        }
+    } else {
+        if fspec_trail_arrays[i][0] != undefined {
+            for (var n = 0; n < 2; n++) {
+                for (var j = 1; j < 20; j++) {
+                    if j == 19 fspec_trail_arrays[i][@j] = 0;
+                    fspec_trail_arrays[i][@j-1] = fspec_trail_arrays[i][j];
+                }
+            }
+        }
+    }
+}
+
 //kirby
 if swallowed { //Kirby ability script starts here
     swallowed = 0

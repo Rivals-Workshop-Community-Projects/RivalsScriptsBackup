@@ -8,7 +8,7 @@ set_attack_value(AT_BAIR, AG_USES_CUSTOM_GRAVITY, 1);
 
 // Shtab
 set_window_value(AT_BAIR, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_BAIR, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_BAIR, 1, AG_WINDOW_CUSTOM_GRAVITY, 1);
 set_window_value(AT_BAIR, 1, AG_WINDOW_HAS_SFX, 1);
@@ -23,7 +23,7 @@ set_window_value(AT_BAIR, 2, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_BAIR, 2, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 set_window_value(AT_BAIR, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_BAIR, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_BAIR, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_BAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 4);
@@ -69,7 +69,7 @@ set_hitbox_value(AT_BAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 3);
 set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 135);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .6);
+set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 1);
@@ -91,7 +91,7 @@ set_hitbox_value(AT_BAIR, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 5);
 set_hitbox_value(AT_BAIR, 2, HG_ANGLE, 270);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, .7);
+set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, -32);

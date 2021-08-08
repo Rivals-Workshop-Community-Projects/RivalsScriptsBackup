@@ -47,6 +47,8 @@ proj_particle = hit_fx_create(sprite_get("proj_particle"), 24);
 
 piece = "P"
 
+swap_timer = 0;
+
 timer = 0;
 
 piece_id = undefined;

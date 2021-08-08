@@ -31,7 +31,7 @@ sprite_change_offset("roll_forward", 63, 79);           // Finished
 sprite_change_offset("roll_backward", 63, 79);          // Finished
 
 // Clone Effect
-sprite_change_offset("roll_clone", 126, 158);           // Finished
+sprite_change_offset("roll_clone", 120, 150);           // Finished
 
 sprite_change_offset("airdodge", 63, 79);               // Finished
 sprite_change_offset("waveland", 63, 79);               // Finished
@@ -85,7 +85,7 @@ sprite_change_offset("nspecial_charging2", 126, 158);
 sprite_change_offset("nspecial_charging3", 126, 158);
 sprite_change_offset("nspecial_charging4", 126, 158);
 
-sprite_change_offset("vfx_clonedashing_vanish", 63, 79);
+sprite_change_offset("vfx_clonedashing_vanish", 116, 150);
 sprite_change_offset("vfx_nspecialcharge", 126, 158);
 sprite_change_offset("vfx_nspecialcharge1", 126, 158);
 sprite_change_offset("vfx_nspecialcharge2", 126, 158);

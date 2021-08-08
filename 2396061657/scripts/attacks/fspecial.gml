@@ -27,12 +27,13 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, sound_get("CMN_SWISH_2"));
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX_FRAME, 1);
 
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, .40);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1.25);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_FSPECIAL, 1);
 

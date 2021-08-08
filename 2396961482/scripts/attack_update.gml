@@ -195,6 +195,7 @@ if (attack == AT_USPECIAL && window_timer == 1 && window == 2){
 if (attack == AT_USPECIAL_2 && window_timer == 1 && window == 2){
     spawn_base_dust(x, y, "n_wavedash");}
 
+
 //pratfall on fspecial whiff
 if (attack == AT_FSPECIAL && free && has_hit && window == 4){
     set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 0);}
@@ -228,7 +229,7 @@ if (attack == AT_FSPECIAL && has_hit && window == 3 && special_pressed && free){
 }
 
 //jump cancel from fspecial jank
-if (attack == AT_FSPECIAL && has_hit && window == 2){
+if (attack == AT_FSPECIAL && has_hit && hitpause && window == 2){
     can_jump = true;
 }
 
@@ -274,6 +275,9 @@ if (attack = AT_EXTRA_2) {
 //Fspecial Spam Limiter
 if (attack == AT_FSPECIAL){
     move_cooldown[AT_FSPECIAL] = 40;}
+    
+
+
 
 //Dspecial Get off me hitbox
 if (attack == AT_DSPECIAL && window == 2 && window_timer == 1){

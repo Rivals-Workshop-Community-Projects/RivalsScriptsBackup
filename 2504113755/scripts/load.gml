@@ -58,6 +58,9 @@ sprite_change_offset("dspecial_proj", 68, 65);
 sprite_change_offset("dspec_hold", 68, 65);
 sprite_change_offset("dspec_hold_small", 68, 65);
 
+sprite_change_offset("dspec_ball", 68, 65);
+sprite_change_offset("dspec_ball_die", 68, 65);
+
 sprite_change_offset("dspec_die", 68, 65);
 
 sprite_change_offset("taunt", 68, 65);

@@ -14,7 +14,7 @@ small_sprites = 1
 
 // Physical size
 char_height         = 52;       //                  not zetterburn's. this is just cosmetic anyway
-knockback_adj       = 1;		// 0.9  -  1.2
+knockback_adj       = 1.05;		// 0.9  -  1.2
 
 // Ground movement
 walk_speed          = 3.0;		// 3    -  4.5
@@ -52,7 +52,7 @@ djump_accel         = 0;        // -1.4 -  0        absa's is -1.4, all other ch
 djump_accel_end_time= 0;        //                  the amount of time that   djump_accel   is applied for
 max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has hover instead
 walljump_hsp        = 4;		// 4    -  7
-walljump_vsp        = 12;		// 7    -  10
+walljump_vsp        = 11;		// 7    -  10
 land_time           = 4;		// 4    -  6
 prat_land_time      = 14;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
@@ -114,8 +114,8 @@ techroll_recovery_frames    = 2;
 
 // Airdodge
 air_dodge_startup_frames    = 1;
-air_dodge_active_frames     = 3;
-air_dodge_recovery_frames   = 2;
+air_dodge_active_frames     = 2;
+air_dodge_recovery_frames   = 3;
 
 // Roll
 roll_forward_startup_frames     = 2;
@@ -190,6 +190,8 @@ dspecial_started_from_ground = false
 has_cancelled = false
 old_y_offset = 0
 
+slower_hsp = false
+
 blink_start_frame = 5 //sorry suckers!
 
 
@@ -212,14 +214,14 @@ plasma_circle_big = hit_fx_create( sprite_get( "plasma_circle" ), 20 );
 trainingMode = 0
 
 num_articles = 0
-
+nair_used = 0
 
 // afterimage
 afterImageTimer = 0;
 afterImageMax = 16;
 afterImage = array_create(afterImageMax, -1);
 
-
+nes_enabled = false
 
 x_blah = 0
 

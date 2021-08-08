@@ -44,9 +44,9 @@ alt_name[24]  = "Abyss";
 //Patch
  
 draw_set_halign(fa_left);
- 
+ /*
 textDraw(temp_x + 2, temp_y + 33, "fName", c_white, 0, 1000, 1, true, 1, "VER. " + patch_ver); 
-
+*/
 //Alt
  
 rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);

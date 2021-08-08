@@ -7,18 +7,45 @@ if (attack == AT_TAUNT && state_timer == 10){
 }
 */
 
+/*
+// Multihit Ustrong Charge
+if (state == PS_ATTACK_GROUND){
+	if (attack == AT_USTRONG){
+		if (window == 1){
+			var reset = (floor(strong_charge / 4) % 6) + 1;
+			if ((reset == 2 || reset == 4 || reset == 6) && spinbox == noone){
+				attack_end();
+				spinbox = create_hitbox( AT_USTRONG, 2, x, y );
+			}
+			if (reset == 1 || reset == 3 || reset == 5){
+				spinbox = noone;
+			}
+		}
+	}
+}
+*/
 
-// Neutral Special
+if (attack == AT_USTRONG){
+	if (window == 3 || (window == 4 && window_timer < 6)){
+		hud_offset = 70;
+	}
+}
+
+// Down Special
 if (attack == AT_DSPECIAL){
 
 	if (state_timer == 1){
 		nspecial_charge = 0;
 		focus_armorbreak = false;
 		LoveStorage = 0;
-		nspecial_hitpause = 15;
+		nspecial_hitpause = 7; // Callie is +5 with no meter 
 		nspecial_damage = 3;
 		set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_HITPAUSE, nspecial_hitpause);
 		set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, nspecial_damage);
+
+		dash_cancel_counter = 0;
+		dash_cancel_endlag = 15;
+		set_window_value(AT_DSPECIAL, 6, AG_WINDOW_LENGTH, dash_cancel_endlag);
 	}
 	
 	if (state_timer == 4){
@@ -37,17 +64,26 @@ if (attack == AT_DSPECIAL){
 			window = 1;
 		}
 
-		if (nspecial_charge % 10 == 0){
+		if (nspecial_charge % 5 == 0){
 			LoveMeter -= 10;
 			LoveStorage += 10;
-			nspecial_hitpause = 15 + (LoveStorage/2);
+			
+			dash_cancel_counter += .5;
+			
+			nspecial_hitpause = 7 + (LoveStorage/12);
+			
+			// Callie is +5 with no meter 
+			// Callie is +14 with 100 meter
+			// Callie is +21 with 200 meter
+			// Every 20 meter is + 2 frame of advantage
+			
 			set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_HITPAUSE, nspecial_hitpause);
 			nspecial_damage += 1;
 			set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, nspecial_damage);
 		}
 		
 	}
-	if (window == 1 && window_timer >= 4){
+	if (window == 1 && window_timer >= 6){
 		if (!focus_armorbreak){
 			soft_armor = 999;
 		}
@@ -55,23 +91,28 @@ if (attack == AT_DSPECIAL){
 		else { soft_armor = 0 }
 	}
 	
-	if (window == 2){
+	// Attack
+	if (window == 3){
 		focus_armorbreak = false;
 		soft_armor = 0;
 	}
-	
+
 	// Dash Cancel
 	if (window == 1 && window_timer >= 4){
 		if (shield_pressed || shield_down){
+			
+			dash_cancel_endlag = floor(15 + dash_cancel_counter);
+			set_window_value(AT_DSPECIAL, 6, AG_WINDOW_LENGTH, dash_cancel_endlag);
+			
 			if (spr_dir == 1){
 				if (left_pressed || left_down){
-					window = 5;
+					window = 6;
 					window_timer = 0;
 					hsp = -8;
 					spr_dir = -1;
 				}
 				else {
-					window = 5;
+					window = 6;
 					window_timer = 0;
 					hsp = 8;
 					spr_dir = 1;
@@ -79,13 +120,13 @@ if (attack == AT_DSPECIAL){
 			}
 			else {
 				if (right_pressed || right_down){
-					window = 5;
+					window = 6;
 					window_timer = 0;
 					hsp = 8;
 					spr_dir = 1;
 				}
 				else {
-					window = 5;
+					window = 6;
 					window_timer = 0;
 					hsp = -8;
 					spr_dir = -1;
@@ -95,17 +136,29 @@ if (attack == AT_DSPECIAL){
 	}
 	
 	// Dash Cancel SFX
-	if (window == 5 && window_timer == 1){
-		sound_play(sound_get("CMN_SWISH_2"));
-	}
-	
-	if (window == 5){
-	
-		if (!focus_armorbreak){
-			soft_armor = 999;
+	if (window == 6 && window_timer == 1){
+		if (!hitpause){
+			sound_play(sound_get("CMN_SWISH_2"));
 		}
 		
-		else { soft_armor = 0 }
+		if (LoveMeter >= 20){
+			LoveMeter = LoveMeter - 20;
+		}
+		else {
+			LoveMeter = 0;
+		}
+	}
+	
+	if (window == 6){
+	
+		if (!focus_armorbreak && window_timer <= 10){
+			soft_armor = 999;
+		}
+	
+		else { 
+			focus_armorbreak = false;
+			soft_armor = 0;
+		}
 		
 	}
 	
@@ -205,6 +258,12 @@ if (attack == AT_UTHROW || attack == AT_FTHROW || attack == AT_DTHROW || attack 
 
 
 // Ribbon Throw
+
+if (attack == AT_NTHROW){
+	can_move = false;
+}
+
+/*
 if (attack == AT_NTHROW){
 	if (window < 3){
 		can_move = false;
@@ -235,6 +294,7 @@ if (attack == AT_NTHROW){
 		hsp = floor((RibbonHSP * spr_dir) / 2) * 2;
 	}
 }
+*/
 
 // Down Special
 if (attack == AT_NSPECIAL){ 

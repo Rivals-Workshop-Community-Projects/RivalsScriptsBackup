@@ -47,4 +47,4 @@ hitstop = 0;
 
 orb_explosion_vfx = hit_fx_create(sprite_get("orb_explosion_vfx"), 14);
 
-refund_amount = 20;
+refund_amount = 10;

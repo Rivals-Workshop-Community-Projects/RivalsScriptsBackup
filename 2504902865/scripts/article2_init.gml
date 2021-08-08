@@ -14,10 +14,11 @@ should_die = false;
 attack_hitbox_id = noone; //hitbox for when attacking
 window = 0;
 window_timer = 0;
-window_length = 0;
+window_length = 16;
 attack_window_frame_first = 0;
 attack_window_frame_last = 0;
-
+dspec_dir = 0;
+dspec_boost = 1;
 
 is_moving = false;
 air_frict = 0.02;

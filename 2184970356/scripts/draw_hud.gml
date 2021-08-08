@@ -100,7 +100,7 @@ if ("attackLock" in self && attackLock == 1){
 
 // Move Showcase
 if (state == PS_SPAWN || was_reloaded){
-	if (spawn_timer < 100 && attackLock == 0){
+	if (spawn_timer < 100 && "attackLock" in self && attackLock == 0){
 		draw_debug_text(temp_x + 3, temp_y - 35, "Press Attack + Jump");
 		draw_debug_text(temp_x + 5, temp_y - 15, " to display moveset");
 	}

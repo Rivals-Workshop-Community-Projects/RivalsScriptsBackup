@@ -252,11 +252,20 @@ with phone{
 	initTipImage(player_id.spr_bair, 3, fa_center, 1, c_white, 0);
 	*/
 	
-	initTip("DSpecial: What does it do????");
-	initTipWords("Boot copies the hitbox grid indexes of the hitbox you hit with.");
-	initTipWords("In other words, if you hit the boot with a FStrong, it will act like an FStrong when someone gets hit by it.");
-	initTipWords("Doesn't change boot properties: Specials, Jab, Parry, Dstrong");
-	initTipWords("Specials preserve the boot's current stats and push it in different ways.");
+	initTip("Dattack: Hit 2");
+	initTipWords("If dash attack is so good why isn't there dash attack tw-");
+	initTipWords("You can activate it by holding up and attack during the first part of the move.")
+	initTipImage(player_id.spr_dattack, 13, fa_center, 1, c_white, 0);
+	
+	initTip("DSpecial: Basics");
+	initTipWords("Upon coming into contact with a hitbox, the boot gets launched and also copies the properties of it.
+	Owen's specials (and jab) keep the stats and move it in unique ways.
+
+	Boot copies over enemy hitboxes as well, and changes owner.
+
+	The arrow above the boot on hit is info about the hitbox. A darker color means more base knockback, a longer arrow means more knockback scaling. The number is the hitbox's damage. The angle should be obvious.
+
+	When not moving, the boot only hits players in hitstun and has a bigger hitbox.");
 	initTipImage(player_id.spr_dspecial_proj, 0, fa_center, 1, c_white, 0);
 	
 	/*
@@ -268,12 +277,15 @@ with phone{
 	initTipImage(player_id.spr_dspecial_proj, 0, fa_center, 1, c_white, 0);
 	*/
 	
+	/*
 	initTip("DSpecial: Enemy Hits");
 	initTipWords("Boot mimicks opponent hits too.");
 	initTipWords("Unlike Owen, ememy specials still change it's properties.");
 	initTipWords("For them, only Jab and parry don't change properties.");
 	initTipImage(player_id.spr_dspecial_proj, 0, fa_center, 1, c_white, 0);
+	*/
 	
+	/*
 	initTip("DSpecial: The arrow above the boot");
 	initTipWords("Moves with effects (I.E. zetterburn fire) change how the arrow looks.
 	Knockback scaling is shown through how long the arrow is.
@@ -282,11 +294,18 @@ with phone{
 	6 = red,   8 = purple, 10 = black.
 	");
 	initTipImage(player_id.spr_dspecial_arrow, 0, fa_center, 1, c_white, 0);
-	
+	*/
 	initTip("DSpecial: Misc");
-	initTipWords("The boot does not copy over angle flippers or hit priority.");
-	initTipWords("As of v0.152, the boot is only active while it's moving or when it makes contact with someone in hitstun.");
-	initTipWords("The player colored ring while the boot's on the floor is a recent additon. Try knocking players into it!");
+	initTipWords("Moves with effects (I.E. Zetterburn fire) change how the arrow looks visually.
+
+	Base knockback colors:
+	0 = white, 2 = yellow, 4 = orange
+	6, red, 8 = purple, 10 = black.
+
+	The boot does not copy over angle flippers or hit priority.
+	When hit with a multihit, it copies the one it was hit with and ignores the others.
+	It ignores 0% damage hitboxes.
+	When the boot gets hit, there is 10 frames of 'boot hitpause' where it is frozen in place. No hitpause is applied to players that hit it.");
 	initTipImage(player_id.spr_dspecial_speen, -4, fa_center, 1, c_white, 0);
 	
 	initTip("FSpecial: On hit");
@@ -304,11 +323,6 @@ with phone{
 	Reload by pressing attack during the move.");
 	initTipWords("You'll stop midair during reloading, and you can jump cancel the frame you finished reloading.")
 	initTipImage(player_id.spr_nspecial, 2, fa_center, 1, c_white, 0);
-	
-	initTip("Dattack: Hit 2");
-	initTipWords("If dash attack is so good why isn't there dash attack tw-");
-	initTipWords("You can activate it by holding up and attack during the first part of the move.")
-	initTipImage(player_id.spr_dattack, 13, fa_center, 1, c_white, 0);
 	
 	initTip("Uspecial: Interrupt");
 	initTipWords("Press shield/dodge during this move to end it early.

@@ -22,6 +22,7 @@ if (my_hitboxID.attack == AT_FSTRONG) {
 }
 
 if (attack == AT_BAIR && true) {
+	sound_play(asset_get("sfx_blow_medium2"), false, noone, 0.6);
 	old_hsp /= 2;
 	old_hsp += 5 * spr_dir;
 	if (old_vsp > -3) {
@@ -60,7 +61,13 @@ if (attack == AT_DATTACK) {
 outgoingDamage = get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_DAMAGE);
 
 if (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_HITBOX_TYPE) == 1) {
-	if (actionMeterStatus == 1) {actionMeterFill += 1 + (outgoingDamage * 0.9);}
+	if (actionMeterStatus == 1) {
+		if (activeBuffUses > 0) {
+			actionMeterFill += 0.8 + (outgoingDamage * 0.4);
+		} else {
+			actionMeterFill += 1 + (outgoingDamage * 0.9);
+		}
+	}
 	actionMeterStatus = 1;
 }
 

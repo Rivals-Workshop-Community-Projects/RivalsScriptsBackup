@@ -101,6 +101,9 @@ if (hit_delay == 0){
 			
 			hitboxType = pHitBox.type;
 			
+			other.hitpause = true;
+			other.hitstop = hitpause + extra_hitpause;
+			
 			kb_scaling = pHitBox.kb_scale;
 			bkb = pHitBox.kb_value;
 			kb_angle = get_hitbox_angle(id);
@@ -110,7 +113,19 @@ if (hit_delay == 0){
 					isBair = true;
 				}
 				hitboxType = 3;
-			}			
+			}				
+			
+			spawn_hit_fx(x, y, hit_effect);
+					
+
+			if (type == 1){
+				pHitBox.player_id.has_hit = true;
+				pHitBox.player_id.hitpause = true;
+				pHitBox.player_id.hitstop = hitpause + 2;
+				
+				pHitBox.player_id.old_hsp = pHitBox.player_id.hsp;
+				pHitBox.player_id.old_vsp = pHitBox.player_id.vsp;
+			}
 		}
 	}
 }

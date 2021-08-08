@@ -4,6 +4,9 @@ if (attack == AT_FSPECIAL) && (hbox_num == 1) {
     if sign(hsp) != spr_dir {
         hsp *= -1;
     }
+    
+    trailArray = array_create(20);
+    fspec_num = player_id.fspec_count;
 }
 
 oldHsp = 0;

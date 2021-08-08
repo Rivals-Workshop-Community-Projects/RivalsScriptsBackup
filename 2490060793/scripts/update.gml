@@ -114,9 +114,9 @@ switch shape {
 with pHitBox {
     if player_id == other.id && effect == 99 && hitbox_timer == 0 {
         depth = other.meter_flipped == true ? -7 : -8;
-        if sprite_index = 2735 sprite_index = other.shape_circle;
-        else if sprite_index = 2737 sprite_index = other.shape_rect;
-        else if sprite_index = 2740 sprite_index = other.shape_roundrect;
+        if sprite_index = asset_get("hitbox_circle_spr") sprite_index = other.shape_circle;
+        else if sprite_index = asset_get("hitbox_square_spr") sprite_index = other.shape_rect;
+        else if sprite_index = asset_get("hitbox_rounded_rectangle") sprite_index = other.shape_roundrect;
     }
 }
 

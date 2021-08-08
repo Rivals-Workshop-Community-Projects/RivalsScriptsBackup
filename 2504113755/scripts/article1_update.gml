@@ -10,7 +10,13 @@ state_timer += 1
 
 if (state == 0) {
 
-		sprite_index = sprite_get("dspec_hold")
+			if (get_player_color( player ) != 29) {
+	sprite_index = sprite_get("dspec_hold") }
+	
+else {
+				sprite_index = sprite_get("dspec_ball")
+
+		}
 		image_index += 0.15
 		if (state_timer == 300) {
 			
@@ -23,12 +29,12 @@ if (state == 0) {
 		image_xscale = 2
 		image_yscale = 2
 
-if ((player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.attack == AT_DSPECIAL && player_id.window == 1 && player_id.window_timer == 0 && state != 1) {
+if ((player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.attack == AT_DSPECIAL && player_id.window == 3 && player_id.window_timer == 3 && state != 1) {
 	
 state_timer = 0
 	state = 1
 	
-}
+} 
 if (state == 1) {
 	
 	sprite_index = sprite_get("dspecial_proj")
@@ -123,8 +129,10 @@ if (state_timer < 3) {
 
 if (state == 3) {
 	
-	sprite_index = sprite_get("dspec_die")
-	image_index += 0.15
+if (get_player_color( player ) == 29) {
+				sprite_index = sprite_get("dspec_ball_die")
+
+		}	image_index += 0.15
 	if (state_timer == 26) {
 			instance_destroy()
 		//	player_id.num_articles -= 1
@@ -197,7 +205,7 @@ if hitstop <= 0 {
             			            		hurtboxID.sprite_index = hurtbox_spr
 
             		}
-            	
+            	getting_bashed = true
             }
             
           } }
@@ -247,7 +255,7 @@ if hitstop <= 0 {
            other.state_timer = 0
            
            
-           if (attack == AT_DSTRONG || attack == AT_FSTRONG || attack == AT_USTRONG  || attack == AT_USPECIAL) {
+           if (attack == AT_DSTRONG || attack == AT_FSTRONG || attack == AT_USTRONG  || attack == AT_USPECIAL || attack == AT_DSPECIAL) {
            other.explosion_frame_offset = 6 }
            else { other.explosion_frame_offset = 2 }
            
@@ -258,15 +266,24 @@ if hitstop <= 0 {
            	if (spr_dir == 1) {
            	angle = 15 }
            	else {angle = 180-15 }
+           	
+           	
            	if (attack == AT_DSTRONG && hbox_num == 2) {
            			if (spr_dir == 1) {
            	angle = 180-15 }
-           	else {angle = 15 }
+           	 	else {angle = 15 }
+           	
+         
            	}
+           	  	if (attack == AT_DSPECIAL && ((other.x < other.player_id.x && other.spr_dir != 1) || (other.x <= other.player_id.x && other.spr_dir == 1))) {
+			angle = 180-15 }
+           	
+           	else 	if (attack == AT_DSPECIAL) {angle = 15 }
+           	
            	
            		if (attack == AT_NAIR && (hbox_num == 6 || hbox_num == 7)) {
            		angle = 270 }
-           		if (attack == AT_NAIR && hbox_num == 8) {
+           		if (attack == AT_NAIR && (hbox_num == 8 || hbox_num == 9)) {
            		angle = 90 }
            		
            		
@@ -354,9 +371,18 @@ if hitstop <= 0 {
            
            
            
-           if ((attack == AT_USTRONG && hbox_num == 7) || (attack == AT_DAIR && hbox_num == 5) || (attack == AT_DATTACK && hbox_num == 6) || (attack != AT_USTRONG && attack != AT_DAIR && attack != AT_DATTACK)) {
+           if ((attack == AT_USTRONG && hbox_num == 7) || (attack == AT_DAIR && hbox_num == 5) || (attack == AT_DATTACK && hbox_num == 5) || (attack != AT_USTRONG && attack != AT_DAIR && attack != AT_DATTACK)) {
             other.hsp = 1*lengthdir_x(kb_value + 5*kb_scale,angle);
             other.vsp = 1*lengthdir_y(kb_value + 5*kb_scale,angle); 
+            if (attack == AT_USTRONG) {
+            	
+            	   other.hsp = 0.9*lengthdir_x(kb_value + 4*kb_scale,angle);
+            other.vsp = 0.9*lengthdir_y(kb_value + 4*kb_scale,angle); 
+            	
+            }
+            
+            
+            
            } else if (attack == AT_DATTACK) {
            	other.hsp = 3/4*lengthdir_x(kb_value + 3*kb_scale,angle);
             other.vsp = 3/4*lengthdir_y(kb_value + 3*kb_scale,angle); }
@@ -372,16 +398,19 @@ if hitstop <= 0 {
     	          }
             other.hit_lockout = 4;
             
-            if (attack == AT_FSPECIAL) {
+            if (attack == AT_FSPECIAL || attack == AT_DAIR) {
             	
-            	            other.hit_lockout = 2;
+            	            other.hit_lockout = 3;
 
             	
             }
             
             hitbox_has_hit_article = true;
             
-        
+         if ( player_id != other.player_id)  {
+            instance_destroy() }
+            
+            
             with player_id {
                 old_hsp = hsp;
                 old_vsp = vsp;                      
@@ -393,8 +422,7 @@ if hitstop <= 0 {
             player_id.hitstop = ceil(hitpause+hitpause_growth*.05-2);
             other.hitstop = ceil(hitpause+hitpause_growth*.05-2);
             //	player_id.num_articles -= 1
-             if ( player_id != other.player_id)  {
-            instance_destroy() }
+            
     }
 
  

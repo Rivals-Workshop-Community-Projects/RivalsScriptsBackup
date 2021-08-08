@@ -37,6 +37,35 @@ else {
 	}
 }
 
+// Ghost effect for Nthrow
+if (attack == AT_NTHROW && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
+		
+	if (get_gameplay_time() % 2 == 0){
+		tsj_x3 = tsj_x2;
+		tsj_y3 = tsj_y2;
+
+		tsj_x2 = tsj_x1;
+		tsj_y2 = tsj_y1;
+
+		tsj_x1 = x;
+		tsj_y1 = y;
+	}
+	
+	tsj_timer++;
+}
+
+if (tsj_timer >= 60){
+	tsj_x1 = 0;
+	tsj_x2 = 0;
+	tsj_x3 = 0;
+	tsj_y1 = 0;
+	tsj_y2 = 0;
+	tsj_y3 = 0;
+	if (tsj_timer >= 60){
+		tsj_timer = 0;
+	}
+}
+
 // Gives Callie Armor during start up and dash of nspecial
 if (attack == AT_DSPECIAL && (window == 1 || window == 5) && !focus_armorbreak){
 	focus_attack = true;
@@ -276,7 +305,6 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 				SecretColor = 6;
 				ColorLock = 1;
 				ColorLocked = true;
-//				set_victory_portrait( sprite_get( "slime_portrait" ));
 				init_shader();
 
 			}			
@@ -326,10 +354,21 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 			}
 		}
 		
+		if (get_player_color(player) == 2){ // Color 3 Secret Alt
+
+			// BowlingKing - alt color
+			if (!up_down && down_down && left_down && !right_down && shield_down && !attack_down && !special_down){
+				SecretColor = 8;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+		}
+		
 		if (get_player_color(player) == 18){ // Color 19 Secret Alt
 
 			// Golden Boy
-			if (!up_down && !down_down && !left_down && !right_down && shield_down && attack_down && !special_down && strong_down){
+			if (up_down && !down_down && !left_down && !right_down && !shield_down && attack_down && special_down){
 				SecretColor = 200;
 				ColorLock = 1;
 				ColorLocked = true;
@@ -337,10 +376,10 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 			}
 		}
 		
-		if (get_player_color(player) == 9){ // Color 10 Secret Alt
+		if (get_player_color(player) == 5){ // Color 10 Secret Alt
 
-			// Golden Boy
-			if (!up_down && !down_down && !left_down && !right_down && shield_down && attack_down && !special_down && strong_down){
+			// R00
+			if (up_down && !down_down && !left_down && !right_down && !shield_down && attack_down && special_down){
 				SecretColor = 201;
 				ColorLock = 1;
 				ColorLocked = true;
@@ -391,6 +430,20 @@ with (oPlayer){
 		}
 	}	
 
+	if (isThorn && hitpause){
+		if (other.window == 1 && other.attack == AT_FTHROW){
+			y = other.y;
+			switch(spr_dir){
+				case 1:
+					x = other.x - 30;
+				break;
+				case -1:
+					x = other.x + 30;
+				break;
+			}
+		}
+	}
+	
 	if (isCandy && hitpause && other.attack == AT_DTHROW && (other.state == PS_ATTACK_AIR || other.state == PS_ATTACK_GROUND)){
 		if (other.window == 1){
 			if (other.window_timer == 1){
@@ -411,7 +464,7 @@ with (oPlayer){
 		}
 		
 		if (other.window == 2){
-			if (other.window_timer <= 5){
+			if (other.window_timer <= 2){
 				y += 8;
 				switch(spr_dir){
 					case 1:
@@ -423,93 +476,234 @@ with (oPlayer){
 				}
 			}
 		}
-	}
-
-	if (isCandy && other.id = candy_id){
 		
-		if (vsp < -1 || (attack == AT_USPECIAL && state == PS_ATTACK_AIR) || (!hitpause && (state == PS_DOUBLE_JUMP || state == PS_WALL_JUMP))){
-			isCandy = false;
-		}
-
-		if (free && !hitpause){
-			can_jump = true;
-			can_special = true;
-		}
-
-		if (!free && !hitpause){
-
-			if (!other.dthrowCheck){
-				hitpause = true;
-				hitstop = 13;
-				other.dthrowCheck = true;
-				CCheck = CandyCounter;
-			}	
-			
-			
-			if (state == 28){
-				if (hsp != 0){
-					if (spr_dir == 1){
-						x -= 6.7;
-					}
-					if (spr_dir == -1){
-						x += 6.7;
-					}
-				}
-			}
-
-			vsp = 0;
-			hsp = 0;
-			
-			if (state == PS_DASH || state == PS_DASH_START || state == PS_WALK || state == PS_JUMPSQUAT || state == PS_AIR_DODGE || state == PS_WAVELAND || state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD){
-				state = PS_IDLE;
-			}
-
-			can_jump = false;
-			if (jump_pressed){
-				jump_pressed = false;
-			}
-			can_move = false;
-			
-			if (right_pressed || left_pressed){
-				jump_pressed = false;
-				can_jump = false;
-			}
-			
-			if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
-				vsp = 0;
-				hsp = 0;
-				x = x;
-				y = y;
-				if (attack == AT_USPECIAL){
-					state = PS_IDLE;
-				}
-			}
-			
-			if (state == PS_DASH_START || state == PS_WALK){
-				state = PS_IDLE;
-			}
-		}
-
-		if (!hitpause && CCheck > 0){
-			CandyCounter--;
-			if(CandyCounter <= 0){
-				isCandy = false;
-				CandyCounter = 0;
-				candy_id = noone;
-			}
-		}
-		
-		// If got hit or hits someone
-		if (other.dthrowCheck && ((has_hit_player && state == PS_ATTACK_GROUND) || (hitpause && state_cat == SC_HITSTUN)) && CandyCounter < CCheck){
+		if (Candy_SecondAttack && other.window == 2 && other.window_timer >= 3){
 			isCandy = false;
 			CandyCounter = 0;	
 			other.dthrowCheck = false;
 			candy_id = noone;
+			//sprint("I'm pomu");
 		}
-		
 	}
 
+	if (!Candy_SecondAttack){
+		if (isCandy && other.id = candy_id){
+			
+			if (vsp < -1 || (attack == AT_USPECIAL && state == PS_ATTACK_AIR) || (!hitpause && (state == PS_DOUBLE_JUMP || state == PS_WALL_JUMP || state == PS_AIR_DODGE))){
+				isCandy = false;
+			}
+			
+			if (!free && !(other.attack == AT_DTHROW && other.window <= 2) && initial_candy_land){
+				vsp = 0;
+				hsp = 0;
+				old_vsp = 0;
+				old_hsp = 0;
+				hitpause = false;
+				hitstop = 0;
+				initial_candy_land = false;
+			}
+			
+			if (!free && !hitpause){
 
+				if (!other.dthrowCheck){
+					hitpause = true;
+					hitstop = 13;
+					other.dthrowCheck = true;
+					CCheck = CandyCounter;
+				}	
+				
+				
+				if (state == 28){
+					if (hsp != 0){
+						if (spr_dir == 1){
+							x -= 6.7;
+						}
+						if (spr_dir == -1){
+							x += 6.7;
+						}
+					}
+				}
+
+				if (state == PS_DASH || state == PS_DASH_START || state == PS_WALK || state == PS_JUMPSQUAT || state == PS_AIR_DODGE || state == PS_WAVELAND || state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD){
+					state = PS_IDLE;
+				}
+
+				vsp = 0;
+				hsp = 0;
+				old_vsp = 0;
+				old_hsp = 0;
+				
+				can_jump = false;
+				if (jump_pressed){
+					jump_pressed = false;
+				}
+				can_move = false;
+				
+				if (right_pressed || left_pressed){
+					jump_pressed = false;
+					can_jump = false;
+				}
+				
+				if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
+					vsp = 0;
+					hsp = 0;
+					old_vsp = 0;
+					old_hsp = 0;
+					x = x;
+					y = y;
+					if (attack == AT_USPECIAL){
+						state = PS_IDLE;
+					}
+				}
+				
+				if (state == PS_DASH_START || state == PS_WALK){
+					state = PS_IDLE;
+				}
+			}
+
+			if (!hitpause && CCheck > 0){
+				CandyCounter--;
+				if(CandyCounter <= 0){
+					isCandy = false;
+					CandyCounter = 0;
+					candy_id = noone;
+				}
+			}
+			
+			
+			// If got hit or hits someone
+			if (other.dthrowCheck && ((has_hit_player && state == PS_ATTACK_GROUND) || (hitpause && state_cat == SC_HITSTUN)) && CandyCounter < CCheck){
+				isCandy = false;
+				CandyCounter = 0;	
+				other.dthrowCheck = false;
+				candy_id = noone;
+			}
+			
+		}
+	}
+
+	// Ribbon Throw New (Izuna Drop)
+	if (isRibbon && hitpause){
+		
+		if (other.window == 1 && other.attack == AT_NTHROW){
+			y = other.y;
+			switch(spr_dir){
+				case 1:
+					x = other.x - 20;
+				break;
+				case -1:
+					x = other.x + 20;
+				break;
+			}
+		}
+	
+		if (other.window == 3 && other.attack == AT_NTHROW){
+			y = other.y;
+			switch(other.spr_dir){
+				case 1:
+					x = other.x + 20;
+				break;
+				case -1:
+					x = other.x - 20;
+				break;
+			}
+		}
+		
+		if (other.window == 4 && other.attack == AT_NTHROW){
+			y = other.y - 20;
+			switch(other.spr_dir){
+				case 1:
+					x = other.x + 10 - other.window_timer;
+				break;
+				case -1:
+					x = other.x - 10 + other.window_timer;
+				break;
+			}
+		}
+		
+		if (other.RibbonRights == 0){
+			if (other.window == 5 && other.attack == AT_NTHROW){
+				y = other.y;
+				switch(other.spr_dir){
+					case 1:
+						x = other.x - 30;
+					break;
+					case -1:
+						x = other.x + 30;
+					break;
+				}
+			}
+		}
+		
+		if (other.RibbonRights == 1){
+			if (other.window == 5 && other.attack == AT_NTHROW){
+				y = other.y + 20;
+				switch(other.spr_dir){
+					case 1:
+						x = other.x - 30;
+					break;
+					case -1:
+						x = other.x + 30;
+					break;
+				}
+			}
+		}
+		
+		if (other.RibbonRights == 2){
+			if (other.window == 5 && other.attack == AT_NTHROW){
+				if (y < get_stage_data(SD_BOTTOM_BLASTZONE) + get_stage_data(SD_Y_POS)){				
+					y = other.y + 30;
+					switch(other.spr_dir){
+						case 1:
+							x = other.x - 30;
+						break;
+						case -1:
+							x = other.x + 30;
+						break;
+					}
+				}
+				else{
+					hitpause = false;
+					hitstop = 0;
+					extra_hitpause = 0;
+					isRibbon = false;
+					y = y + 2000;
+				}
+			}
+		}
+		
+		
+		if (other.y > get_stage_data(SD_BOTTOM_BLASTZONE) + get_stage_data(SD_Y_POS)){
+			if (!other.Calliecide){
+			//	print("Dead");
+				hitpause = false;
+				hitstop = 0;
+				extra_hitpause = 0;
+				can_special = true;
+				isRibbon = false;
+			}
+			else {
+			//	print("Calliecide");
+				hitpause = false;
+				hitstop = 0;
+				extra_hitpause = 0;
+				isRibbon = false;
+			}
+		}
+	/*
+		if (other.state == PS_HITSTUN){
+			hitpause = false;
+			hitstop = 0;
+			extra_hitpause = 0;
+			can_special = true;
+			vsp = -5;
+			isRibbon = false;
+		}
+	*/
+	}
+	
+/*
+	// Ribbon Throw Old
 	if (isRibbon && other.id = ribbon_id){
 
 		if (!hitpause){
@@ -541,7 +735,9 @@ with (oPlayer){
 		isRibbon = false;
 		RibbonCounter = 0;
 	}
-	
+*/
+		
+
 	if (isBalloon && hitpause && other.attack == AT_UTHROW && other.id = balloon_id){
 		if (other.window == 1){
 			y = other.y;
@@ -573,11 +769,18 @@ with (oPlayer){
 	
 	if (isBalloon && !hitpause && other.id = balloon_id){
 		if (BalloonStrength == 1.0){
-			BalloonStrength = (1.3 + (((BalloonCounter-120) / 80)/25));
+			BalloonStrength = (1.1 + (((BalloonCounter-120)/80)/7.5));
+			
+			Balloon_hitstun_grav = hitstun_grav;
+			hitstun_grav = hitstun_grav - (((((BalloonStrength/3)-.3)/3)-.02));
+		//	print("hitstun change")
+		//	print(hitstun_grav)
 		}
+
 		if (vsp > 0 && BalloonCounter > 0 && free){
 			vsp = vsp / BalloonStrength;
 		}
+
 		if (BalloonCounter > 0 && free && state_cat != SC_HITSTUN){
 			hsp = clamp(hsp, -4, 4);
 		}
@@ -589,12 +792,20 @@ with (oPlayer){
 			BalloonStrength = 1.0
 			balloon_id = noone;
 		}
+		
+		if (BalloonCounter < 5){
+			hitstun_grav = Balloon_hitstun_grav;
+		//	print("hitstun returns")
+		//	print(hitstun_grav)
+		}
+		
 	}
 	
+/*
 	if (isCandy && other.GrappleMode == 1 && other.id = candy_id && CandyCounter > 20){
 		other.move_cooldown[AT_FSPECIAL] = 30;
 	}
-	
+*/	
 	if (state == PS_DEAD || state == PS_SPAWN || state == PS_RESPAWN){
 		isThorn = false;
 		ThornCounter = 0;
@@ -609,6 +820,10 @@ with (oPlayer){
 		ribbon_id = noone;
 		balloon_id = noone;
 		candy_id = noone;
+		if (state != PS_SPAWN && Balloon_hitstun_grav != 0){
+			hitstun_grav = Balloon_hitstun_grav;
+		//	print("hitstun returns")
+		}
 	}
 }
 

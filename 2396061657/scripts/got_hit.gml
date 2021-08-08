@@ -12,12 +12,12 @@ if (isFspecial){
 	isFspecial = false;
 }
 
-if (enemy_hitboxID.type == 1){
+//if (enemy_hitboxID.type == 1){
 	if (focus_attack){
 		focus_attack = false;
 		focus_armorbreak = true;
 	}
-}
+//}
 
 if (focus_attack || focus_armorbreak){
 	if (enemy_hitboxID.type == 2){
@@ -49,6 +49,10 @@ with (hit_player){
 				BalloonCounter = 0;
 				balloon_id = noone;
 				isBalloon = false;
+				
+				if (Balloon_hitstun_grav != 0){
+					hitstun_grav = Balloon_hitstun_grav;
+				}
 			}
 		}
 	}
@@ -66,9 +70,15 @@ with (hit_player){
 	if ((other.attack == AT_NTHROW || other.attack == AT_FSPECIAL) && (other.prev_state == PS_ATTACK_GROUND || other.prev_state == PS_ATTACK_AIR)){
 		if ("isRibbon" in self){	
 			if (isRibbon){
-				RibbonCounter = 0;
-				ribbon_id = noone;
-				isRibbon = false;
+			hitpause = false;
+			hitstop = 0;
+			extra_hitpause = 0;
+			can_special = true;
+			vsp = -5;
+			//print("booba");
+			RibbonCounter = 0;
+			ribbon_id = noone;
+			isRibbon = false;
 			}
 		}
 	}

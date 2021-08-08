@@ -1,6 +1,7 @@
 // post_draw.gml
 // Draws sprites in front of the player
 
+
 shader_start();
 if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
 	if (window == 2 || (window == 1 && window_timer != 1)){
@@ -31,14 +32,14 @@ if (attack == AT_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 		}
 	}
 
-	if (window == 5 && !focus_armorbreak){
+	if ((window == 6 && window_timer <= 8) && !focus_armorbreak){
 		gpu_set_fog(1, armorcolor, 0, 1);
 		draw_sprite_ext(sprite_index, image_index, x, y, 1 * spr_dir, 1, 0, armorcolor, .5);
 		gpu_set_fog(0, c_white, 0, 0);
 	}	
 
 // Nspecial Charge effect
-	if (window == 1 && state_timer > 13){
+	if ((window == 1 && state_timer > 13)){
 		shader_start();
 		draw_sprite_ext(sprite_get("focuseffectsfront"), get_gameplay_time()/4, x, y, 1 * spr_dir, 1, 0, c_white, 1);
 		shader_end();
@@ -50,10 +51,16 @@ if (attack == AT_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 		}
 	}
 	
-	if (window < 3 || window == 5){
+	if (window < 4 || (window == 6 && window_timer <= 8)){
 		draw_sprite_ext(sprite_get("focuseffectssmoke"), get_gameplay_time()/4, x, y, 1 * spr_dir, 1, 0, c_white, 1);
 	}
 	
+	if (window == 2){
+		shader_start();
+		draw_sprite_ext(sprite_get("focuseffectsfront"), get_gameplay_time()/4, x, y, 1 * spr_dir, 1, 0, c_white, 1);
+		shader_end();
+	}
+		
 }
 
 
@@ -129,6 +136,86 @@ if (attack == AT_NSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AI
 	}
 }
 
+// MINI METER DISPLAY
+
+
+if (attack != AT_NSPECIAL){
+	if (PreviousMeter != LoveMeter && LoveMeter != 0){
+		MiniM_display_timer = 60;
+		PreviousMeter = LoveMeter;
+	}
+
+	if (MiniM_display_timer >= 0){
+
+		draw_sprite_ext(sprite_get("mini_meter"), 0, x, y + 10, 1, 1, 0, c_white, MiniM_Alpha);
+		draw_sprite_part_ext(sprite_get("mini_meter"), 1, 0, 0, LoveMeter / 3.2, 22, x - 31, y - 1, 1, 1, c_white, MiniM_Alpha);
+			
+		if (MiniM_display_timer >= 20){
+			MiniM_Alpha = 1;
+		}
+		else {
+			MiniM_Alpha = MiniM_Alpha - .05;
+		}
+		
+		
+		if (LoveMeter == 200){
+			draw_debug_text(x - 14, y + 20, string("FULL"));
+		}
+		if (LoveMeter >= 100 && LoveMeter < 200){
+			draw_debug_text(x - 10, y + 20, string(LoveMeter));
+		}
+		if (LoveMeter < 100 && LoveMeter != 0){
+			draw_debug_text(x - 2, y + 20, string(LoveMeter));
+		}
+		if (LoveMeter == 0){
+			draw_debug_text(x + 6, y + 20, string(LoveMeter));
+		}
+		
+		MiniM_display_timer--;
+	}
+}
+
+
+if (attack == AT_NSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
+	if (PreviousMeter != LoveMeter && LoveMeter != 0){
+		MiniM_display_timer = 60;
+		PreviousMeter = LoveMeter;
+	}
+
+	if (MiniM_display_timer >= 0){
+
+		draw_sprite_ext(sprite_get("mini_meter"), 0, x, y - 29, 1, 1, 0, c_white, MiniM_Alpha);
+		draw_sprite_part_ext(sprite_get("mini_meter"), 1, 0, 0, LoveMeter / 3.2, 22, x - 31, y - 40, 1, 1, c_white, MiniM_Alpha);
+			
+		if (MiniM_display_timer >= 20){
+			MiniM_Alpha = 1;
+		}
+		else {
+			MiniM_Alpha = MiniM_Alpha - .05;
+		}
+		
+		
+		if (LoveMeter == 200){
+			draw_debug_text(x - 14, y - 20, string("FULL"));
+		}
+		if (LoveMeter >= 100 && LoveMeter < 200){
+			draw_debug_text(x - 10, y - 20, string(LoveMeter));
+		}
+		if (LoveMeter < 100 && LoveMeter != 0){
+			draw_debug_text(x - 2, y - 20, string(LoveMeter));
+		}
+		if (LoveMeter == 0){
+			draw_debug_text(x + 6, y - 20, string(LoveMeter));
+		}
+		
+		MiniM_display_timer--;
+	}
+}
+
+
+
+
+
 /*
 // Draws the flash animation during Nspecial
 if (attack == AT_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
@@ -145,6 +232,7 @@ if (attack == AT_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 }
 */
 
+/*
 // Draws the Ribbon effect with extending string length
 var RibbonSprite = sprite_get("string");
 var Ribbons = sprite_get("gifts");
@@ -161,7 +249,7 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
 		}	
 	}
 }
-
+*/
 
 // Some code junk
 //draw_debug_text(360, 200, "Armor: " + string(soft_armor));

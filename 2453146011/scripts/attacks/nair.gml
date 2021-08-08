@@ -15,7 +15,7 @@ set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, sound_get("monarch_smallblink1"));
 
 // Intangible
 set_window_value(AT_NAIR, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_NAIR, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NAIR, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_NAIR, 2, AG_WINDOW_HAS_SFX, 1);
@@ -39,7 +39,7 @@ set_window_value(AT_NAIR, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 
 // Endlag
 set_window_value(AT_NAIR, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NAIR, 5, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_NAIR, 5, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_NAIR, 5, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NAIR, 5, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_NAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 4);

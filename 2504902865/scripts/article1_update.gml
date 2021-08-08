@@ -163,8 +163,14 @@ state_timer += 1
 if hit_cooldown > 0 {
 	hit_cooldown -= 1;
 }
+if hit_cooldown < 0 {
+	hit_cooldown = 0;
+}
 if hit_attack_cooldown > 0 {
 	hit_attack_cooldown -= 1;
+}
+if hit_attack_cooldown < 0 {
+	hit_attack_cooldown = 0;
 }
 
 //animation handling

@@ -10,6 +10,8 @@ set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_strong"));
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 3);
+set_window_value(AT_FAIR, 1, AG_WINDOW_VSPEED, -1);
+
 
 set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAMES, 1);

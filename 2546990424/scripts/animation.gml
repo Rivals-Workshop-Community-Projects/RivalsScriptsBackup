@@ -161,7 +161,7 @@ if (cargo_grab == true && grab_timer >= 0){
 		move_cooldown[AT_NSPECIAL] = 60;
 	}
 	
-	if (y > get_stage_data(SD_Y_POS) + 270){
+	if (y > get_stage_data(SD_Y_POS) + 230){
 	    cargo_grab = false;
 	}
 }

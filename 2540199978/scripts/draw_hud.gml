@@ -110,7 +110,23 @@ if ("practice" in self)
 						AddText("");
 						AddText("Added Final Smash support");
 						AddText("");
-						AddText("'Fixed' a 'bug' with icicles :moyai:");
+						AddText("Implemented Anticheat() :moyai:");
+						break;
+					case 6:
+						AddText("v1.6 - 2 Aug 2021");
+						AddText("");
+						AddText("Changed Anticheat()");
+						AddText("");
+						AddText("DSpec Extra Hitause 28 -> 8");
+						AddText("DSpec Damage 5 -> 4");
+						AddText("");
+						AddText("Fully charged Icicles in idle state will no longer count down its return timer while Flake is in Hitstun");
+						AddText("");
+						AddText("Tap USpec will now go into pratfall on whiff");
+						AddText("Swapped the USpec distance between Tap and Hold variants");
+						AddText("(Tap now goes farther than Held)");
+						AddText("");
+						AddText("Icicles now will also despawn on death");
 						break;
 				}
 				DrawTutorialBlock();
@@ -140,7 +156,8 @@ if ("practice" in self)
 							break;
 						case 3:
 							AddText("Holding Special while the Snowflake is out will launch you in the direction of the Snowflake.");
-							AddText("This boosts you slightly farther than without utilising the Snowflake.");
+							AddText("This does not put you in pratfall, but you can't use USpec again.");
+							AddText("Snowflake Held USpecial travels a shorter distance than normal Tap USpecial.");
 							AddText("This also forces all fully charged Icicles to home in on the Snowflake.");
 							break;
 					}

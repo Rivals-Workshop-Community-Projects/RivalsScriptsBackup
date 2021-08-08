@@ -875,6 +875,7 @@ if (my_hitboxID.attack == AT_DSPECIAL)
             //sound_play(asset_get("mfx_star"));
             my_hitboxID.hsp = hit_player_obj.hsp;
             my_hitboxID.vsp = hit_player_obj.vsp;
+            set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 0);
         }
         else
         {

@@ -168,6 +168,7 @@ bubble_x = 0;
 bubble_y = 8;
 
 dairtimer = 0;
+uspecialtimer = 0;
 
 charge_max = 100;
 charge = charge_max;
@@ -236,21 +237,14 @@ lasercharged = false;
 
 //Uspecial
 ztc_uspecial_angle = 90; //current direction
-
+ztc_uspecial_hits_max = 2; //Number of consecutive hits possible
 ztc_uspecial_speed = 14; //speed of launch
 ztc_uspecial_angling = 3; //speed at which angling changes
 
 footcharge_vfx = hit_fx_create( sprite_get( "vfx_footcharge" ), 9 );
 
 lightning_fx1 = hit_fx_create( sprite_get( "lightning1" ), 15 );
-lightning_fx3 = hit_fx_create( sprite_get( "lightning3" ), 15 );
-lightning_fx4 = hit_fx_create( sprite_get( "lightning4" ), 15 );
-
-
-
 lightning_fx2 = hit_fx_create( sprite_get( "lightning2" ), 15 );
-
-
 fspecial_fx1 = hit_fx_create( sprite_get( "fspecial_proj2hit" ), 20 );
 
 

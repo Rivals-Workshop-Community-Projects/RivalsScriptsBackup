@@ -609,21 +609,27 @@ if (attack == AT_USPECIAL) {
 			spawn_hit_fx(x, y, 301);
 		}
 		if (window_timer >= 6) {
+			vsp = -18;
 			if (uspecial_left && !uspecial_right) {
 				hsp = -6;
-				vsp = -16;
+				//vsp = -16;
 			}
 			if (uspecial_right && !uspecial_left) {
 				hsp = 6;
-				vsp = -16;
+				//vsp = -16;
 			}
-			if (!uspecial_right && !uspecial_left || uspecial_right && uspecial_left) {
-				vsp = -18;
-			}
+			
+			//if (!uspecial_right && !uspecial_left || uspecial_right && uspecial_left) {
+			//	vsp = -18;
+			//}
 		}
 	}
 	if (window == 3) {
 		vsp += 0.5;
+		
+		if ((window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)) && uspecial_used) {
+			set_state(PS_PRATFALL);
+		}
 	}
 }
 
@@ -653,7 +659,7 @@ if (attack == AT_DAIR) {
 
 if (attack == AT_DSTRONG) {
 	if (window == 2 && window_timer == 4) {
-		spawn_hit_fx(x-(50*spr_dir), y, 193);
+		spawn_hit_fx(x-(60*spr_dir), y, 193);
 	}
 }
 

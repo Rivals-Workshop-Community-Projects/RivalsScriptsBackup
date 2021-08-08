@@ -33,10 +33,15 @@ if(nspecialcharge < 60 && fspecialcharge < 60){
 }else{
 	if(!runeO || runeO && fspecialcharge < 180){
 		outline_color = [outline_timer, outline_timer, outline_timer];
-		if (outline_timer > 100) outline_rev = true;
+		if (outline_timer > 120) outline_rev = true;
 		if (outline_timer < 0) outline_rev = false;
-		if (outline_rev) outline_timer -= 15;
-		else outline_timer += 15;
+		if(nspecialcharge < 60 || fspecialcharge < 60){
+			if (outline_rev) outline_timer -= 15;
+			else outline_timer += 15;
+		}else{
+			if (outline_rev) outline_timer -= 40;
+			else outline_timer += 40;
+		}
 		init_shader();
 	}else if(runeO && fspecialcharge >= 180){
 		outline_color = [outline_timer, outline_timer, outline_timer];

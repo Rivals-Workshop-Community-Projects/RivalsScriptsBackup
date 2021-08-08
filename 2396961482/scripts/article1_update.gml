@@ -18,9 +18,9 @@ if (state == 0) // idle lol
             if (attack == AT_NSPECIAL && hbox_num == 1 && place_meeting(x,y,other))
             {
                 if(player_id != other.player_id && player_id.url == other.player_id.url) //Same character
-                { with (other){ SetState(2); hboxhsp = other.hsp; } destroyed = true; }
+                { with (other){ SetState(2); hboxhsp = other.hsp; hboxparry = other.orig_player; } destroyed = true; }
                 else if(player_id == other.player_id)
-                { with (other){ SetState(1);} destroyed = true; }
+                { with (other){ if(other.was_parried) { SetState(3); hboxparry = other.player; hboxhsp = other.hsp; } else SetState(1);} destroyed = true; }
             }
         }
     }
@@ -36,7 +36,19 @@ else if (state == 2) // nspec other angalara hit
 {
     sound_play(asset_get("sfx_ice_shatter_big"));
     hbox = create_hitbox(AT_NSPECIAL, 2, x+0, y+40);
-    hbox.hsp = -hboxhsp;
+    hbox.hsp = hboxhsp;
+    hbox.can_hit[hboxparry] = false;
+    hbox.can_hit_self = true;
+    instance_destroy(self);
+    exit;
+}
+else if (state == 3) // nspec parried
+{
+    sound_play(asset_get("sfx_ice_shatter_big"));
+    hbox = create_hitbox(AT_NSPECIAL, 2, x+0, y+40);
+    hbox.hsp = hboxhsp;
+    hbox.can_hit_self = true;
+    hbox.can_hit[hboxparry] = false;
     instance_destroy(self);
     exit;
 }

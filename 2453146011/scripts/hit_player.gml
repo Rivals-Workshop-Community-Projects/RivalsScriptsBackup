@@ -105,7 +105,7 @@ if(my_hitboxID.attack = AT_FSPECIAL){
 	var hpTime = 15;
 	
 	// Cooldown
-	move_cooldown[AT_FSPECIAL] = 40;
+	move_cooldown[AT_FSPECIAL] = 60;
 	
     //Afterimage
     with(hit_player_obj)

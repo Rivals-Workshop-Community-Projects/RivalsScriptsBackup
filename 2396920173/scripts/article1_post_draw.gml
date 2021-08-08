@@ -7,7 +7,7 @@ if hitbox_active && wire_sprite != undefined && !(perform_attack && piece == "B"
 //king armour
 if king_armour {
     //draw_sprite_ext(wire_sprite,0,x,y,spr_dir,1,0,c_white,1)
-    draw_sprite_ext(sprite_get("armour_outline"),0,x,y,spr_dir,1,0,c_white,0.75)
+    //draw_sprite_ext(sprite_get("armour_outline"),0,x,y,spr_dir,1,0,c_white,0.75)
     
     draw_sprite(sprite_get("armour_meter"), 0, x, y - 91)
     var _col = c_red;

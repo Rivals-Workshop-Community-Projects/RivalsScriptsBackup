@@ -219,6 +219,8 @@ if (hitbox != noone) {
                     old_hsp = hsp;
                     old_vsp = vsp;
                 }
+                
+                has_hit = true;
             }
             
             

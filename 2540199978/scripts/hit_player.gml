@@ -19,6 +19,7 @@ switch (my_hitboxID.attack)
 		break;
 
 	case AT_USPECIAL:
+		set_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE, 1);
 		if (!hit_player_obj.super_armor)
 		{
 			hit_player_obj.x += hsp;

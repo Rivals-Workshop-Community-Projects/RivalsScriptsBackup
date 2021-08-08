@@ -56,7 +56,7 @@ sprite_change_offset("bair", 60, 90);
 sprite_change_offset("uair", 50, 108);
 sprite_change_offset("dair", 50, 98);
 sprite_change_offset("fstrong", 50, 118);
-sprite_change_offset("ustrong", 48, 118);
+sprite_change_offset("ustrong", 32, 140);
 sprite_change_offset("dstrong", 74, 118);
 sprite_change_offset("nspecial", 40, 84);
 sprite_change_offset("fspecial", 50, 86);
@@ -66,8 +66,9 @@ sprite_change_offset("dspecial", 50, 98);
 sprite_change_offset("taunt", 68, 120);
 
 sprite_change_offset("plat", 64, 62);
+sprite_change_offset("mini_meter", 31, 11);
 
-sprite_change_offset("nthrow", 50, 98);
+sprite_change_offset("nthrow", 68, 102);
 sprite_change_offset("fthrow", 30, 98);
 sprite_change_offset("uthrow", 50, 98);
 sprite_change_offset("dthrow", 50, 98);

@@ -290,19 +290,19 @@ if (attack == AT_NSPECIAL_AIR){
 if (attack == AT_NSPECIAL_2){
     if (window == 1 && window_timer == 2) {
 		if (actionMeterFill >= 199) {
-			set_hitbox_value(AT_NSPECIAL, 4, HG_WIDTH, 90);
-			set_hitbox_value(AT_NSPECIAL, 4, HG_HEIGHT, 90);	
+			set_hitbox_value(AT_NSPECIAL, 4, HG_WIDTH, 95);
+			set_hitbox_value(AT_NSPECIAL, 4, HG_HEIGHT, 95);	
 			set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 10);
 			set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_KNOCKBACK, 9);
-			set_hitbox_value(AT_NSPECIAL, 4, HG_KNOCKBACK_SCALING, 0.95);
+			set_hitbox_value(AT_NSPECIAL, 4, HG_KNOCKBACK_SCALING, 1);
 			set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_HITPAUSE, 14);
 			set_hitbox_value(AT_NSPECIAL, 4, HG_HITPAUSE_SCALING, .9);	
 			
-			set_hitbox_value(AT_NSPECIAL, 5, HG_WIDTH, 120);
-			set_hitbox_value(AT_NSPECIAL, 5, HG_HEIGHT, 120);
-			set_hitbox_value(AT_NSPECIAL, 5, HG_DAMAGE, 12);
+			set_hitbox_value(AT_NSPECIAL, 5, HG_WIDTH, 130);
+			set_hitbox_value(AT_NSPECIAL, 5, HG_HEIGHT, 130);
+			set_hitbox_value(AT_NSPECIAL, 5, HG_DAMAGE, 14);
 			set_hitbox_value(AT_NSPECIAL, 5, HG_BASE_KNOCKBACK, 9.5);
-			set_hitbox_value(AT_NSPECIAL, 5, HG_KNOCKBACK_SCALING, 1.05);
+			set_hitbox_value(AT_NSPECIAL, 5, HG_KNOCKBACK_SCALING, 1.1);
 			set_hitbox_value(AT_NSPECIAL, 5, HG_BASE_HITPAUSE, 19);
 			set_hitbox_value(AT_NSPECIAL, 5, HG_HITPAUSE_SCALING, 1);	
 
@@ -402,8 +402,12 @@ if (attack == AT_FSPECIAL) {
 			if (window_timer < 5) {window_timer = 5;}
 			if (right_down - left_down != 0) {spr_dir = sign(right_down-left_down);}
 		} else {
-			set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 9);		
-			actionMeterFill += 1.5;
+			set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 9);	
+			if (activeBuffUses > 0) {
+				actionMeterFill += 1;
+			} else {
+				actionMeterFill += 1.5;
+			}
 			actionMeterStatus = 1;
 			if (shield_down) {
 				window = 6;

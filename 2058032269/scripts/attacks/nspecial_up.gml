@@ -109,7 +109,7 @@ set_hitbox_value(AT_NSPECIAL_2, 8, HG_HEIGHT, 30);
 set_hitbox_value(AT_NSPECIAL_2, 8, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL_2, 8, HG_DAMAGE, 4);
 set_hitbox_value(AT_NSPECIAL_2, 8, HG_ANGLE, 90);
-set_hitbox_value(AT_NSPECIAL_2, 8, HG_HIT_LOCKOUT, 36);
+set_hitbox_value(AT_NSPECIAL_2, 8, HG_HIT_LOCKOUT, 27);
 set_hitbox_value(AT_NSPECIAL_2, 8, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_NSPECIAL_2, 8, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_NSPECIAL_2, 8, HG_HIT_SFX, sound_get("sfx_ex_hit"));

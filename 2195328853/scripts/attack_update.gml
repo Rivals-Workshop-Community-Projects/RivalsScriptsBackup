@@ -7,18 +7,16 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 
 if (attack == AT_NSPECIAL){
-    if(window == 1){
-        if(window_timer == 1){
-	        
-	    }
-    }else if(window == 2){
-        if(special_down){
+    if(window == 2){
+        if(special_down && !shield_down){
         	can_move = false;can_fast_fall = false;
         	nspecialcharge += 1.5;
         	hsp *= 0.95;
-        }else{
+        }else if(!shield_down){
         	sound_play(asset_get("sfx_swipe_weak2"));
         	window = 3;window_timer = 0;
+        }else{
+        	window = 4;window_timer = 0;
         }
     }else if(window == 3){
         if(window_timer == 1){
@@ -141,30 +139,30 @@ if (attack == AT_NSPECIAL){
         	//if(!special_down){
 		        if(instance_exists(blob_ball)){
 		        	if(blob_ball.ballmode != 2){
-						blob_ball.ballmode = 2;blob_ball.bounceanim = 0;blob_ball.hitplayertimer = 0;
+						blob_ball.ballmode = 2;blob_ball.bounceanim = 0;blob_ball.hitplayertimer = 0;blob_ball.hitstop = 0;
 						if(blob_ball.hitlockout < 10){
 							blob_ball.hsp = 0.5*spr_dir;	
 						}
 		        	}else if(blob_ball.ballmode == 2){
-						blob_ball.ballmode = 0;blob_ball.hitplayertimer = 0;
+						blob_ball.ballmode = 0;blob_ball.hitplayertimer = 0;blob_ball.hitstop = 0;
 		        	}
 				}if(instance_exists(blob_ball2)){
 		        	if(blob_ball2.ballmode != 2){
-						blob_ball2.ballmode = 2;blob_ball2.bounceanim = 0;blob_ball2.hitplayertimer = 0;
+						blob_ball2.ballmode = 2;blob_ball2.bounceanim = 0;blob_ball2.hitplayertimer = 0;blob_ball2.hitstop = 0;
 						if(blob_ball2.hitlockout < 10){
 							blob_ball2.hsp = 0.5*spr_dir;	
 						}
 		        	}else if(blob_ball2.ballmode == 2){
-						blob_ball2.ballmode = 0;blob_ball2.hitplayertimer = 0;
+						blob_ball2.ballmode = 0;blob_ball2.hitplayertimer = 0;blob_ball2.hitstop = 0;
 		        	}
 				}if(instance_exists(blob_ball3)){
 		        	if(blob_ball3.ballmode != 2){
-						blob_ball3.ballmode = 2;blob_ball3.bounceanim = 0;blob_ball3.hitplayertimer = 0;
+						blob_ball3.ballmode = 2;blob_ball3.bounceanim = 0;blob_ball3.hitplayertimer = 0;blob_ball3.hitstop = 0;
 						if(blob_ball3.hitlockout < 10){
 							blob_ball3.hsp = 0.5*spr_dir;	
 						}
 		        	}else if(blob_ball3.ballmode == 2){
-						blob_ball3.ballmode = 0;blob_ball3.hitplayertimer = 0;
+						blob_ball3.ballmode = 0;blob_ball3.hitplayertimer = 0;blob_ball3.hitstop = 0;
 		        	}
 				}
 			//}else{
@@ -180,7 +178,7 @@ if (attack == AT_NSPECIAL){
 	    }
     }else if(window == 5){
     	can_move = false;
-        if(special_down){
+        if(special_down && !shield_down){
         	window_timer = 0;fspecialcharge += 3;
         	if(fspecialcharge < 45){
         		if(right_down && hsp <= 4.5){
@@ -207,12 +205,14 @@ if (attack == AT_NSPECIAL){
 	        		vsp = 3;
 	        	}
         	}
-        }else{
+        }else if(!shield_down){
         	if(fspecialcharge < 180 && runeO || !runeO){
         		window = 6;window_timer = 0;
         	}else if(fspecialcharge >= 180 && runeO){
         		window = 8;window_timer = 0;
         	}
+        }else{
+        	window = 10;window_timer = 0;
         }
     }else if(window == 6){
     	can_move = false;
@@ -291,21 +291,21 @@ if (attack == AT_NSPECIAL){
         	//if(!special_down){
 		        if(instance_exists(blob_ball)){
 		        	if(blob_ball.ballmode != 3){
-						blob_ball.ballmode = 3;blob_ball.hitplayertimer = 0;
+						blob_ball.ballmode = 3;blob_ball.hitplayertimer = 0;blob_ball.hitstop = 0;
 		        	}else if(blob_ball.ballmode == 3){
-						blob_ball.ballmode = 0;blob_ball.vsp *= 1.75;blob_ball.hitplayertimer = 0;
+						blob_ball.ballmode = 0;blob_ball.vsp *= 1.75;blob_ball.hitplayertimer = 0;blob_ball.hitstop = 0;
 		        	}
 				}if(instance_exists(blob_ball2)){
 		        	if(blob_ball2.ballmode != 3){
-						blob_ball2.ballmode = 3;blob_ball2.hitplayertimer = 0;
+						blob_ball2.ballmode = 3;blob_ball2.hitplayertimer = 0;blob_ball2.hitstop = 0;
 		        	}else if(blob_ball2.ballmode == 3){
-						blob_ball2.ballmode = 0;blob_ball2.vsp *= 1.75;blob_ball2.hitplayertimer = 0;
+						blob_ball2.ballmode = 0;blob_ball2.vsp *= 1.75;blob_ball2.hitplayertimer = 0;blob_ball2.hitstop = 0;
 		        	}
 				}if(instance_exists(blob_ball3)){
 		        	if(blob_ball3.ballmode != 3){
-						blob_ball3.ballmode = 3;blob_ball3.hitplayertimer = 0;
+						blob_ball3.ballmode = 3;blob_ball3.hitplayertimer = 0;blob_ball3.hitstop = 0;
 		        	}else if(blob_ball3.ballmode == 3){
-						blob_ball3.ballmode = 0;blob_ball3.vsp *= 1.75;blob_ball3.hitplayertimer = 0;
+						blob_ball3.ballmode = 0;blob_ball3.vsp *= 1.75;blob_ball3.hitplayertimer = 0;blob_ball3.hitstop = 0;
 		        	}
 				}
         	//}else{
@@ -366,19 +366,19 @@ if (attack == AT_NSPECIAL){
 					blob_ball.ballmode = 1;blob_ball.hsp *= 0.25;
 	        	}else if(blob_ball.ballmode == 1){
 					blob_ball.ballmode = 0;
-	        	}
+	        	}blob_ball.hitstop = 0;
 			}if(instance_exists(blob_ball2)){
 	        	if(blob_ball2.ballmode != 1){
 					blob_ball2.ballmode = 1;blob_ball2.hsp *= 0.25;
 	        	}else if(blob_ball2.ballmode == 1){
 					blob_ball2.ballmode = 0;
-	        	}
+	        	}blob_ball2.hitstop = 0;
 			}if(instance_exists(blob_ball3)){
 	        	if(blob_ball3.ballmode != 1){
 					blob_ball3.ballmode = 1;blob_ball3.hsp *= 0.25;
 	        	}else if(blob_ball3.ballmode == 1){
 					blob_ball3.ballmode = 0;
-	        	}
+	        	}blob_ball3.hitstop = 0;
 			}
 	    }
     }else if(window == 4){

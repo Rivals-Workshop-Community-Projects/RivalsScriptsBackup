@@ -516,6 +516,85 @@ with phone{
 	- waog");
 	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0); */
 	
+		initPatch("1.16", "3 August, 2021");
+		
+			initPatchWords_ext("lol. lmao.", fa_center, c_white, 0, 0);
+initPatchWords_ext("wraith actually deletes itself when hit now", fa_left, c_white, 0, 0);
+	
+	
+		initPatch("1.15", "3 August, 2021");
+		
+			initPatchWords_ext("Small Changes.", fa_center, c_white, 0, 0);
+initPatchWords_ext("-Blink walljump height lowered
+-dspecial momentum reversing now multiplies hsp by 3/4
+-dspecial max hsp in air reduced to 4 (from 5)
+-dair stalling ability lowered", fa_left, c_white, 0, 0);
+	
+	
+	
+	initPatch("1.14", "2 August, 2021");
+		
+			initPatchWords_ext("Riptide!", fa_center, c_white, 0, 0);
+initPatchWords_ext("2 new alts... and a lot of edited ones
+messed with existing alts again. now much more contrast
+default color has more shading contrast
+afterimage colors are flipped
+afterimage is much more opaque
+
+-kb_adj 1-1.05
+
+-ftilt bkb 8-7
+-ftilt hsp 4-3.5
+~ftilt hitbox taller but not as wide
+
+-utilt first hit damage 4-3
+-dtilt damage 7-6
+
+~dattack 6-5 hits (active frames 18-15)
+~dattack final hit damage 3-4
+
+-dstrong endlag 18-19 frames
+
+
+~dair, fair, bair now give vertical boost on use (only nair does not now)
+
+-nair endlag 7-8 frames
++nair has a spike aerial-only hitbox on land now. experimental?
++nair landing hitboxe size/shape adjusted
++activating nair spike before the 2nd spin should be easier
+-nair spike is now cancellable 6 frames later if not hit (18-24)
+-removed nair spike fastfall
+~nair falling spike now lasts 60 frames instead of 30
+
+~the entirety of uair now does 7 damage (small hitbox used to do 6)
+-uair endlag 13-14 frames
+-uair landing lag 7-8 frames
+
+-bair damage 7-6
+-bair hitpause scaling 0.4-0.5
+-bair landing lag 5-6 frames
+
+~dair angle 40-65
+~dair base hitpause 5-4
+~dair kbs 0.5-0.7
+-dair endlag 11-12 frames
+-dair landing lag 7-8
++dair can now be held to lower gravity, like shovel knight uair
++dair now sends backwards if nova is moving backwards
++dair lerping is more effective
+
++fspecial ledge snap now works when hugging the wall
+
+-vsp is now clamped between 10 and -10 for blink
+
+~wraith has lower hit lockout on dair, connects more smoothly
+~wraith now activates later when using dspecial
+~wraith can now be hit by dspecial (see above)
+-wraith damage 6-4
+~wraiths have been recoded. Multiple can now be hit at once and they now properly register hitbox groups
+~ustrong no longer sends wraith astronomically high", fa_left, c_white, 0, 0);
+	
+	
 	initPatch("1.13", "16 July, 2021");
 		
 			initPatchWords_ext("Feedback", fa_center, c_white, 0, 0);

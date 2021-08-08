@@ -139,8 +139,6 @@ if (rokesha_line) {
 }
 //#endregion
 
-if !training training = get_training_cpu_action() != CPU_FIGHT;
-
 //#region Game Pause
 //Check if game is paused
 if (!start_down) {
@@ -152,7 +150,12 @@ if (!start_down) {
 //#endregion
 
 if (ds_list_size(particles) > 0) p_process();
-
+if (ds_list_size(roke_dstrong_targets) > 0) {
+    if roke_dstrong_grabbing
+        grab_process();
+    else
+        ds_list_clear(roke_dstrong_targets);
+}
 #define p_process()
 //process particles. everything here should be self explanatory.
 var i = 0;
@@ -172,3 +175,21 @@ repeat (ds_list_size(particles)) {
         i++;
     }
 }
+#define grab_process
+var t;
+if state == clamp(state, 5, 6)
+    for (var i = 0; i < ds_list_size(roke_dstrong_targets); i++) {
+        t = roke_dstrong_targets[|i];
+        if !t.hitpause with t {
+            state = PS_HITSTUN;
+            state_timer = 1;
+            hitstun = hitstun_full;
+            hsp = 0;
+            vsp = 0;
+            grav = 0;
+            x = lerp(x,other.x+other.xtarget*other.spr_dir,0.11);
+            y = lerp(y,other.y+other.ytarget,0.11);
+        }
+    }
+else 
+    roke_dstrong_grabbing = false;

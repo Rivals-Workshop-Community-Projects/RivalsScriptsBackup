@@ -49,6 +49,15 @@ if (attack == AT_FSPECIAL) && (hbox_num == 1) {
     if (wall != noone) && (!variable_instance_exists(wall, "player_id") || wall.player_id != player_id) {
         destroyed = true;
     }
+    
+    //trail location code
+    var drawAngle = darctan2(-vsp*spr_dir, hsp * spr_dir);
+    proj_angle = drawAngle;
+    for (var i = 1; i < array_length(trailArray); i += 1) {
+        trailArray[i - 1] = trailArray[i];
+    }
+    projSpeed = sqrt(power(abs(hsp), 2) + power(abs(vsp),2));
+    trailArray[array_length(trailArray)-1] = [x - spr_dir*11*dsin(angle),y - 11*dcos(angle),projSpeed,drawAngle,spr_dir];
 }
 
 if (attack == AT_NSPECIAL) && (hbox_num == 1) {
@@ -173,7 +182,7 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
             }
         }
         
-        if hitbox != noone {
+        if hitbox != noone && ((hitbox.hit_priority != 0 && hitbox.kb_value != 0) || hitbox.player_id == player_id) {
             if variable_instance_exists(hitbox.player_id, "isWalle") {
                 player_id = hitbox.player_id;
                 player = hitbox.player;
@@ -191,7 +200,8 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
                 with player_id {
                     spawn_hit_fx(other.x, other.y - 20, 143);
                 }
-                create_hitbox(AT_NSPECIAL, 3, x, y - 20);
+                var explosion = create_hitbox(AT_NSPECIAL, 3, x, y - 20);
+                    explosion.spr_dir = hsp == 0 ? spr_dir : sign(hsp);
                 player_id.cubeCooldown = 0;
                 destroyed = true;
                 exit;

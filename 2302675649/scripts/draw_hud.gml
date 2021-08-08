@@ -528,6 +528,15 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("Removed Lonin drip for Riptide :(");
 						AddText("Changed the Ping sound on taunt");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.33.1 - 3 Apr 2021");
+						AddText("Added Diamond Grove to Song List");
+						AddText("");
+						AddText("NSpec Base Hitpause 5 -> 9");
+						AddText("NSpec Endlag can now be cancelled into USpec");
+						AddText("");
+						AddText("JStrong Hitstun multiplier 0.7 -> 0.85");
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -749,6 +758,8 @@ if ("rollArray" in self)
 			return "The Earthen Division (Main Event Ver.)";
 		case 29:
 			return "Tetherball Versus";
+		case 36:
+			return "Tactical Evolution EX ~ Creatures Medley";
 		default:
 			if (string_count("2061009621", get_stage_data(SD_ID)) > 0)
 				return "Derek Fiechter - Night at the Castle";

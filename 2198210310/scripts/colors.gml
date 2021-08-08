@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 14 );
+set_num_palettes( 19 );
 
 // blue
 set_color_profile_slot( 1, 0, 0, 48, 221 ); //Yellows
@@ -165,6 +165,56 @@ set_color_profile_slot( 13, 4, 178, 158, 133 ); //Tans
 set_color_profile_slot( 13, 5, 79, 59, 56 ); //Browns
 set_color_profile_slot( 13, 6, 255, 50, 50 ); //Red
 set_color_profile_slot( 13, 7, 255, 255, 255 ); //White
+
+// Metal Slug
+set_color_profile_slot( 14, 0, 163, 161, 106 ); //Yellows
+set_color_profile_slot( 14, 1, 196, 192, 165 ); //Light greys
+set_color_profile_slot( 14, 2, 60, 59, 28 ); //Dark greys
+set_color_profile_slot( 14, 3, 62, 64, 43 ); //Eyes/tread greys
+set_color_profile_slot( 14, 4, 217, 177, 108 ); //Tans
+set_color_profile_slot( 14, 5, 54, 48, 24 ); //Browns
+set_color_profile_slot( 14, 6, 224, 220, 189 ); //Red
+set_color_profile_slot( 14, 7, 255, 255, 255 ); //White
+
+// Advance Wars
+set_color_profile_slot( 15, 0, 240, 72, 72 ); //Yellows
+set_color_profile_slot( 15, 1, 248, 198, 171 ); //Light greys
+set_color_profile_slot( 15, 2, 96, 24, 53 ); //Dark greys
+set_color_profile_slot( 15, 3, 96, 32, 57 ); //Eyes/tread greys
+set_color_profile_slot( 15, 4, 248, 200, 136 ); //Tans
+set_color_profile_slot( 15, 5, 88, 80, 96 ); //Browns
+set_color_profile_slot( 15, 6, 80, 120, 120 ); //Red
+set_color_profile_slot( 15, 7, 255, 255, 255 ); //White
+
+// Johnny 5
+set_color_profile_slot( 16, 0, 167, 165, 179 ); //Yellows
+set_color_profile_slot( 16, 1, 206, 206, 212 ); //Light greys
+set_color_profile_slot( 16, 2, 73, 70, 89 ); //Dark greys
+set_color_profile_slot( 16, 3, 43, 38, 66 ); //Eyes/tread greys
+set_color_profile_slot( 16, 4, 140, 167, 222 ); //Tans
+set_color_profile_slot( 16, 5, 67, 63, 87 ); //Browns
+set_color_profile_slot( 16, 6, 140, 167, 222 ); //Red
+set_color_profile_slot( 16, 7, 255, 255, 255 ); //White
+
+// Loxodont
+set_color_profile_slot( 17, 0, 90, 90, 90 ); //Yellows
+set_color_profile_slot( 17, 1, 203, 193, 183 ); //Light greys
+set_color_profile_slot( 17, 2, 33, 26, 33 ); //Dark greys
+set_color_profile_slot( 17, 3, 120, 6, 6 ); //Eyes/tread greys
+set_color_profile_slot( 17, 4, 209, 22, 41 ); //Tans
+set_color_profile_slot( 17, 5, 80, 36, 35 ); //Browns
+set_color_profile_slot( 17, 6, 255, 123, 0 ); //Red
+set_color_profile_slot( 17, 7, 255, 255, 255 ); //White
+
+// Gold
+set_color_profile_slot( 18, 0, 252, 213, 53 ); //Yellows
+set_color_profile_slot( 18, 1, 255, 224, 87 ); //Light greys
+set_color_profile_slot( 18, 2, 143, 105, 50 ); //Dark greys
+set_color_profile_slot( 18, 3, 117, 76, 0 ); //Eyes/tread greys
+set_color_profile_slot( 18, 4, 252, 252, 252 ); //Tans
+set_color_profile_slot( 18, 5, 117, 76, 0 ); //Browns
+set_color_profile_slot( 18, 6, 117, 76, 0 ); //Red
+set_color_profile_slot( 18, 7, 255, 255, 255 ); //White
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

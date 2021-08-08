@@ -64,12 +64,9 @@ if attack == AT_NSPECIAL {
 	    	
 	    	transcendent = true
 	    	hitbox_timer = 0
-	    	player_id = other.player_id 
 	    	can_hit_self = true
 	    	
-	    	with other.player_id {
-	    	     move_cooldown[AT_EXTRA_1] = 60
-	    	}
+
 	    	
 	    	with other {
 	    		
@@ -77,9 +74,6 @@ if attack == AT_NSPECIAL {
             sound_play(sound_get("RI")); 
             shake_camera(4, 6)
 	    		
-	    		if get_player_color(player) == 14{
-                      sound_play(sound_get("drip")) 
-                 }
                  
                  
 	    	}

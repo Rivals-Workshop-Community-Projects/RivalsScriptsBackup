@@ -108,7 +108,7 @@ set_window_value(AT_FSPECIAL, 13, AG_WINDOW_CUSTOM_GROUND_FRICTION, 5);
 set_window_value(AT_FSPECIAL, 13, AG_WINDOW_CUSTOM_GRAVITY, 0.4);
 
 
-
+//initial dash
 set_window_value(AT_FSPECIAL, 14, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_FSPECIAL, 14, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 14, AG_WINDOW_ANIM_FRAME_START, 2);

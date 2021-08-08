@@ -1,6 +1,6 @@
 // afterimage
 var tempColour = c_white;
-if (get_player_color(player) == 26) {
+if (get_player_color(player) == 25) {
 
 
 
@@ -151,7 +151,8 @@ afterImage[i].sprite_index = sprite_get( "fspecial_afterimage" )
     else { afterImage[i].alpha = 0 }
     
     if afterImage[i].image_index = 1 {
-    x_offset = -40*spr_dir 
+    	if !slower_hsp {
+    x_offset = -40*spr_dir } else {	x_offset = -22*spr_dir			}
     	afterimage_division_offset = 2
 	afterimage_division_multiplier = 30
   	
@@ -196,10 +197,10 @@ afterImage[i].sprite_index = sprite_get( "fspecial_afterimage" )
 
 
 
-if (afterimage_division_multiplier = 50) { gpu_set_fog(1, c_white, 0, 1); } else { gpu_set_fog(1, col1, 0, 1); }
+if (afterimage_division_multiplier != 50) { gpu_set_fog(1, c_white, 0, 1); } else { gpu_set_fog(1, col1, 0, 1); }
        
         
-			draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index + image_index_offset, afterImage[i].x - x_offset + second_x_offset_lmao, afterImage[i].y + y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, (afterImage[i].alpha - (1 + final_variable_for_afterimage_because_i_am_ocd))/(afterimage_division_multiplier*afterimage_division_offset));
+			draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index + image_index_offset, afterImage[i].x - x_offset + second_x_offset_lmao, afterImage[i].y + y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, 2*(afterImage[i].alpha - (1 + final_variable_for_afterimage_because_i_am_ocd))/(afterimage_division_multiplier*afterimage_division_offset));
         	gpu_set_blendmode(bm_add);
                         draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index  + image_index_offset, afterImage[i].x - x_offset  + second_x_offset_lmao, afterImage[i].y + y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, afterImage[i].alpha/(afterimage_division_multiplier*afterimage_division_offset));
 
@@ -209,7 +210,7 @@ if (afterimage_division_multiplier = 50) { gpu_set_fog(1, c_white, 0, 1); } else
     gpu_set_fog(1, col2, 0, 1);
 
 
-                draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index + image_index_offset, afterImage[i].x - 2*x_offset  + second_x_offset_lmao, afterImage[i].y + 2*y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, (afterImage[i].alpha - 1)/afterimage_division_multiplier);
+                draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index + image_index_offset, afterImage[i].x - 2*x_offset  + second_x_offset_lmao, afterImage[i].y + 2*y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, 2*(afterImage[i].alpha - 1)/afterimage_division_multiplier);
         gpu_set_blendmode(bm_add);
                         draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index + image_index_offset , afterImage[i].x - 2*x_offset  + second_x_offset_lmao, afterImage[i].y + 2*y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, afterImage[i].alpha/afterimage_division_multiplier);
 
@@ -218,10 +219,10 @@ if (afterimage_division_multiplier = 50) { gpu_set_fog(1, c_white, 0, 1); } else
           
           
           
-       if (afterimage_division_multiplier = 50) { gpu_set_fog(1, col1, 0, 1); } else  { gpu_set_fog(1, c_white, 0, 1); }
+       if (afterimage_division_multiplier != 50) { gpu_set_fog(1, col1, 0, 1); } else  { gpu_set_fog(1, c_white, 0, 1); }
                   
        // gpu_set_fog(1, col1, 0, 1);
-                 draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index  + image_index_offset, afterImage[i].x - 3*x_offset  + second_x_offset_lmao, afterImage[i].y + 3*y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, (afterImage[i].alpha - (1 - final_variable_for_afterimage_because_i_am_ocd))/(afterimage_division_multiplier/afterimage_division_offset));
+                 draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index  + image_index_offset, afterImage[i].x - 3*x_offset  + second_x_offset_lmao, afterImage[i].y + 3*y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, 2*(afterImage[i].alpha - (1 - final_variable_for_afterimage_because_i_am_ocd))/(afterimage_division_multiplier/afterimage_division_offset));
         gpu_set_blendmode(bm_add);
                         draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index  + image_index_offset, afterImage[i].x - 3*x_offset  + second_x_offset_lmao, afterImage[i].y + 3*y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, afterImage[i].alpha/(afterimage_division_multiplier/afterimage_division_offset));
 

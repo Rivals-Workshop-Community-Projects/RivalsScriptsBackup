@@ -6,7 +6,8 @@
 *   2 - Active
 *   3 - Shatter
 *   4 - Despawn
-*
+*	5 - Despawning - Standing
+*	6 - Despawning - Dashing
 */
 
 // Delete the rune if it goes off stage
@@ -44,6 +45,8 @@ switch(state){
         if hsp == 0{
         	instance_destroy(hitbox);
             // Slash
+			image_xscale = 1;
+			image_yscale = 1;
             setState(6);
         } else {
 			if instance_exists(hitbox)
@@ -85,7 +88,9 @@ switch(state){
     		destroy_hitboxes();
     	}
         if (state_timer == 25){
-        	spawn_hit_fx(x + clonevf_x, y + 8, player_id.vfx_roll_clone);
+        	//spawn_hit_fx(x + clonevf_x, y + 8, player_id.vfx_roll_clone);
+			image_xscale = 1;
+			image_yscale = 1;
             setState(5);
         }
         break;
@@ -94,7 +99,9 @@ switch(state){
     	instance_destroy(hitbox)
     	ignores_walls = true;
     	player_id.illusion = noone;
-        instance_destroy();
+    	if state_timer == 50{
+	        instance_destroy();
+    	}
         break;
 
 }
@@ -133,6 +140,11 @@ switch(anim_type[state]){
         break;
     case 6: // Endlag
         var frames = 4;
+        var frame_dur = 7;
+        image_index = round((state_timer mod (frames * frame_dur)) / frame_dur);
+        break;
+    case 7: // Dying - Standing
+        var frames = 8;
         var frame_dur = 7;
         image_index = round((state_timer mod (frames * frame_dur)) / frame_dur);
         break;

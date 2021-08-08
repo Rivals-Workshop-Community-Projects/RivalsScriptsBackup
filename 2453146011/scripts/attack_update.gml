@@ -335,6 +335,9 @@ if (attack == AT_FSPECIAL){
 	{
 		if(window_timer == get_window_value(AT_FSPECIAL,1,AG_WINDOW_LENGTH)) swap = instance_create(x + dir(35), y-45, "obj_article2")
 	}
+	
+	// Whiff cooldown
+	move_cooldown[AT_FSPECIAL] = 40;
 }
 //#endregion
 
@@ -354,10 +357,10 @@ if (attack == AT_USPECIAL){
 	// }
 
 	// Charged
-	if(portal_delay > 0) {
-		if(!uspec_charged)  sound_play(sound_get("monarch_zap"),false,0,0.5);
-		uspec_charged = true;
-	}
+	// if(portal_delay > 0) {
+	// 	if(!uspec_charged)  sound_play(sound_get("monarch_zap"),false,0,0.5);
+	// 	uspec_charged = true;
+	// }
 	
 	// Track hitfx on you
 	if("treturn" in self) {
@@ -1016,7 +1019,10 @@ if (attack == AT_FAIR){
 	// }
 	
 	// Muno stall code
-	if(window == 1 && window_timer == 1) fastfall_check = 0;
+	if(window == 1 && window_timer == 1){
+		bair_queue = false;
+		fastfall_check = 0;
+	}
 
 	// Stall
 	if free && hitpause{
@@ -1046,15 +1052,20 @@ if (attack == AT_FAIR){
 	
 
 	
+	// Bair queue
+	if ((spr_dir == 1 && (left_stick_down || (left_down && (attack_pressed || strong_pressed)) )) || 
+	(spr_dir == -1 && (right_stick_down || (right_down && (attack_pressed || strong_pressed)) )))
+	{
+		bair_queue = true;
+	}
+
 	//Cancels
 	
 	
 	// First
 	if(window == 3 && window_timer >= 4 && (anyStickDown || attack_down || strong_down)){
 		// Bair cancel
-		
-		if ((spr_dir == 1 && (left_stick_down || (left_down && (attack_pressed || strong_pressed)) )) || 
-		(spr_dir == -1 && (right_stick_down || (right_down && (attack_pressed || strong_pressed)) )))
+		if(bair_queue)
 		{
 
 			set_attack(AT_BAIR);
@@ -1071,8 +1082,7 @@ if (attack == AT_FAIR){
 	if(window == 6 && window_timer >= 2 && (attack_down || anyStickDown || strong_down))
 	{
 		// Bair cancel
-		if ((spr_dir == 1 && (left_stick_down  || (left_down && (attack_pressed || strong_pressed)) )) || 
-		(spr_dir == -1 && (right_stick_down || (right_down && (attack_pressed || strong_pressed)))))
+		if (bair_queue)
 		{
 			set_attack(AT_BAIR);
 			spr_dir *= -1;
@@ -1107,8 +1117,7 @@ if (attack == AT_FAIR){
 	if(window == 9 && window_timer >=4 && (attack_down || anyStickDown || strong_down))
 	{
 		// Bair cancel
-		if ((spr_dir == 1 && (left_stick_down  || (left_down && (attack_pressed || strong_pressed)) )) || 
-		(spr_dir == -1 && (right_stick_down || (right_down && (attack_pressed || strong_pressed)))))
+		if (bair_queue)
 		{
 			set_attack(AT_BAIR);
 			spr_dir *= -1;

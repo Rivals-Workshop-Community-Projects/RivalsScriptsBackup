@@ -51,7 +51,7 @@ with pHitBox {
         destroyed = true;
     }
     
-    if (attack == AT_FSPECIAL) and (player_id == other)
+    if (attack == AT_FSPECIAL) and (player_id == other) and (other.my_hitboxID == AT_FSPECIAL)
     {
         vsp *= 1.5;
         hsp *= 1.5;

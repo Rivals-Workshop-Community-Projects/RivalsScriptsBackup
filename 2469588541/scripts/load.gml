@@ -62,8 +62,8 @@ sprite_change_offset("hitfx", 64, 64);
 sprite_change_offset("bighit", 128, 128);
 
 set_victory_bg(sprite_get("vic"));
-//set_victory_theme(sound_get("Astro"));
-set_victory_theme(sound_get("lukastar_only_2_leads_but_actually_with_a_better_mixed_3rd_lead"));
+//set_victory_theme(sound_get("lukastar_only_2_leads_but_actually_with_a_better_mixed_3rd_lead"));
+set_victory_theme(sound_get("lukastar_victory_finished"));
 
 #define Offset
 {
