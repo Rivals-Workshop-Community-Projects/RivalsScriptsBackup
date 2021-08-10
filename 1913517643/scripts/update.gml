@@ -193,7 +193,7 @@ if (state == PS_PARRY){
 
     with(asset_get("obj_article3")){ //If the bodyguard article is active, delete the instance upon parry
         if (player_id == other.id){
-            state = 2;
+            //state = 2;
 
         }
     }

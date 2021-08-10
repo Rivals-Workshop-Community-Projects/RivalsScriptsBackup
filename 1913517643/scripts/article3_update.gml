@@ -84,8 +84,11 @@ if (grabbed &! (state == 1 && state_timer >= 19)){
 }
 
 with (asset_get("pHitBox")){
-    if (player_id != other.player_id && type == 2 && place_meeting(x,y,other) && !transcendent && !plasma_safe){
-        destroyed = true;
+    if (player_id != other.player_id && type == 2 && place_meeting(x,y,other)){
+        if (!transcendent && !plasma_safe){
+            destroyed = true;
+        }
+        
         
     }
     
