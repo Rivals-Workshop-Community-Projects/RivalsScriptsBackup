@@ -34,8 +34,8 @@ sprite_change_offset("tech", 64/2, 94/2, true);
 
 sprite_change_offset("jab", 64/2, 94/2, true);
 sprite_change_offset("dattack", 64/2, 94/2, true);
-sprite_change_offset("ftilt", 64/2, 94/2, true);
-sprite_change_offset("dtilt", 64/2, 94/2, true);
+sprite_change_offset("ftilt", 96/2, 94/2, true);
+sprite_change_offset("dtilt", 96/2, 62/2, true);
 sprite_change_offset("utilt", 64/2, 94/2, true);
 sprite_change_offset("nair", 64/2, 94/2, true);
 sprite_change_offset("fair", 64/2, 94/2, true);
@@ -44,7 +44,7 @@ sprite_change_offset("bair_fail", 64/2, 94/2, true);
 sprite_change_offset("uair", 64/2, 94/2, true);
 sprite_change_offset("dair", 64/2, 94/2, true);
 sprite_change_offset("fstrong", 96/2, 94/2, true);
-sprite_change_offset("ustrong", 64/2, 126/2, true);
+sprite_change_offset("ustrong", 64/2, 158/2, true);
 sprite_change_offset("dstrong", 96/2, 94/2, true);
 sprite_change_offset("nspecial", 64/2, 94/2, true);
 sprite_change_offset("nspecialair", 64/2, 94/2, true);
@@ -68,7 +68,9 @@ sprite_change_offset("fuelmeter", 32, 32);
 sprite_change_offset("tank_gui", 11, 11);
 
 sprite_change_offset("explosion", 64, 64);
+sprite_change_offset("fail_smoke_fx", 32, 32);
 sprite_change_offset("fire_hit_fx", 34, 30);
+sprite_change_offset("fire_hit_fx_large", 64, 64);
 
 sprite_change_offset("fuel_tank", 32, 32);
 sprite_change_offset("fuel_field", 160, 160);

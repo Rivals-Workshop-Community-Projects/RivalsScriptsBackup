@@ -11,6 +11,8 @@ if (state_cat == SC_GROUND_COMMITTED || state_cat == SC_GROUND_NEUTRAL || state 
     if (fuel < 2) fuel = 2;
 }
 
+if (state_cat == SC_GROUND_COMMITTED || state_cat == SC_GROUND_NEUTRAL || state_cat == SC_HITSTUN) failboost = true;
+
 if (instance_exists(fueltank_ins))
 {
     if (fueltank_ins.orig_player != player) instance_destroy(fueltank_ins);

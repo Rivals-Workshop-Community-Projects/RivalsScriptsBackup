@@ -138,7 +138,7 @@ if (taunt_pressed){
 	thunder = 0
 	pistols = 1
 
-	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -1.5);
+	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -2);
 	
 	set_hitbox_value(AT_USPECIAL, 1, HG_EFFECT, 0);
 	set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 1);
@@ -301,7 +301,7 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 199);
 	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 20);
 	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.6);
+	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.8);
 	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 8);
 	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 60);
 	
@@ -310,7 +310,7 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 199);
 	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 30);
 	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 8);
-	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 0.6);
+	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 0.8);
 	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 10);
 	set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 50);
 	set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 40);
@@ -416,8 +416,8 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 130);
 	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 10);
 	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 10);
-	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.5);
-	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 5);
+	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.7);
+	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 7);
 	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 80);
 	
 	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
@@ -425,8 +425,8 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 127);
 	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 20);
 	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 10);
-	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 0.8);
-	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 7);
+	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 0.9);
+	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 9);
 	set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 80);
 	set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 40);
 	
@@ -545,7 +545,7 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 304);
 	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 12);
 	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.8);
+	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.9);
 	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 5);
 	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 75);
 	
@@ -554,7 +554,7 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 19);
 	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 20);
 	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 0.9);
+	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.0);
 	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 10);
 	set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 70);
 	set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 40);
@@ -640,6 +640,35 @@ if get_gameplay_time() <= 120 && machina == 0 and taunt_pressed && get_player_co
 	sound_play(sound_get("machina_intro"));
 	set_victory_theme(sound_get("machina_victory"));
 }
+//bgm// ------------------------- //
+//SERVANT OF THE CRYSTAL
+if (attack == AT_TAUNT) && (special_pressed and attack_pressed) && get_player_color(player) == 12{
+	lcie = 1
+	gaming = 1
+	sound_play(sound_get("servant_of_the_crystal"), true);
+	set_victory_theme(sound_get("machina_victory"));
+}
+
+//DEVILS NEVER CRY
+if (attack == AT_TAUNT) && (special_pressed and attack_pressed) && get_player_color(player) == 14{
+	dante = 1
+	gaming = 1
+	sound_play(sound_get("devils_never_cry"), true);
+	set_victory_theme(sound_get("Dwin"));
+}
+//INVIDIA
+if (attack == AT_TAUNT) && (special_pressed and attack_pressed) && get_player_color(player) == 17{
+	prompto = 1
+	gaming = 1
+	sound_play(sound_get("invidia"), true);
+	set_victory_theme(sound_get("valse_di_fantastica"));
+}
+
+if (gaming == 1){
+	suppress_stage_music( 0, 100 );
+}
+
+//----------------------------- //
 //CALEB SOUNDS
 
 if (state == PS_FIRST_JUMP)&&(state_timer==1) {
@@ -649,8 +678,7 @@ if (state == PS_FIRST_JUMP)&&(state_timer==1) {
 }
 if(caleb==1)&&(state==14)&&(state_timer==80){
 		sound_play( sound_get("am_not_dead_yet"));
-	} 
-	
+}
 
 if get_gameplay_time() == 30 {
 		sound_play(asset_get("sfx_blow_medium3"))

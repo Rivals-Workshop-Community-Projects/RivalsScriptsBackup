@@ -4,6 +4,7 @@ set_attack_value(AT_USPECIAL_GROUND, AG_HURTBOX_SPRITE, sprite_get("uspecial_gro
 set_attack_value(AT_USPECIAL_GROUND, AG_USES_CUSTOM_GRAVITY, 1);
 set_attack_value(AT_USPECIAL_GROUND, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_USPECIAL_GROUND, AG_LANDING_LAG, 50);
+set_attack_value(AT_USPECIAL_GROUND, AG_OFF_LEDGE, 1);
 
 set_attack_value(AT_USPECIAL_GROUND, AG_NUM_WINDOWS, 3);
 
@@ -13,6 +14,8 @@ set_window_value(AT_USPECIAL_GROUND, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USPECIAL_GROUND, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL_GROUND, 1, AG_WINDOW_SFX, sound_get("SPRAYCAN"));
 set_window_value(AT_USPECIAL_GROUND, 1, AG_WINDOW_SFX_FRAME, 3);
+set_window_value(AT_USPECIAL_GROUND, 1, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(AT_USPECIAL_GROUND, 1, AG_WINDOW_HSPEED, 1);
 
 set_window_value(AT_USPECIAL_GROUND, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL_GROUND, 2, AG_WINDOW_LENGTH, 8);

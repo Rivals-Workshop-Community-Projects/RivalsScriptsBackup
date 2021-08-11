@@ -7,28 +7,28 @@ if (attack == AT_DSPECIAL && hbox_num == 1)
 	// Estas son las condiciones para que rebote el dspecial
 	if  player_id.attack == AT_FSPECIAL && player_id.window > 3 && vsp > 0 &&  player_id.window < 7 && (player_id.state == PS_ATTACK_GROUND ||player_id.state == PS_ATTACK_AIR) && ( y > player_id.y -60 &&  y < player_id.y) && player_id.spr_dir == spr_dir{
 		if spr_dir == 1{
-			 if x < player_id.x + 200 {					//Con estos valores se forma la caja de deteccion, se puede variar
+			 if x < player_id.x + 200 && (x > player_id.x){					//Con estos valores se forma la caja de deteccion, se puede variar
 				vsp = vsp * -1;
 				hsp = hsp + 2;
 				camera_shake = 1;
-				spawn_hit_fx( x, y, 302 );			//Puedes cambiar aqui el efecto que sale al rebotar
+				spawn_hit_fx( x, y, 302 );			//Puedes cambiar aqui el efecto scque sale al rebotar
+			sound_play(asset_get("sfx_blow_medium3"));
 			}
-			sound_play(sound_get("PMETAL"));
 		} else	if spr_dir == -1{
-			if x > player_id.x - 200 {
+			if x > player_id.x - 200 && (x < player_id.x){
 				vsp = vsp * -1;
 				hsp = hsp - 2;
 				camera_shake = 1;
 				spawn_hit_fx( x, y, 302 );			//Puedes cambiar aqui el efecto que sale al rebotar
+			sound_play(asset_get("sfx_blow_medium3"));
 			}			
-			sound_play(sound_get("PMETAL"));
 		}
 		//Podrias aumentar la duracion del proyectil por esta nueva funcionalidad
 	}
 	// Estas son las condiciones para que rebote el dspecial
 	if  player_id.attack == AT_FSTRONG && player_id.window > 2 && vsp > 0 &&  player_id.window < 4 && (player_id.state == PS_ATTACK_GROUND) && ( y > player_id.y -60 &&  y < player_id.y) && player_id.spr_dir == spr_dir{
 		if spr_dir == 1{
-			 if x < player_id.x + 200 {					//Con estos valores se forma la caja de deteccion, se puede variar
+			 if x < player_id.x + 200 && (x > player_id.x) {					//Con estos valores se forma la caja de deteccion, se puede variar
 				vsp = vsp * -0.7;
 				hsp = hsp + 8;
 				damage = 12;
@@ -36,10 +36,10 @@ if (attack == AT_DSPECIAL && hbox_num == 1)
 				camera_shake = 1;
 				hitpause = 20;
 				spawn_hit_fx( x, y + 10, 302 );			//Puedes cambiar aqui el efecto que sale al rebotar
-			}
 			sound_play(asset_get("sfx_blow_medium3"));
+			}
 		} else	if spr_dir == -1{
-			if x > player_id.x - 200 {
+			if x > player_id.x - 200 && (x < player_id.x) {
 				vsp = vsp * -0.7;	
 				hsp = hsp - 8;
 				damage = 12;
@@ -47,8 +47,8 @@ if (attack == AT_DSPECIAL && hbox_num == 1)
 				camera_shake = 1;
 				hitpause = 20;
 				spawn_hit_fx( x, y + 10, 302 );			//Puedes cambiar aqui el efecto que sale al rebotar
-			}			
 			sound_play(asset_get("sfx_blow_medium3"));
+			}			
 		}
 		//Podrias aumentar la duracion del proyectil por esta nueva funcionalidad
 	}
@@ -66,12 +66,19 @@ if (attack == AT_DSPECIAL && hbox_num == 1)
 		if player_id.spr_dir == 1{					//Derecha
 			if (x < player_id.x + 96) && (x > player_id.x) {					//Con estos valores se forma la caja de deteccion, se puede variar
 				destroyed = true;
+				player_id.vsp = -6;	
+				player_id.hsp = -9;	
+				player_id.window = 3;
+			
 				//player_id.hsp = -10;													//Aqui puedes cambiar el boost HORIZONTAL que recibe	
 				//Y por supuesto, aqui iria un posible sound effect
 			}
 		} else if player_id.spr_dir == -1 {			//Izquierda
 			if (x > player_id.x - 96) && (x < player_id.x) {					//Con estos valores se forma la caja de deteccion, se puede variar
 				destroyed = true;
+				player_id.vsp = -6;	
+				player_id.hsp = 9;	
+				player_id.window = 3;
 				//player_id.hsp = 10;													//Aqui puedes cambiar el boost HORIZONTAL que recibe
 				//Y por supuesto, aqui iria un posible sound effect
 			}
@@ -93,7 +100,7 @@ if (attack == AT_DSPECIAL && hbox_num == 1)
 	// Estas son las condiciones para que rebote el dspecial
 	if  player_id.attack == AT_FAIR && player_id.window == 2 && vsp > 0 && (player_id.state == PS_ATTACK_GROUND ||player_id.state == PS_ATTACK_AIR) && ( y > player_id.y -60 &&  y < player_id.y) && player_id.spr_dir == spr_dir{
 		if player_id.spr_dir == 1{
-			 if x < player_id.x + 120 {					//Con estos valores se forma la caja de deteccion, se puede variar
+			 if x < player_id.x + 120 && (x > player_id.x) {					//Con estos valores se forma la caja de deteccion, se puede variar
 				vsp = -6;
 				hsp = 9;
 				kb_angle = 60;
@@ -103,7 +110,7 @@ if (attack == AT_DSPECIAL && hbox_num == 1)
 				sound_play(asset_get("sfx_blow_medium3"));
 			}
 		} else if player_id.spr_dir == -1{
-			if x > player_id.x - 120 {
+			if x > player_id.x - 120 && (x < player_id.x) {
 				vsp = -6;
 				hsp = -9;
 				kb_angle = 60;

@@ -162,6 +162,23 @@ else{
   air_accel = 0.35;
 }
 
+//WEE FSPECIAL
+if (attack == AT_FSPECIAL && window == 7){
+	if  window_timer == 1 && special_down{
+		sound_play(asset_get("sfx_swipe_medium2"));
+		hsp = 9 * spr_dir;
+		vsp = -6
+		move_cooldown[AT_FSPECIAL] = 90
+	}
+}
+
+if (attack == AT_FSPECIAL && window > 7){
+		can_jump = true;
+		can_shield = true;
+		if is_special_pressed( DIR_UP ){
+			set_attack( AT_USPECIAL );
+		}
+}
 
 //Stinger Multipress
 if (attack == AT_DATTACK) {
@@ -311,6 +328,7 @@ if (attack == AT_JAB){
 		can_jump=true;
 	}
 }
+
 
 //DYNAMITE ANGLED
 

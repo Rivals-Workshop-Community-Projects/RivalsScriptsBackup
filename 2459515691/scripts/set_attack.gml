@@ -1,9 +1,19 @@
 switch (attack)
 {
     case AT_USPECIAL:
+        if (fuel == 0)
+        {
+            failboosttype = 1;
+            attack = AT_SPECIALFAIL;
+            //if (infield) FieldRefuel();
+            //else attack = AT_SPECIALFAIL;
+        }
+        break;
+
     case AT_FSPECIAL:
         if (fuel == 0)
         {
+            failboosttype = 2;
             attack = AT_SPECIALFAIL;
             //if (infield) FieldRefuel();
             //else attack = AT_SPECIALFAIL;
@@ -25,14 +35,14 @@ switch (attack)
 
     case AT_TAUNT:
         if (down_down) attack = AT_TAUNT2;
-        else if (get_player_color(player) == 3 || get_player_color(player) == 11 || get_player_color(player) == 13 || get_player_color(player) == 16 || get_player_color(player) == 17)
+        else if (get_player_color(player) == 3 || get_player_color(player) == 11 || get_player_color(player) == 13 || get_player_color(player) == 14 || get_player_color(player) == 18)
         {
             attack = AT_ALTTAUNT;
                 if (get_player_color(player) == 3) window = 1;
                 else if (get_player_color(player) == 11) window = 2;
                 else if (get_player_color(player) == 13) window = 3;
-                else if (get_player_color(player) == 16) window = 4;
-                else if (get_player_color(player) == 17) window = 5;
+                else if (get_player_color(player) == 14) window = 4;
+                else if (get_player_color(player) == 18) window = 5;
         }
         break;
 

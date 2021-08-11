@@ -1,0 +1,63 @@
+sprite_change_offset("idle", 62, 79);
+sprite_change_offset("hurt", 62, 79);
+sprite_change_offset("crouch", 62, 79);
+sprite_change_offset("walk", 62, 79);
+sprite_change_offset("walkturn", 62, 79);
+sprite_change_offset("dash", 62, 79);
+sprite_change_offset("dashstart", 62, 79);
+sprite_change_offset("dashstop", 62, 79);
+sprite_change_offset("dashturn", 62, 79);
+
+sprite_change_offset("jumpstart", 62, 79);
+sprite_change_offset("jump", 62, 79);
+sprite_change_offset("doublejump", 62, 79);
+sprite_change_offset("walljump", 62, 79);
+sprite_change_offset("pratfall", 62, 79);
+sprite_change_offset("land", 62, 79);
+sprite_change_offset("landinglag", 62, 79);
+
+sprite_change_offset("parry", 62, 79);
+sprite_change_offset("roll_forward", 62, 79);
+sprite_change_offset("roll_backward", 62, 79);
+sprite_change_offset("airdodge", 62, 79);
+sprite_change_offset("airdodge_up", 62, 79);
+sprite_change_offset("airdodge_down", 62, 79);
+sprite_change_offset("waveland", 62, 79);
+sprite_change_offset("tech", 62, 79);
+
+sprite_change_offset("jab", 62, 79, true);
+sprite_change_offset("dattack", 62, 79, true);
+sprite_change_offset("ftilt", 62, 79, true);
+sprite_change_offset("dtilt", 62, 79, true);
+sprite_change_offset("utilt", 62, 79, true);
+sprite_change_offset("nair", 62, 79, true);
+sprite_change_offset("fair", 62, 79, true);
+sprite_change_offset("bair", 62, 79, true);
+sprite_change_offset("uair", 62, 79, true);
+sprite_change_offset("dair", 62, 79, true);
+sprite_change_offset("fstrong", 102, 115, true);
+sprite_change_offset("ustrong", 62, 79, true);
+sprite_change_offset("dstrong", 62, 79, true);
+sprite_change_offset("nspecial", 62, 79, true);
+sprite_change_offset("fspecial", 62, 79, true);
+sprite_change_offset("uspecial", 62, 79, true);
+sprite_change_offset("dspecial", 62, 79, true);
+sprite_change_offset("dspecial2", 62, 79, true);
+sprite_change_offset("taunt", 62, 79);
+sprite_change_offset("phone_open", 62, 79);
+
+sprite_change_offset("hurtbox", 18, 48);
+sprite_change_offset("crouchbox", 15, 26);
+
+sprite_change_offset("plat", 32, 40);
+sprite_change_offset("knives", 18, 18);
+sprite_change_offset("shine", 32, 32);
+sprite_change_offset("shine_inner", 32, 32);
+sprite_change_offset("nspecial_proj", 62, 79);
+sprite_change_offset("demon_large", 62, 79);
+sprite_change_offset("demon_small", 62, 79);
+sprite_change_offset("ustrong_knife", 15, 4);
+sprite_change_offset("dspecial_knife", 38, 6);
+sprite_change_offset("dspecial2_knife", 38, 6);
+sprite_change_offset("blue_trail", 1, 5);
+sprite_change_offset("chainsaw", 32, 12);

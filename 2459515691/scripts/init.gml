@@ -8,6 +8,8 @@ articlestate = 0; //0 - idle, 1 - used, 2 - self destruct
 articleout = false;
 infield = false;
 fieldcooldown = 0;
+failboost = true;
+failboosttype = 0; //1 = uspecial (upward boost), 2 = fspecial (forward boost)
 
 sussy = false;
 
@@ -122,7 +124,9 @@ AT_ALTTAUNT = 47;
 
 blue_explosion = hit_fx_create(sprite_get("explosion"), 32);
 tank_explosion = hit_fx_create(sprite_get("tank_explosion"), 30);
+fail_smoke_fx = hit_fx_create(sprite_get("fail_smoke_fx"), 36);
 fire_hit_fx = hit_fx_create(sprite_get("fire_hit_fx"), 24);
+fire_hit_fx_large = hit_fx_create(sprite_get("fire_hit_fx_large"), 24);
 tankbreak1 = hit_fx_create(sprite_get("tankbreak1"), 14);
 tankbreak2 = hit_fx_create(sprite_get("tankbreak2"), 14);
 fuel_trail_particle = hit_fx_create(sprite_get("fuel_trail_particle"), 12);

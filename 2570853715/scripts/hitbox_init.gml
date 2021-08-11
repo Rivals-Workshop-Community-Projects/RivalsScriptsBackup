@@ -1,0 +1,18 @@
+if((attack == AT_USTRONG or attack == AT_DSPECIAL)and hbox_num == 1){
+    through_platforms = 10;
+} else if(attack == AT_USTRONG and hbox_num == 3){
+    cur_vsp = 0;
+    cur_hsp = 0;
+    stop_time = 0;
+    multihit = noone;
+    hit_count = 0;
+}
+
+if(attack == AT_DSPECIAL){
+    reversed = false;
+    prev_reversed = false;
+    color = c_blue;
+    for(var i = 0; i < 9; i++){
+        trail_array[i] = {x:x, y:y, life:12, rot:proj_angle}
+    }
+}

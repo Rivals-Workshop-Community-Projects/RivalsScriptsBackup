@@ -28,30 +28,34 @@ switch (attack)
     break;
 
     case AT_FTILT:
-    if (window = 1 && window_timer = 6 && !hitpause) spawn_base_dust(x+spr_dir*16, y, "dash_start", spr_dir);
-    if (window == 3)
-    {
-        if (!free)
-        {
-            if (was_parried)
-            {
-                iasa_script();
-                set_state(PS_PRATLAND);
-            }
-            else
-            {
-                iasa_script();
-                set_state(PS_LAND);
-            }
-        }
-        if (window_timer == 15 && was_parried)
-        {
-            iasa_script();
-            set_state(PS_PRATFALL);
-        }
+    if (window = 1 && window_timer = 5 && !hitpause) spawn_base_dust(x+spr_dir*16, y, "dash_start", spr_dir);
+    if (window = 3 && window_timer = 3 && !hitpause) {
+          //spawn_base_dust(x+spr_dir*28, y, "walk", -spr_dir);
+          spawn_base_dust(x-spr_dir*12, y, "walk", spr_dir);
     }
+    //if (window == 3)
+    //{
+    //    if (!free)
+    //    {
+    //        if (was_parried)
+    //        {
+    //            iasa_script();
+    //            set_state(PS_PRATLAND);
+    //        }
+    //        else
+    //        {
+    //            iasa_script();
+    //            set_state(PS_LAND);
+    //        }
+    //    }
+    //    if (window_timer == 15 && was_parried)
+    //    {
+    //        iasa_script();
+    //        set_state(PS_PRATFALL);
+    //    }
+    //}
     can_move = false;
-    can_fast_fall = false;
+    //can_fast_fall = false;
     break;
 
     case AT_DATTACK:
@@ -157,7 +161,7 @@ switch (attack)
         {
             if (easetimer < 12)
             {
-                char_height = ease_quartOut(56, 106, easetimer, 12);
+                char_height = ease_quartOut(56, 118, easetimer, 12);
                 easetimer++;
             }
         }
@@ -165,7 +169,7 @@ switch (attack)
         {
             if (easetimer < 7)
             {
-                char_height = ease_quartIn(106, 56, easetimer, 7);
+                char_height = ease_quartIn(118, 56, easetimer, 7);
                 easetimer++;
             }
         }
@@ -226,6 +230,18 @@ switch (attack)
         break;
 
     case AT_SPECIALFAIL:
+    if (window == 2 && window_timer == 1 && failboost = true){
+        if (failboosttype = 1){
+            vsp = -7;
+            hsp = 0.5*spr_dir;
+        }
+        if (failboosttype = 2){
+            vsp = -3;
+            hsp = 5*spr_dir;
+        }
+        spawn_hit_fx(x - spr_dir*14, y+6, fail_smoke_fx);
+        failboost = false;
+    }
     if (!free)
     {
         iasa_script();
@@ -332,6 +348,15 @@ switch (attack)
     break;
 
     case AT_NSPECIAL2:
+    if (hitpause = true && hitstop <= 8 && (up_down || down_down || left_down || right_down))
+    {
+        hitstop = 0;
+        hitpause = false;
+        has_hit = false;
+        has_hit_player = false;
+        hsp = old_hsp;
+        vsp = old_vsp;
+    }
     can_fast_fall = false;
     hurtboxID.sprite_index = get_attack_value(AT_NSPECIAL2, AG_HURTBOX_SPRITE);
     if (instance_exists(grabbed_player_obj)) 
@@ -516,6 +541,15 @@ switch (attack)
     break;
 
     case AT_NSPECIAL2AIR:
+    if (hitpause = true && hitstop <= 8 && (up_down || down_down || left_down || right_down))
+    {
+        hitstop = 0;
+        hitpause = false;
+        has_hit = false;
+        has_hit_player = false;
+        hsp = old_hsp;
+        vsp = old_vsp;
+    }
     can_fast_fall = false;
     hurtboxID.sprite_index = get_attack_value(AT_NSPECIAL2AIR, AG_HURTBOX_SPRITE);
     if (instance_exists(grabbed_player_obj)) 
@@ -667,7 +701,7 @@ switch (attack)
               }
         }
     }
-    if (window = 4 && window_timer == 12 || window = 8 && window_timer == 3 || window = 11 && window_timer == 7 || window = 15 && window_timer == 5 || window = 19 && window_timer == 5) 
+    if (window = 4 && window_timer == 12 || window = 8 && window_timer == 8 || window = 11 && window_timer == 7 || window = 15 && window_timer == 5 || window = 19 && window_timer == 5) 
     {
         move_cooldown[AT_NSPECIAL] = 8;
         iasa_script();

@@ -1,6 +1,6 @@
 var temp_x = x + 8;
 var temp_y = y + 15;
-var numAlts = 26;
+var numAlts = 24;
 
 //patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1); 
 patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)); 
@@ -33,26 +33,24 @@ alt_name[6]		= "Heartstrong Acrobat";
 alt_name[7]		= "Transcendance";
 alt_name[8]		= "Funny Rapping Child";
 alt_name[9]		= "Limbless Warrior";
-alt_name[10]	= "Fortnite Streamer";
+alt_name[10]	= "Fortnite";
 alt_name[11]	= "Random Death Match";
 alt_name[12]	= "Trash Robot";
 alt_name[13]	= "Damned DK Daniel";
-alt_name[14]	= "Damned Pastey";
-alt_name[15]	= "Cinder Drippin";
-alt_name[16]	= "American Rapper";
-alt_name[17]	= "Suspicious Imposter";
-alt_name[18]	= "Content Creator";
-alt_name[19]	= "Commentary Channel";
-alt_name[20]	= "Drop in the Rain";
-alt_name[21]	= "Lost Child";
-alt_name[22]	= "Accursed Feind";
-alt_name[23]	= "Programmed Feline";
-alt_name[24]	= "Fires Last Hope";
-alt_name[25]	= "Snek";
+alt_name[14]	= "American Rapper";
+alt_name[15]	= "Content Creator";
+alt_name[16]	= "Commentary Channel";
+alt_name[17]	= "Drop in the Rain";
+alt_name[18]	= "Suspicious Imposter";
+alt_name[19]	= "Lost Child";
+alt_name[20]	= "Accursed Feind";
+alt_name[21]	= "Programmed Feline";
+alt_name[22]	= "Fires Last Hope";
+alt_name[23]	= "Snake Girl";
 
 draw_set_halign(fa_right);
-textDraw(temp_x + 198, temp_y + 32, "fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);
-textDraw(temp_x + 200, temp_y + 34, "fName", c_fuchsia, 0, 1000, 1, false, 0.3, "v" + patch_ver);
+textDraw(temp_x + 198, temp_y + 64, "fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);
+textDraw(temp_x + 200, temp_y + 66, "fName", c_fuchsia, 0, 1000, 1, false, 0.3, "v" + patch_ver);
 
 draw_set_halign(fa_left);
 

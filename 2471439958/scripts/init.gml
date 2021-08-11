@@ -6,6 +6,8 @@ introTimer2 = 0;
 
 caleb = 0;
 machina = 0;
+lcie = 0;
+gaming = 0;
 
 fire = 1;
 ice = 0;
