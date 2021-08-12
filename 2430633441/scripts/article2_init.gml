@@ -17,9 +17,11 @@ active_sprite = sprite_get("sun_dspecial")
 if get_player_color(player) == 11 {
 sprite_index = sprite_get("sunV")
 }
+/*
 if get_player_color(player) == 12 {
 sprite_index = sprite_get("sunR")
 }
+*/
 if get_player_color(player) == 16 {
 sprite_index = sprite_get("sun5")
 }

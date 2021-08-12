@@ -312,8 +312,7 @@ if (attack == AT_FSPECIAL) {
     		}
     		
     		if (window == 6) {
-    			
-		        if (slowstart_state == SLOWSTART_STATE_OFF) {
+		        if (slowstart_state == SLOWSTART_STATE_OFF && get_player_damage(grabbed_player_obj.player) >= 100) {
 					if (grabbed_player_obj.y >= room_height - abs(vsp)) {
 				        grabbed_player_obj.x = x;
 				        grabbed_player_obj.y = room_height + 256;

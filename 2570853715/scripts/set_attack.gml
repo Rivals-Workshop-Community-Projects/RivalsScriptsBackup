@@ -16,3 +16,9 @@ if(attack == AT_DSPECIAL){
         attack = AT_DSPECIAL_2;
     }
 }
+
+if(attack == AT_TAUNT and !free){
+    if(down_down){
+        attack = AT_TAUNT_2;
+    }
+}

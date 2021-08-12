@@ -22,7 +22,7 @@ set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 
 
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -44,15 +44,16 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 9);
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 90);
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_EXTRA_HITPAUSE, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT_X_OFFSET, 16);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_NSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 3);
 set_hitbox_value(AT_NSPECIAL, 2, HG_SDI_MULTIPLIER, 0.001);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
+set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_LOCKOUT, 20);
 
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 2);
@@ -68,17 +69,17 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 9);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 40);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 1.1412);
 set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_X_OFFSET, 16);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_SDI_MULTIPLIER, 0.001);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
-set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_LOCKOUT, 30);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_LOCKOUT, 20);
 
 set_hitbox_value(AT_NSPECIAL, 20, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 20, HG_WINDOW, 5);

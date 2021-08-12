@@ -61,7 +61,7 @@ set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITSTUN_MULTIPLIER, 1.0);
 set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 304);
-
+set_hitbox_value(AT_FSTRONG, 2, HG_HIT_LOCKOUT, 10);
 
 set_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 3, HG_WINDOW, 3);
@@ -85,7 +85,7 @@ set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_FSTRONG, 3, HG_HITSTUN_MULTIPLIER, 1.0);
 set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, 304);
-
+set_hitbox_value(AT_FSTRONG, 3, HG_HIT_LOCKOUT, 10);
 
 
 

@@ -116,37 +116,37 @@ if (attack == AT_FSPECIAL && window == 2 && window_timer == 1){ //Create article
 
 if (attack == AT_UTILT){
     if (window == 1){
-        char_height = ease_quartIn(52, 82, window_timer, 5)
+        hud_offset = ease_quartIn(52, 82, window_timer, 5)
     }
     if (window == 2){
-        char_height = 82;
+        hud_offset = 82;
     }
     if (window == 4 && window_timer < 11){
-        char_height = ease_quartIn(82, 52, window_timer, 8)
+        hud_offset = ease_quartIn(82, 52, window_timer, 8)
     }
 }
 
 if (attack == AT_TAUNT_2){
     if (window == 1){
-        char_height = ease_quartIn(52, 100, window_timer, 15)
+        hud_offset = ease_quartIn(52, 100, window_timer, 15)
     }
     if (window == 2){
-        char_height = 112;
+        hud_offset = 112;
     }
     if (window == 3 && window_timer < 10){
-        char_height = ease_quartIn(100, 52, window_timer, 9)
+        hud_offset = ease_quartIn(100, 52, window_timer, 9)
     }
 }
 
 if (attack == AT_USTRONG){
     if (window == 2){
-        char_height = ease_quartIn(52, 112, window_timer, 15)
+        hud_offset = ease_quartIn(52, 112, window_timer, 15)
     }
     if (window == 3){
-        char_height = 112;
+        hud_offset = 112;
     }
     if (window == 4 && window_timer < 11){
-        char_height = ease_quartIn(112, 52, window_timer, 10)
+        hud_offset = ease_quartIn(112, 52, window_timer, 10)
     }
 }
 

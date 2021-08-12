@@ -7,3 +7,4 @@ if(attack == 49 && fs_has_hit && fs_cinematic)
 	draw_sprite_ext(sprite_index, image_index, x, y, 4*spr_dir, 4, 0, c_white, 1);
     shader_end();
 }
+

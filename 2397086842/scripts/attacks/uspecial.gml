@@ -101,3 +101,4 @@ set_hitbox_value(AT_USPECIAL, 2, HG_HITPAUSE_SCALING, .25);
 set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT_X_OFFSET, -0.69);
 set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_NSPECIAL, 2, HG_HITSTUN_MULTIPLIER, .8);

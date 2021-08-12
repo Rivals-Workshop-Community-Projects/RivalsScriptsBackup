@@ -387,7 +387,7 @@ if (attack == AT_USPECIAL)
 		
     can_wall_jump = true;
     
-    if(window == 2)
+    if(window == 2 && !hitstop)
     	uspecialAirtime++;
     	
     //player canceled early
@@ -403,7 +403,7 @@ if (attack == AT_USPECIAL)
     	uspecialAirtime = 1000;
     
 	//out of juice: go pratfal
-    if(uspecialAirtime >= 55)
+    if(uspecialAirtime >= 36)
 		set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 7);//pratfall
     else
 		set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
@@ -444,7 +444,7 @@ if (attack == AT_USPECIAL)
 	
 	    var t = window_timer / 31;
 	    //t = t < 0.5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t; //not neccessary since velocity already makes it acc smoothly?
-	    t *= 12.5; //15;
+	    t *= 9.5;//12.5; //15;
 	
 	    vsp = -t;
 	
@@ -538,7 +538,11 @@ if (attack == AT_DSPECIAL_AIR)
         window = 2;
         window_timer = 0;
         dspecialAirValue = clamp(remap(dspecialAirTime, 10, 30, 0, 1),0,1);
-		set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_WIDTH, 180 + dspecialAirValue * 55);     
+		//set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_WIDTH, get_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH) + dspecialAirValue * 84);
+		set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_PROJECTILE_HSPEED, get_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_HSPEED) + dspecialAirValue * 1.25);
+		set_hitbox_value(AT_DSPECIAL_AIR, 4, HG_PROJECTILE_HSPEED, get_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_HSPEED) - dspecialAirValue * 1.25);
+		set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_LIFETIME, get_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME) + dspecialAirValue * 3);
+		set_hitbox_value(AT_DSPECIAL_AIR, 4, HG_LIFETIME, get_hitbox_value(AT_DSPECIAL, 3, HG_LIFETIME) + dspecialAirValue * 3);
 		set_window_value(AT_DSPECIAL_AIR, 3, AG_WINDOW_LENGTH, 20 + dspecialAirValue * 2);
 		set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_LENGTH, 8 + dspecialAirValue * 2);
         destroy_hitboxes();
@@ -1236,7 +1240,7 @@ hsp_last = hsp;
         vp.spr = sprite_get(articSprite);
 	    
 	    vp.hsp = piecesX[i] * 0.09 * spr_dir;
-	    vp.hsp += extraVel * 1.25 * sign(vp.hsp);
+	    vp.hsp += extraVel * 1 * sign(vp.hsp);
 	    vp.vsp = -piecesY[i] * 0.025;
 	
 	    //vp.parentArticle = pieceArticle;

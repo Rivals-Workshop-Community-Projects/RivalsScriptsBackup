@@ -236,8 +236,6 @@ set_hitbox_value(AT_USPECIAL, 4, HG_HEIGHT, 40);
 set_hitbox_value(AT_USPECIAL, 4, HG_PRIORITY, 2);
 set_hitbox_value(AT_USPECIAL, 4, HG_DAMAGE, 6);
 set_hitbox_value(AT_USPECIAL, 4, HG_ANGLE, 70);
-set_hitbox_value(AT_USPECIAL, 4, HG_SDI_MULTIPLIER, 0.1);
-set_hitbox_value(AT_USPECIAL, 4, HG_DRIFT_MULTIPLIER, 0.1);
 set_hitbox_value(AT_USPECIAL, 4, HG_SHAPE, 1);
 set_hitbox_value(AT_USPECIAL, 4, HG_FORCE_FLINCH, 0);
 set_hitbox_value(AT_USPECIAL, 4, HG_BASE_KNOCKBACK, 9);

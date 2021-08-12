@@ -55,7 +55,7 @@ set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITBOX_GROUP, 1);
 
 //proj
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_DSPECIAL_2, 2, HG_WINDOW, 3);
+set_hitbox_value(AT_DSPECIAL_2, 2, HG_WINDOW, 0);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_LIFETIME, 10000);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_HITBOX_X, 0);
@@ -65,7 +65,7 @@ set_hitbox_value(AT_DSPECIAL_2, 2, HG_HEIGHT, 40);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_PRIORITY, 4);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_DAMAGE, 12);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_ANGLE, 45);
-set_hitbox_value(AT_DSPECIAL_2, 2, HG_ANGLE_FLIPPER, 10);
+set_hitbox_value(AT_DSPECIAL_2, 2, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_KNOCKBACK_SCALING, 0.9);

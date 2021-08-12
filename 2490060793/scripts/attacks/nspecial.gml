@@ -43,7 +43,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, 1);
 
 //explode
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 10);
+set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_Y, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 110);

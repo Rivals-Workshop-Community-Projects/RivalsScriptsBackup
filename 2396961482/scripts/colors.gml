@@ -18,7 +18,7 @@ set_color_profile_slot_range( 3, 49, 24, 54 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 32 );
+set_num_palettes( 31 );
 
 // Future
 set_color_profile_slot( 1, 0, 29, 82, 161 ); //Skin
@@ -152,11 +152,11 @@ set_color_profile_slot( 22, 1, 41, 66, 161 ); //Color
 set_color_profile_slot( 22, 2, 217, 209, 127 ); //Fin
 set_color_profile_slot( 22, 3, 41, 172, 255 ); //Lantern
 
-// Mewtwo
-set_color_profile_slot( 23, 0, 208, 169, 214 ); //Skin
-set_color_profile_slot( 23, 1, 139, 81, 168 ); //Color
-set_color_profile_slot( 23, 2, 215, 145, 255 ); //Fin
-set_color_profile_slot( 23, 3, 119, 0, 153 ); //Lantern
+// Jacklom (Player)
+set_color_profile_slot( 23, 0, 204, 163, 255 ); //Skin
+set_color_profile_slot( 23, 1, 118, 239, 245 ); //Color
+set_color_profile_slot( 23, 2, 255, 209, 153 ); //Fin
+set_color_profile_slot( 23, 3, 110, 191, 255 ); //Lantern
 
 // Freddy Fish
 set_color_profile_slot( 24, 0, 234, 255, 0 ); //Skin
@@ -200,11 +200,7 @@ set_color_profile_slot( 30, 1, 150, 34, 34 ); //Color
 set_color_profile_slot( 30, 2, 54, 54, 54 ); //Fin
 set_color_profile_slot( 30, 3, 225, 255, 0 ); //Lantern
 
-// Jacklom (Player)
-set_color_profile_slot( 31, 0, 204, 163, 255 ); //Skin
-set_color_profile_slot( 31, 1, 118, 239, 245 ); //Color
-set_color_profile_slot( 31, 2, 255, 209, 153 ); //Fin
-set_color_profile_slot( 31, 3, 110, 191, 255 ); //Lantern
+
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

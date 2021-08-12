@@ -1,6 +1,6 @@
-if((attack == AT_USTRONG or attack == AT_DSPECIAL)and hbox_num == 1){
+if((attack == AT_NSPECIAL or attack == AT_DSPECIAL)and hbox_num == 1){
     through_platforms = 10;
-} else if(attack == AT_USTRONG and hbox_num == 3){
+} else if(attack == AT_USTRONG and hbox_num == 1){
     cur_vsp = 0;
     cur_hsp = 0;
     stop_time = 0;

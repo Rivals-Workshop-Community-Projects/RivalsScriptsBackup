@@ -1,3 +1,4 @@
+
 //im seeing this for the first time and wtf lukaru, how do you do this -mcduckyers
 //final smash stuff
 if(other_player_id.attack == 49 && other_player_id.fs_has_hit && other_player_id.fs_cinematic)

@@ -6,9 +6,22 @@ if attack == AT_USPECIAL && (hbox_num != 2) && (hbox_num < 5){
 		hsp = player_id.hsp
 	}
 	
+	
+	if hitbox_timer == 6 {
+		vsp = 0.4
+	}
+	
+	if hitbox_timer > 6 {
+    can_hit_self = true
     if hitbox_timer % 2 == 0 {
         create_hitbox (AT_USPECIAL, 2 , x, y)
     }
+	} else {
+		vsp /= 1.1
+	}
+	
+	
+    
     
     if player_id.attacking == true and player_id.attack == AT_USPECIAL && player_id.window == 1 {
     	destroyed = 1
@@ -22,7 +35,10 @@ if attack == AT_USPECIAL && (hbox_num != 2) && (hbox_num < 5){
 
 
 if attack == AT_USPECIAL && (hbox_num == 2 ){
+	
+
     can_hit_self = true
+
     
 }
 

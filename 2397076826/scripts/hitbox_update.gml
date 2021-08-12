@@ -44,8 +44,19 @@ if player_id.state == PS_PARRY {
 }
 
 if hitbox_timer = 1 {
+   if player_id.move_cooldown[AT_EXTRA_1] == 0 {
 	vsp = 0
 	hsp = 0
+   } else {
+   	vsp = -6
+	
+    if player_id.x < player_id.hit_player_obj.x {
+		hsp = 3
+   } else {
+   	   hsp = -3
+   }
+   }
+	
 }
 	nearbyhitbox = collision_circle( x-12, y-12, 34, asset_get("pHitBox"), true, true ) 
 	

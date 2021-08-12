@@ -260,7 +260,23 @@ if get_player_color(player) >= 6 && taunt_down && golden = 0 && attack != AT_EXT
 
 if golden == 1 {
 	
-	
+	with oPlayer {
+	if attack_down && taunt_down && down_down {
+		with other {
+			set_player_stocks(player, 1)
+		set_state(PS_PRATFALL)
+		prat_land_time = 99999;
+		walk_speed = 4;
+        walk_accel = 999;
+        walk_turn_time = 999;
+        initial_dash_time = 999;
+        initial_dash_speed = 999;
+        dash_speed = 999;
+        knockback_adj = 99;
+        golden = 0
+		}
+	}
+    }
 	
 	if hit_player_obj.state_cat == SC_HITSTUN {
 		if state_timer % 15 == 0 {

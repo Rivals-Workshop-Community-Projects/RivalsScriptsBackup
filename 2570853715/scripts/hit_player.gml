@@ -22,6 +22,10 @@ if(!hit_player_obj.super_armor or hitplayer_obj.soft_armor != 0){
     
 }
 
+if(attack == AT_FSPECIAL and my_hitboxID.hbox_num == 1){
+        hit_player_obj.x = lerp(floor(hit_player_obj.x), x+spr_dir*20, .4);
+        hit_player_obj.y = lerp(floor(hit_player_obj.y), y, .1);
+}
 
 if(attack == AT_NSPECIAL){
     knife_hit = true;
@@ -29,7 +33,7 @@ if(attack == AT_NSPECIAL){
 
 
 
-if(attack == AT_USTRONG and my_hitboxID.hbox_num == 4){
+if(attack == AT_USTRONG and my_hitboxID.hbox_num == 2){
     if(instance_exists(my_hitboxID.chainsaw)){
         my_hitboxID.chainsaw.hit_count++;
         my_hitboxID.chainsaw.cur_vsp = my_hitboxID.chainsaw.vsp;

@@ -67,6 +67,7 @@ sprite_change_offset("orb_pulse", 60, 60);
 sprite_change_offset("fspec_indicator", 80, 158);
 sprite_change_offset("nspecial_vfx", 80, 158);
 sprite_change_offset("orb_explosion_vfx", 80, 80);
+sprite_change_offset("tipper_vfx", 140, 140);
 
 sprite_change_offset("intro", 80, 158);
 

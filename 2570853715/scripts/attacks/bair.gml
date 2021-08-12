@@ -22,12 +22,15 @@ set_window_value(AT_BAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_BAIR, 1);
 
+set_hitbox_value(AT_BAIR, 1, HG_MUNO_HITBOX_NAME, "Bair Projectile");
+
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_SPRITE, sprite_get("knife_proj"));
 set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_HSPEED, -14);
 set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_ANIM_SPEED, .6);
 set_hitbox_value(AT_BAIR, 1, HG_EXTENDED_PARRY_STUN, true);
 set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_BAIR, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 24);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_X, -30);

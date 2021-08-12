@@ -125,7 +125,6 @@ if get_gameplay_time() == 1 {
 	(string_count("nald", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
 	or string_count("%", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
 	or string_count("sand", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("oku", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
 	or string_count("psy", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
 	or string_count("ultra", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
 	or string_count("god", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
@@ -195,7 +194,7 @@ ANwounded = 0
 }
 
 if ANtimeslow > 1 {
-	hitstun += 1
+	
 	if ANtimeslow % 14 == 0 {
 	with other {
 	spawn_hit_fx(other.x,other.y - 40, timeS)
@@ -263,14 +262,14 @@ if ANtimeslow > 1 {
     	shake_camera(4,4)
 	}
 	
-	x -= 1
+	x -= 3
    if ANtimeslow % 3 == 0 {
    	state_timer -= 1
-   	x += 3
+   	x += 9
    	x -= floor(old_hsp)
    	y -= floor(old_vsp)
    	  hitpause = true
-   	  hitstop = 2
+   	  hitstop = 30
    	  hitstop_full = -1
    	  old_hsp = hsp
    	  old_vsp = vsp

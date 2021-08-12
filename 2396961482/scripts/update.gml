@@ -33,3 +33,8 @@ if move_cooldown[AT_DSPECIAL] = 1{
 	lanternhud_CURRENT = 100;
 }
 
+
+if (get_player_color(player) == 23){
+set_victory_portrait( sprite_get( "passivefishe" ));
+init_shader();
+}

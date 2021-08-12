@@ -58,9 +58,11 @@ if attack == AT_NSPECIAL {
 		nearbyhitbox = collision_circle( x-12, y-12, 34,other, true, true ) 
 	
 	    
-	    if nearbyhitbox != noone && player_id != other.player_id  && type == 2 && hit_priority != 0{
+	    if nearbyhitbox != noone && player_id != other.player_id && type == 2 && hit_priority != 0 && can_hit_self == false{
 	    	
-	    	damage *= 2
+	    	damage += 5
+	    	
+	    	can_hit[other.player] = false
 	    	
 	    	transcendent = true
 	    	hitbox_timer = 0
@@ -74,15 +76,15 @@ if attack == AT_NSPECIAL {
             sound_play(sound_get("RI")); 
             shake_camera(4, 6)
 	    		
-                 
-                 
 	    	}
 	    	
             spawn_hit_fx (x - 10 + random_func(2,20,true), y  - random_func(2,40,true) , 302 )
 	    	
-			hsp *= -2
-			vsp *= -2
+			hsp = (player_id.x - x)/10
+			vsp = (player_id.y - 30 - y)/10
 			spr_dir *= -1
+			
+			
 			//nearbyhitbox.grav = 0.2 + abs(nearbyhitbox.hsp/40)
 	       	//nearbyhitbox.hitbox_timer = 1
 			//nearbyhitbox.hit_priority = 0

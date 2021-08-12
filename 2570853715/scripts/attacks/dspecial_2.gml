@@ -16,4 +16,5 @@ set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_SFX, sound_get("reverse"));
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_SFX_FRAME, 1);
 
+set_attack_value(AT_DSPECIAL_2, AG_MUNO_ATTACK_MISC_ADD, "Reverses direction of dspecial knives on screen at frame 10.");
 

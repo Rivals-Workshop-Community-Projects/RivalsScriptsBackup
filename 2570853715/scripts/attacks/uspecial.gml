@@ -52,6 +52,7 @@ set_window_value(AT_DSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, .1);
 
 
 set_num_hitboxes(AT_USPECIAL, 5);
+set_hitbox_value(AT_USPECIAL, 1, HG_MUNO_HITBOX_NAME, "Landing Explosion");
 
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_MASK, -1);
@@ -76,7 +77,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 3);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_forsburn_reappear_hit"));
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, -1);
 
-
+set_hitbox_value(AT_USPECIAL, 2, HG_MUNO_HITBOX_NAME, "Road Roller Spike");
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 3);
@@ -90,12 +91,14 @@ set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 8);
 set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, -90);
 set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 4);
-set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, .6);
+set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_USPECIAL, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, sound_get("spike"));
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_GROUP, 1);
+
+set_attack_value(AT_USPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Can be canceled into 16f landing lag if angled into the ground on frame 27. Hitboxes only appear if special is held.");
 
 /*
 set_hitbox_value(AT_USPECIAL, 1, HG_MUNO_HITBOX_NAME, "Multihit 1");

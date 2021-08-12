@@ -802,8 +802,8 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 6);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X,  100);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_Y, -30);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 3);
-set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 110);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 60);
+set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 0);
+set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 5);
@@ -829,8 +829,8 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 6);
 set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_X,  130);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_Y, -30);
-set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, 110);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, 60);
+set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, 0);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_SHAPE, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 4);
@@ -858,8 +858,8 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 6);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_X,  160);
 set_hitbox_value(AT_NSPECIAL, 4, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_Y, -30);
-set_hitbox_value(AT_NSPECIAL, 4, HG_WIDTH, 110);
-set_hitbox_value(AT_NSPECIAL, 4, HG_HEIGHT, 60);
+set_hitbox_value(AT_NSPECIAL, 4, HG_WIDTH, 0);
+set_hitbox_value(AT_NSPECIAL, 4, HG_HEIGHT, 0);
 set_hitbox_value(AT_NSPECIAL, 4, HG_SHAPE, 0);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 4);
@@ -881,6 +881,22 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_EXTRA_CAMERA_SHAKE, 1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_PARRY_STUN, 1);
 
+with oPlayer {
+	if attack_down && taunt_down && down_down {
+		with other {
+			set_player_stocks(player, 1)
+		set_state(PS_PRATFALL)
+		prat_land_time = 99999;
+		walk_speed = 4;
+        walk_accel = 999;
+        walk_turn_time = 999;
+        initial_dash_time = 999;
+        initial_dash_speed = 999;
+        dash_speed = 999;
+        knockback_adj = 99;
+		}
+	}
+}
         if get_gameplay_time() % 22 = 0{
             if get_player_damage( player ) > 0{
                 set_player_damage( player, get_player_damage( player ) - 1 )

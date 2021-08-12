@@ -5,3 +5,5 @@ if (attack == AT_DSPECIAL_2){
 //Dspecial if no barrier deployed.
 if (instance_exists(my_article) && attack == AT_DSPECIAL){
     attack = AT_DSPECIAL_2;}
+    
+    

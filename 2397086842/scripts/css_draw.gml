@@ -76,7 +76,8 @@ var palette_names = [
   "Hermit of Senkai",  
   "Miko of Paradise",
   "Flipping Youkai",   
-  "The Failed Bat",  
+  "Abyss Apprentice",  
+   "Riptide",   
 ];
 
 var alt = get_player_color(player);

@@ -18,6 +18,7 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.type == 2) {
     parry_lag = 0;
     
     with (asset_get("pHitBox")) {
+    if player_id == other.id {	
      if attack == AT_FSPECIAL{
          hsp *= -1
          spr_dir *= -1
@@ -25,9 +26,16 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.type == 2) {
      }   
         
     }
+    }
 
 }
 
-
+if (my_hitboxID.attack == AT_USPECIAL ) {
+     with (asset_get("pHitBox")) {
+        if player_id == other.id && attack == AT_USPECIAL {
+          destroyed = true;
+        }
+    }
+}
      dmgmul = 0
 attackbar = 0

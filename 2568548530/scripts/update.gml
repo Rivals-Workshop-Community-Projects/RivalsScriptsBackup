@@ -670,7 +670,7 @@ if(!canAttack)// && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR)
     
     walk_speed = 4.5;
 	walk_accel = 0.5;
-    dash_speed = 6;
+    dash_speed = 7;
 	walk_turn_time = 6;
     dash_turn_time = 6;
 	initial_dash_speed = 7;
@@ -696,8 +696,8 @@ if(!canAttack)// && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR)
 	jump_speed = 13;
 	short_hop_speed = 6;
 	djump_speed = 10.5;
-    leave_ground_max = 5;
-    max_jump_hsp = 5; 
+    leave_ground_max = 7;
+    max_jump_hsp = 7; 
     
     walljump_hsp = 4;
     walljump_vsp = 12;
@@ -718,7 +718,7 @@ else
 {
     walk_speed = 3.25;
 	walk_accel = 0.25;
-    dash_speed = 4.5;
+    dash_speed = 5.5;
 	walk_turn_time = 8;
     dash_turn_time = 6;
 	initial_dash_speed = 6;
@@ -740,12 +740,12 @@ else
     max_djumps = 1;
 	max_fall = 13;
 	fast_fall = 16;
-	air_max_speed = 6;
-	jump_speed = 12;
+	air_max_speed = 5.5;
+	jump_speed = 11.75;
 	short_hop_speed = 7.5;
 	djump_speed = 11;
-    leave_ground_max = 7;
-    max_jump_hsp = 7; 
+    leave_ground_max = 5.5;
+    max_jump_hsp = 5.5; 
     
     walljump_hsp = 8;
     walljump_vsp = 12;

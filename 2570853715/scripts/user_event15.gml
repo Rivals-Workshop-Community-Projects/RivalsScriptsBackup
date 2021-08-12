@@ -222,30 +222,30 @@ if ("phone_inited" in self && phone_inited && !phone_lightweight){
 
 // Gameplay-relevant, and codecs because im biased :>
 pho_has_muno_phone = 1;	// MunoPhone support		(should always be 1, obviously...)
-pho_has_trum_codec = 1;	// Trummel & Alto codec
+pho_has_trum_codec = 0;	// Trummel & Alto codec
 pho_has_copy_power = 0;	// Kirby Copy Ability
 pho_has_btt_layout = 0;	// Break the Targets stage
 
 // Character cosmetics
-pho_has_otto_bhead = 1;	// Bobblehead for Otto's bike
+pho_has_otto_bhead = 0;	// Bobblehead for Otto's bike
 pho_has_steve_dmsg = 1;	// Death message for Steve
 pho_has_feri_taunt = 0;	// Costume for Feri's taunt
-pho_has_hikaru_fak = 0;	// Title for Hikaru's fakie
-pho_has_rat_allout = 0;	// Quip for Rat's all-out attack
+pho_has_hikaru_fak = 1;	// Title for Hikaru's fakie
+pho_has_rat_allout = 1;	// Quip for Rat's all-out attack
 pho_has_tco_sketch = 0;	// Drawing for The Chosen One's down taunt
 pho_has_ahime_dead = 0;	// Sprite for Abyss Hime's slicing effect
 pho_has_tink_picto = 0;	// Photograph for Toon Link's picto box
 pho_has_fire_taunt = 0; // Fire's Taunt
-pho_has_wall_e_ost = 0; // Wall-E's music
+pho_has_wall_e_ost = 1; // Wall-E's music
 pho_has_amber_love = 0; // Amber's plush and/or hug
 pho_has_moon_music = 0; // Moonchild's taunt music
-pho_has_agentn_cdc = 0; // Agent N's codec
+pho_has_agentn_cdc = 1; // Agent N's codec
 
 // Stage cosmetics
 pho_has_drac_codec = 0;	// Dialogue for the Dracula boss fight
 pho_has_miivs_post = 0;	// Posts for the Miiverse stage
-pho_has_dede_title = 0;	// Title for the Mt Dedede Stadium stage
-pho_has_soul_title = 0; // Text for the Soulbound Conflict stage
+pho_has_dede_title = 1;	// Title for the Mt Dedede Stadium stage
+pho_has_soul_title = 1; // Text for the Soulbound Conflict stage
 pho_has_been_found = 0; // Death sprite for the Trial Grounds stage
 pho_has_resort_pic = 0; // Portrait for the Last Resort stage
 pho_has_pkmn_image = 0; // Battle sprite for Pokémon Stadium
@@ -254,7 +254,7 @@ pho_has_daro_codec = 0; // Dialogue for the Daroach boss fight
 
 
 if (object_index == asset_get("cs_playerbg_obj")){
-	num_alts = 8; // Number of alt costumes; controls how many appear on the CSS
+	num_alts = 16; // Number of alt costumes; controls how many appear on the CSS
 	exit;
 }
 
@@ -359,110 +359,49 @@ with phone{
 	// NOTE: Using sprite_get() does not work here, so sprites must be saved as
 	// variables. See init.gml for an example of this with spr_nspecial_proj.
 	
-	initTip("NSpecial: Fast Repeat Shots");
-	initTipWords("After shooting a heart with NSpecial, you can fire another shot sooner than you can perform any other action. Rack up damage against a distracted opponent!");
-	if ("spr_nspecial_proj" in player_id) initTipImage_ext(player_id.spr_nspecial_proj, -5, fa_right, 1, c_white, 3, 40, 30, 60, 0);
-	initTipImage_ext(player_id.spr_nspecial, 2, fa_left, 1, c_white, 0, 24, 40, 64, 0);
+	initTip("Dspecial Bounce");
+	initTipWords("Dspecial Knives bounce off the edges of the screen. Pressing dspecial while the knives are out will reverse their direction.");
+	initTipImage(player_id.spr_dspecial, -5, fa_center, 1, c_white, 3);
 	
-	initTip("Shortening the FSpecial");
-	initTipWords("Press the special button again after performing FSpecial to stop the dash prematurely. You'll travel a shorter distance as a mixup.");
-	initTipImage(player_id.spr_fspecial, -5, fa_center, 1, c_white, 3);
-	
-	initTip("USpecial's Two Finishers");
-	initTipWords("Press B again during USpecial's free flight to deliver a powerful finisher whose knockback always sends away from Sandbert. Alternatively, press shield and you'll cancel the move into pratfall - monstrously effective combined with Sandbert's notoriously short pratfall landing lag.");
+	initTip("USpecial's Road Roller");
+	initTipWords("If you hold special while using Uspecial, Fumo Sakuya will pull out a Road Roller to attack. If you cancel uspecial by angling it into the ground she cannot perform this attack.");
 	initTipImage(player_id.spr_uspecial, 3, fa_left, 1, c_white, 0);
 	initTipImage(player_id.spr_uspecial, 9, fa_right, 1, c_white, 0);
 	
-	initTip("woag");
-	initTipWords_ext("woag", fa_left, c_red, 0, 0);
+	initTip("fumo");
+	initTipWords_ext("fumo", fa_left, c_red, 0, 0);
 	initTipImage(other.spr_jab, -4, fa_center, 1, c_white, 0);
 	
-	initTip("Jump Cancel with DSpecial");
-	initTipWords("True to its origins in Super Smash Brothers Melee for the Nintendo GameCube, you can cancel Sandbert's DSpecial with a jump at any point after the hitbox has begun. Try wavedashing out of it - what an original tactic!");
-	initTipImage(player_id.spr_dspecial, -5, fa_center, 1, c_white, 0);
+	initTip("Teleport with Ustrong and Fstrong");
+	initTipWords("Holding left or right during the startup of Ustrong or Fstrong will teleport Fumo Sakuya a short distance in that direction. Ustrong can teleport off ledges!");
+	initTipImage(player_id.spr_fstrong, -5, fa_center, 1, c_white, 0);
 	
 	initTip("funny dair");
 	initTipWords_ext("funny dair", fa_center, c_red, 0, 1);
 	initTipImage(player_id.spr_dair, -5, fa_center, 1, c_white, 1);
 	initTipWords_ext("please laugh", fa_right, c_white, 0, 0);
 	
-	initTip("Frictionless FStrong");
-	initTipWords("During the charge of FStrong, Sandbert slides as if on ice. Get a running start to ambush a foe!");
-	initTipImage(player_id.spr_fstrong, -5, fa_center, 1, c_white, 3);
+	initTip("Frictionless DStrong");
+	initTipWords("During the charge of DStrong, Fumo Sakuya slides as if on ice. Get a running start to ambush a foe!");
+	initTipImage(player_id.spr_dstrong, -5, fa_center, 1, c_white, 3);
 	
-	initTip("woag");
-	initTipWords("Does this tip exist just to showcase the ability to scroll the screen up and down?");
-	initTipWords("maybe
-	maybe
-	maybe
-	maybe
-	maybe
-	maybe
-	maybe
-	maybe
-	maybe
-	maybe
-	maybe
-	maybe
-	maybe
-	maybe
-	maybe
-	maybe
-	maybe
-	maybe
-	maybe
-	maybe
-	maybe
-	maybe
-	maybe
-	maybe");
-	initTipWords_ext("maybe", fa_center, c_white, 0, 2);
-	initTipImage(player_id.spr_taunt, 3, fa_center, 1, c_white, 0);
-	initTipWords_ext("ok yea", fa_right, c_white, 0, 0);
-	
-	initTip("Sandbert's Lore");
+	initTip("Fumo Sakuya's Lore");
 	initTipWords_ext("Chapter 1", fa_center, c_gray, 0, 0);
-	initTipWords("Sandbert, a son of the ruling family of the Firelands, is an experienced and hardened warrior. He has fought many wars for the Fire Capital, a bellicose nation that constantly seeks to expand its influence over neighbouring lands. His courage in battle has made him a hero among his people.");
-	initTipWords("However, his straightforward character and unquestioning allegiance to the Fire Nation blind him at times. He is a reliable general on the field, but naive to the larger politics of Aether. In battle, Sandbert is equally forthright; he uses no weapons except for his razor-sharp claws and ability to control flame.");
+	initTipWords("Fumo");
+	initTipWords("Fumo");
 	initTipWords_ext("Chapter 2", fa_center, c_gray, 0, 0);
-	initTipWords("When he first arrived in Water Town, the merchant capital of Aether, Sandbert was considered a dangerous nuisance and a criminal. Sandbert is a playful trickster, notorious for escaping even the most precarious of situations.");
-	initTipWords("However, while the Water Merchants denounce Sandbert in public, they do not hesitate to call upon him when they need a situation dealt with quietly. Sandbert is sly and can infiltrate even the most secure strongholds. He can transform into water and confuse enemies with a spray of bubbles, making him the perfect candidate for stealth assignments.");
+	initTipWords("Fumo");
+	initTipWords("Fumo");
 	initTipWords_ext("Chapter 3", fa_center, c_gray, 0, 0);
-	initTipWords("The youngest trainee in the history of the Air Academy, Sandbert has never lived by anyone's rules but his own. After graduating at the top of his class, he joined the Air Armada, the military force of Air Nation.");
-	initTipWords("Within a year, Sandbert became renowned not just in Air Nation but across Aether as a fierce and unpredictable figher. However, among his superiors, he is more infamous for his brashness and arrogance than for his daring deeds. Currently an Aerial Ace for the Air Armada, Sandbert is wrecking havoc among the Armada's enemies and generals alike.");
+	initTipWords("Fumo");
+	initTipWords("Fumo");
 	initTipWords_ext("Chapter 4", fa_center, c_gray, 0, 0);
-	initTipWords("Sandbert is a defender of the colossal Aetherian Forest. Deliberate and loyal, he is one of the infamous Wall Runners who patrol the Rock Wall. From their position atop the Wall, Sandbert and his fellow Runners defend both sides of the rock face and the forest below.");
-	initTipWords("While normally slow because of their massive bodies, Wall Runners can curl up into balls and traverse the Wall at high speeds. Unlike other Wall Runners, Sandbert has the legendary ability to control the earth with his will. When in peril, Sandbert can summon the earth to aid him, and he repairs the Wall when it is under siege.");
+	initTipWords("Fumo");
+	initTipWords("Fumo");
 	
 	initTip("Phone Controls");
 	initTipWords("On the Character Select Screen, hold the 0 (zero) key on your keyboard to view the expanded list of Compatibility Icons.");
 	initTipWords("To perform the regular taunt instead of opening the phone, hold a direction on the control stick.");
-	
-	initTip("Improving Perfection");
-	initTipWords("Aside from adding the phone itself, this version of Sandbert changes a few aspects about the code (mainly to serve those using this as a base for their own characters):");
-	initTipWords("Impactful:
-	- init.gml is replaced with better organisation and balanced base stats
-	- aerials no longer affect physics
-	- removed animation.gml (some idle animations may be timed differently)
-	- respawn platform now appears even in Practice Mode");
-	initTipWords("Behind-the-scenes:
-	- removed useless parent hitboxes
-	- standardised whifflag values to 0 or 1 (>1 acts like 1)");
-	
-	initTip("Did You Know?");
-	initTipWords("Everything in these tips is only made with the easy-to-use MunoPhone tip templates and Sandbert's default sprites!");
-	initTipWords("No hardcoding or custom-cropped images, just easy-to-use paragraph and image formatting (including all of the fancy gimmicks like shaking and scrolling).");
-	initTipWords("Check out user_event15.gml");
-	initTipWords("Code for the above:");
-	initTipWords_ext("initTip(''Did You Know?'');
-	
-	initTipWords(''Everything in these tips is only made with the easy-to-use MunoPhone tip templates and Sandbert's default sprites!'');
-	
-	initTipWords(''No hardcoding or custom-cropped images, just easy-to-use paragraph and image formatting (including all of the fancy gimmicks like shaking and scrolling).'');
-	
-	initTipWords(''Check out user_event15.gml'');", fa_left, c_gray, 1, 0);
-	
-	
 }
 
 
@@ -496,25 +435,48 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
-	
-	initPatch("1.1", "32 Mebruary, 20XX");
-	initPatchWords("Buffs
-	- a");
-	initPatchWords_ext("This buff will help Sandbert a.", fa_left, c_gray, 1, 0);
-	initPatchWords("Nerfs
-	- a
-	- b
-	- a
-	- uhhhh");
-	initPatchWords_ext("Wait why did i nerf thsio ahgain", fa_left, c_gray, 1, 0);
-	initPatchWords("Fnuuy joke
-	- waog");
-	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.0", "30 Mebruary, 20XX");
-	initPatchWords_ext("HOLY CRAP THE CHARACTER IS OUT!", fa_center, c_white, 0, 1);
-	initPatchImage(other.spr_doublejump, 0, fa_center, 1, c_white, 1);
-	
+		initPatch("0.3", "8, August 2021");
+	initPatchWords("Emergency bugfix. Ustrong works again.");
+	initPatch("0.2", "8, August 2021");
+	initPatchWords("Added 8 more alts.
+
+Munophone now has accurate information.
+
+Added a bunch of random compats.
+
+Added a new taunt. Old taunt moved to Down+Taunt.
+
+Added touhou death sound.
+
+Knives and Chainsaw no longer adjust color with alts.
+
+Fstrong: Hitboxes Adjusted. Range should better match the visual.
+
+Dstrong: Hitbox Shape: Rectangle > Rounded Rectangle
+Dstrong: Y Offset: -55 > -50
+Dstrong: X Offset: 5 > 1
+Dstrong: Height: 90 > 94
+(Should better match visual with slightly less vertical reach, still enough to poke platforms.)
+
+Ustrong: Chainsaw multihit hitboxes now use the sprite mask of the chainsaw.
+
+DAttack: Extended jump cancel buffer window to start from when the attack hits. (Earlies jump cancel frame unchanged)
+DAttack: Now take 1% self damage.
+DAttack: Hit sfx now play on whiff.
+
+Uspecial: Road Roller Spike KBG: .6 > .8 (Spike should actually be able to kill at high% now)
+
+Jab: No longer has parry stun.
+
+Bair: No longer reflects on parry, only extended parry stun.
+
+Dspeccial: Has extended parry stun. (Had none before.)
+Dspecial: All knives are now destroyed on parry.
+
+Nspecial: Now loses all stacks when parried.
+Nspecial: Now has extended parry stun. (Was normal.)
+
+Fspecial: Improved consistency of grab connecting.");
 }
 
 
@@ -562,27 +524,6 @@ with self{
 	// NOTE: If you remove these cheat codes, you will need to remove where
 	// they're referenced elsewhere in code. The comment above each cheat tells
 	// you which files reference it.
-	
-	// post_draw.gml
-	initCheat("Say woag", "cheat_funny_snail", [0, 1], ["no", "yes"], "Say woag? Yes. No. AAAAAA");
-	
-	// update.gml
-	initCheat("Max DJumps", "cheat_more_djumps", [1, 2, 3, 4, 5, 0], ["1", "2", "3", "4", "5", "0"], "Change Sandbert's maximum number of double jumps.");
-	
-	// attack_update.gml
-	initCheat("USpecial Flight Speed", "cheat_flight_speed", [1, 1.25, 1.5, 2, 3, 5, 10], ["1", "1.25", "1.5", "2", "3", "5", "10"], "Change the speed of USpecial's flight.");
-	
-	// attack_update.gml
-	initCheat("FSpecial Cancel", "cheat_fspecial_cancel", [0, 1], ["Off", "On"], "Cancel FSpecial into any action.");
-	
-	// update.gml
-	initCheat("wide?", "cheat_widebert", [1, 1.25, 1.5, 2, 3, 5, 10, 20, 0.5, 0.25, 0.1, 0], ["Normal", "wide", "w i d e", "w  i  d  e", "w   i   d   e", "w    i    d    e", "w     i     d     e", "w      h      a      t", "narrow", "narrower", "narrowerer", "."], "how");
-	
-	// init_shader.gml
-	initCheat("Disco", "cheat_skittles", [0, 1], ["Off", "On"], "skittles");
-	
-	// update.gml
-	initCheat("stop hitting yourself", "cheat_recoil", [0, 1], ["Off", "On"], "ouf");
 	
 }
 
@@ -819,7 +760,7 @@ if pho_has_otto_bhead{
 
 if pho_has_steve_dmsg{
 	
-	steve_death_message = "Steve got canceled on Twitter";
+	steve_death_message = "fumo.";
 	
 }
 
@@ -844,7 +785,7 @@ if !phone_lightweight{
 	
 	if pho_has_hikaru_fak{
 		
-		Hikaru_Title = "woaf";
+		Hikaru_Title = "fumo";
 		
 	}
 	
@@ -854,7 +795,7 @@ if !phone_lightweight{
 	
 	if pho_has_rat_allout{
 		
-		personaQuips[10] = "woaf";
+		personaQuips[10] = "fumo";
 		
 	}
 	
@@ -900,7 +841,7 @@ if !phone_lightweight{
 	
 	if pho_has_wall_e_ost{
 		
-		walle_taunt_sound = sound_get("wall_e_sound");
+		walle_taunt_sound = sound_get("fumo");
 		walle_taunt_type = 1;
 		
 	}
@@ -956,9 +897,9 @@ if !phone_lightweight{
 	
 	if pho_has_agentn_cdc{
 		
-		ncode1 = "line1";
-		ncode2 = "line2";
-		ncode3 = "line3";
+		ncode1 = "Fumo";
+		ncode2 = "Fumo?";
+		ncode3 = "Fumo.";
 		
 	}
 	
@@ -1004,8 +945,8 @@ if !phone_lightweight{
 	
 	if pho_has_dede_title{
 		
-		arena_title = "woag";
-		arena_short_name = "woaf";
+		arena_title = "fumo";
+		arena_short_name = "fumo";
 		
 	}
 	
@@ -1015,7 +956,7 @@ if !phone_lightweight{
 	
 	if pho_has_soul_title{
 		
-		battle_text = "* woag";
+		battle_text = "* fumo";
 		
 	}
 	

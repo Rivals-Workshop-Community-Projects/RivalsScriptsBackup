@@ -100,4 +100,4 @@ set_hitbox_value(AT_UTILT, 5, HG_HIT_SFX, sound_get("knife_medium1"));
 set_hitbox_value(AT_UTILT, 5, HG_ANGLE_FLIPPER, 4);
 set_hitbox_value(AT_UTILT, 5, HG_HITBOX_GROUP, 5);
 
-set_hitbox_value(AT_UTILT, 2, HG_MUNO_HITBOX_MISC_ADD, "In the original release of Sandbert, this hitbox never appears because its height is set to 0.");
+set_attack_value(AT_DSTRONG, AG_MUNO_ATTACK_MISC_ADD, "Cancelable into other attacks only on hit after the final hit.");

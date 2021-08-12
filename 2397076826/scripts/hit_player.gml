@@ -26,6 +26,12 @@ if smark == 3 &&  move_cooldown[AT_EXTRA_1] = 0 {
     
     move_cooldown[AT_EXTRA_1] = 30 
 
+if cloneout = 0 && my_hitboxID.attack != AT_FSPECIAL && my_hitboxID.attack != AT_USPECIAL && my_hitboxID.attack != AT_NSPECIAL {
+   	create_hitbox(AT_DSPECIAL, 1, x, y - 40)
+     	cloneout = 1
+     	 
+} 
+
    if sword  {
    	shake_camera(floor(hitstop/2)+2,floor(hitstop/2) + 2)
    	 spawn_hit_fx (hit_player_obj.x, hit_player_obj.y - 35, SC) 
@@ -88,6 +94,6 @@ if (my_hitboxID.attack == AT_FSPECIAL) {
 if (my_hitboxID.attack == AT_USPECIAL or my_hitboxID.attack == AT_NSPECIAL) {
 if cloneout = 0 {
    	//create_hitbox(AT_DSPECIAL, 1, x, y - 40)
-     	cloneout = 1
+     	//cloneout = 1
 } 
 }

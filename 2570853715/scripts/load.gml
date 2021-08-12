@@ -48,9 +48,10 @@ sprite_change_offset("phone_open", 62, 79);
 
 sprite_change_offset("hurtbox", 18, 48);
 sprite_change_offset("crouchbox", 15, 26);
-
+sprite_change_offset("fumo", 124, 158);
 sprite_change_offset("plat", 32, 40);
 sprite_change_offset("knives", 18, 18);
+sprite_change_offset("chainsaw", 32, 13);
 sprite_change_offset("shine", 32, 32);
 sprite_change_offset("shine_inner", 32, 32);
 sprite_change_offset("nspecial_proj", 62, 79);

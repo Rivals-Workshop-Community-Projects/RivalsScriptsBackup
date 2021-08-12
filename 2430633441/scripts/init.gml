@@ -27,9 +27,9 @@ tossed_planet = 0;
 
 
 var planstring = "planet";
-if get_player_color(player) == 8 planstring = "planetO"
-if get_player_color(player) == 5 planstring = "planetP"
-if get_player_color(player) == 10 planstring = "planetpk"
+//if get_player_color(player) == 8 planstring = "planetO"
+//if get_player_color(player) == 5 planstring = "planetP"
+//if get_player_color(player) == 10 planstring = "planetpk"
 if get_player_color(player) == 16 planstring = "planet5"
 
 if get_player_color(player) == 7 {
@@ -214,7 +214,7 @@ hitstun_grav = .53;
 knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 5;
+prat_land_time = 14;
 wave_land_time = 16;
 wave_land_adj = 1; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = 0.1; //grounded deceleration when wavelanding

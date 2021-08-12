@@ -23,6 +23,7 @@ set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_FTILT,1);
 
+set_hitbox_value(AT_FTILT, 1, HG_MUNO_HITBOX_NAME, "Orcane Dstrong");
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FTILT, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FTILT, 1, HG_WINDOW_CREATION_FRAME, 2);
@@ -44,3 +45,4 @@ set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, 16);
 //set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FTILT, 1, HG_EXTRA_CAMERA_SHAKE, 2);
+set_attack_value(AT_USPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Has 1% self damage.");

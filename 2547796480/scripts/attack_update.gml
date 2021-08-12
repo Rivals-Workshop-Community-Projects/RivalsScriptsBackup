@@ -330,17 +330,22 @@ if attack == AT_DSPECIAL{
 		if !free {
 			vsp = -14
 		} else {
-			vsp = -9
+			vsp = -10
 		}
 		sound_play(asset_get("sfx_bird_sidespecial_start"));
 	}
     
-    move_cooldown[AT_DSPECIAL] = 999
     
-	if window == 1 && window_timer == 14 && batt <= 0 && ethrow = 0 {
-	 set_state(PS_PRATFALL)	
+    
+	if window == 1 && window_timer == 6 && ((batt <= 0 && ethrow = 0) or shield_down) {
+	 set_state(PS_IDLE_AIR)	
+	 move_cooldown[AT_DSPECIAL] = 999
+	 clear_button_buffer( PC_SHIELD_PRESSED );
 	}
 	
+	if window >= 3 {
+		vsp -= 0.3
+	}
 	
    if window == 2 && window_timer < 10{
    	    vsp /= 1.2
@@ -454,7 +459,7 @@ if attack == AT_DSPECIAL{
 
 if attack == AT_USPECIAL{
 	move_cooldown[AT_DSPECIAL] = 0
-		set_attack_value(AT_NAIR, AG_CATEGORY, 2);
+		set_attack_value(AT_FAIR, AG_CATEGORY, 2);
 	draw_indicator = false
 	hsp = 0
 	vsp = 0
@@ -497,12 +502,19 @@ if attack == AT_USPECIAL{
     if window == 2 && window_timer == 2 && !hitpause {
     	spawn_hit_fx(x,y - 30,timeS2)
     }
+    
     if window == 3 && window_timer == 1 && !hitpause {
     	sound_play(asset_get("sfx_forsburn_reappear"));
     	sound_play(asset_get("sfx_abyss_explosion"),false,noone,0.5,1.2);
     	shake_camera(2,4)
     	create_hitbox(AT_NSPECIAL,2,x,y)
     		spawn_hit_fx(x,y - 30,timeS)
+    		
+    	//if special_down && batt > 0 && !has_hit_player{
+    	//	batt -= 1
+    	//	window = 1
+    	//    window_timer = 9
+    	//}
     }
     
 
@@ -512,11 +524,11 @@ if attack == AT_USPECIAL{
     }
 
     if window == 3 && has_hit_player {
-    	set_attack(AT_NAIR)
-    	window = 3
+    	set_attack(AT_FAIR)
+    	window = 4
     	window_timer = 1
-    	hsp = -4*spr_dir
-    	old_hsp = -4*spr_dir
+    	hsp = -2*spr_dir
+    	old_hsp = -2*spr_dir
         vsp = -8
         old_vsp = -8
     }
@@ -542,7 +554,6 @@ if attack == AT_TAUNT {
 	(string_count("nald", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
 	or string_count("%", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
 	or string_count("sand", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
-	or string_count("oku", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
 	or string_count("psy", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
 	or string_count("ultra", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0
 	or string_count("god", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME) )) > 0

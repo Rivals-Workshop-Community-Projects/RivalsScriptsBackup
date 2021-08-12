@@ -71,7 +71,7 @@ if orbiting {
 		if !parrytime && point_distance(x,y,owner.x,owner.y-orbit_height) <= 25 {
 			orbiting = 1;
 			var suffix = "";
-			if get_player_color(orig_player) == 12 suffix = "R";
+			//if get_player_color(orig_player) == 12 suffix = "R";
 					sound_play(sound_get("planetget"+string(suffix)+string(type+1)), 0, noone, 1, 1)
 					//print_debug("Regained "+string(type))
 		}
@@ -113,7 +113,7 @@ if active or scary_looking {
 	if !instance_exists(hitbox) or hitbox.attack != attack or hitbox.hbox_num != type+offset{
 		if instance_exists(hitbox) instance_destroy(hitbox);
 		hitbox = create_hitbox(attack, type+offset, floor(x), floor(y))
-		
+		hitbox.spr_dir = player_id.spr_dir;
 	//	if get_hitbox_value(attack,type+1,HG_HITBOX_GROUP) > 0 hitbox.hbox_group = get_hitbox_value(attack,type+1,HG_HITBOX_GROUP)
 	}
 	hitbox.x = x+hsp;

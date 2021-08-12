@@ -113,7 +113,7 @@ if (hitbox != noone) {
             
             var hitboxEffect = get_hitbox_value(hitbox.attack, hboxNum, HG_EFFECT);
             
-            var hitboxCat = get_attack_value(hitbox.attack, AG_CATEGORY);
+            var hitboxCat = get_hitbox_value(hitbox.attack, hboxNum, HG_HITBOX_TYPE);
             
             var hitboxDistX = other.x - hitbox.x;
             var hitboxDistY = other.y - hitbox.y;
@@ -378,7 +378,8 @@ if perform_attack {
 	        for (var i = 0; i < num_hitboxes; i++) {
 	            var startx = x+(28 + dist*i*dcos(player_id.laser_angle))*spr_dir;
 	            var starty = y-90 - dist*i*dsin(player_id.laser_angle);
-	            create_hitbox(AT_FSPECIAL_2, 1, floor(startx), floor(starty))
+	            var solarbeam = create_hitbox(AT_FSPECIAL_2, 1, floor(startx), floor(starty))
+	            	solarbeam.spr_dir = spr_dir
 	        }
 	    } else if window == 3 {
 	        player_id.pawn_meter = player_id.pawn_meter_default;
@@ -529,6 +530,7 @@ if perform_attack {
 	    	if window_timer == 1 {
 	    		var _hbox = create_hitbox(AT_DSPECIAL_2, 2, x, y);
 	    			_hbox.owner = id;
+	    			_hbox.spr_dir = sign(hsp)
 	    	}
 	        //fall_through = true;
 	        

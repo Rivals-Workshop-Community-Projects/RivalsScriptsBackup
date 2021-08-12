@@ -8,23 +8,25 @@ if(attack == AT_USPECIAL){
 
 if(attack == AT_NSPECIAL){
 	if(hbox_num == 1 and (!free or position_meeting(x+spr_dir*16, y-2, asset_get("par_block")))){
-		var knife = create_hitbox(AT_USTRONG, 2, x, y+16);
+		var knife = create_hitbox(AT_NSPECIAL, 2, x, y+16);
 		var a = random_func(90, 180, true);
 		if(!free){
 			a = random_func(45, 135, true);
 		}
 		
 		knife.hsp = 4*dcos(a);
-        knife.vsp = -8
+        knife.vsp = -8;
         knife.proj_angle = a;
         sound_play(sound_get("knife_bounce"));
 		destroyed = true;
+	} if(hbox_num == 2){
+		proj_angle = proj_angle + 15;
 	}
 }
 
 
 if(attack == AT_USTRONG){
-	if(hbox_num == 1 and (!free or position_meeting(x+spr_dir*16, y-2, asset_get("par_block")))){
+	/*if(hbox_num == 1 and (!free or position_meeting(x+spr_dir*16, y-2, asset_get("par_block")))){
 		var knife = create_hitbox(AT_USTRONG, 2, x, y+16);
 		var a = random_func(90, 180, true);
 		if(!free){
@@ -38,7 +40,9 @@ if(attack == AT_USTRONG){
 		destroyed = true;
 	} else if(hbox_num == 2){
 		proj_angle = proj_angle + 15;
-	} else if(hbox_num == 3){
+	} else*/ 
+	if(hbox_num == 1){
+		visible = false;
 		if(stop_time <= 0){
 			proj_angle = proj_angle - spr_dir*3;
 			if(vsp > 0){
@@ -50,12 +54,13 @@ if(attack == AT_USTRONG){
 		}
 		if(hitbox_timer%4 == 0){
 			if(hit_count < 4 and hitbox_timer < 42){
-				multihit = create_hitbox(AT_USTRONG, 4, x, y-4);
+				multihit = create_hitbox(AT_USTRONG, 2, x, y-4);
 				multihit.chainsaw = self;
+				multihit.proj_angle = proj_angle;
 			} else {
 				if(hit_count > 0){
 					//sound_stop(sound_get("chainsaw"))
-					create_hitbox(AT_USTRONG, 5, x-spr_dir*20, y-30);
+					create_hitbox(AT_USTRONG, 3, x-spr_dir*20, y-30);
 					spawn_hit_fx(x, y-30, 143);
 					sound_play(asset_get("sfx_ell_fist_explode"));
 					destroyed = true;
@@ -84,6 +89,7 @@ if(attack == AT_USTRONG){
 }
 
 if(attack == AT_DSPECIAL){
+	visible = false;
 	if(reversed != prev_reversed){
 		sprite_index = reversed?sprite_get("dspecial2_knife"):sprite_get("dspecial_knife");
 		vsp = -vsp;

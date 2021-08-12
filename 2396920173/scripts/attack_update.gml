@@ -423,6 +423,13 @@ if attack == AT_DSPECIAL_2 {
     }
     
     if window == 3 {
+        with pHitBox if player_id == other.id && attack == AT_DSPECIAL_2 && hbox_num == 1 {
+            if sign(other.hsp) != other.spr_dir {
+                hit_flipper = 5;
+            } else {
+                hit_flipper = 0;
+            }
+        }
         fall_through = true;
         if has_hit {
             //set_window_value(AT_DSPECIAL_2, 4, AG_WINDOW_TYPE, 0);

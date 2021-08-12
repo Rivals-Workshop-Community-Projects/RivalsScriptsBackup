@@ -16,7 +16,6 @@ if (state == 0){ //Grabbing
     }
     
     if (state_timer == grab_time){
-        player_id.grabStrong = 0;
         player_id.move_cooldown[AT_FSPECIAL] = 15;
         instance_destroy();
         exit;
@@ -32,13 +31,11 @@ if (state == 1){ //Throwing
     if (state_timer == 19){
         grabbed = false;
         sound_play(asset_get("sfx_swipe_medium2"));
-        player_id.grabbed_id.invincible = false;
-        player_id.grabbed_id.state = PS_TUMBLE;
+        player_id.grabbed_id.state = PS_HITSTUN;
         var toss = create_hitbox(AT_FSPECIAL, 2, x+33*spr_dir, y-48);
     }
     
     if (state_timer == throw_time){
-        player_id.grabStrong = 0;
         player_id.move_cooldown[AT_FSPECIAL] = 15;
         instance_destroy();
         exit;
@@ -50,12 +47,10 @@ if (state == 1){ //Throwing
 
 if (state == 2) { //Destroyed
         if (grabbed){
-            player_id.grabbed_id.invincible = false;
             player_id.grabbed_id.state = PS_TUMBLE;
             
         }
     player_id.move_cooldown[AT_FSPECIAL] = 15;
-    player_id.grabStrong = 0;
     instance_destroy();
     exit;
 
@@ -74,11 +69,9 @@ if (grabbed &! (state == 1 && state_timer >= 19)){
     if (state == 1 && state_timer >14){
         player_id.grabbed_id.x = lerp(player_id.grabbed_id.x, x+52*spr_dir, 0.4);
         player_id.grabbed_id.y = lerp(player_id.grabbed_id.y, y, 0.4);
-        //player_id.grabbedid.invincible = true;
     } else {
         player_id.grabbed_id.x = x+42*spr_dir;
         player_id.grabbed_id.y = y-28;
-        //player_id.grabbedid.invincible = true;
     }
     
 }

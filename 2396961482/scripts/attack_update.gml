@@ -292,6 +292,8 @@ if (attack == AT_NSPECIAL && window == 1 && free == true){
 if attack = AT_TAUNT && window == 3  && taunt_down {
     window_timer = 14;
 }
+
+
 if (attack == AT_DSPECIAL){
     lanternhud_CURRENT = 0;}
     

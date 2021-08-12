@@ -4,6 +4,10 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 }
 
 if (attack == AT_NSPECIAL){
+	if(was_parried){
+		nspecial_charge_level = 0;
+	}
+	
 	if(knife_hit){
 		can_jump = true;
 	}
@@ -169,16 +173,26 @@ if(attack == AT_USTRONG){
     } else if(window == 4 and window_timer == 4 and !hitpause){
     	move_cooldown[AT_USTRONG] = 70;
     	
-    	var chainsaw = create_hitbox(AT_USTRONG, 3, x-spr_dir*60, y-30);
+    	var chainsaw = create_hitbox(AT_USTRONG, 1, x-spr_dir*60, y-30);
     	chainsaw.vsp -= strong_charge/10;
     }
 }
 if(attack == AT_DATTACK){
 	if(window == 1){
+		dattack_jump_buffer = false
 		hud_offset+=6;
 	}
+	if(window == 1 and window_timer == 10){
+		sound_play(asset_get("sfx_blow_heavy1"));
+		take_damage(player, player, 1);
+	}
+	if(has_hit and window < 3){
+		if(jump_down or jump_pressed){
+			dattack_jump_buffer = true;
+		}
+	}
 	if(has_hit and (window == 3 or window == 2 and window_timer > 6)){
-		if(jump_pressed){
+		if(jump_pressed or dattack_jump_buffer){
 			state_timer = 0;
 			set_state(PS_JUMPSQUAT);
 		}
@@ -238,7 +252,7 @@ if(attack == AT_FTILT){
 }
 
 
-if(attack == AT_TAUNT){
+if(attack == AT_TAUNT_2){
 	if(state_timer == 1){
 		sound_play(sound_get("utilt_loop"), true);
 	}
@@ -313,6 +327,9 @@ if (attack == AT_USPECIAL){
     }
 }
 
+if(attack == AT_JAB){
+	was_parried = false;
+}
 
 
 

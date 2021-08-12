@@ -16,7 +16,9 @@ if(state != PS_ROLL_BACKWARD and state != PS_ROLL_FORWARD and state != PS_TECH_G
 		}
 		
 	}
-	
+	if(attack == AT_TAUNT){
+		draw_sprite_ext(sprite_get("fumo"), 0, x, y, 1, 1, 0, c_white, 1);
+	}
 	
 	if(attack == AT_USPECIAL){
 		if(window == 1){

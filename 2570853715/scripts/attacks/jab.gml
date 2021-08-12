@@ -38,4 +38,4 @@ set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, sound_get("knife_medium2"));
 set_hitbox_value(AT_JAB, 1, HG_ANGLE_FLIPPER, 6);
 
-set_attack_value(AT_JAB, AG_MUNO_ATTACK_MISC_ADD, "Does NOT ignore parry stun. (fix this if you make your own character)");
+set_attack_value(AT_JAB, AG_MUNO_ATTACK_MISC_ADD, "Ignores parry stun.");

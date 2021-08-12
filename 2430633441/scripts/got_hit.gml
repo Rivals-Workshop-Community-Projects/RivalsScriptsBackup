@@ -20,6 +20,7 @@ if has_rune("M") {
 
 if attack == AT_USPECIAL_2 && super_armor {
 	times_through--;
+
 }
 /*
 if enemy_hitboxID.orig_player == player && enemy_hitboxID.was_parried && enemy_hitboxID.attack == AT_EXTRA_1 {

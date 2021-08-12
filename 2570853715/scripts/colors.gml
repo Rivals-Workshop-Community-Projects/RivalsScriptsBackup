@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 8 );
+set_num_palettes( 16 );
 
 // Kourindou Version
 set_color_profile_slot( 1, 0, 27, 18, 193 ); //Eyes/Dress
@@ -58,7 +58,7 @@ set_color_profile_slot( 2, 7, 255, 186, 186 ); //Clothes2
 
 // Flandre
 set_color_profile_slot( 3, 0, 255, 0, 0 ); //Eyes/Dress
-set_color_profile_slot( 3, 1, 0, 140, 72 ); //Bow
+set_color_profile_slot( 3, 1, 206, 219, 79 ); //Bow
 set_color_profile_slot( 3, 2, 161, 105, 0 ); //Shoes
 set_color_profile_slot( 3, 3, 255, 250, 240 ); //Skin
 set_color_profile_slot( 3, 4, 255, 241, 163 ); //Hair
@@ -90,7 +90,7 @@ set_color_profile_slot( 5, 7, 21, 97, 0 ); //Clothes2
 set_color_profile_slot( 6, 0, 194, 8, 8 ); //Eyes/Dress
 set_color_profile_slot( 6, 1, 255, 239, 92 ); //Bow
 set_color_profile_slot( 6, 2, 107, 66, 15 ); //Shoes
-set_color_profile_slot( 6, 3, 240, 226, 205 ); //Skin
+set_color_profile_slot( 6, 3, 224, 205, 175 ); //Skin
 set_color_profile_slot( 6, 4, 140, 81, 13 ); //Hair
 set_color_profile_slot( 6, 5, 87, 65, 21 ); //Hair2
 set_color_profile_slot( 6, 6, 255, 255, 255 ); //Sleves
@@ -105,6 +105,86 @@ set_color_profile_slot( 7, 4, 231, 212, 255 ); //Hair
 set_color_profile_slot( 7, 5, 148, 132, 191 ); //Hair2
 set_color_profile_slot( 7, 6, 255, 230, 230 ); //Sleves
 set_color_profile_slot( 7, 7, 189, 153, 167 ); //Clothes2
+
+// Tenshi
+set_color_profile_slot( 8, 0, 79, 71, 181 ); //Eyes/Dress
+set_color_profile_slot( 8, 1, 181, 22, 14 ); //Bow
+set_color_profile_slot( 8, 2, 82, 31, 0 ); //Shoes
+set_color_profile_slot( 8, 3, 255, 216, 198 ); //Skin
+set_color_profile_slot( 8, 4, 39, 83, 187 ); //Hair
+set_color_profile_slot( 8, 5, 26, 38, 128 ); //Hair2
+set_color_profile_slot( 8, 6, 255, 255, 255 ); //Sleves
+set_color_profile_slot( 8, 7, 240, 180, 189 ); //Clothes2
+
+// Cirno
+set_color_profile_slot( 9, 0, 21, 175, 184 ); //Eyes/Dress
+set_color_profile_slot( 9, 1, 186, 23, 14 ); //Bow
+set_color_profile_slot( 9, 2, 240, 240, 240 ); //Shoes
+set_color_profile_slot( 9, 3, 240, 222, 197 ); //Skin
+set_color_profile_slot( 9, 4, 186, 255, 231 ); //Hair
+set_color_profile_slot( 9, 5, 43, 171, 255 ); //Hair2
+set_color_profile_slot( 9, 6, 255, 255, 255 ); //Sleves
+set_color_profile_slot( 9, 7, 191, 238, 255 ); //Clothes2
+
+// Nitori
+set_color_profile_slot( 10, 0, 0, 144, 227 ); //Eyes/Dress
+set_color_profile_slot( 10, 1, 21, 23, 143 ); //Bow
+set_color_profile_slot( 10, 2, 77, 41, 41 ); //Shoes
+set_color_profile_slot( 10, 3, 255, 216, 198 ); //Skin
+set_color_profile_slot( 10, 4, 0, 153, 255 ); //Hair
+set_color_profile_slot( 10, 5, 38, 53, 189 ); //Hair2
+set_color_profile_slot( 10, 6, 0, 196, 0 ); //Sleves
+set_color_profile_slot( 10, 7, 0, 110, 64 ); //Clothes2
+
+// Marisa
+set_color_profile_slot( 11, 0, 89, 86, 0 ); //Eyes/Dress
+set_color_profile_slot( 11, 1, 179, 174, 156 ); //Bow
+set_color_profile_slot( 11, 2, 77, 49, 49 ); //Shoes
+set_color_profile_slot( 11, 3, 240, 226, 205 ); //Skin
+set_color_profile_slot( 11, 4, 255, 243, 176 ); //Hair
+set_color_profile_slot( 11, 5, 255, 168, 69 ); //Hair2
+set_color_profile_slot( 11, 6, 255, 255, 255 ); //Sleves
+set_color_profile_slot( 11, 7, 189, 185, 157 ); //Clothes2
+
+// Youmu
+set_color_profile_slot( 12, 0, 20, 143, 131 ); //Eyes/Dress
+set_color_profile_slot( 12, 1, 0, 0, 0 ); //Bow
+set_color_profile_slot( 12, 2, 51, 51, 51 ); //Shoes
+set_color_profile_slot( 12, 3, 240, 226, 205 ); //Skin
+set_color_profile_slot( 12, 4, 232, 232, 232 ); //Hair
+set_color_profile_slot( 12, 5, 139, 158, 155 ); //Hair2
+set_color_profile_slot( 12, 6, 255, 255, 255 ); //Sleves
+set_color_profile_slot( 12, 7, 162, 199, 162 ); //Clothes2
+
+// Kokoro
+set_color_profile_slot( 13, 0, 255, 158, 207 ); //Eyes/Dress
+set_color_profile_slot( 13, 1, 255, 194, 208 ); //Bow
+set_color_profile_slot( 13, 2, 102, 53, 10 ); //Shoes
+set_color_profile_slot( 13, 3, 240, 226, 205 ); //Skin
+set_color_profile_slot( 13, 4, 255, 247, 247 ); //Hair
+set_color_profile_slot( 13, 5, 255, 181, 246 ); //Hair2
+set_color_profile_slot( 13, 6, 0, 255, 229 ); //Sleves
+set_color_profile_slot( 13, 7, 17, 133, 100 ); //Clothes2
+
+// Mokou
+set_color_profile_slot( 14, 0, 255, 40, 40 ); //Eyes/Dress
+set_color_profile_slot( 14, 1, 255, 222, 222 ); //Bow
+set_color_profile_slot( 14, 2, 115, 0, 0 ); //Shoes
+set_color_profile_slot( 14, 3, 240, 226, 205 ); //Skin
+set_color_profile_slot( 14, 4, 255, 255, 255 ); //Hair
+set_color_profile_slot( 14, 5, 189, 212, 207 ); //Hair2
+set_color_profile_slot( 14, 6, 255, 242, 242 ); //Sleves
+set_color_profile_slot( 14, 7, 255, 138, 138 ); //Clothes2
+
+// Koishi
+set_color_profile_slot( 15, 0, 5, 158, 128 ); //Eyes/Dress
+set_color_profile_slot( 15, 1, 206, 219, 79 ); //Bow
+set_color_profile_slot( 15, 2, 36, 59, 36 ); //Shoes
+set_color_profile_slot( 15, 3, 240, 226, 205 ); //Skin
+set_color_profile_slot( 15, 4, 212, 255, 212 ); //Hair
+set_color_profile_slot( 15, 5, 83, 176, 114 ); //Hair2
+set_color_profile_slot( 15, 6, 39, 54, 44 ); //Sleves
+set_color_profile_slot( 15, 7, 0, 0, 0 ); //Clothes2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

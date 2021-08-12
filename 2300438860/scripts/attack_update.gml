@@ -396,7 +396,7 @@ if !hitpause {
 				attackbar = 0
 				vsp = -8
 				if dmgmul == 1.5 {
-						create_hitbox (AT_USPECIAL, 3 , x , y + 30)
+						create_hitbox (AT_USPECIAL, 3 , x , y - 20 )
 					    sound_play(sound_get("hcine"),false,noone,0.4)
 				}
 				
@@ -406,15 +406,15 @@ if !hitpause {
 			if dmgmul >= 2 {
 				vsp = -10
 				if dmgmul == 2 {
-					    create_hitbox (AT_USPECIAL, 4 , x , y + 30)
+					    create_hitbox (AT_USPECIAL, 4 , x , y )
 					    sound_play(sound_get("hcine"),false,noone,0.8)
 				}
 			}
 			
 			if dmgmul = 3 {
                 spawn_hit_fx (x,y,lighten3)
-				create_hitbox (AT_USPECIAL, 4 , x - 44 , y + 30)
-				create_hitbox (AT_USPECIAL, 4 , x + 44 , y + 30)
+				create_hitbox (AT_USPECIAL, 4 , x - 44 , y - 20 )
+				create_hitbox (AT_USPECIAL, 4 , x + 44 , y - 20 )
 				if dmgmul == 3 {
 					    sound_play(sound_get("hcine"),false,noone,1.4)
 				}			
@@ -422,7 +422,7 @@ if !hitpause {
 			}
 			
 			if dmgmul == 0 {
-				create_hitbox (AT_USPECIAL, 1 , x , y + 30)
+				create_hitbox (AT_USPECIAL, 1 , x , y - 20)
 			}
 			
     	}
@@ -445,7 +445,7 @@ if !hitpause {
     			
 				attackbar = 0
 				if dmgmul == 1.5 {
-					set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 30);
+					set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 15);
 					set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 40);
 					    sound_play(sound_get("hcine"),false,noone,0.4)
 				}
@@ -456,7 +456,7 @@ if !hitpause {
 			
 			if dmgmul >= 2 {
 				if dmgmul == 2 {
-					set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 40);
+					set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 20);
 					set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 50);
 					    sound_play(sound_get("hcine"),false,noone,0.8)
 				}
@@ -465,7 +465,7 @@ if !hitpause {
 			if dmgmul = 3 {
                 spawn_hit_fx (x,y,lighten3)
 				if dmgmul == 3 {
-					set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 60);
+					set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 30);
 					set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 60);
 					    sound_play(sound_get("hcine"),false,noone,1.4)
 				}			
@@ -473,8 +473,8 @@ if !hitpause {
 			}
 			
 			if dmgmul == 0 {
-				set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 20);
-				set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 30);
+				set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 10);
+				set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 20);
 			}
 			
 			dmgmul = 0

@@ -209,9 +209,10 @@ switch(attack) {
 	case AT_USPECIAL_2: //Sun out!
 		can_wall_jump = true;
 		if (get_window_value(attack,window,AG_WINDOW_TYPE) == 420 or get_window_value(attack,window,AG_WINDOW_TYPE) == 666) && instance_exists(sun_ins) {
-		
+			sun_ins.vsp = 0;
+			
 			if times_through {
-				super_armor = true;
+				soft_armor = 12;
 			}
 			//fall = true;
 			fall_through = true;
@@ -232,6 +233,8 @@ switch(attack) {
 			if has_rune("E") && window_timer mod 6 == 0 && get_window_value(attack,window,AG_WINDOW_TYPE) == 666 {
 				create_hitbox(attack, 1, x, y)
 			}
+		} else {
+			soft_armor = 12;
 		}
 		break;		
 	
@@ -697,7 +700,7 @@ switch(attack) {
 			var dmg = get_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE)
 			for (var i = 0; i < array_length_1d(grab_ids); i++) {
 				if instance_exists(grab_ids[i]) with (grab_ids[i]) {
-					if other.window_timer mod 7 == 1 {
+					if other.window_timer mod 4 == 1 {
 					take_damage(player, other.player, dmg)
 					}
 					hitpause = true;
@@ -1155,8 +1158,8 @@ switch(attack) {
 				if planet[i].orbiting == 1 {
 					var o = planet[i].owner;
 					planet[i].overriding = 0.8-amt*0.03
-					planet[i].hsp = (-(10+j*2)*spr_dir)*(1-amt)
-					planet[i].vsp = -(5+j*5)*(1-amt)
+					planet[i].hsp = (-(35+j*2)*spr_dir)*(1-amt)
+					planet[i].vsp = -(15+j*5)*(1-amt)
 					planet[i].active = 0;
 					planet[i].depth = depth+3;
 

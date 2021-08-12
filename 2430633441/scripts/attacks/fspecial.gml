@@ -41,7 +41,7 @@ set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_SFX, sound_get("wait"));
-set_window_value(AT_FSPECIAL, 5, AG_WINDOW_GOTO, 2);
+set_window_value(AT_FSPECIAL, 5, AG_WINDOW_GOTO, 3);
 
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_TYPE, 421);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH, 6);
@@ -50,6 +50,7 @@ set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_SFX, asset_get("sfx_ori_taunt2"));
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_GOTO, 3);
+
 
 set_num_hitboxes(AT_FSPECIAL, 2);
 

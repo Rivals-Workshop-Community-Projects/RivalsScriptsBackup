@@ -239,11 +239,13 @@ if (hitbox != noone) && (timer > 10) {
         }
         
         with hitbox.player_id {
+			var player_hit = has_hit_player;
+			var tipper_hit = is_tipper;
+			
             var hitboxVfx = get_hitbox_value(hitbox.attack, hboxNum, HG_VISUAL_EFFECT);
             if hitboxVfx == 0 hitboxVfx = 301
             var hitboxVfxX = get_hitbox_value(hitbox.attack, hboxNum, HG_VISUAL_EFFECT_X_OFFSET);
             var hitboxVfxY = get_hitbox_value(hitbox.attack, hboxNum, HG_VISUAL_EFFECT_Y_OFFSET);
-            
             if is_tipper || is_opp {
 	            hitpause = true;
 	            hitstop_full = baseHitpause;
@@ -256,7 +258,7 @@ if (hitbox != noone) && (timer > 10) {
             }
             
             if is_tipper {
-            	spawn_hit_fx(other.x, other.y, 115)
+            	spawn_hit_fx(other.x, other.y, tipper_hfx)
             	sound_play(asset_get("sfx_absa_kickhit"))
             	
 	            var tipper_dmg = get_hitbox_value(hitbox.attack, tipper_num, HG_DAMAGE);
@@ -271,6 +273,14 @@ if (hitbox != noone) && (timer > 10) {
 				var tipper_vfx = get_hitbox_value(hitbox.attack, tipper_num, HG_VISUAL_EFFECT);
 				
 				if tipper_vfx == 0 tipper_vfx = 301
+				
+				if player_hit {
+					tipper_dmg = 0;
+				}
+				
+				if tipper_hit {
+					//tipper_vfx = 1;
+				}
 	            
 				set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, tipper_dmg);
 				set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, tipper_angle);
@@ -283,7 +293,7 @@ if (hitbox != noone) && (timer > 10) {
 				set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, tipper_sfx);
 				set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, tipper_vfx);
 				
-				spawn_hit_fx(other.x, other.y, tipper_vfx);
+				//spawn_hit_fx(other.x, other.y, tipper_vfx);
 				create_hitbox(AT_NSPECIAL, 2, round(other.x), round(other.y))
 				sound_play(tipper_sfx);
 				

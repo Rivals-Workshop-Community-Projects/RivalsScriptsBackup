@@ -154,8 +154,8 @@ switch(state) {
 	break;
 	case PS_LANDING_LAG:
 		if tossed_planet == 0 {
-			var add_hsp = 2;
-			var add_vsp = -6;
+			var add_hsp = 8;
+			var add_vsp = -9;
 			if attack == AT_BAIR {
 				add_hsp = -1;
 				add_vsp = 7;

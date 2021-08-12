@@ -530,27 +530,34 @@ if stabt >= 10 {
 }
 
 if stabt >= 10 {
-		take_damage( player, -1 , 3)
+		take_damage( player, -1 , 13)
 		if get_gameplay_time() % 4 == 0 {
 			 var aaimg = spawn_hit_fx( floor(x - (0 + random_func(3, 50, true)) * spr_dir)  ,floor( y - 60 + random_func(4, 50, true)) , aimg )
     		aaimg.depth = 1
 		}
-}
 
-if overt == 999 && !hitpause {
+
+if (state_cat == SC_HITSTUN or overt >= 999) and !hitpause {
 	state_timer = 99
 	window_timer = 99
-	set_state(PS_IDLE)
+	y -= 30
+	set_state(PS_PRATFALL)
 	   create_hitbox(AT_NSPECIAL , 4 , x , y - 30);	
-	create_deathbox(x, y-40, 20, 20, player, true, 1, 20, 2);
+
 	stabt = 0
-	var sd = spawn_hit_fx( x - (5 * spr_dir) , y - 40 , SC )
-    		sd.depth = 0
-       		
-    		
+	spawn_hit_fx( x , y - 40 , 306 )
+	spawn_hit_fx( x , y - 40 , 305 )
+	spawn_hit_fx( x - (5 * spr_dir) , y - 40 , SC )
+	spawn_hit_fx( x - 30 - (5 * spr_dir) , y - 40 , SC )
+	spawn_hit_fx( x + 30 - (5 * spr_dir) , y - 40 , SC )
+	spawn_hit_fx( x - (5 * spr_dir) , y - 40 - 30 , SC )
+	spawn_hit_fx( x - (5 * spr_dir) , y - 40 + 30 , SC )
+    	
+    y += 2000
+    
 		sound_play(sound_get("RI"));
 }
-    
+}   
     
   if free {
         

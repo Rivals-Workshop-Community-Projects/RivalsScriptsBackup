@@ -34,8 +34,7 @@ set_window_value(AT_NAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_NAIR,4);
 
-set_hitbox_value(AT_NAIR, 1, HG_MUNO_HITBOX_NAME, "Multihit 1");
-
+set_hitbox_value(AT_NAIR, 1, HG_MUNO_HITBOX_NAME, "Sour Linker");
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_NAIR, 1, HG_LIFETIME, 3);
@@ -51,6 +50,7 @@ set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, sound_get("knife_medium1"));
 
+set_hitbox_value(AT_NAIR, 2, HG_MUNO_HITBOX_NAME, "Sour Launcher");
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_NAIR, 2, HG_LIFETIME, 3);
@@ -70,6 +70,7 @@ set_hitbox_value(AT_NAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_NAIR, 2, HG_HIT_SFX, sound_get("knife_medium2"));
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_GROUP, 2);
 
+set_hitbox_value(AT_NAIR, 3, HG_MUNO_HITBOX_NAME, "Tipper Linker");
 set_hitbox_value(AT_NAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 3, HG_WINDOW, 2);
 set_hitbox_value(AT_NAIR, 3, HG_LIFETIME, 3);
@@ -86,6 +87,7 @@ set_hitbox_value(AT_NAIR, 3, HG_EXTRA_HITPAUSE, 3);
 set_hitbox_value(AT_NAIR, 3, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_NAIR, 3, HG_HIT_SFX, sound_get("knife_tipper2"));
 
+set_hitbox_value(AT_NAIR, 4, HG_MUNO_HITBOX_NAME, "Tipper Launcher");
 set_hitbox_value(AT_NAIR, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 4, HG_WINDOW, 4);
 set_hitbox_value(AT_NAIR, 4, HG_LIFETIME, 3);

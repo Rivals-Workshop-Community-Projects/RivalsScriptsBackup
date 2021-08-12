@@ -17,6 +17,8 @@ shape_circle = sprite_get("hitbox_circle")
 shape_rect = sprite_get("hitbox_rect")
 shape_roundrect = sprite_get("hitbox_roundrect")
 
+tipper_hfx = hit_fx_create(sprite_get("tipper_vfx"), 36);
+
 meter_cur = 40;
 meter_max = 100;
 meter_flipped = false;

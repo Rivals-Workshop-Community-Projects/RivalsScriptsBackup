@@ -39,6 +39,7 @@ switch(t) {
 	case 14: t = "G-Diffuser"; break;
 	case 15: t = "Autonomic Nerve"; break;
 	case 16: t = "Erratic Pulse"; break;
+	case 17: t = "Traitor"; break;
 }
 if image_alpha > 0 {
 draw_set_font(1)

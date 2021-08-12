@@ -121,9 +121,9 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
     nearbyhitbox = collision_circle( x, y , 48, other, true, true ) 
     
     
-    if nearbyhitbox != noone && type == 1 && hitpause == 6.1412  {
+    if nearbyhitbox != noone && type == 1 && hitpause == 9.1412  {
     	
-    	with nearbyhitbox.player_id {
+    	with player_id {
     	     vsp = -7
     	     set_attack (AT_FAIR)
     	     set_attack_value(AT_FAIR, AG_CATEGORY, 2);
@@ -136,7 +136,7 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
     
     if nearbyhitbox != noone && type == 1 && hitpause == 1.1133  {
     	
-    	with nearbyhitbox.player_id {
+    	with player_id {
     	    move_cooldown[AT_DTILT] = 60
     	    ethrow += 1
     	}

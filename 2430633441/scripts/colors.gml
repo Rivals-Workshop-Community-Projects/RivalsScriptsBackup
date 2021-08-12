@@ -1,4 +1,4 @@
-set_num_palettes(17)
+set_num_palettes(18)
 
 //DEFAULT COLOR (R,G,B)
 set_color_profile_slot(0, 0, 255, 234, 147); //LIGHT
@@ -282,3 +282,17 @@ set_color_profile_slot(16, 6, 166, 157, 158); //ANTENNAE
 set_color_profile_slot(16, 7, 255, 255, 255); //RED GIANT
 
 set_color_profile_slot(16, 8, 104, 102, 94); //BUTT OFF
+
+//Traitor lord (snakebandit)
+set_color_profile_slot(17, 0, 192, 190, 198); //LIGHT
+set_color_profile_slot(17, 1, 65, 108, 126); //PLATING
+set_color_profile_slot(17, 2, 41, 56, 85); //RUBBER
+set_color_profile_slot(17, 3, 254, 255, 255); //PLANET 1
+set_color_profile_slot(17, 4, 255, 223, 214); //PLANET 2
+set_color_profile_slot(17, 5, 255, 127, 85); //PLANET 3
+set_color_profile_slot(17, 6, 255, 127, 85); //ANTENNAE
+
+
+set_color_profile_slot(17, 7, 255, 127, 85); //RED GIANT
+
+set_color_profile_slot(17, 8, 104, 102, 94); //BUTT OFF
