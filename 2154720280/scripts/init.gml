@@ -14,22 +14,31 @@ introhit = 0
 intro = 0
 introtimer = -1
 
+hudx = 0
+hudy = 0
 
 superMove = 14
+
+batt2 = 0
+
+oldsupp = 0
+
+battfade = 0
+suppfade = 0
 
 daired = 0
 golden = 0
 drop = 0
 coindrop = 0
 batt = 1
-supply = 6
+supply = 0
 noinv = 3
 
 attra = 0
 milkpizz = 0
 meleehit = 0
 
-char_height = 60;
+char_height = 80;
 idle_anim_speed = .13;
 crouch_anim_speed = .1;
 walk_anim_speed = .16;
@@ -138,5 +147,8 @@ darken = hit_fx_create( sprite_get( "darken" ), 10);
 sprite_change_offset("darken", 1000, 1000);
 
 
+lasernor = hit_fx_create( sprite_get( "gun4" ), 12);
+sprite_change_offset("gun4", 570, 32);
 
-
+sw = hit_fx_create( sprite_get( "shockwave2" ), 16);
+sprite_change_offset("shockwave2", 107, 126);

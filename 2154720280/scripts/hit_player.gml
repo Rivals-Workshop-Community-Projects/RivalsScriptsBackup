@@ -1,6 +1,10 @@
 ///
 
-
+if my_hitboxID.type == 1 { 
+   
+   batt2 += my_hitboxID.damage*2
+   battfade = 45
+}
 
 if has_rune("N") && meleehit == 1  {
          if random_func(10, 20, true) <= 4 {
@@ -21,6 +25,9 @@ if has_rune("M") {
     }	
 
 if meleehit == 1 {
+	
+
+	
 if supply > 16 {
 	sound_play(sound_get("stinghit"));
 }

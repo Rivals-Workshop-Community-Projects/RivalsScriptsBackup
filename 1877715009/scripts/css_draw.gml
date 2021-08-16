@@ -11,7 +11,7 @@ if (!"currAlt" in self) currAlt = 0;
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1);
+patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR));
 image_alpha = max(image_alpha-0.02, 0);
 
 var alt_new = get_player_color(player);
@@ -31,6 +31,7 @@ else if (alt_new != currAlt)
 	currAlt = alt_new;
 }
 
+altStr = 0;
 altStr[0]  = "Hikaru Kitagawa";
 altStr[1]  = "#F42069 #B4DA55";
 altStr[2]  = "Transcend";

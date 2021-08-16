@@ -163,21 +163,28 @@ else{
 }
 
 //WEE FSPECIAL
-if (attack == AT_FSPECIAL && window == 7){
-	if  window_timer == 1 && special_down{
+if (attack == AT_FSPECIAL ){
+	if  window == 7 && window_timer == 1 && special_down{
 		sound_play(asset_get("sfx_swipe_medium2"));
 		hsp = 9 * spr_dir;
-		vsp = -6
+		vsp = -6.5
 		move_cooldown[AT_FSPECIAL] = 90
+		fspec_cancel = 1
+	}
+	if window == 1{
+		fspec_cancel = 0
 	}
 }
 
 if (attack == AT_FSPECIAL && window > 7){
+		if fspec_cancel = 1{
 		can_jump = true;
 		can_shield = true;
+		can_attack = true;
 		if is_special_pressed( DIR_UP ){
 			set_attack( AT_USPECIAL );
 		}
+	}
 }
 
 //Stinger Multipress
@@ -239,7 +246,12 @@ if (attack == AT_DAIR) {
 		can_fast_fall = false;
 		can_jump = false;
 		can_shield = false;
-		
+	
+	if window < 4 && (has_hit){
+		can_jump = true;
+		can_shield = true;
+	}
+	
 	if window == 3{
 	if vsp = 0 && hitpause = 0 {
 		window = 4;
@@ -257,7 +269,7 @@ if (attack == AT_DAIR) {
 	if window == 5 && window_timer == 1 {
 		sound_play(asset_get("sfx_shovel_hit_heavy2"));
 		destroy_hitboxes();
-		camera_shake = 1;
+		shake_camera(6,3)
 	}	
 }
 //Down Air Throw
@@ -277,18 +289,18 @@ if (attack == AT_DAIR) {
 	}
 }
 
-//Ftilt stick? (wtf) 
-if (attack == AT_FTILT) {
+//EXTRA_1 stick? (wtf) 
+if (attack == AT_EXTRA_1) {
 	if window == 3 && window_timer >= 4{
 		if right_strong_pressed * spr_dir or left_strong_pressed * -spr_dir{
 		window = 4;
-	}
+		}
 	}
 	if window == 6 && window_timer >= 1{
 		if right_strong_pressed * spr_dir or left_strong_pressed * -spr_dir{
 		window = 7;
+		}
 	}
-}
 }
 
 
@@ -307,8 +319,8 @@ if (attack == AT_JAB) {
 		sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
 		spawn_hit_fx( x + 10*spr_dir, y + -20, 306);
 		set_window_value(AT_JAB, 13, AG_WINDOW_ANIM_FRAME_START, 27);
+		}
 	}
-}
 }
 
 if (attack == AT_JAB){
@@ -316,9 +328,14 @@ if (attack == AT_JAB){
 		window = 13;
 		set_window_value(AT_JAB, 13, AG_WINDOW_ANIM_FRAME_START, 13);
 	}
+	//if window <= 3{
+		//if right_strong_pressed * spr_dir or left_strong_pressed * -spr_dir{
+			//set_attack( AT_EXTRA_1 );
+		//}
+	//}
 }
 
-if (attack == AT_FTILT){
+if (attack == AT_EXTRA_1){
 	if window == 6 && window_timer == 9{
 		window = 10;
 	}
@@ -326,6 +343,7 @@ if (attack == AT_FTILT){
 if (attack == AT_JAB){
 	if window >= 9 && has_hit=true{
 		can_jump=true;
+		can_ustrong=true;
 	}
 }
 
@@ -400,7 +418,7 @@ if(caleb==1){
 	if(attack==AT_NSPECIAL)&&(window==1)&&(window_timer==1){sound_play(sound_get("laugh"));}
 	if(attack==AT_NSPECIAL_2)&&(window==1)&&(window_timer==1){sound_play(sound_get("laugh"));}
 	if(attack==AT_USTRONG)&&(window==2)&&(window_timer==1){sound_play(sound_get("RIP"));}
-	if(attack==AT_FTILT)&&(window==1)&&(window_timer==1){sound_play(sound_get("open_for_bussiness"));}
+	if(attack==AT_EXTRA_1)&&(window==1)&&(window_timer==1){sound_play(sound_get("open_for_bussiness"));}
 	if(attack==AT_UTILT)&&(window==1)&&(window_timer==1){sound_play(sound_get("hahahaha"));}
 	if(attack==AT_DATTACK)&&(window==1)&&(window_timer==2){sound_play(sound_get("laugh2"));}
 	if(attack==AT_DTILT)&&(window==1)&&(window_timer==1){sound_play(sound_get("nevermore"));}
@@ -422,7 +440,7 @@ if(machina==1){
 	if(attack==AT_NSPECIAL)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_light_of_the_future_1"));}
 	if(attack==AT_NSPECIAL_2)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_light_of_the_future_1"));}
 	if(attack==AT_USTRONG)&&(window==2)&&(window_timer==1){sound_play(sound_get("machina_furious_blades_burst_2"));}
-	if(attack==AT_FTILT)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_stunning_slash"));}
+	if(attack==AT_EXTRA_1)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_stunning_slash"));}
 	if(attack==AT_UTILT)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_light_of_the_future_2"));}
 	if(attack==AT_DATTACK)&&(window==1)&&(window_timer==2){sound_play(sound_get("machina_furious_blades_burst_1"));}
 	if(attack==AT_FAIR)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_awakening_longer"));}

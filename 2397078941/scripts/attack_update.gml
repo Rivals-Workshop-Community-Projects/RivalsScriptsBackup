@@ -334,7 +334,6 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
 			sound_play(asset_get("sfx_blow_weak2"))
 			spawn_hit_fx(x,y + 10, 14)
 			vsp = -7
-			hsp = 8*spr_dir
 		}
 	} else {
 		set_attack_value(AT_NAIR, AG_CATEGORY, 1);
@@ -903,7 +902,6 @@ if attack == AT_DSPECIAL{
 
 
 if attack == AT_USPECIAL{
-	prat_land_time = 5;
 	if window == 1 && window_timer == 1 {
 		    		set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 2);
     		set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 4);

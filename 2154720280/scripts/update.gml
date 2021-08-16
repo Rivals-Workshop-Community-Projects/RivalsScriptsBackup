@@ -211,11 +211,45 @@ if noinv > 0 {
 if hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 {
 	
 batt += 1
+ sound_play(sound_get("shockready"));
+ spawn_hit_fx(x,y,sw)
+ shake_camera(6,4)
+ battfade = 90
  
 }
 
-if batt > 4 {
+if !hitpause {
+   hudx += floor(((x)-hudx)/4)
+   hudy += floor((y-56-hudy)/3)
+}
+
+if batt2 >= 100 {
+	batt += 1
+ sound_play(sound_get("shockready"));
+ spawn_hit_fx(x,y,sw)
+ shake_camera(6,4)
+ batt2 -= 100
+ battfade = 90
+}
+
+if oldsupp != supply{
+	oldsupp = supply
+	if supply < 20  {
+	    suppfade = 45	
+	}
+}
+
+if suppfade > 0 && !hitpause{
+	suppfade -= 1
+}
+
+if battfade > 0 && !hitpause{
+   battfade -= 1 
+}
+
+if batt >= 4 {
     batt = 4
+    batt2 = 0
 }
 
 if batt < 0 {
@@ -247,9 +281,30 @@ if coindrop > 0 && !hitpause{
 	coindrop -= 1
 }
 
-
+if get_player_color(player) == 12 {
+	
 if get_gameplay_time() < 5 {
 	set_attack (AT_EXTRA_3)
+	supply = 6
+	set_victory_theme(sound_get("taunt"));
+}
+
+} else {
+	if get_gameplay_time() == 2 {
+     visible = false 
+	 sound_play(asset_get("sfx_holy_tablet"));
+	}
+	
+	if get_gameplay_time() == 2 {
+		create_hitbox(AT_NSPECIAL , 1 , x , room_height/2 - 600 );
+	}
+	
+	if get_gameplay_time() == 90 {
+	   visible = true	
+	   shake_camera(5,6)
+	}
+	
+	
 }
 
 

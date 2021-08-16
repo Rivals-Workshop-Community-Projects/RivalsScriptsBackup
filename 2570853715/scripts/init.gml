@@ -178,5 +178,4 @@ bubble_y = 8;
 
 
 // Muno template: (don't change)
-instance_create(x, y, "obj_article1");
 user_event(14); // General init

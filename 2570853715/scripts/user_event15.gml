@@ -435,6 +435,14 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	 		initPatch("0.5", "9, August 2021");
+	initPatchWords("Bugfix: Utilt now has parry stun.");
+	 		initPatch("0.4", "9, August 2021");
+	initPatchWords("Bugfix: Grabs no longer magnet opponents hit by projectiles.
+	Bugfix: Fixed a crash on CSS screen.
+	Optimization: Reduced lag caused by Nspecial and Dspecial.
+	Optimization: Dspecial trails will only render when graphics setting is set to high.");
+	 
 		initPatch("0.3", "8, August 2021");
 	initPatchWords("Emergency bugfix. Ustrong works again.");
 	initPatch("0.2", "8, August 2021");

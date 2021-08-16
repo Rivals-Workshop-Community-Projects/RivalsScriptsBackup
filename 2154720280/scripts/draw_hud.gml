@@ -5,8 +5,16 @@ shader_start();
  
         draw_sprite(sprite_get("supply"),   supply  , temp_x+ 10, temp_y -42  );
     
-    draw_sprite(sprite_get("batt"),   batt  , temp_x+ 114, temp_y -42  );
     
+    draw_sprite(sprite_get("batt"),   batt  , temp_x+ 114, temp_y -42  );
+    draw_sprite(sprite_get("batt"),  6 + batt2/8.6  , temp_x+ 114, temp_y -42  );
+
+if battfade == 88 or battfade == 86 or battfade == 84 or battfade == 82 or battfade == 80 {
+    draw_sprite(sprite_get("batt"),   17  , temp_x+ 114, temp_y -42  );
+    draw_sprite(sprite_get("batt"),   17  , temp_x+ 114, temp_y -42  );
+    draw_sprite(sprite_get("batt"),   17  , temp_x+ 114, temp_y -42  );
+    draw_sprite(sprite_get("batt"),   17  , temp_x+ 114, temp_y -42  );
+}
 
 if introtimer > 0 {
     

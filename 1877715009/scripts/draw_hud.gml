@@ -329,7 +329,9 @@ else if ("muted" in self && "muteaplha" in self && "stupidbossbool" in self && !
 {
 	var muteaplhaclamp = clamp(muteaplha,0,1);
 	draw_set_alpha(muteaplhaclamp);
-	if (muted)
+	if (blockMute)
+		draw_debug_text(temp_x,temp_y - 8 + floor(muteaplhaclamp*4)*2-8,blockMuteReason);
+	else if (muted)
 		draw_debug_text(temp_x,temp_y - 8 + floor(muteaplhaclamp*4)*2-8,"Taunt to unmute");
 	else
 		draw_debug_text(temp_x,temp_y - 8 + floor(muteaplhaclamp*4)*2-8,"Unmuted!");

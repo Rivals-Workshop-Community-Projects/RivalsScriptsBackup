@@ -75,7 +75,7 @@ sprite_change_offset("plat", 64, 4);
 sprite_change_offset("emptyh", 64, -9999);
 
 set_victory_bg( sprite_get( "custom" ));
-set_victory_theme(sound_get("taunt"));
+
 
 sprite_change_offset("bbur1", 100, 80);
 sprite_change_offset("bbur2", 100, 80);
@@ -94,3 +94,4 @@ sprite_change_offset("cheese", 60, 8);
 
 sprite_change_offset("bladewaveH", 57, 46);
 sprite_change_offset("bladewaveHd", 53, 50);
+set_victory_theme(sound_get("genocidecutter"));

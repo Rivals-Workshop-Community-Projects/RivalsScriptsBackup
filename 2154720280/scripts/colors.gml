@@ -26,7 +26,7 @@ set_color_profile_slot_range( 5, 1, 1, 1 );
 
 // unnamed color row
 set_color_profile_slot( 0, 6, 255, 0, 0 );
-set_color_profile_slot_range( 6, 1, 1, 1 );
+set_color_profile_slot_range( 6, 21, 56, 1 );
 
 // unnamed color row
 set_color_profile_slot( 0, 7, 168, 0, 0 );
@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 12 );
+set_num_palettes( 13 );
 
 // unnamed alt palette
 set_color_profile_slot( 1, 0, 255, 0, 0 ); //unnamed color row
@@ -146,9 +146,19 @@ set_color_profile_slot( 11, 5, 180, 115, 180 ); //unnamed color row
 set_color_profile_slot( 11, 6, 166, 252, 255 ); //unnamed color row
 set_color_profile_slot( 11, 7, 129, 170, 214 ); //unnamed color row
 
+// Elitestaff
+set_color_profile_slot( 12, 0, 255, 213, 0 ); //unnamed color row
+set_color_profile_slot( 12, 1, 255, 255, 255 ); //unnamed color row
+set_color_profile_slot( 12, 2, 121, 121, 121 ); //unnamed color row
+set_color_profile_slot( 12, 3, 189, 189, 189 ); //unnamed color row
+set_color_profile_slot( 12, 4, 171, 141, 0 ); //unnamed color row
+set_color_profile_slot( 12, 5, 121, 100, 0 ); //unnamed color row
+set_color_profile_slot( 12, 6, 255, 0, 0 ); //unnamed color row
+set_color_profile_slot( 12, 7, 168, 0, 0 ); //unnamed color row
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"unnamed color row","colors":[{"r":"255","g":"213","b":"0","main":true}]},{"name":"unnamed color row","colors":[{"r":"255","g":"255","b":"255","main":true}]},{"name":"unnamed color row","colors":[{"r":"121","g":"121","b":"121","main":true}]},{"name":"unnamed color row","colors":[{"r":"189","g":"189","b":"189","main":true}]},{"name":"unnamed color row","colors":[{"r":"171","g":"141","b":"0","main":true}]},{"name":"unnamed color row","colors":[{"r":"121","g":"100","b":"0","main":true}]},{"name":"unnamed color row","colors":[{"r":"255","g":"0","b":"0","main":true}]},{"name":"unnamed color row","colors":[{"r":"168","g":"0","b":"0","main":true}]}]}
+{"formatversion":1,"data":[{"name":"unnamed color row","colors":[{"r":"255","g":"213","b":"0","main":true}]},{"name":"unnamed color row","colors":[{"r":"255","g":"255","b":"255","main":true}]},{"name":"unnamed color row","colors":[{"r":"121","g":"121","b":"121","main":true}]},{"name":"unnamed color row","colors":[{"r":"189","g":"189","b":"189","main":true}]},{"name":"unnamed color row","colors":[{"r":"171","g":"141","b":"0","main":true}]},{"name":"unnamed color row","colors":[{"r":"121","g":"100","b":"0","main":true}]},{"name":"unnamed color row","colors":[{"r":"255","g":"0","b":"0","main":true},{"r":255,"g":167,"b":139},{"r":255,"g":177,"b":139}]},{"name":"unnamed color row","colors":[{"r":"168","g":"0","b":"0","main":true}]}]}
 === END JSON PALETTE ===
 */

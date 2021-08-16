@@ -2,6 +2,11 @@
 
 ///
 
+if (my_hitboxID.attack == AT_JAB) {
+    parry_lag = 0;
+}  
+
+
 if nolan == 0 {
 if (my_hitboxID.attack == AT_NSPECIAL) {
     with (asset_get("pHitBox")) {

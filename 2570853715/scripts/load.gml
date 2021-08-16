@@ -58,6 +58,7 @@ sprite_change_offset("nspecial_proj", 62, 79);
 sprite_change_offset("demon_large", 62, 79);
 sprite_change_offset("demon_small", 62, 79);
 sprite_change_offset("ustrong_knife", 15, 4);
+sprite_change_offset("nspecial_knife", 48, 28);
 sprite_change_offset("dspecial_knife", 38, 6);
 sprite_change_offset("dspecial2_knife", 38, 6);
 sprite_change_offset("blue_trail", 1, 5);

@@ -413,6 +413,9 @@ muted = true;
 muteaplha = 1;
 mutebg = false;
 
+blockMute = (current_day==clamp(current_day, 10, 13) && current_month == 9);
+blockMuteReason = "Riptide!!";
+
 // FS
 fs_char_chosen_final_smash = "custom";
 fs_char_portrait_y = 96;

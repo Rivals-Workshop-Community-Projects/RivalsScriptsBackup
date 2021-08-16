@@ -2806,7 +2806,7 @@ if (get_gameplay_time() == 120)
 
 if (muted && get_gameplay_time() < 120)
 {
-	if (taunt_pressed && (get_player_color(tempplayer) != 15 || get_gameplay_time() > 68))
+	if (taunt_pressed && !blockMute && (get_player_color(tempplayer) != 15 || get_gameplay_time() > 68))
 	{
 		muted = false;
 		sound_play(asset_get("mfx_star"));

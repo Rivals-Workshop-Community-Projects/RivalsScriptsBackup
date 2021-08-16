@@ -89,7 +89,61 @@ if attack == AT_NSPECIAL{
 		hsp /= 1.2
      }
 	
+	if window == 1 && window_timer == 1 {
+		set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 3);
+	}
+	
+	if window == 1 && window_timer == 6 && batt >= 4 && special_down && !hitpause{
+		sound_stop(asset_get("sfx_holy_tablet"));
+		set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 6);
+		window = 4
+		window_timer = 0
+		shake_camera(4,4)
+		sound_play(asset_get("sfx_bird_downspecial"));
+		sound_play(sound_get("supercombo"),false,noone,0.8,1.2);
+		spawn_base_dust(x,y, "land",spr_dir)
+		batt -= 1
+		spawn_hit_fx(x,y,sw)
+	}
+	
+	if window == 4 && !hitpause{
+		
+		if window_timer % 7 == 0 {
+			spawn_base_dust(x,y, "land",spr_dir)
+			shake_camera(4,4)
+			
+		}
+		
+	}
+	
+	if window == 5 && window_timer == 3 && !hitpause{ 
+		shake_camera(6,6)
+		sound_play(asset_get("sfx_ori_energyhit_heavy"));
+		sound_play(asset_get("sfx_bird_nspecial"));
+		sound_play(sound_get("lazerfire"),false,noone,0.8,1.4);
+		sound_play(asset_get("sfx_combust"));
+		spawn_hit_fx(x + 30*spr_dir, y - 42, 305)
+		spawn_hit_fx(x + 580*spr_dir,y - 42, lasernor)
+		spawn_base_dust(x,y, "land",spr_dir)
+		spawn_base_dust(x - 30*spr_dir,y, "dashstart",spr_dir)
+		batt = 0
+	}
+ 	
+ 	if window == 5 && hitpause{
+ 		spawn_hit_fx(x + 580*spr_dir,y - 42, lasernor)
+ 	}
+ 	
+ 	if window == 6  && !hitpause{
+ 		if window_timer == 16 && free {
+ 			set_state(PS_PRATFALL)
+ 		}
+ 		if window_timer == 29 && !free {
+ 			set_state(PS_PRATLAND)
+ 		}
+ 	}
+ 	
 	if window == 2 && batt < 1 && window_timer = 1 {
+		sound_stop(asset_get("sfx_holy_tablet"));
 		sound_play(asset_get("sfx_holy_textbox"));
 		window = 3 
 		window_timer = 0
@@ -97,7 +151,7 @@ if attack == AT_NSPECIAL{
 	
     if window == 2 && batt >= 1 && window_timer == 1 && !hitpause  {
     	batt -= 1
-    	create_hitbox(AT_NSPECIAL , 1 , x , room_height/2 - 1000 );
+    	create_hitbox(AT_NSPECIAL , 1 , x , room_height/2 - 600 );
     }
 }
 
@@ -312,6 +366,10 @@ if attack == AT_USPECIAL{
     		set_hitbox_value(AT_USPECIAL, 3, HG_DAMAGE, 2);
     		set_hitbox_value(AT_USPECIAL, 4, HG_DAMAGE, 4);
 	}
+	
+	if down_down {
+		fall_through = true
+	}
 if window < 3 {	
 can_fast_fall = false
 } else {
@@ -343,6 +401,16 @@ can_wall_jump = true
 if !free {
 	set_state (PS_LAND)
 }
+}
+
+if window == 5 && !hitpause{
+	if !free {
+		set_state(PS_PRATLAND)
+		state_timer = 0
+	}
+	if window_timer == 8 {
+	vsp = 8
+	}
 }
 
 
@@ -523,3 +591,38 @@ if attack == AT_NAIR{
 	}
 }	
 	
+#define spawn_base_dust(x, y, name, dir)
+var dlen;
+var dfx;
+var dfg;
+var dust_color = 0;
+
+switch (name) {
+    default:
+    case "dash_start":
+        dlen = 21;
+        dfx = 3;
+        dfg = 2626;
+    break;
+    case "dash":
+        dlen = 16;
+        dfx = 4;
+        dfg = 2656;
+    break;
+    case "jump":
+        dlen = 12;
+        dfx = 11;
+        dfg = 2646;
+    break;
+    case "doublejump":
+    case "djump":
+        dlen = 21;
+        dfx = 2;
+        dfg = 2624;
+    break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx;
+if dfg != -1 newdust.fg_sprite = dfg;
+newdust.dust_color = dust_color;
+newdust.spr_dir = dir;

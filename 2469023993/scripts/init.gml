@@ -92,7 +92,7 @@ roll_backward_max = 9;
 
 land_sound = asset_get("sfx_land_med");
 landing_lag_sound = asset_get("sfx_land");
-waveland_sound = asset_get("sfx_waveland_ori");
+waveland_sound = asset_get("sfx_waveland_fors");
 jump_sound = asset_get("sfx_jumpground");
 djump_sound = asset_get("sfx_jumpair");
 air_dodge_sound = asset_get("sfx_ori_glide_featherout");
@@ -124,6 +124,12 @@ tcoart = sprite_get("noxtcodraw");
 
 miiverse_post = sprite_get("noxmiis");
 
+steve_death_message = "Steve fell to darkness";
+
+fs_char_chosen_final_smash = "custom";
+fs_char_portrait_y = 115;
+fs_portrait_x = 50;
+
 has_fail = true;
 fail_text = "Now you're but
 a shadow of your
@@ -135,7 +141,7 @@ if (get_player_color( player ) == 29){
 	set_victory_theme(sound_get("pepsivictory"));
 } else if (get_player_color( player ) == 31){
 	set_victory_theme(sound_get("z3ke"));
-} else if (get_player_color( player ) == 16){
+} else if (get_player_color( player ) == 22){
 	set_victory_theme(sound_get("hollow"));
 } else if (get_player_color( player ) == 24){
 	set_victory_theme(sound_get("halland"));
@@ -151,6 +157,6 @@ if (get_player_color( player ) == 29){
 	set_victory_theme(sound_get("mousevictory"));
 } else if (get_player_color( player ) == 28){
 	set_victory_theme(sound_get("catvictory"));
-} else if (get_player_color( player ) != 18 && get_player_color( player ) != 29 && get_player_color( player ) != 23 && get_player_color( player ) != 25 && get_player_color( player ) != 26 && get_player_color( player ) != 27 && get_player_color( player ) != 28 && get_player_color( player ) != 30 && get_player_color( player ) != 31 && get_player_color( player ) != 24 && get_player_color( player ) != 16){
+} else if (get_player_color( player ) != 18 && get_player_color( player ) != 29 && get_player_color( player ) != 23 && get_player_color( player ) != 25 && get_player_color( player ) != 26 && get_player_color( player ) != 27 && get_player_color( player ) != 28 && get_player_color( player ) != 30 && get_player_color( player ) != 31 && get_player_color( player ) != 24 && get_player_color( player ) != 22){
 	set_victory_theme(sound_get("nox_victory"));
 }

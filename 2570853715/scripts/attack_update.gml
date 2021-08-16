@@ -2,8 +2,8 @@
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
 }
-
-if (attack == AT_NSPECIAL){
+switch(attack){
+case AT_NSPECIAL:
 	if(was_parried){
 		nspecial_charge_level = 0;
 	}
@@ -59,11 +59,12 @@ if (attack == AT_NSPECIAL){
     	if(window_timer%4 == 0){
     		sound_play(sound_get("knife_throw"));
     	}
-    	if(window_timer%2 == 0){
-    		var knife = create_hitbox(AT_NSPECIAL, 1, x - 30 + random_func(1, 60, true), y -16- random_func(i, 40, true));
-    		knife.hsp = spr_dir*16*dcos(spr_angle*spr_dir);
-        	knife.vsp = -16*dsin(spr_angle*spr_dir)
+    	if(window_timer%8 == 0){
+    		var knife = create_hitbox(AT_NSPECIAL, 1, x + spr_dir*30, y - 40 - spr_dir*(spr_angle/2));
+    		knife.hsp = spr_dir*14*dcos(spr_angle*spr_dir);
+        	knife.vsp = -14*dsin(spr_angle*spr_dir)
         	knife.proj_angle = spr_angle;
+        	knife.image_index = random_func(0, 5, true);
     	}
     	if(window_timer == 32){
     		nspecial_charge_level-=3;
@@ -76,9 +77,10 @@ if (attack == AT_NSPECIAL){
     } else if(window == 5){
     	spr_angle = 0;
     }
-}
+	break;
 
-if(attack == AT_FSPECIAL){
+case AT_FSPECIAL:
+	can_fast_fall = false;
 	can_wall_jump = true;
 	if(window == 1 and window_timer == 6){
 		//spawn_hit_fx(x+spr_dir*8, y-26, 302);
@@ -119,9 +121,9 @@ if(attack == AT_FSPECIAL){
 		if(window_timer == 11 and !hitpause)
 			x += spr_dir*40;
 	}
-}
+	break;
 
-if(attack == AT_DSTRONG){
+case AT_DSTRONG:
     if(window == 1 or window == 2){
         if(state_timer*6 < 60){
         	hud_offset = state_timer*6;
@@ -131,9 +133,9 @@ if(attack == AT_DSTRONG){
     } else {
         hud_offset = 60;
     }
-}
+	break;
 
-if(attack == AT_DSPECIAL_2){
+case AT_DSPECIAL_2:
 	can_fast_fall = false;
 	//fast_fall = false;
 	if(window_timer == 10){
@@ -144,9 +146,9 @@ if(attack == AT_DSPECIAL_2){
 			}
 		}
 	}
-}
+	break;
 
-if(attack == AT_FSTRONG){
+case AT_FSTRONG:
     if(window == 2 and window_timer == 9){
     	if(left_down){
     		if(place_meeting(x-60, y+2, asset_get("par_block")) or place_meeting(x-60, y+2, asset_get("par_block_jumpthrough")) )
@@ -156,9 +158,9 @@ if(attack == AT_FSTRONG){
     			x+= 60;
     	}
     }
-}
+	break;
 
-if(attack == AT_USTRONG){
+case AT_USTRONG:
     if(window == 2 and window_timer == 5){
     	if(left_down){
     	
@@ -176,8 +178,8 @@ if(attack == AT_USTRONG){
     	var chainsaw = create_hitbox(AT_USTRONG, 1, x-spr_dir*60, y-30);
     	chainsaw.vsp -= strong_charge/10;
     }
-}
-if(attack == AT_DATTACK){
+	break;
+case AT_DATTACK:
 	if(window == 1){
 		dattack_jump_buffer = false
 		hud_offset+=6;
@@ -198,10 +200,9 @@ if(attack == AT_DATTACK){
 		}
 		can_jump = true;
 	}
-	
-}
+	break;
 
-if(attack == AT_UTILT){
+case AT_UTILT:
 	if(window == 1 and window_timer == 2){
 		sound_play(sound_get("utilt_loop"), true);
 	}
@@ -213,12 +214,12 @@ if(attack == AT_UTILT){
 		can_special = true;
 		can_jump = true;
 	}
-	if(window == 4 and !free){
+	if(window == 4 and !free and !was_parried){
 		set_state(PS_LAND);
 	}
-}
+	break;
 
-if (attack == AT_DSPECIAL){
+case AT_DSPECIAL:
     if (window == 2){
 		if(window_timer == 8){
 		move_cooldown[AT_DSPECIAL] = 40;
@@ -242,17 +243,16 @@ if (attack == AT_DSPECIAL){
     
     can_fast_fall = false;
     can_move = false;
-}
+	break;
 
-//my stuff
-if(attack == AT_FTILT){
+case AT_FTILT:
     if(window == 2 and window_timer == 1){
         take_damage(player, player, 1);
     }
-}
+	break;
 
 
-if(attack == AT_TAUNT_2){
+case AT_TAUNT_2:
 	if(state_timer == 1){
 		sound_play(sound_get("utilt_loop"), true);
 	}
@@ -264,9 +264,9 @@ if(attack == AT_TAUNT_2){
 	if(window_timer == 24){
 		sound_stop(sound_get("utilt_loop"));
 	}
-}
+break;
 
-if (attack == AT_USPECIAL){
+case AT_USPECIAL:
 
 	can_fast_fall = false;
 	if (window == 1){
@@ -278,8 +278,7 @@ if (attack == AT_USPECIAL){
 		}
 		vsp = 0;
 		hsp = 0;
-	}
-	if (window == 2 && window_timer == 9){
+	} else if (window == 2 && window_timer == 9){
 		var distance = 80;
 		var angle = (round(joy_dir / 11.25) * 11.25) / 180 * -3.14;
 		if (joy_pad_idle){
@@ -292,8 +291,7 @@ if (attack == AT_USPECIAL){
 		draw_indicator = false;
 		invincible = true;
 		invince_time = 1;
-	}
-	if (window == 2 and window_timer == 10 and !free){
+	} else if (window == 2 and window_timer == 10 and !free){
 		uspec_end_x = x;
 		uspec_end_y = y;
 		hsp = clamp(hsp, -9.5, 9.5); 
@@ -320,15 +318,19 @@ if (attack == AT_USPECIAL){
     		window_timer = 0;
     	}
     }
+    if(window > 2 and window < 6){
+    	hud_offset = 80;
+    }
     if(window == 5 and window_timer == 3){
         spawn_hit_fx(x, y-30, 143);
 		spawn_hit_fx(x, y-30, 204);
 		sound_play(sound_get("boom"));
     }
-}
+	break;
 
-if(attack == AT_JAB){
+case AT_JAB:
 	was_parried = false;
+	break;
 }
 
 

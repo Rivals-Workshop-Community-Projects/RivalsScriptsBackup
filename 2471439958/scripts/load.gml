@@ -42,7 +42,7 @@ sprite_change_offset("tech", 50, 90);
 sprite_change_offset("jab", 58, 90);
    sprite_change_offset("jabV2", 58, 110);
 sprite_change_offset("dattack", 60, 100);
-sprite_change_offset("ftilt", 90, 90);
+sprite_change_offset("ftilt", 76, 110);
 sprite_change_offset("dtilt", 50, 86);
 sprite_change_offset("utilt", 70, 128);
     sprite_change_offset("nair2", 72, 98);

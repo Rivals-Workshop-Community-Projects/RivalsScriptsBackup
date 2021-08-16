@@ -52,6 +52,10 @@ sprite_change_offset("taunt", 125, 158);
 sprite_change_offset("taunt_power", 125, 158);
 sprite_change_offset("nspecial_air", 125, 158);
 
+sprite_change_offset("finalsmesh", 125, 158);
+
+sprite_change_offset("finalsmesh_air", 125, 158);
+
 sprite_change_offset("plat", 125, 158);
 
 sprite_change_offset("nspecial_proj", 125, 158);

@@ -3,6 +3,8 @@
 //must change the offset here because load.gml isn't called on the character select screen
 sprite_change_offset("css_icon", 25, 22);
 sprite_change_offset("pepsiman_icon", 25, 22);
+sprite_change_offset("flipped_icon", 25, 22);
+sprite_change_offset("hollow_icon", 25, 22);
 sprite_change_offset("special_icon", 25, 22);
 sprite_change_offset("abyss_icon", 25, 22);
 sprite_change_offset("gba_icon", 25, 22);
@@ -39,10 +41,10 @@ if (get_player_color(player) == 7)
 	draw_sprite_ext(sprite_get("css_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
 	
 if (get_player_color(player) == 8)
-	draw_sprite_ext(sprite_get("abyss_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
+	draw_sprite_ext(sprite_get("css_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
 	
 if (get_player_color(player) == 9)
-	draw_sprite_ext(sprite_get("gba_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
+	draw_sprite_ext(sprite_get("css_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
 
 if (get_player_color(player) == 10)
 	draw_sprite_ext(sprite_get("css_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
@@ -72,16 +74,16 @@ if (get_player_color(player) == 18)
 	draw_sprite_ext(sprite_get("pepsiman_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
 	
 if (get_player_color(player) == 19)
-	draw_sprite_ext(sprite_get("css_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
+	draw_sprite_ext(sprite_get("abyss_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
 	
 if (get_player_color(player) == 20)
-	draw_sprite_ext(sprite_get("css_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
+	draw_sprite_ext(sprite_get("gba_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
 
 if (get_player_color(player) == 21)
-	draw_sprite_ext(sprite_get("css_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
+	draw_sprite_ext(sprite_get("flipped_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
 
 if (get_player_color(player) == 22)
-	draw_sprite_ext(sprite_get("css_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
+	draw_sprite_ext(sprite_get("hollow_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
 
 if (get_player_color(player) == 23)
 	draw_sprite_ext(sprite_get("dash_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);

@@ -43,16 +43,17 @@ set_window_value(AT_NSPECIAL, 7, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_NSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 30);
 
-set_num_hitboxes(AT_NSPECIAL, 2);
+set_num_hitboxes(AT_NSPECIAL, 3);
 
 set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Nspecial Knife");
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("ustrong_knife"));
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_knife"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 99);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_LOCKOUT, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_LOCKOUT, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 16);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 30);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -75);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 120);
@@ -66,8 +67,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_NSPECIAL, 1, HG_EXTENDED_PARRY_STUN, true);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, .5);
+set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("knife_hit"));
@@ -99,5 +99,6 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, sound_get("knife_hit"));
+
 
 set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Knives active from frame 15 after charge. Momentum reverses on B reverse.");

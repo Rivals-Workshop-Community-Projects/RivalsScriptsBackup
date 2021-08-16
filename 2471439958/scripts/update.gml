@@ -384,7 +384,7 @@ if (taunt_pressed){
 	set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_absa_uair"));
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("tesla"));	
 	
-	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -2);
+	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -2.6);
 	
 	set_hitbox_value(AT_USPECIAL, 1, HG_EFFECT, 11);
 	set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 1);

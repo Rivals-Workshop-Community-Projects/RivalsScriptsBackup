@@ -25,6 +25,13 @@ is_tenru = true;
 // 	with(other)print_debug(string(dir));
 // }
 
+// Party hat
+if(state != 25 && state != 24 && !has_moved)
+{
+	has_moved = true;
+	spawn_hit_fx(x,y,party_effect);
+}
+
 // Taunt 2
 if(do_taunt_2)
 {
@@ -97,6 +104,10 @@ if (introTimer < 23) {
     draw_indicator = true;
 }
 
+
+
+
+
 if(draw_indicator == false && introTimer2 == 1 && (introTimer == 16 || introTimer == 17 || introTimer == 18 || introTimer == 19 || window_timer == 20 ))
 {
 	sound_play(sound_get("tenru_small_firecracker"));
@@ -116,10 +127,12 @@ if(introTimer == 34 && introTimer2 == 1 && !introResetBool)
 	state = PS_IDLE
 }
 
+
+
 // Idle fidgets
-if(state == PS_IDLE && introTimer > 24)
+if( state == PS_IDLE && introTimer >= 24)
 {
-	
+
 	if(image_index == 0 && state_timer > 100)
 	{
 		state_timer = 0;	

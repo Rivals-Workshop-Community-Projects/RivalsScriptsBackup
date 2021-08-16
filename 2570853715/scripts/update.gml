@@ -8,8 +8,8 @@ if(nspecial_charge_level >= nspecial_charge_max and get_gameplay_time()%32 == 0)
 	white_flash_timer_set(8);
 	
 }
-if(free){
-	hud_offset = 10;
+if(free and state != PS_ATTACK_AIR){
+	//hud_offset = 10;
 }
 
 with(pHitBox){

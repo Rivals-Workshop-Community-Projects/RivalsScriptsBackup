@@ -1,5 +1,8 @@
 sprite_change_offset("idle", 62, 126);
+sprite_change_offset("idle_party", 62, 126);
 sprite_change_offset("intro", 190, 254);
+sprite_change_offset("intro_party", 190, 254);
+sprite_change_offset("party_boom", 62, 126);
 sprite_change_offset("crouch", 64, 126);
 sprite_change_offset("walk", 64, 126);
 sprite_change_offset("walkturn", 64, 126);

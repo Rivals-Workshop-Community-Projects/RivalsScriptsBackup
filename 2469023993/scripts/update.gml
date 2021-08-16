@@ -13,6 +13,7 @@ if swift_mode = true{
 	move_cooldown[AT_TAUNT_2] = 10;
 	swift_timer++;
 	walk_speed = 4;
+	walk_anim_speed = .175;
 	wave_land_adj = 1.5;
 	dash_speed = 9;
 	dash_anim_speed = .35;
@@ -24,6 +25,7 @@ if swift_mode = true{
 	djump_speed = 9;
 	leave_ground_max = 7.5;
 	max_jump_hsp = 7.5;
+	waveland_sound = asset_get("sfx_waveland_ori");
 }
 
 if swift_timer > 666{
@@ -32,6 +34,7 @@ if swift_timer > 666{
 
 if swift_mode = false{
 	walk_speed = 3.5;
+	walk_anim_speed = .125;
 	wave_land_adj = 1.35;
 	dash_speed = 7.75;
 	dash_anim_speed = .3;
@@ -43,6 +46,7 @@ if swift_mode = false{
 	djump_speed = 10.5;
 	leave_ground_max = 6;
 	max_jump_hsp = 6;
+	waveland_sound = asset_get("sfx_waveland_fors");
 }
 
 if swift_timer = 666{
@@ -142,15 +146,14 @@ if swallowed {
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 10);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 11);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 9);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_FINAL_BASE_KNOCKBACK, 5);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_FINAL_BASE_KNOCKBACK, 6);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.65);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 10);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 0.5);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_EXTENDED_PARRY_STUN, 30);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_heavy"));
-		set_hitbox_value(AT_EXTRA_3, 1, HG_HITSTUN_MULTIPLIER, .5);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 90);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 127);
-		set_hitbox_value(AT_EXTRA_3, 1, HG_HITSTUN_MULTIPLIER, 1);
+		set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 112);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_SPRITE, box_proj);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_MASK, box_proj);
 		set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);

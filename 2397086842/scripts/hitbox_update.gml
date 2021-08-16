@@ -83,7 +83,7 @@ if attack == AT_NSPECIAL && hbox_num <= 3{
            if x > room_width  {
            	vsp = -14
            	hsp = -10
-            shake_camera(2,4)
+            shake_camera(2,2)
             sound_stop(asset_get("sfx_absa_singlezap1"))
 	    	sound_play(asset_get("sfx_absa_singlezap1"),false,noone,0.7)
 	    	sound_stop(asset_get("sfx_blow_medium1"))
@@ -93,7 +93,7 @@ if attack == AT_NSPECIAL && hbox_num <= 3{
            if x < 0 {
             vsp = -14
            	hsp = 10
-           	shake_camera(2,4)
+           	shake_camera(2,2)
            	sound_stop(asset_get("sfx_absa_singlezap1"))
 	    	sound_play(asset_get("sfx_absa_singlezap1"),false,noone,0.7)
 	    	sound_stop(asset_get("sfx_blow_medium1"))
@@ -102,7 +102,7 @@ if attack == AT_NSPECIAL && hbox_num <= 3{
            
            if y > room_height {
            	  vsp = -18
-           	  shake_camera(2,4)
+           	  shake_camera(2,2)
            	  sound_stop(asset_get("sfx_absa_singlezap1"))
 	          sound_play(asset_get("sfx_absa_singlezap1"),false,noone,0.7)
 	          sound_stop(asset_get("sfx_blow_medium1"))

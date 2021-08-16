@@ -129,6 +129,8 @@ fc_bunt = false;
 
 fc_trail = hit_fx_create( sprite_get( "smoketrail" ), 15 );
 fc_effect = hit_fx_create( sprite_get( "explosion_single" ), 7 );
+party_effect = hit_fx_create( sprite_get( "party_boom" ), 28 );
+has_moved = false;
 
 fc_lifetime = 75;
 

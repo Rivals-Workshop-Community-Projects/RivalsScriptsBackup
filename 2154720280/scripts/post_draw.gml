@@ -14,7 +14,7 @@ if get_player_color(player) == 11 {
 	
 if get_gameplay_time() < 200 && get_player_color(player) >= 6 {
     
-     draw_debug_text(x - 80,y - 120,"Press Taunt for Insanity");
+     draw_debug_text(x - 86,y - 120,"Press Taunt for Insanity");
 }
 
 shader_end() 

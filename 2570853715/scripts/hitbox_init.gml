@@ -9,9 +9,13 @@ if((attack == AT_NSPECIAL or attack == AT_DSPECIAL)and hbox_num == 1){
 }
 
 if(attack == AT_DSPECIAL){
+    sound_lockout = 0;
     reversed = false;
     prev_reversed = false;
     color = c_blue;
+    prev_vsp = vsp;
+    prev_hsp = hsp;
+    queue_pos = 0;
     for(var i = 0; i < 9; i++){
         trail_array[i] = {x:x, y:y, life:12, rot:proj_angle}
     }

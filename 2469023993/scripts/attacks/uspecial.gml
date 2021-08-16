@@ -19,7 +19,7 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 5);
 
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 120);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 105);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_INVINCIBILITY, 0);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 49);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 5);

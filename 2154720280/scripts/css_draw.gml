@@ -38,10 +38,17 @@ if alt == 11 {
     }
 }
 
+if alt == 12 {
+    if drawtime == 1 {
+    sound_play(sound_get("demonlaugh"))
+    }
+
+}
+
 
 //define the palette names
 var palette_names = [
-  "Elite Staff", 
+  "Hamsterburger", 
   "Greasy",
   "Medium Raw",
   "Icecream Oreo", 
@@ -53,11 +60,19 @@ var palette_names = [
   "Mario",
   "Golden",
   "Coton Candy - Equaliza",
+  "Elite Staff (Old Intro)", 
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check
 if drawtime < 120 {
+    
+
+if alt == 12 {
+draw_sprite_ext(sprite_get("extra1"),0,temp_x-10,temp_y+54 - floor(drawtime/2),1,1,0,-1,2 - drawtime/60);
+}
+
 draw_sprite_ext(sprite_get("idle"),drawtime/5,temp_x-10,temp_y+54 - floor(drawtime/2),1,1,0,-1,2 - drawtime/60);
+
 draw_debug_text(floor(x)+18,floor(y)+140 - floor(drawtime/2),string(palette_names[alt]));
 }
 
@@ -65,7 +80,7 @@ if drawtime > 120 && drawtime < 140 && drawtime% 2 == 0 {
 draw_debug_text(floor(x)+18,floor(y)+140 - floor(drawtime/2),string(palette_names[alt]));
 }
 sprite_change_offset("idle", 0, 0);
-
+sprite_change_offset("extra1", 30, 0);
 
 
 
