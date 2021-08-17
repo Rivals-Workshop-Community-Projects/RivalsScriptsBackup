@@ -6,6 +6,18 @@ move_cooldown[AT_USPECIAL] = 0
 move_cooldown[AT_FSPECIAL] = 0
 }
 
+    with (asset_get("pHitBox")) {
+         if player_id == other.id && damage == 1.005 {
+         	 destroyed = true
+         }
+    }
+    
+if enemy_hitboxID.damage == 1.005 {
+	y -= 20
+    hitstop += 5
+    gudhit = 1
+}
+
 if savex != 0 {
     spawn_hit_fx(x,y - 30,305)
          spawn_hit_fx (x,y - 40, shit5)
@@ -81,6 +93,7 @@ if attacking && attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 1
     window = 4 
     window_timer = 0
         state_timer = 1
+        sound_play(sound_get("dspec"))
         sound_play(sound_get("hextra"))
         create_hitbox(AT_DSPECIAL,3,x,y)
         spawn_hit_fx (x,y - 40, 304)
@@ -91,10 +104,29 @@ if attacking && attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 1
     }
 }
 
+if attacking && attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 2{
+	if hit_player_obj.x < x {
+		spr_dir = -1
+	} else {
+		spr_dir = 1
+	}
+     spawn_hit_fx(x,y - 30, shit5)
+	hitstop = 10
+	hitstop_full = 10
+	     spawn_hit_fx(x,y,lighten2)
+            
+        	sound_play(sound_get("tauntflash"),false,noone,1.2)
+        	sound_play(sound_get("fspec2"),false,noone,1.2)
+        	sound_play(sound_get("fspec3"),false,noone,1.2)
+        	
+        	enemy_hitboxID.destroyed = true
+        	set_attack(AT_FSPECIAL)
+        	window = 2
+        	window_timer = 0
+        	state_timer = 400
+}
 
 
-
-///
  ///2B please, no sfx_blow, no, no, it hurt me, just dont, AHHhhh
  if string_count("2b", string_lower( get_char_info(hit_player_obj.player, INFO_STR_NAME))) > 0 {
 

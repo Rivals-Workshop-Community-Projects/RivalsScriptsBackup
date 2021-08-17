@@ -1,8 +1,8 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-patch_ver = "V1.3";
-patch_day = "2";
+patch_ver = "V1.4";
+patch_day = "16";
 patch_month = "AUG";
 
 var num_alts = 32;
@@ -47,7 +47,7 @@ alt_name[31] = "Green & Black";
 
 draw_set_halign(fa_left);
 
-textDraw(temp_x + 2, temp_y + 64, "fName", c_white, 0, 1000, 1, true, 1, "VER. " + patch_ver);
+//textDraw(temp_x + 2, temp_y + 64, "fName", c_white, 0, 1000, 1, true, 1, "VER. " + patch_ver);
 
 textDraw(temp_x + 2, temp_y + 32, "fName", c_white, 0, 1000, 1, true, 1, patch_day + " " + patch_month);
 

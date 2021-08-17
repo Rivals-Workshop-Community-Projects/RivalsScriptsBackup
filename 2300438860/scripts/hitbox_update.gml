@@ -8,18 +8,23 @@ if attack == AT_USPECIAL && (hbox_num != 2) && (hbox_num < 5){
 	
 	
 	if hitbox_timer == 6 {
-		vsp = 0.4
+		vsp = 0.6
 	}
 	
-	if hitbox_timer > 6 {
-    can_hit_self = true
-    if hitbox_timer % 2 == 0 {
-        create_hitbox (AT_USPECIAL, 2 , x, y)
+	if hitbox_timer % 6 == 0 or hitbox_timer == 0 {
+        sound_play(asset_get("sfx_ice_shieldup"),false,noone,1 - hitbox_timer/120,1.2)
+        create_hitbox (AT_USPECIAL, 2 , x, y )
     }
-	} else {
+    
+	if hitbox_timer < 6 {
 		vsp /= 1.1
 	}
 	
+	if player_id.state == PS_PRATFALL {
+		can_hit_self = true
+	} else {
+		can_hit_self = false
+	}
 	
     
     
@@ -34,9 +39,9 @@ if attack == AT_USPECIAL && (hbox_num != 2) && (hbox_num < 5){
 
 
 
-if attack == AT_USPECIAL && (hbox_num == 2 ){
+if attack == AT_USPECIAL && (hbox_num == 2 ) && player_id.state == PS_PRATFALL{
 	
-
+  
     can_hit_self = true
 
     
@@ -46,7 +51,7 @@ if attack == AT_DSPECIAL && (hbox_num == 1 ){
     
       create_hitbox (AT_DSPECIAL, 2 , x, y)
       if hitbox_timer % 6 == 0 {
-      spawn_hit_fx (x - 536*spr_dir,y, 194)
+      spawn_hit_fx (x - 536*spr_dir,y, 305)
       }
     
 }

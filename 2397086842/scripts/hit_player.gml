@@ -93,12 +93,16 @@ if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num <= 3 {
 }
 
 if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num <= 6 {
-       if get_gameplay_time() %2 == 0 {
+   if get_gameplay_time() %2 == 0 {
             sound_play(asset_get("sfx_blow_heavy1"),false,noone, 0.5 + my_hitboxID.damage/20)  
    } else {
           sound_play(asset_get("sfx_blow_heavy2"),false,noone, 0.5 + my_hitboxID.damage/20)  
    }
-
+   
+    if get_player_color(player) == 21 {
+           sound_stop(sound_get("Lycahit"))	
+          sound_play(sound_get("Lycahit"),false,noone,1.2,0.8)
+    }
 }
 
 if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 4 {
@@ -113,7 +117,7 @@ if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 6 {
 }
 
 if my_hitboxID.attack == AT_DSPECIAL {
-    create_hitbox(AT_NSPECIAL, 1, hit_player_obj.x, hit_player_obj.y - 30)
+    create_hitbox(AT_NSPECIAL, 2, hit_player_obj.x, hit_player_obj.y - 30)
     
 }
 

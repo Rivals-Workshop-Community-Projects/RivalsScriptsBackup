@@ -78,6 +78,8 @@ var palette_names = [
   "Flipping Youkai",   
   "Abyss Apprentice",  
    "Riptide",   
+   "PlasDinos",  
+   "Flickering Spark",  
 ];
 
 var alt = get_player_color(player);

@@ -168,3 +168,28 @@ if get_player_color(player) == 13 {
     set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_SPRITE, sprite_get("berryball3"));
     
 }
+
+if get_player_color(player) == 20 {
+    
+    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("dinonug1"));
+    set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("dinonug2"));
+    set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("dinonug3"));
+    
+    set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_SPRITE, sprite_get("dinonug1"));
+    set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_SPRITE, sprite_get("dinonug2"));
+    set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_SPRITE, sprite_get("dinonug3"));
+    
+}
+
+if get_player_color(player) == 21 {
+    
+    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("wisp1"));
+    set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("wisp2"));
+    set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("wisp3"));
+    
+    set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_SPRITE, sprite_get("wisp1"));
+    set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_SPRITE, sprite_get("wisp2"));
+    set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_SPRITE, sprite_get("wisp3"));
+    
+    set_hitbox_value(AT_NSPECIAL, 11, HG_PROJECTILE_SPRITE, sprite_get("bluearrow"));
+}

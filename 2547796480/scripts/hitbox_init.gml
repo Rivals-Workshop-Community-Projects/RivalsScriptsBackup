@@ -14,3 +14,9 @@ sprite_change_offset("timeS", 40, 40);
 
 timeS2 = hit_fx_create( sprite_get( "timeS2" ), 30 );
 sprite_change_offset("timeS2", 20, 20); 
+
+kls1 = hit_fx_create( sprite_get( "knifelasersomehow1" ), 12);
+sprite_change_offset("knifelasersomehow1", 570, 32);
+
+kls2 = hit_fx_create( sprite_get( "knifelasersomehow2" ), 12);
+sprite_change_offset("knifelasersomehow2", 570, 32);

@@ -16,6 +16,8 @@ hue = 2
 saveid = 0
 barpause = 0
 
+gudhit = 0
+
 neointro = 0
 neointro1 = " "
 neointro2 = " "

@@ -245,10 +245,18 @@ if lockouttimer < 0 {
 		    sound_play(asset_get("sfx_ori_energyhit_medium"))
 		   sound_play(asset_get("sfx_kragg_rock_land"),false,noone, 0.4 + nearbyhitbox.damage/20)
              if nearbyhitbox.hit_effect_x == 0.69 {
-             if player == orig_player {
-             sound_stop(sound_get("bathit"))	
-             sound_play(sound_get("bathit"),false,noone,0.5 + nearbyhitbox.damage/20)
-             }
+                 if player == orig_player {
+                 	
+
+                 	if get_player_color(player) != 21 {
+                     sound_stop(sound_get("bathit"))	
+                     sound_play(sound_get("bathit"),false,noone,0.5 + nearbyhitbox.damage/20)
+                 	} else {
+                 	 sound_stop(sound_get("Lycahit"))	
+                     sound_play(sound_get("Lycahit"),false,noone,1 + nearbyhitbox.damage/26,1.1)	
+                 	}
+                 	
+                 }
              }
              
              
@@ -403,7 +411,16 @@ if lockouttimer < 0 {
          	        shake_camera(5,8)
          		spawn_hit_fx(x,y ,304)
          	 sound_play(sound_get("strongb"),false,noone,1.2)
-         	  sound_play(sound_get("bathit"),false,noone,1)
+
+                 	if get_player_color(player) != 21 {
+                     sound_stop(sound_get("bathit"))	
+                     sound_play(sound_get("bathit"),false,noone,0.5 + nearbyhitbox.damage/20)
+                 	} else {
+                 	 sound_stop(sound_get("Lycamax"))	
+                     sound_play(sound_get("Lycamax"),false,noone, 3,1)
+                 	}
+              
+              sound_play(asset_get("sfx_ori_energyhit_medium"))
          	 sound_play(asset_get("sfx_absa_whip"),false,noone,1.2) 
          	  
          	  switch hbox_num {
@@ -470,8 +487,14 @@ if lockouttimer < 0 {
                     
                         sagefx5 = x
                         sagefy5 = y
-    
+                
                 sound_play(sound_get("sage"),false,noone,1.2)
+
+                 	if get_player_color(player) == 21 {
+                 	 sound_play(sound_get("Lycasage"),false,noone,1)
+                 	}
+   
+                 	
                 sound_play(asset_get("sfx_absa_whip3"),false,noone,1)
                 sound_play(asset_get("sfx_bird_downspecial"),false,noone,1)
                     spawn_hit_fx(x, y - 36, 306)
@@ -486,6 +509,10 @@ if lockouttimer < 0 {
          	 if nearbyhitbox.attack == AT_USPECIAL {
          	 	
          	   sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,1)
+         	   if get_player_color(player) == 21 {
+         	       sound_stop(sound_get("Lycamax"))	
+                   sound_play(sound_get("Lycamax"),false,noone, 0.7,1)
+         	   }
          	   shake_camera(5,8)
          	   spawn_hit_fx(x,y ,305)
          	   switch hbox_num {
@@ -513,7 +540,7 @@ if lockouttimer < 0 {
          	spr_dir = player_id.spr_dir
                sound_play(sound_get("b1"),false,noone,1)
          	   shake_camera(5,8)
-         	   spawn_hit_fx(x,y ,306)
+         	   spawn_hit_fx(x,y ,302)
          	   switch hbox_num {
                case 1 :
                create_hitbox(AT_NSPECIAL,7,x,y)
@@ -544,6 +571,11 @@ if lockouttimer < 0 {
 ///strong bat
 
 if attack == AT_NSPECIAL && hbox_num > 3 && hbox_num < 12{
+	
+		if player_id.move_cooldown[AT_NSPECIAL] > 0 && hbox_num <= 6{
+        	player_id.move_cooldown[AT_NSPECIAL] = 5
+		}
+		
 		        	hit_priority = 9
 	nearbyhitbox = collision_circle( x, y , 32, asset_get("pHitBox"), true, true ) 
 		if nearbyhitbox != noone {

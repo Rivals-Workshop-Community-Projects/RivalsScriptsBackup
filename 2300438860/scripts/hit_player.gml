@@ -4,8 +4,22 @@ if cosmetic = 1 {
 finishercd = 0
 }
 
+if my_hitboxID.type == 1 {
+	 with (asset_get("pHitBox")) {
+         if player_id == other.id && damage == 1.005 {
+         	 destroyed = true
+         }
+    }
+}
+
 switch my_hitboxID.attack {
 
+       case AT_USPECIAL :
+          if my_hitboxID.hbox_num <= 4 {
+       		sound_play(sound_get("slicel"),false,noone,1,1)
+          }
+       break;
+       
        case AT_JAB :
        		sound_play(sound_get("slice"),false,noone,1,1.1)
        	     var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 40, fxslash3 )

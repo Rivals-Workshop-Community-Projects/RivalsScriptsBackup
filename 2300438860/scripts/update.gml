@@ -2,7 +2,12 @@
 
 
 
-
+if state_cat == SC_HITSTUN && gudhit == 1 && !hitpause {
+	vsp = -15
+	hitstun += 30
+	gudhit = 0
+	hsp *= 3
+}
 
 if move_cooldown[AT_FTILT] > 1{
 	if state != PS_HITSTUN {

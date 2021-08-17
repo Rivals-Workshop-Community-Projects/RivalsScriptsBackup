@@ -84,7 +84,7 @@ sprite_change_offset("attackbar", 48, 74);
 
 sprite_change_offset("bladewave", 57, 44);
 
-sprite_change_offset("boneplat", 44, 9);
+sprite_change_offset("boneplat", 44, 19);
 sprite_change_offset("gun4", 570, 32);
 sprite_change_offset("heart", 30, 30);
 

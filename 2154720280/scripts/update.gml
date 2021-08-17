@@ -57,6 +57,12 @@ if introtimer = 1 {
 	hitpause = 0
 	spawn_hit_fx( x, y, 304)
 	
+	 with (pHitBox) {
+  		if player_id == other.id {
+  			destroyed = true
+  		}
+  	}
+  	
 	if introhit = 1 {
 		sound_play(asset_get("sfx_abyss_explosion"),false, noone, );
 		sound_play(sound_get("genocidecutter"),false, noone, 2);
@@ -67,7 +73,7 @@ if introtimer = 1 {
 	}
 	
 	if introhit = -1 {
-		supply += 1
+		supply = 6
 		hsp = 8
 		vsp = 0
 		spr_dir = -1
@@ -87,7 +93,7 @@ take_damage( player, -1 , -1 )
 	/// Zetta Alex Mayu Katie Saji Uza Nolan Elice
 if introtimer = -1{
 	introtimer = 300
-	
+	supply = 6
 }
 
 if get_gameplay_time() % 3 == 0 {

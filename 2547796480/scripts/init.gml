@@ -198,6 +198,12 @@ sprite_change_offset("kmark1r", 50, 50);
 sprite_change_offset("kmark2r", 50, 50);
 sprite_change_offset("kmark3r", 50, 50);
 
+kls1 = hit_fx_create( sprite_get( "knifelasersomehow1" ), 12);
+sprite_change_offset("knifelasersomehow1", 570, 32);
+
+kls2 = hit_fx_create( sprite_get( "knifelasersomehow2" ), 12);
+sprite_change_offset("knifelasersomehow2", 570, 32);
+
 sprite_change_offset("knifeS", 40, 30);
 
 	sprite_change_offset("dairs1", 32, 32);

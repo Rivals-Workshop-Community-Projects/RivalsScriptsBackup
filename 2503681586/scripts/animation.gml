@@ -150,6 +150,7 @@ if custom_clone {
 					break;
 					case PS_WALL_TECH:
 					case PS_WALL_JUMP:
+						hurtboxID.sprite_index  = sprite_get("f_other_hurt")
 						sprite_index = sprite_get("fx_walljump")
 						if 11 > state_timer {
 							image_index = round(state_timer / 5) 

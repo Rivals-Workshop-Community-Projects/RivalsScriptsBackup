@@ -15,6 +15,15 @@ if attack == AT_FSPECIAL && hbox_num == 5 {
 	
 }
 
+if attack == AT_FSPECIAL && hbox_num == 6 {
+
+if hitbox_timer == 0 or hitbox_timer % 4 == 0 {
+	create_hitbox(AT_FSPECIAL,7,x,y)
+}	
+	
+}
+	
+
 if attack == AT_FSPECIAL && hbox_num <= 4 {
 	
 	if hsp > 0 {
@@ -152,7 +161,18 @@ if attack == AT_FSPECIAL && hbox_num <= 4 {
     	with other {
     		destroyed = true
     		with player_id {
+    		if state_timer < 400 {	
     		create_hitbox(AT_FSPECIAL,5,other.x,other.y)
+    		}
+    		
+    		if state_timer >= 400 {	
+    		create_hitbox(AT_FSPECIAL,6,other.x + 600*spr_dir,other.y)
+    		spawn_hit_fx(other.x + 540*spr_dir,other.y,kls2)
+    		spawn_hit_fx(other.x + 540*spr_dir,other.y,kls1)
+    		sound_stop(sound_get("RI"))
+    		sound_play(sound_get("RI"),false,noone,1,0.6)
+    		}
+    		
     		}
     	sound_stop(asset_get("sfx_ori_energyhit_heavy"))
 		sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,1,1.4)

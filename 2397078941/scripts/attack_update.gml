@@ -15,6 +15,12 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
 }
 
 
+if attack == AT_UAIR && window == 1 {
+	set_hitbox_value(AT_UAIR, 2, HG_WIDTH, 61);
+set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 80);
+	set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, 0.7); 
+}
     if attack == AT_USPECIAL {
     
     if window == 4 && window_timer == 12 {
@@ -130,7 +136,8 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
 			vsp = 0
 		}
 		
-			if has_hit_player {
+			if has_hit_player && free{
+				hsp = 3*spr_dir
 				can_move = false
 			}
 			
@@ -164,24 +171,25 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
 		soft_armor = 999
 	}
 
-    if has_hit_player && window < 3 && hit_player_obj.state_cat == SC_HITSTUN {
+    if has_hit_player && window < 3 {
+    		set_hitbox_value(AT_UAIR, 2, HG_WIDTH, 161);
+set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 180);
+    	    	set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 16);
+        set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, 0); 
+     
     	with hit_player_obj {
-    		state_timer = 1
+    		state = PS_PRATFALL
+    		has_walljump = false
     	}
     	if window == 1 {
-    	hit_player_obj.x += (x - 30*spr_dir - hit_player_obj.x) / 3
-		hit_player_obj.y += ((y) - 40 - hit_player_obj.y) / 3
+    	hit_player_obj.x += (x - 20*spr_dir - hit_player_obj.x) / 3
+		hit_player_obj.y += ((y) - 30 - hit_player_obj.y) / 3
     	} else if y < room_height - 20 {
     	hit_player_obj.hsp = (x + 10*spr_dir - hit_player_obj.x) / 2
 		hit_player_obj.y =  y - 4
     	}
     }
 	
-	if has_hit_player && hit_player_obj.state != PS_HITSTUN && window < 3{
-	  set_state(PS_PRATFALL)
-	  hsp = -6*spr_dir
-	  vsp = -10
-	}
 	
 	if window == 1 && window_timer == 1{
 		shunpo = 0
@@ -200,7 +208,7 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
           }
 	}
 	
-	if window == 2 && (!free or (place_meeting(x+hsp, y, asset_get("par_block")))){
+	if window == 2 && ((!free or (place_meeting(x+hsp, y, asset_get("par_block")))) or (has_hit_player && y > room_height/2 + 380)){
 		spawn_hit_fx(x + 30*spr_dir,y,302)
 		hsp = 0
 		shake_camera(4,4)
@@ -210,6 +218,12 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
 		soft_armor = 0
 	}
 
+    if window == 3 && !hitpause && free && has_hit_player{
+    	set_attack(AT_UAIR)
+    	window = 2
+    	window_timer = 0
+    	vsp = -15
+    }
 	
 	
 }

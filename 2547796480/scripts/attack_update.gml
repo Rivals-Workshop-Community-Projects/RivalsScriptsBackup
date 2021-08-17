@@ -106,12 +106,24 @@ if attack == AT_NSPECIAL  {
   	    }
 	}
 	
+	if window == 1 && window_timer == 12 && special_down && state_timer < 400 {
+		set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 24);
+		spawn_hit_fx(x - 30*spr_dir,y - 60,timeS2)
+		state_timer = 400
+		window = 1
+		window_timer = 2
+		sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"),false,noone,1,1.1);
+		shake_camera(4,4)
+	}
+	
 	if window == 1 && window_timer == 1 {
+		set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 12);
 		sound_play(asset_get("sfx_bird_downspecial"));
 	}
 	
 	can_fast_fall = false
-	if window == 1{
+	
+	if window == 1 {
 		hsp /= 1.1
 		vsp /= 1.1
 	} else {
@@ -119,11 +131,31 @@ if attack == AT_NSPECIAL  {
 		vsp = 0
 	}
 	
+	if state_timer >= 400 {
+		hsp = 0
+		vsp = 0
+		if window == 2 && window_timer <= 1 && !hitpause {
+			spawn_hit_fx(x + 40*spr_dir,y - 80,timeS2)
+			spawn_hit_fx(x + 40*spr_dir,y + 10,timeS2)
+			spawn_hit_fx(x + 80*spr_dir,y - 35,timeS2)
+			spawn_hit_fx(x,y - 35,timeS2)
+			
+			spawn_hit_fx(x + 40*spr_dir,y - 36,timeS)
+            
+            create_hitbox(AT_NSPECIAL,3,x,y)
+            create_hitbox(AT_NSPECIAL,5,x,y)
+            create_hitbox(AT_NSPECIAL,4,x,y)
+            create_hitbox(AT_NSPECIAL,6,x,y)
+            
+
+		}
+	}
+	
 	if hitpause && window == 2 {
 		window_timer += 0.2
 	}
 	
-  if window == 1 && window_timer == 12 && !hitpause {
+  if window == 1 && window_timer == 12 && !hitpause  && state_timer < 400  {
   	sound_play(sound_get("RI"),false,noone,1,1);
   	sound_play(asset_get("sfx_abyss_explosion"),false,noone,0.5,1.2);
   	sound_play(asset_get("sfx_spin"),false,noone,1.4,0.6);
@@ -131,6 +163,16 @@ if attack == AT_NSPECIAL  {
   	move_cooldown[AT_NSPECIAL_2] = 5
   	move_cooldown[AT_NSPECIAL] = 60
   }
+  
+  if window == 1 && window_timer == 24 && !hitpause  && state_timer >= 400  {
+  	sound_play(sound_get("RI"),false,noone,1,1);
+  	sound_play(asset_get("sfx_abyss_explosion"),false,noone,0.5,1.2);
+  	sound_play(asset_get("sfx_spin"),false,noone,1.4,0.6);
+  	shake_camera(4,4)
+  	move_cooldown[AT_NSPECIAL_2] = 5
+  	move_cooldown[AT_NSPECIAL] = 60
+  }
+  
 }
 
 

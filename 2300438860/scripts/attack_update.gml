@@ -338,7 +338,7 @@ if !hitpause {
 			vsp = -6
 		}
 			    	move_cooldown [AT_FSPECIAL] = 60
-			if dmgmul >= 1.5 {
+			if dmgmul >= 1.5 or state_timer > 400{
 				specialing = 1
 				attackbar = 0
 				create_hitbox (AT_FSPECIAL, 3 , x + 30 *spr_dir, y - 42)
@@ -349,14 +349,14 @@ if !hitpause {
 				move_cooldown [AT_NSPECIAL] = 180
 			}
 			
-			if dmgmul >= 2 {
+			if dmgmul >= 2 or state_timer > 400 {
 				create_hitbox (AT_FSPECIAL, 4 , x + 30 *spr_dir, y - 30)
 				if dmgmul == 2 {
 					    sound_play(sound_get("hcine"),false,noone,0.8)
 				}
 			}
 			
-			if dmgmul = 3 {
+			if dmgmul = 3 or state_timer > 400 {
 				spawn_hit_fx (x,y,lighten3)
 				create_hitbox (AT_FSPECIAL, 3 , x + 20 *spr_dir, y - 68)
 				create_hitbox (AT_FSPECIAL, 4 , x + 20 *spr_dir, y - 04)
@@ -382,7 +382,10 @@ if !hitpause {
     	if window == 1 {
     		
     		if window_timer == 1 {
-    		vsp = -8
+    			sound_play(sound_get("hcine"),false,noone,0.6,1.6)
+    			sound_play(asset_get("sfx_watergun_fire"),false,noone,0.8,1.1)
+    			
+    		vsp = -6
     		if vsp > 0 {
     			vsp = 0
     		}
@@ -391,7 +394,8 @@ if !hitpause {
     	}
     	if window == 2 {
     			move_cooldown [AT_USPECIAL] = 999
-    			if window_timer == 1 {
+    			if window_timer == 1 && !hitpause {
+    				sound_play(sound_get("fspec2"),false,noone,0.8,1.2)
     		if dmgmul >= 1.5 {
 				attackbar = 0
 				vsp = -8
@@ -432,6 +436,8 @@ if !hitpause {
     
         if attack == AT_DSPECIAL {
         	
+        	prat_land_time = 20;
+        	
         	vsp /= 1.1
         	if free {
         	hsp /= 1.04
@@ -445,7 +451,7 @@ if !hitpause {
     			
 				attackbar = 0
 				if dmgmul == 1.5 {
-					set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 15);
+					set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 25);
 					set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 40);
 					    sound_play(sound_get("hcine"),false,noone,0.4)
 				}
@@ -456,7 +462,7 @@ if !hitpause {
 			
 			if dmgmul >= 2 {
 				if dmgmul == 2 {
-					set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 20);
+					set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 30);
 					set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 50);
 					    sound_play(sound_get("hcine"),false,noone,0.8)
 				}
@@ -465,7 +471,7 @@ if !hitpause {
 			if dmgmul = 3 {
                 spawn_hit_fx (x,y,lighten3)
 				if dmgmul == 3 {
-					set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 30);
+					set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 40);
 					set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 60);
 					    sound_play(sound_get("hcine"),false,noone,1.4)
 				}			
@@ -473,7 +479,7 @@ if !hitpause {
 			}
 			
 			if dmgmul == 0 {
-				set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 10);
+				set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 15);
 				set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 20);
 			}
 			
@@ -501,7 +507,7 @@ if !hitpause {
           		shake_camera (4,6)
           		sound_play(sound_get("uspec"))
           		sound_play(asset_get("sfx_abyss_explosion"))
-          		          		spawn_hit_fx (x + 26*spr_dir,y - 38, 194)
+          		          		spawn_hit_fx (x + 26*spr_dir,y - 38, 305)
           		          		move_cooldown[AT_DSPECIAL] = 60
           		if !free {
           		set_state(PS_PRATFALL)
@@ -580,12 +586,19 @@ if attack == AT_NAIR {
            		hit_player_obj.y += ((y) - hit_player_obj.y) / 30
            		
            	if state_timer < 20 {
-           		x -= (16-state_timer)*spr_dir
+           		can_move = false
+           		x -= floor(((24-state_timer)*spr_dir)/2)
            	}
            	
            	if window_timer == 11 {
+           		shake_camera(6,10)
+           		sound_play(sound_get("slice"))
+           	 sound_play(asset_get("sfx_ice_on_player"),false,noone,1,0.9)
+              sound_play(asset_get("sfx_bird_sidespecial_start"))
            		sound_play(sound_get("dspec2"))
-           		spawn_hit_fx (x + 30*spr_dir,y - 40, 156)
+           		spawn_hit_fx (x + 30*spr_dir,y - 46, 304)
+           		vsp = -6
+           		hsp = -4*spr_dir
            	}
            }
 

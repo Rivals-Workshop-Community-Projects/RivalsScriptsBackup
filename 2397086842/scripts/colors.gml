@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 4, 3, 15 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 20 );
+set_num_palettes( 22 );
 
 // Void
 set_color_profile_slot( 1, 0, 36, 255, 156 ); //Energy
@@ -225,6 +225,26 @@ set_color_profile_slot( 19, 4, 0, 212, 255 ); //eyes
 set_color_profile_slot( 19, 5, 209, 209, 209 ); //body
 set_color_profile_slot( 19, 6, 51, 173, 255 ); //skirt
 set_color_profile_slot( 19, 7, 255, 204, 0 ); //ears
+
+// Pladino
+set_color_profile_slot( 20, 0, 28, 32, 255 ); //Energy
+set_color_profile_slot( 20, 1, 51, 37, 37 ); //Hair + parts
+set_color_profile_slot( 20, 2, 186, 186, 186 ); //shirt
+set_color_profile_slot( 20, 3, 102, 31, 31 ); //cloak1 + sock
+set_color_profile_slot( 20, 4, 187, 61, 255 ); //eyes
+set_color_profile_slot( 20, 5, 97, 80, 80 ); //body
+set_color_profile_slot( 20, 6, 102, 23, 23 ); //skirt
+set_color_profile_slot( 20, 7, 204, 161, 31 ); //ears
+
+// Flspark
+set_color_profile_slot( 21, 0, 0, 255, 234 ); //Energy
+set_color_profile_slot( 21, 1, 255, 72, 0 ); //Hair + parts
+set_color_profile_slot( 21, 2, 255, 115, 0 ); //shirt
+set_color_profile_slot( 21, 3, 26, 91, 140 ); //cloak1 + sock
+set_color_profile_slot( 21, 4, 255, 0, 0 ); //eyes
+set_color_profile_slot( 21, 5, 255, 177, 115 ); //body
+set_color_profile_slot( 21, 6, 28, 98, 150 ); //skirt
+set_color_profile_slot( 21, 7, 255, 217, 189 ); //ears
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

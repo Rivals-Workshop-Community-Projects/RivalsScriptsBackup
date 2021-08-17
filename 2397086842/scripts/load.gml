@@ -82,6 +82,15 @@ sprite_change_offset("berryball1", 30, 30);
 sprite_change_offset("berryball2", 30, 30);
 sprite_change_offset("berryball3", 30, 30);
 
+sprite_change_offset("dinonug1", 30, 30);
+sprite_change_offset("dinonug2", 30, 30);
+sprite_change_offset("dinonug3", 30, 30);
+
+sprite_change_offset("wisp1", 30, 30);
+sprite_change_offset("wisp2", 30, 30);
+sprite_change_offset("wisp3", 30, 30);
+sprite_change_offset("bluearrow", 50, 50);
+
 sprite_change_offset("ballfx1", 30, 30);
 sprite_change_offset("ballfx2", 30, 30);
 sprite_change_offset("ballfx3", 30, 30);

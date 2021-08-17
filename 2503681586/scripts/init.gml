@@ -319,7 +319,7 @@ techroll_speed = 8;
 air_dodge_startup_frames = 1;
 air_dodge_active_frames = 1;
 air_dodge_recovery_frames = 1;
-air_dodge_speed = 9;
+air_dodge_speed = 6;
 
 //roll animation frames
 roll_forward_startup_frames = 0;
