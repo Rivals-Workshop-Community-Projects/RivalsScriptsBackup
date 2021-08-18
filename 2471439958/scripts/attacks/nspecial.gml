@@ -56,7 +56,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_zetter_fireball_fire"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 3);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
@@ -85,7 +85,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 3);
 set_hitbox_value(AT_NSPECIAL, 2, HG_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_zetter_fireball_fire"));
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 3);
-set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 
 set_hitbox_value(AT_NSPECIAL, 3, HG_PARENT_HITBOX, 3);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
@@ -114,7 +114,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 3);
 set_hitbox_value(AT_NSPECIAL, 3, HG_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_zetter_fireball_fire"));
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 3);
-set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 
 set_hitbox_value(AT_NSPECIAL, 4, HG_PARENT_HITBOX, 4);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_TYPE, 2);
@@ -143,7 +143,7 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT, 3);
 set_hitbox_value(AT_NSPECIAL, 4, HG_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_zetter_fireball_fire"));
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_DESTROY_EFFECT, 3);
-set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 
 set_hitbox_value(AT_NSPECIAL, 5, HG_PARENT_HITBOX, 5);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_TYPE, 2);
@@ -172,7 +172,7 @@ set_hitbox_value(AT_NSPECIAL, 5, HG_VISUAL_EFFECT, 3);
 set_hitbox_value(AT_NSPECIAL, 5, HG_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_zetter_fireball_fire"));
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_DESTROY_EFFECT, 3);
-set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 
 set_hitbox_value(AT_NSPECIAL, 6, HG_PARENT_HITBOX, 6);
 set_hitbox_value(AT_NSPECIAL, 6, HG_HITBOX_TYPE, 2);
@@ -201,4 +201,4 @@ set_hitbox_value(AT_NSPECIAL, 6, HG_VISUAL_EFFECT, 3);
 set_hitbox_value(AT_NSPECIAL, 6, HG_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 6, HG_HIT_SFX, asset_get("sfx_zetter_fireball_fire"));
 set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_DESTROY_EFFECT, 3);
-set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_DOES_NOT_REFLECT, true);

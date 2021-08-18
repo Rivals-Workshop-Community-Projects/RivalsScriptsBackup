@@ -25,6 +25,7 @@ if swift_mode = true{
 	djump_speed = 9;
 	leave_ground_max = 7.5;
 	max_jump_hsp = 7.5;
+	short_hop_speed = 5.75;
 	waveland_sound = asset_get("sfx_waveland_ori");
 }
 
@@ -46,6 +47,7 @@ if swift_mode = false{
 	djump_speed = 10.5;
 	leave_ground_max = 6;
 	max_jump_hsp = 6;
+	short_hop_speed = 6;
 	waveland_sound = asset_get("sfx_waveland_fors");
 }
 

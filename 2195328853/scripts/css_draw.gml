@@ -1,4 +1,4 @@
-patch_ver = "1.65";
+patch_ver = "1.67";
 
 if (get_player_color( player ) == 7){
 	draw_sprite_ext(sprite_get("charselect_ghostie"),1,x+8,y+8,2,2,0,-1,1);

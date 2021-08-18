@@ -176,17 +176,17 @@ set_color_profile_slot( 14, 5, 173, 0, 0 ); //blood
 set_color_profile_slot( 14, 6, 255, 255, 255 ); //eyes
 set_color_profile_slot( 14, 7, 130, 130, 130 ); //cleaver
 
-// Serah
+// Yuri (FFCC RoF)
 set_color_profile_slot( 15, 0, 255, 231, 222 ); //white
-set_color_profile_slot( 15, 1, 173, 117, 161 ); //scarf
-set_color_profile_slot( 15, 2, 237, 135, 174 ); //hair
-set_color_profile_slot( 15, 3, 255, 255, 255 ); //hoodie
-set_color_profile_slot( 15, 4, 126, 104, 158 ); //wood
-set_color_profile_slot( 15, 5, 135, 255, 255 ); //blood
-set_color_profile_slot( 15, 6, 186, 220, 255 ); //eyes
-set_color_profile_slot( 15, 7, 223, 224, 136 ); //cleaver
+set_color_profile_slot( 15, 1, 120, 120, 120 ); //scarf
+set_color_profile_slot( 15, 2, 110, 57, 43 ); //hair
+set_color_profile_slot( 15, 3, 101, 171, 85 ); //hoodie
+set_color_profile_slot( 15, 4, 200, 204, 159 ); //wood
+set_color_profile_slot( 15, 5, 247, 240, 74 ); //blood
+set_color_profile_slot( 15, 6, 145, 209, 181 ); //eyes
+set_color_profile_slot( 15, 7, 120, 76, 54 ); //cleaver
 
-// Firion
+// Firion (FFII)
 set_color_profile_slot( 16, 0, 255, 217, 189 ); //white
 set_color_profile_slot( 16, 1, 128, 162, 184 ); //scarf
 set_color_profile_slot( 16, 2, 205, 210, 214 ); //hair
@@ -196,7 +196,7 @@ set_color_profile_slot( 16, 5, 171, 12, 12 ); //blood
 set_color_profile_slot( 16, 6, 245, 134, 53 ); //eyes
 set_color_profile_slot( 16, 7, 168, 42, 42 ); //cleaver
 
-// Prompto
+// Prompto (FFXV)
 set_color_profile_slot( 17, 0, 255, 236, 222 ); //white
 set_color_profile_slot( 17, 1, 115, 43, 43 ); //scarf
 set_color_profile_slot( 17, 2, 240, 223, 134 ); //hair
@@ -206,7 +206,7 @@ set_color_profile_slot( 17, 5, 148, 148, 148 ); //blood
 set_color_profile_slot( 17, 6, 221, 226, 225 ); //eyes
 set_color_profile_slot( 17, 7, 178, 217, 212 ); //cleaver
 
-// Ardyn
+// Ardyn (FFXV)
 set_color_profile_slot( 18, 0, 255, 196, 153 ); //white
 set_color_profile_slot( 18, 1, 191, 72, 53 ); //scarf
 set_color_profile_slot( 18, 2, 107, 23, 34 ); //hair

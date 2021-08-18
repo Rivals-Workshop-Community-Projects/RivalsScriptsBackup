@@ -66,7 +66,7 @@ set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 110);
 set_hitbox_value(AT_BAIR, 1, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_BAIR, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 4);
-set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("chainsaw1v2"));
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, blood_effect);
 
@@ -87,7 +87,7 @@ set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, sound_get("chainsaw1v2"));
 set_hitbox_value(AT_BAIR, 2, HG_ANGLE, 110);
 set_hitbox_value(AT_BAIR, 2, HG_ANGLE_FLIPPER, 10);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, blood_effect);
 
 set_hitbox_value(AT_BAIR, 3, HG_PARENT_HITBOX, 3);
@@ -107,7 +107,7 @@ set_hitbox_value(AT_BAIR, 3, HG_ANGLE, 110);
 set_hitbox_value(AT_BAIR, 3, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_BAIR, 3, HG_TECHABLE, 1);
 set_hitbox_value(AT_BAIR, 3, HG_BASE_KNOCKBACK, 4);
-set_hitbox_value(AT_BAIR, 3, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(AT_BAIR, 3, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_BAIR, 3, HG_HIT_SFX, sound_get("chainsaw1v2"));
 set_hitbox_value(AT_BAIR, 3, HG_VISUAL_EFFECT, blood_effect);
 
@@ -128,7 +128,7 @@ set_hitbox_value(AT_BAIR, 4, HG_HIT_SFX, sound_get("chainsaw1v2"));
 set_hitbox_value(AT_BAIR, 4, HG_ANGLE, 110);
 set_hitbox_value(AT_BAIR, 4, HG_ANGLE_FLIPPER, 10);
 set_hitbox_value(AT_BAIR, 4, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_BAIR, 4, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(AT_BAIR, 4, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_BAIR, 4, HG_VISUAL_EFFECT, blood_effect);
 
 //Stronger Hit

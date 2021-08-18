@@ -33,7 +33,7 @@ my_hitboxID.attack != AT_JAB && my_hitboxID.attack != AT_FSPECIAL
 
 
     
-    if my_hitboxID.type == 1 {
+    if my_hitboxID.type == 1 && my_hitboxID.attack != AT_TAUNT{
     create_hitbox(AT_NSPECIAL, 3, floor(hit_player_obj.x), floor(hit_player_obj.y) - 40)
     		set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, 3 - random_func(1,6,true));
 		set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_VSPEED, -4 - random_func(2,4,true));

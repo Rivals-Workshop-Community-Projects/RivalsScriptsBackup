@@ -50,7 +50,7 @@ switch (get_window_value(attack,window,AG_WINDOW_TYPE)) {
 //#region Attack logic
 switch (attack) {
 	case AT_USPECIAL:
-		move_cooldown[AT_USPECIAL] = 2; //this is just to prevent the article from doing weird stuff
+		move_cooldown[AT_USPECIAL] = 99999; //once per airtime.
 		free = true;
 		can_shield = true;
 		if (window == 1 && window_timer == 1) {

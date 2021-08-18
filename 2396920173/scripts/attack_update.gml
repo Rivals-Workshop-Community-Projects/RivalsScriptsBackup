@@ -79,6 +79,7 @@ if attack == AT_USPECIAL {
     }
     
     if window == 1 && window_timer == 1 {
+        pawn_grounded = false;
         input_dir = 0;
         uspec_dir = 0;
         prev_uspec_dir = 0;
@@ -111,14 +112,12 @@ if attack == AT_USPECIAL {
         prev_uspec_dir = uspec_dir;
         
         if piece == "P" && !free {
-            set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 0);
+            //set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 0);
+            pawn_grounded = true;
         } else {
-            reset_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE);
+            //reset_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE);
         }
     }
-    
-    
-    
     
     if window == 2 && !special_down {
         window++;
@@ -157,7 +156,7 @@ if attack == AT_USPECIAL {
             case "Q": launch_spd = 15 break;
         }
         
-        if piece == "P" && get_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE) != 7 {
+        if piece == "P" && pawn_grounded {
             launch_spd += 6
         }
         

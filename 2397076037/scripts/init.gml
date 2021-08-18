@@ -72,7 +72,7 @@ leave_ground_max = 4.5; //the maximum hsp you can have when you go from grounded
 max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .26;
+air_accel = .3;
 prat_fall_accel = 0.9; //multiplier of air_accel while in pratfall
 air_friction = .04;
 max_djumps = 1;
@@ -84,10 +84,10 @@ wall_frames = 2; //anim frames before you leave the wall
 max_fall = 8.5; //maximum fall speed without fastfalling
 fast_fall = 14; //fast fall speed
 gravity_speed = .6;
-hitstun_grav = .53;
+hitstun_grav = .55;
 knockback_adj = 0.9; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
-land_time = 4; //normal landing frames
+land_time = 6; //normal landing frames
 prat_land_time = 20;
 wave_land_time = 8;
 wave_land_adj = 1; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
@@ -139,6 +139,7 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
+
 
 
 

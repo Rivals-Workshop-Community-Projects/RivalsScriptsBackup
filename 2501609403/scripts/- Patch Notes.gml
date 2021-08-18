@@ -1,4 +1,18 @@
 /*
+-- V1.12 --
+
+Balance Changes:
+- Bomb Explosion now sends away from the center instead of towards it
+- Bomb Explosion now does more damage (10->18)
+- Bomb Explosion now does more knockback (8->9)
+- Bomb Explosion now does has more knockback scaling (0.8->1.1)
+- Bomb Explosion is now slightly bigger
+- You can now cancel taunt if you are holding a projectile
+- There are two new cheats in muno phone (You're now able to manually choose which projectile you will get)
+
+Sound Changes:
+- Nerfed the run sound
+
 -- V1.11 --
 
 - While im here i might aswell add a few more colours

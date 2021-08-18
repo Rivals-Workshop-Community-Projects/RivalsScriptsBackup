@@ -91,3 +91,7 @@ if (state == PS_SPAWN) {
     }
 }
 
+if (gaming == 1) or (crystal == 1){
+	suppress_stage_music( 0, 100 );
+}
+

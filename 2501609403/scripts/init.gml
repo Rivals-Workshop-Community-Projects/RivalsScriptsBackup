@@ -46,6 +46,7 @@ proj_stored = false;
 store_timer = 0;
 store_timer2 = 10;
 store_size = 2;
+proj_override = false;
 
 //Dair Grab
 grabbed_player_obj = noone;    //the player object currently being grabbed.

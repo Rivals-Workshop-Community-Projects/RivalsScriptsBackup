@@ -1,5 +1,7 @@
 attacking = state == clamp(state,5,6);
 
+ground_friction = state == PS_CROUCH ? 0 : .5;
+
 //#region Jump FX
 if (state == PS_JUMPSQUAT) played_hit_fx = false;
 if (state == PS_FIRST_JUMP && prev_state == PS_JUMPSQUAT) {
@@ -37,6 +39,10 @@ if (state == PS_AIR_DODGE) {
 }
 
 //#endregion
+
+if (!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN) {
+    move_cooldown[AT_USPECIAL] = 0;
+}
 
 
 //#region Other Update

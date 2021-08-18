@@ -113,7 +113,7 @@ if swift_mode = true{
 	set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 18);
 	set_hitbox_value(AT_BAIR, 4, HG_BASE_HITPAUSE, 18);
 	set_hitbox_value(AT_DAIR, 5, HG_BASE_HITPAUSE, 8);
-	set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 16);
+	set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 12);
 	set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 12);
 	set_hitbox_value(AT_DTILT, 2, HG_BASE_HITPAUSE, 20);
 	set_hitbox_value(AT_FAIR, 6, HG_BASE_HITPAUSE, 12);
@@ -134,13 +134,13 @@ if swift_mode = true{
 	set_hitbox_value(AT_UTILT, 4, HG_VISUAL_EFFECT, 304);
 	set_hitbox_value(AT_UTILT, 5, HG_VISUAL_EFFECT, 304);
 	set_hitbox_value(AT_UTILT, 6, HG_VISUAL_EFFECT, 304);
-	set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 156);
+	set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 304);
 	set_hitbox_value(AT_FAIR, 6, HG_VISUAL_EFFECT, 304);
 	set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 304);
 	set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 304);
 	set_hitbox_value(AT_BAIR, 4, HG_VISUAL_EFFECT, 304);
 	set_hitbox_value(AT_DAIR, 5, HG_VISUAL_EFFECT, 304);
-	set_hitbox_value(AT_NAIR, 2, HG_VISUAL_EFFECT, 156);
+	set_hitbox_value(AT_NAIR, 2, HG_VISUAL_EFFECT, 304);
 	set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 125);
 	set_hitbox_value(AT_USTRONG, 5, HG_VISUAL_EFFECT, 127);
 	set_hitbox_value(AT_USTRONG, 6, HG_VISUAL_EFFECT, 125);
@@ -159,6 +159,7 @@ if swift_mode = true{
 	set_window_value(49, 3, AG_WINDOW_HSPEED, 50);
 	set_hitbox_value(49, 2, HG_HITBOX_X, 250);
 	set_hitbox_value(49, 2, HG_WIDTH, 500);
+	set_window_value(AT_UAIR, 1, AG_WINDOW_VSPEED, -0.5);
 }
 
 if swift_mode = false{
@@ -271,7 +272,7 @@ if swift_mode = false{
 	set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 14);
 	set_hitbox_value(AT_BAIR, 4, HG_BASE_HITPAUSE, 14);
 	set_hitbox_value(AT_DAIR, 5, HG_BASE_HITPAUSE, 3);
-	set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 10);
+	set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 6);
 	set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 8);
 	set_hitbox_value(AT_DTILT, 2, HG_BASE_HITPAUSE, 12);
 	set_hitbox_value(AT_FAIR, 6, HG_BASE_HITPAUSE, 8);
@@ -292,13 +293,13 @@ if swift_mode = false{
 	set_hitbox_value(AT_UTILT, 4, HG_VISUAL_EFFECT, 303);
 	set_hitbox_value(AT_UTILT, 5, HG_VISUAL_EFFECT, 303);
 	set_hitbox_value(AT_UTILT, 6, HG_VISUAL_EFFECT, 303);
-	set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 304);
+	set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 303);
 	set_hitbox_value(AT_FAIR, 6, HG_VISUAL_EFFECT, 303);
 	set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 303);
 	set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 305);
 	set_hitbox_value(AT_BAIR, 4, HG_VISUAL_EFFECT, 305);
 	set_hitbox_value(AT_DAIR, 5, HG_VISUAL_EFFECT, 303);
-	set_hitbox_value(AT_NAIR, 2, HG_VISUAL_EFFECT, 304);
+	set_hitbox_value(AT_NAIR, 2, HG_VISUAL_EFFECT, 301);
 	set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 111);
 	set_hitbox_value(AT_USTRONG, 5, HG_VISUAL_EFFECT, 112);
 	set_hitbox_value(AT_USTRONG, 6, HG_VISUAL_EFFECT, 111);
@@ -317,6 +318,7 @@ if swift_mode = false{
 	set_window_value(49, 3, AG_WINDOW_HSPEED, 40);
 	set_hitbox_value(49, 2, HG_HITBOX_X, 225);
 	set_hitbox_value(49, 2, HG_WIDTH, 450);
+	set_window_value(AT_UAIR, 1, AG_WINDOW_VSPEED, 0);
 }
 
 //fspecial bs

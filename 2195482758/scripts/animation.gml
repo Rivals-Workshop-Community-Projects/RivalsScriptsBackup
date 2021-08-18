@@ -1,6 +1,6 @@
 switch (state){
     case PS_IDLE:
-        if(!has_moved)
+        if(!party_has_moved)
         {
             sprite_index = sprite_get("idle_party");
         }

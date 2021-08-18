@@ -644,6 +644,18 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	//1.12
+	initPatch("1.12", "17 August 2021");
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Bomb Explosion now sends away from the center instead of towards it
+	- Bomb Explosion now does more damage (10->18)
+	- Bomb Explosion now does more knockback (8->9)
+	- Bomb Explosion now does has more knockback scaling (0.8->1.1)
+	- Bomb Explosion is now slightly bigger
+	- You can now cancel taunt if you are holding a projectile
+	- There are two new cheats in muno phone (You're now able to manually choose which projectile you will get)");
+	initPatchWords_ext("Sound Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Nerfed the run sound");
 	//1.11
 	initPatch("1.11", "17 July 2021");
 	initPatchWords("- While im here i might aswell add a few more colours");
@@ -802,6 +814,12 @@ with self{
 	// NOTE: If you remove these cheat codes, you will need to remove where
 	// they're referenced elsewhere in code. The comment above each cheat tells
 	// you which files reference it.
+	
+	// attack_update.gml
+	initCheat("Change Projectile", "proj_override", [0, 1, 2, 3, 4, 5, 6, 7], ["Random","100 Ton Weight", "Mini Bugingi", "Wrench", "Dumbell", "Rage Ball", "Bomb", "Dspecial Projectile"], "Make it so NSPECIAL will always give you the projectile of your choosing");
+	
+	initCheat("Jackpot", "jack_override", [0, 1, 2, 3, 4], ["Random","Always On", "Always Off", "1000 Ton Weight", "Mega Bugingi"], "Make Jackpot Projectiles Always Occur, Never Occur or Pick one of your choosing");
+
 	/*
 	// post_draw.gml
 	initCheat("Say woag", "cheat_funny_snail", [0, 1], ["no", "yes"], "Say woag? Yes. No. AAAAAA");
@@ -1009,8 +1027,8 @@ with phone{
 	
 	Bugingi also has very strange movement. His dash takes a few frames to startup but once it does it's extremely fast.
 	use this when you've confirmed a safe approach with a projectile or any other means.
-	Bugingi's Double jump is also very strange. Double Jump sends you up and down repeatedly before finally sending you up at the end.
-	due to the different directions and speeds the double jump can have, this is a great tool for performing aerials. Try it out for yourself to see what results you can achieve with it.");
+	Bugingi's Third Jump is also very strange. It sends you up and down repeatedly before finally sending you up at the end.
+	due to the different directions and speeds the jump can have, this is a great tool for performing aerials. Try it out for yourself to see what results you can achieve with it.");
 	
 }
 

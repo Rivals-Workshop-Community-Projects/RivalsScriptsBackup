@@ -290,6 +290,19 @@ if ("practice" in self)
 						AddText("");
 						AddText("FAir sfx frame 6 -> 2");
 						break;
+					case 16:
+						AddText("v1.16 - 15 Aug 2021");
+						AddText("");
+						AddText("'Can we pretend that airplanes in the night sky are Lukastars?'");
+						AddText("");
+						AddText("BAir Sweetspot hitbox shrink wrapped");
+						AddText("BAir Sweetspot Lifetime 4 -> 3");
+						AddText("BAir Startup sfx frame 7 -> 4");
+						AddText("");
+						AddText("Shinestar (Both) KB 7+0.45 -> 6+0.45");
+						AddText("");
+						AddText("USpec Speed 29 -> 27");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

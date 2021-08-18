@@ -4,7 +4,6 @@ var temp_y = floor(y+10);
 var buildtag = "indev";
 var alt = get_player_color(player);
 
-
 //Display Background
 draw_sprite_ext(sprite_get("_css_charselectbg"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
 
@@ -17,3 +16,4 @@ if alt == 4 {
 }
 
 user_event(12);
+

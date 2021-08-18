@@ -117,7 +117,7 @@ move_cooldown[AT_TAUNT] = 20
 }
 
 if attack == AT_DSPECIAL and window = 3 and window_timer = 1 {
-move_cooldown[AT_DSPECIAL] = 60
+move_cooldown[AT_DSPECIAL] = 110
 }
 
 if attack == AT_UAIR and window = 2 and window_timer = 1 {
@@ -189,8 +189,12 @@ if (attack == AT_FSPECIAL && window > 7){
 
 //Stinger Multipress
 if (attack == AT_DATTACK) {
-	if window == 3{
+	if window == 1{
+		set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 4);
+	}
+	if window == 2{
 		if attack_pressed {
+			set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 14);
 		window = 5;
 		sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
 		spawn_hit_fx( x + 10*spr_dir, y + -20, 306);
@@ -201,10 +205,6 @@ if (attack == AT_DATTACK) {
 		sound_play(sound_get("machina_furious_blades_burst_3"));
 			}
 		}
-	}
-	
-	if window == 4 && window_timer == 19 {
-		window = 14;
 	}
 	if window == 11 && attack_pressed {
 		window = 5;
@@ -229,7 +229,7 @@ if (attack == AT_DAIR){
     }
 }
 if (attack == AT_DATTACK){
-    if (window < 14 && window > 1 && state_timer % 3 == 0){
+    if (window < 4 && window > 1 && state_timer % 3 == 0) or (window < 13 && window > 4 && state_timer % 3 == 0){
       	instance_create(x , y, "obj_article2");
       	
     }
@@ -269,7 +269,9 @@ if (attack == AT_DAIR) {
 	if window == 5 && window_timer == 1 {
 		sound_play(asset_get("sfx_shovel_hit_heavy2"));
 		destroy_hitboxes();
-		shake_camera(6,3)
+		can_jump = false;
+		can_shield = false;
+		shake_camera(8,4)
 	}	
 }
 //Down Air Throw
@@ -324,8 +326,13 @@ if (attack == AT_JAB) {
 }
 
 if (attack == AT_JAB){
+	if window == 1 && window_timer == 1 {
+		set_window_value(AT_JAB, 13, AG_WINDOW_LENGTH, 13);
+		set_window_value(AT_JAB, 13, AG_WINDOW_ANIM_FRAME_START, 13);
+	}
 	if window == 5 && window_timer == 12 {
 		window = 13;
+		set_window_value(AT_JAB, 13, AG_WINDOW_LENGTH, 9);
 		set_window_value(AT_JAB, 13, AG_WINDOW_ANIM_FRAME_START, 13);
 	}
 	//if window <= 3{
@@ -406,6 +413,25 @@ if (attack == AT_DSPECIAL) {
     }
 
     
+}
+
+//music stop
+if (attack == AT_TAUNT_2) && window == 1 && get_player_color(player) == 12{
+	if gaming == 1{
+	sound_stop(sound_get( "final_battle" ));	
+	sound_stop(sound_get( "servant_of_the_crystal" ));
+	gaming = 0;
+	crystal = 0;
+	}
+}
+
+if (attack == AT_TAUNT_2) && window == 1 && get_player_color(player) == 15{
+	if crystal == 1{
+	sound_stop(sound_get( "final_battle" ));	
+	sound_stop(sound_get( "servant_of_the_crystal" ));
+	gaming = 0;
+	crystal = 0;
+	}
 }
 
 

@@ -140,6 +140,12 @@ if king_armour {
     draw_sprite(sprite_get("armour_meter"), 0, x, y - 91)
     var _col = c_red;
     draw_rectangle_color(x - 28, y - 91 - 2, x + 27 - (armour_timer/120)*55, y - 91 + 1, _col,_col,_col,_col, false)
+} else if piece == "K" && armour_cooldown > 0 {
+    draw_set_alpha(0.5)
+    draw_sprite(sprite_get("armour_meter"), 0, x, y - 91)
+    var _col = c_maroon;
+    draw_rectangle_color(x - 28, y - 91 - 2, x + 27 - (armour_cooldown/120)*55, y - 91 + 1, _col,_col,_col,_col, false)
+    draw_set_alpha(1)
 }
 
 //final smash

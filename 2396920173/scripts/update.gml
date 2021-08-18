@@ -82,7 +82,19 @@ pawn_move_timer++
 
 switch piece {
     case "P":
-    break;
+    walk_speed = 3;
+	walk_accel = 0.2;
+	walk_turn_time = 6;
+	initial_dash_time = 10;
+	initial_dash_speed = 6.25;
+	dash_speed = 6;
+	dash_turn_time = 10;
+	dash_turn_accel = 1.5;
+	dash_stop_time = 4;
+	dash_stop_percent = 0.35; //the value to multiply your hsp by when going into idle from dash or dashstop
+	ground_friction = 0.6;
+	moonwalk_accel = 1.4;
+	break;
     
     case "N":
     knockback_adj = 1.05;
@@ -181,8 +193,8 @@ if king_armour {
 	} else {
 		can_shield = false;
 		has_airdodge = false;
-		super_armor = false;
-		soft_armor = 10;
+		super_armor = true;
+		//soft_armor = 10;
 		djumps = 1;
 		walk_speed = 1;
 		dash_speed = 2;

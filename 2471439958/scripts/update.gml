@@ -128,6 +128,14 @@ if (attack == AT_FSTRONG){
 		has_hit=false;
 	}
 }
+if (attack == AT_DSPECIAL){
+		if window >= 3 && (vsp >= 1) or (vsp <= -1){ 
+		set_window_value(AT_DSPECIAL, 4, AG_WINDOW_VSPEED, -3);
+	}
+	if window == 1{
+		set_window_value(AT_DSPECIAL, 4, AG_WINDOW_VSPEED, -1);
+	}
+}
 
 //ELEMENT CHANGE
 
@@ -630,42 +638,35 @@ if get_gameplay_time() <= 120 && caleb == 0 and taunt_pressed && get_player_colo
 	caleb = 1
 	sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
 	sound_play(sound_get("I_live_again"));
+}
+if get_player_color(player) == 2{
 	set_victory_theme(sound_get("caleb_victory"));
 }
+
 //SERVANT OF THE CRYSTAL
 
 if get_gameplay_time() <= 120 && machina == 0 and taunt_pressed && get_player_color(player) == 12{
 	machina = 1
 	sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"));
 	sound_play(sound_get("machina_intro"));
-	set_victory_theme(sound_get("machina_victory"));
 }
 //bgm// ------------------------- //
 //SERVANT OF THE CRYSTAL
-if (attack == AT_TAUNT) && (special_pressed and attack_pressed) && get_player_color(player) == 12{
-	lcie = 1
+if (attack == AT_TAUNT_2) && (window == 3 && window_timer == 1) && (special_down and shield_down) && get_player_color(player) == 12{
 	gaming = 1
 	sound_play(sound_get("servant_of_the_crystal"), true);
+}
+if get_player_color(player) == 12{
 	set_victory_theme(sound_get("machina_victory"));
 }
 
-//DEVILS NEVER CRY
-if (attack == AT_TAUNT) && (special_pressed and attack_pressed) && get_player_color(player) == 14{
-	dante = 1
-	gaming = 1
-	sound_play(sound_get("devils_never_cry"), true);
-	set_victory_theme(sound_get("Dwin"));
+//RING OF FATES
+if (attack == AT_TAUNT_2) && (window == 3 && window_timer == 1) && (special_down and shield_down) && get_player_color(player) == 15{
+	crystal = 1
+	sound_play(sound_get("final_battle"), true);
 }
-//INVIDIA
-if (attack == AT_TAUNT) && (special_pressed and attack_pressed) && get_player_color(player) == 17{
-	prompto = 1
-	gaming = 1
-	sound_play(sound_get("invidia"), true);
-	set_victory_theme(sound_get("valse_di_fantastica"));
-}
-
-if (gaming == 1){
-	suppress_stage_music( 0, 100 );
+if get_player_color(player) == 15{
+	set_victory_theme(sound_get("yuri_victory"));
 }
 
 //----------------------------- //

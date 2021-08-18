@@ -3,7 +3,7 @@
 
 if attack == AT_NSPECIAL && hbox_num == 1 {
 	
-	       if player_id.attack == AT_USPECIAL && player_id.window == 1 && hitbox_timer < 294 {
+	       if player_id.state == PS_ATTACK_AIR && player_id.attack == AT_USPECIAL && player_id.window == 1 && hitbox_timer < 294 {
 		    hitbox_timer = 294
 			shake_camera(1,2)
 			spawn_hit_fx(x,y,lpar4)
@@ -35,7 +35,7 @@ if attack == AT_NSPECIAL && hbox_num == 1 {
 
 if attack == AT_NSPECIAL && hbox_num == 3 {
 	
-	       if player_id.attack == AT_USPECIAL && player_id.window == 1 && hitbox_timer < 294 {
+	      if player_id.state == PS_ATTACK_AIR && player_id.attack == AT_USPECIAL && player_id.window == 1 && hitbox_timer < 294 {
 		    hitbox_timer = 294
 			shake_camera(1,2)
 			spawn_hit_fx(x,y,lpar4)
@@ -104,7 +104,7 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
 	}else {
 	    image_index = 3
 	}
-       if player_id.attack == AT_USPECIAL && player_id.window == 1 && hitbox_timer < 294 {
+        if player_id.state == PS_ATTACK_AIR && player_id.attack == AT_USPECIAL && player_id.window == 1 && hitbox_timer < 294 {
 		    hitbox_timer = 294
 			shake_camera(1,2)
         }
@@ -344,7 +344,7 @@ if attack == AT_USPECIAL && hbox_num == 13{
                     
                      player_id.x -= 2*player_id.spr_dir
                     player_id.hsp -= 0.2*player_id.spr_dir
-                    if player_id.window < 6 and (hitbox_timer % 4 == 0 or hitbox_timer == 0){
+                    if player_id.window < 6 and (hitbox_timer % 4 == 0 or hitbox_timer == 2){
                     	
                     	shake_camera(4,2)
                     	spawn_hit_fx(x - 10 + random_func(3,20,true),y - random_func(4,40,true),13)

@@ -6,12 +6,12 @@ set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 8);
 
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 2);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 2);
 

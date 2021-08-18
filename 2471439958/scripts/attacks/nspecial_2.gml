@@ -28,7 +28,7 @@ set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL_2, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-set_num_hitboxes(AT_NSPECIAL_2, 3);
+set_num_hitboxes(AT_NSPECIAL_2, 2);
 
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITBOX_TYPE, 2);
@@ -57,7 +57,7 @@ set_hitbox_value(AT_NSPECIAL_2, 1, HG_VISUAL_EFFECT, 192);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_DESTROY_EFFECT, 192);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITSTUN_MULTIPLIER, 1);
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_HITBOX_TYPE, 2);
@@ -86,4 +86,4 @@ set_hitbox_value(AT_NSPECIAL_2, 2, HG_VISUAL_EFFECT, 192);
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_PROJECTILE_DESTROY_EFFECT, 192);
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_HITSTUN_MULTIPLIER, 1);
-set_hitbox_value(AT_NSPECIAL_2, 2, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL_2, 2, HG_PROJECTILE_DOES_NOT_REFLECT, true);

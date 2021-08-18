@@ -412,6 +412,18 @@ if (attack == AT_FTILT || attack == AT_JAB || attack == AT_DTILT && window != 3 
 		}
 	}
 }
+if (attack == AT_TAUNT && proj_stored == true){
+	if (window == 4 || window == 5){
+		if (special_down){
+			destroy_hitboxes();
+			attack_end();
+			attack = AT_NSPECIAL
+			CorrectHurtboxes();
+			window = 1
+			window_timer = 0
+		}
+	}
+}
 
 //Random Projectile time!!
 if attack == AT_NSPECIAL {
@@ -421,6 +433,45 @@ if attack == AT_NSPECIAL {
         	jackpot_number = random_func( 0, 9, true );
         	nspecial_number = random_func( 0, 6, true );
     	}
+    	//Muno Phone Projectile Override
+    	switch (phone_cheats[proj_override]) {
+    		case(1):
+    			nspecial_number = 0
+    			break;
+    		case(2):
+    			nspecial_number = 1
+    			break;
+    		case(3):
+    			nspecial_number = 2
+    			break;
+    		case(4):
+    			nspecial_number = 3
+    			break;
+    		case(5):
+    			nspecial_number = 4
+    			break;
+    		case(6):
+    			nspecial_number = 5
+    			break;
+    		case(7):
+    			nspecial_number = 7
+    			break;
+    	}
+		//Muno Phone Jackpot Override
+    	switch (phone_cheats[jack_override]) {
+    		case(1):
+    			jackpot_number = 8
+    			break;
+    		case(2):
+    			jackpot_number = 0
+    			break;
+    		case(3):
+    			jackpot_number = 8
+    			break;
+    		case(4):
+    			jackpot_number = 8
+    			break;
+    	}
     }
     //Change Angle Thrown at 
     if (window == 2 && window_timer == 2){
@@ -428,6 +479,15 @@ if attack == AT_NSPECIAL {
             jackpot_item = random_func( 0, 2, true );
             jackpot_shading = true;
             sound_play(sound_get("jackpot"))
+			//Muno Phone Jackpot Override
+    		switch (phone_cheats[jack_override]) {
+    			case(3):
+    				jackpot_item = 0
+    				break;
+    			case(4):
+    				jackpot_item = 1
+    				break;
+    		}
         }
     }
     if (window == 2 && window_timer >= 3){

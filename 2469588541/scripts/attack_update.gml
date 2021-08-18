@@ -194,7 +194,7 @@ switch (attack)
         break;
 
     case AT_USPECIAL:
-        var uspecSpeed = 29;
+        var uspecSpeed = 27;
         can_move = false;
         switch(window)
         {

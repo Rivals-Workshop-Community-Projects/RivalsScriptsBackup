@@ -1,11 +1,11 @@
 ///
 
 
-if triggered {
-	knockback_adj = 1.2;
-} else {
-	knockback_adj = 0.9;
-}
+///if triggered {
+///	  knockback_adj = 1.2;
+///} else {
+///	  knockback_adj = .9;
+///}
 
 
 if rank >= 4 && !hitpause && get_gameplay_time() % 10-rank == 0{

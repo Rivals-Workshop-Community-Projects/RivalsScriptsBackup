@@ -30,7 +30,7 @@ set_window_value(AT_JAB, 4, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_JAB, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_JAB, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_JAB, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
-set_window_value(AT_JAB, 4, AG_WINDOW_HSPEED, 7);
+set_window_value(AT_JAB, 4, AG_WINDOW_HSPEED, 5);
 
 set_window_value(AT_JAB, 5, AG_WINDOW_TYPE, 0);
 set_window_value(AT_JAB, 5, AG_WINDOW_LENGTH, 12);

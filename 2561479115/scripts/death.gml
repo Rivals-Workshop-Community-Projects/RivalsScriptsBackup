@@ -12,6 +12,7 @@ with oPlayer {
 }
 
 move_cooldown[AT_DSPECIAL] = 0;
+move_cooldown[AT_USPECIAL] = 0;
 
 //"Greater love hath no man than this, that a man lay down his life for his friends." John 15:13
 //...

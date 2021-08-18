@@ -26,9 +26,9 @@ is_tenru = true;
 // }
 
 // Party hat
-if(state != 25 && state != 24 && !has_moved)
+if(state != 25 && state != 24 && !party_has_moved)
 {
-	has_moved = true;
+	party_has_moved = true;
 	spawn_hit_fx(x,y,party_effect);
 }
 
