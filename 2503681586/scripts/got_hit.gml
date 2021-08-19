@@ -2,6 +2,14 @@
 debugA = enemy_hitboxID.kb_value
 debugB = enemy_hitboxID.kb_scale
 
+if is_nana && "is_bubble" !in self  {
+	with hit_player_obj {
+		if "planet_can_hit" in self {
+			planet_can_hit[other.player + 10] = 0
+		}
+	}
+}
+
 if attack == AT_FSPECIAL_2 && window != 1
  {
 	clownState = 1

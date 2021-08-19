@@ -7,6 +7,56 @@
 
 //fur (s) color range thing
  
+ 
+ 
+
+	
+	if (get_player_color(player) == 14) {
+
+	
+	        set_victory_portrait(sprite_get("portrait_gb"));
+set_victory_sidebar(sprite_get("sidebar_gb"))
+	}
+	
+	
+	if (get_player_color(player) == 25) {
+
+	
+	        set_victory_portrait(sprite_get("portrait_prism"));
+set_victory_sidebar(sprite_get("sidebar_prism"))
+
+	
+	}
+	
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
 if (get_player_color(player) == 0)
 {

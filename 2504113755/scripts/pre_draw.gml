@@ -171,12 +171,14 @@ afterImage[i].sprite_index = sprite_get( "fspecial_afterimage" )
     } else {second_x_offset_lmao = 0 }
     image_index_offset = 1
     
+    
+    
     final_variable_for_afterimage_because_i_am_ocd = -1
     
 } else if   (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && afterImage[i].sprite_index == sprite_index) {
 	
-	y_offset = -18*1.15
-	x_offset = -14*1.15*spr_dir
+	y_offset = -17*1.15
+	x_offset = -13*1.15*spr_dir
     image_index_offset = 2
     afterimage_division_offset = 2
 	afterimage_division_multiplier = 30
@@ -191,18 +193,41 @@ afterImage[i].sprite_index = sprite_get( "fspecial_afterimage" )
 	afterimage_division_multiplier = 30
 	 final_variable_for_afterimage_because_i_am_ocd = 1
 //	spr_dir_thing_cuz_b_reverse_AUGH
-} 
+} else if (get_gameplay_time() <= 120){
+	
+		afterimage_division_offset = 0.5
+	afterimage_division_multiplier = 30
+	 final_variable_for_afterimage_because_i_am_ocd = -1
+		y_offset = -100
+		
+		
+	image_index_offset = 0
+		afterImage[i].sprite_index = sprite_get( "jump" ) 
+	if(sword_start_variant = 1)	{
+				afterImage[i].sprite_index = sprite_get( "two_jump" ) 
+
+		
+		
+	}
+		
+		
+	afterImage[i].image_index = 6
+		
+//	x_offset = -13*1.15*spr_dir
+
+	
+}
 
 
 
 
 
-if (afterimage_division_multiplier != 50) { gpu_set_fog(1, c_white, 0, 1); } else { gpu_set_fog(1, col1, 0, 1); }
+if (afterimage_division_multiplier != 50 && get_gameplay_time() > 120) { gpu_set_fog(1, c_white, 0, 1); } else { gpu_set_fog(1, col1, 0, 1); }
        
         
 			draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index + image_index_offset, afterImage[i].x - x_offset + second_x_offset_lmao, afterImage[i].y + y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, 2*(afterImage[i].alpha - (1 + final_variable_for_afterimage_because_i_am_ocd))/(afterimage_division_multiplier*afterimage_division_offset));
         	gpu_set_blendmode(bm_add);
-                        draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index  + image_index_offset, afterImage[i].x - x_offset  + second_x_offset_lmao, afterImage[i].y + y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, afterImage[i].alpha/(afterimage_division_multiplier*afterimage_division_offset));
+                        draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index  + image_index_offset, afterImage[i].x - x_offset  + second_x_offset_lmao, afterImage[i].y + y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, 2*(afterImage[i].alpha - (1 + final_variable_for_afterimage_because_i_am_ocd))/(afterimage_division_multiplier*afterimage_division_offset));
 
         gpu_set_blendmode(bm_normal);
 
@@ -212,19 +237,19 @@ if (afterimage_division_multiplier != 50) { gpu_set_fog(1, c_white, 0, 1); } els
 
                 draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index + image_index_offset, afterImage[i].x - 2*x_offset  + second_x_offset_lmao, afterImage[i].y + 2*y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, 2*(afterImage[i].alpha - 1)/afterimage_division_multiplier);
         gpu_set_blendmode(bm_add);
-                        draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index + image_index_offset , afterImage[i].x - 2*x_offset  + second_x_offset_lmao, afterImage[i].y + 2*y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, afterImage[i].alpha/afterimage_division_multiplier);
+                        draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index + image_index_offset , afterImage[i].x - 2*x_offset  + second_x_offset_lmao, afterImage[i].y + 2*y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, 2*(afterImage[i].alpha - 1)/afterimage_division_multiplier);
 
         gpu_set_blendmode(bm_normal);
           
           
           
           
-       if (afterimage_division_multiplier != 50) { gpu_set_fog(1, col1, 0, 1); } else  { gpu_set_fog(1, c_white, 0, 1); }
+       if (afterimage_division_multiplier != 50 && get_gameplay_time() > 120) { gpu_set_fog(1, col1, 0, 1); } else  { gpu_set_fog(1, c_white, 0, 1); }
                   
        // gpu_set_fog(1, col1, 0, 1);
                  draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index  + image_index_offset, afterImage[i].x - 3*x_offset  + second_x_offset_lmao, afterImage[i].y + 3*y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, 2*(afterImage[i].alpha - (1 - final_variable_for_afterimage_because_i_am_ocd))/(afterimage_division_multiplier/afterimage_division_offset));
         gpu_set_blendmode(bm_add);
-                        draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index  + image_index_offset, afterImage[i].x - 3*x_offset  + second_x_offset_lmao, afterImage[i].y + 3*y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, afterImage[i].alpha/(afterimage_division_multiplier/afterimage_division_offset));
+                        draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index  + image_index_offset, afterImage[i].x - 3*x_offset  + second_x_offset_lmao, afterImage[i].y + 3*y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, 2*(afterImage[i].alpha - (1 - final_variable_for_afterimage_because_i_am_ocd))/(afterimage_division_multiplier/afterimage_division_offset));
 
          gpu_set_blendmode(bm_normal);
     

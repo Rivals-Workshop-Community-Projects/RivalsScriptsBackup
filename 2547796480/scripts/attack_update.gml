@@ -32,10 +32,17 @@ if attack == AT_DSTRONG {
 
 if attack == AT_DAIR {
     
-             if window == 1 && window_timer == 1 {
+        if window == 1 && window_timer == 1 {
              	state_timer = 0
        	    if vsp > -2 {
        	    	vsp = -2
+       	    }
+       	    
+       	    if left_down && !right_down {
+       	    	spr_dir = -1
+       	    }
+       	    if !left_down && right_down {
+       	    	spr_dir = 1
        	    }
          }
          

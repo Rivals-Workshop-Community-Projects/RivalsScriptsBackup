@@ -30,7 +30,7 @@ set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 8);
 
 //endlag
-set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, 1);

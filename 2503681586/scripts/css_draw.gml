@@ -1,8 +1,8 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-patch_ver = "V1.4";
-patch_day = "16";
+patch_ver = "V1.5.1";
+patch_day = "18";
 patch_month = "AUG";
 
 var num_alts = 32;

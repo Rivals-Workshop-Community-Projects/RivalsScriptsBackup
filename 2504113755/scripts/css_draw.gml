@@ -14,7 +14,37 @@
 //
 // now, please change this string to your character's name. used for resetting the values after other characters.
 //--- ---
-var qe_b = "template"
+
+
+
+
+
+
+if (get_player_color(player) == 14) { //AND 26
+    
+    
+	draw_sprite_ext(sprite_get("charselect_gb"),1,x+8,y+8,2,2,0,-1,1);
+} else if (get_player_color(player) == 25) { //AND 26
+    
+    
+	draw_sprite_ext(sprite_get("charselect_prism"),1,x+8,y+8,2,2,0,-1,1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var qe_b = "Nova"
 // ! you can now scroll down until you reach "the primary part you should change."
 
 var tmp_cur = 0;
@@ -256,15 +286,6 @@ if (color_desc_activate){
 
 
 //CODE FOR CSS OUTLINES
-if (get_player_color(player) == 14) { //AND 26
-    
-    
-	draw_sprite_ext(sprite_get("charselect_gb"),1,x+8,y+8,2,2,0,-1,1);
-} else if (get_player_color(player) == 25) { //AND 26
-    
-    
-	draw_sprite_ext(sprite_get("charselect_prism"),1,x+8,y+8,2,2,0,-1,1);
-}
 
 
 //rainboW UWU code

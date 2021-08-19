@@ -6,7 +6,7 @@ if (my_hitboxID.attack == AT_DATTACK) {
 	
 
 	hit_player_obj.x = lerp(floor(hit_player_obj.x), x+50*spr_dir, lerpam[0])
-	hit_player_obj.y = lerp(floor(hit_player_obj.y), y-8, lerpam[1])
+	hit_player_obj.y = lerp(floor(hit_player_obj.y), y-2, lerpam[1])
 	
 }
 

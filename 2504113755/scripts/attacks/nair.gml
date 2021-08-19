@@ -60,7 +60,7 @@ set_window_value(AT_NAIR, 8, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(AT_NAIR, 8, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 
-set_num_hitboxes(AT_NAIR, 9);
+set_num_hitboxes(AT_NAIR, 8);
 
 
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_TYPE, 1);

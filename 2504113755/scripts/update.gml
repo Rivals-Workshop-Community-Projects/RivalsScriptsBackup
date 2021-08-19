@@ -15,13 +15,19 @@ if (attack == AT_TAUNT && window == 2 && window_timer == 1) {
 	
 }
 
+		if  (get_gameplay_time() = (intro_time - 1)) {
 	
+				sound_play(asset_get("sfx_clairen_nspecial_grab_success")) }
+	
+if (get_gameplay_time() == intro_time + 7) {
 
-if (get_gameplay_time() < 10 && (taunt_down || taunt_pressed) && get_player_color( player ) == 14) {
+	set_state(PS_LAND)
 	
-	nes_enabled = true
+} else if (get_gameplay_time() == intro_time + 7 + 4){
 	
 	
+	set_state(PS_SPAWN)
+	state_timer = intro_time + 7 + 4
 }
 
 
@@ -110,13 +116,18 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 		
 	
 		
-	}  else if (blink_state_timer <= blink_start_frame && blink_state_timer > (blink_start_frame - 3))
-	
-	{afterImageTimer = 8 }
+	}  else if (blink_state_timer <= blink_start_frame && blink_state_timer > (blink_start_frame - 3)){
+				afterImageTimer = 8 }
 		else if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && window == 1 && window_timer == 3) {
 		
 			afterImageTimer = 1
-	}
+	} else  if (	get_gameplay_time() <= intro_time && get_gameplay_time() > (intro_time - 3)) {
+	
+
+
+	afterImageTimer = 1
+}
+	
 	else {afterImageTimer = 0}
 	
 }
@@ -146,6 +157,19 @@ if (abs(hud_offset) < 1)  {hud_offset = 0 }
 
 
 #region changing swords
+if (get_gameplay_time() < 10) {
+	if (sword_start_variant = 1) {
+		
+		set_skin("two")
+		
+	}
+	
+	
+	
+	
+}
+
+
 switch(state)
 {
 

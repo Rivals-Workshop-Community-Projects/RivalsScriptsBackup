@@ -209,22 +209,17 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
             	sound_play(asset_get("sfx_ori_bash_use"))
             	sound_play(asset_get("sfx_bird_nspecial"))
             	spawn_hit_fx(x, y-30, 303)
-            	hsp = 30*spr_dir
+            	hsp = 24*spr_dir
             }
             
-         if window_timer == 1 && !special_down {
-             hsp = 12 *spr_dir
-             create_hitbox(AT_FSPECIAL,1,x,y)
-         }
-         
+
                  	if ((left_down && spr_dir == 1) or (right_down && spr_dir == -1)) && window_timer == 1 && !hitpause && special_down{
                  	   hsp *= -1	
-                 	                    	   set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 90);
                  	} 
                  
 
          
-         vsp = -3
+         vsp = -5
          if window_timer % 2 == 0{
              spawn_hit_fx(x + hsp, y , saillusion)
          }
@@ -233,12 +228,12 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
         if window == 2 && window_timer > 6 {
             spawn_hit_fx(x, y, saillusion)
          hsp /= 1.2
-         vsp /= 2
+         vsp = -5
         } 
         
         if window == 3  {
          hsp /= 1.2
-         vsp /= 1.1
+         vsp /= 1.4
          if !free {
              set_state(PS_PRATFALL)
          }
@@ -251,14 +246,15 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
     }
     
         if attack == AT_NSPECIAL{
+        	clear_button_buffer(PC_SPECIAL_PRESSED)
         	create_hitbox(AT_NSPECIAL,2,x,y - 30)
-         if window < 3 {    
-         vsp = 0
-         hsp = 0
-         } else {
-           hsp /= 1.2
-         vsp /= 1.1   
-         }
+         ///if window < 3 {    
+         ///vsp = 0
+         ///hsp = 0
+         ///} else {
+         ///  hsp /= 1.2
+         ///vsp /= 1.1   
+         ///}
          
          if window == 1 && window_timer == 1 && !hitpause {
 if get_player_color(player) == 10 {
@@ -293,13 +289,16 @@ if get_player_color(player) == 10 {
             }
             can_fast_fall = false
             if window == 1 {
-                can_shield = true
+            	if !free {
+            		y -= 1
+            	}
+                //can_shield = true
                 vsp /= 2
                 hsp /= 1.2
             }
             if window == 2 {
             	if free {
-                can_shield = true
+                //can_shield = true
             	}
                 vsp = 0
                 hsp = 0
@@ -330,16 +329,23 @@ if get_player_color(player) == 10 {
          }
          
          if window == 3  {
-         	if hsp > 0 {
-         		spr_dir = 1
-         	}
          	
-         	if hsp < 0 {
-         		spr_dir = -1
-         	}
+         	
+         	
          	move_cooldown[AT_DAIR] = 10
             if has_hit_player {
 
+           if x < hit_player_obj.x && state_timer < 400{
+         		spr_dir = 1
+         		state_timer = 400
+         	}
+         	
+         	if x > hit_player_obj.x  && state_timer < 400 {
+         		spr_dir = -1
+         		state_timer = 400
+         	}
+         	
+         	
                   with hit_player_obj{
                   	
                   	                  
@@ -417,14 +423,19 @@ if get_player_color(player) == 10 {
          hsp/=1.2
          }
          
-         if free && window > 2 {
+         if free && window > 2 && state_timer < 200 {
          	vsp/=1.1
+         }
+         
+         if state_timer > 205 && !free && !hitpause {
+         	set_state(PS_LAND)
+         	state_timer = 0
          }
          
          if window == 1{
              
              if window_timer == 1 {
-                 
+                 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 20);
                  sound_play(asset_get("sfx_swipe_weak1"))
              }
              if window_timer == 1 {

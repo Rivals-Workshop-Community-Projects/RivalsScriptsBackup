@@ -4,6 +4,13 @@ if (has_skin()) { //is there a skin equipped?
 }
 
 
+if (get_gameplay_time() <= intro_time + 7) {
+	
+	sprite_index=sprite_get("empty_sprite");
+         draw_indicator = false
+	
+}
+
 
 
 	if (blink_state_timer >= blink_start_frame && blink_state_timer < (blink_start_frame + 7)) {

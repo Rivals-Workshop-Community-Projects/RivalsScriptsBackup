@@ -11,8 +11,12 @@ move_cooldown[AT_FSPECIAL] = 0
          	 destroyed = true
          }
     }
-    
-if enemy_hitboxID.damage == 1.005 {
+
+if hit_player_obj != self {
+	gudhit = 0
+}    
+
+if enemy_hitboxID.damage == 1.005 && hit_player_obj == self {
 	y -= 20
     hitstop += 5
     gudhit = 1
@@ -30,7 +34,7 @@ if savex != 0 {
          savex = 0
 }
 
-if attackbar > 0  && enemy_hitboxID.type == 1 && barpause == 0 {
+if attackbar > 0  && enemy_hitboxID.type == 1 {
 	take_damage(player, -1, floor(enemy_hitboxID.damage * -0.5))
      sound_play(sound_get("hextra"))
      set_state (PS_HITSTUN)

@@ -198,6 +198,11 @@ blink_start_frame = 5 //sorry suckers!
 wavebounced_downspec = false
 
 
+intro_time = 30 + random_func(current_second+current_minute + player, 50, true)
+sword_start_variant = random_func(current_second + player, 2, true)
+
+
+
 set_hit_particle_sprite( 1, sprite_get( "hfx_part_plasma" ) );
 set_hit_particle_sprite( 2, sprite_get( "hfx_part_plasma_white" ) );
 

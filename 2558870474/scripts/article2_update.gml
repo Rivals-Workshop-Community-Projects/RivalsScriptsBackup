@@ -33,7 +33,7 @@ switch(state){
         break;
     case 1: // Speeding Forward
     	if state_timer == 1{
-    		hitbox = create_hitbox(AT_FSTRONG, 1, x + (10 * spr_dir), y-23);
+    		hitbox = create_hitbox(AT_FSTRONG, 1, x + (20 * spr_dir), y-23);
     	}
         if hsp > 0{
             // Reduce Speed
@@ -51,7 +51,7 @@ switch(state){
         } else {
 			if instance_exists(hitbox)
 			{
-			  hitbox.x = x + hsp
+			  hitbox.x = x + hsp + (20 * spr_dir)
 			  hitbox.y = y - 16 + vsp;
 			}
         }
@@ -89,13 +89,13 @@ switch(state){
     	}
         if (state_timer == 25){
         	//spawn_hit_fx(x + clonevf_x, y + 8, player_id.vfx_roll_clone);
-			image_xscale = 1;
-			image_yscale = 1;
             setState(5);
         }
         break;
     case 6:
     case 5: // Despawning
+		image_xscale = 1;
+		image_yscale = 1;
     	instance_destroy(hitbox)
     	ignores_walls = true;
     	player_id.illusion = noone;

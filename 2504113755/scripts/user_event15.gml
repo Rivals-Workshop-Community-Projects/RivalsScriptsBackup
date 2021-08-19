@@ -516,6 +516,35 @@ with phone{
 	- waog");
 	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0); */
 	
+		
+		initPatch("1.17", "18 August, 2021");
+		
+			initPatchWords_ext("Extra Polish", fa_center, c_white, 0, 0);
+initPatchWords_ext("intro animation! woo
+nova can now randomly have merged swords at the start of the match
+
+afterimages should be more vibrant
+outlines are now drawn before alt names
++++removed the stupid blue highlight on the css
++++++alts with different outlines now show those outlines on the results screen
+
+-ftilt lag 12-13 frames
+-ustrong lag 16-18 frames
++dattack lerping is more powerful maybe
+
+-nair landing hitbox is smaller on whiff
+~removed air-only spike when nair lands
+
+~dair angle 65-45
+~dair scaling 0.7-0.5
+~dair bkb 4-5
+~dair no longer sends backwards if ur going backwards
++dair float now only lowers the floatiness on the next dair if you floated with the previous dair 
+
+
+~wraiths delete themselves when you die
+~wraiths only play sound/hitfx once when hit by opponents", fa_left, c_white, 0, 0);
+	
 		initPatch("1.16", "3 August, 2021");
 		
 			initPatchWords_ext("lol. lmao.", fa_center, c_white, 0, 0);

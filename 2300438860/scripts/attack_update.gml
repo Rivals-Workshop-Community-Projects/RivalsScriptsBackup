@@ -256,7 +256,6 @@ if !hitpause {
         		sound_play(sound_get("buzzing"),false,noone,0.4)
         } else {
         	        	sound_play(sound_get("heartbeat"),false,noone,1.6)
-        	take_damage(player,-1,5)
         	shake_camera(3,3)
         		sound_stop(cur_sound)
                 sound_play(sound_get("buzzing"),false,noone,0.4)		

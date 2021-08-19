@@ -142,6 +142,7 @@ if get_gameplay_time() <= 2 {
         window = 1 
         window_timer = 0 
     } else {
+    sound_stop(sound_get("radio1"));
 	sound_play(sound_get("radio1"));
 	set_attack (AT_EXTRA_1)
     }

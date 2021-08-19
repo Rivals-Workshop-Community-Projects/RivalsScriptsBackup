@@ -241,8 +241,7 @@ if hit_lockout <= 0 {
             } } }
     
     if instance_exists(currentHighestPriority) with currentHighestPriority {
-        sound_play(sound_effect);
-        spawn_hit_fx(other.x+hit_effect_x,other.y+hit_effect_y-40,hit_effect);
+       
         //this handles the knockback; hitstun, speed, etc.
         with other {
             //print_debug(`hit_${article}`);
@@ -303,6 +302,10 @@ if hit_lockout <= 0 {
         
         
         if ( player_id == other.player_id)  {
+    	          	
+    	          	
+    	          	 sound_play(sound_effect);
+        spawn_hit_fx(other.x+hit_effect_x,other.y+hit_effect_y-40,hit_effect);
     	          	
     	          	       	other.spr_dir = spr_dir
 

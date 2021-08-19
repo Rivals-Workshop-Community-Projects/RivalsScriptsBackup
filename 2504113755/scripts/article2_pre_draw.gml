@@ -26,9 +26,9 @@ col2 = player_id.col2
                	gpu_set_blendmode(bm_normal);
 
         
-			draw_sprite_ext(article_sprite_index, article_image_index, x, y, 2*article_spr_dir, 2, 1, col2, 0.4);
+			draw_sprite_ext(article_sprite_index, article_image_index, x, y, 2*article_spr_dir, 2, 1, col2, 0.5);
         	gpu_set_blendmode(bm_add);
-			draw_sprite_ext(article_sprite_index, article_image_index, x, y, 2*article_spr_dir, 2, 1, tempColour, 0.4);
+			draw_sprite_ext(article_sprite_index, article_image_index, x, y, 2*article_spr_dir, 2, 1, tempColour, 0.5);
 
         gpu_set_blendmode(bm_normal);
 

@@ -246,9 +246,9 @@ switch(state){
 	        	if attack == AT_USPECIAL and window >= 2{
 	        		// create hitbox
 	        		create_hitbox(AT_USPECIAL, 3, other.x-1, other.y);
-	        		
+
 	        		boom_rune_touched = true;
-	        		
+
 	        		// shatter rune
                     with other
                     {

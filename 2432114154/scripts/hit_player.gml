@@ -11,6 +11,16 @@ if my_hitboxID.attack == AT_USPECIAL  && my_hitboxID.hbox_num == 3 && isyellow{
 	move_cooldown[AT_USPECIAL] = 0
 }
 
+if my_hitboxID.attack == AT_FSPECIAL {
+	old_vsp = -12
+	old_hsp = 5*spr_dir
+ set_attack(AT_DSPECIAL)
+ window = 3
+ window_timer = 0
+ state_timer = 200
+	set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 12);
+}
+
 
 if my_hitboxID.attack == AT_EXTRA_2{
 	
@@ -152,7 +162,7 @@ if my_hitboxID.attack != AT_USTRONG and my_hitboxID.attack != AT_FSTRONG and my_
 }
 
 if uphit == 0 && (attack == AT_UAIR or (my_hitboxID.attack == AT_UTILT and my_hitboxID.hbox_num != 3)
-or my_hitboxID.attack == AT_USTRONG or my_hitboxID.attack == AT_USPECIAL ){
+or my_hitboxID.attack == AT_USTRONG ){
 	uphit = 30
 	downhit = 30
 	sound_play(asset_get("sfx_waterwarp_start"),false,noone,1.2,1.35)
@@ -164,7 +174,7 @@ or my_hitboxID.attack == AT_USTRONG or my_hitboxID.attack == AT_USPECIAL ){
 	hitstop += 3
 }
 
-if downhit == 0 && (my_hitboxID.attack == AT_DSPECIAL or my_hitboxID.attack == AT_DAIR or my_hitboxID.attack == AT_EXTRA_3
+if downhit == 0 && (my_hitboxID.attack == AT_DAIR
 or my_hitboxID.attack == AT_DTILT or my_hitboxID.attack == AT_DSTRONG){
 	downhit = 30
 	uphit = 30
@@ -177,7 +187,7 @@ or my_hitboxID.attack == AT_DTILT or my_hitboxID.attack == AT_DSTRONG){
 	hitstop += 3
 }
 
-if sidehit == 0 && (my_hitboxID.attack == AT_FSPECIAL or my_hitboxID.attack == AT_FTILT or (attack == AT_JAB && window > 3)
+if sidehit == 0 && (my_hitboxID.attack == AT_FTILT or (attack == AT_JAB && window > 3)
 or my_hitboxID.attack == AT_FAIR or (my_hitboxID.attack == AT_BAIR && move_cooldown[AT_NSPECIAL_2] == 0) or my_hitboxID.attack == AT_FSTRONG){
 	sidehit = 30
 	sound_play(asset_get("sfx_waterwarp_start"),false,noone,1.2,1.2)
@@ -189,7 +199,7 @@ or my_hitboxID.attack == AT_FAIR or (my_hitboxID.attack == AT_BAIR && move_coold
 	hitstop += 3
 }
 
-if neutralhit == 0 && (my_hitboxID.attack == AT_NSPECIAL or (attack == AT_JAB && window <= 3) or (my_hitboxID.attack == AT_UTILT and my_hitboxID.hbox_num == 3)
+if neutralhit == 0 && ((attack == AT_JAB && window <= 3) or (my_hitboxID.attack == AT_UTILT and my_hitboxID.hbox_num == 3)
 or my_hitboxID.attack == AT_NAIR or my_hitboxID.attack == AT_TAUNT){
 	neutralhit = 30
 	sound_play(asset_get("sfx_waterwarp_start"),false,noone,1.2,1)

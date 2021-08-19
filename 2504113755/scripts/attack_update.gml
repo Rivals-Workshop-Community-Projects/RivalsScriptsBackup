@@ -87,7 +87,7 @@ if (attack == AT_DAIR) {
 	
 	
 	
-	if (spr_dir == 1 && hsp < 0) || (spr_dir != 1 && hsp > 0) {
+/*	if (spr_dir == 1 && hsp < 0) || (spr_dir != 1 && hsp > 0) {
 		
 		set_hitbox_value(AT_DAIR, 5, HG_ANGLE_FLIPPER, 5);
 
@@ -98,10 +98,11 @@ if (attack == AT_DAIR) {
 		
 				set_hitbox_value(AT_DAIR, 5, HG_ANGLE_FLIPPER, 0);
 
-	}
+	} */
 	if (window == 1 && window_timer == 1) {
 		
-		nair_used++
+		nair_checked = false
+	//	nair_used++
 		
 	}
 	
@@ -115,6 +116,12 @@ if (attack == AT_DAIR) {
     if ((attack_down || down_strong_down) && window == 2 && nair_used < 4) {
     	
     	set_attack_value(AT_DAIR, AG_USES_CUSTOM_GRAVITY, 1);
+
+if (nair_checked == false) {
+	
+		nair_used++
+	nair_checked = true
+}
 
 
 if (nair_used = 1) {
@@ -586,6 +593,29 @@ if (attack == AT_USTRONG) {
 
 #region nair
 if (attack == AT_NAIR) {
+	
+	
+	if (!has_hit_player) {
+		
+		set_hitbox_value(AT_NAIR, 8, HG_HITBOX_Y, -25);
+set_hitbox_value(AT_NAIR, 8, HG_WIDTH, 80);
+set_hitbox_value(AT_NAIR, 8, HG_HEIGHT, 50);
+				set_hitbox_value(AT_NAIR, 9, HG_WIDTH, 75);
+
+		
+		
+	} else {
+		
+		
+		set_hitbox_value(AT_NAIR, 8, HG_HITBOX_Y, -35);
+set_hitbox_value(AT_NAIR, 8, HG_WIDTH, 100);
+set_hitbox_value(AT_NAIR, 8, HG_HEIGHT, 70);
+set_hitbox_value(AT_NAIR, 9, HG_WIDTH, 95);
+
+		
+		
+	}
+	
 	
 if (window == 1 && window_timer < 2) {
 	
