@@ -644,6 +644,20 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	//1.13.1
+	initPatch("1.13.1", "19 August 2021");
+	initPatchWords_ext("Bug Fixes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Down Taunt sound now stops when you get hit");
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Down Taunt now exists");
+	//1.13
+	initPatch("1.13", "19 August 2021");
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Dstrong hitpause scaling has been increased (.2->.9)
+	- Bair hitpause scaling has been increased (.4->.75)
+	- Bomb Explosion no longer has an angle flipper");
+	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Down Taunt now exists");
 	//1.12
 	initPatch("1.12", "17 August 2021");
 	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);

@@ -3,8 +3,6 @@ image_index = 0;
 spr_dir = 1;
 uses_shader = true;
 depth = -5;
-//image_xscale = 2;
-//image_yscale = 2;
 
 state = 0;
 newState = 0;
@@ -20,10 +18,14 @@ dieTime = 0;
 startupTime = 8;
 constellationTime = 0;
 isBig = has_rune("H");
+bigStartup = 60;
 checkMerge = false;
 cracked = false;
 crackedTimer = 0;
-crackedMax = 35;
+crackedMax = 69;
+
+old_hsp = 0;
+old_vsp = 0;
 
 randomIndex = random_func(0, 3, 1);
 closestStarMem = -4;

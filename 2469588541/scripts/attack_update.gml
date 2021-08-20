@@ -154,7 +154,11 @@ switch (attack)
                     sound_play(asset_get("mfx_star"));
                     if (was_parried) window = 5;
                 }
-                else if (window_timer == 1) sound_play(asset_get("sfx_blink_dash"));
+                else if (window_timer == 1)
+                {
+                    sound_play(asset_get("sfx_blink_dash"));
+                    reset_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE);
+                }
                 break;
 
             case 2:
@@ -181,14 +185,9 @@ switch (attack)
                 break;
 
             case 4:
-                if (window_timer == 10 && !free) hsp = -8*spr_dir;
+                if (window_timer == 8 && !free) hsp = -8*spr_dir;
                 can_jump = has_hit && !was_parried;
                 can_wall_jump = true;
-                if (free)
-                {
-                    hsp /= 1.15;
-                    vsp /= 1.05;
-                }
                 break;
         }
         break;
@@ -199,7 +198,8 @@ switch (attack)
         switch(window)
         {
             case 1:
-                if (window_timer == get_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH)-1)
+                if (window_timer == 1) spawn_hit_fx(x, y-floor(char_height/2), bigstar_effect);
+                else if (window_timer == get_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH)-1)
                 {
                     hasMovedUp = false;
                     uspecTimes = 0;
@@ -223,7 +223,8 @@ switch (attack)
                 break;
             case 3:
                 USpecRemoveResources();
-                if (window_timer == get_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH)-1)
+                if (window_timer == 1) spawn_hit_fx(x, y-floor(char_height/2), bigstar_effect);
+                else if (window_timer == get_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH)-1)
                 {
                     var tempUspecDir = uspecDir;
                     uspecDir = USpecDir();
@@ -412,7 +413,7 @@ switch (attack)
 #define ShootStar(_big)
 {
     var success = false;
-    with(asset_get("obj_article1")) if (player_id == other.id && state == 1 && (_big^^!isBig) && point_distance(x, y, other.x, other.y) < (isBig?128:96))
+    with(asset_get("obj_article1")) if (player_id == other.id && state == 1 && !cracked && (_big^^!isBig) && point_distance(x, y, other.x, other.y) < (isBig?128:96))
     {
         var opponent = noone;
         var baseSpeed = has_rune("G")?80:40;
@@ -420,21 +421,22 @@ switch (attack)
         with (other) opponent = NearestOpponentDir();
         if (opponent == noone)
         {
-            hsp = other.spr_dir * (baseSpeed+other.nspecCharge*speedScaling);
-            vsp = 0;
+            old_hsp = other.spr_dir * (baseSpeed+other.nspecCharge*speedScaling);
+            old_vsp = 0;
         }
         else
         {
             var dir = point_direction(x, y, opponent.x + opponent.hsp*4, opponent.y-floor(opponent.char_height/2) + opponent.vsp*4);
-            hsp = lengthdir_x(baseSpeed+other.nspecCharge*speedScaling, dir);
-            vsp = lengthdir_y(baseSpeed+other.nspecCharge*speedScaling, dir);
+            old_hsp = lengthdir_x(baseSpeed+other.nspecCharge*speedScaling, dir);
+            old_vsp = lengthdir_y(baseSpeed+other.nspecCharge*speedScaling, dir);
         }
         newState = 4;
         ignores_walls = true;
         checkMerge = false;
         other.tutDone[1] = true;
         if (other.upThrow > 50) other.tutDoneAdv[1] = true;
-        sound_play(asset_get("sfx_boss_shine"));
+        if (isBig) sound_play(asset_get("sfx_ori_stomp_hit"));
+        spawn_hit_fx(x, y, isBig?other.beegstar_effect:other.bigstar_effect);
         success = true;
         break;
     }

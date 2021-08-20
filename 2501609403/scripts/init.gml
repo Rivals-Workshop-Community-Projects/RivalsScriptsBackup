@@ -28,6 +28,7 @@ fstrong_glow = false;
 fstrong_no_glow = false;
 fstrong_glow_count = 0;
 fstrong_cancel = false;
+taunt_loops = 0;
 
 // intro
 introTimer = -4;
@@ -70,7 +71,7 @@ dtilt_tp_prec = 8; //The precision of the teleportation algorithm. Larger number
 
 char_height = 46;
 idle_anim_speed = .1;
-crouch_anim_speed = .1;
+crouch_anim_speed = .05;
 walk_anim_speed = .125;
 dash_anim_speed = .6;
 pratfall_anim_speed = .25;

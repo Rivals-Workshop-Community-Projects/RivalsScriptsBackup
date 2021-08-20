@@ -516,6 +516,11 @@ with phone{
 	- waog");
 	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0); */
 	
+	
+		initPatch("1.18", "18 August, 2021");
+		
+			initPatchWords_ext("I forgot", fa_center, c_white, 0, 0);
+initPatchWords_ext("added slimepuffen alt", fa_left, c_white, 0, 0);
 		
 		initPatch("1.17", "18 August, 2021");
 		

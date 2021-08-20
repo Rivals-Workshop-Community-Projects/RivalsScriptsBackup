@@ -585,6 +585,66 @@ with (oPlayer){
 	// Ribbon Throw New (Izuna Drop)
 	if (isRibbon && hitpause){
 		
+		if ((other.window == 4 || other.window == 5) && other.attack == AT_NTHROW){
+			if (other.spr_dir == 1){
+				if (get_player_damage(player) > get_player_damage(other.player)){ // If Callie has less %
+					if (other.right_pressed || other.right_down){
+						other.hsp = other.hsp + .1;
+					}
+					
+					if (other.left_pressed || other.left_down){
+						other.hsp = other.hsp - .1;
+					}
+				}
+				else { // Target has less %
+					
+					if (other.right_pressed || other.right_down){
+						other.hsp = other.hsp + .1;
+					}
+					
+					if (other.left_pressed || other.left_down){
+						other.hsp = other.hsp - .1;
+					}
+					
+					if (right_pressed || right_down){
+						other.hsp = other.hsp + clamp(.01 * ((get_player_damage(other.player) - get_player_damage(player)) / 5), 0, .1);
+					}
+					if (left_pressed || left_down){
+						other.hsp = other.hsp - clamp(.01 * ((get_player_damage(other.player) - get_player_damage(player)) / 5), 0, .1);
+					}
+				}
+			}
+			else {
+				if (get_player_damage(player) > get_player_damage(other.player)){ // If Callie has less %
+					if (other.right_pressed || other.right_down){
+						other.hsp = other.hsp + .1;
+					}
+					
+					if (other.left_pressed || other.left_down){
+						other.hsp = other.hsp - .1;
+					}
+				}
+				else { // Target has less %
+				
+					if (other.right_pressed || other.right_down){
+						other.hsp = other.hsp + .1;
+					}
+					
+					if (other.left_pressed || other.left_down){
+						other.hsp = other.hsp - .1;
+					}
+					
+					if (right_pressed || right_down){
+						other.hsp = other.hsp + clamp(.01 * ((get_player_damage(other.player) - get_player_damage(player)) / 5), 0, .1);
+					}
+					if (left_pressed || left_down){
+						other.hsp = other.hsp - clamp(.01 * ((get_player_damage(other.player) - get_player_damage(player)) / 5), 0, .1);
+					}
+				}
+			}
+			other.hsp = clamp(other.hsp, -4, 4);
+		}
+		
 		if (other.window == 1 && other.attack == AT_NTHROW){
 			y = other.y;
 			switch(spr_dir){

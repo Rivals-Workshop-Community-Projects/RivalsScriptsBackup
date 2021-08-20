@@ -42,4 +42,9 @@ if (attack == AT_NSPECIAL){
 	set_hitbox_value(AT_NSPECIAL, 7, HG_DAMAGE, (1.6 + (0.114 * get_player_damage( player ))));
 }
 
+//Taunt 2
+if (attack == AT_TAUNT && down_down){
+	attack = AT_TAUNT_2
+}
+
 user_event(13);

@@ -303,6 +303,26 @@ if ("practice" in self)
 						AddText("");
 						AddText("USpec Speed 29 -> 27");
 						break;
+					case 17:
+						AddText("v1.17 - 19 Aug 2021");
+						AddText("");
+						AddText("'I could really use a Flake right now, Flake right now, Flake right now...'");
+						AddText("");
+						AddText("Cracked stars despawn time 35 -> 69");
+						AddText("Shinestar can no longer be used on cracked stars");
+						AddText("");
+						AddText("Big Shinestars now have a 12 frame startup before launching");
+						AddText("Shinestars will aim at where the opponent was at the beginning of the startup");
+						AddText("");
+						AddText("USpec Startup 13 -> 16");
+						AddText("Added visual effect to USpec to make it easier to react to");
+						AddText("");
+						AddText("FSpec Endlag 38 -> 16");
+						AddText("FSpec now has pratfall on whiff");
+						AddText("FSpec Endlag no longer has reduced air acceleration and gravity");
+						AddText("");
+						AddText("UAir Startup 9 -> 11");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

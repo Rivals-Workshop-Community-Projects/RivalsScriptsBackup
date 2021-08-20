@@ -39,6 +39,7 @@ switch (my_hitboxID.attack)
 		break;
 	case AT_FSPECIAL:
 		if (upThrow > 0) tutDoneAdv[2] = true;
+		set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 1);
 		break;
 	case AT_FSPECIAL_2:
 		if (my_hitboxID.hbox_num == 1)

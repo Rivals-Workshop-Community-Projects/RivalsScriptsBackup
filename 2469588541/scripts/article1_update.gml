@@ -70,6 +70,14 @@ switch (state)
         if (state_timer >= constellationTime) SetArticleState(AS_DESPAWN);
         break;
     case AS_NSPEC:
+        var startFrame = isBig?12:1;
+        if (state_timer <= startFrame)
+        {
+            if (state_timer < startFrame) break;
+            hsp = old_hsp;
+            vsp = old_vsp;
+            sound_play(asset_get("sfx_boss_shine"));
+        }
         checkMerge = false;
         ignores_walls = true;
         var dist = point_distance(0, 0, hsp, vsp);

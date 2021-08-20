@@ -58,6 +58,6 @@ set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DSTRONG, 1, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, fx_smallhit2);
 set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 7);
-set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, .2);
+set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, sound_get("bhit_medium_3"));

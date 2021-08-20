@@ -330,7 +330,13 @@ if get_player_color(player) == 10 {
          
          if window == 3  {
          	
-         	
+         	if hsp < 0  && state_timer < 400{
+             		spr_dir = -1 
+            }
+            
+            if hsp > 0 && state_timer < 400{
+            	spr_dir = 1 
+            }
          	
          	move_cooldown[AT_DAIR] = 10
             if has_hit_player {

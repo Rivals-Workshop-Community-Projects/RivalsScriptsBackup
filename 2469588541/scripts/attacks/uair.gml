@@ -6,7 +6,7 @@ set_attack_value(AT_UAIR, AG_LANDING_LAG, 6);
 set_attack_value(AT_UAIR, AG_HURTBOX_SPRITE, sprite_get("uair_hurt"));
 
 set_window_value(AT_UAIR, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, has_rune("I")?4:9);
+set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, has_rune("I")?4:11);
 set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_UAIR, 1, AG_WINDOW_VSPEED, -2);
 

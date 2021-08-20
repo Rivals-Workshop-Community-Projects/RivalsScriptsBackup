@@ -11,6 +11,24 @@ if (attack == AT_USPECIAL){
     }
 }
 
+//Taunt 2
+if (attack == AT_TAUNT_2){
+	if (window == 2 && window_timer == 1){
+		sound_play(sound_get("dance"), true)
+	}
+	if (window == 3){
+		if (window_timer == 1){
+			taunt_loops += 1;
+		}
+		if (!taunt_down && taunt_loops >= 3){
+			sound_stop(sound_get("dance"))
+			window = 4
+			taunt_loops = 0
+		}
+	}
+}
+
+//Uspecial
 if attack == AT_USPECIAL {
     
     if left_down && hsp > -2 {
@@ -412,6 +430,7 @@ if (attack == AT_FTILT || attack == AT_JAB || attack == AT_DTILT && window != 3 
 		}
 	}
 }
+//Taunt Gattling
 if (attack == AT_TAUNT && proj_stored == true){
 	if (window == 4 || window == 5){
 		if (special_down){
@@ -424,6 +443,19 @@ if (attack == AT_TAUNT && proj_stored == true){
 		}
 	}
 }
+//Taunt 2 Gattling
+if (attack == AT_TAUNT_2 && proj_stored == true){
+	if (special_down){
+			sound_stop(sound_get("dance"))
+			destroy_hitboxes();
+			attack_end();
+			attack = AT_NSPECIAL
+			CorrectHurtboxes();
+			window = 1
+			window_timer = 0
+	}
+}
+
 
 //Random Projectile time!!
 if attack == AT_NSPECIAL {

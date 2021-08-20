@@ -7,12 +7,13 @@ set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
 set_attack_value(AT_USPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
 
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_TYPE, 1); // startup
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 13);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, sound_get("pew"));
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 8);
 
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE, 1); // nyoom
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 6);

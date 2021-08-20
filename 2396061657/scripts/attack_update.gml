@@ -38,7 +38,7 @@ if (attack == AT_DSPECIAL){
 		nspecial_charge = 0;
 		focus_armorbreak = false;
 		LoveStorage = 0;
-		nspecial_hitpause = 7; // Callie is +5 with no meter 
+		nspecial_hitpause = 27; // Callie is +5 with no meter 
 		nspecial_damage = 3;
 		set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_HITPAUSE, nspecial_hitpause);
 		set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, nspecial_damage);
@@ -70,11 +70,11 @@ if (attack == AT_DSPECIAL){
 			
 			dash_cancel_counter += .5;
 			
-			nspecial_hitpause = 7 + (LoveStorage/12);
+			nspecial_hitpause = 27 + (LoveStorage/12);
 			
-			// Callie is +5 with no meter 
-			// Callie is +14 with 100 meter
-			// Callie is +21 with 200 meter
+			// Callie is +6 with no meter 
+			// Callie is +15 with 100 meter
+			// Callie is +22 with 200 meter
 			// Every 20 meter is + 2 frame of advantage
 			
 			set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_HITPAUSE, nspecial_hitpause);

@@ -212,21 +212,45 @@ image_index = color;
 			var position = 20;	
 			ColorPrev = make_color_rgb(56, 76, 128);
 			ColorNext = make_color_rgb(228, 230, 228);
-			ColorNextNext = make_color_rgb(242, 228, 214);
+			ColorNextNext = make_color_rgb(74, 63, 81);
 				break;	
 				
 				case 21: 
 			name = " 22: Inked Up"; 
 			var position = 21;	
 			ColorPrev = make_color_rgb(255, 225, 143);
+			ColorNext = make_color_rgb(74, 63, 81);
+			ColorNextNext = make_color_rgb(252, 129, 197);
+				break;	
+				
+				case 22: 
+			name = " 23: February"; 
+			var position = 22;	
+			ColorPrev = make_color_rgb(228, 230, 228);
+			ColorNext = make_color_rgb(252, 129, 197);
+			ColorNextNext = make_color_rgb(145, 106, 70);
+				break;	
+				
+				case 23: 
+			name = " 24: Osohe"; 
+			var position = 23;	
+			ColorPrev = make_color_rgb(74, 63, 81);
+			ColorNext = make_color_rgb(145, 106, 70);
+			ColorNextNext = make_color_rgb(242, 228, 214);
+				break;	
+				
+				case 24: 
+			name = " 25: Apostle"; 
+			var position = 24;	
+			ColorPrev = make_color_rgb(252, 129, 197);
 			ColorNext = make_color_rgb(242, 228, 214);
 			ColorNextNext = make_color_rgb(77, 176, 255);
 				break;	
 				
-				case 22: 
-			name = " 23: Riptide"; 
-			var position = 22;	
-			ColorPrev = make_color_rgb(228, 230, 228);
+				case 25: 
+			name = " 26: Riptide"; 
+			var position = 25;	
+			ColorPrev = make_color_rgb(145, 106, 70);
 			ColorNext = make_color_rgb(255, 169, 195);
 			ColorNextNext = make_color_rgb(77, 176, 255);
 				break;	
@@ -306,16 +330,16 @@ var Highlight = make_color_rgb(208, 255, 255);
 draw_sprite_ext( sprite_get("select_highlight"), 0, x + 8, y + 8, 1, 1, 0, Highlight, 1);
 
 
-draw_set_font(asset_get("tinyFont"));
+draw_set_font(1);
 draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
-draw_text_color(x + 4, y + 215, "v1.8.0", c_gray, c_gray, c_gray, c_gray, 1);
+draw_text_color(x + 4, y + 231, "v1.8.0", c_gray, c_gray, c_gray, c_gray, 1);
 
 // Date Display
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_right);
 draw_set_valign(fa_bottom);
-draw_text_color(x + 218, y + 215, "August 7th, 2021", c_gray, c_gray, c_gray, c_gray, 1);
+draw_text_color(x + 218, y + 225, "August 19th, 2021", c_gray, c_gray, c_gray, c_gray, 1);
 
 // Initial Name	+ Rectangles
 //if (image_alpha > 0){

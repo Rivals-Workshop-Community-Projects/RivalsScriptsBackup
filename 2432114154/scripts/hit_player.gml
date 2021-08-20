@@ -12,13 +12,13 @@ if my_hitboxID.attack == AT_USPECIAL  && my_hitboxID.hbox_num == 3 && isyellow{
 }
 
 if my_hitboxID.attack == AT_FSPECIAL {
-	old_vsp = -12
-	old_hsp = 5*spr_dir
+	old_vsp = -5
+	old_hsp = 4*spr_dir
  set_attack(AT_DSPECIAL)
  window = 3
  window_timer = 0
  state_timer = 200
-	set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 12);
+	set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 10);
 }
 
 

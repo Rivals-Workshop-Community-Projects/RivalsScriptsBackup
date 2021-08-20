@@ -36,7 +36,7 @@ nspecial_charge = 0;
 
 focus_attack = false;
 focus_armorbreak = false;
-nspecial_hitpause = 15;
+nspecial_hitpause = 27;
 nspecial_damage = 3;
 
 should_crumple = false;

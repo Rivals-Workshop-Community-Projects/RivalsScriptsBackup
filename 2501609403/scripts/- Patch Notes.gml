@@ -1,4 +1,19 @@
 /*
+-- V1.13.1 --
+
+Bug Fixes:
+- Down Taunt sound now stops when you get hit
+
+-- V1.13 --
+
+Balance Changes:
+- Dstrong hitpause scaling has been increased (.2->.9)
+- Bair hitpause scaling has been increased (.4->.75)
+- Bomb Explosion no longer has an angle flipper
+
+Cosmetic Changes:
+- Down Taunt now exists
+
 -- V1.12 --
 
 Balance Changes:

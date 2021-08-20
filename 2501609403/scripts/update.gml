@@ -259,6 +259,7 @@ ani_y = view_get_yview()
 //Grab stuff
 if (state_cat == SC_HITSTUN){
 	grabbed_player_obj = noone;
+	sound_stop(sound_get("dance"))
 }
 //Visual Effects
 //EXplosion
