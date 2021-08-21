@@ -26,6 +26,9 @@ taxiLanded = false;
 taxiMaxHSP = 9;
 landTime = 0;
 crystalHold = 0;
+drawDan = false;
+sayonara = 0;
+sayoTimer = 0;
 
 //pool party vars
 nairbounceTryUnlock = false;
@@ -164,9 +167,10 @@ bubble_y = 8;
 cur = get_player_color(player);
 abyss_col = [220, 113, 255];
 
-sandair = hit_fx_create(sprite_get("hit_fx_sandair"), 40);
-sandair2 = hit_fx_create(sprite_get("hit_fx_sandair2"), 40);
+sandair = hit_fx_create(sprite_get("hit_fx_sandair"), 32);
+sandair2 = hit_fx_create(sprite_get("hit_fx_sandair2"), 32);
 symbiote = hit_fx_create(sprite_get("hit_fx_symbiote"), 12);
+symbioterev = hit_fx_create(sprite_get("hit_fx_symbioterev"), 12);
 crysSmall = hit_fx_create(sprite_get("hit_fx_crysSmall"), 10);
 poolparty = hit_fx_create(sprite_get("hit_fx_poolparty"), 16);
 tada = hit_fx_create(sprite_get("hit_fx_tada"), 24);
@@ -225,10 +229,10 @@ dracula_portrait = sprite_get("dracula_portrait");
 dracula_portrait2 = asset_get("empty_sprite");
 var page = 0;
 //Mt. Dedede Stadium
-arena_title = "The Agent of Travel"; //T## #a##t ## ##t##r
+arena_title = "The Vault of Aether";
 //Agent N
-ncode1 = "FILE 050 '#A#T##US' [FILE READ ERROR]"
-ncode2 = "Indiscernable from typical luggage."
+ncode1 = "FILE 050 '[A;T?#US' [FILE READ ERROR]"
+ncode2 = "Indiscernable from typical luggage?"
 ncode3 = "[THE ANVIL DESCENDS. SECURE THE VAULT.]"
 
 
@@ -281,10 +285,6 @@ crysProj_shotSpeedBonus = 0;
 dairCooldown = 15;
 dairBounce = -8;
 sandStage = 0;
-//Bair variables
-bairHitCheck = false;
-bairHSP = 6;
-bairVSP = -2;
 //Registration Tracker
 regTracker = 0;
 regBonusDmg = 2;
@@ -305,7 +305,7 @@ canCrystalBounce = true;
 legendaryPinged = false;
 prizepurseEnabled = false;
 canBuyGodhead = false;
-
+dewIt = false;
 
 //Suitplex variables - Credit to Mawral (Epinel) for original suplex code
 suit_grab_connected = false;
@@ -355,9 +355,9 @@ item[2, 3] = 0;	//owned
 item[2, 4] = sprite_get("mini_poolparty");
 item[2, 5] = 2;
 item[2, 6] = "BOUNCY NAIR";
-item[2, 7] = false;
-item[2, 8] = sprite_get("hud_shop1");
-item[2, 9] = $b2eaff;
+item[2, 7] = true;
+item[2, 8] = sprite_get("hud_shop"); //sprite_get("hud_shop1");
+item[2, 9] = $d5a5b5; //$b2eaff;
 //Mark of the Creator, ID 3
 item[3, 0] = "CREATOR'S CURSE";
 item[3, 1] = "You forgot something!";
@@ -421,7 +421,7 @@ item[8, 3] = 0;
 item[8, 4] = sprite_get("mini_gradcap");
 item[8, 5] = 8; // ID #
 item[8, 6] = "MAX XP UP"
-item[8, 7] = false;	//TEMPORARILY DISABLED
+item[8, 7] = false;	//disabled pending rework
 item[8, 8] = sprite_get("hud_shop");
 //Game Breaking Glitch, ID 9
 item[9, 0] = "GAME-BREAKING GLITCH";
@@ -486,7 +486,7 @@ item[14, 3] = 0;
 item[14, 4] = sprite_get("mini_downb");
 item[14, 5] = 14;
 item[14, 6] = "What does it do??";
-item[14, 7] = false; //unlock requirement check?
+item[14, 7] = false; //unlock
 item[14, 8] = sprite_get("hud_shop1");
 item[14, 9] = $b2eaff;
 // Voidbox Experiment, ID 15
@@ -497,7 +497,7 @@ item[15, 3] = 0;
 item[15, 4] = sprite_get("mini_pandora");
 item[15, 5] = 15;
 item[15, 6] = "CROUCH AMPS STRONGS";
-item[15, 7] = false; //unlock requirement check?
+item[15, 7] = false; //disabled pending rework
 item[15, 8] = sprite_get("hud_shop2");
 item[15, 9] = $1818f9;
 // Mint Toothpaste, ID 16
@@ -508,7 +508,7 @@ item[16, 3] = 0;
 item[16, 4] = sprite_get("mini_toothpaste");
 item[16, 5] = 16;
 item[16, 6] = "FROSTY UPTILT";
-item[16, 7] = false; //unlock requirement check?
+item[16, 7] = false; //disabled pending rework
 item[16, 8] = sprite_get("hud_shop1");
 item[16, 9] = $b2eaff;
 // GotE Aldor Plushie, ID 17
@@ -519,7 +519,7 @@ item[17, 3] = 0;
 item[17, 4] = sprite_get("mini_aldor");
 item[17, 5] = 17;
 item[17, 6] = "AIR MOBILITY UP";
-item[17, 7] = false; //unlock requirement check?
+item[17, 7] = false; //unlock
 item[17, 8] = sprite_get("hud_shop1");
 item[17, 9] = $b2eaff;
 // SuperSmashCon, ID 18
@@ -530,7 +530,7 @@ item[18, 3] = 0;
 item[18, 4] = sprite_get("mini_controller");
 item[18, 5] = 18;
 item[18, 6] = "WALK > RUN";
-item[18, 7] = false; //unlock requirement check?
+item[18, 7] = false; //unlock
 item[18, 8] = sprite_get("hud_shop1");
 item[18, 9] = $b2eaff;
 // McFinity
@@ -541,7 +541,7 @@ item[19, 3] = 0;
 item[19, 4] = sprite_get("mini_buuuurger");
 item[19, 5] = 19;
 item[19, 6] = "BREAKFAST BURGERS";
-item[19, 7] = false; //unlock requirement check?
+item[19, 7] = false; //disabled pending rework
 item[19, 8] = sprite_get("hud_shop1");
 item[19, 9] = $b2eaff;
 //Letterman Jacket, ID 20
@@ -574,7 +574,7 @@ item[22, 3] = 0;
 item[22, 4] = sprite_get("mini_key");
 item[22, 5] = 22;
 item[22, 6] = "FSPECIAL AERIAL SLAM";
-item[22, 7] = false;
+item[22, 7] = false; //disabled pending rework
 item[22, 8] = sprite_get("hud_shop1");
 item[22, 9] = $b2eaff;
 //Nintendo Switch, ID 23
@@ -599,15 +599,15 @@ item[24, 6] = "NSPECIAL LEAKS";
 item[24, 7] = true;
 item[24, 8] = sprite_get("hud_shop");
 item[24, 9] = $d5a5b5;
-// Bair Reversal, ID 25
+// bair is absa nair, ID 25
 item[25, 0] = "NO ENTRY";
 item[25, 1] = "TURN BACK N0W";
 item[25, 2] = sprite_get("item_enternt");
 item[25, 3] = 0;
 item[25, 4] = sprite_get("mini_enternt");
 item[25, 5] = 25;
-item[25, 6] = "BAIR REVERSED";
-item[25, 7] = false;
+item[25, 6] = "MULTIHIT BAIR";
+item[25, 7] = true;
 item[25, 8] = sprite_get("hud_shop");
 item[25, 9] = $d5a5b5;
 // F for Fornace, ID 26
@@ -621,5 +621,3 @@ item[26, 6] = "OK";
 item[26, 7] = false;
 item[26, 8] = sprite_get("hud_shop1");
 item[26, 9] = $b2eaff;
-
-user_event(14);

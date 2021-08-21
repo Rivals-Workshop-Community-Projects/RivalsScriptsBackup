@@ -26,16 +26,16 @@ is_tenru = true;
 // }
 
 // Party hat
-if(state != 25 && state != 24 && !party_has_moved)
-{
-	party_has_moved = true;
-	spawn_hit_fx(x,y,party_effect);
-}
+// if(attack != AT_PHONE && state != 25 && state != 24 && !party_has_moved && phone_cheats[cheat_party] == 1)
+// {
+// 	party_has_moved = true;
+// 	spawn_hit_fx(x,y,party_effect);
+// }
 
 // Taunt 2
 if(do_taunt_2)
 {
-	set_attack(AT_TAUNT_2);
+	set_attack(AT_TAUNT_2);]
 	do_taunt_2 = false;
 }
 

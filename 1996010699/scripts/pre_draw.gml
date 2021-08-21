@@ -20,3 +20,8 @@ if(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && (attack == AT_DSPECIA
 		}
 	}
 }
+/*
+if(drawDan){
+	draw_sprite_ext(sprite_get("f"), 0, x, y, 1, 1, 0, c_white, 0.8);
+}
+*/

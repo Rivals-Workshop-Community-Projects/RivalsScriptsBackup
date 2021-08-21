@@ -52,6 +52,28 @@ if state_cat == SC_HITSTUN && specialing = 1 {
     specialing = 0
 }
 
+if state_cat != SC_HITSTUN && state != PS_PRATFALL && state != PS_PRATLAND {
+
+//print(electricwindgodfist)
+
+if (state == PS_CROUCH && state_timer > 15) or (state != PS_CROUCH && state != PS_ATTACK_GROUND && state_timer > 15) {
+	electricwindgodfist = 0
+}	
+
+if state != PS_CROUCH && electricwindgodfist == 0 && (left_down or right_down) {
+	electricwindgodfist = 1
+}
+
+if down_down && electricwindgodfist = 1 {
+	electricwindgodfist = 2
+}
+
+if (left_pressed or right_pressed) && electricwindgodfist = 2{
+	electricwindgodfist = 3
+}
+
+
+}
 
 if scharge >= 180 {
 	scharge = 180
@@ -63,7 +85,7 @@ if scharge >= 180 {
 		overcharged = 1
 	}
 	
-	if get_gameplay_time() % 40 == 0 {
+	if get_gameplay_time() % 60 == 0 {
 		take_damage (player, -1, 1)
 	}
 	

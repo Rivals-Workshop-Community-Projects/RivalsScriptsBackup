@@ -12,6 +12,16 @@ if(state_cat == SC_HITSTUN){
 	setNextItem();
 }
 
+//AI DI helper
+var temp_angle = get_hitbox_angle(enemy_hitboxID);
+var force = enemy_hitboxID.kb_value + enemy_hitboxID.kb_scale;
+
+if(force >= 9 && temp_angle >= 20 && temp_angle <= 50){
+	reconsider = true;
+} else {
+	reconsider = false;
+}
+
 #define setNextItem
 {
 	r = random_func(0, numItemsAvailable, true);

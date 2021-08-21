@@ -20,6 +20,10 @@ if (my_hitboxID.attack==AT_FSPECIAL && my_hitboxID.hbox_num == 1){
 	window_timer = 0;
 }
 
+if (my_hitboxID.attack==AT_BAIR && item[25, 3] == 1){
+	old_vsp--;
+}
+
 if(item[14, 7] == false && item[14, 3] == 0 && my_hitboxID.attack==AT_DSPECIAL){
 	achieveUnlock(14);
 }
@@ -35,18 +39,22 @@ if(my_hitboxID.attack==AT_NAIR){
 }
 */
 
+
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1){
 	crysProj_timer = crysProj_tickDelay;
 	crysProj_id = my_hitboxID;
 	canCrystalBounce = false;
 }
 
+//toothpaste unlock
+/*
 if(item[16, 3] == 0 && item[16, 7] == false && my_hitboxID.attack == AT_UTILT && my_hitboxID.hbox_num >= 2 && (get_player_damage(hit_player_obj.player) - (get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_DAMAGE)) <= 32)){
 	achieveUnlock(16);
 }
+*/
 
 if(item[11,3] == 1){
-	if(my_hitboxID.attack==AT_UTILT && my_hitboxID.hbox_num >= 2){
+	if(my_hitboxID.attack==AT_UTILT && my_hitboxID.hbox_num < 4 && my_hitboxID.hbox_num > 1){
 		with (hit_player_obj.player) {
 			vsp = 0;
 			hsp = 0;

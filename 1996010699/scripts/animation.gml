@@ -50,27 +50,13 @@ if(item[10, 3] == 1 && sprite_index == sprite_get("nspecial")){
 	sprite_index = sprite_get("nspecial1");
 }
 
-if(item[2, 3] == 1 && sprite_index == sprite_get("nair")){
-	sprite_index = sprite_get("nair1");
-}
-
 if(item[4, 3] == 1 && sprite_index == sprite_get("uspecial")){
 	sprite_index = sprite_get("uspecial1");
-}
-
-if(item[7, 3] == 1 && sprite_index == sprite_get("bair")){
-	sprite_index = sprite_get("bair1");
 }
 
 if(item[9, 3] == 1){
 	if (sprite_index == sprite_get("waveland")){
         sprite_index = sprite_get("waveland1");
-	}
-	if (sprite_index == sprite_get("idle")){
-		sprite_index = sprite_get("idle1");
-		var frames = 16;
-		var frame_dur = 6;
-		image_index = floor((state_timer mod (frames * frame_dur)) / frame_dur);
 	}
 }
 
@@ -85,25 +71,12 @@ if(sprite_index == sprite_get("ustrong")){
 		}
 	}
 }
-
-if(sprite_index == sprite_get("dstrong")){
-	if(window > 4){
-		sprite_index = sprite_get("dstrongKT");
-	}
-}
-
-if(sprite_index == sprite_get("ftilt")){
-	if(window > 4){
-		sprite_index = sprite_get("ftiltKT");
-	}
-}
 	
 if(item[14, 3] == 1){
 	if (sprite_index == sprite_get("dspecial")){
 		sprite_index = sprite_get("dspecial1");
 	}
 }
-
 
 if (sprite_index == sprite_get("taunt")){
 	if(get_player_color(player) == 6){
@@ -114,15 +87,6 @@ if (sprite_index == sprite_get("taunt")){
 	}
 	if(get_player_color(player) == 3 && window = 2){
 		sprite_index = sprite_get("taunt2");
-	}
-}
-
-if(item[15, 3] == 1){
-	if (sprite_index == sprite_get("crouch")){
-		sprite_index = sprite_get("crouchKT");
-	}
-	if (sprite_index == sprite_get("dtilt")){
-		sprite_index = sprite_get("dtiltKT");
 	}
 }
 

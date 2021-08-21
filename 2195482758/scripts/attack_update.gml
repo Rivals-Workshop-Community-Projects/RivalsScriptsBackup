@@ -8,6 +8,9 @@ if (attack == AT_NSPECIAL){
 	
 	can_fast_fall = window > 1 && window < 3;
 	
+	// Cap fall speed
+	vsp = min(vsp,4);
+	
 	// Reset angle
 	if(window == 1 && window_timer == 1)
 	{
@@ -27,7 +30,7 @@ if (attack == AT_NSPECIAL){
 		set_attack_value(AT_NSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("nspecial_hurt_air"));
 		reset_hitbox_value(AT_NSPECIAL,1,HG_PROJECTILE_AIR_FRICTION);
 		reset_hitbox_value(AT_NSPECIAL,1,HG_PROJECTILE_GRAVITY);
-		reset_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_GROUND_BEHAVIOR);
+		reset_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR);
 		
 		with(pHurtBox) 
 			if(other.player == player && !other.free) sprite_index = sprite_get("nspecial_hurt");
@@ -302,7 +305,7 @@ if (attack == AT_NSPECIAL){
 		
 
 		set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, fc_base_x + dcos(firecracker_angle)*40);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, fc_base_y + -dsin(firecracker_angle)*35 - 5);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, fc_base_y + -dsin(firecracker_angle)*35 - 8);
 		
 		// Set firecracker sprite
 		set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get(fc_string));
@@ -2429,6 +2432,13 @@ if(attack == AT_UTILT){
 		
 	// }
 	
+	// SFX
+	if(window == 10 && window_timer == 3)
+	{
+		sound_play(asset_get("sfx_birdclap"));
+	}
+
+	
 	// Raise height a bit
 	hud_offset = lerp(hud_offset, char_height, 0.5);
 	
@@ -2499,6 +2509,7 @@ if(attack == AT_UTILT){
 	{
 		window = 10;
 		window_timer = 0;
+		sound_play(asset_get("sfx_swipe_medium1"));
 	}
 	
 	if(window >= 9 && window <= 10 && has_hit && jump_queue)
@@ -2609,16 +2620,10 @@ if(attack == AT_BAIR){
 #region Ftilt
 //Ftilt code
 if(attack == AT_FTILT){
-	if(!hitpause)
+
+	if(has_hit_player && window == 2)
 	{
-		if(!has_hit_player && window == 2)
-		{
-			hsp = -3 * spr_dir;
-		}
-		else if(window == 2)
-		{
-			hsp = 3 * spr_dir;
-		}
+		hsp = 0;
 	}
 }
 #endregion
@@ -2718,9 +2723,12 @@ if(attack == AT_FSTRONG){
 if(attack == AT_JAB){
 
 	// Allow tilt cancels in either direction
-	if((((left_down || left_stick_down) && spr_dir == 1) || ((right_down || right_stick_down) && spr_dir == -1))  && (attack_pressed|| down_stick_down || up_stick_down || right_stick_down || left_stick_down) && ((window == 3 && window_timer >= 6) || (window == 6 && window_timer >= 7)))
+	if((((left_down || left_stick_down || down_down) && spr_dir == 1) || ((down_down || right_down || right_stick_down) && spr_dir == -1))  && (special_pressed || attack_pressed || down_stick_down || up_stick_down || right_stick_down || left_stick_down) && ((window == 3 && window_timer >= 5) || (window == 6 && window_timer >= 4)))
 	{
-		spr_dir *= -1;
+		if(!special_pressed)
+		{
+			spr_dir *= -1;
+		}
 		clear_button_buffer(PC_LEFT_HARD_PRESSED);
 		clear_button_buffer(PC_RIGHT_HARD_PRESSED);
 		set_state(PS_IDLE);
@@ -2729,11 +2737,11 @@ if(attack == AT_JAB){
 	// Little backwards hsp
 	if(window == 9 && window_timer == 7) hsp -= 2*spr_dir;
 	
-	// Stop on jab2 connect
-	if(window == 5 && has_hit_player)
-	{
-		hsp *=.7;
-	}
+	// // Stop on jab2 connect
+	// if(window == 5 && has_hit_player)
+	// {
+	// 	hsp *=.7;
+	// }
 }
 #endregion
 

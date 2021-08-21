@@ -6,6 +6,23 @@ if my_hitboxID.attack == AT_JAB or my_hitboxID.attack == AT_NAIR {
     
 }
 
+
+if my_hitboxID.attack == AT_EXTRA_3 {
+    set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_HITPAUSE, 20);
+    set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 20);	
+    set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 10);
+    set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
+    set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 4);
+    set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 12);
+    set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1.1);
+    create_hitbox(AT_DSPECIAL,1,x+30*spr_dir, y - 32)
+    
+    sound_play(asset_get("sfx_absa_kickhit"))
+    scharge += 50
+        move_cooldown[AT_EXTRA_2] = 60
+}
+
+
 if my_hitboxID.attack == AT_FAIR && my_hitboxID.hbox_num == 3 {
     
     sound_play(sound_get("bonk"))	
@@ -58,7 +75,7 @@ or my_hitboxID.attack == AT_NAIR or my_hitboxID.attack == AT_UAIR or my_hitboxID
 (my_hitboxID.attack == AT_FAIR) {
     move_cooldown[AT_EXTRA_2] = 60
     
-       scharge += my_hitboxID.damage * 7
+       scharge += my_hitboxID.damage * 5
 } 
 
 if overcharged == 1 {

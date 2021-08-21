@@ -22,7 +22,7 @@ if (attack == AT_DSPECIAL){
 	}
 }
 
-if(attack = AT_NAIR){
+if(attack == AT_NAIR){
 	nairbounceDodgeCheck = has_airdodge;
 	nairbounceJumpCheck = djumps;
 }
@@ -36,7 +36,9 @@ if (item[20, 3] == 1 && (attack == AT_FAIR || attack == AT_BAIR) && (left_strong
 	attack = AT_FSTRONG;
 }
 
-user_event(13);
+if(attack == AT_FSPECIAL && window == 3 && up_strong_pressed){
+	attack = AT_USTRONG;
+}
 
 #define setNextItem
 {

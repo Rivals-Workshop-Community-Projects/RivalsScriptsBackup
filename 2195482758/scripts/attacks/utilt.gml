@@ -84,18 +84,13 @@ set_window_value(AT_UTILT, 10, AG_WINDOW_TYPE, 1);
 set_window_value(AT_UTILT, 10, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_UTILT, 10, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UTILT, 10, AG_WINDOW_ANIM_FRAME_START, 23);
-set_window_value(AT_UTILT, 10, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_UTILT, 10, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
-set_window_value(AT_UTILT, 10, AG_WINDOW_SFX_FRAME, 2);
 
 // Clap Kick active
 set_window_value(AT_UTILT, 11, AG_WINDOW_TYPE, 1);
 set_window_value(AT_UTILT, 11, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_UTILT, 11, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UTILT, 11, AG_WINDOW_ANIM_FRAME_START, 25);
-set_window_value(AT_UTILT, 11, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_UTILT, 11, AG_WINDOW_SFX, asset_get("sfx_birdclap"));
-set_window_value(AT_UTILT, 11, AG_WINDOW_SFX_FRAME, 1);
+
 
 
 // Clap kick endlag

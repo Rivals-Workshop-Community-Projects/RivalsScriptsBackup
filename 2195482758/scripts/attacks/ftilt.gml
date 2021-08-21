@@ -14,7 +14,8 @@ set_window_value(AT_FTILT, 2, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FTILT, 2, AG_WINDOW_HSPEED_TYPE, 2);
-set_window_value(AT_FTILT, 2, AG_WINDOW_HSPEED, 0);
+set_window_value(AT_FTILT, 2, AG_WINDOW_HSPEED, -6);
+set_window_value(AT_FTILT, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, .1);
 
 
 
@@ -28,6 +29,7 @@ set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
+set_window_value(AT_FTILT, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, .1);
 
 set_num_hitboxes(AT_FTILT,1);
 

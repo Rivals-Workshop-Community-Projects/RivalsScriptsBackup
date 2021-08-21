@@ -31,8 +31,6 @@ if(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && (attack == AT_DSPECIA
 	}
 }
 
-user_event(12);
-
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
 
 draw_set_halign(fa_left);

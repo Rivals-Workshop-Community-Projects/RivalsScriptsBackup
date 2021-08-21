@@ -7,6 +7,29 @@ if("suitcaseLevel" in self){
 		textDraw(temp_x + 154, temp_y + 9, "fName", c_aqua, 0, 1000, 1, true, 1, "Lv." + string(suitcaseLevel));
 	}
 }
+
+//var draw_opac = 1;
+//if (get_gameplay_time() < 10) draw_opac = ease_linear(0, 1, get_gameplay_time(), 10);
+
+var chat_width = 360;
+var chat_y = 16;
+var chat_tmr_max = 300;
+
+
+if(sayonara == 1){
+	suppress_stage_music(0.1, 0.04);
+	textDraw(6, chat_y + 2, "medFont", c_white, 14, chat_width - 12, 1, true, 1, "An exception has occured.");
+	textDraw(6, chat_y + 24, "fName", c_silver, 14, chat_width - 12, 1, true, 1, "File scripts/death.gml, line 11" + chr(10) + "See gamelog.txt for details.");
+	draw_sprite(sprite_get("hud2"), 1, temp_x + 30, temp_y + 8);
+	
+	if(get_gameplay_time() >= 150 + sayoTimer){
+		sayonara = 0;
+	} else if(get_gameplay_time() == 5 + sayoTimer){
+		sound_play(asset_get("sfx_syl_promo1"), false, -1, 0.75, 2);
+	}
+	print_debug(sayoTimer);
+}
+
 //grad icon
 if(GAUGE_EXP_CURRENT < 50){
 	draw_sprite(sprite_get("gauge"), GAUGE_EXP_CURRENT, temp_x + 28, temp_y + 22);
@@ -64,8 +87,6 @@ if(practice && player == 1){
     draw_debug_text( temp_x - 170, temp_y + 5,("Press Taunt + Parry"));
     draw_debug_text( temp_x - 170, temp_y + 25,("to toggle max XP"));
 }
-
-user_event(11);
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
  

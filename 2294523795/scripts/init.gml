@@ -4,6 +4,7 @@ air_hurtbox_spr = sprite_get("air_box");
 hitstun_hurtbox_spr = sprite_get("air_box");
 
 issmol = 1
+electricwindgodfist = 0
 
 ncode1 = "No pre-exist data found in the system."
 ncode2 = "They have abnormal reality flucation reading"

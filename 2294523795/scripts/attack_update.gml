@@ -1,5 +1,33 @@
 ///
 
+if attack == AT_FTILT {
+
+    if has_hit_player && window == 2 {
+    	if window == 2 && hit_player_obj.state_cat == SC_HITSTUN {
+    		hit_player_obj.x += floor((x + 70*spr_dir - hit_player_obj.x)/5)
+    		hit_player_obj.y += floor((y - hit_player_obj.y)/5)
+    	}
+    	
+    	if move_cooldown[AT_EXTRA_3] = 0 {
+    	set_num_hitboxes(AT_FTILT,2);
+    	move_cooldown[AT_EXTRA_3] = 120
+    	}
+    	
+    } 
+
+	    
+    if window == 1 && window_timer == 1 && !hitpause {
+    	    sound_play(asset_get("sfx_spin")) 
+    
+    	set_num_hitboxes(AT_FTILT,1);
+    }
+    
+    if window == 1 && window_timer == 7 && !hitpause {
+         sound_play(asset_get("sfx_ice_on_player"),false,noone,1.2)
+    }
+
+}
+
 if !hitpause {
 if attack == AT_BAIR {
     if window == 1 && window_timer == 1 {
@@ -8,11 +36,29 @@ if attack == AT_BAIR {
 }  
 
 if attack == AT_DTILT {
+	
+    
+	    
+    if window == 1 && window_timer == 1 && (left_pressed or right_pressed) && electricwindgodfist = 2{
+	electricwindgodfist = 3
+    }
+    
+    if window == 1 && window_timer == 1 && electricwindgodfist == 3{
+    	attack = AT_EXTRA_3
+    	sound_play(asset_get("sfx_absa_boltcloud"),false,noone,1,1.5)
+    }
+    
          if window == 2 && window_timer == 1 {
          sound_play(asset_get("sfx_ice_on_player"))
        sound_play(asset_get("sfx_clairen_spin")) 
     }
 
+}
+
+
+
+if attack == AT_EXTRA_3 {
+		hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
 }
 
 if attack == AT_FAIR && window == 1 {
@@ -373,6 +419,15 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_ori_energyhit_heavy"
 
 
 if attack == AT_DSPECIAL {
+    
+    if window == 1 && window_timer = 1 {
+    	set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
+        set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.6);
+        set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 4);
+        set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_HITPAUSE, 45);
+        set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 5);
+        set_hitbox_value(AT_DSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.7);
+    }
     
     if state_timer == 1 && scharge >= 180 {
         spawn_hit_fx (x,y-30,302)

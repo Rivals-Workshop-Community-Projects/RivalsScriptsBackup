@@ -10,11 +10,25 @@ if get_player_color(player) == 10 {
 	color_rgb=make_color_rgb(58, 210, 228);
 	hue2=(color_get_hue(color_rgb)+hue) mod 255;
 	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb));
-	set_color_profile_slot(10,3,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
-	set_article_color_slot(3,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv), 1);
+	set_color_profile_slot(10,4,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	set_article_color_slot(4,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv), 1);
 	init_shader();
 }
-	
+
+if get_player_color(player) == 10 && dewIt {
+	hue+=1 if hue>255 hue-=255;
+	//make hue shift every step + loop around
+
+	color_rgb=make_color_rgb(254, 33, 139);
+	hue2=(color_get_hue(color_rgb)+hue) mod 255;
+	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb));
+	set_color_profile_slot(10,0,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+
+	color_rgb=make_color_rgb(140, 11, 93);
+	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb));
+	set_color_profile_slot(10,1,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	init_shader();
+}
 
 if(GAUGE_EXP_CURRENT >= GAUGE_EXP_MAX){
 	levelUp();
@@ -220,7 +234,7 @@ if (swallowed == 1) {
 		set_hitbox_value(AT_EXTRA_3, 3, HG_VISUAL_EFFECT, 305)
     }
 }
-
+/*
 if(item[15, 3] == 1 && state == PS_CROUCH && crouchCounter < 100){
 	crouchCounter++;
 	
@@ -246,7 +260,7 @@ if(crouchCounter >= 100 && !hitpause){
 		spawn_hit_fx( x - ((25 - random_func(1, 50, true)) * spr_dir) , y - 16 - random_func(12, 66, true) , smokeKT3 );
 	}
 }
-
+*/
 if(!free){
 	carbounceRestoredJumps = false;
 }
@@ -260,30 +274,25 @@ if(state = PS_WALL_JUMP){
 }
 
 //pandora unlock
-if(suitcaseLevel >= 10 && item[15, 3] == 0 && item[15, 7] == false){
-	achieveUnlock(15);
-}
+//if(suitcaseLevel >= 10 && item[15, 3] == 0 && item[15, 7] == false){
+//	achieveUnlock(15);
+//}
 
 //f key unlock
 if(get_gameplay_time() > 10 && keyboard_string == "f" && item[26, 3] == 0 && item[26, 7] == false){
 	achieveUnlock(26);
+	//drawDan = true;
 }
-
+/* //forget if this or the next was bugfix
 if(((state_cat == SC_AIR_NEUTRAL && prev_state == PS_PRATLAND) || (state_cat == SC_AIR_COMMITTED && prev_prev_state = PS_PRATLAND)) && item[17, 3] == 0 && item[17, 7] == false){
 	achieveUnlock(17);
 }
+*/
 
-if(nairbounceTryUnlock){
-	if(nairbounceUnlockTimer > 0){
-		if(!hitpause){
-			nairbounceUnlockTimer--;
-		}
-	} else {
-		nairbounceTryUnlock = false;
-		nairbounceUnlockTimer = 60;
-	}
+if((state_cat == SC_AIR_NEUTRAL && prev_state == PS_PRATLAND) && item[17, 3] == 0 && item[17, 7] == false){
+	achieveUnlock(17);
 }
-
+/*
 if(octaneTryUnlock){
 	if(octaneUnlockTimer > 0){
 		octaneUnlockTimer--;
@@ -296,6 +305,7 @@ if(octaneTryUnlock){
 		octaneUnlockTimer = 0;
 	}
 }
+*/
 
 if(state_cat == SC_AIR_NEUTRAL && prev_state == PS_ATTACK_GROUND && attack == AT_TAUNT && item[3, 3] == 1 && item[3, 7] == false && suitcaseLevel >= 9 && sandStage == 0){
 	achieveUnlock(3);
@@ -311,9 +321,9 @@ if(get_player_color(player) == 7){
 	abyssIntro = true;
 } else if(get_player_color(player) == 8){
 	gameboyIntro = true;
-} /*else if(get_player_color(player) == 13){
-	halloweenIntro = false;
-}*/ else if (get_player_color(player) == 15){
+} else if(get_player_color(player) == 14){
+	halloweenIntro = true;
+} else if (get_player_color(player) == 15){
 	goldenIntro = true;
 } /* else if(get_player_color(player) == 14){
 	pandoraIntro = true;
@@ -370,9 +380,9 @@ if(abyssIntro){
 	}
 	if (state == PS_SPAWN){
 	
-		if (state_timer == 16){		//35 anti-cw, 16 normal
-			//sound_play (asset_get("sfx_may_arc_coineat"));
-			sound_play (sound_get("gb"));	//sfx_may_arc_coineat anti-cw
+		if (state_timer == 35){		//35 anti-cw, 16 normal
+			sound_play (asset_get("sfx_may_arc_coineat"));
+			//sound_play (sound_get("gb"));	//sfx_may_arc_coineat anti-cw
 		}
 	}
 } else if(goldenIntro){
@@ -457,7 +467,7 @@ if(state == PS_SPAWN && state_timer == 8){
 		case 15:
 			introTimer = -4;
 			if(!item[10, 7]){
-				achieveUnlock(10);
+				//achieveUnlock(10);
 				set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 3);
 				set_window_value(AT_TAUNT, 1, AG_WINDOW_TYPE, 1);
 				set_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH, 18);
@@ -543,11 +553,17 @@ if(boss_fight == true){
 	}
 }
 
+var alive_players = 0;
 with(oPlayer){
-	
-	if((other.player != player) && get_player_stocks(player) == 1 && get_player_damage(player) >= 100 && markedForDeath == false){
+	if(state != PS_DEAD){
+		alive_players++;
+	}
+}
+
+with(oPlayer){
+	if((alive_players == 2) && (other.player != player) && get_player_stocks(player) == 1 && get_player_damage(player) >= 100 && markedForDeath == false){
 		markedForDeath = true;	//marks opponent to die to uptilt2
-		if(other.url == 1996010699){
+		if((other.url == 1996010699 || other.url == 2081495747)){
 			other.canBuyGodhead = true;
 		}
 	}

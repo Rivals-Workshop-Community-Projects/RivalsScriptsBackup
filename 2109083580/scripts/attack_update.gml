@@ -468,6 +468,7 @@ switch attack {
             
             break;
             case 6:
+            	hsp = clamp(-2, hsp, 2);
             	destroy_hitboxes();
                 if (window_timer < 10 && hit_player_obj.hitpause && has_hit_player && hit_player_obj.soft_armor <= 0 && !hit_player_obj.super_armor)
 		        {

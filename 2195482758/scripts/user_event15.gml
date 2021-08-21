@@ -781,6 +781,7 @@ with self{
 	
 	// post_draw.gml
 	initCheat("PhoneSkin", "cheat_phone_skin", [0, 1], ["Banana", "Firecracker"], "Change the current phone skin");
+	initCheat("Party", "cheat_party", [0, 1], ["No Party.", "Party!"], "Wear a party hat");
 	
 }
 

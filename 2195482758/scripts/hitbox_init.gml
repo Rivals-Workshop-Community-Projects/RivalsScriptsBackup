@@ -9,6 +9,8 @@ reset = false;
 bounced = 0;
 grabbed = 0;
 is_bunt = player_id.fc_bunt;
+grounds = 2;
+
 // walls = 2;
 // grounds = 2;
 
@@ -35,6 +37,7 @@ else
 {
     through_platforms = 9999999;
 }
+
 
 lastPlayer = player_id;
 currentPlayer = player_id;

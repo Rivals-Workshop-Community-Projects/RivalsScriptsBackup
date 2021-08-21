@@ -344,4 +344,5 @@ waluigi_y = y - 40;
 waluigi_explode = false;
 
 
+diag_portrait=sprite_get(""); // This will allow you to put any custom portrait onto the dialogue buddy!
 

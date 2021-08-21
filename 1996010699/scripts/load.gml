@@ -1,7 +1,7 @@
 //The Suitcase
 
 sprite_change_offset("idle_hurt_box", 20, 44);
-sprite_change_offset("idle", 20, 50);
+sprite_change_offset("idle", 22, 56);
 sprite_change_offset("idle1", 20, 50);
 sprite_change_offset("hurt", 22, 50);
 sprite_change_offset("bighurt", 23, 48);
@@ -12,7 +12,7 @@ sprite_change_offset("uphurt", 20, 48);
 sprite_change_offset("downhurt", 27, 36);
 sprite_change_offset("crouch", 20, 42);
 sprite_change_offset("crouchKT", 20, 42);
-sprite_change_offset("walk", 20, 52);
+sprite_change_offset("walk", 21, 50);
 sprite_change_offset("walkturn", 20, 50);
 sprite_change_offset("dash", 20, 58);
 sprite_change_offset("dashstart", 22, 54);
@@ -26,7 +26,7 @@ sprite_change_offset("intro4", 24, 112);
 sprite_change_offset("intro5", 110, 68);
 
 sprite_change_offset("jumpstart", 22, 46);
-sprite_change_offset("jump", 20, 52);
+sprite_change_offset("jump", 22, 60);
 sprite_change_offset("doublejump", 24, 52);
 sprite_change_offset("walljump", 22, 54);
 sprite_change_offset("pratfall", 21, 56);
@@ -41,11 +41,11 @@ sprite_change_offset("waveland", 27, 52);
 sprite_change_offset("waveland1", 27, 52);
 sprite_change_offset("tech", 27, 52);
 
-sprite_change_offset("jab", 22, 58);
+sprite_change_offset("jab", 54, 100);
 sprite_change_offset("dattack", 32, 56);
 sprite_change_offset("ftilt", 24, 58);
 sprite_change_offset("ftiltKT", 24, 58);
-sprite_change_offset("dtilt", 46, 42);
+sprite_change_offset("dtilt", 62, 104);
 sprite_change_offset("dtiltKT", 42, 42);
 sprite_change_offset("utilt", 24, 112);
 sprite_change_offset("utilt1", 24, 112);
@@ -55,7 +55,8 @@ sprite_change_offset("nair1", 31, 64);
 sprite_change_offset("fair", 24, 56);
 sprite_change_offset("bair", 84, 60);
 sprite_change_offset("bair1", 84, 60);
-sprite_change_offset("uair", 25, 78);
+sprite_change_offset("bair2", 84, 60);
+sprite_change_offset("uair", 46, 136);
 sprite_change_offset("dair", 26, 56);
 sprite_change_offset("fstrong", 77, 110);
 sprite_change_offset("ustrong", 26, 102);
@@ -165,6 +166,7 @@ sprite_change_offset("mini_f", 16, 16);
 sprite_change_offset("hit_fx_sandair", 80, 80);
 sprite_change_offset("hit_fx_sandair2", 80, 80);
 sprite_change_offset("hit_fx_symbiote", 43, 42);
+sprite_change_offset("hit_fx_symbioterev", 43, 42);
 sprite_change_offset("hit_fx_crysSmall", 31, 31);
 sprite_change_offset("hit_fx_poolparty", 27, 28);
 sprite_change_offset("hit_fx_tada", 67, 85);
