@@ -53,9 +53,9 @@ if attackbar != 0 && !hitpause && state_cat != SC_HITSTUN{
     ///    enemies = 1
     /// }
 	        	
-		if get_gameplay_time() % 2 == 0 {
-		shake_camera (1,1)
-		}
+		//if get_gameplay_time() % 2 == 0 {
+		//shake_camera (1,1)
+		//}
 			
 		
 	if barpause <= 0 {	

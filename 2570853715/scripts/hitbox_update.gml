@@ -10,11 +10,20 @@ if(attack == AT_DSPECIAL){
 	}
 	prev_reversed = reversed;
 	
+	if(collision_point(x+hsp, y, asset_get("par_block"), true, true)){
+		hsp = -hsp;
+
+	}
+	
+	if(collision_point(x, y+vsp, asset_get("par_block"), true, true)){
+		vsp = -vsp;
+	}
+	
 	if(get_gameplay_time()%3 == 0){
 			queue_pos++;
 			queue_pos = queue_pos%9;
-				trail_array[queue_pos].x = x;
-	trail_array[queue_pos].y = y;
+			trail_array[queue_pos].x = x;
+			trail_array[queue_pos].y = y;
 	}
 
 	proj_angle = spr_dir == 1? point_direction(0, 0, hsp, vsp): 180+point_direction(0, 0, hsp, vsp);

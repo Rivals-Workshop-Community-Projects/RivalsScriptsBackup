@@ -28,7 +28,7 @@ if (my_hitboxID.attack == AT_NSPECIAL && wario_grab == false){
 	        grab_timer = get_player_damage(hit_player_obj.player) + 60;
 	        
 	        
-	        grab_dir = 0;
+	        grab_dir = 3;
 	        wario_grab = true;
             window = 3;
             window_timer = 1;

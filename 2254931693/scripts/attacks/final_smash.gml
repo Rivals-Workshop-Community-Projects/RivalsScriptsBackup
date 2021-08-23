@@ -16,7 +16,7 @@ set_window_value(49, 1, AG_WINDOW_VSPEED_TYPE, 1);
 
 
 set_window_value(49, 2, AG_WINDOW_TYPE, 0);
-set_window_value(49, 2, AG_WINDOW_LENGTH, 18);
+set_window_value(49, 2, AG_WINDOW_LENGTH, 19);
 set_window_value(49, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(49, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(49, 2, AG_WINDOW_HSPEED, 40);

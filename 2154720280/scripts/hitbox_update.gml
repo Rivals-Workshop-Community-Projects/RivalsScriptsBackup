@@ -46,7 +46,7 @@ var tauntpar2 = hit_fx_create( sprite_get( "tauntpar2" ), 20);
 	
 	}
 	
-    if  !free && (place_meeting(x, y + 2, asset_get("par_block")))  {
+    if  (!free && (place_meeting(x, y + 2, asset_get("par_block")))) or player_id.state_cat == SC_HITSTUN  {
     	destroyed = 1
     	spawn_hit_fx( x  , y , 302 )
     	spawn_hit_fx( x  , y , 306 )
@@ -81,7 +81,7 @@ var heal_player = instance_place(x, y, oPlayer)
 			spawn_hit_fx( heal_player.x  , heal_player.y , tauntpar1 )
 			spawn_hit_fx( x  , y , tauntpar1 )
 		heal_player.supply += 6
-		take_damage( heal_player.player, -1 , -5 )
+		take_damage( heal_player.player, -1 , -8 )
 		destroyed = 1
 	}
    }		

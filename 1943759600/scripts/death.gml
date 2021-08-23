@@ -1,5 +1,5 @@
 if instance_exists(gem_ins) {
-	gem_ins.state = 1;
+	gem_ins.state = 3;
 	gem_ins = noone;
 }
 

@@ -143,6 +143,9 @@ case AT_DSPECIAL_2:
 		with(pHitBox){
 			if(attack == AT_DSPECIAL and player == other.player){
 				reversed = !reversed;
+				if(hitbox_timer > 220){
+					hitbox_timer = 220;
+				}
 			}
 		}
 	}

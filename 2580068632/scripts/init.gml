@@ -21,6 +21,9 @@ shuttle_loop_is_rising = false
 
 condor_dive_timer = 0
 
+//Kirby Ability
+kirbyability = 4
+
 hurtbox_spr = sprite_get("meta_hurtbox");
 crouchbox_spr = sprite_get("meta_crouchbox");
 air_hurtbox_spr = -1;

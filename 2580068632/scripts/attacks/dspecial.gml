@@ -36,6 +36,7 @@ set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 
 set_num_hitboxes(AT_DSPECIAL, 2);
 
+set_hitbox_value(AT_DSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Spike Hitbox");
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 8);
@@ -54,6 +55,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 0);
 
+set_hitbox_value(AT_DSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Shockwave Hitbox");
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 4);

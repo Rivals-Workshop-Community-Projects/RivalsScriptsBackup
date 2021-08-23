@@ -186,7 +186,7 @@ if attack == AT_USPECIAL {
         destroy_hitboxes()
     }
     
-    if window == 6 && window_timer > 30 {
+    if window == 6 && window_timer > 25 {
         can_jump = true;
         can_shield = true;
     }

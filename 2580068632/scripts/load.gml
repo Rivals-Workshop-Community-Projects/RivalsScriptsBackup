@@ -12,6 +12,7 @@ sprite_change_offset("dashturn", 92, 138);
 sprite_change_offset("meta_hurtbox", 90, 138);
 sprite_change_offset("meta_crouchbox", 92, 138);
 sprite_change_offset("phone", 92, 138);
+sprite_change_offset("kirby", 46, 92);
 
 //Hurts
 sprite_change_offset("hurt", 32, 46);

@@ -122,8 +122,10 @@ if (state == 1) {
 
 if (state == 2) {
     player_id.has_gun = 1;
+    player_id.gun = noone;
     instance_destroy(hitbox1);
     hitbox1 = noone;
+    
     instance_destroy();
     exit;
 }

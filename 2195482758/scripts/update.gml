@@ -35,7 +35,7 @@ is_tenru = true;
 // Taunt 2
 if(do_taunt_2)
 {
-	set_attack(AT_TAUNT_2);]
+	set_attack(AT_TAUNT_2);
 	do_taunt_2 = false;
 }
 

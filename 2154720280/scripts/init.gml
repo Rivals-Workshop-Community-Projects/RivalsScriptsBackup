@@ -68,7 +68,7 @@ air_max_speed = 4.5; //the maximum hsp you can accelerate to when in a normal ae
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .25;
 prat_fall_accel = 1; //multiplier of air_accel while in pratfall
-air_friction = .0555;
+air_friction = .05;
 max_djumps = 1;
 double_jump_time = 34; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 3;
@@ -78,7 +78,7 @@ wall_frames = 2; //anim frames before you leave the wall
 max_fall = 8.5; //maximum fall speed without fastfalling
 fast_fall = 12; //fast fall speed
 gravity_speed = .64;
-hitstun_grav = .53;
+hitstun_grav = .5;
 knockback_adj = 1.0;//the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames

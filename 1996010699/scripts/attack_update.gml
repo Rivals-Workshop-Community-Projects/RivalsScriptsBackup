@@ -4,9 +4,6 @@ if(attack == AT_JAB){
 	if(window == 6 && window_timer >= 3 && has_hit){
 		can_jump = true;
 	}
-	if(window <= 6 && was_parried){
-		was_parried = false;
-	}
 }
 
 if(attack == AT_UTILT){

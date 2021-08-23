@@ -53,6 +53,7 @@ if (has_gun == 1 && attack == AT_FSPECIAL && window == 2 && window_timer == 1) {
     gun.hsp = gun_throw_hsp*spr_dir + gun_throw_hsp*spr_dir*((right_down || left_down) && !up_down)+gun_throw_hsp*spr_dir*((right_down || left_down) && down_down);
     gun.vsp = (2/3)*gun_throw_vsp+(1/3)*gun_throw_vsp*(up_down)-(1/3)*gun_throw_vsp*((right_down || left_down) && !up_down)-(1/6)*gun_throw_vsp*((right_down || left_down) && down_down);
     gun.gun_load = gun_load;
+    gun_load = 0;
 }
 
 
@@ -69,7 +70,7 @@ if (attack == AT_NSPECIAL && window == 3) {
     can_fast_fall = false;
 }
 //Loading Rifle
-if (has_gun == 1 && attack == AT_NSPECIAL && gun_load < gun_load_max) {
+if (attack == AT_NSPECIAL && gun_load < gun_load_max) {
     if window == 1 && window_timer == 6 {
         gun_load++;
         sound_play(musky_reload);
@@ -77,8 +78,23 @@ if (has_gun == 1 && attack == AT_NSPECIAL && gun_load < gun_load_max) {
     
 }
 
+//Shooting Rifle With Gun Out
+if attack == AT_NSPECIAL && instance_exists(gun) && gun_load > 0 && (gun.gun_load == 0 || gun.has_shot == 1) {
+    if window == 1 && window_timer == 3 && window_timer < 6 {
+        old_gun_load = gun_load;
+        gun_load = 0;
+        hitb = instance_create(x+spr_dir*40,y-42,"obj_article2");
+        hitb.player_id = id;
+        hitb.spr_dir = spr_dir;
+        window_timer = 1;
+        window = 3;
+        sound_play(shot_sound);
+        spawn_hit_fx(x,y,shoot_ring_vfx);
+    }
+}
+
 //Shooting Rifle
-if (has_gun == 1 && gun_load > 0 && attack == AT_NSPECIAL) { //&& special_down == 0) {
+if (gun_load > 0 && attack == AT_NSPECIAL && move_cooldown[AT_NSPECIAL] == 0 && (!instance_exists(gun) || gun.shoot == 1)) { //&& special_down == 0) {
     if window == 1 && window_timer == 3 && window_timer < 6 {
         old_gun_load = gun_load;
         gun_load = 0;
@@ -93,23 +109,27 @@ if (has_gun == 1 && gun_load > 0 && attack == AT_NSPECIAL) { //&& special_down =
     
 }
 
-if (has_gun == 0 && attack == AT_NSPECIAL && window == 1) {
-    sound_play(dry_sound);
-    window = 4;
-    if gun_load == 0
-        move_cooldown[AT_NSPECIAL] = 20;
-}
+// if (has_gun == 0 && attack == AT_NSPECIAL && window == 1) {
+//     sound_play(dry_sound);
+//     window = 4;
+//     if gun_load == 0
+//         move_cooldown[AT_NSPECIAL] = 20;
+// }
 
-if ((attack == AT_NSPECIAL) && has_gun == 0 && gun_load > 0) {
+//Shooting Rifle Out
+// if ((attack == AT_NSPECIAL) && has_gun == 0 && gun_load > 0) {
+if ((attack == AT_NSPECIAL) && instance_exists(gun) && gun.gun_load > 0 && gun.has_shot == 0) {
     hitb = instance_create(gun.x,gun.y,"obj_article2");
     hitb.gunmade = 1;
     hitb.player_id = id;
     hitb.spr_dir = gun.sprdir;
     hitb.visible = false;
     //hitb.sprdir = gun.sprdir;
-    gun_load = 0;
+    // gun_load = 0;
     sound_play(shot_sound);
     gun.shoot = 1;
+    move_cooldown[AT_NSPECIAL] = 10;
+    set_state(PS_IDLE);
 }
 
 

@@ -35,9 +35,7 @@ alt_name[15] = "Curated Material";
 //Patch
  
 draw_set_halign(fa_left);
- 
-textDraw(temp_x + 2, temp_y + 30, "medFont", c_white, 0, 1000, 1, true, 1, "VER. " + patch_ver);
- 
+
 textDraw(temp_x + 2, temp_y + 50, "fName", c_white, 0, 1000, 1, true, 1, patch_day + " " + patch_month);
  
  

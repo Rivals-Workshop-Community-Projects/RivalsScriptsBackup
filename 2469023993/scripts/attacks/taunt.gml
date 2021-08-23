@@ -30,8 +30,8 @@ set_window_value(AT_TAUNT, 3, AG_WINDOW_SFX_FRAME, 6);
 
 set_window_value(AT_TAUNT, 4, AG_WINDOW_TYPE, 3);
 set_window_value(AT_TAUNT, 4, AG_WINDOW_LENGTH, 24);
-set_window_value(AT_TAUNT, 4, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_TAUNT, 4, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_TAUNT, 4, AG_WINDOW_ANIM_FRAME_START, 23);
 set_window_value(AT_TAUNT, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_TAUNT, 4, AG_WINDOW_SFX, sound_get("shadowrefresh"));
-set_window_value(AT_TAUNT, 4, AG_WINDOW_SFX_FRAME, 8);
+set_window_value(AT_TAUNT, 4, AG_WINDOW_SFX_FRAME, 10);

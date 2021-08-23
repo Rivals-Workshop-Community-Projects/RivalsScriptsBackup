@@ -47,6 +47,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.3);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("article1_launch"));
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 3);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_VSPEED, -7);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_GRAVITY, 0.5);
 //set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 9);

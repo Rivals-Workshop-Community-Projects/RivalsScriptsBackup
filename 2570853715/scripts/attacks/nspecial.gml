@@ -55,6 +55,8 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 30);
+set_hitbox_value(AT_NSPECIAL, 1, HG_DRIFT_MULTIPLIER, .2);
+set_hitbox_value(AT_NSPECIAL, 1, HG_SDI_MULTIPLIER, .2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -75);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 120);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 130);

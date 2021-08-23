@@ -4,17 +4,18 @@ if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1 && hit_player_
 	if gem_spawn_dash_cooldown > 0 move_cooldown[AT_NSPECIAL_AIR] = gem_spawn_dash_cooldown;
 }
 
-if my_hitboxID.effect == 990 && my_hitboxID.player_id == id {
+if my_hitboxID.effect == 990 && my_hitboxID.player_id == id && is_opponent_in_hitstun() {
 	hit_player_obj.olympia_stun = stun_time;
 	hit_player_obj.olympia_stunfull = hit_player_obj.olympia_stun;
 	hit_player_obj.hitstop_full = 6;
 	hit_player_obj.hitstop = 3;
 	hit_player_obj.olympia_stunplayer = my_hitboxID.orig_player;
-	
+	sound_stop(asset_get("sfx_may_arc_hit"));
+	sound_play(asset_get("sfx_may_arc_hit"));
 }
 //Command Grab code
-if (attack == AT_USPECIAL && uspec_is_command_grab){
-	if (window == 2 && (grabbedid == noone || !instance_exists(grabbedid))){
+if (attack == AT_USPECIAL && uspec_is_command_grab) {
+	if (window == 2 && (grabbedid == noone || !instance_exists(grabbedid))) && is_opponent_in_hitstun() { //   !hit_player_obj.super_armor && !hit_player_obj.soft_armor {
 		hit_player_obj.grabbed = 1;
 		grabbedid = hit_player_obj;
 		grabbedid.ungrab = 0;
@@ -26,10 +27,15 @@ if (attack == AT_USPECIAL && uspec_is_command_grab){
 	}
 }
 
+if my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 2 {
+	sound_play(sound_get("olym_finisher"));
+}
+
+
 //==============================================================================
 //                          Abyss Rune Code
 //==============================================================================
-if abyssEnabled {
+if runesEnabled {
 	if instance_exists(gem_ins) && point_distance(hit_player_obj.x,hit_player_obj.y,gem_ins.xstart,gem_ins.ystart) <= gem_ins.field_size {
 		if runeH {
 			hit_player_obj.hitstop_full += runeH_stunTime;
@@ -37,7 +43,7 @@ if abyssEnabled {
 		}
 		
 		if runeN && hit_player_obj.orig_knock < 20{
-			hit_player_obj.orig_knock = max(hit_player_obj.orig_knock/3,5);
+			hit_player_obj.orig_knock = max(hit_player_obj.orig_knock/1.5,7);
 		}
 	}
 	
@@ -54,9 +60,11 @@ if abyssEnabled {
 	}
 	
 	if my_hitboxID.kb_angle > 180 && !hit_player_obj.olympia_airtoground && hit_player_obj.free && runeD {
-		hit_player_obj.hitstop_full += 30;
-		hit_player_obj.hitstop += 30;
+		hit_player_obj.hitstop_full += 10;
+		hit_player_obj.hitstop += 10;
 		hit_player_obj.olympia_airtoground = 1;
+		hit_player_obj.can_tech = false;
+		hit_player_obj.can_bounce = false;
 	}
 	if !free hit_player_obj.olympia_airtoground = 0;
 	
@@ -65,3 +73,8 @@ if abyssEnabled {
 	}
 }
 //==============================================================================
+
+
+//returns whether an opponent is in hitstun. safest way of checking for grabs and other hit_player effects.
+#define is_opponent_in_hitstun
+return (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND);

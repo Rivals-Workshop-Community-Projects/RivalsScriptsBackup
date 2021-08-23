@@ -435,6 +435,12 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	 	 		initPatch("0.6", "21, August 2021");
+	initPatchWords("Dtilt 1: Now untechable.
+	Fspecial Raging Demon: Now has command grab code so it wont drop when hit. No longer a command grab without command grab code.
+	Dspecial: Knives now pass through platforms.
+	Dspecial 2: Now extends the lifetime of the knives to 80 frames if it's less than that when used.
+	Nspecial: Knives now have DI multipliers so DI up no longer does 6%.")
 	 		initPatch("0.5", "9, August 2021");
 	initPatchWords("Bugfix: Utilt now has parry stun.");
 	 		initPatch("0.4", "9, August 2021");

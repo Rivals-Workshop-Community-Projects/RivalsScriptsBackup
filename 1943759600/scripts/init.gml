@@ -1,14 +1,18 @@
+small_sprites = true;
+
 gem_ins = noone;
 gem_cancel = 0;
 
 grabbedid = noone;
 
 spr_fadc = sprite_get("hfx_dashcancel");
+spr_fadc_back = sprite_get("hfx_dashcancel2");
 spr_armor = sprite_get("hfx_armorshine");
 spr_fsvfx = sprite_get("sfx_olymcharge");
 spr_gembreak =  sprite_get("vfx_gembreak");
 
 fadc_timer = 0;
+fadc_back_timer = 0;
 armor_timer = 0;
 fsvfx_timer = 0;
 g7fx_timer = 0;
@@ -16,11 +20,15 @@ gembreak_timer = 0;
 
 
 fadc_dur = 20; //this value is the duration of the VFX
+fadc_back_dur = 20; //this value is the duration of the VFX
 armor_dur = 37; //this value is the duration of the VFX
 fsvfx_dur = 35; //this value is the duration of the VFX
 gembreak_dur = 10;
 
+gem_infield_cancelling = 0;
+
 fadc_frames = 6; //this is the number of frames in the anim, minus one
+fadc_back_frames = 6; //this is the number of frames in the anim, minus one
 armor_frames = 12; //this is the number of frames in the anim, minus one
 fsvfx_frames = 4; //this is the number of frames in the anim, minus one
 gembreak_frames = 6;
@@ -52,7 +60,7 @@ char_height = 53;
 idle_anim_speed = .1;
 crouch_anim_speed = .1;
 walk_anim_speed = .125;
-dash_anim_speed = .27;
+dash_anim_speed = .3;
 pratfall_anim_speed = .1;
 
 walk_speed = 2.25;
@@ -70,7 +78,7 @@ moonwalk_accel = 1.0;
 
 jump_start_time = 5;
 jump_speed = 12.45;
-short_hop_speed = 8;
+short_hop_speed = 7;
 djump_speed = 10.75;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
@@ -83,7 +91,7 @@ max_djumps = 1;
 double_jump_time = 38; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 7;
 walljump_vsp = 9;
-walljump_time = 32;
+walljump_time = 20;
 max_fall = 11; //maximum fall speed without fastfalling
 fast_fall = 16; //fast fall speed
 gravity_speed = .65;
@@ -97,14 +105,14 @@ wave_land_adj = 1.1; //the multiplier to your initial hsp when wavelanding. Usua
 wave_friction = .07; //grounded deceleration when wavelanding
 
 //crouch animation frames
-crouch_startup_frames = 6;
-crouch_active_frames = 1;
-crouch_recovery_frames = 1;
+crouch_startup_frames = 4;
+crouch_active_frames = 6;
+crouch_recovery_frames = 4;
 
 //parry animation frames
 dodge_startup_frames = 1;
 dodge_active_frames = 2;
-dodge_recovery_frames = 4;
+dodge_recovery_frames = 2;
 
 //tech animation frames
 tech_active_frames = 3;
@@ -160,7 +168,7 @@ olym_hit = hit_fx_create ( sprite_get("hfx_olym_hitspark"), 24);
 
 
 //Intro Code
-introTimer = -2.5;
+introTimer = -1;
 introTimer2 = 0;
 
 //Trummel Codec
@@ -242,16 +250,14 @@ sprite_change_offset("olym_miiverse1", 60, 30);
 //==============================================================================
 //                          Abyss Rune Variables
 //==============================================================================
-abyssEnabled = false || get_match_setting(SET_RUNES);
-runesUpdated = abyssEnabled;
-enum runes {A = 1,B = 2,C = 3,D = 4,E = 5,F = 6,G = 7,H = 8,I = 9,J = 10,K = 11,L = 12,M = 13,N = 14,O = 15}
+runesEnabled = get_match_setting(SET_RUNES);
 var rune_letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"];
 for (var rune_num = 0; rune_num < array_length(rune_letters); rune_num++){
 	variable_instance_set(self, "rune" + rune_letters[rune_num], has_rune(rune_letters[rune_num]));
-} 
-ab_hud_x = 0;
-ab_hud_y = 0;
+}
+runesUpdated = runesEnabled;
 
+training = get_training_cpu_action() != CPU_FIGHT;
 
 //abyssMods[1 to 15] = [type, description];
 //types are: -1 - disabled
@@ -259,21 +265,21 @@ ab_hud_y = 0;
 // 1 - ranged mod: Modifies a projectile attack.
 // 2 - hit mod: Modifies a direct physical interaction with an opponent.
 // 3 - ability boost: Powers up a character attribute or action.
-abyssMods = array_create(16,[-1,"Not Implemented."]);
+//abyssMods = array_create(16,[-1,"Not Implemented."]);
 
 // One Slot Runes
-abyssMods[@ runes.A] = [3, "Dash Cancel tilts, JAB2, and JAB3."];
+//abyssMods[@ runes.A] = [3, "Dash Cancel tilts, JAB2, and JAB3."];
 AT_DASHCANCEL = AT_UTHROW;
-AG_WINDOW_RUNE_DASHCANCELLABLE = 60;
+AG_WINDOW_RUNE_DASHCANCELLABLE = 65;
 rune_dc_input_timer = 0;
 rune_dc_input = 0;
 rune_dc_input_stage = 0;
 rune_dc_input_dir = 0;
-abyssMods[@ runes.B] = [3, "DSPECIAL has super armor throughout the entire move."];
-abyssMods[@ runes.C] = [1, "NSPECIAL applies Brilliant Diamond stun."];
-abyssMods[@ runes.D] = [2, "Downward Angles stun once in the air to combo from air to ground."];
-abyssMods[@ runes.E] = [2, "FSPECIAL has increased KB and a more horizontal angle."];
-abyssMods[@ runes.F] = [1, "Movement Speed increased...?"];
+//abyssMods[@ runes.B] = [3, "DSPECIAL has super armor throughout the entire move."];
+//abyssMods[@ runes.C] = [1, "NSPECIAL applies Brilliant Diamond stun."];
+//abyssMods[@ runes.D] = [2, "Downward Angles stun once in the air to combo from air to ground."];
+//abyssMods[@ runes.E] = [2, "FSPECIAL has increased KB and a more horizontal angle."];
+//abyssMods[@ runes.F] = [1, "Movement Speed increased...?"];
 base_moonwalk_accel = moonwalk_accel;
 rune_moonwalk_accel = 2.0;
 base_wave_land_adj = wave_land_adj;
@@ -281,13 +287,13 @@ rune_wave_land_adj = 1.4;
 base_air_max_speed = air_max_speed;
 rune_air_max_speed = 7;
 //Two Slot Runes
-abyssMods[@ runes.H] = [2, "Hits within Brilliant Diamond's field have a short stun."];
+//abyssMods[@ runes.H] = [2, "Hits within Brilliant Diamond's field have a short stun."];
 runeH_stunTime = 10;
-abyssMods[@ runes.J] = [3, "Dash Cancel strongs and specials."];
-abyssMods[@ runes.I] = [2, "Kunzite Upper can cancel into aerials on hit."];
+//abyssMods[@ runes.J] = [3, "Dash Cancel strongs and specials."];
+//abyssMods[@ runes.I] = [2, "Kunzite Upper can cancel into aerials on hit."];
 rune_uppers_max = 2;
 rune_uppers = 0;
-abyssMods[@ runes.G] = [2, "Aerials can cancel into OTHER aerials and into specials or jump on hit."];
+//abyssMods[@ runes.G] = [2, "Aerials can cancel into OTHER aerials and into specials or jump on hit."];
 rune_fair_free = true;
 rune_dair_free = true;
 rune_uair_free = true;
@@ -295,18 +301,19 @@ rune_bair_free = true;
 rune_nair_free = true;
 rune_bounce_speed = -4;
 
-abyssMods[@ runes.K] = [3, "TAUNT is a revenge counter."];
+//abyssMods[@ runes.K] = [3, "TAUNT is a revenge counter."];
 rune_revengebuff = 0;
 rune_hit_em = false;
 HG_CONSUMES_REVENGE_RUNE = 99;
 //Three Slot Runes
-abyssMods[@ runes.L] = [3, "Press Attack + Special to Superdash."];
+//abyssMods[@ runes.L] = [3, "Press Attack + Special to Superdash."];
 
-abyssMods[@ runes.M] = [0, "Brilliant Diamond floats towards the last player hit."];
-abyssMods[@ runes.N] = [0, "Brilliant Diamond causes the opponent to take less knockback."];
-abyssMods[@ runes.O] = [3, "Gain powerful command inputs."];
+//abyssMods[@ runes.M] = [0, "Brilliant Diamond floats towards the last player hit."];
+//abyssMods[@ runes.N] = [0, "Brilliant Diamond causes the opponent to take less knockback."];
+//abyssMods[@ runes.O] = [3, "Gain powerful command inputs."];
 playtest = (object_index == oTestPlayer);
 
 AG_WINDOW_CMD_CANCELLABLE = 99;
 HG_HITBOX_ENABLE_COMMANDINPUT = 70;
+
 

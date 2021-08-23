@@ -38,9 +38,9 @@ if free == 0 || state == PS_WALL_JUMP {
     can_uspec = 1;
 }
 
-if gun == undefined {
-    has_gun = 1;
-}
+// if gun == undefined {
+//     has_gun = 1;
+// }
 
 if trummelcodecneeded {
     trummelcodec = 17;

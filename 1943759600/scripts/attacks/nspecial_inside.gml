@@ -8,7 +8,7 @@ set_attack_value(AT_NSPECIAL_AIR, AG_HURTBOX_SPRITE, sprite_get("nspecial_air_hu
 
 set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 3);
-set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_SFX, asset_get("sfx_ori_dash_attack_perform"));
 set_window_value(AT_NSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME, 2);
@@ -17,8 +17,8 @@ set_window_value(AT_NSPECIAL_AIR, 2, AG_WINDOW_TYPE, 69); //This is the window w
 set_window_value(AT_NSPECIAL_AIR, 2, AG_WINDOW_LENGTH, 30); //In case they can't reach it.
 
 set_window_value(AT_NSPECIAL_AIR, 2, AG_WINDOW_HSPEED, 18); //The speed they dash to the gem at, both h and v. Was 12 previously.
-set_window_value(AT_NSPECIAL_AIR, 2, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_NSPECIAL_AIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(AT_NSPECIAL_AIR, 2, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_NSPECIAL_AIR, 2, AG_WINDOW_ANIM_FRAME_START, 0);
 
 set_window_value(AT_NSPECIAL_AIR, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NSPECIAL_AIR, 3, AG_WINDOW_LENGTH, 1);

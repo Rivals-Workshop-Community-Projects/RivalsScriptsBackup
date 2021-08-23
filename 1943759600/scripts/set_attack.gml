@@ -1,24 +1,28 @@
 ///#args attack
-if attack == AT_NSPECIAL && instance_exists(gem_ins) && gem_ins.state != 3 && gem_ins.state != 1 {
-	if point_distance(x,y,gem_ins.x,gem_ins.y) > gem_ins.field_size || gem_ins.cooldown != -1  {
-		attack = AT_NSPECIAL_2 //The outside field attack
+if attack == AT_NSPECIAL && instance_exists(gem_ins) && !gem_dying && gem_ins.cooldown == -1 {
+	if !in_field {
+		attack = AT_NSPECIAL_2; //The outside field attack
 	} else {
-		attack = AT_NSPECIAL_AIR //The inside field attack
+		attack = AT_NSPECIAL_AIR; //The inside field attack
 	}
 }
+
 
 if move_cooldown[attack] <= 0 && gem_cancel == 2 {
 		destroy_hitboxes();
 		gem_cancel = 0;
-		sound_play(asset_get("sfx_birdflap"))
+		sound_play(asset_get("sfx_birdflap"));
 		//outline_color = [255, 255, 255]
 		
-		var ins = instance_create(x,y,"obj_article2")
+		var ins = instance_create(x,y,"obj_article2");
 }
 
 //G7 Taunt
 if (attack == AT_TAUNT && get_player_color(player) == 15){
 	attack = AT_TAUNT_2;
+}
+if (attack == AT_TAUNT && down_down) {
+	window = 4;
 }
 
 
@@ -27,7 +31,7 @@ gem_cancel = 0;
 //==============================================================================
 //                          Abyss Rune Code
 //==============================================================================
-if abyssEnabled {
+if runesEnabled {
 	if (attack == AT_TAUNT || AT_TAUNT_2) && runeK hit_em = false;
 	
 	if runeO {

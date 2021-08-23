@@ -18,7 +18,7 @@ set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
+set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, sound_get("bonby_swipe_1"));
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX_FRAME, 2);
 
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_TYPE, 0);

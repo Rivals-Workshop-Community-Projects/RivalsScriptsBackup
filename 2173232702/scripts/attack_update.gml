@@ -289,7 +289,8 @@ if (attack == AT_NAIR){
 }
 
 if (attack == AT_FAIR){
-	if (window == 2 && attack_down && time_until_magic < 1){
+	if (window == 2 && (attack_down || right_stick_down || right_strong_down || left_stick_down || left_strong_down )
+	&& time_until_magic < 1){
 		magic_meter++;
 		create_hitbox(AT_FAIR, 2, x, y);
 		if (window_timer > 20){

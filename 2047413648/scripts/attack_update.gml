@@ -917,13 +917,7 @@ if window < 4 {
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);	
 	}
 	
-	if (window == 3 or ((window == 2 or window == 5) and window_timer > 8)) && fcharge == 0 && (special_pressed or jump_pressed or attack_pressed) {
-		
-		window = 4
-			window_timer = 0
-			sound_play(asset_get("sfx_swipe_heavy1"))
-		
-	}
+
 
 	
 
@@ -1226,7 +1220,7 @@ if attack == AT_TAUNT{
 	if window == 2 && window_timer >= 29 && (taunt_down or get_gameplay_time() <= 112) {
 		
 		if get_player_color(player) == 7 {
-		sound_play(sound_get("Balesi"));
+		//sound_play(sound_get("Balesi"));
 	}
 		window_timer = 0
 		drops -= 0.3

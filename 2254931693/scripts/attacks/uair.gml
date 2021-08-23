@@ -10,8 +10,8 @@ set_window_value(AT_UAIR, 1, AG_WINDOW_TYPE, 0);
 set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UAIR, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
-set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 5);
+set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, sound_get("bonby_swipe_5"));
+set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 4);
 
 set_window_value(AT_UAIR, 2, AG_WINDOW_TYPE, 0);
 set_window_value(AT_UAIR, 2, AG_WINDOW_LENGTH, 8);

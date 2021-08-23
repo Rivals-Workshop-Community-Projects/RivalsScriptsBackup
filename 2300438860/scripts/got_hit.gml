@@ -101,6 +101,11 @@ if attacking && attack == AT_DSPECIAL && super_armor && enemy_hitboxID.type == 1
         sound_play(sound_get("hextra"))
         create_hitbox(AT_DSPECIAL,3,x,y)
         spawn_hit_fx (x,y - 40, 304)
+        
+        with hit_player_obj {
+        	take_damage(player,-1, floor(other.enemy_hitboxID.damage*1.5))
+        }
+        
     if hit_player_obj.x < x {
         spr_dir = -1
     } else {

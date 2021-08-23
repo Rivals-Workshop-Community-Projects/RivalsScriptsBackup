@@ -1,5 +1,4 @@
 
-
 if (my_hitboxID.attack == AT_NSPECIAL){
         window = 9;
 }

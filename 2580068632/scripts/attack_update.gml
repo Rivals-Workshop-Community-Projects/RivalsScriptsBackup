@@ -27,13 +27,26 @@ if (attack == AT_FTILT){
 			clear_button_buffer(PC_ATTACK_PRESSED);
 		}
 	}
-	if (window == 4){
-		if (window_timer == 2){
-			if ((up_pressed || up_down) && (!down_pressed || !down_down)){
+	if (window == 3){
+		if (window_timer > 5){
+			if ((up_stick_down) && (!down_stick_down)){
 				set_attack( AT_UTILT );
 				hsp = 6 * spr_dir
 				sound_stop(sfx_krtd_sword_swipe2);
-			} else if ((!up_pressed || !up_down) && (down_pressed || down_down)){
+			} else if ((!up_stick_down) && (down_stick_down)){
+				set_attack( AT_DTILT );
+				hsp = 3 * spr_dir
+				sound_stop(sfx_krtd_sword_swipe2);
+			}
+		}
+	}
+	if (window == 4){
+		if (window_timer == 2){
+			if ((up_pressed || up_down || up_stick_down) && (!down_pressed || !down_down || !down_stick_down)){
+				set_attack( AT_UTILT );
+				hsp = 6 * spr_dir
+				sound_stop(sfx_krtd_sword_swipe2);
+			} else if ((!up_pressed || !up_down || !up_stick_down) && (down_pressed || down_down || down_stick_down)){
 				set_attack( AT_DTILT );
 				hsp = 3 * spr_dir
 				sound_stop(sfx_krtd_sword_swipe2);
@@ -43,14 +56,23 @@ if (attack == AT_FTILT){
 	if (window == 6){
 		if (window_timer > 4){
 			can_attack = true;
-		}
-	}
-	if (window == 7){
-		if ((up_pressed || up_down) && (!down_pressed || !down_down)){
+			if ((up_stick_down) && (!down_stick_down)){
 				set_attack( AT_UTILT );
 				hsp = 6 * spr_dir
 				sound_stop(sfx_krtd_sword_swipe2);
-			} else if ((!up_pressed || !up_down) && (down_pressed || down_down)){
+			} else if ((!up_stick_down) && (down_stick_down)){
+				set_attack( AT_DTILT );
+				hsp = 3 * spr_dir
+				sound_stop(sfx_krtd_sword_swipe2);
+			}
+		}
+	}
+	if (window == 7){
+		if ((up_pressed || up_down || up_stick_down) && (!down_pressed || !down_down || !down_stick_down)){
+				set_attack( AT_UTILT );
+				hsp = 6 * spr_dir
+				sound_stop(sfx_krtd_sword_swipe2);
+			} else if ((!up_pressed || !up_down || !up_stick_down) && (down_pressed || down_down || down_stick_down)){
 				set_attack( AT_DTILT );
 				hsp = 3 * spr_dir
 				sound_stop(sfx_krtd_sword_swipe2);

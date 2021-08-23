@@ -2,10 +2,6 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-patch_ver = "2.1.3";
-patch_day = "26";
-patch_month = "JUL";
- 
 if get_player_color(player) == 7 {
 set_character_color_shading( 0, 0 );
 set_character_color_shading( 1, 0 );
@@ -91,7 +87,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
     color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
     
-    col_max = 23; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    col_max = 25; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(22, 135, 111) // "color preview square" color. can be any color!
@@ -164,13 +160,13 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[22,1] = "Bone-Chilling"
     ce[22,2] = ""    
     ce[23,0] = make_color_rgb(255, 204, 0)
-    ce[23,1] = "BEES"
+    ce[23,1] = "Bon-bee"
     ce[23,2] = "" 
-    ce[24,0] = make_color_rgb(86, 144, 61)
-    ce[24,1] = "Lode"
+    ce[24,0] = make_color_rgb(255, 131, 66)
+    ce[24,1] = "Totsugeki"
     ce[24,2] = ""    
-    ce[25,0] = make_color_rgb(86, 144, 61)
-    ce[25,1] = "Lode"
+    ce[25,0] = make_color_rgb(97, 160, 207)
+    ce[25,1] = "Maverick"
     ce[25,2] = ""   
     ce[26,0] = make_color_rgb(86, 144, 61)
     ce[26,1] = "Lode"
@@ -280,16 +276,7 @@ if (color_desc_activate){
  
 //ae code end
  
- 
-  
-//Patch
- 
-draw_set_halign(fa_left);
- 
-textDraw(temp_x + 2, temp_y + 30, "medFont", c_white, 0, 1000, 1, true, 1, "VER. " + patch_ver);
- 
-textDraw(temp_x + 2, temp_y + 50, "fName", c_white, 0, 1000, 1, true, 1, patch_day + " " + patch_month);
- 
+
  
 //--- ---
 // altered version of muno's functions. if you have other css codes, this part needs to be at the bottom of the code.

@@ -1,7 +1,5 @@
 attacking = state == clamp(state,5,6);
 
-ground_friction = state == PS_CROUCH ? 0 : .5;
-
 //#region Jump FX
 if (state == PS_JUMPSQUAT) played_hit_fx = false;
 if (state == PS_FIRST_JUMP && prev_state == PS_JUMPSQUAT) {

@@ -58,47 +58,142 @@ if ("phone_inited" in self && phone_inited && !phone_lightweight){
 			
 			swallowed = 0; // don't touch this line please im begging you
 			
-			var copy_spr = sprite_get("copy_sprite");
-			var copy_hrt = sprite_get("copy_hurt");
-			var copy_icn = sprite_get("copy_icon");
+			var copy_spr = sprite_get("kirby");
+			var copy_hrt = sprite_get("kirby_hurt");
+			var copy_icn = sprite_get("kirby_icon");
+			/*
+			var copy_sfx_mach_tornado_start = sound_get("sfx_mach_tornado_start");
+			var copy_sfx_mach_tornado_slash = sound_get("sfx_mach_tornado_slash");
+			var copy_sfx_mach_tornado_end = sound_get("sfx_mach_tornado_end");
+			*/
+			var mach_tornado_max_loops = 5;
+			var mach_tornado_loop_count = 0;
 			// add more to transfer other sprites, or sfx
 			
 			with enemykirby{
 				newicon = copy_icn;
 				muno_last_swallowed = other.id;
 				
+				/*
 				set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
 				set_attack_value(AT_EXTRA_3, AG_SPRITE, copy_spr);
 				set_attack_value(AT_EXTRA_3, AG_AIR_SPRITE, copy_spr);
-				set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 1);
+				set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 5);
 				set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, copy_hrt);
 				set_attack_value(AT_EXTRA_3, AG_HURTBOX_AIR_SPRITE, copy_hrt);
+				*/
 				
 				// edit the below (and, indeed, the above!) just like a regular attack script
 				
+				set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
+				set_attack_value(AT_EXTRA_3, AG_SPRITE, copy_spr);
+				set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 5);
+				set_attack_value(AT_EXTRA_3, AG_HAS_LANDING_LAG, 4);
+				set_attack_value(AT_EXTRA_3, AG_OFF_LEDGE, 1);
+				set_attack_value(AT_EXTRA_3, AG_AIR_SPRITE, copy_spr);
+				set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, copy_hurt);
+
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
 				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 10);
-				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 2);
-				
-				set_num_hitboxes(AT_EXTRA_3, 1);
-				
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 5);
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HAS_SFX, 1);
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX, copy_sfx_mach_tornado_start);
+				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX_FRAME, 6);
+
+				//Strong
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_TYPE, 1);
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 2);
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAMES, 1);
+				set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAME_START, 5);
+
+				//Weak
+				set_window_value(AT_EXTRA_3, 3, AG_WINDOW_TYPE, 1);
+				set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 6);
+				set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAMES, 4);
+				set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAME_START, 6);
+				set_window_value(AT_EXTRA_3, 3, AG_WINDOW_HAS_SFX, 1);
+				set_window_value(AT_EXTRA_3, 3, AG_WINDOW_SFX, copy_sfx_mach_tornado_slash);
+				set_window_value(AT_EXTRA_3, 3, AG_WINDOW_SFX_FRAME, 5);
+
+				//Weak Repeat
+				set_window_value(AT_EXTRA_3, 4, AG_WINDOW_TYPE, 1);
+				set_window_value(AT_EXTRA_3, 4, AG_WINDOW_LENGTH, 8);
+				set_window_value(AT_EXTRA_3, 4, AG_WINDOW_ANIM_FRAMES, 5);
+				set_window_value(AT_EXTRA_3, 4, AG_WINDOW_ANIM_FRAME_START, 5);
+
+				//Endlag
+				set_window_value(AT_EXTRA_3, 5, AG_WINDOW_TYPE, 7);
+				set_window_value(AT_EXTRA_3, 5, AG_WINDOW_LENGTH, 24);
+				set_window_value(AT_EXTRA_3, 5, AG_WINDOW_ANIM_FRAMES, 10);
+				set_window_value(AT_EXTRA_3, 5, AG_WINDOW_ANIM_FRAME_START, 11);
+				set_window_value(AT_EXTRA_3, 5, AG_WINDOW_HAS_SFX, 1);
+				set_window_value(AT_EXTRA_3, 5, AG_WINDOW_SFX, copy_sfx_mach_tornado_end);
+				set_window_value(AT_EXTRA_3, 5, AG_WINDOW_SFX_FRAME, 1);
+
+				set_num_hitboxes(AT_EXTRA_3, 3);
+
+				//Strong Hit
 				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 1);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 3);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 8);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, 50);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, -10);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 66);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 75);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 3);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 14);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 90);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 10);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 2);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 2);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, 0);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, -35);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 75);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 80);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_SHAPE, 2);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 2);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 12);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 50);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 7);
 				set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.8);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 12);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 1.0);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITSTUN_MULTIPLIER, 1.15);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DRIFT_MULTIPLIER, 0);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 0);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
+				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 10);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, .6);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 304);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT_X_OFFSET, 2);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, sfx_smash_ult_sword_hit_heavy);
+				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE_FLIPPER, 6);
+
+				//Weak Hit (Start)
+				set_hitbox_value(AT_EXTRA_3, 2, HG_HITBOX_TYPE, 1);
+				set_hitbox_value(AT_EXTRA_3, 2, HG_WINDOW, 3);
+				set_hitbox_value(AT_EXTRA_3, 2, HG_LIFETIME, 6);
+				set_hitbox_value(AT_EXTRA_3, 2, HG_HITBOX_X, 0);
+				set_hitbox_value(AT_EXTRA_3, 2, HG_HITBOX_Y, -35);
+				set_hitbox_value(AT_EXTRA_3, 2, HG_WIDTH, 70);
+				set_hitbox_value(AT_EXTRA_3, 2, HG_HEIGHT, 75);
+				set_hitbox_value(AT_EXTRA_3, 2, HG_SHAPE, 2);
+				set_hitbox_value(AT_EXTRA_3, 2, HG_PRIORITY, 2);
+				set_hitbox_value(AT_EXTRA_3, 2, HG_DAMAGE, 8);
+				set_hitbox_value(AT_EXTRA_3, 2, HG_ANGLE, 60);
+				set_hitbox_value(AT_EXTRA_3, 2, HG_BASE_KNOCKBACK, 6);
+				set_hitbox_value(AT_EXTRA_3, 2, HG_KNOCKBACK_SCALING, 0.5);
+				set_hitbox_value(AT_EXTRA_3, 2, HG_BASE_HITPAUSE, 6);
+				set_hitbox_value(AT_EXTRA_3, 2, HG_HITPAUSE_SCALING, .4);
+				set_hitbox_value(AT_EXTRA_3, 2, HG_VISUAL_EFFECT, 301);
+				set_hitbox_value(AT_EXTRA_3, 2, HG_VISUAL_EFFECT_X_OFFSET, 2);
+				set_hitbox_value(AT_EXTRA_3, 2, HG_HIT_SFX, sfx_smash_ult_sword_hit_medium);
+				set_hitbox_value(AT_EXTRA_3, 2, HG_ANGLE_FLIPPER, 6);
+
+				//Weak Hit (Start)
+				set_hitbox_value(AT_EXTRA_3, 3, HG_HITBOX_TYPE, 1);
+				set_hitbox_value(AT_EXTRA_3, 3, HG_WINDOW, 4);
+				set_hitbox_value(AT_EXTRA_3, 3, HG_LIFETIME, 8);
+				set_hitbox_value(AT_EXTRA_3, 3, HG_HITBOX_X, 0);
+				set_hitbox_value(AT_EXTRA_3, 3, HG_HITBOX_Y, -35);
+				set_hitbox_value(AT_EXTRA_3, 3, HG_WIDTH, 70);
+				set_hitbox_value(AT_EXTRA_3, 3, HG_HEIGHT, 75);
+				set_hitbox_value(AT_EXTRA_3, 3, HG_SHAPE, 2);
+				set_hitbox_value(AT_EXTRA_3, 3, HG_PRIORITY, 2);
+				set_hitbox_value(AT_EXTRA_3, 3, HG_DAMAGE, 8);
+				set_hitbox_value(AT_EXTRA_3, 3, HG_ANGLE, 60);
+				set_hitbox_value(AT_EXTRA_3, 3, HG_BASE_KNOCKBACK, 6);
+				set_hitbox_value(AT_EXTRA_3, 3, HG_KNOCKBACK_SCALING, 0.5);
+				set_hitbox_value(AT_EXTRA_3, 3, HG_BASE_HITPAUSE, 6);
+				set_hitbox_value(AT_EXTRA_3, 3, HG_HITPAUSE_SCALING, .4);
+				set_hitbox_value(AT_EXTRA_3, 3, HG_VISUAL_EFFECT, 301);
+				set_hitbox_value(AT_EXTRA_3, 3, HG_VISUAL_EFFECT_X_OFFSET, 2);
+				set_hitbox_value(AT_EXTRA_3, 3, HG_HIT_SFX, sfx_smash_ult_sword_hit_medium);
+				set_hitbox_value(AT_EXTRA_3, 3, HG_ANGLE_FLIPPER, 6);
 			}
 		}
 		
@@ -108,6 +203,70 @@ if ("phone_inited" in self && phone_inited && !phone_lightweight){
 		
 		with oPlayer if "muno_last_swallowed" in self && muno_last_swallowed == other && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_EXTRA_3{
 			// you can treat this like an attack_update.gml for when kirby is using your character's ability
+			
+			//Nspecial: Mach Tornado
+			if (attack == AT_EXTRA_3){
+				can_wall_jump = true;
+				if (window != 5){
+					if (vsp < -2.5){
+						vsp = -2.5
+					}
+					if (vsp > 3){
+						vsp = 3
+					}
+					if (hsp > 5){
+						hsp = 5
+					}
+					if (hsp < -5){
+						hsp = -5
+					}
+				}
+				if (window == 1){
+					mach_tornado_loop_count = 0;
+					vsp = -3
+				}
+				if (window == 2 || window == 3 || window == 4){
+					if (!hitpause){
+						can_move = true;
+						if (special_pressed || special_down){
+							vsp = vsp - 0.75
+						}
+						if (left_down){
+							hsp = hsp - 0.75
+						}
+						if (right_down){
+							hsp = hsp + 0.75
+						}
+						if (!left_down && !right_down){
+							if (hsp > 0){
+								hsp = hsp - 0.125
+							}
+							if (hsp < 0){
+								hsp = hsp + 0.125
+							}
+						}
+					}
+				}
+				if (window == 4){
+					if (window_timer == 8){
+						if (mach_tornado_loop_count != mach_tornado_max_loops){
+							destroy_hitboxes();
+							mach_tornado_loop_count++;
+							sound_play(sfx_mach_tornado_slash);
+							window_timer = 0
+						}
+					}
+				}
+				if (window == 5){
+					if (window_timer < 4 && vsp > -4){
+						//vsp = -4
+					}
+					if (window_timer > 22 && !free){
+						set_state( PS_LANDING_LAG );
+						//sound_play(sfx_landinglag);
+					}
+				}	
+			}
 			
 			// this system avoids conflicts between 2 swallowed chars IF they both use the munophone system for copy abilities.
 		}
@@ -230,22 +389,22 @@ pho_has_btt_layout = 0;	// Break the Targets stage
 pho_has_otto_bhead = 1;	// Bobblehead for Otto's bike
 pho_has_steve_dmsg = 1;	// Death message for Steve
 pho_has_feri_taunt = 0;	// Costume for Feri's taunt
-pho_has_hikaru_fak = 0;	// Title for Hikaru's fakie
-pho_has_rat_allout = 0;	// Quip for Rat's all-out attack
-pho_has_tco_sketch = 0;	// Drawing for The Chosen One's down taunt
+pho_has_hikaru_fak = 1;	// Title for Hikaru's fakie
+pho_has_rat_allout = 1;	// Quip for Rat's all-out attack
+pho_has_tco_sketch = 1;	// Drawing for The Chosen One's down taunt
 pho_has_ahime_dead = 0;	// Sprite for Abyss Hime's slicing effect
 pho_has_tink_picto = 0;	// Photograph for Toon Link's picto box
 pho_has_fire_taunt = 0; // Fire's Taunt
 pho_has_wall_e_ost = 0; // Wall-E's music
 pho_has_amber_love = 0; // Amber's plush and/or hug
 pho_has_moon_music = 0; // Moonchild's taunt music
-pho_has_agentn_cdc = 0; // Agent N's codec
+pho_has_agentn_cdc = 1; // Agent N's codec
 
 // Stage cosmetics
 pho_has_drac_codec = 0;	// Dialogue for the Dracula boss fight
 pho_has_miivs_post = 0;	// Posts for the Miiverse stage
-pho_has_dede_title = 0;	// Title for the Mt Dedede Stadium stage
-pho_has_soul_title = 0; // Text for the Soulbound Conflict stage
+pho_has_dede_title = 1;	// Title for the Mt Dedede Stadium stage
+pho_has_soul_title = 1; // Text for the Soulbound Conflict stage
 pho_has_been_found = 0; // Death sprite for the Trial Grounds stage
 pho_has_resort_pic = 0; // Portrait for the Last Resort stage
 pho_has_pkmn_image = 0; // Battle sprite for Pokémon Stadium
@@ -371,8 +530,8 @@ with phone{
 	
 	initTip("USpecial: Shuttle Loop");
 	initTipWords("A flying loop, then transitions into a glide. Hold up to fly up but lose some speed, and down to fly down and gain more speed.
-	Holding up too much will put you into pratfall. Gliding for too long will also do that.
-	Cancelable with an airdodge, aerial or special. If you try canceling into Up Special, you'll go into pratfall.");
+	Flying for too long or bumping into a wall will cancel the glide.
+	Can be canceled with an airdodge, aerial or special. If you try canceling into Up Special, you'll go into air idle.");
 	initTipImage(player_id.spr_uspecial_muno, -3, fa_center, 1, c_white, 3);
 	
 	initTip("DSpecial: Meta Condor Dive");
@@ -403,7 +562,7 @@ with phone{
 	initTipImage(player_id.spr_alts, 2, fa_left, 1, c_white, 0);
 	
 	initTipWords("Alt 4: Green
-	Resembles Meta Knight's Player 3 color in Kirby: Star Allies.");
+	Resembles Meta Knight's Player 4 color in Kirby: Star Allies.");
 	initTipImage(player_id.spr_alts, 3, fa_left, 1, c_white, 0);
 	
 	initTipWords("Alt 5: Black
@@ -435,7 +594,7 @@ with phone{
 	initTipImage(player_id.spr_alts, 10, fa_left, 1, c_white, 0);
 	
 	initTipWords("Alt 12: Pink
-	Resembles Meta Knight's green color from Kirby: Air Ride.");
+	Resembles Meta Knight's green (yes, this is mapped to the green color, even though the color swap is pink) color from Kirby: Air Ride. Also resembles Kirby.");
 	initTipImage(player_id.spr_alts, 11, fa_left, 1, c_white, 0);
 	
 	initTipWords("Alt 13: Orange
@@ -519,6 +678,36 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	
+	initPatch("1.6", "22 August, 2021");
+	initPatchWords("General
+	~ Fixed all double outlines on all animations.
+	~ Added The Chosen One compatibility.
+	~ Added Hikaru compatibility.
+	~ Added Rat compatibility.
+	~ Added Agent N compatibility.
+	~ Added Mt. Dedede compatibility.
+	~ Added Soulbound Conflict compatibility.");
+	initPatchWords("Up Special (Shuttle Loop)
+	~ Fixed Meta Knight’s back wing appearing in front of Meta Knight’s back arm during startup.");
+	
+	initPatch("1.5", "21 August, 2021");
+	initPatchWords("General
+	~ Some animations have been polished to not have double outlines.");
+	initPatchWords("Forward Tilt
+	~ You can now tilt-cancel the move with the right stick.");
+	initPatchWords("Down Air
+	~ Fixed Meta Knight’s arm that is holding the sword appearing in front of his body.");
+	initPatchWords("Neutral Special (Mach Tornado)
+	~ Strong Hit Hitpause: 9 -> 10");
+	
+	initPatch("1.4", "21 August, 2021");
+	initPatchWords("General
+	~ Updated the Frame Data section of the Munophone to have more accurate hitbox names for each attack.
+	~ Fixed a typo in the alternate color section of the Munophone.");
+	initPatchWords("Up Special (Shuttle Loop)
+	~ Corrected information about the move in the Munophone.
+	~ Fixed a bug where Meta Knight wouldn’t go into parry stun when Up Special gets parried.");
 	
 	initPatch("1.3", "20 August, 2021");
 	initPatchWords("General
@@ -958,7 +1147,7 @@ if !phone_lightweight{
 	
 	if pho_has_hikaru_fak{
 		
-		Hikaru_Title = "woaf";
+		Hikaru_Title = "Star Warrior";
 		
 	}
 	
@@ -968,7 +1157,7 @@ if !phone_lightweight{
 	
 	if pho_has_rat_allout{
 		
-		personaQuips[10] = "woaf";
+		personaQuips[10] = "Victory... is my destiny.";
 		
 	}
 	
@@ -1070,9 +1259,9 @@ if !phone_lightweight{
 	
 	if pho_has_agentn_cdc{
 		
-		ncode1 = "line1";
-		ncode2 = "line2";
-		ncode3 = "line3";
+		ncode1 = "A mysterious swordsman from Dream Land.";
+		ncode2 = "Attacks with lightning fast sword swings.";
+		ncode3 = "Keep your guard up.";
 		
 	}
 	
@@ -1118,8 +1307,8 @@ if !phone_lightweight{
 	
 	if pho_has_dede_title{
 		
-		arena_title = "woag";
-		arena_short_name = "woaf";
+		arena_title = "The Masked Swordsman";
+		arena_short_name = "Meta Knight";
 		
 	}
 	
@@ -1129,7 +1318,7 @@ if !phone_lightweight{
 	
 	if pho_has_soul_title{
 		
-		battle_text = "* woag";
+		battle_text = "* You begin to feel uneasy just by looking at the masked swordsman.";
 		
 	}
 	

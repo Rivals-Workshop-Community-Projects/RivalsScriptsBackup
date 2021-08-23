@@ -90,7 +90,7 @@ set_hitbox_value(AT_USPECIAL, 2, HG_HITSTUN_MULTIPLIER, .8);
 set_hitbox_value(AT_USPECIAL, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_WINDOW, 4);
-set_hitbox_value(AT_USPECIAL, 3, HG_WINDOW_CREATION_FRAME, 9);
+set_hitbox_value(AT_USPECIAL, 3, HG_WINDOW_CREATION_FRAME, 8);
 set_hitbox_value(AT_USPECIAL, 3, HG_LIFETIME, 2);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_X, 8);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_Y, -7);
@@ -101,19 +101,19 @@ set_hitbox_value(AT_USPECIAL, 3, HG_DAMAGE, 3);
 set_hitbox_value(AT_USPECIAL, 3, HG_ANGLE, 275);
 set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, 0.6);
-set_hitbox_value(AT_USPECIAL, 3, HG_BASE_HITPAUSE, 3);
-set_hitbox_value(AT_USPECIAL, 3, HG_HITPAUSE_SCALING, .65);
+set_hitbox_value(AT_USPECIAL, 3, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_USPECIAL, 3, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, asset_get("sfx_swipe_medium2"));
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_GROUP, 3);
 set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, 303);
-set_hitbox_value(AT_USPECIAL, 3, HG_HITSTUN_MULTIPLIER, .8);
+set_hitbox_value(AT_USPECIAL, 3, HG_HITSTUN_MULTIPLIER, 1);
 
 
 set_hitbox_value(AT_USPECIAL, 4, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 4, HG_WINDOW, 4);
-set_hitbox_value(AT_USPECIAL, 4, HG_WINDOW_CREATION_FRAME, 10);
+set_hitbox_value(AT_USPECIAL, 4, HG_WINDOW_CREATION_FRAME, 8);
 set_hitbox_value(AT_USPECIAL, 4, HG_LIFETIME, 2);
 set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_X, 5);
 set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_Y, -40);
@@ -129,7 +129,7 @@ set_hitbox_value(AT_USPECIAL, 4, HG_HITPAUSE_SCALING, .65);
 set_hitbox_value(AT_USPECIAL, 4, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_USPECIAL, 4, HG_HIT_SFX, asset_get("sfx_swipe_medium2"));
 set_hitbox_value(AT_USPECIAL, 4, HG_HITBOX_GROUP, 3);
-set_hitbox_value(AT_USPECIAL, 4, HG_VISUAL_EFFECT, 303);
+set_hitbox_value(AT_USPECIAL, 4, HG_VISUAL_EFFECT, 301);
 
 
 set_hitbox_value(AT_USPECIAL, 5, HG_PARENT_HITBOX, 0);

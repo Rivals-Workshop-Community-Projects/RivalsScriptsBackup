@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 21, 42, 44 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 24 );
+set_num_palettes( 26 );
 
 // Blue
 set_color_profile_slot( 1, 0, 79, 138, 255 ); //ClothesRim
@@ -256,7 +256,7 @@ set_color_profile_slot( 22, 5, 0, 0, 0 ); //Pants
 set_color_profile_slot( 22, 6, 255, 255, 255 ); //Shoes
 set_color_profile_slot( 22, 7, 28, 88, 255 ); //Frog
 
-// BEES
+// Bon-bee
 set_color_profile_slot( 23, 0, 20, 20, 20 ); //ClothesRim
 set_color_profile_slot( 23, 1, 255, 204, 0 ); //Skin
 set_color_profile_slot( 23, 2, 255, 204, 0 ); //Clothes
@@ -265,6 +265,26 @@ set_color_profile_slot( 23, 4, 20, 20, 20 ); //Hair
 set_color_profile_slot( 23, 5, 20, 20, 20 ); //Pants
 set_color_profile_slot( 23, 6, 255, 204, 0 ); //Shoes
 set_color_profile_slot( 23, 7, 255, 204, 0 ); //Frog
+
+// Totsugeki
+set_color_profile_slot( 24, 0, 255, 233, 214 ); //ClothesRim
+set_color_profile_slot( 24, 1, 254, 221, 198 ); //Skin
+set_color_profile_slot( 24, 2, 255, 131, 66 ); //Clothes
+set_color_profile_slot( 24, 3, 201, 64, 0 ); //ClothesShade
+set_color_profile_slot( 24, 4, 102, 67, 42 ); //Hair
+set_color_profile_slot( 24, 5, 41, 28, 17 ); //Pants
+set_color_profile_slot( 24, 6, 255, 131, 66 ); //Shoes
+set_color_profile_slot( 24, 7, 22, 167, 237 ); //Frog
+
+// Maverick
+set_color_profile_slot( 25, 0, 135, 175, 190 ); //ClothesRim
+set_color_profile_slot( 25, 1, 97, 160, 207 ); //Skin
+set_color_profile_slot( 25, 2, 137, 93, 96 ); //Clothes
+set_color_profile_slot( 25, 3, 98, 60, 63 ); //ClothesShade
+set_color_profile_slot( 25, 4, 20, 73, 110 ); //Hair
+set_color_profile_slot( 25, 5, 20, 73, 110 ); //Pants
+set_color_profile_slot( 25, 6, 97, 160, 207 ); //Shoes
+set_color_profile_slot( 25, 7, 179, 207, 227 ); //Frog
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

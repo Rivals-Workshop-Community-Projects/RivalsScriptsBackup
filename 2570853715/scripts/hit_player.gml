@@ -11,7 +11,9 @@ if(!hit_player_obj.super_armor and hit_player_obj.soft_armor == 0){
     }
     
     if(my_hitboxID.attack == AT_FSPECIAL and my_hitboxID.hbox_num != 14){
-        hit_player_obj.x = lerp(floor(hit_player_obj.x), x+spr_dir*40, .5);
+        if(my_hitboxID.hbox_num < 14){
+            hit_player_obj.x = lerp(floor(hit_player_obj.x), x+spr_dir*40, .7);
+        }
         hit_player_obj.y = lerp(floor(hit_player_obj.y), y, .5);
     }
     

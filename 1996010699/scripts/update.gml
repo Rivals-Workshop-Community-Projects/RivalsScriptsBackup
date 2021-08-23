@@ -569,7 +569,13 @@ with(oPlayer){
 	}
 }
 
-if(!practice && (item[11, 3] == 0) && (item[11, 7] == false) && (canBuyGodhead == true)){
+if(get_player_stocks(player) == 9 || get_match_setting(SET_STOCKS) == 9){
+	item[11, 6] = "3gGbCqj";
+} else {
+	item[11, 6] = "INFINITY UTILT";
+}
+
+if(!practice && get_match_setting(SET_STOCKS) != 0 && (item[11, 3] == 0) && (item[11, 7] == false) && (canBuyGodhead == true)){
 	achieveUnlock(11);
 }
 

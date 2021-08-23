@@ -7,6 +7,12 @@ if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_2 || attack == AT_FSPECIAL ||
     trigger_b_reverse();
 }
 
+
+if (attack == AT_JAB){
+       was_parried = false;
+}
+
+
 if (attack == AT_NSPECIAL_2 && window_timer = 1){
     detached_cooldown = 58;
 }
@@ -50,12 +56,22 @@ if (attack == AT_DSTRONG && window = 5){
     vsp = vsp + 0.35;
 }
 
+if (attack == AT_DSTRONG && (window = 5 || window = 4)){
+    if (hsp > 7){
+        hsp = 7;
+    }
+        if (hsp < -7){
+        hsp = -7;
+    }
+}
+
+
 if (attack == AT_DSTRONG && (window = 5 || window = 4) && left_down){
-    hsp = hsp - 0.035;
+    hsp = hsp - dstrong_movement_mult;
 }
 
 if (attack == AT_DSTRONG &&  (window = 5 || window = 4) && right_down){
-    hsp = hsp + 0.035;
+    hsp = hsp + dstrong_movement_mult;
 }
 
 if (attack == AT_DSTRONG && has_hit_player){
@@ -64,44 +80,40 @@ if (attack == AT_DSTRONG && has_hit_player){
         if (super_armor = false){
         if(other.spr_dir = 1){
         self.x = other.x + 30;
-        self.y = other.y - 5;
+        self.y = other.y - 6;
     }
     
         if(other.spr_dir = -1){
         self.x = other.x - 30;
-        self.y = other.y - 5;
+        self.y = other.y - 6;
     }
         }
 }
 
 if (window == 3){
     with (hit_player_obj){
+        other.grabbed_player_damage = get_player_damage( player );
         if (super_armor = false){
         self.hitstop = 8;
         }
     }
+    dstrong_movement_mult = (0.06 * ((grabbed_player_damage * 0.1) + 1));
 }
 
 }
 
 if (attack == AT_DSTRONG && window = 4){
-    if (left_down){
-        hsp = hsp - 0.30;
-    }
-    if (right_down){
-        hsp = hsp + 0.30;
-    }       
     with (hit_player_obj){
         self.hitstop = 8;
         
         if(other.spr_dir = 1){
         self.x = other.x + 20;
-        self.y = other.y - 35;
+        self.y = other.y - 34;
     }
     
         if(other.spr_dir = -1){
         self.x = other.x - 20;
-        self.y = other.y - 35;
+        self.y = other.y - 34;
     }
     
 }
@@ -121,6 +133,7 @@ if (attack == AT_DSTRONG && window = 5){
 }
 
 if (attack == AT_DSTRONG && window = 6 && window_timer = 1){
+    hsp = 0;
     with (hit_player_obj){
         if(other.spr_dir = 1){
         self.x = other.x + 20;
@@ -372,6 +385,7 @@ if (attack == 49){
  if (window > 2){
      hsp = 0;
  }
+ 
 
  if ((window = 1 || window = 2) && free = 0){
      y = y - 1;

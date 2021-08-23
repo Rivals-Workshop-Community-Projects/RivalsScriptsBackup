@@ -2725,10 +2725,10 @@ if(attack == AT_JAB){
 	// Allow tilt cancels in either direction
 	if((((left_down || left_stick_down || down_down) && spr_dir == 1) || ((down_down || right_down || right_stick_down) && spr_dir == -1))  && (special_pressed || attack_pressed || down_stick_down || up_stick_down || right_stick_down || left_stick_down) && ((window == 3 && window_timer >= 5) || (window == 6 && window_timer >= 4)))
 	{
-		if(!special_pressed)
-		{
-			spr_dir *= -1;
-		}
+		// if(!special_pressed)
+		// {
+		// 	spr_dir *= -1;
+		// }
 		clear_button_buffer(PC_LEFT_HARD_PRESSED);
 		clear_button_buffer(PC_RIGHT_HARD_PRESSED);
 		set_state(PS_IDLE);

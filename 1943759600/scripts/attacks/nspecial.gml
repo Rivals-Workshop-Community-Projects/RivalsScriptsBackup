@@ -9,7 +9,7 @@ set_attack_value(AT_NSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("nspecial2_hurt"
 
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 8);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, sound_get("olym_twinkle"));
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 4);
@@ -17,17 +17,17 @@ set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_TYPE, 420); //This makes it cancel inside the gem field
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_TYPE, 1); //This makes it cancel inside the gem field
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 16);
-set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 6);
-set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 7);
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 
 
 set_num_hitboxes(AT_NSPECIAL, 1);
@@ -50,7 +50,6 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 //set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("nspecial_proj"));
-set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_metal_hit_strong"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 13);
 

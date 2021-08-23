@@ -20,4 +20,3 @@ if (my_hitboxID.attack == AT_DSPECIAL) {
     
 }
 
-rankm -= my_hitboxID.damage * 60

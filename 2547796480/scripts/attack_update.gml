@@ -66,20 +66,12 @@ if attack == AT_DAIR {
     if (has_hit or !free) && !hitpause {
     	if has_hit {
     	vsp = -7
-    	set_attack (AT_NAIR)
-    	set_attack_value(AT_NAIR, AG_CATEGORY, 2);
     	window = 4 
     	window_timer = 0
     	}
     	
     	if !free {
-    	sound_play(asset_get("sfx_ori_stomp_hit"));
-    	vsp = -7
-    	set_attack (AT_FAIR)
-    	set_attack_value(AT_FAIR, AG_CATEGORY, 2);
-    	window = 4 
-    	window_timer = 0
-    	spawn_hit_fx (x, y + 6, 14)
+    	sound_play(asset_get("sfx_ori_stomp_hit"),false,noone,0.7);
     	}
     }
     
@@ -93,10 +85,10 @@ if attack == AT_DAIR {
     }
     
     if window == 2 && hitpause  {
-        vsp = 0
+        old_vsp = -14
     }
     
-    if window == 2 && window_timer == 10 && free {
+    if window == 2 && window_timer == 8 && free {
         window_timer = 1
     }
     

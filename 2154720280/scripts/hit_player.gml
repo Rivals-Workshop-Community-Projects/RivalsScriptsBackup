@@ -2,7 +2,7 @@
 
 if my_hitboxID.type == 1 { 
    
-   batt2 += my_hitboxID.damage*2.5
+   batt2 += my_hitboxID.damage*2.8
    battfade = 45
 }
 

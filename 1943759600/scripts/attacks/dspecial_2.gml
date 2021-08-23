@@ -8,11 +8,11 @@ set_attack_value(AT_DSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
 set_attack_value(AT_DSPECIAL_2, AG_HURTBOX_AIR_SPRITE, sprite_get("dspecial_air_hurt"));
 
 
-//dash cancel
+//forward dash cancel
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_TYPE, 419);
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH, 12);
-set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 5);
-set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_ANIM_FRAME_START, 11);
+set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 6);
+set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_ANIM_FRAME_START, 19);
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_SFX, sound_get("olym_dash2"));
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_HSPEED, 8);

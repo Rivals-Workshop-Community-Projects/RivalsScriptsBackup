@@ -49,7 +49,9 @@ if attack == AT_USPECIAL && (hbox_num == 2 ) && player_id.state == PS_PRATFALL{
 
 if attack == AT_DSPECIAL && (hbox_num == 1 ){
     
+    if hitbox_timer == 0 or hitbox_timer % 2 == 0 {
       create_hitbox (AT_DSPECIAL, 2 , x, y)
+    }
       if hitbox_timer % 6 == 0 {
       spawn_hit_fx (x - 536*spr_dir,y, 305)
       }

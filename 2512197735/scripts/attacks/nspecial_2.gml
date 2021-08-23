@@ -30,7 +30,7 @@ set_window_value(AT_NSPECIAL_2, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 
 set_num_hitboxes(AT_NSPECIAL_2, 6);
 
-//Throwing Forward (40°)
+//Throwing Forward (45°)
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_WINDOW_CREATION_FRAME, 2);
@@ -41,7 +41,7 @@ set_hitbox_value(AT_NSPECIAL_2, 1, HG_PRIORITY, 6);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_WIDTH, 60);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HEIGHT, 50);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_DAMAGE, 2);
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_ANGLE, 40);
+set_hitbox_value(AT_NSPECIAL_2, 1, HG_ANGLE, 45);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_BASE_HITPAUSE, 7);

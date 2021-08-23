@@ -56,7 +56,6 @@ set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 112);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 0);
-set_hitbox_value(AT_DSTRONG, 1, HG_HITSTUN_MULTIPLIER, 1.0);
 
 set_hitbox_value(AT_DSTRONG, 2, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
@@ -78,4 +77,3 @@ set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 112);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE_FLIPPER, 0);
-set_hitbox_value(AT_DSTRONG, 2, HG_HITSTUN_MULTIPLIER, 1.0);

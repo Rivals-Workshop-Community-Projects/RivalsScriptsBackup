@@ -5,7 +5,7 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL) && 
 
 
 //detect if at the end of the current window (including whifflag)
-var window_end = ( window_timer >= floor( get_window_value( attack,window,AG_WINDOW_LENGTH )*1+( 0.5*get_window_value( attack,window,AG_WINDOW_HAS_WHIFFLAG ) ) )-1 );
+var window_end = ( window_timer >= floor( get_window_value( attack,window,AG_WINDOW_LENGTH )* (1+( 0.5*get_window_value( attack,window,AG_WINDOW_HAS_WHIFFLAG ) ) ) )-1 );
 //get horizontal input (for comparing to spr_dir)
 var horizontal_input = (right_down - left_down);
 
@@ -21,90 +21,76 @@ if (get_window_value(attack, window, AG_WINDOW_TYPE) == 419) {
 }
 
 
-if gem_cancel && ((in_field && gem_ins.state != 2 && gem_ins.state != 1) || (runeO && has_hit_player)) {
+if is_special_pressed(DIR_NONE) && instance_exists(gem_ins) && !gem_dying && (has_hit_player or has_hit) && in_field && gem_ins.cooldown == -1 {
+	special_pressed = false;
 
-	//	if state_timer mod 4 >= 2 {
-	//	outline_color = [133, 133, 133]
-	//	init_shader();
-		
-//	} else {
-//		outline_color = [0, 0, 0]
-//		init_shader();
-//	}
-	if (runeO && has_hit_player) || gem_ins.cooldown == -1
-	if (special_pressed or attack_pressed){
-		if get_window_value(attack, window, AG_WINDOW_CANCEL_TYPE) == 0 {
-			
-			gem_cancel = 2;
-			iasa_script();
-			
-		} else {
-			window++;
-			window_timer = 0;
-		}
+	destroy_gem();
+
+	hitpause = true;
+	hitstop = 2;
+	hitstop_full = 2;
+	gem_infield_cancelling = 1;
+	if free {
+		old_vsp = min(vsp, -5);
+		vsp = old_vsp;
 	}
-	
-}
-
-
-
-/*if special_pressed && joy_pad_idle && gem_cancel && instance_exists(gem_ins) && point_distance(x,y,gem_ins.x,gem_ins.y) <= gem_ins.field_size {
-attack_end();
-destroy_hitboxes();
-	iasa_script();
-	
 	gem_cancel = 0;
-	set_attack(AT_NSPECIAL_AIR) //Cancelling to nspecial
-
 }
-*/
+
+if attack == AT_DATTACK {
+	if window == 4 && window_timer > 2 {
+		can_jump = true;
+	}
+}
+
+if attack == AT_BAIR {
+	if window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) {
+		spr_dir *= -1;
+	}
+}
+
 if (attack == AT_NSPECIAL_AIR) {
 	if (window == 3 && window_timer <= 2 && (right_down - left_down) * spr_dir < 0) {
 		spr_dir *= -1;
-		}
-}
-
-if (attack == AT_NSPECIAL_AIR) && (get_window_value(attack, window, AG_WINDOW_TYPE) == 69){ //Cancelled nspecial in field
-	if instance_exists(gem_ins) && !gem_dying  {
+	}
 	
-		var gspeed = get_window_value(attack, window, AG_WINDOW_HSPEED);
-		hsp = lengthdir_x(gspeed, point_direction(x,y,gem_ins.x,gem_ins.ystart+20));
-		vsp = lengthdir_y(gspeed, point_direction(x,y,gem_ins.x,gem_ins.ystart+20));
-		spr_angle = point_direction(x,y,gem_ins.x,gem_ins.ystart+25) - 180 * (spr_dir < 0);
-		spr_dir = -1+(x < gem_ins.x)*2;
-		fall_through = true;
-	
-
-	
-
-		if place_meeting(x,y,gem_ins) {
-		
+	//Crystal Dash
+	if (get_window_value(attack, window, AG_WINDOW_TYPE) == 69) {
+		if instance_exists(gem_ins) {
+			var gspeed = get_window_value(attack, window, AG_WINDOW_HSPEED);
+			hsp = lengthdir_x(gspeed, point_direction(x,y,gem_ins.x,gem_ins.ystart+20));
+			vsp = lengthdir_y(gspeed, point_direction(x,y,gem_ins.x,gem_ins.ystart+20));
+			spr_angle = point_direction(x,y,gem_ins.x,gem_ins.ystart+25) - 180 * (spr_dir < 0);
+			spr_dir = -1+(x < gem_ins.x)*2;
+			fall_through = true;
 			
-			var hfx = spawn_hit_fx(floor(gem_ins.x),floor(gem_ins.y),hit_fx_create(sprite_get("hfx_shine_large"), 20));
-			hfx.depth = gem_ins.depth-3;
-			
+			if place_meeting(x,y,gem_ins) {
+				var hfx = spawn_hit_fx(floor(gem_ins.x),floor(gem_ins.y),hit_fx_create(sprite_get("hfx_shine_large"), 20));
+				hfx.depth = gem_ins.depth-3;
 				
-			if gem_dying {
-				gem_ins.state = 1;
-			} else {
-				gem_ins.cooldown = 0;
-				gem_ins.state = 2;
-				gem_ins.act = 1;
+				if gem_dying {
+					gem_ins.state = 3;
+					gem_ins.state_timer = 0;
+				} else {
+					gem_ins.cooldown = 0;
+					gem_ins.state = 1;
+					gem_ins.act = 1;
+				}
+				
+			//	gem_ins = noone;
+				hitpause = 1;
+				hitstop = 2;
+				hitstop_full = 3;
+				window++;
+				window_timer = 0;
+				spr_angle = 0;
 			}
-			
-		//	gem_ins = noone;
-			hitpause = 1;
-			hitstop = 2;
-			hitstop_full = 3;
-			window++;
+		} else {
+			gem_ins = noone;
+			window = get_attack_value(AT_NSPECIAL_AIR, AG_NUM_WINDOWS)+1;
 			window_timer = 0;
-			spr_angle = 0;
+			sound_play(asset_get("mfx_player_ready"));
 		}
-	} else {
-		gem_ins = noone;
-		window = get_attack_value(AT_NSPECIAL_AIR, AG_NUM_WINDOWS)+1;
-		window_timer = 0;
-		sound_play(asset_get("mfx_player_ready"));
 	}
 }
 
@@ -157,6 +143,7 @@ if (attack == AT_FSPECIAL) {
 				destroy_hitboxes();
 				attack_end();
 				set_attack(AT_FSPECIAL_2);
+				clear_button_buffer(PC_JUMP_PRESSED);
 				hsp /= 3;
 				//shorten jump distance on hit
 				if (has_hit_player) olympia_fspecial_charge_time /= 2;
@@ -187,10 +174,10 @@ if (attack == AT_FSPECIAL) {
 	//ledge cancel
 	if (window >= 5 && !hitpause && !was_parried && !has_hit_player) {
 		if (!free) olympia_fspecial_can_ledge_cancel = true;
-		else if (olympia_fspecial_can_ledge_cancel) {
+		/*else if (olympia_fspecial_can_ledge_cancel) {
 			set_state(PS_IDLE_AIR);
 			hsp /= 2;
-		}
+		}*/
 	}
 	else {
 		can_move = false;
@@ -258,65 +245,28 @@ if (attack == AT_FSPECIAL_2) {
 	}
 }
 
-//==============================================================================
-//			uspecial command grab code commented out to not break
-//			stuff below it
-//==============================================================================
-
+//Uspecial grab code
 if (attack == AT_USPECIAL){
 	can_fast_fall = false;
 	can_wall_jump = true;
 	
 	if ((window == 2 || window == 3) && grabbedid != noone && instance_exists(grabbedid)){
 		grabbedid.ungrab = 0;
-    	//window_timer = 5; //DELETE THIS LINE TO LIMIT HOW LONG THE GRAB IS TO THE WINDOW LENGTH
-        //grabbedid.invincible = true; //DELETE THIS LINE TO MAKE THE GRABBED PLAYER HITTABLE
-        //grabbedid.visible = false; //UNCOMMENT THIS LINE TO MAKE THE GRABBED PLAYER INVISIBLE
-        grabbedid.x = lerp(grabbedid.x,x+(spr_dir*25),0.2); //SET GRABBED PLAYER X TO BE RELATIVE TO PLAYER X
-        grabbedid.y = lerp(grabbedid.y,y-hsp-30,0.2); //SET GRABBED PLAYER Y TO BE RELATIVE TO PLAYER Y
-    	grabbedid.spr_dir = -spr_dir; //TURN THE GRABBED PLAYER TO FACE THE GRABBING PLAYER
-        grabbedid.wrap_time = 9000;
-        grabbedid.state = PS_HITSTUN;
-        grabbedid.hitstun_full = max(hitstun_full,12);
-        grabbedid.hitstun = max(hitstun,12);
-        
-        /*
-        if(special_pressed){ //REPLACE THIS IF CONDITION WITH WHAT YOU WANT TO RELEASE THE GRAB
-            grabbedid.state = PS_TUMBLE;
-            grabbedid.x = -190;
-            grabbedid.y = 80;
-            grabbedid = noone;
-        }
-        */
+		
+		if grabbedid.state == PS_RESPAWN || grabbedid.state == PS_DEAD {
+			grabbedid = noone;
+		} else {
+	        grabbedid.x = lerp(grabbedid.x,x+(spr_dir*25),0.2); //SET GRABBED PLAYER X TO BE RELATIVE TO PLAYER X
+	        grabbedid.y = lerp(grabbedid.y,y-hsp-30,0.2); //SET GRABBED PLAYER Y TO BE RELATIVE TO PLAYER Y
+	    	grabbedid.spr_dir = -spr_dir; //TURN THE GRABBED PLAYER TO FACE THE GRABBING PLAYER
+	        grabbedid.state = PS_HITSTUN;
+	        grabbedid.hitstun_full = max(hitstun_full,12);
+	        grabbedid.hitstun = max(hitstun,12);
+		}
     }
 }
 
 
-//==============================================================================
-//if (attack == AT_USPECIAL){ 
-//	move_cooldown[attack] = 30; 
-//	}
-	
-//if (attack == AT_USPECIAL) {
-//	if (window == 1) {   // checked each frame during window 1 to prevent falling but not prevent rising
-//		if(vsp > 1) {    // can be changed to your desired max fall speed
-//			vsp = 1;     // should be equal to the number in the line above
-//		}
-//	}
-//	if (window == 2 && window_timer == 1) {
-//		if (used_djump) {
-//			djumps = 1;  // remove double jump if they have entered PS_DOUBLE_JUMP since touching the ground
-//		}
-//		if (used_uspecial){
-//			set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
-//		} else {
-//			set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 0);
-//			used_uspecial = true;
-//		}
-//	}
-//}
-
-//Dspecial
 
 if (attack == AT_DSPECIAL){
 	can_shield = false;
@@ -327,6 +277,10 @@ if (attack == AT_DSPECIAL){
 	    soft_armor = 12;
 	    if (window_timer == 1){
 	        armor_timer = armor_dur;
+	        //reset hitbox grid indexes; level 3 is default
+	        set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 99); //doesn't appear
+	        set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, 99); //doesn't appear
+	        set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW, 3);  //appears
 	    }
 	    
 	} else {
@@ -335,11 +289,6 @@ if (attack == AT_DSPECIAL){
 	
     //Attack Branching
     if (window == 2){
-		//turning Unbreaking Palm
-		if window_end {
-			//turn around if necessary
-			if (right_down - left_down != 0) spr_dir = right_down - left_down;
-		}
 		
 		//jump in field
 		if (in_field) {
@@ -347,16 +296,67 @@ if (attack == AT_DSPECIAL){
 			can_shield = true;
 		}
 		//dash
-		if  (shield_pressed == true) {
-			//turn around if necessary
-			if (right_down - left_down != 0) spr_dir = right_down - left_down;
-	    	
-	    	set_attack(AT_DSPECIAL_2);
-	    	fadc_timer = fadc_dur;
+		 if (shield_pressed == true) {
+			
+			//if holding backwards, dash backwards
+			if (left_down - right_down == spr_dir){ set_attack(AT_DSPECIAL_AIR);
+				fadc_back_timer = fadc_back_dur;
+			}
+			//else, dash forwards
+			else { set_attack(AT_DSPECIAL_2);
+				fadc_timer = fadc_dur;
+			}
+			
+			//old code: instead of backdashing, turn around
+			//if (right_down - left_down != 0) spr_dir = right_down - left_down;
+			
+	    	soft_armor = 0;
 	    	invincible = true;
 	    	invince_time = 4;
+	    	//
 	    }
+
+		//charge release
+		else {
+			
+			var minimum_charge = 10;
+			var lvl2_charge = 20;
+			
+			if (!hitpause && window_timer >= minimum_charge && is_special_pressed(DIR_ANY) ) {
+				if (window_timer >= lvl2_charge) {
+					//set the level 2 hitbox to appear
+					set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 99); //doesn't appear
+			        set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, 3);  //appears
+			        set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW, 99); //doesn't appear
+				}
+				else {
+					//set the level 1 hitbox to appear
+					set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 3);  //appears
+			        set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, 99); //doesn't appear
+			        set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW, 99); //doesn't appear
+				}
+				
+				//skip straight to window 3
+				window = 3;
+				window_timer = 0;
+				
+				//manually set the correct attack momentum; get the value from the grid indexes
+				hsp = spr_dir * get_window_value(attack, window, AG_WINDOW_HSPEED);
+			}
+		}
+
     }
+    
+    //attack window
+    if (window == 3) {
+    	//turn around if necessary at the start of the window
+    	if (window_timer <= 1 && !hitpause && right_down - left_down != 0) {
+    		spr_dir = right_down - left_down;
+    		//flip movement in the right direction too
+    		hsp = abs(hsp) * spr_dir;
+    	}
+    }
+    
     //cooldown
     move_cooldown[attack] = 90;
 	can_shield = false;
@@ -385,18 +385,8 @@ if (attack == AT_NSPECIAL_2) {
 	// it is dead. the menace has died.
 	// it shall not return
 	// it has been conquered.
-	if (get_window_value(attack, window, AG_WINDOW_TYPE) == 69) && window_timer == 1 && instance_exists(gem_ins) {
-		//destroy gem
-		sound_play(asset_get("sfx_ice_nspecial_hit_ground"));
-		//sound_play(asset_get("sfx_ice_nspecial_armor"))
-		var hfx = create_hitbox(AT_NSPECIAL_2, 2, floor(gem_ins.x), floor(gem_ins.y));
-		gem_ins.act = 1;
-		gem_ins.state = 1;
-		gem_ins.state_timer = 0;
-		
-		hfx = spawn_hit_fx(floor(gem_ins.x),floor(gem_ins.y),hit_fx_create(sprite_get("hfx_shine_large"), 20));
-		hfx.depth = gem_ins.depth-3;
-		
+	if (get_window_value(attack, window, AG_WINDOW_TYPE) == 69) && window_timer == 1 {
+		destroy_gem();
 	}
 }
 
@@ -425,25 +415,25 @@ if (attack == AT_UTILT || attack == AT_DATTACK) && has_hit_player && (in_field){
 
 //Hidden Rock Candy Taunt
 
-if (attack == AT_TAUNT){
+/*if (attack == AT_TAUNT){
 	if (window == 1 && down_down && !up_down)
+	{
+		window = 4;
+		window_timer = 0;
+	}
+	
+	if (window == 4 && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)-1)
 	{
 		window = 5;
 		window_timer = 0;
 	}
 	
-	if (window == 5 && window_timer >= 28)
+		if (window == 5 && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)-1)
 	{
 		window = 6;
 		window_timer = 0;
 	}
-	
-		if (window == 6 && window_timer >= 28)
-	{
-		window = 7;
-		window_timer = 0;
-	}
-}
+}*/
 
 ////////////////////////////////////////
 
@@ -452,9 +442,9 @@ if (attack == AT_TAUNT){
 //                          Abyss Rune Code
 //==============================================================================
 //#region Abyss Runes
-if abyssEnabled {
+if runesEnabled {
 	//#region RUNE A & J: DC 
-	if runeA || runeJ {
+	if runeH {
 		if get_window_value(attack,window,AG_WINDOW_RUNE_DASHCANCELLABLE) == 1 && rune_dc_input {
 			attack_end();
 			destroy_hitboxes();
@@ -793,3 +783,18 @@ if abyssEnabled {
 }
 //#endregion
 //==============================================================================
+
+#define destroy_gem() 
+
+	//destroy gem
+	if instance_exists(gem_ins) && gem_ins.state == 0 {
+		//sound_play(sound_get("sfx_olympia_nspecial_flash"));
+		//sound_play(asset_get("sfx_ice_nspecial_armor"))
+		var hfx = create_hitbox(AT_NSPECIAL_2, 2, floor(gem_ins.x), floor(gem_ins.y));
+		gem_ins.act = 1;
+		gem_ins.state = 3;
+		gem_ins.state_timer = 0;
+		
+		hfx = spawn_hit_fx(floor(gem_ins.x),floor(gem_ins.y),hit_fx_create(sprite_get("hfx_shine_large"), 20));
+		hfx.depth = gem_ins.depth-3;
+	}

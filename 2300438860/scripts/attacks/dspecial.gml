@@ -102,7 +102,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE_FLIPPER, 4);
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_DSPECIAL, 2, HG_EXTRA_HITPAUSE, 2);
-set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_LOCKOUT, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, sound_get("uspec"));

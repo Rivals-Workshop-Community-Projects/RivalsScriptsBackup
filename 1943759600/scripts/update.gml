@@ -1,26 +1,26 @@
 //Intro Code
-	if (introTimer2 < 4) {
+	if (introTimer2 < 3.15) {
 		introTimer2++;
 	} else {
 		introTimer2 = 0;
 		introTimer++;
 	}
 
-	if ((introTimer < 18 && get_player_color(player) != 15) || (introTimer < 22 && get_player_color(player) == 15)) {
+	if ((introTimer < 18 && get_player_color(player) != 15) || (introTimer < 28 && get_player_color(player) == 15)) {
 		draw_indicator = false;
 	} else {
 		draw_indicator = true;
 	}
 
 	if (introTimer2 == 0 && introTimer == 13 && get_player_color(player) != 15) {
-		sound_play (asset_get("sfx_blow_heavy2"));
+		sound_play (asset_get("sfx_bird_downspecial_end"));
 	}
 	
 //useful checks
 //detect if you're in the field, to cut down on long repetitive statements
-in_field = (instance_exists(gem_ins) && point_distance(x,y,gem_ins.xstart,gem_ins.ystart) <= gem_ins.field_size);
+in_field = (instance_exists(gem_ins) && point_distance(x,y,gem_ins.x,gem_ins.y) <= gem_ins.field_size);
 //detect if the field is dying
-gem_dying = (instance_exists(gem_ins) && (gem_ins.state == 1 || gem_ins.state == 3));
+gem_dying = (instance_exists(gem_ins) && (gem_ins.state >= 2));
 
 with (oPlayer) {
 	if id != other.id && olympia_stun > 0 && olympia_stunplayer == other.player {
@@ -40,6 +40,20 @@ if state_timer == 0 {
 }
 	
 	
+if hitpause && hitstop == 1 && gem_infield_cancelling {
+	gem_infield_cancelling = false;
+	var old_has_hit = has_hit;
+	var old_has_hit_player = has_hit_player;
+	attack_end();
+	destroy_hitboxes();
+	set_attack(AT_NSPECIAL_2);
+	has_hit = old_has_hit;
+	has_hit_player = old_has_hit_player;
+	window_timer = 0;
+	window = get_attack_value(AT_NSPECIAL_2, AG_NUM_WINDOWS);
+	print("gem cancel pt 2");
+}
+	
 if gem_cancel && in_field && state_cat != SC_HITSTUN {
 	hitstop -= 1;
 }
@@ -47,15 +61,20 @@ if gem_cancel && in_field && state_cat != SC_HITSTUN {
 //General gem instance stuff
 if instance_exists(gem_ins) {
 	if gem_ins.cooldown != -1 move_cooldown[AT_NSPECIAL_AIR] = max(move_cooldown[AT_NSPECIAL_AIR], 2);
+	/*if gem_dying {
+		move_cooldown[AT_NSPECIAL_2] = max(move_cooldown[AT_NSPECIAL_2], 2);
+	}*/
 }
 
 //CommandGrab Code
 if(grabbedid != noone){
+	if (grabbedid.state == PS_RESPAWN || grabbedid.state == PS_DEAD) {
+		//prevent grabbing dead people.
+		grabbedid = noone;
+	}
 	if instance_exists(grabbedid) {
 		grabbedid.ungrab++;
 		if(grabbedid.ungrab == 2){
-			grabbedid.visible = true; //Feel free to remove this line if the grab does not make the opponent invisible.
-			grabbedid.invincible = false; //Feel free to remove this line if the grab does not make the opponent invincible.
 			grabbedid.state = PS_HITSTUN;
 			grabbedid.hitstun_full = max(hitstun_full,20);
 	        grabbedid.hitstun = max(hitstun,20);
@@ -87,6 +106,10 @@ if (state == PS_DOUBLE_JUMP) {
 //Dashlines VFX
 if (fadc_timer > 0){
     fadc_timer--;
+}
+
+if (fadc_back_timer > 0){
+    fadc_back_timer--;
 }
 
 
@@ -419,49 +442,21 @@ if swallowed {
 	}
 }
 
-
+if !training training = get_training_cpu_action() != CPU_FIGHT;
 
 //==============================================================================
 //                          Abyss Rune Code
 //==============================================================================
 //#region Abyss Runes
-if abyssEnabled { //literally guaranteeing no leaking code
+if runesEnabled { //literally guaranteeing no leaking code
 	//#region Rune Setters
 	if runesUpdated {
 		runesUpdated = false;
 		//#region RUNE A: Dash Cancel Tilts & JAB2-3
 		if runeA {
-			set_window_value(AT_JAB, 6, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
-			set_window_value(AT_JAB, 7, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
-			set_window_value(AT_JAB, 10, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
-			set_window_value(AT_JAB, 11, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
 			
-			set_window_value(AT_FTILT, 3, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
-			set_window_value(AT_FTILT, 4, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
-			
-			set_window_value(AT_UTILT, 7, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
-			set_window_value(AT_UTILT, 3, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
-			set_window_value(AT_UTILT, 4, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
-			set_window_value(AT_UTILT, 8, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
-			
-			set_window_value(AT_DTILT, 3, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
-			set_window_value(AT_DTILT, 4, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
 		} else {
-			set_window_value(AT_JAB, 6, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
-			set_window_value(AT_JAB, 7, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
-			set_window_value(AT_JAB, 10, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
-			set_window_value(AT_JAB, 11, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
 			
-			set_window_value(AT_FTILT, 3, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
-			set_window_value(AT_FTILT, 4, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
-			
-			set_window_value(AT_UTILT, 7, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
-			set_window_value(AT_UTILT, 3, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
-			set_window_value(AT_UTILT, 4, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
-			set_window_value(AT_UTILT, 8, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
-			
-			set_window_value(AT_DTILT, 3, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
-			set_window_value(AT_DTILT, 4, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
 		}
 		//#endregion
 		
@@ -503,7 +498,23 @@ if abyssEnabled { //literally guaranteeing no leaking code
 		}
 		//#endregion
 		//#region RUNE J: DC Strongs, FSPEC, and DSPEC
-		if runeJ {
+		if runeH {
+			set_window_value(AT_JAB, 6, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
+			set_window_value(AT_JAB, 7, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
+			set_window_value(AT_JAB, 10, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
+			set_window_value(AT_JAB, 11, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
+			
+			set_window_value(AT_FTILT, 3, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
+			set_window_value(AT_FTILT, 4, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
+			
+			set_window_value(AT_UTILT, 7, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
+			set_window_value(AT_UTILT, 3, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
+			set_window_value(AT_UTILT, 4, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
+			set_window_value(AT_UTILT, 8, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
+			
+			set_window_value(AT_DTILT, 3, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
+			set_window_value(AT_DTILT, 4, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
+			
 			set_window_value(AT_USTRONG, 4, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
 			set_window_value(AT_USTRONG, 5, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
 			set_window_value(AT_USTRONG, 6, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
@@ -522,6 +533,22 @@ if abyssEnabled { //literally guaranteeing no leaking code
 			
 			set_window_value(AT_NSPECIAL, 3, AG_WINDOW_RUNE_DASHCANCELLABLE, true);
 		} else {
+			set_window_value(AT_JAB, 6, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
+			set_window_value(AT_JAB, 7, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
+			set_window_value(AT_JAB, 10, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
+			set_window_value(AT_JAB, 11, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
+			
+			set_window_value(AT_FTILT, 3, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
+			set_window_value(AT_FTILT, 4, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
+			
+			set_window_value(AT_UTILT, 7, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
+			set_window_value(AT_UTILT, 3, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
+			set_window_value(AT_UTILT, 4, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
+			set_window_value(AT_UTILT, 8, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
+			
+			set_window_value(AT_DTILT, 3, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
+			set_window_value(AT_DTILT, 4, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
+			
 			set_window_value(AT_USTRONG, 4, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
 			set_window_value(AT_USTRONG, 5, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
 			set_window_value(AT_USTRONG, 6, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
@@ -537,6 +564,7 @@ if abyssEnabled { //literally guaranteeing no leaking code
 			
 			set_window_value(AT_DSPECIAL, 4, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
 			set_window_value(AT_DSPECIAL, 5, AG_WINDOW_RUNE_DASHCANCELLABLE, false);
+			
 		}
 		//#endregion
 		//#region RUNE K: Taunt is Incineroar Revenge
@@ -549,7 +577,7 @@ if abyssEnabled { //literally guaranteeing no leaking code
 	//#endregion
 	
 	//#region RUNE A & J: Dash Cancel
-	if runeA || runeJ {
+	if runeH {
 		if left_hard_pressed {
 			clear_button_buffer(PC_LEFT_HARD_PRESSED);
 			if rune_dc_input_stage == 0 {

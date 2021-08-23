@@ -577,6 +577,14 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+
+	initPatch("2.14", "July 26th, 2021");
+	initPatchWords("-Added 2 additional alternate colors
+	-Added new swipe SFX for jab, tilts, aerials, and strongs
+	-Movement speed during Down-Strong throw is now dependent on the grabbed opponent's damage
+	-Decreased detached N-Special grab box size
+	-Fixed Jab putting you into parry stun when parried");	 	 	 
+	 
 	initPatch("2.1.3", "July 26th, 2021");
 	initPatchWords("-Added compatibility with Dialogue Buddy with 5 unique dialogue portraits");	 	 
 	 

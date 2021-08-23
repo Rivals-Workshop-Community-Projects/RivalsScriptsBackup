@@ -30,7 +30,7 @@ draw_sprite_ext(sprite_get("charselect2"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
 
 if alt == 7 {
     if drawtime == 1 {
-        sound_play(sound_get("Balesi"))
+        //sound_play(sound_get("Balesi"))
     }
 }
 

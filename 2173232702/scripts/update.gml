@@ -61,6 +61,7 @@ if (magic_overload && !free){
 	set_attack(AT_TAUNT_2);
 } else if (magic_overload && free){
 	state = PS_PRATFALL;
+	has_walljump = false;
 }
 if (time_until_magic > 0){
 	time_until_magic--;
