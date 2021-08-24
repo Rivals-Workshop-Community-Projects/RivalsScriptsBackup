@@ -435,6 +435,13 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	 initPatch("0.7", "23, August 2021");
+	 initPatchWords("Bair: Base Hitpause: 9 > 12
+(Should let people DI it better so they don't always die to bair > dstrong.)
+Dspecial: Knives now despawn on death.
+Uspecial: Road roller will now always link into the explosion hitbox vs grounded opponents.
+Fspecial: Launcher Knockback Scaling: 1.1 > 1.18
+(The move was underwhelming as a finisher and fairly difficult to hit. It should be a bit more threatening at high% now.)");
 	 	 		initPatch("0.6", "21, August 2021");
 	initPatchWords("Dtilt 1: Now untechable.
 	Fspecial Raging Demon: Now has command grab code so it wont drop when hit. No longer a command grab without command grab code.

@@ -29,6 +29,7 @@ crystalHold = 0;
 drawDan = false;
 sayonara = 0;
 sayoTimer = 0;
+eatingTidepods = false;
 
 //pool party vars
 nairbounceTryUnlock = false;

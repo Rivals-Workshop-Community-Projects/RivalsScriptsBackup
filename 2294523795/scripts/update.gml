@@ -52,6 +52,31 @@ if state_cat == SC_HITSTUN && specialing = 1 {
     specialing = 0
 }
 
+
+//if state == PS_JUMPSQUAT && down_down && !attack_down && !special_down {
+//	clear_button_buffer( PC_JUMP_PRESSED );
+//	set_state(PS_IDLE_AIR)
+//   sound_play(asset_get("sfx_bird_sidespecial_start"),false,noone,1,1.2);
+//   spawn_base_dust(x,y,"dash_start",spr_dir)
+//   if !left_down && !right_down {
+//   	vsp = -5
+//   	hsp = 9*spr_dir
+//   }
+//   
+//   if left_down && !right_down {
+//   	vsp = -5
+//   	hsp = -9
+//   	spr_dir = -1
+//   }
+//   
+//   if !left_down && right_down {
+//   	vsp = -5
+//   	hsp = 9
+//   	spr_dir = 1
+//   }
+//   
+//}
+
 if state_cat != SC_HITSTUN && state != PS_PRATFALL && state != PS_PRATLAND {
 
 //print(electricwindgodfist)
@@ -154,3 +179,38 @@ if (can_jump_capped && state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) {
 	}
 }
 
+#define spawn_base_dust(x, y, name, dir)
+var dlen;
+var dfx;
+var dfg;
+var dust_color = 0;
+
+switch (name) {
+    default:
+    case "dash_start":
+        dlen = 21;
+        dfx = 3;
+        dfg = 2626;
+    break;
+    case "dash":
+        dlen = 16;
+        dfx = 4;
+        dfg = 2656;
+    break;
+    case "jump":
+        dlen = 12;
+        dfx = 11;
+        dfg = 2646;
+    break;
+    case "doublejump":
+    case "djump":
+        dlen = 21;
+        dfx = 2;
+        dfg = 2624;
+    break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx;
+if dfg != -1 newdust.fg_sprite = dfg;
+newdust.dust_color = dust_color;
+newdust.spr_dir = dir;

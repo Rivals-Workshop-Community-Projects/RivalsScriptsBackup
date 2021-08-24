@@ -81,8 +81,7 @@ with (asset_get("pHitBox")){
         if (!transcendent && !plasma_safe){
             destroyed = true;
         }
-        
-        
+  
     }
     
 }

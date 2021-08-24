@@ -22,7 +22,7 @@ switch(get_player_color(player)){
 	case 13:
 		//textDraw(temp_x + 4, temp_y + 130, "fName", c_gray, 0, 1000, 1, true, 1, "Starting Item Disabled ");
 		shader_end();
-		draw_sprite_ext(sprite_get("css_seasonal"), 0, temp_x + 167, temp_y + 99, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(sprite_get("css_rcs"), 0, temp_x + 167, temp_y + 99, 1, 1, 0, c_white, 1);
 		//draw_sprite_ext(sprite_get("css_toothpaste"), 0, temp_x + 6, temp_y + 99, 1, 1, 0, c_gray, 0.69);
 		break;
 	case 14:

@@ -588,7 +588,7 @@ if attack ==  AT_NAIR{
 }
 
 if attack ==  AT_USTRONG{
-	if has_hit_player && hitpause && window_timer < 4 && hit_player_obj.state_cat == SC_HITSTUN {
+	if has_hit_player && hitpause && window_timer < 4 && window < 4 && hit_player_obj.state_cat == SC_HITSTUN {
 				hit_player_obj.y += ((y - (20)) - hit_player_obj.y) / 4
 	}
 }

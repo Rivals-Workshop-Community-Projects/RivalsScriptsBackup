@@ -106,6 +106,7 @@ sprite_change_offset("item_badge3", 32, 32);
 sprite_change_offset("item_prizepurse", 32, 32);
 sprite_change_offset("item_carrot", 42, 32);
 sprite_change_offset("item_bamboo", 38, 32);
+sprite_change_offset("item_food2", 32, 32);
 sprite_change_offset("item_pocketcactus", 32, 32);
 sprite_change_offset("item_gradcap", 32, 32);
 sprite_change_offset("item_glitch", 32, 32);

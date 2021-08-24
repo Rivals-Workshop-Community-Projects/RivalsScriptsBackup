@@ -58,7 +58,7 @@ sprite_change_offset("dair", 82, 96);
 sprite_change_offset("taunt", 82, 96);
 
 sprite_change_offset("fstrong", 82, 96);
-sprite_change_offset("ustrong", 82, 96);
+sprite_change_offset("ustrong", 82, 120);
 sprite_change_offset("dstrong", 82, 96);
 sprite_change_offset("DSshadow", 82, 96);
 

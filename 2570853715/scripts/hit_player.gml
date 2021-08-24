@@ -23,6 +23,10 @@ if(!hit_player_obj.super_armor and hit_player_obj.soft_armor == 0){
     }
 }
 
+if(my_hitboxID.attack == AT_USPECIAL and my_hitboxID.hbox_num == 2 and !hit_player_obj.free){
+    hit_player_obj.hitstop = 60;
+}
+
 if(my_hitboxID.attack == AT_NSPECIAL){
     knife_hit = true;
     my_hitboxID.can_hit[hit_player_obj.player] = true;

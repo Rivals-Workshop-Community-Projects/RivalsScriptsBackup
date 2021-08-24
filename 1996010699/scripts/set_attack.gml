@@ -1,24 +1,34 @@
 //The Suitcase
-
+var tidePods = (get_player_color(player) == 13 && item[11, 3] == 1 && item[2, 3] == 1 && eatingTidepods == false);
 if (attack == AT_DSPECIAL){
 	setNextItem();
 	breakfastRand = random_func(1, 100, true);
-	if(breakfastRand >= 81){
-		breakfastVar = 1;
-		item[6, 0] = "ORDINARY BAMBOO";
-		item[6, 1] = "It's Bamboo!";
-		item[6, 2] = sprite_get("item_bamboo");
-		item[6, 6] = "HP UP+";
+	if(tidePods){
+		breakfastVar = 2;
+		item[6, 0] = "VENI, ET DUCAM TE";
+		item[6, 1] = "AMICUS MEUS";
+		item[6, 2] = sprite_get("item_food2");
+		item[6, 6] = "yNLYeLR4K20";
+		item[6, 8] = sprite_get("hud_shop1");
+		item[6, 9] = $b2eaff;
 	} else {
-		breakfastVar = 0;
-		item[6, 0] = "ORDINARY CARROTS";
-		item[6, 1] = "It's Breakfast!";
-		item[6, 2] = sprite_get("item_carrot");
-		item[6, 6] = "HP UP";
-	}
-	if(item[22, 7]){
-		rlRand = random_func(0, rocketQuotesLength, true);
-		item[22, 1] = rlQuote[rlRand];
+		if(breakfastRand >= 81){
+			breakfastVar = 1;
+			item[6, 0] = "ORDINARY BAMBOO";
+			item[6, 1] = "It's Bamboo!";
+			item[6, 2] = sprite_get("item_bamboo");
+			item[6, 6] = "HP UP+";
+		} else {
+			breakfastVar = 0;
+			item[6, 0] = "ORDINARY CARROTS";
+			item[6, 1] = "It's Breakfast!";
+			item[6, 2] = sprite_get("item_carrot");
+			item[6, 6] = "HP UP";
+		}
+		if(item[22, 7]){
+			rlRand = random_func(0, rocketQuotesLength, true);
+			item[22, 1] = rlQuote[rlRand];
+		}
 	}
 }
 
