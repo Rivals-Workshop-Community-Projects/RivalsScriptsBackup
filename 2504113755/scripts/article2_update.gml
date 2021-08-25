@@ -29,7 +29,7 @@ else {
 		image_xscale = 2
 		image_yscale = 2
 
-if ((player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.attack == AT_DSPECIAL && player_id.window == 3 && player_id.window_timer == 3 && state != 1) {
+if ((player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && player_id.attack == AT_DSPECIAL && player_id.window == 3 && player_id.window_timer == 3 && state != 1 && state != 3) {
 	
 state_timer = 0
 	state = 1
@@ -177,7 +177,7 @@ if hit_lockout <= 0 {
     var currentHighestPriority = noone;
     with (pHitBox) {
     	
-    	if (hit_priority > 0 && ((other.state == 0 && other.state_timer > 1)|| (other.state == 1 && other.state_timer < 19)) ) {
+    	if (hit_priority > 0 && ((other.state == 0 && other.state_timer > 1)|| (other.state == 1 && other.state_timer < (19 )) )) {
     		
         if `hit_${article}` not in self
             if place_meeting(x,y,other) && (groundedness == 0 || groundedness == 1+free) && hit_priority != 0 {
@@ -207,8 +207,8 @@ if hit_lockout <= 0 {
           	if (other.player_id.state != PS_DEAD && other.player_id.state != PS_RESPAWN && other.player_id.state != PS_SPAWN) {
           		
           		
-            other.player_id.x = other.x
-            other.player_id.y = other.y
+            other.player_id.x = other.x  - other.player_id.hsp
+            other.player_id.y = other.y - other.player_id.vsp
             other.player_id.num_articles -= 1
             
             with(other.player_id) {
@@ -218,7 +218,6 @@ if hit_lockout <= 0 {
             			hsp = 0
             			vsp = 0
             			            		hurtboxID.sprite_index = hurtbox_spr
-
             		}
             	getting_bashed = true
             }
@@ -415,7 +414,7 @@ if hit_lockout <= 0 {
            	angle = 180-35 }
            	else { angle = 35 }
            	}
-           	if (attack == AT_DAIR  || attack == AT_JAB) {
+           	if (attack == AT_DAIR  || (attack == AT_JAB && hbox_num == 1)) {
            	if (spr_dir == -1) {
            	angle = 180-35 }
            	else { angle = 35 }

@@ -516,6 +516,42 @@ with phone{
 	- waog");
 	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0); */
 	
+		initPatch("1.20", "24 August, 2021");
+		
+			initPatchWords_ext("Riptide Nerfs edits", fa_center, c_white, 0, 0);
+initPatchWords_ext("fixed wraiths and multihits
+edited uair/dstrong sprites
+jab2 now has an upward launch angle for wraiths", fa_left, c_white, 0, 0);
+		initPatch("1.19", "24 August, 2021");
+		
+			initPatchWords_ext("Riptide Nerfs", fa_center, c_white, 0, 0);
+initPatchWords_ext("Lowered range on dtilt, dstrong, uair and bair
+adjusted dstrong anim
+
+-jab2 has parry stun
+-dtilt endlag 11-12
++dtilt bkb 8-6
++dtilt kbs 0.3-0.5
+-utilt iasa script removed
+-utilt bkb 5-7
+-utilt kbs 0.6-0.5
+
+
+-dattack final hit bkb 5-6
+-dattack final hit kbs 0.7-0.6
+-dattack endlag 12-13 frames
+
+
+-uspecial initial hit base hitpause 10-12 frames
+-nair landing lag 6-7 frames
+-nair endlag 8-10 frames
+-bair startup 6-7 frames
+-bair endlag 13-14 frames
+-bair landing lag 6-7 frames
+-uair endlag 14-15 frames
+
+-can no longer explode the wraith when its dying after 300 frames
+-wraith is maybe maybe better at actually being hit (still wip)", fa_left, c_white, 0, 0);
 	
 		initPatch("1.18", "18 August, 2021");
 		

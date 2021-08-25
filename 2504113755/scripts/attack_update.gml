@@ -67,7 +67,7 @@ window_timer = 0
 
 
 
-if ((window == 3 || window == 6) && window_timer == 8 && has_hit_player) {
+if ((window == 3 || (window == 6 && !was_parried)) && window_timer == 8 && has_hit_player ) {
 	
 	iasa_script()
 } 
@@ -516,7 +516,7 @@ if instance_exists(hit_player_obj) {
 
 
 #region jab
-if(attack == AT_JAB && was_parried){
+if(attack == AT_JAB && was_parried && window < 4){
     was_parried = false;
 }
 #endregion
@@ -529,7 +529,8 @@ if (attack == AT_UTILT) {
 
 if (has_hit && window == 5 && window_timer > 6) {
     
-    iasa_script() }
+ //   iasa_script()
+ }
     
     if ((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 2) {
         
@@ -558,7 +559,7 @@ if (attack == AT_UAIR) {
     
     if ((window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || window == 2 || (window == 3 && window_timer < 7)) {
         
-        hud_offset = 70
+        hud_offset = 50
     }
     
 }
