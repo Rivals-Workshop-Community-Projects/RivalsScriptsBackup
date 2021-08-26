@@ -33,7 +33,7 @@ set_window_value(AT_DSTRONG, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_SFX_FRAME, 2);
 
 //endlag
-set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, 1);

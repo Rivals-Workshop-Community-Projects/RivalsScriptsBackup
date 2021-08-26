@@ -124,6 +124,7 @@ stasisChainAngle2 = 0;
 stasisChainAngle3 = 0;
 stasisChainAngle4 = 0;
 hitboxStasisPlayer = player;
+not_stasis_timer = 10;
 //stasisTimerMax = 580;
 stasisTimerMax = 0;
 stasisType = undefined;

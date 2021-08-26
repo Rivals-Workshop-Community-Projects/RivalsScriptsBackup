@@ -10,11 +10,12 @@ hitboxStasisPlayerID = undefined;
 hitboxStasisID = undefined;
 hitboxStasisAttack = undefined;
 hitboxStasisHboxNum = undefined;
-hitboxStasisAngle = undefined;
+hitboxStasisAngle = 90;
 hitboxStasisVsp = 0;
 hitboxStasisHsp = 0;
 stasisEndHsp = 0;
 stasisEndVsp = 0;
 timerSoundVar = 100;
+not_stasis_timer = 10;
 
 kirbyAbilityCount = 0;

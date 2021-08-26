@@ -7,7 +7,7 @@ patch_ver = "1.21";
 patch_day = "2";
 patch_month = "APR";
  
-var num_alts = 14;
+var num_alts = 15;
 var alt_cur = get_player_color(player);
  
  
@@ -28,7 +28,7 @@ alt_name[10] = "Mipha";
 alt_name[11] = "Urbosa";
 alt_name[12] = "Daruk";
 alt_name[13] = "Revali";
-alt_name[14] = "";
+alt_name[14] = "BK";
 alt_name[15] = "";
  
  

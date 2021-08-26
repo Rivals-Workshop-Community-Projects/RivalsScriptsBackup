@@ -632,12 +632,14 @@ if (stasisType == "box") {
 } else {
     with oPlayer {
         if (id != other.id) {
+            if state == PS_DEAD not_stasis_timer = 0;
             var prevAttack = hitboxStasisAttack;
             var prevHboxNum = hitboxStasisHboxNum;
             var prevID = hitboxStasisID;
             var instanceXOffset = 15;
             var instanceYOffset = 0;
             if (inStasis) {
+                not_stasis_timer = 0;
                 oppStasisTimer = other.stasisTimer;
                 invincible = true;
                 invince_time = 2;
@@ -675,9 +677,12 @@ if (stasisType == "box") {
                     hitboxStasisAngle = get_hitbox_angle(instance);
                 }
                 
-            } else if state != PS_RESPAWN && state != PS_DEAD {
-                invincible = false;
-                invince_time = 0;
+            } else {
+                if not_stasis_timer < 3 && state != PS_RESPAWN && state != PS_DEAD {
+                    invincible = false;
+                    invince_time = 0;
+                }
+                not_stasis_timer++;
             }
             
             if (stasisHitSoundVar == true) {

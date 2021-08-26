@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 47, 41, 36 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 14 );
+set_num_palettes( 15 );
 
 // Blue
 set_color_profile_slot( 1, 0, 117, 123, 148 ); //Axe/Box
@@ -165,6 +165,16 @@ set_color_profile_slot( 13, 4, 36, 208, 255 ); //Bomb/Ice
 set_color_profile_slot( 13, 5, 36, 208, 255 ); //Blue lighting
 set_color_profile_slot( 13, 6, 49, 143, 25 ); //Stasis/magnesis yellows
 set_color_profile_slot( 13, 7, 224, 197, 58 ); //Reds/pinks
+
+// BK
+set_color_profile_slot( 14, 0, 212, 194, 66 ); //Axe/Box
+set_color_profile_slot( 14, 1, 28, 105, 28 ); //Brown stuff
+set_color_profile_slot( 14, 2, 102, 74, 57 ); //Hair
+set_color_profile_slot( 14, 3, 255, 210, 183 ); //Skin
+set_color_profile_slot( 14, 4, 112, 49, 150 ); //Bomb/Ice
+set_color_profile_slot( 14, 5, 36, 208, 255 ); //Blue lighting
+set_color_profile_slot( 14, 6, 219, 190, 0 ); //Stasis/magnesis yellows
+set_color_profile_slot( 14, 7, 247, 98, 170 ); //Reds/pinks
 
 
 /* This is used by that one RoA colors.gml generator tool to store palette data
