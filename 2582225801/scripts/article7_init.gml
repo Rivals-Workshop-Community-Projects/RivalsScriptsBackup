@@ -1,0 +1,1 @@
+sprite_index = sprite_get("bg4day");

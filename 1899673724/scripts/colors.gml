@@ -60,13 +60,13 @@ set_color_profile_slot( 3, 5, 20, 75, 255 ); //Eye Color
 set_color_profile_slot( 3, 6, 255, 255, 255 ); //Gloves
 
 // Monochrome
-set_color_profile_slot( 4, 0, 88, 88, 88 ); //Fur
-set_color_profile_slot( 4, 1, 38, 38, 38 ); //Fur Shading
+set_color_profile_slot( 4, 0, 79, 79, 79 ); //Fur
+set_color_profile_slot( 4, 1, 36, 33, 36 ); //Fur Shading
 set_color_profile_slot( 4, 2, 74, 74, 74 ); //Shoe Color
 set_color_profile_slot( 4, 3, 127, 127, 127 ); //Shoe Buckle
-set_color_profile_slot( 4, 4, 138, 138, 138 ); //Skin
+set_color_profile_slot( 4, 4, 184, 178, 178 ); //Skin
 set_color_profile_slot( 4, 5, 99, 99, 99 ); //Eye Color
-set_color_profile_slot( 4, 6, 196, 196, 196 ); //Gloves
+set_color_profile_slot( 4, 6, 222, 222, 222 ); //Gloves
 
 // Pink
 set_color_profile_slot( 5, 0, 255, 130, 190 ); //Fur
@@ -202,6 +202,42 @@ set_color_profile_slot( 19, 3, 193, 240, 199 ); //Shoe Buckle
 set_color_profile_slot( 19, 4, 255, 202, 125 ); //Skin
 set_color_profile_slot( 19, 5, 74, 240, 96 ); //Eye Color
 set_color_profile_slot( 19, 6, 240, 240, 240 ); //Gloves
+
+// Bright Blue - SADX Pallete
+set_color_profile_slot( 20, 0, 1, 1, 150 ); //Fur
+set_color_profile_slot( 20, 1, 12, 0, 92 ); //Fur Shading
+set_color_profile_slot( 20, 2, 246, 69, 66 ); //Shoe Color
+set_color_profile_slot( 20, 3, 255, 222, 0 ); //Shoe Buckle
+set_color_profile_slot( 20, 4, 255, 233, 125 ); //Skin
+set_color_profile_slot( 20, 5, 27, 112, 29 ); //Eye Color
+set_color_profile_slot( 20, 6, 255, 255, 255 ); //Gloves
+
+// Yellow (Smash)
+set_color_profile_slot( 21, 0, 116, 154, 208 ); //Fur
+set_color_profile_slot( 21, 1, 81, 101, 150 ); //Fur Shading
+set_color_profile_slot( 21, 2, 236, 227, 52 ); //Shoe Color
+set_color_profile_slot( 21, 3, 244, 97, 0 ); //Shoe Buckle
+set_color_profile_slot( 21, 4, 248, 248, 152 ); //Skin
+set_color_profile_slot( 21, 5, 0, 152, 0 ); //Eye Color
+set_color_profile_slot( 21, 6, 255, 255, 255 ); //Gloves
+
+// Orange (Smash)
+set_color_profile_slot( 22, 0, 98, 127, 217 ); //Fur
+set_color_profile_slot( 22, 1, 57, 76, 126 ); //Fur Shading
+set_color_profile_slot( 22, 2, 244, 97, 0 ); //Shoe Color
+set_color_profile_slot( 22, 3, 248, 231, 0 ); //Shoe Buckle
+set_color_profile_slot( 22, 4, 248, 248, 152 ); //Skin
+set_color_profile_slot( 22, 5, 0, 152, 0 ); //Eye Color
+set_color_profile_slot( 22, 6, 255, 255, 255 ); //Gloves
+
+// Green (Smash)
+set_color_profile_slot( 23, 0, 107, 87, 233 ); //Fur
+set_color_profile_slot( 23, 1, 57, 48, 126 ); //Fur Shading
+set_color_profile_slot( 23, 2, 66, 209, 101 ); //Shoe Color
+set_color_profile_slot( 23, 3, 0, 99, 29 ); //Shoe Buckle
+set_color_profile_slot( 23, 4, 248, 248, 152 ); //Skin
+set_color_profile_slot( 23, 5, 0, 152, 0 ); //Eye Color
+set_color_profile_slot( 23, 6, 255, 255, 255 ); //Gloves
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -59,6 +59,7 @@ if attack == AT_DTILT {
 
 if attack == AT_EXTRA_3 {
 		hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+		electricwindgodfist = 1
 }
 
 if attack == AT_FAIR && window == 1 {

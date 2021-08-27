@@ -118,6 +118,15 @@ if (attack == AT_NSPECIAL_AIR && window == 6 && taunt_down && window_timer >= 2)
 //////////////////////
 
 
+//Utilt
+if (attack == AT_UTILT){
+	if (window == 1){
+		if (window_timer == 3){
+			sound_play(asset_get("sfx_jumpground"));
+		}
+	}
+}
+
 //Bound Jump Code
 
 if (attack == AT_DAIR){
@@ -133,6 +142,12 @@ if (attack == AT_DAIR){
 			dairusp = 1
 		} else if (move_cooldown[AT_USPECIAL_2] != 0){
 			dairusp = 0
+		}
+		if (window_timer == 2){
+			sound_play(asset_get("sfx_jumpground"));
+		}
+		if (window_timer == 6){
+			sound_play(asset_get("sfx_ori_stomp_spin"));
 		}
 	}
 	if (window == 2){
@@ -170,10 +185,13 @@ if (attack == AT_DAIR){
 }
 
 if (attack == AT_DAIR && !free && window == 2){
+	spawn_base_dust(x, y, "n_wavedash", 0);
+	spawn_base_dust( x + 16, y, "wavedash", -1)
+	spawn_base_dust( x - 16, y , "wavedash", 1)
 	set_attack_value(AT_DAIR, AG_CATEGORY, 2);
 	window = 3;
     window_timer = 1;
-    vsp = -12;
+    vsp = -10.5;
 	old_vsp = vsp
 	sound_play(sound_get("sfx_bounce"))
 	destroy_hitboxes();
@@ -252,6 +270,7 @@ if (attack == AT_NSPECIAL){
 	can_wall_jump = true;
 	if (!has_hit){
 		if window == 1 { //targets the opponent during startup
+			set_window_value(AT_NSPECIAL, 3, AG_WINDOW_TYPE, 7);
 			if (window_timer == 1){
 				homingpose++;
 				if (homingpose > 2){
@@ -304,9 +323,14 @@ if (attack == AT_NSPECIAL){
 			}
 		} else if window == 2 { //Code for if there is no target homed-on
 			draw_reticle = false;
-			vsp = 7;
-			hsp = 9 * spr_dir;
+			if (window == 2){
+				vsp = 7;
+				hsp = 9 * spr_dir;
+			}
 			if !free {//if Sonic hits the ground or a plat, he bounces
+				spawn_base_dust(x, y, "n_wavedash", 0);
+				spawn_base_dust( x + 16, y, "wavedash", -1)
+				spawn_base_dust( x - 16, y , "wavedash", 1)
 				set_attack_value(AT_DAIR, AG_CATEGORY, 2);
 				set_window_value(AT_DAIR, 3, AG_WINDOW_TYPE, 7);
 				set_attack(AT_DAIR);
@@ -317,7 +341,7 @@ if (attack == AT_NSPECIAL){
 				hsp *= 0.85
 				sound_play(sound_get("sfx_bounce"))
 				destroy_hitboxes();
-				move_cooldown[AT_NSPECIAL] = 320;
+				move_cooldown[AT_NSPECIAL] = 160;
 			}
 		}
 	} else if has_hit && window != 3 {//If Sonic hits, this code lets him bounce
@@ -329,7 +353,7 @@ if (attack == AT_NSPECIAL){
 		old_vsp = -7;
 		hsp = 0;
 		vsp = 0;
-		move_cooldown[AT_NSPECIAL] = 320;
+		move_cooldown[AT_NSPECIAL] = 160;
 		destroy_hitboxes();
 		reset_num_hitboxes(AT_NSPECIAL);
 		if (voiced == 1){
@@ -425,6 +449,7 @@ if (homingpose == 2){
 
 //Forward Special: Light Speed Dash
 if (attack == AT_FSPECIAL){
+	can_wall_jump = true;
 	if (window == 1){
 		lightspeed_hitwithstronghitbox = false
 		set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 7);
@@ -485,8 +510,8 @@ if (attack == AT_FSPECIAL){
 			window_timer = 0
 			sound_play(sound_get("sfx_bounce"))
 			if (lightspeed_dir != 2){
-				x = x - 25 * spr_dir
-				hsp = -1.5 * spr_dir
+				x = x - 5 * spr_dir
+				hsp = 0 * spr_dir
 				vsp = -7
 				lightspeed_bounce = 1
 			} else if (lightspeed_dir == 2){
@@ -518,9 +543,9 @@ if (attack == AT_FSPECIAL){
 					vsp = -8
 					hsp = 6 * spr_dir
 				} else {
-					set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 7);
+					set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 1);
 					vsp = -4
-					hsp = 0 * spr_dir
+					hsp = 3 * spr_dir
 				}
 			}
 		} else if (has_hit == false && window_timer == 1){
@@ -541,7 +566,7 @@ if (attack == AT_USPECIAL){
 	can_hitfall = false;
 	can_fast_fall = false;
 	can_wall_jump = true;
-	if (window == 1 && window_timer == 12){
+	if (window == 1 && window_timer == 9){
 		window = 2
 		window_timer = 0
 		y = y - 20
@@ -599,6 +624,7 @@ if (attack == AT_DSPECIAL){
 		window = 3
 		window_timer = 0
 		hsp = 11 * spr_dir
+		spawn_base_dust(x, y, "dash_start", 0);
 		if (get_player_color( player ) == 12){
 			sound_play(sound_get("sfx_sonic_downspecial_retro"))
 		} else if (get_player_color( player ) != 12){
@@ -607,11 +633,21 @@ if (attack == AT_DSPECIAL){
 		sound_stop(sound_get("sfx_sonic_spindash_charge"))
 		sound_stop(sound_get("sfx_sonic_spindash_charge_retro"))//throwing this here just in case the player has a retro alt
 	}
+	if (window == 2 && window_timer == 1 && !free){
+		spawn_base_dust(x, y, "dash", 0);
+	}
+	if (window == 3 || window == 4){
+		sound_stop(sound_get("sfx_sonic_spindash_charge"))
+		sound_stop(sound_get("sfx_sonic_spindash_charge_retro"))//throwing this here just in case the player has a retro alt
+	}
 	//Decreasing the loop timer
     if (window == 4 && window_timer == 7 && spindash_loop != 0){
         spindash_loop--;
         window_timer = 0
     }
+	if (window == 4 && window_timer == 1 && !free){
+		spawn_base_dust(x, y, "dash", 0);
+	}
 	//fastfall idk
 	if (free && down_pressed && window == 4){
 		vsp = 5
@@ -623,16 +659,17 @@ if (attack == AT_DSPECIAL){
 	} else if (free){
 		can_move = true
 		if (joy_pad_idle && window = 4){
-			hsp = hsp * 0.986
+			hsp = hsp * 0.97
 		}
 	}
 	//Jumping out of Spindash
     if (jump_pressed == true && window == 4 && !free){
+		spawn_base_dust(x, y, "jump", 0);
 		vsp = -10
 		spindash_jumptimer = 12
 		if (get_player_color( player ) == 12){
 			sound_play(sound_get("sfx_sonic_doublejump_retro"))
-		} else if (get_player_color( player ) == 12){
+		} else if (get_player_color( player ) != 12){
 			sound_play(sound_get("sfx_sonic_doublejump"))
 		}
 		//set_state(PS_FIRST_JUMP);
@@ -671,6 +708,7 @@ if (attack == AT_DSPECIAL){
 		window_timer = 0
 		spr_dir = -1
 		spindash_loop--;
+		spawn_base_dust(x, y, "dash_start", -1);
     }
 	//Turn to the Right
 	if (window == 4 && spr_dir == -1 && right_pressed && !free){
@@ -678,6 +716,7 @@ if (attack == AT_DSPECIAL){
 		window_timer = 0
 		spr_dir = 1
 		spindash_loop--;
+		spawn_base_dust(x, y, "dash_start", 1);
     }
 	//test to see if you go to walljump
 	if (window == 3 && free && place_meeting(x+spr_dir,y,asset_get("par_block")) || window == 4 && free && place_meeting(x+spr_dir,y,asset_get("par_block"))){
@@ -744,3 +783,36 @@ if (attack == AT_EXTRA_1){
 		}
 	}
 }
+
+//Supersonic's Base Cast Dust Function
+#define spawn_base_dust
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dfa = 0; //draw_angle value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir = argument_count > 3 ? argument[3] : 0;
+
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = dfa;
+return newdust;

@@ -109,7 +109,7 @@ if (introTimer2 < 4) {
 
 //Dash Start Sound Effect
 if (state == PS_DASH_START) {
-    if (state_timer == 2) {
+    if (state_timer == 1) {
         sound_play(sound_get("sfx_sonic_dashstart"));
     }
 }
@@ -159,6 +159,11 @@ if (state == PS_WALL_JUMP || state == PS_HITSTUN || !free) {
 if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) {
 	homing_x = -100000;
 	homing_y = -100000;
+}
+
+if (move_cooldown[AT_NSPECIAL] == 1){
+	//sound_play(sound_get("sfx_sonic_ring"));
+	//spawn_hit_fx(x, y - 30, 301);
 }
 
 //Making the Light Speed Particles animate

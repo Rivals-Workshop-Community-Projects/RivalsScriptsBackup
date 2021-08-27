@@ -7,25 +7,25 @@ set_attack_value(AT_USPECIAL, AG_AIR_SPRITE, sprite_get("uspecial"));
 set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
 
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 11);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 8);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, sound_get("sfx_sonic_spring"));
 
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -7.5);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -7.75);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
 
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 22);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 19);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 

@@ -11,6 +11,7 @@ if (my_hitboxID.attack == AT_UAIR){
 		window = 5
 		window_timer = 0
 		destroy_hitboxes();
+		spawn_hit_fx( hit_player_obj.x * hit_player_obj.spr_dir, hit_player_obj.y - 40, 302 );
 	}
 }
 
@@ -27,6 +28,7 @@ if (my_hitboxID.attack == AT_FSPECIAL){
 	destroy_hitboxes();
 	if (my_hitboxID.hbox_num == 2){ //Strong Hitbox
 		x = x + 18 * spr_dir
+		spawn_hit_fx( hit_player_obj.x - 14 * hit_player_obj.spr_dir, hit_player_obj.y - 30, 304 );
 		//set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED, -10);
 		lightspeed_hitwithstronghitbox = true
 	} else if (my_hitboxID.hbox_num == 3){

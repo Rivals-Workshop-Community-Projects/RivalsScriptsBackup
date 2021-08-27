@@ -11,7 +11,7 @@ set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 set_attack_value(AT_NSPECIAL, AG_OFF_LEDGE, 1);
 
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 24);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 22);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
@@ -28,7 +28,7 @@ set_window_value(AT_NSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX, sound_get("sfx_sonic_homing")); //Smash sfx
 
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_TYPE, 7);
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 22);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 14);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -58,7 +58,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 1.0);
-set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 303);
+set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 6);

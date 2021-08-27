@@ -7,7 +7,7 @@ set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
 set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1);
 
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1); //Startup
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 18);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, sound_get("sfx_sonic_homing_startup"));
@@ -82,9 +82,9 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_SHAPE, 2);
 set_hitbox_value(AT_FSPECIAL, 3, HG_PRIORITY, 1);
 set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 2);
 set_hitbox_value(AT_FSPECIAL, 3, HG_ANGLE, 90);
-set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_FSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.6);
-set_hitbox_value(AT_FSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 0.85);
+set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_FSPECIAL, 3, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(AT_FSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 0.6);
 set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, 256);
