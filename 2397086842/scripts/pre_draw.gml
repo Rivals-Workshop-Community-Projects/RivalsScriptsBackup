@@ -130,7 +130,34 @@ if sagemode == 6 && (!attacking or (attacking && attack != AT_USPECIAL) or (atta
 }
 }
 
-if get_player_color(player) != 13 && get_player_color(player) != 20 && get_player_color(player) != 21{
+//TAG
+if get_player_color(player) == 22 {
+if attacking && attack == AT_NSPECIAL {
+    if window == 1 {
+        if ncharge < 25 {
+            draw_sprite_ext(sprite_get("rock1"), state_timer/6, x + 22*spr_dir, y - 36, spr_dir, 1, 0, -1, 1)
+        }
+        
+        if ncharge >= 25 && ncharge < 50 {
+            draw_sprite_ext(sprite_get("rock2"), state_timer/4, x + 22*spr_dir, y - 36, spr_dir, 1, 0, -1, 1)
+        }
+        
+        if ncharge >= 50 {
+            draw_sprite_ext(sprite_get("rock3"), state_timer/3, x + 22*spr_dir, y - 36, spr_dir, 1, 0, -1, 1)
+        }
+        
+    }
+}
+
+
+if sagemode == 6 && (!attacking or (attacking && attack != AT_USPECIAL) or (attacking && attack == AT_USPECIAL && window != 2 && window != 3))  {
+    draw_sprite_ext(sprite_get("crown"),  get_gameplay_time() / 4 + 1, x - shsp*2 , y - 100 - svsp*2, 1, 1,0, -1, 1)
+   draw_indicator = false
+}
+
+}
+
+if get_player_color(player) != 13 && get_player_color(player) != 20 && get_player_color(player) != 21 && get_player_color(player) != 22{
 if attacking && attack == AT_NSPECIAL {
     if window == 1 {
         if ncharge < 25 {

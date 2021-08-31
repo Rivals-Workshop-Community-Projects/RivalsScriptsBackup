@@ -126,3 +126,8 @@ if get_player_color(player) == 13  && my_hitboxID.attack == AT_NSPECIAL && my_hi
     sound_play(asset_get("sfx_waterhit_heavy"),false,noone, 0.6 + my_hitboxID.damage/20)  
     
 }
+
+if get_player_color(player) == 22  && my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num <= 6{
+    sound_play(sound_get("vineboom"),false,noone, 1)  
+    
+}

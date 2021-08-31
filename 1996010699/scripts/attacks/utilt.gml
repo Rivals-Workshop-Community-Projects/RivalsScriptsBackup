@@ -73,7 +73,8 @@ set_hitbox_value(AT_UTILT, 2, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));	//sfx_blow_heavy1
 set_hitbox_value(AT_UTILT, 2, HG_EXTRA_CAMERA_SHAKE, 1);
-set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT, 305);		//305
+set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT, snap);		//305
+set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT_Y_OFFSET, 8);
 set_hitbox_value(AT_UTILT, 2, HG_HIT_LOCKOUT, 5);
 
 set_hitbox_value(AT_UTILT, 3, HG_PARENT_HITBOX, 3);
@@ -95,7 +96,8 @@ set_hitbox_value(AT_UTILT, 3, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_UTILT, 3, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_UTILT, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_UTILT, 3, HG_EXTRA_CAMERA_SHAKE, 1);
-set_hitbox_value(AT_UTILT, 3, HG_VISUAL_EFFECT, 305);
+set_hitbox_value(AT_UTILT, 3, HG_VISUAL_EFFECT, snap);
+set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT_Y_OFFSET, 8);
 set_hitbox_value(AT_UTILT, 3, HG_HIT_LOCKOUT, 5);
 
 //tip of 1st hit - hit grounded foes only (plat poke)

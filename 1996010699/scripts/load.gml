@@ -13,7 +13,7 @@ sprite_change_offset("downhurt", 27, 36);
 sprite_change_offset("crouch", 20, 42);
 sprite_change_offset("crouchKT", 20, 42);
 sprite_change_offset("walk", 21, 50);
-sprite_change_offset("walkturn", 20, 50);
+sprite_change_offset("walkturn", 24, 50);
 sprite_change_offset("dash", 20, 58);
 sprite_change_offset("dashstart", 22, 54);
 sprite_change_offset("dashstop", 23, 56);
@@ -174,6 +174,7 @@ sprite_change_offset("hit_fx_tada", 67, 85);
 sprite_change_offset("hit_fx_shine", 18, 27); 
 sprite_change_offset("hit_fx_wheelspin", 47, 49);
 sprite_change_offset("hit_fx_taxiDir", 39, 42); 
+sprite_change_offset("hit_fx_snap", 57, 134);
 sprite_change_offset("sparkle", 7, 7); 
 sprite_change_offset("smokeXP", 7, 9); 
 

@@ -1,4 +1,21 @@
 shader_start();
+
+//Offscreen
+with pHitBox {
+	if (player_id == other.id && attack == AT_NSPECIAL && type == 2 && kb_angle != 270 && !(hbox_num > 7 && hbox_num < 12)) {
+		if uspecialNum != 0 {
+			draw_sprite_ext(other.ballOffSprite, uspecialShape , uspecialHudX,  uspecialHudY, 1, 1, uspecialRot, other.hud_color, 1)
+			draw_sprite_ext(other.ballOffSpriteTwo, 0, uspecialHudX,  uspecialHudY, 1, 1, 0, c_white, 1)
+		}
+	}
+}
+//
+
+
+
+
+
+
 if sagemode != 0 && sagemode <= 5 && (!attacking or (attacking && attack != AT_USPECIAL) or (attacking && attack == AT_USPECIAL && window != 2 && window != 3))  {
     draw_sprite_ext(sprite_get("sagefx1"),  get_gameplay_time() / 4 + 1, sagefx1 + 15 - random_func(1,2,true), sagefy1 - 1 + random_func(6,2,true), 1, 1, 0, -1, 1)
     if sagemode >= 2 {
@@ -88,7 +105,31 @@ if sagemode == 6 && (!attacking or (attacking && attack != AT_USPECIAL) or (atta
 }
 
 }
-if get_player_color(player) != 13 && get_player_color(player) != 20  && get_player_color(player) != 21 {
+
+if get_player_color(player) == 22 {
+if sagemode == 6 && (!attacking or (attacking && attack != AT_USPECIAL) or (attacking && attack == AT_USPECIAL && window != 2 && window != 3))  {
+    draw_sprite_ext(sprite_get("rock3"),  get_gameplay_time() / 4 + 1, sagefx1 + 15 - random_func(1,2,true), sagefy1 - 1 + random_func(6,2,true), 1, 1, 0, -1, 0.6)
+    if sagemode == 6 {
+    draw_sprite_ext(sprite_get("rock3"),  get_gameplay_time() / 4 + 2, sagefx2 - 15 + random_func(2,2,true), sagefy2 - 1 + random_func(7,2,true), 1, 1, 0, -1, 0.6)
+    if sagemode == 6 {
+    draw_sprite_ext(sprite_get("rock3"),  get_gameplay_time() / 4 + 3, sagefx3 + 21 - random_func(3,2,true), sagefy3 - 30 - 1 + random_func(8,2,true), 1, 1, 0, -1, 0.6)
+    if sagemode == 6 {
+        draw_sprite_ext(sprite_get("rock3"),  get_gameplay_time() / 4 + 4, sagefx4 - 21 + random_func(4,2,true), sagefy4 - 30 - 1 + random_func(9,2,true), 1, 1, 0, -1, 0.6)
+    if sagemode == 6 {
+        draw_sprite_ext(sprite_get("rock3"),  get_gameplay_time() / 4 + 5, sagefx5 - 1 + random_func(5,2,true) , sagefy5 - 54 - 1 + random_func(10,2,true), 1, 1, 0, -1, 0.6)
+}
+    
+}
+        
+}
+
+}
+
+}
+
+}
+
+if get_player_color(player) != 13 && get_player_color(player) != 20  && get_player_color(player) != 21 && get_player_color(player) != 22{
 if sagemode == 6  && (!attacking or (attacking && attack != AT_USPECIAL) or (attacking && attack == AT_USPECIAL && window != 2 && window != 3))  {
     draw_sprite_ext(sprite_get("ball3"),  get_gameplay_time() / 4 + 1, sagefx1 + 15 - random_func(1,2,true), sagefy1 - 1 + random_func(6,2,true), 1, 1, 0, -1, 0.6)
     if sagemode == 6  {

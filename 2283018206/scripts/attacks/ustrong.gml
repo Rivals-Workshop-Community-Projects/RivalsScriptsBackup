@@ -79,6 +79,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_USTRONG, 1, HG_EXTRA_HITPAUSE, 24);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_USTRONG, 1, HG_TECHABLE, 2);
+set_hitbox_value(AT_USTRONG, 1, HG_HITSTUN_MULTIPLIER, 0.8); // 1.0
 set_hitbox_value(AT_USTRONG, 1, HG_MUNO_HITBOX_NAME, "Grab");
 
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);

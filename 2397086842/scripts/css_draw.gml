@@ -80,6 +80,7 @@ var palette_names = [
    "Riptide",   
    "PlasDinos",  
    "Flickering Spark",  
+   "TAG",  
 ];
 
 var alt = get_player_color(player);

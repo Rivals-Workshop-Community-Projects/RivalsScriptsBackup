@@ -178,6 +178,7 @@ tada = hit_fx_create(sprite_get("hit_fx_tada"), 24);
 shine = hit_fx_create(sprite_get("hit_fx_shine"), 15);
 wheelspin = hit_fx_create(sprite_get("hit_fx_wheelspin"), 12);
 taxiDir = hit_fx_create(sprite_get("hit_fx_taxiDir"), 18);	//x axis center = 39, y axis = 42(?)
+snap = hit_fx_create(sprite_get("hit_fx_snap"), 20);
 achTrophy = hit_fx_create(sprite_get("achievement"), 60);
 sparkle = hit_fx_create(sprite_get("sparkle"), 14);
 smokeXP = hit_fx_create(sprite_get("smokeXP"), 20);

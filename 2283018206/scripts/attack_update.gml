@@ -71,8 +71,9 @@ switch(attack){
                 can_shield = true;
                 can_special = true;
                 can_fast_fall = true;
-                if (attack_pressed || jump_pressed) && !up_down && abs(right_down - left_down){
-                	spr_dir = (right_down - left_down);
+                if (attack_pressed || jump_pressed){
+                	if !up_down && abs(right_down - left_down) spr_dir = (right_down - left_down);
+                	if attack_pressed vsp = -5;
                 }
             }
     }

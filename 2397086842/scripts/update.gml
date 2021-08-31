@@ -1,4 +1,79 @@
-///
+//Offscreen
+with pHitBox {
+	if (player_id == other.id && attack == AT_NSPECIAL && type == 2 && kb_angle != 270 && !(hbox_num > 7 && hbox_num < 12)) {
+		uspecialHudX = clamp(x, view_get_xview() + uspecialMinX , (view_get_xview() + view_get_wview()) - uspecialMaxX )
+		uspecialHudY = clamp(y, view_get_yview() + uspecialMinY, (view_get_yview() + view_get_hview()) - (44 + uspecialMaxY ))
+		uspecialNum = 0
+		if uspecialHudX == (view_get_xview() + uspecialMinX) { //Left
+			uspecialNum = 3
+		}
+		if uspecialHudX == ((view_get_xview() + view_get_wview()) - uspecialMaxX) { //Right
+			uspecialNum = 6
+		}
+		if uspecialHudY == (view_get_yview() + uspecialMinY) { //Up
+			uspecialNum += 1
+		}
+		if uspecialHudY == ((view_get_yview() + view_get_hview()) - (44 + uspecialMaxY )) { //Down
+			uspecialNum += 2
+		}
+		switch(uspecialNum) {
+			//Cardinal
+			case 0:
+			break;
+			case 1: //Up
+				uspecialRot= 180
+				uspecialShape = 0
+				uspecialHudY = (view_get_yview() + 33)
+			break;
+			case 2: //Down
+				uspecialRot= 0
+				uspecialShape = 0
+				uspecialHudY = ((view_get_yview() + view_get_hview()) - 85)
+			break;			
+			case 3: //Left
+				uspecialRot= 270
+				uspecialShape = 0
+				uspecialHudX = (view_get_xview() + 33)
+			break;
+			case 6: //Right
+				uspecialRot= 90
+				uspecialShape = 0
+				uspecialHudX = ((view_get_xview() + view_get_wview()) - 33)
+			break;
+			
+			//Diagonal
+			case 4: //Left Up
+				uspecialRot= 270
+				uspecialShape = 1
+				uspecialHudX = (view_get_xview() + 33)
+				uspecialHudY = (view_get_yview() + 33)
+			break;
+			case 5: //Left Down
+				uspecialRot= 0
+				uspecialShape = 1
+				uspecialHudX = (view_get_xview() + 33)
+				uspecialHudY = ((view_get_yview() + view_get_hview()) - 85)
+			break;			
+			
+			case 7: //Right Up
+				uspecialRot= 180
+				uspecialShape = 1
+				uspecialHudX = ((view_get_xview() + view_get_wview()) - 33)
+				uspecialHudY = (view_get_yview() + 33)
+			break;
+			case 8: //Right Down
+				uspecialRot= 90
+				uspecialShape = 1
+				uspecialHudX = ((view_get_xview() + view_get_wview()) - 33)
+				uspecialHudY = ((view_get_yview() + view_get_hview()) - 85)
+			break;
+		}
+		print(string(uspecialNum))
+		print(string(uspecialHudX))
+		print(string(uspecialHudY))
+	}
+}
+//
 
 if  move_cooldown[AT_FSPECIAL_2] = 11{
 	

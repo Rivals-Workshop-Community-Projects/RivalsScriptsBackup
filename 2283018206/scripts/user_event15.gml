@@ -404,6 +404,19 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	 
+	initPatch("1.28", "30 August, 2021");
+	initHeader("FSpecial - Buffs");
+	initSection("Knockback scaling 0.5 --> 0.8.");
+	initHeader("BAir - Buffs, Nerfs");
+	initSection("Startup 15 --> 12.
+	Endlag 16 --> 12.
+	Damage 9 --> 8.
+	You now get a small upward boost when canceling into an aerial on-hit.");
+	initHeader("UAir - Buffs");
+	initSection("Startup 8 --> 5.");
+	initHeader("UStrong - Nerfs");
+	initSection("Hitstun multiplier 1.0 --> 0.8.");
 	
 	initPatch("1.27", "04 August, 2021");
 	initPatchWords("NSpecial - Nerfs");
@@ -1060,6 +1073,16 @@ if pho_has_daro_codec{
 
 
 
+
+// uhh ignore this
+
+#define initHeader(obj_text)
+
+initPatchWords_ext(obj_text, fa_left, c_white, 0, 0);
+
+#define initSection(obj_text)
+
+initPatchWords_ext(obj_text, fa_left, c_gray, 1, 0);
 
 
 #define initAbout(obj_name, obj_text)

@@ -1,3 +1,8 @@
+//Offscreen
+sprite_change_offset("ballHud", 23, 23);
+sprite_change_offset("ballHud2", 23, 23);
+//
+
 sprite_change_offset("idle", 46, 92);
 sprite_change_offset("crouch", 46, 92);
 sprite_change_offset("walk", 46, 92);;
@@ -95,5 +100,10 @@ sprite_change_offset("ballfx1", 30, 30);
 sprite_change_offset("ballfx2", 30, 30);
 sprite_change_offset("ballfx3", 30, 30);
 sprite_change_offset("ballfx4", 15, 15);
+
+sprite_change_offset("rock1", 30, 30);
+sprite_change_offset("rock2", 30, 30);
+sprite_change_offset("rock3", 30, 30);
+sprite_change_offset("crown", 30, 30);
 
 sprite_change_offset("sagefx1", 30, 30);

@@ -9,7 +9,7 @@ set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX, asset_get("sfx_blink_dash"));
-set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, 5);
+set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, 1);
 
 set_window_value(AT_DATTACK, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH, 5);
@@ -21,7 +21,7 @@ set_window_value(AT_DATTACK, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, .04);
 
 set_window_value(AT_DATTACK, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 
@@ -44,8 +44,8 @@ set_hitbox_value(AT_DATTACK, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DATTACK, 1, HG_LIFETIME, 5);
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_X, 16);
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_Y, -20);
-set_hitbox_value(AT_DATTACK, 1, HG_WIDTH, 58);
-set_hitbox_value(AT_DATTACK, 1, HG_HEIGHT, 44);
+set_hitbox_value(AT_DATTACK, 1, HG_WIDTH, 64);
+set_hitbox_value(AT_DATTACK, 1, HG_HEIGHT, 50);
 set_hitbox_value(AT_DATTACK, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 8);
 set_hitbox_value(AT_DATTACK, 1, HG_ANGLE, 60);
