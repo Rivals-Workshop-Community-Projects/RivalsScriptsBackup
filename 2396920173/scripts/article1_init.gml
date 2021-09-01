@@ -34,6 +34,7 @@ bishop_cooldown = 0;
 timer = 0;
 
 prevHitboxID = undefined;
+prevHitboxPlayerID = undefined;
 prevHitboxNumber = undefined;
 prevHitboxAttack = undefined;
 prevHitboxGroup = undefined;
@@ -59,3 +60,5 @@ die_timer = 0;
 
 hp_max = 0;
 height = 0;
+
+invincible = false;

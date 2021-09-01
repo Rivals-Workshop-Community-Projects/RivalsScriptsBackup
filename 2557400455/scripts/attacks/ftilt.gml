@@ -28,7 +28,7 @@ set_hitbox_value(AT_FTILT, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_X, 46);
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_Y, -31);
 set_hitbox_value(AT_FTILT, 1, HG_WIDTH, 76);
-set_hitbox_value(AT_FTILT, 1, HG_HEIGHT, 54);
+set_hitbox_value(AT_FTILT, 1, HG_HEIGHT, 60);
 set_hitbox_value(AT_FTILT, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_FTILT, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 9);

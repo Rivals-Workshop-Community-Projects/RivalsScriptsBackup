@@ -179,6 +179,16 @@ if intro_time == 74 spawn_base_dust(x, y, "n_wavedash", 1)
 if intro_time == 96 sound_play(asset_get("sfx_land"))
 if intro_time == 96 spawn_base_dust(x, y, "land", 1)
 
+//intro flip meter
+if intro_time < 96 && (taunt_pressed || (special_pressed && down_down)) {
+	intro_flip = true;
+}
+
+if intro_time == 100 && intro_flip {
+	sound_play(asset_get("sfx_zetter_shine"))
+	meter_flipped = true;
+}
+
 //hitfx colour
 /*
 with hit_fx_obj {

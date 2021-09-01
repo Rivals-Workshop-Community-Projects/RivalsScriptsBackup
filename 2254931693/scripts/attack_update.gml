@@ -202,6 +202,7 @@ if (attack == AT_NSPECIAL && has_hit_player){
 if (attack == AT_NSPECIAL && window = 8){
      if ((point_distance(x, y, hit_player_obj.x, hit_player_obj.y) < 45) || frog_movetimer = 12){ 
          window = 6;
+         create_hitbox( AT_NSPECIAL, 2, x, y);
          frog_pausetime = 0;
     with (nspecial_grabbedplayer){ 
             hsp = 0;
@@ -330,7 +331,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 9);
 }
 
 if (attack == AT_FSPECIAL && ((window = 2 && !special_down) || (fspecial_charge = 44))){
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, (-3 - ((fspecial_charge / 44) * 12)));
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, (-3 - ((fspecial_charge / 44) * 7)));
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 8 + ((fspecial_charge / 44) * 5));

@@ -270,12 +270,16 @@ if (attack == AT_DAIR){
 	}
 }
 
-// if (attack == AT_FSTRONG){
+if (attack == AT_FSTRONG){
+	if (window == 3){
+		hsp = spr_dir* (11 + strong_charge/30) // max charge is 60
+	}
+	
 // 	if (attack_canceled = true && cancel_alarm < 1){
 // 		// can_attack = true;
 // 		can_jump = true;
 // 	}
-// }
+}
 
 // JAB PARRY STUN FIX (MULTI HIT JAB)
 if(attack == AT_JAB){

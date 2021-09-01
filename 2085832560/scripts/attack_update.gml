@@ -125,7 +125,7 @@ if attack == AT_FTILT {
         }
     }
     
-    if window == 3 && window_timer == 16 {
+    if window == 3 && window_timer == 14 {
         set_attack (AT_JAB)
         window = 8
         window_timer = 12
@@ -188,6 +188,7 @@ if attack == AT_FAIR {
     	state_timer = 0
     	hsp = 14*spr_dir
     }
+    
     if window == 3 {
     	if !down_down{
         vsp /= 2

@@ -34,19 +34,44 @@ var tauntpar2 = hit_fx_create( sprite_get( "tauntpar2" ), 20);
 	
 	if attack == AT_NSPECIAL && hbox_num == 1 {
     if hitbox_timer < 30 {
-    	vsp = 0
+    	hit_priority = 0
     }
+    
     if hitbox_timer == 30 {
     	vsp = 12
-    	sound_play(asset_get("sfx_holy_tablet_appear"));
+    	hit_priority = 9
     } 
+    
       if hitbox_timer > 32 {
       hitbox_timer = 32
     
 	
 	}
 	
-    if  (!free && (place_meeting(x, y + 2, asset_get("par_block")))) or player_id.state_cat == SC_HITSTUN  {
+	if hitbox_timer == 1 {
+		spawn_hit_fx(x,room_height/2 - 200, bw1)
+	}
+	
+	if hitbox_timer == 15 {
+		spawn_hit_fx(x,room_height/2 - 200, bw2)
+	}
+	
+	if player_id.state_cat == SC_HITSTUN && hitbox_timer <= 30 {
+		destroyed = 1
+    	spawn_hit_fx( x  , y , 302 )
+    	spawn_hit_fx( x  , y , 306 )
+    	sound_play(asset_get("sfx_abyss_explosion_big"));
+    	create_hitbox(AT_NSPECIAL , 2 , x , y - 10 );
+    	create_hitbox(AT_NSPECIAL , 3 , x , y - 10);
+    	create_hitbox(AT_NSPECIAL , 4 , x , y - 10);
+    	create_hitbox(AT_NSPECIAL , 5 , x , y - 10);
+    	create_hitbox(AT_NSPECIAL , 6 , x , y - 10);
+    	create_hitbox(AT_NSPECIAL , 7 , x , y - 10);
+    	create_hitbox(AT_NSPECIAL , 8 , x , y - 10);
+    	spawn_hit_fx(x,room_height/2 - 200, bwg)
+	}
+	
+    if  (!free && (place_meeting(x, y + 2, asset_get("par_block")))) {
     	destroyed = 1
     	spawn_hit_fx( x  , y , 302 )
     	spawn_hit_fx( x  , y , 306 )

@@ -175,6 +175,12 @@ sound_play(sound_get("slice"));
  
 }
 
+if my_hitboxID.attack == AT_DSPECIAL {
+state_timer = 10
+sound_play(sound_get("bonk"),false,noone,1.5,1);
+ 
+}
+
 if my_hitboxID.attack == AT_FAIR {
 
 sound_play(sound_get("slice"));
@@ -211,7 +217,7 @@ if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 7 {
 if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num >= 9 && my_hitboxID.hbox_num <= 11  {
     	spawn_hit_fx( hit_player_obj.x , hit_player_obj.y - 32 , 303 )
 
-    hit_player_obj.y = y - 6
+    hit_player_obj.y += floor( (y - 6 -  hit_player_obj.y))
 
 }
 

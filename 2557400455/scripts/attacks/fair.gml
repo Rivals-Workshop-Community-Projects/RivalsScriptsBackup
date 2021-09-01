@@ -59,6 +59,7 @@ set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_FAIR, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_FAIR, 1, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_FAIR, 1, HG_SDI_MULTIPLIER, 1.2);
 
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 99);
@@ -91,6 +92,7 @@ set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_FAIR, 2, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_FAIR, 2, HG_SDI_MULTIPLIER, 1.2);
 
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 3, HG_WINDOW, 2);

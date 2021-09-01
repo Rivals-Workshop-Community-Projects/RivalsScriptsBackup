@@ -348,11 +348,18 @@ if (jiseffect>0){
 
 //print(string(get_stage_data( SD_ID )))
 if (phone_manual_init == 1){
-	if (get_stage_data( SD_ID ) == 416499||!phone_disable){
+	//if (get_stage_data( SD_ID ) == 416499||!phone_disable){
+	//if (variable_instance_exists(id, "obj_stage_main")||!phone_disable){
+		//print ("yes 1")
+	if (variable_instance_exists(obj_stage_main, "phone_user_id")||!phone_disable){
+		//print ("yes 2")
 		phone_disable = false;
 		user_event(14);
 		phone_manual_init++;
+	}else{
+		phone_manual_init = -1
 	}
+	//}
 }
 if (phone_manual_init >= 1 && !phone_disable){
 	if (phone_cheats[cheat_mado] == 1) { runeE = false; }
@@ -774,4 +781,63 @@ if (trummelcodecneeded){
     trummelcodecline[11,3] = "let's show this";
     trummelcodecline[11,4] = "copycat a lesson!";	
 	}
+}
+
+if(variable_instance_exists(id,"diag"))
+{
+//Change their name whenever
+    diag_name = "Acid Rainbows"
+//  ADDING REGULAR DIALOGUE
+
+    //Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!
+    diagchoice = [
+    "If you want the rainbow, you have to tolerate the rain.",
+    "The usefulness of a cup is in its emptiness.",
+    "...I hope the people I've left behind are doing fine.",
+    "I can make myself believe.",
+    "I can make myself forget.",
+    "I hope that before it is too late, you will break free of your chains.",
+    "All consciousness can suffer hallucinations."]
+
+//  Specific Character Interactions
+
+//  Regular dialogue
+    if(otherUrl == "1894194148" && diag != ""){ //A.R. (mirror match)
+        diag = "Mirror, mirror, on the wall...";
+        diag_index = 0;
+    }
+    if(otherUrl == "2108895293" && diag != ""){ //Lumina
+        diag = "Let us have a spar. Not to worry, I'll hold back.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2226596831" && diag != ""){ //Reckless
+        diag = "Unpredictable movement, but nothing I can't dodge.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2229832619" && diag != ""){ //N/A
+        diag = "So this is abyssal energy? Looks like I've encountered a strong one, no less.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2343479756" && diag != ""){ //Natsumi
+        diag = "There's something I can relate to in your gaze.";
+        diag_index = 0;
+    }
+    if(otherUrl == "2415092274" && diag != ""){ //Ao
+        diag = "You're from Starry Hilltop too, you say? Sorry, I don't remember seeing someone like you back then...";
+        diag_index = 0;
+    }
+	
+    if(otherUrl == "19*19" && diag != ""){ //???
+        diag = "... ... This has gone on for far too long... Far too long for my enjoyment. I'll put an end to this tiring 3-years escape...!";
+        diag_index = 0;
+    }
+	
+	//list WIP
+	/*
+    if(otherUrl == "" && diag != ""){ //
+        diag = "";
+        diag_index = 0;
+    }
+	*/
+    
 }

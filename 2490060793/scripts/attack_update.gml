@@ -36,14 +36,16 @@ if attack == AT_USTRONG {
 }
 
 if attack == AT_DSPECIAL {
-    if window_timer == 3 {
-        meter_flipped = !meter_flipped;
-        init_shader()
-        with obj_article1 {
+	if window_timer == 1 {
+		with obj_article1 {
             if player_id == other.id && pulse_cooldown == 0 {
                 pulse = true;
             }
         }
+	}
+    if window_timer == 3 {
+        meter_flipped = !meter_flipped;
+        init_shader()
     }
 }
 

@@ -151,7 +151,9 @@ if attack == AT_NSPECIAL{
 	
     if window == 2 && batt >= 1 && window_timer == 1 && !hitpause  {
     	batt -= 1
-    	create_hitbox(AT_NSPECIAL , 1 , x , room_height/2 - 600 );
+    	create_hitbox(AT_NSPECIAL , 1 , x , room_height/2 - 800 );
+    	sound_play(asset_get("sfx_holy_tablet_appear"));
+    	sound_play(asset_get("sfx_spin"),false,noone,1.2,0.8);
     }
 }
 

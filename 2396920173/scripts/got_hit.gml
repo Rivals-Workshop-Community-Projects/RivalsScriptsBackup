@@ -13,6 +13,7 @@ range_dist = 0;
 missile_timer = 0;
 missile_angle = 0;
 rook_cannon = undefined;
+swap_timer = 0;
 
 if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_DSPECIAL_2 { //hit in bishop attack
     state = free ? PS_PRATFALL : PS_PRATLAND;

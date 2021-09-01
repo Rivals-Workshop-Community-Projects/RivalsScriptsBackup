@@ -67,10 +67,13 @@ venom = venom_min;
 if venom_timer < venom_timer_min && venom > -1 {
 venom_timer = venom_timer_min;}
 
+/*
 if venom >= 0 && venom_timer = 1 {
-	short = 1;
 	venom_stack = 0;
+
 }
+*/
+
 if venom =  3 {
 	venom_current = 3;
 }
@@ -80,6 +83,8 @@ venom_recharge_active = false;
 
 if venom_timer = 0.1 {
 	venom_recharge_active = true;
+		short = 1;
+
 }
 
 if venom_recharge_active = true {

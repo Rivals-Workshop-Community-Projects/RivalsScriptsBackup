@@ -189,6 +189,13 @@ with phone{
 	 
 	 //boy that's a lot of text
 	
+	initTip("styx");
+	initTipWords("styx");
+	initTipWords("i have an incredibly bad feeling that he is going to reach me soon. what is this premonition? is he really still chasing me after all this time? were my 3 years of escape for naught?");
+	initTipWords("i must gather people around for advice. maybe ranno would be willing to offer help, too. and if he is really going to catch us... i'll have to call lumina, too. i have to have her somewhere i can see so that i could protect her.");
+	initTipWords("if anyone happens to acquire this phone and there's no phone entry after this, please avenge us and defeat him for me. they call him eError reading text data (Error Code 1) Entry corrupted
+	Abort, Retry, Fail?");
+	
 	initTip("phone 3");
 	initTipWords("phone 3");
 	initTipWords("well. i guess the signal is available everywhere now. huh. such otherworldly technology...
@@ -364,6 +371,18 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("4.1", "2021-8-31 (YMD)");
+	initPatchWords_ext("Additions", fa_left, c_yellow, 1, 0);
+	initPatchWords("- i think i added dialogue buddy support (only my chars for now im busy)");
+	
+	initPatchWords_ext("Changes", fa_left, c_yellow, 1, 0);
+	initPatchWords("- raincloud parry gives the parrier invincibility now (the same duration as normal parry, 60 frames)
+	- munophone should be fixed? hopefully???");
+	
+	initPatchWords_ext("Notes", fa_left, c_yellow, 1, 0);
+	initPatchWords("closed for inputs until Riptide ends! thank you all!");
+	
+	
 	initPatch("4.0", "2021-6-27 (YMD)");
 	initPatchWords_ext("Changes", fa_left, c_yellow, 1, 0);
 	initPatchWords("- munophone's firmware version has been updated. it was important that you guys were able to read munophone. something important might be going on in there. (no additional entries or anything though.) you still can only open it in training town though.");
@@ -372,6 +391,7 @@ with phone{
 	
 	initPatchWords_ext("Notes", fa_left, c_yellow, 1, 0);
 	initPatchWords("version 4.0.......... doesnt add anything significant tho. sorry!");
+	
 	
 	initPatch("3.9", "2021-4-29 (YMD)");
 	initPatchWords_ext("Fixes", fa_left, c_yellow, 1, 0);

@@ -658,16 +658,6 @@ if get_player_color(player) == 8 {
 
 
 
-if rank >= 4 && !hitpause && get_gameplay_time() % 10-rank == 0{
-	shake_camera(1,1)
-	
-	
-}
-
-if triggered && !hitpause && get_gameplay_time() % 10-rank == 3{
-	shake_camera(1,1)
-	
-}
 
 if rankm >= 0 && !hitpause {
 

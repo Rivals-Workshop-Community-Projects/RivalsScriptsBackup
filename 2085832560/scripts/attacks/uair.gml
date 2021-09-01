@@ -2,7 +2,7 @@ set_attack_value(AT_UAIR, AG_CATEGORY, 1);
 set_attack_value(AT_UAIR, AG_SPRITE, sprite_get("uair"));
 set_attack_value(AT_UAIR, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_UAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_UAIR, AG_LANDING_LAG, 10);
+set_attack_value(AT_UAIR, AG_LANDING_LAG, 6);
 set_attack_value(AT_UAIR, AG_HURTBOX_SPRITE, sprite_get("uair_hurt"));
 
 set_window_value(AT_UAIR, 1, AG_WINDOW_TYPE, 1);
@@ -24,8 +24,8 @@ set_window_value(AT_UAIR, 3, AG_WINDOW_VSPEED, -5);
 set_window_value(AT_UAIR, 3, AG_WINDOW_VSPEED_TYPE, 2);
 
 set_window_value(AT_UAIR, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UAIR, 4, AG_WINDOW_LENGTH, 20);
-set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_UAIR, 4, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_UAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 4);
 set_window_value(AT_UAIR, 4, AG_WINDOW_CUSTOM_GRAVITY, 1.0);

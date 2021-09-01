@@ -101,9 +101,11 @@ switch attack {
 
 if attack == AT_NSPECIAL && move_cooldown[AT_NSPECIAL] <= 1 {
     if special_counter == 1 {
-        if piece_id != undefined sound_play(asset_get("sfx_ori_ustrong_charge"))
-        else sound_play(sound_get("lmao"))
-        swap_timer = 10;
+        if !(piece_id != undefined && piece_id.perform_attack && piece_id.piece != 'K') {
+            if piece_id != undefined sound_play(asset_get("sfx_ori_ustrong_charge"))
+            else sound_play(sound_get("lmao"))
+            swap_timer = 10;
+        }
     }
 }
 

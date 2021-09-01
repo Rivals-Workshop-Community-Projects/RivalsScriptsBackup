@@ -88,41 +88,45 @@ if instance_place(x, y, pHitBox) {
 	}
 }
 
-if (hitbox != noone) {
+if (hitbox != noone && !invincible) {
     if !(hitbox.player_id == player_id && (hitbox.attack == AT_FTHROW || hitbox.attack == AT_USPECIAL)) {
+    	var baseHitpause = hitbox.hitpause;
+        var hitpauseScaling = hitbox.hitpause_growth
+        var extraHitpause = hitbox.extra_hitpause
+        
         with hitbox.player_id {
             var hitboxParent = get_hitbox_value(hitbox.attack, hitbox.hbox_num, HG_PARENT_HITBOX);
             var hboxNum = hitbox.hbox_num;
             if (hitboxParent != 0) {
                 hboxNum = hitboxParent;
             }
-            var baseHitpause = get_hitbox_value(hitbox.attack, hboxNum, HG_BASE_HITPAUSE);
-            var hitpauseScaling = get_hitbox_value(hitbox.attack, hboxNum, HG_HITPAUSE_SCALING);
-            var extraHitpause = get_hitbox_value(hitbox.attack, hboxNum, HG_EXTRA_HITPAUSE);
+            
             var _hitpause = baseHitpause + (get_player_damage(hit_player+1) * hitpauseScaling * 0.05);
-            var hitboxGroup = get_hitbox_value(hitbox.attack, hitbox.hbox_num, HG_HITBOX_GROUP);
-            var hitboxSound = get_hitbox_value(hitbox.attack, hboxNum, HG_HIT_SFX);
-            var hitboxAngle = get_hitbox_value(hitbox.attack, hboxNum, HG_ANGLE);
-            var hitboxAngleFlipper = get_hitbox_value(hitbox.attack, hboxNum, HG_ANGLE_FLIPPER);
-            var hitboxDamage = get_hitbox_value(hitbox.attack, hboxNum, HG_DAMAGE);
-            
-            var baseKnockback = get_hitbox_value(hitbox.attack, hboxNum, HG_BASE_KNOCKBACK);
-            var knockbackScaling = get_hitbox_value(hitbox.attack, hboxNum, HG_KNOCKBACK_SCALING);
-            var hitstunMultiplier = get_hitbox_value(hitbox.attack, hboxNum, HG_HITSTUN_MULTIPLIER);
-            var hitboxSprDir = spr_dir;
-            
-            var hitboxEffect = get_hitbox_value(hitbox.attack, hboxNum, HG_EFFECT);
-            
-            var hitboxCat = get_hitbox_value(hitbox.attack, hboxNum, HG_HITBOX_TYPE);
             
             var hitboxDistX = other.x - hitbox.x;
-            var hitboxDistY = other.y - hitbox.y;
-            
-            var oppDistX = other.x - x;
-            var oppDistY = other.y - y;
-            
-            var oppHsp = hsp;
+	        var hitboxDistY = other.y - hitbox.y;
+	        
+	        var oppDistX = other.x - x;
+	        var oppDistY = other.y - y;
+	        
+	        var hitboxSprDir = spr_dir;
+	        var oppHsp = hsp;
         }
+        
+        var hitboxGroup = hitbox.hbox_group;
+        var hitboxSound = hitbox.sound_effect;
+        var hitboxAngle = hitbox.kb_angle;
+        var hitboxAngleFlipper = hitbox.hit_flipper;
+        var hitboxDamage = hitbox.damage;
+        
+        var baseKnockback = hitbox.kb_value;
+        var knockbackScaling = hitbox.kb_scale;
+        var hitstunMultiplier = hitbox.hitstun_factor;
+        
+        var hitboxEffect = hitbox.effect;
+        
+        var hitboxCat = hitbox.type;
+        
         
         if (hitbox != prevHitboxID && (hitboxGroup != prevHitboxGroup || hitboxGroup == -1)) {
         	var superarmour = false;
@@ -135,6 +139,7 @@ if (hitbox != noone) {
             }
             
             prevHitboxID = hitbox;
+            prevHitboxPlayerID = hitbox.player_id
             prevHitboxNumber = hboxNum;
             prevHitboxAttack = hitbox.attack;
             prevHitboxGroup = hitboxGroup;
@@ -218,6 +223,7 @@ if (hitbox != noone) {
                     hitstop = _hitpause;
                     old_hsp = hsp;
                     old_vsp = vsp;
+                    shake_camera(floor(clamp(playerKnockback/2, 4, 10)), 2)
                 }
                 
                 has_hit = true;
@@ -370,6 +376,10 @@ if perform_attack {
 	            player_id.laser_angle = darctan2(y - targetplayer.y - 60, spr_dir*(targetplayer.x - x))
 	        }
 	    }
+	    
+	    if window == 1 {
+	    	invincible = true;
+	    }
         
         if window == 2 {
 	        if has_rune("L") var num_hitboxes = 50 //All FSPECIAl/DSPECIAL attacks have been enhanced.
@@ -382,6 +392,7 @@ if perform_attack {
 	            	solarbeam.spr_dir = spr_dir
 	        }
 	    } else if window == 3 {
+	    	invincible = false;
 	        player_id.pawn_meter = player_id.pawn_meter_default;
 	        hp = player_id.hp_P;
 	        player_id.queen_active = false;
@@ -390,6 +401,7 @@ if perform_attack {
         break;
         
         case "P":
+        invincible = false;
         progress_attack = false;
         if has_rune("L") { //All FSPECIAl/DSPECIAL attacks have been enhanced.
 	        if window_timer mod 2 == 1 {
@@ -399,7 +411,6 @@ if perform_attack {
         
         if player_id.pawn_meter == 7 && player_id.piece != "Q" {
         	do_move(AT_DTHROW);
-        	hp = player_id.hp_Q;
         } else {
         	sound_play(sound_get("lol"))
         	perform_attack = false;
@@ -743,6 +754,7 @@ if window == num_windows && window_timer == window_length-1 {
 		piece = "P"
 	} else if piece == "P" {
 		piece = "Q"
+		hp = player_id.hp_Q;
 		if !player_id.queen_active {
 			player_id.queen_timer = player_id.queen_timer_max;
 		}

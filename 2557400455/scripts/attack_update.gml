@@ -44,8 +44,8 @@ switch attack {
              }
              
              if has_hit_player && !hitpause {
-                 vsp = -8
-                 hsp = 4*spr_dir
+                 vsp = -4
+                 hsp = -4*spr_dir
                  set_attack(AT_FSPECIAL)
                  window = 6
                  window_timer = 6
@@ -162,7 +162,7 @@ switch attack {
     
     case AT_DAIR:
 
-             if window == 2 and window_timer == 4 && !hitpause {
+             if window == 2 and window_timer == 3 && !hitpause {
                  sound_play(sound_get("shot1"),false,noone,0.7)
              }
              
@@ -422,6 +422,7 @@ switch attack {
     
     case AT_FSPECIAL:
         can_fast_fall = false
+        
         
         if window > 4 {
             can_wall_jump = true

@@ -304,6 +304,7 @@ if (hitbox != noone) && (timer > 10) {
 		        spark_timer = spark_val;
 		        spark_sprite = sprite_get("sparks" + string((timer mod 2) + 1));
 		        has_increased = true;
+		        shake_camera(10,2)
 				instance_destroy(other)
             	exit;
             } else if is_opp && hitbox.type == 1 {
@@ -312,6 +313,7 @@ if (hitbox != noone) && (timer > 10) {
             	}
             	sound_play(hitboxSound)
             	sound_play(asset_get("sfx_absa_jab1"))
+            	shake_camera(6,2)
             	instance_destroy(other)
             	exit;
             } else if move_orb && !has_hit_player {
@@ -330,6 +332,7 @@ if (hitbox != noone) && (timer > 10) {
 	            old_vsp = vsp;
 	            hsp = 0;
 	            vsp = 0;
+	            shake_camera(6, 2)
 	            
 	            meter_prev = meter_cur;
 	            meter_cur = clamp(meter_cur + hit_value, 0, meter_max);

@@ -68,11 +68,11 @@ if attack == AT_FTHROW && hbox_num == 1 { //uspec
     }
     
     var prev_id = owner.prevHitboxID;
-    if prev_id != undefined && instance_exists(prev_id) {
-        //print_debug(string(prev_id.player_id.player))
-        if prev_id.player_id != player_id { 
+    var prev_playerID = owner.prevHitboxPlayerID;
+    if prev_playerID != undefined {
+        if prev_playerID != player_id { 
             can_hit_self = true;
-            can_hit[prev_id.player_id.player] = false;
+            can_hit[prev_playerID.player] = false;
         }
     }
 }
@@ -80,6 +80,11 @@ if attack == AT_FTHROW && hbox_num == 1 { //uspec
 if attack == AT_UTHROW && hbox_num == 1 {
     if !free {
         destroyed = true;
+    }
+    if was_parried {
+        was_parried = false;
+        hsp *= 1.5;
+        hitbox_timer = 0;
     }
 }
 

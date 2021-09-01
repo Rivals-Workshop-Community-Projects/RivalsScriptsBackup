@@ -58,7 +58,7 @@ if get_player_color(player) == 5 {
  	
  }
  
-if get_player_color(player) != 5 && my_hitboxID.attack != AT_DAIR {
+if get_player_color(player) != 5 && my_hitboxID.attack != AT_DAIR && (my_hitboxID.attack == AT_FAIR or my_hitboxID.hitpause != 0) {
 	
 move_cooldown[AT_EXTRA_3] = hit_player_obj.hitstop/1.2
 maxdraw = hit_player_obj.hitstop/1.2

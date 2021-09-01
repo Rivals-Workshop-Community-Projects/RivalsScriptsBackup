@@ -60,7 +60,7 @@ if (attack == AT_NSPECIAL && window ==  1 && window_timer == 1 && short != 1){
 		window = 3;
 		window_timer = 0;
 		set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 4);
-	} else if (venom_current = 1){
+	} else if (venom_current = 1 && venom_stack > 2){
 		window = 5;
 		window_timer = 0;
 		set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 6);
@@ -77,6 +77,12 @@ if (attack == AT_NSPECIAL && window ==  1 && window_timer == 1 && short != 1){
 		reset_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX_FRAME);
 } 
 
+if (short == 1 && attack == AT_NSPECIAL && window == 6 && window_timer == 23) || state == PS_HITSTUN {
+		reset_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS);
+		reset_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH);
+		reset_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK);
+		reset_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX_FRAME);
+}
 
 if (attack == AT_NSPECIAL && window == 4 && has_hit = true && venom_stack = 2) {
 	can_jump = true;

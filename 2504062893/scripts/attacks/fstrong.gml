@@ -5,7 +5,7 @@ set_attack_value(AT_FSTRONG, AG_HURTBOX_SPRITE, sprite_get("fstrong_hurt"));
 
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 12);
-set_window_value(AT_FSTRONG, 1, AG_WINDOW_HSPEED, -9); //-7
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_HSPEED, -8); // -9 was latest //-7
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAME_START, 1);
@@ -24,8 +24,8 @@ set_window_value(AT_FSTRONG, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 5);
-set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED, 15); //16
-set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED_TYPE, 2);
+// set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED, 15); //16  //now in attack_update
+// set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_SFX, snd_Fstrong);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -55,8 +55,8 @@ set_num_hitboxes(AT_FSTRONG,2);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_TYPE, 1);
 // set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, 3);
-set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW_CREATION_FRAME, 1);
-set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 5);
+// set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW_CREATION_FRAME, 1);
+set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 11);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 45); // 30
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_Y, -24);
 set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 60);
@@ -81,7 +81,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, snd_Fstrong_hit);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW, 3);
-set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW_CREATION_FRAME, 6);
+set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW_CREATION_FRAME, 11);
 set_hitbox_value(AT_FSTRONG, 2, HG_LIFETIME, 4); //3 (mostly to match the animation more)
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X, 51); // 36
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_Y, -24);

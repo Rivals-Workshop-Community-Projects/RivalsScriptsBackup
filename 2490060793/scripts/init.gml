@@ -1,6 +1,9 @@
 set_color_profile_slot_range( 3, 1, 1, 1 );
 set_color_profile_slot_range( 6, 1, 1, 1 );
 
+//intro meter flip
+intro_flip = false;
+
 debugMode = false;
 
 //practice mode detector

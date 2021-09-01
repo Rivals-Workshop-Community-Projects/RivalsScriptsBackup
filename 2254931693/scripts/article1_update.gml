@@ -13,6 +13,36 @@ if (free = 1 && state = PS_PRATFALL){
 vsp = vsp + 0.65;
 }
 
+if (free = 0){
+if (place_meeting( x , y + 1 ,asset_get("par_block"))){
+    sprite_change_offset("frog_idle", 148, 326);
+sprite_change_offset("frog_idle_outline", 148, 326);
+sprite_change_offset("frog_idle_air", 148, 326);
+sprite_change_offset("frog_land", 148, 326);
+sprite_change_offset("frog_hit", 148, 326);
+sprite_change_offset("frog_hitland", 148, 326);
+sprite_change_offset("frog_tongue", 148, 326);
+sprite_change_offset("frog_grabbing", 148, 326);
+sprite_change_offset("frog_parried", 148, 326);
+sprite_change_offset("frog_spit", 148, 326);
+sprite_change_offset("frog_despawn", 148, 326);
+}
+
+if (place_meeting( x , y + 1 ,asset_get("par_jumpthrough"))){
+    sprite_change_offset("frog_idle", 148, 327);
+sprite_change_offset("frog_idle_outline", 148, 327);
+sprite_change_offset("frog_idle_air", 148, 327);
+sprite_change_offset("frog_land", 148, 327);
+sprite_change_offset("frog_hit", 148, 327);
+sprite_change_offset("frog_hitland", 148, 327);
+sprite_change_offset("frog_tongue", 148, 327);
+sprite_change_offset("frog_grabbing", 148, 327);
+sprite_change_offset("frog_parried", 148, 327);
+sprite_change_offset("frog_spit", 148, 327);
+sprite_change_offset("frog_despawn", 148, 327);
+}
+}
+
 if (y > room_height + 100){
     player_id.frog_exists = 0;
     player_id.frog_deathtimer = 480;

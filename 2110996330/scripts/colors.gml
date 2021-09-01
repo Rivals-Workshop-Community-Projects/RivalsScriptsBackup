@@ -35,10 +35,10 @@ set_color_profile_slot(5, 0, 255, 147, 36); //SKIN
 set_color_profile_slot(5, 1, 248, 237, 182); //STRIPES
 set_color_profile_slot(5, 2, 142, 230, 238); //CLOTHES
 
-//Fluorescent
-set_color_profile_slot(6, 0, 65, 65, 67); //SKIN
-set_color_profile_slot(6, 1, 0, 252, 232); //STRIPES
-set_color_profile_slot(6, 2, 250, 250, 250); //CLOTHES
+//Seggo (Litten)
+set_color_profile_slot(6, 0, 65, 67, 69); //SKIN
+set_color_profile_slot(6, 1, 229, 40, 40); //STRIPES
+set_color_profile_slot(6, 2, 255, 255, 250); //CLOTHES
 
 //Lime Time
 set_color_profile_slot(7, 0, 196, 214, 0); //SKIN

@@ -536,6 +536,8 @@ if (attack == AT_FAIR && window == 2 && window_timer == 2 && !has_hit ){
 }
 
 if (attack == AT_FAIR && has_hit_player ){
+	
+	
 	if window == 2 {
 		vsp = 0
 		hsp /= 2
@@ -647,7 +649,7 @@ if attack == AT_DATTACK && has_hit_player && window <= 3 && window_timer < 1 {
 if attack == AT_UTILT && has_hit_player && window <= 2 {
 	hit_player_obj.x = x + 45 * spr_dir
 	hit_player_obj.y = y - 50
-    move_cooldown[AT_UTILT] = 40
+    move_cooldown[AT_UTILT] = 60
 	
 }
 

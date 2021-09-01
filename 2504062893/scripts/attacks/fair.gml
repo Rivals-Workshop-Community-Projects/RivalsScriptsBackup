@@ -45,18 +45,18 @@ set_hitbox_value(AT_FAIR, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
 // set_hitbox_value(AT_FAIR, 1, HG_WINDOW_CREATION_FRAME, 3);
-set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 4);
-set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 32);
+set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 3);
+set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 44);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -42);
 set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 66);
-set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 60);
-set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 2);
+set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 56);
+set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 7);
 set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 45);
-set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 7); //6
 set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .6); //check if this ruins combos or not
-set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .5);
+set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 7); //6
+set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .7); //.5
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 0);
 // set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 32);
 // set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
@@ -64,7 +64,7 @@ set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 // set_hitbox_value(AT_FAIR, 1, HG_ANGLE_FLIPPER, 6);
 
-// KNEE HITBOX
+// KNEE HITBOX (unused concept)
 set_hitbox_value(AT_FAIR, 2, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 5);

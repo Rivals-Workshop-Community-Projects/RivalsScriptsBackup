@@ -1,7 +1,5 @@
 ///
 
-
-
 if state_cat == SC_HITSTUN && gudhit == 1 && !hitpause {
 	vsp = -15
 	hitstun += 30
@@ -257,10 +255,6 @@ init_shader();
 
 if songcd > 50 {
 	songcd -= 1
-	if !hitpause {
-	shake_camera(1,10)
-	}
-	
 	  suppress_stage_music(0.6, 1 );
 }
 

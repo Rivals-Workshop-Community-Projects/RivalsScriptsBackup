@@ -123,6 +123,7 @@ with (oPlayer){
 		draw_debug_text(x-40,y+64,"rain: "+string(ar_rain));
 		draw_debug_text(x-40,y+80,"attack: "+string(attack));
 		draw_debug_text(x-40,y+96,string(orig_knock));
+		draw_debug_text(x-40,y+110,string(invince_time));
 	}
 }
 

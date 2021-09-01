@@ -152,3 +152,10 @@ sprite_change_offset("gun4", 570, 32);
 
 sw = hit_fx_create( sprite_get( "shockwave2" ), 16);
 sprite_change_offset("shockwave2", 107, 126);
+
+bw1 = hit_fx_create( sprite_get( "burwarn1" ), 15);
+sprite_change_offset("burwarn1", 50, 50);
+bw2 = hit_fx_create( sprite_get( "burwarn2" ), 15);
+sprite_change_offset("burwarn2", 50, 50);
+bwg = hit_fx_create( sprite_get( "burwarngone" ), 30);
+sprite_change_offset("burwarngone", 50, 50);

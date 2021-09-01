@@ -1,6 +1,20 @@
 shader_start();
 
+if fcharge == 3{
+draw_sprite_ext(sprite_get("charge3"), 0, temp_x + 130 ,temp_y - 32, 2,2, 0, -1, 1 )
+}
 
+if fcharge == 2{
+draw_sprite_ext(sprite_get("charge2"), 0, temp_x + 130 ,temp_y - 32, 2,2, 0, -1, 1 )
+}
+
+if fcharge == 1{
+draw_sprite_ext(sprite_get("charge1"), 0, temp_x + 130 ,temp_y - 32, 2,2, 0, -1, 1 )
+}
+
+if fcharge == 0{
+draw_sprite_ext(sprite_get("charge0"), 0, temp_x + 130 ,temp_y - 32, 2,2, 0, -1, 1 )
+}
 
 
 

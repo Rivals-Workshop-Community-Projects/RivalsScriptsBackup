@@ -435,6 +435,13 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	 initPatch("0.8", "30, August 2021");
+	 initPatchWords("Bair nerfs.
+	 Bair: Now ignores projectiles, meaning all other projectiles will beat bair and not be destroyed.
+Bair: Landing Lag: 10 > 12
+Bair: Lifetime and hsp have been reduced making it travel less distance.
+Bair: Hitstun modifier: .8 > .6
+Bair: Crouch armors through it.")
 	 initPatch("0.7", "23, August 2021");
 	 initPatchWords("Bair: Base Hitpause: 9 > 12
 (Should let people DI it better so they don't always die to bair > dstrong.)

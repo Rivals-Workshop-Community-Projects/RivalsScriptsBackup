@@ -578,7 +578,22 @@ with phone{
 	 * put the version number and full date.
 	 */
 
-	initPatch("2.14", "July 26th, 2021");
+	initPatch("2.15", "August 24th, 2021");
+	initPatchWords("-Reworked Back-Air
+	-Adjusted SFX timing for a bunch of moves
+	-Frog's sprite offsets now line up properly with stage ground and platforms
+	-Added a Neutral-Special hitbox with 90 angle fixed knockback that comes out when a grabbed opponent gets close to you
+	-Forward-Special can now only be used once in the air before landing
+	-Increased Forward-Special endlag (19 -> 23)
+	-Decreased Forward-Special horizontal speed
+	-Dash Attack hitbox comes out one frame later
+	-Up-Tilt, Forward-Tilt and Neutral-Air hitboxes come out one frame earlier
+	-Adjusted size of Up-Tilt hitbox
+	-Decreased size of Forward-Strong hitbox
+	-Increased Up-Strong base knockback (7.5 -> 9)");	 
+
+
+	initPatch("2.14", "August 22nd, 2021");
 	initPatchWords("-Added 2 additional alternate colors
 	-Added new swipe SFX for jab, tilts, aerials, and strongs
 	-Movement speed during Down-Strong throw is now dependent on the grabbed opponent's damage

@@ -210,6 +210,15 @@ if state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD {
 	state_time = 2
 }
 
+if (activated_kill_effect) {
+	 with (asset_get("pHitBox")) {
+        if player_id == other.id {
+          destroyed = true;
+        }
+    }
+}
+
+
 if instance_number(oPlayer) == 2 {
 if move_cooldown[AT_NSPECIAL_2] == 0 && hitstop{
 with oPlayer if (activated_kill_effect) {

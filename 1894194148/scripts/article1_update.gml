@@ -266,6 +266,8 @@ if (state_timer % 3 == 0 && arc_cooldown == 0){
 								var pass_rainhitvfx = other.rainhitvfx
 								var pass_id = other
 								parry_got = true;
+								invincible = true;
+								invince_time = 60;
 								sound_play(asset_get("sfx_parry_success"))
 								tmp_id.fakeparry_got = true;
 								tmp_id.fakeparry_id = id;
