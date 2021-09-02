@@ -1,0 +1,11 @@
+state = 0;
+parent = noone;
+state_timer = 0;
+hit_timer = 0;
+img = 0;
+depth = -10
+image_xscale = 6;
+image_yscale = 1.5;
+sprite_index = asset_get("empty_sprite");
+spr_index = asset_get("empty_sprite");
+mask_index = sprite_get("final_smash_lasers");

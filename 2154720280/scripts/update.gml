@@ -302,12 +302,11 @@ if get_gameplay_time() < 5 {
 	}
 	
 	if get_gameplay_time() == 2 {
-		create_hitbox(AT_NSPECIAL , 1 , x , room_height/2 - 600 );
+		create_hitbox(AT_NSPECIAL , 1 , x , y - 600 );
 	}
 	
-	if get_gameplay_time() == 90 {
+	if get_gameplay_time() == 60 {
 	   visible = true	
-	   shake_camera(5,6)
 	}
 	
 	

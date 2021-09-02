@@ -71,7 +71,7 @@ var tauntpar2 = hit_fx_create( sprite_get( "tauntpar2" ), 20);
     	spawn_hit_fx(x,room_height/2 - 200, bwg)
 	}
 	
-    if  (!free && (place_meeting(x, y + 2, asset_get("par_block")))) {
+    if  (!free && (place_meeting(x, y + 2, asset_get("par_block")))) or (get_gameplay_time() < 120 && y > player_id.y - 20) {
     	destroyed = 1
     	spawn_hit_fx( x  , y , 302 )
     	spawn_hit_fx( x  , y , 306 )
