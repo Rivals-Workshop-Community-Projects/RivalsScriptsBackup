@@ -38,10 +38,11 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 2);
 
 //todo: make this a rune
-//set_hitbox_value(AT_FSPECIAL, 1, HG_EFFECT, 9);
-//set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 90);
-//set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
-
+/*
+set_hitbox_value(AT_FSPECIAL, 1, HG_EFFECT, 9);
+set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 90);
+set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
+*/
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .06);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("drone_launch"));

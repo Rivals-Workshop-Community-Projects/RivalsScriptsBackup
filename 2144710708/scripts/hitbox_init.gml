@@ -31,6 +31,9 @@ old_hsp = 0;
 // effect when bullet hits the ground
 gun_ground_effect = hit_fx_create( sprite_get( "guneffect_ground" ), 7 );
 
+// effect when dspecial
+dspecial_spawn_effect = hit_fx_create( sprite_get( "dspecial_effect" ), 14 );
+
 // cry about it
 /*
 if (attack == AT_NSPECIAL) {

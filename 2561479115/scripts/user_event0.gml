@@ -15,7 +15,9 @@ with (oPlayer) {
     }
     
     //process mark lifetime
+    
     if roke_lastmark == other && roke_mark > 0 {
+        /*
         if roke_mark_destroytimer == 0 {
             roke_mark_destroytimer = other.roke_mark_destroytime2;
             roke_mark--;
@@ -23,6 +25,7 @@ with (oPlayer) {
             ds_list_delete(roke_mark_anim,roke_mark);
         }
         roke_mark_destroytimer--;
+        */
         //drone animations
         var i = 0;
         var c_anim = -1;
@@ -43,5 +46,6 @@ with (oPlayer) {
             }
         }
     }
+    //lol
     
 }

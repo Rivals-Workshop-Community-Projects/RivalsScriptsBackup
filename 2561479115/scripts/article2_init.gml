@@ -12,7 +12,7 @@ center = [0,-30];
 
 target = noone;
 direc = -361;
-max_target_speed = 2.5;
+max_target_speed = 2;
 cur_sound = -1;
 collided = false;
 finalCol = noone;

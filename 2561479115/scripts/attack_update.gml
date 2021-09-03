@@ -50,9 +50,12 @@ switch (get_window_value(attack,window,AG_WINDOW_TYPE)) {
 //#region Attack logic
 switch (attack) {
 	case AT_USPECIAL:
-		move_cooldown[AT_USPECIAL] = 99999; //once per airtime.
+		//move_cooldown[AT_USPECIAL] = 99999; //once per airtime.
+		//no longer once per airtime because it can only be airdodge cancelled during
+		//startup.
+		move_cooldown[AT_USPECIAL] = 2;
 		free = true;
-		can_shield = true;
+		
 		if (window == 1 && window_timer == 1) {
 			sound_play(asset_get("sfx_clairen_fspecial_dash"));
 			if (rec_article == noone) {
@@ -66,30 +69,32 @@ switch (attack) {
 	        vsp *= 0.8;
 	        hsp *= 0.8;
 	        vsp += 0.1;
+	        can_shield = true;
 	    } else {
 	        can_wall_jump = true;
+	        can_shield = false;
 	    }
 	    
 	    if (window == 2 && window_timer == 1) {
 	    	sound_play(asset_get("sfx_clairen_fspecial_dash"));
 	    }
-	    
-	    if has_hit && point_distance(x,y,hit_player_obj.x,hit_player_obj.y) < 50 can_jump = true;
-	    else if (attack_charged) {
-	        set_window_value(AT_USPECIAL,3,AG_WINDOW_TYPE,1);
-	        if jump_pressed {
-	        	var mult = 0.6;
-	        	hsp = (x-px)*mult;
-	        	vsp = (y-py)*mult;
-	        	if !free can_jump = true;
-	        	else if free {
-	        		djumps = 1;
-	        		set_state(PS_IDLE_AIR);
-	        	}
-	        	free = true;
-	        }
-	        //can_jump = true;
-	    } else if has_hit can_jump = true;
+	    if !was_parried
+		    if has_hit && point_distance(x,y,hit_player_obj.x,hit_player_obj.y) < 50 can_jump = true;
+		    else if (attack_charged) {
+		        set_window_value(AT_USPECIAL,3,AG_WINDOW_TYPE,1);
+		        if jump_pressed {
+		        	var mult = 0.6;
+		        	hsp = (x-px)*mult;
+		        	vsp = (y-py)*mult;
+		        	if !free can_jump = true;
+		        	else if free {
+		        		djumps = 1;
+		        		set_state(PS_IDLE_AIR);
+		        	}
+		        	free = true;
+		        }
+		        //can_jump = true;
+		    } else if has_hit can_jump = true;
 	    px = x;
 		py = y;
 	break;

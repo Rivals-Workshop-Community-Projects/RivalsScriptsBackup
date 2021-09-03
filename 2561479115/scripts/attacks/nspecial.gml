@@ -79,10 +79,11 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_LOCKOUT, 5);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 0);
-set_hitbox_value(AT_NSPECIAL, 2, HG_EXTENDED_PARRY_STUN, 0);
+set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 2, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
+set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HIT_TAG, true);
 
 //NSPECIAL 2: RELOAD
 set_attack_value(AT_NSPECIAL_2, AG_CATEGORY, 2);

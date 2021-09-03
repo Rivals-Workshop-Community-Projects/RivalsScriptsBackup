@@ -87,6 +87,7 @@ sprite_change_offset("walltech", 32, 62);
 
 // down b stuff
 sprite_change_offset("toolgun_shoe", 32, 62);
+sprite_change_offset("dspecial_effect", 32, 0); // 32 also looks good
 
 // neutral special effect stuff
 sprite_change_offset("guneffect_hit", 0, 40);

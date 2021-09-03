@@ -48,6 +48,11 @@ if (attack == AT_DSPECIAL) {
 		vsp = old_vsp;
 	}
 	
+	if (hitbox_timer == 1) {
+		
+		spawn_hit_fx(x, y, dspecial_spawn_effect);
+	}
+	
 	// destroy boot on death
 	/*
 	if (player_id.state == PS_RESPAWN || player_id.state == PS_DEAD) {

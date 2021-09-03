@@ -36,13 +36,13 @@ set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 8);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 21);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
+
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_TYPE, 2);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_SFX, asset_get("sfx_clairen_tip_strong"));
-set_window_value(AT_DSTRONG, 5, AG_WINDOW_SFX_FRAME, 2);
 
 set_window_value(AT_DSTRONG, 6, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSTRONG, 6, AG_WINDOW_LENGTH, 36);

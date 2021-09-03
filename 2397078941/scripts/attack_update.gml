@@ -55,11 +55,6 @@ set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, 0.7);
 	
 	
 	 if window == 2 && window_timer > 5 && (place_meeting(x+10*spr_dir, y, asset_get("par_block"))){
-	 	with (asset_get("pHitBox")) {
-        if(player_id == other.id) {
-            destroyed = true
-        }
-        }
 	 	set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
 		window = 4
 		window_timer = 2

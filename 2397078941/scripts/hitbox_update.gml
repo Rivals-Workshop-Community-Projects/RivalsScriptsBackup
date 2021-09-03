@@ -4,7 +4,7 @@ if player_id.nolan == 0 {
 if attack == AT_NSPECIAL{
 	
 	if x < room_width and x > 0 and y < room_height { 
-        	player_id.move_cooldown[AT_NSPECIAL] = 60
+        	player_id.move_cooldown[AT_NSPECIAL] = 99999
         	player_id.famix = x
         	player_id.famiy = y
 	} else {
@@ -18,7 +18,6 @@ if attack == AT_NSPECIAL{
 if attack == AT_USPECIAL && hbox_num == 1{
 	
 	if x < room_width and x > 0 and y < room_height { 
-        	player_id.move_cooldown[AT_NSPECIAL] = 30
         	player_id.famix = x
         	player_id.famiy = y
 	} else {
@@ -74,15 +73,15 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
     
     
     
-    if hitbox_timer < 10 {
-    if x < player_id.x + 100*player_id.spr_dir {
-        hsp += 0.06
-    }
-    
-    if x > player_id.x + 99*player_id.spr_dir {
-        hsp -= 0.06
-    }
-    }
+    //if hitbox_timer < 10 {
+    //if x < player_id.x + 100*player_id.spr_dir {
+    //    hsp += 0.06
+    //}
+    //
+    //if x > player_id.x + 99*player_id.spr_dir {
+    //    hsp -= 0.06
+    //}
+    //}
     
     
     
@@ -217,7 +216,7 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
 			hit_flipper = 6
 			
 		    for (var i = 1; i < 20; i++) can_hit[i] = true
-			damage += nearbyhitbox.damage
+			damage = 5 + floor(nearbyhitbox.damage/2)
 			
 			player = nearbyhitbox.player
 			      image_index = 0 

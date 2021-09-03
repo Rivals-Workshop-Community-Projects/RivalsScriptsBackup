@@ -225,9 +225,18 @@ if (state == 3){
         }
         target = currenttarget;
     }
-    var dir_to_target = target != noone ? point_direction(x,y-36,target.x,target.y-30): 180*(spr_dir==-1);
+    var num_drones = target != noone ? target.roke_mark * (ds_list_find_index(target.roke_mark_id,player_id) != -1) : 0;
+    var dir_to_target = target != noone ? point_direction(x,y-36,target.x+target.hsp*(num_drones*0.33),target.y-30+target.vsp*(num_drones*0.33)): 180*(spr_dir==-1);
     var angle_diff = angle_difference(direc,dir_to_target);
-    direc = direc == -361 ? ( target != noone ? point_direction(x,y-36,target.x,target.y-30) : 180*(spr_dir==-1)) : direc-clamp(angle_diff,-max_target_speed*(angle_diff/25),max_target_speed*(angle_diff/25)*(target != noone && target.state_cat == SC_HITSTUN ? 3 : 1));
+    var drone_track_mult = 1 + num_drones*0.5;
+    var dist_scale = target != noone ? ease_linear(1, 2, min(floor(point_distance(x, y-36, target.x, target.y-30)),100),100)*0.5 : 0;
+    var hitstun_mult = (target != noone && target.state_cat == SC_HITSTUN ? 3 : 1);
+    var smooth_amt = angle_diff/25;
+    var tracking_eq = max_target_speed*smooth_amt*drone_track_mult*dist_scale*hitstun_mult;
+    //print(tracking_eq)
+    direc = direc == -361 ? 
+    	( target != noone ? point_direction(x,y-36,target.x,target.y-30) : 180*(spr_dir==-1)) : 
+    	direc-clamp(angle_diff,-tracking_eq,tracking_eq);
     //if direc > 190 && direc < 350
         //plat = collision_line_point(x+lengthdir_x(60,direc),y-10+lengthdir_y(60,direc),x+lengthdir_x(800,direc),y-10+lengthdir_y(800,direc),asset_get("par_jumpthrough"),true,true);
         block = collision_line_point(x,y-36,x+lengthdir_x(shoost_range,direc),y-36+lengthdir_y(shoost_range,direc),asset_get("par_block"),true,true);
@@ -335,7 +344,7 @@ if (state == 5){
     	var currenttarget = noone;
         var shortest_dist = 9999;
         with (oPlayer) {
-            if ((get_player_team(player) != get_player_team(other.player_id.player) && state != PS_DEAD && state != PS_RESPAWN) || instance_number(oPlayer) < 2) {
+            if ((get_player_team(player) != get_player_team(other.player_id.player)) || instance_number(oPlayer) < 2) {
                 //can be targeted, start checking
                 if (point_distance(x,y-20,other.x,other.y-20) < shortest_dist) {
                     shortest_dist = point_distance(x,y-20,other.x-20,other.y-20);

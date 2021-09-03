@@ -324,10 +324,12 @@ with phone{
 	initTipWords("You'll stop midair during reloading, and you can jump cancel the frame you finished reloading.")
 	initTipImage(player_id.spr_nspecial, 2, fa_center, 1, c_white, 0);
 	
-	initTip("Uspecial: Interrupt");
+	initTip("Uspecial: Tips");
 	initTipWords("Press shield/dodge during this move to end it early.
 	However, you wont go very high and enter pratfall.
-	You'll keep your horizontal momentum if you cancel it fast enough.");
+	You'll keep your horizontal momentum if you cancel it fast enough.
+	
+	During full uspecial, if you hit a player or the boot, you wont enter pratfall.");
 	initTipImage(player_id.spr_uspecial, 0, fa_center, 1, c_white, 0);
 	
 	initTip("Taunt: ???");

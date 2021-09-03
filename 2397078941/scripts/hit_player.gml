@@ -2,6 +2,11 @@
 
 if nolan == 0 {
 
+if my_hitboxID.type == 1 && move_cooldown[AT_NSPECIAL] > 60 {
+	move_cooldown[AT_NSPECIAL] = 60
+	famix = hit_player_obj.x
+	famiy = hit_player_obj.y - 40
+}
 if my_hitboxID.type == 1 && my_hitboxID.damage >= 5 {
   
   if get_gameplay_time() % 2 == 1 {

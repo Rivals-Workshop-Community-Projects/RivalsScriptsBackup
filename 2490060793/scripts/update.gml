@@ -91,7 +91,7 @@ with obj_article1 {
 
 if num_orbs > 1 {
     var min_id = 1000000000000000;
-    with obj_article1 {
+    with obj_article1 if player_id == other.id {
         if id < min_id {
             min_id = id;
         }
