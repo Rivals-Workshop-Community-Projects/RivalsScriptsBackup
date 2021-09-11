@@ -122,9 +122,9 @@ set_color_profile_slot( 10, 4, 210, 226, 155 ); //stripes/kneepad
 set_color_profile_slot( 10, 5, 83, 122, 61 ); //pants/other
 set_color_profile_slot( 10, 6, 83, 122, 61 ); //hair
 
-// classique
+// ballin
 set_color_profile_slot( 11, 0, 230, 76, 77 ); //shirt
-set_color_profile_slot( 11, 1, 47, 88, 168 ); //shoes
+set_color_profile_slot( 11, 1, 242, 247, 245); //shoes
 set_color_profile_slot( 11, 2, 164, 115, 96 ); //belt
 set_color_profile_slot( 11, 3, 255, 213, 162 ); //skin
 set_color_profile_slot( 11, 4, 224, 217, 226 ); //stripes/kneepad

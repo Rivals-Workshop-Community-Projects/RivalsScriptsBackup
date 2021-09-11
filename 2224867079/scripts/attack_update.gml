@@ -125,7 +125,6 @@ if (attack == AT_FSTRONG_2){
 //Charge Nspecial
 if (attack == AT_NSPECIAL && ncancel = false) {
 	tempsprdir = spr_dir
-	move_cooldown[AT_NSPECIAL] = 45;
     if (window == 2) {
         //check if the player is still holding the special button down
         if (special_down) {
@@ -142,13 +141,14 @@ if (attack == AT_NSPECIAL && ncancel = false) {
             //skip to the next window
             window = 4;
             window_timer = 0;
+			move_cooldown[AT_NSPECIAL] = 30;
+			move_cooldown[AT_NSPECIAL_2] = 30;
         }
     }
 }
 
 if (attack == AT_NSPECIAL_2 && ncancel = false) {
 	tempsprdir = spr_dir
-	move_cooldown[AT_NSPECIAL_2] = 45;
     if (window == 2) {
         //check if the player is still holding the special button down
         if (special_down) {
@@ -165,8 +165,14 @@ if (attack == AT_NSPECIAL_2 && ncancel = false) {
             //skip to the next window
             window = 4;
             window_timer = 0;
+			move_cooldown[AT_NSPECIAL] = 30;
+			move_cooldown[AT_NSPECIAL_2] = 30;
         }
     }
+}
+if (attack == AT_FTHROW || attack == AT_UTHROW ){
+	move_cooldown[AT_NSPECIAL] = 30;
+	move_cooldown[AT_NSPECIAL_2] = 30;
 }
 
 /*
@@ -505,6 +511,25 @@ if attack == AT_TAUNT {
 //Red Dattack
 if (attack == AT_DATTACK && RedMode == true && !hitstun){
 	can_wall_jump = true;
+	//Kara Cancel
+	/*
+	if (window == 1){
+		if (special_pressed){
+			if (right_down || left_down){
+				window_timer = 0
+				kara = 4;
+				attack = AT_FSPECIAL_2
+				CorrectHurtboxes();
+			}
+			if (up_down){
+				window_timer = 0
+				kara = 4;
+				attack = AT_USPECIAL_2
+				CorrectHurtboxes();
+			}
+		}
+	}
+	*/
 	if (window == 3){
 		if (left_down || down_down){
 			hsp += -.3
@@ -560,6 +585,12 @@ if (attack == AT_DAIR){
 	if (window == 4 && window_timer == 1){
 		spawn_base_dust(x+44*spr_dir, y, "dash_start", 0 - spr_dir);
 	}
+}
+
+//BY LUKARU!!
+#define CorrectHurtboxes()
+{
+    hurtboxID.sprite_index = get_attack_value(attack, (free && get_attack_value(attack, AG_HURTBOX_AIR_SPRITE) != 0) ? AG_HURTBOX_AIR_SPRITE : AG_HURTBOX_SPRITE);
 }
 
 #define spawn_base_dust

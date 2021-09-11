@@ -9,5 +9,4 @@ can_be_grounded = false;
 fall_forward = false;
 connected = true;
 my_max = 10;
-print_debug("making construct");
 displayFront = 0;

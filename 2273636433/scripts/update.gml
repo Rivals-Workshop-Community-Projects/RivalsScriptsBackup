@@ -61,7 +61,7 @@ if (valido == 1){
 	order[num] = reroll;			//Chooses a pill, Assign numbers
 	previo[num] =  reroll;
 	valido = 0;
-	reroll = random_func( 1, 6, true)+1;
+	reroll = (current_second+current_hour+current_minute*2)%6 + 1;
 	num ++;		//Next
 }
 //---------------------------------------------------CURRENT PILL CODE--------------------------------------------

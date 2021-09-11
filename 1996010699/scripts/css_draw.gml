@@ -37,6 +37,9 @@ switch(get_player_color(player)){
 		draw_sprite_ext(sprite_get("css_premium"), 0, temp_x + 167, temp_y + 99, 1, 1, 0, c_white, 1);
 		draw_sprite(sprite_get("css_golden"), 0, temp_x + 0, temp_y - 1 );
 		break;
+	case 18:
+		draw_sprite_ext(sprite_get("css_ranked"), 0, temp_x + 167, temp_y + 99, 1, 1, 0, c_white, 1);
+		break;
 }
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)

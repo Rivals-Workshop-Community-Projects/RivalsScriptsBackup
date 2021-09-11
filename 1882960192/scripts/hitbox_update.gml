@@ -55,7 +55,8 @@ if (attack == AT_FSPECIAL) {
 		
 		with (asset_get("pHitBox")) {
 			if (player_id == other.player_id &&
-			(attack == AT_FAIR || attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_JAB && hbox_num == 3 || attack == AT_FSPECIAL_AIR)
+			(attack == AT_FAIR || attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_JAB && hbox_num == 3 || attack == AT_FSPECIAL_AIR || 
+			attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR || attack == AT_DSPECIAL_2 || attack == AT_DTHROW)
 			&& place_meeting(x,y,other.id) && !other.was_parried && !other.has_hit && !player_id.has_hit) {
 				other.player = player;
 				enemy_hitboxID = noone;
@@ -90,7 +91,7 @@ if (attack == AT_FSPECIAL) {
 				
 				if (attack == AT_FSTRONG) {
 					other.old_vsp = -6;
-					other.old_hsp = 9 * (spr_dir);
+					other.old_hsp = 10 * (spr_dir);
 				}
 				
 				if (attack == AT_DSTRONG) {
@@ -105,7 +106,34 @@ if (attack == AT_FSPECIAL) {
 				
 				if (attack == AT_JAB) {
 					other.old_vsp = -1;
-					other.old_hsp = 9 * (spr_dir);
+					other.old_hsp = 11 * (spr_dir);
+				}
+				
+				if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) {
+					other.old_vsp = -18;
+					other.old_hsp = .5 * (spr_dir);
+					other.grounds = 0;
+					other.frict -= .05;
+					other.hitbox_timer =+ 50;
+				}			
+				if (attack == AT_DSPECIAL_AIR || attack == AT_DTHROW) {
+					if 5 > hbox_num {
+						other.old_vsp = 10;
+						other.old_hsp = 8 * (spr_dir);
+						other.grounds = 0;
+							with player_id {
+								window = 5;
+								window_timer = 2;
+								old_vsp = -10;
+								old_hsp = 10*spr_dir;
+								destroy_hitboxes();
+								sound_play(asset_get("sfx_blow_medium3"), false, noone, 1, .95);
+							}
+					} else {
+					other.old_vsp = -8;
+					other.old_hsp = 8 * (spr_dir);		
+					other.grounds = 0;
+					}
 				}
 			}
 			
@@ -186,7 +214,8 @@ if (attack == AT_FSPECIAL_2) {
 		
 		with (asset_get("pHitBox")) {
 			if (player_id == other.player_id &&
-			(attack == AT_FAIR || attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_JAB && hbox_num == 3 || attack == AT_FSPECIAL_AIR)
+			(attack == AT_FAIR || attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_JAB && hbox_num == 3 || attack == AT_FSPECIAL_AIR || 
+			attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR || attack == AT_DSPECIAL_2 || attack == AT_DTHROW)
 			&& place_meeting(x,y,other.id) && !other.was_parried && !other.has_hit && !player_id.has_hit) {
 				other.player = player;
 				enemy_hitboxID = noone;
@@ -216,7 +245,7 @@ if (attack == AT_FSPECIAL_2) {
 				
 				if (attack == AT_FSTRONG) {
 					other.old_vsp = -6;
-					other.old_hsp = 9 * (spr_dir);
+					other.old_hsp = 10 * (spr_dir);
 				}
 				
 				if (attack == AT_FSPECIAL_AIR) {
@@ -236,7 +265,32 @@ if (attack == AT_FSPECIAL_2) {
 				
 				if (attack == AT_JAB) {
 					other.old_vsp = -1;
-					other.old_hsp = 9 * (spr_dir);
+					other.old_hsp = 11 * (spr_dir);
+				}
+				
+				if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) {
+					other.old_vsp = -18;
+					other.old_hsp = .5 * (spr_dir);
+					other.grounds = 0;
+				}			
+				if (attack == AT_DSPECIAL_AIR || attack == AT_DTHROW) {
+					if 5 > hbox_num {
+						other.old_vsp = 10;
+						other.old_hsp = 8 * (spr_dir);
+						other.grounds = 0;
+							with player_id {
+								window = 5;
+								window_timer = 2;
+								old_vsp = -10;
+								old_hsp = 10*spr_dir;
+								destroy_hitboxes();
+								sound_play(asset_get("sfx_blow_medium3"), false, noone, 1, .95);
+							}
+					} else {
+					other.old_vsp = -8;
+					other.old_hsp = 11 * (spr_dir);		
+					other.grounds = 0;
+					}
 				}
 			}
 			

@@ -185,7 +185,7 @@ case AT_USTRONG:
 case AT_DATTACK:
 	if(window == 1){
 		dattack_jump_buffer = false
-		hud_offset+=6;
+		hud_offset = 20;
 	}
 	if(window == 1 and window_timer == 10){
 		sound_play(asset_get("sfx_blow_heavy1"));

@@ -76,13 +76,13 @@ set_color_profile_slot( 6, 3, 251, 255, 251 ); //Skin Dark
 set_color_profile_slot( 6, 4, 152, 156, 152 ); //Skin Light
 set_color_profile_slot( 6, 5, 26, 151, 199 ); //RobeShading
 
-// Cult of Undertail
-set_color_profile_slot( 7, 0, 255, 255, 255 ); //Robes
-set_color_profile_slot( 7, 1, 255, 255, 255 ); //Trim And Eye
-set_color_profile_slot( 7, 2, 255, 0, 0 ); //Dagger
-set_color_profile_slot( 7, 3, 255, 255, 255 ); //Skin Dark
-set_color_profile_slot( 7, 4, 255, 255, 255 ); //Skin Light
-set_color_profile_slot( 7, 5, 0, 0, 0 ); //RobeShading
+// Cult of the Night
+set_color_profile_slot( 7, 0, 255, 191, 58 ); //Robes
+set_color_profile_slot( 7, 1, 107, 60, 93 ); //Trim And Eye
+set_color_profile_slot( 7, 2, 188, 184, 184 ); //Dagger
+set_color_profile_slot( 7, 3, 65, 65, 65 ); //Skin Dark
+set_color_profile_slot( 7, 4, 156, 102, 90 ); //Skin Light
+set_color_profile_slot( 7, 5, 174, 107, 46 ); //RobeShading
 
 // Cult of the URL
 set_color_profile_slot( 8, 0, 0, 138, 4 ); //Robes

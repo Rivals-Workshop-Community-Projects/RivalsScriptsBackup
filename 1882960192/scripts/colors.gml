@@ -48,7 +48,7 @@ set_color_profile_slot( 1, 7, 36, 56, 63 ); //Shoes / Wand 2
 
 // Cinnamon
 set_color_profile_slot( 2, 0, 252, 30, 30 ); //Cap
-set_color_profile_slot( 2, 1, 60, 17, 61 ); //Shirt
+set_color_profile_slot( 2, 1, 71, 0, 0 ); //Shirt
 set_color_profile_slot( 2, 2, 30, 159, 252 ); //Pants
 set_color_profile_slot( 2, 3, 255, 159, 41 ); //Skin
 set_color_profile_slot( 2, 4, 255, 230, 230 ); //Gloves / Scarf
@@ -104,7 +104,7 @@ set_color_profile_slot( 7, 3, 122, 64, 28 ); //Skin
 set_color_profile_slot( 7, 4, 232, 231, 225 ); //Gloves / Scarf
 set_color_profile_slot( 7, 5, 26, 11, 0 ); //Hair
 set_color_profile_slot( 7, 6, 38, 25, 11 ); //Shoes / Wand
-set_color_profile_slot( 7, 7, 255, 208, 43 ); //Shoes / Wand 2
+set_color_profile_slot( 7, 7, 186, 186, 186 ); //Shoes / Wand 2
 
 // Snow
 set_color_profile_slot( 8, 0, 51, 51, 255 ); //Cap
@@ -136,35 +136,35 @@ set_color_profile_slot( 10, 5, 82, 31, 0 ); //Hair
 set_color_profile_slot( 10, 6, 82, 40, 0 ); //Shoes / Wand
 set_color_profile_slot( 10, 7, 255, 168, 61 ); //Shoes / Wand 2
 
-// Luigi
-set_color_profile_slot( 11, 0, 0, 173, 9 ); //Cap
-set_color_profile_slot( 11, 1, 0, 173, 9 ); //Shirt
-set_color_profile_slot( 11, 2, 0, 42, 156 ); //Pants
-set_color_profile_slot( 11, 3, 255, 213, 97 ); //Skin
-set_color_profile_slot( 11, 4, 235, 235, 255 ); //Gloves / Scarf
+// Orange
+set_color_profile_slot( 11, 0, 255, 90, 0 ); //Cap
+set_color_profile_slot( 11, 1, 102, 46, 0 ); //Shirt
+set_color_profile_slot( 11, 2, 255, 196, 0 ); //Pants
+set_color_profile_slot( 11, 3, 255, 139, 77 ); //Skin
+set_color_profile_slot( 11, 4, 255, 166, 94 ); //Gloves / Scarf
 set_color_profile_slot( 11, 5, 82, 31, 0 ); //Hair
-set_color_profile_slot( 11, 6, 82, 38, 18 ); //Shoes / Wand
-set_color_profile_slot( 11, 7, 168, 110, 32 ); //Shoes / Wand 2
+set_color_profile_slot( 11, 6, 204, 0, 0 ); //Shoes / Wand
+set_color_profile_slot( 11, 7, 255, 115, 0 ); //Shoes / Wand 2
 
-// Kyoi
-set_color_profile_slot( 12, 0, 128, 128, 133 ); //Cap
-set_color_profile_slot( 12, 1, 62, 62, 66 ); //Shirt
-set_color_profile_slot( 12, 2, 128, 128, 133 ); //Pants
-set_color_profile_slot( 12, 3, 255, 159, 41 ); //Skin
-set_color_profile_slot( 12, 4, 99, 163, 101 ); //Gloves / Scarf
-set_color_profile_slot( 12, 5, 53, 37, 29 ); //Hair
-set_color_profile_slot( 12, 6, 52, 52, 62 ); //Shoes / Wand
-set_color_profile_slot( 12, 7, 99, 163, 101 ); //Shoes / Wand 2
+// Inverted Colors
+set_color_profile_slot( 12, 0, 16, 12, 88 ); //Cap
+set_color_profile_slot( 12, 1, 0, 95, 237 ); //Shirt
+set_color_profile_slot( 12, 2, 16, 12, 88 ); //Pants
+set_color_profile_slot( 12, 3, 222, 138, 36 ); //Skin
+set_color_profile_slot( 12, 4, 150, 153, 255 ); //Gloves / Scarf
+set_color_profile_slot( 12, 5, 53, 34, 25 ); //Hair
+set_color_profile_slot( 12, 6, 62, 62, 62 ); //Shoes / Wand
+set_color_profile_slot( 12, 7, 38, 125, 255 ); //Shoes / Wand 2
 
-// Cool Flashing Alt
-set_color_profile_slot( 13, 0, 0, 0, 255 ); //Cap
-set_color_profile_slot( 13, 1, 2, 0, 117 ); //Shirt
-set_color_profile_slot( 13, 2, 0, 255, 255 ); //Pants
-set_color_profile_slot( 13, 3, 255, 159, 41 ); //Skin
-set_color_profile_slot( 13, 4, 0, 255, 255 ); //Gloves / Scarf
-set_color_profile_slot( 13, 5, 53, 24, 10 ); //Hair
-set_color_profile_slot( 13, 6, 0, 5, 92 ); //Shoes / Wand
-set_color_profile_slot( 13, 7, 0, 0, 255 ); //Shoes / Wand 2
+// Green
+set_color_profile_slot( 13, 0, 94, 194, 0 ); //Cap
+set_color_profile_slot( 13, 1, 117, 47, 0 ); //Shirt
+set_color_profile_slot( 13, 2, 77, 242, 0 ); //Pants
+set_color_profile_slot( 13, 3, 237, 117, 12 ); //Skin
+set_color_profile_slot( 13, 4, 19, 105, 0 ); //Gloves / Scarf
+set_color_profile_slot( 13, 5, 66, 30, 13 ); //Hair
+set_color_profile_slot( 13, 6, 0, 44, 201 ); //Shoes / Wand
+set_color_profile_slot( 13, 7, 0, 103, 255 ); //Shoes / Wand 2
 
 // Brazil
 set_color_profile_slot( 14, 0, 0, 222, 21 ); //Cap

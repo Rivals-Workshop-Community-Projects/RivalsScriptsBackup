@@ -64,3 +64,6 @@ sprite_change_offset("dspecial_1", 23, 48, true);
 sprite_change_offset("dspecial_3", 23, 43, true);
 sprite_change_offset("miiverse", 60, 30);
 sprite_change_offset("kirbyability", 45, 72);
+
+sprite_change_offset("aaaball", 15, 15);
+sprite_change_offset("nspecial_ballin", 29, 43, true);

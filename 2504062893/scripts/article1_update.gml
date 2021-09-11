@@ -21,6 +21,14 @@ if (time_alive > 5 ){
 
 // spr_dir = hsp > 0 ? 1 : -1;
 
+with (ghost_box){
+	if (was_parried && !other.parry_changed_dir){
+		//todo: also party stun?
+		other.parry_changed_dir = true;
+        other.hsp *= -1;
+	}
+}
+
 if (is_boosted){
 	sprite_index = sprite_get("throwingstar_boosted"); 
 	with (ghost_box){
@@ -39,7 +47,10 @@ if (lifespan < 1
 	// print("shuriken gone")
 	// spawn_hit_fx(x, y, player_id.fx_shuriken_dissolve);
 	// if (ghost_box != noone){
-		with (ghost_box){ destroyed = true;}
+	
+	//give indication to player that disk has vanished
+	with (other) { spawn_hit_fx(other.x, other.y-16, 109);} //todo: make small custom vfx
+	with (ghost_box){ destroyed = true;}
 	// }
 	destroyed = true;
 	instance_destroy();

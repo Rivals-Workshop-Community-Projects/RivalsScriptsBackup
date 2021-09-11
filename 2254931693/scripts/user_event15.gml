@@ -577,6 +577,18 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	 
+	initPatch("2.16", "August 24th, 2021");
+	initPatchWords("-Jab now has whifflag
+	-Up-Special last hit damage increased (6 -> 8)
+	-Forward-Special base damage increased (8 -> 11)
+	-Forward-Strong startup time decreased (21 -> 17)
+	-Forward-Strong endlag decreased (23 -> 22)
+	-Up-Strong hitbox now comes out one frame earlier
+	-Uncharged Neutral-Air damage increased (7 -> 10)
+	-Forward-Air damage increased (7 -> 11)
+	-Back-Air clean hit damage increased (11 -> 13)
+	-Back-Air startup time decreased (16 -> 12)");	 	 
 
 	initPatch("2.15", "August 24th, 2021");
 	initPatchWords("-Reworked Back-Air

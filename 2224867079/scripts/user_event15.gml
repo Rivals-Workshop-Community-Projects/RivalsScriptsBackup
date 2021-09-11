@@ -458,6 +458,13 @@ with phone{
 //	initPatchWords("Fnuuy joke
 //	- waog");
 //	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0);
+	//2.30
+	initPatch("2.30	", "4 September 2021");
+	initPatchWords_ext("Balance Changes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Red Dattack doesnt send you as high (the move comes out faster if used on the ground)
+	- Nspecial cooldown reduced (45->30)
+	- Charged nspecial now puts nspecial on cooldown
+	- Double jump now goes slightly higher (11->11.7)");
 	//2.29
 	initPatch("2.29	", "20 June 2021");
 	initPatchWords_ext("Cosmetic Changes:", fa_center, c_gray, 1, 0);

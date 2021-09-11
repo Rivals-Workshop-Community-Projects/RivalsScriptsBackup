@@ -36,7 +36,7 @@ if (my_hitboxID.attack == AT_NSPECIAL) {
 		if(player == other.player)
 		{
 			if(other.parasiteLevel == 2  || other.parasiteLevel == 1 && other.parasiteTimer2 > 0)
-				state = 4;
+				state = 3;
 			else
 				state = 1;
    			hit_timer = 15;

@@ -7,6 +7,7 @@ if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2){
     can_fast_fall = false;
 	if (window == 4 && window_timer > 2 || window == 5) {
 		can_strong = true;
+		can_special = true;
 	}
 }
 
@@ -26,6 +27,11 @@ if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) {
 }
 
 if (attack == AT_DSPECIAL_AIR || attack == AT_DTHROW) {
+	if window == 1 && 9 > window_timer && shield_pressed {
+		set_attack(AT_DSPECIAL);
+		window = 1;
+		window_timer = 3;
+	}
 	can_wall_jump = true;
 	can_fast_fall = false;
 	can_move = false;
@@ -212,6 +218,10 @@ if wblastcharge >= 45 {
 	if (attack == AT_DTHROW) and (window == 2) and (window_timer == 3) {
 		wblastcharge -= 45;
 	}
+	//BAir2
+	if (attack == AT_EXTRA_2) and (window == 3) and (window_timer == 1) {
+		wblastcharge -= 45;
+	}
 	//DTilt2
 	if (attack == AT_EXTRA_3) and (window == 4) and (window_timer == 1) {
 		wblastcharge -= 45;
@@ -273,6 +283,12 @@ if (attack == AT_USTRONG && wblastcharge >= 25) {
 		}
 	}
 
+if (attack == AT_BAIR && window == 2 && window_timer == 2 && (attack_down || strong_down || left_strong_down || right_strong_down) && wblastcharge >= 35) {
+	attack = AT_EXTRA_2;
+	window = 2;
+	window_timer = 0;
+	sound_play(asset_get("sfx_may_arc_cointoss"));		
+	}
 
 if (attack == AT_FSPECIAL && window == 2 && window_timer == 7 && special_down && wblastcharge >= 45) {
 	attack = AT_FSPECIAL_2;
@@ -312,7 +328,7 @@ if (attack == AT_EXTRA_1) and (window > 2) {
 if (attack == AT_JAB || attack == AT_FAIR || attack == AT_FSTRONG || attack ==  AT_FSPECIAL) { //Hammer
 		randomTaunt = 0;
 }
-if (attack == AT_DTILT || attack == AT_USTRONG || attack == AT_NSPECIAL) { //Magic Rod
+if (attack == AT_DTILT || attack == AT_USTRONG || attack == AT_BAIR || attack == AT_NSPECIAL) { //Magic Rod
 		randomTaunt = 1;
 }
 if (attack == AT_FTILT) { //Hand on a Stick
@@ -523,6 +539,10 @@ if (get_player_color( player ) == 14) {
 }
 
 //sfx things because the window indexes kinda suck
+if 	(attack == AT_BAIR && window == 2 && window_timer == 6) {
+	sound_play(asset_get("sfx_zetter_shine"));
+}
+
 if 	(attack == AT_EXTRA_2 && window == 2 && window_timer == 6) {
 	sound_play(asset_get("sfx_absa_kickhit"));
 }

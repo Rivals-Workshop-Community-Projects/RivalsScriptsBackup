@@ -123,7 +123,7 @@ if(attack==AT_DSPECIAL){
 		}
 		if(!was_parried){
 			if(special_pressed)&&(!hitpause) {
-				vsp=-3 -has_rune("L")+ cyclone*3;
+				vsp=-2.75 -has_rune("L")+ cyclone*3;
 			} else if (special_down)&&(!hitpause){
 				vsp=-2 -has_rune("L") + cyclone*3;			
 			}else {
@@ -132,8 +132,8 @@ if(attack==AT_DSPECIAL){
 			}
 		}
 	
-		if(left_down){hsp-=.625 + !free/8;}
-		if(right_down){hsp+=.625+ !free/8;}
+		if(left_down){hsp-=.5 + !free/8;}
+		if(right_down){hsp+=.5+ !free/8;}
 
 		if hsp > (2.5 + !free + has_rune("L")*2){ hsp = 2.5 + !free + has_rune("L")*2;}
 		if hsp < (-2.5 - !free - has_rune("L")*2){ hsp = -2.5 - !free - has_rune("L")*2;}

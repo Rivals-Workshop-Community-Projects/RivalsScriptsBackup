@@ -29,8 +29,8 @@ moonwalk_accel      = 1.3;		// 1.2  -  1.4
     
 // Air movement
 leave_ground_max    = 5;		// 4    -  8
-max_jump_hsp        = 6;		// 4    -  8
-air_max_speed       = 4;  		// 3    -  7
+max_jump_hsp        = 8;		// 4    -  8
+air_max_speed       = 4.5;  		// 3    -  7
 jump_change         = 3;		// 3
 air_accel           = 0.3;		// 0.2  -  0.4
 prat_fall_accel     = 1.25;		// 0.25 -  1.5
@@ -42,7 +42,7 @@ hitstun_grav        = 0.5;		// 0.45 -  0.53
 
 // Jumps
 jump_start_time     = 5;		// 5                this stat is automatically decreased by 1 after init.gml (dan moment), so its "real value" is 4. if you change this during a match, 4 is the value you should reset it to
-jump_speed          = 9;		// 7.6  -  12       okay, zetter's is actually 10.99 but... come on
+jump_speed          = 10.2;		// 7.6  -  12       okay, zetter's is actually 10.99 but... come on
 short_hop_speed     = 6;		// 4    -  7.4
 djump_speed         = 10;		// 6    -  12       absa's is -1 because of her floaty djump
 djump_accel         = 0;        // -1.4 -  0        absa's is -1.4, all other chars are 0. only works if the   djump_accel_end_time   variable is also set. floaty djumps should be adjusted by feel based on your char's gravity
@@ -84,7 +84,7 @@ rainbow_color = c_white; // (used for one of Sandbert w/ a Phone's cheat codes)
 // Animation Info
 
 // Misc. animation speeds
-idle_anim_speed     = 0.1;
+idle_anim_speed     = 0.15;
 crouch_anim_speed   = 0.1;
 walk_anim_speed     = 0.125;
 dash_anim_speed     = 0.2;
@@ -157,9 +157,9 @@ set_victory_theme(sound_get("victory_theme")); // victory_theme.ogg
 // Movement SFX
 land_sound          = asset_get("sfx_land_light");
 landing_lag_sound   = asset_get("sfx_land_med");
-waveland_sound      = asset_get("sfx_waveland_ori"); // recommended to try out all 14 base cast wavedash sfx (see sfx page in roa manual)
-jump_sound          = asset_get("sfx_gus_jump");
-djump_sound         = asset_get("sfx_clairen_arc_bounce");
+waveland_sound      = asset_get("sfx_waveland_cla"); // recommended to try out all 14 base cast wavedash sfx (see sfx page in roa manual)
+jump_sound          = asset_get("nthn");
+djump_sound         = asset_get("nthn");
 air_dodge_sound     = asset_get("sfx_quick_dodge");
 
 // Visual offsets for when you're in Ranno's bubble
@@ -178,6 +178,11 @@ butterfly_alive = false;
 butterfly = noone;
 lighting = false;
 lighting_strike = false;
+
+lighting_block1 = false;
+lighting_block2 = false;
+lighting_block3 = false;
+lighting_butterfly = false;
 
 
 // Muno template: (don't change)

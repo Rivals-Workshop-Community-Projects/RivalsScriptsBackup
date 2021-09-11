@@ -1,4 +1,16 @@
 /*
+-- V2.30 --
+Balance Changes:
+- Red Dattack doesnt send you as high (the move comes out faster if used on the ground)
+- Nspecial cooldown reduced (45->30)
+- Charged nspecial now puts nspecial on cooldown
+- Double jump now goes slightly higher (11->11.7)
+
+Cosmetic Changes:
+- Removed alt names and icons (i'm personally not a fan of it)
+
+Cosmetic Changes:
+- Removed names and icons from the css (personally not a fan of it)
 -- V2.29 --
 
 Cosmetic Changes:

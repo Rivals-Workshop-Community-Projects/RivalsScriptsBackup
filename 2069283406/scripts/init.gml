@@ -179,3 +179,6 @@ ffireh = hit_fx_create( sprite_get( "ffires3" ), 15);
 tauntpar1 = hit_fx_create( sprite_get( "tauntpar1" ), 24);
 darken = hit_fx_create( sprite_get( "darken" ), 10);
 sprite_change_offset("darken", 1000, 1000);
+
+fc = hit_fx_create( sprite_get( "firecurve" ), 16);
+sprite_change_offset("firecurve", 80, 80);

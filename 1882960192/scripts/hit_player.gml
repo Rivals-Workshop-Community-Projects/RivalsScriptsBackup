@@ -7,7 +7,7 @@ if (my_hitboxID.attack == AT_USPECIAL) {
 }
 
 //Stun effect
-if (my_hitboxID.attack == AT_EXTRA_3) {
+if (my_hitboxID.attack == AT_EXTRA_3 || my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 3) {
 
 	var nspecialstun = hit_fx_create(sprite_get("nspecial_stun"), 34);
 	
@@ -24,6 +24,11 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) {
 	else {
 			my_hitboxID.vsp = -5;
 		}
+}
+
+//DSpecial double jump restore
+if (my_hitboxID.attack == AT_DSPECIAL_AIR || my_hitboxID.attack == AT_DTHROW) {
+	djumps = 0;
 }
 
 if (my_hitboxID.attack == AT_FSPECIAL || my_hitboxID.attack == AT_FSPECIAL_2) {

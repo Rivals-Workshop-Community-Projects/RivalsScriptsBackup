@@ -64,7 +64,7 @@ set_window_value(AT_USPECIAL,5, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.5);
 set_window_value(AT_USPECIAL,5, AG_WINDOW_SFX, asset_get("sfx_clairen_dspecial_counter_success"));
 set_window_value(AT_USPECIAL,5, AG_WINDOW_SFX_FRAME, 1);
 
-set_num_hitboxes(AT_USPECIAL, 2); //todo: add sweeet sweeetspot for that off the top kill
+set_num_hitboxes(AT_USPECIAL, 2); 
 
 set_hitbox_value(AT_USPECIAL, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_TYPE, 1);

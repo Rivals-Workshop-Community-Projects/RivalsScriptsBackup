@@ -279,7 +279,7 @@ if(state = PS_WALL_JUMP){
 //}
 
 //f key unlock
-if(get_gameplay_time() > 10 && keyboard_string == "f" && item[26, 3] == 0 && item[26, 7] == false){
+if(practice && get_gameplay_time() > 10 && keyboard_string == "f" && item[26, 3] == 0 && item[26, 7] == false){
 	achieveUnlock(26);
 	//drawDan = true;
 }

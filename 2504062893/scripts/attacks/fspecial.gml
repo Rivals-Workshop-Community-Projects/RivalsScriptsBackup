@@ -88,3 +88,4 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, fx_shuriken_dissolve);
+set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, true); // TEST, based on feedback

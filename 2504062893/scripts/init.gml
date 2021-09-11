@@ -64,6 +64,10 @@ cancel_alarm = -1;
 uspec_cancel_alarm = -1;
 attack_canceled = false;
 
+// USPECIAL
+has_hit_uspecial = false; // no more Uspecial chains > 2, reset this when touching ground again
+has_hit_player_ANY_HITBOX = false; // I need one that doesn't reset halfway
+
 // NSPECIAL
 has_nspecialed = false;
 reversed = 0;

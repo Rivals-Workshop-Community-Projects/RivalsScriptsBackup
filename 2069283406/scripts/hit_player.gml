@@ -109,23 +109,6 @@ if my_hitboxID.attack == AT_FSPECIAL{
 
 
     
-    if my_hitboxID.hbox_num == 1 {
-    	if fireon < 1 {
-    		fireon = 1
-    	}
-    	if fireon > 1 {
-    		fireon += 0.75
-    	}
-    	
-    	if fireon  > 2.5 && firerange < 3 {
-    	fireon = 3	
-        firerange = 600
-     sound_play(sound_get("RI"));
-    sound_play(asset_get("sfx_ori_grenade_launch"));
-     spawn_hit_fx ( hit_player_obj.x + 5 * spr_dir , hit_player_obj.y + 20 , firepar2 )
-    	}
-    }
-    
     
     
     
@@ -238,7 +221,7 @@ if my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num == 4 {
  
 }
 
-if (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num < 4) or attack == AT_FSTRONG or attack == AT_USTRONG  {
+if (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num < 4) or attack == AT_FSTRONG or (attack == AT_USTRONG && my_hitboxID.damage > 2 ) {
     
     if fireon > 2{
     

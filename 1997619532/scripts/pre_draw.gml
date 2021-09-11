@@ -150,7 +150,11 @@ if state == PS_DASH {
 if attacking && attack == AT_FSPECIAL  {
 	draw_sprite_ext(sprite_index, image_index - 1, x - shsp*2, y - svsp*2, spr_dir,1,0,-1, 1 - state_timer/22  );
 	draw_sprite_ext(sprite_index, image_index - 2, x - shsp*4, y - svsp*4, spr_dir,1,0,-1, 0.8 - state_timer/22  );
-	draw_sprite_ext(sprite_index, image_index - 3, x - shsp*6, y - svsp*6, spr_dir,1,0,-1, 0.6 - state_timer/22  );
+}
+
+if attacking && attack == AT_DAIR && vsp > 0  {
+	draw_sprite_ext(sprite_index, image_index , x - shsp*2, y - svsp*2, spr_dir,1,0,-1, .4 );
+	draw_sprite_ext(sprite_index, image_index , x - shsp*4, y - svsp*4, spr_dir,1,0,-1, .2  );
 }
 
 shader_end();

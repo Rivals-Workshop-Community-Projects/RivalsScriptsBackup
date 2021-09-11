@@ -220,7 +220,7 @@ if (activated_kill_effect) {
 
 
 if instance_number(oPlayer) == 2 {
-if move_cooldown[AT_NSPECIAL_2] == 0 && hitstop{
+if move_cooldown[AT_NSPECIAL_2] == 0 && hitstop && hit_player_obj != self {
 with oPlayer if (activated_kill_effect) {
   if hit_player_obj == other {
   	

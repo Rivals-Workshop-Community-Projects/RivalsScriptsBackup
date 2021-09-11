@@ -219,7 +219,6 @@ switch (attack){
                 }
             }
             if(window == 2){
-                if(!was_parried && !hitpause) hsp = 11 * spr_dir;
                 
                 //ledge snap
                 if (place_meeting(x + hsp, y, asset_get("par_block")) && free) {
@@ -251,12 +250,14 @@ switch (attack){
                 can_b_reverse = true;
                 reset_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_HSPEED);
                 reset_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_HSPEED);
+                //reset_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_HSPEED_TYPE);
             }
             if(window_timer < 5 && (dir_held == spr_dir * -1) && can_b_reverse){
                 spr_dir *= -1;
                 hsp *= -1;
                 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_HSPEED, 8);
                 set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_HSPEED, 8);
+                //set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_HSPEED_TYPE, 1);
                 can_b_reverse = false;
             }
         }

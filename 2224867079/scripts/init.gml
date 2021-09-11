@@ -23,6 +23,8 @@ tempsprdir = 0
 teleported = false
 tauntnumber = 0;
 
+kara = false;
+
 ustrongarticle = false
 ustrongarticlestate = 0
 construct = noone;

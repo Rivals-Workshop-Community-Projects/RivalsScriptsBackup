@@ -2,7 +2,7 @@ set_attack_value(AT_BAIR, AG_CATEGORY, 1);
 set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair"));
 set_attack_value(AT_BAIR, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_BAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_BAIR, AG_LANDING_LAG, 8);
+set_attack_value(AT_BAIR, AG_LANDING_LAG, 6);
 set_attack_value(AT_BAIR, AG_HURTBOX_SPRITE, sprite_get("bair_hurt"));
 
 set_window_value(AT_BAIR, 1, AG_WINDOW_TYPE, 1);

@@ -39,8 +39,8 @@ double_jump_time = 32; //the number of frames to play the djump animation. Can't
 walljump_hsp = 7;
 walljump_vsp = 11;
 walljump_time = 32;
-max_fall = 10; //maximum fall speed without fastfalling. It's not 19 anymore.
-fast_fall = 14; //fast fall speed
+max_fall = 11; //maximum fall speed without fastfalling. It's not 19 anymore.
+fast_fall = 15; //fast fall speed
 gravity_speed = .60;
 hitstun_grav = .5;
 knockback_adj = 1.10; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
@@ -112,16 +112,24 @@ ultupperflash = -1;                 //(gonna be honest i dont remember what this
 shinetimer = 0;                     //used for when the player glows when they have Ult Upper charged fully
 can_final_spark = false;                    //whether the final spark sound should play
 shovel_knight_exists = false;       //see no evil
+
 if(get_training_cpu_action() == CPU_FIGHT){
     practice = false;               //whether or not you're in training mode
 }else{
     practice = true;
 }
+
+
 if(get_player_color(player) == 11){
-    classic = true;
+    //classic = true;
+    classic = false;
+    ballin = true;
 }else{
     classic = false;
+    ballin = false;
 }
+
+
 if (get_player_color(player) == 5 || get_player_color(player) == 8){
     hud_menu = sprite_get("hud_menu2");     //Due to color purposes, a different menu sprite is used for Alt 6.
 }else{

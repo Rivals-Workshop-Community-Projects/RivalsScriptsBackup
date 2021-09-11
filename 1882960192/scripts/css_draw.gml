@@ -27,9 +27,9 @@ alt_name[7]  = "BLM";
 alt_name[8]  = "Snow";
 alt_name[9]  = "Crazy Caps";
 alt_name[10] = "Plumber Boy";
-alt_name[11] = "Eternal Understudy";
-alt_name[12] = "Kyoi";
-alt_name[13] = "Cool Rainbow Alt";
+alt_name[11] = "Orange";
+alt_name[12] = "Inverted Colors";
+alt_name[13] = "Green(y)";
 alt_name[14] = "Brazil";
 alt_name[15] = "Retro";
  

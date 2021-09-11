@@ -322,6 +322,11 @@ if ("practice" in self)
 						AddText("FSpec Endlag no longer has reduced air acceleration and gravity");
 						AddText("");
 						AddText("UAir Startup 9 -> 11");
+						AddText("");
+						AddText("---------------------");
+						AddText("v1.17.1 - 6 Sep 2021");
+						AddText("");
+						AddText("Fixed typo for FAir 2 Damage value (0 -> 6)");
 						break;
 				}
 				DrawTutorialBlock();

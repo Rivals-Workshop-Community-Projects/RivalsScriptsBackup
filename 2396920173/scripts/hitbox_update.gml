@@ -93,13 +93,16 @@ if attack == AT_NSPECIAL_2 {
         if !free {
             destroyed = true;
         }
-        
         if destroyed {
-            var hitbox = create_hitbox(AT_NSPECIAL_2, 2, x, y);
-                hitbox.hsp = 0;
-                hitbox.vsp = 0;
-                hitbox.counter = 0;
+            var hitbox1 = create_hitbox(AT_NSPECIAL_2, 2, x, y);
+                hitbox1.hsp = 0;
+                hitbox1.vsp = 0;
+                hitbox1.counter = 0;
+                hitbox1.can_hit_self = was_parried;
+                hitbox1.was_parried = was_parried;
         }
+        
+        
     }
     
     with player_id {
@@ -112,6 +115,7 @@ if attack == AT_NSPECIAL_2 {
     
     var _frames = 9;
     if hbox_num == 2 {
+        
         if hitbox_timer == 1 {
             if counter < counter_max sound_play(asset_get("sfx_ell_dspecial_explosion_1"))
             else if counter == counter_max sound_play(asset_get("sfx_ell_dspecial_explosion_2"))
@@ -123,12 +127,16 @@ if attack == AT_NSPECIAL_2 {
                     hitbox.hsp = 0;
                     hitbox.vsp = 0;
                     hitbox.counter = counter + 1;
+                    hitbox.can_hit_self = was_parried;
+                    hitbox.was_parried = was_parried;
             } else {
                 spawn_hit_fx(x, y, 115)
                 sound_play(asset_get("sfx_ell_dspecial_explosion_3"))
                 var hitbox = create_hitbox(AT_NSPECIAL_2, 3, x, y);
                     hitbox.hsp = 0;
                     hitbox.vsp = 0;
+                    hitbox.can_hit_self = was_parried;
+                    hitbox.was_parried = was_parried;
             }
             destroyed = true;
         }

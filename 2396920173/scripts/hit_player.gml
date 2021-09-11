@@ -23,6 +23,8 @@ if my_hitboxID.attack == AT_NSPECIAL_2 && my_hitboxID.hbox_num == 1 {
         hitbox.hsp = 0;
         hitbox.vsp = 0;
         hitbox.counter = 0;
+        hitbox.can_hit_self = my_hitboxID.was_parried;
+        hitbox.was_parried = my_hitboxID.was_parried;
 }
 
 if my_hitboxID.attack == AT_USPECIAL {

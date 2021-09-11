@@ -435,6 +435,20 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	 initPatch("0.9", "10, September 2021");
+	 initPatchWords("DAttack: Animation tweaked.
+DAttack: Base Hitpause 7 > 8
+
+Fspecial: Startup 13 > 16
+
+Nair: Landing Lag: 4(6) > 6(9)
+Nair: Endlag: 10(15) > 12(18)
+
+Dspecial: Htpause 16 > 6
+Dspecial: Angle: 90 > 45 following the direction of the knives
+Dspecial: Knockback: 4 > 7
+Dspecial: Knockback Scaling: 0 > .2
+Dspecial: Hitstun Modifier: 1 > .7");
 	 initPatch("0.8", "30, August 2021");
 	 initPatchWords("Bair nerfs.
 	 Bair: Now ignores projectiles, meaning all other projectiles will beat bair and not be destroyed.

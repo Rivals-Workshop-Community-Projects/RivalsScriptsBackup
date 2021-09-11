@@ -11,7 +11,7 @@ jump_start_time = 5;
 air_friction = .04;
 air_max_speed = 4;
 air_accel = .3;
-djump_speed = 11;
+djump_speed = 11.99;
 dash_turn_time = 8;
 dash_turn_accel = 2;
 walk_speed = 4.25;
@@ -26,7 +26,7 @@ jump_start_time = 4;
 air_friction = .04;
 air_max_speed = 6;
 air_accel = .4;
-djump_speed = 11;
+djump_speed = 11.7;
 dash_turn_time = 10;
 dash_turn_accel = 1.5;
 walk_speed = 3.25;
@@ -193,6 +193,12 @@ if(!RedMode) {
 
 if(state == PS_IDLE || PS_IDLE_AIR) {
 	multihit = 0
+}
+
+if (state != PS_ATTACK_GROUND || state != PS_ATTACK_AIR){
+	if (kara > 0){
+		kara -= 1
+	}
 }
 
 //Testing

@@ -1,7 +1,7 @@
 fall_through = false;
 
-vsp *= 0.95;
 hsp *= 0.98;
+vsp *= 0.95;
 
 with(pHitBox)
 {
@@ -18,13 +18,10 @@ if(get_gameplay_time() % 2)
 if(get_gameplay_time() % 15 == 0)
     sound_play(asset_get("sfx_buzzsaw_throw"), false, noone, 0.3);
 
-var plyrMeeting = instance_place(x,y, oPlayer)
-if(plyrMeeting != noone && plyrMeeting.player != player && hit_timer == 0)
-{
-    create_hitbox(AT_NSPECIAL, 1, x, y-30);
-}
 if(hit_timer != 0)
     hit_timer --;
+else
+    create_hitbox(AT_NSPECIAL, 1, x, y-30);
 
 switch(state)
 {
@@ -61,7 +58,7 @@ switch(state)
             if(collision_circle(other.x,other.y-15,10,self,true,false))
             {
                 if(player == other.player)
-                    instance_destroy();
+                    other.state = 4;
             }
         }
     break;
@@ -69,10 +66,10 @@ switch(state)
     case 2: //Broken/Death
         spawn_hit_fx(x, y, 301);
         player_id.move_cooldown[AT_NSPECIAL] = 120;
-        instance_destroy();
+        state = 4;
     break;
     
-    case 4://Combust
+    case 3://Combust
         if(player_id.parasiteLevel == 2 || player_id.parasiteLevel == 1 && player_id.parasiteTimer2 > 0)
         {
             fx=spawn_hit_fx(x, y-20, 143);
@@ -94,6 +91,10 @@ switch(state)
                 }
             }
         }
+        state = 4;
+    break;
+
+    case 4: //Destroy
         instance_destroy();
     break;
 }

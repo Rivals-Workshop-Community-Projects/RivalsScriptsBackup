@@ -561,12 +561,12 @@ if (state_cat == SC_HITSTUN or overt >= 999) and !hitpause {
     
   if free {
         
-        set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED, 10);
+        set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED, 8);
         set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED, -6);
         set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 2);
     } else {
         
-        set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED, 12);
+        set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED, 10);
          set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED, 0);
         set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 0);
     }
@@ -628,6 +628,7 @@ if halo >= 6 {
     		haloact.depth = 0
     		
 		sound_play(sound_get("RI"));
+		sound_play(asset_get("sfx_frog_fspecial_charge_full"),false,noone,1,1.2)
 	    haloann = 1
 	}
 	
@@ -660,7 +661,7 @@ if halotimer < 1 {
     		halodeact.depth = -1000
     		
     		
-    halotimer = 60;		
+    halotimer = 90;		
     if halo < 6 {
 	halo -= 1;
     } else {

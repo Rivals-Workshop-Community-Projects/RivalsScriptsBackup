@@ -76,19 +76,20 @@ if (get_player_color( player ) == 10) {
 if (get_player_color( player ) == 11) {
 	set_character_color_shading(1, 1.5);
 	set_character_color_shading(2, .8);
-	set_character_color_shading(4, 4);
+	set_character_color_shading(4, 2);
 }
 
 if (get_player_color( player ) == 12) {
-	set_character_color_shading(1, .8);
-	set_character_color_shading(4, 4);
-	set_character_color_shading(6, .7);
+	set_character_color_shading(0, .6);
+	set_character_color_shading(1, 3);
+	set_character_color_shading(2, .7);
+	set_character_color_shading(4, 5);
 }
 
 if (get_player_color( player ) == 13) {
-	set_character_color_shading(0, 1.5);
-	set_character_color_shading(4, 1.4);
-	set_character_color_shading(6, 2);
+	set_character_color_shading(1, 1.5);
+	set_character_color_shading(4, 2);
+	set_character_color_shading(7, 2);
 }
 
 if (get_player_color( player ) == 14) {

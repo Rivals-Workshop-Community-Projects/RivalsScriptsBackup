@@ -36,7 +36,7 @@ if (attack == AT_USPECIAL_2)
             with(obj_article2)
             {
                 if(player == other.player)
-                    state = 4;
+                    state = 3;
             }
         }
     }
@@ -185,6 +185,8 @@ if (attack == AT_DSPECIAL){
     }
     if(window == 5 && window_timer == 6)
 		shake_camera( 12, 4);
+	if((parasiteLevel == 2  || parasiteLevel == 1 && parasiteTimer2 > 0) && special_down && window == 7 && window_timer == 5)
+        Combust();
 }
 //lose access to strongs.
 if(parasiteLevel == 0 && parasiteTimer2 < 0 && state_timer <= 4)
@@ -244,5 +246,5 @@ init_shader();
     with(obj_article2)
     {
         if(player == other.player)
-            state = 4;
+            state = 3;
     }

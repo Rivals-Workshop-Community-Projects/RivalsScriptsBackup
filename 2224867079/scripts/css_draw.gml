@@ -17,6 +17,7 @@ if ("prev_alt" in self && prev_alt != alt){
      drawtime = 0
 }
 
+/*
 //Blu Alt
 if alt == 1 {
   draw_sprite_ext(sprite_get("logo"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
@@ -57,7 +58,7 @@ if alt == 5 {
 if alt == 10 {
   draw_sprite_ext(sprite_get("charselecthearts2"),drawtime / 1,temp_x-2,temp_y-2,2,2,0,-1,1);
 }
-
+*/
 drawtime += 1 
 
 if alt == 10 {
@@ -71,8 +72,10 @@ prev_alt = alt;
 draw_sprite_ext(sprite_get("charselectver"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
 //More Kawaii Alt
 if alt == 10 {
-    draw_sprite_ext(sprite_get("charselecthearts"),drawtime / 2,temp_x-2,temp_y-2,2,2,0,-1,1);
+    draw_sprite_ext(sprite_get("charselecthearts2"),drawtime / 2,temp_x-2,temp_y-2,2,2,0,-1,1);
+    draw_sprite_ext(sprite_get("charselectver"),0,temp_x-2,temp_y-2,2,2,0,-1,1);
     draw_sprite_ext(sprite_get("charselect2"),drawtime / 5,temp_x-2,temp_y-2,2,2,0,-1,1);
+    draw_sprite_ext(sprite_get("charselecthearts"),drawtime / 2,temp_x-2,temp_y-2,2,2,0,-1,1);
 }
 ////////////////////////Draw idle anim////////////////////////////////
 
@@ -85,6 +88,7 @@ if alt == 10 {
 user_event(12);
 
 ////////////////////////Display Bar////////////////////////////////
+/*
 
 var temp_x = x + 8;
 var temp_y = y + 9;
@@ -95,6 +99,7 @@ var alt_cur = get_player_color(player);
  
 //Alt name init. var doesn't work with arrays lol
  
+
 alt_name[0]  = "Log";
 alt_name[1]  = "BluAxolotl";
 alt_name[2]  = "Ans";
@@ -111,7 +116,7 @@ alt_name[12]  = "Calda";
 alt_name[13]  = "Quil";
 alt_name[14]  = "Beepbox";
 alt_name[15]  = "Modbox";
-
+*/
  
 //Alt
  
@@ -126,7 +131,7 @@ alt_name[15]  = "Modbox";
 draw_set_halign(fa_left);
  
 //include alt. name
-textDraw(temp_x + 2, temp_y + 130, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur) + ": " + alt_name[alt_cur]);
+//textDraw(temp_x + 2, temp_y + 130, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur) + ": " + alt_name[alt_cur]);
  
 //exclude alt. name
 //textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));

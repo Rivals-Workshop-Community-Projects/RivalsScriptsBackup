@@ -52,19 +52,20 @@ if (attack == AT_USPECIAL){
 }
 
 if (attack == AT_USPECIAL_2 && window == 1){
-    if (window_timer < 40 && shield_pressed){   //Cancel the teleport with Parry
+    if (window_timer < 20 && shield_pressed){   //Cancel the teleport with Parry
         vsp = -9;
         hsp = 6*spr_dir;
         state = PS_PRATFALL;
     }
-    if (window_timer == 40){        //Changes the animation on the butterfly
+    if (window_timer == 20){        //Changes the animation on the butterfly
         lighting = false;
         butterfly.state = 4;
         butterfly.image_index = 0;
     }
-    if (window_timer == 59){        //Teleports to the butterfly location
+    if (window_timer == 29){        //Teleports to the butterfly location
         x = butterfly.x + 7*spr_dir;
         y = butterfly.y + 15;
+        
     }
 }
 
@@ -81,16 +82,16 @@ if (attack == AT_DSPECIAL){
 }
 
 
-if (attack == AT_NAIR){
-    if (window == 2){
-        if (window_timer < 5){
-            if (!hitstop && !hitpause && !was_parried){
-                vsp = -3;
-               
-            }
-        }
-    }
-}
+//if (attack == AT_NAIR){
+//    if (window == 2){
+//        if (window_timer < 5){
+//            if (!hitstop && !hitpause && !was_parried){
+//                vsp = -3;
+//               
+//            }
+//        }
+//    }
+//}
 if (attack == AT_UAIR){
     if (window == 6){
         if (window_timer < 5){
@@ -130,6 +131,9 @@ if (attack == AT_DAIR){
         
     }
 }
+
+
+
 
 
 //dattack jump cancel

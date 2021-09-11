@@ -39,7 +39,7 @@ set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_ANIM_FRAME_START, 11);
 
-set_num_hitboxes(AT_FSPECIAL_2, 4);
+set_num_hitboxes(AT_FSPECIAL_2, 2);
 
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_HITBOX_TYPE, 2);
@@ -98,3 +98,45 @@ set_hitbox_value(AT_FSPECIAL_2, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_FSPECIAL_2, 2, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_FSPECIAL_2, 2, HG_HIT_LOCKOUT, 20);
 set_hitbox_value(AT_FSPECIAL_2, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+
+
+//these are spawned by wand hitting the bowling ball
+
+//bair
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_HITBOX_TYPE, get_hitbox_value(AT_FSPECIAL_2, 1, HG_HITBOX_TYPE)); 
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_WINDOW, get_hitbox_value(AT_FSPECIAL_2, 1, HG_WINDOW));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_WINDOW_CREATION_FRAME, 0);
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_LIFETIME, 60);
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_HITBOX_X, 0);
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_HITBOX_Y, 0);
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_WIDTH, get_hitbox_value(AT_FSPECIAL_2, 1, HG_WIDTH));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_HEIGHT, get_hitbox_value(AT_FSPECIAL_2, 1, HG_HEIGHT));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_PRIORITY, get_hitbox_value(AT_FSPECIAL_2, 1, HG_PRIORITY));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_DAMAGE, get_hitbox_value(AT_FSPECIAL_2, 1, HG_DAMAGE));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_SHAPE, get_hitbox_value(AT_FSPECIAL_2, 1, HG_SHAPE));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_ANGLE, get_hitbox_value(AT_FSPECIAL_2, 1, HG_ANGLE));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_ANGLE_FLIPPER, get_hitbox_value(AT_FSPECIAL_2, 1, HG_ANGLE_FLIPPER));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_BASE_KNOCKBACK, get_hitbox_value(AT_FSPECIAL_2, 1, HG_BASE_KNOCKBACK));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_KNOCKBACK_SCALING, get_hitbox_value(AT_FSPECIAL_2, 1, HG_KNOCKBACK_SCALING));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_VISUAL_EFFECT, get_hitbox_value(AT_FSPECIAL_2, 1, HG_VISUAL_EFFECT));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_TECHABLE, get_hitbox_value(AT_FSPECIAL_2, 1, HG_TECHABLE));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_BASE_HITPAUSE, get_hitbox_value(AT_FSPECIAL_2, 1, HG_BASE_HITPAUSE));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_HITPAUSE_SCALING, get_hitbox_value(AT_FSPECIAL_2, 1, HG_HITPAUSE_SCALING));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_HITSTUN_MULTIPLIER, get_hitbox_value(AT_FSPECIAL_2, 1, HG_HITSTUN_MULTIPLIER));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_HIT_SFX, get_hitbox_value(AT_FSPECIAL_2, 1, HG_HIT_SFX));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_EXTENDED_PARRY_STUN, get_hitbox_value(AT_FSPECIAL_2, 1, HG_EXTENDED_PARRY_STUN));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_PROJECTILE_PARRY_STUN, get_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_PARRY_STUN));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_PROJECTILE_GROUND_BEHAVIOR, get_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_PARRY_STUN));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_PROJECTILE_WALL_BEHAVIOR, get_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_WALL_BEHAVIOR));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_PROJECTILE_SPRITE, get_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_SPRITE));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_PROJECTILE_MASK, get_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_MASK));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_PROJECTILE_ANIM_SPEED, get_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_ANIM_SPEED));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_PROJECTILE_HSPEED, -6);
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_PROJECTILE_VSPEED, -5);
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_PROJECTILE_AIR_FRICTION, get_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_AIR_FRICTION));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_PROJECTILE_GROUND_FRICTION, get_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_GROUND_FRICTION));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_PROJECTILE_GRAVITY, get_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_GRAVITY));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, get_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_ENEMY_BEHAVIOR));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_PROJECTILE_DESTROY_EFFECT, get_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_DESTROY_EFFECT));
+set_hitbox_value(AT_FSPECIAL_2, 3, HG_PROJECTILE_IS_TRANSCENDENT, get_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_IS_TRANSCENDENT));
+

@@ -1,7 +1,7 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-patch_ver = "2.14";
+patch_ver = "2.15";
 patch_day = "";
 patch_month = "";
  
@@ -23,9 +23,8 @@ alt_name[7]  = "Spring Man";
 alt_name[8]  = "Miiku";
 alt_name[9]  = "Purple";
 alt_name[10] = "Early Access";
-alt_name[11] = "Classic (no menu)";
-alt_name[12] = "woag";
-/*
+alt_name[11] = "Mii Baller";
+/*alt_name[12] = "woag";
 alt_name[12] = "woag";
 alt_name[13] = "woag";
 alt_name[14] = "woag";

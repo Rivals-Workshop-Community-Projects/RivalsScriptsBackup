@@ -34,7 +34,7 @@ sprite_change_offset("jab", 128, 190);
 sprite_change_offset("dattack", 128, 190);
 sprite_change_offset("ftilt", 128, 190);
 sprite_change_offset("dtilt", 128, 190);
-sprite_change_offset("utilt", 128, 190);
+sprite_change_offset("utilt", 130, 190);
 sprite_change_offset("nair", 128, 190);
 sprite_change_offset("fair", 128, 190);
 sprite_change_offset("bair", 128, 190);

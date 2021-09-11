@@ -43,3 +43,34 @@ if (block_ammo_full > 0 && block_ammo_full < 3.1 && block_despawn == true){
 
 block_ammo = round(block_ammo_full);
 
+
+//Moves the opponent to the center of the lighting hitbox bit by bit 
+//(you can try changing the 0.3 values to make it faster/slower)
+if (lighting_block1 == true){
+	hit_player_obj.x = lerp(hit_player_obj.x, block1.x, 0.3);
+	hit_player_obj.y = lerp(hit_player_obj.y, block1.y, 0.3);
+}
+
+if (lighting_block2 == true){
+	hit_player_obj.x = lerp(hit_player_obj.x, block2.x, 0.3);
+	hit_player_obj.y = lerp(hit_player_obj.y, block2.y, 0.3);
+}
+
+if (lighting_block3 == true){
+	hit_player_obj.x = lerp(hit_player_obj.x, block3.x, 0.3);
+	hit_player_obj.y = lerp(hit_player_obj.y, block3.y, 0.3);
+}
+
+if (lighting_butterfly == true){
+	hit_player_obj.x = lerp(hit_player_obj.x, butterfly.x, 0.3);
+	hit_player_obj.y = lerp(hit_player_obj.y, butterfly.y, 0.3);
+}
+if state == PS_JUMPSQUAT && state_timer == 3 {
+    sound_play(asset_get("sfx_clairen_arc_bounce"), 0, noone, 1.5, 1.5)
+}
+
+
+if state == PS_DOUBLE_JUMP && state_timer == 1 {
+    sound_play(asset_get("sfx_clairen_arc_bounce"), 0, noone, 1.5, 1.8)
+}
+

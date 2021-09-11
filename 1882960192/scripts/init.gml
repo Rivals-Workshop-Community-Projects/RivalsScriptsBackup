@@ -10,8 +10,8 @@ walk_anim_speed = .2;
 dash_anim_speed = .35;
 pratfall_anim_speed = .25;
 
-walk_speed = 4;
-walk_accel = 0.35;
+walk_speed = 3.5;
+walk_accel = 0.3;
 walk_turn_time = 6;
 initial_dash_time = 10;
 initial_dash_speed = 7;
@@ -144,17 +144,20 @@ dracula_speaker[page] = 0;
 dracula_text[page] = "Unless, of course, you intend to join my army and swear servitude to me for eternity. Surely, you must be strong enough to have gotten past my guards on your way here.";
 page++;
 dracula_speaker[page] = 1;
-dracula_text[page] = "Hmmm... Nah, thanks, I'll pass. But anyway, you need to get better security. Honestly, skeletons and bats? And you've been doing this over and over for centuries?";
+dracula_text[page] = "Hmmm... Nah, thanks, I'll pass. But since you mentioned them, I think you need to get better security. Honestly, skeletons and bats? And you've been doing this over and over for centuries?";
 page++;
 dracula_speaker[page] = 2;
 dracula_text[page] = "...It's a wonder you keep getting beat by dudes with whips everytime.";
 page++;
 dracula_speaker[page] = 0;
-dracula_text[page] = "...That's enough![glass] You dare come into my castle without a permit, and insult me and my army... You need to be taught a lesson, insolent child!";
+dracula_text[page] = "...That's enough![glass] You dare come into my castle without a permit, and dare to make a mockery of me and my army... You need to be taught a lesson, insolent child!";
 page++;
 dracula_speaker[page] = 1;
 dracula_text[page] = "Alright, then.[taunt] Bring it on, old man!";
 page++;
 
+//command input timer
+commtimer = 0;
+commstage = 0;
 
 user_event(14); 

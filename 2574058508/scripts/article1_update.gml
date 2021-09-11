@@ -20,7 +20,7 @@ if (player_id.lighting == true && state < 5){	//If DSpecial, goes to the state 3
 	state = 5;
 }
 
-if (total_timer == 440){	//The amount in frames the butterfly lasts
+if (total_timer == 500){	//The amount in frames the butterfly lasts
 	state = 9;
 }
 
@@ -86,6 +86,7 @@ if (state == 4){						//Using the USpecial, teleport animation
 
 //State 5: Lighting Activation
 if (state == 5){				//Hazard is active
+   // sound_play ("sfx_plasma_field_loop");
 	sprite_index = sprite_get("butterfly_active");
 	image_index += .15;
 	x = round(x);
@@ -105,7 +106,7 @@ if (state == 5){				//Hazard is active
 		lighting_strike = false;
 	}
 	if (state_timer >= 180){		//Back to idle
-		state = 8;
+		state = 9;
 		image_index = 11;
 	}
 }

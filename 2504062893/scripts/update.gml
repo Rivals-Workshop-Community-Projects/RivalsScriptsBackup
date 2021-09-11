@@ -76,6 +76,9 @@ if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND){
 }
 
 if (!free){
+	has_hit_player_ANY_HITBOX = false;
+	has_hit_uspecial = false;
+	set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
 	has_nspecialed = false;
 	move_cooldown[AT_NSPECIAL] = 0;
 	has_teleported = false;
@@ -237,6 +240,9 @@ if (distance_to_object(article1) < catch_radius){
 		if (article1.is_boosted){
 			holding_boosted = true;
 		}
+		with(article1) {
+			parry_changed_dir = false;
+		}
 		caught_fspecial = 1;
 		can_throw = false;
 		can_throw_timer = 10;
@@ -274,6 +280,8 @@ if (caught_fspecial == 1){
 			// attack = AT_FSPECIAL;	
 		}
 	// }
+} else {
+	holding_boosted = false;
 }
 
 //Floating, code from Pomme by RubyNights

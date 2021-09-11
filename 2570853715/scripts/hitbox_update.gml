@@ -12,7 +12,6 @@ if(attack == AT_DSPECIAL){
 	
 	if(collision_point(x+hsp, y, asset_get("par_block"), true, true)){
 		hsp = -hsp;
-
 	}
 	
 	if(collision_point(x, y+vsp, asset_get("par_block"), true, true)){
@@ -56,6 +55,20 @@ if(attack == AT_DSPECIAL){
 	sound_lockout--;
 	prev_vsp = vsp;
 	prev_hsp = hsp;
+	if(spr_dir > 0){
+		if(hsp > 0){
+			kb_angle = 45;
+		} else {
+			kb_angle = 135;
+		}
+	} else {
+		if(hsp > 0){
+			kb_angle = 135;
+		} else {
+			kb_angle = 45;
+		}
+	}
+	//print_debug(kb_angle);
 } else if(attack == AT_USPECIAL){
 	can_hit_self = true;
 }else if(attack == AT_NSPECIAL){
@@ -74,6 +87,7 @@ if(attack == AT_DSPECIAL){
 	} if(hbox_num == 2){
 		proj_angle = proj_angle + 15;
 	}
+
 } else if(attack == AT_USTRONG){
 	/*if(hbox_num == 1 and (!free or position_meeting(x+spr_dir*16, y-2, asset_get("par_block")))){
 		var knife = create_hitbox(AT_USTRONG, 2, x, y+16);

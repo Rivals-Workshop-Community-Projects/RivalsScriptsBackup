@@ -32,12 +32,20 @@ with(asset_get("obj_article2")){
         }
     }
 
-// USPECIAL OPTION 2: Teleport to ghost
+// USPECIAL / Teleport to ghost
 if (attack == AT_USPECIAL) {
-	if has_hit_player{
-		set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
-	} else {
-		set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
+	if has_hit_player { has_hit_player_ANY_HITBOX = true; }
+	if (window == 4 && window_timer == 1){//get_window_value(attack, window, AG_WINDOW_LENGTH)-1){
+		if has_hit_player_ANY_HITBOX{
+			if !has_hit_uspecial{ // twice is enough
+				print("reset Uspecial")
+				set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
+				has_hit_uspecial = true;
+			} else if (has_hit_uspecial){
+				print("pratfall Uspecial")
+				set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
+			}
+		}
 	}
 	can_fast_fall = false; //?? more specific or not?
 
@@ -79,13 +87,16 @@ if (attack == AT_USPECIAL) {
 		
 	// IF TELEPORT
 	if (article1_count > 0 && caught_fspecial == 0 && !has_teleported && !article1.inside_wall 
-	&& article1.y - get_stage_data(SD_BOTTOM_BLASTZONE) < 128){
+	&& article1.y - get_stage_data(SD_BOTTOM_BLASTZONE) < 128
+	&& article1.x > get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE) 
+	&& article1.x < room_width - get_stage_data(SD_X_POS) + get_stage_data(SD_SIDE_BLASTZONE) 
+	){
 		if (window == 1){
 			window = 2;	
 			sound_play(asset_get("sfx_clairen_fspecial_dash"))
 		}
 	} else {
-		// REGULAR RECOVERY
+		// REGULAR RECOVERY (the one with a hitbox)
 		if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-1){
 			spawn_hit_fx(x-16*spr_dir, y, fx_shuriken_dissolve);
 			hurtboxID.sprite_index = get_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE);

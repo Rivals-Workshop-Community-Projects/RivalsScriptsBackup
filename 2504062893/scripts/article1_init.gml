@@ -19,5 +19,7 @@ has_bounced = false;
 ghost_bounced = false;
 has_bounced = false;
 
+parry_changed_dir = false;
+
  state = "active";
  state_timer = 0;

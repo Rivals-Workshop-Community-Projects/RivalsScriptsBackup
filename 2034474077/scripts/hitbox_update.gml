@@ -1,6 +1,9 @@
 //We eat the bone to taste the meat.
 
 if(attack == AT_NSPECIAL && hbox_num == 1 && effect == 69){
+	if(ballin && !in_hitpause){
+		proj_angle -= 3 * spr_dir;
+	}
     //Shotput hitpause
 	if(in_hitpause && hitpause_timer > 0) {
 		in_hitpause = true;
@@ -12,9 +15,7 @@ if(attack == AT_NSPECIAL && hbox_num == 1 && effect == 69){
     //bounce
     if(!free && !already_bounced){
     	already_bounced = true; //added it here
-        if(player_id.player == player){
-            sound_play(sound_get("shotbonk"));
-        }
+        sound_play(bounce);
         shotbounces--;
         if(shotbounces <= 0){
             destroyed = true;

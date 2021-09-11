@@ -6,10 +6,8 @@ if introhit = 0 {
 }
 
 
-if halo < 6 && move_cooldown[AT_TAUNT] == 0 && enemy_hitboxID.type == 1 {
-move_cooldown[AT_TAUNT] = 30	
-halotimer = 180
-halo -= 1
+if halo < 6 && enemy_hitboxID.type == 1 {
+halotimer -= enemy_hitboxID.damage*5
 }
 
 

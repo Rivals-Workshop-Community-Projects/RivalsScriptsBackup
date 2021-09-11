@@ -193,14 +193,16 @@ if attack == AT_USTRONG{
 		set_state(PS_IDLE)
 	}
 	if window == 2 && window_timer == 1 && !hitpause{
-			sound_play(asset_get("sfx_bird_sidespecial_start"));
-		sound_play(asset_get("sfx_swipe_heavy2"));
+		sound_play(asset_get("sfx_bird_sidespecial_start"),false,noone,1,1);
+			sound_play(asset_get("sfx_bird_sidespecial_start"),false,noone,1,.6);
+		sound_play(asset_get("sfx_burnapplied"),false,noone,1,.8)
 	}
 	
 	
-	if window == 2 && window_timer == 5 && !hitpause{
+	if window == 2 && window_timer == 6 && !hitpause{
 		vsp = -12
 		hsp = 2*spr_dir
+		spawn_hit_fx(x + 20*spr_dir ,y - 60,fc)
 	}
 	
 	if window == 3 && window_timer > 11 && !has_hit{
@@ -418,10 +420,16 @@ if attack == AT_DATTACK {
 
 if attack == AT_DAIR{
 	
+	
+	if window == 1 && window_timer == 1 &&  !hitpause {
+		sound_play(asset_get("sfx_swipe_medium1"));
+	}
+	
 	if window < 4 && has_hit && !hitpause {
 		window = 4
 		window_timer = 0
 	}
+	
 	if window == 4 && window_timer == 1 && has_hit && !hit_pause{
 		vsp = -10
 	}
@@ -677,6 +685,9 @@ if attack == AT_DSPECIAL {
 	move_cooldown[AT_DSPECIAL] = 10
 	can_fast_fall = false
 	
+	if vsp > 18 {
+		dspecon = 1
+	}
 		if window == 1 && window_timer > 16 {
 		
 		vsp *= 1.05
@@ -797,10 +808,9 @@ if attack == AT_FSPECIAL{
 			if free {
 			vsp = 0
 			}
-			hsp = -6 * spr_dir
 		}
 	   if window_timer > 19{
-	   	move_cooldown[AT_FSPECIAL] = 30
+	   	move_cooldown[AT_FSPECIAL] = 45
 	   	set_state (PS_IDLE)
 	   }
 	}
@@ -828,16 +838,9 @@ if(player_id == other.id && attack == AT_FSPECIAL && hbox_num == 2) {
 	if window == 1 && window_timer == 1  {
 		window = 3
 		window_timer = 2
-		if free && !down_down {
-		vsp = -6
-		}
 	}
 	
 		if window == 4 {
-		if window_timer == 8{
-			vsp = 0
-			hsp = -6 * spr_dir
-		}
 		
 }
 }
@@ -868,7 +871,6 @@ can_wall_jump = true
 	
 	if window == 1 && window_timer == 1 {
 		sound_play(asset_get("sfx_swipe_heavy1"))
-		hsp /= 1.6
 		if vsp < 0 {
 		vsp /= 1.6
 		}
