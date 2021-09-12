@@ -1,0 +1,1 @@
+// article_init is used when the article object is created.

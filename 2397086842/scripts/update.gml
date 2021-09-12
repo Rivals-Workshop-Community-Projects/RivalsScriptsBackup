@@ -68,12 +68,39 @@ with pHitBox {
 				uspecialHudY = ((view_get_yview() + view_get_hview()) - 85)
 			break;
 		}
-		print(string(uspecialNum))
-		print(string(uspecialHudX))
-		print(string(uspecialHudY))
+		//print(string(uspecialNum))
+		//print(string(uspecialHudX))
+		//print(string(uspecialHudY))
 	}
 }
 //
+
+with oPlayer {
+if state == PS_RESPAWN  {
+	
+ other.killed = 0
+ 
+}
+}
+
+
+if move_cooldown[AT_DSPECIAL] > 0 {
+	
+if move_cooldown[AT_DSPECIAL] % 2 == 0 {
+	spawn_hit_fx(x - 20 + random_func(1,40,true),y - 70 + random_func(2,60,true), bfx4)
+}	
+
+if move_cooldown[AT_DSPECIAL] == 1 {
+	
+	spawn_hit_fx(x ,y - 40, bfx5)
+	spawn_hit_fx(x ,y - 60, bfx5)
+	sound_stop(asset_get("sfx_zetter_shine_charged"))
+	sound_play(asset_get("sfx_zetter_shine_charged"),false,noone,1.6,.8)	
+	sound_play(sound_get("b2"),false,noone,0.8,1)
+}
+
+
+}
 
 if  move_cooldown[AT_FSPECIAL_2] = 11{
 	
@@ -220,15 +247,23 @@ if (activated_kill_effect) {
 
 
 if instance_number(oPlayer) == 2 {
-if move_cooldown[AT_NSPECIAL_2] == 0 && hitstop && hit_player_obj != self {
+if move_cooldown[AT_NSPECIAL_2] == 0 && hitstop && hit_player_obj != self && killed = 0{
 with oPlayer if (activated_kill_effect) {
   if hit_player_obj == other {
   	
   	
   	with other {
   		
+  	 with (asset_get("pHitBox")) {
+        if player_id == other.id {
+          destroyed = true;
+        }
+    }
+    
+  		killed = 1
+  		
   	if attack == AT_FSTRONG or attack == AT_USTRONG or attack == AT_DSTRONG {
-  	killwho = hit_player_obj
+     	killwho = hit_player_obj
   	if attack == AT_FSTRONG {
   		killattack = 1
   	}
@@ -262,6 +297,7 @@ with oPlayer if (activated_kill_effect) {
 if killwho != 0 && move_cooldown[AT_NSPECIAL_2] < 80 && !hitpause {
 	if killwho.state_cat != SC_HITSTUN {
 			 killattack = -1
+			 killed = 0
 		if killwho.visible = false {
 			sound_play(sound_get("clap"),false,noone,1)	
 			
@@ -293,7 +329,7 @@ if killwho != 0 && move_cooldown[AT_NSPECIAL_2] < 80 && !hitpause {
 	}
 	
 	killtimer += 1
-	killwho.state_timer -= 1
+	killwho.state_timer = 0
 	killwho.fall_through = true
 	
 	    if killtimer % 2 == 0 {
@@ -324,7 +360,7 @@ if killwho != 0 && move_cooldown[AT_NSPECIAL_2] < 80 && !hitpause {
 		
 		with killwho {
 		if other.killtimer <= 2{
-			hsp = -20*spr_dir
+			hsp = -24*spr_dir
 			vsp = -26
 		} 
 		
@@ -484,12 +520,12 @@ if get_player_color(player) == 12 {
 }
 
 
-if get_gameplay_time() <= 120 && voiced == 0 {
+if get_gameplay_time() <= 120 && voiced == 1 {
 
 
 	if taunt_down {
 		sound_play(asset_get("sfx_gem_collect"));
-		voiced = 1
+		voiced = 0
 	}
 	
 }

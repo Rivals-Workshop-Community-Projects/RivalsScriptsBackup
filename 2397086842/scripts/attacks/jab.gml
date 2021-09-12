@@ -42,6 +42,6 @@ set_hitbox_value(AT_JAB, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT_X_OFFSET, 24);
 set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
-set_hitbox_value(AT_JAB, 1, HG_HITSTUN_MULTIPLIER, 0.85);
+set_hitbox_value(AT_JAB, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT_X_OFFSET, 0.69);
 

@@ -17,7 +17,7 @@ ncode1 = "Decendant of Sound Deity"
 ncode2 = "Capable of creating high shockwave as well "
 ncode3 = "as creating electric infused projectiles."
 
-voiced = 0 
+voiced = 1 
 
 fs_char_chosen_final_smash = "custom";
 
@@ -32,6 +32,8 @@ fary = 0
 sagemode = 0
 sagefire = 0
 rolling = 0
+
+killed = 0
 
 killwho = 0
 killattack = 0
@@ -164,6 +166,14 @@ bfx2 = hit_fx_create( sprite_get( "ballfx2" ), 10);
 bfx3 = hit_fx_create( sprite_get( "ballfx3" ), 7);
 bfx4 = hit_fx_create( sprite_get( "ballfx4" ), 12);
 
+sw2 = hit_fx_create( sprite_get( "shockwave2" ), 12);
+sprite_change_offset("shockwave2", 100, 120);
+
+sw = hit_fx_create( sprite_get( "shockwave" ), 8);
+sprite_change_offset("shockwave", 107, 126);
+
+bfx5 = hit_fx_create( sprite_get( "ballfx5" ), 12);
+
 if get_player_color(player) == 13 {
     
     set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("berryball1"));
@@ -173,6 +183,18 @@ if get_player_color(player) == 13 {
     set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_SPRITE, sprite_get("berryball1"));
     set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_SPRITE, sprite_get("berryball2"));
     set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_SPRITE, sprite_get("berryball3"));
+    
+}
+
+if get_player_color(player) == 16 {
+    
+    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("yyb1"));
+    set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("yyb2"));
+    set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("yyb3"));
+    
+    set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_SPRITE, sprite_get("yyb1"));
+    set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_SPRITE, sprite_get("yyb2"));
+    set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_SPRITE, sprite_get("yyb3"));
     
 }
 

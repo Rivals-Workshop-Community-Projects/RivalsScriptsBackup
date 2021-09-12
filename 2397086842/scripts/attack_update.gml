@@ -358,7 +358,8 @@ if !hitpause {
             }
             
              if window_timer == 11 && voiced == 1{
-                 sound_play(sound_get("fspec"),false,noone,0.8)
+             	sound_play(sound_get("b1"),false,noone,0.8,0.9)
+                 sound_play(sound_get("fspec"),false,noone,0.6)
              }
              
              if window_timer == 11 && voiced == 0{
@@ -369,7 +370,7 @@ if !hitpause {
        
        if attack == AT_DSPECIAL {
            
-                     if state_timer <= 5 {
+              if state_timer <= 5 {
               if left_down && !right_down {
                   spr_dir = -1
               }
@@ -381,18 +382,14 @@ if !hitpause {
         
         if window == 2 && window_timer == 1 {
             hsp /= 2
-            if vsp > 0 {
-            vsp = 0
-            }
             
-            move_cooldown[AT_NSPECIAL] = 0
-            
-                            create_hitbox(AT_DSPECIAL,11, x + 10 * spr_dir , y - 36)
-            if move_cooldown[AT_NSPECIAL] == 0 {
+            move_cooldown[AT_DSPECIAL] = 120
+            //spawn_hit_fx(x,y-15,sw)
+            spawn_hit_fx(x,y-15,sw2)
+                            //create_hitbox(AT_DSPECIAL,11, x + 10 * spr_dir , y - 36)
                sound_play(asset_get("sfx_clairen_tip_strong"),false,noone,1.2)
                sound_play(asset_get("sfx_absa_whip3"),false,noone,1.2)
                 sound_play(asset_get("sfx_swipe_weak1"))
-            }
         }   
            
        }
@@ -410,6 +407,10 @@ if !hitpause {
               uspecbat = 8
           }
           if window == 1 {
+          	if window_timer == 1 {
+          		sound_play(asset_get("sfx_bird_sidespecial_start"))
+          		sound_play(asset_get("sfx_bird_downspecial"))
+          	}
             hsp /= 1.2   
             uspecbat = 0
           }
@@ -418,8 +419,23 @@ if !hitpause {
               if window_timer % 3 == 0 {
               create_hitbox(AT_USPECIAL,1, x,y)
               }
-              vsp = -12
-              hsp /= 2
+              if uspecbat == 0 {
+              vsp = -7
+              } else {
+              vsp = -12	
+              }
+              
+              if uspecbat == 0 {
+                hsp /= 1.05   
+             	} else {
+             		spawn_hit_fx(x - 40 + random_func(1,80,true),y - 10 + random_func(2,20,true), bfx5)
+          		if left_down {
+          			x -= 4
+          		}
+          		if right_down {
+          			x += 4
+          		}
+          	  }
               
               if has_hit_player && hit_player_obj.visible = true {
                   hit_player_obj.x += floor((x - hit_player_obj.x)/3)
@@ -429,6 +445,8 @@ if !hitpause {
           
           if window == 3 {
               vsp /= 1.2
+              
+          	  
               if window_timer == 6 && uspecbat >= 1 {
                   sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,2)
                   create_hitbox(AT_NSPECIAL,11, x - 60 ,y - 30)

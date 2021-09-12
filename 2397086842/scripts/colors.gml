@@ -187,11 +187,11 @@ set_color_profile_slot( 15, 6, 163, 47, 186 ); //skirt
 set_color_profile_slot( 15, 7, 186, 151, 126 ); //ears
 
 // Miko of Paradise
-set_color_profile_slot( 16, 0, 255, 0, 0 ); //Energy
+set_color_profile_slot( 16, 0, 255, 227, 227 ); //Energy
 set_color_profile_slot( 16, 1, 43, 41, 37 ); //Hair + parts
 set_color_profile_slot( 16, 2, 240, 46, 48 ); //shirt
-set_color_profile_slot( 16, 3, 255, 255, 255 ); //cloak1 + sock
-set_color_profile_slot( 16, 4, 255, 255, 255 ); //eyes
+set_color_profile_slot( 16, 3, 143, 18, 18 ); //cloak1 + sock
+set_color_profile_slot( 16, 4, 105, 54, 54 ); //eyes
 set_color_profile_slot( 16, 5, 255, 234, 230 ); //body
 set_color_profile_slot( 16, 6, 43, 41, 37 ); //skirt
 set_color_profile_slot( 16, 7, 186, 151, 126 ); //ears
@@ -255,7 +255,6 @@ set_color_profile_slot( 22, 4, 255, 242, 4 ); //eyes
 set_color_profile_slot( 22, 5, 232, 213, 118 ); //body
 set_color_profile_slot( 22, 6, 255, 207, 76 ); //skirt
 set_color_profile_slot( 22, 7, 0, 191, 64 ); //ears
-
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

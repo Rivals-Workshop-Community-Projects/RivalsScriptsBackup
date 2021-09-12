@@ -662,9 +662,16 @@ if (attack == AT_UTILT && window == 2 && window_timer == 12 && !has_hit){
 
 
 if attack == AT_DSPECIAL && !hitpause {
-	
+	can_wall_jump = true
 	can_fast_fall = false
 
+   if down_down {
+   	  fall_through = true
+   	  if !free {
+   	  	y += 10
+   	  }
+   }
+   
 if window == 5 && window_timer > 10 {
 	if window_timer == 1 {
 		if free {
@@ -679,12 +686,12 @@ if window == 1{
 	spintime = 0
 	dcharge = 0
 	
- if  window_timer == 14 {
+ if  window_timer == 1 {
 	sound_play(asset_get("sfx_swipe_heavy1"))
 	
  }
  
-  if  window_timer == 17 {
+  if  window_timer == 1 {
 	sound_play(asset_get("sfx_ice_shieldup"))
 	sound_play(asset_get("sfx_ell_dspecial_hit"))
 	sound_play(asset_get("sfx_ell_utilt_hit"))
@@ -693,7 +700,7 @@ if window == 1{
 
 }
 
- if window == 1 and window_timer == 38{
+ if window == 1 and window_timer == 12{
 	sound_play(asset_get("sfx_ori_ustrong_charge"))
 		sound_play(asset_get("sfx_spin"))
  }
@@ -705,23 +712,14 @@ if window == 2 or window == 3 {
 		sound_play(asset_get("sfx_spin"))
 	}
 
-if window == 2 && window_timer == 15{
-	
-		if dcharge < 10{
+if window == 2 && window_timer == 5{
+	if dcharge < 10{
 	dcharge += 1
-	sound_play(asset_get("sfx_ell_dspecial_hit"))
 	}
 }	
 
-if (window == 2 or window == 3) && window_timer >= 14 && !special_down {
-	window = 4
-	window_timer = 0
-	         	if get_player_color(player) == 5 && sakura == 1{
-			spawn_hit_fx( x , y, shit2 )
-			}
-}
 
-if window == 3 && window_timer == 15 && special_down {
+if window == 3 && window_timer == 8 {
 	
 	window = 3
 	spintime += 1
@@ -729,7 +727,6 @@ if window == 3 && window_timer == 15 && special_down {
 	
 	if dcharge < 5{
 	dcharge += 1
-	sound_play(asset_get("sfx_ell_dspecial_hit"))
 		if get_player_color(player) == 5 && sakura == 1{
 			spawn_hit_fx( x , y - 40, shit1 )
 			}
@@ -750,7 +747,7 @@ if window == 3 && window_timer == 15 && special_down {
 }	
 } 
 
-	if (window == 3 && (spintime >= 6 or !special_down)){
+	if (window == 3 && (spintime >= 1)){
 	window = 4
 	window_timer = 0
 	}
@@ -786,7 +783,6 @@ if window >= 2 && window < 4 {
 	}
 }
 
-set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_ANIM_SPEED, 0.2 + (dcharge / 10));
 set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_HSPEED, 18 + (dcharge * 4));
 set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_KNOCKBACK, 8 + (dcharge/8));
 set_hitbox_value(AT_DSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.6 + (dcharge/4));

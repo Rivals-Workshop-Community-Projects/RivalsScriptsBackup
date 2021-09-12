@@ -1,0 +1,1 @@
+// Article Update is ran for every frame that the article object is in-game.

@@ -54,7 +54,50 @@ if alt == 12 {
     }
 }
 
+if alt == 13 {
+    if drawtime == 1 {
+     sound_play(asset_get("sfx_diamond_collect"))
+     sound_play(asset_get("sfx_waterhit_heavy"),false,noone,1.2)
+    }
+    sprite_change_offset("berryball3", 0, 0);
+        draw_sprite_ext(sprite_get("berryball3"),drawtime/5,temp_x-12,temp_y+18,1,1,0,-1,1);
+}
+    
+if alt == 16 {
+    if drawtime == 1 {
+     sound_play(asset_get("sfx_diamond_collect"))
+     sound_play(sound_get("death"),false,noone,1)
+    }
+    sprite_change_offset("yyb3", 0, 0);
+        draw_sprite_ext(sprite_get("yyb3"),drawtime/5,temp_x-12,temp_y+18,1,1,0,-1,1);
+}
 
+if alt == 20 {
+    if drawtime == 1 {
+     sound_play(asset_get("sfx_diamond_collect"))
+     sound_play(asset_get("sfx_blow_heavy2"),false,noone,1)
+    }
+    sprite_change_offset("dinonug2", 0, 0);
+        draw_sprite_ext(sprite_get("dinonug2"),drawtime/5,temp_x-12,temp_y+18,1,1,0,-1,1);
+}
+
+if alt == 21 {
+    if drawtime == 1 {
+     sound_play(asset_get("sfx_diamond_collect"))
+     sound_play(sound_get("Lycahit"),false,noone,1.2,1)
+    }
+    sprite_change_offset("wisp2", 0, 0);
+        draw_sprite_ext(sprite_get("wisp2"),drawtime/5,temp_x-12,temp_y+18,1,1,0,-1,1);
+}
+
+if alt == 22 {
+    if drawtime == 1 {
+     sound_play(asset_get("sfx_diamond_collect"))
+      sound_play(sound_get("vineboom"),false,noone, 1)  
+    }
+    sprite_change_offset("rock2", 0, 0);
+        draw_sprite_ext(sprite_get("rock2"),drawtime/5,temp_x-12,temp_y+22,1,1,0,-1,1);
+}
 //define the palette names
 var palette_names = [
     
