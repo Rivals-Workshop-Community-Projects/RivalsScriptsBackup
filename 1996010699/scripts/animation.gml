@@ -22,6 +22,8 @@ if (state == PS_SPAWN) {
 			sprite_index = sprite_get("intro4");
 		} else if(halloweenIntro){
 			sprite_index = sprite_get("intro5");
+		} else if(arizonaIntro){
+			sprite_index = sprite_get("introAZ");
 		} else {
 			sprite_index = sprite_get("intro");
 		}
@@ -37,6 +39,8 @@ if (state == PS_SPAWN) {
 			sprite_index = sprite_get("intro4");
 		} else if(halloweenIntro){
 			sprite_index = sprite_get("intro5");
+		} else if(arizonaIntro){
+			sprite_index = sprite_get("introAZ");
 		} else {
 			sprite_index = sprite_get("intro");
 		}

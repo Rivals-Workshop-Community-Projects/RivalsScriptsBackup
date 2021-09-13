@@ -577,8 +577,12 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+
+	initPatch("2.17", "September 12th, 2021");
+	initPatchWords("-Fixed charged Neutral-Air using the wrong hurtbox");	 	 
 	 
-	initPatch("2.16", "August 24th, 2021");
+	 
+	initPatch("2.16", "September 8th, 2021");
 	initPatchWords("-Jab now has whifflag
 	-Up-Special last hit damage increased (6 -> 8)
 	-Forward-Special base damage increased (8 -> 11)

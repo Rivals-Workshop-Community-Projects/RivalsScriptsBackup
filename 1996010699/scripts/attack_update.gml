@@ -505,6 +505,10 @@ if (attack == AT_DSPECIAL){
 	if (item[14, 3] == 1 && !was_parried && window <= 2){
 		can_jump = true;
 	}
+	if (window == 1 && window_timer == get_window_value(AT_DSPECIAL,1,AG_WINDOW_LENGTH) && bagelEaten){
+		x += 100*spr_dir;
+		y -= 100;
+	}
 	if (window != 1){
 		draw_indicator = false;
 		switch(window){
@@ -719,9 +723,9 @@ switch(attack){
 	legendaryPinged = false;
 }
 
-#define applyItem(x)
+#define applyItem(a)
 {
-	switch (x){
+	switch (a){
 		case 0:	//prize purse
 			shardVal++;
 			xp_mod = 1;
@@ -917,8 +921,11 @@ switch(attack){
 			displaySlot++;
 			break;
 		case 6:		//breakfast
-			if(breakfastVar = 1){
-				take_damage(player, -1, -5);
+			if(breakfastVar == 1){
+				take_damage(player, -1, -3);
+			} else if(breakfastVar == 3) {
+				bagelEaten = true;
+				take_damage(player, -1, -1);
 			} else {
 				take_damage(player, -1, -1);
 			}
@@ -926,8 +933,7 @@ switch(attack){
             outline_color = [ 0, 127, 0 ];
             init_shader();
             outline_color = [ 0, 0, 0 ]; //change outline color back to black in case the move gets interrupted
-			breakfastCount++;
-			/*
+			/*breakfastCount++;
 			spitWindow = spitWindow + 3;
 			if((item[1, 3] == 1) && (item[19, 3] == 0) && (item[19, 7] == false)){
 				achieveUnlock(19);
@@ -1247,11 +1253,14 @@ switch(attack){
 		}
 }
 
-#define voidItem(x)
+#define voidItem(v)
 {
-	if(x == 6){
-		if(breakfastVar = 1){
+	if(v == 6){
+		foodVoided = true;
+		if(breakfastVar == 1){
 			take_damage(player, -1, -3);
+		} else if(breakfastVar == 3) {
+			take_damage(player, -1, -1);
 		} else {
 			take_damage(player, -1, -1);
 		}
@@ -1259,8 +1268,8 @@ switch(attack){
         outline_color = [ 0, 127, 0 ];
         init_shader();
         outline_color = [ 0, 0, 0 ]; //change outline color back to black in case the move gets interrupted
-		breakfastCount++;
-		/*
+		//foodVoided = false;
+		/*breakfastCount++;
 		spitWindow = spitWindow + 3;
 		if((item[1, 3] == 1) && (item[19, 3] == 0) && (item[19, 7] == false)){
 			achieveUnlock(19);
@@ -1280,7 +1289,7 @@ switch(attack){
 		}
 	*/
 	} else {
-		itemsDisplayed[displaySlot] = item[x, 5];
+		itemsDisplayed[displaySlot] = item[v, 5];
 		displaySlot++;
 		if(voidStacks < 10){
 			gravity_speed -= 0.01;
@@ -1288,6 +1297,9 @@ switch(attack){
 			hitstun_grav -= .0075;
 			knockback_adj += .01;
 			voidStacks++;
+		}
+		if(v == 1){
+			foodVoided = true;
 		}
 	}
 }

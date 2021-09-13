@@ -321,6 +321,8 @@ if(get_player_color(player) == 7){
 	abyssIntro = true;
 } else if(get_player_color(player) == 8){
 	gameboyIntro = true;
+} else if(get_player_color(player) == 13){
+	arizonaIntro = true;
 } else if(get_player_color(player) == 14){
 	halloweenIntro = true;
 } else if (get_player_color(player) == 15){

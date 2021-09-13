@@ -77,7 +77,6 @@ set_hitbox_value(AT_UAIR, 3, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
 set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, 306);
-set_hitbox_value(AT_UAIR, 3, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_UAIR, 3, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_UAIR, 3, HG_HIT_LOCKOUT, 10);
 

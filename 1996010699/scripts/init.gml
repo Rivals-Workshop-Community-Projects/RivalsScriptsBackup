@@ -29,7 +29,9 @@ crystalHold = 0;
 drawDan = false;
 sayonara = 0;
 sayoTimer = 0;
-eatingTidepods = false;
+//eatingTidepods = false;
+foodVoided = false;
+bagelEaten = false;
 
 //pool party vars
 nairbounceTryUnlock = false;
@@ -202,6 +204,7 @@ abyssIntro = false;
 pandoraIntro = false;
 goldenIntro = false;
 halloweenIntro = false;
+arizonaIntro = false;
 champSlot = 1;
 //chiefcase
 chiefcase = false;
@@ -402,8 +405,8 @@ item[6, 4] = false;
 item[6, 5] = 6;
 item[6, 6] = "HP UP";
 item[6, 7] = false;
-item[6, 8] = sprite_get("hud_shop");
-item[6, 9] = $d5a5b5;
+item[6, 8] = sprite_get("hud_shop3");
+item[6, 9] = $5ede8c;
 //Pocket Cactus, ID 7
 item[7, 0] = "POCKET CACTUS";
 item[7, 1] = "Lil Heat Wave!";

@@ -1,5 +1,6 @@
 //The Suitcase
-var tidePods = (get_player_color(player) == 13 && item[11, 3] == 1 && item[2, 3] == 1 && eatingTidepods == false);
+var tidePods = (item[11, 3] == 1 && item[2, 3] == 1);
+var lordBagel = (foodVoided);
 if (attack == AT_DSPECIAL){
 	setNextItem();
 	breakfastRand = random_func(1, 100, true);
@@ -9,8 +10,12 @@ if (attack == AT_DSPECIAL){
 		item[6, 1] = "AMICUS MEUS";
 		item[6, 2] = sprite_get("item_food2");
 		item[6, 6] = "yNLYeLR4K20";
-		item[6, 8] = sprite_get("hud_shop1");
-		item[6, 9] = $b2eaff;
+	} else if(lordBagel && !tidePods && !bagelEaten){
+		breakfastVar = 3;
+		item[6, 0] = "CURSED BAGEL";
+		item[6, 1] = "It's unlucky!";
+		item[6, 2] = sprite_get("item_lordbagel");
+		item[6, 6] = "HP UP & CURSED DSPECIAL";
 	} else {
 		if(breakfastRand >= 81){
 			breakfastVar = 1;

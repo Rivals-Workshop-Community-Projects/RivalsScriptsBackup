@@ -292,9 +292,10 @@ if (attack == AT_NAIR && strong_charge = 40){
     window_timer = 1;
     window = 1;
     set_attack(47);
-
+    hurtboxID.sprite_index = sprite_get("nair2_hurt")
     strong_charge = 0;
 }
+
 
 if (attack == AT_DSPECIAL && window_timer = 4 && window = 1){
 sound_play(sound_get("bonby_dspecial_back2"));

@@ -22,7 +22,7 @@ set_color_profile_slot_range( 4, 2, 30, 37 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 19 );
+set_num_palettes( 20 );
 
 // Blue
 set_color_profile_slot( 1, 0, 38, 120, 228 ); //CASE
@@ -108,12 +108,12 @@ set_color_profile_slot( 12, 2, 178, 34, 52 ); //WHEELS
 set_color_profile_slot( 12, 3, 255, 255, 255 ); //CHEST
 set_color_profile_slot( 12, 4, 58, 210, 228 ); //CRYSTAL
 
-// Seasonal - Riptide
-set_color_profile_slot( 13, 0, 44, 89, 137 ); //CASE
-set_color_profile_slot( 13, 1, 13, 29, 64 ); //SHADOW
-set_color_profile_slot( 13, 2, 216, 93, 1 ); //WHEELS
-set_color_profile_slot( 13, 3, 253, 183, 1 ); //CHEST
-set_color_profile_slot( 13, 4, 58, 170, 255 ); //CRYSTAL
+// Seasonal - Hot Wave
+set_color_profile_slot( 13, 0, 186, 28, 11 ); //CASE
+set_color_profile_slot( 13, 1, 91, 0, 41 ); //SHADOW
+set_color_profile_slot( 13, 2, 255, 225, 49 ); //WHEELS
+set_color_profile_slot( 13, 3, 32, 96, 173 ); //CHEST
+set_color_profile_slot( 13, 4, 229, 113, 45 ); //CRYSTAL
 
 // Spooky
 set_color_profile_slot( 14, 0, 214, 98, 0 ); //CASE
@@ -129,14 +129,14 @@ set_color_profile_slot( 15, 2, 255, 248, 196 ); //WHEELS
 set_color_profile_slot( 15, 3, 255, 248, 196 ); //CHEST
 set_color_profile_slot( 15, 4, 243, 184, 63 ); //CRYSTAL
 
-// ???
+// idk looks cool
 set_color_profile_slot( 16, 0, 161, 146, 146 ); //CASE
 set_color_profile_slot( 16, 1, 58, 65, 71 ); //SHADOW
 set_color_profile_slot( 16, 2, 238, 196, 255 ); //WHEELS
 set_color_profile_slot( 16, 3, 255, 242, 196 ); //CHEST
 set_color_profile_slot( 16, 4, 58, 210, 228 ); //CRYSTAL
 
-// ???
+// see above
 set_color_profile_slot( 17, 0, 173, 252, 136 ); //CASE
 set_color_profile_slot( 17, 1, 46, 130, 116 ); //SHADOW
 set_color_profile_slot( 17, 2, 145, 113, 252 ); //WHEELS
@@ -149,3 +149,10 @@ set_color_profile_slot( 18, 1, 161, 130, 7 ); //SHADOW
 set_color_profile_slot( 18, 2, 121, 122, 195 ); //WHEELS
 set_color_profile_slot( 18, 3, 255, 135, 0 ); //CHEST
 set_color_profile_slot( 18, 4, 183, 194, 230 ); //CRYSTAL
+
+// glacier might, but probably won't
+set_color_profile_slot( 19, 0, 243, 230, 255 ); //CASE
+set_color_profile_slot( 19, 1, 129, 100, 168 ); //SHADOW
+set_color_profile_slot( 19, 2, 67, 68, 87 ); //WHEELS
+set_color_profile_slot( 19, 3, 122, 204, 196 ); //CHEST
+set_color_profile_slot( 19, 4, 122, 196, 204 ); //CRYSTAL
