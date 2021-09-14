@@ -16,6 +16,22 @@ if (my_hitboxID.attack == AT_FSPECIAL && window == 5 && hit_player_obj.hitstun >
 }
 
 
+if (my_hitboxID.attack == AT_FSPECIAL_2 && window == 3 && hit_player_obj.hitstun > 0) {
+    hit_player_obj.x = x + spr_dir * 60
+    hit_player_obj.y = y + -20
+}
+
+if (my_hitboxID.attack == AT_FSPECIAL_2 && window == 4 && hit_player_obj.hitstun > 0) {
+    hit_player_obj.x = x + spr_dir * 110
+    hit_player_obj.y = y + -40
+}
+
+if (my_hitboxID.attack == AT_FSPECIAL_2 && window == 5 && hit_player_obj.hitstun > 0) {
+    hit_player_obj.x = x + spr_dir * 150
+    hit_player_obj.y = y + -50
+}
+
+
 //UAIR THROW
 
 if (my_hitboxID.attack == AT_UAIR && window == 2 && hit_player_obj.hitstun > 0) {

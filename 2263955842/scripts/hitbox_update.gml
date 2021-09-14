@@ -56,7 +56,6 @@ switch (attack)
 	break;
 	case AT_DSPECIAL:
 	case AT_FSPECIAL_AIR:
-	case AT_FSTRONG:
 	case AT_FSPECIAL_2:
 	case AT_DSPECIAL_2:
 		if (!free) //or (hsp == 0)
@@ -115,7 +114,7 @@ switch (attack)
 switch(attack)
 {
 	case AT_DSPECIAL:
-	case AT_FSTRONG:
+	/*case AT_FSTRONG:*/
 		if (mem_spd > 0)
 	    {
 	    	mem_spd -= 0.1

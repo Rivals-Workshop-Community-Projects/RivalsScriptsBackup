@@ -75,7 +75,7 @@ switch admw {
 	   with (pHitBox) {
 		     if player_id == other.id {
 		     	damage = hitpause*2
-		     	extra_hitpause = 20
+		     	kb_scale = 12
   		     }
   	    }
 }
@@ -325,6 +325,10 @@ if superTrue == 1 {
     sound_play(sound_get("CARAMELFN"))
     }
     
+    if hit_player_obj.state_cat == SC_HITSTUN {
+	   hit_player_obj.hitstop = 45
+	}
+    
     spawn_hit_fx(x,y,darken)
     
 
@@ -345,35 +349,36 @@ if superTrue == 1 {
 }
 }
 
-if karmatimer > 2 {
-	
-	  with (asset_get("oPlayer")) {
-	    		
-	    		if x + hsp > room_width - 20 {
-	    			x = 10
-	    		}
-	    		
-	    		    		
-	    		if x + hsp < 20 {
-	    			x = room_width - 10
-	    		}	
-	    		
-	    		
-	    		if y + vsp > room_height - 20 {
-	    			y = 10 
-	    			x = room_width/2
-	    		}
-	    		
-	    		
-	    		if y + vsp < 0 {
-	    			y = 10 
-	    		}
-	    		
-	  }
-	  
-	  
-
-} 
+//if karmatimer > 2 {
+//	
+//	  with (asset_get("oPlayer")) {
+//	    		
+//	    		
+//	    		if x + hsp > room_width - 20 {
+//	    			x = 10
+//	    		}
+//	    		
+//	    		    		
+//	    		if x + hsp < 20 {
+//	    			x = room_width - 10
+//	    		}	
+//	    		
+//	    		
+//	    		if y + vsp > room_height - 20 {
+//	    			y = 10 
+//	    			x = room_width/2
+//	    		}
+//	    		
+//	    		
+//	    		if y + vsp < 0 {
+//	    			y = 10 
+//	    		}
+//	    		
+//	  }
+//	  
+//	  
+//
+//} 
 
 if (karmatimer > 2) && !hitpause {
 	

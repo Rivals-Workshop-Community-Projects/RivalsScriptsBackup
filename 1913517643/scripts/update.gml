@@ -67,17 +67,17 @@ if(floating){
     
         if (abs(down_down - up_down) > 0){
         	
-            floatMoveSpeed *= 1.2;
+            floatMoveSpeed *= 1.4;
             
-            if (floatMoveSpeed > 5.5){
-                floatMoveSpeed = 5.5;
+            if (floatMoveSpeed > air_max_speed){
+                floatMoveSpeed = air_max_speed;
             }
             
             floatDriftSpeed = floatMoveSpeed*(down_down - up_down);
             
         } else {
                 floatMoveSpeed = 2;
-                floatDriftSpeed *= .85;
+                floatDriftSpeed *= .96;
         }
     } else { // Regular float
     

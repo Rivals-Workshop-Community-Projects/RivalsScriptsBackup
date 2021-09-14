@@ -11,10 +11,6 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, 0);
-// set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
-// set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED, 0);
-// set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
-// set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, sound_get("Escape"));
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 10);
@@ -25,9 +21,6 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -12);
-// set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
-// set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 0);
-// set_window_value(AT_USPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 0);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 
@@ -36,10 +29,9 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 7);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 7);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
-// set_window_value(AT_USPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 //RUNES
 
@@ -66,4 +58,7 @@ if has_rune("I"){
     set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 0);
 }
 
-if has_rune("G") set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
+if has_rune("M"){
+    set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
+    set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
+}

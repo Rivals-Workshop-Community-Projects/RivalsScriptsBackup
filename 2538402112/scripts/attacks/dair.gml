@@ -91,8 +91,8 @@ set_hitbox_value(AT_DAIR, 6, HG_HEIGHT, 57);
 set_hitbox_value(AT_DAIR, 6, HG_SHAPE, 0);
 set_hitbox_value(AT_DAIR, 6, HG_PRIORITY, 2);
 set_hitbox_value(AT_DAIR, 6, HG_DAMAGE, 4);
-set_hitbox_value(AT_DAIR, 6, HG_ANGLE, 340);
-set_hitbox_value(AT_DAIR, 6, HG_BASE_KNOCKBACK, 4);
+set_hitbox_value(AT_DAIR, 6, HG_ANGLE, 270);
+set_hitbox_value(AT_DAIR, 6, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_DAIR, 6, HG_KNOCKBACK_SCALING, 0.4);
 set_hitbox_value(AT_DAIR, 6, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DAIR, 6, HG_HITPAUSE_SCALING, 1.0);
@@ -105,7 +105,7 @@ set_hitbox_value(AT_DAIR, 6, HG_ANGLE_FLIPPER, 6);
 // RUNES
 
 if has_rune("D"){
-    set_hitbox_value(AT_DAIR, 6, HG_ANGLE, 280);
+    // set_hitbox_value(AT_DAIR, 6, HG_ANGLE, 280);
     set_hitbox_value(AT_DAIR, 6, HG_BASE_KNOCKBACK, 5);
     set_hitbox_value(AT_DAIR, 6, HG_KNOCKBACK_SCALING, 0.7);
 }

@@ -5,9 +5,13 @@ if (attack == AT_DAIR){
     dairbounce = false;
 }
 
+/*
 if (my_hitboxID.attack == AT_DSPECIAL){
     rolled_id = hit_player_obj;
 }
+*/
+
+
 if (my_hitboxID.attack == AT_NSPECIAL){
     if (my_hitboxID.hbox_num > 1){
     my_hitboxID.vsp = -10 - hit_player_obj.old_hsp * -hit_player_obj.spr_dir / 20;

@@ -1,58 +1,100 @@
 /*
-// THIS FILE CONTAINS EXAMPLES FOR ALL ATTACK, WINDOW, AND HITBOX INDEXES
 
-//attack properties
-set_attack_value(attack, AG_CATEGORY, 0);
-set_attack_value(attack, AG_SPRITE, 0);
-set_attack_value(attack, AG_AIR_SPRITE, 0);
-set_attack_value(attack, AG_HURTBOX_SPRITE, 0);
-set_attack_value(attack, AG_HURTBOX_AIR_SPRITE, 0);
-set_attack_value(attack, AG_NUM_WINDOWS, 0);
-set_attack_value(attack, AG_HAS_LANDING_LAG, 0);
-set_attack_value(attack, AG_OFF_LEDGE, 0);
-set_attack_value(attack, AG_LANDING_LAG, 0);
-set_attack_value(attack, AG_STRONG_CHARGE_WINDOW, 0);
-set_attack_value(attack, AG_USES_CUSTOM_GRAVITY, 0);
+//WEE FSPECIAL
+if (attack == AT_FSPECIAL) or (attack == AT_FSPECIAL_2){
+	if  window == 7 && window_timer == 1 && special_down{
+		sound_play(asset_get("sfx_swipe_medium2"));
+		hsp = 9 * spr_dir;
+		vsp = -6.5
+		move_cooldown[AT_FSPECIAL] = 90
+		move_cooldown[AT_FSPECIAL_2] = 90
+		fspec_cancel = 1
+	}
+	if window == 1{
+		fspec_cancel = 0
+	}
+}
 
-//attack window properties
-set_window_value(attack, window_num, AG_WINDOW_TYPE, 0);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 0);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 0);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 0);
-set_window_value(attack, window_num, AG_WINDOW_HSPEED, 0);
-set_window_value(attack, window_num, AG_WINDOW_VSPEED, 0);
-set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 0);
-set_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE, 0);
-set_window_value(attack, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 0);
-set_window_value(attack, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, 0);
-set_window_value(attack, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0);
-set_window_value(attack, window_num, AG_WINDOW_CUSTOM_GRAVITY, 0);
-set_window_value(attack, window_num, AG_WINDOW_HAS_WHIFFLAG, 0);
-set_window_value(attack, window_num, AG_WINDOW_INVINCIBILITY, 0);
-set_window_value(attack, window_num, AG_WINDOW_HITPAUSE_FRAME, 0);
-set_window_value(attack, window_num, AG_WINDOW_CANCEL_TYPE, 0);
-set_window_value(attack, window_num, AG_WINDOW_CANCEL_FRAME, 0);
-set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 0);
-set_window_value(attack, window_num, AG_WINDOW_SFX, 0);
-set_window_value(attack, window_num, AG_WINDOW_SFX_FRAME, 0);
+if (attack == AT_FSPECIAL) or (attack == AT_FSPECIAL_2) && window > 7{
+		if fspec_cancel = 1{
+		can_jump = true;
+		can_shield = true;
+		can_attack = true;
+		if is_special_pressed( DIR_UP ){
+			set_attack( AT_USPECIAL );
+		}
+	}
+}
+//FPSECIAL UP
+if (attack == AT_FSPECIAL) && (window == 2) && (window_timer == 4 ){
+		if up_down{
+				set_attack( AT_FSPECIAL_2 );
+	}
+}
 
-//attack hitbox properties
-set_num_hitboxes(attack, HG_NUM_HITBOXES, 0);
+if (attack == AT_FSPECIAL_2){
+	if  window == 7 && window_timer == 1 && special_down{
+		sound_play(asset_get("sfx_swipe_medium2"));
+		hsp = 7 * spr_dir;
+		vsp = -11
+		move_cooldown[AT_FSPECIAL] = 90
+		move_cooldown[AT_FSPECIAL_2] = 90
+		fspec_cancel = 1
+	}
+	if window == 1{
+		fspec_cancel = 0
+	}
+}
+//FSPECIAL GRAB TO PLACES
 
-//individual hitbox properties
-set_hitbox_value(attack, hitbox_num, HG_PARENT_HITBOX, 0);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_TYPE, 0);
-set_hitbox_value(attack, hitbox_num, HG_WINDOW, 0);
-set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 0);
-set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 0);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 0);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, 0);
-set_hitbox_value(attack, hitbox_num, HG_WIDTH, 0);
-set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 0);
-set_hitbox_value(attack, hitbox_num, HG_SHAPE, 0);
-set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 0);
-set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 0);
-set_hitbox_value(attack, hitbox_num, HG_ANGLE, 0);
+//uspecial grab
+if (attack == AT_FSPECIAL){
+    //wallgrab
+	if !has_hit_player && (
+	//wall detection
+	collision_rectangle(x + 10 * spr_dir,y-15,x + 65 * spr_dir,y-165,asset_get("par_block"),false,true) || collision_rectangle(x + 60 * spr_dir,y-55,x + 130 * spr_dir,y-270,asset_get("par_block"),false,true)
+	//platform detection
+	|| collision_rectangle(x + 10 * spr_dir,y-15,x + 65 * spr_dir,y-165,asset_get("par_jumpthrough"),false,true) || collision_rectangle(x + 60 * spr_dir,y-55,x + 130 * spr_dir,y-270,asset_get("par_jumpthrough"),false,true) ) {
+        
+    }
+    //wallgrab window movement
+    if window == 7{
+    	hsp = 7 * spr_dir;
+    	vsp = -6;
+    	can_fast_fall = false;
+    	if window_timer == 1 {
+    		sound_play(asset_get("sfx_blow_weak1"))
+			sound_play(asset_get("sfx_plant_eat"))
+    	}
+    }
+    //regular grab window movement
+    if window == 7{
+    	hsp = 7 * spr_dir;
+    	vsp = -6;
+    	can_fast_fall = false;
+    }
+    //grab
+    if instance_exists(grabbed_player_obj){
+	    if (window >= 6) { grabbed_player_obj = noone; }
+		else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { grabbed_player_obj = noone; }
+	
+		else {
+			//keep the grabbed player in hitstop until the grab is complete.
+			grabbed_player_obj.hitstop = 2;
+			grabbed_player_obj.hitpause = true;
+			
+			//if this is the first frame of a window, store the grabbed player's relative position.
+			if (window_timer <= 1) {
+				grabbed_player_relative_x = grabbed_player_obj.x - x;
+				grabbed_player_relative_y = grabbed_player_obj.y - y;
+			}
+		}
+    }
+}
+
+
+
+
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 0);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(attack, hitbox_num, HG_EFFECT, 0);
@@ -95,4 +137,47 @@ set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_DOES_NOT_REFLECT, 0);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_IS_TRANSCENDENT, 0);
 set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_DESTROY_EFFECT, 0);
+
+
+//////// music ////////
+(update)
+//bgm// ------------------------- //
+//SERVANT OF THE CRYSTAL
+if (attack == AT_TAUNT_2) && (window == 3 && window_timer == 1) && (special_down and shield_down) && get_player_color(player) == 12{
+	gaming = 1
+	sound_play(sound_get("servant_of_the_crystal"), true);
+}
+if get_player_color(player) == 12{
+	set_victory_theme(sound_get("machina_victory"));
+}
+
+//RING OF FATES
+if (attack == AT_TAUNT_2) && (window == 3 && window_timer == 1) && (special_down and shield_down) && get_player_color(player) == 15{
+	crystal = 1
+	sound_play(sound_get("final_battle"), true);
+}
+if get_player_color(player) == 15{
+	set_victory_theme(sound_get("yuri_victory"));
+}
+(attack update)
+//music stop
+if (attack == AT_TAUNT_2) && window == 1 && get_player_color(player) == 12{
+	if gaming == 1{
+	sound_stop(sound_get( "final_battle" ));	
+	sound_stop(sound_get( "servant_of_the_crystal" ));
+	gaming = 0;
+	crystal = 0;
+	}
+}
+
+if (attack == AT_TAUNT_2) && window == 1 && get_player_color(player) == 15{
+	if crystal == 1{
+	sound_stop(sound_get( "final_battle" ));	
+	sound_stop(sound_get( "servant_of_the_crystal" ));
+	gaming = 0;
+	crystal = 0;
+	}
+}
+
+
 */

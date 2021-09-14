@@ -216,15 +216,15 @@ set_color_profile_slot( 18, 5, 255, 233, 156 ); //skin
 set_color_profile_slot( 18, 6, 99, 71, 47 ); //skin2
 set_color_profile_slot( 18, 7, 161, 126, 126 ); //hair
 
-// 221020
-set_color_profile_slot( 19, 0, 255, 194, 231 ); //sword
-set_color_profile_slot( 19, 1, 255, 255, 255 ); //shirt
-set_color_profile_slot( 19, 2, 186, 169, 175 ); //shirt2
-set_color_profile_slot( 19, 3, 53, 82, 161 ); //pants
-set_color_profile_slot( 19, 4, 28, 23, 130 ); //pants2
-set_color_profile_slot( 19, 5, 255, 206, 171 ); //skin
-set_color_profile_slot( 19, 6, 214, 129, 112 ); //skin2
-set_color_profile_slot( 19, 7, 61, 24, 24 ); //hair
+// Drip
+set_color_profile_slot( 19, 0, 234, 36, 18 ); //sword
+set_color_profile_slot( 19, 1, 46, 46, 46 ); //shirt
+set_color_profile_slot( 19, 2, 14, 14, 14 ); //shirt2
+set_color_profile_slot( 19, 3, 209, 48, 72 ); //pants
+set_color_profile_slot( 19, 4, 128, 19, 102 ); //pants2
+set_color_profile_slot( 19, 5, 242, 213, 197 ); //skin
+set_color_profile_slot( 19, 6, 222, 157, 118 ); //skin2
+set_color_profile_slot( 19, 7, 20, 20, 20 ); //hair
 
 // Laurie D. Bunnykins
 set_color_profile_slot( 20, 0, 167, 180, 204 ); //sword
@@ -306,15 +306,15 @@ set_color_profile_slot( 27, 5, 228, 192, 153 ); //skin
 set_color_profile_slot( 27, 6, 6, 3, 1 ); //skin2
 set_color_profile_slot( 27, 7, 17, 35, 48 ); //hair
 
-// AK Mortal
-set_color_profile_slot( 28, 0, 255, 204, 36 ); //sword
-set_color_profile_slot( 28, 1, 35, 13, 7 ); //shirt
-set_color_profile_slot( 28, 2, 7, 1, 6 ); //shirt2
-set_color_profile_slot( 28, 3, 22, 8, 4 ); //pants
-set_color_profile_slot( 28, 4, 7, 1, 6 ); //pants2
-set_color_profile_slot( 28, 5, 22, 8, 4 ); //skin
-set_color_profile_slot( 28, 6, 7, 1, 6 ); //skin2
-set_color_profile_slot( 28, 7, 7, 1, 6 ); //hair
+// Champion
+set_color_profile_slot( 28, 0, 134, 227, 97 ); //sword
+set_color_profile_slot( 28, 1, 134, 227, 97 ); //shirt
+set_color_profile_slot( 28, 2, 82, 140, 81 ); //shirt2
+set_color_profile_slot( 28, 3, 92, 105, 120 ); //pants
+set_color_profile_slot( 28, 4, 76, 86, 95 ); //pants2
+set_color_profile_slot( 28, 5, 245, 237, 205 ); //skin
+set_color_profile_slot( 28, 6, 96, 117, 109 ); //skin2
+set_color_profile_slot( 28, 7, 26, 44, 45 ); //hair
 
 // Enby
 set_color_profile_slot( 29, 0, 255, 244, 51 ); //sword

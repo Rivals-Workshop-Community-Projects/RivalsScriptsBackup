@@ -21,7 +21,7 @@ set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX_FRAME, 2);
 
 
 set_window_value(AT_USTRONG, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_HSPEED, 1);
@@ -37,7 +37,7 @@ else
 set_window_value(AT_USTRONG, 3, AG_WINDOW_VSPEED_TYPE, 1);
 
 set_window_value(AT_USTRONG, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 23);
+set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 12);
@@ -51,12 +51,12 @@ set_num_hitboxes(AT_USTRONG, 2);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_USTRONG, 1, HG_WINDOW_CREATION_FRAME, 0);
-set_hitbox_value(AT_USTRONG, 1, HG_LIFETIME, 4);
-set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_X, 13);
+set_hitbox_value(AT_USTRONG, 1, HG_LIFETIME, 3);
+set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_X, 10);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -52);
 set_hitbox_value(AT_USTRONG, 1, HG_SHAPE, 0);
-set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 72);
-set_hitbox_value(AT_USTRONG, 1, HG_HEIGHT, 56);
+set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 86);
+set_hitbox_value(AT_USTRONG, 1, HG_HEIGHT, 66);
 set_hitbox_value(AT_USTRONG, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 12);
 set_hitbox_value(AT_USTRONG, 1, HG_ANGLE, 90);
@@ -70,9 +70,9 @@ set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_WINDOW, 3);
-set_hitbox_value(AT_USTRONG, 2, HG_WINDOW_CREATION_FRAME, 4);
+set_hitbox_value(AT_USTRONG, 2, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(AT_USTRONG, 2, HG_LIFETIME, 4);
-set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_X, -5);
+set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_X, -15);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y, -52);
 set_hitbox_value(AT_USTRONG, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_USTRONG, 2, HG_WIDTH, 52);

@@ -54,7 +54,7 @@ switch (attack)
         if (taunt_down && !jump_pressed)
         {
             window_timer = 0;
-            //hud_offset = 84;
+            hud_offset = 84;
             if (state_timer == 1)
             {
                 spawn_base_dust(x, y-floor(char_height/2), "anime", spr_dir);
@@ -94,8 +94,13 @@ switch (attack)
         break;
     case AT_FTILT:
          if (state_timer == 1) spawn_base_dust(x-10*spr_dir, y, "ftilt", spr_dir);
-    case AT_UTILT:
     case AT_DTILT:
+        if (attack == AT_DTILT)
+        {
+            down_down = true;
+            move_cooldown[AT_DTILT] = 1;
+        }
+    case AT_UTILT:
         if (aura)
         {
             SkipWindow(1, 2);
@@ -254,7 +259,7 @@ switch (attack)
                     set_hitbox_value(AT_NTHROW, 1, HG_HITBOX_X, floor(lengthdir_x(60, strongAng)*spr_dir));
                     set_hitbox_value(AT_NTHROW, 1, HG_HITBOX_Y, floor(lengthdir_y(60, strongAng))-32);
                     set_hitbox_value(AT_NTHROW, 1, HG_ANGLE_FLIPPER, spr_dir==1?0:5);
-                    set_window_value(AT_NTHROW, 3, AG_WINDOW_HSPEED, floor(lengthdir_x(8, strongAng))*spr_dir);
+                    set_window_value(AT_NTHROW, 3, AG_WINDOW_HSPEED, floor(lengthdir_x(10, strongAng))*spr_dir);
                     set_window_value(AT_NTHROW, 3, AG_WINDOW_VSPEED, floor(lengthdir_y(8, strongAng)));
                     var hitAng = 0;
                     if (has_rune("M"))                          hitAng = strongAng;

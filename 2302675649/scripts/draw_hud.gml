@@ -530,13 +530,44 @@ if ("rollArray" in self)
 						AddText("Changed the Ping sound on taunt");
 						AddText("");
 						AddText("----------------------------------");
-						AddText("v1.33.1 - 3 Apr 2021");
+						AddText("v1.33.1 - 3 Jul 2021");
 						AddText("Added Diamond Grove to Song List");
 						AddText("");
 						AddText("NSpec Base Hitpause 5 -> 9");
 						AddText("NSpec Endlag can now be cancelled into USpec");
 						AddText("");
 						AddText("JStrong Hitstun multiplier 0.7 -> 0.85");
+						break;
+					case 34:
+						AddText("v1.34 - 12 Sep 2021");
+						AddText("'The Dripdate'");
+						AddText("");
+						AddText("Slight animation update:");
+						AddText("UTilt");
+						AddText("DTilt");
+						AddText("Parry");
+						AddText("");
+						AddText("Replaced 221020 alt with Drip alt");
+						AddText("");
+						AddText("Added Kura-Kura Stream Hub to Song List");
+						AddText("Readded Lonin drip!!!!");
+						break;
+					case 35:
+						AddText("v1.35 - 12 Sep 2021");
+						AddText("'JStrong Speed Update'");
+						AddText("");
+						AddText("Slight animation update:");
+						AddText("FAir");
+						AddText("");
+						AddText("Hit SFX changes:");
+						AddText("BAir");
+						AddText("FAir Sweetspot");
+						AddText("");
+						AddText("JStrong HSpeed boost 8 -> 10");
+						AddText("max_jump_hsp 6 -> 10");
+						AddText("");
+						AddText("Replaced AK Mortal alt with Champion alt");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -777,6 +808,8 @@ if ("rollArray" in self)
 				return "Hyper Potions - Porta Vista";
 			else if (string_count("2498298211", get_stage_data(SD_ID)) > 0)
 				return "Pokemon Masters EX - Lillie Battle Theme";
+			else if (string_count("2598328548", get_stage_data(SD_ID)) > 0)
+				return "No Straight Roads - Vs. Sayu";
 			return "Darude - Sandstorm";
 	}
 }

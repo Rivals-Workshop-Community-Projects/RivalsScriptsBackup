@@ -123,7 +123,7 @@ if (attack == AT_NSPECIAL){
         }
     }
     if ( (y > view_get_yview() + view_get_hview()) or (x+150 < view_get_xview()) or (y+120 < view_get_yview()) or (y-120 > view_get_yview() + view_get_hview()) or (x-150 > view_get_xview() + view_get_wview())){
-        player_id.move_cooldown[AT_NSPECIAL] = 290; //If it's off screen, remove it.
+        player_id.move_cooldown[AT_NSPECIAL] = 250; //If it's off screen, remove it.
         destroyed = true;
     }
     if (hitbox_timer >= 90){ hitbox_timer = 10; }
@@ -142,13 +142,13 @@ if (attack == AT_NSPECIAL){
     
     if (hbox_num >= 2){ //Second set of balls
     snooked = true;
-    if (hitbox_timer >= 90){ hitbox_timer = 10; }
+    if (hitbox_timer >= 100){ hitbox_timer = 10; }
     if (hitbox_timer <= 5){ vsp = 0; }
     if (hitbox_timer == 6){ hsp = player_id.ballspeed; }
     }
-    if (hbox_num == 2 && hitbox_timer == 6){ vsp = -2; }
+    if (hbox_num == 2 && hitbox_timer == 6){ vsp = -1; }
     if (hbox_num == 3 && hitbox_timer == 6){ vsp = -3; }
-    if (hbox_num == 4 && hitbox_timer == 6){ vsp = -4; }
+    if (hbox_num == 4 && hitbox_timer == 6){ vsp = -5; }
 
 }
 
@@ -160,7 +160,7 @@ if (place_meeting( x, y-1, player_id)){
         player_id.white_flash_timer = 12;
     }
 }
-if (hitbox_timer >= 90){ hitbox_timer = 10; }
+if (hitbox_timer >= 100){ hitbox_timer = 10; }
 if (hitbox_timer > 5){
         if (place_meeting( x, y, asset_get("pHitBox"))){
             if (pHitBox.ballbreak_id == true){

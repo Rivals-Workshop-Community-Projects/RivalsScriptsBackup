@@ -1570,3 +1570,124 @@ if finisher = 20 {
 
 
 }
+
+
+if "superTrue" in self {
+	
+if superTrue == 1 {
+	
+	if hit_player_obj == self {
+			var shortest_dist = 9999;
+			var shortest_id = noone;
+			
+			with (asset_get("oPlayer")) {
+				if (player != other.player) {
+					var curr_dist = point_distance(x,y,other.x,other.y);
+					if (curr_dist < shortest_dist) {
+						shortest_dist = curr_dist;
+						shortest_id = id;
+					}
+				}
+			}
+			hit_player_obj = shortest_id
+	}
+	
+	 superTrue = 0
+	 hit_player_obj.canUseCounterTimer = 60
+
+	
+	hit_player_obj.hitpause = 1
+	
+	if hit_player_obj.state_cat == SC_HITSTUN {
+	   hit_player_obj.hitstop = 30
+	}
+	
+	hit_player_obj.old_hsp = hit_player_obj.hsp
+	hit_player_obj.old_vsp = hit_player_obj.vsp
+	
+
+
+
+set_attack(AT_UTILT) 
+window = 1
+window_timer = 0
+move_cooldown[AT_UAIR] = 20
+    sound_play(sound_get("SpaceCut"),false,noone,1.2,1)
+    sound_play(asset_get("sfx_bird_nspecial"),false,noone,1.2,1)
+    spawn_hit_fx(x,y - 40,SC)
+}    
+
+}
+
+
+if move_cooldown[AT_UAIR] > 20 {
+	
+	soft_armor = 999
+	
+	hit_player_obj.canUseCounterTimer = 10
+	
+	if move_cooldown[AT_UAIR] > 225 {
+        hit_player_obj.y += floor( (room_height/2 + 20 - hit_player_obj.y)/6 )
+        x -= floor(hitstop*spr_dir/3)
+        y += floor( (room_height/2 + 60 - y)/6 )
+	}
+	
+	if move_cooldown[AT_UAIR] > 85 && move_cooldown[AT_UAIR] < 225{
+	set_attack(AT_NSPECIAL)
+	window = 3
+	window_timer = 0
+	
+	if move_cooldown[AT_UAIR] % 2 == 0 && !hitpause {
+		spawn_hit_fx(x,y - 30,SCF1)
+	create_hitbox(AT_DSPECIAL , 1 , floor( x + (-110 * spr_dir)) , floor( y - 110) ); 	
+	}
+	
+	if move_cooldown[AT_UAIR] % 8 == 0 && !hitpause {
+		spawn_hit_fx(x,y - 30,305)
+		x = hit_player_obj.x
+		y = hit_player_obj.y 
+	create_hitbox(AT_NSPECIAL,2,x,y)
+	create_hitbox(AT_DSPECIAL , 1 , floor( hit_player_obj.x + (-110 * spr_dir)) , floor( hit_player_obj.y - 110 - 100) ); 	
+	create_hitbox(AT_DSPECIAL , 1 , floor( hit_player_obj.x + 100 + (-110 * spr_dir)) , floor( hit_player_obj.y - 110 - 20) ); 	
+	create_hitbox(AT_DSPECIAL , 1 , floor( hit_player_obj.x - 100 + (-110 * spr_dir)) , floor( hit_player_obj.y - 110 - 20) ); 	
+	create_hitbox(AT_DSPECIAL , 1 , floor( hit_player_obj.x + 60 + (-110 * spr_dir)) , floor( hit_player_obj.y - 110 + 60) ); 	
+	create_hitbox(AT_DSPECIAL , 1 , floor( hit_player_obj.x - 60 + (-110 * spr_dir)) , floor( hit_player_obj.y - 110 + 60) ); 	
+	}
+	
+	if move_cooldown[AT_UAIR] % 8 == 7 {
+		spr_dir *= -1
+		sound_play(asset_get("sfx_ice_on_player"),false,noone,1.2,1.3)
+		hsp = (hit_player_obj.x - x - 40 + random_func(1,80,true))/3
+		vsp = (hit_player_obj.y - y - 50 + random_func(2,80,true))/3
+		
+	}
+	
+	} else {
+		vsp /= 1.4
+		hsp /= 1.4
+	}
+	
+	
+	if move_cooldown[AT_UAIR] == 85 {
+		x = hit_player_obj.x - 40*spr_dir
+		y = hit_player_obj.y 
+		set_attack(AT_UTILT)
+		window = 1
+		window_timer = 10
+	}
+	
+	if move_cooldown[AT_UAIR] == 61 {
+		
+		move_cooldown[AT_UAIR] = 0
+		set_hitbox_value(AT_UTILT, 1, HG_WIDTH, 60);
+        set_hitbox_value(AT_UTILT, 1, HG_HEIGHT, 100);
+        set_hitbox_value(AT_UTILT, 1, HG_SHAPE, 0);
+        set_hitbox_value(AT_UTILT, 1, HG_PRIORITY, 3);
+        set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 10);
+        set_hitbox_value(AT_UTILT, 1, HG_ANGLE, 90);
+        set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 9);	
+		
+	}
+	
+	
+} 

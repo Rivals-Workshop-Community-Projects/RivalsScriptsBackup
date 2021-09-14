@@ -23,6 +23,9 @@ if hitpause {
  vsp = 0
  hsp /= 1.08
  if free {
+ 	if state_timer % 8 == 0 {
+         	spawn_base_dust(x,y + 8,"land",spr_dir)
+         	}
  hsp /= 1.08	
  }
 	spr_dir = (1  - (x < inkvictim.x)*2)*-1
@@ -178,7 +181,7 @@ if isyellow && !hitpause {
 if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
         set_attack (AT_FTILT)
         window = 3 
-        window_timer = 4
+        window_timer = 12
 }
 
     
@@ -289,6 +292,10 @@ if get_player_color(player) == 10 {
             }
             can_fast_fall = false
             if window == 1 {
+            	if state_timer == 1 {
+            		spawn_base_dust(x,y,"land",spr_dir)
+            	}
+            	
             	if !free {
             		y -= 1
             	}
@@ -297,6 +304,13 @@ if get_player_color(player) == 10 {
                 hsp /= 1.2
             }
             if window == 2 {
+            	
+            	if window_timer == 1 && !hitpause {
+            		spawn_base_dust(x - 10,y,"dash_start",1)
+            		spawn_base_dust(x + 10,y,"dash_start",-1)
+            		spawn_base_dust(x,y,"land",spr_dir)
+            	}
+            	
             	if free {
                 //can_shield = true
             	}
@@ -424,6 +438,9 @@ if get_player_color(player) == 10 {
         if attack == AT_DSPECIAL{ 
         	hitpause = 0
          if free && window <= 2{
+         	if state_timer % 8 == 0 {
+         	spawn_base_dust(x,y + 8,"land",spr_dir)
+         	}
          vsp/=1.2
          vsp-=0.5
          hsp/=1.2
@@ -471,9 +488,9 @@ if get_player_color(player) == 10 {
              }
              
              
-             if window_timer == 9 {
+             if window_timer == 8 {
                  create_hitbox(AT_EXTRA_3, 1, x, y)
-
+                 create_hitbox(AT_EXTRA_3, 2, x, y)
              spawn_hit_fx(x+70*spr_dir,y - 26, 113)
              spawn_hit_fx(x+70*spr_dir,y - 26, 302)
              sound_play(sound_get("counterhit"))

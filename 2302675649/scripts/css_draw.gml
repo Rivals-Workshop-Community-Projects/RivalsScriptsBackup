@@ -1,7 +1,7 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1);
+patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR));
 image_alpha = max(image_alpha-0.02, 0);
 
 var alt_new = get_player_color(player);
@@ -23,6 +23,7 @@ else if (alt_new != currAlt)
 	currAlt = alt_new;
 }
 
+alt_name = 0;
 alt_name[0]  = "Lonin";
 alt_name[1]  = "Transcend";
 alt_name[2]  = "Kitsune of Light";
@@ -42,7 +43,7 @@ alt_name[15] = "Fatal Aikijutsu";
 alt_name[16] = "Saikyo Jyanshi";
 alt_name[17] = "BLM";
 alt_name[18] = "Metal";
-alt_name[19] = "221020";
+alt_name[19] = "Drip";
 alt_name[20] = "Laurie D. Bunnykins";
 alt_name[21] = "Gold";
 alt_name[22] = "Spectrum";
@@ -51,7 +52,7 @@ alt_name[24] = "Slayer of Demons";
 alt_name[25] = "Thunderclap Flash";
 alt_name[26] = "Astral";
 alt_name[27] = "Redline";
-alt_name[28] = "AK Mortal";
+alt_name[28] = "Champion";
 alt_name[29] = "Enby";
 alt_name[30] = "Ace";
 alt_name[31] = "Riptide";

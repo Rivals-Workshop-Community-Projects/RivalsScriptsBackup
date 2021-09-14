@@ -399,6 +399,47 @@ with phone{
 	
 	- Fixed a bug where parrying Reimu's Yin-Yang Orb would also reflect every other projectile on the screen.");
 	initPatchWords_ext("Pretty silly bug, pretty simple fix.", fa_left, c_gray, 1, 0);
+	
+	initPatch("2.9.5.5", "30 June, 2021");
+	initPatchWords("Buffs
+	
+	USPECIAL
+	- You can now act 2 frames sooner out of the dash.
+	
+	DSTRONG
+	- Late hit BKB increased (7.5 -> 8)
+	- Late hit damage increased (5 -> 8)
+	
+	FSTRONG
+	- No longer destroys DSpecial's seals if the move is parried.
+	
+	FSPECIAL
+	- You can now 'glide' slightly while charging FSpecial.
+	
+	USTRONG
+	- Endlag reduced,");
+	initPatchWords_ext("I dont know why FStrong did that, but it doesn't anymore. USpecial should feel better now, and I just wanted to normalize DStrong. FSpecial's change was actually a biproduct of making the move stall less, thought it was neat!", fa_left, c_gray, 1, 0);
+	initPatchWords("Nerfs
+	
+	FSPECIAL
+	- Edited air stall code to prevent you from stalling in the air for too long.");
+	initPatchWords_ext("Her stalling ability was kind of ridiculous, should be less so now.", fa_left, c_gray, 1, 0);
+	initPatchWords("Misc.
+	
+	USTRONG
+	- Animation Adjusted
+	- Hitbox size, placement, and lifetime adjusted to fit with the new animation.
+	
+	BAIR
+	- Animation Adjusted
+	- Hitbox placement adjusted to match the new animation.
+	
+	UTILT
+	- Reimu's gohei now has black outlines for better readability.
+	
+	DSTRONG
+	- Late hit SFX adjusted.");
+	initPatchWords_ext("Wanted to polish some animations while I was at it, I hope they look better! DStrong's late hit should also not feel underwhelming to actually land with it being slightly stronger now.", fa_left, c_gray, 1, 0);
 
 }
 

@@ -439,6 +439,7 @@ if (attack == AT_JAB && RedMode == true){
 }
 
 //New Taunt
+/*
 if attack == AT_TAUNT {
     //Randomizes the sound you get
     if (window == 1 && window_timer == 1){
@@ -507,6 +508,7 @@ if attack == AT_TAUNT {
 		}
     }
 }
+*/
 
 //Red Dattack
 if (attack == AT_DATTACK && RedMode == true && !hitstun){
@@ -586,6 +588,19 @@ if (attack == AT_DAIR){
 		spawn_base_dust(x+44*spr_dir, y, "dash_start", 0 - spr_dir);
 	}
 }
+
+if (attack == AT_TAUNT){
+	if (window == 1 && window_timer == 14){
+		spawn_base_dust(x*spr_dir, y, "land", 1);
+	} 
+	if (window == 1 && window_timer == 4){
+		sound_play(asset_get("sfx_swipe_weak1"));
+	}
+	if (window == 1 && window_timer == 12){
+		sound_play(asset_get("sfx_swipe_weak1"));
+	}
+}
+
 
 //BY LUKARU!!
 #define CorrectHurtboxes()

@@ -53,7 +53,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, sound_get("EXPLODCL"));
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 16);
 set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_CAMERA_SHAKE, 50);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 143);
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, false);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 
 // generic hitbox

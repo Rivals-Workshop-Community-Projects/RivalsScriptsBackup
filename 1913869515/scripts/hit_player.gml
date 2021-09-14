@@ -1,6 +1,29 @@
 intro = 1
 finishercd = 0
 
+if my_hitboxID.attack == AT_UTILT && move_cooldown[AT_UAIR] != 0 && move_cooldown[AT_UAIR] < 20 {
+
+move_cooldown[AT_UAIR] = 240
+
+sound_stop(sound_get("stackfinish"));
+sound_play(sound_get("stackfinish"));
+
+set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 60);
+set_hitbox_value(AT_UTILT, 1, HG_WIDTH, 600);
+set_hitbox_value(AT_UTILT, 1, HG_HEIGHT, 600);
+
+
+hit_player_obj.old_hsp = 0
+hit_player_obj.old_vsp = -14
+hit_player_obj.hsp = 0
+hit_player_obj.vsp = -14
+
+hit_player_obj.hitstop += 12
+hitstop += 12
+
+}
+
+
 if my_hitboxID.sound_effect == sound_get("slice") or my_hitboxID.sound_effect == sound_get("slicel") {
 slashdraw = hitstop
 maxdraw = hitstop

@@ -28,7 +28,7 @@ jump_speed = 10.99;
 short_hop_speed = 6;
 djump_speed = 10;
 leave_ground_max = 7;
-max_jump_hsp = 6;
+max_jump_hsp = 10;
 air_max_speed = 4;
 jump_change = 3;
 air_accel = .3;
@@ -59,7 +59,7 @@ crouch_recovery_frames = 1;
 //parry animation frames
 dodge_startup_frames = 1;
 dodge_active_frames = 1;
-dodge_recovery_frames = 3;
+dodge_recovery_frames = 4;
 
 //tech animation frames
 tech_active_frames = 2;

@@ -67,6 +67,7 @@ sprite_change_offset("dstrong", 0, 0);
 sprite_change_offset("nspecial", 46, 76);
    sprite_change_offset("nspecial_pistols", 46, 76);
 sprite_change_offset("fspecial", 52, 90);
+    sprite_change_offset("fspecial_up", 52, 110);
 sprite_change_offset("uspecial", 50, 90);
    sprite_change_offset("uspecial_ground", 50, 90);
 sprite_change_offset("taunt", 60, 110);

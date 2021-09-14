@@ -472,8 +472,10 @@ if superTrue == 1 {
          window = 2
          window_timer = 0
     move_cooldown [AT_FTILT] = 200 
-       
+       sound_stop(sound_get("supercombo"));
+       sound_play(sound_get("supercombo"),false,noone,1,1);
 }
+
 }
 
 if move_cooldown [AT_FTILT] > 1 {
@@ -571,20 +573,10 @@ if move_cooldown [AT_FTILT] ==  125 {
          window = 2
          window_timer = 2
 	create_hitbox(AT_FSPECIAL , 1 , x + (32 * spr_dir) , y - 32 );
-	create_hitbox(AT_DSPECIAL , 3 , x , y - 42 );
 } 
 
 if move_cooldown [AT_FTILT] == 120 {
-				set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -1);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_VSPEED, -2);
-			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_VSPEED, -3);
-	move_cooldown[AT_FSPECIAL] = 0
-	sound_play(sound_get("shing"));
-	      set_attack (AT_FSPECIAL)
-         window = 3
-         hsp = -6*spr_dir
-         window_timer = 2
-         vsp = -3
+	move_cooldown [AT_FTILT] =  61 
 	
 } 
 

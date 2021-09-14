@@ -65,6 +65,11 @@ switch (my_hitboxID.attack)
 		}
 		break;
 	case AT_FAIR:
+		if (my_hitboxID.hbox_num == 2)
+			sound_play(asset_get("sfx_blow_heavy2"));
+		else
+			sound_play(asset_get("sfx_blow_weak2"));
+		break;
 	case AT_DATTACK:
 		if (my_hitboxID.hbox_num == 2)
 			sound_play(asset_get("sfx_blow_heavy1"));
@@ -72,8 +77,10 @@ switch (my_hitboxID.attack)
 			sound_play(asset_get("sfx_blow_weak1"));
 		break;
 	case AT_FTILT:
-	case AT_BAIR:
 		sound_play(asset_get("sfx_blow_heavy1"));
+		break;
+	case AT_BAIR:
+		sound_play(asset_get("sfx_blow_heavy2"));
 		break;
 	case AT_JAB:
 		if (!aura) move_cooldown[AT_JAB] = 30;

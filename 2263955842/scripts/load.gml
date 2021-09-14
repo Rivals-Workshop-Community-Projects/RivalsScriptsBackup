@@ -37,14 +37,14 @@ sprite_change_offset("dtilt", 32, 76);
 sprite_change_offset("utilt", 66, 136);
 sprite_change_offset("nair", 46, 76);
 sprite_change_offset("fair", 64, 78);
-sprite_change_offset("bair", 56, 84);
+sprite_change_offset("bair", 61, 89);
 sprite_change_offset("uair", 52, 80);
 sprite_change_offset("dair", 42, 86);
 
 sprite_change_offset("fstrong", 60, 78);
 sprite_change_offset("fantasy_seal", 20, 20);
 
-sprite_change_offset("ustrong", 80, 82);
+sprite_change_offset("ustrong", 80, 88);
 sprite_change_offset("dstrong", 84, 88);
 sprite_change_offset("dstrong_paper", 32, 84);
 

@@ -1,8 +1,11 @@
 //update
 user_event(14);
 
-if state == PS_DASH || state == PS_DASH_TURN {
-    if state_timer == 1 sound_play(sound_get("crackling"), true);
+if (state == PS_DASH){
+    if (state_timer == 1) sound_play(sound_get("crackling"), true);
+} else if (state == PS_DASH_TURN){
+	if (state_timer == 1) sound_stop(sound_get("crackling"));
+	if (state_timer == 2) sound_play(sound_get("crackling"), true);
 } else sound_stop(sound_get("crackling"));
 
 var _block = asset_get("par_block");

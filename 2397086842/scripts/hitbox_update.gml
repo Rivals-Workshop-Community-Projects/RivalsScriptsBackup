@@ -83,9 +83,16 @@ if attack == AT_NSPECIAL && hbox_num <= 3{
 			if hitbox_timer > 50 {
 			hitbox_timer = 10
 			}
-           		    	if get_gameplay_time() % 6 == 0 {
+			
+			if batted == 1 {
+           		if get_gameplay_time() % 6 == 0 {
              	spawn_hit_fx(x - 10 + random_func(1,20,true),y - 10 + random_func(2,20,true), bfx5)
              	}
+			} else {
+				if get_gameplay_time() % 16 == 0 {
+					spawn_hit_fx(x - 10 + random_func(1,20,true),y - 10 + random_func(2,20,true), bfx5)
+				}
+			}
           }
            	
            
@@ -98,8 +105,13 @@ if attack == AT_NSPECIAL && hbox_num <= 3{
 	    	sound_play(asset_get("sfx_absa_singlezap1"),false,noone,1)	
 	    	
            	}
+           	if batted == 1 {
            	vsp = -14
            	hsp = -10
+           	} else {
+           	vsp = -18
+           	hsp = -15	
+           	}
             shake_camera(2,2)
 
 	    	sound_stop(asset_get("sfx_blow_medium1"))
@@ -115,8 +127,13 @@ if attack == AT_NSPECIAL && hbox_num <= 3{
 	    	sound_play(asset_get("sfx_absa_singlezap1"),false,noone,1)	
 	    	
            	}
+           	if batted == 1 {
            	vsp = -14
            	hsp = 10
+           	} else {
+           	vsp = -18
+           	hsp = 15	
+           	}
             shake_camera(2,2)
 
 	    	sound_stop(asset_get("sfx_blow_medium1"))
@@ -163,34 +180,38 @@ if lockouttimer < 0 {
 
     if batted == 0 {
     	
-    		
+    	hit_priority = 0
+    	
+    	if hsp > 5 or hsp < -5 {
+    		hsp /= 1.05
+    	}	
     if player_id.move_cooldown[AT_UTILT] > 0 {
     		can_hit_self = true
     }
     
     
-    	if player == orig_player {
-    	if hitbox_timer % 4 == 0 and (hbox_num == 2 or hbox_num == 3)  {
-    	spawn_hit_fx(x - 4 + random_func(1,8,true),y - 4 + random_func(2,8,true), bfx2)
-    	}
+    	//if player == orig_player {
+    	//if hitbox_timer % 4 == 0 and (hbox_num == 2 or hbox_num == 3)  {
+    	//spawn_hit_fx(x - 4 + random_func(1,8,true),y - 4 + random_func(2,8,true), bfx2)
+    	//}
+    	//
+    	//if hit_priority == 9 {
+    	//if hitbox_timer % 4 == 2 and  hbox_num == 3 {
+    	//spawn_hit_fx(x - 8 + random_func(1,16,true),y - 8 + random_func(2,16,true), bfx3)
+    	//}
+    	//	if hitbox_timer % 2 == 1 { 
+    	//spawn_hit_fx(x,y ,bfx1)
+    	//	}
+    	//} else {
+	//
+    	//}
+    	//}
     	
-    	if hit_priority == 9 {
-    	if hitbox_timer % 4 == 2 and  hbox_num == 3 {
-    	spawn_hit_fx(x - 8 + random_func(1,16,true),y - 8 + random_func(2,16,true), bfx3)
-    	}
-    		if hitbox_timer % 2 == 1 { 
-    	spawn_hit_fx(x,y ,bfx1)
-    		}
-    	} else {
-	
-    	}
-    	}
     	
-    	
-    hsp /= 1.01
     if vsp < 0 {
     vsp /= 1.05
     }
+    
     if hitbox_timer == 259 {
         spawn_hit_fx(x,y,0)
         sound_play(asset_get("sfx_absa_singlezap2"))
@@ -200,7 +221,7 @@ if lockouttimer < 0 {
     if (place_meeting(x, y, asset_get("par_block"))) && vsp > 0{
     	vsp *= -1
     	spawn_hit_fx(x,y,14)
-    	sound_play(asset_get("sfx_blow_medium1"))
+    	sound_play(asset_get("sfx_blow_medium1"),false,noone,0.6)
     	if hbox_num == 3 {
     		sound_play(asset_get("sfx_absa_singlezap2"))
     	}
@@ -211,6 +232,8 @@ if lockouttimer < 0 {
 
 
     if batted = 1 {
+    	
+    	hit_priority = 9
     	
     	if player == orig_player {
     	if hitbox_timer % 2 == 0 and (hbox_num == 2 or hbox_num == 3)  {
@@ -233,7 +256,6 @@ if lockouttimer < 0 {
         
       if (place_meeting(x, y + vsp, asset_get("par_block"))) && vsp > 0  {
         vsp *= -1
-        hsp *= 0.85
     	spawn_hit_fx(x - 8*spr_dir ,y + vsp + 30,14)
     	shake_camera(2,2)	
     	sound_play(asset_get("sfx_blow_medium1"))
@@ -337,8 +359,6 @@ if lockouttimer < 0 {
              }
 		    }
 		    
-		    hitbox_timer = 0
-               batted = 1
                if nearbyhitbox.attack != AT_JAB {
                if (nearbyhitbox.kb_angle > 0 and nearbyhitbox.kb_angle <= 45) or
                nearbyhitbox.kb_angle  == 361{
@@ -391,6 +411,10 @@ if lockouttimer < 0 {
                	   hsp = 7 * nearbyhitbox.spr_dir
                    vsp = -2
                }
+               
+               hitbox_timer = 0
+               batted = 1
+               
 	    }
 	}
 /// projectile interaction	    
@@ -418,6 +442,8 @@ if lockouttimer < 0 {
 	   	     } else {
              vsp -= 2
 	   	     }
+	   	     
+               batted = 1
 	   }
 	}
 	   
@@ -590,6 +616,7 @@ if lockouttimer < 0 {
          		bouncing = true
          		sound_play(sound_get("shockready"),false,noone,.8,0.8)
          		}
+               batted = 1
          	}
          	
          }
@@ -733,27 +760,37 @@ if attack == AT_NSPECIAL && hbox_num > 3 && hbox_num < 12{
     if batted == 3{
 		
 		if hitbox_timer <= 2{
-			hsp = 20*spr_dir
+			hsp = 8*spr_dir
 			vsp = -8
 		} 
 		
+		if hitbox_timer == 60 {
+			destroyed = true
+		}
 		
 		if hitbox_timer == 10{
 			spawn_hit_fx(x,y,301)
 			sound_play(asset_get("sfx_absa_singlezap1"))
 			spr_dir *= -1
-			hsp = 20*spr_dir
+			hsp = 16*spr_dir
 			vsp = 2
 		} 
 		
     	if hitbox_timer == 20{
 			spawn_hit_fx(x,y,301)
 			sound_play(asset_get("sfx_absa_singlezap1"))
-			hsp *= -1
+			hsp *= -0.8
 			spr_dir *= -1
-			vsp = 4
+			vsp = 6
 		} 
 		
+		if hitbox_timer == 30{
+			spawn_hit_fx(x,y,301)
+			sound_play(asset_get("sfx_absa_singlezap1"))
+			hsp *= -2
+			spr_dir *= -1	
+			vsp = 0
+		} 
 		
 	}
 	    kb_value = 12

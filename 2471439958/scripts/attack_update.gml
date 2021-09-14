@@ -163,7 +163,7 @@ else{
 }
 
 //WEE FSPECIAL
-if (attack == AT_FSPECIAL ){
+if (attack == AT_FSPECIAL ) && (has_hit=true){
 	if  window == 7 && window_timer == 1 && special_down{
 		sound_play(asset_get("sfx_swipe_medium2"));
 		hsp = 9 * spr_dir;
@@ -186,7 +186,6 @@ if (attack == AT_FSPECIAL && window > 7){
 		}
 	}
 }
-
 //Stinger Multipress
 if (attack == AT_DATTACK) {
 	if window == 1{
@@ -415,24 +414,7 @@ if (attack == AT_DSPECIAL) {
     
 }
 
-//music stop
-if (attack == AT_TAUNT_2) && window == 1 && get_player_color(player) == 12{
-	if gaming == 1{
-	sound_stop(sound_get( "final_battle" ));	
-	sound_stop(sound_get( "servant_of_the_crystal" ));
-	gaming = 0;
-	crystal = 0;
-	}
-}
 
-if (attack == AT_TAUNT_2) && window == 1 && get_player_color(player) == 15{
-	if crystal == 1{
-	sound_stop(sound_get( "final_battle" ));	
-	sound_stop(sound_get( "servant_of_the_crystal" ));
-	gaming = 0;
-	crystal = 0;
-	}
-}
 
 
 //CALEB TIME

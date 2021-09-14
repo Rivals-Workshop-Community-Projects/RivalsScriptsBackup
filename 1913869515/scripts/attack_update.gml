@@ -262,6 +262,7 @@ set_hitbox_value(AT_UAIR, 3, HG_ANGLE, 90);
 
 
 if attack == AT_FAIR && zbayo == 3 && window == 3 && !hitpause {
+	attack_end();
 	    dmhit -= 1
 	spawn_hit_fx( x - (20 * spr_dir) , y - 50 , shit5 )
 		sound_play(sound_get("counterhit"));
@@ -280,7 +281,7 @@ if attack == AT_FAIR && zbayo == 3 && window == 3 && !hitpause {
 if attack == AT_FAIR && zbayo == 2 && window == 3 && !hitpause {
 	spawn_hit_fx( x - (20 * spr_dir) , y - 50 , shit5 )
 		sound_play(sound_get("counterhit"));
-		vsp = -9
+		vsp = 12
 		sound_play(asset_get("sfx_swipe_weak1"));
 		x = hit_player_obj.x + 20 * spr_dir
 		y = hit_player_obj.y + 60

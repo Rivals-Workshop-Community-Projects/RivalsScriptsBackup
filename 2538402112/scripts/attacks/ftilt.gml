@@ -22,11 +22,6 @@ set_window_value(AT_FTILT, 7, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FTILT, 7, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FTILT, 7, AG_WINDOW_HAS_WHIFFLAG, 5);
 
-
-var grov_seed_sprite = sprite_get("bullet_seed")
-if get_player_color(player) == 13 grov_seed_sprite = sprite_get("bullet_seed_abyss")
-if get_player_color(player) == 14 grov_seed_sprite = sprite_get("bullet_seed_EA")
-
 set_num_hitboxes(AT_FTILT,5);
 
 for(i = 1; i < 6; i++){
@@ -47,13 +42,13 @@ for(i = 1; i < 6; i++){
     set_hitbox_value(AT_FTILT, i, HG_VISUAL_EFFECT, 18); // Leaf Tiny
     set_hitbox_value(AT_FTILT, i, HG_VISUAL_EFFECT_Y_OFFSET, 18);
     set_hitbox_value(AT_FTILT, i, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
-    set_hitbox_value(AT_FTILT, i, HG_EXTENDED_PARRY_STUN, 1);
+    // set_hitbox_value(AT_FTILT, i, HG_EXTENDED_PARRY_STUN, 1);
     
     set_hitbox_value(AT_FTILT, i, HG_PROJECTILE_HSPEED, 18);
     set_hitbox_value(AT_FTILT, i, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-    set_hitbox_value(AT_FTILT, i, HG_PROJECTILE_PARRY_STUN, 1);
+    // set_hitbox_value(AT_FTILT, i, HG_PROJECTILE_PARRY_STUN, 1);
     set_hitbox_value(AT_FTILT, i, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
-    set_hitbox_value(AT_FTILT, i, HG_PROJECTILE_SPRITE, grov_seed_sprite);
+    set_hitbox_value(AT_FTILT, i, HG_PROJECTILE_SPRITE, sprite_get("bullet_seed"));
     set_hitbox_value(AT_FTILT, i, HG_PROJECTILE_MASK, -1);
     set_hitbox_value(AT_FTILT, i, HG_PROJECTILE_DESTROY_EFFECT, 1);
 }
@@ -68,4 +63,4 @@ set_hitbox_value(AT_FTILT, 5, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_FTILT, 5, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_FTILT, 5, HG_VISUAL_EFFECT, 17); // Leaf Small
 set_hitbox_value(AT_FTILT, 5, HG_EXTRA_CAMERA_SHAKE, 2);
-set_hitbox_value(AT_FTILT, 5, HG_EXTENDED_PARRY_STUN, 1);
+// set_hitbox_value(AT_FTILT, 5, HG_EXTENDED_PARRY_STUN, 1);

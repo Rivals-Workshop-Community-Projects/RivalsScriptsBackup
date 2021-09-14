@@ -644,6 +644,10 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	//1.14
+	initPatch("1.14", "14 September 2021");
+	initPatchWords_ext("Bug Fixes:", fa_center, c_gray, 1, 0);
+	initPatchWords("- Fixed an issue with the Dash SFX (keyboard players now dont go deaf)");
 	//1.13.1
 	initPatch("1.13.1", "19 August 2021");
 	initPatchWords_ext("Bug Fixes:", fa_center, c_gray, 1, 0);

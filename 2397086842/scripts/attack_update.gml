@@ -41,7 +41,7 @@ if !hitpause {
         }
 
         
-        if state_timer % 8 == 0 && window != 1 {
+        if state_timer % 5 == 0 && window != 1 {
             sound_play(sound_get("bathit"),false,noone,0.8)
             sound_play(sound_get("b1"),false,noone,0.6)
             sound_play(asset_get("sfx_bird_downspecial"),false,noone,0.8)
@@ -51,18 +51,12 @@ if !hitpause {
         create_hitbox(AT_NSPECIAL,3, x + 20*spr_dir - random_func(1,30,true) , y - 20 - random_func(2,30,true))
         }
         
-        if state_timer < 160 {
+        if state_timer < 60 {
             set_window_value(49, 3, AG_WINDOW_TYPE, 9);
         } else {
-            set_attack(AT_USPECIAL)
+            set_attack(AT_NAIR)
             window = 2 
             window_timer = 0
-    create_hitbox(AT_NSPECIAL,3, x + 20*spr_dir - random_func(1,30,true) , y - 20 - random_func(2,30,true))
-    create_hitbox(AT_NSPECIAL,3, x + 20*spr_dir - random_func(1,30,true) , y - 20 - random_func(2,30,true))
-    create_hitbox(AT_NSPECIAL,3, x + 20*spr_dir - random_func(1,30,true) , y - 20 - random_func(2,30,true))
-    create_hitbox(AT_NSPECIAL,3, x + 20*spr_dir - random_func(1,30,true) , y - 20 - random_func(2,30,true))
-    create_hitbox(AT_NSPECIAL,3, x + 20*spr_dir - random_func(1,30,true) , y - 20 - random_func(2,30,true))
-    create_hitbox(AT_NSPECIAL,3, x + 20*spr_dir - random_func(1,30,true) , y - 20 - random_func(2,30,true))    
         }
         
         super_armor = false 

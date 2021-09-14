@@ -33,16 +33,16 @@ if (attack == AT_FSPECIAL)
         switch(fspe_stall)
         {
             case 1:
-                set_window_value(AT_FSPECIAL, i, AG_WINDOW_VSPEED_TYPE, 1);
-                set_window_value(AT_FSPECIAL, i, AG_WINDOW_CUSTOM_GRAVITY, 1);
+                //set_window_value(AT_FSPECIAL, i, AG_WINDOW_VSPEED_TYPE, 1);
+                //set_window_value(AT_FSPECIAL, i, AG_WINDOW_CUSTOM_GRAVITY, 1);
             break;
             case 2:
-                set_window_value(AT_FSPECIAL, i, AG_WINDOW_VSPEED_TYPE, 0);
-                set_window_value(AT_FSPECIAL, i, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
+                //set_window_value(AT_FSPECIAL, i, AG_WINDOW_VSPEED_TYPE, 0);
+                //set_window_value(AT_FSPECIAL, i, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
             break;
             case 3:
-                set_window_value(AT_FSPECIAL, i, AG_WINDOW_VSPEED_TYPE, 0);
-                set_window_value(AT_FSPECIAL, i, AG_WINDOW_CUSTOM_GRAVITY, 0.2);
+                //set_window_value(AT_FSPECIAL, i, AG_WINDOW_VSPEED_TYPE, 0);
+                //set_window_value(AT_FSPECIAL, i, AG_WINDOW_CUSTOM_GRAVITY, 0.2);
             break;
         }
     }

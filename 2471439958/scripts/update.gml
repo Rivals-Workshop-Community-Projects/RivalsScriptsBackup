@@ -66,8 +66,17 @@ if (ice == 1){
 
 	if (ice_cont == 30){
 	set_hitbox_value(AT_NSPECIAL, 1, HG_EFFECT, 5);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .6);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 12);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 30);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_EFFECT, 5);
+	set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, .6);
+	set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 12);
+	set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 30);
 	set_hitbox_value(AT_NSPECIAL, 3, HG_EFFECT, 5);
+	set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, .6);
+	set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 12);
+	set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE, 30);
 	
 	set_hitbox_value(AT_FSTRONG, 1, HG_EFFECT, 5);
 	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 5);
@@ -79,8 +88,19 @@ if (ice == 1){
 
 	if (ice_cont < 30){
 	set_hitbox_value(AT_NSPECIAL, 1, HG_EFFECT, 0);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .3);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 8);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 45);
+	
 	set_hitbox_value(AT_NSPECIAL, 2, HG_EFFECT, 0);
+	set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, .3);
+	set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 8);
+	set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 45);
+	
 	set_hitbox_value(AT_NSPECIAL, 3, HG_EFFECT, 0);
+	set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, .3);
+	set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 8);
+	set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE, 45);
 	
 	set_hitbox_value(AT_FSTRONG, 1, HG_EFFECT, 0);
 	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 20);
@@ -309,19 +329,19 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 199);
 	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 20);
 	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.8);
+	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.7);
 	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 8);
-	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 60);
+	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 40);
 	
 	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, sound_get("sfx_blow_ice_heavy2"));
 	set_hitbox_value(AT_FSTRONG, 2, HG_EFFECT, 5);
 	set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 199);
 	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 30);
 	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 8);
-	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 0.8);
+	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 0.7);
 	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 10);
 	set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 50);
-	set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 40);
+	set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 30);
 	
 	//FORWARD AIR ICE
 	
@@ -333,10 +353,10 @@ if (taunt_pressed){
 	
 	set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 5);
 	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 9);
-	set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 45);
+	set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 40);
 	set_hitbox_value(AT_FAIR, 1, HG_EFFECT, 0);
 	set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .6);
+	set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .5);
 	set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 20);
 	set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .5);
 	set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, sound_get("sfx_blow_ice_heavy2"));
@@ -344,20 +364,20 @@ if (taunt_pressed){
 	
 	set_hitbox_value(AT_FAIR, 2, HG_PRIORITY, 5);
 	set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 7);
-	set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 65);
+	set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 45);
 	set_hitbox_value(AT_FAIR, 2, HG_EFFECT, 0);
 	set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 6);
-	set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .6);
+	set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .5);
 	set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 15);
 	set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, sound_get("sfx_blow_ice_heavy1"));
 	set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 199);
 	
 	set_hitbox_value(AT_FAIR, 3, HG_PRIORITY, 5);
 	set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 7);
-	set_hitbox_value(AT_FAIR, 3, HG_ANGLE, 65);
+	set_hitbox_value(AT_FAIR, 3, HG_ANGLE, 45);
 	set_hitbox_value(AT_FAIR, 3, HG_EFFECT, 0);
 	set_hitbox_value(AT_FAIR, 3, HG_BASE_KNOCKBACK, 6);
-	set_hitbox_value(AT_FAIR, 3, HG_KNOCKBACK_SCALING, .6);
+	set_hitbox_value(AT_FAIR, 3, HG_KNOCKBACK_SCALING, .5);
 	set_hitbox_value(AT_FAIR, 3, HG_BASE_HITPAUSE, 15);
 	set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, sound_get("sfx_blow_ice_heavy1"));
 	set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, 199);
@@ -423,10 +443,10 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FSTRONG, 1, HG_EFFECT, 0);
 	set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 130);
 	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 10);
-	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 10);
+	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 9);
 	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.7);
 	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 7);
-	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 80);
+	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 55);
 	
 	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
 	set_hitbox_value(AT_FSTRONG, 2, HG_EFFECT, 11);
@@ -435,7 +455,7 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 10);
 	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 0.9);
 	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 9);
-	set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 80);
+	set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 45);
 	set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 40);
 	
 	//FORWARD AIR PLASMA
@@ -459,7 +479,7 @@ if (taunt_pressed){
 	
 	set_hitbox_value(AT_FAIR, 2, HG_PRIORITY, 5);
 	set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 5);
-	set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 60);
+	set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 55);
 	set_hitbox_value(AT_FAIR, 2, HG_EFFECT, 0);
 	set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .5);
@@ -469,7 +489,7 @@ if (taunt_pressed){
 	
 	set_hitbox_value(AT_FAIR, 3, HG_PRIORITY, 5);
 	set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 5);
-	set_hitbox_value(AT_FAIR, 3, HG_ANGLE, 60);
+	set_hitbox_value(AT_FAIR, 3, HG_ANGLE, 55);
 	set_hitbox_value(AT_FAIR, 3, HG_EFFECT, 0);
 	set_hitbox_value(AT_FAIR, 3, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_FAIR, 3, HG_KNOCKBACK_SCALING, .5);
@@ -555,7 +575,7 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 7);
 	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.9);
 	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 5);
-	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 75);
+	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 55);
 	
 	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 	set_hitbox_value(AT_FSTRONG, 2, HG_EFFECT, 3);
@@ -564,7 +584,7 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 7);
 	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.0);
 	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 10);
-	set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 70);
+	set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 50);
 	set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 40);
 	set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 16);
 	
@@ -578,7 +598,7 @@ if (taunt_pressed){
 	
 	set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 5);
 	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 9);
-	set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 50);
+	set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 45);
 	set_hitbox_value(AT_FAIR, 1, HG_EFFECT, 1);
 	set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 7);
 	set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .6);
@@ -589,7 +609,7 @@ if (taunt_pressed){
 	
 	set_hitbox_value(AT_FAIR, 2, HG_PRIORITY, 7);
 	set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 7);
-	set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 65);
+	set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 50);
 	set_hitbox_value(AT_FAIR, 2, HG_EFFECT, 1);
 	set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .6);
@@ -599,7 +619,7 @@ if (taunt_pressed){
 	
 	set_hitbox_value(AT_FAIR, 3, HG_PRIORITY, 7);
 	set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 7);
-	set_hitbox_value(AT_FAIR, 3, HG_ANGLE, 65);
+	set_hitbox_value(AT_FAIR, 3, HG_ANGLE, 50);
 	set_hitbox_value(AT_FAIR, 3, HG_EFFECT, 1);
 	set_hitbox_value(AT_FAIR, 3, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_FAIR, 3, HG_KNOCKBACK_SCALING, .6);
@@ -650,25 +670,13 @@ if get_gameplay_time() <= 120 && machina == 0 and taunt_pressed && get_player_co
 	sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"));
 	sound_play(sound_get("machina_intro"));
 }
-//bgm// ------------------------- //
-//SERVANT OF THE CRYSTAL
-if (attack == AT_TAUNT_2) && (window == 3 && window_timer == 1) && (special_down and shield_down) && get_player_color(player) == 12{
-	gaming = 1
-	sound_play(sound_get("servant_of_the_crystal"), true);
-}
+
 if get_player_color(player) == 12{
 	set_victory_theme(sound_get("machina_victory"));
-}
-
-//RING OF FATES
-if (attack == AT_TAUNT_2) && (window == 3 && window_timer == 1) && (special_down and shield_down) && get_player_color(player) == 15{
-	crystal = 1
-	sound_play(sound_get("final_battle"), true);
 }
 if get_player_color(player) == 15{
 	set_victory_theme(sound_get("yuri_victory"));
 }
-
 //----------------------------- //
 //CALEB SOUNDS
 

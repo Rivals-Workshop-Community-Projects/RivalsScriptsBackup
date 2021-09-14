@@ -172,7 +172,7 @@ sprite_change_offset("shockwave2", 100, 120);
 sw = hit_fx_create( sprite_get( "shockwave" ), 8);
 sprite_change_offset("shockwave", 107, 126);
 
-bfx5 = hit_fx_create( sprite_get( "ballfx5" ), 12);
+bfx5 = hit_fx_create( sprite_get( "ballfx5" ), 16);
 
 if get_player_color(player) == 13 {
     

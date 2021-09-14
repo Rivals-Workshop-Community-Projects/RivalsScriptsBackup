@@ -142,6 +142,15 @@ set_color_profile_slot( 14, 3, 219, 100, 64 ); //Deco
 set_color_profile_slot( 14, 4, 117, 35, 87 ); //Eye
 set_color_profile_slot( 14, 5, 158, 158, 158 ); //Shirt
 
+/*
+// Lion 
+set_color_profile_slot( 15, 0, 186, 176, 176 ); //Hair
+set_color_profile_slot( 15, 1, 11, 11, 13 ); //Uniform
+set_color_profile_slot( 15, 2, 242, 237, 234 ); //Ball
+set_color_profile_slot( 15, 3, 221, 197, 146 ); //Deco
+set_color_profile_slot( 15, 4, 105, 99, 99 ); //Eye
+set_color_profile_slot( 15, 5, 59, 56, 67 ); //Shirt
+*/
  
 #define rangeSet(sha, col) // Auto-sets ranges to 1. Translates GML's asinine BGR hex colors to RGB.
  

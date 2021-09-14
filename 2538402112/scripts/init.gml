@@ -18,7 +18,7 @@ walk_accel = 0.35;
 walk_turn_time = 6;
 initial_dash_time = 7;
 initial_dash_speed = 8;
-dash_speed = 7.5;
+dash_speed = 7;
 dash_turn_time = 10;
 dash_turn_accel = 1.5;
 dash_stop_time = 4;
@@ -105,12 +105,16 @@ bubble_y = 8;
 grov_pouncex = 0
 grov_pouncey = 0
 grov_pounce_foe = false
+grov_pounce_foe_id = null
 grov_digdir = 1
 grov_wandangle = 0
 grov_dspecial_loops = 0
-grov_current_nspecial = 1 //0 Iron Thorn /1 Blast Seed
+grov_current_nspecial = 0 //0 Iron Thorn /1 Blast Seed /2 Geo Pebble
 grov_fspecial_cooldown = 0
 grov_fspecial_airuse = false
+grov_char_height = char_height
+grov_emeratimer = 0
+grov_gen3 = false
 
 //workshop support
 plushForAmber = sprite_get("plushForAmber");
@@ -120,7 +124,7 @@ has_fail = true;
 fail_text = "That was a Reviser Seed, try checking your items next time.";
 resort_portrait = sprite_get("grov_lastresort01");
 resort_portrait2 = sprite_get("grov_lastresort02");
-if get_player_color(player) == 14 resort_portrait = resort_portrait2
+if get_player_color(player) == 13 resort_portrait = resort_portrait2
 arena_title = "Temporal Escapee";
 boxing_title = "Temporal Escapee";
 toonlink_photo = sprite_get("toonlink_photo");
@@ -133,7 +137,8 @@ pkmn_stadium_front_img = sprite_get("gen1_grovyle")
 pkmn_stadium_back_img = sprite_get("gen1_grovyle_back")
 //Amber interaction variables
 amber_herObj = noone; //The object ID of Amber when she hugs. Amber's own script will set this when the hug is inititated
-amber_thisHugSprite = sprite_get("grovyle_cheer");
+amber_thisHugSprite = sprite_get("grovyle_cheer_alt0");
+if get_player_color(player) > 0 amber_thisHugSprite = sprite_get("grovyle_cheer");
 amber_herHugSprite = sprite_get("amber_cheer");
 amber_startHug = false; //This variable is set true from Amber's scripts
 amber_thisSpriteInFront = true; //When true, this character's sprite is rendered over Amber's sprite
@@ -154,6 +159,15 @@ hikaru_walkclone = sprite_get("walk_hikaruclone");
 hikaru_dairclone = sprite_get("dair_hikaruclone");
 hikaru_tauntclone = sprite_get("tauntHikaru");
 hikaru_gearglow = sprite_get("timegearglow");
+
+other_name = null
+// with oPlayer{
+//     if player != other.player{
+//         other.other_name = get_char_info(player, INFO_STR_NAME)
+//         // print(string(url))
+//     }
+//     if url == 10 other.other_name = "Ori"
+// }
 
 //RUNES
 if has_rune("A"){

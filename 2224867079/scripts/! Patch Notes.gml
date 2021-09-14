@@ -1,4 +1,9 @@
 /*
+-- V2.31 --
+
+Cosmetic Changes:
+- Replaced taunt cause i hated it
+
 -- V2.30 --
 Balance Changes:
 - Red Dattack doesnt send you as high (the move comes out faster if used on the ground)

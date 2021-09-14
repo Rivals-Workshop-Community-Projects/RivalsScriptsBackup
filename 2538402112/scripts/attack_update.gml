@@ -1,15 +1,29 @@
 // attack_update
 
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_EXTRA_1 || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (/*attack == AT_NSPECIAL || attack == AT_NSPECIAL_2 || attack == AT_EXTRA_1 || */attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
 }
 
 switch(attack)
 {
+    // Jump cancel Link Box
+    // case AT_NAIR:
+    // case AT_FAIR:
+    // case AT_BAIR:
+    // case AT_UAIR:
+    // case AT_DAIR:
+    case AT_FTILT:
+    case AT_DTILT:
+    case AT_UTILT:
+        if grov_link_jump && was_parried == false{
+            can_jump = true;
+        }
+        break;
+    
     case AT_JAB:
         if (window == 4 && window_timer == 1)
-            hsp += (2*spr_dir);
+            hsp += (0*spr_dir);
         else if (window == 7 && window_timer == 1)
             hsp += (6*spr_dir);
         break;
@@ -43,30 +57,70 @@ switch(attack)
         }
         break;
     case AT_NSPECIAL:
+        can_fast_fall = false
+        if window == 2{
+            can_wall_jump = true;
+            can_jump = true;
+            // TEST
+            // if left_pressed{
+            //     if spr_dir == 1 grov_current_nspecial = 1
+            //     else grov_current_nspecial = 0
+            //     window = 3
+            //     window_timer = 0
+            // }
+            // else if right_pressed{
+            //     if spr_dir == 1 grov_current_nspecial = 0
+            //     else grov_current_nspecial = 1
+            //     window = 3
+            //     window_timer = 0
+            // }
+            // else if up_pressed{
+            //     grov_current_nspecial = 2
+            //     window = 3
+            //     window_timer = 0
+            // }
+            // else if down_pressed{
+            //     grov_current_nspecial = 3
+            //     window = 3
+            //     window_timer = 0
+            // }
+            if left_down || left_stick_down{
+                if spr_dir == 1 select_nspecial(AT_NTHROW)
+                else select_nspecial(AT_FTHROW)
+            }
+            else if right_down || right_stick_down{
+                if spr_dir == 1 select_nspecial(AT_FTHROW)
+                else select_nspecial(AT_NTHROW)
+            }
+            else if up_down || up_stick_down select_nspecial(AT_UTHROW)
+            else if down_down || down_stick_down select_nspecial(AT_DTHROW)
+            else if !special_down{
+                window = 3
+                window_timer = 0
+            }
+        }
+    case AT_FTHROW:
         if free{
-            set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 18);
-            set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -22);
-            set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 13);
-            set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, 8);
-            set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 15);
+            set_hitbox_value(AT_FTHROW, 1, HG_HITBOX_X, 18);
+            set_hitbox_value(AT_FTHROW, 1, HG_HITBOX_Y, -22);
+            set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_HSPEED, 11);
+            set_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_VSPEED, 7);
+            set_hitbox_value(AT_FTHROW, 1, HG_LIFETIME, 15);
         }
         else{
-            reset_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X);
-            reset_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y);
-            reset_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED);
-            reset_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED);
-            reset_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME);
+            reset_hitbox_value(AT_FTHROW, 1, HG_HITBOX_X);
+            reset_hitbox_value(AT_FTHROW, 1, HG_HITBOX_Y);
+            reset_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_HSPEED);
+            reset_hitbox_value(AT_FTHROW, 1, HG_PROJECTILE_VSPEED);
+            reset_hitbox_value(AT_FTHROW, 1, HG_LIFETIME);
         }
         break;
-    case AT_EXTRA_1:
+    case AT_NTHROW:
         if (window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-            if !has_rune("M"){
-                grov_current_nspecial = 0;
-                move_cooldown[AT_NSPECIAL] = 60;
-            }
             var boom = instance_create(x+(25*spr_dir),y-39,"obj_article2")
             boom.effect_num = 1
             boom.sprite_index = sprite_get("blastseed_explosion");
+            if !has_rune("O") move_cooldown[AT_NTHROW] = 300;
         }
         break;
     case AT_FSPECIAL:
@@ -81,24 +135,25 @@ switch(attack)
         
         if window = 3{
             if !joy_pad_idle{
+                var max_wand_angle = 75
                 if up_down{
                     if (grov_wandangle < 90 || grov_wandangle > 270){
-                        grov_wandangle += 4.5;
-                        grov_wandangle = min(grov_wandangle,60)
+                        grov_wandangle += 5;
+                        grov_wandangle = min(grov_wandangle, max_wand_angle)
                     }
                     if (grov_wandangle > 90 && grov_wandangle < 270){
-                        grov_wandangle -= 4.5;
-                        grov_wandangle = max(grov_wandangle,120)
+                        grov_wandangle -= 5;
+                        grov_wandangle = max(grov_wandangle, 180-max_wand_angle)
                     }
                 }
                 else if down_down{
                     if (grov_wandangle < 90 || grov_wandangle > 270){
-                        grov_wandangle -= 4.5;
-                        grov_wandangle = max(grov_wandangle,-60)
+                        grov_wandangle -= 5;
+                        grov_wandangle = max(grov_wandangle, -max_wand_angle)
                     }
                     if (grov_wandangle > 90 && grov_wandangle < 270){
-                        grov_wandangle += 4.5;
-                        grov_wandangle = min(grov_wandangle,230)
+                        grov_wandangle += 5;
+                        grov_wandangle = min(grov_wandangle, 180+max_wand_angle)
                     }
                 }
             }
@@ -106,25 +161,44 @@ switch(attack)
         if window = 4{
             can_fast_fall = false
             can_move = false
+            can_wall_jump = true
             set_attack_value(AT_FSPECIAL,AG_OFF_LEDGE,1)
+            
+            // spr_angle = point_direction(x,y,grov_pouncex,grov_pouncey)
+            
+            fall_through = true
+            
+            if grov_pounce_foe_id != null{
+                grov_pouncex = grov_pounce_foe_id.x
+                grov_pouncey = grov_pounce_foe_id.y
+                if grov_pounce_foe_id.free grov_pouncey -= grov_pounce_foe_id.char_height/2
+            }
+            
             var pounce_speed = 20;
             var pounce_dir = point_direction(x, y, grov_pouncex, grov_pouncey);
             hsp = lengthdir_x(pounce_speed,pounce_dir);
             vsp = lengthdir_y(pounce_speed,pounce_dir);
+            
             if (point_distance(x, y, grov_pouncex, grov_pouncey) < 96) || window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH){
+                spr_angle = 0
+                grov_pounce_foe_id = null
                 if !free{
                     set_state(PS_IDLE);
-                    hsp = 5*spr_dir;
+                    hsp = 6*spr_dir;
                 }
                 else{
                     set_state(PS_IDLE_AIR);
-                    hsp = 4*spr_dir;
+                    if grov_pounce_foe hsp = 5 *spr_dir;
+                    else hsp = 6.5*spr_dir;
                 }
-                if vsp > 0{
-                    if grov_pounce_foe vsp = -2;
+                
+                if grov_pounce_foe{
+                    if free vsp = -5;
                     else vsp = 0;
                 }
+                else if vsp > 0 vsp = 0;
                 else vsp = max(-4, vsp)
+
             }
         }
         else set_attack_value(AT_FSPECIAL,AG_OFF_LEDGE,0)
@@ -146,6 +220,7 @@ switch(attack)
         fall_through = true
         
         if (window == 1 && window_timer == 1){
+            grov_dspecial_parryed = false
             if !free && ground_type == 2 free = true
         }
         
@@ -179,21 +254,25 @@ switch(attack)
                 can_wall_jump = true
                 // spr_dir = grov_digdir
                 if grov_digdir == 1 || grov_digdir == -1{
-                    hsp = 8.5 * spr_dir;
+                    if !was_parried hsp = 8.5 * spr_dir;
                     vsp = -5.5;
                 }
                 else{
-                    hsp = 5.5 * spr_dir;
+                    if !was_parried hsp = 5.5 * spr_dir;
                     vsp = -9;
                 }
                 move_cooldown[AT_DSPECIAL] = 9999;
             }
         }
         
-        if (window == 6 && window_timer > 5){
-            can_move = true
-            if !free downb_article_check()
+        if (window == 6){
+            if window_timer > 5{
+                can_move = true
+                if !free downb_article_check()
+            }
+            else if window_timer == 1 grov_dspecial_parryed = false
         }
+        
         
         //RUNES
         
@@ -248,11 +327,10 @@ switch(attack)
         }
         //End of window code
         if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-            if has_rune("O") move_cooldown[AT_TAUNT] = 30
             switch(window)
             {
                 case 2:
-                    if taunt_down && !has_rune("O"){
+                    if taunt_down{
                         window_timer = 0
                         window = 4
                     }
@@ -316,4 +394,17 @@ with asset_get("rock_obj"){
     if collision_line(other.x-19,other.y+1,other.x+18,other.y+1,self,false,false) != noone{
         other.window = 7;
     }
+}
+
+#define select_nspecial(sel_nspecial)
+if move_cooldown[sel_nspecial] == 0{
+    set_attack(sel_nspecial)
+    hurtboxID.sprite_index = get_attack_value(sel_nspecial, AG_HURTBOX_SPRITE);
+    // sound_play(sound_get("Menu_Select"))
+}
+else{
+    // sound_play(asset_get("mfx_tut_fail"))
+    sound_play(sound_get("Menu_Back"))
+    window = 3
+    window_timer = 0
 }

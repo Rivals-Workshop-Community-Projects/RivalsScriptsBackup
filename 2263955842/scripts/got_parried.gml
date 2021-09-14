@@ -44,7 +44,22 @@ while(ds_list_size(dspe_list))
 }
         
         
-// destroy ofuda
+// Reflect Seals
+if(my_hitboxID.attack == AT_FSPECIAL or my_hitboxID.attack == AT_FSPECIAL_2 or my_hitboxID.attack == AT_FSPECIAL_AIR){
+    my_hitboxID.was_parried = true;
+    with(pHitBox){
+        if(player_id == other and (attack == AT_FSPECIAL or attack == AT_FSPECIAL_2 or attack == AT_FSPECIAL_AIR) and was_parried == false){
+            player = other.hit_player;
+            vsp = -vsp*1.5;
+            hsp = -hsp*1.5;
+            hitbox_timer = 0;
+            was_parried = true;
+        }
+    }
+}
+
+// Destroy Seals
+/*
 with pHitBox {
     if (player_id == other) and ( (attack == AT_DSPECIAL) or (attack == AT_FSPECIAL_2)) //(attack == AT_FSPECIAL) or
     {
@@ -61,11 +76,12 @@ with pHitBox {
             player = other.hit_player;
             vsp = -vsp;
             hsp = -hsp;
-            hitbox_timer = 0
+            hitbox_timer = 0;
+            got_parried = true;
         }
     }
     
-}        
+}*/        
 
 
 

@@ -1,4 +1,10 @@
 /*
+-- V1.14 --
+
+Bug Fixes:
+- Fixed an issue with the Dash SFX (keyboard players now dont go deaf)
+
+
 -- V1.13.1 --
 
 Bug Fixes:

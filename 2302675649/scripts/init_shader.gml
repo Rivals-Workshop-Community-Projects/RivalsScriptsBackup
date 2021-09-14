@@ -51,16 +51,25 @@ switch (get_player_color(player))
         set_character_color_shading(7, 3);
     }
     break;
-    //ak mortal
+    //champion
     case 28:
     {
-        if ("state" in self)
-        {
-            if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack != AT_TAUNT && attack != AT_TAUNT_2 && attack != AT_EXTRA_1)
-                set_character_color_slot(0, 255, 204, 36, 1);
-            else
-                set_character_color_slot(0, 7, 1, 6, 1);
-        }
+	    var temp_a = 0.6;
+	    var temp_r = get_color_profile_slot_r(28, 0);
+	    var temp_g = get_color_profile_slot_g(28, 0);
+	    var temp_b = get_color_profile_slot_b(28, 0);
+	    set_character_color_slot(0, temp_r, temp_g, temp_b, temp_a);
+	    set_article_color_slot(0, temp_r, temp_g, temp_b, temp_a);
+	    temp_r = get_color_profile_slot_r(28, 5);
+	    temp_g = get_color_profile_slot_g(28, 5);
+	    temp_b = get_color_profile_slot_b(28, 5);
+	    set_character_color_slot(5, temp_r, temp_g, temp_b, temp_a);
+	    set_article_color_slot(5, temp_r, temp_g, temp_b, temp_a);
+	    temp_r = get_color_profile_slot_r(28, 6);
+	    temp_g = get_color_profile_slot_g(28, 6);
+	    temp_b = get_color_profile_slot_b(28, 6);
+	    set_character_color_slot(6, temp_r, temp_g, temp_b, temp_a);
+	    set_article_color_slot(6, temp_r, temp_g, temp_b, temp_a);
     }
     break;
 }
@@ -71,7 +80,6 @@ switch (get_player_color(player))
     case 3:  outline_colour = [60,   0,   60]; break;
     case 5:  outline_colour = [35,   67,  49]; break;
     case 21: outline_colour = [90,   31,   7]; break;
-    case 28: outline_colour = [255, 204,  59]; break;
 }
 
 if ("teleFlash" in self && teleFlash > 0)

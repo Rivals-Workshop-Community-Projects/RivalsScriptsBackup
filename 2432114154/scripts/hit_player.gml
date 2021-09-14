@@ -1,5 +1,12 @@
 ///
 
+
+
+if attack != AT_FSTRONG && my_hitboxID.hbox_num < 2 {
+	hit_player_obj.x += 10*spr_dir
+	hit_player_obj.y += 10
+}
+
 if my_hitboxID.attack == AT_USPECIAL  && my_hitboxID.hbox_num == 3 && isyellow{
 	spr_dir *= -1
 	old_vsp = -12
@@ -168,10 +175,10 @@ or my_hitboxID.attack == AT_USTRONG ){
 	sound_play(asset_get("sfx_waterwarp_start"),false,noone,1.2,1.35)
 		sound_play(asset_get("sfx_boss_vortex_end"),false,noone,1,1.8)
 	with hit_player_obj {
-		take_damage(player,-1,4)
-		hitstop += 6
+		//take_damage(player,-1,4)
+		//hitstop += 6
 	}
-	hitstop += 3
+	//hitstop += 3
 }
 
 if downhit == 0 && (my_hitboxID.attack == AT_DAIR
@@ -181,10 +188,10 @@ or my_hitboxID.attack == AT_DTILT or my_hitboxID.attack == AT_DSTRONG){
 	sound_play(asset_get("sfx_waterwarp_start"),false,noone,1.2,0.8)
 	sound_play(asset_get("sfx_boss_vortex_end"),false,noone,1,1.4)
 	with hit_player_obj {
-		take_damage(player,-1,4)
-		hitstop += 6
+		//take_damage(player,-1,4)
+		//hitstop += 6
 	}
-	hitstop += 3
+	//hitstop += 3
 }
 
 if sidehit == 0 && (my_hitboxID.attack == AT_FTILT or (attack == AT_JAB && window > 3)
@@ -194,9 +201,9 @@ or my_hitboxID.attack == AT_FAIR or (my_hitboxID.attack == AT_BAIR && move_coold
 	sound_play(asset_get("sfx_boss_vortex_end"),false,noone,1,1.6)	
 	with hit_player_obj {
 		take_damage(player,-1,4)
-		hitstop += 6
+		//hitstop += 6
 	}
-	hitstop += 3
+	//hitstop += 3
 }
 
 if neutralhit == 0 && ((attack == AT_JAB && window <= 3) or (my_hitboxID.attack == AT_UTILT and my_hitboxID.hbox_num == 3)
@@ -205,10 +212,10 @@ or my_hitboxID.attack == AT_NAIR or my_hitboxID.attack == AT_TAUNT){
 	sound_play(asset_get("sfx_waterwarp_start"),false,noone,1.2,1)
     sound_play(asset_get("sfx_boss_vortex_end"),false,noone,1,1.65)	
 	with hit_player_obj {
-		take_damage(player,-1,4)
-		hitstop += 6
+		//take_damage(player,-1,4)
+		//hitstop += 6
 	}
-	hitstop += 3
+	//hitstop += 3
 }
 
 

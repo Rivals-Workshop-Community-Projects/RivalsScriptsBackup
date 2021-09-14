@@ -64,7 +64,6 @@ set_hitbox_value(AT_DSTRONG, 1, HG_HIT_LOCKOUT, 25);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_GROUP, 1);
 
 
-
 // Front Late
 
 set_hitbox_value(AT_DSTRONG, 2, HG_PARENT_HITBOX, 2);
@@ -78,7 +77,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_WIDTH, 42);
 set_hitbox_value(AT_DSTRONG, 2, HG_HEIGHT, 80);
 set_hitbox_value(AT_DSTRONG, 2, HG_SHAPE, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_PRIORITY, 2);
-set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 5);
+set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 8);
 set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE, 70);
 set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 7.5);
 set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, 1.0);
@@ -86,7 +85,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_SPRITE, sprite_get("nothing"));
 set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_DSTRONG, 2, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 303);
@@ -146,7 +145,7 @@ set_hitbox_value(AT_DSTRONG, 4, HG_WIDTH, 42);
 set_hitbox_value(AT_DSTRONG, 4, HG_HEIGHT, 80);
 set_hitbox_value(AT_DSTRONG, 4, HG_SHAPE, 1);
 set_hitbox_value(AT_DSTRONG, 4, HG_PRIORITY, 2);
-set_hitbox_value(AT_DSTRONG, 4, HG_DAMAGE, 5);
+set_hitbox_value(AT_DSTRONG, 4, HG_DAMAGE, 8);
 set_hitbox_value(AT_DSTRONG, 4, HG_ANGLE, 110);
 set_hitbox_value(AT_DSTRONG, 4, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_DSTRONG, 4, HG_KNOCKBACK_SCALING, 1.0);
@@ -154,7 +153,7 @@ set_hitbox_value(AT_DSTRONG, 4, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_DSTRONG, 4, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_SPRITE, sprite_get("nothing"));
 set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_DSTRONG, 4, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_DSTRONG, 4, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_DSTRONG, 4, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_DSTRONG, 4, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_DSTRONG, 4, HG_VISUAL_EFFECT, 303);

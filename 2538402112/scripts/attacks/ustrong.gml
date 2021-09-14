@@ -101,8 +101,8 @@ set_hitbox_value(AT_USTRONG, 5, HG_VISUAL_EFFECT, 150);
 set_hitbox_value(AT_USTRONG, 5, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_USTRONG, 5, HG_HIT_SFX, asset_get("sfx_waterhit_heavy2"));
 
-// RUNES
-if has_rune("L"){
-    set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 9);
-    set_window_value(AT_USTRONG, 6, AG_WINDOW_LENGTH, 10);
-}
+// // RUNES
+// if has_rune("L"){
+//     set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 9);
+//     set_window_value(AT_USTRONG, 6, AG_WINDOW_LENGTH, 10);
+// }
