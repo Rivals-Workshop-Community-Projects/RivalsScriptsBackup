@@ -24,13 +24,13 @@ set_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED, 16);
 
 //boink
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 24);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 26);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 
 //boink again but with attac
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 24);
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 26);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 

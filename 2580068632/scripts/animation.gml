@@ -38,6 +38,25 @@ if (state == PS_PRATFALL){
 	}
 }
 
+if (attack == AT_JAB){
+	if (window == 4){
+		if (window_timer == 2 || window_timer == 3){
+			image_index = 6
+		} else if (window_timer == 4 || window_timer == 5){
+			image_index = 2
+		} else {
+			image_index = 5
+		}
+	}
+	if (window == 5){
+		if (window_timer > 1){
+			image_index = 0
+		} else {
+			image_index = 3
+		}
+	}
+}
+
 if (attack == AT_NAIR ||
 	attack == AT_FAIR ||
 	attack == AT_UAIR ||

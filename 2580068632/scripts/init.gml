@@ -12,6 +12,8 @@ tp_dist = 170;  //Distance the teleport will travel.
 tp_prec = 8; //The precision of the teleportation algorithm. Larger number will be more accurate, but slower to calculate. 8 is a good balance of speed and precision.
 tp_dont = false;
 
+dimensional_cape_hit = false;
+
 shuttle_loop_timer = 300
 shuttle_loop_angle = 0
 shuttle_loop_can_rise = true

@@ -30,6 +30,8 @@ if (attack == AT_TAUNT_2){
 
 //Uspecial
 if attack == AT_USPECIAL {
+	
+	usp_nsp = true
     
     if left_down && hsp > -2 {
         hsp -= 0.2
@@ -40,19 +42,23 @@ if attack == AT_USPECIAL {
     }
     
     if window == 1 {
-        vsp /= 0
+        vsp = 0
         hsp /= 1.5
     }
     if window == 3 && free {
-        create_hitbox(AT_USPECIAL , 1 , x  , y   );	
+        create_hitbox(AT_USPECIAL , 1 , x  , y   );
     }
     
     if window == 4 && free {
         create_hitbox(AT_USPECIAL , 1 , x  , y   );	
         can_wall_jump = true
-        vsp -= 0.3
+        vsp -= 0.25
         if window_timer == 16{
             window_timer = 0
+        }
+        if (special_pressed && move_cooldown[AT_NSPECIAL] == 0 && proj_stored == true){
+        	window = 6;
+        	window_timer = 0;
         }
     }
 
@@ -62,8 +68,229 @@ if attack == AT_USPECIAL {
         window = 5
         window_timer = 0
     }
-    
-    
+    if (window == 6) {
+    	create_hitbox(AT_USPECIAL , 1 , x  , y   );
+        can_wall_jump = false
+        vsp -= 0.2
+        //time to do random projectiles AGAIN
+        if (window_timer == 1 && !hitstun) {
+        	if (proj_stored == false){
+        	jackpot_number = random_func( 0, 9, true );
+        	nspecial_number = random_func( 0, 6, true );
+    		}
+	    	//Muno Phone Projectile Override
+	    	switch (phone_cheats[proj_override]) {
+	    		case(1):
+	    			nspecial_number = 0
+	    			break;
+	    		case(2):
+	    			nspecial_number = 1
+	    			break;
+	    		case(3):
+	    			nspecial_number = 2
+	    			break;
+	    		case(4):
+	    			nspecial_number = 3
+	    			break;
+	    		case(5):
+	    			nspecial_number = 4
+	    			break;
+	    		case(6):
+	    			nspecial_number = 5
+	    			break;
+	    		case(7):
+	    			nspecial_number = 7
+	    			break;
+	    	}
+			//Muno Phone Jackpot Override
+	    	switch (phone_cheats[jack_override]) {
+	    		case(1):
+	    			jackpot_number = 8
+	    			break;
+	    		case(2):
+	    			jackpot_number = 0
+	    			break;
+	    		case(3):
+	    			jackpot_number = 8
+	    			break;
+	    		case(4):
+	    			jackpot_number = 8
+	    			break;
+	    	}
+        }
+        if (window_timer == 2){
+        	if jackpot == true {
+            	jackpot_item = random_func( 0, 2, true );
+            	jackpot_shading = true;
+            	sound_play(sound_get("jackpot"))
+        	}
+        	switch (phone_cheats[jack_override]) {
+    			case(3):
+    				jackpot_item = 0
+    				break;
+    			case(4):
+    				jackpot_item = 1
+    				break;
+    		}
+            //Normal Items
+            switch (nspecial_number){
+                //100 Ton Weight
+                case(0):
+                    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 0);
+                    set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, 0);
+                    break;
+                //Mini Bugingi
+                case(1):
+                    set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_AIR_FRICTION, .8);
+                    set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, 0);
+                    set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_VSPEED, 0);
+                    break;
+                //Wrench
+                case(2):
+                    set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_HSPEED, 0);
+                    set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_VSPEED, 0);
+                    break;
+                //Dumbell
+                case(3):
+                    set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_HSPEED, 0);
+                    set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_VSPEED, 0);
+                    break;
+                //Rage Ball
+                case(4):
+                	set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_HSPEED, 0);
+                    set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_VSPEED, 6);
+                	break;
+                //Bomb
+                case(5):
+                    set_hitbox_value(AT_NSPECIAL, 8, HG_PROJECTILE_HSPEED, 0);
+                    set_hitbox_value(AT_NSPECIAL, 8, HG_PROJECTILE_VSPEED, 0);
+                    break;
+                //Dspecial Ball
+                case(7):
+                    set_hitbox_value(AT_NSPECIAL, 10, HG_PROJECTILE_HSPEED, 0);
+                    set_hitbox_value(AT_NSPECIAL, 10, HG_PROJECTILE_VSPEED, 0);
+                    break;
+                //Taunt
+                case(8):
+                    set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_HSPEED, 0);
+                    set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_VSPEED, 0);
+                    break;
+            }
+            //Jackpot Items
+            switch (jackpot_item){
+                //Jack Weight
+                case(0):
+                    set_hitbox_value(AT_NSPECIAL, 20, HG_PROJECTILE_HSPEED, 0);
+                    set_hitbox_value(AT_NSPECIAL, 20, HG_PROJECTILE_VSPEED, 0);
+                    break;
+	            //BEEEG bugingi
+	            case(1):
+                    set_hitbox_value(AT_NSPECIAL, 22, HG_PROJECTILE_HSPEED, 0);
+                    set_hitbox_value(AT_NSPECIAL, 22, HG_PROJECTILE_VSPEED, 0);
+	                break;
+            }
+        }
+
+        //Switch to Next Window
+        if (window_timer == 12 && proj_stored == true){
+        	window = 7
+        	window_timer = 0
+        } else if (window_timer == 16 && proj_stored == false){
+			window = 7
+        	window_timer = 0
+        }
+    }
+    if (window == 7) {
+        can_wall_jump = false
+        vsp -= 1
+        if (window_timer == 1){
+        	attack_end();
+    		proj_stored = false;
+        	//Normal Items
+        	if (jackpot == false)
+            	switch (nspecial_number){
+                	//100 Ton Weight
+                	case(0):
+                    	create_hitbox(AT_NSPECIAL,1,x-20*spr_dir,y-50)
+                    	break;
+                	//Mini Bugingi
+                	case(1):
+                    	create_hitbox(AT_NSPECIAL,3,x-20*spr_dir,y-50)
+                    	break;
+	                //Wrench
+	                case(2):
+	                    create_hitbox(AT_NSPECIAL,5,x-5*spr_dir,y-35)
+	                    break;
+	                //Dumbell
+	                case(3):
+	                    create_hitbox(AT_NSPECIAL,6,x-20*spr_dir,y-45)
+	                    break;
+	                //Rage Ball
+	                case(4):
+	                    create_hitbox(AT_NSPECIAL,7,x+6*spr_dir,y-45)
+	                    break;
+	                //Bomb
+	                case(5):
+	                    create_hitbox(AT_NSPECIAL,8,x+1*spr_dir,y-35)
+	                    break;
+	                //Ball??
+	                case(7):
+	                    create_hitbox(AT_NSPECIAL,10,x-20*spr_dir,y-45)
+	                    break;
+	                //Taunt
+	                case(8):
+	                    create_hitbox(AT_TAUNT,1,x+15*spr_dir,y-25)
+	                    break;
+	            }
+	        if (jackpot == true){
+	            switch (jackpot_item){
+	                //Golden 100 Ton Weight
+	                case(0):
+	                    create_hitbox(AT_NSPECIAL,20,x-12*spr_dir,y-50)
+	                    break;
+	                //BEEEG bugingi
+	                case(1):
+	                    create_hitbox(AT_NSPECIAL,22,x-28*spr_dir,y-50)
+	                    break;
+            	}
+        	}
+    	} if (window_timer == 2){
+			reset_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED);
+            reset_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED);
+            reset_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_AIR_FRICTION);
+            reset_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED);
+            reset_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_VSPEED);
+            reset_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_HSPEED);
+            reset_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_VSPEED);
+            reset_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_HSPEED);
+            reset_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_VSPEED);
+            reset_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_HSPEED);
+            reset_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_VSPEED);
+            reset_hitbox_value(AT_NSPECIAL, 8, HG_PROJECTILE_HSPEED);
+			reset_hitbox_value(AT_NSPECIAL, 8, HG_PROJECTILE_VSPEED);
+			reset_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_VSPEED);
+			reset_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_HSPEED);
+            reset_hitbox_value(AT_NSPECIAL, 20, HG_PROJECTILE_HSPEED);
+            reset_hitbox_value(AT_NSPECIAL, 20, HG_PROJECTILE_VSPEED);
+            reset_hitbox_value(AT_NSPECIAL, 22, HG_PROJECTILE_HSPEED);
+            reset_hitbox_value(AT_NSPECIAL, 22, HG_PROJECTILE_VSPEED);
+    	}
+    	
+    	if window_timer == 10 {
+    		window = 8
+    		window_timer = 0
+    	}
+    }//window 7
+    if (window == 8){
+    	create_hitbox(AT_USPECIAL , 1 , x  , y   );
+    	if window_timer == 10 {
+    		window = 4
+    		window_timer = 0
+    		move_cooldown[AT_NSPECIAL] = 50;
+    	}
+    } 
+} else {
+	usp_nsp = false
 }
 
 //Multihit Dtilt Teleport
@@ -415,11 +642,11 @@ if (attack == AT_FSPECIAL_2 && instance_exists(grabbed_player_obj)) {
 
 //Gattling
 if (attack == AT_FTILT || attack == AT_JAB || attack == AT_DTILT && window != 3 || attack == AT_NAIR || attack == AT_FSTRONG
-|| attack == AT_USTRONG || attack == AT_DSTRONG || attack == AT_USPECIAL || attack == AT_UTILT || attack == AT_FAIR || attack == AT_BAIR
+|| attack == AT_USTRONG || attack == AT_DSTRONG || attack == AT_UTILT || attack == AT_FAIR || attack == AT_BAIR
 || attack == AT_BAIR || attack == AT_UAIR || attack == AT_DATTACK){
 	if (proj_stored == true) {
 		if (has_hit){
-			if (special_down){
+			if (special_down && !up_down){
 				destroy_hitboxes();
 				attack_end();
 				attack = AT_NSPECIAL
@@ -825,7 +1052,7 @@ if attack == AT_NSPECIAL {
         	move_cooldown[AT_NSPECIAL] = 30;
         }
     }
-    if (window == 3 && window_timer == 1){
+    if (window == 3 && window_timer == 1 && !hitstun){
     	proj_stored = false;
         //Normal Items
         if (jackpot == false)
@@ -878,6 +1105,7 @@ if attack == AT_NSPECIAL {
     }
     if (window == 4 && window_timer == 1){
         move_cooldown[AT_NSPECIAL] = 40;
+       
     }
 }
 

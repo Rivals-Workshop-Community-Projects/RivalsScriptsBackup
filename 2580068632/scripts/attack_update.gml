@@ -1,21 +1,21 @@
 //Jab
 if (attack == AT_JAB){
-	if (attack_down && window > 1 && window < 5){
-		if (window == 4){
+	if (attack_down && window > 1 && window < 6){
+		if (window == 5){
 			if (window_timer == 5){
 				window = 2
 				window_timer = 0
 			}
 		}
 	} else if (!attack_down && window > 1 && window < 5){
-		window = 5
+		window = 6
 		window_timer = 0
 		destroy_hitboxes();
 	}
 }
 
 if (attack == AT_JAB){
-	if ((window == 5 && window_timer > 2) || (window == 7 && window_timer < 4) || window == 6){
+	if ((window == 6 && window_timer > 2) || (window == 7 && window_timer < 4)){
 	    hud_offset = 62;
 	}
 }
@@ -37,6 +37,9 @@ if (attack == AT_FTILT){
 				set_attack( AT_DTILT );
 				hsp = 3 * spr_dir
 				sound_stop(sfx_krtd_sword_swipe2);
+			} else if (left_stick_down || right_stick_down){
+				window++;
+				window_timer = 0;
 			}
 		}
 	}
@@ -64,6 +67,9 @@ if (attack == AT_FTILT){
 				set_attack( AT_DTILT );
 				hsp = 3 * spr_dir
 				sound_stop(sfx_krtd_sword_swipe2);
+			} else if (left_stick_down || right_stick_down){
+				window++;
+				window_timer = 0;
 			}
 		}
 	}
@@ -137,11 +143,11 @@ if (attack == AT_UAIR){
 //Ustrong
 if (attack == AT_USTRONG){
 	if (window == 1){
-		if (hsp > 10 && spr_dir == 1){
-			hsp = 9
+		if (hsp > 8 && spr_dir == 1){
+			hsp = 7
 		}
-		if (hsp < -10 && spr_dir == -1){
-			hsp = -9
+		if (hsp < -8 && spr_dir == -1){
+			hsp = -7
 		}
 	}
 	if (window > 2 && window < 7 || (window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))) {
@@ -150,7 +156,7 @@ if (attack == AT_USTRONG){
 }
 
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || (attack == AT_USPECIAL && window == 1)){
     trigger_b_reverse();
 }
 
@@ -226,6 +232,7 @@ if(attack == AT_FSPECIAL) {
     //Startup Logic
     if(window == 1) {
 		draw_indicator = true;
+		dimensional_cape_hit = false;
 		tp_dist = 170
 		set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 9);
 		set_window_value(AT_FSPECIAL, 6, AG_WINDOW_TYPE, 7);
@@ -277,6 +284,9 @@ if(attack == AT_FSPECIAL) {
 		}
 		*/
 		
+		//Old tap attack and dodge code Lol!
+				
+		/*
 		if ((shield_pressed || shield_down) || (attack_pressed || attack_down || left_stick_down || up_stick_down || right_stick_down || down_stick_down) && window_timer > 1){
 			tp_dist = 135
 			if(!joy_pad_idle) { //Set the angle to the direction held on the joystick if a direction is being held.
@@ -329,8 +339,9 @@ if(attack == AT_FSPECIAL) {
 			
 			sangle = tp_angle
 		}
+		*/
 		
-		if (window_timer == 18){
+		if (window_timer == 12){
 			if(!joy_pad_idle) { //Set the angle to the direction held on the joystick if a direction is being held.
 					tp_angle = joy_dir;
 					tp_dont = false;
@@ -344,6 +355,9 @@ if(attack == AT_FSPECIAL) {
 						if (!left_down && right_down && tp_angle > 300 && tp_angle < 360){
 							//print_debug("personally i think that mario");	
 							tp_angle = 1
+						}
+						if (down_down && !left_down && !right_down && tp_angle == 270){
+							tp_angle = 271
 						}
 					} else if !free && (!place_meeting(x + (0*spr_dir), y + 65, asset_get("par_block")) && place_meeting(x + (0*spr_dir), y + 65, asset_get("par_jumpthrough"))){
 						//On Plat
@@ -373,7 +387,7 @@ if(attack == AT_FSPECIAL) {
 			}
 		}
 		
-		if (window_timer == 19){
+		if (window_timer == 12){
 			if (special_down){
 				window = 4
 				window_timer = 0
@@ -434,7 +448,11 @@ if (attack == AT_USPECIAL){
 			shuttle_loop_vsp_lost = 0
 			shuttle_loop_can_rise = true
 			shuttle_loop_can_dive = true
-			shuttle_loop_timer = 120
+			if (has_rune("O")){
+				shuttle_loop_timer = 600
+			} else {
+				shuttle_loop_timer = 120
+			}
 			shuttle_loop_is_rising = false
 		}
 		if (window_timer == 5){
@@ -458,7 +476,7 @@ if (attack == AT_USPECIAL){
 		clamp(hsp, -9.5, 9.5)
 		can_shield = true
 		can_attack = true
-		can_special = true
+		can_special = false
 		if (spr_dir == 1 && shuttle_loop_can_rise == true && !down_down){
 			if (hsp < 6.5){
 				hsp = 6.5
@@ -570,10 +588,15 @@ if (attack == AT_USPECIAL){
 			move_cooldown[AT_USPECIAL] = 9999999;
 		}	
 		//Special
-		if (special_pressed && can_special == true){
+		if (special_pressed && ((up_down || up_pressed) && (!down_down || !down_pressed)|| (!up_down || !up_pressed) && (down_down || down_pressed))){
 			shuttle_loop_timer -= 60
 			spr_angle = 0
 			move_cooldown[AT_USPECIAL] = 9999999;
+			if ((up_down || up_pressed) && (!down_down || !down_pressed)){
+				hsp *= -1
+			} else if ((!up_down || !up_pressed) && (down_down || down_pressed)){
+				set_attack(AT_DSPECIAL);
+			}
 		}			
 		//Landing
 		if (place_meeting(x, y + 1, asset_get("par_block"))){
@@ -625,10 +648,10 @@ if (attack == AT_DSPECIAL){
 			sound_stop(sfx_condor_dive);
 			//
 		}
-		if (condor_dive_timer > 34){
+		if (condor_dive_timer > 28){
 			can_jump = true;
 			can_shield = true;
-		} else if (condor_dive_timer < 34){
+		} else if (condor_dive_timer < 28){
 			can_jump = false;
 			can_shield = false;
 		}

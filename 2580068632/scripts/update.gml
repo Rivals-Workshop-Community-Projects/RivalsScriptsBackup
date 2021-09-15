@@ -41,6 +41,7 @@ switch (state){
 		//
 		wings_out = false;
 		sound_stop(sfx_condor_dive);
+		move_cooldown[AT_FSPECIAL] = 0;
 		move_cooldown[AT_USPECIAL] = 0;
 		move_cooldown[AT_DSPECIAL] = 0;
 		break;
@@ -78,6 +79,7 @@ if (wing_jump_timer != 0){
 }
 
 if (!free){
+	move_cooldown[AT_FSPECIAL] = 0;
 	move_cooldown[AT_USPECIAL] = 0;
 	move_cooldown[AT_DSPECIAL] = 0;
 }

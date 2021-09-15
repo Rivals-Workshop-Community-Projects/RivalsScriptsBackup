@@ -3,20 +3,37 @@
 if (my_hitboxID.attack == AT_FSPECIAL){
 	set_window_value(AT_FSPECIAL, 6, AG_WINDOW_TYPE, 1);
 	set_window_value(AT_FSPECIAL, 9, AG_WINDOW_TYPE, 1);
+	//dimensional_cape_hit = true;
 }
 
-/*
+
 if (my_hitboxID.attack == AT_FAIR) {
 	if (window < 6){
 		hit_player_obj.x -= 6 * hit_player_obj.spr_dir
 		if (hit_player_obj.y > y){
-			hit_player_obj.y -= 12
-		} else if (hit_player_obj.y =< y){
-			hit_player_obj.y += 12
+			hit_player_obj.y -= 6
+		} else if (hit_player_obj.y < y){
+			hit_player_obj.y += 6
 		}
 	}
 }
-*/
+
+if (my_hitboxID.attack == AT_BAIR){
+	if (window < 6){
+		if (hit_player_obj.x > x){
+			hit_player_obj.x -= 6
+		} else if (hit_player_obj.x < x){
+			hit_player_obj.x += 6
+		}
+		//hit_player_obj.x = x - 18 * spr_dir
+		if (hit_player_obj.y > y){
+			hit_player_obj.y -= 6
+		} else if (hit_player_obj.y < y){
+			hit_player_obj.y += 6
+		}
+	}
+}
+
 
 if (my_hitboxID.attack == AT_FAIR) {
 	if (window > 5){
@@ -53,4 +70,8 @@ if (my_hitboxID.attack == AT_USTRONG) {
 			}
 		}
 	}
+}
+
+if (my_hitboxID.attack == AT_FSPECIAL) {
+	move_cooldown[AT_FSPECIAL] = 9999999;
 }

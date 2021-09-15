@@ -1,11 +1,22 @@
 /*
--- V1.14 --
+-- V1.16 --
+
+Bug Fixes:
+- Uspecial wont pull the camera down anymore
+
+Balance Changes:
+- You can now shoot stored projectiles during Uspecial
+- Uspecial Base Knockback Reduced (10->7)
+- Fspecial startup frames reduced (34->28)
+
+
+-- V1.15 --
 
 Bug Fixes:
 - Fixed an issue with the Dash SFX (keyboard players now dont go deaf)
 
 
--- V1.13.1 --
+-- V1.14 --
 
 Bug Fixes:
 - Down Taunt sound now stops when you get hit

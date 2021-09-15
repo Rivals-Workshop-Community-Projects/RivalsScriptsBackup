@@ -523,9 +523,7 @@ with phone{
 	initTipImage(player_id.spr_nspecial_muno, -3, fa_center, 1, c_white, 0);
 	
 	initTip("FSpecial: Dimensional Cape");
-	initTipWords("A omnidirectional teleport. Hold the special button to attack when you reappear.
-	You can press the parry button mid-teleport to instantly reappear, but with a shortened distance.
-	Press the attack button or flick the right stick to do a quick attack, although with shortened distance and lowered kb and damage. Keep in mind that you'll need to still use the left stick to control where you go.");
+	initTipWords("A omnidirectional teleport. Hold the special button to attack when you reappear.");
 	initTipImage(player_id.spr_fspecial_muno, -3, fa_center, 1, c_white, 3);
 	
 	initTip("USpecial: Shuttle Loop");
@@ -678,6 +676,41 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	
+	initPatch("1.7", "14 September, 2021");
+	initPatchWords("Jab
+	~ Meta Knight now slashes 4 times instead of 3 for rapid jab. This doesn’t affect how the move works, it just makes the move’s animation abit better.
+	- Hitboxes should now match the animation.
+	- Rapid Jab Hitbox SDI Multiplier: 1 -> 1.3");
+	initPatchWords("Neutral Air
+	- Landing Lag: 4 -> 5.");
+	initPatchWords("Forward Air
+	- Hitboxes should now match the animation.");
+	initPatchWords("Up Air
+	- Startup: 4 -> 5
+	+ Knockback Scaling: 0.35 -> 0.4");
+	initPatchWords("Down Air
+	- Startup: 4 -> 5
+	+ Damage: 3 -> 4");
+	initPatchWords("Back Air
+	- Hitboxes should now match the animation.
+	+ Should connect a little bit better.");
+	initPatchWords("Up Strong
+	- Lowered DACUS speed.");
+	initPatchWords("Neutral Special (Mach Tornado)
+	- Reduced hitbox size a bit.");
+	initPatchWords("Forward Special (Dimensional Cape)
+	~ Total time inbetween teleport and attack: 20 -> 12
+	- Landing the move won’t allow MK to do another Dimensional Cape until he lands, gets hit, or walljumps.
+	- Removed early attack and dodge inputs.
+	~ Shouldn’t be able to teleport through Air Armada anymore.
+	- Strong Hit Knockback Scaling: 0.85 -> 0.8");
+	initPatchWords("Up Special (Shuttle Loop)
+	- Can’t cancel into Nspecial or Fspecial anymore.
+	+ Reversing the move mid-glide should properly work now.");
+	initPatchWords("Down Special (Meta Condor Dive)
+	- Endlag: 24 -> 26
+	+ Can be jump canceled 6 frames earlier.");
 	
 	initPatch("1.6", "22 August, 2021");
 	initPatchWords("General

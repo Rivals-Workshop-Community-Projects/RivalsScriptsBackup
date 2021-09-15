@@ -29,6 +29,7 @@ fstrong_no_glow = false;
 fstrong_glow_count = 0;
 fstrong_cancel = false;
 taunt_loops = 0;
+usp_nsp = false;
 
 // intro
 introTimer = -4;

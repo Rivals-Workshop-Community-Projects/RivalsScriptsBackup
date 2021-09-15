@@ -3,7 +3,7 @@
 switch (my_hitboxID.attack){
 	case AT_JAB:
 		if (window < 6){
-			window = 7
+			window = 8
 			window_timer = 0
 			destroy_hitboxes();
 		}

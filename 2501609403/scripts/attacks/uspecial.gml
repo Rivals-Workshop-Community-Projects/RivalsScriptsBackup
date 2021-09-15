@@ -29,7 +29,6 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -8);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 
-
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 9);
@@ -40,6 +39,25 @@ set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_SFX_FRAME, 0);
+
+set_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE, 1);
+set_window_value(AT_USPECIAL, 6, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_USPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_USPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 15);
+set_window_value(AT_USPECIAL, 6, AG_WINDOW_SFX_FRAME, 11);
+set_window_value(AT_USPECIAL, 6, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_USPECIAL, 6, AG_WINDOW_SFX, asset_get("sfx_syl_fspecial_bite"));
+
+set_window_value(AT_USPECIAL, 7, AG_WINDOW_TYPE, 1);
+set_window_value(AT_USPECIAL, 7, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_USPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_USPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 18);
+
+set_window_value(AT_USPECIAL, 8, AG_WINDOW_TYPE, 1);
+set_window_value(AT_USPECIAL, 8, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_USPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_USPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, 21);
+
 
 set_num_hitboxes(AT_USPECIAL, 3);
 
@@ -56,7 +74,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 4);
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 80);
 set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_USPECIAL, 1, HG_SHAPE, 0);
-set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, 0.3);
 set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, fx_smallhit1);
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 5);

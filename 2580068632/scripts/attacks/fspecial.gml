@@ -17,7 +17,7 @@ set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 8);
 
 //Teleport
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);

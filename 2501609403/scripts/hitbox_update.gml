@@ -92,13 +92,24 @@ if(attack == AT_NSPECIAL){
         break;
         //Rage Ball
         case(7):
-        if (hitbox_timer == 1){
-            sound_play(asset_get("sfx_boss_fireball_land"))
-        }
-        if(hitbox_timer % 3 == 0){
-            spawn_hit_fx((x+15 * spr_dir), y+10, fx_rageball);
-        }
-        break;
+            if (vsp >= 1){
+                proj_angle = 270*spr_dir
+                if(hitbox_timer % 3 == 0){
+                    spawn_hit_fx((x-10 * spr_dir), y+10, fx_rageball);
+                }
+            } else {
+                if(hitbox_timer % 3 == 0){
+                    spawn_hit_fx((x+15 * spr_dir), y+10, fx_rageball);
+                }
+            }
+            if (hitbox_timer == 1){
+                sound_play(asset_get("sfx_boss_fireball_land"))
+            }
+            if (!free){
+                instance_destroy();
+                exit;
+            }
+            break;
         //Bomb
         //if ur looking at this code PLEASE TELL ME HOW TO MAKE IT ONLY SPAWN THE HIT FX FOR ONE FRAME AREHEWJINFJKSDN
         case(8):
@@ -146,7 +157,8 @@ if(attack == AT_NSPECIAL){
             instance_destroy(); exit;
         }
         //Hit the Bomb
-        nearbyhitbox = collision_circle( x, y , 32, asset_get("pHitBox"), true, true ) 
+        nearbyhitbox = collision_circle( x, y , 32, asset_get("pHitBox"), true, true )
+        if (nearbyhitbox.attack != AT_USPECIAL){
         if nearbyhitbox != noone{
         //Makes a sound if u hit it and stuff
         if (bombhit == false){
@@ -161,7 +173,7 @@ if(attack == AT_NSPECIAL){
         }
         }
             //Decides the angle
-            if (nearbyhitbox.attack != AT_NSPECIAL && nearbyhitbox.attack != AT_BAIR){
+            if (nearbyhitbox.attack != AT_NSPECIAL && nearbyhitbox.attack != AT_BAIR && nearbyhitbox.attack != AT_USPECIAL){
                 if (nearbyhitbox.kb_angle > 0 and nearbyhitbox.kb_angle <= 45) or  nearbyhitbox.kb_angle  == 361{
                     hsp = 6 * nearbyhitbox.spr_dir
                     vsp = -3
@@ -182,6 +194,7 @@ if(attack == AT_NSPECIAL){
                     vsp = -5
             }
             nearbyhitbox = noone;
+        }
         }
         break;
         case(9):
