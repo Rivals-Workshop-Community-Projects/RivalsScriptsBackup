@@ -13,6 +13,8 @@ ncode3 = "and Hume value akin to that of Sai Huang."
 shsp = 0
 svsp = 0
 
+superMove = 14
+
 countered = 0
 djumped = 0 
 

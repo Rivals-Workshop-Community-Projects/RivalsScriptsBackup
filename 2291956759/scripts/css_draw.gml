@@ -50,6 +50,15 @@ var palette_names = [
   "Sai Drip",
   "Susanyes",
   "BLW", 
+  "Batx2", 
+  "Parker", 
+  "Look, a star.", 
+  "300IQ", 
+  "Another anime char idk who", 
+  "Three Wisps", 
+  "Still can't kill", 
+  "The wild from breath", 
+  "Love the character.", 
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

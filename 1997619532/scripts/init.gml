@@ -2,7 +2,7 @@
 intro = 0
 introtimer = -1
 
-
+superMove = 14
 
 hurtbox_spr = asset_get("ex_guy_hurt_box");
 crouchbox_spr = sprite_get("crouch_box");

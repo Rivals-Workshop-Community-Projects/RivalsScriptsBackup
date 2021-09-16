@@ -463,8 +463,12 @@ if superTrue == 1 {
 	 		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -3);
 			set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_VSPEED, -4.3);
 			set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_VSPEED, -5);
-	hit_player_obj.hitpause = 1
-	hit_player_obj.hitstop = 20
+			
+	if hit_player_obj.state_cat == SC_HITSTUN {
+          hit_player_obj.hitpause = true	
+	      hit_player_obj.hitstop = 45
+    }  
+    
 	hit_player_obj.old_hsp = hit_player_obj.hsp
 	hit_player_obj.old_vsp = hit_player_obj.vsp
 	hit_player_obj.canUseCounterTimer = 60

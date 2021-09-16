@@ -110,7 +110,7 @@ if scharge >= 180 {
 		overcharged = 1
 	}
 	
-	if get_gameplay_time() % 60 == 0 {
+	if get_gameplay_time() % 60 == 0 && move_cooldown[AT_UAIR] == 0 && move_cooldown[AT_NAIR] == 0 {
 		take_damage (player, -1, 1)
 	}
 	
@@ -178,6 +178,176 @@ if (can_jump_capped && state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) {
 		can_jump_capped = false;
 	}
 }
+
+
+if "superTrue" in self {
+if superTrue == 1 {
+	
+
+
+	if hit_player_obj == self {
+			var shortest_dist = 9999;
+			var shortest_id = noone;
+			
+			with (asset_get("oPlayer")) {
+				if (player != other.player) {
+					var curr_dist = point_distance(x,y,other.x,other.y);
+					if (curr_dist < shortest_dist) {
+						shortest_dist = curr_dist;
+						shortest_id = id;
+					}
+				}
+			}
+			hit_player_obj = shortest_id
+	}
+
+scharge = 300
+
+
+	if hit_player_obj.state_cat == SC_HITSTUN {
+	   hit_player_obj.hitpause = true
+	   hit_player_obj.hitstop = 15
+	   hit_player_obj.old_hsp = hit_player_obj.hsp
+	   hit_player_obj.old_vsp = hit_player_obj.vsp
+	}
+	
+		
+	 superTrue = 0
+	 hit_player_obj.canUseCounterTimer = 60
+	 
+if free {
+	move_cooldown [AT_NAIR] = 45
+	
+	if left_down && !right_down {
+		spr_dir = -1
+	}
+	if !left_down && right_down {
+		spr_dir = 1
+	}
+	
+
+
+set_attack(AT_FSPECIAL) 
+window = 1
+window_timer = 0
+}
+
+
+if !free {
+	move_cooldown [AT_NAIR] = 120
+	
+	
+	
+scharge = 0
+
+set_attack(AT_NSPECIAL) 
+window = 1
+window_timer = 0
+}
+
+    sound_play(asset_get("sfx_burnconsume"),false,noone,1.2,0.9)
+    
+}    
+}
+
+
+if move_cooldown [AT_NAIR] > 45 && move_cooldown [AT_NAIR] < 105 {
+	
+	hit_player_obj.canUseCounterTimer = 20
+	
+	if move_cooldown [AT_NAIR] == 104 {
+		set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 3);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 30);
+		window = 2
+		window_timer = 0
+    }
+    
+	if move_cooldown [AT_NAIR] % 4 == 0 {
+		sound_play(asset_get("sfx_clairen_hit_strong"))	
+		spawn_hit_fx(x - 50*spr_dir + random_func(1,10,true), y - 10 -  random_func(1,60,true), 305)
+		create_hitbox(AT_NSPECIAL, 1 , x - 50*spr_dir + random_func(1,10,true), y - 10 -  random_func(1,70,true) )
+	}
+
+    if move_cooldown [AT_NAIR] == 46 {
+    	move_cooldown [AT_NAIR] = 0
+    	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 6);
+    	set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 5);
+    }	
+	
+}
+
+if move_cooldown[AT_UAIR] > 20 {
+	
+	hit_player_obj.canUseCounterTimer = 5
+	scharge = 300
+	
+	if move_cooldown[AT_UAIR] == 119 {
+		attack_end();
+	move_cooldown [AT_FSPECIAL] = 0
+	hit_player_obj.hitstop += 6
+	old_hsp = 10*spr_dir
+	hsp = 10*spr_dir
+	hitstop = 0
+	x = hit_player_obj.x + 30*spr_dir
+	spr_dir *= -1
+	y -= 50
+	old_vsp = -12
+	vsp = -12
+	set_attack(AT_FSPECIAL) 
+    window = 1
+    window_timer = 5
+	}
+	
+	if move_cooldown[AT_UAIR] < 115 && move_cooldown[AT_UAIR] > 100 {
+		hsp = 0
+		x += floor( (hit_player_obj.x - x)/4 )
+	}
+	
+	if move_cooldown[AT_UAIR] == 100 {
+		hit_player_obj.hitstop += 6
+		hitstop = 0
+		attack_end();
+	move_cooldown [AT_FSPECIAL] = 0
+	
+	old_hsp = 10*spr_dir
+	hsp = 10*spr_dir
+	hitstop = 0
+	x = hit_player_obj.x + 30*spr_dir
+	spr_dir *= -1
+	old_vsp = -12
+	vsp = -12
+	set_attack(AT_FSPECIAL) 
+    window = 1
+    window_timer = 5
+	}
+	
+	
+	if move_cooldown[AT_UAIR] == 80 {
+			hit_player_obj.hitstop += 30
+		hitstop = 0
+		attack_end();
+	move_cooldown [AT_USPECIAL] = 0
+	
+	old_hsp = 0
+	hsp = 0
+	old_vsp = 0
+	vsp = 0
+	
+
+	x = hit_player_obj.x - 6 * spr_dir
+	y = hit_player_obj.y
+	set_attack(AT_USPECIAL) 
+    window = 4
+    window_timer = 0
+		
+	}
+	
+	if move_cooldown[AT_UAIR] == 60 {
+	   scharge = 0	
+	   move_cooldown[AT_UAIR] = 0 
+	}
+}
+
 
 #define spawn_base_dust(x, y, name, dir)
 var dlen;

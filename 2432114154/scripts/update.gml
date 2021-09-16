@@ -1117,9 +1117,16 @@ if "superTrue" in self {
 	hit_player_obj.old_hsp = hit_player_obj.hsp
 	hit_player_obj.old_vsp = hit_player_obj.vsp
 	
+	if hit_player_obj.state_cat == SC_HITSTUN {
+		hit_player_obj.hitpause = true
+	   hit_player_obj.hitstop = 30
+	}
+	
+	hit_player_obj.canUseCounterTimer = 60
+	
        	spawn_hit_fx(x,y-30,302)
-        move_cooldown[AT_TAUNT_2] = 440
-        set_attack(AT_USPECIAL)
+        move_cooldown[AT_TAUNT_2] = 90
+        set_attack(AT_DSPECIAL)
         window = 1
         window_timer = 0
         inkvictim = hit_player_obj
@@ -1129,14 +1136,14 @@ if "superTrue" in self {
 }
 
 if move_cooldown[AT_TAUNT_2] > 0 {
-	
-	if move_cooldown[AT_TAUNT_2] == 400 {
-    	set_state(PS_IDLE)
-	}
+	hit_player_obj.canUseCounterTimer = 15
+
     move_cooldown[AT_EXTRA_1] = 30
 	     
-	     
-
+	  if has_hit_player {   
+        x -= 4*spr_dir
+		hit_player_obj.x += 6*spr_dir
+	  }
 	     
 	
 	uphit = 1
@@ -1145,10 +1152,12 @@ if move_cooldown[AT_TAUNT_2] > 0 {
 	neutralhit = 1
 	
 	     
-	if hit_player_obj.hitpause == true && hit_player_obj.state_cat == SC_HITSTUN {
-    move_cooldown[AT_TAUNT_2] -= 10
+	if has_hit_player && hit_player_obj.hitpause == true && hit_player_obj.state_cat == SC_HITSTUN && move_cooldown[AT_TAUNT_2] % 4 == 0{
+		
+			hitstopp = 5
 				sound_play(asset_get("mfx_star"))
-		create_hitbox(AT_EXTRA_2,get_gameplay_time()%4 + 1, floor(x - 60 + random_func(1,100,true)), floor(y + 20 - random_func(2,100,true)))
+		create_hitbox(AT_EXTRA_2,1, floor(x - 60 + random_func(1,100,true)), floor(y + 20 - random_func(2,100,true)))
+		create_hitbox(AT_EXTRA_2,1, floor(x + 60 - random_func(1,100,true)), floor(y - 20 + random_func(2,100,true)))
 			
 	}
 	

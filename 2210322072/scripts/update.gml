@@ -326,6 +326,7 @@ if superTrue == 1 {
     }
     
     if hit_player_obj.state_cat == SC_HITSTUN {
+       hit_player_obj.hitpause = true	
 	   hit_player_obj.hitstop = 45
 	}
     

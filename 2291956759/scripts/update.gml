@@ -1322,8 +1322,8 @@ if "superTrue" in self {
     	hit_player_obj.canUseCounterTimer = 60
        if free {
        	spawn_hit_fx(x,y-30,302)
-        move_cooldown[AT_DTILT] = 90 
-        set_attack(AT_NAIR)
+        move_cooldown[AT_DTILT] = 60 
+        set_attack(AT_FAIR)
         window = 1
         window_timer = 0
         vsp = -7
@@ -1339,7 +1339,7 @@ if "superTrue" in self {
 
 
 
-if free && move_cooldown[AT_DTILT] > 20 &&  move_cooldown[AT_DTILT] < 80 {
+if free && move_cooldown[AT_DTILT] > 20 &&  move_cooldown[AT_DTILT] < 50 {
 		 hit_player_obj.canUseCounterTimer = 20
 	hitpause = 0
 	
@@ -1347,7 +1347,7 @@ if free && move_cooldown[AT_DTILT] > 20 &&  move_cooldown[AT_DTILT] < 80 {
 	
 	
 	vsp -= 0.3
-	if move_cooldown[AT_DTILT] % 9 == 0 {
+	if move_cooldown[AT_DTILT] % 12 == 0 {
 		spawn_hit_fx(x,y-30,302)
 		set_attack(AT_FAIR)
         window = 2
@@ -1356,7 +1356,7 @@ if free && move_cooldown[AT_DTILT] > 20 &&  move_cooldown[AT_DTILT] < 80 {
 		            sound_play(sound_get("SpaceCut")) 
 	}
 	
-		if move_cooldown[AT_DTILT] % 9 == 6 {
+		if move_cooldown[AT_DTILT] % 12 == 8 {
 			create_hitbox(AT_DSPECIAL , 17 , x  , y - 30  );
 			spawn_hit_fx(x,y-30,305)
 		set_attack(AT_FAIR)
@@ -1366,7 +1366,7 @@ if free && move_cooldown[AT_DTILT] > 20 &&  move_cooldown[AT_DTILT] < 80 {
 		            sound_play(sound_get("SpaceCut")) 
 	}
 	
-	if move_cooldown[AT_DTILT] % 9 == 3 {
+	if move_cooldown[AT_DTILT] % 12 == 4 {
 		spawn_hit_fx(x,y-30,303)
 		set_attack(AT_FAIR)
         window = 2
@@ -1383,10 +1383,10 @@ if move_cooldown[AT_UTILT] >= 10  {
 	 hit_player_obj.canUseCounterTimer = 20
 	hitpause = 0
     if move_cooldown[AT_UTILT]  > 70 { 	
-    	if hit_player_obj.hitpause == true {
-    		hit_player_obj.hitstop = 60
-    	}
-    	
+    	if hit_player_obj.state_cat == SC_HITSTUN {
+          hit_player_obj.hitpause = true	
+	      hit_player_obj.hitstop = 45
+    	}  
     }
 
 

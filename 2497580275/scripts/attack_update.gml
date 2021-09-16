@@ -114,8 +114,8 @@ if (attack == AT_USPECIAL){
             set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, 0);
             set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 0);
             set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, 0);
-            set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 160);
-            set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 30);
+            //set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 160);
+            //set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 30);
             set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 0);
         }
         else
@@ -123,8 +123,8 @@ if (attack == AT_USPECIAL){
             reset_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED);
             reset_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE);
             reset_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED);
-            reset_hitbox_value(AT_USPECIAL, 1, HG_ANGLE);
-            reset_hitbox_value(AT_USPECIAL, 2, HG_ANGLE);
+            //reset_hitbox_value(AT_USPECIAL, 1, HG_ANGLE);
+            //reset_hitbox_value(AT_USPECIAL, 2, HG_ANGLE);
             reset_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE);
         }
     }

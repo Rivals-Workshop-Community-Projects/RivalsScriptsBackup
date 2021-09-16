@@ -305,6 +305,19 @@ if attack == AT_DSTRONG {
 	
 	
    if window == 5  { 
+   	
+   	if move_cooldown[AT_NAIR] >= 110 {
+   		
+   		hsp = 30*spr_dir
+   			if window_timer == 1 {
+        	  spawn_hit_fx( x   , y , firepar2 )	
+        	}
+        	
+   		if window_timer % 3 = 0 {
+        	spawn_hit_fx( x   , y , dsshadow )
+        }   
+   		
+   	} else {
             move_cooldown[AT_FSPECIAL_AIR] = 999
         	move_cooldown[AT_NSPECIAL_2] = 30
         			firetimer += 1
@@ -333,6 +346,8 @@ if attack == AT_DSTRONG {
         		if window_timer == 6 {
         		window_timer = 2
         	}
+        	
+   	}
    	
    }
 }

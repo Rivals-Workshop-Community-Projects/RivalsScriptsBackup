@@ -620,14 +620,17 @@ if superTrue == 1 {
 			hit_player_obj = shortest_id
 	}
 	
+	if hit_player_obj.state_cat == SC_HITSTUN {
+		hit_player_obj.hitpause = true
+	   hit_player_obj.hitstop = 60
+	}
+	
 	 superTrue = 0
 	 hit_player_obj.canUseCounterTimer = 60
 	 set_num_hitboxes(AT_DSTRONG, 0);
 	move_cooldown [AT_DSTRONG] = 0
 	move_cooldown [AT_NAIR] = 170 
 	
-	hit_player_obj.hitpause = 1
-	hit_player_obj.hitstop = 40
 	hit_player_obj.old_hsp = hit_player_obj.hsp
 	hit_player_obj.old_vsp = hit_player_obj.vsp
 	
@@ -652,7 +655,7 @@ supery = y
 
 if move_cooldown[AT_NAIR] > 110 {
   vsp = 0
-  hsp = 0
+  hsp /= 2
   y = supery
 }
 
@@ -671,14 +674,9 @@ if move_cooldown[AT_NAIR] == 130 {
 
 
 if move_cooldown[AT_NAIR] == 110 {
-	move_cooldown[AT_NAIR] = 0
-		set_attack(AT_NAIR)
-		vsp = -5
-		hsp = 5*spr_dir
-	window = 1
-	window_timer = 0
-    
-	
+	set_state(PS_PRATFALL)
+	vsp = 0
+	hsp = 6*spr_dir
 }
 
 if move_cooldown[AT_UAIR] > 0 {
@@ -824,7 +822,7 @@ if move_cooldown[AT_UAIR] > 0 {
 		set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 8);
 		set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 8);
 		set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 0);
-		set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 50);
+		set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 20);
 
 		spr_dir *= -1
 		sound_play(sound_get("RZ"),false,noone,0.4,1.4 + random_func(1,10,true)/50)

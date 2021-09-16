@@ -7,6 +7,15 @@ if my_hitboxID.attack == AT_JAB or my_hitboxID.attack == AT_NAIR {
 }
 
 
+if my_hitboxID.attack == AT_FSPECIAL && move_cooldown [AT_NAIR] > 0{
+	scharge = 300
+	move_cooldown [AT_NAIR] = 0
+	move_cooldown [AT_UAIR] = 120
+	
+}
+
+
+
 if my_hitboxID.attack == AT_EXTRA_3 {
     set_hitbox_value(AT_DSPECIAL, 1, HG_EXTRA_HITPAUSE, 20);
     set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 20);	

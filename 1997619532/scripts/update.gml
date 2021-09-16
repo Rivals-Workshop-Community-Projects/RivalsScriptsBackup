@@ -577,7 +577,7 @@ if get_gameplay_time() <= 45 {
 
   set_attack (AT_TAUNT)
   window = 2
-  
+  knockback_adj = 1
 }
 
 
@@ -862,9 +862,151 @@ if get_gameplay_time() <= 120 && sakura == 0 and taunt_pressed && get_player_col
 }
 	
 
+if "superTrue" in self {
+if superTrue == 1 {
+	spawn_hit_fx(x,y - 40,SC)
+	
+	if hit_player_obj == self {
+			var shortest_dist = 9999;
+			var shortest_id = noone;
+			
+			with (asset_get("oPlayer")) {
+				if (player != other.player) {
+					var curr_dist = point_distance(x,y,other.x,other.y);
+					if (curr_dist < shortest_dist) {
+						shortest_dist = curr_dist;
+						shortest_id = id;
+					}
+				}
+			}
+			hit_player_obj = shortest_id
+	}
+	
+	if hit_player_obj.state_cat == SC_HITSTUN {
+			hit_player_obj.old_hsp = hit_player_obj.hsp
+	     hit_player_obj.old_vsp = hit_player_obj.vsp
+		hit_player_obj.hitpause = true
+	   hit_player_obj.hitstop = 30
+	}
+	
+	 superTrue = 0
+	 hit_player_obj.canUseCounterTimer = 30
+	move_cooldown [AT_USPECIAL] = 0
+	 
+	
+
+	if left_down && !right_down {
+		spr_dir = -1
+	}
+	if !left_down && right_down {
+		spr_dir = 1
+	}
+
+    if free {
+    	halo = 0
+    	has_hit_player = false
+      set_attack(AT_DAIR) 
+      window = 1
+      window_timer = 0
+      move_cooldown [AT_BAIR] = 120
+      sound_play(sound_get("counterhit"),false,noone,1.2,0.9)
+    }
+    
+    if !free {
+    	halo = 0
+    	has_hit_player = false
+      set_attack(AT_USPECIAL) 
+      window = 1
+      window_timer = 0
+      move_cooldown [AT_NAIR] = 120
+      sound_play(sound_get("counterhit"),false,noone,1.2,0.9)
+    }
+    
+}  
+
+}
+
+
+if  move_cooldown [AT_NAIR] > 0 {
+	hsp = 0
+	if move_cooldown [AT_NAIR] < 110 {
+	    vsp = 0
+	    hitstop = 0
+	    y -= 10
+	    hit_player_obj.hitstop = 0
+	}
 	
 	
+	hit_player_obj.canUseCounterTimer = 60
+	 if move_cooldown [AT_NAIR] = 110 {
+	 	sound_play(sound_get("SpaceCut"),false,noone,1,1)
+	 	create_hitbox(AT_NSPECIAL,2, x,y - 30)
+	 	create_hitbox(AT_NSPECIAL,1, x,y - 30)
+	 }
 	
-	knockback_adj = 1
+	if move_cooldown [AT_NAIR] < 110  && move_cooldown [AT_NAIR] % 7 == 0{
+	 	create_hitbox(AT_NSPECIAL,2, x,y - 30)
+	 	sound_play(sound_get("SpaceCut"),false,noone,1,1)
+	 }
 	
+	if move_cooldown [AT_NAIR] < 110  && move_cooldown [AT_NAIR] % 7 == 4{
+	 	create_hitbox(AT_NSPECIAL,1, x,y - 30)
+	 	sound_play(sound_get("SpaceCutB"),false,noone,1,1)
+	 }
+	 
+	if move_cooldown [AT_NAIR] = 90 {
+		move_cooldown [AT_NAIR] = 0
+		vsp = -5
+		halo = 6
+	}
 	
+}
+	
+if move_cooldown [AT_BAIR] > 0 {
+	
+	hit_player_obj.canUseCounterTimer = 60
+	
+	if move_cooldown [AT_BAIR] > 68 && (has_hit_player or !free) {
+		
+		if has_hit_player {
+		hitstop = 0
+		spawn_hit_fx(x,y - 40,305)
+		x = hit_player_obj.x - 30*spr_dir
+		y = hit_player_obj.y
+		hit_player_obj.hitstop = 120
+		}
+		
+		spawn_hit_fx(x,y - 40,SC)
+		sound_play(sound_get("SpaceCut"),false,noone,1,1)
+		move_cooldown [AT_BAIR] = 55
+		
+	}
+	
+	if move_cooldown [AT_BAIR] == 50 {
+		sound_play(sound_get("SpaceCut"),false,noone,1,1)
+		spawn_hit_fx(x,y - 40,305)
+		hsp = -8*spr_dir
+		vsp = -6
+		old_vsp = -6
+		hitstop = 0
+		set_attack(AT_FAIR) 
+        window = 1
+        window_timer = 0
+	}
+	
+	if move_cooldown [AT_BAIR] == 36 {
+		halo = 6
+		shake_camera(4,4)
+		sound_play(sound_get("counterhit"),false,noone,1,1)
+		
+		create_hitbox(AT_NSPECIAL,2, x ,y + 30)
+		create_hitbox(AT_NSPECIAL,2, x + 20*spr_dir,y - 0)
+		create_hitbox(AT_NSPECIAL,2, x + 35*spr_dir,y - 30)
+		create_hitbox(AT_NSPECIAL,2, x + 20*spr_dir,y - 60)
+		create_hitbox(AT_NSPECIAL,2, x ,y - 90)
+		
+		vsp = -6
+		
+		move_cooldown [AT_BAIR] = 0
+	}
+}

@@ -50,9 +50,9 @@ if ("superTrue" in self) {
 		superTrue = 0
 		
 		if (instance_exists(hit_player_obj))
-			hit_player_obj.canUseCounterTimer = 800
+			hit_player_obj.canUseCounterTimer = 300
 		
-		set_hitbox_value(49, 2, HG_DAMAGE, 25);
+		set_hitbox_value(49, 2, HG_DAMAGE, 12);
 		/// X is roughly how many frames until your super finish if it's an attack, it's unessessary for status effect supers
 		
 		}
