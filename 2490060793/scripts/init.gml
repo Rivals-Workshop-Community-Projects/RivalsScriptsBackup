@@ -1,6 +1,8 @@
 set_color_profile_slot_range( 3, 1, 1, 1 );
 set_color_profile_slot_range( 6, 1, 1, 1 );
 
+is_barr = true;
+
 //intro meter flip
 intro_flip = false;
 
@@ -54,7 +56,7 @@ limit_circle_col = c_yellow;
 orb_value = 15;
 hit_value = 7;
 reduce_value = 7;
-fspec_value = 1;
+fspec_value = 0.8;
 
 has_reduced = false;
 has_increased = false

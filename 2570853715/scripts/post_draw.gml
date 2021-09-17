@@ -12,4 +12,9 @@ with(pHitBox){
 	}
 }
 
+if(state != PS_ROLL_BACKWARD and state != PS_ROLL_FORWARD and state != PS_TECH_GROUND and state != PS_TECH_FORWARD and state != PS_TECH_BACKWARD and state != PS_WALL_TECH and state != PS_AIR_DODGE and state != PS_PARRY and (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND)){
+	if(attack == AT_USTRONG){
+		draw_sprite_ext(sprite_get("ustrong_overlay"), image_index, x, y, spr_dir*2, 2, 0, c_white, 1);
+	}
+}
 user_event(12);

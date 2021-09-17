@@ -435,6 +435,16 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	 initPatch("0.10", "16, September 2021");
+	 initPatchWords("Reduced damage output, kill power, and improved readability.
+
+  Chainsaw no longer changes color with alts during startup of ustrong.
+  Improved readability of ustrong and fstrong teleports.
+- Dstrong: Base Knockback: 8 > 7
+- Utilt: Damage: 8 > 6
+- UAir: Sour Spot Damage: 8 > 6
+- UAir: Sweet Spot Damage: 12 > 9
+- Fair: Sweet Spot Damage: 11 > 9");
 	 initPatch("0.9", "10, September 2021");
 	 initPatchWords("DAttack: Animation tweaked.
 DAttack: Base Hitpause 7 > 8

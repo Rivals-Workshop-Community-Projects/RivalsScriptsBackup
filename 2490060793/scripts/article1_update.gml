@@ -6,6 +6,12 @@ if (timer == 4 && !player_id.has_hit) || (hitstop == 0 && hitpause == true) {
 	var orb_hitbox = create_hitbox(AT_NSPECIAL, 3, round(x), round(y));
         orb_hitbox.owner = id;
         orb_hitbox.spr_dir = sign(hsp);
+        //orb_hitbox.can_hit_self = (last_hit == player_id)
+        
+        if last_hit != noone {
+        	orb_hitbox.can_hit[last_hit.player] = false;
+        	orb_hitbox.can_hit_self = (last_hit != player_id)
+        }
 }
 
 if die {
@@ -26,7 +32,7 @@ if timer < 30 && image_index < 4 {
 	if image_index == 7 {
 		pulse = false;
 		pulse_timer = 0;
-		pulse_cooldown = 20;
+		pulse_cooldown = 16;
 		sprite_index = sprite_get("orb")
 		image_index = 4;
 	}
@@ -104,31 +110,18 @@ if instance_place(x, y, pHitBox) {
 }
 
 if (hitbox != noone) && (timer > 10) {
+	var baseHitpause = hitbox.hitpause;
+    var hitpauseScaling = hitbox.hitpause_growth
+    var extraHitpause = hitbox.extra_hitpause
+        
     with hitbox.player_id {
         var hitboxParent = get_hitbox_value(hitbox.attack, hitbox.hbox_num, HG_PARENT_HITBOX);
         var hboxNum = hitbox.hbox_num;
         if (hitboxParent != 0) {
             hboxNum = hitboxParent;
         }
-        var baseHitpause = get_hitbox_value(hitbox.attack, hboxNum, HG_BASE_HITPAUSE);
-        var hitboxLifetime = get_hitbox_value(hitbox.attack, hboxNum, HG_LIFETIME);
-        var hitpauseScaling = get_hitbox_value(hitbox.attack, hboxNum, HG_HITPAUSE_SCALING);
-        var extraHitpause = get_hitbox_value(hitbox.attack, hboxNum, HG_EXTRA_HITPAUSE);
+        
         var _hitpause = baseHitpause + (get_player_damage(hit_player+1) * hitpauseScaling * 0.05);
-        var hitboxGroup = get_hitbox_value(hitbox.attack, hitbox.hbox_num, HG_HITBOX_GROUP);
-        var hitboxSound = get_hitbox_value(hitbox.attack, hboxNum, HG_HIT_SFX);
-        var hitboxAngle = get_hitbox_value(hitbox.attack, hboxNum, HG_ANGLE);
-        var hitboxAngleFlipper = get_hitbox_value(hitbox.attack, hboxNum, HG_ANGLE_FLIPPER);
-        var hitboxDamage = get_hitbox_value(hitbox.attack, hboxNum, HG_DAMAGE);
-        
-        var baseKnockback = get_hitbox_value(hitbox.attack, hboxNum, HG_BASE_KNOCKBACK);
-        var knockbackScaling = get_hitbox_value(hitbox.attack, hboxNum, HG_KNOCKBACK_SCALING);
-        var hitstunMultiplier = get_hitbox_value(hitbox.attack, hboxNum, HG_HITSTUN_MULTIPLIER);
-        var hitboxSprDir = spr_dir;
-        
-        var hitboxEffect = get_hitbox_value(hitbox.attack, hboxNum, HG_EFFECT);
-        
-        var hitboxCat = get_attack_value(hitbox.attack, AG_CATEGORY);
         
         var hitboxDistX = other.x - hitbox.x;
         var hitboxDistY = other.y - hitbox.y;
@@ -136,8 +129,23 @@ if (hitbox != noone) && (timer > 10) {
         var oppDistX = other.x - x;
         var oppDistY = other.y - y;
         
+        var hitboxSprDir = spr_dir;
         var oppHsp = hsp;
     }
+    
+    var hitboxGroup = hitbox.hbox_group;
+    var hitboxSound = hitbox.sound_effect;
+    var hitboxAngle = hitbox.kb_angle;
+    var hitboxAngleFlipper = hitbox.hit_flipper;
+    var hitboxDamage = hitbox.damage;
+    
+    var baseKnockback = hitbox.kb_value;
+    var knockbackScaling = hitbox.kb_scale;
+    var hitstunMultiplier = hitbox.hitstun_factor;
+    
+    var hitboxEffect = hitbox.effect;
+    
+    var hitboxCat = hitbox.type;
     
     if (hitbox != prevHitboxID && (hitboxGroup != prevHitboxGroup || hitboxGroup == -1)) {
         var playerHitstun = (baseKnockback*4*((knockback_adj-1)*0.6 + 1) + damage*0.12*knockbackScaling*4*0.65*knockback_adj);
@@ -152,16 +160,20 @@ if (hitbox != noone) && (timer > 10) {
         prevHitboxAttack = hitbox.attack;
         prevHitboxGroup = hitboxGroup;
         
+        var is_barrbox = ("is_barr" in hitbox.player_id && hitbox.player_id.is_barr == true)
+        
         var move_orb = false;
-        if hitbox.player_id == player_id && (hitbox.attack == AT_BAIR && hitbox.hbox_num == 1) || (hitbox.attack == AT_DATTACK && hitbox.hbox_num == 2) || (hitbox.attack == AT_JAB && hitbox.hbox_num == 1) || hitbox.attack == AT_DTILT {
+        if is_barrbox && (hitbox.attack == AT_BAIR && hitbox.hbox_num == 1) || (hitbox.attack == AT_DATTACK && hitbox.hbox_num == 2) || (hitbox.attack == AT_JAB && hitbox.hbox_num == 1) || hitbox.attack == AT_DTILT {
         	move_orb = true;
         }
         
         var is_opp = false;
 		if hitbox.player_id != player_id is_opp = true;
         
+        last_hit = hitbox.player_id
+        
         var is_tipper = false;
-        if (hitbox.player_id == player_id && !(hitbox.attack == AT_NSPECIAL || hitbox.attack == AT_DSPECIAL || hitbox.attack == AT_DTILT || hitbox.attack == AT_BAIR || hitbox.attack == AT_DATTACK || (hitbox.attack == AT_JAB && hitbox.hbox_num == 1))) {
+        if (is_barrbox && !(hitbox.attack == AT_NSPECIAL || hitbox.attack == AT_DSPECIAL || hitbox.attack == AT_DTILT || hitbox.attack == AT_BAIR || hitbox.attack == AT_DATTACK || (hitbox.attack == AT_JAB && hitbox.hbox_num == 1))) {
         	is_tipper = true;
         }
         
@@ -307,7 +319,7 @@ if (hitbox != noone) && (timer > 10) {
 		        shake_camera(10,2)
 				instance_destroy(other)
             	exit;
-            } else if is_opp && hitbox.type == 1 {
+            } else if is_opp && !is_barrbox && hitbox.type == 1 {
             	with other {
             		spawn_hit_fx(x, y, player_id.orb_explosion_vfx)
             	}

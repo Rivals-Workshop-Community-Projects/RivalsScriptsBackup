@@ -108,7 +108,7 @@ if attack == AT_FSPECIAL {
         
         hsp = clamp(hsp, -4, 4)
         vsp = clamp(vsp, -4, 4)
-        if strong_charge != 0 && strong_charge mod 2 == 0 {
+        if strong_charge != 0 && strong_charge mod 1 == 0 {
             meter_cur -= fspec_value;
         }
         set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED, 15 + floor(strong_charge/8));

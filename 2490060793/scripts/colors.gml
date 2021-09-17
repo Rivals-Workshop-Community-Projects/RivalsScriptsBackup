@@ -26,7 +26,7 @@ set_color_profile_slot_range( 5, 37, 20, 21 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 24 );
+set_num_palettes( 25 );
 
 // Yoyo
 set_color_profile_slot( 1, 0, 63, 63, 116 ); //Body main
@@ -124,45 +124,45 @@ set_color_profile_slot( 12, 3, 250, 250, 250 ); //Meter White
 set_color_profile_slot( 12, 4, 255, 0, 0 ); //Meter main
 set_color_profile_slot( 12, 5, 204, 86, 43 ); //Sparks
 
+// Abyss
+set_color_profile_slot( 13, 0, 70, 39, 94 ); //Body main
+set_color_profile_slot( 13, 1, 42, 23, 59 ); //Body shade
+set_color_profile_slot( 13, 2, 213, 100, 227 ); //Eyes
+set_color_profile_slot( 13, 3, 255, 255, 255 ); //Meter White
+set_color_profile_slot( 13, 4, 210, 73, 227 ); //Meter main
+set_color_profile_slot( 13, 5, 242, 161, 252 ); //Sparks
+
 // Early Access
-set_color_profile_slot( 13, 0, 168, 186, 74 ); //Body main
-set_color_profile_slot( 13, 1, 168, 186, 74 ); //Body shade
-set_color_profile_slot( 13, 2, 210, 226, 155 ); //Eyes
-set_color_profile_slot( 13, 3, 225, 242, 166 ); //Meter White
-set_color_profile_slot( 13, 4, 82, 122, 62 ); //Meter main
-set_color_profile_slot( 13, 5, 174, 191, 113 ); //Sparks
+set_color_profile_slot( 14, 0, 168, 186, 74 ); //Body main
+set_color_profile_slot( 14, 1, 168, 186, 74 ); //Body shade
+set_color_profile_slot( 14, 2, 210, 226, 155 ); //Eyes
+set_color_profile_slot( 14, 3, 225, 242, 166 ); //Meter White
+set_color_profile_slot( 14, 4, 82, 122, 62 ); //Meter main
+set_color_profile_slot( 14, 5, 174, 191, 113 ); //Sparks
 
 // Mr Red
-set_color_profile_slot( 14, 0, 222, 24, 24 ); //Body main
-set_color_profile_slot( 14, 1, 148, 2, 12 ); //Body shade
-set_color_profile_slot( 14, 2, 250, 255, 255 ); //Eyes
-set_color_profile_slot( 14, 3, 214, 250, 255 ); //Meter White
-set_color_profile_slot( 14, 4, 242, 0, 255 ); //Meter main
-set_color_profile_slot( 14, 5, 143, 150, 255 ); //Sparks
+set_color_profile_slot( 15, 0, 222, 24, 24 ); //Body main
+set_color_profile_slot( 15, 1, 148, 2, 12 ); //Body shade
+set_color_profile_slot( 15, 2, 250, 255, 255 ); //Eyes
+set_color_profile_slot( 15, 3, 214, 250, 255 ); //Meter White
+set_color_profile_slot( 15, 4, 242, 0, 255 ); //Meter main
+set_color_profile_slot( 15, 5, 143, 150, 255 ); //Sparks
 
 // Henry Stickmin
-set_color_profile_slot( 15, 0, 242, 242, 242 ); //Body main
-set_color_profile_slot( 15, 1, 173, 173, 186 ); //Body shade
-set_color_profile_slot( 15, 2, 0, 0, 0 ); //Eyes
-set_color_profile_slot( 15, 3, 247, 255, 255 ); //Meter White
-set_color_profile_slot( 15, 4, 11, 160, 219 ); //Meter main
-set_color_profile_slot( 15, 5, 116, 206, 227 ); //Sparks
+set_color_profile_slot( 16, 0, 242, 242, 242 ); //Body main
+set_color_profile_slot( 16, 1, 173, 173, 186 ); //Body shade
+set_color_profile_slot( 16, 2, 0, 0, 0 ); //Eyes
+set_color_profile_slot( 16, 3, 247, 255, 255 ); //Meter White
+set_color_profile_slot( 16, 4, 11, 160, 219 ); //Meter main
+set_color_profile_slot( 16, 5, 116, 206, 227 ); //Sparks
 
 // The Chosen One
-set_color_profile_slot( 16, 0, 41, 41, 41 ); //Body main
-set_color_profile_slot( 16, 1, 18, 18, 18 ); //Body shade
-set_color_profile_slot( 16, 2, 250, 255, 255 ); //Eyes
-set_color_profile_slot( 16, 3, 255, 255, 255 ); //Meter White
-set_color_profile_slot( 16, 4, 0, 255, 238 ); //Meter main
-set_color_profile_slot( 16, 5, 201, 255, 252 ); //Sparks
-
-// Green
-set_color_profile_slot( 17, 0, 90, 214, 32 ); //Body main
-set_color_profile_slot( 17, 1, 18, 173, 16 ); //Body shade
+set_color_profile_slot( 17, 0, 41, 41, 41 ); //Body main
+set_color_profile_slot( 17, 1, 18, 18, 18 ); //Body shade
 set_color_profile_slot( 17, 2, 250, 255, 255 ); //Eyes
 set_color_profile_slot( 17, 3, 255, 255, 255 ); //Meter White
-set_color_profile_slot( 17, 4, 104, 19, 214 ); //Meter main
-set_color_profile_slot( 17, 5, 98, 36, 179 ); //Sparks
+set_color_profile_slot( 17, 4, 0, 255, 238 ); //Meter main
+set_color_profile_slot( 17, 5, 201, 255, 252 ); //Sparks
 
 // Gold
 set_color_profile_slot( 18, 0, 240, 152, 0 ); //Body main
@@ -172,45 +172,87 @@ set_color_profile_slot( 18, 3, 255, 255, 255 ); //Meter White
 set_color_profile_slot( 18, 4, 252, 80, 28 ); //Meter main
 set_color_profile_slot( 18, 5, 250, 127, 45 ); //Sparks
 
-// Brown
-set_color_profile_slot( 19, 0, 115, 70, 43 ); //Body main
-set_color_profile_slot( 19, 1, 84, 29, 18 ); //Body shade
+// Green
+set_color_profile_slot( 19, 0, 90, 214, 32 ); //Body main
+set_color_profile_slot( 19, 1, 18, 173, 16 ); //Body shade
 set_color_profile_slot( 19, 2, 250, 255, 255 ); //Eyes
 set_color_profile_slot( 19, 3, 255, 255, 255 ); //Meter White
-set_color_profile_slot( 19, 4, 235, 180, 5 ); //Meter main
-set_color_profile_slot( 19, 5, 230, 140, 23 ); //Sparks
+set_color_profile_slot( 19, 4, 104, 19, 214 ); //Meter main
+set_color_profile_slot( 19, 5, 98, 36, 179 ); //Sparks
+
+// Brown
+set_color_profile_slot( 20, 0, 115, 70, 43 ); //Body main
+set_color_profile_slot( 20, 1, 84, 29, 18 ); //Body shade
+set_color_profile_slot( 20, 2, 250, 255, 255 ); //Eyes
+set_color_profile_slot( 20, 3, 255, 255, 255 ); //Meter White
+set_color_profile_slot( 20, 4, 235, 180, 5 ); //Meter main
+set_color_profile_slot( 20, 5, 230, 140, 23 ); //Sparks
 
 // Yellow
-set_color_profile_slot( 20, 0, 255, 213, 0 ); //Body main
-set_color_profile_slot( 20, 1, 240, 152, 0 ); //Body shade
-set_color_profile_slot( 20, 2, 37, 35, 41 ); //Eyes
-set_color_profile_slot( 20, 3, 255, 255, 255 ); //Meter White
-set_color_profile_slot( 20, 4, 34, 69, 181 ); //Meter main
-set_color_profile_slot( 20, 5, 67, 114, 196 ); //Sparks
+set_color_profile_slot( 21, 0, 255, 213, 0 ); //Body main
+set_color_profile_slot( 21, 1, 240, 152, 0 ); //Body shade
+set_color_profile_slot( 21, 2, 37, 35, 41 ); //Eyes
+set_color_profile_slot( 21, 3, 255, 255, 255 ); //Meter White
+set_color_profile_slot( 21, 4, 34, 69, 181 ); //Meter main
+set_color_profile_slot( 21, 5, 67, 114, 196 ); //Sparks
 
 // Pink
-set_color_profile_slot( 21, 0, 255, 158, 242 ); //Body main
-set_color_profile_slot( 21, 1, 230, 101, 175 ); //Body shade
-set_color_profile_slot( 21, 2, 250, 255, 255 ); //Eyes
-set_color_profile_slot( 21, 3, 255, 255, 255 ); //Meter White
-set_color_profile_slot( 21, 4, 49, 219, 232 ); //Meter main
-set_color_profile_slot( 21, 5, 129, 227, 230 ); //Sparks
+set_color_profile_slot( 22, 0, 255, 158, 242 ); //Body main
+set_color_profile_slot( 22, 1, 230, 101, 175 ); //Body shade
+set_color_profile_slot( 22, 2, 250, 255, 255 ); //Eyes
+set_color_profile_slot( 22, 3, 255, 255, 255 ); //Meter White
+set_color_profile_slot( 22, 4, 49, 219, 232 ); //Meter main
+set_color_profile_slot( 22, 5, 129, 227, 230 ); //Sparks
 
 // Clairen
-set_color_profile_slot( 22, 0, 66, 66, 66 ); //Body main
-set_color_profile_slot( 22, 1, 41, 41, 41 ); //Body shade
-set_color_profile_slot( 22, 2, 214, 214, 214 ); //Eyes
-set_color_profile_slot( 22, 3, 240, 22, 142 ); //Meter White
-set_color_profile_slot( 22, 4, 69, 255, 255 ); //Meter main
-set_color_profile_slot( 22, 5, 158, 9, 143 ); //Sparks
+set_color_profile_slot( 23, 0, 66, 66, 66 ); //Body main
+set_color_profile_slot( 23, 1, 41, 41, 41 ); //Body shade
+set_color_profile_slot( 23, 2, 214, 214, 214 ); //Eyes
+set_color_profile_slot( 23, 3, 240, 22, 142 ); //Meter White
+set_color_profile_slot( 23, 4, 69, 255, 255 ); //Meter main
+set_color_profile_slot( 23, 5, 158, 9, 143 ); //Sparks
 
-// Riptide
-set_color_profile_slot( 23, 0, 235, 134, 59 ); //Body main
-set_color_profile_slot( 23, 1, 196, 63, 22 ); //Body shade
-set_color_profile_slot( 23, 2, 242, 228, 214 ); //Eyes
-set_color_profile_slot( 23, 3, 255, 218, 117 ); //Meter White
-set_color_profile_slot( 23, 4, 0, 156, 204 ); //Meter main
-set_color_profile_slot( 23, 5, 255, 212, 133 ); //Sparks
+switch(get_match_setting(SET_SEASON)){
+    case 1:
+    // Spring
+    set_color_profile_slot( 24, 0, 255, 235, 252 ); //Body main
+    set_color_profile_slot( 24, 1, 227, 136, 215 ); //Body shade
+    set_color_profile_slot( 24, 2, 255, 107, 153 ); //Eyes
+    set_color_profile_slot( 24, 3, 242, 255, 255 ); //Meter White
+    set_color_profile_slot( 24, 4, 242, 58, 163 ); //Meter main
+    set_color_profile_slot( 24, 5, 242, 143, 199 ); //Sparks
+    break;
+    
+    case 2:
+    // Summer
+    set_color_profile_slot( 24, 0, 235, 134, 59 ); //Body main
+    set_color_profile_slot( 24, 1, 196, 63, 22 ); //Body shade
+    set_color_profile_slot( 24, 2, 242, 228, 214 ); //Eyes
+    set_color_profile_slot( 24, 3, 255, 218, 117 ); //Meter White
+    set_color_profile_slot( 24, 4, 0, 156, 204 ); //Meter main
+    set_color_profile_slot( 24, 5, 255, 212, 133 ); //Sparks
+    break;
+    
+    case 3:
+    // Autumn
+    set_color_profile_slot( 24, 0, 55, 31, 94 ); //Body main
+    set_color_profile_slot( 24, 1, 28, 11, 56 ); //Body shade
+    set_color_profile_slot( 24, 2, 158, 4, 50 ); //Eyes
+    set_color_profile_slot( 24, 3, 228, 227, 255 ); //Meter White
+    set_color_profile_slot( 24, 4, 186, 5, 59 ); //Meter main
+    set_color_profile_slot( 24, 5, 247, 146, 176 ); //Sparks
+    break;
+    
+    case 4:
+    // Winter
+    set_color_profile_slot( 24, 0, 166, 254, 255 ); //Body main
+    set_color_profile_slot( 24, 1, 78, 163, 212 ); //Body shade
+    set_color_profile_slot( 24, 2, 250, 255, 255 ); //Eyes
+    set_color_profile_slot( 24, 3, 242, 255, 255 ); //Meter White
+    set_color_profile_slot( 24, 4, 89, 136, 227 ); //Meter main
+    set_color_profile_slot( 24, 5, 161, 191, 247 ); //Sparks
+    break;
+}
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

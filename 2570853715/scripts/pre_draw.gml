@@ -54,42 +54,42 @@ if(state != PS_ROLL_BACKWARD and state != PS_ROLL_FORWARD and state != PS_TECH_G
 	} else if(attack == AT_FSTRONG){
 		if(window == 1){
 			gpu_set_blendmode_ext(bm_inv_dest_colour, bm_inv_src_colour );
-			draw_sprite_ext(sprite_get("shine_inner"), round(window_timer/4), x+spr_dir*2, y-32, 1+small_sprites, 1+small_sprites, 0, c_white, 1);
+			draw_sprite_ext(sprite_get("shine_fstrong"), round(window_timer/4), x+spr_dir*2, y-24, 1+small_sprites, 1+small_sprites, 0, c_white, 1);
 			gpu_set_blendmode(bm_normal);
 		} else if (window == 2){
 			if(window_timer < 6){
 				gpu_set_blendmode_ext(bm_inv_dest_colour, bm_inv_src_colour );
-				draw_sprite_ext(sprite_get("shine_inner"), round(3 - window_timer/3), x+spr_dir*2, y-32, 1+small_sprites, 1+small_sprites, 0, c_white, 1);
+				draw_sprite_ext(sprite_get("shine_fstrong"), round(3 - window_timer/3), x+spr_dir*2, y-24, 1+small_sprites, 1+small_sprites, 0, c_white, 1);
 				gpu_set_blendmode(bm_normal);
 			} else  if(window_timer > 8){
 				gpu_set_blendmode_ext(bm_inv_dest_colour, bm_inv_src_colour );
-				draw_sprite_ext(sprite_get("shine_inner"), round((window_timer-8)/3), x-spr_dir*16, y-32, 1+small_sprites, 1+small_sprites, 0, c_white, 1);
+				draw_sprite_ext(sprite_get("shine_fstrong"), round((window_timer-8)/3), x-spr_dir*16, y-24, 1+small_sprites, 1+small_sprites, 0, c_white, 1);
 				gpu_set_blendmode(bm_normal);
 			}
 		} else if (window == 3 and window_timer < 8){
 			gpu_set_blendmode_ext(bm_inv_dest_colour, bm_inv_src_colour );
-			draw_sprite_ext(sprite_get("shine_inner"), round(4-window_timer/3), x-spr_dir*16, y-32, 1+small_sprites, 1+small_sprites, 0, c_white, 1);
+			draw_sprite_ext(sprite_get("shine_fstrong"), round(4-window_timer/3), x-spr_dir*16, y-24, 1+small_sprites, 1+small_sprites, 0, c_white, 1);
 			gpu_set_blendmode(bm_normal);
 		} 
 	} else if(attack == AT_USTRONG){
 		if(window == 1){
 			gpu_set_blendmode_ext(bm_inv_dest_colour, bm_inv_src_colour );
-			draw_sprite_ext(sprite_get("shine_inner"), round(window_timer), x+spr_dir*2, y-32, 1+small_sprites, 1+small_sprites, 0, c_white, 1);
+			draw_sprite_ext(sprite_get("shine_ustrong"), round(window_timer), x+spr_dir*2, y-32, 1+small_sprites, 1+small_sprites, 0, c_white, 1);
 			gpu_set_blendmode(bm_normal);
 		} else if (window == 2){
 			if(window_timer < 4){
 				gpu_set_blendmode_ext(bm_inv_dest_colour, bm_inv_src_colour );
-				draw_sprite_ext(sprite_get("shine_inner"), round(2 - window_timer/3), x+spr_dir*2, y-32, 1+small_sprites, 1+small_sprites, 0, c_white, 1);
+				draw_sprite_ext(sprite_get("shine_ustrong"), round(2 - window_timer/3), x+spr_dir*2, y-32, 1+small_sprites, 1+small_sprites, 0, c_white, 1);
 				gpu_set_blendmode(bm_normal);
 			} else if(window_timer > 6){
 				gpu_set_blendmode_ext(bm_inv_dest_colour, bm_inv_src_colour );
-				draw_sprite_ext(sprite_get("shine_inner"), round((window_timer-6)/3), x+spr_dir*2, y-32, 1+small_sprites, 1+small_sprites, 0, c_white, 1);
+				draw_sprite_ext(sprite_get("shine_ustrong"), round((window_timer-6)/3), x+spr_dir*2, y-32, 1+small_sprites, 1+small_sprites, 0, c_white, 1);
 				gpu_set_blendmode(bm_normal);
 			}
 		} else if (window == 3){
 			if(window_timer < 5){
 				gpu_set_blendmode_ext(bm_inv_dest_colour, bm_inv_src_colour );
-				draw_sprite_ext(sprite_get("shine_inner"), round(3-(window_timer)/2), x+spr_dir*2, y-32, 1+small_sprites, 1+small_sprites, 0, c_white, 1);
+				draw_sprite_ext(sprite_get("shine_ustrong"), round(3-(window_timer)/2), x+spr_dir*2, y-32, 1+small_sprites, 1+small_sprites, 0, c_white, 1);
 				gpu_set_blendmode(bm_normal);
 			} 
 		} 

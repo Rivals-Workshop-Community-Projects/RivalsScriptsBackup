@@ -63,7 +63,7 @@ set_window_value(AT_FSPECIAL, 5, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.3);
 
 //dshfkahfkjadjf
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_TYPE, 7);
-set_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_HAS_WHIFFLAG, 1);

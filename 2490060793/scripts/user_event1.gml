@@ -38,7 +38,7 @@ patch_ver = "1.21";
 patch_day = "2";
 patch_month = "APR";
  
-var num_alts = 23;
+var num_alts = 25;
 var alt_cur = get_player_color(player);
  
  
@@ -58,17 +58,18 @@ alt_name[9]  = "Chuck";
 alt_name[10] = "Exodus";
 alt_name[11] = "The Second Coming";
 alt_name[12] = "Rainbow";
-alt_name[13] = "Early Access";
-alt_name[14] = "Mr Red";
-alt_name[15] = "Henry Stickmin";
-alt_name[16] = "The Chosen One";
-alt_name[17] = "Green";
+alt_name[13] = "Abyss";
+alt_name[14] = "Early Access";
+alt_name[15] = "Mr Red";
+alt_name[16] = "Henry Stickmin";
+alt_name[17] = "The Chosen One";
 alt_name[18] = "Gold";
-alt_name[19] = "Brown";
-alt_name[20] = "Yellow";
-alt_name[21] = "Pink";
-alt_name[22] = "Clairen";
-alt_name[23] = "Riptide";
+alt_name[19] = "Green";
+alt_name[20] = "Brown";
+alt_name[21] = "Yellow";
+alt_name[22] = "Pink";
+alt_name[23] = "Clairen";
+alt_name[24] = "Seasonal";
  
  
  
