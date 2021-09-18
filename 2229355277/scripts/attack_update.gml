@@ -455,12 +455,6 @@ if (attack == AT_FSPECIAL)
 }
 
 if (attack == AT_BAIR){
-  if window == 2 and !has_hit{
-    set_window_value(AT_BAIR, 3, AG_WINDOW_HSPEED_TYPE, 0);
-    set_window_value(AT_BAIR, 3, AG_WINDOW_HSPEED, 2);
-    set_window_value(AT_BAIR, 3, AG_WINDOW_VSPEED_TYPE, 0);
-    set_window_value(AT_BAIR, 3, AG_WINDOW_VSPEED, 1);
-  }
   if window == 3 and has_hit and !was_parried{
   	can_jump = true;
   }
@@ -595,7 +589,7 @@ if attack == AT_GUILLOTINE{
 // Spells and their effects (Mostly big babies)
 //Thunder
 if attack == AT_THUNDER{
-	if window == 1 and window_timer == 1{
+	if window == 1 and window_timer == 6{
 		var newfx = spawn_hit_fx(x, y, fx_sprites[2]);
 		newfx.depth = depth+1;
 	}
@@ -626,7 +620,7 @@ if attack == AT_GUILLOTINE{
 }
 // crossfire
 if attack == AT_CROSSFIRE{
-	if window == 1 and window_timer == 5{
+	if window == 1 and window_timer == 9{
 		var p;
 		for(p = 1; p < 17; p++){
 			var newfx = spawn_hit_fx(x + get_hitbox_value(AT_CROSSFIRE, p, HG_HITBOX_X), y + get_hitbox_value(AT_CROSSFIRE, p, HG_HITBOX_Y), fx_sprites[6]);

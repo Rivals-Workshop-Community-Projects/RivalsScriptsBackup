@@ -37,7 +37,7 @@ if(rock_state != ROCK.KABOOM and rock_state != ROCK.MOVE and rock_state != ROCK.
 switch rock_state{
     //setes up movement before the timer starts ticking
     case ROCK.INIT:
-        rock_move_timer_max = max(15, min(point_distance(x,y, rock_goal_x, rock_goal_y)/25, 45));
+        rock_move_timer_max = max(8, min(point_distance(x,y, rock_goal_x, rock_goal_y)/34, 24));
         rock_init_x = x;
         rock_init_y = y;
         rock_y_offset = -(abs(rock_init_x - rock_goal_x))/10;

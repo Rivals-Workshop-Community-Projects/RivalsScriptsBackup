@@ -13,6 +13,30 @@ if get_gameplay_time() < 120 and futurechanges{
 	}
 }
 
+if get_gameplay_time() < 120{
+	if get_player_color(player) == 29{
+		if attack_pressed and !change_color{
+			change_color = true;
+			sound_play(asset_get("mfx_star"))
+		}
+	}
+}
+
+if change_color{
+	switch(get_player_color(player)){
+		case 29:
+			set_character_color_slot( 0, 255, 247, 1 ); //Fur
+			set_character_color_slot( 1, 209, 189, 76 ); //Hair/Tail
+			set_character_color_slot( 2, 99, 211, 171 ); //Floof
+			set_character_color_slot( 3, 89, 150, 93 ); //Jacket
+			set_character_color_slot( 4, 54, 109, 67 ); //Skirt
+			set_character_color_slot( 5, 54, 109, 67 ); //Boots
+			set_character_color_slot( 6, 125, 225, 240 ); //Umbrella
+			set_character_color_slot( 7, 255, 247, 1 ); //IceIceBaby
+			break;
+	}
+}
+
 if get_gameplay_time() == 2{
 	if taunt_down{
 		sound_play(asset_get("mfx_star"));
@@ -104,6 +128,7 @@ if state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND{
 	}
 	charging = false;
 	uspec_cool_time = 0;
+	do_dairhit2 = false;
 	//max_fall = 9.5;		// 6    -  11
 }
 

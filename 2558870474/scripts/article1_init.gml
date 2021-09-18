@@ -26,9 +26,9 @@ hbox = noone;
 
 // Sprites
 // Rune (Speed)
-sprite[0]     = player_id.spr_speedrune_spawn;      // Summoning
-sprite[1]     = player_id.spr_speedrune_active;     // Active
-sprite[2]     = player_id.spr_speedrune_shatter;    // Shatter
+sprite[0]     = player_id.spr_rune_spawn  ;      // Summoning
+sprite[1]     = player_id.spr_rune_active ;     // Active
+sprite[2]     = player_id.spr_rune_shatter;    // Shatter
 sprite[3]     = asset_get("empty_sprite");          // Despawning
 
 // Rune (Explosion)
@@ -45,10 +45,17 @@ offscreen_track = 0;
 
 // Animation Handling
 // Speed Rune
-anim_type[0] = 5;
-anim_type[1] = 2;
-anim_type[2] = 4;
-anim_type[3] = 2;
+if get_player_color(player_id.player) != 28{
+    anim_type[0] = 5;
+    anim_type[1] = 2;
+    anim_type[2] = 4;
+    anim_type[3] = 2;
+} else {
+    anim_type[0] = 9;
+    anim_type[1] = 8;
+    anim_type[2] = 4;
+    anim_type[3] = 2;
+}
 
 // Boom Rune
 anim_type[4] = 7;

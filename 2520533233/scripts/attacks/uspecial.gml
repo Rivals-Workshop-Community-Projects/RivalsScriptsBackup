@@ -20,7 +20,6 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 0);
 
-
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 0);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);

@@ -23,6 +23,19 @@ enum ROCK{
 //Muno Phone -------------------------------------------------------------------
 user_event(14);
 
+if(state == PS_WAVELAND){
+	sound_stop(air_dodge_sound);
+	//sound_stop(jump_sound);
+}
+
+if(state == PS_CROUCH){
+	if(state_timer < 9 and prev_state != PS_ATTACK_GROUND){
+		hud_offset = -state_timer*3;
+	}else {
+		hud_offset = -24;
+	}
+}
+
 if(phone_cheats[cheat_install] == 1){
 	if(!dragon_install){
 		tenshi_magic = tenshi_magic_max/2;
@@ -100,13 +113,18 @@ rainbow_dark2 = make_colour_hsv(12*((cur_time/15 + 15)%30), 225, 100); //dark sh
 //INSTALL TIME BABY LES GOOOOOO
 //Only run if in install
 if(dragon_install){
+	
+	if(install_theme > 100){
+		rainbow_color_slow2 = make_colour_hsv(12*((cur_time/4+15)%30), 255, 160); //ui rainbow2 only runs in DI
+		rainbow_pastel = make_colour_hsv(12*((cur_time/4+15)%30), 120, 255); //ui rainbow2 only runs in DI
+	}
+	if(cur_time%4 == 0){
+		install_time++;
+	}
+	install_timer++;
 	rainbow_color_slow = make_colour_hsv(12*((cur_time/4)%30), 255, 255); //ui rainbow only runs in DI
 	rainbow_color_ULTRADARK = make_colour_hsv(12*((cur_time/4)%30), 225, 50); //UTLRA dark rainbow used for outline
 	rainbow_rgb = [color_get_red(rainbow_color_ULTRADARK), color_get_green(rainbow_color_ULTRADARK), color_get_blue(rainbow_color_ULTRADARK)];
-	//increase install time
-	if(!(state == PS_ATTACK_GROUND and attack == AT_TAUNT)){
-		install_time++;
-	}
 	//update install trail vfx, always want to do this so the trail effects
 	//can fade independent of if armor is active or not
 	for(var i = 0; i < install_trail_size; i++){
@@ -143,19 +161,10 @@ if(dragon_install){
 		current_part.color = random_func(0, 4, true) > 2 ? rainbow_color2 : rainbow_color;
 		current_part.life = 30;
 	}
-	/*if(install_time%8 = 0){
-		var temp_part = instance_create(floor(x + random_func(0, 60, true) - 40), floor(y - 10 - random_func(0, 32, true)), "obj_article2");
-		temp_part.fx_type = FX.install;
-		temp_part.sprite_index = sprite_get("install_part");
-		temp_part.depth = -20;
-		temp_part.tenshi = self;
-		temp_part.seed = random_func(0, 4, true) > 2 ? true : false;
-	}*/
-	
 	//obviously we need to mute stage music so we can blast the install theme
-	if(!lightweight){
-		suppress_stage_music(0.0, 0.05);
-	}
+	
+	suppress_stage_music(0.0, 0.05);
+
 	
 	//and we end the install if the time goes on past the limit and the player
 	//is standing on the ground
@@ -404,7 +413,7 @@ if(di_input_buffer == 0){
 
 #define deactivate_install()
 //fair
-set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 9);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 3, HG_WINDOW, 99);
@@ -417,14 +426,14 @@ set_hitbox_value(AT_FAIR, 8, HG_WINDOW, 99);
 set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_DAIR, 1, AG_WINDOW_SFX_FRAME, 12);
 //uair
-set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 7);
 //bair
 set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 13);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 99);
 set_hitbox_value(AT_BAIR, 3, HG_WINDOW, 99);
 //nair
-set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 4);
 set_hitbox_value(AT_NAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_NAIR, 2, HG_WINDOW, 2);
@@ -448,7 +457,7 @@ set_hitbox_value(AT_UTILT, 10, HG_WINDOW, 99);
 set_hitbox_value(AT_UTILT, 11, HG_WINDOW, 99);
 set_hitbox_value(AT_UTILT, 12, HG_WINDOW, 99);
 //ftilt
-set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 9);
 //dtilt
 set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 5);
@@ -459,4 +468,4 @@ set_hitbox_value(AT_DTILT, 4, HG_WINDOW, 99);
 set_hitbox_value(AT_DTILT, 5, HG_WINDOW, 99);
 set_hitbox_value(AT_DTILT, 6, HG_WINDOW, 99);
 //fspecial grab
-set_hitbox_value(AT_EXTRA_3, 2, HG_KNOCKBACK_SCALING, 0.8);
+set_hitbox_value(AT_EXTRA_3, 2, HG_KNOCKBACK_SCALING, 0.7);

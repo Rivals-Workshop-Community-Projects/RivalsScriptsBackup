@@ -117,6 +117,9 @@ sprite_change_collision_mask("tipperbox_roundrect_spr", 0, 0, 0, 0, 0, 0, 0);
 sprite_change_offset("runespawn", 72, 72);
 sprite_change_offset("runeactive", 72, 72);
 sprite_change_offset("runeshatter", 72, 72);
+sprite_change_offset("runeazspawn", 72, 72);
+sprite_change_offset("runeazactive", 72, 72);
+sprite_change_offset("runeazshatter", 72, 72);
 
 // Rune (Explosion)
 sprite_change_offset("runeboomspawn", 72, 72);

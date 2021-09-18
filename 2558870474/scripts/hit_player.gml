@@ -12,11 +12,13 @@ switch(hitmove){
         break;
     case AT_UAIR:
         if hitnum == 1{
+            vsp -= 2;
             hit_player_obj.should_make_shockwave = false;
         }
         break;
     case AT_DAIR:
-        if hitnum < 3{
+        if hitnum == 2{
+            do_dairhit2 = true;
             hit_player_obj.should_make_shockwave = false;
         }
         break;

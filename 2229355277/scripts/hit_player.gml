@@ -44,10 +44,15 @@ if (hitmove == AT_FSPECIAL)
 if (hitmove == AT_UAIR){
     if my_hitboxID.hbox_num == 1{
         uair_hitcheckvar++;
+        hit_player_obj.x = x;
         print_debug(string(uair_hitcheckvar));
+    }
+    if my_hitboxID.hbox_num == 2{
+        hit_player_obj.x = x;
     }
     if my_hitboxID.hbox_num == 3{
         uair_hitcheckvar++;
+        hit_player_obj.x = x + (8 * spr_dir);
         print_debug(string(uair_hitcheckvar));
     }
     if my_hitboxID.hbox_num == 4{

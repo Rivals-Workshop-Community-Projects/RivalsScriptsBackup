@@ -339,15 +339,15 @@ set_color_profile_slot( 27, 5, 253, 236, 126 ); //Boots
 set_color_profile_slot( 27, 6, 188, 124, 250 ); //Umbrella
 set_color_profile_slot( 27, 7, 255, 255, 255 ); //IceIceBaby
 
-// Star Princess
-set_color_profile_slot( 28, 0, 255, 241, 216 ); //Fur
-set_color_profile_slot( 28, 1, 255, 239, 112 ); //Hair/Tail
-set_color_profile_slot( 28, 2, 199, 255, 244 ); //Floof
-set_color_profile_slot( 28, 3, 112, 255, 251 ); //Jacket
-set_color_profile_slot( 28, 4, 112, 255, 251 ); //Skirt
-set_color_profile_slot( 28, 5, 199, 255, 244 ); //Boots
-set_color_profile_slot( 28, 6, 255, 239, 112 ); //Umbrella
-set_color_profile_slot( 28, 7, 199, 255, 244 ); //IceIceBaby
+// Heatwave
+set_color_profile_slot( 28, 0, 225, 232, 245 ); //Fur
+set_color_profile_slot( 28, 1, 254, 215, 0 ); //Hair/Tail
+set_color_profile_slot( 28, 2, 250, 132, 60 ); //Floof
+set_color_profile_slot( 28, 3, 191, 10, 48 ); //Jacket
+set_color_profile_slot( 28, 4, 0, 40, 104 ); //Skirt
+set_color_profile_slot( 28, 5, 0, 40, 104 ); //Boots
+set_color_profile_slot( 28, 6, 254, 215, 0 ); //Umbrella
+set_color_profile_slot( 28, 7, 191, 10, 48 ); //IceIceBaby
 
 // Totally, Awesome, Gorgeous (TAG)
 set_color_profile_slot( 29, 0, 228, 236, 247 ); //Fur

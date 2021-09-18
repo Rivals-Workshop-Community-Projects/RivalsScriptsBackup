@@ -31,9 +31,9 @@ sprite_change_offset("tech", 16, 27);
 sprite_change_offset("jab", 38, 49, true);
 sprite_change_offset("dattack", 32, 38, true);
 sprite_change_offset("ftilt", 18, 43, true);
-sprite_change_offset("dtilt", 21, 29, true);
+sprite_change_offset("dtilt", 24, 28, true);
 sprite_change_offset("utilt", 34, 55, true);
-sprite_change_offset("nair", 16, 32, true);
+sprite_change_offset("nair", 16, 38, true);
 sprite_change_offset("fair", 24, 48, true);
 sprite_change_offset("bair", 50, 40, true);
 sprite_change_offset("uair", 27, 52, true);
@@ -90,5 +90,7 @@ sprite_change_offset("iku", 36, 170);
 //lightning
 sprite_change_offset("lightning", 60, 400);
 
-
-
+//hitfx
+sprite_change_offset("fire_norm", 50, 50);
+sprite_change_offset("fire_dir", 64, 64);
+sprite_change_offset("fire_big", 80, 80);

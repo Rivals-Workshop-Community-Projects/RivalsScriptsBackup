@@ -30,7 +30,7 @@ set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 3);
 
 //Recovery
-set_window_value(AT_FSTRONG, 5, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_FSTRONG, 5, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_FSTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_FSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_FSTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, true);
@@ -58,7 +58,8 @@ set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.01);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 0.8);
-set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 3 );
+set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, hisou_small );
+set_hitbox_value(AT_FSTRONG, 1, HG_HIT_PARTICLE_NUM, 2 );
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sound_get("hisou_hit"));
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_GROUP, 1);
 
@@ -75,11 +76,13 @@ set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 74);
 set_hitbox_value(AT_FSTRONG, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 8);
 set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 45);
-set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 0.97);
+set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, 0.8);
-set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 148 );
+set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, hisou_large );
+set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT_X_OFFSET, 30);
+set_hitbox_value(AT_FSTRONG, 2, HG_HIT_PARTICLE_NUM, 1 );
 set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, sound_get("hisou_hit5"));
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_GROUP, 2);
 
@@ -99,6 +102,7 @@ set_hitbox_value(AT_FSTRONG, 3, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_FSTRONG, 3, HG_KNOCKBACK_SCALING, 0.01);
 set_hitbox_value(AT_FSTRONG, 3, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_FSTRONG, 3, HG_HITPAUSE_SCALING, 0.8);
-set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, 3 );
+set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, hisou_small );
+set_hitbox_value(AT_FSTRONG, 3, HG_HIT_PARTICLE_NUM, 2 );
 set_hitbox_value(AT_FSTRONG, 3, HG_HIT_SFX, sound_get("hisou_hit"));
 set_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_GROUP, 1);

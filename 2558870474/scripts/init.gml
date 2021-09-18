@@ -22,6 +22,10 @@ max_summons = 2;
 
 hue = 0;
 
+superjump = false;
+
+do_dairhit2 = false;
+
 // NSpecial Charge 2
 multihit_count = 0;
 multihit_cap = 3;   // number of hits by the second charge
@@ -44,6 +48,8 @@ summon_tracker[1] = noone;
 
 illusion = noone;
 
+change_color = false;
+
 uspec_cooldown = 14;
 uspec_cool_time = 0;
 
@@ -57,7 +63,7 @@ uspecialcap_max = 2;
 
 rainbow_color = make_color_hsv(get_gameplay_time() % 256 + 1, 100, 100);
 
-//MISSIONS (Difficult) 
+//MISSIONS (Difficult)
 //Init.gml
 bTut_Missions = true; // This is to enable the feature for your character.
 bTut_mssn_total = 7;  //How many trials you want to make for your character. You can add as many as you want.
@@ -114,12 +120,12 @@ dash_turn_time      = 8;		// 8    -  20
 dash_turn_accel     = 1.5;		// 0.1  -  2
 dash_stop_time      = 4;		// 4    -  6
 dash_stop_percent   = 0.35;		// 0.25 -  0.5
-ground_friction     = 0.5;		// 0.3  -  1
+ground_friction     = 0.45;		// 0.3  -  1
 moonwalk_accel      = 1.3;		// 1.2  -  1.4
 
 // Air movement
 leave_ground_max    = 5;		// 4    -  8
-max_jump_hsp        = 5.5;		// 4    -  8
+max_jump_hsp        = 5;		// 4    -  8
 air_max_speed       = 4;  		// 3    -  7
 jump_change         = 3;		// 3
 air_accel           = 0.3;		// 0.2  -  0.4
@@ -133,7 +139,7 @@ hitstun_grav        = 0.5;		// 0.45 -  0.53
 // Jumps
 jump_start_time     = 5;		// 5                this stat is automatically decreased by 1 after init.gml (dan moment), so its "real value" is 4. if you change this during a match, 4 is the value you should reset it to
 jump_speed          = 10;		// 7.6  -  12       okay, zetter's is actually 10.99 but... come on
-short_hop_speed     = 6;		// 4    -  7.4
+short_hop_speed     = 5;		// 4    -  7.4
 djump_speed         = 10;		// 6    -  12       absa's is -1 because of her floaty djump
 djump_accel         = 0;        // -1.4 -  0        absa's is -1.4, all other chars are 0. only works if the   djump_accel_end_time   variable is also set. floaty djumps should be adjusted by feel based on your char's gravity
 djump_accel_end_time= 0;        // ???              the amount of time that   djump_accel   is applied for
@@ -144,11 +150,11 @@ land_time           = 4;		// 4    -  6
 prat_land_time      = 10;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
-wave_friction       = 0;		// 0    -  0.15
+wave_friction       = 0.05;		// 0    -  0.15
 roll_forward_max    = 9;        // 9    -  11
 roll_backward_max   = 9;        // 9    -  11       always the same as forward
 wave_land_time      = 8;		// 6    -  12
-wave_land_adj       = 1.4;		// 1.2  -  1.5      idk what zetterburn's is
+wave_land_adj       = 1.25;		// 1.2  -  1.5      idk what zetterburn's is
 air_dodge_speed     = 7.5;      // 7.5  -  8
 techroll_speed      = 10;       // 8    -  11
 
@@ -230,9 +236,25 @@ spr_clone_die_dash	= sprite_get("vfx_clonedashing_vanish");
 col_arrow = get_player_hud_color(player);
 
 // Rune sprites
+
 spr_speedrune_spawn = sprite_get("runespawn");
 spr_speedrune_active = sprite_get("runeactive");
 spr_speedrune_shatter = sprite_get("runeshatter");
+
+spr_azrune_spawn = sprite_get("runeazspawn");
+spr_azrune_active = sprite_get("runeazactive");
+spr_azrune_shatter = sprite_get("runeazshatter");
+
+if get_player_color(player) != 28{
+	spr_rune_spawn	 = spr_speedrune_spawn;
+	spr_rune_active	 = spr_speedrune_active;
+	spr_rune_shatter = spr_speedrune_shatter;
+}
+else {
+	spr_rune_spawn	 = spr_azrune_spawn;
+	spr_rune_active	 = spr_azrune_active;
+	spr_rune_shatter = spr_azrune_shatter;
+}
 
 // Rune (Speed)
 sprite_change_collision_mask( "runeactive", false, 2, 50, 50, 93, 93, 2 );

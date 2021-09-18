@@ -357,7 +357,7 @@ image_index = color;
 			var position = 26;
 			ColorPrev = make_color_rgb(191, 54, 93);
 			ColorNext = make_color_rgb(169, 169, 169 );
-			ColorNextNext = make_color_rgb(112, 255, 251);
+			ColorNextNext = make_color_rgb(191, 10, 48);
 			if (path_position == 26 && path_scale == 0){
 				path_position = 27;
 			}
@@ -367,7 +367,7 @@ image_index = color;
 			name = " 28: Okayu";
 			var position = 27;
 			ColorPrev = make_color_rgb(255, 220, 158);
-			ColorNext = make_color_rgb(112, 255, 251 );
+			ColorNext = make_color_rgb(191, 10, 48 );
 			ColorNextNext = make_color_rgb(20, 120, 0);
 			if (path_position == 27 && path_scale == 0){
 				path_position = 28;
@@ -375,7 +375,7 @@ image_index = color;
 			    break;
 
 				case 28:
-			name = " 29: Rosalina";
+			name = " 29: Heatwave";
 			var position = 28;
 			ColorPrev = make_color_rgb(255, 220, 158);
 			ColorNext = make_color_rgb(20, 120, 0 );
@@ -388,7 +388,7 @@ image_index = color;
 				case 29:
 			name = " 30: TAG";
 			var position = 29;
-			ColorPrev = make_color_rgb(255, 220, 158);
+			ColorPrev = make_color_rgb(191, 10, 48);
 			ColorNext = make_color_rgb(53, 58, 157 );
 			ColorNextNext = make_color_rgb(163, 185, 196);
 			if (path_position == 29 && path_scale == 0){

@@ -88,7 +88,7 @@ if(dragon_install){
 
 #define deactivate_install()
 //fair
-set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 9);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 3, HG_WINDOW, 99);
@@ -101,7 +101,7 @@ set_hitbox_value(AT_FAIR, 8, HG_WINDOW, 99);
 set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_DAIR, 1, AG_WINDOW_SFX_FRAME, 12);
 //uair
-set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 7);
 //bair
 set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 13);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);
@@ -132,7 +132,7 @@ set_hitbox_value(AT_UTILT, 10, HG_WINDOW, 99);
 set_hitbox_value(AT_UTILT, 11, HG_WINDOW, 99);
 set_hitbox_value(AT_UTILT, 12, HG_WINDOW, 99);
 //ftilt
-set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 9);
 //dtilt
 set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 5);
@@ -143,4 +143,4 @@ set_hitbox_value(AT_DTILT, 4, HG_WINDOW, 99);
 set_hitbox_value(AT_DTILT, 5, HG_WINDOW, 99);
 set_hitbox_value(AT_DTILT, 6, HG_WINDOW, 99);
 //fspecial grab
-set_hitbox_value(AT_EXTRA_3, 2, HG_KNOCKBACK_SCALING, 0.8);
+set_hitbox_value(AT_EXTRA_3, 2, HG_KNOCKBACK_SCALING, 0.7);

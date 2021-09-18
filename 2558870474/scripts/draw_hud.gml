@@ -54,6 +54,6 @@ with obj_article1{
 	} 
 }
 
-//draw_debug_text(xx, yy - 18, "NSpecial Charge: " + string(charge));
+//draw_debug_text(xx, yy - 18, "Window: " + string(window));
 //draw_debug_text(xx, yy - 36, "Rune 2: " + string(summon_tracker[1]));
 //draw_debug_text(xx, yy - (36 + 18), "Rune 1: " + string(summon_tracker[0]));

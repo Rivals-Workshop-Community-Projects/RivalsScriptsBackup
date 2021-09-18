@@ -5,7 +5,7 @@ set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 7);
 
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 0);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
 
 

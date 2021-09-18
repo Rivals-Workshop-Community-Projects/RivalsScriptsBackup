@@ -91,7 +91,7 @@ switch(fx_type){
 			
 			x = player_id.x + player_id.hsp;
 			y = player_id.y + player_id.vsp;
-			if(player_id.attack != AT_FSPECIAL or player_id.window > 2){
+			if(player_id.attack != AT_FSPECIAL or player_id.window > 2 or player_id.state == PS_PRATFALL){
 				instance_destroy(self);
 			}
 		}
@@ -146,53 +146,60 @@ switch(fx_type){
 		}
 		break;
 	case FX.dstrong_hitbox:
-		life++;
-		if(life == 1){
-			xoffset = player_id.x - x;
-			yoffset = player_id.y - y;
-		}
-		if(seed == 0){
-			y = player_id.y;
-		}
-		if(collision_point(x, y, asset_get("par_jumpthrough"), false, true)){
-			x = player_id.x - xoffset;
-
-		}
-		if(life == 4){
-			if(seed == 0){ //little rocks got 0 seed
-				if(player_id.charge_level == seed){
-					create_hitbox(AT_DSTRONG, 2, x, y-20);
-				}else {
-					create_hitbox(AT_DSTRONG, 3, x, y-20);
+		if(player_id.state_cat != SC_HITSTUN){
+			life++;
+			if(life == 1){
+				xoffset = player_id.x - x;
+				yoffset = player_id.y - y;
+			}
+			if(seed == 0){
+				y = player_id.y;
+			}
+			if(collision_point(x, y, asset_get("par_jumpthrough"), false, true)){
+				x = player_id.x - xoffset;
+	
+			}
+			if(life == 4){
+				if(seed == 0){ //little rocks got 0 seed
+					if(player_id.charge_level == seed){
+						dstrong_hbox = create_hitbox(AT_DSTRONG, 2, x, y-20);
+					}else {
+						dstrong_hbox = create_hitbox(AT_DSTRONG, 3, x, y-20);
+					}
+				} else if (seed == 1){//medium rock
+					if(player_id.charge_level == seed){
+						dstrong_hbox = create_hitbox(AT_DSTRONG, 4, x, y-20);
+					}else {
+						dstrong_hbox = create_hitbox(AT_DSTRONG, 5, x, y-20);
+					}
+				} else {//large rock
+					dstrong_hbox = create_hitbox(AT_DSTRONG, 6, x, y-20);
+	
 				}
-			} else if (seed == 1){//medium rock
-				if(player_id.charge_level == seed){
-					create_hitbox(AT_DSTRONG, 4, x, y-20);
-				}else {
-					create_hitbox(AT_DSTRONG, 5, x, y-20);
+				if(spr_dir == 1){
+					sound_play(asset_get("sfx_kragg_spike"));
 				}
-			} else {//large rock
-				create_hitbox(AT_DSTRONG, 6, x, y-20);
-
 			}
-			if(spr_dir == 1){
-				sound_play(asset_get("sfx_kragg_spike"));
+			image_index = seed*6 + floor((life%24)/4);
+			if(player_id.charge_level > seed){
+				
+				if(life==5){
+					check_spawn_rock();
+				} else if (life == 6){
+					check_spawn_rock2();
+				}else if (life == 7){
+					check_spawn_rock3();
+				}else if (life == 8){
+					spawn_rock();
+				}
 			}
-		}
-		image_index = seed*6 + floor((life%24)/4);
-		if(player_id.charge_level > seed){
-			
-			if(life==5){
-				check_spawn_rock();
-			} else if (life == 6){
-				check_spawn_rock2();
-			}else if (life == 7){
-				check_spawn_rock3();
-			}else if (life == 8){
-				spawn_rock();
+			if(life > 23){
+				instance_destroy(self);
 			}
-		}
-		if(life > 23){
+		} else {
+			if(instance_exists(dstrong_hbox)){
+				dstrong_hbox.destroyed = true;
+			}
 			instance_destroy(self);
 		}
 		break;

@@ -40,10 +40,11 @@ set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, 0.6);
 set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, 0.55);
-set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 4 );
+set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, hisou_dir );
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, sound_get("hisou_hit"));
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_GROUP, 0);
-
+set_hitbox_value(AT_UTILT, 1, HG_HIT_PARTICLE_NUM, 1);
+set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT_Y_OFFSET, -20 );
 //sweet
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 2);
@@ -61,10 +62,11 @@ set_hitbox_value(AT_UTILT, 2, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_UTILT, 2, HG_KNOCKBACK_SCALING, 0.6);
 set_hitbox_value(AT_UTILT, 2, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_UTILT, 2, HG_HITPAUSE_SCALING, 0.55);
-set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT, 4 );
+set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT, hisou_dir );
 set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, sound_get("hisou_hit"));
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_GROUP, 0);
-
+set_hitbox_value(AT_UTILT, 2, HG_HIT_PARTICLE_NUM, 1);
+set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT_Y_OFFSET, -20 );
 //foot sour(sweet?)spot
 /*
 set_hitbox_value(AT_UTILT, 3, HG_HITBOX_TYPE, 1);
@@ -107,10 +109,11 @@ set_hitbox_value(AT_UTILT, 4, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_UTILT, 4, HG_KNOCKBACK_SCALING, 0.1);
 set_hitbox_value(AT_UTILT, 4, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_UTILT, 4, HG_HITPAUSE_SCALING, 0.55);
-set_hitbox_value(AT_UTILT, 4, HG_VISUAL_EFFECT, 4 );
+set_hitbox_value(AT_UTILT, 4, HG_VISUAL_EFFECT, hisou_dir );
 set_hitbox_value(AT_UTILT, 4, HG_HIT_SFX, sound_get("hisou_hit2"));
 set_hitbox_value(AT_UTILT, 4, HG_HITBOX_GROUP, 0);
-
+set_hitbox_value(AT_UTILT, 4, HG_HIT_PARTICLE_NUM, 2);
+set_hitbox_value(AT_UTILT, 4, HG_VISUAL_EFFECT_Y_OFFSET, -20 );
 //sweet
 set_hitbox_value(AT_UTILT, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 5, HG_WINDOW, 99);
@@ -128,12 +131,12 @@ set_hitbox_value(AT_UTILT, 5, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_UTILT, 5, HG_KNOCKBACK_SCALING, 0.1);
 set_hitbox_value(AT_UTILT, 5, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_UTILT, 5, HG_HITPAUSE_SCALING, 0.55);
-set_hitbox_value(AT_UTILT, 5, HG_VISUAL_EFFECT, 4 );
+set_hitbox_value(AT_UTILT, 5, HG_VISUAL_EFFECT, hisou_dir );
 set_hitbox_value(AT_UTILT, 5, HG_HIT_SFX, sound_get("hisou_hit2"));
 set_hitbox_value(AT_UTILT, 5, HG_HITBOX_GROUP, 0);
-
+set_hitbox_value(AT_UTILT, 5, HG_HIT_PARTICLE_NUM, 2);
 //foot sour(sweet?)spot
-
+set_hitbox_value(AT_UTILT, 5, HG_VISUAL_EFFECT_Y_OFFSET, -20 );
 
 
 
@@ -155,9 +158,11 @@ set_hitbox_value(AT_UTILT, 7, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_UTILT, 7, HG_KNOCKBACK_SCALING, 0.1);
 set_hitbox_value(AT_UTILT, 7, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_UTILT, 7, HG_HITPAUSE_SCALING, 0.55);
-set_hitbox_value(AT_UTILT, 7, HG_VISUAL_EFFECT, 4 );
+set_hitbox_value(AT_UTILT, 7, HG_VISUAL_EFFECT, hisou_dir );
 set_hitbox_value(AT_UTILT, 7, HG_HIT_SFX, sound_get("hisou_hit2"));
 set_hitbox_value(AT_UTILT, 7, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_UTILT, 7, HG_HIT_PARTICLE_NUM, 2);
+set_hitbox_value(AT_UTILT, 7, HG_VISUAL_EFFECT_Y_OFFSET, -20 );
 //sweet
 set_hitbox_value(AT_UTILT, 8, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 8, HG_WINDOW, 99);
@@ -175,12 +180,12 @@ set_hitbox_value(AT_UTILT, 8, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_UTILT, 8, HG_KNOCKBACK_SCALING, 0.1);
 set_hitbox_value(AT_UTILT, 8, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_UTILT, 8, HG_HITPAUSE_SCALING, 0.55);
-set_hitbox_value(AT_UTILT, 8, HG_VISUAL_EFFECT, 4 );
+set_hitbox_value(AT_UTILT, 8, HG_VISUAL_EFFECT, hisou_dir );
 set_hitbox_value(AT_UTILT, 8, HG_HIT_SFX, sound_get("hisou_hit2"));
 set_hitbox_value(AT_UTILT, 8, HG_HITBOX_GROUP, 1);
 //foot sour(sweet?)spot
-
-
+set_hitbox_value(AT_UTILT, 8, HG_HIT_PARTICLE_NUM, 2);
+set_hitbox_value(AT_UTILT, 8, HG_VISUAL_EFFECT_Y_OFFSET, -20 );
 //install hit 2
 //normal
 set_hitbox_value(AT_UTILT, 10, HG_HITBOX_TYPE, 1);
@@ -199,10 +204,11 @@ set_hitbox_value(AT_UTILT, 10, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_UTILT, 10, HG_KNOCKBACK_SCALING, 0.6);
 set_hitbox_value(AT_UTILT, 10, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_UTILT, 10, HG_HITPAUSE_SCALING, 0.55);
-set_hitbox_value(AT_UTILT, 10, HG_VISUAL_EFFECT, 148 );
+set_hitbox_value(AT_UTILT, 10, HG_VISUAL_EFFECT, hisou_large );
 set_hitbox_value(AT_UTILT, 10, HG_HIT_SFX, sound_get("hisou_hit"));
 set_hitbox_value(AT_UTILT, 10, HG_HITBOX_GROUP, 3);
-
+set_hitbox_value(AT_UTILT, 10, HG_HIT_PARTICLE_NUM, 1);
+set_hitbox_value(AT_UTILT, 10, HG_VISUAL_EFFECT_Y_OFFSET, -20 );
 //sweet
 set_hitbox_value(AT_UTILT, 11, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 11, HG_WINDOW, 99);
@@ -220,9 +226,11 @@ set_hitbox_value(AT_UTILT, 11, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_UTILT, 11, HG_KNOCKBACK_SCALING, 0.6);
 set_hitbox_value(AT_UTILT, 11, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_UTILT, 11, HG_HITPAUSE_SCALING, 0.55);
-set_hitbox_value(AT_UTILT, 11, HG_VISUAL_EFFECT, 148 );
+set_hitbox_value(AT_UTILT, 11, HG_VISUAL_EFFECT, hisou_large );
 set_hitbox_value(AT_UTILT, 11, HG_HIT_SFX, sound_get("hisou_hit"));
 set_hitbox_value(AT_UTILT, 11, HG_HITBOX_GROUP, 3);
+set_hitbox_value(AT_UTILT, 11, HG_HIT_PARTICLE_NUM, 1);
+set_hitbox_value(AT_UTILT, 11, HG_VISUAL_EFFECT_Y_OFFSET, -20 );
 
 //foot sour(sweet?)spot
 

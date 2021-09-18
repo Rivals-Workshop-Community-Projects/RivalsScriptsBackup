@@ -131,7 +131,7 @@ switch(state){
           {
         	if place_meeting(x, y, other)
             {
-	        	if attack == AT_USPECIAL and window >= 2
+	        	if attack == AT_USPECIAL and ((window >= 2) and !down_down)
               {
 	        		// return that the rune was touched
 	        		speed_rune_touched = true;
@@ -333,6 +333,11 @@ switch(anim_type[state]){
         var frames = 8;
         var frame_dur = 6;
         image_angle -= .5;
+        image_index = round((state_timer mod (frames * frame_dur)) / frame_dur);
+        break;
+    case 9:    // Spawn, No Spin
+        var frames = 5;
+        var frame_dur = 6;
         image_index = round((state_timer mod (frames * frame_dur)) / frame_dur);
         break;
 }

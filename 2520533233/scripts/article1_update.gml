@@ -20,7 +20,7 @@ var hit = false;
 var hitID = noone;
 
 //only graze if its available
-if(can_graze and player_id.state != PS_RESPAWN and player_id.state != PS_DEAD){
+if(can_graze and player_id.state != PS_RESPAWN and player_id.state != PS_DEAD and !player_id.dragon_install){
 	with pHitBox{
     	if(place_meeting(x, y, other) and (player != other.player or can_hit_self) and hit_priority != 0){
         	hit = true;

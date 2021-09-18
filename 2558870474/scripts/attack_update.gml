@@ -3,6 +3,8 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+var whiff_time = (get_window_value(attack, window, AG_WINDOW_LENGTH) * 1.5);
+
 if window == 1 and window_timer == 1{
 	// randomize
 	var hit_rand_light = random_func(0, 3, true);
@@ -40,7 +42,7 @@ if window == 1 and window_timer == 1{
 			set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, vfx_hit_small3);
 			break;
 	}
-	
+
 	switch(hit_rand_mid){
 		case 0:
 			set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, vfx_hit_med1);
@@ -48,7 +50,7 @@ if window == 1 and window_timer == 1{
 			set_hitbox_value(AT_UTILT, 4, HG_VISUAL_EFFECT, vfx_hit_med1);
 			set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, vfx_hit_med1);
 			set_hitbox_value(AT_NAIR, 8, HG_VISUAL_EFFECT_X_OFFSET, vfx_hit_med1);
-			set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, vfx_hit_med1);
+			set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, vfx_hit_med1);
 			set_hitbox_value(AT_FAIR, 4, HG_VISUAL_EFFECT, vfx_hit_med1);
 			set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, vfx_hit_med1);
 			set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, vfx_hit_med1);
@@ -56,7 +58,7 @@ if window == 1 and window_timer == 1{
 			set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, vfx_hit_med1);
 			break;
 	}
-	
+
 	// Large
 	switch(hit_rand_large){
 		case 0:
@@ -132,6 +134,37 @@ if proposed_balance{
                     break;
             }
             break;
+        case AT_DAIR:
+        	switch(window){
+        		case 2:
+        			if do_dairhit2{
+	        			if window_timer == get_window_value(attack, 2, AG_WINDOW_LENGTH){
+	        				window = 3;
+	        				window_timer = 0;
+	        			}
+        			} else {
+        				if window_timer == get_window_value(attack, 2, AG_WINDOW_LENGTH) or window_timer == whiff_time{
+	        				window = 6;
+	        				window_timer = 0;
+        					destroy_hitboxes();
+        					attack_end();
+        				}
+        			}
+        			break;
+        		case 3:
+        			if window_timer == get_window_value(attack, 3, AG_WINDOW_LENGTH){
+        				window = 4;
+        				window_timer = 0;
+        			}
+        			break;
+        		case 4:
+        			if window_timer == get_window_value(attack, 4, AG_WINDOW_LENGTH){
+        				window = 5;
+        				window_timer = 0;
+        			}
+        			break;
+        	}
+        	break;
 
         case AT_FSTRONG:
             switch(window){
@@ -190,8 +223,14 @@ if proposed_balance{
                     if (window_timer == get_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH)){
                     	sound_play(asset_get("sfx_ice_dspecial_form"));
                         // Check for a full charge.
-                        if (!special_down or charge == charge_max){
+                        if (!special_down and charge < charge_max){
                         	window = 3;
+                        	window_timer = 0;
+                        	sound_stop(asset_get("sfx_ice_dspecial_form"));
+                        	sound_stop(asset_get("sfx_holy_tablet_spawning"));
+                        }
+                        if (charge == charge_max){
+                        	window = 6;
                         	window_timer = 0;
                         	sound_stop(asset_get("sfx_ice_dspecial_form"));
                         	sound_stop(asset_get("sfx_holy_tablet_spawning"));
@@ -200,7 +239,7 @@ if proposed_balance{
 
                     break;
                 case 2: // Charging
-                
+
                 	// Slow down
                 	//max_fall = 5.5;
 
@@ -209,14 +248,23 @@ if proposed_balance{
 
                     // At any time, check to see if special is pressed.
                     if (!special_down){
-                        // Jump to the next window.
-                        window = 3;
-                        window_timer = 0;
+                    	if charge < charge_max{
+	                        // Jump to the next window.
+	                        window = 3;
+	                        window_timer = 0;
+                    	} else {
+                            window = 6;
+                            window_timer = 0;
+                    	}
                     }
-                    
+
                     if jump_pressed{
                     	sound_stop(asset_get("sfx_holy_tablet_spawning"));
                     }
+					if (shield_pressed && abs(right_down - left_down) and !free){
+					    spr_dir = right_down - left_down; // might need to be flipped idk, depends on how rolls work
+					    set_state(PS_ROLL_FORWARD);
+					}
 
                     // At any time, check if the player wants to cancel.
 
@@ -244,10 +292,14 @@ if proposed_balance{
                             window_timer = 0;
 
                         } else {
-
-                            // If we have max charge, just go right to the final window.
-                            window = 4;
-                            window_timer = 0;
+                        	if !special_down{
+	                            // If we have max charge, just go right to the final window.
+	                            window = 6;
+	                            window_timer = 0;
+                        	} else {
+                        		window = 4;
+                        		window_timer = 0;
+                        	}
                         }
                     }
 
@@ -293,18 +345,8 @@ if proposed_balance{
                     		create_hitbox(AT_NSPECIAL, 3, x + (20 * spr_dir), y-30);
                     		//move_cooldown[AT_NSPECIAL] = 120;
                         }
-                        if charge == 3{
-                        	sound_play(sound_get("sfx_auroraswipe"));
-                        	if spr_dir == 1{
-                        		create_hitbox(AT_NSPECIAL, 6, x+10, y-30);
-                        	} else {
-                        		create_hitbox(AT_NSPECIAL, 6, x-10, y-30);
-                        	}
-                        	//move_cooldown[AT_NSPECIAL] = 200;
-                        } else {
-                        	charging = false;
-                        }
                         // remove charge
+                        charging = false;
                         charge = 0;
                         move_cooldown[AT_NSPECIAL] = 40;
                     }
@@ -329,13 +371,34 @@ if proposed_balance{
 	                			break;
 	                	}
                 	}
-                	
+
                 	sound_stop(asset_get("sfx_ice_dspecial_form"));
                 	sound_stop(asset_get("sfx_holy_tablet_spawning"));
                 	//can_shield = true;
                     // cleared the button buffer to prevent accidental parry.
                     //clear_button_buffer(PC_SHIELD_PRESSED);
                     break;
+                case 6:
+                	if window_timer == 16{
+	                	sound_play(sound_get("sfx_auroraswipe"));
+	                	if spr_dir == 1{
+	                		create_hitbox(AT_NSPECIAL, 6, x+10, y-30);
+	                	} else {
+	                		create_hitbox(AT_NSPECIAL, 6, x-10, y-30);
+	                	}
+	                    charging = false;
+	                    charge = 0;
+	                    move_cooldown[AT_NSPECIAL] = 40;
+                      if free
+                        {
+                        vsp = -3;
+                        }
+                	}
+                	if window_timer == get_window_value(attack, 6, AG_WINDOW_LENGTH)-1{
+                		window = 7;
+                		window_timer = 0;
+                	}
+                	break;
             }
             break;
 
@@ -343,16 +406,16 @@ if proposed_balance{
                 switch(window){
                     case 1:
                     	can_fast_fall = false;
-                        if window_timer == 8{
-                            if !special_down{
+                        if window_timer == 10{
+                            if special_down{
                                 // Make the hitbox closer
-                                set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_X, 150);
+                                set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_X, 300);
                                 //set_hitbox_value(AT_FSPECIAL, 6, HG_HITBOX_X, 150);
+                                fspecial_far = true;
                             } else {
                                 // make the hitbox where it is
-                                set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_X, 300);
+                                set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_X, 150);
                                 //set_hitbox_value(AT_FSPECIAL, 6, HG_HITBOX_X, 300);
-                                fspecial_far = true;
                             }
                     		var detect_x = get_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_X);
                     		var detect_y = get_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y);
@@ -443,6 +506,13 @@ if proposed_balance{
 							spawn_ice = false;
 						}
 						break;
+					case 3:
+						if window_timer == get_window_value(attack, 3, AG_WINDOW_LENGTH){
+							if down_down{
+								set_state(PS_PRATFALL);
+							}
+						}
+						break;
 					case 4:
 						if window_timer == 1{
 							gliding = true;
@@ -531,7 +601,7 @@ if proposed_balance{
                                 summon_tracker[summons].state_timer = 0;
                                 // Increase the count of the summons so we don't go over.
                                 //summon_tracker[summons].rune_id = summons + 1;
-                                
+
                                 summons++;
 
                             } else {

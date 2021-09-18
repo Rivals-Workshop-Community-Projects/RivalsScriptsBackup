@@ -14,6 +14,13 @@ end_dragon_install = false;
 play_theme = false;
 install_armor = 5;
 
+set_hit_particle_sprite(1, sprite_get("hfx_part_fire"));
+set_hit_particle_sprite(2, sprite_get("hfx_part_fire2"));
+
+hisou_small = hit_fx_create(sprite_get("fire_norm"), 27);
+hisou_large = hit_fx_create(sprite_get("fire_big"), 24);
+hisou_dir = hit_fx_create(sprite_get("fire_dir"), 27);
+
 install_trail_size = 8;
 for(var i = 0; i < install_trail_size; i++){
     install_trail[i] = 
@@ -164,9 +171,9 @@ roll_back_recovery_frames = 2;
 roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
 
-land_sound = asset_get("sfx_land_med");
-landing_lag_sound = asset_get("sfx_land");
-waveland_sound = asset_get("sfx_waveland_zet");
+land_sound = sound_get("land");
+landing_lag_sound = sound_get("land");
+waveland_sound = sound_get("waveland");
 jump_sound = asset_get("sfx_jumpground");
 djump_sound = asset_get("sfx_jumpair");
 air_dodge_sound = asset_get("sfx_quick_dodge");
@@ -179,15 +186,15 @@ bubble_y = 8;
 
 //DRAGON INSTALL STATS ---------------------------------------------------------
 //install stats
-install_dash_speed = 8.75;
-install_initial_dash_speed = 8.75;
-install_fast_fall = 26;
+install_dash_speed = 8.5;
+install_initial_dash_speed = 8.5;
+install_fast_fall = 18;
 install_moonwalk_accel = 10;
 install_max_djumps = 2;
 install_wave_land_adj = 1.4; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 install_wave_friction = .02;
-install_air_max_speed = 8;
-install_max_jump_hsp = 9;
+install_air_max_speed = 6;
+install_max_jump_hsp = 7;
 install_leave_ground_max = 9;
 
 //base stats

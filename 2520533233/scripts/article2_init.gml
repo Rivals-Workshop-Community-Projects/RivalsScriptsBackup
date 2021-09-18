@@ -26,7 +26,7 @@ life = 0;
 delay = 9;
 seed = 0;
 valid_graze = true;
-
+dstrong_hbox = noone;
 
 //animation tools for fx
 anim_spd = 0.0;

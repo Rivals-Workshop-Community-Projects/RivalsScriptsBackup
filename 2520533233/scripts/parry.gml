@@ -15,10 +15,10 @@ enum FX{
     fstrong_charge,
     bad_load
 }
-
-tenshi_grazebox.force_graze = true;
-
-
+if(!dragon_install){
+    tenshi_grazebox.force_graze = true;
+}
+/*
 if(hit_player = player and dragon_install){
     for(var i = 0; i < 3; i++){
         var xrng = -spr_dir * (20 - random_func(i, 30, true));
@@ -31,4 +31,4 @@ if(hit_player = player and dragon_install){
         temp.blue = true;
         temp.super_blue = true;
     }
-}
+}*/

@@ -62,7 +62,6 @@ switch(attack){
     //------------------- JAB -------------------------
     case AT_JAB:
     	if(window < 6){
-    		was_parried = false;
     		if(dragon_install and window < 3){
     			soft_armor = install_armor;
     			add_install_trail(10, 30);
@@ -79,6 +78,7 @@ switch(attack){
         }
         break;
     case AT_DTILT:
+    	hud_offset = -24;
     	if(dragon_install and window == 1){
     		soft_armor = install_armor;
     		add_install_trail(10, 30);
@@ -97,6 +97,11 @@ switch(attack){
     	}
     	break;
     case AT_UTILT:
+    	if(state_timer < 8 and prev_state != PS_ATTACK_GROUND){
+    		hud_offset = state_timer*7;
+    	} else {
+    		hud_offset = 56;
+    	}
 		if(dragon_install and window == 1){
 			soft_armor = install_armor;
 			add_install_trail(10, 30);
@@ -225,6 +230,11 @@ switch(attack){
     			tenshi_uspecial_rock.hold_timer = 0;
     		} else if (can_rock and can_move_rock and (shield_down or shield_pressed)){
     			uspec_feint = true;
+    			if(instance_exists(tenshi_uspecial_rock)){
+	    			sound_play(asset_get("sfx_kragg_rock_shatter"));
+	    			tenshi_uspecial_rock.rock_state = ROCK.KABOOM;
+	    			tenshi_uspecial_rock.hold_timer = 0;
+    			}
     		}
     	}
     	
@@ -268,10 +278,15 @@ switch(attack){
         	y = lerp(y, y_goal, .1);
         }
         
-        if(window == 2 and tenshi_uspecial_rock != noone and uspecial_summon and !uspec_feint and tenshi_uspecial_rock.rock_state == ROCK.MOVE){
-            y = lerp(y, y_goal, .2);
-            vsp = vsp < 0 ? vsp : 0;
-            window_timer = 1;
+        if(window == 2 and tenshi_uspecial_rock != noone and uspecial_summon and !uspec_feint){
+        	if(tenshi_uspecial_rock.rock_state == ROCK.MOVE){
+            	y = lerp(y, y_goal, .2);
+            	vsp = vsp < 0 ? vsp : 0;
+            	window_timer = 1;
+        	} else {
+        		window_timer = 0;
+        		window++;
+        	}
         }
         if(window == 3 and window_timer == 6){
         	if(rock_proj != noone or !uspecial_summon or uspec_feint){
@@ -320,6 +335,11 @@ switch(attack){
             			install_theme = 32;
             			true_input2 = false;
             		}
+					if(install_theme == 29 or install_theme = 22){
+						if(down_down){
+							install_theme += 100;
+						} 
+					}
 
             		//clear trail so 2 installs in one game isnt weird
             		for(var i = 0; i < install_trail_size; i++){
@@ -434,12 +454,15 @@ switch(attack){
     		iku.image_alpha = 0;
     	}
 
-    	if(window == 7 and window_timer = 24){
+    	if(window == 7 and window_timer = 54){
     		knockback_adj = base_knockback_adj;
     	}
     	
     	break;
     case AT_DAIR:
+    	if(window < 4 and window > 1){
+    		hud_offset = 25;
+    	}
     	if(window == 1 and dragon_install){
     		soft_armor = install_armor;
     		add_install_trail(10, 30);
@@ -460,6 +483,9 @@ switch(attack){
     	}
     	if(window == 2 and window_timer == 8){
     		sound_play(sound_get("drill_loop"), true);
+    	}
+    	if(window == 3 and window_timer%2 == 0){
+    		create_hitbox(AT_DAIR, 2, x, y);
     	}
     	if(window == 4){
     		sound_stop(sound_get("drill_loop"));
@@ -487,7 +513,8 @@ switch(attack){
     	}
     
     	if(window == 1 and window_timer == 7){
-    		charge_level = dragon_install;
+    		//charge_level = dragon_install;
+    		charge_level = 0;
     		var cfx = instance_create(x, y, "obj_article2");
     		cfx.visible =0;
     		cfx.fx_type = FX.dstrong_charge;
@@ -502,15 +529,25 @@ switch(attack){
     		if(charge_level > 1){
     			sound_play(asset_get("sfx_zetter_upb_hit"));
     			shake_camera(8, 12);
-    			spawn_hit_fx(x+spr_dir*(-4), y-50, 148);
+    			spawn_hit_fx(x+spr_dir*(-4), y-50, hisou_large);
     		} else {
     			sound_play(asset_get("sfx_zetter_upb_hit"));
     			shake_camera(3*charge_level, 6*charge_level);
-    			spawn_hit_fx(x+spr_dir*(-4), y-50, 3);
+    			spawn_hit_fx(x+spr_dir*(-4), y-50, hisou_small);
     		}
     	} else if (window == 3){
     		if(window_timer == 1){
-    			
+    			switch(charge_level){
+    				case 0:
+    					set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 15);
+    					break;
+    				case 1:
+    					set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 20);
+    					break;
+    				case 2:
+    					set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 25);
+    					break;
+    			}
     			var h = instance_create(x+spr_dir*50, y, "obj_article2");
     			h.fx_type = FX.dstrong_hitbox;
     			h.sprite_index = sprite_get("dstrong_rock");
@@ -735,10 +772,12 @@ switch(attack){
     			spawn_base_dust(x + spr_dir*40, y, "dash", -spr_dir);
     		}
     	}
-    
-    
+    	if(window > 1){
+    		hud_offset = 50+30*charge_level;
+    	}
     	if(window == 1 and window_timer == 10){
-    		charge_level = dragon_install;
+    		//charge_level = dragon_install;
+    		charge_level = 0;
     		var cfx = instance_create(x, y, "obj_article2");
     		cfx.visible =0;
     		cfx.fx_type = FX.ustrong_charge;
@@ -754,16 +793,16 @@ switch(attack){
     		if(charge_level > 1){
     			sound_play(asset_get("sfx_zetter_upb_hit"));
     			shake_camera(8, 12);
-    			spawn_hit_fx(x+spr_dir*(-54), y, 148);
+    			spawn_hit_fx(x+spr_dir*(-54), y, hisou_large);
     		} else {
     			sound_play(asset_get("sfx_zetter_upb_hit"));
     			shake_camera(3*charge_level, 6*charge_level);
-    			spawn_hit_fx(x+spr_dir*(-54), y, 3);
+    			spawn_hit_fx(x+spr_dir*(-54), y, hisou_small);
     		}
     	} else if (window == 2 and window_timer == 1){
     		switch(charge_level){
     			case 0:
-
+					set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 12);
     				set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -55);
 					set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_X, 10);
 					set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 90);
@@ -779,6 +818,7 @@ switch(attack){
 					set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 1);
     				break;
     			case 1:
+    				set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 15);
     			    set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -65);
 					set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_X, 10);
 					set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 120);
@@ -794,6 +834,7 @@ switch(attack){
 					set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 1.1);
     				break;
     			case 2:
+    				set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 18);
     				set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -75);
 					set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_X, 10);
 					set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 150);
@@ -823,7 +864,8 @@ switch(attack){
     	}
     
     	if(window == 1 and window_timer == 8){
-    		charge_level = dragon_install;
+    		//charge_level = dragon_install;
+    		charge_level = 0;
     		var cfx = instance_create(x-spr_dir*40, y+16, "obj_article2");
     		cfx.visible =0;
     		cfx.fx_type = FX.fstrong_charge;
@@ -839,15 +881,16 @@ switch(attack){
     		if(charge_level > 1){
     			sound_play(asset_get("sfx_zetter_upb_hit"));
     			shake_camera(8, 12);
-    			spawn_hit_fx(x+spr_dir*(-14), y, 148);
+    			spawn_hit_fx(x+spr_dir*(-14), y, hisou_large);
     		} else {
     			sound_play(asset_get("sfx_zetter_upb_hit"));
     			shake_camera(3*charge_level, 6*charge_level);
-    			spawn_hit_fx(x+spr_dir*(-14), y, 3);
+    			spawn_hit_fx(x+spr_dir*(-14), y, hisou_small);
     		}
     	} else if (window == 2 and window_timer == 1){
     		switch charge_level{
     			case 0:
+    				set_window_value(AT_FSTRONG, 5, AG_WINDOW_LENGTH, 18);
     				set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 40);
 					set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_Y, -32);
 					set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 84);
@@ -863,6 +906,7 @@ switch(attack){
 					set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1);
     				break;
     			case 1:
+    			set_window_value(AT_FSTRONG, 5, AG_WINDOW_LENGTH, 20);
     			    set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 60);
 					set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_Y, -32);
 					set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 104);
@@ -876,8 +920,10 @@ switch(attack){
 					set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 94);
 					set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 10);
 					set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.1);
+					
 					break;
 				case 2:
+					set_window_value(AT_FSTRONG, 5, AG_WINDOW_LENGTH, 22);
 				    set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 70);
 					set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_Y, -32);
 					set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 144);
@@ -909,6 +955,7 @@ switch(attack){
     	}
     	break;
     case AT_FAIR:
+		can_fast_fall = false;
     	if(window < 3 and dragon_install){
     		soft_armor = install_armor;
     		add_install_trail(10, 30);
@@ -922,16 +969,30 @@ switch(attack){
     			vsp = 0;
     		}
     		if(hsp < 7 and hsp > -7){
-    			hsp = 7*spr_dir;
+    			hsp = 5*spr_dir;
     		}
     		if(left_down and spr_dir == -1 or right_down and spr_dir = 1){
     			hsp += 1.5*spr_dir;
     		} else if(left_down and spr_dir == 1 or right_down and spr_dir = -1){
     			hsp -= 1.5*spr_dir;
     		}
+    		if(up_down){
+    			vsp -= 3;
+    			
+    		} else if (down_down){
+    			vsp += 3;
+    		}
+
     	}
     	if(window > 1 and vsp < -5 and !dragon_install){
     		vsp+=2;
+    	}
+    	
+    	if(vsp < -8){
+    		vsp = -8;
+    	}
+    	if(has_hit and abs(hsp) > 8){
+    		hsp = sign(hsp)*8;
     	}
     	break;
     case AT_EXTRA_3:
@@ -1049,6 +1110,7 @@ switch(attack){
     	}
     	break;
     case AT_NAIR:
+    	hud_offset = 8;
     	if(dragon_install and window == 1){
     		soft_armor = install_armor;
     		add_install_trail(10, 30);
@@ -1068,6 +1130,9 @@ switch(attack){
     	}
     	break;
 	case AT_UAIR:
+		if(window < 3 or window_timer<4){
+			hud_offset = 40
+		}
     	if(dragon_install and window == 1){
     		soft_armor = install_armor;
     		add_install_trail(10, 30);
@@ -1206,6 +1271,7 @@ newdust.draw_angle = dfa;
 return newdust;
 
 #define activate_install()
+install_timer = 0;
 //fair
 set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 4);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 99);
@@ -1227,7 +1293,7 @@ set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 99);
 set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_BAIR, 3, HG_WINDOW, 2);
 //nair
-set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 3);
 set_hitbox_value(AT_NAIR, 1, HG_WINDOW, 99);
 set_hitbox_value(AT_NAIR, 2, HG_WINDOW, 99);
@@ -1251,7 +1317,8 @@ set_hitbox_value(AT_UTILT, 10, HG_WINDOW, 2);
 set_hitbox_value(AT_UTILT, 11, HG_WINDOW, 2);
 
 //ftilt
-set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 6);
+
 //dtilt
 set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 3);
