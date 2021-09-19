@@ -1,0 +1,15 @@
+inRock = false;
+firstP = false;
+prison_canAct = false;
+prison_time = 200;
+prison_happen = false;
+prison_time_counter = 0;
+prison_lockout_counter = 0;
+prison_lockout_time = prison_time + (prison_time / 2);
+wrap_fall = false;
+wrap_fall_time = 0;
+prisoner = noone;
+prison_plat = noone;
+test = 0;
+myPrison = noone;
+prev_prisoner = noone;

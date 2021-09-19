@@ -1,0 +1,110 @@
+sprite_change_offset("idle", 69, 94);
+sprite_change_offset("crouch", 69, 94);
+sprite_change_offset("walk", 69, 94);
+sprite_change_offset("walkturn", 69, 94);
+sprite_change_offset("dash", 69, 94);
+sprite_change_offset("dashstart", 69, 94);
+sprite_change_offset("dashstop", 69, 94);
+sprite_change_offset("dashturn", 69, 94);
+
+sprite_change_offset("hurtground", 69, 94);
+sprite_change_offset("hurt", 69, 94);
+sprite_change_offset("bighurt", 69, 94);
+sprite_change_offset("spinhurt", 69, 94);
+sprite_change_offset("downhurt", 69, 94);
+sprite_change_offset("bouncehurt", 69, 94);
+sprite_change_offset("uphurt", 69, 94);
+
+sprite_change_offset("jumpstart", 69, 94);
+sprite_change_offset("jump", 69, 94);
+sprite_change_offset("doublejump", 69, 94);
+sprite_change_offset("walljump", 69, 94);
+sprite_change_offset("pratfall", 69, 94);
+sprite_change_offset("land", 69, 94);
+sprite_change_offset("landinglag", 69, 94);
+
+sprite_change_offset("parry", 69, 94);
+sprite_change_offset("roll_forward", 69, 94);
+sprite_change_offset("roll_backward", 69, 94);
+sprite_change_offset("airdodge", 69, 94);
+sprite_change_offset("waveland", 69, 94);
+sprite_change_offset("tech", 69, 94);
+
+sprite_change_offset("jab", 39, 80);
+sprite_change_offset("dattack", 57, 94);
+sprite_change_offset("ftilt", 69, 94)
+sprite_change_offset("dtilt", 55, 86);
+sprite_change_offset("utilt", 117, 194);
+sprite_change_offset("nair", 60, 90);
+sprite_change_offset("fair", 98, 134);
+sprite_change_offset("bair", 67, 79);
+sprite_change_offset("uair", 57, 112);
+sprite_change_offset("dair", 57, 99);
+sprite_change_offset("fstrong", 89, 118);
+sprite_change_offset("ustrong", 63, 108);
+sprite_change_offset("dstrong", 97, 104);
+sprite_change_offset("nspecial", 125, 154);
+sprite_change_offset("nspecial_air", 125, 154);
+sprite_change_offset("fspecial", 125, 154);
+sprite_change_offset("fspecial_air", 125, 154);
+sprite_change_offset("fspecial_shrimp", 125, 154);
+sprite_change_offset("fspecial_air_shrimp", 125, 154);
+sprite_change_offset("uspecial", 125, 154);
+sprite_change_offset("uspecial_air", 125, 154);
+sprite_change_offset("dspecial", 125, 154);
+sprite_change_offset("dspecial_air", 125, 154);
+sprite_change_offset("dspecial2", 125, 154);
+sprite_change_offset("taunt", 125, 154);
+
+sprite_change_offset("plat", 95, 20);
+sprite_change_offset("player_outline", 79, 115);
+sprite_change_offset("bubble", 79, 115);
+sprite_change_offset("bubble_outline", 79, 115);
+sprite_change_offset("bubble_destroy", 79, 115);
+sprite_change_offset("bubble_destroy2", 205, 243);
+sprite_change_offset("bubble_form", 79, 115);
+sprite_change_offset("bloop_big", 79, 115);
+sprite_change_offset("bloop_bite", 79, 115);
+sprite_change_offset("shine_effect", 125, 154);
+sprite_change_offset("fish", 40, 40);
+sprite_change_offset("bubble_grow", 125, 154);
+sprite_change_offset("bubble_mask", 79, 115);
+sprite_change_offset("bloop", 24, 24);
+sprite_change_offset("bloop_hud", 24, 24);
+sprite_change_offset("bloop_pop", 24, 24);
+sprite_change_offset("bloop_bubble", 79, 115);
+sprite_change_offset("status", 4, 4);
+sprite_change_offset("shrimp", 24, 24);
+sprite_change_offset("mouse", 79, 115);
+
+//EA alt offsets
+sprite_change_offset("dash_ea", 69, 94);
+sprite_change_offset("dashstart_ea", 69, 94);
+sprite_change_offset("dashstop_ea", 69, 94);
+sprite_change_offset("dashturn_ea", 69, 94);
+
+sprite_change_offset("dstrong_ea", 97, 104);
+sprite_change_offset("ustrong_ea", 63, 108);
+sprite_change_offset("fspecial_ea", 125, 154);
+sprite_change_offset("fspecial_air_ea", 125, 154);
+sprite_change_offset("fspecial_shrimp_ea", 125, 154);
+sprite_change_offset("fspecial_air_shrimp_ea", 125, 154);
+
+sprite_change_offset("bubble_ea", 79, 115);
+sprite_change_offset("bubble_outline_ea", 79, 115);
+sprite_change_offset("bubble_destroy_ea", 79, 115);
+sprite_change_offset("bubble_form_ea", 79, 115);
+sprite_change_offset("bloop_big_ea", 79, 115);
+sprite_change_offset("bloop_bite_ea", 79, 115);
+sprite_change_offset("shine_effect_ea", 125, 154);
+sprite_change_offset("fish_ea", 40, 40);
+sprite_change_offset("bubble_grow_ea", 125, 154);
+sprite_change_offset("bloop_ea", 24, 24);
+sprite_change_offset("bloop_hud_ea", 24, 24);
+sprite_change_offset("bloop_pop_ea", 24, 24);
+sprite_change_offset("bloop_bubble_ea", 79, 115);
+sprite_change_offset("status_ea", 4, 4);
+sprite_change_offset("shrimp_ea", 24, 24);
+sprite_change_offset("mouse_ea", 79, 115);
+
+set_victory_theme(sound_get("gura_theme"));

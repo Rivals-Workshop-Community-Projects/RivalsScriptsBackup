@@ -1,0 +1,1 @@
+exp_custom_hurt = false;

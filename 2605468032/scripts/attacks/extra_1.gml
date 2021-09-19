@@ -1,0 +1,32 @@
+set_attack_value(AT_EXTRA_1, AG_CATEGORY, 2);
+
+set_num_hitboxes(AT_EXTRA_1, 0);
+
+set_hitbox_value(AT_EXTRA_1, 1, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_EXTRA_1, 1, HG_WINDOW, 0);
+set_hitbox_value(AT_EXTRA_1, 1, HG_LIFETIME, 4);
+set_hitbox_value(AT_EXTRA_1, 1, HG_HITBOX_X, 0);
+set_hitbox_value(AT_EXTRA_1, 1, HG_HITBOX_Y, 0);
+set_hitbox_value(AT_EXTRA_1, 1, HG_WIDTH, 120);
+set_hitbox_value(AT_EXTRA_1, 1, HG_HEIGHT, 120);
+set_hitbox_value(AT_EXTRA_1, 1, HG_SHAPE, 0);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PRIORITY, 3);
+set_hitbox_value(AT_EXTRA_1, 1, HG_DAMAGE, 10);
+set_hitbox_value(AT_EXTRA_1, 1, HG_ANGLE, 45);
+set_hitbox_value(AT_EXTRA_1, 1, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_EXTRA_1, 1, HG_KNOCKBACK_SCALING, 0.8);
+set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_HITPAUSE, 9);
+set_hitbox_value(AT_EXTRA_1, 1, HG_HITPAUSE_SCALING, 0.8);
+set_hitbox_value(AT_EXTRA_1, 1, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_EXTRA_1, 1, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_ANIM_SPEED, 0);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
