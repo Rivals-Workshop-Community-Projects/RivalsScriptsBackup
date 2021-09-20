@@ -1,5 +1,7 @@
 //article1_init - runs once, when the article is created
 
+if object_index == oPlayer exit;
+
 //Birdboy specific variables
 drivespeed = 2
 

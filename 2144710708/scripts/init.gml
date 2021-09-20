@@ -157,6 +157,7 @@ shoe_gimmick = true;
 // whether or not to display the text "playtesting mode is active"
 show_playtesting_text = false;
 
+
 // dspecial arrow and kb pointer 
 spr_kb_arrow = sprite_get("owen_kb_arrow");
 spr_isplayer = sprite_get("is_player");
@@ -173,6 +174,9 @@ var need_draw = false;
 
 // check for playtest mode
 playtest = (object_index == oTestPlayer);
+
+// check for practice mode
+practice = false;
 
 // for fspecial
 fspecial_color = c_white;
@@ -347,9 +351,6 @@ ncode3 = "of creating a shoe that absorbs attacks."
 // hidden alt code
 hidden_alt_active = false;
 hidden_alt_enabled = true; // can remove feature at any time
-
-// muno phone support
-user_event(14);
 
 // funny variables for phone thing
 prev_gravity_speed = gravity_speed;
@@ -928,4 +929,8 @@ Namco_Taunt_Sound = sound_get("vineboom")
 // dialogue buddy support
 
 //diag_portrait=sprite_get(""); // This will allow you to put any custom portrait onto the dialogue buddy!
+
+// munophone touch support
+	muno_event_type = 0;
+	user_event(14);
 

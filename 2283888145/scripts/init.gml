@@ -550,4 +550,5 @@ if !theres_guitar guitar = instance_create(x, y - 500, "obj_article1"); //make g
 
 
 
+muno_event_type = 0;
 user_event(14);

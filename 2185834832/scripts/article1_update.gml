@@ -7,6 +7,8 @@
 - 2 Dying
 
 */
+if object_index == oPlayer exit;
+
 
 //Are there too many articles? If so, I should die
 if (replacedcount > maxarticles){

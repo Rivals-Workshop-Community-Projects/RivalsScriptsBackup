@@ -78,8 +78,10 @@ if(attack == AT_DSPECIAL_2){
 
 if (attack == AT_JAB && window == 3){
 	can_jump = true
-	if (right_pressed || left_pressed){
-		set_state(PS_IDLE)
+	if(window_timer > 5){
+		if (right_down || left_down){
+			set_state(PS_IDLE)
+		}
 	}
 }
 
@@ -124,7 +126,7 @@ if (attack == AT_USPECIAL){
 	if(!free){
 		if(!instance_exists(waterBomb) || waterBomb == 0){
 			if (window == 2 && window_timer == 3){
-					if(waterCharges > 0 || waterLevelEmergency > 7){
+					if(waterCharges > 0 && uspec_non <= 0 || waterLevelEmergency > 7 && uspec_non <= 0){
 					waterCharges -= 1
 			        waterBomb = instance_create(x + (spr_dir*25),y - 65,"obj_article2");
 				}
@@ -132,11 +134,13 @@ if (attack == AT_USPECIAL){
 		}else if(window == 1 && waterBomb != 0){
 			window = 2
 			window_timer = 0
+			uspec_non = 10
 		}
 		if(window == 1){
 			if(waterCharges <= 0 && waterLevelEmergency <= 7){
 				window = 2
 				window_timer = 0
+				uspec_non = 10
 			}
 		}
 	if(window == 2 && window_timer == 2 && waterBomb != 0){
@@ -184,13 +188,13 @@ if(attack == AT_USPECIAL_2){
 				}
 			}else{
 				set_attack_value(AT_USPECIAL_2, AG_SPRITE, sprite_get("uspecialairnob"));
-				set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -11);
+				set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -9);
 				set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_HAS_SFX, 0);
 			}
 		}
 	}else{
 		set_attack_value(AT_USPECIAL_2, AG_SPRITE, sprite_get("uspecialairnob"));
-		set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -11);
+		set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, -9);
 		set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_HAS_SFX, 0);
 	}
 	if(window == 1){
@@ -232,6 +236,7 @@ if(attack == AT_NSPECIAL_2 || attack == AT_USPECIAL || attack == AT_UTILT){
 }
 
 if(attack == AT_FSPECIAL){
+	can_fast_fall = false
 	if(window == 2 && window_timer == 1){
 		if(instance_exists(saw_blade) && saw_blade != noone){
 			if(saw_blade.fspec_turns < 2){
@@ -269,14 +274,85 @@ if(attack == AT_FSPECIAL){
 			spawn_hit_fx(x, y, bouncePad)
 			sound_play(asset_get("sfx_watergun_fire"))
 		}
-		if(window == 4 && window_timer == 2){
-			vsp -= 3
+		if(window == 4 && window_timer == 2 || window == 6 && window_timer == 2 || window == 8 && window_timer == 2){
+			if(double_jump_timer <= 0){
+				vsp -= 3
+			}
 			hsp += 0.5 * spr_dir
 			fspecVar -= 1
 			spawn_hit_fx(x, y, bouncePad)
 			sound_play(asset_get("sfx_watergun_fire"))
 		}
 	}
+	
+	//angling
+	if(window == 3){
+		if(window_timer > 1){
+			if(special_pressed){
+				if(up_down){
+					window = 6
+					window_timer = 0
+				}else if(down_down){
+					window = 8
+					window_timer = 0
+				}else{
+					window = 4
+					window_timer = 0
+				}
+			}
+			if(window_timer > 5){
+				can_attack = true
+				can_jump = true
+				can_shield = true
+				can_strong = true
+				can_ustrong = true
+			}
+		}
+	}
+	
+	if(window == 7 || window == 9 || window == 5){
+		if(special_pressed){
+			if(up_down){
+				window = 11
+				window_timer = 0
+			}else if(down_down){
+				window = 12
+				window_timer = 0
+			}else{
+				window = 10
+				window_timer = 0
+			}
+		}
+	}
+	
+	if(window == 3 && window_timer == 15 ||
+	window == 5 && window_timer == 10 ||
+	window == 7 && window_timer == 14 ||
+	window == 9 && window_timer == 15){
+		if(!was_parried){
+			if(!free){
+				set_state(PS_IDLE)
+			}else{
+				set_state(PS_IDLE_AIR)
+			}
+		}else{
+			if(!free){
+				set_state(PS_PRATLAND)
+			}else{
+				set_state(PS_PRATFALL)
+			}
+		}
+	}else if(window == 10 && window_timer == 16 ||
+	window == 11 && window_timer == 16 ||
+	window == 12 && window_timer == 28){
+		window = 13
+		window_timer = 0
+	}
+	
+	/*if(window == 8 || window == 12){
+		vsp = 0
+		can_fast_fall = false
+	}*/
 }
 
 if(attack == AT_USTRONG){
@@ -312,20 +388,20 @@ if(attack == AT_USTRONG){
 
 if(attack == AT_JAB){
 	if(window == 6){
-		if(!attack_down){
+		if(attack_down && window_timer == 12){
+			window = 6
+			window_timer = 0
+		}else if(!attack_down){
 			window = 7
 			window_timer = 0
-		}
-	}
-	if(window == 6 && window_timer == 12){
-		if(attack_down){
-		window = 5
-		window_timer = 0
 		}
 	}
 }
 
 if(attack == AT_NSPECIAL){
+	if(vsp < -10){
+		double_jump_timer = 0
+	}
 	if(window == 1){
 		stupid_hit_var = false
 		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
@@ -465,12 +541,21 @@ if(attack == AT_DSTRONG){
 	}
 }
 
-/*
-//inner bullshit (jk jk)
-if(alt_cur == 20){
-    if(attack == AT_TAUNT && window == 1 && window_timer == 2 && inner_audio = false){
-        sound_play(sound_get("Inner taunt audio thing whatever idk dude"))
-        inner_audio = true
-    }
+//Grav jump making sure that it doesnt just be stupid
+if(state == PS_ATTACK_AIR){
+	if(state_timer <= 1){
+		if(jump_pressed && djumps > 0 && has_djump){
+			if(left_down){
+	    	hsp = -6
+		    }else if(right_down){
+		    	hsp = 6
+		    }else{
+		    	hsp = 0
+		    }
+			has_djump = false
+			double_jump_timer = 15
+			spawn_hit_fx( x, y, bubblejump)
+    		sound_play( asset_get( "sfx_bubblemouth" ))
+		}
+	}
 }
-*/

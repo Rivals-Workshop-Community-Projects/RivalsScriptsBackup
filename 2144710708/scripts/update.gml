@@ -1,23 +1,14 @@
 // the dreaded... UPDATE AHHHH
 
-// muno phone support (has to be a the top, unlike other supports)
-user_event(14);
-
-// flags support
-/*
-if(variable_instance_exists(id,"reduwu")) {
-	if get_player_color(player) = 16 {
-		if (get_gameplay_time() > 3 && get_gameplay_time() < 127) {
-			set_color_profile_slot( 16, 0, 255, 161, 210 ); //body
-			set_color_profile_slot( 16, 1, 214, 2, 112 ); //hair
-			set_color_profile_slot( 16, 2, 154, 63, 161 ); //shirt
-			set_color_profile_slot( 16, 3, 0, 56, 168 ); //shorts
-			set_color_profile_slot( 16, 4, 214, 2, 112 ); //crowbar
-			set_color_profile_slot( 16, 5, 0, 56, 168 ); //crowbar edges
-		}
-	}
+// munophone touch support
+	muno_event_type = 1;
+	user_event(14);
+	
+// practice mode check -- p2
+if (get_training_cpu_action() != CPU_FIGHT && !playtest && !("is_ai" in self)) {
+    practice = true;
 }
-*/
+
 
 // dialogue buddy support thing
 if(variable_instance_exists(id,"diag"))

@@ -1,4 +1,4 @@
-if ("hud_state" in self && hud_state && !phone.phone_settings[phone.setting_fast_graphics] && !phone_cheats[cheat_hide_hud]){
+if ("hud_state" in self && hud_state && !phone_fast && !phone_cheats[CHEAT_TRAILER]){
     
     shader_start();
     
@@ -91,4 +91,5 @@ with pHitBox if player_id == other && "am_ball" in self{
 
 
 
-user_event(11);
+muno_event_type = 5;
+user_event(14);

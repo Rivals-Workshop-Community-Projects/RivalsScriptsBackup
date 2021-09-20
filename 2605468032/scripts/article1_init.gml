@@ -2,6 +2,7 @@
 mask_index = sprite_get("bubble_mask");
 image_alpha = 1
 depth = -20
+gura_owner = -1;
 
 can_be_grounded = false;
 ignores_walls = true;

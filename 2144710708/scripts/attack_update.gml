@@ -26,6 +26,18 @@ if (phone_cheats[cheat_hit_jumps] != 0) {
 	}
 }
 
+// fair buffffff...........
+if (phone_cheats[cheat_fair_buff] == 1) {
+	set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 20000);
+	set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 20000);
+}
+else if (phone_cheats[cheat_fair_buff] == 0) {
+	// probably shouldn't put constants here but oh well
+	set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 68);
+	set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 84);
+}
+
+
 // for abyss rune M meter
 // when meter is active, make aerials jump and attack cancellable
 if (gimmick_activated == true) {
@@ -319,7 +331,7 @@ if (attack == AT_USPECIAL){
 	if (window < 4) {
 		can_fast_fall = false;
 	}
-	else {
+	else if (window >= 4) {
 		can_fast_fall = true;
 	}
 	

@@ -1,49 +1,48 @@
 // default
-rangeSet(0, $3357a6); //Blue
-rangeSet(1, $12197b); //Blue (S)
-rangeSet(2, $e2e7f2); //White
-rangeSet(3, $8282a1); //White (S)
-rangeSet(4, $d0b777); //Tan
-rangeSet(5, $9c6e35); //Tan (S)
-rangeSet(6, $424650); //Grey
-rangeSet(7, $232432); //Grey (S)
-rangeSet(8, $f0bc27); //Lightning
+rangeSet(0, $255dc3); //Blue
+rangeSet(1, $1b0091); //Blue (S)
+rangeSet(2, $e3eaf7); //White
+rangeSet(3, $7474b9); //White (S)
+rangeSet(4, $f0c27b); //Tan
+rangeSet(5, $b45b3e); //Tan (S)
+rangeSet(6, $424367); //Grey
+rangeSet(7, $221249); //Grey (S)
 
 
 
 var a = 1;
 
 // blue
-colorSet(a, 0, $25417d); //Blue
-colorSet(a, 1, $0b1052); //Blue (S)
-colorSet(a, 2, $9db1dc); //White
-colorSet(a, 3, $54548c); //White (S)
-colorSet(a, 4, $cfc8b4); //Tan
-colorSet(a, 5, $9c805e); //Tan (S)
-colorSet(a, 6, $606b86); //Grey
-colorSet(a, 7, $373a66); //Grey (S)
+colorSet(a, 0, $3155a3); //Blue
+colorSet(a, 1, $091177); //Blue (S)
+colorSet(a, 2, $b5cdff); //White
+colorSet(a, 3, $5858a3); //White (S)
+colorSet(a, 4, $d1c49e); //Tan
+colorSet(a, 5, $9b784c); //Tan (S)
+colorSet(a, 6, $7b89ac); //Grey
+colorSet(a, 7, $464a81); //Grey (S)
 
 a++;
 
 // red
-colorSet(a, 0, $a63333); //Blue
-colorSet(a, 1, $66101e); //Blue (S)
-colorSet(a, 2, $b88e8f); //White
-colorSet(a, 3, $855463); //White (S)
-colorSet(a, 4, $a6915c); //Tan
-colorSet(a, 5, $7b5a30); //Tan (S)
-colorSet(a, 6, $504242); //Grey
-colorSet(a, 7, $322326); //Grey (S)
+colorSet(a, 0, $d14040); //Blue
+colorSet(a, 1, $7c0014); //Blue (S)
+colorSet(a, 2, $ddabac); //White
+colorSet(a, 3, $a55870); //White (S)
+colorSet(a, 4, $c2a968); //Tan
+colorSet(a, 5, $99692c); //Tan (S)
+colorSet(a, 6, $644f4f); //Grey
+colorSet(a, 7, $3f2228); //Grey (S)
 
 a++;
 
 // green
-colorSet(a, 0, $2e8468); //Blue
-colorSet(a, 1, $15525e); //Blue (S)
-colorSet(a, 2, $8eb89d); //White
-colorSet(a, 3, $467068); //White (S)
-colorSet(a, 4, $d2b1a5); //Tan
-colorSet(a, 5, $996161); //Tan (S)
+colorSet(a, 0, $3bb18b); //Blue
+colorSet(a, 1, $0a6375); //Blue (S)
+colorSet(a, 2, $a5d8b7); //White
+colorSet(a, 3, $308d7e); //White (S)
+colorSet(a, 4, $eec6b8); //Tan
+colorSet(a, 5, $b16262); //Tan (S)
 colorSet(a, 6, $42504a); //Grey
 colorSet(a, 7, $233232); //Grey (S)
 
@@ -54,18 +53,18 @@ colorSet(a, 0, $f05397); //Blue
 colorSet(a, 1, $9e148c); //Blue (S)
 colorSet(a, 2, $6e7482); //White
 colorSet(a, 3, $42455d); //White (S)
-colorSet(a, 4, $e2e7f2); //Tan
-colorSet(a, 5, $8282a1); //Tan (S)
-colorSet(a, 6, $e2e7f2); //Grey
-colorSet(a, 7, $8282a1); //Grey (S)
+colorSet(a, 4, $e3eaf7); //Tan
+colorSet(a, 5, $7474b9); //Tan (S)
+colorSet(a, 6, $e3eaf7); //Grey
+colorSet(a, 7, $7474b9); //Grey (S)
 
 a++;
 
 // black
 colorSet(a, 0, $3fa3c7); //Blue
 colorSet(a, 1, $12469e); //Blue (S)
-colorSet(a, 2, $424650); //White
-colorSet(a, 3, $232432); //White (S)
+colorSet(a, 2, $424367); //White
+colorSet(a, 3, $221249); //White (S)
 colorSet(a, 4, $6e7482); //Tan
 colorSet(a, 5, $42445d); //Tan (S)
 colorSet(a, 6, $6e7482); //Grey
@@ -116,8 +115,8 @@ colorSet(a, 2, $d6c287); //White
 colorSet(a, 3, $956f49); //White (S)
 colorSet(a, 4, $ffcb36); //Tan
 colorSet(a, 5, $c5711d); //Tan (S)
-colorSet(a, 6, $424650); //Grey
-colorSet(a, 7, $232432); //Grey (S)
+colorSet(a, 6, $424367); //Grey
+colorSet(a, 7, $221249); //Grey (S)
 
 a++;
 
@@ -136,12 +135,12 @@ a++;
 // vector
 colorSet(a, 0, $d47d25); //Blue
 colorSet(a, 1, $a43802); //Blue (S)
-colorSet(a, 2, $e2e7f2); //White
-colorSet(a, 3, $8282a1); //White (S)
-colorSet(a, 4, $424650); //Tan
+colorSet(a, 2, $e3eaf7); //White
+colorSet(a, 3, $7474b9); //White (S)
+colorSet(a, 4, $424367); //Tan
 colorSet(a, 5, $323432); //Tan (S)
-colorSet(a, 6, $e2e7f2); //Grey
-colorSet(a, 7, $8282a1); //Grey (S)
+colorSet(a, 6, $e3eaf7); //Grey
+colorSet(a, 7, $7474b9); //Grey (S)
 
 a++;
 

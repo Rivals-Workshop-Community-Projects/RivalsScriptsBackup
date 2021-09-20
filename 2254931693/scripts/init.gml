@@ -148,4 +148,5 @@ if ("superTrue" in self){
 
 diag_portrait = sprite_get("diag_portrait"); // This will allow you to put any custom portrait onto the dialogue buddy!
 
+muno_event_type = 0;
 user_event(14);

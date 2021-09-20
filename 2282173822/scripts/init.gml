@@ -88,7 +88,7 @@ max_clouds = 4; //including alto
 //Misc
 dattack_jump_airdodge_saved = false;
 strong_cooldown = 0;
-strong_cooldown_max = 60;
+strong_cooldown_max = 90; // 60
 load_codecs = false;
 
 
@@ -98,6 +98,11 @@ load_codecs = false;
 
 
 //Stats
+
+stat_init_dash = [6, 7];
+stat_dash = [6.5, 8];
+stat_air = [5.5, 6.5];
+stat_air_accel = [0.3, 0.4];
 
 //Physical size
 char_height = 60;
@@ -115,8 +120,8 @@ walk_speed = 3.25;
 walk_accel = 1;
 walk_turn_time = 6;
 initial_dash_time = 9;
-initial_dash_speed = 6;
-dash_speed = 6.5;
+initial_dash_speed = stat_init_dash[0];
+dash_speed = stat_dash[0];
 dash_turn_time = 10;
 dash_turn_accel = 2;
 dash_stop_time = 6;
@@ -127,9 +132,9 @@ moonwalk_accel = 1;
 //Air movement
 leave_ground_max = 6.5;
 max_jump_hsp = 6.5;
-air_max_speed = 5.5;
+air_max_speed = stat_air[0];
 jump_change = 3;
-air_accel = .3;
+air_accel = stat_air_accel[0];
 prat_fall_accel = 0.8;
 air_friction = .03;
 max_fall = 11;
@@ -141,7 +146,7 @@ hitstun_grav = .5;
 jump_start_time = 5;
 jump_speed = 11;
 short_hop_speed = 7;
-djump_speed = 9;
+djump_speed = 10; // 9
 max_djumps = 1;
 double_jump_time = 36;          //Can't be less than 31...?
 walljump_hsp = 5;
@@ -151,7 +156,7 @@ wall_frames = 2;
 
 //Landing and wavelanding
 land_time = 4;
-prat_land_time = 16;
+prat_land_time = 8; // 16
 wave_land_time = 8;
 wave_land_adj = 1.3;
 wave_friction = 0.1;
@@ -316,6 +321,7 @@ sfx_brass_2 = sound_get("brass_2");
 sfx_brass_hit = sound_get("brass_hit");
 sfx_brass_melee = sound_get("brass_melee");
 sfx_brass_stun = sound_get("brass_stun");
+sfx_glass_break = sound_get("glass_break");
 
 sfx_ssbu_bow_charge = sound_get("ssbu_bow_charge");
 sfx_ssbu_screw_attack = sound_get("ssbu_screw_attack");
@@ -344,6 +350,8 @@ hud_handler = {
 vfx_woag = hit_fx_create(spr_vfx_woag, 54);
 vfx_rain_splash = hit_fx_create(spr_vfx_rain_splash, 24);
 vfx_rain_drop = hit_fx_create(spr_vfx_rain_drop, 24);
+vfx_stasis_chains = hit_fx_create(sprite_get("vfx_stasis_chains"), 21);
+vfx_ssj3_lightning = hit_fx_create(sprite_get("vfx_ssj3_lightning"), 24);
 
 //Hurtbox sprites
 hurtbox_spr = asset_get("ex_guy_hurt_box");
@@ -376,11 +384,10 @@ sfx_pho_open2 = sound_get("_pho_open2");
 sfx_pho_select1 = sound_get("_pho_select1");
 sfx_pho_select2 = sound_get("_pho_select2");
 
+muno_event_type = 0;
 user_event(14);
 user_event(1);
 
-// phone_practice = 0;
-// phone_cheats[cheat_hide_hud] = 1;
 codec_video = 0;
 
 

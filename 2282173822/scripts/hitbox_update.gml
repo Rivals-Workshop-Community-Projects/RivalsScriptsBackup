@@ -26,7 +26,7 @@ switch(attack){
 			
 			if (vsp > 0) hsp *= 0.95;
 		}
-		if vsp < -5 && hitbox_timer % 10 == 1 && !player_id.phone.phone_settings[player_id.phone.setting_fast_graphics]{
+		if vsp < -5 && hitbox_timer % 10 == 1 && !player_id.phone_fast{
 			var hfx = spawnDrop();
 			hfx.vsp = -5;
 			hfx.hsp = hsp * -.5;
@@ -127,7 +127,7 @@ switch(attack){
 		break;
 		
 	case AT_DSPECIAL:
-		if (!free || has_hit || y >= room_height) && hitbox_timer > 1{
+		if (!free || y >= room_height) && hitbox_timer > 1{
 			spawn_hit_fx(x, y + 6, player_id.vfx_rain_splash);
 			if (hbox_num == 3){
 				var cld = instance_create(x, y + 22, "obj_article1");
@@ -136,7 +136,11 @@ switch(attack){
 			instance_destroy();
 			exit;
 		}
-		if (hitbox_timer % 10) - 1 == 0 && !player_id.phone.phone_settings[player_id.phone.setting_fast_graphics]{
+		if has_hit{
+			instance_destroy();
+			exit;
+		}
+		if (hitbox_timer % 10) - 1 == 0 && !player_id.phone_fast{
 			spawnDrop();
 		}
 		break;

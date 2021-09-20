@@ -60,7 +60,7 @@ moonwalk_accel = 1.2;
 jump_start_time = 5;
 jump_speed = 9.5;
 short_hop_speed = 5.8;
-djump_speed = 12.5;
+djump_speed = 2;
 leave_ground_max = 5; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; // (3) the maximum hsp you can accelerate to when in a normal aerial state
@@ -69,7 +69,7 @@ air_accel = .32;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
 air_friction = .04;
 max_djumps = 1;
-double_jump_time = 35; //the number of frames to play the djump animation. Can't be less than 31.
+double_jump_time = 40; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 3.5;
 walljump_vsp = 9;
 walljump_time = 18;
@@ -128,8 +128,6 @@ jump_sound = asset_get("sfx_jumpground");
 djump_sound = asset_get("sfx_birdflap");
 air_dodge_sound = asset_get("sfx_quick_dodge");
 
-comboblast = hit_fx_create( sprite_get( "comboblast" ), 30 );
-
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
@@ -151,6 +149,10 @@ waterHud_sprite= sprite_get("waterHud");
 waterHudbub_sprite= sprite_get("waterHudbub");
 waterHudEmerg_sprite = sprite_get("waterhudemergency");
 
+vfx_waterhit_small = hit_fx_create( sprite_get( "vfx_waterhit_small" ), 18 );
+vfx_waterhit_big = hit_fx_create( sprite_get( "vfx_waterhit_big" ), 24 );
+vfx_waterhit_light_big = hit_fx_create( sprite_get( "vfx_waterhit_light_big" ), 24 );
+vfx_waterhit_light_huge = hit_fx_create( sprite_get( "vfx_waterhit_light_huge" ), 24 );
 
 emergencyCount = 0
 waterLevelEmergency = 0
@@ -175,6 +177,10 @@ enemykirby = noone
 inner_audio = true
 ustrong_cycle = true
 alt_cur = get_player_color(player);
+double_jump_timer = 0
+torga_grav_jump = 0
+uspec_non = 0
+has_djump = true
 
 //Pokemon Stadium
 pkmn_stadium_back_img = sprite_get("torga_back_sprite")

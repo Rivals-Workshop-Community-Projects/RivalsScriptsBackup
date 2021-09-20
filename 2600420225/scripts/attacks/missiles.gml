@@ -1,0 +1,13 @@
+set_hitbox_value( AT_DTHROW, 1, HG_VISUAL_EFFECT, missile_collision);
+set_hitbox_value( AT_DTHROW, 1, HG_PROJECTILE_DESTROY_EFFECT, missile_collision);
+set_hitbox_value( AT_DTHROW, 1, HG_HITBOX_TYPE, 2);
+set_hitbox_value( AT_DTHROW, 1, HG_PRIORITY, 8);
+set_hitbox_value( AT_DTHROW, 1, HG_PROJECTILE_GRAVITY, 0);
+set_hitbox_value( AT_DTHROW, 1, HG_PROJECTILE_PARRY_STUN, false);
+set_hitbox_value( AT_DTHROW, 1, HG_LIFETIME, 99999999);
+set_hitbox_value( AT_DTHROW, 1, HG_DAMAGE, 4);
+set_hitbox_value( AT_DTHROW, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
+set_hitbox_value( AT_DTHROW, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
+set_hitbox_value( AT_DTHROW, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+set_hitbox_value( AT_DTHROW, 1, HG_BASE_KNOCKBACK, 0);
+set_hitbox_value( AT_DTHROW, 1, HG_HIT_PARTICLE_NUM, 0);

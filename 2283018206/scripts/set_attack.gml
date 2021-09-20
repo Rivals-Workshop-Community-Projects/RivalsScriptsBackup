@@ -29,5 +29,5 @@ switch(attack){
 has_hit_ball = false;
 
 
-
-user_event(13);
+muno_event_type = 2;
+user_event(14);

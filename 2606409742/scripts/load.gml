@@ -1,0 +1,95 @@
+sprite_change_offset("idle", 100, 140);
+sprite_change_offset("crouch", 100, 140);
+sprite_change_offset("walk", 100, 140);
+sprite_change_offset("walkturn", 100, 140);
+sprite_change_offset("dash", 100, 140);
+sprite_change_offset("dashstart", 100, 140);
+sprite_change_offset("dashstop", 100, 140);
+sprite_change_offset("dashturn", 100, 140);
+
+sprite_change_offset("idle_hurtbox", 21, 68);
+
+sprite_change_offset("hurt", 100, 140);
+sprite_change_offset("hurtground", 100, 140);
+sprite_change_offset("bighurt", 100, 140);
+sprite_change_offset("uphurt", 100, 140);
+sprite_change_offset("downhurt", 100, 140);
+sprite_change_offset("bouncehurt", 100, 140);
+sprite_change_offset("spinhurt", 100, 140);
+
+sprite_change_offset("jumpstart", 100, 140);
+sprite_change_offset("jump", 100, 140);
+sprite_change_offset("doublejump", 100, 140);
+sprite_change_offset("walljump", 100, 140);
+sprite_change_offset("land", 100, 140);
+sprite_change_offset("landinglag", 100, 140);
+
+sprite_change_offset("parry", 100, 140);
+sprite_change_offset("roll", 100, 140);
+sprite_change_offset("airdodge", 100, 140);
+sprite_change_offset("waveland", 100, 140);
+sprite_change_offset("tech", 100, 140);
+
+sprite_change_offset("jab", 100, 140);
+sprite_change_offset("dattack", 100 - 10, 140);
+sprite_change_offset("ftilt", 100, 140);
+sprite_change_offset("dtilt", 100 - 6, 140);
+sprite_change_offset("utilt", 100, 140);
+sprite_change_offset("nair", 100, 140);
+sprite_change_offset("fair", 100, 140);
+sprite_change_offset("bair", 100, 140);
+sprite_change_offset("uair", 100, 140);
+sprite_change_offset("dair", 100, 140);
+sprite_change_offset("vfx_dair_sweetspot", 100, 140);
+sprite_change_offset("fstrong", 100 + 40, 140);
+sprite_change_offset("ustrong", 100, 140 + 58);
+sprite_change_offset("dstrong", 100, 140);
+sprite_change_offset("nspecial", 100, 140);
+sprite_change_offset("nspecial_air", 100, 140);
+sprite_change_offset("fspecial", 100, 140);
+sprite_change_offset("uspecial", 100, 140);
+sprite_change_offset("dspecial", 100, 140);
+sprite_change_offset("dspecial_2", 100, 140);
+sprite_change_offset("dspecial_2_air", 100, 140);
+sprite_change_offset("taunt", 100, 140);
+sprite_change_offset("taunt_air", 100, 140);
+sprite_change_offset("taunt_2", 100, 140);
+sprite_change_offset("camera_flash", 100, 140);
+
+sprite_change_offset("plat", 100, 140);
+sprite_change_offset("intro", 100, 198);
+
+sprite_change_offset("bomb_idle", 100, 140);
+sprite_change_offset("bomb_frozen", 100, 140);
+sprite_change_offset("bomb_mask", 100, 140);
+sprite_change_offset("bomb_hitbox", 100, 140);
+sprite_change_offset("bomb_stasis_launch", 100, 140);
+sprite_change_offset("bomb_flash", 100, 140);
+sprite_change_offset("vfx_bomb_disappear", 100, 140);
+sprite_change_offset("stamina_wheel", 32, 32);
+sprite_change_offset("bomb_cooldown", 32, 32);
+sprite_change_offset("spears", 47, 64);
+sprite_change_offset("spears_mask", 47, 64);
+sprite_change_offset("vfx_spear_break", 47, 64);
+sprite_change_offset("vfx_spear_break_2", 100, 100);
+sprite_change_offset("vfx_wind", 100, 140);
+sprite_change_offset("vfx_arrow_shoot", 100, 140);
+sprite_change_offset("vfx_sparkle", 100, 100);
+sprite_change_offset("vfx_sparkles_up", 100, 100);
+sprite_change_offset("vfx_bomb_explode", 196, 196);
+sprite_change_offset("magnesis_line", 100, 200);
+sprite_change_offset("magnesis_magnet", 100, 140);
+sprite_change_offset("vfx_stasis_arrow", 100, 140);
+sprite_change_offset("vfx_stasis_chains", 100, 100);
+sprite_change_offset("cryonis_pillar", 48, 600);
+sprite_change_offset("cryonis_cracks", 48, 600);
+sprite_change_offset("cryonis_mask", 48, 600);
+sprite_change_offset("cryonis_spawn", 64, 0);
+sprite_change_offset("vfx_cryonis_shard", 32, 32);
+
+sprite_change_offset("ui_base", 96, 96);
+sprite_change_offset("ui_rune_icons", 96, 96);
+sprite_change_offset("ui_rune_reminder", 96, 96);
+sprite_change_offset("ui_hint_camera", 96, 96);
+sprite_change_offset("ui_hint_phone", 96, 96);
+sprite_change_offset("ui_hint_controls", 96, 96);

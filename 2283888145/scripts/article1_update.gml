@@ -193,7 +193,7 @@ switch(chord_state){
 			chord_state--;
 			chord_state_timer = 15;
 		}
-		if (chord != prev_chord && !player_id.phone_cheats[player_id.cheat_infinite_chords]){
+		if (chord != prev_chord && !player_id.phone_cheats[player_id.CHEAT_CHORDS]){
 			chord_cooldown[prev_chord] = chord_cooldown_max;
 		}
 		can_transfer = true;
@@ -218,7 +218,7 @@ for (i = 0; i <= player_id.num_chords; i++){
 chord_juice_flash = (chord_juice < 60) && !(chord_juice mod 10 < 5) && following;
 if (chord_juice < 60) with player_id init_shader();
 
-if player_id.phone_cheats[player_id.cheat_infinite_chords] chord_juice = chord_juice_max;
+if player_id.phone_cheats[player_id.CHEAT_CHORDS] chord_juice = chord_juice_max;
 
 
 

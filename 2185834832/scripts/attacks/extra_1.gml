@@ -12,11 +12,17 @@ set_window_value(AT_EXTRA_1, 1, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.7);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_EXTRA_1, 1, AG_WINDOW_HSPEED, 0);
+set_window_value(AT_EXTRA_1, 1, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(AT_EXTRA_1, 1, AG_WINDOW_VSPEED, 0);
+set_window_value(AT_EXTRA_1, 1, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_SFX, asset_get("sfx_bubblemouth"));
 
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_EXTRA_1, 2, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_EXTRA_1, 2, AG_WINDOW_SFX, asset_get("sfx_watergun_splash"));
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.7);
 

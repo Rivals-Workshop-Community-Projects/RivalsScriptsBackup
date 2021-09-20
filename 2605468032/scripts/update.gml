@@ -98,6 +98,7 @@ if (pikmin != noone and pikmin != self)
 if (state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND)
 {
     follow = 0;
+    pop = 0;
     shrimp = shrimp_set;
     nspec_charge = 0;
     if ((state == PS_RESPAWN or state == PS_DEAD) and pikmin != noone)

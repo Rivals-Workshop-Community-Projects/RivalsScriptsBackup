@@ -81,6 +81,9 @@ sprite_change_offset("cloud_uspecial", 100, 140);
 sprite_change_offset("cloud_fspecial", 100, 140);
 sprite_change_offset("cloud_nspecial", 100, 140);
 sprite_change_offset("cloud_trumpet", 100, 140);
+sprite_change_offset("cloud_slowmo", 100, 140);
+sprite_change_offset("vfx_stasis_chains", 100, 100);
+sprite_change_offset("vfx_ssj3_lightning", 32, 32);
 sprite_change_offset("article_offscreen", 33, 33);
 
 sprite_change_offset("snail_idle", 100, 140);

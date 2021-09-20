@@ -1,4 +1,5 @@
-if !phone_cheats[cheat_hide_hud] user_event(12);
+muno_event_type = 4;
+user_event(14);
 
 
 
@@ -23,12 +24,12 @@ if lightning{
 		draw_width = max(ease_quadIn(0, 40, lightning, 3), 0);
 	}
 	
-	meterDraw(x, y - char_height - hud_offset - 74 + phone_cheats[cheat_hide_hud] * 40, draw_width, 8, lightning_color[cloud_col_target != lightning_color], clamp(lightning / lightning_max, 0, 1), 1, 1, false);
+	meterDraw(x, y - char_height - hud_offset - 74 + phone_cheats[CHEAT_TRAILER] * 40, draw_width, 8, lightning_color[cloud_col_target != lightning_color], clamp(lightning / lightning_max, 0, 1), 1, 1, false);
 }
 
 
 
-if phone_cheats[cheat_funny_snail] draw_debug_text(x, y, "woag");
+if phone_cheats[CHEAT_WOAG] draw_debug_text(x, y, "woag");
 
 
 

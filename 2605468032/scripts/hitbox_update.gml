@@ -11,6 +11,8 @@ if (attack == AT_FSPECIAL)
         {
             player_id.shrimp_set = 1
         }
+        if (place_meeting(x, y, asset_get("plasma_field_obj")))
+        player_id.shrimp_set = 0;
         
         if (instance_exists(player_id.bubbleg))
         {

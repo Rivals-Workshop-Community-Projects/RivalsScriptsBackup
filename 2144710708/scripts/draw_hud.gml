@@ -76,8 +76,9 @@ if ("literally_sliced_in_half" in self) { // no more weird error message :D
 		//further y positions should go up in multiples of 16 from 64
 		}
 		
-		// muno phone
-		user_event(11);
+		// munophone touch support
+			muno_event_type = 5;
+			user_event(14);
 		
 	}
 }

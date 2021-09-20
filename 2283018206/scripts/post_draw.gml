@@ -1,4 +1,5 @@
-user_event(12);
+muno_event_type = 4;
+user_event(14);
 
 shader_start();
 
@@ -10,7 +11,7 @@ if (state == PS_AIR_DODGE && image_index == clamp(image_index, 1, 3)){
 	
 }
 
-if phone.phone_settings[phone.setting_fast_graphics]{
+if phone_fast{
 	shader_end();
 	exit;
 }

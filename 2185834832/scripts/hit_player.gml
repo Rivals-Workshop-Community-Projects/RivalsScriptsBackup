@@ -9,7 +9,7 @@ if(my_hitboxID.attack == AT_FSPECIAL){
 	fspecial_can_attack = true
 }
 
-if(attack == AT_DTILT){
+if(my_hitboxID.attack == AT_DTILT && attack == AT_DTILT){
 	if(window == 2 || window == 3){
 	window = 5
 	window_timer = 0

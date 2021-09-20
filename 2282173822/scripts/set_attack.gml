@@ -16,15 +16,15 @@ if (attack == AT_USPECIAL || attack == AT_FSPECIAL) instance_create(x, y - 20, "
 
 
 if lightning{
-	if (attack == AT_FSTRONG || ((attack == AT_FAIR || attack == AT_BAIR) && (right_strong_pressed || left_strong_pressed))){
+	if free && (attack == AT_FSTRONG || ((attack == AT_FAIR || attack == AT_BAIR) && (right_strong_pressed || left_strong_pressed))){
 		attack = AT_FSTRONG_2;
 		spr_dir = right_strong_pressed - left_strong_pressed;
 		if spr_dir == 0 spr_dir = 1;
 	}
-	else if (attack == AT_USTRONG || (attack == AT_UAIR && up_strong_pressed)){
+	else if free && (attack == AT_USTRONG || (attack == AT_UAIR && up_strong_pressed)){
 		attack = AT_USTRONG_2;
 	}
-	else if (attack == AT_DSTRONG || (attack == AT_DAIR && down_strong_pressed)){
+	else if free && (attack == AT_DSTRONG || (attack == AT_DAIR && down_strong_pressed)){
 		attack = AT_DSTRONG_2;
 	}
 	else if (attack == AT_DSPECIAL){
@@ -44,4 +44,5 @@ if lightning{
 
 
 
-user_event(13);
+muno_event_type = 2;
+user_event(14);

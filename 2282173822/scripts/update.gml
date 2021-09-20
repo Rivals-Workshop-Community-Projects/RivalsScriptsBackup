@@ -1,9 +1,11 @@
+muno_event_type = 1;
 user_event(14);
+
 attacking = phone_attacking;
 if attacking window_end = phone_window_end;
 playtest = phone_playtest;
 practice = phone_practice;
-inited = phone_inited;
+inited = "phone" in self;
 ditto = phone_ditto;
 blastzone_l = phone_blastzone_l;
 blastzone_r = phone_blastzone_r;
@@ -24,7 +26,7 @@ RUNE IDEAS
 
 
 
-if phone_cheats[cheat_no_cd]{
+if phone_cheats[CHEAT_NO_CD]{
 	phone_arrow_cooldown = 0;
 	move_cooldown[AT_NSPECIAL] = 0;
 	move_cooldown[AT_DSPECIAL] = 0;
@@ -45,7 +47,9 @@ with asset_get("hit_fx_obj") if ("trum_manip_id" in self && trum_manip_id == oth
 
 if snail{
 	
-	if vsp < -5 && state_timer % 10 == 1 && !phone.phone_settings[phone.setting_fast_graphics]{
+	if state == PS_IDLE_AIR hsp = clamp(hsp, -4, 4);
+	
+	if vsp < -5 && state_timer % 10 == 1 && !phone_fast{
 		var hfx_x = x + random_func(0, 40, true) - 20;
 		var hfx_y = y - random_func(0, 20, true);
 		
@@ -57,7 +61,7 @@ if snail{
 	var boarded = false;
 	var cloud_id = noone;
 	if can_board_cloud && vsp > -14 && !hitpause && !(phone_attacking && attack == AT_FSPECIAL && (window == 2 && window_timer < 4 || window == 1)) && !(phone_attacking && attack == AT_NSPECIAL_2){
-		with(obj_article1) if (player_id == other && state < 2 && !boarded && place_meeting(x,y,other) && exist_timer > 30){
+		with(obj_article1) if (player_id == other && (state <= 2 || state == 20) && !boarded && place_meeting(x,y,other) && exist_timer > 30){
 			boarded = true;
 			cloud_id = self;
 			other.can_board_cloud = false;
@@ -71,6 +75,10 @@ if snail{
 		// if boarded cloud_id.should_die = true;
 		if boarded{
 			lightning = lightning_max;
+			if cloud_id.state == 20{
+				x = cloud_id.x;
+				y = cloud_id.y;
+			}
 			cloud_id.state = 4;
 			cloud_id.state_timer = 0;
 		}
@@ -108,8 +116,10 @@ if snail || lightning strong_cooldown = 0;
 
 var orig = cloud_hud_target;
 
+lightning = floor(lightning);
+
 //Tick timers
-if lightning{
+if lightning && !hitpause{
 	lightning--;
 }
 if flash_timer > -20 flash_timer--;
@@ -128,6 +138,18 @@ if lightning{
 if lightning && (!prev_lightning || get_gameplay_time() % 20 == random_func(0, 20, true) && flash_timer == -20 || state_timer == 1 && flash_timer < 0){
 	flash_timer = flash_timer_max;
 	sound_play(sfx_ssbu_shock, 0, noone, 0.5, 1.7 + (random_func(1, 3, true) * 0.1));
+	var dx = x;
+	var dy = y - 24;
+	
+	dx += random_func(1, 64, true) - 32;
+	dy += random_func(2, 64, true) - 32;
+	
+	var da = random_func(3, 3, true) * 90;
+	
+	var h = spawn_hit_fx(dx, dy, vfx_ssj3_lightning);
+	
+	h.draw_angle = da;
+	h.depth = depth - 1;
 }
 if (phone_attacking && attack == clamp(attack, AT_FSTRONG_2, AT_USTRONG_2) && lightning < lightning_max){
 	if image_index < 4{
@@ -165,6 +187,15 @@ if flash_timer{
 //SFX
 if lightning && !prev_lightning sound_play(sfx_ssbu_screw_attack);
 if !lightning && prev_lightning	sound_play(sfx_ssbu_exit);
+
+// stats
+var is_buff = lightning > 0;
+if is_buff != sign(prev_lightning){
+	initial_dash_speed = stat_init_dash[is_buff];
+	dash_speed = stat_dash[is_buff];
+	air_max_speed = stat_air[is_buff];
+	air_accel = stat_air_accel[is_buff];
+}
 
 //Don't update while the cloud is disappearing
 if (hud_handler.state == 3) cloud_hud_target = orig;
@@ -422,6 +453,41 @@ if (phone_attacking && (attack == AT_TAUNT || attack == AT_TAUNT_2)){
 if load_codecs{
 	loadEnemyCodecs();
 	load_codecs = false;
+}
+
+
+
+if phone_cheats_updated[CHEAT_CODEC]{
+	phone_cheats_updated[CHEAT_CODEC] = false;
+	if codec_handler.state{
+		with codec_handler if state == 2 || state == 3{
+			setState(2);
+			page++;
+			stored_text = "";
+			if (page == array_length_1d(file.pages)){
+				setState(4);
+				page--;
+			}
+		}
+	}
+	else{
+		loadEnemyCodecs();
+		
+		if (array_length_1d(codec_handler.active_codecs)){
+			with codec_handler{
+				setState(1);
+				file = active_codecs[0];
+			}
+			with phone{
+				state = 3;
+				state_timer = 0;
+			}
+		}
+		else{
+			print("No codecs loaded!");
+			sound_play(sound_get("erroror"));
+		}
+	}
 }
 
 

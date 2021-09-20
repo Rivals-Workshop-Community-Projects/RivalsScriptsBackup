@@ -46,7 +46,7 @@ set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DAIR, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_DAIR, 1, HG_GROUNDEDNESS, 0);
-set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 149);
+set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, vfx_waterhit_big);
 
 set_hitbox_value(AT_DAIR, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_TYPE, 1);
@@ -69,7 +69,7 @@ set_hitbox_value(AT_DAIR, 2, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DAIR, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_DAIR, 2, HG_GROUNDEDNESS, 0);
-set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, 5);
+set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, vfx_waterhit_small);
 
 set_hitbox_value(AT_DAIR, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DAIR, 3, HG_HITBOX_TYPE, 1);

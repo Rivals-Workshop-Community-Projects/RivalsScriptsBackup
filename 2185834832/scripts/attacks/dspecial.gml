@@ -53,7 +53,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, 20);
-set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, 5);
+set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, vfx_waterhit_small);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_EXTENDED_PARRY_STUN, true);
 
@@ -83,7 +83,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT_Y_OFFSET, 20);
-set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, 195);
+set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, vfx_waterhit_light_huge);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
 
 set_hitbox_value(AT_DSPECIAL, 3, HG_PARENT_HITBOX, 0);

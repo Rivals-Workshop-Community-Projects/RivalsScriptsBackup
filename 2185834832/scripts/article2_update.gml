@@ -31,6 +31,8 @@ if (player_id.state == PS_ATTACK_GROUND && player_id.attack == AT_TAUNT){
 
 //State 0: Up
 
+player_id.uspec_non = 10
+
 if(hitstun > 0){
 	hsp = 0
 	vsp = 0
@@ -50,6 +52,11 @@ if (state == 0){
     if(hit_wall == true || !free){
     	state = 2
     	state_timer = 0
+    }
+    if(hsp > 0){
+    	spr_dir = 1
+    }else if(hsp < 0){
+    	spr_dir = -1
     }
 }
 

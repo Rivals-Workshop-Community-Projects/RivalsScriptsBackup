@@ -69,12 +69,6 @@ switch(attack)
                 {
                     bubbleg.sfx = 1;
                 }
-                if (has_hit and (bubbleg.hsp != 0 or bubbleg.vsp != 0) and window_timer < 9 and bubbleg.bubbled_playerid == noone)
-                {
-                    bubbleg.sprite_index = asset_get("empty_sprite");
-                    bubbleg.state = 8;
-                    bubbleg.outline = 0;
-                }
             }
         }
         break;
@@ -137,7 +131,8 @@ switch(attack)
                     {
                         bubbleg = instance_create(x - (4 * spr_dir), y + 5, "obj_article1");
                         bubbleg.state = 5;
-                        bubbleg.col = get_player_hud_color(player); 
+                        bubbleg.col = get_player_hud_color(player);
+                        bubbleg.gura_owner = player;
                     }
                     break;
                 case 15: 
@@ -283,19 +278,7 @@ switch(attack)
         break;
     case AT_USPECIAL:
         can_fast_fall = false;
-        if (window == 2)
-        {
-            if (instance_exists(bubbleg))
-            {
-                if (has_hit and (bubbleg.hsp != 0 or bubbleg.vsp != 0) and window_timer < 4 and bubbleg.bubbled_playerid == noone)
-                {
-                    bubbleg.sprite_index = asset_get("empty_sprite");
-                    bubbleg.state = 8;
-                    bubbleg.outline = 0;
-                }
-            }
-        }
-        else if (window == 3)
+        if (window == 3)
         can_wall_jump = true;
         break;
     case AT_USTRONG:

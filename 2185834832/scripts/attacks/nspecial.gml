@@ -54,7 +54,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 65);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 8);
 set_hitbox_value(AT_NSPECIAL, 1, HG_SHAPE, 0);
-set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 149);
+set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, vfx_waterhit_big);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 1);

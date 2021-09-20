@@ -149,7 +149,6 @@ if (phone_cheats[cheat_air_strongs] != 0) {
 	}	
 }
 
-
-
-// muno phone support
-user_event(13); 
+// munophone touch support
+	muno_event_type = 2;
+	user_event(14);

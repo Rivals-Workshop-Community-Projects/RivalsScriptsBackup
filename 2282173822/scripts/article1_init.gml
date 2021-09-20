@@ -2,6 +2,9 @@ if (player_id.object_index == pHitBox) player_id = player_id.player_id; //i hate
 
 
 
+is_trum_cloud = 1;
+slowmo_hitpause_check = 0;
+
 //Sprite and direction
 sprite_index = player_id.spr_cloud_spawn;
 image_index = 0;
@@ -36,5 +39,6 @@ dying = false;
 
 
 has_been_pushed = false;
+explode_timer = 0;
 
 sound_play(asset_get("sfx_absa_cloud_place"));

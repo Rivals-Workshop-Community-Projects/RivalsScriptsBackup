@@ -96,24 +96,24 @@ if (state == PS_DASH && prev_state == PS_DASH_TURN && do_turn_thing){
     state_timer = 0;
 }
 
-if (sprite_index == spr_idle){
+if (sprite_index == sprite_get("idle")){
     var frames = 8;
     var frame_dur = 6;
     image_index = floor((state_timer mod (frames * frame_dur)) / frame_dur);
 }
-if (sprite_index == spr_walk){
+if (sprite_index == sprite_get("walk")){
 	var speed_ratio = walk_speed / chord_objs[0].walk_speed;
     var frames = 8;
     var frame_dur = 5 / speed_ratio;
     image_index = floor((state_timer mod (frames * frame_dur)) / frame_dur);
 }
-if (sprite_index == spr_dash){
+if (sprite_index == sprite_get("dash")){
 	var speed_ratio = dash_speed / chord_objs[0].dash_speed;
     var frames = 8;
     var frame_dur = 4 / speed_ratio;
     image_index = floor((state_timer mod (frames * frame_dur)) / frame_dur);
 }
-if (sprite_index == spr_crouch && !(prev_state == PS_ATTACK_GROUND && attack == AT_DTILT) && image_index < 11){
+if (sprite_index == sprite_get("crouch") && !(prev_state == PS_ATTACK_GROUND && attack == AT_DTILT) && image_index < 11){
     if (state_timer < 16){
         image_index = floor(state_timer / 5);
     }

@@ -16,21 +16,46 @@ if(state == PS_DOUBLE_JUMP && state_timer == 0){
     sound_play( asset_get( "sfx_bubblemouth" ))
 }
 
-if(state == PS_DOUBLE_JUMP && vsp < 0){
-    if(doublejumpVar == -1){
-    	if(state_timer == 2){
-        hsp = -6.5    
-    	}
-    }else if(doublejumpVar == 1){
-    	if(state_timer == 2){
-        hsp = 6.5
-    	}
-    }else{
-    	if(state_timer == 2){
-        hsp = 0
-    	}
+if(state == PS_DOUBLE_JUMP){
+	if(state_timer == 4){
+		torga_grav_jump = 1
+	}
+	if(state_timer == 1){
+	    if(left_down){
+	    	hsp = -6
+	    }else if(right_down){
+	    	hsp = 6
+	    }else{
+	    	hsp = 0
+	    }
+	}
+    if(state_timer < 1){
+    	vsp = 1
+    	double_jump_timer = 20
     }
 }
+
+if(state != PS_DOUBLE_JUMP && state != PS_ATTACK_AIR){
+	double_jump_timer = 0
+}else if(state == PS_ATTACK_AIR){
+	if(state_timer < 2 && !jump_down){
+		double_jump_timer = 0
+	}
+}
+
+if(double_jump_timer > 0 && !hitpause && free){
+	vsp -= 1.03
+	double_jump_timer -= 1
+}else if(!free){
+	double_jump_timer = 0
+}
+
+if (torga_grav_jump == 1) {
+    torga_grav_jump = 0;
+    if (fast_falling && djumps > 0) djumps--;
+}
+
+if (state == PS_DOUBLE_JUMP && check_fast_fall && djumps > 0) epinel_grav_jump = 1;
 
 if(attack != AT_DSTRONG || window == 0){
 	if(grabbedid != noone){
@@ -211,3 +236,63 @@ if(enemykirby != undefined){
 if(state == PS_WALL_JUMP){
 	move_cooldown[AT_USPECIAL] = 0
 }
+
+if(state == PS_DOUBLE_JUMP){
+	has_djump = false
+}
+if(!free || djumps <= 0){
+	has_djump = true
+}
+
+//Dialogue Buddy
+
+/*
+
+if(variable_instance_exists(id,"diag"))
+{
+//Change their name whenever
+    diag_name = "Torga"
+//  ADDING REGULAR DIALOGUE
+
+    //Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!
+    diagchoice = [
+    "Your final moments will be here, I am going to end this.",
+    "The temple was my home, and I hope you find yours 6 feet under",
+    "We can do this the easy way, or the hard way... the hard way it is"]
+
+//  Specific Character Interactions
+
+//  NRS/3-Part dialogue
+    //Galega
+    if(otherUrl == 2538321255) //Change the url into a specific character's
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                diag_nrs_diag = [
+                "You abandoned your post, for this?",
+                "Oh come on, you can't tell me this isn't fun",
+                "People need you, you're going back to that temple dead or alive."]
+            }
+            
+            //If your portrait has multiple sprite indexes. You can change them during the interaction!
+            switch(diag_nrs_state)
+            {
+                case 0: //First Message
+                    other.diag_index = 1;
+                    break;
+                case 1: //Second Message
+                    other.diag_index = 1;
+                    break;
+                case 2: //Last Message
+                    other.diag_index = 2;
+                    break;
+            }
+        }
+    }
+}
+*/
+uspec_non--

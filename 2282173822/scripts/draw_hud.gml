@@ -4,18 +4,58 @@ if "hud_handler" not in self exit;
 
 // by RuberCuber")
 
-if !phone_cheats[cheat_hide_hud]{
+if !phone_cheats[CHEAT_TRAILER]{
 
 	shader_start();
 	
 	with hud_handler if state{
 		
-		if !other.phone.phone_settings[other.phone.setting_fast_graphics] draw_sprite(sprite_index, image_index, other.temp_x - 14, other.temp_y - 58);
+		if !other.phone_fast draw_sprite(sprite_index, image_index, other.temp_x - 14, other.temp_y - 58);
 		with other meterDraw(temp_x + 104, temp_y - 6 * other.meter_width, 212 + (1 - other.meter_width) * 10, 6 * other.meter_width + 2, lightning_color[cloud_col_target != lightning_color], lightning / lightning_max, 1, 1, false)
 	}
 	
 	shader_end();
 }
+
+
+
+with obj_article1 if player_id == other{
+	var leeway = 0;
+	var rx = orig_x;
+	var ry = orig_y;
+	var z = ry - 20;
+	
+	var off_l = rx < view_get_xview() - leeway;
+	var off_r = rx > view_get_xview() + view_get_wview() + leeway;
+	var off_u = z < view_get_yview() - leeway;
+	var off_d = z > view_get_yview() + view_get_hview() + leeway;
+	
+	var margin = 34;
+	var idx = noone;
+	
+	if off_l{
+		idx = 0;
+		if off_u idx = 1;
+		if off_d idx = 7;
+	}
+	else if off_r{
+		idx = 4;
+		if off_u idx = 3;
+		if off_d idx = 5;
+	}
+	else if off_u idx = 2;
+	else if off_d idx = 6;
+	
+	if idx != noone{
+		draw_sprite_ext(sprite_get("article_offscreen"), idx, clamp(rx - view_get_xview(), margin, view_get_wview() - margin), clamp(z - view_get_yview(), margin, view_get_hview() - margin), 1, 1, 0, get_player_hud_color(player), 1);
+		with other shader_start();
+		draw_sprite_ext(sprite_get("article_offscreen"), 8, clamp(rx - view_get_xview(), margin, view_get_wview() - margin), clamp(z - view_get_yview(), margin, view_get_hview() - margin), 1, 1, 0, c_white, 1);
+		with other shader_end();
+	}
+}
+
+muno_event_type = 5;
+user_event(14);
 
 
 
@@ -76,43 +116,6 @@ with codec_handler{
 	}
 	
 }
-
-
-
-with obj_article1 if player_id == other{
-	var leeway = 0;
-	var z = y - 20;
-	
-	var off_l = x < view_get_xview() - leeway;
-	var off_r = x > view_get_xview() + view_get_wview() + leeway;
-	var off_u = z < view_get_yview() - leeway;
-	var off_d = z > view_get_yview() + view_get_hview() + leeway;
-	
-	var margin = 34;
-	var idx = noone;
-	
-	if off_l{
-		idx = 0;
-		if off_u idx = 1;
-		if off_d idx = 7;
-	}
-	else if off_r{
-		idx = 4;
-		if off_u idx = 3;
-		if off_d idx = 5;
-	}
-	else if off_u idx = 2;
-	else if off_d idx = 6;
-	
-	if idx != noone{
-		draw_sprite_ext(sprite_get("article_offscreen"), idx, clamp(x - view_get_xview(), margin, view_get_wview() - margin), clamp(z - view_get_yview(), margin, view_get_hview() - margin), 1, 1, 0, get_player_hud_color(player), 1);
-		with other shader_start();
-		draw_sprite_ext(sprite_get("article_offscreen"), 8, clamp(x - view_get_xview(), margin, view_get_wview() - margin), clamp(z - view_get_yview(), margin, view_get_hview() - margin), 1, 1, 0, c_white, 1);
-		with other shader_end();
-	}
-}
-
-user_event(11);
 
 
 

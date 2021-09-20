@@ -1,8 +1,9 @@
 // css drawww
 
-// muno phone support
-user_event(12); 
- 
+// muno phone touch support
+	muno_event_type = 6;
+	user_event(14);
+	
 // rainbow alts for css
 // credit to hollow knight mod
 
@@ -64,7 +65,7 @@ init_shader();
 
 // css drawww
 
-
+/*
 var temp_x = x + 8;
 var temp_y = y + 9;
 
@@ -113,7 +114,7 @@ alt_name[30] = "Shephard"; // adrian shephard
 
 alt_name[31] = "Riptide"; // alt 31 doesn't work :(
 
-
+*/
 
 if(!doNotInitShader){
     init_shader(); // makes the shader update when you return to the CSS (don't know why the game is coded so that this necessary)
@@ -122,7 +123,7 @@ if(!doNotInitShader){
 
 //Patch
 
-draw_set_halign(fa_left);
+//draw_set_halign(fa_left);
 
 //textDraw(temp_x + 2, temp_y + 30, "medFont", c_white, 0, 1000, 1, true, 1, "VER. " + patch_ver);
 
@@ -132,6 +133,7 @@ draw_set_halign(fa_left);
 
 ///Alt
  
+ /*
  
 rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
  
@@ -179,4 +181,4 @@ return string_width_ext(argument[9], argument[4], argument[5]);
 
 //draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argument[4], argument[4], argument[4], argument[4], false);
 
-
+*/

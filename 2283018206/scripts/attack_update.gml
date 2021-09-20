@@ -5,11 +5,33 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 
 
+// dust
 
-
-
-
-
+switch(attack){
+	case AT_JAB:
+	case AT_FTILT:
+	case AT_UTILT:
+	case AT_DTILT:
+		if (window == 1 || attack == AT_JAB && (window == 4 || window == 7)) && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x - 16 * spr_dir + sin(state_timer) * 10, y, "dash", spr_dir]);
+		}
+		break;
+	case AT_DATTACK:
+		if (window == 2 || window == 3) && window_timer == round(phone_window_end / 2){
+			array_push(phone_dust_query, [x - 16 * spr_dir + sin(state_timer) * 10, y, "dash", spr_dir]);
+		}
+		break;
+	case AT_USTRONG:
+	case AT_FSTRONG:
+	case AT_DSTRONG:
+		if window == 1 && (window_timer == 1 || strong_charge % 10 == 1){
+			array_push(phone_dust_query, [x - 16 * spr_dir + sin(strong_charge) * 10, y, "dash", spr_dir]);
+		}
+		if (window == 2 || window == 4 && attack == AT_DSTRONG) && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x - (40 * attack == AT_FSTRONG) * spr_dir, y, "dash_start", spr_dir]);
+		}
+		break;
+}
 
 
 

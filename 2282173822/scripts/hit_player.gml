@@ -4,13 +4,28 @@
 
 my_hitboxID.has_hit = true;
 
+if (my_hitboxID.attack == AT_USPECIAL || my_hitboxID.attack == AT_FSPECIAL){
+	with obj_article1 if "is_trum_cloud" in self && state == 20 && slowmo_target == other.hit_player_obj{
+		x = other.x;
+		y = other.y;
+	}
+}
 
 
-if ((my_hitboxID.attack == AT_FSTRONG || my_hitboxID.attack == AT_USTRONG || my_hitboxID.attack == AT_DSTRONG) && "has_spawned_cloud" not in my_hitboxID){
+
+if my_hitboxID.attack == AT_USTRONG with my_hitboxID{
+	sound_play(other.sfx_glass_break, 0, noone, 1.2);
+}
+
+
+
+if ((my_hitboxID.attack == AT_FSTRONG || my_hitboxID.attack == AT_USTRONG || my_hitboxID.attack == AT_DSTRONG || my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 3) && "has_spawned_cloud" not in my_hitboxID){
 	var cld = instance_create(my_hitboxID.x, my_hitboxID.y + 22, "obj_article1");
 	cld.depth = hit_player_obj.depth - 1;
-	cld.hsp = my_hitboxID.hsp * 0.25;
-	cld.vsp = my_hitboxID.vsp * 0.25;
+	cld.explode_timer = hit_player_obj.hitstop_full - 6;
+	cld.state = 20;
+	cld.slowmo_target = hit_player_obj;
+	if lightning hit_player_obj.should_make_shockwave = false;
 	if (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.vsp == 0) cld.vsp = -3;
 }
 
@@ -37,4 +52,10 @@ if (my_hitboxID.attack == AT_NSPECIAL){
 
 if (my_hitboxID.attack == AT_DSPECIAL_2){
 	spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - hit_player_obj.char_height / 2, 304)
+}
+
+
+
+if my_hitboxID.type == 1 && lightning{
+	lightning = min(lightning + my_hitboxID.damage * 2, lightning_max);
 }

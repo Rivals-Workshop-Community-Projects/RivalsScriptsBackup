@@ -5,6 +5,66 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 
 
+// dust
+
+switch(attack){
+	case AT_JAB:
+	case AT_FTILT:
+	case AT_UTILT:
+	case AT_DTILT:
+		if (window == 1 || (attack == AT_JAB) && (window == 4 || window == 7 || window == 8)) && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x - 16 * spr_dir + sin(state_timer) * 10, y, "dash", spr_dir]);
+		}
+		break;
+	case AT_DATTACK:
+		if window == 1 && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x + 96 * spr_dir, y, "dash_start", spr_dir]);
+		}
+		break;
+	case AT_FSTRONG:
+		window--;
+	case AT_USTRONG:
+	case AT_DSTRONG:
+		if window == 1 && (window_timer == 1 || strong_charge % 10 == 1){
+			array_push(phone_dust_query, [x - 16 * spr_dir + sin(strong_charge) * 10, y, "dash", spr_dir]);
+		}
+		if window == 2 && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x - 0 * spr_dir, y, "dash_start", spr_dir]);
+		}
+		if attack == AT_FSTRONG window++;
+		break;
+}
+
+
+
+// cape swipe
+
+switch(attack){
+	
+	case AT_FTILT:
+	case AT_UTILT:
+	case AT_DTILT:
+	case AT_DATTACK:
+	case AT_FSTRONG:
+	case AT_USTRONG:
+	case AT_DSTRONG:
+	case AT_FAIR:
+	case AT_DAIR:
+		if (window == 1 && window_timer == 1 && !hitpause){
+			sound_play(asset_get("sfx_forsburn_cape_swipe"));
+		}
+		break;
+		
+}
+
+
+
+if attack == AT_DSTRONG && window == 2{
+	hsp += lerp(2, 4, strong_charge / 60) * spr_dir;
+}
+
+
+
 if slide_chord && !free && !hitpause && abs(right_down - left_down) && !was_parried{
 	var new_hsp = hsp + (right_down - left_down) * 0.25;
 	
@@ -135,7 +195,7 @@ if (attack == AT_FSPECIAL){
                 }
             }
             break;
-        case 5: //endlag
+        case 5: //endlaga
             break;
     }
 }
@@ -486,7 +546,7 @@ note += oct * 7;
 
 note_oct = -1;
 note_sca = 1;
-note_key = phone_cheats[cheat_root];
+note_key = phone_cheats[CHEAT_ROOT];
 note_sfx = sfx_guitar_note;
 
 chordPlay([note], 1, 0);

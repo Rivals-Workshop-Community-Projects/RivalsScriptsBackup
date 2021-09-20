@@ -1,4 +1,9 @@
 // post draw
+
+// munophone touch support (why does it skip the threeeeeee)
+	muno_event_type = 4;
+	user_event(14);
+
 var arrow_sprite = spr_kb_arrow;
 var spr_isplayer_sprite = spr_isplayer;
 var zone_sprite = spr_zone_init;
@@ -370,7 +375,3 @@ if (is_shoe) {
 	}	
 }
 }
-
-// muno phone support (needs to be at bottom)
-user_event(12); 
-

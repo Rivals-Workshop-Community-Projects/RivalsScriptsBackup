@@ -411,7 +411,7 @@ bubble_x = 0;
 bubble_y = 8;
 
 
-
+muno_event_type = 0;
 user_event(14);
 
 

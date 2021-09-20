@@ -55,7 +55,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 4);
 set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 2.5);
 set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 150);
+set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, vfx_waterhit_light_big);
 set_hitbox_value(AT_DSTRONG, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 
@@ -75,7 +75,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE_FLIPPER, 4);
 set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 2.5);
 set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 150);
+set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, vfx_waterhit_light_big);
 set_hitbox_value(AT_DSTRONG, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 
@@ -95,7 +95,7 @@ set_hitbox_value(AT_DSTRONG, 3, HG_ANGLE_FLIPPER, 4);
 set_hitbox_value(AT_DSTRONG, 3, HG_BASE_KNOCKBACK, 2.5);
 set_hitbox_value(AT_DSTRONG, 3, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, 150);
+set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, vfx_waterhit_light_big);
 set_hitbox_value(AT_DSTRONG, 3, HG_SHAPE, 2);
 set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 
@@ -115,7 +115,7 @@ set_hitbox_value(AT_DSTRONG, 4, HG_ANGLE_FLIPPER, 4);
 set_hitbox_value(AT_DSTRONG, 4, HG_BASE_KNOCKBACK, 2.5);
 set_hitbox_value(AT_DSTRONG, 4, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_DSTRONG, 4, HG_VISUAL_EFFECT, 150);
+set_hitbox_value(AT_DSTRONG, 4, HG_VISUAL_EFFECT, vfx_waterhit_light_big);
 set_hitbox_value(AT_DSTRONG, 4, HG_SHAPE, 2);
 set_hitbox_value(AT_DSTRONG, 4, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 
@@ -135,7 +135,7 @@ set_hitbox_value(AT_DSTRONG, 5, HG_ANGLE_FLIPPER, 4);
 set_hitbox_value(AT_DSTRONG, 5, HG_BASE_KNOCKBACK, 2.5);
 set_hitbox_value(AT_DSTRONG, 5, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, 150);
+set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, vfx_waterhit_light_big);
 set_hitbox_value(AT_DSTRONG, 5, HG_SHAPE, 2);
 set_hitbox_value(AT_DSTRONG, 5, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 
@@ -157,7 +157,7 @@ set_hitbox_value(AT_DSTRONG, 6, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_DSTRONG, 6, HG_KNOCKBACK_SCALING, 0.85);
 set_hitbox_value(AT_DSTRONG, 6, HG_HITPAUSE_SCALING, 0.9);
 set_hitbox_value(AT_DSTRONG, 6, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_DSTRONG, 6, HG_VISUAL_EFFECT, 195);
+set_hitbox_value(AT_DSTRONG, 6, HG_VISUAL_EFFECT, vfx_waterhit_light_huge);
 set_hitbox_value(AT_DSTRONG, 6, HG_SHAPE, 2);
 set_hitbox_value(AT_DSTRONG, 6, HG_HIT_SFX, asset_get("sfx_waterhit_heavy2"));
 set_hitbox_value(AT_DSTRONG, 6, HG_HIT_LOCKOUT, 10);

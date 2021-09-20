@@ -5,6 +5,41 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 
 
+// dust, and also strongs consuming charge
+
+switch(attack){
+	case AT_JAB:
+	case AT_FTILT:
+	case AT_DTILT:
+		if (window == 1 || attack == AT_JAB && (window == 4 || window == 7)) && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x - 16 * spr_dir + sin(state_timer) * 10, y, "dash", spr_dir]);
+		}
+		break;
+	case AT_UTILT:
+		if (window == 1 || attack == AT_JAB && (window == 4 || window == 7)) && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x - 16 * -spr_dir + sin(state_timer) * 10, y, "dash", -spr_dir]);
+		}
+		break;
+	case AT_DATTACK:
+		if (window == 2 || window == 3) && window_timer == round(phone_window_end / 2){
+			array_push(phone_dust_query, [x - 16 * spr_dir + sin(state_timer) * 10, y, "dash", spr_dir]);
+		}
+		break;
+	case AT_USTRONG:
+	case AT_FSTRONG:
+	case AT_DSTRONG:
+		if window == 1 && (window_timer == 1 || strong_charge % 10 == 1){
+			array_push(phone_dust_query, [x - 16 * spr_dir + sin(strong_charge) * 10, y, "dash", spr_dir]);
+		}
+		if window == 2 && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x - (40 * attack == AT_FSTRONG) * spr_dir, y, "dash_start", spr_dir]);
+			if lightning lightning = max(lightning - 30, 2);
+		}
+		break;
+}
+
+
+
 switch(attack){
 	
 	case AT_NSPECIAL:
@@ -210,7 +245,10 @@ switch(attack){
         switch(window){
             case 1: //startup
                 if (window_timer == 1){
-                    if !hitpause uspecial_sound = sound_play(sfx_ssbu_bow_charge);
+                    if !hitpause{
+                    	uspecial_sound = sound_play(sfx_ssbu_bow_charge);
+                    	array_push(phone_stopped_sounds, uspecial_sound);
+                    }
                 }
             	break;
             case 2: //armored startup
@@ -292,7 +330,7 @@ switch(attack){
 				if (window_timer == phone_window_end){
 					sound_play(sfx_ssbu_shock_big);
 					lightning = max(lightning - 30, 2);
-					take_damage(player, player, 3);
+					// take_damage(player, player, 3);
 				}
 				break;
 			case 2:
@@ -312,7 +350,7 @@ switch(attack){
         super_armor = false;
         if lightning{
         	lightning = lightning_max + 1;
-        	if window > 1 iasa_script();
+        	// if window > 1 iasa_script();
         }
         
         // if (window == 1) super_armor = true;
@@ -350,7 +388,7 @@ switch(attack){
                             break;
                     }
                     
-                    take_damage(player, player, floor(lerp(3, 5, strong_charge / 30)));
+                    // take_damage(player, player, floor(lerp(3, 5, strong_charge / 30)));
                     
                     lightning = max(lightning - 30, 2);
                 }
@@ -478,7 +516,7 @@ switch(attack){
                 if (window_timer == phone_window_end - 7) sound_play(asset_get("sfx_ell_utilt_retract"));
                 break;
             case 2:
-                if (window_timer == 1) set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_HSPEED, 40 + lerp(0, 20, strong_charge / 60));
+                if (window_timer == 1) set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_HSPEED, 20 + lerp(0, 10, strong_charge / 60)); // 40 + lerp(20)
                 if (window_timer == phone_window_end){
                     hsp = -lerp(7, 11, strong_charge / 60) * spr_dir;
                     sound_play(asset_get("sfx_tow_anchor_land"));

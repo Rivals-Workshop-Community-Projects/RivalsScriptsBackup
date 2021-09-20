@@ -47,7 +47,7 @@ set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .35);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 149);
+set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, vfx_waterhit_big);
 
 set_hitbox_value(AT_BAIR, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 1);
@@ -67,7 +67,7 @@ set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, 149);
+set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, vfx_waterhit_big);
 
 set_hitbox_value(AT_BAIR, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_BAIR, 3, HG_HITBOX_TYPE, 1);

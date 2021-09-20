@@ -1,0 +1,1 @@
+revengeMult = 1;

@@ -1,0 +1,26 @@
+set_hitbox_value( AT_FSTRONG_2, 1, HG_HITBOX_TYPE, 2);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_LIFETIME, 20);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_DAMAGE, 5);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_BASE_KNOCKBACK, 0);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_PROJECTILE_SPRITE, sprite_get("empty"));
+set_hitbox_value( AT_FSTRONG_2, 1, HG_PROJECTILE_MASK, -1);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_PROJECTILE_HSPEED, 0);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_PROJECTILE_VSPEED, 0);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_PROJECTILE_GRAVITY, 0);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_PROJECTILE_PARRY_STUN, false);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_PROJECTILE_PLASMA_SAFE, true);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_VISUAL_EFFECT, 1);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_PROJECTILE_DESTROY_EFFECT, empty);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_PRIORITY, 10);
+
+set_hitbox_value( AT_FSTRONG_2, 1, HG_SHAPE, 0);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_HITBOX_X, 32);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_HITBOX_Y, 32);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_HEIGHT, 60);
+set_hitbox_value( AT_FSTRONG_2, 1, HG_WIDTH, 60);

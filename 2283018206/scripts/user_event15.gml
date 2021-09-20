@@ -1,1134 +1,862 @@
-// Muno template - user-defined content
+// phone - frontend
+
+if object_index == asset_get("cs_playerbg_obj"){
+	CORE_css_draw();
+	exit;
+}
+
+CORE_general();
+CORE_tips();
+CORE_patches();
+CORE_cheats();
+CORE_frame_data();
+CORE_muno_compatibility();
 
 
 
 /*
- * THIS IS THE ONLY FILE YOU NEED TO EDIT! The other user_events, as well as
- * css_draw, are not to be edited by the end user unless you want to specially
- * modify the template. (It's open source, but I'll be sad if you remove my
- * attempts at standardization)
- */
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ CSS Draw																	║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
+Set parameters that are used by the CSS drawing code.
 
+*/
 
-// Update Code
+#define CORE_css_draw
 
-if ("phone_inited" in self && phone_inited){
+// The number of alt costumes your char has, up to 32.
+num_alts = 16;
 
-	/*
-	 * update.gml Code - this runs every frame, edit the below sections as you
-	 * see fit.
-	 */
-	
-	
-	
-	/*
-	 * Below are 3 custom entries for the Print Debug setting in the Settings
-	 * app. You can replace the "url"s with any constant, variable, or function
-	 * to monitor it when that setting is enabled.
-	 */
-	
-	phone_custom_debug = [
-		bike,
-		ball,
-		"-"
-		];
-	
-	
-	
-	/*
-	 * Char compatibility code below; find EVEN MORE lower down in the file
-	 */
-	 
-	 
-	
-	// Copy Ability
-	
-	if pho_has_copy_power{
-		
-		// Initial swallow
-		
-		if swallowed {
-			
-			swallowed = 0; // don't touch this line please im begging you
-			
-			var copy_spr = sprite_get("copy_sprite");
-			var copy_hrt = sprite_get("copy_hurt");
-			var copy_icn = sprite_get("copy_icon");
-			// add more to transfer other sprites, or sfx
-			
-			with enemykirby{
-				newicon = copy_icn;
-				muno_last_swallowed = other.id;
-				
-				set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
-				set_attack_value(AT_EXTRA_3, AG_SPRITE, copy_spr);
-				set_attack_value(AT_EXTRA_3, AG_AIR_SPRITE, copy_spr);
-				set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 1);
-				set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, copy_hrt);
-				set_attack_value(AT_EXTRA_3, AG_HURTBOX_AIR_SPRITE, copy_hrt);
-				
-				// edit the below (and, indeed, the above!) just like a regular attack script
-				
-				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 10);
-				set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 2);
-				
-				set_num_hitboxes(AT_EXTRA_3, 1);
-				
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 1);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 3);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 8);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, 50);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, -10);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 66);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 75);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 3);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 14);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 90);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 10);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.8);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 12);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 1.0);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HITSTUN_MULTIPLIER, 1.15);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_DRIFT_MULTIPLIER, 0);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_VISUAL_EFFECT, 0);
-				set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
-			}
-		}
-		
-		
-		
-		// Update code
-		
-		with oPlayer if "muno_last_swallowed" in self && muno_last_swallowed == other && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_EXTRA_3{
-			// you can treat this like an attack_update.gml for when kirby is using your character's ability
-			
-			// this system avoids conflicts between 2 swallowed chars IF they both use the munophone system for copy abilities.
-		}
-	}
-	
-	
-	
-	// Break the Targets data
-	
-	if pho_has_btt_layout{
-		if get_btt_data { // Get data for Break The Targets
-			course_name = "R-00 Course";
-			// Set the spawn properties
-			respawn_point = [[29,50],[0,0],1];
-			// Set the collision of the solid sprites to precise
-			sprite_change_collision_mask("btt_solid",true, 1, 0, 0, 0, 0, 0 );  
-			room_add(1,[
-			    [ // Each Cell
-			        [0,0], // Cell Coordinates
-			        [
-			        	// Targets
-				        [10, 4, 55, 0, -5, [0, 0, 32, [[0,0],[0,-3]], 0, 0, 0, 0], [0]],
-				        [10, 40, 30.5, 0, -5, [1, 0, 60, [[-10,0],[5,0]], 0, 0, 0, 0], [0]],
-				        [10, 87, 46, 0, -5, [2, 0, 0, 0, 0, 0, 0, 0], [0]],
-				        [10, 52, 44, 0, -5, [3, 0, 0, 0, 0, 0, 0, 0], [0]],
-				        [10, 55, 75, 0, -5, [3, 0, 0, 0, 0, 0, 0, 0], [0]],
-				        [10, 125, 55, 0, -5, [4, 0, 32, [[0,0],[0,-1]], 0, 0, 0, 0], [0]],
-				        // Solid Ground
-				    	[1, 2, 2, 2, 0, [sprite_get("btt_solid"), 0, 0, 0, 0, 0, 0, 0], [0]],
-				    	// Plats
-				    	[1, 46, 49, 1, 0, [sprite_get("btt_plat_64"), 0, 0, 0, 0, 0, 0, 0], [0]],
-				    	[1, 64, 71, 1, 0, [sprite_get("btt_plat_64"), 0, 0, 0, 0, 0, 0, 0], [0]]
-			            ]
-			        ],
-			    // Blastzones
-			    [ // Each Cell
-			        [0,1], // Cell Coordinates
-			        [
-			            [4, 0, 32, 0, 0, [4, 0, 0, 0, 0, 2608, 20, 0], [0,0]]
-			            ]
-			        ],
-			    [
-			        [1,1],
-			        [
-			        	[4, 0, 32, 0, 0, [4, 0, 0, 0, 0, 2608, 20, 0], [0,0]]
-			            ]
-			        ],
-			    [ // Each Cell
-			        [-1,1], // Cell Coordinates
-			        [
-			        	[4, 0, 32, 0, 0, [4, 0, 0, 0, 0, 2608, 20, 0], [0,0]]
-			            ]
-			        ]
-			    ]);
-		}
-	}
-	
-	
-	
-	// Amber
-	
-	if pho_has_amber_love{
-		if amber_startHug{ // Amber will set this bool to true when this player accepts the hug
-		    with amber_herObj{ // Access Amber's player object and set the values
-		        // Set the window values for Amber's hugging. DO NOT change Amber's sprites
-		        // in the attack_values
-		        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
-		        // etc....
-		
-		        // Important. Puts Amber in startup hug state (2).
-		        // Editing this variable not recommended
-		        amberHugState = 2; 
-		    }
-		    // Important. Puts this character in startup hug state (2).
-		    // Editing this variable not recommended
-		    oPlayerHugAmberState = 2;
-		    
-		    // Set this bool back to false so that this doesn't loop
-		    amber_startHug = false;
-		}
-	}
-	
-	exit;
+// Whether or not to display a name for each alt.
+use_alt_names = false;
+
+// Which color slot in your char's colors.gml to use for certain UI elements.
+// Type "noone" to make it always white.
+// (you can also change it to different values depending on the alt, by using
+// get_player_color(player))
+switch(get_player_color(player)){
+	case 6: // brown
+	case 13:
+	case 14:
+	case 15:
+		alt_ui_recolor = 2;
+		break;
+	default:
+		alt_ui_recolor = 0;
+		break;
 }
 
+// The list of names for the alts, if enabled.
+alt_names = []
 
 
-// Compatibility setup
 
 /*
- * This code runs from the CSS, as well as from the character itself.
- * 
- * The pho_has_something variables are for compatibility badges, which display
- * if your character has certain compatibilities.
- * 
- * By default, only the "gameplay-relevant" badges appear. The rest appear
- * only when the 0 key is held on the keyboard. So, don't worry about
- * cluttering the screen; include ALL compatibilites your character has,
- * for user convenience!
- * 
- * Enabling these flags ALSO enables the template code for each compatibility
- * (found within this very file).
- */
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ General Settings															║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
-// Gameplay-relevant, and codecs because im biased :>
-pho_has_muno_phone = 1;	// MunoPhone support		(should always be 1, obviously...)
-pho_has_trum_codec = 1;	// Trummel & Alto codec
-pho_has_copy_power = 0;	// Kirby Copy Ability
-pho_has_btt_layout = 0;	// Break the Targets stage
+Set miscellaneous values to customize how your character interacts with the
+MunoPhone Touch.
 
-// Character cosmetics
-pho_has_otto_bhead = 1;	// Bobblehead for Otto's bike
-pho_has_steve_dmsg = 1;	// Death message for Steve
-pho_has_feri_taunt = 0;	// Costume for Feri's taunt
-pho_has_hikaru_fak = 0;	// Title for Hikaru's fakie
-pho_has_rat_allout = 0;	// Quip for Rat's all-out attack
-pho_has_tco_sketch = 0;	// Drawing for The Chosen One's down taunt
-pho_has_ahime_dead = 0;	// Sprite for Abyss Hime's slicing effect
-pho_has_tink_picto = 0;	// Photograph for Toon Link's picto box
-pho_has_fire_taunt = 0; // Fire's Taunt
-pho_has_wall_e_ost = 0; // Wall-E's music
-pho_has_amber_love = 0; // Amber's plush and/or hug
-pho_has_moon_music = 0; // Moonchild's taunt music
-pho_has_agentn_cdc = 0; // Agent N's codec
+*/
 
-// Stage cosmetics
-pho_has_drac_codec = 0;	// Dialogue for the Dracula boss fight
-pho_has_miivs_post = 0;	// Posts for the Miiverse stage
-pho_has_dede_title = 0;	// Title for the Mt Dedede Stadium stage
-pho_has_soul_title = 0; // Text for the Soulbound Conflict stage
-pho_has_been_found = 0; // Death sprite for the Trial Grounds stage
-pho_has_resort_pic = 0; // Portrait for the Last Resort stage
-pho_has_pkmn_image = 0; // Battle sprite for Pokémon Stadium
-pho_has_daro_codec = 0; // Dialogue for the Daroach boss fight
+#define CORE_general
+
+// Character's name, used in a couple of places in the phone.
+// (if you delete this line, it'd just use the config.ini name)
+muno_char_name = "Otto";
+
+// Whether or not the phone sprite should recolor w/ your alt costume.
+// (set to "true" if you make a custom phone sprite in your char's colors)
+phone.uses_shader = true;
+
+// Set to true and the "Fast Graphics" feature will be enabled; see _readme.gml.
+phone.supports_fast_graphics = true;
+
+// Set to true and the phone will NOT activate Fast Fraphics when FPS gets low.
+phone.dont_fast = false;
+
+// Set to true and this will DISABLE a lot of the phone's side utilities.
+// If you're porting the phone to an existing char and don't need any of these
+// features, you might as well turn on lightweight to save a tiny bit of
+// performance. (see _docs.gml for a full list of what this disables)
+phone.lightweight = false;
 
 
 
-if (object_index == asset_get("cs_playerbg_obj")){
-	num_alts = 16; // Number of alt costumes; controls how many appear on the CSS
-	exit;
+/*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ Tips																		║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+Add Tips to your character, giving info on how to play or trivia. You can add
+both text and images. It's recommended to keep these short-and-sweet, as in the
+examples.
+
+Use the initTip() function to start a new Tip:
+
+	initTip(name);
+
+Then, use the following functions to add content or paragraphs:
+
+	initWords(text)
+	
+	initWords_ext(text, alignment, color, indent, ignore_height)
+	
+	initImage(sprite, frame)
+	
+	initImage_ext(sprite, frame, alignment, xscale, yscale, uses_shader, color,
+		alpha, ignore_height, crop_left, crop_right, crop_up, crop_down)
+
+Glossary:
+	
+	"_ext" at the end of a function name means an extended version of the
+		function it's named after - giving you more formatting options.
+	
+	"alignment" can be the GML constants fa_left, fa_center, or fa_right.
+	
+	"color" can be any GML color, e.g. c_red, #00ff00, or make_color_hsv(...).
+		Set this to a string (e.g. "h"), and it will be colored to the main
+		color of whichever phone app the text is being displayed in.
+	
+	"indent" basically allows you to put any amount of "tabs" to the left of a
+		paragraph.
+	
+	"sprite" can be any sprite index, e.g. sprite_get(...) or asset_get(...).
+	
+	"ignore_height" prevents this element from pushing the one below it
+		downward. Set this to true to achieve effects such as two elements
+		being side-by-side.
+	
+	"frame" can be 0 or any positive number for a static image, or a negative
+		number for an animated image. The size of the negative number determines
+		the framerate; -1 is the fastest, -2 is half as fast, -3 a third, etc.
+	
+	"uses_shader" determines whether or not the image should recolor with the
+		character's alt costumes.
+	
+	"crop_left", "crop_right", etc allow you to crop an image by determining how
+		far from the image's offset it should be drawn. Set all four to "noone"
+		and it will use the entire image (including empty space).
+
+NOTE: It's recommended to separate each paragraph into its own initWords() line,
+so that things like page breaks can work properly.
+
+*/
+
+#define CORE_tips
+
+initTip("NSpecial: Angle Shot");
+initWords("When shooting a pool ball, you can charge it to change its shape, giving it a different knockback angle.");
+initWords("Circle sends at a normal angle, triangle sends in, and square spikes enemies.");
+initImage_ext(sprite_get("ball_idle"), -5, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("ball_idle_triangle"), -5, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("ball_idle_square"), -5, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+
+initTip("Trick Shots");
+initWords("While the ball travels through the air, you can tap B to make it hover in midair, or hold B to make it bounce. While hovering or charging the bounce, it cannot hit enemies. You can make it bounce repeatedly in a zig-zag pattern.");
+initWords("The ball also bounces in different ways when it hits a wall or an enemy.");
+initWords("At any time, you can hit the ball with an attack to send it flying! Each hitbox has its own launch angle, so try them all.");
+initImage(sprite_get("ball_idle"), -5);
+
+initTip("Motorcycle Stance");
+initWords("USpecial, FSpecial, and DSpecial all cause you to board a motorcycle! In this state, you're way faster but can't parry right away.");
+initImage(sprite_get("bike_dash"), -5);
+initWords("Pro tip: a midair Bike Special can be canceled into an airdodge during startup!");
+
+initTip("Bike-Ball Duality");
+initWords("Your ball and bike are actually the exact same thing. So, use a Bike Special while the ball is out, and you'll teleport to the ball! You can do this at any time when the ball projectile is in play, so get creative!");
+initImage(sprite_get("ball_compress"), -5);
+
+initTip("DSpecial: Slate Slam");
+initWords("The regular DSpecial is a downward slam with the bike. If performed while grounded, bikeless, and with no ball in play, it's instead a quick bike mount.");
+initImage_ext(sprite_get("dspecial_air"), -5, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("dspecial"), -5, fa_right, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
+
+initTip("UStrong: Jump Shot");
+initWords("UStrong is a flying command grab with several quirks. You can charge the attack to go higher; you can turn around after grabbing an enemy; and you can fastfall the throw to chase the downward knockback.");
+initWords("P.S. Try grabbing a billiard ball!");
+initImage(sprite_get("ustrong"), -5);
+
+initTip("DAir: Chalk Breaker");
+initWords("DAir bounces upward when it hits an enemy or a ball, but you can choose to hitfall it instead for a quick landing.");
+initImage(sprite_get("dair"), -5);
+
+initTip("DTilt: Frontspin Dash");
+initWords("While performing a DTilt or DAttack, you can go over the edge of the stage or platform - and DTilt even lets you cancel the move early to combo.");
+initImage_ext(sprite_get("dtilt"), -5, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("dattack"), -5, fa_right, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+
+initTip("BAir: Elbow Scratch");
+initWords("After hitting an enemy with BAir, jumping/attacking and holding left or right will cause Otto to turn around - so you can pursue with a FAir.");
+initImage(sprite_get("bair"), -5);
+
+
+
+/*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ Patches																	║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+Keep a record of your character's update history, and at the end, also give
+credits to the developer(s) of the character or any assets used.
+
+Use the initPatch() function to start a new Patch:
+
+	initPatch(version_number, date)
+
+If the "date" field is set to an empty string, then the Patch will act more like
+a Tip - mainly useful for making an "About [character]" page.
+
+Use the same functions as in the Tips app to populate the Patch with text and
+images.
+
+Here are two more content functions, which are designed for use in Patches but
+also work in Tips:
+
+	initHeader(text)
+	initSection(text)
+
+These are basically shortcuts for two different types of formatted text.
+initHeader() is a text heading that is colored either blue or green, depending
+on whether it's a Tip or a Patch. initSection() is an indented block of text.
+
+These are handy for dividing a Tip/Patch into sections, such as different moves
+in a Patch.
+
+*/
+
+#define CORE_patches
+
+initPatch("1.29", "19 September, 2021");
+initHeader("General");
+initSection("Upgraded to MunoPhone Touch.
+Added dust effects to grounded normals.");
+
+initPatch("1.28", "30 August, 2021");
+initHeader("FSpecial - Buffs");
+initSection("Knockback scaling 0.5 --> 0.8.");
+initHeader("BAir - Buffs, Nerfs");
+initSection("Startup 15 --> 12.
+Endlag 16 --> 12.
+Damage 9 --> 8.
+You now get a small upward boost when canceling into an aerial on-hit.");
+initHeader("UAir - Buffs");
+initSection("Startup 8 --> 5.");
+initHeader("UStrong - Nerfs");
+initSection("Hitstun multiplier 1.0 --> 0.8.");
+
+initPatch("1.27", "04 August, 2021");
+initHeader("NSpecial - Nerfs");
+initSection("You can no longer spin-bounce the ball while in hitstun.");
+
+initPatch("1.26", "01 August, 2021");
+initHeader("NSpecial - Nerfs, Bugfixes");
+initSection("You can no longer spin-bounce the ball when it's in the bouncing state after hitting an opponent.
+After it gets hit by something, the ball cannot get hit again for 15 frames (not counting hitpause).");
+initHeader("FTilt - Buffs");
+initSection("Startup 12 --> 9.");
+
+initPatch("1.25", "31 July, 2021");
+initHeader("BAir - Bugfixes");
+initSection("Added missing hurtbox. (oops)");
+
+initPatch("1.24", "31 July, 2021");
+initHeader("BAir - Reworks");
+initSection("Attack replaced with Otto 1's BAir!");
+initHeader("UAir - Reworks");
+initSection("Attack replaced with an altered version of Otto 2's old BAir!");
+initHeader("USpecial, FSpecial - Nerfs, Buffs");
+initSection("These moves now have pratfall even on hit.
+USpecial knockback scaling 0.8 --> 0.95.");
+initHeader("NSpecial - Buffs");
+initSection("Charge time for spinning ricochet 20f --> 10f, and no longer increases by 10f for each repeated use.");
+initHeader("Bike - Adjustments");
+initSection("Otto now leaves bike state when wall jumping.");
+initHeader("DAir - Bugfixes");
+initSection("Made adjustments to prevent an infinte stall.");
+
+initPatch("1.23", "29 July, 2021");
+initWords("Otto is in the upcoming Riptide tournament's Workshop side event! This patch just gets a couple of things ready for that event.")
+initHeader("Cosmetics");
+initSection("Seasonal alt replaced with a special Riptide-colored alt.
+To avoid copyright issues, during 10-13 September, 2021, Otto's victory theme will be replaced with Trummel's.");
+
+initPatch("1.22", "16 February, 2021");
+initHeader("DSpecial - Nerfs, Adjustments");
+initSection("Active hitbox duration 18f --> 12f.
+Now has landing lag (18f) instead of bouncing.
+When started on the ground, the dive is now preceded by a jump.");
+initHeader("UStrong - Bugfixes");
+initSection("No longer grabs armored players.");
+
+initPatch("1.21", "07 February, 2021");
+initHeader("NSpecial - Buffs");
+initSection("The change made last patch now only applies to melee hitboxes.
+Projectiles simply destroy the ball instead.");
+
+initPatch("1.20", "07 February, 2021");
+initHeader("NSpecial - Nerfs, Buffs");
+initSection("When the enemy hits the ball, it will now fly towards Otto and hit him, just like when it gets parried.
+Damage of the ball in the above scenario 14 --> 10.");
+initHeader("FAir - Nerfs");
+initSection("Hitbox size reduced.");
+initHeader("DAir - Nerfs");
+initSection("Hitbox width reduced.
+There is now a tipper sweetspot, which has the same stats DAir has always had. The rest of the move is weaker and sends upward.");
+initHeader("DSpecial - Bugfixes");
+initSection("Now creates a silhouette on the ball when teleporting to it, like with FSpecial and USpecial.");
+
+initPatch("1.19", "27 January, 2021");
+initHeader("DTilt - Nerfs");
+initSection("Hit 2 lifetime 8 --> 4. (the original duration was an accident, now it properly aligns with the animation!)");
+initHeader("DAttack - Nerfs");
+initSection("Both hitboxes moved a bit further back.");
+
+initPatch("1.18", "21 January, 2021");
+initHeader("NSpecial - Adjustments");
+initSection("The first bounce takes only 20f to charge, instead of 30f.
+Each consecutive bounce adds 10f to the charge time, to a maximum of 60f.");
+
+initPatch("1.17", "19 January, 2021");
+initHeader("NSpecial - Bugfixes");
+initSection("Ball should no longer have weird changes in behavior between the first time you hit it VS subsequent times.");
+
+initPatch("1.16", "18 January, 2021");
+initHeader("NSpecial - Bugfixes");
+initSection("Ball can now be manipulated properly after Otto launches it with a move.");
+initHeader("DSpecial - Bugfixes");
+initSection("Otto will no longer bounce off the ground after being parried.");
+
+initPatch("1.15", "17 January, 2021");
+initHeader("NSpecial - Reworks");
+initSection("Bounce system changed - instead of consecutive taps, it's now tap vs. hold.
+Tap to make the ball hover.
+Hold for 30f to make the ball bounce in a wide arc.
+This applies for any of the ball's non-hovering states, and can even be done repeatedly.");
+initHeader("USpecial, DSpecial - Nerfs");
+initSection("Damage 13 --> 11.");
+initHeader("FAir - Buffs");
+initSection("Angle 45 --> 40.
+Knockback scaling 0.6 --> 0.65.
+Hit sfx adjusted.");
+initHeader("BAir - Buffs");
+initSection("Startup 7 --> 6.
+Angle flipper 5 --> 3.
+Angle 75 --> 80.
+Knockback scaling 0.7 --> 0.6.
+Hitbox extends further into Otto's body.");
+initHeader("DStrong - Buffs");
+initSection("Startup 16 --> 12.");
+initHeader("UStrong - Nerfs");
+initSection("You can no longer slide off an edge to charge in midair.");
+
+initPatch("1.14", "14 January, 2021");
+initWords("Tiny patch to try and fix a couple of visual (and VERY minor gameplay) bugs with the ball article / projectile.");
+
+initPatch("1.13", "04 January, 2021");
+initHeader("NSpecial - Buffs");
+initSection("Parried ball damage 18 --> 14.");
+
+initPatch("1.12", "04 January, 2021");
+initHeader("NSpecial - Nerfs, Clarity");
+initSection("Bouncing the ball grants it less speed and duration.
+A parried ball now does 18 damage.
+The blinking effect (when about to disappear) begins later.");
+
+initPatch("1.11", "02 January, 2021");
+initHeader("NSpecial - Nerfs");
+initSection("Bouncing the billiard ball now takes 5 frames longer.");
+initHeader("UStrong - Buffs");
+initSection("Grab hitbox lifetime 3 --> 6.");
+
+initPatch("1.10", "28 December, 2020");
+initHeader("DSpecial - Nerfs");
+initSection("The base knockback now decays from 6 to 3 across the hitbox's duration.");
+initHeader("Bobbleheads - Bugfixes");
+initSection("There should no longer be an error message at the start of a match.
+Otto's bobblehead in the ditto matchup is no longer Sandbert.");
+
+initPatch("1.9", "24 December, 2020");
+initHeader("FSpecial, USpecial, DSpecial - Bugfixes");
+initSection("The special-button input buffer is now cleared at the start of the move.
+(This prevents weird action sequences when wavelanding out of the special.)");
+
+initPatch("1.8", "21 December, 2020");
+initHeader("FSpecial, USpecial, DSpecial - Buffs");
+initSection("The startup of these moves can now be airdodge-canceled, leaving you on the bike.");
+initHeader("FSpecial - Buffs");
+initSection("Hitbox size increased.
+Angle 55 --> 45.");
+initHeader("USpecial - Nerfs");
+initSection("Knockback scaling 0.85 --> 0.8.");
+
+initPatch("1.7", "02 December, 2020");
+initHeader("FSpecial, DSpecial - Aesthetics");
+initSection("Adjusted head size during startup.");
+
+initPatch("1.6", "01 December, 2020");
+initHeader("NSpecial - Buffs");
+initSection("Charge time for each ball 20 --> 15.");
+initHeader("DStrong - Bugfixes");
+initSection("Hit 2 size is doubled after hitting an enemy if that enemy ends up grounded.");
+initHeader("MunoPhone - Aesthetics");
+initSection("Phone now gets recolored to the alt.");
+
+initPatch("1.5", "18 November, 2020");
+initHeader("NSpecial - Nerfs");
+initSection("Instead of holding up/down, you need to charge NSpecial to get the different ball shapes.
+Triangle: 20f / Square: 40f
+Initial ball travel speed is a bit slower.");
+
+initPatch("1.4", "18 November, 2020");
+initHeader("NSpecial - Nerfs");
+initSection("Startup 10 --> 15.
+During teleport startup, hitting the ball will cause a premature teleport (so Otto gets hit by the hitbox).");
+initHeader("FSpecial, USpecial, DSpecial - Nerfs");
+initSection("Startup 15 --> 20.");
+initHeader("DAttack - Nerfs, Adjustments");
+initSection("Early hit base knockback 9 --> 8.
+Late hit angle 40 --> 45.");
+
+initPatch("1.3", "14 November, 2020");
+initHeader("NSpecial - Nerfs, Clarity");
+initSection("NSpecial now has a cooldown of 60 frames minimum between firing the ball.
+When parried, the ball now flies straight toward Otto. It cannot be manipulated with NSpecial or hit with melee moves, and using a Bike Special will result in getting hit by the ball.
+NSpecial availability is now shown by the player arrow.
+The ball now has an offscreen indicator.");
+initHeader("FSpecial, USpecial, DSpecial - Clarity");
+initSection("Bike Specials now have an added visual tell during startup.");
+
+initPatch("1.2", "11 November, 2020");
+initHeader("NSpecial - Clarity, Bugfixes");
+initSection("Holding up/down now visually changes the ball's shape.
+Holding up/down no longer changes the firing height.
+Kragg rock shards no longer use billiard ball code.");
+initHeader("FSpecial, USpecial - Bugfixes");
+initSection("Parry stun now works properly.");
+initHeader("Palettes - Aesthetics");
+initSection("Adjusted alt #5.");
+
+initPatch("1.1", "10 November, 2020");
+initHeader("NSpecial - Bugfixes");
+initSection("It's no longer possible to charge the move by holding the strong button. (oops)");
+
+initPatch("1.0", "10 November, 2020");
+initHeader("General");
+initSection("The character was released.");
+
+initPatch("About Otto", "");
+initHeader("Character by");
+initSection("Muno - byMuno.com");
+initHeader("SFX from");
+initSection("Sims Pool for iPod");
+initHeader("Compatible with");
+initSection("Trummel & Alto, Otto, Steve, Link");
+
+
+
+/*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ Cheats																	║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+Create options for players to change how the character plays, either as silly
+fun bonuses or useful training utilities (e.g. filling a meter instantly).
+
+Use the initCheat() function to create a Cheat:
+
+	CHEAT_[NAME_HERE] = initCheat(name, [options], [option_names], description)
+
+Glossary:
+	
+	"CHEAT_[NAME_HERE]" is a variable that stores the ID of the Cheat. In the
+		example below, CHEAT_FLY is equal to 0. This is necessary for
+		referencing your cheat later in your character's code.
+	
+	"[options]" is an array of the possible values that the Cheat can have. A
+		simple example is [0, 1] for on and off, but it could also be something
+		like [0, 1, 5, 9] or ["Cherry", "Strawberry", ""].
+	
+	"[option_names]" is an array of the displayed names for the options given in
+		"[options]". It should be the same length as "[options]", and each entry
+		should be a string.
+	
+To access a Cheat's current value inside your character's code, grab the entry
+in the "phone_cheats" array at the index of the "CHEAT_" variable. For example:
+
+	// update.gml
+	
+	if phone_cheats[CHEAT_FLY] == 1{
+		vsp = -2;
+	}
+
+The "phone_cheats" array entry holds whatever value you defined in "[options]",
+for the Cheat's current setting. (e.g. "phone_cheats" could contain a string,
+not just a number)
+
+You can also run code only at the moment that the Cheat was clicked on, by
+using the "phone_cheats_updated" array (each entry is just true or false):
+	
+	// update.gml
+	
+	if phone_cheats_updated[CHEAT_FLY]{
+		phone_cheats_updated[CHEAT_FLY] = 0; // you have to reset it yourself
+		if phone_cheats[CHEAT_FLY]{
+			print("Flight started");
+		}
+		else{
+			print("Flight ended");
+		}
+	}
+
+Pro tip: having a Cheat with only a single option is useful if you just need a
+"click button to do X" thing for your character, e.g. "click to reset meter to
+zero".
+
+*/
+
+#define CORE_cheats
+
+CHEAT_TRAILER	= initCheat("Trailer Mode", [0, 1], ["Off", "On"], "Hides or moves certain HUD elements for trailer recording; meant to be used in conjunction with hiding the overhead name and damage indicators.");
+
+
+
+/*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ Frame Data																║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+Customise the Frame Data guide.
+
+*/
+
+#define CORE_frame_data
+
+// Reorder this list to change the order that moves appear in the guide!
+phone.move_ordering = [
+	AT_JAB,
+	AT_FTILT,
+	AT_DTILT,
+	AT_UTILT,
+	AT_DATTACK,
+	AT_FSTRONG,
+	AT_USTRONG,
+	AT_DSTRONG,
+	AT_FSTRONG_2,
+	AT_USTRONG_2,
+	AT_DSTRONG_2,
+	AT_NAIR,
+	AT_FAIR,
+	AT_BAIR,
+	AT_UAIR,
+	AT_DAIR,
+	AT_NSPECIAL,
+	AT_NSPECIAL_AIR,
+	AT_NSPECIAL_2,
+	AT_FSPECIAL,
+	AT_FSPECIAL_AIR,
+	AT_FSPECIAL_2,
+	AT_USPECIAL,
+	AT_USPECIAL_GROUND,
+	AT_USPECIAL_2,
+	AT_DSPECIAL,
+	AT_DSPECIAL_AIR,
+	AT_DSPECIAL_2,
+	AT_NTHROW,
+	AT_FTHROW,
+	AT_UTHROW,
+	AT_DTHROW,
+	AT_EXTRA_1,
+	AT_EXTRA_2,
+	AT_EXTRA_3,
+	AT_TAUNT,
+	AT_TAUNT_2,
+	AT_PHONE,
+	2,
+	3,
+	39,
+	42,
+	43,
+	44,
+	45,
+	46,
+	47,
+	48,
+	49,
+	50
+];
+
+// Whether or not to include the "Stats" page.
+phone.include_stats = true;
+
+// Notes for the "Stats" page - put "-" for no notes.
+phone.stats_notes = "-";
+
+// Whether or not to include a custom data page, which can hold any values you
+// want - useful for data that's specific to your character's mechanics.
+phone.include_custom = false;
+
+// The name of the custom page.
+phone.custom_name = "Example Custom Data"
+
+// The content of the custom page.
+initCFDHeader("Article lifetime");
+initCFDBody("100 frames");
+initCFDHeader("Second value");
+initCFDBody("459");
+initCFDBody("epic");
+
+
+
+/*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ Muno Character Compatibility												║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+Add bonus features and interactions with Muno's characters, like a codec for
+Trummel & Alto.
+
+If you don't feel like adding one of them, you can just comment out the lines
+of code.
+
+*/
+
+#define CORE_muno_compatibility
+
+/*
+Trummel codec:
+
+initCodec(gimmick)
+initCodecPage(speaker, expression, gimmick, text)
+
+The variable trummel_id is initially set to noone (-4). When Trummel opens this
+char's codec, trummel_id is set to Trummel's object ID.
+
+Codec speaker handles:
+SPK_TRUM: Trum
+SPK_ALTO: Alto
+SPK_OTTO: Otto
+SPK_CODA: Coda
+SPK_ECHO: Tempo
+SPK_MINE: Steve (i dont normally use this one... like, what is he supposed to say?? the funny oof noise? you can if you want)
+SPK_SEGA: Sonic (see above)
+
+Codec gimmicks:
+there aren't any
+
+Page gimmick handles:
+GIM_CHOMP			make the enemy ftilt
+GIM_CLONE 			display 2 speakers
+GIM_LAUGH_TRACK		play the funny haha sound
+GIM_SKIP 			advance the page immediately when the text finishes
+GIM_DIE				die
+GIM_SHUT_UP			no chatter sfx
+GIM_HOWL			make the enemy dspecial
+GIM_SHADER			use your char's shaders (palette swaps) for the speaker portrait
+GIM_TEXTBOX			text color				is set to the value of the	spr_custom_trummel_textbox	variable in the player object
+GIM_COLOR			textbox sprite index	is set to the value of the	spr_custom_trummel_color	variable in the player object
+
+To use multiple gimmicks on a single page, MULTIPLY them together.
+*/
+
+initCodec(0);
+initCodecPage(SPK_ALTO, 3, 0, "Where's your 8 Ball now, huh, Otto?");
+var h = GIM_SHADER;
+initCodecPage(SPK_OTTO, 3, h, "Not like I ever needed it to mop the floor with you guys! Let's put a wager on it.");
+initCodecPage(SPK_ALTO, 4, 0, "Those sound like betting odds to me!");
+initCodecPage(SPK_TRUM, 0, 0, "anything is betting odds when ur drunk");
+
+// Otto bobblehead.
+otto_bobblehead_sprite = sprite_get("_pho_example_bobble_head");
+
+// Otto bobblehead body. (optional, don't really need this)
+otto_bobblebody_sprite = sprite_get("_pho_example_bobble_body");
+
+// Steve death message.
+steve_death_message = "Steve lost a bet";
+
+// Link spear. (determines which spear your char will drop the first time)
+link_spear_drop = 2;
+
+/*
+Spear IDs:
+
+1: Traveler's Spear
+2: Knight's Halberd
+3: Wooden Mop
+4: Spiked Boko Spear
+5: Flamespear
+6: Frostspear
+7: Thunderspear
+8: Guardian Spear
+*/
+
+
+
+/*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ Behind-The-Scenes															║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+This is the end of the stuff you need to worry about!
+
+Below this point are just all of the functions used to make the above sections
+work.
+
+It's not recommended to edit anything below here unless you know what you're
+doing and have a good reason to.
+
+*/
+
+#define initTip(tip_name)
+
+array_push(phone.tips, {
+	name: tip_name,
+	objs: [],
+	page_starts: [0]
+});
+
+phone.currently_edited_obj = phone.tips[array_length(phone.tips) - 1];
+
+initWords_ext("- " + tip_name + " -", fa_center, phone.apps[phone.APP_TIPS].color, 0, 0);
+
+#define initPatch(patch_version, patch_date)
+
+array_push(phone.patches, {
+	name: (patch_date == "" ? "" : "v") + patch_version,
+	objs: [],
+	page_starts: [0]
+});
+
+phone.currently_edited_obj = phone.patches[array_length(phone.patches) - 1];
+
+if patch_date == ""{
+	initWords_ext("- " + patch_version + " -", fa_center, phone.apps[phone.APP_PATCHES].color, 0, 0);
 }
-
-
-
-// General Character Info
-
-muno_char_id = 2;										// For any non-Muno characters, this should be set to noone!
-
-muno_char_name = get_char_info(player, INFO_STR_NAME);	// Name of the character, used for the MunoPhone - and also free to be used by other mods
-
-muno_char_icon = get_char_info(player, INFO_ICON);		// CSS icon of the character. You can replace this with an arbitrary sprite. (Make it the same size pls, thank u)
-
-phone.taunt_hint_x = 0;									// Sideways offset of the "Taunt!" thing that shows in Practice Mode until you've opened the MunoPhone. You can move it sideways if it covers up your HUD elements.
-phone.shader = 1;
-
-phone.dont_fast = 0;									// Set this to 1, and Fast Graphics will not automatically be set when the FPS dips below 60.
-
-
-
-// Sprites (you could also include things like these in init.gml if you like)
-
-var ball_idle_spr = sprite_get("ball_idle");
-var ball_idle_spr_s = sprite_get("ball_idle_square");
-var ball_idle_spr_t = sprite_get("ball_idle_triangle");
-var bike_dash_spr = sprite_get("bike_dash");
-var ball_comp_spr = sprite_get("ball_compress");
-var dspecial_air_spr = sprite_get("dspecial_air");
-
-
-
-// Tips init
-
-with phone{
-	
-	i = 0;
-	j = 0;
-	
-	/*
-	 * Tips are hints or instructions on how to play the character. They range
-	 * from one-sentence descriptions to pages-long tutorials. You can also
-	 * embed images and formatted text.
-	 * 
-	 * initTip(name)
-	 * initTipWords(text)
-	 * initTipImage(sprite, frame, align, xscale, color, gimmick)
-	 * initTipWords_ext(text, align, color, indent, gimmick)
-	 * initTipImage_ext(sprite, frame, align, xscale, color, gimmick, border_l, border_r, border_u, border_d)
-	 * 
-	 * NOTE: indent = a number of "tabs", not a number of pixels
-	 * 
-	 * To place two consecutive elements side-by-side, they must meet the
-	 * following conditions:
-	 * - The second element must not be text
-	 * - The width of the two elements must not exceed the page width
-	 * - One element must be left-aligned, and the other right-aligned
-	 * 
-	 * NOTE: For images, set frame to a negative number and it will animate the
-	 * sprite at that rate. E.g. set to -3, each anim frame will last 3 frames.
-	 * 
-	 * Another image-related note: the placement for images is calculated based
-	 * on the BORDERS of the sprite. Two consequences:
-	 * - The offset of the sprite (load.gml) has NO effect.
-	 * - If your sprites are made with a lot of transparent empty space around
-	 *   the actual content (like mine are), it'll have that much extra space
-	 *   around it in the tip.
-	 * 
-	 * To fix the second bullet point, use initTipImage_ext(), with the four
-	 * extra "border_" arguments representing the distance FROM THE SPRITE'S
-	 * OFFSET (as defined in load.gml) to "cut off" the sprite in each of the
-	 * four directions. E.g. if your sprite's actual content is all contained
-	 * within these distances from the sprite offset:
-	 * - 100 to the left
-	 * - 20 to the right
-	 * - 50 up
-	 * - 0 down
-	 * 
-	 * ...then the last 4 arguments should be 100, 20, 50, 0. It basically crops
-	 * the sprite
-	 * 
-	 * Lastly, the "gimmick" is a special effect that you can apply to an
-	 * element. Here's the list of implemented gimmicks:
-	 * - 0: Nothing
-	 * - 1: Shaking
-	 * - 2: Scrolling left
-	 * - 3: Scrolling right
-	 * - 4: Ignore vertical scroll (always placed at top of screen)
-	 * 
-	 * Negative gimmick numbers are saved for whatever YOU might need them for!
-	 * Like idk, if you're a coding wizard and figure out something cool to do
-	 * by interacting with the tip data.
-	 * 
-	 */
-	
-	initTip("NSpecial: Ball Types");
-	initTipWords("When shooting a pool ball, you can charge it to change its shape, giving it a different knockback angle.");
-	initTipWords("Circle sends at a normal angle, triangle sends in, and square spikes enemies.");
-	initTipImage_ext(ball_idle_spr, -5, fa_left, 1, c_white, 4, 100, 100, 20, 20);
-	initTipImage_ext(ball_idle_spr_t, -5, fa_center, 1, c_white, 4, 100, 100, 20, 20);
-	initTipImage_ext(ball_idle_spr_s, -5, fa_right, 1, c_white, 4, 100, 100, 20, 20);
-	
-	initTip("NSpecial: Trick Shots");
-	initTipWords("While the ball travels through the air, you can tap B to make it hover in midair, or hold B to make it bounce. While hovering or charging the bounce, it cannot hit enemies. You can make it bounce repeatedly in a zig-zag pattern.");
-	initTipWords("The ball also bounces in different ways when it hits a wall or an enemy.");
-	initTipWords("At any time, you can hit the ball with an attack to send it flying! Each hitbox has its own launch angle, so try them all.");
-	initTipImage_ext(ball_idle_spr, -5, fa_center, 1, c_white, 0, 100, 100, 20, 20);
-	
-	initTip("Motorcycle Stance");
-	initTipWords("USpecial, FSpecial, and DSpecial all cause you to board a motorcycle! In this state, you're way faster but can't parry right away.");
-	initTipImage(bike_dash_spr, -5, fa_right, 1, c_white, 3);
-	
-	initTip("Bike-Ball Duality");
-	initTipWords("Your ball and bike are actually the exact same thing. So, use a Bike Special while the ball is out, and you'll teleport to the ball! You can do this at any time when the ball projectile is in play, so get creative!");
-	initTipImage_ext(ball_comp_spr, -5, fa_center, 1, c_white, 0, 100, 100, 100, 30);
-	
-	initTip("DSpecial's Variants");
-	initTipWords("The regular DSpecial is a downward slam with the bike. If performed while grounded, bikeless, and with no ball in play, it's instead a quick bike mount.");
-	initTipImage(dspecial_air_spr, -5, fa_left, 1, c_white, 0);
-	initTipImage(other.spr_dspecial, -5, fa_right, 1, c_white, 0);
-	
-	initTip("UStrong Flight Lesson");
-	initTipWords("UStrong is a flying command grab with several quirks. You can charge the attack to go higher; you can turn around after grabbing an enemy; and you can fastfall the throw to chase the downward knockback.");
-	initTipWords("P.S. Try grabbing a billiard ball!");
-	initTipImage(other.spr_ustrong, -5, fa_right, 1, c_white, 0);
-	
-	initTip("Pogo with DAir");
-	initTipWords("DAir bounces upward when it hits an enemy or a ball, but you can choose to hitfall it instead for a quick landing.");
-	initTipImage(other.spr_dair, -5, fa_center, 1, c_white, 0);
-	
-	initTip("Going Over the Edge");
-	initTipWords("While performing a DTilt or DAttack, you can go over the edge of the stage or platform - and DTilt even lets you cancel the move early to combo.");
-	initTipImage(other.spr_dtilt, -5, fa_left, 1, c_white, 0);
-	initTipImage(other.spr_dattack, -5, fa_right, 1, c_white, 0);
-	
-	initTip("BAir Attack Cancel");
-	initTipWords("After hitting an enemy with BAir, jumping/attacking and holding left or right will cause Otto to turn around - so you can pursue with a FAir.");
-	initTipImage(other.spr_bair, -5, fa_center, 1, c_white, 0);
-	
+else{
+	initWords_ext("- v" + patch_version + ": " + patch_date + " -", fa_center, phone.apps[phone.APP_PATCHES].color, 0, 0);
 }
-
-
-
-// Patch notes init
-
-with phone{
-	
-	i = 0;
-	
-	/*
-	 * Patch notes are patch notes. Inform players on what's changed since they
-	 * last played the character. If you want, you can just paste the changelogs
-	 * from your Steam page or etc.
-	 * 
-	 * initPatch(name)
-	 * initPatchWords(text)
-	 * initPatchImage(sprite, frame, align, xscale, color, gimmick)
-	 * initPatchWords_ext(text, align, color, indent, gimmick)
-	 * initPatchImage_ext(sprite, frame, align, xscale, color, gimmick, border_l, border_r, border_u, border_d)
-	 * 
-	 * The formatting is exactly the same as with tips. Just replace "Tip" with
-	 * "Patch" in the function calls, and instead of a name for the patch,
-	 * put the version number and full date.
-	 */
-	 
-	initPatch("1.28", "30 August, 2021");
-	initHeader("FSpecial - Buffs");
-	initSection("Knockback scaling 0.5 --> 0.8.");
-	initHeader("BAir - Buffs, Nerfs");
-	initSection("Startup 15 --> 12.
-	Endlag 16 --> 12.
-	Damage 9 --> 8.
-	You now get a small upward boost when canceling into an aerial on-hit.");
-	initHeader("UAir - Buffs");
-	initSection("Startup 8 --> 5.");
-	initHeader("UStrong - Nerfs");
-	initSection("Hitstun multiplier 1.0 --> 0.8.");
-	
-	initPatch("1.27", "04 August, 2021");
-	initPatchWords("NSpecial - Nerfs");
-	initPatchWords_ext("You can no longer spin-bounce the ball while in hitstun.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.26", "01 August, 2021");
-	initPatchWords("NSpecial - Nerfs, Bugfixes");
-	initPatchWords_ext("You can no longer spin-bounce the ball when it's in the bouncing state after hitting an opponent.
-	After it gets hit by something, the ball cannot get hit again for 15 frames (not counting hitpause).", fa_left, c_gray, 1, 0);
-	initPatchWords("FTilt - Buffs");
-	initPatchWords_ext("Startup 12 --> 9.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.25", "31 July, 2021");
-	initPatchWords("BAir - Bugfixes");
-	initPatchWords_ext("Added missing hurtbox. (oops)", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.24", "31 July, 2021");
-	initPatchWords("BAir - Reworks");
-	initPatchWords_ext("Attack replaced with Otto 1's BAir!", fa_left, c_gray, 1, 0);
-	initPatchWords("UAir - Reworks");
-	initPatchWords_ext("Attack replaced with an altered version of Otto 2's old BAir!", fa_left, c_gray, 1, 0);
-	initPatchWords("USpecial, FSpecial - Nerfs, Buffs");
-	initPatchWords_ext("These moves now have pratfall even on hit.
-	USpecial knockback scaling 0.8 --> 0.95.", fa_left, c_gray, 1, 0);
-	initPatchWords("NSpecial - Buffs");
-	initPatchWords_ext("Charge time for spinning ricochet 20f --> 10f, and no longer increases by 10f for each repeated use.", fa_left, c_gray, 1, 0);
-	initPatchWords("Bike - Adjustments");
-	initPatchWords_ext("Otto now leaves bike state when wall jumping.", fa_left, c_gray, 1, 0);
-	initPatchWords("DAir - Bugfixes");
-	initPatchWords_ext("Made adjustments to prevent an infinte stall.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.23", "29 July, 2021");
-	initPatchWords("Otto is in the upcoming Riptide tournament's Workshop side event! This patch just gets a couple of things ready for that event.")
-	initPatchWords("Cosmetics");
-	initPatchWords_ext("Seasonal alt replaced with a special Riptide-colored alt.
-	To avoid copyright issues, during 10-13 September, 2021, Otto's victory theme will be replaced with Trummel's.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.22", "16 February, 2021");
-	initPatchWords("DSpecial - Nerfs, Adjustments");
-	initPatchWords_ext("Active hitbox duration 18f --> 12f.
-	Now has landing lag (18f) instead of bouncing.
-	When started on the ground, the dive is now preceded by a jump.", fa_left, c_gray, 1, 0);
-	initPatchWords("UStrong - Bugfixes");
-	initPatchWords_ext("No longer grabs armored players.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.21", "07 February, 2021");
-	initPatchWords("NSpecial - Buffs");
-	initPatchWords_ext("The change made last patch now only applies to melee hitboxes.
-	Projectiles simply destroy the ball instead.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.20", "07 February, 2021");
-	initPatchWords("NSpecial - Nerfs, Buffs");
-	initPatchWords_ext("When the enemy hits the ball, it will now fly towards Otto and hit him, just like when it gets parried.
-	Damage of the ball in the above scenario 14 --> 10.", fa_left, c_gray, 1, 0);
-	initPatchWords("FAir - Nerfs");
-	initPatchWords_ext("Hitbox size reduced.", fa_left, c_gray, 1, 0);
-	initPatchWords("DAir - Nerfs");
-	initPatchWords_ext("Hitbox width reduced.
-	There is now a tipper sweetspot, which has the same stats DAir has always had. The rest of the move is weaker and sends upward.", fa_left, c_gray, 1, 0);
-	initPatchWords("DSpecial - Bugfixes");
-	initPatchWords_ext("Now creates a silhouette on the ball when teleporting to it, like with FSpecial and USpecial.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.19", "27 January, 2021");
-	initPatchWords("DTilt - Nerfs");
-	initPatchWords_ext("Hit 2 lifetime 8 --> 4. (the original duration was an accident, now it properly aligns with the animation!)", fa_left, c_gray, 1, 0);
-	initPatchWords("DAttack - Nerfs");
-	initPatchWords_ext("Both hitboxes moved a bit further back.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.18", "21 January, 2021");
-	initPatchWords("NSpecial - Adjustments");
-	initPatchWords_ext("The first bounce takes only 20f to charge, instead of 30f.
-	Each consecutive bounce adds 10f to the charge time, to a maximum of 60f.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.17", "19 January, 2021");
-	initPatchWords("NSpecial - Bugfixes");
-	initPatchWords_ext("Ball should no longer have weird changes in behavior between the first time you hit it VS subsequent times.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.16", "18 January, 2021");
-	initPatchWords("NSpecial - Bugfixes");
-	initPatchWords_ext("Ball can now be manipulated properly after Otto launches it with a move.", fa_left, c_gray, 1, 0);
-	initPatchWords("DSpecial - Bugfixes");
-	initPatchWords_ext("Otto will no longer bounce off the ground after being parried.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.15", "17 January, 2021");
-	initPatchWords("NSpecial - Reworks");
-	initPatchWords_ext("Bounce system changed - instead of consecutive taps, it's now tap vs. hold.
-	Tap to make the ball hover.
-	Hold for 30f to make the ball bounce in a wide arc.
-	This applies for any of the ball's non-hovering states, and can even be done repeatedly.", fa_left, c_gray, 1, 0);
-	initPatchWords("USpecial, DSpecial - Nerfs");
-	initPatchWords_ext("Damage 13 --> 11.", fa_left, c_gray, 1, 0);
-	initPatchWords("FAir - Buffs");
-	initPatchWords_ext("Angle 45 --> 40.
-	Knockback scaling 0.6 --> 0.65.
-	Hit sfx adjusted.", fa_left, c_gray, 1, 0);
-	initPatchWords("BAir - Buffs");
-	initPatchWords_ext("Startup 7 --> 6.
-	Angle flipper 5 --> 3.
-	Angle 75 --> 80.
-	Knockback scaling 0.7 --> 0.6.
-	Hitbox extends further into Otto's body.", fa_left, c_gray, 1, 0);
-	initPatchWords("DStrong - Buffs");
-	initPatchWords_ext("Startup 16 --> 12.", fa_left, c_gray, 1, 0);
-	initPatchWords("UStrong - Nerfs");
-	initPatchWords_ext("You can no longer slide off an edge to charge in midair.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.14", "14 January, 2021");
-	initPatchWords("Tiny patch to try and fix a couple of visual (and VERY minor gameplay) bugs with the ball article / projectile.");
-	
-	initPatch("1.13", "04 January, 2021");
-	initPatchWords("NSpecial - Buffs");
-	initPatchWords_ext("Parried ball damage 18 --> 14.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.12", "04 January, 2021");
-	initPatchWords("NSpecial - Nerfs, Clarity");
-	initPatchWords_ext("Bouncing the ball grants it less speed and duration.
-	A parried ball now does 18 damage.
-	The blinking effect (when about to disappear) begins later.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.11", "02 January, 2021");
-	initPatchWords("NSpecial - Nerfs");
-	initPatchWords_ext("Bouncing the billiard ball now takes 5 frames longer.", fa_left, c_gray, 1, 0);
-	initPatchWords("UStrong - Buffs");
-	initPatchWords_ext("Grab hitbox lifetime 3 --> 6.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.10", "28 December, 2020");
-	initPatchWords("DSpecial - Nerfs");
-	initPatchWords_ext("The base knockback now decays from 6 to 3 across the hitbox's duration.", fa_left, c_gray, 1, 0);
-	initPatchWords("Bobbleheads - Bugfixes");
-	initPatchWords_ext("There should no longer be an error message at the start of a match.
-	Otto's bobblehead in the ditto matchup is no longer Sandbert.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.9", "24 December, 2020");
-	initPatchWords("FSpecial, USpecial, DSpecial - Bugfixes");
-	initPatchWords_ext("The special-button input buffer is now cleared at the start of the move.
-	(This prevents weird action sequences when wavelanding out of the special.)", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.8", "21 December, 2020");
-	initPatchWords("FSpecial, USpecial, DSpecial - Buffs");
-	initPatchWords_ext("The startup of these moves can now be airdodge-canceled, leaving you on the bike.", fa_left, c_gray, 1, 0);
-	initPatchWords("FSpecial - Buffs");
-	initPatchWords_ext("Hitbox size increased.
-	Angle 55 --> 45.", fa_left, c_gray, 1, 0);
-	initPatchWords("USpecial - Nerfs");
-	initPatchWords_ext("Knockback scaling 0.85 --> 0.8.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.7", "02 December, 2020");
-	initPatchWords("FSpecial, DSpecial - Aesthetics");
-	initPatchWords_ext("Adjusted head size during startup.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.6", "01 December, 2020");
-	initPatchWords("NSpecial - Buffs");
-	initPatchWords_ext("Charge time for each ball 20 --> 15.", fa_left, c_gray, 1, 0);
-	initPatchWords("DStrong - Bugfixes");
-	initPatchWords_ext("Hit 2 size is doubled after hitting an enemy if that enemy ends up grounded.", fa_left, c_gray, 1, 0);
-	initPatchWords("MunoPhone - Aesthetics");
-	initPatchWords_ext("Phone now gets recolored to the alt.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.5", "18 November, 2020");
-	initPatchWords("NSpecial - Nerfs");
-	initPatchWords_ext("Instead of holding up/down, you need to charge NSpecial to get the different ball shapes.
-	Triangle: 20f / Square: 40f
-	Initial ball travel speed is a bit slower.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.4", "18 November, 2020");
-	initPatchWords("NSpecial - Nerfs");
-	initPatchWords_ext("Startup 10 --> 15.
-	During teleport startup, hitting the ball will cause a premature teleport (so Otto gets hit by the hitbox).", fa_left, c_gray, 1, 0);
-	initPatchWords("FSpecial, USpecial, DSpecial - Nerfs");
-	initPatchWords_ext("Startup 15 --> 20.", fa_left, c_gray, 1, 0);
-	initPatchWords("DAttack - Nerfs, Adjustments");
-	initPatchWords_ext("Early hit base knockback 9 --> 8.
-	Late hit angle 40 --> 45.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.3", "14 November, 2020");
-	initPatchWords("NSpecial - Nerfs, Clarity");
-	initPatchWords_ext("NSpecial now has a cooldown of 60 frames minimum between firing the ball.
-	When parried, the ball now flies straight toward Otto. It cannot be manipulated with NSpecial or hit with melee moves, and using a Bike Special will result in getting hit by the ball.
-	NSpecial availability is now shown by the player arrow.
-	The ball now has an offscreen indicator.", fa_left, c_gray, 1, 0);
-	initPatchWords("FSpecial, USpecial, DSpecial - Clarity");
-	initPatchWords_ext("Bike Specials now have an added visual tell during startup.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.2", "11 November, 2020");
-	initPatchWords("NSpecial - Clarity, Bugfixes");
-	initPatchWords_ext("Holding up/down now visually changes the ball's shape.
-	Holding up/down no longer changes the firing height.
-	Kragg rock shards no longer use billiard ball code.", fa_left, c_gray, 1, 0);
-	initPatchWords("FSpecial, USpecial - Bugfixes");
-	initPatchWords_ext("Parry stun now works properly.", fa_left, c_gray, 1, 0);
-	initPatchWords("Palettes - Aesthetics");
-	initPatchWords_ext("Adjusted alt #5.", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.1", "10 November, 2020");
-	initPatchWords("NSpecial - Bugfixes");
-	initPatchWords_ext("It's no longer possible to charge the move by holding the strong button. (oops)", fa_left, c_gray, 1, 0);
-	
-	initPatch("1.0", "10 November, 2020");
-	initPatchWords_ext("The character was released.", fa_center, c_white, 0, 1);
-	initPatchImage(other.spr_taunt, 7, fa_center, 1, c_white, 1);
-	
-}
-
-
-
-// Cheat codes init
-
-with self{
-	
-	i = 0;
-	
-	/*
-	 * Cheat codes enable bonus features or overpowered modes. This is a great
-	 * place to put utilities that help when practicing the character, such as
-	 * an option to instantly fill a resource meter or skip a cooldown.
-	 * 
-	 * initCheat(display name, backstage name, options, option names, description)
-	 * 
-	 * Use phone_cheats[] to reference these cheats in code, putting the
-	 * backstage name (without quotes) as the array index. The backstage name
-	 * becomes the name of a variable storing the cheat's index. E.g.
-	 * 
-	 * if (phone_cheats[cheat_funny_snail] == 1) {
-	 *	   print_debug("woag");
-	 * }
-	 * 
-	 * This is pretty similar to abyss runes - but instead of checking for if
-	 * has_rune(X) is true or false, you check for the entry in the
-	 * phone_cheats array.
-	 * 
-	 * Each cheat defaults to the first option in its option list (e.g.
-	 * cheat_funny_snail defaults to 0). This happens even when the MunoPhone
-	 * itself is not available.
-	 * 
-	 * Cheat descriptions should be short and sweet, as they can't be scrolled.
-	 */
-	
-	initCheat("Trailer Mode", "cheat_hide_hud", [0, 1], ["Off", "On"], "Hides or moves certain HUD elements for trailer recording; meant to be used in conjunction with hiding the overhead name and damage indicators.");
-	
-}
-
-
-
-// Frame Data Guide setup
-
-with phone{
-
-	// Move ordering. Reorder this as you see fit for your character
-	
-	// note: do NOT remove indexes from this list. empty indexes will be ignored by the frame data guide.
-	// to hide an in-use attack index from the guide, use AG_MUNO_ATTACK_EXCLUDE instead!
-	
-	move_ordering = [
-		AT_JAB,
-		AT_FTILT,
-		AT_DTILT,
-		AT_UTILT,
-		AT_DATTACK,
-		AT_FSTRONG,
-		AT_USTRONG,
-		AT_DSTRONG,
-		AT_FSTRONG_2,
-		AT_USTRONG_2,
-		AT_DSTRONG_2,
-		AT_NAIR,
-		AT_FAIR,
-		AT_BAIR,
-		AT_UAIR,
-		AT_DAIR,
-		AT_NSPECIAL,
-		AT_NSPECIAL_AIR,
-		AT_NSPECIAL_2,
-		AT_FSPECIAL,
-		AT_FSPECIAL_AIR,
-		AT_FSPECIAL_2,
-		AT_USPECIAL,
-		AT_USPECIAL_GROUND,
-		AT_USPECIAL_2,
-		AT_DSPECIAL_AIR,
-		AT_DSPECIAL,
-		AT_DSPECIAL_2,
-		AT_NTHROW,
-		AT_FTHROW,
-		AT_UTHROW,
-		AT_DTHROW,
-		AT_EXTRA_1,
-		AT_EXTRA_2,
-		AT_EXTRA_3,
-		AT_TAUNT,
-		AT_TAUNT_2,
-		AT_PHONE,
-		2,
-		3,
-		39,
-		42,
-		43,
-		44,
-		45,
-		46,
-		47,
-		48,
-		49,
-		50
-	];
-	
-	
-	
-	// Include a "Stats" page in the frame data guide?
-	include_stats = true;
-	
-	// If so, put any specific notes here:
-	stats_notes = "-"; // set to   "-"   if you don't need to put any notes
-	
-	
-	
-	// Include a custom page in the frame data guide? (Useful for documenting miscellaneous numbers, e.g. stats of a passive mechanic)
-	include_custom = false;
-	
-}
-
-
-
-// About init
-
-with phone{
-	
-	/*
-	 * Info found in the "About" app.
-	 * 
-	 * initAbout(entry name, entry text)
-	 * 
-	 * Useful for credits or etc. The page can also scroll, so they can be long
-	 * if you want
-	 */
-	
-	initAbout("About Otto", "Character made by Muno!
-	
-	SFX: Sims Pool for iPod");
-	
-}
-
-
-
-
-
-
-
-// Trummel & Alto codec
-
-if pho_has_trum_codec{
-	
-	/*
-	 * initCodec(gimmick)
-	 * initCodecPage(speaker, expression, gimmick, text)
-	 */
-	
-	/*
-	 * Codec speaker handles:
-	 * SPK_TRUM: Trum
-	 * SPK_ALTO: Alto
-	 * SPK_OTTO: Otto
-	 * SPK_CODA: Coda
-	 * SPK_ECHO: Tempo
-	 * SPK_MINE: Steve (i dont normally use this one... like, what is he supposed to say?? the funny oof noise? you can if you want)
-	 */
-	
-	/* 
-	 * Page gimmick handles:
-	 * GIM_CHOMP			make the enemy ftilt
-	 * GIM_CLONE 			display 2 speakers
-	 * GIM_LAUGH_TRACK		play the funny haha sound
-	 * GIM_SKIP   			advance the page immediately when the text finishes
-	 * GIM_DIE    			die
-	 */
-	
-	trummel_codecs = [];
-	
-	initCodec(0);
-	initCodecPage(SPK_ALTO, 3, 0, "Where's your 8 Ball now, huh, Otto?");
-	var h = GIM_SHADER;
-	initCodecPage(SPK_OTTO, 3, h, "Not like I ever needed it to mop the floor with you guys! Let's put a wager on it.");
-	initCodecPage(SPK_ALTO, 4, 0, "Those sound like betting odds to me!");
-	initCodecPage(SPK_TRUM, 0, 0, "anything is betting odds when ur drunk");
-	
-}
-
-
-
-// Otto bobblehead
-
-if pho_has_otto_bhead{
-	
-	// otto_bobblehead_sprite = sprite_get("_pho_example_bobble_head");
-	// otto_bobblebody_sprite = sprite_get("_pho_example_bobble_body"); // you only need to change this if you REALLY want to. most chars just use the head sprite
-	
-}
-
-
-
-// Steve death message
-
-if pho_has_steve_dmsg{
-	
-	steve_death_message = "Steve lost a bet";
-	
-}
-
-
-
-// Feri taunt costume
-
-if pho_has_feri_taunt{
-	
-	sprite_change_offset("feri_costume", 84, 114);
-	feri_costume = sprite_get("feri_costume");
-	
-}
-
-
-
-// Hikaru fakie title
-
-if pho_has_hikaru_fak{
-	
-	Hikaru_Title = "woaf";
-	
-}
-
-
-
-// Rat all-out quote
-
-if pho_has_rat_allout{
-	
-	personaQuips[10] = "woaf";
-	
-}
-
-
-
-// The Chosen One sketch
-
-if pho_has_tco_sketch{
-	
-	tcoart = sprite_get("tco_sketch");
-	
-}
-
-
-
-// Abyss Hime death sprite
-
-if pho_has_ahime_dead{
-	
-	sprite_change_offset("ahime_dead", 0, 0);
-	abyssHime_deathspr = sprite_get("ahime_dead");
-	
-}
-
-
-
-// Fire's taunt
-
-if pho_has_fire_taunt{
-	
-	sprite_change_offset("fire_taunt", 0, 0);
-	fire_taunt = sprite_get("fire_taunt");
-	fire_taunt_duration = 420;
-	fire_taunt_frames = 69;
-	fire_taunt_sound = sound_get("woagf");
-	fire_taunt_sound_frame = 3;
-	
-}
-
-
-
-// Wall-E's radio
-
-if pho_has_wall_e_ost{
-	
-	walle_taunt_sound = sound_get("wall_e_sound");
-	walle_taunt_type = 1;
-	
-}
-
-
-
-// Amber's plushie and hug
-
-if pho_has_amber_love{
-	
-	plushForAmber = sprite_get("amber_plushie");
-	
-	// Amber interaction variables
-	amber_herObj = noone; // The object ID of Amber when she hugs. Amber's own script will set this when the hug is inititated
-	amber_thisHugSprite = sprite_get("sandbert_hug");
-	amber_herHugSprite = sprite_get("amber_hug");
-	amber_startHug = false; // This variable is set true from Amber's scripts
-	amber_thisSpriteInFront = true; // When true, this character's sprite is rendered over Amber's sprite
-	amber_autoTurnToHer = true; // This character will automatically face towards Amber upon hug activatation when true
-	
-	amber_hugStartPos[0] = 42; // The x target offset point (from Amber's pos) where the player should hug Amber at. 
-	amber_hugStartPos[1] = 0; // The y target offset point. Recommended to keep this at 0 for grounded interaction
-	
-	amber_hugExitPos[0] = 42; // The x target offset point (from Amber's pos) where the player stands at when exiting hug state.
-	amber_hugExitPos[1] = 0; // The y target offset point.
-	
-	// The x target offset positions will inherit the character's spr_dir when this is true.
-	// Set this to true for character interactions that face toward each other such as hugging
-	// Set this to false for centered interaction animations
-	amber_useSprDirOffset = true; 
-	
-	amber_hugExitTimer = 30; // How many frames should pass before either player can exit the hug window loop
-	amber_hugExitWindow = 3; // The window to jump to when either player presses a button to exit hug loop
-	
-	sprite_change_offset("sandbert_hug", 32, 62);
-	sprite_change_offset("amber_hug", 32, 62);
-	
-}
-
-
-
-// Moonchild music
-
-if pho_has_moon_music{
-	
-	childsupport = true; // this is so sad
-	
-}
-
-
-
-// Dracula dialogue
-
-if pho_has_drac_codec{
-	
-	dracula_portrait = sprite_get("drac_portrait");
-	dracula_portrait2 = asset_get("empty_sprite");
-	dracula_portrait3 = asset_get("empty_sprite");
-	var page = 0;
-	
-	// Page 0
-	dracula_speaker[page] = 0;
-	dracula_text[page] = "holy frick";
-	page++;
-	
-	// Page 1
-	dracula_speaker[page] = 0;
-	dracula_text[page] = "im dracula";
-	page++;
-	
-	// repeat...
-	
-}
-
-
-
-// Miiverse post
-
-if pho_has_miivs_post{
-	
-	sprite_change_offset("miiverse_post", 60, 30);
-	miiverse_post = sprite_get("miiverse_post");
-	
-}
-
-
-
-// Mt Dedede title
-
-if pho_has_dede_title{
-	
-	arena_title = "woag";
-	arena_short_name = "woaf";
-	
-}
-
-
-
-// Soulbound Conflict
-
-if pho_has_soul_title{
-	
-	battle_text = "* woag";
-	
-}
-
-
-
-// Trial Grounds
-
-if pho_has_been_found{
-
-	sprite_change_offset("trial_grounds", 31, 0);
-	guiltySprite = sprite_get("trial_grounds");
-	
-}
-
-
-
-// Last Resort painting
-
-if pho_has_resort_pic{
-	
-	sprite_change_offset("last_resort", 27, 39);
-	resort_portrait = sprite_get("last_resort");
-	
-}
-
-
-
-// PKMN Stadium battle portraits
-
-if pho_has_pkmn_image{
-	
-	pkmn_stadium_front_img = sprite_get("pkmn_front");
-	pkmn_stadium_back_img = sprite_get("pkmn_back");
-	pkmn_stadium_name_override = "sdkhjfskhgfkslhfglkha";
-	
-}
-
-
-
-// Daroach dialogue
-
-if pho_has_daro_codec{
-	
-	daroach_portrait = sprite_get("daro_portrait");
-	daroach_portrait2 = asset_get("empty_sprite");
-	daroach_portrait3 = asset_get("empty_sprite");
-	var page = 0;
-	
-	// Page 0
-	daroach_speaker[page] = 0;
-	daroach_text[page] = "holy frick";
-	page++;
-	
-	// Page 1
-	daroach_speaker[page] = 0;
-	daroach_text[page] = "im dracula";
-	page++;
-	
-	// repeat...
-	
-}
-
-
-
-
-
-// THIS MARKS THE END OF THE SECTION YOU HAVE TO EDIT!
-// BELOW THIS IS JUST BEHIND-THE-SCENES CODE,
-// FEEL FREE TO EDIT IF YOU KNOW WHAT YOU'RE DOING
-
-
-
-
-// uhh ignore this
 
 #define initHeader(obj_text)
 
-initPatchWords_ext(obj_text, fa_left, c_white, 0, 0);
+initWords_ext(obj_text, fa_left, "h", 0, 0);
 
 #define initSection(obj_text)
 
-initPatchWords_ext(obj_text, fa_left, c_gray, 1, 0);
+initWords_ext(obj_text, fa_left, c_white, 1, 0);
 
+#define initWords(obj_text)
 
-#define initAbout(obj_name, obj_text)
-
-var para = {
+array_push(phone.currently_edited_obj.objs, {
 	type: 0,
 	text: obj_text,
 	align: fa_left,
 	color: c_white,
 	indent: 0,
-	gimmick: 0,
-	side_by_side_exempt: false
-};
+	side_by_side: false
+});
 
-var tip = {
-	name: obj_name,
-	objs: [para]
-};
+#define initWords_ext(obj_text, obj_align, obj_color, obj_indent, obj_ignore_height)
 
-array_push(abouts, tip);
+array_push(phone.currently_edited_obj.objs, {
+	type: 0,
+	text: obj_text,
+	align: obj_align,
+	color: obj_color,
+	indent: obj_indent,
+	side_by_side: obj_ignore_height
+});
 
+#define initImage(obj_sprite, obj_frame)
 
+array_push(phone.currently_edited_obj.objs, {
+	type: 1,
+	sprite: obj_sprite,
+	frame: obj_frame,
+	align: fa_center,
+	xscale: 1,
+	yscale: 1,
+	uses_shader: 1,
+	color: c_white,
+	alpha: 1,
+	margin_l: noone,
+	margin_r: noone,
+	margin_u: noone,
+	margin_d: noone,
+	needs_auto_margins: true,
+	side_by_side: false
+});
+
+#define initImage_ext(obj_sprite, obj_frame, obj_align, obj_xscale, obj_yscale, obj_uses_shader, obj_color, obj_alpha, obj_ignore_height, obj_l, obj_r, obj_u, obj_d)
+
+array_push(phone.currently_edited_obj.objs, {
+	type: 1,
+	sprite: obj_sprite,
+	frame: obj_frame,
+	align: obj_align,
+	xscale: obj_xscale,
+	yscale: obj_yscale,
+	uses_shader: obj_uses_shader,
+	color: obj_color,
+	alpha: obj_alpha,
+	margin_l: obj_l,
+	margin_r: obj_r,
+	margin_u: obj_u,
+	margin_d: obj_d,
+	needs_auto_margins: (obj_l == noone && obj_r == noone && obj_u == noone && obj_d == noone),
+	side_by_side: obj_ignore_height
+});
+
+#define initCheat(ch_name, ch_opt, ch_opt_name, ch_desc)
+
+array_push(phone.cheats, {
+	name: ch_name,
+	options: ch_opt,
+	option_names: ch_opt_name,
+	description: ch_desc,
+	on: 0
+});
+
+array_push(phone_cheats, ch_opt[0]);
+array_push(phone_cheats_updated, 0);
+return array_length(phone.cheats) - 1;
 
 #define initCFDHeader(text)
 
-custom_fd_content[i] = {
+array_push(phone.custom_fd_content, {
 	type: 0, // header
 	content: text
-};
-
-i++;
-
-
+});
 
 #define initCFDBody(text)
 
-custom_fd_content[i] = {
+array_push(phone.custom_fd_content, {
 	type: 1, // body
 	content: text
-};
-
-i++;
-
-
+});
 
 #define initCodec(cd_gimmick)
+
+if "trummel_codecs" not in self trummel_codecs = [];
 
 var new_cdc = {
 	gimmick: cd_gimmick,
@@ -1136,8 +864,6 @@ var new_cdc = {
 };
 
 array_push(trummel_codecs, new_cdc);
-
-
 
 #define initCodecPage(cd_speaker, cd_expression, cd_gimmick, cd_text)
 
@@ -1150,9 +876,9 @@ var new_page = {
 
 array_push(trummel_codecs[array_length(trummel_codecs) - 1].pages, new_page);
 
-
-
 #define initSpeaker(idx, speak_name, speak_sprite)
+
+if "trummel_speakers" not in self trummel_speakers = [];
 
 trummel_speakers[idx] = {
 	name: speak_name,		// Name displayed while talking
@@ -1160,227 +886,3 @@ trummel_speakers[idx] = {
 };
 
 return idx * -1;
-
-
-
-#define initTip(tip_name)
-
-tips[i] = {
-	name: tip_name,
-	objs: [0]
-};
-
-i++;
-
-j = 0;
-
-
-
-#define initTipWords(obj_text)
-
-i--;
-
-tips[i].objs[j] = initWords(obj_text);
-
-tipObjEnd();
-
-
-
-#define initTipWords_ext(obj_text, obj_align, obj_color, obj_indent, obj_gimmick)
-
-i--;
-
-tips[i].objs[j] = initWords_ext(obj_text, obj_align, obj_color, obj_indent, obj_gimmick);
-
-tipObjEnd();
-
-
-
-#define initTipImage(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick)
-
-i--;
-
-tips[i].objs[j] = initImage(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick);
-
-tipObjEnd();
-
-
-
-#define initTipImage_ext(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick, obj_l, obj_r, obj_u, obj_d)
-
-i--;
-
-tips[i].objs[j] = initImage_ext(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick, obj_l, obj_r, obj_u, obj_d);
-
-tipObjEnd();
-
-
-
-#define initPatch(pat_ver, pat_date)
-
-patches[i] = {
-	name: "v" + pat_ver,
-	date: pat_date,
-	objs: [0]
-};
-
-i++;
-
-j = 0;
-
-
-
-#define initPatchWords(obj_text)
-
-i--;
-
-patches[i].objs[j] = initWords(obj_text);
-
-tipObjEnd();
-
-
-
-#define initPatchWords_ext(obj_text, obj_align, obj_color, obj_indent, obj_gimmick)
-
-i--;
-
-patches[i].objs[j] = initWords_ext(obj_text, obj_align, obj_color, obj_indent, obj_gimmick);
-
-tipObjEnd();
-
-
-
-#define initPatchImage(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick)
-
-i--;
-
-patches[i].objs[j] = initImage(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick);
-
-tipObjEnd();
-
-
-
-#define initPatchImage_ext(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick, obj_l, obj_r, obj_u, obj_d)
-
-i--;
-
-patches[i].objs[j] = initImage_ext(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick, obj_l, obj_r, obj_u, obj_d);
-
-tipObjEnd();
-
-
-
-#define initWords(obj_text)
-
-return {
-	type: 0,
-	text: obj_text,
-	align: fa_left,
-	color: c_white,
-	indent: 0,
-	gimmick: 0,
-	side_by_side_exempt: false
-};
-
-tipObjEnd();
-
-
-
-#define initWords_ext(obj_text, obj_align, obj_color, obj_indent, obj_gimmick)
-
-return {
-	type: 0,
-	text: obj_text,
-	align: obj_align,
-	color: obj_color,
-	indent: obj_indent,
-	gimmick: obj_gimmick,
-	side_by_side_exempt: false
-};
-
-tipObjEnd();
-
-
-
-#define initImage(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick)
-
-return {
-	type: 1,
-	sprite: obj_sprite,
-	frame: obj_frame,
-	align: obj_align,
-	xscale: obj_xscale,
-	color: obj_color,
-	gimmick: obj_gimmick,
-	margin_l: "unset",
-	margin_r: "unset",
-	margin_u: "unset",
-	margin_d: "unset",
-	needs_auto_margins: true,
-	side_by_side_exempt: false
-};
-
-tipObjEnd();
-
-
-
-#define initImage_ext(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick, obj_l, obj_r, obj_u, obj_d)
-
-return {
-	type: 1,
-	sprite: obj_sprite,
-	frame: obj_frame,
-	align: obj_align,
-	xscale: obj_xscale,
-	color: obj_color,
-	gimmick: obj_gimmick,
-	margin_l: obj_l,
-	margin_r: obj_r,
-	margin_u: obj_u,
-	margin_d: obj_d,
-	needs_auto_margins: false,
-	side_by_side_exempt: false
-};
-
-tipObjEnd();
-
-
-
-#define tipObjEnd
-
-i++;
-
-j++;
-
-
-
-#define initCheat(ch_name, ch_cmd, ch_opt, ch_opt_name, ch_desc)
-
-phone.cheats[i] = {
-	name: ch_name,
-	command: ch_cmd,
-	options: ch_opt,
-	option_names: ch_opt_name,
-	description: ch_desc,
-	on: 0
-};
-
-variable_instance_set(self, ch_cmd, i);
-phone_cheats[i] = ch_opt[0];
-
-i++;
-
-
-
-#define room_add(_room_id,room_data) // Adds a new room to the scene. for BTT
-with obj_stage_article if num == 5 {
-	var _room_id_ind = array_find_index(array_room_ID,_room_id);
-	if _room_id_ind == - 1 {
-	    if debug print_debug("[RM] Adding... "+string(_room_id));
-	    array_push(array_room_data,room_data);
-	    array_push(array_room_ID,_room_id);
-	} else {
-	    array_room_data[_room_id_ind] = room_data;
-	    array_room_ID[_room_id_ind] = _room_id;
-	}
-}

@@ -35,7 +35,7 @@ set_num_hitboxes(AT_FSTRONG, 1);
 
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, 3);
-set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 10);
+set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 20); // 10
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 0); // -32
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_Y, -48);
 set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 40);
@@ -44,18 +44,19 @@ set_hitbox_value(AT_FSTRONG, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_FSTRONG, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 45); // 60
-set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 5); // 9
+set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.5); // 0.9
+set_hitbox_value(AT_FSTRONG, 1, HG_HITSTUN_MULTIPLIER, 0.5);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 18);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 0.9);
-// set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 304);
+set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_SPRITE, spr_fstrong_proj);
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_HSPEED, 0); //overwritten in atk update
-set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_ANIM_SPEED, 0.14);
-set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_AIR_FRICTION, 3.4); // 3.2
+set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_ANIM_SPEED, 0.3);
+set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_AIR_FRICTION, 0.5); // 3.2, then 3.4
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
-set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_IS_TRANSCENDENT, 0); // 1
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_PARRY_STUN, 1);
 // set_hitbox_value(AT_FSTRONG, 1, HG_EXTENDED_PARRY_STUN, 1);

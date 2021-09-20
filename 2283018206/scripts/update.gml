@@ -1,9 +1,10 @@
+muno_event_type = 1;
 user_event(14);
 attacking = phone_attacking;
 if attacking window_end = phone_window_end;
 playtest = phone_playtest;
 practice = phone_practice;
-inited = phone_inited;
+inited = true;
 ditto = phone_ditto;
 blastzone_l = phone_blastzone_l;
 blastzone_r = phone_blastzone_r;
@@ -362,7 +363,7 @@ if (bike != prev_bike){
 
 //Bike smoke
 
-if !phone.phone_settings[phone.setting_fast_graphics]{
+if !phone_fast{
 
 	var smoke_rate = round(12 - abs(hsp) / 2);
 	smoke_rate = clamp(smoke_rate, 1, 100);

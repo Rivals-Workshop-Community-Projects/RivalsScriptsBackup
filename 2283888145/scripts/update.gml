@@ -1,9 +1,10 @@
+muno_event_type = 1;
 user_event(14);
 attacking = phone_attacking;
 if attacking window_end = phone_window_end;
 playtest = phone_playtest;
 practice = phone_practice;
-inited = phone_inited;
+inited = true;
 ditto = phone_ditto;
 blastzone_l = phone_blastzone_l;
 blastzone_r = phone_blastzone_r;
@@ -197,7 +198,7 @@ with obj_article1 if player_id == other.id theres_guitar = true;
 
 if !theres_guitar guitar = instance_create(x, y - 500, "obj_article1"); //make guitar
 
-if phone_cheats[cheat_no_cd]{
+if phone_cheats[CHEAT_NO_CD]{
 	phone_arrow_cooldown = 0;
 	can_uspecial_bounce = true;
 }
@@ -615,7 +616,7 @@ switch(chord_menu_state){
             chord_menu_timer = 0;
         }
         
-        if (special_pressed && guitar.chord && !chord_menu_chose_something) && phone_cheats[cheat_infinite_chords]{
+        if (special_pressed && guitar.chord && !chord_menu_chose_something) && phone_cheats[CHEAT_CHORDS]{
             guitar.chord_state_timer = -1;
             // sound_play(asset_get("mfx_confirm"));
             chordPlay(chord_notes[0], 1, 1);
@@ -634,7 +635,7 @@ switch(chord_menu_state){
             chord_menu_timer = 0;
         }
         
-        if (special_pressed && joy_pad_idle && guitar.chord && !chord_menu_chose_something) && phone_cheats[cheat_infinite_chords]{
+        if (special_pressed && joy_pad_idle && guitar.chord && !chord_menu_chose_something) && phone_cheats[CHEAT_CHORDS]{
             guitar.chord_state_timer = -1;
             // sound_play(asset_get("mfx_confirm"));
             chordPlay(chord_notes[0], 1, 1);

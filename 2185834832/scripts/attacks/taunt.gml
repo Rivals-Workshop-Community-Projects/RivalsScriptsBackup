@@ -51,5 +51,5 @@ set_hitbox_value(AT_TAUNT, 1, HG_KNOCKBACK_SCALING, 0.85);
 set_hitbox_value(AT_TAUNT, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_TAUNT, 1, HG_HITPAUSE_SCALING, 0.12);
 set_hitbox_value(AT_TAUNT, 1, HG_SHAPE, 0);
-set_hitbox_value(AT_TAUNT, 1, HG_VISUAL_EFFECT, 305);
+set_hitbox_value(AT_TAUNT, 1, HG_VISUAL_EFFECT, vfx_waterhit_big);
 set_hitbox_value(AT_TAUNT, 1, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));

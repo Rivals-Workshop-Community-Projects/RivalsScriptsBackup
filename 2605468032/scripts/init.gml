@@ -106,6 +106,7 @@ boost2 = 0;
 x_dir = 0;
 float = 0;
 nspec_charge = 0;
+pop = 0;
 
 ditto = 0;
 

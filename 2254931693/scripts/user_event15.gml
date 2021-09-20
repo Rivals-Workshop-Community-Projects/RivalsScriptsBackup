@@ -1,412 +1,105 @@
-// Muno template - [CORE] user-defined content
+// phone - frontend
 
-
-
-/*
- * THIS IS THE ONLY FILE YOU NEED TO EDIT! The other user_events, as well as
- * css_draw, are not to be edited by the end user unless you want to specially
- * modify the template. (It's open source, but I'll be sad if you remove my
- * attempts at standardization)
- */
-
-
-
-/*
-
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║ Update Code			                                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
-
-*/
-
-sprite_change_offset("_pho_idle", 0, 24);
-
-if ("phone_inited" in self && phone_inited){
-
-	/*
-	 * update.gml Code - this runs every frame, edit the below sections as you
-	 * see fit.
-	 */
-	
-	
-	
-	/*
-	 * Below are 3 custom entries for the Print Debug setting in the Settings
-	 * app. You can replace the "url"s with any constant, variable, or function
-	 * to monitor it when that setting is enabled.
-	 */
-	
-	phone_custom_debug = [
-		"woag",
-		"woag",
-		"woag"
-		];
-	
-	
-	
-	/*
-	 * Char compatibility code below; find EVEN MORE lower down in the file
-	 */
-	 
-	 
-	
-	// Copy Ability
-	
-	if pho_has_copy_power{
-		
-		// Initial swallow
-		
-		if swallowed {
-			
-			swallowed = 0; // don't touch this line please im begging you
-			
-			var copy_spr = sprite_get("kirb");
-			var copy_hrt = sprite_get("kirb_hurt");
-			var copy_icn = sprite_get("bon_kirbyicon");
-			var dspecialswish = sound_get("dspecialstart");
-			var dspecialboing = sound_get("dspecialbounce");
-			var dspecialfalling = sound_get("dspecialfall");
-			var dspeciallanding = sound_get("dspecialland");
-			// add more to transfer other sprites, or sfx
-			
-			with enemykirby{
-				newicon = copy_icn;
-				can_wall_jump = false;
-				fall_through = false;
-				kirby_dspecialhit = 0;
-				muno_last_swallowed = other.id;
-				
-				set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
-				set_attack_value(AT_EXTRA_3, AG_SPRITE, copy_spr);
-				set_attack_value(AT_EXTRA_3, AG_AIR_SPRITE, copy_spr);
-				set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 6);
-				set_attack_value(AT_EXTRA_3, AG_USES_CUSTOM_GRAVITY, 1);
-				set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, copy_hrt);
-				set_attack_value(AT_EXTRA_3, AG_HURTBOX_AIR_SPRITE, copy_hrt);
-				
-				// edit the below (and, indeed, the above!) just like a regular attack script
-				
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 0);
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_LENGTH, 10);
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_ANIM_FRAMES, 4);
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX, dspecialswish);
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX_FRAME, 3);
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.4);
-
-set_window_value(AT_EXTRA_3, 2, AG_WINDOW_TYPE, 0);
-set_window_value(AT_EXTRA_3, 2, AG_WINDOW_LENGTH, 12);
-set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAMES, 7);
-set_window_value(AT_EXTRA_3, 2, AG_WINDOW_ANIM_FRAME_START, 4);
-set_window_value(AT_EXTRA_3, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_EXTRA_3, 2, AG_WINDOW_SFX, dspecialboing);
-set_window_value(AT_EXTRA_3, 2, AG_WINDOW_SFX_FRAME, 1);
-set_window_value(AT_EXTRA_3, 2, AG_WINDOW_VSPEED, -16);
-set_window_value(AT_EXTRA_3, 2, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_EXTRA_3, 2, AG_WINDOW_CUSTOM_GRAVITY, 3);
-
-set_window_value(AT_EXTRA_3, 3, AG_WINDOW_TYPE, 0);
-set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 6);
-set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAME_START, 11);
-set_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED, -3);
-set_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_EXTRA_3, 3, AG_WINDOW_CUSTOM_GRAVITY, 2);
-set_window_value(AT_EXTRA_3, 3, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_EXTRA_3, 3, AG_WINDOW_SFX, dspecialfalling);
-set_window_value(AT_EXTRA_3, 3, AG_WINDOW_SFX_FRAME, 4);
-
-set_window_value(AT_EXTRA_3, 4, AG_WINDOW_TYPE, 8);
-set_window_value(AT_EXTRA_3, 4, AG_WINDOW_LENGTH, 5);
-set_window_value(AT_EXTRA_3, 4, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_EXTRA_3, 4, AG_WINDOW_ANIM_FRAME_START, 13);
-set_window_value(AT_EXTRA_3, 4, AG_WINDOW_VSPEED, 10);
-set_window_value(AT_EXTRA_3, 4, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_EXTRA_3, 4, AG_WINDOW_CUSTOM_GRAVITY, 1);
-
-set_window_value(AT_EXTRA_3, 5, AG_WINDOW_TYPE, 10);
-set_window_value(AT_EXTRA_3, 5, AG_WINDOW_LENGTH, 5);
-set_window_value(AT_EXTRA_3, 5, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_EXTRA_3, 5, AG_WINDOW_ANIM_FRAME_START, 15);
-set_window_value(AT_EXTRA_3, 5, AG_WINDOW_VSPEED, 25);
-set_window_value(AT_EXTRA_3, 5, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(AT_EXTRA_3, 5, AG_WINDOW_CUSTOM_GRAVITY, 1);
-
-set_window_value(AT_EXTRA_3, 6, AG_WINDOW_TYPE, 0);
-set_window_value(AT_EXTRA_3, 6, AG_WINDOW_LENGTH, 26);
-set_window_value(AT_EXTRA_3, 6, AG_WINDOW_ANIM_FRAMES, 6);
-set_window_value(AT_EXTRA_3, 6, AG_WINDOW_ANIM_FRAME_START, 16);
-set_window_value(AT_EXTRA_3, 6, AG_WINDOW_CUSTOM_GRAVITY, 1);
-set_window_value(AT_EXTRA_3, 6, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_EXTRA_3, 6, AG_WINDOW_SFX, dspeciallanding);
-set_window_value(AT_EXTRA_3, 6, AG_WINDOW_SFX_FRAME, 1);
-
-
-set_num_hitboxes(AT_EXTRA_3, 2);
-
-set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW, 4);
-set_hitbox_value(AT_EXTRA_3, 1, HG_WINDOW_CREATION_FRAME, 1);
-set_hitbox_value(AT_EXTRA_3, 1, HG_LIFETIME, 5);
-set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_X, 4);
-set_hitbox_value(AT_EXTRA_3, 1, HG_HITBOX_Y, -18);
-set_hitbox_value(AT_EXTRA_3, 1, HG_WIDTH, 37);
-set_hitbox_value(AT_EXTRA_3, 1, HG_HEIGHT, 47);
-set_hitbox_value(AT_EXTRA_3, 1, HG_SHAPE, 0);
-set_hitbox_value(AT_EXTRA_3, 1, HG_PRIORITY, 4);
-set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 7);
-set_hitbox_value(AT_EXTRA_3, 1, HG_ANGLE, 75);
-set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, .5);
-set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 0.65);
-set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(AT_EXTRA_3, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
-
-set_hitbox_value(AT_EXTRA_3, 2, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_EXTRA_3, 2, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_EXTRA_3, 2, HG_WINDOW, 5);
-set_hitbox_value(AT_EXTRA_3, 2, HG_WINDOW_CREATION_FRAME, 1);
-set_hitbox_value(AT_EXTRA_3, 2, HG_LIFETIME, 5);
-set_hitbox_value(AT_EXTRA_3, 2, HG_HITBOX_X, 4);
-set_hitbox_value(AT_EXTRA_3, 2, HG_HITBOX_Y, -18);
-set_hitbox_value(AT_EXTRA_3, 2, HG_WIDTH, 37);
-set_hitbox_value(AT_EXTRA_3, 2, HG_HEIGHT, 47);
-set_hitbox_value(AT_EXTRA_3, 2, HG_SHAPE, 0);
-set_hitbox_value(AT_EXTRA_3, 2, HG_PRIORITY, 4);
-set_hitbox_value(AT_EXTRA_3, 2, HG_DAMAGE, 7);
-set_hitbox_value(AT_EXTRA_3, 2, HG_ANGLE, 75);
-set_hitbox_value(AT_EXTRA_3, 2, HG_HITPAUSE_SCALING, .5);
-set_hitbox_value(AT_EXTRA_3, 2, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_EXTRA_3, 2, HG_KNOCKBACK_SCALING, 0.65);
-set_hitbox_value(AT_EXTRA_3, 2, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(AT_EXTRA_3, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
-			}
-		}
-		
-		
-		
-		// Update code
-		
-		with oPlayer if "muno_last_swallowed" in self && muno_last_swallowed == other {
-		
-if (free = 0){
-	kirby_dspecialhit = 0;
-    move_cooldown[AT_EXTRA_3] = 0;
-}
-
-	
-if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_EXTRA_3{
-
-if (down_down){
-    fall_through = true;
-
-}
-
-if (window < 4){
-    can_wall_jump = true;
-}
-	
-
-
-if (has_hit_player = true){
-    window = 1;
-    set_window_value(AT_EXTRA_3, 2, AG_WINDOW_VSPEED, -23);
-    window_timer = 9;
-    kirby_dspecialhit = 1;
-    has_hit_player = false;
-
-}
-
-
-
-if (window = 2 && window_timer = 11 && kirby_dspecialhit = 1){
-    move_cooldown[AT_EXTRA_3] = 9999;
-    set_window_value(AT_EXTRA_3, 2, AG_WINDOW_VSPEED, -16);
-set_state( PS_IDLE_AIR );
-}
-
-
-
-
-    
-}
-
-		}
-	}
-	
-	
-	
-	// Break the Targets data
-	
-	if pho_has_btt_layout{
-		if get_btt_data { // Get data for Break The Targets
-			course_name = "R-00 Course";
-			// Set the spawn properties
-			respawn_point = [[29,50],[0,0],1];
-			// Set the collision of the solid sprites to precise
-			sprite_change_collision_mask("btt_solid",true, 1, 0, 0, 0, 0, 0 );  
-			room_add(1,[
-			    [ // Each Cell
-			        [0,0], // Cell Coordinates
-			        [
-			        	// Targets
-				        [10, 4, 55, 0, -5, [0, 0, 32, [[0,0],[0,-3]], 0, 0, 0, 0], [0]],
-				        [10, 40, 30.5, 0, -5, [1, 0, 60, [[-10,0],[5,0]], 0, 0, 0, 0], [0]],
-				        [10, 87, 46, 0, -5, [2, 0, 0, 0, 0, 0, 0, 0], [0]],
-				        [10, 52, 44, 0, -5, [3, 0, 0, 0, 0, 0, 0, 0], [0]],
-				        [10, 55, 75, 0, -5, [3, 0, 0, 0, 0, 0, 0, 0], [0]],
-				        [10, 125, 55, 0, -5, [4, 0, 32, [[0,0],[0,-1]], 0, 0, 0, 0], [0]],
-				        // Solid Ground
-				    	[1, 2, 2, 2, 0, [sprite_get("btt_solid"), 0, 0, 0, 0, 0, 0, 0], [0]],
-				    	// Plats
-				    	[1, 46, 49, 1, 0, [sprite_get("btt_plat_64"), 0, 0, 0, 0, 0, 0, 0], [0]],
-				    	[1, 64, 71, 1, 0, [sprite_get("btt_plat_64"), 0, 0, 0, 0, 0, 0, 0], [0]]
-			            ]
-			        ],
-			    // Blastzones
-			    [ // Each Cell
-			        [0,1], // Cell Coordinates
-			        [
-			            [4, 0, 32, 0, 0, [4, 0, 0, 0, 0, 2608, 20, 0], [0,0]]
-			            ]
-			        ],
-			    [
-			        [1,1],
-			        [
-			        	[4, 0, 32, 0, 0, [4, 0, 0, 0, 0, 2608, 20, 0], [0,0]]
-			            ]
-			        ],
-			    [ // Each Cell
-			        [-1,1], // Cell Coordinates
-			        [
-			        	[4, 0, 32, 0, 0, [4, 0, 0, 0, 0, 2608, 20, 0], [0,0]]
-			            ]
-			        ]
-			    ]);
-		}
-	}
-	
-	
-	
-	// Amber
-	
-	if pho_has_amber_love{
-		if amber_startHug{ // Amber will set this bool to true when this player accepts the hug
-		    with amber_herObj{ // Access Amber's player object and set the values
-		        // Set the window values for Amber's hugging. DO NOT change Amber's sprites
-		        // in the attack_values
-		        set_window_value(AT_EXTRA_3, 1, AG_WINDOW_TYPE, 1);
-		        // etc....
-		
-		        // Important. Puts Amber in startup hug state (2).
-		        // Editing this variable not recommended
-		        amberHugState = 2; 
-		    }
-		    // Important. Puts this character in startup hug state (2).
-		    // Editing this variable not recommended
-		    oPlayerHugAmberState = 2;
-		    
-		    // Set this bool back to false so that this doesn't loop
-		    amber_startHug = false;
-		}
-	}
-	
+if object_index == asset_get("cs_playerbg_obj"){
+	CORE_css_draw();
 	exit;
 }
 
+CORE_general();
+CORE_tips();
+CORE_patches();
+CORE_cheats();
+CORE_frame_data();
+CORE_muno_compatibility();
+
 
 
 /*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ CSS Draw																	║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║ Compatibility Setup	                                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+Set parameters that are used by the CSS drawing code.
 
 */
 
-/*
- * This code runs from the CSS, as well as from the character itself.
- * 
- * The pho_has_something variables are for compatibility badges, which display
- * if your character has certain compatibilities.
- * 
- * By default, only the "gameplay-relevant" badges appear. The rest appear
- * only when the 0 key is held on the keyboard. So, don't worry about
- * cluttering the screen; include ALL compatibilites your character has,
- * for user convenience!
- * 
- * Enabling these flags ALSO enables the template code for each compatibility
- * (found within this very file).
- */
+#define CORE_css_draw
 
-// Gameplay-relevant, and codecs because im biased :>
-pho_has_muno_phone = 1;	// MunoPhone support		(should always be 1, obviously...)
-pho_has_trum_codec = 1;	// Trummel & Alto codec
-pho_has_copy_power = 0;	// Kirby Copy Ability
-pho_has_btt_layout = 0;	// Break the Targets stage
+// The number of alt costumes your char has, up to 32.
+num_alts = 6;
 
-// Character cosmetics
-pho_has_otto_bhead = 1;	// Bobblehead for Otto's bike
-pho_has_steve_dmsg = 1;	// Death message for Steve
-pho_has_feri_taunt = 1;	// Costume for Feri's taunt
-pho_has_hikaru_fak = 1;	// Title for Hikaru's fakie
-pho_has_rat_allout = 1;	// Quip for Rat's all-out attack
-pho_has_tco_sketch = 1;	// Drawing for The Chosen One's down taunt
-pho_has_ahime_dead = 0;	// Sprite for Abyss Hime's slicing effect
-pho_has_tink_picto = 0;	// Photograph for Toon Link's picto box
-pho_has_fire_taunt = 0; // Fire's Taunt
-pho_has_wall_e_ost = 0; // Wall-E's music
-pho_has_amber_love = 0; // Amber's plush and/or hug
-pho_has_moon_music = 0; // Moonchild's taunt music
-pho_has_agentn_cdc = 1; // Agent N's codec
+// Whether or not to display a name for each alt.
+use_alt_names = true;
 
-// Stage cosmetics
-pho_has_drac_codec = 1;	// Dialogue for the Dracula boss fight
-pho_has_miivs_post = 1;	// Posts for the Miiverse stage
-pho_has_dede_title = 1;	// Title for the Mt Dedede Stadium stage
-pho_has_soul_title = 0; // Text for the Soulbound Conflict stage
-pho_has_been_found = 0; // Death sprite for the Trial Grounds stage
-pho_has_resort_pic = 1; // Portrait for the Last Resort stage
-pho_has_pkmn_image = 1; // Battle sprite for Pokémon Stadium
-pho_has_daro_codec = 1; // Dialogue for the Daroach boss fight
+// Which color slot in your char's colors.gml to use for certain UI elements.
+// Type "noone" to make it always white.
+// (you can also change it to different values depending on the alt, by using
+// get_player_color(player))
+alt_ui_recolor = 0;
 
-
-
-if (object_index == asset_get("cs_playerbg_obj")){
-	num_alts = 16; // Number of alt costumes; controls how many appear on the CSS
-	exit;
-}
+// The list of names for the alts, if enabled.
+alt_names = [
+	"Vanilla",
+	"Blueberry",
+	"Strawberry",
+	"Mint",
+	"gray",
+	"Lemon",
+	];
 
 
 
 /*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ General Settings															║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║ General Character Info                                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+Set miscellaneous values to customize how your character interacts with the
+MunoPhone Touch.
 
 */
 
-muno_char_name = get_char_info(player, INFO_STR_NAME);	// Name of the character, used for the MunoPhone - and also free to be used by other mods
-muno_char_name = "Bonby";							// Here I replace the name, because "Sandbert with a Phone" is awkwardly long
+#define CORE_general
 
-muno_char_icon = get_char_info(player, INFO_ICON);		// CSS icon of the character. You can replace this with an arbitrary sprite, using sprite_get(), and it'll be used in the upper left of the phone's big screen. (Make it the same size pls, thank u)
+// Character's name, used in a couple of places in the phone.
+// (if you delete this line, it'd just use the config.ini name)
+muno_char_name = "Bonby";
 
-phone.taunt_hint_x = 0;									// Sideways offset of the "Taunt!" thing that shows in Practice Mode until you've opened the MunoPhone. You can move it sideways if it covers up your HUD elements.
-phone.shader = 1;	
+// Whether or not the phone sprite should recolor w/ your alt costume.
+// (set to "true" if you make a custom phone sprite in your char's colors)
+phone.uses_shader = true;
 
-phone.dont_fast = 0;									// Set this to 1, and Fast Graphics will not automatically be set when the FPS dips below 60.
+// If you use a custom phone sprite that's taller than the default, enter how
+// much taller it is here. (measured in ingame pixels; so if editing the default
+// phone sprite, multiply it by two)
+phone.extra_top_size = 24;
 
+// Set to true and the "Fast Graphics" feature will be enabled; see _readme.gml.
+phone.supports_fast_graphics = false;
 
+// Set to true and the phone will NOT activate Fast Fraphics when FPS gets low.
+phone.dont_fast = false;
 
-// Sprites (you could also include things like these in init.gml if you like)
+// Set to true and this will DISABLE a lot of the phone's side utilities.
+// If you're porting the phone to an existing char and don't need any of these
+// features, you might as well turn on lightweight to save a tiny bit of
+// performance. (see _docs.gml for a full list of what this disables)
+phone.lightweight = false;
+
+// If you've created custom AG_ or HG_ indexes for your character already,
+// use these to change where the phone starts assigning custom AG_s and HG_s.
+// If you have no idea what that means, leave these alone!
+// There's probably an upper bound here, but it's at least 200, so...
+phone.starting_ag_index = 80;
+phone.starting_hg_index = 80;
+
+// The above, but for the AT_PHONE index.
+// Maximum value is 50, minimum value (to avoid overlap w/ normal ones) is 39.
+phone.phone_attack_index = 40;
 
 spr_nspecialproj = sprite_get("nspecialspikeball");
 spr_frog = sprite_get("_pho_frog");
@@ -422,168 +115,206 @@ spr_walk3 = sprite_get("walk_alt16");
 spr_frogge = sprite_get("frogge");
 spr_waveland = sprite_get("waveland");
 
-/*
 
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║ Tips					                                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+/*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ Tips																		║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+Add Tips to your character, giving info on how to play or trivia. You can add
+both text and images. It's recommended to keep these short-and-sweet, as in the
+examples.
+
+Use the initTip() function to start a new Tip:
+
+	initTip(name);
+
+Then, use the following functions to add content or paragraphs:
+
+	initWords(text)
+	
+	initWords_ext(text, alignment, color, indent, ignore_height)
+	
+	initImage(sprite, frame)
+	
+	initImage_ext(sprite, frame, alignment, xscale, yscale, uses_shader, color,
+		alpha, ignore_height, crop_left, crop_right, crop_up, crop_down)
+
+Glossary:
+	
+	"_ext" at the end of a function name means an extended version of the
+		function it's named after - giving you more formatting options.
+	
+	"alignment" can be the GML constants fa_left, fa_center, or fa_right.
+	
+	"color" can be any GML color, e.g. c_red, #00ff00, or make_color_hsv(...).
+		Set this to a string (e.g. "h"), and it will be colored to the main
+		color of whichever phone app the text is being displayed in.
+	
+	"indent" basically allows you to put any amount of "tabs" to the left of a
+		paragraph.
+	
+	"sprite" can be any sprite index, e.g. sprite_get(...) or asset_get(...).
+	
+	"ignore_height" prevents this element from pushing the one below it
+		downward. Set this to true to achieve effects such as two elements
+		being side-by-side.
+	
+	"frame" can be 0 or any positive number for a static image, or a negative
+		number for an animated image. The size of the negative number determines
+		the framerate; -1 is the fastest, -2 is half as fast, -3 a third, etc.
+	
+	"uses_shader" determines whether or not the image should recolor with the
+		character's alt costumes.
+	
+	"crop_left", "crop_right", etc allow you to crop an image by determining how
+		far from the image's offset it should be drawn. Set all four to "noone"
+		and it will use the entire image (including empty space).
+
+NOTE: It's recommended to separate each paragraph into its own initWords() line,
+so that things like page breaks can work properly.
 
 */
 
-with phone{
+#define CORE_tips
+
+	initTip("Explaining Frog");
+	initImage(sprite_get("_pho_frog"), -5);	
+	initWords("The most important tool in Bonby's moveset is the frog. There are many different ways to go about using the frog.");
+	initHeader("Using Frog Normally");
+	initImage(sprite_get("_pho_nspecial_example"), -5);	
+	initWords("Using NSpecial normally will allow you to use your frog for a long-range grab. You can immediately act into another move when the grabbed opponent gets close enough.");
+	initWords("");
+	initWords("");	
+	initHeader("Using Frog on Stage");
+	initImage(sprite_get("_pho_frogspit"), -5);	
+	initWords("If you use DSpecial, you'll place your frog down onto the stage. Using NSpecial while your frog is out will make it try to grab opponents in a diagonal direction. Whichever direction you're facing when you use the move is the direction your frog will try to grab in. Opponents that get caught will be launched towards you, allowing you to follow up with another attack.");
+	initWords("");	
+	initWords("");	
+	initWords("");	
+	initWords("");	
+	initWords("");		
+	initHeader("Moving Frog");
+	initImage(sprite_get("_pho_frogmoving"), -5);	
+	initWords("If you want to move your frog around, use DSpecial while it's out to bring it closer to you, or use FSpecial to knock it away.");
+	initWords("");	
+	initWords("");	
+	initWords("");		
+	initWords("");	
+	initWords("");	
+	initWords("");
+	initWords("");	
+	initWords("");	
+	initWords("");		
+	initWords("");	
+	initWords("");	
+	initWords("");	
+	initWords("");	
+	initWords("");	
+	initWords("");	
+	initHeader("Getting Frog Back");	
+	initImage(sprite_get("_pho_frogoutline"), -5);		
+	initWords("If you're close enough to your frog, there'll be a white outline around it, indicating you can pick it back up by using DSpecial.");
+	initWords("");	
+	initWords("");	
+	initWords("");		
+	initWords("");	
+	initWords("");	
+	initWords("");
+	initWords("");	
+	initWords("");	
+	initWords("");		
+	initWords("");	
+	initWords("");	
+	initWords("");	
+	initWords("");	
+	initWords("");	
+	initWords("");	
+	initWords("");	
+	initWords("");	
+	initWords("");		
+	initWords("");	
+	initWords("");	
+	initWords("");
+	initWords("");	
+	initWords("");	
+	initHeader("Frog's Vulnerability");	
+	initImage(sprite_get("_pho_frogparry"), -5);		
+	initWords("Lastly, remember that your frog can be attacked by opponents. If it gets parried or knocked offstage, you'll be unable to use NSpecial or Dspecial for a short time.");
 	
-	i = 0;
-	j = 0;
-	
-	/*
-	 * Tips are hints or instructions on how to play the character. They range
-	 * from one-sentence descriptions to pages-long tutorials. You can also
-	 * embed images and formatted text.
-	 * 
-	 * initTip(name)
-	 * initTipWords(text)
-	 * initTipImage(sprite, frame, align, xscale, color, gimmick)
-	 * initTipWords_ext(text, align, color, indent, gimmick)
-	 * initTipImage_ext(sprite, frame, align, xscale, color, gimmick, border_l, border_r, border_u, border_d)
-	 * 
-	 * NOTE: indent = a number of "tabs", not a number of pixels
-	 * 
-	 * To place two consecutive elements side-by-side, they must meet the
-	 * following conditions:
-	 * - The second element must not be text
-	 * - The width of the two elements must not exceed the page width
-	 * - One element must be left-aligned, and the other right-aligned
-	 * 
-	 * NOTE: For images, set frame to a negative number and it will animate the
-	 * sprite at that rate. E.g. set to -3, each anim frame will last 3 frames.
-	 * 
-	 * Another image-related note: the placement for images is calculated based
-	 * on the BORDERS of the sprite. Two consequences:
-	 * - The offset of the sprite (load.gml) has NO effect.
-	 * - If your sprites are made with a lot of transparent empty space around
-	 *   the actual content (like mine are), it'll have that much extra space
-	 *   around it in the tip.
-	 * 
-	 * To fix the second bullet point, use initTipImage_ext(), with the four
-	 * extra "border_" arguments representing the distance FROM THE SPRITE'S
-	 * OFFSET (as defined in load.gml) to "cut off" the sprite in each of the
-	 * four directions. E.g. if your sprite's actual content is all contained
-	 * within these distances from the sprite offset:
-	 * - 100 to the left
-	 * - 20 to the right
-	 * - 50 up
-	 * - 0 down
-	 * 
-	 * ...then the last 4 arguments should be 100, 20, 50, 0. It basically crops
-	 * the sprite
-	 * 
-	 * Lastly, the "gimmick" is a special effect that you can apply to an
-	 * element. Here's the list of implemented gimmicks:
-	 * - 0: Nothing
-	 * - 1: Shaking
-	 * - 2: Scrolling left
-	 * - 3: Scrolling right
-	 * - 4: Ignore vertical scroll (always placed at top of screen)
-	 * 
-	 * Negative gimmick numbers are saved for whatever YOU might need them for!
-	 * Like idk, if you're a coding wizard and figure out something cool to do
-	 * by interacting with the tip data.
-	 * 
-	 */
-	 
-	initTip("Explaining Frog (1)");
-	initTipWords("The most important tool in Bonby's moveset is the frog. There are many different ways to go about using the frog.");
-	initTipImage(player_id.spr_frog, -5, fa_center, 1, c_white, 0);	
-	initTipWords("Using NSpecial normally will allow you to use your frog to grab opponents in front of you. You can cancel into another move as soon as whoever you grabbed gets close enough.");
-	initTipImage(player_id.spr_frognspecial, -5, fa_center, 1, c_white, 0);	
-
-	initTip("Explaining Frog (2)");
-	initTipWords("If you use DSpecial, you'll place your frog down onto the stage.");
-	initTipImage(player_id.spr_frogthrow, -5, fa_center, 1, c_white, 0);
-	initTipWords("Using NSpecial while your frog is out will make it try to grab opponents in a diagonal direction. Whichever direction you're facing when you use the move is the direction your frog will try to grab in.");	
-	initTipImage(player_id.spr_frogspit, -5, fa_center, 1, c_white, 0);
-	initTipWords("Opponents that get caught will be launched towards you, allowing you to follow up with another attack.");	
-
-	
-	initTip("Explaining Frog (3)");
-	initTipWords("If you want to move your frog around, use DSpecial while it's out to bring it closer to you, or use FSpecial to knock it away.");
-	initTipImage(player_id.spr_frogmoving, -5, fa_center, 1, c_white, 0);		
-	initTipWords("If you're close enough to your frog, there'll be a white outline around it, indicating you can pick it back up by using DSpecial.");
-	initTipImage(player_id.spr_frogoutline, -5, fa_center, 1, c_white, 0);		
-
-	initTip("Explaining Frog (4)");
-	initTipWords("Lastly, remember that your frog can be attacked by opponents. If it gets parried or knocked offstage, you'll be unable to use NSpecial or Dspecial for a short time.");
-	initTipImage(player_id.spr_frogparry, -5, fa_center, 1, c_white, 0);		
-
 	initTip("F-Special Charge");
-	initTipWords("F-Special can be charged by holding the Special button down. In addition to increased damage, you'll fly back further, allowing you to use the move for horizontal recovery.");
-	initTipImage(player_id.spr_fspecial, 8, fa_center, 1, c_white, 1);	
+	initImage(sprite_get("fspecial"), 8);		
+	initWords("F-Special can be charged by holding the Special button down. In addition to increased damage, you'll fly back further, allowing you to use the move for horizontal recovery.");
 
 	initTip("D-Air");
-	initTipWords("There's two opportunities to cancel out of DAir. You can jump cancel out of the startup window, and upon hitting an opponent, you can immediately cancel into either a jump or an airdodge.");
-	initTipImage(player_id.spr_dair, -4, fa_center, 1, c_white, 0);	
+	initImage(sprite_get("dair"), -4);		
+	initWords("There's two opportunities to cancel out of DAir. You can jump cancel out of the startup window, and upon hitting an opponent, you can immediately cancel into either a jump or an airdodge.");
 	
 	initTip("N-Air");
-	initTipWords("N-Air can be charged by holding the Attack button down. When fully charged, it becomes a strong spiking attack.");
-	initTipImage(player_id.spr_nair, -3, fa_center, 1, c_white, 0);	
+	initImage(sprite_get("nair2"), -3);		
+	initWords("N-Air can be charged by holding the Attack button down. When fully charged, it becomes a strong spiking attack.");
 	
 	initTip("D-Strong");
-	initTipWords("DStrong is a command grab, where you lift the opponent and slam them down to the ground in an explosive manner. You can move during this attack when you grab onto someone, and can even jump offstage. Keep in mind that you'll die before the opponent does if you pull this off.");
-	initTipImage(player_id.spr_dstrong, 11, fa_center, 1, c_white, 1);
+	initImage(sprite_get("dstrong"), 11);	
+	initWords("DStrong is a command grab, where you lift the opponent and slam them down to the ground in an explosive manner. You can move during this attack when you grab onto someone, and can even jump offstage. Keep in mind that you'll die before the opponent does if you pull this off.");
 	
 	
 	
 	initTip("Frogge");
-	initTipWords_ext("A frogge biþ a smal beaste wiþ foure leggys, whyche liueþ booþ in watyre and on londe. It is broune or grene or yelowe, or be it tropyckal, he may haue dyuers coloures. It haþ longys and guilles booþe. It haccheþ from an ey and it þan ys a tadpolle. It groweþ to ben a frogge, if it þan ne be noght eten.", fa_left, c_white, 0, 0);
-	initTipImage(player_id.spr_frogge, -1, fa_right, 1, c_white, 0);
-	initTipWords_ext("A frogge.", fa_right, c_gray, 0, 0);
+	initImage(sprite_get("frogge"), -1);	
+	initWords("A frogge biþ a smal beaste wiþ foure leggys, whyche liueþ booþ in watyre and on londe. It is broune or grene or yelowe, or be it tropyckal, he may haue dyuers coloures. It haþ longys and guilles booþe. It haccheþ from an ey and it þan ys a tadpolle. It groweþ to ben a frogge, if it þan ne be noght eten.");
 	
-	initTip("Phone Controls");
-	initTipWords("To perform the regular taunt instead of opening the phone, hold a direction on the control stick.");
-	
-	
-}
-
 
 
 /*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ Patches																	║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║ Patch Notes			                                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+Keep a record of your character's update history, and at the end, also give
+credits to the developer(s) of the character or any assets used.
+
+Use the initPatch() function to start a new Patch:
+
+	initPatch(version_number, date)
+
+If the "date" field is set to an empty string, then the Patch will act more like
+a Tip - mainly useful for making an "About [character]" page.
+
+Use the same functions as in the Tips app to populate the Patch with text and
+images.
+
+Here are two more content functions, which are designed for use in Patches but
+also work in Tips:
+
+	initHeader(text)
+	initSection(text)
+
+These are basically shortcuts for two different types of formatted text.
+initHeader() is a text heading that is colored either blue or green, depending
+on whether it's a Tip or a Patch. initSection() is an indented block of text.
+
+These are handy for dividing a Tip/Patch into sections, such as different moves
+in a Patch.
 
 */
 
-with phone{
-	
-	i = 0;
-	
-	/*
-	 * Patch notes are patch notes. Inform players on what's changed since they
-	 * last played the character. If you want, you can just paste the changelogs
-	 * from your Steam page or etc.
-	 * 
-	 * initPatch(name)
-	 * initPatchWords(text)
-	 * initPatchImage(sprite, frame, align, xscale, color, gimmick)
-	 * initPatchWords_ext(text, align, color, indent, gimmick)
-	 * initPatchImage_ext(sprite, frame, align, xscale, color, gimmick, border_l, border_r, border_u, border_d)
-	 * 
-	 * The formatting is exactly the same as with tips. Just replace "Tip" with
-	 * "Patch" in the function calls, and instead of a name for the patch,
-	 * put the version number and full date.
-	 */
+#define CORE_patches
+
+	initPatch("2.18", "September 19th, 2021");
+	initWords("-Upgraded MunoPhone to MunoPhone Touch");	 	 
+
 
 	initPatch("2.17", "September 12th, 2021");
-	initPatchWords("-Fixed charged Neutral-Air using the wrong hurtbox");	 	 
+	initWords("-Fixed charged Neutral-Air using the wrong hurtbox");	 	 
 	 
 	 
 	initPatch("2.16", "September 8th, 2021");
-	initPatchWords("-Jab now has whifflag
+	initWords("-Jab now has whifflag
 	-Up-Special last hit damage increased (6 -> 8)
 	-Forward-Special base damage increased (8 -> 11)
 	-Forward-Strong startup time decreased (21 -> 17)
@@ -595,7 +326,7 @@ with phone{
 	-Back-Air startup time decreased (16 -> 12)");	 	 
 
 	initPatch("2.15", "August 24th, 2021");
-	initPatchWords("-Reworked Back-Air
+	initWords("-Reworked Back-Air
 	-Adjusted SFX timing for a bunch of moves
 	-Frog's sprite offsets now line up properly with stage ground and platforms
 	-Added a Neutral-Special hitbox with 90 angle fixed knockback that comes out when a grabbed opponent gets close to you
@@ -610,22 +341,22 @@ with phone{
 
 
 	initPatch("2.14", "August 22nd, 2021");
-	initPatchWords("-Added 2 additional alternate colors
+	initWords("-Added 2 additional alternate colors
 	-Added new swipe SFX for jab, tilts, aerials, and strongs
 	-Movement speed during Down-Strong throw is now dependent on the grabbed opponent's damage
 	-Decreased detached N-Special grab box size
 	-Fixed Jab putting you into parry stun when parried");	 	 	 
 	 
 	initPatch("2.1.3", "July 26th, 2021");
-	initPatchWords("-Added compatibility with Dialogue Buddy with 5 unique dialogue portraits");	 	 
+	initWords("-Added compatibility with Dialogue Buddy with 5 unique dialogue portraits");	 	 
 	 
 	 
 	initPatch("2.1.2", "July 8th, 2021");
-	initPatchWords("-Final Smash/Super now deals increased damage on Rivals of Fighter stage (30 -> 75)
+	initWords("-Final Smash/Super now deals increased damage on Rivals of Fighter stage (30 -> 75)
 	-Fixed a bug that caused Final Smash hitbox to hit twice when facing left");	 
 	 
 	initPatch("2.1.1", "June 25th, 2021");
-	initPatchWords("-Forward-Special can no longer be jump-canceled during the charge window
+	initWords("-Forward-Special can no longer be jump-canceled during the charge window
 	-Increased Forward-Special base hitpause (8.5 -> 10)
 	-Increased Forward-Special hitpause scaling (0.8 -> 1.1)
 	-Decreased Foward-Special base damage (9 -> 8)
@@ -637,10 +368,10 @@ with phone{
 	-Decreased vertical speed of Down-Air (18 -> 13, 14 -> 11)");
 
 	initPatch("2.1", "June 13th, 2021");
-	initPatchWords("-Frog can now be attacked by opponents");
+	initWords("-Frog can now be attacked by opponents");
 
 	initPatch("2.0.3", "June 8th, 2021");
-	initPatchWords("-Decreased max air speed (6.25 -> 5.75)
+	initWords("-Decreased max air speed (6.25 -> 5.75)
 	-Decreased max jump horizontal speed (7.25 -> 6.5)
 	-Decreased Forward-Air damage (8 -> 7)
 	-Decreased Forward-Air base knockback (7 -> 6)
@@ -648,7 +379,7 @@ with phone{
 
 
 	initPatch("2.0.2", "May 19th, 2021");
-	initPatchWords("-Increased attached Neutral-Special endlag (11 -> 15)
+	initWords("-Increased attached Neutral-Special endlag (11 -> 15)
 	-Added 5 frames of lag to on-grab window of attached Neutral-Special
 	-Added cooldown to attached and detached Neutral-Special
 	-Decreased Down-Strong grab box lifetime (12 -> 6)
@@ -656,10 +387,10 @@ with phone{
 	-Decreased Up-Air first hitbox damage (9 -> 8)");
 
 	initPatch("2.0.1", "May 8th, 2021");
-	initPatchWords("-Fixed compatibility with Final Smash Buddy");
+	initWords("-Fixed compatibility with Final Smash Buddy");
 
 	initPatch("2.0", "May 5th, 2021");
-	initPatchWords("-All special moves have been completely reworked
+	initWords("-All special moves have been completely reworked
 	-Jab, Neutral-Air, Forward-Air, Up-Air, and Down-Air have been reworked
 	-Neutral-Air can now be charged
 	-Added new alternate Neutral-Air attack when the move is fully charged	
@@ -675,16 +406,15 @@ with phone{
 	-Added 8 new alt colors");
 	 
 	initPatch("1.6.5", "March 16th, 2021");
-	initPatchWords("-Up-Special vertical speed decreased
+	initWords("-Up-Special vertical speed decreased
 	-Up-Special knockback decreased
 	-Increased Neutral-Special startup time
 	-Forward-Special can only be used once in air before landing, walljumping or getting hit
 	-Forward-Special recoil speed decreased");
-	initPatchImage(other.spr_dattack, 7, fa_center, 1, c_white, 0);	
 	 
 	 
 	initPatch("1.6.4", "March 13th, 2021");
-	initPatchWords("-Decreased Back-Air hitbox size
+	initWords("-Decreased Back-Air hitbox size
 	-Decreased Forward-Air hitbox size
 	-Adjusted Down-Air hitbox to match sprite better
 	-Adjusted Up-Air hitbox to match sprite better
@@ -693,41 +423,37 @@ with phone{
 	-Slightly increased Forward-Tilt hitbox size
 	-Removed stray pixels on Down-Air hurtbox
 	-Fixed an oversight where Forward-Special effects were part of the move's hurtbox");
-	initPatchImage(other.spr_landinglag, 0, fa_right, -3, c_white, 0);	
 	 
 
 	 
 	initPatch("1.6.3", "March 7th, 2021");
-	initPatchWords("-Increased Neutral-Special base hitpause (4.25 -> 6.5)
+	initWords("-Increased Neutral-Special base hitpause (4.25 -> 6.5)
 	-Increased Neutral-Special hitpause scaling (0.75 -> 0.85)
 	-Increased Forward-Special base hitpause (8 -> 10)
 	-Increased Forward-Special hitpause scaling (0.8 -> 1.1)
 	-Removed stray pixels on Back-Air hurtbox
 	-Fixed a bug where Neutral-Special's spawn point changed on death
 	-Updated stats of Kirby copy ability to match current stats of Down-Special");
-	initPatchImage(other.spr_landinglag, 0, fa_left, 1, c_white, 0);	
 
 
 	initPatch("1.6.2", "February 28th, 2021");
-	initPatchWords("-Redrew landing, landing lag, and pratfall sprites
+	initWords("-Redrew landing, landing lag, and pratfall sprites
 	-Added uphurt sprite
 	-Reworked visuals and sounds for Neutral-Special
 	-Adjusted positioning and speed of Neutral-Special projectile
 	-Neutral-Special startup and endlag significantly reduced
 	-Neutral-Special can now be acted out of during the last 2 windows
 	-Added compatibility with Final Smash Buddy");
-	initPatchImage(other.spr_landinglag, 0, fa_right, -1, c_white, 0);	
 	
 	initPatch("1.6.1", "February 22nd, 2021");
-	initPatchWords("-Added proper landing lag to Forward-Special when used in air
+	initWords("-Added proper landing lag to Forward-Special when used in air
 	-Forward-Special now transitions into idle state properly when used on ground
 	-Fixed a bug where Forward-Special had no parry stun
 	-Fixed sprite offsets being 1px off vertically");
-	initPatchImage(player_id.spr_bighurt, -1, fa_left, 3, c_white, 1);	
 	
 
 	initPatch("1.6", "February 4th, 2021");
-	initPatchWords("-Redrew portrait
+	initWords("-Redrew portrait
 	-Forward-Special reworked
 	-Forward-Tilt reworked
 	-Wavedash sound effect volume slightly lowered
@@ -743,12 +469,10 @@ with phone{
 	-Forward-Air sourspot knockback scaling decreased (0.9 -> 0.7)
 	-Decreased size of Forward-Strong hitbox
 	-Changed abyss runes H and M");
-	initPatchImage(other.spr_fspecial, 6, fa_left, 1, c_white, 3);	 
-	
 
 	
 	initPatch("1.5", "January 26th, 2021");
-	initPatchWords("-Updated css_draw script with new template (credit to Hyuponia)
+	initWords("-Updated css_draw script with new template (credit to Hyuponia)
 	-Up-Strong reworked
 	-Neutral-Special knockback angle changed (48 -> 50)
 	-Forward-Special base hitpause decreased on all charge tiers
@@ -775,29 +499,25 @@ with phone{
 	-Down-Strong knockback angle changed (49 -> 50)
 	-Down-Strong base hitpause decreased (16 -> 8)
 	-Kirby copy ability reworked");
-	initPatchImage(player_id.spr_ustrong, -1, fa_right, 1, c_white, 0);	
-	
+
 	
 	initPatch("1.4.2", "January 13th, 2021");
-	initPatchWords("-FStrong startup anim frames decreased
+	initWords("-FStrong startup anim frames decreased
 	-UStrong startup anim frames decreased
 	-FStrong knockback scaling decreased (1.4 -> 1.2)
 	-FStrong knockback angle changed (39 -> 50)
 	-UStrong knockback scaling decreased (1.2 -> 1.1)");
-	initPatchWords_ext("because nobody told me 1.4 scaling was wack until now", fa_right, c_gray, 0, 1);
-	initPatchImage(player_id.spr_fstrong, -1, fa_left, 1, c_white, 0);	 
 
 	initPatch("1.4.1", "January 11th, 2021");
-	initPatchWords("-Fixed a bug that broke hurtboxes after hitting with Down-Special
+	initWords("-Fixed a bug that broke hurtboxes after hitting with Down-Special
 	-Adjusted Down-Special hitbox size and position
 	-Lowered hitpause and hitpause scaling of Down-Special");
-	initPatchImage(player_id.spr_dspecial, -5, fa_center, 1, c_white, 0);
 	 
 	 
 	initPatch("1.4", "January 10th, 2021");
-	initPatchWords("-New Down Special:")
-	initPatchWords_ext("When you use DSpecial, you'll briefly bounce upward before plummeting down. When going downward, you can hit an opponent and bounce back up. You won't be able to use the move again until you land, but you can follow it up into another attack. If you land on your frog when using DSpecial, you can gain more height.", fa_left, c_gray, 0, 0);	
-	initPatchWords("
+	initHeader("-New Down Special:")
+	initSection("When you use DSpecial, you'll briefly bounce upward before plummeting down. When going downward, you can hit an opponent and bounce back up. You won't be able to use the move again until you land, but you can follow it up into another attack. If you land on your frog when using DSpecial, you can gain more height.");	
+	initWords("
 	-Abyss Rune I changed (DSPECIAL can chain into itself up to 3 times.)
 	-Increased range of Back-Air and adjusted animation
 	-Reworked Forward-Air with new animation
@@ -814,11 +534,10 @@ with phone{
 	-Up-Special Frog now disappears when parried
 	-Up-Special Frog lifetime decreased (720 frames -> 400)
 	-Up-Special Frog no longer bounces spike balls when they have been parried");
-	initPatchImage(player_id.spr_dspecial, -5, fa_center, 1, c_white, 0);
 	 
 
 	initPatch("1.3", "January 1st, 2021");
-	initPatchWords("-Added new walk animation
+	initWords("-Added new walk animation
 	-Added new Forward-Special charging animation
 	-Foward-Special knockback and scaling increased
 	-Slightly decreased Forward-Special hitstun
@@ -828,15 +547,14 @@ with phone{
 	-Lowered fallspeed and airspeed during aerial Neutral-Special
 	-Neutral-Air vertical speed now only applies during last window
 	-Forward-Strong knockback angle changed (39 -> 361)");
-	initPatchImage(other.spr_walk, -6, fa_left, 1, c_white, 3);	 	
 	 
 	 
 	initPatch("1.2", "December 19th, 2020");
-	initPatchWords("-Added bighurt and hurtground sprites
+	initWords("-Added bighurt and hurtground sprites
 	-Adjusted Forward-Air hitbox size and position
 	-Decreased Up-Tilt hitbox size");
-	initPatchWords_ext("Neutral-Special Changes", fa_left, c_gray, 0, 0);
-	initPatchWords("-Cannon can now be aimed upward, up-right or behind
+	initHeader("Neutral-Special Changes");
+	initSection("-Cannon can now be aimed upward, up-right or behind
 	-Changed trajectory for shooting straight forward
 	-Spike ball can now be hit by players to launch it around
 	-Spike balls now bounce off of opponents after hitting them
@@ -847,17 +565,15 @@ with phone{
 	-Lowered spike ball base hitpause (9 - > 4.25)
 	-Increased spike ball hitpause scaling (0.6 -> 0.75)
 	-Abyss rune N changed (NSPECIAL spike balls explode on enemy contact.)");
-	initPatchImage(other.spr_nspecialproj, -3, fa_left, 1, c_white, 2);	 	 
 	 
 	initPatch("1.1.1", "November 27th, 2020");
-	initPatchWords("-Lowered waveland distance
+	initWords("-Lowered waveland distance
 	-Added new waveland sound
 	-Lowered dash stop time (12 -> 6)
 	-Lowered walljump vertical speed (11 -> 9)");
-	initPatchImage(other.spr_waveland, -5, fa_left, 1, c_white, 3);	 
 	 
 	initPatch("1.1", "November 18th, 2020");
-	initPatchWords("-Neutral-Air vertical boost now only applies when the attack button is held
+	initWords("-Neutral-Air vertical boost now only applies when the attack button is held
 	-Neutral-Air windows adjusted
 	-Added animation for when something bounces on Up-Special frog
 	-Added 4 new Down-Special projectile variants for diagonal inputs
@@ -865,10 +581,9 @@ with phone{
 	-Neutral-Special damage increased (9 -> 10)
 	-Added MunoPhone support
 -Additional character/stage compatibility added (Kirby, Otto, Agent N, Feri)");
-	initPatchImage(other.spr_phoneopen, 5, fa_left, 1, c_white, 0);	 
 	 
 	initPatch("1.0.5", "October 19th, 2020");
-	initPatchWords("-HUD elements now change color depending on alternate color chosen
+	initWords("-HUD elements now change color depending on alternate color chosen
 -Adjusted hurtboxes for Up-Strong, Down-Strong, Jab and Forward Special
 -Overhauled Jab windows
 -Increased size of Up-Air hitbox
@@ -879,11 +594,10 @@ with phone{
 -Neutral Special cooldown frames reduced (130 -> 100)
 -Down Special notes now deal 2 damage instead of 1
 -Fixed a bug where getting hit by a flinchless hitbox during Forward Special charge window would reset charge");
-	initPatchImage(other.spr_dattack, -5, fa_right, 1, c_white, 0);	 
 	 
 
 	initPatch("1.0.4", "October 16th, 2020");
-	initPatchWords("-Added 2 additional color palettes
+	initWords("-Added 2 additional color palettes
 -Up-Special frog lifetime increased (480 frames -> 720 frames)
 -Angle flipper 9 removed from Jab first hitbox, now sends at 87 angle
 -Dash Attack startup frames decreased (18 -> 15)
@@ -910,21 +624,17 @@ with phone{
 -Forward-Strong angle changed (361 -> 39)
 -Up-Strong base knockback increased (8.5 -> 9)
 -Up-Strong knockback scaling increased (1 -> 1.2)");
-	initPatchImage(other.spr_walk2, -3, fa_left, 1, c_white, 3);	 	 
-	initPatchImage(other.spr_walk3, -4, fa_right, 1, c_white, 3)
 	 
 	 
 	initPatch("1.0.3", "October 12th, 2020");
-	initPatchWords("-You now stay in Down Strong after bouncing off of your own frog
+	initWords("-You now stay in Down Strong after bouncing off of your own frog
 -Added proper landing lag to all aerials
 -Added proper hitpause scaling to moves
 -Added new sound effects to Forward Strong, Down Strong, and Down Special
 -Added effects for when frog despawns");
-	initPatchWords_ext(">forgetting to put hitpause and landing lag on your character", fa_right, c_green, 0, 1);
-	initPatchImage(other.spr_hurt, -1, fa_left, 1, c_white, 1);	 	 
 	 
 	initPatch("1.0.2", "October 11th, 2020");
-	initPatchWords("-Base knockback and scaling for Up Air changed (3 base, 1.25 scaling -> 7 base, 0.75 scaling)
+	initWords("-Base knockback and scaling for Up Air changed (3 base, 1.25 scaling -> 7 base, 0.75 scaling)
 -Forward Strong startup frames reduced (30 frames --> 22 frames)
 -Forward Strong endlag frames reduced (32 frames - 28 frames)
 -Forward Strong hitbox size increased
@@ -938,669 +648,464 @@ with phone{
 -Down Special left and right notes now alternate depending on player direction.
 -Fixed a bug where the boost window of FSPECIAL would end prematurely if an opponent was hit by one of your projectiles.
 -Fixed a bug where FSPECIAL charge effects disappeared when bouncing on your own frog.");
-	initPatchImage(other.spr_utilt, -1, fa_center, 1, c_white, 0);	 
 	 
 	
 	initPatch("1.0.1", "October 11th, 2020");
-	initPatchWords("-Down-tilt hitbox comes out one frame earlier and lasts 4 frames shorter
+	initWords("-Down-tilt hitbox comes out one frame earlier and lasts 4 frames shorter
 -You can now spawn another frog with Up Special after wall-jumping");
-	initPatchImage(other.spr_dtilt, -5, fa_center, 1, c_white, 0);
 	
 	initPatch("1.0", "October 11th, 2020");
-	initPatchWords_ext("hmm today i will release character", fa_center, c_white, 0, 0);
-	initPatchImage(other.spr_taunt, -5, fa_center, 1, c_white, 0);
-	
-}
+	initWords_ext("hmm today i will release character", fa_center, c_white, 0, 0);
+
+initPatch("About Sandbert", "");
+initWords("Sandbert was originally released as an overpowered April Fools' joke character, and was later used as a template Steam Workshop character - as an example of how to create a custom fighter.");
+initWords("This version of Sandbert, in addition to serving as the template for fighters that use the MunoPhone Touch, also features touched-up animations and a major balance patch.");
+initHeader("Originally developed by");
+initSection("Dan Fornace and/or his team of RoA developers");
+initHeader("Animation and balance edits by");
+initSection("Muno - byMuno.com");
+initHeader("Additional SFX from");
+initSection("Dragon Ball FighterZ");
+initHeader("Compatible with");
+initSection("Trummel & Alto, Otto, Steve, Link, Goku");
+
+// Recommended template for non-Sandbert characters (delete the other patches):
+
+/*
+
+// other patches go here...
+
+initPatch("1.0", "42 Shmebruary, 2021"); // (replace the date lol)
+initHeader("General");
+initSection("The character was released.");
+
+initPatch("About CHARACTER NAME", "");
+initHeader("Character by");
+initSection("your name here");
+initHeader("SFX from");
+initSection("any places you got sfx (or other assets)");
+initHeader("Compatible with");
+initSection("Trummel & Alto, Otto, Steve, Link");
+
+*/
 
 
 
 /*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ Cheats																	║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║ Cheat Codes			                                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+Create options for players to change how the character plays, either as silly
+fun bonuses or useful training utilities (e.g. filling a meter instantly).
+
+Use the initCheat() function to create a Cheat:
+
+	CHEAT_[NAME_HERE] = initCheat(name, [options], [option_names], description)
+
+Glossary:
+	
+	"CHEAT_[NAME_HERE]" is a variable that stores the ID of the Cheat. In the
+		example below, CHEAT_FLY is equal to 0. This is necessary for
+		referencing your cheat later in your character's code.
+	
+	"[options]" is an array of the possible values that the Cheat can have. A
+		simple example is [0, 1] for on and off, but it could also be something
+		like [0, 1, 5, 9] or ["Cherry", "Strawberry", ""].
+	
+	"[option_names]" is an array of the displayed names for the options given in
+		"[options]". It should be the same length as "[options]", and each entry
+		should be a string.
+	
+To access a Cheat's current value inside your character's code, grab the entry
+in the "phone_cheats" array at the index of the "CHEAT_" variable. For example:
+
+	// update.gml
+	
+	if phone_cheats[CHEAT_FLY] == 1{
+		vsp = -2;
+	}
+
+The "phone_cheats" array entry holds whatever value you defined in "[options]",
+for the Cheat's current setting. (e.g. "phone_cheats" could contain a string,
+not just a number)
+
+You can also run code only at the moment that the Cheat was clicked on, by
+using the "phone_cheats_updated" array (each entry is just true or false):
+	
+	// update.gml
+	
+	if phone_cheats_updated[CHEAT_FLY]{
+		phone_cheats_updated[CHEAT_FLY] = 0; // you have to reset it yourself
+		if phone_cheats[CHEAT_FLY]{
+			print("Flight started");
+		}
+		else{
+			print("Flight ended");
+		}
+	}
+
+Pro tip: having a Cheat with only a single option is useful if you just need a
+"click button to do X" thing for your character, e.g. "click to reset meter to
+zero".
 
 */
 
-with self{
-	
-	i = 0;
-	
-	/*
-	 * Cheat codes enable bonus features or overpowered modes. This is a great
-	 * place to put utilities that help when practicing the character, such as
-	 * an option to instantly fill a resource meter or skip a cooldown.
-	 * 
-	 * initCheat(display name, backstage name, options, option names, description)
-	 * 
-	 * Use phone_cheats[] to reference these cheats in code, putting the
-	 * backstage name (without quotes) as the array index. The backstage name
-	 * becomes the name of a variable storing the cheat's index. E.g.
-	 * 
-	 * if (phone_cheats[cheat_funny_snail] == 1) {
-	 *	   print_debug("woag");
-	 * }
-	 * 
-	 * This is pretty similar to abyss runes - but instead of checking for if
-	 * has_rune("X") is true or false, you check for the entry in the
-	 * phone_cheats array.
-	 * 
-	 * Each cheat defaults to the first option in its option list (e.g.
-	 * cheat_funny_snail defaults to 0). This happens even when the MunoPhone
-	 * itself is not available.
-	 * 
-	 * Cheat descriptions should be short and sweet, as they can't be scrolled.
-	 */
-	
-	// NOTE: If you remove these cheat codes, you will need to remove where
-	// they're referenced elsewhere in code. The comment above each code tells
-	// you which files reference it.
-	
-	
-}
+#define CORE_cheats
 
 
 
 /*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ Frame Data																║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║ Frame Data Guide		                                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+Customise the Frame Data guide.
 
 */
 
-with phone{
+#define CORE_frame_data
 
-	// Move ordering. Reorder this as you see fit for your character
-	
-	// note: do NOT remove indexes from this list. empty indexes will be ignored by the frame data guide.
-	// to hide an in-use attack index from the guide, use AG_MUNO_ATTACK_EXCLUDE instead!
-	
-	move_ordering = [
-		AT_JAB,
-		AT_FTILT,
-		AT_DTILT,
-		AT_UTILT,
-		AT_DATTACK,
-		AT_FSTRONG,
-		AT_USTRONG,
-		AT_DSTRONG,
-		AT_FSTRONG_2,
-		AT_USTRONG_2,
-		AT_DSTRONG_2,
-		AT_NAIR,
-		47,
-		AT_FAIR,
-		AT_BAIR,
-		AT_UAIR,
-		AT_DAIR,
-		AT_NSPECIAL,
-		AT_NSPECIAL_AIR,
-		AT_NSPECIAL_2,
-		AT_FSPECIAL,
-		AT_FSPECIAL_AIR,
-		AT_FSPECIAL_2,
-		AT_USPECIAL,
-		AT_USPECIAL_GROUND,
-		AT_USPECIAL_2,
-		AT_DSPECIAL,
-		AT_DSPECIAL_AIR,
-		AT_DSPECIAL_2,
-		AT_NTHROW,
-		AT_FTHROW,
-		AT_UTHROW,
-		AT_DTHROW,
-		AT_EXTRA_1,
-		AT_EXTRA_2,
-		AT_EXTRA_3,
-		AT_TAUNT,
-		AT_TAUNT_2,
-		AT_PHONE,
-		2,
-		3,
-		39,
-		42,
-		43,
-		44,
-		45,
-		46,
-		48,
-		49,
-		50
-	];
-	
-	
-	
-	// Include a "Stats" page in the frame data guide?
-	include_stats = true;
-	
-	// If so, put any specific notes here:
-	stats_notes = "-"; // set to   "-"   if you don't need to put any notes
-	
-	
-	
-	// Include a custom page in the frame data guide? (Useful for documenting miscellaneous numbers, e.g. stats of a passive mechanic)
-	include_custom = false;
-	
-	// If so, what's its name?
-	custom_name = "Monado Art Data"
-	
-	i = 0;
-	
-	// If so, use these functions to populate it:
-	// initCFDHeader(text)
-	// initCFDBody(text)
-	
-	initCFDHeader("Monado Jump");
-	initCFDBody("Cooldown: 100000 seconds
-	Duration: 5
-	Effects: you jump higher???? by like 2x");
-	
-	initCFDHeader("Monando Shield");
-	initCFDBody("Cooldown: 4
-	Duration: 2
-	Effects: Wait why is this listed second");
-	initCFDBody("woag this is a enw apragraph");
-	
-	initCFDHeader("Some crazy third thing");
-	initCFDBody("Damage: 7
-	sw: i
-	m");
-	
-}
+// Reorder this list to change the order that moves appear in the guide!
+phone.move_ordering = [
+	AT_JAB,
+	AT_FTILT,
+	AT_DTILT,
+	AT_UTILT,
+	AT_DATTACK,
+	AT_FSTRONG,
+	AT_USTRONG,
+	AT_DSTRONG,
+	AT_FSTRONG_2,
+	AT_USTRONG_2,
+	AT_DSTRONG_2,
+	AT_NAIR,
+	AT_FAIR,
+	AT_BAIR,
+	AT_UAIR,
+	AT_DAIR,
+	AT_NSPECIAL,
+	AT_NSPECIAL_AIR,
+	AT_NSPECIAL_2,
+	AT_FSPECIAL,
+	AT_FSPECIAL_AIR,
+	AT_FSPECIAL_2,
+	AT_USPECIAL,
+	AT_USPECIAL_GROUND,
+	AT_USPECIAL_2,
+	AT_DSPECIAL,
+	AT_DSPECIAL_AIR,
+	AT_DSPECIAL_2,
+	AT_NTHROW,
+	AT_FTHROW,
+	AT_UTHROW,
+	AT_DTHROW,
+	AT_EXTRA_1,
+	AT_EXTRA_2,
+	AT_EXTRA_3,
+	AT_TAUNT,
+	AT_TAUNT_2,
+	AT_PHONE,
+	2,
+	3,
+	39,
+	42,
+	43,
+	44,
+	45,
+	46,
+	47,
+	48,
+	49,
+	50
+];
+
+// Whether or not to include the "Stats" page.
+phone.include_stats = true;
+
+// Notes for the "Stats" page - put "-" for no notes.
+phone.stats_notes = "-";
+
+// Whether or not to include a custom data page, which can hold any values you
+// want - useful for data that's specific to your character's mechanics.
+phone.include_custom = false;
+
+// The name of the custom page.
+phone.custom_name = "Example Custom Data"
+
+// The content of the custom page.
+initCFDHeader("Article lifetime");
+initCFDBody("100 frames");
+initCFDHeader("Second value");
+initCFDBody("459");
+initCFDBody("epic");
 
 
 
 /*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ Muno Character Compatibility												║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║ About					                                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+Add bonus features and interactions with Muno's characters, like a codec for
+Trummel & Alto.
+
+If you don't feel like adding one of them, you can just comment out the lines
+of code.
 
 */
 
-with phone{
-	
-	/*
-	 * Info found in the "About" app.
-	 * 
-	 * initAbout(entry name, entry text)
-	 * 
-	 * Useful for credits or etc. The page can also scroll, so they can be long
-	 * if you want
-	 */
-		initAbout("Special Thanks", "Moveset Design Help:
--Robot
--XtheGAMEmaster
+#define CORE_muno_compatibility
 
-Playtesting:
--Gnome
+/*
+Trummel codec:
 
-Alt color #21 'Brigade Leader' designed by:
--Zerks
+initCodec(gimmick)
+initCodecPage(speaker, expression, gimmick, text)
 
-Article hit detection code:
-Supersonic");
+The variable trummel_id is initially set to noone (-4). When Trummel opens this
+char's codec, trummel_id is set to Trummel's object ID.
 
-	
-}
+Codec speaker handles:
+SPK_TRUM: Trum
+SPK_ALTO: Alto
+SPK_OTTO: Otto
+SPK_CODA: Coda
+SPK_ECHO: Tempo
+SPK_MINE: Steve (i dont normally use this one... like, what is he supposed to say?? the funny oof noise? you can if you want)
+SPK_SEGA: Sonic (see above)
 
+Codec speaker expressions:
+https://pastebin.com/qTLnsNFY
 
+Codec gimmicks:
+there aren't any
 
+Page gimmicks:
+GIM_CHOMP			make the enemy ftilt
+GIM_CLONE 			display 2 speakers
+GIM_LAUGH_TRACK		play the funny haha sound
+GIM_SKIP 			advance the page immediately when the text finishes
+GIM_DIE				die
+GIM_SHUT_UP			no chatter sfx
+GIM_HOWL			make the enemy dspecial
+GIM_SHADER			use your char's shaders (palette swaps) for the speaker portrait
+GIM_TEXTBOX			text color				is set to the value of the	spr_custom_trummel_textbox	variable in the player object
+GIM_COLOR			textbox sprite index	is set to the value of the	spr_custom_trummel_color	variable in the player object
 
+To use multiple gimmicks on a single page, MULTIPLY them together.
+*/
+
+// Custom speaker setup - use 1, 2, 3, 4, ... for the index.
+SPK_SAND = initSpeaker(1, "Sandbert", sprite_get("_pho_example_speaker"));
+SPK_TWIN = initSpeaker(2, "Sandbert's evil twin", sprite_get("_pho_example_speaker"));
+
+initCodec(0); // this should just always be 0, because there are no codec gimmicks
+initCodecPage(SPK_TRUM, 0, 0, "wow is that sandbert with a phone");
+initCodecPage(SPK_ALTO, 4, 0, "UNBLOCK ME ON FACEBOOK, COWARD");
+initCodecPage(SPK_SAND, 0, GIM_COLOR * GIM_LAUGH_TRACK, "no"); // this page uses the custom speaker
+
+spr_custom_trummel_color = c_red;
+
+// Otto bobblehead.
+otto_bobblehead_sprite = sprite_get("_pho_example_bobble_head");
+
+// Otto bobblehead body. (optional, don't really need this)
+otto_bobblebody_sprite = sprite_get("_pho_example_bobble_body");
+
+// Steve death message.
+steve_death_message = "Steve got canceled on Twitter";
+
+// Link spear. (determines which spear your char will drop the first time)
+link_spear_drop = 3;
+
+/*
+Spear IDs:
+
+1: Traveler's Spear
+2: Knight's Halberd
+3: Wooden Mop
+4: Spiked Boko Spear
+5: Flamespear
+6: Frostspear
+7: Thunderspear
+8: Guardian Spear
+*/
+
+// Palutena's Guidance (for RuberCuber's Pit character)
+// Works kind of similarly to MunoPhone.
+// initCodecPagePit(speaker, expression, voice, text);
+// List of expressions and voice clips: https://pastebin.com/wsz22ZwJ
+
+initCodecPit();
+initCodecPagePit(SPK_PIT,	3,	0,	"Hey, it's Sandbert!");
+initCodecPagePit(SPK_PIT,	1,	6,	"...Isn't he a bit above my power level?");
+initCodecPagePit(SPK_PALU,	0,	3,	"Actually, this version of Sandbert has received a lot of nerfs to his damage and frame data.");
+initCodecPagePit(SPK_PALU,	0,	2,	"He can't even cancel his USpecial or end it early anymore!");
+initCodecPagePit(SPK_VIR,	5,	1,	"But yes, Pit, he IS still above your power level.");
+initCodecPagePit(SPK_PIT,	6,	0,	"Pssh, sounds like a pushover to me.");
+initCodecPagePit(SPK_PALU,	0,	4,	"Don't be so sure - despite the nerfs, his power and attack speed are still a force to be reckoned with.");
+initCodecPagePit(SPK_PALU,	0,	2,	"Also, he has the same MunoPhone as you do - so he'll be well-versed in his frame data and combos.");
+initCodecPagePit(SPK_VIR,	6,	4,	"Maybe you should turn on some Cheats for this fight, Pit?");
+initCodecPagePit(SPK_PALU,	0,	2,	"No, I'm sure he'll be fine.");
+initCodecPagePit(SPK_PALU,	2,	5,	"...As long as he avoids the Kamehameha.");
+initCodecPagePit(SPK_PIT,	4,	1,	"The WHAT?!?");
 
 
 
 /*
+╔═══════════════════════════════════════════════════════════════════════════╗
+║																			║
+║ Behind-The-Scenes															║
+║																			║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║ Compatibility			                                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+This is the end of the stuff you need to worry about!
+
+Below this point are just all of the functions used to make the above sections
+work.
+
+It's not recommended to edit anything below here unless you know what you're
+doing and have a good reason to.
 
 */
 
-// Trummel & Alto codec
+#define initTip(tip_name)
 
-if pho_has_trum_codec{
-	
-	/*
-	 * initCodec(gimmick)
-	 * initCodecPage(speaker, expression, gimmick, text)
-	 * 
-	 * The variable trummel_id is initially set to noone (-4). When Trummel
-	 * opens this char's codec, trummel_id is set to Trummel's object ID.
-	 */
-	
-	/*
-	 * Codec speaker handles:
-	 * SPK_TRUM: Trum
-	 * SPK_ALTO: Alto
-	 * SPK_OTTO: Otto
-	 * SPK_CODA: Coda
-	 * SPK_ECHO: Tempo
-	 * SPK_MINE: Steve (i dont normally use this one... like, what is he supposed to say?? the funny oof noise? you can if you want)
-	 * SPK_SEGA: Sonic (see above)
-	 */
-	
-	/* 
-	 * Page gimmick handles:
-	 * GIM_CHOMP			make the enemy ftilt
-	 * GIM_CLONE 			display 2 speakers
-	 * GIM_LAUGH_TRACK		play the funny haha sound
-	 * GIM_SKIP   			advance the page immediately when the text finishes
-	 * GIM_DIE    			die
-	 * GIM_SHUT_UP			no chatter sfx
-	 * GIM_HOWL				make the enemy dspecial
-	 * GIM_SHADER			use your char's shaders (palette swaps) for the speaker portrait
-	 * GIM_TEXTBOX			use a sprite stored in your char under the var spr_custom_trummel_textbox instead of the default textbox
-	 * GIM_COLOR			use a color stored in your char under the var spr_custom_trummel_color instead of white (for the codec text)
-	 * 
-	 * To use multiple gimmicks on a single page, MULTIPLY them together. See
-	 * _readme.gml for examples
-	 */
-	
-	// Custom speaker setup - use 1, 2, 3, 4, ... for the index
-	
-	SPK_FROG = initSpeaker(1, "Frog", sprite_get("_pho_example_speaker"));
-	
-	trummel_codecs = [];
-	
-	initCodec(0);
-	initCodecPage(SPK_FROG, 0, GIM_SHADER, "ribbit");
-	initCodecPage(SPK_TRUM, 0, 0, "froag");
-	
+array_push(phone.tips, {
+	name: tip_name,
+	objs: [],
+	page_starts: [0]
+});
+
+phone.currently_edited_obj = phone.tips[array_length(phone.tips) - 1];
+
+initWords_ext("- " + tip_name + " -", fa_center, phone.apps[phone.APP_TIPS].color, 0, 0);
+
+#define initPatch(patch_version, patch_date)
+
+array_push(phone.patches, {
+	name: (patch_date == "" ? "" : "v") + patch_version,
+	objs: [],
+	page_starts: [0]
+});
+
+phone.currently_edited_obj = phone.patches[array_length(phone.patches) - 1];
+
+if patch_date == ""{
+	initWords_ext("- " + patch_version + " -", fa_center, phone.apps[phone.APP_PATCHES].color, 0, 0);
+}
+else{
+	initWords_ext("- v" + patch_version + ": " + patch_date + " -", fa_center, phone.apps[phone.APP_PATCHES].color, 0, 0);
 }
 
+#define initHeader(obj_text)
 
+initWords_ext(obj_text, fa_left, "h", 0, 0);
 
-// Otto bobblehead
+#define initSection(obj_text)
 
-if pho_has_otto_bhead{
-	
-	otto_bobblehead_sprite = sprite_get("_pho_example_bobble_head");
-	otto_bobblebody_sprite = sprite_get("_pho_example_bobble_body"); // you only need to change this one if you REALLY want to. most chars just use the head sprite
-	
-}
+initWords_ext(obj_text, fa_left, c_white, 1, 0);
 
+#define initWords(obj_text)
 
-
-// Steve death message
-
-if pho_has_steve_dmsg{
-	
-	steve_death_message = "Steve got canceled on Twitter";
-	
-}
-
-
-
-// Feri taunt costume
-
-if pho_has_feri_taunt{
-	
-	sprite_change_offset("feri_costume", 84, 114);
-feri_costume = sprite_get("feri_costume_bon");
-	
-}
-
-
-
-// Hikaru fakie title
-
-if pho_has_hikaru_fak{
-	
-	Hikaru_Title = "Frog's Prey";
-	
-}
-
-
-
-// Rat all-out quote
-
-if pho_has_rat_allout{
-	
-	personaQuips[10] = "Frogs are inferior to rats!";
-	
-}
-
-
-
-// The Chosen One sketch
-
-if pho_has_tco_sketch{
-	
-	tcoart = sprite_get("tcoportrait");
-	
-}
-
-
-
-// Abyss Hime death sprite
-
-if pho_has_ahime_dead{
-	
-	sprite_change_offset("ahime_dead", 0, 0);
-	abyssHime_deathspr = sprite_get("ahime_dead");
-	
-}
-
-
-
-// Fire's taunt
-
-if pho_has_fire_taunt{
-	
-	sprite_change_offset("fire_taunt", 0, 0);
-	fire_taunt = sprite_get("fire_taunt");
-	fire_taunt_duration = 420;
-	fire_taunt_frames = 69;
-	fire_taunt_sound = sound_get("woagf");
-	fire_taunt_sound_frame = 3;
-	
-}
-
-
-
-// Wall-E's radio
-
-if pho_has_wall_e_ost{
-	
-	walle_taunt_sound = sound_get("wall_e_sound");
-	walle_taunt_type = 1;
-	
-}
-
-
-
-// Amber's plushie and hug
-
-if pho_has_amber_love{
-	
-	plushForAmber = sprite_get("amber_plushie");
-	
-	// Amber interaction variables
-	amber_herObj = noone; // The object ID of Amber when she hugs. Amber's own script will set this when the hug is inititated
-	amber_thisHugSprite = sprite_get("sandbert_hug");
-	amber_herHugSprite = sprite_get("amber_hug");
-	amber_startHug = false; // This variable is set true from Amber's scripts
-	amber_thisSpriteInFront = true; // When true, this character's sprite is rendered over Amber's sprite
-	amber_autoTurnToHer = true; // This character will automatically face towards Amber upon hug activatation when true
-	
-	amber_hugStartPos[0] = 42; // The x target offset point (from Amber's pos) where the player should hug Amber at. 
-	amber_hugStartPos[1] = 0; // The y target offset point. Recommended to keep this at 0 for grounded interaction
-	
-	amber_hugExitPos[0] = 42; // The x target offset point (from Amber's pos) where the player stands at when exiting hug state.
-	amber_hugExitPos[1] = 0; // The y target offset point.
-	
-	// The x target offset positions will inherit the character's spr_dir when this is true.
-	// Set this to true for character interactions that face toward each other such as hugging
-	// Set this to false for centered interaction animations
-	amber_useSprDirOffset = true; 
-	
-	amber_hugExitTimer = 30; // How many frames should pass before either player can exit the hug window loop
-	amber_hugExitWindow = 3; // The window to jump to when either player presses a button to exit hug loop
-	
-	sprite_change_offset("sandbert_hug", 32, 62);
-	sprite_change_offset("amber_hug", 32, 62);
-	
-}
-
-
-
-// Moonchild music
-
-if pho_has_moon_music{
-	
-	childsupport = true; // this is so sad
-	
-}
-
-
-
-// Agent N codec
-
-if pho_has_agentn_cdc{
-	
-ncode1 = "Will probably try to get along with anyone,"
-ncode2 = "as long as they don't threaten her or her"
-ncode3 = 'frog friend. Emphasis on "probably."'
-	
-}
-
-
-
-// Dracula dialogue
-
-if pho_has_drac_codec{
-	
-
-dracula_portrait = sprite_get("draculaportrait");
-dracula_portrait2 = sprite_get("draculaportrait2")
-var page = 0;
-
-//Page 0
-dracula_speaker[page] = 0;
-dracula_text[page] = "Is this some sort of joke? What brings an unheeding fool
-such as you into my domain?";
-page++;
-
-//Page 1
-dracula_speaker[page] = 1;
-dracula_text[page] = "...";
-page++;
-
-//Page 2
-dracula_speaker[page] = 0;
-dracula_text[page] = "Are you going to answer the question or am I going to have 
-to take matters into my own hands?";
-page++;
-
-//Page 3
-dracula_speaker[page] = 1;
-dracula_text[page] = "...";
-page++;
-
-//Page 4
-dracula_speaker[page] = 0;
-dracula_text[page] = "[shake]Your vow of silence exasperates me! [glass]I shall 
-not stand for this any longer!";
-page++;
-
-//Page 5
-dracula_speaker[page] = 2;
-dracula_text[page] = "...!";
-page++;
-	
-}
-
-
-
-// Miiverse post
-
-if pho_has_miivs_post{
-	
-	miiverse_post = sprite_get("miiverse_post");
-	sprite_change_offset("miiverse_post", 60, 30);
-	
-}
-
-
-
-// Mt Dedede title
-
-if pho_has_dede_title{
-	
-arena_title = 'Frog-Funky Misfit';
-	
-}
-
-
-
-// Soulbound Conflict
-
-if pho_has_soul_title{
-	
-	battle_text = "* woag";
-	
-}
-
-
-
-// Trial Grounds
-
-if pho_has_been_found{
-
-	sprite_change_offset("trial_grounds", 31, 0);
-	guiltySprite = sprite_get("trial_grounds");
-	
-}
-
-
-
-// Last Resort painting
-
-if pho_has_resort_pic{
-	
-	resort_portrait = sprite_get("resortportrait")
-	sprite_change_offset("resortportrait", 27, 39);
-	
-}
-
-
-
-// PKMN Stadium battle portraits
-
-if pho_has_pkmn_image{
-	
-pkmn_stadium_front_img = sprite_get("pokestadiumfront");
-pkmn_stadium_back_img = sprite_get("pokestadiumback");
-	
-}
-
-
-
-// Daroach dialogue
-
-if pho_has_daro_codec{
-	
-daroach_portrait = sprite_get("draculaportrait");
-daroach_portrait2 = sprite_get("draculaportraitfrog");
-var page = 0;
-
-//Page 0
-daroach_speaker[page] = 0;
-daroach_text[page] = "Well, aren't you daring making your way in here!";
-page++;
-
-//Page 1
-daroach_speaker[page] = 1;
-daroach_text[page] = "...";
-page++;
-
-//Page 2
-daroach_speaker[page] = 0;
-daroach_text[page] = "I already know your reason for tracking me down. You want
-your precious little frog friend back!";
-page++;
-
-//Page 3
-daroach_speaker[page] = 0;
-daroach_text[page] = "Rather cunning, aren't I? I make no exceptions for thievery, be it a 
-living thing or not, and I highly doubt you'll even stand even a chance trying to-";
-page++;
-
-//Page 4
-daroach_speaker[page] = 2;
-daroach_text[page] = "*ribbit*";
-page++;
-
-//Page 5
-daroach_speaker[page] = 0;
-daroach_text[page] = "Wha... How did you...?
-What is the meaning of this?!";
-page++;
-
-//Page 6
-daroach_speaker[page] = 0;
-daroach_text[page] = "[shake]Bah, that does it! You may have one trick up YOUR sleeve,
-but I've got a hundred more up mine! Have at you!";
-page++;
-	
-}
-
-
-
-
-
-/*
-
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║ The End				                                                       ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
-
-*/
-
-// THIS MARKS THE END OF THE SECTION YOU HAVE TO EDIT!
-// BELOW THIS IS JUST BEHIND-THE-SCENES CODE
-
-
-
-
-
-#define initAbout(obj_name, obj_text)
-
-var para = {
+array_push(phone.currently_edited_obj.objs, {
 	type: 0,
 	text: obj_text,
 	align: fa_left,
 	color: c_white,
 	indent: 0,
-	gimmick: 0,
-	side_by_side_exempt: false
-};
+	side_by_side: false
+});
 
-var tip = {
-	name: obj_name,
-	objs: [para]
-};
+#define initWords_ext(obj_text, obj_align, obj_color, obj_indent, obj_ignore_height)
 
-array_push(abouts, tip);
+array_push(phone.currently_edited_obj.objs, {
+	type: 0,
+	text: obj_text,
+	align: obj_align,
+	color: obj_color,
+	indent: obj_indent,
+	side_by_side: obj_ignore_height
+});
 
+#define initImage(obj_sprite, obj_frame)
 
+array_push(phone.currently_edited_obj.objs, {
+	type: 1,
+	sprite: obj_sprite,
+	frame: obj_frame,
+	align: fa_center,
+	xscale: 1,
+	yscale: 1,
+	uses_shader: 1,
+	color: c_white,
+	alpha: 1,
+	margin_l: noone,
+	margin_r: noone,
+	margin_u: noone,
+	margin_d: noone,
+	needs_auto_margins: true,
+	side_by_side: false
+});
+
+#define initImage_ext(obj_sprite, obj_frame, obj_align, obj_xscale, obj_yscale, obj_uses_shader, obj_color, obj_alpha, obj_ignore_height, obj_l, obj_r, obj_u, obj_d)
+
+array_push(phone.currently_edited_obj.objs, {
+	type: 1,
+	sprite: obj_sprite,
+	frame: obj_frame,
+	align: obj_align,
+	xscale: obj_xscale,
+	yscale: obj_yscale,
+	uses_shader: obj_uses_shader,
+	color: obj_color,
+	alpha: obj_alpha,
+	margin_l: obj_l,
+	margin_r: obj_r,
+	margin_u: obj_u,
+	margin_d: obj_d,
+	needs_auto_margins: (obj_l == noone && obj_r == noone && obj_u == noone && obj_d == noone),
+	side_by_side: obj_ignore_height
+});
+
+#define initCheat(ch_name, ch_opt, ch_opt_name, ch_desc)
+
+array_push(phone.cheats, {
+	name: ch_name,
+	options: ch_opt,
+	option_names: ch_opt_name,
+	description: ch_desc,
+	on: 0
+});
+
+array_push(phone_cheats, ch_opt[0]);
+array_push(phone_cheats_updated, 0);
+return array_length(phone.cheats) - 1;
 
 #define initCFDHeader(text)
 
-custom_fd_content[i] = {
+array_push(phone.custom_fd_content, {
 	type: 0, // header
 	content: text
-};
-
-i++;
-
-
+});
 
 #define initCFDBody(text)
 
-custom_fd_content[i] = {
+array_push(phone.custom_fd_content, {
 	type: 1, // body
 	content: text
-};
-
-i++;
-
-
+});
 
 #define initCodec(cd_gimmick)
+
+if "trummel_codecs" not in self trummel_codecs = [];
 
 var new_cdc = {
 	gimmick: cd_gimmick,
@@ -1608,8 +1113,6 @@ var new_cdc = {
 };
 
 array_push(trummel_codecs, new_cdc);
-
-
 
 #define initCodecPage(cd_speaker, cd_expression, cd_gimmick, cd_text)
 
@@ -1622,9 +1125,9 @@ var new_page = {
 
 array_push(trummel_codecs[array_length(trummel_codecs) - 1].pages, new_page);
 
-
-
 #define initSpeaker(idx, speak_name, speak_sprite)
+
+if "trummel_speakers" not in self trummel_speakers = [];
 
 trummel_speakers[idx] = {
 	name: speak_name,		// Name displayed while talking
@@ -1633,226 +1136,25 @@ trummel_speakers[idx] = {
 
 return idx * -1;
 
+#define initCodecPit()
 
-
-#define initTip(tip_name)
-
-tips[i] = {
-	name: tip_name,
-	objs: [0]
-};
-
-i++;
-
-j = 0;
-
-
-
-#define initTipWords(obj_text)
-
-i--;
-
-tips[i].objs[j] = initWords(obj_text);
-
-tipObjEnd();
-
-
-
-#define initTipWords_ext(obj_text, obj_align, obj_color, obj_indent, obj_gimmick)
-
-i--;
-
-tips[i].objs[j] = initWords_ext(obj_text, obj_align, obj_color, obj_indent, obj_gimmick);
-
-tipObjEnd();
-
-
-
-#define initTipImage(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick)
-
-i--;
-
-tips[i].objs[j] = initImage(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick);
-
-tipObjEnd();
-
-
-
-#define initTipImage_ext(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick, obj_l, obj_r, obj_u, obj_d)
-
-i--;
-
-tips[i].objs[j] = initImage_ext(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick, obj_l, obj_r, obj_u, obj_d);
-
-tipObjEnd();
-
-
-
-#define initPatch(pat_ver, pat_date)
-
-patches[i] = {
-	name: "v" + pat_ver,
-	date: pat_date,
-	objs: [0]
-};
-
-i++;
-
-j = 0;
-
-
-
-#define initPatchWords(obj_text)
-
-i--;
-
-patches[i].objs[j] = initWords(obj_text);
-
-tipObjEnd();
-
-
-
-#define initPatchWords_ext(obj_text, obj_align, obj_color, obj_indent, obj_gimmick)
-
-i--;
-
-patches[i].objs[j] = initWords_ext(obj_text, obj_align, obj_color, obj_indent, obj_gimmick);
-
-tipObjEnd();
-
-
-
-#define initPatchImage(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick)
-
-i--;
-
-patches[i].objs[j] = initImage(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick);
-
-tipObjEnd();
-
-
-
-#define initPatchImage_ext(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick, obj_l, obj_r, obj_u, obj_d)
-
-i--;
-
-patches[i].objs[j] = initImage_ext(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick, obj_l, obj_r, obj_u, obj_d);
-
-tipObjEnd();
-
-
-
-#define initWords(obj_text)
-
-return {
-	type: 0,
-	text: obj_text,
-	align: fa_left,
-	color: c_white,
-	indent: 0,
-	gimmick: 0,
-	side_by_side_exempt: false
-};
-
-tipObjEnd();
-
-
-
-#define initWords_ext(obj_text, obj_align, obj_color, obj_indent, obj_gimmick)
-
-return {
-	type: 0,
-	text: obj_text,
-	align: obj_align,
-	color: obj_color,
-	indent: obj_indent,
-	gimmick: obj_gimmick,
-	side_by_side_exempt: false
-};
-
-tipObjEnd();
-
-
-
-#define initImage(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick)
-
-return {
-	type: 1,
-	sprite: obj_sprite,
-	frame: obj_frame,
-	align: obj_align,
-	xscale: obj_xscale,
-	color: obj_color,
-	gimmick: obj_gimmick,
-	margin_l: "unset",
-	margin_r: "unset",
-	margin_u: "unset",
-	margin_d: "unset",
-	needs_auto_margins: true,
-	side_by_side_exempt: false
-};
-
-tipObjEnd();
-
-
-
-#define initImage_ext(obj_sprite, obj_frame, obj_align, obj_xscale, obj_color, obj_gimmick, obj_l, obj_r, obj_u, obj_d)
-
-return {
-	type: 1,
-	sprite: obj_sprite,
-	frame: obj_frame,
-	align: obj_align,
-	xscale: obj_xscale,
-	color: obj_color,
-	gimmick: obj_gimmick,
-	margin_l: obj_l,
-	margin_r: obj_r,
-	margin_u: obj_u,
-	margin_d: obj_d,
-	needs_auto_margins: false,
-	side_by_side_exempt: false
-};
-
-tipObjEnd();
-
-
-
-#define tipObjEnd
-
-i++;
-
-j++;
-
-
-
-#define initCheat(ch_name, ch_cmd, ch_opt, ch_opt_name, ch_desc)
-
-phone.cheats[i] = {
-	name: ch_name,
-	command: ch_cmd,
-	options: ch_opt,
-	option_names: ch_opt_name,
-	description: ch_desc,
-	on: 0
-};
-
-variable_instance_set(self, ch_cmd, i);
-phone_cheats[i] = ch_opt[0];
-
-i++;
-
-
-
-#define room_add(_room_id,room_data) // Adds a new room to the scene. for BTT
-with obj_stage_article if num == 5 {
-	var _room_id_ind = array_find_index(array_room_ID,_room_id);
-	if _room_id_ind == - 1 {
-	    if debug print_debug("[RM] Adding... "+string(_room_id));
-	    array_push(array_room_data,room_data);
-	    array_push(array_room_ID,_room_id);
-	} else {
-	    array_room_data[_room_id_ind] = room_data;
-	    array_room_ID[_room_id_ind] = _room_id;
-	}
+with oPlayer if "ruber_pit" in self {
+	load_codecs = true;
 }
+
+pit_codecs = [];
+
+var new_cdc = {
+	pages: []
+};
+
+array_push(pit_codecs, new_cdc);
+
+#define initCodecPagePit(cd_speaker, cd_expression, cd_sfx, cd_text)
+var new_page = {
+	speaker: cd_speaker,
+	expression: cd_expression,
+	sfx: cd_sfx,
+	text: cd_text
+};
+array_push(pit_codecs[array_length(pit_codecs) - 1].pages, new_page);

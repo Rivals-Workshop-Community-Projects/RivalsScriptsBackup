@@ -220,6 +220,7 @@ switch(state)
         break;
     case 8: //Hitbox
         image_alpha = 1;
+        sprite_index = asset_get("empty_sprite");
         hsp = 0;
         vsp = 0;
         destroy_timer++
@@ -343,6 +344,11 @@ if hit_lockout <= 0 {
                     other.state_timer = 0;
                     other.timer2 = 86;
                     other.timer3 = 86;
+                    if (orig_player == other.gura_owner and other.bubbled_playerid == noone and ((attack == AT_USPECIAL and hbox_num != 3) || attack == AT_NSPECIAL))
+                    {
+                        other.state = 8;
+                        other.outline = 0;
+                    }
                     if currentHighestPriority != noone {
                         if currentHighestPriority.hit_priority < hit_priority
                         {
