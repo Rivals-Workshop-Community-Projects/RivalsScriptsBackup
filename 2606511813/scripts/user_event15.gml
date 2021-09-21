@@ -285,6 +285,34 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.1", "20 September, 2021");
+initHeader("Both");
+initSection("- Nair endlag increased (+2f)
+- Nair landing lag increased (+2f)
+- Fair landing lag increased (+2f)
+- Uair landing lag increased (+2f)
+- Uair endlag increased (+3f)
+- Bair landing lag increased (+2f)
+- Dair landing lag increased (+2f)
+- FSpecial charge shot hitbox timer resets upon parry
+- FSpecial blindspot cover hitbox interacts with parry properly
+- Fstrong startup decreased (-2f)
+- Fstrong uncharged dash speed/distance increased (fully charged dash speed/distance unchanged)
+- Fstrong endlag decreased (-5f)
+- Weight decreased (kba: 1.05 -> 1.1)
+- Successive multijumps gain less height
+- Added cooldown to Dspecial when orbitars are broken (90f)");
+initHeader("Pit");
+initSection("- Fstrong kbg increased: 0.9 -> 1.1");
+initHeader("Dark Pit");
+initSection("- Fstrong kbg increased: 0.7 -> 0.9");
+initHeader("Bug Fixes");
+initSection("- Fixed issue of some characters momentum halting when hitting orbitars.")
+initHeader("Other");
+initSection("- Improved overall performance slightly
+- Alts are more consistent to easily differentiate between Pit and Dark Pit (Dark Pit's bow is always some greyish hue, Pit's bow is either golden or has the cosmetic skins)
+- Pit/Dpit Uspecials can interact with each other's orbitars")
+
 initPatch("1.0", "19 September, 2021");
 initWords_ext("Pit was released!", fa_center, c_white, 0, false);
 initWords_ext("Moveset differences from SSBU Pit:", fa_center, c_white, 0, false);

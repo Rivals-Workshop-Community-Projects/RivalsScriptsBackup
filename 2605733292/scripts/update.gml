@@ -1,6 +1,7 @@
 //update.gml
 
-//phone
+//MunoPhone Touch
+muno_event_type = 1;
 user_event(14);
 
 if (!free){

@@ -3,8 +3,7 @@
 
 var boost = -1;
 
-
-print(my_hitboxID.hbox_num)
+//print(my_hitboxID.hbox_num)
 
 var can_pull;
 can_pull = !hit_player_obj.clone and hit_player_obj.free;
@@ -81,6 +80,7 @@ switch (my_hitboxID.attack)
 				ownerarticle.old_hsp = ownerarticle.hsp;
 				ownerarticle.old_vsp = ownerarticle.vsp;
 				ownerarticle.disable_hitboxes = true;
+				ownerarticle.disappear_time = disappear_time_max - 30;
 			}
 		}
 	 break;

@@ -146,7 +146,7 @@ set_color_profile_slot( 11, 5, 0, 166, 255 ); //BOBBLEHIGH
 set_color_profile_slot( 11, 6, 250, 255, 255 ); //EYES
 set_color_profile_slot( 11, 7, 255, 119, 0 ); //PROJECTILE BLUE
 
-// CHUCKYASTER
+// RAMEL C. CHUCKSTER
 set_color_profile_slot( 12, 0, 158, 88, 64 ); //BODY
 set_color_profile_slot( 12, 1, 193, 151, 89 ); //BODYHIGH
 set_color_profile_slot( 12, 2, 0, 225, 0 ); //LIMBS

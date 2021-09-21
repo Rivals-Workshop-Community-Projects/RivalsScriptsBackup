@@ -1,10 +1,6 @@
 //B - Reversals
 if clamp(attack, 16, 19) == attack trigger_b_reverse();
 
-if(respawn_taunt){
-set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("plat_taunt"));
-}
-
 //Other stuff
 switch (attack)
 {
@@ -95,7 +91,6 @@ switch (attack)
 					hsp = lengthdir_x(spd, 90 + cannon_dir);
 					vsp = lengthdir_y(spd, 90 + cannon_dir);
 					move_cooldown[AT_USPECIAL] = 30;
-					
 					article.hsp = -hsp * .8;
 					article.vsp = -vsp * .8;
 					

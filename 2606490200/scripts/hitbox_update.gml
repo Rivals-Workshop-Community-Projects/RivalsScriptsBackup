@@ -7,9 +7,9 @@ if attack == AT_USPECIAL {
     }
     
 
-    image_index = hitbox_timer/5
+    image_index = hitbox_timer/4
     
-    if hitbox_timer < 5*13 && player_id.htrain >= 100 {
+    if hitbox_timer < 4*13 && player_id.htrain >= 100 {
     with player_id {
         other.vsp = 0
         other.hsp = 0
@@ -32,7 +32,7 @@ if attack == AT_USPECIAL {
     }
     }
     
-    if hitbox_timer < 5*13 && player_id.htrain < 100 {
+    if hitbox_timer < 4*13 && player_id.htrain < 100 {
     with player_id {
         other.vsp = 0
         other.hsp = 0
@@ -56,7 +56,7 @@ if attack == AT_USPECIAL {
     }
     
     
-    if hitbox_timer = 5*13 {
+    if hitbox_timer = 4*13 {
         sound_play(asset_get("sfx_abyss_explosion"),false,noone,1,1)
         sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,1,1)
         spawn_hit_fx(x,y,306)
@@ -73,12 +73,12 @@ if attack == AT_USPECIAL {
         }
     }
     
-    if hitbox_timer = 5*13 + 4 {
+    if hitbox_timer = 4*13 + 3 {
         image_xscale *= 2
         image_yscale *= 2
     }
     
-    if hitbox_timer = 5*13 + 5 {
+    if hitbox_timer = 4*13 + 4 {
         image_xscale *= 1.3
         image_yscale *= 1.3
         
@@ -89,7 +89,8 @@ if attack == AT_USPECIAL {
     }
     
     
-    if hitbox_timer = 5*13 + 5 {
+    	
+    if hitbox_timer = 4*13 + 5 {
      with player_id {
             set_state(PS_PRATFALL)
         }   
@@ -100,7 +101,7 @@ if attack == AT_USPECIAL {
 if attack == AT_NSPECIAL && hbox_num == 2 {
 	
 	
-	x = player_id.x - 5*spr_dir
+	x = player_id.x - 4*spr_dir
 	y = player_id.y - 50
 	
 	

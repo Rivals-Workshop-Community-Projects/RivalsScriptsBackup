@@ -1,4 +1,5 @@
 //set_attack.gml
 
-//MunoPhone
-user_event(13);
+//MunoPhone Touch
+muno_event_type = 2;
+user_event(14);

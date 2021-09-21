@@ -62,7 +62,8 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
     for (var i = 1; i < array_length(trailArray); i += 1) {
         trailArray[i - 1] = trailArray[i];
     }
-    trailArray[array_length(trailArray)-1] = [x - spr_dir*31*dsin(angle),y - spr_dir*31*dcos(angle),projSpeed,drawAngle,spr_dir];
+    if onscreen(x, y) trailArray[array_length(trailArray)-1] = [x - spr_dir*31*dsin(angle),y - spr_dir*31*dcos(angle),projSpeed,drawAngle,spr_dir];
+    else trailArray[array_length(trailArray)-1] = undefined;
     
     //destroy if grounded
     if (!free) || (position_meeting(x, y, asset_get("par_block"))) {
@@ -153,20 +154,18 @@ if attack == AT_DTHROW && hbox_num == 2 {
             }
             */
         }
-        if type == 1 && hit_priority != 0 && damage > 0 && !has_hit && place_meeting(x, y, other) && (hbox_group != other.prev_hitbox_group || hbox_group == -1) /*&& other.owner.oPlayer_owner.state != PS_PARRY*/ { //meets threshhold for damage
-            if player_id == other.player_id {
+        if type == 1 && hit_priority != 0 && damage > 0 && !has_hit && place_meeting(x, y, other) && (hbox_num != other.prev_hitbox_group || hbox_num == -1) /*&& other.owner.oPlayer_owner.state != PS_PARRY*/ { //meets threshhold for damage
+            if ("is_pit" in player_id) && player_id.is_pit == true {
                 if attack == AT_USPECIAL {
                     player_id.cancel_pratfall = true;
                     other.owner.hp -= 10;
                 }
             }
-            
             apply_hitpause = true;
-            
         }
         
         if apply_hitpause {
-            other.prev_hitbox_group = hbox_group;
+        	other.prev_hitbox_group = hbox_num;
             has_hit = true;
             player_id.has_hit = true;
             
@@ -213,7 +212,12 @@ if attack == AT_FSPECIAL && hbox_num == 1 {
 }
 
 
+
 if attack == AT_FTHROW && hbox_num == 1 {
+	if was_parried && !reset_lifetime {
+		reset_lifetime = true;
+		hitbox_timer = 0;
+	}
     if was_reflected && reflection_timer == 0 {
         if reflection_count == 1 {
             hsp *= (player_id.echo ? 1.1 : 1.4);
@@ -281,4 +285,12 @@ with pHitBox {
     } else if !("is_pitbox" in self) && type == 2 && !transcendent && hit_priority != 0 && instance_place(x, y, other) {
         destroyed = true;
     }
+}
+
+#define onscreen(x, y)
+var offset = 800;
+if (x > view_get_xview() - offset) && (x < view_get_xview() + view_get_wview() + offset) && (y < view_get_yview() + view_get_hview() + offset) && (y > view_get_yview() - offset) {
+	return true;
+} else {
+	return false;
 }

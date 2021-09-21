@@ -6,6 +6,21 @@ bits = 1;
 
 if state != PS_ATTACK_GROUND and state != PS_ATTACK_AIR and state != PS_AIR_DODGE and (up_down and shield_pressed) and !free y-=4
 
+//USPECIAL BODY HITBOX
+if(attack == AT_USPECIAL && window == 3){
+fired = 20;
+}
+
+if !(state == PS_PRATFALL || attack == AT_USPECIAL){
+fired = 0;
+} else if (fired > 0) && (has_hit == false) && (state == PS_PRATFALL){
+create_hitbox(AT_DATTACK, 2, x, y);
+fired--;
+}
+//i shouldnt need multiple reset things but dan moment or something idk
+if !(free) && (fired > 0){
+fired = 0;
+}
 
 if nspecial_grabbed_player != noone
 {
@@ -74,7 +89,7 @@ if nspecial_grabbed_player != noone
 				hitstop = 10;
 				hitstop_full = 10;
 			}
-			if nspecial_grab_timer == 0 || y > get_stage_data(SD_Y_POS) + 64
+			if nspecial_grab_timer == 0 || y > get_stage_data(SD_Y_POS) + 96
 			{
 				nspecial_grabbed_player.vsp = -4
 				nspecial_grabbed_player = noone

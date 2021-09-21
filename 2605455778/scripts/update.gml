@@ -1,3 +1,6 @@
+if(!free || state == PS_WALL_JUMP){
+    upcancel = false;
+}
 if(state == PS_DOUBLE_JUMP){ 
     if(state_timer == 1){//Dj turn around
         if((spr_dir == 1 && left_down) || (spr_dir == -1 && right_down)){
@@ -27,7 +30,7 @@ if(armorloss){
     djhit = false;
 }
 if(armorgain){
-    if(attack == AT_USPECIAL){
+    if(attack == AT_USPECIAL || state == PS_WALL_JUMP){
         armorpoints += 1;
     }else{
         armorpoints += 3;
@@ -41,6 +44,9 @@ if(armorpoints > 3){
 if(armorpoints < 0){
     armorpoints = 0;
 }
+if(state == PS_WALL_JUMP && state_timer == 1){
+    armorgain = true;
+}
 if(state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND){
     hit_totem = false;
     if(state != PS_IDLE){
@@ -48,6 +54,12 @@ if(state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND){
     }
 }
 if(swallow == true){
+    if((((left_down && spr_dir == 1) || (right_down && spr_dir == -1)) || down_down) && ground_friction == totem_slide_friction){
+        if(abs(hsp) > 0){
+            hsp -= 1*sign(hsp);
+        }
+        ground_friction = ground_friction_default;
+    }
     gravity_speed = swallow_gravity;
 }else{
     gravity_speed = gravity_speed_default;
@@ -185,7 +197,7 @@ if(armorpoints > 0){
     waveland_sound = asset_get("sfx_waveland_zet");
 }
 old_armorpoints = armorpoints;
-//print_debug(window);
+//print_debug(hit_totem);
 #define exit_prison
     sound_stop(asset_get("sfx_dizzy"));
     if(prev_state != PS_RESPAWN && state != PS_PARRY){

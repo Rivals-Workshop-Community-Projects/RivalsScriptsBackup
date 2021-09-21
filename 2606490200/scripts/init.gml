@@ -102,7 +102,7 @@ tech_recovery_frames = 2;
 techroll_startup_frames = 1
 techroll_active_frames = 1;
 techroll_recovery_frames = 3;
-techroll_speed = 6.00;
+techroll_speed = 9.00;
 
 //airdodge animation frames
 air_dodge_startup_frames = 1;
@@ -117,8 +117,8 @@ roll_forward_recovery_frames = 3;
 roll_back_startup_frames = 1;
 roll_back_active_frames = 1;
 roll_back_recovery_frames = 3;
-roll_forward_max = 10.00; //roll speed
-roll_backward_max = 10.00;
+roll_forward_max = 9.00; //roll speed
+roll_backward_max = 9.00;
 
 land_sound = asset_get("sfx_land_heavy");
 landing_lag_sound = asset_get("sfx_land_heavy");

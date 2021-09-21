@@ -5,7 +5,7 @@ set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_FSTRONG, AG_NUM_WINDOWS, 5);
 
 //startup
-set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_HSPEED, -5);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_HSPEED_TYPE, 0);
@@ -17,10 +17,10 @@ set_window_value(AT_FSTRONG, 1, AG_WINDOW_SFX, sound_get("upperdash_start"));
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_SFX_FRAME, 4);
 
 //dash
-set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 8);
+set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 12);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0);
@@ -50,7 +50,7 @@ set_window_value(AT_FSTRONG, 4, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_CUSTOM_AIR_FRICTION, 1);
 
 //endlag
-set_window_value(AT_FSTRONG, 5, AG_WINDOW_LENGTH, 30);
+set_window_value(AT_FSTRONG, 5, AG_WINDOW_LENGTH, 25);
 set_window_value(AT_FSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_FSTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -70,7 +70,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 14);
 set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 50);
 set_hitbox_value(AT_FSTRONG, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 16);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sound_get("punch_hit_heavy"));
@@ -90,7 +90,7 @@ set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 14);
 set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 50);
 set_hitbox_value(AT_FSTRONG, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 16);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, sound_get("punch_hit_heavy"));

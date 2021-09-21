@@ -6,7 +6,9 @@ if (attack == AT_FSTRONG){
 	if (hitbox_timer = 7){ vsp = 0; }
     if (hitbox_timer > 15){ grav = 0.9; }
 	if (hitbox_timer == 15){
-	create_hitbox(AT_FSTRONG, 4, x+50 * spr_dir, y+70); grav = 0.9; }
+	create_hitbox(AT_FSTRONG, 4, x+50 * spr_dir, y+70); grav = 0.9;
+	create_hitbox(AT_FSTRONG, 5, x+50 * spr_dir, y+70); grav = 0.9;
+	}
 	if (hitbox_timer == 20) && free{ player_id.move_cooldown[AT_FSTRONG] = 40; } 
     if (hitbox_timer < 20){
 	if (destroyed){ destroyed = false; }

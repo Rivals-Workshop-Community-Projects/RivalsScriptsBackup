@@ -87,7 +87,7 @@ set_color_profile_slot( 5, 6, 74, 56, 39 ); //Wings
 set_color_profile_slot( 5, 7, 255, 225, 0 ); //Tunic
 
 // Pit
-set_color_profile_slot( 6, 0, 219, 179, 90 ); //Blade silver
+set_color_profile_slot( 6, 0, 180, 180, 192 ); //Blade silver
 set_color_profile_slot( 6, 1, 46, 35, 17 ); //Hair/blacks
 set_color_profile_slot( 6, 2, 255, 210, 183 ); //Skin
 set_color_profile_slot( 6, 3, 0, 41, 84 ); //Eyes/purples
@@ -97,7 +97,7 @@ set_color_profile_slot( 6, 6, 132, 134, 138 ); //Wings
 set_color_profile_slot( 6, 7, 245, 249, 255 ); //Tunic
 
 // Medusa
-set_color_profile_slot( 7, 0, 219, 143, 20 ); //Blade silver
+set_color_profile_slot( 7, 0, 180, 180, 192 ); //Blade silver
 set_color_profile_slot( 7, 1, 47, 82, 60 ); //Hair/blacks
 set_color_profile_slot( 7, 2, 214, 209, 232 ); //Skin
 set_color_profile_slot( 7, 3, 25, 56, 2 ); //Eyes/purples
@@ -107,21 +107,21 @@ set_color_profile_slot( 7, 6, 110, 24, 97 ); //Wings
 set_color_profile_slot( 7, 7, 153, 23, 71 ); //Tunic
 
 // Hades
-set_color_profile_slot( 8, 0, 201, 33, 0 ); //Blade silver
+set_color_profile_slot( 8, 0, 89, 48, 48 ); //Blade silver
 set_color_profile_slot( 8, 1, 115, 31, 46 ); //Hair/blacks
 set_color_profile_slot( 8, 2, 137, 107, 181 ); //Skin
 set_color_profile_slot( 8, 3, 113, 4, 4 ); //Eyes/purples
-set_color_profile_slot( 8, 4, 166, 72, 0 ); //Blade blues
+set_color_profile_slot( 8, 4, 230, 99, 0 ); //Blade blues
 set_color_profile_slot( 8, 5, 109, 207, 66 ); //Yellows
 set_color_profile_slot( 8, 6, 79, 51, 120 ); //Wings
 set_color_profile_slot( 8, 7, 143, 90, 142 ); //Tunic
 
 // Pandora
-set_color_profile_slot( 9, 0, 80, 80, 191 ); //Blade silver
+set_color_profile_slot( 9, 0, 137, 137, 191 ); //Blade silver
 set_color_profile_slot( 9, 1, 65, 184, 217 ); //Hair/blacks
 set_color_profile_slot( 9, 2, 255, 210, 183 ); //Skin
 set_color_profile_slot( 9, 3, 113, 4, 89 ); //Eyes/purples
-set_color_profile_slot( 9, 4, 157, 187, 245 ); //Blade blues
+set_color_profile_slot( 9, 4, 122, 164, 245 ); //Blade blues
 set_color_profile_slot( 9, 5, 171, 68, 156 ); //Yellows
 set_color_profile_slot( 9, 6, 52, 81, 133 ); //Wings
 set_color_profile_slot( 9, 7, 227, 238, 255 ); //Tunic

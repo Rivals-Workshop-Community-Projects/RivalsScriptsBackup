@@ -1,7 +1,7 @@
 set_attack_value(AT_BAIR, AG_CATEGORY, 1);
 set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair"));
 set_attack_value(AT_BAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_BAIR, AG_LANDING_LAG, 8);
+set_attack_value(AT_BAIR, AG_LANDING_LAG, 10);
 set_attack_value(AT_BAIR, AG_HURTBOX_SPRITE, sprite_get("bair_hurt"));
 
 set_attack_value(AT_BAIR, AG_NUM_WINDOWS, 3);
@@ -67,3 +67,4 @@ set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, sound_get("blade_hit_medium"));
 set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_GROUP, 1);
+

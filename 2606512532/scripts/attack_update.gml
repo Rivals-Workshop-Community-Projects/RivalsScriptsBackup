@@ -335,8 +335,8 @@ if attack == AT_FSTRONG {
             fstrong_base_hsp = get_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED);
             fstrong_base_window_length =  get_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH);
         } else {
-            var extra_hsp = floor(strong_charge/(echo ? 8 : 5));
-            var extra_length = floor(strong_charge/(echo ? 8 : 8));
+            var extra_hsp = floor(strong_charge/(echo ? 8 : 6));
+            var extra_length = floor(strong_charge/(echo ? 12 : 12));
             if has_rune("K") { //FSTRONG dash distance increased.
             	extra_hsp *= 1.8
             	extra_hsp += 2

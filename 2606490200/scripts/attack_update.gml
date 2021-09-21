@@ -62,7 +62,7 @@ switch attack {
         
         if !hitpause {
             
-        if window == 1 && window_timer == 11 {
+        if window == 1 && window_timer == 10 {
             sound_play(asset_get("sfx_swipe_heavy1"),false,noone,1,1.2)
             sound_play(asset_get("sfx_ice_on_player"),false,noone,1,1.4)
         }
@@ -72,7 +72,7 @@ switch attack {
         }
         
         if window == 2  {
-            hsp = 0
+            hsp = 2*spr_dir
         }
         
         }
@@ -202,6 +202,12 @@ switch attack {
     
     case AT_TAUNT:
    
+    invince_time = 0
+    invincible = false
+    
+    if free {
+    	vsp = 1.5
+    }
     
     hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
     vsp /= 1.4
@@ -309,13 +315,13 @@ switch attack {
             }
             
         if window == 3 && !hitpause {
-            if window_timer % 8 == 0 {
+            if window_timer % 12 == 0 {
             create_hitbox(AT_DSPECIAL,1,x,y)
             }
             super_armor = true
             
             
-            if state_timer > 999 or (special_down && state_timer > 30) {
+            if state_timer > 120 or (special_down && state_timer > 30) {
                  window = 4
                  window_timer = 0
                  super_armor = false
@@ -369,7 +375,7 @@ switch attack {
                     fxhup = spawn_hit_fx(x,y - 120,hup)
          fxhup.depth = -100
          sound_play(asset_get("sfx_coin_collect"))
-         htrain += 5
+         //htrain += 5
          
        }
        
@@ -436,7 +442,7 @@ switch attack {
      
      if has_hit_player && hit_player_obj.super_armor == false {
          
-         hit_player_obj.state = PS_PRATFALL
+         hit_player_obj.state_timer -= 1
          
          if free {
              vsp = 0
@@ -452,7 +458,7 @@ switch attack {
          
          hit_player_obj.fall_through = true
          
-         hit_player_obj.x += floor((x + 36*spr_dir - hit_player_obj.x)/4)
+         hit_player_obj.x += floor((x + 32*spr_dir - hit_player_obj.x)/4)
          hit_player_obj.y += floor((y - 4 - hit_player_obj.y)/4)
          
          if special_pressed or state_timer >= 45{
@@ -522,6 +528,14 @@ switch attack {
          }
          if window == 4 && window_timer == 4*5 {
              spawn_hit_fx(x,y,nf4)
+             attack_end()
+             vsp = -5
+             x = hit_player_obj.x
+             y = hit_player_obj.y - 20
+             set_attack(AT_DAIR)
+             window = 1
+             window_timer = 5
+             sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1.2)
          }
          
          if window == 1 && window_timer < 4*4 {
@@ -549,12 +563,14 @@ switch attack {
                hit_player_obj.x += floor((x - 6*spr_dir - hit_player_obj.x)/4)
                
                if window_timer == 4*5 or window_timer == 4*6 {
-                   hit_player_obj.y -= 12
+                   hit_player_obj.y -= 4
                }
          }
          
          if window == 4 && window_timer < 4*2 {
+         	
              if window_timer == 1 {
+             	y -= 1
                  hit_player_obj.vsp = -2
              }
                hit_player_obj.hsp = 0
@@ -571,15 +587,17 @@ switch attack {
               sound_play(asset_get("sfx_boss_vortex_end"),false,noone,1,1)
           }
           
-          if window_timer == 60 {
+          if window_timer == 64 {
               sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1,1)
+              sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,1,1)
+              shake_camera(2,2)
               
           }
           
           if window_timer == 90 {
               spawn_hit_fx(x,y-50,306)
             sound_play(asset_get("sfx_ori_stomp_hit"),false,noone,1,1)
-            sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,1,1)
+            sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,1,1)
             sound_play(asset_get("sfx_bird_sidespecial"),false,noone,1,1)
             shake_camera(6,6)
           }

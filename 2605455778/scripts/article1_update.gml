@@ -27,7 +27,6 @@ with(pHitBox){
             player_id.has_hit = true;
             player_id.totemStorePos = other.x;
             player_id.hit_totem = true;
-            destroyed = true;
             other.destroy = true;
         }
     }

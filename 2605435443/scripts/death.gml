@@ -1,6 +1,6 @@
 // death
 if easter_egg_set = true {
- if !(oPlayer.url == 2407716024 || (get_char_info(player,INFO_STR_NAME == "Big Band"))){
+ if !(oPlayer.url == 2407716024 || (oPlayer.url == "2605435443")){
     
     snd_rng = random_func(0, 5, true);
     
@@ -33,7 +33,7 @@ if (oPlayer.url == 2407716024){
         sound_play(sound_get("voice_death_peacock"));
 }
 }
-if ((get_char_info(player,INFO_STR_NAME == "Big Band"))){
+if (oPlayer.url == "2605435443"){
         snd_rng = random_func(0, 6, true);
     
     if (snd_rng == 0) {

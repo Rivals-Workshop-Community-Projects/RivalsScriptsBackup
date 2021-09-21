@@ -148,6 +148,7 @@ switch state {
     
     if state_timer == 16 {
         player_id.orbitar_id = noone;
+        player_id.move_cooldown[AT_DSPECIAL] = 90;
         instance_destroy();
     }
     break;

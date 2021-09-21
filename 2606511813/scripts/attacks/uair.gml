@@ -1,7 +1,7 @@
 set_attack_value(AT_UAIR, AG_CATEGORY, 1);
 set_attack_value(AT_UAIR, AG_SPRITE, sprite_get("uair"));
 set_attack_value(AT_UAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_UAIR, AG_LANDING_LAG, 8);
+set_attack_value(AT_UAIR, AG_LANDING_LAG, 10);
 set_attack_value(AT_UAIR, AG_HURTBOX_SPRITE, sprite_get("uair_hurt"));
 
 set_attack_value(AT_UAIR, AG_NUM_WINDOWS, 4);
@@ -25,7 +25,7 @@ set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_UAIR, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 
 //endlag
-set_window_value(AT_UAIR, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_UAIR, 4, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UAIR, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_UAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);

@@ -1,7 +1,7 @@
 hurtbox_spr = sprite_get("hurtBox");
 crouchbox_spr = sprite_get("crouch_hurtbox");
 air_hurtbox_spr = -1;
-hitstun_hurtbox_spr = -1;
+hitstun_hurtbox_spr = sprite_get("hitstun_hurtbox_hurt");
 
 char_height = 52;
 idle_anim_speed = .17;
@@ -112,7 +112,7 @@ utiltRockBreak = hit_fx_create(sprite_get("utiltRockBreak"), 10);
 bubble_x = 8;
 bubble_y = 8;
 
-armorpoints = 0;
+armorpoints = 1;
 nextarmor = false;
 swallowarmor = false;
 armorgain = false;
@@ -163,6 +163,7 @@ djhit = false;
 totemwehit = noone;
 sideup = 0;
 swallowinput = 0;
+upcancel = false;
 
 //workshop comp
 feri_costume = sprite_get("costume_dinock");

@@ -45,6 +45,7 @@ set_window_value(AT_DSTRONG, 4, AG_WINDOW_HAS_SFX, 1);
 
 set_num_hitboxes(AT_DSTRONG, 4);
 
+//GROUNDED COMBO HITBOX
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_WINDOW, 2);
@@ -71,6 +72,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITSTUN_MULTIPLIER, 1.0);
 set_hitbox_value(AT_DSTRONG, 1, HG_TECHABLE, 1);
 
+//AERIAL COMBO HITBOX
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW, 2);
@@ -96,6 +98,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITSTUN_MULTIPLIER, 1.0);
 set_hitbox_value(AT_DSTRONG, 2, HG_TECHABLE, 1);
 
+//LAUNCHING HITBOX
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_GROUP, 4);
 set_hitbox_value(AT_DSTRONG, 4, HG_WINDOW, 3);
@@ -108,9 +111,11 @@ set_hitbox_value(AT_DSTRONG, 4, HG_HEIGHT, 48);
 set_hitbox_value(AT_DSTRONG, 4, HG_SHAPE, 1);
 set_hitbox_value(AT_DSTRONG, 4, HG_PRIORITY, 2);
 set_hitbox_value(AT_DSTRONG, 4, HG_DAMAGE, 8);
-set_hitbox_value(AT_DSTRONG, 4, HG_ANGLE, 270);
-set_hitbox_value(AT_DSTRONG, 4, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_DSTRONG, 4, HG_KNOCKBACK_SCALING, 1.3);
+set_hitbox_value(AT_DSTRONG, 4, HG_ANGLE, 90);
+set_hitbox_value(AT_DSTRONG, 4, HG_ANGLE_FLIPPER, 3);
+set_hitbox_value(AT_DSTRONG, 4, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_DSTRONG, 4, HG_KNOCKBACK_SCALING, 1.0);
+
 set_hitbox_value(AT_DSTRONG, 4, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DSTRONG, 4, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_DSTRONG, 4, HG_VISUAL_EFFECT, 13);
@@ -120,6 +125,7 @@ set_hitbox_value(AT_DSTRONG, 4, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_DSTRONG, 4, HG_HITSTUN_MULTIPLIER, 1.0);
 set_hitbox_value(AT_DSTRONG, 4, HG_TECHABLE, 1);
 
+//THWOMP PROJECTILE
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW, 2);

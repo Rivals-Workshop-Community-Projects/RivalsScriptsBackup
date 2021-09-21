@@ -6,6 +6,9 @@ user_event(14);
 
 timer++;
 
+//jump decay
+djump_speed = 9 - djumps;
+
 //practice mode detector
 if (get_training_cpu_action() != CPU_FIGHT && !playtest && !("is_ai" in self)) {
     practice_mode = true;
@@ -263,8 +266,8 @@ if taunt_pressed with oPlayer {
     if id != other.id {
         set_state(PS_ATTACK_GROUND)
         set_attack(AT_TAUNT)
-        state_timer = 20
-        window = 2;
+        //state_timer = 20
+        //window = 2;
     }
 }
 */

@@ -107,12 +107,12 @@ set_hitbox_value(AT_FSTRONG, 3, HG_HIT_LOCKOUT, 10);
 set_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FSTRONG, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 
-//Falling over hitbox
+//Slam Hit Grounded
 set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 4, HG_WINDOW, 10);
 set_hitbox_value(AT_FSTRONG, 4, HG_LIFETIME, 1);
 set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_X, 0);
-set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_Y, -9000); //Don't worry about this.
+set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_Y, -9000);
 set_hitbox_value(AT_FSTRONG, 4, HG_WIDTH, 110);
 set_hitbox_value(AT_FSTRONG, 4, HG_HEIGHT, 50);
 set_hitbox_value(AT_FSTRONG, 4, HG_SHAPE, 2);
@@ -128,3 +128,27 @@ set_hitbox_value(AT_FSTRONG, 4, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_FSTRONG, 4, HG_VISUAL_EFFECT_Y_OFFSET, -1);
 set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_FSTRONG, 4, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_FSTRONG, 4, HG_GROUNDEDNESS, 1);
+
+//Slam Hit Aerial
+set_hitbox_value(AT_FSTRONG, 5, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FSTRONG, 5, HG_WINDOW, 10);
+set_hitbox_value(AT_FSTRONG, 5, HG_LIFETIME, 1);
+set_hitbox_value(AT_FSTRONG, 5, HG_HITBOX_X, 0);
+set_hitbox_value(AT_FSTRONG, 5, HG_HITBOX_Y, -9000);
+set_hitbox_value(AT_FSTRONG, 5, HG_WIDTH, 110);
+set_hitbox_value(AT_FSTRONG, 5, HG_HEIGHT, 50);
+set_hitbox_value(AT_FSTRONG, 5, HG_SHAPE, 2);
+set_hitbox_value(AT_FSTRONG, 5, HG_PRIORITY, 1);
+set_hitbox_value(AT_FSTRONG, 5, HG_DAMAGE, 5);
+set_hitbox_value(AT_FSTRONG, 5, HG_ANGLE, 270); //nice
+set_hitbox_value(AT_FSTRONG, 5, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_FSTRONG, 5, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(AT_FSTRONG, 5, HG_BASE_HITPAUSE, 2);
+set_hitbox_value(AT_FSTRONG, 5, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_FSTRONG, 5, HG_VISUAL_EFFECT, 301);
+set_hitbox_value(AT_FSTRONG, 5, HG_VISUAL_EFFECT_Y_OFFSET, -1);
+set_hitbox_value(AT_FSTRONG, 5, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_FSTRONG, 5, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_FSTRONG, 5, HG_GROUNDEDNESS, 2);
+

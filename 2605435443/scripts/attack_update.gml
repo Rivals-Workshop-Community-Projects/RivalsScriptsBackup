@@ -329,11 +329,6 @@ if (attack == AT_DATTACK){
   	}
 
 if (attack == AT_UTILT){
-	if(!has_hit_player){
-	    	can_special = true;
-    	    move_cooldown[AT_DSPECIAL] = 2;
-    	    move_cooldown[AT_USPECIAL] = 2;
-	}
     if (window == 1 || window == 4){
         if (window_timer == 1){
         snd_rng = random_func(0, 2, true);

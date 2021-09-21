@@ -177,7 +177,7 @@ if (attack == AT_DTILT){
 			if (hsp < -9){ //>
 				hsp = -10
 			}
-			hsp *= 0.55
+			hsp *= 0.6
 		}
 	}
 	if (window == 1){

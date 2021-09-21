@@ -246,6 +246,11 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.1", "20 September, 2021");
+initHeader("DStrong - Adjustments, Bugfixes");
+initSection("Angle 290 --> 280.
+Fixed hurtbox.");
+
 initPatch("1.0", "19 September, 2021");
 initWords_ext("(Changes from Vanilla Sandbert)", fa_center, c_white, 0, false);
 initHeader("Stats - Nerfs");

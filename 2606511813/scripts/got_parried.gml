@@ -12,3 +12,11 @@ if orbitar_id != noone && instance_exists(orbitar_id) && !phone_cheats[CHEAT_STR
         orbitar_id = noone;
     }
 }
+
+if my_hitboxID.attack == AT_FTHROW && my_hitboxID.hbox_num == 3 {
+    with pHitBox if player_id == other.id && attack == AT_FTHROW && hbox_num == 1 {
+        hsp *= -1
+        vsp *= -1
+        was_parried = true;
+    }
+}

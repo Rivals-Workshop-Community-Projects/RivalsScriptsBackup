@@ -14,7 +14,7 @@ if state == PS_PRATFALL {
 if (get_player_color(player) == 11) {
 if uped == 4 {
 	sound_stop(sound_get("drip"))
-	sound_play(sound_get("dripfull"))
+	sound_play(sound_get("dripshort"))
 	uped = 5
 }
 
@@ -143,7 +143,7 @@ if ltrain >= 100 && ltrain < 300 {
 	set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 10);
 	set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 10);
 	set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 9);
-	set_hitbox_value(AT_EXTRA_1, 7, HG_DAMAGE, 6);
+	set_hitbox_value(AT_EXTRA_1, 7, HG_DAMAGE, 3);
 	
 	set_attack_value(AT_NAIR, AG_LANDING_LAG, 4);
 	set_attack_value(AT_UAIR, AG_LANDING_LAG, 5);
@@ -169,10 +169,6 @@ window_timer = 0
 if state == PS_RESPAWN && visible {
 	if state_timer % 6 == 0 {
 		spawn_base_dust(x,y,"land",spr_dir)
-	}
-	
-	if taunt_pressed {
-		state_timer += 120
 	}
 }
 
@@ -350,7 +346,7 @@ if state_timer == 1 {
 
 if move_cooldown[AT_USPECIAL] > 0 {
     create_hitbox(AT_USPECIAL,3,x,y)
-    spawn_hit_fx(x - 20 + random_func(1,40,true) ,y - 40 - 20 + random_func(2,50,true), i6)
+    spawn_hit_fx(x - 20 + random_func(1,40,true) ,y - 46 - 20 + random_func(2,50,true), i6)
 	fall_through = true
 	if !free {
 		y -= 10
@@ -363,8 +359,8 @@ if move_cooldown[AT_USPECIAL] > 0 {
 if move_cooldown[AT_USPECIAL] == 1 {
 	spawn_hit_fx(x,y - 50,305)
 	sound_play(asset_get("sfx_bird_sidespecial_start"));
-	vsp = -6
-	old_vsp = -6
+	vsp = -10
+	old_vsp = -10
 	hsp /= 6
 	old_hsp /= 6
 }

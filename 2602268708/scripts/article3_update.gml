@@ -133,10 +133,11 @@ if ("hitbox" in self && instance_exists(hitbox)){
 	hitbox.x = x + hsp + 1;
 	hitbox.y = y + vsp - 23;
 	hitbox.destroyed = (free) ? false : true;
-	
+	/*
 	var directionToTarget = point_direction(x, y, x + hsp, y + vsp);
 
 	hitbox.kb_angle = directionToTarget;
+	*/
 }
 
 if ("hitbox2" in self && instance_exists(hitbox2)){
@@ -151,8 +152,9 @@ if ("hitbox2" in self && instance_exists(hitbox2)){
 	hitbox2.x = x + hsp + wtf_x + 1;
 	hitbox2.y = y + vsp + wtf_y - 17;
 	hitbox2.destroyed = (free) ? false : true;
-	
+	/*
 	var directionToTarget = point_direction(x, y, x + hsp, y + vsp);
 
 	hitbox2.kb_angle = directionToTarget;
+	*/
 }

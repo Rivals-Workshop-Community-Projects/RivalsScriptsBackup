@@ -76,6 +76,9 @@ if(state == PS_RESPAWN){
 sprite_index = sprite_get("plat_hoot");
 image_index = floor(image_number*state_timer/(image_number*4));
 }
+if(respawn_taunt){
+sprite_index = sprite_get("plat_taunt");
+}
 
 if(state == PS_WALL_JUMP) && (clinging == 1){
 sprite_index = sprite_get("wallcling");

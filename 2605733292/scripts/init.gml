@@ -337,9 +337,6 @@ switch (get_player_color( player )){
 		break;
 }
 
-has_fail = true;
-fail_text = "Guess you shouldnt have slept on this character.";
-
 diag_portrait=sprite_get("portrait"); // This will allow you to put any custom portrait onto the dialogue buddy!
 
 //phonesprites
@@ -349,5 +346,21 @@ spr_bubble = sprite_get("nspecial_bubble");
 spr_essence = sprite_get("essence_empty");
 spr_ability_star = sprite_get("ability_star_active");
 
-//phone
+//Compatability
+Hikaru_Title = "Soundly Sleeping Star";
+
+ncode1 = "The Pink Demon from Dream Land.";
+ncode2 = "Carries his Sleep Ability.";
+ncode3 = "Do not be fooled by it: stay on guard.";
+
+arena_title = "Sleeping Star Warrior";
+arena_short_name = "Sleep Kirby";
+
+battle_text = "* You start to feel drowsy just by looking at that creature.";
+
+has_fail = true;
+fail_text = "Guess you shouldnt have slept on this character.";
+
+//MunoPhone Touch
+muno_event_type = 0;
 user_event(14);

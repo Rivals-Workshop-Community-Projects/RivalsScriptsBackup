@@ -28,6 +28,9 @@ if(swallow){
         case PS_HITSTUN_LAND:
             sprite_index = sprite_get("swallow_hurt");
         break;
+        case PS_LAND:
+        sprite_index = sprite_get("swallow_jumpstart");
+        break;
     }
 }else{
     swallowAnimCounter = 0;

@@ -136,5 +136,6 @@ if (get_player_damage( player ) > 80){
 
 */
 
-//MunoPhone
-user_event(12);
+//MunoPhone Touch
+muno_event_type = 4;
+user_event(14);

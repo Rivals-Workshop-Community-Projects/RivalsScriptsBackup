@@ -6,6 +6,9 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL){
 switch(attack){
     case AT_NSPECIAL:
         if(window == 1){
+            if(window_timer == 1){
+                hit_totem = false;
+            }
             grabbed_player = noone;
             prison_player = noone;
             totemSwallowTime = 0;
@@ -76,6 +79,7 @@ switch(attack){
         if(instance_exists(grabbed_player) && grabbed_player == hit_player_obj 
         && grabbed_player.state != PS_FROZEN 
         && !grabbed_player.bubbled){
+            invincible = false;
             grab_x = grabbed_player.x;
             gplayer = grabbed_player;
             grabbed_player.state = PS_WRAPPED;
@@ -84,60 +88,45 @@ switch(attack){
             window = 11;
             window_timer = 0;
         }else{
-            with(pHitBox){
-            if(player_id == other
-            && attack == AT_NSPECIAL
-            && hbox_num == 1 
-            && (place_meeting(x, y, asset_get("par_jumpthrough"))
-            || collision_circle(x, y, 15, asset_get("par_block"), true, true))){
-                // other.hsp = 5*spr_dir;
-                // other.vsp = 0;
-                // other.old_hsp = other.hsp;
-                // other.old_vsp = other.vsp;
-                // other.hitpause = true;
-                // other.hitstop = hitpause + 5;
-                // other.hitstop_full = hitpause + 5;
-                // other.nSpecPlatHboxXpos = x;
-                // other.window = 7;
-                // destroyed = true;
+            if(window == 2 && hit_totem && !has_hit_player && !hitpause){
+                hitpause = true;
+                hitstop = 6;
+                hitstop_full = 6;
+                window = 10;
+                window_timer = 0;
+                hit_totem = false;
             }
-        }
-        if(window == 2 && hit_totem && !has_hit_player && !hitpause){
-            hitpause = true;
-            hitstop = 6;
-            hitstop_full = 6;
-            window = 10;
-            window_timer = 0;
-            hit_totem = false;
-        }
-        if(window == 10 && window_timer == get_window_value(AT_NSPECIAL, 10, AG_WINDOW_LENGTH)-1){
-            if(!special_down){
-                window = 5;
-                if((spr_dir != 1 || !left_down) && (spr_dir != -1 || !right_down)){
-                    hsp = 10*spr_dir;
-                    ground_friction = totem_slide_friction;
+            if(window == 10 && window_timer == get_window_value(AT_NSPECIAL, 10, AG_WINDOW_LENGTH)-1){
+                if(free){
+                    vsp -= 5;
                 }
-            }else{
-                window = 6;
-                nextarmor = false;
-                swallowarmor = false;
-                armorgainattack();
-                armorpoints += 3;
+                if(!special_down){
+                    window = 5;
+                    if(((spr_dir != 1 || !left_down) && (spr_dir != -1 || !right_down)) && !down_down){
+                        hsp = 10*spr_dir;
+                        ground_friction = totem_slide_friction;
+                    }
+                }else{
+                    window = 6;
+                    nextarmor = false;
+                    swallowarmor = false;
+                    armorgainattack();
+                    armorpoints += 3;
+                }
+                window_timer = 0;
             }
-            window_timer = 0;
-        }
-        if(window == 5 && window_timer == 10){
-            swallow = true;
-            has_rock = true;
-        }
-        if((window == 10 || window == 5)){
-            nextarmor = true;
-            if(free){
-                can_attack = true;
+            if(window == 5 && window_timer == 10){
+                swallow = true;
+                has_rock = true;
             }
-            totemSwallowTime++;
+            if((window == 10 || window == 5)){
+                nextarmor = true;
+                if(free){
+                    can_attack = true;
+                }
+                totemSwallowTime++;
+            }
         }
-    }
     if(window == 5 && swallow == true){
         can_attack = true;
         can_strong = true;
@@ -172,6 +161,13 @@ switch(attack){
                 window = 4;
                 window_timer = 0;
             }
+            if(place_meeting(x+2*spr_dir, y, asset_get("par_block")) && window == 2){ //get on ledge
+                print_debug("collide");
+                if(!place_meeting(x+2*spr_dir, y-60, asset_get("par_block"))){
+                    y = y-15;
+                    hsp -= 5*spr_dir;
+                }
+            }
         }else if (window == 4 && window_timer == get_window_value(attack, 4, AG_WINDOW_LENGTH)){
             window = 5;
             window_timer = 0;
@@ -188,6 +184,7 @@ switch(attack){
     break;
     
     case AT_FSPECIAL_2:
+        can_fast_fall = false;
         old_jump = false;
         can_wall_jump = true;
         if(window == 1 && shield_down){
@@ -217,10 +214,12 @@ switch(attack){
                 hit_totem = false;
                 armorpoints += 1;
                 armorgainattack();
-                create_hitbox(AT_FSPECIAL_2, 1, x, y);
             }
         }
         if(window == 6){
+            if(window_timer == 1 && !hitpause){
+                create_hitbox(AT_FSPECIAL_2, 1, x, y);
+            }
             if(window_timer == 12){
                 spr_dir *= -1;
             }
@@ -228,6 +227,10 @@ switch(attack){
                 window = eggroll_window_store;
                 window_timer = eggroll_timer_store;
                 create_hitbox(AT_FSPECIAL_2, 1, x, y);
+                attack_end();
+            }
+            if(eggroll_window_store == 5){
+                can_jump = true;
             }
         }
         if(window == 5 && !hitpause){
@@ -243,23 +246,25 @@ switch(attack){
         if(window == 7 && window_timer == get_window_value(attack, 7, AG_WINDOW_LENGTH)){
             window = 4;
             window_timer = 0;
-            armorpoints = 0;
             spawn_hit_fx(x, y-10, djarmorexit);
             hsp = 0;
             switch(sideup){
                 case 0:
                     vsp = -18;
+                    armorpoints = 0;
                 break;
                 case 1:
                     vsp = -14;
+                    armorpoints = 0;
                 break;
                 case 2:
                     vsp = -10;
+                    armorloss = true;
                     state = PS_IDLE_AIR;
                 break;
             }
         }
-        if(window == 7){
+        if(window == 7 || window == 3){
             destroy_hitboxes();
         }
     break;
@@ -315,16 +320,18 @@ switch(attack){
                 }
             }
         }
-        if(window == 1 && shield_pressed && armorpoints > 0){
+        if(window == 1 && shield_pressed && armorpoints > 0 && !upcancel){
+            old_jump = false;
             armorloss = true;
             window = 3;
             window_timer = 0;
             vsp = -10;
+            upcancel = true;
         }
     break;
 
     case AT_DSPECIAL:
-        if(window == 1 && window_timer == 6 && special_down){
+        if(window == 1 && window_timer == 10 && !special_down){
             window = 4;
             window_timer = 0;
             armorpoints += 1;
@@ -361,6 +368,9 @@ switch(attack){
             if(window == 6 && window_timer == 2){
                 armorpoints -= 1;
             }
+            if(window == 6 && window_timer >= 5){
+                iasa_script();
+            }
         }
     break;
     case AT_FTILT:
@@ -395,15 +405,29 @@ with(obj_article1){
         destroy = true;
     }
 }
-    var temp_x = -10;
-    var max_temp_x = 70;
-    while (temp_x < max_temp_x
-    && (position_meeting(x+temp_x*spr_dir, y+2, asset_get("par_block"))
-    || position_meeting(x+temp_x*spr_dir, y+2, asset_get("par_jumpthrough")))
-    && !position_meeting(x+temp_x*spr_dir, y-2, asset_get("par_block"))){
-        temp_x++;
+var temp_x = 70;
+var max_temp_x = -40;
+var offset = 15;
+while (temp_x > max_temp_x){
+    if(ground_col(x+(temp_x)*spr_dir, y+2)){
+        if(ground_col(x+(temp_x+offset)*spr_dir, y+2) && ground_col(x+(temp_x-offset)*spr_dir, y+2)
+        && !position_meeting(x+(temp_x+offset)*spr_dir, y-2, asset_get("par_block"))){
+            break;
+        }else{
+            if(!ground_col(x+(temp_x+offset)*spr_dir, y+2) && !ground_col(x+(temp_x-offset)*spr_dir, y+2)
+            && !position_meeting(x+(temp_x+offset)*spr_dir, y-2, asset_get("par_block"))){
+                break;
+            }
+            temp_x--;
+        }
+    }else{
+        temp_x--;
     }
+}
 instance_create(x+temp_x*spr_dir, y, "obj_article1");
+#define ground_col(xx, yy)
+return (position_meeting(xx, yy, asset_get("par_block"))
+    || position_meeting(xx, yy, asset_get("par_jumpthrough")));
 #define eggrollspecialcancels
 if(is_special_pressed(DIR_UP)){
         sideup = 0;
@@ -411,7 +435,7 @@ if(is_special_pressed(DIR_UP)){
         window_timer = 0;
 }else{
         if((spr_dir == 1 && left_down) || (spr_dir == -1 && right_down)){
-            if(window_timer > 15 || window != 2){
+            if((window_timer > 15 || window != 2) && !hitpause){
                 eggroll_window_store = window;
                 eggroll_timer_store = window_timer;
                 window = 6;

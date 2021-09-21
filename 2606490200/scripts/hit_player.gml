@@ -74,7 +74,7 @@ if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 7{
     fxlup = spawn_hit_fx(hit_player_obj.x,y - 120,lup)
     fxlup.depth = -100
     sound_play(asset_get("sfx_coin_collect"))
-    ltrain += 15
+    ltrain += 12
 }
 
 }

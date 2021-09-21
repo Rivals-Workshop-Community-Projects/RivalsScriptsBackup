@@ -100,12 +100,7 @@ switch (state)
 			  
 			with (oPlayer)
 			{
-				//print("hmm")
-				if id == other.player_id break;
-				
-				//print("checking")
-
-				if place_meeting(x,y,other)
+				if place_meeting(x,y,other) and self != other.player_id
 				{
 					with other
 					{

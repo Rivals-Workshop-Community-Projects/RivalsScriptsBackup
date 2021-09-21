@@ -2,6 +2,8 @@
 
 user_event(0)
 
+reset_lifetime = false;
+
 sfx_arrow = sound_get("arrow_sfx")
 
 if (attack == AT_NSPECIAL) && (hbox_num == 1) {

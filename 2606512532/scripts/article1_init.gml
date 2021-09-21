@@ -1,5 +1,8 @@
 //article1_init
+
 oPlayer_owner = undefined;
+
+is_pitarticle = true;
 
 sprite_index = asset_get("empty_sprite")
 

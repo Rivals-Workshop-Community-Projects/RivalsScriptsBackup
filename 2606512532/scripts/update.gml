@@ -6,6 +6,9 @@ user_event(14);
 
 timer++;
 
+//jump decay
+djump_speed = 9 - djumps;
+
 //practice mode detector
 if (get_training_cpu_action() != CPU_FIGHT && !playtest && !("is_ai" in self)) {
     practice_mode = true;
@@ -257,14 +260,18 @@ if orbitar_parry_mode {
         y = orbitar_id.y + 30
     }
 }
+
 /*
 if taunt_pressed with oPlayer {
     if id != other.id {
         set_state(PS_ATTACK_GROUND)
         set_attack(AT_TAUNT)
+        //state_timer = 20
+        //window = 2;
     }
 }
 */
+
 
 //intro anim
 var intro_time = get_gameplay_time();
@@ -302,7 +309,7 @@ if (pit + trum in match) {
 }
 */
 
-if !echo && timer < 500 {
+if !echo && timer < 500 && timer > 10 {
 	with oPlayer if url == 2282173822 {
 		other.trummel_id = id;
 	}

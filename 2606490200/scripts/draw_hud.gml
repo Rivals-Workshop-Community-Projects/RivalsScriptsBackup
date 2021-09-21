@@ -28,7 +28,7 @@ shader_start();
    	  
 
 if state == PS_ATTACK_AIR && attack == AT_USPECIAL && movex < 56 && movex > -56 && movey < 70 && movey > -50{
-			draw_sprite_ext(sprite_get("gigaHud2"), 0, temp_x + movex + 40,  temp_y - 60 + movey + state_timer/3.6, 1, 1, 0, c_white, 1)
+			draw_sprite_ext(sprite_get("gigaHud2"), 0, temp_x + movex + 40,  temp_y - 60 + movey + state_timer/4, 1, 1, 0, c_white, 1)
 }
    	  
 shader_end();

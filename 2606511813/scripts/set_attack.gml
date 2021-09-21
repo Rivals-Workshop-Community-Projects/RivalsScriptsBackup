@@ -1,6 +1,6 @@
 //set_attack
 
-if attack == AT_DSPECIAL {
+if attack == AT_DSPECIAL && move_cooldown[AT_DSPECIAL] == 0 {
     attack = AT_DTHROW
     if orbitar_id != noone && instance_exists(orbitar_id) && move_cooldown[AT_DTHROW] == 0 {
         attack = AT_DSPECIAL_2;

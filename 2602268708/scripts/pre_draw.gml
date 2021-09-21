@@ -1,12 +1,3 @@
-with(obj_article_solid)
-{
-	if myOwner == other
-	{
-		var w = sprite_get_width(sprite_index);
-		draw_sprite_part(sprite_index,image_index,0,0,w,myHeightStart-y,x-(w/2),y);
-	}
-}
-
 if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
 	if (attack == AT_USPECIAL) && (window == 2 || window == 3 && window_timer == 0){
 		//to who ever coded the old version of uspecial: im gonna personally disassemble you

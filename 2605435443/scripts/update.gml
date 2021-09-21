@@ -173,7 +173,7 @@ if (easter_egg_timer <= 90) {
 		voiced_peacock = true;
 		cancelled_voice = false;
 		
-		 if !(oPlayer.url == 2135192216 || oPlayer.url == CH_ELLIANA || oPlayer.url == CH_ZETTERBURN || oPlayer.url == CH_CLAIREN || oPlayer.url == CH_ORI || oPlayer.url == 2229862078 || oPlayer.url == 2261916872 || oPlayer.url == 1870630263 || oPlayer.url == 1890617624 || oPlayer.url == 1871153050 || oPlayer.url == 1970731843 || oPlayer.url == 2190448871 || oPlayer.url == 2407716024 || get_player_color(player) == 15 || ((get_char_info(player,INFO_STR_NAME == "Big Band")))){
+		 if !(oPlayer.url == 2135192216 || oPlayer.url == CH_ELLIANA || oPlayer.url == CH_ZETTERBURN || oPlayer.url == CH_CLAIREN || oPlayer.url == CH_ORI || oPlayer.url == 2229862078 || oPlayer.url == 2261916872 || oPlayer.url == 1870630263 || oPlayer.url == 1890617624 || oPlayer.url == 1871153050 || oPlayer.url == 1970731843 || oPlayer.url == 2190448871 || oPlayer.url == 2407716024 || get_player_color(player) == 15 || (oPlayer.url == "2605435443")){
     snd_rng = random_func(0, 4, true);
     if (snd_rng == 0) {
         sound_play(sound_get("voice_intro1"));
@@ -186,7 +186,7 @@ if (easter_egg_timer <= 90) {
     }
 }
     
-  if (oPlayer.url == 2135192216 && get_player_color(player) != 15 && ((get_char_info(player,INFO_STR_NAME != "Big Band")))){
+  if (oPlayer.url == 2135192216 && get_player_color(player) != 15 && (oPlayer.url != "2605435443")){
     snd_rng = random_func(0, 5, true);
     
     if (snd_rng == 0) {
@@ -202,7 +202,7 @@ if (easter_egg_timer <= 90) {
     }
 }
 
-    if (oPlayer.url == 2407716024 && get_player_color(player) != 15 && ((get_char_info(player,INFO_STR_NAME != "Big Band")))){
+    if (oPlayer.url == 2407716024 && get_player_color(player) != 15 && (oPlayer.url != "2605435443")){
 	    snd_rng = random_func(0, 5, true);
     if (snd_rng == 0) {
         sound_play(sound_get("voice_intro1"));
@@ -217,7 +217,7 @@ if (easter_egg_timer <= 90) {
     }
 }   
 
-if (((get_char_info(player,INFO_STR_NAME == "Big Band"))) && get_player_color(player) != 15){
+if ((oPlayer.url == "2605435443") && get_player_color(player) != 15){
 	    snd_rng = random_func(0, 6, true);
     if (snd_rng == 0) {
         sound_play(sound_get("voice_intro1"));

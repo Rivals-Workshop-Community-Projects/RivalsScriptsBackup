@@ -21,7 +21,7 @@ for (var i = 0; i < array_length_1d(arrow_id_array); i++) {
 	            var _alpha = j < 12 ? j/12 : 1;
 	            //draw_circle_color(_x, _y, 2, c_white, c_white, false)
 	            //check within screen boundary
-	            if !(_x < view_get_xview() - 30  || _x > view_get_xview() + view_get_wview() + 30 || _y > view_get_yview() + view_get_hview() + 30 || _y < view_get_yview() - 30) {
+	            if onscreen(_x,_y) {
 		            //glow
 		            draw_sprite_general(sprite_get("arrow_glow"), 0, j*15, 0, 15, 62, _x, _y, _spr_dir * _speed/15, 1, _angle, c_white, c_white, c_white, c_white, _alpha*0.5);
 		            
@@ -36,7 +36,7 @@ for (var i = 0; i < array_length_1d(arrow_id_array); i++) {
 }
 
 //orbitar glow
-with obj_article1 if player_id == other.id && state == PS_ATTACK_AIR && window == 2 && !other.custom_clone {
+with obj_article1 if onscreen(x,y) && player_id == other.id && state == PS_ATTACK_AIR && window == 2 && !other.custom_clone {
 	var blend = gpu_get_blendmode(); //gets the current blend mode
 	var playercol = get_player_color(player);
     var glowcol = make_color_rgb(get_color_profile_slot_r(playercol,other.glow_slot),get_color_profile_slot_g(playercol,other.glow_slot),get_color_profile_slot_b(playercol,other.glow_slot))
@@ -168,4 +168,12 @@ if (offX != undefined) {
 		draw_sprite_ext(sprite_get("article_offscreen"), index, offX, offY, spr_dir, 1, 0, c_white, 1);
 		break;
 	}
+}
+
+#define onscreen(x, y)
+var offset = 50;
+if (x > view_get_xview() - offset) && (x < view_get_xview() + view_get_wview() + offset) && (y < view_get_yview() + view_get_hview() + offset) && (y > view_get_yview() - offset) {
+	return true;
+} else {
+	return false;
 }

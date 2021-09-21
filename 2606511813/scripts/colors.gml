@@ -97,14 +97,14 @@ set_color_profile_slot( 6, 6, 250, 127, 230 ); //Wings
 set_color_profile_slot( 6, 7, 136, 218, 252 ); //Whites
 
 // Dark Pit
-set_color_profile_slot( 7, 0, 191, 191, 191 ); //Yellows
-set_color_profile_slot( 7, 1, 40, 32, 48 ); //Browns
+set_color_profile_slot( 7, 0, 226, 170, 0 ); //Yellows
+set_color_profile_slot( 7, 1, 79, 65, 58 ); //Browns
 set_color_profile_slot( 7, 2, 255, 210, 183 ); //Skin
 set_color_profile_slot( 7, 3, 120, 0, 18 ); //Eye blues
 set_color_profile_slot( 7, 4, 60, 76, 178 ); //Blade/grey blues
 set_color_profile_slot( 7, 5, 110, 32, 122 ); //Reds
-set_color_profile_slot( 7, 6, 47, 34, 61 ); //Wings
-set_color_profile_slot( 7, 7, 43, 38, 46 ); //Whites
+set_color_profile_slot( 7, 6, 74, 65, 79 ); //Wings
+set_color_profile_slot( 7, 7, 61, 50, 69 ); //Whites
 
 // Palutena
 set_color_profile_slot( 8, 0, 255, 157, 0 ); //Yellows
