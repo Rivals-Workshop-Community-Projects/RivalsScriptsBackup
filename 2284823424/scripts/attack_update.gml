@@ -1,9 +1,71 @@
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
-    trigger_b_reverse();
+switch(attack){
+	case AT_NSPECIAL:
+	case AT_FSPECIAL:
+	case AT_USPECIAL:
+	case AT_DSPECIAL:
+		trigger_b_reverse();
+		break;
 }
 
 window_end = floor(get_window_value(attack, window, AG_WINDOW_LENGTH) * ((get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !has_hit) ? 1.5 : 1));
+
+
+
+// dust
+
+switch(attack){
+	case AT_JAB:
+	case AT_FTILT:
+	case AT_UTILT:
+	case AT_DTILT:
+		if (window == 1 || (attack == AT_JAB) && (window == 4)) && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x - 16 * spr_dir + sin(state_timer) * 10, y, "dash", spr_dir]);
+		}
+		break;
+	case AT_DATTACK:
+		if window == 1 && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x + 64 * spr_dir, y, "dash_start", spr_dir]);
+		}
+		break;
+	case AT_USTRONG:
+		if window == 1 && (window_timer == 1 || strong_charge % 10 == 1){
+			array_push(phone_dust_query, [x + 16 * spr_dir + sin(strong_charge + 5) * 10, y, "dash", -spr_dir]);
+		}
+		if window == 2 && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x - 0 * spr_dir, y, "dash_start", -spr_dir]);
+		}
+	case AT_FSTRONG:
+	case AT_DSTRONG:
+		if window == 1 && (window_timer == 1 || strong_charge % 10 == 1){
+			array_push(phone_dust_query, [x - 16 * spr_dir + sin(strong_charge) * 10, y, "dash", spr_dir]);
+		}
+		if window == 2 && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x - 0 * spr_dir, y, "dash_start", spr_dir]);
+		}
+		break;
+}
+
+
+
+// cape swipe
+
+switch(attack){
+	
+	// case AT_JAB:
+	case AT_UTILT:
+	case AT_FSTRONG:
+	case AT_USTRONG:
+	case AT_DSTRONG:
+	case AT_FAIR:
+	case AT_BAIR:
+	case AT_UAIR:
+		if (window == 1 && window_timer == 1 && !hitpause){
+			sound_play(asset_get("sfx_forsburn_cape_swipe"));
+		}
+		break;
+		
+}
 
 
 
@@ -63,7 +125,7 @@ switch(attack){
 		    		rune_crit_fair = 1;
 		    		
 		    		sound_play(asset_get("mfx_star"));
-		    		spawn_hit_fx(x - 20 * spr_dir, y - 48, 66)
+		    		spawn_hit_fx(x - 20 * spr_dir * size_mult, y - 48 * size_mult, 66)
 		    		
 		    		set_hitbox_value(attack, 1, HG_DAMAGE,
 		    			get_hitbox_value(attack, 1, HG_DAMAGE)
@@ -108,7 +170,9 @@ switch(attack){
     
     
     
-    case AT_DTILT:
+    case AT_DTILT: // OLD DTILT
+    	
+    	break;
         
         var slide_off = (window > 1);
         var slide_spd = on_block ? 13 : 13;
@@ -222,7 +286,7 @@ switch(attack){
                 if (window_timer == window_end && !has_hit){
                     var spd = ease_sineOut(5, 25, strong_charge, 60) * spr_dir
                     
-                    var arrow = create_hitbox(AT_FSTRONG, 2 + (strong_charge == 60), x + 40 * spr_dir + round(spd), y - 32);
+                    var arrow = create_hitbox(AT_FSTRONG, 2 + (strong_charge == 60), x + 40 * spr_dir * size_mult + round(spd), y - 32 * size_mult);
                     arrow.spr_dir = spr_dir;
                     arrow.hsp = spd;
                     arrow.vsp = ease_sineOut(1, -1, strong_charge, 60);
@@ -256,7 +320,7 @@ switch(attack){
                 if (window_timer == window_end){
                     var spd = ease_sineOut(5, 25, strong_charge, 60) * spr_dir;
                     
-                    var arrow = create_hitbox(AT_FSTRONG, 2 + (strong_charge == 60), x + 40 * spr_dir + round(spd), y - 38);
+                    var arrow = create_hitbox(AT_FSTRONG, 2 + (strong_charge == 60), x + 40 * spr_dir * size_mult + round(spd), y - 38 * size_mult);
                     arrow.spr_dir = spr_dir;
                     arrow.hsp = spd;
                     arrow.vsp = ease_sineOut(1, -1, strong_charge, 60);
@@ -265,7 +329,7 @@ switch(attack){
                     if has_hit arrow.players_crossbowed++;
                     
                     if has_rune("O"){
-	                    var arrow = create_hitbox(AT_FSTRONG, 2 + (strong_charge == 60), x + 40 * spr_dir + round(spd), y - 38);
+	                    var arrow = create_hitbox(AT_FSTRONG, 2 + (strong_charge == 60), x + 40 * spr_dir * size_mult + round(spd), y - 38 * size_mult);
 	                    arrow.spr_dir = spr_dir;
 	                    arrow.hsp = spd;
 	                    arrow.vsp = ease_sineOut(1, -1, strong_charge, 60) - 4;
@@ -273,7 +337,7 @@ switch(attack){
 	                    arrow.enemies = 1;
 	                    if has_hit arrow.players_crossbowed++;
 	                    
-	                    var arrow = create_hitbox(AT_FSTRONG, 2 + (strong_charge == 60), x + 40 * spr_dir + round(spd), y - 38);
+	                    var arrow = create_hitbox(AT_FSTRONG, 2 + (strong_charge == 60), x + 40 * spr_dir * size_mult + round(spd), y - 38 * size_mult);
 	                    arrow.spr_dir = spr_dir;
 	                    arrow.hsp = spd;
 	                    arrow.vsp = ease_sineOut(1, -1, strong_charge, 60) + 4;
@@ -358,7 +422,13 @@ switch(attack){
                     x = lerp(x, clamped_x, amt);
                 }
                 if y != clamped_y{
+                	vsp = 0;
                     y = lerp(y, clamped_y, amt);
+                }
+                
+                if window_timer == phone_window_end{
+                	x = clamped_x;
+                	y = clamped_y;
                 }
                 // if (window_timer == window_end && !uspecial_type) sound_play(sfx_splatoon_click);
                 break;
@@ -408,7 +478,7 @@ switch(attack){
 	                        new_b.type = used_block;
 	                        new_b.image_index = used_block;
 	                        
-	                        if used_block == BL_SLIME && !phone_cheats[cheat_tmi]{
+	                        if used_block == BL_SLIME && !phone_cheats[CHEAT_TMI]{
 								sound_play(sfx_minecraft_ding1);
 								var hfx = spawn_hit_fx(x, y + place_y + 16, vfx_exp);
 								hfx.steve_manip_id = self;
@@ -525,9 +595,12 @@ switch(attack){
                 	else if (sprite_index == spr_nspecial_cont_chest){
                 		sound_play(sfx_minecraft_chest_open);
                 	}
+                	else if sprite_index == spr_nspecial_cont_mario{
+                		sound_play(sfx_mario_coin);
+                	}
                 }
                 
-                if phone_cheats[cheat_tmi]{
+                if phone_cheats[CHEAT_TMI]{
                 	containers[next_container].spent_items = [0,0,0];
                 }
                 break;
@@ -549,7 +622,7 @@ switch(attack){
                 }
                 
                 if ((window_timer == window_end || window_timer == window_end / 2) && sprite_index == spr_nspecial_cont_brewing_stand){
-                	var hfx = spawn_hit_fx(x + 24 * spr_dir, y - 30, vfx_smoke);
+                	var hfx = spawn_hit_fx(x + 24 * spr_dir * size_mult, y - 30 * size_mult, vfx_smoke);
 					hfx.vsp = -2;
 					hfx.hsp = clamp(random_func(0, 4, true), 0, 3) - 1;
 					hfx.hsp *= 0.2;
@@ -590,7 +663,7 @@ switch(attack){
                                     found = true;
                                 }
                             }
-                            if !found || phone_cheats[cheat_tmi]{
+                            if !found || phone_cheats[CHEAT_TMI]{
                                 for (i = 0; i < array_length_1d(containers); i++){
                                     containers[i].spent_items = [0,0,0];
                                     restock_alpha = 10;
@@ -622,13 +695,14 @@ switch(attack){
                     sound_play(sfx_minecraft_pop);
                 }
                 
-                if (phone_cheats[cheat_cont_select] || has_rune("L")) && (down_pressed || up_pressed){
+                if (phone_cheats[CHEAT_CONT_PICK] || has_rune("L")) && (down_pressed || up_pressed){
                 	current_container += down_pressed - up_pressed;
-                    if (current_container < 0) current_container = 6;
-                    if (current_container > 6) current_container = 0;
+                	var last = array_length(containers) - 1;
+                    if (current_container < 0) current_container = last;
+                    if (current_container > last) current_container = 0;
                 	sound_play(sfx_minecraft_pop);
                 	next_container = current_container;
-	                if phone_cheats[cheat_tmi]{
+	                if phone_cheats[CHEAT_TMI]{
 	                	containers[next_container].spent_items = [0,0,0];
 	                }
                 }
@@ -670,6 +744,9 @@ switch(attack){
                         sound_play(sfx_minecraft_place_stone);
                         spawnVfx(6, vfx_blocks_break_iron, 30 * spr_dir, -30, 1);
                 	}
+                	else if sprite_index == spr_nspecial_cont_mario{
+                		sound_play(window == 4 ? sfx_mario_item_store : sfx_mario_poof_1);
+                	}
                 }
             
         }
@@ -697,26 +774,30 @@ switch(attack){
 			case 2:
 				if (window_timer == 1){
 					if (held_item == IT_FIRE_CHARGE){
-						create_hitbox(AT_NTHROW, 1, x + 32 * spr_dir, y - 32);
+						create_hitbox(AT_NTHROW, 1, x + 32 * spr_dir * size_mult, y - 32 * size_mult);
 						sound_play(sfx_minecraft_fireball);
 					}
 					else if (held_item == IT_ENDER_PEARL){
-						create_hitbox(AT_NTHROW, 2, x + 32 * spr_dir, y - 32);
+						create_hitbox(AT_NTHROW, 2, x + 32 * spr_dir * size_mult, y - 32 * size_mult);
 						sound_play(sfx_minecraft_teleport1);
 					}
 					else if (held_item == IT_EYE_OF_ENDER){
-						create_hitbox(AT_NTHROW, 3, x + 32 * spr_dir, y - 32);
+						create_hitbox(AT_NTHROW, 3, x + 32 * spr_dir * size_mult, y - 32 * size_mult);
 						sound_play(sfx_minecraft_teleport1);
 					}
 					else if (held_item == IT_SPLASH_POTION){
-						create_hitbox(AT_NTHROW, 4, x + 32 * spr_dir, y - 32);
+						create_hitbox(AT_NTHROW, 4, x + 32 * spr_dir * size_mult, y - 32 * size_mult);
 					}
 					else if (held_item == IT_LINGERING_POTION){
-						create_hitbox(AT_NTHROW, 6, x + 32 * spr_dir, y - 32);
+						create_hitbox(AT_NTHROW, 6, x + 32 * spr_dir * size_mult, y - 32 * size_mult);
 					}
 					else if (held_item == IT_BELL){
-						create_hitbox(AT_NTHROW, 9, x + 32 * spr_dir, y - 32);
+						create_hitbox(AT_NTHROW, 9, x + 32 * spr_dir * size_mult, y - 32 * size_mult);
 						sound_play(sfx_ssbu_bell);
+					}
+					else if (held_item == IT_SHELL){
+						create_hitbox(AT_NTHROW, 10, x + 32 * spr_dir * size_mult, y - 32 * size_mult);
+						sound_play(sfx_mario_shell_kick);
 					}
 					
 					loseItem(false);
@@ -809,20 +890,29 @@ switch(attack){
             case 2: //Active
                 piston_out = true;
                 if was_parried pist_type = 2;
+                
+                with oPlayer if hitpause && state_cat == SC_HITSTUN && other.piston_target == self{
+                    hitpause = max(hitpause, 3);
+                }
                 break;
             case 3: //Extended
                 if (window_timer == window_end && pist_type == 2) setWindow(7);
                 djumps = 0;
                 
                 piston_out = true;
+                
+                with oPlayer if hitpause && state_cat == SC_HITSTUN && other.piston_target == self{
+                    hitpause = max(hitpause, 3);
+                }
                 break;
             case 4: //Retracting foe or whiff
                 var current_pos = ease_quartIn(pist_last_x, pist_orig_x, window_timer, window_end);
                 pist_x = current_pos;
                 
-                with oPlayer if hitpause && other.piston_target == self{
+                with oPlayer if hitpause && state_cat == SC_HITSTUN && other.piston_target == self{
                     x = current_pos;
                     y = lerp(y, other.y, 0.3);
+                    hitpause = max(hitpause, 3);
                 }
                 
                 piston_out = true;
@@ -869,18 +959,32 @@ switch(attack){
        
 	
 	case AT_EXTRA_2: //Porkchop
-	
+		
+		if window == 1 && window_timer == 1 && (held_item == IT_MUSHROOM || held_item == IT_STAR){
+			sound_play(sfx_mario_item_appear);
+		}
+		
 		if (window == 2 && window_timer == 1){
 			if (held_item == IT_PORKCHOP){
 				set_player_damage(player, max(get_player_damage(player) - porkchop_heal_amt, 0));
 				spawnVfx(4, vfx_food, -20 * spr_dir, -40, 0);
 				sound_play(sfx_minecraft_eat);
 			}
-			else{
+			else if held_item == IT_POTION{
 				strength_pot = strength_pot_max;
 				spawnVfx(4, vfx_potion_glass, -20 * spr_dir, -40, 0);
 				sound_play(sfx_minecraft_drink);
 				sound_play(sfx_minecraft_glass);
+			}
+			else if held_item == IT_MUSHROOM{
+				mushroom = mushroom_max;
+				sound_play(sfx_mario_power_up);
+			}
+			else if held_item == IT_STAR{
+				starman = starman_max;
+				sound_play(sfx_mario_power_up);
+				sound_stop(starman_sound);
+				starman_sound = sound_play(sfx_mario_starman);
 			}
 			loseItem(false);
 		}
@@ -976,6 +1080,25 @@ switch(attack){
         	
             case 1:
             	has_placed = false;
+            	
+                var border_x = 50;
+                var border_y = 80;
+                var clamped_x = clamp(x, border_x, room_width - border_x);
+                var clamped_y = clamp(y, border_y, room_height - border_y + 40);
+                var amt = (window_timer == window_end) ? 1 : 0.25;
+                if x != clamped_x{
+                    hsp = 0;
+                    x = lerp(x, clamped_x, amt);
+                }
+                if y != clamped_y{
+                	vsp = 0;
+                    y = lerp(y, clamped_y, amt);
+                }
+                
+                if window_timer == phone_window_end{
+                	x = clamped_x;
+                	y = clamped_y;
+                }
             	break;
             case 2: //Active
                 if !has_placed && !was_parried && !phone_playtest{
@@ -1122,7 +1245,7 @@ switch(attack){
 				if thorns_flag{
 					create_hitbox(attack, 1, x, y);
 					sound_play(asset_get("sfx_war_horn"));
-					spawn_hit_fx(x, y - 32, vfx_tnt_blast);
+					spawn_hit_fx(x, y - 32 * size_mult, vfx_tnt_blast);
 					thorns_flag = false;
 				}
 				break;
@@ -1175,7 +1298,7 @@ switch(attack){
 					if !free taunt_dash = true;
 				}
 				
-				if (right_down ^^ left_down){
+				if abs(right_down - left_down){
 					if !free{
 						if window != 6 && window != 5 spr_dir = right_down - left_down;
 						
@@ -1194,7 +1317,7 @@ switch(attack){
 				
 				
 				if down_down{
-					if right_down ^^ left_down{
+					if abs(right_down - left_down){
 						var max_speed = walk_speed * 2 / 3;
 						hsp = clamp(hsp, -max_speed, max_speed);
 						new_window = 6;
@@ -1264,7 +1387,11 @@ switch(attack){
 	
 	
 	case AT_TAUNT_2:
-	
+		
+		hsp = 0;
+		vsp = 0;
+		can_move = 0;
+		
 		switch(window){
 			case 1:
 				bed_time = 0;
@@ -1377,7 +1504,7 @@ for (i = 0; i < count; i++){
 
 #define loseItem(break_sound)
 
-if phone_cheats[cheat_tmi] return;
+if phone_cheats[CHEAT_TMI] return;
 
 switch(items[held_item]).count_type{
     case 0: //One-time use

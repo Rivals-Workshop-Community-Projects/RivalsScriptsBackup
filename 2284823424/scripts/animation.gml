@@ -5,6 +5,9 @@ switch(state){
             case AT_USTRONG:
                 if (window == 3 || (window == 4 && window_timer < window_end * 1 / 3)) hud_offset = lerp(hud_offset, 100, 0.5);
                 break;
+            case AT_UAIR:
+                if window == 2 && has_hit image_index++;
+                break;
         }
     break;
 }
@@ -51,6 +54,8 @@ if (state == PS_PRATFALL){
 }
 
 if (attacking && attack == AT_EXTRA_2 && held_item == IT_POTION) sprite_index = spr_nspecial_item_potion;
+if (attacking && attack == AT_EXTRA_2 && held_item == IT_MUSHROOM) sprite_index = spr_nspecial_item_mushroom;
+if (attacking && attack == AT_EXTRA_2 && held_item == IT_STAR) sprite_index = spr_nspecial_item_star;
 
 
 

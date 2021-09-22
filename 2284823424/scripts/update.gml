@@ -1,9 +1,10 @@
+muno_event_type = 1;
 user_event(14);
 attacking = phone_attacking;
 if attacking window_end = phone_window_end;
 playtest = phone_playtest;
 practice = phone_practice;
-inited = phone_inited;
+inited = true;
 ditto = phone_ditto;
 blastzone_l = phone_blastzone_l;
 blastzone_r = phone_blastzone_r;
@@ -12,7 +13,61 @@ blastzone_b = phone_blastzone_b;
 
 
 
-fast_graphics = phone.phone_settings[phone.setting_fast_graphics];
+// if shield_pressed held_item = IT_SHELL;
+
+if starman{
+	music_fade(0, 0.25);
+	
+	if !(starman < 24 && starman % 8 < 4) && !(starman > starman_max - 24 && starman % 8 < 4){
+		invincible = true;
+	}
+	
+	if !hitpause{
+		starman--;
+		
+		if starman % 15 == 0{
+			var h = spawn_hit_fx(x + random_func(1, 32, true) - 16, y - (random_func(2, 64, true)), vfx_sparkle);
+			h.depth = depth;
+		}
+		
+		if starman % 3 == 0 && has_rune("O"){
+			create_hitbox(AT_NSPECIAL, 1, x, y);
+			var old_atk = attack;
+			attack = AT_NSPECIAL;
+			attack_end();
+			attack = old_atk;
+		}
+		
+		if starman == 1{
+			sound_stop(starman_sound);
+			sound_play(sfx_mario_power_down);
+		}
+	}
+}
+
+size_mult = 1;
+
+if mushroom{
+	if !(mushroom < 24 && mushroom % 8 < 4) && !(mushroom > mushroom_max - 24 && mushroom % 8 < 4){
+		size_mult = 2;
+	}
+	if !hitpause{
+		mushroom--;
+		
+		if mushroom == 1{
+			sound_play(sfx_mario_power_down);
+		}
+	}
+}
+
+if size_mult > 1{
+	if hurtboxID.sprite_index != asset_get("empty_sprite") hurtboxID.sprite_index = sprite_get("double_hurtbox");
+}
+char_height = orig_char_height * size_mult;
+
+
+
+fast_graphics = phone_fast;
 
 
 
@@ -144,7 +199,7 @@ if water_cooldown water_cooldown--;
 
 
 
-if state == PS_PARRY && special_pressed && phone_cheats[cheat_tmi] && !has_rune("M") discard_timer = 1;
+if state == PS_PARRY && special_pressed && phone_cheats[CHEAT_TMI] && !has_rune("M") discard_timer = 1;
 
 if discard_timer{
 	if special_down || special_pressed{
@@ -152,7 +207,7 @@ if discard_timer{
 			held_item = IT_NOTHING;
 			sound_play(sfx_minecraft_pop);
 			discard_timer = 0;
-			if phone_cheats[cheat_tmi] has_container = 1;
+			if phone_cheats[CHEAT_TMI] has_container = 1;
 		}
 		else{
 			discard_timer++;
@@ -212,7 +267,7 @@ if elytra{
 		
 		//loseItem() from attack_update
 		
-		if !phone_cheats[cheat_tmi]{
+		if !phone_cheats[CHEAT_TMI]{
 			switch(items[held_item]).count_type{
 			    case 0: //One-time use
 			    case 1: //Three uses, item count
@@ -306,7 +361,7 @@ if (held_item == IT_TOTEM || rune_totem){
 		x = bed_x;
 		y = bed_y;
 		if rune_totem rune_totem = 0;
-		else if !phone_cheats[cheat_tmi] held_item = IT_NOTHING;
+		else if !phone_cheats[CHEAT_TMI] held_item = IT_NOTHING;
 		if (state_cat == SC_HITSTUN){
 			set_state(PS_PRATFALL);
 			prat_fall_accel = 0;
@@ -541,7 +596,7 @@ with asset_get("hit_fx_obj") if ("steve_manip_id" in self && steve_manip_id == o
 				hsp -= 0.2;
 			}
 			else{
-				var spd = 1;
+				var spd = 1 + (distance_to_point(other.x, other.y - 32) < 64);
 				hsp = clamp(hsp - spd * sign(x - other.x), -10, 10);
 				vsp = clamp(vsp - spd * sign(y - (other.y - 32)), -10, 10);
 			}

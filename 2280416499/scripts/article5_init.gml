@@ -1,6 +1,6 @@
 //bridge
 
-with asset_get("obj_stage_article_solid") if num == 1 other.owner = self;
+with asset_get("obj_stage_article") if num == 1 other.owner = self;
 depth = 28;
 
 sprite_index = sprite_get("bridge");

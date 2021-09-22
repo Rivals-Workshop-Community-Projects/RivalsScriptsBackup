@@ -25,7 +25,7 @@ moonwalk_accel = 1.4;
 
 jump_start_time = 5;
 jump_speed = 11.5;
-short_hop_speed = 8;
+short_hop_speed = 5.5;//8
 djump_speed = jump_speed-1.5;
 exp_djump_speed = jump_speed-1.5; //explorer custom
 leave_ground_max = dash_speed-0.5; //the maximum hsp you can have when you go from grounded to aerial without jumping

@@ -47,6 +47,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 20);
 set_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_HITPAUSE, 20);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, 1);
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_PARENT_HITBOX, 2);

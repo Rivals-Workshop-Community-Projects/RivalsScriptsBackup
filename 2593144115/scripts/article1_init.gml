@@ -45,9 +45,15 @@ bubble_has_hit = 0;
 bubble_growing = 0;
 grow_frame = 0;
 
+bubble_hitbydspecial = 0;
+
 hit_adjuster = 2.4;
 hit_timer = 60;
 
 bubblepop1 = hit_fx_create(sprite_get("bubblepop1"), 12);
 bubblepop2 = hit_fx_create(sprite_get("bubblepop2"), 12);
 bubblepop3 = hit_fx_create(sprite_get("bubblepop3"), 12);
+
+bubble_explosion1 = hit_fx_create(sprite_get("bubble_explosion1"), 30);
+bubble_explosion2 = hit_fx_create(sprite_get("bubble_explosion2"), 30);
+bubble_explosion3 = hit_fx_create(sprite_get("bubble_explosion3"), 30);

@@ -87,7 +87,10 @@ if (attack == AT_NSPECIAL)
 	if (window == 2) 
 	{
 		{
-		uspec_meter = 20;
+		--uspec_meter;
+		--uspec_meter;
+		--uspec_meter;
+		--uspec_meter;
 			move_cooldown[AT_NSPECIAL] = 120;
 			move_cooldown[AT_NSPECIAL_2] = 120;
 		}
@@ -165,7 +168,6 @@ else{
 //WEE FSPECIAL
 if (attack == AT_FSPECIAL ) && (has_hit=true){
 	if  window == 7 && window_timer == 1 && special_down{
-		sound_play(asset_get("sfx_swipe_medium2"));
 		hsp = 9 * spr_dir;
 		vsp = -6.5
 		move_cooldown[AT_FSPECIAL] = 90
@@ -186,6 +188,50 @@ if (attack == AT_FSPECIAL && window > 7){
 		}
 	}
 }
+
+//DinoBros comment: Hey if anything goes wrong ping me (DinoBros) and I'll fix it when I can
+if (attack == AT_FSPECIAL) {
+	if window == 1 {
+		fspecialDidHold = 0
+		fspecialGrab = 0
+	}
+	/*
+	if has_hit  {
+		if hitpause && fspecialGrab == 0  {
+			fspecialGrab = 1
+			old_hsp += spr_dir * 10
+		} 
+		if !hitpause && fspecialGrab == 1 && fspecialDidHold == 0 {
+			can_jump = true
+			djumps = 0
+		}
+	}
+	*/
+	with pHitBox {
+		if orig_player == other.player && attack == AT_FSPECIAL && !has_hit && other.fspecialGrab == 0 &&
+		(
+			(place_meeting(x, y, asset_get("par_block"))) 
+			|| (place_meeting(x, y, asset_get("par_jumpthrough"))) 
+		)
+			{
+				other.window = 7
+				other.window_timer = 0
+				other.fspecialGrab = 1
+				other.vsp = 0
+				//other.can_jump = true
+				//instance_destroy(self)
+			}
+	}
+	if (window == 7 && (fspecialGrab == 1 || has_hit)) {
+		if (window_timer == 1) {
+			hsp = spr_dir * fspecialSpeed 
+		}
+		can_jump = true
+		has_hit = true
+		vsp = 0
+	}
+}
+
 //Stinger Multipress
 if (attack == AT_DATTACK) {
 	if window == 1{

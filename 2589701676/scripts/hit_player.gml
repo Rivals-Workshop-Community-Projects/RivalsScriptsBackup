@@ -15,6 +15,8 @@ if ((my_hitboxID.attack==AT_FTILT && (my_hitboxID.hbox_num==1 || my_hitboxID.hbo
     (my_hitboxID.attack==AT_BAIR && (my_hitboxID.hbox_num==1 || my_hitboxID.hbox_num==2))){
     if(hit_player_obj.chainedDown==0){
         hit_player_obj.orig_knock=ease_cubeOut(0, floor(hit_player_obj.orig_knock), hit_player_obj.numChains, 9);
+        //print_debug(string(hit_player_obj.state==PS_HITSTUN))
+        //hit_player_obj.window_timer=floor(ease_cubeOut(0, floor(hit_player_obj.window_timer), hit_player_obj.numChains, 9));
         if (hit_player_obj.numChains!=9){
             hit_player_obj.should_make_shockwave=false;
         }

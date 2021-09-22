@@ -1,8 +1,9 @@
-user_event(12);
+muno_event_type = 4;
+user_event(14);
 
 
 
-if jab_timer draw_sprite_ext(spr_pho_cooldown_arrow, 0, x - 7, y - char_height - hud_offset - 28, 1, 1, 0, c_white, 1);
+if jab_timer draw_sprite_ext(sprite_get("_pho_cooldown_arrow"), 0, x - 7, y - char_height - hud_offset - 28, 1, 1, 0, c_white, 1);
 
 
 

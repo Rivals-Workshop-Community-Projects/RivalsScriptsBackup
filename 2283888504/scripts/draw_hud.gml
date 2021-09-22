@@ -1,6 +1,6 @@
 //draw_debug_text(10, 10, string(chord_menu_state) + ", " + string(chord_menu_timer));
 
-if !("phone_inited" in self) exit;
+if !("inited" in self) exit;
 
 
 
@@ -42,7 +42,7 @@ with guitar if !following{
 
 
 
-if (guitar.chord_state) && !phone_cheats[cheat_hide_hud]{
+if (guitar.chord_state) && !phone_cheats[CHEAT_TRAILER]{
 	var hud_frame = 5;
 	var icon_alpha = 1;
 	var icon_index = shown_chord;
@@ -99,7 +99,7 @@ if (guitar.chord_state) && !phone_cheats[cheat_hide_hud]{
 
 //draw_debug_text(10, 10, string(guitar.chord) + ", " + string(chord_active));
 
-if !phone_cheats[cheat_hide_hud] for (var i = 0; i <= num_chords; i++){
+if !phone_cheats[CHEAT_TRAILER] for (var i = 0; i <= num_chords; i++){
 	var cd = guitar.chord_cooldown[i];
 	
 	if (cd == clamp(cd, -29, 1)){ //Cooldown end
@@ -114,7 +114,8 @@ if !phone_cheats[cheat_hide_hud] for (var i = 0; i <= num_chords; i++){
 
 
 
-user_event(11);
+muno_event_type = 5;
+user_event(14);
 
 
 

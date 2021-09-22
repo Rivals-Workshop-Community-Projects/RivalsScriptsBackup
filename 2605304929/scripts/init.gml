@@ -139,3 +139,6 @@ hitfx_bubbles = hit_fx_create(sprite_get("bubbles"),30);
 // Lukaru's Intro Code
 // intro
 introTimer = -4;
+
+// Hud Code
+distance_to_opponent = [0,0,0];

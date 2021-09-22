@@ -61,8 +61,8 @@ set_hitbox_value(atk, hitboxNum, HG_SHAPE, 2);
 set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 1); //1 = low priority over other moves || 10 = highest
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 14);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 40);
-set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 6.5);
-set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 7.5); //6.5
+set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 1.2); //0.9
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 20); //hitstun
 set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 304);

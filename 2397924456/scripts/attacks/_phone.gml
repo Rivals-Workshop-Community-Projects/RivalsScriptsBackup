@@ -3,7 +3,7 @@ set_attack_value(AT_PHONE, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_PHONE, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_PHONE, AG_CATEGORY, 2);
 set_attack_value(AT_PHONE, AG_OFF_LEDGE, 1);
-set_attack_value(AT_PHONE, AG_HURTBOX_SPRITE, sprite_get("_pho_empty"));
+set_attack_value(AT_PHONE, AG_HURTBOX_SPRITE, hurtbox_spr);
 set_attack_value(AT_PHONE, AG_USES_CUSTOM_GRAVITY, 1);
 
 set_attack_value(AT_PHONE, AG_MUNO_ATTACK_EXCLUDE, 1);

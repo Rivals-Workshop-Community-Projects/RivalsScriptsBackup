@@ -23,7 +23,7 @@ switch(state){
 		
 		if (crouch_time == crouch_time_max){
 			setState(1);
-			with user set_state(PS_PRATLAND);
+			with user if visible set_state(PS_PRATLAND);
 			user.was_parried = true;
 			user.parry_lag = 10000;
 			user.x = x;

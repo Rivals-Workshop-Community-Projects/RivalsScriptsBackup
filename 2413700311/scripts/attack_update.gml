@@ -1,6 +1,6 @@
 init_shader();
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (attack == attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
 }
 
@@ -16,12 +16,12 @@ if (attack == AT_EXTRA_2){
 if (attack == AT_EXTRA_3){
     hurtboxID.sprite_index = get_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE);
 }
+
 //------------------------------------------------------------------------------
 //ドッキング
 if(fusion = true){
 	fusion = false;
 	set_attack( AT_EXTRA_2 );//フュージョン用に変える
-	
 }
 
 if (attack == AT_EXTRA_2){
@@ -40,12 +40,12 @@ if (attack == AT_EXTRA_2){
 	            hsp += lengthdir_x(1, joy_dir);
 	            vsp += lengthdir_y(1, joy_dir);
 	        } else {
-	            hsp *= .3;
-	            vsp *= .3;
+	            hsp *= 1;
+	            vsp *= 1;
 	        }
 	        var fly_dir = point_direction(0,0,hsp,vsp);
 	        var fly_dist = point_distance(0,0,hsp,vsp);
-	        var max_speed = 4;
+	        var max_speed = 6;
 	        if (fly_dist > max_speed){
 	            hsp = lengthdir_x(max_speed, fly_dir);
 	            vsp = lengthdir_y(max_speed, fly_dir);
@@ -71,11 +71,90 @@ if (attack == AT_DSTRONG){
 //蓋ジャンプ
 
 if (attack == AT_EXTRA_3){
-	can_wall_jump = true;
+	can_fast_fall = false;//高速落下不可
+	
+	if (window == 1){
+		can_wall_jump = false;
+		if(hutaSP == true and bodyless == true){//DSPからのコンボ
+			//残像とか速度の処理
+			max_fall = 16;//最高速度
+			blurcolor = c_red;
+			blur = array_create(8);
+			set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX, sound_get("ex3up3"));
+			set_window_value(AT_EXTRA_3, 2, AG_WINDOW_CUSTOM_GRAVITY, .5);
+			set_window_value(AT_EXTRA_3, 2, AG_WINDOW_VSPEED, -26);
+			set_window_value(AT_EXTRA_3, 3, AG_WINDOW_CUSTOM_GRAVITY, 13);
+			
+			set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 20);
+			set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 16);
+			set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, 1.1);
+			set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 16);
+			set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 1);
+		}
+		if(huta_life == 0 and bodyless == false){//3段階目
+			max_fall = 24;
+			blurcolor = c_red;
+			blur = array_create(8);
+			set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX, sound_get("ex3up3"));
+			set_window_value(AT_EXTRA_3, 2, AG_WINDOW_VSPEED, -26);
+			set_window_value(AT_EXTRA_3, 3, AG_WINDOW_CUSTOM_GRAVITY, 16);
+			
+			set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 18);
+			set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 14);
+			set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, .9);
+			set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 16);
+			set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, 1);
+		}
+		if(huta_life == 1 and bodyless == false){//2段階目
+			max_fall = 18;
+			blurcolor = c_orange;
+			blur = array_create(6);
+			set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX, sound_get("ex3up2"));
+			set_window_value(AT_EXTRA_3, 2, AG_WINDOW_VSPEED, -22);
+			set_window_value(AT_EXTRA_3, 3, AG_WINDOW_CUSTOM_GRAVITY, 12);
+			
+			set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 16);
+			set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 12);
+			set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, .9);
+			set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 12);
+			set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, .8);
+		}
+		if(huta_life > 1 or (bodyless == true and hutaSP == false)){//1段階目
+			max_fall = 11;
+			blurcolor = c_yellow;
+			blur = array_create(4);
+			set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX, sound_get("ex3up"));
+			set_window_value(AT_EXTRA_3, 2, AG_WINDOW_VSPEED, -18);
+			set_window_value(AT_EXTRA_3, 3, AG_WINDOW_CUSTOM_GRAVITY, 8);
+			
+			set_hitbox_value(AT_EXTRA_3, 1, HG_DAMAGE, 14);
+			set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_KNOCKBACK, 10);
+			set_hitbox_value(AT_EXTRA_3, 1, HG_KNOCKBACK_SCALING, .9);
+			set_hitbox_value(AT_EXTRA_3, 1, HG_BASE_HITPAUSE, 10);
+			set_hitbox_value(AT_EXTRA_3, 1, HG_HITPAUSE_SCALING, .8);
+		}
+	}
+	
+	if (window == 3){
+		can_wall_jump = true;
+	}
 	
 	if (window == 4 && window_timer == 1){
 		destroy_hitboxes();
 	}
+			//着地爆破
+	if(hutaSP == true){
+		set_hitbox_value(AT_EXTRA_3, 3, HG_WINDOW, 0);
+		if(window == 2 or window == 3){
+			if(left_down) x -=4;
+			if(right_down) x +=4;
+		}
+		if(window == 5 and window_timer == 1){
+			spawn_hit_fx( x, y-20, 143 );
+			sound_play( asset_get("sfx_ell_uspecial_explode"));
+			create_hitbox( AT_NSPECIAL_2, 1, x, y);
+		}
+	}else { reset_hitbox_value(AT_EXTRA_3, 3, HG_WINDOW); }
 }
 
 //------------------------------------------------------------------------------
@@ -92,68 +171,73 @@ if (attack == AT_UTILT){
 	if(has_hit_player){
 		can_jump = true;
 	}
+	
+	if (bodyless == true){//体なし
+		if (window == 2 && window_timer == 1){
+			var huta1 = instance_create(x, y-40, "obj_article2");
+	        huta1.player_id = player_id;
+	        huta1.player = player;
+	        huta1.spr_dir = spr_dir;
+		}
+	}
 }
 
 //------------------------------------------------------------------------------
-//チェーンソー
+//投げ
 if (attack == AT_NSPECIAL){
-	if (window == 1){ //初期化
-		if(window_timer == 1) {
-			FBcharge = 0;
-		}
-	}
-	
-	    if (window == 3){ //ループ
-			if (special_down) {
-				if(window_timer == 8) {
-					window_timer = 0;
-					FBcharge += 1
-					
-						if(FBcharge == 8){//時間経過
-							window_timer = 0;
-							window = 7;
-							FBcharge = 0;	
-						}
-				}
-			}
-			if (!special_down){	
-				if(window_timer == 8) {
-					window_timer = 0;
-					window = 7;
-					FBcharge = 0;
-				}
-			}
-			
-	   		if(has_hit_player){//ヒットした場合
-				window_timer = 0;
-				window = 4;
-			}
-	    }
-
-	    
-	    if (window == 4){//ヒット
-	    	if(window_timer == 16) {
-				window_timer = 0;
-				window = 5;
-	    	}
-	    }
-	    
-	    if (window == 5){//ヒット余韻
-	    	if(window_timer == 10) {
-				window_timer = 0;
-				window = 6;
-	    	}
-	    }
-	    
-	    if ((window == 6) or (window == 7)){
-			if(window_timer == 6) {
-				window_timer = 0;
-				window = 8;
-			}
-	    }
-	    
 	    //高速落下不可
 		can_fast_fall = false;
+		move_cooldown[AT_NSPECIAL] = 18;
+		
+		if(free){
+			set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_air"));
+			set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_air_hurt"));
+		}else{
+			reset_attack_value(AT_NSPECIAL, AG_AIR_SPRITE);
+			reset_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE);
+		}
+		
+		if (window == 1){
+			if(NBalive == 0) NB_cast = false;
+			
+				reset_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START);
+				reset_window_value(AT_NSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START);
+				reset_window_value(AT_NSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START);
+				
+				reset_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X);
+				reset_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED);
+				reset_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED);
+				reset_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GRAVITY);
+				reset_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER);
+				
+				NBmuki = 1;
+		}
+		if (window == 4){
+			if(up_down){
+				set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -10);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GRAVITY, .4);
+				if(right_down or left_down) set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 6);
+			}
+			if((spr_dir == -1 and right_down) or (spr_dir == 1 and left_down)){
+				set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 11);
+				set_window_value(AT_NSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 13);
+				set_window_value(AT_NSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 14);
+				
+				set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 5);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, -28);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, -9);
+				if(up_down) set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, -6);
+				NBmuki = -1;
+			}
+			//if(down_down) set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, 8);
+			if((up_down and !right_down and !left_down) or (down_down and free)) set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 0);
+		}
+		if (window == 5){
+			if(NB_cast == false){
+				NB_cast = true;
+				create_hitbox(AT_NSPECIAL, 1, x+30*spr_dir*NBmuki, y-28);
+			}
+		}
 }
 
 //------------------------------------------------------------------------------
@@ -208,6 +292,7 @@ if (attack == AT_DSPECIAL){
 	if (window == 1 && window_timer == 1){
 		reset_window_value( AT_EXTRA_3, 1, AG_WINDOW_HSPEED );
 		reset_window_value( AT_EXTRA_3, 1, AG_WINDOW_HSPEED_TYPE );
+		dsp_up = false;
 	}
 	
 	    if (window == 2 && window_timer == 1){
@@ -215,18 +300,47 @@ if (attack == AT_DSPECIAL){
 			sound_play( asset_get("sfx_zetter_shine"));
 		}
 		
-	
-	if (window == 3 && window_timer == 3 && bodyless = false){
-			var misobody = instance_create(x, y+0, "obj_article1");
-	        misobody.player_id = player_id;
-	        misobody.player = player;
-	        misobody.spr_dir = spr_dir;
-	        misobody.hsp = 0;
-	        misobody.vsp = 0;
+	if(window == 3){
+		if (window_timer == 3 && bodyless = false){
+				var misobody = instance_create(x, y+0, "obj_article1");
+		        misobody.player_id = player_id;
+		        misobody.player = player;
+		        misobody.spr_dir = spr_dir;
+		        misobody.hsp = 0;
+		        misobody.vsp = 0;
+		}
+		/*
+		if (window == 3 && window_timer == 4){
+			if(up_down){
+				dsp_up = true;
+				set_window_value(AT_DSPECIAL, 4, AG_WINDOW_HSPEED, 14);
+				set_window_value(AT_DSPECIAL, 4, AG_WINDOW_HSPEED_TYPE, 2);
+				set_window_value(AT_DSPECIAL, 4, AG_WINDOW_VSPEED, -13);
+				set_window_value(AT_DSPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 2);
+				
+				set_window_value(AT_DSPECIAL, 5, AG_WINDOW_HSPEED, 1);
+				set_window_value(AT_DSPECIAL, 5, AG_WINDOW_HSPEED_TYPE, 1);
+			}else{
+				dsp_up = false;
+				reset_window_value(AT_DSPECIAL, 4, AG_WINDOW_HSPEED);
+				reset_window_value(AT_DSPECIAL, 4, AG_WINDOW_HSPEED_TYPE);
+				reset_window_value(AT_DSPECIAL, 4, AG_WINDOW_VSPEED);
+				reset_window_value(AT_DSPECIAL, 4, AG_WINDOW_VSPEED_TYPE);
+				
+				reset_window_value(AT_DSPECIAL, 5, AG_WINDOW_HSPEED);
+				reset_window_value(AT_DSPECIAL, 5, AG_WINDOW_HSPEED_TYPE);
+			}
+		}
+		*/
 	}
-		
+	
 	if (window > 3){
         bodyless = true;
+        
+        if(dsp_up and has_hit){
+        	set_attack( AT_DSPECIAL_AIR );
+        	window = 6;
+        }
 	}
 }
 
@@ -275,13 +389,36 @@ if (attack == AT_DSPECIAL_AIR){
 //------------------------------------------------------------------------------
 //頭分離
 if (attack == AT_USPECIAL){
-    if (window == 2){
+    if (window == 1 and window_timer == 9){
         bodyless = true;
     }
     if (window == 4){
     	can_wall_jump = true;
-    	//can_attack = true;
-    	//can_special = true;
+    }
+    
+    if (window == 3 or window == 4){
+    	can_attack = false;
+    	can_special = false;
+    	if(attack_pressed){
+    		if(right_down)spr_dir = 1;
+    		if(left_down)spr_dir = -1;
+    		window = 6;
+    		window_timer = 0;
+    	}
+    }
+    
+    if (window == 6){
+    	can_wall_jump = false;
+    	if(window_timer == 14){
+    		window = 7;
+    		window_timer = 0;
+    	}
+    }
+    if (window >= 6){
+    	if(!free){
+    		window = 5;
+    		window_timer = 0;
+    	}
     }
 }
 
@@ -310,6 +447,8 @@ if (attack == AT_BAIR){
 	    if (window == 3 && window_timer == 1){
 			spawn_hit_fx( x-35*spr_dir, y-25, bair_Fx );
 		}
+		
+		if (window > 3) can_wall_jump = true;
 		
 		//高速落下不可
 		can_fast_fall = false;

@@ -1,1 +1,2 @@
-user_event(12);
+muno_event_type = 6;
+user_event(14);

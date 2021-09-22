@@ -54,5 +54,6 @@ sprite_change_offset("uspec_hurt2", 40, 80);
 sprite_change_offset("particle", 4, 4);
 sprite_change_offset("maid", 40, 72);
 sprite_change_offset("moyai", 145, 211);
+sprite_change_offset("final_ice", 17, 25);
 set_victory_theme(sound_get("Flake"));
 set_victory_bg(sprite_get("vic"));

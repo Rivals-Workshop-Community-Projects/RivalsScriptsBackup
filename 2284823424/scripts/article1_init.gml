@@ -1,5 +1,7 @@
 //Article 1: Fire and Poison
 
+if object_index == oPlayer exit;
+
 if (player_id.object_index == pHitBox) player_id = player_id.player_id; //i hate rivals of aether
 
 //Sprite and direction

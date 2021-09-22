@@ -78,7 +78,7 @@ cycle_timer++;
 
 
 
-if !(exist_timer % 10) && !player_id.phone.phone_settings[player_id.phone.setting_fast_graphics]{
+if !(exist_timer % 10) && !player_id.phone_fast{
 	var hfx = spawn_hit_fx(x, y - 20, player_id.vfx_smoke);
 	hfx.vsp = -5;
 	hfx.hsp = hsp * 0.2 + clamp(random_func(0, 4, true), 0, 3) - 1;

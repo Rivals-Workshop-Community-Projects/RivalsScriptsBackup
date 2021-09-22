@@ -1,6 +1,12 @@
 if "hitpause_timer" not in self hitpause_timer = 0;
 if "has_hit" not in self has_hit = 0;
 
+if attack == AT_FTILT{
+	if player_id.phone_arrow_cooldown{
+		hitbox_timer = length - 1;
+	}
+}
+
 if attack == AT_DSPECIAL_2{
 	
 	if "hits_left" not in self hits_left = 0;

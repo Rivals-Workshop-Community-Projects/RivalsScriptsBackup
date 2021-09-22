@@ -9,8 +9,13 @@ chainDownBall_spr = sprite_get("CDball");
 chainBuff_spr = sprite_get("keyBuff");
 
 
-if (!instance_exists(obj_article1) /*player==2*/)
+find_key=false;
+if (!instance_exists(obj_article1) /*player==2*/){
     my_key = instance_create(x,y,"obj_article1");
+    my_key.desiredX=x;
+    my_key.desiredY=y;
+    find_key=true;
+}
 //else my_key=noone;//instance_create(x,y,"obj_article1");
 my_jail = noone;
 my_child = noone;

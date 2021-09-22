@@ -33,25 +33,31 @@ if(grabbedid != noone){
 	}
 }
 
+//待機リセット
+if(state != PS_IDLE) rand_idle = 0;
+
 if (state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND){
 	FS_alpha = 0;
+	max_fall = 11;
 }
+
+//NB
+if(NBalive != 0) NBalive -= 1;
+
 
 //---------------------------
 
-if (attack == AT_EXTRA_3)
+
+if (attack == AT_EXTRA_3 and window == 1)
 {
 	ex3cooltime = 30;
 }
 if(ex3cooltime != 0) ex3cooltime = ex3cooltime - 1;
 
 
-//着地で空上のクールダウン解消
-if(!free){
-    move_cooldown[AT_UAIR] = 0;
-}
+
 //空上 ダブルジャンプでも解消
-if (state == PS_DOUBLE_JUMP) {
+if (state == PS_DOUBLE_JUMP or !free or state == PS_WALL_JUMP) {
     move_cooldown[AT_UAIR] = 0;
 }
 
@@ -61,21 +67,11 @@ if(!free){
 }
 
 
-//NBタメ　ダメージで初期化
+//ダメージで初期化
 if (state_cat == SC_HITSTUN){
-	if(attack == AT_NSPECIAL){
-		NBcharge = 0;
-	}
-	
 	fusion = false;
 }
 
-//NBタメ最大で主線点滅
-if (NBcharge >= chargeMAX) && ((get_gameplay_time() mod 30) > 20) {
-	outline_color = [ 58, 63, 100 ];
-}else{
-	outline_color = [ 0, 0, 0 ];
-}
 
 
 //tcoイラスト ランダム
@@ -144,6 +140,10 @@ if (bodyless == false) {//身体あり
 	set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("utilt"));
 	set_attack_value(AT_UTILT, AG_HURTBOX_SPRITE, sprite_get("utilt_hurt"));
 	
+	reset_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH);
+	reset_window_value(AT_UTILT, 2, AG_WINDOW_LENGTH);
+	reset_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH);
+	
 	set_hitbox_value(AT_UTILT, 1, HG_PARENT_HITBOX, 1);
 	set_hitbox_value(AT_UTILT, 1, HG_HITBOX_TYPE, 1);
 	set_hitbox_value(AT_UTILT, 1, HG_WINDOW, 2);
@@ -211,9 +211,6 @@ if (bodyless == false) {//身体あり
 	//--------------------------------------------------------------------------
 	 
 }
-//---------------------------
-
-
 
 }
 //------------------------------------------------------------------------------
@@ -262,15 +259,15 @@ if (bodyless == true) {//身体なし
 	if (hutaSP == true) {
 	set_attack_value(AT_EXTRA_3, AG_SPRITE, sprite_get("headless_ex03"));
 	set_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE, sprite_get("headless_ex03_hurt"));
-	set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 3);
+	set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 7);
 	
-	set_window_value(AT_EXTRA_3, 3, AG_WINDOW_TYPE, 1);//落下させる
+	set_window_value(AT_EXTRA_3, 3, AG_WINDOW_TYPE, 10);//落下させる
 	set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 6);
 	set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAMES, 6);
 	set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAME_START, 2);
-	set_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED, -8);
-	set_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED_TYPE, 1);
-	set_window_value(AT_EXTRA_3, 3, AG_WINDOW_CUSTOM_GRAVITY, 1);
+	reset_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED);
+	reset_window_value(AT_EXTRA_3, 3, AG_WINDOW_VSPEED_TYPE);
+	set_window_value(AT_EXTRA_3, 3, AG_WINDOW_CUSTOM_GRAVITY, 8);
 	}
 	//--------------------------------------------------------------------------
 	//蓋投げ
@@ -282,9 +279,13 @@ if (bodyless == true) {//身体なし
 	set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("headless_utilt"));
 	set_attack_value(AT_UTILT, AG_HURTBOX_SPRITE, sprite_get("headless_utilt_hurt"));
 	
+	set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 9);
+	set_window_value(AT_UTILT, 2, AG_WINDOW_LENGTH, 2);
+	set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 12);
+
 	set_hitbox_value(AT_UTILT, 1, HG_PARENT_HITBOX, 1);
 	set_hitbox_value(AT_UTILT, 1, HG_HITBOX_TYPE, 1);
-	set_hitbox_value(AT_UTILT, 1, HG_WINDOW, 2);
+	set_hitbox_value(AT_UTILT, 1, HG_WINDOW, 0);
 	set_hitbox_value(AT_UTILT, 1, HG_LIFETIME, 3);
 	set_hitbox_value(AT_UTILT, 1, HG_HITBOX_Y, -35);
 	set_hitbox_value(AT_UTILT, 1, HG_WIDTH, 50);
@@ -294,8 +295,8 @@ if (bodyless == true) {//身体なし
 	set_hitbox_value(AT_UTILT, 1, HG_ANGLE, 90);
 	set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 4);
 	set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, .35);
-	set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 6);
-	set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .25);
+	set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 4);
+	//set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .25);
 	
 	//--------------------------------------------------------------------------
 	//回避
@@ -323,3 +324,20 @@ if (bodyless == true) {//身体なし
 	//--------------------------------------------------------------------------
 	
 }
+//---------------------------
+//motion blur
+	for(var i = array_length_1d(blur) - 1; i > 0; i--) {
+		blur[@ i] = blur[i - 1];
+	}
+	blur[@ i] = [
+		sprite_index,
+		image_index,
+		x,
+		y,
+		image_xscale,
+		image_yscale,
+		image_angle,
+		image_blend,
+		image_alpha,
+	];
+//---------------------------

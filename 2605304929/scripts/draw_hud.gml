@@ -17,7 +17,12 @@ draw_debug_text( temp_x + 40, temp_y - 80,"y " + string(y));
 //draw_debug_text( temp_x + 40, temp_y - 45,"practice_mode: " + string(practice_mode));
 
 // Draw Hud Elements Carry Over from Klock
+// distance_to_object(opponent_id) is a built in GML function that works
+// Declared in init //distance_to_opponent = [0,0,0];
 var num_of_players = instance_number(oPlayer);
+var opponent_distance_temp = [];
+var opponent_object_iterator = 0;
+
 //print(num_of_players)
 if(num_of_players == 2){
     var self_id = self;
@@ -26,17 +31,58 @@ if(num_of_players == 2){
             if(id = self_id){}
             else opponent_id = id;
         }
+    //print(distance_to_object(opponent_id));
+    //print("Daora: " + string(self_id));
+    //print("Opponent: " + string(opponent_id));
+}
+//print(num_of_players);
+if(num_of_players > 2){
+    var self_id = self;
+    var opponent_id =[];
+        with(asset_get("oPlayer")){
+            if(id = self_id){} // Igonore the player
+            else if(clone){num_of_players--;} // Ignore clones and deduct num of players
+            else {
+                opponent_id[player] = id;
+                opponent_distance_temp[player] = distance_to_object(self_id);
+                //print(opponent_distance_temp);
+            }
+        }
+        
+        var min_of_distance = 9999; // Set it high for comparison
+        var min_of_distance_id;
+    for(var i = 1;i<num_of_players + 1;i++){
+        //print(string(opponent_id[i])+": " + string(opponent_distance_temp[i]));
+        if(player = i){
+           // print("Daora is player" + string(i));
+        }
+        else{
+            if(min_of_distance > opponent_distance_temp[i]){
+                min_of_distance = opponent_distance_temp[i];
+                min_of_distance_id = opponent_id[i];
+            }
+        }
+    }
+    opponent_id = min_of_distance_id;
+   //print(string(min_of_distance_id)+": " + string(min_of_distance));
+        //print(num_of_players);
+       /* for(var i = 0;2;i++){
+            distance_to_opponent[i] = opponent_distance_temp[i];
+        }*/
+        //print("in loop");
+        //print(distance_to_opponent);
     //print("Daora: " + string(self_id));
     //print("Opponent: " + string(opponent_id));
     
+}
+// Draw section assuming there is an opponent
+if(num_of_players > 1){
 var status_effect_electric_temp, status_effect_water_temp;
     with(opponent_id){
         status_effect_water_temp = status_effect_water;
         status_effect_electric_temp = status_effect_electric;
 
     }
-}
-
 //print(opponent_id)
 //shader_start();
         
@@ -54,32 +100,7 @@ var status_effect_electric_temp, status_effect_water_temp;
         
         // Draw Main Hud
         draw_sprite_ext(sprite_get( "hud"), 1, temp_x + 104, temp_y - 8,1,1,0,c_white,1);
-        
-        /*
-        draw_debug_text( temp_x + 40, temp_y - 16,"W: " + string(status_effect_water_temp));
-        draw_debug_text( temp_x + 140, temp_y - 16,"E: " + string(status_effect_electric_temp));
-        */
-        // Get closest opponent
-        //var nearest_player = instance_nearest(x, y, asset_get("oPlayer"));
-        /*
-        //Shell 1
-        if(move_cooldown[AT_DSPECIAL] == 0){
-        draw_sprite_ext(sprite_get( "dspecial_proj"), get_gameplay_time()/6, temp_x + 20, temp_y - 6,1,1,0,c_white,1);
-        }
-        */
-        /*
-        //Shell 2
-        if(shells == 2){
-        draw_sprite_ext(sprite_get( "shell"), 1, temp_x + 10, temp_y - 6,1,1,90,c_white,1);
-        }
-        
-        if(move_cooldown[AT_DSPECIAL] == 0){
-        draw_sprite_ext(sprite_get( "suitcase_icon"), 1, temp_x + 30, temp_y - 2,1,1,0,c_white,1);
-        }
-        
-        if(move_cooldown[AT_FSPECIAL] == 0){
-        draw_sprite_ext(sprite_get( "roll_icon"), 1, temp_x +60, temp_y - 2,1,1,0,c_white,1);
-        }
+}
         
 shader_end();
 

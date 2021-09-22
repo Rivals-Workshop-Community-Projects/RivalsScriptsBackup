@@ -28,10 +28,11 @@ if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 2 && my_hitboxID
 
 
 
+var ki_mult = 5; // 4
+
 switch my_hitboxID.attack{
 	case AT_NSPECIAL:
 		if my_hitboxID.hbox_num == 1{
-			var ki_mult = 4;
 			if !ssj ki = min(ki + my_hitboxID.damage * ki_mult, ki_max);
 			if kaioken{
 				take_damage(hit_player_obj.player, player, 1);
@@ -41,12 +42,10 @@ switch my_hitboxID.attack{
 		}
 	case AT_DSPECIAL_2:
 		if my_hitboxID.hbox_num == 2{
-			var ki_mult = 4;
 			if !ssj ki = min(ki + my_hitboxID.damage * ki_mult, ki_max);
 			break;
 		}
 	default:
-		var ki_mult = 4;
 		if !ssj ki = min(ki + my_hitboxID.damage * ki_mult, ki_max);
 		if kaioken{
 			take_damage(hit_player_obj.player, player, 2);

@@ -1,4 +1,4 @@
-print (grab_timer);
+print (whirlwind_hit);
 
 shader_start();
 

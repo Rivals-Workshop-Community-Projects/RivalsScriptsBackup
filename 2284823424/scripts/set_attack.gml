@@ -59,6 +59,9 @@ if has_rune("N"){
 		case AT_DSPECIAL:
 			held_item = IT_TNT;
 			break;
+		case AT_TAUNT:
+			held_item = down_down ? IT_MUSHROOM : IT_SHELL;
+			break;
 		
 		default:
 			do_stuff = 0;
@@ -161,14 +164,24 @@ if get_num_hitboxes(attack) && !move_cooldown[attack]{
 		reset_hitbox_value(attack, num, HG_DAMAGE);
 		reset_hitbox_value(attack, num, HG_KNOCKBACK_SCALING);
 		reset_hitbox_value(attack, num, HG_VISUAL_EFFECT);
+		reset_hitbox_value(attack, num, HG_HITBOX_X);
+		reset_hitbox_value(attack, num, HG_HITBOX_Y);
+		reset_hitbox_value(attack, num, HG_WIDTH);
+		reset_hitbox_value(attack, num, HG_HEIGHT);
 		// reset_hitbox_value(attack, num, HG_BASE_HITPAUSE);
 		// reset_hitbox_value(attack, num, HG_HITPAUSE_SCALING);
-		if strength_pot && get_hitbox_value(attack, num, HG_HITBOX_TYPE) == 1{
+		if (strength_pot || size_mult > 1 && has_rune("O")) && get_hitbox_value(attack, num, HG_HITBOX_TYPE) == 1{
 			set_hitbox_value(attack, num, HG_DAMAGE, get_hitbox_value(attack, num, HG_DAMAGE)						* strength_pot_mult);
 			set_hitbox_value(attack, num, HG_KNOCKBACK_SCALING, get_hitbox_value(attack, num, HG_KNOCKBACK_SCALING)	* strength_pot_mult);
 			if get_hitbox_value(attack, num, HG_KNOCKBACK_SCALING) set_hitbox_value(attack, num, HG_VISUAL_EFFECT, 304);
 			// set_hitbox_value(attack, num, HG_KNOCKBACK_SCALING, get_hitbox_value(attack, num, HG_BASE_HITPAUSE)		* strength_pot_mult);
 			// set_hitbox_value(attack, num, HG_KNOCKBACK_SCALING, get_hitbox_value(attack, num, HG_HITPAUSE_SCALING)	* strength_pot_mult);
+		}
+		if size_mult > 1{
+			set_hitbox_value(attack, num, HG_HITBOX_X, get_hitbox_value(attack, num, HG_HITBOX_X) * size_mult);
+			set_hitbox_value(attack, num, HG_HITBOX_Y, get_hitbox_value(attack, num, HG_HITBOX_Y) * size_mult);
+			set_hitbox_value(attack, num, HG_WIDTH, get_hitbox_value(attack, num, HG_WIDTH) * size_mult);
+			set_hitbox_value(attack, num, HG_HEIGHT, get_hitbox_value(attack, num, HG_HEIGHT) * size_mult);
 		}
 	}
 }
@@ -215,4 +228,5 @@ if (attack == AT_USPECIAL && has_rune("O")){
 
 
 
-user_event(13);
+muno_event_type = 2;
+user_event(14);

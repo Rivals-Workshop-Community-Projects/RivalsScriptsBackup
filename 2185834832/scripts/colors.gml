@@ -204,13 +204,13 @@ set_color_profile_slot( 22, 3, 50, 51, 62 ); //Shell
 set_color_profile_slot( 22, 4, 226, 226, 245 ); //Beads
 set_color_profile_slot( 22, 5, 5, 226, 226 ); //Bubble Highlight
 
-// Don (Spike)
-set_color_profile_slot( 23, 0, 143, 0, 0 ); //Liquid
-set_color_profile_slot( 23, 1, 42, 148, 0 ); //Skin
-set_color_profile_slot( 23, 2, 62, 37, 176 ); //Cloth
-set_color_profile_slot( 23, 3, 27, 94, 0 ); //Shell
-set_color_profile_slot( 23, 4, 125, 219, 141 ); //Beads
-set_color_profile_slot( 23, 5, 40, 40, 40 ); //Bubble Highlight
+// B0wlingKing
+set_color_profile_slot( 23, 0, 80, 85, 235 ); //Liquid
+set_color_profile_slot( 23, 1, 230, 184, 168 ); //Skin
+set_color_profile_slot( 23, 2, 232, 140, 54 ); //Cloth
+set_color_profile_slot( 23, 3, 201, 131, 219 ); //Shell
+set_color_profile_slot( 23, 4, 230, 159, 215 ); //Beads
+set_color_profile_slot( 23, 5, 166, 187, 255 ); //Bubble Highlight
 
 // Bat Monkey
 set_color_profile_slot( 24, 0, 232, 106, 115 ); //Liquid

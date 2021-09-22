@@ -80,7 +80,7 @@ switch (get_player_color(player))
 
 	case 30: //helel alt shading tweaking
 		set_character_color_shading(6, 4); //LIGHT
-		set_character_color_shading(7, -5); //FIRE
+		set_character_color_shading(7, -2); //FIRE
 		break;
 	case 31: //theikos black shading amplify
 		set_character_color_shading(5, 1.5); //CLOTHBLACK

@@ -1,9 +1,11 @@
+muno_event_type = 1;
 user_event(14);
+
 attacking = phone_attacking;
 if attacking window_end = phone_window_end;
 playtest = phone_playtest;
 practice = phone_practice;
-inited = phone_inited;
+inited = true;
 ditto = phone_ditto;
 blastzone_l = phone_blastzone_l;
 blastzone_r = phone_blastzone_r;

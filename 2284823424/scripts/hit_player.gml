@@ -76,7 +76,11 @@ switch(my_hitboxID.attack){
 			my_hitboxID.target = hit_player_obj;
 		}
 		else if (my_hitboxID.hbox_num == 9){
-			sound_play(sfx_minecraft_bell);
+			sound_play(sfx_minecraft_bell, false, noone, 1.25);
+		}
+		else if my_hitboxID.hbox_num == 10{
+			my_hitboxID.hitpause_timer_2 = round(hit_player_obj.hitstop_full);
+			my_hitboxID.in_hitpause = true;
 		}
 		break;
 	case AT_USPECIAL:
@@ -130,8 +134,8 @@ if (!has_container && !held_item && !vfx_exists) && (my_hitboxID.type == 1) swit
 
 
 
-if strength_pot && my_hitboxID.type == 1{
-	spawnPotFX();
+if (strength_pot || size_mult > 1 && has_rune("O")) && my_hitboxID.type == 1{
+	if strength_pot spawnPotFX();
 	if my_hitboxID.kb_scale > 0{
 		sound_play(asset_get("sfx_war_horn"));
 		hitstop *= strength_pot_mult;

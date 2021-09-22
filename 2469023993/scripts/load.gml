@@ -1,5 +1,5 @@
-sprite_change_offset("noxhurtbox", 125, 158);
-sprite_change_offset("noxcrouchbox", 125, 158);
+sprite_change_offset("noxhurtbox", 125, 160);
+sprite_change_offset("noxcrouchbox", 125, 160);
 sprite_change_offset("idle", 125, 158);
 sprite_change_offset("hurt", 125, 158);
 sprite_change_offset("uphurt", 125, 158);
@@ -65,3 +65,5 @@ set_victory_bg( sprite_get("noxground"));
 sprite_change_offset("kirbothrow", 125, 158);
 
 sprite_change_offset("noxmiis", 60, 30);
+
+sprite_change_offset("noxgoalpost", 18, 41);

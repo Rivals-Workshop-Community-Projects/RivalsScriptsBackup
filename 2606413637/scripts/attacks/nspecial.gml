@@ -42,11 +42,12 @@ set_window_value(AT_NSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 13);
 
 // endlag
-set_window_value(AT_NSPECIAL, 7, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_NSPECIAL, 7, AG_WINDOW_LENGTH, 16); // also change in atk update
 set_window_value(AT_NSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 16);
 
 set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_ENDLAG, string(get_window_value(AT_NSPECIAL, 7, AG_WINDOW_LENGTH)));
+set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Endlag increases with charge.");
 
 set_num_hitboxes(AT_NSPECIAL, 0);
 

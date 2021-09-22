@@ -157,7 +157,7 @@ if attack == AT_NSPECIAL && hbox_num <= 3{
 }
 
 if attack == AT_DSPECIAL{
-	    	    	if hitbox_timer % 2 == 0 {
+	    if hitbox_timer % 2 == 0 {
     	spawn_hit_fx(x - 40 + random_func(1,80,true),y - 40 + random_func(2,80,true), bfx2)
     	}
     	
@@ -341,19 +341,19 @@ if lockouttimer < 0 {
              switch hbox_num {
                case 1 :
                sound_play(asset_get("sfx_bird_downspecial"),false,noone,0.4)
-               damage = 6
+               damage = 4
                break;
                
                case 2 :
                sound_play(asset_get("sfx_bird_downspecial"),false,noone,0.7)
                sound_play(sound_get("b1"),false,noone,0.6)
-               damage = 8
+               damage = 6
                break;
                
                case 3 :
                sound_play(asset_get("sfx_bird_downspecial"),false,noone,1)
                sound_play(sound_get("b3"),false,noone,0.6)
-               damage = 12
+               damage = 10
                break;
                
              }
@@ -498,7 +498,7 @@ if lockouttimer < 0 {
                 destroyed = true 
          	}
          	
-         	if nearbyhitbox.attack == AT_FSPECIAL && (hitbox_timer > 30 or vsp > 0){
+         if nearbyhitbox.attack == AT_FSPECIAL && (hitbox_timer > 30 or vsp > 0){
          	   sound_play(sound_get("strongb"),false,noone,1.2)
          	   shake_camera(5,8)
          	   spawn_hit_fx(x,y ,305)
@@ -624,6 +624,18 @@ if lockouttimer < 0 {
 	
 	
 	   if player == orig_player {     
+	   	
+	   	//if player_id.attacking == true and player_id.attack == AT_DSPECIAL and player_id.window == 1
+        // and player_id.window_timer == 6 {
+        // 	if bouncing == true {
+        // 		spawn_hit_fx(x,y ,bfx5)
+        // 		destroyed = true
+        // 		shake_camera(4,4)
+        // 		sound_play(asset_get("sfx_absa_singlezap1"))
+        //		
+        // 	}
+        // }
+         
          if player_id.attacking == true and player_id.attack == AT_DSPECIAL and player_id.window == 1
          and player_id.window_timer == 7 {
          	  // spr_dir = player_id.spr_dir

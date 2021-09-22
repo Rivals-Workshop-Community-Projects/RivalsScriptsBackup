@@ -17,6 +17,11 @@ if (get_gameplay_time()==player){
         instance_create(x,y,"obj_article1");
 }
 */
+if (find_key){
+    my_key.desiredX=x;
+    my_key.desiredY=y;
+    find_key=false;
+}
 
 if (point_distance(x,y,my_key.x, my_key.y)<my_key.collection_dist){
     my_key.current_owner_id = id;

@@ -8,3 +8,4 @@ if (attack == 49 && hit_player_obj.state_cat == SC_HITSTUN) {
 		grabbedid.ungrab = 0;
     }
 }
+

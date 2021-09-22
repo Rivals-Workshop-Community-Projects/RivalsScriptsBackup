@@ -34,4 +34,4 @@ spr_shield = sprite_get("orbitars_shield")
 spr_shield_outline = sprite_get("orbitars_shield_outline")
 spr_shield_break = sprite_get("orbitars_break")
 
-depth = -6
+depth = -4

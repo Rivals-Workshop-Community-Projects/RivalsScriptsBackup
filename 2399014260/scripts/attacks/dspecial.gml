@@ -47,7 +47,8 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, sfx_mario_pop_1);
 
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, spr_dspecial_proj);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 7);
+orig_turnip_speed = 7;
+set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, orig_turnip_speed);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_VSPEED, -3);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_GRAVITY, 0.5);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);

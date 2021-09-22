@@ -106,7 +106,7 @@ set_hitbox_value(AT_BAIR, 4, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_BAIR, 5, HG_PARENT_HITBOX, 5);
 set_hitbox_value(AT_BAIR, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 5, HG_WINDOW, 2);
-set_hitbox_value(AT_BAIR, 5, HG_LIFETIME, 1);
+set_hitbox_value(AT_BAIR, 5, HG_LIFETIME, 2);
 set_hitbox_value(AT_BAIR, 5, HG_HITBOX_X, 11);
 set_hitbox_value(AT_BAIR, 5, HG_HITBOX_Y, -14);
 set_hitbox_value(AT_BAIR, 5, HG_WIDTH, 31);

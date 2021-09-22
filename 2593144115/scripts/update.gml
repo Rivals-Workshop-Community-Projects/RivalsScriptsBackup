@@ -11,7 +11,7 @@ with (asset_get("oPlayer")){
 with (asset_get("oPlayer")) {
 	if (amaya_venom && amaya_venom_id == other.id && !hitpause) {
 		amaya_venom_timer += 1;
-		if (amaya_venom_timer % (180-30*amaya_venom_count) == 0) //60 frames on 4, 150 on 1
+		if (amaya_venom_timer % (145-25*amaya_venom_count) == 0) //45 frames on 4, 70 on 3, 95 on 2, 120 on 1
                 {
                     take_damage(player, other.player, 1);
                     spawn_hit_fx(x, y-char_height/2, 19);

@@ -41,5 +41,7 @@ runeA_dash_cooldown = runeA_dash_cooldown_max;
 god_time = god_time_reset;
 godpower = false;
 od_current = 0;
+od_gainable = true;
+od_already_active = false;
 
-if (has_rune("O") && theikos_active) theikos_active = false;
+if (has_rune("O") && theikos) theikos_active = false;

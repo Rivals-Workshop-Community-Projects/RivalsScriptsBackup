@@ -30,7 +30,7 @@ moonwalk_accel      = 1.3;		// 1.2  -  1.4
 // Air movement
 leave_ground_max    = 6;		// 4    -  8
 max_jump_hsp        = 6;		// 4    -  8
-air_max_speed       = 4;  		// 3    -  7
+air_max_speed       = 5;  		// 3    -  7		prepatch: 4
 jump_change         = 3;		// 3
 air_accel           = 0.3;		// 0.2  -  0.4
 prat_fall_accel     = 0.85;		// 0.25 -  1.5
@@ -461,7 +461,7 @@ tech_recovery_frames    = 2;
 // Tech roll
 techroll_startup_frames     = 2;
 techroll_active_frames      = 1;
-techroll_recovery_frames    = 3;
+techroll_recovery_frames    = 2;
 
 // Airdodge
 air_dodge_startup_frames    = 1;

@@ -3,6 +3,12 @@ sprite_change_offset("intro", 64, 478); //Intro1
 sprite_change_offset("intro2", 64, 478); //Intro2
 
 sprite_change_offset("idle", 64, 94);
+
+sprite_change_offset("idle_2", 64, 94);
+sprite_change_offset("idle_3", 64, 94);
+sprite_change_offset("idle_4", 64, 94);
+
+
 sprite_change_offset("crouch", 64, 94);
 sprite_change_offset("walk", 64, 94);
 sprite_change_offset("walkturn", 64, 94);
@@ -120,9 +126,9 @@ sprite_change_offset("fstrong", 64, 94);
 sprite_change_offset("ustrong", 64, 138);
 sprite_change_offset("dstrong", 64, 94);
 sprite_change_offset("nspecial", 64, 94);
+sprite_change_offset("nspecial_air", 64, 94);
 sprite_change_offset("fspecial", 64, 94);
 sprite_change_offset("uspecial", 64, 94);
-sprite_change_offset("uspecial_air", 64, 94);
 sprite_change_offset("dspecial", 64, 94);
 sprite_change_offset("dspecial_air", 64, 94);
 sprite_change_offset("taunt", 64, 94);
@@ -143,8 +149,21 @@ sprite_change_offset("dstrong_hurt_proj", 12, 6);
 sprite_change_offset("body_proj", 24, 40);
 //sprite_change_offset("body_hurt_proj", 64, 94);
 
+
+sprite_change_offset("nspe_proj", 18, 18);
+sprite_change_offset("nspe_proj2", 18, 18);
+sprite_change_offset("nspe_proj3", 18, 18);
+sprite_change_offset("nspe_proj4", 18, 18);
+sprite_change_offset("nspe_proj_hurt", 18, 18);
+sprite_change_offset("nspe_dust", 13, 11);
+sprite_change_offset("nspe_dust2", 13, 11);
+sprite_change_offset("nspe_dust3", 13, 11);
+
+
 sprite_change_offset("body_fall_proj", 64, 94);
 sprite_change_offset("fspecial_proj", 32, 32);
+sprite_change_offset("fspecial_proj2", 32, 32);
+sprite_change_offset("fspecial_proj3", 32, 32);
 sprite_change_offset("article2_mask", 32, 32);
 
 

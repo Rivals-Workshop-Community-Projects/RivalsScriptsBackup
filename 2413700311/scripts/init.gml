@@ -89,9 +89,10 @@ roll_backward_max = 9;
 
 
 
+//MOTION BLUR CODE
+blur = array_create(4);
 
 
-//プレイヤー番号
 
 //Intro
 introTimer = -6; //これを-4に設定すると、アニメーションの最初の数フレームが画面が開くことでブロックされるのを防ぐことができます。
@@ -103,11 +104,22 @@ random_intro = 0;
 introstart = false;
 introend = false;
 
+//待機変化
+rand_idle = 0;
+
 //NBチャージ
-NBcharge = 0;
+//NBcharge = 0;
 //NBチャージの最大
-chargeMAX = 20;
-chargeMAXend = 23;
+//chargeMAX = 20;
+//chargeMAXend = 23;
+
+
+NB_cast = false;
+NBalive = 0;
+NBmuki = 1;
+
+NB_charge2 = 0;
+NB_length2 = 0;
 
 //nairコンボ
 nair_combo = 0;
@@ -133,17 +145,23 @@ bodyloss = false;
 //下スマのジャンプ
 dstr_jump = -6;
 
-//スマッシュで体を出す時のチャージ量 初期25
+//スマッシュで体を出す時のチャージ量
 bodyshot = 20;
 
 //蓋ジャンプ用
 ex3cooltime = 0;
 hutahit = false;
 hutahit2 = false;
+hutahit3 = false;
 
+huta_life = 3;//蓋の体力
+blurcolor = c_orange; //ブラーの色
 
 //下必殺で蓋に当たったとき用
 hutaSP = false;
+
+//Dspe上用
+dsp_up = false;
 
 
 //音とか
@@ -290,4 +308,7 @@ miiverse_post = sprite_get("miiverse_post");
 //stage: pokemon stadium
 pkmn_stadium_front_img = sprite_get("pokestadiumfront");
 pkmn_stadium_back_img = sprite_get("pokestadiumback");
+
+//stage: wily castle
+wily_robotmaster_img = sprite_get("mega");
 

@@ -104,7 +104,6 @@ else if (allow_bibical && theikos && !has_rune("O"))
 
 if (intro_timer < 13 && !was_reloaded) draw_indicator = false;
 else draw_indicator = true;
-
 //this stops the overhead HUD from getting in the way of the animation. If your animation does not involve much movement, this may not be necessary.
 
 //////////////////////////////////////////////////MOVEMENT MECHANICS SECTION//////////////////////////////////////////////////
@@ -351,8 +350,9 @@ if (!menu_up && (burningfury_active || guardaura_active))
 {
     //activating buffs will burn mana over time and disable mp gaining
     mpGainable = false;
-    if (burningfury_active || guardaura_active) mp_fc_rate = buff_overtime_cost;
-    if (burningfury_active && guardaura_active) mp_fc_rate = buff_overtime_cost*2;
+    if ((burningfury_active || guardaura_active) && phone_cheats[mp_drain] == 0) mp_fc_rate = buff_overtime_cost;
+    if ((burningfury_active && guardaura_active) && phone_cheats[mp_drain] == 0) mp_fc_rate = buff_overtime_cost*2;
+    if (phone_cheats[mp_drain] == 1) mp_fc_rate = 0;
 
     mp_fc_num += mp_fc_rate;
 
@@ -1048,24 +1048,6 @@ with (pHitBox) //references all hitbox objects
     }
 }
 
-//making sure the burning fury effects are selected correctly
-//the theikos effcts are now on user_event(1)
-if (burningfury_active)
-{
-    fx_ustrong_lightaxe_sprite = sprite_get("fx_ustrong_lightaxeburn");
-    fx_lightdagger = sprite_get("fx_lightdaggerburn");
-    fx_lightdagger_air = sprite_get("fx_lightdaggerburn_air");
-    fx_lighthookshot = sprite_get("fx_lighthookshotburn");
-    sparks_indicator = sprite_get("fx_lightsparks");
-}
-else
-{
-    fx_ustrong_lightaxe_sprite = sprite_get("empty");
-    fx_lightdagger = sprite_get("empty");
-    fx_lightdagger_air = sprite_get("empty");
-    fx_lighthookshot = sprite_get("empty");
-    sparks_indicator = sprite_get("fx_lightsparks");
-}
 //aura color stuff
 if (theikos_active && is_8bit)
 {
@@ -1238,8 +1220,8 @@ if (get_player_color(player) == 30)
     set_article_color_slot(6, color_get_red(helel_hsv), color_get_green(helel_hsv), color_get_blue(helel_hsv));
 
     //fire
-    set_color_profile_slot(30 ,7 , color_get_red(helel_hsv) ,color_get_green(helel_hsv) ,color_get_blue(helel_hsv));
-    set_article_color_slot(7, color_get_red(helel_hsv), color_get_green(helel_hsv), color_get_blue(helel_hsv));
+    set_color_profile_slot(30 ,7 , color_get_red(helel_hsv)-120 ,color_get_green(helel_hsv)-120 ,color_get_blue(helel_hsv)-120);
+    set_article_color_slot(7, color_get_red(helel_hsv)-120 ,color_get_green(helel_hsv)-120 ,color_get_blue(helel_hsv)-120);
 
     //when bar double jumps and starts a dash he will get a rainbow motion blur
     var helel_r = get_color_profile_slot_r(30, 6);
@@ -1255,21 +1237,15 @@ if (get_player_color(player) == 30)
 }
 
 //theikos stuff
-
 if (has_rune("L") && !has_rune("O") && was_reloaded) //theikos reload check
 {
     theikos = true;
     theikos_active = true;
 }
 
-if (theikos_active)
-{
-    user_event(0); //everything
-    user_event(1); //effects
-}
-else if (godpower || od_already_active || get_player_color(player) == 31) user_event(1); //effects
-else user_event(2); //remove all theikos effects
-
+//theikos stuff
+user_event(0);
+user_event(1);
 
 //seriously don't be afraid, stupid mortal (also give me my outline)
 if (bibical)
@@ -1644,7 +1620,7 @@ else //holy burn mechanic
             var randomX = random_func(1, 8,true)*8;
             var randomY = random_func(2, 8,true);
         
-            if (holyburn_counter % 20 == 0) take_damage(player, other.player, 1); //every 20 frames hurt foe
+            if (holyburn_counter % 20 == 0) take_damage(player, other.player, 1); //every 20 frames hurt foe (CHANGE THIS TO 30)
 
             if (holyburn_counter % 3 == 0) with (other) //spawn fire particles
             {
@@ -1880,7 +1856,7 @@ if (has_rune("O") && od_current >= od_max && !od_already_active && (state != PS_
     if (attack_pressed && special_pressed)
     {
         if (!has_rune("L") && !free) set_attack(AT_OVERDRIVE);
-        else if (has_rune("L") && !theikos_active) set_attack(49);
+        else if (has_rune("L") && !theikos_active) set_attack(47);
     }
 }
 else if ("fs_charge" in self && fs_charge >= 200 && (state != PS_ATTACK_AIR || state != PS_ATTACK_GROUND)
@@ -1900,6 +1876,7 @@ if (attack == AT_OVERDRIVE && (state_cat == SC_GROUND_NEUTRAL || state_cat == SC
 
 if (godpower)
 {
+    od_prepare_godpower = false;
     //timer work
     god_time --;
     od_current = god_time/9;
@@ -1912,19 +1889,22 @@ if (godpower)
         od_ready = false;
     }
 
-    if (god_time <= 0)
+    if (god_time == 0)
     {
         godpower = false;
         god_time = god_time_reset;
         sound_play(asset_get("sfx_abyss_despawn"), 0, 0, 2);
-        if (theikos_active) theikos_active = false;
+        if (theikos_active)
+        {
+            theikos_active = false;
+            od_already_active = false;
+        }
     }
 
     //extra burning
     with (asset_get("oPlayer")) if (player != other.player) holyburn_maxcount = god_burn_time;
 }
-// od cooldown
-if (!od_gainable && !godpower && !od_already_active)
+else if (!godpower && !od_already_active) // for some reason this doesn't wanna work with theia evlogia
 {
     od_cooldown ++;
     if (od_cooldown == 5) od_gainable = true;

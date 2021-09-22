@@ -34,9 +34,9 @@ set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_WINDOW, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_WINDOW_CREATION_FRAME, 12);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_LIFETIME, 3);
-set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITBOX_Y, -30);
+set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITBOX_Y, -18); // -30
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_WIDTH, 40); // 48
-set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HEIGHT, 48);
+set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HEIGHT, 72); // 48
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_SHAPE, 2); // 0
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_DAMAGE, 4);
@@ -45,13 +45,13 @@ set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_EXTRA_HITPAUSE, 30);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
+set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_MUNO_HITBOX_NAME, "Grab");
 
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_WINDOW_CREATION_FRAME, 1);
-set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_LIFETIME, 30);
+set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_LIFETIME, 3); // 30 (what??)
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HITBOX_X, 32);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_WIDTH, 48);

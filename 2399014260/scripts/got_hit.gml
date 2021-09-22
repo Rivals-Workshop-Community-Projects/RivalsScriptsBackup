@@ -7,7 +7,7 @@ if !array_equals(stopped_sounds, []){
 
 
 
-if phone_attacking && attack == AT_DSPECIAL && window < 3 && hitpause{
+if phone_attacking && attack == AT_DSPECIAL && dspecial_window_tracker < 3{
 	var vfx = instance_create(x, y - 48, "obj_article3");
 	vfx.spr_dir = -spr_dir;
 }

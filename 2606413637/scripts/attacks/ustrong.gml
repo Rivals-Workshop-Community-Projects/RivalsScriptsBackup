@@ -30,6 +30,7 @@ set_window_value(AT_USTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_num_hitboxes(AT_USTRONG, 1);
 
 set_hitbox_value(AT_USTRONG, 1, HG_MUNO_HITBOX_NAME, "Normal");
+set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_USTRONG, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_X, 16);
@@ -41,7 +42,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 9);
 set_hitbox_value(AT_USTRONG, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 1.05); // 0.9
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 304);
@@ -50,6 +51,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, sfx_dbfz_hit_strong);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_LOCKOUT, 10);
 
 set_hitbox_value(AT_USTRONG, 2, HG_MUNO_HITBOX_NAME, "SSJ");
+set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_USTRONG, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_X, 16);
@@ -61,7 +63,7 @@ set_hitbox_value(AT_USTRONG, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 9);
 set_hitbox_value(AT_USTRONG, 2, HG_ANGLE, 90);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 1.2);
+set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 1.3); // 1.2
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(AT_USTRONG, 2, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 304);

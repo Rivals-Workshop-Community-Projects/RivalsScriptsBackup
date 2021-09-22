@@ -48,8 +48,8 @@ if (attack == AT_FAIR){
 }
 
 //Strongs Wind SFXs
-if (((attack == AT_FSTRONG && window == 2 && window_timer == 12) 
-|| (attack == AT_USTRONG && window == 2 && window_timer == 12) 
+if (((attack == AT_FSTRONG && window == 2 && window_timer == 9) 
+|| (attack == AT_USTRONG && window == 2 && window_timer == 9) 
 || (attack == AT_DSTRONG && window == 2 && window_timer == 6)) && !hitpause){
     sound_play(asset_get("sfx_bird_nspecial"));
 }

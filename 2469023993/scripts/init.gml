@@ -29,7 +29,7 @@ moonwalk_accel = 1.5;
 jump_start_time = 5;
 jump_speed = 10.5;
 short_hop_speed = 6;
-djump_speed = 10.5;
+djump_speed = 9.5;
 leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
@@ -38,8 +38,8 @@ air_accel = 0.3;
 prat_fall_accel = .3; //multiplier of air_accel while in pratfall
 air_friction = .03;
 max_djumps = 1;
-double_jump_time = 61; //the number of frames to play the djump animation. Can't be less than 31.
-walljump_hsp = 7;
+double_jump_time = 54; //the number of frames to play the djump animation. Can't be less than 31.
+walljump_hsp = 5;
 walljump_vsp = 8;
 walljump_time = 32;
 max_fall = 9; //maximum fall speed without fastfalling
@@ -60,33 +60,33 @@ crouch_active_frames = 1;
 crouch_recovery_frames = 2;
 
 //parry animation frames
-dodge_startup_frames = 1;
-dodge_active_frames = 1;
-dodge_recovery_frames = 3;
+dodge_startup_frames = 2;
+dodge_active_frames = 2;
+dodge_recovery_frames = 4;
 
 //tech animation frames
-tech_active_frames = 1;
+tech_active_frames = 4;
 tech_recovery_frames = 1;
 
 //tech roll animation frames
-techroll_startup_frames = 2
-techroll_active_frames = 2;
+techroll_startup_frames = 1;
+techroll_active_frames = 3;
 techroll_recovery_frames = 2;
 techroll_speed = 10;
 
 //airdodge animation frames
 air_dodge_startup_frames = 2;
-air_dodge_active_frames = 6;
-air_dodge_recovery_frames = 5;
+air_dodge_active_frames = 5;
+air_dodge_recovery_frames = 4;
 air_dodge_speed = 7.5;
 
 //roll animation frames
 roll_forward_startup_frames = 1;
-roll_forward_active_frames = 3;
-roll_forward_recovery_frames = 2;
+roll_forward_active_frames = 2;
+roll_forward_recovery_frames = 3;
 roll_back_startup_frames = 1;
-roll_back_active_frames = 3;
-roll_back_recovery_frames = 2;
+roll_back_active_frames = 2;
+roll_back_recovery_frames = 3;
 roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
 
@@ -95,7 +95,7 @@ landing_lag_sound = asset_get("sfx_land");
 waveland_sound = asset_get("sfx_waveland_fors");
 jump_sound = asset_get("sfx_jumpground");
 djump_sound = asset_get("sfx_jumpair");
-air_dodge_sound = asset_get("sfx_ori_glide_featherout");
+air_dodge_sound = asset_get("sfx_quick_dodge");
 
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
@@ -124,6 +124,8 @@ tcoart = sprite_get("noxtcodraw");
 
 miiverse_post = sprite_get("noxmiis");
 
+gfzsignspr = sprite_get("noxgoalpost");
+
 steve_death_message = "Steve fell to darkness";
 
 fs_char_chosen_final_smash = "custom";
@@ -137,26 +139,48 @@ former self.";
 
 if (get_player_color( player ) == 29){
 	set_victory_theme(sound_get("bowservictory"));
-} else if (get_player_color( player ) == 18){
+}
+
+if (get_player_color( player ) == 18){
 	set_victory_theme(sound_get("pepsivictory"));
-} else if (get_player_color( player ) == 31){
+}
+
+if (get_player_color( player ) == 31){
 	set_victory_theme(sound_get("z3ke"));
-} else if (get_player_color( player ) == 22){
+}
+
+if (get_player_color( player ) == 22){
 	set_victory_theme(sound_get("hollow"));
-} else if (get_player_color( player ) == 24){
+}
+
+if (get_player_color( player ) == 24){
 	set_victory_theme(sound_get("halland"));
-} else if (get_player_color( player ) == 30){
+}
+
+if (get_player_color( player ) == 30){
 	set_victory_theme(sound_get("yoyoyo"));
-} else if (get_player_color( player ) == 23){
+}
+
+if (get_player_color( player ) == 23){
 	set_victory_theme(sound_get("geometryvictory"));
-} else if (get_player_color( player ) == 25){
+}
+
+if (get_player_color( player ) == 25){
 	set_victory_theme(sound_get("meatvictory2"));
-} else if (get_player_color( player ) == 26){
+}
+
+if (get_player_color( player ) == 26){
 	set_victory_theme(sound_get("saltvictory"));
-} else if (get_player_color( player ) == 27){
+}
+
+if (get_player_color( player ) == 27){
 	set_victory_theme(sound_get("mousevictory"));
-} else if (get_player_color( player ) == 28){
+}
+
+if (get_player_color( player ) == 28){
 	set_victory_theme(sound_get("catvictory"));
-} else if (get_player_color( player ) != 18 && get_player_color( player ) != 29 && get_player_color( player ) != 23 && get_player_color( player ) != 25 && get_player_color( player ) != 26 && get_player_color( player ) != 27 && get_player_color( player ) != 28 && get_player_color( player ) != 30 && get_player_color( player ) != 31 && get_player_color( player ) != 24 && get_player_color( player ) != 22){
+}
+
+else if (get_player_color( player ) != 18 && get_player_color( player ) != 29 && get_player_color( player ) != 23 && get_player_color( player ) != 25 && get_player_color( player ) != 26 && get_player_color( player ) != 27 && get_player_color( player ) != 28 && get_player_color( player ) != 30 && get_player_color( player ) != 31 && get_player_color( player ) != 24 && get_player_color( player ) != 22){
 	set_victory_theme(sound_get("nox_victory"));
 }

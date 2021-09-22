@@ -32,7 +32,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 32);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 32);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 11);
-set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6); // 8
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.8);
@@ -41,6 +41,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sfx_botw_hit_1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("spears"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("spears_mask"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.75); // 1.0
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Breaking Hit");
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
@@ -59,3 +60,4 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, sfx_botw_hit_1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("spears"));
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("spears_mask"));
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_NSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 0.75); // 1.0

@@ -8,14 +8,14 @@ set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
 set_attack_value(AT_DSTRONG, AG_USES_CUSTOM_GRAVITY, 1);
 
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX, sound_get("fstr2"));
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX_FRAME, 4);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, .3);
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_CUSTOM_GRAVITY, .8);
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, .2);
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_CUSTOM_GRAVITY, .7);
 
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 8);

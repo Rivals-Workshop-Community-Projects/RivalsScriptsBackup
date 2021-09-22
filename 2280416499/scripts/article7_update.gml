@@ -7,6 +7,7 @@ if !instance_exists(phone_user_id) || !phone_user_id.phone_practice{
 	obj_stage_main.phone_user_id = noone;
 }
 
+/*
 if "practice" in obj_stage_main && obj_stage_main.practice{
 	if phone_user_id == noone{
 		var found = false;
@@ -101,7 +102,7 @@ if "practice" in obj_stage_main && obj_stage_main.practice{
 		with phn.side_bar{
 			x = the_screen.x;
 			y = the_screen.y;
-			if state with obj_stage_article_solid if num == 1{
+			if state with obj_stage_article if num == 1{
 				if !has_changed_layouts{
 					current_layout = village_index;
 				}
@@ -112,6 +113,7 @@ if "practice" in obj_stage_main && obj_stage_main.practice{
 	user_event(10);
 	
 }
+*/
 
 
 

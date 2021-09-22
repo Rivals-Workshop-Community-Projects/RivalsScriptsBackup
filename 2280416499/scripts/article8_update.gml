@@ -1,6 +1,6 @@
 //grid
 
-with asset_get("obj_stage_article_solid") if num == 1{
+with asset_get("obj_stage_article") if num == 1{
 	other.target_alpha = grid_alpha;
 	other.image_index = grid_mode;
 	other.visible = grid_alpha > 0;

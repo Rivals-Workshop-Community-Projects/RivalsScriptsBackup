@@ -19,7 +19,7 @@ set_window_value(AT_DTILT, 2, AG_WINDOW_SFX, asset_get("sfx_shovel_swing_light2"
 set_window_value(AT_DTILT, 2, AG_WINDOW_SFX_FRAME, 0);
 
 set_window_value(AT_DTILT, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 
@@ -34,7 +34,7 @@ set_num_hitboxes(AT_DTILT,2);
 set_hitbox_value(AT_DTILT, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_DTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DTILT, 1, HG_WINDOW, 3);
-set_hitbox_value(AT_DTILT, 1, HG_LIFETIME, 4);
+set_hitbox_value(AT_DTILT, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_DTILT, 1, HG_HITBOX_X, 43);
 set_hitbox_value(AT_DTILT, 1, HG_HITBOX_Y, -12);
 set_hitbox_value(AT_DTILT, 1, HG_WIDTH, 92);
@@ -56,7 +56,7 @@ set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, 0.69);
 
 set_hitbox_value(AT_DTILT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DTILT, 2, HG_WINDOW, 3);
-set_hitbox_value(AT_DTILT, 2, HG_LIFETIME, 4);
+set_hitbox_value(AT_DTILT, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_DTILT, 2, HG_HITBOX_X, 36);
 set_hitbox_value(AT_DTILT, 2, HG_HITBOX_Y, -42);
 set_hitbox_value(AT_DTILT, 2, HG_WIDTH, 62);

@@ -133,7 +133,6 @@ if (attack == player_id.AT_SKILL6)
                 }
             }
         }
-        if (!instance_exists(obj_article3)) destroyed = true;
     }
 }
 

@@ -1,5 +1,14 @@
+if object_index == oPlayer exit;
+
 wisp_type = player_id.next_capsule_type;
 spr_dir = player_id.spr_dir;
+
+array_push(player_id.phone_offscreen, self);
+phone_offscr_sprite = sprite_get("capsule_offscreen"); // icon to display
+phone_offscr_index = wisp_type; // image_index of the icon
+phone_offscr_x_offset = 0; // x offset to draw the arrow at; uses spr_dir
+phone_offscr_y_offset = -16; // y offset to draw the arrow at
+phone_offscr_leeway = 16; // approximate width/height of obj
 
 switch(wisp_type){
 	case 0: // Laser

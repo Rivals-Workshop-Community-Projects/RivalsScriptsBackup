@@ -9,7 +9,7 @@ glow_slot = (echo ? 5 : 0);
 //arrow trail
 for (var i = 0; i < array_length_1d(arrow_id_array); i++) {
     var arrow_array = arrow_trail_arrays[i];
-    if arrow_trail_arrays[i][0] != undefined {
+    if arrow_array[0] != undefined {
 	    for (var j = 0; j < array_length_1d(arrow_array); j++) {
 	        var pos = arrow_array[j];
 	        if is_array(pos) {
@@ -18,17 +18,17 @@ for (var i = 0; i < array_length_1d(arrow_id_array); i++) {
 	            var _speed = pos[2]
 	            var _angle = pos[3]
 	            var _spr_dir = pos[4]
-	            var _alpha = j < 12 ? j/12 : 1;
-	            //draw_circle_color(_x, _y, 2, c_white, c_white, false)
+	            
 	            //check within screen boundary
 	            if onscreen(_x,_y) {
-		            //glow
-		            draw_sprite_general(sprite_get("arrow_glow"), 0, j*15, 0, 15, 62, _x, _y, _spr_dir * _speed/15, 1, _angle, c_white, c_white, c_white, c_white, _alpha*0.5);
 		            
-		            var _xscale = j < 6 ? _speed/15 : _speed/14
-		            
+		            var _xscale = j < (trail_length*6/20) ? _speed/(trail_length*15/20) : _speed/(trail_length*14/20)
+		            var _index = (trail_length-1+j-trail_index) mod 20;
+		            if arrow_timer_array[i] != undefined _index = (trail_length-1+j-arrow_timer_array[i]) mod 20;
 		            //arrow
-	            	draw_sprite_general(sprite_get("arrow"), floor((timer mod 16)/2), j*15, 0, 15, 62, _x, _y, _spr_dir * _xscale, 1, _angle, c_white, c_white, c_white, c_white, _alpha);
+	            	draw_sprite_general(sprite_get("arrow"), floor((timer mod 16)/2), _index*15*(20/trail_length), 0, 15*(20/trail_length), 62, _x, _y, _spr_dir * _xscale, 1, _angle, c_white, c_white, c_white, c_white, 1);
+	            	//draw_text_transformed(_x, _y, _index, 1, 1, 0)
+	            	
 	            }
 	        }
 	    }
@@ -36,29 +36,31 @@ for (var i = 0; i < array_length_1d(arrow_id_array); i++) {
 }
 
 //orbitar glow
-with obj_article1 if onscreen(x,y) && player_id == other.id && state == PS_ATTACK_AIR && window == 2 && !other.custom_clone {
-	var blend = gpu_get_blendmode(); //gets the current blend mode
-	var playercol = get_player_color(player);
-    var glowcol = make_color_rgb(get_color_profile_slot_r(playercol,other.glow_slot),get_color_profile_slot_g(playercol,other.glow_slot),get_color_profile_slot_b(playercol,other.glow_slot))
-    var glowalpha = (dsin(window_timer)/4)+0.5;
-    
-    //parry
-    if other.orbitar_parry_mode {
-	    if oPlayer_owner.state == PS_PARRY && oPlayer_owner.state_timer < 12 {
-			glowcol = make_color_rgb(84,71,135);
-			glowalpha = 0.8
-		}
-    }
-	
-	
-    gpu_set_blendmode(bm_add); //use additive blending for next draw_* calls
-    
-    draw_set_alpha(glowalpha)
-	draw_circle_color(x - 38, y, 50, glowcol, c_black, false)
-	draw_circle_color(x + 38, y, 50, glowcol, c_black, false)
-	draw_set_alpha(1)
-	
-	gpu_set_blendmode(blend); //goes back to whatever blend mode you were in.
+if !phone_fast {
+	with obj_article1 if onscreen(x,y) && player_id == other.id && state == PS_ATTACK_AIR && window == 2 && !other.custom_clone {
+		var blend = gpu_get_blendmode(); //gets the current blend mode
+		var playercol = get_player_color(player);
+	    var glowcol = make_color_rgb(get_color_profile_slot_r(playercol,other.glow_slot),get_color_profile_slot_g(playercol,other.glow_slot),get_color_profile_slot_b(playercol,other.glow_slot))
+	    var glowalpha = (dsin(window_timer)/4)+0.5;
+	    
+	    //parry
+	    if other.orbitar_parry_mode {
+		    if oPlayer_owner.state == PS_PARRY && oPlayer_owner.state_timer < 12 {
+				glowcol = make_color_rgb(84,71,135);
+				glowalpha = 0.8
+			}
+	    }
+		
+		
+	    gpu_set_blendmode(bm_add); //use additive blending for next draw_* calls
+	    
+	    draw_set_alpha(glowalpha)
+		draw_circle_color(x - 38, y, 50, glowcol, c_black, false)
+		draw_circle_color(x + 38, y, 50, glowcol, c_black, false)
+		draw_set_alpha(1)
+		
+		gpu_set_blendmode(blend); //goes back to whatever blend mode you were in.
+	}
 }
 
 //held orbitar drawing
@@ -87,19 +89,21 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_DSPECIA
     draw_sprite_ext(spr_shield_outline, shield_img_index, drawx - shieldx, shieldy, -spr_dir, 1, 0, c_white, 1);
     
     //draw glow
-    var blend = gpu_get_blendmode(); //gets the current blend mode
-	var playercol = get_player_color(player);
-    var glowcol = make_color_rgb(get_color_profile_slot_r(playercol,glow_slot),get_color_profile_slot_g(playercol,glow_slot),get_color_profile_slot_b(playercol,glow_slot))
-    var glowalpha = (dsin(window_timer)/4)+0.5;
-	
-    gpu_set_blendmode(bm_add); //use additive blending for next draw_* calls
-    
-    draw_set_alpha(glowalpha)
-	draw_circle_color(x - 38, drawy, 50, glowcol, c_black, false)
-	draw_circle_color(x + 38, drawy, 50, glowcol, c_black, false)
-	draw_set_alpha(1)
-	
-	gpu_set_blendmode(blend); //goes back to whatever blend mode you were in.
+    if !phone_fast {
+	    var blend = gpu_get_blendmode(); //gets the current blend mode
+		var playercol = get_player_color(player);
+	    var glowcol = make_color_rgb(get_color_profile_slot_r(playercol,glow_slot),get_color_profile_slot_g(playercol,glow_slot),get_color_profile_slot_b(playercol,glow_slot))
+	    var glowalpha = (dsin(window_timer)/4)+0.5;
+		
+	    gpu_set_blendmode(bm_add); //use additive blending for next draw_* calls
+	    
+	    draw_set_alpha(glowalpha)
+		draw_circle_color(x - 38, drawy, 50, glowcol, c_black, false)
+		draw_circle_color(x + 38, drawy, 50, glowcol, c_black, false)
+		draw_set_alpha(1)
+		
+		gpu_set_blendmode(blend); //goes back to whatever blend mode you were in.
+    }
 }
 
 //indicator draw for arrows

@@ -88,7 +88,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[2,2] = "An original color. Evokes lava and stuff."
     ce[3,0] = make_color_rgb(115, 188, 137)
     ce[3,1] = "Mental Mint"
-    ce[3,2] = "Based on Mal's aunt, Ms. Seong. You can see her in her intro!"
+    ce[3,2] = "Based on Mal's aunt, Ms. Seong, another OC of Reiga."
     ce[4,0] = make_color_rgb(41, 44, 51)
     ce[4,1] = "Chromatic"
     ce[4,2] = "An original color. Black and white, so be it."

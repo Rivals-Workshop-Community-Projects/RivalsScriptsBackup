@@ -34,7 +34,7 @@ if guitar.chord{
 	var draw_color = chord_color[guitar.chord];
 	if guitar.chord_juice_flash draw_color = c_white;
 	
-	meterDraw(x, y - char_height - hud_offset - 74 + phone_cheats[cheat_hide_hud] * 40, draw_width, 8, draw_color, clamp(cj / cjm, 0, 1), 1, chord_active ? 1 : 0.5, true);
+	meterDraw(x, y - char_height - hud_offset - 74 + phone_hud_hidden * 40, draw_width, 8, draw_color, clamp(cj / cjm, 0, 1), 1, chord_active ? 1 : 0.5, true);
 }
 
 
@@ -159,7 +159,8 @@ shader_end();
 
 
 
-user_event(12);
+muno_event_type = 4;
+user_event(14);
 
 
 

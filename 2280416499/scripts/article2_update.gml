@@ -1,6 +1,6 @@
 //ground sides
 
-if move_timer && !obj_stage_main.death_timer{
+if move_timer{
 	x = ease_cubeInOut(round(new_x), round(old_x), move_timer, move_timer_max);
 	move_timer--;
 	if !move_timer x = new_x;

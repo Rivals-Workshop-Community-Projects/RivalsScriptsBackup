@@ -44,8 +44,13 @@ arrowTimer = 0;
 bow_turn_timer = 0;
 sfx_bow_charge = sound_get("bow_charge")
 
-arrow_trail_arrays = array_create(3, (array_create(20, undefined)));
-arrow_id_array = array_create(3, undefined) //used to match arrow id to array num
+trail_length = 20;
+arrow_num_max = 3;
+trail_index = 0;
+arrow_trail_arrays = array_create(arrow_num_max, (array_create(trail_length, undefined)));
+arrow_id_array = array_create(arrow_num_max, undefined) //used to match arrow id to array num
+arrow_timer_array = array_create(arrow_num_max, undefined) //used to match arrow timer var to array num
+empty_array = array_create(trail_length, undefined);
 
 //orbitars
 orbitar_id = noone;
@@ -68,8 +73,8 @@ max_fspec = 2;
 fspec_count = 0;
 fspec_trail_vfx = hit_fx_create(sprite_get("fspecial_proj_strong_trail"), 12);
 fspec_large_vfx = hit_fx_create(sprite_get("fspecial_vfx_large"), 12);
-fspec_trail_arrays = array_create(3, (array_create(20, undefined)));
-fspec_id_array = array_create(3, undefined) //used to match fspec proj id to array num
+fspec_trail_arrays = array_create(max_fspec, (array_create(20, undefined)));
+fspec_id_array = array_create(max_fspec, undefined) //used to match fspec proj id to array num
 vfx_reticle_large = hit_fx_create(sprite_get("vfx_reticle_large"), 40);
 
 //sounds

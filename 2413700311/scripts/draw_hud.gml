@@ -92,21 +92,32 @@ if (bodyless == true) {
 
 
 
-
 //debug-------------------------------------------------------------------------
 misodebug = false;
 if(misodebug){
-draw_debug_text(30, 110 + 13, "bodyless: " + string(bodyless));
-draw_debug_text(30, 110 + 26, "bodyloss: " + string(bodyloss));
-draw_debug_text(30, 110 + 39, "headdie: " + string(headdie));
-draw_debug_text(30, 110 + 52, "hutaSP: " + string(hutaSP));
-draw_debug_text(30, 110 + 65, "grabbedid: " + string(grabbedid));
-draw_debug_text(30, 110 + 78, "hit_player_obj: " + string(hit_player_obj));
-draw_debug_text(30, 110 + 91, "FS_alpha: " + string(FS_alpha));
-draw_debug_text(30, 110 + 104, "fs_loop_count: " + string(fs_loop_count));
-draw_debug_text(30, 110 + 117, "shine_start: " + string(shine_start));
+draw_debug_text(30, 110 + 0, "player_x,y: " + string( x ) + "," + string( y ));
+draw_debug_text(30, 110 + (13*1), "bodyless: " + string(bodyless));
+draw_debug_text(30, 110 + (13*2), "bodyloss: " + string(bodyloss));
+draw_debug_text(30, 110 + (13*3), "headdie: " + string(headdie));
+draw_debug_text(30, 110 + (13*4), "hutaSP: " + string(hutaSP));
+draw_debug_text(30, 110 + (13*5), "grabbedid: " + string(grabbedid));
+draw_debug_text(30, 110 + (13*6), "hit_player_obj: " + string(hit_player_obj));
+draw_debug_text(30, 110 + (13*7), "FS_alpha: " + string(FS_alpha));
+draw_debug_text(30, 110 + (13*8), "fs_loop_count: " + string(fs_loop_count));
+draw_debug_text(30, 110 + (13*9), "shine_start: " + string(shine_start));
+draw_debug_text(30, 110 + (13*10), "hutahit: " + string(hutahit));
+draw_debug_text(30, 110 + (13*11), "huta_life: " + string( huta_life ));
+draw_debug_text(30, 110 + (13*12), "max_fall: " + string( max_fall ));
+draw_debug_text(30, 110 + (13*13), "spr_dir: " + string( spr_dir ));
+draw_debug_text(30, 110 + (13*14), "hutahit2: " + string( hutahit2 ));
+draw_debug_text(30, 110 + (13*15), "hutahit3: " + string( hutahit3 ));
+draw_debug_text(30, 110 + (13*16), "rand_idle: " + string( rand_idle ));
+draw_debug_text(30, 110 + (13*17), "state_timer: " + string( state_timer ));
+draw_debug_text(30, 110 + (13*18), "NB_cast: " + string( NB_cast ));
+draw_debug_text(30, 110 + (13*19), "NBalive: " + string( NBalive ));
 
-
+draw_debug_text(30, 110 + (13*21), "NB_length: " + string( NB_length2 ));
+draw_debug_text(30, 110 + (13*22), "NB_charge: " + string( NB_charge2 ));
 
 draw_debug_text(temp_x + 0, temp_y - 13, "attack: " + string( attack ));
 draw_debug_text(temp_x + 0, temp_y - 26, "charge: " + string( strong_charge ));
@@ -133,6 +144,7 @@ if(misodebug){
         draw_debug_text(temp_x + 0, temp_y - 104, "state: " + string( obj_article2.state ));
         draw_debug_text(temp_x + 0, temp_y - 91, "state_tm: " + string( obj_article2.state_timer ));
         draw_debug_text(temp_x + 0, temp_y - 78, "stop_tm: " + string( obj_article2.stop_timer ));
+        
     }
 }
 //------------------------------------------------------------------------------

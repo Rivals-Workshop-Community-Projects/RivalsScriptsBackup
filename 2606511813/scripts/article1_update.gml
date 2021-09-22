@@ -95,14 +95,19 @@ switch state {
             window++;
             window_timer = 0;
             
-            spawn_hit_fx(x + shield_spawn_dist*spr_dir, y + 4, 109)
-            spawn_hit_fx(x + shield_spawn_dist*spr_dir, y + 4, 111)
-            spawn_hit_fx(x - shield_spawn_dist*spr_dir, y + 4, 109)
-            spawn_hit_fx(x - shield_spawn_dist*spr_dir, y + 4, 111)
+            var _fx1 = spawn_hit_fx(x + shield_spawn_dist*spr_dir, y + 4, 109)
+            var _fx2 = spawn_hit_fx(x + shield_spawn_dist*spr_dir, y + 4, 111)
+            var _fx3 = spawn_hit_fx(x - shield_spawn_dist*spr_dir, y + 4, 109)
+            var _fx4 = spawn_hit_fx(x - shield_spawn_dist*spr_dir, y + 4, 111)
+            //_fx1.depth = -20;
+            //_fx2.depth = -20;
+            //_fx3.depth = -20;
+            //_fx4.depth = -20;
         }
         break;
         
         case 2: //active
+        
         if hp <= 0 {
             state = PS_DEAD;
             state_timer = 0;

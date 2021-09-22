@@ -8,7 +8,6 @@
 
 //player_id.(player variable) = (value); for variables in player object
 //venombubble_ins.(player variable) = (value); for variables in article (use in player object)
-//variables: state, state_timer, frame_update, level, bubble_size, bubble_timer, bubble_number, image_index
 //
 //player variables:
 
@@ -71,6 +70,19 @@ if (state != 5)
                         //prev_bubbleid = id;
                         if (hitbox.player_id = player_id)
                         { 
+                            if (hitbox.attack = AT_USPECIAL && hitbox.hbox_num > 1) 
+                            {
+                            hitbox.player_id.vsp = -18;
+                            hitbox.player_id.hsp = 6*hitbox.player_id.spr_dir;
+                            }
+                            if (hitbox.attack = AT_DSPECIAL && hitbox.hbox_num = 1 || hitbox.attack = AT_USPECIAL && hitbox.hbox_num = 2 )
+                            { 
+                                bubble_hitbydspecial++;
+                            }
+                            else
+                            { 
+                                bubble_hitbydspecial = 0;
+                            }
                             if (hitbox.attack = AT_DAIR && hitbox.hbox_num = 1) hitbox.player_id.vsp = -5;
                             if (hitbox.attack = AT_DAIR && hitbox.hbox_num > 1) hitbox.player_id.vsp = -8;
                             if (hitbox.attack = AT_JAB && hitbox.hbox_num = 3 || hitbox.attack = AT_FSPECIAL && hitbox.hbox_num >= 2 || hitbox.attack = AT_FSTRONG)
@@ -89,6 +101,7 @@ if (state != 5)
                                 grow_frame = 0;
                                 frame_update = 0;
                             }
+                            if (hitbox.attack = AT_DAIR && hitbox.hbox_num > 1)
                             //player_id.has_hit_player = true;
                             bubble_hitbyopponent = 0;
                         }
@@ -118,18 +131,28 @@ if (state != 5)
                         hit_timer = 0;
                         state = 2;
 
+                        if (bubble_hitbydspecial) hit_adjuster = 3.6;
+                        else hit_adjuster = 2.4;
+
                         if (hitbox.kb_angle = 361)
                         {
                         hsp = lengthdir_x(hit_adjuster*hitbox.kb_value, 45)*hitbox.player_id.spr_dir;
                         vsp = lengthdir_y(hit_adjuster*hitbox.kb_value, 45)*0.8;
                         }
                     
+                        else if (hitbox.attack = AT_DSPECIAL && hitbox.hbox_num = 1)
+                        {
+                        hsp = lengthdir_x(hit_adjuster*hitbox.kb_value, hitbox.kb_angle)*hitbox.player_id.spr_dir;
+                        vsp = lengthdir_y(hit_adjuster*hitbox.kb_value, hitbox.kb_angle)*0.5;
+                        }
+
                         else
                         {
                         hsp = lengthdir_x(hit_adjuster*hitbox.kb_value, hitbox.kb_angle)*hitbox.player_id.spr_dir;
                         vsp = lengthdir_y(hit_adjuster*hitbox.kb_value, hitbox.kb_angle)*0.72;
                         }
-                        kb_grav = hitbox.kb_value/5/hit_adjuster;
+                        if (bubble_hitbydspecial) kb_grav = (hitbox.kb_value/5/hit_adjuster*1.5);
+                        else kb_grav = (hitbox.kb_value/5/hit_adjuster);
                     }
                 }
             }
@@ -194,6 +217,7 @@ switch (state)
         state = 1;
         bubble_has_hit = 0;
         bubble_hitbox_out = 0;
+        bubble_hitbydspecial = 0;
         if (instance_exists(bubble_hitbox))
         {
         bubble_hitbox.destroyed = true;
@@ -218,13 +242,32 @@ switch (state)
         }
         if (bubble_has_hit = 1)
         {
-            hsp = -prev_hsp*0.6;
-            x += hsp;
-            vsp = -prev_vsp*0.6;
-            y += vsp;
-            state = 1;
+            if (!bubble_hitbydspecial)
+            {
+                hsp = -prev_hsp*0.6;
+                x += hsp;
+                vsp = -prev_vsp*0.6;
+                y += vsp;
+                state = 1;
+            }
+            else if (level > 0)
+            {
+                hsp = prev_hsp*0.6;
+                x += hsp;
+                vsp = prev_vsp*0.6;
+                y += vsp;
+                image_index = 16+level*3;
+                frame_update = 0;  
+                state = 5;
+                bubble_hitbydspecial = 0;
+                create_hitbox(AT_NSPECIAL, floor(level+3), floor(x)+floor(hsp), floor(y)+floor(vsp));
+                if (level = 1) spawn_hit_fx(floor(x)+floor(hsp), floor(y)+floor(vsp), bubble_explosion1);
+                if (level = 2) spawn_hit_fx(floor(x)+floor(hsp), floor(y)+floor(vsp), bubble_explosion2);
+                if (level = 3) spawn_hit_fx(floor(x)+floor(hsp), floor(y)+floor(vsp), bubble_explosion3);
+            }
             bubble_has_hit = 0;
             bubble_hitbox_out = 0;
+            bubble_hitbydspecial = 0;
             if (instance_exists(bubble_hitbox))
             {
             bubble_hitbox.destroyed = true;
@@ -289,4 +332,15 @@ if (state != 0 && state != 5)
             }   
             else frame_update++;
         }
+
+        //make lighter if hit by dspecial
+        if (bubble_hitbydspecial = 1)
+        {
+            sprite_index = sprite_get("bubble_dspecial");
+        }
+        else
+        {
+            sprite_index = sprite_get("bubble");
+        }
+
 }

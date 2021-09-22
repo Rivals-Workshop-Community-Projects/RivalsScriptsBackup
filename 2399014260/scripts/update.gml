@@ -1,3 +1,4 @@
+muno_event_type = 1;
 user_event(14);
 
 
@@ -20,7 +21,7 @@ if (phone_attacking && attack == AT_USPECIAL){
 	bee_moment = 1;
 	
 	if window > 1{
-		if bee_time && !("steve_water_check_frame" in self && abs(steve_water_check_frame - get_gameplay_time()) < 2) bee_time--;
+		if bee_time && !("steve_water_last_frame" in self && abs(steve_water_last_frame - get_gameplay_time()) < 2) bee_time--;
 	
 		else{
 			sound_play(sfx_mario_galaxy_powerup_lose);
@@ -52,7 +53,7 @@ if (move_cooldown[AT_NSPECIAL] == 2){
 
 
 
-if phone_cheats[cheat_bee]{
+if phone_cheats[CHEAT_BEE]{
 	bee_time = bee_time_max;
 }
 

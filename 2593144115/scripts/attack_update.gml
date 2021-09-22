@@ -206,7 +206,7 @@ switch (attack)
             sound_play(asset_get("sfx_frog_nspecial_shove"));
             vsp = -7;
             hsp = -2*spr_dir;
-            move_cooldown[AT_NSPECIAL] = 360;
+            move_cooldown[AT_NSPECIAL] = 270;
         }
         break;
 

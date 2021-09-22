@@ -1,5 +1,5 @@
 // THEIA EVLOGIA
-atk = 49;
+atk = 47;
 
 set_attack_value(atk, AG_CATEGORY, 2);
 set_attack_value(atk, AG_SPRITE, sprite_get("theikos_photonblast"));

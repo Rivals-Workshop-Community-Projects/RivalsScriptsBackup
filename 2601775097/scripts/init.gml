@@ -1,3 +1,5 @@
+time = 0;
+
 hurtbox_spr = asset_get("ex_guy_hurt_box");
 crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;
@@ -243,9 +245,9 @@ powersmash_activate_cost = 5;
 powersmash_attack_cost = 25;
 powersmash_total_cost = powersmash_activate_cost + powersmash_attack_cost;
 guardaura_counter_cost = 10;
-emberfist_cost = 10;
-lighthookshot_activate_cost = 15;
-lighthookshot_attack_cost = 5;
+emberfist_cost = 20;
+lighthookshot_activate_cost = 5;
+lighthookshot_attack_cost = 15;
 lighthookshot_total_cost = lighthookshot_activate_cost + lighthookshot_attack_cost;
 
 //skills menu stuff
@@ -556,7 +558,7 @@ move_names = [
 	"AT_ACCEL_BLITZ",
 	"AT_BURNING_FURY_AIR",
 	"AT_TAUNT",
-	"AT_LORD_PUNISHMENT",
+	"AT_TAUNT_2",
 	"AT_LIGHT_HOOKSHOT",
 	"AT_EXTRA_3",
 	"AT_PHONE",
@@ -567,10 +569,10 @@ move_names = [
 	"???",
 	"???",
 	"???",
-	"???",
-	"???",
+	"AT_THEIA_EVLOGIA",
 	"???", //light stunner
-	"AT_THEIA_EVLOGIA"
+	"AT_L_PUNISHMENT",
+	"???"
 ];
 
 //////////////////////////////////////////////////ABYSS RUNES SECTION//////////////////////////////////////////////////
@@ -649,12 +651,13 @@ od_fire_timer = 0;
 od_ready = false;
 od_gainable = true; //it's just stopping it for a few frames so the variables can reset properly
 od_cooldown = 0; //this prevents bar from keeping the godpower mode on
+//od_prepare_godpower = false;
 
 gauge_OD_color = $3BE1FF;
 gauge_OD_color_return = gauge_OD_color;
 gauge_OD_timer = 5;
 gauge_OD_timer_active = false;
-AT_OVERDRIVE = AT_TAUNT_2;
+AT_OVERDRIVE = 49;
 od_fallthrough_y = 0; //if bar is on the ground he should fall_through untill he reach
 OD_stop_timer_max = 145;
 OD_stop_timer = OD_stop_timer_max;
@@ -823,6 +826,9 @@ fs_hide_meter = true; //so i can make it use the OD gauge instead
 //put [fs_charge] in hit_player.gml and parry.gml so it will work like the rune version
 //put [fs_charge_mult] to decide the charge rate if it doesn't suit me fancy
 //use [fs_ai_attempt_use] to make a CPU use the final smash
+
+//rivals of fighters stage
+//superMove = AT_OVERDRIVE;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

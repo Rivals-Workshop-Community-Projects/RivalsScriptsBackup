@@ -1,6 +1,6 @@
 //ground
 
-
+if object_index == obj_stage_main exit;
 
 if current_layout has_changed_layouts = 1;
 

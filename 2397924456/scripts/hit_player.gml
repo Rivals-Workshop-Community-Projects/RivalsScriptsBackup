@@ -17,6 +17,12 @@ if ("article_owner" in my_hitboxID && my_hitboxID.true_type == 1 && !hit_player_
 
 
 
+if my_hitboxID.attack == AT_EXTRA_3 || (my_hitboxID.attack == AT_FSPECIAL_AIR && my_hitboxID.hbox_num < 5){
+	hit_player_obj.should_make_shockwave = false;
+}
+
+
+
 if my_hitboxID.type == 1 && !hit_player_obj.clone melee_hit_player = hit_player_obj;
 
 

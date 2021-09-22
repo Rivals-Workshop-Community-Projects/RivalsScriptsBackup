@@ -5,6 +5,19 @@ if phone_user_id != noone{
 
 
 
+// laggy snow effect
+
+// if get_gameplay_time() < 400{
+
+// 	if get_gameplay_time() % 15 == 0{
+// 		instance_create(random_func(0, room_width, true), 0, "obj_stage_article", 10);
+// 	}
+// }
+
+// print(fps_real)
+
+
+
 if setting_updated != noone {
 	
 	if setting_updated == st_st_damage{
@@ -62,7 +75,7 @@ if music_timer{
 
 
 
-if !has_music_interrupted{
+if !has_music_interrupted && false{
 	if (get_training_cpu_action() != CPU_FIGHT) has_music_interrupted = 1;
 	var check = 0;
 	with oPlayer if state == PS_SPAWN check = 1;
@@ -77,10 +90,10 @@ if !has_music_interrupted{
 if death_timer{
 	death_timer--;
 	if (death_timer % 5 == 0){
-		with asset_get("obj_stage_article_solid") if num == 1{
+		with asset_get("obj_stage_article") if num == 1{
 			var len = array_length(layouts);
 			current_layout = clamp(random_func(0, len, true), 0, len - 1);
-			if (current_layout == prev_layout){
+			while array_find_index(already_layouts, current_layout) != -1{
 				if (current_layout == len - 1) current_layout = 0;
 				else current_layout++;
 			}
@@ -98,6 +111,12 @@ if death_timer{
 		}
 		else{
 			sound_play(asset_get("mfx_star"), 0, 0);
+			with asset_get("obj_stage_article") if num == 1{
+				array_push(already_layouts, current_layout);
+				if array_length(already_layouts) >= array_length(layouts){
+					already_layouts = [];
+				}
+			}
 		}
 	}
 }

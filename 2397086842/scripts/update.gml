@@ -230,12 +230,12 @@ if state == PS_AIR_DODGE {
 }
 
 
-if state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD {
-	rolling = 1
-	y -= 10
-	set_state (PS_AIR_DODGE)
-	state_time = 2
-}
+//if state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD {
+//	rolling = 1
+//	y -= 10
+//	set_state (PS_AIR_DODGE)
+//	state_time = 2
+//}
 
 if (activated_kill_effect) {
 	 with (asset_get("pHitBox")) {

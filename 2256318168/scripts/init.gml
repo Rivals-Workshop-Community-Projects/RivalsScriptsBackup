@@ -1,5 +1,6 @@
 hurtbox_spr = sprite_get("idle_hurt");
 crouchbox_spr = sprite_get("crouch_hurt");
+mask_index = sprite_get("smol_mask");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
@@ -102,6 +103,7 @@ bubble_y = 4;
 
 //=================================================
 //Custom Frame Data indices
+AG_NOZ_HOVER_SPRITE = 55; //Sprites to use while hovering (for aerial attacks)
 HG_MUNO_OBJECT_LAUNCH_ANGLE = 77; //Thanks Muno
 // Special values:
 //  0: use normal angles
@@ -135,7 +137,8 @@ idle_hover_spr = sprite_get("idle_hover");
 vfx_hair_hover_spr = sprite_get("vfx_hair_hover");
 vfx_hair_exhausted_spr = sprite_get("vfx_hair_exhausted");
 
-vfx_shine_spr = sprite_get("vfx_shine"); //no relation to Sunshine
+vfx_dspecial_shine_spr = sprite_get("dspecial_shine");
+vfx_dspecial_shockwave_spr = sprite_get("vfx_shine"); //no relation to Sunshine
 vfx_dspecial_flake_spr = sprite_get("vfx_dspecial_flake");
 vfx_dspecial_zone_spr = sprite_get("vfx_dspecial_zone");
 
@@ -155,6 +158,8 @@ article1_col_spr = sprite_get("article1_col");
 anim_hairblink_timer = 0;
 anim_hairblink_max = anim_hud_timers_max;
 
+anim_jab_window_order = [4, 5, 6, 4, 6, 4, 5, 4, 6, 5, 4, 5];
+
 anim_indicatorflash_timer = 0;
 anim_indicatorflash_max = anim_hud_timers_max;
 indicator_spr = sprite_get("indicator_triangle");
@@ -162,6 +167,9 @@ indicator_spr = sprite_get("indicator_triangle");
 anim_fakeparry_timer = 0;
 //anim_fakeparry_fg = asset_get("new_dodge_spr");
 anim_fakeparry_bg = asset_get("fx_parry_new");
+
+noz_anim_back_flipping = false;
+noz_anim_backflip_spr = sprite_get("doublejump_back");
 
 //=================================================
 //Rune flags
@@ -207,7 +215,6 @@ noz_freeze_base_stun = 45;
 noz_freeze_base_vsp = 5;
 noz_freeze_mult_vsp = 0.010;
 noz_freeze_max_hsp = 5;
-noz_freeze_anim_speed = 6; //degrees per frame
 
 noz_pratfall_max_vsp = 7;
 
@@ -228,6 +235,7 @@ noz_dspecial_damage_min = 10;
 noz_dspecial_recharge_rate = 0.05;
 noz_dspecial_dmg_mult = 1.5;
 
+noz_nspecial_radius = 50;
 noz_nspecial_mashing_bonus = 1;
 noz_nspecial_sleep_base = floor(75 * noz_nspecial_mashing_bonus);
 noz_nspecial_sleep_early = floor(25 * noz_nspecial_mashing_bonus);
@@ -268,9 +276,7 @@ noz_cloud_hit_restore_time = 30;
 //=================================================
 // Move variables/flags initialized here
 
-at_jab_infinite = false;
-at_jab_inf_count = 3;
-at_jab_finisher = false;
+at_jab_timesthrough = 0;
 at_dtilt_proj_cooldown = 0;
 at_nair_hover_need_grid_adjust = false;
 at_dair_early_cancel = false;
@@ -321,6 +327,7 @@ noz_freeze_timer = 0;
 noz_freeze_vsp = 0;
 noz_freeze_hsp = 0;
 noz_freeze_anim_rotate = 0;
+noz_freeze_anim_rotate_speed = 5;
 //Kirby-specific
 noz_has_kirby_ability = false;
 
@@ -360,3 +367,10 @@ nname = "Smol Nozomi"
 ncode1 = "Class: Figment     Reward: $1000";
 ncode2 = "Can fly with her twintails. Exhibits cryokinetic powers.";
 ncode3 = "Wanted by 'Haltmann Works' for 'being weaboo trash'...?";
+
+//Hypercam
+uhc_victory_quote = "sno whalation remix (2014 ver) subsribe 4 more amv ^_^";
+
+sprite_change_offset("cmp_uhc", 11, 8);
+uhc_taunt_videos[0] = { sprite:sprite_get("cmp_uhc"), song:sound_get("cmp_uhc"), fps:12 };
+

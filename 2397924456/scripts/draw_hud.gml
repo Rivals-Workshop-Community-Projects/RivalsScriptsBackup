@@ -1,8 +1,8 @@
-if ("phone_inited" not in self) exit;
+if ("phone" not in self) exit;
 
 
 
-if !phone_cheats[cheat_hide_hud]{
+if !phone_cheats[CHEAT_TRAILER]{
 
     shader_start();
     
@@ -30,7 +30,8 @@ if !phone_cheats[cheat_hide_hud]{
 
 
 
-user_event(11);
+muno_event_type = 5;
+user_event(14);
 
 
 

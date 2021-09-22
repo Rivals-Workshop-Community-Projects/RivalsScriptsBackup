@@ -1,7 +1,8 @@
 switch(attack){
+    case AT_USPECIAL:
+    	if window > 1 break;
     case AT_NSPECIAL:
     case AT_FSPECIAL:
-    case AT_USPECIAL:
     case AT_DSPECIAL:
     case AT_NTHROW:
         trigger_b_reverse();
@@ -10,7 +11,64 @@ switch(attack){
 
 
 
+// dust
+
 switch(attack){
+	case AT_JAB:
+	case AT_NAIR:
+	case AT_NTHROW:
+	    if free break;
+	case AT_FTILT:
+	case AT_UTILT:
+	case AT_DTILT:
+		if window == 1 && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x - 16 * spr_dir + sin(state_timer) * 10, y, "dash", spr_dir]);
+		}
+		break;
+	case AT_DATTACK:
+		if window == 1 && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x + 96 * spr_dir, y, "dash_start", spr_dir]);
+		}
+		break;
+	case AT_FSTRONG:
+	case AT_USTRONG:
+	case AT_DSTRONG:
+	case AT_FSTRONG_2:
+	case AT_USTRONG_2:
+	case AT_DSTRONG_2:
+		if window == 1 && (window_timer == 1 || strong_charge % 10 == 1){
+			array_push(phone_dust_query, [x - 16 * spr_dir + sin(strong_charge) * 10, y, "dash", spr_dir]);
+		}
+		if window == 2 && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x - 0 * spr_dir, y, "dash_start", spr_dir]);
+		}
+		break;
+}
+
+
+
+// cape swipe
+
+switch(attack){
+	
+	case AT_UTILT:
+	case AT_DTILT:
+		if (window == 1 && window_timer == 1 && !hitpause){
+			sound_play(asset_get("sfx_forsburn_cape_swipe"));
+		}
+		break;
+		
+}
+
+
+
+switch(attack){
+	
+	case AT_FSTRONG_2:
+	case AT_USTRONG_2:
+	case AT_DSTRONG_2:
+		if window > 1 || window_timer == phone_window_end iasa_script();
+		break;
     
     case AT_NSPECIAL:
     
@@ -428,7 +486,7 @@ switch(attack){
                 break;
             
             case 3:
-                hsp = clamp(hsp, -5, 5);
+                hsp = clamp(hsp, -3, 3); // -5, 5
                 // vsp = min(vsp, 3);
                 break;
             

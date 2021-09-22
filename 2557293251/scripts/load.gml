@@ -37,3 +37,4 @@ announce[2] = sound_get("male_intro3");
 announce[3] = sound_get("fem_intro1");
 announce[4] = sound_get("fem_intro2");
 announce[5] = sound_get("fem_intro3");
+announce[6] = sound_get("wattannouncer");

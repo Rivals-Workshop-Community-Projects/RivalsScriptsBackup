@@ -30,7 +30,10 @@ if (lightstun) draw_sprite_ext(fx_lightstunned, fx_lightstunned_frame, x, y - (c
 //helel skin motion blur
 if (get_player_color(player) == 30)
 {
-	if (state == PS_DOUBLE_JUMP && vsp < 0 || state == PS_DASH_START || fast_falling)
+	if (state == PS_DOUBLE_JUMP && vsp < 0 || state == PS_DASH_START || fast_falling || state == PS_WAVELAND || state == PS_ROLL_BACKWARD
+	|| state == PS_ROLL_FORWARD || state == PS_AIR_DODGE || attack == AT_SKILL2 && (window == 4 || window == 5)
+	|| (attack == AT_SKILL1 || attack == AT_SKILL1_AIR) && window == 10 || attack == AT_SKILL6 && window < 6 && window > 3
+	|| attack == AT_SKILL9 && window == 5 || attack == AT_SKILL9 && state == PS_IDLE_AIR && prev_state == PS_ATTACK_AIR)
 	{
 		gpu_set_blendmode(bm_add);
     	for(var m = 0; m < array_length_1d(helel_blur); m++)

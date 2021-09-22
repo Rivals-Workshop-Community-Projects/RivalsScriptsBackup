@@ -6,7 +6,7 @@ sprite_index = sprite_get("ground_sides");
 mask_index = sprite_get((spr_dir == 1) ? "ground_sides_mask" : "ground_sides_mask_r");
 image_index = (spr_dir == -1);
 
-with asset_get("obj_stage_article_solid") if num == 1 other.owner = self;
+with asset_get("obj_stage_article") if num == 1 other.owner = self;
 
 width = owner.width;
 x = owner.x - width * spr_dir;

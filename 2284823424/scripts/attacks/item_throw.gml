@@ -237,6 +237,33 @@ set_hitbox_value(AT_NTHROW, 9, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_NTHROW, 9, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_NTHROW, 9, HG_MUNO_HITBOX_NAME, "Bell");
 
+// shell
+
+set_hitbox_value(AT_NTHROW, 10, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_NTHROW, 10, HG_WINDOW, 2);
+set_hitbox_value(AT_NTHROW, 10, HG_LIFETIME, 300);
+set_hitbox_value(AT_NTHROW, 10, HG_HITBOX_Y, -16);
+set_hitbox_value(AT_NTHROW, 10, HG_WIDTH, 32);
+set_hitbox_value(AT_NTHROW, 10, HG_HEIGHT, 32);
+set_hitbox_value(AT_NTHROW, 10, HG_PRIORITY, 3);
+set_hitbox_value(AT_NTHROW, 10, HG_DAMAGE, 4);
+set_hitbox_value(AT_NTHROW, 10, HG_ANGLE, 51);
+set_hitbox_value(AT_NTHROW, 10, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_NTHROW, 10, HG_KNOCKBACK_SCALING, .6);
+set_hitbox_value(AT_NTHROW, 10, HG_BASE_HITPAUSE, 9);
+set_hitbox_value(AT_NTHROW, 10, HG_HITPAUSE_SCALING, .7);
+set_hitbox_value(AT_NTHROW, 10, HG_PROJECTILE_SPRITE, spr_itm_shell_proj);
+set_hitbox_value(AT_NTHROW, 10, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_NTHROW, 10, HG_HIT_SFX, sfx_mario_pop_1);
+set_hitbox_value(AT_NTHROW, 10, HG_PROJECTILE_ANIM_SPEED, .15);
+set_hitbox_value(AT_NTHROW, 10, HG_PROJECTILE_HSPEED, 8);
+set_hitbox_value(AT_NTHROW, 10, HG_PROJECTILE_VSPEED, -2);
+set_hitbox_value(AT_NTHROW, 10, HG_PROJECTILE_GRAVITY, .5);
+set_hitbox_value(AT_NTHROW, 10, HG_PROJECTILE_WALL_BEHAVIOR, 2);
+set_hitbox_value(AT_NTHROW, 10, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(AT_NTHROW, 10, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_NTHROW, 10, HG_MUNO_HITBOX_NAME, "Green Shell");
+
 
 
 

@@ -1,5 +1,8 @@
 sprite_change_offset("uspecial", 100, 108);
 
+var spr_uspecial = sprite_get("uspecial");
+var spr_plat_behind = sprite_get("plat_behind");
+
 
 
 if (chord_active){

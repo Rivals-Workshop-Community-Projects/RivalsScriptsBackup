@@ -3,7 +3,7 @@ set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, hurtbox_spr);
 
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 16); // 20
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 4);
 
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 3);

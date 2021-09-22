@@ -4,7 +4,7 @@ sprite_index = asset_get("empty_sprite");
 mask_index = sprite_get("platform_mask");
 depth = 28;
 
-with asset_get("obj_stage_article_solid") if num == 1 other.owner = self;
+with asset_get("obj_stage_article") if num == 1 other.owner = self;
 
 dir = 0;
 width = 0; //measured in tiles; doubled before use

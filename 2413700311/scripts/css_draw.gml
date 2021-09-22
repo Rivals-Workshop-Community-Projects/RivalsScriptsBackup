@@ -4,7 +4,7 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
  
-var num_alts = 16;
+var num_alts = 20;
 var alt_cur = get_player_color(player);
 
 alt_name[0]  = "Default";
@@ -20,13 +20,14 @@ alt_name[9]  = "Alter";
 alt_name[10]  = "Dark";
 alt_name[11]  = "Ghost";
 alt_name[12]  = "Abyss";
-alt_name[13]  = "Bug";
+alt_name[13]  = "Artistic";
 alt_name[14]  = "Dramatic";
 alt_name[15]  = "What";
+alt_name[16]  = "Zombie";
+alt_name[17]  = "Neon";
+alt_name[18]  = "Gold";
+alt_name[19]  = "Nes";
 
- 
- 
- 
 
 draw_set_halign(fa_left);
  
@@ -36,8 +37,8 @@ rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
  
 for(i = 0; i < num_alts; i++){
     var draw_color = (i == alt_cur) ? c_white : c_gray;
-    var draw_x = temp_x + 2 + 10 * i;
-    rectDraw(draw_x, temp_y + 137, draw_x + 7, temp_y + 140, draw_color);
+    var draw_x = temp_x + 2 + 8 * i;
+    rectDraw(draw_x, temp_y + 137, draw_x + 5, temp_y + 140, draw_color);
 }
  
 draw_set_halign(fa_left);

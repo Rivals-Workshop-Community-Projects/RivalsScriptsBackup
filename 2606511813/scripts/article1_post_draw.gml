@@ -46,12 +46,13 @@ if onscreen(x,y) {
 	            shield_img_index = ((window_timer/3) mod 7) + 1;
 	            shield_alpha = 0.7 + dsin(window_timer*16)*0.2;
 	        }
-	        draw_sprite_ext(spr_shield, 0, drawx + shieldx, shieldy, spr_dir, 1, 0, c_white, 0.4);
-	        draw_sprite_ext(spr_shield, 0, drawx - shieldx, shieldy, -spr_dir, 1, 0, c_white, 0.4);
-	        draw_sprite_ext(spr_shield, shield_img_index, drawx + shieldx, shieldy, spr_dir, 1, 0, c_white, shield_alpha);
-	        draw_sprite_ext(spr_shield, shield_img_index, drawx - shieldx, shieldy, -spr_dir, 1, 0, c_white, shield_alpha);
-	        draw_sprite_ext(spr_shield_outline, shield_img_index, drawx + shieldx, shieldy, spr_dir, 1, 0, c_white, 1);
-	        draw_sprite_ext(spr_shield_outline, shield_img_index, drawx - shieldx, shieldy, -spr_dir, 1, 0, c_white, 1);
+	        
+	        //draw_sprite_ext(spr_shield, 0, drawx + shieldx, shieldy, spr_dir, 1, 0, c_white, 0.4);
+	        //draw_sprite_ext(spr_shield, 0, drawx - shieldx, shieldy, -spr_dir, 1, 0, c_white, 0.4);
+	        draw_sprite_ext(spr_shield, shield_img_index, drawx + shieldx, shieldy, spr_dir, 1, 0, c_white, 1);
+	        draw_sprite_ext(spr_shield, shield_img_index, drawx - shieldx, shieldy, -spr_dir, 1, 0, c_white, 1);
+	        //draw_sprite_ext(spr_shield_outline, shield_img_index, drawx + shieldx, shieldy, spr_dir, 1, 0, c_white, 1);
+	        //draw_sprite_ext(spr_shield_outline, shield_img_index, drawx - shieldx, shieldy, -spr_dir, 1, 0, c_white, 1);
 	        
 	        //orbitar parry
 	        if oPlayer_owner != undefined {
@@ -64,17 +65,17 @@ if onscreen(x,y) {
 	                draw_sprite_ext(spr_shield, 0, drawx - shieldx, shieldy, -spr_dir, 1, 0, parry_col, 1);
 	                
 	                var thickness = 1
-	                draw_sprite_ext(spr_shield_outline, 1, drawx + shieldx + thickness/2, shieldy + thickness/2, spr_dir, 1, 0, c_black, 1);
-	                draw_sprite_ext(spr_shield_outline, 1, drawx - shieldx + thickness/2, shieldy + thickness/2, -spr_dir, 1, 0, c_black, 1);
+	                //draw_sprite_ext(spr_shield_outline, 1, drawx + shieldx + thickness/2, shieldy + thickness/2, spr_dir, 1, 0, c_black, 1);
+	                //draw_sprite_ext(spr_shield_outline, 1, drawx - shieldx + thickness/2, shieldy + thickness/2, -spr_dir, 1, 0, c_black, 1);
 	                
-	                draw_sprite_ext(spr_shield_outline, 1, drawx + shieldx + thickness/2, shieldy - thickness/2, spr_dir, 1, 0, c_black, 1);
-	                draw_sprite_ext(spr_shield_outline, 1, drawx - shieldx + thickness/2, shieldy - thickness/2, -spr_dir, 1, 0, c_black, 1);
+	                //draw_sprite_ext(spr_shield_outline, 1, drawx + shieldx + thickness/2, shieldy - thickness/2, spr_dir, 1, 0, c_black, 1);
+	                //draw_sprite_ext(spr_shield_outline, 1, drawx - shieldx + thickness/2, shieldy - thickness/2, -spr_dir, 1, 0, c_black, 1);
 	                
-	                draw_sprite_ext(spr_shield_outline, 1, drawx + shieldx - thickness/2, shieldy - thickness/2, spr_dir, 1, 0, c_black, 1);
-	                draw_sprite_ext(spr_shield_outline, 1, drawx - shieldx - thickness/2, shieldy - thickness/2, -spr_dir, 1, 0, c_black, 1);
+	                //draw_sprite_ext(spr_shield_outline, 1, drawx + shieldx - thickness/2, shieldy - thickness/2, spr_dir, 1, 0, c_black, 1);
+	                //draw_sprite_ext(spr_shield_outline, 1, drawx - shieldx - thickness/2, shieldy - thickness/2, -spr_dir, 1, 0, c_black, 1);
 	                
-	                draw_sprite_ext(spr_shield_outline, 1, drawx + shieldx - thickness/2, shieldy + thickness/2, spr_dir, 1, 0, c_black, 1);
-	                draw_sprite_ext(spr_shield_outline, 1, drawx - shieldx - thickness/2, shieldy + thickness/2, -spr_dir, 1, 0, c_black, 1);
+	                //draw_sprite_ext(spr_shield_outline, 1, drawx + shieldx - thickness/2, shieldy + thickness/2, spr_dir, 1, 0, c_black, 1);
+	                //draw_sprite_ext(spr_shield_outline, 1, drawx - shieldx - thickness/2, shieldy + thickness/2, -spr_dir, 1, 0, c_black, 1);
 	        	    
 	        	    gpu_set_fog(0, c_white, 0, 0);
 	        	    gpu_set_alphatestenable(false);

@@ -27,7 +27,6 @@ switch (attack)
         break;
 
     case AT_DAIR:
-    
         if (window == 4)
         {
             hurtboxID.sprite_index = hurtbox_spr;
@@ -77,7 +76,6 @@ switch (attack)
             }
         }
         break;
-
     case AT_USTRONG:
 
         //initial attack mana cost + reset targetting
@@ -414,6 +412,29 @@ switch (attack)
             fury_cycle = 3;
             attack_end(AT_SKILL1);
             attack_end(AT_SKILL1_AIR);
+        }
+        
+        //fine tune the foe's position to go alongside bar
+        if (window == 10 && has_hit_player)
+        {
+            if (fury_cycle > 0)
+            {
+                hit_player_obj.hsp = hsp;
+        	    hit_player_obj.vsp = vsp;
+            }
+            else if (fury_cycle == 0)
+            {
+                if (hit_player_obj.x > x && spr_dir || hit_player_obj.x < x && !spr_dir)
+                {
+                    hit_player_obj.hsp = hsp/2;
+        	        hit_player_obj.vsp = vsp/2;
+                }
+                else
+                {
+                    hit_player_obj.hsp = hsp*2;
+        	        hit_player_obj.vsp = vsp*2;
+                }
+            }
         }
 
         if (((window == 10 && window_timer >= 3 && fury_cycle == 0) || (window == 11 && window_timer <= 1)) && attack_down) //initiate attack 2
@@ -835,7 +856,7 @@ switch (attack)
             if (theikos_active && !is_8bit || get_player_color(player) == 31 || godpower) set_hitbox_value(AT_SKILL6, 1, HG_HIT_PARTICLE_NUM, 6);
             else set_hitbox_value(AT_SKILL6, 1, HG_HIT_PARTICLE_NUM, 2);
 
-            set_hitbox_value(AT_SKILL6, 2, HG_DAMAGE, 13);
+            set_hitbox_value(AT_SKILL6, 2, HG_DAMAGE, 10);
             set_hitbox_value(AT_SKILL6, 2, HG_VISUAL_EFFECT, fx_fireblow3);
             set_hitbox_value(AT_SKILL6, 2, HG_HIT_SFX, asset_get("sfx_burnconsume"));
             set_hitbox_value(AT_SKILL6, 2, HG_BASE_KNOCKBACK, 7);
@@ -843,7 +864,7 @@ switch (attack)
             set_hitbox_value(AT_SKILL6, 2, HG_BASE_HITPAUSE, 13);
             set_hitbox_value(AT_SKILL6, 2, HG_HITPAUSE_SCALING, 0.8);
 
-            set_hitbox_value(AT_SKILL6, 3, HG_DAMAGE, 10);
+            set_hitbox_value(AT_SKILL6, 3, HG_DAMAGE, 8);
             set_hitbox_value(AT_SKILL6, 3, HG_VISUAL_EFFECT, fx_fireblow2);
             set_hitbox_value(AT_SKILL6, 3, HG_HIT_SFX, asset_get("sfx_forsburn_combust"));
             set_hitbox_value(AT_SKILL6, 3, HG_BASE_KNOCKBACK, 9);
@@ -929,8 +950,8 @@ switch (attack)
     case AT_DSPECIAL_2: // [8] EMBER FIST
 
         can_fast_fall = false;
-        
-        if (window == 3 && window_timer == 1) mp_current -= emberfist_cost;
+
+        if (window == 3 && window_timer == 1) mp_current -= emberfist_cost; //mana consumption
 
         if (window == 2 && window_timer == get_window_value(AT_SKILL8, 2, AG_WINDOW_LENGTH)) //aiming logic
         {
@@ -981,7 +1002,8 @@ switch (attack)
             }
         }
 
-        if (window == 4 && window_timer == 1) //FX logic
+        //FX logic
+        if (window == 4 && window_timer == 1) 
         {
             //FX position
             var fx_xpos = 0
@@ -1016,7 +1038,8 @@ switch (attack)
             }
         }
 
-        if (window == 6)
+        //reset variables
+        if (window == 5)
         {
             emberfist_up = false;
             emberfist_down = false;
@@ -1082,6 +1105,7 @@ switch (attack)
         //parry cancel
         if (window < 3) can_shield = true;
 
+        //reset variables to their minimum counterpart
         if (window == 1 && window_timer == 1)
         {
             mp_current -= lighthookshot_activate_cost;
@@ -1097,6 +1121,7 @@ switch (attack)
             reset_hitbox_value(AT_SKILL9, 2, HG_KNOCKBACK_SCALING);
             reset_hitbox_value(AT_SKILL9, 2, HG_BASE_HITPAUSE);
             reset_hitbox_value(AT_SKILL9, 2, HG_HITPAUSE_SCALING);
+            reset_hitbox_value(AT_SKILL9, 2, HG_EXTENDED_PARRY_STUN);
         }
 
         //holding down the button will add more extra hitpause and distance on the normal version
@@ -1166,6 +1191,7 @@ switch (attack)
             }
         }
 
+        //boost effect
         if (window == 5 && window_timer == 3)
         {
             var boost = spawn_hit_fx(x+32*spr_dir, y-12, fx_boost);
@@ -1688,6 +1714,7 @@ if (attack == AT_OVERDRIVE)
     hurtboxID.sprite_index = hurtbox_spr;
     od_already_active = true;
     od_gainable = false;
+    //od_prepare_godpower = true;
 
     burningfury_active = false;
     guardaura_active = false;
@@ -1860,14 +1887,31 @@ if (attack == AT_OVERDRIVE)
 
     if (window == 17) shake_camera(10, 3); //power, time
 
-    //apply the lord's blessing buff
-    if (window == 21 && window_timer == get_window_value(AT_OVERDRIVE, 21, AG_WINDOW_LENGTH))
+    //apply the lord's blessing buff accordingly
+    if ("superTrue" in self)
     {
-        if (od_already_active) od_already_active = false;
-        if (fs_force_fs) fs_force_fs = false;
-        if (od_current >= od_max) godpower = true; //activates after the OD attack (rune version only)
+        if (superTrue == 1 && attack == AT_OVERDRIVE && window >= 18 && od_already_active) od_already_active = false; //rivals of fighters version
+    }
+    else
+    {
+        if (window == 21 && window_timer == get_window_value(AT_OVERDRIVE, 21, AG_WINDOW_LENGTH))
+        {
+            if (od_already_active) od_already_active = false;
+            if (fs_force_fs) fs_force_fs = false; //final smash version
+            if (od_current >= od_max) godpower = true; //activates after the OD attack (rune version only)
+        }
     }
 }
+/*
+else //this is just to make sure it disables itself with turbo mode
+{
+    if (od_prepare_godpower)
+    {
+        godpower = true;
+        od_already_active = false;
+    }
+}
+*/
 
 //lord's blessing buff on attacks
 if (godpower)
@@ -1918,7 +1962,7 @@ else
 }
 
 //FINAL SMASH/OVERDRIVE 2: THEIA EVALOGIA
-if (attack == 49)
+if (attack == 47)
 {
     od_already_active = true;
     od_gainable = false;

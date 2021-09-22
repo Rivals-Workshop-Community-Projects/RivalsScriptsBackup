@@ -21,6 +21,7 @@ vsp = 0;                                            //The vertical speed of the 
 
 whirlwind_first = false;    //If this is the first Whirlwind created
 whirlwind_second = false;   //If this is the second Whirlwind created
+whirlwind_shaking = 0;
 
 //Hitbox detection stuff
 whirlwind_x_hitbox = 0;

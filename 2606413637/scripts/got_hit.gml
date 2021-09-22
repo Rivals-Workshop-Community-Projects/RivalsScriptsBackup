@@ -1,5 +1,8 @@
 if kaioken && enemy_hitboxID.damage > 0 take_damage(player, enemy_hitboxID.player, 2);
 
+var ki_mult = 1;
+if !ssj ki = min(ki + enemy_hitboxID.damage * ki_mult, ki_max);
+
 voice_play(VB_HURT);
 
 

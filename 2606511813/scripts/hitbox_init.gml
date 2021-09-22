@@ -2,13 +2,18 @@
 
 user_event(0)
 
+
+
 reset_lifetime = false;
+increment = 0;
 
 sfx_arrow = sound_get("arrow_sfx")
 
+trail_length = player_id.trail_length
+
 if (attack == AT_NSPECIAL) && (hbox_num == 1) {
     projSpeed = abs(hsp + vsp);
-    trailArray = array_create(20);
+    trailArray = array_create(trail_length);
     arrow_num = player_id.arrow_count;
     sound_play(sfx_arrow, false, noone, 0.2)
     orig_angle = kb_angle

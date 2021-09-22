@@ -68,8 +68,8 @@ if state == PS_LAND && get_player_color(player) == 8 {
 
 //alt portrait
 if (get_player_color(player) == 3 || get_player_color(player) == 4 || 
-	get_player_color(player) == 6 || get_player_color(player) == 15 ||
-	get_player_color(player) == 18){
+	get_player_color(player) == 6 || get_player_color(player) == 8 || get_player_color(player) == 15 ||
+	get_player_color(player) == 20){
 set_victory_portrait( sprite_get( "portrait_alt" ));
 init_shader();
 }

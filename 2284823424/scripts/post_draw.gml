@@ -1,17 +1,25 @@
-user_event(12);
+muno_event_type = 4;
+user_event(14);
 
 
 
 shader_start();
 
+var real_sprite = sprite_index;
+var real_index = image_index;
+if last_size_sprite_frame == get_gameplay_time(){
+	real_sprite = last_size_sprite;
+	real_index = last_size_index;
+}
+
 if !(elytra && held_item == IT_ELYTRA) && (array_find_index(ok_anims, sprite_index) != -1) && held_item && sprite_index != spr_uspecial{
-	var cur = itm_pos[sprite_index, floor(image_index) % sprite_get_number(sprite_index)];
+	var cur = itm_pos[real_sprite, floor(real_index) % sprite_get_number(real_sprite)];
 	
 	if !cur.back{
 		draw_sprite_ext(items[held_item].held_sprite, 0, x + cur.x * spr_dir, y + cur.y, cur.xscale * spr_dir, cur.yscale, cur.angle * -spr_dir, cur.color, cur.alpha);
 	}
 	
-	if (sprite_index == spr_parry && image_index == 1){
+	if (real_sprite == spr_parry && real_index == 1){
 	
 		maskHeader();
 		
@@ -19,7 +27,7 @@ if !(elytra && held_item == IT_ELYTRA) && (array_find_index(ok_anims, sprite_ind
 		
 		maskMidder();
 		
-		//draw_sprite_ext(sprite_index,image_index,nspec_vfx_x,nspec_vfx_y,spr_dir,1,image_angle,c_white,target_alpha);
+		//draw_sprite_ext(real_sprite,real_index,nspec_vfx_x,nspec_vfx_y,spr_dir,1,image_angle,c_white,target_alpha);
 		var c = make_color_rgb(165, 155, 205);
 		draw_rectangle_colour(0,0, room_width,room_height, c, c, c, c, false);
 		
@@ -30,7 +38,7 @@ if !(elytra && held_item == IT_ELYTRA) && (array_find_index(ok_anims, sprite_ind
 
 
 
-if sprite_index == spr_uspecial{
+if real_sprite == spr_uspecial{
 	var drawn_items = [held_item ? items[held_item].held_sprite : 0, 0];
 	
 	switch(uspecial_type){
@@ -45,7 +53,7 @@ if sprite_index == spr_uspecial{
 	}
 	
 	if drawn_items[0]{
-		var cur = itm_pos[spr_uspecial, floor(image_index) % sprite_get_number(sprite_index)];
+		var cur = itm_pos[spr_uspecial, floor(real_index) % sprite_get_number(real_sprite)];
 	
 		if !cur.back{
 			draw_sprite_ext(drawn_items[0], 0, x + cur.x * spr_dir, y + cur.y, cur.xscale * spr_dir, cur.yscale, cur.angle * -spr_dir, cur.color, cur.alpha);
@@ -53,7 +61,7 @@ if sprite_index == spr_uspecial{
 	}
 	
 	if drawn_items[1]{
-		var cur = itm_pos[spr_uspecial + 1, floor(image_index) % sprite_get_number(sprite_index)];
+		var cur = itm_pos[spr_uspecial + 1, floor(real_index) % sprite_get_number(real_sprite)];
 	
 		if !cur.back{
 			draw_sprite_ext(drawn_items[1], 0, x + cur.x * spr_dir, y + cur.y, cur.xscale * spr_dir, cur.yscale, cur.angle * -spr_dir, cur.color, cur.alpha);
@@ -66,7 +74,7 @@ if sprite_index == spr_uspecial{
 // if (on_block && (sprite_index == spr_land || sprite_index == spr_landinglag)) && !fast_graphics{
 // 	maskHeader();
 		
-// 	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, 0.5);
+// 	draw_sprite_ext(sprite_index, real_index, x, y, image_xscale, image_yscale, image_angle, image_blend, 0.5);
 	
 // 	maskMidder();
 		
@@ -82,7 +90,7 @@ if sprite_index == spr_uspecial{
 
 
 if (state_cat == SC_HITSTUN && state_timer < 30) || (attacking && attack == AT_TAUNT_2 && "bed_time" in self && bed_time > bed_time_max - bed_time_mid && bed_time % 10 < 5){
-	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, c_red, 0.5);
+	draw_sprite_ext(real_sprite, real_index, x, y, image_xscale, image_yscale, image_angle, c_red, 0.5);
 }
 
 shader_end();
@@ -149,7 +157,7 @@ if (nspecial_gui_alpha > 0.1){
 //Sticky Piston
 
 if (attacking && attack == AT_EXTRA_1){
-	if (image_index == clamp(image_index, 3, 6)){
+	if (real_index == clamp(real_index, 3, 6)){
 		var draw_x = pist_x;
 		
 		if (window == 2){
@@ -157,15 +165,15 @@ if (attacking && attack == AT_EXTRA_1){
 		}
 		
 		var image_index_offsets = [0, 0, 0, -14, -12, 12, 10, 0];
-		var width_change_for_frame = image_index_offsets[image_index];
+		var width_change_for_frame = image_index_offsets[real_index];
 		
-		rectDraw(x + (20 + width_change_for_frame) * spr_dir, y - 32, draw_x - (x + (20 + width_change_for_frame) * spr_dir), 7, c_black);
-		rectDraw(x + (20 + width_change_for_frame) * spr_dir, y - 30, draw_x - (x + (20 + width_change_for_frame) * spr_dir), 3, make_color_rgb(184, 148, 95));
-		draw_sprite_ext(spr_nspecial_item_sticky_piston_head, 0, draw_x, y - 28, spr_dir, 1, 0, c_white, 1);
+		rectDraw(x + (20 + width_change_for_frame) * spr_dir * size_mult, y - 32 * size_mult, draw_x - (x + (20 + width_change_for_frame) * spr_dir), 7, c_black);
+		rectDraw(x + (20 + width_change_for_frame) * spr_dir * size_mult, y - 30 * size_mult, draw_x - (x + (20 + width_change_for_frame) * spr_dir), 3, make_color_rgb(184, 148, 95));
+		draw_sprite_ext(spr_nspecial_item_sticky_piston_head, 0, draw_x, y - 28 * size_mult, spr_dir * size_mult, 1 * size_mult, 0, c_white, 1);
 		
-		if (image_index == 3){
-			rectDraw(x + (20 + width_change_for_frame) * spr_dir, y - 42, draw_x - (x + (19 + width_change_for_frame) * spr_dir), 27, make_color_rgb(184, 148, 95));
-			rectDraw(x + (20 + width_change_for_frame) * spr_dir, y - 42, (draw_x - (x + (19 + width_change_for_frame) * spr_dir)) / 3, 27, make_color_rgb(160, 114, 73));
+		if (real_index == 3){
+			rectDraw(x + (20 + width_change_for_frame) * spr_dir * size_mult, y - 42 * size_mult, draw_x - (x + (19 + width_change_for_frame) * spr_dir), 27 * size_mult, make_color_rgb(184, 148, 95));
+			rectDraw(x + (20 + width_change_for_frame) * spr_dir * size_mult, y - 42 * size_mult, (draw_x - (x + (19 + width_change_for_frame) * spr_dir)) / 3, 27 * size_mult, make_color_rgb(160, 114, 73));
 		}
 	}
 }
@@ -181,8 +189,8 @@ if strength_pot{
 		draw_width = max(ease_quadIn(0, 40, strength_pot, 3), 0);
 	}
 	
-	meterDraw(x, y - char_height - hud_offset - 74 + phone_cheats[cheat_hide_hud] * 40, draw_width, 8, $161996, clamp(strength_pot / strength_pot_max, 0, 1), 1, 1, true);
-	if !(strength_pot - 1 < 60 && (strength_pot - 1) % 10 >= 5) draw_sprite(spr_hud_strength, 0, x - 16, y - char_height - hud_offset - 104 + phone_cheats[cheat_hide_hud] * 40)
+	meterDraw(x, y - char_height - hud_offset - 74 + phone_hud_hidden * 40, draw_width, 8, $161996, clamp(strength_pot / strength_pot_max, 0, 1), 1, 1, true);
+	if !(strength_pot - 1 < 60 && (strength_pot - 1) % 10 >= 5) draw_sprite(spr_hud_strength, 0, x - 16, y - char_height - hud_offset - 104 + phone_hud_hidden * 40)
 }
 
 

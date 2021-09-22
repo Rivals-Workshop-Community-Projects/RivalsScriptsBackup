@@ -1,3 +1,7 @@
+
+
+if object_index == oPlayer exit;
+
 switch(type){
 	case 0: //fire
 		
@@ -37,7 +41,7 @@ switch(type){
 			
 			with pHitBox{
 				if place_meeting(x, y, other){
-					if "muno_char_id" in player_id && player_id.muno_char_id == other.player_id.muno_char_id && attack == AT_FSTRONG{
+					if "muno_char_id" in player_id && player_id.muno_char_id == other.player_id.muno_char_id && (attack == AT_FSTRONG || attack == AT_NTHROW && hbox_num == 10){
 						if type == 2 && "flaming" in self && !flaming{
 							flaming = true;
 							sound_play(player_id.sfx_minecraft_singe);
@@ -50,7 +54,7 @@ switch(type){
 			}
 		}
 		
-		if !(exist_timer % 20) && !player_id.phone.phone_settings[player_id.phone.setting_fast_graphics]{
+		if !(exist_timer % 20) && !player_id.phone_fast{
 			var hfx = spawn_hit_fx(x, y, player_id.vfx_smoke);
 			hfx.vsp = -1;
 			hfx.hsp = clamp(random_func(0, 4, true), 0, 3) - 1;

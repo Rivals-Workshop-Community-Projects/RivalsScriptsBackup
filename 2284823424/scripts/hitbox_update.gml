@@ -1,7 +1,5 @@
 var fast_gr = player_id.fast_graphics;
 
-
-
 if hitpause_timer{
 	hitpause_timer--;
 	in_hitpause = true;
@@ -289,8 +287,150 @@ if (attack == AT_NTHROW){
 				proj_angle += 25 * spr_dir;
 			}
 			break;
+		
+		case 10:
+			
+			if "parried" in self{
+				instance_destroy();
+				exit;
+			}
+			
+			if hitpause_timer_2{
+				hitpause_timer_2--;
+				in_hitpause = true;
+				if !hitpause_timer_2{
+					hsp *= -1;
+					vsp = -4;
+					spr_dir *= -1;
+				}
+			}
+			
+			image_index = ((hitbox_timer / 3) % 4) + 4 * flaming;
+			
+			if flaming{
+				
+				if !(hitbox_timer % 5) && !fast_gr && !in_hitpause{
+					var hfx = spawn_hit_fx(x, y, player_id.vfx_smoke);
+					hfx.hsp = hsp * 0.1;
+					hfx.vsp = vsp * 0.1;
+					hfx.depth = depth + 1;
+					
+					hfx.steve_manip_id = player_id;
+					hfx.type = 0;
+					hfx.num = 0;
+					
+					hfx.go_up = 0.25;
+					hfx.ignore_gravity = true;
+				}
+				
+				var target2 = noone;
+				var record = -1;
+				with oPlayer if player != other.player && visible{
+					if distance_to_object(other) < record || record < 0{
+						target2 = self;
+						record = distance_to_object(other);
+					}
+				}
+				
+				if target2 != noone{
+					var max_spd = 8;
+					
+					hsp = clamp(hsp + sign(target2.x - x) * 0.5, -max_spd, max_spd);
+					if sign(hsp) != spr_dir{
+						for (var i = 0; i < 20; i++){
+						    can_hit[i] = 1;
+						}
+					}
+					if abs(hsp) spr_dir = sign(hsp);
+				}
+			}
+			
+			hitbox_detection();
+			break;
 	}
 }
+
+
+
+#define die
+
+instance_destroy();
+
+
+
+#define hitbox_detection //BY SUPERSONIC
+//estimated like 80% accurate imo
+
+if hit_lockout <= 0{
+	
+	var article = self;
+	//reset hitbox groups when necessary
+	with (oPlayer)
+	    if (state == clamp(state, 5, 6) && window == 1 && window_timer == 1) {
+	        other.hbox_group_2[@ player-1][@ attack] = array_create(10,0);
+	        //with other print_debug(`${article}: reset hb group for ${other.player},${other.attack}`);
+	    }
+	 
+	var currentHighestPriority = noone;
+	highest_enemy_damage = 0;
+	with (pHitBox) if other != self{
+		if `hit_${article}` not in self
+	        if place_meeting(x,y,other) && (groundedness == 0 || groundedness == 1+free) {
+	            if hbox_group == -1 || ( hbox_group != -1 && other.hbox_group_2[@ orig_player-1][@ attack][@ hbox_group] == 0) {
+	                //hit
+	                if currentHighestPriority != noone {
+	                    if currentHighestPriority.hit_priority < hit_priority
+	                        currentHighestPriority = self;
+	                } else {
+	                    currentHighestPriority = self;
+	                }
+	                
+	                variable_instance_set(self, `hit_${article}`, true);
+	            }
+	        } else if place_meeting(x,y,other) && hbox_group != -1 && other.hbox_group_2[@ orig_player-1][@ attack][@ hbox_group] == 1 {
+	            //prevent from running hit detection for optimization sake
+	            //with other print_debug("hit but also not");
+	            variable_instance_set(self, `hit_${article}`, true);
+	        }
+	}
+	
+	if instance_exists(currentHighestPriority) with currentHighestPriority {
+	    sound_play(sound_effect);
+	    spawn_hit_fx(other.x+hit_effect_x,other.y+hit_effect_y,hit_effect);
+	    player_id.has_hit_ball = true;
+	    player_id.melee_hit_ball = other;
+	    with other {
+	        //print_debug(`hit_${article}`);
+	        hitpause_timer_2 = round(other.hitpause + other.damage * other.hitpause_growth * 0.05);
+	        // hitstun_full = hitstun;
+	        // for you archy. 
+	        // if other.force_flinch && !other.player_id.free orig_knock = 0; //uncomment this line for enemies
+	        
+	        hsp *= speed_mult;
+	        
+	        player = other.player;
+	        
+	        hit_lockout = 10;
+	        
+	        for (var i = 0; i < 20; i++){
+			    can_hit[i] = 1;
+			}
+	    }
+	    if type == 1 with player_id {
+	        old_vsp = vsp;
+	        old_hsp = hsp;
+	        hitpause = true;
+	        var desired_hitstop = other.hitpause + other.damage * other.hitpause_growth * 0.05;
+	        if hitstop < desired_hitstop {
+	            hitstop = desired_hitstop;
+	            hitstop_full = desired_hitstop;
+	        }
+	    }
+	    other.hitstop = floor(desired_hitstop);
+	    if hbox_group != -1 other.hbox_group_2[@ orig_player-1][@ attack][@ hbox_group] = 1;
+	}
+}
+else if !hitpause_timer hit_lockout--;
 
 
 

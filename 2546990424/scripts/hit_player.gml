@@ -6,7 +6,8 @@
 //}
 
 //FSpecial - Turbine Punch
-if (my_hitboxID.attack == AT_FSPECIAL){
+if (my_hitboxID.attack == AT_FSPECIAL || my_hitboxID.attack == AT_FSTRONG
+|| my_hitboxID.attack == AT_USTRONG	|| my_hitboxID.attack == AT_DSTRONG){
 	whirlwind_punch = true;
 	hit_player_obj.whirlwind_effect = true;
 	//Hitpause on the Gust hitbox

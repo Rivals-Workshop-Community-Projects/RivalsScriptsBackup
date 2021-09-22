@@ -91,11 +91,27 @@ if sprite_index == spr_uspecial{
 	}
 }
 
+
+
+if elytra && !(elytra - 1 < 25 && (elytra - 1) % 10 >= 5) && !(attacking && attack == AT_UTHROW) draw_sprite_ext(spr_elytra_wings, get_gameplay_time() / 5, x, y, spr_dir * size_mult, size_mult, 0, c_white, 1);
+
+if size_mult > 1{
+	if last_size_sprite_frame == get_gameplay_time(){
+		draw_sprite_ext(last_size_sprite, last_size_index, x, y - size_mult, spr_dir * size_mult, size_mult, image_angle, image_blend, image_alpha);
+	}
+	else{
+		if state == PS_AIR_DODGE sprite_index = spr_airdodge;
+		draw_sprite_ext(sprite_index, image_index, x, y - 2, spr_dir * size_mult, size_mult, image_angle, image_blend, image_alpha);
+		last_size_sprite = sprite_index;
+		last_size_index = image_index;
+		sprite_index = asset_get("empty_sprite");
+		last_size_sprite_frame = get_gameplay_time();
+	}
+}
+
+
+
 shader_end();
-
-
-
-if elytra && !(elytra - 1 < 25 && (elytra - 1) % 10 >= 5) && !(attacking && attack == AT_UTHROW) draw_sprite_ext(spr_elytra_wings, get_gameplay_time() / 5, x, y, spr_dir, 1, 0, c_white, 1);
 
 
 

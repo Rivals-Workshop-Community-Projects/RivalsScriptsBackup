@@ -1,3 +1,5 @@
+orig_player_id = player_id;
+
 is_spear = (sprite_index == sprite_get("spears"));
 hitpause_timer = 0;
 has_hit_player = false;

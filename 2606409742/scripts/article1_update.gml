@@ -437,6 +437,8 @@ if state == PS_ATTACK_AIR{
 
 #define stasis_aim
 
+if !instance_exists(self) return; // ok
+
 with oPlayer if get_player_team(player) != get_player_team(other.player_id.player) other.kb_dir = point_direction(other.x, other.y, x + hsp, y - char_height / 2 + vsp);
 stasis_arrow.draw_angle = kb_dir - 90;
 var spd = point_distance(0, 0, hsp, vsp);
@@ -448,10 +450,12 @@ vsp = lengthdir_y(spd, kb_dir);
 #define spawn_hitbox_as_melee(atk, num)
 
 // spawn hitboxes
+
+with pHitBox if "article_owner" in self && article_owner == other{
+	instance_destroy(self);
+}
 		
-var hbox = noone;
-	
-hbox = create_hitbox(atk, num, round(x), round(y));
+var hbox = create_hitbox(atk, num, round(x), round(y));
 hbox.article_owner = self;
 
 hbox.type = 2;

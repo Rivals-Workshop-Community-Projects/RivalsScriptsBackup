@@ -36,7 +36,7 @@ if(state != 5){
         state = 3;
         state_timer = 23;
         if(player_id.attack == AT_DSTRONG_2) movestate = 3;
-        if(player_id.attack == AT_USPECIAL){
+        if(player_id.attack == AT_USPECIAL or player_id.attack == AT_DSPECIAL_AIR ){
             movestate = 0;
             hspmove = 0;
         }
@@ -45,16 +45,16 @@ if(state != 5){
     }
     //空中ならstate4にする
     if( free ){
-        if((state != 3) and (state != 4)){
+        if((state != 2) and (state != 3) and (state != 4)){
             state = 4;
         }
     }
     
-}
-
-if(player_id.body_explo == true){
+    if(player_id.body_explo == true){
     state = 5;
-    state_timer = 36;
+    state_timer = 52;
+	}
+    
 }
 
 //------------------------------------------------------------------------------
@@ -68,6 +68,7 @@ if(state == 0){
     }
     hsp = 0;
     vsp = 0;
+    bodyDjump = 0;
 }
 
 //停止  state 1
@@ -76,7 +77,7 @@ if(state == 1){
     hsp = 0;
     vsp = 0;
     hspmove = 0;
-    
+    bodyDjump = 0;
     
     if((player_id.attack == AT_DSPECIAL_2) && (player_id.window = 3)){
             state = 2;
@@ -226,11 +227,35 @@ if(state == 4){
     vsp = (vsp + 0.5); 
 }
 
-
+//-----------------------追加分
+//ワンモア
+if(state == 3 or state == 4){
+	if(bodyDjump == 0){
+		if((player_id.attack == AT_DSPECIAL_2) && (player_id.window = 3)){
+				state_timer = 6;
+				bodyDjump += 1;
+				hsp = 0;
+	    		vsp = 0;
+	            state = 2;
+	            movestate = 0;
+	    }
+	    
+	    if((player_id.attack == AT_FSPECIAL_2) && (player_id.window = 3)){
+	    		state_timer = 6;
+	    		bodyDjump += 1;
+				hsp = 0;
+	    		vsp = 0;
+	            state = 2;
+	            movestate = 1;
+	    }
+	}
+}
+//----------------------
 
 //爆発  state 5
 if(state == 5){
-    if(state_timer > 42){
+	if(state_timer == 52) sound_play( asset_get("sfx_ell_overheat"));
+    if(state_timer > 64){
         player_id.bodyloss = true;
         spawn_hit_fx( x, y-20, 143 );
         sound_play( asset_get("sfx_ell_uspecial_explode"));
@@ -246,7 +271,7 @@ if(state == 5){
     hsp = 0;
     vsp = 0;
     player_id.body_explo = false;
-    image_index = (floor(image_number*state_timer/(image_number*2)));
+    image_index = (floor(image_number*state_timer/(image_number*3)));
 }
 
 //------------------------------------------------------------------------------
@@ -257,7 +282,17 @@ if(state == 5){
 if(state != 5){
     with (asset_get("pHitBox")){
         if (player_id == other.player_id && player_id.bodyless == true && place_meeting(x,y,other.id)){
-            if(!(attack == AT_DSPECIAL) && !(attack == AT_NSPECIAL) && !(attack == AT_DSPECIAL_AIR) && !(attack == AT_USPECIAL) && !(attack == AT_DSPECIAL_2) && !(attack == AT_FSPECIAL_2) && !(attack == AT_DSTRONG_2)  && !(attack == AT_USTRONG_2)&& !(attack == AT_NSPECIAL_2)){
+            if(!(attack == AT_DSPECIAL)
+            && !(attack == AT_NSPECIAL)
+            && !(attack == AT_DSPECIAL_AIR)
+            && !(attack == AT_USPECIAL)
+            && !(attack == AT_DSPECIAL_2)
+            && !(attack == AT_FSPECIAL_2)
+            && !(attack == AT_DSTRONG_2)
+            && !(attack == AT_USTRONG_2)
+            && !(attack == AT_NSPECIAL_2)
+            && !(attack == AT_UTILT)
+            && !(attack == AT_FSPECIAL)){
                 attack_end();
                 sound_play(asset_get("sfx_blow_heavy1"));
                 player_id.bodyless = false;

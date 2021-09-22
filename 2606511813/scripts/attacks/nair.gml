@@ -7,12 +7,12 @@ set_attack_value(AT_NAIR, AG_HURTBOX_SPRITE, sprite_get("nair_hurt"));
 set_attack_value(AT_NAIR, AG_NUM_WINDOWS, 4);
 
 //startup
-set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_NAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, sfx_nair);
-set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 2);
+set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 3);
 
 //multihits
 set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 16);

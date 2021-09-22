@@ -207,7 +207,7 @@ if (steve_lava_check_frame != get_gameplay_time()){
 		if steve_lava_last_frame < get_gameplay_time() - 10{ //enter effect
 			with steve var hb = create_hitbox(AT_DSPECIAL, 1, other.x, other.y - 10);
 			hb.can_hit_self = true;
-			if ("muno_char_id" in self && muno_char_id == steve.muno_char_id && attacking && attack == AT_NAIR && soft_armor) super_armor = true;
+			if ("muno_char_id" in self && muno_char_id == 5 && state == PS_ATTACK_AIR && attack == AT_NAIR && soft_armor) super_armor = true;
 		}
 		steve_lava_last_frame = get_gameplay_time();
 	}

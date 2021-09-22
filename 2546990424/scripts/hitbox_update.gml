@@ -29,7 +29,7 @@ if (attack == AT_DSPECIAL){
 	&& player_id.whirlwind_myself == false){
 		damage = 10;
 		kb_value = kb_value-2;
-		kb_scale = .9;
+		kb_scale = .8;
 		hitpause = 15;
 		hitpause_growth = 1.5;
 		hit_effect = 143;

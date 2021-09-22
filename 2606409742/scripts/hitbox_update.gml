@@ -17,9 +17,8 @@ if ("article_owner" in self){
 
 if is_spear{
 	
-	if floor(hitpause_timer) == 1{
+	if floor(hitpause_timer) == 1 && player == orig_player{
 		if !damage_spear(){
-		
 			var a = instance_create(x, y, "obj_article2");
 			a.fake_image_angle = ((proj_angle - 180 * (spr_dir == -1)) + 360) % 360;
 			a.spr_dir = spr_dir;
@@ -53,7 +52,7 @@ if is_spear{
 			sound_play(asset_get("sfx_clairen_hit_weak"))
 		}
 		
-		if place_meeting(x + hsp, y, asset_get("par_block")) || place_meeting(x, y, asset_get("par_jumpthrough")) && !place_meeting(x, y - vsp, asset_get("par_jumpthrough")) && vsp > 0{
+		if player == orig_player && place_meeting(x + hsp, y, asset_get("par_block")) || place_meeting(x, y, asset_get("par_jumpthrough")) && !place_meeting(x, y - vsp, asset_get("par_jumpthrough")) && vsp > 0{
 		
 			var a = instance_create(x, y, "obj_article2");
 			a.fake_image_angle = ((proj_angle - 180 * (spr_dir == -1)) + 360) % 360;
@@ -76,7 +75,7 @@ if is_spear{
 		proj_angle = point_direction(0, 0, hsp, vsp) - 90 * spr_dir + 180 * (spr_dir == -1);
 		original_proj_angle = proj_angle; // for wobbling
 		
-		if x < player_id.phone_blastzone_l || x > player_id.phone_blastzone_r || y > player_id.phone_blastzone_b{
+		if player == orig_player && x < player_id.phone_blastzone_l || x > player_id.phone_blastzone_r || y > player_id.phone_blastzone_b{
 			var a = instance_create(x, y, "obj_article3");
 			a.message_type = 1;
 			a.spear_num = image_index;

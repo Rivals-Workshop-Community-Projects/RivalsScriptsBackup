@@ -8,7 +8,6 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
     
     //autohoming
     var autohoming = has_rune("L"); //NSPECIAL arrows autohome.
-    
     if autohoming {
         var nearestPlayer = noone;
         var nearestDist = 1000000;
@@ -19,7 +18,6 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
                 nearestDist = dist;
             }
         }
-        
         playerJoyDir = darctan2(y - (nearestPlayer.y - nearestPlayer.char_height/1.2), nearestPlayer.x - x)
     }
     
@@ -59,16 +57,19 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
     proj_angle = drawAngle;
     
     //trail location code
-    for (var i = 1; i < array_length(trailArray); i += 1) {
+    /*
+    for (var i = 1; i < trail_length; i += 1) {
         trailArray[i - 1] = trailArray[i];
     }
-    if onscreen(x, y) trailArray[array_length(trailArray)-1] = [x - spr_dir*31*dsin(angle),y - spr_dir*31*dcos(angle),projSpeed,drawAngle,spr_dir];
-    else trailArray[array_length(trailArray)-1] = undefined;
+    trailArray[trail_length-1] = [x - spr_dir*31*dsin(angle),y - spr_dir*31*dcos(angle),projSpeed,drawAngle,spr_dir];
+    */
     
     //destroy if grounded
     if (!free) || (position_meeting(x, y, asset_get("par_block"))) {
         destroyed = true;
     }
+    
+    if onscreen(x,y) trailArray[player_id.trail_index] = [x - spr_dir*31*dsin(angle),y - spr_dir*31*dcos(angle),projSpeed,drawAngle,spr_dir];
     
     //kb angle depending on horizontal direction
     if hsp <= 0 {

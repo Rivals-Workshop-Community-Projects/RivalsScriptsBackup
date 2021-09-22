@@ -8,10 +8,11 @@ if swift_mode = true{
 	set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 10);
 	set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 10);
 	set_hitbox_value(AT_USTRONG, 5, HG_BASE_KNOCKBACK, 9);
-	set_hitbox_value(AT_UTILT, 4, HG_BASE_KNOCKBACK, 9);
-	set_hitbox_value(AT_UTILT, 5, HG_BASE_KNOCKBACK, 9);
-	set_hitbox_value(AT_UTILT, 6, HG_BASE_KNOCKBACK, 9);
-	set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 9);
+	set_hitbox_value(AT_UTILT, 4, HG_BASE_KNOCKBACK, 10);
+	set_hitbox_value(AT_UTILT, 5, HG_BASE_KNOCKBACK, 10);
+	set_hitbox_value(AT_UTILT, 6, HG_BASE_KNOCKBACK, 10);
+	set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 3);
+	set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 10);
 	set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 9);
 	set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_BAIR, 3, HG_BASE_KNOCKBACK, 6);
@@ -22,7 +23,6 @@ if swift_mode = true{
 	set_hitbox_value(AT_DATTACK, 2, HG_BASE_KNOCKBACK, 8);
 	set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 12);
 	set_hitbox_value(AT_DTILT, 2, HG_BASE_KNOCKBACK, 11);
-	set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_FAIR, 6, HG_BASE_KNOCKBACK, 8);
 	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 12);
 	set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 9);
@@ -34,7 +34,7 @@ if swift_mode = true{
 	set_hitbox_value(AT_FSTRONG, 5, HG_DAMAGE, 8);
 	set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 15);
 	set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 15);
-	set_hitbox_value(AT_USTRONG, 5, HG_DAMAGE, 7);
+	set_hitbox_value(AT_USTRONG, 5, HG_DAMAGE, 8);
 	set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 4);
 	set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 4);
 	set_hitbox_value(AT_UTILT, 3, HG_DAMAGE, 4);
@@ -48,10 +48,10 @@ if swift_mode = true{
 	set_hitbox_value(AT_BAIR, 3, HG_DAMAGE, 7);
 	set_hitbox_value(AT_BAIR, 4, HG_DAMAGE, 11);
 	set_hitbox_value(AT_BAIR, 5, HG_DAMAGE, 6);
-	set_hitbox_value(AT_DAIR, 5, HG_DAMAGE, 6);
+	set_hitbox_value(AT_DAIR, 5, HG_DAMAGE, 4);
 	set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 10);
 	set_hitbox_value(AT_DATTACK, 2, HG_DAMAGE, 7);
-	set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 9);
+	set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 8);
 	set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 11);
 	set_hitbox_value(AT_FAIR, 6, HG_DAMAGE, 5);
 	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 12);
@@ -124,7 +124,6 @@ if swift_mode = true{
 	set_hitbox_value(AT_NAIR, 2, HG_BASE_HITPAUSE, 14);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 16);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 18);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_AIR_FRICTION, .63);
 	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 8.25);
 	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 16);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 14);
@@ -172,7 +171,8 @@ if swift_mode = false{
 	set_hitbox_value(AT_UTILT, 4, HG_BASE_KNOCKBACK, 7);
 	set_hitbox_value(AT_UTILT, 5, HG_BASE_KNOCKBACK, 7);
 	set_hitbox_value(AT_UTILT, 6, HG_BASE_KNOCKBACK, 7);
-	set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 6.5);
+	set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 3.75);
+	set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 7);
 	set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 4);
 	set_hitbox_value(AT_BAIR, 3, HG_BASE_KNOCKBACK, 4);
@@ -183,7 +183,6 @@ if swift_mode = false{
 	set_hitbox_value(AT_DATTACK, 2, HG_BASE_KNOCKBACK, 5);
 	set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 8);
 	set_hitbox_value(AT_DTILT, 2, HG_BASE_KNOCKBACK, 8);
-	set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 5.5);
 	set_hitbox_value(AT_FAIR, 6, HG_BASE_KNOCKBACK, 5.75);
 	set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
 	set_hitbox_value(AT_FTILT, 1, HG_BASE_KNOCKBACK, 5);
@@ -195,7 +194,7 @@ if swift_mode = false{
 	set_hitbox_value(AT_FSTRONG, 5, HG_DAMAGE, 6);
 	set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 13);
 	set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 13);
-	set_hitbox_value(AT_USTRONG, 5, HG_DAMAGE, 5);
+	set_hitbox_value(AT_USTRONG, 5, HG_DAMAGE, 6);
 	set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 3);
 	set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 3);
 	set_hitbox_value(AT_UTILT, 3, HG_DAMAGE, 3);
@@ -212,7 +211,7 @@ if swift_mode = false{
 	set_hitbox_value(AT_DAIR, 5, HG_DAMAGE, 2);
 	set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 8);
 	set_hitbox_value(AT_DATTACK, 2, HG_DAMAGE, 5);
-	set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 7);
+	set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 6);
 	set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 9);
 	set_hitbox_value(AT_FAIR, 6, HG_DAMAGE, 3);
 	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 10);
@@ -285,7 +284,6 @@ if swift_mode = false{
 	set_hitbox_value(AT_NAIR, 2, HG_BASE_HITPAUSE, 10);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 12);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 15);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_AIR_FRICTION, .65);
 	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 6.12);
 	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 20);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 16);
@@ -512,3 +510,6 @@ if (attack == 49){
 	can_move = false;
 	can_fast_fall = false;
 }
+
+//sounds on strongs
+

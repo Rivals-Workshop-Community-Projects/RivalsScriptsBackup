@@ -1,4 +1,6 @@
 grabbed_player_obj_spr_angle=0;
+grabbed_player_obj_draw_x = 0;
+grabbed_player_obj_draw_y = 0;
 
 if (attack == AT_DSPECIAL && free) {
     attack = AT_DSPECIAL_AIR;
@@ -7,8 +9,6 @@ if (attack == AT_DSPECIAL && free) {
 if (attack == AT_NSPECIAL && free) {
     attack = AT_NSPECIAL_AIR;
 }
-grabbed_player_obj_draw_x = 0;
-grabbed_player_obj_draw_y = 0;
 
 if(attack == AT_USTRONG){
 	reset_window_value(AT_USTRONG,get_attack_value(AT_USTRONG,AG_NUM_WINDOWS),AG_WINDOW_TYPE);

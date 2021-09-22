@@ -34,6 +34,19 @@ if attack == AT_DSPECIAL_2{
 					move_angle -= angle_difference(move_angle, point_direction(x, y, htx, hty)) * 0.25;
 				}
 			}
+			
+			var found_hbox = noone;
+			
+			with pHitBox if !proj_break && player != other.player && other.can_hit[player] && place_meeting(x, y, other){
+				found_hbox = self;
+			}
+			if found_hbox != noone{
+				can_hit[found_hbox.player] = 0;
+				move_angle = get_hitbox_angle(found_hbox);
+				sound_play(player_id.sfx_dbfz_sbomb_impact);
+				spawn_hit_fx(x, y, 304);
+				hitbox_timer = 0;
+			}
 		case 2:
 			if has_hit && !in_hitpause{
 				if "die" in self{
@@ -42,8 +55,9 @@ if attack == AT_DSPECIAL_2{
 				}
 				die = 1;
 				if hits_left{
-					var h = create_hitbox(attack, 2 + (hits_left == 1), x, y - up_amount);
+					var h = create_hitbox(attack, 2 + (hits_left == 1), round(x), round(y - up_amount));
 					h.hits_left = hits_left - 1;
+					h.player = player;
 				}
 			}
 			break;

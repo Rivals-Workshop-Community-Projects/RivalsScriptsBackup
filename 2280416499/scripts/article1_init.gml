@@ -1,6 +1,9 @@
 //ground
 
+if object_index == obj_stage_main exit;
+
 sprite_index = sprite_get("ground_1");
+mask_index = asset_get("empty_sprite");
 
 width = 32 * 10;
 width_max = 32 * 14;
@@ -36,7 +39,10 @@ has_changed_layouts = 0;
  * anything EXCEPT plat widths may use x.5 for half-grids
  */
 
-initStage("Training Town", 10);
+var tt_idx = 0;
+var vl_idx = 0;
+
+tt_idx = initStage("Training Town", 10);
 initPlat(-3, -6, 4);
 initPlat(-3, 6, 4);
 
@@ -164,8 +170,8 @@ initPlat(-3, -4.5, 5);
 
 initStage("Six-String Sands", 8);
 initPlat(-7, 0, 4);
-initPlat(-5, -3, 2);
-initPlat(-5, 3, 2);
+initPlat(-5, -4, 3);
+initPlat(-5, 4, 3);
 initPlat(-3, 0, 4);
 
 initStage("Village
@@ -181,7 +187,7 @@ initPlat(-6, 6, 4);
 initPlat(-3, -6, 4);
 initPlat(-3, 6, 4);
 
-initStage("Village
+vl_idx = initStage("Village
 ( 2 Plat )", 10);
 initPlat(-3, -6, 4);
 initPlat(-3, 6, 4);
@@ -193,12 +199,36 @@ initPlat(-3, 6, 4);
 initStage("Village
 ( 0 Plat )", 10);
 
-village_index = array_length(layouts) - 1;
-
 initStage("Planet Wisp
 ( Offset Right )", 8);
 initPlat(-3.5, -4, 4);
 initPlat(-2.5, 9.5, 5);
+
+initStage("Astral Plane", 12);
+initPlat(-5, -7, 6);
+initPlat(-5, 7, 6);
+
+initStage("Honeyhive Galaxy", 10);
+initPlat(-3, -6.5, 5);
+initPlat(-3, 6.5, 5);
+
+initStage("Hyrule Castle", 11);
+initPlat(-4.5, 7.5, 4);
+initPlat(-3, -5.5, 8);
+
+initStage("World Tournament", 8);
+
+initStage("Half-n-Half Showhall
+( Day )", 11);
+initPlat(-4, -9.5, 3);
+
+initStage("Half-n-Half Showhall
+( Midpoint )", 11);
+initPlat(-4, -5.5, 11);
+
+initStage("Half-n-Half Showhall
+( Night )", 11);
+initPlat(-4, -1.5, 19);
 
 // initStage("ALL THE PLATS
 // (help)", 14);
@@ -253,8 +283,8 @@ initPlat(-2.5, 9.5, 5);
 // initPlat(-2.5, 9, 6);
 // initPlat(-1, -11.5, 4);
 // initPlat(-1, 11.5, 4);
-// initPlat(40, 0, 1);
 
+already_layouts = [tt_idx, vl_idx];
 
 current_layout = 0;
 prev_layout = -1;
@@ -272,6 +302,8 @@ var obj = {
 };
 
 array_push(layouts, obj);
+
+return(array_length(layouts) - 1);
 
 
 

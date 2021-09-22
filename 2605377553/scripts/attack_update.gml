@@ -33,6 +33,9 @@ if attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG
 				window = curWin+1;
 				window_timer = 1;
 				markConsumed = false;
+				set_attack_value(AT_FSTRONG, AG_NUM_WINDOWS, 7);
+				set_attack_value(AT_USTRONG, AG_NUM_WINDOWS, 7);
+				set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 9);
 				
 				with(obj_article1)
 				{
@@ -40,9 +43,8 @@ if attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG
 						myLife = shrinkTime;
 				}
 			}
-		
 			else 
-				set_state(PS_IDLE);
+				set_attack_value(attack, AG_NUM_WINDOWS, curWin);
 		}
 	}
 	

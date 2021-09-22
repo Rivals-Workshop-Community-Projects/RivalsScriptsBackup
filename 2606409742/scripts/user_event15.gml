@@ -317,6 +317,27 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.1", "20 September, 2021");
+initHeader("NSpecial - Nerfs, Bugfixes");
+initSection("Base knockback (regular) 6 --> 8.
+Hitstun multiplier (both) 1.0 --> 0.75.
+Weird stuff no longer happens when your spear gets parried.");
+initHeader("Dash Attack - Adjustments");
+initSection("Hit 2 knockback 9/0.9 --> 6/1.0.");
+initHeader("NAir - Adjustments");
+initSection("Early hit base knockback 7 --> 6.");
+initHeader("FAir - Nerfs");
+initSection("Base knockback 7/8 --> 6/7.");
+initHeader("BAir - Adjustments");
+initSection("Hit 2 knockback 7/0.5 --> 6/0.6.");
+initHeader("FStrong - Nerfs");
+initSection("Endlag 20 --> 24.")
+initHeader("FSpecial - Bugfixes");
+initSection("Frame-perfect parry stun bug MIGHT be fixed.");
+initHeader("DSpecial - Bugfixes");
+initSection("Bomb explosion, Stasis launch, and Cryonis pillar hitboxes now have extended parry stun.
+Hitting the bomb multiple times no longer causes the hitboxes to stack.");
+
 initPatch("1.0", "19 September, 2021");
 initHeader("General");
 initSection("The character was released.");

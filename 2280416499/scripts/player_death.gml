@@ -7,7 +7,7 @@
 
 //random layout on death; aether = walls/bridges randomized too
 
-if !practice{
+if !practice && !death_timer{
 	death_timer = death_timer_max;
 	with obj_stage_article if num == 9{
 		state = 2;

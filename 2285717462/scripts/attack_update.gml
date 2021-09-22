@@ -5,6 +5,56 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 
 
+// dust
+
+switch(attack){
+	case AT_JAB:
+	case AT_FTILT:
+	case AT_UTILT:
+	case AT_DTILT:
+		if (window == 1 || (attack == AT_JAB) && (window == 4)) && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x - 16 * spr_dir + sin(state_timer) * 10, y, "dash", spr_dir]);
+		}
+		break;
+	case AT_DATTACK:
+		if window == 1 && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x + 96 * spr_dir, y, "dash_start", spr_dir]);
+		}
+		break;
+	case AT_DSTRONG:
+	case AT_USTRONG:
+		if window == 1 && (window_timer == 1 || strong_charge % 10 == 1){
+			array_push(phone_dust_query, [x + 16 * spr_dir + sin(strong_charge + 5) * 10, y, "dash", -spr_dir]);
+		}
+		if window == 2 && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x + 0 * spr_dir, y, "dash_start", -spr_dir]);
+		}
+	case AT_FSTRONG:
+		if window == 1 && (window_timer == 1 || strong_charge % 10 == 1){
+			array_push(phone_dust_query, [x - 16 * spr_dir + sin(strong_charge) * 10, y, "dash", spr_dir]);
+		}
+		if window == 2 && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x - 0 * spr_dir, y, "dash_start", spr_dir]);
+		}
+		break;
+}
+
+
+
+// cape swipe
+
+switch(attack){
+	
+	case AT_DTILT:
+		if (window == 1 && window_timer == 1 && !hitpause){
+			sound_play(asset_get("sfx_forsburn_cape_swipe"));
+		}
+		break;
+		
+}
+
+
+
 switch(attack){
     
     case AT_FTILT:
@@ -323,7 +373,7 @@ switch(attack){
                     array_push(stopped_sounds, laser_sfx);
                     from_capsule = false;
                 }
-                if from_capsule || phone_cheats[cheat_aim]{
+                if from_capsule || phone_cheats[CHEAT_AIM]{
                     chooseAngle();
                 }
                 else{
@@ -342,7 +392,7 @@ switch(attack){
                 array_push(stopped_sounds, soundsoundsound);
                 sound_stop(laser_sfx);
             case 2:
-                if !hitpause && hsp == 0 && !(from_capsule || phone_cheats[cheat_aim]) x -= spr_dir * 20;
+                if !hitpause && hsp == 0 && !(from_capsule || phone_cheats[CHEAT_AIM]) x -= spr_dir * 20;
                 if place_meeting(x + hsp, y, asset_get("par_block")){
                     spr_dir *= -1;
                     bounced = true;
@@ -466,7 +516,7 @@ switch(attack){
                     from_capsule = false;
                     laser_angle = 90;
                 }
-                if from_capsule || phone_cheats[cheat_aim] chooseAngle();
+                if from_capsule || phone_cheats[CHEAT_AIM] chooseAngle();
                 if window_timer == window_end{
                     rocket_speed = 30;
                     hsp = lengthdir_x(rocket_speed, laser_angle) * spr_dir;
@@ -562,7 +612,7 @@ switch(attack){
                     laser_angle = 270;
                     has_burrowed = 0;
                 }
-                if from_capsule || phone_cheats[cheat_aim] chooseAngle();
+                if from_capsule || phone_cheats[CHEAT_AIM] chooseAngle();
                 if window_timer == window_end{
                     if abs(right_down - left_down) && place_meeting(x + (right_down - left_down) * 16, y, asset_get("par_block")){
                         laser_angle = 0;

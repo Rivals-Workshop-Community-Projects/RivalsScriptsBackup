@@ -1,20 +1,20 @@
 // default
-rangeSet(0, $289fa6); //Cyan
-rangeSet(1, $156991); //Cyan (S)
-rangeSet(2, $4d3aa5); //Blue
-rangeSet(3, $151d70); //Blue (S)
+rangeSet(0, $35cbe7); //Cyan
+rangeSet(1, $1074ca); //Cyan (S)
+rangeSet(2, $395cbe); //Blue
+rangeSet(3, $2e2092); //Blue (S)
 rangeSet(4, $f6bc93); //Tan
 rangeSet(5, $d37664); //Tan (S)
-rangeSet(6, $4b2e0d); //Brown
-rangeSet(7, $381303); //Brown (S)
+rangeSet(6, $5f390f); //Brown
+rangeSet(7, $411705); //Brown (S)
 
 
 
 var a = 1;
 
 // blue
-colorSet(a, 0, $364c78); //Cyan
-colorSet(a, 1, $222559); //Cyan (S)
+colorSet(a, 0, $46629b); //Cyan
+colorSet(a, 1, $252a7c); //Cyan (S)
 colorSet(a, 2, $786fa2); //Blue
 colorSet(a, 3, $40456c); //Blue (S)
 colorSet(a, 4, $aa7360); //Tan
@@ -25,26 +25,26 @@ colorSet(a, 7, $2c2944); //Brown (S)
 a++;
 
 // red
-colorSet(a, 0, $a63333); //Cyan
-colorSet(a, 1, $66101e); //Cyan (S)
-colorSet(a, 2, $364c78); //Blue
-colorSet(a, 3, $222559); //Blue (S)
+colorSet(a, 0, $d14040); //Cyan
+colorSet(a, 1, $9a0f26); //Cyan (S)
+colorSet(a, 2, $46629b); //Blue
+colorSet(a, 3, $252a7c); //Blue (S)
 colorSet(a, 4, $f2a07d); //Tan
 colorSet(a, 5, $cb5650); //Tan (S)
-colorSet(a, 6, $2b2c2d); //Brown
-colorSet(a, 7, $121213); //Brown (S)
+colorSet(a, 6, $3f4245); //Brown
+colorSet(a, 7, $1e1e27); //Brown (S)
 
 a++;
 
 // green
-colorSet(a, 0, $5c885b); //Cyan
-colorSet(a, 1, $335940); //Cyan (S)
+colorSet(a, 0, $5eb65b); //Cyan
+colorSet(a, 1, $267742); //Cyan (S)
 colorSet(a, 2, $583e2d); //Blue
 colorSet(a, 3, $361c17); //Blue (S)
 colorSet(a, 4, $f6bc93); //Tan
 colorSet(a, 5, $d37664); //Tan (S)
-colorSet(a, 6, $a77034); //Brown
-colorSet(a, 7, $863b20); //Brown (S)
+colorSet(a, 6, $cc883d); //Brown
+colorSet(a, 7, $af4722); //Brown (S)
 
 a++;
 
@@ -61,14 +61,14 @@ colorSet(a, 7, $241429); //Brown (S)
 a++;
 
 // black
-colorSet(a, 0, $2b2c2d); //Cyan
-colorSet(a, 1, $121213); //Cyan (S)
-colorSet(a, 2, $2b2c2d); //Blue
-colorSet(a, 3, $121213); //Blue (S)
+colorSet(a, 0, $3f4245); //Cyan
+colorSet(a, 1, $1e1e27); //Cyan (S)
+colorSet(a, 2, $3f4245); //Blue
+colorSet(a, 3, $1e1e27); //Blue (S)
 colorSet(a, 4, $f054fd); //Tan
 colorSet(a, 5, $9532b5); //Tan (S)
-colorSet(a, 6, $2b2c2d); //Brown
-colorSet(a, 7, $121213); //Brown (S)
+colorSet(a, 6, $3f4245); //Brown
+colorSet(a, 7, $1e1e27); //Brown (S)
 
 a++;
 
@@ -85,14 +85,15 @@ colorSet(a, 7, $312d52); //Brown (S)
 a++;
 
 // EA
-colorSet(a, 0, $537a3e); //Cyan
-colorSet(a, 1, $537a3e); //Cyan (S)
-colorSet(a, 2, $234331); //Blue
-colorSet(a, 3, $234331); //Blue (S)
-colorSet(a, 4, $d3e29a); //Tan
-colorSet(a, 5, $d3e29a); //Tan (S)
-colorSet(a, 6, $a7ba4a); //Brown
-colorSet(a, 7, $a7ba4a); //Brown (S)
+var g0 = $d3e29a, g1 = $a7ba4a, g2 = $537a3e, g3 = $234331;
+colorSet(a, 0, g2); //Cyan
+colorSet(a, 1, g2); //Cyan (S)
+colorSet(a, 2, g1); //Blue
+colorSet(a, 3, g1); //Blue (S)
+colorSet(a, 4, g0); //Tan
+colorSet(a, 5, g0); //Tan (S)
+colorSet(a, 6, g3); //Brown
+colorSet(a, 7, g3); //Brown (S)
 
 a++;
 
@@ -127,8 +128,8 @@ colorSet(a, 2, $c7181c); //Blue
 colorSet(a, 3, $830721); //Blue (S)
 colorSet(a, 4, $f6bc93); //Tan
 colorSet(a, 5, $d37664); //Tan (S)
-colorSet(a, 6, $2b2c2d); //Brown
-colorSet(a, 7, $121213); //Brown (S)
+colorSet(a, 6, $3f4245); //Brown
+colorSet(a, 7, $1e1e27); //Brown (S)
 
 a++;
 

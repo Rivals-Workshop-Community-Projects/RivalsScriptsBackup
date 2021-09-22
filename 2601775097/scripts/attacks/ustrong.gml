@@ -81,7 +81,7 @@ set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 6); //1 = low priority over other 
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 7);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 95);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.7);
+set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 1.1); //0.7
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 12); //hitstun
 set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 1.5); 
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_lightblow1); //fx_lightblow2
@@ -108,7 +108,7 @@ set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 6); //1 = low priority over other 
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 7);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 90);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.7);
+set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 1.1); //0.7
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 12); //hitstun
 set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 1.5); 
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_lightblow1); //fx_lightblow2
@@ -136,7 +136,7 @@ set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 6); //1 = low priority over other 
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 7);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 75);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.7);
+set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 1.1); //0.7
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 12); //hitstun
 set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 1.5); 
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_lightblow1); //fx_lightblow2
@@ -163,7 +163,7 @@ set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 60);
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 10);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 100);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.7); //0.9
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 12); //hitstun
 set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 1.5); 
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_SPRITE, sprite_get("fx_ustrong_lightspear_proj"));

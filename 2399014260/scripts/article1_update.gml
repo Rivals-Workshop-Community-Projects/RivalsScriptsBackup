@@ -82,39 +82,6 @@ switch(state){
 		
 		break;
 	
-	// case PS_RESPAWN:
-	
-	// 	var s_t_max = 30;
-		
-	// 	if (state_timer == 1){
-	// 		start_x = x;
-	// 		start_y = y;
-	// 	}
-		
-	// 	end_x = player_id.x;
-	// 	end_y = player_id.y - 32;
-		
-	// 	// spawn_hit_fx(x, y, player_id.vfx_luma_return);
-		
-	// 	// sprite_index = player_id.spr_vfx_luma_return;
-	// 	image_index = 0;
-		
-	// 	// var spd = 2;
-	// 	// hsp = clamp(hsp - spd * sign(x - player_id.x), -10, 10);
-	// 	// vsp = clamp(vsp - spd * sign(y - (player_id.y - 32)), -10, 10);
-		
-	// 	var progress = ease_quadInOut(0, 1, state_timer, s_t_max);
-		
-	// 	x = lerp(start_x, end_x, progress);
-	// 	y = lerp(start_y, end_y, progress) - sin(pi * progress) * 64;
-		
-	// 	if state_timer == s_t_max{
-	// 		instance_destroy();
-	// 		exit;
-	// 	}
-		
-	// 	break;
-	
 	case PS_ATTACK_AIR:
 	
 		// initialising stuff...

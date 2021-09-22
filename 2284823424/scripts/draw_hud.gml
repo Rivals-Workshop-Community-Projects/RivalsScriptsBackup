@@ -12,7 +12,7 @@ if (get_gameplay_time() < 10) draw_opac = ease_linear(0, 1, get_gameplay_time(),
 
 var hotbar_preset = 4;
 
-if !phone_cheats[cheat_hide_hud]{
+if !phone_cheats[CHEAT_TRAILER]{
 
 	if !fast_graphics if (array_find_index(ok_anims, sprite_index) != -1){
 		if is_array(hotbar[sprite_index]) hotbar_preset = hotbar[sprite_index][image_index];
@@ -75,7 +75,7 @@ if !phone_cheats[cheat_hide_hud]{
 	//NSpecial container gui
 	
 	if (nspecial_gui_alpha > 0.1){
-		draw_sprite_ext(spr_nspecial_guis, 7, temp_x + 28, temp_y - 22, 1, 1, 0, c_white, nspecial_gui_alpha);
+		draw_sprite_ext(spr_nspecial_guis, 8, temp_x + 28, temp_y - 22, 1, 1, 0, c_white, nspecial_gui_alpha);
 		for (i = 0; i < array_length_1d(containers[current_container].items); i++){
 			var drawn_x = temp_x + 28 - 24 + 24 * i;
 			var drawn_y = temp_y - 48;
@@ -126,8 +126,8 @@ draw_set_alpha(1);
 
 
 
-if phone_cheats[cheat_see_conts]{
-	for (var i = 0; i < 7; i++){
+if phone_cheats[CHEAT_CONT_VIEW]{
+	for (var i = 0; i < array_length(containers); i++){
 		textDraw(10, 10 + 18 * i, "fName", array_equals(containers[i].spent_items, [1,1,1]) ? c_gray : c_white, 100, 1000, fa_left, 1, 1, 1, (next_container == i ? "> " : "  ") + containers[i].name);
 	}
 }
@@ -173,7 +173,8 @@ with obj_article_platform if player_id == other{
 
 
 
-user_event(11);
+muno_event_type = 5;
+user_event(14);
 
 
 

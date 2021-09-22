@@ -96,7 +96,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 301);
-set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, sound_get("shoot_wambam"));
+set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, sound_get("hit_spikes"));
 set_hitbox_value(AT_DSTRONG, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_PARTICLE_NUM, 1);
 
@@ -112,10 +112,11 @@ set_hitbox_value(AT_DSTRONG, 3, HG_DAMAGE, 3);
 set_hitbox_value(AT_DSTRONG, 3, HG_ANGLE, 45);
 set_hitbox_value(AT_DSTRONG, 3, HG_PRIORITY, 8);
 set_hitbox_value(AT_DSTRONG, 3, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_DSTRONG, 3, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(AT_DSTRONG, 3, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_DSTRONG, 3, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, 301);
+set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, sound_get("shoot_wambam"));
 
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 4, HG_WINDOW, 3);
@@ -152,7 +153,7 @@ set_hitbox_value(AT_DSTRONG, 5, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_DSTRONG, 5, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_DSTRONG, 5, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, 301);
-set_hitbox_value(AT_DSTRONG, 5, HG_HIT_SFX, sound_get("shoot_wambam"));
+set_hitbox_value(AT_DSTRONG, 5, HG_HIT_SFX, sound_get("hit_spikes"));
 set_hitbox_value(AT_DSTRONG, 5, HG_TECHABLE, 1);
 set_hitbox_value(AT_DSTRONG, 5, HG_HIT_PARTICLE_NUM, 1);
 
@@ -168,11 +169,11 @@ set_hitbox_value(AT_DSTRONG, 6, HG_DAMAGE, 3);
 set_hitbox_value(AT_DSTRONG, 6, HG_ANGLE, 135);
 set_hitbox_value(AT_DSTRONG, 6, HG_PRIORITY, 8);
 set_hitbox_value(AT_DSTRONG, 6, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_DSTRONG, 6, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(AT_DSTRONG, 6, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_DSTRONG, 6, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DSTRONG, 6, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_DSTRONG, 6, HG_VISUAL_EFFECT, 301);
-
+set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, sound_get("shoot_wambam"));
 
 //chain
 set_hitbox_value(AT_DSTRONG, 7, HG_HITBOX_TYPE, 1);
@@ -185,7 +186,7 @@ set_hitbox_value(AT_DSTRONG, 7, HG_HITBOX_Y, -35);
 set_hitbox_value(AT_DSTRONG, 7, HG_WIDTH, 150);
 set_hitbox_value(AT_DSTRONG, 7, HG_HEIGHT, 100);
 set_hitbox_value(AT_DSTRONG, 7, HG_DAMAGE, 5);
-set_hitbox_value(AT_DSTRONG, 7, HG_ANGLE, 35);
+set_hitbox_value(AT_DSTRONG, 7, HG_ANGLE, 45);
 set_hitbox_value(AT_DSTRONG, 7, HG_PRIORITY, 7);
 set_hitbox_value(AT_DSTRONG, 7, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_DSTRONG, 7, HG_KNOCKBACK_SCALING, 1.2);

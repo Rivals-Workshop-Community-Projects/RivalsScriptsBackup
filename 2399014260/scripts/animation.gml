@@ -5,7 +5,7 @@ if phone_attacking && attack == AT_DATTACK && window == 4 && window_timer == 0{
 
 
 
-if hitpause && sprite_index == spr_dair image_index = 9;
+if hitpause && sprite_index == sprite_get("dair") image_index = 9;
 
 
 
@@ -40,15 +40,15 @@ if (abs(hud_offset) < 1) hud_offset = 0;
 
 
 
-if sprite_index == spr_jump && (instance_exists(luma) && luma.state == PS_ATTACK_AIR && luma.attack == AT_NSPECIAL_AIR && luma.window > 1){
+if sprite_index == sprite_get("jump") && (instance_exists(luma) && luma.state == PS_ATTACK_AIR && luma.attack == AT_NSPECIAL_AIR && luma.window > 1){
 	image_index = image_number - 1;
 }
 
 
 
-if sprite_index == spr_dstrong && image_index < 5 && spr_dir == -1 image_index += 9;
+if sprite_index == sprite_get("dstrong") && image_index < 5 && spr_dir == -1 image_index += 9;
 
-if (sprite_index == spr_dspecial || sprite_index == sprite_get("dspecial_air")) && image_index == 4 && dspecial_jump_sprite image_index++;
+if (sprite_index == sprite_get("dspecial") || sprite_index == sprite_get("dspecial_air")) && image_index == 4 && dspecial_jump_sprite image_index++;
 
 
 
@@ -61,7 +61,7 @@ if state == PS_SPAWN{
     var s_t = state_timer - delay + player * 5;
     
     if (s_t < dur){
-        sprite_index = spr_intro;
+        sprite_index = sprite_get("intro");
         image_index = max(lerp(-1, amt_frames, s_t / dur), 0);
         image_index = s_t / frame_dur * (s_t >= 0);
         draw_indicator = 0;
@@ -69,7 +69,7 @@ if state == PS_SPAWN{
         if image_index < 9 && (taunt_pressed || taunt_down) toadette = 1;
     
 	    switch(image_index){
-	        case 1:
+	        case 2:
 	            sound_play(sfx_mario_warp_box_enter);
 	            break;
 	        case 9:

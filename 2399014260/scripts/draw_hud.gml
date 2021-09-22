@@ -33,4 +33,5 @@ with obj_article1 if player_id == other{
 
 
 
-user_event(11);
+muno_event_type = 5;
+user_event(14);

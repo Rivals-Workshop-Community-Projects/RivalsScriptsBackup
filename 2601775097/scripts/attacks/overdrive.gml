@@ -1,5 +1,5 @@
 // LORD'S PUNISHMENT
-atk = AT_TAUNT_2;
+atk = 49;
 
 set_attack_value(atk, AG_CATEGORY, 2);
 set_attack_value(atk, AG_SPRITE, sprite_get("lordpunishment"));
@@ -169,6 +169,7 @@ set_num_hitboxes(atk, 3);
 hitboxNum = 1; //ZA WARUDO
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 1); //at which window from the above the attack is created
+set_hitbox_value(atk, hitboxNum, HG_WINDOW_CREATION_FRAME, 1); //at which window from the above the attack is created
 set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 60); //hitbox duration in frames
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 0);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, 0);

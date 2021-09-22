@@ -67,12 +67,15 @@ sprite_change_offset("nspecial_cont_ender_chest", 100, 140);
 sprite_change_offset("nspecial_cont_brewing_stand", 100, 140);
 sprite_change_offset("nspecial_cont_enchanting_table", 100, 140);
 sprite_change_offset("nspecial_cont_villager", 100, 140);
+sprite_change_offset("nspecial_cont_mario", 100, 140);
 sprite_change_offset("nspecial_guis", 100, 140);
 
 sprite_change_offset("nspecial_item_sticky_piston", 100, 140);
 sprite_change_offset("nspecial_item_sticky_piston_head", 100, 140);
 sprite_change_offset("nspecial_item_porkchop", 100, 140);
 sprite_change_offset("nspecial_item_potion", 100, 140);
+sprite_change_offset("nspecial_item_mushroom", 100, 140);
+sprite_change_offset("nspecial_item_star", 100, 140);
 sprite_change_offset("nspecial_item_minecart", 100, 140);
 sprite_change_offset("nspecial_item_throw", 100, 140);
 sprite_change_offset("nspecial_item_elytra", 100, 140);
@@ -108,12 +111,14 @@ sprite_change_offset("vfx_tech_water", 16, 32);
 
 sprite_change_offset("plat", 64, 94);
 sprite_change_offset("intro", 100, 140);
+sprite_change_offset("double_hurtbox", 100, 140);
 
 sprite_change_offset("vfx_crit", 100, 140);
 sprite_change_offset("vfx_smoke", 3, 10);
 sprite_change_offset("vfx_ender", 3, 10);
 sprite_change_offset("vfx_exp", 32, 32);
 sprite_change_offset("vfx_exp_pickup", 32, 32);
+sprite_change_offset("vfx_sparkle", 100, 100);
 
 sprite_change_offset("itm_block_grass", 32, 32);
 sprite_change_offset("itm_block_plank", 32, 32);
@@ -151,6 +156,10 @@ sprite_change_offset("itm_crossbow_hud", 32, 32);
 sprite_change_offset("itm_bell", 32, 32);
 sprite_change_offset("itm_bell_proj", 32, 32);
 sprite_change_offset("itm_totem", 32, 32);
+sprite_change_offset("itm_mushroom", 32, 32);
+sprite_change_offset("itm_shell", 32, 32);
+sprite_change_offset("itm_shell_proj", 32, 32);
+sprite_change_offset("itm_star", 32, 32);
 
 sprite_change_offset("itm_stick", 32, 32);
 sprite_change_offset("article_offscreen", 33, 33);

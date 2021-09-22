@@ -1,0 +1,1 @@
+if state == PS_LAND set_state(PS_PRATLAND);

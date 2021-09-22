@@ -11,7 +11,7 @@ set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 3); //frames amount on s
 set_window_value(atk, windowNum, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, windowNum, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 set_window_value(atk, windowNum, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(atk, windowNum, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.4);
+set_window_value(atk, windowNum, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.2); //0.4
 
 windowNum ++; //attack itself
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
@@ -19,7 +19,7 @@ set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 4);
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 3); //starting frame. starts from 0
 set_window_value(atk, windowNum, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(atk, windowNum, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.4);
+set_window_value(atk, windowNum, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.3);
 
 windowNum ++; //endlag
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);

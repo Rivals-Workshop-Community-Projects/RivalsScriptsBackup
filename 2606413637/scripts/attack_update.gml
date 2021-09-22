@@ -129,6 +129,7 @@ switch attack{
 		if window == 2{
 			hsp *= 0.8;
 		}
+		if window == 3 phone_arrow_cooldown = max(phone_arrow_cooldown, 30);
 		break;
 	
 	case AT_UTILT:
@@ -136,7 +137,7 @@ switch attack{
 			set_attack_value(attack, AG_NUM_WINDOWS, 3);
 		}
 		if window == 3{
-			if attack_pressed && !jump_pressed{
+			if (attack_pressed || up_stick_pressed) && !jump_pressed{
 				set_attack_value(attack, AG_NUM_WINDOWS, 6);
 				window = 4;
 				window_timer = 0;
@@ -193,7 +194,7 @@ switch attack{
 	case AT_DATTACK:
 		if window == 1{
 			if window_timer == phone_window_end{
-				hsp = 64 * spr_dir;
+				hsp = 48 * spr_dir; // 64
 			}
 			if window_timer == phone_window_end - 4{
 				sound_play(sfx_dbfz_elbow);
@@ -218,7 +219,7 @@ switch attack{
 		break;
 	
 	case AT_NAIR:
-		if window < 4 && aerial_pratfall_timer{
+		if window < 4 && aerial_pratfall_timer && !has_hit{
 			aerial_pratfall_timer = 5;
 		}
 		if window == 1{
@@ -273,35 +274,10 @@ switch attack{
 		if window == clamp(window, 2, 3){
 			can_move = false;
 			can_fast_fall = false;
-			
-			// if hitpause{
-			//	 old_vsp = -8;
-			//	 old_hsp = 2 * spr_dir;
-			// }
-			
-			// if has_hit && !hitpause{
-			//	 window = 4;
-			//	 window_timer = 0;
-			// }
-			
-			if hitpause{
-				// old_vsp = min(old_vsp, max_fall);
-				// old_hsp = clamp(old_hsp, -air_max_speed, air_max_speed);
-			}
 		}
 		
 		if window > 1{
 			can_wall_jump = true;
-		}
-		
-		if window == 4 && vsp > max_fall - 1{
-			// if vsp > max_fall{
-			//	 vsp -= gravity_speed * 3;
-			// }
-			// else{
-			//	 vsp = max_fall;
-			// }
-			// hsp = lerp(hsp, clamp(hsp, -air_max_speed, air_max_speed), 0.5);
 		}
 		break;
 	
@@ -413,6 +389,9 @@ switch attack{
 				was_fully_charged = (beam_juice >= beam_juice_max);
 				if window_timer == 1{
 					voice_play(VB_HA);
+					
+					// also change in nspecial.gml
+					set_window_value(AT_NSPECIAL, 7, AG_WINDOW_LENGTH, 16 + floor(ease_sineIn(0, 30, beam_juice, beam_juice_max)));
 				}
 				if window_timer == phone_window_end{
 					if beam_juice >= beam_juice_max && !ssj{
@@ -653,6 +632,7 @@ switch attack{
 				if window_timer == 1{
 					sound_play(sfx_dbfz_kidan_charge);
 					voice_play(VB_ATK_SMALL);
+					uspecial_target = noone;
 				}
 				if !free{
 					vsp = -10;
@@ -665,11 +645,15 @@ switch attack{
 				if window_timer == phone_window_end{
 					uspecial_direction = uspecial_direction_arr[max(0, array_length(uspecial_direction_arr) - 4)]; // ignore the last 3 frames of non-idle joystick input, because of weird pseudo-snapback behavior on analog sticks
 					if funny_broken_mode || has_rune("H") uspecial_direction = uspecial_direction_arr[max(0, array_length(uspecial_direction_arr) - 1)];
-					x += lengthdir_x(uspecial_dist, uspecial_direction);
-					y += lengthdir_y(uspecial_dist, uspecial_direction);
+					// x += lengthdir_x(uspecial_dist, uspecial_direction);
+					// y += lengthdir_y(uspecial_dist, uspecial_direction);
+					// hsp = lengthdir_x(spd, uspecial_direction);
+					// vsp = lengthdir_y(spd, uspecial_direction);
 					
-					hsp = lengthdir_x(spd, uspecial_direction);
-					vsp = lengthdir_y(spd, uspecial_direction);
+					hsp = lengthdir_x(uspecial_dist, uspecial_direction);
+					vsp = lengthdir_y(uspecial_dist, uspecial_direction);
+					fall_through = true;
+					
 					
 					if ssj && !shield_down && uspecial_can_target{
 						var nearest = noone;
@@ -689,8 +673,15 @@ switch attack{
 							x = clamp(x, phone_blastzone_l + 32, phone_blastzone_r - 32);
 							y = clamp(y, phone_blastzone_t + 32, phone_blastzone_b - 32);
 							
-							hsp += nearest.hsp;
-							vsp += nearest.vsp;
+							var ceiling_limit = 256;
+							
+							y = max(y, ceiling_limit);
+							with nearest y = max(y, ceiling_limit);
+							
+							hsp = 0;
+							vsp = 0;
+							
+							uspecial_target = nearest;
 						}
 					}
 				}
@@ -700,6 +691,15 @@ switch attack{
 				can_wall_jump = true;
 				hsp *= 0.8;
 				vsp *= 0.8;
+				
+				if window_timer == 1{
+					hsp = lengthdir_x(spd, uspecial_direction);
+					vsp = lengthdir_y(spd, uspecial_direction);
+					if uspecial_target != noone{
+						hsp += uspecial_target.hsp;
+						vsp += uspecial_target.vsp;
+					}
+				}
 				
 				if attack_pressed || up_strong_pressed || down_strong_pressed || left_strong_pressed || right_strong_pressed || up_stick_pressed || down_stick_pressed || left_stick_pressed || right_stick_pressed{
 					can_attack = true;
@@ -711,6 +711,7 @@ switch attack{
 					attack_end();
 					if !(funny_broken_mode || has_rune("H")) aerial_pratfall_timer = 5;
 					set_attack(AT_NSPECIAL);
+					vsp = clamp(vsp, -4, 4);
 				}
 				break;
 		}
@@ -840,6 +841,9 @@ switch attack{
 				if window_timer == 2{
 					sound_play(sfx_dbfz_kidan_charge);
 					voice_play(VB_S_SPIRIT_BOMB);
+					if "superTrue" in self{
+						set_hitbox_value(49, 1, HG_DAMAGE, 1); // weaker in sai's mode or w/e
+					}
 				}
 				if !free{
 					vsp = -10;
@@ -890,6 +894,23 @@ switch attack{
 		break;
 	
 	case AT_TAUNT:
+		if window_timer == 1 taunt_time = 0;
+		if window_timer == 30 && taunt_down{
+			window_timer--;
+			taunt_time++;
+			if taunt_time > 180{
+				shake_camera(floor((taunt_time - 180) / 30), 1);
+				if taunt_time % 30 == 0{
+					var intensity = min(2, (taunt_time - 180) * 0.1 / 60);
+					sound_play(sound_get("hey_its_me_goku"), false, noone, intensity, intensity + 0.5);
+				}
+				if taunt_time % 30 == 4{
+					var intensity = min(2, (taunt_time - 180) * 0.1 / 60);
+					sound_play(sound_get("hey_its_me_goku"), false, noone, intensity - 1, intensity + 0.5);
+				}
+			}
+		}
+		
 		if !funny_broken_mode && special_down && attack_down{
 			var found = false;
 			with oPlayer if self != other switch url{ // shoutouts to sai
@@ -1006,11 +1027,14 @@ return string_count(string, string_lower(get_char_info(player, INFO_STR_NAME)))
 #define chooseSsj
 
 ssj = SSJ_1;
-if attack_down{
-	ssj = SSJ_3;
-}
 if shield_down{
 	ssj = SSJ_UI;
+}
+if attack_down{
+	ssj = SSJ_3;
+	if shield_down{
+		ssj = SSJ_BLUE;
+	}
 }
 if jump_down{
 	ssj = SSJ_GOD;

@@ -125,8 +125,8 @@ tech_recovery_frames = 2;
 
 //tech roll animation frames
 techroll_startup_frames = 1
-techroll_active_frames = 2;
-techroll_recovery_frames = 1;
+techroll_active_frames = 1;
+techroll_recovery_frames = 2;
 techroll_speed = 6;
 
 //airdodge animation frames
@@ -137,13 +137,13 @@ air_dodge_speed = 7;
 
 //roll animation frames
 roll_forward_startup_frames = 1;
-roll_forward_active_frames = 6;
+roll_forward_active_frames = 1;
 roll_forward_recovery_frames = 2;
 roll_back_startup_frames = 1;
-roll_back_active_frames = 6;
+roll_back_active_frames = 1;
 roll_back_recovery_frames = 2;
-roll_forward_max = 9.8; //roll speed
-roll_backward_max = 9.8;
+roll_forward_max = 8; //roll speed
+roll_backward_max = 8;
 
 land_sound = asset_get("sfx_jumpground");
 landing_lag_sound = asset_get("sfx_land_light");

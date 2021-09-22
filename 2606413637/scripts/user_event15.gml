@@ -152,7 +152,7 @@ so that things like page breaks can work properly.
 
 initTip("SSJ Meter");
 initWords("Goku's iconic Super Saiyan form appears in Rivals as a mid-match transformation - and you don't even need Abyss Runes or a Smash Ball!");
-initWords("The Ki Meter at the bottom of the screen fills up as you deal damage to opponents. When it's full, press DSpecial to turn Super Saiyan for a limited time!");
+initWords("The Ki Meter at the bottom of the screen fills up as you deal damage to opponents, and it also fills (much more slowly) when you receive damage. When it's full, press DSpecial to turn Super Saiyan for a limited time!");
 initImage(sprite_get("dspecial"), -5);
 initWords("In Super Saiyan form, you can cancel normal attacks into a Special or Strong on-hit, dash more quickly, and launch opponents further with Strongs... at the cost of taking more knockback.");
 
@@ -178,7 +178,7 @@ var ssj_shortcuts = [
 	"Nothing",
 	"Attack",
 	"Jump",
-	"Jump + Attack",
+	"Jump + Shield or Attack + Shield",
 	"Shield",
 	];
 
@@ -202,14 +202,14 @@ initImage_ext(sprite_get("nspecial"), -5, fa_right, -2, 2, true, c_white, 1, tru
 initImage_ext(sprite_get("nspecial"), -5, fa_left, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
 initWords("P.S. SSJ form gives you a little bit of charge for free!");
 
-initTip("FSpecial: Superdash=");
+initTip("FSpecial: Superdash");
 initWords("Goku's NSpecial and FSpecial both use the same system for precise aim.");
 initWords("You can hold straight up or down to angle the attack, but adding horizontal inputs allows you to choose a shallower or steeper angle.");
 initImage(sprite_get("fspecial"), -5);
 initWords("Try it out with NSpecial, using the angle-preview arrow indicator for reference.");
 
 initTip("USpecial: Instant Transmission");
-initWords("Goku's USpecial, much like Forsburn's, passes through terrain instead of sliding along it.");
+initWords("Goku's USpecial, unlike Forsburn's, slides along terrain rather than passing through it... which makes sense, if you think about how it works in DBZ. You can still go through platforms, though.");
 initWords("Separately, you can cancel the endlag into an Aerial or NSpecial... but if you fail to hit an opponent, you'll enter pratfall.");
 initImage(sprite_get("uspecial"), -5);
 initWords("In SSJ form, Goku will (once per airtime) auto-target any enemy who is in hitstun! Hold shield to cancel this in favor of manual aim.");
@@ -264,6 +264,60 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.2", "21 September, 2021");
+initHeader("NSpecial - Nerfs");
+initSection("Endlag now increases with charge.");
+initHeader("USpecial - Nerfs, Bugfixes, Adjustments");
+initSection("SSJ homing teleport now limits the height of both Goku and the opponent.
+Teleporting, hitting an enemy with Nair 1, and then whiffing a different aerial no longer causes pratfall.
+Cancel into NSpecial now limits vertical speed.");
+initHeader("DSpecial - Adjustments, Bugfixes, QoL");
+initSection("Spirit Bomb launcher knockback growth 0.7 --> 0.3.
+Spirit Bomb now visibly deflects when hit by an enemy attack.
+Spirit Bomb now reflects on parry.
+Added a second way to access the SSJ Blue form.");
+initHeader("FTilt - Buffs");
+initSection("Can now be used during the cooldown, but only as a melee attack.");
+initHeader("DAttack - Nerfs");
+initSection("Endlag 16 --> 18.
+Travel distance reduced.");
+initHeader("FAir - Buffs");
+initSection("Moved non-sweetspot hitbox forward.");
+initHeader("UAir - Nerfs");
+initSection("Knockback growth 0.9 --> 0.8.");
+initHeader("DAir - Buffs");
+initSection("Can now be reversed on startup.");
+initHeader("DStrong - Buffs");
+initSection("Sourspot knockback growth 0.7 --> 0.8.")
+initHeader("Taunt - Buffs?");
+initSection("Can now be held.");
+initHeader("General - Bugfixes");
+initSection("Corrected animation timings for tech roll.");
+
+initPatch("1.1", "20 September, 2021");
+initHeader("Stats - Buffs");
+initSection("Air speed 4 --> 5.");
+initHeader("Ki Meter - Buffs");
+initSection("On-hit ki gain multiplier 4 --> 5.
+Goku now receives a small amount of ki when getting hit (multiplier 1).");
+initHeader("USpecial - Nerfs");
+initSection("No longer passes through solid terrain (but does pass through platforms).");
+initHeader("DTilt - Buffs");
+initSection("Endlag 15 --> 10.");
+initHeader("BAir - Adjustments");
+initSection("Angle flipper 0 --> 6.");
+initHeader("UAir - Buffs");
+initSection("Endlag 12 --> 10.
+Knockback growth 0.5 --> 0.9.");
+initHeader("DAir - Buffs");
+initSection("Endlag 10 --> 4.");
+initHeader("FStrong, UStrong - Buffs");
+initSection("Knockback growth 0.9/1.2 --> 1.05/1.3.");
+initHeader("UTilt - Bugfixes");
+initSection("Hit 2's input now works with tilt stick up. (Aiming still requires the left analog stick.)");
+initHeader("Final Smash - Nerfs?");
+initSection("Deals less damage in Rivals of Fighter.");
 
 initPatch("1.0", "19 September, 2021");
 initHeader("General");

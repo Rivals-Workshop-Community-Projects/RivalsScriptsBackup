@@ -64,6 +64,7 @@ if (attack == AT_DSPECIAL){
 		vsp = -14;
 		hsp = 0;
 		hitbox_timer = 0;
+		length = 120;
 		
 		sound_play(player_id.sfx_mario_pop_1);
 		
@@ -72,6 +73,7 @@ if (attack == AT_DSPECIAL){
 		with player_id.luma if state == PS_IDLE{
 			state = PS_SPAWN;
 			state_timer = 3;
+			if x != other.x spr_dir = sign(other.x - x);
 		}
 	}
 	

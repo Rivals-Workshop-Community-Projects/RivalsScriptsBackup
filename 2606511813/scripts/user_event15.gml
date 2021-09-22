@@ -100,7 +100,7 @@ phone.uses_shader = false;
 phone.extra_top_size = 0;
 
 // Set to true and the "Fast Graphics" feature will be enabled; see _readme.gml.
-phone.supports_fast_graphics = false;
+phone.supports_fast_graphics = true;
 
 // Set to true and the phone will NOT activate Fast Fraphics when FPS gets low.
 phone.dont_fast = false;
@@ -109,7 +109,7 @@ phone.dont_fast = false;
 // If you're porting the phone to an existing char and don't need any of these
 // features, you might as well turn on lightweight to save a tiny bit of
 // performance. (see _docs.gml for a full list of what this disables)
-phone.lightweight = true;
+phone.lightweight = false;
 
 // If you've created custom AG_ or HG_ indexes for your character already,
 // use these to change where the phone starts assigning custom AG_s and HG_s.

@@ -79,6 +79,16 @@ pearled = false;
 elytra = false;
 elytra_max = 300;
 elytra_fall_speed = 0; //ever-changing
+starman = 0;
+starman_max = 300;
+starman_sound = noone;
+mushroom = 0;
+mushroom_max = 300;
+size_mult = 1;
+orig_char_height = char_height;
+last_size_sprite = noone;
+last_size_index = 0;
+last_size_sprite_frame = 0;
 strength_pot = 0;
 strength_pot_max = 300;
 strength_pot_mult = has_rune("O") ? 2 : 1.3;
@@ -274,10 +284,13 @@ spr_nspecial_cont_ender_chest = sprite_get("nspecial_cont_ender_chest");
 spr_nspecial_cont_brewing_stand = sprite_get("nspecial_cont_brewing_stand");
 spr_nspecial_cont_enchanting_table = sprite_get("nspecial_cont_enchanting_table");
 spr_nspecial_cont_villager = sprite_get("nspecial_cont_villager");
+spr_nspecial_cont_mario = sprite_get("nspecial_cont_mario");
 spr_nspecial_item_sticky_piston = sprite_get("nspecial_item_sticky_piston");
 spr_nspecial_item_sticky_piston_head = sprite_get("nspecial_item_sticky_piston_head");
 spr_nspecial_item_porkchop = sprite_get("nspecial_item_porkchop");
 spr_nspecial_item_potion = sprite_get("nspecial_item_potion");
+spr_nspecial_item_mushroom = sprite_get("nspecial_item_mushroom");
+spr_nspecial_item_star = sprite_get("nspecial_item_star");
 spr_nspecial_item_minecart = sprite_get("nspecial_item_minecart");
 spr_nspecial_item_throw = sprite_get("nspecial_item_throw");
 spr_nspecial_item_elytra = sprite_get("nspecial_item_elytra");
@@ -300,6 +313,7 @@ spr_vfx_potion_bubble_poison = sprite_get("vfx_potion_bubble_poison");
 spr_vfx_tech_water = sprite_get("vfx_tech_water");
 spr_vfx_exp = sprite_get("vfx_exp");
 spr_vfx_exp_pickup = sprite_get("vfx_exp_pickup");
+spr_vfx_sparkle = sprite_get("vfx_sparkle");
 
 //Items
 spr_itm_block_grass = sprite_get("itm_block_grass");
@@ -337,6 +351,10 @@ spr_itm_crossbow_hud = sprite_get("itm_crossbow_hud");
 spr_itm_bell = sprite_get("itm_bell");
 spr_itm_bell_proj = sprite_get("itm_bell_proj");
 spr_itm_totem = sprite_get("itm_totem");
+spr_itm_mushroom = sprite_get("itm_mushroom");
+spr_itm_shell = sprite_get("itm_shell");
+spr_itm_shell_proj = sprite_get("itm_shell_proj");
+spr_itm_star = sprite_get("itm_star");
 
 spr_itm_stick = sprite_get("itm_stick");
 
@@ -383,6 +401,20 @@ sprite_change_collision_mask("fspecial_proj", true, 1, 0, 0, 0, 0, 0);
 
 
 //SFX init
+
+sfx_mario_bounce = sound_get("mario_bounce");
+sfx_mario_coin = sound_get("mario_coin");
+sfx_mario_flip = sound_get("mario_flip");
+sfx_mario_flip_slam = sound_get("mario_flip_slam");
+sfx_mario_item_appear = sound_get("mario_item_appear");
+sfx_mario_item_store = sound_get("mario_item_store");
+sfx_mario_poof_1 = sound_get("mario_poof_1");
+sfx_mario_pop_1 = sound_get("mario_pop_1");
+sfx_mario_power_down = sound_get("mario_power_down");
+sfx_mario_power_up = sound_get("mario_power_up");
+sfx_mario_roll = sound_get("mario_roll");
+sfx_mario_shell_kick = sound_get("mario_shell_kick");
+sfx_mario_starman = sound_get("mario_starman");
 
 sfx_minecraft_eat = sound_get("minecraft_eat");
 sfx_minecraft_hit = sound_get("minecraft_hit");
@@ -491,6 +523,7 @@ vfx_blocks_items_stone = hit_fx_create(spr_itm_block_stone, 1000000);
 vfx_blocks_items_leafs = hit_fx_create(spr_itm_block_leafs, 1000000);
 vfx_exp = hit_fx_create(spr_vfx_exp, 1000000);
 vfx_exp_pickup = hit_fx_create(spr_vfx_exp_pickup, 24);
+vfx_sparkle = hit_fx_create(spr_vfx_sparkle, 25);
 
 //Hurtbox sprites
 hurtbox_spr = asset_get("ex_guy_hurt_box");
@@ -571,6 +604,10 @@ IT_CROSSBOW			= initItem("Crossbow", spr_itm_crossbow_hud, spr_itm_crossbow_hud,
 IT_BELL				= initItem("Bell", spr_itm_bell, spr_itm_bell, AT_NTHROW, 0);
 IT_TOTEM			= initItem("Totem of Undying", spr_itm_totem, spr_itm_totem, 0, 0);
 
+IT_MUSHROOM			= initItem("Super Mushroom", spr_itm_mushroom, spr_itm_mushroom, AT_EXTRA_2, 0);
+IT_SHELL			= initItem("Green Shell", spr_itm_shell, spr_itm_shell, AT_NTHROW, 0 + 5 * has_rune("O"));
+IT_STAR				= initItem("Starman", spr_itm_star, spr_itm_star, AT_EXTRA_2, 0);
+
 held_item = 0;
 
 
@@ -593,8 +630,10 @@ CT_ENDER			= initContainer("Ender Chest", spr_nspecial_cont_ender_chest, spr_wal
 CT_BREWING			= initContainer("Brewing Stand", spr_nspecial_cont_brewing_stand, spr_walk, [IT_POTION, IT_SPLASH_POTION, IT_LINGERING_POTION]);
 CT_ENCHANT			= initContainer("Enchanting Table", spr_nspecial_cont_enchanting_table, spr_walk, [IT_FROST_WALKER, IT_RIPTIDE, IT_THORNS]);
 CT_TESTIFICATE		= initContainer("Villager", spr_nspecial_cont_villager, spr_walk, [IT_CROSSBOW, IT_BELL, IT_TOTEM]);
+CT_MARIO			= initContainer("? Block", spr_nspecial_cont_mario, spr_walk, [IT_MUSHROOM, IT_SHELL, IT_STAR]);
 
 next_container = CT_CRAFT;
+// next_container = CT_MARIO;
 
 
 
@@ -906,19 +945,17 @@ hotbar[cur] = 4;
 cur = spr_dtilt;
 array_push(ok_anims, cur);
 rec = 0;
-itemPos_ext(-4, -8, 0, 0, -1, 1, c_white, 1);
+itemPos_ext(-5, -16, 0, 0, -1, 1, c_white, 1);
 rec = 1;
-itemPos_ext(-7, -9, 0, 0, -1, 1, c_white, 1);
+itemPos_ext(-3, -15, 0, 0, -1, 1, c_white, 1);
 rec = 2;
-itemPos(-3, -3, 0);
+itemPos(25, -5, 0);
 rec = 3;
-itemPos(-2, -3, 0);
+itemPos(23, -7, 0);
 rec = 4;
-itemPos(-1, -4, 0);
+itemPos(22, -8, 0);
 rec = 5;
-itemPos_ext(-1, -7, 0, 0, -1, 1, c_white, 1);
-rec = 6;
-itemPos_ext(0, -8, 0, 0, -1, 1, c_white, 1);
+itemPos(5, -8, 0);
 hotbar[cur] = 4;
 
 cur = spr_dattack;
@@ -954,31 +991,39 @@ itemPos(0, -10, 90);
 rec = 1;
 itemPos(5, -23, 0);
 rec = 2;
-itemPos(-3, -17, 90);
+itemPos(4, -22, 0);
 rec = 3;
-itemPos_ext(-10, -29, 90, 1, 1, 1, c_white, 1);
+itemPos(-3, -17, 90);
 rec = 4;
-itemPos_ext(-11, -26, 90, 1, 1, 1, c_white, 1);
+itemPos_ext(-10, -29, 90, 1, 1, 1, c_white, 1);
 rec = 5;
-itemPos(-12, -24, 90);
+itemPos_ext(-11, -26, 90, 1, 1, 1, c_white, 1);
 rec = 6;
+itemPos_ext(-12, -25, 90, 1, 1, 1, c_white, 1);
+rec = 7;
+itemPos(-12, -24, 90);
+rec = 8;
 itemPos(-14, -20, 90);
 hotbar[cur] = 3;
 
 cur = spr_bair;
 array_push(ok_anims, cur);
 rec = 0;
-itemPos(-15, -16, 0);
+itemPos(-10, -16, 0);
 rec = 1;
-itemPos(-4, -8, 270);
+itemPos(-6, -12, 270);
 rec = 2;
-itemPos(18, -22, 180);
+itemPos(4, -23, 180);
 rec = 3;
-itemPos(17, -18, 180);
+itemPos(6, -21, 180);
 rec = 4;
-itemPos(12, -12, 270);
+itemPos(6, -20, 180);
 rec = 5;
-itemPos(-5, -9, 0);
+itemPos(7, -18, 180);
+rec = 6;
+itemPos(3, -17, 180);
+rec = 7;
+itemPos(-8, -11, 270);
 hotbar[cur] = 3;
 
 cur = spr_uair;
@@ -990,12 +1035,14 @@ itemPos(-14, -23, 0);
 rec = 2;
 itemPos(-13, -20, 0);
 rec = 3;
-itemPos(13, -18, 90);
+itemPos(-10, -18, 0);
 rec = 4;
+itemPos(13, -18, 90);
+rec = [5, 6];
 itemPos(12, -17, 90);
-rec = 5;
+rec = 7;
 itemPos(10, -14, 90);
-rec = 6;
+rec = 8;
 itemPos(-12, -16, 180);
 hotbar[cur] = 3;
 
@@ -1185,6 +1232,19 @@ for (current = 0; current < array_length_1d(anims_to_handle); current++){
 	itemPos(6, -16, 0);
 	hotbar[cur] = 4;
 }
+	
+cur = spr_nspecial_cont_mario;
+array_push(ok_anims, cur);
+rec = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
+itemPos_ext(0, 0, 0, 0, 0, 0, c_white, 0);
+rec = 25;
+// 16, -19
+itemPos_ext(13, -29, 30, 0, 1.5, 1.5, c_white, 1);
+rec = 26;
+itemPos_ext(12, -28, 20, 0, 1.4, 1.4, c_white, 1);
+rec = 27;
+itemPos(5, -20, 0);
+hotbar[cur] = 4;
 
 cur = spr_hurt;
 array_push(ok_anims, cur);
@@ -1236,18 +1296,20 @@ hotbar[cur] = 1;
 
 
 
+muno_event_type = 0;
 user_event(14);
 
 
 
 if has_rune("M"){
-	phone_cheats[cheat_cont_select] = 1;
-	phone_cheats[cheat_tmi] = 1;
+	phone_cheats[CHEAT_CONT_PICK] = 1;
+	phone_cheats[CHEAT_TMI] = 1;
 	containers[CT_TESTIFICATE].spent_items = [0, 0, 1];
+	containers[CT_MARIO].spent_items = [0, 0, 1];
 }
 
 if has_rune("N"){
-	phone_cheats[cheat_tmi] = 1;
+	phone_cheats[CHEAT_TMI] = 1;
 }
 
 

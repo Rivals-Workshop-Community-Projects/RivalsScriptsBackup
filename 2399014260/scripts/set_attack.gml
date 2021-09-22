@@ -17,7 +17,9 @@ if attack == AT_NSPECIAL && (instance_exists(luma) || is_hbox){
 }
 
 if attack == AT_DSPECIAL && free attack = AT_DSPECIAL_AIR;
+dspecial_window_tracker = 0;
 
 
 
-user_event(13);
+muno_event_type = 2;
+user_event(14);

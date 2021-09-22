@@ -28,7 +28,7 @@ dash_turn_time      = 20;		// 8    -  20
 dash_turn_accel     = 2;		// 0.1  -  2
 dash_stop_time      = 6;		// 4    -  6
 dash_stop_percent   = 0.35;		// 0.25 -  0.5
-ground_friction     = 0.7;		// 0.3  -  1
+ground_friction     = 1;		// 0.3  -  1            // 0.7
 moonwalk_accel      = 1.4;		// 1.2  -  1.4
     
 // Air movement
@@ -242,4 +242,5 @@ bubble_y = 8;
 
 // Muno template: (don't change)
 
-user_event(14); // General init
+muno_event_type = 0;
+user_event(14);

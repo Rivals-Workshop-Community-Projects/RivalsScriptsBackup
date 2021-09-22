@@ -2,6 +2,11 @@ sound_play(sfx_minecraft_oof, false, noone, 2, 1);
 
 
 
+if starman starman = 2;
+if mushroom mushroom = 2;
+
+
+
 with(asset_get("obj_article_platform")) if (player_id == other){
 	break_stage = break_timer_max + 1;
 	parried_flag = true;
@@ -49,7 +54,7 @@ if elytra{
 
 
 
-if held_item && !phone_cheats[cheat_tmi]{
+if held_item && !phone_cheats[CHEAT_TMI]{
 	held_item = 0;
 	sound_play(sfx_minecraft_break_tool);
 }

@@ -5,6 +5,58 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 
 
+// dust
+
+switch(attack){
+	case AT_JAB:
+	case AT_FTILT:
+	case AT_UTILT:
+	case AT_DTILT:
+		if (window == 1 || attack == AT_JAB && (window == 4 || window == 7)) && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x - 16 * spr_dir + sin(state_timer) * 10, y, "dash", spr_dir]);
+		}
+		break;
+	case AT_DATTACK:
+		if (window == 2 || window == 3) && window_timer == round(phone_window_end / 2){
+			array_push(phone_dust_query, [x - 16 * spr_dir + sin(state_timer) * 10, y, "dash", spr_dir]);
+		}
+		break;
+	case AT_USTRONG:
+		if window == 1 && (window_timer == 1 || strong_charge % 10 == 1){
+			array_push(phone_dust_query, [x + 16 * spr_dir + sin(strong_charge + 5) * 10, y, "dash", -spr_dir]);
+		}
+		if window == 2 && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x - 0 * spr_dir, y, "dash_start", -spr_dir]);
+		}
+	case AT_FSTRONG:
+	case AT_DSTRONG:
+		if window == 1 && (window_timer == 1 || strong_charge % 10 == 1){
+			array_push(phone_dust_query, [x - 16 * spr_dir + sin(strong_charge) * 10, y, "dash", spr_dir]);
+		}
+		if window == 2 && window_timer == phone_window_end{
+			array_push(phone_dust_query, [x - 0 * spr_dir, y, "dash_start", spr_dir]);
+		}
+		break;
+}
+
+
+
+// cape swipe
+
+switch(attack){
+	
+	case AT_DTILT:
+	case AT_NAIR:
+	case AT_BAIR:
+		if (window == 1 && window_timer == 1 && !hitpause){
+			sound_play(asset_get("sfx_forsburn_cape_swipe"));
+		}
+		break;
+		
+}
+
+
+
 switch(attack){
 	
 	case AT_FSPECIAL:
@@ -142,6 +194,7 @@ switch(attack){
 				melee_hit_player.hitstop = 1;
 				melee_hit_player.spr_dir = spr_dir;
 				
+				// throw the enemy early after 60 frames or when below the stage
 				if dspecial_hold_timer > 60 || y > get_stage_data(SD_Y_POS) + 64{
 					setWindow(3);
 					if abs(right_down - left_down) spr_dir = right_down - left_down;
@@ -165,6 +218,8 @@ switch(attack){
 		can_fast_fall = 0;
 		vsp = min(vsp, max_fall);
 		
+		dspecial_window_tracker = window;
+		
 		switch(window){
 			
 			case 1:
@@ -181,7 +236,7 @@ switch(attack){
 				}
 				else{
 					can_shield = 1;
-					if shield_pressed && attack == AT_DSPECIAL{
+					if shield_pressed && attack == AT_DSPECIAL && !(free && !has_airdodge){
 						var vfx = instance_create(x, y - 64, "obj_article3");
 						vfx.spr_dir = -spr_dir;
 					}
@@ -189,11 +244,18 @@ switch(attack){
 				dspecial_hold_timer++;
 			
 			case 3:
+				
+				if attack == AT_DSPECIAL{
+					set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, orig_turnip_speed + abs(hsp / 3));
+				}
+				
 				dspecial_jump_sprite = 0;
 				
 				if abs(right_down - left_down){
 					if !free spr_dir = right_down - left_down;
-					hsp = clamp(hsp + (right_down - left_down) * 0.5, -6, 6);
+					var max_speed = 8; // 6
+					var accel = 0.5;
+					hsp = clamp(hsp + (right_down - left_down) * accel, -max_speed, max_speed);
 				}
 				else{
 					hsp -= sign(hsp) * (free ? 0.1 : 0.5);
@@ -205,7 +267,7 @@ switch(attack){
 				
 				if jump_pressed && !free{
 					vsp = -jump_speed;
-					sound_play(sfx_mario_2_jump);
+					sound_play(sfx_mario_2_jump, 0, noone, 0.9);
 				}
 				
 				if free && vsp < 0 && !jump_down{
@@ -318,14 +380,6 @@ switch(attack){
 				}
 				break;
 		}
-		
-		break;
-	
-	
-	
-	case AT_BAIR:
-		
-		if (window == 1 && window_timer == phone_window_end - 2) sound_play(sfx_mario_swoosh_2);
 		
 		break;
 	

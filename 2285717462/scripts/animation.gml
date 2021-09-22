@@ -62,7 +62,7 @@ if (attacking && (attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_D
 
 
 
-if sprite_index == spr_fspecial || sprite_index == spr_uspecial || sprite_index == spr_dspecial draw_y = -26;
+if sprite_index == sprite_get("fspecial") || sprite_index == sprite_get("uspecial") || sprite_index == sprite_get("dspecial") draw_y = -26;
 else{
 	draw_y = 0;
 	spr_angle = 0;
@@ -99,7 +99,7 @@ if (state == PS_SPAWN){
     frame_dur = dur / amt_frames;
     
     if (s_t < dur){
-        sprite_index = spr_intro;
+        sprite_index = sprite_get("intro");
         image_index = max(lerp(-1, amt_frames, s_t / dur), 0);
         hud_offset = 1000;
     }

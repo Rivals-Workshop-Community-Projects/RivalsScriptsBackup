@@ -7,7 +7,7 @@
  * - 5: Bridge				28
  * - 6: Wall				27
  * - 7: Screen				29, -19			Changes depth when phone is active
- * - 8: Grid				30
+ * - 8: Grid				29, 30
  * - 9: Gearbox				25, -20			Also draws the stage layout preview; changes depth when active
  *
  */
@@ -18,11 +18,11 @@
 
 
 
-sprite_change_offset("ground_1", 254, 0);
-sprite_change_offset("ground_2", 350, 0);
+sprite_change_offset("ground_1", 254, 16);
+sprite_change_offset("ground_2", 350, 16);
 sprite_change_offset("ground_sides", 2, 98);
 sprite_change_offset("ground_sides_mask", 2, 98);
-sprite_change_offset("ground_sides_mask_r", 138, 98);
+sprite_change_offset("ground_sides_mask_r", 138 + 48, 98);
 sprite_change_offset("platforms", 16, 0);
 sprite_change_offset("platform_beams", 20, 34);
 sprite_change_offset("platform_mask", 8, 0);

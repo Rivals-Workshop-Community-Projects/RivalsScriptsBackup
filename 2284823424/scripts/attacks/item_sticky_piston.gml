@@ -73,7 +73,7 @@ set_hitbox_value(AT_EXTRA_1, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_EXTRA_1, 1, HG_ANGLE, 70);
 set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_KNOCKBACK, 1);
 set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_HITPAUSE, 7);
-set_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE, 50);
+set_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE, 0); // 50
 set_hitbox_value(AT_EXTRA_1, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_EXTRA_1, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_EXTRA_1, 1, HG_MUNO_HITBOX_NAME, "Grab");

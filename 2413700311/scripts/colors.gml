@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 17, 14, 30 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 20 );
 
 // blue
 set_color_profile_slot( 1, 0, 182, 198, 211 ); //white
@@ -97,7 +97,7 @@ set_color_profile_slot( 6, 6, 240, 240, 250 ); //blue1
 set_color_profile_slot( 6, 7, 180, 180, 195 ); //blue2
 
 // GB
-set_color_profile_slot( 7, 0, 167, 186, 74 ); //white
+set_color_profile_slot( 7, 0, 211, 226, 154 ); //white
 set_color_profile_slot( 7, 1, 211, 226, 154 ); //skin1
 set_color_profile_slot( 7, 2, 167, 186, 74 ); //skin2
 set_color_profile_slot( 7, 3, 83, 122, 62 ); //skin3
@@ -147,14 +147,14 @@ set_color_profile_slot( 11, 6, 0, 199, 166 ); //blue1
 set_color_profile_slot( 11, 7, 0, 136, 166 ); //blue2
 
 // abyss
-set_color_profile_slot( 12, 0, 145, 104, 217 ); //white
-set_color_profile_slot( 12, 1, 226, 153, 255 ); //skin1
-set_color_profile_slot( 12, 2, 192, 99, 255 ); //skin2
-set_color_profile_slot( 12, 3, 102, 23, 179 ); //skin3
-set_color_profile_slot( 12, 4, 159, 51, 201 ); //red1
-set_color_profile_slot( 12, 5, 97, 0, 207 ); //red2
-set_color_profile_slot( 12, 6, 144, 0, 240 ); //blue1
-set_color_profile_slot( 12, 7, 99, 21, 189 ); //blue2
+set_color_profile_slot( 12, 0, 165, 170, 210 ); //white
+set_color_profile_slot( 12, 1, 220, 110, 240 ); //skin1
+set_color_profile_slot( 12, 2, 140, 60, 195 ); //skin2
+set_color_profile_slot( 12, 3, 80, 35, 125 ); //skin3
+set_color_profile_slot( 12, 4, 75, 65, 90 ); //red1
+set_color_profile_slot( 12, 5, 45, 40, 51 ); //red2
+set_color_profile_slot( 12, 6, 75, 65, 90 ); //blue1
+set_color_profile_slot( 12, 7, 45, 40, 51 ); //blue2
 
 // bug
 set_color_profile_slot( 13, 0, 51, 138, 255 ); //white
@@ -185,6 +185,46 @@ set_color_profile_slot( 15, 4, 255, 223, 189 ); //red1
 set_color_profile_slot( 15, 5, 194, 97, 80 ); //red2
 set_color_profile_slot( 15, 6, 255, 255, 255 ); //blue1
 set_color_profile_slot( 15, 7, 193, 152, 139 ); //blue2
+
+// zombie
+set_color_profile_slot( 16, 0, 184, 159, 158 ); //white
+set_color_profile_slot( 16, 1, 115, 186, 147 ); //skin1
+set_color_profile_slot( 16, 2, 76, 135, 96 ); //skin2
+set_color_profile_slot( 16, 3, 24, 77, 92 ); //skin3
+set_color_profile_slot( 16, 4, 176, 37, 91 ); //red1
+set_color_profile_slot( 16, 5, 104, 46, 112 ); //red2
+set_color_profile_slot( 16, 6, 136, 61, 166 ); //blue1
+set_color_profile_slot( 16, 7, 83, 28, 110 ); //blue2
+
+// neon
+set_color_profile_slot( 17, 0, 148, 239, 255 ); //white
+set_color_profile_slot( 17, 1, 255, 140, 221 ); //skin1
+set_color_profile_slot( 17, 2, 175, 59, 247 ); //skin2
+set_color_profile_slot( 17, 3, 99, 22, 140 ); //skin3
+set_color_profile_slot( 17, 4, 255, 0, 170 ); //red1
+set_color_profile_slot( 17, 5, 110, 0, 130 ); //red2
+set_color_profile_slot( 17, 6, 22, 148, 22 ); //blue1
+set_color_profile_slot( 17, 7, 0, 60, 71 ); //blue2
+
+// gold
+set_color_profile_slot( 18, 0, 228, 228, 240 ); //white
+set_color_profile_slot( 18, 1, 255, 204, 0 ); //skin1
+set_color_profile_slot( 18, 2, 229, 162, 0 ); //skin2
+set_color_profile_slot( 18, 3, 140, 78, 2 ); //skin3
+set_color_profile_slot( 18, 4, 255, 204, 0 ); //red1
+set_color_profile_slot( 18, 5, 229, 162, 0 ); //red2
+set_color_profile_slot( 18, 6, 89, 90, 77 ); //blue1
+set_color_profile_slot( 18, 7, 48, 47, 35 ); //blue2
+
+// NES
+set_color_profile_slot( 19, 0, 248, 213, 180 ); //white
+set_color_profile_slot( 19, 1, 248, 213, 180 ); //skin1
+set_color_profile_slot( 19, 2, 248, 213, 180 ); //skin2
+set_color_profile_slot( 19, 3, 189, 60, 48 ); //skin3
+set_color_profile_slot( 19, 4, 189, 60, 48 ); //red1
+set_color_profile_slot( 19, 5, 189, 60, 48 ); //red2
+set_color_profile_slot( 19, 6, 0, 114, 125 ); //blue1
+set_color_profile_slot( 19, 7, 0, 114, 125 ); //blue2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

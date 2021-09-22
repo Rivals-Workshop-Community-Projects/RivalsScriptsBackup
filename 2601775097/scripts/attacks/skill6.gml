@@ -101,8 +101,8 @@ set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 46);
 set_hitbox_value(atk, hitboxNum, HG_SHAPE, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 1);
 set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 2);
-set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 8); //1 = low priority over other moves || 10 = highest
-set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 10);
+set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 4); //1 = low priority over other moves || 10 = highest
+set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 8); //10
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 270);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.8);
@@ -124,7 +124,7 @@ set_hitbox_value(atk, hitboxNum, HG_SHAPE, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 2);
 set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 2); //1 = low priority over other moves || 10 = highest
-set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 8);
+set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 5); //8
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 90);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.7);
@@ -134,6 +134,7 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_fireblow1);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_burnapplied"));
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 2);
 
+//UNUSED HITBOX
 hitboxNum ++; //constant fire apply
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 2); // 1 = physical attack || 2 = projectile
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 99); //at which window from the above the attack is created

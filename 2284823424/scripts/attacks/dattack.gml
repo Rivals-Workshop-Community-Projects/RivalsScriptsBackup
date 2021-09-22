@@ -13,12 +13,12 @@ set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, 2);
 
 //Jump
 set_window_value(AT_DATTACK, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DATTACK, 2, AG_WINDOW_LENGTH, 6); // 8
 set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DATTACK, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
-set_window_value(AT_DATTACK, 2, AG_WINDOW_SFX_FRAME, 5);
+set_window_value(AT_DATTACK, 2, AG_WINDOW_SFX_FRAME, 3);
 
 //Active
 set_window_value(AT_DATTACK, 3, AG_WINDOW_TYPE, 1);

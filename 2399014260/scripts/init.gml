@@ -156,6 +156,7 @@ bee_ui_alpha = 0;
 luma_pop_timer = 0;
 luma_pop_timer_max = 7 * 3;
 spin_refreshed = 1;
+dspecial_window_tracker = 0;
 
 swapped_sprite_names = [
     "idle", 
@@ -302,4 +303,5 @@ bubble_y = 8;
 
 // Muno template: (don't change)
 
-user_event(14); // General init
+muno_event_type = 0;
+user_event(14);

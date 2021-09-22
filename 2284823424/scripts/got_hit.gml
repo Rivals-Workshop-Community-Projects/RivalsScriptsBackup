@@ -57,8 +57,13 @@ if attacking && attack == AT_EXTRA_3 && window > 1{
 
 
 if (attacking && attack == AT_NSPECIAL_AIR){//thorns
-	hitstop_full *= 2;
-	if enemy_hitboxID.type == 1 hit_player_obj.hitstop_full *= 2;
+	if enemy_hitboxID.type == 1{
+		hit_player_obj.hitstop_full *= 2;
+		hitstop_full = hit_player_obj.hitstop_full;
+	}
+	else{
+		hitstop_full = min(hitstop_full * 2, 20);
+	}
 }
 
 

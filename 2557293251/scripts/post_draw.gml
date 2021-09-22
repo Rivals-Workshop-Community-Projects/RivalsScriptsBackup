@@ -60,9 +60,10 @@ if(diag_fight == 0)
         case 0: announce_diag = "STRONG IS NOT WEAK!"; break;
         case 1: announce_diag = "WHICH WAY WILL IT TURN?"; break;
         case 2: announce_diag = "FIERY SOUL FINDS A WAY!"; break;
-        case 3: announce_diag = "THE DESTINIES CAN BE UNDOOMED!"; break;
-        case 4: announce_diag = "ELEMENTS HOLD THE GIANT SECRET!"; break;
-        case 5: announce_diag = "SHINE UP-STRONG IS NOT CRASH!"; break;
+        case 3: if(diag_alt_announce) announce_diag = "THE AETHER LOVES THE TENACITY."; else announce_diag = "THE DESTINIES CAN BE UNDOOMED!"; break;
+        case 4: if(diag_alt_announce) announce_diag = "WILL THE TREE STAND TALL IN FIGHT?!"; else announce_diag = "ELEMENTS HOLD THE GIANT SECRET!"; break;
+        case 5: if(diag_alt_announce) announce_diag = "LOVE OR WAR BIRDS!"; else announce_diag = "SHINE UP-STRONG IS NOT CRASH!"; break;
+        case 6: if(diag_alt_announce) announce_diag = "CAN LOVE BLOOM IN THE BATTLEFIELD?"; else announce_diag = "CAN GRASS GROW BRIGHT THAN SOUL?"; break;
     }
 }
 if(exist_timer < 100)

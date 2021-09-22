@@ -6,6 +6,8 @@ user_event(14);
 
 timer++;
 
+trail_index = timer mod trail_length;
+
 //jump decay
 djump_speed = 9 - djumps;
 
@@ -13,14 +15,6 @@ djump_speed = 9 - djumps;
 if (get_training_cpu_action() != CPU_FIGHT && !playtest && !("is_ai" in self)) {
     practice_mode = true;
 }
-
-//flip spr_dir on djump
-/*
-if state == PS_DOUBLE_JUMP && state_timer == 0 {
-    if spr_dir == 1 && left_down && !right_down spr_dir = -1;
-    else if spr_dir == -1 && right_down && !left_down spr_dir = 1;
-}
-*/
 
 //char height
 var start_char_height = 52;
@@ -31,23 +25,12 @@ if state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND {
     switch attack {
         case AT_USTRONG:
         var end_char_height = 140;
-        if window != 5 {
+        if window != 4 || (window == 4 && window_timer < 18) {
             char_height = clamp(ease_quadOut(start_char_height, end_char_height, clamp(height_timer, 0, 4), 4), start_char_height, end_char_height);
         } else {
-            char_height = clamp(ease_quadIn(end_char_height, start_char_height, clamp(window_timer, 0, 10), 10), start_char_height, end_char_height);
+            char_height = clamp(ease_quadIn(end_char_height, start_char_height, clamp(window_timer-18, 0, 10), 10), start_char_height, end_char_height);
         }
         break;
-        
-        /*
-        case AT_USPECIAL:
-        var end_char_height = 80;
-        if window != 4 {
-            char_height = clamp(ease_quadOut(start_char_height, end_char_height, clamp(height_timer, 0, 4), 4), start_char_height, end_char_height);
-        } else {
-            char_height = clamp(ease_quadIn(end_char_height, start_char_height, clamp(window_timer, 0, 10), 10), start_char_height, end_char_height);
-        }
-        break;
-        */
     }
 }
 
@@ -61,13 +44,13 @@ with pHitBox {
         
         //check if id exists in array already
         var present = false;
-        for (var i = 0; i < array_length(other.arrow_id_array); i++) {
+        for (var i = 0; i < other.arrow_num_max; i++) {
             if other.arrow_id_array[i] == id present = true;
         }
         
         //if id doesnt exist in array, insert id into first undefined slot
         if !present {
-            for (var i = 0; i < array_length(other.arrow_id_array); i++) {
+            for (var i = 0; i < other.arrow_num_max; i++) {
                 if other.arrow_id_array[i] == undefined && !present {
                     other.arrow_id_array[i] = id;
                     present = true;
@@ -82,13 +65,13 @@ with pHitBox {
         
         //check if id exists in array already
         var fspec_present = false;
-        for (var i = 0; i < array_length(other.fspec_id_array); i++) {
+        for (var i = 0; i < other.max_fspec; i++) {
             if other.fspec_id_array[i] == id fspec_present = true;
         }
         
         //if id doesnt exist in array, insert id into first undefined slot
         if !fspec_present {
-            for (var i = 0; i < array_length(other.fspec_id_array); i++) {
+            for (var i = 0; i < other.max_fspec; i++) {
                 if other.fspec_id_array[i] == undefined && !fspec_present {
                     other.fspec_id_array[i] = id;
                     fspec_present = true;
@@ -99,7 +82,7 @@ with pHitBox {
 }
 
 //arrows
-if arrow_count >= 3 {
+if arrow_count >= arrow_num_max {
     var oldest_hitbox_id = undefined;
     var oldest_timer = 0;
     with pHitBox {
@@ -121,28 +104,26 @@ for (var i = 0; i < array_length(arrow_id_array); i++) {
 }
 
 //if id exists, fill out trail stuff in trail array
-for (var i = 0; i < array_length_1d(arrow_id_array); i++) {
-    var arrow_id = arrow_id_array[i]
-    if arrow_id != undefined && instance_exists(arrow_id) {
+for (var i = 0; i < arrow_num_max; i++) {
+    var arrow_id = arrow_id_array[i];
+    if arrow_id != undefined && instance_exists(arrow_id) && !arrow_id.destroyed {
         if ("trailArray" in arrow_id) {
             arrow_trail_arrays[i] = arrow_id.trailArray;
         }
     } else {
         if arrow_trail_arrays[i][0] != undefined {
-            for (var n = 0; n < 2; n++) {
-                for (var j = 1; j < 20; j++) {
-                    if j == 19 arrow_trail_arrays[i][@j] = undefined;
-                    arrow_trail_arrays[i][@j-1] = arrow_trail_arrays[i][j];
-                    //arrow_trail_arrays[i][@j-1] = arrow_trail_arrays[i][j];
-                    //arrow_trail_arrays[i][@0] = undefined;
-                }
-            }
+        	if arrow_trail_arrays[i][@trail_index] == -4 {
+        		arrow_trail_arrays[i] = empty_array
+        	} else {
+	            arrow_trail_arrays[i][@trail_index] = -4;
+	            if trail_index > 0 arrow_trail_arrays[i][@trail_index-1] = -4;
+        	}
         }
     }
 }
 
 //fspec
-if fspec_count >= 3 {
+if fspec_count >= max_fspec {
     var oldest_hitbox_id = undefined;
     var oldest_timer = 0;
     with pHitBox {
@@ -157,14 +138,14 @@ if fspec_count >= 3 {
 }
 
 //if id doesnt exist, delete it
-for (var i = 0; i < array_length(fspec_id_array); i++) {
+for (var i = 0; i < max_fspec; i++) {
     if fspec_id_array[i] != undefined && !instance_exists(fspec_id_array[i]) {
         fspec_id_array[i] = undefined;
     }
 }
 
 //if id exists, fill out trail stuff in trail array
-for (var i = 0; i < array_length_1d(fspec_id_array); i++) {
+for (var i = 0; i < max_fspec; i++) {
     var fspec_id = fspec_id_array[i]
     if fspec_id != undefined && instance_exists(fspec_id) {
         if ("trailArray" in fspec_id) {

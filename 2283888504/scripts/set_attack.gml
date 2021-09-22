@@ -15,4 +15,5 @@ if (attack == AT_DSPECIAL && !(guitar.following || guitar.state == 13)) attack =
 
 
 
-user_event(13);
+muno_event_type = 2;
+user_event(14);

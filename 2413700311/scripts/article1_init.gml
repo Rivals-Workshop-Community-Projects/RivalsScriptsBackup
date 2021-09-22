@@ -24,3 +24,7 @@ movestate = 0;
 //1 Fsp 左右
 
 player_id.bodyloss = false;
+
+
+//空中ジャンプ
+bodyDjump = 0;

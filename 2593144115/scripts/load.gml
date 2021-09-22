@@ -61,7 +61,9 @@ sprite_change_offset("uptaunt", 64/2, 94/2, true);
 sprite_change_offset("plat", 64/2, 62/2);
 
 sprite_change_offset("bubble", 96, 96);
+sprite_change_offset("bubble_dspecial", 96, 96);
 sprite_change_collision_mask("bubble", true, 1, 0, 0, 0, 0, 0 );
+sprite_change_collision_mask("bubble_dspecial", true, 1, 0, 0, 0, 0, 0 );
 
 sprite_change_offset("bubblepop1", 64, 64);
 sprite_change_offset("bubblepop2", 64, 64);
@@ -71,6 +73,9 @@ sprite_change_offset("poison_hit_small", 64, 64);
 sprite_change_offset("poison_hit_large", 96, 96);
 sprite_change_offset("venom_mark", 48, 16);
 
+sprite_change_offset("bubble_explosion1", 64, 64);
+sprite_change_offset("bubble_explosion2", 64, 64);
+sprite_change_offset("bubble_explosion3", 96, 96);
 
 sprite_change_offset("fspecial_fx", 64, 62);
 sprite_change_offset("fspecial_fx_2", 0, 62);

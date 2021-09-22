@@ -114,6 +114,13 @@ switch (attack)
                 if (hitpause && fspecGrabbedObj != noone && fspecGrabbedObj.last_player == player && fspecGrabbedObj.last_attack == attack)
                 {
                     Grab(40, 0, 3, 3);
+                    if (get_gameplay_time() % 2 == 0)
+                    {
+                    	var angle = random_func(0, 360, 0);
+                    	var dist = random_func(1, 20, 0)-40;
+                    	var p = spawn_hit_fx(fspecGrabbedObj.x+lengthdir_x(dist, angle), fspecGrabbedObj.y+lengthdir_y(dist, angle), particle);
+                    	p.depth = depth-1;
+                    }
                 }
             }
             else if (!hitpause)

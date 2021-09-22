@@ -834,7 +834,7 @@ bot_y = y;
 
 badly_damaged = (legion_health <= 5 * health_ratio);
 
-if player_id.phone_cheats[player_id.cheat_immortal_legion]{
+if player_id.phone_cheats[player_id.CHEAT_LEGION_HP]{
 	legion_health = max_health;
 }
 

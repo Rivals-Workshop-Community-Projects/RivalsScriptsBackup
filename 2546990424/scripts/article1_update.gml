@@ -2,6 +2,8 @@
 //Make time progress
 state_timer++;
 
+whirlwind_shaking = state_timer%4;
+
 //Gets destroyed on Clairen's Plasma Field
 if (place_meeting(x, y, asset_get("plasma_field_obj")) && state_timer > 0) {
 	sound_play(asset_get("sfx_clairen_hit_med"));
@@ -24,6 +26,8 @@ with (asset_get("pHitBox")){
 		}
 	}
 }
+
+
 
 //Creates the initial hitbox after 20 frames
 if (state_timer == 20){
@@ -81,6 +85,34 @@ if (state_timer == -4 || state_timer > 490){
 if (state == 0){
 	sprite_index = sprite_get("dspecial_projectile");
 	image_index += .5;
+	
+	//Shakes if the enemy has the status
+	if (player_id.whirlwind_punch_active == true){
+		if (whirlwind_shaking == 0){
+			hsp = 2;
+		}
+		if (whirlwind_shaking == 1){
+			vsp = 2;
+		}
+		if (whirlwind_shaking == 2){
+			hsp = -2;
+		}
+		if (whirlwind_shaking == 3){
+			vsp = -2;
+		}
+	}
+	
+	//Whirwind descends if it's to high up
+	if (y < get_stage_data(SD_Y_POS) - 250){
+		y += 1;
+		if (whirlwind_second == false){
+			whirlwind_active_hitbox.y += 1;
+		}
+		else {
+			whirlwind2_active_hitbox.y += 1;
+		}
+	}
+	
 }
 
 //State 1: Dying
@@ -88,6 +120,13 @@ if (state == 1){
 	sprite_index = sprite_get("dspecial_effect");
 	image_index += .3;
 }
+
+//Stops the Shaking if the whirlwind hits
+if (player_id.whirlwind_punch_active == false || player_id.whirlwind_hit == true || player_id.whirlwind2_hit == true){
+	vsp = 0;
+	hsp = 0;
+}
+
 
 
 //Dying

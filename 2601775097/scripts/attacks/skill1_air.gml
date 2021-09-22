@@ -198,8 +198,8 @@ set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 8); //1 = low priority over other 
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 4);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 320);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 14); //hitstun
-set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.8);
+set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 8); //hitstun //14
+set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.5); //0.8
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_fireblow1);
 set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_X_OFFSET, 16);

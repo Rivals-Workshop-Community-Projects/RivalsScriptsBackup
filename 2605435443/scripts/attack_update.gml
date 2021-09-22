@@ -94,10 +94,10 @@ if (attack == AT_NSPECIAL){
     if (window == 3 && !has_hit_player){
     	window = 10;
     	window_timer = 0;
-    	move_cooldown[AT_FSPECIAL] = 60;
-move_cooldown[AT_EXTRA_2] = 60;
-move_cooldown[AT_NSPECIAL] = 60;
-move_cooldown[AT_FTHROW] = 60;
+    	move_cooldown[AT_FSPECIAL] = 50;
+move_cooldown[AT_EXTRA_2] = 50;
+move_cooldown[AT_NSPECIAL] = 50;
+move_cooldown[AT_FTHROW] = 50;
 
 } else if (window == 2 && has_hit_player && window_timer >= 8){
 	window = 4;
@@ -127,10 +127,10 @@ if (window == 8 && has_hit_player || attack != AT_NSPECIAL){
  with (hit_player_obj){
  	visible = true;
 }
-move_cooldown[AT_FSPECIAL] = 120;
-move_cooldown[AT_EXTRA_2] = 120;
-move_cooldown[AT_NSPECIAL] = 120;
-move_cooldown[AT_FTHROW] = 120;
+move_cooldown[AT_FSPECIAL] = 80;
+move_cooldown[AT_EXTRA_2] = 80;
+move_cooldown[AT_NSPECIAL] = 80;
+move_cooldown[AT_FTHROW] = 80;
 }
 if(window == 10 && window_timer == 1){
 					soft_armor = 0;
@@ -143,10 +143,10 @@ if (attack == AT_FTHROW){
 	hurtboxID.sprite_index = sprite_get("nspecial_strong_hurt");
 	    if (window == 3 && !has_hit_player && is_end_of_window){
     	window = 14;
-    	move_cooldown[AT_FSPECIAL] = 80;
-move_cooldown[AT_EXTRA_2] = 80;
-move_cooldown[AT_NSPECIAL] = 80;
-move_cooldown[AT_FTHROW] = 80;
+    	move_cooldown[AT_FSPECIAL] = 75;
+move_cooldown[AT_EXTRA_2] = 75;
+move_cooldown[AT_NSPECIAL] = 75;
+move_cooldown[AT_FTHROW] = 75;
 } else if (window == 2 && has_hit_player && window_timer >= 8){
 	window = 4;
 	window_timer = 0;
@@ -175,10 +175,10 @@ if (window == 13 && has_hit_player){
  with (hit_player_obj){
  	visible = true;
 }
-move_cooldown[AT_FSPECIAL] = 120;
-move_cooldown[AT_EXTRA_2] = 120;
-move_cooldown[AT_NSPECIAL] = 120;
-move_cooldown[AT_FTHROW] = 120;
+move_cooldown[AT_FSPECIAL] = 80;
+move_cooldown[AT_EXTRA_2] = 80;
+move_cooldown[AT_NSPECIAL] = 80;
+move_cooldown[AT_FTHROW] = 80;
 }
 if(window >= 14 && window_timer == 1){
 					soft_armor = 0;
@@ -193,8 +193,8 @@ if(attack == AT_FSPECIAL_AIR){
     	if(window == 2 && window_timer == 1){
     	sound_play(sound_get("cymbal")); 
     	}
-move_cooldown[AT_FSPECIAL_AIR] = 100;
-move_cooldown[AT_NSPECIAL_AIR] = 100;
+move_cooldown[AT_FSPECIAL_AIR] = 87;
+move_cooldown[AT_NSPECIAL_AIR] = 87;
 }
 
 if (attack == AT_FSPECIAL){
@@ -216,9 +216,9 @@ if(attack == AT_EXTRA_2){
 	        super_armor = true;
       if(window == 4){
         super_armor = false;
-		move_cooldown[AT_FSPECIAL] = 150;
-	move_cooldown[AT_EXTRA_2] = 150;
-    move_cooldown[AT_NSPECIAL] = 120;
+		move_cooldown[AT_FSPECIAL] = 100;
+	move_cooldown[AT_EXTRA_2] = 100;
+    move_cooldown[AT_NSPECIAL] = 100;
     }
         		    taunted = false;
     }
@@ -236,11 +236,11 @@ if (attack == AT_DSPECIAL){
     	}
     	}
     	
-		move_cooldown[AT_DSPECIAL] = 120;
+		move_cooldown[AT_DSPECIAL] = 40;
 }
 
 if(attack == AT_DTHROW){
-		move_cooldown[AT_DSPECIAL] = 220;
+		move_cooldown[AT_DSPECIAL] = 180;
 		if (window == 3){
 			   shake_camera( 5, 5 );
 		}
@@ -248,7 +248,7 @@ if(attack == AT_DTHROW){
 }
 
 if (attack == AT_USPECIAL){
-move_cooldown[AT_USPECIAL] = 120;
+move_cooldown[AT_USPECIAL] = 60;
 if (window == 3){
 			   shake_camera( 2, 2 );
 }
@@ -547,8 +547,6 @@ if (attack == AT_NAIR){
 		}
 }
 }
-
-
 //normal and special cancels
 var normal_cancel_value = 0;
 
@@ -652,7 +650,7 @@ if (attack == AT_JAB || attack == AT_UTILT || attack == AT_DTILT || attack == AT
 //normal cancels
 switch (attack) {
 	
-	/*
+	
 	case AT_NAIR:
 		switch (window) {
 			case 2:
@@ -686,7 +684,7 @@ switch (attack) {
 			break;
 		}
 	break;
-		*/
+	
 
  //coyote time
     case AT_EXTRA_3:
@@ -715,6 +713,7 @@ switch (attack) {
         }
     break;
 }
+
 
 //invincible while noise cancelling
 if (attack == AT_EXTRA_1)

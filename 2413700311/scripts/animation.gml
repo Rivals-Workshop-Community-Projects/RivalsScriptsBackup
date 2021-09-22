@@ -54,6 +54,57 @@ if (state == PS_SPAWN) {
 	}
 }
 
+
+
+//------------------------------------------------------------------------------
+//待機モーション変化
+if(state == PS_IDLE){
+	if(rand_idle <= 55){//待機1
+		if(image_index%4 == 0 and state_timer > 120){
+			rand_idle = random_func(1,100,true);
+			idle_anim_speed = .1;
+			set_state(PS_IDLE);
+		}
+	}
+	if(rand_idle > 55 and rand_idle <= 70 ){//待機2
+		sprite_index = sprite_get("idle_2");
+		idle_anim_speed = .1;
+		if(state_timer == 69)//終わり
+        {
+        	rand_idle = 0;
+    		set_state(PS_IDLE);
+       }
+	}
+	if(rand_idle > 70 and rand_idle <= 90 ){//待機3
+		sprite_index = sprite_get("idle_3");
+		idle_anim_speed = .1;
+		if(state_timer == 64)//終わり
+        {
+        	rand_idle = 0;
+    		set_state(PS_IDLE);
+       }
+	}
+	if(rand_idle > 90){//待機4
+		sprite_index = sprite_get("idle_4");
+		idle_anim_speed = .1;
+		if(state_timer == 104)//終わり
+        {
+        	rand_idle = 0;
+    		set_state(PS_IDLE);
+       }
+	}
+}
+
+
+//------------------------------------------------------------------------------
+//頭あり
+if(bodyless == false){
+	if (sprite_index = sprite_get( "spinhurt" )) {
+    	image_index = floor(image_number*state_timer/(image_number*2));
+    }
+}
+
+//------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 //キャストオフ
 if(bodyless == true){

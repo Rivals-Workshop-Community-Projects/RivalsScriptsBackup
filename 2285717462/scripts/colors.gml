@@ -61,14 +61,14 @@ TLDR HOW TO
 // my personal naming scheme is (S) for the dark shade of a color, and (R) for a
 // color which uses ranges to group shades together.
  
-rangeSet(0, $355fdc); //Blue
-rangeSet(1, $1a25a0); //Blue (S)
-rangeSet(2, $d8423e); //Red
-rangeSet(3, $861729); //Red (S)
+rangeSet(0, $386aff); //Blue
+rangeSet(1, $1b29cc); //Blue (S)
+rangeSet(2, $ff4f4a); //Red
+rangeSet(3, $a3001a); //Red (S)
 rangeSet(4, $f5cd95); //Tan
 rangeSet(5, $bc7959); //Tan (S)
-rangeSet(6, $e2e7f2); //White
-rangeSet(7, $8282a1); //White (S)
+rangeSet(6, $e3eaf7); //White
+rangeSet(7, $7474b9); //White (S)
  
  
  
@@ -88,10 +88,10 @@ colorSet(a, 7, $a19582); //White (S)
 a++;
 
 // red
-colorSet(a, 0, $a63333); //Blue
-colorSet(a, 1, $66101e); //Blue (S)
-colorSet(a, 2, $d8b43e); //Red
-colorSet(a, 3, $866017); //Red (S)
+colorSet(a, 0, $dd4444); //Blue
+colorSet(a, 1, $a00d25); //Blue (S)
+colorSet(a, 2, $ffd448); //Red
+colorSet(a, 3, $b16600); //Red (S)
 colorSet(a, 4, $f2b663); //Tan
 colorSet(a, 5, $bc5e32); //Tan (S)
 colorSet(a, 6, $f2e8e2); //White
@@ -99,8 +99,8 @@ colorSet(a, 7, $a18282); //White (S)
 a++;
 
 // green
-colorSet(a, 0, $60ad35); //Blue
-colorSet(a, 1, $116e22); //Blue (S)
+colorSet(a, 0, $7ddf46); //Blue
+colorSet(a, 1, $0f9828); //Blue (S)
 colorSet(a, 2, $424650); //Red
 colorSet(a, 3, $232432); //Red (S)
 colorSet(a, 4, $f5cd95); //Tan
@@ -110,12 +110,12 @@ colorSet(a, 7, $82a19c); //White (S)
 a++;
 
 // espio
-colorSet(a, 0, $dc3587); //Blue
-colorSet(a, 1, $910c73); //Blue (S)
-colorSet(a, 2, $e2e7f2); //Red
-colorSet(a, 3, $8282a1); //Red (S)
-colorSet(a, 4, $e2e7f2); //Tan
-colorSet(a, 5, $8282a1); //Tan (S)
+colorSet(a, 0, $ff4aa3); //Blue
+colorSet(a, 1, $b10074); //Blue (S)
+colorSet(a, 2, $e3eaf7); //Red
+colorSet(a, 3, $7474b9); //Red (S)
+colorSet(a, 4, $e3eaf7); //Tan
+colorSet(a, 5, $7474b9); //Tan (S)
 colorSet(a, 6, $424650); //White
 colorSet(a, 7, $232432); //White (S)
 a++;
@@ -123,12 +123,12 @@ a++;
 // shadow
 colorSet(a, 0, $424650); //Blue
 colorSet(a, 1, $232432); //Blue (S)
-colorSet(a, 2, $e2e7f2); //Red
-colorSet(a, 3, $8282a1); //Red (S)
+colorSet(a, 2, $e3eaf7); //Red
+colorSet(a, 3, $7474b9); //Red (S)
 colorSet(a, 4, $f5cd95); //Tan
 colorSet(a, 5, $bc7959); //Tan (S)
-colorSet(a, 6, $d8423e); //White
-colorSet(a, 7, $861729); //White (S)
+colorSet(a, 6, $ff4f4a); //White
+colorSet(a, 7, $a3001a); //White (S)
 a++;
 
 // abyss
@@ -156,17 +156,17 @@ a++;
 // silver
 colorSet(a, 0, $e8ede9); //Blue
 colorSet(a, 1, $969f9c); //Blue (S)
-colorSet(a, 2, $1e2f77); //Red
+colorSet(a, 2, $2d4194); //Red
 colorSet(a, 3, $0e1354); //Red (S)
 colorSet(a, 4, $f4c366); //Tan
 colorSet(a, 5, $b66d35); //Tan (S)
 colorSet(a, 6, $78ecb9); //White
-colorSet(a, 7, $3e978d); //White (S)
+colorSet(a, 7, $238e94); //White (S)
 a++;
 
 // jet ??
-colorSet(a, 0, $2e8468); //Blue
-colorSet(a, 1, $15525e); //Blue (S)
+colorSet(a, 0, $32a337); //Blue
+colorSet(a, 1, $0c6831); //Blue (S)
 colorSet(a, 2, $e3253b); //Red
 colorSet(a, 3, $930038); //Red (S)
 colorSet(a, 4, $f6c11c); //Tan
@@ -176,14 +176,14 @@ colorSet(a, 7, $232432); //White (S)
 a++;
 
 // when u got all the chaos emetalds
-colorSet(a, 0, $dcbe35); //Blue
-colorSet(a, 1, $a06a1a); //Blue (S)
-colorSet(a, 2, $d8423e); //Red
-colorSet(a, 3, $861729); //Red (S)
+colorSet(a, 0, $ffde4a); //Blue
+colorSet(a, 1, $c26700); //Blue (S)
+colorSet(a, 2, $ff4f4a); //Red
+colorSet(a, 3, $a3001a); //Red (S)
 colorSet(a, 4, $f5cd95); //Tan
 colorSet(a, 5, $bc7959); //Tan (S)
-colorSet(a, 6, $e2e7f2); //White
-colorSet(a, 7, $8282a1); //White (S)
+colorSet(a, 6, $e3eaf7); //White
+colorSet(a, 7, $7474b9); //White (S)
 a++;
 
 // sticks

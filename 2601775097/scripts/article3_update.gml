@@ -25,12 +25,25 @@ if (state_timer % 2 == 0)
 }
 
 //hitbox stuff
+/*
 if (state_timer == 0) powersmash_chasm = create_hitbox(player_id.AT_SKILL6, 4, x, y-8);
 powersmash_chasm.x = x;
 powersmash_chasm.y = y-8;
 if (state_timer % 10 == 0)
 {
     for (var p = 0; p < array_length(powersmash_chasm.can_hit); p++) powersmash_chasm.can_hit[p] = true; 
+}
+*/
+if (get_gameplay_time() % 20 == 0)
+{
+    with (oPlayer)
+    {
+        if (place_meeting(x, y, other) && player != other.player)
+        {
+            holyburning = other.player // unique burning id to know who burnt the opponent
+            holyburn_counter = 0;
+        }
+    }
 }
 
 state_timer ++;

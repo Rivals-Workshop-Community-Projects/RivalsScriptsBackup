@@ -1,6 +1,6 @@
 //gearbox
 
-with asset_get("obj_stage_article_solid") if num == 1 other.owner = self;
+with asset_get("obj_stage_article") if num == 1 other.owner = self;
 sprite_index = sprite_get("gearbox");
 depth_low = 24;
 depth_high = -20;

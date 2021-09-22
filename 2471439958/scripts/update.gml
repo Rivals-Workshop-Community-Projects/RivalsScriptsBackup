@@ -56,6 +56,32 @@ if (attack == AT_NSPECIAL)
 	//move_cooldown[AT_NSPECIAL] = 5;						//cooldown  por ahora desactivado
 }
 
+if uspec_meter <= 0{
+	uspec_meter = 0;
+}
+if (uspec_meter < 1){
+	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -1.3);
+	set_num_hitboxes(AT_USPECIAL, 0);
+	set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 16);
+}
+if (uspec_meter > 1) && fire == 1{
+	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -2.6);
+	set_num_hitboxes(AT_USPECIAL, 1);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 8);
+}if (uspec_meter > 1)&& ice == 1{
+	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -3.6);
+	set_num_hitboxes(AT_USPECIAL, 1);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 8);
+}if (uspec_meter > 1)&& thunder == 1{
+	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -2.6);
+	set_num_hitboxes(AT_USPECIAL, 1);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 8);
+}if (uspec_meter > 1)&& pistols == 1{
+	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -2);
+	set_num_hitboxes(AT_USPECIAL, 1);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 8);
+}
+
 //FREEZE
 
 if (ice_cont > -31 && ice_cont < 30 && ice_cont != 0){

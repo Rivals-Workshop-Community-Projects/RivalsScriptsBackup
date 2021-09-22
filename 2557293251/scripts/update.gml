@@ -1246,9 +1246,9 @@ if(diag_state == 0)
 {
 	if(diag_nrs && diag_nrs_state != 2)
 	{ if(exist_timer > 100) diag_nrs_timer++; diag_nrs_add = 3}
-	if(diag_nrs_timer > 60*2.5)
+	if(diag_nrs_timer > 60*3)
 	{ diag_nrs_state ++; diag_nrs_timer = 0; sound_play(asset_get("mfx_chat_received"));}
-	if(diag_timer == floor(60*(4.25+diag_nrs_add)))
+	if(diag_timer == floor(60*(5+diag_nrs_add)))
 		{diag_fight = 1;  if(!diag_disable_announce)sound_play(announcesfx); else sound_play(sound_get("empty_intro"))}
 	if(diag_timer > 60*(5+diag_nrs_add)) //maxtimer
 	{ diag_timer = 0; diag_state ++;}
@@ -1257,7 +1257,7 @@ if(diag_state == 0)
 with(oPlayer) 
 {
 	if(other.round_start < 4 && other.diag_state == 0)
-	{ hitpause = true; hitstop = 60*(6+other.diag_nrs_add); }
+	{ hitpause = true; hitstop = 60*(6.5+other.diag_nrs_add); }
 	if(other.exist_timer < 100)
 	{
 		if(up_down && taunt_pressed && !other.diag_disable_announce)
@@ -1282,4 +1282,8 @@ if(diag_alt_announce)
 	announce[0] = sound_get("male_alt_intro1");
 	announce[1] = sound_get("male_alt_intro2");
 	announce[2] = sound_get("male_alt_intro3");
+	announce[3] = sound_get("wrastor_intro1");
+	announce[4] = sound_get("wrastor_intro2");
+	announce[5] = sound_get("wrastor_intro3");
+	announce[6] = sound_get("wrastor_intro4");
 }

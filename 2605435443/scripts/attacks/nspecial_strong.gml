@@ -3,7 +3,7 @@ set_attack_value(AT_FTHROW, AG_NUM_WINDOWS, 14);
 set_attack_value(AT_FTHROW, AG_HURTBOX_SPRITE, sprite_get("nspecial_strong_hurt"));
 
 set_window_value(AT_FTHROW, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTHROW, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FTHROW, 1, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_FTHROW, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FTHROW, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FTHROW, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
@@ -15,7 +15,7 @@ set_window_value(AT_FTHROW, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FTHROW, 2, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_FTHROW, 2, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FTHROW, 2, AG_WINDOW_ANIM_FRAME_START, 3);
-set_window_value(AT_FTHROW, 2, AG_WINDOW_HSPEED, 10);
+set_window_value(AT_FTHROW, 2, AG_WINDOW_HSPEED, 8);
 set_window_value(AT_FTHROW, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 2.06);
 
 set_window_value(AT_FTHROW, 3, AG_WINDOW_TYPE, 1);

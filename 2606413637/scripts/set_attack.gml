@@ -46,6 +46,8 @@ if attack == AT_DSPECIAL && ssj{
 	ki = 0;
 }
 
+if attack == AT_DAIR && abs(right_down - left_down) spr_dir = right_down - left_down;
+
 
 
 muno_event_type = 2;

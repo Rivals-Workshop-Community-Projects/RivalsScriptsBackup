@@ -1,5 +1,13 @@
 hurtbox_spr = sprite_get("hurtbox");
 
+//DinoBros variables
+fspecialDidHold = 0
+fspecialGrab = 0
+fspec_cancel = 0
+fspecialSpeed  = 9
+//EE
+
+
 introTimer = -4;
 //setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening. If it's slightly off, feel free to mess with it.
 introTimer2 = 0;

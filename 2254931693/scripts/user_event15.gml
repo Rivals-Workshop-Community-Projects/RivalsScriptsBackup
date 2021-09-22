@@ -657,18 +657,6 @@ in a Patch.
 	initPatch("1.0", "October 11th, 2020");
 	initWords_ext("hmm today i will release character", fa_center, c_white, 0, 0);
 
-initPatch("About Sandbert", "");
-initWords("Sandbert was originally released as an overpowered April Fools' joke character, and was later used as a template Steam Workshop character - as an example of how to create a custom fighter.");
-initWords("This version of Sandbert, in addition to serving as the template for fighters that use the MunoPhone Touch, also features touched-up animations and a major balance patch.");
-initHeader("Originally developed by");
-initSection("Dan Fornace and/or his team of RoA developers");
-initHeader("Animation and balance edits by");
-initSection("Muno - byMuno.com");
-initHeader("Additional SFX from");
-initSection("Dragon Ball FighterZ");
-initHeader("Compatible with");
-initSection("Trummel & Alto, Otto, Steve, Link, Goku");
-
 // Recommended template for non-Sandbert characters (delete the other patches):
 
 /*
@@ -722,7 +710,7 @@ Glossary:
 To access a Cheat's current value inside your character's code, grab the entry
 in the "phone_cheats" array at the index of the "CHEAT_" variable. For example:
 
-	// update.gml
+	// up	date.gml
 	
 	if phone_cheats[CHEAT_FLY] == 1{
 		vsp = -2;
@@ -903,13 +891,11 @@ To use multiple gimmicks on a single page, MULTIPLY them together.
 */
 
 // Custom speaker setup - use 1, 2, 3, 4, ... for the index.
-SPK_SAND = initSpeaker(1, "Sandbert", sprite_get("_pho_example_speaker"));
-SPK_TWIN = initSpeaker(2, "Sandbert's evil twin", sprite_get("_pho_example_speaker"));
+SPK_FROG = initSpeaker(1, "Sandbert", sprite_get("_pho_example_speaker"));
 
 initCodec(0); // this should just always be 0, because there are no codec gimmicks
-initCodecPage(SPK_TRUM, 0, 0, "wow is that sandbert with a phone");
-initCodecPage(SPK_ALTO, 4, 0, "UNBLOCK ME ON FACEBOOK, COWARD");
-initCodecPage(SPK_SAND, 0, GIM_COLOR * GIM_LAUGH_TRACK, "no"); // this page uses the custom speaker
+initCodecPage(SPK_FROG, 0, 0, "ribbit");
+initCodecPage(SPK_TRUM, 0, 0, "froag"); // this page uses the custom speaker
 
 spr_custom_trummel_color = c_red;
 
@@ -942,20 +928,6 @@ Spear IDs:
 // Works kind of similarly to MunoPhone.
 // initCodecPagePit(speaker, expression, voice, text);
 // List of expressions and voice clips: https://pastebin.com/wsz22ZwJ
-
-initCodecPit();
-initCodecPagePit(SPK_PIT,	3,	0,	"Hey, it's Sandbert!");
-initCodecPagePit(SPK_PIT,	1,	6,	"...Isn't he a bit above my power level?");
-initCodecPagePit(SPK_PALU,	0,	3,	"Actually, this version of Sandbert has received a lot of nerfs to his damage and frame data.");
-initCodecPagePit(SPK_PALU,	0,	2,	"He can't even cancel his USpecial or end it early anymore!");
-initCodecPagePit(SPK_VIR,	5,	1,	"But yes, Pit, he IS still above your power level.");
-initCodecPagePit(SPK_PIT,	6,	0,	"Pssh, sounds like a pushover to me.");
-initCodecPagePit(SPK_PALU,	0,	4,	"Don't be so sure - despite the nerfs, his power and attack speed are still a force to be reckoned with.");
-initCodecPagePit(SPK_PALU,	0,	2,	"Also, he has the same MunoPhone as you do - so he'll be well-versed in his frame data and combos.");
-initCodecPagePit(SPK_VIR,	6,	4,	"Maybe you should turn on some Cheats for this fight, Pit?");
-initCodecPagePit(SPK_PALU,	0,	2,	"No, I'm sure he'll be fine.");
-initCodecPagePit(SPK_PALU,	2,	5,	"...As long as he avoids the Kamehameha.");
-initCodecPagePit(SPK_PIT,	4,	1,	"The WHAT?!?");
 
 
 

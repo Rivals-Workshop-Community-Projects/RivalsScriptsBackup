@@ -605,6 +605,11 @@ if(attack == AT_NSPECIAL || attack == AT_NSPECIAL_AIR){
 	move_cooldown[AT_NSPECIAL_AIR] = 30;
 }
 
+// Nspecial / Dspecial Air landing lag
+if((attack == AT_NSPECIAL_AIR || attack == AT_DSPECIAL_AIR) && !free){
+	set_state(PS_LANDING_LAG);
+}
+
 // A+B Command Input angle direction if used in air.
 if(attack == AT_EXTRA_3 && free){
 	set_hitbox_value(AT_EXTRA_3,5,HG_ANGLE,270);

@@ -101,15 +101,16 @@ for(var hitbox_num = 2; hitbox_num < 5; hitbox_num++){
     set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 39);
     set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 1);
     set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 2);
-    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 4);
+    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
+    set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 5);
     set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .1);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
+    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 4);
     set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .1);
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 20); //20  - lightning small
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_absa_singlezap1"));
     set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 0);
     set_hitbox_value(attack, hitbox_num, HG_EXTENDED_PARRY_STUN, 1);
+    set_hitbox_value(attack, hitbox_num, HG_SDI_MULTIPLIER, 1.2);
     //projectile properties -----------------------------------------------------------
     set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj"));
     set_hitbox_value(attack, hitbox_num, HG_PROJECTILE_MASK, -1);

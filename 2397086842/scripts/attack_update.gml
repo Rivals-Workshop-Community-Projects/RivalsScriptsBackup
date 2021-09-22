@@ -148,7 +148,7 @@ if !hitpause {
 
 
     if attack == AT_DTILT {
-        if window == 3 && window_timer == 4 && !has_hit{
+        if window == 3 && window_timer == 3 && !has_hit{
             sound_play(sound_get("bonk"),false,noone,0.8)
             shake_camera(2,2)
         }
@@ -377,7 +377,7 @@ if !hitpause {
         if window == 2 && window_timer == 1 {
             hsp /= 2
             
-            move_cooldown[AT_DSPECIAL] = 120
+            move_cooldown[AT_DSPECIAL] = 90
             //spawn_hit_fx(x,y-15,sw)
             spawn_hit_fx(x,y-15,sw2)
                             //create_hitbox(AT_DSPECIAL,11, x + 10 * spr_dir , y - 36)
