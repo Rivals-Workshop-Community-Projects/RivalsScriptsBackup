@@ -6,24 +6,24 @@ set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
 // Startup
 
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 20);
-set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 5);
 
 // Check Success
 
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 2);
-set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
 
 // Explosion Circle
 
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 30);
-set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 6);
 
 // Endlag
 
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 22);
-set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 9);
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 3);
 
 // Hitboxes
@@ -46,7 +46,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 60);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.7);
+set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.6);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, 0.85);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 16);
 set_hitbox_value(AT_DSPECIAL, 1, HG_TECHABLE, 0);

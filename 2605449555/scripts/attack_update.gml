@@ -99,10 +99,11 @@ if (attack == AT_DTILT) {
 if (attack == AT_UTILT) {
     if (window = 3 && window_timer == 1) {
         hsp = hsp * -1;
+        //x += 10 * spr_dir;
     }
     
     
-    if (window == 5) {
+    if (window == 4) {
         CannUTiltFlip = true;
         CannUTiltDir = spr_dir;
         move_cooldown[AT_JAB] = 3;
@@ -324,8 +325,8 @@ if (attack == AT_USPECIAL) {
         
         if (vsp > 0) {
             //can_attack = true;
-            can_jump = true;
-            can_shield = true;
+            //can_jump = true;
+            //can_shield = true;
         }
         
         can_wall_jump = true;
@@ -335,7 +336,7 @@ if (attack == AT_USPECIAL) {
     if (window == 5) {
         CannUSpcShootBallEndTimer = 0;
         CannUSpcChargePower = 0;
-        can_jump = true;
+        //can_jump = true;
         //can_attack = true;
         can_wall_jump = true;
         grav = 0.5;
@@ -795,7 +796,7 @@ if (attack == AT_USTRONG) {
 		CannStrongTimer += 1;
 	}
 	
-	if (window == 3) {
+	if (window == 4) {
 		if (window_timer == 1) {
 			//sound_play(asset_get("sfx_ell_explosion_medium"));
 			if (CannStrongPower == 0) {
@@ -830,7 +831,7 @@ if (attack == AT_USTRONG) {
 			}
 		}
 		
-		if (window_timer == 8) {
+		if (window_timer == 2) {
 			create_hitbox(AT_USTRONG, 4, x, y);
 		}
 		
@@ -841,7 +842,7 @@ if (attack == AT_USTRONG) {
 		
 	}
 	
-	if (window == 4) {
+	if (window == 6) {
 		if (window_timer < 8) {
 			if (CannGrabbedId != 0) {
 				CannGrabbedId.x = x + (30 * spr_dir);

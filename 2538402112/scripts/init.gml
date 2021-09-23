@@ -135,6 +135,8 @@ gfzsignspr = sprite_get("GFZ_Grovyle")
 miiverse_post = sprite_get("miiverse_grovyle")
 pkmn_stadium_front_img = sprite_get("gen1_grovyle")
 pkmn_stadium_back_img = sprite_get("gen1_grovyle_back")
+link_spear_drop = 6;
+
 //Amber interaction variables
 amber_herObj = noone; //The object ID of Amber when she hugs. Amber's own script will set this when the hug is inititated
 amber_thisHugSprite = sprite_get("grovyle_cheer_alt0");

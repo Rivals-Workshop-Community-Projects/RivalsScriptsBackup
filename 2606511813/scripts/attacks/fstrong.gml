@@ -5,7 +5,7 @@ set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_FSTRONG, AG_NUM_WINDOWS, 5);
 
 //startup
-set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_HSPEED, -5);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_HSPEED_TYPE, 0);
@@ -14,7 +14,7 @@ set_window_value(AT_FSTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.7);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.7);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_HAS_SFX, 0);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_SFX, sound_get("upperdash_start"));
-set_window_value(AT_FSTRONG, 1, AG_WINDOW_SFX_FRAME, 4);
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_SFX_FRAME, 2);
 
 //dash
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 6);
@@ -59,7 +59,7 @@ set_num_hitboxes(AT_FSTRONG, 3);
 
 //early hit
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, 3);
+set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, 0);
 set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 2);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 31);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_Y, -27);
@@ -80,7 +80,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_GROUP, 1);
 //uppercut hit
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW, 4);
-set_hitbox_value(AT_FSTRONG, 2, HG_LIFETIME, 2);
+set_hitbox_value(AT_FSTRONG, 2, HG_LIFETIME, 4);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X, 20);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_Y, -45);
 set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 60);

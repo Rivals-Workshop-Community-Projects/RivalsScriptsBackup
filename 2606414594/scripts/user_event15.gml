@@ -246,6 +246,10 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.2", "22 September, 2021");
+initHeader("MunoPhone Touch Firmware v2");
+initSection("Added the Endless Parry Utility.");
+
 initPatch("1.1", "20 September, 2021");
 initHeader("DStrong - Adjustments, Bugfixes");
 initSection("Angle 290 --> 280.

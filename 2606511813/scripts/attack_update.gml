@@ -30,26 +30,26 @@ if attack == AT_NAIR {
     
     if window == 1 {
         reset_hitbox_value(AT_NAIR, 1, HG_HITBOX_GROUP);
-        reset_hitbox_value(AT_NAIR, 2, HG_HITBOX_GROUP);
-        reset_hitbox_value(AT_NAIR, 3, HG_HITBOX_GROUP);
-        reset_hitbox_value(AT_NAIR, 4, HG_HITBOX_GROUP);
+        //reset_hitbox_value(AT_NAIR, 2, HG_HITBOX_GROUP);
+        //reset_hitbox_value(AT_NAIR, 3, HG_HITBOX_GROUP);
+        //reset_hitbox_value(AT_NAIR, 4, HG_HITBOX_GROUP);
     }
     
     //spawn multihits
     if window == 2 {
-        if window_timer > 1 && window_timer < 14 && window_timer mod 2 == 0 && !hitpause {
+        if window_timer > 1 && window_timer < 10 && window_timer mod 2 == 0 && !hitpause {
             attack_end();
             var group = get_hitbox_value(AT_NAIR, 1, HG_HITBOX_GROUP);
             
             set_hitbox_value(AT_NAIR, 1, HG_HITBOX_GROUP, group + 1);
-            set_hitbox_value(AT_NAIR, 2, HG_HITBOX_GROUP, group + 1);
-            set_hitbox_value(AT_NAIR, 3, HG_HITBOX_GROUP, group + 1);
-            set_hitbox_value(AT_NAIR, 4, HG_HITBOX_GROUP, group + 1);
+            //set_hitbox_value(AT_NAIR, 2, HG_HITBOX_GROUP, group + 1);
+            //set_hitbox_value(AT_NAIR, 3, HG_HITBOX_GROUP, group + 1);
+            //set_hitbox_value(AT_NAIR, 4, HG_HITBOX_GROUP, group + 1);
             
             create_hitbox(AT_NAIR, 1, x, y)
-            create_hitbox(AT_NAIR, 2, x, y)
-            create_hitbox(AT_NAIR, 3, x, y)
-            create_hitbox(AT_NAIR, 4, x, y)
+            //create_hitbox(AT_NAIR, 2, x, y)
+            //create_hitbox(AT_NAIR, 3, x, y)
+            //create_hitbox(AT_NAIR, 4, x, y)
         }
     }
 }

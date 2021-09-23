@@ -26,7 +26,7 @@ set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 
 //endlag
 set_window_value(AT_FAIR, 4, AG_WINDOW_LENGTH, 15);
-set_window_value(AT_FAIR, 4, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_FAIR, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FAIR, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_FAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
@@ -52,7 +52,7 @@ set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_FAIR, 1, HG_EXTRA_HITPAUSE, 0);
 set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, 0);
-set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, sound_get("blade_hit_weak"));
+set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, sound_get("blade_hit_weak2"));
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_FAIR, 1, HG_TECHABLE, 0);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_GROUP, 1);
@@ -86,7 +86,7 @@ set_hitbox_value(AT_FAIR, 3, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_FAIR, 3, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_FAIR, 3, HG_EXTRA_HITPAUSE, 0);
 set_hitbox_value(AT_FAIR, 3, HG_HITPAUSE_SCALING, 0);
-set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, sound_get("blade_hit_weak"));
+set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, sound_get("blade_hit_weak2"));
 set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_FAIR, 3, HG_TECHABLE, 0);
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_GROUP, 1);

@@ -99,6 +99,12 @@ if (state == PS_PARRY) {
 	hsp = 0;
 } 
 
+// Stop When Parried
+
+if (state == PS_PRATLAND && free == false) {
+	hsp = 0;
+}
+
 // Heat Meter Stat Changing
 
 if (HeatLevel == 0 || HeatLevel == 1) {

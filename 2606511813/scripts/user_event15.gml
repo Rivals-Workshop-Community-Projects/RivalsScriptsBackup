@@ -285,6 +285,63 @@ in a Patch.
 */
 
 #define CORE_patches
+/*
+initPatch("1.X", "20 September, 2021");
+initHeader("Both");
+initSection("");
+initHeader("Pit");
+initSection("");
+initHeader("Dark Pit");
+initSection("");
+initHeader("Bug Fixes");
+initSection("")
+initHeader("Other");
+initSection("");
+*/
+
+initPatch("1.5", "22 September, 2021");
+initHeader("Both");
+initSection("- Nair number of hits reduced (8 -> 6)
+- Nair multihit hitboxes reworked, now a single circle hitbox that sends at a set angle (45)
+- Nair multihit hitpause increased: 2 -> 4
+- Nair multihit kb/bkb adjusted
+- Bair sweetspot bkb decreased: 10 -> 7
+- Fstrong hitbox 2 lifetime increased to match anim
+- Fstrong hitbox 1 removed
+- Fstrong startup decreased (to make first hitbox come out same frame as before)
+- Ustrong launcher kbg decreased: 1.2 -> 1.1");
+initHeader("Other");
+initSection("- Nair/Fair/Uair multihit sfx intensity toned down
+- Nair/Fair/Dattack anims updated to better match startup/endlag length");
+
+initPatch("1.4", "21 September, 2021");
+initHeader("Both");
+initSection("- Dattack startup increase: 6 -> 9
+- Dattack whifflag increased
+- Dattack hsp boost reduced slightly
+- Dair endlag increased (+3f)
+- Nair startup increased (+1f)
+- Ustrong startup increased (+2f)
+- Ustrong whifflag fixed/increased");
+initHeader("Pit");
+initSection("- Ustrong launcher bkb decreased: 10 -> 7 (absa ustrong stats)
+- Ustrong launcher kbg increased: 1.0 -> 1.2 (absa ustrong stats)");
+initHeader("Dark Pit");
+initSection("- Ustrong launcher hit comes out slightly faster to better connect from first hit (overall faf unchanged)
+- Ustrong sweetspot height increased slightly
+- Ustrong sweetspot bkb decreased: 11 -> 7 (same as Pit)
+- Ustrong sweetspot kbg increased: 0.8 -> 1.2 (same as Pit)
+- Ustrong sourspot bkb decreased: 9 -> 7
+- Ustrong sourspot kbg increased: 0.8 -> 1.0");
+
+initPatch("1.3", "21 September, 2021");
+initHeader("Other");
+initSection("- Fixed graphical issues with arrows and improved performance");
+
+initPatch("1.2", "21 September, 2021");
+initHeader("Other");
+initSection("- improved performance");
+
 initPatch("1.1", "20 September, 2021");
 initHeader("Both");
 initSection("- Nair endlag increased (+2f)

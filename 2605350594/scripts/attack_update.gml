@@ -202,6 +202,8 @@ if(attack == AT_FSTRONG)
 {
     if(window == 2)
     {
+        if(!has_hit && window_timer == 8)
+        { window = 3; window_timer = 1; }
         if(window_timer == 12)
             sound_play(sound_get("dagger_swing3"))
         if(window_timer == 20)
@@ -420,16 +422,18 @@ switch(attack)
             reset_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING);
             reset_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH);
             reset_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH);
+            reset_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT);
         }
         else
         {
             set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 12);
             set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 8);
             set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, 1);
-            set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 12);
+            set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 20);
             set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, 1);
             set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 15);
             set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 15);
+            set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 304);
         }
         if(jet_used == 1)
         {

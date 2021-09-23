@@ -104,7 +104,7 @@ instance_create(x, y, "obj_article_solid");
 phone = {
 	
 	// version
-	firmware: 1,
+	firmware: 2,
 	
 	// dev-end config
 	uses_shader: 0,
@@ -211,7 +211,10 @@ with phone{
 	UTIL_STATE_LOAD	= pho_initUtil("Load Position and Damage", [0], "", "Load the position and damage saved by the previous setting.");
 	UTIL_GREEN		= pho_initUtil("Greenscreen", [0, 1], ["Off", "On"], "Enable a greenscreen that is drawn at the same depth as the phone's content screen.
 	
-	(Won't take effect until you put away the phone.)")
+	(Won't take effect until you put away the phone.)");
+	UTIL_PARRY		= pho_initUtil("Endless Parry", [0, 1], ["Off", "On"], "Causes other players' parry windows to last forever until they successfully parry something.
+	
+	Useful for testing the on-parry effects of a move without having to time it perfectly - try setting the CPU to Parry.");
 	UTIL_CPU		= pho_initUtil("CPU Behavior Changes", [1, 0], ["On", "Off"], "Makes changes to some base-game CPUs to make them better training dummies, removing annoying side effects when recovering.
 	
 		Zetterburn, Maypul, and Ranno cannot inflict their status effects.
@@ -1335,6 +1338,10 @@ if phone_practice{
 				}
 			}
 		}
+	}
+	
+	if phone.utils_cur[phone.UTIL_PARRY]{
+		with oPlayer if self != other && state == PS_PARRY && window == 1 && !hitpause && !invincible window_timer = 1;
 	}
 }
 

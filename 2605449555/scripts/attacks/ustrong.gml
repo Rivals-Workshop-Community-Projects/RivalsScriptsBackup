@@ -1,5 +1,5 @@
 set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrong"));
-set_attack_value(AT_USTRONG, AG_NUM_WINDOWS, 5);
+set_attack_value(AT_USTRONG, AG_NUM_WINDOWS, 7);
 set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get("ustrong_hurt"));
 
 // Startup
@@ -14,28 +14,40 @@ set_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAMES, 1);
 
-// Catching Swing
+// Prep Swing
 
-set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 4);
-set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAMES, 7);
+set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAMES, 1);
+
+// Swing
+
+set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAMES, 2);
+
+// Swing Lag
+
+set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 7);
+set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAMES, 1);
 
 // Explosion
 
-set_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH, 16);
-set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 11);
-set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAMES, 5);
-set_window_value(AT_USTRONG, 4, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_USTRONG, 4, AG_WINDOW_SFX_FRAME, 2);
-set_window_value(AT_USTRONG, 4, AG_WINDOW_SFX, asset_get("sfx_ell_explosion_medium"));
+set_window_value(AT_USTRONG, 6, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_USTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 8);
+set_window_value(AT_USTRONG, 6, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_USTRONG, 6, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_USTRONG, 6, AG_WINDOW_SFX_FRAME, 2);
+set_window_value(AT_USTRONG, 6, AG_WINDOW_SFX, asset_get("sfx_ell_explosion_medium"));
 
 // Endlag
 
-set_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH, 16);
-set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 16);
-set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAMES, 4);
-set_window_value(AT_USTRONG, 5, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_USTRONG, 5, AG_WINDOW_SFX, asset_get("sfx_ell_utilt_fire"));
+set_window_value(AT_USTRONG, 7, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_USTRONG, 7, AG_WINDOW_ANIM_FRAME_START, 13);
+set_window_value(AT_USTRONG, 7, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_USTRONG, 7, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_USTRONG, 7, AG_WINDOW_SFX, asset_get("sfx_ell_utilt_fire"));
 
 // Hitboxes
 
@@ -44,7 +56,7 @@ set_num_hitboxes(AT_USTRONG, 4);
 // Shot Hitbox Small
 
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_USTRONG, 1, HG_WINDOW, 6);
+set_hitbox_value(AT_USTRONG, 1, HG_WINDOW, 8);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, 1);
 //set_hitbox_value(AT_USTRONG, 1, HG_WINDOW_CREATION_FRAME, 2);
 set_hitbox_value(AT_USTRONG, 1, HG_LIFETIME, 4);
@@ -67,7 +79,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_HIT_LOCKOUT, 11);
 // Medium Hitbox Small
 
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_USTRONG, 2, HG_WINDOW, 6);
+set_hitbox_value(AT_USTRONG, 2, HG_WINDOW, 8);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, 1);
 //set_hitbox_value(AT_USTRONG, 2, HG_WINDOW_CREATION_FRAME, 2);
 set_hitbox_value(AT_USTRONG, 2, HG_LIFETIME, 4);
@@ -90,7 +102,7 @@ set_hitbox_value(AT_USTRONG, 2, HG_HIT_LOCKOUT, 11);
 // Shot Hitbox Big
 
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_USTRONG, 3, HG_WINDOW, 6);
+set_hitbox_value(AT_USTRONG, 3, HG_WINDOW, 8);
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_GROUP, 1);
 //set_hitbox_value(AT_USTRONG, 3, HG_WINDOW_CREATION_FRAME, 2);
 set_hitbox_value(AT_USTRONG, 3, HG_LIFETIME, 4);
@@ -114,7 +126,7 @@ set_hitbox_value(AT_USTRONG, 3, HG_HIT_LOCKOUT, 11);
 // Catching Hit
 
 set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_USTRONG, 4, HG_WINDOW, 6);
+set_hitbox_value(AT_USTRONG, 4, HG_WINDOW, 8);
 set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_GROUP, 2);
 //set_hitbox_value(AT_USTRONG, 4, HG_WINDOW_CREATION_FRAME, 2);
 set_hitbox_value(AT_USTRONG, 4, HG_LIFETIME, 8);
