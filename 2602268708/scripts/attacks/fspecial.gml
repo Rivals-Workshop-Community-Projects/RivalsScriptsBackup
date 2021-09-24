@@ -47,8 +47,8 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 361);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .8);
-set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 7);
+set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .6);
+set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("sm64_blast"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
@@ -73,24 +73,20 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 
 // usually id do temp num stuff but i guess this works - Lemons
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 20);
+set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 11);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 60);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 60);
-set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 3);
+set_hitbox_value(AT_FSPECIAL, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 7);
-
 set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 361);
-
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 7);
-
-set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .8);
-
+set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT_Y_OFFSET, 0);
-set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 4.25);
-set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 0.55);
+set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 9);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITPAUSE_SCALING, 0.7);
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_MASK, -1);

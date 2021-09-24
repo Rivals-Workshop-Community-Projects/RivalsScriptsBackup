@@ -81,6 +81,10 @@ phone_blastzone_r = room_width - get_stage_data(SD_X_POS) + get_stage_data(SD_SI
 phone_blastzone_l = get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE);
 phone_blastzone_t = get_stage_data(SD_Y_POS) - get_stage_data(SD_TOP_BLASTZONE);
 phone_blastzone_b = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE);
+// phone_blastzone_l = get_stage_data(SD_BLASTZONE_LEFT_X);
+// phone_blastzone_r = get_stage_data(SD_BLASTZONE_RIGHT_X);
+// phone_blastzone_t = get_stage_data(SD_BLASTZONE_TOP_Y);
+// phone_blastzone_b = get_stage_data(SD_BLASTZONE_BOTTOM_Y);
 phone_lagging = false;
 phone_online = 0;
 for (var cur = 0; cur < 4; cur++){
@@ -100,7 +104,7 @@ instance_create(x, y, "obj_article_solid");
 phone = {
 	
 	// version
-	firmware: 1,
+	firmware: 2,
 	
 	// dev-end config
 	uses_shader: 0,
@@ -207,8 +211,11 @@ with phone{
 	UTIL_STATE_LOAD	= pho_initUtil("Load Position and Damage", [0], "", "Load the position and damage saved by the previous setting.");
 	UTIL_GREEN		= pho_initUtil("Greenscreen", [0, 1], ["Off", "On"], "Enable a greenscreen that is drawn at the same depth as the phone's content screen.
 	
-	(Won't take effect until you put away the phone.)")
-	UTIL_CPU		= pho_initUtil("CPU Behavior Changes", [0, 1], ["Off", "On"], "Makes changes to some base-game CPUs to make them better training dummies, removing annoying side effects when recovering.
+	(Won't take effect until you put away the phone.)");
+	UTIL_PARRY		= pho_initUtil("Endless Parry", [0, 1], ["Off", "On"], "Causes other players' parry windows to last forever until they successfully parry something.
+	
+	Useful for testing the on-parry effects of a move without having to time it perfectly - try setting the CPU to Parry.");
+	UTIL_CPU		= pho_initUtil("CPU Behavior Changes", [1, 0], ["On", "Off"], "Makes changes to some base-game CPUs to make them better training dummies, removing annoying side effects when recovering.
 	
 		Zetterburn, Maypul, and Ranno cannot inflict their status effects.
 		
@@ -415,6 +422,12 @@ SPK_ECHO = 4;
 SPK_MINE = 5;
 SPK_SEGA = 6;
 
+// Guidance speakers
+SPK_PIT	 = 0;
+SPK_PALU = 1;
+SPK_VIR	 = 2;
+SPK_DPIT = 3;
+
 // Codec gimmicks
 GIM_CHOMP		= 2;
 GIM_CLONE		= 3;
@@ -568,7 +581,7 @@ if (fps_real) < 60 && !phone_online && phone.utils_cur[phone.UTIL_FPS_WARN]{
 	draw_debug_text(32, 32, "Low FPS! (" + string(floor(fps_real)) + ")");
 }
 
-if phone_online && get_gameplay_time() < 300 && get_gameplay_time() % 30 < 25 draw_debug_text(10, 96, "ONLINE: Press the zero key to enable Fast Graphics.");
+if phone_online && get_gameplay_time() < 300 draw_debug_text(10, 48, "ONLINE: Press the F1 key to enable Fast Graphics.");
 
 if !phone.has_opened_yet && phone_practice{
 	var x_pos = 20;
@@ -1308,21 +1321,27 @@ if phone_practice{
 		}
 	}
 	
-	if phone.utils_cur[phone.UTIL_CPU]{
+	if phone.utils_cur[phone.UTIL_CPU] && phone_practice{
 		with oPlayer{
-			if (burned && burnt_id.url == CH_ZETTERBURN) burned = 0;
-			if (url == CH_KRAGG) can_up_b = 0;
-			if (url == CH_FORSBURN) move_cooldown[AT_FSPECIAL] = 2;
-			if (url != CH_MAYPUL) marked = false;
-			if (url != CH_RANNO) poison = 0;
-			if (url == CH_SHOVEL_KNIGHT){
-				gems = 0;
-				if (state == PS_ATTACK_AIR && window == 1 && window_timer == 1){
-					set_num_hitboxes(AT_USPECIAL, 0);
-					set_num_hitboxes(AT_FSPECIAL, 0);
+			if (burned && burnt_id.url == CH_ZETTERBURN && get_player_hud_color(burnt_id.player) == c_gray) burned = 0;
+			if get_player_hud_color(player) == c_gray{
+				if (url == CH_KRAGG) can_up_b = 0;
+				if (url == CH_FORSBURN) move_cooldown[AT_FSPECIAL] = 2;
+				if (url != CH_MAYPUL) marked = false;
+				if (url != CH_RANNO) poison = 0;
+				if (url == CH_SHOVEL_KNIGHT){
+					gems = 0;
+					if (state == PS_ATTACK_AIR && window == 1 && window_timer == 1){
+						set_num_hitboxes(AT_USPECIAL, 0);
+						set_num_hitboxes(AT_FSPECIAL, 0);
+					}
 				}
 			}
 		}
+	}
+	
+	if phone.utils_cur[phone.UTIL_PARRY]{
+		with oPlayer if self != other && state == PS_PARRY && window == 1 && !hitpause && !invincible window_timer = 1;
 	}
 }
 

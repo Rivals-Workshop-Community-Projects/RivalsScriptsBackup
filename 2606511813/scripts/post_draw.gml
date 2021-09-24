@@ -108,7 +108,7 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_DSPECIA
 
 //indicator draw for arrows
 with pHitBox {
-	if player_id == other.id && attack == AT_NSPECIAL && hbox_num == 1 {
+	if player_id == other.id && attack == AT_NSPECIAL && hbox_num == 1 && !was_parried {
 		draw_indicator('arrow', proj_angle, 0);
 	}
 }

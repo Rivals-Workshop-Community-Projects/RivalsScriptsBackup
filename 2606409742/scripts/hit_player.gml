@@ -102,9 +102,13 @@ switch(my_hitboxID.attack){
 		sound_play(sfx_minecraft_shield[1]);
 		break;
 	case AT_UTILT:
-	case AT_DAIR:
 	case AT_FAIR:
 		if my_hitboxID.hbox_num == 2{
+			sound_play(sfx_botw_hit_1);
+		}
+		break;
+	case AT_DAIR:
+		if my_hitboxID.hbox_num == 4{
 			sound_play(sfx_botw_hit_1);
 		}
 		break;

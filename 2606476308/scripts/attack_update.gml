@@ -5,7 +5,7 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 //Nspecial Magnet Grab
 if (attack == AT_NSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
-    if (window == 2 && grabbedid != noone && (instance_exists(flying_rock1) || instance_exists(flying_rock2) || instance_exists(flying_rock3))){
+    if (window == 2 && grabbedid != noone){
     grabbedid.invincible = false
 	grabbedid.ungrab = 0;
 	grabbedid.vsp = 0
@@ -21,12 +21,14 @@ if (attack == AT_NSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 		grabbedid.y = lerp(grabbedid.y, y, 0.05); //SET GRABBED PLAYER Y TO BE RELATIVE TO PLAYER Y
 	}
         //grabbedid.visible = false; //UNCOMMENT THIS LINE TO MAKE THE GRABBED PLAYER INVISIBLE
-       /* if(window == 2){
-	        grabbedid.x = lerp(grabbedid.x, x, 0.05); //SET GRABBED PLAYER X TO BE RELATIVE TO PLAYER X
-			grabbedid.y = lerp(grabbedid.y, y, 0.05); //SET GRABBED PLAYER Y TO BE RELATIVE TO PLAYER Y
-        }*/
-    }
-    if(window == 3){
+        //if(window == 2){
+	        
+        //}
+        if(nspecial_extended_window && !(instance_exists(flying_rock1) || instance_exists(flying_rock2) || instance_exists(flying_rock3))){
+        	window = 3
+        	window_timer = 0
+        }
+    }else if(window == 3){
     	grabbedid = noone
     }
 }
@@ -144,7 +146,7 @@ if(attack == AT_USPECIAL){
 				grabbedid.y -= 2
 			}
 		}
-		if(state_timer mod 10 == 0 && !hitpause && (instance_exists(flying_rock1) || instance_exists(flying_rock2) || instance_exists(flying_rock3))){
+		if(state_timer mod 10 == 0 && !hitpause){
 			var magnet_vfx = instance_create(x, y, "obj_article2")
 			magnet_vfx.image_xscale = 1
 			magnet_vfx.image_yscale = 1
@@ -332,6 +334,7 @@ if(attack == AT_USPECIAL){
 		}
 	}
 }
+
 if(attack == AT_NSPECIAL){
 	if(hit_enemy_nspec == false){
 		set_num_hitboxes(AT_NSPECIAL, 2);
@@ -355,7 +358,7 @@ if(attack == AT_NSPECIAL){
 				grabbedid.y -= 2
 			}
 		}
-		if(state_timer mod 10 == 0 && !hitpause &&(instance_exists(flying_rock1) || instance_exists(flying_rock2) || instance_exists(flying_rock3))){
+		if(state_timer mod 10 == 0 && !hitpause){
 			var magnet_vfx = instance_create(x, y, "obj_article2")
 			magnet_vfx.image_xscale = 1
 			magnet_vfx.image_yscale = 1

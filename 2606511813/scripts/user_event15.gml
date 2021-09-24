@@ -299,6 +299,48 @@ initHeader("Other");
 initSection("");
 */
 
+initPatch("1.6", "23 September, 2021");
+initHeader("Both");
+initSection("- Nair launcher damage decreased: 6 -> 3
+- Nair launcher hitstun multiplier decreased: x1 -> x0.85
+- Nair hitbox size decreased");
+initSection("- Fair multihit damage decreased: 2 -> 1
+- Fair launcher damage decreased: 6 -> 5
+- Fair launcher kbg decreased: 0.6 -> 0.4
+- Fair launcher bkb increased: 7 -> 8
+- Fair launcher hitstun multiplier decreased: x1 -> x0.85");
+initSection("- Uair multihit damage decreased: 2 -> 1
+- Uair launcher damage increased: 4 -> 5");
+initSection("- Dair sourspot damage decreased: 8 -> 6");
+initSection("- Bair sourspot damage decreased: 9 -> 6
+- Bair sourspot has angle flipper 7
+- Bair sourspot kbg decreased: 0.6 -> 0.4
+- Bair sweetspot damage decreased: 11 -> 10
+- Bair sweetspot now has lower priority than sourspot
+- Bair sweetspot angle changed: 45 -> 50
+- Bair hitbox sizes adjusted
+- Bair sweet/sourspot hitstun multiplier decreased: x1 -> x0.85");
+initSection("- Fspecial charge shot cooldown increased: 100f -> 130f");
+initSection("Utilt 1 damage decreased: 4 -> 3");
+initSection("- Fstrong damage decreased: 14 -> 12");
+initHeader("Pit");
+initSection("- Arrow base damage decreased: 3 -> 2
+- Arrow full charge damage decreased: 13 -> 9
+- Arrow base speed decreased: 16 -> 14
+- Arrow turn rate decreased: 6 -> 5.5
+- Arrow base hitpause decreased: 8 -> 6
+- Arrow hitpause scaling decreased: 0.5 -> 0.2
+- Ustrong launcher damage decreased: 10 -> 8
+- Uspecial late hit damage decreased: 8 -> 6");
+initHeader("Dark Pit");
+initSection("- Arrow base damage decreased: 5 -> 4
+- Arrow full charge damage decreased: 15 -> 11
+- Arrow base speed reduced: 18 -> 16
+- Uspecial multihit damage decreased: 2 -> 1
+- Dstrong sourspot damage decreased: 9 -> 8
+- Dstrong sweetspots have higher priority than sourspots
+- Dstrong hitbox sizes adjusted");
+
 initPatch("1.5", "22 September, 2021");
 initHeader("Both");
 initSection("- Nair number of hits reduced (8 -> 6)

@@ -23,5 +23,6 @@ with oPlayer if "grass_hit_pending" in self && grass_hit_pending && !hitpause{
 }
 
 if array_length(targets) for(var i = 0; i < array_length(targets); i++){
-	create_deathbox(targets[i].x, targets[i].y + 50, 1, 1, 0, true, 0, 20, 2);
+	targets[i].y = room_height + 256;
+	// create_deathbox(targets[i].x, targets[i].y + 50, 1, 1, 0, true, 0, 20, 2);
 }

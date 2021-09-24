@@ -148,14 +148,17 @@ with (asset_get("pHitBox")){
 			other.hitstop_full = 7
 			other.hitpause = true
 			if(type == 1){
-					with(player_id){
-						old_hsp = hsp
-						old_vsp = vsp
-						hitstop = 8
-						hitstop_full = 8
-						hitpause = true
-					}
+				with(player_id){
+					old_hsp = hsp
+					old_vsp = vsp
+					hitstop = 8
+					hitstop_full = 8
+					hitpause = true
 				}
+			}else{
+				length = 0
+				sound_play(asset_get("sfx_blow_weak1"))
+			}
 			instance_destroy(other);
 			/*if(type == 2){
 				instance_destroy(asset_get("pHitBox"))

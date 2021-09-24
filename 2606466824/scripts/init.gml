@@ -54,6 +54,8 @@ myFX = noone;
 flameBurstTimer = 0;
 flameBurstTimer2 = 0;
 
+custom_up_held = 0;
+
 isAI = false;
 
 grabHeightOffset = 0;

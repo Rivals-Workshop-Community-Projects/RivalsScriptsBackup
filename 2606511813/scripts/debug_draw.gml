@@ -18,5 +18,6 @@ with pHitBox {
 //draw_debug_text(x, y, string(arrowTrailArray));
 
 //draw_debug_text(x, y, string(window));
+//draw_debug_text(x, y, "J");
 
 //draw_debug_text(x, y, string(floor(fps_real/10)*10))

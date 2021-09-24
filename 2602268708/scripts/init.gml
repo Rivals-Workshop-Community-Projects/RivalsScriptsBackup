@@ -23,6 +23,7 @@ cling = 0;
 wallanim = 0;
 idleState = 0;
 fired = 0;
+thitground = false;
 
 introTimer = -4;
 //setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening. If it's slightly off, feel free to mess with it.
@@ -121,6 +122,7 @@ bomb_bounce = hit_fx_create( sprite_get( "bouncefx" ), 8 );
 whomp_explode = hit_fx_create( sprite_get( "fstrong_whomp_destroyed" ), 19 );
 thwomp_explode = hit_fx_create( sprite_get( "dstrong_thwomp_destroyed" ), 19 );
 cannon_base = hit_fx_create( sprite_get( "uspecial_base_strip1" ), 1 );
+launchblast = hit_fx_create( sprite_get( "uspecial_blast_fx" ), 22 );
 
 // Character-specific assets init
 

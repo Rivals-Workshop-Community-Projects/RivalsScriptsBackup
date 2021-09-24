@@ -196,6 +196,12 @@ if(armorpoints > 0){
     land_sound = asset_get("sfx_land_med2");
     waveland_sound = asset_get("sfx_waveland_zet");
 }
+if(fdownsprecovery){
+    super_armor = true;
+    if(state != PS_ATTACK_AIR && state_timer > 7){
+        fdownsprecovery = false;
+    }
+}
 old_armorpoints = armorpoints;
 //print_debug(hit_totem);
 #define exit_prison

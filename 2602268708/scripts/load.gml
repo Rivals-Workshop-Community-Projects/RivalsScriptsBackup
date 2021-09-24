@@ -96,6 +96,7 @@ sprite_change_offset("uspecial_barrel", 53, 53);
 sprite_change_offset("uspecial_base", 22, 42);
 sprite_change_offset("uspecial_articlemask", 22, 44);
 sprite_change_offset("uspecial_barrel_mask", 53, 53);
+sprite_change_offset("uspecial_blast_fx", 128, 128);
 sprite_change_offset("dspecial", 38, 96);
 
 sprite_change_offset("taunt", 42, 84);

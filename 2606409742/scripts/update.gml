@@ -18,7 +18,7 @@ if cur_spear{
 
 
 
-if state == PS_IDLE || state == PS_WALK || state == PS_CROUCH || (phone_attacking && attack == AT_FTILT && window < 3) with pHitBox if !plasma_safe && player != other.player && type == 2{
+if state == PS_IDLE || state == PS_WALK || state == PS_CROUCH || (phone_attacking && attack == AT_FTILT && window < 4) with pHitBox if !plasma_safe && player != other.player && type == 2{
 	if place_meeting(x - other.spr_dir * 16, y, other.hurtboxID) && !place_meeting(x, y, other.hurtboxID) && sign(x - other.x) == other.spr_dir{
 		destroyed = 1;
 		with other{

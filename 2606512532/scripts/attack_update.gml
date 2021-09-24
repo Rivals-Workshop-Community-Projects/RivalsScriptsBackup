@@ -252,8 +252,8 @@ if attack == AT_NSPECIAL {
         reset_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW);
         
         if (!special_down && window_timer >= 2 && bow_turn_timer >= 2) || window_timer == 60 { //max of 60
-        	var arrowSpeed = (echo ? 18 : 16) + floor(bowCharge/3);
-            var arrowDamage = (echo ? 5 : 3) + floor(bowCharge/6);
+        	var arrowSpeed = (echo ? 16 : 14) + floor(bowCharge/3);
+            var arrowDamage = (echo ? 4 : 2) + floor(bowCharge/8);
             var arrowBkb = (echo ? 5 : 4) + floor(bowCharge/12);
             var arrowKbg = (echo ? 0.5 : 0.3) + bowCharge/160;
             
@@ -451,7 +451,7 @@ if attack == AT_FTHROW {
     }
     
     if window == 3 && window_timer == 1 && (!phone_cheats[CHEAT_QUICK_CHARGE] && !has_rune("I")) { //FSPECIAL cooldown removed.
-        move_cooldown[AT_FTHROW] = 100;
+        move_cooldown[AT_FTHROW] = 130;
     }
     if window >= 2 can_wall_jump = true;
     

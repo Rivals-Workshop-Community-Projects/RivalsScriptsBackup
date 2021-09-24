@@ -405,17 +405,42 @@ initSection("Trummel & Alto, Otto, Steve, Link");
 
 
 
+initPatch("1.02", "September 21st, 2021");
+initHeader("General");
+initSection("* Adjusted backend code so Lukaru AI no longer crashes against Incineroar??? (please luka include a failsafe for this lol i did nothing wrong)");
+initSection("* Adjusted portrait to reduce blue highlights.");
+initHeader("DStrong");
+initSection("* Launcher Hit Angle [60 -> 50].");
+initSection("- Launcher Hit KB [9+1.1 -> 9+.95].");
+initHeader("FSpecial");
+initSection("- Now only breaks projectiles for the first two active frames of the dash grab.");
+initHeader("NSpecial");
+initSection("* Melee Hit Active Frames [3 -> 1]. Fixed a bug where multiple ropes could be spawned when landing the attack in an unintended manner.");
+initSection("* Rope Throw Angle [40 -> 35].");
+initSection("+ Increased the detection radius for the ropes' grab.");
+initSection("+ You can now hold up during the charge time to spawn the ropes higher.");
+initHeader("USpecial");
+initSection("- Descending Hit Damage [8/7 -> 6/4].");
+initSection("- Rising Motion Startup [F7 -> F9].");
+initSection("- Bounce now is cancelled when Incineroar touches the ground, however it now has 6f landing lag. All in all balances out to +5f of lag when bouncing and landing on the same surface (30f -> 35f).");
+initSection("- Increased lag when doing a Soft Landing out of the downwards motion (10f -> 15f).");
+initSection("* Changed how the command grab functions. Now players should only be dragged when the move continues instead of instantly, and should not move at all if the move trades with an enemy attack.");
+initSection("+ Made it easier for the rising hit to connect into the falling hit.");
+initSection("+ Increased the amount of horizontal control Incineroar has during the rising portion of the move.");
+initHeader("UStrong");
+initSection("- Top hitbox (sourspot) KB [8.5+1 -> 8.5+.95].");	
+
 initPatch("1.01", "September 19th, 2021");
 initHeader("General");
-initSection("Swapped the position of the Tony the Tiger alt with the Shiny alt (so the Shiny alt has the golden skin shine effect).");
-initSection("Added skin for BowlingKing, who placed Top 8 in the Good Times tournament using Incineroar.");
-initSection("Fixed CSS text.");
-initSection("Adjusted portrait slightly to reduce the amount of blue highlight.");
-initSection("Added code on the backend that should prevent certain bugs from occurring.");
+initSection("* Swapped the position of the Tony the Tiger alt with the Shiny alt (so the Shiny alt has the golden skin shine effect).");
+initSection("* Added skin for BowlingKing, who placed Top 8 in the Good Times tournament using Incineroar.");
+initSection("* Fixed CSS text.");
+initSection("* Adjusted portrait slightly to reduce the amount of blue highlight.");
+initSection("* Added code on the backend that should prevent certain bugs from occurring.");
 
 initPatch("1.0", "September 19th, 2021");
 initHeader("General");
-initSection("The character was released.");
+initSection("* The character was released.");
 
 initPatch("About Incineroar", "");
 initHeader("Character by");

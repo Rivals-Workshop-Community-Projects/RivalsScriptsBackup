@@ -131,7 +131,7 @@ if (state == 1){
    if (shouldSpawnGrab == 1) {
 		spr_dir = throwDirection * -1;
 		throwPower = clamp(throwPower, 7, 13);
-		myGrab = create_hitbox(AT_NSPECIAL, 1, x, y);
+		myGrab = create_hitbox(AT_NSPECIAL, 1, x, y - 40);
 		if (grabbedPlayer == player_id.player) {
 			with (myGrab) {
 				player++;

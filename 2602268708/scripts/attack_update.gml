@@ -3,15 +3,7 @@ if clamp(attack, 16, 19) == attack trigger_b_reverse();
 
 //Other stuff
 switch (attack)
-{
-	case AT_FTHROW:
-		if window == 1
-		{
-			nspecial_grab_timer = 4;
-		}
-		
-	break;
-	
+{	
 	case AT_DTILT:
 	//Make dtilt jump-cancellable on hit
 		can_jump = has_hit_player;
@@ -21,14 +13,14 @@ switch (attack)
 		{
 			if free vsp = -10
 			
-			instance_create(x,y,"obj_article1")
+			instance_create(x,y-1,"obj_article1")
 		}
 	break;
 	case AT_NSPECIAL:
 	break;
 	case AT_FSPECIAL:
 		//Give fspecial cooldown, random bob-omb
-		move_cooldown[AT_FSPECIAL] = 50;
+		move_cooldown[AT_FSPECIAL] = 60;
 		if (window == 1 && window_timer == 1)
 		{
 			bomb_numbering = random_func( 0, 4, true);
@@ -78,6 +70,7 @@ switch (attack)
 			case 3:
 				if window_timer == 1 && !hitpause
 				{
+				super_armor = false;
 					var article = instance_create(x,y,"obj_article3");
 					//print("charge = " + string(cannon_charge));
 					if(bits = 1){
@@ -94,7 +87,7 @@ switch (attack)
 					article.hsp = -hsp * .8;
 					article.vsp = -vsp * .8;
 					
-					spawn_hit_fx( x, y, 143);
+					spawn_hit_fx( x, y, launchblast);
 					
 					if nspecial_grabbed_player != noone
 					{
@@ -124,7 +117,7 @@ switch (attack)
 	    if (window == 2 && window_timer == 4 && free) {
 		vsp = -1;
 		}
-		if (window == 4 && window_timer >= 5)
+		if (window == 4 && window_timer >= 5 && free)
 		{
 			can_move = true;
 			can_dash = true;

@@ -39,8 +39,8 @@ if (my_hitboxID.attack == AT_DSTRONG) {
 if (my_hitboxID.attack == AT_USPECIAL && hit_player_obj.state == PS_HITSTUN) {
 	if (my_hitboxID.hbox_num <= 2) {
 		target = hit_player_obj;
-		target.x = my_hitboxID.x;
-		target.y = my_hitboxID.y;
+		//target.x = my_hitboxID.x;
+		//target.y = my_hitboxID.y;
 	}
 }
 

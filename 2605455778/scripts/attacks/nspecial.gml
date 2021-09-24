@@ -98,6 +98,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 180);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 32);

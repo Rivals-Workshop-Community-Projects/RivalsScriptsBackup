@@ -17,7 +17,7 @@ with (obj_article1) {
 }
 
 if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_NSPECIAL && window == 1 && strong_charge > 6) {
-	draw_sprite (sprite_get("nspec_cursor"), 0, x + ((4*strong_charge) + 40)*spr_dir, y - 20);	
+	draw_sprite (sprite_get("nspec_cursor"), 0, x + ((4*strong_charge) + 40)*spr_dir, y - 20 - (3*custom_up_held));	
 }
 shader_end();
 

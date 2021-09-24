@@ -45,6 +45,11 @@ switch(attack){
 		}
 		break;
 	
+	case AT_DAIR:
+		if window == 1 && window_timer == phone_window_end{
+			var h = spawn_hit_fx(x, y + 32, vfx_dair_sweetspot);
+			h.depth = depth - 1;
+		}
 	case AT_UTILT:
 	case AT_FTILT:
 	case AT_DTILT:
@@ -80,13 +85,6 @@ switch(attack){
 			case 4:
 				hsp = 0;
 				break;
-		}
-		break;
-	
-	case AT_DAIR:
-		if window == 1 && window_timer == phone_window_end{
-			var h = spawn_hit_fx(x, y + 32, vfx_dair_sweetspot);
-			h.depth = depth - 1;
 		}
 		break;
 	
@@ -283,10 +281,18 @@ switch(attack){
 	
 	case AT_FSPECIAL:
 		
+		if was_parried can_move = false;
+		
 		if hitpause{
 			if check_for_bounce{
 				check_for_bounce = false;
-				old_vsp = -7;
+				if !was_parried{
+					old_vsp = -7;
+					if has_hit_bomb{
+						old_hsp += 4 * spr_dir;
+						has_hit_bomb = false;
+					}
+				}
 			}
 		}
 		else{

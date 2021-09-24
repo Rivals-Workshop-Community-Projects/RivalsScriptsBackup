@@ -58,7 +58,7 @@ if attack == AT_NSPECIAL
 		
 		//increase speed
 		if abs(nspecSpeed) < nspecSpeedMax
-			nspecSpeed += sign(nspecSpeed) * 0.2;
+			nspecSpeed += sign(nspecSpeed) * 0.5;
 			
 		//spawn
 		//add more conditionals here on when to activate the attack

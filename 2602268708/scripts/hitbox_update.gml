@@ -14,7 +14,8 @@ if (attack == AT_FSTRONG){
 	if (destroyed){ destroyed = false; }
 	}
 	if (hitbox_timer > 20){
-	if (free){ image_index = 4;
+	if (free){
+	image_index = 4;
 	create_hitbox(AT_FSTRONG, 3, x+50 * spr_dir, y+80);
 	} else if !(free){
 	image_index = 5; destroyed = true; }
@@ -34,20 +35,21 @@ if (attack == AT_FSTRONG){
 
 if (attack == AT_DSTRONG){
     if (hbox_num == 3){
+	print_debug(free);
         if (hitbox_timer == 1){
 		if(player_id.bits == 1){
 		sound_play(sound_get("chuckyanoise_smb2")); } else { sound_play(sound_get("thwomp")); }
 		}
-        if (free){
-		image_index = 0;
+        if (free) && (thitground == false){
 		create_hitbox(AT_DSTRONG, 1, x, y+40);
 		create_hitbox(AT_DSTRONG, 2, x, y+40);
-		} else if !(free){
-			 img_spd = 0.3;
-			 if (image_index > 2){ create_hitbox(AT_DSTRONG, 4, x, y+60); }
-		     if (image_index == 3){ destroyed = true; }
+		} else if (free == 0){
+		    thitground = true;
+			img_spd = 0.3;
+		    if (image_index == 3){ destroyed = true; }
 		}
         if (destroyed == true){ 
+		create_hitbox(AT_DSTRONG, 4, x, y+60);
 		if(player_id.bits == 1){
 		sound_play(sound_get("8bit_break")); } else { sound_play(sound_get("sm64_break")); }
 		}
@@ -122,7 +124,7 @@ if (attack == AT_FSPECIAL)
 		
 		var chuck_distance = point_distance(player_id.x, player_id.y, x, y);
 		if (player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR){
-			if (player_id.attack == AT_NSPECIAL) && (chuck_distance <= 50 && player_id.nspecial_grabbed_player == noone) && (player_id.window <= 2){
+			if (player_id.attack == AT_NSPECIAL) && (chuck_distance <= 80 && player_id.nspecial_grabbed_player == noone) && (player_id.window <= 2){
 				player_id.nspecial_grab_timer = player_id.nspecial_grab_max_time;
 				player_id.nspecial_grabbed_player = id;
 			}

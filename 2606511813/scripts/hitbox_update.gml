@@ -33,7 +33,7 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
         angleDif += 360;
     }
     
-    var angle_turn = (echo ? 1.5 : 6);
+    var angle_turn = (echo ? 1.5 : 5.5);
     
     if has_rune("A") angle_turn *= 1.3; //NSPECIAL arrows are faster and more controllable.
     
@@ -188,8 +188,11 @@ if attack == AT_DTHROW && hbox_num == 2 {
 }
 
 if attack == AT_DTHROW && hbox_num == 4 {
-    x = owner.x + owner.hsp;
-    y = owner.y + owner.vsp;
+	if !instance_exists(owner) destroyed = true;
+	else {
+	    x = owner.x + owner.hsp;
+	    y = owner.y + owner.vsp;
+	}
 }
 
 

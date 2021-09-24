@@ -161,6 +161,12 @@ if image_index >= sprite_get_number(sprite_index) shouldDestroy = true;
 
 state_timer += !lock_state;
 
+if (place_meeting(x, y, asset_get("plasma_field_obj")) && !(state == 3 || state == 2)) {
+	sound_play(asset_get("sfx_clairen_hit_med"));
+	spawn_hit_fx(floor(x),floor(y),256)
+	shouldDestroy = true;
+}
+
 if (clamp(x, 0, room_width) != x or clamp(y, 0, room_height) != y) or shouldDestroy
 {
     sound_stop(whir);

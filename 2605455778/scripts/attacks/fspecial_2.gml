@@ -62,7 +62,7 @@ set_window_value(AT_FSPECIAL_2, 6, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL_2, 6, AG_WINDOW_SFX, asset_get("sfx_kragg_roll_turn"));
 set_window_value(AT_FSPECIAL_2, 6, AG_WINDOW_SFX_FRAME, 0);
 
-set_window_value(AT_FSPECIAL_2, 7, AG_WINDOW_LENGTH, 25); //stall before blast off
+set_window_value(AT_FSPECIAL_2, 7, AG_WINDOW_LENGTH, 10); //stall before blast off
 set_window_value(AT_FSPECIAL_2, 7, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL_2, 7, AG_WINDOW_ANIM_FRAME_START, 26);
 set_window_value(AT_FSPECIAL_2, 7, AG_WINDOW_HSPEED_TYPE, 1);

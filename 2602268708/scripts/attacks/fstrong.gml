@@ -14,8 +14,8 @@ set_window_value(AT_FSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_SFX, sound_get("smb2_pluck"));
 
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 14);
-set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 4);
+set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 24);
+set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED_TYPE, 2);
@@ -110,6 +110,7 @@ set_hitbox_value(AT_FSTRONG, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 //Slam Hit Grounded
 set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 4, HG_WINDOW, 10);
+set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_FSTRONG, 4, HG_LIFETIME, 1);
 set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_X, 0);
 set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_Y, -9000);
@@ -126,7 +127,6 @@ set_hitbox_value(AT_FSTRONG, 4, HG_EXTRA_HITPAUSE, 2);
 set_hitbox_value(AT_FSTRONG, 4, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_FSTRONG, 4, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_FSTRONG, 4, HG_VISUAL_EFFECT_Y_OFFSET, -1);
-set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_FSTRONG, 4, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_FSTRONG, 4, HG_GROUNDEDNESS, 1);
 

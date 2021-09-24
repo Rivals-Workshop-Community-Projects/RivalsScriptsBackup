@@ -28,3 +28,7 @@ if attack == AT_FSPECIAL
     bounced = false;
     bouncetime = 0;
 }
+
+if (attack == AT_DSTRONG && hbox_num == 3){
+thitground = false;
+}

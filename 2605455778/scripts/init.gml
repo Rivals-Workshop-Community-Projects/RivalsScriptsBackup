@@ -164,13 +164,15 @@ totemwehit = noone;
 sideup = 0;
 swallowinput = 0;
 upcancel = false;
+fdownsprecovery = false;
+groundstart = false;
 
 //workshop comp
 feri_costume = sprite_get("costume_dinock");
 enemykirby = noone; 
 Hikaru_Title = "The Rock Dinosaur";
-ncode1 = "Rocky dinosaur with powerful armor";
-ncode2 = "Is able to create rock totems and use them to move around";
+ncode1 = "No lore";
+ncode2 = "Only Dinock";
 ncode3 = "Minor Threat";
 battle_text = "* Time to Rock and Roll!";
 steve_death_message = "Steve couldn't mine through Dinock";

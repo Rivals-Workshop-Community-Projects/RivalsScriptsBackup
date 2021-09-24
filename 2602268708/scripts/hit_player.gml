@@ -80,7 +80,7 @@ switch (my_hitboxID.attack)
 				ownerarticle.old_hsp = ownerarticle.hsp;
 				ownerarticle.old_vsp = ownerarticle.vsp;
 				ownerarticle.disable_hitboxes = true;
-				ownerarticle.disappear_time = disappear_time_max - 30;
+				ownerarticle.disappear_time = ownerarticle.disappear_time_max - 30;
 			}
 		}
 	 break;

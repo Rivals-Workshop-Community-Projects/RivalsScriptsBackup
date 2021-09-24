@@ -317,6 +317,56 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.4", "23 September, 2021");
+initHeader("FTilt - Nerfs");
+initSection("First armored frame 1 --> 5.");
+initHeader("UAir - Buffs");
+initSection("Multihit hitboxes moved upward.");
+initHeader("DAir - Adjustments, Buffs");
+initSection("Sprite adjusted.
+Sourspot split into three separate hitboxes.
+Sweetspot hitbox size increased.");
+initHeader("FStrong, UStrong, NSpecial - Adjustments");
+initSection("Breaking-hit hitpause lowered to 12/0.6, to match UAir's breaking hit.");
+
+initPatch("1.3", "22 September, 2021");
+initHeader("FSpecial - Reworks");
+initSection("Bouncing off of a Remote Bomb now gives you additional horizontal speed.");
+initHeader("UTilt - Nerfs");
+initSection("Top hitbox size reduced, both hitbox positions adjusted.
+Spike hitbox knockback growth 0.65 --> 0.4.");
+initHeader("DAttack - Nerfs");
+initSection("Hitbox sizes reduced, positions adjusted.");
+initHeader("FAir - Nerfs, Adjustments");
+initSection("Sourspot hitbox width reduced.
+Sweetspot angle 35 --> 40.
+Sweetspot knockback growth 0.8 --> 0.7.
+Sourspot angle 50 --> 45.");
+initHeader("UAir - Nerfs");
+initSection("Hitbox height reduced.");
+initHeader("DAir - Nerfs");
+initSection("Startup 12 --> 15.
+Endlag 12 --> 14.");
+initHeader("FStrong - Nerfs");
+initSection("Knockback growth 1.0/0.9 --> 0.9/0.8.")
+
+initPatch("1.2", "22 September, 2021");
+initHeader("NSpecial - Nerfs");
+initSection("Damage 11/14 --> 9/13.");
+initHeader("FSpecial - Nerfs, Adjustments");
+initSection("Axe kick hitbox size reduced, position adjusted.
+No longer bounces on parry, and also loses air drift on parry.");
+initHeader("UTilt - Nerfs");
+initSection("Endlag 12 --> 16.");
+initHeader("DTilt - Nerfs");
+initSection("Startup 6 --> 8.");
+initHeader("DAir - Nerfs");
+initSection("Hitbox size reduced, position adjusted.
+Knockback growth 0.7 --> 0.5.
+Landing lag 8 --> 10.");
+initHeader("UAir - Bugfixes");
+initSection("Frostspear sprite no longer shows the Thunderspear at the end.");
+
 initPatch("1.1", "20 September, 2021");
 initHeader("NSpecial - Nerfs, Bugfixes");
 initSection("Base knockback (regular) 6 --> 8.

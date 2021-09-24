@@ -24,5 +24,5 @@ if(attack == AT_USPECIAL && hbox_num == 1){
 }
 
 if(attack == AT_UTILT && hbox_num == 4 && hitbox_timer == 9){
-    spawn_hit_fx(x, y, 136);
+    spawn_hit_fx(x, y, 19);
 }

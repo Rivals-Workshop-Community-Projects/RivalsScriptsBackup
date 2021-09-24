@@ -42,9 +42,9 @@ switch(attack){
             if(window_timer = get_window_value(attack, 11, AG_WINDOW_LENGTH)-1){
                 if(armorpoints > 0 && hit_player_obj.prison_lockout_counter <= 0){
                     if(special_down){
-                        window = 8;
-                    }else{
                         window = 4;
+                    }else{
+                        window = 8;
                     }
                 }else{
                     window = 4;
@@ -141,6 +141,15 @@ switch(attack){
         if(free && window == 1 && window_timer == 1){
             vsp = -2;
         }
+        if(attack == AT_FSPECIAL){
+          if(window == 1 and window_timer == 1){
+            if(free){
+              set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 7);
+            }else{
+              set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
+            }
+          }
+        }
         if(window == 2){
             with (asset_get("oPlayer")) {
                 if (hitpause && state_cat == SC_HITSTUN && hit_player_obj == other.id
@@ -172,11 +181,8 @@ switch(attack){
             window = 5;
             window_timer = 0;
         }
-        if(window == 3 && !free){
+        if(window == 3){
             canledgecancel = true;
-        }
-        if(!canledgecancel && window == 3 && free && window_timer == get_window_value(attack, 3, AG_WINDOW_LENGTH)){
-            state = PS_PRATFALL;
         }
         if(window == 5 && window_timer == 1 && hit_totem){
             sound_play(asset_get("sfx_blow_medium1"));
@@ -197,6 +203,9 @@ switch(attack){
             }
             if(window_timer == 1){
                 armorloss = true;
+                if(free){
+                    vsp -= 5;
+                }
                 var alasmall = spawn_hit_fx(x-20*spr_dir, y+10, armorlosssmallfx);
                 alasmall.depth = -10;
             }
@@ -233,11 +242,13 @@ switch(attack){
                 can_jump = true;
             }
         }
-        if(window == 5 && !hitpause){
-            hsp = 11*spr_dir;
+        if(window == 5){
             can_jump = true;
-            can_wall_jump = true;
-            eggrollspecialcancels();
+            if(!hitpause){
+                hsp = 11*spr_dir;
+                can_wall_jump = true;
+                eggrollspecialcancels();
+            }
         }
         if(window == 5 && window_timer == get_window_value(attack, 5, AG_WINDOW_LENGTH)){
             window = 3;
@@ -251,25 +262,32 @@ switch(attack){
             switch(sideup){
                 case 0:
                     vsp = -18;
+                    set_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_TYPE, 7);
                     armorpoints = 0;
                 break;
                 case 1:
                     vsp = -14;
+                    set_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_TYPE, 7);
                     armorpoints = 0;
                 break;
                 case 2:
                     vsp = -10;
                     armorloss = true;
-                    state = PS_IDLE_AIR;
+                    set_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_TYPE, 1);
+                    fdownsprecovery = true;
                 break;
             }
         }
         if(window == 7 || window == 3){
+            if(window == 7){
+                super_armor = true;
+            }
             destroy_hitboxes();
         }
     break;
     
     case AT_USPECIAL:
+    can_wall_jump = true;
         if(window == 1){
             if (window_timer == 1){
                 throw_power = throw_power_default;
@@ -321,6 +339,7 @@ switch(attack){
             }
         }
         if(window == 1 && shield_pressed && armorpoints > 0 && !upcancel){
+            super_armor = true;
             old_jump = false;
             armorloss = true;
             window = 3;

@@ -31,7 +31,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 120);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 32);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 32);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 11);
+set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 9); // 11
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6); // 8
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 11);
@@ -50,11 +50,11 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 120);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 32);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 32);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 1);
-set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 14);
+set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 13); // 14
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.95);
-set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 14);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, 0.8);
+set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 12); // 14
+set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, 0.6); // 0.8
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 40);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, sfx_botw_hit_1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("spears"));

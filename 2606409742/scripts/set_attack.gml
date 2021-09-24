@@ -2,6 +2,8 @@
 
 // if attack == AT_JAB with obj_article1 if player_id == other && place_meeting(x, y, other) other.attack = AT_DSPECIAL;
 
+has_hit_bomb = false;
+
 if !(attack == AT_TAUNT || attack == AT_TAUNT_2 || attack == AT_PHONE) && rune_menu.state{
 	move_cooldown[attack] = max(move_cooldown[attack], 1);
 	exit;

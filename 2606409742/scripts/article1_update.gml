@@ -392,6 +392,9 @@ if hit_lockout <= 0 || true{
 				hitstop = desired_hitstop;
 				hitstop_full = desired_hitstop;
 			}
+			if self == article.player_id || "muno_char_id" in self && muno_char_id == article.player_id.muno_char_id{
+				has_hit_bomb = true;
+			}
 		}
 		if type == 2 && player_id == other.player_id && "is_spear" in self && is_spear && false{
 			hitpause_timer = floor(desired_hitstop) + 0.1; // + 0.1 means it won't bounce back. epic

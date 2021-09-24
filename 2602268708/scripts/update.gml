@@ -36,13 +36,11 @@ if nspecial_grabbed_player != noone
 				vsp = 0;
 				hsp = 0;
 			}
-			if nspecial_grab_timer == 0
+		    if state == PS_PARRY_START || state == PS_AIR_DODGE
 			{
 				nspecial_grabbed_player.vsp = -4
 				nspecial_grabbed_player = noone
 			}
-
-
 		}
 		else if (nspecial_grabbed_player.object_index == asset_get("obj_article1")){
 			if (!hitpause)
@@ -55,7 +53,7 @@ if nspecial_grabbed_player != noone
 				vsp = 0;
 				hsp = 0;
 			}
-			if nspecial_grab_timer == 0
+            if state == PS_PARRY_START || state == PS_AIR_DODGE
 			{
 				nspecial_grabbed_player.vsp = -4
 				nspecial_grabbed_player = noone
@@ -72,7 +70,7 @@ if nspecial_grabbed_player != noone
 				vsp = 0;
 				hsp = 0;
 			}
-			if nspecial_grab_timer == 0
+            if state == PS_PARRY_START || state == PS_AIR_DODGE
 			{
 				nspecial_grabbed_player.vsp = -4
 				nspecial_grabbed_player = noone
@@ -84,15 +82,26 @@ if nspecial_grabbed_player != noone
 			
 			nspecial_grabbed_player.x = floor(lerp(nspecial_grabbed_player.x, x+hsp, 0.25))
 			nspecial_grabbed_player.y = floor(lerp(nspecial_grabbed_player.y, y-20+vsp-(nspecial_grabbed_player.char_height/2), 0.6))
+			
+			//innefficient as hell manual shaking baybeeee
+			if (nspecial_grab_timer == 15) || (nspecial_grab_timer == 12) || (nspecial_grab_timer == 11) || (nspecial_grab_timer == 8) || (nspecial_grab_timer == 7) || (nspecial_grab_timer == 4) || (nspecial_grab_timer == 3){
+			nspecial_grabbed_player.x += -4; nspecial_grabbed_player.y += 4; }
+			if (nspecial_grab_timer == 14) || (nspecial_grab_timer == 13) || (nspecial_grab_timer == 10) || (nspecial_grab_timer == 9) || (nspecial_grab_timer == 6) || (nspecial_grab_timer == 5) || (nspecial_grab_timer == 2) || (nspecial_grab_timer == 1){
+			nspecial_grabbed_player.x += 4; nspecial_grabbed_player.y += -4; }
+			
 			with nspecial_grabbed_player
 			{
 				hitstop = 10;
 				hitstop_full = 10;
 			}
-			if nspecial_grab_timer == 0 || y > get_stage_data(SD_Y_POS) + 96
+			if nspecial_grab_timer == 0 || y > get_stage_data(SD_Y_POS) + 96 || state == PS_PARRY_START || state == PS_AIR_DODGE
 			{
-				nspecial_grabbed_player.vsp = -4
 				nspecial_grabbed_player = noone
+				move_cooldown[AT_NSPECIAL] = 20;
+				if !free{
+				set_state(PS_LANDING_LAG);
+				landing_lag_time = 20;
+				}
 			}
 		}
 	
@@ -109,29 +118,6 @@ switch (state)
 	case PS_ATTACK_AIR:
 	switch (attack)
 	{
-		// case AT_UAIR:
-		// switch window
-		// {
-		// 	// case 2:
-		// 	// if window_timer == 0 and !hitpause
-		// 	// {
-		// 	// 	create_hitbox(AT_UAIR, 1, x, y)
-		// 	// 	create_hitbox(AT_UAIR, 2, x, y)
-		// 	// }
-		// 	// case 3:
-		// 	// with asset_get("pHitBox")
-		// 	// {
-		// 	// 	if type == 1 and attack == AT_UAIR and player_id == other instance_destroy()
-		// 	// }
-		// 	// 	set_window_value(AT_UAIR, 3, AG_WINDOW_LENGTH, 4+ (10*!has_hit));
-		// 	// 	set_window_value(AT_UAIR, 3, AG_WINDOW_HAS_SFX, has_hit);
-		// 	// 	if !has_hit and window_timer == get_window_value(AT_UAIR, 3, AG_WINDOW_LENGTH)-1
-		// 	// 	{
-		// 	// 		set_state(PS_IDLE_AIR)
-		// 	// 	}
-		// 	// break;
-		// }
-
 		case AT_NAIR:
 		case AT_BAIR:
 		case AT_USTRONG:

@@ -265,6 +265,12 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.3", "22 September, 2021");
+initHeader("Ki Meter - Nerfs");
+initSection("Goku now loses a bit of ki when hit during Super Saiyan form.");
+initHeader("SSJ - Aesthetics");
+initSection("SSJ forms' hair and vfx are now unshaded when using the Early Access alt.");
+
 initPatch("1.2", "21 September, 2021");
 initHeader("NSpecial - Nerfs");
 initSection("Endlag now increases with charge.");

@@ -1,7 +1,7 @@
 set_hitbox_value(AT_EXTRA_1, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_EXTRA_1, 1, HG_LIFETIME, 2);
-set_hitbox_value(AT_EXTRA_1, 1, HG_WIDTH, 96);
-set_hitbox_value(AT_EXTRA_1, 1, HG_HEIGHT, 96);
+set_hitbox_value(AT_EXTRA_1, 1, HG_WIDTH, 48);
+set_hitbox_value(AT_EXTRA_1, 1, HG_HEIGHT, 48);
 set_hitbox_value(AT_EXTRA_1, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_EXTRA_1, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_EXTRA_1, 1, HG_DAMAGE, 0);
@@ -13,6 +13,7 @@ set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_EXTRA_1, 1, HG_EFFECT, 11);
 set_hitbox_value(AT_EXTRA_1, 1, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
 set_hitbox_value(AT_EXTRA_1, 1, HG_HIT_LOCKOUT, 0);
+set_hitbox_value(AT_EXTRA_1, 1, HG_SDI_MULTIPLIER, 0.0001);
 
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_MASK, -1);

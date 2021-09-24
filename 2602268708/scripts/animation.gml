@@ -1,9 +1,9 @@
 //print(get_state_name(state))
 switch (state){
     case PS_IDLE:
-        if nspecial_grabbed_player != noone
-        {
+        if nspecial_grabbed_player != noone {
             sprite_index = sprite_get("grab_idle");
+			if (state_timer == 45){ state_timer = 0; }
         }
     
     break;

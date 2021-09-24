@@ -235,11 +235,18 @@ if (attack == AT_FAIR){
 }
 
 if (attack == AT_NSPECIAL){
+
 	if (window == 1) {
+		if (window_timer < 3) {
+			custom_up_held = 0;
+		}
 		strong_down = special_down;
 		if (strong_down == 1) {
 			strong_charge++;
 			vsp -= 0.15;
+		}
+		if (strong_charge > 0 && up_down) {
+			custom_up_held+=2;
 		}
 		set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 		set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 4);
@@ -248,7 +255,7 @@ if (attack == AT_NSPECIAL){
 		set_hitbox_value(AT_NSPECIAL, 4, HG_WINDOW, 30);
 	}
 	if (window == 2 && window_timer == 1) {
-		spawn_hit_fx(x + ((4*strong_charge) + 40)*spr_dir, y - 20, ropeSmoke);	
+		spawn_hit_fx(x + ((4*strong_charge) + 40)*spr_dir, y - 20 - (3*custom_up_held), ropeSmoke);	
 		if (strong_charge > 6) {
 			set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 10);
 			set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 11);
@@ -257,8 +264,8 @@ if (attack == AT_NSPECIAL){
 			set_hitbox_value(AT_NSPECIAL, 4, HG_WINDOW, 3);
 		}
 	}
-    if (window == 3 && window_timer == 1) {
-		instance_create(x + ((4*strong_charge) + 40)*spr_dir, y, "obj_article1");
+    if (window == 3 && window_timer == 1 && !hitpause) {
+		instance_create(x + ((4*strong_charge) + 40)*spr_dir, y - (3*custom_up_held), "obj_article1");
     }
 }
 
@@ -616,6 +623,7 @@ if (attack == AT_NTHROW) {
 if (attack == AT_USPECIAL){
 	if (window == 1) {
 		set_window_value(AT_USPECIAL, 3, AG_WINDOW_GOTO, 8);
+		set_attack_value(AT_USPECIAL, AG_CATEGORY, 2);
 		target = noone;
 		uspecCancel = 0;
 		if (window_timer == phone_window_end) {
@@ -631,6 +639,8 @@ if (attack == AT_USPECIAL){
 	
 	if (window == 2) {
 		set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, (-14 + (window_timer * .66)));	
+		set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 1.8 * (right_down - left_down) * spr_dir);	
+		set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, get_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED));	
 		if (window_timer % 4 == 0) {
 			array_push(phone_dust_query, [x, y, "walk", spr_dir]);	
 		}
@@ -706,18 +716,25 @@ if (attack == AT_USPECIAL){
 	if (window == 7) {
 		vsp += 0.3;
 		hsp = clamp (hsp, -6, 6);
+		if (window_timer > 20) {
+			set_attack_value(AT_USPECIAL, AG_CATEGORY, 1);
+			//set_state(PS_PRATFALL);
+		}
 	}
 	can_wall_jump = true;
 	
-	if (target != noone) {
-		if (window == 2) {
+	if (target != noone && !hitpause) {
+		if (window == 2) {	
 			target.y = (target.y + (y - 20)) / 2;
 			target.x = (target.x + (x + (30 * spr_dir))) / 2;
 			if (window_timer == 15) {
 				target.vsp = -4;
 			}
+		} else if (window == 4) {
+			target.y = ((4*target.y) + (y + 40)) / 5;
+			target.x = ((4*target.x) + (x + (35 * spr_dir))) / 5;
 		} else {
-			target = noone;			
+			//target = noone;			
 		}
 	}
 	
