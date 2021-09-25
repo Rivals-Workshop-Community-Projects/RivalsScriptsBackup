@@ -40,14 +40,14 @@ switch (state){
             case AT_FSPECIAL:
                 if (get_player_color(player) != 7)
                 {
-                    if (shrimp == 1)
+                    if ((instance_exists(projectile) or instance_exists(pikmin) or shrimp_set == 1 or fish == 1) or fspec_set == 1)
                     {
                         sprite_index = sprite_get("fspecial_shrimp")
                     }
                 }
                 else if (get_player_color(player) == 7)
                 {
-                    if (shrimp == 1)
+                    if ((instance_exists(projectile) or instance_exists(pikmin) or shrimp_set == 1 or fish == 1) or fspec_set == 1)
                     {
                         sprite_index = sprite_get("fspecial_shrimp_ea")
                     }
@@ -71,14 +71,14 @@ switch (state){
             case AT_FSPECIAL:
                 if (get_player_color(player) != 7)
                 {
-                    if (shrimp == 1)
+                    if ((instance_exists(projectile) or instance_exists(pikmin) or shrimp_set == 1 or fish == 1) or fspec_set == 1)
                     {
                         sprite_index = sprite_get("fspecial_air_shrimp")
                     }
                 }
                 else if (get_player_color(player) == 7)
                 {
-                    if (shrimp == 1)
+                    if ((instance_exists(projectile) or instance_exists(pikmin) or shrimp_set == 1 or fish == 1) or fspec_set == 1)
                     {
                         sprite_index = sprite_get("fspecial_air_shrimp_ea")
                     }

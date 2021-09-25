@@ -34,7 +34,7 @@ if (attack == AT_NSPECIAL){
 
 if (attack == AT_FSPECIAL){
     can_fast_fall = false;
-    move_cooldown[AT_FSPECIAL] = 10;
+    move_cooldown[AT_FSPECIAL] = 40;
 }
 
 if (attack == AT_USPECIAL){
@@ -49,8 +49,8 @@ if (attack == AT_USPECIAL){
             if (right_down && !up_down){
                 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 7);
                 set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -7);
-                set_hitbox_value(AT_USPECIAL, 9, HG_ANGLE, 55);
-                set_hitbox_value(AT_USPECIAL, 10, HG_ANGLE, 55);
+                set_hitbox_value(AT_USPECIAL, 9, HG_ANGLE, 40);
+                set_hitbox_value(AT_USPECIAL, 10, HG_ANGLE, 40);
             }
             else{
                 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 2);
@@ -63,8 +63,8 @@ if (attack == AT_USPECIAL){
             if (left_down && !up_down){
                 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 7);
                 set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -7);
-                set_hitbox_value(AT_USPECIAL, 9, HG_ANGLE, 55);
-                set_hitbox_value(AT_USPECIAL, 10, HG_ANGLE, 55);
+                set_hitbox_value(AT_USPECIAL, 9, HG_ANGLE, 40);
+                set_hitbox_value(AT_USPECIAL, 10, HG_ANGLE, 40);
             }
             else{
                 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 2);
@@ -93,6 +93,11 @@ if (attack == AT_DSPECIAL){
         air_accel = .25;
     }
     can_fast_fall = false;
+    
+    if (window == 2 && window_timer > 14){
+        can_jump = true;
+        can_shield = true;
+    }
 }
 
 if(attack == AT_TAUNT && window == 1 && window_timer == 1){

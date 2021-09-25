@@ -120,7 +120,7 @@ if phone_attacking && attack == AT_USPECIAL && window == 1{
 	// if image_index > 0 && "uspecial_dist" in self draw_sprite(sprite_get("vfx_sparkle"), image_index - 1, x + lengthdir_x(uspecial_dist + 32, uspecial_direction_arr[max(0, array_length(uspecial_direction_arr) - 4)]), y - 32 + lengthdir_y(uspecial_dist + 32, uspecial_direction_arr[max(0, array_length(uspecial_direction_arr) - 4)]));
 }
 
-if phone_attacking && attack == AT_NSPECIAL && window == 2 && beam_juice > 30 + 60 * (ssj > 0) && abs(lengthdir_y(1, beam_angle)) > 0.1{
+if phone_attacking && attack == AT_NSPECIAL && window == clamp(window, 2, 3) && beam_juice > 30 + 60 * (ssj > 0) && abs(lengthdir_y(1, beam_angle)) > 0.1{
 	shader_start();
 	draw_sprite_ext(sprite_get("uspecial_arrow"), 0, x, y - 40, 1, 1, beam_angle, c_white, 1);
 	shader_end();

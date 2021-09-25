@@ -205,7 +205,8 @@ if (attack == AT_DSTRONG){
 	}
 	
 	if (window == 2 && window_timer == 1) {
-		sound_play(asset_get("sfx_spin"), false, noone, 0.65, 1);			
+		sound_play(asset_get("sfx_spin"), false, noone, 0.65, 1);	
+		target = noone;
 	}
     if (window == 3) {
 		if (window_timer == 3 || window_timer == 10) {
@@ -326,65 +327,65 @@ if (attack == AT_FSPECIAL){
 			target = noone;
 		}
 	} else {
-		if (window == 4) {
-			target.x = ease_linear(target.x, x + (42 * spr_dir), window_timer, 10);
-			target.y = ease_linear(target.y, y - 10 + grabHeightOffset, window_timer, 10);
-			target.hsp = 0;
-			target.vsp = -2;
-			target.state = PS_HITSTUN;
-		}
-		if (window == 5 && window_timer == 20) {
-			if (phone_cheats[CHEAT_HUG] == 2) {
-				window_timer = 1;
-				attack_end();
-				create_hitbox(AT_FSPECIAL, 2, target.x, target.y);
-			}
-			if (phone_cheats[CHEAT_HUG] == 1 && move_cooldown[AT_FSPECIAL_2] < 100) {
-				window_timer = 1;
-				move_cooldown[AT_FSPECIAL_2] += 99;
-				attack_end();
-				create_hitbox(AT_FSPECIAL, 2, target.x, target.y);
-			}
-		}
-		if (window == 5) {
-			target.x = x + (42 * spr_dir);
-			target.y = y - 10 + grabHeightOffset;
-			target.hsp = 0;
-			target.vsp = -2;
-			target.state = PS_HITSTUN;
-			
-			if (up_pressed) {
-				attack_end();
-				set_attack(AT_UTHROW);
-			} else if (down_pressed) {
-				attack_end();
-				set_attack(AT_DTHROW);
-			} else if((left_pressed && spr_dir == -1) || (right_pressed && spr_dir == 1)) {
-				attack_end();
-				set_attack(AT_FTHROW);
-			} else if((left_pressed && spr_dir == 1) || (right_pressed && spr_dir == -1)) {
-				attack_end();
-				set_attack(AT_NTHROW);
-			}
-		}
-		
-		if (window == 5 && window_timer == 58) {
-			attack_end();
-			if (up_down - down_down > 0) {
-				set_attack(AT_UTHROW);
-			} else if (up_down - down_down < 0) {
-				set_attack(AT_DTHROW);
-			} else if (right_down - left_down == 0 || (right_down - left_down) - spr_dir == 0) {
-				set_attack(AT_FTHROW);
-			} else {
-				set_attack(AT_NTHROW);
-			}
-		}
-		
 		if (target.state == PS_DEAD || target.state == PS_RESPAWN || target.state == PS_WALL_TECH || target.state == PS_TECH_GROUND || target.state == PS_TECH_FORWARD || target.state == PS_TECH_BACKWARD) {
 			target = noone;
 		} else {
 			target.state = PS_HITSTUN;
+			
+			if (window == 4) {
+				target.x = ease_linear(target.x, x + (42 * spr_dir), window_timer, 10);
+				target.y = ease_linear(target.y, y - 10 + grabHeightOffset, window_timer, 10);
+				target.hsp = 0;
+				target.vsp = -2;
+				target.state = PS_HITSTUN;
+			}
+			if (window == 5 && window_timer == 20) {
+				if (phone_cheats[CHEAT_HUG] == 2) {
+					window_timer = 1;
+					attack_end();
+					create_hitbox(AT_FSPECIAL, 2, target.x, target.y);
+				}
+				if (phone_cheats[CHEAT_HUG] == 1 && move_cooldown[AT_FSPECIAL_2] < 100) {
+					window_timer = 1;
+					move_cooldown[AT_FSPECIAL_2] += 99;
+					attack_end();
+					create_hitbox(AT_FSPECIAL, 2, target.x, target.y);
+				}
+			}
+			if (window == 5) {
+				target.x = x + (42 * spr_dir);
+				target.y = y - 10 + grabHeightOffset;
+				target.hsp = 0;
+				target.vsp = -2;
+				target.state = PS_HITSTUN;
+				
+				if (up_pressed) {
+					attack_end();
+					set_attack(AT_UTHROW);
+				} else if (down_pressed) {
+					attack_end();
+					set_attack(AT_DTHROW);
+				} else if((left_pressed && spr_dir == -1) || (right_pressed && spr_dir == 1)) {
+					attack_end();
+					set_attack(AT_FTHROW);
+				} else if((left_pressed && spr_dir == 1) || (right_pressed && spr_dir == -1)) {
+					attack_end();
+					set_attack(AT_NTHROW);
+				}
+			}
+			
+			if (window == 5 && window_timer == 58) {
+				attack_end();
+				if (up_down - down_down > 0) {
+					set_attack(AT_UTHROW);
+				} else if (up_down - down_down < 0) {
+					set_attack(AT_DTHROW);
+				} else if (right_down - left_down == 0 || (right_down - left_down) - spr_dir == 0) {
+					set_attack(AT_FTHROW);
+				} else {
+					set_attack(AT_NTHROW);
+				}
+			}
 		}
 	}
 	
@@ -408,27 +409,33 @@ if (attack == AT_FTHROW) {
 	vsp = clamp (vsp, -1, 4);
 	vsp *= 0.8;
 	if (window == 1 && target != noone) {
-		if (window_timer == 1) {attack_end();} 
-		if (window_timer < 5) {
-			target.x = x + 20 * spr_dir;
-			target.y = y - 10 + grabHeightOffset;
-			target.spr_dir = spr_dir * -1;
-		} else if (window_timer < 10) {
-			target.x = x - 4 * spr_dir;
-			target.y = y - 10 + grabHeightOffset;
-			target.spr_dir = spr_dir;
-		} else if (window_timer < 15) {
-			target.x = x - 16 * spr_dir;
-			target.y = y - 10 + grabHeightOffset;
-			target.spr_dir = spr_dir;
-		} else if (window_timer < 20){
-			target.x = x + 2 * spr_dir;
-			target.y = y - 10 + grabHeightOffset;
-			target.spr_dir = spr_dir * -1;
-		}	else {
-			target.x = x + 24 * spr_dir;
-			target.y = y - 20 + grabHeightOffset;
-			target.spr_dir = spr_dir * -1;
+		if (target.state == PS_DEAD || target.state == PS_RESPAWN || target.state == PS_WALL_TECH || target.state == PS_TECH_GROUND || target.state == PS_TECH_FORWARD || target.state == PS_TECH_BACKWARD) {
+			target = noone;
+		} else {
+			target.state = PS_HITSTUN;
+			
+			if (window_timer == 1) {attack_end();} 
+			if (window_timer < 5) {
+				target.x = x + 20 * spr_dir;
+				target.y = y - 10 + grabHeightOffset;
+				target.spr_dir = spr_dir * -1;
+			} else if (window_timer < 10) {
+				target.x = x - 4 * spr_dir;
+				target.y = y - 10 + grabHeightOffset;
+				target.spr_dir = spr_dir;
+			} else if (window_timer < 15) {
+				target.x = x - 16 * spr_dir;
+				target.y = y - 10 + grabHeightOffset;
+				target.spr_dir = spr_dir;
+			} else if (window_timer < 20){
+				target.x = x + 2 * spr_dir;
+				target.y = y - 10 + grabHeightOffset;
+				target.spr_dir = spr_dir * -1;
+			}	else {
+				target.x = x + 24 * spr_dir;
+				target.y = y - 20 + grabHeightOffset;
+				target.spr_dir = spr_dir * -1;
+			}
 		}
 		
 		if (window_timer == 6) {
@@ -464,31 +471,37 @@ if (attack == AT_UTHROW) {
 	vsp = clamp (vsp, -1, 4);
 	vsp *= 0.8;
 	if (window == 1 && target != noone) {
-		if (window_timer == 1) {attack_end();} 
-		if (window_timer < 4) {
-			target.x = x + 20 * spr_dir;
-			target.y = y - 30 + grabHeightOffset;
-			char_height = 62;
-		} else if (window_timer < 8) {
-			target.x = x + 2 * spr_dir;
-			target.y = y - 40 + grabHeightOffset;
-			char_height = 58;
-		} else if (window_timer < 12) {
-			target.x = x + 2 * spr_dir;
-			target.y = y - 74 + grabHeightOffset;
-			char_height = 82;
-		} else if (window_timer < 16){
-			target.x = x + 2 * spr_dir;
-			target.y = y - 80 + grabHeightOffset;
-			char_height = 86;
-		} else if (window_timer < 20){
-			target.x = x + 2 * spr_dir;
-			target.y = y - 54 + grabHeightOffset;
-			char_height = 62;
+		if (target.state == PS_DEAD || target.state == PS_RESPAWN || target.state == PS_WALL_TECH || target.state == PS_TECH_GROUND || target.state == PS_TECH_FORWARD || target.state == PS_TECH_BACKWARD) {
+			target = noone;
 		} else {
-			target.x = x + 2 * spr_dir;
-			target.y = y - 30 + grabHeightOffset;
-			char_height = 52;
+			target.state = PS_HITSTUN;
+			
+			if (window_timer == 1) {attack_end();} 
+			if (window_timer < 4) {
+				target.x = x + 20 * spr_dir;
+				target.y = y - 30 + grabHeightOffset;
+				char_height = 62;
+			} else if (window_timer < 8) {
+				target.x = x + 2 * spr_dir;
+				target.y = y - 40 + grabHeightOffset;
+				char_height = 58;
+			} else if (window_timer < 12) {
+				target.x = x + 2 * spr_dir;
+				target.y = y - 74 + grabHeightOffset;
+				char_height = 82;
+			} else if (window_timer < 16){
+				target.x = x + 2 * spr_dir;
+				target.y = y - 80 + grabHeightOffset;
+				char_height = 86;
+			} else if (window_timer < 20){
+				target.x = x + 2 * spr_dir;
+				target.y = y - 54 + grabHeightOffset;
+				char_height = 62;
+			} else {
+				target.x = x + 2 * spr_dir;
+				target.y = y - 30 + grabHeightOffset;
+				char_height = 52;
+			}
 		}
 		
 		if (window_timer == 1) {
@@ -524,22 +537,28 @@ if (attack == AT_DTHROW) {
 	vsp = clamp (vsp, -1, 4);
 	vsp *= 0.8;
 	if (window == 1 && target != noone) {
-		if (window_timer == 1) {attack_end();} 
-		if (window_timer < 4) {
-			target.x = x + 20 * spr_dir;
-			target.y = y - 42 + grabHeightOffset;
-		} else if (window_timer < 8) {
-			target.x = x - 20 * spr_dir;
-			target.y = y - 56 + grabHeightOffset;
-		} else if (window_timer < 12) {
-			target.x = x - 18 * spr_dir;
-			target.y = y - 66 + grabHeightOffset;
-		} else if (window_timer < 16){
-			target.x = x - 10 * spr_dir;
-			target.y = y - 80 + grabHeightOffset;
+		if (target.state == PS_DEAD || target.state == PS_RESPAWN || target.state == PS_WALL_TECH || target.state == PS_TECH_GROUND || target.state == PS_TECH_FORWARD || target.state == PS_TECH_BACKWARD) {
+			target = noone;
 		} else {
-			target.x = x + 10 * spr_dir;
-			target.y = y - 20 + grabHeightOffset;
+			target.state = PS_HITSTUN;
+			
+			if (window_timer == 1) {attack_end();} 
+			if (window_timer < 4) {
+				target.x = x + 20 * spr_dir;
+				target.y = y - 42 + grabHeightOffset;
+			} else if (window_timer < 8) {
+				target.x = x - 20 * spr_dir;
+				target.y = y - 56 + grabHeightOffset;
+			} else if (window_timer < 12) {
+				target.x = x - 18 * spr_dir;
+				target.y = y - 66 + grabHeightOffset;
+			} else if (window_timer < 16){
+				target.x = x - 10 * spr_dir;
+				target.y = y - 80 + grabHeightOffset;
+			} else {
+				target.x = x + 10 * spr_dir;
+				target.y = y - 20 + grabHeightOffset;
+			}
 		}
 		
 		if (window_timer == 1) {
@@ -574,25 +593,31 @@ if (attack == AT_NTHROW) {
 	vsp = clamp (vsp, -1, 4);
 	vsp *= 0.8;
 	if (window == 1 && target != noone) {
-		if (window_timer == 1) {attack_end();} 
-		if (window_timer < 4) {
-			target.x = x + 20 * spr_dir;
-			target.y = y - 16 + grabHeightOffset;
-		} else if (window_timer < 8) {
-			target.x = x + 18 * spr_dir;
-			target.y = y - 8 + grabHeightOffset;
-		} else if (window_timer < 12) {
-			target.x = x + 6 * spr_dir;
-			target.y = y - 12 + grabHeightOffset;
-		} else if (window_timer < 16){
-			target.x = x - 0 * spr_dir;
-			target.y = y - 20 + grabHeightOffset;
-		} else if (window_timer < 20){
-			target.x = x - 10 * spr_dir;
-			target.y = y - 24 + grabHeightOffset;
+		if (target.state == PS_DEAD || target.state == PS_RESPAWN || target.state == PS_WALL_TECH || target.state == PS_TECH_GROUND || target.state == PS_TECH_FORWARD || target.state == PS_TECH_BACKWARD) {
+			target = noone;
 		} else {
-			target.x = x - 60 * spr_dir;
-			target.y = y - 6 + grabHeightOffset;
+			target.state = PS_HITSTUN;
+			
+			if (window_timer == 1) {attack_end();} 
+			if (window_timer < 4) {
+				target.x = x + 20 * spr_dir;
+				target.y = y - 16 + grabHeightOffset;
+			} else if (window_timer < 8) {
+				target.x = x + 18 * spr_dir;
+				target.y = y - 8 + grabHeightOffset;
+			} else if (window_timer < 12) {
+				target.x = x + 6 * spr_dir;
+				target.y = y - 12 + grabHeightOffset;
+			} else if (window_timer < 16){
+				target.x = x - 0 * spr_dir;
+				target.y = y - 20 + grabHeightOffset;
+			} else if (window_timer < 20){
+				target.x = x - 10 * spr_dir;
+				target.y = y - 24 + grabHeightOffset;
+			} else {
+				target.x = x - 60 * spr_dir;
+				target.y = y - 6 + grabHeightOffset;
+			}
 		}
 		
 		if (window_timer == 1) {
@@ -665,6 +690,7 @@ if (attack == AT_USPECIAL){
 		}
 		if (window_timer == 8 && get_window_value(AT_USPECIAL, 3, AG_WINDOW_GOTO) == 8) {
 			set_state(PS_PRATFALL);
+			target = noone;	
 			uspecCancel = 0;
 		}
 	}
@@ -724,17 +750,21 @@ if (attack == AT_USPECIAL){
 	can_wall_jump = true;
 	
 	if (target != noone && !hitpause) {
-		if (window == 2) {	
-			target.y = (target.y + (y - 20)) / 2;
-			target.x = (target.x + (x + (30 * spr_dir))) / 2;
-			if (window_timer == 15) {
-				target.vsp = -4;
-			}
-		} else if (window == 4) {
-			target.y = ((4*target.y) + (y + 40)) / 5;
-			target.x = ((4*target.x) + (x + (35 * spr_dir))) / 5;
+		if (target.state == PS_DEAD || target.state == PS_RESPAWN || target.state == PS_WALL_TECH || target.state == PS_TECH_GROUND || target.state == PS_TECH_FORWARD || target.state == PS_TECH_BACKWARD) {
+			target = noone;
 		} else {
-			//target = noone;			
+			if (window == 2) {	
+				target.y = (target.y + (y - 20)) / 2;
+				target.x = (target.x + (x + (30 * spr_dir))) / 2;
+				if (window_timer == 15) {
+					target.vsp = -4;
+				}
+			} else if (window == 4) {
+				target.y = ((4*target.y) + (y + 40)) / 5;
+				target.x = ((4*target.x) + (x + (35 * spr_dir))) / 5;
+			} else {
+				//target = noone;			
+			}
 		}
 	}
 	

@@ -12,7 +12,10 @@ if (instance_exists(bubbleg))
         {
             case AT_FSPECIAL:
                 if (my_hitboxID.hbox_num == 1)
-                pikmin = hit_player_obj;
+                {
+                    pikmin = hit_player_obj;
+                    shrimp_set = 0;
+                }
                 if (hit_player_obj.wet < 3)
                 hit_player_obj.wet += 1;
                 break;
@@ -35,7 +38,10 @@ if (!instance_exists(bubbleg))
     {
         case AT_FSPECIAL:
             if (my_hitboxID.hbox_num == 1)
-            pikmin = hit_player_obj;
+            {
+                pikmin = hit_player_obj;
+                shrimp_set = 0;
+            }
             if (hit_player_obj.wet < 3)
             hit_player_obj.wet += 1;
             break;

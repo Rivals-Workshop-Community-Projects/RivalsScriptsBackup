@@ -5,6 +5,8 @@ image_xscale = 0;
 image_yscale = 0;
 spr_dir = 1;                        //The direction the article should face when it spawns. Here I have it set to face the same way as the character
 uses_shader = true;                                 //Whether or not the article is recolored according to the character's color.gml and costume.
+portal_hp = 3;
+
 
 //State
 state = 0;                                          //The behavior state the article should start in.
@@ -21,6 +23,18 @@ hit_wall = false;                                   //If the article moves into 
 transport_id = -1;
 transport_bomb = false;
 transporting = true;
+
+//SuperSonicNK Hitbox Detection cuz im dumb lmao - mcducky
+//article init
+hbox_group = array_create(4,array_create(50,array_create(10,0))); //ew
+
+hitstun = 0;
+hitstun_full = 0;
+hit_lockout = 0;
+kb_adj = 1;
+kb_dir = 0;
+orig_knock = 0;
+
 
 //Limit on number of articles
 exist_timer = 0;

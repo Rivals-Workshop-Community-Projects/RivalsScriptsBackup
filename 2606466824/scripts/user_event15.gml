@@ -405,6 +405,17 @@ initSection("Trummel & Alto, Otto, Steve, Link");
 
 
 
+
+initPatch("1.04", "September 24th, 2021");
+initHeader("General");
+initSection("* Fixed a bug that would cause opponents to be warped into DStrong if used immediately after hitting only the rising hit of USpecial.");
+
+initPatch("1.03", "September 24th, 2021");
+initHeader("General");
+initSection("* Updated Munophone");
+initSection("* Fixed a bug that would cause opponents to die several times when grabbed near a blast zone.");
+initSection("* Fixed CSS Portrait (it was using the old version).");
+
 initPatch("1.02", "September 21st, 2021");
 initHeader("General");
 initSection("* Adjusted backend code so Lukaru AI no longer crashes against Incineroar??? (please luka include a failsafe for this lol i did nothing wrong)");

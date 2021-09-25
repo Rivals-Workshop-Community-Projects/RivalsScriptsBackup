@@ -57,5 +57,6 @@ sprite_change_offset("noportal", 16, 0);
 sprite_change_offset("bombspawner", 64, 64);
 sprite_change_offset("bombarrows", 64, 64);
 sprite_change_offset("bomb", 64, 64);
-sprite_change_offset("arrow", 8, 16);
+sprite_change_offset("arrow", 16, 16);
+sprite_change_offset("arrowbomb", 16, 20);
 sprite_change_offset("explosion", 128, 128);

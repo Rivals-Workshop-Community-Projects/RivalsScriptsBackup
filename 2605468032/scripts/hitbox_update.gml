@@ -7,12 +7,6 @@ if (attack == AT_FSPECIAL)
         {
             sprite_index = sprite_get("bloop_ea")
         }
-        if (hitbox_timer == 1)
-        {
-            player_id.shrimp_set = 1
-        }
-        if (place_meeting(x, y, asset_get("plasma_field_obj")))
-        player_id.shrimp_set = 0;
         
         if (instance_exists(player_id.bubbleg))
         {
@@ -25,9 +19,8 @@ if (attack == AT_FSPECIAL)
         {
             destroyed = 1;
         }
-        if (destroyed or place_meeting(x,y,asset_get("pHitBox")))
+        if (destroyed or place_meeting(x, y, asset_get("plasma_field_obj")) or has_hit)
         {
-            player_id.shrimp_set = 0;
             if (!instance_exists(player_id.bubbleg) or (instance_exists(player_id.bubbleg)) and player_id.bubbleg.bloop == 0)
             {
                 sound_play(asset_get("sfx_bubblepop"))
@@ -35,9 +28,22 @@ if (attack == AT_FSPECIAL)
                 
             }
         }
+        with(pHitBox)
+        {
+            if (place_meeting(x, y, other) and hit_priority != 0)
+            {
+                with(other)
+                {
+                    sound_play(asset_get("sfx_bubblepop"))
+                    create_hitbox(AT_FSPECIAL, 2, x, y);
+                }
+            }
+        }
     }
     else if (hbox_num == 2)
     {
+        if (hitbox_timer == 1)
+        player_id.fish = 1;
         if (color == 7)
         {
             sprite_index = sprite_get("bloop_pop_ea")
@@ -49,7 +55,7 @@ if (attack == AT_FSPECIAL)
         
         if (destroyed)
         {
-            player_id.shrimp_set = 0;
+            player_id.fish = 0;
         }
     }
     else if (hbox_num == 3)

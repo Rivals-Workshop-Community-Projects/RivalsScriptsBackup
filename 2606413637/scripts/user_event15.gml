@@ -265,6 +265,20 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.4", "24 September, 2021");
+initHeader("NSpecial - Nerfs, Buffs, Aesthetics");
+initSection("Post-charge startup 4 --> 16.
+Can no longer break projectiles.
+Initial beam juice 30 --> 60 (SSJ: 90 --> 120).
+Added vfx and sfx to releasing the charge.");
+initHeader("DTilt - Nerfs");
+initSection("Endlag 10 --> 13.
+SSJ only: startup 6 --> 10.");
+initHeader("DSpecial - QoL");
+initSection("There's no longer a time limit on the held DSpecial power-up, so you can go from empty to full in one go if you want.");
+initHeader("Jab 2 - Aesthetics");
+initSection("Edited Goku's hair during this animation.");
+
 initPatch("1.3", "22 September, 2021");
 initHeader("Ki Meter - Nerfs");
 initSection("Goku now loses a bit of ki when hit during Super Saiyan form.");

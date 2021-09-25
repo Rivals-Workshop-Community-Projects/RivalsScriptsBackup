@@ -330,7 +330,7 @@ switch attack{
 		switch(window){
 			case 1: // startup
 				if window_timer == 1{
-					beam_juice = 30 + 60 * (ssj > 0); // amt of energy "left" in the beam
+					beam_juice = 60 + 60 * (ssj > 0); // 30 + 60 * (...)
 					beam_juice_max = 60 * 8;
 					beam_length = 0; // current length of beam
 					hsp = clamp(hsp, -2, 2);
@@ -372,6 +372,30 @@ switch attack{
 				else{
 					window++;
 					window_timer = 0;
+					sound_play(sfx_dbfz_swipe_weak1);
+					sound_play(asset_get("mfx_star"), false, noone, 1, 1.2);
+					var hfx = spawn_hit_fx(x - 24 * spr_dir, y - 38, 305);
+					hfx.depth = depth - 3;
+					array_push(phone_dust_query, [x, y, "land", spr_dir]);
+					
+					var x1 = x + 72 * spr_dir;
+					var y1 = y - 40 + lengthdir_y(32, beam_angle);
+					
+					switch((abs(lengthdir_y(1, beam_angle)) > abs(lengthdir_y(1, 15))) * sign(lengthdir_y(1, beam_angle))){
+						case 1: // down
+							x1 = x + 74 * spr_dir;
+							y1 = y - 6;
+							break;
+						case -1: // up
+							x1 = x + 60 * spr_dir;
+							y1 = y - 72;
+							break;
+					}
+					
+					var h = spawn_hit_fx(x1, y1, vfx_ftilt_destroy);
+					h.spr_dir = 1;
+					h.draw_angle = beam_angle;
+					h.depth = depth - 1;
 				}
 				hsp = clamp(hsp, -2, 2);
 				vsp = min(vsp, 3);
@@ -382,12 +406,12 @@ switch attack{
 				}
 				break;
 			case 3: // post-charge
-				hsp *= 0.75;
-				vsp *= 0.75;
+				hsp = 0;
+				vsp = 0;
 				can_move = false;
 				can_fast_fall = false;
 				was_fully_charged = (beam_juice >= beam_juice_max);
-				if window_timer == 1{
+				if window_timer == 13{ // 1
 					voice_play(VB_HA);
 					
 					// also change in nspecial.gml
@@ -770,6 +794,7 @@ switch attack{
 				}
 				else{
 					repeat(4){
+						if ki >= kaioken - 4 kaioken = min(kaioken + 1, ki_max);
 						user_event(1);
 					}
 				}

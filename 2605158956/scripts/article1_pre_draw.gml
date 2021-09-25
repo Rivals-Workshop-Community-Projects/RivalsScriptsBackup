@@ -1,4 +1,4 @@
-draw_sprite_ext(sprite_get("arrow"),0, x, y-20, 1, 1, 0, get_player_hud_color(player), 1);
+draw_sprite_ext(sprite_get("arrowbomb"),0, x, y-20, 1, 1, 0, get_player_hud_color(player), 1);
 
 if(collision_circle(x,y,100, player_id, true, false) && (hsp == 0 && vsp == 0 && state == 0))
 {

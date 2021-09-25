@@ -2,6 +2,7 @@ set_attack_value(AT_DTILT, AG_SPRITE, sprite_get("dtilt"));
 set_attack_value(AT_DTILT, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_DTILT, AG_HURTBOX_SPRITE, sprite_get("dtilt_hurt"));
 
+// also in update
 set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DTILT, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DTILT, 1, AG_WINDOW_HAS_SFX, 1);
@@ -12,7 +13,7 @@ set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 
-set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 10); // 15
+set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 13); // 15, then 10
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_DTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);

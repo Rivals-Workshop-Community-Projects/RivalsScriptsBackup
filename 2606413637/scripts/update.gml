@@ -123,6 +123,9 @@ if was_ssj != ssj{
 	initial_dash_speed = orig_initial_dash_speed + 1 * (ssj > 0);
 	knockback_adj = orig_knockback_adj + 0.2 * (ssj > 0);
 	current_sprite_set = ssjs[ssj].hairstyle;
+	
+	set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 6 + 4 * (ssj > 0));
+	set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 0 + 4 * (ssj > 0));
 }
 
 was_ssj = ssj;

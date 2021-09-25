@@ -21,9 +21,9 @@ set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_NSPECIAL, 2, AG_MUNO_WINDOW_EXCLUDE, 1);
 
 // post-charge
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 4);
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH, 16); // 4
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 4); // 1
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 2); // 5
 
 // beam overshoot
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 3);
@@ -67,6 +67,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_SDI_MULTIPLIER, 0.00001);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sfx_dbfz_hit_weak);
 set_hitbox_value(AT_NSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_ACTIVE, "16");
 set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Multihit");
 
@@ -87,5 +88,6 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_LOCKOUT, 5);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, sfx_dbfz_hit_jab3);
 set_hitbox_value(AT_NSPECIAL, 2, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 2, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_MUNO_HITBOX_ACTIVE, "23");
 set_hitbox_value(AT_NSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Finisher");

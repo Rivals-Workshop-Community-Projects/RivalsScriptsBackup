@@ -58,7 +58,6 @@ if (instance_number(oPlayer) > 1)
 }
 if (pikmin != noone and pikmin != self)
 {
-    shrimp_set = 1;
     y_offset = sprite_get_height(pikmin.hurtbox_spr) / 6;
     if (pikmin.state != PS_RESPAWN)
     pikmin_time--
