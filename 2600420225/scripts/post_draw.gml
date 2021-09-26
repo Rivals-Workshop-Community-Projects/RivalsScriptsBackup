@@ -1,3 +1,6 @@
+muno_event_type = 4;
+user_event(14);
+
 if((select_ammo == 1 || select_ammo == 2 || select_ammo == 4) && is_somersaulting == false && is_morph == false){
     if(is_facing == "right"){
         if(state == PS_FIRST_JUMP && is_morph == false){
@@ -106,100 +109,100 @@ if((select_ammo == 0 || select_ammo == 3) && is_somersaulting == false && attack
     if(is_facing == "right"){
         if(state == PS_FIRST_JUMP && is_morph == false){
             if(is_aiming == "up" || is_aiming != "up"){
-                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 26, y - 78);
+                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 26, y - 78);
             }
         }
         if(state == PS_IDLE && is_crouch == false && is_morph == false && !free){
                 if(is_aiming == "up_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 18, y - 130);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 66, x - 18, y - 130);
                 }if(is_aiming == "diagonal_up_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x + 16, y - 118);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x + 16, y - 118);
                 }if(is_aiming == "diagonal_down_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x + 14, y - 62);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x + 14, y - 62);
                 }if(is_aiming == "forward_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x + 4, y - 76);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x + 4, y - 76);
                 }
             }
             if((state == PS_WALK || state == PS_DASH || state == PS_DASH_START) && is_crouch == false && is_morph == false && !free){
                 if(is_aiming == "diagonal_up_" || is_aiming == "up_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x + 20, y - 116);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x + 20, y - 116);
                 }if(is_aiming == "diagonal_down_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x + 46, y - 124);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x + 46, y - 124);
                 }if(is_aiming == "forward_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x + 18, y - 82);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x + 18, y - 82);
                 }
             }
             if(is_crouch == true && is_morph == false && !free){
                 if(is_aiming == "up_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 26, y - 110);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 26, y - 110);
                 }if(is_aiming == "diagonal_up_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x + 8, y - 94);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x + 8, y - 94);
                 }if(is_aiming == "diagonal_down_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x + 6, y - 40);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x + 6, y - 40);
                 }if(is_aiming == "forward_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 4, y - 54);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 4, y - 54);
                 }
             }
             if(is_aiming == "up_" && free && state != PS_FIRST_JUMP && state != PS_DOUBLE_JUMP){
-                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 26, y - 110);
+                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 26, y - 110);
             }if(is_aiming == "diagonal_up_" && free && state != PS_FIRST_JUMP && state != PS_DOUBLE_JUMP){
-                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x + 4, y - 96);
+                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x + 4, y - 96);
             }if(is_aiming == "diagonal_down_" && free && state != PS_FIRST_JUMP && state != PS_DOUBLE_JUMP){
-                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x + 2, y - 42);
+                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x + 2, y - 42);
             }if(is_aiming == "forward_" && free && state != PS_FIRST_JUMP && state != PS_DOUBLE_JUMP){
-                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 12, y - 62);
+                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 12, y - 62);
             }if(is_aiming == "down_" && free && state != PS_FIRST_JUMP && state != PS_DOUBLE_JUMP){
-                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 14 , y - 38);
+                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 14 , y - 38);
             }
             
         }
     if(is_facing == "left"){
         if(state == PS_FIRST_JUMP && is_morph == false){
             if(is_aiming == "up" || is_aiming != "up"){
-                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 50, y - 96);
+                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 50, y - 96);
             }
         }
         if(state == PS_IDLE && is_crouch == false && is_morph == false && !free){
                 if(is_aiming == "up_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 34, y - 130);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 34, y - 130);
                 }if(is_aiming == "diagonal_up_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 68, y - 118);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 68, y - 118);
                 }if(is_aiming == "diagonal_down_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 66, y - 62);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 66, y - 62);
                 }if(is_aiming == "forward_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 56, y - 76);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 56, y - 76);
                 }
             }
             if((state == PS_WALK || state == PS_DASH || state == PS_DASH_START) && is_crouch == false && is_morph == false && !free){
                 if(is_aiming == "diagonal_up_" || is_aiming == "up_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 72, y - 116);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 72, y - 116);
                 }if(is_aiming == "diagonal_down_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 56, y - 70);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 56, y - 70);
                 }if(is_aiming == "forward_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 70, y - 82);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 70, y - 82);
                 }
             }
             if(is_crouch == true && is_morph == false && !free){
                 if(is_aiming == "up_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 24, y - 110);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 24, y - 110);
                 }if(is_aiming == "diagonal_up_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 58, y - 96);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 58, y - 96);
                 }if(is_aiming == "diagonal_down_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 56, y - 40);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 56, y - 40);
                 }if(is_aiming == "forward_"){
-                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 46, y - 54);
+                    draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 46, y - 54);
                 }
             }
             if(is_aiming == "up_" && free && state != PS_FIRST_JUMP && state != PS_DOUBLE_JUMP){
-                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 26, y - 110);
+                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 26, y - 110);
             }if(is_aiming == "diagonal_up_" && free && state != PS_FIRST_JUMP && state != PS_DOUBLE_JUMP){
-                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 56, y - 96);
+                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 56, y - 96);
             }if(is_aiming == "diagonal_down_" && free && state != PS_FIRST_JUMP && state != PS_DOUBLE_JUMP){
-                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 52, y - 42);
+                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 52, y - 42);
             }if(is_aiming == "down_" && free && state != PS_FIRST_JUMP && state != PS_DOUBLE_JUMP){
-                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 40, y - 38);
+                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 40, y - 38);
             }if(is_aiming == "forward_" && free && state != PS_FIRST_JUMP && state != PS_DOUBLE_JUMP){
-                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 8, x - 40, y - 66);
+                draw_sprite(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x - 40, y - 66);
             }
     }
 }else if((select_ammo == 0 || select_ammo == 3) && is_somersaulting == false && attack_down && is_charged == true && is_morph == false && charge == true){

@@ -2,7 +2,7 @@
 
 // Debugs
 
-//draw_debug_text( temp_x, temp_y - 85, string( CannCounterActive ));
+//draw_debug_text( temp_x, temp_y - 85, string( window ));
 
 //draw_debug_text( temp_x + 30, temp_y - 85, string( super_armor ));
 

@@ -207,6 +207,10 @@ CannStrongHspStore = 0;
 CannNairVspReduce = false;
 CannNairDidReduce = false;
 
+// Fspecial 
+
+CannFspecialPrat = false;
+
 // Taunt
 
 ConfettiRedHsp = 0;

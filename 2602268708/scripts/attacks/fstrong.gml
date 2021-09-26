@@ -14,7 +14,7 @@ set_window_value(AT_FSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_SFX, sound_get("smb2_pluck"));
 
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 24);
+set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 0);

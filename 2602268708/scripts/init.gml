@@ -144,6 +144,7 @@ bubble_y = 8;
 toonlink_photo = sprite_get("comp_toonlink_photo");
 toonlink_photo2 = sprite_get("toonlink_photo_TL");
 toonlink_photo2 = 2
+diag_portrait = sprite_get("comp_portrait"); // This will allow you to put any custom portrait onto the dialogue buddy!
 
 user_event(14);
 

@@ -87,12 +87,17 @@ with(asset_get("oPlayer")){
                 state = PS_WRAPPED;
                 wrap_time = 9999;
             }
-            if(free && prison_time_counter > 30){
+            if(free && prison_time_counter > 10){
                 state = PS_HITSTUN;
                 hsp = 0;
                 old_hsp = 0;
                 if(hitpause){
                     prison_time_counter += 4;
+                }
+                prison_time_counter++;
+                if(prison_time_counter < 170){
+                    vsp = 0;
+                    prison_time_counter++;
                 }
                 old_vsp = 0;
                 hitstun = prison_time - prison_time_counter;
@@ -198,7 +203,7 @@ if(armorpoints > 0){
 }
 if(fdownsprecovery){
     super_armor = true;
-    if(state != PS_ATTACK_AIR && state_timer > 7){
+    if((state == PS_ATTACK_AIR && state_timer > 7) || state != PS_ATTACK_AIR){
         fdownsprecovery = false;
     }
 }

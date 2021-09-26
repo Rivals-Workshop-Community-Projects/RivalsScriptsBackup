@@ -34,8 +34,8 @@ set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_Y, -56);
 set_hitbox_value(AT_DSTRONG, 1, HG_WIDTH, 96);
 set_hitbox_value(AT_DSTRONG, 1, HG_HEIGHT, 98);
 set_hitbox_value(AT_DSTRONG, 1, HG_SHAPE, 2);
-set_hitbox_value(AT_DSTRONG, 1, HG_PRIORITY, 1);
-set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 11);
+set_hitbox_value(AT_DSTRONG, 1, HG_PRIORITY, 2);
+set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 14);
 set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE, 55);
 set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_DSTRONG, 1, HG_KNOCKBACK_SCALING, 1);
@@ -54,8 +54,8 @@ set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_Y, -56);
 set_hitbox_value(AT_DSTRONG, 2, HG_WIDTH, 48);
 set_hitbox_value(AT_DSTRONG, 2, HG_HEIGHT, 112);
 set_hitbox_value(AT_DSTRONG, 2, HG_SHAPE, 2);
-set_hitbox_value(AT_DSTRONG, 2, HG_PRIORITY, 2);
-set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 9);
+set_hitbox_value(AT_DSTRONG, 2, HG_PRIORITY, 1);
+set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 11);
 set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE, 45);
 set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, 1);
@@ -74,4 +74,22 @@ set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_Y, -56);
 set_hitbox_value(AT_DSTRONG, 3, HG_WIDTH, 48);
 set_hitbox_value(AT_DSTRONG, 3, HG_HEIGHT, 112);
 set_hitbox_value(AT_DSTRONG, 3, HG_SHAPE, 2);
-set_hitbox_value(AT_DSTRONG, 3, HG_PRIORITY, 2);
+set_hitbox_value(AT_DSTRONG, 3, HG_PRIORITY, 1);
+
+if (has_rune("O")) {
+    big_yes(AT_DSTRONG);
+}
+
+#define big_yes
+/// big_yes(_move, ...)
+var _move = argument[0];
+for(var i = 1; i <= get_num_hitboxes(_move); i++) {
+	reset_hitbox_value(_move, i, HG_WIDTH);
+	reset_hitbox_value(_move, i, HG_HEIGHT);
+	reset_hitbox_value(_move, i, HG_HITBOX_X);
+	reset_hitbox_value(_move, i, HG_HITBOX_Y);
+	set_hitbox_value(_move, i, HG_WIDTH, get_hitbox_value(_move, i, HG_WIDTH) *2);
+	set_hitbox_value(_move, i, HG_HEIGHT, get_hitbox_value(_move, i, HG_HEIGHT) *2);
+	set_hitbox_value(_move, i, HG_HITBOX_X, get_hitbox_value(_move, i, HG_HITBOX_X) *2);
+	set_hitbox_value(_move, i, HG_HITBOX_Y, get_hitbox_value(_move, i, HG_HITBOX_Y) *1.9);
+}

@@ -8,6 +8,13 @@ if(attack == AT_DSPECIAL && free){
 if(attack == AT_FSPECIAL && armorpoints > 0){
     attack = AT_FSPECIAL_2;
 }
+if(attack == AT_FSPECIAL_2){
+    if(free){
+        set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 7);
+    }else{
+        set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
+    }
+}
 if(attack == AT_FSPECIAL){
     canledgecancel = false;
 }

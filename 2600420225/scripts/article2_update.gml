@@ -2,7 +2,7 @@ power_bomb_cooldown++;
 image_index = power_bomb_cooldown / 4;
 sprite_index = sprite_get("physical_attacks_power_bomb")
 
-if(power_bomb_cooldown == 56){
+if(power_bomb_cooldown == 55){
     sound_play(sound_get("power_bomb"))
 }
 

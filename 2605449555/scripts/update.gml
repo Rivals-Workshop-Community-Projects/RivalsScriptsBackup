@@ -101,8 +101,12 @@ if (state == PS_PARRY) {
 
 // Stop When Parried
 
-if (state == PS_PRATLAND && free == false) {
+if (state == PS_PRATLAND && free == false && CannFspecialPrat == false) {
 	hsp = 0;
+}
+
+if (CannFspecialPrat == true && free == false && state != PS_PRATLAND) {
+	CannFspecialPrat = false;
 }
 
 // Heat Meter Stat Changing
@@ -233,6 +237,7 @@ if ((state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) || (attack != AT_NSPEC
 		CannGrabbedId = 0;
 	}
 }
+
 
 /*
 

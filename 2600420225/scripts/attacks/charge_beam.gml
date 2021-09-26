@@ -9,3 +9,4 @@ set_hitbox_value( AT_DSTRONG_2, 1, HG_PROJECTILE_AIR_FRICTION, 0);
 set_hitbox_value( AT_DSTRONG_2, 1, HG_KNOCKBACK_SCALING, 0.4);
 set_hitbox_value( AT_DSTRONG_2, 1, HG_ANGLE, 60);
 set_hitbox_value( AT_DSTRONG_2, 1, HG_HIT_PARTICLE_NUM, 0);
+set_hitbox_value( AT_FTHROW, 1, HG_KNOCKBACK_SCALING, 1.25);

@@ -109,6 +109,7 @@ if(state == PS_WALK || state == PS_DASH){
     movement = "run_";
 }
 
+//the rest
 
 if(state == PS_PARRY || state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD || state == PS_WAVELAND || state == PS_PRATLAND || state == PS_PARRY_START || state == PS_CROUCH){
     sprite_index = sprite_get("samus_" + movement +"aim_"+ is_aiming + is_facing);
@@ -116,6 +117,7 @@ if(state == PS_PARRY || state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD ||
     hsp = backup_hsp;
     vsp = backup_vsp;
 }
+
 if(state == PS_WALL_TECH || state == PS_PRATFALL || state == PS_TUMBLE || state == PS_AIR_DODGE){
     sprite_index = sprite_get("samus_aerial_aim_" + is_aiming + is_facing);
     state = PS_IDLE_AIR;
@@ -133,16 +135,11 @@ if(state == PS_TECH_GROUND || state == PS_TECH_FORWARD || state == PS_TECH_BACKW
     vsp = backup_vsp;
 }
 
-
-if(down_down){
-    state = PS_IDLE;
-}
-
 backup_hsp = hsp;
 backup_vsp = vsp;
 backup_timer = state_timer;
 
-if(down_pressed && is_crouch == false && is_morph == false && !free){
+if(down_pressed && is_crouch == false && is_morph == false && !free && !phone.state && state != PS_SPAWN){
     if(shield_down == false){
         special_state_timer = 0;
         is_crouch = true;
@@ -273,4 +270,9 @@ if(is_dead == true){
     image_index = death_timer * 0.2;
 }
 
+//crystal flash
 
+if(is_crystal_flashing == true && crystal_flash_timer >= 70){
+    sprite_index = sprite_get("samus_crystalflash")
+    image_index = (crystal_flash_timer - 70) * 0.25
+}

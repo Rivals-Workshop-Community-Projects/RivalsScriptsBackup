@@ -269,3 +269,25 @@ if(state != PS_WALL_JUMP){
 cling = 0;
 wallanim = 0;
 }
+
+if(variable_instance_exists(id,"diag"))
+{
+//Change their name whenever
+    diag_name = "Chuchya"
+//  ADDING REGULAR DIALOGUE
+
+    //Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!
+    diagchoice = [
+    "EE OING!",
+    "EE OING!",
+    "EE OING!"]
+
+//  Specific Character Interactions
+
+//  Regular dialogue
+    if(otherUrl == "" && diag != "") //Change the url into a specific character's
+    {
+        diag = "EE OING!";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+}

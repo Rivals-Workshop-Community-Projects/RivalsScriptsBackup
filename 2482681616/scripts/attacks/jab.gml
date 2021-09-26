@@ -88,3 +88,20 @@ set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_HSPEED, 1);
 set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_UNBASHABLE, 1);
 
+if (has_rune("O")) {
+    big_yes(AT_JAB);
+}
+
+#define big_yes
+/// big_yes(_move, ...)
+var _move = argument[0];
+for(var i = 1; i <= get_num_hitboxes(_move); i++) {
+	reset_hitbox_value(_move, i, HG_WIDTH);
+	reset_hitbox_value(_move, i, HG_HEIGHT);
+	reset_hitbox_value(_move, i, HG_HITBOX_X);
+	reset_hitbox_value(_move, i, HG_HITBOX_Y);
+	set_hitbox_value(_move, i, HG_WIDTH, get_hitbox_value(_move, i, HG_WIDTH) *2);
+	set_hitbox_value(_move, i, HG_HEIGHT, get_hitbox_value(_move, i, HG_HEIGHT) *2);
+	set_hitbox_value(_move, i, HG_HITBOX_X, get_hitbox_value(_move, i, HG_HITBOX_X) *2);
+	set_hitbox_value(_move, i, HG_HITBOX_Y, get_hitbox_value(_move, i, HG_HITBOX_Y) *1.9);
+}

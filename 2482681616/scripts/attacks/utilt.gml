@@ -59,3 +59,20 @@ set_hitbox_value(AT_UTILT, 2, HG_HITPAUSE_SCALING, 3.25);
 set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 
+if (has_rune("O")) {
+    big_yes(AT_UTILT);
+}
+
+#define big_yes
+/// big_yes(_move, ...)
+var _move = argument[0];
+for(var i = 1; i <= get_num_hitboxes(_move); i++) {
+	reset_hitbox_value(_move, i, HG_WIDTH);
+	reset_hitbox_value(_move, i, HG_HEIGHT);
+	reset_hitbox_value(_move, i, HG_HITBOX_X);
+	reset_hitbox_value(_move, i, HG_HITBOX_Y);
+	set_hitbox_value(_move, i, HG_WIDTH, get_hitbox_value(_move, i, HG_WIDTH) *2);
+	set_hitbox_value(_move, i, HG_HEIGHT, get_hitbox_value(_move, i, HG_HEIGHT) *2);
+	set_hitbox_value(_move, i, HG_HITBOX_X, get_hitbox_value(_move, i, HG_HITBOX_X) *2);
+	set_hitbox_value(_move, i, HG_HITBOX_Y, get_hitbox_value(_move, i, HG_HITBOX_Y) *1.9);
+}

@@ -27,7 +27,7 @@ air_accel           = 0.3;		// 0.2  -  0.4
 prat_fall_accel     = 0.85;		// 0.25 -  1.5
 air_friction        = 0.04;		// 0.02 -  0.07
 max_fall            = 5;		// 6    -  11
-fast_fall           = 5;		// 11   -  16
+fast_fall           = 3;		// 11   -  16
 gravity_speed       = 0.1;		// 0.3  -  0.6
 hitstun_grav        = 0.5;		// 0.45 -  0.53
 
@@ -184,6 +184,9 @@ level = 0;
 
 select_ammo = 0; // 0=beam 1=missiles 2=super missiles 3=power bombs 4=grapple beam 5=xray scope
 
+special_bomb_creation = 50;
+special_bomb = false;
+bomb_amount = 0;
 i_frames = 100;
 walljump_cooldown = 0;
 special_state_timer = 0;
@@ -229,11 +232,25 @@ speed_charge = 0;
 is_shinesparking = false;
 shinespark_trigger = 0;
 reserve_trigger = 0;
+crystal_flash_timer = 0;
+is_crystal_flashing = false;
+
+space_jump = false;
+screw_attack = false;
+beam_2 = false;
+beam_3 = false;
+beam_4 = false;
+beam_5 = false;
+beam_6 = false;
 
 prev_x_pos = 0;
 prev_y_pos = 0;
 
 shinespark_end = 0;
+
+charge_sfx = 0;
+spark_sfx = 0;
+somer_sfx = 0;
 
 //I need theese to draw the tanks in the hud
 tank_1 = "full"
@@ -345,6 +362,37 @@ shine_diagonal_left = false;
 shine_up_right = false;
 shine_up_left = false;
 
+//randomizer
+
+is_randomizer = false;
+
+power_up_list = ds_list_create();
+ds_list_add(power_up_list, 
+"morphball",
+"bombs_power_up",
+"charge",
+"beam_2",
+"high_jump",
+"varia_suit",
+"speed_booster",
+"beam_3",
+"grapple",
+"beam_4",
+"X_ray",
+"gravity_suit",
+"space_jump",
+"beam_5",
+"spring_ball",
+"screw_attack",
+"beam_6");
+
+power_ind = 0;
+power_num = 17;
+choice = "e";
+
+muno_event_type = 0;
+user_event(14);
+
 /*used attacks
 AT_UTHROW           beam_attacks
 AT_DSPECIAL_AIR     body_hitbox
@@ -371,4 +419,3 @@ AT_TAUNT_2
 AT_EXTRA_1
 AT_EXTRA_2
 AT_EXTRA_3
-

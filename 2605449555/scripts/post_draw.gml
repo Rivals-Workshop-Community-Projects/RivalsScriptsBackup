@@ -49,13 +49,13 @@ if (attack == AT_USPECIAL && state != PS_TECH_GROUND && state != PS_TECH_FORWARD
         }
         if (CannUSpcShootBallEndTimer > 1) {
             if (spr_dir == 1) {
-                draw_sprite_ext(sprite_get("uspecialshotarmor"), CannUSpcShootBallFrame, x + (30 * spr_dir), y - 43, 1.25, 1.25, 0, -1, 0.66);
+                //draw_sprite_ext(sprite_get("uspecialshotarmor"), CannUSpcShootBallFrame, x + (30 * spr_dir), y - 43, 1.25, 1.25, 0, -1, 0.66);
                 shader_start();
                 draw_sprite_ext(sprite_get("uspecialshot"), CannUSpcShootBallFrame, x + (24 * spr_dir), y - 40, 1, 1, 0, -1, 1);
                 shader_end();
                 
             } else {
-                draw_sprite_ext(sprite_get("uspecialshotarmor"), CannUSpcShootBallFrame, x + (30 * spr_dir), y - 43, -1.25, 1.25, 0, -1, 0.66);
+                //draw_sprite_ext(sprite_get("uspecialshotarmor"), CannUSpcShootBallFrame, x + (30 * spr_dir), y - 43, -1.25, 1.25, 0, -1, 0.66);
                 shader_start();
                 draw_sprite_ext(sprite_get("uspecialshot"), CannUSpcShootBallFrame, x + (24 * spr_dir), y - 40, -1, 1, 0, -1, 1);
                 shader_end();

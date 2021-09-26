@@ -2,6 +2,8 @@
 
 if (attack == AT_NSPECIAL)
 {
+    image_xscale = player_id.image_xscale;
+    image_yscale = player_id.image_yscale;
     if ("plat_x" not in self) {
         plat_x = 0;
         plat_y = 0;

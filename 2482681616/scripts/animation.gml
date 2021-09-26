@@ -65,3 +65,16 @@ if (grabbed_player_obj != noone) {
 	force_depth = true;
 	depth = grabbed_player_obj.depth + 1;
 }
+//Big rune
+if (has_rune("O")) {
+	image_xscale = 2;
+	image_yscale = 2;
+	
+	with (hit_fx_obj) {
+		if (player_id == other.id) {
+			image_xscale = 2;
+			image_yscale = 2;
+			
+		}
+	}
+}

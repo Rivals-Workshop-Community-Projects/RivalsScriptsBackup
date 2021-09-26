@@ -15,9 +15,9 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 7);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, has_rune("B") ? 15 : 7);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -8);
+set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, has_rune("B") ? -12 : -8);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.4);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
@@ -174,5 +174,20 @@ set_hitbox_value(AT_USPECIAL, 5, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_USPECIAL, 5, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_USPECIAL, 5, HG_HITBOX_GROUP, 3);
 
+if (has_rune("O")) {
+    big_yes(AT_USPECIAL);
+}
 
-
+#define big_yes
+/// big_yes(_move, ...)
+var _move = argument[0];
+for(var i = 1; i <= get_num_hitboxes(_move); i++) {
+	reset_hitbox_value(_move, i, HG_WIDTH);
+	reset_hitbox_value(_move, i, HG_HEIGHT);
+	reset_hitbox_value(_move, i, HG_HITBOX_X);
+	reset_hitbox_value(_move, i, HG_HITBOX_Y);
+	set_hitbox_value(_move, i, HG_WIDTH, get_hitbox_value(_move, i, HG_WIDTH) *2);
+	set_hitbox_value(_move, i, HG_HEIGHT, get_hitbox_value(_move, i, HG_HEIGHT) *2);
+	set_hitbox_value(_move, i, HG_HITBOX_X, get_hitbox_value(_move, i, HG_HITBOX_X) *2);
+	set_hitbox_value(_move, i, HG_HITBOX_Y, get_hitbox_value(_move, i, HG_HITBOX_Y) *1.9);
+}

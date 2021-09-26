@@ -121,10 +121,50 @@ if(num_samuses == 1){
     if(hit_counter >= 1){
         draw_sprite(sprite_get("hud_level_big_" + string(hit_counter)), 0,  128, 36);
     }
-    if(hit_counter <= 4 && level <= 16){
+    if(hit_counter <= 4 && level <= 16 && is_randomizer == false){
         draw_sprite(sprite_get("item_box"), animation_counter * 0.04,  854,  6);
-    }else if(hit_counter >= 5 && level <= 16){
+    }else if(hit_counter >= 5 && level <= 16 && is_randomizer == false){
         draw_sprite(sprite_get("item_" + string(level + 1)), animation_counter * 0.04,  854,  6);
+    }else if(is_randomizer == true){
+        if(hit_counter <= 4 && level <= 16 && choice != "e"){
+            if(choice == "morphball"){
+                draw_sprite(sprite_get("item_1"), animation_counter * 0.04,  854,  6);
+            }else if(choice == "bombs_power_up"){
+                draw_sprite(sprite_get("item_2"), animation_counter * 0.04,  854,  6);
+            }else if(choice == "charge"){
+                draw_sprite(sprite_get("item_3"), animation_counter * 0.04,  854,  6);
+            }else if(choice == "beam_2"){
+                draw_sprite(sprite_get("item_4"), animation_counter * 0.04,  854,  6);
+            }else if(choice == "high_jump"){
+                draw_sprite(sprite_get("item_5"), animation_counter * 0.04,  854,  6);
+            }else if(choice == "varia_suit"){
+                draw_sprite(sprite_get("item_6"), animation_counter * 0.04,  854,  6);
+            }else if(choice == "speed_booster"){
+                draw_sprite(sprite_get("item_7"), animation_counter * 0.04,  854,  6);
+            }else if(choice == "beam_3"){
+                draw_sprite(sprite_get("item_8"), animation_counter * 0.04,  854,  6);
+            }else if(choice == "grapple"){
+                draw_sprite(sprite_get("item_9"), animation_counter * 0.04,  854,  6);
+            }else if(choice == "beam_4"){
+                draw_sprite(sprite_get("item_10"), animation_counter * 0.04,  854,  6);
+            }else if(choice == "X_ray"){
+                draw_sprite(sprite_get("item_11"), animation_counter * 0.04,  854,  6);
+            }else if(choice == "gravity_suit"){
+                draw_sprite(sprite_get("item_12"), animation_counter * 0.04,  854,  6);
+            }else if(choice == "space_jump"){
+                draw_sprite(sprite_get("item_13"), animation_counter * 0.04,  854,  6);
+            }else if(choice == "beam_5"){
+                draw_sprite(sprite_get("item_14"), animation_counter * 0.04,  854,  6);
+            }else if(choice == "spring_ball"){
+                draw_sprite(sprite_get("item_15"), animation_counter * 0.04,  854,  6);
+            }else if(choice == "screw_attack"){
+                draw_sprite(sprite_get("item_16"), animation_counter * 0.04,  854,  6);
+            }else if(choice == "beam_6"){
+                draw_sprite(sprite_get("item_17"), animation_counter * 0.04,  854,  6);
+            }
+        }else if(hit_counter >= 5 && level <= 16){
+            draw_sprite(sprite_get("item_box"), animation_counter * 0.04,  854,  6);
+        }
     }
 }else if(num_samuses >= 2){
     draw_sprite(sprite_get("hud_numbers"), energy_tens, temp_x + 74, temp_y + 30);
@@ -223,10 +263,50 @@ if(num_samuses == 1){
     if(hit_counter >= 1){
         draw_sprite(sprite_get("hud_level_small_" + string(hit_counter)), 0, temp_x + 122, temp_y + 32);
     }
-    if(hit_counter <= 5 && level <= 16){
+    if(hit_counter <= 5 && level <= 16 && is_randomizer == false){
         draw_sprite(sprite_get("item_box"), animation_counter * 0.04, temp_x + 178, temp_y - 8);
-    }else if(hit_counter >= 6 && level <= 16){
+    }else if(hit_counter >= 6 && level <= 16 && is_randomizer == false){
         draw_sprite(sprite_get("item_" + string(level + 1)), animation_counter * 0.04, temp_x + 178, temp_y - 8);
+    }else if(is_randomizer == true){
+        if(hit_counter <= 4 && level <= 16 && choice != "e"){
+            if(choice == "morphball"){
+                draw_sprite(sprite_get("item_1"), animation_counter * 0.04, temp_x + 178, temp_y - 8);
+            }else if(choice == "bombs_power_up"){
+                draw_sprite(sprite_get("item_2"), animation_counter * 0.04, temp_x + 178, temp_y - 8);
+            }else if(choice == "charge"){
+                draw_sprite(sprite_get("item_3"), animation_counter * 0.04, temp_x + 178, temp_y - 8);
+            }else if(choice == "beam_2"){
+                draw_sprite(sprite_get("item_4"), animation_counter * 0.04, temp_x + 178, temp_y - 8);
+            }else if(choice == "high_jump"){
+                draw_sprite(sprite_get("item_5"), animation_counter * 0.04, temp_x + 178, temp_y - 8);
+            }else if(choice == "varia_suit"){
+                draw_sprite(sprite_get("item_6"), animation_counter * 0.04, temp_x + 178, temp_y - 8);
+            }else if(choice == "speed_booster"){
+                draw_sprite(sprite_get("item_7"), animation_counter * 0.04, temp_x + 178, temp_y - 8);
+            }else if(choice == "beam_3"){
+                draw_sprite(sprite_get("item_8"), animation_counter * 0.04, temp_x + 178, temp_y - 8);
+            }else if(choice == "grapple"){
+                draw_sprite(sprite_get("item_9"), animation_counter * 0.04, temp_x + 178, temp_y - 8);
+            }else if(choice == "beam_4"){
+                draw_sprite(sprite_get("item_10"), animation_counter * 0.04, temp_x + 178, temp_y - 8);
+            }else if(choice == "X_ray"){
+                draw_sprite(sprite_get("item_11"), animation_counter * 0.04, temp_x + 178, temp_y - 8);
+            }else if(choice == "gravity_suit"){
+                draw_sprite(sprite_get("item_12"), animation_counter * 0.04, temp_x + 178, temp_y - 8);
+            }else if(choice == "space_jump"){
+                draw_sprite(sprite_get("item_13"), animation_counter * 0.04, temp_x + 178, temp_y - 8);
+            }else if(choice == "beam_5"){
+                draw_sprite(sprite_get("item_14"), animation_counter * 0.04, temp_x + 178, temp_y - 8);
+            }else if(choice == "spring_ball"){
+                draw_sprite(sprite_get("item_15"), animation_counter * 0.04, temp_x + 178, temp_y - 8);
+            }else if(choice == "screw_attack"){
+                draw_sprite(sprite_get("item_16"), animation_counter * 0.04, temp_x + 178, temp_y - 8);
+            }else if(choice == "beam_6"){
+                draw_sprite(sprite_get("item_17"), animation_counter * 0.04, temp_x + 178, temp_y - 8);
+            }
+        }else if(hit_counter >= 5 && level <= 16){
+            draw_sprite(sprite_get("item_box"), animation_counter * 0.04, temp_x + 178, temp_y - 8);
+        }
     }
 }
 
@@ -243,7 +323,7 @@ if(num_samuses == 1){
 }
 
 
-if(draw_info == true && num_samuses == 1){
+if(draw_info == true && num_samuses == 1 && is_randomizer == false){
     draw_sprite(sprite_get("hud_power_up_popup"), 0, 355, 100);
         if(level == 1){
             draw_text_transformed_color(422, 104, "MORPH BALL", 1.5, 1.5, 0, c_orange, c_orange, c_orange, c_orange, 1);
@@ -342,7 +422,7 @@ if(draw_info == true && num_samuses == 1){
         if(level == 17){
             draw_text_transformed_color(420, 104, "HYPER BEAM", 1.5, 1.5, 0, hyper_beam_magic, hyper_beam_magic,  hyper_beam_magic,  hyper_beam_magic, 1);
         }
-}else if(draw_info == true && num_samuses >= 2){
+}else if(draw_info == true && num_samuses >= 2 && is_randomizer == false){
     if(level == 1){
             draw_text_transformed_color(temp_x + 106, temp_y - 74, "MORPH BALL", 1, 1, 0, c_orange, c_orange, c_orange, c_orange, 1);
         }
@@ -394,4 +474,17 @@ if(draw_info == true && num_samuses == 1){
         if(level == 17){
             draw_text_transformed_color(temp_x + 106, temp_y - 74, "HYPER BEAM", 1, 1, 0, hyper_beam_magic, hyper_beam_magic,  hyper_beam_magic,  hyper_beam_magic, 1);
         }
+}else if(draw_info == true && is_randomizer == true){
+    if(num_samuses == 1){
+        draw_text_transformed(820, 40, "GOT!", 1, 1, 0)
+    }else if(num_samuses >= 2){
+        draw_text_transformed(temp_x + 150, temp_y - 2, "GOT!", 0.7, 0.7, 0)
+    }
+}
+
+muno_event_type = 5;
+user_event(14);
+
+if(phone.state){
+    draw_sprite_ext(sprite_get("_pho_base_1"), 0, 4, 492, 2, 2, 0, c_white, 1);
 }

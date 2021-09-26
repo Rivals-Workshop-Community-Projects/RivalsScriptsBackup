@@ -91,7 +91,7 @@ set_color_profile_slot( 5, 7, 0, 255, 0 ); //vysor
 set_color_profile_slot( 6, 0, 248, 225, 180 ); //plating 1
 set_color_profile_slot( 6, 1, 232, 232, 16 ); //plating 2
 set_color_profile_slot( 6, 2, 168, 168, 0 ); //plating 3
-set_color_profile_slot( 6, 3, 72, 248, 160 ); //plating 4
+set_color_profile_slot( 6, 3, 32, 232, 255 ); //plating 4
 set_color_profile_slot( 6, 4, 222, 41, 0 ); //red plating 1
 set_color_profile_slot( 6, 5, 165, 24, 0 ); //red plating 2
 set_color_profile_slot( 6, 6, 107, 0, 0 ); //red plating 3

@@ -30,9 +30,9 @@ set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 32); //armor get
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 16);
-set_window_value(AT_DSPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSPECIAL, 4, AG_WINDOW_SFX, asset_get("sfx_kragg_roll_start"));
-set_window_value(AT_DSPECIAL, 4, AG_WINDOW_SFX_FRAME, 0);
+//set_window_value(AT_DSPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
+//set_window_value(AT_DSPECIAL, 4, AG_WINDOW_SFX, asset_get("sfx_kragg_roll_start"));
+//set_window_value(AT_DSPECIAL, 4, AG_WINDOW_SFX_FRAME, 0);
 
 set_num_hitboxes(AT_DSPECIAL, 1);
 

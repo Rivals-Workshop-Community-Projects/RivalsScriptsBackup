@@ -1,3 +1,7 @@
+if (has_rune("O")) {
+    draw_sprite_ext(sp_ind, image_index, round(x), round(y), spr_dir * 2, 2, image_angle, image_blend, 1);
+}
+
 
 //Stat effect BG (similar to that of FireRed/LeafGreen)
 

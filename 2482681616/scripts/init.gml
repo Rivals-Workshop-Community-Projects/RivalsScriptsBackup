@@ -103,6 +103,11 @@ idle_timer = 0;
 training_toggle = 0;
 step_sound = 0;
 nspecial_ground_y = y; 
+
+spawn_y = y;
+spawn_x = x;
+can_spawn = false;
+can_spawn_side = false;
 //mask_index = sprite_get("mask");
 
 //Grab template
@@ -117,6 +122,7 @@ uspecial_wall_timer_max = 300;
 wall_player_x = 0; //the relative x and y position of the grabbed player, at the point they were grabbed.
 wall_player_xoffset = 0; //the relative x and y position of the grabbed player, at the point they were grabbed.
 wall_climb_dir = 1;
+sp_ind = asset_get("empty_sprite");
 
 //Hit FX
 fx_fstrong_debris = hit_fx_create(sprite_get("fstrong_debris"), 16)
@@ -134,7 +140,7 @@ slowstart_knockback_mult = 0.7; //Slow Start's KB multiplier (Apply to KB)
 slowstart_knockbackscale_mult = 0.7; //Slow Start's KBS multiplier (Apply to KBS)
 slowstart_movement_mult = 0.75; //Slow Start's movement multiplier (Apply to stats)
 
-slowstart_duration = 60 * 60; //Duration of Slow Start (in frames)
+slowstart_duration = (has_rune("N") ? 10 : 60) * 60; //Duration of Slow Start (in frames)
 slowstart_timer = slowstart_duration;
 
 slowstart_stateffect_duration = 60;
@@ -170,6 +176,11 @@ slowstart_ui_powerdown = sprite_get("power_down_hud");
 //Victory
 set_victory_theme(sound_get("sfx_victory"));
 set_victory_bg(sprite_get("victory_bg"));
+
+//Big runes
+if (has_rune("O")) {
+    instance_create(round(x), round(y), "obj_article1");
+}
 
 /*
 ╔══════════════════════════════════════════════════════════════════════════════╗

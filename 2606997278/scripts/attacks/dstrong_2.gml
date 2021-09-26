@@ -18,7 +18,6 @@ set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_VSPEED, -8);
 set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_DSTRONG_2, 2, AG_WINDOW_SPIN_COST, 5);
 
 set_window_value(AT_DSTRONG_2, 3, AG_WINDOW_TYPE, 0);
 set_window_value(AT_DSTRONG_2, 3, AG_WINDOW_LENGTH, 15);
@@ -49,6 +48,8 @@ set_hitbox_value(AT_DSTRONG_2, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_HITSTUN_MULTIPLIER, 1.0);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_DSTRONG_2, 1, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_DSTRONG_2, 1, HG_IGNORES_PROJECTILES, 1);
+set_hitbox_value(AT_DSTRONG_2, 1, HG_PROJECTILE_DESTROY_EFFECT, 1); //none
 set_hitbox_value(AT_DSTRONG_2, 1, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
@@ -75,6 +76,8 @@ set_hitbox_value(AT_DSTRONG_2, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_DSTRONG_2, 2, HG_SPIN_SFX, sound_get("sfx_ssbu_slash2"));
 set_hitbox_value(AT_DSTRONG_2, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_DSTRONG_2, 2, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_DSTRONG_2, 2, HG_IGNORES_PROJECTILES, 1);
+set_hitbox_value(AT_DSTRONG_2, 2, HG_PROJECTILE_DESTROY_EFFECT, 1); //none
 set_hitbox_value(AT_DSTRONG_2, 2, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DSTRONG_2, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_DSTRONG_2, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);

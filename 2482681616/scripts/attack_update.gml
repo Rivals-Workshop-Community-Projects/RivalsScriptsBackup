@@ -16,54 +16,78 @@ if (training_toggle) {
 if (slowstart_state == SLOWSTART_STATE_OFF) {
     if (attack == AT_FTILT) {
         if (window == 1 && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) - 5) {
-            soft_armor = 6;
+        	if (has_rune("E"))
+        		super_armor = true;
+        	else
+        		soft_armor = 6;
         }
         else {
             soft_armor = 0;
+        	super_armor = false;
         }
     }
     
     if (attack == AT_UTILT) {
         if (window == 1 && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) - 5) {
-            soft_armor = 6;
+        	if (has_rune("E"))
+        		super_armor = true;
+        	else
+        		soft_armor = 6;
         }
         else {
             soft_armor = 0;
+        	super_armor = false;
         }
     }
     
     if (attack == AT_DTILT) {
         if (window == 1 && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) - 5) {
-            soft_armor = 6;
+        	if (has_rune("E"))
+        		super_armor = true;
+        	else
+        		soft_armor = 6;
         }
         else {
             soft_armor = 0;
+        	super_armor = false;
         }
     }
     
     if (attack == AT_FSTRONG) {
         if (window == 2 && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) - 8) {
-            soft_armor = 12;
+        	if (has_rune("D"))
+        		super_armor = true;
+        	else
+        		soft_armor = 12;
         }
         else {
             soft_armor = 0;
+        	super_armor = false;
         }
     }
     
     if (attack == AT_USTRONG) {
         if (window == 2 && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) - 8) {
-            soft_armor = 12;
+        	if (has_rune("D"))
+        		super_armor = true;
+        	else
+        		soft_armor = 12;
         }
         else {
             soft_armor = 0;
+        	super_armor = false;
         }
     }
     if (attack == AT_DSTRONG) {
         if (window == 2 && window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH) - 8) {
-            soft_armor = 12;
+        	if (has_rune("D"))
+        		super_armor = true;
+        	else
+        		soft_armor = 12;
         }
         else {
             soft_armor = 0;
+        	super_armor = false;
         }
     }
 }
@@ -115,6 +139,9 @@ if (attack == AT_DATTACK) {
             hsp += 6 * spr_dir;
         }
     }
+    if (window == 3 && has_rune("F")) {
+    	can_ustrong = true;
+    }
 }
 
 //Specials
@@ -125,58 +152,37 @@ if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_AIR) {
     can_fast_fall = false;
     
     var spawn_x = 104;
+    var num_rocks = has_rune("H");
+    
+    if (window == 1 && !hitpause) {
+    	var window_length = get_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH)
+    	if (window_timer == window_length - 3)
+    		check_spawn_rock(x + 104 * spr_dir, y);
+    	if (window_timer == window_length - 2)
+    		check_spawn_rock2();
+    	if (window_timer == window_length - 1)
+    		check_spawn_rock3();
+    }
     
     //Wall detection
-    if (window == 2 && window_timer == 1 && !hitpause) {
-        var temp_y = y - 64;
-        var temp_x = x + spawn_x * spr_dir;
-        var can_spawn = true;
-        var can_spawn_side = false;
+    if (window == 2 && !hitpause) {
         
-        //The reason I do this is to not use Regi's collision mask while doing these checks.
-        var old_mask_index = mask_index
-        mask_index = sprite_get("nspecial_rock_mask");
-        while ((!(position_meeting(temp_x, temp_y, asset_get("par_block")) || position_meeting(temp_x, temp_y, asset_get("par_jumpthrough")))) || position_meeting(temp_x, (temp_y - 2), asset_get("par_block")) || position_meeting(temp_x, (temp_y - 2), asset_get("par_jumpthrough")))
-        {
-            temp_y += 1;
-            if (temp_y > room_height)
-            {
-                break;
-            }
+        if (num_rocks) {
+    		var window_length = get_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH)
+    		var window_now = (window_timer) % 5
+    		var rock_mult = window_timer div 4;
+	    	if (window_now == 1)
+	    		check_spawn_rock(x + (104 + rock_mult * 64) * spr_dir, spawn_y);
+	    	if (window_now == 2)
+	    		check_spawn_rock2();
+	    	if (window_now == 3)
+	    		check_spawn_rock3();
+			if (window_now == 4)
+        		spawn_rock();
         }
-        if (!collision_point(temp_x, temp_y + 2, asset_get("par_block"), 0, 0) && !position_meeting(temp_x, (temp_y), asset_get("par_jumpthrough")))
-                can_spawn_side = true;
-        if (can_spawn_side) {
-            mask_index = sprite_get("nspecial_rock_side_mask");
-            while (!position_meeting(temp_x, temp_y, asset_get("par_block")))
-            {
-                temp_x -= spr_dir;
-                if (temp_x < 0 || temp_x > room_width)
-                {
-                    can_spawn = false;
-                    break;
-                }
-            }
-            while ((!(position_meeting(temp_x, temp_y, asset_get("par_block")) || position_meeting(temp_x, temp_y, asset_get("par_jumpthrough")))) || position_meeting(temp_x, (temp_y - 2), asset_get("par_block")) || position_meeting(temp_x, (temp_y - 2), asset_get("par_jumpthrough")))
-            {
-                temp_y -= 1;
-                if (temp_y < 0)
-                {
-                    break;
-                }
-            }
-        }
-        mask_index = old_mask_index
-        if (can_spawn) {
-            sound_play(asset_get("sfx_kragg_spike"))
-            if (can_spawn_side) {
-                temp_y += 40
-                var hb = create_hitbox(AT_NSPECIAL, 2, round(temp_x), round(temp_y));
-                hb.spr_dir = spr_dir;
-            }
-            else {
-                var hb = create_hitbox(AT_NSPECIAL, 1, round(temp_x), round(temp_y));
-            }
+        else {
+    		if (window_timer == 1)
+        		spawn_rock();
         }
     }
 }
@@ -290,8 +296,10 @@ if (attack == AT_FSPECIAL) {
     		if (window == 7) { 
     			attack_invince = 1;
     			grabbed_player_obj.attack_invince = 0;
-    		    if (window_timer == 1) {
+    		    if (window_timer == 1 && !hitpause) {
     		        shake_camera(24, 4);
+    		        spawn_hit_fx(round(x), round(y) - 24, 143);
+    		        sound_play(sound_get("sfx_fspecial_land"));
     		    }
     		    window_length = 3;
     		    grab_ease = true;
@@ -303,16 +311,18 @@ if (attack == AT_FSPECIAL) {
     			off_edge = false;
     		}
     		if (grab_ease) {
-    			grabbed_player_obj.x = x + ease_circOut( grabbed_player_relative_x, pull_to_x, window_timer, window_length);
-    			grabbed_player_obj.y = y + ease_circOut( grabbed_player_relative_y, pull_to_y, window_timer, window_length);
+    			grabbed_player_obj.x = x + ease_circOut( grabbed_player_relative_x, pull_to_x * (spr_dir * image_xscale), window_timer, window_length);
+    			grabbed_player_obj.y = y + ease_circOut( grabbed_player_relative_y, pull_to_y* image_yscale, window_timer, window_length);
     		}
     		else {
-    			grabbed_player_obj.x = x + pull_to_x;
-    			grabbed_player_obj.y = y + pull_to_y;
+    			grabbed_player_obj.x = x + pull_to_x * (spr_dir * image_xscale);
+    			grabbed_player_obj.y = y + pull_to_y * image_yscale;
     		}
+    		if (has_rune("G"))
+	    		set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 15 * (1 + grabbed_player_obj.knockback_adj * 2))
     		
     		if (window == 6) {
-		        if (slowstart_state == SLOWSTART_STATE_OFF && get_player_damage(grabbed_player_obj.player) >= 100) {
+		        if (slowstart_state == SLOWSTART_STATE_OFF && (get_player_damage(grabbed_player_obj.player) >= 100 || has_rune("M"))) {
 					if (grabbed_player_obj.y >= room_height - abs(vsp)) {
 				        grabbed_player_obj.x = x;
 				        grabbed_player_obj.y = room_height + 256;
@@ -337,6 +347,10 @@ if (attack == AT_USPECIAL){
     
     if (window == 1) {
     	grav = 0.1
+    }
+    
+    if (window == 2 && has_rune("A")) {
+    	soft_armor = 8;
     }
     if (window == 2) {
         wall_test = spr_dir == 1 ? collision_rectangle(x + collision_x1, y - 122, x + collision_x2, y - 120, asset_get("par_block"), 1, 1) 
@@ -519,6 +533,69 @@ if (attack == AT_DSPECIAL){
 	        super_armor = false;
 	    }
 	}
+}
+#define check_spawn_rock(_spawn_x, _spawn_y)
+spawn_y = _spawn_y;
+spawn_x = _spawn_x;
+can_spawn = true;
+can_spawn_side = false; 
+var old_mask_index = mask_index
+mask_index = sprite_get("nspecial_rock_mask");
+while ((!(position_meeting(spawn_x, spawn_y, asset_get("par_block")) || position_meeting(spawn_x, spawn_y, asset_get("par_jumpthrough")))) || position_meeting(spawn_x, (spawn_y - 2), asset_get("par_block")) || position_meeting(spawn_x, (spawn_y - 2), asset_get("par_jumpthrough")))
+{
+    spawn_y += 1;
+    if (spawn_y > room_height)
+    {
+        break;
+    }
+}
+if (!collision_point(spawn_x, spawn_y + 2, asset_get("par_block"), 0, 0) && !position_meeting(spawn_x, (spawn_y), asset_get("par_jumpthrough")))
+        can_spawn_side = true;
+mask_index = old_mask_index;
+
+#define check_spawn_rock2()
+var old_mask_index = mask_index
+mask_index = sprite_get("nspecial_rock_mask");
+if (can_spawn_side) {
+    while (!position_meeting(spawn_x, spawn_y, asset_get("par_block")))
+    {
+        spawn_x -= spr_dir*4;
+        if (spawn_x < 0 || spawn_x > room_width)
+        {
+            can_spawn = false;
+            break;
+        }
+    }
+}
+mask_index = old_mask_index;
+
+#define check_spawn_rock3()
+var old_mask_index = mask_index
+mask_index = sprite_get("nspecial_rock_mask");
+if (can_spawn_side) {
+        while ((!(position_meeting(spawn_x, spawn_y, asset_get("par_block")) || position_meeting(spawn_x, spawn_y, asset_get("par_jumpthrough")))) || position_meeting(spawn_x, (spawn_y - 2), asset_get("par_block")) || position_meeting(spawn_x, (spawn_y - 2), asset_get("par_jumpthrough")))
+    {
+        spawn_y -= 16;
+        if (spawn_y < 0)
+        {
+            break;
+        }
+    }
+}
+
+mask_index = old_mask_index;
+
+#define spawn_rock()
+if (can_spawn) {
+    sound_play(asset_get("sfx_kragg_spike"))
+    if (can_spawn_side) {
+        spawn_y += 40
+        var hb = create_hitbox(AT_NSPECIAL, 2, round(spawn_x), round(spawn_y));
+        hb.spr_dir = spr_dir;
+    }
+    else {
+        var hb = create_hitbox(AT_NSPECIAL, 1, round(spawn_x), round(spawn_y));
+    }
 }
 
 #define spawn_base_dust

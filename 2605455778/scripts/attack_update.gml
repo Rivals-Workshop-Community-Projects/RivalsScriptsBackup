@@ -141,14 +141,12 @@ switch(attack){
         if(free && window == 1 && window_timer == 1){
             vsp = -2;
         }
-        if(attack == AT_FSPECIAL){
-          if(window == 1 and window_timer == 1){
+        if(window == 1 && window_timer == 1){
             if(free){
-              set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 7);
+                set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 7);
             }else{
-              set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
+                set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
             }
-          }
         }
         if(window == 2){
             with (asset_get("oPlayer")) {
@@ -193,6 +191,11 @@ switch(attack){
         can_fast_fall = false;
         old_jump = false;
         can_wall_jump = true;
+        if(state == PS_ATTACK_GROUND && get_window_value(attack, 3, AG_WINDOW_TYPE) != 1){
+            set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
+        }else{
+            set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 7); // fix this you dumb bitch
+        }
         if(window == 1 && shield_down){
             attack = AT_FSPECIAL;
             window = 1;
@@ -362,6 +365,9 @@ switch(attack){
             window = 1;
             window_timer = 3;
         }
+        if(window == 4 && window_timer == 1){
+            sound_play(asset_get("sfx_kragg_roll_start"));
+        }
     break;
     case AT_DSPECIAL_AIR:
         can_wall_jump = true;
@@ -369,6 +375,7 @@ switch(attack){
         can_move = false
         if(window == 3 && window_timer == 0){
             if(special_down){
+                sound_play(asset_get("sfx_zetter_downb"));
                 attack = AT_DSPECIAL;
                 window = 4;
                 window_timer = 0;

@@ -12,85 +12,6 @@ sprite_change_offset("crouch_hurtbox", 20, 62);
 sprite_change_offset("air_hurtbox", 27, 80);
 sprite_change_offset("hitstun_hurtbox", 55, 110);
 sprite_change_offset("morph_hurtbox", 18, 30);
-
-////beams
-
-//base
-
-sprite_change_offset("beam_attacks_1_base_shot_+", 0, 0);
-sprite_change_offset("beam_attacks_1_base_shot_x", 0, 0);
-sprite_change_offset("beam_attacks_1_base_charge_shot_traveling", 0, 0);
-sprite_change_offset("beam_attacks_1_base_shot_and_charge_collision", 0, 0);
-sprite_change_offset("beam_attacks_1_base_ready_to_fire", 0, 0);
-sprite_change_offset("beam_attacks_1_base_charging", 0, 0);
-sprite_change_offset("beam_attacks_1_base_charge_particle", 0, 0);
-
-//spazer
-
-sprite_change_offset("beam_attacks_2_spazer_charge_shot_+", 0, 0);
-sprite_change_offset("beam_attacks_2_spazer_charge_shot_startup_+", 0, 0);
-sprite_change_offset("beam_attacks_2_spazer_charge_shot_startup_x", 0, 0);
-sprite_change_offset("beam_attacks_2_spazer_charge_shot_x", 0, 0);
-sprite_change_offset("beam_attacks_2_spazer_charging", 0, 0);
-sprite_change_offset("beam_attacks_2_spazer_ready_to_fire", 0, 0);
-sprite_change_offset("beam_attacks_2_spazer_ready_to_fire", 0, 0);
-sprite_change_offset("beam_attacks_2_spazer_shot_and_charge_collision", 0, 0);
-sprite_change_offset("beam_attacks_2_spazer_shot_startup_+", 0, 0);
-sprite_change_offset("beam_attacks_2_spazer_shot_startup_x", 0, 0);
-sprite_change_offset("beam_attacks_2_spazer_shot_x", 0, 0);
-
-//ice
-
-sprite_change_offset("beam_attacks_3_ice_charge_shot_+", 0, 0);
-sprite_change_offset("beam_attacks_3_ice_charge_shot_startup_+", 0, 0);
-sprite_change_offset("beam_attacks_3_ice_charge_shot_startup_x", 0, 0);
-sprite_change_offset("beam_attacks_3_ice_charge_shot_x", 0, 0);
-sprite_change_offset("beam_attacks_3_ice_charging", 0, 0);
-sprite_change_offset("beam_attacks_3_ice_ready_to_fire", 0, 0);
-sprite_change_offset("beam_attacks_3_ice_shot_+", 0, 0);
-sprite_change_offset("beam_attacks_3_ice_shot_and_charge_collision", 0, 0);
-sprite_change_offset("beam_attacks_3_ice_shot_startup_+", 0, 0);
-sprite_change_offset("beam_attacks_3_ice_shot_x", 0, 0);
-sprite_change_offset("beam_attacks_3_spazer_shot_startup_x", 0, 0);
-sprite_change_offset("beam_attacks_3_ice_charge_particle", 0, 0);
-
-//wave
-
-sprite_change_offset("beam_attacks_4_wave_charge_shot_+", 0, 0);
-sprite_change_offset("beam_attacks_4_wave_charge_shot_x", 0, 0);
-sprite_change_offset("beam_attacks_4_wave_charging", 0, 0);
-sprite_change_offset("beam_attacks_4_wave_ready_to_fire", 0, 0);
-sprite_change_offset("beam_attacks_4_wave_shot_+", 0, 0);
-sprite_change_offset("beam_attacks_4_wave_shot_x", 0, 0);
-
-//plasma
-
-sprite_change_offset("beam_attacks_5_plasma_charge_shot_+", 0, 0);
-sprite_change_offset("beam_attacks_5_plasma_charge_shot_x", 0, 0);
-sprite_change_offset("beam_attacks_5_plasma_charging", 0, 0);
-sprite_change_offset("beam_attacks_5_plasma_ready_to_fire", 0, 0);
-sprite_change_offset("beam_attacks_5_plasma_shot_+", 0, 0);
-sprite_change_offset("beam_attacks_5_plasma_shot_x", 0, 0);
-
-//hyper
-
-sprite_change_offset("beam_attacks_6_hyper_charge_only_+", 0, 0);
-sprite_change_offset("beam_attacks_6_hyper_charge_only_x", 0, 0);
-sprite_change_offset("beam_attacks_6_hyper_ready_to_fire", 0, 0);
-sprite_change_offset("beam_attacks_6_hyper-charging", 0, 0);
-
-//grapple
-
-sprite_change_offset("beam_attacks_grapple_+_1", 0, 0);
-sprite_change_offset("beam_attacks_grapple_+_2", 0, 0);
-sprite_change_offset("beam_attacks_grapple_+_3", 0, 0);
-sprite_change_offset("beam_attacks_grapple_+_4", 0, 0);
-sprite_change_offset("beam_attacks_grapple_+_5", 0, 0);
-sprite_change_offset("beam_attacks_grapple_x_1", 0, 0);
-sprite_change_offset("beam_attacks_grapple_x_2", 0, 0);
-sprite_change_offset("beam_attacks_grapple_x_3", 0, 0);
-sprite_change_offset("beam_attacks_grapple_x_4", 0, 0);
-
 //// samus
 
 ///right
@@ -198,6 +119,15 @@ sprite_change_offset("samus_grapple_beam_13_left", 0, 0);
 sprite_change_offset("samus_grapple_beam_14_left", 0, 0);
 
 ///genaral
+
+//phone
+
+sprite_change_offset("phone_open_right", 10, 42)
+sprite_change_offset("phone_open_left", 10, 42)
+
+//crystal flash
+
+sprite_change_offset("samus_crystalflash", 31, 72);
 
 //shinespark
 

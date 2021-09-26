@@ -321,7 +321,7 @@ if (attack == AT_USPECIAL) {
         //can_jump = true;
         //can_attack = true;
         
-        soft_armor = 200;
+        //soft_armor = 200;
         
         if (vsp > 0) {
             //can_attack = true;
@@ -456,6 +456,8 @@ if (attack == AT_FSPECIAL) {
         hsp = hsp / 2;
         vsp = vsp / 2;
         grav = 0.2;
+        
+        
     }
     
     if (window == 4) {
@@ -552,6 +554,11 @@ if (attack == AT_FSPECIAL) {
             sound_play(asset_get("sfx_mobile_gear_wall"));
             hsp = hsp / 2;
             CannGrabbedId = 0;
+        }
+        
+        if (free == true && window_timer == 8) {
+        	state = PS_PRATFALL;
+        	CannFspecialPrat = true;
         }
         
         move_cooldown[AT_FSPECIAL] = 30;
