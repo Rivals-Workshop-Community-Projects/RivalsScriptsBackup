@@ -245,11 +245,11 @@ if attack == AT_FTHROW && hbox_num == 1 {
     //trail location code
     var drawAngle = darctan2(-vsp*spr_dir, hsp * spr_dir);
     proj_angle = drawAngle;
-    for (var i = 1; i < array_length(trailArray); i += 1) {
-        trailArray[i - 1] = trailArray[i];
-    }
     projSpeed = sqrt(power(abs(hsp), 2) + power(abs(vsp),2));
-    trailArray[array_length(trailArray)-1] = [x - spr_dir*11*dsin(proj_angle),y - 11*dcos(proj_angle),projSpeed,drawAngle,spr_dir];
+    
+    //trailArray[array_length(trailArray)-1] = [x - spr_dir*11*dsin(proj_angle),y - 11*dcos(proj_angle),projSpeed,drawAngle,spr_dir];
+    
+    if onscreen(x,y) trailArray[player_id.trail_index] = [x - spr_dir*11*dsin(proj_angle),y - 11*dcos(proj_angle),projSpeed,drawAngle,spr_dir];
     
     if (vsp != prev_vsp && !destroyed) || hitbox_timer == 1 {
         spawn_hit_fx(x, y, (player_id.echo ? 111 : 109))

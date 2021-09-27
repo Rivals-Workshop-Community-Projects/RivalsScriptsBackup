@@ -24,7 +24,7 @@ for (var i = 0; i < array_length_1d(arrow_id_array); i++) {
 		            
 		            var _xscale = j < (trail_length*6/20) ? _speed/(trail_length*15/20) : _speed/(trail_length*14/20)
 		            var _index = (trail_length-1+j-trail_index) mod 20;
-		            if arrow_timer_array[i] != undefined _index = (trail_length-1+j-arrow_timer_array[i]) mod 20;
+		            //if arrow_timer_array[i] != undefined _index = (trail_length-1+j-arrow_timer_array[i]) mod 20;
 		            //arrow
 	            	draw_sprite_general(sprite_get("arrow"), floor((timer mod 16)/2), _index*15*(20/trail_length), 0, 15*(20/trail_length), 62, _x, _y, _spr_dir * _xscale, 1, _angle, c_white, c_white, c_white, c_white, 1);
 	            	//draw_text_transformed(_x, _y, _index, 1, 1, 0)

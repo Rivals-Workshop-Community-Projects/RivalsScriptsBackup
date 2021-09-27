@@ -13,3 +13,4 @@ prison_plat = noone;
 test = 0;
 myPrison = noone;
 prev_prisoner = noone;
+airPrison = false;

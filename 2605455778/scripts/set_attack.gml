@@ -1,6 +1,5 @@
-if(prev_attack == AT_NSPECIAL && nextarmor){
-        //swallowarmor = true;
-        //nextarmor = false;
+if(attack == AT_NSPECIAL){
+    totemAndplayer = false;
 }
 if(attack == AT_DSPECIAL && free){
     attack = AT_DSPECIAL_AIR;

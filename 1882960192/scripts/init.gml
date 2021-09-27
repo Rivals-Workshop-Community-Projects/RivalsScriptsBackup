@@ -15,7 +15,7 @@ walk_accel = 0.3;
 walk_turn_time = 6;
 initial_dash_time = 10;
 initial_dash_speed = 7;
-dash_speed = 6.5;
+dash_speed = 6.75;
 dash_turn_time = 8;
 dash_turn_accel = 1.75;
 dash_stop_time = 4;
@@ -126,6 +126,7 @@ otto_bobblehead_body_sprite = sprite_get("hudbobblebody");
 kirbyability = 16;
 swallowed = 0;
 Lmao = has_rune("L");
+diag_portrait=sprite_get("diagportrait");
 
 //Dracula Support
 dracula_portrait = sprite_get("dracportrait1");
@@ -159,5 +160,3 @@ page++;
 //command input timer
 commtimer = 0;
 commstage = 0;
-
-user_event(14); 

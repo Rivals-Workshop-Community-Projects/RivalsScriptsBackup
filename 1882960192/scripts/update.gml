@@ -185,3 +185,55 @@ if has_rune("G") { //Rune G: Charging NSpecial boosts stats.
 		max_jump_hsp = 6;
 	}
 }
+
+if(variable_instance_exists(id,"diag"))
+{
+//Change their name whenever
+    diag_name = "Bluey"
+//  ADDING REGULAR DIALOGUE
+
+    //Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!
+    diagchoice = [
+    "Another day, another opponent. Let's do it!",
+    "Heyo.",
+    "(I might actually just go home right now.)"]
+
+//  Specific Character Interactions
+
+//  Regular dialogue
+    if(otherUrl == CH_ZETTERBURN && diag != "") 
+    {
+        diag = "Uh... Hey man, your hair's on fire.";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+    if(otherUrl == CH_FORSBURN && diag != "") 
+    {
+        diag = "I sincerely hope your lungs are okay.";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+    if(otherUrl == CH_CLAIREN && diag != "") 
+    {
+        diag = "That's a pretty cool sword.";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+    if(otherUrl == CH_MAYPUL && diag != "") 
+    {
+        diag = "...What animal ARE you even?";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+    if(otherUrl == "2014106219" && diag != "") 
+    {
+        diag = "Um...hi, Cinna?";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+    if(otherUrl == "2007375819" && diag != "") 
+    {
+        diag = "Well...this is kind of awkward. Eh, BBot?";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+    if(otherUrl == "2089998666" && diag != "") 
+    {
+        diag = "Hey, it's been a while, Yoshi!";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+}

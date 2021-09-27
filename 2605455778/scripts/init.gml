@@ -166,6 +166,7 @@ swallowinput = 0;
 upcancel = false;
 fdownsprecovery = false;
 groundstart = false;
+totemAndplayer = false;
 
 //workshop comp
 feri_costume = sprite_get("costume_dinock");

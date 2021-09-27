@@ -2,12 +2,13 @@
 
 //adjusting shading and stuff
 if (get_player_color( player ) == 0) {
-    set_character_color_slot(0, 0, 71, 237, 1);
+    set_character_color_slot(0, 0, 71, 237);
+	set_character_color_slot(3, 255, 145, 35);
 	
-	set_character_color_shading(0, 1); //cap
+	set_character_color_shading(0, 1.1); //cap
 	set_character_color_shading(1, 1); //shirt
 	set_character_color_shading(2, 1); //pants
-	set_character_color_shading(3, 1); //skin
+	set_character_color_shading(3, 1.1); //skin
 	set_character_color_shading(4, 1); //gloves / scarf
 	set_character_color_shading(5, 1); //hair
 	set_character_color_shading(6, 1.6); //shoes / wand1
@@ -20,8 +21,6 @@ if (get_player_color( player ) == 1) {
 	set_character_color_shading(3, 1.5);
 	set_character_color_shading(4, 1.5);
 	set_character_color_shading(7, .8);
-	winner_name = "bluy win!";
-	char_name = "bluy";
 }
 
 if (get_player_color( player ) == 2) {

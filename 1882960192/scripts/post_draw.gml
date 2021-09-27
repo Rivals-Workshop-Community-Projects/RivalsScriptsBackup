@@ -84,4 +84,12 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_FSPECIA
 }
 
 shader_end();
-user_event(12); 
+
+if other_player_id.url == "1976183668" {
+	with other_player_id {
+		if move_cooldown[AT_NSPECIAL] >= 300 and get_gameplay_time() <= 600 and get_player_damage(player) <= 1 and (temp_level == 1 or temp_level == 9) {
+			draw_debug_text(other.x - 80 ,other.y - 120, "I appreciate the fashion tips.");
+			draw_debug_text(other.x - 120 ,other.y - 100,  "But I don't remember asking for any.");
+		}
+	}
+}

@@ -248,6 +248,19 @@ if (naenae and balltorture and ligmas and yosword = 0 and attack = AT_TAUNT and 
 }
 
 
+if(variable_instance_exists(id,"diag"))
+{
+//Change their name whenever
+    diag_name = "Big Yoshi"
+//  ADDING REGULAR DIALOGUE
+
+    //Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!
+    diagchoice = [
+    "(snore)",
+    "(...Yoshi.)",
+    "big yoshi"]
+}
+
 
 //////////BOSSMODE
 

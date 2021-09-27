@@ -162,6 +162,7 @@ bheal2 = hit_fx_create( sprite_get( "bheal2" ), 24);
 tauntpar2 = hit_fx_create( sprite_get( "tauntpar2" ), 20);
 sprite_change_offset("tauntpar2", 30, 30);
 
+diag_portrait=sprite_get("diagportrait");
 ///agent n codec
 nname = "Big Yoshi"
 ncode1 = "An organism from the Mushroom World. Enjoys Yoshi Cookies."

@@ -292,6 +292,17 @@ initHeader("Other");
 initSection("");
 */
 
+initHeader("Both");
+initSection("- Nair multihits hitbox adjusted (opponents should fall out less).
+- Bair sweetspot hitbox size increased.
+- Bair sweetspot angle reverted: 50 -> 45");
+
+initPatch("1.7", "24 September, 2021");
+initHeader("Dark Pit");
+initSection("- Arrow glow intensity decreased");
+initHeader("Other");
+initSection("- Improved Fspecial code performance");
+
 initPatch("1.6", "23 September, 2021");
 initHeader("Both");
 initSection("- Nair launcher damage decreased: 6 -> 3

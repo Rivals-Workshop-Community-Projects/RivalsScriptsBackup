@@ -87,15 +87,16 @@ with(asset_get("oPlayer")){
                 state = PS_WRAPPED;
                 wrap_time = 9999;
             }
-            if(free && prison_time_counter > 10){
+            if(free && prison_time_counter > 50){
+                airPrison = true;
                 state = PS_HITSTUN;
                 hsp = 0;
                 old_hsp = 0;
                 if(hitpause){
-                    prison_time_counter += 4;
+                    //prison_time_counter += 4;
                 }
                 prison_time_counter++;
-                if(prison_time_counter < 170){
+                if(prison_time_counter < 120){
                     vsp = 0;
                     prison_time_counter++;
                 }
@@ -110,6 +111,14 @@ with(asset_get("oPlayer")){
                     prison_plat = instance_place(x, y+2, asset_get("par_jumpthrough"));
                 }
                 state = PS_WRAPPED;
+                if(airPrison){
+                    airPrison = false;
+                    if(prison_time_counter > 160){
+                        prison_time_counter -= 40;
+                    }else{
+                        prison_time_counter -= 70;
+                    }
+                }
             }else{
                 if(prison_plat != noone){
                     state = PS_WRAPPED;
@@ -162,6 +171,7 @@ with(asset_get("oPlayer")){
             prison_lockout_counter--;
             //print_debug(prison_lockout_counter);
         }
+        print_debug(prison_time_counter);
     }
 }
 if(attack == AT_FSPECIAL){

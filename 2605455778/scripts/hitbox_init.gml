@@ -3,3 +3,4 @@ if(attack == AT_DSPECIAL_AIR && hbox_num == 3){
     hsp *= -1;
 }
 uspecialRockTimer = 0;
+prev_pos = player_id.x;

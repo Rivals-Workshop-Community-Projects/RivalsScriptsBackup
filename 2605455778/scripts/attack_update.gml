@@ -79,6 +79,11 @@ switch(attack){
         if(instance_exists(grabbed_player) && grabbed_player == hit_player_obj 
         && grabbed_player.state != PS_FROZEN 
         && !grabbed_player.bubbled){
+            if(totemAndplayer){
+                armorpoints += 1;
+                armorgainattack();
+            }
+            totemAndplayer = false;
             invincible = false;
             grab_x = grabbed_player.x;
             gplayer = grabbed_player;
@@ -148,6 +153,9 @@ switch(attack){
                 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
             }
         }
+        if(window == 3 && !free){
+            set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
+        }
         if(window == 2){
             with (asset_get("oPlayer")) {
                 if (hitpause && state_cat == SC_HITSTUN && hit_player_obj == other.id
@@ -191,11 +199,6 @@ switch(attack){
         can_fast_fall = false;
         old_jump = false;
         can_wall_jump = true;
-        if(state == PS_ATTACK_GROUND && get_window_value(attack, 3, AG_WINDOW_TYPE) != 1){
-            set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
-        }else{
-            set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 7); // fix this you dumb bitch
-        }
         if(window == 1 && shield_down){
             attack = AT_FSPECIAL;
             window = 1;
@@ -365,7 +368,7 @@ switch(attack){
             window = 1;
             window_timer = 3;
         }
-        if(window == 4 && window_timer == 1){
+        if(window == 4 && window_timer == 1 && !hitpause){
             sound_play(asset_get("sfx_kragg_roll_start"));
         }
     break;
@@ -373,15 +376,13 @@ switch(attack){
         can_wall_jump = true;
         can_fast_fall = false;
         can_move = false
-        if(window == 3 && window_timer == 0){
-            if(special_down){
-                sound_play(asset_get("sfx_zetter_downb"));
-                attack = AT_DSPECIAL;
-                window = 4;
-                window_timer = 0;
-                armorpoints += 1;
-                armorgainattack();
-            }
+        if(window == 3){
+            sound_play(asset_get("sfx_zetter_downb"));
+            attack = AT_DSPECIAL;
+            window = 4;
+            window_timer = 0;
+            armorpoints += 1;
+            armorgainattack();
             totemSpawn();
         }
     break;

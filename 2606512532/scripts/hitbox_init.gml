@@ -36,7 +36,7 @@ if attack == AT_FSPECIAL && hbox_num == 1 {
 if attack == AT_FTHROW && hbox_num == 1 {
     depth = -6
     projSpeed = abs(hsp + vsp);
-    trailArray = array_create(20);
+    trailArray = array_create(trail_length);
     fspec_num = player_id.fspec_count;
     
     if player_id.up_down {

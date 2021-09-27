@@ -1,6 +1,7 @@
 if(attack == AT_NSPECIAL && hbox_num == 1){
     player_id.nspHboxX = self;
     y = player_id.y-30;
+    x += player_id.x - prev_pos;
 }
 
 if(attack == AT_USPECIAL && hbox_num == 1 && (!free || hitbox_timer >= length)){
@@ -26,3 +27,4 @@ if(attack == AT_USPECIAL && hbox_num == 1){
 if(attack == AT_UTILT && hbox_num == 4 && hitbox_timer == 9){
     spawn_hit_fx(x, y, 19);
 }
+prev_pos = player_id.x;

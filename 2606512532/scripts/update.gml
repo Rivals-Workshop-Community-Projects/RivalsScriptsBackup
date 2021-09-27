@@ -147,19 +147,18 @@ for (var i = 0; i < max_fspec; i++) {
 //if id exists, fill out trail stuff in trail array
 for (var i = 0; i < max_fspec; i++) {
     var fspec_id = fspec_id_array[i]
-    if fspec_id != undefined && instance_exists(fspec_id) {
+    if fspec_id != undefined && instance_exists(fspec_id) && !fspec_id.destroyed {
         if ("trailArray" in fspec_id) {
             fspec_trail_arrays[i] = fspec_id.trailArray;
         }
     } else {
         if fspec_trail_arrays[i][0] != undefined {
-            for (var n = 0; n < 2; n++) {
-                for (var j = 1; j < 20; j++) {
-                    if j == 19 fspec_trail_arrays[i][@j] = 0;
-                    fspec_trail_arrays[i][@j-1] = fspec_trail_arrays[i][j];
-                    //arrow_trail_arrays[i][@0] = undefined;
-                }
-            }
+        	if fspec_trail_arrays[i][@trail_index] == -4 {
+        		fspec_trail_arrays[i] = empty_array
+        	} else {
+	            fspec_trail_arrays[i][@trail_index] = -4;
+	            if trail_index > 0 fspec_trail_arrays[i][@trail_index-1] = -4;
+        	}
         }
     }
 }

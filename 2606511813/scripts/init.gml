@@ -73,7 +73,7 @@ max_fspec = 2;
 fspec_count = 0;
 fspec_trail_vfx = hit_fx_create(sprite_get("fspecial_proj_strong_trail"), 12);
 fspec_large_vfx = hit_fx_create(sprite_get("fspecial_vfx_large"), 12);
-fspec_trail_arrays = array_create(max_fspec, (array_create(20, undefined)));
+fspec_trail_arrays = array_create(max_fspec, (array_create(trail_length, undefined)));
 fspec_id_array = array_create(max_fspec, undefined) //used to match fspec proj id to array num
 vfx_reticle_large = hit_fx_create(sprite_get("vfx_reticle_large"), 40);
 

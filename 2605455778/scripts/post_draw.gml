@@ -19,28 +19,40 @@ if(attack == AT_NSPECIAL){
         draw_sprite_ext(tongue_end_spr, 0, tx, y-30, 1*spr_dir, 1, 0, c_white, 1);
         shader_end();
     }
-    if(window == 11){
+    if(window == 11){ //player
         var tlength = gplayer.x - (x+60*spr_dir);
+        var flip = spr_dir;
+        var xCord =  gplayer.x-8*spr_dir;
+        if((gplayer.x-8*spr_dir < x+50*spr_dir && spr_dir == 1) || (gplayer.x-8*spr_dir > x+50*spr_dir && spr_dir == -1)){
+            flip *= -1;
+            xCord = gplayer.x-6*spr_dir;
+        }
         shader_start();
         draw_sprite_ext(tongue_length_spr, 0, x+58*spr_dir, y-32, tlength/sprite_get_width(tongue_length_spr), 1, 0, c_white, 1);
-        draw_sprite_ext(grabTongue_sprite, 0, gplayer.x-8*spr_dir, y-38, 1*spr_dir, 1, 0, c_white, 1);
+        draw_sprite_ext(grabTongue_sprite, 0, xCord, y-38, 1*flip, 1, 0, c_white, 1);
         shader_end();
     }
-    if(window == 7){
+    if(window == 7){ //platform
         var tlength = nSpecPlatHboxXpos - (x+60*spr_dir);
         shader_start();
         draw_sprite_ext(tongue_length_spr, 0, x+58*spr_dir, y-32, tlength/sprite_get_width(tongue_length_spr), 1, 0, c_white, 1);
         draw_sprite_ext(grabTongue_sprite, 0, nSpecPlatHboxXpos-5*spr_dir, y-38, 1*spr_dir, 1, 0, c_white, 1);
         shader_end();
     }
-    if(window == 10){
+    if(window == 10){//totem
         var totalTime = get_window_value(AT_NSPECIAL, 10, AG_WINDOW_LENGTH) + get_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH);
         var tTopx = ease_linear(totemStorePos, x+65*spr_dir, min(totemSwallowTime, totalTime), totalTime);
         var tlength = tTopx - (x+60*spr_dir);
+        var flip = spr_dir;
+        var xCord =  tTopx-8*spr_dir;
+        if((tTopx-8*spr_dir < x+50*spr_dir && spr_dir == 1) || (tTopx-8*spr_dir > x+50*spr_dir && spr_dir == -1)){
+            flip *= -1;
+            xCord = tTopx-6*spr_dir;
+        }
         if(tlength*spr_dir > 0){
             shader_start();
             draw_sprite_ext(tongue_length_spr, 0, x+58*spr_dir, y-32, tlength/sprite_get_width(tongue_length_spr), 1, 0, c_white, 1);
-            draw_sprite_ext(grabTongue_sprite, 0, tTopx-8*spr_dir, y-38, 1*spr_dir, 1, 0, c_white, 1);
+            draw_sprite_ext(grabTongue_sprite, 0, xCord, y-38, 1*flip, 1, 0, c_white, 1);
             shader_end();
         }
     }
