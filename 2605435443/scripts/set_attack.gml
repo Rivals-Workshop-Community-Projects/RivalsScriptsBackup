@@ -39,6 +39,6 @@ if (attack == AT_NSPECIAL_AIR && !free){
     state_timer = 0;
 }
 
-if (attack == AT_TAUNT && attack_down){
-    attack = AT_TAUNT_2;
+if (attack == AT_TAUNT && shield_down){
+    attack = AT_UTHROW;
 }

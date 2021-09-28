@@ -7,7 +7,6 @@ special_cooldown++;
 animation_counter++;
 hud_text_timer++;
 power_up_timer++;
-space_timer++;
 beam_trail++;
 beam_cooldown++;
 popup_timer++;
@@ -21,10 +20,17 @@ reserve_trigger++;
 force_depth = 2;
 hyper_beam_magic_timer++;
 special_bomb_creation++;
+opponent_fog_timer++;
 visible = true;
 
 if(state == PS_SPAWN){
     beam_cooldown = 0;
+}
+
+if(y <= -300){
+    y = -300
+    vsp = backup_vsp / 4
+    is_shinesparking = false;
 }
 
 if(hyper_beam_magic == c_red && hyper_beam_magic_timer >= 4){
@@ -90,9 +96,8 @@ if(is_somersaulting == true){
     somer_sfx = 0;
 }
 
-print_debug(is_somersaulting)
 
-if(somer_sfx == 15){
+if(somer_sfx == 15 && is_charged == false){
     if(jump_power_up == "normal_"){
         sound_play(sound_get("somer_1"), false, false, 20);
     }else if(jump_power_up == "space_jump_"){
@@ -116,8 +121,6 @@ if(death_timer == 2){
     sound_play(sound_get("defeat"));
 }
 if(is_dead == true){
-    y = room_height / 2
-    x = room_width / 2
     hsp = 0;
     vsp = 0;
     gravity_speed = 0
@@ -126,7 +129,6 @@ if(is_dead == true){
 if(death_timer >= 180){
     x = 9000
 }
-
 
 //fog magic
 if(fog_magic == 0.1){
@@ -142,14 +144,43 @@ if(fog_magic2 == 0.2){
 }else if(fog_magic2 == 0.6){
     fog_magic2 = 0.2
 }
+//fog magic 3
+if(fog_magic3 == 0.66){
+    fog_magic3 = 0.1;
+}else if(fog_magic3 == 0.1){
+    fog_magic3 = 0.11;
+}else if(fog_magic3 == 0.11){
+    fog_magic3 = 0.2;
+}else if(fog_magic3 == 0.2){
+    fog_magic3 = 0.22;
+}else if(fog_magic3 == 0.22){
+    fog_magic3 = 0.3;
+}else if(fog_magic3 == 0.3){
+    fog_magic3 = 0.33;
+}else if(fog_magic3 == 0.33){
+    fog_magic3 = 0.4;
+}else if(fog_magic3 == 0.4){
+    fog_magic3 = 0.44;
+}else if(fog_magic3 == 0.44){
+    fog_magic3 = 0.5;
+}else if(fog_magic3 == 0.5){
+    fog_magic3 = 0.55;
+}else if(fog_magic3 == 0.55){
+    fog_magic3 = 0.6;
+}else if(fog_magic3 == 0.6){
+    fog_magic3 = 0.66;
+}
 
 //jump cancel
 
-if(jump_down && shinespark_charged == false && state == PS_FIRST_JUMP && is_somersaulting == false){
+if(jump_down && shinespark_charged == false && state == PS_FIRST_JUMP){
     state = PS_FIRST_JUMP;
 }else if(shinespark_charged == false && state == PS_FIRST_JUMP && !jump_down && is_somersaulting == false){
-    state = PS_IDLE_AIR;
-    vsp = backup_vsp * 2/3;
+    state = PS_IDLE_AIR
+    vsp = backup_vsp * 0.6;
+}else if(shinespark_charged == false && state == PS_FIRST_JUMP && !jump_down && is_somersaulting == true){
+    state = PS_FIRST_JUMP
+    vsp = backup_vsp + 0.1
 }
 
 if(attack_down && is_morph == false && is_crystal_flashing == false && (select_ammo == 0 || select_ammo == 3)){
@@ -212,7 +243,7 @@ if((select_ammo == 0 || select_ammo == 3) && attack_pressed && is_charged == fal
     }
 }
 
-if(select_ammo == 1 && attack_pressed && is_morph == false && missile_cooldown >= 20 && missile_amount >= 1){
+if(select_ammo == 1 && attack_pressed && is_morph == false && missile_cooldown >= 15 && missile_amount >= 1){
    if(free){
         state = PS_IDLE_AIR
     }
@@ -222,7 +253,7 @@ if(select_ammo == 1 && attack_pressed && is_morph == false && missile_cooldown >
     user_event(2)
     latest_missile = create_hitbox(AT_DTHROW, 1, x + projectile_x, y + projectile_y)
     sound_play(sound_get("missile"), false, false, 12);
-    if(missile_cooldown >= 20){
+    if(missile_cooldown >= 15){
         missile_cooldown = 0;
     }
 }
@@ -264,7 +295,7 @@ if(is_somersaulting == true && is_charged == true && jump_power_up != "screw_att
     create_hitbox(AT_DSPECIAL_AIR, 1, x, y);
 }
 
-if(shinespark_charged == true && !free){
+if(shinespark_charged == true){
     shinespark_timer++
     if(shinespark_timer >= 360){
         shinespark_charged = false;
@@ -330,7 +361,7 @@ if(shinespark_charged == true && state == PS_IDLE_AIR){
 }
 
 if(shinespark_charged == false && is_shinesparking == false){
-    gravity_speed = 0.1;
+    gravity_speed = 0.2;
     set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_BASE_KNOCKBACK, 8);
 }
 
@@ -420,13 +451,13 @@ if(is_shinesparking == false){
     shine_up_left = false;
 }
 
-if(prev_x_pos == x && prev_y_pos == y && is_shinesparking == true) || (shine_up_left == true || shine_up_right == true || shine_diagonal_right == true || shine_diagonal_left == true){
+if(prev_x_pos == x && prev_y_pos == y && is_shinesparking == true) && (shine_up_left == true || shine_up_right == true || shine_diagonal_right == true || shine_diagonal_left == true){
     shinespark_end++
 }else{
     shinespark_end = 0
 }
 
-if(is_shinesparking == true && shinespark_end <= 1){
+if(is_shinesparking == true && shinespark_end <= 10){
     energy--
 }
 
@@ -673,12 +704,18 @@ if(high_jump == true){
     djump_speed = 9;
 }
 if(jump_power_up == "space_jump_" || jump_power_up == "screw_attack_"){
-    if(space_timer >= 60){
-        max_djumps++
+    if(is_somersaulting){
+        space_timer++;
+    }else{
         space_timer = 0;
-        if(jump_power_up == "screw_attack_" && state == (PS_FIRST_JUMP || PS_DOUBLE_JUMP)){
-            invincible = true;
-        }
+    }
+    if(space_timer == 60){
+        max_djumps++;
+    }else if(!free){
+        max_djumps = 0;
+    }
+    if(jump_pressed && is_somersaulting == true){
+        space_timer = 0;
     }
 }
 
@@ -1627,18 +1664,17 @@ if(hud_text_timer >= 300){
     hud_text_timer = -100;
 }
 
-
-
 if(samus_check >= 1 && samus_check <= 20){
     samus_check++
 }
 
-if (state == PS_WALL_JUMP) {
-    walljump_cooldown = 20;
+if(state == PS_WALL_JUMP){
+    has_walljump = false;
+    walljump_cooldown = 40;
 }
 if (walljump_cooldown > 0) {
-    walljump_cooldown =- 1;
-}else {
+    walljump_cooldown -= 1;
+}else if(walljump_cooldown <= 0){
     has_walljump = true;
 }
 
@@ -1661,12 +1697,16 @@ if(special_pressed && special_cooldown >= 20 && missiles == true){
     }else if(X_ray == true && ((power_bombs == false && select_ammo == 2) || (super_missiles == false && select_ammo == 1))){
         select_ammo = 5;
         special_cooldown = 0;
+    }else if(select_ammo == 5){
+        select_ammo = 0;
+        special_cooldown = 0;
     }else{
         special_cooldown = 0;
         select_ammo++;
     }
 }
-if(missiles == true && (select_ammo == 6 || left_strong_pressed || up_strong_pressed || down_strong_pressed || right_strong_pressed) && special_cooldown >= 20){
+
+if(left_strong_pressed || up_strong_pressed || down_strong_pressed || right_strong_pressed) && (select_ammo == 1 || select_ammo == 2 || select_ammo == 3 || select_ammo == 4 || select_ammo == 5){
     sound_play(sound_get("select_ammo"), false, false, 10);
     select_ammo = 0;
     special_cooldown = 0;
@@ -1760,13 +1800,13 @@ if(num_samuses == 1 && samus_check == 4){
 //hurtbox switch
 if(is_crouch == true && is_morph == false){
     hurtboxID.sprite_index = sprite_get("crouch_hurtbox");
-    gravity_speed = 0.1;
+    gravity_speed = 0.2;
 }else if(is_crouch == true && is_morph == true){
     gravity_speed = 0.4;
     hurtboxID.sprite_index = sprite_get("morph_hurtbox");
 }else{
     hurtboxID.sprite_index = sprite_get("idle_hurtbox");
-    gravity_speed = 0.1;
+    gravity_speed = 0.2;
 }
 
 if(state == PS_WALL_JUMP){

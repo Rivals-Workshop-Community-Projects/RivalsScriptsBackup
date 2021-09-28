@@ -26,3 +26,6 @@ if(player_id.is_aiming == "forward_"){
 
 
 destroy_timer = 0;
+stop_timer = 0;
+backup_x = 0;
+backup_y = 0;

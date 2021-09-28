@@ -206,7 +206,7 @@ set_color_profile_slot( 17, 5, 0, 59, 168 ); //Steel
 set_color_profile_slot( 17, 6, 0, 59, 168 ); //Shirt
 set_color_profile_slot( 17, 7, 22, 28, 41 ); //Boots
 
-// Ground Breaker
+// Tuba Joke
 set_color_profile_slot( 18, 0, 0, 0, 0 ); //Body
 set_color_profile_slot( 18, 1, 166, 166, 166 ); //Middle Body
 set_color_profile_slot( 18, 2, 0, 0, 0 ); //Collar

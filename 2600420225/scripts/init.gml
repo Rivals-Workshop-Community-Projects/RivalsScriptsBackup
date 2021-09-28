@@ -5,42 +5,42 @@ char_height         = 88;
 knockback_adj       = 1;		// 0.9  -  1.2
 
 // Ground movement
-walk_speed          = 4;		// 3    -  4.5
+walk_speed          = 5;		// 3    -  4.5
 walk_accel          = 0.08;		// 0.2  -  0.5
 walk_turn_time      = 0;	    // 6
-initial_dash_time   = 30;		// 8    -  16
-initial_dash_speed  = 4;		// 4    -  9
-dash_speed          = 7;		// 5    -  9
+initial_dash_time   = 10		// 8    -  16
+initial_dash_speed  = 6;		// 4    -  9
+dash_speed          = 8;		// 5    -  9
 dash_turn_time      = 0;		// 8    -  20
 dash_turn_accel     = 0.2;		// 0.1  -  2
-dash_stop_time      = 1;		// 4    -  6
+dash_stop_time      = 0;		// 4    -  6
 dash_stop_percent   = 0;		// 0.25 -  0.5
-ground_friction     = 10;		// 0.3  -  1
+ground_friction     = 9999;		// 0.3  -  1
 moonwalk_accel      = 1.3;		// 1.2  -  1.4
     
 // Air movement
 leave_ground_max    = 2;		// 4    -  8
-max_jump_hsp        = 2;		// 4    -  8
+max_jump_hsp        = 15;		// 4    -  8
 air_max_speed       = 2;  		// 3    -  7
-jump_change         = 3;		// 3
-air_accel           = 0.3;		// 0.2  -  0.4
-prat_fall_accel     = 0.85;		// 0.25 -  1.5
-air_friction        = 0.04;		// 0.02 -  0.07
+jump_change         = 4;		// 3
+air_accel           = 0.6;		// 0.2  -  0.4
+prat_fall_accel     = 0;		// 0.25 -  1.5
+air_friction        = 0.02;		// 0.02 -  0.07
 max_fall            = 5;		// 6    -  11
-fast_fall           = 3;		// 11   -  16
-gravity_speed       = 0.1;		// 0.3  -  0.6
+fast_fall           = 5;		// 11   -  16
+gravity_speed       = 0.2;		// 0.3  -  0.6
 hitstun_grav        = 0.5;		// 0.45 -  0.53
 
 // Jumps
 jump_start_time     = 3;		// 5                this stat is automatically decreased by 1 after init.gml (dan moment), so its "real value" is 4. if you change this during a match, 4 is the value you should reset it to
-jump_speed          = 7;		// 7.6  -  12       okay, zetter's is actually 10.99 but... come on
-short_hop_speed     = 7;		// 4    -  7.4
-djump_speed         = 7;		// 6    -  12       absa's is -1 because of her floaty djump
+jump_speed          = 7.5;		// 7.6  -  12       okay, zetter's is actually 10.99 but... come on
+short_hop_speed     = 7.5;		// 4    -  7.4
+djump_speed         = 6.5;		// 6    -  12       absa's is -1 because of her floaty djump
 djump_accel         = 0;        // -1.4 -  0        absa's is -1.4, all other chars are 0. only works if the   djump_accel_end_time   variable is also set. floaty djumps should be adjusted by feel based on your char's gravity
 djump_accel_end_time= 0;        //                  the amount of time that   djump_accel   is applied for
 max_djumps          = 0;		// 0    -  3        the 0 is elliana because she has hover instead
-walljump_hsp        = 7;		// 4    -  7
-walljump_vsp        = 7;		// 7    -  10
+walljump_hsp        = -6;		// 4    -  7
+walljump_vsp        = 8;		// 7    -  10
 land_time           = 4;		// 4    -  6
 prat_land_time      = 0;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
@@ -195,7 +195,11 @@ is_dead = false;
 hyper_beam_magic = c_red;
 hyper_beam_magic_timer = 0;
 death_timer = 0;
-num_samuses = 0;
+if(get_player_color(player) >= 8){
+    num_samuses = 2;
+}else{
+    num_samuses = 0;
+}
 animation_counter = 0;
 samus_check = 1;
 hit_counter = 0;
@@ -225,6 +229,7 @@ smoke_trail_anim = 0;
 power_bomb_cooldown = 0;
 fog_magic = 0.1;
 fog_magic2 = 0.2;
+fog_magic3 = 0.1
 speeding = false;
 shinespark_charged = false;
 shinespark_timer = 0;
@@ -251,6 +256,8 @@ shinespark_end = 0;
 charge_sfx = 0;
 spark_sfx = 0;
 somer_sfx = 0;
+
+opponent_fog_timer = 0;
 
 //I need theese to draw the tanks in the hud
 tank_1 = "full"

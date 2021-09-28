@@ -423,6 +423,7 @@ if(draw_info == true && num_samuses == 1 && is_randomizer == false){
             draw_text_transformed_color(420, 104, "HYPER BEAM", 1.5, 1.5, 0, hyper_beam_magic, hyper_beam_magic,  hyper_beam_magic,  hyper_beam_magic, 1);
         }
 }else if(draw_info == true && num_samuses >= 2 && is_randomizer == false){
+    draw_sprite_stretched(sprite_get("hud_power_up_popup"), 0, temp_x + 26, temp_y - 74, 157, 20);
     if(level == 1){
             draw_text_transformed_color(temp_x + 106, temp_y - 74, "MORPH BALL", 1, 1, 0, c_orange, c_orange, c_orange, c_orange, 1);
         }

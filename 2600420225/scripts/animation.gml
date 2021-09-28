@@ -79,22 +79,24 @@ if(state == PS_WALL_JUMP && is_crouch == false){
 if(is_shinesparking == false && is_dead == false && (state == PS_IDLE_AIR || (state == PS_FIRST_JUMP && (left_pressed|| right_pressed)) || state == PS_TUMBLE || state == PS_WALL_JUMP || state == PS_ATTACK_AIR)){
     if(left_pressed || left_down){
         spr_dir = -1;
-    }else if(right_pressed || left_down){
+    }else if(right_pressed || right_down){
         spr_dir = 1;
     }
 }
 if(prev_state == PS_WALL_JUMP && state == PS_IDLE_AIR){
     sprite_index = sprite_get("samus_somersault_" + jump_power_up + is_facing);
-    image_index = state_timer * 0.2;
+    image_index = state_timer * 0.4;
 }
 if(state == PS_FIRST_JUMP && is_crouch == false){
     if(state_timer <= 1){
         need_somersault = (left_pressed || right_pressed || left_down || right_down);
     }if (need_somersault){
+        jump_speed = 8
         is_somersaulting = true;
         sprite_index = sprite_get("samus_somersault_" + jump_power_up + is_facing);
-        image_index = state_timer * 0.2;
+        image_index = state_timer * 0.4;
     }else{
+        jump_speed = 7.5
         is_somersaulting = false;
         sprite_index = sprite_get("samus_jump_rise_" + is_facing);
         if(state_timer >= 60){
@@ -102,6 +104,7 @@ if(state == PS_FIRST_JUMP && is_crouch == false){
         }
     }
 }
+
 if(state == PS_IDLE){
     movement = "idle_";
 }

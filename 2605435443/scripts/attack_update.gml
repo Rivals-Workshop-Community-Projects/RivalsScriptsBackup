@@ -87,7 +87,6 @@ if (window == 2){
 }
 
 if (attack == AT_NSPECIAL){
-	soft_armor = 10;
 		    	if(special_down && state_timer == 6){
 	attack = AT_FTHROW;
 }
@@ -103,7 +102,7 @@ move_cooldown[AT_FTHROW] = 50;
 	window = 4;
 	window_timer = 0;
 }
-if (window == 4 && has_hit_player && window_timer == 6 && !hitstun){
+if (window <= 6 && has_hit_player){
  with (hit_player_obj){
 	visible = false;
 }
@@ -133,13 +132,11 @@ move_cooldown[AT_NSPECIAL] = 80;
 move_cooldown[AT_FTHROW] = 80;
 }
 if(window == 10 && window_timer == 1){
-					soft_armor = 0;
     		sound_play(sound_get("nspecial_close"));
     	}
 }
 
 if (attack == AT_FTHROW){
-		soft_armor = 10;
 	hurtboxID.sprite_index = sprite_get("nspecial_strong_hurt");
 	    if (window == 3 && !has_hit_player && is_end_of_window){
     	window = 14;
@@ -151,7 +148,7 @@ move_cooldown[AT_FTHROW] = 75;
 	window = 4;
 	window_timer = 0;
 }
-if (window == 4 && has_hit_player && window_timer == 6){
+if (window <= 10 && has_hit_player){
  with (hit_player_obj){
 	visible = false;
 }
@@ -187,6 +184,7 @@ if(window >= 14 && window_timer == 1){
 }
 
 if(attack == AT_FSPECIAL_AIR){
+	can_fast_fall = false;
     	if (!hitpause && !down_hard_pressed && !fast_falling && window <= 3){
     	vsp = min(vsp, 3);	
     	}
@@ -1065,10 +1063,11 @@ if (attack == AT_EXTRA_1 && window == 1 && window_timer == 2) {
     
     
 //TRUMPET
-if (attack == AT_TAUNT_2){
+if (attack == AT_UTHROW){
 	
-	if (window = 2)
+	if (window == 2)
 	{ 
+			honk = true;
 		
 		
 		/*      
@@ -1219,6 +1218,9 @@ if (attack == AT_TAUNT_2){
 		window = 3
 		window_timer = 0;
 		}
+	}
+	if (window == 3){
+		honk = false;
 	}
 }
 

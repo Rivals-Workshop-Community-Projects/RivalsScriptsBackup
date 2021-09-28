@@ -2,7 +2,7 @@ if(level <= 16 && my_hitboxID.attack != AT_USPECIAL_GROUND && my_hitboxID.attack
     if(hit_counter >= 9){
     hit_counter = 0;
     level++;
-    sound_play(sound_get("item_acquisition"));
+    sound_play(sound_get("item_acquisition"), false, false, 0.6);
     popup_timer = 0;
     }else{
     hit_counter++;
@@ -12,3 +12,5 @@ is_shinesparking = false;
 charging_timer = 0;
 
 is_shinesparking = false;
+
+opponent_fog_timer = 0;

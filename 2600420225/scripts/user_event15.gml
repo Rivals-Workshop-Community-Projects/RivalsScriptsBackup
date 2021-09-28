@@ -28,7 +28,7 @@ Set parameters that are used by the CSS drawing code.
 #define CORE_css_draw
 
 // The number of alt costumes your char has, up to 32.
-num_alts = 8;
+num_alts = 16;
 
 // Whether or not to display a name for each alt.
 use_alt_names = true;
@@ -47,8 +47,16 @@ alt_names = [
 	"Blue",
 	"Yellow",
 	"Purple",
-	"Fusion(includes fusion varia and fusion gravity)",
+	"Fusion",
 	"Latex",
+	"Standard(small hud)",
+	"Green(small hud)",
+	"Cyan(small hud)",
+	"Blue(small hud)",
+	"Yellow(small hud)",
+	"Purple(small hud)",
+	"Fusion(small hud)",
+	"Latex(small hud)",
 	];
 
 
@@ -170,8 +178,9 @@ so that things like page breaks can work properly.
 #define CORE_tips
 
 initTip("Samus general info");
-initWords("Samus has really floaty jumps and relatively aveage movement speed.");
-initWords("There are many tweaks I had to make in order to make her play and feel exactly like in Super Metroid.");
+initWords("Samus has really floaty jumps and relatively average movement speed.
+There are many tweaks I had to make in order to make her play and feel exactly like in Super Metroid.
+You can cancel your jump if you stop pressing the jump button and you can walljump indefinetly.");
 initWords("Samus cannot normally die (she will just respawn since there's no actual way I could implement a proper death).");
 initWords("Remember to lower her hp to 0 if you want to take her down.")
 initImage_ext(sprite_get("samus_idle_aim_forward_right"), 0, fa_right, -2, 2, true, c_white, 1, true, noone, noone, noone, noone);
@@ -183,6 +192,7 @@ initWords("On the left you have the energy side, here it's shown how much energy
 initWords("Near the energy you have the hit counter, every 10 hits you will level up and gain new power ups.");
 initWords("On the far right there's the Chozo statue, it holds the next power-up you will obtain.");
 initWords("The small icons on the right are the ammo selectables, each will appear once you unlock the respective weapon and it will turn green once you select it.");
+initWords("The hud will shrink if there's more than 1 samus in the fight, it works the same way as the big hud does but it can also be triggered by selecting the (small hud) alts")
 initImage_ext(sprite_get("hud_big"), 0, fa_left, 0.7, 0.7, true, c_white, 1, false, noone, noone, noone, noone);
 
 initTip("Diagonal aiming");
@@ -321,7 +331,8 @@ initImage_ext(sprite_get("gravity_palette_reference"), 0, fa_center, 2, 2, true,
 
 initTip("power-up 13: Space jump");
 initWords("Enables space jump.");
-initWords("Gives you unlimited extra jumps but with a cooldown.");
+initWords("Gives you unlimited extra jumps but with a cooldown of 1 second, any input pressed before will reset the timer.");
+initWords("Remember that if you miss the timing you'll have to wait in order to perform another jump and you may or may not fall yo you death.");
 initImage_ext(sprite_get("item_13"), -4, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("samus_somersault_space_jump_right"), -2, fa_center, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
 
@@ -419,6 +430,76 @@ in a Patch.
 
 #define CORE_patches
 
+
+//patch 1.5
+initPatch("1.5 (part 1)", "27 September 2021")
+initWords_ext("Big update part 1", fa_center, c_white, 0, false);
+initHeader("Buffs and nerfs")
+initSection("  Buffs
+-max jump hsp              2 > 4
+-jump speed                 7 > 7.5 (normal jump)
+-jump speed                 7 > 8   (somersault)
+-walljump vsp               7 > 8
+-initial dash time         30 > 10
+-initial dash speed         4 > 6
+-dash speed                 7 > 8
+-dash stop time            1 > 0
+-ground friction          10 > 9999
+-walk speed                 4 > 5
+-missile cooldown         20 > 15
+-beam speed               10 > 12
+-charge beam speed      10 > 12
+
+  Nerfs
+-slightly increased the recoil damage taken when shinesparking
+-Gravity speed            0.1 > 0.2
+-double jump speed         7 > 6.5
+-wall jump cooldown      20 > 40
+-wall jump hsp              8 > -6 (for animation)
+")
+
+initPatch("1.5 (part 2)", "27 September 2021")
+initWords_ext("Big update part 2", fa_center, c_white, 0, false);
+initHeader("Bugfixes")
+initSection("-now weapon select doesn't break if you spam the special attack input
+
+-now charge beam breaks when in contact with the ground without wave beam
+
+-now projectiles don't get stuck on ceilings anymore
+(they beak after a couple frames)
+
+-now you take recoil damage when performing a shinespark upwards or diagonally")
+initHeader("Sprites related stuff")
+initSection("-changed the screw attack sprite with a new one made by me (I can't find the original anywhere)
+
+-added inbetweens for the space jump animation
+
+-changed the offset of the destroy effect of projectiles
+(only applies when shooting horizontally, still working on the rest)
+
+-fixed a couple sprites that had cuts due to bad formatting (notably the diagonal aim up when facing right and the diagonal aerial aim up when facing right)")
+
+initPatch("1.5 (part 3)", "27 September 2021")
+initWords_ext("Big update part 3", fa_center, c_white, 0, false);
+initHeader("Changes to preexisting stuff")
+initSection("-death animation now happens on the spot where samus dies
+
+-somersaulting can be canceled like normal jump canceling
+
+-charge shot has knockback scaling now (0.4)
+
+-the level up fanfare has been toned down
+
+-space jump is more true to the original, now you gotta press the jump button at the right time to keep jumping");
+initHeader("New stuff")
+initSection("-added a height cap for samus, now she can't go above y - 300
+(might have some problems with specific stages, let me know)
+
+-added 8 more alts that always use the small version of the hud for a cleaner fight
+
+-added a visual effect on the opponent when hit with an attack from samus")
+
+//patch 1.4
 initPatch("1.4", "25 September 2021");
 initWords_ext("Improvements and changes", fa_center, c_white, 0, false);
 initHeader("Bugfixes");
@@ -434,6 +515,7 @@ initSection("Say goodbye to performance issues, now projectiles will stop existi
 initHeader("Added new sfx");
 initSection("I finally managed to get those last pesky sfxes, have fun listening to the retro sounds directly from Super metroid.");
 
+//patch 1.3
 initPatch("1.3", "24 September, 2021");
 initWords_ext("Changes and new stuff", fa_center, c_white, 0, false);
 initHeader("Stats");

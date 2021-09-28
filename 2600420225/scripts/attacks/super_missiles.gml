@@ -11,7 +11,7 @@ set_hitbox_value( AT_FTHROW, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value( AT_FTHROW, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value( AT_FTHROW, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value( AT_FTHROW, 1, HG_BASE_KNOCKBACK, 2);
-set_hitbox_value( AT_FTHROW, 1, HG_KNOCKBACK_SCALING, 1.5);
+set_hitbox_value( AT_FTHROW, 1, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value( AT_FTHROW, 1, HG_ANGLE, 60);
 set_hitbox_value( AT_FTHROW, 1, HG_EXTRA_CAMERA_SHAKE, 1);
 set_hitbox_value( AT_FTHROW, 1, HG_HIT_PARTICLE_NUM, 0);

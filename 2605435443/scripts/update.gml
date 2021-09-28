@@ -173,7 +173,7 @@ if (easter_egg_timer <= 90) {
 		voiced_peacock = true;
 		cancelled_voice = false;
 		
-		 if !(oPlayer.url == 2135192216 || oPlayer.url == CH_ELLIANA || oPlayer.url == CH_ZETTERBURN || oPlayer.url == CH_CLAIREN || oPlayer.url == CH_ORI || oPlayer.url == 2229862078 || oPlayer.url == 2261916872 || oPlayer.url == 1870630263 || oPlayer.url == 1890617624 || oPlayer.url == 1871153050 || oPlayer.url == 1970731843 || oPlayer.url == 2190448871 || oPlayer.url == 2407716024 || get_player_color(player) == 15 || (oPlayer.url == "2605435443")){
+		 if !(oPlayer.url == 2135192216 || oPlayer.url == CH_ELLIANA || oPlayer.url == CH_ZETTERBURN || oPlayer.url == CH_CLAIREN || oPlayer.url == CH_ORI || oPlayer.url == 2229862078 || oPlayer.url == 2261916872 || oPlayer.url == 1870630263 || oPlayer.url == 1890617624 || oPlayer.url == 1871153050 || oPlayer.url == 1970731843 || oPlayer.url == 2190448871 || oPlayer.url == 2407716024 || get_player_color(player) != 15 || get_player_color(player) != 17 || get_player_color(player) != 18 || (oPlayer.url == "2605435443")){
     snd_rng = random_func(0, 4, true);
     if (snd_rng == 0) {
         sound_play(sound_get("voice_intro1"));
@@ -186,7 +186,7 @@ if (easter_egg_timer <= 90) {
     }
 }
     
-  if (oPlayer.url == 2135192216 && get_player_color(player) != 15 && (oPlayer.url != "2605435443")){
+  if (oPlayer.url == 2135192216 && get_player_color(player) != 15 && get_player_color(player) != 17 && get_player_color(player) != 18 && (oPlayer.url != "2605435443")){
     snd_rng = random_func(0, 5, true);
     
     if (snd_rng == 0) {
@@ -202,7 +202,7 @@ if (easter_egg_timer <= 90) {
     }
 }
 
-    if (oPlayer.url == 2407716024 && get_player_color(player) != 15 && (oPlayer.url != "2605435443")){
+    if (oPlayer.url == 2407716024 && get_player_color(player) != 15 && get_player_color(player) != 17 && get_player_color(player) != 18 && (oPlayer.url != "2605435443")){
 	    snd_rng = random_func(0, 5, true);
     if (snd_rng == 0) {
         sound_play(sound_get("voice_intro1"));
@@ -217,7 +217,7 @@ if (easter_egg_timer <= 90) {
     }
 }   
 
-if ((oPlayer.url == "2605435443") && get_player_color(player) != 15){
+if ((oPlayer.url == "2605435443") && get_player_color(player) != 15 && get_player_color(player) != 17 && get_player_color(player) != 18){
 	    snd_rng = random_func(0, 6, true);
     if (snd_rng == 0) {
         sound_play(sound_get("voice_intro1"));
@@ -236,7 +236,14 @@ if ((oPlayer.url == "2605435443") && get_player_color(player) != 15){
 if (get_player_color(player) == 15){
 	        sound_play(sound_get("voice_intro_sans"));
 }
-}
+if (get_player_color(player) == 17){
+        sound_play(sound_get("voice_intro_ena"));
+    }
+
+if (get_player_color(player) == 18){
+        sound_play(sound_get("voice_intro_tankman"));
+    }
+} 
 }
 
 if easter_egg_set == true {
@@ -359,8 +366,8 @@ got_hit_num = 0;
 }
 
 //TAUNT 2
-if (state = PS_PARRY_START && taunt_pressed){
-   set_attack(AT_TAUNT);
+if (state == PS_PARRY_START && taunt_pressed){
+   set_attack = AT_UTHROW;
 }
 
 

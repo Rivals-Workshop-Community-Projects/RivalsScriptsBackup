@@ -378,3 +378,15 @@ if(is_dead == true){
 }else{
     gpu_set_fog(false, c_black, 0, 1);
 }
+
+if(is_somersaulting == true && jump_power_up == "screw_attack_"){
+    gpu_set_fog(true, c_lime, 0, 1);
+    if(is_facing == "right"){
+        draw_sprite_ext(sprite_index, image_index, x, y, 2, 2, 0, c_white, fog_magic3);
+    }else if(is_facing == "left"){
+        draw_sprite_ext(sprite_index, image_index, x, y, -2, 2, 0, c_white, fog_magic3);
+    }
+    gpu_set_fog(false, c_lime, 0, 1);
+}else{
+    gpu_set_fog(false, c_lime, 0, 1);
+}

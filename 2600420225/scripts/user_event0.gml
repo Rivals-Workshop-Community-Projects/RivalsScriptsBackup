@@ -1,3 +1,5 @@
+set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_DESTROY_EFFECT, beam_collision);
+
 if(beam_level == "1"){
     set_hitbox_value( AT_UTHROW, 1, HG_DAMAGE, 2);
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
@@ -57,7 +59,7 @@ if(is_aiming == "up_"){
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_SPRITE, sprite_get("beam_attacks_" + beam_level + "_shot_+"));
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_MASK, sprite_get("beam_attacks_" + beam_level + "_shot_+"));
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_HSPEED, 0);
-    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_VSPEED, -10);
+    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_VSPEED, -12);
     if(is_facing == "right"){
         if(beam_level == "1"){
         projectile_x = 0;
@@ -86,7 +88,7 @@ if(is_aiming == "down_"){
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_SPRITE, sprite_get("beam_attacks_" + beam_level + "_shot_+"));
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_MASK, sprite_get("beam_attacks_" + beam_level + "_shot_+"));
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_HSPEED, 0);
-    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_VSPEED, 10);
+    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_VSPEED, 12);
     if(is_facing == "right"){
         if(beam_level == "1"){
         projectile_x = 20;
@@ -114,8 +116,8 @@ if(is_aiming == "down_"){
 if(is_aiming == "diagonal_up_" || (is_aiming == "up_" && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH))){
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_SPRITE, sprite_get("beam_attacks_" + beam_level + "_shot_x"));
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_MASK, sprite_get("beam_attacks_" + beam_level + "_shot_x"));
-    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_HSPEED, 10);
-    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_VSPEED, -10);
+    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_HSPEED, 12);
+    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_VSPEED, -12);
     if(is_facing == "right"){
         if(beam_level == "1"){
         projectile_x = 36;
@@ -143,8 +145,8 @@ if(is_aiming == "diagonal_up_" || (is_aiming == "up_" && (state == PS_WALK || st
 if(is_aiming == "diagonal_down_"){
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_SPRITE, sprite_get("beam_attacks_" + beam_level + "_shot_x"));
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_MASK, sprite_get("beam_attacks_" + beam_level + "_shot_x"));
-    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_HSPEED, 10);
-    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_VSPEED, 10);
+    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_HSPEED, 12);
+    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_VSPEED, 12);
     if(is_facing == "right"){
         if(beam_level == "1"){
         projectile_x = 40;
@@ -172,7 +174,7 @@ if(is_aiming == "diagonal_down_"){
 if(is_aiming == "forward_"){
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_SPRITE, sprite_get("beam_attacks_" + beam_level + "_shot_+"));
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_MASK, sprite_get("beam_attacks_" + beam_level + "_shot_+"));
-    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_HSPEED, 10);
+    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_HSPEED, 12);
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_VSPEED, 0);
     if(is_facing == "right"){
         if(beam_level == "1"){
@@ -216,7 +218,7 @@ if(is_aiming == "forward_"){
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_SPRITE, sprite_get("beam_attacks_" + beam_level + "_shot_+"));
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_MASK, sprite_get("beam_attacks_" + beam_level + "_shot_+"));
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_HSPEED, 0);
-    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_VSPEED, -10);
+    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_VSPEED, -12);
     if(is_facing == "right"){
         if(beam_level == "1"){
         projectile_x = -8;
@@ -244,8 +246,8 @@ if(is_aiming == "forward_"){
 if(is_aiming == "diagonal_up_" || (is_aiming == "up_" && (state == PS_WALK || state == PS_DASH_START || state == PS_DASH))){
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_SPRITE, sprite_get("beam_attacks_" + beam_level + "_shot_x"));
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_MASK, sprite_get("beam_attacks_" + beam_level + "_shot_x"));
-    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_HSPEED, 10);
-    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_VSPEED, -10);
+    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_HSPEED, 12);
+    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_VSPEED, -12);
     if(is_facing == "right"){
         if(beam_level == "1"){
         projectile_x = 28;
@@ -273,8 +275,8 @@ if(is_aiming == "diagonal_up_" || (is_aiming == "up_" && (state == PS_WALK || st
 if(is_aiming == "diagonal_down_"){
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_SPRITE, sprite_get("beam_attacks_" + beam_level + "_shot_x"));
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_MASK, sprite_get("beam_attacks_" + beam_level + "_shot_x"));
-    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_HSPEED, 10);
-    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_VSPEED, 10);
+    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_HSPEED, 12);
+    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_VSPEED, 12);
     if(is_facing == "right"){
         if(beam_level == "1"){
         projectile_x = 38;
@@ -302,7 +304,7 @@ if(is_aiming == "diagonal_down_"){
 if(is_aiming == "forward_"){
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_SPRITE, sprite_get("beam_attacks_" + beam_level + "_shot_+"));
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_MASK, sprite_get("beam_attacks_" + beam_level + "_shot_+"));
-    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_HSPEED, 10);
+    set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_HSPEED, 12);
     set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_VSPEED, 0);
     if(is_facing == "right"){
         if(beam_level == "1"){

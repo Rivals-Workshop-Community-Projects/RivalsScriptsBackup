@@ -33,7 +33,7 @@ sprite_change_offset("samus_crouch_idle_aim_forward_right", 10, 31);
 sprite_change_offset("samus_jump_start_right", 10, 42);
 sprite_change_offset("samus_jump_rise_right", 10, 44);
 sprite_change_offset("samus_land_right", 10, 42);
-sprite_change_offset("samus_idle_aim_diagonal_up_right", 9, 45);
+sprite_change_offset("samus_idle_aim_diagonal_up_right", 9, 47);
 sprite_change_offset("samus_idle_aim_diagonal_down_right", 9, 41);
 sprite_change_offset("samus_idle_aim_up_right", 9, 53);
 sprite_change_offset("samus_crouch_idle_aim_diagonal_down_right", 9, 30);
@@ -41,7 +41,7 @@ sprite_change_offset("samus_crouch_idle_aim_diagonal_up_right", 9, 36);
 sprite_change_offset("samus_crouch_anim_aim_up_right", 9, 42);
 sprite_change_offset("samus_crouch_idle_aim_up_right", 9, 42);
 sprite_change_offset("samus_aerial_aim_forward_right", 10, 36);
-sprite_change_offset("samus_aerial_aim_diagonal_up_right", 10, 37);
+sprite_change_offset("samus_aerial_aim_diagonal_up_right", 10, 38);
 sprite_change_offset("samus_aerial_aim_diagonal_down_right", 10, 30);
 sprite_change_offset("samus_aerial_aim_down_right", 10, 34);
 sprite_change_offset("samus_aerial_aim_up_right", 10, 43);
@@ -142,7 +142,7 @@ sprite_change_offset("samus_intro", 12, 47);
 
 //death
 
-sprite_change_offset("death_animation", 36, 55);
+sprite_change_offset("death_animation", 36, 65);
 sprite_change_offset("death_animation_background", 0, 0);
 
 ///physical attacks
