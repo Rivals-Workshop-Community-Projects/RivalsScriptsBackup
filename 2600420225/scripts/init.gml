@@ -5,14 +5,14 @@ char_height         = 88;
 knockback_adj       = 1;		// 0.9  -  1.2
 
 // Ground movement
-walk_speed          = 5;		// 3    -  4.5
-walk_accel          = 0.08;		// 0.2  -  0.5
+walk_speed          = 6;		// 3    -  4.5
+walk_accel          = 0.1;		// 0.2  -  0.5
 walk_turn_time      = 0;	    // 6
-initial_dash_time   = 10		// 8    -  16
+initial_dash_time   = 0;		// 8    -  16
 initial_dash_speed  = 6;		// 4    -  9
 dash_speed          = 8;		// 5    -  9
 dash_turn_time      = 0;		// 8    -  20
-dash_turn_accel     = 0.2;		// 0.1  -  2
+dash_turn_accel     = 0;		// 0.1  -  2
 dash_stop_time      = 0;		// 4    -  6
 dash_stop_percent   = 0;		// 0.25 -  0.5
 ground_friction     = 9999;		// 0.3  -  1
@@ -205,17 +205,10 @@ samus_check = 1;
 hit_counter = 0;
 power_up_timer = 0
 prev_level = 0;
-prev_missile_amount = 0;
-prev_super_missile_amount = 0;
-prev_power_bomb_amount = 0;
-prev_health = 0;
-prev_tank_empty = 0;
 damage = 0;
 prev_damage = 0;
 space_timer = 0;
 charge_timer = 0;
-beam_trail = 0;
-beam_trail_movement = 20
 charging_timer = 0;
 is_charged = false;
 projectile_x = 20;
@@ -224,12 +217,11 @@ popup_timer = 240;
 draw_info = false;
 missile_cooldown = 0;
 bomb_cooldown = 0;
-smoke_trail = 0;
-smoke_trail_anim = 0;
 power_bomb_cooldown = 0;
 fog_magic = 0.1;
 fog_magic2 = 0.2;
 fog_magic3 = 0.1
+shading = false;
 speeding = false;
 shinespark_charged = false;
 shinespark_timer = 0;
@@ -239,6 +231,7 @@ shinespark_trigger = 0;
 reserve_trigger = 0;
 crystal_flash_timer = 0;
 is_crystal_flashing = false;
+screw_cooldown = 0;
 
 space_jump = false;
 screw_attack = false;
@@ -248,8 +241,8 @@ beam_4 = false;
 beam_5 = false;
 beam_6 = false;
 
-prev_x_pos = 0;
-prev_y_pos = 0;
+prev_x = 0;
+prev_y = 0;
 
 shinespark_end = 0;
 
@@ -257,7 +250,8 @@ charge_sfx = 0;
 spark_sfx = 0;
 somer_sfx = 0;
 
-opponent_fog_timer = 0;
+arm_cannon_x = 0;
+arm_cannon_y = 0;
 
 //I need theese to draw the tanks in the hud
 tank_1 = "full"
@@ -357,7 +351,6 @@ morph_hurtbox_spr= sprite_get("morph_hurtbox");
 beam_collision = hit_fx_create( sprite_get( "beam_attacks_" + beam_level + "_shot_and_charge_collision" ), 10 );
 missile_collision = hit_fx_create( sprite_get( "physical_attacks_missile_contact_explosion" ), 12 );
 super_missile_collision = hit_fx_create( sprite_get( "physical_attacks_super_missile_contact_explosion" ), 12 );
-beam_trail_anim = hit_fx_create( sprite_get( "beam_attacks_" + beam_level + "_charge_particle" ), 24 );
 empty = hit_fx_create(sprite_get("empty"), 1);
 
 //shinespark directions

@@ -8,7 +8,7 @@ var ig = 1;
 //Down Tilt Start
 set_window_value(AT_DTILT, ig, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DTILT, ig, AG_WINDOW_LENGTH, 6);
-set_window_value(AT_DTILT, ig, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_DTILT, ig, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DTILT, ig, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_DTILT, ig, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DTILT, ig, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
@@ -43,7 +43,7 @@ ig = 1;
 
 set_hitbox_value(AT_DTILT, ig, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DTILT, ig, HG_WINDOW, 2);
-set_hitbox_value(AT_DTILT, ig, HG_LIFETIME, 4); // changed lifetime to match length of active window
+set_hitbox_value(AT_DTILT, ig, HG_LIFETIME, 3); // changed lifetime to match length of active window
 set_hitbox_value(AT_DTILT, ig, HG_HITBOX_X, 49);
 set_hitbox_value(AT_DTILT, ig, HG_HITBOX_Y, -14);
 set_hitbox_value(AT_DTILT, ig, HG_WIDTH, 71);
@@ -66,7 +66,7 @@ ig++;
 
 set_hitbox_value(AT_DTILT, ig, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DTILT, ig, HG_WINDOW, 3);
-set_hitbox_value(AT_DTILT, ig, HG_LIFETIME, 4); // changed lifetime to match length of active window
+set_hitbox_value(AT_DTILT, ig, HG_LIFETIME, 3); // changed lifetime to match length of active window
 set_hitbox_value(AT_DTILT, ig, HG_HITBOX_X, -24);
 set_hitbox_value(AT_DTILT, ig, HG_HITBOX_Y, -6);
 set_hitbox_value(AT_DTILT, ig, HG_WIDTH, 63);

@@ -31,7 +31,8 @@ set_color_profile_slot( 0, 6, 107, 0, 0 );
 set_color_profile_slot_range( 6, 6, 1, 2 );
 
 // vysor
-// (no main color selected)
+set_color_profile_slot( 0, 7, 0, 248, 112 );
+set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS

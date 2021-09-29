@@ -34,7 +34,7 @@ set_window_value(AT_FSTRONG, 3, AG_WINDOW_SFX, asset_get("sfx_ori_bash_launch"))
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, .7); // 1.5
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, .7);
-set_window_value(AT_FSTRONG, 3, AG_WINDOW_CUSTOM_GRAVITY, .2);
+set_window_value(AT_FSTRONG, 3, AG_WINDOW_CUSTOM_GRAVITY, 0);
 
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 12);
@@ -46,7 +46,7 @@ set_window_value(AT_FSTRONG, 4, AG_WINDOW_CUSTOM_AIR_FRICTION, .2); // .15
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_SFX, asset_get("sfx_fishing_rod_land"))
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_SFX_FRAME, 14);
-set_window_value(AT_FSTRONG, 4, AG_WINDOW_CUSTOM_GRAVITY, .2);
+set_window_value(AT_FSTRONG, 4, AG_WINDOW_CUSTOM_GRAVITY, 0);
 
 set_window_value(AT_FSTRONG, 5, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSTRONG, 5, AG_WINDOW_LENGTH, 10);
@@ -59,7 +59,7 @@ set_window_value(AT_FSTRONG, 5, AG_WINDOW_CUSTOM_AIR_FRICTION, .2);
 set_window_value(AT_FSTRONG, 5, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG, 5, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
 set_window_value(AT_FSTRONG, 5, AG_WINDOW_SFX_FRAME, 9);
-set_window_value(AT_FSTRONG, 5, AG_WINDOW_CUSTOM_GRAVITY, .3);
+set_window_value(AT_FSTRONG, 5, AG_WINDOW_CUSTOM_GRAVITY, .5);
 
 
 set_window_value(AT_FSTRONG, 6, AG_WINDOW_TYPE, 1);

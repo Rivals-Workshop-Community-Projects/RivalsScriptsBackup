@@ -9,7 +9,7 @@ if (attack == AT_NSPECIAL){
 	can_fast_fall = window > 1 && window < 3;
 	
 	// Cap fall speed
-	vsp = min(vsp,4);
+	vsp = min(vsp,3);
 	
 	// Reset angle
 	if(window == 1 && window_timer == 1)
@@ -584,7 +584,7 @@ if (attack == AT_FSPECIAL){
 			//grabbedProj = tempProj;
 			grabbed_solid = true;
 			caught_projectile = false;
-			can_grab_solid_fspec = false;
+			//can_grab_solid_fspec = false;
 			set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 8);
 			clear_button_buffer(PC_SHIELD_PRESSED);
 		    
@@ -1704,6 +1704,10 @@ if (attack == AT_DSPECIAL){
 	{
 		land_dust_timer = 24;
 		whiffspin = false;
+		
+		if(dspec_big_flip == 1){ set_window_value(AT_DSPECIAL,2,AG_WINDOW_VSPEED,-14); set_window_value(AT_DSPECIAL,2,AG_WINDOW_SFX,asset_get("sfx_ori_bash_projectile")); dspec_big_flip = 2;}
+		else {	set_window_value(AT_DSPECIAL,2,AG_WINDOW_VSPEED,-9); set_window_value(AT_DSPECIAL,2,AG_WINDOW_SFX,asset_get("sfx_ori_stomp_spin")); dspec_big_flip = 0;}
+		
 	}
 	
 	// // Throwing firecracker
@@ -1776,8 +1780,14 @@ if (attack == AT_DSPECIAL){
         land_dust_timer = 0;
         sound_play( asset_get( "sfx_land" ) );
     }
-    
-
+   
+    // Double hop
+	if(!free && window > 2 && down_down && special_pressed && dspec_big_flip == 0)
+	{
+		move_cooldown[AT_DSPECIAL] = 0;
+		dspec_big_flip = 1;
+		set_state(PS_IDLE);
+	}
     
     // // Super armor
     // if(window == 2 && window_timer <= 5)

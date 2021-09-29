@@ -132,7 +132,7 @@ fc_effect = hit_fx_create( sprite_get( "explosion_single" ), 7 );
 party_effect = hit_fx_create( sprite_get( "party_boom" ), 28 );
 party_has_moved = false;
 
-fc_lifetime = 75;
+fc_lifetime = 85; // 75
 
 fc_string = "firecracker_single";
 
@@ -190,6 +190,7 @@ from_uspecial = false;
 landing_time = 20;
 can_air_dspecial = true;
 dspec_buffer = false;
+dspec_big_flip = 0;
 
 // Particles
 land_dust_started = false;

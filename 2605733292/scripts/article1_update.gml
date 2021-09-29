@@ -258,8 +258,12 @@ if (state == 1){ //Ability Comes into Play
 }
 
 if (state == 2){ //Holds Ability
-	if (state_timer == 1){
-		//
+	if (state_timer == 1
+	|| state_timer == 11){
+		if (copy_essence_spawn_loop == 23 || copy_essence_spawn_loop == 24){
+			//spawn_hit_fx( x, y - 32, 301 );
+			//sound_play(asset_get("mfx_unstar"));
+		}
 	}
     if (state_timer == 19 ){
 		state_timer = 0
@@ -269,6 +273,8 @@ if (state == 2){ //Holds Ability
 			state = 3
 			state_timer = 0
 			copy_essence_spawn_loop = 0
+			spawn_hit_fx( x, y - 32, 144 );
+			sound_play(player_id.sfx_ability_star_break);
 		}
 	}
 	//create_hitbox(AT_DSPECIAL, 2, x, y - 24);
@@ -344,13 +350,33 @@ if (state == 4){
 		}
 	}
 	if (!free){
-		if (state_timer > 12){
+		if (state_timer > 12 && bounce_lockout == 0){
+			y -= 4
+			bounce_lockout = 2;
 			sound_play(player_id.sfx_ability_star_bounce);
 			spawn_base_dust(x, y + 24, "land", 0);
+			spawn_base_dust(x + 20, y + 24, "dash", -1);
+			//spawn_base_dust(x, y + 24, "n_wavedash", 0);
+			spawn_base_dust(x - 20, y + 24, "dash", 1);
 			vsp = -6
+		} else if (state_timer > 12 && bounce_lockout > 0){
+			player_id.copy_essence_hit = false
+			player_id.essences_in_use--;
+			player_id.essence_got_parried = false
+			sound_play(player_id.sfx_ability_star_break);
+			spawn_hit_fx( x, y, player_id.pillow_hit_fx_sml );
+			if (player_id.essences_in_use != player_id.essences_max_limit){
+				player_id.move_cooldown[AT_DSPECIAL] = 120;
+			}
+			instance_destroy();
+			exit;
 		}
 	}
 	//bouncing
+	if (bounce_lockout != 0){
+		bounce_lockout--;
+	}
+	
 	if (should_bounce){
 		
 		
@@ -373,6 +399,13 @@ if (state == 4){
 	//in here for if someone else hits the katamari
 	cur_hitbox.player = hit_by;
 	
+	//parry stun stuffs
+	if (cur_hitbox.player == player){
+		cur_hitbox.projectile_parry_stun = true;
+	} else {
+		cur_hitbox.projectile_parry_stun = false;
+	}
+	
 	//destroy hitbox
 	if (should_destroy_hitbox && hitbox_active){
 		should_destroy_hitbox = false;
@@ -386,7 +419,7 @@ if (state == 4){
 		player_id.essences_in_use--;
 		player_id.essence_got_parried = false
 		sound_play(player_id.sfx_ability_star_break);
-		//spawn_hit_fx( x, y - 32, 144 );
+		spawn_hit_fx( x, y, player_id.pillow_hit_fx_sml );
 		if (player_id.essences_in_use != player_id.essences_max_limit){
 			player_id.move_cooldown[AT_DSPECIAL] = 120;
 		}
@@ -405,6 +438,20 @@ if (state == 4){
 		}
 		instance_destroy();
 		exit;
+	}
+	
+	if (state_timer == 220
+	|| state_timer == 224
+	|| state_timer == 226
+	|| state_timer == 228
+	|| state_timer == 230
+	|| state_timer == 232
+	|| state_timer == 234
+	|| state_timer == 236
+	|| state_timer == 238){
+		ability_show = false;
+	} else {
+		ability_show = true;
 	}
 }
 

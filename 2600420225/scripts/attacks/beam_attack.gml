@@ -7,3 +7,4 @@ set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_PARRY_STUN, false);
 set_hitbox_value( AT_UTHROW, 1, HG_LIFETIME, 99999999);
 set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_DESTROY_EFFECT, beam_collision);
 set_hitbox_value( AT_UTHROW, 1, HG_HIT_PARTICLE_NUM, 0);
+set_hitbox_value( AT_UTHROW, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);

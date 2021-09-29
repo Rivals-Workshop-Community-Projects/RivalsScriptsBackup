@@ -8,20 +8,22 @@ with (oPlayer){
 	//draw_debug_text( x, y + 60, "sleep timer" + string(NotSleepKirby_SleepTimer))
 	//draw_debug_text( x, y + 90, "sleep tick" + string(NotSleepKirby_SleepTick))
 	//draw_debug_text( x, y + 120, "flash" + string(NotSleepKirby_Sleep_Hat_Flash))
+	//draw_debug_text( x, y + 20, "a" + string(NotSleepKirby_Hat_Offset_X))
+	//draw_debug_text( x, y + 40, "b" + string(sleep_kirby_hat_offset_y))
 	if (NotSleepKirby_IsSleeping == true && is_in_playtest == false){
 		//draw_sprite( oPlayer.Sleep_Meter, (NotSleepKirby_SleepTimerRelease/NotSleepKirby_SleepTimer), x, y - 60)
 		if (NotSleepKirby_Sleep_Hat_Flash == false){
 			if (spr_dir == 1){
 				if (NotSleepKirby_hat_timer2 != 6){
-					draw_sprite( SleepKirby_enemy_hat, NotSleepKirby_hat_timer2, x, y - char_height + 40)
+					draw_sprite( SleepKirby_enemy_hat, NotSleepKirby_hat_timer2, x + sleep_kirby_hat_offset_x, y - char_height + 40 + sleep_kirby_hat_offset_y)
 				} else {
-					draw_sprite( SleepKirby_enemy_hat, 6, x, y - char_height + 40)
+					draw_sprite( SleepKirby_enemy_hat, 6, x + sleep_kirby_hat_offset_x, y - char_height + 40 + sleep_kirby_hat_offset_y)
 				}
 			} else if (spr_dir == -1){
 				if (NotSleepKirby_hat_timer2 != 6){
-					draw_sprite( SleepKirby_enemy_hat_otherdir, NotSleepKirby_hat_timer2, x, y - char_height + 40)
+					draw_sprite( SleepKirby_enemy_hat_otherdir, NotSleepKirby_hat_timer2, x + sleep_kirby_hat_offset_x, y - char_height + 40 + sleep_kirby_hat_offset_y)
 				} else {
-					draw_sprite( SleepKirby_enemy_hat_otherdir, 6, x, y - char_height + 40)
+					draw_sprite( SleepKirby_enemy_hat_otherdir, 6, x + sleep_kirby_hat_offset_x, y - char_height + 40 + sleep_kirby_hat_offset_y)
 				}
 			}
 		}

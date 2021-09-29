@@ -12,8 +12,8 @@ if (my_hitboxID.attack == AT_NSPECIAL){
 
 if (my_hitboxID.attack == AT_DSPECIAL){
 	essence_got_parried = true
-	prat_land_time = 80;
-	set_state(PS_PRATLAND);
+	//prat_land_time = 80;
+	//set_state(PS_PRATLAND);
 	/*
     with (asset_get("obj_article1")){
         if (player_id.player == other.player){
@@ -25,6 +25,6 @@ if (my_hitboxID.attack == AT_DSPECIAL){
 	*/
 }
 
-if (my_hitboxID.attack != AT_NAIR && my_hitboxID.attack != AT_NSPECIAL && my_hitboxID.attack != AT_DSPECIAL){
+if (my_hitboxID.attack != AT_NAIR && my_hitboxID.attack != AT_NSPECIAL){
 	prat_land_time = 10;
 }

@@ -153,6 +153,7 @@ set_hitbox_value(AT_FSPECIAL, 4, HG_HITPAUSE_SCALING, .75); // 6
 set_hitbox_value(AT_FSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_FSPECIAL, 4, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_FSPECIAL, 4, HG_HIT_LOCKOUT, 10);
 
 // Front throw
 set_hitbox_value(AT_FSPECIAL, 5, HG_PARENT_HITBOX, 0);

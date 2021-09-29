@@ -27,8 +27,8 @@ ig = 1;
 set_hitbox_value(42, ig, HG_HITBOX_TYPE, 1);
 set_hitbox_value(42, ig, HG_WINDOW, 1);
 set_hitbox_value(42, ig, HG_HITBOX_GROUP, 1);
-set_hitbox_value(42, ig, HG_WINDOW_CREATION_FRAME, 6);
-set_hitbox_value(42, ig, HG_LIFETIME, 8);
+set_hitbox_value(42, ig, HG_WINDOW_CREATION_FRAME, 3);
+set_hitbox_value(42, ig, HG_LIFETIME, 3);
 set_hitbox_value(42, ig, HG_HITBOX_X, 9);
 set_hitbox_value(42, ig, HG_HITBOX_Y, -29);
 set_hitbox_value(42, ig, HG_WIDTH, 73);
@@ -41,6 +41,7 @@ set_hitbox_value(42, ig, HG_BASE_KNOCKBACK, 8); // reduced kb to 6 from 8
 set_hitbox_value(42, ig, HG_KNOCKBACK_SCALING, .4); // added kbs
 set_hitbox_value(42, ig, HG_BASE_HITPAUSE, 6); // changed bhp to match kb
 set_hitbox_value(42, ig, HG_HITPAUSE_SCALING, .3); // added hitpause scaling
+set_hitbox_value(42, ig, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(42, ig, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(42, ig, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(42, ig, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));

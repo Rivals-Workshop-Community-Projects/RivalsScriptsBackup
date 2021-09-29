@@ -90,13 +90,33 @@ if (_charge < 0 &&
 if (_reduceChargeNSCool == 0 &&
     _reduceChargeNSFlag)
 {
-    _charge--;
-    _postHitCool = c_HBPostHitCool;
+    //_charge--;
+    //_postHitCool = c_HBPostHitCool;
     _lifetime = c_HBLifespan;
-    if (instance_exists(_currHB)) { instance_destroy(_currHB); }
-    _currHB = noone;
+    //if (instance_exists(_currHB)) { instance_destroy(_currHB); }
+    //_currHB = noone;
     
     _reduceChargeNSFlag = false;
+}
+
+if (_fx_ballSquish_frames == 0 && pf_squish > 0)
+{
+    var use_sprCharge = _charge > 0 ? _charge + 1 : 1;
+    
+    //SAME CODE AS SLIGHTLY BELOW
+    if (_currHB != noone && instance_exists(_currHB))
+    {
+        try
+        {
+            _currHB.sprite_index = sprite_get(c_sprite + "_" + string(use_sprCharge));
+            _currHB.img_spd = c_img_spd;
+        }
+        catch (_ex)
+        {
+            instance_destroy(self);
+            print_debug("ERROR HAPPENED: " + string(_ex))
+        }
+    }
 }
 
 //====> Hitbox creation and position
@@ -119,7 +139,8 @@ if (!_hit)
         
         var use_sprCharge = _charge > 0 ? _charge + 1 : 1;
         
-        spawn_hit_fx(x, y, 115);
+        //spawn_hit_fx(x, y, 115);
+        spawn_hit_fx(x, y, 111);
         
         with (_currHB)
         {
@@ -147,8 +168,8 @@ else
 //====> Explode
 if (_explode)
 {
-    if (_currHB != noone)
-    {
+    //if (_currHB != noone)
+    //{
         with(c_owner)
         {
             set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 4 + (other._charge * 5)); //9, 14, 19, 24
@@ -163,7 +184,7 @@ if (_explode)
         {
             spawn_hit_fx(x, y, 157);
         }
-    }
+    //}
     
     c_owner.dspecial_lastExplosion = _charge
     flag_destroy = true;
@@ -187,6 +208,7 @@ if (_currHB != noone)
         var _HBHit = instance_place(x, y, pHitBox);
         var _boingH = false;
         var _boingV = 0; //0 = doesn't recoil, 1 = recoils upwards only, 2 = recoils downwards only
+        var _reverseVisual = 1;
         //_HBHit = instance_place(x, y, oPlayer);
         
         //If the obtained hitbox is not empty, is not the article's own hitbox or either
@@ -204,10 +226,10 @@ if (_currHB != noone)
             
             if (_HBHit.player_id != o)
             {
-                if (x > _HBHit.x)       { other._targetX += rd; }
-                else                    { other._targetX -= rd; }
-                if (y > _HBHit.y)       { other._targetY += vrd; }
-                else                    { other._targetY -= vrd; }
+                if (x > _HBHit.x)       { other._targetX += floor(rd * 1.5); }
+                else                    { other._targetX -= floor(rd * 1.5); }
+                if (y > _HBHit.y)       { other._targetY += floor(vrd * 1.5); }
+                else                    { other._targetY -= floor(vrd * 1.5); }
             }
             else if (_HBHit.player_id == o && _HBHit.attack == AT_NSPECIAL)
             {
@@ -304,6 +326,7 @@ if (_currHB != noone)
                         case AT_BAIR:
                             if (o.image_xscale > 0)     { other._targetX -= rd * modf[0]; }
                             else                        { other._targetX += rd * modf[0]; }
+                            _reverseVisual = -1;
                             break;
                         
                         //Straight Up Weak
@@ -336,6 +359,9 @@ if (_currHB != noone)
                 }
             }
             
+            //if (_HBHit.player_id == o) other._repositionCool = other.c_repositionCool;
+            //else other._repositionCool = other.c_repositionCool * 2;
+            
             other._repositionCool = other.c_repositionCool;
             
             if (_makeSound)
@@ -345,59 +371,82 @@ if (_currHB != noone)
                 sound_play(asset_get("sfx_clairen_hit_med"));
                 sound_play(asset_get("sfx_absa_whip3"));
                 
-                //Hit Effect and direction
-                var _hitFX;
-                switch (_fxDirection)
-                {
-                    default:
-                    case 0:
-                        _hitFX = spawn_hit_fx(x, y, other.fx_ballBlast); break;
-                    case 1:
-                        _hitFX = spawn_hit_fx(x, y, other.fx_ballBlast_up); break;
-                    case 2:
-                        _hitFX = spawn_hit_fx(x, y, other.fx_ballBlast_down); break;
-                }
-                _hitFX.image_xscale = o.image_xscale;
+                var use_sprCharge = other._charge > 0 ? other._charge + 1 : 1;
                 
-                //Hit Stop
-                other._ballHitpause = true;
-                
-                if (o.dip_ballHitstop)
+                if (_HBHit.player_id == o)
                 {
-                    o.hitpause = true;
-                    o.hitstop = 4;
-                    o.invincible = true;
-                    o.invince_time = 4;
-                }
-                
-                if (o.dip_boing)
-                {
-                    if (_boingH)
+                    //Hit Effect and direction
+                    var _hitFX;
+                    switch (_fxDirection)
                     {
-                        if (o.spr_dir > 0 && o.hsp < 0) { o.old_hsp = o.hsp; }
-                        else if (o.spr_dir < 0 && o.hsp > 0) { o.old_hsp = o.hsp; }
-                        else { o.old_hsp = -o.hsp; }
+                        default:
+                        case 0:
+                            _hitFX = spawn_hit_fx(x, y, other.fx_ballBlast);
+                            other._fx_ballSquish_frames = other.c_fx_ballSquish_frames;
+                            sprite_index = sprite_get(other.c_sprite + "_" + string(use_sprCharge) + "H");
+                            image_index = 0;
+                            spr_dir = o.spr_dir * _reverseVisual;
+                            img_spd = 0;
+                            break;
+                        case 1:
+                            _hitFX = spawn_hit_fx(x, y, other.fx_ballBlast_up);
+                            other._fx_ballSquish_frames = other.c_fx_ballSquish_frames;
+                            sprite_index = sprite_get(other.c_sprite + "_" + string(use_sprCharge) + "H");
+                            image_index = 1;
+                            spr_dir = o.spr_dir * _reverseVisual;
+                            img_spd = 0;
+                            break;
+                        case 2:
+                            _hitFX = spawn_hit_fx(x, y, other.fx_ballBlast_down);
+                            other._fx_ballSquish_frames = other.c_fx_ballSquish_frames;
+                            sprite_index = sprite_get(other.c_sprite + "_" + string(use_sprCharge) + "H");
+                            image_index = 2;
+                            spr_dir = o.spr_dir * _reverseVisual;
+                            img_spd = 0;
+                            break;
+                    }
+                    _hitFX.image_xscale = o.image_xscale;
+                    
+                    //Hit Stop
+                    other._ballHitpause = true;
+                    
+                    if (o.dip_ballHitstop)
+                    {
+                        o.hitpause = true;
+                        o.hitstop = 6;
+                        o.invincible = true;
+                        o.invince_time = 4;
+                    }
+                    
+                    if (o.dip_boing)
+                    {
+                        if (_boingH)
+                        {
+                            if (o.spr_dir > 0 && o.hsp < 0) { o.old_hsp = o.hsp; }
+                            else if (o.spr_dir < 0 && o.hsp > 0) { o.old_hsp = o.hsp; }
+                            else { o.old_hsp = -o.hsp; }
+                        }
+                        else
+                        {
+                            o.old_hsp = o.hsp;
+                        }
+                        
+                        switch (_boingV)
+                        {
+                            default:
+                            case 0:
+                                o.old_vsp = o.vsp; break;
+                            case 1:
+                                o.old_vsp = o.vsp > 0 ? -o.vsp : o.vsp; break;
+                            case 2:
+                                o.old_vsp = o.vsp < 0 ? -o.vsp : o.vsp; break;
+                        }
                     }
                     else
                     {
                         o.old_hsp = o.hsp;
+                        o.old_vsp = o.vsp;
                     }
-                    
-                    switch (_boingV)
-                    {
-                        default:
-                        case 0:
-                            o.old_vsp = o.vsp; break;
-                        case 1:
-                            o.old_vsp = o.vsp > 0 ? -o.vsp : o.vsp; break;
-                        case 2:
-                            o.old_vsp = o.vsp < 0 ? -o.vsp : o.vsp; break;
-                    }
-                }
-                else
-                {
-                    o.old_hsp = o.hsp;
-                    o.old_vsp = o.vsp;
                 }
             }
         }
@@ -483,7 +532,7 @@ if (_postHitCool < 0 &&
 {
     //spawn_hit_fx(x, y, c_hitFX);
     _charge--;
-    _postHitCool = c_HBPostHitCool;
+    _postHitCool = c_HBPostHitCool * 2;
     //flag_destroy = true;
 }
 
@@ -600,6 +649,9 @@ _trapCool--;            if (_trapCool < 0)              { _trapCool = 0; }
 _fxCool--;              if (_fxCool < 0)                { _fxCool = 0; }
 _parCool--;             if (_parCool < 0)               { _parCool = 0; }
 _reduceChargeNSCool--;  if (_reduceChargeNSCool < 0)    { _reduceChargeNSCool = 0; }
+
+pf_squish = _fx_ballSquish_frames;
+_fx_ballSquish_frames--;    if (_fx_ballSquish_frames < 0)    { _fx_ballSquish_frames = 0; }
 
 //Mantain after a cycle (conditional)
 if (_currHB != noone)   { _lifetime--;      if (_lifetime < 0)      { _lifetime = 0; } }

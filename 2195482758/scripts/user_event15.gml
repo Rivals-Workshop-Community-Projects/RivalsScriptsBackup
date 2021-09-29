@@ -496,7 +496,9 @@ if ("phone_inited" in self && phone_inited){
 			
 			You can cancel this move during the jump with any aerial or special, try out what combos you can land! My favorite it using it to approach while canceling with down air.
 			
-			This move has a very fast pop-up hitbox right at ther start, use this to cancel into DSpecial (air) for a DI chase combo!");
+			This move has a very fast pop-up hitbox right at ther start, use this to cancel into DSpecial (air) for a DI chase combo!
+			
+			Finally, you can do a mario-style double jump by using this move again just as you land to jump even higher!");
 			initTipImage(other.spr_dspecial, -3, fa_left, 1, c_white, 3);
 			
 			initTip("DSpecial (air): Power Stomp");

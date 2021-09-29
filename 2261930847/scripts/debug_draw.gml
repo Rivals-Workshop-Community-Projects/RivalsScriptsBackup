@@ -10,3 +10,4 @@
 
 //draw_debug_text(x, y + 35, "Joy_dir:" +string(joy_dir));
 //draw_debug_text(x, y + 35, "fastfall:" +string(can_fast_fall));
+

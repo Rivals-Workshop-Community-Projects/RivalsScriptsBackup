@@ -1,6 +1,8 @@
-if (player_id.is_morph == false && !free && (attack == AT_DTHROW || attack == AT_FTHROW || attack == AT_UTHROW || AT_DSTRONG_2)){destroyed = true}
+if(!free && (attack == AT_DTHROW || attack == AT_FTHROW || attack == AT_UTHROW || AT_DSTRONG_2) && (player_id.beam_level == "1" || player_id.beam_level == "2" || player_id.beam_level == "3")){
+    destroyed = true
+}
 
-if(stop_timer >= 1){
+if(stop_timer >= 2){
     destroyed = true;
 }
 

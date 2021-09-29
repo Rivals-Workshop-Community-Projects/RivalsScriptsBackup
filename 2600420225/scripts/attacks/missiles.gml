@@ -9,5 +9,4 @@ set_hitbox_value( AT_DTHROW, 1, HG_DAMAGE, 4);
 set_hitbox_value( AT_DTHROW, 1, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value( AT_DTHROW, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value( AT_DTHROW, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-set_hitbox_value( AT_DTHROW, 1, HG_BASE_KNOCKBACK, 0);
 set_hitbox_value( AT_DTHROW, 1, HG_HIT_PARTICLE_NUM, 0);

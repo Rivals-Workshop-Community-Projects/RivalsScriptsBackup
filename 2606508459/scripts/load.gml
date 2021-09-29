@@ -73,7 +73,7 @@ sprite_change_offset("nspecial_2", 48, 94);
 sprite_change_offset("nspecial_2_air", 35, 91); //!!!!!
 sprite_change_offset("fspecial", 80, 126);
 sprite_change_offset("fspecial_2", 80, 94);
-sprite_change_offset("uspecial", 48, 126);
+sprite_change_offset("uspecial", 80, 126);
 sprite_change_offset("dspecial", 48, 94);
 
 //Miscellaneous
@@ -88,10 +88,18 @@ sprite_change_offset("electricity", 48, 94);
 sprite_change_offset("nspecial_dust1", 91, 64);
 sprite_change_offset("nspecial_dust2", 63, 77);
 
-sprite_change_offset("ball_formA_1", 36, 47);
-sprite_change_offset("ball_formA_2", 36, 47);
-sprite_change_offset("ball_formA_3", 36, 47);
-sprite_change_offset("ball_formA_4", 36, 47);
+sprite_change_offset("ball_formA_1", 65, 65);
+sprite_change_offset("ball_formA_2", 65, 65);
+sprite_change_offset("ball_formA_3", 65, 65);
+sprite_change_offset("ball_formA_4", 65, 65);
+sprite_change_offset("ball_formA_1H", 65, 65);
+sprite_change_offset("ball_formA_2H", 65, 65);
+sprite_change_offset("ball_formA_3H", 65, 65);
+sprite_change_offset("ball_formA_4H", 65, 65);
+sprite_change_offset("ball_formA_1_hurt", 65, 65);
+sprite_change_offset("ball_formA_2_hurt", 65, 65);
+sprite_change_offset("ball_formA_3_hurt", 65, 65);
+sprite_change_offset("ball_formA_4_hurt", 65, 65);
 
 sprite_change_offset("ball_formB_1", 36, 47);
 sprite_change_offset("ball_formB_2", 36, 47);
@@ -115,9 +123,9 @@ sprite_change_offset("ball_shine_3", 24, 24);
 sprite_change_offset("ball_shine_4", 28, 28);
 
 sprite_change_offset("ballBounce", 48, 45);
-sprite_change_offset("ballBlast", 48, 62);
-sprite_change_offset("ballBlast_down", 80, 62);
-sprite_change_offset("ballBlast_up", 48, 62);
+sprite_change_offset("ballBlast", 112, 62);
+sprite_change_offset("ballBlast_down", 112, 62);
+sprite_change_offset("ballBlast_up", 112, 62);
 
 sprite_change_offset("fspecial_shine", 45, 66);
 

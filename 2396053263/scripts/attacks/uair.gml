@@ -2,7 +2,7 @@ set_attack_value(AT_UAIR, AG_CATEGORY, 1);
 set_attack_value(AT_UAIR, AG_SPRITE, sprite_get("uair"));
 set_attack_value(AT_UAIR, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_UAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_UAIR, AG_LANDING_LAG, 15);
+set_attack_value(AT_UAIR, AG_LANDING_LAG, 10);
 set_attack_value(AT_UAIR, AG_HURTBOX_SPRITE, sprite_get("uair_hurt"));
 
 set_window_value(AT_UAIR, 1, AG_WINDOW_TYPE, 1);
@@ -40,7 +40,7 @@ set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, 0.85);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, hit_uair);
-set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_TYPE, 1); //sweetspot but again
 set_hitbox_value(AT_UAIR, 2, HG_WINDOW, 2);
@@ -57,7 +57,7 @@ set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, 0.85);
 set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_UAIR, 2, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, hit_uair);
-set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 
 set_hitbox_value(AT_UAIR, 3, HG_HITBOX_TYPE, 1); //spikespot
 set_hitbox_value(AT_UAIR, 3, HG_WINDOW, 2);

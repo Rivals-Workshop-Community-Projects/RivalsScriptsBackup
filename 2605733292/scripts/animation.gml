@@ -73,9 +73,18 @@ if (attack == AT_EXTRA_1){
 
 with (oPlayer){
 	if (is_in_playtest == false){
-		if (NotSleepKirby_IsSleeping){
+		if (NotSleepKirby_IsSleeping == true){
 			if (url == 2284823424){
 				sprite_index = (sprite_get("taunt_2")); image_index = 5;
+			}
+			if (url != 2605733292){
+				if (sleep_kirby_has_sleep_sprites == true){
+					if (free){
+						sprite_index = sleep_kirby_sleep_sprite_air;
+					} else if (!free){
+						sprite_index = sleep_kirby_sleep_sprite_ground;
+					}
+				}
 			}
 		}
 	}

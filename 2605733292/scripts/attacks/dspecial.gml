@@ -57,6 +57,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_FORCE_FLINCH, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_DRIFT_MULTIPLIER, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_SDI_MULTIPLIER, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_LOCKOUT, 2);
+set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, false);
 
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 3);

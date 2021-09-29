@@ -71,6 +71,7 @@ set_hitbox_value(AT_UTILT, ig, HG_BASE_KNOCKBACK, 7); // raised kb to 5 from 3/4
 set_hitbox_value(AT_UTILT, ig, HG_KNOCKBACK_SCALING, .3); // raised kb scaling to .4 from .3
 set_hitbox_value(AT_UTILT, ig, HG_BASE_HITPAUSE, 5); // raised hitpause to 5 to match kb
 set_hitbox_value(AT_UTILT, ig, HG_HITPAUSE_SCALING, .4); // added hp scaling
+set_hitbox_value(AT_UTILT, ig, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_UTILT, ig, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_UTILT, ig, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_UTILT, ig, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
@@ -94,6 +95,7 @@ set_hitbox_value(AT_UTILT, ig, HG_BASE_KNOCKBACK, 7); // raised kb to 5 from 3/4
 set_hitbox_value(AT_UTILT, ig, HG_KNOCKBACK_SCALING, .3); // raised kb scaling to .4 from .3
 set_hitbox_value(AT_UTILT, ig, HG_BASE_HITPAUSE, 5); // raised hitpause to 5 to match kb
 set_hitbox_value(AT_UTILT, ig, HG_HITPAUSE_SCALING, .4); // added hp scaling
+set_hitbox_value(AT_UTILT, ig, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_UTILT, ig, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_UTILT, ig, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_UTILT, ig, HG_HIT_SFX, asset_get("sfx_blow_medium2"));

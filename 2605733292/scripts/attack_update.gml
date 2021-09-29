@@ -147,6 +147,14 @@ if (has_rune("C")){
 	set_hitbox_value(AT_UTILT, 1, HG_HEIGHT, 65);
 }
 
+if (attack == AT_UTILT){
+	if (window == 1){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x - (22 * spr_dir), y, "walk", spr_dir)
+		}
+	}
+}
+
 /*
 if (attack == AT_UTILT){
 	if (window == 1){
@@ -356,7 +364,13 @@ if (attack == AT_FSTRONG){
 		}
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
 			sound_play(asset_get("sfx_jumpground"));
-			spawn_base_dust( x + (0 * spr_dir), y, "walk", spr_dir)
+			if (fstrong_charge > 12.5){
+				spawn_base_dust( x + (0 * spr_dir), y, "dash_start", spr_dir)
+			} else if (fstrong_charge < 12.5 && fstrong_charge > 5.5){
+				spawn_base_dust( x + (0 * spr_dir), y, "dash", spr_dir)
+			} else if (fstrong_charge < 5.5){//>
+				spawn_base_dust( x + (0 * spr_dir), y, "walk", spr_dir)
+			}
 		}
 	}
 	if (window == 3){
@@ -371,15 +385,38 @@ if (attack == AT_FSTRONG){
 
 //Up Strong
 if (attack == AT_USTRONG){
+	if (window == 2){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x + (18 * spr_dir), y, "jump", spr_dir * -1)
+		}
+	}
 	if (window == 4){
 		if (has_hit == true){
 			if (window_timer == 8){
 				sound_play(sfx_bounce);
+				spawn_base_dust( x + (4 * spr_dir), y, "dash", spr_dir * -1)
+				spawn_base_dust( x - (10 * spr_dir), y, "dash", spr_dir * 1)
 			}
 		} else {
 			if (window_timer == 14){
 				sound_play(sfx_bounce);
+				spawn_base_dust( x + (4 * spr_dir), y, "dash", spr_dir * -1)
+				spawn_base_dust( x - (10 * spr_dir), y, "dash", spr_dir * 1)
 			}
+		}
+	}
+}
+
+//Down Strong
+if (attack == AT_DSTRONG){
+	if (window == 2){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x + (42 * spr_dir), y, "dash", spr_dir * -1)
+		}
+	}
+	if (window == 4){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x - (36 * spr_dir), y, "dash", spr_dir)
 		}
 	}
 }
@@ -486,6 +523,10 @@ if (attack == AT_NSPECIAL){
 		}
 		if (free){
 			can_move = true;
+		}
+		if (!free && window_timer == 8){
+			sound_play(sfx_waveland);
+			spawn_base_dust( x - (40 * spr_dir), y, "walk", spr_dir * 1)
 		}
 	}
 	if (burst_bubble_can_move == true){

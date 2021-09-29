@@ -93,13 +93,15 @@ set_hitbox_value(AT_USTRONG, ig, HG_DAMAGE, 10);
 set_hitbox_value(AT_USTRONG, ig, HG_ANGLE, 90);
 set_hitbox_value(AT_USTRONG, ig, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_USTRONG, ig, HG_KNOCKBACK_SCALING, 1.25);
-set_hitbox_value(AT_USTRONG, ig, HG_BASE_HITPAUSE, 15);
+set_hitbox_value(AT_USTRONG, ig, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_USTRONG, ig, HG_HITPAUSE_SCALING, .7);
+set_hitbox_value(AT_USTRONG, ig, HG_VISUAL_EFFECT, 256);
 set_hitbox_value(AT_USTRONG, ig, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_USTRONG, ig, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_USTRONG, ig, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_USTRONG, ig, HG_ANGLE_FLIPPER, 0);
 
+/*
 ig++;
 
 //Star
@@ -123,3 +125,4 @@ set_hitbox_value(AT_USTRONG, ig, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_USTRONG, ig, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_USTRONG, ig, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_USTRONG, ig, HG_ANGLE_FLIPPER, 0);
+*/

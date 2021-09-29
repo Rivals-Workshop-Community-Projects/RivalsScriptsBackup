@@ -20,6 +20,13 @@ if (is_in_playtest == false){
 	NotSleepKirby_WasHitBySleepRune = false
 	NotSleepKirby_FspecialImmunity = 0
 
+	//if (url != 2605733292 && !variable_instance_exists(id, "NotSleepKirby_Hat_Offset_X") && !variable_instance_exists(id, "NotSleepKirby_Hat_Offset_Y") && id != other.id){
+		sleep_kirby_hat_offset_x = 0;
+		sleep_kirby_hat_offset_y = 0;
+		sleep_kirby_has_sleep_sprites = false;
+	//}
+
+
 	NotSleepKirbyID = id
 
 		//SleepKirby_enemy_hat = oPlayer.SleepKirby_enemy_hat

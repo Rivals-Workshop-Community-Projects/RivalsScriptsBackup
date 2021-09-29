@@ -74,6 +74,10 @@ videogaming = 0
 
 hey_what_way_did_bubble_hit_me = 0
 
+ability_show = true;
+
+bounce_lockout = 0;
+
 //HITBOX STUFF aaaa (thank u to tdude for letting me reuse some code)
 can_get_hit = true;
 hitbox_hit = noone;

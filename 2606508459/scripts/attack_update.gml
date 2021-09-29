@@ -13,7 +13,7 @@ if (attack == AT_FSTRONG &&
 {
     var _sprite = sprite_get( "hardway" );
     
-    spawn_hit_fx( x + ((fx_hardway_x ) * image_xscale), y + fx_hardway_y, fx_hardway );
+    //spawn_hit_fx( x + ((fx_hardway_x ) * image_xscale), y + fx_hardway_y, fx_hardway );
     timing_fstrong = fx_hardway_duration;
 }
 
@@ -36,6 +36,19 @@ if (attack == AT_DATTACK)
         attack_end();
         set_attack(42);
     }
+}
+
+//====> D TILT #######################################################
+if (attack == AT_DTILT)
+{
+    if (flag_dtilt_jump)
+    {
+        can_jump = true;
+    }
+}
+else
+{
+    flag_dtilt_jump = false;
 }
 
 //====> NEUTRAL B #######################################################
@@ -538,12 +551,23 @@ if (attack == AT_USPECIAL)
 /*
     Change Fireball mode
 */
+
 if (attack == AT_DSPECIAL)
 {
-    if (window == 2 && window_timer == 1)
+    if (flag_dspecial_jump)
     {
-        spawn_hit_fx(x, y - 20, 143); //3
-        spawn_hit_fx(x, y - 20, 13);
+        can_jump = true;
+    }
+    
+    if (window == 2 && window_timer == 6)
+    {
+        if (!flag_explode)
+        {
+            spawn_hit_fx(x, y - 20, 143); //3
+            spawn_hit_fx(x, y - 20, 13);
+        }
+        
+        flag_explode = true;
         
         if (fBall_obj != noone)
         {
@@ -553,6 +577,16 @@ if (attack == AT_DSPECIAL)
             }
         }
     }
+    
+    if (window == 3)
+    {
+        flag_explode = false;
+    }
+}
+else
+{
+    flag_dspecial_jump = false;
+    flag_explode = false;
 }
 
 /*

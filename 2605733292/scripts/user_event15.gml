@@ -259,6 +259,32 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.6", "28 September, 2021");
+initHeader("General");
+initSection("~ Hotfix to remove debug text.");
+
+initPatch("1.5", "27 September, 2021");
+initHeader("General");
+initSection("~ Minor hotfix for compatability.");
+
+initPatch("1.4", "27 September, 2021");
+initHeader("General");
+initSection("~ You can now add custom sprites (and hat offsets) for when you are put to sleep by Sleep Kirby. Look at the Google Doc in the Steam Description for more details.
+~ Updated MunoPhone Touch firmware.");
+initHeader("Up Tilt");
+initSection("~ Added dust effects.");
+initHeader("Forward Strong");
+initSection("~ The dust effect changes depending on how long you charge the move.");
+initHeader("Up Strong");
+initSection("~ Added dust effects.");
+initHeader("Down Strong");
+initSection("~ Added dust effects.");
+initHeader("Down Special");
+initSection("~ The Ability star flashes right before it’s going to disappear.
+~ When the Ability Star disappears, there should now be a visual effect.
+~ When the Ability Star gets parried, it will only put Sleep Kirby in parry stun if it belongs to him.
+~ Adjusted the dust effect when the Ability Star lands.");
+
 initPatch("1.3", "20 September, 2021");
 initHeader("General");
 initSection("~ Hurtbox adjusted.

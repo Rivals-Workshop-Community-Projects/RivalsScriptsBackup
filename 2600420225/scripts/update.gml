@@ -1,36 +1,28 @@
 muno_event_type = 1;
 user_event(14);
 
-special_state_timer++; //state timer but for customstates
+//timers
+animation_counter++;
+special_state_timer++;
 i_frames++;
 special_cooldown++;
-animation_counter++;
 hud_text_timer++;
 power_up_timer++;
-beam_trail++;
 beam_cooldown++;
 popup_timer++;
 missile_cooldown++;
 bomb_cooldown++;
-smoke_trail++;
-smoke_trail_anim++;
 power_bomb_cooldown++;
 shinespark_trigger++;
 reserve_trigger++;
-force_depth = 2;
 hyper_beam_magic_timer++;
 special_bomb_creation++;
-opponent_fog_timer++;
-visible = true;
 
+//things to always keep
+force_depth = 2;
+visible = true;
 if(state == PS_SPAWN){
     beam_cooldown = 0;
-}
-
-if(y <= -300){
-    y = -300
-    vsp = backup_vsp / 4
-    is_shinesparking = false;
 }
 
 if(hyper_beam_magic == c_red && hyper_beam_magic_timer >= 4){
@@ -130,6 +122,14 @@ if(death_timer >= 180){
     x = 9000
 }
 
+///ultimate fog magic
+if((is_charged == true && jump_power_up != "screw_attack_") || (speeding == true) || (shinespark_charged == true) || (is_shinesparking == true) || (is_dead == true) || (is_somersaulting == true && jump_power_up == "screw_attack_")){
+    shading = true;
+}else{
+    shading = false;
+}
+
+if(shading == true){
 //fog magic
 if(fog_magic == 0.1){
     fog_magic = 0.4;
@@ -170,6 +170,20 @@ if(fog_magic3 == 0.66){
 }else if(fog_magic3 == 0.6){
     fog_magic3 = 0.66;
 }
+}
+
+//opponent fog magic
+with (oPlayer) if (self != other)
+{
+    opponent_fog_timer++
+   if(fog_magic == 0.1){
+    fog_magic = 0.4;
+}else if(fog_magic == 0.4){
+    fog_magic = 0.7
+}else if(fog_magic = 0.7){
+    fog_magic = 0.1;
+}
+}
 
 //jump cancel
 
@@ -193,11 +207,6 @@ if(attack_down && is_morph == false && is_crystal_flashing == false && (select_a
 }else{
     charging_timer = 0;
 }
-if(beam_trail_movement != -20){
-    beam_trail_movement--;
-}else if(beam_trail_movement != 20){
-    beam_trail_movement++;
-}
 damage = get_player_damage(player);
 
 //info hud
@@ -210,10 +219,10 @@ if(popup_timer > 240){
 
 //coding attacks from scratch because I can
 if((select_ammo == 0 || select_ammo == 3) && attack_pressed && is_charged == false && beam_cooldown >= 20 && is_morph == false){
+    user_event(0)
     if(free){
         state = PS_IDLE_AIR
     }
-    user_event(0)
     create_hitbox(AT_UTHROW, 1, x + projectile_x, y + projectile_y)
     if(beam_level == "2" || beam_level == "1"){
         sound_play(sound_get("shot"))
@@ -224,10 +233,10 @@ if((select_ammo == 0 || select_ammo == 3) && attack_pressed && is_charged == fal
         beam_cooldown = 0;
     }
 }else if((select_ammo == 0 || select_ammo == 3) && is_charged == true && !attack_down && is_morph == false && charge == true){
+    user_event(1)
     if(free){
         state = PS_IDLE_AIR
     }
-    user_event(1)
     create_hitbox(AT_DSTRONG_2, 1, x + projectile_x, y + projectile_y)
     is_charged = false;
     charging_timer = 0;
@@ -247,9 +256,7 @@ if(select_ammo == 1 && attack_pressed && is_morph == false && missile_cooldown >
    if(free){
         state = PS_IDLE_AIR
     }
-    smoke_trail = 0;
-    smoke_trail_anim = 0;
-    missile_amount = prev_missile_amount - 1;
+    missile_amount -= 1;
     user_event(2)
     latest_missile = create_hitbox(AT_DTHROW, 1, x + projectile_x, y + projectile_y)
     sound_play(sound_get("missile"), false, false, 12);
@@ -261,9 +268,7 @@ if(select_ammo == 2 && attack_pressed && is_morph == false && missile_cooldown >
     if(free){
         state = PS_IDLE_AIR
     }
-    smoke_trail = 0;
-    smoke_trail_anim = 0;
-    super_missile_amount = prev_super_missile_amount - 1;
+    super_missile_amount -= 1;
     user_event(3)
     latest_soup = create_hitbox(AT_FTHROW, 1, x + projectile_x, y + projectile_y)
     sound_play(sound_get("soup"), false, false, 12);
@@ -282,17 +287,22 @@ if(is_morph == true && select_ammo != 3 && bomb_cooldown > 10 && attack_pressed 
 }
 if(is_morph == true && select_ammo == 3 && power_bomb_cooldown >= 80 && attack_pressed && power_bomb_amount >= 1){
     power_bomb_cooldown = 0;
-    power_bomb_amount = prev_power_bomb_amount - 1;
+    power_bomb_amount -= 1;
     if(is_facing == "right"){
             instance_create( x - 452, y - 256, "obj_article2");
         }else if(is_facing == "left"){
             instance_create( x - 448, y - 256, "obj_article2");
     }
 }
+
+//screw attack
 if(is_somersaulting == true && is_charged == true && jump_power_up != "screw_attack_"){
     create_hitbox(AT_DSPECIAL_AIR, 1, x, y);
-}else if(is_somersaulting == true && jump_power_up == "screw_attack_"){
+}else if(is_somersaulting == true && jump_power_up == "screw_attack_" && screw_cooldown >= 15){
     create_hitbox(AT_DSPECIAL_AIR, 1, x, y);
+}
+if(screw_cooldown < 15){
+    screw_cooldown++
 }
 
 if(shinespark_charged == true){
@@ -302,7 +312,7 @@ if(shinespark_charged == true){
     }
 }
 
-if(state == PS_DASH){
+if(state == PS_DASH && is_crouch == false && is_morph== false){
     speed_charge++
 }else{
     speed_charge = 0;
@@ -337,6 +347,12 @@ if(speeding == true){
 
 //shinespark
 
+if(y <= -300){
+    y = -300
+    vsp = backup_vsp / 4
+    is_shinesparking = false;
+}
+
 if(jump_pressed && shinespark_charged == true && is_morph == false){
     gravity_speed = 0.6;
     shinespark_trigger = 0;
@@ -365,7 +381,7 @@ if(shinespark_charged == false && is_shinesparking == false){
     set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_BASE_KNOCKBACK, 8);
 }
 
-if(is_shinesparking == true && shinespark_trigger >= 15 && shinespark_trigger <= 40){
+if(is_shinesparking == true && shinespark_trigger <= 40){
     gravity_speed = 0;
     is_crouch = false;
     is_morph = false;
@@ -373,6 +389,9 @@ if(is_shinesparking == true && shinespark_trigger >= 15 && shinespark_trigger <=
     beam_cooldown = 0;
     max_djumps = 0;
     missile_cooldown = 0;
+    space_timer = 0;
+    hsp = 0;
+    vsp = 0;
     if(joy_dir >= -15 && joy_dir <= 20){
         shine_right = true;
         shine_left = false;
@@ -451,7 +470,7 @@ if(is_shinesparking == false){
     shine_up_left = false;
 }
 
-if(prev_x_pos == x && prev_y_pos == y && is_shinesparking == true) && (shine_up_left == true || shine_up_right == true || shine_diagonal_right == true || shine_diagonal_left == true){
+if(prev_x == x && prev_y == y && is_shinesparking == true){
     shinespark_end++
 }else{
     shinespark_end = 0
@@ -700,7 +719,7 @@ power_bombs = false;
 //power ups
 
 if(high_jump == true){
-    jump_speed = 9;
+    jump_speed = 10;
     djump_speed = 9;
 }
 if(jump_power_up == "space_jump_" || jump_power_up == "screw_attack_"){
@@ -732,13 +751,13 @@ if(damage != prev_damage){
         sound_play(sound_get("dameg"), false, false, 15);
     }
     if(varia_suit == true){
-        energy = prev_health - ((get_player_damage( player ) * 2) - 4);
+        energy -= ((get_player_damage( player ) * 2) - 4);
     set_player_damage( player, 0 );
     }else if(varia_suit == true && gravity_suit == true){
-        energy = prev_health - ((get_player_damage( player ) * 2) - 8);
+        energy -= ((get_player_damage( player ) * 2) - 8);
     set_player_damage( player, 0 );
     }else{
-    energy = prev_health - (get_player_damage( player ) * 2);
+    energy -= (get_player_damage( player ) * 2);
     set_player_damage( player, 0 );
     }
 }
@@ -756,622 +775,88 @@ if(energy <= 0){
 
 //energy tank drawing scheme
 
-if(energy_tank_amount == 14){
-if(energy_tank_empty_amount >= 14){
+if(energy_tank_empty_amount >= 1){
     tank_1 = "empty"
 }else{
     tank_1 = "full"
-}
-if(energy_tank_empty_amount >= 13){
+}if(energy_tank_empty_amount >= 2){
     tank_2 = "empty"
 }else{
     tank_2 = "full"
-}
-if(energy_tank_empty_amount >= 12){
+}if(energy_tank_empty_amount >= 3){
     tank_3 = "empty"
 }else{
     tank_3 = "full"
-}
-if(energy_tank_empty_amount >= 11){
+}if(energy_tank_empty_amount >= 4){
     tank_4 = "empty"
 }else{
     tank_4 = "full"
-}
-if(energy_tank_empty_amount >= 10){
+}if(energy_tank_empty_amount >= 5){
     tank_5 = "empty"
 }else{
     tank_5 = "full"
-}
-if(energy_tank_empty_amount >= 9){
+}if(energy_tank_empty_amount >= 6){
     tank_6 = "empty"
 }else{
     tank_6 = "full"
-}
-if(energy_tank_empty_amount >= 8){
+}if(energy_tank_empty_amount >= 7){
     tank_7 = "empty"
 }else{
     tank_7 = "full"
-}
-if(energy_tank_empty_amount >= 7){
+}if(energy_tank_empty_amount >= 8){
     tank_8 = "empty"
 }else{
     tank_8 = "full"
-}
-if(energy_tank_empty_amount >= 6){
+}if(energy_tank_empty_amount >= 9){
     tank_9 = "empty"
 }else{
     tank_9 = "full"
-}
-if(energy_tank_empty_amount >= 5){
+}if(energy_tank_empty_amount >= 10){
     tank_10 = "empty"
 }else{
     tank_10 = "full"
-}
-if(energy_tank_empty_amount >= 4){
+}if(energy_tank_empty_amount >= 11){
     tank_11 = "empty"
 }else{
     tank_11 = "full"
-}
-if(energy_tank_empty_amount >= 3){
+}if(energy_tank_empty_amount >= 12){
     tank_12 = "empty"
 }else{
     tank_12 = "full"
-}
-if(energy_tank_empty_amount >= 2){
+}if(energy_tank_empty_amount >= 13){
     tank_13 = "empty"
 }else{
     tank_13 = "full"
-}
-if(energy_tank_empty_amount >= 1){
+}if(energy_tank_empty_amount >= 14){
     tank_14 = "empty"
 }else{
     tank_14 = "full"
 }
-}
-if(energy_tank_amount == 13){
-if(energy_tank_empty_amount >= 13){
-    tank_1 = "empty"
-}else{
-    tank_1 = "full"
-}
-if(energy_tank_empty_amount >= 12){
-    tank_2 = "empty"
-}else{
-    tank_2 = "full"
-}
-if(energy_tank_empty_amount >= 11){
-    tank_3 = "empty"
-}else{
-    tank_3 = "full"
-}
-if(energy_tank_empty_amount >= 10){
-    tank_4 = "empty"
-}else{
-    tank_4 = "full"
-}
-if(energy_tank_empty_amount >= 9){
-    tank_5 = "empty"
-}else{
-    tank_5 = "full"
-}
-if(energy_tank_empty_amount >= 8){
-    tank_6 = "empty"
-}else{
-    tank_6 = "full"
-}
-if(energy_tank_empty_amount >= 7){
-    tank_7 = "empty"
-}else{
-    tank_7 = "full"
-}
-if(energy_tank_empty_amount >= 6){
-    tank_8 = "empty"
-}else{
-    tank_8 = "full"
-}
-if(energy_tank_empty_amount >= 5){
-    tank_9 = "empty"
-}else{
-    tank_9 = "full"
-}
-if(energy_tank_empty_amount >= 4){
-    tank_10 = "empty"
-}else{
-    tank_10 = "full"
-}
-if(energy_tank_empty_amount >= 3){
-    tank_11 = "empty"
-}else{
-    tank_11 = "full"
-}
-if(energy_tank_empty_amount >= 2){
-    tank_12 = "empty"
-}else{
-    tank_12 = "full"
-}
-if(energy_tank_empty_amount >= 1){
-    tank_13 = "empty"
-}else{
-    tank_13 = "full"
-}
-}
-if(energy_tank_amount == 12){
-if(energy_tank_empty_amount >= 12){
-    tank_1 = "empty"
-}else{
-    tank_1 = "full"
-}
-if(energy_tank_empty_amount >= 11){
-    tank_2 = "empty"
-}else{
-    tank_2 = "full"
-}
-if(energy_tank_empty_amount >= 10){
-    tank_3 = "empty"
-}else{
-    tank_3 = "full"
-}
-if(energy_tank_empty_amount >= 9){
-    tank_4 = "empty"
-}else{
-    tank_4 = "full"
-}
-if(energy_tank_empty_amount >= 8){
-    tank_5 = "empty"
-}else{
-    tank_5 = "full"
-}
-if(energy_tank_empty_amount >= 7){
-    tank_6 = "empty"
-}else{
-    tank_6 = "full"
-}
-if(energy_tank_empty_amount >= 6){
-    tank_7 = "empty"
-}else{
-    tank_7 = "full"
-}
-if(energy_tank_empty_amount >= 5){
-    tank_8 = "empty"
-}else{
-    tank_8 = "full"
-}
-if(energy_tank_empty_amount >= 4){
-    tank_9 = "empty"
-}else{
-    tank_9 = "full"
-}
-if(energy_tank_empty_amount >= 3){
-    tank_10 = "empty"
-}else{
-    tank_10 = "full"
-}
-if(energy_tank_empty_amount >= 2){
-    tank_11 = "empty"
-}else{
-    tank_11 = "full"
-}
-if(energy_tank_empty_amount >= 1){
-    tank_12 = "empty"
-}else{
-    tank_12 = "full"
-}
-}
-if(energy_tank_amount == 11){
-if(energy_tank_empty_amount >= 11){
-    tank_1 = "empty"
-}else{
-    tank_1 = "full"
-}
-if(energy_tank_empty_amount >= 10){
-    tank_2 = "empty"
-}else{
-    tank_2 = "full"
-}
-if(energy_tank_empty_amount >= 9){
-    tank_3 = "empty"
-}else{
-    tank_3 = "full"
-}
-if(energy_tank_empty_amount >= 8){
-    tank_4 = "empty"
-}else{
-    tank_4 = "full"
-}
-if(energy_tank_empty_amount >= 7){
-    tank_5 = "empty"
-}else{
-    tank_5 = "full"
-}
-if(energy_tank_empty_amount >= 6){
-    tank_6 = "empty"
-}else{
-    tank_6 = "full"
-}
-if(energy_tank_empty_amount >= 5){
-    tank_7 = "empty"
-}else{
-    tank_7 = "full"
-}
-if(energy_tank_empty_amount >= 4){
-    tank_8 = "empty"
-}else{
-    tank_8 = "full"
-}
-if(energy_tank_empty_amount >= 3){
-    tank_9 = "empty"
-}else{
-    tank_9 = "full"
-}
-if(energy_tank_empty_amount >= 2){
-    tank_10 = "empty"
-}else{
-    tank_10 = "full"
-}
-if(energy_tank_empty_amount >= 1){
-    tank_11 = "empty"
-}else{
-    tank_11 = "full"
-}
-}
-if(energy_tank_amount == 10){
-if(energy_tank_empty_amount >= 10){
-    tank_1 = "empty"
-}else{
-    tank_1 = "full"
-}
-if(energy_tank_empty_amount >= 9){
-    tank_2 = "empty"
-}else{
-    tank_2 = "full"
-}
-if(energy_tank_empty_amount >= 8){
-    tank_3 = "empty"
-}else{
-    tank_3 = "full"
-}
-if(energy_tank_empty_amount >= 7){
-    tank_4 = "empty"
-}else{
-    tank_4 = "full"
-}
-if(energy_tank_empty_amount >= 6){
-    tank_5 = "empty"
-}else{
-    tank_5 = "full"
-}
-if(energy_tank_empty_amount >= 5){
-    tank_6 = "empty"
-}else{
-    tank_6 = "full"
-}
-if(energy_tank_empty_amount >= 4){
-    tank_7 = "empty"
-}else{
-    tank_7 = "full"
-}
-if(energy_tank_empty_amount >= 3){
-    tank_8 = "empty"
-}else{
-    tank_8 = "full"
-}
-if(energy_tank_empty_amount >= 2){
-    tank_9 = "empty"
-}else{
-    tank_9 = "full"
-}
-if(energy_tank_empty_amount >= 1){
-    tank_10 = "empty"
-}else{
-    tank_10 = "full"
-}
-}
-if(energy_tank_amount == 9){
-if(energy_tank_empty_amount >= 9){
-    tank_1 = "empty"
-}else{
-    tank_1 = "full"
-}
-if(energy_tank_empty_amount >= 8){
-    tank_2 = "empty"
-}else{
-    tank_2 = "full"
-}
-if(energy_tank_empty_amount >= 7){
-    tank_3 = "empty"
-}else{
-    tank_3 = "full"
-}
-if(energy_tank_empty_amount >= 6){
-    tank_4 = "empty"
-}else{
-    tank_4 = "full"
-}
-if(energy_tank_empty_amount >= 5){
-    tank_5 = "empty"
-}else{
-    tank_5 = "full"
-}
-if(energy_tank_empty_amount >= 4){
-    tank_6 = "empty"
-}else{
-    tank_6 = "full"
-}
-if(energy_tank_empty_amount >= 3){
-    tank_7 = "empty"
-}else{
-    tank_7 = "full"
-}
-if(energy_tank_empty_amount >= 2){
-    tank_8 = "empty"
-}else{
-    tank_8 = "full"
-}
-if(energy_tank_empty_amount >= 1){
-    tank_9 = "empty"
-}else{
-    tank_9 = "full"
-}
-}
-if(energy_tank_amount == 8){
-if(energy_tank_empty_amount >= 8){
-    tank_1 = "empty"
-}else{
-    tank_1 = "full"
-}
-if(energy_tank_empty_amount >= 7){
-    tank_2 = "empty"
-}else{
-    tank_2 = "full"
-}
-if(energy_tank_empty_amount >= 6){
-    tank_3 = "empty"
-}else{
-    tank_3 = "full"
-}
-if(energy_tank_empty_amount >= 5){
-    tank_4 = "empty"
-}else{
-    tank_4 = "full"
-}
-if(energy_tank_empty_amount >= 4){
-    tank_5 = "empty"
-}else{
-    tank_5 = "full"
-}
-if(energy_tank_empty_amount >= 3){
-    tank_6 = "empty"
-}else{
-    tank_6 = "full"
-}
-if(energy_tank_empty_amount >= 2){
-    tank_7 = "empty"
-}else{
-    tank_7 = "full"
-}
-if(energy_tank_empty_amount >= 1){
-    tank_8 = "empty"
-}else{
-    tank_8 = "full"
-}
-}
-if(energy_tank_amount == 7){
-if(energy_tank_empty_amount >= 7){
-    tank_1 = "empty"
-}else{
-    tank_1 = "full"
-}
-if(energy_tank_empty_amount >= 6){
-    tank_2 = "empty"
-}else{
-    tank_2 = "full"
-}
-if(energy_tank_empty_amount >= 5){
-    tank_3 = "empty"
-}else{
-    tank_3 = "full"
-}
-if(energy_tank_empty_amount >= 4){
-    tank_4 = "empty"
-}else{
-    tank_4 = "full"
-}
-if(energy_tank_empty_amount >= 3){
-    tank_5 = "empty"
-}else{
-    tank_5 = "full"
-}
-if(energy_tank_empty_amount >= 2){
-    tank_6 = "empty"
-}else{
-    tank_6 = "full"
-}
-if(energy_tank_empty_amount >= 1){
-    tank_7 = "empty"
-}else{
-    tank_7 = "full"
-}
-}
-if(energy_tank_amount == 6){
-if(energy_tank_empty_amount >= 6){
-    tank_1 = "empty"
-}else{
-    tank_1 = "full"
-}
-if(energy_tank_empty_amount >= 5){
-    tank_2 = "empty"
-}else{
-    tank_2 = "full"
-}
-if(energy_tank_empty_amount >= 4){
-    tank_3 = "empty"
-}else{
-    tank_3 = "full"
-}
-if(energy_tank_empty_amount >= 3){
-    tank_4 = "empty"
-}else{
-    tank_4 = "full"
-}
-if(energy_tank_empty_amount >= 2){
-    tank_5 = "empty"
-}else{
-    tank_5 = "full"
-}
-if(energy_tank_empty_amount >= 1){
-    tank_6 = "empty"
-}else{
-    tank_6 = "full"
-}
-}
-if(energy_tank_amount == 5){
-if(energy_tank_empty_amount >= 5){
-    tank_1 = "empty"
-}else{
-    tank_1 = "full"
-}
-if(energy_tank_empty_amount >= 4){
-    tank_2 = "empty"
-}else{
-    tank_2 = "full"
-}
-if(energy_tank_empty_amount >= 3){
-    tank_3 = "empty"
-}else{
-    tank_3 = "full"
-}
-if(energy_tank_empty_amount >= 2){
-    tank_4 = "empty"
-}else{
-    tank_4 = "full"
-}
-if(energy_tank_empty_amount >= 1){
-    tank_5 = "empty"
-}else{
-    tank_5 = "full"
-}
-}
-if(energy_tank_amount == 4){
-if(energy_tank_empty_amount >= 4){
-    tank_1 = "empty"
-}else{
-    tank_1 = "full"
-}
-if(energy_tank_empty_amount >= 3){
-    tank_2 = "empty"
-}else{
-    tank_2 = "full"
-}
-if(energy_tank_empty_amount >= 2){
-    tank_3 = "empty"
-}else{
-    tank_3 = "full"
-}
-if(energy_tank_empty_amount >= 1){
-    tank_4 = "empty"
-}else{
-    tank_4 = "full"
-}
-}
-if(energy_tank_amount == 3){
-if(energy_tank_empty_amount >= 3){
-    tank_1 = "empty"
-}else{
-    tank_1 = "full"
-}
-if(energy_tank_empty_amount >= 2){
-    tank_2 = "empty"
-}else{
-    tank_2 = "full"
-}
-if(energy_tank_empty_amount >= 1){
-    tank_3 = "empty"
-}else{
-    tank_3 = "full"
-}
-}
-if(energy_tank_amount == 2){
-if(energy_tank_empty_amount >= 2){
-    tank_1 = "empty"
-}else{
-    tank_1 = "full"
-}
-if(energy_tank_empty_amount >= 1){
-    tank_2 = "empty"
-}else{
-    tank_2 = "full"
-}
-}
-if(energy_tank_amount == 1){
-if(energy_tank_empty_amount >= 1){
-    tank_1 = "empty"
-}else{
-    tank_1 = "full"
-}
-}
 
 
-if(reserve_tank_amount == 4){
 if(reserve_tank_empty_amount >= 4){
-    reserve_1 = "empty"
-}else{
-    reserve_1 = "full"
-}
-if(reserve_tank_empty_amount >= 3){
-    reserve_2 = "empty"
-}else{
-    reserve_2 = "full"
-}
-if(reserve_tank_empty_amount >= 2){
-    reserve_3 = "empty"
-}else{
-    reserve_3 = "full"
-}
-if(reserve_tank_empty_amount >= 1){
     reserve_4 = "empty"
 }else{
     reserve_4 = "full"
 }
-}
-if(reserve_tank_amount == 3){
 if(reserve_tank_empty_amount >= 3){
-    reserve_1 = "empty"
-}else{
-    reserve_1 = "full"
-}
-if(reserve_tank_empty_amount >= 2){
-    reserve_2 = "empty"
-}else{
-    reserve_2 = "full"
-}
-if(reserve_tank_empty_amount >= 1){
     reserve_3 = "empty"
 }else{
     reserve_3 = "full"
 }
-}
-if(reserve_tank_amount == 2){
 if(reserve_tank_empty_amount >= 2){
-    reserve_1 = "empty"
-}else{
-    reserve_1 = "full"
-}
-if(reserve_tank_empty_amount >= 1){
     reserve_2 = "empty"
 }else{
     reserve_2 = "full"
 }
-}
-if(reserve_tank_amount == 1){
 if(reserve_tank_empty_amount >= 1){
     reserve_1 = "empty"
 }else{
     reserve_1 = "full"
 }
-}
 
 if(energy_tank_empty_amount == energy_tank_amount && reserve_tank_amount >= 1 && reserve_tank_amount > reserve_tank_empty_amount && reserve_trigger == 1){
-    energy_tank_empty_amount = prev_tank_empty - (reserve_tank_amount - reserve_tank_empty_amount);
+    energy_tank_empty_amount -= (reserve_tank_amount - reserve_tank_empty_amount);
     reserve_tank_empty_amount = reserve_tank_amount;
 }
 
@@ -1417,113 +902,113 @@ if(is_randomizer == false){
     missiles = true;
     item_collect = "3%"
     energy_tank_amount = 1;
-    missile_amount = prev_missile_amount + 5;
+    missile_amount += 5;
 }
 if(level == 2 && power_up_timer == 0){
     bombs_power_up = true;
     item_collect = "5%"
-    missile_amount = prev_missile_amount + 5;
+    missile_amount += 5;
 }
 if(level == 3 && power_up_timer == 0){
     charge = true;
     item_collect = "9%"
     energy_tank_amount = 2;
-    missile_amount = prev_missile_amount + 10;
+    missile_amount += 10;
 }
 if(level == 4 && power_up_timer == 0){
     beam_2 = true;
     item_collect = "13%"
     reserve_tank_amount = 1;
-    missile_amount = prev_missile_amount + 10;
+    missile_amount += 10;
 }
 if(level == 5 && power_up_timer == 0){
     high_jump = true;
     item_collect = "17%"
     energy_tank_amount = 3;
-    missile_amount = prev_missile_amount + 10;
+    missile_amount += 10;
 }
 if(level == 6 && power_up_timer == 0){
     varia_suit = true;
     item_collect = "20%"
-    missile_amount = prev_missile_amount + 10;
+    missile_amount += 10;
 }
 if(level == 7 && power_up_timer == 0){
     speed_booster = true;
     super_missiles = true;
     item_collect = "25%"
     energy_tank_amount = 4;
-    super_missile_amount = super_missile_amount + 3;
-    missile_amount = prev_missile_amount + 10;
+    super_missile_amount += 3;
+    missile_amount += 10;
 }
 if(level == 8 && power_up_timer == 0){
     beam_3 = true;
     item_collect = "31%"
     reserve_tank_amount = 2;
-    super_missile_amount = super_missile_amount + 3;
-    missile_amount = prev_missile_amount + 15;
+    super_missile_amount += 3;
+    missile_amount += 15;
 }
 if(level == 9 && power_up_timer == 0){
     grapple = true;
     item_collect = "37%"
     energy_tank_amount = 5;
-    super_missile_amount = super_missile_amount + 3;
-    missile_amount = prev_missile_amount + 15;
+    super_missile_amount += 3;
+    missile_amount += 15;
 }
 if(level == 10 && power_up_timer == 0){
     power_bombs = true;
     beam_4 = true;
     item_collect = "43%"
-    power_bomb_amount = prev_power_bomb_amount + 3;
-    super_missile_amount = super_missile_amount + 3;
-    missile_amount = prev_missile_amount + 15;
+    power_bomb_amount += 3;
+    super_missile_amount += 3;
+    missile_amount += 15;
 }
 if(level == 11 && power_up_timer == 0){
     X_ray= true;
     item_collect = "51%"
     energy_tank_amount = 7;
-    super_missile_amount = super_missile_amount + 3;
-    power_bomb_amount = prev_power_bomb_amount + 3;
-    missile_amount = prev_missile_amount + 15;
+    super_missile_amount += 3;
+    power_bomb_amount += 3;
+    missile_amount += 15;
 }
 if(level == 12 && power_up_timer == 0){
     gravity_suit = true;
     item_collect = "59%"
     reserve_tank_amount = 3;
-    super_missile_amount = super_missile_amount + 3;
-    power_bomb_amount = prev_power_bomb_amount + 3;
-    missile_amount = prev_missile_amount + 20;
+    super_missile_amount += 3;
+    power_bomb_amount += 3;
+    missile_amount += 20;
 }
 if(level == 13 && power_up_timer == 0){
     space_jump = true;
     item_collect = "69%"
     energy_tank_amount = 9;
-    super_missile_amount = super_missile_amount + 3;
-    power_bomb_amount = prev_power_bomb_amount + 3;
-    missile_amount = prev_missile_amount + 20;
+    super_missile_amount += 3;
+    power_bomb_amount += 3;
+    missile_amount += 20;
 }
 if(level == 14 && power_up_timer == 0){
     beam_5 = true;
     item_collect = "76%"
-    power_bomb_amount = prev_power_bomb_amount + 6;
-    super_missile_amount = super_missile_amount + 3;
-    missile_amount = prev_missile_amount + 20;
+    power_bomb_amount += 6;
+    super_missile_amount += 3;
+    missile_amount += 20;
 }
 if(level == 15 && power_up_timer == 0){
     spring_ball = true;
     item_collect = "87%"
     energy_tank_amount = 11;
-    power_bomb_amount = prev_power_bomb_amount + 6;
-    super_missile_amount = super_missile_amount + 3;
-        missile_amount = prev_missile_amount + 25;
+    power_bomb_amount += 6;
+    super_missile_amount += 3;
+        missile_amount += 25;
 }
 if(level == 16 && power_up_timer == 0){
     screw_attack = true;
     item_collect = "99%"
     energy_tank_amount = 14;
-    super_missile_amount = super_missile_amount + 3;
+    super_missile_amount += 3;
     reserve_tank_amount = 4;
-    power_bomb_amount = prev_power_bomb_amount + 6;
-    missile_amount = prev_missile_amount + 25;
+    power_bomb_amount += 6;
+    missile_amount += 25;
 }
 if(level >= 17){
     item_collect = "100%"
@@ -1535,113 +1020,113 @@ if(level == 1 && power_up_timer == 1){
     variable_instance_set(id, choice, true)
     item_collect = "3%"
     energy_tank_amount = 1;
-    missile_amount = prev_missile_amount + 5;
+    missile_amount += 5;
 }
 if(level == 2 && power_up_timer == 1){
     variable_instance_set(id, choice, true)
     item_collect = "5%"
-    missile_amount = prev_missile_amount + 5;
+    missile_amount += 5;
 }
 if(level == 3 && power_up_timer == 1){
     variable_instance_set(id, choice, true)
     item_collect = "9%"
     energy_tank_amount = 2;
-    missile_amount = prev_missile_amount + 10;
+    missile_amount += 10;
 }
 if(level == 4 && power_up_timer == 1){
     variable_instance_set(id, choice, true)
     item_collect = "13%"
     reserve_tank_amount = 1;
-    missile_amount = prev_missile_amount + 10;
+    missile_amount += 10;
 }
 if(level == 5 && power_up_timer == 1){
     variable_instance_set(id, choice, true)
     item_collect = "17%"
     energy_tank_amount = 3;
-    missile_amount = prev_missile_amount + 10;
+    missile_amount += 10;
 }
 if(level == 6 && power_up_timer == 1){
     variable_instance_set(id, choice, true)
     item_collect = "20%"
-    missile_amount = prev_missile_amount + 10;
+    missile_amount += 10;
 }
 if(level == 7 && power_up_timer == 1){
     super_missiles = true;
     variable_instance_set(id, choice, true)
     item_collect = "25%"
     energy_tank_amount = 4;
-    super_missile_amount = super_missile_amount + 3;
-    missile_amount = prev_missile_amount + 10;
+    super_missile_amount += 3;
+    missile_amount += 10;
 }
 if(level == 8 && power_up_timer == 1){
     variable_instance_set(id, choice, true)
     item_collect = "31%"
     reserve_tank_amount = 2;
-    super_missile_amount = super_missile_amount + 3;
-    missile_amount = prev_missile_amount + 15;
+    super_missile_amount += 3;
+    missile_amount += 15;
 }
 if(level == 9 && power_up_timer == 1){
     variable_instance_set(id, choice, true)
     item_collect = "37%"
     energy_tank_amount = 5;
-    super_missile_amount = super_missile_amount + 3;
-    missile_amount = prev_missile_amount + 15;
+    super_missile_amount += 3;
+    missile_amount += 15;
 }
 if(level == 10 && power_up_timer == 1){
     power_bombs = true;
     variable_instance_set(id, choice, true)
     item_collect = "43%"
-    power_bomb_amount = prev_power_bomb_amount + 2;
-    super_missile_amount = super_missile_amount + 3;
-    missile_amount = prev_missile_amount + 15;
+    power_bomb_amount += 2;
+    super_missile_amount += 3;
+    missile_amount += 15;
 }
 if(level == 11 && power_up_timer == 1){
     variable_instance_set(id, choice, true)
     item_collect = "51%"
     energy_tank_amount = 7;
-    super_missile_amount = super_missile_amount + 3;
-    power_bomb_amount = prev_power_bomb_amount + 2;
-    missile_amount = prev_missile_amount + 15;
+    super_missile_amount += 3;
+    power_bomb_amount += 2;
+    missile_amount += 15;
 }
 if(level == 12 && power_up_timer == 1){
     variable_instance_set(id, choice, true)
     item_collect = "59%"
     reserve_tank_amount = 3;
-    super_missile_amount = super_missile_amount + 3;
-    power_bomb_amount = prev_power_bomb_amount + 2;
-    missile_amount = prev_missile_amount + 20;
+    super_missile_amount += 3;
+    power_bomb_amount += 2;
+    missile_amount += 20;
 }
 if(level == 13 && power_up_timer == 1){
     variable_instance_set(id, choice, true)
     item_collect = "69%"
     energy_tank_amount = 9;
-    super_missile_amount = super_missile_amount + 3;
-    power_bomb_amount = prev_power_bomb_amount + 2;
-    missile_amount = prev_missile_amount + 20;
+    super_missile_amount += 3;
+    power_bomb_amount += 2;
+    missile_amount += 20;
 }
 if(level == 14 && power_up_timer == 1){
     variable_instance_set(id, choice, true)
     item_collect = "76%"
-    power_bomb_amount = prev_power_bomb_amount + 4;
-    super_missile_amount = super_missile_amount + 3;
-    missile_amount = prev_missile_amount + 20;
+    power_bomb_amount += 4;
+    super_missile_amount += 3;
+    missile_amount += 20;
 }
 if(level == 15 && power_up_timer == 1){
     variable_instance_set(id, choice, true)
     item_collect = "87%"
     energy_tank_amount = 11;
-    power_bomb_amount = prev_power_bomb_amount + 4;
-    super_missile_amount = super_missile_amount + 3;
-    missile_amount = prev_missile_amount + 25;
+    power_bomb_amount += 4;
+    super_missile_amount += 3;
+    missile_amount += 25;
 }
 if(level == 16 && power_up_timer == 1){
     variable_instance_set(id, choice, true)
     item_collect = "99%"
     energy_tank_amount = 14;
-    super_missile_amount = super_missile_amount + 3;
+    super_missile_amount += 3;
     reserve_tank_amount = 4;
-    power_bomb_amount = prev_power_bomb_amount + 4;
-    missile_amount = prev_missile_amount + 25;
+    power_bomb_amount += 4;
+    missile_amount += 25;
 }
 if(level == 17 && power_up_timer == 1){
     item_collect = "100%"
@@ -1706,32 +1191,6 @@ if(special_pressed && special_cooldown >= 20 && missiles == true){
     }
 }
 
-if(left_strong_pressed || up_strong_pressed || down_strong_pressed || right_strong_pressed) && (select_ammo == 1 || select_ammo == 2 || select_ammo == 3 || select_ammo == 4 || select_ammo == 5){
-    sound_play(sound_get("select_ammo"), false, false, 10);
-    select_ammo = 0;
-    special_cooldown = 0;
-}
-
-if(!phone.state){
-if(up_down){
-    is_aiming = "up_";
-}else if(shield_down){
-    if(down_down){
-    is_aiming = "diagonal_down_";
-    }else{
-    is_aiming = "diagonal_up_";
-    }
-}else if(free){
-    if(down_down && !shield_down){
-    is_aiming = "down_"
-    }else{
-    is_aiming = "forward_";
-}
-}else{
-    is_aiming = "forward_";
-}
-}
-
 
 switch(select_ammo){
     case 1:
@@ -1771,9 +1230,32 @@ switch(select_ammo){
     break;
 }
 
+if(left_strong_pressed || up_strong_pressed || down_strong_pressed || right_strong_pressed) && (select_ammo == 1 || select_ammo == 2 || select_ammo == 3 || select_ammo == 4 || select_ammo == 5){
+    sound_play(sound_get("select_ammo"), false, false, 10);
+    select_ammo = 0;
+    special_cooldown = 0;
+}
+
+if(!phone.state){
+if(up_down){
+    is_aiming = "up_";
+}else if(shield_down){
+    if(down_down){
+    is_aiming = "diagonal_down_";
+    }else if(!down_down){
+    is_aiming = "diagonal_up_";
+    }
+}else if(free && down_down){
+    is_aiming = "down_"
+}else{
+    is_aiming = "forward_";
+}
+}
+
+
 has_airdodge = false;
 
-if(i_frames >= 5 && i_frames <= 60){
+if(i_frames >= 20 && i_frames <= 60){
     invincible = true;
 }
 
@@ -1781,15 +1263,15 @@ if(state == PS_HITSTUN){
     i_frames = 0;
     air_friction = 1;
 }else{
-    air_friction = 0.04;
+    air_friction = 0.02;
 }
 
+//samus number check
 if(num_samuses == 0){
     with(oPlayer) if("url" in self) && (url == other.url){
         other.num_samuses++
     }
 }
-
 if(num_samuses == 1 && samus_check == 4){
     samus_check = 0;
     with(oPlayer) if(num_samuses >= 2){
@@ -1797,18 +1279,7 @@ if(num_samuses == 1 && samus_check == 4){
     }
 }
 
-//hurtbox switch
-if(is_crouch == true && is_morph == false){
-    hurtboxID.sprite_index = sprite_get("crouch_hurtbox");
-    gravity_speed = 0.2;
-}else if(is_crouch == true && is_morph == true){
-    gravity_speed = 0.4;
-    hurtboxID.sprite_index = sprite_get("morph_hurtbox");
-}else{
-    hurtboxID.sprite_index = sprite_get("idle_hurtbox");
-    gravity_speed = 0.2;
-}
-
+//state switches
 if(state == PS_WALL_JUMP){
     is_morph = false;
     is_crouch = false;
@@ -1818,14 +1289,10 @@ if(state == PS_RESPAWN){
     state = PS_IDLE_AIR
 }
 
-prev_x_pos = x;
-prev_y_pos = y;
-prev_missile_amount = missile_amount;
-prev_super_missile_amount = super_missile_amount;
-prev_power_bomb_amount = power_bomb_amount;
+//prev variables
+prev_x = x;
+prev_y = y;
 prev_level = level;
-prev_health = energy;
-prev_tank_empty = energy_tank_empty_amount;
 prev_damage = damage;
 
 //phone stuff
@@ -1889,10 +1356,15 @@ not in Super Metroid",
 "Go Samus Go",
 "The latex samus skin was
 born because of an error",
+"Go open the muno phone
+in training, otherwise
+you won't be able to play",
+"Go open the muno phone
+in training, otherwise
+you won't be able to play",
+"You know this is just
+flavor text right?",
+"Have you ever played
+Super Metroid?",
+"Go play Super Metroid",
 ]
-
-//hit effects
-beam_collision = hit_fx_create( sprite_get( "beam_attacks_" + beam_level + "_shot_and_charge_collision" ), 10 );
-missile_collision = hit_fx_create( sprite_get( "physical_attacks_missile_contact_explosion" ), 12 );
-super_missile_collision = hit_fx_create( sprite_get( "physical_attacks_super_missile_contact_explosion" ), 12 );
-beam_trail_anim = hit_fx_create( sprite_get( "beam_attacks_" + beam_level + "_charge_particle" ), 24 );

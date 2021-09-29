@@ -1,9 +1,9 @@
-if(varia_suit == true && gravity_suit == false && (get_player_color(player) <= 5 && (get_player_color(player) >= 8 && get_player_color(player) <= 13))){
+if(varia_suit == true && gravity_suit == false && (get_player_color(player) == 0 || get_player_color(player) == 1 || get_player_color(player) == 2 || get_player_color(player) == 3 || get_player_color(player) == 4 || get_player_color(player) == 5 || get_player_color(player) == 8 || get_player_color(player) == 9 || get_player_color(player) == 10 || get_player_color(player) == 11 || get_player_color(player) == 12 || get_player_color(player) == 13)){
     set_character_color_slot(0, 248, 224, 168 ); //plating1
     set_character_color_slot(1, 255, 189, 0 ); //plating2
     set_character_color_slot(2, 247, 107, 0 ); //plating3
     set_character_color_slot(3, 115, 33, 0 ); //plating4
-}else if(varia_suit == true && gravity_suit == true &&  (get_player_color(player) <= 5 || (get_player_color(player) >= 8 && get_player_color(player) <= 13))){
+}else if(varia_suit == true && gravity_suit == true && (get_player_color(player) == 0 || get_player_color(player) == 1 || get_player_color(player) == 2 || get_player_color(player) == 3 || get_player_color(player) == 4 || get_player_color(player) == 5 || get_player_color(player) == 8 || get_player_color(player) == 9 || get_player_color(player) == 10 || get_player_color(player) == 11 || get_player_color(player) == 12 || get_player_color(player) == 13)){
     set_character_color_slot(0, 255, 231, 173 ); //plating1
     set_character_color_slot(1, 255, 132, 132 ); //plating2
     set_character_color_slot(2, 165, 66, 181 ); //plating3

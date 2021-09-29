@@ -124,12 +124,15 @@ set_hitbox_value(AT_NSPECIAL, ig, HG_PRIORITY, 2);
 set_hitbox_value(AT_NSPECIAL, ig, HG_ANGLE_FLIPPER, 8);
 set_hitbox_value(AT_NSPECIAL, ig, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_NSPECIAL, ig, HG_PROJECTILE_WALL_BEHAVIOR, 2);
+set_hitbox_value(AT_NSPECIAL, ig, HG_PROJECTILE_MASK, sprite_get("ball_formA_1_hurt"));
 set_hitbox_value(AT_NSPECIAL, ig, HG_DAMAGE, 10);
 //set_hitbox_value(AT_NSPECIAL, ig, HG_EFFECT, 1); //Burn
 set_hitbox_value(AT_NSPECIAL, ig, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_NSPECIAL, ig, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_NSPECIAL, ig, HG_ANGLE, 45);
 set_hitbox_value(AT_NSPECIAL, ig, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NSPECIAL, ig, HG_KNOCKBACK_SCALING, .7);
+set_hitbox_value(AT_NSPECIAL, ig, HG_VISUAL_EFFECT, 22);
 
 ig++
 
@@ -141,26 +144,28 @@ set_hitbox_value(AT_NSPECIAL, ig, HG_ANGLE_FLIPPER, 8);
 set_hitbox_value(AT_NSPECIAL, ig, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_NSPECIAL, ig, HG_DAMAGE, 7);
 //set_hitbox_value(AT_NSPECIAL, ig, HG_EFFECT, 1); //Burn
-set_hitbox_value(AT_NSPECIAL, ig, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_NSPECIAL, ig, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_NSPECIAL, ig, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_NSPECIAL, ig, HG_ANGLE, 45);
 set_hitbox_value(AT_NSPECIAL, ig, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_NSPECIAL, ig, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_NSPECIAL, ig, HG_SHAPE, 0);
 set_hitbox_value(AT_NSPECIAL, ig, HG_HITBOX_X, 0);
 set_hitbox_value(AT_NSPECIAL, ig, HG_HITBOX_Y, 0);
-set_hitbox_value(AT_NSPECIAL, ig, HG_WIDTH, 150);
-set_hitbox_value(AT_NSPECIAL, ig, HG_HEIGHT, 150);
+set_hitbox_value(AT_NSPECIAL, ig, HG_WIDTH, 110);
+set_hitbox_value(AT_NSPECIAL, ig, HG_HEIGHT, 110);
 
 /**/
 set_hitbox_value(AT_NSPECIAL, ig, HG_PROJECTILE_SPRITE, sprite_get("ball_explode"));
 set_hitbox_value(AT_NSPECIAL, ig, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, ig, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 set_hitbox_value(AT_NSPECIAL, ig, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_NSPECIAL, ig, HG_VISUAL_EFFECT, 22);
 
 
 ig++;
 
-//Hadoken Hitbox
+//Catooken Hitbox
 set_hitbox_value(AT_NSPECIAL, ig, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, ig, HG_LIFETIME, 70);
 set_hitbox_value(AT_NSPECIAL, ig, HG_PRIORITY, 2);
@@ -174,8 +179,9 @@ set_hitbox_value(AT_NSPECIAL, ig, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
 set_hitbox_value(AT_NSPECIAL, ig, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, ig, HG_BASE_HITPAUSE, 30);
-set_hitbox_value(AT_NSPECIAL, ig, HG_HITPAUSE_SCALING, .5);
+set_hitbox_value(AT_NSPECIAL, ig, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_NSPECIAL, ig, HG_PROJECTILE_HSPEED, 4);
 set_hitbox_value(AT_NSPECIAL, ig, HG_PROJECTILE_VSPEED, 0);
+set_hitbox_value(AT_NSPECIAL, ig, HG_VISUAL_EFFECT, 22);
 
 //END

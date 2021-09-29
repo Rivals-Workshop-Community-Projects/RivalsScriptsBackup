@@ -9,7 +9,7 @@ var ig = 1;
 
 //Back Air Start
 set_window_value(AT_BAIR, ig, AG_WINDOW_TYPE, 1);
-set_window_value(AT_BAIR, ig, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_BAIR, ig, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_BAIR, ig, AG_WINDOW_ANIM_FRAMES, 3);
 
 ig++;
@@ -36,11 +36,11 @@ ig = 1;
 
 set_hitbox_value(AT_BAIR, ig, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, ig, HG_WINDOW, 2);
-set_hitbox_value(AT_BAIR, ig, HG_LIFETIME, 5);
-set_hitbox_value(AT_BAIR, ig, HG_HITBOX_X, -29);
-set_hitbox_value(AT_BAIR, ig, HG_HITBOX_Y, -21);
-set_hitbox_value(AT_BAIR, ig, HG_WIDTH, 73);
-set_hitbox_value(AT_BAIR, ig, HG_HEIGHT, 54);
+set_hitbox_value(AT_BAIR, ig, HG_LIFETIME, 3);
+set_hitbox_value(AT_BAIR, ig, HG_HITBOX_X, -40);
+set_hitbox_value(AT_BAIR, ig, HG_HITBOX_Y, -22);
+set_hitbox_value(AT_BAIR, ig, HG_WIDTH, 87);
+set_hitbox_value(AT_BAIR, ig, HG_HEIGHT, 45);
 set_hitbox_value(AT_BAIR, ig, HG_PRIORITY, 2);
 set_hitbox_value(AT_BAIR, ig, HG_ANGLE, 135);
 
@@ -53,12 +53,12 @@ set_hitbox_value(AT_BAIR, ig, HG_HITPAUSE_SCALING, .7);
 */
 
 set_hitbox_value(AT_BAIR, ig, HG_DAMAGE, 8);
-set_hitbox_value(AT_BAIR, ig, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_BAIR, ig, HG_KNOCKBACK_SCALING, .5);
+set_hitbox_value(AT_BAIR, ig, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_BAIR, ig, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(AT_BAIR, ig, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_BAIR, ig, HG_HITPAUSE_SCALING, .2);
-
-set_hitbox_value(AT_BAIR, ig, HG_VISUAL_EFFECT_X_OFFSET, 32);
-set_hitbox_value(AT_BAIR, ig, HG_VISUAL_EFFECT_Y_OFFSET, -10);
+set_hitbox_value(AT_BAIR, ig, HG_VISUAL_EFFECT, 305);
+set_hitbox_value(AT_BAIR, ig, HG_VISUAL_EFFECT_X_OFFSET, 30);
+set_hitbox_value(AT_BAIR, ig, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_BAIR, ig, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_BAIR, ig, HG_ANGLE_FLIPPER, 6);

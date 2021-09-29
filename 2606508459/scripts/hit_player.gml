@@ -88,6 +88,27 @@ if (fBall_obj != noone &&
     }
 }
 
+//====> D TILT ################################################################################################
+
+if (my_hitboxID.attack == AT_DTILT)
+{
+    //Uncomment to make dtilt jump cancellable
+    //flag_dtilt_jump = true;
+}
+
+//====> U AIR ################################################################################################
+/*
+Lerp the position of the enemy
+if
+*/
+if (my_hitboxID.attack == AT_UAIR /*&&
+    my_hitboxID.hbox_num == 1*/)
+{
+    hit_player_obj.x = lerp(hit_player_obj.x, my_hitboxID.x, .2);
+    hit_player_obj.y = lerp(hit_player_obj.y, my_hitboxID.y + 20, .2);
+    //sound_play(sound_get("crit"));
+}
+
 //====> F STRONG ################################################################################################
 /*
 Play the Critical hit sound when sweetspoting
@@ -200,6 +221,12 @@ if (my_hitboxID.attack == AT_NSPECIAL && //It is coded as a NSpecial but is acti
     {
         sound_play(sound_get("crit"));
     }
+}
+
+if (my_hitboxID.attack == AT_DSPECIAL &&
+    my_hitboxID.hbox_num == 2)
+{
+    flag_dspecial_jump = true;
 }
 
 /*

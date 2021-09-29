@@ -7,6 +7,12 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
 
 //V-Braking
 
+if (attack == AT_USTRONG){
+	if (window > 1){
+		hud_offset = 70;
+	}
+}
+
 if (attack == AT_TAUNT){
 	if (state_timer >= 3){
 		if (window < 4 && ((left_down && spr_dir == -1) || (right_down && spr_dir == 1))){ //forwards input

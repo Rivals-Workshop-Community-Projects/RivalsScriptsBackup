@@ -36,8 +36,8 @@ pre_state = state;
 //Visuals
 fx_hardway_duration = 30;
 fx_hardway = hit_fx_create( sprite_get( "hardway" ), fx_hardway_duration );
-fx_hardway_x = 0; //-34;
-fx_hardway_y = -158;
+fx_hardway_x = -20; //-34;
+fx_hardway_y = -156;
 
 fx_gado_duration = 20;
 fx_gado_End = hit_fx_create( sprite_get("ball_formC_End"), fx_gado_duration );
@@ -49,7 +49,7 @@ fx_nspecial_dust2 = hit_fx_create( sprite_get("nspecial_dust2"), fx_nspecial_dus
 fx_nspecial_ground_cool_c = 10;
 fx_nspecial_ground_cool = 0;
 
-c_elec_timer = 120;
+c_elec_timer = 60;
 elec_timer = 0;
 elec_target = noone;
 
@@ -159,6 +159,9 @@ dspecial_symbol_spr = sprite_get("MPModeMid");
 dspecial_firstFrame = true;
 dspecial_lastExplosion = 0;
 
+flag_explode = false;
+flag_dspecial_jump = false;
+
 //FBall
 fBall_amount = 1; //Amount of FBalls the player can have at the same time
 //fBall_rotation = 0;
@@ -193,6 +196,7 @@ uspecial_cost = 0;      //OG = 25
 //Flags
 flag_djump = 0;
 flag_djump_change = 0;
+flag_dtilt_jump = false;
 
 flag_nspecial = 0;
 flag_uspecial = 0;

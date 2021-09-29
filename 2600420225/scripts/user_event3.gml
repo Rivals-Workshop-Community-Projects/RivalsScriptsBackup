@@ -61,7 +61,7 @@ if(is_aiming == "forward_"){
     set_hitbox_value( AT_FTHROW, 1, HG_PROJECTILE_MASK, sprite_get("physical_attacks_super_missile_+"));
     set_hitbox_value( AT_FTHROW, 1, HG_PROJECTILE_HSPEED, 5);
     set_hitbox_value( AT_FTHROW, 1, HG_PROJECTILE_VSPEED, 0);
-    set_hitbox_value( AT_FTHROW, 1, HG_PROJECTILE_AIR_FRICTION, -0.4);
+    set_hitbox_value( AT_FTHROW, 1, HG_PROJECTILE_AIR_FRICTION, -0.8);
     if(is_facing == "right"){
         if(state == PS_WALK || state == PS_DASH_START || state == PS_DASH){
             projectile_x = 28;
@@ -128,7 +128,7 @@ if(is_aiming == "forward_"){
     set_hitbox_value( AT_FTHROW, 1, HG_PROJECTILE_MASK, sprite_get("physical_attacks_super_missile_+"));
     set_hitbox_value( AT_FTHROW, 1, HG_PROJECTILE_HSPEED, 5);
     set_hitbox_value( AT_FTHROW, 1, HG_PROJECTILE_VSPEED, 0);
-    set_hitbox_value( AT_FTHROW, 1, HG_PROJECTILE_AIR_FRICTION, -0.4);
+    set_hitbox_value( AT_FTHROW, 1, HG_PROJECTILE_AIR_FRICTION, -0.8);
     if(is_facing == "right"){
         projectile_x = 28;
         projectile_y = -36;

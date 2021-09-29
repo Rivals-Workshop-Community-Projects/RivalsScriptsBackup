@@ -52,15 +52,13 @@ set_hitbox_value(AT_UAIR, ig, HG_ANGLE, 270);
 set_hitbox_value(AT_UAIR, ig, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_UAIR, ig, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_UAIR, ig, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(AT_UAIR, ig, HG_TECHABLE, 1);
+//set_hitbox_value(AT_UAIR, ig, HG_TECHABLE, 1);
 set_hitbox_value(AT_UAIR, ig, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_UAIR, ig, HG_VISUAL_EFFECT_Y_OFFSET, -15);
 set_hitbox_value(AT_UAIR, ig, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_UAIR, ig, HG_ANGLE_FLIPPER, 10); //9
 
 //secondhitbox
-
-
 for (ig = 2; ig <= 4; ig++)
 {
     set_hitbox_value(AT_UAIR, ig, HG_HITBOX_TYPE, 1);
@@ -79,9 +77,10 @@ for (ig = 2; ig <= 4; ig++)
     set_hitbox_value(AT_UAIR, ig, HG_KNOCKBACK_SCALING, 0);
     set_hitbox_value(AT_UAIR, ig, HG_BASE_HITPAUSE, 3);
     set_hitbox_value(AT_UAIR, ig, HG_EXTRA_HITPAUSE, 1);
-    set_hitbox_value(AT_UAIR, ig, HG_TECHABLE, 1);
-    set_hitbox_value(AT_UAIR, ig, HG_VISUAL_EFFECT_X_OFFSET, 32);
-    set_hitbox_value(AT_UAIR, ig, HG_VISUAL_EFFECT_Y_OFFSET, -15);
+    //set_hitbox_value(AT_UAIR, ig, HG_TECHABLE, 1);
+    set_hitbox_value(AT_UAIR, ig, HG_VISUAL_EFFECT, 302);
+    //set_hitbox_value(AT_UAIR, ig, HG_VISUAL_EFFECT_X_OFFSET, 32);
+    //set_hitbox_value(AT_UAIR, ig, HG_VISUAL_EFFECT_Y_OFFSET, -15);
     set_hitbox_value(AT_UAIR, ig, HG_ANGLE_FLIPPER, 10); //9
     set_hitbox_value(AT_UAIR, ig, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 }
@@ -103,7 +102,8 @@ set_hitbox_value(AT_UAIR, ig, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_UAIR, ig, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_UAIR, ig, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_UAIR, ig, HG_HITPAUSE_SCALING, 1);
-set_hitbox_value(AT_UAIR, ig, HG_TECHABLE, 1);
+//set_hitbox_value(AT_UAIR, ig, HG_TECHABLE, 1);
+set_hitbox_value(AT_UAIR, ig, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_UAIR, ig, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_UAIR, ig, HG_VISUAL_EFFECT_Y_OFFSET, -15);
 set_hitbox_value(AT_UAIR, ig, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));

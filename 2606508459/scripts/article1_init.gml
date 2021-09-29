@@ -83,6 +83,10 @@ fx_ballBlast = hit_fx_create( sprite_get("ballBlast"), fx_ballBounce_duration );
 fx_ballBlast_up = hit_fx_create( sprite_get("ballBlast_up"), fx_ballBounce_duration );
 fx_ballBlast_down = hit_fx_create( sprite_get("ballBlast_down"), fx_ballBounce_duration );
 
+c_fx_ballSquish_frames = 8;
+_fx_ballSquish_frames = 0;
+pf_squish = 0;
+
 spr_dust = sprite_get("ball_dust");
 spr_dustOL = sprite_get("ball_dust_ol");
 arr_particles_init = [

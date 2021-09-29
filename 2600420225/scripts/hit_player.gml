@@ -13,4 +13,9 @@ charging_timer = 0;
 
 is_shinesparking = false;
 
+with (oPlayer) if (self != other)
+{
 opponent_fog_timer = 0;
+}
+
+screw_cooldown = 0;

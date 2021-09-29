@@ -1,36 +1,3 @@
-/*
-
-if (attack == AT_NSPECIAL && hbox_num == 1)
-{
-    proj_angle = 0;
-    if (place_meeting(x,y+1,asset_get("par_block")))
-    {
-        free = false;
-    }
-    if (!free)
-    {
-        vsp = 0;
-        hsp = 0;
-        sound_play(sound_get("sfx_nspecial_grnd"));
-        destroyed = true;
-    }
-}
-
-if (attack == AT_NSPECIAL){
-  if (!free){
-     player_id.mud = instance_create(x, y, "obj_article1");
-     player_id.mud.player_id = player_id;
-     player_id.mud.orig_player_id = player_id;
-     player_id.mud.replacedcount -= 1;
-     with(asset_get("obj_article1")){
-    	if (player_id == other.player_id){
-    		    replacedcount++;                            //If there are any other article1s owned by the same person, tell them to increment their replacedcount by 1
-    		    //print_debug("Replace: "+string(replacedcount));
-    	}
-	}
-  }
-}
-*/
 
 if (attack == AT_NSPECIAL && hbox_num == 1 && was_parried) {
     destroyed = true;

@@ -17,40 +17,40 @@ if(spr_dir == 1){
     is_facing = "left";
 }
 
-if(state == PS_IDLE){
+if(state == PS_IDLE || state == PS_CROUCH){
     sprite_index = sprite_get("samus_idle_aim_"+ is_aiming + is_facing);
-    image_index = state_timer * idle_anim_speed;
+    image_index = state_timer * 0.05;
 }
 
-if(state == PS_WALK){
+if(state == PS_WALK || state == PS_CROUCH){
     sprite_index = sprite_get("samus_run_aim_"+ is_aiming + is_facing);
     image_index = state_timer * walk_anim_speed;
 }
 
-if(state == PS_DASH_START){
+if(state == PS_DASH_START || state == PS_CROUCH){
     sprite_index = sprite_get("samus_run_aim_"+ is_aiming + is_facing);
     image_index = state_timer * walk_anim_speed;
 }
 
-if(state == PS_DASH){
+if(state == PS_DASH || state == PS_CROUCH){
     sprite_index = sprite_get("samus_run_aim_"+ is_aiming + is_facing);
     image_index = state_timer * dash_anim_speed;
 }
 
-if(state == PS_DASH_STOP){
+if(state == PS_DASH_STOP || state == PS_CROUCH){
     sprite_index = sprite_get("samus_idle_aim_" + is_aiming + is_facing);
     image_index = state_timer * 1;
 }
 
-if(state == PS_DASH_TURN){
+if(state == PS_DASH_TURN || state == PS_CROUCH){
     sprite_index = sprite_get("samus_idle_aim_" + is_aiming + is_facing);
 }
 
-if(state == PS_WALK_TURN){
+if(state == PS_WALK_TURN || state == PS_CROUCH){
     sprite_index = sprite_get("samus_idle_aim_" + is_aiming + is_facing);
     image_index = state_timer * 0.1;
 }
-if(state == PS_JUMPSQUAT && is_crouch == false){
+if((state == PS_JUMPSQUAT || state == PS_CROUCH) && is_crouch == false){
     sprite_index = sprite_get("samus_jump_start_" + is_facing);
     image_index = state_timer * 0.1;
 }
@@ -85,18 +85,35 @@ if(is_shinesparking == false && is_dead == false && (state == PS_IDLE_AIR || (st
 }
 if(prev_state == PS_WALL_JUMP && state == PS_IDLE_AIR){
     sprite_index = sprite_get("samus_somersault_" + jump_power_up + is_facing);
-    image_index = state_timer * 0.4;
+    if(jump_power_up == "normal_"){
+        image_index = state_timer * 0.4;
+    }else{
+    image_index = state_timer * 0.6;
+    }
+    is_somersaulting = true;
 }
 if(state == PS_FIRST_JUMP && is_crouch == false){
     if(state_timer <= 1){
         need_somersault = (left_pressed || right_pressed || left_down || right_down);
     }if (need_somersault){
-        jump_speed = 8
+        if(high_jump == false){
+            jump_speed = 8
+        }else{
+            jump_speed = 9
+        }
         is_somersaulting = true;
         sprite_index = sprite_get("samus_somersault_" + jump_power_up + is_facing);
+        if(jump_power_up == "normal_"){
         image_index = state_timer * 0.4;
+        }else{
+        image_index = state_timer * 0.6;
+    }
     }else{
-        jump_speed = 7.5
+        if(high_jump == false){
+            jump_speed = 7.5
+        }else{
+            jump_speed = 8.5
+        }
         is_somersaulting = false;
         sprite_index = sprite_get("samus_jump_rise_" + is_facing);
         if(state_timer >= 60){
@@ -149,7 +166,7 @@ if(down_pressed && is_crouch == false && is_morph == false && !free && !phone.st
     }
 }
 if(is_crouch == true && !free){
-    if(special_state_timer <=1){
+    if(special_state_timer <= 1){
         sprite_index = sprite_get("samus_crouch_anim_aim_" + is_aiming + is_facing);
         image_index = state_timer * 0.05;
     }else if(special_state_timer >= 1){
@@ -182,8 +199,8 @@ if(down_pressed && is_crouch == true && is_morph == false && special_state_timer
         is_morph = true;
     }
 }
-if(is_morph == true && !free){
-    if(special_state_timer <=1){
+if(is_morph == true){
+    if(special_state_timer <= 1){
         sprite_index = sprite_get("samus_morphing_" + is_facing);
         image_index = state_timer * 0.02;
     }else if(special_state_timer >= 1){
@@ -278,4 +295,16 @@ if(is_dead == true){
 if(is_crystal_flashing == true && crystal_flash_timer >= 70){
     sprite_index = sprite_get("samus_crystalflash")
     image_index = (crystal_flash_timer - 70) * 0.25
+}
+
+//hurtbox switch
+if(is_crouch == true && is_morph == false){
+    hurtboxID.sprite_index = sprite_get("crouch_hurtbox");
+    gravity_speed = 0.2;
+}else if(is_crouch == true && is_morph == true){
+    gravity_speed = 0.4;
+    hurtboxID.sprite_index = sprite_get("morph_hurtbox");
+}else{
+    hurtboxID.sprite_index = sprite_get("idle_hurtbox");
+    gravity_speed = 0.2;
 }

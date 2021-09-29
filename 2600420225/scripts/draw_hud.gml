@@ -65,58 +65,58 @@ if(num_samuses == 1){
         draw_sprite(sprite_get("hud_selectables_Xray_scope_active"), 0,  796,  4);
     }
     if(energy_tank_amount >= 1){
-        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_1), 0,  4, 8);
+        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_1), 0, -20 + (energy_tank_amount * 24), 8);
     }
     if(energy_tank_amount >= 2){
-        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_2), 0,  28,  8);
+        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_2), 0, -20 + ((energy_tank_amount - 1) * 24),  8);
     }
     if(energy_tank_amount >= 3){
-        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_3), 0,  52, 8);
+        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_3), 0, -20 + ((energy_tank_amount - 2) * 24), 8);
     }
     if(energy_tank_amount >= 4){
-        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_4), 0,  76, 8);
+        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_4), 0, -20 + ((energy_tank_amount - 3) * 24), 8);
     }
     if(energy_tank_amount >= 5){
-        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_5), 0,  100, 8);
+        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_5), 0, -20 + ((energy_tank_amount - 4) * 24), 8);
     }
     if(energy_tank_amount >= 6){
-        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_6), 0,  124, 8);
+        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_6), 0, -20 + ((energy_tank_amount - 5) * 24), 8);
     }
     if(energy_tank_amount >= 7){
-        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_7), 0,  148, 8);
+        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_7), 0, -20 + ((energy_tank_amount - 6) * 24), 8);
     }
     if(energy_tank_amount >= 8){
-        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_8), 0,  172, 8);
+        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_8), 0, -20 + ((energy_tank_amount - 7) * 24), 8);
     }
     if(energy_tank_amount >= 9){
-        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_9), 0,  196, 8);
+        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_9), 0, -20 + ((energy_tank_amount - 8) * 24), 8);
     }
     if(energy_tank_amount >= 10){
-        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_10), 0,  220, 8);
+        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_10), 0, -20 + ((energy_tank_amount - 9) * 24), 8);
     }
     if(energy_tank_amount >= 11){
-        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_11), 0,  244, 8);
+        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_11), 0, -20 + ((energy_tank_amount - 10) * 24), 8);
     }
     if(energy_tank_amount >= 12){
-        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_12), 0,  268, 8);
+        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_12), 0, -20 + ((energy_tank_amount - 11) * 24), 8);
     }
     if(energy_tank_amount >= 13){
-        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_13), 0,  292, 8);
+        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_13), 0, -20 + ((energy_tank_amount - 12) * 24), 8);
     }
     if(energy_tank_amount >= 14){
-        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_14), 0,  316, 8);
+        draw_sprite(sprite_get("hud_energy_tank_big_" + tank_14), 0, -20 + ((energy_tank_amount - 13) * 24), 8);
     }
     if(reserve_tank_amount >= 1){
-        draw_sprite(sprite_get("hud_energy_reserve_tank_" + reserve_1), 0,  274, 38);
+        draw_sprite(sprite_get("hud_energy_reserve_tank_" + reserve_1), 0,  274 + (reserve_tank_amount - 1) * 16, 38);
     }
     if(reserve_tank_amount >= 2){
-        draw_sprite(sprite_get("hud_energy_reserve_tank_" + reserve_2), 0,  290, 38);
+        draw_sprite(sprite_get("hud_energy_reserve_tank_" + reserve_2), 0,  274 + (reserve_tank_amount - 2) * 16, 38);
     }
     if(reserve_tank_amount >= 3){
-        draw_sprite(sprite_get("hud_energy_reserve_tank_" + reserve_3), 0,  306, 38);
+        draw_sprite(sprite_get("hud_energy_reserve_tank_" + reserve_3), 0,  274 + (reserve_tank_amount - 3) * 16, 38);
     }
     if(reserve_tank_amount >= 4){
-        draw_sprite(sprite_get("hud_energy_reserve_tank_" + reserve_4), 0,  322, 38);
+        draw_sprite(sprite_get("hud_energy_reserve_tank_" + reserve_4), 0,  274 + (reserve_tank_amount - 4) * 16, 38);
     }
     if(hit_counter >= 1){
         draw_sprite(sprite_get("hud_level_big_" + string(hit_counter)), 0,  128, 36);
@@ -207,58 +207,58 @@ if(num_samuses == 1){
         draw_sprite(sprite_get("hud_selectables_Xray_scope_active"), 0, temp_x + 172, temp_y - 50);
     }
     if(energy_tank_amount >= 1){
-        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_1), 0, temp_x - 4, temp_y + 16);
+        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_1), 0, temp_x +(-16 + 12 * energy_tank_amount) , temp_y + 16);
     }
     if(energy_tank_amount >= 2){
-        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_2), 0, temp_x + 8, temp_y + 16);
+        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_2), 0, temp_x +(-16 + 12 * (energy_tank_amount - 1)), temp_y + 16);
     }
     if(energy_tank_amount >= 3){
-        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_3), 0, temp_x + 20, temp_y + 16);
+        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_3), 0, temp_x +(-16 + 12 * (energy_tank_amount - 2)), temp_y + 16);
     }
     if(energy_tank_amount >= 4){
-        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_4), 0, temp_x + 32, temp_y + 16);
+        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_4), 0, temp_x +(-16 + 12 * (energy_tank_amount - 3)), temp_y + 16);
     }
     if(energy_tank_amount >= 5){
-        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_5), 0, temp_x + 44, temp_y + 16);
+        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_5), 0, temp_x +(-16 + 12 * (energy_tank_amount - 4)), temp_y + 16);
     }
     if(energy_tank_amount >= 6){
-        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_6), 0, temp_x + 56, temp_y + 16);
+        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_6), 0, temp_x +(-16 + 12 * (energy_tank_amount - 5)), temp_y + 16);
     }
     if(energy_tank_amount >= 7){
-        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_7), 0, temp_x + 68, temp_y + 16);
+        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_7), 0, temp_x +(-16 + 12 * (energy_tank_amount - 6)), temp_y + 16);
     }
     if(energy_tank_amount >= 8){
-        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_8), 0, temp_x + 80, temp_y + 16);
+        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_8), 0, temp_x +(-16 + 12 * (energy_tank_amount - 7)), temp_y + 16);
     }
     if(energy_tank_amount >= 9){
-        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_9), 0, temp_x + 92, temp_y + 16);
+        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_9), 0, temp_x +(-16 + 12 * (energy_tank_amount - 8)), temp_y + 16);
     }
     if(energy_tank_amount >= 10){
-        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_10), 0, temp_x + 104, temp_y + 16);
+        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_10), 0, temp_x +(-16 + 12 * (energy_tank_amount - 9)), temp_y + 16);
     }
     if(energy_tank_amount >= 11){
-        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_11), 0, temp_x + 116, temp_y + 16);
+        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_11), 0, temp_x +(-16 + 12 * (energy_tank_amount - 10)), temp_y + 16);
     }
     if(energy_tank_amount >= 12){
-        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_12), 0, temp_x + 128, temp_y + 16);
+        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_12), 0, temp_x +(-16 + 12 * (energy_tank_amount - 11)), temp_y + 16);
     }
     if(energy_tank_amount >= 13){
-        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_13), 0, temp_x + 140, temp_y + 16);
+        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_13), 0, temp_x +(-16 + 12 * (energy_tank_amount - 12)), temp_y + 16);
     }
     if(energy_tank_amount >= 14){
-        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_14), 0, temp_x + 152, temp_y + 16);
+        draw_sprite(sprite_get("hud_energy_tank_small_" + tank_14), 0, temp_x +(-16 + 12 * (energy_tank_amount - 13)), temp_y + 16);
     }
     if(reserve_tank_amount >= 1){
-        draw_sprite(sprite_get("hud_energy_reserve_tank_" + reserve_1), 0, temp_x + 42, temp_y);
+        draw_sprite(sprite_get("hud_energy_reserve_tank_" + reserve_1), 0, temp_x + (42 + 16 * (reserve_tank_amount - 1)), temp_y);
     }
     if(reserve_tank_amount >= 2){
-        draw_sprite(sprite_get("hud_energy_reserve_tank_" + reserve_2), 0, temp_x + 58, temp_y);
+        draw_sprite(sprite_get("hud_energy_reserve_tank_" + reserve_2), 0, temp_x + (42 + 16 * (reserve_tank_amount - 2)), temp_y);
     }
     if(reserve_tank_amount >= 3){
-        draw_sprite(sprite_get("hud_energy_reserve_tank_" + reserve_3), 0, temp_x + 74, temp_y);
+        draw_sprite(sprite_get("hud_energy_reserve_tank_" + reserve_3), 0, temp_x + (42 + 16 * (reserve_tank_amount - 3)), temp_y);
     }
     if(reserve_tank_amount >= 4){
-        draw_sprite(sprite_get("hud_energy_reserve_tank_" + reserve_4), 0, temp_x + 90, temp_y);
+        draw_sprite(sprite_get("hud_energy_reserve_tank_" + reserve_4), 0, temp_x + (42 + 16 * (reserve_tank_amount - 4)), temp_y);
     }
     if(hit_counter >= 1){
         draw_sprite(sprite_get("hud_level_small_" + string(hit_counter)), 0, temp_x + 122, temp_y + 32);
