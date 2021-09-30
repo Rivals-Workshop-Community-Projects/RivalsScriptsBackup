@@ -10,8 +10,8 @@ walk_anim_speed = .18;
 dash_anim_speed = .35;
 pratfall_anim_speed = .25;
 
-walk_speed = 3.75;
-walk_accel = 0.35;
+walk_speed = 3;
+walk_accel = 0.3;
 walk_turn_time = 6;
 initial_dash_time = 10;
 initial_dash_speed = 7;
@@ -20,24 +20,24 @@ dash_turn_time = 9;
 dash_turn_accel = 1.75;
 dash_stop_time = 6;
 dash_stop_percent = .45; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .5;
+ground_friction = .55;
 moonwalk_accel = 1.2749;
 
 jump_start_time = 5;
-jump_speed = 10;
+jump_speed = 11;
 short_hop_speed = 6;
-djump_speed = 9;
-leave_ground_max = 6.75; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
+djump_speed = 8.9;
+leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 5.5; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 3.5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .3;
+air_accel = .25;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
 air_friction = .02;
 max_djumps = 1;
 double_jump_time = 33; //the number of frames to play the djump animation. Can't be less than 31.
-walljump_hsp = 6;
-walljump_vsp = 8;
+walljump_hsp = 5;
+walljump_vsp = 9;
 walljump_time = 20;
 max_fall = 9; //maximum fall speed without fastfalling
 fast_fall = 12; //fast fall speed
@@ -121,6 +121,7 @@ otto_bobblehead_sprite = sprite_get("hudbobblehead");
 otto_bobblehead_body_sprite = sprite_get("hudbobblebody");
 kirbyability = 16;
 swallowed = 0;
+diag_portrait=sprite_get("diagportrait");
 
 //Dracula Support
 dracula_portrait = sprite_get("dracportrait1");
@@ -147,5 +148,3 @@ page++;
 dracula_speaker[page] = 2;
 dracula_text[page] = "Oh yeah? And old geezers like you must be...uh...retired! Yeah, that's it!";
 page++;
-
-user_event(14); 

@@ -18,12 +18,6 @@ if(state == PS_IDLE || state == PS_CROUCH){
         }
     }
 }
-// Ustrong iasa script cancel code
-if((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_USTRONG && has_hit == true && window > 4 && window_timer == 1){
-    gpu_set_fog(true,c_yellow,0,0);
-    draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, 1, 0, c_white, .5);
-    gpu_set_fog(false,c_yellow,0,0);
-}
 /*
 if(instance_exists(dspecial_surf_hitbox_id) && surf_cancelled != true){
     draw_sprite_ext(sprite_index,image_index,x,y,spr_dir,1,0,c_white,1);

@@ -51,6 +51,8 @@ if (y > room_height + 100){
     instance_destroy();
 }
 
+
+
 switch(state){
     
     //Idle
@@ -123,13 +125,13 @@ switch(state){
             spr_dir = -1;
         }    
         }
-        if state_timer = 12{
+        if state_timer = 16{
         sound_play(sound_get("bonby_frog_tongue"));
         }        
-        if state_timer < 13{
-        image_index = state_timer / 6;
+        if state_timer < 16{
+        image_index = state_timer / 7;
         }
-        if state_timer > 12{
+        if state_timer > 15{
         image_index = state_timer / 4;
         }
         if state_timer = 16{
@@ -215,16 +217,15 @@ switch(state){
         }
         }
         if (state_timer > 16 && state_timer < 21){
-            shake_camera(3, 4);
-        var spitdir = point_direction(grabbedplayer.x, grabbedplayer.y, spittargetx, spittargety);
+        var spitdir = spr_dir;
         var spitspeed = 10;
         with (grabbedplayer){
         initial_invince = 0;      
             free = 1;
             hitstun = 35;
           set_state(PS_HITSTUN);  
-          hsp = lengthdir_x(spitspeed, spitdir);
-            vsp = lengthdir_y(spitspeed, spitdir) - 7.5;
+          hsp = 7 * other.spr_dir;
+            vsp = -11;
           visible = true;
         }
         }      

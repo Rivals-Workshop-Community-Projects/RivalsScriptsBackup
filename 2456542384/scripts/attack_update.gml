@@ -360,6 +360,19 @@ if attack == AT_TAUNT {
 	}
 }
 
+//windows taunt
+if attack == AT_TAUNT_2 {
+	if (window == 1 && window_timer > 14) or (window == 2) {
+		hud_offset = 80
+	}
+	if window == 1 && window_timer == 12 {
+		sound_play(asset_get("sfx_swipe_weak1"))
+	}
+	if window == 2 && window_timer == get_window_value(AT_TAUNT_2,2,AG_WINDOW_LENGTH)-1 && taunt_down { //loop taunt if held
+		window_timer = 0;
+	}
+}
+
 //FStrong sounds
 if (attack == AT_FSTRONG && window == 2 && window_timer == get_window_value(AT_FSTRONG,2,AG_WINDOW_LENGTH)-1){
 	sound_play(asset_get("sfx_crunch"));

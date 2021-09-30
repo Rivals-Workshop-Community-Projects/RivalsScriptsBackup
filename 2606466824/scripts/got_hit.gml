@@ -23,8 +23,9 @@ if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_DSPECI
 		hitstop = 10;
 	}
 	//print_debug ("lol revenge");
-	revengeMult += 0.5 + (incomingDamage * 0.15);
-	revengeMult = clamp(revengeMult, 1, 4);
+	revengeMult += 0.3 + (incomingDamage * 0.12);
+	revengeMult = clamp(revengeMult, 1, 3);
+	revengeBuffer = 120;
 	revengeAnchor = get_player_damage(player);
 	plasma_pause = false;
 	wrapped = false;

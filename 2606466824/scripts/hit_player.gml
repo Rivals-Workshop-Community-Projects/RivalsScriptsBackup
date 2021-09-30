@@ -69,7 +69,11 @@ if (my_hitboxID.attack == AT_DAIR) {
 }
 
 if (my_hitboxID.attack == AT_FSTRONG) {
-	sound_play(asset_get("sfx_blow_heavy2"), false, noone, 1, 1);
+	if (my_hitboxID.hbox_num == 1) {
+		sound_play(asset_get("sfx_blow_heavy2"), false, noone, 1, 1);
+	} else {
+		sound_play(asset_get("sfx_blow_heavy1"), false, noone, 0.5, 1);	
+	}
 }
 if (my_hitboxID.attack == AT_USTRONG) {
 	sound_play(asset_get("sfx_blow_heavy1"), false, noone, 1, 1);

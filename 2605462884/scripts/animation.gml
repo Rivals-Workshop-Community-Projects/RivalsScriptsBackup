@@ -25,7 +25,7 @@ if (state==PS_DASH||state==PS_WALK){
 	image_index = ((ceil((state_timer+1)/dur)%2)==0)?0:1;
 	if (boost_duration>0){
 		if (boost_selected==3){
-			spr_angle = ((state_timer%360)*6)*(spr_dir*-1);
+			spr_angle = ((state_timer%360)*8)*(spr_dir*-1);//*6
 		}
 	}
 }

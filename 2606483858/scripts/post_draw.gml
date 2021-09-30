@@ -1,4 +1,5 @@
-//
+muno_event_type = 4;
+user_event(14);//
 //print(note_cont);
 
 //The Arrow when creating/aiming the Whirlwind

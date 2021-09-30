@@ -100,7 +100,7 @@ sprite_change_offset("dstrong_hat", 26, 48);
 sprite_change_offset("nair_hat", 10, 51);
 sprite_change_offset("fair_hat", 27, 50);
 sprite_change_offset("bair_hat", 9, 49);
-sprite_change_offset("uair_hat", 20, 48);
+sprite_change_offset("uair_hat", 47, 64);
 sprite_change_offset("dair_hat", 6, 49);
 sprite_change_offset("fspecial_hat", 12, 49);
 sprite_change_offset("fspecial_air_hat", 8, 49);

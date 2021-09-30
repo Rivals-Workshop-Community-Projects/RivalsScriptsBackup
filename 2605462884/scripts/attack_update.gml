@@ -9,7 +9,7 @@ if (attack==AT_JAB){
 	can_move = false;
 	was_parried = false;
 	if (!hitpause){
-		hsp = clamp(hsp + ((walk_accel/(1+free))*(right_down-left_down)), -3.5, 3.5)
+		hsp = clamp(hsp + ((walk_accel/(1+free))*(right_down-left_down)), -3.0, 3.0)//3.5
 	}
 	//spr_dir = jab_dir
 	item_cell = equip_rand
@@ -291,7 +291,7 @@ if (attack==AT_NSPECIAL){
 		}
 		if (window_timer==4){
 			//instance_create(x, y+19, "obj_article_solid");
-			if (nsp_remain>0){
+			if (nsp_remain>0&&nsp_locked==0){
 				vsp = 0;
 				hsp = 0;
 				var temp_y = 19;
@@ -489,7 +489,7 @@ if ((attack == AT_NTHROW||attack == AT_FTHROW||attack == AT_BTHROW
 			}
 		}//nthrow
 		if (attack==AT_FTHROW){
-			grabbed_player_obj.old_hsp = 3*spr_dir;
+			grabbed_player_obj.old_hsp = 3*spr_dir;//hey TURNS OUT these velocity alteration DOES NOT WORK because when players are released it uses normal HSP/VSP since they are not in hitpause LOL my bad. i'll keep them as a reminder of my mistake
 			if (window == 1) {
 				var pull_to_x = (90*spr_dir);
 				var pull_to_y = (grabbed_player_obj.char_height/2)-110;

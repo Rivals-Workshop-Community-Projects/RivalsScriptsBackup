@@ -29,11 +29,16 @@ Will be set to 1, if it detects this variable in your character it will turn tha
 You can set your custom action by creating an if function. Otherwise, you will get a shorthop.
 =========================================*/
 
+temp_player  = -1;
+temp_players = 0;
+temp_count   = 0;
 players_on   = 0;
 player_count = 0;
+players_ready = true;
 sfx_move = 0;
 sfx_select = 0;
 sfx_cancel = 0;
+groove_timer = 0;
 
 sfx_announcer = 0;
 announcer_say =  0;
@@ -77,3 +82,4 @@ groove_sprite[7] = sprite_get("ngroove");
 groove_pick = sprite_get("select");
 
 sprite_change_offset("select", 0, -30)
+sprite_change_offset("GrooveWheel", 244, 148)

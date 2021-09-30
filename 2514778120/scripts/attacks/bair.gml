@@ -2,7 +2,7 @@ set_attack_value(AT_BAIR, AG_CATEGORY, 1);
 set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair"));
 set_attack_value(AT_BAIR, AG_HURTBOX_SPRITE, sprite_get("bair_hurt"));
 set_attack_value(AT_BAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_BAIR, AG_LANDING_LAG, 7);
+set_attack_value(AT_BAIR, AG_LANDING_LAG, 9);
 
 sword_attack_spr[0, AT_BAIR] = sprite_get("sword0_bair");
 sword_attack_hurtbox_spr[0, AT_BAIR] = sprite_get("sword0_bair_hurt");

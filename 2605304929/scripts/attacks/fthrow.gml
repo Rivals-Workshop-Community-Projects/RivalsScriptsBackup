@@ -82,6 +82,8 @@ set_window_value(attack, window_num, AG_WINDOW_TYPE, 10);
 set_window_value(attack, window_num, AG_WINDOW_LENGTH, 3);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(attack, window_num, AG_WINDOW_VSPEED, 2);
+set_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE, 0);
 
 window_num++;
 

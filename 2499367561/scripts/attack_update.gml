@@ -1,5 +1,5 @@
  //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if ( attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
 }
 
@@ -247,6 +247,14 @@ if(attack == AT_NSPECIAL){
         }
     }
     if(window == 1){
+        if window_timer == 1 { 
+            reverse = 0;
+        }
+        if (left_down && spr_dir == 1 || right_down && spr_dir == -1 && reverse == false) {
+            hsp *= -1;
+            spr_dir *= -1;
+            reverse = true;
+        } 
         if(free){
             jetpack_vsp = vsp
             jetpack_hsp = hsp
@@ -258,7 +266,7 @@ if(attack == AT_NSPECIAL){
             sound_play(asset_get( "sfx_ell_hover" ));
         }
     }if(window == 2){
-        if(state_timer > 80){
+        if(state_timer > 60){
             window = 3
             window_timer = 0
             jetpack = instance_create(x - 10*spr_dir, y - 40, "obj_article3")
@@ -269,11 +277,10 @@ if(attack == AT_NSPECIAL){
                 jetpack = instance_create(x - 10*spr_dir, y - 40, "obj_article3")
             }
         }
-        can_attack = true
-        can_special = true
-        can_jump = true
-        can_tap_jump = true
-        can_shield = true
+        //can_attack = true
+        //can_special = true
+        //can_jump = true
+        //can_tap_jump = true
         if(!left_down && !right_down){
             jetpack_hsp /= 1.1
         }
@@ -282,14 +289,14 @@ if(attack == AT_NSPECIAL){
         }
         if(jetpack_vsp >= -5 && jetpack_vsp <= 5){
             if(up_down || up_pressed){
-                jetpack_vsp -= 0.3
+                jetpack_vsp -= 0.2
             }else if(down_down || down_pressed){
-                jetpack_vsp += 0.3
+                jetpack_vsp += 0.2
             }
         }else if(jetpack_vsp < -5){
-            jetpack_vsp = -5
+            jetpack_vsp = -3
         }else if(jetpack_vsp > 5){
-            jetpack_vsp = 5
+            jetpack_vsp = 3
         }
         if(jetpack_hsp >= -5 && jetpack_hsp <= 5){
             if(left_down || left_pressed){
@@ -310,7 +317,7 @@ if(attack == AT_NSPECIAL){
         sound_stop(asset_get("sfx_ell_hover"))
         sound_play(asset_get("sfx_ell_utilt_retract"))
     }
-    if (shield_pressed && window != 3){
+    /*if (shield_pressed && window != 3){
         set_state(PS_IDLE_AIR);
         sound_stop(asset_get("sfx_ell_hover"));
         clear_button_buffer( PC_SHIELD_PRESSED );
@@ -319,7 +326,7 @@ if(attack == AT_NSPECIAL){
         sound_play(asset_get("sfx_ell_steam_hit"))
         hsp = jetpack_hsp * 1.5;
         vsp = jetpack_vsp * 1.5;
-    } 
+    } */
 }
 
 if(attack == AT_DSPECIAL){
@@ -422,7 +429,7 @@ if attack == AT_USPECIAL && window == 2{
 
 if(attack == AT_EXTRA_1){
     if(window == 1 && window_timer < 4){
-        if(down_pressed || down_down){
+        if(down_pressed && freemd|| down_down && freemd){
             set_state(PS_ROLL_BACKWARD)
             spot_dodge = true
         }
@@ -464,7 +471,7 @@ if(attack == AT_EXTRA_1){
     if(window < 3){
         invincible = true
     }
-    if(!shield_down && window == 2 && state_timer > 10){
+    if(!special_down && window == 2 && state_timer > 10){
         window = 3
         window_timer = 0
     }
@@ -543,9 +550,7 @@ if(attack == AT_FSTRONG){
     if(window == 1 && free){
         hsp = 0
     }
-    if window == 3 && window_timer == 1 && !has_hit{
-        shake_camera(5, 6);
-    } 
+
 }
 
 if(attack == AT_DSTRONG){
@@ -610,4 +615,26 @@ if(attack == AT_EXTRA_2){
     can_attack = false;
     can_jump = false;
     
+}
+
+if attack == AT_EXTRA_3 {
+    can_move = false;
+    can_fast_fall = false;
+    if !taunt_down  {
+        set_state(PS_PRATFALL)
+        sound_stop(sound_get("wolves"));
+        pillardraw = 0;
+    }
+    if (y < -80 || y > room_height + 100) {
+        set_state(PS_PRATFALL)
+        pillardraw = 0;
+        create_deathbox( x, y, 9999, 9999, player, 1, 2, 1, 2 )
+    }
+
+    /*
+    if y > get_stage_data(SD_TOP_BLASTZONE) -  {
+        create_deathbox( x, y, 10, 10, player, 0, 0, 1, 2 )
+        sound_stop(sound_get("wolves"));
+    }
+    */
 }

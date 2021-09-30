@@ -11,6 +11,7 @@ set_window_value(AT_DTILT, 2, AG_BODY_CELL, 19);
 
 set_num_hitboxes(AT_DTILT, 2); 
 
+//item
 set_hitbox_value(AT_DTILT, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DTILT, 1, HG_WIDTH, 28);
 set_hitbox_value(AT_DTILT, 1, HG_HEIGHT, 28);
@@ -27,10 +28,11 @@ set_hitbox_value(AT_DTILT, 1, HG_PROJECTILE_SPRITE, sprite_get("item"));
 set_hitbox_value(AT_DTILT, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DTILT, 1, HG_PROJECTILE_HSPEED, 4);
 set_hitbox_value(AT_DTILT, 1, HG_PROJECTILE_VSPEED, -1);
-set_hitbox_value(AT_DTILT, 1, HG_PROJECTILE_GRAVITY, 0.6);
+set_hitbox_value(AT_DTILT, 1, HG_PROJECTILE_GRAVITY, 0.8);//0.6
 set_hitbox_value(AT_DTILT, 1, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 set_hitbox_value(AT_DTILT, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
 
+//arm
 set_hitbox_value(AT_DTILT, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DTILT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DTILT, 2, HG_WINDOW, 2);

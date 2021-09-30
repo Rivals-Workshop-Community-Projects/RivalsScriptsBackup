@@ -1,3 +1,5 @@
+muno_event_type = 1;
+user_event(14);
 if(instance_exists(sick_existance)){
     sick_timer++;
     sick_existance.y = ease_sineIn(floor(sick_existance.y - 5),floor(sick_existance.y + 500),sick_timer,150)
@@ -20,12 +22,16 @@ if (state == PS_WALL_JUMP) {
 
 //Reached Max Charge (feel free to change the number to change the max timer)
 if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_DSPECIAL 
-&& window == 1 && babe_cont == 89){
+&& window == 1 && babe_cont >= 89){
 	window = 2;
 	window_timer = 1;
 	babe_cont = 0;
 }
-
+if(!free){
+	if(fspec_stall){
+		fspec_stall = false;
+	}
+}
 //Reached Max Charge (feel free to change the number to change the max timer)
 if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_NSPECIAL 
 && window == 2 && note_cont == 69){

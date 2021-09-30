@@ -60,6 +60,11 @@ if (attack == AT_FSPECIAL){
             window_timer = 1;
         }
     }
+    if(window == 6){
+    	if(!fspec_stall){
+    		fspec_stall = true;
+    	}
+    }
     //Not Charging
     if (window != 2){
         mic_counting = false;
@@ -71,10 +76,11 @@ if (attack == AT_FSPECIAL){
     }
     //Makes so you don't move while using the move
     if (window > 2 && window < 9){
-        vsp = 0;
-        hsp = 0;
+    	if(!fspec_stall){
+        	vsp = 0;
+        	hsp = 0;
+    	}
     }
-    if(window == 6 && window_timer >= 21){if(free){set_state(PS_PRATFALL);}}
 }
 
 //USpecial
@@ -83,6 +89,7 @@ if (attack == AT_USPECIAL){
     //Start of the move
     if (window == 1){
         arrow_myself = false;
+        can_move = false;
         
         
         
@@ -98,6 +105,7 @@ if (attack == AT_USPECIAL){
     }
     //Aiming the Arrow
     if (window == 2 && window_timer > 5){
+        	can_move = false;
             if (joy_pad_idle || up_down){
                     arrow_hitbox_num = 2;
                 }
@@ -145,7 +153,7 @@ if (attack == AT_DSPECIAL){
 	//Counting
 	if (window == 1){
         babe_counting = true;
-        babe_cont++;
+        babe_cont+=1.5;
         can_jump = true;
         can_shield = true;
 	}
@@ -169,21 +177,7 @@ switch(attack){
     case AT_DSTRONG:
         if(window == 2 && window_timer == 6 && !hitpause){
         switch(get_player_color(player)){
-            case 0:
-            case 17:
-            case 18:
-            case 21:
-            case 24:
-            case 25:
-            case 28:
-            case 27:
-            case 30:
-            case 31:
-            case 6:
-            case 5:
-            case 4:
-            case 3:
-            case 10:
+			default:
                 sound_play(sound_get("Euh_Short"))
             break;
             case 1:
@@ -244,21 +238,7 @@ switch(attack){
     case AT_FSTRONG:
         if(window == 2 && window_timer == 1 && !hitpause){
         switch(get_player_color(player)){
-            case 0:
-            case 17:
-            case 18:
-            case 21:
-            case 24:
-            case 25:
-            case 28:
-            case 27:
-            case 30:
-            case 31:
-            case 6:
-            case 5:
-            case 4:
-            case 3:
-            case 10:
+			default:
                 sound_play(sound_get("Ah_Short"))
             break;
             case 1:
@@ -320,21 +300,7 @@ switch(attack){
     case AT_UAIR:
         if(window == 1 && window_timer == 7 && !hitpause){
             switch(get_player_color(player)){ 
-                case 0:
-                case 17:
-                case 18:
-                case 21:
-                case 24:
-                case 25:
-                case 28:
-                case 27:
-                case 30:
-                case 31:
-                case 6:
-                case 5:
-                case 4:
-                case 3:
-                case 10:
+				default:
                     sound_play(sound_get("Ah_Short"))
                 break;
                 case 1:
@@ -395,21 +361,7 @@ switch(attack){
     case AT_DTILT:
         if(window == 1 && window_timer == 7 && !hitpause){
         switch(get_player_color(player)){
-            case 0:
-            case 17:
-            case 18:
-            case 21:
-            case 24:
-            case 25:
-            case 28:
-            case 27:
-            case 30:
-            case 31:
-            case 6:
-            case 5:
-            case 4:
-            case 3:
-            case 10:
+			default:
                 sound_play(sound_get("Dai_Short"))
             break;
             case 1:
@@ -472,21 +424,7 @@ switch(attack){
     case AT_FTILT:
         if(window == 1 && window_timer == 7 && !hitpause){
         switch(get_player_color(player)){
-            case 0:
-            case 17:
-            case 18:
-            case 21:
-            case 24:
-            case 25:
-            case 28:
-            case 27:
-            case 30:
-            case 31:
-            case 6:
-            case 5:
-            case 4:
-            case 3:
-            case 10:
+			default:
                 sound_play(sound_get("Euh_Short"))
             break;
             case 1:
@@ -547,21 +485,7 @@ switch(attack){
 case AT_NSPECIAL:
         if(window == 3 && window_timer == 1 && !hitpause){
         switch(get_player_color(player)){
-            case 0:
-            case 17:
-            case 18:
-            case 21:
-            case 24:
-            case 25:
-            case 28:
-            case 27:
-            case 30:
-            case 31:
-            case 6:
-            case 5:
-            case 4:
-            case 3:
-            case 10:
+			default:
                 sound_play(sound_get("Euh_Short"))
             break;
             case 1:
@@ -631,7 +555,7 @@ if(attack == AT_USTRONG){
     }
 }
 if(attack == AT_DATTACK){
-    if(window == 3 && (spr_dir == 1 && right_down || spr_dir == -1 && left_down) && window_timer == 7 && !free && !hitpause && !was_parried){
+    if(window == 3 && (spr_dir == 1 && right_down || spr_dir == -1 && left_down) && window_timer == 9 && !free && !hitpause && !was_parried && has_hit){
         set_state(PS_DASH);
     }
 }

@@ -52,5 +52,9 @@ if (attack == AT_UAIR && vsp >= 0){
     vsp -= 4;
 }
 
+//woo yeah windows top 8 gaming
+if attack == AT_TAUNT && get_player_color(player) == 17 {
+    attack = AT_TAUNT_2;
+}
 
 //user_event(13); no phone for now

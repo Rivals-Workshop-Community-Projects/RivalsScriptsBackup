@@ -29,7 +29,7 @@ if (state_cat = SC_HITSTUN || state_cat = SC_GROUND_NEUTRAL || state_cat = SC_AI
 
 if (instance_exists(fspecial_projectile) && !fspecial_projectile.destroyed)
 {
-    move_cooldown[AT_FSPECIAL] = 2;
+    move_cooldown[AT_FSPECIAL] = 22;
 }
 
 //if (hitpause && has_hit_player) time_since_last_hit = 0;

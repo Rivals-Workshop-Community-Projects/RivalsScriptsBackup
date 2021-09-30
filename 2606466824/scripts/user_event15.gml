@@ -406,6 +406,20 @@ initSection("Trummel & Alto, Otto, Steve, Link");
 
 
 
+initPatch("1.05", "September 25th, 2021");
+initHeader("DSpecial");
+initSection("- Reduced the maximum damage multiplier you can reach [4x -> 3x]. (Note: the scaling particle effects have been adjusted to do their maximum effect at 3x now)");
+initSection("- Reduced the amount of Revenge obtained for each successful use [0.5 + 0.15*damage -> 0.3 + 0.12*damage].");
+initSection("- Natural damage multiplier decay sped up [0.06/s -> 0.72/s].");
+initSection("+ Natural damage multiplier decay now does not begin until 2 seconds after the Revenge stack is gained.");
+initHeader("FStrong");
+initSection("- Added a high-priority sourspot at the base of the move.");
+initHeader("UAir");
+initSection("- Hurtbox size increased.");
+initSection("- Hitbox size slightly reduced.");
+initHeader("UTilt");
+initSection("* Hurtbox adjusted.");
+
 initPatch("1.04", "September 24th, 2021");
 initHeader("General");
 initSection("* Fixed a bug that would cause opponents to be warped into DStrong if used immediately after hitting only the rising hit of USpecial.");

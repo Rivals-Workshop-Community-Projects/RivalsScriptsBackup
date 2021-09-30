@@ -139,7 +139,7 @@ if(!has_airdodge && can_shield && free){
 }
 
 //Get Bounce Back
-if(!free || state == PS_HITSTUN){
+if(!free){
 	has_bounce = true
 }
 
@@ -568,12 +568,12 @@ if(steam >= 50){
 		if(state_timer > 5 && !(attack == AT_DSTRONG && window < 3) && attack != AT_USTRONG && attack != AT_FSTRONG
 		&& attack != AT_FSPECIAL && attack != AT_USPECIAL && attack != AT_DSPECIAL && attack != AT_DSPECIAL_AIR && attack != AT_EXTRA_1 && attack != AT_NSPECIAL){
 			if(!hitpause){
-				if(special_pressed && joy_pad_idle && !was_parried || nspec_cancel_buffer){
+				if(special_pressed && joy_pad_idle && !was_parried && has_hit_player || nspec_cancel_buffer){
 					nspec_cancel_buffer = false
 					set_attack(AT_NSPECIAL)
 				}
 			}else if(hitpause){
-				if(special_pressed && joy_pad_idle && !was_parried){
+				if(special_pressed && joy_pad_idle && !was_parried && has_hit_player){
 					nspec_cancel_buffer = true
 				}
 			}

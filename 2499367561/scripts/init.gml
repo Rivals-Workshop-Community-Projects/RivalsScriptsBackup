@@ -44,7 +44,7 @@ air_friction = 0.04;
 max_djumps = 1;
 double_jump_time = 28; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 4.5;
-walljump_vsp = 8.5;
+walljump_vsp = 5.5;
 walljump_time = 12;
 max_fall = 8; //maximum fall speed without fastfalling
 fast_fall = 10; //fast fall speed
@@ -64,9 +64,9 @@ crouch_active_frames = 12;
 crouch_recovery_frames = 1;
 
 //parry animation frames
-dodge_startup_frames = 0;
-dodge_active_frames = 0;
-dodge_recovery_frames = 0;
+dodge_startup_frames = 1;
+dodge_active_frames = 1;
+dodge_recovery_frames = 2;
 
 //tech animation frames
 tech_active_frames = 4;
@@ -82,7 +82,7 @@ techroll_speed = 7;
 air_dodge_startup_frames = 1;
 air_dodge_active_frames = 1;
 air_dodge_recovery_frames = 2;
-air_dodge_speed = 7.5;
+air_dodge_speed = 8.5;
 
 //roll animation frames
 roll_forward_startup_frames = 1;
@@ -189,3 +189,5 @@ pkmn_stadium_back_img = sprite_get("cheese_back_sprite");
 // init.gml
 
 reversed = 0;
+pillardraw = 0;
+sound_stop(sound_get("wolves"))

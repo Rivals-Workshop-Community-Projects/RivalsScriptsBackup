@@ -12,11 +12,11 @@ set_window_value(AT_EXTRA_2, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_EXTRA_2, 1, AG_WINDOW_CUSTOM_GRAVITY, 1.2);
 
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_EXTRA_2, 2, AG_WINDOW_LENGTH, 200);
+set_window_value(AT_EXTRA_2, 2, AG_WINDOW_LENGTH, 100);
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_SFX_FRAME, 8);
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_SFX, asset_get("sfx_dizzy"));
-set_window_value(AT_EXTRA_2, 2, AG_WINDOW_ANIM_FRAMES, 25);
+set_window_value(AT_EXTRA_2, 2, AG_WINDOW_ANIM_FRAMES, 12);
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_CUSTOM_GRAVITY, 1.2);
 

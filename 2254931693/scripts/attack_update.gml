@@ -335,9 +335,9 @@ if (attack == AT_FSPECIAL && ((window = 2 && !special_down) || (fspecial_charge 
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, (-3 - ((fspecial_charge / 44) * 7)));
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 0);
-set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 11 + ((fspecial_charge / 44) * 5));
-set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 11 + ((fspecial_charge / 44) * 5));
-set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 11 + ((fspecial_charge / 44) * 5));
+set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 10 + ((fspecial_charge / 44) * 5));
+set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 10 + ((fspecial_charge / 44) * 5));
+set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 10 + ((fspecial_charge / 44) * 5));
 }
 
 if (attack == AT_FSPECIAL && fspecial_charge > 25){

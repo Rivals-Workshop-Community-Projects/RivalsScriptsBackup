@@ -144,3 +144,46 @@ if swallowed { //Kirby ability script starts here
 			
 	}
 } //Kirby ability script ends here
+
+
+if(variable_instance_exists(id,"diag"))
+{
+//Change their name whenever
+    diag_name = "Cinna"
+//  ADDING REGULAR DIALOGUE
+
+    //Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!
+    diagchoice = [
+    "Alright, Cinna, you can do this!",
+    "Is it battle time already...?",
+    "Heyo!"]
+
+//  Specific Character Interactions
+
+//  Regular dialogue
+    if(otherUrl == CH_ZETTERBURN && diag != "") 
+    {
+        diag = "Should I call a fireman?";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+    if(otherUrl == CH_FORSBURN && diag != "") 
+    {
+        diag = "(coughing uncontrollably)";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+    if(otherUrl == CH_ETALUS && diag != "") 
+    {
+        diag = "Beary n-ice to meet you!";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+    if(otherUrl == "1882960192" && diag != "") 
+    {
+        diag = "Blu?? But I don't want to fight you...";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+    if(otherUrl == "2007375819" && diag != "") 
+    {
+        diag = "Heya, BroBot! To be honest, I don't really wanna beat you up...";
+        diag_index = 0; //If your portrait has multiple sprite indexes. You can change them during the interaction!
+    }
+}

@@ -105,6 +105,7 @@ nspecial_charge_timer_max_hold = 60;
 nspecial_sword = 0;
 sword_knockoff_threshold = 14;
 sword_shared_sound = -1;
+uspecial_used = false;
 
 set_victory_bg(sprite_get("vs_bg"));
 set_victory_theme(sound_get("sfx_vs_theme"));

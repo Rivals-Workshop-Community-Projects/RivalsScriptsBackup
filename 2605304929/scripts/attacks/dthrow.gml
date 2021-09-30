@@ -122,12 +122,12 @@ window_for_hitbox = 2;
     set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 76);
     set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 6);
     set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 8);
-    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 145);
+    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 110);
     set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 7);
     set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .1);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
+    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
     set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .6);
-    set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 8);
+    set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 6);
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 197); // 197 - lightning large
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_absa_singlezap1"));
 //hitbox_num++;

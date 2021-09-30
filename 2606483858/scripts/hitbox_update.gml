@@ -4,7 +4,11 @@ if (attack == AT_FSPECIAL){
 		hsp = -length * spr_dir;
 	}
 }
-
+if (attack == AT_NSPECIAL){
+	if (hitbox_timer == 59){
+		destroyed = true;
+	}
+}
 
 //Allows the Arrow to hit you
 if (attack == AT_USPECIAL){

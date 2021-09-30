@@ -46,7 +46,7 @@ hitstun_grav = .5;
 knockback_adj = 0.95; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 6;
+prat_land_time = 10;
 wave_land_time = 8;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .04; //grounded deceleration when wavelanding
@@ -87,8 +87,8 @@ roll_back_recovery_frames = 2;
 roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
 
-land_sound = asset_get("sfx_waveland_ran");
-landing_lag_sound = asset_get("sfx_waveland_ran");
+land_sound = asset_get("sfx_land_light");
+landing_lag_sound = asset_get("sfx_land_light");
 waveland_sound = asset_get("sfx_waveland_abs");
 jump_sound = asset_get("sfx_jumpground");
 djump_sound = asset_get("sfx_absa_jump");

@@ -317,6 +317,15 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.5", "23 September, 2021");
+initHeader("DAttack - Buffs");
+initSection("Hit 1 hitbox size increased.");
+initHeader("NSpecial - Bugfixes");
+initSection("Fixed a bug when the projectile hits at certain moments.
+Jump cancel now works with tap jump.");
+initHeader("DSpecial - Bugfixes");
+initSection("Jump while holding the Remote Bomb now works with tap jump.");
+
 initPatch("1.4", "23 September, 2021");
 initHeader("FTilt - Nerfs");
 initSection("First armored frame 1 --> 5.");

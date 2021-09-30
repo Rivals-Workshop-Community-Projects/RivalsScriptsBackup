@@ -25,7 +25,7 @@ set_color_profile_slot_range( 4, 2, 10, 38 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 17 );
+set_num_palettes( 18 );
 
 // flowey
 set_color_profile_slot( 1, 0, 255, 193, 99 ); //leaf
@@ -154,7 +154,13 @@ set_color_profile_slot( 16, 3, 42, 80, 212 ); //skin
 set_color_profile_slot( 16, 4, 0, 217, 255 ); //mouth
 set_color_profile_slot( 16, 5, 0, 255, 189 ); //flower
 
-
+// windows
+set_color_profile_slot( 17, 0, 252, 254, 255 ); //leaf
+set_color_profile_slot( 17, 1, 252, 254, 255 ); //teeth
+set_color_profile_slot( 17, 2, 47, 50, 59 ); //cloths
+set_color_profile_slot( 17, 3, 85, 89, 105 ); //skin
+set_color_profile_slot( 17, 4, 90, 109, 135 ); //mouth
+set_color_profile_slot( 17, 5, 0, 255, 0 ); //flower
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

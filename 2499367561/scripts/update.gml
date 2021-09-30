@@ -32,7 +32,7 @@ if(hitpause != true){
 				momentum = 0
 			}
 		} 
-	 	if(state != PS_WAVELAND && state != PS_ROLL_FORWARD && state != PS_ROLL_BACKWARD && state != PS_TECH_BACKWARD && state != PS_TECH_FORWARD){
+	 	if(state != PS_WAVELAND && state != PS_ROLL_FORWARD && state != PS_ROLL_BACKWARD && state != PS_TECH_BACKWARD && state != PS_TECH_FORWARD && attack != AT_EXTRA_3 && state != PS_PARRY){
 			off_edge = true
 			hsp = momentum
 			if(state == PS_DASH || state == PS_DASH_START){
@@ -72,10 +72,10 @@ if(hitpause != true){
 		|| state == PS_IDLE_AIR && state_timer < 1 && prev_state == PS_WALK){
 			hsp = momentum
 		}
-		if(down_pressed && state_timer > 5 && state != PS_HITSTUN && !(attack == AT_EXTRA_1 && state == PS_ATTACK_GROUND) && !jump_down
+		if(down_pressed && state_timer > 5 && state != PS_HITSTUN && state != PS_AIR_DODGE && state != PS_PARRY && !(attack == AT_EXTRA_1 && attack == AT_EXTRA_3 && state == PS_ATTACK_GROUND) && !jump_down
 		&& !(attack == AT_FSPECIAL && state == PS_ATTACK_GROUND) && !(attack == AT_FSPECIAL && state == PS_ATTACK_AIR)
 		&& !(attack == AT_DSPECIAL && state == PS_ATTACK_AIR) && !(attack == AT_USPECIAL && state == PS_ATTACK_AIR) &&
-		!(attack == AT_DATTACK && state == PS_ATTACK_AIR) && !((attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_USTRONG) && state == PS_ATTACK_AIR)){
+		!(attack == AT_DATTACK && state == PS_ATTACK_AIR) && !((attack == AT_FSTRONG || attack == AT_DSTRONG || attack == AT_USTRONG) && state == PS_ATTACK_AIR && attack == AT_EXTRA_3)){
 			vsp = 8
 		}
 		if(state != PS_DOUBLE_JUMP){
@@ -155,7 +155,7 @@ if(state == PS_CROUCH){
 if(nspecial_used == true){
 	move_cooldown[AT_NSPECIAL] = 2
 }
-if(!free || state == PS_WALL_JUMP || state == PS_HITSTUN){
+if(!free  || state == PS_HITSTUN){
 	nspecial_used = false
 }
 //Char Height fallback
@@ -184,10 +184,7 @@ if(state == PS_DASH_TURN && state_timer == 2){
 }
 prev_fast_falling = fast_falling;
 */
-if(state == PS_PARRY){
-    attack = AT_EXTRA_1
-    state = PS_ATTACK_GROUND
-}
+
 
 if(!(attack == AT_EXTRA_1 && state == PS_ATTACK_GROUND || attack == AT_EXTRA_1 && state == PS_ATTACK_AIR )){
 	if(shield_size < 1.25){
@@ -266,9 +263,10 @@ if(state == PS_AIR_DODGE){
 	}
 }
 if state == PS_AIR_DODGE && state_timer == 3 {
-	sound_play(asset_get("mfx_star"))
+	sound_play( asset_get("mfx_star"), 0, noone, .3, 1 )
 }
 //Airdodge Shenanigans
+/* gone but not forgotten
 if(state == PS_AIR_DODGE){
 	if(left_down){
 		if(!up_down && !down_down){
@@ -321,7 +319,7 @@ if(state == PS_WAVELAND){
 		hsp = 7
 	}
 }
-
+*/
 if(state == PS_CROUCH) {
 	if state_timer == 1 {
 		crouchsoundtimer = 45;
@@ -342,9 +340,14 @@ if(!(attack == AT_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROU
 	}
 }
 
+if state == PS_PARRY {
+	//momentum = 0;
+	hsp *= .95
+}
+
 //COMPATIBILITY
 if arcadeswitch > 3 arcadeswitch = 1
-print_debug(arcadeswitch)
+//print_debug(arcadeswitch)
 /* //dracula
 dracula_portrait = sprite_get("dracula_portrait");
 dracula_portrait2 = sprite_get("dracula_portrait");

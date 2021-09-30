@@ -8,6 +8,11 @@ if (uspec_cancel_alarm > -1) {
 	move_cooldown[AT_USPECIAL] = 30;
 }
 
+if (state == PS_HITSTUN){
+	uspec_cancel_alarm = -1;
+	atk_cooldown = -1;
+}
+
 // hello
 if (atk_cooldown > 0) {
 	can_attack = false;
@@ -17,6 +22,7 @@ if (atk_cooldown > 0) {
 	// print(can_throw)
 	atk_cooldown--;
 }
+
 if (atk_cooldown == 0 && get_gameplay_time() > 126 && free){// && (state_cat == SC_AIR_NEUTRAL || state_cat == SC_GROUND_NEUTRAL)){
 	state = PS_IDLE_AIR;
 	can_attack = true;

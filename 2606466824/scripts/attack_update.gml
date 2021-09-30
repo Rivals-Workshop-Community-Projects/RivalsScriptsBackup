@@ -801,8 +801,9 @@ if (attack == AT_DSPECIAL){
 		
 		if (phone_cheats[CHEAT_BUFF] > 0 && move_cooldown[AT_DSPECIAL_2] < 1) {
 			if (attack_pressed) {
-				revengeMult += 1.5;
-				revengeMult = clamp(revengeMult, 1, 4);
+				revengeMult += 1;
+				revengeMult = clamp(revengeMult, 1, 3);
+				revengeBuffer = 120;
 				move_cooldown[AT_DSPECIAL_2] = 60;
 				sound_play(asset_get("sfx_burnapplied"));
 				if (get_player_color(player) == 24) {
@@ -811,8 +812,9 @@ if (attack == AT_DSPECIAL){
 					myFX = spawn_hit_fx(x, y-30, firehfx);
 				}
 			} else if (special_pressed) {
-				revengeMult += 2.5;
-				revengeMult = clamp(revengeMult, 1, 4);
+				revengeMult += 1.6;
+				revengeMult = clamp(revengeMult, 1, 3);
+				revengeBuffer = 120;
 				move_cooldown[AT_DSPECIAL_2] = 60;
 				sound_play(asset_get("sfx_burnapplied"));
 				if (get_player_color(player) == 24) {
@@ -821,8 +823,9 @@ if (attack == AT_DSPECIAL){
 					myFX = spawn_hit_fx(x, y-30, firehfx);
 				}
 			} else if (taunt_pressed) {
-				revengeMult += 0.5;
-				revengeMult = clamp(revengeMult, 1, 4);
+				revengeMult += 0.4;
+				revengeMult = clamp(revengeMult, 1, 3);
+				revengeBuffer = 120;
 				move_cooldown[AT_DSPECIAL_2] = 60;
 				sound_play(asset_get("sfx_burnapplied"));
 				if (get_player_color(player) == 24) {

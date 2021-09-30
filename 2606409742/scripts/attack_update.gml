@@ -142,7 +142,7 @@ switch(attack){
 					set_window(6);
 				}
 				dspecialThrowInputs();
-				if jump_pressed && !rune_menu.state{
+				if (jump_pressed || can_tap_jump() && tap_jump_pressed) && !rune_menu.state{
 					set_window(5);
 				}
 				break;
@@ -162,7 +162,7 @@ switch(attack){
 				if (right_down - left_down) != spr_dir || rune_menu.state{
 					set_window(3);
 				}
-				if jump_pressed && !rune_menu.state{
+				if (jump_pressed || can_tap_jump() && tap_jump_pressed) && !rune_menu.state{
 					set_window(5);
 				}
 				dspecialThrowInputs();
@@ -189,7 +189,7 @@ switch(attack){
 					spawn_base_dust(x, y, "land");
 					sound_play(land_sound);
 				}
-				else if djumps < max_djumps && jump_pressed && !rune_menu.state{
+				else if djumps < max_djumps && (jump_pressed || can_tap_jump() && tap_jump_pressed) && !rune_menu.state{
 					djumps++;
 					vsp = -djump_speed;
 					hsp = clamp(hsp + (right_down - left_down) * jump_change, -air_max_speed, air_max_speed);
@@ -447,7 +447,7 @@ switch(attack){
 					sound_stop(phone_stopped_sounds[0]);
 					if nspecial_stamina_stored && attack_had_spear sound_stop(phone_stopped_sounds[1]);
 				}
-				else if jump_pressed && (!free || djumps == 0) && !rune_menu.state{
+				else if (jump_pressed || can_tap_jump() && tap_jump_pressed) && (!free || djumps == 0) && !rune_menu.state{
 					can_jump = true;
 					sound_stop(phone_stopped_sounds[0]);
 					if nspecial_stamina_stored && attack_had_spear sound_stop(phone_stopped_sounds[1]);

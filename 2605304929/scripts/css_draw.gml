@@ -86,229 +86,224 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[color_slot,sub_element_slot] = "Default Palette";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0; sub_element_slot = 0;
 	color_slot++;
-	// Slot 1
+	// Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(235, 51, 31);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "OG Colors";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "The lake of my home village runs red with the blood of my family.";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Original Palette";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
-	//Slot 2
+	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(140, 132, 148);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Klockwurth";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "I used to know Cosworth before he became shell of what he is now...";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Character by Opengunner";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
-	//Slot 3
+	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(123, 37, 201);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Iroh";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Somebody told me I look like one of my ancestors with a wig...";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Character by SoA";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
-	//Slot 4
+	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(255, 130, 47);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Lyca";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "There are legends of a spectre that weaponized her own children";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Character by SoA";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
-	//Slot 5
+	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(227, 235, 250);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Zerra";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "A true marvel to behold the grace of an ice skater. I aspire for such grace.";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Character by SoA";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
-	//Slot 6
+	//Slot 
+	ce[color_slot,sub_element_slot] = make_color_rgb(128, 0, 12);sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Dazzling";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Using magic to entertain people may be a novel use of such destructive power.";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Character by JustJerome";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
+	color_slot++;
+	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(62, 61, 92);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "R-00";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Technology like this is what makes the warriors of the Neo Fire Capital formidable.";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Character by Archytas";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
-	//Slot 7
+	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(162, 255, 10);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Void Fox";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "I made sure I was never good with a bladed weapon, in case I ever learned to enjoy killing.";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Character by Sai";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
-	//Slot 8
+	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(235, 168, 248);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Hikaru";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "I admire powerful illusionary Magic, you can get what you want without being destructive.";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Character by Lukaru";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
-	//Slot 9
+	//Slot Zin
+	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Zinogre";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "The wrath of thunder descends...";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Monster Hunter Pallet";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
+	color_slot++;
+	//Slot nami
+	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Namielle";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "A distant dark tide...";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Monster Hunter Pallet";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
+	color_slot++;
+	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(47, 35, 74);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Kunoichi";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "I spent alot of time operating in the shadows, more than I care to admit...";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Palette by Regina";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
-	//Slot 10
-	ce[color_slot,sub_element_slot] = make_color_rgb(179, 32, 29);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Amvira";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "May my soul be finally cleansed when I reach the fires of hell.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by Varrkarus";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 11
-	ce[color_slot,sub_element_slot] = make_color_rgb(247, 54, 54);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Tuqiu";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "My anger lingers long after, would I remain a vengeful spirit after I fall?";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by Usagibun1";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 12
-	ce[color_slot,sub_element_slot] = make_color_rgb(12, 53, 178);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Namielle";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "A distant dark tide...";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Monster Hunter";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 13
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 0);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Sailee";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "A warm smile can hide a power unimaginable.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by Opengunner";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 14
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Roekoko";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "It's always important to find time to laugh.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by Opengunner";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 15
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 0, 0);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Solarei";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "The Sun is sometimes fierce and sometimes gentle...";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by Opengunner";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 16
-	ce[color_slot,sub_element_slot] = make_color_rgb(64, 64, 64);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Tzukiyo";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "There are two wolves in side of you, which wolf will you choose to feed?";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by Opengunner";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 17
+	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(54, 69, 101);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "U-sa";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "We are all fractured but each facture contributes to the whole.";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Character by Usagibun1";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
-	//Slot 18
+	//Slot 
+	ce[color_slot,sub_element_slot] = make_color_rgb(247, 54, 54);sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Tuqiu";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "My anger lingers long after, would I remain a vengeful spirit after I fall?";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Character by Usagibun1";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
+	color_slot++;
+	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(207, 88, 179);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Walkya";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Ferocity and rage in all of its beauty.";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Character by Loglord";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
-	//Slot 19
+	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(120, 50, 50);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Blood Moon";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "The moon shifts the tide, it ebbs and flows, like blood in my eyes.";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Palette by Causeimapilot";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
-	//Slot 20
-	ce[color_slot,sub_element_slot] = make_color_rgb(251, 139, 55);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Slime";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Slime manipulation is not a very othrodox use of water magic.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Palette by Prober";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 21
+	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(139, 60, 232);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Voidborn";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "An improvised weapon can be just as deadly as real one. We can fight with tools.";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Palette by Dragou";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
-	//Slot 22
+	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(94, 67, 37);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Sacramentum";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Loosely based off the band Mili's mascot, Torino.";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Palette by Masqerade";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
-	//Slot 23
-	ce[color_slot,sub_element_slot] = make_color_rgb(128, 0, 12);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Dazzle";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Using magic to entertain people may be a novel use of such destructive power.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by JustJerome";sub_element_slot++;
+	//Slot 
+	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Mirror";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "It is hard to look in the mirror sometimes.";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Pallet by Shen";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
-	//Slot 24
+	//Slot zerk
+	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Nakiri Ayame";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "I get a lot of questions about the horns. I am not an Oni, I am half dragon.";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Pallet by Zerks";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
+	color_slot++;
+	//Slot 
+	ce[color_slot,sub_element_slot] = make_color_rgb(251, 139, 55);sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Slime";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Slime manipulation is not a very othrodox use of water magic.";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Palette by Prober";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
+	color_slot++;
+	//Slot 
+	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 0);sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Sailee";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "A warm smile can hide a power unimaginable.";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Character by Opengunner";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
+	color_slot++;
+	//Slot 
+	ce[color_slot,sub_element_slot] = make_color_rgb(255, 0, 0);sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Solarei";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "The Sun is sometimes fierce and sometimes gentle...";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Character by Opengunner";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
+	color_slot++;
+	//Slot 
+	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Roekoko";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "It's always important to find time to laugh.";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Character by Opengunner";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
+	color_slot++;
+	//Slot 
+	ce[color_slot,sub_element_slot] = make_color_rgb(64, 64, 64);sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Tzukiyo";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "There are two wolves in side of you, which wolf will you choose to feed?";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Character by Opengunner";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
+	color_slot++;
+	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(245, 169, 184);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Trans Rights";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Trans Rights";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Support Pallet";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
-	//Slot 25
+	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "BLM";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Black Lives Matter";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Support Pallet";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
-	//Slot 26
+	//Slot 
+	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Smash Land";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "I long for the days of old. Back when everything was simple.";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "GBA Pallet";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
+	color_slot++;
+	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Name";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Flavor Text";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Pallet Name";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
-	//Slot 27
+	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Name";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Flavor Text";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Pallet Name";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
-	//Slot 28
+	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Name";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Flavor Text";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Pallet Name";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot++;
-	color_slot++;
-	//Slot 29
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Name";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Flavor Text";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Pallet Name";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot++;
-	color_slot++;
-	//Slot 30
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Name";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Flavor Text";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Pallet Name";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot++;
-	color_slot++;
-	//Slot 31
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Name";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Flavor Text";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Pallet Name";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot++;
-	color_slot++;
-	//Slot 32
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Name";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Flavor Text";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Pallet Name";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
+	//color_slot++;
+	//Slot 
 	//color_slot++;
 	/* Blank Version
 	//Slot 

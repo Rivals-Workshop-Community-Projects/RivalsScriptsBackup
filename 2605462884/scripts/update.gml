@@ -275,6 +275,36 @@ with (asset_get("pHitBox")){
 				//dust_spawn(x, y, 19, false, 7, 6, 1);
 			}
 		}//dstr
+		if (attack==AT_FSPECIAL){
+			if (hbox_num==1){
+				//print ("yeah?")
+				var tmp_bl_id = instance_place(x, y, asset_get("obj_article_solid"))
+				if ( tmp_bl_id!=-4 ){
+					//print ("yeah yeah")
+					if (tmp_bl_id.player_id == player_id){
+						//print ("yeah yeah beebiss")
+						if (tmp_bl_id.state_timer>20&&tmp_bl_id.state_timer<tmp_bl_id.state_end-4){
+							tmp_bl_id.state_timer = tmp_bl_id.state_end-4;
+						}
+						player_id.hitpause = true;
+						player_id.old_hsp = player_id.hsp;
+						player_id.old_vsp = player_id.vsp;
+						player_id.hitstop = 4;
+						player_id.hitstop_full = 4;
+						player_id.has_hit = true;
+						player_id.window = 4;
+						player_id.window_timer = 4;
+						if (player_id.nsp_remain < 3){
+							player_id.nsp_remain++;
+							sound_play(sound_get("success_bling"),false,noone,0.8)
+							sparkle_spawn(player_id.x, player_id.y-30, 40, false, 6, 0, 0, 0)
+							player_id.nsp_inc = 0;
+						}
+						instance_destroy();
+					}
+				}
+			}
+		}//fsp
 	}
 }
 
@@ -306,6 +336,9 @@ if (nsp_remain == 0){
 }
 if (nsp_remain == 3){
 	nsp_inc = 0;
+}
+if (nsp_locked>0){
+	nsp_locked--;
 }
 if (usp_did){
 	//print(string(move_cooldown[AT_USPECIAL]))
@@ -372,6 +405,7 @@ if (boost_duration>0){
 			if (state_timer%15){
 				attack_end()
 				create_hitbox( AT_DSPECIAL, 2, x, y-28 )
+				hsp = clamp(hsp+(0.5*spr_dir), (dash_speed+1)*-1, dash_speed+1);
 			}
 		}
 		}

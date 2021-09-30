@@ -22,12 +22,12 @@ if nodispenser {
 	
 	walk_speed = 3.5;
 	initial_dash_speed = 7.5;
-	dash_speed = 6.5;
+	dash_speed = 6.75;
 	ground_friction = .45;
 
 	jump_speed = 11;
 	short_hop_speed = 6;
-	djump_speed = 9.5;
+	djump_speed = 10;
 	air_max_speed = 5;
 	air_friction = .03;
 	walljump_hsp = 7;
@@ -35,7 +35,7 @@ if nodispenser {
 	max_fall = 10;
 	fast_fall = 12;
 	gravity_speed = .55;
-	hitstun_grav = .49;
+	hitstun_grav = .47;
 	knockback_adj = 1.05;
 	
 	land_time = 3;
@@ -65,7 +65,7 @@ if nodispenser {
 	dash_speed = 6.25;
 	ground_friction = .55;
 
-	jump_speed = 12.5;
+	jump_speed = 12.9;
 	short_hop_speed = 6.5;
 	djump_speed = 11;
 	air_max_speed = 4;

@@ -13,6 +13,7 @@ image_index = get_player_color( player_id.player );
 depth = 1;
 moved = false;
 not_recover = false;
+broken = false;
 
 state_timer = 0;
 state_end = 180;

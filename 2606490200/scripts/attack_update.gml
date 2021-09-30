@@ -365,7 +365,11 @@ switch attack {
        can_fast_fall = 0 
        hsp = 0
        vsp = -0.6
-       
+         
+         if state_timer == 1 {
+         	prat_land_time = 8;
+         }
+         
        if state_timer == 1 && !hitpause {
            spawn_hit_fx(x,y - 110, 305)
            create_hitbox(AT_USPECIAL,1,x,y - 110)

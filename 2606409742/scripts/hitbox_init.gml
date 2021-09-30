@@ -5,6 +5,9 @@ hitpause_timer = 0;
 has_hit_player = false;
 
 if is_spear{
+	
+	original_proj_angle = proj_angle; // for wobbling
+	
 	grounds = 1;
 	walls = 1;
 	enemies = 1;

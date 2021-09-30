@@ -5,3 +5,6 @@ if(attack == AT_NSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND
 }
 
 move_cooldown[AT_FSPECIAL] = 0
+
+sound_stop(sound_get("wolves"));
+pillardraw = 0;

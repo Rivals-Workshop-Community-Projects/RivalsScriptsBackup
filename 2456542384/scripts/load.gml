@@ -42,6 +42,7 @@ sprite_change_offset("uspecial", 108, 230);
 sprite_change_offset("dspecial", 79, 110);
 sprite_change_offset("dspecial_2", 86, 110);
 sprite_change_offset("taunt", 104, 110);
+sprite_change_offset("taunt_windows", 104, 128);
 sprite_change_offset("phone_open", 32, 64);
 
 sprite_change_offset("plat", 40, 33);

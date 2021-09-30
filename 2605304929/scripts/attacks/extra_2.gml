@@ -19,7 +19,7 @@ var window_num = 1;
 
 // Window #1 / Frame(s) # 0-2 / Start Up
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 8);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 4);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 

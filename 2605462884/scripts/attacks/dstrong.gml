@@ -3,7 +3,7 @@ set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, hurtbox_spr);
 set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 4);
 
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 8);//10
 set_window_value(AT_DSTRONG, 1, AG_BODY_CELL, 32);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));

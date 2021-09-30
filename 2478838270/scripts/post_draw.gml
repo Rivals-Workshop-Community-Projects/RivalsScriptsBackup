@@ -39,12 +39,12 @@ else
 
                 if(variable_instance_exists(id, "sparxfx") && sparxfx != -4)
                 {
-                    sparxfx.x = view_get_xview() + (view_get_wview() / groovepos) + groove_hud_x + 40;
-                    sparxfx.y = view_get_yview() + view_get_hview()/1.25 + groove_hud_y + 30;
+                    sparxfx.x = floor(view_get_xview() + (view_get_wview() / groovepos) + groove_hud_x + 40);
+                    sparxfx.y = floor(view_get_yview() + view_get_hview()/1.25 + groove_hud_y + 30);
                 }
             }
             else
-                sparxfx = noone;
+                sparxfx = -1;
             
             //Detect if in training mode to tell more about grooves.
             if(get_training_cpu_action() != CPU_FIGHT)
@@ -86,9 +86,11 @@ else
                             groovetext2 = "Max rage increases KnockBack by 1.15x. Reduced Dash-Dance";
                             break;
                     }
-                    draw_debug_text(view_get_xview() + 20, view_get_yview() + view_get_hview() / 6 - 20, other.groove_name[bud_groove]);
-                    draw_debug_text(view_get_xview() + 20, view_get_yview() + view_get_hview() / 6, groovetext);
-                    draw_debug_text(view_get_xview() + 20, view_get_yview() + view_get_hview() / 6 + 20, groovetext2);
+                    draw_set_halign(fa_left);
+                    draw_set_valign(fa_top);
+                    draw_debug_text(floor(view_get_xview() + 20), floor(view_get_yview() + view_get_hview() / 6 - 20), other.groove_name[bud_groove]);
+                    draw_debug_text(floor(view_get_xview() + 20), floor(view_get_yview() + view_get_hview() / 6), groovetext);
+                    draw_debug_text(floor(view_get_xview() + 20), floor(view_get_yview() + view_get_hview() / 6 + 20), groovetext2);
                 }
             }
         }

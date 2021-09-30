@@ -77,6 +77,7 @@ hue = 0;
 
 revengeMult = 1;
 revengeAnchor = 0;
+revengeBuffer = 0;
 outlineR = 0;
 outlineG = 0;
 outlineB = 0;

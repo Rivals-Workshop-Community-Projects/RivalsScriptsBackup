@@ -62,8 +62,8 @@ set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 82);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 4);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 6);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90);
-set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .4);
+set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 150); // 150 - light water medium

@@ -13,9 +13,9 @@ if (attack==AT_DTILT){
 		if (c_old_vsp > vsp && c_old_vsp>=2){
 			bounce_count++;
 			sound_play(asset_get("sfx_birdflap"))
-			vsp = c_old_vsp*(-1+(bounce_count/10))
+			vsp = clamp(c_old_vsp,-5,10)*(-1+(bounce_count/10))//(-1+(bounce_count/10))
 			hitbox_timer=0;
-			if (bounce_count = 4){
+			if (bounce_count = 3){
 				despawne++;
 				//print("despawne")
 				mask_index = asset_get("empty_sprite")
@@ -25,8 +25,8 @@ if (attack==AT_DTILT){
 				if(!thrower){player_id.dtilt_c_cooldown = 0;}
 			}
 		}
-		if (spr_dir = 1){ hsp = clamp(hsp-(0.08*spr_dir), 0, 10) }
-		if (spr_dir = -1){ hsp = clamp(hsp-(0.08*spr_dir), -10, 0) }
+		if (spr_dir = 1){ hsp = clamp(hsp-(0.1*spr_dir), 0, 10) }//0.08
+		if (spr_dir = -1){ hsp = clamp(hsp-(0.1*spr_dir), -10, 0) }
 		proj_angle = proj_angle-hsp
 		c_old_hsp = hsp;
 		c_old_vsp = vsp;
@@ -44,7 +44,7 @@ if (attack==AT_DSTRONG){
 	}
 }
 if (attack==AT_USTRONG){
-	if (hbox_num=1){
+	if (hbox_num==1){
 	if (hitbox_timer==length-1){
 		spawn_hit_fx( x, y, destroy_fx )
 		
@@ -52,7 +52,7 @@ if (attack==AT_USTRONG){
 	}
 }
 if (attack==AT_BAIR){
-	if (hbox_num=2){
+	if (hbox_num==2){
 		x_pre_6 = x_pre_5
 		x_pre_5 = x_pre_4
 		x_pre_4 = x_pre_3
@@ -70,6 +70,8 @@ if (attack==AT_BAIR){
 		}
 	}
 }
+
+
 
 
 

@@ -39,7 +39,6 @@ if(state_timer < 5 and (attack_pressed and special_pressed  or di_input == 5 and
     }
     window_timer = 0;
     window = 0;
-    attack = AT_EXTRA_1;
     hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
 }
 
@@ -513,8 +512,8 @@ switch(attack){
     	}
     
     	if(window == 1 and window_timer == 7){
-    		//charge_level = dragon_install;
-    		charge_level = 0;
+    		charge_level = dragon_install;
+    		
     		var cfx = instance_create(x, y, "obj_article2");
     		cfx.visible =0;
     		cfx.fx_type = FX.dstrong_charge;
@@ -776,8 +775,7 @@ switch(attack){
     		hud_offset = 50+30*charge_level;
     	}
     	if(window == 1 and window_timer == 10){
-    		//charge_level = dragon_install;
-    		charge_level = 0;
+    		charge_level = dragon_install;
     		var cfx = instance_create(x, y, "obj_article2");
     		cfx.visible =0;
     		cfx.fx_type = FX.ustrong_charge;
@@ -864,8 +862,7 @@ switch(attack){
     	}
     
     	if(window == 1 and window_timer == 8){
-    		//charge_level = dragon_install;
-    		charge_level = 0;
+    		charge_level = dragon_install;
     		var cfx = instance_create(x-spr_dir*40, y+16, "obj_article2");
     		cfx.visible =0;
     		cfx.fx_type = FX.fstrong_charge;
@@ -955,7 +952,10 @@ switch(attack){
     	}
     	break;
     case AT_FAIR:
-		can_fast_fall = false;
+
+		if(window == 2 and window_timer == 1){
+			hsp += spr_dir*2;
+		}
     	if(window < 3 and dragon_install){
     		soft_armor = install_armor;
     		add_install_trail(10, 30);
@@ -964,7 +964,7 @@ switch(attack){
     		soft_armor = 0;
     		add_install_trail(10, 20);
     	}
-    	if(window == 2 and window_timer == 1){
+    /*	if(window == 2 and window_timer == 1){
     		if(vsp > 0){
     			vsp = 0;
     		}
@@ -993,6 +993,9 @@ switch(attack){
     	}
     	if(has_hit and abs(hsp) > 8){
     		hsp = sign(hsp)*8;
+    	}*/
+    	if(vsp > 4 and window < 4 and !fast_falling){
+    		vsp = 4;
     	}
     	break;
     case AT_EXTRA_3:

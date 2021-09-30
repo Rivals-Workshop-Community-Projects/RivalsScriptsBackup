@@ -24,6 +24,11 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) {
 		}
 }
 
+//DSpecial double jump restore
+if (my_hitboxID.attack == AT_DSPECIAL_AIR || my_hitboxID.attack == AT_DTHROW) {
+	djumps = 0;
+}
+
 if (my_hitboxID.attack == AT_FSPECIAL || my_hitboxID.attack == AT_FSPECIAL_2) {
 	move_cooldown[AT_FSPECIAL] = 8;
 	}

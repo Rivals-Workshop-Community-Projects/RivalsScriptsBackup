@@ -69,8 +69,12 @@ with (hit_fx_obj){
 draw_debug_text(round(x+30),round(y),string("hitfx"));
 	draw_debug_text(round(x+30),round(y+16),string(hit_fx));
 }
+with (pHitBox){
+draw_debug_text(round(x+30),round(y),string("hitbox"));
+	draw_debug_text(round(x+30),round(y+16),string(attack));
+}
 
-/*
+
 with (oPlayer){
 	if (id != other.id){
 		draw_debug_text(x-50,y+16,"hsp:"+string(hsp));
@@ -83,6 +87,6 @@ with (oPlayer){
 		draw_debug_text(x-40,y+96,string(orig_knock));
 	}
 }
-*/
+
 
 }

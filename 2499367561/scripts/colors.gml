@@ -6,7 +6,7 @@ set_color_profile_slot_range( 0, 1, 1, 1 );
 
 // bodydark
 set_color_profile_slot( 0, 1, 215, 215, 217 );
-set_color_profile_slot_range( 1, 13, 14, 28 );
+set_color_profile_slot_range( 1, 14, 16, 28 );
 
 // skin
 set_color_profile_slot( 0, 2, 64, 51, 83 );
@@ -22,7 +22,7 @@ set_color_profile_slot_range( 4, 33, 53, 52 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 23 );
+set_num_palettes( 24 );
 
 // Silver Surfer
 set_color_profile_slot( 1, 0, 192, 197, 207 ); //body
@@ -178,9 +178,16 @@ set_color_profile_slot( 22, 2, 132, 18, 54 ); //skin
 set_color_profile_slot( 22, 3, 58, 14, 47 ); //skindark
 set_color_profile_slot( 22, 4, 95, 89, 212 ); //straps
 
+// Jawa
+set_color_profile_slot( 23, 0, 136, 68, 0 ); //body
+set_color_profile_slot( 23, 1, 102, 52, 0 ); //bodydark
+set_color_profile_slot( 23, 2, 48, 48, 48 ); //skin
+set_color_profile_slot( 23, 3, 33, 33, 33 ); //skindark
+set_color_profile_slot( 23, 4, 230, 228, 98 ); //straps
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"body","colors":[{"r":255,"g":255,"b":255,"main":true}]},{"name":"bodydark","colors":[{"r":179,"g":185,"b":209},{"r":141,"g":138,"b":154},{"r":137,"g":136,"b":147},{"r":215,"g":215,"b":217,"main":true}]},{"name":"skin","colors":[{"r":64,"g":51,"b":83,"main":true},{"r":47,"g":34,"b":46},{"r":109,"g":105,"b":130},{"r":81,"g":78,"b":109},{"r":171,"g":168,"b":201}]},{"name":"skindark","colors":[{"r":36,"g":34,"b":52,"main":true},{"r":35,"g":33,"b":52}]},{"name":"straps","colors":[{"r":180,"g":32,"b":42,"main":true},{"r":62,"g":35,"b":36},{"r":50,"g":35,"b":44}]}]}
+{"formatversion":1,"data":[{"name":"body","colors":[{"r":255,"g":255,"b":255,"main":true}]},{"name":"bodydark","colors":[{"r":179,"g":185,"b":209},{"r":141,"g":138,"b":154},{"r":137,"g":136,"b":147},{"r":215,"g":215,"b":217,"main":true},{"r":210,"g":217,"b":242},{"r":192,"g":199,"b":229}]},{"name":"skin","colors":[{"r":64,"g":51,"b":83,"main":true},{"r":47,"g":34,"b":46},{"r":109,"g":105,"b":130},{"r":81,"g":78,"b":109},{"r":171,"g":168,"b":201}]},{"name":"skindark","colors":[{"r":36,"g":34,"b":52,"main":true},{"r":35,"g":33,"b":52}]},{"name":"straps","colors":[{"r":180,"g":32,"b":42,"main":true},{"r":62,"g":35,"b":36},{"r":50,"g":35,"b":44}]}]}
 === END JSON PALETTE ===
 */

@@ -77,3 +77,5 @@ sprite_change_offset("blackhole_inactive", 160, 170);
 sprite_change_offset("blackhole_explode", 160, 170);
 
 set_victory_bg(sprite_get("victorybg"));
+
+sprite_change_offset("pillar", 120, 80);

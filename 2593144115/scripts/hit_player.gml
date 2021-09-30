@@ -44,7 +44,7 @@ my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num = 3){
             if (my_hitboxID.attack == AT_FSTRONG ||
             my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num = 3 ||
             my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num = 2 ||
-            my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num >= 3) hit_player_obj.amaya_venom_count++; //hitboxes that inflict 2+ venom
+            my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num = 3) hit_player_obj.amaya_venom_count++; //hitboxes that inflict 2+ venom
             if (my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num = 2) hit_player_obj.amaya_venom_count++; //hitboxes that inflict 3+ venom
             if (hit_player_obj.amaya_venom_count > 4) hit_player_obj.amaya_venom_count = 4;
             else hit_player_obj.amaya_venom_timer = 0;
@@ -54,6 +54,7 @@ my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num = 3){
 if (my_hitboxID.attack == AT_NSPECIAL && instance_exists(venombubble_ins))
 {
     venombubble_ins.bubble_has_hit++;
+    if (my_hitboxID.hbox_num > 3) move_cooldown[AT_NSPECIAL] = 270;
 }
 
 if (my_hitboxID.attack == AT_DSPECIAL && hit_player_obj.amaya_venom && hit_player_obj.amaya_venom_id == id){

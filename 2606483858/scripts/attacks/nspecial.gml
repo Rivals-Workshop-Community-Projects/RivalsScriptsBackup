@@ -72,6 +72,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, false);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, false);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_abyss_hazard_hit"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, note_1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, note_1);
 
 //Medium Hitbox
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
@@ -100,7 +101,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DOES_NOT_REFLECT, false);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, false);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_abyss_hazard_hit"));
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, note_2);
-
+set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, note_2);
 //Stronger Hitbox
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 3);
@@ -119,13 +120,14 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_EFFECT, 11);
 set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 7);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, .6);
+set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_UNBASHABLE, false);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, false);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DOES_NOT_REFLECT, false);
-set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, false);
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_abyss_hazard_hit"));
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, note_3);
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, note_3);

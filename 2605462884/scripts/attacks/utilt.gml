@@ -24,8 +24,9 @@ set_window_value(AT_UTILT, 4, AG_BODY_CELL, 21);
 
 set_window_value(AT_UTILT, 5, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_UTILT, 5, AG_BODY_CELL, 20);
+set_window_value(AT_UTILT, 5, AG_WINDOW_HAS_WHIFFLAG, 1);//new
 
-set_window_value(AT_UTILT, 6, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_UTILT, 6, AG_WINDOW_LENGTH, 7);//5
 set_window_value(AT_UTILT, 6, AG_BODY_CELL, 20);
 set_window_value(AT_UTILT, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 
@@ -57,8 +58,8 @@ set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_UTILT, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_X, 0);
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_Y, -76-32);
-set_hitbox_value(AT_UTILT, 2, HG_WIDTH, 70);
-set_hitbox_value(AT_UTILT, 2, HG_HEIGHT, 84);
+set_hitbox_value(AT_UTILT, 2, HG_WIDTH, 60);//70
+set_hitbox_value(AT_UTILT, 2, HG_HEIGHT, 74);//84
 set_hitbox_value(AT_UTILT, 2, HG_SHAPE, 1);
 set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 5);
 set_hitbox_value(AT_UTILT, 2, HG_ANGLE, 85);

@@ -1,5 +1,22 @@
 animate_portrait("_portrait_intro", 40, 6, "_portrait_idle", 1, 4);
 
+if (get_player_color(player) == 20){
+    switch arcadeswitch{
+        case 1:
+        set_character_color_slot( 2, arcader1l, arcadeg1l, arcadeb1l);
+        set_character_color_slot( 3, arcader1d, arcadeg1d, arcadeb1d);
+        break;
+        case 2:
+        set_character_color_slot( 2, arcader2l, arcadeg2l, arcadeb2l);
+        set_character_color_slot( 3, arcader2d, arcadeg2d, arcadeb2d);
+        break;
+        case 3:
+        set_character_color_slot( 2, arcader3l, arcadeg3l, arcadeb3l);
+        set_character_color_slot( 3, arcader3d, arcadeg3d, arcadeb3d);
+        break;
+}
+}
+
 #define animate_portrait(SpriteName, StartUp, AnimSpeed, IdleSpriteName, IdleStartUp, IdleSpeed)
 if (object_index == asset_get("draw_result_screen"))
 {
@@ -72,19 +89,3 @@ if (object_index == asset_get("draw_result_screen"))
     }
 }
 
-if (get_player_color(player) == 20){
-    switch arcadeswitch{
-        case 1:
-        set_character_color_slot( 2, arcader1l, arcadeg1l, arcadeb1l);
-        set_character_color_slot( 3, arcader1d, arcadeg1d, arcadeb1d);
-        break;
-        case 2:
-        set_character_color_slot( 2, arcader2l, arcadeg2l, arcadeb2l);
-        set_character_color_slot( 3, arcader2d, arcadeg2d, arcadeb2d);
-        break;
-        case 3:
-        set_character_color_slot( 2, arcader3l, arcadeg3l, arcadeb3l);
-        set_character_color_slot( 3, arcader3d, arcadeg3d, arcadeb3d);
-        break;
-}
-}

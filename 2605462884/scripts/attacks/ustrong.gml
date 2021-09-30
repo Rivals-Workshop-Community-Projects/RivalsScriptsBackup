@@ -55,7 +55,7 @@ set_window_value(AT_USTRONG, 7, AG_DOWN, 30);
 set_window_value(AT_USTRONG, 7, AG_ROTATE, 80);
 set_window_value(AT_USTRONG, 7, AG_IN_FRONT, 1);
 
-set_window_value(AT_USTRONG, 8, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_USTRONG, 8, AG_WINDOW_LENGTH, 13);//8
 set_window_value(AT_USTRONG, 8, AG_BODY_CELL, 20);
 
 

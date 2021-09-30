@@ -16,7 +16,11 @@ if ("target" in self) {
 }
 
 if (phone_cheats[CHEAT_PERSIST] % 2 == 0) {
-	revengeMult -= 0.001;
+	if (revengeBuffer < 0) {
+		revengeMult -= 0.0012;
+	} else {
+		revengeBuffer--;
+	}
 }
 revengeMult = clamp(revengeMult, 1, 4);
 
@@ -42,11 +46,11 @@ if (phone_cheats_updated[CHEAT_CALM] == 1) {
 }
 
 if (outlineDirection == 0) {
-	outlineR += 6.3 * (revengeMult - 0.5);
-	outlineG += 0.9 * (revengeMult - 0.5);
+	outlineR += 6.3 * ((revengeMult * 1.3) - 0.5);
+	outlineG += 0.9 * ((revengeMult * 1.3) - 0.5);
 } else {
-	outlineR -= 6.3 * (revengeMult - 0.5);
-	outlineG -= 0.9 * (revengeMult - 0.5);
+	outlineR -= 6.3 * ((revengeMult * 1.3) - 0.5);
+	outlineG -= 0.9 * ((revengeMult * 1.3) - 0.5);
 }
 if (outlineR > 250) {
 	outlineDirection = 1;
@@ -136,8 +140,8 @@ if (state == PS_SPAWN) {
 }
 
 if (revengeMult > 1) {
-	flameBurstTimer += revengeMult;
-	flameBurstTimer2 += power(revengeMult, 1.5);
+	flameBurstTimer += (revengeMult * 1.3);
+	flameBurstTimer2 += power((revengeMult * 1.3), 1.5);
 }
 if (revengeHitShakeFrames > 0) {
 	flameBurstTimer += 20;

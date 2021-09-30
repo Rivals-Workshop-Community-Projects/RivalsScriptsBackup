@@ -31,6 +31,8 @@ set_window_value(attack, window_num, AG_WINDOW_TYPE, 10);
 set_window_value(attack, window_num, AG_WINDOW_LENGTH, 3);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(attack, window_num, AG_WINDOW_VSPEED, 2);
+set_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE, 0);
 
 window_num++;
 
@@ -96,7 +98,32 @@ set_num_hitboxes(attack, 4); // Swap 1 for number of hitboxes
 var hitbox_num = 1;
 var window_for_hitbox = 1;
 
-// #1 Stomp Hitbox
+// #1 Landing Hitbox
+window_for_hitbox = 3; 
+    set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+    set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 1);
+    set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
+    set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2);
+    set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 1);
+    set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 0);
+    set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -33);
+    set_hitbox_value(attack, hitbox_num, HG_WIDTH, 90);
+    set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 66);
+    set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 2);
+    set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
+    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 0);
+    set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 5);
+    set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
+    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
+    //set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
+    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 303); //303 - basic small directional
+    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 40);
+    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 20);
+    set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_kragg_rock_land")); //sfx_absa_singlezap1 sfx_absa_singlezap2
+    set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+hitbox_num++;
+
+// #2 Stomp Hitbox
 window_for_hitbox = 4; 
     set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
     set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 2);
@@ -121,7 +148,7 @@ window_for_hitbox = 4;
     set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
 hitbox_num++;
 
-// #2 Stomp 2 Hitbox
+// #3 Stomp 2 Hitbox
 window_for_hitbox = 5; 
     set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
     set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 3);
@@ -146,7 +173,7 @@ window_for_hitbox = 5;
     set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
 hitbox_num++;
 
-// #3 Kick Hitbox - Final Hitbox with knockback
+// #4 Kick Hitbox - Final Hitbox with knockback
 window_for_hitbox = 7; 
     set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
     set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 5);
@@ -172,32 +199,6 @@ window_for_hitbox = 7;
 hitbox_num++;
 
 /* Unused shock boxes for now
-
-// #1 Landing Hitbox
-
-window_for_hitbox = 1; 
-    set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
-    set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 1);
-    set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
-    set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2);
-    set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 1);
-    set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 0);
-    set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -33);
-    set_hitbox_value(attack, hitbox_num, HG_WIDTH, 90);
-    set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 66);
-    set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 2);
-    set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 1);
-    set_hitbox_value(attack, hitbox_num, HG_ANGLE, 0);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 5);
-    set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
-    //set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 303); //303 - basic small directional
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 40);
-    set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 20);
-    set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_kragg_rock_land")); //sfx_absa_singlezap1 sfx_absa_singlezap2
-    set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
-hitbox_num++;
 
 // #3 Shock Hitbox 1 
 window_for_hitbox = 3; 

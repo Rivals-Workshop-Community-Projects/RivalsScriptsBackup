@@ -1,6 +1,5 @@
 //Hello, curious one!
-//Lily developed by Trail Mix, with major coding assistance from Delta Parallax.
-//Modification of Heartbrake, also developed by Trail Mix and Delta Parallax.
+//Heartbrake developed by Trail Mix, with major coding assistance from Delta Parallax.
 
 //Check out Seeds of Aether, a workshop development group that Delta Parallax is involved in! https://discord.gg/U3xSFXp
 //Or check out my other stuff on Workshop! You can find it from the Workshop page you downloaded this character from, or check out my server, 
@@ -24,8 +23,8 @@ walk_speed = 3.5;
 walk_accel = 0.4;
 walk_turn_time = 6;
 initial_dash_time = 9;
-initial_dash_speed = 6.5;
-dash_speed = 6.5;
+initial_dash_speed = 8;
+dash_speed = 8;
 dash_turn_time = 11;
 dash_turn_accel = 1.0;
 dash_stop_time = 8;

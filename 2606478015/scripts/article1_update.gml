@@ -1,5 +1,9 @@
 
 if(state == 0){ //AERIAL
+
+if(hit_wall){
+	hsp = stored_hsp * -0.8
+}
 gyro_pickup = false
     sprite_index = sprite_get("gyro_spin")
     gyro_wiggle = 0
@@ -199,6 +203,10 @@ if (x < -200 || x > room_width + 200){
 	    instance_destroy();
 	    exit;
 	}
+}
+
+if(!hit_wall && hsp != 0){
+	stored_hsp = hsp
 }
 
 state_timer++

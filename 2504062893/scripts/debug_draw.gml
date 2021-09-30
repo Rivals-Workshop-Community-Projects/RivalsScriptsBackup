@@ -2,6 +2,12 @@ if (captain_mode){
 	draw_debug_text(x-48, y-100, "FALCON KNEE");
 }
 
+// draw_debug_text(x-48, y-100, "atk_cooldown: " + string(atk_cooldown));
+
+if (state != changed_state){
+	changed_state = state;
+	// print("state changed to " + string(state));
+}
 
 // draw_debug_text(x-64, y-180, "jab_continue " + string(jab_continue))
 // draw_debug_text(x-64, y-220, "throw_hsp: " + string(throw_hsp))

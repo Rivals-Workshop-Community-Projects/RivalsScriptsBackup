@@ -1,5 +1,6 @@
 sprite_change_offset("idle", 128, 160);
 sprite_change_offset("crouch", 128, 160);
+sprite_change_offset("phone_open", 128, 160);
 
 sprite_change_offset("walk", 128, 160);
 sprite_change_offset("walkturn", 128, 160);
@@ -91,6 +92,7 @@ sprite_change_offset("taunt_gf", 128, 160);
 sprite_change_offset("gf_despawn", 128, 155);
 sprite_change_offset("gf_bye", 128, 160);
 sprite_change_offset("gf_blowup", 128, 160);
+sprite_change_offset("gf_hurt", 128, 160);
 
 sprite_change_offset("uncharged_note", 28, 48);
 sprite_change_offset("tier1_note", 32, 53);

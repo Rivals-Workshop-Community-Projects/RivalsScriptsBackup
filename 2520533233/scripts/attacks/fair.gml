@@ -4,7 +4,7 @@ set_attack_value(AT_FAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_FAIR, AG_HURTBOX_SPRITE, sprite_get("fair_hurt"));
 set_attack_value(AT_FAIR, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_FAIR, AG_LANDING_LAG, 9);
-set_attack_value(AT_FAIR, AG_USES_CUSTOM_GRAVITY, 1);
+//set_attack_value(AT_FAIR, AG_USES_CUSTOM_GRAVITY, 1);
 
 // Startup
 set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 9);
@@ -14,10 +14,10 @@ set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, sound_get("fairdash"));
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 3);
-set_window_value(AT_FAIR, 1, AG_WINDOW_HSPEED, 0);
-set_window_value(AT_FAIR, 1, AG_WINDOW_HSPEED_TYPE, 2);
-set_window_value(AT_FAIR, 1, AG_WINDOW_VSPEED, 1);
-set_window_value(AT_FAIR, 1, AG_WINDOW_VSPEED_TYPE, 2);
+//set_window_value(AT_FAIR, 1, AG_WINDOW_HSPEED, 0);
+//set_window_value(AT_FAIR, 1, AG_WINDOW_HSPEED_TYPE, 2);
+//set_window_value(AT_FAIR, 1, AG_WINDOW_VSPEED, 1);
+//set_window_value(AT_FAIR, 1, AG_WINDOW_VSPEED_TYPE, 2);
 
 //dash
 set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 8);
@@ -26,7 +26,7 @@ set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_FAIR, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FAIR, 2, AG_WINDOW_SFX, sound_get("fair"));
 set_window_value(AT_FAIR, 2, AG_WINDOW_SFX_FRAME, 3);
-set_window_value(AT_FAIR, 2, AG_WINDOW_CUSTOM_GRAVITY, .3);
+
 //set_window_value(AT_FAIR, 2, AG_WINDOW_VSPEED, 0);
 //set_window_value(AT_FAIR, 2, AG_WINDOW_VSPEED_TYPE, 2);
 
@@ -38,12 +38,12 @@ set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 
 // Endlag
 set_window_value(AT_FAIR, 4, AG_WINDOW_CUSTOM_GRAVITY, 1);
-set_window_value(AT_FAIR, 4, AG_WINDOW_LENGTH, 18);
+set_window_value(AT_FAIR, 4, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_FAIR, 4, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FAIR, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_FAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
-set_window_value(AT_FAIR, 4, AG_WINDOW_HSPEED, -2);
-set_window_value(AT_FAIR, 4, AG_WINDOW_HSPEED_TYPE, 0);
+//set_window_value(AT_FAIR, 4, AG_WINDOW_HSPEED, -2);
+//set_window_value(AT_FAIR, 4, AG_WINDOW_HSPEED_TYPE, 0);
 
 set_num_hitboxes(AT_FAIR, 8);
 

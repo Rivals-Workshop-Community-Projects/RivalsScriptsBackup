@@ -7,6 +7,7 @@ if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2){
     can_fast_fall = false;
 	if (window == 4 && window_timer > 2 || window == 5) {
 		can_strong = true;
+		can_special = true;
 	}
 }
 
@@ -26,6 +27,11 @@ if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) {
 }
 
 if (attack == AT_DSPECIAL_AIR || attack == AT_DTHROW) {
+	if window == 1 && 9 > window_timer && shield_pressed {
+		set_attack(AT_DSPECIAL);
+		window = 1;
+		window_timer = 3;
+	}
 	can_wall_jump = true;
 	can_fast_fall = false;
 	can_move = false;
@@ -232,7 +238,7 @@ if (attack == AT_USPECIAL) {
 	if (window == 2 && window_timer == 1) {
 	vsp = clamp(vsp, -1, 0);
 	}
-	hsp = clamp(hsp, -4, 4);
+	hsp = clamp(hsp, -3, 3);
 	can_wall_jump = true;
 	if (window < 7 || window == 7 && 10 > window_timer) {
 	can_fast_fall = false;
@@ -241,7 +247,7 @@ if (attack == AT_USPECIAL) {
 	can_fast_fall = true;
 	}
 
-	if (window >= 2) and (vsp > -5) and (6 > window) {
+	if (window >= 2) and (vsp > -6.5) and (6 > window) {
 			vsp -= .65;	
 	}
 	

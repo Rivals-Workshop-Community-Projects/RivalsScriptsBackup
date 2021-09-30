@@ -78,8 +78,8 @@ techroll_speed = 10;
 
 //airdodge animation frames
 air_dodge_startup_frames = 1;
-air_dodge_active_frames = 2;
-air_dodge_recovery_frames = 3;
+air_dodge_active_frames = 1;
+air_dodge_recovery_frames = 1;
 air_dodge_speed = 7.5;
 
 //roll animation frames
@@ -127,6 +127,7 @@ mic_grab = false;
 mic_grab_pull = false;
 mic_timer = 0;
 mic_pos = noone;
+fspec_stall = false;
 
 //USpecial Arrow stuff
 arrow = noone;
@@ -234,3 +235,6 @@ page++;
 dracula_speaker[page] = 0;
 dracula_text[page] = "[shake] So that's really your true name? A name suited for a foolish mortal indeed. Have at you!";
 page++;
+
+muno_event_type = 0;
+user_event(14);

@@ -17,6 +17,16 @@ if (kb_sword.follow_type == 0 && orig_knock >= sword_knockoff_threshold) {
     kb_sword.kb_angle = 45;
 }
 
+
+with (pHitBox) {
+    if ("sword_owner" in self && player_id == other.id && type == 1) {
+        if (sword_owner.follow_type == 0) {
+        	instance_destroy(id);
+        	continue;
+        }
+    }
+}
+
 if (sprite_index == sprite_get("taunt_2") && image_index >= 6 && image_index < 17) {
     create_hitbox(AT_TAUNT_2, 3, round(x), round(y - 37))
 }

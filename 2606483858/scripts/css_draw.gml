@@ -4,6 +4,8 @@
 // very complicated stuff here 
 //
 //--- ---
+muno_event_type = 6;
+user_event(14);
 var qe_b = "boyfren"
 // ! you can now scroll down until you reach "the primary part you should change."
  

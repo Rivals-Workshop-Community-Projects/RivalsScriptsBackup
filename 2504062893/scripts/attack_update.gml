@@ -38,11 +38,11 @@ if (attack == AT_USPECIAL) {
 	if (window == 4 && window_timer == 1){//get_window_value(attack, window, AG_WINDOW_LENGTH)-1){
 		if has_hit_player_ANY_HITBOX{
 			if !has_hit_uspecial{ // twice is enough
-				print("reset Uspecial")
+				// print("reset Uspecial")
 				set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
 				has_hit_uspecial = true;
 			} else if (has_hit_uspecial){
-				print("pratfall Uspecial")
+				// print("pratfall Uspecial")
 				set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
 			}
 		}

@@ -1,7 +1,16 @@
 image_alpha = 0; //thanos snap
 width_screen = view_get_yview();
 rand_num = random_func( 0, 3, true);
+groove_timer ++;
 
+if(groove_timer == 900)
+{
+	with(oPlayer)
+	{
+		if(!has_selected)
+			has_selected = true;
+	}
+}
 //figure out position.
 if(player_count == 0) //also round start
 {
@@ -11,7 +20,26 @@ if(player_count == 0) //also round start
 		{
 			players_on[player_count] = i;
 			player_count ++;
+			
+			//check if online color is detected
+			// if (get_player_hud_color(i) == 6612290)
+			// 	temp_player = i;
 		}
+	}
+	//After counting everyone and someone is online, switch some places so yknow
+	if(temp_player != -1)
+	{
+		//recount I guesss lmao
+		players_on[1] = temp_player;
+		for(i = 1; i < 5; i++)
+		{
+			if(is_player_on(i) && temp_player != i) //check its not the same.
+			{
+				temp_players[temp_count] = i;
+				temp_count ++;
+			}
+		}
+		//after everything is counted reorder!
 	}
 }
 
@@ -46,10 +74,19 @@ switch(sfx_announcer)
 	case 1: //FIGHT!
 		if(announcer_timer > 140)
 		{
-			if(sfx_cancel == 0)
-				sound_play(sound_get("round_fight"));
-			sfx_announcer = 2;
-			announcer_timer = 0;
+			players_ready = true;
+			with(oPlayer)
+			{
+				if(!has_selected)
+					other.players_ready = false;
+			}
+			if(players_ready)
+			{
+				if(sfx_cancel == 0)
+					sound_play(sound_get("round_fight"));
+				sfx_announcer = 2;
+				announcer_timer = 0;
+			}
 		}
 		break;
 	case 2: //Watching / Start of match
@@ -141,11 +178,15 @@ with(oPlayer)
 		groove_start = 0;
 		groovepos = 2.75;
 		dash_timer = -1;
+		announced_dead = false;
+		has_selected = false;
+		allGood = true;
 		gravity_cancel = false;
 		wavedash_pls = false;
 		can_spark = false;
 		safe_timer = -1;
 		orig_hitgrav = hitstun_grav;
+		temp_groove = 0;
 
 		//Announcer stuff
 		has_announced = false;
@@ -154,11 +195,13 @@ with(oPlayer)
 		comboHits = 0;
 		curHP = 0;
 
+		//if you are online
+		online_clr = 6612290;
 		//Position
 		switch(other.player_count)
 		{
 			case 2: // 1v1
-				if(player != other.players_on[0])
+				if(player != other.players_on[0] || get_player_hud_color(player) == online_clr)
 					groovepos = 2;
 				else
 					groovepos = 4;
@@ -222,9 +265,10 @@ with(oPlayer)
 			}
 		}
 	}
-	if (get_player_stocks(player) == 0 && !has_announced) 
+	if (get_player_stocks(player) == 0 && !has_announced && !announced_dead) 
 	{
 		has_announced = true;
+		announced_dead = true;
 		other.announcer_say = 3;
 	}
 	#endregion
@@ -237,28 +281,82 @@ with(oPlayer)
 	if(groove_start < 140)
 	{
 		groove_start += (other.clone_comp ? 0.5 : 1);
+		allGood = true;
 		//lets you select during testing, will be changed.
-		if(attack_pressed && groove_start > 10 || groove_start == 139)
+		if(groove_start >= 118)
 		{
-			other.sfx_select = 1;
-			groove_start = 140;
-		}
-		else if(left_pressed || up_pressed)
-		{
-			other.sfx_move = 1;
-			bud_groove -= (other.clone_comp ? 0.5 : 1);
-			print_debug(bud_groove);
-		}
-		else if(right_pressed || down_pressed)
-		{
-			other.sfx_move = 1;
-			bud_groove += (other.clone_comp ? 0.5 : 1);
+			with(oPlayer)
+			{
+				if(!has_selected)
+				{
+					other.hitpause = true;
+					other.hitstop = 3;
+					other.groove_start = 137;
+					other.allGood = false;
+				}
+			}
+			if(allGood)
+				groove_start = 140;
 		}
 
-		if(bud_groove <= -1)
-			bud_groove = 7;
-		else if (bud_groove >= 8)
-			bud_groove = 0;
+		if(!has_selected)
+		{
+			if((attack_pressed && groove_start > 10 || groove_start == 139))
+			{
+				has_selected = true;
+				other.sfx_select = 1;
+				//check ai
+				with(oPlayer)
+				{
+					if(variable_instance_exists(id,"ai_target"))
+					{
+						has_selected = true;
+						other.sfx_select = 1;
+						bud_groove = random_func(player,7,true);
+					}
+				}
+			}
+			// //NEW GROOVE SELECT VIA WHEEL
+			// else if(up_down && !left_down && !right_down && !down_down)
+			// 	bud_groove = 1;
+			// else if(up_down && !left_down && right_down && !down_down)
+			// 	bud_groove = 2;
+			// else if(!up_down && !left_down && right_down && !down_down)
+			// 	bud_groove = 3;
+			// else if(!up_down && !left_down && right_down && down_down)
+			// 	bud_groove = 4;
+			// else if(!up_down && !left_down && !right_down && down_down)
+			// 	bud_groove = 5;
+			// else if(!up_down && left_down && !right_down && down_down)
+			// 	bud_groove = 6;
+			// else if(!up_down && left_down && !right_down && !down_down)
+			// 	bud_groove = 7;
+			// else if(up_down && left_down)
+			// 	bud_groove = 0;
+			
+			// if(temp_groove != bud_groove)
+			// {
+			// 	temp_groove = bud_groove;
+			// 	other.sfx_move = 1;
+			// }
+			
+			//OLD GROOVE SELECT
+			else if(left_pressed || up_pressed)
+			{
+				other.sfx_move = 1;
+				bud_groove -= (other.clone_comp ? 0.5 : 1);
+			}
+			else if(right_pressed || down_pressed)
+			{
+				other.sfx_move = 1;
+				bud_groove += (other.clone_comp ? 0.5 : 1);
+			}
+
+			if(bud_groove <= -1)
+				bud_groove = 7;
+			else if (bud_groove >= 8)
+				bud_groove = 0;
+		}
 	}
 	#endregion
 	else
@@ -373,10 +471,13 @@ with(oPlayer)
 								if(gravity_cancel == 2)
 								{
 									//enter dust fx
-									if(get_gameplay_time() % 8 == 0)
+									if(get_gameplay_time() % 8 == 0 && free)
 										spawn_base_dust(x,y+6, "land");
 									can_move = false;
-									vsp = -0.001;
+									if(state_timer < 130) //if youre stalling get down!
+										vsp = -0.001;
+									else
+										vsp += gravity_speed;
 									hsp = (window == 1 ? 0 : hsp/1.25);
 									free = false;
 									//Cooldown to prevent buffing moves
@@ -661,6 +762,28 @@ with(oPlayer)
 							}
 							y += 5;
 						}
+						//Hitbox codes.
+						with(pHitBox)
+						{
+							if(player_id == other.id)
+							{
+								if(type == 2)
+								{
+									with other
+									{
+										if((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == other.attack && jump_pressed)
+										{
+											if(!free || djumps != max_djumps)
+											{
+												if(free)
+													djumps++;
+												set_state(PS_JUMPSQUAT);
+											}
+										}
+									}
+								}
+							}
+						}
 					break;
 				case 6: //HAL LABATORIES.
 					has_airdodge = false;
@@ -670,16 +793,36 @@ with(oPlayer)
 					//No more fspecial
 					if(url == CH_ORI)
 					{
-						if(joy_pad_idle && special_pressed && (state_cat == SC_GROUND_NEUTRAL || state_cat == SC_AIR_NEUTRAL))
+						move_cooldown[AT_NSPECIAL] = 3;
+						if(joy_pad_idle && special_pressed && (state_cat == SC_GROUND_NEUTRAL || state_cat == SC_AIR_NEUTRAL) && move_cooldown[AT_FSPECIAL] == 0)
 						{
-							attack = AT_FSPECIAL;
-							set_attack(AT_FSPECIAL);
+							if(move_cooldown[AT_FSPECIAL] == 0)
+							{
+								attack = AT_FSPECIAL;
+								set_attack(AT_FSPECIAL);
+								window = 1;
+								window_timer = 0;
+							}
 						}
 					}
-					else if(url != CH_RANNO && (attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR) || url == CH_RANNO && (attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR))
+					else 
 					{
-						attack = AT_NSPECIAL;
-						set_attack(AT_NSPECIAL);
+						move_cooldown[AT_FSPECIAL] = 3;
+						if(url != CH_RANNO && (attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR) || url == CH_RANNO && (attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR))
+						{
+							attack = AT_NSPECIAL;
+							if(move_cooldown[AT_NSPECIAL] == 0)
+							{
+								state_timer = 0;
+								window_timer = 0;
+								set_attack(AT_NSPECIAL);
+							}
+							else
+							{
+								clear_button_buffer(PC_SPECIAL_PRESSED);
+								set_state((free ? PS_IDLE : PS_IDLE_AIR));
+							}
+						}
 					}
 
 					//Adjust hitstun
@@ -701,7 +844,6 @@ with(oPlayer)
 						{
 							set_hitbox_value(attack, i, HG_DRIFT_MULTIPLIER, 0);
 							set_hitbox_value(attack, i, HG_SDI_MULTIPLIER, 0);
-							print_debug(string(get_hitbox_value(attack, i, HG_DRIFT_MULTIPLIER)));
 						}
 					}
 					break;
@@ -753,9 +895,9 @@ with(oPlayer)
 						for(i = 1; i < get_num_hitboxes(attack)+1; i++)
 						{
 							reset_hitbox_value(attack, i, HG_BASE_KNOCKBACK);
-							reset_hitbox_value(attack, i, KNOCKBACK_SCALING);
+							reset_hitbox_value(attack, i, HG_KNOCKBACK_SCALING);
 							set_hitbox_value(attack, i, HG_BASE_KNOCKBACK, get_hitbox_value(attack, i, HG_BASE_KNOCKBACK) * (dmg_rage * 0.002 + 1));
-							set_hitbox_value(attack, i,  KNOCKBACK_SCALING, get_hitbox_value(attack, i,  KNOCKBACK_SCALING) * (dmg_rage * 0.002 + 1));
+							set_hitbox_value(attack, i,  HG_KNOCKBACK_SCALING, get_hitbox_value(attack, i,  HG_KNOCKBACK_SCALING) * (dmg_rage * 0.002 + 1));
 						}
 					}
 					//rage dust

@@ -75,7 +75,7 @@ if (state==PS_ATTACK_AIR||state==PS_ATTACK_GROUND){
 		}
 	}//dattack
 	if (attack==AT_NSPECIAL){
-		if (nsp_remain>0){
+		if (nsp_remain>0&&nsp_locked==0){
 			if (window==1){
 				var x_off = ease_linear( 6, 0, window_timer, get_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH) )
 				var y_off = ease_sineOut( -40, 0, window_timer, get_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH) )

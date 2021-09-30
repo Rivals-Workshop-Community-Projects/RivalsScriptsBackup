@@ -19,26 +19,6 @@ if (attack == AT_FSPECIAL)
         {
             destroyed = 1;
         }
-        if (destroyed or place_meeting(x, y, asset_get("plasma_field_obj")) or has_hit)
-        {
-            if (!instance_exists(player_id.bubbleg) or (instance_exists(player_id.bubbleg)) and player_id.bubbleg.bloop == 0)
-            {
-                sound_play(asset_get("sfx_bubblepop"))
-                create_hitbox(AT_FSPECIAL, 2, x, y);
-                
-            }
-        }
-        with(pHitBox)
-        {
-            if (place_meeting(x, y, other) and hit_priority != 0)
-            {
-                with(other)
-                {
-                    sound_play(asset_get("sfx_bubblepop"))
-                    create_hitbox(AT_FSPECIAL, 2, x, y);
-                }
-            }
-        }
     }
     else if (hbox_num == 2)
     {

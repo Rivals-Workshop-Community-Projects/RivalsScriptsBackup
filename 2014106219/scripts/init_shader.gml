@@ -3,12 +3,14 @@
 //adjusting shading and stuff
 if (get_player_color( player ) == 0) {
     set_character_color_slot(1, 30, 159, 252, 1);
-
+    set_character_color_slot(2, 92, 0, 16);
+	set_character_color_slot(4, 255, 145, 35);
+	
 	set_character_color_shading(0, 1); //shoes/bracelets
 	set_character_color_shading(1, 1.25); //headband
-	set_character_color_shading(2, 1); //shirt
+	set_character_color_shading(2, 3); //shirt
 	set_character_color_shading(3, 1); //skirt
-	set_character_color_shading(4, 1); //skin
+	set_character_color_shading(4, 1.1); //skin
 	set_character_color_shading(5, 1); //socks
 	set_character_color_shading(6, 1); //hair
 	set_character_color_shading(7, 1); //wand

@@ -661,16 +661,16 @@ if(attack == AT_EXTRA_1){
 			state_timer = 0
 		}
 		if(window_timer > 4){
-			if(special_down && state_timer < 30){
+			if(special_down && state_timer < 50){
 				window_timer = 4
 			}
 		}
-	}
-	djumps = 0
-	if(window == 3){
-		if(jump_pressed){
-			set_state(PS_DOUBLE_JUMP)
+		if(steam < 100){
+			steam += 1
 		}
+	}
+	if(window == 3 && window_timer > 5){
+		can_jump = true
 		can_special = true
 		can_attack = true
 		can_wall_jump = true
@@ -680,6 +680,16 @@ if(attack == AT_EXTRA_1){
 	has_bounce = false
 }
 
+//Fstrong having kill power
+if(attack == AT_FSTRONG){
+	if(window == 1){
+		if(steam <= 0 || instance_exists(steam_wall) || steam_wall_timer > 0){
+			set_hitbox_value(AT_FSTRONG, 1, HG_FORCE_FLINCH, 0);
+		}else{
+			set_hitbox_value(AT_FSTRONG, 1, HG_FORCE_FLINCH, 1);
+		}
+	}
+}
 //Old fair thing but I didnt wanna get rid of it
 /* if(attack == AT_FAIR){
 	if(window > 3 || window == 2){

@@ -35,6 +35,17 @@ else {
     }
 }
 
+//USpecial use
+if ((!free || state == PS_WALL_JUMP || state == PS_WALL_TECH || state == PS_HITSTUN || state == PS_HITSTUN_LAND) && uspecial_used) {
+    uspecial_used = false;
+}
+
+if (uspecial_used && free)
+{
+	move_cooldown[AT_USPECIAL] = 2;
+	move_cooldown[AT_USPECIAL_GROUND] = 2;
+}
+
 //Dialogue Buddy Compatibility
 if(variable_instance_exists(id,"diag"))
 {

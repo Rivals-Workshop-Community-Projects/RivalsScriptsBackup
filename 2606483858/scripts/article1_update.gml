@@ -18,17 +18,8 @@
 
 
 //Set killarticles to true in death.gml and all your articles will despawn. Gets reset to the false at the end of state 2
-
-
-with (asset_get("pHitBox")){
-    if (place_meeting(x,y,other.id) && other.player_id != player_id && !other.hit_recently){
-        other.gf_hp -= 1;
-        other.hitstop = 10; //Article freeze frames
-        hitpause = true;    //Player freeze frames
-        hitstop = 10;       //Player freeze frames, cont.
-        other.hit_recently = true;
-        sound_play(asset_get("sfx_blow_heavy2"));
-    }
+if(state != 2){
+	hitbox_detection();
 }
 if(hit_recently){
 	if(hit_timer >=0){
@@ -36,7 +27,7 @@ if(hit_recently){
 	}
 	if(hit_timer <= 0){
 		hit_recently = false;
-		hit_timer = 50;
+		hit_timer = 10;
 	}
 }
 if(gf_hp <= 0 && state != 2){
@@ -212,3 +203,60 @@ if (y >= (get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE)) && sta
     state = 2;
     state_timer = 0;
 }
+#define hitbox_detection
+//estimated like 80% accurate imo
+if hit_lockout <= 0 {
+    var article = self;
+    //reset hitbox groups when necessary
+    with (oPlayer)
+        if (state == clamp(state, 5, 6) && window == 1 && window_timer == 1) {
+            other.hbox_group[@ player-1][@ attack] = array_create(10,0);
+            //with other print_debug(`${article}: reset hb group for ${other.player},${other.attack}`);
+        }
+    
+    var currentHighestPriority = noone;
+    with (pHitBox) 
+    	if(other.player_id != player_id)
+        if `hit_${article}` not in self
+            if place_meeting(x,y,other) && (groundedness == 0 || groundedness == 1+free) && hit_priority != 0 {
+                if hbox_group == -1 || ( hbox_group != -1 && other.hbox_group[@ orig_player-1][@ attack][@ hbox_group] == 0) {
+                    //hit
+                    if currentHighestPriority != noone {
+                        if currentHighestPriority.hit_priority < hit_priority
+                            currentHighestPriority = self;
+                    } else {
+                        currentHighestPriority = self;
+                    }
+                    
+                    variable_instance_set(self, `hit_${article}`, true);
+                }
+            } else if (place_meeting(x,y,other) && hbox_group != -1 && other.hbox_group[@ orig_player-1][@ attack][@ hbox_group] == 1) || (hit_priority == 0) {
+                //prevent from running hit detection for optimization sake
+                //with other print_debug("hit but also not");
+                variable_instance_set(self, `hit_${article}`, true);
+            }
+    
+    if instance_exists(currentHighestPriority) with currentHighestPriority {
+        sound_play(sound_effect);
+        spawn_hit_fx(other.x+hit_effect_x,other.y+hit_effect_y,hit_effect);
+        //this handles the knockback; hitstun, speed, etc.
+        with other {
+        	gf_hp -= 1;
+        	hitstop = 10; //Article freeze frames
+        	hit_recently = true;
+        	new_sprite = sprite_get("gf_hurt")
+        }
+        //apply hitpause (where applicable)
+        var desired_hitstop = hitpause + damage * hitpause_growth * 0.05;
+        if type == 1 with player_id {
+            hitpause = true;
+            has_hit = true;
+            if hitstop < desired_hitstop {
+                hitstop = desired_hitstop;
+                hitstop_full = desired_hitstop;
+            }
+        }
+        other.hitstop = floor(desired_hitstop);
+        if hbox_group != -1 other.hbox_group[@ orig_player-1][@ attack][@ hbox_group] = 1;
+    }
+} else hit_lockout--;

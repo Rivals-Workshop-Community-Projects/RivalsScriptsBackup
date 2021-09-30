@@ -435,6 +435,18 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	 initPatch("0.11", "26, September 2021");
+	 initPatchWords("Bair: Travel Speed: 13 > 8
+Bair: Startup: 10 > 12
+Bair: Base Knockback: 6 > 8
+Bair: Hitstun Modifier: .6 > .4");
+	 initPatch("0.11", "26, September 2021");
+	 initPatchWords("Last set of touchup nerfs before hopefully getting this character in literally any bracket.
+	 
+Fstrong: Endlag: 18(27) > 20(30)
+Dstrong: Endlag: 18(27) > 19(29)
+Ustrong: Damage: 16 > 12
+Nair: Tipper 2 Damage: 7 > 4 ")
 	 initPatch("0.10", "16, September 2021");
 	 initPatchWords("Reduced damage output, kill power, and improved readability.
 

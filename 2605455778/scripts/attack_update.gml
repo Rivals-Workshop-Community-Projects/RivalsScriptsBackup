@@ -164,6 +164,8 @@ switch(attack){
                     if (free){
                         y += (other.y - y)/5;
                     }
+                    other.armorpoints += 1;
+                    other.armorgainattack();
                 }
             }
             if(has_hit){
@@ -244,7 +246,7 @@ switch(attack){
                 create_hitbox(AT_FSPECIAL_2, 1, x, y);
                 attack_end();
             }
-            if(eggroll_window_store == 5){
+            if(eggroll_window_store == 5 && !was_parried){
                 can_jump = true;
             }
         }

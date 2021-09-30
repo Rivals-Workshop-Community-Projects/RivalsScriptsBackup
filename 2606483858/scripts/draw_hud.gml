@@ -31,3 +31,6 @@ if (note_cont == 71){
 if (mic_cont == 71){
 	draw_sprite_ext(sprite_get("miccv"), 0, temp_x+123, temp_y-26, 2, 2, 0, c_white, 1);	
 }
+
+muno_event_type = 5;
+user_event(14);

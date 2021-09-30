@@ -56,7 +56,7 @@ if attack == AT_USPECIAL {
     }
     
     
-    if hitbox_timer = 4*13 {
+    if hitbox_timer = 4*13  {
         sound_play(asset_get("sfx_abyss_explosion"),false,noone,1,1)
         sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,1,1)
         spawn_hit_fx(x,y,306)
@@ -65,10 +65,22 @@ if attack == AT_USPECIAL {
         shake_camera(4,4)
         hit_priority = 9
         
+        
         with player_id {
-            if hitpause {
-                other.destroyed = true
+        	
+        	
+        	if !special_down {
+        		prat_land_time = 16;
+        		spawn_hit_fx(x,y - 10,305)
+        		spawn_hit_fx(x,y - 40,305)
+        		spawn_hit_fx(x,y - 70,305)
+            	x = other.x
+            	y = other.y + 40
+            	set_state(PS_PRATFALL)
+            	vsp = -9
+            	
             }
+            
             
         }
     }
@@ -78,24 +90,22 @@ if attack == AT_USPECIAL {
         image_yscale *= 2
     }
     
-    if hitbox_timer = 4*13 + 4 {
+    if hitbox_timer = 4*13 + 3 && player_id.special_down && player_id.state == PS_ATTACK_AIR{
         image_xscale *= 1.3
         image_yscale *= 1.3
         
         create_hitbox(AT_USPECIAL,2,x,y)
         
-        
+        with player_id {
+            	set_state(PS_PRATFALL)
+            	vsp = -9
+            	
+        }
         
     }
     
     
     	
-    if hitbox_timer = 4*13 + 5 {
-     with player_id {
-            set_state(PS_PRATFALL)
-        }   
-        
-    }
 }
 
 if attack == AT_NSPECIAL && hbox_num == 2 {

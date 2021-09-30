@@ -24,5 +24,6 @@ gotHit_timer = 0
 gyro_pickup = false
 thrown = false
 hitbox_check = noone
+stored_hsp = 0
 
 laser_gyrobounce_fx = hit_fx_create(sprite_get("laser_gyrobounce_fx"), 16)

@@ -7,11 +7,11 @@ sword_attack_hurtbox_spr[0, AT_UTILT] = sprite_get("sword0_utilt_hurt");
 sword_attack_can_move[0, AT_UTILT] = false
 
 set_window_value(AT_UTILT, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_UTILT, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UTILT, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_ori_uptilt_single"));
-set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 5);
+set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 8);
 
 set_window_value(AT_UTILT, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_UTILT, 2, AG_WINDOW_LENGTH, 12);
@@ -147,9 +147,9 @@ set_hitbox_value(AT_UTILT, 4, HG_HIT_LOCKOUT, 3);
 set_hitbox_value(AT_UTILT, 4, HG_WINDOW, 9);
 set_hitbox_value(AT_UTILT, 4, HG_LIFETIME, 3);
 set_hitbox_value(AT_UTILT, 4, HG_HITBOX_X, 0);
-set_hitbox_value(AT_UTILT, 4, HG_HITBOX_Y, -40);
+set_hitbox_value(AT_UTILT, 4, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_UTILT, 4, HG_WIDTH, 60);
-set_hitbox_value(AT_UTILT, 4, HG_HEIGHT, 160);
+set_hitbox_value(AT_UTILT, 4, HG_HEIGHT, 150);
 set_hitbox_value(AT_UTILT, 4, HG_PRIORITY, 6);
 set_hitbox_value(AT_UTILT, 4, HG_DAMAGE, 7);
 set_hitbox_value(AT_UTILT, 4, HG_ANGLE, 90);

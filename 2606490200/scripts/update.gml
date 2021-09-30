@@ -59,6 +59,8 @@ if htrain >= 100 && htrain < 300 {
     set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 12);
     set_hitbox_value(AT_EXTRA_1, 3, HG_DAMAGE, 3);
     
+    air_dodge_speed = 7.50;
+    
     
     init_shader()
 }
@@ -354,15 +356,17 @@ if move_cooldown[AT_USPECIAL] > 0 {
 		set_state(PS_PRATFALL)
 	}
 	
+	if vsp < 0 {
+		vsp *= 1.01
+	}
 }
 
 if move_cooldown[AT_USPECIAL] == 1 {
 	spawn_hit_fx(x,y - 50,305)
 	sound_play(asset_get("sfx_bird_sidespecial_start"));
-	vsp = -10
-	old_vsp = -10
-	hsp /= 6
-	old_hsp /= 6
+
+	hsp /= 2 
+	old_hsp /= 2
 }
 	
 //Update.gml

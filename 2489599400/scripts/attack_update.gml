@@ -1,7 +1,7 @@
 // attack_update
 
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == AT_USPECIAL_2 || attack == AT_DSPECIAL_2 || attack == AT_NSPECIAL_2){
     trigger_b_reverse();
 }
 
@@ -83,14 +83,15 @@ if nodispenser {
 		set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 50);
 		set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 40);
 		set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 70);
-		set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 6);
+		set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 7);
+		set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .65);		
 		
 		set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 20);
 		set_hitbox_value(AT_FAIR, 2, HG_HITBOX_Y, -68);
 		set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 70);
 		set_hitbox_value(AT_FAIR, 2, HG_HEIGHT, 36);
 		set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 3);
-		set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .5);
+
 	}
 	
 	//UAir
@@ -107,7 +108,8 @@ if nodispenser {
 		set_hitbox_value(AT_UAIR, 1, HG_WIDTH, 80);
 		set_hitbox_value(AT_UAIR, 1, HG_HEIGHT, 56);
 		set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 6);
-		set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 6);	
+		set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 7);	
+		set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .55);
 		set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 7);
 	}
 } else { //Reset attacks
@@ -179,6 +181,7 @@ if nodispenser {
 		reset_hitbox_value(AT_UAIR, 1, HG_HEIGHT);
 		reset_hitbox_value(AT_UAIR, 1, HG_DAMAGE);
 		reset_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK);	
+		reset_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING);
 		reset_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE);
 }
 
@@ -329,7 +332,7 @@ if (attack == AT_NSPECIAL){
 			vsp = clamp(vsp, -100, -1);
 		}
 	}
-    if window == 2 && window_timer == 4 {	
+    if window == 2 && window_timer == 3 {	
 		can_jump = true;
 		can_wall_jump = true;
 		can_shield = true;
@@ -353,7 +356,7 @@ if (attack == AT_NSPECIAL_2){
 			vsp = clamp(vsp, -100, -1);
 		} 
 	}
-	if window == 2 && window_timer == 4 {
+	if window == 2 && window_timer == 3 {
 		can_jump = true;
 		can_wall_jump = true;
 		can_shield = true;
@@ -372,8 +375,12 @@ if (attack == AT_NSPECIAL_2){
 if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2){
 	can_wall_jump = true;
 	can_fast_fall = false;
-	if window > 2 {
-		can_move = false;
+//	if window > 2 {
+//		can_move = false;
+//	}
+
+    if window == 3 || window == 4 {
+		hsp = clamp(hsp, -4, 4);
 	}
     if window == 2 && window_timer == 3 {
 		if !nodispenser {
@@ -387,7 +394,7 @@ if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2){
 	  if window == 3 || window == 4 {
 		if (has_hit_player && !hitpause && hit_player_obj.super_armor == 0){
 			hit_player_obj.hsp = lerp(hit_player_obj.hsp,hsp,0.1);
-			hit_player_obj.vsp = lerp(hit_player_obj.vsp,vsp,0.05);
+			hit_player_obj.vsp = lerp(hit_player_obj.vsp,vsp,0.01);
 			hit_player_obj.x = lerp(hit_player_obj.x,x,0.1);
 			hit_player_obj.y = lerp(hit_player_obj.y,y,0.1);
 		}

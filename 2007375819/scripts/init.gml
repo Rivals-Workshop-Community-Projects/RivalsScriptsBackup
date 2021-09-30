@@ -116,6 +116,7 @@ bofa = false;
 chungus = false;
 DennisHeadOut = hit_fx_create( sprite_get( "dennisheadout" ),32);
 dennis = 0;
+diag_portrait=sprite_get("portrait_old");
 
 //Dracula Support
 dracula_portrait = sprite_get("dracportrait1");
@@ -125,31 +126,31 @@ dracula_speaker[page] = 0;
 dracula_text[page] = "...What in the world is this? Is this even a living being?";
 page++;
 dracula_speaker[page] = 1;
-dracula_text[page] = "< h >";
+dracula_text[page] = "h";
 page++;
 dracula_speaker[page] = 0;
 dracula_text[page] = "...Hmph. A piece of machinery built in the image and intelligence of humans... As if they weren't vain enough creatures.";
 page++;
 dracula_speaker[page] = 1;
-dracula_text[page] = "< Hey Drac, like this picture? > [taunt]";
+dracula_text[page] = "hey drac do you like this picture [taunt]";
 page++;
 dracula_speaker[page] = 0;
-dracula_text[page] = "...What...";
+dracula_text[page] = "What...";
 page++;
 dracula_speaker[page] = 1;
-dracula_text[page] = "< Ok maybe not that one. How about this? > [taunt]";
+dracula_text[page] = "ok maybe not that one. how about this [taunt]";
 page++;
 dracula_speaker[page] = 0;
 dracula_text[page] = "...";
 page++;
 dracula_speaker[page] = 1;
-dracula_text[page] = "< Third time's the charm. > [taunt]";
+dracula_text[page] = "third time's the charm [taunt]";
 page++;
 dracula_speaker[page] = 0;
 dracula_text[page] = "That's enough of you and your cursed paintings![glass] I, Dracula, shall reduce you to scrap metal!";
 page++;
 dracula_speaker[page] = 2;
-dracula_text[page] = "< ...You got problems, dude. >";
+dracula_text[page] = "you got problems bucko";
 page++;
 
 ///agent n codec

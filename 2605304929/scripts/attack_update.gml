@@ -512,16 +512,16 @@ if (attack == AT_EXTRA_3 && instance_exists(grabbed_player_obj)) {
 			grabbed_player_relative_y = grabbed_player_obj.y - y;
 		}
 
-		if (window > 1) {
-			/*
-			//Lock them in place
-			var pull_to_x = 20 * spr_dir;
-			var pull_to_y = 0;
-			
-			//This sets the location. Same format as Maw's easing function but there is no movement here.
-			grabbed_player_obj.x = x + pull_to_x;
-			grabbed_player_obj.y = y + pull_to_y;
-			*/
+		if (window = 1) {
+			if(window_timer <= 2){
+				var pull_to_x = grabbed_player_relative_x;
+				var pull_to_y = grabbed_player_relative_y - floor(char_height/2);
+			}
+			var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
+			x = x + ease_linear(0, pull_to_x, window_timer, window_length);
+			y = y + ease_linear(0, pull_to_y, window_timer, window_length);
+		}
+		if (window > 2) {
 			x = grabbed_player_obj.x
 			y = grabbed_player_obj.y
 		}
@@ -568,13 +568,7 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL){ //
 
 //Ustrong Properties
 if(attack == AT_USTRONG && has_hit == true){
-	
 	set_window_value(AT_USTRONG,get_attack_value(AT_USTRONG,AG_NUM_WINDOWS),AG_WINDOW_TYPE,1); // On sucessfult hit, don't send her into praftfall
-	// If hitting with a laterhitbox, end the attack early
-	if(window > 4){
-		iasa_script();
-	}
-	
 }
 
 // Fspecial cancel hitbox on window 5 (landing code)
@@ -610,16 +604,17 @@ if((attack == AT_NSPECIAL_AIR || attack == AT_DSPECIAL_AIR) && !free){
 	set_state(PS_LANDING_LAG);
 }
 
+/*
 // A+B Command Input angle direction if used in air.
 if(attack == AT_EXTRA_3 && free){
 	set_hitbox_value(AT_EXTRA_3,5,HG_ANGLE,270);
 }
-
+*/
 //#endregion
 
 //#region A+B Input Command Grab Code
 //A+B Input Command Grab Code
-if(move_cooldown[AT_EXTRA_1] == 0 && move_cooldown[AT_EXTRA_2] == 0 && (window == 1 || (attack == AT_JAB && has_hit == true && was_parried == false))){ //Jab Exception minus parry
+if(move_cooldown[AT_EXTRA_1] == 0 && move_cooldown[AT_EXTRA_2] == 0 && (window == 1 || ((attack == AT_JAB || attack == AT_NAIR) && has_hit == true && was_parried == false))){ //Jab Exception minus parry
 	if(attack_down && special_down){
 		attack_end();
 		if(free){ // Air Version

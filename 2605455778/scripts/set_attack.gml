@@ -59,6 +59,40 @@ if(swallow){
         swallowarmor = true;
         armorspend();
     }
+    if(up_strong_pressed || down_strong_pressed || left_strong_pressed || right_strong_pressed){
+        if(free){
+            attack = AT_NAIR;
+        }else{
+            attack = AT_FSTRONG;
+        }
+        if(left_down || right_down){
+            if(free){
+                if((spr_dir == 1 && left_down) || (spr_dir == -1 && right_down)){
+                    attack = AT_BAIR;
+                }else{
+                    attack = AT_FAIR;
+                }
+            }else{
+                attack = AT_FSTRONG;
+            }
+        }
+        if(up_down){
+            if(free){
+                attack = AT_UAIR;
+            }else{
+                attack = AT_USTRONG;
+            }
+        }
+        if(down_down){
+            if(free){
+                attack = AT_DAIR;
+            }else{
+                attack = AT_DSTRONG;
+            }
+        }
+        swallowarmor = true;
+        armorspend();
+    }
     if(up_stick_pressed){
         if(free){
             attack = AT_UAIR;

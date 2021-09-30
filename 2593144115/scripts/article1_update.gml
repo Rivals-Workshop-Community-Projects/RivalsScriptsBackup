@@ -214,9 +214,23 @@ switch (state)
     case 2:
     if (hit_timer >= 16 || hsp <= 5 && hsp >= -5 && vsp <= 5 && vsp >= -5)
     {
-        state = 1;
         bubble_has_hit = 0;
         bubble_hitbox_out = 0;
+        if (bubble_hitbydspecial = 1)
+        {
+            hsp = prev_hsp*0.4;
+            x += hsp;
+            vsp = prev_vsp*0.4;
+            y += vsp;
+            image_index = 16+level*3;
+            frame_update = 0;
+            state = 5;  
+            if (player_id.move_cooldown[AT_NSPECIAL] < 180) player_id.move_cooldown[AT_NSPECIAL] = 180;
+        }
+        else
+        {
+            state = 1;
+        }
         bubble_hitbydspecial = 0;
         if (instance_exists(bubble_hitbox))
         {

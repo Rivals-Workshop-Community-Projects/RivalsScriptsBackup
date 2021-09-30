@@ -138,7 +138,10 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[21,2] = "Based on Lego Yoda, this alt is"
 	ce[22,0] = make_color_rgb(131, 172, 135)
 	ce[22,1] = "Astral Birth"
-	ce[22,2] = "An alt based on Astral Birth from Kirby."
+	ce[22,2] = "An alt based on Astral Birth, Void, from Kirby."
+	ce[23,0] = make_color_rgb(136, 68, 0)
+	ce[23,1] = "Tatooine"
+	ce[23,2] = "An alt based on the Jawas from Star Wars"
 	
 	// you can add more, by copypasting and changing the first index of the array accordingly.
 	// ! changing part end.

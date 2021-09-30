@@ -1,6 +1,6 @@
 switch(state){
     case PS_IDLE:
-        if (point_distance(x, y, player_id.x, player_id.y) < 60 && (player_id.state != PS_ATTACK_GROUND && player_id.state != PS_ATTACK_AIR)){
+        if (point_distance(x, y, player_id.x, player_id.y) < 76 && (player_id.state != PS_ATTACK_GROUND && player_id.state != PS_ATTACK_AIR)){
         draw_sprite_ext(sprite_get("frog_idle_outline"), image_index, x, y, spr_dir, 1, 0, c_white, 1);
         }
         break;

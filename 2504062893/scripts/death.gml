@@ -13,3 +13,8 @@ if (article1_count > 0){
         lifespan = 0; // depending on script order, might only work if changed to 1?   
     }
 } 
+
+// uspec_cancel_alarm = -1;
+// atk_cooldown = 0;
+
+// print("ded")

@@ -28,8 +28,16 @@ idle_anim_rate = 5;
 //Cure depression
 shoulddie = false;
 hit_recently = false;
-hit_timer = 50;
+hit_timer = 10;
 gf_hp = 10;
+hbox_group = array_create(4,array_create(50,array_create(10,0))); //ew
+hitstun = 0;
+hitstun_full = 0;
+ 
+kb_adj = 1;
+kb_dir = 0;
+orig_knock = 0;
+hit_lockout = 0;
 //Gravity (thanks bacon)
 air_timer = 0;
 was_free = false;

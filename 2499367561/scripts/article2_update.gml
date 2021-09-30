@@ -3,13 +3,13 @@
 with (asset_get("pHitBox")){
 	if (place_meeting(x, y, other) ){
 		if(player_id != other.player_id && other.gotHit_timer <= 0 && attack != AT_DSPECIAL && other.gotHit_timer <= 0){
-		    other.player_id.shield_size -= 0.1 + damage / 150
+		    other.player_id.shield_size -= 0.15 + damage / 150
 		    other.player_id.old_hsp = hsp
 		    other.player_id.old_vsp = vsp
 		    other.player_id.hitpause = true
 		    other.player_id.hitstop_full = hitpause
 		    other.player_id.hitstop = hitpause
-		    other.gotHit_timer = 20
+		    other.gotHit_timer = 25
 		    if(type != 2){
 			    player_id.old_hsp = hsp
 			    player_id.old_vsp = vsp

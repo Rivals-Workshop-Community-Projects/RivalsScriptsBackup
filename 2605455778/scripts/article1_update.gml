@@ -29,7 +29,9 @@ with(pHitBox){
             player_id.hit_totem = true;
             player_id.totemAndplayer = true;
             other.destroy = true;
-            destroyed = true;
+            if(attack != AT_FSPECIAL_2){
+                destroyed = true;
+            }
         }
     }
 }

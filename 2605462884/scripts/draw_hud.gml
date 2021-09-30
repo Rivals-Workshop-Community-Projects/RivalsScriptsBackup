@@ -7,6 +7,9 @@
 
 if (variable_instance_exists(id, "body")){
 	draw_sprite_ext( sprite_get("hud_cooldown"), nsp_remain, temp_x+16, temp_y-4, 2, 2, 0, -1, 1 )
+	if (nsp_locked>0){
+		draw_sprite_ext( sprite_get("hud_cooldown"), 4, temp_x+16, temp_y-4, 2, 2, 0, -1, 0.5 )
+	}
 	
 	//boosts area
 	var b_x = temp_x + 58;

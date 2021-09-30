@@ -245,7 +245,9 @@ if (attack == AT_FSPECIAL){
 
 if (attack == AT_USPECIAL){
     can_fast_fall = false;
-    can_wall_jump = true
+    can_wall_jump = true;
+    uspecial_used = true;
+    
     if (window == 4)  {
         can_move = false
     }

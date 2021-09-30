@@ -305,6 +305,22 @@ in a Patch.
 
 #define CORE_patches
 
+	initPatch("2.19", "September 27th, 2021");
+
+	initHeader("General");
+	initSection("-Detached NSpecial now launches grabbed opponents at a fixed angle");	 
+
+	initHeader("Buffs");
+	initSection("-Increased radius for picking up frog with DSpecial");
+	
+	initHeader("Nerfs");	 	
+	initSection("-Increased Detached NSpecial startup time (11 -> 15)");	 	
+	initSection("-Decreased USpecial last hit base knockback (6 -> 5)");	 
+	initSection("-Decreased USpecial last hit knockback scaling (0.75 -> 0.65)");	 	 
+	initSection("-Decreased FSpecial base damage (11 -> 10)");	
+	initSection("-Decreased FSpecial base knockback (8.5 -> 7)");	
+	initSection("-Decreased FSpecial knockback scaling (0.9 -> 0.8)");	
+
 	initPatch("2.18", "September 19th, 2021");
 	initWords("-Upgraded MunoPhone to MunoPhone Touch");	 	 
 
