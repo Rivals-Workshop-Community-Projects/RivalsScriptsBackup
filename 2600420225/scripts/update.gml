@@ -1,7 +1,7 @@
 muno_event_type = 1;
 user_event(14);
 
-//timers
+//timers and cooldowns
 animation_counter++;
 special_state_timer++;
 i_frames++;
@@ -16,15 +16,16 @@ power_bomb_cooldown++;
 shinespark_trigger++;
 reserve_trigger++;
 hyper_beam_magic_timer++;
-special_bomb_creation++;
+end_screen_timer++;
 
 //things to always keep
+has_airdodge = false;
 force_depth = 2;
 visible = true;
 if(state == PS_SPAWN){
     beam_cooldown = 0;
 }
-
+//hyper beam text goes rainbow
 if(hyper_beam_magic == c_red && hyper_beam_magic_timer >= 4){
     hyper_beam_magic = c_orange
     hyper_beam_magic_timer = 0;
@@ -105,18 +106,21 @@ if(somer_sfx == 15 && is_charged == false){
 }
 
 //death animation
-
-if(is_dead == true){
-    death_timer++
-}
-if(death_timer == 2){
-    sound_play(sound_get("defeat"));
-}
-if(is_dead == true){
+if(is_dead == false){
+    set_player_stocks((player), 2);
+}else if(is_dead == true){
+    set_player_stocks((player), 1);
+    death_timer++;
     hsp = 0;
     vsp = 0;
     gravity_speed = 0
     invincible = true;
+    is_shinesparking = false;
+    is_crouch = false;
+    is_morph = false;
+}
+if(death_timer == 2){
+    sound_play(sound_get("defeat"));
 }
 if(death_timer >= 180){
     x = 9000
@@ -218,7 +222,7 @@ if(popup_timer > 240){
 }
 
 //coding attacks from scratch because I can
-if((select_ammo == 0 || select_ammo == 3) && attack_pressed && is_charged == false && beam_cooldown >= 20 && is_morph == false){
+if((select_ammo == 0 || select_ammo == 3) && attack_pressed && is_charged == false && beam_cooldown >= 20 && is_morph == false && is_dead == false){
     user_event(0)
     if(free){
         state = PS_IDLE_AIR
@@ -232,7 +236,7 @@ if((select_ammo == 0 || select_ammo == 3) && attack_pressed && is_charged == fal
     if(beam_cooldown >= 20){
         beam_cooldown = 0;
     }
-}else if((select_ammo == 0 || select_ammo == 3) && is_charged == true && !attack_down && is_morph == false && charge == true){
+}else if((select_ammo == 0 || select_ammo == 3) && is_charged == true && !attack_down && is_morph == false && charge == true && is_dead == false){
     user_event(1)
     if(free){
         state = PS_IDLE_AIR
@@ -252,7 +256,7 @@ if((select_ammo == 0 || select_ammo == 3) && attack_pressed && is_charged == fal
     }
 }
 
-if(select_ammo == 1 && attack_pressed && is_morph == false && missile_cooldown >= 15 && missile_amount >= 1){
+if(select_ammo == 1 && attack_pressed && is_morph == false && missile_cooldown >= 15 && missile_amount >= 1 && is_dead == false){
    if(free){
         state = PS_IDLE_AIR
     }
@@ -264,7 +268,7 @@ if(select_ammo == 1 && attack_pressed && is_morph == false && missile_cooldown >
         missile_cooldown = 0;
     }
 }
-if(select_ammo == 2 && attack_pressed && is_morph == false && missile_cooldown >= 100 && super_missile_amount >= 1){
+if(select_ammo == 2 && attack_pressed && is_morph == false && missile_cooldown >= 100 && super_missile_amount >= 1 && is_dead == false){
     if(free){
         state = PS_IDLE_AIR
     }
@@ -276,7 +280,7 @@ if(select_ammo == 2 && attack_pressed && is_morph == false && missile_cooldown >
         missile_cooldown = 0;
     }
 }
-if(is_morph == true && select_ammo != 3 && bomb_cooldown > 10 && attack_pressed && bombs_power_up == true && bomb_amount <= 3){
+if(is_morph == true && select_ammo != 3 && bomb_cooldown > 10 && attack_pressed && bombs_power_up == true && bomb_amount <= 3 && is_dead == false){
     bomb_amount++;
     bomb_cooldown = 0;
     if(is_facing == "right"){
@@ -285,7 +289,7 @@ if(is_morph == true && select_ammo != 3 && bomb_cooldown > 10 && attack_pressed 
             instance_create( x - 30, y - 38, "obj_article1");
     }
 }
-if(is_morph == true && select_ammo == 3 && power_bomb_cooldown >= 80 && attack_pressed && power_bomb_amount >= 1){
+if(is_morph == true && select_ammo == 3 && power_bomb_cooldown >= 80 && attack_pressed && power_bomb_amount >= 1 && is_dead == false){
     power_bomb_cooldown = 0;
     power_bomb_amount -= 1;
     if(is_facing == "right"){
@@ -296,7 +300,7 @@ if(is_morph == true && select_ammo == 3 && power_bomb_cooldown >= 80 && attack_p
 }
 
 //screw attack
-if(is_somersaulting == true && is_charged == true && jump_power_up != "screw_attack_"){
+if(is_somersaulting == true && is_charged == true && jump_power_up != "screw_attack_" && is_dead == false){
     create_hitbox(AT_DSPECIAL_AIR, 1, x, y);
 }else if(is_somersaulting == true && jump_power_up == "screw_attack_" && screw_cooldown >= 15){
     create_hitbox(AT_DSPECIAL_AIR, 1, x, y);
@@ -305,6 +309,7 @@ if(screw_cooldown < 15){
     screw_cooldown++
 }
 
+//shinespark and speed booster
 if(shinespark_charged == true){
     shinespark_timer++
     if(shinespark_timer >= 360){
@@ -344,8 +349,6 @@ if(speeding == true){
         hsp--
     }
 }
-
-//shinespark
 
 if(y <= -300){
     y = -300
@@ -486,7 +489,7 @@ if(shinespark_end >= 40){
 
 ///advanced techniques and synergyes
 
-//bomb spread
+//bomb spread charge beam ready when morphing
 
 if(is_charged == true && is_morph == true){
     set_hitbox_value( AT_FSTRONG_2, 1, HG_BASE_KNOCKBACK, 4)
@@ -498,6 +501,7 @@ if(is_charged == true && is_morph == true){
 }
 
 if(special_bomb_creation <= 4){
+    special_bomb_creation++;
     instance_create( x - 34, y - 38, "obj_article1");
     special_bomb = true;
 }else{
@@ -519,14 +523,14 @@ if(is_crystal_flashing == true){
     beam_cooldown = 0;
     missile_cooldown = 0;
     power_bomb_cooldown = 0;
+    if(crystal_flash_timer >= 347){
+        is_crystal_flashing = false;
+        crystal_flash_timer = 0;
+        super_armor = false;
+    }
 }
 
-if(crystal_flash_timer >= 347){
-    is_crystal_flashing = false;
-    crystal_flash_timer = 0;
-    super_armor = false;
-}
-
+if(crystal_flash_timer >= 1){
 if(crystal_flash_timer == 9){
     if(energy_tank_empty_amount > 0){
         energy_tank_empty_amount--;
@@ -630,38 +634,38 @@ if(crystal_flash_timer == 9){
     }
     power_bomb_amount--;
 }
+}
 
 //removing attacks entirely because I can
-move_cooldown[AT_JAB] = 10
-move_cooldown[AT_DATTACK] = 10
-move_cooldown[AT_NSPECIAL] = 10
-move_cooldown[AT_FSPECIAL] = 10
-move_cooldown[AT_USPECIAL] = 10
-move_cooldown[AT_DSPECIAL] = 10
-move_cooldown[AT_FSTRONG] = 10
-move_cooldown[AT_USTRONG] = 10
-move_cooldown[AT_DSTRONG] = 10
-move_cooldown[AT_FTILT] = 10
-move_cooldown[AT_UTILT] = 10
-move_cooldown[AT_DTILT] = 10
-move_cooldown[AT_NAIR] = 10
-move_cooldown[AT_FAIR] = 10
-move_cooldown[AT_BAIR] = 10
-move_cooldown[AT_DAIR] = 10
-move_cooldown[AT_UAIR] = 10
-move_cooldown[AT_TAUNT] = 10
+move_cooldown[AT_JAB] = 2
+move_cooldown[AT_DATTACK] = 2
+move_cooldown[AT_NSPECIAL] = 2
+move_cooldown[AT_FSPECIAL] = 2
+move_cooldown[AT_USPECIAL] = 2
+move_cooldown[AT_DSPECIAL] = 2
+move_cooldown[AT_FSTRONG] = 2
+move_cooldown[AT_USTRONG] = 2
+move_cooldown[AT_DSTRONG] = 2
+move_cooldown[AT_FTILT] = 2
+move_cooldown[AT_UTILT] = 2
+move_cooldown[AT_DTILT] = 2
+move_cooldown[AT_NAIR] = 2
+move_cooldown[AT_FAIR] = 2
+move_cooldown[AT_BAIR] = 2
+move_cooldown[AT_DAIR] = 2
+move_cooldown[AT_UAIR] = 2
+move_cooldown[AT_TAUNT] = 2
 
 
 //cheats
+if(phone.state){
 if(phone_cheats_updated[CHEAT_LEVEL] == 1){
     level++
     phone_cheats_updated[CHEAT_LEVEL] = 0;
 }
-
 if(phone_cheats[CHEAT_INVIN] == 1){
     energy = 99;
 }
-
 if(phone_cheats_updated[CHEAT_UNLEVEL] == 1){
     phone_cheats_updated[CHEAT_UNLEVEL] = 0
     jump_power_up = "normal_" 
@@ -697,7 +701,6 @@ tank_11 = "full"
 tank_12 = "full"
 tank_13 = "full"
 tank_14 = "full"
-
 reserve_1 = "full"
 reserve_2 = "full"
 reserve_3 = "full"
@@ -715,13 +718,9 @@ missiles = false;
 super_missiles = false;
 power_bombs = false;
 }
+}
 
 //power ups
-
-if(high_jump == true){
-    jump_speed = 10;
-    djump_speed = 9;
-}
 if(jump_power_up == "space_jump_" || jump_power_up == "screw_attack_"){
     if(is_somersaulting){
         space_timer++;
@@ -738,8 +737,7 @@ if(jump_power_up == "space_jump_" || jump_power_up == "screw_attack_"){
     }
 }
 
-
-//stuff
+//this resets every time you level up
 if(prev_level != level){
     power_up_timer = 0;
 }
@@ -761,7 +759,6 @@ if(damage != prev_damage){
     set_player_damage( player, 0 );
     }
 }
-
 if(energy <= 0){
     reserve_trigger = 0;
     if(energy_tank_amount > energy_tank_empty_amount){
@@ -773,8 +770,7 @@ if(energy <= 0){
     }
 }
 
-//energy tank drawing scheme
-
+//energy and reserve drawing
 if(energy_tank_empty_amount >= 1){
     tank_1 = "empty"
 }else{
@@ -860,27 +856,9 @@ if(energy_tank_empty_amount == energy_tank_amount && reserve_tank_amount >= 1 &&
     reserve_tank_empty_amount = reserve_tank_amount;
 }
 
-//power ups triggers
+//power ups triggers mostly for randomizer
 
-if(space_jump == true && screw_attack == false){
-    jump_power_up = "space_jump_";
-}else if(screw_attack == true){
-    jump_power_up = "screw_attack_";
-}
-
-if(is_randomizer == true && power_up_timer == 0){
-    power_ind += x;
-    power_ind %= 199;
-    var index = (random_func_2(power_ind, power_num, true))
-    choice = ds_list_find_value(power_up_list, index)
-}
-
-if(is_randomizer == true && power_up_timer == 3){
-    ds_list_delete(power_up_list, ds_list_find_index(power_up_list, choice));
-    power_num = ds_list_size(power_up_list);
-}
-
-if(beam_2 == true && beam_3 == false && beam_4 == false && beam_5 == false && beam_6 == false){
+if(beam_2 == true && beam_3 == false && beam_4 == false && beam_5 == false && beam_6 == false){ //this piece has to trigger to apply beam upgrades
     beam_level = "2";
 }else if(beam_3 == true && beam_4 == false && beam_5 == false && beam_6 == false){
     beam_level = "3";
@@ -891,9 +869,10 @@ if(beam_2 == true && beam_3 == false && beam_4 == false && beam_5 == false && be
 }else if(beam_6 == true){
     beam_level = "6";
 }
-
-if(gravity_suit == true && varia_suit == false){
-    varia_suit = true;
+if(space_jump == true && screw_attack == false){//this one too
+    jump_power_up = "space_jump_";
+}else if(screw_attack == true){
+    jump_power_up = "screw_attack_";
 }
 
 if(is_randomizer == false){
@@ -1014,7 +993,22 @@ if(level >= 17){
     item_collect = "100%"
     beam_6 = true;
 }
-}else if(is_randomizer == true){
+}else if(is_randomizer == true){ //this stuff is specifically for randomizer, it is advised to not touch it
+    //all the non level up stuff
+    if(power_up_timer == 0){
+    power_ind += x;
+    power_ind %= 199;
+    var index = (random_func_2(power_ind, power_num, true))
+    choice = ds_list_find_value(power_up_list, index)
+    }
+    if(power_up_timer == 3){
+    ds_list_delete(power_up_list, ds_list_find_index(power_up_list, choice));
+    power_num = ds_list_size(power_up_list);
+    }
+    if(gravity_suit == true && varia_suit == false){
+    varia_suit = true;
+    }
+    //level up stuff
 if(level == 1 && power_up_timer == 1){
     missiles = true;
     variable_instance_set(id, choice, true)
@@ -1134,9 +1128,6 @@ if(level == 17 && power_up_timer == 1){
 }
 }
 
-
-//power ups gained via leveling up ^^^
-
 //adam lines
 if(hud_text_timer == -50){
     line_ind += x;
@@ -1149,10 +1140,7 @@ if(hud_text_timer >= 300){
     hud_text_timer = -100;
 }
 
-if(samus_check >= 1 && samus_check <= 20){
-    samus_check++
-}
-
+//walljump cooldown
 if(state == PS_WALL_JUMP){
     has_walljump = false;
     walljump_cooldown = 40;
@@ -1161,16 +1149,6 @@ if (walljump_cooldown > 0) {
     walljump_cooldown -= 1;
 }else if(walljump_cooldown <= 0){
     has_walljump = true;
-}
-
-if(is_dead == false){
-    set_player_stocks((player), 2);
-}else if(is_dead == true){
-    set_player_stocks((player), 1);
-}
-
-if(state == PS_FIRST_JUMP && (shield_pressed || shield_down)){
-    state = PS_IDLE_AIR;
 }
 
 //ammo stuff
@@ -1194,37 +1172,27 @@ if(special_pressed && special_cooldown >= 20 && missiles == true){
 
 switch(select_ammo){
     case 1:
-    if(missiles == true){
-        
-    }else{
+    if(missiles == false){
         select_ammo = 0;
     }
     break;
     case 2:
-    if(super_missiles == true){
-        
-    }else{
+    if(super_missiles == false){
         select_ammo = 0;
     }
     break;
     case 3:
-    if(power_bombs == true){
-        
-    }else{
+    if(power_bombs == false){
         select_ammo = 0;
     }
     break;
     case 4:
-    if(grapple == true){
-        
-    }else{
+    if(grapple == false){
         select_ammo = 0;
     }
     break;
     case 5:
-    if(X_ray == true){
-        
-    }else{
+    if(X_ray == false){
         select_ammo = 0;
     }
     break;
@@ -1236,6 +1204,7 @@ if(left_strong_pressed || up_strong_pressed || down_strong_pressed || right_stro
     special_cooldown = 0;
 }
 
+//aim change
 if(!phone.state){
 if(up_down){
     is_aiming = "up_";
@@ -1252,9 +1221,7 @@ if(up_down){
 }
 }
 
-
-has_airdodge = false;
-
+//i frames stuff
 if(i_frames >= 20 && i_frames <= 60){
     invincible = true;
 }
@@ -1267,6 +1234,9 @@ if(state == PS_HITSTUN){
 }
 
 //samus number check
+if(samus_check >= 1 && samus_check <= 20){
+    samus_check++
+}
 if(num_samuses == 0){
     with(oPlayer) if("url" in self) && (url == other.url){
         other.num_samuses++
@@ -1280,6 +1250,10 @@ if(num_samuses == 1 && samus_check == 4){
 }
 
 //state switches
+if(state == PS_FIRST_JUMP && (shield_pressed || shield_down)){
+    state = PS_IDLE_AIR;
+}
+
 if(state == PS_WALL_JUMP){
     is_morph = false;
     is_crouch = false;
@@ -1289,20 +1263,15 @@ if(state == PS_RESPAWN){
     state = PS_IDLE_AIR
 }
 
-//prev variables
-prev_x = x;
-prev_y = y;
-prev_level = level;
-prev_damage = damage;
-
 //phone stuff
-
-set_attack_value(AT_PHONE, AG_SPRITE, sprite_get("phone_open_" + is_facing));
+set_attack_value(AT_PHONE, AG_SPRITE, sprite_get("phone_open_" + is_facing));//this changes the facing sprite for the phone
 if(phone.state){
     is_morph = false;
     is_crouch = false;
 }
 
+//this is the adam lines array, it gets reset every level up to let him say the actual rate for collecting items
+if(power_up_timer == 1){
 line_array = [
 "Any objections, Lady?",
 "y can't metroid crawl?",
@@ -1368,3 +1337,13 @@ flavor text right?",
 Super Metroid?",
 "Go play Super Metroid",
 ]
+}
+
+//this changes the portrait
+if(end_screen_timer <= 10800){
+    set_victory_portrait(sprite_get("portrait_3"));
+}else if(end_screen_timer > 10800 && end_screen_timer <= 25200){
+    set_victory_portrait(sprite_get("portrait_2"));
+}else if(end_screen_timer > 25200){
+    set_victory_portrait(sprite_get("portrait_1"));
+}

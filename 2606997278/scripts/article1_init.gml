@@ -81,7 +81,9 @@ cd_saved_spin_meter = cd_spin_meter; //charge of blade at the beginning of curre
 
 has_hit = false; //if a cd-hitbox connected on this move
 pickup_priority = 0; //time where only current_owner_id can grab this CD
-has_dstrong_hitbox = false; //checks if air DSTRONG spawned already
+
+cd_has_hitbox = false; //checks if CD has a hitbox right now
+cd_hitbox = noone; //the current CD hitbox
 
 cd_stunned_timer = 0; //time during which CD cannot be recalled or picked up
 
@@ -96,13 +98,14 @@ pre_dspecial_immunity = 0; //prevents CD from dying while AT_DSPECIAL_2 is in pr
 can_recall = false; //if true, CD is available to be recalled
 can_priority_recall = false; //if true, can be recalled (but only by current_owner_id)
 
+fstrong_starting_speed = 0; //speed at which fstrong was launched
+
 dstrong_charge_percent = 0; // matched (strong_charge / 60), % of charge when thrown by AT_DSTRONG
 dstrong_current_speed = cd_dstrong_ground_min_speed;
 dstrong_remaining_laps = 0;
 dstrong_need_gravity = false;
 dstrong_angular_timer = 0;
 dstrong_angular_timer_prev = 0;
-dstrong_hitbox = noone;
 
 //=====================================================
 // animation variables

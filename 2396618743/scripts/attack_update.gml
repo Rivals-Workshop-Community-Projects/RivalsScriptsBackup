@@ -88,7 +88,7 @@ if (attack == AT_DAIR){
         move_cooldown[AT_DAIR] = 90;
     }
     
-    if (window == 3 && window_timer == 16){
+    if (window == 3 && window_timer == 12){
         chargeSpent = 0;
     }
 }

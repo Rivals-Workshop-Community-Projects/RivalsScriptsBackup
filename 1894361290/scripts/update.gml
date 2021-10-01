@@ -5,6 +5,26 @@ timer++;
 //munophone
 user_event(14);
 
+//char height
+var start_char_height = 48;
+if state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND {
+    char_height = start_char_height;
+    height_timer = 0;
+} else if state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND {
+    switch attack {
+        case AT_USPECIAL:
+        var end_char_height = 80;
+        if window > 1 && window != 4 {
+        	height_timer++;
+            char_height = clamp(ease_quadOut(start_char_height, end_char_height, clamp(height_timer, 0, 4), 4), start_char_height, end_char_height);
+        } else if window > 1 {
+        	height_timer = 0;
+            char_height = clamp(ease_quadIn(end_char_height, start_char_height, clamp(window_timer, 0, 10), 10), start_char_height, end_char_height);
+        }
+        break;
+    }
+}
+
 if wt_destroyed_timer > 0 {
 	wt_destroyed_timer--;
 	if move_cooldown[AT_DSPECIAL] < 2 move_cooldown[AT_DSPECIAL] = 2;
@@ -267,165 +287,6 @@ if has_rune("O") {
 	set_hitbox_value(AT_NSPECIAL_2, 2, HG_BASE_HITPAUSE, 70);
 }
 
-//t&a codec old
-if trummelcodecneeded{
-	if trummelcodec_id.codecindex == 6 {
-		if trummelcodec_id.codectimer mod 8 == 1 {
-			sound_play(honk_sfx, false, 0, 0.5);
-		}
-	} else if trummelcodec_id.codecindex == 9 || trummelcodec_id.codecindex == 13 {
-		if trummelcodec_id.codectimer2 == 1 && trummelcodec_id.currentcodecline == 1 {
-			sound_play(honk_sfx, false, 0, 0.5);
-		}
-	}
-    trummelcodec = 17;
-    trummelcodecmax = 13;
-    trummelcodecsprite1 = sprite_get("codec");
-    trummelcodecsprite2 = sprite_get("codectrummel");
-    
-    var page = 0;
-    
-    //Page 0
-    trummelcodecspeaker[page] = 2;
-    trummelcodecexpression[page] = 0;
-
-    trummelcodecline[page,1] = "the goose has no name";
-    trummelcodecline[page,2] = "";
-    trummelcodecline[page,3] = "";
-    trummelcodecline[page,4] = "";
-    page++; 
-
-    //Page 1
-    trummelcodecspeaker[page] = 1;
-    trummelcodecexpression[page] = 2;
-
-    trummelcodecline[page,1] = "Untitled Goose?";
-    trummelcodecline[page,2] = "Pretty lazy for a";
-    trummelcodecline[page,3] = "name if you ask me.";
-    trummelcodecline[page,4] = "";
-    page++; 
-
-    //Page 2
-    trummelcodecspeaker[page] = 1;
-    trummelcodecexpression[page] = 0;
-
-    trummelcodecline[page,1] = "It might just be";
-    trummelcodecline[page,2] = "a goose, but don't";
-    trummelcodecline[page,3] = "underestimate this";
-    trummelcodecline[page,4] = "waterfowl.";
-    page++; 
-    
-    //Page 3
-    trummelcodecspeaker[page] = 2;
-    trummelcodecexpression[page] = 0;
-
-    trummelcodecline[page,1] = "rake in the lake";
-    trummelcodecline[page,2] = "";
-    trummelcodecline[page,3] = "";
-    trummelcodecline[page,4] = "";
-    page++; 
-    
-    //Page 4
-    trummelcodecspeaker[page] = 1;
-    trummelcodecexpression[page] = 1;
-
-    trummelcodecline[page,1] = "Dumping gardening tools";
-    trummelcodecline[page,2] = "inside bodies of water";
-    trummelcodecline[page,3] = "isn't the only mischief";
-    trummelcodecline[page,4] = "this goose has done.";
-    page++; 
-    
-    //Page 5
-    trummelcodecspeaker[page] = 1;
-    trummelcodecexpression[page] = 2;
-
-    trummelcodecline[page,1] = "Watch out for its";
-    trummelcodecline[page,2] = "walkie talkies. They";
-    trummelcodecline[page,3] = "can be quite annoying";
-    trummelcodecline[page,4] = "whe-";
-    page++; 
-    
-    //Page 6
-    trummelcodecspeaker[page] = 3;
-    trummelcodecexpression[page] = 0;
-
-    trummelcodecline[page,1] = "Honk Honk Honk Honk";
-    trummelcodecline[page,2] = "Honk Honk Honk Honk";
-    trummelcodecline[page,3] = "Honk Honk Honk Honk";
-    trummelcodecline[page,4] = "Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk Honk";
-    page++; 
-    
-    //Page 7
-    trummelcodecspeaker[page] = 2;
-    trummelcodecexpression[page] = 0;
-
-    trummelcodecline[page,1] = "shut up you goose";
-    trummelcodecline[page,2] = "";
-    trummelcodecline[page,3] = "";
-    trummelcodecline[page,4] = "";
-    page++; 
-    
-    //Page 8
-    trummelcodecspeaker[page] = 1;
-    trummelcodecexpression[page] = 4;
-    
-    trummelcodecline[page,1] = "...Anyway as I was";
-    trummelcodecline[page,2] = "saying, watch out";
-    trummelcodecline[page,3] = "for its w-";
-    trummelcodecline[page,4] = "";
-    page++; 
-    
-    //Page 9
-    trummelcodecspeaker[page] = 3;
-    trummelcodecexpression[page] = 0;
-
-    trummelcodecline[page,1] = "Honk";
-    trummelcodecline[page,2] = "";
-    trummelcodecline[page,3] = "";
-    trummelcodecline[page,4] = "";
-    page++; 
-    
-    //Page 10
-    trummelcodecspeaker[page] = 2;
-    trummelcodecexpression[page] = 0;
-
-    trummelcodecline[page,1] = "annoying";
-    trummelcodecline[page,2] = "";
-    trummelcodecline[page,3] = "";
-    trummelcodecline[page,4] = "";
-    page++; 
-    
-    //Page 11
-    trummelcodecspeaker[page] = 1;
-    trummelcodecexpression[page] = 4;
-
-    trummelcodecline[page,1] = "Ugh, lets just fight";
-    trummelcodecline[page,2] = "this damn bird, it's";
-    trummelcodecline[page,3] = "getting on my nerves.";
-    trummelcodecline[page,4] = "";
-    page++; 
-    
-    //Page 12
-    trummelcodecspeaker[page] = 4;
-    trummelcodecexpression[page] = 0;
-
-    trummelcodecline[page,1] = "agreed";
-    trummelcodecline[page,2] = "";
-    trummelcodecline[page,3] = "";
-    trummelcodecline[page,4] = "wait who took my hat";
-    page++; 
-    
-    //Page 13
-    trummelcodecspeaker[page] = 3;
-    trummelcodecexpression[page] = 1;
-
-    trummelcodecline[page,1] = "honk";
-    trummelcodecline[page,2] = "";
-    trummelcodecline[page,3] = "";
-    trummelcodecline[page,4] = "";
-    page++; 
-}
-
 //nair boost only once per airtime
 if !nair_boost && !free {
 	nair_boost = true;
@@ -438,6 +299,12 @@ if fspec_grapple_id != undefined {
 	if !free || (fspec_grapple_id.state != PS_HITSTUN && fspec_grapple_id.state != PS_HITSTUN_LAND) || !(attack == AT_FSPECIAL && window == 2 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)) {
 		fspec_grapple_id = undefined;
 	}
+}
+
+//uair bonk
+with oPlayer if id != other.id && activated_kill_effect && triggers_kill_effect {
+    with other sound_play(sound_get("bonk"))
+    triggers_kill_effect = false;
 }
 
 //final smash

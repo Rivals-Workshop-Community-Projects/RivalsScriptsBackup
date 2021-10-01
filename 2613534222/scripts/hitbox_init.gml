@@ -1,0 +1,1 @@
+if player_id.u_cooldown != 0 instance_destroy();

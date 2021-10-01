@@ -74,6 +74,10 @@ If you're new to making characters, check out these handy guides!
 - https://ko-fi.com/Blog/Post/Rivals-of-Aether-Workshop-A-Complete-Starter-Guid-I2I42WI2N
 - https://pastebin.com/HdBYheUr
 
+One final note: the commented numbers in files like jab.gml are just the
+pre-patch values for Sandbert with a Phone's moves, e.g. documenting what a
+value used to be before it got nerfed.
+
 */
 
 

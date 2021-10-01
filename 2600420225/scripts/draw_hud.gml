@@ -32,36 +32,28 @@ if(num_samuses == 1){
         draw_sprite(sprite_get("hud_numbers"), missile_hundreds,  588,  36);
         draw_sprite(sprite_get("hud_numbers"), missile_tens,  604,  36);
         draw_sprite(sprite_get("hud_numbers"), missile_units,  620,  36);
-    }
-    if(super_missiles == true){
+    }if(super_missiles == true){
         draw_sprite(sprite_get("hud_selectables_super_missiles"), 0,  652,  4);
         draw_sprite(sprite_get("hud_numbers"), super_missile_tens,  652,  36);
         draw_sprite(sprite_get("hud_numbers"), super_missile_units,  668,  36);
-    }
-    if(power_bombs == true){
+    }if(power_bombs == true){
         draw_sprite(sprite_get("hud_selectables_power_bombs"), 0,  700,  4);
         draw_sprite(sprite_get("hud_numbers"), power_bombs_tens,  700,  36);
         draw_sprite(sprite_get("hud_numbers"), power_bombs_units,  716,  36);
-    }
-    if(grapple == true){
+    }if(grapple == true){
         draw_sprite(sprite_get("hud_selectables_grapple_beam"), 0,  748, 4);
-    }
-    if(X_ray == true){
+    }if(X_ray == true){
         draw_sprite(sprite_get("hud_selectables_Xray_scope"), 0,  796, 4);
     }
     if(select_ammo == 1){
         draw_sprite(sprite_get("hud_selectables_missiles_active"), 0,  588, 4);
-    }
-    if(select_ammo == 2){
+    }else if(select_ammo == 2){
         draw_sprite(sprite_get("hud_selectables_super_missiles_active"), 0,  652, 4);
-    }
-    if(select_ammo == 3){
+    }else if(select_ammo == 3){
         draw_sprite(sprite_get("hud_selectables_power_bombs_active"), 0,  700,  4);
-    }
-    if(select_ammo == 4){
+    }else if(select_ammo == 4){
         draw_sprite(sprite_get("hud_selectables_grapple_beam_active"), 0,  748,  4);
-    }
-    if(select_ammo == 5){
+    }else if(select_ammo == 5){
         draw_sprite(sprite_get("hud_selectables_Xray_scope_active"), 0,  796,  4);
     }
     if(energy_tank_amount >= 1){
@@ -174,36 +166,28 @@ if(num_samuses == 1){
         draw_sprite(sprite_get("hud_numbers"), missile_hundreds, temp_x - 4, temp_y - 18);
         draw_sprite(sprite_get("hud_numbers"), missile_tens, temp_x + 12, temp_y - 18);
         draw_sprite(sprite_get("hud_numbers"), missile_units, temp_x + 28, temp_y - 18);
-    }
-    if(super_missiles == true){
+    }if(super_missiles == true){
         draw_sprite(sprite_get("hud_selectables_super_missiles"), 0, temp_x + 52, temp_y - 50);
         draw_sprite(sprite_get("hud_numbers"), super_missile_tens, temp_x + 52, temp_y - 18);
         draw_sprite(sprite_get("hud_numbers"), super_missile_units, temp_x + 68, temp_y - 18);
-    }
-    if(power_bombs == true){
+    }if(power_bombs == true){
         draw_sprite(sprite_get("hud_selectables_power_bombs"), 0, temp_x + 92, temp_y - 50);
         draw_sprite(sprite_get("hud_numbers"), power_bombs_tens, temp_x + 92, temp_y - 18);
         draw_sprite(sprite_get("hud_numbers"), power_bombs_units, temp_x + 108, temp_y - 18);
-    }
-    if(grapple == true){
+    }if(grapple == true){
         draw_sprite(sprite_get("hud_selectables_grapple_beam"), 0, temp_x + 132, temp_y - 50);
-    }
-    if(X_ray == true){
+    }if(X_ray == true){
         draw_sprite(sprite_get("hud_selectables_Xray_scope"), 0, temp_x + 172, temp_y - 50);
     }
     if(select_ammo == 1){
         draw_sprite(sprite_get("hud_selectables_missiles_active"), 0, temp_x - 4, temp_y - 50);
-    }
-    if(select_ammo == 2){
+    }else if(select_ammo == 2){
         draw_sprite(sprite_get("hud_selectables_super_missiles_active"), 0, temp_x + 52, temp_y - 50);
-    }
-    if(select_ammo == 3){
+    }else if(select_ammo == 3){
         draw_sprite(sprite_get("hud_selectables_power_bombs_active"), 0, temp_x + 92, temp_y - 50);
-    }
-    if(select_ammo == 4){
+    }else if(select_ammo == 4){
         draw_sprite(sprite_get("hud_selectables_grapple_beam_active"), 0, temp_x + 132, temp_y - 50);
-    }
-    if(select_ammo == 5){
+    }else if(select_ammo == 5){
         draw_sprite(sprite_get("hud_selectables_Xray_scope_active"), 0, temp_x + 172, temp_y - 50);
     }
     if(energy_tank_amount >= 1){
@@ -421,59 +405,6 @@ if(draw_info == true && num_samuses == 1 && is_randomizer == false){
         }
         if(level == 17){
             draw_text_transformed_color(420, 104, "HYPER BEAM", 1.5, 1.5, 0, hyper_beam_magic, hyper_beam_magic,  hyper_beam_magic,  hyper_beam_magic, 1);
-        }
-}else if(draw_info == true && num_samuses >= 2 && is_randomizer == false){
-    draw_sprite_stretched(sprite_get("hud_power_up_popup"), 0, temp_x + 26, temp_y - 74, 157, 20);
-    if(level == 1){
-            draw_text_transformed_color(temp_x + 106, temp_y - 74, "MORPH BALL", 1, 1, 0, c_orange, c_orange, c_orange, c_orange, 1);
-        }
-        if(level == 2){
-            draw_text_transformed_color(temp_x + 106, temp_y - 74, "BOMBS", 1, 1, 0, c_gray, c_gray, c_gray, c_gray, 1);
-        }
-        if(level == 3){
-            draw_text_transformed_color(temp_x + 106, temp_y - 74, "CHARGE BEAM", 1, 1, 0, c_orange, c_orange, c_orange, c_orange, 1);
-        }
-        if(level == 4){
-            draw_text_transformed_color(temp_x + 106, temp_y - 74, "SPAZER", 1, 1, 0, c_yellow, c_yellow, c_yellow, c_yellow, 1);
-        }
-        if(level == 5){
-            draw_text_transformed_color(temp_x + 106, temp_y - 74, "HI-JUMP BOOTS", 1, 1, 0, c_orange, c_orange, c_orange, c_orange, 1);
-        }
-        if(level == 6){
-            draw_text_transformed_color(temp_x + 106, temp_y - 74, "VARIA SUIT", 1, 1, 0, c_orange, c_orange, c_orange, c_orange, 1);
-        }
-        if(level == 7){
-            draw_text_transformed_color(temp_x + 106, temp_y - 74, "SPEED BOOSTER", 1, 1, 0, c_lime, c_lime, c_lime, c_lime, 1);
-        }
-        if(level == 8){
-            draw_text_transformed_color(temp_x + 106, temp_y - 74, "ICE BEAM", 1, 1, 0, c_aqua, c_aqua, c_aqua, c_aqua, 1);
-        }
-        if(level == 9){
-            draw_text_transformed_color(temp_x + 106, temp_y - 74, "GRAPPLE BEAM", 1, 1, 0, c_blue, c_blue, c_blue, c_blue, 1);
-        }
-        if(level == 10){
-            draw_text_transformed_color(temp_x + 106, temp_y - 74, "WAVE BEAM", 1, 1, 0, c_purple, c_purple, c_purple, c_purple, 1);
-        }
-        if(level == 11){
-            draw_text_transformed_color(temp_x + 106, temp_y - 74, "XRAY SCOPE", 1, 1, 0, c_white, c_white, c_white, c_white, 1);
-        }
-        if(level == 12){
-            draw_text_transformed_color(temp_x + 106, temp_y - 74, "GRAVITY SUIT", 1, 1, 0, c_purple, c_purple, c_purple, c_purple, 1);
-        }
-        if(level == 13){
-            draw_text_transformed_color(temp_x + 106, temp_y - 74, "SPACE JUMP", 1, 1, 0, c_orange, c_orange, c_orange, c_orange, 1);
-        }
-        if(level == 14){
-            draw_text_transformed_color(temp_x + 106, temp_y - 74, "PLASMA BEAM", 1, 1, 0, c_lime, c_lime, c_lime, c_lime, 1);
-        }
-        if(level == 15){
-            draw_text_transformed_color(temp_x + 106, temp_y - 74, "SPRING BALL", 1, 1, 0, c_orange, c_orange, c_orange, c_orange, 1);
-        }
-        if(level == 16){
-            draw_text_transformed_color(temp_x + 106, temp_y - 74, "SCREW ATTACK", 1, 1, 0, c_lime, c_lime, c_lime, c_lime, 1);
-        }
-        if(level == 17){
-            draw_text_transformed_color(temp_x + 106, temp_y - 74, "HYPER BEAM", 1, 1, 0, hyper_beam_magic, hyper_beam_magic,  hyper_beam_magic,  hyper_beam_magic, 1);
         }
 }else if(draw_info == true && is_randomizer == true){
     if(num_samuses == 1){

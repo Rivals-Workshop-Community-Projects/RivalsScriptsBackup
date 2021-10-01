@@ -152,6 +152,7 @@ switch (attack)
         break;
 
     case AT_USPECIAL:
+        if (window > 3) can_wall_jump = true;
         if (window == 3)
         {
             hsp = lengthdir_x(8, 80+window_timer*28)*spr_dir;
@@ -305,6 +306,7 @@ switch (attack)
 				window_timer = 0;
 			}
                         else{
+                        if ((left_down && spr_dir = 1 || right_down && spr_dir = -1) && (!left_down || !right_down)) spr_dir = -spr_dir;
                         window_timer = 5;
                         soft_armor = 8;
                         }

@@ -1,0 +1,1 @@
+ai_attack_cool = 0;

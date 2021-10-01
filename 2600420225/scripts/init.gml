@@ -9,7 +9,7 @@ walk_speed          = 6;		// 3    -  4.5
 walk_accel          = 0.1;		// 0.2  -  0.5
 walk_turn_time      = 0;	    // 6
 initial_dash_time   = 0;		// 8    -  16
-initial_dash_speed  = 6;		// 4    -  9
+initial_dash_speed  = 7;		// 4    -  9
 dash_speed          = 8;		// 5    -  9
 dash_turn_time      = 0;		// 8    -  20
 dash_turn_accel     = 0;		// 0.1  -  2
@@ -232,6 +232,7 @@ reserve_trigger = 0;
 crystal_flash_timer = 0;
 is_crystal_flashing = false;
 screw_cooldown = 0;
+end_screen_timer = 0;
 
 space_jump = false;
 screw_attack = false;
@@ -334,6 +335,17 @@ not in Super Metroid",
 "Go Samus Go",
 "The latex samus skin was
 born because of an error",
+"Go open the muno phone
+in training, otherwise
+you won't be able to play",
+"Go open the muno phone
+in training, otherwise
+you won't be able to play",
+"You know this is just
+flavor text right?",
+"Have you ever played
+Super Metroid?",
+"Go play Super Metroid",
 ]
 
 

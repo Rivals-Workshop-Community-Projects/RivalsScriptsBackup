@@ -5,6 +5,11 @@ if attack == AT_NSPECIAL {
 }
 */
 
+throwing_wt = false;
+picking_wt = false;
+
+height_timer = 0;
+
 if attack == AT_DSPECIAL {
     //wt pickup
     if !holding_wt {
@@ -22,6 +27,10 @@ if attack == AT_DSPECIAL {
                                 spr_dir *= -1;
                             }
                         } else {
+                            move_cooldown[AT_DSPECIAL] = 0;
+                            attack = AT_DSPECIAL;
+                            window_timer = 0;
+                            window = 1;
                             picking_wt = true;
                             hold_colour = other.colour;
                             instance_destroy(other.id);

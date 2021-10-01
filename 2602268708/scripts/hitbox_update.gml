@@ -35,7 +35,6 @@ if (attack == AT_FSTRONG){
 
 if (attack == AT_DSTRONG){
     if (hbox_num == 3){
-	print_debug(free);
         if (hitbox_timer == 1){
 		if(player_id.bits == 1){
 		sound_play(sound_get("chuckyanoise_smb2")); } else { sound_play(sound_get("thwomp")); }
@@ -110,14 +109,12 @@ if (attack == AT_FSPECIAL)
 				bounced = true; vsp = -5; hsp = 4 * spr_dir;
 				spawn_hit_fx( x, y, player_id.bomb_bounce );
 				if(player_id.bits == 1)
-					sound_play(sound_get("8bit_bounce")) 
+				with player_id sound_play(sound_get("8bit_bounce"));
 				else 
-					sound_play(sound_get("sm64_stomp"))
+				with player_id sound_play(sound_get("sm64_stomp"));
 			}
 			if (destroyed == true) {
-				if player_id.player == orig_player.player
-					sound_play(sound_get("sm64_blast_short"))
-				
+				with player_id sound_play(sound_get("sm64_blast_short"));
 				create_hitbox( AT_FSPECIAL, 2, x, y);
 			}
 		}

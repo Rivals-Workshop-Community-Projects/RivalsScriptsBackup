@@ -106,6 +106,8 @@ switch (state)
 					{
 						shouldLoop = false;
 						image_index = 8;
+						sound_play(sound_get("sm64_woosh"))
+						with player_id create_hitbox(AT_DSPECIAL, 1, other.x + 16*(other.spr_dir), other.y - 24)
 						switchState("throw");
 					}
 					break;
@@ -127,8 +129,6 @@ switch (state)
     if state_timer == 0
     {
         sound_stop(whir)
-		sound_play(sound_get("sm64_woosh"))
-        with player_id create_hitbox(AT_DSPECIAL, 1, other.x + 12*(other.spr_dir), other.y - 16)
     }
     hsp = lerp(hsp, 0, 0.2)
     image_index += throw_aspeed;

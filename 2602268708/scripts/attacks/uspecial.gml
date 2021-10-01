@@ -47,33 +47,6 @@ var temp_num = 1;
 
 set_num_hitboxes(AT_USPECIAL, temp_num-1);
 
-set_hitbox_value(AT_USPECIAL, temp_num, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_LIFETIME, 9999);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_WIDTH, 0);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_HEIGHT, 0);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_PRIORITY, 7);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_DAMAGE, 3);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_BASE_KNOCKBACK, 3);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_KNOCKBACK_SCALING, .5);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_VISUAL_EFFECT, 193);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_ANGLE, 90);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_PROJECTILE_DESTROY_EFFECT, 1);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_HITPAUSE_SCALING, .3);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_FORCE_FLINCH, 2);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_ANGLE_FLIPPER, 0);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_SHAPE, 2);
-
-set_hitbox_value(AT_USPECIAL, temp_num, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
-set_hitbox_value(AT_USPECIAL, temp_num, HG_PROJECTILE_MASK, sprite_get("uspecial_barrel_mask"));
-set_hitbox_value(AT_USPECIAL, temp_num, HG_PROJECTILE_WALL_BEHAVIOR, 1);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_PROJECTILE_PARRY_STUN, false);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_PROJECTILE_DOES_NOT_REFLECT, true);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_PROJECTILE_IS_TRANSCENDENT, true);
-
 temp_num += 1;
 
 set_hitbox_value(AT_USPECIAL, temp_num, HG_HITBOX_TYPE, 2);
@@ -81,7 +54,7 @@ set_hitbox_value(AT_USPECIAL, temp_num, HG_LIFETIME, 9999);
 set_hitbox_value(AT_USPECIAL, temp_num, HG_WIDTH, 46);
 set_hitbox_value(AT_USPECIAL, temp_num, HG_HEIGHT, 46);
 set_hitbox_value(AT_USPECIAL, temp_num, HG_PRIORITY, 1);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_DAMAGE, 3);
+set_hitbox_value(AT_USPECIAL, temp_num, HG_DAMAGE, 6);
 set_hitbox_value(AT_USPECIAL, temp_num, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_USPECIAL, temp_num, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_USPECIAL, temp_num, HG_BASE_HITPAUSE, 4);

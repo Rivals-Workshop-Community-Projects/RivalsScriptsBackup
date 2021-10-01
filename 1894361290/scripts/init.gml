@@ -171,3 +171,6 @@ spr_dspecial_2_vfx = sprite_get("dspecial_2_vfx");
 
 //munophone
 user_event(14);
+
+//pit codec
+user_event(7)

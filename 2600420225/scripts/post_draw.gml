@@ -1,7 +1,7 @@
 muno_event_type = 4;
 user_event(14);
 
-if((select_ammo == 1 || select_ammo == 2 || select_ammo == 4) && is_somersaulting == false && is_morph == false){
+if((select_ammo == 1 || select_ammo == 2 || select_ammo == 4) && is_somersaulting == false && is_morph == false && state != PS_HITSTUN && state != PS_LAND){
     if((state == PS_IDLE && is_crouch == false)||(state == PS_CROUCH && is_crouch == false)){
         if(is_aiming == "up_"){
             arm_cannon_x = 0;
@@ -76,7 +76,7 @@ if((select_ammo == 1 || select_ammo == 2 || select_ammo == 4) && is_somersaultin
 
 
 //charge effect
-if((select_ammo == 0 || select_ammo == 3) && is_somersaulting == false && attack_down && is_charged == false && is_morph == false && charge == true){
+if((select_ammo == 0 || select_ammo == 3) && is_somersaulting == false && attack_down && is_charged == false && is_morph == false && charge == true && state != PS_HITSTUN && state != PS_LAND){
     if((state == PS_IDLE && is_crouch == false)||(state == PS_CROUCH && is_crouch == false)){
         if(is_aiming == "up_"){
             arm_cannon_x = -18;
@@ -146,7 +146,7 @@ if((select_ammo == 0 || select_ammo == 3) && is_somersaulting == false && attack
     }else{
         draw_sprite_ext(sprite_get("beam_attacks_" + beam_level + "_charging"), charging_timer / 6, x + (arm_cannon_x * spr_dir), y + arm_cannon_y, spr_dir, 1, 0, c_white, 1);
     }
-}else if((select_ammo == 0 || select_ammo == 3) && is_somersaulting == false && attack_down && is_charged == true && is_morph == false && charge == true){
+}else if((select_ammo == 0 || select_ammo == 3) && is_somersaulting == false && attack_down && is_charged == true && is_morph == false && charge == true && state != PS_HITSTUN && state != PS_LAND){
     if((state == PS_IDLE && is_crouch == false)||(state == PS_CROUCH && is_crouch == false)){
         if(is_aiming == "up_"){
             arm_cannon_x = -18;

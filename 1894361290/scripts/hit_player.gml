@@ -49,3 +49,14 @@ if my_hitboxID.attack == 49 && my_hitboxID.hbox_num == 2 {
     fs_scene_timer = 0;
     fs_hit_player = undefined;
 }
+
+hit_player_obj.triggers_kill_effect = (my_hitboxID.attack == AT_UAIR && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2));
+
+if my_hitboxID.attack == AT_USPECIAL && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 3) {
+    sound_play(asset_get("sfx_blow_heavy1"))
+}
+
+if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1 && hitstop > 0 {
+    sound_play(asset_get("sfx_absa_singlezap1"))
+    spawn_hit_fx(my_hitboxID.x, my_hitboxID.y, 301)
+}

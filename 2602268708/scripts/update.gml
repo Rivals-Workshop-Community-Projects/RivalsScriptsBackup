@@ -36,7 +36,7 @@ if nspecial_grabbed_player != noone
 				vsp = 0;
 				hsp = 0;
 			}
-		    if state == PS_PARRY_START || state == PS_AIR_DODGE
+		    if state == PS_PARRY_START || state == PS_AIR_DODGE || state == PS_WALL_JUMP || state == PS_HITSTUN || state == PS_HITSTUN_LAND
 			{
 				nspecial_grabbed_player.vsp = -4
 				nspecial_grabbed_player = noone
@@ -53,7 +53,7 @@ if nspecial_grabbed_player != noone
 				vsp = 0;
 				hsp = 0;
 			}
-            if state == PS_PARRY_START || state == PS_AIR_DODGE
+            if state == PS_PARRY_START || state == PS_AIR_DODGE || state == PS_WALL_JUMP || state == PS_HITSTUN || state == PS_HITSTUN_LAND
 			{
 				nspecial_grabbed_player.vsp = -4
 				nspecial_grabbed_player = noone
@@ -70,7 +70,7 @@ if nspecial_grabbed_player != noone
 				vsp = 0;
 				hsp = 0;
 			}
-            if state == PS_PARRY_START || state == PS_AIR_DODGE
+            if state == PS_PARRY_START || state == PS_AIR_DODGE || state == PS_WALL_JUMP || state == PS_HITSTUN || state == PS_HITSTUN_LAND
 			{
 				nspecial_grabbed_player.vsp = -4
 				nspecial_grabbed_player = noone
@@ -91,16 +91,18 @@ if nspecial_grabbed_player != noone
 			
 			with nspecial_grabbed_player
 			{
-				hitstop = 10;
-				hitstop_full = 10;
+				hitstop = 2;
+				hitstop_full = 2;
 			}
-			if nspecial_grab_timer == 0 || y > get_stage_data(SD_Y_POS) + 96 || state == PS_PARRY_START || state == PS_AIR_DODGE
+			if nspecial_grab_timer == 0 || y > get_stage_data(SD_Y_POS) + 96 || state == PS_PARRY_START || state == PS_AIR_DODGE || state == PS_WALL_JUMP || state == PS_HITSTUN || state == PS_HITSTUN_LAND
 			{
-				nspecial_grabbed_player = noone
-				move_cooldown[AT_NSPECIAL] = 20;
-				if !free{
-				set_state(PS_LANDING_LAG);
-				landing_lag_time = 20;
+			    if !((attack == AT_FTHROW) && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
+				    nspecial_grabbed_player = noone
+				    move_cooldown[AT_NSPECIAL] = 20;
+				    if !free{
+				    set_state(PS_LANDING_LAG);
+				    landing_lag_time = 20;
+				    }
 				}
 			}
 		}

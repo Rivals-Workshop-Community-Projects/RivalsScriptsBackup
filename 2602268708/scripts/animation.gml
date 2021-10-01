@@ -5,7 +5,12 @@ switch (state){
             sprite_index = sprite_get("grab_idle");
 			if (state_timer == 45){ state_timer = 0; }
         }
-    
+    break;
+	case PS_CROUCH:
+        if nspecial_grabbed_player != noone {
+            sprite_index = sprite_get("grab_crouch");
+			if (state_timer == 80){ state_timer = 4; }
+        }
     break;
     case PS_RESPAWN:
     case PS_SPAWN:
@@ -28,8 +33,10 @@ switch (state){
     if nspecial_grabbed_player != noone sprite_index = sprite_get("grab_turn");
     break;
     case PS_WALK:
+	if (state_timer == 64){ state_timer = 0;}
     case PS_DASH:
-    if nspecial_grabbed_player != noone sprite_index = sprite_get("grab_dash");
+    if nspecial_grabbed_player != noone{ sprite_index = sprite_get("grab_dash"); }
+	if (state_timer == 40){ state_timer = 0;}
     break;
     case PS_DASH_START:
     if nspecial_grabbed_player != noone sprite_index = sprite_get("grab_dashstart");

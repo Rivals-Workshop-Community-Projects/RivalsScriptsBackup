@@ -5,7 +5,7 @@ if(state == PS_SPAWN){
 
 if(spring_ball == true && PS_FIRST_JUMP && is_morph == true){
     sprite_index = sprite_get("samus_morph_ball_cycle_" + is_facing)
-    image_index = 1
+    image_index = 0
     jump_speed = 7;
 }else if(spring_ball == true){
     jump_speed = 9;
@@ -29,7 +29,7 @@ if(state == PS_WALK || state == PS_CROUCH){
 
 if(state == PS_DASH_START || state == PS_CROUCH){
     sprite_index = sprite_get("samus_run_aim_"+ is_aiming + is_facing);
-    image_index = state_timer * walk_anim_speed;
+    image_index = state_timer * dash_anim_speed;
 }
 
 if(state == PS_DASH || state == PS_CROUCH){
@@ -42,7 +42,7 @@ if(state == PS_DASH_STOP || state == PS_CROUCH){
     image_index = state_timer * 1;
 }
 
-if(state == PS_DASH_TURN || state == PS_CROUCH){
+if(state == PS_DASH_TURN || state == PS_CROUCH) && is_morph == false{
     sprite_index = sprite_get("samus_idle_aim_" + is_aiming + is_facing);
 }
 
@@ -59,7 +59,7 @@ if(state == PS_IDLE_AIR && (shinespark_trigger <= 40 || is_shinesparking == fals
         sprite_index = sprite_get("samus_aerial_aim_" + is_aiming + is_facing);
     }else if(is_morph == true){
         sprite_index = sprite_get("samus_morph_ball_cycle_" + is_facing);
-        image_index = state_timer * 0.3;
+        image_index = state_timer * 0;
     }
 }
 if(state == PS_DOUBLE_JUMP){
@@ -69,7 +69,7 @@ if(state == PS_DOUBLE_JUMP){
 }else{
     is_somersaulting = false;
 }
-if(state == PS_LAND){
+if(state == PS_LAND && is_morph == false){
     sprite_index = sprite_get("samus_land_" + is_facing);
     image_index = state_timer * 0.2;
 }
@@ -131,6 +131,10 @@ if(state == PS_WALK || state == PS_DASH){
 
 //the rest
 
+if(state == PS_DASH_START && state_timer > 20){
+    state = PS_DASH
+}
+
 if(state == PS_PARRY || state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD || state == PS_WAVELAND || state == PS_PRATLAND || state == PS_PARRY_START || state == PS_CROUCH){
     sprite_index = sprite_get("samus_" + movement +"aim_"+ is_aiming + is_facing);
     state = prev_state;
@@ -155,17 +159,13 @@ if(state == PS_TECH_GROUND || state == PS_TECH_FORWARD || state == PS_TECH_BACKW
     vsp = backup_vsp;
 }
 
-backup_hsp = hsp;
-backup_vsp = vsp;
-backup_timer = state_timer;
-
 if(down_pressed && is_crouch == false && is_morph == false && !free && !phone.state && state != PS_SPAWN){
     if(shield_down == false){
         special_state_timer = 0;
         is_crouch = true;
     }
 }
-if(is_crouch == true && !free){
+if(is_crouch == true && !free && is_morph == false){
     if(special_state_timer <= 1){
         sprite_index = sprite_get("samus_crouch_anim_aim_" + is_aiming + is_facing);
         image_index = state_timer * 0.05;
@@ -308,3 +308,12 @@ if(is_crouch == true && is_morph == false){
     hurtboxID.sprite_index = sprite_get("idle_hurtbox");
     gravity_speed = 0.2;
 }
+
+//prev variables
+prev_x = x;
+prev_y = y;
+prev_level = level;
+prev_damage = damage;
+backup_hsp = hsp;
+backup_vsp = vsp;
+backup_timer = state_timer;

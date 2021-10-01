@@ -25,12 +25,12 @@ walk_turn_time = 6;
 initial_dash_time = 9;
 initial_dash_speed = 8;
 dash_speed = 8;
-dash_turn_time = 11;
+dash_turn_time = 14;
 dash_turn_accel = 1.0;
-dash_stop_time = 8;
-dash_stop_percent = .5; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .4;
-moonwalk_accel = 1.4;
+dash_stop_time = 9;
+dash_stop_percent = .4; //the value to multiply your hsp by when going into idle from dash or dashstop
+ground_friction = .3;
+moonwalk_accel = 1.55;
 
 jump_start_time = 5;
 jump_speed = 12;
@@ -53,7 +53,7 @@ max_fall = 9; //maximum fall speed without fastfalling
 fast_fall = 13; //fast fall speed
 gravity_speed = .5;
 hitstun_grav = .5;
-knockback_adj = 1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 10;

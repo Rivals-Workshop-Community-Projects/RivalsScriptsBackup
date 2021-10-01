@@ -5,7 +5,7 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1){ //Apply fre
         with (hit_player_obj){
         
         	if (!terrabury){
-        		terrafreeze = 90;
+        		terrafreeze = 60;
 		        terrafreeze_player = other.player;
 		        hitstop = hitstop_full-2;
         	}

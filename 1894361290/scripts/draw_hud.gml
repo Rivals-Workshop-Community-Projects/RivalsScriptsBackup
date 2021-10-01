@@ -4,7 +4,7 @@
 user_event(11);
 
 //final smash
-if trigger_fs {
+if "trigger_fs" in self && trigger_fs {
     shader_start()
     switch fs_scene {
         case 0: //fade to white

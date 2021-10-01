@@ -1,4 +1,4 @@
-if(!free && (attack == AT_DTHROW || attack == AT_FTHROW || attack == AT_UTHROW || AT_DSTRONG_2) && (player_id.beam_level == "1" || player_id.beam_level == "2" || player_id.beam_level == "3")){
+if(!free && (attack == AT_DTHROW || attack == AT_FTHROW)) || ((attack == AT_UTHROW || AT_DSTRONG_2) && !free && (player_id.beam_level == "1" || player_id.beam_level == "2" || player_id.beam_level == "3")){
     destroyed = true
 }
 

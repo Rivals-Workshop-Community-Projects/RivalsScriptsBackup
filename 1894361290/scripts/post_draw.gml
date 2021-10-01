@@ -37,6 +37,8 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) {
         draw_sprite(sprite_get("fspecial_sweetspot_vfx"), floor(window_timer/2), x - 30*spr_dir, y - 8);
     } else if attack == AT_BAIR && window == 2 && window_timer < 2 { //bair sweetspot vfx
         draw_sprite(sprite_get("fspecial_sweetspot_vfx"), 0, x - 44*spr_dir, y - 34);
+    } else if attack == AT_USPECIAL && window == 2 && window_timer < 6 { //uspecial sweetspot vfx
+        draw_sprite(sprite_get("fspecial_sweetspot_vfx"), 0, x, y - (holding_wt ? 76 : 68));
     }
 }
 

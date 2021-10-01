@@ -25,11 +25,11 @@ if(special_bombs == true){
 }
 
 if(bomb_movement == 1){
-    vsp = -4;
+    vsp = -6;
 }
 
 if(place_meeting(x, y, player_id) && bomb_cooldown >= 60 && player_id.is_morph == true){
-    player_id.vsp = player_id.backup_vsp - 0.8;
+    player_id.vsp = -4;
 }
 
 

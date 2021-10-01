@@ -30,7 +30,7 @@ if free {
     if abs(hsp) < 0.5 {
         hsp = 0;
     } else {
-        hsp *= 0.85;
+        hsp *= 0.75;
     }
 }
 

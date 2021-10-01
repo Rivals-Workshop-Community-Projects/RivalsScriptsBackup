@@ -5,6 +5,8 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH)
+
 if attack == AT_NSPECIAL {
     if window == 1 && window_timer == 1 {
         wt_hitbox_size = 0;
@@ -106,7 +108,7 @@ if attack == AT_NAIR {
 
 if attack == AT_DAIR {
     can_move = false;
-    if window == 2 && state_timer >= 35 {
+    if window == 2 && state_timer >= 30 {
         can_jump = true;
     }
     
@@ -127,8 +129,15 @@ if attack == AT_USPECIAL {
     }
     
     if window == 1 {
+        if window_timer == (holding_wt ? 12 : 10) {
+            sound_play(asset_get("sfx_ori_glide_featherout"))
+        }
         hsp *= 0.97;
         vsp *= 0.95;
+        
+        if !free && window_timer == window_length {
+            spawn_base_dust(x, y, "land", spr_dir)
+        }
     }
     
     if vsp < 0 && vsp > -7 && window >= 3 {
@@ -615,3 +624,29 @@ if has_rune("N") {
         iasa_script();
     }
 }
+
+#define spawn_base_dust(x, y, name, dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dust_color = 0;
+
+switch (name) {
+    default: 
+    case "dash_start": dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+return newdust;

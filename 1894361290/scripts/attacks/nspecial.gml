@@ -29,15 +29,17 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 90);
-set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
-set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 0);
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, 0);
+set_hitbox_value(AT_NSPECIAL, 1, HG_EFFECT, 9);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, 0);
-set_hitbox_value(AT_NSPECIAL, 1, HG_FORCE_FLINCH, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_FORCE_FLINCH, 0);
+//set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_absa_singlezap1"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_LOCKOUT, 10);
 
 //wt honk small
