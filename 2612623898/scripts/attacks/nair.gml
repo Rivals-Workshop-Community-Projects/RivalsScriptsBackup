@@ -54,6 +54,7 @@ set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 75);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, sound_get("thud"));
+set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, 1);
 
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_TYPE, 1);
@@ -71,3 +72,4 @@ set_hitbox_value(AT_NAIR, 2, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_NAIR, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_NAIR, 2, HG_HITPAUSE_SCALING, 0.65);
 set_hitbox_value(AT_NAIR, 2, HG_HIT_SFX, sound_get("slam1"));
+set_hitbox_value(AT_NAIR, 2, HG_VISUAL_EFFECT, 1);

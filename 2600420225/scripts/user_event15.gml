@@ -197,9 +197,8 @@ initImage_ext(sprite_get("hud_big"), 0, fa_left, 0.7, 0.7, true, c_white, 1, fal
 
 initTip("Diagonal aiming");
 initWords("Just like in Super Metroid, you can aim diagonally both up and down.");
-initWords("It is toggled by holding down the shield button, this enables upwards diagonal aim, while if you hold down it will transition to downwards diagonal aim.");
+initWords("It is toggled by holding down either the shield button (diagonal up) or the strong button (diagonal down).");
 initWords("This works both in air and while crouched.");
-initWords("(I know Super Metroid uses 2 buttons for diagonal aiming but I had to work with what I had)")
 initImage_ext(sprite_get("samus_idle_aim_diagonal_down_right"), 0, fa_right, -2, 2, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("samus_idle_aim_diagonal_up_left"), 0, fa_left, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
 
@@ -221,7 +220,7 @@ initWords("Like the normal beam it's properties will change with each beam upgra
 initImage_ext(sprite_get("beam_attacks_1_charge_shot_+"), -2, fa_center, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
 
 initTip("Toggling ammo");
-initWords("You can press the special button to switch ammo between missiles, super missiles, power bombs, grapple beam and Xray scope, you can also press the strong input to go directly to beam attacks.");
+initWords("You can press the special button to switch ammo between missiles, super missiles, power bombs, grapple beam and Xray scope, you can also press taunt to go directly to beam attacks.");
 initWords("(the last 2 are not done yet because they involve concepts too hard for me to make)");
 initImage_ext(sprite_get("hud_selectables_missiles"), 0, fa_left, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("hud_selectables_super_missiles"), 0, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);

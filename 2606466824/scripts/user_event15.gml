@@ -75,7 +75,7 @@ phone.uses_shader = false;
 // If you use a custom phone sprite that's taller than the default, enter how
 // much taller it is here. (measured in ingame pixels; so if editing the default
 // phone sprite, multiply it by two)
-phone.extra_top_size = 0;
+phone.extra_top_size = 90;
 
 // Set to true and the "Fast Graphics" feature will be enabled; see _readme.gml.
 phone.supports_fast_graphics = false;
@@ -405,6 +405,32 @@ initSection("Trummel & Alto, Otto, Steve, Link");
 
 
 
+
+initPatch("1.06", "October 1st, 2021");
+initHeader("General");
+initSection("- Wave Land Adj [1.05 -> .9] (This means Incineroar's wavedash moves about 2 training grid tiles instead of 3.)");
+initSection("* Munophone firmware updated.");
+initSection("* Munophone height properly implemented so the page indicators show up correctly.");
+initHeader("DAttack");
+initSection("- Late Hit Angle [45 -> 50]");
+initSection("- Late Hit Hitstun Multiplier [1 -> .9]");
+initHeader("DSpecial");
+initSection("- Endlag increased [20 -> 27] when the counter is not triggered.");
+initSection("- Increased the amount of Revenge that is lost when Incineroar gets hit.");
+initSection("* Revenge's boosted hit now functions much differently.");
+initWords_ext("- No longer has any sort of damage or knockback multiplier.", fa_left, c_white, 2, false);
+initWords_ext("+ The hit player will now get hit by a set of three rapid explosions a short duration after they are launched.", fa_left, c_white, 2, false);
+initWords_ext("> All three hits share the angle of the attack that was Revenge boosted.", fa_left, c_white, 3, false);
+initWords_ext("> The first two hits have very little knockback and can be SDI'd well.", fa_left, c_white, 3, false);
+initWords_ext("> The third hit shares the knockback of the attack that was Revenge boosted (so it's like Incin hit them again from afar with the same move).", fa_left, c_white, 3, false);
+initWords_ext("> If the hit player leaves hitstun (such as if they tech off a wall), no more explosions will occur.", fa_left, c_white, 3, false);
+initWords_ext("> The explosions' damage add up to what the boosted damage would have been in the old system. (e.g. if Incin has a 2x multiplier and hits with a move that does 10, the explosions' damage will all add up to 10.)", fa_left, c_white, 3, false);
+initHeader("FAir");
+initSection("- Late Hit Hitstun Multiplier [1 -> .85]");
+initHeader("NAir");
+initSection("- Late Hit Hitstun Multiplier [1 -> .85]");
+initHeader("UAir");
+initSection("- Hitstun Multiplier [1 -> .85]");
 
 initPatch("1.05", "September 25th, 2021");
 initHeader("DSpecial");

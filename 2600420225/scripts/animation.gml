@@ -17,40 +17,40 @@ if(spr_dir == 1){
     is_facing = "left";
 }
 
-if(state == PS_IDLE || state == PS_CROUCH){
+if(state == PS_IDLE){
     sprite_index = sprite_get("samus_idle_aim_"+ is_aiming + is_facing);
     image_index = state_timer * 0.05;
 }
 
-if(state == PS_WALK || state == PS_CROUCH){
+if(state == PS_WALK){
     sprite_index = sprite_get("samus_run_aim_"+ is_aiming + is_facing);
-    image_index = state_timer * walk_anim_speed;
+    image_index = special_state_timer * walk_anim_speed;
 }
 
-if(state == PS_DASH_START || state == PS_CROUCH){
+if(state == PS_DASH_START){
     sprite_index = sprite_get("samus_run_aim_"+ is_aiming + is_facing);
-    image_index = state_timer * dash_anim_speed;
+    image_index = special_state_timer * dash_anim_speed;
 }
 
-if(state == PS_DASH || state == PS_CROUCH){
+if(state == PS_DASH){
     sprite_index = sprite_get("samus_run_aim_"+ is_aiming + is_facing);
-    image_index = state_timer * dash_anim_speed;
+    image_index = special_state_timer * dash_anim_speed;
 }
 
-if(state == PS_DASH_STOP || state == PS_CROUCH){
+if(state == PS_DASH_STOP){
     sprite_index = sprite_get("samus_idle_aim_" + is_aiming + is_facing);
     image_index = state_timer * 1;
 }
 
-if(state == PS_DASH_TURN || state == PS_CROUCH) && is_morph == false{
+if(state == PS_DASH_TURN) && is_morph == false{
     sprite_index = sprite_get("samus_idle_aim_" + is_aiming + is_facing);
 }
 
-if(state == PS_WALK_TURN || state == PS_CROUCH){
+if(state == PS_WALK_TURN){
     sprite_index = sprite_get("samus_idle_aim_" + is_aiming + is_facing);
     image_index = state_timer * 0.1;
 }
-if((state == PS_JUMPSQUAT || state == PS_CROUCH) && is_crouch == false){
+if((state == PS_JUMPSQUAT) && is_crouch == false){
     sprite_index = sprite_get("samus_jump_start_" + is_facing);
     image_index = state_timer * 0.1;
 }
@@ -160,18 +160,18 @@ if(state == PS_TECH_GROUND || state == PS_TECH_FORWARD || state == PS_TECH_BACKW
 }
 
 if(down_pressed && is_crouch == false && is_morph == false && !free && !phone.state && state != PS_SPAWN){
-    if(shield_down == false){
-        special_state_timer = 0;
-        is_crouch = true;
-    }
+    special_state_timer = 0;
+    is_crouch = true;
 }
+
+print_debug(is_crouch)
 if(is_crouch == true && !free && is_morph == false){
-    if(special_state_timer <= 1){
+    if(special_state_timer <= 3){
         sprite_index = sprite_get("samus_crouch_anim_aim_" + is_aiming + is_facing);
-        image_index = state_timer * 0.05;
-    }else if(special_state_timer >= 1){
+        image_index = special_state_timer;
+    }else if(special_state_timer >= 3){
         sprite_index = sprite_get("samus_crouch_idle_aim_" + is_aiming + is_facing);
-        image_index = state_timer * 0.05;
+        image_index = special_state_timer * 0.05;
     }
 }
 if(is_crouch == true && is_morph == false){
@@ -186,26 +186,23 @@ if(is_crouch == true && is_morph == false){
     }
 }
 if(up_pressed && is_crouch == true && is_morph == false){
-    if(shield_down == false){
-        is_crouch = false;
-    }
+is_crouch = false;
 }
 
 
 
 if(down_pressed && is_crouch == true && is_morph == false && special_state_timer >= 10 && !free && morphball == true){
-    if(shield_down == false){
-        special_state_timer = 0;
-        is_morph = true;
-    }
+    special_state_timer = 0;
+    is_morph = true;
 }
+
 if(is_morph == true){
-    if(special_state_timer <= 1){
+    if(special_state_timer <= 2){
         sprite_index = sprite_get("samus_morphing_" + is_facing);
-        image_index = state_timer * 0.02;
-    }else if(special_state_timer >= 1){
+        image_index = special_state_timer;
+    }else if(special_state_timer >= 2){
         sprite_index = sprite_get("samus_morph_ball_cycle_" + is_facing);
-        image_index = state_timer * 0.3;
+        image_index = special_state_timer * 0.3;
     }
 }
 if(is_crouch == true && is_morph == true){
@@ -308,12 +305,3 @@ if(is_crouch == true && is_morph == false){
     hurtboxID.sprite_index = sprite_get("idle_hurtbox");
     gravity_speed = 0.2;
 }
-
-//prev variables
-prev_x = x;
-prev_y = y;
-prev_level = level;
-prev_damage = damage;
-backup_hsp = hsp;
-backup_vsp = vsp;
-backup_timer = state_timer;

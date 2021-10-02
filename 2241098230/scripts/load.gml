@@ -14,6 +14,7 @@ sprite_change_offset("doublejump", 48, 126);
 sprite_change_offset("walljump", 48, 126);
 sprite_change_offset("pratfall", 80, 158);
 sprite_change_offset("land", 48, 126);
+sprite_change_offset("glockenburn", 48, 126);
 sprite_change_offset("landinglag", 48, 126);
 
 sprite_change_offset("hurt", 48, 94);
@@ -50,6 +51,7 @@ sprite_change_offset("fthrow_air", 80, 126);
 sprite_change_offset("uthrow", 80, 126);
 sprite_change_offset("uthrow_air", 80, 126);
 sprite_change_offset("fspecial", 80, 126);
+sprite_change_offset("fspecial2", 48, 126);
 sprite_change_offset("fspecial_air", 80, 126);
 sprite_change_offset("uspecial", 80, 158);
 sprite_change_offset("dspecial", 80, 158);

@@ -1,12 +1,14 @@
 move_cooldown[AT_USPECIAL] = 0;
+move_cooldown[AT_USPECIAL_2] = 0;
 move_cooldown[AT_FSPECIAL] = 0;
 revengeTarget = noone;
 
+incomingDamage = enemy_hitboxID.damage * (1 + (hit_player_obj.strong_charge/120));
 if (phone_cheats[CHEAT_PERSIST] % 2 == 0) {
 	if (enemy_hitboxID.kb_scale > 0) {
-		revengeMult -= 0.05 + (incomingDamage * 0.01);
+		revengeMult -= (0.06 + (incomingDamage * 0.015));
 	} else {
-		revengeMult -= 0.03;	
+		revengeMult -= 0.04;	
 	}
 }
 revengeMult = clamp(revengeMult, 1, 4);

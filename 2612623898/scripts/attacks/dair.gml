@@ -60,6 +60,7 @@ set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 2);
 set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DAIR, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_DAIR, 1, HG_IGNORES_PROJECTILES, 1);
+set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, sound_get("punch"));
 
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_TYPE, 1);

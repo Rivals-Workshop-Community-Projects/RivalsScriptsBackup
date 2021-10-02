@@ -7,7 +7,7 @@ if (window == 1 && window_timer == 2) {
 	for (i = 0; i < 10; i++) {
 		reset_hitbox_value( attack, i, HG_BASE_KNOCKBACK );
 		reset_hitbox_value( attack, i, HG_KNOCKBACK_SCALING );
-		if (revengeMult > 1 && get_hitbox_value(attack, i, HG_REVENGE_KB_MULTIPLIER) != 0) {
+		if (revengeMult > 1 && get_hitbox_value(attack, i, HG_REVENGE_KB_MULTIPLIER) != 0 && false) {
 			set_hitbox_value(attack, i, HG_BASE_KNOCKBACK, get_hitbox_value(attack, i, HG_BASE_KNOCKBACK) * get_hitbox_value(attack, i, HG_REVENGE_KB_MULTIPLIER));
 			if (shield_down || true) {
 				set_hitbox_value(attack, i, HG_KNOCKBACK_SCALING, get_hitbox_value(attack, i, HG_KNOCKBACK_SCALING) * get_hitbox_value(attack, i, HG_REVENGE_KB_MULTIPLIER));
@@ -733,6 +733,7 @@ if (attack == AT_USPECIAL){
 				} else {
 					spawn_hit_fx( x, y-25, burst);
 				}
+				move_cooldown[AT_USPECIAL_2] = 50;
 				sound_play(asset_get("sfx_blow_heavy1"));
 				array_push(phone_dust_query, [x - 5*spr_dir, y, "land", spr_dir]);
 				array_push(phone_dust_query, [x + 35*spr_dir, y, "land", -1 * spr_dir]);
@@ -898,6 +899,8 @@ if (get_player_color(player) == 24) {
 	set_hitbox_value(AT_USPECIAL, 5, HG_VISUAL_EFFECT, firehfxR);
 	set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, firehfxR);
 	set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, firehfxR);		
+	set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, firehfxR);		
+	set_hitbox_value(AT_DSPECIAL, 4, HG_VISUAL_EFFECT, burstR);		
 } else {
 	set_hitbox_value(AT_DSTRONG, 4, HG_VISUAL_EFFECT, firehfx);
 	set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT, firehfx);
@@ -905,4 +908,6 @@ if (get_player_color(player) == 24) {
 	set_hitbox_value(AT_USPECIAL, 5, HG_VISUAL_EFFECT, firehfx);
 	set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT, firehfx);
 	set_hitbox_value(AT_DSPECIAL, 2, HG_VISUAL_EFFECT, firehfx);
+	set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, firehfx);
+	set_hitbox_value(AT_DSPECIAL, 4, HG_VISUAL_EFFECT, burst);
 }	

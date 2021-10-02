@@ -58,7 +58,7 @@ set_hitbox_value(AT_USPECIAL, temp_num, HG_DAMAGE, 6);
 set_hitbox_value(AT_USPECIAL, temp_num, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_USPECIAL, temp_num, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_USPECIAL, temp_num, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(AT_USPECIAL, temp_num, HG_VISUAL_EFFECT, 193);
+set_hitbox_value(AT_USPECIAL, temp_num, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USPECIAL, temp_num, HG_ANGLE, 90);
 set_hitbox_value(AT_USPECIAL, temp_num, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_USPECIAL, temp_num, HG_HIT_SFX, sound_get("sm64_clonk"));

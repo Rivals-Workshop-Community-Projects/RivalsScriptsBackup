@@ -1,7 +1,7 @@
 set_attack_value(AT_FAIR, AG_CATEGORY, 1);
 set_attack_value(AT_FAIR, AG_SPRITE, sprite_get("fairB_fire"));
 set_attack_value(AT_FAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_FAIR, AG_LANDING_LAG, 6);
+set_attack_value(AT_FAIR, AG_LANDING_LAG, 8);
 set_attack_value(AT_FAIR, AG_HURTBOX_SPRITE, sprite_get("fairB_hurt"));
 
 set_attack_value(AT_FAIR, AG_NUM_WINDOWS, 3);

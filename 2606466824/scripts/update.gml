@@ -1,6 +1,44 @@
 muno_event_type = 1;
 user_event(14);
 
+with (oPlayer) {
+	if (id != other.id) {
+		if (!"incinRevengeTimer" in self) {
+			incinRevengeTimer = 500;
+		} else if (incinRevengeTimer < 500) {
+			if (!hitpause || incinRevengeTimer > 12) {
+				incinRevengeTimer++;
+			}
+			if (incinRevengeTimer == 15 || incinRevengeTimer == 23) {
+				print("burn lol");
+				other.burnType[player-1] = 3;
+				other.burnTargetX[player-1] = round(x+hsp);
+				other.burnTargetY[player-1] = round(y+vsp);
+				other.doBurn = true;
+			}
+			if (incinRevengeTimer == 31) {
+				print("burn lol");
+				other.burnType[player-1] = 4;
+				other.burnTargetX[player-1] = round(x+hsp);
+				other.burnTargetY[player-1] = round(y+vsp);
+				other.doBurn = true;
+			}
+			if (state_cat != SC_HITSTUN) {
+				incinRevengeTimer = 50;
+			}
+		}
+	}
+}
+if (doBurn == true) {
+	for (i = 0; i < 4; i++) {
+		if (burnType[i] > 0) {
+			burnHitbox = create_hitbox(AT_DSPECIAL, burnType[i], burnTargetX[i], burnTargetY[i] - 40);
+			burnType[i] = 0;
+		}
+		doBurn = false;
+	}
+}
+
 if ("target" in self) {
 	with (target) {
 		if (state == PS_DEAD || state == PS_RESPAWN) {
@@ -29,6 +67,9 @@ if (!free || state == PS_WALL_JUMP) {
 	move_cooldown[AT_FSPECIAL] = 0;
 }
 
+if (move_cooldown[AT_USPECIAL_2] > move_cooldown[AT_USPECIAL]) {
+	move_cooldown[AT_USPECIAL] = move_cooldown[AT_USPECIAL_2];		
+}
 
 
 if (phone_cheats_updated[CHEAT_NONE] == 1) {

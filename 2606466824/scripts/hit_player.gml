@@ -45,8 +45,37 @@ if (my_hitboxID.attack == AT_USPECIAL && hit_player_obj.state == PS_HITSTUN) {
 }
 
 if (revengeMult > 1 && get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_REVENGE_KB_MULTIPLIER) != 0) {
-	take_damage(hit_player_obj.player, player, round(my_hitboxID.damage * (revengeMult - 1)));
+	//take_damage(hit_player_obj.player, player, round(my_hitboxID.damage * (revengeMult - 1)));
 	//hit_player_obj.orig_knock *= get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_REVENGE_KB_MULTIPLIER);
+	
+	
+	
+	var totalNewDamage = round(my_hitboxID.damage * (revengeMult - 1));
+	
+	print(string(totalNewDamage));
+		
+	set_hitbox_value(AT_DSPECIAL, 3, HG_DAMAGE, round(totalNewDamage / 4));
+	set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE, my_hitboxID.kb_angle);
+	
+	totalNewDamage -= round(totalNewDamage / 4);
+	totalNewDamage -= round(totalNewDamage / 4);
+	
+	set_hitbox_value(AT_DSPECIAL, 4, HG_DAMAGE, max(1, totalNewDamage));
+	set_hitbox_value(AT_DSPECIAL, 4, HG_BASE_KNOCKBACK, (my_hitboxID.kb_value * 0.9));
+	set_hitbox_value(AT_DSPECIAL, 4, HG_KNOCKBACK_SCALING, (my_hitboxID.kb_scale * 0.9));
+	set_hitbox_value(AT_DSPECIAL, 4, HG_ANGLE, max(2, my_hitboxID.kb_angle));
+	set_hitbox_value(AT_DSPECIAL, 4, HG_BASE_HITPAUSE, round(my_hitboxID.kb_value * 1.2));
+	set_hitbox_value(AT_DSPECIAL, 4, HG_HITPAUSE_SCALING, round(my_hitboxID.kb_scale * 1.2));
+	
+
+	if (get_player_color(player) == 24) {	
+		spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - 30, burstR);			
+	} else {
+		spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - 30, burst);
+	}
+	
+	
+	
 	if (phone_cheats[CHEAT_PERSIST] < 2) {
 		revengeMult = 1;
 	}
@@ -54,6 +83,10 @@ if (revengeMult > 1 && get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num
 	hit_player_obj.hitstop += (5 + hit_player_obj.hitstop_full);
 	sound_play(sound_get("hit_supereffective"));
 	revengeHitShakeFrames = hitstop;
+	with (hit_player_obj) {
+		incinRevengeTimer = 5;
+		print("applying explosion after 10 frames!");
+	}
 }
 
 

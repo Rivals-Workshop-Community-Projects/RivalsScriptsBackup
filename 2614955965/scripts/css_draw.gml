@@ -5,7 +5,7 @@ var temp_y = y + 9;
 
 
 
-var num_alts = 14;
+var num_alts = 17;
 var alt_cur = get_player_color(player);
 
 alt_name[0]  = "Classic";
@@ -22,6 +22,9 @@ alt_name[10]  = "Golden";
 alt_name[11]  = "Festive";
 alt_name[12]  = "Jank Nation";
 alt_name[13]  = "Technicolor";
+alt_name[14]  = "Sans";
+alt_name[15]  = "Mori Calliope";
+alt_name[16]  = "Skeletor";
 
 //Patch
 draw_set_halign(fa_left);

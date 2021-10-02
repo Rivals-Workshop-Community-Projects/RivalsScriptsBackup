@@ -94,7 +94,7 @@ set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, 0.2);
 set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_UAIR, 2, HG_HITPAUSE_SCALING, 0.2);
-set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_swipe_medium1"));
+set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_swipe_medium2"));
 set_hitbox_value(AT_UAIR, 2, HG_EFFECT, 9);
 set_hitbox_value(AT_UAIR, 2, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_UAIR, 2, HG_TECHABLE, 2);

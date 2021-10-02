@@ -48,6 +48,20 @@ set_window_value(AT_DSPECIAL, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_DSPECIAL, 6, AG_WINDOW_CUSTOM_GRAVITY, 0.4);
 
 
+
+set_window_value(AT_DSPECIAL, 7, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_DSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_DSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 8);
+set_window_value(AT_DSPECIAL, 7, AG_WINDOW_HAS_WHIFFLAG, 1);
+set_window_value(AT_DSPECIAL, 7, AG_WINDOW_VSPEED_TYPE, 1);
+set_window_value(AT_DSPECIAL, 7, AG_WINDOW_HSPEED_TYPE, 2);
+//set_window_value(AT_DSPECIAL, 7, AG_WINDOW_CUSTOM_GRAVITY, 0.4);
+set_window_value(AT_DSPECIAL, 7, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+set_window_value(AT_DSPECIAL, 7, AG_WINDOW_CUSTOM_GROUND_FRICTION, .02);
+set_window_value(AT_DSPECIAL, 7, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_DSPECIAL, 7, AG_WINDOW_SFX,  asset_get("sfx_swipe_heavy2"));
+
+
 set_num_hitboxes(AT_DSPECIAL, 2);
 
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 1);

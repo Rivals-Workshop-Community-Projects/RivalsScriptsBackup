@@ -6,11 +6,14 @@ set_attack_value(AT_UTHROW, AG_HURTBOX_AIR_SPRITE, sprite_get("uthrow_air_hurt")
 set_attack_value(AT_UTHROW, AG_USES_CUSTOM_GRAVITY, 1);
 
 set_attack_value(AT_UTHROW, AG_NUM_WINDOWS, 5);
-set_window_value(AT_UTHROW, 1, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_UTHROW, 1, AG_WINDOW_LENGTH, 11);
 set_window_value(AT_UTHROW, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_UTHROW, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_UTHROW, 1, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_UTHROW, 1, AG_WINDOW_INVINCIBILITY, 1);
+set_window_value(AT_UTHROW, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_UTHROW, 1, AG_WINDOW_SFX_FRAME, 10);
+ 
 
 //Throw 1
 set_window_value(AT_UTHROW, 2, AG_WINDOW_LENGTH, 3);
@@ -19,6 +22,9 @@ set_window_value(AT_UTHROW, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_UTHROW, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_UTHROW, 2, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_UTHROW, 2, AG_WINDOW_INVINCIBILITY, 1);
+
+
+
 
 set_window_value(AT_UTHROW, 3, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_UTHROW, 3, AG_WINDOW_ANIM_FRAMES, 4);

@@ -1,0 +1,1 @@
+sonicSpinSpeed = 0;

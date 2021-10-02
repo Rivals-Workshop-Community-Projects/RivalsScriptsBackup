@@ -18,7 +18,7 @@ set_color_profile_slot_range( 3, 8, 1, 58 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 14 );
+set_num_palettes( 17 );
 
 // Blue
 set_color_profile_slot( 1, 0, 154, 152, 152 ); //skull
@@ -92,8 +92,26 @@ set_color_profile_slot( 12, 1, 145, 145, 145 ); //clothes
 set_color_profile_slot( 12, 2, 41, 41, 41 ); //gloves/boots
 set_color_profile_slot( 12, 3, 94, 94, 94 ); //sheath
 
-// Vibrant
+// Technocolour
 set_color_profile_slot( 13, 0, 158, 38, 209 ); //skull
 set_color_profile_slot( 13, 1, 244, 255, 23 ); //clothes
 set_color_profile_slot( 13, 2, 34, 0, 79 ); //gloves/boots
 set_color_profile_slot( 13, 3, 198, 153, 255 ); //sheath
+
+// Sans
+set_color_profile_slot( 14, 0, 255, 255, 255 ); //unnamed color row
+set_color_profile_slot( 14, 1, 20, 122, 199 ); //unnamed color row
+set_color_profile_slot( 14, 2, 255, 171, 247 ); //unnamed color row
+set_color_profile_slot( 14, 3, 255, 255, 255 ); //unnamed color row
+
+// Mori Calliope
+set_color_profile_slot( 15, 0, 242, 199, 221 ); //unnamed color row
+set_color_profile_slot( 15, 1, 55, 51, 42 ); //unnamed color row
+set_color_profile_slot( 15, 2, 145, 16, 64 ); //unnamed color row
+set_color_profile_slot( 15, 3, 209, 197, 176 ); //unnamed color row
+
+// Skeletor
+set_color_profile_slot( 16, 0, 253, 239, 70 ); //unnamed color row
+set_color_profile_slot( 16, 1, 86, 69, 164 ); //unnamed color row
+set_color_profile_slot( 16, 2, 89, 139, 254 ); //unnamed color row
+set_color_profile_slot( 16, 3, 143, 73, 161 ); //unnamed color row

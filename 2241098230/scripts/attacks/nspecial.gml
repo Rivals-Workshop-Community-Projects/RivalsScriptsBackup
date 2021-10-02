@@ -55,11 +55,19 @@ set_window_value(AT_NSPECIAL, 7, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_NSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 27);
 
+
+
 //Jump
 set_window_value(AT_NSPECIAL, 9, AG_WINDOW_TYPE, 9);
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_NSPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, 28);
+set_window_value(AT_NSPECIAL, 8, AG_WINDOW_HAS_SFX, 1);
+//why wont this work? the world may never know
+set_window_value(AT_NSPECIAL, 8, AG_WINDOW_SFX, asset_get("sfx_jumpground"));
+set_window_value(AT_NSPECIAL, 8, AG_WINDOW_SFX_FRAME, 1);
+
+
 
 //Jump fall
 set_window_value(AT_NSPECIAL, 9, AG_WINDOW_TYPE, 9);

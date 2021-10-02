@@ -1,3 +1,31 @@
+if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 7 ) {
+    sound_play(asset_get( "sfx_blow_heavy1" ))
+    sound_play(asset_get( "sfx_blow_heavy2" ))
+    sound_play(asset_get( "sfx_forsburn_consume_full" ))
+
+
+}
+if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 6) {
+    sound_play(asset_get( "sfx_blow_heavy2" ))
+
+}
+if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 5) {
+    sound_play(asset_get( "sfx_blow_heavy2" ))
+    sound_play(asset_get( "sfx_forsburn_consume_full" ))
+
+}
+if (my_hitboxID.attack == AT_UAIR && my_hitboxID.hbox_num == 3) {
+    sound_play(asset_get( "sfx_blow_heavy2" ))
+    sound_play(asset_get( "sfx_forsburn_consume_full" ))
+
+
+}
+if (my_hitboxID.attack == AT_UTHROW && my_hitboxID.hbox_num == 2|| my_hitboxID.attack == AT_DTHROW || my_hitboxID.attack == AT_FTHROW && my_hitboxID.hbox_num == 2) {
+    sound_play(asset_get( "sfx_blow_heavy2" ))
+    sound_play(asset_get( "sfx_forsburn_consume_full" ))
+
+
+}
 //Throws
 if (my_hitboxID.attack == AT_UAIR && attack == AT_UAIR){
     if (my_hitboxID.hbox_num == 1 && grabbedid == noone && !hit_player_obj.invincible && !hit_player_obj.super_armor && !hit_player_obj.clone){
@@ -93,3 +121,4 @@ for (var i = 0; i < array_length(hbox_apply_smoke_consume); i++) {
         }
     }
 }
+

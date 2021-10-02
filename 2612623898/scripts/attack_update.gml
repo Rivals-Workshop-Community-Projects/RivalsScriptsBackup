@@ -20,10 +20,14 @@ if (attack == AT_JAB) {
 }
 
 if (attack == AT_USPECIAL) {
-	if (state_timer == 1) {
-		grab_timer = 0;
-	}
 	
+    if (window == 1 && window_timer == 1) { 
+    	grabbed_player_obj = noone; 
+    	grabbed_player_relative_x = 0;
+    	grabbed_player_relative_y = 0;
+    	grab_timer = 0;
+    }
+    
 	if (window == 4) {
 		can_move = true;
         if (window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)) {
@@ -88,6 +92,13 @@ if (attack == AT_USPECIAL) {
 }
 
 if (attack == AT_DAIR) {
+	
+    if (window == 1 && window_timer == 1) { 
+    	grabbed_player_obj = noone; 
+    	grabbed_player_relative_x = 0;
+    	grabbed_player_relative_y = 0;
+    	grabbed_timer = 0;
+    }
 	can_fast_fall = false;
 	if (window == 4) {
 		fall_through = true;

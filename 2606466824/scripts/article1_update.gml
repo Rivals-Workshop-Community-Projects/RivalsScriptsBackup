@@ -86,7 +86,7 @@ if (state == 1){
 	disableTimer--;
 	
    with (oPlayer) {
-		if (state == PS_HITSTUN && place_meeting(x,y,other) && other.state == 1 && other.player_id.target != id && other.disableTimer < 0) {
+		if (state == PS_HITSTUN && place_meeting(x,y,other) && other.state == 1 && other.player_id.target != id && other.disableTimer < 0 && (!"incinRevengeTimer" in self || ("incinRevengeTimer" in self && incinRevengeTimer >= 32))) {
 			if (hitpause) {
 				other.disableTimer = hitstop_full + 60;
 			} else {

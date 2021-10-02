@@ -26,6 +26,8 @@ if(state == PS_SPAWN){
     beam_cooldown = 0;
 }
 //hyper beam text goes rainbow
+
+if(level == 17 && draw_info == true){
 if(hyper_beam_magic == c_red && hyper_beam_magic_timer >= 4){
     hyper_beam_magic = c_orange
     hyper_beam_magic_timer = 0;
@@ -48,7 +50,7 @@ if(hyper_beam_magic == c_red && hyper_beam_magic_timer >= 4){
     hyper_beam_magic = c_red
     hyper_beam_magic_timer = 0;
 }
-
+}
 
 //sfx stuff
 
@@ -69,17 +71,7 @@ if(charge_sfx == 15){
     sound_stop(sound_get("charged"));
 }
 
-if(shinespark_charged == true){
-    if(spark_sfx >= 15){
-        sound_play(sound_get("shine start"), false, false, 10)
-        spark_sfx = 0;
-    }
-    spark_sfx++
-}else{
-    spark_sfx = 0;
-}
-
-if(shinespark_end == 10){
+if(shinespark_end == 30){
     sound_play(sound_get("dameg"), false, false, 15);
 }
 
@@ -195,12 +187,13 @@ if(jump_down && shinespark_charged == false && state == PS_FIRST_JUMP){
     state = PS_FIRST_JUMP;
 }else if(shinespark_charged == false && state == PS_FIRST_JUMP && !jump_down && is_somersaulting == false){
     state = PS_IDLE_AIR
-    vsp = backup_vsp * 0.6;
+    vsp *= 0.6;
 }else if(shinespark_charged == false && state == PS_FIRST_JUMP && !jump_down && is_somersaulting == true){
     state = PS_FIRST_JUMP
-    vsp = backup_vsp + 0.1
+    vsp += 0.1
 }
 
+//charge shot animation and the rest
 if(attack_down && is_morph == false && is_crystal_flashing == false && (select_ammo == 0 || select_ammo == 3)){
     if(charging_timer != 80){
         charging_timer++
@@ -211,13 +204,11 @@ if(attack_down && is_morph == false && is_crystal_flashing == false && (select_a
 }else{
     charging_timer = 0;
 }
-damage = get_player_damage(player);
 
 //info hud
 if(popup_timer < 240){
     draw_info = true;
-}
-if(popup_timer > 240){
+}else if(popup_timer > 240){
     draw_info = false;
 }
 
@@ -310,31 +301,21 @@ if(screw_cooldown < 15){
 }
 
 //shinespark and speed booster
-if(shinespark_charged == true){
-    shinespark_timer++
-    if(shinespark_timer >= 360){
-        shinespark_charged = false;
-    }
-}
 
 if(state == PS_DASH && is_crouch == false && is_morph== false){
     speed_charge++
+    if(speed_charge >= 40){
+        speeding = true;
+    }
 }else{
     speed_charge = 0;
 }
 
-if((down_pressed || down_down) && speeding == true){
+if(speeding == true){
+    if((down_pressed || down_down)){
         shinespark_charged = true;
         speeding = false;
     }
-
-if(state == PS_DASH && speed_booster == true && speed_charge >= 40 && shinespark_charged == false && is_crouch == false && is_morph == false){
-    speeding = true;
-}else{
-    speeding = false;
-}
-
-if(speeding == true){
     if(is_facing == "right"){
         hsp++
         hsp++
@@ -356,35 +337,21 @@ if(y <= -300){
     is_shinesparking = false;
 }
 
-if(jump_pressed && shinespark_charged == true && is_morph == false){
-    gravity_speed = 0.6;
-    shinespark_trigger = 0;
-}
-
-if(shinespark_charged == true && shinespark_trigger >= 12 && free){
-    state = PS_IDLE_AIR
-}
-
-if(shinespark_charged == true && state == PS_IDLE_AIR){
-    hsp = 0;
-    vsp = 0;
-    is_shinesparking = true;
-    shinespark_charged = false;
-    gravity_speed = 0;
-    is_crouch = false;
-    is_morph = false;
-    select_ammo = 0;
-    beam_cooldown = 0;
-    max_djumps = 0;
-    missile_cooldown = 0;
-}
-
-if(shinespark_charged == false && is_shinesparking == false){
+if(is_shinesparking == false){
+    if(shinespark_charged == false){
     gravity_speed = 0.2;
     set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_BASE_KNOCKBACK, 8);
+    }
+    shine_right = false;
+    shine_left = false;
+    shine_diagonal_right = false;
+    shine_diagonal_left = false;
+    shine_up_right = false;
+    shine_up_left = false;
 }
 
-if(is_shinesparking == true && shinespark_trigger <= 40){
+if(is_shinesparking == true){ //start of big is_shinesparking == true script
+    if(shinespark_trigger <= 40){
     gravity_speed = 0;
     is_crouch = false;
     is_morph = false;
@@ -458,33 +425,63 @@ if(is_shinesparking == true && shinespark_trigger <= 40){
     }
 }
 
+if(prev_x == x && prev_y == y){
+    shinespark_end++
+}
+
+if(shinespark_end <= 10){
+    energy--
+}
+}else{
+    shinespark_end = 0
+} //end of big is_shinesparking == true script
+
 if(shine_up_right == true || shine_right == true || shine_diagonal_right == true){
     spr_dir = 1;
 }else if(shine_up_left == true || shine_left == true || shine_diagonal_left == true){
     spr_dir = -1;
 }
 
-if(is_shinesparking == false){
-    shine_right = false;
-    shine_left = false;
-    shine_diagonal_right = false;
-    shine_diagonal_left = false;
-    shine_up_right = false;
-    shine_up_left = false;
-}
-
-if(prev_x == x && prev_y == y && is_shinesparking == true){
-    shinespark_end++
-}else{
-    shinespark_end = 0
-}
-
-if(is_shinesparking == true && shinespark_end <= 10){
-    energy--
-}
-
-if(shinespark_end >= 40){
+if(shinespark_end >= 60){
     is_shinesparking = false;
+}
+
+if(shinespark_charged == true){
+    shinespark_timer++
+    if(shinespark_timer >= 360){
+        shinespark_charged = false;
+    }
+    
+    if(spark_sfx >= 15){
+        sound_play(sound_get("shine start"), false, false, 10)
+        spark_sfx = 0;
+    }
+    spark_sfx++
+    
+    if(jump_pressed && is_morph == false){
+    gravity_speed = 0.6;
+    shinespark_trigger = 0;
+    }
+    
+    if(shinespark_trigger >= 12 && free){
+    state = PS_IDLE_AIR
+    }
+    
+    if(state == PS_IDLE_AIR){
+    hsp = 0;
+    vsp = 0;
+    is_shinesparking = true;
+    shinespark_charged = false;
+    gravity_speed = 0;
+    is_crouch = false;
+    is_morph = false;
+    select_ammo = 0;
+    beam_cooldown = 0;
+    max_djumps = 0;
+    missile_cooldown = 0;
+    }
+}else{
+    spark_sfx = 0;
 }
 
 ///advanced techniques and synergyes
@@ -744,6 +741,8 @@ if(prev_level != level){
 
 
 //health stuff
+damage = get_player_damage(player);
+
 if(damage != prev_damage){
     if(is_shinesparking == false){
         sound_play(sound_get("dameg"), false, false, 15);
@@ -1198,7 +1197,7 @@ switch(select_ammo){
     break;
 }
 
-if(left_strong_pressed || up_strong_pressed || down_strong_pressed || right_strong_pressed) && (select_ammo == 1 || select_ammo == 2 || select_ammo == 3 || select_ammo == 4 || select_ammo == 5){
+if(taunt_pressed) && (select_ammo == 1 || select_ammo == 2 || select_ammo == 3 || select_ammo == 4 || select_ammo == 5){
     sound_play(sound_get("select_ammo"), false, false, 10);
     select_ammo = 0;
     special_cooldown = 0;
@@ -1206,14 +1205,12 @@ if(left_strong_pressed || up_strong_pressed || down_strong_pressed || right_stro
 
 //aim change
 if(!phone.state){
-if(up_down){
+if(up_down || (shield_down && strong_down)){
     is_aiming = "up_";
+}else if(strong_down){
+is_aiming = "diagonal_down_";
 }else if(shield_down){
-    if(down_down){
-    is_aiming = "diagonal_down_";
-    }else if(!down_down){
-    is_aiming = "diagonal_up_";
-    }
+is_aiming = "diagonal_up_";
 }else if(free && down_down){
     is_aiming = "down_"
 }else{
@@ -1250,10 +1247,6 @@ if(num_samuses == 1 && samus_check == 4){
 }
 
 //state switches
-if(state == PS_FIRST_JUMP && (shield_pressed || shield_down)){
-    state = PS_IDLE_AIR;
-}
-
 if(state == PS_WALL_JUMP){
     is_morph = false;
     is_crouch = false;
@@ -1347,3 +1340,12 @@ if(end_screen_timer <= 10800){
 }else if(end_screen_timer > 25200){
     set_victory_portrait(sprite_get("portrait_1"));
 }
+
+//prev variables
+prev_x = x;
+prev_y = y;
+prev_level = level;
+prev_damage = damage;
+backup_hsp = hsp;
+backup_vsp = vsp;
+backup_timer = state_timer;

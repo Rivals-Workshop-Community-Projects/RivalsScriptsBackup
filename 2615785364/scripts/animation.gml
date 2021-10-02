@@ -1,0 +1,1 @@
+if (state == PS_IDLE && up_down) { sprite_index = sprite_get("lookup") }

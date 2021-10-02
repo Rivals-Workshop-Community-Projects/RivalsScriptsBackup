@@ -1,1 +1,1 @@
-//grabbedByIncineroar = 0;
+incinRevengeTimer = 500;

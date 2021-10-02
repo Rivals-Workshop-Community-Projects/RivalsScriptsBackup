@@ -70,10 +70,12 @@ with (oPlayer){
 	            }
 	        }
 	        with (smoked_id) {
+	        	/*
 		        if (has_rune("N") && other.smoked_timer % 30 == 0) {
 		        	with (other) take_damage(player, smoked_id, 1);
 		        	sound_play(asset_get("sfx_ell_steam_hit"))
 		        }
+		        */
 	        }
 	        //manual_flash = 602;
 	        //Reset the effect

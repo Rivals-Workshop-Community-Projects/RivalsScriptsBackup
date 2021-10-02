@@ -68,6 +68,7 @@ set_hitbox_value(AT_NAIR, 2, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_NAIR, 2, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(AT_NAIR, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_NAIR, 2, HG_HITPAUSE_SCALING, .6);
+set_hitbox_value(AT_NAIR, 2, HG_HITSTUN_MULTIPLIER, .85);
 //set_hitbox_value(AT_NAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_NAIR, 2, HG_HIT_SFX, sound_get("punch_light"));
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_GROUP, 1);

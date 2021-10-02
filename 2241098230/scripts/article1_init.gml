@@ -19,5 +19,6 @@ parried = false;
 hit = 0;
 
 _init = true;
+disable_movement = true;
 
 sprite_index = asset_get("empty_sprite")

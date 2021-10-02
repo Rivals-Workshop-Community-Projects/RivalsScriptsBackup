@@ -223,11 +223,7 @@ if((select_ammo == 0 || select_ammo == 3) && is_somersaulting == false && attack
 if(shading == true){
 if(is_charged == true && jump_power_up != "screw_attack_"){
     gpu_set_fog(true, c_white, 0, 1);
-    if(is_facing == "right"){
-        draw_sprite_ext(sprite_index, image_index, x, y, 2, 2, 0, c_white, fog_magic);
-    }else if(is_facing == "left"){
-        draw_sprite_ext(sprite_index, image_index, x, y, -2, 2, 0, c_white, fog_magic);
-    }
+    draw_sprite_ext(sprite_index, image_index, x, y, 2 * spr_dir, 2, 0, c_white, fog_magic);
     gpu_set_fog(false, c_white, 0, 1);
 }else{
     gpu_set_fog(false, c_white, 0, 1);
@@ -235,11 +231,7 @@ if(is_charged == true && jump_power_up != "screw_attack_"){
 
 if(speeding == true){
     gpu_set_fog(true, c_blue, 0, 1);
-    if(is_facing == "right"){
-        draw_sprite_ext(sprite_index, image_index, x, y, 2, 2, 0, c_white, fog_magic);
-    }else if(is_facing == "left"){
-        draw_sprite_ext(sprite_index, image_index, x, y, -2, 2, 0, c_white, fog_magic);
-    }
+        draw_sprite_ext(sprite_index, image_index, x, y, 2 * spr_dir, 2, 0, c_white, fog_magic);
     gpu_set_fog(false, c_blue, 0, 1);
 }else{
     gpu_set_fog(false, c_blue, 0, 1);
@@ -247,11 +239,7 @@ if(speeding == true){
 
 if(shinespark_charged == true){
     gpu_set_fog(true, c_orange, 0, 1);
-    if(is_facing == "right"){
-        draw_sprite_ext(sprite_index, image_index, x, y, 2, 2, 0, c_white, fog_magic);
-    }else if(is_facing == "left"){
-        draw_sprite_ext(sprite_index, image_index, x, y, -2, 2, 0, c_white, fog_magic);
-    }
+    draw_sprite_ext(sprite_index, image_index, x, y, 2 * spr_dir, 2, 0, c_white, fog_magic);
     gpu_set_fog(false, c_orange, 0, 1);
 }else{
     gpu_set_fog(false, c_orange, 0, 1);
@@ -259,11 +247,7 @@ if(shinespark_charged == true){
 
 if(is_shinesparking == true && shinespark_end == 0){
     gpu_set_fog(true, c_orange, 0, 1);
-    if(is_facing == "right"){
-        draw_sprite_ext(sprite_index, image_index, x, y, 2, 2, 0, c_white, fog_magic2);
-    }else if(is_facing == "left"){
-        draw_sprite_ext(sprite_index, image_index, x, y, -2, 2, 0, c_white, fog_magic2);
-    }
+    draw_sprite_ext(sprite_index, image_index, x, y, 2 * spr_dir, 2, 0, c_white, fog_magic2);
     gpu_set_fog(false, c_orange, 0, 1);
 }else{
     gpu_set_fog(false, c_orange, 0, 1);
@@ -271,31 +255,15 @@ if(is_shinesparking == true && shinespark_end == 0){
 
 if(is_shinesparking == true && shinespark_end >= 1){
     gpu_set_fog(true, c_orange, 0, 1);
-    if(is_facing == "right"){
-        draw_sprite_ext(sprite_index, image_index, x, y, 2, 2, 0, c_white, 0.6);
-    }else if(is_facing == "left"){
-        draw_sprite_ext(sprite_index, image_index, x, y, -2, 2, 0, c_white, 0.6);
-    }
+    draw_sprite_ext(sprite_index, image_index, x, y, 2 * spr_dir, 2, 0, c_white, 0.6);
     gpu_set_fog(false, c_orange, 0, 1);
 }else{
     gpu_set_fog(false, c_orange, 0, 1);
-}
-
-if(is_dead == true){
-    gpu_set_fog(true, c_black, 0, 1);
-    draw_sprite_ext(sprite_index, image_index, x, y, 2, 2, 0, c_white, 0.15);
-    gpu_set_fog(false, c_black, 0, 1);
-}else{
-    gpu_set_fog(false, c_black, 0, 1);
 }
 
 if(is_somersaulting == true && jump_power_up == "screw_attack_"){
     gpu_set_fog(true, c_lime, 0, 1);
-    if(is_facing == "right"){
-        draw_sprite_ext(sprite_index, image_index, x, y, 2, 2, 0, c_white, fog_magic3);
-    }else if(is_facing == "left"){
-        draw_sprite_ext(sprite_index, image_index, x, y, -2, 2, 0, c_white, fog_magic3);
-    }
+    draw_sprite_ext(sprite_index, image_index, x, y, 2 * spr_dir, 2, 0, c_white, fog_magic3);
     gpu_set_fog(false, c_lime, 0, 1);
 }else{
     gpu_set_fog(false, c_lime, 0, 1);

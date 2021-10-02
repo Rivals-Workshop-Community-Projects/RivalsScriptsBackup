@@ -74,11 +74,6 @@ else{
 
 var xlast = x;
 
-while(place_meeting(x, y + vsp, asset_get("par_block"))){
-	y -= 1;
-	vsp -= 1;
-}
-
 if (free){
 	vsp += grav_speed;
 	

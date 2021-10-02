@@ -47,6 +47,11 @@ knockback_adj = 0.925; //the multiplier to KB dealt to you. 1 = default, >1 = li
 
 isWrestleCat = true;
 
+doBurn = false;
+burnType = [0, 0, 0, 0];
+burnTargetX = [0, 0, 0, 0];
+burnTargetY = [0, 0, 0, 0];
+
 target = noone;
 fspecmode = 0;
 shouldQuit = 0;
@@ -91,8 +96,8 @@ incomingDamage = 0;
 land_time = 5; //normal landing frames
 prat_land_time = 10;
 wave_land_time = 8;
-wave_land_adj = 1.05; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .06; //grounded deceleration when wavelanding
+wave_land_adj = .9; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_friction = .15; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 2;
