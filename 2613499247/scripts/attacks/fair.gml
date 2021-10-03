@@ -6,12 +6,12 @@ set_attack_value(AT_FAIR, AG_LANDING_LAG, 6);
 set_attack_value(AT_FAIR, AG_HURTBOX_SPRITE, sprite_get("fair_hurt"));
 
 set_window_value(AT_FAIR, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_VSPEED, -1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, sound_get("whoosh"));
-set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 10);
+set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 8);
 
 set_window_value(AT_FAIR, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 3);
@@ -44,4 +44,5 @@ set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 32);
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, sound_get("slam2"));
+set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 305);
 //set_hitbox_value(AT_FAIR, 1, HG_ANGLE_FLIPPER, 6);

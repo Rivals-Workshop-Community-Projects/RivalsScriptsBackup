@@ -104,7 +104,7 @@ if (attack = AT_DAIR) {
 		set_num_hitboxes(AT_DAIR, 0);
 	}
 	if (window == 2 && window_timer > 15) {
-		if (attack_down or special_down) {
+		if (attack_down or special_down or right_strong_down or strong_down or left_strong_down) {
 			window = 3
 		}
 	}

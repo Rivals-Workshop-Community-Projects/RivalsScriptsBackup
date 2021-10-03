@@ -301,6 +301,26 @@ if(screw_cooldown < 15){
 }
 
 //shinespark and speed booster
+if(speeding == true){
+    if((down_pressed || down_down)){
+        shinespark_charged = true;
+        speeding = false;
+    }
+    if(is_facing == "right" && !free){
+        hsp++
+        hsp++
+        hsp++
+        hsp++
+        hsp++
+    }else if(is_facing == "left" && !free){
+        hsp--
+        hsp--
+        hsp--
+        hsp--
+        hsp--
+    }
+    
+}
 
 if(state == PS_DASH && is_crouch == false && is_morph== false){
     speed_charge++
@@ -309,26 +329,7 @@ if(state == PS_DASH && is_crouch == false && is_morph== false){
     }
 }else{
     speed_charge = 0;
-}
-
-if(speeding == true){
-    if((down_pressed || down_down)){
-        shinespark_charged = true;
-        speeding = false;
-    }
-    if(is_facing == "right"){
-        hsp++
-        hsp++
-        hsp++
-        hsp++
-        hsp++
-    }else if(is_facing == "left"){
-        hsp--
-        hsp--
-        hsp--
-        hsp--
-        hsp--
-    }
+    speeding = false;
 }
 
 if(y <= -300){
@@ -1342,6 +1343,7 @@ if(end_screen_timer <= 10800){
 }
 
 //prev variables
+prev_spr_dir = spr_dir;
 prev_x = x;
 prev_y = y;
 prev_level = level;

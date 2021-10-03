@@ -448,7 +448,7 @@ if (attack == AT_DSPECIAL) {
     	
     	if up_down {
     		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_HSPEED, 0);
-    		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_VSPEED, -12);
+    		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_VSPEED, -10);
     		set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .3);
     		set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 90);
     		set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 11);

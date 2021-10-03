@@ -36,7 +36,7 @@ if (!free) // If hit or walljump or on the ground, you get back your uspec
 if (state == PS_WALL_JUMP) // If hit or walljump or on the ground, you get back your uspec
 {
 	//Movi aqui la condicion para recuperar meter
-	var meter_gain = 3; // change this to how much you meter you gain back per frame
+	var meter_gain = 5; // change this to how much you meter you gain back per frame
 	uspec_meter = min(uspec_meter+meter_gain,uspec_max);
 }
 
@@ -226,7 +226,7 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.1);
 	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 18);
 	set_hitbox_value(AT_FSTRONG, 1, HG_EFFECT, 0);
-	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 45);
+	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 38);
 	
 	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 	set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 155);
@@ -235,7 +235,7 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.2);
 	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 20);
 	set_hitbox_value(AT_FSTRONG, 2, HG_EFFECT, 0);
-	set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 38);
+	set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 30);
 	set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 40);
 	
 	//FORWARD AIR ROCK
@@ -366,8 +366,8 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 8);
 	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 0.7);
 	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 10);
-	set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 50);
-	set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 30);
+	set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 30);
+	set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 35);
 	
 	//FORWARD AIR ICE
 	
@@ -472,7 +472,7 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 9);
 	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.9);
 	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 7);
-	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 50);
+	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 40);
 	
 	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
 	set_hitbox_value(AT_FSTRONG, 2, HG_EFFECT, 11);
@@ -482,7 +482,7 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.1);
 	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 9);
 	set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 40);
-	set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 40);
+	set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 35);
 	
 	//FORWARD AIR PLASMA
 	
@@ -601,7 +601,7 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 8);
 	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.9);
 	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 5);
-	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 45);
+	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 40);
 	
 	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 	set_hitbox_value(AT_FSTRONG, 2, HG_EFFECT, 3);
@@ -610,7 +610,7 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 9);
 	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 1.1);
 	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 10);
-	set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 38);
+	set_hitbox_value(AT_FSTRONG, 2, HG_ANGLE, 35);
 	set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 40);
 	set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 16);
 	

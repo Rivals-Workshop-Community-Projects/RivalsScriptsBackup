@@ -345,9 +345,15 @@ if attack == AT_DSTRONG && !hitpause {
 if window == 4 && window_timer == 14 && timefreeze <= 0{
 	if left_down && !right_down {
 		spr_dir = -1
+		sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1.2,1.4);
+		sound_play(asset_get("sfx_blow_medium1"),false,noone,1.2,1.4);
+		spawn_hit_fx(x - 30*spr_dir,y - 40, 302)
 	}
 	if !left_down && right_down {
 		spr_dir = 1
+		sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1.2,1.4);
+		sound_play(asset_get("sfx_blow_medium1"),false,noone,1.2,1.4);
+		spawn_hit_fx(x - 30*spr_dir,y - 40, 302)
 	} 
 }
 if window == 2 {
@@ -610,7 +616,6 @@ if window == 2 {
 if attack == AT_NSPECIAL {
 	move_cooldown[AT_NSPECIAL] = 40
 	if free {
-		can_move = false
 		can_fast_fall = false
 	}
 	if free && window < 4{
@@ -748,8 +753,8 @@ if attack == AT_DSTRONG {
          
          if xrange <= 260 and yrange <= 100 {
 	 		if state_cat == SC_HITSTUN && x != other.x {
-	 			 hsp = ((other.x + (30 * other.spr_dir)) - x) / 6
-		         vsp = ((other.y - 10) - y) / 4
+	 			 hsp = ((other.x + (30 * other.spr_dir)) - x) / 4
+		         vsp = ((other.y - 10) - y) / 6
 	 		}
          }
          

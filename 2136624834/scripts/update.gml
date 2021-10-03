@@ -8,7 +8,6 @@ hit_player_obj = self
 
 
 
-
 if state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND {
 	 	uspechit = 0
    attacking = 0

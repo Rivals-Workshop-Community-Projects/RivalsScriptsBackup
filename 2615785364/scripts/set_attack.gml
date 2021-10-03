@@ -33,7 +33,23 @@ if free{    // AIR ATTACKS
 			}
             
             break;
+        case AT_UAIR:
         case AT_USPECIAL:
+        	if(tap_jump_protection_enabled){
+                if((is_double_jump //catches frame 1+ doublejumps
+                    or (prev_state != PS_JUMPSQUAT and (jump_down and !jump_counter) and old_djumps == djumps and djumps != max_djumps) ) //catches frame 0 doublejumps
+                     and dj_state_timer < 5) //limits to the first 5 frames
+                {
+                    djumps--;
+                }
+            } else {
+                if((is_double_jump //catches frame 1+ doublejumps
+                    or (prev_state != PS_JUMPSQUAT and (jump_down and !jump_counter) and old_djumps == djumps and djumps != max_djumps) ) //catches frame 0 doublejumps
+                     and dj_state_timer < 5) //limits to the first 5 frames
+                {
+                    djumps++;
+                }
+            }
             attack = AT_UAIR;
             state = PS_ATTACK_AIR;
             spr_dir = old_spr_dir;
@@ -60,9 +76,6 @@ if free{    // AIR ATTACKS
         case AT_NSPECIAL:
             attack = AT_JAB;
             break;
-        case AT_USPECIAL:
-            attack = AT_UTILT;
-            break;
         case AT_DSPECIAL:
             attack = AT_DTILT;
             break;
@@ -70,8 +83,12 @@ if free{    // AIR ATTACKS
         case AT_DATTACK:
             attack = AT_FTILT;
             break;
+        case AT_USPECIAL:
         case AT_USTRONG:
             attack = AT_UTILT;
+            if((jump_down and !jump_counter) or is_jumpsquat){ // catches frame 0 jump-utilt
+                move_cooldown[attack] = move_cooldown[attack] > 0 ? move_cooldown[attack] : 1;
+            }
             break;
         case AT_DSTRONG:
             attack = AT_DTILT;

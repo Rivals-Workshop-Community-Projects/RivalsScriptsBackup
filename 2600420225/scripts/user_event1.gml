@@ -149,7 +149,7 @@ if(is_aiming == "diagonal_up_" || (is_aiming == "up_" && (state == PS_WALK || st
     }
     }else if(is_facing == "left"){
         if(beam_level == "1"){
-        projectile_x = -36;
+        projectile_x = -30;
         projectile_y = -100;
     }else if(beam_level == "2" || beam_level == "3" || beam_level == "4"){
         projectile_x = -8;
@@ -158,8 +158,8 @@ if(is_aiming == "diagonal_up_" || (is_aiming == "up_" && (state == PS_WALK || st
         projectile_x = 0;
         projectile_y = -190;
     }else if(beam_level == "6"){
-        projectile_x = 50;
-        projectile_y = -186;
+        projectile_x = -20;
+        projectile_y = -178;
     }
     }
 }

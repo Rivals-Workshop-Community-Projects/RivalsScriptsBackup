@@ -1,6 +1,6 @@
 ///
-	var tauntpar1 = hit_fx_create( sprite_get( "tauntpar1" ), 12);
-
+	
+if player == orig_player  {
 if attack == AT_NSPECIAL {
 	
 	if player_id.attacking &&  player_id.attack == AT_NSPECIAL && (player_id.window == 1 or player_id.window == 4) && player_id.window_timer == 1 {
@@ -317,4 +317,6 @@ if hitbox_timer = -28 {
     
     
     
+}
+
 }

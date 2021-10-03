@@ -35,7 +35,7 @@ hitstun_grav        = 0.5;		// 0.45 -  0.53
 jump_start_time     = 3;		// 5                this stat is automatically decreased by 1 after init.gml (dan moment), so its "real value" is 4. if you change this during a match, 4 is the value you should reset it to
 jump_speed          = 7.5;		// 7.6  -  12       okay, zetter's is actually 10.99 but... come on
 short_hop_speed     = 7.5;		// 4    -  7.4
-djump_speed         = 7;		// 6    -  12       absa's is -1 because of her floaty djump
+djump_speed         = 9;		// 6    -  12       absa's is -1 because of her floaty djump
 djump_accel         = 0;        // -1.4 -  0        absa's is -1.4, all other chars are 0. only works if the   djump_accel_end_time   variable is also set. floaty djumps should be adjusted by feel based on your char's gravity
 djump_accel_end_time= 0;        //                  the amount of time that   djump_accel   is applied for
 max_djumps          = 0;		// 0    -  3        the 0 is elliana because she has hover instead
@@ -244,6 +244,7 @@ beam_6 = false;
 
 prev_x = 0;
 prev_y = 0;
+prev_spr_dir = 0;
 
 shinespark_end = 0;
 

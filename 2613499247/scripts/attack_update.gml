@@ -1,7 +1,48 @@
 //B - Reversals
 
+if (window == 1 && window_timer == 1 && !hitpause){
+    
+
+    
+   if  get_window_value(attack, 1, AG_WINDOW_LENGTH) >= 8 {
+       
+       
+       sound_play(sound_get("whoosh"),false,noone,1.4,
+        min ( 0.5, 1.2 - get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) )
+       
+       
+       
+       
+   } else {
+      
+      sound_play(sound_get("punch"),false,noone,.8,
+        min ( 0.5, 1.5 - get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) )
+       
+        
+   }
+    
+    
+    
+}
+
+
+
 if (attack == AT_UAIR)
 {
+    
+    if window == 1 {
+       hsp /= 1.2
+       vsp /= 1.1
+       if vsp > 0 {
+          vsp /= 1.1
+       }
+       
+    }
+
+    if window == 2 && window_timer == 1 && !hitpause {
+        sound_play(sound_get("yell"),false,noone,.8, 1.1 - random_func(1,20,true)/100)
+    }
+    
     if (window == 1 && window_timer == 1){
         can_fast_fall = false;
         can_move = false;

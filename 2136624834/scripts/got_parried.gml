@@ -6,7 +6,12 @@ if (my_hitboxID.attack == AT_FSTRONG) {
 
  with (asset_get("pHitBox")) {
         if player_id == other.id {
-          destroyed = true;
+            if attack != AT_NSPECIAL {    
+              destroyed = true;
+            }
+            if attack == AT_NSPECIAL && hbox_num > 3 {    
+              destroyed = true;
+            }
         }
     }
     

@@ -17,17 +17,17 @@ walk_anim_speed = .125;
 dash_anim_speed = .125;
 pratfall_anim_speed = .25;
 
-walk_speed = 5;
+walk_speed = 8;
 walk_accel = 5;
 walk_turn_time = 1;
 initial_dash_time = 1;
 initial_dash_speed = 1;
-dash_speed = 5;
+dash_speed = 8;
 dash_turn_time = 1;
 dash_turn_accel = 1;
 dash_stop_time = 10;
 dash_stop_percent = 0; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .7;
+ground_friction = .9;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
@@ -94,13 +94,34 @@ roll_back_recovery_frames = 2;
 roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
 
-land_sound = sound_get("nothing");
-landing_lag_sound = sound_get("nothing");
 waveland_sound = sound_get("nothing");
-jump_sound = sound_get("nothing");
-djump_sound = sound_get("nothing");
 air_dodge_sound = sound_get("nothing");
 
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
+
+//CHANGED STUFF------------------- -Rioku
+
+//Tap Jump Protection System by @Danilo-PJ#3122
+tap_jump_protection_enabled = true; //set this to false if your character should not get double jump back if you canceled it into air up attack.
+
+old_djumps = 0;
+dj_state_timer = 0;
+is_double_jump = false;
+is_jumpsquat = false;
+
+sonicSpinSpeed = 0;
+
+//Strong buffer stuff so you can have a neutral strong press
+strong_buffer = 0;
+strong_pressed = false;
+strong_was_pressed = false;
+
+dash_sound = sound_get("dash");
+land_sound = sound_get("land");
+landing_lag_sound = sound_get("land");
+jump_sound = sound_get("jump");
+djump_sound = sound_get("djump");
+wall_jump_sound = sound_get("jump");
+ssl_death_sound = sound_get("ssl_death");
