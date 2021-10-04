@@ -302,6 +302,34 @@ switch(attack){
 		can_fast_fall = false;
 		can_move = false;
 		break;
+	
+	
+	
+	case AT_TAUNT:
+		if window_timer == 1{
+			clear_button_buffer(PC_SHIELD_PRESSED);
+		}
+		if shield_pressed && window == 1 && window_timer < 16{
+			attack_end();
+			set_attack(AT_TAUNT_2);
+		}
+		break;
+	
+	
+	
+	case AT_TAUNT_2:
+		if !(shield_down || taunt_down){
+			attack_end();
+			set_state(PS_IDLE);
+		}
+		if window_timer == phone_window_end - 32{
+			spawn_hit_fx(x + 16 * spr_dir, y - 44, 113);
+			sound_play(asset_get("mfx_star"));
+		}
+		if window_timer == phone_window_end - 4{
+			spawn_hit_fx(x, y - 32, 143);
+		}
+		break;
 }
 
 

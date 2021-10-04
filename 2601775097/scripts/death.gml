@@ -43,5 +43,3 @@ godpower = false;
 od_current = 0;
 od_gainable = true;
 od_already_active = false;
-
-if (has_rune("O") && theikos) theikos_active = false;

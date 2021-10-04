@@ -122,13 +122,13 @@ if ("prev_alt" not in self) drawtime = 0;
 if ("alttime" not in self) alttime = 0;
 if ("prev_alt" in self && prev_alt != alt_cur)
 {
-    drawing = floor(alttime % 8); // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
-    drawtime = 0; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+    drawing = floor(alttime % 8);
+    drawtime = 0;
 }
 
-drawtime += 1; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
-alttime += 1; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
-prev_alt = alt_cur; // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
+drawtime += 1;
+alttime += 1;
+prev_alt = alt_cur;
 
 //ANIMATION WORK
 //text
@@ -210,9 +210,11 @@ else draw_sprite_ext(line, drawtime/5, temp_x+16+(drawtime/5), temp_y+128, 1, 1,
 //drawing rectangles experiment
 //rectDraw(temp_x, temp_y + 130, temp_x + 200, temp_y + 148, c_blue);
 
+//descriptions
+user_event(9);
+
 //munophone
 user_event(12);
-
 
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string) {

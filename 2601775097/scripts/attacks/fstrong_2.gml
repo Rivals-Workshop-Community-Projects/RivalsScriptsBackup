@@ -141,7 +141,7 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
-set_hitbox_value(atk, hitboxNum, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(atk, hitboxNum, HG_SDI_MULTIPLIER, 0.01);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 1); //it needs to be a different value for every different move in the file
 set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 3);
 set_hitbox_value(atk, hitboxNum, HG_FORCE_FLINCH, 0);
@@ -167,16 +167,14 @@ set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 40);
 set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 9); //1 = low priority over other moves || 10 = highest
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 10);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 35);
-set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.9);
-set_hitbox_value(atk, hitboxNum, HG_HITSTUN_MULTIPLIER, 1.5);
+set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 8); //6
+set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 1.1); //0.9
+set_hitbox_value(atk, hitboxNum, HG_HITSTUN_MULTIPLIER, 1.2); //1.5
+set_hitbox_value(atk, hitboxNum, HG_SDI_MULTIPLIER, 0.01);
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 15); //hitstun
 set_hitbox_value(atk, hitboxNum, HG_EXTRA_CAMERA_SHAKE, -1);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, sound_get("sfx_tauntattack"));
-set_hitbox_value(atk, hitboxNum, HG_ANGLE_FLIPPER, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 3);
-set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 1);
-set_hitbox_value(atk, hitboxNum, HG_FORCE_FLINCH, 0);

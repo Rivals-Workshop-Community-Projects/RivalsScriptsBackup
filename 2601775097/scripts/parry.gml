@@ -15,10 +15,8 @@ if (enemy_hitboxID.type == 1 || enemy_hitboxID.type == 2)
 		miniMP_alpha = 1;
 	}
 		
-	if (mp_current >= mp_max)
-	{
-		mp_current = mp_max;
-	}
+	if (mp_current >= mp_max && !has_rune("K")) mp_current = mp_max;
+	else if (mp_current >= runeK_mp_max && has_rune("K")) mp_current = runeK_mp_max;
 }
 
 if (theikos && mp_current == mp_max) take_damage(player, player, -50);

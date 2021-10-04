@@ -70,7 +70,7 @@ if (sprite_index == sprite_get("intro") && !allow_bibical)
     }
     
     //theikos stuff
-    if (theikos && !has_rune("O"))
+    if (theikos)
     {
         //activating theikos (it needs to be earlier so it can register the effects' colors)
         if (intro_timer > 12)
@@ -86,7 +86,7 @@ if (sprite_index == sprite_get("intro") && !allow_bibical)
         }
     }
 }
-else if (allow_bibical && theikos && !has_rune("O"))
+else if (allow_bibical && theikos)
 {
     //activating theikos (it needs to be earlier so it can register the effects' colors)
     if (intro_timer > 12)
@@ -1237,7 +1237,7 @@ if (get_player_color(player) == 30)
 }
 
 //theikos stuff
-if (has_rune("L") && !has_rune("O") && was_reloaded) //theikos reload check
+if (has_rune("L") && was_reloaded) //theikos reload check
 {
     theikos = true;
     theikos_active = true;
@@ -1506,7 +1506,35 @@ else if (!godpower && is_8bit && !theikos_active)//reset the colors
 outline_color = [color_r, color_g, color_b];
 init_shader();
 
-if (has_rune("N")) //holy light mechanic
+if (!has_rune("N"))
+{
+    switch (phone_cheats[tech_toggle])
+    {
+        case 1: //burninng only
+            holyburn_mechanic_active = true;
+            lightstun_mechanic_active = false;
+            break;
+        case 2: //lightstun only
+            holyburn_mechanic_active = false;
+            lightstun_mechanic_active = true;
+            break;
+        case 3: //both
+            holyburn_mechanic_active = true;
+            lightstun_mechanic_active = true;
+            break;
+        case 0: //none
+            holyburn_mechanic_active = false;
+            lightstun_mechanic_active = false;
+            break;
+    }
+}
+else //holy light mechanic
+{
+    holyburn_mechanic_active = false;
+    lightstun_mechanic_active = true;
+}
+
+if (lightstun_mechanic_active) //holy light mechanic
 {
     with (oPlayer)
     {
@@ -1525,7 +1553,7 @@ if (has_rune("N")) //holy light mechanic
             lightstun_pre_stun = false;
         }
 
-        //effect work
+        //effect work + rune J
         if (lightstun_pre_stun)
         {
             if (lightstun_timer % 3 == 0) with (other) //spawn sparkles particles
@@ -1541,6 +1569,12 @@ if (has_rune("N")) //holy light mechanic
             {
                 sound_play(asset_get("sfx_frog_fspecial_cancel"), 0);
                 with (other) spawn_hit_fx(other.x, other.y-24, fx_lightblow1);
+            }
+
+            //rune J gives bar mana once per 15 frames
+            if (lightstun_timer % 15 == 0) with (other)
+            {
+                if (has_rune("J") && (!has_rune("K") && mp_current < mp_max) || has_rune("K") && mp_current < runeK_mp_max) mp_current += 1;
             }
         }
         
@@ -1607,8 +1641,30 @@ if (has_rune("N")) //holy light mechanic
             lightstun_parried_timer = 10;
         }
     }
+
+    if (lightstun_has_hit && (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR)) lightstun_has_hit = false;
 }
-else //holy burn mechanic
+else
+{
+    lightstun_id = noone;
+    lightstun_parried = false;
+    lightstun_parried_timer = -1;
+    lightstun_has_hit = false;
+
+    with (oPlayer)
+    {
+        lightstun_timer = -1;
+        lightstun = false;
+        lightstun_pre_stun = false;
+        fx_lightstunned_frame = 0;
+        fx_lightstunned_rot = 0;
+        fx_lightstunned_alpha = 1;
+        fx_lightstunned_speed = 0.25;
+        fx_lightstunned_alphaincrease = false;
+    }
+}
+
+if (holyburn_mechanic_active) //holy burn mechanic
 {
     //thanks lukaru!
     with (asset_get("oPlayer")) if (holyburning == other.player)
@@ -1646,8 +1702,22 @@ else //holy burn mechanic
                 holyburning = false;
                 outline_color = [0, 0, 0];
             }
+
+            //rune J gives bar mana once per 15 frames
+            if (holyburn_counter % 15 == 0) with (other)
+            {
+                if (has_rune("J") && (!has_rune("K") && mp_current < mp_max) || has_rune("K") && mp_current < runeK_mp_max) mp_current += 1;
+            }
             init_shader();
         }
+    }
+}
+else
+{
+    with (oPlayer)
+    {
+        holyburning = noone;
+        holyburn_counter = 0;
     }
 }
 
@@ -1673,10 +1743,11 @@ if (has_rune("A"))
     //dash properties
     if (runeA_dash)
     {
-        state = PS_DASH_START;
+        //state = PS_DASH_START;
         runeA_dash_timer ++;
         vsp = 0;
-        hsp = initial_dash_speed*1.5*runeA_dash_dir;
+        if (!theikos_active) hsp = initial_dash_speed*1.2*runeA_dash_dir;
+        else hsp = initial_dash_speed*0.8*runeA_dash_dir;
     }
 
     //activate cooldown
@@ -1820,11 +1891,6 @@ if (has_rune("K")) //overcharged mana - flashing gauge (the mana stuff itself is
     else gauge_EX_color = gauge_EX_color_return;
 }
 
-if (has_rune("N")) //light spark mechanic - anti-spam
-{
-    if (lightstun_has_hit && (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR)) lightstun_has_hit = false;
-}
-
 if (has_rune("O")) //overdrive meter
 {
     if (od_current <= 0) od_current = 0;
@@ -1855,8 +1921,10 @@ if (has_rune("O") && od_current >= od_max && !od_already_active && (state != PS_
 {
     if (attack_pressed && special_pressed)
     {
-        if (!has_rune("L") && !free) set_attack(AT_OVERDRIVE);
-        else if (has_rune("L") && !theikos_active) set_attack(47);
+        if (!free) 
+        {
+            set_attack(AT_OVERDRIVE);
+        }
     }
 }
 else if ("fs_charge" in self && fs_charge >= 200 && (state != PS_ATTACK_AIR || state != PS_ATTACK_GROUND)
@@ -1864,6 +1932,8 @@ else if ("fs_charge" in self && fs_charge >= 200 && (state != PS_ATTACK_AIR || s
 {
     if (special_pressed && !up_down && !down_down && !left_down && !right_down && !free && attack != AT_USTRONG) fs_force_fs = true;
 }
+
+with (oTestPlayer) if (theikos) theikos_active = true; //making sure theikos bar is active in the playtest mode
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //FINAL SMASH/OVERDRIVE POST ATTACK EFFECT: LORD'S BLESSING
@@ -1978,33 +2048,59 @@ switch (get_player_color(player)) //fs portrait changer
 
 //Phone cheats
 //Mana Debug
-if (theikos_active) mp_fc_rate = 100;
-else if (has_rune("K"))
+if (has_rune("K"))
 {
-    if (mp_current < 100) mp_fc_rate = runeK_mana_regen;
-    else mp_fc_rate = 0;
-}
-else if (has_rune("O") && godpower) 
-{
-    mp_fc_rate = god_mp_rate;
-
-    if (has_rune("K"))
+    if (!theikos_active)
     {
-        if (mp_current < 100) mp_fc_rate = god_mp_rate;
+        if (mp_current < 100)
+        {
+            if (has_rune("O") && godpower) mp_fc_rate = god_mp_rate;
+            else mp_fc_rate = runeK_mana_regen;
+        }
         else mp_fc_rate = 0;
+    }
+    else //theikos
+	{
+        mp_current = 100;
+        gauge_color = gauge_EX_color;
+        
+        lightdagger_cost = 0;
+        buff_total_cost = 0; //"buffs" include burning fury and guard aura
+        buff_overtime_cost = 0;
+        buff_activation_cost = 0;
+        burningfury_attack_cost = 0;
+        forceleap_activate_cost = 0;
+        forceleap_attack_cost = 0;
+        photonblast_cost = 0;
+        accelblitz_cost = 0;
+        chasmburster_activate_cost = 0;
+        chasmburster_attack_cost = 0;
+        powersmash_activate_cost = 0;
+        powersmash_attack_cost = 0;
+        guardaura_counter_cost = 0;
+        emberfist_cost = 0;
+        lighthookshot_activate_cost = 0;
+        lighthookshot_attack_cost = 0;
     }
 }
 else
 {
-    if (phone_cheats[mana_debug] > 0) manaDebug = true;
+    if (!theikos_active)
+    {
+        if (phone_cheats[mana_debug] > 0) manaDebug = true;
 
-    if (phone_cheats[mana_debug] == 1) mp_fc_rate = mp_rate_default;
-    else if (phone_cheats[mana_debug] == 2) mp_fc_rate = 5;
-    else if (phone_cheats[mana_debug] == 3) mp_fc_rate = 10;
-    else if (phone_cheats[mana_debug] == 4) mp_fc_rate = 20;
-    else if (phone_cheats[mana_debug] == 5) mp_fc_rate = 50;
-    else if (phone_cheats[mana_debug] == 6) mp_fc_rate = 100;
-    else mp_fc_rate = 0;
+        if (phone_cheats[mana_debug] == 1) mp_fc_rate = mp_rate_default;
+        else if (phone_cheats[mana_debug] == 2) mp_fc_rate = 5;
+        else if (phone_cheats[mana_debug] == 3) mp_fc_rate = 10;
+        else if (phone_cheats[mana_debug] == 4) mp_fc_rate = 20;
+        else if (phone_cheats[mana_debug] == 5) mp_fc_rate = 50;
+        else if (phone_cheats[mana_debug] == 6) mp_fc_rate = 100;
+        else mp_fc_rate = 0;
+    }
+    else
+    {
+        mp_fc_rate = 100;
+    }
 }
 
 //Steve Death Messages

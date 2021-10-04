@@ -1,5 +1,3 @@
-time = 0;
-
 hurtbox_spr = asset_get("ex_guy_hurt_box");
 crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;
@@ -459,6 +457,13 @@ is_bar = 2429376422;
 game_paused = false;
 
 last_attack_hit = 0;
+/*
+attack_history = [0, 0];
+
+//attack history - hit_player / set_attack
+attack_history[1] = attack_history[0];
+attack_history[0] = attack;
+*/
 
 //intro - credit to nackles42 for the tutorial!
 intro_timer = -4; //setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening.
@@ -603,33 +608,6 @@ runeH_angle = 0;
 //rune K
 runeK_mana_regen = 10;
 runeK_mp_max = 200;
-if (has_rune("K"))
-{
-	if (!has_rune("L")) mp_max = runeK_mp_max;
-	else
-	{
-        mp_current = 100;
-        gauge_color = gauge_EX_color;
-        
-        lightdagger_cost = 0;
-        buff_total_cost = 0; //"buffs" include burning fury and guard aura
-        buff_overtime_cost = 0;
-        buff_activation_cost = 0;
-        burningfury_attack_cost = 0;
-        forceleap_activate_cost = 0;
-        forceleap_attack_cost = 0;
-        photonblast_cost = 0;
-        accelblitz_cost = 0;
-        chasmburster_activate_cost = 0;
-        chasmburster_attack_cost = 0;
-        powersmash_activate_cost = 0;
-        powersmash_attack_cost = 0;
-        guardaura_counter_cost = 0;
-        emberfist_cost = 0;
-        lighthookshot_activate_cost = 0;
-        lighthookshot_attack_cost = 0;
-    }
-}
 gauge_EX_color = $FAF328;
 gauge_EX_color_return = gauge_EX_color;
 gauge_EX_timer = 5;
@@ -642,6 +620,10 @@ gauge_EX_timer_active = false;
 //2EC7FF = yellow 2
 //3BE1FF = yellow 3
 //486BFF = red
+
+//rune N
+holyburn_mechanic_active = true;
+lightstun_mechanic_active = false;
 
 //rune O
 od_current = 0;

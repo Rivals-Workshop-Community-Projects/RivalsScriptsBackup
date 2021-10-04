@@ -13,7 +13,7 @@ set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 2); // 1 = physical attack || 2
 set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 6); //hitbox duration in frames
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 0);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, 0);
-set_hitbox_value(atk, hitboxNum, HG_WIDTH, 2); //world's tiniest hitbox part 2 (part 1 is wrastor lol)
+set_hitbox_value(atk, hitboxNum, HG_WIDTH, 2); //world's tiniest hitbox part 2
 set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 2);
 set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 8);
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 0);

@@ -82,7 +82,7 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_DESTROY_EFFECT, fx_empty);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_SPRITE, sprite_get("fx_dstrong_t_fireball"));
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_ANIM_SPEED, 0); //gts faster with charge
+set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_ANIM_SPEED, 0); //gets faster with charge
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_VSPEED, 0); //gets faster with charge
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_PARRY_STUN, 0); //only false for theikos bar
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_IS_TRANSCENDENT, 1); //only true for theikos bar
@@ -126,12 +126,12 @@ set_hitbox_value(atk, hitboxNum, HG_SHAPE, 1);
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 2);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 90);
 set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 8);
-set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 3);
-set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.1);
+set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 2.5);
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 3); //hitstun
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_fireblow1);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_zetter_upb_hit"));
 set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 2);
+set_hitbox_value(atk, hitboxNum, HG_SDI_MULTIPLIER, 0.01);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_SPRITE, sprite_get("empty"));
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, -1); //it needs to be a different value for every different move in the file

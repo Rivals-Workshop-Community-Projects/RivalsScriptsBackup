@@ -5,6 +5,14 @@ user_event(14);
 
 
 
+if phone_attacking && attack == AT_TAUNT_2{
+	shader_start();
+	draw_sprite_ext(sprite_get("handbert"), 0, x + (32 + ease_quintOut(256, 0, window_timer, phone_window_end)) * spr_dir, y - 22, 2 * -spr_dir, 2, 0, c_white, 1);
+	shader_end();
+}
+
+
+
 // code for kamehameha
 
 if phone_attacking && attack == AT_NSPECIAL{

@@ -10,10 +10,8 @@ if (mpGainable)
 	//miniMP_time = miniMP_attack;
 	//miniMP_alpha = 1;
 		
-	if (mp_current >= mp_max)
-	{
-		mp_current = mp_max;
-	}
+	if (mp_current >= mp_max && !has_rune("K")) mp_current = mp_max;
+	else if (mp_current >= runeK_mp_max && has_rune("K")) mp_current = runeK_mp_max;
 }
 
 //burning fury

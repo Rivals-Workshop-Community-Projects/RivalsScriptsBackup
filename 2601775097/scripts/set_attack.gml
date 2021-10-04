@@ -252,5 +252,12 @@ if (has_rune("M")) //strong swapping rune
     }
 }
 
+//F-strong reverses in midair
+if ((attack == AT_FSTRONG_2 || attack == AT_FSTRONG) && free)
+{
+    if (left_strong_pressed && spr_dir) spr_dir = -1;
+    else if (right_strong_pressed && -spr_dir) spr_dir = 1;
+}
+
 //munophone
 user_event(13);

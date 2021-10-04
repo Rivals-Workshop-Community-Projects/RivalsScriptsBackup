@@ -1502,7 +1502,7 @@ switch (attack)
 
         if (burningfury_active)
         {
-            if (window == 8) burningfury_active = false;
+            if (window == 8 && window_timer == 8) burningfury_active = false;
             //buff stuff
             set_hitbox_value(AT_FSTRONG_2, 1, HG_DAMAGE, 1 * fury_damage);
             set_hitbox_value(AT_FSTRONG_2, 1, HG_VISUAL_EFFECT, fx_fireblow1);
@@ -1602,21 +1602,25 @@ switch (attack)
             }
         }
     
-        if (ustrong_loops_remaining <= 0) //final hit
+        if (ustrong_loops_remaining <= 0)  //multi hit
         {
             set_hitbox_value(AT_USTRONG_2, 1, HG_BASE_KNOCKBACK, 6);
             set_hitbox_value(AT_USTRONG_2, 1, HG_KNOCKBACK_SCALING, 0.7);
             set_hitbox_value(AT_USTRONG_2, 1, HG_BASE_HITPAUSE, 7);
             set_hitbox_value(AT_USTRONG_2, 1, HG_HITPAUSE_SCALING, 0.9); 
-            set_hitbox_value(AT_USTRONG_2, 1, HG_ANGLE, 70);
+            set_hitbox_value(AT_USTRONG_2, 1, HG_SDI_MULTIPLIER, 0.01);
+            set_hitbox_value(AT_USTRONG_2, 1, HG_ANGLE, 80);
+            set_hitbox_value(AT_USTRONG_2, 1, HG_ANGLE_FLIPPER, 7);
         }
-        else
+        else //final hit
         {
             reset_hitbox_value(AT_USTRONG_2, 1, HG_BASE_KNOCKBACK);
             reset_hitbox_value(AT_USTRONG_2, 1, HG_KNOCKBACK_SCALING);
             reset_hitbox_value(AT_USTRONG_2, 1, HG_BASE_HITPAUSE);
-            reset_hitbox_value(AT_USTRONG_2, 1, HG_HITPAUSE_SCALING); 
+            reset_hitbox_value(AT_USTRONG_2, 1, HG_HITPAUSE_SCALING);
+            reset_hitbox_value(AT_USTRONG_2, 1, HG_SDI_MULTIPLIER);
             reset_hitbox_value(AT_USTRONG_2, 1, HG_ANGLE);
+            reset_hitbox_value(AT_USTRONG_2, 1, HG_ANGLE_FLIPPER);
         }
 
         if (window == 5) //reset variables
@@ -1674,14 +1678,8 @@ switch (attack)
 }
 
 //theikos bar has turbo mode
-if (turbo_time && has_hit && !was_parried)
-{
-    can_jump = true;
-    can_attack = true;
-    can_special = true;
-    can_strong = true;
-    can_ustrong = true;
-}
+if (attack != AT_OVERDRIVE) turboToggle();
+
 
 if (theikos_active) //theikos bar normal strongs alterations
 {
@@ -1691,7 +1689,7 @@ else //normal bar theikos strongs alterations
 {
     //theikos F-strong final hit
     if (strong_charge < 30) set_hitbox_value(AT_FSTRONG_2, 3, HG_DAMAGE, 10);
-    else set_hitbox_value(AT_FSTRONG_2, 3, HG_DAMAGE, 3);
+    else set_hitbox_value(AT_FSTRONG_2, 3, HG_DAMAGE, 5);
     //theikos U-strong pillar
     set_hitbox_value(AT_USTRONG_2, 1, HG_DAMAGE, 1);
     //theikos D-strong grounded fire
@@ -1817,6 +1815,7 @@ if (attack == AT_OVERDRIVE)
                 set_hitbox_value(AT_OVERDRIVE, 2, HG_BASE_KNOCKBACK, 8);
                 set_hitbox_value(AT_OVERDRIVE, 2, HG_HITSTUN_MULTIPLIER, 0);
                 set_hitbox_value(AT_OVERDRIVE, 2, HG_ANGLE, 75);
+                set_hitbox_value(AT_OVERDRIVE, 2, HG_ANGLE_FLIPPER, 7);
             }
             else
             {
@@ -1898,20 +1897,16 @@ if (attack == AT_OVERDRIVE)
         {
             if (od_already_active) od_already_active = false;
             if (fs_force_fs) fs_force_fs = false; //final smash version
-            if (od_current >= od_max) godpower = true; //activates after the OD attack (rune version only)
+            if (od_current >= od_max && !theikos) godpower = true; //activates after the OD attack (rune version only)
+            if (theikos)
+            {
+                turbo_time = true;
+                od_current = 0;
+                od_ready = false;
+            }
         }
     }
 }
-/*
-else //this is just to make sure it disables itself with turbo mode
-{
-    if (od_prepare_godpower)
-    {
-        godpower = true;
-        od_already_active = false;
-    }
-}
-*/
 
 //lord's blessing buff on attacks
 if (godpower)
@@ -1988,7 +1983,7 @@ if (attack == 47)
             shake_camera(10, 15); //power, time
         }
     }
-    if (window == 4 && window_timer == get_window_value(49, 4, AG_WINDOW_LENGTH))
+    if (window == 4 && window_timer == get_window_value(47, 4, AG_WINDOW_LENGTH))
     {
         if (od_already_active) od_already_active = false;
     }
@@ -2040,5 +2035,19 @@ if (attack == 47)
     //Otherwise, return the closest free detection point.
     else {
         return [x2 - qpu_x, y2 - qpu_y];
+    }
+}
+
+#define turboToggle
+{
+    if (turbo_time && has_hit && !was_parried)
+    {
+        can_jump = true;
+        can_attack = true;
+        can_tilt = true;
+        can_special = true;
+        can_strong = true;
+        can_ustrong = true;
+        can_fast_fall = true;
     }
 }

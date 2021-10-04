@@ -115,6 +115,7 @@ if (attack == AT_DSTRONG_2)
     }
 }
 
+/*
 //power smash fire
 if (attack == player_id.AT_SKILL6)
 {
@@ -135,6 +136,7 @@ if (attack == player_id.AT_SKILL6)
         }
     }
 }
+*/
 
 //if bar hits an enemy he will pull
 if (attack == player_id.AT_SKILL9)
@@ -223,4 +225,10 @@ if (has_rune("H")) //U-strong hookshot
 if (attack == AT_DSTRONG && hbox_num == 5 && hitbox_timer == 43)
 {
     spawn_hit_fx(x, y, 301);
+}
+
+//light stun hitbox will backfire on bar if he got parried
+if (attack == 48 && player_id.lightstun_parried)
+{
+    can_hit_self = true;
 }

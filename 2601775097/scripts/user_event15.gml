@@ -462,7 +462,60 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
-	
+
+	initPatch("1.2", "3/10/2021");
+	initPatchWords_ext("Featuring a buncha rune patches.", fa_left, c_gray, 1, 0);
+	initPatchWords_ext("Gameplay Balance Changes:", fa_left, $5a7b1d, 1, 0);
+	initPatchWords("= Attacks that give Bar under 1 mp (or odp for rune O) now give 1 unit
+	= Rune A (Airdash) no longer stops Bar's momentum in midair
+	= Theïkós Bar now works in the CSS playtest
+	= Theïkós Bar's turbo mode now allows Bar to fastfall (i wanted to use iasa_script() but it gave me some issues)
+	= Theïkós F-strong angle flipper removed
+	= Theïkós F-strong now doesn't end the burning fury buff prematurely, and will end right after the last hit
+	= Both types of F-strongs are now reverseable in midair just as they are on the ground
+	= Theïkós D-strong ground fire kb scaling removed
+	= Theïkós D-strong ground fire base knockback decreased (3 -> 2.5)
+	= Rune J functionality changed entirely (Gauntlet melee attack damage increase -> MP gain from anyone affected by Bar's mechanics)
+	= Fixed bug that made Bar glitch out when using runes L and K together
+	= Fixed potential problems with rune K's mana cap
+	= Fixed issue where Bar would get the lightstun timer after getting parried from F-strong, regardless if rune C is used or not
+	= Disabled interraction between runes L and O, now they work indpendently of each other instead of doing the transformation
+	= Added new phone cheat: Mechanic Alternator (Allows you to decide if you want Bar's Holy Burning, Lightstunning, both or none to be active)
+	");
+	initPatchWords_ext("Buffs:", fa_left, $5a7b1d, 1, 0);
+	initPatchWords("+ Photon Blast now has a SDI multiplier (0 -> 0.7)
+	+ Lord's Punishment final fire launch angle flipper 7 added
+	+ Theïkós Bar knockback adjust decreased (0.8 -> 0.5)
+	+ Theïkós U-strong multihit angle altered (70 -> 80)
+	+ Theïkós U-strong multihit has a SDI multiplier (0 -> 0.01)
+	+ Theïkós U-strong multihit angle flipper added (0 -> 7)
+	+ Theïkós F-strong while rapid punching has a SDI multiplier (0 -> 0.01)
+	+ Theïkós F-strong base knockback increased (6 -> 8)
+	+ Theïkós F-strong kb scaling increased (0.9 -> 1.1)
+	+ Theïkós F-strong final hit damage on the normal form increased (3 -> 5)
+	+ Theïkós D-strong ground fire has a SDI multiplier (0 -> 0.01)
+	");
+	initPatchWords_ext("Nerfs:", fa_left, $5a7b1d, 1, 0);
+	initPatchWords("- F-strong base knockback decreased (7.5 -> 7)
+	- D-strong base knockback decreased (8 -> 7)
+	- Burning Fury dash attack damage decreased (4 -> 2)
+	- Burning Fury final blast damage decreased (10 -> 8)
+	- Burning Fury stun attack damage decreased (7 -> 5)
+	- Light Hookshot extended parry stun added
+	- Rune A (Airdash) thrust decreased (11.25 -> 9)
+	- Rune A (Airdash) + Theïkós thrust decreased (24 -> 12.8)
+	- Theïkós F-strong's final hit is now techable
+	- Theïkós F-strong hitstun multiplier decreased (1.5 -> 1.2)
+	");
+	initPatchWords_ext("Visual Changes:", fa_left, $5a7b1d, 1, 0);
+	initPatchWords("= Ember Fist sprites altered, his eye didn't glow like with all his other fire based moves
+	= Removed annoying message when Theïkós Bar shakes the screen with his strong charging
+	= Munophone now displays the name of Lord's Punishment properly on the frame data tab (Instead of ???)
+	");
+	initPatchWords_ext("Workshop Compatibilities:", fa_left, $5a7b1d, 1, 0);
+	initPatchWords("+ N/A
+	");
+
 	initPatch("1.1", "21/9/2021");
 	initPatchWords_ext("The first post-V1 patch.", fa_left, c_gray, 1, 0);
 	initPatchWords_ext("Gameplay Balance Changes:", fa_left, $5a7b1d, 1, 0);
@@ -833,37 +886,21 @@ with self{
 	// they're referenced elsewhere in code. The comment above each cheat tells
 	// you which files reference it.
 	
-	//mana debug - update.gml
+	//mana debug
 	initCheat("Mana Debug Mode", "mana_debug", [1, 2, 3, 4, 5, 6, 0], ["2 mps", "5 mps", "10 mps", "20 mps", "50 mps", "100 mps", "No Regen"], "Change the speed of Bar's natural mana regneration.
-	(Will not work with Theïkós and Rune K.)
+	(Will not work with Runes K and L.)
 	
 	Note: mps = Mana Per Sec.");
 
-	//stat debug - debug_draw.gml
+	//stat debug
 	initCheat("Stat Debug", "stats", [0, 1], ["Off", "On"], "Allows you to see various background stats.");
 
-	//stat debug - debug_draw.gml
+	//mp draining
 	initCheat("No Mana Drain", "mp_drain", [0, 1], ["Off", "On"], "Disables the MP drain from skills like Burning Fury and Guard Aura");
 
-	/*
-	// update.gml
-	initCheat("Max DJumps", "cheat_more_djumps", [1, 2, 3, 4, 5, 0], ["1", "2", "3", "4", "5", "0"], "Change Sandbert's maximum number of double jumps.");
-	
-	// attack_update.gml
-	initCheat("USpecial Flight Speed", "cheat_flight_speed", [1, 1.25, 1.5, 2, 3, 5, 10], ["1", "1.25", "1.5", "2", "3", "5", "10"], "Change the speed of USpecial's flight.");
-	
-	// attack_update.gml
-	initCheat("FSpecial Cancel", "cheat_fspecial_cancel", [0, 1], ["Off", "On"], "Cancel FSpecial into any action.");
-	
-	// update.gml
-	initCheat("wide?", "cheat_widebert", [1, 1.25, 1.5, 2, 3, 5, 10, 20, 0.5, 0.25, 0.1, 0], ["Normal", "wide", "w i d e", "w  i  d  e", "w   i   d   e", "w    i    d    e", "w     i     d     e", "w      h      a      t", "narrow", "narrower", "narrowerer", "."], "how");
-	
-	// init_shader.gml
-	initCheat("Disco", "cheat_skittles", [0, 1], ["Off", "On"], "skittles");
-	
-	// update.gml
-	initCheat("stop hitting yourself", "cheat_recoil", [0, 1], ["Off", "On"], "ouf");
-	*/
+	//mechanic alternator
+	initCheat("Mechanic Alternator", "tech_toggle", [1, 2, 3, 0], ["Burning only", "Lightstun only", "Burning + Lightstun", "None"], "Allows you to freely toggle Bar's mechanics without using the runes cuz I hate going to the character select menu.
+	(Will not work with Rune N.)");
 }
 
 

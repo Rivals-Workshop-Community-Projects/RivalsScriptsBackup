@@ -177,7 +177,8 @@ if (has_rune("A"))
 {
     if (runeA_dash && free)
     {
-        image_index ++;
+        sprite_index = sprite_get("dashstart");
+        image_index = runeA_dash_timer/2;
 
         if (runeA_dash_timer == 2) sound_play(sound_get("sfx_forceleap_jump"));
         if (runeA_dash_timer == 3)

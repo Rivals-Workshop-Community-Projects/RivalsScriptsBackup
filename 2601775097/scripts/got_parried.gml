@@ -13,13 +13,13 @@ accelblitz_active_timer = false;
 burst_pos = 56;
 burst_count = 0;
 
-if (!has_rune("N"))
+if (holyburn_mechanic_active)
 {
 	other.outline_color = [0, 0, 0];
 }
 
 //gtting parried sets lightstun_parried to true
-if (has_rune("N"))
+if (lightstun_mechanic_active)
 {
 	//moves that use the mechanic
 	switch (attack)
@@ -34,7 +34,7 @@ if (has_rune("N"))
 			break;
 		//only applies to the light attack Fstrong rune
 		case AT_FSTRONG:
-			if (has_rune("C") || !burningfury_active) ParriedLight();
+			if (has_rune("C") && !burningfury_active) ParriedLight();
 			break;
 
         //burning light dagger doesn't use it

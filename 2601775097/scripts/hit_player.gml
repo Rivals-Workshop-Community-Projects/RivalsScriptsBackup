@@ -5,8 +5,11 @@
 //bar can't get mana off non player characters, i wanna fix it
 if (mpGainable)
 {
-	mp_current += round(my_hitboxID.damage * 0.6);
-	if (mp_current >= mp_max) mp_current = mp_max;
+	if (my_hitboxID.damage * 0.6 >= 1) mp_current += round(my_hitboxID.damage * 0.6);
+	else if (my_hitboxID.damage * 0.6 < 1) mp_current += 1;
+
+	if (mp_current >= mp_max && !has_rune("K")) mp_current = mp_max;
+	else if (mp_current >= runeK_mp_max && has_rune("K")) mp_current = runeK_mp_max;
 	
 	mp_gain_hit = round(my_hitboxID.damage * 0.6); //stat debug thing
 }
@@ -123,23 +126,10 @@ switch (my_hitboxID.attack) //these moves apply holy burn regardless if burning 
 
 ////////////////////////////////////////////////////////RUNES SECTION////////////////////////////////////////////////////////
 
-if (has_rune("J")) //changes bar's damage output for gauntlet physical attacks
-{
-    switch (attack)
-    {
-        case AT_JAB:
-            if (my_hitboxID.hbox_num == 2) take_damage(hit_player_obj.player, player, floor(my_hitboxID.damage * runeJ_multiplyer));
-            break;
-        case AT_UTILT: case AT_FAIR: case AT_DAIR: case AT_FSTRONG:
-            take_damage(hit_player_obj.player, player, floor(my_hitboxID.damage * runeJ_multiplyer));
-            break;
-    }
-}
-
 if (has_rune("G") && state_cat != SC_HITSTUN) //warping light spears
 {
 	last_attack_hit = attack;
-
+	
 	switch (attack)
     {
 		case AT_USTRONG:
@@ -203,7 +193,7 @@ if (has_rune("H")) //U-strong hookshot
 	}
 }
 
-if (has_rune("N")) //light spark
+if (lightstun_mechanic_active) //light spark
 {
 	//moves that use the mechanic
 	switch (my_hitboxID.attack)
@@ -274,7 +264,11 @@ if (has_rune("N")) //light spark
 
 if (has_rune("O")) //OVERDRIVE attack
 {
-	if (od_gainable) od_current += round(my_hitboxID.damage * 0.4);
+	if (od_gainable) 
+	{
+		if (my_hitboxID.damage * 0.4 >= 1) od_current += round(my_hitboxID.damage * 0.4);
+		else if (my_hitboxID.damage * 0.4 < 1) od_current += 1;
+	}
 
 	if (od_current >= od_max) od_current = od_max;
 	else if (od_current < od_max && !godpower) gauge_OD_timer_active = true;

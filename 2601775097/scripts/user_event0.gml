@@ -57,7 +57,7 @@ if (theikos_active)
     air_accel = .5;
     max_djumps = 50;
     fast_fall = 40; //fast fall speed
-    knockback_adj = 0.8; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+    knockback_adj = 0.5; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier //0.8
     wave_land_time = 2;
     wave_land_adj = 2.25; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
     wave_friction = .2; //grounded deceleration when wavelanding
@@ -97,7 +97,7 @@ if (theikos_active)
 
     set_hitbox_value(AT_TAUNT, 1, HG_BASE_KNOCKBACK, 30); //taunt knockback basically insta-kills
 
-    if (smash_charging) shake_camera(strong_charge/10, 10); //charging a strong will make the screen shake depending on the power
+    if (smash_charging) shake_camera(ceil(strong_charge/10), 10); //charging a strong will make the screen shake depending on the power
 
     //healing if you have full mana... which is basically always buuuuut it makes things more interesting for the 1 sec you don't lol
     if (mp_current == mp_max)

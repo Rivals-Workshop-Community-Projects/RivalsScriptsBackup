@@ -69,13 +69,6 @@ sprite_change_offset("lighthookshot_air", 70, 94);
 
 sprite_change_offset("lordpunishment", 46, 94);
 
-//misc
-sprite_change_offset("taunt", 30, 78);
-sprite_change_offset("phone_open", 32, 78);
-sprite_change_offset("intro", 64, 126);
-sprite_change_offset("plat_post", 64, 94);
-sprite_change_offset("plat_pre", 64, 94);
-
 //swapped strongs stuff
 sprite_change_offset("dstrong_t", 48, 128);
 
@@ -201,6 +194,11 @@ sprite_change_offset("bibical_idle", 70, 112);
 sprite_change_offset("bibical_death", 70, 112);
 
 //misc
+sprite_change_offset("taunt", 30, 78);
+sprite_change_offset("phone_open", 32, 78);
+sprite_change_offset("intro", 64, 126);
+sprite_change_offset("plat_post", 64, 94);
+sprite_change_offset("plat_pre", 64, 94);
 sprite_change_offset("wait", 46, 94);
 
 set_victory_theme(sound_get("mus_victory"));
@@ -238,8 +236,3 @@ sprite_change_offset("last_resort", 27, 39);
 
 //green flower zone
 sprite_change_offset("GFZ_signpost", 18, 41);
-
-
-
-
-sprite_change_offset("article_placeholder", 32, 64);

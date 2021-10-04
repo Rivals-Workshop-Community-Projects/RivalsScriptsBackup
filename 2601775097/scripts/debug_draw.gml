@@ -106,6 +106,7 @@ if (phone_cheats[stats] == 1)
     if (od_gainable) od_gain_word = "true";
     else od_gain_word = "false";
 }
+
 //draw_debug_text(x, y, "text = " + string(variable));
 
 //actuall variable checking stuff i did over time

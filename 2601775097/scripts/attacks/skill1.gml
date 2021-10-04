@@ -174,7 +174,7 @@ set_hitbox_value(atk, hitboxNum, HG_WIDTH, 72);
 set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 32);
 set_hitbox_value(atk, hitboxNum, HG_SHAPE, 2);
 set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 8); //1 = low priority over other moves || 10 = highest
-set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 4);
+set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 2); //4
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 10); //irrelevant lmao
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 10); //also irrelevant lmfao
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 8); //hitstun //14
@@ -200,7 +200,7 @@ set_hitbox_value(atk, hitboxNum, HG_WIDTH, 72);
 set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 32);
 set_hitbox_value(atk, hitboxNum, HG_SHAPE, 2);
 set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 8); //1 = low priority over other moves || 10 = highest
-set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 10);
+set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 8); //10
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 40);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.6);
@@ -224,7 +224,7 @@ set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, -30);
 set_hitbox_value(atk, hitboxNum, HG_WIDTH, 90);
 set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 60);
 set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 4); //1 = low priority over other moves || 10 = highest
-set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 7);
+set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 5); //7
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 0);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 1);
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 12); //hitstun
