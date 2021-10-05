@@ -14,3 +14,8 @@ if(attack == AT_DATTACK){
 	hsp=0;
 	vsp=0;
 }
+
+//Nspecial no parry stun like Clairen grab
+if(my_hitboxID.attack == AT_NSPECIAL){
+    parry_lag = 0;
+}

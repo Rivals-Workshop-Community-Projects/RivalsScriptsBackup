@@ -229,7 +229,7 @@ if (attack == AT_NTHROW && instance_exists(grabbed_player_obj)) {
 }
 
 // A+B Command Grab Grounded + Back Slam
-//AT_Extra_1 + Nspecial_2 --------------------------------------------------------------------------------------------------------------------
+//AT_Nspecial + Nspecial_2 --------------------------------------------------------------------------------------------------------------------
 
 // Sets Daora to be looking behind her at end of move
 if (attack == AT_NSPECIAL_2 && window == 5 && window_timer == get_window_value(AT_NSPECIAL_2,5,AG_WINDOW_LENGTH)) { // 180 Degree Rotate Opponent Hits Floor
@@ -493,8 +493,8 @@ if (attack == AT_EXTRA_3 && window == 4 && window_timer == 1) {
 }
 
 if (attack == AT_EXTRA_3 && instance_exists(grabbed_player_obj)) {
-	move_cooldown[AT_EXTRA_1] = 120;
-	move_cooldown[AT_EXTRA_2] = 120;
+	move_cooldown[AT_NSPECIAL] = 20;
+	move_cooldown[AT_EXTRA_2] = 20;
 	hurtboxID.sprite_index = get_attack_value(AT_EXTRA_3, AG_HURTBOX_SPRITE); // Set proper hurtbox, thanks Shampoo!
 	
 	//first, drop the grabbed player if this is the last window of the attack, or if they somehow escaped hitstun.
@@ -513,13 +513,24 @@ if (attack == AT_EXTRA_3 && instance_exists(grabbed_player_obj)) {
 		}
 
 		if (window = 1) {
-			if(window_timer <= 2){
-				var pull_to_x = grabbed_player_relative_x;
-				var pull_to_y = grabbed_player_relative_y - floor(char_height/2);
+			if(free){
+				if(window_timer <= 2){
+					var pull_to_x = grabbed_player_relative_x;
+					var pull_to_y = grabbed_player_relative_y - floor(char_height/2);
+				}
+				var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
+				x = x + ease_linear(0, pull_to_x, window_timer, window_length);
+				y = y + ease_linear(0, pull_to_y, window_timer, window_length);
 			}
-			var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
-			x = x + ease_linear(0, pull_to_x, window_timer, window_length);
-			y = y + ease_linear(0, pull_to_y, window_timer, window_length);
+			if(!free){
+				if(window_timer <= 2){
+					var pull_to_x = 20 * spr_dir;
+					var pull_to_y = 0;
+				}
+				var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
+				grabbed_player_obj.x = x + ease_circOut( grabbed_player_relative_x, pull_to_x, window_timer, window_length);
+				grabbed_player_obj.y = y + ease_circOut( grabbed_player_relative_y, pull_to_y, window_timer, window_length);
+			}
 		}
 		if (window > 2) {
 			x = grabbed_player_obj.x
@@ -535,26 +546,50 @@ if(attack == AT_FSPECIAL || attack == AT_FTHROW || attack == AT_FSPECIAL_2 || at
 	//Referenced from Amvira's code for anti-ganoncide; release grabbed foe once you're almost out of the viewport
 	if(ganoncide_preventor_available_flag = true){
 	/*
-		print("room_width:" + string(room_width));
-		print("room_height:" + string(room_height));
-		print("x:" + string(x));
-		print("y:" + string(y));
-		*/
-		var bottom_boundry = room_height - 20;
-		var left_side_boundry = 20;
-		var right_side_boundry = room_width - 20;
-		if(x < left_side_boundry ||
-			x > right_side_boundry ||
-			y > bottom_boundry){
-			if(grabbed_player_obj != noone){
+	print("room_width:" + string(room_width));
+	print("room_height:" + string(room_height));
+	print("x:" + string(x));
+	print("y:" + string(y));
+	*/
+	var bottom_boundry = room_height - 100;
+	var left_side_boundry = 20;
+	var right_side_boundry = room_width - 20;
+	if(x < left_side_boundry ||
+		x > right_side_boundry ||
+		y > bottom_boundry){
+			if(attack != AT_FSPECIAL){
+				if(article_platform_id == noone){
+					// Creat platform
+					article_platform_id = instance_create(x + (30 * spr_dir),y+60,"obj_article_platform");
+					
+					// Modiify hitboxes of the grab to prevent cheese by sending the opponent upwards.
+					if(attack == AT_FTHROW){ // Fthrow is the only non boosted grab
+					//set_hitbox_value(attack,get_num_hitboxes(attack),HG_HITSTUN_MULTIPLIER,.5);
+					set_hitbox_value(attack,get_num_hitboxes(attack),HG_KNOCKBACK_SCALING,.1);
+					set_hitbox_value(attack,get_num_hitboxes(attack),HG_BASE_KNOCKBACK,15);
+					set_hitbox_value(attack,get_num_hitboxes(attack),HG_ANGLE,90);
+					set_hitbox_value(attack,get_num_hitboxes(attack),HG_HITSTUN_MULTIPLIER,.5);
+					}
+					// Modify all the hitboxes of the grabs.
+					else{
+					set_hitbox_value(attack,get_num_hitboxes(attack),HG_KNOCKBACK_SCALING,1.2);
+					set_hitbox_value(attack,get_num_hitboxes(attack),HG_BASE_KNOCKBACK,10);
+					set_hitbox_value(attack,get_num_hitboxes(attack),HG_ANGLE,90);
+					}
+				}
+			}
+			else {
+				if(grabbed_player_obj != noone){
 				grabbed_player_obj.state = PS_IDLE_AIR;
 				grabbed_player_obj.vsp = -7;
 				grabbed_player_obj = noone;}
-			set_state(PS_IDLE_AIR);
-			vsp = -7;
-			hsp = 0;
+				set_state(PS_IDLE_AIR);
+				vsp = -5;
+				hsp = 0;
+			}
 			ganoncide_preventor_available_flag = false; // Set the flag to false to prevent running this until landing again.
 		}
+	
 	}
 }
 //#endregion
@@ -593,14 +628,8 @@ if(attack == AT_NAIR && window == 3 && has_hit == true && down_down == false){
 vsp = 0;
 }
 
-// Nspecial Cooldown
-if(attack == AT_NSPECIAL || attack == AT_NSPECIAL_AIR){
-	move_cooldown[AT_NSPECIAL] = 30;
-	move_cooldown[AT_NSPECIAL_AIR] = 30;
-}
-
 // Nspecial / Dspecial Air landing lag
-if((attack == AT_NSPECIAL_AIR || attack == AT_DSPECIAL_AIR) && !free){
+if((attack == AT_EXTRA_2 || attack == AT_DSPECIAL_AIR) && !free){
 	set_state(PS_LANDING_LAG);
 }
 
@@ -614,26 +643,29 @@ if(attack == AT_EXTRA_3 && free){
 
 //#region A+B Input Command Grab Code
 //A+B Input Command Grab Code
-if(move_cooldown[AT_EXTRA_1] == 0 && move_cooldown[AT_EXTRA_2] == 0 && (window == 1 || ((attack == AT_JAB || attack == AT_NAIR) && has_hit == true && was_parried == false))){ //Jab Exception minus parry
-	if(attack_down && special_down){
+if((move_cooldown[AT_EXTRA_2] == 0 || move_cooldown[AT_NSPECIAL] == 0) && 
+(((attack == AT_JAB && window < 8) || (attack == AT_NAIR && window < 4)) 
+&& has_hit == true && was_parried == false)){ //Jab Exception minus parry
+	if(special_down){
 		attack_end();
 		if(free){ // Air Version
 			set_attack(AT_EXTRA_2);
 			hurtboxID.sprite_index = get_attack_value(AT_EXTRA_2, AG_HURTBOX_SPRITE); // Set proper hurtbox, thanks Shampoo
-			move_cooldown[AT_EXTRA_2] = 50;
+			move_cooldown[AT_EXTRA_2] = 25;
 			window = 1;
 			window_timer = 1;
 		}
 		
 		if(!free){ // Ground Version
-			set_attack(AT_EXTRA_1);
-			hurtboxID.sprite_index = get_attack_value(AT_EXTRA_1, AG_HURTBOX_SPRITE); // Set proper hurtbox, thanks Shampoo
-			move_cooldown[AT_EXTRA_1] = 50;
+			set_attack(AT_NSPECIAL);
+			hurtboxID.sprite_index = get_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE); // Set proper hurtbox, thanks Shampoo
+			move_cooldown[AT_NSPECIAL] = 25;
 			window = 1;
 			window_timer = 1;
 		}
 	}
 }
+
 //#endregion
 
 #define Resolve_Draw_Offsets(object_ID,spr_dir,grabbed_player_obj_spr_angle)

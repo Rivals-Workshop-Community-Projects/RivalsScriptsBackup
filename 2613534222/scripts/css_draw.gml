@@ -5,7 +5,7 @@ patch_ver = "";
 patch_day = "18";
 patch_month = "SEPT";
 
-var num_alts = 22;
+var num_alts = 23;
 var alt_cur = get_player_color(player);
 
 // Intro Sound
@@ -34,7 +34,7 @@ alt_name[18]  = "Gold";
 alt_name[19]  = "Dark";
 alt_name[20]  = "Darker";
 alt_name[21]  = "Light";
-
+alt_name[22]  = "Coal";
 
 
 

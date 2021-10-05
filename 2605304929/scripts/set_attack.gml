@@ -7,7 +7,7 @@ if (attack == AT_DSPECIAL && free) {
 }
 
 if (attack == AT_NSPECIAL && free) {
-    attack = AT_NSPECIAL_AIR;
+    attack = AT_EXTRA_2;
 }
 
 if(attack == AT_USTRONG){
@@ -17,6 +17,50 @@ if(attack == AT_USTRONG){
 	reset_attack_value(AT_USTRONG,AG_NUM_WINDOWS);
 }
 
+// Gannoncide Platform Code
+
+if(attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL){
+	var non_boosted_grab;
+	var boosted_grab;
+	
+	switch(attack){ // Map the start up move to the grab move
+		case AT_FSPECIAL:
+		non_boosted_grab = AT_FTHROW;
+		boosted_grab = AT_FSTRONG_2;
+		break;
+		
+		case AT_USPECIAL:
+		non_boosted_grab = AT_UTHROW;
+		boosted_grab = AT_USPECIAL_2;
+		break;
+		
+		case AT_DSPECIAL:
+		non_boosted_grab = AT_DTHROW;
+		boosted_grab = AT_DSPECIAL_2;
+		break;
+		
+		default:
+		break;
+	}
+	// Non Boosted Grab
+	reset_hitbox_value(non_boosted_grab,get_num_hitboxes(non_boosted_grab),HG_KNOCKBACK_SCALING);
+	reset_hitbox_value(non_boosted_grab,get_num_hitboxes(non_boosted_grab),HG_BASE_KNOCKBACK);
+	reset_hitbox_value(non_boosted_grab,get_num_hitboxes(non_boosted_grab),HG_ANGLE);
+	
+	// Boosted Grab
+	reset_hitbox_value(boosted_grab,get_num_hitboxes(boosted_grab),HG_KNOCKBACK_SCALING);
+	reset_hitbox_value(boosted_grab,get_num_hitboxes(boosted_grab),HG_BASE_KNOCKBACK);
+	reset_hitbox_value(boosted_grab,get_num_hitboxes(boosted_grab),HG_ANGLE);
+}
+/*
+if(free){ // Air Version
+	set_attack(AT_NSPECIAL);
+	hurtboxID.sprite_index = get_attack_value(AT_EXTRA_2, AG_HURTBOX_SPRITE); // Set proper hurtbox, thanks Shampoo
+	move_cooldown[AT_EXTRA_2] = 50;
+	window = 1;
+	window_timer = 1;
+}
+*/
 /* Depreciated for the two attack method
 // Section for reseting hitboxes based on status build up
 var temp_attack = attack;

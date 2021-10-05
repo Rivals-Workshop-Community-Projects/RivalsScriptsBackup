@@ -241,6 +241,22 @@ if orbitar_parry_mode {
     }
 }
 
+//command grabs
+with oPlayer if id != other.id && !hitpause && last_player == other.player && (state == PS_HITSTUN || state == PS_HITSTUN_LAND) {
+	if pit_utilt > 0 {
+		x = lerp(x, other.x + 25*other.spr_dir, 0.2)
+		y = lerp(y, other.y - 45, 0.2)
+		pit_utilt--
+	}
+	
+	if pit_ustrong > 0 {
+		x = lerp(x, other.x, 0.1)
+		y = lerp(y, other.y - 70, 0.1)
+		pit_ustrong--
+	}
+}
+
+
 /*
 if taunt_pressed with oPlayer {
     if id != other.id {

@@ -30,8 +30,10 @@ if attack == AT_DSPECIAL_2{
 				var htx = homing_target.x;
 				var hty = homing_target.y - homing_target.char_height / 2;
 				
+				var home_amount = 0.05; // 0.25
+				
 				if point_distance(x, y, htx, hty) > point_distance(x+hsp, y+vsp, htx, hty){
-					move_angle -= angle_difference(move_angle, point_direction(x, y, htx, hty)) * 0.25;
+					move_angle -= angle_difference(move_angle, point_direction(x, y, htx, hty)) * home_amount;
 				}
 			}
 			

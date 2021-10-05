@@ -28,7 +28,7 @@ set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FTILT, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.2);
 
-set_num_hitboxes(AT_FTILT,2);
+set_num_hitboxes(AT_FTILT,1);
 
 set_hitbox_value(AT_FTILT, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_TYPE, 1);

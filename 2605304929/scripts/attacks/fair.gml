@@ -18,7 +18,7 @@ var window_num = 1;
 
 // Window #1 / Frame(s) # 0-4 / Start Up
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 15);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 16);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 
@@ -58,37 +58,37 @@ set_num_hitboxes(attack, 3); // Swap 1 for number of hitboxes
 var hitbox_num = 1;
 var window_for_hitbox = 1; 
 
-//Sweet Spot
+//Sweet 1 Spot
 window_for_hitbox = 2; // Set this to change the window that the hitbox comes out at and its length quickly
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 35);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -41);
-set_hitbox_value(attack, hitbox_num, HG_WIDTH, 25);
-set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 25);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 47);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -45);
+set_hitbox_value(attack, hitbox_num, HG_WIDTH, 27);
+set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 34);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 8);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 12);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
 set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .9);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
-set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 305); // 305 - basic sweetspot
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 12);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1.2);
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 157); // 157 - lightning extra large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
 
 hitbox_num++;
 
-//Strong start up no sweetspot
+//Strong 2 start up no sweetspot
 window_for_hitbox = 2; // Set this to change the window that the hitbox comes out at and its length quickly
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 4);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -40);
-set_hitbox_value(attack, hitbox_num, HG_WIDTH, 58);
-set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 42);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 9);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -43);
+set_hitbox_value(attack, hitbox_num, HG_WIDTH, 56);
+set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 62);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 6);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 9);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
@@ -97,12 +97,12 @@ set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 304); // 304 - basic large
-set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
 
 hitbox_num++;
 
-//Hitbox 2 Linger Knee Hitbox
+//Hitbox 3 Linger Knee Hitbox
 window_for_hitbox = 3; // Set this to change the window that the hitbox comes out at and its length quickly
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);

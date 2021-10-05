@@ -114,14 +114,15 @@ window_for_hitbox = 4;
     set_hitbox_value(attack, hitbox_num, HG_ANGLE, 90); // This is changed in attack update if this move is used in air.
     set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 5);
     set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 0);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 7);
-    set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 4);
+    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 20);
+    set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
+    set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 6);
     //set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, hitfx_large_elec); // 157 - lightning extra large
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 0);
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_Y_OFFSET, 0);
-    //set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
+    set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
 /*
 //Template for attacks - 
 

@@ -72,15 +72,16 @@ sprite_change_offset("extra_3_behind", 128, 162); // Execute Variant Aboce Sprit
 
 //Element Sprites
 sprite_change_offset("buildup_electricity", 128, 128); // 
-sprite_change_offset("buildup_water", 128, 128);
-sprite_change_offset("meter_electricity", 128, 128);
+sprite_change_offset("buildup_water", 128, 128); //
+sprite_change_offset("meter_electricity", 128, 128); //
 sprite_change_offset("meter_water", 128, 128); //
 
 //HitFX
-sprite_change_offset("hitfx_large_elec", 128, 128); // 
-sprite_change_offset("hitfx_large_water", 128, 128); // 
+sprite_change_offset("hitfx_large_elec", 128, 128); //
+sprite_change_offset("hitfx_large_water", 128, 128); //
+sprite_change_offset("hitfx_large_combined", 128, 128); //
 sprite_change_offset("hitfx_water_paw", 128, 128); // 
-sprite_change_offset("hitfx_elec_paw", 128, 128); // 
+sprite_change_offset("hitfx_elec_paw", 128, 128); //
 
 //Hurt Sprites
 sprite_change_offset("hurt", 128, 162);
@@ -90,6 +91,13 @@ sprite_change_offset("downhurt", 128, 162);
 sprite_change_offset("bouncehurt", 128, 162);
 sprite_change_offset("spinhurt", 128, 162);
 sprite_change_offset("hurtground", 128, 162);
+
+//Platforms
+sprite_change_offset("platform_grow", 128, 128);
+sprite_change_offset("platform_idle", 128, 128);
+sprite_change_offset("platform_impact", 128, 128);
+sprite_change_offset("platform_vanish", 128, 128);
+sprite_change_offset("platform_icon", 128, 128);
 
 //Other Stuff
 sprite_change_offset("intro", 128, 162);

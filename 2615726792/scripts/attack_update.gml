@@ -2,8 +2,8 @@
 
 if (attack == AT_JAB || attack == AT_NAIR)
 {
-	move_cooldown[AT_JAB] = 30;
-	move_cooldown[AT_NAIR] = 30;
+	move_cooldown[AT_JAB] = 35;
+	move_cooldown[AT_NAIR] = 35;
 }
 
 //====> FAIR ##########################################################
@@ -19,6 +19,8 @@ if (attack == AT_FAIR)
 		//hsp = 6 * spr_dir;
 		can_jump = true;
 	}
+	
+	move_cooldown[AT_FAIR] = 1000;
 }
 
 //====> B - Reversals ##########################################################

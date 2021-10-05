@@ -41,8 +41,8 @@ set_hitbox_value(AT_FTILT, 1, HG_MUNO_HITBOX_NAME, "Melee");
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FTILT, 2, HG_WINDOW, 3);
 // set_hitbox_value(AT_FTILT, 2, HG_WINDOW_CREATION_FRAME, 1);
-set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 10);
-set_hitbox_value(AT_FTILT, 2, HG_HITBOX_X, 20);
+set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 16); // 10
+set_hitbox_value(AT_FTILT, 2, HG_HITBOX_X, 40); // 20
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_Y, -48);
 set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 32);
 set_hitbox_value(AT_FTILT, 2, HG_HEIGHT, 24);
@@ -59,7 +59,7 @@ set_hitbox_value(AT_FTILT, 2, HG_MUNO_HITBOX_NAME, "Projectile");
 set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_SPRITE, sprite_get("ftilt_proj"));
 set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_ANIM_SPEED, 0.4);
 set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_HSPEED, 25);
+set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_HSPEED, 18); // 25
 set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_VSPEED, 0);
 
 if !has_rune("A") exit;

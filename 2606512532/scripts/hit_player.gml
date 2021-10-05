@@ -28,3 +28,12 @@ if echo {
         hit_player_obj.should_make_shockwave = false;
     }
 }
+
+//utilt command grab
+if my_hitboxID.attack == AT_UTILT && my_hitboxID.hbox_num <= 2 && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND) {
+    hit_player_obj.pit_utilt = 6
+}
+
+if my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 1 && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND) {
+    hit_player_obj.pit_ustrong = 6
+}

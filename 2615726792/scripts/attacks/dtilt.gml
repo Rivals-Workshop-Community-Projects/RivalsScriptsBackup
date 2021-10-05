@@ -9,7 +9,7 @@ var ig = 1;
 
 //Down Tilt Start
 set_window_value(at, ig, AG_WINDOW_TYPE, 1);
-set_window_value(at, ig, AG_WINDOW_LENGTH, 6);
+set_window_value(at, ig, AG_WINDOW_LENGTH, 4);
 set_window_value(at, ig, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(at, ig, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(at, ig, AG_WINDOW_HAS_SFX, 1);
@@ -46,7 +46,7 @@ var ig = 1;
 set_hitbox_value(at, ig, HG_HITBOX_TYPE, 1);
 set_hitbox_value(at, ig, HG_WINDOW, 2);
 set_hitbox_value(at, ig, HG_LIFETIME, 3); // changed lifetime to match length of active window
-set_hitbox_value(at, ig, HG_HITBOX_X, 39);
+set_hitbox_value(at, ig, HG_HITBOX_X, 43);
 set_hitbox_value(at, ig, HG_HITBOX_Y, -14);
 set_hitbox_value(at, ig, HG_WIDTH, 41);
 set_hitbox_value(at, ig, HG_HEIGHT, 32);

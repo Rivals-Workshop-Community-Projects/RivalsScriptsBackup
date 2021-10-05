@@ -10,8 +10,6 @@ if window == 3 {
 	can_wall_jump = true
 }
 break;
-case AT_DAIR:
-break;
 case AT_JAB:
 move_cooldown[AT_JAB] = 20
 break;

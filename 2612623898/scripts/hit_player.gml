@@ -57,5 +57,6 @@ if (my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 1) {
 			var new_grab_distance = point_distance(x, y,     hit_player_obj.x,     hit_player_obj.y);
 			if (new_grab_distance < old_grab_distance) { grabbed_player_obj = hit_player_obj; }
 		}
+		grabbed_player_obj.y -= 3;
 	}
 }

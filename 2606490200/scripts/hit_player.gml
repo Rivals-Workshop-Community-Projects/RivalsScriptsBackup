@@ -115,7 +115,7 @@ if btrain < 100 {
 if my_hitboxID.attack == AT_NAIR or my_hitboxID.attack == AT_JAB {
  
     
-    btrain += my_hitboxID.damage*2
+    btrain += my_hitboxID.damage*1
 }
 
 if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 1{

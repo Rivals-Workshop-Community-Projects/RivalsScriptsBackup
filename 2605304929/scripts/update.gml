@@ -2,7 +2,7 @@
 //#region Small Gameplay Code
 
 //Gannoncide
-if(!free && ganoncide_preventor_available_flag == false){
+if(!free && ganoncide_preventor_available_flag == false && article_platform_id == noone){
 	ganoncide_preventor_available_flag = true // will reset flag on landing
 }
 
@@ -16,29 +16,24 @@ if(!free && move_cooldown[AT_DSPECIAL_AIR] > 0 ){
 //#region Other character update
 with(asset_get("oPlayer")){
     if (id != other.id){
-		Decrement_Element_Over_Time();
+		//Decrement_Element_Over_Time();
 		Training_Functionality();
 		Opponent_Respawn();
-		// Clamp to zero to prevent negative numbers
-		if(status_effect_electric < 0){status_effect_electric = 0;}
-		if(status_effect_water < 0){status_effect_water = 0;}
-	    //Decrement timers
-    	if(buildup_electric_fx_timer > 0){buildup_electric_fx_timer--;}
-    	if(buildup_water_fx_timer > 0){buildup_water_fx_timer--;}
-
-		//print(buildup_electric_fx_timer);
-	
-    }
+		// Cleanse mark on Death or parry.
+		if(state == PS_RESPAWN){
+			status_effect_water = false;
+		}
+    }	
 }
+
+// Cleanse mark on Death or parry if Daora is killed or parry
+	if(state == PS_RESPAWN || was_parried == true){
+			with(asset_get("oPlayer")){
+				status_effect_water = false;
+			}
+		}
 //#endregion
 
-#define Decrement_Element_Over_Time()
-{
-	if(get_gameplay_time() % 120 == 0){ //Timer in frames
-	    if(status_effect_electric > 0){status_effect_electric--;}
-	    if(status_effect_water > 0){status_effect_water--;}
-	}
-}
 
 #define Training_Functionality()
 {
@@ -60,7 +55,6 @@ with(asset_get("oPlayer")){
 #define Opponent_Respawn()
 {
 	if(state == PS_RESPAWN){
-	status_effect_electric = 0;
-	status_effect_water = 0;
+	status_effect_water = false;
 	}
 }

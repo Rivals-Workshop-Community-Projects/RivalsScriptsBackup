@@ -94,6 +94,11 @@ switch (my_hitboxID.attack)
     break;
 }
 
+if (my_hitboxID.attack == AT_NSPECIAL and !hit_player_obj.clone)
+{
+  hit_player_obj.x = lerp(hit_player_obj.x,my_hitboxID.x,0.15);
+  hit_player_obj.y = lerp(hit_player_obj.y,my_hitboxID.y,0.15);
+} 
 ///Sai stuffs
 //if my_hitboxID.damage <= 3 {
 //       sound_play(asset_get("sfx_waterhit_medium"),false,noone, 0.6 + my_hitboxID.damage/20 )

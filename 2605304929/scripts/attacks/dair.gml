@@ -46,7 +46,7 @@ set_window_value(attack, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //Hitbox Values --------------------------------------------------------------------------
 //Set Number of Hitboxes
-set_num_hitboxes(attack, 2); // Swap 1 for number of hitboxes
+set_num_hitboxes(attack, 1); // Swap 1 for number of hitboxes
 
 var hitbox_num = 1;
 var window_for_hitbox = 1; 
@@ -57,10 +57,10 @@ set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 1);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, -3);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, 8);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, -4);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -1);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 35);
-set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 38);
+set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 60);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 6);
 set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 8);
 set_hitbox_value(attack, hitbox_num, HG_ANGLE, 270);
@@ -73,7 +73,7 @@ set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 161); // 161 - water extr
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_CAMERA_SHAKE, 1);
 hitbox_num++;
-
+/*
 //Body sourspot hitbox (Aka nipple hitbox)
 window_for_hitbox = 2; // Set this to change the window that the hitbox comes out at and its length quickly
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
@@ -94,7 +94,7 @@ set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 150); // 150 - light water medium
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 hitbox_num++;
-
+*/
 /*
 //Template for attacks - 
 

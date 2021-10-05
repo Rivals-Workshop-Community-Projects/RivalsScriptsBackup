@@ -9,7 +9,5 @@ buildup_electric_fx = 0;
 buildup_water_fx = 0;
 
 // Initialize fx timers to zero;
-buildup_electric_fx_initial_timer = 20;
-buildup_water_fx_initial_timer = 20;
-buildup_electric_fx_timer = 0;
+buildup_water_fx_time_limit = 600; // 10 seconds
 buildup_water_fx_timer = 0;

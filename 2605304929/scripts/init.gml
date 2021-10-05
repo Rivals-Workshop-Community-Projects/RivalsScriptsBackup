@@ -120,6 +120,7 @@ grabbed_player_obj_draw_y = 0;
 AB_input_prevention_flag = false;
 
 //Status Effect
+//Status Effect
 electric_buff_water_attack_threshold = 9;
 water_buff_electric_attack_threshold = 15;
 water_buff_electric_attack_flag = false;
@@ -135,6 +136,7 @@ hitfx_elec_paw = hit_fx_create(sprite_get("hitfx_elec_paw"),25);
 hitfx_consume_water = hit_fx_create(sprite_get("consume_water"),30);
 hitfx_consume_elec = hit_fx_create(sprite_get("consume_elec"),30);
 hitfx_bubbles = hit_fx_create(sprite_get("bubbles"),30);
+hitfx_large_combined = hit_fx_create(sprite_get("hitfx_large_combined"),15);
 
 // Lukaru's Intro Code
 // intro
@@ -142,3 +144,6 @@ introTimer = -4;
 
 // Hud Code
 distance_to_opponent = [0,0,0];
+
+// Platform Code
+article_platform_id = noone;

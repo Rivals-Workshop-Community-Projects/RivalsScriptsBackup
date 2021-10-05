@@ -26,8 +26,8 @@ walk_anim_speed = .15;
 dash_anim_speed = .2;
 pratfall_anim_speed = .25;
 
-walk_speed = 3;
-walk_accel = 0.2;
+walk_speed = 7.5;
+walk_accel = 1;
 walk_turn_time = 6;
 initial_dash_time = 10;
 initial_dash_speed = 8;
@@ -40,9 +40,9 @@ ground_friction = .5;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
-jump_speed = 10;
+jump_speed = 10.5;
 short_hop_speed = 5;
-djump_speed = 8;
+djump_speed = 8.5;
 leave_ground_max = 4; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 4; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state

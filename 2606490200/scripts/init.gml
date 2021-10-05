@@ -59,10 +59,10 @@ jump_start_time = 5;
 jump_speed = 12;
 short_hop_speed = 7.5;
 djump_speed = 12;
-leave_ground_max = 7.00; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 7.00; //the maximum hsp you can have when jumping from the ground
+leave_ground_max = 5.00; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 5.00; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5.00; //the maximum hsp you can accelerate to when in a normal aerial state
-jump_change = 4; //maximum hsp when double jumping. If already going faster, it will not slow you down
+jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = 0.3;
 prat_fall_accel = 1; //multiplier of air_accel while in pratfall
 air_friction = 0.05;
@@ -108,7 +108,7 @@ techroll_speed = 9.00;
 air_dodge_startup_frames = 1;
 air_dodge_active_frames = 4;
 air_dodge_recovery_frames = 3;
-air_dodge_speed = 5;
+air_dodge_speed = 6;
 
 //roll animation frames
 roll_forward_startup_frames = 1;

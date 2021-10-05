@@ -5,7 +5,11 @@ hit_player_obj = self
 
 }
 
-
+if djumps == 1 {
+	djump_speed = 9;
+} else {
+	djump_speed = 11;
+}
 
 if state == PS_PRATFALL {
 	can_fast_fall = true
@@ -61,7 +65,9 @@ if htrain >= 100 && htrain < 300 {
     
     air_dodge_speed = 7.50;
     
-    
+    leave_ground_max = 6.00; //the maximum hsp you can have when you go from grounded to aerial without jumping
+    max_jump_hsp = 6.00; //the maximum hsp you can have when jumping from the ground
+ 
     init_shader()
 }
 
@@ -365,8 +371,9 @@ if move_cooldown[AT_USPECIAL] == 1 {
 	spawn_hit_fx(x,y - 50,305)
 	sound_play(asset_get("sfx_bird_sidespecial_start"));
 
-	hsp /= 2 
-	old_hsp /= 2
+	hsp /= 6 
+	old_hsp /= 6
+	vsp = -8
 }
 	
 //Update.gml

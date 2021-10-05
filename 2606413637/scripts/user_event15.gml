@@ -207,6 +207,7 @@ initWords("Goku's NSpecial and FSpecial both use the same system for precise aim
 initWords("You can hold straight up or down to angle the attack, but adding horizontal inputs allows you to choose a shallower or steeper angle.");
 initImage(sprite_get("fspecial"), -5);
 initWords("Try it out with NSpecial, using the angle-preview arrow indicator for reference.");
+initWords("P.S. During FSpecial, hold directly backward to slow down.");
 
 initTip("USpecial: Instant Transmission");
 initWords("Goku's USpecial, unlike Forsburn's, slides along terrain rather than passing through it... which makes sense, if you think about how it works in DBZ. You can still go through platforms, though.");
@@ -264,6 +265,21 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.5", "04 October, 2021");
+initHeader("NSpecial - Nerfs");
+initSection("Base endlag 16 --> 24; adjusted animation timing to match.");
+initHeader("FSpecial - QoL");
+initSection("By holding back on the control stick, you can now halve Goku's flight speed.
+This also happens when parried.");
+initHeader("DSpecial - Buffs, Nerfs");
+initSection("Spirit Bomb projectile lifetime 30 --> 60.
+Spirit Bomb homing ability greatly reduced.
+Air stall reduced while charging meter.");
+initHeader("FTilt - Nerfs");
+initSection("Adjusted projectile's spawn position, lifetime, and travel speed - covers the same distance but at a reduced speed.");
+initHeader("UAir - Nerfs");
+initSection("Knockback growth 0.8 --> 0.7.");
 
 initPatch("1.4", "24 September, 2021");
 initHeader("NSpecial - Nerfs, Buffs, Aesthetics");

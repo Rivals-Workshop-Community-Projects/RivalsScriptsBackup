@@ -1,9 +1,15 @@
 // Code to prevent error from running on first frame
-/*
-if ("nspecial_resource" not in self){ // 
+
+if ("ganoncide_preventor_available_flag" not in self){ // 
     exit;
     }
-    */
+
+if(ganoncide_preventor_available_flag == true){
+    draw_sprite_ext(sprite_get( "platform_icon"), 1, temp_x + 190, temp_y,1,1,0,c_white,1);
+}
+else{
+    draw_sprite_ext(sprite_get( "platform_icon"), 1, temp_x + 190, temp_y,1,1,0,c_dkgray,1);
+}
 //
 //Debug Text  
 /*
@@ -19,6 +25,7 @@ draw_debug_text( temp_x + 40, temp_y - 80,"y " + string(y));
 // Draw Hud Elements Carry Over from Klock
 // distance_to_object(opponent_id) is a built in GML function that works
 // Declared in init //distance_to_opponent = [0,0,0];
+/*
 var num_of_players = instance_number(oPlayer);
 var opponent_distance_temp = [];
 var opponent_object_iterator = 0;
@@ -73,7 +80,7 @@ if(num_of_players > 2){
         //print(distance_to_opponent);
     //print("Daora: " + string(self_id));
     //print("Opponent: " + string(opponent_id));
-    
+    /*
 }
 // Draw section assuming there is an opponent
 if(num_of_players > 1){
@@ -103,7 +110,7 @@ var status_effect_electric_temp, status_effect_water_temp;
 }
         
 shader_end();
-
+*/
 //Unused Code ----------------------------------------------------------------
 //draw_debug_text( temp_x + 0, temp_y - 10, "Shells x" + string(shells));
 //draw_debug_text( temp_x + 0, temp_y - 25, "heat: " + string(heat));

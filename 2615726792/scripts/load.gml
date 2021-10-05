@@ -45,5 +45,6 @@ sprite_change_offset("taunt", 96, 128);
 sprite_change_offset("plat", 96, 128);
 
 sprite_change_offset("jab_proj", 96, 128);
+sprite_change_offset("nair_proj", 96, 128);
 
 set_victory_bg(sprite_get("victory_bg"));

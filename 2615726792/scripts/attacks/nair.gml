@@ -33,7 +33,7 @@ set_hitbox_value(at, ig, HG_PARENT_HITBOX, 1);
 set_hitbox_value(at, ig, HG_HITBOX_TYPE, 2);
 set_hitbox_value(at, ig, HG_WINDOW, 2);
 set_hitbox_value(at, ig, HG_HITBOX_TYPE, 2);
-set_hitbox_value(at, ig, HG_LIFETIME, 80);
+set_hitbox_value(at, ig, HG_LIFETIME, 60);
 set_hitbox_value(at, ig, HG_PRIORITY, 2);
 set_hitbox_value(at, ig, HG_DAMAGE, 4); //Change in init
 set_hitbox_value(at, ig, HG_ANGLE, 45);
@@ -43,12 +43,12 @@ set_hitbox_value(at, ig, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(at, ig, HG_BASE_HITPAUSE, 30);
 set_hitbox_value(at, ig, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(at, ig, HG_HITBOX_X, 30);
-set_hitbox_value(at, ig, HG_HITBOX_Y, -20);
+set_hitbox_value(at, ig, HG_HITBOX_Y, 0);
 set_hitbox_value(at, ig, HG_HIT_SFX, sound_get("zap"));
 
 set_hitbox_value(at, ig, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
-set_hitbox_value(at, ig, HG_PROJECTILE_HSPEED, 6);
-set_hitbox_value(at, ig, HG_PROJECTILE_VSPEED, 0);
-set_hitbox_value(at, ig, HG_PROJECTILE_SPRITE, sprite_get("jab_proj"));
-set_hitbox_value(at, ig, HG_PROJECTILE_MASK, sprite_get("jab_proj"));
+set_hitbox_value(at, ig, HG_PROJECTILE_HSPEED, 4.3);
+set_hitbox_value(at, ig, HG_PROJECTILE_VSPEED, 4.3);
+set_hitbox_value(at, ig, HG_PROJECTILE_SPRITE, sprite_get("nair_proj"));
+set_hitbox_value(at, ig, HG_PROJECTILE_MASK, sprite_get("nair_proj"));
 set_hitbox_value(at, ig, HG_PROJECTILE_ANIM_SPEED, .2);

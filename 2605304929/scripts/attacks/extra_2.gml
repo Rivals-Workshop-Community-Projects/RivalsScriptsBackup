@@ -2,7 +2,7 @@
 var attack = AT_EXTRA_2; // Swap Taunt for attack that this is
 
 //Attack Values-----------------------------------------------------------------------------
-set_attack_value(attack, AG_CATEGORY, 1);
+set_attack_value(attack, AG_CATEGORY, 2);
 set_attack_value(attack, AG_SPRITE, sprite_get("extra_2"));
 set_attack_value(attack, AG_AIR_SPRITE, 0);
 set_attack_value(attack, AG_HURTBOX_SPRITE, sprite_get("extra_2_hurt"));

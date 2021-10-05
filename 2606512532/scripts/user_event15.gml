@@ -292,6 +292,16 @@ initHeader("Other");
 initSection("");
 */
 
+initPatch("1.10", "4 October, 2021");
+initHeader("Bug Fixes");
+initSection("- Utilt/Ustrong special code no longer affects armoured opponents");
+
+initPatch("1.9", "4 October, 2021");
+initHeader("Both");
+initSection("- Removed custom Fspecial buffer (no longer will put you in rapidfire state when holding special during charge shot endlag)
+- Utilt and Ustrong hit 1 should connect into launcher hitboxes more reliably");
+
+initPatch("1.8", "27 September, 2021");
 initHeader("Both");
 initSection("- Nair multihits hitbox adjusted (opponents should fall out less).
 - Bair sweetspot hitbox size increased.

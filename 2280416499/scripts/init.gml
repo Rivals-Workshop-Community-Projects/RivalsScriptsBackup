@@ -34,3 +34,13 @@ firmware = 12;
 
 death_timer = 0;
 death_timer_max = 120;
+
+if practice && is_aether_stage(){
+	death_timer = death_timer_max;
+
+	with obj_stage_article if num == 9{
+		state = 2;
+		state_timer = -90 - other.death_timer_max;
+		// draw_height = draw_height_high;
+	}
+}

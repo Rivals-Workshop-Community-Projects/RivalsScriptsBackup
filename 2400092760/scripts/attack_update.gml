@@ -16,7 +16,7 @@ if(attack == AT_NSPECIAL){
     if(window == 2 && window_timer == 1){
         Dgrab = false;
         reset_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER);
-        take_damage(player,1,8);
+        take_damage(player,1,6);
         with(obj_article1){
             if(player_id == other.id){
                 plimit -= 1;
@@ -204,14 +204,11 @@ if(special_pressed || special_down){
 }
 
 if(attack == AT_FSPECIAL_2){
-    if(window == 1){
-        if(window_timer == 1){
-            fspec_jump = false;
-        }
-    }
-    if(fspec_jump == true){
-        can_jump = true;
-    }
+    if (window == 2 && has_hit){
+	iasa_script();
+	}
+
+
 }
 
     //#endregion
@@ -279,7 +276,7 @@ if(attack == AT_DSPECIAL_AIR){
         if(window_timer == 1){
             getup_dir = spr_dir;
             
-            take_damage(player,1,6);
+            take_damage(player,1,5);
             DSPA_grab = false;
             with(obj_article1){
                 if(player_id == other.id){
@@ -567,12 +564,21 @@ if (attack == AT_UAIR)
     // if(window_timer == 15){
     //     UAGrab = false;
     // }
+
 }
-    
-    
+
     //#endregion
+    
+    //#region Dair
+if (attack == AT_DAIR)
+{
+	if window == 1 && window_timer == 12 {
+		sound_play(asset_get("sfx_charge_blade_swing"));
+	}
+}   
 
-
+	//#endregion
+	
 //#endregion
 
 //#region Grounded

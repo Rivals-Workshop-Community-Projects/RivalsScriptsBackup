@@ -1,6 +1,6 @@
 set_attack_value(AT_NSPECIAL, AG_CATEGORY, 2);
 set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
-set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 7);
+set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 8);
 set_attack_value(AT_NSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_NSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_air"));
@@ -42,9 +42,14 @@ set_window_value(AT_NSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 13);
 
 // endlag
-set_window_value(AT_NSPECIAL, 7, AG_WINDOW_LENGTH, 16); // also change in atk update
-set_window_value(AT_NSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_NSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 16);
+set_window_value(AT_NSPECIAL, 7, AG_WINDOW_LENGTH, 12); // also change in atk update
+set_window_value(AT_NSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_NSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 13);
+
+// endlag pt 2
+set_window_value(AT_NSPECIAL, 8, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_NSPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_NSPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, 16);
 
 set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_ENDLAG, string(get_window_value(AT_NSPECIAL, 7, AG_WINDOW_LENGTH)));
 set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Endlag increases with charge.");

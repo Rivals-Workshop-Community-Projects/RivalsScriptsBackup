@@ -189,8 +189,8 @@ window_for_hitbox = 7;
     set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
     set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
     set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 1.15);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 5);
-    set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
+    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 60);
+    set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, hitfx_large_elec); // 157 - lightning extra large
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT_X_OFFSET, 40);

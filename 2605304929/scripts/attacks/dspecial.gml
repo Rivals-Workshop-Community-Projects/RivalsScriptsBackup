@@ -114,38 +114,39 @@ window_num++;
 
 //Hitbox Values --------------------------------------------------------------------------
 //Set Number of Hitboxes
-set_num_hitboxes(attack, 2); // Swap 1 for number of hitboxes
+set_num_hitboxes(attack, 3); // Swap 1 for number of hitboxes
 
 var hitbox_num = 1;
 var window_for_hitbox = 1; 
 
-//Hitbox for Kick
+//Strong Hitbox for Kick
 window_for_hitbox = 3;
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 1);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
-set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH) - 4); // Swap 1 for what ever window this attack is
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 2); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 30);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -32);
 set_hitbox_value(attack, hitbox_num, HG_WIDTH, 70);
-set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 30);
+set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 50);
 set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 1);
-set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 5);
-set_hitbox_value(attack, hitbox_num, HG_ANGLE, 75);
-set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .4);
-set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .6);
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 8);
+set_hitbox_value(attack, hitbox_num, HG_ANGLE, 45);
+set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 1);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 3);
-set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 6); //6   - light water small
-set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 197); //197 - lightning large
+set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, sound_get("thunder"));
+set_hitbox_value(attack, hitbox_num, HG_HIT_LOCKOUT, 20);
 hitbox_num++;
 
-//Sweetspot Hit Grab
+//Sweetspot Hit Grab cannot hit if strong start up hits
 window_for_hitbox = 5;
 set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
 set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
-set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 1);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 2);
 set_hitbox_value(attack, hitbox_num, HG_LIFETIME, get_window_value(attack, window_for_hitbox, AG_WINDOW_LENGTH)); // Swap 1 for what ever window this attack is
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 50);
 set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -32);
@@ -162,6 +163,30 @@ set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 197); //197 - lightning large
 set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_clairen_nspecial_grab_success"));
 
+hitbox_num++;
+
+//weak traveling hitbox
+window_for_hitbox = 3;
+set_hitbox_value(attack, hitbox_num, HG_WINDOW, window_for_hitbox);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_GROUP, 1);
+set_hitbox_value(attack, hitbox_num, HG_SHAPE, 2);
+set_hitbox_value(attack, hitbox_num, HG_LIFETIME, 8); // Swap 1 for what ever window this attack is
+set_hitbox_value(attack, hitbox_num, HG_WINDOW_CREATION_FRAME, 2);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_X, 30);
+set_hitbox_value(attack, hitbox_num, HG_HITBOX_Y, -32);
+set_hitbox_value(attack, hitbox_num, HG_WIDTH, 70);
+set_hitbox_value(attack, hitbox_num, HG_HEIGHT, 30);
+set_hitbox_value(attack, hitbox_num, HG_PRIORITY, 1);
+set_hitbox_value(attack, hitbox_num, HG_DAMAGE, 2);
+set_hitbox_value(attack, hitbox_num, HG_ANGLE, 30);
+set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, .2);
+set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 1);
+set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 3);
+set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 6); //6   - light water small
+set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+//hitbox_num++;
 
 /*
 //Template for attacks - 

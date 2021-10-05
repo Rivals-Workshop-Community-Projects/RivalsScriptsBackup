@@ -339,6 +339,7 @@ switch attack{
 					beam_clash_buddy = noone;
 					beam_clash_timer = 0;
 					beam_clash_timer_max = 120;
+					beam_angle = 0;
 				}
 				if window_timer == phone_window_end{
 					voice_play(VB_KAMEHAME);
@@ -604,12 +605,21 @@ switch attack{
 					
 					var spd = 15 + (window == 2) * 5;
 					if (funny_broken_mode || has_rune("G")) && found spd += 20;
+					if (right_down - left_down) == -spr_dir && !abs(up_down - down_down) || was_parried{
+						spd /= 2;
+					}
 					hsp = lengthdir_x(spd, superdash_angle) * spr_dir;
 					vsp = lengthdir_y(spd, superdash_angle);
 					
 					if window_timer == phone_window_end{
 						var h = spawn_hit_fx(x + lengthdir_x(-24, superdash_angle) * spr_dir, y + lengthdir_y(-24, superdash_angle) - 36, vfx_ftilt_destroy);
 						h.draw_angle = superdash_angle * spr_dir;
+					}
+					
+					if shield_pressed{
+						destroy_hitboxes();
+						window = 5;
+						window_timer = 0;
 					}
 					
 					can_wall_jump = true;
@@ -812,7 +822,7 @@ switch attack{
 			}
 		}
 		hsp = clamp(hsp, -3, 3);
-		vsp = min(vsp, 3);
+		vsp = min(vsp, 6); // 3
 		if has_hit && !hitpause{
 			if abs(right_hard_pressed - left_hard_pressed) && !free{
 				attack_end();

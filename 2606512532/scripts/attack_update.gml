@@ -437,10 +437,11 @@ if attack == AT_FTHROW {
     }
     
     //return to firing
-    
+    /*
     if window == 3 && window_timer == window_length {
         if !special_down window++;
     }
+    
     if window == 4 && window_timer == window_length {
         if special_down {
             attack = AT_FSPECIAL;
@@ -448,6 +449,11 @@ if attack == AT_FTHROW {
             window = 2;
             window_timer = 0;
         }
+    }
+    */
+    
+    if window == 3 && window_timer == window_length {
+        window++;
     }
     
     if window == 3 && window_timer == 1 && (!phone_cheats[CHEAT_QUICK_CHARGE] && !has_rune("I")) { //FSPECIAL cooldown removed.

@@ -1,3 +1,31 @@
+if phone_attacking && attack == AT_NSPECIAL{if window == 7{
+		var x1 = x + 72 * spr_dir;
+		var y1 = y - 40 + lengthdir_y(32, beam_angle);
+		
+		switch((abs(lengthdir_y(1, beam_angle)) > abs(lengthdir_y(1, 15))) * sign(lengthdir_y(1, beam_angle))){
+			case 1: // down
+				x1 = x + 74 * spr_dir;
+				y1 = y - 6;
+				break;
+			case -1: // up
+				x1 = x + 60 * spr_dir;
+				y1 = y - 72;
+				break;
+		}
+		
+		var length = beam_length / 2;
+		var frame = min(floor(6 * window_timer / phone_window_end), 5);
+		var angle = beam_angle;
+		
+		x1 -= lengthdir_x(40, angle)
+		y1 -= lengthdir_y(40, angle)
+		
+		draw_sprite_ext(sprite_get("nspecial_beam_fade"), frame, x1, y1, length, 1, angle, c_white, 1)
+	}
+}
+
+
+
 if kaioken{
 	
 	draw_outline(kaioken_red_dark);

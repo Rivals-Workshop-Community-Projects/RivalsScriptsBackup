@@ -58,7 +58,7 @@ var ig = 1;
 set_hitbox_value(at, ig, HG_PARENT_HITBOX, 1);
 set_hitbox_value(at, ig, HG_HITBOX_TYPE, 1);
 set_hitbox_value(at, ig, HG_WINDOW, 2);
-set_hitbox_value(at, ig, HG_LIFETIME, 4);
+set_hitbox_value(at, ig, HG_LIFETIME, 6);
 set_hitbox_value(at, ig, HG_HITBOX_X, 34);
 set_hitbox_value(at, ig, HG_HITBOX_Y, -28);
 set_hitbox_value(at, ig, HG_WIDTH, 76);

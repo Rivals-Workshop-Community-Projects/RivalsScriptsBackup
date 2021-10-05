@@ -98,7 +98,11 @@ if death_timer{
 				else current_layout++;
 			}
 			
-			if is_aether_stage(){
+			if get_training_cpu_action() != CPU_FIGHT{ // RNG from computer time, only runs in local practice mode.
+				current_layout = (current_layout + current_second) % len;
+			}
+			
+			if is_aether_stage() && get_training_cpu_action() == CPU_FIGHT{
 				walls = [random_func(1, 2, true) > 0, random_func(2, 2, true) > 0]
 				bridges = [random_func(3, 2, true) > 0, random_func(4, 2, true) > 0]
 			}

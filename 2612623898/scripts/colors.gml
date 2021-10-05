@@ -39,10 +39,10 @@ set_color_profile_slot( 3, 2, 116, 217, 80 ); //Light 2
 set_color_profile_slot( 3, 3, 173, 255, 145 ); //Light 1
 
 // Rykenburn
-set_color_profile_slot( 4, 0, 148, 58, 58 ); //Dark 2
-set_color_profile_slot( 4, 1, 165, 107, 49 ); //Dark 1
-set_color_profile_slot( 4, 2, 206, 156, 53 ); //Light 2
-set_color_profile_slot( 4, 3, 255, 222, 0 ); //Light 1
+set_color_profile_slot( 4, 0, 0, 0, 0 ); //Dark 2
+set_color_profile_slot( 4, 1, 84, 84, 84 ); //Dark 1
+set_color_profile_slot( 4, 2, 171, 171, 171 ); //Light 2
+set_color_profile_slot( 4, 3, 255, 255, 255 ); //Light 1
 
 // Purple
 set_color_profile_slot( 5, 0, 0, 0, 0 ); //Dark 2
@@ -51,9 +51,9 @@ set_color_profile_slot( 5, 2, 209, 92, 185 ); //Light 2
 set_color_profile_slot( 5, 3, 255, 145, 233 ); //Light 1
 
 // It's a reference
-set_color_profile_slot( 6, 0, 0, 0, 0 ); //Dark 2
-set_color_profile_slot( 6, 1, 0, 131, 0 ); //Dark 1
-set_color_profile_slot( 6, 2, 254, 0, 0 ); //Light 2
+set_color_profile_slot( 6, 0, 148, 58, 58 ); //Dark 2
+set_color_profile_slot( 6, 1, 165, 107, 49 ); //Dark 1
+set_color_profile_slot( 6, 2, 206, 156, 53 ); //Light 2
 set_color_profile_slot( 6, 3, 255, 222, 0 ); //Light 1
 
 // Infamous

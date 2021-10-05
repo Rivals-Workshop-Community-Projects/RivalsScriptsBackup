@@ -24,6 +24,19 @@ mask_index = sprite_get("ground_" + string(wide + 1));
 
 
 
+var found = 0;
+
+with oPlayer if "url" in self && url == CH_SYLVANOS found = 1;
+
+if found{
+	width = width_min;
+	if get_gameplay_time() == 2{
+		print("Sylvanos Mode active: stage will always be minimum width.");
+	}
+}
+
+
+
 prev_layout = current_layout;
 
 
@@ -34,7 +47,7 @@ killPlats();
 
 var obj = layouts[index];
 
-width = clamp(obj.width * 32, width_min, width_max)
+width = clamp(obj.width * 32, width_min, width_max);
 
 if !array_equals(obj.plats, []) for (var i = array_length(obj.plats) - 1; i >= 0; i--){
 	var plat = obj.plats[i];

@@ -48,8 +48,8 @@ fx_expl = hit_fx_create(sprite_get("explode"), 16);
 
 //------------------------------------------------------------------------------
 //#region Hurtboxes-------------------------------------------------------------
-hurtbox_spr = asset_get("ex_guy_hurt_box");
-crouchbox_spr = asset_get("ex_guy_crouch_box");
+hurtbox_spr = sprite_get("ryk_hurtbox");
+crouchbox_spr = sprite_get("ryk_crouchbox");
 air_hurtbox_spr = -1; //-1 uses hurtbox_spr hurtbox
 hitstun_hurtbox_spr = -1; //-1 uses hurtbox_spr hurtbox
 //#endregion--------------------------------------------------------------------

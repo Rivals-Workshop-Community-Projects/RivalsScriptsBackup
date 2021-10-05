@@ -72,6 +72,7 @@ MunoPhone Touch.
 // Character's name, used in a couple of places in the phone.
 // (if you delete this line, it'd just use the config.ini name)
 muno_char_name = "Trummel & Alto";
+muno_char_id = 1;
 
 // Whether or not the phone sprite should recolor w/ your alt costume.
 // (set to "true" if you make a custom phone sprite in your char's colors)
@@ -255,6 +256,10 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("2.1", "04 October, 2021");
+initHeader("General - Bugfixes");
+initSection("Re-added the internal Muno Character ID, the absence of which caused a bug.");
 
 initPatch("2.0", "19 September, 2021");
 initHeader("General");

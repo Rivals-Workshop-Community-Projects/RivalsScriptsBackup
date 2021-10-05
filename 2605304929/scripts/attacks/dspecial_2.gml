@@ -36,7 +36,7 @@ set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED, 3);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_VSPEED, -5);
+set_window_value(attack, window_num, AG_WINDOW_VSPEED, -7);
 set_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE, 1);
 window_num++;
 
@@ -47,7 +47,7 @@ set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED, 3);
 set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_VSPEED, 7);
+set_window_value(attack, window_num, AG_WINDOW_VSPEED, 10);
 set_window_value(attack, window_num, AG_WINDOW_VSPEED_TYPE, 1);
 window_num++;
 
@@ -89,8 +89,8 @@ window_for_hitbox = 4;
     set_hitbox_value(attack, hitbox_num, HG_ANGLE, 70);
     set_hitbox_value(attack, hitbox_num, HG_BASE_KNOCKBACK, 9);
     set_hitbox_value(attack, hitbox_num, HG_KNOCKBACK_SCALING, 1.2);
-    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 10);
-    set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 1);
+    set_hitbox_value(attack, hitbox_num, HG_BASE_HITPAUSE, 60);
+    set_hitbox_value(attack, hitbox_num, HG_HITPAUSE_SCALING, 0);
     //set_hitbox_value(attack, hitbox_num, HG_EXTRA_HITPAUSE, 20);
     set_hitbox_value(attack, hitbox_num, HG_VISUAL_EFFECT, 197); // 197 - lightning large
     set_hitbox_value(attack, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy1"))

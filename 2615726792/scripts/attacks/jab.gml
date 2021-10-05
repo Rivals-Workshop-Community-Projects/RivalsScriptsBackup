@@ -33,7 +33,7 @@ set_hitbox_value(at, ig, HG_PARENT_HITBOX, 1);
 set_hitbox_value(at, ig, HG_HITBOX_TYPE, 2);
 set_hitbox_value(at, ig, HG_WINDOW, 2);
 set_hitbox_value(at, ig, HG_HITBOX_TYPE, 2);
-set_hitbox_value(at, ig, HG_LIFETIME, 80);
+set_hitbox_value(at, ig, HG_LIFETIME, 60);
 set_hitbox_value(at, ig, HG_PRIORITY, 2);
 set_hitbox_value(at, ig, HG_DAMAGE, 4); //Change in init
 set_hitbox_value(at, ig, HG_ANGLE, 45);
