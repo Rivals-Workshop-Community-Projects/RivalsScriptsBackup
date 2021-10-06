@@ -136,6 +136,11 @@ if (attack == AT_TAUNT_2 && hbox_num == 1) {
 	}
 }
 
+if attack == AT_DSPECIAL && hbox_num == 1{
+x = obj_article1.x + 16*obj_article1.spr_dir;
+y = obj_article1.y - 24;
+}
+
 if (attack == AT_TAUNT_2 && hbox_num == 2){
 if (free == false){
 destroyed = true;

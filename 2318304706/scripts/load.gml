@@ -97,6 +97,7 @@ sprite_change_offset("dspec_projCYAN_move", 32, 16);
 sprite_change_offset("dspec_projBLUE_move", 32, 16);
 sprite_change_offset("dspec_projMAGENTA_move", 32, 16);
 sprite_change_offset("dspec_proj_smoke", 60, 24);
+sprite_change_offset("dspec_proj_mask", 32, 16);
 
 sprite_change_offset("plat", 94, 92);
 sprite_change_offset("plat_bg", 94, 92);
@@ -105,7 +106,11 @@ sprite_change_offset("indicator", 32, 32);
 sprite_change_offset("intro", 68, 110);
 sprite_change_offset("soul", 32, 32);
 sprite_change_offset("taunt", 64, 110);
+sprite_change_offset("taunt2", 64, 110);
+sprite_change_offset("phone_open", 64, 110);
 sprite_change_offset("dapper", 64, 110);
+sprite_change_offset("phone_tip", 350, 200);
+sprite_change_offset("phone_dsmash", 84, 110);
 
 sprite_change_offset("hurt", 64, 110);
 sprite_change_offset("hurtground", 64, 110);

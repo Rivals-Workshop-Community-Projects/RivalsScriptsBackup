@@ -1,3 +1,6 @@
+muno_event_type = 1;
+user_event(14);
+
 blinkTimer += 0.5;
 
 if (fsmashOut < 0) {fsmashOut++;}

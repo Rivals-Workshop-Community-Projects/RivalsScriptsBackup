@@ -30,6 +30,28 @@ if (!place_meeting(x, y, block1) && !place_meeting(x, y, block2) && !place_meeti
 	not_on_block = true;
 }
 
+//Makes so the timer ticks down faster on the blocks where you're either standing on them or they're
+//close to the top blastzone (feel free to change the values of the 'state_timer += x' to change the timing)
+{
+if (instance_exists(block1)){
+	if ((place_meeting(x, y, block1) || block1.y < get_stage_data(SD_Y_POS) - 350) && block1.state_timer < 180){
+		block1.state_timer += 3.5;
+	}
+}
+
+if (instance_exists(block2)){
+	if ((place_meeting(x, y, block2) || block2.y < get_stage_data(SD_Y_POS) - 350) && block2.state_timer < 180){
+		block2.state_timer += 3.5;
+	}
+}
+
+if (instance_exists(block3)){
+	if ((place_meeting(x, y, block3) || block3.y < get_stage_data(SD_Y_POS) - 350) && block3.state_timer < 180){
+		block3.state_timer += 3.5;
+	}
+}
+}
+
 if (block_ammo_full >= 3){
 	block_ammo_full = 2.9
 }
@@ -40,6 +62,9 @@ if (block_ammo_full > 0 && block_ammo_full < 3.1 && block_despawn == true){
 	}
 	
 }
+
+
+
 
 block_ammo = round(block_ammo_full);
 

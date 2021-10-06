@@ -110,3 +110,8 @@ kirbyability = 0;
 
 sslability = 0;
 prev_djumps = 0; 
+
+abilitygiven = 0
+current_ability = 0
+abilitygiven = kirbyability
+swallowed = 0

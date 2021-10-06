@@ -53,6 +53,7 @@ set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 111);
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_ori_charged_flame_hit"));
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_FAIR, 1, HG_MUNO_HITBOX_NAME, "Hit 1");
 
 set_hitbox_value(AT_FAIR, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
@@ -72,6 +73,7 @@ set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 111);
 set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_ori_charged_flame_hit"));
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_FAIR, 2, HG_MUNO_HITBOX_NAME, "Hit 2");
 
 set_hitbox_value(AT_FAIR, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_TYPE, 1);
@@ -91,3 +93,4 @@ set_hitbox_value(AT_FAIR, 3, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, 111);
 set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, asset_get("sfx_ori_charged_flame_hit"));
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_FAIR, 3, HG_MUNO_HITBOX_NAME, "Hit 2");

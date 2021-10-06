@@ -23,3 +23,7 @@ if (my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 1 && "arms" in self
 	}
 	arms.y = hit_player_obj.y - 50;
 }
+
+if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 5) {
+	sound_play(asset_get("sfx_clairen_tip_strong"), false, noone, 0.6);
+}

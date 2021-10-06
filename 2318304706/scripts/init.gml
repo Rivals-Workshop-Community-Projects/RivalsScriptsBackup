@@ -63,6 +63,7 @@ gbeamChargeLevel = 0;
 gbeamStoredCharge = 0;
 gbeamVisOffset = 0;
 myBeam = noone;
+myBeam2 = noone;
 chargingBeam = 0;
 
 jump_start_time = 5;
@@ -175,3 +176,15 @@ runeActiveL = has_rune("L");
 runeActiveM = has_rune("M");
 runeActiveN = has_rune("N");
 runeActiveO = has_rune("O");
+
+
+
+
+arena_title = "Star Road's Finest";
+boxing_title = "Star Road's Finest";
+boxing_short_name = "Geno";
+battle_text = "* The smell of stardust fills the air.";
+
+muno_event_type = 0;
+user_event(14);
+//user_event(7);

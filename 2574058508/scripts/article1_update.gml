@@ -87,6 +87,7 @@ if (state == 4){						//Using the USpecial, teleport animation
 //State 5: Lighting Activation
 if (state == 5){				//Hazard is active
    // sound_play ("sfx_plasma_field_loop");
+    total_timer = 100;
 	sprite_index = sprite_get("butterfly_active");
 	image_index += .15;
 	x = round(x);

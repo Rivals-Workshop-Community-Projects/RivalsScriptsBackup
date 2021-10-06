@@ -19,7 +19,7 @@ if (player_id.lighting == true && state < 3){	//If DSpecial, goes to the state 3
 	state = 3;
 }
 
-if (state_timer >= 190 && state == 1){		//Total lifetime, goes to state 2 for the despawning animation
+if (state_timer >= 200 && state == 1){		//Total lifetime, goes to state 2 for the despawning animation
 	image_index = 1;
 	state = 2;
 }
@@ -40,23 +40,46 @@ if (state == 1){		//Idle and animating
 		image_index = 2;
 	}
 }
+if (state == 1 && state_timer >=150){
+	sprite_index = sprite_get("block_crack")
+	image_index = 2
+	if (state_timer >=175) {
+		image_index = 1
+	}
+		if (state_timer >=180){
+		sprite_index = sprite_get("block_break")
+		image_index += 0;
+		if (state_timer >=185){
+			image_index += 0;
+			if (state_timer >=190){
+			image_index += 1;
+			if (state_timer >=195){
+			image_index += 2;
+			if (state_timer >=200){
+			image_index += 3;
+	}
+	}
+	}
+	}
+}
+}
 
 //State 2: Dying
-if (state == 2){		//Despawing animation
-	sprite_index = sprite_get("block");
-	if (state_timer >= 195){
-		image_index = 0;
+if (state == 2 && state_timer >= 190){		//Despawing animation
+
 	}
 	if (state_timer >= 200){		//Dying 
 		player_id.block_despawn = true;
 		player_id.killarticles = false;
     	instance_destroy();
+    	
     	exit;
 	}
-}
+
 
 //State 3: Lighting Activation
 if (state == 3){						//Hazard is active
+    total_timer = 100;
 	mask_index = sprite_get("block");
 	sprite_index = sprite_get("block_active");
 	image_index += .15;

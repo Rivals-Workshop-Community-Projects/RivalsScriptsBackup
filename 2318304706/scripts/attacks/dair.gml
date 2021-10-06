@@ -49,6 +49,7 @@ set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 //set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_DAIR, 1, HG_MUNO_HITBOX_NAME, "Projectile");
 
 set_hitbox_value(AT_DAIR, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DAIR, 2, HG_HITBOX_TYPE, 2);
@@ -76,6 +77,7 @@ set_hitbox_value(AT_DAIR, 2, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DAIR, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DAIR, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_DAIR, 2, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_DAIR, 2, HG_MUNO_HITBOX_NAME, "Proj. Explosion");
 
 set_hitbox_value(AT_DAIR, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DAIR, 3, HG_HITBOX_TYPE, 2);
@@ -103,6 +105,7 @@ set_hitbox_value(AT_DAIR, 3, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DAIR, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DAIR, 3, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_DAIR, 3, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_DAIR, 3, HG_MUNO_HITBOX_EXCLUDE, 1);
 
 set_hitbox_value(AT_DAIR, 4, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DAIR, 4, HG_HITBOX_TYPE, 1);
@@ -122,6 +125,7 @@ set_hitbox_value(AT_DAIR, 4, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_DAIR, 4, HG_VISUAL_EFFECT_X_OFFSET, 10);
 set_hitbox_value(AT_DAIR, 4, HG_VISUAL_EFFECT, 111);
 set_hitbox_value(AT_DAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_DAIR, 4, HG_MUNO_HITBOX_NAME, "Melee hit");
 
 
 
@@ -149,3 +153,4 @@ set_hitbox_value(AT_DAIR, 5, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_DAIR, 5, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DAIR, 5, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 //set_hitbox_value(AT_DAIR, 5, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_FAIR, 2, HG_MUNO_HITBOX_EXCLUDE, 1);

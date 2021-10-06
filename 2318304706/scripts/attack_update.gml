@@ -18,9 +18,9 @@ if (attack == AT_JAB) {
 		if (window_timer == 5 && !hitpause) {spawn_hit_fx(x + 40 * spr_dir, y - 36, muzzleJab)};
 		if (window_timer == 9 && !hitpause) {spawn_hit_fx(x + 40 * spr_dir, y - 36, muzzleJab)};
 		
-		if (window_timer < 8 && (timedHitAvailable == true || isAI == true)) {
+		if (window_timer < 8 && (timedHitAvailable == true || isAI == true || phone_cheats[CHEAT_ALWAYS] == 1)) {
 			shouldShowIndicator = 1;
-			if (attack_pressed && (get_hitbox_value(AT_JAB, 6, HG_WINDOW) == 60|| isAI == true)) {
+			if ((attack_pressed && (get_hitbox_value(AT_JAB, 6, HG_WINDOW) == 60) || isAI == true || phone_cheats[CHEAT_ALWAYS] == 1)) {
 				sound_play(sound_get("smrpg_character_extrapower"));
 				set_hitbox_value(AT_JAB, 5, HG_WINDOW, 60);
 				set_hitbox_value(AT_JAB, 6, HG_WINDOW, 6);
@@ -63,7 +63,7 @@ if (attack == AT_DTILT && window == 1 && window_timer == 6) {sound_play(asset_ge
 if (attack == AT_DATTACK) {
 	if (window == 1 && window_timer == 2) {set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 12);}
 	if (window == 1 && window_timer > 10 && get_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED) == 12) {
-		if (attack_pressed || isAI == true) {
+		if (attack_pressed || isAI == true || phone_cheats[CHEAT_ALWAYS] == 1) {
 			set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 18);
 			sound_play(sound_get("smrpg_character_extrapower"));
 			stars = spawn_hit_fx (x, y-30, empoweredFX);
@@ -90,8 +90,8 @@ if (attack == AT_USTRONG) {
 		
 	} else if (window < 4 && (attack_pressed || up_strong_pressed || left_strong_pressed || right_strong_pressed)) {timedHitAvailable = false;}
 	
-	if (window == 4 && get_hitbox_value(AT_USTRONG, 4, HG_WINDOW) == 50 && (timedHitAvailable == true || isAI == true)) {
-		if (attack_pressed || up_strong_pressed || left_strong_pressed || right_strong_pressed || isAI == true) {
+	if (window == 4 && get_hitbox_value(AT_USTRONG, 4, HG_WINDOW) == 50 && (timedHitAvailable == true || isAI == true || phone_cheats[CHEAT_ALWAYS] == 1)) {
+		if (attack_pressed || up_strong_pressed || left_strong_pressed || right_strong_pressed || isAI == true || phone_cheats[CHEAT_ALWAYS] == 1) {
 			set_hitbox_value(AT_USTRONG, 4, HG_WINDOW, 5);
 			set_hitbox_value(AT_USTRONG, 5, HG_WINDOW, 5);
 			sound_play(sound_get("smrpg_character_extrapower"));
@@ -130,8 +130,8 @@ if (attack == AT_DSTRONG) {
 		set_window_value(AT_DSTRONG, 4, AG_WINDOW_GOTO, 5);
 		timedHitAvailable = true;
 	} else if ((window < 4 || window_timer <= 2) && (attack_pressed || left_strong_pressed || right_strong_pressed || down_strong_pressed)) {timedHitAvailable = false;}
-	if (window == 4 && window_timer > 2 && get_window_value(AT_DSTRONG, 4, AG_WINDOW_GOTO) == 5 && (timedHitAvailable == true || isAI == true)) {
-		if (attack_pressed || left_strong_pressed || right_strong_pressed || down_strong_pressed || isAI == true) {
+	if (window == 4 && window_timer > 2 && get_window_value(AT_DSTRONG, 4, AG_WINDOW_GOTO) == 5 && (timedHitAvailable == true || isAI == true || phone_cheats[CHEAT_ALWAYS] == 1)) {
+		if (attack_pressed || left_strong_pressed || right_strong_pressed || down_strong_pressed || isAI == true || phone_cheats[CHEAT_ALWAYS] == 1) {
 			set_window_value(AT_DSTRONG, 4, AG_WINDOW_GOTO, 6);
 			sound_play(sound_get("smrpg_character_extrapower"));
 			stars = spawn_hit_fx (x, y-50, empoweredFX);
@@ -197,15 +197,15 @@ if (attack == AT_NSPECIAL){
 			set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 4);
 			set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_X, 170);
 			set_hitbox_value(AT_NSPECIAL, 4, HG_WIDTH, 300);
-			set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 7);
-			set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_KNOCKBACK, 9);
-			set_hitbox_value(AT_NSPECIAL, 4, HG_KNOCKBACK_SCALING, .9);
+			set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 5);
+			set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_KNOCKBACK, 8);
+			set_hitbox_value(AT_NSPECIAL, 4, HG_KNOCKBACK_SCALING, .8);
 			if (window_timer == 8) {sound_play(sound_get("smrpg_geno_genobeam"));}
 		}
 		chargingBeam = 0;
 	}
     if (window == 2) {
-		gbeamChargeLevel += 1.3;
+		gbeamChargeLevel += 1.125;
 		if (window_timer == 1) {
 			if (gbeamChargeSfx == 0) {
 				sound_play(sound_get("smrpg_geno_powerup"));
@@ -274,6 +274,7 @@ if (attack == AT_NSPECIAL){
 						set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 1);
 						set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_KNOCKBACK, 5);
 						set_hitbox_value(AT_NSPECIAL, 4, HG_KNOCKBACK_SCALING, .4);
+						set_hitbox_value(AT_NSPECIAL, 5, HG_WINDOW_CREATION_FRAME, 160);
 					break;
 				case 1:
 						set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 70);
@@ -290,6 +291,7 @@ if (attack == AT_NSPECIAL){
 						set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 4);
 						set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_KNOCKBACK, 6);
 						set_hitbox_value(AT_NSPECIAL, 4, HG_KNOCKBACK_SCALING, .5);
+						set_hitbox_value(AT_NSPECIAL, 5, HG_WINDOW_CREATION_FRAME, 160);
 					break;
 				case 2:
 						set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 120);
@@ -303,9 +305,10 @@ if (attack == AT_NSPECIAL){
 						set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 3);
 						set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_X, 120);
 						set_hitbox_value(AT_NSPECIAL, 4, HG_WIDTH, 220);
-						set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 6);
-						set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_KNOCKBACK, 8);
-						set_hitbox_value(AT_NSPECIAL, 4, HG_KNOCKBACK_SCALING, .7);
+						set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 4);
+						set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_KNOCKBACK, 7);
+						set_hitbox_value(AT_NSPECIAL, 4, HG_KNOCKBACK_SCALING, .6);
+						set_hitbox_value(AT_NSPECIAL, 5, HG_WINDOW_CREATION_FRAME, 160);
 					break;
 				case 3:
 						set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 170);
@@ -319,9 +322,10 @@ if (attack == AT_NSPECIAL){
 						set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 4);
 						set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_X, 170);
 						set_hitbox_value(AT_NSPECIAL, 4, HG_WIDTH, 300);
-						set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 7);
-						set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_KNOCKBACK, 9);
-						set_hitbox_value(AT_NSPECIAL, 4, HG_KNOCKBACK_SCALING, .9);
+						set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 5);
+						set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_KNOCKBACK, 8);
+						set_hitbox_value(AT_NSPECIAL, 4, HG_KNOCKBACK_SCALING, .8);
+						set_hitbox_value(AT_NSPECIAL, 5, HG_WINDOW_CREATION_FRAME, 16);
 					break;
 			}
 		}
@@ -369,6 +373,15 @@ if (attack == AT_NSPECIAL){
 		if (instance_exists(myBeam)){
 			myBeam.x = x + gbeamVisOffset*spr_dir;
 			myBeam.y = y - 32;
+		}
+		
+		if (window_timer == 14 && gbeamVisOffset > 150) {
+			myBeam2 = spawn_hit_fx(x + 300*spr_dir, y - 32, 111);
+			print("hi");
+		}
+		if (instance_exists(myBeam2)){
+			myBeam2.x = x +300*spr_dir;
+			myBeam2.y = y - 32;
 		}
 	}
 	if (window > 2) {hsp *= 0.85;}
@@ -460,7 +473,7 @@ if (attack == AT_USPECIAL_2) {
 		timedHitAvailable = true;
 		clear_button_buffer(PC_SPECIAL_PRESSED);
 	} else if (!(window > 3 && window < 19 && window % 3 == 1) && special_pressed) {
-	timedHitAvailable = false;
+		timedHitAvailable = false;
 	}
 	
 	can_move = false;
@@ -481,9 +494,9 @@ if (attack == AT_USPECIAL_2) {
 		set_window_value(AT_USPECIAL_2, 17, AG_WINDOW_HSPEED, -7);
 	}
 	
-	if (((window > 3 && window < 19 && window % 3 == 1) || (window == 3 && window_timer > 4)) && get_window_value(AT_USPECIAL_2, 11, AG_WINDOW_VSPEED) == -8 && (timedHitAvailable == true || isAI == true)) {
+	if (((window > 3 && window < 19 && window % 3 == 1) || (window == 3 && window_timer > 4)) && get_window_value(AT_USPECIAL_2, 11, AG_WINDOW_VSPEED) == -8 && (timedHitAvailable == true || isAI == true || phone_cheats[CHEAT_ALWAYS] == 1)) {
 		shouldShowIndicator = 2;
-		if(special_pressed || isAI == true) {
+		if(special_pressed || isAI == true || phone_cheats[CHEAT_ALWAYS] == 1) {
 			set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_VSPEED, -6);
 			set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_HSPEED, 9);
 			set_window_value(AT_USPECIAL_2, 8, AG_WINDOW_VSPEED, -10);
@@ -654,5 +667,11 @@ if (attack == AT_DSPECIAL_2){
 			//gbeamParticle[i].x = x + (15 * (i-4));
 			gbeamParticle[i].y += window_timer / 1.7;
 		}
+	}
+}
+
+if (attack == AT_TAUNT_2){
+	if (window == 1 && window_timer == 15 && !hitpause) {
+		sound_play(sound_get("smrpg_door"), false, noone, 1, 0.9);
 	}
 }

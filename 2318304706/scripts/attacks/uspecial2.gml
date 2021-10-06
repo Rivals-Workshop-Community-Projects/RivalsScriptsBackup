@@ -2,11 +2,11 @@ set_attack_value(AT_USPECIAL_2, AG_CATEGORY, 1);
 set_attack_value(AT_USPECIAL_2, AG_SPRITE, sprite_get("uspecial_air"));
 set_attack_value(AT_USPECIAL_2, AG_NUM_WINDOWS, 19);
 set_attack_value(AT_USPECIAL_2, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_USPECIAL_2, AG_LANDING_LAG, 6);
 set_attack_value(AT_USPECIAL_2, AG_OFF_LEDGE, 1);
 set_attack_value(AT_USPECIAL_2, AG_AIR_SPRITE, sprite_get("uspecial_air"));
 set_attack_value(AT_USPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("uspecial_air_hurt"));
 set_attack_value(AT_USPECIAL_2, AG_USES_CUSTOM_GRAVITY, 1);
+set_attack_value(AT_USPECIAL_2, AG_MUNO_ATTACK_NAME, "Geno Flash (Aerial)");
 
 
 
@@ -48,6 +48,7 @@ set_window_value(AT_USPECIAL_2, 4, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL_2, 4, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_USPECIAL_2, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL_2, 4, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(AT_USPECIAL_2, 4, AG_MUNO_WINDOW_EXCLUDE, 1);
 
 set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_LENGTH, 6);
@@ -57,12 +58,14 @@ set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_HSPEED, 7);
 set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_VSPEED, -7.5);
 set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_VSPEED_TYPE, 2);
+set_window_value(AT_USPECIAL_2, 5, AG_MUNO_WINDOW_EXCLUDE, 1);
 
 set_window_value(AT_USPECIAL_2, 6, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL_2, 6, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_USPECIAL_2, 6, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USPECIAL_2, 6, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_USPECIAL_2, 6, AG_WINDOW_GOTO, 19);
+set_window_value(AT_USPECIAL_2, 6, AG_MUNO_WINDOW_EXCLUDE, 1);
 
 
 
@@ -72,6 +75,7 @@ set_window_value(AT_USPECIAL_2, 7, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL_2, 7, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_USPECIAL_2, 7, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL_2, 7, AG_WINDOW_ANIM_FRAME_START, 10);
+set_window_value(AT_USPECIAL_2, 7, AG_MUNO_WINDOW_EXCLUDE, 1);
 
 set_window_value(AT_USPECIAL_2, 8, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL_2, 8, AG_WINDOW_LENGTH, 6);
@@ -81,12 +85,14 @@ set_window_value(AT_USPECIAL_2, 8, AG_WINDOW_HSPEED, 7);
 set_window_value(AT_USPECIAL_2, 8, AG_WINDOW_VSPEED, -7.5);
 set_window_value(AT_USPECIAL_2, 8, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL_2, 8, AG_WINDOW_VSPEED_TYPE, 2);
+set_window_value(AT_USPECIAL_2, 8, AG_MUNO_WINDOW_EXCLUDE, 1);
 
 set_window_value(AT_USPECIAL_2, 9, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL_2, 9, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_USPECIAL_2, 9, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USPECIAL_2, 9, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(AT_USPECIAL_2, 9, AG_WINDOW_GOTO, 19);
+set_window_value(AT_USPECIAL_2, 9, AG_MUNO_WINDOW_EXCLUDE, 1);
 
 
 
@@ -119,6 +125,7 @@ set_window_value(AT_USPECIAL_2, 13, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL_2, 13, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_USPECIAL_2, 13, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL_2, 13, AG_WINDOW_ANIM_FRAME_START, 20);
+set_window_value(AT_USPECIAL_2, 13, AG_MUNO_WINDOW_EXCLUDE, 1);
 
 set_window_value(AT_USPECIAL_2, 14, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL_2, 14, AG_WINDOW_LENGTH, 6);
@@ -128,12 +135,14 @@ set_window_value(AT_USPECIAL_2, 14, AG_WINDOW_HSPEED, -7);
 set_window_value(AT_USPECIAL_2, 14, AG_WINDOW_VSPEED, -7.5);
 set_window_value(AT_USPECIAL_2, 14, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL_2, 14, AG_WINDOW_VSPEED_TYPE, 2);
+set_window_value(AT_USPECIAL_2, 14, AG_MUNO_WINDOW_EXCLUDE, 1);
 
 set_window_value(AT_USPECIAL_2, 15, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL_2, 15, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_USPECIAL_2, 15, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USPECIAL_2, 15, AG_WINDOW_ANIM_FRAME_START, 23);
 set_window_value(AT_USPECIAL_2, 15, AG_WINDOW_GOTO, 19);
+set_window_value(AT_USPECIAL_2, 15, AG_MUNO_WINDOW_EXCLUDE, 1);
 
 
 
@@ -143,6 +152,7 @@ set_window_value(AT_USPECIAL_2, 16, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL_2, 16, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_USPECIAL_2, 16, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL_2, 16, AG_WINDOW_ANIM_FRAME_START, 25);
+set_window_value(AT_USPECIAL_2, 16, AG_MUNO_WINDOW_EXCLUDE, 1);
 
 set_window_value(AT_USPECIAL_2, 17, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL_2, 17, AG_WINDOW_LENGTH, 6);
@@ -152,12 +162,14 @@ set_window_value(AT_USPECIAL_2, 17, AG_WINDOW_HSPEED, -7);
 set_window_value(AT_USPECIAL_2, 17, AG_WINDOW_VSPEED, -7.5);
 set_window_value(AT_USPECIAL_2, 17, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL_2, 17, AG_WINDOW_VSPEED_TYPE, 2);
+set_window_value(AT_USPECIAL_2, 17, AG_MUNO_WINDOW_EXCLUDE, 1);
 
 set_window_value(AT_USPECIAL_2, 18, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL_2, 18, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_USPECIAL_2, 18, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USPECIAL_2, 18, AG_WINDOW_ANIM_FRAME_START, 28);
 set_window_value(AT_USPECIAL_2, 18, AG_WINDOW_GOTO, 19);
+set_window_value(AT_USPECIAL_2, 18, AG_MUNO_WINDOW_EXCLUDE, 1);
 
 
 
@@ -199,3 +211,4 @@ set_hitbox_value(AT_USPECIAL_2, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_EXTRA_HITPAUSE, 6);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HITPAUSE_SCALING, .35);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HIT_SFX, sound_get("smrpg_mario_hammer"));
+set_hitbox_value(AT_USPECIAL_2, 1, HG_MUNO_HITBOX_EXCLUDE, 1);

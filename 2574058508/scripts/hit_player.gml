@@ -34,3 +34,9 @@ if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 5){
     lighting_block3 = false;
     lighting_butterfly = false;           
 }
+if (my_hitboxID.attack != AT_DSPECIAL){
+    lighting_block1 = false;
+    lighting_block2 = false;
+    lighting_block3 = false;
+    lighting_butterfly = false;
+}

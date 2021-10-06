@@ -60,6 +60,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_FORCE_FLINCH, 2);
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 //set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_PARRY_STUN, 1);
 //set_hitbox_value(AT_FSTRONG, 1, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_FSTRONG, 1, HG_MUNO_HITBOX_NAME, "Projectile");
 
 set_hitbox_value(AT_FSTRONG, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_TYPE, 2);
@@ -87,3 +88,4 @@ set_hitbox_value(AT_FSTRONG, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_FSTRONG, 2, HG_MUNO_HITBOX_NAME, "Proj. Explosion");

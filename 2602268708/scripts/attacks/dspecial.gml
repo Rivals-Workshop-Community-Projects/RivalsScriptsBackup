@@ -26,8 +26,7 @@ set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 
 set_num_hitboxes(AT_DSPECIAL, 1);
 
-set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE_FLIPPER, 7);
-set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 70);
+set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, -1);
@@ -36,9 +35,9 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 70);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 65);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 4);
-set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 13);
 set_hitbox_value(AT_DSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.05);
-set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 9);
+set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITPAUSE_SCALING, 0.2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_light1"));
 set_hitbox_value(AT_DSPECIAL, 1, HG_TECHABLE, 1);

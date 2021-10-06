@@ -5,6 +5,9 @@ set_attack_value(AT_NSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_NSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"));
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
+set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_NAME, "NSpecial: Geno Beam");
+set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_MISC, "The power of these hitboxes changes dynamically with charge level. Try firing beams of different levels and then refreshing the stats each time!");
+
 
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 9);
@@ -64,6 +67,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 125);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_clairen_tip_weak"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Hit 1");
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 1);
@@ -87,6 +91,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 126);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_clairen_tip_weak"));
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Hit 2");
 
 set_hitbox_value(AT_NSPECIAL, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 1);
@@ -110,6 +115,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 125);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_clairen_tip_weak"));
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 3, HG_MUNO_HITBOX_NAME, "Hit 3");
 
 set_hitbox_value(AT_NSPECIAL, 4, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_TYPE, 1);
@@ -132,5 +138,31 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT, 127);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
-set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_GROUP, 4);
 set_hitbox_value(AT_NSPECIAL, 4, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 4, HG_MUNO_HITBOX_NAME, "Hit 4");
+
+set_hitbox_value(AT_NSPECIAL, 5, HG_PARENT_HITBOX, 0);
+set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_NSPECIAL, 5, HG_WINDOW, 4);
+set_hitbox_value(AT_NSPECIAL, 5, HG_WINDOW_CREATION_FRAME, 16);
+set_hitbox_value(AT_NSPECIAL, 5, HG_LIFETIME, 5);
+set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_X, 300);
+set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_Y, -32);
+set_hitbox_value(AT_NSPECIAL, 5, HG_WIDTH, 60);
+set_hitbox_value(AT_NSPECIAL, 5, HG_HEIGHT, 60);
+set_hitbox_value(AT_NSPECIAL, 5, HG_SHAPE, 0);
+set_hitbox_value(AT_NSPECIAL, 5, HG_PRIORITY, 4);
+set_hitbox_value(AT_NSPECIAL, 5, HG_DAMAGE, 8);
+set_hitbox_value(AT_NSPECIAL, 5, HG_ANGLE, 45);
+set_hitbox_value(AT_NSPECIAL, 5, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_NSPECIAL, 5, HG_KNOCKBACK_SCALING, .95);
+set_hitbox_value(AT_NSPECIAL, 5, HG_BASE_HITPAUSE, 12);
+set_hitbox_value(AT_NSPECIAL, 5, HG_HITPAUSE_SCALING, 0.9);
+set_hitbox_value(AT_NSPECIAL, 5, HG_VISUAL_EFFECT_X_OFFSET, 0);
+set_hitbox_value(AT_NSPECIAL, 5, HG_VISUAL_EFFECT_Y_OFFSET, 0);
+set_hitbox_value(AT_NSPECIAL, 5, HG_VISUAL_EFFECT, 127);
+set_hitbox_value(AT_NSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
+set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_GROUP, 4);
+set_hitbox_value(AT_NSPECIAL, 5, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 5, HG_MUNO_HITBOX_NAME, "Hit 4, tipper (max charge only)");

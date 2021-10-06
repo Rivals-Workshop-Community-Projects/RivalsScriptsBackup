@@ -40,6 +40,7 @@ set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, .35);
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT_Y_OFFSET, 10);
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 111);
 set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_ori_charged_flame_hit"));
+set_hitbox_value(AT_DTILT, 1, HG_MUNO_HITBOX_NAME, "Sourspot (outer)");
 
 set_hitbox_value(AT_DTILT, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DTILT, 2, HG_HITBOX_TYPE, 1);
@@ -60,3 +61,4 @@ set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT_Y_OFFSET, 10);
 set_hitbox_value(AT_DTILT, 2, HG_VISUAL_EFFECT, 111);
 set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_ori_charged_flame_hit"));
 set_hitbox_value(AT_DTILT, 2, HG_HITBOX_COLOR, 1);
+set_hitbox_value(AT_DTILT, 2, HG_MUNO_HITBOX_NAME, "Sweetspot (inner)");

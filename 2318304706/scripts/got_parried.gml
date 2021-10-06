@@ -1,9 +1,12 @@
 switch (my_hitboxID.attack) {
 	case AT_USPECIAL:
-		if (my_hitboxID.hbox_num == 2) {
-			flash.gotParried = 1;
-			flash.parriedPlayer = hit_player;
-		}
+		flash.y -= 10;
+		flash.gotParried = 1;
+		flash.parriedPlayer = hit_player;
+		flash.state = 1;
+		flash.state_timer = 0;
+		flash.lifetime = 26;
+		print("reflect pls");
 		break;
 	case AT_FSPECIAL:
 		if (my_hitboxID.hbox_num == 1) {

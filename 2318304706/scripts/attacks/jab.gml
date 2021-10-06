@@ -63,6 +63,7 @@ set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT_X_OFFSET, 12);
 set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT_Y_OFFSET, -5);
 set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT, 135);
 set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, sound_get("smrpg_mario_kick"));
+set_hitbox_value(AT_JAB, 1, HG_MUNO_HITBOX_NAME, "Jab 1");
 
 set_hitbox_value(AT_JAB, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_JAB, 2, HG_HITBOX_TYPE, 2);
@@ -86,6 +87,7 @@ set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_JAB, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_JAB, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(AT_JAB, 2, HG_MUNO_HITBOX_NAME, "Jab 2 Hit 1");
 
 set_hitbox_value(AT_JAB, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_JAB, 3, HG_HITBOX_TYPE, 2);
@@ -109,6 +111,7 @@ set_hitbox_value(AT_JAB, 3, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_JAB, 3, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_JAB, 3, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_JAB, 3, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(AT_JAB, 3, HG_MUNO_HITBOX_NAME, "Jab 2 Hit 2");
 
 set_hitbox_value(AT_JAB, 4, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_JAB, 4, HG_HITBOX_TYPE, 2);
@@ -133,6 +136,7 @@ set_hitbox_value(AT_JAB, 4, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_JAB, 4, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_JAB, 4, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_JAB, 4, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(AT_JAB, 4, HG_MUNO_HITBOX_NAME, "Jab 2 Hit 3");
 
 set_hitbox_value(AT_JAB, 5, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_JAB, 5, HG_HITBOX_TYPE, 2);
@@ -158,6 +162,7 @@ set_hitbox_value(AT_JAB, 5, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_JAB, 5, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_JAB, 5, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_JAB, 5, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
+set_hitbox_value(AT_JAB, 5, HG_MUNO_HITBOX_NAME, "Jab 2 Hit 4");
 
 set_hitbox_value(AT_JAB, 6, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_JAB, 6, HG_HITBOX_TYPE, 2);
@@ -183,3 +188,4 @@ set_hitbox_value(AT_JAB, 6, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_JAB, 6, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_JAB, 6, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_JAB, 6, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_JAB, 6, HG_MUNO_HITBOX_NAME, "Jab 2 Hit 4 (TH)");

@@ -1,6 +1,6 @@
 user_event(13);  
 
-    if get_player_color( player ) == 25 || get_player_color( player ) == 24 || get_player_color( player ) == 23 && attack == AT_TAUNT{
+    if get_player_color( player ) == 25 || get_player_color( player ) == 24 || get_player_color( player ) == 23 && attack == AT_TAUNT && !respawn_taunt{
     if (taunt_pressed || taunt_down) && (object_index == oTestPlayer || !joy_pad_idle){
 	attack = AT_TAUNT_2;
     }

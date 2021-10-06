@@ -141,6 +141,7 @@ of the standing-up animation. Dan Moment
 */
 
 //hit fx
+blkbrk_effect = hit_fx_create( sprite_get( "block_break" ), 30 );
 block_effect = hit_fx_create( sprite_get( "block_fx" ), 30 );
 butterfly_effect = hit_fx_create( sprite_get( "butterfly_fx" ), 30 );
 

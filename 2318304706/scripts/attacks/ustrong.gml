@@ -60,6 +60,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 135);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_USTRONG, 1, HG_SDI_MULTIPLIER, 0.5);
+set_hitbox_value(AT_USTRONG, 1, HG_MUNO_HITBOX_NAME, "Hit 1, lower");
 
 set_hitbox_value(AT_USTRONG, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
@@ -79,6 +80,7 @@ set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 135);
 set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_USTRONG, 2, HG_SDI_MULTIPLIER, 0.5);
+set_hitbox_value(AT_USTRONG, 2, HG_MUNO_HITBOX_NAME, "Hit 1, upper");
 
 set_hitbox_value(AT_USTRONG, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_USTRONG, 3, HG_HITBOX_TYPE, 2);
@@ -105,6 +107,7 @@ set_hitbox_value(AT_USTRONG, 3, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_USTRONG, 3, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_USTRONG, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_USTRONG, 3, HG_FORCE_FLINCH, 2);
+set_hitbox_value(AT_USTRONG, 3, HG_MUNO_HITBOX_NAME, "Hit 2, center");
 
 set_hitbox_value(AT_USTRONG, 4, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_TYPE, 2);
@@ -131,6 +134,7 @@ set_hitbox_value(AT_USTRONG, 4, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_USTRONG, 4, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_USTRONG, 4, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_USTRONG, 4, HG_FORCE_FLINCH, 2);
+set_hitbox_value(AT_USTRONG, 4, HG_MUNO_HITBOX_NAME, "Hit 2, left (TH)");
 
 set_hitbox_value(AT_USTRONG, 5, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_USTRONG, 5, HG_HITBOX_TYPE, 2);
@@ -157,3 +161,4 @@ set_hitbox_value(AT_USTRONG, 5, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_USTRONG, 5, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_USTRONG, 5, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_USTRONG, 5, HG_FORCE_FLINCH, 2);
+set_hitbox_value(AT_USTRONG, 5, HG_MUNO_HITBOX_NAME, "Hit 2, right (TH)");

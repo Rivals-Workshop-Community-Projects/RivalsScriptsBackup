@@ -23,7 +23,7 @@ switch (attack)
 		move_cooldown[AT_FSPECIAL] = 60;
 		if (window == 1 && window_timer == 1)
 		{
-			bomb_numbering = random_func( 0, 4, true);
+			bomb_numbering = random_func( 0, 4, false);
 		}
 		break;
 	case AT_USPECIAL:

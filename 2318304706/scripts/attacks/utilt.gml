@@ -47,6 +47,7 @@ set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_UTILT, 1, HG_ANGLE_FLIPPER, 4);
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_UTILT, 1, HG_MUNO_HITBOX_NAME, "Hit 1");
 
 set_hitbox_value(AT_UTILT, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_TYPE, 1);
@@ -66,6 +67,7 @@ set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(AT_UTILT, 2, HG_ANGLE_FLIPPER, 4);
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_UTILT, 2, HG_MUNO_HITBOX_NAME, "Hit 2");
 
 set_hitbox_value(AT_UTILT, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_UTILT, 3, HG_HITBOX_TYPE, 1);
@@ -87,3 +89,4 @@ set_hitbox_value(AT_UTILT, 3, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_UTILT, 3, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_UTILT, 3, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_UTILT, 3, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_UTILT, 3, HG_MUNO_HITBOX_NAME, "Hit 3");

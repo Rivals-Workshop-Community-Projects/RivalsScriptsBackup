@@ -136,14 +136,14 @@ if (attack == AT_DAIR){
 
 
 
-//dattack jump cancel
-if (window == 3 && has_hit_player && attack = AT_DATTACK) {
-    can_jump = true;
-}
-if (window == 2 && has_hit_player && attack = AT_DATTACK) {
-    can_jump = true;
-   
-}
+////dattack jump cancel
+//if (window == 3 && has_hit_player && attack = AT_DATTACK) {
+//    can_jump = true;
+//}
+//if (window == 2 && has_hit_player && attack = AT_DATTACK) {
+//    can_jump = true;
+//   
+//}
 
 //if (window == 2 && has_hit_player && attack = AT_UTILT) {
 //    can_jump = true;

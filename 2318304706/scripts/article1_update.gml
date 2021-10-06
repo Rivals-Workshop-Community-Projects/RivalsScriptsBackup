@@ -43,7 +43,7 @@ player_id.shouldShowIndicator = 0;
 //Are there too many articles? If so, I should die
 
 if (replacedcount > maxarticles){
-    shoulddie = true;
+    //shoulddie = true;
 }
 
 
@@ -160,7 +160,14 @@ if (state == 1){
 	}
     
     if (lifetime < 0) {
-		shoulddie = true;
+		if (gotParried > 0 && (version < 2 || version == 5)) {
+			state = 3;
+			state_timer = 0;
+			hasDetonated = 2;
+			detonating = false;
+		} else {
+			shoulddie = true;
+		}
     }
     
     //Die if should die
@@ -353,6 +360,10 @@ if (state == 1){
 		}
 		gotParried = 2;
 	}
+	
+	if (gotParried > 0 && (version == 1 || version == 5)) {
+		image_angle = 180;
+	}
 }
 
 
@@ -435,12 +446,21 @@ if (state == 3){
 		switch (version) {
 			case 0:
 				hb = create_hitbox(AT_FSTRONG, 2, x, y-5);
+				if (gotParried > 0) {
+					hb.player = parriedPlayer;
+				}
 				break;
 			case 1:
 				hb = create_hitbox(AT_DAIR, 2, x + 2*spr_dir, y + 10);
+				if (gotParried > 0) {
+					hb.player = parriedPlayer;
+				}
 				break;
 			case 5:
 				hb = create_hitbox(AT_DAIR, 3, x + 2*spr_dir, y + 10);
+				if (gotParried > 0) {
+					hb.player = parriedPlayer;
+				}
 				break;
 			case 2:
 				if (player_id.runeActiveM == 1) {

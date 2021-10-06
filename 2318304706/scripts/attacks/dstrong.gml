@@ -70,6 +70,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 109);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_TECHABLE, 3);
+set_hitbox_value(AT_DSTRONG, 1, HG_MUNO_HITBOX_NAME, "Hit 1, outer");
 
 set_hitbox_value(AT_DSTRONG, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
@@ -91,6 +92,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 109);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_TECHABLE, 3);
+set_hitbox_value(AT_DSTRONG, 2, HG_MUNO_HITBOX_NAME, "Hit 1, lower");
 
 set_hitbox_value(AT_DSTRONG, 7, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DSTRONG, 7, HG_HITBOX_TYPE, 1);
@@ -112,6 +114,7 @@ set_hitbox_value(AT_DSTRONG, 7, HG_VISUAL_EFFECT, 109);
 set_hitbox_value(AT_DSTRONG, 7, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 set_hitbox_value(AT_DSTRONG, 7, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSTRONG, 7, HG_TECHABLE, 3);
+set_hitbox_value(AT_DSTRONG, 7, HG_MUNO_HITBOX_NAME, "Hit 1, inner");
 
 
 
@@ -136,6 +139,7 @@ set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, 109);
 set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_DSTRONG, 3, HG_TECHABLE, 3);
+set_hitbox_value(AT_DSTRONG, 3, HG_MUNO_HITBOX_NAME, "Hit 2, outer");
 
 set_hitbox_value(AT_DSTRONG, 4, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_TYPE, 1);
@@ -158,6 +162,7 @@ set_hitbox_value(AT_DSTRONG, 4, HG_VISUAL_EFFECT, 109);
 set_hitbox_value(AT_DSTRONG, 4, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_DSTRONG, 4, HG_TECHABLE, 3);
+set_hitbox_value(AT_DSTRONG, 4, HG_MUNO_HITBOX_NAME, "Hit 2, lower");
 
 set_hitbox_value(AT_DSTRONG, 8, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DSTRONG, 8, HG_HITBOX_TYPE, 1);
@@ -179,6 +184,7 @@ set_hitbox_value(AT_DSTRONG, 8, HG_VISUAL_EFFECT, 109);
 set_hitbox_value(AT_DSTRONG, 8, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 set_hitbox_value(AT_DSTRONG, 8, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_DSTRONG, 8, HG_TECHABLE, 3);
+set_hitbox_value(AT_DSTRONG, 8, HG_MUNO_HITBOX_NAME, "Hit 2, inner");
 
 
 
@@ -203,6 +209,7 @@ set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT_X_OFFSET, 10);
 set_hitbox_value(AT_DSTRONG, 5, HG_VISUAL_EFFECT, 110);
 set_hitbox_value(AT_DSTRONG, 5, HG_HIT_SFX, sound_get("smrpg_geno_stargunfinish"));
 set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_GROUP, 3);
+set_hitbox_value(AT_DSTRONG, 5, HG_MUNO_HITBOX_NAME, "Hit 3");
 
 
 
@@ -227,3 +234,4 @@ set_hitbox_value(AT_DSTRONG, 6, HG_VISUAL_EFFECT_X_OFFSET, 10);
 set_hitbox_value(AT_DSTRONG, 6, HG_VISUAL_EFFECT, 110);
 set_hitbox_value(AT_DSTRONG, 6, HG_HIT_SFX, sound_get("smrpg_geno_stargunfinish"));
 set_hitbox_value(AT_DSTRONG, 6, HG_HITBOX_GROUP, 3);
+set_hitbox_value(AT_DSTRONG, 6, HG_MUNO_HITBOX_NAME, "Hit 3 (TH)");

@@ -57,6 +57,8 @@ sprite_change_offset("plat", 64, 100);
 //character specific stuff
 sprite_change_offset("nspecial_proj", 64, 94);
 sprite_change_offset("block", 128, 160);
+sprite_change_offset("block_crack", 128, 160);
+sprite_change_offset("block_break", 128, 160);
 sprite_change_offset("block_active", 128, 160);
 sprite_change_offset("fspecial_proj", 104, 142);
 sprite_change_offset("uspecial_proj", 104, 142);

@@ -128,6 +128,7 @@ if (state == 3){
 		numShotsDone++;
 		sound_play(sound_get("laser"));
 		bolt.spr_dir *= 1.5;
+		bolt.mask_index = sprite_get("dspec_proj_mask");
 	}
 	
     if (state_timer >= 12 * numShots){

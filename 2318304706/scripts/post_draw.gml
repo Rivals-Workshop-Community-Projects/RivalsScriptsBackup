@@ -1,3 +1,6 @@
+muno_event_type = 4;
+user_event(14);
+
 shader_start();
 if (blinkTimer % 120 <= 2.5 && state == PS_IDLE) {
 	draw_sprite_ext(sprite_get("blink"), 0, x, y, spr_dir, 1, 0, -1, 1); 
