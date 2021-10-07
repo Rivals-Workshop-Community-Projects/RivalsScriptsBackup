@@ -27,7 +27,7 @@ set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 5);
 set_num_hitboxes(AT_FAIR,0);
 
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 3);
+set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 4);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 78);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -48);
 set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 110);
@@ -47,7 +47,7 @@ set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_FAIR, 1, HG_HIT_LOCKOUT, 5);
 
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 3);
+set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 4);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 62);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_Y, -48);
 set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 70);

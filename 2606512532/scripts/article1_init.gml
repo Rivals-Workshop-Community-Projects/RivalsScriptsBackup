@@ -4,6 +4,8 @@ oPlayer_owner = undefined;
 
 is_pitarticle = true;
 
+destroy_cooldown = 140
+
 sprite_index = asset_get("empty_sprite")
 
 can_be_grounded = false;

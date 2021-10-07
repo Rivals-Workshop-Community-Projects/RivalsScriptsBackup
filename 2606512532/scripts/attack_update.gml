@@ -160,7 +160,7 @@ if attack == AT_DTHROW {
 }
 
 if attack == AT_DSPECIAL_2 {
-    move_cooldown[AT_DTHROW] = 10;
+    move_cooldown[AT_DTHROW] = 30;
     if window == 1 && window_timer == 1 && instance_exists(orbitar_id) {
         if orbitar_id.state == PS_IDLE {
             orbitar_id.state = PS_ATTACK_AIR;
@@ -457,7 +457,7 @@ if attack == AT_FTHROW {
     }
     
     if window == 3 && window_timer == 1 && (!phone_cheats[CHEAT_QUICK_CHARGE] && !has_rune("I")) { //FSPECIAL cooldown removed.
-        move_cooldown[AT_FTHROW] = 130;
+        move_cooldown[AT_FTHROW] = 150;
     }
     if window >= 2 can_wall_jump = true;
     

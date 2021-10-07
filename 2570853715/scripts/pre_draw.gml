@@ -123,3 +123,10 @@ if(get_local_setting(SET_FX_QUALITY) == 3){
 		}
 	}
 }
+
+if(lightning_counter > 10){
+    var num2draw = ceil(y/400);
+    for(var i = 0; i < num2draw; i++){
+        draw_sprite_ext(sprite_get("lightning"), 0, lightning_x, lightning_y-i*400, -spr_dir, 1, 0, c_white, 1);
+    }
+}

@@ -292,6 +292,20 @@ initHeader("Other");
 initSection("");
 */
 
+initPatch("1.11", "7 October, 2021");
+initHeader("Both");
+initSection("- Fspecial charge shot cooldown increased: 130f -> 150f
+- Reflected Fspecial rapidfire is polite
+- Remote Dspecial activation/deactivation cooldown increased: 10f -> 30f
+- Remote Dspecial activation startup increased: 8f -> 12f
+- Remote Dspecial angle changed: 60 -> 90
+- Opponents can destroy remote Dspecial with a hitbox while in non-activated state
+- Cooldown for remote Dspecial destroy increased: 90f -> 140f");
+initHeader("Pit");
+initSection("- Fspecial rapidfire rate decreased: 1 per 12f -> 1 per 14f");
+initHeader("Dark Pit");
+initSection("- Fspecial rapidfire rate decreased: 1 per 16f -> 1 per 18f");
+
 initPatch("1.10", "4 October, 2021");
 initHeader("Bug Fixes");
 initSection("- Utilt/Ustrong special code no longer affects armoured opponents");

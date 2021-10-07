@@ -12,3 +12,6 @@ with(oPlayer){
 	}
 }*/
 	//gpu_set_fog(false, c_white, 0, 0);
+if(player_id.lightning_counter > 0){
+	draw_sprite_ext(sprite_get("flash"), 0, 0, 0, room_width/10, room_height/10, 0, c_white, 1 - max((20-player_id.lightning_counter)/8, .8));
+}

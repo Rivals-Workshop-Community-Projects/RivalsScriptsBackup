@@ -1,1 +1,3 @@
-if player_id.u_cooldown != 0 instance_destroy();
+if(attack == AT_NAIR or attack == AT_JAB){
+    
+}

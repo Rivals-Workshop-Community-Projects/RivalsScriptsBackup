@@ -17,7 +17,36 @@ nspecial_charge_max = 8;
 knife_hit = false;
 uspec_end_x = x;
 uspec_end_y = y;
+skin_count = 1;
+lightning_counter = 0;
+fx_article = instance_create(0, 0, "obj_article1");
+fx_article.sprite_index = sprite_get("install_bg");
+fx_article.image_xscale = room_width/10;
+fx_article.image_yscale = room_height/10;
+fx_article.image_alpha = 0;
+lightning_x = 0;
+lightning_y = 0;
 
+hfx_bat = hit_fx_create(sprite_get("hfx_bat_large"), 24);
+hfx_pumpkin = hit_fx_create(sprite_get("hfx_pumpkin"), 24);
+if(get_player_color(player) == 16){
+    set_hitbox_value(AT_FSPECIAL, 14, HG_VISUAL_EFFECT, hfx_bat);
+    set_hitbox_value(AT_NAIR, 3, HG_VISUAL_EFFECT, hfx_bat);
+    set_hitbox_value(AT_NAIR, 4, HG_VISUAL_EFFECT, hfx_bat);
+    set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, hfx_bat);
+    set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, hfx_bat);
+    set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, hfx_bat);
+    set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, hfx_bat);
+    set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, hfx_bat);
+    set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, hfx_bat);
+    set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, hfx_bat);
+    set_hitbox_value(AT_FSTRONG, 4, HG_VISUAL_EFFECT, hfx_bat);
+    set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("dspecial_dev_knife"));
+    set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, hfx_pumpkin);
+    set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, hfx_bat);
+    set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, hfx_pumpkin);
+    set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, hfx_pumpkin);
+}
 
 // STAT NAME		ZETTER VALUE   BASECAST RANGE   NOTES
 small_sprites = true;

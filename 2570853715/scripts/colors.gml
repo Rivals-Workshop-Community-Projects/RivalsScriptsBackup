@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 17 );
 
 // Kourindou Version
 set_color_profile_slot( 1, 0, 27, 18, 193 ); //Eyes/Dress
@@ -186,10 +186,19 @@ set_color_profile_slot( 15, 5, 83, 176, 114 ); //Hair2
 set_color_profile_slot( 15, 6, 39, 54, 44 ); //Sleves
 set_color_profile_slot( 15, 7, 0, 0, 0 ); //Clothes2
 
+// Dev Derby
+set_color_profile_slot( 16, 0, 0, 79, 46 ); //Eyes/Dress
+set_color_profile_slot( 16, 1, 125, 52, 140 ); //Bow
+set_color_profile_slot( 16, 2, 59, 59, 59 ); //Shoes
+set_color_profile_slot( 16, 3, 227, 203, 179 ); //Skin
+set_color_profile_slot( 16, 4, 247, 187, 34 ); //Hair
+set_color_profile_slot( 16, 5, 181, 90, 9 ); //Hair2
+set_color_profile_slot( 16, 6, 219, 223, 234 ); //Sleves
+set_color_profile_slot( 16, 7, 178, 181, 212 ); //Clothes2
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
 {"formatversion":1,"data":[{"name":"Eyes/Dress","colors":[{"r":27,"g":18,"b":193,"main":true},{"r":40,"g":35,"b":124},{"r":33,"g":26,"b":49}]},{"name":"Bow","colors":[{"r":33,"g":196,"b":127},{"r":0,"g":139,"b":115,"main":true}]},{"name":"Shoes","colors":[{"r":67,"g":87,"b":126,"main":true},{"r":31,"g":43,"b":66}]},{"name":"Skin","colors":[{"r":240,"g":226,"b":205,"main":true},{"r":224,"g":182,"b":169},{"r":171,"g":80,"b":51}]},{"name":"Hair","colors":[{"r":191,"g":199,"b":219,"main":true}]},{"name":"Hair2","colors":[{"r":138,"g":142,"b":167,"main":true}]},{"name":"Sleves","colors":[{"r":219,"g":223,"b":234,"main":true}]},{"name":"Clothes2","colors":[{"r":178,"g":181,"b":212,"main":true}]}]}
 === END JSON PALETTE ===
 */
-

@@ -89,3 +89,17 @@ if (state == 1){ //Destroyed
     }
     
 }
+
+
+with (asset_get("pHitBox")){ //enemy can break the weak gravity orb
+    if (player_id != other.player_id && get_player_team(player_id.player) != get_player_team(other.player_id.player) && place_meeting(x,y,other)){
+        
+        if (other.charged = 0){
+            other.state = 1;
+            other.state_timer = 0;
+            other.vsp = 0;
+            other.proj_speed = 0;
+        }
+        
+    }
+}

@@ -42,12 +42,30 @@ switch state {
         vsp = clamp(vsp, -4, 4)
     }
     
-    if in_xrange && in_yrange {
-        sound_play(asset_get("sfx_ell_utilt_fire"))
-        spawn_hit_fx(x, y, 109)
+    var force_destroy = false;
+    if position_meeting(x, y, pHitBox) {
+        var hbox = instance_position(x, y, pHitBox)
+        if hbox.player_id != player_id && hbox.hit_priority > 0 {
+            force_destroy = true
+        }
+    }
+    
+    if (in_xrange && in_yrange) || force_destroy {
+        if force_destroy {
+            player_id.move_cooldown[AT_DSPECIAL] = destroy_cooldown
+            sound_play(asset_get("sfx_clairen_hit_med"))
+            spawn_hit_fx(x, y, 251)
+        } else {
+            sound_play(asset_get("sfx_ell_utilt_fire"))
+            spawn_hit_fx(x, y, 109)
+        }
+        
         player_id.orbitar_id = noone;
         instance_destroy();
+        exit;
     }
+    
+    
     
     break;
     
@@ -79,11 +97,28 @@ switch state {
         }
         */
         
+        var force_destroy = false;
+        if position_meeting(x, y, pHitBox) {
+            var hbox = instance_position(x, y, pHitBox)
+            if hbox.player_id != player_id && hbox.hit_priority > 0 {
+                force_destroy = true
+            }
+        }
+        if force_destroy && window_timer < 10 {
+            player_id.move_cooldown[AT_DSPECIAL] = destroy_cooldown
+            sound_play(asset_get("sfx_clairen_hit_med"))
+            spawn_hit_fx(x, y, 251)
+            
+            player_id.orbitar_id = noone;
+            instance_destroy();
+            exit;
+        }
+        
         hp = base_hp;
         
-        if window_timer == 6 sound_play(sound_get("orbitar_spawn"));
+        if window_timer == 10 sound_play(sound_get("orbitar_spawn"));
         
-        if window_timer == 8 {
+        if window_timer == 12 {
             var hitbox = create_hitbox(AT_DTHROW, 1, x + shield_spawn_dist*spr_dir, y + 4);
                 hitbox.owner = id;
             var hitbox2 = create_hitbox(AT_DTHROW, 1, x - shield_spawn_dist*spr_dir, y + 4);
@@ -153,7 +188,7 @@ switch state {
     
     if state_timer == 16 {
         player_id.orbitar_id = noone;
-        player_id.move_cooldown[AT_DSPECIAL] = 90;
+        player_id.move_cooldown[AT_DSPECIAL] = destroy_cooldown;
         instance_destroy();
     }
     break;

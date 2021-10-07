@@ -16,7 +16,7 @@ set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 2);
 
 //looping
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 9);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);

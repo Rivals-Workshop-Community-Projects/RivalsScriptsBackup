@@ -30,11 +30,11 @@ if onscreen(x,y) {
 	    drawy = y + floor(dsin(state_timer*4)*3)
 	    switch window {
 	        case 1: //summon
-	        draw_sprite_ext(spr_attack, floor(window_timer/3), drawx, drawy, spr_dir, 1, 0, c_white, 1);
+	        draw_sprite_ext(spr_attack, floor(window_timer/4), drawx, drawy, spr_dir, 1, 0, c_white, 1);
 	        break;
 	        
 	        case 2: //attack
-	        draw_sprite_ext(spr_attack, clamp(floor(window_timer/3), 0, 1) + 3, drawx, drawy, spr_dir, 1, 0, c_white, 1);
+	        draw_sprite_ext(spr_attack, clamp(floor(window_timer/4), 0, 1) + 3, drawx, drawy, spr_dir, 1, 0, c_white, 1);
 	        
 	        //draw shield
 	        var shield_img_index = 0;
@@ -43,7 +43,7 @@ if onscreen(x,y) {
 	            shield_img_index = 0;
 	            shield_alpha = 1;
 	        } else {
-	            shield_img_index = ((window_timer/3) mod 7) + 1;
+	            shield_img_index = ((window_timer/4) mod 7) + 1;
 	            shield_alpha = 0.7 + dsin(window_timer*16)*0.2;
 	        }
 	        

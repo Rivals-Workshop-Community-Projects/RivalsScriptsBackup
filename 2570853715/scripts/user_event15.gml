@@ -435,7 +435,10 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
-	 initPatch("0.11", "26, September 2021");
+	 initPatch("0.13", "06, October 2021");
+	 initPatchWords("Fumo Sakuya now loses nspecial charges if hit while charging.
+Added Dev Derby alt. It is very spooky.");
+	 initPatch("0.12", "26, September 2021");
 	 initPatchWords("Bair: Travel Speed: 13 > 8
 Bair: Startup: 10 > 12
 Bair: Base Knockback: 6 > 8

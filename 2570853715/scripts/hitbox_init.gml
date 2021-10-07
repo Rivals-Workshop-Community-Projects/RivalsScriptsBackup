@@ -9,10 +9,15 @@ if((attack == AT_NSPECIAL or attack == AT_DSPECIAL)and hbox_num == 1){
 }
 
 if(attack == AT_DSPECIAL){
+
     sound_lockout = 0;
     reversed = false;
     prev_reversed = false;
-    color = c_blue;
+    if(get_player_color(player) != 16){
+        color = c_blue;
+    } else {
+        color = c_purple;
+    }
     prev_vsp = vsp;
     prev_hsp = hsp;
     queue_pos = 0;

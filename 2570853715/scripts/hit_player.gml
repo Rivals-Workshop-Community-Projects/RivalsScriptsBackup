@@ -44,3 +44,18 @@ if(my_hitboxID.attack == AT_USTRONG and my_hitboxID.hbox_num == 2){
     	}
     }
 }
+
+if(get_player_color(player) == 16){
+    if(my_hitboxID.attack == AT_DSTRONG or my_hitboxID.attack == AT_FSTRONG){
+        sound_play(sound_get("count" + string(skin_count)));
+        skin_count++;
+        if(skin_count > 4){
+            lightning_counter = 20;
+            shake_camera(8, 10);
+            spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-60, 157);
+            lightning_x = hit_player_obj.x;
+            lightning_y = hit_player_obj.y;
+            skin_count = 1;
+        }
+    }
+}

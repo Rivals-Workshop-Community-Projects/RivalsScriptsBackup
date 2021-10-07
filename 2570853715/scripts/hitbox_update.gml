@@ -3,10 +3,18 @@ if(attack == AT_DSPECIAL){
 	
 	visible = false;
 	if(reversed != prev_reversed){
-		sprite_index = reversed?sprite_get("dspecial2_knife"):sprite_get("dspecial_knife");
+		if(get_player_color(player) == 16){
+			sprite_index = reversed?sprite_get("dspecial2_dev_knife"):sprite_get("dspecial_dev_knife");
+		} else {
+			sprite_index = reversed?sprite_get("dspecial2_knife"):sprite_get("dspecial_knife");
+		}
 		vsp = -vsp;
 		hsp = -hsp;
-		color = reversed? c_yellow:c_blue;
+		if(get_player_color(player)!=16){
+			color = reversed? c_yellow:c_blue;
+		} else {
+			color = reversed? c_orange:c_purple;
+		}
 	}
 	prev_reversed = reversed;
 	

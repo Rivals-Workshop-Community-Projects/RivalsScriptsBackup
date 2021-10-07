@@ -200,9 +200,9 @@ if attack == AT_FSPECIAL && hbox_num == 1 {
     if was_reflected && reflection_timer == 0 {
         if reflection_count == 1 {
             hsp *= 1.2;
-            kb_value = 8;
+            //kb_value = 8;
             damage *= 1.5;
-            hitpause = 6;
+            //hitpause = 6;
         }
         
         if reflection_count > 8 destroyed = true;
@@ -283,7 +283,7 @@ with pHitBox {
             vsp *= -1;
             spr_dir *= -1;
             reflection_count++;
-            effect = 0;
+            //effect = 0;
             break;
         }
     } else if !("is_pitbox" in self) && type == 2 && !transcendent && hit_priority != 0 && instance_place(x, y, other) {

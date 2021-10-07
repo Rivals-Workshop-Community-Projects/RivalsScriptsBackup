@@ -14,11 +14,9 @@ if (attack == AT_JAB or attack == AT_NAIR){
 switch(attack){
 	case AT_JAB:
 	case AT_NAIR:
-
 		if(window == 1) {
 			move_cooldown[AT_JAB] = 50;
 			move_cooldown[AT_NAIR] = 50;
-			shadowball_hit = false;
 			proj_size = 1;
 			if(window_timer == get_window_value(AT_JAB, 1, AG_WINDOW_LENGTH)){
 				sound_play(sound_get("charge"+string(proj_size)));
@@ -43,7 +41,8 @@ switch(attack){
 		} else if (window == 3){
 			if(window_timer == 1){
 				//print_debug(proj_size);
-				create_hitbox(AT_JAB, proj_size, x, y-32);
+				var hbox = create_hitbox(AT_JAB, proj_size, x, y-32);
+				hbox.shadowball_size = proj_size;
 			}
 		}
 		
@@ -78,6 +77,7 @@ switch(attack){
 		}
 		if(window == 5){
 			shadowball_hit_timer = 0;
+			shadowball_hit = false;
 		}
 	case AT_UAIR:
 		trigger_b_reverse();

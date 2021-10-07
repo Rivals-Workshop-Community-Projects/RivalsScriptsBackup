@@ -6,6 +6,7 @@ if(attack == AT_FSPECIAL){
 }
 
 with(pHitBox){
+	
 	if(player == other.player and (attack == AT_DSPECIAL or attack == AT_USTRONG and hbox_num == 1)){
 		shader_end();
 		draw_sprite_ext(sprite_index, image_index, x, y, spr_dir*1, 1, proj_angle, c_white, 1);
