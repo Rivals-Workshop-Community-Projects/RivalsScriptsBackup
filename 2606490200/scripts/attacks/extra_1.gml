@@ -146,13 +146,14 @@ set_hitbox_value(AT_EXTRA_1, 6, HG_PRIORITY, 2);
 set_hitbox_value(AT_EXTRA_1, 6, HG_SHAPE, 2);
 set_hitbox_value(AT_EXTRA_1, 6, HG_DAMAGE, 1);
 set_hitbox_value(AT_EXTRA_1, 6, HG_ANGLE, 90);
-set_hitbox_value(AT_EXTRA_1, 6, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_EXTRA_1, 6, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_EXTRA_1, 6, HG_BASE_HITPAUSE, 0);
 set_hitbox_value(AT_EXTRA_1, 6, HG_EXTRA_HITPAUSE, 6);
 set_hitbox_value(AT_EXTRA_1, 6, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_EXTRA_1, 6, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 set_hitbox_value(AT_EXTRA_1, 6, HG_HITBOX_GROUP, -1);
-set_hitbox_value(AT_EXTRA_1, 6, HG_HITSTUN_MULTIPLIER, 1.3);
+set_hitbox_value(AT_EXTRA_1, 6, HG_HITSTUN_MULTIPLIER, 1.1);
+
 
 set_hitbox_value(AT_EXTRA_1, 7, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_EXTRA_1, 7, HG_WINDOW, 4);

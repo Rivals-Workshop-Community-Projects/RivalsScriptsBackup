@@ -123,6 +123,11 @@ switch (attack)
 			can_dash = true;
 			can_jump = true;
 		}
+		if (has_hit_player){
+		set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 17);
+		} else {
+		set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 23);
+		}
 	case AT_USTRONG:
 		if window > 1 
 		{
@@ -135,6 +140,13 @@ switch (attack)
 				sound_play(sound_get("sm64_shatter"));
 				}
 			}
+		}
+	break;
+	case AT_FSTRONG:
+		if (has_hit_player){
+		set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 20);
+		} else {
+		set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 27);
 		}
 	break;
 }

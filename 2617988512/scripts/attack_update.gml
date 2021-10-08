@@ -271,8 +271,16 @@ switch (attack)
         can_fast_fall = false;
         if (!free)
         {
+            if (was_parried)
+            {
+                iasa_script();
+                set_state(PS_PRATLAND);
+            }
+            else
+            {
                 iasa_script();
                 set_state(PS_LANDING_LAG);
+            }
         }
         if (window = 2) 
         {

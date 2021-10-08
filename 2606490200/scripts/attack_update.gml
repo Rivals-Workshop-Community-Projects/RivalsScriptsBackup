@@ -97,7 +97,7 @@ switch attack {
             y -= 2
             x += 1*spr_dir
                 if hit_player_obj.state_cat == SC_HITSTUN {
-                    hit_player_obj.y += floor((y - 100 - hit_player_obj.y )/5)
+                    hit_player_obj.y += floor((y - 100 - hit_player_obj.y )/8)
                 }
                 
                 window_timer += 1

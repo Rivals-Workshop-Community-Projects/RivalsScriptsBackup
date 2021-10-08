@@ -16,6 +16,7 @@ if state == PS_PRATFALL {
 }
 
 if (get_player_color(player) == 11) {
+	
 if uped == 4 {
 	sound_stop(sound_get("drip"))
 	sound_play(sound_get("dripshort"))
@@ -53,8 +54,8 @@ if htrain >= 100 && htrain < 300 {
 	uped += 1
 	sound_play(asset_get("sfx_frog_fspecial_charge_full"))	
 	htrain = 420
-	initial_dash_speed = 7;
-    dash_speed = 7;
+	initial_dash_speed = 6.5;
+    dash_speed = 6;
     //+2dmg
     set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 11);
     set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 11);
@@ -65,9 +66,7 @@ if htrain >= 100 && htrain < 300 {
     
     air_dodge_speed = 7.50;
     
-    leave_ground_max = 6.00; //the maximum hsp you can have when you go from grounded to aerial without jumping
-    max_jump_hsp = 6.00; //the maximum hsp you can have when jumping from the ground
- 
+
     init_shader()
 }
 
@@ -160,7 +159,13 @@ if ltrain >= 100 && ltrain < 300 {
 	set_attack_value(AT_FAIR, AG_LANDING_LAG, 6);
 	
 	init_shader()
+	
+	leave_ground_max = 6.00; //the maximum hsp you can have when you go from grounded to aerial without jumping
+    max_jump_hsp = 6.00; //the maximum hsp you can have when jumping from the ground
+ 
 }
+
+
 if ltrain > 300 {
 	spawn_hit_fx( x + 40 - random_func(6, 80, true) - (30*spr_dir), y - 20 - random_func(7, 90, true) , esp )
 	ltrain -= 1

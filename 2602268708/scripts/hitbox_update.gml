@@ -45,7 +45,7 @@ if (attack == AT_DSTRONG){
 		} else if (free == 0){
 		    thitground = true;
 			img_spd = 0.3;
-		    if (image_index == 3){ destroyed = true; }
+		    if (image_index == 3){destroyed = true; }
 		}
         if (destroyed == true){ 
 		create_hitbox(AT_DSTRONG, 4, x, y+60);
@@ -57,14 +57,20 @@ if (attack == AT_DSTRONG){
 
 if (attack == AT_FSPECIAL)
 {
+    if (player_id.nspecial_grabbed_player == id){
+    hit_priority = 0;
+    } else {
+    hit_priority = 1;
+    }
+	
 	if (player_id.nspecial_grabbed_player == id){
 		++length;
 		spr_dir = player_id.spr_dir;
+		
 		if (player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR){
 
 			var angle = 50;
 			var knockback = 8; //get_hitbox_value(player_id.attack, 1, player_id.HG_BASE_KNOCKBACK)
-			
 			var throw_windtimer = 1;
 			var throw_window = 1;
 			switch(player_id.attack){
@@ -102,7 +108,7 @@ if (attack == AT_FSPECIAL)
 	}
 	else{
 		if !(free){
-			player_id.move_cooldown[AT_FSPECIAL] = 60;
+			player_id.move_cooldown[AT_FSPECIAL] = 75;
 			if (bounced == true)
 				destroyed = true;
 			else{

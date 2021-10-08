@@ -12,6 +12,8 @@ grab_timer = 0;
 grabbed_player_obj = noone; 
 grabbed_player_relative_x = 0;
 grabbed_player_relative_y = 0;
+set_victory_theme(CH_ZETTERBURN);
+set_victory_bg(sprite_get("victory_bg"));
 
 //Smash Land Values-------------------------------------------------------------
 //This should only be true if your up special is 1 per air time or has pratfall
@@ -21,15 +23,13 @@ tap_jump_protection_enabled = true; //set this to false if your character should
 //#region Sound effects---------------------------------------------------------
 /** You should give sound effects for each one of these by changing "nothing"
 *** to the name of your sound effect.                                         */
-dash_sound = sound_get("nothing");
-land_sound = sound_get("nothing");
-landing_lag_sound = sound_get("nothing");
-waveland_sound = sound_get("nothing");
-jump_sound = sound_get("nothing");
-djump_sound = sound_get("nothing");
-wall_jump_sound = sound_get("nothing");
-air_dodge_sound = sound_get("nothing");
-ssl_death_sound = sound_get("ssl_death")
+dash_sound = sound_get("dash");
+land_sound = sound_get("land");
+landing_lag_sound = sound_get("land");
+jump_sound = sound_get("jump");
+djump_sound = sound_get("djump");
+wall_jump_sound = sound_get("jump");
+ssl_death_sound = sound_get("ssl_death");
 //#endregion
 
 

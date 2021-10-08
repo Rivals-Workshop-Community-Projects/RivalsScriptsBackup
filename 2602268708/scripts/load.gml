@@ -69,6 +69,7 @@ sprite_change_offset("fair", 34, 84);
 sprite_change_offset("bair", 46, 78);
 sprite_change_offset("uair_test", 46, 90);
 sprite_change_offset("dair", 34, 94);
+sprite_change_offset("dair_sweetspotfx", 256, 256);
 sprite_change_offset("uair", 44, 84);
 
 

@@ -124,6 +124,8 @@ thwomp_explode = hit_fx_create( sprite_get( "dstrong_thwomp_destroyed" ), 19 );
 cannon_base = hit_fx_create( sprite_get( "uspecial_base_strip1" ), 1 );
 launchblast = hit_fx_create( sprite_get( "uspecial_blast_fx" ), 22 );
 
+funnyhit = hit_fx_create( sprite_get( "dair_sweetspotfx" ), 24 );
+
 // Character-specific assets init
 
 //Sprites
