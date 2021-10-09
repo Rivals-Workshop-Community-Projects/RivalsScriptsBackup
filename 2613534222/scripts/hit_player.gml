@@ -1,3 +1,7 @@
+if (my_hitboxID.type == 1 and hit_player_obj.free == false) {
+     hit_player_obj.y -= 1;
+}
+
 if my_hitboxID.attack == AT_DAIR
 {
     if my_hitboxID.hbox_num == 1
