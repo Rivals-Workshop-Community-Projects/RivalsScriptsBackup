@@ -2,6 +2,7 @@ hurtbox_spr = asset_get("ex_guy_hurt_box");
 crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
+uairDoubleJump = 0
 
 char_height = 72;
 idle_anim_speed = .1;

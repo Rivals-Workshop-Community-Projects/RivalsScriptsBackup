@@ -27,3 +27,7 @@ if my_hitboxID.attack == AT_NSPECIAL { //Grab and stuff
 		}
 	}
 }
+
+if (my_hitboxID.type == 1 && hit_player_obj.free == false) {
+     hit_player_obj.y -= 1;
+}

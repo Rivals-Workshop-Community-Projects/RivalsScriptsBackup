@@ -9,3 +9,12 @@ if(state_cat == SC_HITSTUN)
   move_cooldown[AT_NAIR] = 0;
 
 }
+
+//Uair giving double jump back fix
+if (djumps >=  1 || uairDoubleJump = 1) {
+    uairDoubleJump = 1
+    djumps = 1
+    if (!free) {
+        uairDoubleJump = 0
+    }
+}

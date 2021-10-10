@@ -111,10 +111,10 @@ set_color_profile_slot( 15, 2, 170, 0, 255 ); //Light 2
 set_color_profile_slot( 15, 3, 0, 255, 0 ); //Light 1
 
 // Bronze
-set_color_profile_slot( 16, 0, 0, 0, 0 ); //Dark 2
-set_color_profile_slot( 16, 1, 140, 115, 0 ); //Dark 1
-set_color_profile_slot( 16, 2, 163, 139, 26 ); //Light 2
-set_color_profile_slot( 16, 3, 181, 157, 43 ); //Light 1
+set_color_profile_slot( 16, 0, 38, 25, 40 ); //Dark 2
+set_color_profile_slot( 16, 1, 60, 39, 63 ); //Dark 1
+set_color_profile_slot( 16, 2, 81, 66, 83 ); //Light 2
+set_color_profile_slot( 16, 3, 212, 169, 142 ); //Light 1
 
 // Silver
 set_color_profile_slot( 17, 0, 0, 0, 0 ); //Dark 2

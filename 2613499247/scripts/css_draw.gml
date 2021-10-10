@@ -2,10 +2,10 @@ var temp_x = x + 8;
 var temp_y = y + 9;
 
 patch_ver = "";
-patch_day = "18";
-patch_month = "SEPT";
+patch_day = "Daughter of";
+patch_month = "Hallownest";
 
-var num_alts = 22;
+var num_alts = 23;
 var alt_cur = get_player_color(player);
 
 // Intro Sound
@@ -34,6 +34,7 @@ alt_name[18]  = "Gold";
 alt_name[19]  = "Dark";
 alt_name[20]  = "Darker";
 alt_name[21]  = "Light";
+alt_name[21]  = "Coal";
 
 
 

@@ -128,7 +128,12 @@ if(strong_down and !(down_down or up_down or left_down or right_down)){
 
 
 
-
+if (attack == AT_UAIR) {
+    print(djumps)
+    if jump_pressed {
+        djumps = 1
+    }
+}
 //YOUR CODE SHOULD BE ABOVE THIS COMMENT----------------------------------------
 #define tap_jump_debug()
 {

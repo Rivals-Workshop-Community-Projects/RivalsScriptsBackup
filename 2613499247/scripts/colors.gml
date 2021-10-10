@@ -18,7 +18,7 @@ set_color_profile_slot_range( 3, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 22 );
+set_num_palettes( 23 );
 
 // Blue
 set_color_profile_slot( 1, 0, 0, 0, 0 ); //Dark 2
@@ -70,7 +70,7 @@ set_color_profile_slot( 8, 3, 255, 230, 250 ); //Light 1
 
 // Cyan
 set_color_profile_slot( 9, 0, 0, 0, 0 ); //Dark 2
-set_color_profile_slot( 9, 1, 78, 126, 130 ); //Dark 1
+set_color_profile_slot( 9, 1, 0, 132, 201 ); //Dark 1
 set_color_profile_slot( 9, 2, 59, 239, 255 ); //Light 2
 set_color_profile_slot( 9, 3, 179, 249, 255 ); //Light 1
 
@@ -145,6 +145,12 @@ set_color_profile_slot( 21, 0, 48, 92, 67 ); //Dark 2
 set_color_profile_slot( 21, 1, 101, 148, 75 ); //Dark 1
 set_color_profile_slot( 21, 2, 185, 207, 82 ); //Light 2
 set_color_profile_slot( 21, 3, 231, 247, 169 ); //Light 1
+
+// Coal
+set_color_profile_slot( 22, 0, 38, 25, 40 ); //Dark 2
+set_color_profile_slot( 22, 1, 60, 39, 63 ); //Dark 1
+set_color_profile_slot( 22, 2, 81, 66, 83 ); //Light 2
+set_color_profile_slot( 22, 3, 212, 169, 142 ); //Light 1
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
