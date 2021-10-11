@@ -1,7 +1,7 @@
-intro = 1
-if introhit = 0 {
-	introhit = 1
-}
+//intro = 1
+//if introhit = 0 {
+//	introhit = 1
+//}
 
 move_cooldown[AT_EXTRA_3] = hitstop/2
 maxdraw = hitstop/2

@@ -53,6 +53,7 @@ iny = y
 	
 }
 
+/*
 if(get_gameplay_time() == 2){
 	
 
@@ -234,7 +235,7 @@ if(player_id == other.id) {
 
 }
 }
-
+*/
 
 /// Dramatic death 
 
@@ -622,7 +623,7 @@ if superTrue == 1 {
 	
 	if hit_player_obj.state_cat == SC_HITSTUN {
 		hit_player_obj.hitpause = true
-	   hit_player_obj.hitstop = 60
+	   hit_player_obj.hitstop = 45
 	}
 	
 	 superTrue = 0
@@ -646,7 +647,6 @@ if superTrue == 1 {
 set_attack(AT_DSTRONG) 
 window = 1
 window_timer = 0
-window = 1
 supery = y
     sound_play(asset_get("sfx_burnconsume"),false,noone,1.2,0.9)
     

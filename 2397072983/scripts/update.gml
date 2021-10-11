@@ -20,8 +20,8 @@ if raged && raged != 3 {
 
 if get_gameplay_time() == 1 {
 		spawn_hit_fx(x,y-30,304)
-  sound_play(sound_get("respawn"),false,noone,1.5)
-  sound_play(sound_get("pdodge"),false,noone,1.5)
+  sound_play(sound_get("respawn"),false,noone,1.3)
+  sound_play(sound_get("pdodge"),false,noone,1.3)
   
 }
 
@@ -78,7 +78,7 @@ if style != 4 {
   }
 }
 
-if style == 4 && charge < 5 {
+if style == 4 && charge < 5 { 
 	move_cooldown[AT_FSPECIAL] = 2
 }
 move_cooldown [AT_DSPECIAL] = 2
@@ -217,10 +217,11 @@ if !free or state == PS_WALL_JUMP {
 if move_cooldown[AT_EXTRA_1] == 19 && state_cat != SC_HITSTUN{
 			shake_camera(2,4)
 			charge += 1
+			sound_stop(sound_get("pdodge"))
 			sound_play(sound_get("pdodge"))
 		    spawn_hit_fx(x,y,idles)
 		    if !free {
-			x -= 40*spr_dir
+			x -= 20*spr_dir
 		    }
 		    if free {
 			x += hsp * 5
@@ -239,8 +240,8 @@ if (move_cooldown[AT_NSPECIAL_2] = 121 or move_cooldown[AT_NSPECIAL_2] % 10 > 0)
 		  	with dplayer{
 		    	hitpause = true
 		    	hitstop = 10
-		    	old_hsp = hsp 
-		        old_vsp = vsp 
+		    	hsp = old_hsp
+		        vsp = old_vsp
 		  		}
 		  		
 		    }
@@ -335,15 +336,17 @@ if !hitpause {
 
 
 if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2] == 800  {
-
+  
   switch (style) {
         case 0 :
         
     if visible or state == PS_RESPAWN{
 	set_color_profile_slot(alt,0, 64, 216, 255 );
     }
-    init_shader();
+    
 
+
+    if  knockback_adj != 1.001 {
            walk_speed = 2.5;
            walk_accel = 0.4;
            initial_dash_speed = 6.66;
@@ -564,7 +567,7 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
    set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_GROUP, 1);
    set_hitbox_value(AT_DSTRONG, 1, HG_TECHABLE, 2);
    set_hitbox_value(AT_DSTRONG, 1, HG_SDI_MULTIPLIER, 0.6);
-
+}
          break;
 	    
 	    case 1 :
@@ -574,18 +577,19 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
     init_shader();
     
     
-
+    if knockback_adj != 1.1001 {
+    	
            walk_speed = 2;
            walk_accel = 0.3;
-           initial_dash_speed = 6;
+           initial_dash_speed = 5.5;
            dash_speed = 5.5
            dash_turn_accel = .5;
-           ground_friction = .2;
+           ground_friction = 1;
            
-           leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
-           max_jump_hsp = 5.5; //the maximum hsp you can have when jumping from the ground
-           air_max_speed = 5.5; //the maximum hsp you can accelerate to when in a normal aerial state         
-           air_accel = .33;
+           leave_ground_max = 3.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
+           max_jump_hsp = 3.5; //the maximum hsp you can have when jumping from the ground
+           air_max_speed = 3.5; //the maximum hsp you can accelerate to when in a normal aerial state         
+           air_accel = .3;
            
            jump_speed = 10;
            short_hop_speed = 6.5;
@@ -596,7 +600,7 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
            gravity_speed = .4;
            hitstun_grav = .53;
            air_friction = .055;
-           knockback_adj = 1.2;
+           knockback_adj = 1.1;
 
           
            wave_land_adj = 0.9;
@@ -845,6 +849,9 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
    set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, -1);
    set_hitbox_value(AT_DSTRONG, 3, HG_TECHABLE, 0);
    set_hitbox_value(AT_DSTRONG, 3, HG_SDI_MULTIPLIER, 0.6);
+
+  }
+
 	    break;
 	    
 	    case 2 :
@@ -856,17 +863,19 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
 	       	create_hitbox(AT_EXTRA_1, 1, antarget.x, antarget.y - 40)
 	       	move_cooldown[AT_EXTRA_2] = 0
 	       }
+	       
+	  if knockback_adj != 1.2 {
 		   walk_speed = 3;
            walk_accel = 0.5;
-           initial_dash_speed = 7.5;
-           dash_speed = 7.5
+           initial_dash_speed = 7;
+           dash_speed = 7
            dash_turn_accel = .6;
            ground_friction = .7;
            
-           leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
-           max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
-           air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state         
-           air_accel = .3;
+           leave_ground_max = 5.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
+           max_jump_hsp = 5.5; //the maximum hsp you can have when jumping from the ground
+           air_max_speed = 4.5; //the maximum hsp you can accelerate to when in a normal aerial state         
+           air_accel = .35;
            
            jump_speed = 13;
            short_hop_speed = 9.5;
@@ -877,10 +886,10 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
            gravity_speed = .7;
            hitstun_grav = .50;
            air_friction = .05;
-           knockback_adj = 1.4;
+           knockback_adj = 1.2;
  
 
-           wave_land_adj = 1.3;
+           wave_land_adj = 1.2;
            
 ///Jab
    set_window_value(AT_JAB, 1, AG_WINDOW_LENGTH, 5);    
@@ -1077,7 +1086,7 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
    set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_GROUP, 1);
    set_hitbox_value(AT_DSTRONG, 1, HG_TECHABLE, 2);
    set_hitbox_value(AT_DSTRONG, 1, HG_SDI_MULTIPLIER, 0.6);
-           
+	 }       
            
 	    break;
 	    
@@ -1088,6 +1097,7 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
     init_shader();		
 	    
     
+    if knockback_adj != 0.9 {
 
            walk_speed = 2;
            walk_accel = 0.3;
@@ -1099,7 +1109,7 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
            leave_ground_max = 4; //the maximum hsp you can have when you go from grounded to aerial without jumping
            max_jump_hsp = 4; //the maximum hsp you can have when jumping from the ground
            air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state         
-           air_accel = .25;
+           air_accel = .3;
            
            jump_speed = 11;
            short_hop_speed = 8;
@@ -1108,9 +1118,9 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
            fast_fall = 16;
            
            gravity_speed = .6;
-           hitstun_grav = .55;
-           air_friction = .055;
-           knockback_adj = 0.95;
+           hitstun_grav = .5;
+           air_friction = .05;
+           knockback_adj = 0.9;
 
           
            wave_land_adj = 1.0;
@@ -1359,7 +1369,7 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
    set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, -1);
    set_hitbox_value(AT_DSTRONG, 3, HG_TECHABLE, 0);
    set_hitbox_value(AT_DSTRONG, 3, HG_SDI_MULTIPLIER, 0.6);
-   
+   }
  
 	    break;
 	    
@@ -1382,6 +1392,8 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
     if get_gameplay_time() % 60 == 0 {
     	take_damage(player,-1,1)
     }
+    
+    if knockback_adj != 0.8 {
     	   if move_cooldown[AT_EXTRA_2] > 0 && !hitpause{
 	       	create_hitbox(AT_EXTRA_1, 1, antarget.x, antarget.y - 40)
 	       	move_cooldown[AT_EXTRA_2] = 0
@@ -1607,10 +1619,14 @@ if (move_cooldown[AT_TAUNT_2] == 30 and style != 4) or move_cooldown[AT_TAUNT_2]
    set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_GROUP, 1);
    set_hitbox_value(AT_DSTRONG, 1, HG_TECHABLE, 2);
    set_hitbox_value(AT_DSTRONG, 1, HG_SDI_MULTIPLIER, 0.6);   
-   
+   }
+    
 	    break;
 	    
 	}
+	
+init_shader();
+
 }	
 
 
@@ -1720,7 +1736,7 @@ if move_cooldown[AT_TAUNT_2] == 200 {
 	spawn_hit_fx(x,y-40,304)
 	spawn_hit_fx(x,y-40,306)
 	create_hitbox(AT_EXTRA_1, 3, x, y - 40 )
-	take_damage(player,-1,10)
+	take_damage(player,-1,1)
 	charge = 0
 
 }

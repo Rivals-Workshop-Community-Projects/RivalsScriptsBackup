@@ -8,7 +8,7 @@ set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"))
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_ice_on_player"));
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 0);
@@ -94,7 +94,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HSPEED, 8);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_VSPEED, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_ANIM_SPEED, 0.3);
-set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 306);
+set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, SC);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 45);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 76);
 set_hitbox_value(AT_NSPECIAL, 2, HG_SHAPE, 0);
@@ -109,6 +109,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, sound_get("SpaceCut"));
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 2, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, SC);
 set_hitbox_value(AT_NSPECIAL, 2,  HG_PROJECTILE_IS_TRANSCENDENT, true);
 

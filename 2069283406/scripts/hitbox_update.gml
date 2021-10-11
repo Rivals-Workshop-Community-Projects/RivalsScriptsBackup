@@ -45,7 +45,7 @@ if attack == AT_FSPECIAL && hbox_num == 1 {
 
 if attack == AT_USPECIAL && hbox_num == 11  {
 	can_hit_self = true
-	with player_id.hit_player_o { 
+	with player_id.hit_player_obj { 
 		other.x += floor((x - other.x) / 12)
 		other.y += floor((y - other.y) / 12)
 	}

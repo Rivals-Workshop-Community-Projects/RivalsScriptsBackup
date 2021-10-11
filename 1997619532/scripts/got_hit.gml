@@ -1,9 +1,9 @@
 move_cooldown[AT_USPECIAL] = 0 ;
 move_cooldown[AT_FSPECIAL] = 0 ;
-intro = 1
-if introhit = 0 {
-	introhit = -1
-}
+//intro = 1
+//if introhit = 0 {
+//	introhit = -1
+//}
 
 
 if halo < 6 && enemy_hitboxID.type == 1 {

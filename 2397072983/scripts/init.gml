@@ -19,7 +19,7 @@ startup = 0
 antarget = -4
 
 shoping = 0
-item = 3
+item = 5
 
 adap = 0
 raged = 0
@@ -30,7 +30,7 @@ gun = 0
 
 oldphsp = 0
 oldpvsp = 0
-LA = 450
+LA = 1000
 
 charge = 5
 style = 8

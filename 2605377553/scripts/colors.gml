@@ -237,9 +237,9 @@ set_color_profile_slot( 20, 5, 252, 255, 255 ); //Eyes/Socks
 set_color_profile_slot( 20, 6, 252, 255, 255 ); //Smog
 set_color_profile_slot( 20, 7, 57, 82, 82 ); //Smog Outline
 
-
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
 {"formatversion":1,"data":[{"name":"Hoodie Pink","colors":[{"r":225,"g":92,"b":198,"main":true},{"r":161,"g":65,"b":190}]},{"name":"Skin","colors":[{"r":255,"g":240,"b":201,"main":true},{"r":215,"g":167,"b":132},{"r":109,"g":83,"b":69}]},{"name":"Hair","colors":[{"r":74,"g":63,"b":81,"main":true},{"r":49,"g":35,"b":56},{"r":27,"g":24,"b":28}]},{"name":"Hoodie Purp","colors":[{"r":95,"g":74,"b":151,"main":true},{"r":55,"g":34,"b":110}]},{"name":"Skirt","colors":[{"r":186,"g":157,"b":251,"main":true},{"r":116,"g":81,"b":196}]},{"name":"Eyes/Socks","colors":[{"r":251,"g":252,"b":255,"main":true},{"r":194,"g":199,"b":209}]},{"name":"Smog","colors":[{"r":156,"g":111,"b":196,"main":true},{"r":123,"g":75,"b":165}]},{"name":"Smog Outline","colors":[{"r":101,"g":0,"b":137,"main":true}]}]}
 === END JSON PALETTE ===
 */
+

@@ -645,7 +645,7 @@ if attack == AT_USPECIAL {
 			move_cooldown[AT_EXTRA_1] = 20
 	}
 	
-		y -= 5
+		y -= 6
 		vsp = -4
 		invincible = true
 		can_shield = true
@@ -658,6 +658,7 @@ if attack == AT_USPECIAL {
 		window = 4
 		window_timer = 0
 		spawn_hit_fx(x,y-30,305)
+		sound_stop(sound_get("pdodge"))
 		sound_play(sound_get("pdodge"))
 		var angle = (round(joy_dir / 11.25) * 11.25) / 180 * -3.14; //45)*45)/180
 		if (joy_pad_idle){
@@ -869,32 +870,32 @@ if attack == AT_DSPECIAL {
 	
 	if attack_down {
 		
-		if item == 1 && LA >= 1100 && adap = 0{
+		if item == 1 && LA >= 1200 && adap = 0{
 		sound_play(asset_get("mfx_confirm"))
 	    window = 1
 		window_timer = 2
 	   clear_button_buffer( PC_ATTACK_PRESSED );
 	   adap = 1
-	   LA -= 1100
+	   LA -= 1200
 		} 
 		
 		
-		if item == 2 && LA >= 1200 && raged = 0{
+		if item == 2 && LA >= 1250 && raged = 0{
 		sound_play(asset_get("mfx_confirm"))
 	    window = 1
 		window_timer = 2
 	   clear_button_buffer( PC_ATTACK_PRESSED );
 	   raged = 1
-	   LA -= 1200
+	   LA -= 1250
 		}
 		
-		if item == 3 && LA >= 1200 && para = 0 {
+		if item == 3 && LA >= 1250 && para = 0 {
 		sound_play(asset_get("mfx_confirm"))
 	    window = 1
 		window_timer = 2
 	   clear_button_buffer( PC_ATTACK_PRESSED );
 	   para = 1
-	   LA -= 1200
+	   LA -= 1250
 		}
 		
 		if item == 4 && LA >= 1500 && unte = 0 {

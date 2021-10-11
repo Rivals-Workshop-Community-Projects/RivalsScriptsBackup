@@ -60,7 +60,7 @@ if shoping == 1 && window < 3 {
      	draw_debug_text(x - 140,y - 200,"[Adaptive] Hitting Nspecial grant full Charge bar.")
      	draw_debug_text(x - 140,y - 185,"")
      	if adap = 0 {
-     	draw_debug_text(x + 30,y - 100,"Cost: 1100 La")
+     	draw_debug_text(x + 30,y - 100,"Cost: 1200 La")
      	} else {
      	draw_debug_text(x + 30,y - 100,"Owned")	
      	}
@@ -70,7 +70,7 @@ if shoping == 1 && window < 3 {
      	draw_debug_text(x - 140,y - 200,"[Enraged] Deals more damage for one hit   ")
      	draw_debug_text(x - 140,y - 185,"after parried or intercepted enemy attack.")
      	if raged = 0 {
-     	draw_debug_text(x + 30,y - 100,"Cost: 1200 La")
+     	draw_debug_text(x + 30,y - 100,"Cost: 1350 La")
      	} else {
      	draw_debug_text(x + 30,y - 100,"Owned")	
      	}
@@ -80,7 +80,7 @@ if shoping == 1 && window < 3 {
      	draw_debug_text(x - 140,y - 200,"[Parasitic] After taking damage, next successful")
      	draw_debug_text(x - 140,y - 185,"attack heal yourself proportional to damage dealt.")
      	if para = 0 {
-     	draw_debug_text(x + 30,y - 100,"Cost: 1200 La")
+     	draw_debug_text(x + 30,y - 100,"Cost: 1350 La")
      	} else {
      	draw_debug_text(x + 30,y - 100,"Owned")	
      	}

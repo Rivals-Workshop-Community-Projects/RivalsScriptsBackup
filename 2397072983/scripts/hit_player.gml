@@ -100,9 +100,7 @@ if (style == 2 or style == 4) && my_hitboxID.type == 1 {
 	set_hitbox_value(AT_EXTRA_1, 1, HG_HITSTUN_MULTIPLIER, my_hitboxID.hitstun_factor);
 }
 
-if style == 4 {
-	take_damage(player,-1,floor(my_hitboxID.damage/3))
-}
+
 
 if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num = 10 {
 	spawn_hit_fx(hit_player_obj.x,hit_player_obj.y,lighten)

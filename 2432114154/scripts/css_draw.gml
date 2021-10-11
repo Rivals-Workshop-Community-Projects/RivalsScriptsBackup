@@ -52,7 +52,7 @@ var palette_names = [
   "Susanyes",
   "BLW", 
   "Batx2", 
-  "Parker", 
+  "BK", 
   "Look, a star.", 
   "300IQ", 
   "Another anime char idk who", 
@@ -60,6 +60,8 @@ var palette_names = [
   "Still can't kill", 
   "The wild from breath", 
   "Hey Sprite Star",  
+  "Parker", 
+  "Wifi", 
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

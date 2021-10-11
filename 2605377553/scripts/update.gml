@@ -101,7 +101,8 @@ with (oPlayer){
 }
 
 //fspecial reset
-if !free || state == SC_HITSTUN || state == PS_WALL_JUMP {
+if !free || state == SC_HITSTUN || state == PS_WALL_JUMP || state = PS_HITSTUN_LAND
+|| state = PS_TUMBLE || state = PS_PRATFALL|| state = PS_PRATLAND{
 move_cooldown[AT_FSPECIAL] = 0;
 }
 

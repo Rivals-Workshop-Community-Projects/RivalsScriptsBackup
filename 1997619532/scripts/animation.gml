@@ -20,3 +20,10 @@ if (state == PS_SPAWN) {
         sprite_index = sprite_get("idle");
     }
 }
+
+if (state == PS_PRATLAND) {
+    
+    sprite_index = sprite_get("landinglag");
+    image_index = min(state_timer/8,2);
+    
+}

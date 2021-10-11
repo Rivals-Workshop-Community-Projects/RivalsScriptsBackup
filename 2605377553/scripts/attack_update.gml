@@ -178,18 +178,6 @@ if (attack == AT_FSPECIAL){
     can_wall_jump = true;
 	move_cooldown[AT_FSPECIAL] = 999;
 	
-	if window == 3
-	{
-		if special_pressed && (left_down || right_down) && insideCloud(id)
-		{
-			destroyTouchingSmoke();
-			window = 1;
-			window_timer = 0;
-			sound_play(sound_get("shoot_3"));
-		}
-		
-		
-	}
 }
 
 if (attack == AT_USPECIAL){
@@ -221,6 +209,7 @@ if (attack == AT_USPECIAL){
 //Smoke
 if attack == AT_DSPECIAL
 {
+	move_cooldown[AT_DSPECIAL] = 30;
 	if window == 3 && window_timer == 1
 	{
 		depth = 10;

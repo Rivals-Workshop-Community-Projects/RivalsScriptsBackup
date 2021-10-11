@@ -41,10 +41,16 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1 ) {
 
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 2 ) {
 
-    my_hitboxID.hitbox_timer = 0;
-     my_hitboxID.extra_hitpause = 45;  
-     
-my_hitboxID.x = x
-my_hitboxID.y = y
-    
+spawn_hit_fx(my_hitboxID.x,my_hitboxID.y,SC)
+my_hitboxID.spr_dir *= -1
+my_hitboxID.hsp /= 2
+my_hitboxID.vsp = 12
+my_hitboxID.hit_priority = 0
+my_hitboxID.grav = 1
+//    my_hitboxID.hitbox_timer = 0;
+//     my_hitboxID.extra_hitpause = 45;  
+//     
+//my_hitboxID.x = x
+//my_hitboxID.y = y
+
 }

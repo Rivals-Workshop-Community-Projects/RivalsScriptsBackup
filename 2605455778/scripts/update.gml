@@ -93,7 +93,7 @@ with(asset_get("oPlayer")){
                 hsp = 0;
                 old_hsp = 0;
                 if(hitpause){
-                    //prison_time_counter += 4;
+                    prison_time_counter += 4;
                 }
                 prison_time_counter++;
                 if(prison_time_counter < 120){

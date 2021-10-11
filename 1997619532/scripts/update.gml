@@ -46,7 +46,7 @@ var shortest_dist = 9999;
 					}
 				}
 			}
-			
+/*			
 if x < shortest_id.x {			
 if shortest_id.url == "1913869515" or shortest_id.url == "2069283406" or shortest_id.url == "1997619532" 
 or shortest_id.url == "2085832560" or shortest_id.url == "2108469290" or shortest_id.url == "2047413648"
@@ -55,11 +55,11 @@ or shortest_id.url == "2154720280" or shortest_id.url == "2136624834"
 create_hitbox(AT_NSPECIAL , 20 , shortest_id.x , shortest_id.y );      		
 }
 }
-
+*/
 
 }
 
-
+/*
 if hit_player_obj != self {
 if introtimer = 1 {
 	        visible = true
@@ -207,7 +207,7 @@ if(player_id == other.id) {
 
 }
 }
-
+*/
 
 ////////////////
 

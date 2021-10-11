@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 3, 2, 15 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 26 );
+set_num_palettes( 28 );
 
 // Astra
 set_color_profile_slot( 1, 0, 255, 203, 59 ); //Energy
@@ -206,15 +206,15 @@ set_color_profile_slot( 17, 5, 99, 42, 117 ); //Dark parts
 set_color_profile_slot( 17, 6, 90, 78, 96 ); //Fur
 set_color_profile_slot( 17, 7, 59, 49, 64 ); //Fur shading
 
-// Parker
-set_color_profile_slot( 18, 0, 73, 153, 65 ); //Energy
-set_color_profile_slot( 18, 1, 212, 120, 78 ); //Top shading
-set_color_profile_slot( 18, 2, 255, 165, 125 ); //Top
-set_color_profile_slot( 18, 3, 115, 29, 219 ); //Pattern1
-set_color_profile_slot( 18, 4, 77, 20, 147 ); //Pattern2
-set_color_profile_slot( 18, 5, 126, 58, 35 ); //Dark parts
-set_color_profile_slot( 18, 6, 224, 103, 51 ); //Fur
-set_color_profile_slot( 18, 7, 159, 72, 43 ); //Fur shading
+// BK
+set_color_profile_slot( 18, 0, 255, 187, 0 ); //Energy
+set_color_profile_slot( 18, 1, 120, 46, 0 ); //Top shading
+set_color_profile_slot( 18, 2, 255, 187, 0 ); //Top
+set_color_profile_slot( 18, 3, 255, 69, 69 ); //Pattern1
+set_color_profile_slot( 18, 4, 255, 242, 122 ); //Pattern2
+set_color_profile_slot( 18, 5, 79, 32, 32 ); //Dark parts
+set_color_profile_slot( 18, 6, 255, 255, 255 ); //Fur
+set_color_profile_slot( 18, 7, 255, 162, 145 ); //Fur shading
 
 // Lukastar
 set_color_profile_slot( 19, 0, 104, 219, 231 ); //Energy
@@ -285,6 +285,26 @@ set_color_profile_slot( 25, 4, 158, 0, 1 ); //Pattern2
 set_color_profile_slot( 25, 5, 37, 22, 19 ); //Dark parts
 set_color_profile_slot( 25, 6, 87, 51, 53 ); //Fur
 set_color_profile_slot( 25, 7, 48, 24, 31 ); //Fur shading
+
+// Parker
+set_color_profile_slot( 26, 0, 73, 153, 65 ); //Energy
+set_color_profile_slot( 26, 1, 212, 120, 78 ); //Top shading
+set_color_profile_slot( 26, 2, 255, 165, 125 ); //Top
+set_color_profile_slot( 26, 3, 115, 29, 219 ); //Pattern1
+set_color_profile_slot( 26, 4, 77, 20, 147 ); //Pattern2
+set_color_profile_slot( 26, 5, 126, 58, 35 ); //Dark parts
+set_color_profile_slot( 26, 6, 224, 103, 51 ); //Fur
+set_color_profile_slot( 26, 7, 159, 72, 43 ); //Fur shading
+
+// Wifi
+set_color_profile_slot( 27, 0, 0, 72, 255 ); //Energy
+set_color_profile_slot( 27, 1, 47, 55, 82 ); //Top shading
+set_color_profile_slot( 27, 2, 45, 63, 128 ); //Top
+set_color_profile_slot( 27, 3, 253, 235, 121 ); //Pattern1
+set_color_profile_slot( 27, 4, 253, 235, 121 ); //Pattern2
+set_color_profile_slot( 27, 5, 47, 55, 82 ); //Dark parts
+set_color_profile_slot( 27, 6, 252, 253, 253 ); //Fur
+set_color_profile_slot( 27, 7, 178, 177, 182 ); //Fur shading
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

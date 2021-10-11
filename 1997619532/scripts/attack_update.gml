@@ -14,7 +14,7 @@ if attack == AT_DSTRONG or attack == AT_FSTRONG or attack == AT_USTRONG {
   
  if attack == AT_DSTRONG && window == 2 && window_timer == 1 && !hitpause {
 	//sound_play(asset_get("sfx_ice_on_player"),false,noone,1,.6);
-	sound_play(asset_get("sfx_bird_nspecial"),false,noone,.8,1.2);
+	sound_play(asset_get("sfx_bird_nspecial"),false,noone,.8,1.4);
   }
   
   
@@ -25,7 +25,7 @@ if attack == AT_DSTRONG or attack == AT_FSTRONG or attack == AT_USTRONG {
 
  if attack == AT_FSTRONG && window == 2 && window_timer == 1 && !hitpause {
 	//sound_play(asset_get("sfx_ice_on_player"),false,noone,1,.8);
-	sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1.1);
+	sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1.4);
   }
   
   if attack == AT_FSTRONG && window == 3 && window_timer == 1 && !hitpause {
@@ -493,7 +493,7 @@ if attack == AT_DSPECIAL {
 
 if attack == AT_NSPECIAL {
 
-move_cooldown[AT_NSPECIAL] = 30
+move_cooldown[AT_NSPECIAL] = 60
 
 if window_timer == 1 && window == 1 {
    			sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"),false,noone,.8,1.5)	
