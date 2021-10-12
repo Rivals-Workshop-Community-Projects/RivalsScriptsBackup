@@ -28,6 +28,7 @@ if (my_hitboxID.attack==AT_DSPECIAL||my_hitboxID.attack==AT_DSPECIAL_AIR){
 	window_timer = 0;
 	spr_dir = spr_dir*-1
 	hit_player_obj.spr_dir = spr_dir
+	//old_hsp = -13//
 	old_vsp = -8
 	dsp_target = hit_player_obj
 	

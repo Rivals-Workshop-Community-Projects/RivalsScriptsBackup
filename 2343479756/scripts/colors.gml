@@ -171,14 +171,14 @@ set_color_profile_slot( 13, 6, 102, 63, 0 ); //eyes
 set_color_profile_slot( 13, 7, 230, 114, 102 ); //blush
 
 // twilight
-set_color_profile_slot( 14, 0, 86, 44, 224 ); //pink
-set_color_profile_slot( 14, 1, 148, 210, 255 ); //hair
-set_color_profile_slot( 14, 2, 252, 232, 219 ); //skin
-set_color_profile_slot( 14, 3, 148, 234, 255 ); //red
-set_color_profile_slot( 14, 4, 106, 98, 252 ); //sleeves
+set_color_profile_slot( 14, 0, 37, 0, 184 ); //pink
+set_color_profile_slot( 14, 1, 43, 43, 255 ); //hair
+set_color_profile_slot( 14, 2, 255, 212, 246 ); //skin
+set_color_profile_slot( 14, 3, 255, 152, 51 ); //red
+set_color_profile_slot( 14, 4, 37, 0, 184 ); //sleeves
 set_color_profile_slot( 14, 5, 181, 71, 255 ); //dress
 set_color_profile_slot( 14, 6, 77, 17, 130 ); //eyes
-set_color_profile_slot( 14, 7, 199, 138, 255 ); //blush
+set_color_profile_slot( 14, 7, 255, 127, 0 ); //blush
 
 // koishi
 set_color_profile_slot( 15, 0, 30, 69, 19 ); //pink

@@ -80,7 +80,7 @@ if (attack==AT_USPECIAL){
 
 
 if (attack==AT_FSTRONG){
-	if (window == 2 && window_timer == 11){
+	if (window == 2 && window_timer == 8){
 		shake_camera(8,3);
 	}
 }
@@ -189,7 +189,7 @@ if (attack==AT_DSPECIAL||attack==AT_DSPECIAL_AIR){
 	if (window == 6){
 		if (!hitpause){
 			var w_l = get_window_value(attack, 6, AG_WINDOW_LENGTH);
-			hsp = (ease_quadOut( -12, 0, window_timer, w_l ) * spr_dir) + dsp_target.hsp
+			hsp = (ease_quadOut( -12, 0, window_timer, w_l ) * spr_dir) //+ dsp_target.hsp
 		}
 		if (window_timer>=15){
 			iasa_script();

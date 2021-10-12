@@ -135,7 +135,9 @@ switch (state)
             destroy_cd_hitboxes();
 
             if (has_hit) //finisher
-            { spawn_hitbox(AT_FSTRONG, 3); }
+            {
+                spawn_hitbox(AT_FSTRONG, 3);
+            }
             
             if (hit_wall)
             {
@@ -143,6 +145,7 @@ switch (state)
                 vsp = -6;
                 hsp = -spr_dir;
                 set_state(AR_STATE_IDLE); 
+                cd_recall_stun_timer = cd_low_recall_stun;
             }
             else
             {
@@ -200,13 +203,13 @@ switch (state)
 	        {
 	            cd_hitbox = spawn_hitbox(AT_USTRONG, 2);
 	        }
-        	cd_hitbox.hitbox_timer = 0;
+            cd_hitbox.hitbox_timer = 0;
 	        
             do_gravity();
             if (was_parried)
             {
                 was_parried = false;
-                vsp = max(abs(vsp), cd_dstrong_air_min_speed_for_hitbox);
+                vsp = max(abs(vsp), cd_reflect_vspeed);
                 set_state(AR_STATE_DSTRONG_AIR);
             	destroy_cd_hitboxes();
             }
@@ -222,7 +225,9 @@ switch (state)
             destroy_cd_hitboxes();
             
             if (has_hit) //finisher
-            { spawn_hitbox(AT_USTRONG, 3); }
+            { 
+                spawn_hitbox(AT_USTRONG, 3);
+            }
             
             set_state(AR_STATE_DSTRONG_AIR);
         }
@@ -319,6 +324,7 @@ switch (state)
                 hsp = sign(hsp) * -1;
                 
             	destroy_cd_hitboxes();
+                cd_recall_stun_timer = cd_low_recall_stun;
             }
             else
             {
@@ -337,7 +343,9 @@ switch (state)
             destroy_cd_hitboxes();
             
             if (has_hit) //finisher
-            { spawn_hitbox(AT_DSTRONG, 3); }
+            {
+                spawn_hitbox(AT_DSTRONG, 3);
+            }
             
             set_state(AR_STATE_IDLE);
             hsp *= 0.5;
@@ -355,23 +363,57 @@ switch (state)
     {
         //Update
         do_gravity();
+
+        var can_spike = (state_timer < cd_dstrong_air_spiking_time)
         
         if (state_timer <= 1)
         {
             state_timer = 1;
             cd_has_hitbox = false;
         }
-        if (vsp > cd_dstrong_air_min_speed_for_hitbox) && (!cd_has_hitbox)
+        if (vsp > cd_dstrong_air_min_speed_for_hitbox)
         {
-            spawn_hitbox(AT_DSTRONG_2, (state_timer < cd_dstrong_air_spiking_time) ? 1: 2);
-            cd_has_hitbox = true;
+            if (can_spike && 1 == state_timer % 3)
+            {
+                var hfx = spawn_hit_fx( x, y, player_id.vfx_spinning);
+                hfx.draw_angle = random_func( 7, 180, true);
+            }
+
+            if (!cd_has_hitbox)
+            {
+                spawn_hitbox(AT_DSTRONG_2, can_spike ? 1: 2);
+                cd_has_hitbox = true;
+            }
         }
-        else if (!free || has_hit || was_parried)
+        if (was_parried)
         {
-            if !(has_hit || was_parried) { sound_play(asset_get("sfx_blow_weak1")); }
+            was_parried = false;
+            destroy_cd_hitboxes();
+            if (can_spike)
+            {
+                set_state(AR_STATE_USTRONG);
+                vsp = -cd_reflect_vspeed;
+                hsp = 0;
+            }
+            else
+            {
+                set_state(AR_STATE_IDLE);
+                cd_recall_stun_timer = cd_high_recall_stun;
+                vsp = -vsp * 0.75;
+                hsp = 0;
+            }
+            
+        }
+        else if (!free || has_hit)
+        {
+            if !(has_hit) 
+            { 
+                sound_play(asset_get("sfx_blow_weak1"));
+                cd_recall_stun_timer = cd_low_recall_stun;
+            }
             set_state(AR_STATE_IDLE);
             vsp = -6;
-            hsp = spr_dir * (was_parried ? 1 : -1);
+            hsp = -spr_dir;
         }
         
         //recall availability
@@ -425,7 +467,6 @@ switch (state)
         
         //Animation
         sprite_index = spr_article_cd_shoot;
-        //image_angle = lookat_angle;
         image_index += 0.25;
                                
     } break;
@@ -487,8 +528,12 @@ switch (state)
             //with bounce 
             if (has_hit || !free || hit_wall)
             {
-                if (!has_hit) { sound_play(asset_get("sfx_blow_weak1")); }
-            
+                if (!has_hit) 
+                {
+                    sound_play(asset_get("sfx_blow_weak1")); 
+                    cd_recall_stun_timer = cd_low_recall_stun;
+                }
+
                 vsp = -6;
                 hsp = spr_dir * (hit_wall ? 1 : -1);
             }
@@ -575,11 +620,17 @@ if (state == AR_STATE_DYING || state == AR_STATE_HELD)
     can_priority_recall = false;
 }
 
-if (cd_stunned_timer > 0)
+//=====================================================
+//Hitstun pseudostate
+if (cd_recall_stun_timer > 0)
 {
-    cd_stunned_timer--;
+    cd_recall_stun_timer--;
     can_recall = false;
     can_priority_recall = false;
+}
+if (cd_pickup_stun_timer > 0)
+{
+    cd_pickup_stun_timer--;
 }
 
 //=====================================================
@@ -629,7 +680,7 @@ if (getting_bashed && state != AR_STATE_BASHED)
 //==============================================================================
 #define try_pickup()
 {
-    if (cd_stunned_timer > 0) return false;
+    if (cd_pickup_stun_timer > 0) return false;
 
 	var was_caught = false;
     var found_player_id = noone;
@@ -684,7 +735,10 @@ if (getting_bashed && state != AR_STATE_BASHED)
         
         with (current_owner_id)
         {
-        // "Crownslide": catch blade to remove friction for 12 frames
+            //Prevent throws for a short period
+            uhc_throw_cooldown_override = uhc_throw_cooldown_max;
+            
+            // "Crownslide": catch blade to remove friction for 12 frames
             if (state_cat == SC_GROUND_NEUTRAL || state_cat == SC_AIR_NEUTRAL)
             || (state == PS_LAND || state == PS_WAVELAND || state == PS_WALK_TURN 
             ||  state == PS_DASH_START || state == PS_DASH || state == PS_DASH_TURN || state == PS_DASH_STOP)
@@ -799,13 +853,15 @@ if (getting_bashed && state != AR_STATE_BASHED)
 
         hsp = clamp(lengthdir_x(kb_val, kb_dir), -cd_max_kb_hsp, cd_max_kb_hsp);
         vsp = clamp(lengthdir_y(kb_val, kb_dir), -cd_max_kb_vsp, 3);
-        if (hsp < 1 && hsp > -1) hsp = -1*spr_dir;
+        if (hsp < 1 && hsp > -1) hsp = -spr_dir;
         if (vsp < 1) vsp -= 2;
 
         // CD "hitstun"
-        cd_stunned_timer = (hb.kb_value * 4 *((kb_adj - 1) * 0.6 + 1))
-                         + (hb.damage * 0.12 * hb.kb_scale * 4 * 0.65 * kb_adj) + 12;
-        
+        cd_recall_stun_timer = (hb.kb_value * 4 *((kb_adj - 1) * 0.6 + 1))
+                             + (hb.damage * 0.12 * hb.kb_scale * 4 * 0.65 * kb_adj) 
+                             + cd_extra_hitstun;
+        cd_pickup_stun_timer = cd_recall_stun_timer;
+
         // CD hitpause
         var desired_hitstop = min(20, floor(hb.hitpause + hb.damage * hb.hitpause_growth * 0.05));
         hitstop = desired_hitstop;

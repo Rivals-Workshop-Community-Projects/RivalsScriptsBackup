@@ -61,13 +61,14 @@ set_hitbox_value(AT_DTILT, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, sound_get("hit_weak_4"));
 
+//2nd hit
 set_hitbox_value(AT_DTILT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DTILT, 2, HG_WINDOW, 5);
 set_hitbox_value(AT_DTILT, 2, HG_LIFETIME, 4);
-set_hitbox_value(AT_DTILT, 2, HG_HITBOX_X, 1);
-set_hitbox_value(AT_DTILT, 2, HG_HITBOX_Y, -29);
-set_hitbox_value(AT_DTILT, 2, HG_WIDTH, 147);
-set_hitbox_value(AT_DTILT, 2, HG_HEIGHT, 64);
+set_hitbox_value(AT_DTILT, 2, HG_HITBOX_X, 11);
+set_hitbox_value(AT_DTILT, 2, HG_HITBOX_Y, -26);//-29
+set_hitbox_value(AT_DTILT, 2, HG_WIDTH, 127);
+set_hitbox_value(AT_DTILT, 2, HG_HEIGHT, 56);
 set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 4);
 set_hitbox_value(AT_DTILT, 2, HG_ANGLE, 100);
 set_hitbox_value(AT_DTILT, 2, HG_PRIORITY, 1);

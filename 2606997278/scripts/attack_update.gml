@@ -88,7 +88,7 @@ switch (attack)
             {
                 //Looping hitbox as long as you hold
                 sound_play(asset_get("sfx_swipe_weak1"));
-                create_hitbox(AT_DATTACK, 4, 0, 0);
+                create_hitbox(AT_DATTACK, 3, 0, 0);
             }
             
             if (!attack_down && uhc_looping_attack_can_exit) 
@@ -353,8 +353,6 @@ switch (attack)
                 }
                 else //No CD, no Target
                 {
-                    //prevent spam
-                    move_cooldown[AT_DSPECIAL] = 60;
                     set_window_value(AT_DSPECIAL, 2, AG_WINDOW_HAS_SFX, true);
                 }
             }

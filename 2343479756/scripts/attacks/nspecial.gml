@@ -43,8 +43,8 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -9);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GRAVITY, 0.25);
 
 set_hitbox_value(AT_NSPECIAL, 1, HG_SHAPE, 0);
-set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 32);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 32);
+set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 38);//32
+set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 38);//32
 
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 9);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 60);

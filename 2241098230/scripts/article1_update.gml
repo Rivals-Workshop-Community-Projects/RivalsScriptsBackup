@@ -49,7 +49,7 @@ else {
             if (parent.hit < 2 && hit = 0 && smoke_timer > 2) {
                 with (oPlayer) {
                     if (id == other.player_id) continue;
-                    if point_distance(x, y, other.x, other.y)  < 32 {
+                    if point_distance(x, y, other.x, other.y) < 44 {
                         if (array_find_index(other.parent.players_hit, id) < 0 && !clone) {
                             array_push(other.parent.players_hit, id);
                         }

@@ -144,7 +144,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[13,0] = make_color_rgb(204, 88, 119)
 	ce[13,1] = "Other Natsumi"
 	ce[13,2] = ""
-	ce[14,0] = make_color_rgb(86, 44, 224)
+	ce[14,0] = make_color_rgb(37, 0, 184)
 	ce[14,1] = "Twilight"
 	ce[14,2] = ""
 	ce[15,0] = make_color_rgb(141, 199, 154)

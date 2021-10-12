@@ -44,6 +44,8 @@ if (attack==AT_NSPECIAL){
 						kb_value = 9
 						kb_angle = 361
 						hit_effect = 110 
+						image_xscale = image_xscale*1.2
+						image_yscale = image_yscale*1.2
 						sound_effect = sound_get("hit_med_4")
 						sound_play(sound_get("hit_med_5"))
 						does_not_reflect = true;

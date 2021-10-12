@@ -6,7 +6,7 @@ set_attack_value(AT_DSTRONG_2, AG_LANDING_LAG, 8);
 set_attack_value(AT_DSTRONG_2, AG_HURTBOX_SPRITE, sprite_get("dstrong_air_hurt"));
 
 set_window_value(AT_DSTRONG_2, 1, AG_WINDOW_TYPE, 0);
-set_window_value(AT_DSTRONG_2, 1, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DSTRONG_2, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DSTRONG_2, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSTRONG_2, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG_2, 1, AG_WINDOW_SFX_FRAME, 7);
@@ -35,11 +35,12 @@ set_hitbox_value(AT_DSTRONG_2, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_PRIORITY, 5);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_DAMAGE, 8);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_ANGLE, 270);
-set_hitbox_value(AT_DSTRONG_2, 1, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_DSTRONG_2, 1, HG_BASE_KNOCKBACK, 2);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_SPIN_COST, 20);
+set_hitbox_value(AT_DSTRONG_2, 1, HG_SPIN_KNOCKBACK_BONUS, 3.25);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_SPIN_DAMAGE_BONUS, 4.25);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
@@ -54,6 +55,7 @@ set_hitbox_value(AT_DSTRONG_2, 1, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSTRONG_2, 1, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_DSTRONG_2, 1, HG_PROJECTILE_PARRY_STUN, 1);
 
 //Late hit
 set_hitbox_value(AT_DSTRONG_2, 2, HG_WINDOW_CREATION_FRAME, 6); //used to convert hitbox 1 into 2
@@ -82,4 +84,6 @@ set_hitbox_value(AT_DSTRONG_2, 2, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DSTRONG_2, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_DSTRONG_2, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_DSTRONG_2, 2, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_DSTRONG_2, 2, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_DSTRONG_2, 2, HG_EXTENDED_PARRY_STUN, 1);
 
