@@ -2,11 +2,7 @@
 
 
 
-if instance_number(oPlayer) == 2 {
-	
-	
-	
-}
+
 
    	if !hitpause { 
    		finisher = 0
@@ -59,6 +55,7 @@ if hit_player_obj.state == PS_DEAD {
 }
 
 
+
 if(get_gameplay_time() == 1){
 
 inx = x
@@ -66,6 +63,7 @@ iny = y
 	
 }
 
+/*
 if(get_gameplay_time() == 2){
 	
 
@@ -252,6 +250,7 @@ if(player_id == other.id) {
 
 }
 }
+*/
 
 ////////////////
 

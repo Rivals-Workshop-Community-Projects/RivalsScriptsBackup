@@ -32,4 +32,6 @@ set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, .45);
 set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .45);
+set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, fx_waterhit_small);
+set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT_Y_OFFSET, -5);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));

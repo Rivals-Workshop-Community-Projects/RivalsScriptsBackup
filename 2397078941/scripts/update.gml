@@ -11,7 +11,7 @@ if move_cooldown[AT_NSPECIAL] == 58  {
 }
 
 if move_cooldown[AT_NSPECIAL] == 1 {
-	sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,1.2);
+	sound_play(asset_get("sfx_boss_shine"),false,noone,1,1.2);
 }
 
 if nolan == 0 && changed == 0 {

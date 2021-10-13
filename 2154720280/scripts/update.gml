@@ -11,6 +11,7 @@ if !free && has_rune("E") {
 	daired = 0
 }
 
+
 if(get_gameplay_time() == 1){
 
 inx = x
@@ -18,6 +19,8 @@ iny = y
 	
 }
 
+
+/*
 if(get_gameplay_time() == 2){
 	
 
@@ -204,7 +207,7 @@ if(player_id == other.id) {
 
 }
 }
-
+*/
 ////////////
 set_hitbox_value(AT_FSPECIAL, 4, HG_PROJECTILE_HSPEED, -3 + random_func(1, 6, true) );
 set_hitbox_value(AT_DSPECIAL, 6, HG_PROJECTILE_HSPEED, -2 + random_func(2, 4, true) );

@@ -1,13 +1,14 @@
 //update.gml
 
-//muno told me to put it at the top so i can't put it with the workshop stuff aaaaa
-if (training_mode) user_event(14);
-
-//training mode prompts
 if (training_mode)
 {
+    //munophone
+    muno_event_type = 1;
+    user_event(14);
+
+    //training mode prompts
     if (menu_up && is_training_menu) msg_menu = false;
-    if (down_down && taunt_down) msg_phone = false;
+    //if (down_down && taunt_down) msg_phone = false;
 }
 
 //AI stuff
@@ -24,53 +25,71 @@ else intro_timer += 1/5;
 
 //intro effectwork
 //theikos activation is also depending on the animation
-if (sprite_index == sprite_get("intro") && !allow_bibical)
+if (!testing)
 {
-    //light sound
-    if (intro_timer == -3)
+    if (sprite_index == sprite_get("intro") && !allow_bibical)
     {
-        sound_play(sound_get("sfx_introlight"));
-    }
-    //blast effect
-    if (intro_timer == 13)
-    {
-        var intro_fireblast = spawn_hit_fx(x-16*spr_dir, y-34, fx_fireblow1);
-        intro_fireblast.depth = -7;
-        sound_play(asset_get("sfx_burnapplied"));
-        shake_camera(3, 4); //power, time
-    }
-    //light particles
-    if (intro_timer < 10)
-    {
-        if (get_gameplay_time() % 2 == 0)
+        //light sound
+        if (intro_timer == -3)
         {
-            var light_randomX = random_func(4, 80,true);
-            var light_randomY = random_func(5, 32,true)*4;
-            var introlight = instance_create(x + (20*spr_dir) - (light_randomX * spr_dir), y - (72*4 + light_randomY), "obj_article1");
-                introlight.state = 3;
-                introlight.player = player;
-                introlight.depth = -7;
-                introlight.vsp = 8;
+            sound_play(sound_get("sfx_introlight"));
+        }
+        //blast effect
+        if (intro_timer == 13)
+        {
+            var intro_fireblast = spawn_hit_fx(x-16*spr_dir, y-34, fx_fireblow1);
+            intro_fireblast.depth = -7;
+            sound_play(asset_get("sfx_burnapplied"));
+            shake_camera(3, 4); //power, time
+        }
+        //light particles
+        if (intro_timer < 10)
+        {
+            if (get_gameplay_time() % 2 == 0)
+            {
+                var light_randomX = random_func(4, 80,true);
+                var light_randomY = random_func(5, 32,true)*4;
+                var introlight = instance_create(x + (20*spr_dir) - (light_randomX * spr_dir), y - (72*4 + light_randomY), "obj_article1");
+                    introlight.state = 3;
+                    introlight.player = player;
+                    introlight.depth = -7;
+                    introlight.vsp = 8;
 
-            if (intro_timer > 4) introlight.depth = 2;
+                if (intro_timer > 4) introlight.depth = 2;
 
-            //var light_randomAngle = random_func(6, 80,true)+5;    
-            //var introlight = instance_create(x - 72, y - 128, "obj_article1");    
-            //introlight.image_angle = light_randomAngle;
+                //var light_randomAngle = random_func(6, 80,true)+5;    
+                //var introlight = instance_create(x - 72, y - 128, "obj_article1");    
+                //introlight.image_angle = light_randomAngle;
+            }
+        }
+        //light beam
+        if (intro_timer <= 10) intro_alpha = 0.5;
+        else intro_alpha -= 0.05;
+        intro_pillar_fx_frame += intro_pillar_fx_speed;
+        //hitspark spawn
+        if (intro_timer == -3)
+        {
+            spawn_hit_fx(x-24*spr_dir, y-128+64, fx_lightblow2);
+        }
+
+        //theikos stuff
+        if (theikos)
+        {
+            //activating theikos (it needs to be earlier so it can register the effects' colors)
+            if (intro_timer > 12)
+            {
+                theikos_active = true;
+            }
+            //activation effects
+            if (intro_timer == 13)
+            {
+                spawn_hit_fx(x+4*spr_dir, y-32, fx_lightblow3);
+                sound_play(sound_get("sfx_lordpunishment"));
+                shake_camera(10, 15); //power, time
+            }
         }
     }
-    //light beam
-    if (intro_timer <= 10) intro_alpha = 0.5;
-    else intro_alpha -= 0.05;
-    intro_pillar_fx_frame += intro_pillar_fx_speed;
-    //hitspark spawn
-    if (intro_timer == -3)
-    {
-        spawn_hit_fx(x-24*spr_dir, y-128+64, fx_lightblow2);
-    }
-    
-    //theikos stuff
-    if (theikos)
+    else if (allow_bibical && theikos)
     {
         //activating theikos (it needs to be earlier so it can register the effects' colors)
         if (intro_timer > 12)
@@ -80,27 +99,13 @@ if (sprite_index == sprite_get("intro") && !allow_bibical)
         //activation effects
         if (intro_timer == 13)
         {
-            spawn_hit_fx(x+4*spr_dir, y-32, fx_lightblow3);
+            spawn_hit_fx(x-2*spr_dir, y-40, fx_lightblow3);
             sound_play(sound_get("sfx_lordpunishment"));
             shake_camera(10, 15); //power, time
         }
     }
 }
-else if (allow_bibical && theikos)
-{
-    //activating theikos (it needs to be earlier so it can register the effects' colors)
-    if (intro_timer > 12)
-    {
-        theikos_active = true;
-    }
-    //activation effects
-    if (intro_timer == 13)
-    {
-        spawn_hit_fx(x-2*spr_dir, y-40, fx_lightblow3);
-        sound_play(sound_get("sfx_lordpunishment"));
-        shake_camera(10, 15); //power, time
-    }
-}
+
 
 if (intro_timer < 13 && !was_reloaded) draw_indicator = false;
 else draw_indicator = true;
@@ -205,7 +210,7 @@ else if (state == PS_WALL_JUMP || state == PS_WALL_TECH) //wall jumping or techi
         }
     }
 }
-else if (state == PS_PRATFALL) //pratfall hides the gliding UI
+else if (state == PS_PRATFALL) //pratfall and hitstun hide the gliding UI
 {
     show_glide_ui = false;
 }
@@ -350,9 +355,9 @@ if (!menu_up && (burningfury_active || guardaura_active))
 {
     //activating buffs will burn mana over time and disable mp gaining
     mpGainable = false;
-    if ((burningfury_active || guardaura_active) && phone_cheats[mp_drain] == 0) mp_fc_rate = buff_overtime_cost;
-    if ((burningfury_active && guardaura_active) && phone_cheats[mp_drain] == 0) mp_fc_rate = buff_overtime_cost*2;
-    if (phone_cheats[mp_drain] == 1) mp_fc_rate = 0;
+    if ((burningfury_active || guardaura_active) && phone_cheats[CHEAT_MPDRAIN] == 0) mp_fc_rate = buff_overtime_cost;
+    if ((burningfury_active && guardaura_active) && phone_cheats[CHEAT_MPDRAIN] == 0) mp_fc_rate = buff_overtime_cost*2;
+    if (phone_cheats[CHEAT_MPDRAIN] == 1) mp_fc_rate = 0;
 
     mp_fc_num += mp_fc_rate;
 
@@ -679,7 +684,7 @@ move_cooldown[AT_DSTRONG_2] = 1 + ceil(strong_cost*2 - mp_current);
 
 
 //SKILL SELCTION MENU - thank you Splatracer!
-if (state == PS_SPAWN && !menu_up && cur_select != 4)
+if (state == PS_SPAWN && !menu_up && cur_select != 4) //fresh state
 {
     cur_select = 0;
     selected_nspec = -1;
@@ -689,14 +694,14 @@ if (state == PS_SPAWN && !menu_up && cur_select != 4)
     menu_up = true;
     if (menu_up) barPause();
 }
-if (was_reloaded && !menu_up && !is_training_menu)
+if (was_reloaded && !menu_up && !is_training_menu) //reloading
 {
     selected_nspec = 0;
     selected_fspec = 1;
     selected_uspec = 2;
     selected_dspec = 3;
 }
-if (training_mode)
+if (training_mode || testing)
 {
     if (taunt_down && up_down && !menu_up)
     {
@@ -884,7 +889,7 @@ if (state = PS_SPAWN && menu_up) //prevent some skills to be selected in the fir
 
 //countdown timer so people won't stall with the skill select forever
 //this only happens with the spawn menu, and if it's not training mode
-if (!training_mode && menu_up)
+if (!training_mode && !testing && menu_up)
 {
     menu_countdown --;
 
@@ -1508,7 +1513,7 @@ init_shader();
 
 if (!has_rune("N"))
 {
-    switch (phone_cheats[tech_toggle])
+    switch (phone_cheats[CHEAT_TECHTOGGLE])
     {
         case 1: //burninng only
             holyburn_mechanic_active = true;
@@ -1530,7 +1535,7 @@ if (!has_rune("N"))
 }
 else //holy light mechanic
 {
-    holyburn_mechanic_active = false;
+    holyburn_mechanic_active = true;
     lightstun_mechanic_active = true;
 }
 
@@ -1669,7 +1674,7 @@ if (holyburn_mechanic_active) //holy burn mechanic
     //thanks lukaru!
     with (asset_get("oPlayer")) if (holyburning == other.player)
     {
-        if (!hitpause)
+        if (!hitpause || hitpause && lightstun)
         {
             holyburn_counter += 1;
             outline_color = hit_player_obj.burn_outline; //make it so it changes colors depending on the alt
@@ -1685,7 +1690,7 @@ if (holyburn_mechanic_active) //holy burn mechanic
                 holyburneffect.state = 0;
             }
 
-            if (holyburn_counter >= holyburn_maxcount) 
+            if (holyburn_counter >= holyburn_maxcount && !lightstun) 
             {
                 holyburning = false;
 
@@ -1771,7 +1776,7 @@ if (has_rune("A"))
 
 if (has_rune("B")) //the djump speed change is on the double jump code above
 {
-    can_hover = false;
+    glide_time_max = runeB_glide_time_max;
     max_djumps = 5;
 }
 
@@ -1895,6 +1900,8 @@ if (has_rune("O")) //overdrive meter
 {
     if (od_current <= 0) od_current = 0;
 
+    if (frac(od_current) > 0) od_current -= frac(od_current); //death splits OD into a fraction, so just delete the fraction
+
     if (od_current >= 100 && !od_ready)
     {
         sound_play(sound_get("sfx_od_ready"));
@@ -1933,7 +1940,7 @@ else if ("fs_charge" in self && fs_charge >= 200 && (state != PS_ATTACK_AIR || s
     if (special_pressed && !up_down && !down_down && !left_down && !right_down && !free && attack != AT_USTRONG) fs_force_fs = true;
 }
 
-with (oTestPlayer) if (theikos) theikos_active = true; //making sure theikos bar is active in the playtest mode
+with (oTestPlayer) if ("theikos" in self && theikos) theikos_active = true; //making sure theikos bar is active in the playtest mode
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //FINAL SMASH/OVERDRIVE POST ATTACK EFFECT: LORD'S BLESSING
@@ -2087,14 +2094,14 @@ else
 {
     if (!theikos_active)
     {
-        if (phone_cheats[mana_debug] > 0) manaDebug = true;
+        if (phone_cheats[CHEAT_MANADEBUG] > 0) manaDebug = true;
 
-        if (phone_cheats[mana_debug] == 1) mp_fc_rate = mp_rate_default;
-        else if (phone_cheats[mana_debug] == 2) mp_fc_rate = 5;
-        else if (phone_cheats[mana_debug] == 3) mp_fc_rate = 10;
-        else if (phone_cheats[mana_debug] == 4) mp_fc_rate = 20;
-        else if (phone_cheats[mana_debug] == 5) mp_fc_rate = 50;
-        else if (phone_cheats[mana_debug] == 6) mp_fc_rate = 100;
+        if (phone_cheats[CHEAT_MANADEBUG] == 1) mp_fc_rate = mp_rate_default;
+        else if (phone_cheats[CHEAT_MANADEBUG] == 2) mp_fc_rate = 5;
+        else if (phone_cheats[CHEAT_MANADEBUG] == 3) mp_fc_rate = 10;
+        else if (phone_cheats[CHEAT_MANADEBUG] == 4) mp_fc_rate = 20;
+        else if (phone_cheats[CHEAT_MANADEBUG] == 5) mp_fc_rate = 50;
+        else if (phone_cheats[CHEAT_MANADEBUG] == 6) mp_fc_rate = 100;
         else mp_fc_rate = 0;
     }
     else
@@ -2111,7 +2118,7 @@ else
 //steve_death3 = death from light based attacks
 //steve_death4 = death from an attack that inflicts holy burning, but i also want it to be done as long as steve burns
 //steve_death5 = death from bar's taunt
-switch (attack)
+if ("steve_death_message" in self) switch (attack)
 {
     case AT_JAB: case AT_FTILT: case AT_DTILT: case AT_NAIR: case AT_UAIR: case AT_BAIR: case AT_UTHROW:
         steve_death_message = steve_death1;

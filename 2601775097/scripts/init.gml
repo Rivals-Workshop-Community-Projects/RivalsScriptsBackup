@@ -60,7 +60,7 @@ walljump_vsp = 11;
 walljump_time = 32;
 wall_frames = 2;
 max_fall = 10; //maximum fall speed without fastfalling
-fast_fall = 12; //fast fall speed
+fast_fall = 15; //fast fall speed //12
 gravity_speed = .65;
 hitstun_grav = .5;
 knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
@@ -124,6 +124,14 @@ if (get_training_cpu_action() != CPU_FIGHT || was_reloaded) training_mode = true
 training_msg = false;
 msg_menu = true;
 msg_phone = true;
+
+//test player detection
+testing = false;
+with (oTestPlayer)
+{
+	testing = true;
+	msg_menu = true;
+}
 
 //Hovering
 true_gravity_speed = gravity_speed;
@@ -391,6 +399,7 @@ burningfury_active = false;
 mp_burn = 2;
 fury_damage = 1.5;
 fury_cycle = 0; //the number here doesn't matter
+burningfury_target = noone;
 
 forceleap_up = false;
 forceleap_down = false;
@@ -590,6 +599,9 @@ runeA_dash_timer = runeA_dash_time_max;
 runeA_dash_cool_active = false;
 runeA_dash_cooldown_max = 20;
 runeA_dash_cooldown = runeA_dash_cooldown_max;
+
+//rune B
+runeB_glide_time_max = 150;
 
 //rune J
 runeJ_multiplyer = 0.2;
@@ -1869,4 +1881,5 @@ spr_exp5 = sprite_get("_exp5"); //alternate option moves
 
 spr_drip = sprite_get("_pho_drip");
 
+muno_event_type = 0;
 user_event(14);

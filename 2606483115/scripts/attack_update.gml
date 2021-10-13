@@ -59,22 +59,6 @@ if(attack == AT_NAIR){
 	}
 }
 
-//Utilt cancel frame due to extra lag
-if(attack == AT_UTILT){
-	if(window == 3){
-		if(window_timer > 8 && has_hit_player){
-			can_attack = true
-			can_special = true
-			can_strong = true
-			can_jump = true
-			can_shield = true
-			can_ustrong = true
-			if(left_down || right_down){
-				set_state(PS_IDLE)
-			}
-		}
-	}
-}
 //dattack hitbox
 if(attack == AT_DATTACK){
 	if(window == 3){
@@ -231,6 +215,12 @@ if(attack == AT_DSTRONG){
 			char_height = lerp(char_height, 52, 0.3)
 		}
 	}
+}else if (attack == AT_UAIR){
+	if(window == 1 && window_timer > 6 || window == 2 && window_timer < 7){
+		char_height = lerp(char_height, 90, 0.3)
+	}else{
+		char_height = lerp(char_height, 52, 0.3)
+	}
 }else{
 	char_height = lerp(char_height, 52, 0.3)
 }
@@ -249,8 +239,9 @@ if(attack == AT_FSTRONG){
 	if(window == 2 && window_timer == 1){
 		shake_camera( 6, 4)
 		if(!instance_exists(steam_wall) && steam_wall_timer <= 0 || steam_wall == noone && steam_wall_timer <= 0){
-			steam_wall = instance_create(x + 80*spr_dir, y - 47, "obj_article2")
+			steam_wall = instance_create(x + 70*spr_dir, y - 47, "obj_article2")
 			steam_wall.length = length
+			steam_wall_no_down = 10
 		}
 	} 
 }
@@ -586,7 +577,7 @@ if(!masked){
 	}
 }else{
 	if(attack == AT_TAUNT){
-		if(window == 1 && window_timer == 8 && get_player_color(player) == 11){
+		if(window == 1 && window_timer == 8 && (get_player_color(player) == 11 || get_player_color(player) == 13)){
 			sound_play(asset_get("sfx_troupple_splash_big"))
 		}
 		if(window == 2 && window_timer == 15){
@@ -687,6 +678,23 @@ if(attack == AT_FSTRONG){
 			set_hitbox_value(AT_FSTRONG, 1, HG_FORCE_FLINCH, 0);
 		}else{
 			set_hitbox_value(AT_FSTRONG, 1, HG_FORCE_FLINCH, 1);
+		}
+	}
+}
+
+//Utilt cancel frame due to extra lag
+if(attack == AT_UTILT){
+	if(window == 3){
+		if(window_timer > 8 && has_hit_player){
+			can_attack = true
+			can_special = true
+			can_strong = true
+			can_jump = true
+			can_shield = true
+			can_ustrong = true
+			if(left_down || right_down){
+				set_state(PS_IDLE)
+			}
 		}
 	}
 }

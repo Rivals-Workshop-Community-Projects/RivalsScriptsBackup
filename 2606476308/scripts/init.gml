@@ -114,6 +114,16 @@ bubble_y = 8;
 bat_sweetspot = hit_fx_create( sprite_get( "sweetspot" ), 7 );
 bat_explosion = hit_fx_create( sprite_get( "explosion" ), 15 );
 
+//Halloween Stuff
+halloween_end = hit_fx_create( sprite_get( "halloween_end" ), 9);
+
+if(get_player_color(player) == 7){
+	halloween = true
+}else{
+	halloween = false
+}
+
+
 kirbyability = 3
 
 flying_rock1 = noone

@@ -211,8 +211,8 @@ if(state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
 if(state == PS_SPAWN || not_moved){
 	if(taunt_pressed && !masked && switch_timer <= 0){
 		
-	
 		masked = true
+		halloween = false
 		switch_timer = 10
 		
 		sound_play(asset_get("mfx_coin"))
@@ -286,7 +286,7 @@ if(state == PS_SPAWN || not_moved){
 			spr_taunt = sprite_get("masked_taunt");
 			spr_taunt_2 = sprite_get("masked_taunt_2");
 			spr_taunt3 = sprite_get("masked_taunt3_g7");
-		}else if(get_player_color(player) == 11){
+		}else if(get_player_color(player) == 11 || get_player_color(player) == 13){
 			spr_taunt = sprite_get("masked_taunt");
 			spr_taunt_2 = sprite_get("masked_taunt_2");
 			spr_taunt3 = sprite_get("masked_taunt3_ocean");
@@ -312,7 +312,7 @@ if(state == PS_SPAWN || not_moved){
 			spr_taunt = sprite_get("taunt");
 			spr_taunt_2 = sprite_get("taunt_2");
 			spr_taunt3 = sprite_get("taunt3_g7");
-		}else if(get_player_color(player) == 11){
+		}else if(get_player_color(player) == 11 || get_player_color(player) == 13){
 			spr_taunt = sprite_get("taunt");
 			spr_taunt_2 = sprite_get("taunt_2");
 			spr_taunt3 = sprite_get("taunt3_ocean");
@@ -326,6 +326,7 @@ if(state == PS_SPAWN || not_moved){
 		spawn_hit_fx(x, y - 20, 109)
 		
 		masked = false
+		halloween = false
 		
 		set_victory_portrait(sprite_get("portrait"));
 		sfx_steam1 = sound_get("sfx_steam1")
@@ -350,7 +351,6 @@ if(not_moved && state != PS_SPAWN){
 		set_window_value(AT_TAUNT_2, 2, AG_WINDOW_SFX, sfx_steam1);
 		set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX, sfx_steam1);
 		set_window_value(AT_USTRONG, 3, AG_WINDOW_SFX, sfx_steam_cloth);
-		set_window_value(AT_UTILT, 2, AG_WINDOW_SFX, sfx_steam3);
 		
 		not_moved = false
 		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("taunt3"));
@@ -587,5 +587,16 @@ if(attack == AT_USPECIAL && state == PS_ATTACK_AIR){
 }else{
 	air_accel = .45;
 }
+
+//Halloween Thing
+if(halloween == true){
+    if(state != PS_IDLE && state != PS_SPAWN){
+        halloween = false
+        var hall_end = spawn_hit_fx(x, y, halloween_end)
+        hall_end.spr_dir = spr_dir
+    }
+}
+
+steam_wall_no_down--
 switch_timer--
 steam_break_timer--

@@ -57,6 +57,8 @@ if (theikos_active || godpower || od_already_active || get_player_color(player) 
         set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("‏‏theikos_dstrong_b"));
         fx_dstrong_fireblast = hit_fx_create(sprite_get("‏‏theikos_fx_dstrong_b_fireblast"), 40);
         fx_rockblow = hit_fx_create(sprite_get("theikos_fx_rockblow"), 27);
+        set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, fx_fireblow1);
+        set_hitbox_value(AT_DSTRONG, 1, HG_HIT_PARTICLE_NUM, 6);
         // some changed variables are in attack_update
 
         // u-strong

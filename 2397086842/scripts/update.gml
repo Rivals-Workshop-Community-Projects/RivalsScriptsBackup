@@ -102,23 +102,6 @@ if move_cooldown[AT_DSPECIAL] == 1 {
 
 }
 
-if  move_cooldown[AT_FSPECIAL_2] = 11{
-	
-create_hitbox(AT_NSPECIAL, 12 ,hit_player_obj.x,hit_player_obj.y - 40)
-  move_cooldown[AT_FSPECIAL_2] = 0
-}
-
-if  move_cooldown[AT_FSPECIAL_2] = 6{
-	
-create_hitbox(AT_NSPECIAL, 13 ,hit_player_obj.x,hit_player_obj.y - 40)
-  move_cooldown[AT_FSPECIAL_2] = 0
-}
-
-if  move_cooldown[AT_FSPECIAL_2] = 3{
-	
-create_hitbox(AT_NSPECIAL, 14 ,hit_player_obj.x,hit_player_obj.y - 40)
-  move_cooldown[AT_FSPECIAL_2] = 0
-}
 
 
 if get_gameplay_time() < 92 {
@@ -520,12 +503,12 @@ if get_player_color(player) == 12 {
 }
 
 
-if get_gameplay_time() <= 120 && voiced == 1 {
+if get_gameplay_time() <= 120 && voiced == 0 {
 
 
 	if taunt_down {
 		sound_play(asset_get("sfx_gem_collect"));
-		voiced = 0
+		voiced = 1
 	}
 	
 }

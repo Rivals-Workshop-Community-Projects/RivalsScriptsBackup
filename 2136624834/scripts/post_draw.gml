@@ -11,7 +11,7 @@ if get_player_color(player) == 7 {
 }
 
 
-if attack == AT_DSPECIAL && attacking{
+if attack == AT_DSPECIAL && attacking && !free{
     
     if window < 5 {
 

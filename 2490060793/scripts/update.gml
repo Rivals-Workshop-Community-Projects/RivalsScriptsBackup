@@ -189,6 +189,15 @@ if intro_time == 100 && intro_flip {
 	meter_flipped = true;
 }
 
+//fspec array
+if !((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_FSPECIAL && window == 2) {
+	fspec_movearr[0] = fspec_movearr[1]
+	fspec_movearr[1] = fspec_movearr[2]
+	fspec_movearr[2] = fspec_movearr[3]
+	fspec_movearr[3] = fspec_movearr[4]
+	fspec_movearr[4] = [undefined,undefined]
+}
+
 //hitfx colour
 /*
 with hit_fx_obj {

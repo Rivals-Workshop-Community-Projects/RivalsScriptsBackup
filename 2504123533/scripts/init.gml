@@ -132,6 +132,13 @@ splsh = hit_fx_create( sprite_get( "splattersplash" ), 21 );
 jcaul = hit_fx_create( sprite_get( "jellycauldron_explosion" ), 32 );
 spawnCloneFX = hit_fx_create( sprite_get( "cauldronMorph" ), 8);
 starpop = hit_fx_create( sprite_get( "cauldronStarFX" ), 20 );
+splatter = hit_fx_create( sprite_get( "splatter" ), 21 );
+
+tideDestroyEffect = hit_fx_create(sprite_get("boomTide"),30);
+tideRedDestroyEffect = hit_fx_create(sprite_get("cauldronTideDissipate"),30);
+tideBlueDestroyEffect = hit_fx_create(sprite_get("cauldronTideDissipate2"),30);
+
+set_hit_particle_sprite( 1, sprite_get( "particle_1" ) );
 
 
 PotionHeldDown = false;
@@ -144,3 +151,58 @@ CauldronBounce = noone;
 myCloneOwner = noone;
 myGooClone = noone;//instance_create(x,y,"oPlayer");
 //myGooClone.custom_clone = true;
+
+//intro
+introTimer = -3;
+//setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening. If it's slightly off, feel free to mess with it.
+introTimer2 = 0;
+introTimer3 = 0;
+
+//Dracula!!!
+//Dracula support
+dracula_portrait = sprite_get("dracula_portrait");
+dracula_portrait2 = sprite_get("dracula_portrait2"); //or asset_get("empty_sprite")
+var page = 0;
+
+//Page 0
+dracula_speaker[page] = 0;
+dracula_text[page] = "Hello, Potion Seller, I am going into battle and I want your strongest potions.";
+page++;
+
+//Page 1
+dracula_speaker[page] = 1;
+dracula_text[page] = "My potions are too strong for you, count.";
+page++;
+
+//Page 2
+dracula_speaker[page] = 0;
+dracula_text[page] = "Potion Seller, I tell you I am going into battle, and I want only your strongest potions.";
+page++;
+
+//Page 3
+dracula_speaker[page] = 1;
+dracula_text[page] = "My potions would kill you, count. You cannot handle my potions.";
+page++;
+
+//Page 4
+dracula_speaker[page] = 0;
+dracula_text[page] = "Potion Seller, I'm telling you right now; I am going into battle and I need only your strongest potions.";
+page++;
+
+//Page 5
+dracula_speaker[page] = 2;
+dracula_text[page] = "You don't know what you ask, count. My strongest potions will kill a dragon let alone a man.";
+page++;
+
+//Page 5
+dracula_speaker[page] = 2;
+dracula_text[page] = "You need a seller that sells weaker potions, because my potions are too strong.";
+page++;
+
+//Page 6
+dracula_speaker[page] = 0;
+dracula_text[page] = "Bah! This is going nowhere![glass] I'll just turn you into chum, then we'll see if you'll still haggle!";
+page++;
+
+//birby
+kirbyability = 10;

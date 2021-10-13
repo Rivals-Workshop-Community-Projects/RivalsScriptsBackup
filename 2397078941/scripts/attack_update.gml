@@ -592,8 +592,13 @@ if attack == AT_DAIR {
     can_wall_jump = true
     }
 
-    if has_hit_player or (y > room_height/2 + 300){
-    	can_shield = true
+    if (y > room_height/2 + 300){
+    	if jump_pressed or shield_pressed {
+    		set_state(PS_PRATFALL)
+    		state_timer = 0
+    		vsp = -12
+    		sound_play(asset_get("sfx_spin"),false,noone,1,1.5);
+    	}
     }
     
     

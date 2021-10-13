@@ -3,7 +3,26 @@ y = round(y);
 
 
 
-if state != PS_DEAD hitbox_detection();
+if state != PS_DEAD{
+	var was_state = state;
+	var was_atk = attack;
+	hitbox_detection();
+	
+	if state == PS_DEAD && was_state == PS_ATTACK_AIR && was_atk == AT_NSPECIAL_AIR{
+	
+		if player_id.state == PS_IDLE_AIR || player_id.state == PS_FIRST_JUMP{
+			player_id.vsp = -player_id.jump_speed;
+		}
+		if player_id.state == PS_ATTACK_AIR switch(player_id.attack){
+			case AT_NAIR:
+			case AT_FAIR:
+			case AT_BAIR:
+			case AT_UAIR:
+				player_id.vsp = -player_id.jump_speed;
+				break;
+		}
+	}
+}
 
 
 
@@ -218,6 +237,7 @@ switch(state){
 				if place_meeting(x, y, player_id) || place_meeting(x, y - 32, player_id) || !player_id.special_down || player_id.special_pressed || player_id.state_cat == SC_HITSTUN || loops > 5 || player_id.state == PS_WALL_JUMP || player_id.state == PS_AIR_DODGE || player_id.was_parried || should_die || player_id.phone_attacking && (player_id.attack == AT_DAIR && player_id.window == 1 || player_id.attack == AT_USPECIAL){
 					window_timer = win_length + 1;
 					player_id.max_djumps = 1;
+					
 				}
 				
 				else with player_id{

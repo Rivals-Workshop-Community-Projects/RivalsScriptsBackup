@@ -62,6 +62,10 @@ sprite_change_offset("hurtbox", 125, 164);
 sprite_change_offset("cr_hurtbox", 125, 164);
 sprite_change_offset("magnet", 150, 150);
 
+sprite_change_offset("halloween_right", 125, 164);
+sprite_change_offset("halloween_left", 119, 164);
+sprite_change_offset("halloween_end", 125, 164);
+
 sprite_change_offset("spinny_rocks", 122, 122);
 
 set_victory_bg( sprite_get( "victory" ));

@@ -121,3 +121,7 @@ sprite_change_offset("famicom_dspecial", 80, 114);
 sprite_change_offset("famicom_taunt", 80, 114);
 sprite_change_offset("famicom_dthrow", 80, 114);
 sprite_change_offset("famicom_uthrow", 80, 114);
+
+sprite_change_offset("halloween_left", 80, 114);
+sprite_change_offset("halloween_right", 80, 114);
+sprite_change_offset("halloween_end", 80, 114);

@@ -15,6 +15,11 @@ if attack == AT_DATTACK {
         x += spr_dir*24
     }
     
+    //dacus
+    if window == 1 && window_timer < 4 && up_strong_pressed {
+    	set_attack(AT_USTRONG)
+    }
+    
     if window != 1 off_edge = true;
     
     //grounded endlag
@@ -36,7 +41,7 @@ if attack == AT_USTRONG {
 }
 
 if attack == AT_DSPECIAL {
-	if window_timer == 1 {
+	if window_timer == 3 {
 		with obj_article1 {
             if player_id == other.id && pulse_cooldown == 0 {
                 pulse = true;
@@ -63,21 +68,27 @@ if attack == AT_NSPECIAL {
 
 
 if attack == AT_FSPECIAL {
-    if state_timer == 1 fspec_coords = [x + 30*spr_dir, y];
+    if state_timer == 1 fspec_coords = [x + 80*spr_dir, y];
     else if window == 1 {
-        if up_down && !down_down fspec_coords[1] -= 2;
-        else if down_down && !up_down fspec_coords[1] += 2;
+        //if up_down && !down_down fspec_coords[1] -= 2;
+        //else if down_down && !up_down fspec_coords[1] += 2;
         
+        if special_down {
+        	fspec_coords[0] += 4*spr_dir;
+        }
+        /*
         if left_down && !right_down {
             fspec_coords[0] -= 4;
         } else if right_down && !left_down {
             fspec_coords[0] += 4;
         }
+        */
     }
     
     //jump cancel
     if window == 1 {
 		has_jumped = 0;
+		if !free noprat = true
 	}
 	
 	if has_hit && window == 4 && window_timer <= window_length - 6 && jump_pressed {
@@ -99,6 +110,7 @@ if attack == AT_FSPECIAL {
     
     
     if window == 1 {
+    	fspec_movearr = array_create(5, [undefined,undefined])
         has_snapped = false;
         //can_shield = true;
         if window_timer > 4 && meter_cur <= 0 {
@@ -111,11 +123,40 @@ if attack == AT_FSPECIAL {
         if strong_charge != 0 && strong_charge mod 1 == 0 {
             meter_cur -= fspec_value;
         }
-        set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED, 15 + floor(strong_charge/8));
+        
+        movespd = 12 + floor(strong_charge/4)
+        moveangle = point_direction(x, y, fspec_coords[0], fspec_coords[1])
+        movedist = point_distance(x, y, fspec_coords[0], fspec_coords[1])
+        
+        origx = x
+        origy = y
+        
+        set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, movespd*spr_dir*dcos(moveangle));
+        set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, -movespd*dsin(moveangle));
+        set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED, movespd*spr_dir*dcos(moveangle));
+        set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED, -movespd*dsin(moveangle));
     }
     can_move = false;
     can_wall_jump = true
     if special_down && meter_cur > 0 strong_down = true;
+    
+    if window == 2 {
+    	fspec_movearr[0] = fspec_movearr[1]
+    	fspec_movearr[1] = fspec_movearr[2]
+    	fspec_movearr[2] = fspec_movearr[3]
+    	fspec_movearr[3] = fspec_movearr[4]
+    	fspec_movearr[4] = [x,y]
+    }
+    
+    if window == 2 {
+    	if window_timer == 1 {
+    		if !free spawn_base_dust(x, y, "dash_start", spr_dir);
+    	}
+    	if (abs(point_distance(x, y, origx, origy)) > abs(movedist) + 20 - 8*movespd) || (place_meeting(x + 20*spr_dir, y-30, asset_get("par_block"))) {
+    		window = 3
+    		window_timer = window_length
+    	}
+    }
     
     if window == 3 && window_timer == window_length-1 {
         x = fspec_coords[0]
@@ -138,14 +179,23 @@ if attack == AT_FSPECIAL {
         hsp *= 0.2
     }
     
+    if window == 4 && window_timer == 1 {
+    	if !has_reduced {
+	        meter_prev = meter_cur;
+	        meter_cur -= 8;
+	        meter_flash_timer = 30;
+	        has_reduced = true;
+	    }
+    }
+    
     if window >= 5 {
-        if !free || has_hit {
+        if !free || has_hit || noprat {
             set_window_value(AT_FSPECIAL, 6, AG_WINDOW_TYPE, 0);
             //can_jump = true;
             //can_attack = true;
         } else reset_window_value(AT_FSPECIAL, 6, AG_WINDOW_TYPE);
         
-        if has_hit can_jump = true;
+        //if has_hit can_jump = true;
     }
     
     //40px ledge snap

@@ -45,6 +45,7 @@ if my_hitboxID.attack == AT_FSTRONG {
 
 if (my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_DSTRONG or my_hitboxID.attack == AT_USTRONG) {
     
+
             if voiced == 1 {
                sound_play(sound_get("bat2"),false,noone,1)	
             } else {
@@ -128,14 +129,14 @@ if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num <= 6 {
 }
 
 if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 4 {
-  move_cooldown[AT_FSPECIAL_2] = 12
+  create_hitbox(AT_NSPECIAL, 12 ,hit_player_obj.x,hit_player_obj.y - 40)
 }
 
 if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 5 {
-  move_cooldown[AT_FSPECIAL_2] = 7
+  create_hitbox(AT_NSPECIAL, 13 ,hit_player_obj.x,hit_player_obj.y - 40)
 }
 if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 6 {
-  move_cooldown[AT_FSPECIAL_2] = 4
+  create_hitbox(AT_NSPECIAL, 14 ,hit_player_obj.x,hit_player_obj.y - 40)
 }
 
 if my_hitboxID.attack == AT_DSPECIAL {

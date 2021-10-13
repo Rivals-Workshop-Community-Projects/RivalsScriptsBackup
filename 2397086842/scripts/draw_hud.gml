@@ -26,10 +26,20 @@ shader_end()
 
 //further y positions should go up in multiples of 16 from 64
 
+/*
 if voiced == 1 && get_gameplay_time() <= 200{
        draw_debug_text(temp_x,temp_y - 15,"Taunt to disable Extra sfx .");
 }
 
 if voiced == 0 && get_gameplay_time() <= 120{
        draw_debug_text(temp_x,temp_y - 15,"Extra sfx disabled.");
+}
+*/
+
+if voiced == 0 && get_gameplay_time() <= 200{
+       draw_debug_text(temp_x,temp_y - 15,"Taunt to enable Extra sfx .");
+}
+
+if voiced == 1 && get_gameplay_time() <= 120{
+       draw_debug_text(temp_x,temp_y - 15,"Extra sfx enabled.");
 }

@@ -3,7 +3,7 @@ atk = AT_UAIR;
 set_attack_value(atk, AG_CATEGORY, 1);
 set_attack_value(atk, AG_SPRITE, sprite_get("uair"));
 set_attack_value(atk, AG_HAS_LANDING_LAG, 1);
-set_attack_value(atk, AG_LANDING_LAG, 8);
+set_attack_value(atk, AG_LANDING_LAG, 4); //8
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("uair_hurt"));
 set_attack_value(atk, AG_NUM_WINDOWS, 4);
 

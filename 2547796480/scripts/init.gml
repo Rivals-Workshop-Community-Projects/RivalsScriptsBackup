@@ -57,7 +57,7 @@ moonwalk_accel = 1.8;
 
 jump_start_time = 5;
 jump_speed = 12;
-short_hop_speed = 7;
+short_hop_speed = 5;
 djump_speed = 12;
 leave_ground_max = 8; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
@@ -70,7 +70,7 @@ max_djumps = 1;
 double_jump_time = 34; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 3;
 walljump_vsp = 11;
-walljump_time = 12;
+walljump_time = 25;
 wall_frames = 2; //anim frames before you leave the wall
 max_fall = 8.5; //maximum fall speed without fastfalling
 fast_fall = 12; //fast fall speed

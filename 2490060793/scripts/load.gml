@@ -63,7 +63,7 @@ sprite_change_offset("hud_meter_red", 0, 0);
 sprite_change_offset("hud_meter_flash", 0, 0);
 sprite_change_offset("orb", 32, 32);
 sprite_change_offset("orb_idle", 32, 32);
-sprite_change_offset("orb_pulse", 60, 60);
+sprite_change_offset("orb_pulse", 80, 80);
 sprite_change_offset("fspec_indicator", 80, 158);
 sprite_change_offset("nspecial_vfx", 80, 158);
 sprite_change_offset("orb_explosion_vfx", 80, 80);

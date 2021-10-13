@@ -83,3 +83,12 @@ if(char_height != 52){
         char_height = lerp(char_height, 52, 0.5);
     }
 }
+
+//Halloween Thing
+if(halloween == true){
+    if(state != PS_IDLE && state != PS_SPAWN){
+        halloween = false
+        var hall_end = spawn_hit_fx(x, y, halloween_end)
+        hall_end.spr_dir = spr_dir
+    }
+}

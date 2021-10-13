@@ -1,4 +1,7 @@
-intro = 1
+//intro = 1
+//if introhit = 0 {
+//	introhit = 1
+//}
 finishercd = 0
 
 if my_hitboxID.attack == AT_UTILT && move_cooldown[AT_UAIR] != 0 && move_cooldown[AT_UAIR] < 20 {
@@ -106,9 +109,7 @@ offensetimer = 1
 move_cooldown[AT_EXTRA_3] = 160
 
 
-if introhit = 0 {
-	introhit = 1
-}
+
 if state != PS_HITSTUN {
 	
 	

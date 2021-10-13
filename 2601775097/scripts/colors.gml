@@ -7,19 +7,19 @@ set_color_profile_slot(0, 1, 182, 88, 61); //HAIR
 set_color_profile_slot(0, 2, 245, 181, 150); //SKIN
 set_color_profile_slot(0, 3, 76, 144, 206); //CLOTHLIGHTBLUE
 set_color_profile_slot(0, 4, 43, 60, 140); //CLOTHDARKBLUE
-set_color_profile_slot(0, 5, 28, 27, 38); //CLOTHBLACK
+set_color_profile_slot(0, 5, 30, 26, 39); //CLOTHBLACK
 set_color_profile_slot(0, 6, 164, 247, 198); //LIGHT
 set_color_profile_slot(0, 7, 81, 210, 197); //FIRE
 
 //COLOR RANGE (H,S,V)
-set_color_profile_slot_range(0, 212, 10, 10); //CLOTHWHITE
+set_color_profile_slot_range(0, 13, 7, 15); //CLOTHWHITE
 set_color_profile_slot_range(1, 9, 11, 29); //HAIR
-set_color_profile_slot_range(2, 5, 25, 4); //SKIN
-set_color_profile_slot_range(3, 13, 5, 12); //CLOTHLIGHTBLUE
+set_color_profile_slot_range(2, 10, 20, 20); //SKIN
+set_color_profile_slot_range(3, 2, 8, 14); //CLOTHLIGHTBLUE
 set_color_profile_slot_range(4, 10, 4, 46); //CLOTHDARKBLUE
-set_color_profile_slot_range(5, 27, 9, 14); //CLOTHBLACK
+set_color_profile_slot_range(5, 15, 6, 6); //CLOTHBLACK
 set_color_profile_slot_range(6, 10, 40, 16); //LIGHT
-set_color_profile_slot_range(7, 16, 18, 40); //FIRE
+set_color_profile_slot_range(7, 14, 36, 30); //FIRE
 
 
 var palNum = 1;

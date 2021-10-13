@@ -68,7 +68,7 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(atk, hitboxNum, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 1); //it needs to be a different value for every different move in the file
-set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 3);
+set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 0);
 set_hitbox_value(atk, hitboxNum, HG_FORCE_FLINCH, 0);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 1);
 
@@ -93,5 +93,5 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(atk, hitboxNum, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 1); //it needs to be a different value for every different move in the file
-set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 3);
+set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 0);
 set_hitbox_value(atk, hitboxNum, HG_FORCE_FLINCH, 0);

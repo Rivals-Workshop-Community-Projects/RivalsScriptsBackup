@@ -247,10 +247,12 @@ if attack == AT_USPECIAL { //dolph
             window = 5;
             window_timer = 0;
             uspecial_bounces_rn += 1;
+            spawn_base_dust(x + 22 * spr_dir,y,"walljump", spr_dir*-1);
         } else {
             window = 9;
             window_timer = 0;
             sound_play(asset_get("sfx_blow_weak1"),false,0,1,0.65)
+            spawn_base_dust(x + 22 * spr_dir,y,"walljump", spr_dir*-1);
         }
         hsp = -6 * spr_dir
         vsp = -6;
@@ -266,15 +268,23 @@ if attack == AT_USPECIAL { //dolph
         hsp *= 0.8;
         vsp = -5;
     }
+    if window == 5 {
+    	if window_timer == 1 {
+    		sound_play(asset_get("sfx_blow_weak2"),false,0,0.5,0.65);
+        	sound_play(asset_get("sfx_icehit_weak2"),false,0,1.45,0.35);
+        	if !free {
+        		spawn_base_dust(x,y,"land");
+        	}
+    	}
+    }
 }
 
-//rework this
 if attack == AT_DSPECIAL {
 	if window == 2{
 		if window_timer == 1 {
 			with(obj_article2){
 				if player_id == other.id {
-					if state == 1 {
+					if (state == 1) or (state == 7) {
 						window = 1;
 						window_timer = 0;
 						window_length = 16;
@@ -290,6 +300,7 @@ if attack == AT_DSPECIAL {
 			}
 		}
 		if window_timer == get_window_value(AT_DSPECIAL,2,AG_WINDOW_LENGTH)-1 {
+			sound_play(asset_get("sfx_ice_back_air"),false,0,0.65,1.55);
 			sound_play(asset_get("sfx_waterwarp"),false,0,0.75,1.75)
 			sound_play(asset_get("sfx_waveland_ori"),false,0,1.25,1.55)
 			sound_play(asset_get("sfx_frog_dstrong"),false,0,0.45,0.95)

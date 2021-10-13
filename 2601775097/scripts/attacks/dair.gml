@@ -3,7 +3,7 @@ atk = AT_DAIR;
 set_attack_value(atk, AG_CATEGORY, 2); //it's AG_CATEGORY 2 cuz of the abyss rune
 set_attack_value(atk, AG_SPRITE, sprite_get("dair"));
 set_attack_value(atk, AG_HAS_LANDING_LAG, 1);
-set_attack_value(atk, AG_LANDING_LAG, 12);
+set_attack_value(atk, AG_LANDING_LAG, 6); //12
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("dair_hurt"));
 set_attack_value(atk, AG_NUM_WINDOWS, 6);
 
@@ -65,10 +65,10 @@ set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 4); //1 = low priority over other 
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 12);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 270);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.7); //0.9
 set_hitbox_value(atk, hitboxNum, HG_HITSTUN_MULTIPLIER, 0.9);
-set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 25); //hitstun
-set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, .25);
+set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 12); //hitstun //25
+set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.7); //0.25
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
@@ -99,7 +99,7 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
-set_hitbox_value(atk, hitboxNum, HG_ANGLE_FLIPPER, 8);
+set_hitbox_value(atk, hitboxNum, HG_ANGLE_FLIPPER, 6); //8
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 1);
 set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 0);
 set_hitbox_value(atk, hitboxNum, HG_FORCE_FLINCH, 0);

@@ -42,6 +42,7 @@ set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, 1);
+set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, fx_waterhit_spin);
 set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_waterhit_heavy2"));
 set_hitbox_value(AT_UAIR, 1, HG_HIT_LOCKOUT, 18);

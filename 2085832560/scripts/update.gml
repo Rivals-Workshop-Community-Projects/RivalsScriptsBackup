@@ -56,6 +56,7 @@ iny = y
 	
 }
 
+/*
 if(get_gameplay_time() == 2){
 
 var shortest_dist = 9999;
@@ -232,7 +233,7 @@ if(player_id == other.id) {
 
 }
 }
-
+*/
 
 ////////////
 

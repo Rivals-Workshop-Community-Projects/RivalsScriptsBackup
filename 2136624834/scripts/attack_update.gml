@@ -55,6 +55,12 @@ if window == 5 && window_timer == 1 {
 	spawn_hit_fx( x - (10 * spr_dir) , y - 40 , 302 )
 }
 if window == 5 && window_timer == 2 && has_hit_player{
+	
+	finaldir = spr_dir
+	
+	startdir = hit_player_obj.spr_dir
+
+	
 	create_hitbox(AT_USPECIAL , 3 , x, y );
 	timehit = 0
 	timestop = 0

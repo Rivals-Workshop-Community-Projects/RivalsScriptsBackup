@@ -245,12 +245,16 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.5", "11 October, 2021");
+initHeader("NSpecial - Adjustments");
+initSection("When Luma gets hit during the Pull Star, Toad now gets popped up a bit instead of keeping his prior momentum.");
+
 initPatch("1.4", "19 September, 2021");
 initHeader("General");
 initSection("Upgraded to MunoPhone Touch.
 Added dust effects to grounded normals.");
 initHeader("BAir - Reworks");
-initSection("Replaced with a two-hit attack that has similar stats.");
+initSection("Replaced with a three-hit attack that has similar stats.");
 initHeader("DSpecial - Buffs, Adjustments, Aesthetics, Bugfixes");
 initSection("Movement speed while holding an enemy or turnip 6 --> 8.
 Grab hitbox extended downward.

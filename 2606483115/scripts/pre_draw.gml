@@ -12,7 +12,7 @@ if (get_player_color(player) == 11){
         waves_direction += 0.1
     }
     waves_rising += 0.25 * waves_direction
-    draw_sprite(sprite_get("waves"), g7fx_timer, x - 45, y - 76 - waves_rising)
+    draw_sprite_ext(sprite_get("waves"), g7fx_timer, x - 45, y - 76 - waves_rising, 1, 1, 0, c_white, 0.5)
 }
 
 if(get_player_color(player) == 8){

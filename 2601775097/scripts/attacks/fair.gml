@@ -4,7 +4,7 @@ set_attack_value(atk, AG_CATEGORY, 1);
 set_attack_value(atk, AG_SPRITE, sprite_get("fair"));
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("fair_hurt"));
 set_attack_value(atk, AG_HAS_LANDING_LAG, 1);
-set_attack_value(atk, AG_LANDING_LAG, 9);
+set_attack_value(atk, AG_LANDING_LAG, 5); //9
 set_attack_value(atk, AG_NUM_WINDOWS, 3);
 
 windowNum = 1; //windup
@@ -44,8 +44,8 @@ set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 5); //1 = low priority over other 
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 12);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 290);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.7);
-set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 15); //hitstun
+set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.6); //0.7
+set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 12); //hitstun //15
 set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 1.5);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_X_OFFSET, 16);

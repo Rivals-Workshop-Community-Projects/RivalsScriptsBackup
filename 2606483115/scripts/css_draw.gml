@@ -10,7 +10,7 @@ var alt_cur = get_player_color(player);
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-var num_alts = 13;
+var num_alts = 14;
 var alt_cur = get_player_color(player);
 
 var alt_new = get_player_color(player);
@@ -26,6 +26,8 @@ else if (alt_new != currAlt)
 		sound_play(sound_get("boop_distorted"), 0, 0, 2);
 	}else if(get_player_color(player) == 11){
 		sound_play(sound_get("sand"), 0, 0, 2);
+	}else if(get_player_color(player) == 13){
+		sound_play(sound_get("pkmn"), 0, 0, 2);
 	}else{
 		sound_play(sound_get("boop"), 0, 0, 2);
 	}
@@ -47,13 +49,14 @@ alt_name[9]  = "Masked Galega";
 alt_name[10]  = "Dusk Masked Galega";
 alt_name[11]  = "Ocean Masked Galega";
 alt_name[12]  = "Genesis Masked Galega";
+alt_name[13]  = "Blastoise Galega";
 
 //Alt
 
 if(get_player_color(player) == 8){
     draw_sprite(sprite_get("icons"), 2, temp_x + 4, temp_y + 101)
 }
-if(get_player_color(player) > 8){
+if(get_player_color(player) > 8 && get_player_color(player) != 13){
     draw_sprite(sprite_get("masked_charselect"), 1, x + 8, y + 8)
     draw_sprite(sprite_get("icons"), 1, temp_x + 4, temp_y + 101)
     
@@ -64,7 +67,9 @@ if(get_player_color(player) > 8){
         draw_sprite(sprite_get("icons"), 3, temp_x + 26, temp_y + 101)
     }
 }
-
+if(get_player_color(player) == 13){
+	draw_sprite(sprite_get("icons"), 4, temp_x + 4, temp_y + 101)
+}
 
 rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
  

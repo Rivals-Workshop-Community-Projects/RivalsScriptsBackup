@@ -16,6 +16,7 @@ if (mpGainable)
 
 //burning fury
 if (burningfury_active) if (window > 7) burningfury_active = false;
+burningfury_target = noone;
 
 //accel blitz is reset on hit
 accelblitz_active = false;

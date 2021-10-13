@@ -22,7 +22,7 @@ set_color_profile_slot_range( 4, 6, 13, 12 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 15 );
+set_num_palettes( 16 );
 
 // Toxic
 set_color_profile_slot( 1, 0, 49, 94, 78 ); //Pink
@@ -33,7 +33,7 @@ set_color_profile_slot( 1, 4, 34, 199, 34 ); //gray
 
 // BLM
 set_color_profile_slot( 2, 0, 242, 196, 44 ); //Pink
-set_color_profile_slot( 2, 1, 171, 199, 197 ); //pearl
+set_color_profile_slot( 2, 1, 138, 75, 57 ); //pearl
 set_color_profile_slot( 2, 2, 242, 196, 44 ); //wator
 set_color_profile_slot( 2, 3, 45, 55, 84 ); //brown
 set_color_profile_slot( 2, 4, 171, 199, 197 ); //gray
@@ -121,6 +121,13 @@ set_color_profile_slot( 14, 1, 28, 173, 112 ); //pearl
 set_color_profile_slot( 14, 2, 173, 138, 103 ); //wator
 set_color_profile_slot( 14, 3, 90, 102, 78 ); //brown
 set_color_profile_slot( 14, 4, 190, 209, 204 ); //gray
+
+// Duality
+set_color_profile_slot( 15, 0, 189, 40, 146 ); //Pink
+set_color_profile_slot( 15, 1, 95, 53, 143 ); //pearl
+set_color_profile_slot( 15, 2, 176, 91, 189 ); //wator
+set_color_profile_slot( 15, 3, 95, 53, 143 ); //brown
+set_color_profile_slot( 15, 4, 54, 87, 209 ); //gray
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -296,6 +296,10 @@ if (attack == AT_DSTRONG_2) //when the fireball of theikos D-strong hits a playe
     }
 }
 
+if ((attack == AT_SKILL1 || attack == AT_SKILL1_AIR) && pHitBox.hbox_num == 2)
+{
+	burningfury_target = hit_player_obj;
+}
 
 //reset bar's accel blitz if he hits someone with a move
 //not including accel blitz itself
@@ -310,6 +314,8 @@ if (attack != AT_SKILL4)
 //if bar hits an enemy he will pull
 //but he won't get a free pull if it's himself
 if (attack == AT_SKILL9 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && pHitBox.hbox_num == 1 && hit_player_obj != self && !has_rune("G")) hookshot_speedboost = true;
+
+
 
 #define HolyBurn()
 {

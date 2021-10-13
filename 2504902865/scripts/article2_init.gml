@@ -7,7 +7,7 @@ minion_level = 1; //level
 attack_timer_rn = 0;
 attack_timer_max = 180; //time until minions spawn while in idle
 
-hp_max = get_match_setting( SET_TEAMS) ? 30 : 20; //health max
+hp_max = get_match_setting( SET_TEAMS) ? 24 : 12; //health max
 hp_rn = hp_max;
 should_die = false;
 
@@ -49,15 +49,11 @@ hurt_timer = 40;
 stun_timer = 150;
 
 //hitbox collision & detection
-hit_hitbox = noone;
-hit_hitbox_previous = noone;
-hit_group = 0;
-hit_group_previous = 0;
-hit_attack = 0;
-hit_attack_previous = 0;
-hit_attack_cooldown = 0;
-
-hit_cooldown = 0;
+hbox_group = array_create(4,array_create(50,array_create(10,0))); //ew
+ 
+hitstun = 0;
+hitstun_full = 0;
+hit_lockout = 0;
 
 //nae nae cringe ori stop bashing my fucking article
 unbashable = true;

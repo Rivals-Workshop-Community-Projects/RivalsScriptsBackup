@@ -5,6 +5,7 @@ mp_current = mp_spawn;
 glide_time = glide_time_max;
 
 burningfury_active = false;
+burningfury_target = noone;
 
 accelblitz_active = false;
 accelblitz_done_once = false;
@@ -40,6 +41,6 @@ runeA_dash_cooldown = runeA_dash_cooldown_max;
 
 god_time = god_time_reset;
 godpower = false;
-od_current = 0;
+od_current /= 2;
 od_gainable = true;
 od_already_active = false;

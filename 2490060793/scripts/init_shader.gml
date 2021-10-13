@@ -13,20 +13,27 @@ if meter_cur/meter_max < 0.5 {
 
 if meter_flipped {
     set_color_profile_slot( 0, 4, 255, 0, 0 );
+    set_color_profile_slot( 0, 7, 0, 255, 0 );
 } else {
     set_color_profile_slot( 0, 4, 26, 0, 0 );
+    set_color_profile_slot( 0, 7, 0, 26, 0 );
 }
 
 
-set_color_profile_slot_range( 4, 1, 1, round((meter_cur*91/meter_max)-1));
+set_color_profile_slot_range( 4, 1, 1, ceil((meter_cur*91/meter_max)-1));
 set_color_profile_slot_range( 3, 1, 1, 255);
 
+set_color_profile_slot_range( 7, 1, 1, ceil((meter_cur*91/meter_max)-1));
+set_color_profile_slot_range( 6, 1, 1, 255);
 
 var alt_cur = get_player_color(player);
 
 if variable_instance_exists(self, "timer") && !(state == PS_PARRY && window == 1) {
     set_character_color_shading(3, 0);
     set_character_color_shading(4, 0);
+    
+    set_character_color_shading(6, 0);
+    set_character_color_shading(7, 0);
 }
 
 //victory screen draw
@@ -35,15 +42,25 @@ if object_index == asset_get("draw_result_screen") {
     if alt_cur == 0 {
         set_character_color_slot(4, 255, 255, 255, 1);
         set_character_color_slot(3, 181, 30, 30, 1);
+        
+        set_character_color_slot(6, 169, 172, 188, 1);
+        set_character_color_slot(7, 104, 17, 17, 1);
     }
 }
 
 var alt_cur = get_player_color(player);
 if alt_cur == 0 {
+    //light shades
     set_character_color_slot(3, 255, 255, 255, 1);
     set_article_color_slot(3, 255, 255, 255, 1);
     set_character_color_slot(4, 181, 30, 30, 1);
     set_article_color_slot(4, 181, 30, 30, 1);
+    
+    //dark shades
+    set_character_color_slot(6, 169, 172, 188, 1);
+    set_article_color_slot(6, 169, 172, 188, 1);
+    set_character_color_slot(7, 104, 17, 17, 1);
+    set_article_color_slot(7, 104, 17, 17, 1);
 }
 
 //print(object_index)

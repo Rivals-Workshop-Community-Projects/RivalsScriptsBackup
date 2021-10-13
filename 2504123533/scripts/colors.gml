@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 10, 18, 15 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 22 );
+set_num_palettes( 23 );
 
 // RoA Blue
 set_color_profile_slot( 1, 0, 152, 213, 245 ); //Skin
@@ -98,9 +98,9 @@ set_color_profile_slot( 6, 7, 255, 255, 97 ); //Eye
 
 // EA
 set_color_profile_slot( 7, 0, 167, 186, 74 ); //Skin
-set_color_profile_slot( 7, 1, 167, 186, 74 ); //Hat Light Blue
-set_color_profile_slot( 7, 2, 211, 226, 154 ); //Body Light Blue
-set_color_profile_slot( 7, 3, 211, 226, 154 ); //Hat Green
+set_color_profile_slot( 7, 1, 211, 226, 154 ); //Hat Light Blue
+set_color_profile_slot( 7, 2, 167, 186, 74 ); //Body Light Blue
+set_color_profile_slot( 7, 3, 167, 186, 74 ); //Hat Green
 set_color_profile_slot( 7, 4, 83, 122, 62 ); //Green Tips
 set_color_profile_slot( 7, 5, 83, 122, 62 ); //Broom Tip
 set_color_profile_slot( 7, 6, 211, 226, 154 ); //Broom
@@ -186,15 +186,15 @@ set_color_profile_slot( 15, 5, 148, 102, 78 ); //Broom Tip
 set_color_profile_slot( 15, 6, 230, 225, 216 ); //Broom
 set_color_profile_slot( 15, 7, 230, 225, 216 ); //Eye
 
-// R-Mochi
-set_color_profile_slot( 16, 0, 239, 255, 219 ); //Skin
-set_color_profile_slot( 16, 1, 122, 204, 157 ); //Hat Light Blue
-set_color_profile_slot( 16, 2, 198, 251, 161 ); //Body Light Blue
-set_color_profile_slot( 16, 3, 255, 157, 172 ); //Hat Green
-set_color_profile_slot( 16, 4, 50, 162, 173 ); //Green Tips
-set_color_profile_slot( 16, 5, 198, 251, 161 ); //Broom Tip
-set_color_profile_slot( 16, 6, 255, 157, 172 ); //Broom
-set_color_profile_slot( 16, 7, 239, 255, 219 ); //Eye
+// R-Reigalor Shroomson
+set_color_profile_slot( 16, 0, 221, 242, 250 ); //Skin
+set_color_profile_slot( 16, 1, 65, 96, 136 ); //Hat Light Blue
+set_color_profile_slot( 16, 2, 128, 163, 190 ); //Body Light Blue
+set_color_profile_slot( 16, 3, 144, 167, 199 ); //Hat Green
+set_color_profile_slot( 16, 4, 72, 209, 217 ); //Green Tips
+set_color_profile_slot( 16, 5, 65, 96, 136 ); //Broom Tip
+set_color_profile_slot( 16, 6, 255, 211, 133 ); //Broom
+set_color_profile_slot( 16, 7, 221, 242, 250 ); //Eye
 
 // S-Esper
 set_color_profile_slot( 17, 0, 247, 220, 240 ); //Skin
@@ -246,6 +246,15 @@ set_color_profile_slot( 21, 5, 151, 226, 206 ); //Broom Tip
 set_color_profile_slot( 21, 6, 219, 248, 220 ); //Broom
 set_color_profile_slot( 21, 7, 222, 155, 128 ); //Eye
 
+// Queen (DELTARUNE)
+set_color_profile_slot( 22, 0, 250, 253, 255 ); //Skin
+set_color_profile_slot( 22, 1, 111, 209, 255 ); //Hat Light Blue
+set_color_profile_slot( 22, 2, 111, 209, 255 ); //Body Light Blue
+set_color_profile_slot( 22, 3, 205, 255, 51 ); //Hat Green
+set_color_profile_slot( 22, 4, 111, 209, 255 ); //Green Tips
+set_color_profile_slot( 22, 5, 111, 209, 255 ); //Broom Tip
+set_color_profile_slot( 22, 6, 87, 110, 207 ); //Broom
+set_color_profile_slot( 22, 7, 0, 0, 0 ); //Eye
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

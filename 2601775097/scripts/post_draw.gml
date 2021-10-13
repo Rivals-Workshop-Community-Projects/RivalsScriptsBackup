@@ -1,5 +1,11 @@
 //post-draw
 
+//munophone
+muno_event_type = 4;
+user_event(14);
+
+
+
 shader_start();
 if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 {
@@ -61,6 +67,7 @@ if (!hitstop)
     if (attack == AT_SKILL5 && window == 1 && window_timer == 0 && free) spawn_base_dust(x, y, "djump");
     if (attack == AT_SKILL9 && window == 5 && window_timer == 0) spawn_base_dust(x, y-28, "djump", 0, -80*spr_dir);
     if (has_rune("A") && runeA_dash && runeA_dash_timer == 2 && free) spawn_base_dust(x-32*spr_dir, y-28, "djump", 0, -90*spr_dir);
+    if (attack == AT_FSTRONG_2 && (window == 3 && window_timer == 0) || (window == 7 && window_timer == 4) && !free) spawn_base_dust(x, y, "dash_start");
 }
 
 //why are you afraid?
@@ -90,17 +97,6 @@ if (attack == AT_USTRONG_2 && (window == 4 || window == 5))
 }
 gpu_set_blendmode(bm_normal);
 
-
-//dust effects for theikos strongs
-if (attack == AT_FSTRONG_2)
-{
-    if (!free)
-    {
-        if ((window == 3 && window_timer == 0) || (window == 7 && window_timer == 4)) spawn_base_dust(x, y, "dash_start"); //start moving
-    }
-}
-
-
 //small MP guage
 if (show_miniMP)
 {
@@ -125,13 +121,243 @@ if (mp_error_active) draw_sprite_ext(sprite_get("no_mp"), mp_error_frame, x, y-(
 if (show_glide_ui)
 {
     rectDraw(x-37, y-char_height-32, x+34, y-char_height-32+5, c_black); //outline
-    rectDraw(x-35, y-char_height-32+2, x+32, y-char_height-32+3, $05308E); //empty
-    rectDraw(x-35, y-char_height-32+2, x+floor(glide_time/1.45)-36, y-char_height-32+3, $44DEFF); //full
+    rectDraw(x-35, y-char_height-32+2, x+32, y-char_height-32+3, $316f09); //empty
+    rectDraw(x-35, y-char_height-32+2, x+floor(glide_time/(1.45*(glide_time_max/100)))-36, y-char_height-32+3, $78ff5f); //full
 }
 
 
-//munophone
-user_event(12);
+
+//when testing, the skill select can be brought up with up+taunt
+var temp_x = x-104;
+var temp_y = y+16;
+
+if (x < 100) temp_x = 100-104;
+if (x > 860) temp_x = 860-104;
+
+if (y > 466) temp_y = 466+16;
+if (y < 148) temp_y = 148+16;
+
+with (oTestPlayer) if ("menu_up" in self)
+{
+    draw_debug_text(temp_x + 16, temp_y + 32, "UP + TAUNT = Skill Select");
+
+    //select script
+    if (menu_up)
+    {
+        rectDraw(temp_x + 4, temp_y - 116, temp_x + 204, temp_y - 112, c_black);
+        draw_sprite_ext(sprite_get("hud_menu_bg"), 0, temp_x - 8, temp_y - 128, 2, 2, 0, c_white, 1);
+
+        draw_sprite_ext(sprite_get("skillicons"), 0, temp_x + skill_xpos1, temp_y - skill_ypos1, 2, 2, 0, c_white, 1); //l. dagger
+        draw_sprite_ext(sprite_get("skillicons"), 1, temp_x + skill_xpos2, temp_y - skill_ypos1, 2, 2, 0, c_white, 1); //b. fury
+        draw_sprite_ext(sprite_get("skillicons"), 2, temp_x + skill_xpos3, temp_y - skill_ypos1, 2, 2, 0, c_white, 1); //f. leap
+        draw_sprite_ext(sprite_get("skillicons"), 3, temp_x + skill_xpos4, temp_y - skill_ypos1, 2, 2, 0, c_white, 1); //p. blast
+        draw_sprite_ext(sprite_get("skillicons"), 4, temp_x + skill_xpos5, temp_y - skill_ypos1, 2, 2, 0, c_white, 1); //a. blitz
+        draw_sprite_ext(sprite_get("skillicons"), 5, temp_x + skill_xpos1, temp_y - skill_ypos2, 2, 2, 0, c_white, 1); //c. burster
+        draw_sprite_ext(sprite_get("skillicons"), 6, temp_x + skill_xpos2, temp_y - skill_ypos2, 2, 2, 0, c_white, 1); //p. smash
+        draw_sprite_ext(sprite_get("skillicons"), 7, temp_x + skill_xpos3, temp_y - skill_ypos2, 2, 2, 0, c_white, 1); //g. aura
+        draw_sprite_ext(sprite_get("skillicons"), 8, temp_x + skill_xpos4, temp_y - skill_ypos2, 2, 2, 0, c_white, 1); //e. fist
+        draw_sprite_ext(sprite_get("skillicons"), 9, temp_x + skill_xpos5, temp_y - skill_ypos2, 2, 2, 0, c_white, 1); //l. hookshot
+
+        draw_debug_text(temp_x + 44, temp_y + 16, "Apply");
+        draw_debug_text(temp_x + 150, temp_y + 16, "Cancel");
+
+        //what am i selecting currently
+        if (cur_select == 0) draw_debug_text(temp_x + 24, temp_y - 86, "Selecting: " + "N-SPECIAL");
+        else if (cur_select == 1) draw_debug_text(temp_x + 24, temp_y - 86, "Selecting: " + "F-SPECIAL");
+        else if (cur_select == 2) draw_debug_text(temp_x + 24, temp_y - 86, "Selecting: " + "U-SPECIAL");
+        else if (cur_select == 3) draw_debug_text(temp_x + 24, temp_y - 86, "Selecting: " + "D-SPECIAL");
+
+        //skill names
+        if (skill_cursor_x == skill_xpos1 && skill_cursor_y == skill_ypos1) draw_debug_text(temp_x + 60, temp_y - 6, "Light Dagger");
+        if (skill_cursor_x == skill_xpos2 && skill_cursor_y == skill_ypos1) draw_debug_text(temp_x + 60, temp_y - 6, "Burning Fury");
+        if (skill_cursor_x == skill_xpos3 && skill_cursor_y == skill_ypos1) draw_debug_text(temp_x + 66, temp_y - 6, "Force Leap");
+        if (skill_cursor_x == skill_xpos4 && skill_cursor_y == skill_ypos1) draw_debug_text(temp_x + 60, temp_y - 6, "Photon Blast");
+        if (skill_cursor_x == skill_xpos5 && skill_cursor_y == skill_ypos1) draw_debug_text(temp_x + 67, temp_y - 6, "Accel Blitz");
+        if (skill_cursor_x == skill_xpos1 && skill_cursor_y == skill_ypos2) draw_debug_text(temp_x + 52, temp_y - 6, "Chasm Burster");
+        if (skill_cursor_x == skill_xpos2 && skill_cursor_y == skill_ypos2) draw_debug_text(temp_x + 58, temp_y - 6, "Power Smash");
+        if (skill_cursor_x == skill_xpos3 && skill_cursor_y == skill_ypos2) draw_debug_text(temp_x + 66, temp_y - 6, "Guard Aura");
+        if (skill_cursor_x == skill_xpos4 && skill_cursor_y == skill_ypos2) draw_debug_text(temp_x + 66, temp_y - 6, "Ember Fist");
+        if (skill_cursor_x == skill_xpos5 && skill_cursor_y == skill_ypos2) draw_debug_text(temp_x + 52, temp_y - 6, "Light Hookshot");
+    
+        select_img = 0; //nspecial selected
+        switch (selected_nspec) {
+            case 0:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 0, temp_x + skill_xpos1, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos1, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+            break;
+            case 1:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 1, temp_x + skill_xpos2, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos2, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+            break;
+            case 2:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 2, temp_x + skill_xpos3, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos3, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+            break;
+            case 3:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 3, temp_x + skill_xpos4, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos4, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+            break;
+            case 4:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 4, temp_x + skill_xpos5, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos5, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+            break;
+            case 5:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 5, temp_x + skill_xpos1, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos1, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            break;
+            case 6:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 6, temp_x + skill_xpos2, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos2, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            break;
+            case 7:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 7, temp_x + skill_xpos3, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos3, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            break;
+            case 8:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 8, temp_x + skill_xpos4, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos4, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            break;
+            case 9:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 9, temp_x + skill_xpos5, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos5, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            break;
+        }
+
+        select_img ++; //fspecial selected
+        switch (selected_fspec) {
+            case 0:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 0, temp_x + skill_xpos1, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos1, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+            break;
+            case 1:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 1, temp_x + skill_xpos2, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos2, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+            break;
+            case 2:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 2, temp_x + skill_xpos3, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos3, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+            break;
+            case 3:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 3, temp_x + skill_xpos4, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos4, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+            break;
+            case 4:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 4, temp_x + skill_xpos5, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos5, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+            break;
+            case 5:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 5, temp_x + skill_xpos1, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos1, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            break;
+            case 6:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 6, temp_x + skill_xpos2, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos2, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            break;
+            case 7:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 7, temp_x + skill_xpos3, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos3, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            break;
+            case 8:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 8, temp_x + skill_xpos4, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos4, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            break;
+            case 9:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 9, temp_x + skill_xpos5, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos5, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            break;
+        }
+
+        select_img ++; //uspecial selected
+        switch (selected_uspec) {
+            case 0:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 0, temp_x + skill_xpos1, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos1, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+            break;
+            case 1:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 1, temp_x + skill_xpos2, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos2, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+            break;
+            case 2:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 2, temp_x + skill_xpos3, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos3, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+            break;
+            case 3:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 3, temp_x + skill_xpos4, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos4, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+            break;
+            case 4:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 4, temp_x + skill_xpos5, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos5, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+            break;
+            case 5:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 5, temp_x + skill_xpos1, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos1, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            break;
+            case 6:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 6, temp_x + skill_xpos2, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos2, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            break;
+            case 7:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 7, temp_x + skill_xpos3, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos3, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            break;
+            case 8:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 8, temp_x + skill_xpos4, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos4, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            break;
+            case 9:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 9, temp_x + skill_xpos5, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos5, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            break;
+        }
+
+        select_img ++; //dspecial selected
+        switch (selected_dspec) {
+            case 0:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 0, temp_x + skill_xpos1, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos1, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+            break;
+            case 1:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 1, temp_x + skill_xpos2, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos2, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+            break;
+            case 2:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 2, temp_x + skill_xpos3, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos3, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+            break;
+            case 3:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 3, temp_x + skill_xpos4, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos4, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+            break;
+            case 4:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 4, temp_x + skill_xpos5, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos5, temp_y - skill_ypos1, 2, 2, 0, c_white, 1);
+            break;
+            case 5:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 5, temp_x + skill_xpos1, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos1, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            break;
+            case 6:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 6, temp_x + skill_xpos2, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos2, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            break;
+            case 7:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 7, temp_x + skill_xpos3, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos3, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            break;
+            case 8:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 8, temp_x + skill_xpos4, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos4, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            break;
+            case 9:
+                draw_sprite_ext(sprite_get("skillicons_disabled"), 9, temp_x + skill_xpos5, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(sprite_get("skillicons_inputs_selection"), select_img, temp_x + skill_xpos5, temp_y - skill_ypos2, 2, 2, 0, c_white, 1);
+            break;
+        }
+
+        draw_sprite_ext(sprite_get("skillselect_cursor"), get_gameplay_time() / 4, temp_x + skill_cursor_x, temp_y - skill_cursor_y, 2, 2, 0, c_white, 1); //cursor display
+    }
+}
 
 
 

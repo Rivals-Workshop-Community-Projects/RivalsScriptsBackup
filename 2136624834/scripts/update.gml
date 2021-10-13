@@ -50,6 +50,7 @@ iny = y
 	
 }
 
+/*
 if(get_gameplay_time() == 2){
 	
 
@@ -234,7 +235,7 @@ if(player_id == other.id) {
 
 }
 }
-
+*/
 
 
 /// TAAHHHHH
@@ -488,6 +489,7 @@ if timefreeze > 1 && timefreeze < 40 && state == PS_IDLE && attack != AT_EXTRA_3
 	window = 6
 	window_timer = 0
     sound_play(sound_get("timeresume"),false, noone, 2);
+    spr_dir = finaldir
 }
 
 

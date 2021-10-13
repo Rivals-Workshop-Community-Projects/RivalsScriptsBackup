@@ -12,6 +12,7 @@ sw2 = hit_fx_create( sprite_get( "shockwave2" ), 12);
 
 sw = hit_fx_create( sprite_get( "shockwave" ), 8);
 
+bouncenum = -1
 
 lockouttimer = 0
 

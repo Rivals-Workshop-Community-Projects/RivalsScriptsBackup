@@ -21,7 +21,7 @@ set_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX_FRAME, 8);
 
 set_num_hitboxes(AT_NSPECIAL, 1);
 
-//tide cauldron attack
+//tide cauldron attackRED
 //sweeps across ground
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 99);
@@ -42,7 +42,10 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GRAVITY, 0.3);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, tideRedDestroyEffect);
+set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, tideRedDestroyEffect);
 
+//BLUE
 //sweeps across ground
 set_hitbox_value(AT_NSPECIAL, 6, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 6, HG_WINDOW, 99);
@@ -63,6 +66,8 @@ set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_HSPEED, -5);
 set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_ANIM_SPEED, 0.2);
 set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_GRAVITY, 0.3);
+set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_DESTROY_EFFECT, tideBlueDestroyEffect);
+set_hitbox_value(AT_NSPECIAL, 6, HG_VISUAL_EFFECT, tideBlueDestroyEffect);
 
 //jelly cauldron attack
 //simple explosion
@@ -85,6 +90,8 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 2);
+set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, splsh);
+set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_PARTICLE_NUM, 1);
 
 //jelly cauldron attack
 //simple explosion
@@ -129,24 +136,3 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_SPRITE, sprite_get("cauldronStarA
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
-
-//Zap Cauldron Attack
-set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_NSPECIAL, 5, HG_WINDOW, 99);
-set_hitbox_value(AT_NSPECIAL, 5, HG_WINDOW_CREATION_FRAME, 0);
-set_hitbox_value(AT_NSPECIAL, 5, HG_LIFETIME, 60*3);
-set_hitbox_value(AT_NSPECIAL, 5, HG_WIDTH, 80);
-set_hitbox_value(AT_NSPECIAL, 5, HG_HEIGHT, 80);
-set_hitbox_value(AT_NSPECIAL, 5, HG_SHAPE, 2);
-set_hitbox_value(AT_NSPECIAL, 5, HG_PRIORITY, 3);
-set_hitbox_value(AT_NSPECIAL, 5, HG_DAMAGE, 8);
-set_hitbox_value(AT_NSPECIAL, 5, HG_ANGLE, 48);
-set_hitbox_value(AT_NSPECIAL, 5, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_NSPECIAL, 5, HG_KNOCKBACK_SCALING, .2);
-set_hitbox_value(AT_NSPECIAL, 5, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(AT_NSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
-set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_GROUP, 0);
-set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_SPRITE, sprite_get("cauldronZapAttack"));
-set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_MASK, sprite_get("cauldronZapAttack"));
-set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_WALL_BEHAVIOR, 1);
-set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_GROUND_BEHAVIOR, 1);

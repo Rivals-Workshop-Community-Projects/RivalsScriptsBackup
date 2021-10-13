@@ -56,7 +56,7 @@ hitstun_hurtbox_spr = -1; //-1 uses hurtbox_spr hurtbox
 
 //------------------------------------------------------------------------------
 //#region Animation and Visuals-------------------------------------------------
-char_height = 40;
+char_height = 52;
 idle_anim_speed = .1;
 crouch_anim_speed = .1;
 walk_anim_speed = .125;

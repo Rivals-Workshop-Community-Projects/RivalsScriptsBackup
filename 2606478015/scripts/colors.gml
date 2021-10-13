@@ -30,7 +30,7 @@ set_color_profile_slot_range( 6, 1, 8, 32 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 17 );
 
 // Chilled
 set_color_profile_slot( 1, 0, 220, 228, 229 ); //Metal Highlight
@@ -166,6 +166,15 @@ set_color_profile_slot( 15, 3, 10, 7, 7 ); //Metal Deep Shade
 set_color_profile_slot( 15, 4, 255, 174, 0 ); //Laser
 set_color_profile_slot( 15, 5, 227, 194, 0 ); //Fire
 set_color_profile_slot( 15, 6, 255, 232, 232 ); //Famicom Arms
+
+// Halloween
+set_color_profile_slot( 16, 0, 229, 227, 227 ); //Metal Highlight
+set_color_profile_slot( 16, 1, 186, 186, 186 ); //Metal Base
+set_color_profile_slot( 16, 2, 95, 95, 95 ); //Metal Shade
+set_color_profile_slot( 16, 3, 56, 56, 56 ); //Metal Deep Shade
+set_color_profile_slot( 16, 4, 255, 155, 5 ); //Laser
+set_color_profile_slot( 16, 5, 32, 179, 0 ); //Fire
+set_color_profile_slot( 16, 6, 255, 255, 255 ); //Famicom Arms
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

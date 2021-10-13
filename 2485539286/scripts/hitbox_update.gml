@@ -253,10 +253,9 @@ if hbox_num == 1 && sentrymode == 0 {
     
         if hbox_num == 3 {
         	
-                              if ((place_meeting(x + hsp, y + vsp , asset_get("par_block")))) {
+                           if ((place_meeting(x + hsp, y + vsp , asset_get("par_block")))) {
                                  y += vsp*2
                                  x += hsp*2
-                                  destroyed = true
                                   sound_play(asset_get("sfx_ori_energyhit_weak"))
                       
                               
@@ -334,7 +333,7 @@ if hbox_num == 1 && sentrymode == 0 {
     	
     	if image_index < 17 {
     		
-    	if hitbox_timer == 4*7 or hitbox_timer == 4*10 or hitbox_timer == 4*13 or hitbox_timer == 4*16 {
+    	if hitbox_timer == 4*7 or hitbox_timer == 4*10 or hitbox_timer == 4*13 {
     		sound_stop(asset_get("sfx_holy_lightning"))
     		sound_play(asset_get("sfx_holy_lightning"),false,noone,0.7)
     		spawn_hit_fx(x,y,305)

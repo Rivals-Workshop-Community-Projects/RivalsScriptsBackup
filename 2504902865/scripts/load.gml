@@ -63,7 +63,9 @@ sprite_change_offset("hp_bar_full", 25, 20);
 sprite_change_offset("fx_bubble_small", 164, 158);
 sprite_change_offset("fx_bubble_smallest", 164, 158);
 sprite_change_offset("fx_fspecial_land", 115, 130);
-
+sprite_change_offset("fx_waterhit_spin", 164, 158);
+sprite_change_offset("fx_waterhit_small", 164, 158);
+sprite_change_offset("fx_waterhit_big", 194, 188);
 
 //hurts
 sprite_change_offset("nthrow_hurt", 146, 166);

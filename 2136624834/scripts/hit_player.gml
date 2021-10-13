@@ -1,6 +1,11 @@
 ///
 intro = 1
 
+if my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 5 {
+   hit_player_obj.spr_dir = startdir 
+}
+
+
 if timestop < 100 {
 move_cooldown[AT_FSPECIAL_2] = min(10 + hit_player_obj.hitstop*5, 60)
 }
@@ -40,8 +45,10 @@ if timestop < 100 && timefreeze < 1 && (my_hitboxID.attack != AT_USPECIAL) && mo
 if timefreeze > 40 {
 	
 	with hit_player_obj {
-		take_damage (player, -1, other.my_hitboxID.damage*-1)
+		take_damage (player, -1, floor (other.my_hitboxID.damage*-0.8) )
 	}
+    
+    finaldir = spr_dir
     
     set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 1);
     set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 4);
@@ -51,11 +58,11 @@ if timefreeze > 40 {
     set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -60);
     set_hitbox_value(AT_USPECIAL, 2, HG_PRIORITY, 3);
     set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 1);
-    set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 280);
-    set_hitbox_value(AT_USPECIAL, 2, HG_HEIGHT, 280);
+    set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 410);
+    set_hitbox_value(AT_USPECIAL, 2, HG_HEIGHT, 410);
     set_hitbox_value(AT_USPECIAL, 2, HG_SHAPE, 0);
     set_hitbox_value(AT_USPECIAL, 2, HG_PRIORITY, 3);
-    set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 0.1);
+    set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 5 + floor(my_hitboxID.damage/4) );
     set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, my_hitboxID.kb_angle);
     set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, my_hitboxID.kb_value);
     set_hitbox_value(AT_USPECIAL, 2, HG_KNOCKBACK_SCALING, my_hitboxID.kb_scale);

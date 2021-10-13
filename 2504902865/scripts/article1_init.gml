@@ -1,5 +1,5 @@
 //a
-
+player_die = false;
 //house stuff
 house_level = 1; //level
 
@@ -7,9 +7,9 @@ minions_spawn_max = 3; //minion max
 minions_spawn_rn = 0;
 
 minion_spawn_timer_rn = 0;
-minion_spawn_timer_max = 170; //time until minions spawn while in idle
+minion_spawn_timer_max = 120; //time until minions spawn while in idle
 
-hp_max = get_match_setting( SET_TEAMS) ? 45 : 30; //health max
+hp_max = get_match_setting( SET_TEAMS) ? 32 : 16; //health max
 hp_rn = hp_max;
 should_die = false;
 
@@ -34,15 +34,14 @@ spawn_timer_spawn = 35;
 spawn_timer_finish = 70;
 
 //hitbox collision & detection
-hit_hitbox = noone;
-hit_hitbox_previous = noone;
-hit_group = 0;
-hit_group_previous = 0;
-hit_attack = 0;
-hit_attack_previous = 0;
-hit_attack_cooldown = 0;
 
-hit_cooldown = 0;
+//template detection
+hbox_group = array_create(4,array_create(50,array_create(10,0))); //ew
+ 
+hitstun = 0;
+hitstun_full = 0;
+hit_lockout = 0;
+
 
 //nae nae cringe ori stop bashing my fucking article
 unbashable = true;

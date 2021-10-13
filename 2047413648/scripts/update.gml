@@ -34,6 +34,7 @@ iny = y
 	
 }
 
+/*
 if(get_gameplay_time() == 2){
 	
 
@@ -206,7 +207,7 @@ if(player_id == other.id) {
 
 }
 }
-
+*/
 
 
 ///

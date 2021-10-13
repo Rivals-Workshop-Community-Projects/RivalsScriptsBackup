@@ -4,7 +4,7 @@ holding_house_is = false;
 holding_house_level = 1;
 houses_amount_rn = 0;
 houses_amount_max = 1; //limited to 1 house because you article fucks keep lagging the game
-house_cooldown_rn = 0; //gotta code in the cooldown yet
+house_cooldown_rn = 0;
 house_cooldown_max = 120;
 
 
@@ -25,10 +25,13 @@ grabbed_player_relative_y = 0;   //we store this coordinate to smoothly repositi
 
 
 //hitfx
-fx_bubble_small = hit_fx_create(sprite_get("fx_bubble_small"),27)
-fx_bubble_smallest = hit_fx_create(sprite_get("fx_bubble_smallest"),18)
-fx_bubble_boost = hit_fx_create(sprite_get("fx_bubble_boost"),24)
-fx_fspecial_land = hit_fx_create(sprite_get("fx_fspecial_land"),16)
+fx_bubble_small = hit_fx_create(sprite_get("fx_bubble_small"),27);
+fx_bubble_smallest = hit_fx_create(sprite_get("fx_bubble_smallest"),18);
+fx_bubble_boost = hit_fx_create(sprite_get("fx_bubble_boost"),24);
+fx_fspecial_land = hit_fx_create(sprite_get("fx_fspecial_land"),16);
+fx_waterhit_spin =  hit_fx_create(sprite_get("fx_waterhit_spin"),32);
+fx_waterhit_small =  hit_fx_create(sprite_get("fx_waterhit_small"),20);
+fx_waterhit_big =  hit_fx_create(sprite_get("fx_waterhit_big"),26);
 
 //stuff
 last_hit_stun = false;
@@ -52,7 +55,7 @@ uspecial_bounces_max = 1;
 
 // Physical size
 char_height         = 52;       //                  not zetterburn's. this is just cosmetic anyway
-knockback_adj       = 0.98;		// 0.9  -  1.2
+knockback_adj       = 1;		// 0.9  -  1.2
 
 // Ground movement
 walk_speed          = 3;		// 3    -  4.5
@@ -75,7 +78,7 @@ air_max_speed       = 4;  		// 3    -  7
 jump_change         = 3;		// 3
 air_accel           = 0.25;		// 0.2  -  0.4
 prat_fall_accel     = 0.8;		// 0.25 -  1.5
-air_friction        = 0.01;		// 0.02 -  0.07
+air_friction        = 0.02;		// 0.02 -  0.07
 max_fall            = 9;		// 6    -  11
 fast_fall           = 12;		// 11   -  16
 gravity_speed       = 0.55;		// 0.3  -  0.6

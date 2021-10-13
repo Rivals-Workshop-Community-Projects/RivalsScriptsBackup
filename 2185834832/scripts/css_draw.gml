@@ -1,8 +1,20 @@
+//css-draw
+if !(variable_instance_exists(id, "cssTimer")) {
+    cssTimer = 0;
+}
+
+cssTimer++;
+//print_debug(string(cssTimer));
+var alt_cur = get_player_color(player);
+
 var temp_x = x + 8;
 var temp_y = y + 9;
 
+var num_alts = 14;
 var alt_cur = get_player_color(player);
- 
+
+var alt_new = get_player_color(player);
+
  
  
 //Alt name init. var doesn't work with arrays lol
@@ -35,13 +47,17 @@ alt_name[24]  = "Bat Monkey";
 alt_name[25]  = "Cheddar Circle";
 alt_name[26]  = "Firedancer";
 alt_name[27]  = "Salt";
-alt_name[28]  = "Pepper";
-alt_name[29]  = "Oog is the Way";
-alt_name[30]  = "Dark [Purple Edition]";
-alt_name[31]  = "Light [Pink Edition]";
+alt_name[28]  = "Oog is the Way";
+alt_name[29]  = "Dark [Purple Edition]";
+alt_name[30]  = "Light [Pink Edition]";
+alt_name[31]  = "Parasyte";
  
  
  
+if(get_player_color(player) == 31){
+    draw_sprite(sprite_get("icons"), 4, temp_x + 4, temp_y + 96)
+}
+
 //Patch
  
 draw_set_halign(fa_left);
@@ -51,6 +67,17 @@ draw_set_halign(fa_left);
 //textDraw(temp_x + 2, temp_y + 50, "fName", c_white, 0, 1000, 1, true, 1, patch_day + " " + patch_month);
  
  
+if (!"currAlt" in self)
+{
+	currAlt = alt_new;
+}
+else if (alt_new != currAlt)
+{
+	sound_stop(asset_get("mfx_change_color"));
+	sound_play(sound_get("boop"), 0, 0, 2);
+	currAlt = alt_new;
+}
+	sound_stop(asset_get("mfx_change_color"));
  
 //Symbols
 if (alt_cur == 19 || alt_cur == 20 || alt_cur == 21 || alt_cur == 22 || alt_cur == 23){

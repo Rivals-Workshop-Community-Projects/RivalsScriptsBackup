@@ -259,5 +259,8 @@ if ((attack == AT_FSTRONG_2 || attack == AT_FSTRONG) && free)
     else if (right_strong_pressed && -spr_dir) spr_dir = 1;
 }
 
+clear_button_buffer(PC_ATTACK_PRESSED);
+
 //munophone
-user_event(13);
+muno_event_type = 2;
+user_event(14);

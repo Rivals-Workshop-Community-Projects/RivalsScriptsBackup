@@ -103,6 +103,7 @@ set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(atk, hitboxNum, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 
 hitboxNum ++; //burning spear
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 99); //excluded from HG_PARENT_HITBOX

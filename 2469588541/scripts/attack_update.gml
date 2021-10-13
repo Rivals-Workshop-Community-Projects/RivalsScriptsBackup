@@ -191,7 +191,6 @@ switch (attack)
                 break;
         }
         break;
-
     case AT_USPECIAL:
         var uspecSpeed = 27;
         can_move = false;

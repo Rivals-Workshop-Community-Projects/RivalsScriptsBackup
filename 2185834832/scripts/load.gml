@@ -66,6 +66,10 @@ sprite_change_offset("plat", 95, 0);
 sprite_change_offset("fspecialair", 125, 164);
 sprite_change_offset("dspecialair", 125, 164);
 
+sprite_change_offset("halloween_left", 125, 164);
+sprite_change_offset("halloween_right", 125, 164);
+sprite_change_offset("halloween_end", 125, 164);
+
 sprite_change_offset("hurtbox", 125, 164);
 sprite_change_offset("bubblejump", 60, 60);
 sprite_change_offset("Dfect", 46, 10);

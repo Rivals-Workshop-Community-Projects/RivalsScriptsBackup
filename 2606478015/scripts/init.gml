@@ -125,6 +125,15 @@ fire_hfx = hit_fx_create(sprite_get("fire_hfx"), 20)
 
 useskins = false
 
+//Halloween Stuff
+halloween_end = hit_fx_create( sprite_get( "halloween_end" ), 18);
+
+if(get_player_color(player) == 16){
+	halloween = true
+}else{
+	halloween = false
+}
+
 //Animation
 
 

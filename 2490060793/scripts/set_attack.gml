@@ -26,3 +26,12 @@ if attack == AT_USPECIAL {
         reset_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME);
     }
 }
+
+if attack == AT_FSPECIAL {
+    moveangle = 0
+    movespd = 0
+    origx = x
+    origy = y
+    noprat = false
+    reset_window_value(AT_FSPECIAL, 6, AG_WINDOW_TYPE);
+}

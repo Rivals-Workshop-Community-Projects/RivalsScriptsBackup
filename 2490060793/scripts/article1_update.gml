@@ -23,13 +23,13 @@ if timer < 30 && image_index < 4 {
     if timer mod 4 == 0 image_index++;
 } else if pulse && pulse_cooldown == 0 {
 	pulse_timer++;
-	if pulse_timer == 6 {
+	if pulse_timer == 4 {
 		create_hitbox(AT_DSPECIAL, 1, round(x), round(y))
 	}
 	anim_speed = 0;
 	sprite_index = sprite_get("orb_pulse")
-	image_index = floor(pulse_timer/3)
-	if image_index == 7 {
+	image_index = floor(pulse_timer/4) + 1
+	if image_index == 8 {
 		pulse = false;
 		pulse_timer = 0;
 		pulse_cooldown = 16;
@@ -92,7 +92,7 @@ var hitbox = noone;
 if instance_place(x, y, pHitBox) {
 	var currentPriority = 0;
 	with pHitBox {
-		if (instance_place(x, y, other)) {
+		if (instance_place(x, y, other)) && type == 1 {
 			with player_id {
 				var hitboxParent = get_hitbox_value(other.attack, other.hbox_num, HG_PARENT_HITBOX);
 				var hboxNum = other.hbox_num;

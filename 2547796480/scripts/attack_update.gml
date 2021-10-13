@@ -60,14 +60,20 @@ if attack == AT_DAIR {
     }
 
     if (y > room_height/2 + 300){
-    	can_shield = true
+    	if jump_pressed or shield_pressed {
+    		set_state(PS_PRATFALL)
+    		state_timer = 0
+    		vsp = -14
+    		sound_play(asset_get("sfx_spin"),false,noone,1,1.5);
+    	}
     }
     
     if (has_hit or !free) && !hitpause {
     	if has_hit {
     	vsp = -7
+    	set_attack(AT_FAIR)
     	window = 4 
-    	window_timer = 0
+    	window_timer = 6
     	}
     	
     	if !free {
@@ -106,7 +112,7 @@ if attack == AT_NSPECIAL  {
 	}
 	
 	if window == 1 && window_timer == 12 && special_down && state_timer < 400 {
-		set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 24);
+		set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 16);
 		spawn_hit_fx(x - 30*spr_dir,y - 60,timeS2)
 		state_timer = 400
 		window = 1
@@ -163,7 +169,7 @@ if attack == AT_NSPECIAL  {
   	move_cooldown[AT_NSPECIAL] = 60
   }
   
-  if window == 1 && window_timer == 24 && !hitpause  && state_timer >= 400  {
+  if window == 1 && window_timer == 16 && !hitpause  && state_timer >= 400  {
   	sound_play(sound_get("RI"),false,noone,1,1);
   	sound_play(asset_get("sfx_abyss_explosion"),false,noone,0.5,1.2);
   	sound_play(asset_get("sfx_spin"),false,noone,1.4,0.6);

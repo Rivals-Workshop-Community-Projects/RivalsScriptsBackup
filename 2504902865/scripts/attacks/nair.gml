@@ -36,7 +36,8 @@ set_hitbox_value(AT_NAIR, 1, HG_FINAL_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_NAIR, 1, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_NAIR, 1, HG_HITPAUSE_SCALING, .25);
-set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 20);
+set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, fx_waterhit_small);
+set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -20);
 set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2")); //later change sfx
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_GROUP, -1);

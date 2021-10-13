@@ -176,7 +176,7 @@ set_hitbox_value(atk, hitboxNum, HG_SHAPE, 2);
 set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 8); //1 = low priority over other moves || 10 = highest
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 2); //4
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 10); //irrelevant lmao
-set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 10); //also irrelevant lmfao
+set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 4); //also irrelevant lmfao
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 8); //hitstun //14
 set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.5); //0.8
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_fireblow1);

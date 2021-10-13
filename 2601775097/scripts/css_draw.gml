@@ -5,16 +5,16 @@
 switch (get_player_color(player))
 {
     case 7: //Gameboy CSS outline
-        draw_sprite(sprite_get("charselect_extra"),0,x + 8,y + 8); 
+        draw_sprite_ext(sprite_get("charselect_extra"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
         break;
     case 8: //NES CSS outline
-        draw_sprite(sprite_get("charselect_extra"),1,x + 8,y + 8);
+        draw_sprite_ext(sprite_get("charselect_extra"), 1, x + 8, y + 8, 2, 2, 0, c_white, 1);
         break;
     case 30: //Helel CSS outline
-        draw_sprite(sprite_get("charselect_extra"),2,x + 8,y + 8); 
+        draw_sprite_ext(sprite_get("charselect_extra"), 2, x + 8, y + 8, 2, 2, 0, c_white, 1);
         break;
     case 31: //Theikos Bar
-        draw_sprite(sprite_get("charselect_extra"),3,x + 8,y + 8); 
+        draw_sprite_ext(sprite_get("charselect_extra"), 3, x + 8, y + 8, 2, 2, 0, c_white, 1);
         break;
 }
 
@@ -210,12 +210,9 @@ else draw_sprite_ext(line, drawtime/5, temp_x+16+(drawtime/5), temp_y+128, 1, 1,
 //drawing rectangles experiment
 //rectDraw(temp_x, temp_y + 130, temp_x + 200, temp_y + 148, c_blue);
 
-//descriptions
-user_event(9);
-
 //munophone
-user_event(12);
-
+muno_event_type = 6;
+user_event(14);
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string) {
     draw_set_font(asset_get(argument[2]));

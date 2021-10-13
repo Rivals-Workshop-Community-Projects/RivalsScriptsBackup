@@ -1,7 +1,5 @@
 //viselle dummy sprite update
 
-print("check hitboxes");
-
 //loops through window stuff
 for(var i=0; i<array_length(hitboxes); i++)
 {
@@ -9,25 +7,19 @@ for(var i=0; i<array_length(hitboxes); i++)
 	{
 		var checkFrame = get_hitbox_value( other.storedAttack, other.hitboxes[i], HG_WINDOW_CREATION_FRAME);
 		var checkWindow = get_hitbox_value( other.storedAttack, other.hitboxes[i], HG_WINDOW);
-		print("this: " + string(other.window) + " : " + string(other.window_timer));
-		print(string(checkWindow) + " : " + string(checkFrame));
+
 		//Check if we can create a hitbox
 		if checkFrame == other.window_timer && checkWindow == other.window+1
 		{
-			print("Matched Hitbox: " + string(other.hitboxes[i]));
 			
 			var h = create_hitbox(other.storedAttack,other.hitboxes[i],other.x,other.y);
 			
 			h.x = other.x + (h.x_pos);
 			h.y = other.y + (h.y_pos);
 			
-			//print("playerX: " + string(x) + " / hitboxX: " + string(h.x) + " / cloneX: " + string(other.x));
-			//print("playerY: " + string(y) + " / hitboxY: " + string(h.y) + " / cloneY: " + string(other.y));
 		}
 	}
-}//*/
-
-print("hitbox checked");
+}
 
 with(player_id)
 {
@@ -38,11 +30,25 @@ with(player_id)
 	other.image_index = startInd + frameOffset;
 }//*/
 
-print("anim checked");
-
 //increment windows
 //set destruction as well
+
+//play sound effects
+if window_timer == 0
+{
+	with(player_id)
+	{
+		var soundID = get_window_value(other.storedAttack, other.window+1, AG_WINDOW_SFX);
+		if get_window_value(other.storedAttack, other.window+1, AG_WINDOW_HAS_SFX)
+		{
+			sound_play(soundID);
+			print(other.window+1);
+		}
+	}
+}
+
 window_timer++;
+
 if endOfWindow(storedAttack, window+1)
 {
 	if window < array_length(windows)
@@ -53,6 +59,7 @@ if endOfWindow(storedAttack, window+1)
 	}
 	else
 	{
+		print("Clone Died at end of Attack");
 		instance_destroy();
 	}
 }
@@ -66,7 +73,7 @@ else if !framed && window == array_length(windows)-1
 		framed = true;
 		with(player_id)
 		{
-			var f = spawn_hit_fx(other.x,other.y, jcaul);
+			var f = spawn_hit_fx(other.x,other.y, splsh);
 			f.depth = other.depth-1;
 		}
 	}

@@ -38,6 +38,7 @@ sprite_change_offset("bair", 58, 63,true);//-------
 sprite_change_offset("uair", 36, 61,true);
 sprite_change_offset("dair", 64, 84,true);//-------
 sprite_change_offset("fstrong", 35, 51,true);//-------
+sprite_change_offset("fstrong_hurt", 70, 102,true);//-------
 sprite_change_offset("fstrongCharged", 35, 51,true);//-------
 sprite_change_offset("fstrongGooCharged", 35, 51,true);//-------
 sprite_change_offset("ustrong", 64, 128,true);//-------
@@ -48,11 +49,13 @@ sprite_change_offset("dstrongCharged", 64, 64,true);//-------
 sprite_change_offset("dstrongGooCharged", 64, 64,true);//-------
 sprite_change_offset("nspecial", 32, 56,true);//-------
 sprite_change_offset("fspecial", 40, 70,true);
-sprite_change_offset("uspecial", 40, 45,true);
+sprite_change_offset("uspecial", 40, 38,true);
 sprite_change_offset("dspecial", 64, 95,true);
 sprite_change_offset("taunt", 33, 70,true);//-------
 
 sprite_change_offset("plat", 48, 56);
+
+sprite_change_offset("intro", 64, 128);
 
 sprite_change_offset("1", 24, 71);
 sprite_change_offset("2", 24, 71);
@@ -65,10 +68,11 @@ sprite_change_offset("cauldronTideAttack", 24,18);
 sprite_change_offset("cauldronTideAttack2", 24, 18);
 sprite_change_offset("bubblepop", 12, 12);
 sprite_change_offset("jellycauldron_explosion", 90, 96);
+sprite_change_offset("splatter", 90, 96);
 
 //potion sprites
 potTypes = ["potion","cauldron","tiny"];
-potNames = ["Urchin","Zap","Jelly","Tide","Star","Strong"];
+potNames = ["Urchin","Strong","Jelly","Tide","Star"];
 for(var i=0; i<array_length(potNames); i++)
 {
 	var n = potNames[i];
@@ -93,8 +97,8 @@ sprite_change_offset("cauldronJellyAttack",32,32);
 sprite_change_offset("cauldronStarAttack",52,51);
 sprite_change_offset("cauldronUrchinAttack",32,32);
 sprite_change_offset("cauldronUrchinAttackMask",12,12);
-sprite_change_offset("cauldronZapAttack",48,80);
 sprite_change_offset("cauldronMorph",64,112);
+sprite_change_offset("boomTide",32,64);
 
 //ui Sprites
 sprite_change_offset("uiWheel",42,0);

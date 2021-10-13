@@ -2,13 +2,13 @@ set_attack_value(AT_NAIR, AG_CATEGORY, 1);
 set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("nair"));
 set_attack_value(AT_NAIR, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_NAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_NAIR, AG_LANDING_LAG, 8);
+set_attack_value(AT_NAIR, AG_LANDING_LAG, 6);
 set_attack_value(AT_NAIR, AG_HURTBOX_SPRITE, sprite_get("nair_hurt"));
 
 set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NAIR, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, asset_get("sfx_watergun_splash"));
+set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, sound_get("waternair"));
 set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 8);
 
 set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 3);
@@ -42,6 +42,8 @@ set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_waterhit_heavy2"));
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_NAIR, 1, HG_HIT_PARTICLE_NUM, 1);
+set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, splsh);
 
 //Old late hit, can re-add if needed
 /*

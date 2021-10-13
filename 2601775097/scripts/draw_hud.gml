@@ -499,8 +499,8 @@ if("menu_up" in self) //this has to be nested like this blame dan
             // training mode text
             if (training_mode)
             {
-                if (msg_menu) draw_debug_text(temp_x + 14, temp_y - 72, "UP + TAUNT = Skill Select");
-                if (msg_phone) draw_debug_text(temp_x + 4, temp_y - 56, "DOWN + TAUNT = Munophone");
+                if (msg_menu) draw_debug_text(temp_x + 14, temp_y - 56, "UP + TAUNT = Skill Select"); //y: -72
+                //if (msg_phone) draw_debug_text(temp_x + 4, temp_y - 56, "DOWN + TAUNT = Munophone");
             }
         }
 
@@ -526,7 +526,8 @@ if("menu_up" in self) //this has to be nested like this blame dan
 }
 
 //munophone
-user_event(11);
+muno_event_type = 5;
+user_event(14);
 
 #define rectDraw(x1, y1, x2, y2, color) {
     draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argument[4], argument[4], argument[4], argument[4], false);

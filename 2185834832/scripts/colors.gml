@@ -244,37 +244,37 @@ set_color_profile_slot( 27, 3, 169, 179, 169 ); //Shell
 set_color_profile_slot( 27, 4, 242, 255, 242 ); //Beads
 set_color_profile_slot( 27, 5, 242, 255, 242 ); //Bubble Highlight
 
-// Pepper
-set_color_profile_slot( 28, 0, 59, 59, 59 ); //Liquid
-set_color_profile_slot( 28, 1, 138, 128, 128 ); //Skin
-set_color_profile_slot( 28, 2, 51, 40, 40 ); //Cloth
-set_color_profile_slot( 28, 3, 59, 47, 47 ); //Shell
-set_color_profile_slot( 28, 4, 150, 120, 120 ); //Beads
-set_color_profile_slot( 28, 5, 0, 255, 0 ); //Bubble Highlight
-
 // Oog is the Way
-set_color_profile_slot( 29, 0, 107, 87, 48 ); //Liquid
-set_color_profile_slot( 29, 1, 195, 207, 147 ); //Skin
-set_color_profile_slot( 29, 2, 192, 207, 135 ); //Cloth
-set_color_profile_slot( 29, 3, 74, 84, 60 ); //Shell
-set_color_profile_slot( 29, 4, 219, 237, 187 ); //Beads
-set_color_profile_slot( 29, 5, 225, 235, 225 ); //Bubble Highlight
+set_color_profile_slot( 28, 0, 107, 87, 48 ); //Liquid
+set_color_profile_slot( 28, 1, 195, 207, 147 ); //Skin
+set_color_profile_slot( 28, 2, 192, 207, 135 ); //Cloth
+set_color_profile_slot( 28, 3, 74, 84, 60 ); //Shell
+set_color_profile_slot( 28, 4, 219, 237, 187 ); //Beads
+set_color_profile_slot( 28, 5, 225, 235, 225 ); //Bubble Highlight
 
 // Dark [Purple Edition]
-set_color_profile_slot( 30, 0, 119, 61, 163 ); //Liquid
-set_color_profile_slot( 30, 1, 131, 118, 143 ); //Skin
-set_color_profile_slot( 30, 2, 62, 40, 66 ); //Cloth
-set_color_profile_slot( 30, 3, 45, 43, 48 ); //Shell
-set_color_profile_slot( 30, 4, 163, 163, 163 ); //Beads
-set_color_profile_slot( 30, 5, 235, 228, 245 ); //Bubble Highlight
+set_color_profile_slot( 29, 0, 119, 61, 163 ); //Liquid
+set_color_profile_slot( 29, 1, 131, 118, 143 ); //Skin
+set_color_profile_slot( 29, 2, 62, 40, 66 ); //Cloth
+set_color_profile_slot( 29, 3, 45, 43, 48 ); //Shell
+set_color_profile_slot( 29, 4, 163, 163, 163 ); //Beads
+set_color_profile_slot( 29, 5, 235, 228, 245 ); //Bubble Highlight
 
 // Light [Pink Edition]
-set_color_profile_slot( 31, 0, 255, 59, 124 ); //Liquid
-set_color_profile_slot( 31, 1, 176, 155, 148 ); //Skin
-set_color_profile_slot( 31, 2, 209, 150, 150 ); //Cloth
-set_color_profile_slot( 31, 3, 130, 97, 96 ); //Shell
-set_color_profile_slot( 31, 4, 199, 199, 199 ); //Beads
-set_color_profile_slot( 31, 5, 255, 237, 224 ); //Bubble Highlight
+set_color_profile_slot( 30, 0, 255, 59, 124 ); //Liquid
+set_color_profile_slot( 30, 1, 176, 155, 148 ); //Skin
+set_color_profile_slot( 30, 2, 209, 150, 150 ); //Cloth
+set_color_profile_slot( 30, 3, 130, 97, 96 ); //Shell
+set_color_profile_slot( 30, 4, 199, 199, 199 ); //Beads
+set_color_profile_slot( 30, 5, 255, 237, 224 ); //Bubble Highlight
+
+// Parasyte
+set_color_profile_slot( 31, 0, 40, 40, 196 ); //Liquid
+set_color_profile_slot( 31, 1, 164, 150, 148 ); //Skin
+set_color_profile_slot( 31, 2, 197, 245, 255 ); //Cloth
+set_color_profile_slot( 31, 3, 75, 66, 55 ); //Shell
+set_color_profile_slot( 31, 4, 203, 189, 159 ); //Beads
+set_color_profile_slot( 31, 5, 0, 255, 0 ); //Bubble Highlight
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

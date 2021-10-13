@@ -33,6 +33,7 @@ switch(state) {
         break;
     
     case 1: //idle
+    	proj_immune = false;
         if free { //grabity
             set_state(3)
             vsp += grav_speed
@@ -53,6 +54,7 @@ switch(state) {
         break;
     
     case 2: //hurt
+    	proj_immune = false;
         if free { //grabity
             vsp += grav_speed
         	hsp = lerp(hsp,0,air_frict)
@@ -70,6 +72,7 @@ switch(state) {
         break;
     
     case 3: //freefall
+    	proj_immune = false;
         if free { //grabity
             vsp += grav_speed
             hsp = lerp(hsp,0,air_frict)
@@ -86,6 +89,7 @@ switch(state) {
         break;
     
     case 4: //thrown
+    	proj_immune = true;
     	if free {
             vsp += grav_speed
             hsp = lerp(hsp,0,air_frict)
@@ -101,18 +105,19 @@ switch(state) {
         	thrown_hitbox_id.x = x + 5 + hsp;
         	thrown_hitbox_id.y = y - 15 + vsp;
         }
-    	//detect_hit(); nooo mooore getting hit during throw *vineboom*
+    	detect_hit(); //nooo mooore "nooo mooore getting hit during throw *vineboom*" *vineboom
     	die_if_offstage();
     
         break;
     
     case 5: //death
+    	proj_immune = false;
     	hsp = 0;
     	vsp = 0;
     	if state_timer == die_timer {
     		sound_play(asset_get("sfx_orca_crunch"))
     		player_id.houses_amount_rn -= 1;
-    		player_id.house_cooldown_rn = player_id.house_cooldown_max;
+    		if !player_die {player_id.house_cooldown_rn = player_id.house_cooldown_max;} else {player_id.house_cooldown_rn = 0; }
     		instance_destroy();
     		exit;
     	}
@@ -121,6 +126,7 @@ switch(state) {
         break;
         
     case 6: //death 2 water boogaloo
+    	proj_immune = false;
     	hsp = 0;
     	vsp = 0;
     	player_id.houses_amount_rn -= 1;
@@ -132,6 +138,7 @@ switch(state) {
         break;
         
     case 7: //despicable me
+    	proj_immune = false;
     	if free { //grabity
             vsp += grav_speed
             hsp = lerp(hsp,0,air_frict)
@@ -160,18 +167,6 @@ switch(state) {
 
 //state timer plus equals one
 state_timer += 1
-if hit_cooldown > 0 {
-	hit_cooldown -= 1;
-}
-if hit_cooldown < 0 {
-	hit_cooldown = 0;
-}
-if hit_attack_cooldown > 0 {
-	hit_attack_cooldown -= 1;
-}
-if hit_attack_cooldown < 0 {
-	hit_attack_cooldown = 0;
-}
 
 //animation handling
 switch(state) {
@@ -263,59 +258,77 @@ state = _state;
 state_timer = 0;
 
 #define detect_hit()
-house_got_hit = false;
-
-with asset_get("pHitBox") {
-	if (place_meeting(x,y,other) || point_distance(x,y,other.x,other.y) <= 25) && player_id != other.player_id && other.hit_cooldown == 0 && get_player_team(player) != get_player_team(other.player_id.player) {
-		if self != other.hit_hitbox { //detecting and separating hitboxes that hit
-			other.hit_hitbox_previous = other.hit_hitbox;
-			other.hit_hitbox = self;
-			other.hit_group_previous = other.hit_group;
-			other.hit_group = hbox_group;
-			if other.hit_attack_cooldown == 0 {
-				other.hit_attack_previous = 0;
+//new hit detection based on a template cause the old one was causing way too much trouble
+if hit_lockout <= 0 {
+    var article = self;
+    //reset hitbox groups when necessary
+    with (oPlayer)
+        if (state == clamp(state, 5, 6) && window == 1 && window_timer == 1) {
+            other.hbox_group[@ player-1][@ attack] = array_create(10,0);
+            //with other print_debug(`${article}: reset hb group for ${other.player},${other.attack}`);
+        }
+    
+    var currentHighestPriority = noone;
+    with (pHitBox){
+    	if player_id != other.player_id{
+	        if `hit_${article}` not in self
+	            if place_meeting(x,y,other) && (groundedness == 0 || groundedness == 1+free) && hit_priority != 0 {
+	                if hbox_group == -1 || ( hbox_group != -1 && other.hbox_group[@ orig_player-1][@ attack][@ hbox_group] == 0) {
+	                    //hit
+	                    if currentHighestPriority != noone {
+	                        if currentHighestPriority.hit_priority < hit_priority
+	                            currentHighestPriority = self;
+	                    } else {
+	                        currentHighestPriority = self;
+	                    }
+	                    
+	                    variable_instance_set(self, `hit_${article}`, true);
+	                }
+	            } else if (place_meeting(x,y,other) && hbox_group != -1 && other.hbox_group[@ orig_player-1][@ attack][@ hbox_group] == 1) || (hit_priority == 0) {
+	                //prevent from running hit detection for optimization sake
+	                //with other print_debug("hit but also not");
+	                variable_instance_set(self, `hit_${article}`, true);
+	            }
+    	}
+    }
+    
+    if instance_exists(currentHighestPriority) with currentHighestPriority {
+        sound_play(sound_effect);
+        spawn_hit_fx(other.x+hit_effect_x,other.y+hit_effect_y,hit_effect);
+        //this handles the knockback; hitstun, speed, etc.
+        with other {
+            //print_debug(`hit_${article}`);
+            //set_a_state is my article state setting function; replace this with yours lol
+            hp_rn -= other.type == 2 ? other.damage*0.5 : other.damage;
+            hitstun = 5;
+            hitstun_full = hitstun;
+            minion_spawn_timer_rn = 0;
+			if hp_rn <= 0 {
+				set_state(5); //die
 			} else {
-				other.hit_attack_previous = other.hit_attack;
+				set_state(2); //ouw
 			}
-			other.hit_attack = attack;
-			if (other.hit_attack_previous != other.hit_attack || other.hit_group_previous != other.hit_group || (other.hit_group == -1 && other.hit_attack_previous != other.hit_attack) || self == other.hit_hitbox_previous) {
-				other.hit_attack_cooldown = 30; //reset cooldown so you can hit it again later with the same attack index
-				//activating hitbox stuff & giving the hit gamefeel
-				if "sound_effect" in self {
-					sound_play(sound_effect,false,0,0.75,1);
-				}
-				if "hit_effect" in self {
-					spawn_hit_fx(x,y,hit_effect)
-				}
-				if type != 2 { //so that jank doesn't happen
-					player_id.hitpause = true;
-					player_id.hitstop = hitpause
-					player_id.hitstop_full = hitpause
-				}
-				player_id.old_vsp = player_id.vsp;
-				player_id.old_hsp = player_id.hsp;
-				other.hit_cooldown = player_id.hitstop_full;
-				//ow ouch
-				other.house_got_hit = true;
-				//later add damage detection
-				other.hp_rn -= damage
-				other.spr_dir = x >= other.x ? 1 : -1;//turn towards damage source
-				//other.hsp = -6 * other.spr_dir; //no more move back
-			}
-		}
-	}
-}
-//changing states & such
-if house_got_hit {
-	minion_spawn_timer_rn = 0;
-	if hp_rn <= 0 {
-		set_state(5); //die
-	} else {
-		set_state(2); //ouw
-	}
-}
-
-
+            
+            hit_lockout = other.no_other_hit;
+            hit_player_obj = other.player_id;
+            hit_player_num = other.player;
+        }
+        //apply hitpause (where applicable)
+        var desired_hitstop = 5;
+        if type == 1 with player_id {
+            old_vsp = vsp;
+            old_hsp = hsp;
+            hitpause = true;
+            has_hit = true;
+            if hitstop < desired_hitstop {
+                hitstop = desired_hitstop;
+                hitstop_full = desired_hitstop;
+            }
+        }
+        other.hitstop = floor(desired_hitstop);
+        if hbox_group != -1 other.hbox_group[@ orig_player-1][@ attack][@ hbox_group] = 1;
+    }
+} else hit_lockout--;
 
 #define reset_hitbox()
 

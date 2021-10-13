@@ -106,6 +106,23 @@ hit_fx_depth(sting,-4)
 hit_fx_depth(splsh,-5)
 
 
+//intro
+if (introTimer2 < 3) {
+    introTimer2++;
+} else {
+    introTimer2 = 0;
+    introTimer++;
+}
+//this increments introTimer every few frames, depending on the number entered
+
+if (introTimer < 16) {
+    draw_indicator = false;
+} else {
+    draw_indicator = true;
+}
+//this stops the overhead HUD from getting in the way of the animation. If your animation does not involve much movement, this may not be necessary.
+
+
 #define makeGooey()
 {
 	//print("Gooey-ing Player");

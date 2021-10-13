@@ -185,7 +185,7 @@ if !down_down {
     
 if "ncode1" in hit_player_obj && hit_player_obj.select > 16{
 
-if hit_player_obj.ncode1 != "Sorry dude, peeping into this girl data is a no-no." 
+if hit_player_obj.ncode1 != "Sorry dude, peeping into this girl's data is a no-no." 
 and  hit_player_obj.ncode1 != "This data is off limit." {  
     
     
@@ -200,7 +200,7 @@ var codec2 = hit_player_obj.ncode2;
 var codec3 = hit_player_obj.ncode3;
 }
 
-if hit_player_obj.ncode1 == "Sorry dude, peeping into this girl data is a no-no." {
+if hit_player_obj.ncode1 == "Sorry dude, peeping into this girl's data is a no-no." {
 var name = "Katie Helga Vladimir"    
 var codec1 = "The [Hunter of Scorp]";
 var codec2 = "Special Unit who handle destructive jobs";

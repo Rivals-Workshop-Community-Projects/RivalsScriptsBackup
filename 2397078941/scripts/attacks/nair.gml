@@ -54,7 +54,7 @@ set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_NAIR, 1, HG_HITPAUSE_SCALING, 0.1);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 22);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
-set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+//set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_NAIR, 1, HG_HITSTUN_MULTIPLIER, 2);

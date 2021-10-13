@@ -12,6 +12,7 @@ if instance_exists(grabbed_player_obj) {
 
 with(obj_article1) {
 	if player_id == other.id {
+		player_die = true;
 		state = 5;
 		state_timer = 0;
 	}

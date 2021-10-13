@@ -165,5 +165,9 @@ sprite_change_offset("masked_taunt3_ocean", 125, 152);
 sprite_change_offset("masked_fspecial_air", 125, 152);
 sprite_change_offset("masked_bounce", 125, 152);
 
+sprite_change_offset("halloween_left", 125, 152);
+sprite_change_offset("halloween_right", 125, 152);
+sprite_change_offset("halloween_end", 125, 152);
+
 sprite_change_offset("geyser_timer", 20, 10);
 

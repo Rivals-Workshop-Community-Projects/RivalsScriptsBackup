@@ -7,16 +7,7 @@ if (theikos_active || get_player_color(player) == 31) user_event(1); //effects
 switch (attack)
 {
     case AT_UTILT:
-
         can_fast_fall = false;
-
-        if (!free && ((window == 3 && window_timer > 0) || window == 4))
-        {
-            attack_end();
-            landing_lag_time = 12 + 1; //+1 is cuz it just goes back to 0 for some reason
-            set_state(PS_LANDING_LAG); //also yes, i need to set this shit manually
-            if (state_timer >= 12) set_state(PS_IDLE);
-        }
         break;
     case AT_NAIR:
         if ((window == 3 || window == 4) && has_hit) //N-air canceling
@@ -415,27 +406,29 @@ switch (attack)
         }
         
         //fine tune the foe's position to go alongside bar
-        if (window == 10 && has_hit_player)
+        if (window == 10 && burningfury_target != noone)
         {
             if (fury_cycle > 0)
             {
-                hit_player_obj.hsp = hsp;
-        	    hit_player_obj.vsp = vsp;
+                burningfury_target.hsp = hsp;
+        	    burningfury_target.vsp = vsp;
             }
             else if (fury_cycle == 0)
             {
-                if (hit_player_obj.x > x && spr_dir || hit_player_obj.x < x && !spr_dir)
+                if (burningfury_target.x > x && spr_dir || burningfury_target.x < x && !spr_dir)
                 {
-                    hit_player_obj.hsp = hsp/2;
-        	        hit_player_obj.vsp = vsp/2;
+                    burningfury_target.hsp = hsp/2;
+        	        burningfury_target.vsp = vsp/2;
                 }
                 else
                 {
-                    hit_player_obj.hsp = hsp*2;
-        	        hit_player_obj.vsp = vsp*2;
+                    burningfury_target.hsp = hsp*2;
+        	        burningfury_target.vsp = vsp*2;
                 }
             }
         }
+
+        if (window > 11) burningfury_target = noone;
 
         if (((window == 10 && window_timer >= 3 && fury_cycle == 0) || (window == 11 && window_timer <= 1)) && attack_down) //initiate attack 2
         {

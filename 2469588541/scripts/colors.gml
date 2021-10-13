@@ -284,14 +284,14 @@ set_color_profile_slot( 28, 4, 79, 64, 45 ); //Eye2
 set_color_profile_slot( 28, 5, 135, 120, 99 ); //Limbs
 set_color_profile_slot( 28, 6, 79, 70, 58 ); //Limbs2
 
-// Luna
-set_color_profile_slot( 29, 0, 214, 203, 0 ); //Scarf
-set_color_profile_slot( 29, 1, 45, 41, 94 ); //Fur tone
-set_color_profile_slot( 29, 2, 45, 41, 94 ); //Fur tone2
-set_color_profile_slot( 29, 3, 255, 252, 199 ); //Eye
-set_color_profile_slot( 29, 4, 168, 0, 92 ); //Eye2
-set_color_profile_slot( 29, 5, 77, 70, 161 ); //Limbs
-set_color_profile_slot( 29, 6, 45, 41, 94 ); //Limbs2
+// Champion
+set_color_profile_slot( 29, 0, 157, 227, 194 ); //Scarf
+set_color_profile_slot( 29, 1, 76, 86, 95 ); //Fur tone
+set_color_profile_slot( 29, 2, 163, 186, 204 ); //Fur tone2
+set_color_profile_slot( 29, 3, 116, 227, 195 ); //Eye
+set_color_profile_slot( 29, 4, 62, 140, 102 ); //Eye2
+set_color_profile_slot( 29, 5, 157, 227, 194 ); //Limbs
+set_color_profile_slot( 29, 6, 104, 140, 123 ); //Limbs2
 
 // Abyss
 set_color_profile_slot( 30, 0, 220, 113, 255 ); //Scarf
@@ -305,11 +305,11 @@ set_color_profile_slot( 30, 6, 36, 16, 53 ); //Limbs2
 // Spectrum
 set_color_profile_slot( 31, 0, 93, 250, 253 ); //Scarf
 set_color_profile_slot( 31, 1, 255, 41, 116 ); //Fur tone
-set_color_profile_slot( 31, 2, 175, 188, 210 ); //Fur tone2
+set_color_profile_slot( 31, 2, 121, 130, 145 ); //Fur tone2
 set_color_profile_slot( 31, 3, 41, 142, 204 ); //Eye
 set_color_profile_slot( 31, 4, 93, 250, 253 ); //Eye2
-set_color_profile_slot( 31, 5, 175, 188, 210 ); //Limbs
-set_color_profile_slot( 31, 6, 121, 120, 173 ); //Limbs2
+set_color_profile_slot( 31, 5, 85, 91, 102 ); //Limbs
+set_color_profile_slot( 31, 6, 45, 44, 64 ); //Limbs2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -27,8 +27,10 @@ if(attack == AT_USTRONG || attack == AT_FSTRONG || attack == AT_DSTRONG){
 }
 
 //Steam Wall Dismiss
-if(my_hitboxID.attack != AT_FSTRONG){
-	steam_wall_dismiss = true
+if(!(my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 2) && !(my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 3)){
+	if(steam_wall_no_down <= 0){
+		steam_wall_dismiss = true
+	}
 }
 
 //Steam Geyser Thing

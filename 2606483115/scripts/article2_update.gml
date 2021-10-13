@@ -6,12 +6,12 @@ if(state == 0){
 	            sound_play(sound_get("sfx_steam_quick"))
 	        }
     	}
-    }else if(free || player_id.steam < 8 && image_index == 0){
+    }else if(player_id.steam < 8 && image_index == 0){
 		instance_destroy();
 		exit;
     }
     if(image_index == 0){
-    	if(player_id.steam < 8){
+    	if(player_id.steam < 8 || free){
     		visible = false
     	}
     }

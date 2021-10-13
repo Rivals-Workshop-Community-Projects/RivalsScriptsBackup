@@ -3,7 +3,7 @@ enum Potions
 {
 	Null,
 	Urchin,
-	Zap,
+	Strong,
 	Jelly,
 	Tide,
 	Star	
@@ -17,79 +17,10 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 if attack == AT_TAUNT
 {
     if window == 1 && window_timer == 1 && get_match_setting( SET_PRACTICE )
-        barPoints += barAmount;
+        barPoints += barAmount*5;
 }
 
 //print(window)
-
-//use Dstrong as the example on how to set up the rest
-if (attack == AT_FSTRONG)
-{
-	//determine which of the attacks we'll use
-	if window == 1 && endWindow()
-	{
-		if ((attack_down || strong_down)//Determine inputs (or custom clone)
-		&& barPoints >= barAmount)
-		{
-			
-			set_attack(AT_FSTRONG_2);
-			window = 2;
-			window_timer = 0;
-			strong_charge = checkBars()/barNumber*60;
-			
-			if !custom_clone
-			{
-				removeFullBars();
-			}
-		}
-	}
-}
-
-//use Dstrong as the example on how to set up the rest
-if (attack == AT_DSTRONG)
-{
-	//determine which of the attacks we'll use
-	if window == 1 && endWindow()
-	{
-		if ((attack_down || strong_down)//Determine inputs (or custom clone)
-		&& barPoints >= barAmount)
-		{
-			
-			set_attack(AT_DSTRONG_2);
-			window = 2;
-			window_timer = 0;
-			strong_charge = checkBars()/barNumber*60;
-			
-			if !custom_clone
-			{
-				
-				removeFullBars();
-			}
-		}
-	}
-}
-
-if (attack == AT_USTRONG)
-{
-	//determine which of the attacks we'll use
-	if window == 1 && endWindow()
-	{
-		if ((attack_down || strong_down)//Determine inputs (or custom clone)
-		&& barPoints >= barAmount)
-		{
-			
-			set_attack(AT_USTRONG_2);
-			window = 2;
-			window_timer = 0;
-			strong_charge = checkBars()/barNumber*60;
-			
-			if !custom_clone 
-			{
-				removeFullBars();
-			}
-		}
-	}
-}
 
 if (attack == AT_BAIR)
 {
@@ -375,10 +306,6 @@ if (attack == AT_NSPECIAL){
 				{
 				
 				}break;
-				case Potions.Zap:
-				{
-				
-				}break;
 			}
 						
 			//Consume the number of points needed. barAmount = 100 points
@@ -388,54 +315,54 @@ if (attack == AT_NSPECIAL){
 			//Spawn the potion based on the type
 			var pot = spawnPotionAngle(x,y-30,potionType,potAngle,potSpeed);
 			pot.gravityIgnoreFrames = gravityIgnoreFrames;
+			pot.storedAttack = AT_FSTRONG;
+		}
+	}
+}
+
+if (attack == AT_FSPECIAL){
+	
+	if !hitpause
+	{
+		if window == 2
+		{
+			switch(window_timer)
+			{
+				case 1:
+				{
+					sound_play(asset_get("sfx_orcane_fspecial"));
+					sound_play(asset_get("sfx_waterwarp"));
+				}break;
+			}
 		}
 	}
 	
-}
-
-	if (attack == AT_FSPECIAL){
+	if window <= 2
+	{
+		vsp = clamp(vsp,-1,0)
 		
-		if !hitpause
+		if (window == 2 && window_timer >= 4) && 
+		(collision_line(x+16,y,x+32*spr_dir,y,asset_get("par_block"), true, false))
 		{
-			if window == 2
-			{
-				switch(window_timer)
-				{
-					case 1:
-					{
-						sound_play(asset_get("sfx_orcane_fspecial"));
-						sound_play(asset_get("sfx_waterwarp"));
-					}break;
-				}
-			}
-		}
-		
-		if window <= 2
-		{
-			vsp = clamp(vsp,-1,0)
-			
-			if (window == 2 && window_timer >= 4) && 
-			(collision_line(x+16,y,x+32*spr_dir,y,asset_get("par_block"), true, false))
-			{
-				window = 3;
-				window_timer = 0;
-				FSpecBounce = true;
-				FSpecBounceHeight = -9;
-			}
-		}
-		
-		if window == 3
-		{
-			can_wall_jump = true;
-			if FSpecBounce
-			{
-				hsp = -2.5*spr_dir;
-				vsp = FSpecBounceHeight;
-				move_cooldown[AT_FSPECIAL] = 64;
-				set_state(PS_IDLE_AIR);
-			}
+			window = 3;
+			window_timer = 0;
+			FSpecBounce = true;
+			FSpecBounceHeight = -9;
 		}
 	}
+	
+	if window == 3
+	{
+		can_wall_jump = true;
+		if FSpecBounce
+		{
+			hsp = -2.5*spr_dir;
+			vsp = FSpecBounceHeight;
+			move_cooldown[AT_FSPECIAL] = 64;
+			set_state(PS_IDLE_AIR);
+		}
+	}
+}
 
 if (attack == AT_USPECIAL){
 	
@@ -516,8 +443,8 @@ if (attack == AT_DSPECIAL)
 		
 		if (!special_down)
 		{
-			
 			window = 3;
+			window_timer = 0;
 		}
 		//print_debug(string(special_down));
 	}

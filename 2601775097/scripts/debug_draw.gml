@@ -1,7 +1,7 @@
 //debug_draw.gml
 
 //Stat Debug cheat
-if (phone_cheats[stats] == 1)
+if (phone_cheats[CHEAT_STATS] == 1)
 {
     var view_x_title = floor(view_get_xview()+16);
     var view_x_stat = floor(view_get_xview()+32);
@@ -63,7 +63,7 @@ if (phone_cheats[stats] == 1)
         if (state != PS_PRATFALL && (state == PS_FIRST_JUMP && state_timer > 0) || state == PS_DOUBLE_JUMP ||
         state == PS_IDLE_AIR || state == PS_WALL_JUMP || show_glide_ui)
         {
-            draw_debug_text(view_x_stat + stat_x2, view_y3 + stat_y2, "Glide Stamina = " + string(floor(glide_time)) + " / 100");
+            draw_debug_text(view_x_stat + stat_x2, view_y3 + stat_y2, "Glide Stamina = " + string(floor(glide_time)) + " / " + string(glide_time_max));
             draw_debug_text(view_x_stat + stat_x2, view_y4 + stat_y2, "Djumps Left = " + string(max_djumps-djumps));
             draw_debug_text(view_x_stat + stat_x2, view_y5 + stat_y2, "Fastfall = " + string(fastfall_word));
         }

@@ -1030,9 +1030,7 @@ if window > 2 {
     famiy += floor((y-56-famiy)/4)
 }
 
-if has_hit_player && vsp > 0{
-	vsp /= 2
-}
+
 	
 prat_land_time = 10;
 nfloat = 0
@@ -1109,6 +1107,13 @@ nfloat = 0
   	} else {
   		vsp -= 0.4
   	}
+  	
+  	if !free && window > 2{
+  		prat_land_time = 15;
+  		set_state(PS_PRATFALL)
+  		state_timer = 1
+  	}
+  	
   	can_move = true
   	can_wall_jump = true
   	hsp /= 1.25
@@ -1321,6 +1326,7 @@ case AT_FSTRONG:
 	can_move = false
 	can_fast_fall = false
 	hsp /= 1.06
+	
 	
 	if hitpause {
 		hitstop = 0

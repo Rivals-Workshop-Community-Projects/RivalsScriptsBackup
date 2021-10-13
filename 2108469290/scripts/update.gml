@@ -19,7 +19,7 @@ if state != PS_ATTACK_GROUND and state != PS_ATTACK_AIR {
 /// Teleport
 
 
-
+/*
 if(get_gameplay_time() == 1){
 
 inx = x
@@ -54,7 +54,7 @@ create_hitbox(AT_NSPECIAL , 20 , shortest_id.x , shortest_id.y );
 
 
 }
-
+*/
 
 if hit_player_obj != self {
 if introtimer = 1 {

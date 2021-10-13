@@ -1,5 +1,10 @@
 ///
 
+if state == PS_PRATFALL && state_timer < 25 && vsp < 0 {
+	sprite_index = sprite_get("walljump")
+	image_index = state_timer / 5
+}
+
 
 if nolan == 1 && changed == 0 {
 

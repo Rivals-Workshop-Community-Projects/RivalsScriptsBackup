@@ -13,7 +13,7 @@ if attack == AT_NSPECIAL && hbox_num == 12 {
 
 
 if attack == AT_NSPECIAL && hbox_num == 13 {
-		if player_id.hitpause == true {
+	if player_id.hitpause == true {
 		hitbox_timer -= 1
 	}
 	  if hitbox_timer == 10 {
@@ -25,7 +25,7 @@ if attack == AT_NSPECIAL && hbox_num == 13 {
 
 
 if attack == AT_NSPECIAL && hbox_num == 14 {
-		if player_id.hitpause == true {
+	if player_id.hitpause == true {
 		hitbox_timer -= 1
 	}
 	  if hitbox_timer == 10 {
@@ -70,6 +70,8 @@ if attack == AT_NSPECIAL && hbox_num > 3{
 
 if attack == AT_NSPECIAL && hbox_num <= 3{
 	
+	
+	
 	if hitbox_timer == 259 {
 		destroyed = true
 		sound_play(asset_get("sfx_spin"),false,noone,1,1.3)
@@ -80,8 +82,15 @@ if attack == AT_NSPECIAL && hbox_num <= 3{
 		}
 		
 		if bouncing == true {
-			if hitbox_timer > 50 {
-			hitbox_timer = 10
+			
+			if bouncenum == 0 {
+	        	bouncing = 0
+	        	bouncenum = -1
+	        }
+	        
+	        
+	  		if hitbox_timer > 50 {
+	  		hitbox_timer = 10
 			}
 			
 			if batted == 1 {
@@ -97,13 +106,14 @@ if attack == AT_NSPECIAL && hbox_num <= 3{
            	
            
            if x > room_width   {
+           	 x -= hsp*2
            	if bouncing == false {
            	 destroyed = true
            	 sound_play(asset_get("sfx_spin"),false,noone,1)
            	} else {
            	sound_stop(asset_get("sfx_absa_singlezap1"))
 	    	sound_play(asset_get("sfx_absa_singlezap1"),false,noone,1)	
-	    	
+	    	bouncenum -= 1
            	}
            	if batted == 1 {
            	vsp = -14
@@ -119,13 +129,14 @@ if attack == AT_NSPECIAL && hbox_num <= 3{
            }
 
            if x < 0 {
+           	x -= hsp*2
            	if bouncing == false {
            	 destroyed = true
            	 sound_play(asset_get("sfx_spin"),false,noone,1)	
            	} else {
            	sound_stop(asset_get("sfx_absa_singlezap1"))
 	    	sound_play(asset_get("sfx_absa_singlezap1"),false,noone,1)	
-	    	
+	    	bouncenum -= 1
            	}
            	if batted == 1 {
            	vsp = -14
@@ -182,9 +193,10 @@ if lockouttimer < 0 {
     	
     	hit_priority = 0
     	
-    	if hsp > 5 or hsp < -5 {
+    	if hsp > 4 or hsp < -4 {
     		hsp /= 1.05
     	}	
+    	
     if player_id.move_cooldown[AT_UTILT] > 0 {
     		can_hit_self = true
     }
@@ -495,7 +507,7 @@ if lockouttimer < 0 {
                break;
                }
                
-                destroyed = true 
+               destroyed = true 
          	}
          	
          if nearbyhitbox.attack == AT_FSPECIAL && (hitbox_timer > 30 or vsp > 0){
@@ -609,13 +621,17 @@ if lockouttimer < 0 {
          	}
          	
          	if nearbyhitbox.attack == AT_DSPECIAL {
+         		
          		if bouncing == false {
          	    spawn_hit_fx(x,y ,b4)
                 hitbox_timer = 5
                 shake_camera(2,2)
          		bouncing = true
+         		bouncenum = 1
          		sound_play(sound_get("shockready"),false,noone,.8,0.8)
+         		hsp = 2*player_id.spr_dir
          		}
+         		
                batted = 1
          	}
          	

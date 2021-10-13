@@ -3,11 +3,10 @@ enum Potions
 {
 	Null,
 	Urchin,
-	Zap,
+	Strong,
 	Jelly,
 	Tide,
-	Star,
-	Strong
+	Star
 }
 
 //gravity
@@ -28,6 +27,7 @@ else
 	if(thrown)
 	{
 		//platformArticle = instance_create(x,y,"obj_article_platform");
+		print("Potion Landed");
 		thrown = false;
 		
 		if(functionType == 0)
@@ -40,6 +40,8 @@ else
 		
 		if(!place_meeting(x,y+1,asset_get("par_block")))
 			y = round(y)-1;
+			
+		storedAttack = AT_FSTRONG;
 	}
 }
 
@@ -48,26 +50,25 @@ image_xscale = lerp(image_xscale,defaultXScale,lerpScale);
 image_yscale = lerp(image_yscale,defaultYScale,lerpScale);
 
 //Change to Strong Potion if attacked with a strong
+if potionType == Potions.Strong && (player_id.attack == AT_FSTRONG || player_id.attack == AT_DSTRONG || player_id.attack == AT_USTRONG)
 {
-	with(pHitBox)
+	if (player_id.attack != storedAttack || //only change if not same attack OR below
+	(player_id.spr_dir != spr_dir && storedAttack == AT_FSTRONG)) && //change fstrong direction
+	player_id.state == PS_ATTACK_GROUND // only change when on ground
 	{
-		if place_meeting(x,y,other) && player_id == other.player_id && inArray(attack,[AT_FSTRONG,AT_DSTRONG,AT_USTRONG])
-		&& (attack != other.storedAttack || (attack == AT_FSTRONG && spr_dir != other.spr_dir))
-		{
-			print_debug("Changed Potion: " + string(other.potionType) + "[" + string(other.storedAttack) + "] -> 6[" + string(attack) +"]"); 
-			other.potionType = 6;
-			other.storedAttack = attack;
-			other.spr_dir = spr_dir;
-			break;
-		}
+		print_debug("Changed Potion: " + string(potionType) + "[" + string(storedAttack) + "] -> 6[" + string(player_id.attack) +"]"); 
+		potionType = Potions.Strong;
+		storedAttack = player_id.attack;
+		spr_dir = player_id.spr_dir;
+		sound_play(asset_get("mfx_confirm"));
 	}
-}
+}//*/
 
 //Sprite Setter
 //This should be the last thing
 //visible = true;//delete this one i set the sprite in frame 1
 var sprStr = (functionType == 0 ? "potion" : "cauldron") + getPotionName(potionType);
-if potionType == 6
+if potionType == Potions.Strong && functionType == 1
 {
 	switch(storedAttack)
 	{
@@ -105,6 +106,11 @@ if y > get_stage_data( SD_Y_POS ) + get_stage_data(SD_BOTTOM_BLASTZONE) + 30
 //Knockback stuff
 // Credits: Funghi
 if (state == 1){
+	if (vsp > 2){
+		past_hitbox = noone;
+		past_attack = noone;
+		past_group = noone;		
+	}
 	
 	with (pHitBox){
 		if (place_meeting(x, y, other) && other.boxhitbox == noone){
@@ -125,7 +131,7 @@ if (state == 1){
     				other.destroy_check = false;
     				
     				//for hitpause
-    				other.hit_delay = 1 + hitpause + extra_hitpause;
+    				other.hit_delay = 9 + hitpause + extra_hitpause;
     				
     				//for jklnocback
     				other.kb_scaling = kb_scale;
@@ -167,7 +173,7 @@ if (state == 1){
 
 	kb_speed = ((bkb + 70 * kb_scaling * fancynum * kb_adj) / 1.2); // calculates knockback speed
 
-	if (hit_delay = 1){
+	if (hit_delay = 4){
 		thrown = true;
 		vsp = lengthdir_y(kb_speed , kb_angle);
 		hsp = lengthdir_x(kb_speed*1.3 , kb_angle);
@@ -196,6 +202,7 @@ if (state == 1){
 	}
 }
 
+
 //Detonation
 if detonated && !hasDetonated
 {
@@ -219,16 +226,7 @@ if detonated && !hasDetonated
 			allowSpriteUpdate = false;
 			sound_play(asset_get("sfx_kragg_spike"));			
 		}
-		break;
-		case Potions.Zap:
-		{
-			with(player_id)
-			{
-				var h = create_hitbox(AT_NSPECIAL,5,other.x,other.y);
-			}
-			sound_play(asset_get("sfx_absa_boltcloud"));				
-		}
-		break;
+		break;		
 		case Potions.Jelly:
 		{
 			var mx = x;
@@ -267,39 +265,36 @@ if detonated && !hasDetonated
 			var cAttack = storedAttack;
 			with(player_id)
 			{
-				if barPoints >= barAmount
+				if true//barPoints >= barAmount
 				{
 					print("Creating Clone");
-					var curCharge = (floor(barPoints/barAmount))/barNumber*60;
-					barPoints -= floor(barPoints/barAmount);
+					var curCharge = 0//(floor(barPoints/barAmount))/barNumber*60;
+					//barPoints -= floor(barPoints/barAmount);
 					
 					var f = spawn_hit_fx(other.x,other.y,spawnCloneFX);
 					f.depth = other.depth-1;
 					
 					var c = instance_create(other.x,other.y,"obj_article2");
 					
-					var thisAttack = 0;
+					var thisAttack = cAttack;
 					var windows = array_create(0);
 					var hitboxes = array_create(0);
 					
 					if cAttack == AT_FSTRONG
 					{
 						c.sprite_index = sprite_get("fstrongGooCharged");
-						thisAttack = AT_FSTRONG_2;
 						windows = [1,2];
 						hitboxes = [1];
 					}
 					if cAttack == AT_DSTRONG
 					{
 						c.sprite_index = sprite_get("dstrongGooCharged");
-						thisAttack = AT_DSTRONG_2;
 						windows = [1,2,3];
 						hitboxes = [1,2];
 					}
 					if cAttack == AT_USTRONG
 					{
 						c.sprite_index = sprite_get("ustrongGooCharged");
-						thisAttack = AT_USTRONG_2;
 						windows = [1,2];
 						hitboxes = [1,2];
 					}
@@ -307,7 +302,7 @@ if detonated && !hasDetonated
 					
 					c.image_xscale = 2;
 					c.image_yscale = 2;
-					c.spr_dir = spr_dir;
+					c.spr_dir = other.spr_dir
 					
 					c.storedAttack = thisAttack;
 					c.hitboxes = hitboxes;
@@ -385,6 +380,11 @@ if destroyed
 {
 	if(platformArticle)
 		instance_destroy(platformArticle);
+		
+	//effect??
+	if potionType == Potions.Tide
+		spawn_hit_fx( x, y, player_id.tideDestroyEffect);
+		
 	instance_destroy();
 }
 

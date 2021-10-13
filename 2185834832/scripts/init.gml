@@ -182,6 +182,15 @@ torga_grav_jump = 0
 uspec_non = 0
 has_djump = true
 
+//Halloween Stuff
+halloween_end = hit_fx_create( sprite_get( "halloween_end" ), 21);
+
+if(get_player_color(player) == 31){
+	halloween = true
+}else{
+	halloween = false
+}
+
 //Pokemon Stadium
 pkmn_stadium_back_img = sprite_get("torga_back_sprite")
 pkmn_stadium_front_img = sprite_get("torga_front_sprite")

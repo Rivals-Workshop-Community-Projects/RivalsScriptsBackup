@@ -113,6 +113,7 @@ with(asset_get("oPlayer")){
                 state = PS_WRAPPED;
                 if(airPrison){
                     airPrison = false;
+                    prisononce = true;
                     if(prison_time_counter > 160){
                         prison_time_counter -= 40;
                     }else{
@@ -224,6 +225,7 @@ old_armorpoints = armorpoints;
     if(prev_state != PS_RESPAWN && state != PS_PARRY){
         state = PS_IDLE;
     }
+    prisononce = false;
     visible = true;
     prison_canAct = false;
     invincible = true;

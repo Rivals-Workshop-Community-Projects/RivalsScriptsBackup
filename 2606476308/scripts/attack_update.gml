@@ -24,12 +24,12 @@ if (attack == AT_NSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
         //if(window == 2){
 	        
         //}
-        if(nspecial_extended_window && !(instance_exists(flying_rock1) || instance_exists(flying_rock2) || instance_exists(flying_rock3))){
-        	window = 3
-        	window_timer = 0
-        }
     }else if(window == 3){
     	grabbedid = noone
+    }
+    if(nspecial_extended_window && !(instance_exists(flying_rock1) || instance_exists(flying_rock2) || instance_exists(flying_rock3))){
+    	window = 3
+    	window_timer = 0
     }
 }
 
@@ -50,11 +50,14 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 		grabbedid.y = lerp(grabbedid.y, y, 0.05); //SET GRABBED PLAYER Y TO BE RELATIVE TO PLAYER Y
 	}
         //grabbedid.visible = false; //UNCOMMENT THIS LINE TO MAKE THE GRABBED PLAYER INVISIBLE
-        //if(window == 2){
-	        
-        //}
     }else if(window == 3){
     	grabbedid = noone
+    }
+    if(window == 2){
+        if(!(instance_exists(flying_rock1) && flying_rock1_uspecial || instance_exists(flying_rock2)  && flying_rock2_uspecial || instance_exists(flying_rock3)  && flying_rock3_uspecial)){
+        	set_state(PS_PRATFALL);
+        	grabbedid = noone
+        }
     }
 }
 

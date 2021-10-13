@@ -33,8 +33,10 @@ if (attack == AT_DAIR){
 }
 
 if(attack == AT_DTILT){
-	if(window == 4 && window_timer == 15){
+	if(window == 4 && window_timer == 15 && !was_parried){
 		set_state(PS_IDLE);
+	}else if(window == 4 && window_timer == 15 && was_parried){
+		set_state(PS_PRATLAND)
 	}
 	if(window == 6){
 		if(window_timer > 3){

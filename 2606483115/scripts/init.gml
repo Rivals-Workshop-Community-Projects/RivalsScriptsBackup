@@ -135,6 +135,7 @@ vfx_rocket_trail = hit_fx_create( sprite_get( "rocket_trail" ), 18);
 vfx_firework = hit_fx_create( sprite_get( "firework" ), 24);
 vfx_firework2 = hit_fx_create( sprite_get( "firework2" ), 24);
 vfx_firework3 = hit_fx_create( sprite_get( "firework3" ), 24);
+halloween_end = hit_fx_create( sprite_get( "halloween_end" ), 8);
 
 
 //Variables
@@ -161,6 +162,7 @@ steam_rocket = noone
 random_var = 0
 random_sway = 1
 steam_break_timer = 0
+steam_wall_no_down = 0
 
 //Pokemon Stadium
 pkmn_stadium_back_img = sprite_get("galega_back_sprite")
@@ -194,7 +196,13 @@ flag_width = 0
 
 //Animation
 
-if(get_player_color(player) > 8 || get_player_color(player) <= 8 && attack_down || get_player_color(player) <= 8 && attack_pressed){
+if(get_player_color(player) == 13){
+	halloween = true
+}else{
+	halloween = false
+}
+
+if(get_player_color(player) > 8 && get_player_color(player) != 13 || get_player_color(player) <= 8 && attack_down || get_player_color(player) <= 8 && attack_pressed){
 	
 	masked = true
 	//Sfx
@@ -265,7 +273,7 @@ if(get_player_color(player) > 8 || get_player_color(player) <= 8 && attack_down 
 		spr_taunt = sprite_get("masked_taunt");
 		spr_taunt_2 = sprite_get("masked_taunt_2");
 		spr_taunt3 = sprite_get("masked_taunt3_g7");
-	}else if(get_player_color(player) == 11){
+	}else if(get_player_color(player) == 11 || get_player_color(player) == 13){
 		spr_taunt = sprite_get("masked_taunt");
 		spr_taunt_2 = sprite_get("masked_taunt_2");
 		spr_taunt3 = sprite_get("masked_taunt3_ocean");
@@ -283,7 +291,7 @@ if(get_player_color(player) > 8 || get_player_color(player) <= 8 && attack_down 
 	spr_bounce = sprite_get("masked_bounce");
 
 	useskins = true;
-}else if(get_player_color(player) <= 8 || get_player_color(player) > 8 && attack_down || get_player_color(player) > 8 && attack_pressed){
+}else if(get_player_color(player) <= 8 || get_player_color(player) == 13 || get_player_color(player) > 8 && attack_down || get_player_color(player) > 8 && attack_pressed){
 	
 	masked = false
 	
@@ -291,7 +299,7 @@ if(get_player_color(player) > 8 || get_player_color(player) <= 8 && attack_down 
 		spr_taunt = sprite_get("taunt");
 		spr_taunt_2 = sprite_get("taunt_2");
 		spr_taunt3 = sprite_get("taunt3_g7");
-	}else if(get_player_color(player) == 11){
+	}else if(get_player_color(player) == 11 || get_player_color(player) == 13){
 		spr_taunt = sprite_get("taunt");
 		spr_taunt_2 = sprite_get("taunt_2");
 		spr_taunt3 = sprite_get("taunt3_ocean");

@@ -1,3 +1,5 @@
+set_character_color_shading(5, 1.5); //CLOTHBLACK
+
 switch (get_player_color(player))
 {
 	case 0: //default powers recoloring
@@ -8,6 +10,8 @@ switch (get_player_color(player))
 		set_article_color_slot(7, 76, 133, 233); //FIRE
 
 		set_character_color_shading(7, 1.5); //FIRE
+
+		//alternate brighter fire: (7, 95, 172, 229)
 		break;
 
 	case 1: //p2 alt light shading amplify + fire reverse
@@ -82,8 +86,6 @@ switch (get_player_color(player))
 		set_character_color_shading(6, 4); //LIGHT
 		set_character_color_shading(7, -2); //FIRE
 		break;
-	case 31: //theikos black shading amplify
-		set_character_color_shading(5, 1.5); //CLOTHBLACK
 	/*
 	case 7: //arc alt alpha
 		for (var slot_num = 0; slot_num < 5; slot_num++)
@@ -283,7 +285,6 @@ else
 	}
 	
 }
-
 
 /*
 if (birthboy && get_player_color(player) == 14) 

@@ -3,6 +3,9 @@ set_color_profile_slot_range( 6, 1, 1, 1 );
 
 is_barr = true;
 
+//fspec afterimage
+fspec_movearr = array_create(5, [undefined,undefined])
+
 //intro meter flip
 intro_flip = false;
 

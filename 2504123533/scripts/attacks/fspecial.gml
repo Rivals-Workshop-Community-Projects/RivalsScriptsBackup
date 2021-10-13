@@ -48,6 +48,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, 0);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_PARTICLE_NUM, 1);
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 2);
@@ -68,6 +69,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_waterhit_weak"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_PARTICLE_NUM, 1);
 
 set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW, 2);
 set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 4);
@@ -88,6 +90,7 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_waterhit_weak"));
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_PARTICLE_NUM, 1);
 
 set_hitbox_value(AT_FSPECIAL, 4, HG_WINDOW, 2);
 set_hitbox_value(AT_FSPECIAL, 4, HG_WINDOW_CREATION_FRAME, 6);
@@ -108,3 +111,4 @@ set_hitbox_value(AT_FSPECIAL, 4, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_FSPECIAL, 4, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_GROUP, 3);
+set_hitbox_value(AT_FSPECIAL, 4, HG_HIT_PARTICLE_NUM, 1);

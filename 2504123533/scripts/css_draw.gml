@@ -1,7 +1,7 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-var num_alts = 22;
+var num_alts = 23;
 var alt_cur = get_player_color(player);
  
  
@@ -15,7 +15,7 @@ alt_name[3]  = "Turquoise Waves";
 alt_name[4]  = "Dim";
 alt_name[5]  = "Purpur";
 alt_name[6]  = "Abyss";
-alt_name[7]  = "EA";
+alt_name[7]  = "Faux EA";
 alt_name[8]  = "Heir of Miasma";
 alt_name[9]  = "Bubble Squid";
 alt_name[10]  = "Flowers of Antimony";
@@ -24,12 +24,13 @@ alt_name[12] = "Rusted Dusk"
 alt_name[13] = "The Owl Lady";
 alt_name[14] = "Stay Winning"
 alt_name[15] = "Choccy Milk";
-alt_name[16] = "Apprentice";
+alt_name[16] = "Reigalorian";
 alt_name[17] = "Kinetic Orbit";
 alt_name[18] = "Flask Clone";
 alt_name[19] = "Fashionista";
 alt_name[20] = "Tusspells";
 alt_name[21] = "Slime Girl";
+alt_name[22] = "Killer Queen";
 
 //Alt
  

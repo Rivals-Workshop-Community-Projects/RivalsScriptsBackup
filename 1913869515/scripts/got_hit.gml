@@ -13,9 +13,10 @@ offensetimer = 0
 
 
 intro = 1
-if introhit = 0 {
-	introhit = -1
-}
+
+//if introhit = 0 {
+//	introhit = -1
+//}
 
 zFhittimer = 0
 zbayo = 0

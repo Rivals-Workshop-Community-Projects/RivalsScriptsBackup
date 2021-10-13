@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 18 );
+set_num_palettes( 19 );
 
 // Funny Guy
 set_color_profile_slot( 1, 0, 46, 255, 241 ); //Is soul
@@ -186,7 +186,6 @@ set_color_profile_slot( 15, 5, 227, 113, 113 ); //weird blush
 set_color_profile_slot( 15, 6, 255, 255, 255 ); //Unessessary eyes
 set_color_profile_slot( 15, 7, 112, 23, 23 ); //unnamed color row
 
-
 // Hyde
 set_color_profile_slot( 16, 0, 201, 46, 49 ); //Is soul
 set_color_profile_slot( 16, 1, 230, 217, 141 ); //Hair n leg
@@ -206,6 +205,16 @@ set_color_profile_slot( 17, 4, 148, 92, 58 ); //Skin
 set_color_profile_slot( 17, 5, 148, 92, 58 ); //weird blush
 set_color_profile_slot( 17, 6, 255, 251, 74 ); //Unessessary eyes
 set_color_profile_slot( 17, 7, 30, 31, 31 ); //unnamed color row
+
+// NYA
+set_color_profile_slot( 18, 0, 255, 145, 0 ); //Is soul
+set_color_profile_slot( 18, 1, 79, 0, 20 ); //Hair n leg
+set_color_profile_slot( 18, 2, 168, 95, 0 ); //Green shirt
+set_color_profile_slot( 18, 3, 161, 0, 0 ); //Yellow shirt
+set_color_profile_slot( 18, 4, 176, 93, 44 ); //Skin
+set_color_profile_slot( 18, 5, 148, 92, 58 ); //weird blush
+set_color_profile_slot( 18, 6, 162, 255, 0 ); //Unessessary eyes
+set_color_profile_slot( 18, 7, 28, 0, 11 ); //unnamed color row
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
