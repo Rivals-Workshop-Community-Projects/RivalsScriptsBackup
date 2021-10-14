@@ -1,46 +1,50 @@
 set_attack_value(AT_FAIR, AG_CATEGORY, 1);
 set_attack_value(AT_FAIR, AG_SPRITE, sprite_get("fair"));
-set_attack_value(AT_FAIR, AG_NUM_WINDOWS, 5);
+set_attack_value(AT_FAIR, AG_NUM_WINDOWS, 6);
 set_attack_value(AT_FAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_FAIR, AG_LANDING_LAG, 4);
 set_attack_value(AT_FAIR, AG_STRONG_CHARGE_WINDOW, 0); // sike
 set_attack_value(AT_FAIR, AG_HURTBOX_SPRITE, sprite_get("fair_hurt"));
 
 // startup
-set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 14);
-set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
-set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 13);
-set_window_value(AT_FAIR, 1, AG_WINDOW_VSPEED_TYPE, 0); // base cast moment
-set_window_value(AT_FAIR, 1, AG_WINDOW_VSPEED, -1);
+set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
+
+set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_FAIR, 2, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_FAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
+set_window_value(AT_FAIR, 2, AG_WINDOW_SFX_FRAME, 4);
+set_window_value(AT_FAIR, 2, AG_WINDOW_VSPEED_TYPE, 0); // base cast moment
+set_window_value(AT_FAIR, 2, AG_WINDOW_VSPEED, -1);
 
 // active
-set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 3);
-set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
-
-// endlag
 set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAME_START, 3);
-set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
+set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 
-set_window_value(AT_FAIR, 4, AG_WINDOW_LENGTH, 4);
+// endlag
+set_window_value(AT_FAIR, 4, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_FAIR, 4, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_FAIR, 4, AG_WINDOW_ANIM_FRAME_START, 4);
+set_window_value(AT_FAIR, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_FAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-set_window_value(AT_FAIR, 5, AG_WINDOW_LENGTH, 6);
-set_window_value(AT_FAIR, 5, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_FAIR, 5, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(AT_FAIR, 5, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_FAIR, 5, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_FAIR, 5, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_FAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
+
+set_window_value(AT_FAIR, 6, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_FAIR, 6, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_FAIR, 6, AG_WINDOW_ANIM_FRAME_START, 7);
+set_window_value(AT_FAIR, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 
 set_num_hitboxes(AT_FAIR,1);
 
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
+set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 32);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -36);

@@ -5,8 +5,14 @@ if (attack == AT_NSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
 }
 
 
+ if (state_timer == 1 or (window == 1 && window_timer == 1)) && !hitpause && get_gameplay_time() > 120 {
+      sound_play(sound_get("swingw1"),false,noone, .5 ,
+        max ( 0.5, 1.6 - ((get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) + (get_window_value(attack, 2, AG_WINDOW_LENGTH)/20)) - (random_func(1,10,true))/100 ))
+       //sound_play(asset_get("sfx_swipe_heavy2"),false,noone, .8 ,
+       //max( 0.9, .5 + get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) - (random_func(1,10,true))/100 )
+ }  
 
-if attack == AT_DSTRONG or attack == AT_FSTRONG or attack == AT_USTRONG {
+if attack == AT_DSTRONG or attack == AT_FSTRONG or attack == AT_USTRONG or attack == AT_USPECIAL {
 	
 	if window == 1 && window_timer == 1 && !hitpause {
 	sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,1);
@@ -60,10 +66,9 @@ if attack == AT_BAIR and window == 1 and window_timer == 8  {
 
 }
 
-if attack == AT_UAIR and window == 1 and window_timer == 11  {
+if attack == AT_UAIR and window == 1 and window_timer == 9  {
 	
-	sound_play(asset_get("sfx_spin"));
-
+    sound_play(sound_get("swingw1"),false,noone, .7 , .76)
 }
 
 if attack == AT_UAIR && has_hit_player && window <= 3 && hit_player_obj.state_cat == SC_HITSTUN && hitpause{
@@ -428,11 +433,7 @@ if window > 2{
     set_state(PS_PRATFALL)
   }
   
-  if has_hit_player && window < 5 {
-  	if hit_player_obj.y > y {
-  		hit_player_obj.y -= 20
-  	}
-  }
+
   
 }
 
@@ -493,7 +494,7 @@ if attack == AT_DSPECIAL {
 
 if attack == AT_NSPECIAL {
 
-move_cooldown[AT_NSPECIAL] = 60
+move_cooldown[AT_NSPECIAL] = 30
 
 if window_timer == 1 && window == 1 {
    			sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"),false,noone,.8,1.5)	
@@ -624,11 +625,10 @@ if attack == AT_TAUNT {
 if attack == AT_DSPECIAL && free {
 	
 	if move_cooldown[AT_NSPECIAL] == 0 {
-	
 	set_attack (AT_NSPECIAL)
 	} else {
-	set_attack (AT_NAIR)
-	window = 4
+	set_state(PS_IDLE_AIR)
+	 sound_stop(sound_get("swingw1"))
 	}
 
 
@@ -649,10 +649,10 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 7);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, 3.5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.3);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 302);
-set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 60);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 60);
+set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 50);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 36);
 set_hitbox_value(AT_NSPECIAL, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 6);
@@ -669,7 +669,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 60);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X, 40);
+set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_Y, -36);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1);
@@ -680,8 +680,8 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
     set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("bladewaveHd"));
     		}
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_AIR_FRICTION, 0);
-set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HSPEED, 8);
-set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_VSPEED, 4);
+set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HSPEED, 9);
+set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_VSPEED, 5);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_ANIM_SPEED, 0.3);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 306);
@@ -690,11 +690,8 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 76);
 set_hitbox_value(AT_NSPECIAL, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 9);
-set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 70);
+set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 60);
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.6);
-set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, sound_get("SpaceCut"));
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_GROUP, -1);
 

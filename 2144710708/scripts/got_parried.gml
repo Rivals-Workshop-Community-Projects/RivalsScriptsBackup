@@ -63,3 +63,10 @@ if (attack == AT_DSPECIAL_2) {
 	sound_play(sound_get("button15"), false, noone, 1, 1);
 	y = 2500;
 }
+
+if (attack == AT_USPECIAL) {
+	// don't go into the air 
+	vsp = 0;
+	window = 4;
+	window_timer = 0;
+}

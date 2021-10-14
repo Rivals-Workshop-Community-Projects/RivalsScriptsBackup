@@ -82,7 +82,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_FSTRONG, 1, HG_EXTRA_CAMERA_SHAKE, 0);
 set_hitbox_value(AT_FSTRONG, 1, HG_TECHABLE, 1);
-set_hitbox_value(AT_FSTRONG, 1, HG_SDI_MULTIPLIER, 0.1);
+set_hitbox_value(AT_FSTRONG, 1, HG_SDI_MULTIPLIER, 0.01);
 
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW, 4);
@@ -119,5 +119,5 @@ set_hitbox_value(AT_FSTRONG, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_PROJECTILE_IS_TRANSCENDENT, false);
 set_hitbox_value(AT_FSTRONG, 2, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_FSTRONG, 2, HG_PROJECTILE_UNBASHABLE, true);
-set_hitbox_value(AT_FSTRONG, 2, HG_EXTRA_CAMERA_SHAKE, 0);
+
 

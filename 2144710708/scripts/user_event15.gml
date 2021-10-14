@@ -76,7 +76,7 @@ alt_names = [
 "Splat", // maeko, splat oc 
 "Shephard", // adrian shephard
 
-//"Riptide"; // alt 31 doesn't work :(
+//"Riptide", // alt 31 doesn't work online :(
 ];
 	
 	

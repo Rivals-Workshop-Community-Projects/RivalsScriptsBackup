@@ -300,7 +300,12 @@ if state == PS_IDLE or  state == PS_DASH or (state == PS_IDLE_AIR && state_timer
 
 
 if state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR && state_cat != SC_HITSTUN {
-	
+	if char_height != 50 {
+	 char_height = 50
+	}
+	if dashed != 0 {
+	 dashed = 0
+	}
 
 if !free  {
 	fchargetimer += 1
@@ -436,3 +441,21 @@ if get_player_color(player) == 8 {
     init_shader();	 
 }
 
+if move_cooldown[AT_NSPECIAL_2] == 0 {
+with oPlayer if (activated_kill_effect) {
+	
+  if hit_player_obj == other {
+             with other {
+             	 sound_play(sound_get("finish"),false,noone,1,.7)	
+               sound_play(sound_get("finish"),false,noone,1.4,1.3)	
+               move_cooldown[AT_NSPECIAL_2] = 120
+             }
+   }
+}
+}
+
+if state == PS_PRATFALL && state_timer = 300 { 
+create_hitbox(AT_DAIR,6,x,y)
+create_hitbox(AT_DAIR,7,x,y)
+state_timer = 1
+}

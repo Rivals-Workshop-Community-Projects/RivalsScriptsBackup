@@ -120,8 +120,8 @@ if window == 2 {
 
 if attack == AT_JAB && !hitpause {
     if window == 2 && window_timer == 1 {
-    sound_play(asset_get("sfx_swipe_weak1"));
-    sound_play(asset_get("sfx_ice_shieldup"));
+    sound_play(asset_get("sfx_swipe_weak1"))
+    sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
     }
     
     if window == 3 {
@@ -135,7 +135,7 @@ if attack == AT_JAB && !hitpause {
     }
     
     if window == 4 && window_timer == 1{
-        sound_play(asset_get("sfx_swipe_weak2"));
+        sound_play(asset_get("sfx_swipe_weak2"))
     }
     
     
@@ -155,8 +155,8 @@ if attack == AT_UTILT && !hitpause {
 	
      if window == 1 && window_timer == 1 {
     sound_play(asset_get("sfx_jumpground"));
-    sound_play(asset_get("sfx_ice_shieldup"));
-    sound_play(asset_get("sfx_ice_shatter"));
+    sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
+    sound_play(asset_get("sfx_ice_shatter"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
      }
      
      if window == 2 {
@@ -174,7 +174,7 @@ if attack == AT_UTILT && !hitpause {
 
 if attack == AT_TAUNT && window == 2 && window_timer <= 3 && !hitpause {
     
-    sound_play(asset_get("sfx_ice_shieldup"));
+    sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
 }
 
 if attack == AT_DATTACK {
@@ -215,7 +215,7 @@ if attack == AT_DATTACK {
     }
     
      if window == 2 && window_timer == 1{
-        sound_play(asset_get("sfx_ice_on_player"));
+        sound_play(asset_get("sfx_ice_on_player"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
     }
     
 }
@@ -248,13 +248,15 @@ if attack == AT_NAIR && !hitpause {
 
 
     if window == 1 && window_timer == 1{
-        sound_play(asset_get("sfx_ice_shieldup"));
+       sound_play(asset_get("sfx_spin"),false,noone,1,0.7);
+       
+        sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,max(0.7,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
     }
     
      if window == 2 && window_timer == 1{
-        sound_play(asset_get("sfx_ice_shieldup"));
+        sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,max(0.7,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
          sound_play(asset_get("sfx_spin"));
-            sound_play(asset_get("sfx_ice_on_player"));
+            sound_play(asset_get("sfx_ice_on_player"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
          
     }
     
@@ -283,13 +285,13 @@ if attack == AT_DAIR && !hitpause {
 	
     if window == 1 && window_timer == 1{
 
-        sound_play(asset_get("sfx_ice_shieldup"));
+        sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
         sound_play(asset_get("sfx_ori_bash_launch"));
         
     }
     
      if window == 1 && window_timer == 9{
-        sound_play(asset_get("sfx_ice_on_player"));
+        sound_play(asset_get("sfx_ice_on_player"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
     }
     
 }
@@ -307,7 +309,7 @@ if attack == AT_FAIR && !hitpause {
 if attack == AT_UAIR && !hitpause {
 
      if window == 1 && window_timer == 1{
-        sound_play(asset_get("sfx_ice_shatter"));
+        sound_play(asset_get("sfx_ice_shatter"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
     }
 
 if window == 3 {
@@ -327,7 +329,7 @@ if window == 3 {
 }
     
      if window == 2 && window_timer == 1{
-        sound_play(asset_get("sfx_ice_shatter"));
+        sound_play(asset_get("sfx_ice_shatter"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
     }
     
 }
@@ -346,23 +348,31 @@ if attack == AT_USTRONG && !hitpause {
 }
 
 
-if attack == AT_DSTRONG && !hitpause {
+if attack == AT_DSTRONG  {
 
-if window == 4 && window_timer == 14 && timefreeze <= 0{
-	if left_down && !right_down {
+if window == 4 && window_timer == 15 && timefreeze <= 0{
+	if left_down && !right_down && spr_dir == 1{
+		hitstop = 10
+		hitpause = true
 		spr_dir = -1
 		sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1.2,1.4);
 		sound_play(asset_get("sfx_blow_medium1"),false,noone,1.2,1.4);
 		spawn_hit_fx(x - 30*spr_dir,y - 40, 302)
+		window_timer = 16
 	}
-	if !left_down && right_down {
+	
+	if !left_down && right_down && spr_dir == -1{
+		hitstop = 10
+		hitpause = true
 		spr_dir = 1
 		sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1.2,1.4);
 		sound_play(asset_get("sfx_blow_medium1"),false,noone,1.2,1.4);
 		spawn_hit_fx(x - 30*spr_dir,y - 40, 302)
+		window_timer = 16
 	} 
 }
-if window == 2 {
+
+if window == 2 && !hitpause{
 	 			if window_timer == 1 {
 		spawn_hit_fx( x + ((55 + random_func(5, 20, true)) * spr_dir) , y - 44 + random_func(6, 30, true) , tauntpar1 )
 	}
@@ -381,17 +391,15 @@ if window == 2 {
 	
 }
 
-if window == 1 && window_timer == 1{
+    if window == 1 && window_timer == 1 && !hitpause{
         sound_play(asset_get("sfx_swipe_medium1"));
     }
     
-    if window == 1 && window_timer == 6{
-        sound_play(asset_get("sfx_ice_shieldup"));
+    if window == 1 && window_timer == 6 && !hitpause{
+        sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
     }
     
-     if window == 2 && window_timer == 1{
-    
-	
+    if window == 2 && window_timer == 1 && !hitpause{
         sound_play(asset_get("sfx_ori_bash_launch"));
     }
     
@@ -400,8 +408,9 @@ if window == 1 && window_timer == 1{
 if attack == AT_FSTRONG && !hitpause {
 
 if window == 1 && window_timer == 1{
-        sound_play(asset_get("sfx_ice_shieldup"));
-    }
+	sound_play(asset_get("sfx_spin"),false,noone,1,0.8);
+    sound_play(asset_get("sfx_ice_shieldup"));
+}
     
     
      if window == 2 && window_timer == 1{
@@ -437,9 +446,9 @@ if attack == AT_FSPECIAL && !hitpause {
 	 }
 	
 	if window = 4 && window_timer == 1 && !hitpause{
-	 	 sound_play(asset_get("sfx_ice_shieldup"));
+	 	 sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
          sound_play(asset_get("sfx_spin"));
-            sound_play(asset_get("sfx_ice_on_player"));
+            sound_play(asset_get("sfx_ice_on_player"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
 	 	
 	 }
 }
@@ -513,7 +522,7 @@ if window = 3 && window_timer = 1 {
 	
 	 if window == 2 && (get_gameplay_time() % 4 == 0 or ((get_gameplay_time() % 4 == 2 or window_timer == 0) && !hitpause)) {
 	 		
-	 sound_play(asset_get("sfx_ice_shieldup"));	
+	 sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))	
 	 if !hitpause {
 	 spawn_hit_fx( x  , y - 50 + random_func(2, 40, true) , tauntpar1 )
 	 }
@@ -574,7 +583,7 @@ if window = 1 {
 	
 
 if window == 3 && window_timer = 1 {
-sound_play(asset_get("sfx_ice_shatter"));
+sound_play(asset_get("sfx_ice_shatter"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
 spawn_hit_fx( x + ((60 + (fcharge * 8)) * spr_dir) , y - 40 + fver*6 , 305 )
 	
 }	
@@ -730,7 +739,7 @@ if (window == 2 && window_timer > 2) or window == 3 or (window == 4  && window_t
 			set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 10);
 	if window_timer % 3 == 0 && !hitpause {
 	
-		sound_play(asset_get("sfx_ice_shieldup"));
+		sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
 			create_hitbox(AT_FSTRONG , 1 ,  x - ((40 + random_func(1, 40, true)) * spr_dir) , y - 60 + random_func(2, 40, true) );
 			spawn_hit_fx(  x - ((40 + random_func(1, 40, true)) * spr_dir) , y - 60 + random_func(2, 40, true) , icepar1 )
 		}
@@ -740,7 +749,7 @@ if (window == 2 && window_timer > 2) or window == 3 or (window == 4  && window_t
 				set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 2);
 	if window_timer % 2 == 0 {
 	
-		sound_play(asset_get("sfx_ice_shieldup"));
+		sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
 			create_hitbox(AT_FSTRONG , 1 ,  x - (( 40 + (window_timer * 6)) * spr_dir)   , y - 60 + random_func(2, 40, true) );
 			spawn_hit_fx(  x - (( 40 + (window_timer * 6)) * spr_dir) , y - 60 + random_func(2, 40, true) , icepar1 )
 		}
@@ -752,7 +761,12 @@ if (window == 2 && window_timer > 2) or window == 3 or (window == 4  && window_t
 
 if attack == AT_DSTRONG {
 	
-	 if has_hit_player && window < 5 && !hitpause{
+	if window == 1 && window_timer == 1 && !hitpause {
+		sound_play(asset_get("sfx_spin"),false,noone,1,0.75);
+		sound_play(asset_get("sfx_ori_glide_featherout"),false,noone,.5);
+	}
+	
+	 if has_hit_player && window < 5 {
 	 	with asset_get("oPlayer") {
 	 				 xrange = abs(x - other.x);
          yrange = abs(other.y - y);
@@ -854,17 +868,16 @@ if attack == AT_DAIR {
 
    if window == 2 {
        if window_timer = 1 && !hitpause {
-            sound_play(asset_get("sfx_ice_shatter_big"));
+            sound_play(asset_get("sfx_ice_shatter_big"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
        }
    }
 }
 
 if attack == AT_BAIR {
 
-    if window == 3 {
-
-        
-        hsp /= 1.2
+    if window == 4 && window_timer == 1{
+       
+        hsp += 4*spr_dir
     }
     
 }

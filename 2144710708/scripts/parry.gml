@@ -25,6 +25,7 @@ with (asset_get("pHitBox"))
 
 
 // infinite parry bug fix
+/*
 if (is_shoe) {
 	//sound_play(asset_get("sfx_blow_heavy1"), false, noone, 1, 1);
 	if (state == PS_PARRY) {
@@ -37,9 +38,7 @@ if (is_shoe) {
 		}
 	}
 }
-
-
-
+*/
 
 
 

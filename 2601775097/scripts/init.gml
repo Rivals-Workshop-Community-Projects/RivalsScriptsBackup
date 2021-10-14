@@ -792,6 +792,38 @@ od_gain_word = "";
 //green flower zone
 gfzsignspr = sprite_get("GFZ_signpost");
 
+//miiverse
+miiverse_post = sprite_get("miiverse");
+
+//pokemon stadium
+pkmn_stadium_front_img = sprite_get("pokemon_front");
+pkmn_stadium_back_img = sprite_get("pokemon_back");
+pkmn_stadium_name_override = "bar";
+
+//steve death message
+steve_death0 = "Steve was denied from Shamaeem by Bar_Rey using [Mage's Gauntlet]"; //message to appear when there's no other message
+steve_death1 = "Steve was slain by Bar_Rey"; //normal death message
+steve_death2 = "Steve was slain by Bar_Rey using [Mage's Gauntlet]"; //death from an attack that uses bar's gauntlet
+steve_death3 = "Steve was flashed to death Bar_Rey"; //death from light based attacks
+steve_death4 = "Steve was burnt to a crisp whilst fighting Bar_Rey using [Mage's Gauntlet]"; //dying while holyburning = true;
+steve_death5 = "Death.attack.AT_TAUNT"; //dying if bar killed steve with his taunt
+
+steve_death_message = steve_death0;
+
+//moonchild
+childsupport = 1;
+
+//the last resort
+resort_portrait = sprite_get("last_resort");
+
+//the chosen one art
+if (theikos) tcoart = sprite_get("tcoart2");
+else tcoart = sprite_get("tcoart1");
+
+//soulbound conflict
+if (theikos) battle_text = "* The guardian's true face revealed.";
+else battle_text = "* Bar braces himself!";
+
 //assist buddy
 assistAttack = AT_FAIR; //The attack to use as the assist
 assistOffsetX = -32; //The horizontal distance they spawn from the player

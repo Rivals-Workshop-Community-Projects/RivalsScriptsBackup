@@ -71,6 +71,9 @@ if(attack == AT_DSPECIAL)
 if !free || state == PS_WALL_JUMP
 	move_cooldown[AT_USPECIAL] = 0;
 
+if !free || state == PS_WALL_JUMP 
+	move_cooldown[AT_FSPECIAL] = 0;
+
 //clay junk below
 
 if !canDraw{

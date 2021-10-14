@@ -9,11 +9,19 @@ hit_player_obj = self
 
 
 if state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND {
-	 	uspechit = 0
-   attacking = 0
 	
+   uspechit = 0
+   attacking = 0
+   grabbed = false
+   
 }else {
+	
 	attacking = 1
+	
+	if attack != AT_USTRONG and attack != AT_DSTRONG {
+	   grabbed = false
+	}
+	
 }
 
 if !hitpause {
@@ -563,6 +571,7 @@ if attack == AT_BAIR {
     }
     
 }
+
 }
 
 if timeinv > 120 {

@@ -358,7 +358,7 @@ if (attack == AT_FSPECIAL){
 		{
 			hsp = -2.5*spr_dir;
 			vsp = FSpecBounceHeight;
-			move_cooldown[AT_FSPECIAL] = 64;
+			move_cooldown[AT_FSPECIAL] = 300;
 			set_state(PS_IDLE_AIR);
 		}
 	}

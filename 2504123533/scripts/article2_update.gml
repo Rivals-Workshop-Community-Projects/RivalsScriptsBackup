@@ -16,7 +16,14 @@ for(var i=0; i<array_length(hitboxes); i++)
 			
 			h.x = other.x + (h.x_pos);
 			h.y = other.y + (h.y_pos);
-			
+			h.type = 2;
+			h.plasma_safe = true;
+			h.hbox_group = -1;
+			h.walls = 1;
+			h.enemies = 1;
+			h.unbashable = true;
+			h.does_not_reflect = true;
+			h.transcendent = true;
 		}
 	}
 }

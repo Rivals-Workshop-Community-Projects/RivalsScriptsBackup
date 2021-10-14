@@ -16,7 +16,7 @@ if introhit = 0 {
 	
 	}
 	
-		if (my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num <= 3){
+	if (my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num <= 3){
 	
 	dairv = 10
 	
@@ -68,7 +68,14 @@ angledraw = random_func(1,360,true)
 
          
 }
-   
+
+if (my_hitboxID.attack == AT_FAIR && my_hitboxID.hitpause == 0){
+	
+	y -= 2
+	
+}
+  
+
 if (my_hitboxID.attack != AT_USPECIAL && drops == 1 && !free){
 	
 	fcharge += 1

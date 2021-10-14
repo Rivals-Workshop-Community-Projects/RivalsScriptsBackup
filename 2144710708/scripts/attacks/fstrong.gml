@@ -6,7 +6,7 @@ set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 2);
 set_attack_value(AT_FSTRONG, AG_HURTBOX_SPRITE, sprite_get("fstrong_hurt"));
 
 // startup
-set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 12); // change to 9 someday
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 3);
 
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 4);

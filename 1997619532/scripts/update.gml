@@ -386,10 +386,10 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 8);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.3);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 302);
-set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 40);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 60);
+set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 50);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 36);
 set_hitbox_value(AT_NSPECIAL, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 6);
@@ -406,7 +406,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 60);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X, 40);
+set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_Y, -41);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1);
@@ -417,7 +417,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
     set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("bladewaveH"));
     		}
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_AIR_FRICTION, 0);
-set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HSPEED, 9);
+set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HSPEED, 10);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_VSPEED, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_ANIM_SPEED, 0.3);
@@ -427,9 +427,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 76);
 set_hitbox_value(AT_NSPECIAL, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 9);
-set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 70);
-set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.6);
+set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 60);
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, sound_get("SpaceCut"));
@@ -516,10 +514,9 @@ if state == PS_DASH_TURN {
 }
 
 if stabt >= 10 {
-	knockback_adj = 0
 	if state_cat == SC_HITSTUN {
-		hsp /= 1.2
-		vsp /= 1.2
+		hsp /= 2
+		vsp /= 2
 		if state_timer > 20 {
 			set_state(PS_IDLE)
 		}
@@ -577,7 +574,7 @@ if get_gameplay_time() <= 45 {
 
   set_attack (AT_TAUNT)
   window = 2
-  knockback_adj = 1
+
 }
 
 
@@ -635,13 +632,13 @@ if halo >= 6 {
 	
 }
 
-if halo > 0 && state_cat != SC_HITSTUN and hit_player_obj.state_cat != SC_HITSTUN && halo < 6 {
-if halotimer > 60 {	
-halotimer -= 1;
-}
-else {
-	halotimer -= 0.5;
-}
+if halo > 0 and hit_player_obj.state_cat != SC_HITSTUN && halo < 6 {
+    if halotimer > 60 {	
+    halotimer -= 1;
+    }
+    else {
+    	halotimer -= 0.5;
+    }
 }
 
 if halo == 6 {

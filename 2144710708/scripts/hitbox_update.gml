@@ -61,6 +61,12 @@ if (attack == AT_DSPECIAL) {
 	}
 	*/
 	
+	// destroy boot when you die (for good)
+	if (player_id.state == PS_DEAD) {
+		
+		destroyed = true;
+	}
+	
 	var hit_override = false; // if this isn't true, the boot will not have an active hitbox
 	var override_other_overrides = false; // makes sure it isn't set false from not moving
 	var boot_player = false; // boot owner variable
@@ -330,9 +336,11 @@ if (attack == AT_DSPECIAL) {
 							other.kb_value = kb_value * abyssmult;
 							other.kb_angle = kb_angle;
 							other.kb_scale = (kb_scale + ((player_id.strong_charge/60) * 0.35)) * abyssmult;
+							//other.kb_scale = (kb_scale) * abyssmult;
 							
 							other.extra_hitpause = extra_hitpause;
 							other.damage = round((damage + (damage * (player_id.strong_charge/60) * 0.6)) * abyssmult);
+							//other.damage = round((damage) * abyssmult);
 							other.effect = effect;
 							other.hitpause = hitpause * abyssmult;
 							other.hitpause_growth = hitpause_growth * abyssmult;
@@ -541,9 +549,11 @@ if (attack == AT_DSPECIAL) {
 							
 							other.kb_value = kb_value * abyssmult;
 							other.kb_angle = kb_angle;
+							//other.kb_scale = (kb_scale) * abyssmult;
 							other.kb_scale = (kb_scale + ((player_id.strong_charge/60) * 0.35)) * abyssmult;
 							
 							other.extra_hitpause = extra_hitpause;
+							//other.damage = round((damage) * abyssmult);
 							other.damage = round((damage + (damage * (player_id.strong_charge/60) * 0.6)) * abyssmult);
 							other.effect = effect;
 							other.hitpause = hitpause * abyssmult;

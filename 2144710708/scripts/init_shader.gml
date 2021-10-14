@@ -170,12 +170,24 @@ if (get_player_color( player ) == 15) { //  seasonal
 }
 
 if (get_player_color( player ) == 16) { //  trans rights
+	
+	alt_redcolor = get_color_profile_slot_r( get_player_color(player), 0);
+	//print_debug( alt_redcolor );
+	
+	// i really hope this works online
 	set_character_color_shading( 0, owen_shading_intensity);
-	set_character_color_shading( 1, -owen_shading_intensity); // hair
+	if (alt_redcolor == 255) {
+		set_character_color_shading( 1, -owen_shading_intensity); // hair
+		set_character_color_shading( 5, -owen_shading_intensity); // crowbar edges
+	}
+	else {
+		set_character_color_shading( 1, 2); // hair
+		set_character_color_shading( 5, 2); // crowbar edges
+	}
 	set_character_color_shading( 2, owen_shading_intensity);
 	set_character_color_shading( 3, owen_shading_intensity);
 	set_character_color_shading( 4, owen_shading_intensity); 
-	set_character_color_shading( 5, -owen_shading_intensity); // crowbar edges
+	
 }
 
 if (get_player_color( player ) == 17) { //  100 bec
@@ -187,7 +199,7 @@ if (get_player_color( player ) == 17) { //  100 bec
 	set_character_color_shading( 5, owen_shading_intensity); // crowbar edges
 }
 
-if (get_player_color( player ) == 18) { //  unnamed r cat oc
+if (get_player_color( player ) == 18) { //  sunny
 	set_character_color_shading( 0, owen_shading_intensity); // body
 	set_character_color_shading( 1, owen_shading_intensity); // hair
 	set_character_color_shading( 2, owen_shading_intensity); // shirt

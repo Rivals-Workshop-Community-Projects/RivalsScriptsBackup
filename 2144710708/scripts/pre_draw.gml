@@ -1,7 +1,6 @@
 // draw but pre
 
-// rainbow trail
-
+// rainbow trail for the sakk alt
 if (get_player_color( player ) == 8) {
 	
 	if (hsp > 2) || (hsp < -2) {

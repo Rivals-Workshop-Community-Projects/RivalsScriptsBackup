@@ -195,6 +195,7 @@ set_hitbox_value(AT_USTRONG, 7, HG_ANGLE, 85);
 set_hitbox_value(AT_USTRONG, 7, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_USTRONG, 7, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_USTRONG, 7, HG_BASE_HITPAUSE, 3);
+set_hitbox_value(AT_USTRONG, 7, HG_EXTRA_HITPAUSE, 3);
 set_hitbox_value(AT_USTRONG, 7, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_USTRONG, 7, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_USTRONG, 7, HG_HIT_SFX, sound_get("slicel"));

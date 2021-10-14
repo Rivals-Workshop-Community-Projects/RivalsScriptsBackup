@@ -362,6 +362,78 @@ if attack == AT_FSTRONG {
 }
 
 if attack == AT_EXTRA_1 {
+	
+	
+	///woag
+	uspecialHudX = clamp(x, view_get_xview() + uspecialMinX , (view_get_xview() + view_get_wview()) - uspecialMaxX )
+		uspecialHudY = clamp(y, view_get_yview() + uspecialMinY, (view_get_yview() + view_get_hview()) - (44 + uspecialMaxY ))
+		uspecialNum = 0
+		if uspecialHudX == (view_get_xview() + uspecialMinX) { //Left
+			uspecialNum = 3
+		}
+		if uspecialHudX == ((view_get_xview() + view_get_wview()) - uspecialMaxX) { //Right
+			uspecialNum = 6
+		}
+		if uspecialHudY == (view_get_yview() + uspecialMinY) { //Up
+			uspecialNum += 1
+		}
+		if uspecialHudY == ((view_get_yview() + view_get_hview()) - (44 + uspecialMaxY )) { //Down
+			uspecialNum += 2
+		}
+		switch(uspecialNum) {
+			//Cardinal
+			case 0:
+			break;
+			case 1: //Up
+				uspecialRot= 180
+				uspecialShape = 0
+				uspecialHudY = (view_get_yview() + 33)
+			break;
+			case 2: //Down
+				uspecialRot= 0
+				uspecialShape = 0
+				uspecialHudY = ((view_get_yview() + view_get_hview()) - 85)
+			break;			
+			case 3: //Left
+				uspecialRot= 270
+				uspecialShape = 0
+				uspecialHudX = (view_get_xview() + 33)
+			break;
+			case 6: //Right
+				uspecialRot= 90
+				uspecialShape = 0
+				uspecialHudX = ((view_get_xview() + view_get_wview()) - 33)
+			break;
+			
+			//Diagonal
+			case 4: //Left Up
+				uspecialRot= 270
+				uspecialShape = 1
+				uspecialHudX = (view_get_xview() + 33)
+				uspecialHudY = (view_get_yview() + 33)
+			break;
+			case 5: //Left Down
+				uspecialRot= 0
+				uspecialShape = 1
+				uspecialHudX = (view_get_xview() + 33)
+				uspecialHudY = ((view_get_yview() + view_get_hview()) - 85)
+			break;			
+			
+			case 7: //Right Up
+				uspecialRot= 180
+				uspecialShape = 1
+				uspecialHudX = ((view_get_xview() + view_get_wview()) - 33)
+				uspecialHudY = (view_get_yview() + 33)
+			break;
+			case 8: //Right Down
+				uspecialRot= 90
+				uspecialShape = 1
+				uspecialHudX = ((view_get_xview() + view_get_wview()) - 33)
+				uspecialHudY = ((view_get_yview() + view_get_hview()) - 85)
+			break;
+		}
+	
+	////
     plasma_safe = true
 ///goodbye clairen
           
@@ -428,7 +500,7 @@ if attack == AT_EXTRA_1 {
 				other.player_id.move_cooldown[AT_EXTRA_2] = 60
 			}
 					other.hit_priority = 9 
-		other.damage = 5
+		other.damage = 4
         other.kb_scaling = 0.4
         other.hit_effect_x = 0
         other.spr_dir = spr_dir
@@ -547,7 +619,7 @@ if attack == AT_EXTRA_1 {
     
 
     if x  > room_width/2 + 750 or x < room_width/2 - 750 {
-        damage = 5
+        damage = 4
         kb_scaling = 0.4
         hit_effect_x = 0
         if hitbox_timer < 3 {
@@ -558,14 +630,16 @@ if attack == AT_EXTRA_1 {
         }
         hit_priority = 9
         sound_play(asset_get("sfx_shovel_hit_light1"))
-        hsp *= -1.4
-        vsp = min((room_height/2 - y  - 120)/30 , -10)
+        hsp *= -1.05
+        vsp *= -1.05
+        vsp -= 2
+
         shake_camera(2,4)
         	for (var i = 1; i < 20; i++) can_hit[i] = true
     }
     
     if y - 120 > room_height {
-        damage = 5
+        damage = 4
         kb_scaling = 0.4
         hit_effect_x = 0
         if hitbox_timer < 3 {
@@ -594,7 +668,7 @@ if attack == AT_EXTRA_1 {
     }
 
     if ((place_meeting(x + hsp, y + vsp , asset_get("par_block")))) {
-        damage = 5
+        damage = 4
         kb_scaling = 0.4
         hit_effect_x = 0
         
@@ -617,7 +691,7 @@ if attack == AT_EXTRA_1 {
             sound_play(asset_get("sfx_shovel_hit_med1"))
         }
      
-    if ((place_meeting(x , y - 20, asset_get("par_block")))) && free {
+    if ((place_meeting(x , y - 20, asset_get("par_block")))) && free && hsp != 0 {
     	 y -= 7
     	 vsp = -9
     	 x -= 10*spr_dir
@@ -639,6 +713,6 @@ if attack == AT_EXTRA_1 {
     }
     
     } else {
-        grav = .4
+        grav = .4/1.25
     }
 }

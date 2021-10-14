@@ -7,7 +7,7 @@ move_cooldown[AT_FSPECIAL] = 0 ;
 
 
 if halo < 6 && enemy_hitboxID.type == 1 {
-halotimer -= enemy_hitboxID.damage*5
+halotimer -= enemy_hitboxID.damage*8
 }
 
 

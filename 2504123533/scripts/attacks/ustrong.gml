@@ -47,8 +47,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_USTRONG, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_USTRONG, 1, HG_FINAL_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 1.2);
+set_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
@@ -57,8 +56,10 @@ set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_waterhit_heavy2"));
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, 0);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_PARTICLE_NUM, 1);
+set_hitbox_value(AT_USTRONG, 1, HG_HIT_PARTICLE_NUM, 1);
+set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, splatter);
 
-set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_SPRITE, sprite_get("empty"));
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
@@ -68,8 +69,6 @@ set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_PLASMA_SAFE, true);
-set_hitbox_value(AT_USTRONG, 1, HG_HIT_PARTICLE_NUM, 1);
-set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, splatter);
 
 
 
@@ -95,7 +94,7 @@ set_hitbox_value(AT_USTRONG, 2, HG_DRIFT_MULTIPLIER, 0.01);
 set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, 1);
 
-set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_USTRONG, 2, HG_PROJECTILE_SPRITE, sprite_get("empty"));
 set_hitbox_value(AT_USTRONG, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_USTRONG, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1);

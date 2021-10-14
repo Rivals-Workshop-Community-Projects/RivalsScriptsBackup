@@ -5,19 +5,21 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL || a
     trigger_b_reverse();
 }
 
-
-
 // removes nametag during respective moves
-if (attack == AT_UAIR) {
-	if (window > 1 && window < 9) {
+/*
+if (attack == AT_UAIR || attack == AT_USTRONG || attack == AT_UTILT) {
+
 		draw_indicator = false;
-	}
+		//char_height = 110;
+
 }
+*/
 
 // jab no parry stun
 if(attack == AT_JAB && was_parried){
     was_parried = false;
 }
+
 
 // phone cheat that gives jumps on hit
 if (phone_cheats[cheat_hit_jumps] != 0) {
@@ -26,17 +28,20 @@ if (phone_cheats[cheat_hit_jumps] != 0) {
 	}
 }
 
-// fair buffffff...........
-if (phone_cheats[cheat_fair_buff] == 1) {
-	set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 20000);
-	set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 20000);
-}
-else if (phone_cheats[cheat_fair_buff] == 0) {
-	// probably shouldn't put constants here but oh well
-	set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 68);
-	set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 84);
-}
 
+// fair buffffff...........
+// (munophone cheat)
+if (attack == AT_FAIR) {
+	if (phone_cheats[cheat_fair_buff] == 1) {
+		set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 20000);
+		set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 20000);
+	}
+	else if (phone_cheats[cheat_fair_buff] == 0) {
+		// probably shouldn't put constants here but oh well
+		set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 68);
+		set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 84);
+	}
+}
 
 // for abyss rune M meter
 // when meter is active, make aerials jump and attack cancellable
@@ -51,7 +56,7 @@ if (gimmick_activated == true) {
 	}
 }
 
-// down taunt intterrupt
+// down taunt interrupt
 if (attack == AT_EXTRA_2) {
 	
 	if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && window == 2) {
@@ -148,6 +153,7 @@ if (attack == AT_NSPECIAL){
 			window_timer = 0;
 			attack = AT_TAUNT_2;
 			set_attack(AT_TAUNT_2);
+
 		}
 	}
 	
@@ -224,6 +230,7 @@ if (attack == AT_FSPECIAL){
 		window = 4;	
 		
 		// sakk wanted this
+		// jump/attack cancel
 		can_attack = true;
 		can_jump = true;
 		
@@ -272,7 +279,7 @@ if (attack == AT_DAIR){
     if (has_hit == true){
 		
 		if(hitpause == false){
-			window = 5; // instantly switch to the fourth window
+			window = 5; // instantly switch to the last window
 			destroy_hitboxes();	// prevent lingering hitboxes	 
 		}
 		
@@ -316,17 +323,13 @@ if (attack == AT_USPECIAL){
 		
 	}
 	
+	/*
 	if (window == 3) {
-		
-		if (window_timer == 2 && hitpause == false) {
-			//spawn_dust_fx( x, y+12, sprite_get("uspecial_dust"), 8 );
-			//spawn_hit_fx(x+(8*spr_dir), y, 21);
-		}
-		
-		
+
 		sound_stop(sound_get("tau_charge"));
 		sound_stop(sound_get("tau_charge_quick"));
 	}
+	*/
 	
 	if (window < 4) {
 		can_fast_fall = false;

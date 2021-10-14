@@ -1,5 +1,18 @@
 // the dreaded... UPDATE AHHHH
 
+// sleep kirby support
+//Sleep Kirby Hat Offsets
+if (free){
+	//Air Hat Offsets
+	sleep_kirby_hat_offset_x = 0; //
+	sleep_kirby_hat_offset_y = 0; //
+} else if (!free){
+	//Grounded Hat Offsets
+	sleep_kirby_hat_offset_x = -6; //
+	sleep_kirby_hat_offset_y = -4; //
+}
+
+
 // munophone touch support
 	muno_event_type = 1;
 	user_event(14);
@@ -8,7 +21,6 @@
 if (get_training_cpu_action() != CPU_FIGHT && !playtest && !("is_ai" in self)) {
     practice = true;
 }
-
 
 // dialogue buddy support thing
 if(variable_instance_exists(id,"diag"))
@@ -379,6 +391,24 @@ if (hidden_alt_enabled) {
 }
 */
 
+if (hidden_alt_enabled) {
+	if (get_player_color( player ) == 16) {
+		if (get_gameplay_time() > 3 && get_gameplay_time() < 127 && hidden_alt_active == false) {
+			if (taunt_down || taunt_pressed) {
+				// nb
+				set_color_profile_slot( 16, 0, 252, 252, 252 ); //body
+				set_color_profile_slot( 16, 1, 156, 89, 209 ); //hair
+				set_color_profile_slot( 16, 2, 156, 89, 209 ); //shirt
+				set_color_profile_slot( 16, 3, 44, 44, 44 ); //shorts
+				set_color_profile_slot( 16, 4, 252, 244, 52 ); //crowbar
+				set_color_profile_slot( 16, 5, 44, 44, 44 ); //crowbar edges
+				hidden_alt_active = true;
+				init_shader();
+			}
+		}
+	}
+}
+
 // Lethal League stage exclusive changes
 if (ll_stage) {
 	
@@ -542,12 +572,30 @@ if (runeD == true) {
 
 // Rune E - chargable fair that sends at angle 315
 if (runeE == true) {
+	
+	// note: had to fix a bit of this when i reanimated fair lol
 
+	// remove sfx in window 2
+	set_window_value(AT_FAIR, 2, AG_WINDOW_HAS_SFX, 0);
+	
+	// add it to window 3
+	set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_SFX, 1);
+	set_window_value(AT_FAIR, 3, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
+	set_window_value(AT_FAIR, 3, AG_WINDOW_SFX_FRAME, 2);
+	
+	// make window 2 shorter to give more room for window 3
+	set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 2);
+
+	// for better timing of the fair visual and sfx
+	set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 6);
+	set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAMES, 2);
+	set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAME_START, 3);
+	
 	// severe angle 
 	set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 315);
 	
 	// chargable
-	set_attack_value(AT_FAIR, AG_STRONG_CHARGE_WINDOW, 1);
+	set_attack_value(AT_FAIR, AG_STRONG_CHARGE_WINDOW, 2);
 	
 	// custom charge code
 	if (attack == AT_FAIR) {
@@ -557,22 +605,8 @@ if (runeE == true) {
 		set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, fairscaling);
 	}
 	
-	// remove sfx in window 1
-	set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 0);
-	
-	// add it to window 2
-	set_window_value(AT_FAIR, 2, AG_WINDOW_HAS_SFX, 1);
-	set_window_value(AT_FAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
-	set_window_value(AT_FAIR, 2, AG_WINDOW_SFX_FRAME, 1);
-	
 	// make the active hitbox come out a frame slower
-	set_hitbox_value(AT_FAIR, 1, HG_WINDOW_CREATION_FRAME, 2);
-	
-	set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 12);
-	set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 4);
-	
-	set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAME_START, 1);
-	set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAMES, 2);
+	set_hitbox_value(AT_FAIR, 1, HG_WINDOW_CREATION_FRAME, 3);
 	
 	// return of bonk 
 	set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, sound_get("owen_bonk"));

@@ -283,7 +283,7 @@ if detonated && !hasDetonated
 					if cAttack == AT_FSTRONG
 					{
 						c.sprite_index = sprite_get("fstrongGooCharged");
-						windows = [1,2];
+						windows = [1,2,3];
 						hitboxes = [1];
 					}
 					if cAttack == AT_DSTRONG
@@ -295,7 +295,7 @@ if detonated && !hasDetonated
 					if cAttack == AT_USTRONG
 					{
 						c.sprite_index = sprite_get("ustrongGooCharged");
-						windows = [1,2];
+						windows = [1,2,3,4];
 						hitboxes = [1,2];
 					}
 					c.image_index = 0;//get_window_value( cAttack, 3, AG_WINDOW_ANIM_FRAME_START);
@@ -331,9 +331,9 @@ if detonated
 			if atFrame(10)
 				image_index = 9;
 			
-			urchinCooldown = clamp(urchinCooldown,-2, 33)
+			urchinCooldown = clamp(urchinCooldown,-2, 10)
 			
-			if urchinCooldown == 0
+			if urchinCooldown <= 0
 			{
 				var urchObj = id;
 				with(oPlayer)

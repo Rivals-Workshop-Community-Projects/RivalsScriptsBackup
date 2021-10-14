@@ -8,7 +8,7 @@ if move_cooldown[AT_EXTRA_3] > 0 && hit_player_obj != self{
 
 }
 
-if move_cooldown[AT_EXTRA_3] > 0 && hit_player_obj != self && hitdmg*10 > 5{
+if move_cooldown[AT_EXTRA_3] > 0 && hit_player_obj != self && hitdmg*6 > 5{
         	draw_sprite_ext(sprite_get("slosh"), 0, hit_player_obj.x , hit_player_obj.y - 36,
         	1 - (move_cooldown[AT_EXTRA_3]/maxdraw)/3,
         	1 - (move_cooldown[AT_EXTRA_3]/maxdraw)/3, 

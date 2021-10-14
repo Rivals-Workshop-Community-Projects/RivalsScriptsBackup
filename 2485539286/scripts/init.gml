@@ -1,3 +1,6 @@
+hud_color = get_player_hud_color(player);
+sprite_change_offset("ballHud2", 23, 23);
+sprite_change_offset("ballHud", 23, 23);
 hurtbox_spr = sprite_get("stand_box");
 crouchbox_spr = sprite_get("crouch_box");
 air_hurtbox_spr = sprite_get("air_box");
@@ -11,6 +14,8 @@ ncode2 = "Bro I legit made the system"
 ncode3 = "what did you think ;)"
 famix = 0
 famiy = 0
+
+fastfalllock = 5
 
 svsp = 0
 shsp = 0
@@ -40,7 +45,7 @@ walk_turn_time = 4;
 initial_dash_time = 10;
 initial_dash_speed = 6;
 dash_speed = 6
-dash_turn_time = 15;
+dash_turn_time = 8;
 dash_turn_accel = .5;
 dash_stop_time = 20;
 dash_stop_percent = .8; //the value to multiply your hsp by when going into idle from dash or dashstop

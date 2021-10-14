@@ -13,11 +13,11 @@ if (get_gameplay_time() > 2) {
 	facing = false;
 	cuttertimer -= 1
 	if 90 > xdist and 90 > ydist AIwait -= 1
-	usmashpercent = (2 - ai_target.knockback_adj) * 85
-	fsmashpercent = (2 - ai_target.knockback_adj) * 95
-	dsmashpercent = (2 - ai_target.knockback_adj) * 110
-	uspecialpercent = (2 - ai_target.knockback_adj) * 130
-	bairpercent = (2 - ai_target.knockback_adj) * 110
+	usmashpercent = (2 - ai_target.knockback_adj) * 135
+	fsmashpercent = (2 - ai_target.knockback_adj) * 125
+	dsmashpercent = (2 - ai_target.knockback_adj) * 145
+	uspecialpercent = (2 - ai_target.knockback_adj) * 500 // never try as a kill move
+	bairpercent = (2 - ai_target.knockback_adj) * 500 // never try as a kill move
 
 	if ai_recovering {
 		recoverytimer += 1

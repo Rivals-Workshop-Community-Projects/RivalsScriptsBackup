@@ -1,4 +1,4 @@
-
+hud_color = get_player_hud_color(player);
 hurtbox_spr = sprite_get("stand_box");
 crouchbox_spr = sprite_get("crouch_box");
 air_hurtbox_spr = -1;

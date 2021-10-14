@@ -6,6 +6,7 @@ hit_player_obj = self
 
 }
 
+
 if state == PS_PRATFALL {
     
     if hhh > 0 {	 
@@ -21,6 +22,8 @@ if can_attack && special_pressed && !left_down && !right_down && !up_down && !do
 	 sound_play(asset_get("sfx_ell_steam_release"))
 	 set_state(PS_PRATFALL)
 	 prat_land_time = 12;
+	 move_cooldown [AT_EXTRA_3] = 0
+	 
 if hhh > 0 {	 
 	 vsp = -8
 } else {
@@ -30,6 +33,7 @@ if hhh > 0 {
 	       	spawn_base_dust(x, y, "land", spr_dir)
 	 shake_camera(2,2)
 }
+init_shader();
 
 if get_gameplay_time() <= 120 {
 
@@ -96,8 +100,8 @@ if move_cooldown[AT_USTRONG] > 0 && get_gameplay_time() % 5== 0 {
 if hhh > 0 && dash_speed == 7 {
 	initial_dash_speed = 6;
 	dash_speed = 6
-	leave_ground_max = 3.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
-    max_jump_hsp = 3.5;
+	leave_ground_max = 5.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
+    max_jump_hsp = 4.5;
 	air_max_speed = 4;
 	jump_change = 2.5;
 	air_accel = .25;
@@ -113,8 +117,8 @@ if hhh > 0 && dash_speed == 7 {
 if hhh == 0 && dash_speed != 7 {
 	initial_dash_speed = 7;
 	dash_speed = 7
-	leave_ground_max = 5; //the maximum hsp you can have when you go from grounded to aerial without jumping
-    max_jump_hsp = 5;
+	leave_ground_max = 6.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
+    max_jump_hsp = 6;
 	air_max_speed = 5.5;
 	jump_change = 4;
 	air_accel = .3;
@@ -124,7 +128,7 @@ if hhh == 0 && dash_speed != 7 {
     gravity_speed = .7;
     max_fall = 8; 
     fast_fall = 16;
-    knockback_adj = 1.15;
+    knockback_adj = 1.1;
 }
 
 
@@ -211,7 +215,7 @@ spawn_hit_fx( x + 20 - random_func(1, 40, true) , y - 10 -  random_func(2, 60, t
 }
 
 if state_timer == 1 {
-    	sound_play(asset_get("sfx_bird_sidespecial_start"),false,0,0.5);
+    	sound_play(asset_get("sfx_bird_sidespecial_start"),false,0,0.3,.85);;
 }
 
 }
@@ -245,12 +249,12 @@ if get_gameplay_time() % 2 == 1 {
 spawn_hit_fx( x + 20 - random_func(1, 40, true) , y - 10 -  random_func(2, 60, true) , hpar3)
 }
 
-    if state == PS_DASH_TURN && state_timer = 14 {
-    sound_play(asset_get("sfx_bird_sidespecial_start"),false,noone,0.5);
+    if state == PS_DASH_TURN && state_timer = 7 {
+        sound_play(asset_get("sfx_bird_sidespecial_start"),false,0,0.3,.85);
     }
     
     if (state == PS_DASH_TURN or state == PS_DASH_STOP) && state_timer = 1 && move_cooldown [AT_EXTRA_3] = 0{
-    sound_play(asset_get("sfx_swipe_heavy2"),false,noone,0.3);
+    sound_play(asset_get("sfx_swipe_heavy2"),false,noone,0.3,.85);
     move_cooldown [AT_EXTRA_3] = 20
     }
     

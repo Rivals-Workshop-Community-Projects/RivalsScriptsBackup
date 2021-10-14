@@ -19,7 +19,7 @@ walk_speed = 3.25;
 walk_accel = 0.2;
 walk_turn_time = 6;
 initial_dash_time = 10;
-initial_dash_speed = 5.75;
+initial_dash_speed = 5.5;
 dash_speed = 5;
 dash_turn_time = 10;
 dash_turn_accel = 1.5;
@@ -927,10 +927,12 @@ Namco_Taunt = sprite_get("owen_pacman");
 Namco_Taunt_Sound = sound_get("vineboom")
 
 // dialogue buddy support
-
+// (it's in update.gml)
 //diag_portrait=sprite_get(""); // This will allow you to put any custom portrait onto the dialogue buddy!
 
 // munophone touch support
 	muno_event_type = 0;
 	user_event(14);
 
+// pit support
+user_event(7);

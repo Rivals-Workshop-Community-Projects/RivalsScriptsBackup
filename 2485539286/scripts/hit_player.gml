@@ -8,10 +8,6 @@
 ///sound_play(asset_get("sfx_blow_weak2"),false,noone,99);
 ///sound_play(asset_get("sfx_blow_weak1"),false,noone,99);
 
-if my_hitboxID.attack == AT_USPECIAL {
-    
-    old_vsp /= 1.2
-}
 
 if hit_player_obj != self  {
 move_cooldown[AT_EXTRA_2] = 0 
@@ -178,22 +174,22 @@ switch my_hitboxID.attack {
     
     case AT_FSPECIAL:
      if my_hitboxID.hbox_num == 1 {
-        sound_play(asset_get("sfx_shovel_hit_light1"),false,noone,0.8);
+        sound_play(asset_get("sfx_shovel_hit_light1"),false,noone,0.9);
      }
      
-     if my_hitboxID.hbox_num == 1 {
-        sound_play(asset_get("sfx_shovel_hit_heavy1"),false,noone,0.8);
+     if my_hitboxID.hbox_num == 2 {
+        sound_play(asset_get("sfx_shovel_hit_heavy1"),false,noone,1.1);
      } 
      
     break ;
     
     case AT_USPECIAL:
      if my_hitboxID.hbox_num == 1 {
-        sound_play(asset_get("sfx_shovel_hit_light1"),false,noone,0.8);
+        sound_play(asset_get("sfx_shovel_hit_light1"),false,noone,0.9);
      }
      
-     if my_hitboxID.hbox_num == 1 {
-        sound_play(asset_get("sfx_shovel_hit_heavy1"),false,noone,0.8);
+     if my_hitboxID.hbox_num == 2 {
+        sound_play(asset_get("sfx_shovel_hit_heavy1"),false,noone,1.1);
      } 
      
     break ;

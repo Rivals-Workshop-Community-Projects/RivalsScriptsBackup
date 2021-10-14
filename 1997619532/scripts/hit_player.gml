@@ -3,9 +3,9 @@
 //	introhit = 1
 //}
 
-move_cooldown[AT_EXTRA_3] = hitstop/2
-maxdraw = hitstop/2
-hitdmg = my_hitboxID.damage/10
+move_cooldown[AT_EXTRA_3] = hitstop
+maxdraw = hitstop
+hitdmg = my_hitboxID.damage/6
 
 angledraw = random_func(1,360,true)  
 
@@ -81,10 +81,10 @@ if my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 2 {
 		
 	}
 	
+	halo -= 1
 
 			hit_player_obj.x = x + (45 * spr_dir)
 
-		
 
 }
 
@@ -113,7 +113,7 @@ if (my_hitboxID.attack == AT_UAIR) && uairhit == 0 && halo < 6 {
 
 if (my_hitboxID.attack == AT_USTRONG) {
 	 halotimer = 180; 
-	 halo += 2   
+	 halo += 1  
 }
 
 if (my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 1) {
@@ -133,6 +133,9 @@ if (my_hitboxID.attack == AT_FSTRONG) {
 
 if (my_hitboxID.attack == AT_DSTRONG) {
 	 halotimer = 180; 
+	 if my_hitboxID.hbox_num < 3 {
+	 	halo -= 1
+	 }
 }
 
 if (my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 2) {

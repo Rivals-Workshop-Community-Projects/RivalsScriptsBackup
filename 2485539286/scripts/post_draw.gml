@@ -2,6 +2,19 @@
 
 shader_start();
 
+
+with pHitBox {
+	if (player_id == other.id && attack == AT_EXTRA_1 && "uspecialNum" in self) {
+		if uspecialNum != 0 {
+			draw_sprite_ext(sprite_get("ballHud"), uspecialShape , uspecialHudX,  uspecialHudY, 1, 1, uspecialRot, other.hud_color, .8)
+			draw_sprite_ext(sprite_get("ballHud2"), 0, uspecialHudX,  uspecialHudY, 1, 1, 0, c_white, 1)
+		}
+	}
+}
+
+
+
+
 if !attacking or (attacking && attack != AT_FSPECIAL && attack != AT_DSPECIAL  && attack != AT_USPECIAL ) {
 if move_cooldown[AT_EXTRA_2] > 0 {
     draw_sprite_ext(sprite_get("hhhproj"), get_gameplay_time(), famix , famiy , 1.05, 1.05, 0 , c_black , 0.6);	
@@ -20,9 +33,11 @@ if state_cat == SC_HITSTUN {
     if get_gameplay_time() % 6 < 2 {
         spawn_hit_fx( x + 20 - random_func(1, 40, true) , y - 10 -  random_func(2, 60, true) , hpar3)
     	  gpu_set_blendmode(bm_add);
-               draw_sprite_ext(sprite_index, image_index, x - 5 + random_func(1,10,true), y - 5 + random_func(2,10,true) , spr_dir, 1, 0 , c_white ,  0.6 );	
+               draw_sprite_ext(sprite_index, image_index, x - 5 + random_func(1,10,true), y - 5 + random_func(2,10,true) , spr_dir, 1, 0 , c_white ,  0.4 );	
      	  gpu_set_blendmode(bm_normal);
     }
+    draw_sprite_ext(sprite_index, image_index, x - 5 + random_func(1,10,true), y - 5 + random_func(2,10,true) , spr_dir, 1, 0 , c_white ,  0.3 );	
+   
 }
 
 if attacking {
