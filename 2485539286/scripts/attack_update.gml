@@ -344,9 +344,9 @@ case AT_NSPECIAL:
                    spawn_base_dust(x, y, "dash_start", -1)
                    sound_play(asset_get("sfx_bird_sidespecial_start"),false,0,0.3,0.95);
                    if hhh == 0 {
-                   hsp = -6.5
+                   hsp = -7
                    } else {
-                   	hsp = -5.5
+                   	hsp = -6
                    }
             	}
             	
@@ -354,9 +354,9 @@ case AT_NSPECIAL:
                     spawn_base_dust(x, y, "dash_start", 1)
                    sound_play(asset_get("sfx_bird_sidespecial_start"),false,0,0.3,0.95);
                    if hhh == 0 {
-                   hsp = 6.5
+                   hsp = 7
                    } else {
-                   	hsp = 5.5
+                   	hsp = 6
                    }
             	}
             	

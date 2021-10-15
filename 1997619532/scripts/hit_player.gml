@@ -3,9 +3,16 @@
 //	introhit = 1
 //}
 
+if my_hitboxID.type == 1 && my_hitboxID.attack != AT_NSPECIAL{
+	wavehit -= 1
+	wavetime += 0.2
+}
+
+if my_hitboxID.damage >= 1 {
 move_cooldown[AT_EXTRA_3] = hitstop
 maxdraw = hitstop
 hitdmg = my_hitboxID.damage/6
+}
 
 angledraw = random_func(1,360,true)  
 
@@ -100,7 +107,9 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 2) {
 }
 
 if (my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 1) {
- spawn_hit_fx( x  , y - 35 , dimg )
+  sound_play(sound_get("RI"),false,noone, 1.2 ,1.3)	
+  spawn_hit_fx( x  , y - 35 , dimg )
+  spawn_hit_fx( hit_player_obj.x - 10*spr_dir , hit_player_obj.y - 65 , 305 )
 }
 
 if (my_hitboxID.attack == AT_UAIR) && uairhit > 0 {

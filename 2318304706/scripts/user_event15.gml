@@ -88,7 +88,7 @@ phone.dont_fast = false;
 // If you're porting the phone to an existing char and don't need any of these
 // features, you might as well turn on lightweight to save a tiny bit of
 // performance. (see _docs.gml for a full list of what this disables)
-phone.lightweight = false;
+phone.lightweight = true;
 
 // If you've created custom AG_ or HG_ indexes for your character already,
 // use these to change where the phone starts assigning custom AG_s and HG_s.
@@ -382,6 +382,19 @@ initSection("Trummel & Alto, Otto, Steve, Link, Goku");
 
 
 // other patches go here...
+
+initPatch("1.71", "October 14th, 2021");
+initHeader("General");
+initSection("* Adjusted some local-end Munophone code to hopefully improve performance. Remember, if your computer lags whenever playing as or against Geno (or any other Munophone Touch user) online, press F1 on match start to disable some visual aspects and improve performance.");
+initSection("* Added dust particles to many of Geno's attacks.");
+initHeader("Jab");
+initSection("- When the projectile is parried, Geno will no longer go into parry stun until the attack's animation finishes. This makes it easier to punish him, as the vulnerable period now includes the attack's usual endlag.");
+initSection("* Geno can no longer perform a subsequent jab while holding back on the control stick. This is a parity change, to make Geno's jab consistent with base cast jabs, and allows buffering of reverse FTilt out of a whiffed jab.");
+initWords_ext("This is a small issue that all workshop characters have because they are coded differently from base cast characters. Thanks, Dan :P", fa_left, c_white, 2, false);
+initWords_ext("I advise all workshop developers add this code, it is available in the Steam Change Notes, as well as the post for Incineroar in the #patch_notes channel on the ExW Discord. Huge thanks to Supersonic for writing this code for me!", fa_left, c_white, 2, false);
+initHeader("UStrong");
+initSection("- When the projectile is parried, Geno will no longer go into parry stun until the attack's animation finishes. This makes it easier to punish him, as the vulnerable period now includes the attack's usual endlag.");
+
 
 initPatch("1.7", "October 1st, 2021"); // (replace the date lol)
 initHeader("General");

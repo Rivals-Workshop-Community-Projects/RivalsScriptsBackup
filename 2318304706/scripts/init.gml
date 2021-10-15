@@ -24,6 +24,7 @@ ground_friction = .8;
 moonwalk_accel = 1.4;
 
 blinkTimer = 0;
+customGotParried = 0;
 
 killarticles = false;
 fsmashOut = 0;

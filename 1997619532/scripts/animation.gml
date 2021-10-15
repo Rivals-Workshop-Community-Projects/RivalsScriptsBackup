@@ -1,5 +1,12 @@
 
-
+if (state == PS_PRATFALL) && attack == AT_DAIR {
+    
+    if state_timer < 18 {
+        sprite_index = sprite_get("dair");
+        image_index = state_timer/6 + 1
+    }
+    
+}
 
 if (state == PS_SPAWN) {
     if (introTimer < 31 && introTimer >= 0) {

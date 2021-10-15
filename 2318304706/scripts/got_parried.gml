@@ -1,3 +1,4 @@
+prat_land_time = 6;
 switch (my_hitboxID.attack) {
 	case AT_USPECIAL:
 		flash.y -= 10;
@@ -19,6 +20,18 @@ switch (my_hitboxID.attack) {
 		if (my_hitboxID.hbox_num == 1) {
 			arms.gotParried = 1;
 			arms.parriedPlayer = hit_player;
+		}
+		break;
+	case AT_JAB:
+		if (my_hitboxID.hbox_num > 1) {
+			set_window_value(AT_JAB, 7, AG_WINDOW_TYPE, 7);
+			prat_land_time = 40;
+		}
+		break;
+	case AT_USTRONG:
+		if (my_hitboxID.hbox_num > 2) {
+			set_window_value(AT_USTRONG, 6, AG_WINDOW_TYPE, 7);
+			prat_land_time = 40;
 		}
 		break;
 }

@@ -402,10 +402,12 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_NSPECIAL, 1, HG_IGNORES_PROJECTILES, true);
+
+
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 1);
-set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 60);
+set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 120);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_Y, -41);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 3);
@@ -420,7 +422,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_AIR_FRICTION, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HSPEED, 10);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_VSPEED, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_ANIM_SPEED, 0.3);
+set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 306);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 45);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 76);
@@ -527,7 +529,7 @@ if stabt >= 10 {
 }
 
 if stabt >= 10 {
-		take_damage( player, -1 , 13)
+		take_damage( player, -1 , 7)
 		if get_gameplay_time() % 4 == 0 {
 			 var aaimg = spawn_hit_fx( floor(x - (0 + random_func(3, 50, true)) * spr_dir)  ,floor( y - 60 + random_func(4, 50, true)) , aimg )
     		aaimg.depth = 1
@@ -716,14 +718,17 @@ if wavetime <= 0 {
 	wavetime = 8
 	if wavehit > 1 && !hitstop {
 	   wavehit -= 1
-       create_hitbox(AT_NSPECIAL , 3 , hit_player_obj.x - 20 + random_func(1, 60, true) , hit_player_obj.y - 30 + random_func(2, 60, true) );	   
-}
+	   
+	   spawn_hit_fx(hit_player_obj.x - 40 + random_func(1, 80, true) , hit_player_obj.y - 40 + random_func(2, 80, true), 302 );	   
+
+       create_hitbox(AT_NSPECIAL , 3 , hit_player_obj.x - 40 + random_func(1, 80, true) , hit_player_obj.y - 40 + random_func(2, 80, true) );	   
+    }
 
 	if wavehit == 0 && !hitstop {
 	   wavehit -= 1
        wavetime += 0.2
        create_hitbox(AT_NSPECIAL , 5 , hit_player_obj.x , hit_player_obj.y  );	   
-}
+    }
 }
 
 if state == PS_WAVELAND && state_timer == 1 {

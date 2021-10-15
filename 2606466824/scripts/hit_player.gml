@@ -52,7 +52,7 @@ if (revengeMult > 1 && get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num
 	
 	var totalNewDamage = round(my_hitboxID.damage * (revengeMult - 1));
 	
-	print(string(totalNewDamage));
+	//print(string(totalNewDamage));
 		
 	set_hitbox_value(AT_DSPECIAL, 3, HG_DAMAGE, round(totalNewDamage / 4));
 	set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE, my_hitboxID.kb_angle);
@@ -74,7 +74,7 @@ if (revengeMult > 1 && get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num
 		spawn_hit_fx(hit_player_obj.x, hit_player_obj.y - 30, burst);
 	}
 	
-	
+	hit_player_obj.orig_knock = min (hit_player_obj.orig_knock, 15);
 	
 	if (phone_cheats[CHEAT_PERSIST] < 2) {
 		revengeMult = 1;

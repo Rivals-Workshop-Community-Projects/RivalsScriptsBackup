@@ -49,7 +49,7 @@ walk_turn_time = 10;
 initial_dash_time = 5;
 initial_dash_speed = 7.5;
 dash_speed = 7.5;
-dash_turn_time = 6;
+dash_turn_time = 4;
 dash_turn_accel = 0.1;
 dash_stop_time = 6;
 dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
@@ -94,7 +94,7 @@ crouch_recovery_frames = 2;
 //parry animation frames
 dodge_startup_frames = 1;
 dodge_active_frames = 2;
-dodge_recovery_frames = 4;
+dodge_recovery_frames = 2;
 
 //tech animation frames
 tech_active_frames = 2;

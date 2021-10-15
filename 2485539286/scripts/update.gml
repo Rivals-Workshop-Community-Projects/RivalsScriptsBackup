@@ -100,7 +100,7 @@ if move_cooldown[AT_USTRONG] > 0 && get_gameplay_time() % 5== 0 {
 if hhh > 0 && dash_speed == 7 {
 	initial_dash_speed = 6;
 	dash_speed = 6
-	leave_ground_max = 5.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
+	leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
     max_jump_hsp = 4.5;
 	air_max_speed = 4;
 	jump_change = 2.5;
@@ -117,7 +117,7 @@ if hhh > 0 && dash_speed == 7 {
 if hhh == 0 && dash_speed != 7 {
 	initial_dash_speed = 7;
 	dash_speed = 7
-	leave_ground_max = 6.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
+	leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
     max_jump_hsp = 6;
 	air_max_speed = 5.5;
 	jump_change = 4;

@@ -87,7 +87,7 @@ phone.dont_fast = false;
 // If you're porting the phone to an existing char and don't need any of these
 // features, you might as well turn on lightweight to save a tiny bit of
 // performance. (see _docs.gml for a full list of what this disables)
-phone.lightweight = false;
+phone.lightweight = true;
 
 // If you've created custom AG_ or HG_ indexes for your character already,
 // use these to change where the phone starts assigning custom AG_s and HG_s.
@@ -222,8 +222,8 @@ initWords("Mastering these mixups is key to a safe recovery.");
 initImage_ext(sprite_get("uspecial_burst"), -6, fa_center, 1, 1, true, c_white, 1, true, 100, 100, 100, 100);
 
 initTip("DSpecial: Revenge");
-initWords("Just like in Smash, Incineroar's DSpecial is Revenge. It's a counter move, but uniquely the counterattack is just that weak flame burst! Instead, Incineroar will power up, blocking some of the damage from the countered hit, and significantly powering up their next hit.");
-initWords("The more damage the incoming attack deals, the bigger of a damage multiplier Incineroar will get on their next attack-- all the way up to a 4x boost! Also, they can counter multiple hits, and the multiplier will grow.");
+initWords("Just like in Smash, Incineroar's DSpecial is Revenge. It's a counter move, but uniquely the counterattack is just that weak flame burst! Instead, Incineroar will power up, blocking some of the damage from the countered hit, and applying a rapid explosion effect to their next hit.");
+initWords("The more damage the incoming attack deals, the more damage the explosions will do-- all the way up to a 3x boost! Also, Incineroar can counter multiple hits, and the multiplier will grow.");
 initWords("Block a strong enough hit and you can make any opponent scared! After all, who wouldn't be when they're fighting a giant glowing tiger who just really wants to give them a nice big hug?");
 initImage_ext(sprite_get("phone_tip2"), 1, fa_center, 1, 1, true, c_white, 1, true, 400, 400, 170, 70);
 
@@ -404,6 +404,18 @@ initSection("Trummel & Alto, Otto, Steve, Link");
 // Recommended template for non-Sandbert characters:
 
 
+
+
+initPatch("1.07", "October 14th, 2021");
+initHeader("General");
+initSection("* Adjusted some local-end Munophone code to hopefully improve performance. Remember, if your computer lags whenever playing as or against Incineroar (or any other Munophone Touch user) online, press F1 on match start to disable some visual aspects and improve performance.");
+initHeader("DSpecial");
+initSection("- When hitting a player with the boost, the knockback of the initial hit now has a limit.");
+initSection("- Increased the effects of SDI on the rapid explosions.");
+initHeader("Jab");
+initSection("* Incineroar can no longer perform a subsequent jab while holding back on the control stick. This is a parity change, to make Incineroar's jab consistent with base cast jabs, and allows buffering of reverse FTilt out of a whiffed jab.");
+initWords_ext("This is a small issue that all workshop characters have because they are coded differently from base cast characters. Thanks, Dan :P", fa_left, c_white, 2, false);
+initWords_ext("I advise all workshop developers add this code, it is available in the Steam Change Notes, as well as the #patch_notes channel on the ExW Discord. Huge thanks to Supersonic for writing this code for me!", fa_left, c_white, 2, false);
 
 
 initPatch("1.06", "October 1st, 2021");

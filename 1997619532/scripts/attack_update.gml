@@ -72,8 +72,8 @@ if attack == AT_UAIR and window == 1 and window_timer == 9  {
 }
 
 if attack == AT_UAIR && has_hit_player && window <= 3 && hit_player_obj.state_cat == SC_HITSTUN && hitpause{
-		hit_player_obj.y += floor(((y - 40) - hit_player_obj.y) / 6)
-		hit_player_obj.x += floor(((x) - hit_player_obj.x) / 6)
+		hit_player_obj.y += floor(((y - 40) - hit_player_obj.y) / 8)
+		hit_player_obj.x += floor(((x) - hit_player_obj.x) / 8)
 }
 
 
@@ -168,10 +168,16 @@ if window == 2 && window_timer % 3 = 0 {
 	}
 	
 	if window <= 2 && has_hit_player {
-		x = hit_player_obj.x - (30 * spr_dir)
+		
+		if !hitpause {
+	       x = hit_player_obj.x - (30 * spr_dir)
 			y = hit_player_obj.y 	
 		window = 3
 		window_timer = 10
+		} else {
+			x += floor((hit_player_obj.x - x - (30 * spr_dir))/6)
+			y += floor((hit_player_obj.y - y )/6)
+		}
 	}
 	
 	if has_hit_player &&  window > 2 && window < 10 {
@@ -180,6 +186,14 @@ if window == 2 && window_timer % 3 = 0 {
 		hit_player_obj.y += ((y) - hit_player_obj.y) / 40
 		hit_player_obj.x += ((x + 60 *spr_dir) - hit_player_obj.x) / 6
 	} 
+	
+	if window == 10 {
+
+		hsp /= 1.2
+		vsp /= 1.1
+
+
+	}
 	
 
 }
@@ -593,9 +607,20 @@ if window > 1 && window <= 3 {
 	if down_down {
 		fall_through = true
 	}
-	if y > room_height/2 + 250 {
-		can_shield = true
+	
+	if y > room_height/2 + 250 && window > 1 {
+		
+		if jump_pressed or shield_pressed {
+			    spawn_hit_fx(x,y-30,14)
+                shake_camera(2,4)
+                sound_play(asset_get("sfx_spin"));
+                sound_play(sound_get("swingw1"),false,noone,.4,1.2);
+                hsp /= 3
+                vsp = -12
+	            set_state (PS_PRATFALL)	
+		}
 	}
+	
 	  if !free {
 	  	hsp = 3*spr_dir
 	  	shake_camera(2,2)
@@ -625,9 +650,10 @@ if attack == AT_TAUNT {
 if attack == AT_DSPECIAL && free {
 	
 	if move_cooldown[AT_NSPECIAL] == 0 {
-	set_attack (AT_NSPECIAL)
+    	set_attack (AT_NSPECIAL)
 	} else {
-	set_state(PS_IDLE_AIR)
+	 set_state(PS_IDLE_AIR)
+	 clear_button_buffer( PC_JUMP_PRESSED );
 	 sound_stop(sound_get("swingw1"))
 	}
 
@@ -668,7 +694,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 1);
-set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 60);
+set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 120);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_Y, -36);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 3);
@@ -683,7 +709,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_AIR_FRICTION, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HSPEED, 9);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_VSPEED, 5);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_ANIM_SPEED, 0.3);
+set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 306);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 65);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 76);

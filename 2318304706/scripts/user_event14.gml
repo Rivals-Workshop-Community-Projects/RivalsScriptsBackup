@@ -1235,7 +1235,7 @@ if !phone.lightweight{
 	
 	if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
 		phone_attacking = 1;
-		phone_window_end = floor(get_window_value(attack, window, AG_WINDOW_LENGTH) * ((get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !has_hit) ? 1.5 : 1));
+		//phone_window_end = floor(get_window_value(attack, window, AG_WINDOW_LENGTH) * ((get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !has_hit) ? 1.5 : 1));
 	}
 	else{
 		if phone_attacking && (state == PS_LANDING_LAG || state == PS_PRATLAND || state_cat == SC_HITSTUN || !visible){
@@ -1371,15 +1371,19 @@ if !phone.lightweight{
 			phone_frozen_damage = get_player_damage(player);
 		}
 	}
-
-	if array_length(phone_dust_query){
-		for(var i = 0; i < array_length(phone_dust_query); i++){
-			var cur = phone_dust_query[i];
-			spawn_base_dust(cur[0], cur[1], cur[2], cur[3]);
-		}
-		phone_dust_query = [];
-	}
 } // END LIGHTWEIGHT
+
+if array_length(phone_dust_query){
+	for(var i = 0; i < array_length(phone_dust_query); i++){
+		var cur = phone_dust_query[i];
+		spawn_base_dust(cur[0], cur[1], cur[2], cur[3]);
+	}
+	phone_dust_query = [];
+}
+if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
+	phone_window_end = floor(get_window_value(attack, window, AG_WINDOW_LENGTH) * ((get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !has_hit) ? 1.5 : 1));
+}
+
 
 if phone_practice{
 

@@ -85,7 +85,7 @@ if hhh == 1 && my_hitboxID.type == 1{
     }
     sound_play(sound_get("mhit2"),false,noone, (0.3 + my_hitboxID.damage/30),0.8)  
     sound_play(sound_get("mhit3"),false,noone, 0.6)  
-    create_hitbox(AT_EXTRA_1,2,hit_player_obj.x,hit_player_obj.y - 40)
+    create_hitbox(AT_EXTRA_1,1,hit_player_obj.x,hit_player_obj.y - 40)
 
 }
 

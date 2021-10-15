@@ -134,6 +134,19 @@ if (attack == AT_JAB){
 		sound_play(asset_get("sfx_land_med"));
 		array_push(phone_dust_query, [x + 10*spr_dir, y, "walk", spr_dir]);		
 	}
+	
+	////
+	//thank you supersonic
+	if (sign(right_down - left_down) == -spr_dir && down_down - up_down == 0 && !has_hit && !has_hit_player) {
+        if (get_window_value(attack, window, AG_WINDOW_CANCEL_TYPE) != 0) {
+            set_window_value(attack, window, AG_WINDOW_CANCEL_TYPE, 0);
+            set_window_value(attack ,window, AG_WINDOW_GOTO, 24);
+        }
+    } else {
+        reset_window_value(attack, window, AG_WINDOW_CANCEL_TYPE);
+        reset_window_value(attack, window, AG_WINDOW_GOTO);
+    }
+	////
 }
 
 if (attack == AT_UTILT){

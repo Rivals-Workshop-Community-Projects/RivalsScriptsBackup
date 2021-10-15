@@ -450,7 +450,7 @@ if attack == AT_EXTRA_1 {
     	
     	nearbyhitbox = collision_circle( x, y , 32, other, true, true ) 
     	
-	if nearbyhitbox != noone && (other.hbox_num == 1 or (other.hbox_num == 2 && other.damage == 5) ) {
+	if nearbyhitbox != noone && (other.hbox_num == 1 or (other.hbox_num == 2 && other.damage == 4) ) {
 
 		    
        	// if nearbyhitbox.type == 2 {
