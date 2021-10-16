@@ -1,0 +1,1 @@
+obj_stage_main.end_timer = 1;

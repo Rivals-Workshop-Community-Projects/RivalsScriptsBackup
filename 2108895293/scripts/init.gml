@@ -188,6 +188,21 @@ set_victory_theme( sound_get( "lumina_victory" ));//twinklesky by fether
 set_victory_bg( sprite_get( "lumina_victorybg" ));
 
 
+kart_sprite = sprite_get("lumina_car");
+kart_frames = 1;
+kart_engine_sound = 1//sound_get("star");
+kart_star_sound = sound_get("star");
+kart_charge_sound = sound_get("star_charge");
+kart_boost_sound = sound_get("star_boost");
+kart_horn_sound = sound_get("spark");
+kart_push_sound = sound_get("beam_charged");
+kart_drift_spr = 3;
+kart_anim_speed = 1;
+kart_anim_speed_scaling = 1;
+//kart_particle1 = particle1;
+//kart_particle2 = particle2;
+//kart_particle3 = particle3;
+
 
 //Rune Support
 abyssEnabled = false;

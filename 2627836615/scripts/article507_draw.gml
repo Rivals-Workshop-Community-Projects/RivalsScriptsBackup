@@ -1,0 +1,1 @@
+if instance_exists(owner) draw_sprite_ext(sprite_index,1, owner.x, owner.y, point_distance(owner.x,owner.y,x,y), 2, point_direction(owner.x,owner.y,x,y),c_white,1)

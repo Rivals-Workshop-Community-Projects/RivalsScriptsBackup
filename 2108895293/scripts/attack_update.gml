@@ -29,6 +29,9 @@ if (attack == AT_FTILT){
 	if (window >= 6 && !was_parried){
 		iasa_script();
 	}
+	if (window == 3 && window_timer == 5){
+		sound_play(sound_get("spark"),false,noone,0.85,1.5);
+	}
 }
 if (attack == AT_DATTACK){
 	if (window >= 5 && !was_parried){
@@ -38,6 +41,11 @@ if (attack == AT_DATTACK){
 if (attack == AT_UTILT){
 	if (window > 1||(window==1&&window_timer==5)){
 		hud_offset = 40
+	}
+}
+if (attack == AT_BAIR){
+	if (window == 2 && window_timer == 2){
+		sound_play(sound_get("spark"),false,noone,0.75,1.4);
 	}
 }
 if (attack == AT_UAIR){
@@ -190,6 +198,9 @@ if (attack == AT_DSPECIAL){
 		slammode = false;
 	}
 	
+	if (window>2||(window==2&&window_timer>10)){
+		can_wall_jump = true;
+	}
 	if (window!=3){
 		if (state_timer%3 ==0){
 			var dsp_particle_rand = random_func( 0, 2, true )
@@ -307,6 +318,10 @@ if (attack == AT_DSPECIAL_AIR){
 		}
 	}
 	
+	
+	if (window>2||(window==2&&window_timer>10)){
+		can_wall_jump = true;
+	}
 	if (window!=3&&window!=4){
 		if (state_timer%3 ==0){
 			var dsp_particle_rand = random_func( 0, 2, true )
@@ -489,9 +504,13 @@ if (attack == AT_FSPECIAL){
 		}
 	}*/
     if (window == 4 && window_timer == 1){
+			var x_off = 0
 		if (!position_meeting(x+(49*spr_dir), y-43, asset_get("par_block"))){
+			//the entire summon code used to be here but now its not
+			x_off = 49
+		}
 			move_cooldown[AT_FSPECIAL] = 200;
-			var LSentry = instance_create(x+(49*spr_dir), y-43, "obj_article1");
+			var LSentry = instance_create(x+(x_off*spr_dir), y-43, "obj_article1");
 			LSentry.player_id = id;
 			LSentry.player = player;
 			LSentry.spr_dir = spr_dir;
@@ -506,7 +525,6 @@ if (attack == AT_FSPECIAL){
 			if (down_down){
 				LSentry.store_down = true;
 			}
-		}
 	}
 }
 

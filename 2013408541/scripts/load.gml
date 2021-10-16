@@ -118,6 +118,7 @@ sprite_change_offset("proj_spr", 18, 18);
 
 sprite_change_offset("slashe_hurtbox", 64, 126);
 sprite_change_offset("slashe_crouch_hurtbox", 64, 126);
+sprite_change_offset("car", 6, 6);
 
 sprite_change_offset("intro", 64, 126);
 

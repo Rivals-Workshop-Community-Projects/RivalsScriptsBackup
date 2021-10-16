@@ -17,6 +17,7 @@ swordin = sprite_get("swordin");
 swordout = sprite_get("swordout");
 waryowl_up = false
 nspecial_perfect = false
+kart_sprite = sprite_get("car")
 
 
 char_height = 60;
@@ -39,7 +40,7 @@ dash_stop_percent = .35; //the value to multiply your hsp by when going into idl
 ground_friction = .6;
 moonwalk_accel = 1.2;
 
-jump_start_time = 6;
+jump_start_time = 5;
 jump_speed = 11;
 short_hop_speed = 6.5;
 djump_speed = 11;
@@ -64,8 +65,8 @@ knockback_adj = .95; //the multiplier to KB dealt to you. 1 = default, >1 = ligh
 land_time = 5; //normal landing frames
 prat_land_time = 20;
 wave_land_time = 5;
-wave_land_adj = 1.05; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .7; //grounded deceleration when wavelanding
+wave_land_adj = 1.1; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_friction = .2; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 1;

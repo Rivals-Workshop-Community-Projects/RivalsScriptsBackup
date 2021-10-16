@@ -65,6 +65,9 @@ sprite_change_offset("hit_effect_test", 120, 120);
 sprite_change_offset("particle1", 16, 16);
 sprite_change_offset("particle2", 16, 16);
 sprite_change_offset("particle3", 16, 16);
+sprite_change_offset("pt1", 8, 8);
+sprite_change_offset("pt2", 8, 8);
+sprite_change_offset("pt3", 8, 8);
 sprite_change_offset("lightsentry", 80, 80);
 sprite_change_offset("uair_bomb", 80, 80);
 
@@ -77,6 +80,8 @@ sprite_change_offset("bullet3_kirby_strip8", 80, 80);
 
 sprite_change_offset("lumina_phonepose", 74, 114);
 sprite_change_offset("plat", 74, 114);
+
+sprite_change_offset("lumina_car",6, 6);
 
 sprite_change_collision_mask("lightsentry", true, 2, 25*2, 25*2, 53*2, 53*2, 1);//50 50 100 100
 sprite_change_collision_mask("uair_bomb", true, 2, 20*2, 35*2, 58*2, 43*2, 1);

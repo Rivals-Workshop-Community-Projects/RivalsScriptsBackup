@@ -6,7 +6,7 @@ set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"));
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 40);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 30);//40
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 8);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, .5);
@@ -15,7 +15,7 @@ set_window_value(AT_NSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_VSPEED, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("mfx_star"));
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 15);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 14);
 set_window_value(AT_DSPECIAL, 1, AG_STRONG_CHARGE_WINDOW, 1);
 
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_TYPE, 1);

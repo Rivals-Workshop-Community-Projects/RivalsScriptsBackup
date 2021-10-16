@@ -47,13 +47,13 @@ if (my_hitboxID.attack == AT_FSTRONG && window == 2 && window_timer < 3)
 	hit_player_obj.y = y
 }
 
-if (my_hitboxID.hbox_num >= 10){
+/*if (my_hitboxID.hbox_num >= 10){
 	if has_rune("E") = false
 	{
 		has_hit = false
 	}
 	//has_hit = false
-}
+}*/
 if (my_hitboxID.hbox_num < 10) and my_hitboxID.attack != AT_NSPECIAL and waryowl < 1000 {
 	if helmet == 1
 	{

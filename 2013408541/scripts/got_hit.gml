@@ -8,15 +8,15 @@ if (waryowl > 0)
 {
 	if has_rune("J")
 	{
-		waryowl -= 50;
+		waryowl -= 25;
 		if helmet == 1
 		{
-			waryowl -= 50;
+			waryowl -= 25;
 		}
 	}
 	else
 	{
-		waryowl -= 100;
+		waryowl -= 50;
 		if helmet == 1
 		{
 			waryowl -= 100;

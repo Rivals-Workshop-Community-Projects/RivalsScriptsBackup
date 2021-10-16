@@ -406,6 +406,10 @@ initSection("Trummel & Alto, Otto, Steve, Link");
 
 
 
+initPatch("1.071", "October 15th, 2021");
+initHeader("Jab");
+initSection("* Fixed a bug where Jab 1 would do an excessive amount of damage. (Jeez, how'd that happen?)");
+
 initPatch("1.07", "October 14th, 2021");
 initHeader("General");
 initSection("* Adjusted some local-end Munophone code to hopefully improve performance. Remember, if your computer lags whenever playing as or against Incineroar (or any other Munophone Touch user) online, press F1 on match start to disable some visual aspects and improve performance.");

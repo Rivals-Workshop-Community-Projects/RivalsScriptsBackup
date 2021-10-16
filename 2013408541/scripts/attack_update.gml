@@ -85,11 +85,11 @@ case AT_NSPECIAL:
 	}
 	if (has_hit)
 	    waryowl = waryowl;
-	if (window == 1 && window_timer <= 19) //reset charge to 0
+	if (window == 1 && window_timer <= 14) //reset charge to 0
 	{
         dspec_charge = 0;
     }
-    else if (window == 1 && window_timer >= 20)
+    else if (window == 1 && window_timer >= 15)
 	{
 	    //waryowl += 5;
         ++nspec_charge; //charge
@@ -97,12 +97,12 @@ case AT_NSPECIAL:
         {
         	super_armor = true;
         }
-        if (special_down && window_timer == 40) //loop
+        if (special_down && window_timer == 30) //loop
 		{
-            window_timer = 20;
+            window_timer = 15;//20
   
         }
-        if (special_down && (window_timer == 20 or window_timer == 30 or window_timer == 40))
+        if (special_down && (window_timer == 15 or window_timer == 30 or window_timer == 22))
         {
         		waryowl += 50;
         }
@@ -110,59 +110,57 @@ case AT_NSPECIAL:
 		{
             window = 2;
             window_timer = 0;
-			if (nspec_charge >= 60)
+			if waryowl >= 1000
 			{
-				if waryowl >= 1000
+				set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 30);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 10);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 1);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 25);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 1);
+				if has_rune("M")
 				{
-					set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 30);
-					set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 10);
-					set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 1);
-					set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 25);
-					set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
-					set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 1);
-					if has_rune("M")
-					{
-						create_deathbox(x +164 * spr_dir, y - 72, 32, 128, 0, true, 1, 60, 2);
-					}
-				}
-				if waryowl >= 750 and waryowl < 1000
-				{
-					set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 25);
-					set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
-					set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .9);
-					set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 20);
-					set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 8);
-					set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, .9);
-				}
-				if waryowl >= 500 and waryowl < 750
-				{
-					set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 25);
-					set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
-					set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .8);
-					set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 20);
-					set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
-					set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, .8);
-				}
-				if waryowl >= 250 and waryowl < 500
-				{
-					set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 25);
-					set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
-					set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .6);
-					set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 20);
-					set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 5);
-					set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, .6);
-				}
-				if waryowl >= 0 and waryowl < 250
-				{
-					set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 25);
-					set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5);
-					set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .5);
-					set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 20);
-					set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 4);
-					set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, .5);
+					create_deathbox(x +164 * spr_dir, y - 72, 32, 128, 0, true, 1, 60, 2);
 				}
 			}
-			if (nspec_charge < 30) 
+			if waryowl >= 750 and waryowl < 1000
+			{
+				set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 25);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .9);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 20);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 8);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, .9);
+			}
+			if waryowl >= 500 and waryowl < 750
+			{
+				set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 15);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .8);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 12);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, .8);
+			}
+			if waryowl >= 250 and waryowl < 500
+			{
+				set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 10);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .6);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 8);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 5);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, .6);
+			}
+			if waryowl >= 0 and waryowl < 250
+			{
+				set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 5);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 5);
+				set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .5);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 3);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 4);
+				set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, .5);
+			}
+		}
+			/*if (nspec_charge < 30) 
 			{
 				if waryowl >= 1000
 				{
@@ -212,7 +210,7 @@ case AT_NSPECIAL:
 			}
 			//nspec_charge = 0;
 			//waryowl = 0;
-        }
+        }*/
     }
     if window >= 4
     {
@@ -409,38 +407,38 @@ case AT_DAIR:
 	{
 		spawn_hit_fx( x, y, hit_fx_create( sprite_get( "dair_wind" ), 30 ));
 	}
-	if has_hit == false
+	/*if has_hit == false
 	{
 		set_attack_value(AT_BAIR, AG_LANDING_LAG, 12);
 	}
 	if has_hit == true
 	{
 		set_attack_value(AT_BAIR, AG_LANDING_LAG, 10);
-	}
+	}*/
 	break;
 
 case AT_NAIR:
 	can_fast_fall = false;
-	if has_hit == false
+	/*if has_hit == false
 	{
 		set_attack_value(AT_BAIR, AG_LANDING_LAG, 14);
 	}
 	if has_hit == true
 	{
 		set_attack_value(AT_BAIR, AG_LANDING_LAG, 12);
-	}
+	}*/
 	break;
 	
 case AT_FAIR:
 	can_fast_fall = false;
-	if has_hit == false
+	/*if has_hit == false
 	{
 		set_attack_value(AT_BAIR, AG_LANDING_LAG, 12);
 	}
 	if has_hit == true
 	{
 		set_attack_value(AT_BAIR, AG_LANDING_LAG, 10);
-	}
+	}*/
 	break;
 
 case AT_BAIR:
@@ -452,19 +450,19 @@ case AT_BAIR:
 	{
 		if vsp > 0 and vsp != 0
 		{
-			vsp -= 1;	
+			vsp -= .5;	
 		}
 		if vsp < 0 and vsp != 0
 		{
-			vsp += 1;	
+			vsp += .5;	
 		}
 		if hsp > 0 and hsp != 0
 		{
-			hsp -= 1;	
+			hsp -= .5;	
 		}
 		if hsp < 0 and hsp != 0
 		{
-			hsp += 1;	
+			hsp += .5;	
 		}
 	}
 	if window == 3 and window_timer < 15
@@ -481,14 +479,14 @@ case AT_BAIR:
 	{
 		spawn_hit_fx( x, y, hit_fx_create( sprite_get( "bair_wind" ), 30 ));
 	}
-	if has_hit == false
+	/*if has_hit == false
 	{
 		set_attack_value(AT_BAIR, AG_LANDING_LAG, 12);
 	}
 	if has_hit == true
 	{
 		set_attack_value(AT_BAIR, AG_LANDING_LAG, 8);
-	}
+	}*/
 	break;
 
 case AT_DATTACK:

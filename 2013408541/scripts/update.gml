@@ -189,6 +189,12 @@ else
 with (oPlayer)
     if ("sworded" in self && sworded > 0)
         sworded--;
+        
+if attack == AT_DSPECIAL and free = true{
+	if window == 3 and window_timer >= 6 or window >= 4{
+		create_hitbox(AT_DSPECIAL, 5, x, y)
+	}
+}
 
 draw_indicator = !(introTimer < 10);
 

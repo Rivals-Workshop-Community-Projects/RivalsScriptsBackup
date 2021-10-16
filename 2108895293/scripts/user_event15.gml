@@ -261,6 +261,33 @@ with phone{
 	/*initPatch("1.9 [WIP]", "2020-?-? (YMD)");
 	initPatchWords("this patch is wip... copypaste changelog later...");*/
 	
+	initPatch("2.2", "2021-10-16 (YMD)");
+	initPatchWords_ext("Additions", fa_left, c_yellow, 1, 0);
+	initPatchWords("- rivals RC support... with custom AIR RIDE controls!?");
+	initPatchWords_ext("(WARNING: I HIGHLY _DON'T_ RECOMMEND ATTEMPTING SOMETHING LIKE THIS YOURSELF! IT IS VERY TRICKY AND MY IMPLEMENTATIONS ARE HACKY AND THE POINT OF RIVALS RC IS THAT YOU CAN ENJOY PLAYING AS YOUR OWN CHARACTERS WITHOUT WORRYING ABOUT STATS ETC, I DID THIS AS A PROOF OF CONCEPT)", fa_left, $9999ff, 1, 0);
+	
+	initPatchWords_ext("Changes", fa_left, c_yellow, 1, 0);
+	initPatchWords("- bigger range ftilt!! with tweaked animation to suit the range!!
+	- weird thing added for bair where the animation will immediately skip to the next frame once it hits (so that it would look cooler) don't worry, this does not affect the frame data
+	- extra sound added for bair and ftilt
+	- there is now a visual/sound effect when you ledge cancel your uspecial
+	- dspecial endlag can now be walljump-cancelled
+	- fspecial field now summons even if there's a wall in the way (if there IS a wall in the way, it will instead summon at lumina's location instead)
+	- decreased sound volume of fstrong shatter sound by 1 audacity tick")
+	
+	initPatchWords_ext("Balances", fa_left, c_yellow, 1, 0);
+	initPatchWords_ext("-- -- beneficial", fa_left, c_olive, 1, 0);
+	initPatchWords("- fstrong main big hit's base knockback increased by 1 (8 -> 9)")
+	initPatchWords_ext("-- -- counterplay", fa_left, c_olive, 1, 0);
+	initPatchWords("- uh increased ftilt startup by 1 frame juuuuuust in case (6 -> 7)")
+	
+	initPatchWords_ext("Notes", fa_left, c_yellow, 1, 0);
+	initPatchWords("open for inputs!");
+	
+	
+	//
+	
+	
 	initPatch("2.1", "2021-07-31 (YMD)");
 	initPatchWords_ext("Additions", fa_left, c_yellow, 1, 0);
 	initPatchWords("- added the changelogs in munophone oops.");

@@ -17,7 +17,15 @@ if (state == PS_LANDING_LAG){
 		}
 	}
 }
-
+if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
+	if (attack == AT_BAIR){
+		if (window==3){
+			if (has_hit_player){
+				image_index = 5
+			}
+		}
+	}
+}
 
 if (lu_ds){
 	if (lu_ds_timer<lu_ds_max){

@@ -204,6 +204,18 @@ if (move_cooldown[AT_FSPECIAL]==1){
 	spawn_hit_fx( x-40+random_func( 6, 80, true ), y-(char_height/2)-48+random_func( 13, 96, true ), particle2 );
 	spawn_hit_fx( x-40+random_func( 7, 80, true ), y-(char_height/2)-48+random_func( 14, 96, true ), particle2 );
 }
+if (state==PS_IDLE_AIR && prev_state==PS_LANDING_LAG && attack==AT_USPECIAL && state_timer = 1){
+	sound_play(sound_get("wavedash"),false,noone,0.8);
+	sound_play(sound_get("wavedash"),false,noone,0.8,1.2);
+	white_flash_timer = 7;
+	spawn_hit_fx( x-40+random_func( 1, 80, true ), y-(char_height/2)-48+random_func( 8, 96, true ), particle1 );
+	spawn_hit_fx( x-40+random_func( 2, 80, true ), y-(char_height/2)-48+random_func( 9, 96, true ), particle3 );
+	spawn_hit_fx( x-40+random_func( 3, 80, true ), y-(char_height/2)-48+random_func( 10, 96, true ), particle2 );
+	spawn_hit_fx( x-40+random_func( 4, 80, true ), y-(char_height/2)-48+random_func( 11, 96, true ), particle1 );
+	spawn_hit_fx( x-40+random_func( 5, 80, true ), y-(char_height/2)-48+random_func( 12, 96, true ), particle3 );
+	spawn_hit_fx( x-40+random_func( 6, 80, true ), y-(char_height/2)-48+random_func( 13, 96, true ), particle2 );
+	spawn_hit_fx( x-40+random_func( 7, 80, true ), y-(char_height/2)-48+random_func( 14, 96, true ), particle2 );
+}
 
 if (get_player_color( player ) == 7){ //towerofheaven
 if (outline_color[0] == 0 && outline_color[1] == 0 && outline_color[2] == 0){
@@ -1092,8 +1104,193 @@ if(variable_instance_exists(id,"diag"))
 }
 
 
+//star alterance
+//some codes are borrowed from original code for override, sorry and thanks ><
+if (variable_instance_exists(obj_stage_main, "item_leader_time_height")){
+	var kpt1 = sprite_get("pt1");
+	var kpt2 = sprite_get("pt2");
+	var kpt3 = sprite_get("pt3");
+	with(obj_stage_article){
+		if (variable_instance_exists(id, "owner")){
+			if (owner == other.id){
+				if (variable_instance_exists(id, "takeover_init")){
+					
+					if (a_push_release){
+						a_push_release = false;
+					}
+					
+					//push
+					if (v_in||handbrake_in){
+						z = 0;
+						if (!a_push){
+							a_push = true;
+							a_push_time = 0;
+							sound_play(other.kart_push_sound, false, noone, 1, 1.2)
+							sound_play(other.kart_charge_sound, false, noone, 0.65, 1)
+	/*spawn_hit_fx( x-12+random_func( 1, 24, true ), y-12+random_func( 8, 24, true ), kart_particle1 );
+	spawn_hit_fx( x-12+random_func( 2, 24, true ), y-12+random_func( 9, 24, true ), kart_particle3 );
+	spawn_hit_fx( x-12+random_func( 3, 24, true ), y-12+random_func( 10, 24, true ), kart_particle2 );
+	spawn_hit_fx( x-12+random_func( 4, 24, true ), y-12+random_func( 11, 24, true ), kart_particle3 );*/
+	/*spawn_dust_fx( x-12+random_func( 1, 24, true ), y-12+random_func( 8, 24, true ), kpt1, 9 );
+	spawn_dust_fx( x-12+random_func( 2, 24, true ), y-12+random_func( 9, 24, true ), kpt3, 6 );
+	spawn_dust_fx( x-12+random_func( 3, 24, true ), y-12+random_func( 10, 24, true ), kpt2, 9 );
+	spawn_dust_fx( x-12+random_func( 4, 24, true ), y-12+random_func( 11, 24, true ), kpt3, 6 );*/
+						}
+						
+						//var particlerandom = random_func( 9, 2, true )
+	//spawn_dust_fx( x-12+random_func( 2, 16, true ), y-12+random_func( 9, 16, true ), (particlerandom==1)?kpt3:kpt2, 7 );
+	//spawn_hit_fx( x-8+random_func( 2, 16, true ), y-8+random_func( 9, 16, true ), (particlerandom==1)?other.kart_particle3:other.kart_particle2 );
+						//should_boost = 1;
+						
+						image_angle -= (h_in*drift_steer)-((h_in*steer)/2)
+						
+						/*var testA = radtodeg(arctan2(prev_hvec,prev_vvec))+180+90
+						print("image_angle"+string(image_angle%360)+" testA"+string(testA%360))
+						//var testB = testA - (((image_angle%360)/(testA%360))-1)//something is severely wrong here and i havent fixed it.
+						var testB = (( 9 * testA + image_angle ) / 10.0 )
+						print("inbetween"+string( ((image_angle%360)/(testA%360))-1 ))
+						print("testB"+string(testB))
+						prev_hvec = dcos(testB);
+						prev_vvec = -dsin(testB);*/
+						/*var t_hvec = dcos(image_angle);
+						var t_vvec = -dsin(image_angle);
+						
+						prev_hvec = prev_hvec//(( 1 * t_hvec + prev_hvec ) / 2.099 )
+						prev_vvec = prev_vvec//(( 1 * t_vvec + prev_vvec ) / 2.099 )*/
+						//oh my god
+						var t_hvec = dcos(image_angle);
+						var t_vvec = -dsin(image_angle);
+						
+						var tmp_vel = clamp((a_push_time_max - a_push_time) / a_push_time_max, 0,1)
+						
+						hsp += clamp(tmp_vel,0.15,1)*accel*prev_hvec;
+						vsp += clamp(tmp_vel,0.15,1)*accel*prev_vvec;
+						hsp += (clamp(tmp_vel*0.6,0.2,0.6))*accel*t_hvec;
+						vsp += (clamp(tmp_vel*0.6,0.2,0.6))*accel*t_vvec;
+						
+						hsp -= hsp*(drag+(1*drift_drag));
+						vsp -= vsp*(drag+(1*drift_drag));
+						a_push_time++;
+						if (a_push&&false){
+							drf_amount = 1;
+						}
+						
+						//eof
+					}else{
+						z = 2;
+						a_push = false;
+						a_push_release = true;
+						sound_stop(other.kart_charge_sound)
+					}
+					
+					if (!a_push){
+						prev_hvec = hvec;
+						prev_vvec = vvec;
+					}
+					hvec = dcos(image_angle);
+					vvec = -dsin(image_angle);
+						//print(string(radtodeg(arctan2(hvec,vvec))+180))
+						//print(string(image_angle))
+					
+					if (!a_push){
+						hsp += 1*accel*hvec;
+						vsp += 1*accel*vvec;
+					}
+					
+					hsp -= v_in*accel*hvec;
+					vsp -= v_in*accel*vvec;
+					
+					handbrake_down = 0;
+					
+					
+					//ENGINNEEEEEEEEEE (NOT WORKING) (WORKING NOW)
+					if init <= 1 {
+						
+						engine = -4;
+						var dest_pitch = point_distance(0,0,hsp,vsp)/3.5;
 
-
+						var old_pitch = engine_pitch;
+						
+						engine_pitch = lerp(engine_pitch, dest_pitch, 0.06)
+						//print(engine_pitch);
+						if engine_star < 0 {
+							engine_star = sound_play(other.kart_star_sound, 1, 0, 0.5, 0.25);
+					//		print(engine_sound)
+						} else {
+							audio_sound_pitch(engine_star, engine_pitch)
+							
+							var vol = (a_push)?0:abs(engine_pitch-old_pitch)*100 + 0.2;
+							sound_volume(engine_star, vol, 0)
+					//		print(string(vol)+" "+string(engine_pitch)+" "+string(old_pitch))
+						}
+						image_index += anim_speed + (spd*anim_speed_scale);
+						if image_index >= frames image_index = abs(image_index-frames);
+						
+					//	image_index = (image_index+aspd) mod frames;
+					}
+					//ENGINNEEEEEEEEEE
+					
+					
+					//boost.
+					//currently code mostly intact
+					//need to reflect push charge status/time
+					//code changed now
+					if (a_push){
+						//coins = clamp(((a_push_time/a_push_time_max)*10)-1, 0, 9)
+						coins = clamp(ease_cubeIn(-2, 9, a_push_time, round(a_push_time_max/1.7)),0,9)
+						//print("boost"+string(should_boost))
+						v_in = 0;
+					}
+					else if (coins && a_push_release){
+						hsp += coins*hvec*0.75;//.65
+						vsp += coins*vvec*0.75;
+						coins = 0;
+						sound_stop(other.kart_boost_sound);
+						sound_play(other.kart_boost_sound, 0, noone, 0.6, 1);
+						
+						should_boost = false;
+						var h = spawn_dust_fx(x,y,obj_stage_main.hfx[1],12);
+						h.draw_angle = image_angle;
+						h.hsp = -hsp;
+						h.vsp = -vsp;
+						h.depth = depth;
+						h.dust_color = 0;
+						
+						/*var h = spawn_dust_fx(x,y,obj_stage_main.hfx[1],12);
+						h.draw_angle = image_angle;
+						h.hsp = -hsp;
+						h.vsp = -vsp;*/
+					//	h.fg_index = h.sprite_index;
+					//	h.player = play;
+					} else should_boost = 0;
+					
+					//eof
+				}else{
+					//take over init
+					takeover_init = true;
+					engine_sound = other.kart_engine_sound
+					horn_sound = other.kart_horn_sound
+						accel = .18;//.20
+						drag = 0.035;
+						steer = 2.15;
+					a_push = false;
+					a_push_time = 0;
+					a_push_time_max = 120;
+					a_push_release = false;
+					hvec = 0;
+					vvec = 0;
+					prev_hvec = 0;
+					prev_vvec = 0;
+					should_boost_star = 0;
+					engine_star = noone;
+					//engine_star_pitch = 0;
+					//dest_star_pitch = 0;
+					//old_star_pitch = 0;
+				}
+			}
+		}
+	}
+}
 
 
 

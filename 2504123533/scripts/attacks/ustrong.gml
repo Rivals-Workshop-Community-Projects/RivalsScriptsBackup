@@ -20,7 +20,7 @@ set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_SFX, asset_get("sfx_swish_heavy2"));
-set_window_value(AT_USTRONG, 3, AG_WINDOW_SFX_FRAME, 6);
+set_window_value(AT_USTRONG, 3, AG_WINDOW_SFX_FRAME, 8);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.1);
 
@@ -53,7 +53,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, 1.0);
-set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_waterhit_heavy2"));
+set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, 0);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_PARTICLE_NUM, 1);
@@ -69,7 +69,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_PLASMA_SAFE, true);
-
+set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_PARRY_STUN, true);
 
 
 //Linking Hit, Charged (THIS is meant to link. Always.)
@@ -87,10 +87,9 @@ set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 5);
 set_hitbox_value(AT_USTRONG, 2, HG_ANGLE, 90);
 set_hitbox_value(AT_USTRONG, 2, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 0.5);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_USTRONG, 2, HG_HITPAUSE_SCALING, 1.0);
-set_hitbox_value(AT_USTRONG, 2, HG_DRIFT_MULTIPLIER, 0.01);
 set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, 1);
 
@@ -104,3 +103,4 @@ set_hitbox_value(AT_USTRONG, 2, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_USTRONG, 2, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_USTRONG, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_USTRONG, 2, HG_PROJECTILE_PLASMA_SAFE, true);
+set_hitbox_value(AT_USTRONG, 2, HG_PROJECTILE_PARRY_STUN, true);
