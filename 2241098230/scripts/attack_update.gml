@@ -4,10 +4,11 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 }
 //Dspecial Cancel
 // Dash Cancel (callie code from fungi, make sure we ask permission for this one when we can)
-	if (attack = AT_DSPECIAL && window == 2 ||attack = AT_DSPECIAL && window == 1){// && window_timer >= 5
+	if (attack = AT_DSPECIAL && window == 2){// && window_timer >= 5
 		if (shield_pressed || shield_down){
 			if (spr_dir == 1){
 				if (left_pressed || left_down){
+					move_cooldown[AT_DSPECIAL] = 15
 					window = 7;
 					window_timer = 0;
 					hsp = -6;
@@ -16,6 +17,7 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 					//create_smoke(x, y - 32, 8, 45, 0, 359, 4, 8 * dspecial_charge + (has_rune("L") * 6), 0.18);
 				}
 				else {
+					move_cooldown[AT_DSPECIAL] = 15
 					window = 7;
 					window_timer = 0;
 					hsp = 6;
@@ -26,6 +28,7 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 			}
 			else {
 				if (right_pressed || right_down){
+					move_cooldown[AT_DSPECIAL] = 15
 					window = 7;
 					window_timer = 0;
 					hsp = 6;
@@ -34,6 +37,7 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 					//create_smoke(x, y - 32, 8, 45, 0, 359, 4, 8 * dspecial_charge + (has_rune("L") * 6), 0.18);
 				}
 				else {
+					move_cooldown[AT_DSPECIAL] = 15
 					window = 7;
 					window_timer = 0;
 					hsp = -6;

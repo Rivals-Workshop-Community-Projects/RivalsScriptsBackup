@@ -65,6 +65,10 @@ uspec_cancel_alarm = -1;
 attack_canceled = false;
 
 // USPECIAL
+
+temp_has_airdodge = false;
+yet_another_uspec_timer = -1; // another  attempt at teleport invincibilty bug...
+yet_another_uspec_timer_length = 20;
 changed_state = -999; // for debugging any state changes
 has_hit_uspecial = false; // no more Uspecial chains > 2, reset this when touching ground again
 has_hit_player_ANY_HITBOX = false; // I need one that doesn't reset halfway

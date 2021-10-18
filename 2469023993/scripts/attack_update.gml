@@ -31,39 +31,49 @@ if swift_mode = true{
 	set_hitbox_value(AT_NAIR, 2, HG_BASE_KNOCKBACK, 10);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 11);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_FINAL_BASE_KNOCKBACK, 7);
+	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 3);
 	set_hitbox_value(AT_FSTRONG, 5, HG_DAMAGE, 8);
-	set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 15);
-	set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 15);
+	set_hitbox_value(AT_FSTRONG, 6, HG_DAMAGE, 3);
+	set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 17);
+	set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 17);
+	set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 3);
 	set_hitbox_value(AT_USTRONG, 5, HG_DAMAGE, 8);
+	set_hitbox_value(AT_USTRONG, 7, HG_DAMAGE, 3);
+	set_hitbox_value(AT_USTRONG, 6, HG_DAMAGE, 3);
 	set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 4);
 	set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 4);
 	set_hitbox_value(AT_UTILT, 3, HG_DAMAGE, 4);
-	set_hitbox_value(AT_UTILT, 4, HG_DAMAGE, 5);
-	set_hitbox_value(AT_UTILT, 5, HG_DAMAGE, 5);
-	set_hitbox_value(AT_UTILT, 6, HG_DAMAGE, 5);
+	set_hitbox_value(AT_UTILT, 4, HG_DAMAGE, 6);
+	set_hitbox_value(AT_UTILT, 5, HG_DAMAGE, 6);
+	set_hitbox_value(AT_UTILT, 6, HG_DAMAGE, 6);
 	set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 4);
-	set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 6);
-	set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 11);
+	set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 7);
+	set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 12);
 	set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 7);
 	set_hitbox_value(AT_BAIR, 3, HG_DAMAGE, 7);
-	set_hitbox_value(AT_BAIR, 4, HG_DAMAGE, 11);
+	set_hitbox_value(AT_BAIR, 4, HG_DAMAGE, 12);
 	set_hitbox_value(AT_BAIR, 5, HG_DAMAGE, 6);
-	set_hitbox_value(AT_DAIR, 5, HG_DAMAGE, 4);
-	set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 10);
+	set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 3);
+	set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 3);
+	set_hitbox_value(AT_DAIR, 3, HG_DAMAGE, 3);
+	set_hitbox_value(AT_DAIR, 4, HG_DAMAGE, 3);
+	set_hitbox_value(AT_DAIR, 5, HG_DAMAGE, 3);
+	set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 11);
 	set_hitbox_value(AT_DATTACK, 2, HG_DAMAGE, 7);
 	set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 8);
-	set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 11);
-	set_hitbox_value(AT_FAIR, 6, HG_DAMAGE, 5);
+	set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 13);
+	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 2);
+	set_hitbox_value(AT_FAIR, 6, HG_DAMAGE, 3);
 	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 12);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 3);
-	set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 10);
+	set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 11);
 	set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, 6);
 	set_hitbox_value(AT_JAB, 1, HG_DAMAGE, 4);
 	set_hitbox_value(AT_JAB, 2, HG_DAMAGE, 4);
 	set_hitbox_value(AT_JAB, 3, HG_DAMAGE, 5);
 	set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 3);
-	set_hitbox_value(AT_NAIR, 2, HG_DAMAGE, 7);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 12);
+	set_hitbox_value(AT_NAIR, 2, HG_DAMAGE, 8);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 15);
 	set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_ori_seinhit_heavy"));
 	set_hitbox_value(AT_FSTRONG, 5, HG_HIT_SFX, asset_get("sfx_ori_energyhit_heavy"));
 	set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_ori_energyhit_heavy"));
@@ -95,6 +105,7 @@ if swift_mode = true{
 	set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 	set_hitbox_value(AT_FAIR, 6, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_burnconsume"));
+	set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 	set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_ice_shatter_big"));
 	set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 	set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
@@ -161,6 +172,45 @@ if swift_mode = true{
 	set_hitbox_value(49, 2, HG_HITBOX_X, 250);
 	set_hitbox_value(49, 2, HG_WIDTH, 500);
 	set_window_value(AT_UAIR, 1, AG_WINDOW_VSPEED, -0.5);
+	set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
+	set_window_value(AT_UTILT, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
+	set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
+	set_window_value(AT_UAIR, 2, AG_WINDOW_SFX, sound_get("suairEX"));
+	set_window_value(AT_BAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
+	set_window_value(AT_DAIR, 1, AG_WINDOW_SFX, sound_get("kickEX"));
+	set_window_value(AT_DAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
+	set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
+	set_window_value(AT_DTILT, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
+	set_window_value(AT_DTILT, 3, AG_WINDOW_SFX, sound_get("slamEX"));
+	set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, sound_get("spinEX"));
+	set_window_value(AT_FAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
+	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_blink_dash"));
+	set_window_value(AT_FTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
+	set_window_value(AT_FTILT, 2, AG_WINDOW_SFX, sound_get("clapEX"));
+	set_window_value(AT_JAB, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
+	set_window_value(AT_JAB, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
+	set_window_value(AT_JAB, 7, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
+	set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, asset_get("sfx_forsburn_combust"));
+	if (attack == AT_FSTRONG){
+		if (window == 2 && window_timer == 1){
+		sound_play(asset_get("sfx_ori_dsmash_skitter_sein"))
+		}
+	}
+
+	if (attack == AT_DSTRONG){
+		if (window == 2 && window_timer == 1){
+		sound_play(asset_get("sfx_ori_dsmash_skitter_sein"))
+		}
+		if (window == 3 && window_timer == 3){
+		sound_play(asset_get("sfx_ori_dsmash_skitter_sein"))
+		}
+	}
+
+	if (attack == AT_USTRONG){
+		if (window == 2 && window_timer == 1){
+		sound_play(asset_get("sfx_ori_dsmash_skitter_sein"))
+		}
+	}
 }
 
 if swift_mode = false{
@@ -191,10 +241,15 @@ if swift_mode = false{
 	set_hitbox_value(AT_NAIR, 2, HG_BASE_KNOCKBACK, 5);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_FINAL_BASE_KNOCKBACK, 5);
+	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 2);
 	set_hitbox_value(AT_FSTRONG, 5, HG_DAMAGE, 6);
+	set_hitbox_value(AT_FSTRONG, 6, HG_DAMAGE, 2);
 	set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 13);
 	set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 13);
+	set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 2);
 	set_hitbox_value(AT_USTRONG, 5, HG_DAMAGE, 6);
+	set_hitbox_value(AT_USTRONG, 6, HG_DAMAGE, 2);
+	set_hitbox_value(AT_USTRONG, 7, HG_DAMAGE, 2);
 	set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 3);
 	set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 3);
 	set_hitbox_value(AT_UTILT, 3, HG_DAMAGE, 3);
@@ -208,11 +263,16 @@ if swift_mode = false{
 	set_hitbox_value(AT_BAIR, 3, HG_DAMAGE, 6);
 	set_hitbox_value(AT_BAIR, 4, HG_DAMAGE, 9);
 	set_hitbox_value(AT_BAIR, 5, HG_DAMAGE, 4);
+	set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 2);
+	set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 2);
+	set_hitbox_value(AT_DAIR, 3, HG_DAMAGE, 2);
+	set_hitbox_value(AT_DAIR, 4, HG_DAMAGE, 2);
 	set_hitbox_value(AT_DAIR, 5, HG_DAMAGE, 2);
 	set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 8);
 	set_hitbox_value(AT_DATTACK, 2, HG_DAMAGE, 5);
-	set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 6);
-	set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 9);
+	set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 5);
+	set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 10);
+	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 1);
 	set_hitbox_value(AT_FAIR, 6, HG_DAMAGE, 3);
 	set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 10);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 2);
@@ -255,6 +315,7 @@ if swift_mode = false{
 	set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 	set_hitbox_value(AT_FAIR, 6, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ori_sein_fstrong_hit_final"));
+	set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 	set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_ice_shatter"));
 	set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 	set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
@@ -321,6 +382,46 @@ if swift_mode = false{
 	set_hitbox_value(49, 2, HG_HITBOX_X, 225);
 	set_hitbox_value(49, 2, HG_WIDTH, 450);
 	set_window_value(AT_UAIR, 1, AG_WINDOW_VSPEED, 0);
+	set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
+	set_window_value(AT_UTILT, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
+	set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
+	set_window_value(AT_UAIR, 2, AG_WINDOW_SFX, sound_get("suair"));
+	set_window_value(AT_BAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
+	set_window_value(AT_DAIR, 1, AG_WINDOW_SFX, asset_get("sfx_ori_stomp_spin"));
+	set_window_value(AT_DAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
+	set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
+	set_window_value(AT_DTILT, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
+	set_window_value(AT_DTILT, 3, AG_WINDOW_SFX, asset_get("sfx_ori_stomp_hit"));
+	set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, asset_get("sfx_spin"));
+	set_window_value(AT_FAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
+	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_leaves"));
+	set_window_value(AT_FTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
+	set_window_value(AT_FTILT, 2, AG_WINDOW_SFX, asset_get("sfx_birdclap"));
+	set_window_value(AT_JAB, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
+	set_window_value(AT_JAB, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
+	set_window_value(AT_JAB, 7, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
+	set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, asset_get("sfx_ori_sein_fstrong"));
+	//sounds on strongs
+	if (attack == AT_FSTRONG){
+		if (window == 2 && window_timer == 1){
+		sound_play(asset_get("sfx_ori_dsmash_skitter_alone"))
+		}
+	}
+
+	if (attack == AT_DSTRONG){
+		if (window == 2 && window_timer == 2){
+		sound_play(asset_get("sfx_ori_dsmash_skitter_alone"))
+		}
+		if (window == 3 && window_timer == 4){
+		sound_play(asset_get("sfx_ori_dsmash_skitter_alone"))
+		}
+	}
+
+	if (attack == AT_USTRONG){
+		if (window == 2 && window_timer == 1){
+		sound_play(asset_get("sfx_ori_dsmash_skitter_alone"))
+		}
+	}
 }
 
 //fspecial bs
@@ -471,9 +572,7 @@ if (attack == AT_USPECIAL){
 }
 
 
-if swift_mode = false{
-	var max_speed = 3.75;
-}
+
 if attack == AT_TAUNT_2 {
 	if window == 1 {
         if window_timer == 1 && down_down && training{
@@ -511,5 +610,4 @@ if (attack == 49){
 	can_fast_fall = false;
 }
 
-//sounds on strongs
 

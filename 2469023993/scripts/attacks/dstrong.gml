@@ -14,7 +14,7 @@ set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX, sound_get("shadowguide"));
-set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX_FRAME, 1);
+set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX_FRAME, 2);
 
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 17);
@@ -22,7 +22,7 @@ set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_SFX, sound_get("shadowguide"));
-set_window_value(AT_DSTRONG, 3, AG_WINDOW_SFX_FRAME, 1);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_SFX_FRAME, 4);
 
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 16);

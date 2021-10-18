@@ -67,3 +67,7 @@ sprite_change_offset("kirbothrow", 125, 158);
 sprite_change_offset("noxmiis", 60, 30);
 
 sprite_change_offset("noxgoalpost", 18, 41);
+
+sprite_change_offset("nox_hug", 32, 70);
+
+sprite_change_offset("amber_hug", 32, 70);

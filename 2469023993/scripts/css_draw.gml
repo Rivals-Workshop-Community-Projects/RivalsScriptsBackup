@@ -74,40 +74,40 @@ if (get_player_color(player) == 18)
 	draw_sprite_ext(sprite_get("pepsiman_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
 	
 if (get_player_color(player) == 19)
-	draw_sprite_ext(sprite_get("abyss_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
+	draw_sprite_ext(sprite_get("dash_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
 	
 if (get_player_color(player) == 20)
-	draw_sprite_ext(sprite_get("gba_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
-
-if (get_player_color(player) == 21)
-	draw_sprite_ext(sprite_get("flipped_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
-
-if (get_player_color(player) == 22)
-	draw_sprite_ext(sprite_get("hollow_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
-
-if (get_player_color(player) == 23)
-	draw_sprite_ext(sprite_get("dash_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
-
-if (get_player_color(player) == 24)
 	draw_sprite_ext(sprite_get("creep_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
 
-if (get_player_color(player) == 25)
+if (get_player_color(player) == 21)
+	draw_sprite_ext(sprite_get("hollow_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
+
+if (get_player_color(player) == 22)
 	draw_sprite_ext(sprite_get("meat_icon"), 0, x+65, y+115, 2, 2, 0, c_white, 1);
 
-if (get_player_color(player) == 26)
+if (get_player_color(player) == 23)
 	draw_sprite_ext(sprite_get("meat_icon"), 0, x+65, y+115, 2, 2, 0, c_white, 1);
-	
-if (get_player_color(player) == 27)
+
+if (get_player_color(player) == 24)
 	draw_sprite_ext(sprite_get("tom_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
 
-if (get_player_color(player) == 28)
+if (get_player_color(player) == 25)
 	draw_sprite_ext(sprite_get("jerry_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
 
-if (get_player_color(player) == 29)
+if (get_player_color(player) == 26)
 	draw_sprite_ext(sprite_get("bowser_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
+	
+if (get_player_color(player) == 27)
+	draw_sprite_ext(sprite_get("strike_icon"), 0, x+68, y+115, 2, 2, 0, c_white, 1);
 
-if (get_player_color(player) == 30)
+if (get_player_color(player) == 28)
 	draw_sprite_ext(sprite_get("special_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
 
+if (get_player_color(player) == 29)
+	draw_sprite_ext(sprite_get("abyss_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
+
+if (get_player_color(player) == 30)
+	draw_sprite_ext(sprite_get("gba_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);
+
 if (get_player_color(player) == 31)
-	draw_sprite_ext(sprite_get("strike_icon"), 0, x+68, y+115, 2, 2, 0, c_white, 1);
+	draw_sprite_ext(sprite_get("flipped_icon"), 0, x+60, y+120, 2, 2, 0, c_white, 1);

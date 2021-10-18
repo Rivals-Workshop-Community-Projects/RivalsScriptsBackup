@@ -13,6 +13,18 @@ if (state == PS_HITSTUN){
 	atk_cooldown = -1;
 }
 
+// yes my code is very beautiful I know
+if (yet_another_uspec_timer > -1){
+	if(yet_another_uspec_timer == yet_another_uspec_timer_length){
+		temp_has_airdodge = has_airdodge;
+	}
+	yet_another_uspec_timer--;
+	has_airdodge = false;
+	if (yet_another_uspec_timer < 0){
+		has_airdodge = temp_has_airdodge;
+	}
+}
+
 // hello
 if (atk_cooldown > 0) {
 	can_attack = false;

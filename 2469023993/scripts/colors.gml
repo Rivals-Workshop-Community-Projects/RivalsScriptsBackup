@@ -126,11 +126,11 @@ set_color_profile_slot( 12, 5, 235, 78, 78 ); //ENERGY
 
 // Rebellious Shift
 set_color_profile_slot( 13, 0, 81, 0, 173 ); //BODY
-set_color_profile_slot( 13, 1, 0, 19, 122 ); //SHADE
-set_color_profile_slot( 13, 2, 158, 0, 0 ); //LIGHT
+set_color_profile_slot( 13, 1, 116, 0, 122 ); //SHADE
+set_color_profile_slot( 13, 2, 237, 0, 167 ); //LIGHT
 set_color_profile_slot( 13, 3, 0, 0, 0 ); //OUTLINE
-set_color_profile_slot( 13, 4, 181, 181, 181 ); //EYES
-set_color_profile_slot( 13, 5, 0, 0, 0 ); //ENERGY
+set_color_profile_slot( 13, 4, 255, 161, 222 ); //EYES
+set_color_profile_slot( 13, 5, 143, 87, 186 ); //ENERGY
 
 // Gooey Shift
 set_color_profile_slot( 14, 0, 0, 179, 134 ); //BODY
@@ -172,109 +172,109 @@ set_color_profile_slot( 18, 3, 0, 0, 0 ); //OUTLINE
 set_color_profile_slot( 18, 4, 117, 141, 255 ); //EYES
 set_color_profile_slot( 18, 5, 186, 193, 255 ); //ENERGY
 
-// Abyssal Shift
-set_color_profile_slot( 19, 0, 50, 25, 71 ); //BODY
-set_color_profile_slot( 19, 1, 80, 47, 107 ); //SHADE
-set_color_profile_slot( 19, 2, 113, 71, 219 ); //LIGHT
-set_color_profile_slot( 19, 3, 0, 0, 0 ); //OUTLINE
-set_color_profile_slot( 19, 4, 255, 187, 130 ); //EYES
-set_color_profile_slot( 19, 5, 66, 0, 122 ); //ENERGY
-
-// Retro Shift
-set_color_profile_slot( 20, 0, 15, 56, 15 ); //BODY
-set_color_profile_slot( 20, 1, 48, 98, 48 ); //SHADE
-set_color_profile_slot( 20, 2, 234, 255, 186 ); //LIGHT
-set_color_profile_slot( 20, 3, 0, 0, 0 ); //OUTLINE
-set_color_profile_slot( 20, 4, 209, 255, 102 ); //EYES
-set_color_profile_slot( 20, 5, 139, 196, 0 ); //ENERGY
-
-// Eternium Shift
-set_color_profile_slot( 21, 0, 255, 23, 190 ); //BODY
-set_color_profile_slot( 21, 1, 219, 128, 255 ); //SHADE
-set_color_profile_slot( 21, 2, 181, 190, 255 ); //LIGHT
-set_color_profile_slot( 21, 3, 0, 0, 0 ); //OUTLINE
-set_color_profile_slot( 21, 4, 148, 255, 196 ); //EYES
-set_color_profile_slot( 21, 5, 140, 0, 255 ); //ENERGY
-
-// Hollow Shift
-set_color_profile_slot( 22, 0, 235, 235, 235 ); //BODY
-set_color_profile_slot( 22, 1, 179, 179, 179 ); //SHADE
-set_color_profile_slot( 22, 2, 105, 105, 105 ); //LIGHT
-set_color_profile_slot( 22, 3, 0, 0, 0 ); //OUTLINE
-set_color_profile_slot( 22, 4, 0, 0, 0 ); //EYES
-set_color_profile_slot( 22, 5, 255, 255, 255 ); //ENERGY
-
 // Adaptive Shift
-set_color_profile_slot( 23, 0, 255, 174, 0 ); //BODY
-set_color_profile_slot( 23, 1, 255, 246, 79 ); //SHADE
-set_color_profile_slot( 23, 2, 255, 249, 145 ); //LIGHT
-set_color_profile_slot( 23, 3, 0, 0, 0 ); //OUTLINE
-set_color_profile_slot( 23, 4, 0, 178, 255 ); //EYES
-set_color_profile_slot( 23, 5, 161, 238, 255 ); //ENERGY
+set_color_profile_slot( 19, 0, 255, 174, 0 ); //BODY
+set_color_profile_slot( 19, 1, 255, 246, 79 ); //SHADE
+set_color_profile_slot( 19, 2, 255, 249, 145 ); //LIGHT
+set_color_profile_slot( 19, 3, 0, 0, 0 ); //OUTLINE
+set_color_profile_slot( 19, 4, 0, 178, 255 ); //EYES
+set_color_profile_slot( 19, 5, 161, 238, 255 ); //ENERGY
 
 // Explosive Shift
-set_color_profile_slot( 24, 0, 129, 255, 117 ); //BODY
-set_color_profile_slot( 24, 1, 13, 153, 0 ); //SHADE
-set_color_profile_slot( 24, 2, 204, 255, 199 ); //LIGHT
-set_color_profile_slot( 24, 3, 0, 0, 0 ); //OUTLINE
-set_color_profile_slot( 24, 4, 0, 0, 0 ); //EYES
-set_color_profile_slot( 24, 5, 255, 136, 0 ); //ENERGY
+set_color_profile_slot( 20, 0, 129, 255, 117 ); //BODY
+set_color_profile_slot( 20, 1, 13, 153, 0 ); //SHADE
+set_color_profile_slot( 20, 2, 204, 255, 199 ); //LIGHT
+set_color_profile_slot( 20, 3, 0, 0, 0 ); //OUTLINE
+set_color_profile_slot( 20, 4, 0, 0, 0 ); //EYES
+set_color_profile_slot( 20, 5, 255, 136, 0 ); //ENERGY
+
+// Hollow Shift
+set_color_profile_slot( 21, 0, 235, 235, 235 ); //BODY
+set_color_profile_slot( 21, 1, 179, 179, 179 ); //SHADE
+set_color_profile_slot( 21, 2, 105, 105, 105 ); //LIGHT
+set_color_profile_slot( 21, 3, 0, 0, 0 ); //OUTLINE
+set_color_profile_slot( 21, 4, 0, 0, 0 ); //EYES
+set_color_profile_slot( 21, 5, 255, 255, 255 ); //ENERGY
 
 // Hellish Shift
-set_color_profile_slot( 25, 0, 150, 0, 0 ); //BODY
-set_color_profile_slot( 25, 1, 122, 0, 0 ); //SHADE
-set_color_profile_slot( 25, 2, 89, 0, 0 ); //LIGHT
-set_color_profile_slot( 25, 3, 0, 0, 0 ); //OUTLINE
-set_color_profile_slot( 25, 4, 0, 0, 0 ); //EYES
-set_color_profile_slot( 25, 5, 66, 66, 66 ); //ENERGY
+set_color_profile_slot( 22, 0, 150, 0, 0 ); //BODY
+set_color_profile_slot( 22, 1, 122, 0, 0 ); //SHADE
+set_color_profile_slot( 22, 2, 89, 0, 0 ); //LIGHT
+set_color_profile_slot( 22, 3, 0, 0, 0 ); //OUTLINE
+set_color_profile_slot( 22, 4, 0, 0, 0 ); //EYES
+set_color_profile_slot( 22, 5, 66, 66, 66 ); //ENERGY
 
 // Salty Shift
-set_color_profile_slot( 26, 0, 99, 53, 0 ); //BODY
-set_color_profile_slot( 26, 1, 122, 65, 0 ); //SHADE
-set_color_profile_slot( 26, 2, 186, 99, 0 ); //LIGHT
-set_color_profile_slot( 26, 3, 0, 0, 0 ); //OUTLINE
-set_color_profile_slot( 26, 4, 253, 255, 148 ); //EYES
-set_color_profile_slot( 26, 5, 166, 166, 166 ); //ENERGY
+set_color_profile_slot( 23, 0, 99, 53, 0 ); //BODY
+set_color_profile_slot( 23, 1, 122, 65, 0 ); //SHADE
+set_color_profile_slot( 23, 2, 186, 99, 0 ); //LIGHT
+set_color_profile_slot( 23, 3, 0, 0, 0 ); //OUTLINE
+set_color_profile_slot( 23, 4, 253, 255, 148 ); //EYES
+set_color_profile_slot( 23, 5, 166, 166, 166 ); //ENERGY
 
 // Reckless Shift
-set_color_profile_slot( 27, 0, 85, 108, 140 ); //BODY
-set_color_profile_slot( 27, 1, 187, 189, 188 ); //SHADE
-set_color_profile_slot( 27, 2, 236, 236, 236 ); //LIGHT
-set_color_profile_slot( 27, 3, 0, 0, 0 ); //OUTLINE
-set_color_profile_slot( 27, 4, 255, 217, 0 ); //EYES
-set_color_profile_slot( 27, 5, 129, 177, 204 ); //ENERGY
+set_color_profile_slot( 24, 0, 85, 108, 140 ); //BODY
+set_color_profile_slot( 24, 1, 187, 189, 188 ); //SHADE
+set_color_profile_slot( 24, 2, 236, 236, 236 ); //LIGHT
+set_color_profile_slot( 24, 3, 0, 0, 0 ); //OUTLINE
+set_color_profile_slot( 24, 4, 255, 217, 0 ); //EYES
+set_color_profile_slot( 24, 5, 129, 177, 204 ); //ENERGY
 
 // Cunning Shift
-set_color_profile_slot( 28, 0, 186, 99, 0 ); //BODY
-set_color_profile_slot( 28, 1, 224, 133, 10 ); //SHADE
-set_color_profile_slot( 28, 2, 255, 255, 128 ); //LIGHT
-set_color_profile_slot( 28, 3, 0, 0, 0 ); //OUTLINE
-set_color_profile_slot( 28, 4, 255, 255, 255 ); //EYES
-set_color_profile_slot( 28, 5, 255, 214, 138 ); //ENERGY
+set_color_profile_slot( 25, 0, 186, 99, 0 ); //BODY
+set_color_profile_slot( 25, 1, 224, 133, 10 ); //SHADE
+set_color_profile_slot( 25, 2, 255, 255, 128 ); //LIGHT
+set_color_profile_slot( 25, 3, 0, 0, 0 ); //OUTLINE
+set_color_profile_slot( 25, 4, 255, 255, 255 ); //EYES
+set_color_profile_slot( 25, 5, 255, 214, 138 ); //ENERGY
 
 // Furious Shift
-set_color_profile_slot( 29, 0, 28, 28, 28 ); //BODY
-set_color_profile_slot( 29, 1, 77, 77, 77 ); //SHADE
-set_color_profile_slot( 29, 2, 255, 8, 0 ); //LIGHT
-set_color_profile_slot( 29, 3, 0, 0, 0 ); //OUTLINE
-set_color_profile_slot( 29, 4, 255, 124, 0 ); //EYES
-set_color_profile_slot( 29, 5, 255, 252, 148 ); //ENERGY
-
-// Stringed Shift
-set_color_profile_slot( 30, 0, 47, 59, 107 ); //BODY
-set_color_profile_slot( 30, 1, 82, 105, 166 ); //SHADE
-set_color_profile_slot( 30, 2, 53, 90, 189 ); //LIGHT
-set_color_profile_slot( 30, 3, 0, 0, 0 ); //OUTLINE
-set_color_profile_slot( 30, 4, 148, 208, 255 ); //EYES
-set_color_profile_slot( 30, 5, 105, 116, 181 ); //ENERGY
+set_color_profile_slot( 26, 0, 28, 28, 28 ); //BODY
+set_color_profile_slot( 26, 1, 77, 77, 77 ); //SHADE
+set_color_profile_slot( 26, 2, 255, 8, 0 ); //LIGHT
+set_color_profile_slot( 26, 3, 0, 0, 0 ); //OUTLINE
+set_color_profile_slot( 26, 4, 255, 124, 0 ); //EYES
+set_color_profile_slot( 26, 5, 255, 252, 148 ); //ENERGY
 
 // Striking Shift
-set_color_profile_slot( 31, 0, 13, 0, 156 ); //BODY
-set_color_profile_slot( 31, 1, 0, 3, 212 ); //SHADE
-set_color_profile_slot( 31, 2, 0, 255, 247 ); //LIGHT
+set_color_profile_slot( 27, 0, 13, 0, 156 ); //BODY
+set_color_profile_slot( 27, 1, 0, 3, 212 ); //SHADE
+set_color_profile_slot( 27, 2, 0, 255, 247 ); //LIGHT
+set_color_profile_slot( 27, 3, 0, 0, 0 ); //OUTLINE
+set_color_profile_slot( 27, 4, 255, 234, 0 ); //EYES
+set_color_profile_slot( 27, 5, 255, 136, 125 ); //ENERGY
+
+// Stringed Shift
+set_color_profile_slot( 28, 0, 47, 59, 107 ); //BODY
+set_color_profile_slot( 28, 1, 82, 105, 166 ); //SHADE
+set_color_profile_slot( 28, 2, 53, 90, 189 ); //LIGHT
+set_color_profile_slot( 28, 3, 0, 0, 0 ); //OUTLINE
+set_color_profile_slot( 28, 4, 148, 208, 255 ); //EYES
+set_color_profile_slot( 28, 5, 105, 116, 181 ); //ENERGY
+
+// Abyssal Shift
+set_color_profile_slot( 29, 0, 50, 25, 71 ); //BODY
+set_color_profile_slot( 29, 1, 80, 47, 107 ); //SHADE
+set_color_profile_slot( 29, 2, 113, 71, 219 ); //LIGHT
+set_color_profile_slot( 29, 3, 0, 0, 0 ); //OUTLINE
+set_color_profile_slot( 29, 4, 255, 187, 130 ); //EYES
+set_color_profile_slot( 29, 5, 66, 0, 122 ); //ENERGY
+
+// Retro Shift
+set_color_profile_slot( 30, 0, 15, 56, 15 ); //BODY
+set_color_profile_slot( 30, 1, 48, 98, 48 ); //SHADE
+set_color_profile_slot( 30, 2, 234, 255, 186 ); //LIGHT
+set_color_profile_slot( 30, 3, 0, 0, 0 ); //OUTLINE
+set_color_profile_slot( 30, 4, 209, 255, 102 ); //EYES
+set_color_profile_slot( 30, 5, 139, 196, 0 ); //ENERGY
+
+// Eternium Shift
+set_color_profile_slot( 31, 0, 255, 23, 190 ); //BODY
+set_color_profile_slot( 31, 1, 219, 128, 255 ); //SHADE
+set_color_profile_slot( 31, 2, 181, 190, 255 ); //LIGHT
 set_color_profile_slot( 31, 3, 0, 0, 0 ); //OUTLINE
-set_color_profile_slot( 31, 4, 255, 234, 0 ); //EYES
-set_color_profile_slot( 31, 5, 255, 136, 125 ); //ENERGY
+set_color_profile_slot( 31, 4, 148, 255, 196 ); //EYES
+set_color_profile_slot( 31, 5, 140, 0, 255 ); //ENERGY
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

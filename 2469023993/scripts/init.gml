@@ -70,8 +70,8 @@ tech_recovery_frames = 1;
 
 //tech roll animation frames
 techroll_startup_frames = 1;
-techroll_active_frames = 3;
-techroll_recovery_frames = 2;
+techroll_active_frames = 2;
+techroll_recovery_frames = 3;
 techroll_speed = 10;
 
 //airdodge animation frames
@@ -137,7 +137,30 @@ fail_text = "Now you're but
 a shadow of your
 former self.";
 
-if (get_player_color( player ) == 29){
+plushForAmber = sprite_get("plushForAmber");
+
+amber_herObj = noone; //The object ID of Amber when she hugs. Amber's own script will set this when the hug is inititated
+amber_thisHugSprite = sprite_get("nox_hug");
+amber_herHugSprite = sprite_get("amber_hug");
+amber_startHug = false; //This variable is set true from Amber's scripts
+amber_thisSpriteInFront = true; //When true, this character's sprite is rendered over Amber's sprite
+amber_autoTurnToHer = true; //This character will automatically face towards Amber upon hug activatation when true
+
+amber_hugStartPos[0] = 42; //The x target offset point (from Amber's pos) where the player should hug Amber at. 
+amber_hugStartPos[1] = 0; //The y target offset point. Recommended to keep this at 0 for grounded interaction
+
+amber_hugExitPos[0] = 42; //The x target offset point (from Amber's pos) where the player stands at when exiting hug state.
+amber_hugExitPos[1] = 0; //The y target offset point.
+
+//The x target offset positions will inherit the character's spr_dir when this is true.
+//Set this to true for character interactions that face toward each other such as hugging
+//Set this to false for centered interaction animations
+amber_useSprDirOffset = true; 
+
+amber_hugExitTimer = 30; //How many frames should pass before either player can exit the hug window loop
+amber_hugExitWindow = 3; //The window to jump to when either player presses a button to exit hug loop
+
+if (get_player_color( player ) == 26){
 	set_victory_theme(sound_get("bowservictory"));
 }
 
@@ -145,42 +168,42 @@ if (get_player_color( player ) == 18){
 	set_victory_theme(sound_get("pepsivictory"));
 }
 
-if (get_player_color( player ) == 31){
+if (get_player_color( player ) ==27){
 	set_victory_theme(sound_get("z3ke"));
 }
 
-if (get_player_color( player ) == 22){
+if (get_player_color( player ) == 21){
 	set_victory_theme(sound_get("hollow"));
 }
 
-if (get_player_color( player ) == 24){
+if (get_player_color( player ) == 20){
 	set_victory_theme(sound_get("halland"));
 }
 
-if (get_player_color( player ) == 30){
+if (get_player_color( player ) == 28){
 	set_victory_theme(sound_get("yoyoyo"));
 }
 
-if (get_player_color( player ) == 23){
+if (get_player_color( player ) == 19){
 	set_victory_theme(sound_get("geometryvictory"));
 }
 
-if (get_player_color( player ) == 25){
+if (get_player_color( player ) == 22){
 	set_victory_theme(sound_get("meatvictory2"));
 }
 
-if (get_player_color( player ) == 26){
+if (get_player_color( player ) == 23){
 	set_victory_theme(sound_get("saltvictory"));
 }
 
-if (get_player_color( player ) == 27){
-	set_victory_theme(sound_get("mousevictory"));
-}
-
-if (get_player_color( player ) == 28){
+if (get_player_color( player ) == 25){
 	set_victory_theme(sound_get("catvictory"));
 }
 
-else if (get_player_color( player ) != 18 && get_player_color( player ) != 29 && get_player_color( player ) != 23 && get_player_color( player ) != 25 && get_player_color( player ) != 26 && get_player_color( player ) != 27 && get_player_color( player ) != 28 && get_player_color( player ) != 30 && get_player_color( player ) != 31 && get_player_color( player ) != 24 && get_player_color( player ) != 22){
+if (get_player_color( player ) == 24){
+	set_victory_theme(sound_get("mousevictory"));
+}
+
+else if (get_player_color( player ) != 18 && get_player_color( player ) != 19 && get_player_color( player ) != 20 && get_player_color( player ) != 21 && get_player_color( player ) != 22 && get_player_color( player ) != 23 && get_player_color( player ) != 24 && get_player_color( player ) != 25 && get_player_color( player ) != 26 && get_player_color( player ) != 27 && get_player_color( player ) != 28){
 	set_victory_theme(sound_get("nox_victory"));
 }

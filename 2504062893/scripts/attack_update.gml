@@ -68,6 +68,7 @@ if (attack == AT_USPECIAL) {
 			y = teleport_y;
 			has_teleported = true;
 			hurtboxID.sprite_index = asset_get("ex_guy_hurt_box"); //gnome solution test
+			yet_another_uspec_timer = yet_another_uspec_timer_length;
 			// window = 2;
 
 			if (article1 != noone){
