@@ -55,9 +55,9 @@ set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_GROUP, 1);
 
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_LIFETIME, 3);
-set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X, 33);
+set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X, 28);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_Y, -56);
-set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 53);
+set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 64);
 set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 49);
 set_hitbox_value(AT_FSTRONG, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 8);
@@ -95,9 +95,9 @@ set_hitbox_value(AT_FSTRONG, 3, HG_HIT_LOCKOUT, 5);
 
 set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 4, HG_LIFETIME, 3);
-set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_X, 33);
+set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_X, 28);
 set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_Y, -56);
-set_hitbox_value(AT_FSTRONG, 4, HG_WIDTH, 53);
+set_hitbox_value(AT_FSTRONG, 4, HG_WIDTH, 64);
 set_hitbox_value(AT_FSTRONG, 4, HG_HEIGHT, 49);
 set_hitbox_value(AT_FSTRONG, 4, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSTRONG, 4, HG_DAMAGE, 10);
@@ -117,9 +117,9 @@ set_hitbox_value(AT_FSTRONG, 4, HG_HIT_LOCKOUT, 5);
 
 set_hitbox_value(AT_FSTRONG, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 5, HG_LIFETIME, 3);
-set_hitbox_value(AT_FSTRONG, 5, HG_HITBOX_X, 55);
+set_hitbox_value(AT_FSTRONG, 5, HG_HITBOX_X, 45);
 set_hitbox_value(AT_FSTRONG, 5, HG_HITBOX_Y, -53);
-set_hitbox_value(AT_FSTRONG, 5, HG_WIDTH, 80);
+set_hitbox_value(AT_FSTRONG, 5, HG_WIDTH, 100);
 set_hitbox_value(AT_FSTRONG, 5, HG_HEIGHT, 56);
 set_hitbox_value(AT_FSTRONG, 5, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSTRONG, 5, HG_DAMAGE, 5);
@@ -135,9 +135,9 @@ set_hitbox_value(AT_FSTRONG, 5, HG_HITBOX_GROUP, 1);
 
 set_hitbox_value(AT_FSTRONG, 6, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 6, HG_LIFETIME, 3);
-set_hitbox_value(AT_FSTRONG, 6, HG_HITBOX_X, 55);
+set_hitbox_value(AT_FSTRONG, 6, HG_HITBOX_X, 45);
 set_hitbox_value(AT_FSTRONG, 6, HG_HITBOX_Y, -53);
-set_hitbox_value(AT_FSTRONG, 6, HG_WIDTH, 80);
+set_hitbox_value(AT_FSTRONG, 6, HG_WIDTH, 100);
 set_hitbox_value(AT_FSTRONG, 6, HG_HEIGHT, 56);
 set_hitbox_value(AT_FSTRONG, 6, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSTRONG, 6, HG_DAMAGE, 7);

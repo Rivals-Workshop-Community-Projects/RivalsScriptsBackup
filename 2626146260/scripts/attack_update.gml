@@ -2,7 +2,7 @@
 if get_player_color(player) == 9 {
 	
  if (state_timer == 1 or (window == 1 && window_timer == 1)) && !hitpause {
-      sound_play(sound_get("squack1"),false,noone, 1 ,
+      sound_play(sound_get("squack1"),false,noone, .85 ,
         max ( 0.9, 1.5 - get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) - (random_func(1,10,true))/100 )
  }          
 
@@ -49,6 +49,16 @@ can_move = false
 		window = 3 
 		window_timer = 0
 		sound_play(sound_get("vBR"))
+	}
+	
+	if window == 3 {
+		state_timer -= 1
+		
+		spawn_hit_fx( x + state_timer*spr_dir*4 - 90 + random_func(1,181,true), y - random_func(2,10,true), 14)
+		
+		if window_timer % 4 == 0 {
+			sound_play(sound_get("slicel"),false,noone,.7,1.1)
+		}
 	}
 	
 }

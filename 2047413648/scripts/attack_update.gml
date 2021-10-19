@@ -59,7 +59,7 @@ if (attack == AT_FSPECIAL){
 	usedfspecial = 1
 	
 	if window == 1 && window_timer == 1{
-		
+		clear_button_buffer(PC_SPECIAL_PRESSED)
 			if get_player_color(player) == 5 && sakura == 1{
 			spawn_hit_fx( x , y - 40, shit5 )
 			}
@@ -83,7 +83,7 @@ if (attack == AT_FSPECIAL){
     } 
     
     if (window >= 2){
-    	
+    	can_special = true;
         can_attack = true;
         can_strong = true;
 	}
@@ -110,7 +110,7 @@ if (attack == AT_BAIR){
 
 if (attack == AT_DAIR){
 	
-	if free && state_timer > 60 && y + vsp > room_height - 150 && ((jump_pressed) or (shield_pressed) or (attack_pressed)) && !has_hit_player{
+	if free && state_timer > 60 && y + vsp > room_height/2 + 300 && ((jump_pressed) or (shield_pressed) or (attack_pressed)) && !has_hit_player{
 		sound_play(sound_get("RI"),false,noone,0.8,0.8)
         sound_play(asset_get("sfx_ori_bash_launch"));
         sound_play(asset_get("sfx_abyss_explosion"))
@@ -184,6 +184,9 @@ if (attack == AT_DAIR){
 		 create_hitbox(AT_DAIR,8,x,y)
 		 create_hitbox(AT_DAIR,9,x,y)
         }
+        if hitpause {
+        	y += 1
+        }
         
 	 with hit_player_obj {
 	 	
@@ -191,10 +194,11 @@ if (attack == AT_DAIR){
 			
 			if get_player_damage(player) < 100 {
 				with other {
+					  set_hitbox_value(AT_DAIR, 9, HG_ANGLE, 90);
+					    set_hitbox_value(AT_DAIR, 8, HG_ANGLE, 90);
 		
 					if y + vsp > room_height {
-						set_hitbox_value(AT_DAIR, 9, HG_ANGLE, 90);
-					    set_hitbox_value(AT_DAIR, 8, HG_ANGLE, 90);
+						
 					    
 						create_hitbox(AT_DAIR,6,x,y)
 						create_hitbox(AT_DAIR,7,x,y)
@@ -246,12 +250,12 @@ if (attack == AT_DAIR){
 		if visible {
 		
 		
-		if x < other.x && other.hitpause == false {
-			x += floor((other.x - 46 - x)/4)
+		if x > other.x && other.hitpause == false {
+			x += floor((other.x + 56 - x)/4)
 		}
 		
 		if x < other.x && other.hitpause == false  {
-		   x += floor((other.x + 46 - x)/4)
+		   x += floor((other.x - 56 - x)/4)
 		}
 		   
 		if other.y - 40 >= y  {
@@ -466,12 +470,38 @@ if attack == AT_DSTRONG {
 
 if attack == AT_NSPECIAL{
     
+   	if free && window > 3 && state_timer > 60 && y + vsp > room_height/2 + 300 && ((jump_pressed) or (shield_pressed) or (attack_pressed)) {
+		sound_play(sound_get("RI"),false,noone,0.8,0.75)
+        sound_play(asset_get("sfx_ori_bash_launch"));
+        sound_play(asset_get("sfx_abyss_explosion"))
+        
+        if x > room_width/2 {
+        	spr_dir = -1
+        } else {
+        	spr_dir = 1
+        }
+        
+        set_state(PS_PRATFALL)
+        vsp = -10
+        prat_land_time = 6;
+        spawn_hit_fx(x,y - 60, 306)
+
+
+        set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_HSPEED, spr_dir * (random_func(1,  7, true) * -1) - 2 - abs(hsp/3) );
+        set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_VSPEED, (random_func(2, 7, true) * -1) - abs(vsp/2) );
+        set_hitbox_value(AT_EXTRA_3, 1, HG_PROJECTILE_ANIM_SPEED, 0.3 + ((random_func(3, 4, true))/10));
+        
+        create_hitbox(AT_EXTRA_3 , 1 , x - 30 * spr_dir, y - 40 );	
+
+	}
+
+
     can_fast_fall = false
     
     hsp /= 1.05
     
     
-    if window <= 3 {
+    if window <= 3 && window != 0{
     	if window > 1 && shield_pressed && has_airdodge{
     		spawn_hit_fx(x - 35*spr_dir,y - 80, 14)
     		char_height = 50;
@@ -1296,7 +1326,6 @@ if attack == AT_TAUNT{
    	if	get_player_color(player) == 5 && sakura == 1 {
    			spawn_hit_fx( x + random_func(22, 400, true) - 200, y - 100 + random_func(23, 100, true), shit6 )
    		}
-   		
    	create_hitbox(AT_EXTRA_3 , random_func(1,  7, true) , x, y - 40 );	
    	
    	 set_hitbox_value(AT_EXTRA_3, 2, HG_PROJECTILE_HSPEED,  (random_func(1,  15, true) ) - 7 );
@@ -1328,12 +1357,11 @@ if attack == AT_TAUNT{
    	}
    }
    
-   if window == 2 && drops < - 2.5 {
+   if window == 2 && drops < -2.5 {
    	
  
    		
-   	if window_timer % 6 = 0 {
-   		
+   	if window_timer % 4 = 0 {
    		  if	get_player_color(player) == 5 && sakura == 1 {
    			spawn_hit_fx( x + random_func(24, 700, true) - 350, y - 200 + random_func(25, 200, true), shit7 )
    			spawn_hit_fx( x + random_func(26, 700, true) - 350, y - 200 + random_func(27, 200, true), shit8 )
@@ -1375,12 +1403,13 @@ if attack == AT_TAUNT{
 		//sound_play(sound_get("Balesi"));
 	}
 		window_timer = 0
-		drops -= 0.3
+		
 		
 		if get_gameplay_time() > 120{
-			sound_play(asset_get("sfx_troupple_rumble"));
+			sound_play(asset_get("sfx_troupple_rumble"),false,noone,.7,2);
+			drops -= 0.8
 		}
-}
+    }
 
 if get_gameplay_time() == 100 {
 	window = 3
@@ -1390,7 +1419,7 @@ if get_gameplay_time() == 100 {
 if window == 3 {
 		
 
-			if window_timer == 1 {
+	    if window_timer == 1 {
 			sound_play(asset_get("sfx_ori_glide_start"));
 			sound_play(asset_get("sfx_ori_bash_projectile"));
 		}

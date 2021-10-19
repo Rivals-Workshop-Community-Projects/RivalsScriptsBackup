@@ -62,11 +62,12 @@ if (attack == AT_DSPECIAL){
         if (window_timer == 14){
             var drain = create_hitbox(AT_DSPECIAL, 1, x+(dspecialcharge*8+64)*spr_dir, y- 40);
             dspecialcharge = 0;
+            move_cooldown[AT_DSPECIAL] = 60;
         }
     }
     
     if (window == 3){
-        move_cooldown[AT_DSPECIAL] = 45;
+        
     }
     
 }
@@ -199,6 +200,7 @@ if (attack == AT_USTRONG){
             if (window_timer == 16){
                 create_hitbox(AT_USTRONG, 1, x, y);
                 create_hitbox(AT_USTRONG, 2, x, y);
+                create_hitbox(AT_USTRONG, 5, x, y);
             } 
         }   
     } else {
@@ -213,6 +215,7 @@ if (attack == AT_USTRONG){
             if (window_timer == 16){
                 create_hitbox(AT_USTRONG, 3, x, y);
                 create_hitbox(AT_USTRONG, 4, x, y);
+                create_hitbox(AT_USTRONG, 6, x, y);
             }
         }
         
@@ -254,15 +257,15 @@ if (attack == AT_BAIR){
             create_hitbox(AT_BAIR, 1, x, y);
         }
         
-        if (window == 3 && window_timer == 3 && !hitpause){
+        if (window == 2 && window_timer == 3 && !hitpause){
             create_hitbox(AT_BAIR, 1, x, y);
         }
         
-        if (window == 5 && window_timer == 3 && !hitpause){
+        if (window == 2 && window_timer == 6 && !hitpause){
             create_hitbox(AT_BAIR, 1, x, y);
         }
         
-        if (window == 7 && window_timer == 3 && !hitpause){
+        if (window == 2 && window_timer == 9 && !hitpause){
             create_hitbox(AT_BAIR, 2, x, y);
         }
         
@@ -274,22 +277,22 @@ if (attack == AT_BAIR){
             create_hitbox(AT_BAIR, 3, x, y);
         }
         
-        if (window == 3 && window_timer == 3 && !hitpause){
+        if (window == 2 && window_timer == 3 && !hitpause){
             create_hitbox(AT_BAIR, 3, x, y);
         }
         
-        if (window == 5 && window_timer == 3 && !hitpause){
+        if (window == 2 && window_timer == 6 && !hitpause){
             create_hitbox(AT_BAIR, 3, x, y);
         }
         
-        if (window == 7 && window_timer == 3 && !hitpause){
+        if (window == 2 && window_timer == 9 && !hitpause){
             create_hitbox(AT_BAIR, 4, x, y);
         }
         
         
     }
     
-    if (window == 9 && window_timer == 9){
+    if (window == 3 && window_timer == 9){
         chargeSpent = 0;
     }
 }
@@ -304,6 +307,7 @@ if (attack == AT_UAIR){
         
         if (window == 1 && window_timer == 12 && !hitpause){
                 create_hitbox(AT_UAIR, 1, x, y);
+                create_hitbox(AT_UAIR, 4, x, y);
             }
             
     } else {
@@ -315,6 +319,7 @@ if (attack == AT_UAIR){
         if (window == 1 && window_timer == 12 && !hitpause){
                 create_hitbox(AT_UAIR, 2, x, y);
                 create_hitbox(AT_UAIR, 3, x, y);
+                create_hitbox(AT_UAIR, 4, x, y);
     
         }
     } 
@@ -336,6 +341,7 @@ if (attack == AT_FAIR){
         
         if (window == 1 && window_timer == 18 && !hitpause){
                 create_hitbox(AT_FAIR, 1, x, y);
+                create_hitbox(AT_FAIR, 3, x, y);
             }
             
     } else {
@@ -347,6 +353,7 @@ if (attack == AT_FAIR){
         
         if (window == 1 && window_timer == 18 && !hitpause){
                 create_hitbox(AT_FAIR, 2, x, y);
+                create_hitbox(AT_FAIR, 4, x, y);
     
         }
     }
@@ -394,6 +401,12 @@ if (attack == AT_DSTRONG){
     
     if (window == 4 && window_timer == 19){
         chargeSpent = 0;
+    }
+}
+
+if (attack == AT_JAB && !hitpause){ //I need this because it will play the sound queue even when jab 2 is canceled when using the windows
+    if (window == 4 && window_timer == 1){
+        sound_play(sound_get("terra_slash2"));
     }
 }
 

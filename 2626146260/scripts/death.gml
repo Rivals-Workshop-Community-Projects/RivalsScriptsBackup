@@ -9,7 +9,7 @@ if(player_id == other.id) {
 
     sound_play(sound_get("vdeath"))  
     if rank > 0 {
-    sound_play(sound_get("rankd"),false,noone,1) 
+    sound_play(sound_get("tipped"),false,noone,.8,0.6) 
     }
     
     if get_player_color(player) == 9  {

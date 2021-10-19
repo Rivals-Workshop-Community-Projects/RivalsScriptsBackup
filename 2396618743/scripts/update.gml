@@ -167,7 +167,7 @@ if (hasCharge == -1){ //If hasCharge is below 0, Terra cannot yet recharge
 
 if (conserveCharge && state_cat != SC_HITSTUN){
 	
-    if (state == PS_IDLE || state == PS_IDLE_AIR || state == PS_CROUCH || state == PS_JUMPSQUAT || state == PS_WALK || state == PS_DASH || state == PS_LANDING_LAG){
+    if (state == PS_IDLE || state == PS_IDLE_AIR || state == PS_CROUCH || state == PS_JUMPSQUAT || state == PS_WALK || state == PS_DASH || state == PS_LANDING_LAG || state == PS_DOUBLE_JUMP || state == PS_FIRST_JUMP || state == PS_AIR_DODGE || state == PS_LAND || state == PS_PARRY || state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD || state == PS_WAVELAND){
   
         calculatedDamage = 0;
         hasCharge = 1;

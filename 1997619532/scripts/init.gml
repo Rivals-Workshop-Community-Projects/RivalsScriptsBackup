@@ -36,7 +36,7 @@ introhit = 0
 wavetime = 0
 wavehit = 0
 
-char_height = 59;
+char_height = 69;
 idle_anim_speed = 0.15;
 crouch_anim_speed = .1;
 walk_anim_speed = .20;
@@ -44,7 +44,7 @@ dash_anim_speed = .4;
 pratfall_anim_speed = .25;
 
 walk_speed = 4;
-walk_accel = 2;
+walk_accel = .6;
 walk_turn_time = 10;
 initial_dash_time = 5;
 initial_dash_speed = 7.5;
@@ -75,7 +75,7 @@ walljump_vsp = 10;
 walljump_time = 20;
 wall_frames = 2; //anim frames before you leave the wall
 max_fall = 9; //maximum fall speed without fastfalling
-fast_fall = 16; //fast fall speed
+fast_fall = 13; //fast fall speed
 gravity_speed = .65;
 hitstun_grav = .5;
 knockback_adj = 1.10; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier

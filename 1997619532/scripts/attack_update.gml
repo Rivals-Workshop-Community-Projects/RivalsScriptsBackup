@@ -56,7 +56,7 @@ if attack == AT_DSTRONG or attack == AT_FSTRONG or attack == AT_USTRONG or attac
 
 if attack == AT_JAB and has_hit and !hitstop {
 	
-	window_timer += 0.4
+	window_timer += 0.6
     
 }
 
@@ -72,7 +72,7 @@ if attack == AT_UAIR and window == 1 and window_timer == 9  {
 }
 
 if attack == AT_UAIR && has_hit_player && window <= 3 && hit_player_obj.state_cat == SC_HITSTUN && hitpause{
-		hit_player_obj.y += floor(((y - 40) - hit_player_obj.y) / 8)
+		hit_player_obj.y += floor(((y - 30) - hit_player_obj.y) / 8)
 		hit_player_obj.x += floor(((x) - hit_player_obj.x) / 8)
 }
 
@@ -106,8 +106,9 @@ if attack == AT_DTILT and has_hit and !hitstop {
 if attack == AT_EXTRA_1 {
 	halo = 0
 	prat_land_time = 20;
-	 move_cooldown[AT_FSPECIAL] = 40
+	 move_cooldown[AT_FSPECIAL] = 5
 	 
+
 	 if window == 1 && window_timer < 4 {
 	 		shake_camera(4,4)
 	 	 if left_down or left_pressed{
@@ -202,13 +203,17 @@ if attack == AT_EXTRA_2 {
 	//Blender
 	halo = 0
 	prat_land_time = 20;
+	can_fast_fall = false
 	
 	if has_hit_player {
 		set_window_value(AT_EXTRA_2, 7, AG_WINDOW_CUSTOM_GRAVITY, 1);
 	}else{
 	set_window_value(AT_EXTRA_2, 7, AG_WINDOW_CUSTOM_GRAVITY, 0.2);
 }
-
+     
+     if has_hit_player {
+     	hsp /= 1.2
+     }
 	if has_hit_player and window > 4 and window < 11 and yrange < 70 and xrange < 100 {
 		
 		hit_player_obj.y += ((y) - hit_player_obj.y) / 5
@@ -222,8 +227,9 @@ if attack == AT_EXTRA_2 {
 		}
 		
          
-        
 	} 
+	
+	
     if window == 1 && window_timer == 1 {
     		shake_camera(6,6)
     		var halodeact = spawn_hit_fx( x - (10 * spr_dir) , y - 50 , 305 )
@@ -253,7 +259,7 @@ if attack == AT_EXTRA_3 {
 	}
 	
 	if window == 2 && window_timer == 1 {
-		
+		sound_play(asset_get("sfx_abyss_explosion"))
 		var rekk = spawn_hit_fx( x - (8 * spr_dir) , y - 50 , 305 )
     		rekk.depth = -1000
     		
@@ -263,6 +269,7 @@ if attack == AT_EXTRA_3 {
     		rek.depth = 1000
     	shake_camera(6,6)
     }
+    init_shader();
     
       if window == 2 && get_player_color(player) == 5 && sakura == 1 {
     if window_timer == 1 {
@@ -289,7 +296,9 @@ if attack == AT_EXTRA_3 {
 }
 
 if attack == AT_FSPECIAL {
-    
+	
+
+    	 
     if has_hit && !hitpause {
     	window_timer += 0.5
     	hsp /= 1.14
@@ -309,23 +318,27 @@ if attack == AT_FSPECIAL {
     	if window_timer == 1 && !hitpause {
     		sound_play(asset_get("sfx_bird_sidespecial_start")); 
     	}
-    	if window_timer == 17 {
+    	if window_timer == 18 {
     		sound_play(asset_get("sfx_swipe_weak1")); 
+    		sound_play(sound_get("swingw1"),false,noone,.7,1.2); 
+    		if free {
+    			vsp = -2
+    		}
     	}
-    	     if (place_meeting(x+10*spr_dir, y, asset_get("par_block"))) {
-                 set_attack (AT_UAIR)
-                 window = 1
-                 window_timer = 10
-                 vsp = -6
-                 hsp = -4*spr_dir
+    	     if (place_meeting(x+10*spr_dir, y, asset_get("par_block"))) && window_timer > 10 {
+    	     	sound_play(sound_get("swingw1"),false,noone,.7,1.2); 
+                 window = 2
+                 window_timer = 0
+                 vsp = -10
+                 hsp = -6*spr_dir
                  move_cooldown [AT_FSPECIAL] = 999
-                  spawn_hit_fx (x+10*spr_dir, y - 20, 305)
+                  spawn_hit_fx (x+10*spr_dir, y - 20, 13)
                   sound_play(sound_get("slice")); 
                   shake_camera (2,4)
              }
     }
     
-   	if window == 2 {
+   	if window >= 2 && vsp > 0{
 		vsp /= 1.3
 	}
 	
@@ -608,7 +621,7 @@ if window > 1 && window <= 3 {
 		fall_through = true
 	}
 	
-	if y > room_height/2 + 250 && window > 1 {
+	if y > room_height/2 + 250 && window > 1 && state_timer > 30{
 		
 		if jump_pressed or shield_pressed {
 			    spawn_hit_fx(x,y-30,14)
@@ -616,8 +629,10 @@ if window > 1 && window <= 3 {
                 sound_play(asset_get("sfx_spin"));
                 sound_play(sound_get("swingw1"),false,noone,.4,1.2);
                 hsp /= 3
-                vsp = -12
-	            set_state (PS_PRATFALL)	
+                vsp = -10
+	            window = 11
+	            window_timer = 0
+	            move_cooldown[AT_DAIR] = 999
 		}
 	}
 	
@@ -715,7 +730,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 65);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 76);
 set_hitbox_value(AT_NSPECIAL, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 3);
-set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 9);
+set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 6);
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 60);
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, sound_get("SpaceCut"));

@@ -32,7 +32,7 @@ if rank > 0  {
 
 if rankm <= 0 {
 	if rank == 1 {
-	   sound_play(sound_get("tipped"),false,noone,1,0.6) 
+	   sound_play(sound_get("tipped"),false,noone,.8,0.6) 
 	    prevrank = rank 
     } else {
     	 prevrank = rank 
@@ -55,7 +55,7 @@ if rank < 6  {
      	case 1 :
      	sound_stop(sound_get("tipped")) 	
      	if rank > prevrank {
-     	sound_play(sound_get("tipped"),false,noone,1,0.7) 
+     	sound_play(sound_get("tipped"),false,noone,.8,0.7) 
      	prevrank = rank
      	}
      	break;
@@ -63,7 +63,7 @@ if rank < 6  {
      	case 2 :
      	sound_stop(sound_get("tipped")) 	
      	if rank > prevrank {
-     	sound_play(sound_get("tipped"),false,noone,1,0.8) 
+     	sound_play(sound_get("tipped"),false,noone,.8,0.8) 
      	prevrank = rank
      	}
      	
@@ -72,7 +72,7 @@ if rank < 6  {
      	case 3 :
      	sound_stop(sound_get("tipped")) 	
      	if rank > prevrank {
-     	sound_play(sound_get("tipped"),false,noone,1,0.9) 
+     	sound_play(sound_get("tipped"),false,noone,.8,0.9) 
      	prevrank = rank
      	}
      	break;
@@ -80,8 +80,8 @@ if rank < 6  {
         case 4 :
      	sound_stop(sound_get("tipped")) 	
      	if rank > prevrank {
-     	sound_play(sound_get("tipped"),false,noone,1,1) 
-     	sound_play(sound_get("tipped"),false,noone,.5,0.7) 
+     	sound_play(sound_get("tipped"),false,noone,.8,1) 
+     	sound_play(sound_get("tipped"),false,noone,.4,0.7) 
      	prevrank = rank
      	}
         
@@ -100,8 +100,8 @@ if rank < 6  {
      	case 5 :
      	sound_stop(sound_get("tipped")) 	
      	if rank > prevrank {
-     	sound_play(sound_get("tipped"),false,noone,1, 1.1) 
-     	sound_play(sound_get("tipped"),false,noone,.5,0.7) 
+     	sound_play(sound_get("tipped"),false,noone,.8, 1.1) 
+     	sound_play(sound_get("tipped"),false,noone,.4,0.7) 
      	prevrank = rank
      	}
      	break;
@@ -110,8 +110,8 @@ if rank < 6  {
         case 6 :
         sound_stop(sound_get("tipped")) 	
      	if rank > prevrank {
-     	sound_play(sound_get("tipped"),false,noone,1, 1.2) 
-     	sound_play(sound_get("tipped"),false,noone,.5,0.6) 
+     	sound_play(sound_get("tipped"),false,noone,.8, 1.2) 
+     	sound_play(sound_get("tipped"),false,noone,.4,0.6) 
      	prevrank = rank
      	}
      	break;
@@ -425,44 +425,75 @@ if state == PS_DASH_TURN or state == PS_WALK_TURN{
 ///DT stuff
 
 if triggered = 1 {
+	
+	if get_gameplay_time() % 30 == 0 {
+		    spawn_hit_fx(x - 50 + random_func(5,101,true),y-58 - random_func(3,60,true),birdb2) 	
+
+	}
+	
+	if get_gameplay_time() % 30 == 15 {
+		    spawn_hit_fx(x - 50 + random_func(5,101,true),y-58 - random_func(3,60,true),birdb1) 	
+    
+	}
+	
 	if get_gameplay_time() % 40 == random_func(16,30,true) {
-	sound_play(sound_get("bnoise1"),false,noone,0.5,.9 - (random_func(1,10,true))/100)  
+	sound_play(sound_get("bnoise1"),false,noone,0.3,.9 - (random_func(1,10,true))/100)  
+    
+    if get_player_color(player) != 9 {
+  
     	switch random_func(1,2,true){
     		case 0:
-    		sound_play(sound_get("taunt1"),false,noone,.8,1.3)
+    		sound_play(sound_get("taunt1"),false,noone,.6,1.6)
     		break;
     		
     		case 1:
-    		sound_play(sound_get("taunt2"),false,noone,.8,1.3)
+    		sound_play(sound_get("taunt2"),false,noone,.6,1.6)
     		break;
     		
     	}
     	
+	} else {
+		
+		sound_play(sound_get("squack1"),false,noone, .4 , 1.2 + (random_func(1,30,true))/100 )
+
+    }
+    	
 	if !free { 	
 	spawn_hit_fx(x - 50 + random_func(2,101,true),y-58,bird2) 
-    } else {
-    spawn_hit_fx(x - 50 + random_func(2,101,true),y-28 - random_func(5,60,true),birdb2) 	
-    }
+    } 
+    spawn_hit_fx(x - 50 + random_func(3,101,true),y-28 - random_func(5,60,true),birdb2) 	
+    
+    
 	
 }
 
 if get_gameplay_time() % 40 == random_func(15,30,true) {
-	sound_play(sound_get("bnoise2"),false,noone,0.5,.9 - (random_func(1,10,true))/100)  
-        switch random_func(1,2,true){
+	sound_play(sound_get("bnoise2"),false,noone,0.3,.9 - (random_func(1,10,true))/100)  
+        if get_player_color(player) != 9 {
+        	
+  
+    	switch random_func(1,2,true){
     		case 0:
-    		sound_play(sound_get("taunt1"),false,noone,.8,1.3)
+    		sound_play(sound_get("taunt1"),false,noone,.6,1.6)
     		break;
     		
     		case 1:
-    		sound_play(sound_get("taunt2"),false,noone,.8,1.3)
+    		sound_play(sound_get("taunt2"),false,noone,.6,1.6)
     		break;
     		
     	}
+    	
+    	} else {
+    		
+    		sound_play(sound_get("squack1"),false,noone, .4 , 1.2 + (random_func(1,30,true))/100 )
+    
+        }
+    
     if !free { 	
 	spawn_hit_fx(x - 50 + random_func(3,101,true),y-58,bird1) 
-    } else {
-    spawn_hit_fx(x - 50 + random_func(3,101,true),y-28 - random_func(6,60,true),birdb1) 	
-    }
+    } 
+    spawn_hit_fx(x - 50 + random_func(4,101,true),y-28 - random_func(6,60,true),birdb1) 	
+    
 }
 
 

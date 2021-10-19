@@ -3,12 +3,28 @@ shader_start();
 draw_sprite(sprite_get("hud_nohalo"), 0, temp_x + 26, temp_y);
 
 
-if halo >= 1 {
-draw_sprite_part(sprite_get("hud_halo"), 0, 0, 0, (halotimer/180) * 182, 36, temp_x + 26, temp_y);
+if halo >= 1 && !hitpause {
+ draw_sprite_part(sprite_get("hud_halo"), 0, 0, 0, (halotimer/180) * 182, 36, temp_x + 26, temp_y);
 }
 
-draw_sprite(sprite_get("hud_halo1"), halo, temp_x + 156, temp_y - 55);
+draw_sprite(sprite_get("hud_halo1"), 0, temp_x + 156, temp_y - 55);
 
+if !hitpause {
+   draw_sprite(sprite_get("hud_halo1"), halo, temp_x + 156, temp_y - 55);
+} else {
+    if get_gameplay_time() % 4 < 2 {
+       draw_sprite(sprite_get("hud_halo1"), halo, temp_x + 156, temp_y - 55);
+    } else {
+        draw_sprite(sprite_get("hud_halo1"), 6, temp_x + 156, temp_y - 55);
+        draw_sprite_part(sprite_get("hud_halo"), 0, 0, 0, (halotimer/180) * 182, 36, temp_x + 26, temp_y);
+    }
+}
+
+if halo >= 5 && get_gameplay_time() % 7 < 4 {
+    
+    draw_sprite_ext(sprite_get("hud_halo1"), 0, temp_x + 156, temp_y - 55,1,1,0,-1,0.5);
+    
+}
 
 
 shader_end();

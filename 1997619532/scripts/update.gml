@@ -212,13 +212,14 @@ if(player_id == other.id) {
 ////////////////
 
 if (!free) {
-	
+	move_cooldown[AT_DAIR] = 0
 	move_cooldown[AT_USPECIAL] = 0
 	if move_cooldown[AT_FSPECIAL] > 40 {
 		move_cooldown[AT_FSPECIAL] = 0
 	}
 };
 if (state == PS_WALL_JUMP) {
+	 move_cooldown[AT_DAIR] = 0
 	move_cooldown[AT_USPECIAL] = 0
 	move_cooldown[AT_FSPECIAL] = 0
 };
@@ -428,7 +429,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 45);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 76);
 set_hitbox_value(AT_NSPECIAL, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 3);
-set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 9);
+set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 6);
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 60);
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, 0.3);
@@ -719,9 +720,9 @@ if wavetime <= 0 {
 	if wavehit > 1 && !hitstop {
 	   wavehit -= 1
 	   
-	   spawn_hit_fx(hit_player_obj.x - 40 + random_func(1, 80, true) , hit_player_obj.y - 40 + random_func(2, 80, true), 302 );	   
+	   spawn_hit_fx(hit_player_obj.x - 40 + random_func(1, 80, true) , hit_player_obj.y - 80 + random_func(2, 80, true), 302 );	   
 
-       create_hitbox(AT_NSPECIAL , 3 , hit_player_obj.x - 40 + random_func(1, 80, true) , hit_player_obj.y - 40 + random_func(2, 80, true) );	   
+       create_hitbox(AT_NSPECIAL , 3 , hit_player_obj.x - 40 + random_func(1, 80, true) , hit_player_obj.y - 60 + random_func(2, 80, true) );	   
     }
 
 	if wavehit == 0 && !hitstop {
@@ -915,6 +916,7 @@ if superTrue == 1 {
     }
     
     if !free {
+    	 
     	halo = 0
     	has_hit_player = false
       set_attack(AT_USPECIAL) 

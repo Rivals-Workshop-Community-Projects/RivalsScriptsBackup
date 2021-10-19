@@ -3,10 +3,7 @@
 //	introhit = 1
 //}
 
-if my_hitboxID.type == 1 && my_hitboxID.attack != AT_NSPECIAL{
-	wavehit -= 1
-	wavetime += 0.2
-}
+
 
 if my_hitboxID.damage >= 1 {
 move_cooldown[AT_EXTRA_3] = hitstop
@@ -102,14 +99,19 @@ if my_hitboxID.attack == AT_FAIR && my_hitboxID.hbox_num == 3 {
 
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 2) {
 	 halo -= 1   
-	 wavehit = 8
-	 wavetime = 20
+	 wavehit = 6
+	 wavetime = 2
+	   sound_play(sound_get("RI"),false,noone, 1.2 ,1.2)	
 }
 
 if (my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 1) {
   sound_play(sound_get("RI"),false,noone, 1.2 ,1.3)	
   spawn_hit_fx( x  , y - 35 , dimg )
   spawn_hit_fx( hit_player_obj.x - 10*spr_dir , hit_player_obj.y - 65 , 305 )
+}
+
+if (my_hitboxID.attack == AT_EXTRA_3 && my_hitboxID.hbox_num > 1) {
+  sound_play(sound_get("SpaceCut"),false,noone, .85 ,1.4)	
 }
 
 if (my_hitboxID.attack == AT_UAIR) && uairhit > 0 {
@@ -123,6 +125,7 @@ if (my_hitboxID.attack == AT_UAIR) && uairhit == 0 && halo < 6 {
 if (my_hitboxID.attack == AT_USTRONG) {
 	 halotimer = 180; 
 	 halo += 1  
+	 sound_play(sound_get("RI"),false,noone, .8,1.12)
 }
 
 if (my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 1) {

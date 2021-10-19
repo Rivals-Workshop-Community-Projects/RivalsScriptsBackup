@@ -1,4 +1,5 @@
 move_cooldown[AT_USPECIAL] = 0 ;
+move_cooldown[AT_DAIR] = 0
 move_cooldown[AT_FSPECIAL] = 0 ;
 //intro = 1
 //if introhit = 0 {

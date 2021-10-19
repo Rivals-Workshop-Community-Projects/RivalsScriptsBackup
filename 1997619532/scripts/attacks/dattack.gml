@@ -49,7 +49,7 @@ set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT_Y_OFFSET, -20);
 set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 303);
-set_hitbox_value(AT_DATTACK, 1, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_DATTACK, 1, HG_HITSTUN_MULTIPLIER, .9);
 
 
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_TYPE, 1);
@@ -72,4 +72,4 @@ set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT_Y_OFFSET, -20);
 set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT, 304);
-set_hitbox_value(AT_DATTACK, 2, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_DATTACK, 2, HG_HITSTUN_MULTIPLIER, .9);

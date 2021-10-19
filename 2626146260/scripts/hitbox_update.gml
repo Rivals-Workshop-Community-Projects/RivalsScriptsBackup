@@ -99,14 +99,14 @@ if attack == AT_FSPECIAL && hbox_num == 3 {
 	
 	if hitbox_timer < 290 && player_id.stormtarget.state != PS_DEAD && player_id.stormtarget.state != PS_RESPAWN {
 		
-	   if hitbox_timer % 12 == 0 {
+	   if hitbox_timer % 12 == 0 && hitbox_timer < 240 {
     	switch random_func(1,2,true){
     		case 0:
-    		sound_play(sound_get("vtaunt1"),false,noone,1.2,1.5)
+    		sound_play(sound_get("vtaunt1"),false,noone,.5,1.5)
     		break;
     		
     		case 1:
-    		sound_play(sound_get("vtaunt2"),false,noone,1.2,1.5)
+    		sound_play(sound_get("vtaunt2"),false,noone,.5,1.5)
     		break;
     		
     	}
@@ -118,8 +118,13 @@ if attack == AT_FSPECIAL && hbox_num == 3 {
 		if hitbox_timer == 270 {
 			sound_play(sound_get("Fstrong1"),false,noone,1.2,1.5)
 			sound_play(asset_get("sfx_absa_boltcloud"))
-			sound_play(sound_get("bnoise1"),false,noone,1,1.4)
+			sound_play(sound_get("bnoise1"),false,noone,1.4,)
 		}
+		
+		if hitbox_timer == 280 {
+			sound_play(sound_get("bnoise2"),false,noone,1.4)
+		}
+		
 		
 		if hitbox_timer == 300 {
 			sound_play(sound_get("counterhit"),false,noone,1,1.4)
@@ -154,11 +159,11 @@ if attack == AT_DSPECIAL && hbox_num == 2 {
 		if hitbox_timer % 3 == 0 {
     	switch random_func(1,2,true){
     		case 0:
-    		sound_play(sound_get("vtaunt1"),false,noone,1.2,1.5)
+    		sound_play(sound_get("vtaunt1"),false,noone,.5,1.5)
     		break;
     		
     		case 1:
-    		sound_play(sound_get("vtaunt2"),false,noone,1.2,1.5)
+    		sound_play(sound_get("vtaunt2"),false,noone,.5,1.5)
     		break;
     		
 
@@ -179,7 +184,7 @@ if attack == AT_DSPECIAL && hbox_num == 1 {
 		   	shake_camera(2,2)
 		destroyed = 1
 		sound_play(asset_get("sfx_blow_medium2"),false,noone,2,1.1 - (random_func(1,20,true))/100)  
-		spawn_hit_fx(x,y + vsp, mblade5)
+		spawn_hit_fx(x,y + vsp - random_func(2,10,true), mblade5)
 		spawn_hit_fx( x - 12, y + 40 - random_func(4, 10, true) , esp )
 		spawn_hit_fx( x + 12, y + 40 - random_func(4, 10, true) , esp )
 	}
