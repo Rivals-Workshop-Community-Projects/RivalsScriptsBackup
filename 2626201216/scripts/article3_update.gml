@@ -48,12 +48,6 @@ if (sprite_index != sprite[state] || mask_index != mask[state])
     mask_index = mask[state];
 }
 
-if (place_meeting(x, y, asset_get("plasma_field_obj")) && state != 2) {
-    sound_play(asset_get("sfx_clairen_hit_med"));
-    spawn_hit_fx(floor(x),floor(y),256)
-    setState(2);
-}
-
 
 
 if (state == 0){ //Dissapear Check
@@ -69,11 +63,11 @@ move_snap(15, 1);
     {
         if (collision_line(x, y, x + 5, y, obj_article3, false, true) != noone)
         {
-            collision_line(x, y, x + 5, y, obj_article3, false, true).death_timer = 1000; 
+            collision_line(x, y, x + 5, y, obj_article3, false, true).death_timer = player_id.death_amount; 
         }
         if (collision_line(x, y, x - 5, y, obj_article3, false, true) != noone)
         {
-            collision_line(x, y, x - 5, y, obj_article3, false, true).death_timer = 1000; 
+            collision_line(x, y, x - 5, y, obj_article3, false, true).death_timer = player_id.death_amount; 
         }
             
             instance_destroy();
@@ -96,6 +90,8 @@ move_snap(15, 1);
 
 if (state == 1 || state = 5){ //Attack
 
+
+    //one time edge determination. truly sadge
     if (death_timer = 980)
     {
                 //DETERMINING EDGES
@@ -131,9 +127,8 @@ if (state == 1 || state = 5){ //Attack
     //rechecking = player_id.rechecking;
     //rechecking_y = player_id.rechecking_y;
 
-    //CHECK FOR GROUND DISSAPEARING
 
-
+    //CHECK FOR ELECTRCITY
     if (player_id.spark = 1 && place_meeting(x,y,player_id))
     {
         setState(8);
@@ -158,7 +153,7 @@ if (state == 1 || state = 5){ //Attack
     //ALL CODE FOR SLIPPING
 
 
-    if ("big_chungus" in self) //HOW????? 
+    if (69 = 420) //HOW????? 
     {
     slipped = instance_place(x, y, oPlayer);                        //assigns the variable slipped to anyone touching it (will this break in ffa?)
 
@@ -222,8 +217,8 @@ if (state == 1 || state = 5){ //Attack
 
     //ALL CODE FOR RECHECKING GOES HERE
     //( (    y < (rechecking_y + 5)    ) ||   ( y > (rechecking_y - 5)   )      ) 
-
-    if (rechecking_collision())
+//rechecking_collision()
+    if (69 = 420)
     {       
 
 
@@ -278,19 +273,22 @@ if (state == 1 || state = 5){ //Attack
     //RECHECKING CODE OVER
 
         //Changing Frames
-
+if (69 = 420)
+{
     if (edge_state = 1)
     {
-        sprite_index = sprite_get("puddle_edge");
+        //sprite_index = sprite_get("puddle_edge");
     }
     if (edge_state = 2)
     {
-        sprite_index = sprite_get("puddle_edge2");
+        //sprite_index = sprite_get("puddle_edge2");
     }
     if (edge_state = 3)
     {
-        sprite_index = sprite_get("puddle_edge3");
+        //sprite_index = sprite_get("puddle_edge3");
     }
+
+}
 
         //ded
 
@@ -298,15 +296,6 @@ if (state == 1 || state = 5){ //Attack
     {
         setState(2);
         call_recheck();
-    }
-
-    if (death_timer < 50)
-    {
-    image_alpha = 1;
-    }
-    else
-    {
-    image_alpha = 1;
     }
 
 
@@ -340,12 +329,11 @@ if (state == 3){ //You can add more of these for as many states as you want
 if (state = 8)
 {
 
-    if (player_id.was_parried && player_id.attack == AT_USPECIAL && marked_for_electricity)
+    if (marked_for_electricity && player_id.was_parried && player_id.attack == AT_USPECIAL)
     {
         setState(2);
     }
 
-    image_alpha = 1;
     if (state_timer = 1)
     {
         sound_play(sound_get("shock3"));

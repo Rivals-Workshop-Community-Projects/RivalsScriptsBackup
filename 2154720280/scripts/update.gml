@@ -1,5 +1,10 @@
 ///
 
+if state == PS_PRATFALL {
+   	if vsp > 0 {
+   		vsp /= 1.05
+   	}
+}
 
 if !instance_exists(hit_player_obj){
 

@@ -15,6 +15,8 @@ if (my_hitboxID.attack == AT_FSPECIAL){
 		window_timer = 1;
 	    grapple_pull_back = 10;
 	    grapple.state_timer = 995;
+	    fspecial_hit = true;
+	    spawn_hit_fx( grapple.x+20*spr_dir, grapple.y-30, 305);  
 	}
 	if (my_hitboxID.hbox_num == 2){
 		grapple.hsp = 0;
@@ -22,6 +24,8 @@ if (my_hitboxID.attack == AT_FSPECIAL){
 		window_timer = 1;
 	    grapple_pull_up = 10;
 	    grapple.state_timer = 995;
+	    fspecial_hit = true;
+	    spawn_hit_fx( grapple.x+20*spr_dir, grapple.y-30, 305);  
 	}
 	move_cooldown[AT_FSPECIAL] = 75;
 }

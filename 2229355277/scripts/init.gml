@@ -243,6 +243,16 @@ for(var i=1; i<amountofspells; i++){
 // Poyo
 // Poyo Poyo Poyo Hiiii
 
+// SAFFRON KARTING?!?!
+if get_player_color(player) > 0{
+    kart_sprite = sprite_get("car_saf")
+} else {
+    kart_sprite = sprite_get("car_safdef")
+}
+kart_engine_sound = 0;
+kart_drift_spr = 0;
+kart_horn_sound = 1;
+
 // Mount Dedede Support
 arena_title = "The Military Researcher";
 

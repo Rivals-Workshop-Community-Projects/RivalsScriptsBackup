@@ -34,3 +34,8 @@ if (move_cooldown[AT_NSPECIAL] == 1 && portalParry){
 	sound_play(sound_get("TB_watered"));
 	spawn_hit_fx(x+16, y-56, 19);
 }
+
+if (birbTimer >= 12){
+	birbTimer = 0;
+}
+birbTimer ++;

@@ -26,7 +26,7 @@ if(attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL){
 	switch(attack){ // Map the start up move to the grab move
 		case AT_FSPECIAL:
 		non_boosted_grab = AT_FTHROW;
-		boosted_grab = AT_FSTRONG_2;
+		boosted_grab = AT_FSPECIAL_2;
 		break;
 		
 		case AT_USPECIAL:

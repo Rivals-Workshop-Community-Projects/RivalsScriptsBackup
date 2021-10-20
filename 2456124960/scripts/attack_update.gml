@@ -258,15 +258,22 @@ if (attack == AT_NSPECIAL){
 if (attack == AT_NSPECIAL_AIR){
     if (window == 1 && window_timer == 1) {
 		crystalOffset = -10;
+		crystalOffset2 = 0;
 		i = 0;
 		airCrystalSpawnX = 0;
 		airCrystalSpawnY = 0;
     }
     if (window == 2 && window_timer == 4){
-		for (i = 30; i < 800 && crystalOffset == -10; i += 4) {
+		for (i = 80; i < 800 && crystalOffset == -10; i += 4) {
 			if ((place_meeting(x, y + i, asset_get("par_block"))) || (place_meeting(x, y + i, asset_get("par_jumpthrough")))) {	
-					print_debug("found a surface " + string(i) + " pixels beneath you");
-					crystalOffset = i;
+				print_debug("found a surface " + string(i) + " pixels beneath you");
+				crystalOffset = i;
+				while ((place_meeting(x, y + crystalOffset - crystalOffset2, asset_get("par_block"))) || (place_meeting(x, y + crystalOffset - crystalOffset2, asset_get("par_jumpthrough")))) {
+					crystalOffset2 += 4;
+					//print("scrolling up a few pixels to find the top of the surface!");
+				}
+				print("top of the surface is " + string(crystalOffset2) + " pixels above where the surface was found.");
+				print("Summary: spawning crystal " + string(crystalOffset - crystalOffset2) + "pixels beneath you");
 			}
 		}
 		
@@ -276,13 +283,13 @@ if (attack == AT_NSPECIAL_AIR){
 			set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 20);
 			set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 20);
 			
-			crystal = instance_create(x + (5 * spr_dir), y - 20 + crystalOffset, "obj_article1");
+			crystal = instance_create(x + (5 * spr_dir), y - 20 + crystalOffset - crystalOffset2, "obj_article1");
 			crystal.fake_vsp = -12;
 			crystalOut = 1;
 			set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 69);
 			
 			airCrystalSpawnX = x;
-			airCrystalSpawnY = y + crystalOffset;
+			airCrystalSpawnY = y + crystalOffset - crystalOffset2;
 		}
     }
 }

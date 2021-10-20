@@ -45,6 +45,9 @@ buildup_water_fx_timer += 1; // increment timer
       status_effect_water = false;
       buildup_water_fx_timer = 0;
     }
+    if(was_parried){
+        buildup_water_fx_timer = 0;
+    }
 }
 else buildup_water_fx_timer = false;
 //#endregion

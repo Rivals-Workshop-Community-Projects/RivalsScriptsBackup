@@ -118,6 +118,7 @@ dash_speed_def = dash_speed;
 air_max_speed_def = air_max_speed;
 smokeconsume_fx_bot = hit_fx_create(asset_get("fire_consume_top_spr"), 18)
 smokeconsume_fx_top = hit_fx_create(asset_get("fire_consume_bot_spr"), 18)
+rounds_left = 12;
 
 set_victory_bg(sprite_get("victory_bg"));
 set_victory_theme(CH_ZETTERBURN);

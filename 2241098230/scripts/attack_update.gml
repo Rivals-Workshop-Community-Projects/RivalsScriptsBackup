@@ -4,59 +4,60 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 }
 //Dspecial Cancel
 // Dash Cancel (callie code from fungi, make sure we ask permission for this one when we can)
-	if (attack = AT_DSPECIAL && window == 2){// && window_timer >= 5
-		if (shield_pressed || shield_down){
-			if (spr_dir == 1){
-				if (left_pressed || left_down){
-					move_cooldown[AT_DSPECIAL] = 15
-					window = 7;
-					window_timer = 0;
-					hsp = -6;
-					vsp = 2;
-					spr_dir = -1;
-					//create_smoke(x, y - 32, 8, 45, 0, 359, 4, 8 * dspecial_charge + (has_rune("L") * 6), 0.18);
-				}
-				else {
-					move_cooldown[AT_DSPECIAL] = 15
-					window = 7;
-					window_timer = 0;
-					hsp = 6;
-					vsp = 2;
-					spr_dir = 1;
-					//create_smoke(x, y - 32, 8, 45, 0, 359, 4, 8 * dspecial_charge + (has_rune("L") * 6), 0.18);
-				}
-			}
-			else {
-				if (right_pressed || right_down){
-					move_cooldown[AT_DSPECIAL] = 15
-					window = 7;
-					window_timer = 0;
-					hsp = 6;
-					vsp = 2;
-					spr_dir = 1;
-					//create_smoke(x, y - 32, 8, 45, 0, 359, 4, 8 * dspecial_charge + (has_rune("L") * 6), 0.18);
-				}
-				else {
-					move_cooldown[AT_DSPECIAL] = 15
-					window = 7;
-					window_timer = 0;
-					hsp = -6;
-					vsp = 2;
-					spr_dir = -1;
-					//create_smoke(x, y - 32, 8, 45, 0, 359, 4, 8 * dspecial_charge + (has_rune("L") * 6), 0.18);
-				}		
-			}
-		}
-}
+// 	if (attack = AT_DSPECIAL && window == 2){// && window_timer >= 5
+// 		if (shield_pressed || shield_down){
+// 			if (spr_dir == 1){
+// 				if (left_pressed || left_down){
+// 					move_cooldown[AT_DSPECIAL] = 15
+// 					window = 7;
+// 					window_timer = 0;
+// 					hsp = -6;
+// 					vsp = 2;
+// 					spr_dir = -1;
+// 					//create_smoke(x, y - 32, 8, 45, 0, 359, 4, 8 * dspecial_charge + (has_rune("L") * 6), 0.18);
+// 				}
+// 				else {
+// 					move_cooldown[AT_DSPECIAL] = 15
+// 					window = 7;
+// 					window_timer = 0;
+// 					hsp = 6;
+// 					vsp = 2;
+// 					spr_dir = 1;
+// 					//create_smoke(x, y - 32, 8, 45, 0, 359, 4, 8 * dspecial_charge + (has_rune("L") * 6), 0.18);
+// 				}
+// 			}
+// 			else {
+// 				if (right_pressed || right_down){
+// 					move_cooldown[AT_DSPECIAL] = 15
+// 					window = 7;
+// 					window_timer = 0;
+// 					hsp = 6;
+// 					vsp = 2;
+// 					spr_dir = 1;
+// 					//create_smoke(x, y - 32, 8, 45, 0, 359, 4, 8 * dspecial_charge + (has_rune("L") * 6), 0.18);
+// 				}
+// 				else {
+// 					move_cooldown[AT_DSPECIAL] = 15
+// 					window = 7;
+// 					window_timer = 0;
+// 					hsp = -6;
+// 					vsp = 2;
+// 					spr_dir = -1;
+// 					//create_smoke(x, y - 32, 8, 45, 0, 359, 4, 8 * dspecial_charge + (has_rune("L") * 6), 0.18);
+// 				}		
+// 			}
+// 		}
+// }
 
 //Fspecial2
 if (attack == AT_FSPECIAL && window == 1 && window_timer == 12 && special_down) {
    set_attack(AT_FSPECIAL_2);
 }
 //glockenburn
-if (attack == AT_NSPECIAL && attack_down && has_rune("N")) {
+if (attack == AT_NSPECIAL && attack_down && (window_timer < 5 && window == 1) || ((attack_pressed || special_pressed) && rounds_left > 0 && attack == AT_NSPECIAL_2 && window == 3) && has_rune("N")) {
 	hurtboxID.sprite_index = get_attack_value(attack,AG_HURTBOX_SPRITE);
-   set_attack(AT_NSPECIAL_2);
+	set_attack(AT_NSPECIAL_2);
+	rounds_left --;
 }
 //Fspecial2 qol
 if (attack = AT_FSPECIAL_2 && window == 2 || window == 3 || window == 4){

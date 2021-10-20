@@ -63,7 +63,7 @@ if (im_gliding == true && jump_down && im_gliding_cont < 150){
 
 //Makes to each djump is shorter
 if (djumps == 1){
-    djump_speed = 8;
+    djump_speed = 7.5;
 }
 if (djumps == 2){
     djump_speed = 7;
@@ -72,7 +72,7 @@ if (djumps == 3){
     djump_speed = 6;
 }
 if (djumps == 0){
-    djump_speed = 9;
+    djump_speed = 8;
 }
 
 //Batarang Cooldown when you grab it again/despawns
@@ -181,6 +181,9 @@ if (grapple.state < 2 && (grapple.hit_wall = true || grapple_pull_back == 1)){
     }
     
     hsp = grapple_speed*spr_dir;
+    if (fspecial_hit == false){
+        spawn_hit_fx( grapple.x+20*spr_dir, grapple.y-25, 305);  
+    }
     grapple.shoulddie = true;
 }
 
@@ -202,6 +205,9 @@ if (grapple.state >= 2 && grapple_pull_up <= 1 &&
     }
     
     hsp = (grapple_speed/1.1)*spr_dir;
+    if (fspecial_hit == false){
+        spawn_hit_fx( grapple.x+20*spr_dir, grapple.y-25, 305);  
+    }
     grapple.shoulddie = true;
 }
 

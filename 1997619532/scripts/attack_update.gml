@@ -131,7 +131,9 @@ if attack == AT_EXTRA_1 {
 	 	}
 	 }
 	//RAnBU
+	if window < 10 {
 	can_move = false
+	}
 		
 
 if window == 2 && window_timer % 3 = 0 {
@@ -297,16 +299,19 @@ if attack == AT_EXTRA_3 {
 
 if attack == AT_FSPECIAL {
 	
-
+    can_fast_fall = false
+    
     	 
     if has_hit && !hitpause {
-    	window_timer += 0.5
+    	window_timer += 0.3
     	hsp /= 1.14
     } else {
+    	
+    	hitstop -= 1
+    	
     	if free {
     		if window = 2 && window_timer > 5 {
     		hsp /= 1.14
-    		window_timer += 0.3
     		}
     	}
     	
@@ -633,6 +638,7 @@ if window > 1 && window <= 3 {
 	            window = 11
 	            window_timer = 0
 	            move_cooldown[AT_DAIR] = 999
+	            destroy_hitboxes();
 		}
 	}
 	

@@ -130,9 +130,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	color_slot++;
 	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(62, 61, 92);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "R-00";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Technology like this is what makes the warriors of the Neo Fire Capital formidable.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by Archytas";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Rykenburn";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "I studied martial arts pioneered by a Fire Capital General named Rykenburn.";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Character by Harbige12";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
 	//Slot 
@@ -223,7 +223,14 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "Nakiri Ayame";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "I get a lot of questions about the horns. I am not an Oni, I am half dragon.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Pallet by Zerks";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Vtuber Pallet by Zerks";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
+	color_slot++;
+	//Slot 
+	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Ouro Kronii";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "The slow cruel hands of time has taken their toll on me.";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Vtuber Pallet for Jmillions";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
 	//Slot 
@@ -235,9 +242,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	color_slot++;
 	//Slot 
 	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 0);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Sailee";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "A warm smile can hide a power unimaginable.";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Character by Opengunner";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Marlow";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Faster than greased lighting.";sub_element_slot++;
+	ce[color_slot,sub_element_slot] = "Pallet by Prober for Zonyx";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
 	//Slot 
@@ -280,13 +287,6 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[color_slot,sub_element_slot] = "Smash Land";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "I long for the days of old. Back when everything was simple.";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = "GBA Pallet";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
-	color_slot++;
-	//Slot 
-	ce[color_slot,sub_element_slot] = make_color_rgb(255, 255, 255);sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Name";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Flavor Text";sub_element_slot++;
-	ce[color_slot,sub_element_slot] = "Pallet Name";sub_element_slot++;
 	ce[color_slot,sub_element_slot] = 0;sub_element_slot = 0;
 	color_slot++;
 	//Slot 

@@ -236,7 +236,7 @@ set_hitbox_value(AT_EXTRA_3, 7, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_EXTRA_3, 7, HG_WINDOW, 2);
 set_hitbox_value(AT_EXTRA_3, 7, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(AT_EXTRA_3, 7, HG_LIFETIME, 300);
-set_hitbox_value(AT_EXTRA_3, 7, HG_HITBOX_X, -12 + 40);
+set_hitbox_value(AT_EXTRA_3, 7, HG_HITBOX_X, -12 + 30);
 set_hitbox_value(AT_EXTRA_3, 7, HG_HITBOX_Y, -5);
 set_hitbox_value(AT_EXTRA_3, 7, HG_PRIORITY, 3);
 set_hitbox_value(AT_EXTRA_3, 7, HG_PROJECTILE_WALL_BEHAVIOR, 0);

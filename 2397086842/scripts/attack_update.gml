@@ -432,7 +432,7 @@ if !hitpause {
           	  }
               
               if has_hit_player && hit_player_obj.visible = true {
-                  hit_player_obj.x += floor((x - hit_player_obj.x)/3)
+                  hit_player_obj.x += floor((x - hit_player_obj.x - 10*hit_player_obj.spr_dir)/3)
                   hit_player_obj.y += floor((y - 30 - hit_player_obj.y)/4)
               }
           }

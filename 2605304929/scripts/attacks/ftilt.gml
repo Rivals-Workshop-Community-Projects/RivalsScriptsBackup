@@ -29,19 +29,19 @@ set_window_value(attack, window_num, AG_WINDOW_SFX_FRAME, get_window_value(attac
 
 window_num++;
 
-// Window #2 / Frame(s) # 4-5 / Active hitbox
+// Window #2 / Frame(s) # 4 / Active hitbox
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_LENGTH, 3);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
 
 window_num++;
 
-// Window #3 / Frame(s) # 6-7 / Endlag
+// Window #3 / Frame(s) # 5-6 / Endlag
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
 set_window_value(attack, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 6);
+set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(attack, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
 //set_window_value(attack, window_num, AG_WINDOW_HSPEED, 6);
 //set_window_value(attack, window_num, AG_WINDOW_HSPEED_TYPE, 0);

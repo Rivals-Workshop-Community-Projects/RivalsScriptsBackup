@@ -32,6 +32,12 @@ if(grabbedid != noone){
         grabbedid.vsp = 0;
 	}
 }
+
+if !(attack == AT_NSPECIAL_2 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))
+{
+    rounds_left = 12;
+}
+
 var smoke_r = 0;
 var smoke_g = 0;
 var smoke_b = 0;

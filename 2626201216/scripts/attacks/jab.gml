@@ -1,6 +1,6 @@
 //Startup 5
 //Active 2
-//Endlag 10
+//Endlag 12
 //Total 18
 
 
@@ -21,7 +21,7 @@ set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAME_START, 5);
  
 
-set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_JAB, 3, AG_WINDOW_HAS_WHIFFLAG, 1); //NOTE: if you make it a multi-hit jab, remove whifflag, since Rivals multi-step jabs do not have whifflag. single-hits like sandbert, elli, etc DO have whifflag

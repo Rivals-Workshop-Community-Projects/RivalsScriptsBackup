@@ -117,7 +117,7 @@ if (shoulddie == true){
 if (instance_exists(grapple_hitbox)){
 	grapple_hitbox.destroyed = true;
 }
-	
+//	spawn_hit_fx( x, y, 305);
 	player_id.killarticles = false;
     instance_destroy();
     exit;

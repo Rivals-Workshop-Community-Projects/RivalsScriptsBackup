@@ -68,15 +68,22 @@ if (state == 2){
 	x = player_id.x-5*player_id.spr_dir;
 	y = player_id.y-10;
 	player_id.mine_myself = true;
+	batarang_carry = false;
 }
 
 //State 3: Explode
 if (state == 3){
-	sound_play(asset_get("sfx_abyss_explosion_big"));
-	spawn_hit_fx( x, y-20, 143);
-	create_hitbox(AT_DSPECIAL, 2, x, y-20);
-	create_hitbox(AT_DSPECIAL, 1, x, y-20);
-	shoulddie = true;
+	if (state_timer == 1){
+		sound_play(asset_get("sfx_abyss_explosion_big"));
+		spawn_hit_fx( x, y-20, 143);
+		create_hitbox(AT_DSPECIAL, 2, x, y-20);
+	}
+	if (state_timer == 2){
+		if (player_id.was_parried == false){
+			create_hitbox(AT_DSPECIAL, 1, x, y-20);
+		}
+		shoulddie = true;
+	}
 }
 
 //Destroy when offstage

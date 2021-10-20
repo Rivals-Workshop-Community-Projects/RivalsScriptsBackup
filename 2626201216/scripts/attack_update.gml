@@ -195,6 +195,27 @@ if (attack == AT_DSTRONG)
 
 if ((attack == AT_USPECIAL_2 || attack == AT_USPECIAL)&& window > 2)  { can_wall_jump = true; }
 
+//escaping DSTRONG
+
+if (attack == AT_DSTRONG && window = 3 && window_timer > 15)
+{
+    can_wall_jump = true;
+    can_jump = true;
+}
+
+//NSPECIAL BOOST
+
+if (attack == AT_NSPECIAL && free )
+{
+//set_window_value(AT_NSPECIAL, 2, AG_WINDOW_VSPEED, -5);
+//set_window_value(AT_NSPECIAL, 2, AG_WINDOW_HSPEED, -5);
+}
+else
+{
+  //set_window_value(AT_NSPECIAL, 2, AG_WINDOW_VSPEED, 0);
+//set_window_value(AT_NSPECIAL, 2, AG_WINDOW_HSPEED, 0);  
+}
+
 //FX
 
 if (attack == AT_FTILT)

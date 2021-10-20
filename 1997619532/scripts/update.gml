@@ -566,7 +566,7 @@ if (state_cat == SC_HITSTUN or overt >= 999) and !hitpause {
         set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 2);
     } else {
         
-        set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED, 10);
+        set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED, 8);
          set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED, 0);
         set_window_value(AT_FSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 0);
     }

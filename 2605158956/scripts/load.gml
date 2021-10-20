@@ -47,6 +47,7 @@ sprite_change_offset("dspecial", 64, 96);
 sprite_change_offset("taunt", 64, 96);
 sprite_change_offset("taunt-left", 64, 96);
 sprite_change_offset("taunt2", 64, 96);
+sprite_change_offset("taunt3", 64, 96);
 
 sprite_change_offset("plat", 64, 94);
 sprite_change_offset("platBG", 64, 94);
@@ -60,3 +61,4 @@ sprite_change_offset("bomb", 64, 64);
 sprite_change_offset("arrow", 16, 16);
 sprite_change_offset("arrowbomb", 16, 20);
 sprite_change_offset("explosion", 128, 128);
+sprite_change_offset("birb", 64, 96);

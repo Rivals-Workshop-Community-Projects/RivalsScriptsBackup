@@ -198,7 +198,7 @@ set_color_profile_slot( 21, 5, 135, 65, 8 ); //N+M Dark
 
 // whitemage
 set_color_profile_slot( 22, 0, 201, 190, 190 ); //Shirt
-set_color_profile_slot( 22, 1, 201, 134, 8 ); //Hair
+set_color_profile_slot( 22, 1, 94, 24, 24 ); //Hair
 set_color_profile_slot( 22, 2, 194, 11, 11 ); //Shorts
 set_color_profile_slot( 22, 3, 246, 250, 230 ); //N+M Light
 set_color_profile_slot( 22, 4, 217, 217, 175 ); //Necklace+Magic

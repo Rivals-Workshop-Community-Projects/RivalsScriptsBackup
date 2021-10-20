@@ -29,7 +29,7 @@ jump_speed = 12;
 short_hop_speed = 7.5;
 djump_speed = 11;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
+max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .35;
@@ -100,6 +100,10 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
+
+//amount of tape
+tapes = 0;
+tapecool = 0;
 
 //init.gml
 grabbed_player_obj = noone;    //the player object currently being grabbed.

@@ -100,6 +100,10 @@ sprite_change_offset("hattoss", 62, 100); // Done
 sprite_change_offset("spellslot", 2, 5); // Done
 
 // Any Compatibilty Related Sprites Goes Down Here.
+// I'm in me mum's car
+sprite_change_offset("car_saf",6, 6);
+sprite_change_offset("car_safdef",6, 6);
+
 // Grape.
 sprite_change_offset("feri_costume_saffron", 84, 114);
 

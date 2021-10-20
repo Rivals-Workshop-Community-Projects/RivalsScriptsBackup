@@ -99,6 +99,7 @@ set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, poison_hit_large);
 set_hitbox_value(AT_USPECIAL, 2, HG_HIT_SFX, asset_get("sfx_poison_hit_strong"));
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_USPECIAL, 2, HG_HIT_LOCKOUT, -1);
+set_hitbox_value(AT_USPECIAL, 2, HG_DRIFT_MULTIPLIER, 1);
 
 set_hitbox_value(AT_USPECIAL, 3, HG_PARENT_HITBOX, 3);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_TYPE, 1);
@@ -122,3 +123,4 @@ set_hitbox_value(AT_USPECIAL, 3, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(AT_USPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_GROUP, 3);
 set_hitbox_value(AT_USPECIAL, 3, HG_HIT_LOCKOUT, 1);
+set_hitbox_value(AT_USPECIAL, 3, HG_DRIFT_MULTIPLIER, 1);

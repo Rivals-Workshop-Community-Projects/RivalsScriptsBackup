@@ -21,3 +21,13 @@ if get_match_setting(SET_HITBOX_VIS) with (pHitBox) {
 //draw_debug_text(x,y,"x" + string (obj_article1.homing));
 
 //draw_debug_text(x,y,"id: " + string(gravigahit_id));
+
+/*
+with (asset_get("obj_article3")){
+    if (player_id == other.id){
+        draw_debug_text(x,y, string(id));
+    }
+}
+
+draw_debug_text(x,y,"id: " + string(id));
+*/

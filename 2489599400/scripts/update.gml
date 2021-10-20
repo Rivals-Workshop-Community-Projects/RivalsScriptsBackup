@@ -23,7 +23,7 @@ if nodispenser {
 	walk_speed = 3.5;
 	initial_dash_speed = 7.5;
 	dash_speed = 6.75;
-	ground_friction = .45;
+	ground_friction = .35;
 
 	jump_speed = 11;
 	short_hop_speed = 6;
@@ -63,7 +63,7 @@ if nodispenser {
 	walk_speed = 3.25;
 	initial_dash_speed = 7;
 	dash_speed = 6.25;
-	ground_friction = .55;
+	ground_friction = .45;
 
 	jump_speed = 12.9;
 	short_hop_speed = 6.5;
@@ -131,7 +131,33 @@ switch (get_player_color(player)){
 		set_victory_theme(sound_get("victory"));
 }
 
+if tapecool > 0 {
+	tapecool--;
+}
+
+if tapecool == 1 {
+	sound_play(asset_get("mfx_coin"));
+}
 
 if !(url == 2489599400) {
 	set_state(PS_DEAD);
+}
+
+with asset_get("pHitBox") {
+	if (attack == AT_EXTRA_2 && hbox_num == 1 && player_id.attack_down && 5 > player_id.tapes && player_id.tapecool == 0) {
+		if (place_meeting(x,y-4,asset_get("par_block")) || place_meeting(x,y-4,asset_get("par_jumpthrough"))) && !player_id.has_hit {
+			player_id.has_hit = 1;
+			spawn_hit_fx(x, y-10, 19);
+			create_hitbox(AT_EXTRA_2, 3, x, y-10);
+			player_id.old_vsp = -6;	
+			player_id.old_hsp = player_id.hsp;
+			player_id.hitpause = 1;
+			player_id.hitstop = 5;
+			player_id.hitstop_full = 5;		
+			player_id.tapes += 1;		
+			player_id.tapecool = 180;		
+			take_damage( player, -1, 2);
+			sound_play(sound_get("sfx-tape-2"));
+		}
+	}
 }

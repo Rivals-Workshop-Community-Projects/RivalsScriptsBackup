@@ -352,6 +352,14 @@ if(my_hitboxID.attack == AT_EXTRA_3 && my_hitboxID.hbox_num == get_num_hitboxes(
 	var hitfx_elec_consume_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), hitfx_consume_elec);
 	hitfx_elec_consume_object.depth = depth - 1;
 }
+
+// Utilt layering
+if(my_hitboxID.attack == AT_UAIR){
+	sound_play(asset_get( "sfx_waterhit_medium" ),false,noone,1,1); // soundID,looping,panning,volume,pitch
+	var water_fit_fx_object = spawn_hit_fx(hit_player_obj.x + (hitfx_x_offset_temp*spr_dir), hit_player_obj.y - (hit_player_obj.char_height/2), 150); // 150 - light water medium
+	water_fit_fx_object.depth = depth - 1;
+}
+
 //#endregion
 
 #define Resolve_Element(hitbox_attack_name)
@@ -400,6 +408,7 @@ if(my_hitboxID.attack == AT_EXTRA_3 && my_hitboxID.hbox_num == get_num_hitboxes(
 	if(element == "water"){
 		with(element_applied_player){
 			status_effect_water = true;
+			buildup_water_fx_timer = 0;
 		}
 	}
 }

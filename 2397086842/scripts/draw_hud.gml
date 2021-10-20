@@ -37,7 +37,7 @@ if voiced == 0 && get_gameplay_time() <= 120{
 */
 
 if voiced == 0 && get_gameplay_time() <= 200{
-       draw_debug_text(temp_x,temp_y - 15,"Taunt to enable Extra sfx .");
+       draw_debug_text(temp_x,temp_y - 15,"Taunt to enable Extra sfx.");
 }
 
 if voiced == 1 && get_gameplay_time() <= 120{

@@ -107,23 +107,29 @@ if (state == 0){
 				hb = create_hitbox(AT_FSTRONG, 1, x, y);
 				hb.no_absorb = true;
 				hb.transcendent = true;
+				mask_index = sprite_get("fstrong_mask");
 				break;
 			case 1:
 			case 5:
 				hb = create_hitbox(AT_DAIR, 1, x, y);
 				hb.no_absorb = true;
+				mask_index = sprite_get("dair_mask");
 				break;
 			case 2:
 				hb = create_hitbox(AT_FSPECIAL, 1, x, y);
+				mask_index = sprite_get("fspec_mask");
 				break;
 			case 3:
 				hb = create_hitbox(AT_USPECIAL, 2, x, y);
+				mask_index = sprite_get("uspec_mask");
 				break;
 			case 4:
 				hb = create_hitbox(AT_DSPECIAL, 1, x, y+40);
+				mask_index = sprite_get("dspec_proj_mask");
 				break;
 			case 6:
 				hb = create_hitbox(AT_DSPECIAL, 2, x, y+40);
+				mask_index = sprite_get("dspec_proj_mask");
 				break;
 			default:
 				break;
@@ -269,6 +275,7 @@ if (state == 1){
 		if (version == 3) {
 			state = 4;
 			state_timer = 0;
+			instance_destroy(hb);
 		} else {
 			state = 2;
 			state_timer = 2;

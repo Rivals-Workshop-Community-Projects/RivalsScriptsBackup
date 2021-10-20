@@ -80,5 +80,7 @@ sprite_change_offset("hfx3", 128, 128);
 sprite_change_offset("hfx4", 16, 16);
 sprite_change_offset("hfx5", 16, 16);
 
+sprite_change_offset("kart", 8, 8);
+
 set_victory_bg(sprite_get("pomme_victoryscreen"));
 //set_victory_bg(CH_CLAIREN);

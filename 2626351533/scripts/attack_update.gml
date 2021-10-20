@@ -9,6 +9,15 @@ max_djumps = 3;
 //NSpecial - Batarang
 if (attack == AT_NSPECIAL){
     move_cooldown[AT_NSPECIAL] = 9999;
+    if (window == 1 && window_timer == 12 && special_down){
+    	window_timer--;
+    	if (spr_dir == 1 && left_pressed){
+    		spr_dir = -1;
+    	}
+    	if (spr_dir == -1 && right_pressed){
+    		spr_dir = 1;
+    	}
+    }
     //Creates the batarang and angles it or not
     if (window == 2 && window_timer == 2){
         batarang = instance_create( x+60*spr_dir, y-30, "obj_article2"); 
@@ -26,7 +35,17 @@ if (attack == AT_FSPECIAL){
     can_fast_fall = false;
     //About to shoot the grapple on the ground/air
     if (window == 2){
+    	fspecial_hit = false;
         grapple_cont = 0;
+        if (window_timer == 4 && special_down){
+	    		window_timer--;
+		    	if (spr_dir == 1 && left_pressed){
+		    		spr_dir = -1;
+		    	}
+		    	if (spr_dir == -1 && right_pressed){
+		    		spr_dir = 1;
+		    	}
+	    	}
         if (window_timer == 5){
             if (!free){
                 spawn_hit_fx( x+60*spr_dir, y-15, 140);
@@ -47,7 +66,7 @@ if (attack == AT_FSPECIAL){
     
     //Chain sound every couple of frames
     if ((window == 2 || window == 3 || window == 4) && grapple_pull_back == 0 && grapple_pull_up == 0
-    && state_timer%3 == 0){
+    && state_timer%3 == 0 && !special_down){
         sound_play(asset_get("sfx_ell_utilt_loop"));
     }
     
@@ -85,6 +104,8 @@ else {
 if (attack == AT_DSPECIAL){
 	//If it should place/explode the mine and sets the variables
     if (window == 1 && window_timer == 1){
+    	set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 50);
+    	set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE_FLIPPER, 3);
         if (instance_exists(mine)){
             set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
             set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
@@ -116,6 +137,7 @@ if (attack == AT_DSPECIAL){
                 if (mine.state == 1){
 		            batarang.shoulddie = true;
 	            }
+	            mine.state_timer = 0;
                 mine.state = 3;
             }
             else {
@@ -133,6 +155,8 @@ if (attack == AT_USPECIAL){
     //Resets the attack
     if (window == 1){
         set_hitbox_value(AT_USPECIAL, 3, HG_LIFETIME, 8);
+        set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 90);
+        set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE_FLIPPER, 0);
         uspecial_hold = false;
     }
     //Changes the mine hitboxes
@@ -157,6 +181,7 @@ if (attack == AT_USPECIAL){
                 mine_uspecial = 1;
             }
             window = 9;
+            mine.state_timer = 0;
             mine.state = 3;
         }
     }

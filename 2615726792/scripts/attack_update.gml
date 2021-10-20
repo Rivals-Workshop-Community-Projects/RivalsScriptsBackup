@@ -2,8 +2,8 @@
 
 if (attack == AT_JAB || attack == AT_NAIR)
 {
-	move_cooldown[AT_JAB] = 35;
-	move_cooldown[AT_NAIR] = 35;
+	move_cooldown[AT_JAB] = 60; //from 35
+	move_cooldown[AT_NAIR] = 60; //from 35
 }
 
 //====> FAIR ##########################################################

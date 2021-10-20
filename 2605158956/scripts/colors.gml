@@ -22,7 +22,7 @@ set_color_profile_slot_range( 4, 14, 5, 16 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 28 );
+set_num_palettes( 29 );
 
 // Blueberry
 set_color_profile_slot( 1, 0, 64, 131, 207 ); //Skin
@@ -237,6 +237,13 @@ set_color_profile_slot( 27, 1, 235, 231, 129 ); //Cheeks
 set_color_profile_slot( 27, 2, 235, 218, 42 ); //Leaf1
 set_color_profile_slot( 27, 3, 82, 82, 82 ); //Leaf2
 set_color_profile_slot( 27, 4, 153, 153, 153 ); //Sword
+
+// Ducky
+set_color_profile_slot( 28, 0, 255, 255, 252 ); //Skin
+set_color_profile_slot( 28, 1, 255, 191, 211 ); //Cheeks
+set_color_profile_slot( 28, 2, 242, 121, 171 ); //Leaf1
+set_color_profile_slot( 28, 3, 191, 22, 130 ); //Leaf2
+set_color_profile_slot( 28, 4, 191, 191, 191 ); //Sword
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

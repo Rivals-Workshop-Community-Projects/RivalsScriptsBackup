@@ -6,9 +6,13 @@ if(!free && ganoncide_preventor_available_flag == false && article_platform_id =
 	ganoncide_preventor_available_flag = true // will reset flag on landing
 }
 
+if(((state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) && fspecial_recovery_enabled_flag == true) || attack != AT_FSPECIAL){
+	fspecial_recovery_enabled_flag = false;
+}
+
 //Dspecial move cooldown reset
-if(!free && move_cooldown[AT_DSPECIAL_AIR] > 0 ){
-	move_cooldown[AT_DSPECIAL_AIR] = 0;
+if(!free && djump_given_back_flag == true){
+	djump_given_back_flag = false;
 }
 
 //#endregion
@@ -19,15 +23,15 @@ with(asset_get("oPlayer")){
 		//Decrement_Element_Over_Time();
 		Training_Functionality();
 		Opponent_Respawn();
-		// Cleanse mark on Death or parry.
+		// Cleanse mark on Death
 		if(state == PS_RESPAWN){
 			status_effect_water = false;
 		}
     }	
 }
 
-// Cleanse mark on Death or parry if Daora is killed or parry
-	if(state == PS_RESPAWN || was_parried == true){
+// Cleanse mark on Death if Daora is killed
+	if(state == PS_RESPAWN){
 			with(asset_get("oPlayer")){
 				status_effect_water = false;
 			}

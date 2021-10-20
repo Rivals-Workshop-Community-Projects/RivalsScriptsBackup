@@ -40,10 +40,10 @@ if (state == 0){ //Falling
     
     if (state_timer%8 == 0){
         if (charged){
-            create_hitbox(AT_DAIR, 1, x, y+vsp);
+            var big_orb = create_hitbox(AT_DAIR, 1, x, y+vsp);
             
         } else {
-            create_hitbox(AT_DAIR, 2, x, y+vsp);
+            var small_orb = create_hitbox(AT_DAIR, 2, x, y+vsp);
         }
     }
     

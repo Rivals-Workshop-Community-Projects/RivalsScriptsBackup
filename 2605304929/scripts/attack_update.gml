@@ -31,6 +31,10 @@ if (attack == AT_UTHROW && instance_exists(grabbed_player_obj)) {
 		//keep the grabbed player in hitstop until the grab is complete.
 		grabbed_player_obj.hitstop = 2;
 		grabbed_player_obj.hitpause = true;
+		grabbed_player_obj.can_wall_jump = false;
+		grabbed_player_obj.can_wall_cling = false;
+		grabbed_player_obj.can_shield = false;
+		grabbed_player_obj.can_wall_tech = false;
 		
 		//if this is the first frame of a window, store the grabbed player's relative position.
 		if (window_timer <= 1) {
@@ -71,6 +75,10 @@ if (attack == AT_FTHROW && instance_exists(grabbed_player_obj)) {
 		//keep the grabbed player in hitstop until the grab is complete.
 		grabbed_player_obj.hitstop = 2;
 		grabbed_player_obj.hitpause = true;
+		grabbed_player_obj.can_shield = false;
+		grabbed_player_obj.can_wall_jump = false;
+		grabbed_player_obj.can_wall_cling = false;
+		grabbed_player_obj.can_wall_tech = false;
 		
 		//if this is the first frame of a window, store the grabbed player's relative position.
 		if (window_timer <= 1) {
@@ -135,8 +143,10 @@ if(attack == AT_DSPECIAL || attack == AT_DSPECIAL_AIR){
 	//var Dstrong_charge_bonus_speed = (strong_charge / 10);
 	//set_window_value(AT_DSTRONG,4,AG_WINDOW_HSPEED, 7+ Dstrong_charge_bonus_speed);
 	//Dspecial Jump Reset
-	move_cooldown[AT_DSPECIAL_AIR] = 999;
-	djumps = 0;
+	if(djump_given_back_flag == false){
+		djumps = 0;
+		djump_given_back_flag = true;
+	}
 	can_fast_fall = false;
 	can_wall_jump = true;
 
@@ -155,6 +165,10 @@ if (attack == AT_DTHROW && instance_exists(grabbed_player_obj)) {
 		//keep the grabbed player in hitstop until the grab is complete.
 		grabbed_player_obj.hitstop = 2;
 		grabbed_player_obj.hitpause = true;
+		grabbed_player_obj.can_shield = false;
+		grabbed_player_obj.can_wall_jump = false;
+		grabbed_player_obj.can_wall_cling = false;
+		grabbed_player_obj.can_wall_tech = false;
 		
 		//if this is the first frame of a window, store the grabbed player's relative position.
 		if (window_timer <= 1) {
@@ -205,6 +219,11 @@ if (attack == AT_NTHROW && instance_exists(grabbed_player_obj)) {
 		//keep the grabbed player in hitstop until the grab is complete.
 		grabbed_player_obj.hitstop = 2;
 		grabbed_player_obj.hitpause = true;
+		grabbed_player_obj.can_shield = false;
+		grabbed_player_obj.can_wall_jump = false;
+		grabbed_player_obj.can_wall_cling = false;
+		grabbed_player_obj.can_tech = false;
+		grabbed_player_obj.can_wall_tech = false;
 		
 		//if this is the first frame of a window, store the grabbed player's relative position.
 		if (window_timer <= 1) {
@@ -250,6 +269,11 @@ if (attack == AT_NSPECIAL_2 && instance_exists(grabbed_player_obj)) {
 		//keep the grabbed player in hitstop until the grab is complete.
 		grabbed_player_obj.hitstop = 2;
 		grabbed_player_obj.hitpause = true;
+		grabbed_player_obj.can_shield = false;
+		grabbed_player_obj.can_wall_jump = false;
+		grabbed_player_obj.can_wall_cling = false;
+		grabbed_player_obj.can_tech = false;
+		grabbed_player_obj.can_wall_tech = false;
 		
 		//if this is the first frame of a window, store the grabbed player's relative position.
 		if (window_timer <= 1) {
@@ -308,9 +332,8 @@ if (attack == AT_USPECIAL_2 && instance_exists(grabbed_player_obj)) {
 	move_cooldown[AT_USPECIAL] = 30;
 	can_wall_jump = true; // Wall Jump out of the attack
 	can_fast_fall = false;
-	grabbed_player_obj.can_shield = false;
-	grabbed_player_obj.can_wall_jump = false;
-	grabbed_player_obj.can_wall_cling = false;
+
+
 	hurtboxID.sprite_index = get_attack_value(AT_USPECIAL_2, AG_HURTBOX_SPRITE); // Set proper hurtbox, thanks Shampoo!
 	
 	//first, drop the grabbed player if this is the last window of the attack, or if they somehow escaped hitstun.
@@ -321,6 +344,12 @@ if (attack == AT_USPECIAL_2 && instance_exists(grabbed_player_obj)) {
 		//keep the grabbed player in hitstop until the grab is complete.
 		grabbed_player_obj.hitstop = 2;
 		grabbed_player_obj.hitpause = true;
+		grabbed_player_obj.can_shield = false;
+		grabbed_player_obj.can_wall_jump = false;
+		grabbed_player_obj.can_wall_cling = false;
+		grabbed_player_obj.can_tech = false;
+		grabbed_player_obj.can_wall_tech = false;
+		//print(grabbed_player_obj.can_wall_jump);
 		
 		//if this is the first frame of a window, store the grabbed player's relative position.
 		if (window_timer <= 1) {
@@ -398,6 +427,11 @@ if (attack == AT_FSPECIAL_2 && instance_exists(grabbed_player_obj)) {
 		//keep the grabbed player in hitstop until the grab is complete.
 		grabbed_player_obj.hitstop = 2;
 		grabbed_player_obj.hitpause = true;
+		grabbed_player_obj.can_shield = false;
+		grabbed_player_obj.can_wall_jump = false;
+		grabbed_player_obj.can_wall_cling = false;
+		grabbed_player_obj.can_tech = false;
+		grabbed_player_obj.can_wall_tech = false;
 		
 		//if this is the first frame of a window, store the grabbed player's relative position.
 		if (window_timer <= 1) {
@@ -455,6 +489,11 @@ if (attack == AT_DSPECIAL_2 && instance_exists(grabbed_player_obj)) {
 		//keep the grabbed player in hitstop until the grab is complete.
 		grabbed_player_obj.hitstop = 2;
 		grabbed_player_obj.hitpause = true;
+		grabbed_player_obj.can_shield = false;
+		grabbed_player_obj.can_wall_jump = false;
+		grabbed_player_obj.can_wall_cling = false;
+		grabbed_player_obj.can_tech = false;
+		grabbed_player_obj.can_wall_tech = false;
 		
 		//if this is the first frame of a window, store the grabbed player's relative position.
 		if (window_timer <= 1) {
@@ -505,6 +544,11 @@ if (attack == AT_EXTRA_3 && instance_exists(grabbed_player_obj)) {
 		//keep the grabbed player in hitstop until the grab is complete.
 		grabbed_player_obj.hitstop = 2;
 		grabbed_player_obj.hitpause = true;
+		grabbed_player_obj.can_shield = false;
+		grabbed_player_obj.can_wall_jump = false;
+		grabbed_player_obj.can_wall_cling = false;
+		grabbed_player_obj.can_tech = false;
+		grabbed_player_obj.can_wall_tech = false;
 		
 		//if this is the first frame of a window, store the grabbed player's relative position.
 		if (window_timer <= 1) {
@@ -559,39 +603,54 @@ if(attack == AT_FSPECIAL || attack == AT_FTHROW || attack == AT_FSPECIAL_2 || at
 		y > bottom_boundry){
 			if(attack != AT_FSPECIAL){
 				if(article_platform_id == noone){
-					// Creat platform
+					// Create platform
 					article_platform_id = instance_create(x + (30 * spr_dir),y+60,"obj_article_platform");
+					ganoncide_preventor_available_flag = false; // Set the flag to false to prevent running this until landing again.
 					
 					// Modiify hitboxes of the grab to prevent cheese by sending the opponent upwards.
 					if(attack == AT_FTHROW){ // Fthrow is the only non boosted grab
 					//set_hitbox_value(attack,get_num_hitboxes(attack),HG_HITSTUN_MULTIPLIER,.5);
 					set_hitbox_value(attack,get_num_hitboxes(attack),HG_KNOCKBACK_SCALING,.1);
-					set_hitbox_value(attack,get_num_hitboxes(attack),HG_BASE_KNOCKBACK,15);
+					set_hitbox_value(attack,get_num_hitboxes(attack),HG_BASE_KNOCKBACK,12);
 					set_hitbox_value(attack,get_num_hitboxes(attack),HG_ANGLE,90);
-					set_hitbox_value(attack,get_num_hitboxes(attack),HG_HITSTUN_MULTIPLIER,.5);
+					set_hitbox_value(attack,get_num_hitboxes(attack),HG_HITSTUN_MULTIPLIER,1);
 					}
 					// Modify all the hitboxes of the grabs.
 					else{
 					set_hitbox_value(attack,get_num_hitboxes(attack),HG_KNOCKBACK_SCALING,1.2);
 					set_hitbox_value(attack,get_num_hitboxes(attack),HG_BASE_KNOCKBACK,10);
-					set_hitbox_value(attack,get_num_hitboxes(attack),HG_ANGLE,90);
+					set_hitbox_value(attack,get_num_hitboxes(attack),HG_ANGLE,85);
 					}
 				}
 			}
 			else {
+				// Drop opponent for any reason if they are somehow grabbed
 				if(grabbed_player_obj != noone){
 				grabbed_player_obj.state = PS_IDLE_AIR;
 				grabbed_player_obj.vsp = -7;
 				grabbed_player_obj = noone;}
-				set_state(PS_IDLE_AIR);
-				vsp = -5;
-				hsp = 0;
+				can_shield = true;
+				can_jump = true;
+				fspecial_recovery_enabled_flag = true;
+				if(special_down && up_down){
+					iasa_script();
+				}
 			}
-			ganoncide_preventor_available_flag = false; // Set the flag to false to prevent running this until landing again.
 		}
-	
 	}
 }
+
+//Drop 
+/*
+if(has_hit == true && window == get_attack_value(attack,AG_NUM_WINDOWS) && 
+(attack == AT_FSPECIAL || attack == AT_FTHROW || attack == AT_FSPECIAL_2 || attack == AT_USPECIAL_2 || attack == AT_DSPECIAL_2)){
+	grabbed_player_obj.can_shield = true;
+	grabbed_player_obj.can_wall_jump = true;
+	grabbed_player_obj.can_wall_cling = true;
+	grabbed_player_obj.can_tech = true;
+	grabbed_player_obj.can_wall_tech = true;
+}
+*/
 //#endregion
 
 //#region Other misc attack code
@@ -641,8 +700,7 @@ if(attack == AT_EXTRA_3 && free){
 */
 //#endregion
 
-//#region A+B Input Command Grab Code
-//A+B Input Command Grab Code
+//#region Nspecial Input Cancel Code
 if((move_cooldown[AT_EXTRA_2] == 0 || move_cooldown[AT_NSPECIAL] == 0) && 
 (((attack == AT_JAB && window < 8) || (attack == AT_NAIR && window < 4)) 
 && has_hit == true && was_parried == false)){ //Jab Exception minus parry

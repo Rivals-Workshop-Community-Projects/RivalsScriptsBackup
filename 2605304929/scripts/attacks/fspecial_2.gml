@@ -38,7 +38,7 @@ window_num++;
 
 // Window #3 / Frame(s) #3-12 / Land and Stomp Start Up
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 20);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 10);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 10);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
 
@@ -46,7 +46,7 @@ window_num++;
 
 // Window #4 / Frame(s) #13-17 / Stomp 1 (8 /13 is whole motion)
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 15);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 13);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 
@@ -57,7 +57,7 @@ window_num++;
 
 // Window #5 / Frame(s) #13-17 / Stomp 2 (8 /13 is whole motion)
 set_window_value(attack, window_num, AG_WINDOW_TYPE, 1);
-set_window_value(attack, window_num, AG_WINDOW_LENGTH, 15);
+set_window_value(attack, window_num, AG_WINDOW_LENGTH, 13);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(attack, window_num, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(attack, window_num, AG_WINDOW_HAS_SFX, 1); 

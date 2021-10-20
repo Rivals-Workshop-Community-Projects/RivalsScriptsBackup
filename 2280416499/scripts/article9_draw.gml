@@ -97,7 +97,7 @@ if state{
 		textDraw(x, temp_y + 109, "fName", c_white, 19, 1000, fa_center, 1, 0, 1, owner.layouts[owner.current_layout].name);
 		draw_set_valign(fa_top);
 		
-		if !has_gridded textDraw(x, temp_y + 131, "fName", c_white, 0, 1000, fa_center, 1, 0, 1, "TAUNT: Grid");
+		if !has_gridded && has_crouched textDraw(x, temp_y + 131, "fName", c_white, 0, 1000, fa_center, 1, 0, 1, "TAUNT: Grid");
 	}
 }
 

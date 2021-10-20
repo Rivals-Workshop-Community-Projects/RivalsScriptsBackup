@@ -69,6 +69,7 @@ sprite_change_offset("banana_speen", 84, 209);
 
 //puddle
 sprite_change_offset("waterdiagonal", 30, 50);
+sprite_change_offset("waterdiagonal_hitbox", 30, 50);
 sprite_change_offset("waterdiagonal_mask", 7, 29);
 sprite_change_offset("initialsplash", 51, 60);
 sprite_change_offset("watersplash", 51, 60);
@@ -77,6 +78,7 @@ sprite_change_offset("watersplash_mask", 7, 29);
 sprite_change_offset("debugwater", 7, 29);
 sprite_change_offset("debugwater_mask", 7, 29);
 sprite_change_offset("puddle", 7, 14);
+sprite_change_offset("puddle_alt", 15, 14);
 sprite_change_offset("puddle_mask", 7, 14);
 sprite_change_offset("puddle_electric", 7, 46);
 sprite_change_offset("puddle_fade", 7, 14);

@@ -8,3 +8,10 @@ if (prev_state == PS_DOUBLE_JUMP && state == PS_IDLE_AIR && image_index < 3){
     image_index = 4;
 }
 
+if (state == PS_ATTACK_GROUND && attack == AT_DSTRONG && window == 2 && window_timer == 0){
+	sound_play(asset_get("sfx_swipe_medium1"));
+}
+
+if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_NSPECIAL && window == 2 && window_timer == 0){
+    	sound_play(asset_get("sfx_kragg_throw"));
+    }

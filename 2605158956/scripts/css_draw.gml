@@ -80,9 +80,14 @@ alt_name[24] = "Pin Cushion";
 alt_name[25] = "Flat Stanley";
 alt_name[26] = "Turnip.. Girl?";
 alt_name[27] = "Just Turnip";
+alt_name[28] = "Ducky with ducky";
 
 if(!doNotInitShader){
     init_shader(); // makes the shader update when you return to the CSS (don't know why the game is coded so that this necessary)
+}
+
+if (get_player_color(player) == 28){
+	draw_sprite(sprite_get("cssBirb"), 0, temp_x, temp_y);
 }
 
 //Patch

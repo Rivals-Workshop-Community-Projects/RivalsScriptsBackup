@@ -1,3 +1,9 @@
+/*
+ai_init.gml – called when a CPU version of the character is created. This script should populate the ▼ following arrays with attack indexes.
+The arrays can be any size. Each entry in the array has the same probability of being selected. The entries in the arrays should only be the default attacks values – AT_DSPECIAL_AIR is not valid, for instance, and should just be AT_DSPECIAL.
+
+ai_update.gml – called every frame for a CPU version of the character. Used for special cases like recovery and complex special moves. Use ai_target to reference the player object the CPU is currently targeting. Use ai_recovering to check if the CPU is recovering or not. Use temp_level to reference the CPU’s difficulty level (1-9).
+*/
 far_down_attacks[0] = AT_DAIR;
 
 far_side_attacks[0] = AT_NSPECIAL;

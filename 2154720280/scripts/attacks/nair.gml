@@ -33,7 +33,7 @@ set_window_value(AT_NAIR, 5, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NAIR, 5, AG_WINDOW_ANIM_FRAME_START, 3);
 
 
-set_window_value(AT_NAIR, 6, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_NAIR, 6, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_NAIR, 6, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_NAIR, 6, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NAIR, 6, AG_WINDOW_ANIM_FRAME_START, 5);

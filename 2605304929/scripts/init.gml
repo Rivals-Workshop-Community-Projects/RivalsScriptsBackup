@@ -112,12 +112,14 @@ grabbed_player_relative_y = 0;   //we store this coordinate to smoothly repositi
 
 //Fspecial Variable
 ganoncide_preventor_available_flag = true; // Flag used to detect ganoncide and prevent it, but only one time before touching ground
+fspecial_recovery_enabled_flag = false;
 grabbed_player_obj_spr_angle=0;
 grabbed_player_obj_draw_x = 0;
 grabbed_player_obj_draw_y = 0;
 
 //Input Variables
 AB_input_prevention_flag = false;
+djump_given_back_flag = false;
 
 //Status Effect
 //Status Effect

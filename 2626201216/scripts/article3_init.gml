@@ -27,8 +27,8 @@ should_die = false;                                 //If this is ever set to tru
 //DEFINE YOUR OWN VARIABLES HERE!
 
 //Sprites (the number in [brackets] is the state)
-sprite[0] = sprite_get("puddle");             //Example sprites
-sprite[1] = sprite_get("puddle");
+sprite[0] = sprite_get("puddle_alt");             //Example sprites
+sprite[1] = sprite_get("puddle_alt");
 sprite[2] = sprite_get("puddle_fade");
 sprite[3] = sprite_get("puddle_electric");
 sprite[4] = sprite_get("article_idle");
@@ -80,3 +80,8 @@ max = "n"
 rechecking = 0;
 
 hitbox_timer = 0;
+
+if (69 = 420)
+{
+    clairen = 1;
+}

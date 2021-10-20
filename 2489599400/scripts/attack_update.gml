@@ -10,6 +10,16 @@ if(attack == AT_JAB && was_parried){
     was_parried = false;
 }
 
+//dtilt stuff
+if((attack == AT_DTILT || attack == AT_DTHROW) && window == 3) && !has_hit && special_pressed && 5 > tapes && tapecool == 0 {
+	spawn_hit_fx(x+48*spr_dir, y-15, 19);
+	create_hitbox(AT_EXTRA_2, 3, x+48*spr_dir, y-15);
+	tapes += 1;		
+	tapecool = 180;		
+	take_damage( player, -1, 2);
+	sound_play(sound_get("sfx-tape-2"));
+}
+
 //Taunt stuff
 if(attack == AT_TAUNT){
     if window == 2 { 

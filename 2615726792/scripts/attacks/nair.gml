@@ -3,7 +3,7 @@
 
 var at = AT_NAIR
 
-set_attack_value(at, AG_CATEGORY, 2);
+set_attack_value(at, AG_CATEGORY, 1);
 set_attack_value(at, AG_SPRITE, sprite_get("nair"));
 set_attack_value(at, AG_NUM_WINDOWS, 2);
 set_attack_value(at, AG_HAS_LANDING_LAG, 4);
@@ -33,7 +33,7 @@ set_hitbox_value(at, ig, HG_PARENT_HITBOX, 1);
 set_hitbox_value(at, ig, HG_HITBOX_TYPE, 2);
 set_hitbox_value(at, ig, HG_WINDOW, 2);
 set_hitbox_value(at, ig, HG_HITBOX_TYPE, 2);
-set_hitbox_value(at, ig, HG_LIFETIME, 60);
+set_hitbox_value(at, ig, HG_LIFETIME, 50); //from 60
 set_hitbox_value(at, ig, HG_PRIORITY, 2);
 set_hitbox_value(at, ig, HG_DAMAGE, 4); //Change in init
 set_hitbox_value(at, ig, HG_ANGLE, 45);

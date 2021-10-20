@@ -22,3 +22,6 @@ if (attack == AT_JAB && hbox_num == 2) {
         }
     }
 }
+if (my_hitboxID.type == 1 && hit_player_obj.free == false) {
+     hit_player_obj.y -= 1;
+}

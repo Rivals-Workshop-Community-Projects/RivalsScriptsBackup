@@ -161,6 +161,12 @@ trummelcodec_id = noone;
 //Otto stuff
 otto_bobblehead_sprite = sprite_get("my_bobblehead_sprite");
 
+//Rivals RC
+kart_sprite = sprite_get("kart");
+kart_frames = 1;
+kart_drift_spr = 1;
+kart_engine_sound = 1;
+
 
 //Beach Skin
 /*

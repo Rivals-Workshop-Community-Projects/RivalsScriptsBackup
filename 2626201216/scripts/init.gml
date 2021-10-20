@@ -216,6 +216,8 @@ water_collided = noone;
 puddle_anim_timer = 0;
 article_image_index = 0;
 
+death_amount = 1000;
+
 //temp_max_x = -1000000;
 //temp_min_x = 10000000;
 splash_count = 0;

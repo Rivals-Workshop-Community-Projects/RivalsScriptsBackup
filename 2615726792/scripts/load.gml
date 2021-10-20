@@ -24,11 +24,13 @@ sprite_change_offset("waveland", 32, 64); //
 sprite_change_offset("tech", 32, 64); //
 
 sprite_change_offset("jab", 96, 128);
+sprite_change_offset("jab_2", 96, 128);
 sprite_change_offset("dattack", 64, 96);
 sprite_change_offset("ftilt", 96, 128);
 sprite_change_offset("dtilt", 96, 128);
 sprite_change_offset("utilt", 96, 128);
 sprite_change_offset("nair", 96, 128);
+sprite_change_offset("nair_2", 96, 128);
 sprite_change_offset("fair", 96, 128);
 sprite_change_offset("bair", 96, 128);
 sprite_change_offset("uair", 96, 128);

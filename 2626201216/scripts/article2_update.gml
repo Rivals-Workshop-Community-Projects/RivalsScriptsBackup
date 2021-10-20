@@ -38,6 +38,19 @@ if (state == 0){ //Idle
         {
             spawn_hit_fx(x + (random_func(3, 30, true)),y, player_id.bubble);
         }
+
+        if (state_timer > 3)
+        {
+            if ( (state_timer mod 5) == 0)
+            {
+                    temp_water_hitbox = create_hitbox(AT_NSPECIAL, 1, x, y);
+            }        
+            else if ("temp_water_hitbox" in self)
+            {
+                temp_water_hitbox.x = x;
+                temp_water_hitbox.y = y;
+            }
+        }
     }
     
     if (!free)
@@ -125,7 +138,7 @@ if (state == 3)
             {
                     temp_id = instance_create(x - (15 * i), y,  "obj_article3");
                     temp_id.self_id = temp_id;
-                    temp_id.death_timer = 1000;
+                    temp_id.death_timer = player_id.death_amount;
                     i += 1;
             }
             else
@@ -194,10 +207,10 @@ if (state == 69)
         {
         temp_puddle_max = instance_create(temp_max_x[puddle_i], temp_puddle_y, "obj_article3");
         temp_puddle_max.self_id = max_x_puddle[puddle_i];
-        temp_puddle_max.death_timer = 1000;
+        temp_puddle_max.death_timer = player_id.death_amount;
         temp_puddle_min = instance_create(temp_max_x[puddle_i], temp_puddle_y, "obj_article3");
         temp_puddle_min.self_id = max_x_puddle[puddle_i];
-        temp_puddle_min.death_timer = 1000;
+        temp_puddle_min.death_timer = player_id.death_amount;
 
         }
         instance_destroy();

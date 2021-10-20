@@ -383,6 +383,11 @@ initSection("Trummel & Alto, Otto, Steve, Link, Goku");
 
 // other patches go here...
 
+initPatch("1.72", "October 17th, 2021");
+initHeader("General");
+initSection("* Adjusted the masks for FStrong, DAir, USpecial and FSpecial, to help them interact better with solid objects.");
+initSection("* The masks for FStrong, DAir, USpecial, FSpecial and DSpecial bolts are now visible when hitboxes are turned on.");
+
 initPatch("1.71", "October 14th, 2021");
 initHeader("General");
 initSection("* Adjusted some local-end Munophone code to hopefully improve performance. Remember, if your computer lags whenever playing as or against Geno (or any other Munophone Touch user) online, press F1 on match start to disable some visual aspects and improve performance.");

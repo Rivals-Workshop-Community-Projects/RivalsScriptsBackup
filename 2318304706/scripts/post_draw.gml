@@ -39,3 +39,11 @@ if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_TAUNT)
 			//draw_sprite(sprite_get("dapper"), 0, x, y); 			
 	}
 }
+
+if (get_match_setting(SET_HITBOX_VIS)) {
+	with (obj_article1) {
+		if (player_id = other.id) {
+			draw_sprite_ext(mask_index, image_index, x, y, spr_dir, 1, 0, c_white, 0.5);
+		}
+	}
+}

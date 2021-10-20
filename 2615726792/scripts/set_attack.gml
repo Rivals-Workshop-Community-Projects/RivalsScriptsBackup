@@ -1,4 +1,5 @@
 
+//====> DEFAULT CONDITIONS #############################################
 
 if free{    // AIR ATTACKS
     switch (attack){
@@ -64,3 +65,10 @@ if free{    // AIR ATTACKS
             break;
     }
 }
+
+//====> CUSTOM SETS #############################################
+
+if (attack == AT_JAB && move_cooldown[AT_JAB] > 0) { attack = AT_NSPECIAL_2; }
+if (attack == AT_NAIR && move_cooldown[AT_NAIR] > 0) { attack = AT_NSPECIAL_AIR; }
+
+//END

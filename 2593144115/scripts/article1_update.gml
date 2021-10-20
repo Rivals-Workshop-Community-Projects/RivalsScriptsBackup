@@ -258,6 +258,7 @@ switch (state)
         {
             if (!bubble_hitbydspecial)
             {
+                if (bubble_hitbox.was_parried) player_id.was_parried = true;
                 hsp = -prev_hsp*0.6;
                 x += hsp;
                 vsp = -prev_vsp*0.6;
@@ -266,6 +267,7 @@ switch (state)
             }
             else if (level > 0)
             {
+                //if (bubble_hitbox.was_parried) player_id.was_parried = true;
                 hsp = prev_hsp*0.6;
                 x += hsp;
                 vsp = prev_vsp*0.6;

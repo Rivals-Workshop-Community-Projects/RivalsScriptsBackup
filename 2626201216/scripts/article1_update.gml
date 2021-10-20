@@ -58,9 +58,11 @@ if (state == 0){ //Idle
 
         if (tripped != noone && tripped != player_id && hsp = 0)
         {
-            spawn_hit_fx( x, y+10, 302);
+            //spawn_hit_fx( x, y-10, 250);
+                        sound_play(sound_get("heal"));
+            take_damage(tripped.player, -1, -4);
             setState(2);
-            sound_play(asset_get("sfx_blow_weak1"));
+
         }
     if (state_timer > 40)
     {
@@ -119,10 +121,10 @@ if (state == 1)
 }
 
 if (state == 2){ //Dying
-    if (state_timer == 30){
+
         instance_destroy();
         exit; //Stops execution of the script
-    }
+    
 }
 
 if (state == 3){ //You can add more of these for as many states as you want

@@ -5,9 +5,6 @@ set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
 
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX_FRAME, 6);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 10);
@@ -45,3 +42,4 @@ set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_DSTRONG, 1, HG_EXTRA_HITPAUSE, 30);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_forsburn_cape_hit"));
+set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 251);

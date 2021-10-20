@@ -32,6 +32,7 @@ if (spark = true && free)
     var frames = 6;
     var frame_dur = 3;
     image_index = round((spark_timer mod (frames * frame_dur)) / frame_dur);
+    hurtboxID.sprite_index        = sprite_get("spark");
 
 }
 else if (spark = true)
@@ -49,4 +50,10 @@ else if (spark = true)
 else
 {
   spark_timer = 0;
+
+  	if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
+	{
+	hurtboxID.sprite_index        = asset_get("ex_guy_hurt_box");
+	}
 }
+

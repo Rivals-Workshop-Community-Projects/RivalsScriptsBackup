@@ -5,7 +5,7 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL){
 
 if (attack == AT_NSPECIAL){
     
-    if (window = 1 && window_timer >= 5 && !special_down){
+    if (window = 1 && !special_down){
         window = 3;
         window_timer = 1;
         sound_play(asset_get("sfx_zetter_shine"));
@@ -54,7 +54,7 @@ if (attack == AT_USPECIAL){
             }
             else{
                 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 2);
-                set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -11);
+                set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -11.5);
                 set_hitbox_value(AT_USPECIAL, 9, HG_ANGLE, 80);
                 set_hitbox_value(AT_USPECIAL, 10, HG_ANGLE, 80);
             }
@@ -68,7 +68,7 @@ if (attack == AT_USPECIAL){
             }
             else{
                 set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 2);
-                set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -11);
+                set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -11.5);
                 set_hitbox_value(AT_USPECIAL, 9, HG_ANGLE, 80);
                 set_hitbox_value(AT_USPECIAL, 10, HG_ANGLE, 80);
             }
@@ -108,11 +108,30 @@ if(attack == AT_TAUNT && window == 1 && window_timer == 1){
     }
 }
 
+if (get_player_color(player) == 28){
+    set_window_value(AT_TAUNT_2, 1, AG_WINDOW_SFX, sound_get("C-amogus"));
+    set_attack_value(AT_TAUNT_2, AG_SPRITE, sprite_get("taunt3"));
+}
+else {
+    set_window_value(AT_TAUNT_2, 1, AG_WINDOW_SFX, sound_get("C-boom"));
+    set_attack_value(AT_TAUNT_2, AG_SPRITE, sprite_get("taunt2"));
+}
+
 if(attack == AT_TAUNT_2){
-    if(window == 1 && window_timer == 2)
+    if(window == 1 && window_timer == 2){
         shake_camera(2,15);
-    if (taunt_down && window_timer >= 74)
+    }
+    
+    if (window == 2){
+        suppress_stage_music(0, 0.1);
+    }
+    
+    if (taunt_down && window_timer >= 74){
         window_timer = 73;
+        suppress_stage_music(0, 0.1);
+    }
+    if (window == 3)
+        suppress_stage_music(1, 0.1);
 }
 
 if (attack == AT_DATTACK){

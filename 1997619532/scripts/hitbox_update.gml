@@ -2,11 +2,11 @@ if attack == AT_EXTRA_3 && hbox_num != 1 {
 	
 	if hitbox_timer == 1 {
 		vsp -= 6
-		sound_play(asset_get("sfx_blow_medium1"),false,noone,1,0.85);
+		sound_play(asset_get("sfx_blow_medium1"),false,noone,.5,0.85);
 		spawn_hit_fx(x,y + 6,14)
 	}
 	
-	vsp += 0.4
+	vsp += 0.3
 
 
 	if !free  {

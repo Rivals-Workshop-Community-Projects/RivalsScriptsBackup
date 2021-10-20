@@ -69,7 +69,7 @@ air_accel = 0.33;
 prat_fall_accel = 1; //multiplier of air_accel while in pratfall
 air_friction = .055;
 max_djumps = 1;
-double_jump_time = 31; //the number of frames to play the djump animation. Can't be less than 31.
+double_jump_time = 34; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 4;
 walljump_vsp = 10;
 walljump_time = 20;
@@ -82,9 +82,9 @@ knockback_adj = 1.10; //the multiplier to KB dealt to you. 1 = default, >1 = lig
 
 land_time = 4; //normal landing frames
 prat_land_time = 16;
-wave_land_time = 6;
+wave_land_time = 8;
 wave_land_adj = 1.15; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .01; //grounded deceleration when wavelanding
+wave_friction = .03; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 3;

@@ -52,7 +52,7 @@ initPlat(-6, 9, 4);
 initPlat(-3, -5, 4);
 initPlat(-3, 5, 4);
 
-initStage("Air Armada", 12);
+initStage("Air Armada", 11);
 initPlat(-5.5, -8, 6);
 initPlat(-5.5, 8, 6);
 

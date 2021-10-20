@@ -31,7 +31,9 @@ if attack == AT_DAIR {
        	    	vsp = -2
        	    }
          }
-   fall_through = 1     
+      if !has_hit_player {   
+        fall_through = 1     
+      }
     can_fast_fall = false
     if window >= 2 {
     	if left_down {
@@ -48,6 +50,12 @@ if attack == AT_DAIR {
     		set_state(PS_PRATFALL)
     		state_timer = 0
     		vsp = -12
+    		if left_down && !right_down && x > room_width/2{
+    			hsp = -4
+    		}
+    		if !left_down && right_down && x < room_width/2{
+    			hsp = 4
+    		}
     		sound_play(asset_get("sfx_spin"),false,noone,1,1.5);
     	}
     }

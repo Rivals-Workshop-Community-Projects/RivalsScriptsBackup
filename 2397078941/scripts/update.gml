@@ -1,5 +1,10 @@
 ///
 
+if state == PS_PRATFALL {
+
+}
+
+
 if move_cooldown[AT_NSPECIAL] < 58  {
 famix += floor(((x-30*spr_dir)-famix)/7)
 famiy += floor((y-56-famiy)/7)

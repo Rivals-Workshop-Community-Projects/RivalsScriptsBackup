@@ -107,6 +107,7 @@ sprite_change_offset("plat_idle", 128, 162);
 sprite_change_offset("idle_transition", 128, 162);
 sprite_change_offset("bubbles", 128, 128);
 sprite_change_offset("taunt", 128, 162);
+sprite_change_offset("taunt_proj", 128, 162);
 sprite_change_offset("hud", 128, 128);
 
 

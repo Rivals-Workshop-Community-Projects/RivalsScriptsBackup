@@ -24,6 +24,7 @@ upBCharge = 0;
 
 crystalOut = 0;
 crystalOffset = 0;
+crystalOffset2 = 0;
 airCrystalSpawnX = 0;
 airCrystalSpawnY = 0;
 

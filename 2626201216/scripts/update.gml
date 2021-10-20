@@ -49,7 +49,7 @@ if (( state = PS_WALK || state == PS_DASH || state == PS_WAVELAND || state == PS
 	}
 }
 
-if (state = PS_JUMPSQUAT)
+if (state = PS_JUMPSQUAT && spark = 0 && state_timer = 0)
 {
 	temp_id = instance_create(x -30 * spr_dir, y-20, "obj_article2");
 	temp_id.self_id =  temp_id;
@@ -78,16 +78,17 @@ with(oPlayer)
 {
 	collision_instance = instance_place(x, y, obj_article3);
 
-	if (collision_instance != noone)
+	if (collision_instance != noone && (hsp > - 7 && hsp < 7))
 	{
-		if (collision_instance.player_id = other.id)
+		if (collision_instance.player_id = other.id && id != collision_instance.player_id )
 		{
-			if ("one_time_slip" in self && id != collision_instance.player_id)
+			if ("one_time_slip" in self)
 			{
-				dash_speed      = 20;
+				dash_speed      = 10;
 				walk_speed      = 10;		// 3    -  4.5
 				walk_accel      = 3;		// 0.2  -  0.5
-				ground_friction = -0.2;		// 0.3  -  1
+				ground_friction = -2;		// 0.3  -  1
+
 			}
 			else
 			{
@@ -130,6 +131,8 @@ else
 if (spark)
 {
 
+	attack = AT_EXTRA_1;
+
 	hitbox_timer++;
 
     if (hitbox_timer > 9)
@@ -137,6 +140,11 @@ if (spark)
         create_hitbox( AT_FSPECIAL, 2, x, y);
         hitbox_timer = 0;
     }
+
+	if (state = PS_JUMPSQUAT)
+	{
+		spark = 0;
+	}
 
 	if (unteleported && is_attacking() == false)
 	{
@@ -241,7 +249,8 @@ if (!spark && attack != AT_USPECIAL)
 	
 	visible = true;
 	max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has hover instead
-	hurtbox_spr         = asset_get("ex_guy_hurt_box");
+
+
 }
 
 if (spark)
@@ -254,7 +263,6 @@ if (spark)
 	max_fall            = 10;		// 6    -  11
 	fast_fall           = 14;		// 11   -  16
 	gravity_speed       = 0.6;		// 0.3  -  0.6
-	hurtboxID.sprite_index        = sprite_get("spark");
 
 	can_jump = 0;
 	can_attack = 0;

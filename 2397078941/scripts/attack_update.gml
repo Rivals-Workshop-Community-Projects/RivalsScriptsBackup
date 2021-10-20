@@ -596,7 +596,13 @@ if attack == AT_DAIR {
     	if jump_pressed or shield_pressed {
     		set_state(PS_PRATFALL)
     		state_timer = 0
-    		vsp = -12
+    		vsp = -13
+    		if left_down && !right_down && x > room_width/2{
+    			hsp = -4
+    		}
+    		if !left_down && right_down && x < room_width/2{
+    			hsp = 4
+    		}
     		sound_play(asset_get("sfx_spin"),false,noone,1,1.5);
     	}
     }

@@ -1,4 +1,4 @@
-set_attack_value(AT_EXTRA_1, AG_CATEGORY, 1);
+set_attack_value(AT_EXTRA_1, AG_CATEGORY, 0);
 set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get("fair"));
 set_attack_value(AT_EXTRA_1, AG_NUM_WINDOWS, 0);
 set_attack_value(AT_EXTRA_1, AG_HAS_LANDING_LAG, 0);

@@ -4,6 +4,7 @@
 //Debug stuff
 draw_debug_text( x, y + 20, string(nodispenser));
 draw_debug_text( x, y + 40, string(rolltime));
+draw_debug_text( x, y + 60, string(tapes));
 */
 
 shader_start();

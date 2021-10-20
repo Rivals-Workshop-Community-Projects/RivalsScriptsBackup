@@ -319,7 +319,7 @@ if (attack == AT_UAIR){
         if (window == 1 && window_timer == 12 && !hitpause){
                 create_hitbox(AT_UAIR, 2, x, y);
                 create_hitbox(AT_UAIR, 3, x, y);
-                create_hitbox(AT_UAIR, 4, x, y);
+                create_hitbox(AT_UAIR, 5, x, y);
     
         }
     } 

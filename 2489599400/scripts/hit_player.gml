@@ -1,5 +1,8 @@
 //hit_player - called when one of your hitboxes hits a player
 
+if (my_hitboxID.attack == AT_EXTRA_2 && my_hitboxID.hbox_num == 3) {
+	tapes -= 1;
+}
 
 //FSpecial
 if (my_hitboxID.attack == AT_FSPECIAL) {

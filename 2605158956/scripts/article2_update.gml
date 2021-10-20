@@ -96,9 +96,9 @@ switch(state)
         break;
     case 2: //transfer and be on cooldown.
         image_alpha = 0.5;
-        image_xscale = .25+(ease_quartOut( 0, 1, state_timer, 240)*.75)
+        image_xscale = .25+(ease_quartOut( 0, 1, state_timer, 180)*.75)
         image_yscale = image_xscale;
-        if(state_timer >= 120)
+        if(state_timer >= 90)
         {   state_timer = 0; state = 1; image_alpha = 1;}
         break;
     case 3://death

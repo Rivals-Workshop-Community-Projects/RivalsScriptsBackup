@@ -18,11 +18,13 @@ if(state == PS_IDLE || state == PS_CROUCH){
         }
     }
 }
-/*
-if(instance_exists(dspecial_surf_hitbox_id) && surf_cancelled != true){
-    draw_sprite_ext(sprite_index,image_index,x,y,spr_dir,1,0,c_white,1);
+
+// fspecial recovery white effect draw
+if(fspecial_recovery_enabled_flag == true){
+    gpu_set_fog(true,c_white,0,0);
+    draw_sprite_ext(sprite_index, image_index, x, y, spr_dir * 1, 1, image_angle, 1, .5);
+    gpu_set_fog(false,c_white,0,0);
 }
-*/
 #define Spawn_Bubbles(x,y)
 {
     var bubble_hitfx_object = spawn_hit_fx(x,y,hitfx_bubbles); // 5 - dark water small
