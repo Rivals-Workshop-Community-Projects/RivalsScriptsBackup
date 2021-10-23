@@ -43,10 +43,10 @@ if (get_gameplay_time() < 5)
     }
 }
 
-if ((attack == AT_NTHROW) && (window == 3) && (window_timer == 24))
+if ((attack == AT_NTHROW) && (window == 3) && (window_timer == 19))
 {
     set_state(PS_SPAWN);
-    state_timer += 66;
+    state_timer += 81;
     
 }
 

@@ -386,8 +386,16 @@ if (attack == AT_NSPECIAL_2)
 /*
     manage the fspecial flag
 */
+
+if (attack != AT_FSPECIAL)
+{
+    move_cooldown[AT_FSPECIAL] = 0;
+}
+
 if (attack == AT_FSPECIAL)
 {
+    move_cooldown[AT_FSPECIAL] = 400;
+    
     can_wall_jump = true;
     
     //Change directions
@@ -403,7 +411,7 @@ if (attack == AT_FSPECIAL)
         else                    spawn_hit_fx(x, y + 2, fx_nspecial_dust2);
     }
     
-    if (jump_pressed && flag_fspecial_jump == 0)
+    if (jump_pressed && flag_fspecial_jump == 0 && djumps == 0)
     {
         hsp = 7 * image_xscale;
         set_state(PS_DOUBLE_JUMP);
@@ -426,10 +434,10 @@ if (attack == AT_FSPECIAL)
         set_state(PS_IDLE);
     }
     
-    if (window == fspecial_goLoops + 5)
+    /*if (window == fspecial_goLoops + 5)
     {
         flag_fspecial = 1;
-    }
+    }*/
     
     if (window > 3 && !free)
     {

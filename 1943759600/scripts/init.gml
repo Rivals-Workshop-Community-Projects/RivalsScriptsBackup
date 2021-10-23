@@ -56,7 +56,7 @@ crouchbox_spr = sprite_get("olym_crouch_hurtbox");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
-char_height = 53;
+char_height = 58;
 idle_anim_speed = .1;
 crouch_anim_speed = .1;
 walk_anim_speed = .125;
@@ -67,13 +67,13 @@ walk_speed = 2.25;
 walk_accel = 0.3;
 walk_turn_time = 9;
 initial_dash_time = 8;
-initial_dash_speed = 6.75;
-dash_speed = 5.3;
+initial_dash_speed = 6.5;
+dash_speed = 5.5;
 dash_turn_time = 8.5;
 dash_turn_accel = 1;
 dash_stop_time = 7.5;
 dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .35;
+ground_friction = .5;
 moonwalk_accel = 1.0;
 
 jump_start_time = 5;
@@ -105,9 +105,9 @@ wave_land_adj = 1.1; //the multiplier to your initial hsp when wavelanding. Usua
 wave_friction = .07; //grounded deceleration when wavelanding
 
 //crouch animation frames
-crouch_startup_frames = 4;
+crouch_startup_frames = 3;
 crouch_active_frames = 6;
-crouch_recovery_frames = 4;
+crouch_recovery_frames = 2;
 
 //parry animation frames
 dodge_startup_frames = 1;

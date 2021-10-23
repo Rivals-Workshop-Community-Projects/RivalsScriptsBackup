@@ -44,6 +44,21 @@ set_window_value(AT_DTILT, 7, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_DTILT, 7, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 
+//tape spawn
+set_window_value(AT_DTILT, 8, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_DTILT, 8, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DTILT, 8, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_DTILT, 8, AG_WINDOW_SFX, sound_get("sfx-tape-2"));
+set_window_value(AT_DTILT, 8, AG_WINDOW_SFX_FRAME, 3);
+
+set_window_value(AT_DTILT, 9, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_DTILT, 9, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_DTILT, 9, AG_WINDOW_ANIM_FRAME_START, 2);
+
+set_window_value(AT_DTILT, 10, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DTILT, 10, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_DTILT, 10, AG_WINDOW_ANIM_FRAME_START, 3);
+
 set_num_hitboxes(AT_DTILT, 2);
 
 set_hitbox_value(AT_DTILT, 1, HG_PARENT_HITBOX, 0);

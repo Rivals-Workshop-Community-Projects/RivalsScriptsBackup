@@ -176,13 +176,19 @@ if (attack == AT_FSPECIAL_2) {
 		var hit_distance = 4;
 		var hit_dir = 0;
 		
-		if hitbox_timer == length {
+		if hitbox_timer == length-1 {
+			with player_id ballDown = 40;
+			if smacked || has_hit {
+				spawn_hit_fx(x, y, 110);
+				with player_id create_hitbox(AT_FSPECIAL_2, 3, other.x, other.y);
+				sound_play(asset_get("sfx_clairen_tip_strong"));
+			} else {
 			spawn_hit_fx(x, y, 109);
-			with player_id ballDown = 30;
+			}
 		}
 		
 		if destroyed {
-			with player_id ballDown = 30;
+			with player_id ballDown = 40;
 		}	
 		
 		if smacked && (hitbox_timer == 1 || hitbox_timer mod 2 == 0) {
@@ -208,11 +214,10 @@ if (attack == AT_FSPECIAL_2) {
 				enemy_hitboxID = noone;
 				other.smacked = true;
 				other.borked = false;
-				other.hitbox_timer = 20;
+				other.hitbox_timer = 118;
 				other.spr_dir = player_id.spr_dir;
-				other.grav += .1;
+				other.grav = 0;
 				other.air_friction = 0;	
-				other.spr_dir = player_id.spr_dir;
 				other.grounds = 2;
 				other.hitstop = 7;
 				other.in_hitpause = 1;
@@ -227,29 +232,29 @@ if (attack == AT_FSPECIAL_2) {
 				spawn_hit_fx(other.x, other.y, 304);
 				
 				if (attack == AT_FSPECIAL_AIR) {
-					other.old_vsp = -6;
-					other.old_hsp = 6 * (spr_dir);
+					other.old_vsp = 0;
+					other.old_hsp = 20 * (spr_dir);
 				}	
 
 				if (attack == AT_FSTRONG) {
-					other.old_vsp = -7;
-					other.old_hsp = 8 * (spr_dir);
+					other.old_vsp = 0;
+					other.old_hsp = 22 * (spr_dir);
 				}
 				
 				if (attack == AT_JAB) {
-					other.old_vsp = 1;
-					other.old_hsp = 11 * (spr_dir);
+					other.old_vsp = 6;
+					other.old_hsp = 18 * (spr_dir);
 				}
 				
 				if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) {
-					other.old_vsp = -18;
-					other.old_hsp = .5 * (spr_dir);
+					other.old_vsp = -24;
+					other.old_hsp = 0 * (spr_dir);
 					other.grounds = 0;
 				}			
 				if (attack == AT_DSPECIAL_AIR || attack == AT_DTHROW) {
 					if 5 > hbox_num {
-						other.old_vsp = 10;
-						other.old_hsp = 8 * (spr_dir);
+						other.old_vsp = 18;
+						other.old_hsp = 18 * (spr_dir);
 						other.grounds = 0;
 							with player_id {
 								window = 5;
@@ -260,8 +265,8 @@ if (attack == AT_FSPECIAL_2) {
 								sound_play(asset_get("sfx_blow_medium3"), false, noone, 1, .95);
 							}
 					} else {
-					other.old_vsp = -8;
-					other.old_hsp = 11 * (spr_dir);		
+					other.old_vsp = -21;
+					other.old_hsp = 21 * (spr_dir);		
 					other.grounds = 0;
 					}
 				}
@@ -307,6 +312,22 @@ if (attack == AT_FSPECIAL_2) {
 		grav = .75;
 		spawn_hit_fx(x, y, 304);
 		sound_play(asset_get("sfx_metal_hit_strong"), false, noone, 1, .9);		
+		}
+		with (asset_get("pHitBox")) {
+			if (attack == AT_FSPECIAL_2 && hbox_num == 3) {
+				if other.smacked {
+					damage = 8;
+					kb_value = 8;
+				}
+			}
+		}
+	}
+	
+	if hbox_num == 3 {
+		with (asset_get("pHitBox")) {
+			if (attack == AT_FSPECIAL_2 && hbox_num == 1) {
+				other.player = player;
+			}
 		}
 	}
 }

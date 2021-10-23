@@ -41,7 +41,7 @@ set_color_profile_slot( 1, 0, 124, 112, 255 ); //Shoes / Bracelets
 set_color_profile_slot( 1, 1, 0, 85, 255 ); //Headband
 set_color_profile_slot( 1, 2, 16, 6, 88 ); //Shirt
 set_color_profile_slot( 1, 3, 0, 85, 255 ); //Skirt
-set_color_profile_slot( 1, 4, 255, 159, 41 ); //Skin
+set_color_profile_slot( 1, 4, 255, 145, 35); //Skin
 set_color_profile_slot( 1, 5, 33, 33, 33 ); //Socks
 set_color_profile_slot( 1, 6, 53, 24, 10 ); //Hair
 set_color_profile_slot( 1, 7, 20, 255, 255 ); //Wand

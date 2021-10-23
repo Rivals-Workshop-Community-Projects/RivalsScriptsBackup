@@ -16,7 +16,7 @@ if (my_hitboxID.attack == AT_EXTRA_3 || my_hitboxID.attack == AT_NSPECIAL && my_
 
 //FSpecial bounce
 if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) {
-	my_hitboxID.hitbox_timer = 100;
+	my_hitboxID.hitbox_timer = 110;
 	if (my_hitboxID.grounds == 2) {
 			my_hitboxID.vsp = -9;
 			my_hitboxID.hsp = -2*(spr_dir);	
@@ -24,6 +24,10 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) {
 	else {
 			my_hitboxID.vsp = -5;
 		}
+}
+
+if (my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num == 1) {
+	my_hitboxID.hitbox_timer = 128;
 }
 
 //DSpecial double jump restore

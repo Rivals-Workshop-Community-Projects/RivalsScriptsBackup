@@ -60,7 +60,7 @@ set_hitbox_value(AT_DATTACK, 1, HG_HEIGHT, 44);
 set_hitbox_value(AT_DATTACK, 1, HG_SHAPE, 2); //rounded rectangle is 2, circle is 0, square is 1
 set_hitbox_value(AT_DATTACK, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 2);
-set_hitbox_value(AT_DATTACK, 1, HG_ANGLE, 15);
+set_hitbox_value(AT_DATTACK, 1, HG_ANGLE, 20);
 set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, .6);
@@ -79,7 +79,7 @@ set_hitbox_value(AT_DATTACK, 2, HG_HEIGHT, 44);
 set_hitbox_value(AT_DATTACK, 2, HG_SHAPE, 2); //rounded rectangle is 2, circle is 0, square is 1
 set_hitbox_value(AT_DATTACK, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_DATTACK, 2, HG_DAMAGE, 2);
-set_hitbox_value(AT_DATTACK, 2, HG_ANGLE, 15);
+set_hitbox_value(AT_DATTACK, 2, HG_ANGLE, 20);
 set_hitbox_value(AT_DATTACK, 2, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_DATTACK, 2, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_DATTACK, 2, HG_HITPAUSE_SCALING, .6);

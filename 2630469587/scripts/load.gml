@@ -51,7 +51,7 @@ sprite_change_offset("taunt", 82, 149);
 
 sprite_change_offset("plat", 64, 94);
 
-sprite_change_offset("entrance", 110, 159);
+sprite_change_offset("entrance", 108, 159);
 sprite_change_offset("nspecial_proj", 64, 94);
 sprite_change_offset("judgement", 60, 58);
 sprite_change_offset("judgementweak", 60, 58);

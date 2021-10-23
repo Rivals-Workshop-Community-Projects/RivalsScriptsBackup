@@ -24,6 +24,10 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) {
 		}
 }
 
+if (my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num == 1) {
+	my_hitboxID.hitbox_timer = 128;
+}
+
 //DSpecial double jump restore
 if (my_hitboxID.attack == AT_DSPECIAL_AIR || my_hitboxID.attack == AT_DTHROW) {
 	djumps = 0;

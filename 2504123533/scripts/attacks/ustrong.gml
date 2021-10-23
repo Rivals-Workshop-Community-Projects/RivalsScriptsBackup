@@ -69,7 +69,6 @@ set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_PLASMA_SAFE, true);
-set_hitbox_value(AT_USTRONG, 1, HG_PROJECTILE_PARRY_STUN, true);
 
 
 //Linking Hit, Charged (THIS is meant to link. Always.)
@@ -103,4 +102,3 @@ set_hitbox_value(AT_USTRONG, 2, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_USTRONG, 2, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_USTRONG, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_USTRONG, 2, HG_PROJECTILE_PLASMA_SAFE, true);
-set_hitbox_value(AT_USTRONG, 2, HG_PROJECTILE_PARRY_STUN, true);

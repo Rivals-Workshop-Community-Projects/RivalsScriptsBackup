@@ -4,6 +4,7 @@
 sprite_change_offset("idle", 48, 94);
 sprite_change_offset("idle_alt", 48, 94);
 sprite_change_offset("idle_wait", 48, 94);
+sprite_change_offset("idle_halloween", 48, 94);
 sprite_change_offset("taunt", 48, 94);
 sprite_change_offset("intro", 80, 94);
 
@@ -134,9 +135,36 @@ sprite_change_offset("Offscreen", 80, 62);
 sprite_change_offset("Offscreen2", 80, 62);
 
 sprite_change_offset("brand", 0, 0);
+sprite_change_offset("halloween_drop", 48, 94);
 
+//COMP
+//sprite_change_offset("kart", 6, 6);
+sprite_change_offset("regigigas_kart", 7, 7);
+
+//V-SOUND
 set_victory_bg(sprite_get("victory_bg"));
-set_victory_theme(sound_get("OGG_Fernet_Victory_Theme"));
+
+//BLUE EXCEPTION
+if (get_player_color(player) == 17)
+{
+    set_victory_portrait( sprite_get( "portrait3" ));
+    set_victory_sidebar( sprite_get( "result_small3" ));
+    set_victory_theme(sound_get("fernet_victory"));
+}
+
+else if (get_player_color(player) >= 15)
+{
+    set_victory_portrait( sprite_get( "portrait2" ));
+    set_victory_sidebar( sprite_get( "result_small2" ));
+    set_victory_theme(sound_get("fernet_victory"));
+}
+else
+{
+    set_victory_portrait( sprite_get( "portrait" ));
+    set_victory_sidebar( sprite_get( "result_small" ));
+    set_victory_theme(sound_get("OGG_Fernet_Victory_Theme"));
+}
+
 //set_victory_theme(sound_get("fernet_victory"));
 
 //END

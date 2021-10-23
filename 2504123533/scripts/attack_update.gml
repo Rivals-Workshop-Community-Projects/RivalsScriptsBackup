@@ -20,6 +20,39 @@ if attack == AT_TAUNT
         barPoints += barAmount*5;
 }
 
+
+//parrying projectile standards
+if (attack == AT_FSTRONG) {
+	if (window == 1) {
+		set_window_value(AT_FSTRONG, 3, AG_WINDOW_TYPE, 1);
+	}
+}
+if (attack == AT_DSTRONG) {
+	if (window == 1) {
+		set_window_value(AT_DSTRONG, 4, AG_WINDOW_TYPE, 1);
+	}
+}
+if (attack == AT_USTRONG) {
+	if (window == 1) {
+		set_window_value(AT_USTRONG, 4, AG_WINDOW_TYPE, 1);
+	}
+}
+if (attack == AT_FTILT) {
+	if (window == 1) {
+		set_window_value(AT_FTILT, 3, AG_WINDOW_TYPE, 1);
+	}
+}
+if (attack == AT_UAIR) {
+	if (window == 1) {
+		set_window_value(AT_UAIR, 3, AG_WINDOW_TYPE, 1);
+	}
+}
+
+if (attack == AT_USPECIAL) {
+	//print_debug(string(window));
+	prat_land_time = 6;
+}	
+
 //print(window)
 
 if (attack == AT_BAIR)

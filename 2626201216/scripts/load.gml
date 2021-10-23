@@ -36,6 +36,7 @@ sprite_change_offset("dtilt", 84, 109);
 sprite_change_offset("utilt", 84, 209);
 sprite_change_offset("nair", 84, 147);
 sprite_change_offset("fair", 84, 147);
+sprite_change_offset("fair_short", 84, 147);
 sprite_change_offset("bair", 84, 147);
 sprite_change_offset("brush_falling", 84, 147);
 sprite_change_offset("brush_stuck", 84, 147);

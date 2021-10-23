@@ -39,7 +39,7 @@ patch_ver = "1.21";
 patch_day = "2";
 patch_month = "APR";
  
-var num_alts = 19;
+var num_alts = 20;
 var alt_cur = get_player_color(player);
  
  
@@ -65,6 +65,7 @@ alt_name[15] = "Advance Wars";
 alt_name[16] = "Johnny 5";
 alt_name[17] = "Loxodont";
 alt_name[18] = "Gold";
+alt_name[19] = "Queen";
  
  
  

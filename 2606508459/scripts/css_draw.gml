@@ -27,12 +27,17 @@ var arr_peeps = [
     ,["Theadosia", "Tree_sage_", 11, "@"]
     ,["Sycamore", "The5oul", 1, "@"]
     ,["Fierce", "hts9", 3, "@"]
-    ,["TuQiu", "Usagibun1", 9, "@"] 
     ,["Ava", "SophieVennen", 12, "@"]
     ,["Techno & Tenor", "BobTheGUYYYYY", 14, "@"]
     ,["Tak", "Taktaagic", 15, "@"]
     //,["Lukastar", "Lukaru", 16, "@"]
-    ,["Fox McCloud", "Alt by Zerks", 17, ""]
+    ,["Fox", "Alt by Zerks", 17, ""]
+    ,["T. Gear", "KeroBerry1/The5oul", 0, "@"]
+    ,["TuQiu", "Usagibun1", 9, "@"] 
+    ,["Kiera", "YeahBeezii", 18, "@"]
+    ,["A. Master", "KeroBerry1", 0, "@"]
+    ,["Daora", "Opengunner", 19, "@"]
+    ,["Halloween", "2021 Dev Derby", 20, ""]
 ];
 
 var arr_secret = [
@@ -88,6 +93,18 @@ else
     ];
 }
 
+//====> DRAW ALT CHAR SELECT
+
+//BLUE EXCEPTION
+if (curr_alt == 17)
+{
+    draw_sprite_ext( sprite_get("charselect3"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1 );
+}
+else if (curr_alt >= 15)
+{
+    draw_sprite_ext( sprite_get("charselect2"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1 );
+}
+
 //====> WRITE ON CSS
 
 draw_set_halign(fa_left);
@@ -139,7 +156,7 @@ for (var i = 0; i < len_peeps; i++)
         y + rec_y + rec_ym,
         x + rec_x + ((i + 1) * rec_xm) + (i * rec_w) + rec_w,
         y + rec_y + rec_ym + rec_h,
-        curr_alt == i ? c_white : c_gray
+        curr_alt == i ? (i > 14 ? c_yellow : c_white) : (i > 14 ? c_orange : c_gray)
     );
 }
 

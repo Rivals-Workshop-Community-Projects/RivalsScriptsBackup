@@ -6,6 +6,7 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2){
     can_fast_fall = false;
 	if (window == 4 && window_timer > 2 || window == 5) {
+		can_attack = true;
 		can_strong = true;
 		can_special = true;
 	}
@@ -27,7 +28,7 @@ if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) {
 }
 
 if (attack == AT_DSPECIAL_AIR || attack == AT_DTHROW) {
-	if window == 1 && 9 > window_timer && shield_pressed {
+	if window == 1 && 10 > window_timer && window_timer > 2 && (spr_dir == 1 && right_down || spr_dir == -1 && left_down) && !down_down {
 		set_attack(AT_DSPECIAL);
 		window = 1;
 		window_timer = 3;
@@ -361,7 +362,7 @@ if (attack == AT_FSPECIAL) and (3 > window) and !(joy_pad_idle) {
 //FSpecial2 angling
 if (attack == AT_FSPECIAL_2) and (3 > window) and !(joy_pad_idle) {
 	if(joy_dir >= 30 && joy_dir <= 170) {
-		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_HSPEED, 1);
+		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_HSPEED, .65);
 		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_VSPEED, -10);
 		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_GRAVITY, .55);
 		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 2);

@@ -37,7 +37,7 @@ set_hitbox_value(AT_DTILT, 1, HG_SHAPE, 2); //rounded rectangle is 2, circle is 
 set_hitbox_value(AT_DTILT, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_DTILT, 1, HG_DAMAGE, 3);
 set_hitbox_value(AT_DTILT, 1, HG_ANGLE, 45);
-set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 3);
+set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, .2);

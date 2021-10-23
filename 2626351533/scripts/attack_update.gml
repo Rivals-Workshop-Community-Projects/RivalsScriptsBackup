@@ -6,6 +6,43 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 //Resets your double jumps
 max_djumps = 3;
 
+//HUD Icon Stuff for some attacks
+{
+if (attack == AT_UTILT){
+    if (window < 2 && char_height <= 120){
+        char_height += 8;   
+    }
+    if (window == 3 && char_height >= 52) {
+        char_height -= 5;
+    }
+}
+if (attack == AT_DSTRONG){
+    if (window < 2 && char_height <= 65){
+        char_height += 4;   
+    }
+    if (window > 1 && char_height >= 52) {
+        char_height -= 5;
+    }
+}
+if (attack == AT_USTRONG){
+    if (window > 1 && window < 4 && char_height <= 120){
+        char_height += 15;   
+    }
+    if (window >= 4 && char_height >= 52) {
+        char_height -= 6;
+    }
+}
+if (attack == AT_UAIR){
+    if (window < 2 && char_height <= 80){
+        char_height += 4;   
+    }
+    if (window == 3 && char_height >= 52) {
+        char_height -= 5;
+    }
+}
+
+}
+
 //NSpecial - Batarang
 if (attack == AT_NSPECIAL){
     move_cooldown[AT_NSPECIAL] = 9999;
@@ -109,7 +146,7 @@ if (attack == AT_DSPECIAL){
         if (instance_exists(mine)){
             set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
             set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
-            set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX, asset_get("mfx_ring_bell"));
+            set_window_value(AT_DSPECIAL, 2, AG_WINDOW_SFX, sound_get("bomb_trigger"));
             set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 4);
         }
         else {

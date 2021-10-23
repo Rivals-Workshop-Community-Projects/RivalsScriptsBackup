@@ -279,9 +279,10 @@ if fireon <= 3 {
     fireon += 0.5
 }
 
-if fireon < 3 && my_hitboxID.attack != AT_JAB{
+if fireon < 3 && my_hitboxID.attack != AT_JAB && my_hitboxID.attack != AT_DSPECIAL {
     fireon += 0.5
 }
+
 }
 
 if fireon >= 3 && firerange < 300{

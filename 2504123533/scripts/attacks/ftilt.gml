@@ -46,6 +46,7 @@ set_hitbox_value(AT_FTILT, 1, HG_PROJECTILE_VSPEED, 0);
 set_hitbox_value(AT_FTILT, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_FTILT, 1, HG_EXTENDED_PARRY_STUN, 0);
 
+
 set_hitbox_value(AT_FTILT, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_FTILT, 2, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 3);

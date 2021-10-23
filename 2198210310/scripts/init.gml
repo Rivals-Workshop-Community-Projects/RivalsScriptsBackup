@@ -22,7 +22,15 @@ enemykirby = undefined;
 trummelcodecneeded = false;
 trummelcodec_id = noone;
 
-taunt_sound = sound_get("tauntsong");
+switch get_player_color(player) {
+    case 19:
+    taunt_sound = sound_get("cool_mixtape");
+    break;
+    
+    default:
+    taunt_sound = sound_get("tauntsong");
+    break;
+}
 //taunt_sound = asset_get("sfx_syl_dspecial_howl")
 taunt_type = 1; //1 = song, 2 = sound
 

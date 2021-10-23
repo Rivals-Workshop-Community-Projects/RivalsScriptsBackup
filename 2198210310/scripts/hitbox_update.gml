@@ -181,7 +181,6 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
                 }
             }
         }
-        
         if hitbox != noone && ((hitbox.hit_priority != 0 && hitbox.kb_value != 0) || hitbox.player_id == player_id) {
             if variable_instance_exists(hitbox.player_id, "isWalle") {
                 player_id = hitbox.player_id;

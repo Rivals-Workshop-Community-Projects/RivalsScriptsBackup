@@ -1,17 +1,22 @@
+var curr_alt = get_player_color(player);
+
 switch (state)
 {
     case PS_IDLE:
-        if (nspecial_postfail) { sprite_index = sprite_get("idle_alt"); }
+        //SPECIAL COSTUMES
+        if (!moved && curr_alt == 20) { sprite_index = sprite_get("idle_halloween"); } 
+        
         else if (idle_wait)
         { 
             sprite_index = sprite_get("idle_wait");
-            image_index = floor(idle_count / 5);
+            //image_index = floor(idle_count / 5);
         }
         else
         {
             sprite_index = sprite_get("idle");
-            image_index = floor(idle_count / 5);
+            //image_index = floor(idle_count / 5);
         }
+        image_index = floor(idle_count / 5);
         break;
     
     case PS_DOUBLE_JUMP:
@@ -20,19 +25,27 @@ switch (state)
         
     //Intro Animation
     case PS_SPAWN:
-        if (intro_timer < intro_timerMax && intro_timer >= 0) 
+        if (curr_alt != 20)
         {
-            sprite_index = sprite_get("intro");
+            if (intro_timer < intro_timerMax && intro_timer >= 0) 
+            {
+                sprite_index = sprite_get("intro");
+                image_index = floor(intro_timer);
+            } 
+            else if (intro_timer < 0) 
+            {
+                sprite_index = sprite_get("intro");
+                image_index = 0;
+            } 
+            else 
+            {
+                sprite_index = sprite_get("idle");
+            }
+        }
+        else
+        {
+            sprite_index = sprite_get("idle_halloween");
             image_index = floor(intro_timer);
-        } 
-        else if (intro_timer < 0) 
-        {
-            sprite_index = sprite_get("intro");
-            image_index = 0;
-        } 
-        else 
-        {
-            sprite_index = sprite_get("idle");
         }
         break;
     

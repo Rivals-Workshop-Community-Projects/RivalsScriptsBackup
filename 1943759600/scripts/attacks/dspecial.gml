@@ -1,6 +1,6 @@
 set_attack_value(AT_DSPECIAL, AG_CATEGORY, 2);
 set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get("dspecial"));
-set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 3);
+set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_DSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_DSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecial_air"));
@@ -28,28 +28,43 @@ set_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED, 1.2);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
 
 //unbreaking palm
-set_window_value(AT_DSPECIAL, 3, AG_WINDOW_TYPE, 419);
-set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 16); 
-set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 7);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_TYPE, 419); //startup
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 3); 
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 11);
-set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_shovel_swing_light1"));
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HSPEED, 4);
-set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HSPEED, 1);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_shovel_swing_light1"));
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_SFX_FRAME, 1);
+
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_TYPE, 419);//active
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 3); 
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 12);
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_HSPEED_TYPE, 2);
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 2);
+set_window_value(AT_DSPECIAL, 4, AG_WINDOW_HSPEED, 9);
+
+set_window_value(AT_DSPECIAL, 5, AG_WINDOW_TYPE, 419); //endlag
+set_window_value(AT_DSPECIAL, 5, AG_WINDOW_LENGTH, 10); 
+set_window_value(AT_DSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_DSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 13);
+set_window_value(AT_DSPECIAL, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
+set_window_value(AT_DSPECIAL, 5, AG_WINDOW_HSPEED_TYPE, 2);
+set_window_value(AT_DSPECIAL, 5, AG_WINDOW_HSPEED, 0);
 
 set_num_hitboxes(AT_DSPECIAL, 3);
 
 //lvl 1
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 3);
-set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 5);
-set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 5);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_X, 32);
+set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 4);
+set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 3);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_X, 18);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_Y, -36);
-set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 59);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 46);
+set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 39);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 66);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 8);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 80);
@@ -64,13 +79,12 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ice_dspecial_ground"
 
 //lvl 2
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, 3);
-set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 5);
-set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 5);
-set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_X, 32);
+set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, 4);
+set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 3);
+set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_X, 18);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_Y, -36);
-set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 59);
-set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 46);
+set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 39);
+set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 66);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 9);
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 80);
@@ -86,13 +100,12 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_ice_dspecial_ground"
 
 //lvl 3 (maximum)
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW, 3);
-set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 5);
-set_hitbox_value(AT_DSPECIAL, 3, HG_LIFETIME, 5);
-set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_X, 32);
+set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW, 4);
+set_hitbox_value(AT_DSPECIAL, 3, HG_LIFETIME, 3);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_X, 18);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_Y, -36);
-set_hitbox_value(AT_DSPECIAL, 3, HG_WIDTH, 59);
-set_hitbox_value(AT_DSPECIAL, 3, HG_HEIGHT, 46);
+set_hitbox_value(AT_DSPECIAL, 3, HG_WIDTH, 39);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HEIGHT, 66);
 set_hitbox_value(AT_DSPECIAL, 3, HG_PRIORITY, 3);
 set_hitbox_value(AT_DSPECIAL, 3, HG_DAMAGE, 10);
 set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE, 80);

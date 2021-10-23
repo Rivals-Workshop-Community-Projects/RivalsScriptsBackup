@@ -33,7 +33,13 @@ hud_MPMode = [189, -18];
 //Previous Frame
 pre_state = state;
 
+//Colors
+shadr_init = false;
+
 //Visuals
+moved = false;
+move_drop = hit_fx_create( sprite_get( "halloween_drop" ), 30 );
+
 fx_hardway_duration = 30;
 fx_hardway = hit_fx_create( sprite_get( "hardway" ), fx_hardway_duration );
 fx_hardway_x = -20; //-34;
@@ -206,6 +212,13 @@ flag_fspecial_2 = 0;
 flag_dspecial = 0;
 flag_ballCall = 0;
 flag_taunt = false;
+
+//====> RC COMP ########################################################################################
+
+kart_sprite = sprite_get("kart");
+//kart_sprite = sprite_get("regigigas_kart");
+kart_frames = 1;
+kart_engine_sound = 4;
 
 //====> DEFAULT VARIABLES ########################################################################################
 

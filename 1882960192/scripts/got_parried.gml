@@ -17,9 +17,13 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) {
 }
 
 if (my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num == 1) {
-    my_hitboxID.hitbox_timer = 1;
-	my_hitboxID.grav += .35;
-	my_hitboxID.hsp = 10*my_hitboxID.spr_dir;	
-	my_hitboxID.damage += 1;
-	my_hitboxID.grounds = 2;
+		if !my_hitboxID.smacked {
+		my_hitboxID.hitbox_timer = 1;
+		my_hitboxID.grav += .35;
+		my_hitboxID.hsp = 10*my_hitboxID.spr_dir;	
+		my_hitboxID.damage += 1;
+		my_hitboxID.grounds = 2;
+	} else {
+		my_hitboxID.hitbox_timer = 1;	
+	}
 }

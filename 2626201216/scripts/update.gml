@@ -87,7 +87,7 @@ with(oPlayer)
 				dash_speed      = 10;
 				walk_speed      = 10;		// 3    -  4.5
 				walk_accel      = 3;		// 0.2  -  0.5
-				ground_friction = -2;		// 0.3  -  1
+				ground_friction = -1.5;		// 0.3  -  1
 
 			}
 			else

@@ -59,6 +59,7 @@ sprite_change_offset("dspecial2", 62, 90);
 sprite_change_offset("taunt", 32, 84);
 
 sprite_change_offset("plat", 64, 84);
+sprite_change_offset("eggburst", 40, 40);
 
 sprite_change_offset("nspecial_proj", 38, 18);
 sprite_change_offset("nspecial_proj2", 42, 26);

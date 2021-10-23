@@ -11,8 +11,8 @@ set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
-set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_SFX_FRAME, 6);
+set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_SFX, sound_get("sword-brandish"));
+set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_SFX_FRAME, 2);
 
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_LENGTH, 3);
@@ -71,7 +71,7 @@ set_hitbox_value(AT_DSPECIAL_2, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITPAUSE_SCALING, .85);
-set_hitbox_value(AT_DSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_DSPECIAL_2, 1, HG_HIT_SFX, sound_get("sword-hit1"));
 
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_HITBOX_TYPE, 1);
@@ -89,7 +89,7 @@ set_hitbox_value(AT_DSPECIAL_2, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_HITPAUSE_SCALING, .65);
-set_hitbox_value(AT_DSPECIAL_2, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
+set_hitbox_value(AT_DSPECIAL_2, 2, HG_HIT_SFX, sound_get("sword-hit2"));
 
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_HITBOX_TYPE, 1);
@@ -107,4 +107,4 @@ set_hitbox_value(AT_DSPECIAL_2, 3, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_KNOCKBACK_SCALING, .45);
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_HITPAUSE_SCALING, .35);
-set_hitbox_value(AT_DSPECIAL_2, 3, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(AT_DSPECIAL_2, 3, HG_HIT_SFX, sound_get("sword-hit3"));

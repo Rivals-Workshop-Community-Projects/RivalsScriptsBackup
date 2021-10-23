@@ -174,8 +174,8 @@ if (_explode)
         {
             set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 4 + (other._charge * 5)); //9, 14, 19, 24
             set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, other._charge * 4); //4, 8, 12, 16
-            set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 2 + (other._charge * 4)); //6, 10, 14, 18
-            set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, .7);
+            set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
+            set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, .8 + (other._charge * .05)); //.85, .9, .95, 1.0 (0.7 always)
         }
         create_hitbox(AT_NSPECIAL, 2, floor(x), floor(y));
         spawn_hit_fx(x, y, 143);

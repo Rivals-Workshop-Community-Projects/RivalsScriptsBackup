@@ -38,6 +38,17 @@ if (elec_timer <= 0)
 
 //====> IDLE #######################################################
 
+//Init movement
+if (!(state == PS_IDLE || state == PS_SPAWN) && !moved)
+{
+    moved = true;
+    if (get_player_color(player) == 20)
+    {
+        var _md = spawn_hit_fx(x, y, move_drop);
+        _md.image_xscale = spr_dir;
+    }
+}
+
 if (state == PS_IDLE) { idle_count++; }
 else 
 { 
@@ -209,6 +220,8 @@ if (!free)
 {
     flag_fspecial = 0;
     flag_fspecial_jump = 1;
+    
+    move_cooldown[AT_FSPECIAL] = 0;
 }
 
 if ((state == PS_HITSTUN || state == PS_HITSTUN_LAND)
@@ -280,6 +293,11 @@ if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
     flag_explode = false
     
     flag_dtilt_jump = false;
+}
+
+if (state == PS_WALL_JUMP)
+{
+    move_cooldown[AT_FSPECIAL] = 0;
 }
 
 //====> PREVIOUS FRAME VARIABLES #######################################################

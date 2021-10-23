@@ -353,6 +353,7 @@ if attack == AT_DSTRONG {
 }
 
 
+/*
 if attack == AT_DATTACK {
 	
 	if has_hit_player or window == 4{
@@ -431,7 +432,13 @@ if attack == AT_DATTACK {
 	
 	
 }
+*/
 
+if attack == AT_DATTACK {
+	if window == 1 && window_timer == 1 && !hitpause 
+	sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1.1);
+	
+}
 
 if attack == AT_DAIR{
 	
@@ -700,14 +707,53 @@ if attack == AT_DSPECIAL {
 	move_cooldown[AT_DSPECIAL] = 10
 	can_fast_fall = false
 	
-	if vsp > 18 {
-		dspecon = 1
+	//if vsp > 12 && dspecon == 0 {
+	//	sound_play(sound_get("RI"),false,noone,1,1.4)
+	//	dspecon = 1
+	//	spawn_hit_fx(x,y - 50, 305)
+	//	
+	//}
+	
+	if window == 1 && window_timer > 16 && free{
+          if !has_hit_player {
+		    can_wall_jump = true
+		    vsp *= 1.05
+               if vsp < 16 {
+		        
+               } else {
+                if shield_pressed or special_pressed or jump_pressed{
+                spawn_hit_fx(x,y-20,14)	
+                vsp = -7
+                attack_end()
+                set_attack(AT_DAIR)
+                window = 5
+                window_timer = 1
+                sound_play(asset_get("sfx_burnapplied"),false,noone,1,1.2)
+               }	
+            }
+            
+            
+          } else {
+          	
+          	if y + vsp > room_height {
+          		vsp = -20
+          		attack_end()
+          		set_attack(AT_USTRONG)
+          	    window = 2
+          	    window_timer = 6
+          	    sound_play(asset_get("sfx_burnapplied"),false,noone,1.2,.9);
+		        sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,.8,.9);
+		        sound_play(asset_get("sfx_blow_heavy2"),false,noone,1,.9);
+		       spr_dir *= -1
+			   spawn_hit_fx(x + 10*spr_dir ,y - 20,fc)
+			   spr_dir *= -1
+			   spawn_hit_fx(x + 10*spr_dir ,y - 20,fc)
+          	}
+          	
+          }
 	}
-		if window == 1 && window_timer > 16 {
-		
-		vsp *= 1.05
-		
-	}
+	
+
 	
 	
 	if window == 2 && shunpo = 2  {
@@ -765,19 +811,25 @@ if attack == AT_DSPECIAL {
 		window_timer = 16
 	}
 	
-	if window == 1 && window_timer > 16 && free{
-          if !has_hit_player {
-		can_wall_jump = true
-          }
-	}
+	
 	
 	if window == 1 && !free {
-		window_timer = 18
+		destroy_hitboxes();
+		window = 2
+		window_timer = 1
 		shake_camera(4,6)
+		    
+		    sound_play(asset_get("sfx_burnapplied"),false,noone,1.2,.9);
+		     sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,.8,.9);
+		     sound_play(asset_get("sfx_blow_heavy2"),false,noone,1,.9);
+		    spr_dir *= -1
+			spawn_hit_fx(x + 10*spr_dir ,y - 20,fc)
+			spr_dir *= -1
+			spawn_hit_fx(x + 10*spr_dir ,y - 20,fc)
 	}
 	
-	if window == 2 && window_timer == 10 {
-
+	if window == 2 && window_timer > 15 && has_hit && !free{
+       set_state(PS_IDLE)
 	}
 	
 	if dspecon = 1{

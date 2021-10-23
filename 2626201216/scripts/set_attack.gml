@@ -17,3 +17,8 @@ if (attack == AT_USPECIAL && free)
 if (attack == AT_TAUNT)
 {
 }
+
+if (attack = AT_FAIR)
+{
+    attack = AT_EXTRA_2;
+}

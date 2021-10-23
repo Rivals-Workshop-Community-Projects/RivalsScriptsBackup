@@ -50,6 +50,11 @@ if attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG
 	
 }
 
+//jab no parrye
+if attack == AT_JAB
+{
+	was_parried = false;
+}
 
 //dattack2 turnaround
 if attack == AT_EXTRA_1
