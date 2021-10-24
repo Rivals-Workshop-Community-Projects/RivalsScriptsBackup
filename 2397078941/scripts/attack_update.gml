@@ -5,6 +5,25 @@
 
 if visible {
 
+	if attack == AT_JAB {
+		 if window == 5 && window_timer < 5 {
+		 	hsp = (16 - (state_timer - 120))/2*spr_dir
+		 }
+		 
+		if window == 5 && hitpause && window_timer < 4 {
+		    hit_player_obj.x += ((x + (10 * spr_dir)) - hit_player_obj.x) / 2
+		    state_timer += 1
+		}
+		
+		if window == 5 && !hitpause && window_timer == 5 {
+		    hitpause = true
+		    hitstop = 10
+		    old_hsp = 0
+		    old_vsp = 0
+		}
+		
+	}
+	
 if !hitpause {
 
 	
@@ -46,6 +65,7 @@ set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, 0.7);
     	can_wall_jump = true
 
     if window == 2 && has_hit_player {
+    	has_walljump = true
     	set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
 		window = 4
 		window_timer = 0
@@ -157,6 +177,7 @@ set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, 0.7);
 
 
 	if window <= 2 && has_hit_player && state_timer < 100{
+		has_walljump = true
 		window = 1
 		window_timer = 1
 		spr_dir *= -1
@@ -367,27 +388,56 @@ set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 180);
 	}
 	
 	if attack == AT_JAB {
+		
+		
 		if has_hit_player  && state_timer <= 60 && hit_player_obj.state_cat == SC_HITSTUN {
-			if  window_timer >= 4 && state_timer > 15{
+			if  window_timer >= 4 && state_timer > 5{
 				window = 2
 			    window_timer = 4
-				if attack_pressed {
+			    
+			    
+				if attack_pressed && state_timer > 15{
 				window = 4
 				window_timer = 0
 				state_timer += 10
 		    	}
 		    	
+		    	
+		    	
+		    	if left_pressed && spr_dir == -1{
+		    		attack_end()
+		    		set_attack(AT_FTILT)
+		    		window = 1
+		    		window_timer = 6
+		    	}
+		    	
+		    	if right_pressed && spr_dir == 1{
+		    		attack_end()
+		    		set_attack(AT_FTILT)
+		    		window = 1
+		    		window_timer = 6
+		    	}
+		    	
 		    	if left_pressed && spr_dir == 1{
 		    		state_timer = 120
+		    		shake_camera(4,4)
+		    		create_hitbox(AT_JAB,4,x,y)
 		    			sound_play(asset_get("sfx_swipe_heavy2"))
+		    			sound_play(asset_get("sfx_blow_heavy2"),false,noone,1,1.5)
 		    			spr_dir = -1
+		    			spawn_hit_fx(x - 20*spr_dir,y - 50, 305)
 		    			window = 5
 		    			window_timer = 0
 		    	}
+		    	
 		    	if right_pressed && spr_dir == -1 {
 		    		state_timer = 120
+		    		shake_camera(4,4)
+		    		create_hitbox(AT_JAB,4,x,y)
 		    			sound_play(asset_get("sfx_swipe_heavy2"))
+		    			sound_play(asset_get("sfx_blow_heavy2"),false,noone,1,1.5)
 		    			spr_dir = 1
+		    			spawn_hit_fx(x - 20*spr_dir,y - 50, 305)
 		    			window = 5
 		    			window_timer = 0
 		    	}
@@ -477,22 +527,65 @@ set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 180);
 	
 
 		
-			if attack == AT_TAUNT  {
+		if attack == AT_TAUNT  {
+			
 	    if window == 1 && window_timer == 1 {
 		   sound_play(asset_get("sfx_boss_fireball"))
 		   sound_play(asset_get("sfx_boss_vortex_end"))
 		   shake_camera(2,4)
-		   changed = -1
+		   
+		   if get_gameplay_time() > 120 {
+		   	if up_down {
+		   		
+		   		window = 5
+		   	} else {
+		   		sound_play(sound_get("tauntlaugh"),false,noone,.75, 1.05 - (random_func(1,10,true)/100) )
+		   		window = 6
+		   	}
+		   }
 	    }
 	    
+	   
+	   if window == 5 {
+	   	   
+	   	   if window_timer == 6*4 {
+	   	   	sound_play(asset_get("sfx_boss_fireball"))
+	   	   }
+	   	   
+	   	   
+	   	   if window_timer == 7*4 {
+	   	   	   	spawn_hit_fx(x, y - 50, tauntpar1)
+	          	spawn_hit_fx(x, y - 10, tauntpar1)
+	          	spawn_hit_fx(x + 10, y - 30, tauntpar1)
+	          	spawn_hit_fx(x - 10, y - 30, tauntpar1)
+	          	sound_play(asset_get("sfx_ori_taunt2"),false,noone,1.5);
+	          	sound_play(asset_get("sfx_abyss_hex_hit"),false,noone,1)
+	          	take_damage(player, -1, -1)
+	          	
+	          	move_cooldown[AT_TAUNT] = 120
+	   	   }
+	   	   
+	   }
+	    
+	    
+	   if window == 6 {
+	   	
+	   	  if window_timer % 3 <= 1 {
+	   	  	draw_indicator = false
+	   	  }
+	   	  
+	       if window_timer = 24*4 {
+	   	   	sound_play(asset_get("sfx_forsburn_consume_full"))
+		    sound_play(asset_get("sfx_boss_vortex_end"))
+	   	   }
+	   }
+	   
        if window == 3 && window_timer == 1 {
 		   sound_play(asset_get("sfx_forsburn_consume_full"))
 		   sound_play(asset_get("sfx_boss_vortex_end"))
-		   changed = 0
 	    }
 	    
 	    if window == 4 && window_timer == 1 {
-	    	changed = 0
 	    }
 	}
 
@@ -650,6 +743,8 @@ if attack == AT_JAB{
 	if window < 3 && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN{
 			hit_player_obj.x += ((x + (50 * spr_dir)) - hit_player_obj.x) / 10
 	}
+	
+
 	
 
 	

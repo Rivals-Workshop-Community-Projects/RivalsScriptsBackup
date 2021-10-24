@@ -74,6 +74,10 @@ if (state == PS_ROLL_BACKWARD or state == PS_ROLL_FORWARD or state == PS_TECH_FO
     	spr_dir *= -1
     }
     
+    if state_timer == 15 {
+    	spr_dir *= -1
+    }
+	
 	 if state_timer == 1 {
 	     sound_play(asset_get("sfx_absa_jab1"),false,noone,0.6);
 	 }

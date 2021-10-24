@@ -76,9 +76,11 @@ switch(attack)
         if (window == 1)
         {
             boost = 1;
+            if (fspec_use < 2)
             vsp = 0;
             if (window_timer == 1)
             {
+                fspec_use += 1;
                 if (!instance_exists(projectile) and !instance_exists(pikmin) and shrimp_set == 0 and fish == 0)
                 fspec_set = 0;
                 else 
@@ -415,7 +417,7 @@ switch(attack)
         {
             can_fast_fall = false;
             old_vsp = 0;
-            old_vsp += -7;
+            old_vsp += -6;
             boost = 0;
         }
         break;

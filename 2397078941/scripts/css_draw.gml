@@ -54,6 +54,8 @@ var palette_names = [
   "Golden",
   "Deep Abyss",
   "Equaliza",
+  "Shoul",
+  "weLcOMe bAck", 
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

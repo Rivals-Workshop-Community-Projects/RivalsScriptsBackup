@@ -4,7 +4,7 @@
 var temp_x = x + 12;
 var temp_y = y + 12;
  
-var num_alts = 28;
+var num_alts = 29;
 var alt_cur = get_player_color(player);
  
  
@@ -38,7 +38,8 @@ alt_name[23] = "Sanallite";
 alt_name[24] = "Saplings"; 
 alt_name[25] = "Kronies"; 
 alt_name[26] = "Hoomans"; 
-alt_name[27] = "Baerats"; 
+alt_name[27] = "Baerats";
+alt_name[28] = "Hoshiyomi";
 
  
 //Patch

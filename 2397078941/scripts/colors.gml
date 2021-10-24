@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 13 );
+set_num_palettes( 15 );
 
 // unnamed alt palette
 set_color_profile_slot( 1, 0, 255, 0, 0 ); //unnamed color row
@@ -155,6 +155,26 @@ set_color_profile_slot( 12, 4, 255, 117, 248 ); //unnamed color row
 set_color_profile_slot( 12, 5, 168, 173, 237 ); //unnamed color row
 set_color_profile_slot( 12, 6, 166, 252, 255 ); //unnamed color row
 set_color_profile_slot( 12, 7, 129, 170, 214 ); //unnamed color row
+
+// Shoul
+set_color_profile_slot( 13, 0, 255, 0, 85 ); //unnamed color row
+set_color_profile_slot( 13, 1, 115, 0, 125 ); //unnamed color row
+set_color_profile_slot( 13, 2, 167, 0, 201 ); //unnamed color row
+set_color_profile_slot( 13, 3, 13, 19, 19 ); //unnamed color row
+set_color_profile_slot( 13, 4, 255, 0, 72 ); //unnamed color row
+set_color_profile_slot( 13, 5, 150, 0, 107 ); //unnamed color row
+set_color_profile_slot( 13, 6, 186, 0, 53 ); //unnamed color row
+set_color_profile_slot( 13, 7, 255, 0, 74 ); //unnamed color row
+
+// Welcome Back
+set_color_profile_slot( 14, 0, 0, 195, 255 ); //unnamed color row
+set_color_profile_slot( 14, 1, 108, 80, 181 ); //unnamed color row
+set_color_profile_slot( 14, 2, 74, 153, 199 ); //unnamed color row
+set_color_profile_slot( 14, 3, 255, 227, 227 ); //unnamed color row
+set_color_profile_slot( 14, 4, 191, 0, 255 ); //unnamed color row
+set_color_profile_slot( 14, 5, 166, 88, 72 ); //unnamed color row
+set_color_profile_slot( 14, 6, 240, 248, 255 ); //unnamed color row
+set_color_profile_slot( 14, 7, 159, 219, 219 ); //unnamed color row
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

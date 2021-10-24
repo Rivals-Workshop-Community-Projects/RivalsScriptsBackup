@@ -125,6 +125,7 @@ pikmin_sound = 0;
 status = noone;
 
 fspec_set = 0;
+fspec_use = 0;
 projectile = noone;
 shrimp_set = 0;
 shrimp = 0;

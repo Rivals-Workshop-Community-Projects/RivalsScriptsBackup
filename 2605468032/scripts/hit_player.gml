@@ -57,7 +57,11 @@ if (!instance_exists(bubbleg))
         }
 }
 
-
+if (pikmin == self and my_hitboxID.type = 1)
+{
+    create_hitbox(AT_FSPECIAL, 2, pikmin.x - (20 * pikmin.spr_dir), pikmin.y - floor(y_offset * 2))
+    pikmin = noone;
+}
 
 if (my_hitboxID.type = 1 and wet > 0)
 {

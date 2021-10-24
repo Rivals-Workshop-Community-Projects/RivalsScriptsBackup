@@ -56,7 +56,7 @@ if (instance_number(oPlayer) > 1)
         }
     }
 }
-if (pikmin != noone and pikmin != self)
+if (pikmin != noone)
 {
     y_offset = sprite_get_height(pikmin.hurtbox_spr) / 6;
     if (pikmin.state != PS_RESPAWN)
@@ -87,13 +87,12 @@ if (pikmin != noone and pikmin != self)
         {
             shrimp_set = 0;
         }
-        
+    
         pikmin = noone
         pikmin_time = 320;
         pikmin_frame = 0;
     }
 }
-
 if (state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND)
 {
     follow = 0;
@@ -109,4 +108,9 @@ if (state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND)
         pikmin_time = 320;
         pikmin_frame = 0;
     }
+}
+
+if (free == false)
+{
+    fspec_use = 0;
 }

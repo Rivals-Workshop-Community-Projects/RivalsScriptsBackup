@@ -1,5 +1,5 @@
 ///
-if attacking && attack == AT_TAUNT  && window != 4 {
+if attacking && attack == AT_TAUNT  && window != 4 && window != 5  && window != 1 {
     
      
     draw_sprite(sprite_get("supply"),   supply  , temp_x+ 10, temp_y -42  );
@@ -7,7 +7,7 @@ if attacking && attack == AT_TAUNT  && window != 4 {
     
 }
 
-if attacking && attack == AT_TAUNT  && window == 4 {
+if attacking && attack == AT_TAUNT  && window == 4  {
     
      
     draw_sprite_ext(sprite_get("supply"),   supply  , temp_x+ 10, temp_y -42, 1 ,1,0,-1, (6 - window_timer)/6  );

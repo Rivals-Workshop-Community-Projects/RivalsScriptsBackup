@@ -495,7 +495,14 @@ if get_player_color(player) == 10 {
              spawn_hit_fx(x+70*spr_dir,y - 26, 302)
              sound_play(sound_get("counterhit"))
              }
+             
+             if  window_timer == 11 {
+            	create_hitbox(AT_EXTRA_3, 5, x, y)
+             }
+         
+         
          }
+         
          
          if window_timer > 9 && !has_hit{
          
