@@ -7,6 +7,72 @@ if get_training_cpu_action() != CPU_FIGHT || trainingMode == 1 {
 }
 
 
+	if (get_player_color(player) == 30) {
+		
+		
+		 if (state != PS_IDLE && show_halloween_skin == true) {
+	
+		show_halloween_skin = false;
+		set_skin(-1)
+		
+		spawn_hit_fx(x, y, mcfly_remove)
+
+}
+
+
+if (get_gameplay_time() < 140) {
+	
+		set_skin("mcfly")
+
+	
+}
+
+if (state == PS_DEAD || state == PS_RESPAWN) {
+	
+	show_halloween_skin = true;
+	
+	
+	
+}
+
+if ((state == PS_IDLE  || state == PS_RESPAWN) && show_halloween_skin == true){
+	
+	set_skin("mcfly")
+	
+}
+
+
+
+
+}
+
+
+if (attack == AT_EXTRA_1 && taunt_down) {
+	
+	if (window_timer >= 25) {
+	
+	window_timer = 25}
+	
+	
+	
+	
+}
+if (attack == AT_EXTRA_1 && taunt_pressed) {
+	
+window_timer = 0;
+	
+	
+	
+	
+}
+
+
+
+
+
+
+
+
 if (attack == AT_TAUNT && window == 2 && window_timer == 1) {
 	
 			//	sssadsads = instance_create(x, y, "obj_article2");
@@ -17,15 +83,21 @@ if (attack == AT_TAUNT && window == 2 && window_timer == 1) {
 
 		if  (get_gameplay_time() = (intro_time - 1)) {
 	
-				sound_play(asset_get("sfx_clairen_nspecial_grab_success")) }
+				sound_play(asset_get("sfx_clairen_nspecial_grab_success"))
+				
+			prev_spr_dir = spr_dir
+		}
 	
 if (get_gameplay_time() == intro_time + 7) {
 
 	set_state(PS_LAND)
-	
+
+spr_dir = prev_spr_dir
+
 } else if (get_gameplay_time() == intro_time + 7 + 4){
 	
-	
+	spr_dir = prev_spr_dir
+
 	set_state(PS_SPAWN)
 	state_timer = intro_time + 7 + 4
 }
@@ -360,7 +432,7 @@ if rival_players==1 and !noturn {
 #region blink
 
 
- if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && has_hit_player && attack != AT_FSPECIAL && attack != AT_DSPECIAL && attack != AT_USPECIAL && attack != AT_FSTRONG && attack != AT_USTRONG && attack != AT_DSTRONG) {
+ if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && has_hit_player && attack != AT_FSPECIAL && attack != AT_FSPECIAL && attack != AT_USPECIAL && attack != AT_FSTRONG && attack != AT_USTRONG && attack != AT_DSTRONG) {
 	
 	can_blink = true
 
@@ -378,7 +450,7 @@ if rival_players==1 and !noturn {
 can_blink = false }
 
 if has_rune("A") {
- if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && has_hit && attack != AT_FSPECIAL && attack != AT_DSPECIAL && attack != AT_USPECIAL && attack != AT_FSTRONG && attack != AT_USTRONG && attack != AT_DSTRONG) {
+ if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && has_hit && attack != AT_FSPECIAL && attack != AT_FSPECIAL && attack != AT_USPECIAL && attack != AT_FSTRONG && attack != AT_USTRONG && attack != AT_DSTRONG) {
 	
 	can_blink = true
 

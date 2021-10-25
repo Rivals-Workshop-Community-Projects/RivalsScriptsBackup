@@ -1,3 +1,6 @@
+//extra alts
+extra_col = 0;
+
 hurtbox_spr = sprite_get("1");
 crouchbox_spr =  sprite_get("2");
 air_hurtbox_spr = -1;

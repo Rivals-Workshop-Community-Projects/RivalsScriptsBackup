@@ -125,11 +125,11 @@ if (nair_checked == false) {
 
 
 if (nair_used = 1) {
-    	set_window_value(AT_DAIR, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.1); }
+    	set_window_value(AT_DAIR, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.2); }
     	if (nair_used = 2)  {	
-    		    	set_window_value(AT_DAIR, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.35); }
+    		    	set_window_value(AT_DAIR, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.4); }
     	if (nair_used = 3)  {	
-    		    	set_window_value(AT_DAIR, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.6); }
+    		    	set_window_value(AT_DAIR, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.7); }
 
     	
 
@@ -262,7 +262,7 @@ if (window == 1 && window_timer == 1) {
     
     if !free {
     vsp = -3.3
-    hsp = clamp(hsp, -5, 5) } 
+    hsp = clamp(hsp, -5.5, 5.5) } 
     
         dspecial_started_from_ground = true
 

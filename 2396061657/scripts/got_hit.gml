@@ -7,10 +7,20 @@
 
 // Sets current meter to 0 
 
+got_hitFspecial = true;
+isFspecial = false;
+meter_damage = floor(enemy_hitboxID.damage);
+LoveMeter = clamp(LoveMeter - floor(meter_damage * 2.5), 0, 200);
+
+//////////////////////////////
+// Old Got Hit Formula
+/*
 if (isFspecial){
 	got_hitFspecial = true;
 	isFspecial = false;
 }
+*/
+////////////////////////////
 
 //if (enemy_hitboxID.type == 1){
 	if (focus_attack){
@@ -75,7 +85,6 @@ with (hit_player){
 			extra_hitpause = 0;
 			can_special = true;
 			vsp = -5;
-			//print("booba");
 			RibbonCounter = 0;
 			ribbon_id = noone;
 			isRibbon = false;

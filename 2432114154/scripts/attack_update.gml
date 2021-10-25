@@ -1,5 +1,9 @@
 
-
+        if attack == AT_DSTRONG && window == 3 && window_timer < 3 && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN {
+        	hit_player_obj.x += (floor(x - 40*spr_dir - hit_player_obj.x)/10)
+        	hit_player_obj.y += (floor(y - 10 - hit_player_obj.y)/4)
+        }   
+        
 
 if attack == AT_FAIR && has_hit && !hitpause {
 window_timer += 0.2	
@@ -510,15 +514,8 @@ if get_player_color(player) == 10 {
          }
         }
         
-        if attack == AT_DSTRONG && !hitpause && window == 3 && window_timer < 4 && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN {
-        	hit_player_obj.hsp = (floor(x - 40*spr_dir - hit_player_obj.x)/4)
-        	hit_player_obj.vsp = (floor(y - 20 - hit_player_obj.y)/4)
-        	hit_player_obj.spr_dir = spr_dir
-        }   
-        
-        if attack == AT_DSTRONG or attack == AT_FSTRONG {
 
-            
+        if attack == AT_DSTRONG or attack == AT_FSTRONG {
          if window == 2 && window_timer = 1 {
              sound_play(asset_get("sfx_bird_downspecial"))
          }   

@@ -4,12 +4,17 @@ if (my_hitboxID.attack == AT_FSPECIAL_AIR && (my_hitboxID.hbox_num == 2))
 }
      
     
-    if (attack == AT_FAIR){
+if (attack == AT_FAIR){
     if my_hitboxID.hbox_num == 2 {
             sound_play(asset_get("sfx_blow_heavy1"));
         
-    }
-}    
+    }   
+}else if (attack == AT_UAIR){
+    if my_hitboxID.hbox_num == 2 {
+            sound_play(asset_get("sfx_blow_medium2"));
+        
+    }   
+} 
 
 /*
 if (attack == AT_FSPECIAL_AIR && my_hitboxID.hbox_num == 2){

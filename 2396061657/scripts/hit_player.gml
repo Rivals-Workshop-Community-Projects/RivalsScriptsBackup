@@ -10,9 +10,10 @@ if (attack != AT_NTHROW && attack != AT_DTHROW && attack != AT_UTHROW && attack 
 	HeartPop = floor(my_hitboxID.damage/1.8);
 }
 
+// checks to see if user hit Callie then they adopt the hitpause of their move instead of Callie Fspecial
 if (attack == AT_FSPECIAL && state == PS_HITSTUN){
 	with(hit_player){
-		hitpause = false;
+		hitstop = other.hitstop;
 	}
 }
 
@@ -61,35 +62,49 @@ if (attack == AT_FSPECIAL && state != PS_HITSTUN){
 	
 	dthrowCheck = false;
 
-	ThornKB = 8;
+	ThornKB_scale = .6;
 	CandyKB = 4;
+	CandyKB_scale = .5;
+	full_candy_bar = false;
 	
-	RibbonKB = 8;
-	RibbonHP = 14;
+	RibbonKB_scaling = .8;
+	Ribbon_damage = 8;
 	RibbonRights = 0;
 	Calliecide = false;
+	
+	Balloon_hitstun_multi = 1.0;
 
 	if (other.Balloon_hitstun_grav != 0){
 		other.hitstun_grav = other.Balloon_hitstun_grav;
 	}
+
+	LM_a = LoveMeter div 100;
+	LM_b = LoveMeter div 10;
+	LM_c = LoveMeter div 1;
 		
 	attack_end();
 	if (!other.super_armor){ // Checks if the opponent has super armor and doesn't activate if they are
 		switch(GrappleMode){
+			
+			// Roses
 			case 0:			
 				hurtboxID.sprite_index = get_attack_value(AT_FTHROW, AG_HURTBOX_SPRITE);
-				ThornKB = floor(ThornKB + (floor(LoveMeter/40)));
-				set_hitbox_value(AT_FTHROW, 1, HG_BASE_KNOCKBACK, ThornKB);
-				set_hitbox_value(AT_FTHROW, 1, HG_BASE_HITPAUSE, ThornKB);
+				ThornKB_scale = ThornKB_scale + LoveMeter/1000;
+				set_hitbox_value(AT_FTHROW, 1, HG_KNOCKBACK_SCALING, ThornKB_scale);
+				set_hitbox_value(AT_FTHROW, 1, HG_HITPAUSE_SCALING, ThornKB_scale +.1);
 				attack = AT_FTHROW;
 			break;
+			
+			// Candy
 			case 1:
 				hurtboxID.sprite_index = get_attack_value(AT_DTHROW, AG_HURTBOX_SPRITE);
-				CandyKB = floor(CandyKB + (LoveMeter/100));
+				CandyKB = CandyKB + (LoveMeter/100);
+				CandyKB_scale = CandyKB_scale + (LoveMeter/2000);		
 				
 				if (!other.Candy_SecondAttack){
 					set_hitbox_value(AT_DTHROW, 1, HG_BASE_KNOCKBACK, CandyKB);
 					set_hitbox_value(AT_DTHROW, 1, HG_BASE_HITPAUSE, CandyKB + 2);
+					set_hitbox_value(AT_DTHROW, 1, HG_KNOCKBACK_SCALING, CandyKB_scale);
 				
 					set_hitbox_value(AT_DTHROW, 1, HG_WINDOW, 2);
 					set_hitbox_value(AT_DTHROW, 2, HG_WINDOW, 20);
@@ -98,6 +113,7 @@ if (attack == AT_FSPECIAL && state != PS_HITSTUN){
 				else {
 					set_hitbox_value(AT_DTHROW, 2, HG_BASE_KNOCKBACK, CandyKB);
 					set_hitbox_value(AT_DTHROW, 2, HG_BASE_HITPAUSE, CandyKB + 2);
+					set_hitbox_value(AT_DTHROW, 2, HG_KNOCKBACK_SCALING, CandyKB_scale);
 				
 					set_hitbox_value(AT_DTHROW, 1, HG_WINDOW, 20);
 					set_hitbox_value(AT_DTHROW, 2, HG_WINDOW, 2);
@@ -106,11 +122,10 @@ if (attack == AT_FSPECIAL && state != PS_HITSTUN){
 				
 				attack = AT_DTHROW;
 			break;
+			
+			// Ribbon
 			case 2:	
 				hurtboxID.sprite_index = get_attack_value(AT_NTHROW, AG_HURTBOX_SPRITE);
-				
-				RibbonKB = 8 + (.5 * floor(LoveMeter/50));
-				RibbonHP = floor(14 + (2 * floor(LoveMeter/50)));
 
 				if (LoveMeter >= 100){
 					Calliecide = true;
@@ -122,32 +137,26 @@ if (attack == AT_FSPECIAL && state != PS_HITSTUN){
 					RibbonRights = 2;
 				}
 				
-				set_hitbox_value(AT_NTHROW, 2, HG_BASE_KNOCKBACK, RibbonKB);
-				set_hitbox_value(AT_NTHROW, 2, HG_BASE_HITPAUSE, RibbonHP);
+				RibbonKB_scaling = RibbonKB_scaling + LoveMeter/1000;
+				Ribbon_damage = Ribbon_damage + LoveMeter/50;
 				
-//				print(RibbonKB);
-//				print(RibbonHP);
+				set_hitbox_value(AT_NTHROW, 2, HG_KNOCKBACK_SCALING, RibbonKB_scaling);
+				set_hitbox_value(AT_NTHROW, 2, HG_HITPAUSE_SCALING, RibbonKB_scaling);
 				
-/*
-				RibbonHSP = floor(RibbonHSP - (LoveMeter/60));
-				RibbonVSP = floor((RibbonVSP - (LoveMeter/100)));
+				set_hitbox_value(AT_NTHROW, 2, HG_DAMAGE, floor(Ribbon_damage));
 
-				set_window_value(AT_NTHROW, 2, AG_WINDOW_HSPEED, RibbonHSP);
-				set_window_value(AT_NTHROW, 2, AG_WINDOW_VSPEED, RibbonVSP);
-				
-				//print(RibbonHSP);
-				//print(RibbonVSP);
-
-				RibbonKB = floor(RibbonKB + floor(LoveMeter/30));
-				//print("pain");
-				set_hitbox_value(AT_NTHROW, 1, HG_BASE_KNOCKBACK, RibbonKB);
-*/
 				attack = AT_NTHROW;
 
 
 			break;
+			
+			// Balloon
 			case 3:
 				hurtboxID.sprite_index = get_attack_value(AT_UTHROW, AG_HURTBOX_SPRITE);
+
+				Balloon_hitstun_multi = Balloon_hitstun_multi + (LoveMeter/200);
+				set_hitbox_value(AT_UTHROW, 1, HG_HITSTUN_MULTIPLIER, Balloon_hitstun_multi);
+				
 				attack = AT_UTHROW;
 			break;
 		}
@@ -157,11 +166,59 @@ if (attack == AT_FSPECIAL && state != PS_HITSTUN){
 	}
 }
 
+
+if (my_hitboxID.attack == AT_FTHROW || 
+	my_hitboxID.attack == AT_UTHROW || 
+	(my_hitboxID.attack == AT_NTHROW && my_hitboxID.hbox_num == 2) || 
+	(my_hitboxID.attack == AT_DTHROW && my_hitboxID.hbox_num == 1) ){
+
+		if (LM_a != 0){
+			var digit_1 = noone;
+			digit_1 = instance_create(other.x - 12, other.y - 40, "obj_article2");
+			digit_1.player_id = id;
+			digit_1.player = player;
+			digit_1.vsp = -2;
+			digit_1.sprite_index = sprite_get("callie_num");
+			digit_1.image_index = LM_a;
+			digit_1.image_speed = 0;
+			digit_1.state_timer = 2;
+			digit_1.state = 5;
+			digit_1.depth = -200;
+		}
+		
+		var digit_2 = noone;
+		digit_2 = instance_create(other.x, other.y - 40, "obj_article2");
+		digit_2.player_id = id;
+		digit_2.player = player;
+		digit_2.vsp = -2;
+		digit_2.sprite_index = sprite_get("callie_num");
+		digit_2.image_index = LM_b;
+		digit_2.image_speed = 0;
+		digit_2.state_timer = 2;
+		digit_2.state = 5;
+		digit_2.depth = -200;
+		
+		var digit_3 = noone;
+		digit_3 = instance_create(other.x + 12, other.y - 40, "obj_article2");
+		digit_3.player_id = id;
+		digit_3.player = player;
+		digit_3.vsp = -2;
+		digit_3.sprite_index = sprite_get("callie_num");
+		digit_3.image_index = LM_c;
+		digit_3.image_speed = 0;
+		digit_3.state_timer = 2;
+		digit_3.state = 5;
+		digit_3.depth = -200;
+}
+
+
 // Sets up Roses Status Effect
 if (attack == AT_FTHROW){
 	other.isThorn = true;
 	other.thorn_id = id;
+	
 	if (other.ThornCounter == 0){
+
 		other.ThornCounter = LoveMeter + 120;
 		LoveMeter = 0;
 	}
@@ -171,8 +228,14 @@ if (attack == AT_FTHROW){
 if (attack == AT_DTHROW){
 	other.isCandy = true;
 	other.candy_id = id;
-	other.initial_candy_land = true;
+	candy_pos_x = 0;
+	candy_pos_y = 0;
+	candy_identity = string(hit_player_obj);
+	if (LoveMeter >= 200){
+		full_candy_bar = true
+	}
 	if (other.CandyCounter == 0){
+	
 		other.CandyCounter = (LoveMeter/2) + 60;
 		LoveMeter = 0;
 	}
@@ -193,6 +256,8 @@ if (attack == AT_NTHROW){
 if (attack == AT_UTHROW){
 	other.isBalloon = true;
 	other.balloon_id = id;
+	other.balloon_got_hit = false;
+	other.balloon_first_hit = false;
 	if (other.BalloonCounter == 0){
 		other.BalloonCounter = LoveMeter  + 200;
 		LoveMeter = 0;

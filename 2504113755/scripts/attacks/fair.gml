@@ -48,17 +48,17 @@ set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, plasma_line )
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 3);
-set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 35);
+set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 27);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_Y, -30);
-set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 43);
+set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 58);
 set_hitbox_value(AT_FAIR, 2, HG_HEIGHT, 94);
 set_hitbox_value(AT_FAIR, 2, HG_PRIORITY, 10);
 set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 8);
 set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 361);
 set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .85);
-set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, .7);
+set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .9);
+set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 9);
+set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
 set_hitbox_value(AT_FAIR, 2, HG_HIT_PARTICLE_NUM, 1)
 set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, plasma_x_circle_big )

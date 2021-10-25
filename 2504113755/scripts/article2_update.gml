@@ -320,20 +320,31 @@ if hit_lockout <= 0 {
            
            
            //FAIR, NAIR, FTILT, DSTRONG, FSTRONG
-           if (attack == AT_FAIR || attack == AT_FSPECIAL || attack == AT_NAIR || attack == AT_FTILT || attack == AT_DSTRONG || attack == AT_FSTRONG || attack == AT_DATTACK || attack == AT_DSPECIAL) {
+           if (attack == AT_FAIR || attack == AT_DSTRONG || attack == AT_FSPECIAL || attack == AT_NAIR || attack == AT_FTILT || attack == AT_FSTRONG || attack == AT_DATTACK || attack == AT_DSPECIAL) {
            	
            	if (spr_dir == 1) {
            	angle = 15 }
            	else {angle = 180-15 }
            	
            	
-           	if (attack == AT_DSTRONG && hbox_num == 2) {
-           			if (spr_dir == 1) {
-           	angle = 180-15 }
-           	 	else {angle = 15 }
            	
-         
+           	
+           		if (attack == AT_DSTRONG) {
+           	if (spr_dir == -1) {
+           	angle = 180-40 }
+           	else { angle = 40 }
+           	
+           	if (hbox_num == 2) {
+           	if (spr_dir == -1) {
+           	angle = 40 }
+           	else { angle = 180-40 }
+           	
            	}
+           	}
+           	
+          
+           	
+           	
            	  	if (attack == AT_DSPECIAL && ((other.x < other.player_id.x && other.spr_dir != 1) || (other.x <= other.player_id.x && other.spr_dir == 1))) {
 			angle = 180-15 }
            	
@@ -351,16 +362,23 @@ if hit_lockout <= 0 {
            		
            	}
            	
-           	if (attack == AT_DATTACK) {
-           		
-           		
-           			var lerpam
-	lerpam = [0.5, 0.5]
-	
-
-	other.x = lerp(floor(other.x), x + 10*spr_dir, lerpam[0])
-	other.y = lerp(floor(other.y), y + 20, lerpam[1])
-           	} else if (attack == AT_USTRONG){
+           	
+           		if (attack == AT_USPECIAL) {
+           	if (spr_dir == -1) {
+           	angle = 180-40 }
+           	else { angle = 40 }
+           	
+           	if (hbox_num == 2) {
+           	if (spr_dir == -1) {
+           	angle = 180-40 }
+           	else { angle = 40 }
+           	
+           	}
+           	}
+           	
+           	
+           	
+           if (attack == AT_USTRONG){
            		
            		     			var lerpam
 	lerpam = [0.5, 0.5]
@@ -397,7 +415,7 @@ if hit_lockout <= 0 {
            	
            
            //HITS IT UP
-           if (attack == AT_UAIR || attack == AT_JAB || attack == AT_UTILT || attack == AT_USTRONG || attack == AT_DTILT) {
+           if (attack == AT_DAIR || attack == AT_UAIR || attack == AT_JAB || attack == AT_UTILT || attack == AT_USTRONG || attack == AT_DTILT) {
            	
            	angle = 90
            	
@@ -414,30 +432,19 @@ if hit_lockout <= 0 {
            	angle = 180-35 }
            	else { angle = 35 }
            	}
-           	if (attack == AT_DAIR  || (attack == AT_JAB && hbox_num == 1)) {
+           	if ((attack == AT_JAB && hbox_num == 1)) {
            	if (spr_dir == -1) {
            	angle = 180-35 }
            	else { angle = 35 }
            	}
            	
-           		if (attack == AT_USPECIAL) {
-           	if (spr_dir == -1) {
-           	angle = 180-45 }
-           	else { angle = 45 }
            	
-           	if (hbox_num == 2) {
-           	if (spr_dir == -1) {
-           	angle = 180-70 }
-           	else { angle = 70 }
-           	
-           	}
-           	}
            	
            
            
            
            
-           if ((attack == AT_USTRONG && hbox_num == 7) || (attack == AT_DAIR && hbox_num == 5) || (attack == AT_DATTACK && hbox_num == 5) || (attack != AT_USTRONG && attack != AT_DAIR && attack != AT_DATTACK)) {
+           if ((attack == AT_USTRONG && hbox_num == 7) || (attack == AT_DAIR && hbox_num == 5) || (attack != AT_USTRONG && attack != AT_DAIR)) {
             other.hsp = 1*lengthdir_x(kb_value + 5*kb_scale,angle);
             other.vsp = 1*lengthdir_y(kb_value + 5*kb_scale,angle); 
             if (attack == AT_USTRONG) {
@@ -449,9 +456,7 @@ if hit_lockout <= 0 {
             
             
             
-           } else if (attack == AT_DATTACK) {
-           	other.hsp = 3/4*lengthdir_x(kb_value + 3*kb_scale,angle);
-            other.vsp = 3/4*lengthdir_y(kb_value + 3*kb_scale,angle); }
+           } 
            	
            	
            	else{  other.hsp = 1/2*lengthdir_x(kb_value + 3*kb_scale,angle);

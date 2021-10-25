@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 30 );
+set_num_palettes( 32 );
 
 // Apple Watch A
 set_color_profile_slot( 1, 0, 32, 85, 120 ); //Sword
@@ -325,6 +325,26 @@ set_color_profile_slot( 29, 4, 192, 170, 121 ); //cloak
 set_color_profile_slot( 29, 5, 148, 100, 62 ); //cloak (s)
 set_color_profile_slot( 29, 6, 72, 106, 199 ); //fur (s)
 set_color_profile_slot( 29, 7, 157, 222, 254 ); //fur
+
+// Halloween
+set_color_profile_slot( 30, 0, 42, 62, 119 ); //Sword
+set_color_profile_slot( 30, 1, 52, 103, 202 ); //Sword 2
+set_color_profile_slot( 30, 2, 255, 255, 247 ); //line
+set_color_profile_slot( 30, 3, 196, 183, 130 ); //line (s)
+set_color_profile_slot( 30, 4, 213, 90, 59 ); //cloak
+set_color_profile_slot( 30, 5, 178, 28, 37 ); //cloak (s)
+set_color_profile_slot( 30, 6, 208, 140, 106 ); //fur (s)
+set_color_profile_slot( 30, 7, 243, 216, 173 ); //fur
+
+// brian
+set_color_profile_slot( 31, 0, 235, 92, 92 ); //Sword
+set_color_profile_slot( 31, 1, 179, 32, 32 ); //Sword 2
+set_color_profile_slot( 31, 2, 255, 255, 255 ); //line
+set_color_profile_slot( 31, 3, 180, 172, 224 ); //line (s)
+set_color_profile_slot( 31, 4, 255, 255, 255 ); //cloak
+set_color_profile_slot( 31, 5, 180, 172, 224 ); //cloak (s)
+set_color_profile_slot( 31, 6, 180, 172, 224 ); //fur (s)
+set_color_profile_slot( 31, 7, 255, 255, 255 ); //fur
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -148,23 +148,24 @@ if ("ColorLocked" in self && ColorLocked){
 		break;	
 		case 7:
 			// Krankees Alt
-			set_character_color_slot( 0, 36, 32, 65 ); //Hair Bottom
-			set_character_color_slot( 1, 255, 229, 237 ); //Shirt
-			set_character_color_slot( 2, 128, 76, 157 ); //Tie/Hoodie
-			set_character_color_slot( 3, 121, 63, 206 ); //Skirt
-			set_character_color_slot( 4, 75, 84, 97 ); //Eyes
-			set_character_color_slot( 5, 255, 222, 191 ); //Skin
-			set_character_color_slot( 6, 75, 84, 97 ); //Leggy 1
-			set_character_color_slot( 7, 75, 84, 97 ); //Leggy 2
+			set_character_color_slot(0, 255, 194, 221 ); //Hair Bottom
+			set_character_color_slot(1, 28, 22, 22 ); //Shirt
+			set_character_color_slot(2, 209, 164, 85 ); //Tie/Hoodie
+			set_character_color_slot(3, 212, 0, 0 ); //Skirt
+			set_character_color_slot(4, 255, 105, 150 ); //Eyes
+			set_character_color_slot(5, 255, 230, 207 ); //Skin
+			set_character_color_slot(6, 82, 59, 59 ); //Leggy 1
+			set_character_color_slot(7, 82, 59, 59 ); //Leggy 2
 			
-			set_article_color_slot( 0, 36, 32, 65 ); //Hair Bottom
-			set_article_color_slot( 1, 255, 229, 237 ); //Shirt
-			set_article_color_slot( 2, 128, 76, 157 ); //Tie/Hoodie
-			set_article_color_slot( 3, 121, 63, 206 ); //Skirt
-			set_article_color_slot( 4, 75, 84, 97 ); //Eyes
-			set_article_color_slot( 5, 255, 222, 191 ); //Skin
-			set_article_color_slot( 6, 75, 84, 97 ); //Leggy 1
-			set_article_color_slot( 7, 75, 84, 97 ); //Leggy 2
+			set_article_color_slot(0, 255, 194, 221 ); //Hair Bottom
+			set_article_color_slot(1, 28, 22, 22 ); //Shirt
+			set_article_color_slot(2, 209, 164, 85 ); //Tie/Hoodie
+			set_article_color_slot(3, 212, 0, 0 ); //Skirt
+			set_article_color_slot(4, 255, 105, 150 ); //Eyes
+			set_article_color_slot(5, 255, 230, 207 ); //Skin
+			set_article_color_slot(6, 82, 59, 59 ); //Leggy 1
+			set_article_color_slot(7, 82, 59, 59 ); //Leggy 2
+
 		break;	
 		case 8:
 			// BowlingKing Alt
@@ -313,6 +314,17 @@ set_color_profile_slot( 20, 4, 75, 84, 97 ); //Eyes
 set_color_profile_slot( 20, 5, 255, 222, 191 ); //Skin
 set_color_profile_slot( 20, 6, 75, 84, 97 ); //Leggy 1
 set_color_profile_slot( 20, 7, 75, 84, 97 ); //Leggy 2
+
+// Krankees Alt 2 Calliope
+set_color_profile_slot( 26, 0, 255, 194, 221 ); //Hair Bottom
+set_color_profile_slot( 26, 1, 28, 22, 22 ); //Shirt
+set_color_profile_slot( 26, 2, 209, 164, 85 ); //Tie/Hoodie
+set_color_profile_slot( 26, 3, 212, 0, 0 ); //Skirt
+set_color_profile_slot( 26, 4, 255, 105, 150 ); //Eyes
+set_color_profile_slot( 26, 5, 255, 230, 207 ); //Skin
+set_color_profile_slot( 26, 6, 82, 59, 59 ); //Leggy 1
+set_color_profile_slot( 26, 7, 82, 59, 59 ); //Leggy 2
+
 */
 
 /*
@@ -349,5 +361,16 @@ set_color_profile_slot( 20, 4, 242, 184, 24 ); //Eyes
 set_color_profile_slot( 20, 5, 138, 131, 147 ); //Skin
 set_color_profile_slot( 20, 6, 55, 53, 59 ); //Leggy 1
 set_color_profile_slot( 20, 7, 255, 255, 0 ); //Leggy 2
+*/
 
+/*
+// Riptide
+set_color_profile_slot( 25, 0, 242, 228, 214 ); //Hair Bottom
+set_color_profile_slot( 25, 1, 209, 90, 1 ); //Shirt
+set_color_profile_slot( 25, 2, 1, 198, 216 ); //Tie/Hoodie
+set_color_profile_slot( 25, 3, 12, 25, 58 ); //Skirt
+set_color_profile_slot( 25, 4, 1, 198, 216 ); //Eyes
+set_color_profile_slot( 25, 5, 230, 166, 126 ); //Skin
+set_color_profile_slot( 25, 6, 12, 25, 58 ); //Leggy 1
+set_color_profile_slot( 25, 7, 12, 25, 58 ); //Leggy 2
 */

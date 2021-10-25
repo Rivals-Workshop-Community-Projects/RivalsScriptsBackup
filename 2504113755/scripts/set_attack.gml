@@ -19,3 +19,24 @@ if (attack == AT_NSPECIAL) {
     blink_state_timer = 0
     
 }
+
+
+
+
+
+	if (get_player_color(player) == 31) {
+
+
+//       if (attack == AT_TAUNT && !down_down && !down_pressed) {
+    
+if (attack == AT_TAUNT) {
+
+    
+    
+    
+    
+   attack = AT_EXTRA_1
+}
+
+
+}

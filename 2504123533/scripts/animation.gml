@@ -18,4 +18,12 @@ if (state == PS_SPAWN) {
         sprite_index = sprite_get("idle");
         depth = -5;
     }
+    
+    
+    if (state_timer = 30) && (variable_instance_exists(id, "extra_col")){
+		if (extra_col==1){//RagingBagon
+			sound_play(sound_get("salamence"));
+		}	
+	}
 }
+

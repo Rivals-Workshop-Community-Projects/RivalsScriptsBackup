@@ -276,16 +276,15 @@ set_color_profile_slot( 24, 5, 255, 216, 212 ); //Skin
 set_color_profile_slot( 24, 6, 251, 252, 255 ); //Leggy 1
 set_color_profile_slot( 24, 7, 251, 252, 255 ); //Leggy 2
 
-// Riptide
-set_color_profile_slot( 25, 0, 242, 228, 214 ); //Hair Bottom
-set_color_profile_slot( 25, 1, 209, 90, 1 ); //Shirt
-set_color_profile_slot( 25, 2, 1, 198, 216 ); //Tie/Hoodie
-set_color_profile_slot( 25, 3, 12, 25, 58 ); //Skirt
-set_color_profile_slot( 25, 4, 1, 198, 216 ); //Eyes
-set_color_profile_slot( 25, 5, 230, 166, 126 ); //Skin
-set_color_profile_slot( 25, 6, 12, 25, 58 ); //Leggy 1
-set_color_profile_slot( 25, 7, 12, 25, 58 ); //Leggy 2
-
+// Y'shtola
+set_color_profile_slot( 25, 0, 228, 228, 232 ); //Hair Bottom
+set_color_profile_slot( 25, 1, 59, 33, 41 ); //Shirt
+set_color_profile_slot( 25, 2, 54, 193, 192 ); //Tie/Hoodie
+set_color_profile_slot( 25, 3, 59, 33, 41 ); //Skirt
+set_color_profile_slot( 25, 4, 188, 188, 232 ); //Eyes
+set_color_profile_slot( 25, 5, 255, 204, 167 ); //Skin
+set_color_profile_slot( 25, 6, 27, 25, 26 ); //Leggy 1
+set_color_profile_slot( 25, 7, 27, 25, 26 ); //Leggy 2
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

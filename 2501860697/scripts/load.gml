@@ -51,15 +51,17 @@ sprite_change_offset("fspecial_proj1", 44, 50);
 sprite_change_offset("fspecial_proj2", 36, 28);
 sprite_change_offset("fspecial_proj2hit", 48, 62);
 sprite_change_collision_mask("fspecial_laser", 1, 0, 0, 0, 0, 0, 0);
-sprite_change_offset("fspecial_laser", 15, 62);
+sprite_change_offset("fspecial_laser", 15, 52);
 sprite_change_offset("uspecial", 74, 98);
 sprite_change_offset("dspecial", 68, 88);
 sprite_change_offset("taunt", 52, 92);
 sprite_change_offset("hand", 52, 92);
 sprite_change_offset("phone_open", 32, 64);
 
-sprite_change_offset("lightning1", 14, 35);
-sprite_change_offset("lightning2", 14, 35);
+sprite_change_offset("lightning1", 30, 20);
+sprite_change_offset("lightning2", 30, 20);
+sprite_change_offset("lightning3", 30, 20);
+sprite_change_offset("lightning4", 30, 20);
 
 sprite_change_offset("uspecialarrow", 39, 66);
 sprite_change_offset("vfx_footcharge", 80, 28);

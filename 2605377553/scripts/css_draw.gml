@@ -74,7 +74,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
     color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
     
-    col_max = 20; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    col_max = 21; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(225, 92, 198) // "color preview square" color. can be any color!
@@ -140,6 +140,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[20,0] = make_color_rgb(252, 255, 255)
     ce[20,1] = "Ghost"
     ce[20,2] = "An original color. A white spectre."  
+    ce[21,0] = make_color_rgb(255, 13, 241)
+    ce[21,1] = "Derby Champion"
+    ce[21,2] = "Alt by and for KingDoge, for Dev Derby 2021."      
 
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.

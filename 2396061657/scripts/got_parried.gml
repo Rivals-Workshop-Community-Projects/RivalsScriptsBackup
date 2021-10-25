@@ -4,11 +4,13 @@
 // Use hit_player to reference which player parried your hitbox
 // Use my_hitboxID to reference the hitbox that was parried
 
+/*
 // Sets current meter to 0 
 if (isFspecial){
 	got_hitFspecial = true;
 	isFspecial = false;
 }
+*/
 
 // Turns opponents status effects off
 with (hit_player){

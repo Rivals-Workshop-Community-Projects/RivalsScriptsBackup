@@ -2,6 +2,77 @@
 // Used for gameplay mechanics
 // Runs every frame
 
+if (LoveGained_Timer == 0){
+	
+	var a_gain = LoveGained div 100
+	var b_gain = LoveGained div 10
+	
+			var digit_1 = noone;
+			digit_1 = instance_create(x - 24, y + 20, "obj_article2");
+			digit_1.state_timer = 2;
+			digit_1.state = 5;
+			digit_1.player_id = id;
+			digit_1.player = player;
+			digit_1.vsp = -2;
+			digit_1.sprite_index = sprite_get("callie_num");
+			digit_1.image_index = a_gain;
+			digit_1.image_speed = 0;
+			digit_1.depth = -100;
+			
+			var digit_2 = noone;
+			digit_2 = instance_create(x - 12, y + 20, "obj_article2");
+			digit_2.state_timer = 2;
+			digit_2.state = 5;
+			digit_2.player_id = id;
+			digit_2.player = player;
+			digit_2.vsp = -2;
+			digit_2.sprite_index = sprite_get("callie_num");
+			digit_2.image_index = b_gain;
+			digit_2.image_speed = 0;
+			digit_2.depth = -100;
+
+			var digit_3 = noone;
+			digit_3 = instance_create(x, y + 20, "obj_article2");
+			digit_3.state_timer = 2;
+			digit_3.state = 5;
+			digit_3.player_id = id;
+			digit_3.player = player;
+			digit_3.vsp = -2;
+			digit_3.sprite_index = sprite_get("callie_num");
+			digit_3.image_index = 0;
+			digit_3.image_speed = 0;
+			digit_3.depth = -100;
+	
+			var digit_4 = noone;
+			digit_3 = instance_create(x - 36, y + 20, "obj_article2");
+			digit_3.state_timer = 2;
+			digit_3.state = 5;
+			digit_3.player_id = id;
+			digit_3.player = player;
+			digit_3.vsp = -2;
+			digit_3.sprite_index = sprite_get("callie_text");
+			digit_3.image_index = 0;
+			digit_3.image_speed = 0;
+			digit_3.depth = -100;
+	LoveGained = 0;
+	LoveGained_Timer = 45;
+	LoveGained_Visual = false;
+}
+
+if (LoveGained_Visual && LoveGained_Timer > 0){
+	LoveGained_Timer--;
+}
+
+if (!costume_end && (get_player_color(player) == 25 || get_player_color(player) == 19)){
+	if (state_timer % 6 == 0) {
+		introTimer++;
+	}
+
+	if (state != PS_SPAWN && state != PS_IDLE && state != PS_RESPAWN){
+		costume_end = true;
+	}
+}
+
 if (get_training_cpu_action() == CPU_STAND && taunt_pressed && attack == AT_TAUNT) {
 	taunt_counter = 140
 
@@ -222,6 +293,44 @@ if (attack == AT_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 	}
 //}
 
+
+// New gotHitFormula
+if (got_hitFspecial && !hitpause){
+	
+	if (LoveMeter > 0){
+		var heart = noone;
+		if (heart_num < (meter_damage / 2)){
+			heart_num++;
+
+			heart = instance_create( x , y - 30, "obj_article1");
+		
+			heart.player_id = id;
+			heart.player = player;
+			heart.state = 4;
+			heart.state_timer = 2;
+			heart.image_alpha = .8;
+			heart.hsp = clamp(random_func(5, 7, true), 3, 5);
+			heart.vsp = clamp((random_func(6, 5, true) + 6) * -1, -11, -6);
+			if (random_func(0,2,true) == 1){
+				heart.hsp = heart.hsp * -1;
+			}
+			
+			if (heart_num >= (meter_damage / 2)){
+				heartsplode = true;
+			}
+		}
+	}
+	
+	if (heartsplode || state_cat == SC_GROUND_NEUTRAL || state_cat == SC_AIR_COMMITTED){
+		got_hitFspecial = false;
+		heartsplode = false;
+		heart_num = 0;
+	}
+}
+
+//////////////////////////////////////////////////////////////////////////////
+// OLD GOT HIT FORMULA FOR WHEN IT WAS ONLY DURING FSPECIAL AND LOST ALL METER
+/*
 if (got_hitFspecial){
 //	spawn_hit_fx( x, y, hearthurt_fx);
 	
@@ -254,6 +363,8 @@ if (got_hitFspecial){
 		heart_num = 0;
 	}
 }
+*/
+///////////////////////////////////////////////////////////////////////////////
 
 if (instance_exists(asset_get("obj_article1"))){
 	with (obj_article1){
@@ -468,10 +579,10 @@ with (oPlayer){
 				y += 8;
 				switch(spr_dir){
 					case 1:
-						x -= 2;
+						x -= 3;
 					break;
 					case -1:
-						x += 2;
+						x += 3;
 					break;
 				}
 			}
@@ -489,30 +600,28 @@ with (oPlayer){
 	if (!Candy_SecondAttack){
 		if (isCandy && other.id = candy_id){
 			
-			if (vsp < -1 || (attack == AT_USPECIAL && state == PS_ATTACK_AIR) || (!hitpause && (state == PS_DOUBLE_JUMP || state == PS_WALL_JUMP || state == PS_AIR_DODGE))){
+			// If got hit or hits someone
+			if (other.dthrowCheck && ((has_hit_player && state == PS_ATTACK_GROUND) || (hitpause && state_cat == SC_HITSTUN)) && CandyCounter < CCheck){
 				isCandy = false;
+				CandyCounter = 0;	
+				other.dthrowCheck = false;
+				candy_id = noone;
+			}
+
+			if (other.full_candy_bar && other.has_hit_player && other.hit_player_obj == other.candy_identity && other.attack != AT_DTHROW){
+
+				isCandy = false;
+				CandyCounter = 0;	
+				other.dthrowCheck = false;
+				candy_id = noone;
 			}
 			
-			if (!free && !(other.attack == AT_DTHROW && other.window <= 2) && initial_candy_land){
-				vsp = 0;
-				hsp = 0;
-				old_vsp = 0;
-				old_hsp = 0;
-				hitpause = false;
-				hitstop = 0;
-				initial_candy_land = false;
+			if ((!other.dthrowCheck && vsp < -2) || (attack == AT_USPECIAL && state == PS_ATTACK_AIR) || (!hitpause && (state == PS_DOUBLE_JUMP || state == PS_WALL_JUMP || state == PS_AIR_DODGE))){
+				isCandy = false;
 			}
 			
 			if (!free && !hitpause){
 
-				if (!other.dthrowCheck){
-					hitpause = true;
-					hitstop = 13;
-					other.dthrowCheck = true;
-					CCheck = CandyCounter;
-				}	
-				
-				
 				if (state == 28){
 					if (hsp != 0){
 						if (spr_dir == 1){
@@ -528,11 +637,6 @@ with (oPlayer){
 					state = PS_IDLE;
 				}
 
-				vsp = 0;
-				hsp = 0;
-				old_vsp = 0;
-				old_hsp = 0;
-				
 				can_jump = false;
 				if (jump_pressed){
 					jump_pressed = false;
@@ -545,10 +649,6 @@ with (oPlayer){
 				}
 				
 				if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
-					vsp = 0;
-					hsp = 0;
-					old_vsp = 0;
-					old_hsp = 0;
 					x = x;
 					y = y;
 					if (attack == AT_USPECIAL){
@@ -559,8 +659,38 @@ with (oPlayer){
 				if (state == PS_DASH_START || state == PS_WALK){
 					state = PS_IDLE;
 				}
+				
+				if (!other.dthrowCheck){
+					hitpause = true;
+					if (other.full_candy_bar){
+						hitstop_full = 42;
+						hitstop = 42;
+					}
+					else {
+						hitstop_full = 7;
+						hitstop = 7;
+					}
+					old_vsp = 0;
+					old_hsp = 0;
+					other.dthrowCheck = true;
+					CCheck = CandyCounter;
+					other.candy_pos_x = x;
+					other.candy_pos_y = y;
+				}	
+
 			}
 
+			if (other.candy_pos_x != 0){
+				if (point_distance(x, y, other.candy_pos_x, other.candy_pos_y) > 30 && hsp > 6){
+					x = other.candy_pos_x;
+					y = other.candy_pos_y;
+					vsp = 0;
+					hsp = 0;
+					old_vsp = 0;
+					old_hsp = 0;
+				}
+			}
+			
 			if (!hitpause && CCheck > 0){
 				CandyCounter--;
 				if(CandyCounter <= 0){
@@ -568,17 +698,17 @@ with (oPlayer){
 					CandyCounter = 0;
 					candy_id = noone;
 				}
+				
+				if (other.candy_pos_x != 0 && point_distance(x, y, other.candy_pos_x, other.candy_pos_y) > 10 && state == PS_HITSTUN){
+					x = other.candy_pos_x;
+					y = other.candy_pos_y;
+					vsp = 0;
+					hsp = 0;
+					old_vsp = 0;
+					old_hsp = 0;
+					isCandy = true;
+				}
 			}
-			
-			
-			// If got hit or hits someone
-			if (other.dthrowCheck && ((has_hit_player && state == PS_ATTACK_GROUND) || (hitpause && state_cat == SC_HITSTUN)) && CandyCounter < CCheck){
-				isCandy = false;
-				CandyCounter = 0;	
-				other.dthrowCheck = false;
-				candy_id = noone;
-			}
-			
 		}
 	}
 
@@ -825,6 +955,14 @@ with (oPlayer){
 				}
 			}
 		}
+		
+	}
+	
+	// Checks for first time they get hit and allow them to be properly launched by kb
+	if (isBalloon && balloon_first_hit && !balloon_got_hit){
+		if (hitpause && state_cat == SC_HITSTUN){
+			balloon_got_hit = true;
+		}
 	}
 	
 	if (isBalloon && !hitpause && other.id = balloon_id){
@@ -841,7 +979,7 @@ with (oPlayer){
 			vsp = vsp / BalloonStrength;
 		}
 
-		if (BalloonCounter > 0 && free && state_cat != SC_HITSTUN){
+		if (BalloonCounter > 0 && free && !balloon_got_hit){
 			hsp = clamp(hsp, -4, 4);
 		}
 
@@ -857,6 +995,10 @@ with (oPlayer){
 			hitstun_grav = Balloon_hitstun_grav;
 		//	print("hitstun returns")
 		//	print(hitstun_grav)
+		}
+		
+		if (!balloon_first_hit){
+			balloon_first_hit = true;
 		}
 		
 	}

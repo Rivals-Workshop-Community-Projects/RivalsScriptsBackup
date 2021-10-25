@@ -11,6 +11,9 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 }
 shader_end();
 
+
+//draw_debug_text(x, y, string(hit_player_obj))
+
 // Nspecial Armor
 if (attack == AT_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){ 
 	var armorcolor = make_colour_rgb(63, 240, 240);
@@ -104,7 +107,7 @@ if (move_cooldown[AT_DSPECIAL] < 20 && move_cooldown[AT_DSPECIAL] != 0){
 	}
 }
 
-// Draws the Down Special menu and icons when selecting a gift
+// Draws the Neutral Special menu and icons when selecting a gift
 if (attack == AT_NSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)){
 
 	if (window == 1 and special_down && window_timer > 5){
@@ -141,15 +144,30 @@ if (attack == AT_NSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AI
 
 if (attack != AT_NSPECIAL){
 	if (PreviousMeter != LoveMeter && LoveMeter != 0){
-		MiniM_display_timer = 60;
+		MiniM_display_timer = 100;
 		PreviousMeter = LoveMeter;
 	}
 
 	if (MiniM_display_timer >= 0){
 
-		draw_sprite_ext(sprite_get("mini_meter"), 0, x, y + 10, 1, 1, 0, c_white, MiniM_Alpha);
-		draw_sprite_part_ext(sprite_get("mini_meter"), 1, 0, 0, LoveMeter / 3.2, 22, x - 31, y - 1, 1, 1, c_white, MiniM_Alpha);
-			
+		draw_sprite_ext(sprite_get("mini_meter"), 0, x + 1, y + 10, 1, 1, 0, c_white, MiniM_Alpha);
+
+		if (LoveMeter < 100){
+			draw_sprite_part_ext(sprite_get("mini_meter"), 1, 0, 0, LoveMeter / .8, 22, x - 30, y - 1, 1, 1, c_white, MiniM_Alpha);
+		}
+		
+		if (LoveMeter >= 50 && LoveMeter < 150){
+			draw_sprite_part_ext(sprite_get("mini_meter"), 2, 0, 0, (LoveMeter - 50) / 0.8, 22, x - 30, y - 1, 1, 1, c_white, MiniM_Alpha);
+		}
+		
+		if (LoveMeter >= 100){
+			draw_sprite_part_ext(sprite_get("mini_meter"), 3, 0, 0, (LoveMeter - 100) / 0.8, 22, x - 30, y - 1, 1, 1, c_white, MiniM_Alpha);
+		}
+		
+		if (LoveMeter >= 150){
+			draw_sprite_part_ext(sprite_get("mini_meter"), 4, 0, 0, (LoveMeter - 150) / 0.8, 22, x - 30, y - 1, 1, 1, c_white, MiniM_Alpha);
+		}
+					
 		if (MiniM_display_timer >= 20){
 			MiniM_Alpha = 1;
 		}
@@ -157,21 +175,43 @@ if (attack != AT_NSPECIAL){
 			MiniM_Alpha = MiniM_Alpha - .05;
 		}
 		
-		
-		if (LoveMeter == 200){
-			draw_debug_text(x - 14, y + 20, string("FULL"));
+		var a = LoveMeter div 100;
+		var b = LoveMeter div 10;
+		var c = LoveMeter div 1;
+
+shader_start();
+		if (LoveMeter != 200){
+			
+			if (a != 0){
+				draw_sprite_ext(sprite_get("callie_num"), a, x - 24, y + 17, 1, 1, 0, c_white, MiniM_Alpha);
+			}
+			
+			draw_sprite_ext(sprite_get("callie_num"), b, x - 12, y + 17, 1, 1, 0, c_white, MiniM_Alpha);
+			draw_sprite_ext(sprite_get("callie_num"), c, x, y + 17, 1, 1, 0, c_white, MiniM_Alpha);
 		}
-		if (LoveMeter >= 100 && LoveMeter < 200){
-			draw_debug_text(x - 10, y + 20, string(LoveMeter));
+		else {
+			draw_sprite_ext(sprite_get("callie_text"), 2, x - 24, y + 17, 1, 1, 0, c_white, MiniM_Alpha);
+			draw_sprite_ext(sprite_get("callie_text"), 3, x - 12, y + 17, 1, 1, 0, c_white, MiniM_Alpha);
+			draw_sprite_ext(sprite_get("callie_text"), 4, x, y + 17, 1, 1, 0, c_white, MiniM_Alpha);
+			draw_sprite_ext(sprite_get("callie_text"), 4, x + 12, y + 17, 1, 1, 0, c_white, MiniM_Alpha);
 		}
-		if (LoveMeter < 100 && LoveMeter != 0){
-			draw_debug_text(x - 2, y + 20, string(LoveMeter));
-		}
-		if (LoveMeter == 0){
-			draw_debug_text(x + 6, y + 20, string(LoveMeter));
-		}
+shader_end();
 		
 		MiniM_display_timer--;
+/*
+		if (LoveMeter == 200){
+			draw_debug_text(floor(x) - 14, y + 20, string("FULL"));
+		}
+		if (LoveMeter >= 100 && LoveMeter < 200){
+			draw_debug_text(floor(x) - 10, y + 20, string(LoveMeter));
+		}
+		if (LoveMeter < 100 && LoveMeter != 0){
+			draw_debug_text(floor(x) - 2, y + 20, string(LoveMeter));
+		}
+		if (LoveMeter == 0){
+			draw_debug_text(floor(x) + 6, y + 20, string(LoveMeter));
+		}
+*/		
 	}
 }
 
@@ -184,9 +224,22 @@ if (attack == AT_NSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 
 	if (MiniM_display_timer >= 0){
 
-		draw_sprite_ext(sprite_get("mini_meter"), 0, x, y - 29, 1, 1, 0, c_white, MiniM_Alpha);
-		draw_sprite_part_ext(sprite_get("mini_meter"), 1, 0, 0, LoveMeter / 3.2, 22, x - 31, y - 40, 1, 1, c_white, MiniM_Alpha);
-			
+		draw_sprite_ext(sprite_get("mini_meter"), 0, x + 1, y - 29, 1, 1, 0, c_white, MiniM_Alpha);
+		draw_sprite_part_ext(sprite_get("mini_meter"), 1, 0, 0, LoveMeter / 0.8, 22, x - 30, y - 40, 1, 1, c_white, MiniM_Alpha);
+
+		if (LoveMeter >= 50){
+			draw_sprite_part_ext(sprite_get("mini_meter"), 2, 0, 0, (LoveMeter - 50) / 0.8, 22, x - 30, y - 40, 1, 1, c_white, MiniM_Alpha);
+		}
+		
+		if (LoveMeter >= 100){
+			draw_sprite_part_ext(sprite_get("mini_meter"), 3, 0, 0, (LoveMeter - 100) / 0.8, 22, x - 30, y - 40, 1, 1, c_white, MiniM_Alpha);
+		}
+		
+		if (LoveMeter >= 150){
+			draw_sprite_part_ext(sprite_get("mini_meter"), 4, 0, 0, (LoveMeter - 150) / 0.8, 22, x - 30, y - 40, 1, 1, c_white, MiniM_Alpha);
+		}
+		
+		
 		if (MiniM_display_timer >= 20){
 			MiniM_Alpha = 1;
 		}
@@ -194,7 +247,28 @@ if (attack == AT_NSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 			MiniM_Alpha = MiniM_Alpha - .05;
 		}
 		
+		var a = LoveMeter div 100;
+		var b = LoveMeter div 10;
+		var c = LoveMeter div 1;
 		
+shader_start();
+		if (LoveMeter != 200){
+		
+			if (a != 0){
+				draw_sprite_ext(sprite_get("callie_num"), a, x - 24, y - 22, 1, 1, 0, c_white, MiniM_Alpha);
+			}
+			draw_sprite_ext(sprite_get("callie_num"), b, x - 12, y - 22, 1, 1, 0, c_white, MiniM_Alpha);
+			draw_sprite_ext(sprite_get("callie_num"), c, x, y - 22, 1, 1, 0, c_white, MiniM_Alpha);
+		}
+		else {
+			draw_sprite_ext(sprite_get("callie_text"), 2, x - 24, y - 22, 1, 1, 0, c_white, MiniM_Alpha);
+			draw_sprite_ext(sprite_get("callie_text"), 3, x - 12, y - 22, 1, 1, 0, c_white, MiniM_Alpha);
+			draw_sprite_ext(sprite_get("callie_text"), 4, x, y - 22, 1, 1, 0, c_white, MiniM_Alpha);
+			draw_sprite_ext(sprite_get("callie_text"), 4, x + 12, y - 22, 1, 1, 0, c_white, MiniM_Alpha);
+		}
+shader_end();
+		
+/*
 		if (LoveMeter == 200){
 			draw_debug_text(x - 14, y - 20, string("FULL"));
 		}
@@ -207,6 +281,7 @@ if (attack == AT_NSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 		if (LoveMeter == 0){
 			draw_debug_text(x + 6, y - 20, string(LoveMeter));
 		}
+*/
 		
 		MiniM_display_timer--;
 	}

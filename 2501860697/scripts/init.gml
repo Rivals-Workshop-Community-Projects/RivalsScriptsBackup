@@ -243,8 +243,10 @@ ztc_uspecial_angling = 3; //speed at which angling changes
 
 footcharge_vfx = hit_fx_create( sprite_get( "vfx_footcharge" ), 9 );
 
-lightning_fx1 = hit_fx_create( sprite_get( "lightning1" ), 15 );
-lightning_fx2 = hit_fx_create( sprite_get( "lightning2" ), 15 );
+lightning_fx1 = hit_fx_create( sprite_get( "lightning1" ), 16 );
+lightning_fx2 = hit_fx_create( sprite_get( "lightning2" ), 16 );
+lightning_fx3 = hit_fx_create( sprite_get( "lightning3" ), 16 );
+lightning_fx4 = hit_fx_create( sprite_get( "lightning4" ), 16 );
 fspecial_fx1 = hit_fx_create( sprite_get( "fspecial_proj2hit" ), 20 );
 
 

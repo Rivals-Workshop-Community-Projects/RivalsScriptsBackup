@@ -37,6 +37,8 @@ alt_name[14] = "Hosha";
 alt_name[15] = "Inner's Favorite";
 alt_name[16] = "Quagsire";
 alt_name[17] = "Techno and Tenor";
+alt_name[18] = "Riptide";
+alt_name[19] = "Champion";
 
  
 //Patch

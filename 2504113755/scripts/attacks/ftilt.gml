@@ -15,7 +15,7 @@ set_window_value(AT_FTILT, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_FTILT, 2, AG_WINDOW_HSPEED, 3.5);
 
 
-set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 13);
+set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -27,9 +27,9 @@ set_num_hitboxes(AT_FTILT,1);
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FTILT, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FTILT, 1, HG_LIFETIME, 3);
-set_hitbox_value(AT_FTILT, 1, HG_HITBOX_X, 65);
+set_hitbox_value(AT_FTILT, 1, HG_HITBOX_X, 60);
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_Y, -20);
-set_hitbox_value(AT_FTILT, 1, HG_WIDTH, 90);
+set_hitbox_value(AT_FTILT, 1, HG_WIDTH, 100);
 set_hitbox_value(AT_FTILT, 1, HG_HEIGHT, 45);
 set_hitbox_value(AT_FTILT, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_FTILT, 1, HG_PRIORITY, 1);

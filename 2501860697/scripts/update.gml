@@ -30,11 +30,11 @@ if (introTimer < 29) {
 }
 //this stops the overhead HUD from getting in the way of the animation. If your animation does not involve much movement, this may not be necessary.
 
-if(introTimer == 1) {
+if(introTimer == 1 && state == PS_SPAWN) {
  sound_play( asset_get( "sfx_absa_concentrate" ) );
 }
 
-if(introTimer == 9) {
+if(introTimer == 9 && state == PS_SPAWN) {
  sound_play( asset_get( "sfx_absa_uair" ) );
 }
 

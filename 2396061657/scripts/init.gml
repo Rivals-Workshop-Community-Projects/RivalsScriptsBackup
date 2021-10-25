@@ -4,6 +4,9 @@
 
 taunt_counter = 0;
 
+introTimer = 0;
+costume_end = false;
+
 GrappleMode = 0;
 // [Roses]   [Candy]   [Ribbon]   [Balloon]
 //    0         1         2           3
@@ -11,10 +14,20 @@ GrappleMode = 0;
 LoveMeter = 0;
 LoveStorage = 0;
 
+LoveGained = 0;
+LoveGained_Visual = false;
+LoveGained_Timer = 30;
+
 PreviousMeter = 0;
 MiniM_display_timer = 0;
 MiniM_Alpha = 0;
 
+costume_destroy = true;
+costume_num = 0;
+costume_temp_x = 0;
+costume_temp_y = 0;
+costume_temp_spr_dir = 1;
+is_destroying_costume = false;
 
 Platform_Text = [ [44, "She cute tho"], [32, "Doki Doki"], [48, "100% Real Girl"], [32, "Date Girl"], [32, "Data Girl"], [46, "S U C C E S S"], [46, "World is Mine"], [34, "Digital Girl"], [44, "Do your best!"], [38, "Keep going!"], [28, "Press F"] ];
 platform_number = 0;
@@ -31,7 +44,11 @@ up3 = 1;
 	tsj_y2 = 0;
 	tsj_y3 = 0;
 	tsj_timer = 0;
-	
+
+LM_a = 0;
+LM_b = 0;
+LM_c = 0;
+
 nspecial_charge = 0;
 
 focus_attack = false;
@@ -59,7 +76,11 @@ isRibbon = false;
 isBalloon = false;
 
 Balloon_hitstun_grav = 0;
+Balloon_hitstun_multi = 1.0;
+
 Candy_SecondAttack = false;
+candy_pos_x = 0;
+candy_pos_y = 0;
 
 dash_cancel_endlag = 15;
 dash_cancel_counter = 0;
@@ -67,13 +88,16 @@ dash_cancel_counter = 0;
 HeartPop = 0;
 spinbox = noone;
 
-RibbonKB = 8;
-RibbonHP = 14;
+RibbonKB_scaling = .8;
+Ribbon_damage= 8;
 RibbonRights = 0;
 Calliecide = false;
 
-ThornKB = 8;
+ThornKB_scale = .6;
 CandyKB = 4;
+CandyKB_scale = .5;
+full_candy_bar = false;
+candy_identity = 0;
 
 variabl_o = 0;
 dspecial_check = false;
@@ -101,6 +125,7 @@ sfxdthrow = sound_get("dthrowsfx");
 dThrow = noone; 
 isFspecial = false;
 got_hitFspecial = false;
+meter_damage = 0;
 heartsplode = false;
 heart_num = 0;
 

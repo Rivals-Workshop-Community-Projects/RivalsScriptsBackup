@@ -67,6 +67,16 @@ if(attack == AT_DSPECIAL)
 		potionDrawYOffset = 0;
 }
 
+//secret colors
+//RagingBagon
+if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 1){
+	if (taunt_down&&down_down){
+		extra_col = 1
+		white_flash_timer = 18;
+		init_shader();
+	}
+}
+
 //Allow re-use of uspec if grounded / walljumped
 if !free || state == PS_WALL_JUMP
 	move_cooldown[AT_USPECIAL] = 0;

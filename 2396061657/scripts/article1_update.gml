@@ -3,7 +3,7 @@
 
 state_timer++
 
-if (free){
+if (free && state != 5){
 	vsp += .5;
 }
 
@@ -65,10 +65,27 @@ if (state == 1){ // Hearts fly, can be collected by Callie
 		if (pointsgain){
 			if (player_id.LoveMeter <= 190){
 				player_id.LoveMeter += 10;
+				
+				if (!player_id.LoveGained_Visual){
+					player_id.LoveGained_Visual = true;
+				}
+				
+				player_id.LoveGained += 10;					
+				player_id.LoveGained_Timer = 40;
 			}
 			if (player_id.LoveMeter > 190 && player_id.LoveMeter < 200){
 				player_id.LoveMeter = 200;
+				
+				if (!player_id.LoveGained_Visual){
+					player_id.LoveGained_Visual = true;
+				}
+				
+				player_id.LoveGained += 10;					
+				player_id.LoveGained_Timer = 45;
 			}
+			
+
+			pointsgain = false;
 		}
 		
 		if (collected){
@@ -98,10 +115,26 @@ if (state == 2){ // Can be collected when other player interacts with hearts
 		if (pointsgain){
 			if (player_id.LoveMeter <= 190){
 				player_id.LoveMeter += 10;
+			
+				if (!player_id.LoveGained_Visual){
+					player_id.LoveGained_Visual = true;
+				}
+				
+				player_id.LoveGained += 10;					
+				player_id.LoveGained_Timer = 45;
 			}	
 			if (player_id.LoveMeter > 190 && player_id.LoveMeter < 200){
 				player_id.LoveMeter = 200;
+			
+				if (!player_id.LoveGained_Visual){
+					player_id.LoveGained_Visual = true;
+				}
+				
+				player_id.LoveGained += 10;					
+				player_id.LoveGained_Timer = 45;
 			}
+
+			pointsgain = false;
 		}
 		
 		if (otherpoints){
@@ -112,7 +145,17 @@ if (state == 2){ // Can be collected when other player interacts with hearts
 					}
 					if (LoveMeter > 190 && LoveMeter < 200){
 						LoveMeter = 200;
+					
 					}
+				
+					LoveGained += 10;					
+					LoveGained_Timer = 45;
+					
+					if (!LoveGained_Visual){
+						LoveGained_Visual = true;
+					}
+					
+					otherpoints = false;
 				}		
 			}
 		}
@@ -144,6 +187,20 @@ if (state == 4){
 	ignores_walls = true;
 
 	if (state_timer == 31){
+		instance_destroy();
+		exit;
+	}
+}
+
+if (state == 5){
+	can_be_grounded = false;
+	ignores_walls = true;
+
+	if (state_timer > 10){
+		image_alpha = image_alpha - 0.02
+	}
+	
+	if (state_timer >= 31){
 		instance_destroy();
 		exit;
 	}

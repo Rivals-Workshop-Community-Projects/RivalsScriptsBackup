@@ -25,10 +25,10 @@ if ("DG_chat_num" in self && DG_chat_num < 1){
 		if (LoveMeter >= 100){
 			draw_debug_text(temp_x + 8, temp_y - 8, string(LoveMeter));
 		}
-		if (LoveMeter < 100 && LoveMeter != 0){
+		if (LoveMeter < 100 && LoveMeter >= 10){
 			draw_debug_text(temp_x + 16, temp_y - 8, string(LoveMeter));
 		}
-		if (LoveMeter == 0){
+		if (LoveMeter < 10){
 			draw_debug_text(temp_x + 24, temp_y - 8, string(LoveMeter));
 		}
 	}

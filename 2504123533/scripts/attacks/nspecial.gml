@@ -44,6 +44,8 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GRAVITY, 0.3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, tideRedDestroyEffect);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, tideRedDestroyEffect);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_EXTENDED_PARRY_STUN, 1);
 
 //BLUE
 //sweeps across ground
@@ -68,6 +70,8 @@ set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_ANIM_SPEED, 0.2);
 set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_GRAVITY, 0.3);
 set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_DESTROY_EFFECT, tideBlueDestroyEffect);
 set_hitbox_value(AT_NSPECIAL, 6, HG_VISUAL_EFFECT, tideBlueDestroyEffect);
+set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 6, HG_EXTENDED_PARRY_STUN, 1);
 
 //jelly cauldron attack
 //simple explosion
@@ -92,6 +96,8 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, splsh);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_PARTICLE_NUM, 1);
+set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 2, HG_EXTENDED_PARRY_STUN, 1);
 
 //urchin
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
@@ -113,6 +119,8 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("empty"));
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 3, HG_EXTENDED_PARRY_STUN, 1);
 
 //star cauldron attack
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_TYPE, 2);
@@ -135,3 +143,5 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_SPRITE, sprite_get("cauldronStarA
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 4, HG_EXTENDED_PARRY_STUN, 1);

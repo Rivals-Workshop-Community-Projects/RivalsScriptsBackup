@@ -14,8 +14,23 @@ if (state == 1){
 	}
 }
 
+
 if (state == 0){
 	if (state_timer == 18){
+		instance_destroy();
+		exit;
+	}
+}
+
+if (state == 5){
+	can_be_grounded = false;
+	ignores_walls = true;
+
+	if (state_timer > 10){
+		image_alpha = image_alpha - 0.02
+	}
+	
+	if (state_timer >= 31){
 		instance_destroy();
 		exit;
 	}

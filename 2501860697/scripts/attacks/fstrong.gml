@@ -18,7 +18,7 @@ set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 8);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_SFX, asset_get("sfx_absa_uair"));
-set_window_value(AT_FSTRONG, 3, AG_WINDOW_SFX_FRAME, 21);
+set_window_value(AT_FSTRONG, 3, AG_WINDOW_SFX_FRAME, 17); //was 21
 
 
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 13);
@@ -107,7 +107,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 361);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 8.25);
-set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.1);
+set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.2);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 18);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 197);

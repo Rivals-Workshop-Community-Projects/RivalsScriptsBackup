@@ -1,10 +1,8 @@
 // death.gml
 // Runs when the player dies
 
-// Clears all LoveMeters
-//for (var i = 0; i < 3; i++) {
-	LoveMeter = 0;
-//}
+LoveMeter = 0;
+got_hitFspecial = false;
 
 // resets all cooldowns
 move_cooldown[AT_FSPECIAL] = 0;

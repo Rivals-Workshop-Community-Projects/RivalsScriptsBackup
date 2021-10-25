@@ -105,3 +105,5 @@ sprite_change_offset("ustrong_fx", 89, 97);
 sprite_change_offset("focushitfx", 116, 108);
 
 sprite_change_offset("date_bg", 800, 500);
+sprite_change_offset("hallow_intro", 48, 98);
+sprite_change_offset("costume_fall", 48, 98);

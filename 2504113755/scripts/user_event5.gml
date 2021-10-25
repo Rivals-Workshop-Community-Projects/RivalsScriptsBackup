@@ -37,6 +37,8 @@ add_sprites("hurt","bouncehurt","hurtground","spinhurt","uphurt","downhurt");
 // myskin_sprite
 //where myskin is the name of the skin, and sprite is the name of the sprite (as supplied above)
 add_skin("two");
+add_skin("mcfly");
+
 
 //IF you would like to use the convention:
 // sprite_myskin

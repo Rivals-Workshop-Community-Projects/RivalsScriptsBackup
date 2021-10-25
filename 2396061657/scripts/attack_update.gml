@@ -54,7 +54,7 @@ if (attack == AT_DSPECIAL){
 		}	
 	}
 	
-	move_cooldown[AT_DSPECIAL] = 100;
+	move_cooldown[AT_DSPECIAL] = 60;
 
 	if (special_down && LoveMeter >= 10){
 		nspecial_charge += 1;
@@ -147,6 +147,44 @@ if (attack == AT_DSPECIAL){
 		else {
 			LoveMeter = 0;
 		}
+		
+		if (LoveMeter > 0){
+			var digit_1 = noone;
+			digit_1 = instance_create(x - 12, y + 20, "obj_article2");
+			digit_1.state_timer = 2;
+			digit_1.state = 5;
+			digit_1.player_id = id;
+			digit_1.player = player;
+			digit_1.vsp = 1;
+			digit_1.sprite_index = sprite_get("callie_text");
+			digit_1.image_index = 1;
+			digit_1.image_speed = 0;
+			digit_1.depth = -100;
+			
+			var digit_2 = noone;
+			digit_2 = instance_create(x, y + 20, "obj_article2");
+			digit_2.state_timer = 2;
+			digit_2.state = 5;
+			digit_2.player_id = id;
+			digit_2.player = player;
+			digit_2.vsp = 1;
+			digit_2.sprite_index = sprite_get("callie_num");
+			digit_2.image_index = 2;
+			digit_2.image_speed = 0;
+			digit_2.depth = -100;
+
+			var digit_3 = noone;
+			digit_3 = instance_create(x + 12, y + 20, "obj_article2");
+			digit_3.state_timer = 2;
+			digit_3.state = 5;
+			digit_3.player_id = id;
+			digit_3.player = player;
+			digit_3.vsp = 1;
+			digit_3.sprite_index = sprite_get("callie_num");
+			digit_3.image_index = 0;
+			digit_3.image_speed = 0;
+			digit_3.depth = -100;
+		}
 	}
 	
 	if (window == 6){
@@ -227,6 +265,58 @@ if (attack == AT_DATTACK){
 		can_special = true;
 		can_walk = true;
 	}
+	
+	if (has_hit || has_hit_player && window == 2){
+		if ((spr_dir = -1 && (left_pressed || left_down) && (special_pressed || special_down)) || (spr_dir = 1 && (right_pressed || right_down) && (special_pressed || special_down))){
+			attack_end();
+			set_attack(AT_FSPECIAL);
+			state_timer = 0;
+			window = 1;
+			window_timer = 10;
+			fspec_x = x;
+			fspec_y = y;
+			fspecial_circles = 0;
+			
+			LoveMeter = clamp(LoveMeter - 50, 0, 200);
+
+			var digit_1 = noone;
+			digit_1 = instance_create(x - 12, y + 20, "obj_article2");
+			digit_1.state_timer = 2;
+			digit_1.state = 5;
+			digit_1.player_id = id;
+			digit_1.player = player;
+			digit_1.vsp = 1;
+			digit_1.sprite_index = sprite_get("callie_text");
+			digit_1.image_index = 1;
+			digit_1.image_speed = 0;
+			digit_1.depth = -100;
+			
+			var digit_2 = noone;
+			digit_2 = instance_create(x, y + 20, "obj_article2");
+			digit_2.state_timer = 2;
+			digit_2.state = 5;
+			digit_2.player_id = id;
+			digit_2.player = player;
+			digit_2.vsp = 1;
+			digit_2.sprite_index = sprite_get("callie_num");
+			digit_2.image_index = 5;
+			digit_2.image_speed = 0;
+			digit_2.depth = -100;
+
+			var digit_3 = noone;
+			digit_3 = instance_create(x + 12, y + 20, "obj_article2");
+			digit_3.state_timer = 2;
+			digit_3.state = 5;
+			digit_3.player_id = id;
+			digit_3.player = player;
+			digit_3.vsp = 1;
+			digit_3.sprite_index = sprite_get("callie_num");
+			digit_3.image_index = 0;
+			digit_3.image_speed = 0;
+			digit_3.depth = -100;
+			
+		}
+	}
 }
 
 // Allows for wall jumps during certain attacks
@@ -249,6 +339,9 @@ if (attack == AT_TAUNT && state_timer == 1 && get_training_cpu_action() != CPU_F
 	if (LoveMeter <= 190){
 		LoveMeter += 10;
 	}
+	if (LoveMeter > 190 && LoveMeter < 200){
+		LoveMeter = 200;
+	}
 }
 
 // Disables fast falls during throw animations
@@ -264,6 +357,7 @@ if (attack == AT_NTHROW){
 }
 
 /*
+// OLD RIBBON THROW THAT DOES THE COOL PULL BUT WAS REMOVED CAUSE IT'S INCONSISTENT AND I CRY
 if (attack == AT_NTHROW){
 	if (window < 3){
 		can_move = false;
@@ -296,7 +390,7 @@ if (attack == AT_NTHROW){
 }
 */
 
-// Down Special
+// Item Select Special
 if (attack == AT_NSPECIAL){ 
 	if (window == 1){ // Assigns item to next one in list
 		hud_offset = hud_offset + 20;

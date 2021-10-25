@@ -363,7 +363,7 @@ with phone{
 	initTipWords("After 5 frames, this move 'teleports' you a distance based on your current speed and direction. 
 	
 	Lacks invulnerability. 
-	Can be used after landing any normal (minus strongs).");
+	Can be used after landing any normal (minus strongs) or dspecial.");
 //	if ("spr_nspecial_proj" in player_id) initTipImage_ext(player_id.spr_nspecial_proj, -5, fa_right, 1, c_white, 3, 40, 30, 60, 0);
 //	initTipImage_ext(player_id.spr_nspecial, 2, fa_left, 1, c_white, 0, 24, 40, 64, 0);
 
@@ -516,6 +516,92 @@ with phone{
 	- waog");
 	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0); */
 	
+	
+			initPatch("2.3", "24 October, 2021");
+		
+			initPatchWords_ext("DOWNWARDS TILT I BEG OF YOU", fa_center, c_white, 0, 1);
+	
+		initPatch("2.2", "24 October, 2021");
+		
+			initPatchWords_ext("PLEASE UPLOAD DOWNTILT THIS TIME", fa_center, c_white, 0, 1);
+	
+		initPatch("2.1", "24 October, 2021");
+		
+			initPatchWords_ext("Quick Fixes", fa_center, c_white, 0, 0);
+initPatchWords_ext("uair bkb 8-7
+uair kbs 0.7-0.6
+
+uspecial angle now 70. kb adjusted slightly again
+
+dstrong knockback 8, 1.1 - 7, 1.0
+
+fixed brian alt crashing online
+brian taunt is the only option now
+
+halloween alt has clothing dissipation when the costume is removed
+
+fair base hitpause strong hit 8-9
+bair base hitpause 7-8
+
+dair bkb 5-6
+dair angle 90-70 //yea
+
+also hopefully dtilt sprite is actually uploaded this time LOL", fa_left, c_white, 0, 0);
+	
+			initPatch("2.0", "24 October, 2021");
+		
+			initPatchWords_ext("Dattack is single hit now", fa_center, c_white, 0, 0);
+initPatchWords_ext("2 new skins. i hate you sakk
+
+-jab1 and 2 now have 18 frames of whifflag (instead of 16)
+
+~dattack is now single hit. it has an early and late hit. yea
+
++dtilt range buff :)
+
+-ftilt endlag 13-14 frames
+
+-fstrong endlag 20-22 frames
++fstrong bkb 8-9
+~fstrong hitpause scaling 0.8-1.0
+
+~dstrong angle 45-70
++dstrong bkb 7-8
++dstrong kbs 0.85/0.8-1.1
+-dstrong endlag 19-20 frames
+
+-ustrong endlag 18-19 frames
+
+~uair bkb 7-8
+~uair kbs 0.55-0.7
+~uair base hitpause 6-8
+~uair hitpause scaling 0.4-0.6
+
+-bair landing lag 7-8 frames
+~bair bkb 5-6
+~bair hitpause scaling .5-.7
+~bair scaling .8-.75
+
+-dair endlag 12-13 frames
+-increased dair custom gravity when being held (doesnt go as high)
+~dair final hit angle 45-90
+
+~fair strong hit kbs .85-.9
+~fair strong hit hitpause scaling .7-.9
+
+~uspecial angle (both hits) now 55
+~knockback increased to compensate
+
++dspecial retains more momentum when used from the ground (5-5.5 hsp)
++dspecial can be cancelled by nspecial on hit
+
++uspecial early hit damage 7-11
++uspecial late hit damage 6-7
+
+sprite covering you up when u blink is no longer mixelled (it was rotated 1 degree)
+
+many hitboxes moved further in to avoid blindspots.", fa_left, c_white, 0, 0);
+	
 		initPatch("1.20", "24 August, 2021");
 		
 			initPatchWords_ext("Riptide Nerfs edits", fa_center, c_white, 0, 0);
@@ -549,6 +635,10 @@ adjusted dstrong anim
 -bair endlag 13-14 frames
 -bair landing lag 6-7 frames
 -uair endlag 14-15 frames
+
+-uspecial sour angle 85-45
+-uspecial sour kbk 7-6
+-uspecial sour kbs .8-.7
 
 -can no longer explode the wraith when its dying after 300 frames
 -wraith is maybe maybe better at actually being hit (still wip)", fa_left, c_white, 0, 0);

@@ -24,7 +24,7 @@ if (blink_state_timer < blink_start_frame) {
 	 gpu_set_fog(1, col1, 0, 1);
 
 
-                draw_sprite_ext(sprite_index, image_index, x + 0.5, y, 2*spr_dir, 2, 1, tempColour, 1);
+                draw_sprite_ext(sprite_index, image_index, x, y, 2*spr_dir, 2, 0, tempColour, 1);
         gpu_set_blendmode(bm_add);
                        // draw_sprite_ext(afterImage[i].sprite_index, afterImage[i].image_index + image_index_offset , afterImage[i].x - 2*x_offset*spr_dir, afterImage[i].y + 2*y_offset, 2*afterImage[i].spr_dir, 2, 1, tempColour, afterImage[i].alpha/20);
 

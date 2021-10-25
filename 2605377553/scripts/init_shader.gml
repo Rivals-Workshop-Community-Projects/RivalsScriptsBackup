@@ -36,6 +36,15 @@ set_character_color_slot( 4, 255, 247, 84 ); //Skirt
 set_character_color_slot( 5, 255, 87, 87 ); //Eyes/Socks
 set_character_color_slot( 6, 107, 124, 255 ); //Smog
 set_character_color_slot( 7, 251, 255, 36 ); //Smog Outline
+
+set_article_color_slot( 0, 255, 255, 255 ); //Hoodie Pink
+set_article_color_slot( 1, 255, 255, 255 ); //Skin
+set_article_color_slot( 2, 240, 66, 66 ); //Hair
+set_article_color_slot( 3, 55, 52, 194 ); //Hoodie Purp
+set_article_color_slot( 4, 255, 247, 84 ); //Skirt
+set_article_color_slot( 5, 255, 87, 87 ); //Eyes/Socks
+set_article_color_slot( 6, 107, 124, 255 ); //Smog
+set_article_color_slot( 7, 251, 255, 36 ); //Smog Outline
 }
 }
 

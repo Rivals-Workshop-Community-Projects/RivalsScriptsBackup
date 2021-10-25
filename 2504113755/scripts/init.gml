@@ -7,6 +7,10 @@
  * docs.google.com/spreadsheets/d/19UtK7xG2c-ehxdlhCFKMpM4_IHSG-EXFgXLJaunE79I
  */
 
+
+
+show_halloween_skin = true;
+
 // STAT NAME		ZETTER VALUE   BASECAST RANGE   NOTES
 
 small_sprites = 1
@@ -214,6 +218,9 @@ plasma_t_big = hit_fx_create( sprite_get( "plasma_t_big" ), 21 );
 plasma_line = hit_fx_create( sprite_get( "plasma_line" ), 21 );
 plasma_x_big = hit_fx_create( sprite_get( "plasma_x_big" ), 21 );
 plasma_circle_big = hit_fx_create( sprite_get( "plasma_circle" ), 20 );
+
+
+mcfly_remove = hit_fx_create( sprite_get( "mcfly_remove" ), 30 );
 
 
 trainingMode = 0

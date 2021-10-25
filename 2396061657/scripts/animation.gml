@@ -10,3 +10,10 @@ if (state == PS_ATTACK_GROUND){
 		}
 	}
 }
+
+if (!costume_end && (get_player_color(player) == 25 || get_player_color(player) == 19)){
+	if (state == PS_SPAWN || state == PS_IDLE){
+		sprite_index = sprite_get("hallow_intro");
+		image_index = introTimer;
+	}
+}

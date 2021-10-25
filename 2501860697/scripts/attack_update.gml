@@ -95,6 +95,13 @@ if attack == AT_NSPECIAL && window == 5 && window_timer == 10 {
 	venom_recharge_active = true;
 }
 
+if attack == AT_USPECIAL && window == 2 {
+			if shield_pressed && has_airdodge = true {
+			set_state(PS_AIR_DODGE);
+			print("test");
+		}
+}
+
 if (attack == AT_USPECIAL)
 {
 	can_wall_jump = true;

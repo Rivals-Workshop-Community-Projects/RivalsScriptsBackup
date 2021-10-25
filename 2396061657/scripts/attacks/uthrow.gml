@@ -47,5 +47,6 @@ set_hitbox_value(AT_UTHROW, 1, HG_VISUAL_EFFECT, hit_uthrow);
 set_hitbox_value(AT_UTHROW, 1, HG_VISUAL_EFFECT_Y_OFFSET, -80);
 set_hitbox_value(AT_UTHROW, 1, HG_VISUAL_EFFECT_X_OFFSET, 15);
 set_hitbox_value(AT_UTHROW, 1, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_UTHROW, 1, HG_HITSTUN_MULTIPLIER, 1.0);
 
 set_hitbox_value(AT_UTHROW, 1, HG_HIT_PARTICLE_NUM, 5);

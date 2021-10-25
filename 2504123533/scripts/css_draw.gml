@@ -1,7 +1,7 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-var num_alts = 23;
+var num_alts = 24;
 var alt_cur = get_player_color(player);
  
  
@@ -31,6 +31,7 @@ alt_name[19] = "Fashionista";
 alt_name[20] = "Tusspells";
 alt_name[21] = "Slime Girl";
 alt_name[22] = "Killer Queen";
+alt_name[23] = "Derby Champion";
 
 //Alt
  

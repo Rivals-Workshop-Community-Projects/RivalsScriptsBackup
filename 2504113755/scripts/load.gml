@@ -1,4 +1,5 @@
 sprite_change_offset("idle", 68, 65);
+sprite_change_offset("mcfly_idle", 37, 33);
 sprite_change_offset("hurt", 68, 65);
 sprite_change_offset("crouch", 68, 65);
 sprite_change_offset("walk", 68, 65);
@@ -17,6 +18,10 @@ sprite_change_offset("bighurt", 68, 65);
 sprite_change_offset("bouncehurt", 68, 65);
 sprite_change_offset("spinhurt", 68, 65);
 
+sprite_change_offset("brian_taunt", 112, 178);
+
+
+sprite_change_offset("mcfly_remove", 68*2, 65*2);
 
 
 
@@ -39,6 +44,7 @@ sprite_change_offset("jab", 68, 65);
 sprite_change_offset("dattack", 68, 65);
 sprite_change_offset("ftilt", 68, 65);
 sprite_change_offset("dtilt", 68, 65);
+
 sprite_change_offset("utilt", 68, 65);
 sprite_change_offset("nair", 68, 65);
 sprite_change_offset("fair", 68, 65);

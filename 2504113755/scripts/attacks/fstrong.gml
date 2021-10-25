@@ -19,7 +19,7 @@ set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 
-set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 22);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -29,23 +29,24 @@ set_num_hitboxes(AT_FSTRONG, 2);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 3);
-set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 65);
-set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_Y, -40);
-set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 84);
-set_hitbox_value(AT_FSTRONG, 1, HG_HEIGHT, 78);
+set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_X, 55);
+set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_Y, -42);
+set_hitbox_value(AT_FSTRONG, 1, HG_WIDTH, 104);
+set_hitbox_value(AT_FSTRONG, 1, HG_HEIGHT, 80);
 set_hitbox_value(AT_FSTRONG, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 12);
 set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 45);
-set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 1.0);
 //set_hitbox_value(AT_FSTRONG, 1, HG_EFFECT, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 11);
-set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 0.8);
+set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 1.0);
 //set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_PARTICLE_NUM, 1)
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, plasma_circle_big );
+set_hitbox_value(AT_FSTRONG, 1, HG_SHAPE, 2 );
 
 
 //weaker later hit

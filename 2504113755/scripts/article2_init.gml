@@ -12,6 +12,10 @@ orig_knock = 0;
 hit_lockout = 0
 
 
+
+can_be_grounded = true
+ignores_walls = true;
+
 article_sprite_index = player_id.sprite_index
 article_image_index = player_id.image_index
 article_spr_dir = player_id.spr_dir
@@ -24,3 +28,4 @@ state_timer = 0
 explosion_frame_offset = 0
 
 mask_index = sprite_get("wraith_hurtbox");
+

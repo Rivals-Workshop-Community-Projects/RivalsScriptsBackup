@@ -7,7 +7,33 @@ with (obj_article1){ // Draws the outline of the heart during the first state (W
 			draw_sprite_ext(sprite_get("heartoutline"), -1, x, y, 1, 1, 0, get_player_hud_color(player), 1);
 		}
 	}
-}		
+}
+
+
+if (((state != PS_SPAWN && state != PS_IDLE) && costume_destroy) || is_destroying_costume){
+
+	if (costume_temp_x == 0){
+		costume_temp_x = x + (spr_dir * - 40);
+		costume_temp_y = y;
+		costume_temp_spr_dir = spr_dir;
+		is_destroying_costume = true;
+	}
+	
+	if (get_player_color(player) == 19 || get_player_color(player) == 25 ){
+
+		draw_sprite_ext(sprite_get("costume_fall"), costume_num, costume_temp_x, costume_temp_y, costume_temp_spr_dir, 1, 0, c_white, 1);
+		costume_num += .15;
+		
+		if (costume_num >= 5){
+			costume_num = 1;
+			costume_temp_x = 0;
+			costume_temp_y = 0;
+			costume_destroy = false;
+			is_destroying_costume = false;
+		}
+	}
+}
+
 /*
 if (should_crumple && crumple_timer < 7){
 	draw_sprite_ext(sprite_get("crumple"), crumple_timer, crumple_x, crumple_y, 1 * crumple_dir, 1, 0, c_white, crumple_alpha);	

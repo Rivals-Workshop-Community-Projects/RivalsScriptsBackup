@@ -2,7 +2,6 @@ set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong"));
 set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_DSTRONG, AG_CATEGORY, 1);
 set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
-set_attack_value(AT_DSTRONG, AG_HAS_LANDING_LAG, 0);
 set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
 
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_TYPE, 1);
