@@ -8,7 +8,7 @@ set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 1);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 1);
 
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 
@@ -41,7 +41,7 @@ set_window_value(AT_DSTRONG, 7, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSTRONG, 7, AG_WINDOW_ANIM_FRAME_START, 6);
 
 set_window_value(AT_DSTRONG, 8, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG, 8, AG_WINDOW_LENGTH, 17);
+set_window_value(AT_DSTRONG, 8, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_DSTRONG, 8, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSTRONG, 8, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_DSTRONG, 8, AG_WINDOW_HAS_WHIFFLAG, 1);

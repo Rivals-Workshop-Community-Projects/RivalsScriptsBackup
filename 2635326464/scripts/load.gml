@@ -1,0 +1,167 @@
+sprite_change_offset("hurtbox", 53, 98);
+sprite_change_offset("hurtboxcrouch", 53, 98);
+sprite_change_offset("hurtbox_big", 106, 196);
+sprite_change_offset("hurtboxcrouch_big", 106, 196);
+
+sprite_change_offset("idle", 101, 116);
+sprite_change_offset("hurt", 101, 116);
+sprite_change_offset("bighurt", 101, 116);
+sprite_change_offset("spinhurt", 101, 116);
+sprite_change_offset("crouch", 101, 116);
+sprite_change_offset("walk", 101, 116);
+sprite_change_offset("walkturn", 101, 116);
+sprite_change_offset("dash", 101, 116);
+sprite_change_offset("dashstart", 101, 116);
+sprite_change_offset("dashstop", 101, 116);
+sprite_change_offset("dashturn", 101, 116);
+
+sprite_change_offset("jumpstart", 101, 116);
+sprite_change_offset("jump", 101, 116);
+sprite_change_offset("doublejump", 101, 116);
+sprite_change_offset("walljump", 97, 116);
+sprite_change_offset("pratfall", 101, 116);
+sprite_change_offset("land", 101, 116);
+sprite_change_offset("landinglag", 101, 116);
+
+sprite_change_offset("parry", 101, 116);
+sprite_change_offset("roll_forward", 101, 116);
+sprite_change_offset("roll_backward", 101, 116);
+sprite_change_offset("airdodge", 101, 116);
+sprite_change_offset("airdodge_down", 101, 116);
+sprite_change_offset("airdodge_downback", 101, 116);
+sprite_change_offset("airdodge_downforward", 101, 116);
+sprite_change_offset("airdodge_forward", 101, 116);
+sprite_change_offset("airdodge_back", 101, 116);
+sprite_change_offset("airdodge_up", 101, 116);
+sprite_change_offset("airdodge_upback", 101, 116);
+sprite_change_offset("airdodge_upforward", 101, 116);
+sprite_change_offset("waveland", 101, 116);
+sprite_change_offset("tech", 101, 116);
+
+sprite_change_offset("jab", 85, 116);
+sprite_change_offset("dattack", 101, 116);
+sprite_change_offset("ftilt", 85, 116);
+sprite_change_offset("dtilt", 101, 116);
+sprite_change_offset("utilt", 101, 116);
+sprite_change_offset("nair", 101, 116);
+sprite_change_offset("fair", 53, 116);
+sprite_change_offset("bair", 149, 116);
+sprite_change_offset("uair", 101, 116);
+sprite_change_offset("dair", 101, 116);
+sprite_change_offset("dair_left", 101, 116);
+sprite_change_offset("fstrong", 101, 116);
+sprite_change_offset("fstrong_2", 101, 116);
+sprite_change_offset("ustrong", 101, 116);
+sprite_change_offset("dstrong", 101, 116);
+sprite_change_offset("nspecial", 101, 116);
+sprite_change_offset("nspecial_air", 101, 116);
+sprite_change_offset("nspecial_stop", 101, 116);
+sprite_change_offset("nspecial_stop_2", 101, 116);
+sprite_change_offset("fspecial", 101, 116);
+sprite_change_offset("fspecial_air", 101, 116);
+sprite_change_offset("uspecial", 101, 116);
+sprite_change_offset("uspecialair", 101, 116);
+sprite_change_offset("uspecial_ramp", 101, 108);
+sprite_change_offset("uspecial_ramp2", 101, 108);
+sprite_change_offset("dspecial", 101, 116);
+sprite_change_offset("taunt", 101, 116);
+sprite_change_offset("taunt_walk", 101, 116);
+sprite_change_offset("phone_open", 101, 116);
+sprite_change_offset("final_smash", 101, 116);
+
+sprite_change_offset("lightning", 51, 660);
+sprite_change_offset("green_shell", 32, 40);
+sprite_change_offset("shell_destroy", 32, 40);
+sprite_change_offset("spiny_shell_destroy", 32, 40);
+sprite_change_offset("fire_flower", 32, 40);
+sprite_change_offset("bob_omb", 32, 40);
+sprite_change_offset("bob_omb_red", 32, 40);
+sprite_change_offset("nothing", 32, 40);
+sprite_change_offset("golden_mushroom", 101, 116);
+sprite_change_offset("drift", 101, 116);
+sprite_change_offset("boom", 101, 94);
+sprite_change_offset("blue_boom", 101, 94);
+sprite_change_offset("sonic_boom", 106, 90);
+sprite_change_offset("banana", 17, 36);
+sprite_change_offset("banana_mask", 17, 36);
+sprite_change_offset("banana_nothing", 17, 36);
+sprite_change_offset("spiny_shell", 32, 40);
+
+sprite_change_offset("glider_platform", 64, 0);
+
+sprite_change_offset("plat", 64, 94);
+sprite_change_offset("lakitu_spawn", 113, 98);
+
+//Shyguyless kart
+
+sprite_change_offset("kart_idle", 101, 116);
+sprite_change_offset("kart_hurt", 101, 116);
+sprite_change_offset("kart_bighurt", 101, 116);
+sprite_change_offset("kart_spinhurt", 101, 116);
+sprite_change_offset("kart_crouch", 101, 116);
+sprite_change_offset("kart_walk", 101, 116);
+sprite_change_offset("kart_walkturn", 101, 116);
+sprite_change_offset("kart_dash", 101, 116);
+sprite_change_offset("kart_dashstart", 101, 116);
+sprite_change_offset("kart_dashstop", 101, 116);
+sprite_change_offset("kart_dashturn", 101, 116);
+
+sprite_change_offset("kart_jumpstart", 101, 116);
+sprite_change_offset("kart_jump", 101, 116);
+sprite_change_offset("kart_doublejump", 101, 116);
+sprite_change_offset("kart_walljump", 97, 116);
+sprite_change_offset("kart_pratfall", 101, 116);
+sprite_change_offset("kart_land", 101, 116);
+sprite_change_offset("kart_landinglag", 101, 116);
+
+sprite_change_offset("kart_parry", 101, 116);
+sprite_change_offset("kart_roll_forward", 101, 116);
+sprite_change_offset("kart_roll_backward", 101, 116);
+sprite_change_offset("kart_airdodge", 101, 116);
+sprite_change_offset("kart_airdodge_down", 101, 116);
+sprite_change_offset("kart_airdodge_downback", 101, 116);
+sprite_change_offset("kart_airdodge_downforward", 101, 116);
+sprite_change_offset("kart_airdodge_forward", 101, 116);
+sprite_change_offset("kart_airdodge_back", 101, 116);
+sprite_change_offset("kart_airdodge_up", 101, 116);
+sprite_change_offset("kart_airdodge_upback", 101, 116);
+sprite_change_offset("kart_airdodge_upforward", 101, 116);
+sprite_change_offset("kart_waveland", 101, 116);
+sprite_change_offset("kart_tech", 101, 116);
+
+sprite_change_offset("kart_jab", 85, 116);
+sprite_change_offset("kart_dattack", 101, 116);
+sprite_change_offset("kart_ftilt", 85, 116);
+sprite_change_offset("kart_dtilt", 101, 116);
+sprite_change_offset("kart_utilt", 101, 116);
+sprite_change_offset("kart_nair", 101, 116);
+sprite_change_offset("kart_fair", 53, 116);
+sprite_change_offset("kart_bair", 149, 116);
+sprite_change_offset("kart_uair", 101, 116);
+sprite_change_offset("kart_dair", 101, 116);
+sprite_change_offset("kart_dair_left", 101, 116);
+sprite_change_offset("kart_fstrong", 101, 116);
+sprite_change_offset("kart_fstrong_2", 101, 116);
+sprite_change_offset("kart_ustrong", 101, 116);
+sprite_change_offset("kart_dstrong", 101, 116);
+sprite_change_offset("kart_nspecial", 101, 116);
+sprite_change_offset("kart_nspecial_air", 101, 116);
+sprite_change_offset("kart_nspecial_stop", 101, 116);
+sprite_change_offset("kart_nspecial_stop_2", 101, 116);
+sprite_change_offset("kart_fspecial", 101, 116);
+sprite_change_offset("kart_fspecial_air", 101, 116);
+sprite_change_offset("kart_uspecial", 101, 116);
+sprite_change_offset("kart_uspecialair", 101, 116);
+sprite_change_offset("kart_dspecial", 101, 116);
+sprite_change_offset("kart_taunt", 101, 116);
+sprite_change_offset("kart_taunt_walk", 101, 116);
+sprite_change_offset("kart_phone_open", 101, 116);
+sprite_change_offset("kart_final_smash", 101, 116);
+
+sprite_change_offset("guilty_kart", 31, 0);
+sprite_change_offset("kart_painting", 27, 39);
+sprite_change_offset("sign_kart", 18,41);
+sprite_change_offset("tiny_kart", 6,6);
+sprite_change_offset("tiny_kart_with_sg", 6,6);
+
+user_event(1);

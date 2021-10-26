@@ -19,7 +19,7 @@ set_window_value(AT_USTRONG, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX_FRAME, 1);
 set_window_value(AT_USTRONG, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_USTRONG, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.1);
+set_window_value(AT_USTRONG, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.15);
 
 set_window_value(AT_USTRONG, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_LENGTH, 19);
@@ -27,10 +27,10 @@ set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAMES, 9);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 10);  
 set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_USTRONG, 3, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
+set_window_value(AT_USTRONG, 3, AG_WINDOW_SFX, sound_get("swing_weak2"));
 set_window_value(AT_USTRONG, 3, AG_WINDOW_SFX_FRAME, 0);
 set_window_value(AT_USTRONG, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_USTRONG, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.1);
+set_window_value(AT_USTRONG, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.15);
 
 set_num_hitboxes(AT_USTRONG,1);
 
@@ -38,8 +38,8 @@ set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_USTRONG, 1, HG_LIFETIME, 9);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_X, 5);
-set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -61);
-set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 39);
+set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -55);
+set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 33);
 set_hitbox_value(AT_USTRONG, 1, HG_HEIGHT, 65);
 set_hitbox_value(AT_USTRONG, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 7);

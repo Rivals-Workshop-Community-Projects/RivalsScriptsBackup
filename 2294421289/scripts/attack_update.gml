@@ -5,15 +5,44 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
-if (attack == AT_DAIR){
-	if (has_hit)
+if (attack == AT_DAIR)
+{
+  if (was_parried == false)
   {
-		can_fast_fall = true;
-	}
+    can_wall_jump = 1;
+  }
+  if (window == 1)
+  {
+    hsp = hsp / 1.1;
+    //vsp = vsp / 1.1;
+  }
+  if ((window == 3) and (window_timer > 4) and (was_parried == false))
+  {
+    can_jump = 1;
+    can_dodge = 1;
+    can_special = 1;
+  }
+  /*
+  if (window == 3) and (has_hit == true)
+  {
+    can_jump = 1;
+    can_dodge = 1;
+    can_special = 1;
+  }
+  */
+
+  if (window == 1) and (window_timer == 9)
+  {
+     sound_play( sound_get( "swing_medium2" ) );
+  }
 }
 
 if (attack == AT_FSPECIAL)
 {
+ if (window == 1) and (window_timer == 1)
+ {
+     sound_play( asset_get( "sfx_swipe_medium2" ) );
+ }
  if was_parried = false
  {
  
@@ -59,10 +88,10 @@ if (attack == AT_USPECIAL)
   if (was_parried = false)
   {
 	can_wall_jump = true;
-  if ((window == 2 ) && (!free) && (window_timer == 12))
+  if ((window == 2 ) && (!free) && (window_timer > 5))
   {
     set_state( PS_LANDING_LAG );
-    landing_lag_time = 10;
+    landing_lag_time = 15;//13
     hsp = hsp / 2;
   }
  }
@@ -78,26 +107,26 @@ if (attack == AT_USPECIAL)
   if (window == 1) and (window_timer < 11)
   {
    upb_dir = joy_dir; 
-   set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, (16 * cos(degtorad(upb_dir)) ) * spr_dir);
-   set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, (-16 * sin(degtorad(upb_dir)) ));
+   set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, (22 * cos(degtorad(upb_dir)) ) * spr_dir);
+   set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, (-22 * sin(degtorad(upb_dir)) ));
    if (joy_pad_idle = true)
    {
     upb_dir = 90;
     set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 0);
-    set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -16);
+    set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -22);
    }
   }
 
   if (window == 3)
   { 
-   set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, (1.5 * cos(degtorad(upb_dir)) ) * spr_dir);
-   set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, (-1.5 * sin(degtorad(upb_dir)) ));
+   set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, (7 * cos(degtorad(upb_dir)) ) * spr_dir);
+   set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, (-7 * sin(degtorad(upb_dir)) ));
   }
 
   if (window == 4)
   { 
-   set_window_value(AT_USPECIAL, 4, AG_WINDOW_HSPEED, (1.5 * cos(degtorad(upb_dir)) ) * spr_dir);
-   set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, (-1.5 * sin(degtorad(upb_dir)) ));
+   set_window_value(AT_USPECIAL, 4, AG_WINDOW_HSPEED, (4 * cos(degtorad(upb_dir)) ) * spr_dir);
+   set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED, (-4 * sin(degtorad(upb_dir)) ));
   }
 
   if (has_hit)
@@ -214,9 +243,9 @@ if (attack == AT_FSPECIAL)
 
 if (attack == AT_USPECIAL)
 {
-  if (window == 2)
+  if (window == 2) or (window == 3)
   {
-    if(state_timer % 4 == 0)
+    if(state_timer % 3 == 0)
     {
       trail = instance_create(x, y, "obj_article1");
       trail.image_index = image_index;
