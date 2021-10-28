@@ -80,7 +80,6 @@ set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 8);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 90); //was 100
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.7);
-set_hitbox_value(atk, hitboxNum, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 8); //hitstun
 set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.8); //hitstun
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 303);

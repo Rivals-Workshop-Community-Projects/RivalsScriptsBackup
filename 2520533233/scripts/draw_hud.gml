@@ -23,12 +23,14 @@ if(state == PS_SPAWN){
     
 //Install Live Credits----------------------------------------------------------
 if("dragon_install" in self and dragon_install and !lightweight){
+    if(install_theme < 100){
     if(install_timer < 20){
         draw_sprite(sprite_get("song_credits"), install_theme, 0-200+install_timer*10, 0);
     } else if (install_timer < 120){
         draw_sprite(sprite_get("song_credits"), install_theme, 0, 0);
     } else if (install_theme < 140){
         draw_sprite(sprite_get("song_credits"), install_theme, 0-(install_timer-120)*10, 0);
+    }
     }
 }
 

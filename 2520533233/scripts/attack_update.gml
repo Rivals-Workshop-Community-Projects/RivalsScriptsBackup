@@ -221,6 +221,14 @@ switch(attack){
     //------------------ USPECIAL --------------------- 
     case AT_USPECIAL:
     	can_fast_fall = false;
+    	if(window == 1 and window_timer == 1){
+    		grounded_uspecial = 0;
+    	} else if (window == 1 and window_timer = 2){
+    		if(!free and grounded_uspecial < 7){
+    			grounded_uspecial++;
+    			window_timer--;
+    		}
+    	}
     	if(window == 1 and window_timer == 5){
     		uspec_feint = false;
     		if((!can_rock or !can_move_rock) and tenshi_uspecial_rock != noone){
@@ -339,7 +347,12 @@ switch(attack){
 							install_theme += 100;
 						} 
 					}
-
+					if(skin_alt){
+						install_theme = 421;
+						if(down_down){
+							install_theme = 420;
+						}
+					}
             		//clear trail so 2 installs in one game isnt weird
             		for(var i = 0; i < install_trail_size; i++){
 						install_trail[i].life = 0;
@@ -955,6 +968,9 @@ switch(attack){
 
 		if(window == 2 and window_timer == 1){
 			hsp += spr_dir*2;
+			if(vsp > 2){
+				vsp = 2;
+			}
 		}
     	if(window < 3 and dragon_install){
     		soft_armor = install_armor;

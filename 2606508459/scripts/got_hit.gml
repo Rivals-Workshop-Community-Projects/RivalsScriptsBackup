@@ -1,6 +1,7 @@
 //print_debug
 
 flag_fspecial = 0;
+move_cooldown[AT_FSPECIAL] = 0;
 
 if ((pre_state == PS_ATTACK_GROUND || pre_state == PS_ATTACK_AIR) && attack == AT_NSPECIAL)
 {

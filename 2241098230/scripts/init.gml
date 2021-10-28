@@ -121,7 +121,7 @@ smokeconsume_fx_top = hit_fx_create(asset_get("fire_consume_bot_spr"), 18)
 rounds_left = 12;
 
 set_victory_bg(sprite_get("victory_bg"));
-set_victory_theme(CH_ZETTERBURN);
+set_victory_theme(sound_get("victory_theme"));
 
 //Attacks with status effects
 hbox_apply_smoke = [[AT_FSTRONG, 1], [AT_USTRONG, 1], [AT_DSTRONG, 1], [AT_EXTRA_1, 1], [AT_EXTRA_1, 2], [AT_EXTRA_1, 3], [AT_DSPECIAL, 1], [AT_DSPECIAL, 2]];

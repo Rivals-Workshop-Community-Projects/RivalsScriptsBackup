@@ -380,6 +380,9 @@ if (attack == AT_JAB){
 		set_window_value(AT_JAB, 13, AG_WINDOW_LENGTH, 9);
 		set_window_value(AT_JAB, 13, AG_WINDOW_ANIM_FRAME_START, 13);
 	}
+	if window == 13 && window_timer >= 10 {
+		move_cooldown[AT_JAB] = 20
+	}
 	//if window <= 3{
 		//if right_strong_pressed * spr_dir or left_strong_pressed * -spr_dir{
 			//set_attack( AT_EXTRA_1 );

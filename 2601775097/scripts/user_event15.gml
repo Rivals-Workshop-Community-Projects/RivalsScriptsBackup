@@ -88,7 +88,7 @@ phone.dont_fast = false;
 // If you're porting the phone to an existing char and don't need any of these
 // features, you might as well turn on lightweight to save a tiny bit of
 // performance. (see _docs.gml for a full list of what this disables)
-phone.lightweight = true;
+phone.lightweight = false;
 
 // If you've created custom AG_ or HG_ indexes for your character already,
 // use these to change where the phone starts assigning custom AG_s and HG_s.
@@ -172,18 +172,27 @@ initWords("Bar's N-air is a regular Sex-Kick type move at a glance, but whenever
 his N-air, he instantly goes to his endlag! Use this to your advantage doing crazy shorthop combos!")
 initImage_ext(sprite_get("_exp0"), -3, fa_center, 1, 1, false, c_white, 1, true, noone, noone, noone, noone);
 
-initTip("Burning Fury Buff");
+initTip("Burning Fury Buff - Damage Boost");
 initWords("When activating Burning Fury, Bar gains a buff that increases the damage of some of his
 moves. The moves will also gain a cyan hitbox to convey this (in Practice Mode)
 Normals: Jab 2, U-tilt, F-air, D-air.
 Strongs: All of them.
-Skills: Light Dagger, Force leap, Chasm Burster, Power Smash, Ember Fist and Light Hookshot.
+Skills: Light Dagger, Force leap, Chasm Burster, Ember Fist, Searing Descent and Flashbang.
 
 - On normals, every time Bar hits a foe with one of the affected normals, Bar's mana will burn.
 - On strongs, if Bar misses a hit the buff will stay, otherwise it will be lost.
-- On skills, Bar will lose the Burning Fury buff regardless if it was whiffed or not.
+- On skills, Bar will lose the Burning Fury buff regardless if it was whiffed or not.");
 
-Bar's U-strong, Light Dagger and Light Hookshot are converted to a special Burning version of themselves, inflicting Holy Burn on hit.");
+initTip("Burning Fury Buff - Extra Perks");
+initWords("When using Burning Fury's buff with certain skills, they will have effects that not only increase the damage, but also
+empower the skill's efficiency or alter it's purpose
+
+- Light Dagger: Deal more damage, knockback and has increased range, becoming a projectile that can kill more easily
+- Force Leap: Spikes harder
+- Chasm Burster: Adds 2 more fire bursts
+- Ember Fist: damage increase
+- Searing Descent: Makes Bar go higher, but at the cost of being able to jump/dodge cancel later
+- Flashbang: Spikes harder and sends enemies away from Bar");
 initImage_ext(sprite_get("_exp1"), -5, fa_center, 1, 1, false, c_white, 1, true, noone, noone, noone, noone);
 
 initTip("Extendable Attacks");
@@ -266,11 +275,98 @@ on whether it's a Tip or a Patch. initSection() is an indented block of text.
 
 These are handy for dividing a Tip/Patch into sections, such as different moves
 in a Patch.
-
 */
 
 #define CORE_patches
 
+initPatch("1.4", "25/10/2021");
+initHeader("Gameplay Balance Changes");
+initSection("= Skill select now works like the Mii Fighters - press a direction to select 1 of 3 skills per slot (thanks JPEG!)
+= Fastfall speed increased for real this time
+= Jab 1 hitstun multiplier removed
+= U-tilt hitstun multiplier removed
+= D-strong drag hitbox creation frame increased (0 -> 1)
+= Hitting with N-air will now put Bar in [window 4, window_timer 18] instead of [window 5, window_timer 0] and destroy the hitbox
+= N-air hitbox angle altered (50 -> 361)
+= U-air hitbox angle altered (96 -> 85)
+= D-air hitstun multiplier changed to hitpause scaling
+= Light Dagger is now B-reversable (good luck doing that though)
+= Burning Fury drag fixed (again)
+= Force Leap hitstun multiplier changed to hitpause scaling
+= Photon Blast hitstun multiplier removed
+= Chasm Burster punch attack hitstun multiplier removed
+= Power Smash will now only spawn the burning crater if Bar is not in hitpause
+= Power Smash sweetspot angle altered (270 -> 55)
+= Power Smash sourspot angle altered 90-> 80)
+= Power Smash sourspot angle flipper added (6)
+= Guard Aura is now unable to let Bar move, as he needs to hold down the button to continiously use it
+= Lord's Punishment hitstun multiplier removed
+= Theïkós F-strong hitstun multiplier removed
+= Added restrictions* to the Bar's special turbo mode (thanks Kayeetle!)
+= Added anti-cheapie mode**, to use, press attack + special like Lord's Punishment, and Bar will transform to a beefier Theïkós state (enables itself automatically with rune L)
+= Bar can also gain mp from stage objects (if they allow it)
+= Searing Descent added
+= Flashbang added
+");
+initHeader("Buffs");
+initSection("+ D-strong drag hitbox base hitpause decreased (10 -> 7)
++ D-strong drag hitbox hitpause scaling decreased (0.9 -> 0.7)
++ D-strong drag hitbox is now untechable and unbounceable (HG_TECHABLE 1 - > 3)
++ Burning Fury knockback scaling increased (ground: 0.6 -> 0.9 || air: 0.4 -> 0.7)
++ Photon Blast hitpause scaling added (0.2)
++ Power Smash sweetspot base knockback increased (8 -> 9)
++ Power Smash sweetspot knockback scaling increased (0.8 -> 1.2)
++ Power Smash sourspot base knockback increased (7 -> 8)
++ Power Smash sourspot knockback scaling increased (0.7 -> 0.8)
++ Theïkós F-strong hitpause scaling added (0.9)
++ Theïkós Bar now physically rejects pratlanding and pratfalling
+");
+initHeader("Nerfs");
+initSection("- D-strong drag hitbox lifetime decreased (4 -> 3)
+- Photon Blast soft armor and super armor removed on charging
+- Photon Blast base hitpause decreased (15 -> 8)
+- Guard Aura now wastes twice as much mp when held (5 mp per sec -> 10 mp per sec)
+");
+initHeader("Visual Changes");
+initSection("= Added back skill select prompt for training mode
+= D-strong drag hitbox sfx changed (sfx_blow_heavy1 -> sfx_blow_medium2)
+= D-strong fire spread effect now plays earlier
+= Force Leap whoosh sfx now plays earlier
+= Slightly altered offset of Power Smash's shockwave effect
+= Updated Burning Fury Buff tip on Munophone to include the 2 new skills and their interractions with Burning Fury
+= Theïkós alt now has it's own animation of Ember Fist (it's just Bar with a yellow eye)
+= Theïkós rune (Rune L) special intro now uses the new shockwave effect
+= CSS portrait altered to have the fabled cyan line
+= Default results portrait updated to match the rest of the portraits
+= Small preview fix
+= Super secret alt has it's own custom Theïkós state color pallete
+");
+initHeader("Workshop Compatibilities");
+initSection("+ RC car for the RC mode
+");
+initHeader("Extra Notes");
+initSection("* Special restrictions for Bar's built-in Turbo include:
+- Cannot cancel an attack into itself (unless it's N-air)
+- Normal U-strong can't be canceled untill window 8
+- Force Leap can't be canceled untill window 8
+- Searing Descent can't be canceled untill window 3
+- Flashbang can't be canceled untill window 7
+
+** Anti-Cheapie mode tweak list:
+- bar gets 999 stocks, and everyone else get 10 stocks
+- 999,999,999 mp (but has a passive mana gain rate of 1 per sec)
+- 999,999,999 constant soft armor
+- theikos (and all it brings to the table)
+- lord's blessing buff (longer light attack stunning, longer burning time)
+- rune A (airdashing)
+- rune D (earthquake landing with D-air)
+- rune G (warping to spear projectiles)
+- rune J (mana gain from burning/pre-lightstunning) (twice as effective)
+- rune N (adding the lightstunning mechanic)
+- gets everyone else to take double damage
+- doubles everyone else's knockback adjustment
+");
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 initPatch("1.3", "13/10/2021");
 initHeader("Gameplay Balance Changes");
 initSection("= Bar can now select skills when playtesting by inputting up + taunt as you would in training mode (he actually could earlier but only on training and you couldn't see it)
@@ -440,7 +536,7 @@ initSection("= Mana Debug Mode is now a munophone cheat, and has more options th
 = Fixed bug that turns Bar invisible after using Accel Blitz and dying from the pratfall
 = Fixed bug that makes Bar's Accel Blitz not reset it's relative position on death
 = Accel Blitz's behaviour when colliding with the stage is altered, it will now push Bar out of the ground for easier recoveries
-= Fixed some jank when using Accel Blitz with either theikos or turbo mode
+= Fixed some jank when using Accel Blitz with either Theïkós or turbo mode
 = Chasm Burster's mana cost is now split to two parts: when Bar activates the attack he loses only 5 MP, but when landing he loses 25 MP
 = Chasm Burster's variants are now a single move instead of 2 seperate ones
 = Chasm Burster now won't spawn the bursts in midair
@@ -474,7 +570,7 @@ initSection("+ Jab 1 range increased (width 60 -> 68 | height 28 -> 32 | X 24 ->
 + Photon Blast now won't send Bar into pratfall if he hits someone with it
 + Buffed up Chasm Burster will now shoot 6 fire bursts instead of 4
 + You can now jump out of Chasm Burster while falling
-+ Heavily buffed theikos wavedash (wave_land_adj: 1.35 -> 2.25 | wave_friction: 0.4 -> 0.2)
++ Heavily buffed Theïkós wavedash (wave_land_adj: 1.35 -> 2.25 | wave_friction: 0.4 -> 0.2)
 ");
 initHeader("Nerfs");
 initSection("- F-tilt hitboxes lifetime decreased (sweetspot: 6 -> 2 | sourspot: 8 -> 4)
@@ -840,6 +936,8 @@ phone.move_ordering = [
 	AT_SKILL7,
 	AT_SKILL8,
 	AT_SKILL9,
+	AT_SKILL10,
+	AT_SKILL11, //this appears as munophone for some reason
 	AT_FSTRONG_2,
 	AT_USTRONG_2,
 	AT_DSTRONG_2,
@@ -852,11 +950,9 @@ phone.move_ordering = [
 	AT_USPECIAL_GROUND,
 	AT_DSPECIAL,
 	AT_DSPECIAL_AIR,
-	AT_EXTRA_3,
 	AT_TAUNT_2,
 	2,
 	3,
-	39,
 	42,
 	43,
 	44,
@@ -991,7 +1087,7 @@ initCodecPagePit(SPK_PIT,	3,	0,	"Another angel? I didn't think I'd see another a
 initCodecPagePit(SPK_VIR,	1,	1,	"But unlike you HE can fly on his own.");
 initCodecPagePit(SPK_PIT,	4,	1,	"What?!");
 initCodecPagePit(SPK_PALU,	0,	3,	"That's correct, Pit. Bar has the ability to jump 3 times in the air and glide");
-initCodecPagePit(SPK_PALU,	0,	1,	"Allow him to have pretty good air mobility.");
+initCodecPagePit(SPK_PALU,	0,	1,	"Allows him to have pretty good air mobility.");
 initCodecPagePit(SPK_VIR,	5,	6,	"Not to mention he could probably send you flying in 3 hits!");
 initCodecPagePit(SPK_PIT,	9,	1,	"Is there anything else I need to worry about?");
 initCodecPagePit(SPK_PALU,	1,	0,	"Don't be so easily startled Pit, while Bar sure packs a mean punch, his special moves are limited by mana.");

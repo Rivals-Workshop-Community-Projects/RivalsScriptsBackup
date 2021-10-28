@@ -87,8 +87,8 @@ set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 2);
 hitboxNum ++; //punch it down to the ground
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 3); //at which window from the above the attack is created
-set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 4); //hitbox duration in frames
-set_hitbox_value(atk, hitboxNum, HG_WINDOW_CREATION_FRAME, 0); //3
+set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 3); //hitbox duration in frames
+set_hitbox_value(atk, hitboxNum, HG_WINDOW_CREATION_FRAME, 1); //3
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 0);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, -34);
 set_hitbox_value(atk, hitboxNum, HG_WIDTH, 30);
@@ -98,15 +98,15 @@ set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 4); //1 = low priority over other 
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 2);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 270);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 10); //hitstun
-set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.9); 
+set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 7); //hitstun //10
+set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.7); //0.9
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
-set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_medium2")); //heavy1
 set_hitbox_value(atk, hitboxNum, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 2); //it needs to be a different value for every different move in the file
-set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 1);
+set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 3); //1
 
 hitboxNum ++; //fire blast
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
@@ -149,9 +149,9 @@ set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 2);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 90);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.05);
-set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 15); //hitstun
-set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 1.5); 
-set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 301);
+set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 8); //hitstun //15
+set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.1); //1.5
+set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 193);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));

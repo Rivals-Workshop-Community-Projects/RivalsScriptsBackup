@@ -66,7 +66,8 @@ set_num_hitboxes(atk, 1)
 
 hitboxNum = 1; //light blast counter
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
-set_hitbox_value(atk, hitboxNum, HG_WINDOW, 99); //window doesn't actually exist
+set_hitbox_value(atk, hitboxNum, HG_WINDOW, 6);
+set_hitbox_value(atk, hitboxNum, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 6); //hitbox duration in frames
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 0);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, -32);
@@ -76,10 +77,10 @@ set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 2); //1 = low priority over other 
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 5);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 50); //361
 set_hitbox_value(atk, hitboxNum, HG_ANGLE_FLIPPER, 3); //0
-set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 12); //5
+set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 12); //12
 //set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.1);
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 4); //hitstun
-set_hitbox_value(atk, hitboxNum, HG_HITSTUN_MULTIPLIER, 0.4); //2
+set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.4); //2
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_lightblow1);
 set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 3);

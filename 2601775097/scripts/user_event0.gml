@@ -114,6 +114,10 @@ if (theikos_active)
 
     turbo_time = true; //theikos bar has turbo mode
 
+    dont_tumble = true; //no tripping
+    if (state == PS_PRATLAND) state = PS_IDLE; //who tf needs a pratland
+    if (state == PS_PRATFALL) state = PS_IDLE_AIR;
+
     holyburn_maxcount = god_burn_time;
 
     //this will make the normal strongs' vspeed stop in midair
@@ -139,31 +143,27 @@ else
     }
 
     //INIT CHANGES
-    if (!guardaura_active)
-    {
-        walk_speed = normal_walk_speed;
-        walk_turn_time = normal_walk_turn_time;
-        initial_dash_speed = normal_initial_dash_speed;
-        dash_speed = normal_dash_speed;
-        dash_turn_time = normal_dash_turn_time;
-        moonwalk_accel = normal_moonwalk_accel;
-        wave_land_adj = normal_wave_land_adj;
-
-        air_accel = normal_air_accel;
-        prat_fall_accel = normal_prat_fall_accel;
-        air_friction = normal_air_friction;
-    }
-    dash_anim_speed = .3;
-    walk_accel = 0.2;
-    initial_dash_time = 10;
-    leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-    max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
-    air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state
-    max_djumps = 3;
-    fast_fall = 12; //fast fall speed
-    knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
-    wave_land_time = 8;
-    wave_friction = .4; //grounded deceleration when wavelanding
+    walk_speed = normal_walk_speed;
+    walk_turn_time = normal_walk_turn_time;
+    initial_dash_speed = normal_initial_dash_speed;
+    dash_speed = normal_dash_speed;
+    dash_turn_time = normal_dash_turn_time;
+    moonwalk_accel = normal_moonwalk_accel;
+    wave_land_adj = normal_wave_land_adj;
+    air_accel = normal_air_accel;
+    prat_fall_accel = normal_prat_fall_accel;
+    air_friction = normal_air_friction;
+    dash_anim_speed = normal_dash_anim_speed;
+    walk_accel = normal_walk_accel;
+    initial_dash_time = normal_initial_dash_time;
+    leave_ground_max = normal_leave_ground_max; //the maximum hsp you can have when you go from grounded to aerial without jumping
+    max_jump_hsp = normal_max_jump_hsp; //the maximum hsp you can have when jumping from the ground
+    air_max_speed = normal_air_max_speed; //the maximum hsp you can accelerate to when in a normal aerial state
+    max_djumps = normal_max_djumps;
+    fast_fall = normal_fast_fall; //fast fall speed
+    knockback_adj = normal_knockback_adj; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+    wave_land_time = normal_wave_land_time;
+    wave_friction = normal_wave_friction; //grounded deceleration when wavelanding
 
     //EXTRA FEATURES
     reset_hitbox_value(AT_TAUNT, 1, HG_BASE_KNOCKBACK); //taunt knockback basically insta-kills

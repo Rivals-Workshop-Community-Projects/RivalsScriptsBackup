@@ -83,6 +83,12 @@ if !hitpause {
          if invisound == 0 {
          	sound_play(asset_get("sfx_bird_nspecial"),false,noone,0.4)
     	     sound_play(sound_get("steath"),false,noone,1)
+    	     
+    	     if get_player_color(player) == 18 {
+		    	     	    sound_stop(sound_get("JCsteath"))
+		    	     	    sound_play(sound_get("JCsteath"),false,noone,1.88)
+		     }
+		     
     	     invisound = -1
          }
          invitimer += 1
@@ -236,12 +242,19 @@ if !hitpause {
                 lockx = x
                 locky = y
                  fancyfx();
+                 
+                  if get_player_color(player) == 18 && !hitpause && window_timer == 1 {
+		    	     	    sound_stop(sound_get("JCsteath"))
+		    	     	    sound_play(sound_get("JCsteath"),false,noone,1.88)
+		            }
+		            
                 if window_timer == 17 {
                 	 move_cooldown[AT_FSPECIAL_2] = 0	
                     set_attack (AT_EXTRA_1)
                     invitimer = 0
                     djumped = 1
                     invisound = -1
+                    
                 }
             }
             
@@ -486,6 +499,12 @@ if !hitpause {
      }
      
      if has_hit_player && window < 4 {
+     	
+     	if get_player_color(player) == 18 && !hitpause {
+		    	     	    sound_stop(sound_get("JCsteath"))
+		    	     	    sound_play(sound_get("JCsteath"),false,noone,1.88)
+		}
+		            
      	djumps = 0
      	move_cooldown [AT_FSPECIAL] = 999
      	          set_attack (AT_JAB)
@@ -593,6 +612,12 @@ if !hitpause {
                 	attack_end();
              sound_play(asset_get("sfx_bird_nspecial"),false,noone,0.4)
     	     sound_play(sound_get("steath"),false,noone,1)
+    	     
+    	     if get_player_color(player) == 18 {
+		    	     	    sound_stop(sound_get("JCsteath"))
+		    	     	    sound_play(sound_get("JCsteath"),false,noone,1.88)
+		     }
+		    	          
                 	 move_cooldown[AT_FSPECIAL_2] = 0	
                     set_attack (AT_EXTRA_1)
                     invitimer = 0

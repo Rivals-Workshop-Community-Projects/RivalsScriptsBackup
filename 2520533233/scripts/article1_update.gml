@@ -10,8 +10,8 @@ enum FX{
     bad_load
 }
 //hold position with tenko
-x = tenshi.x;
-y = tenshi.y;
+x = tenshi.x+tenshi.hsp-4*tenshi.spr_dir;
+y = tenshi.y+tenshi.vsp+4;
 image_xscale = tenshi.spr_dir;
 
 //visible = tenshi.tenshi_graze;

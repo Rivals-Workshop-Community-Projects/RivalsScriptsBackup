@@ -45,8 +45,8 @@ switch (state)
         break;
 
     case 2: //theikos ancient text
-        sprite_index = sprite_get("theikos_ancienttext");
-        if (player_id.is_8bit) sprite_index = sprite_get("theikos_8bit_ancienttext");
+        if (player_id.is_8bit || get_player_color(player) == 11 && player_id.birthboy) sprite_index = sprite_get("theikos_8bit_ancienttext");
+        else sprite_index = sprite_get("theikos_ancienttext");
 
         image_index = text_letter;
         particletime ++;
@@ -54,7 +54,7 @@ switch (state)
         break;
     case 3: //intro light particles
         sprite_index = sprite_get("fx_introlight");
-        if (golden) sprite_index = sprite_get("theikos_fx_introlight");
+        if (golden || player_id.attack == player_id.AT_THEIKOS && player_id.fuck_you_cheapies) sprite_index = sprite_get("theikos_fx_introlight");
 
         image_index += 0.4;
 
@@ -88,5 +88,15 @@ switch (state)
         
         //destruction
         if (image_index > 5) instance_destroy();
+        break;
+    case 6: //theia evlogia bursts
+        sprite_index = sprite_get("theikos_fx_shockwave");
+
+        image_xscale = 1 + particletime * 0.8;
+        image_yscale = 1 + particletime * 0.8;
+        image_alpha = 1 - particletime / 10;
+
+        particletime ++;
+        if (particletime > 40) instance_destroy();
         break;
 }

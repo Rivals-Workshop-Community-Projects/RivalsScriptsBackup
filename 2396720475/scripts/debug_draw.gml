@@ -5,17 +5,17 @@ if (attack == AT_TAUNT && state == PS_ATTACK_GROUND){
 	if (get_player_color(player) == 14){
 		if (death_chime_sound){
 			
-			draw_sprite_ext(sprite_get("final_crimes"), -1, view_get_xview() + 70, view_get_yview() + 56, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(sprite_get("final_crimes"), -1, view_get_xview() + 55, view_get_yview() + 66, 1, 1, 0, c_white, 1);
 			
 			draw_set_font(asset_get("fName"));
 			
-			draw_text_color(view_get_xview() + 874, view_get_yview() + 68, string(fps) + "FPS", c_white, c_white, c_white, c_white, 1);
+			draw_text_color(view_get_xview() + 859, view_get_yview() + 78, string(fps) + "FPS", c_white, c_white, c_white, c_white, 1);
 
 			draw_set_font(asset_get("medFont"));
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
 			
-			draw_text_color(view_get_xview() + 500, view_get_yview() + 200, string(FF14_meme_text), c_white, c_white, c_white, c_white, 1);
+			draw_text_color(view_get_xview() + 485, view_get_yview() + 210, string(FF14_meme_text), c_white, c_white, c_white, c_white, 1);
 			depth = 10;
 		}
 	}

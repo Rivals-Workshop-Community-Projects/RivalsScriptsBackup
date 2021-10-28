@@ -78,11 +78,13 @@ switch (get_player_color(player)) {
 		break;
 }
 
-if (state == PS_SPAWN) {
-	if (state_timer == 1) {
-		spawn_hit_fx(x + 30*spr_dir, y - 76, introbar);
-	} else if (state_timer == 71) {
+if (state == PS_SPAWN && should_do_intro == true) {
+	if (state_timer == 2) {
+		fx = spawn_hit_fx(x + 30 * spr_dir, y - 76, introbar);
+		fx.depth = depth + 1;
+	} else if (state_timer == 72) {
 		spawn_hit_fx(x + 30*spr_dir, y - 76, introbardecay);
+		fx.depth = depth + 1;
 	}
 }
 
@@ -126,7 +128,8 @@ if (!free && (place_meeting(x, y + 12, asset_get("par_block")) || place_meeting(
 	canMakePlat++;
 }
 
-if (state == PS_SPAWN) {
+if (state == PS_SPAWN && should_do_intro == true) {
+	if ("room_manager" in self) {in_adventure = true;}
 	if (state_timer == 1) {
 		set_color_profile_slot( 9, 3, 120, 21, 114 ); //Shorts
 		set_color_profile_slot( 9, 4, 255, 130, 213 ); //N+M Light
@@ -156,6 +159,8 @@ if (state == PS_SPAWN) {
 		}
 	}
 	//this increments introTimer every few frames, depending on the number entered
+} else if (state != 1) {
+	should_do_intro = false;
 }
 
 if (instance_exists(buffFX) && buffFXTimer > 0) {
@@ -163,9 +168,11 @@ if (instance_exists(buffFX) && buffFXTimer > 0) {
 	buffFX.y -= buffFXTimer / 8;
 	if (buffFXTimer == 1) {
 		if (activeBuff == 1) {
-			spawn_hit_fx(buffFXPosX, buffFXPosY, buffChargeSparkle1);
+			fx = spawn_hit_fx(buffFXPosX, buffFXPosY, buffChargeSparkle1);
+			fx.depth = depth;
 		} else {
 			spawn_hit_fx(buffFXPosX, buffFXPosY, buffChargeSparkle2);
+			fx.depth = depth;
 		}
 	}
 }

@@ -21,6 +21,8 @@ hisou_small = hit_fx_create(sprite_get("fire_norm"), 27);
 hisou_large = hit_fx_create(sprite_get("fire_big"), 24);
 hisou_dir = hit_fx_create(sprite_get("fire_dir"), 27);
 
+skin_alt = 0;
+
 install_trail_size = 8;
 for(var i = 0; i < install_trail_size; i++){
     install_trail[i] = 
@@ -127,7 +129,7 @@ max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed
 gravity_speed = .55;
 hitstun_grav = .5;
-knockback_adj = .95; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = .99; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 20;
@@ -235,6 +237,16 @@ ncode3 = "Watch out for falling rocks.";
 // Steve Support
 steve_death_message = "Steve didn't dodge."
 
+if(get_player_color(player) == 29){
+		set_color_profile_slot( 29, 0, 173, 255, 242 ); //Hat
+		set_color_profile_slot( 29, 1, 161, 98, 64 ); //Clothes
+		set_color_profile_slot( 29, 2, 214, 255, 237 ); //Skirt
+		set_color_profile_slot( 29, 3, 212, 228, 255 ); //Bow Front
+		set_color_profile_slot( 29, 4, 46, 128, 153 ); //Hair
+		set_color_profile_slot( 29, 5, 161, 215, 255 ); //Eyes
+		set_color_profile_slot( 29, 6, 157, 250, 242 ); //Detailing
+		set_color_profile_slot( 29, 7, 0, 255, 0 ); //Rainbow
+}
 
 
 //Muno Phone -------------------------------------------------------------------

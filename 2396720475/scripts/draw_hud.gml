@@ -2,6 +2,8 @@
 // Draws images on top of the Player's HUD
 // use temp_x and temp_y to refer to the player's specific HUD position
 
+//draw_set_alpha(.5);
+
 if (move_cooldown[AT_DSPECIAL] == 0){
 	draw_sprite_ext(sprite_get("box_hud"), 0, temp_x + 180, temp_y - 12, 1, 1, 0, c_white, 1);
 }

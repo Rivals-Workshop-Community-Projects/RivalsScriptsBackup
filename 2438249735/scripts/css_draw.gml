@@ -25,7 +25,9 @@ if drawing > 3 {
     drawing = 0
 }
 
-
+if alt == 18 && drawtime == 1 {
+    sound_play(sound_get("JCsteath"))
+}
 
 
 
@@ -49,6 +51,7 @@ var palette_names = [
   "Filia",
   "Hibiki",
   "Pyra",
+  "Joo Ceana",
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

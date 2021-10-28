@@ -112,7 +112,6 @@ set_hitbox_value(atk, hitboxNum, HG_ANGLE, 30);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.05);
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 6); //hitstun
-set_hitbox_value(atk, hitboxNum, HG_HITSTUN_MULTIPLIER, 0.9);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);

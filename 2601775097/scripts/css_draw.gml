@@ -22,23 +22,6 @@ switch (get_player_color(player))
 var num_alts = 32;
 var alt_cur = get_player_color(player);
 
-//birthday alt stuff
-//updates the CSS instantly and adds the alt's name
-var myday = 25;
-var mymonth = 10;
-if (current_day = myday && current_month == mymonth)
-{
-    alt_name[11] = "Reminiscence";
-    set_color_profile_slot(11, 0, 206, 216, 227); //CLOTHWHITE
-    set_color_profile_slot(11, 1, 182, 88, 61); //HAIR
-    set_color_profile_slot(11, 2, 245, 181, 150); //SKIN
-    set_color_profile_slot(11, 3, 43, 60, 140); //CLOTHLIGHTBLUE
-    set_color_profile_slot(11, 4, 43, 60, 140); //CLOTHDARKBLUE
-    set_color_profile_slot(11, 5, 43, 60, 140); //CLOTHBLACK
-	set_color_profile_slot(11, 6, 159, 241, 255); //LIGHT
-	set_color_profile_slot(11, 7, 76, 133, 233); //FIRE
-}
-
 //seasonal alt names
 season_name[1] = "I Like Chocolate";
 season_name[2] = "Beach Episode";
@@ -78,6 +61,23 @@ alt_name[28] = "Thunderous Howl";
 alt_name[29] = "Amethyst Fist";
 alt_name[30] = "Broken Prism";
 alt_name[31] = "Theía Evlogía";
+
+//birthday alt stuff
+//updates the CSS instantly and adds the alt's name
+var myday = 25;
+var mymonth = 10;
+if (current_day = myday && current_month == mymonth)
+{
+    alt_name[11] = "Reminiscence";
+    set_color_profile_slot(11, 0, 206, 216, 227); //CLOTHWHITE
+    set_color_profile_slot(11, 1, 182, 88, 61); //HAIR
+    set_color_profile_slot(11, 2, 245, 181, 150); //SKIN
+    set_color_profile_slot(11, 3, 43, 60, 140); //CLOTHLIGHTBLUE
+    set_color_profile_slot(11, 4, 43, 60, 140); //CLOTHDARKBLUE
+    set_color_profile_slot(11, 5, 43, 60, 140); //CLOTHBLACK
+	set_color_profile_slot(11, 6, 159, 241, 255); //LIGHT
+	set_color_profile_slot(11, 7, 76, 133, 233); //FIRE
+}
 
 //ICONS
 var icon_x_pos = x + 174;
@@ -165,7 +165,7 @@ switch (get_player_color(player))
         line_color = $b20020; //this color doesn't show for some reason
         break;
     case 11: //seasonal -> hallowen
-        if (get_match_setting(SET_SEASON) == 3) line_color = $2b2b4b;
+        if (get_match_setting(SET_SEASON) == 3 && current_day != myday && current_month != mymonth) line_color = $2b2b4b;
         break;
     case 30: //helel
         line_color = $343434;

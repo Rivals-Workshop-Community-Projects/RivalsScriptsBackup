@@ -34,7 +34,7 @@ alt_name[18]  = "Gold";
 alt_name[19]  = "Dark";
 alt_name[20]  = "Darker";
 alt_name[21]  = "Light";
-alt_name[21]  = "Coal";
+alt_name[22]  = "Coal";
 
 
 

@@ -24,6 +24,14 @@ my_hitboxID.attack != AT_JAB && my_hitboxID.attack != AT_FSPECIAL
     spawn_hit_fx(hit_player_obj.x + 10 * spr_dir, hit_player_obj.y - 40, shit5)
     
     target = hit_player_obj
+    
+    if get_player_color(player) == 18 {
+    	 sound_stop(sound_get("JCsteath"))
+		    	  sound_play(sound_get("JCsteathend"),false,noone,1.99)
+	}
+		     
+   
+    
 } 
     
 

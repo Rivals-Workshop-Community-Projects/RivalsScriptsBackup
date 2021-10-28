@@ -109,6 +109,17 @@ if (phone_cheats[CHEAT_STATS] == 1)
 
 //draw_debug_text(x, y, "text = " + string(variable));
 
+//draw_debug_text(x, y-128, "menu_open = " + string(menu_open));
+//draw_debug_text(x, y-128+16, "menu_confirm = " + string(menu_confirm));
+//draw_debug_text(x, y-128+32, "menu_close = " + string(menu_close));
+
+//draw_debug_text(x, y, "burningfury_target = " + string(burningfury_target));
+
+//if (burningfury_target != noone) draw_debug_text(x, y, string(burningfury_target.hsp) + "," + string(burningfury_target.vsp));
+
+//draw_debug_text(x, y, "descent_timer = " + string(descent_timer));
+
+
 //actuall variable checking stuff i did over time
 {
     // this was used to test the natural mana gaining mechanic

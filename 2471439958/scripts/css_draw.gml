@@ -10,8 +10,8 @@ var blue1 = get_color_profile_slot_b(get_player_color( player ), 0);
 var colourrrrr = merge_colour(make_colour_rgb(red1, green1, blue1), c_white, 0.5);
 
 patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR));
-//patch_day = "30";
-//patch_month = "APRIL";
+//patch_day = "27";
+	//patch_month = "OCTOBER";
 image_alpha = max(image_alpha-0.02, 0);
 
 var num_alts = 31;
@@ -28,7 +28,7 @@ alt_name[2]  = "Caleb from Blood";
 alt_name[3]  = "The Intruder (DUSK)";
 alt_name[4]  = "Katie";
 alt_name[5]  = "Acid Rainbows";
-alt_name[6]  = "Liz";
+alt_name[6]  = "Kromer";
 alt_name[7]  = "Hikaru";
 alt_name[8]  = "Yuuto Ichika";
 alt_name[9]  = "Cupcake";

@@ -400,7 +400,7 @@ switch (attack)
                 {
                     reset_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE);
                     reset_window_value(AT_FSPECIAL, 6, AG_WINDOW_TYPE);
-                    var groundPos = range_finder(x+fspecPos.x*spr_dir,y-fspecPos.y,spr_dir==1?0:180,room_width,asset_get("solid_32_obj"),true,true);
+                    var groundPos = range_finder(x+fspecPos.x*spr_dir,y-fspecPos.y,spr_dir==1?0:180,room_width,asset_get(("in_adventure" in self && in_adventure)?"par_block":"solid_32_obj"),true,true);
                     var playerPos = room_width;
                     with (pHurtBox) if ((get_player_team(player) != get_player_team(other.player) || get_match_setting(3))&&!(playerID.state==PS_AIR_DODGE&&playerID.state_timer==1)&&!((playerID.state==PS_ROLL_BACKWARD||playerID.state==PS_ROLL_FORWARD)&&playerID.state_timer==2)) with (other)
                         playerPos = min(range_finder(x+fspecPos.x*spr_dir,y-fspecPos.y,spr_dir==1?0:180,room_width,other,true,true), playerPos);
@@ -423,7 +423,7 @@ switch (attack)
 
                     if (fspecPortalHooked)
                     {
-                        var groundPos2 = range_finder(portalRef.otherPortal.x,y-fspecPos.y-portalRef.y+portalRef.otherPortal.y,spr_dir==1?0:180,room_width,asset_get("solid_32_obj"),true,true);
+                        var groundPos2 = range_finder(portalRef.otherPortal.x,y-fspecPos.y-portalRef.y+portalRef.otherPortal.y,spr_dir==1?0:180,room_width,asset_get(("in_adventure" in self && in_adventure)?"par_block":"solid_32_obj"),true,true);
                         var playerPos2 = room_width;
                         with (pHurtBox) if ((get_player_team(player) != get_player_team(other.player) || get_match_setting(3)&&!(playerID.state==PS_AIR_DODGE&&playerID.state_timer==1))&&!((playerID.state==PS_ROLL_BACKWARD||playerID.state==PS_ROLL_FORWARD)&&playerID.state_timer==2)) with (other)
                             playerPos2 = min(range_finder(portalRef.otherPortal.x,y-fspecPos.y-portalRef.y+portalRef.otherPortal.y,spr_dir==1?0:180,room_width,other,true,true), playerPos2);
@@ -473,6 +473,7 @@ switch (attack)
                     spawn_hit_fx(x-30*spr_dir,y-30,fspec_effect);
                 }
                 can_wall_jump = true;
+                if ("in_adventure" in self && in_adventure) set_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH, ceil(abs(fspecPosX.a-fspecPosX.b)/64));
                 x = lerp(fspecPosX.a, fspecPosX.b, window_timer/get_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH));
                 hsp = 5*spr_dir-left_down+right_down;
                 if (get_window_value(AT_FSPECIAL, 6, AG_WINDOW_TYPE)==1) soft_armor = 621;

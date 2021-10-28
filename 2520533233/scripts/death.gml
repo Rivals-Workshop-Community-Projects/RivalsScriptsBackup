@@ -88,7 +88,7 @@ if(dragon_install){
 
 #define deactivate_install()
 //fair
-set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 7);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 3, HG_WINDOW, 99);
@@ -108,7 +108,7 @@ set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 99);
 set_hitbox_value(AT_BAIR, 3, HG_WINDOW, 99);
 //nair
-set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 4);
 set_hitbox_value(AT_NAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_NAIR, 2, HG_WINDOW, 2);
@@ -117,7 +117,7 @@ set_hitbox_value(AT_NAIR, 4, HG_WINDOW, 99);
 set_hitbox_value(AT_NAIR, 5, HG_WINDOW, 99);
 set_hitbox_value(AT_NAIR, 6, HG_WINDOW, 99);
 //utilt
-set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 5);
 set_hitbox_value(AT_UTILT, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 2);

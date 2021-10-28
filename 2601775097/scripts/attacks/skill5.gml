@@ -79,7 +79,6 @@ set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 5);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 361);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 7); //hitstun
-set_hitbox_value(atk, hitboxNum, HG_HITSTUN_MULTIPLIER, 1.4);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 3);
@@ -129,7 +128,6 @@ set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 7);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 361);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 7); //hitstun
-set_hitbox_value(atk, hitboxNum, HG_HITSTUN_MULTIPLIER, 1.4);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_fireblow1);
 set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_burnapplied"));

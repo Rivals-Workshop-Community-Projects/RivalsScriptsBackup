@@ -21,7 +21,6 @@ if (attack == AT_TAUNT){
 	if (get_player_color(player) == 14){
 		
 		if (state_timer == 1){
-	
 			if (death_chime){
 				death_chime_sound =	sound_play(sound_get("Slime Taunt Theme"));		
 			}

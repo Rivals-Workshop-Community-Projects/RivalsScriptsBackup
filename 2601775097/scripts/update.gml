@@ -1,15 +1,10 @@
 //update.gml
 
-if (training_mode)
-{
-    //munophone
-    muno_event_type = 1;
-    user_event(14);
+//munophone
+muno_event_type = 1;
+user_event(14);
 
-    //training mode prompts
-    if (menu_up && is_training_menu) msg_menu = false;
-    //if (down_down && taunt_down) msg_phone = false;
-}
+if (get_match_setting(SET_PRACTICE)) if (up_down && taunt_down) msg_menu = false;
 
 //AI stuff
 if (is_AI) show_player_info = false;
@@ -25,7 +20,7 @@ else intro_timer += 1/5;
 
 //intro effectwork
 //theikos activation is also depending on the animation
-if (!testing)
+if (!testing && "kart_inside" not in self)
 {
     if (sprite_index == sprite_get("intro") && !allow_bibical)
     {
@@ -80,12 +75,35 @@ if (!testing)
             {
                 theikos_active = true;
             }
-            //activation effects
+            //activation effects part 1 (ft. the anti-cheapie code from the theia evlogia transformation in attack_update)
             if (intro_timer == 13)
             {
-                spawn_hit_fx(x+4*spr_dir, y-32, fx_lightblow3);
                 sound_play(sound_get("sfx_lordpunishment"));
                 shake_camera(10, 15); //power, time
+
+                if (fuck_you_cheapies)
+                {
+                    mp_max = 999999999;
+                    mp_current = mp_max;
+
+                    set_player_stocks(player, 9999);
+
+                    with (oPlayer)
+                    {
+                        if (player != other.player)
+                        {
+                            set_player_stocks(player, 10); //they get 10 stocks
+                            damage_scaling = 2; //... but they gain double damage
+                            knockback_adj = 3; //... and are a lot lighter
+                        }
+                    }
+                }
+            }
+            //activation effects part 2
+            if (intro_timer >= 13 && intro_timer <= 15 && get_gameplay_time() % 5 == 0)
+            {
+                var shockwave = instance_create(x, y-32, "obj_article1");
+                shockwave.state = 6;
             }
         }
     }
@@ -351,12 +369,12 @@ if (show_miniMP)
 
 //MP burn logic for burning fury and guard aura
 //if the skill select menu is up, MP gain/burn will pause
-if (!menu_up && (burningfury_active || guardaura_active))
+if (!menu_open && (burningfury_active || guardaura_active))
 {
     //activating buffs will burn mana over time and disable mp gaining
     mpGainable = false;
-    if ((burningfury_active || guardaura_active) && phone_cheats[CHEAT_MPDRAIN] == 0) mp_fc_rate = buff_overtime_cost;
-    if ((burningfury_active && guardaura_active) && phone_cheats[CHEAT_MPDRAIN] == 0) mp_fc_rate = buff_overtime_cost*2;
+    if (burningfury_active && phone_cheats[CHEAT_MPDRAIN] == 0) mp_fc_rate = buff_overtime_cost;
+    if (guardaura_active && phone_cheats[CHEAT_MPDRAIN] == 0) mp_fc_rate = buff_overtime_cost*2;
     if (phone_cheats[CHEAT_MPDRAIN] == 1) mp_fc_rate = 0;
 
     mp_fc_num += mp_fc_rate;
@@ -378,7 +396,7 @@ else mpGainable = true;
 
 //natural mana regen speeds
 if (theikos_active && !burningfury_active) mp_fc_rate = 100;
-else if (menu_up) mp_fc_rate = 0; //skill select menu
+else if (menu_open) mp_fc_rate = 0; //skill select menu
 else if (!burningfury_active) mp_fc_rate = mp_rate_default;
 
 //////////////////////////////////////////////////SKILLS AND STRONGS SECTION//////////////////////////////////////////////////
@@ -399,6 +417,9 @@ if (burningfury_active)
 			break;
     }
 }
+
+//reset burning fury's target so there won't be any jank
+if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND || attack != AT_SKILL1 && attack != AT_SKILL1_AIR) burningfury_target = noone;
 
 //photon blast stored charge prevention
 //also make it so if bar is hitting someone with photonblast he won't go into pratfall
@@ -479,7 +500,7 @@ if (state == PS_LAND || state == PS_LANDING_LAG || state == PS_WAVELAND || state
     accelblitz_post_timer = 0;
 }
 //prevent bar from using it again
-if (accelblitz_done_once && free && inp_skill4) state = PS_PRATFALL;
+if (accelblitz_done_once && free && up_down && special_down) state = PS_PRATFALL;
 //prevernts superposition of an invincible pratfall
 if (accelblitz_done_once && !accelblitz_active_timer && !pHurtBox.dodging) state = PS_PRATFALL;
 
@@ -538,49 +559,17 @@ if (spawn_earth_shatter)
 if (guardaura_active)
 {
     guard_time --;
-
-    if (guard_time <= 0)
-    {
-        guardaura_active = false;
-        sound_play(asset_get("sfx_abyss_despawn"), 0, 0, 2);
-    }
-
     super_armor = true;
-    walk_speed = 2.75*guard_slow;
-    walk_turn_time = 8*guard_slow;
-    initial_dash_speed = normal_initial_dash_speed*guard_slow;
-    dash_speed = normal_dash_speed*guard_slow;
-    dash_turn_time = 14*guard_slow;
-    moonwalk_accel = 1.2*guard_slow;
-    wave_land_adj = normal_wave_land_adj*guard_slow;
-
-    //jump_change = 3*guard_slow;
-    air_accel = .3*guard_slow;
-    prat_fall_accel = .85*guard_slow;
-    air_friction = .05*guard_slow;
+    if (guard_time <= 0) guardaura_active = false;
 }
-else if (!guardaura_active)
-{
-    if (attack != AT_SKILL3 && attack != AT_OVERDRIVE) super_armor = false;
-    walk_speed = normal_walk_speed;
-    walk_turn_time = normal_walk_turn_time;
-    initial_dash_speed = normal_initial_dash_speed;
-    dash_speed = normal_dash_speed;
-    dash_turn_time = normal_dash_turn_time;
-    moonwalk_accel = normal_moonwalk_accel;
-    wave_land_adj = normal_wave_land_adj;
+else if (!guardaura_active) if (attack != AT_OVERDRIVE && attack != AT_THEIKOS) super_armor = false;
 
-    air_accel = normal_air_accel;
-    prat_fall_accel = normal_prat_fall_accel;
-    air_friction = normal_air_friction;
-}
 if (guard_explosion)
 {
     set_attack(AT_SKILL7);
     window = 6;
     window_timer = 0;
     can_move = false;
-    if (!theikos_active) cool_start = true;
 }
 
 //light hookshot
@@ -616,6 +605,19 @@ if (hookshot_speedboost)
     vsp -= hookshot_chargetime/5+4; //min: 4 || max: 6
     hookshot_speedboost = false;
 }
+
+//searing descent cancel
+if (descent_timer <= 0 && state != PS_ATTACK_AIR || !free)
+{
+    descent_timer = descent_timer_reset;
+    if (attack == AT_SKILL10 && free) burningfury_active = false;
+}
+
+
+
+//reset flashbangs's target too so there won't be any jank
+if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND || attack != AT_SKILL11) flashbanged_id = noone;
+
 
 //prat_land_time changing
 if (ustrong2_cast) prat_land_time = 24; //theikos U-strong
@@ -666,8 +668,6 @@ move_cooldown[AT_SKILL6] = 1 + ceil(powersmash_total_cost - mp_current);
 
 // [7] guard aura
 move_cooldown[AT_SKILL7] = 1 + ceil(buff_total_cost - mp_current);
-if (guardaura_active) move_cooldown[AT_SKILL7] = 1 + ceil(guardaura_counter_cost - mp_current);
-else if (cool_start) move_cooldown[AT_SKILL7] = cooldown;
 
 // [8] ember fist
 move_cooldown[AT_SKILL8] = 1 + ceil(emberfist_cost - mp_current);
@@ -676,6 +676,12 @@ move_cooldown[AT_SKILL8] = 1 + ceil(emberfist_cost - mp_current);
 // [9] light hookshot
 move_cooldown[AT_SKILL9] = 1 + ceil(lighthookshot_total_cost - mp_current);
 
+// [10] searing descent
+move_cooldown[AT_SKILL10] = 1 + ceil(searingdescent_cost - mp_current);
+
+// [11] flashbag
+move_cooldown[AT_SKILL11] = 1 + ceil(flashbang_total_cost - mp_current);
+
 // theikos u-strong
 move_cooldown[AT_USTRONG_2] = 1 + ceil(strong_cost*2 - mp_current);
 
@@ -683,311 +689,158 @@ move_cooldown[AT_USTRONG_2] = 1 + ceil(strong_cost*2 - mp_current);
 move_cooldown[AT_DSTRONG_2] = 1 + ceil(strong_cost*2 - mp_current);
 
 
-//SKILL SELCTION MENU - thank you Splatracer!
-if (state == PS_SPAWN && !menu_up && cur_select != 4) //fresh state
+//////////////////////////////////////////////////SKILL SELECT SECTION//////////////////////////////////////////////////
+
+//untill there's a skill select, these are bar's skills
+//selected_nspec: 0,5,8
+//selected_fspec: 1,6,9
+//selected_uspec: 2,4,10
+//selected_uspec: 3,7,11
+
+//if (jump_pressed && jump_counter == 1) sound_play(asset_get("mfx_back")); //cancel sfx
+//sound_play(asset_get("mfx_confirm")); // confirm sfx
+
+//how it works:
+// - pressing a direction (up, left/right, down) will select the skill in that row
+// - pressing jump will go back one skill to re-select another
+// - pressing jump on the neutral special selection will give bar the default skillset
+
+if (get_match_setting(SET_PRACTICE) || testing)
 {
-    cur_select = 0;
-    selected_nspec = -1;
-    selected_fspec = -1;
-    selected_uspec = -1;
-    selected_dspec = -1;
-    menu_up = true;
-    if (menu_up) barPause();
-}
-if (was_reloaded && !menu_up && !is_training_menu) //reloading
-{
-    selected_nspec = 0;
-    selected_fspec = 1;
-    selected_uspec = 2;
-    selected_dspec = 3;
-}
-if (training_mode || testing)
-{
-    if (taunt_down && up_down && !menu_up)
+    if (taunt_down && up_down && menu_timer == -1)
     {
-        burningfury_active = false;
-        guardaura_active = false;
-        is_training_menu = true;
-
-        cur_select = 0;
-        selected_nspec = -1;
-        selected_fspec = -1;
-        selected_uspec = -1;
-        selected_dspec = -1;
-
-        skill_cursor_x = skill_xpos1; //light dagger's position is the default position
-        skill_cursor_y = skill_ypos1;
-        menu_up = true;
-        if (menu_up)
-        {
-            barPause();
-        }
-    }
-}
-if (state = PS_SPAWN && menu_up) //prevent some skills to be selected in the first place in here
-{
-    //moving SFX
-    if (left_pressed || right_pressed || up_pressed || down_pressed) sound_play(asset_get("mfx_hover"), 0, 0);
-
-    //cursor movement
-    //now with added freedom
-    if (skill_cursor_x > border_x1) {
-        if (left_pressed) skill_cursor_x -= movement;
-    }
-    else if (skill_cursor_x == border_x1 && left_pressed) skill_cursor_x = border_x2;
-
-    if (skill_cursor_x < border_x2) {
-        if (right_pressed) skill_cursor_x += movement;
-    }
-    else if (skill_cursor_x == border_x2 && right_pressed) skill_cursor_x = border_x1;
-
-    if (skill_cursor_y < border_y1) {
-        if (up_pressed) skill_cursor_y += movement;
-    }
-    else if (skill_cursor_y == border_y1 && up_pressed) skill_cursor_y = border_y2;
-
-    if (skill_cursor_y > border_y2) {
-        if (down_pressed) skill_cursor_y -= movement;
-    }
-    else if (skill_cursor_y == border_y2 && down_pressed) skill_cursor_y = border_y1;
-
-    if (selected_nspec != -1) cur_select = 1; //move to select F-special
-    if (selected_fspec != -1) cur_select = 2; //move to select U-special
-    if (selected_uspec != -1) cur_select = 3; //move to select D-special
-    if (selected_dspec != -1) cur_select = 4; //this will make it so it quits the screen and apply
-
-    //selection code itself, including limitations
-    if (attack_pressed && attack_counter == 1)
-    {
-        clear_button_buffer( PC_ATTACK_PRESSED );
-        if (cur_select = 0) //nspecial
-        {
-            if (skill_cursor_x == skill_xpos1 && skill_cursor_y == skill_ypos1) selected_nspec = 0;
-            if (skill_cursor_x == skill_xpos2 && skill_cursor_y == skill_ypos1) selected_nspec = 1;
-            if (skill_cursor_x == skill_xpos3 && skill_cursor_y == skill_ypos1) selected_nspec = 2;
-            if (skill_cursor_x == skill_xpos4 && skill_cursor_y == skill_ypos1) selected_nspec = 3;
-            if (skill_cursor_x == skill_xpos5 && skill_cursor_y == skill_ypos1) selected_nspec = 4;
-            if (skill_cursor_x == skill_xpos1 && skill_cursor_y == skill_ypos2) selected_nspec = 5;
-            if (skill_cursor_x == skill_xpos2 && skill_cursor_y == skill_ypos2) selected_nspec = 6;
-            if (skill_cursor_x == skill_xpos3 && skill_cursor_y == skill_ypos2) selected_nspec = 7;
-            if (skill_cursor_x == skill_xpos4 && skill_cursor_y == skill_ypos2) selected_nspec = 8;
-            if (skill_cursor_x == skill_xpos5 && skill_cursor_y == skill_ypos2) selected_nspec = 9;
-        }
-        if (cur_select = 1) //fspecial
-        {
-            if (skill_cursor_x == skill_xpos1 && skill_cursor_y == skill_ypos1) selected_fspec = 0;
-            if (skill_cursor_x == skill_xpos2 && skill_cursor_y == skill_ypos1) selected_fspec = 1;
-            if (skill_cursor_x == skill_xpos3 && skill_cursor_y == skill_ypos1) selected_fspec = 2;
-            if (skill_cursor_x == skill_xpos4 && skill_cursor_y == skill_ypos1) selected_fspec = 3;
-            if (skill_cursor_x == skill_xpos5 && skill_cursor_y == skill_ypos1) selected_fspec = 4;
-            if (skill_cursor_x == skill_xpos1 && skill_cursor_y == skill_ypos2) selected_fspec = 5;
-            if (skill_cursor_x == skill_xpos2 && skill_cursor_y == skill_ypos2) selected_fspec = 6;
-            if (skill_cursor_x == skill_xpos3 && skill_cursor_y == skill_ypos2) selected_fspec = 7;
-            if (skill_cursor_x == skill_xpos4 && skill_cursor_y == skill_ypos2) selected_fspec = 8;
-            if (skill_cursor_x == skill_xpos5 && skill_cursor_y == skill_ypos2) selected_fspec = 9;
-        }
-        if (cur_select = 2) //uspecial
-        {
-            if (skill_cursor_x == skill_xpos1 && skill_cursor_y == skill_ypos1) selected_uspec = 0;
-            if (skill_cursor_x == skill_xpos2 && skill_cursor_y == skill_ypos1) selected_uspec = 1;
-            if (skill_cursor_x == skill_xpos3 && skill_cursor_y == skill_ypos1) selected_uspec = 2;
-            if (skill_cursor_x == skill_xpos4 && skill_cursor_y == skill_ypos1) selected_uspec = 3;
-            if (skill_cursor_x == skill_xpos5 && skill_cursor_y == skill_ypos1) selected_uspec = 4;
-            if (skill_cursor_x == skill_xpos1 && skill_cursor_y == skill_ypos2) selected_uspec = 5;
-            if (skill_cursor_x == skill_xpos2 && skill_cursor_y == skill_ypos2) selected_uspec = 6;
-            if (skill_cursor_x == skill_xpos3 && skill_cursor_y == skill_ypos2) selected_uspec = 7;
-            if (skill_cursor_x == skill_xpos4 && skill_cursor_y == skill_ypos2) selected_uspec = 8;
-            if (skill_cursor_x == skill_xpos5 && skill_cursor_y == skill_ypos2) selected_uspec = 9;
-        }
-        if (cur_select = 3) //dspecial
-        {
-            if (skill_cursor_x == skill_xpos1 && skill_cursor_y == skill_ypos1) selected_dspec = 0;
-            if (skill_cursor_x == skill_xpos2 && skill_cursor_y == skill_ypos1) selected_dspec = 1;
-            if (skill_cursor_x == skill_xpos3 && skill_cursor_y == skill_ypos1) selected_dspec = 2;
-            if (skill_cursor_x == skill_xpos4 && skill_cursor_y == skill_ypos1) selected_dspec = 3;
-            if (skill_cursor_x == skill_xpos5 && skill_cursor_y == skill_ypos1) selected_dspec = 4;
-            if (skill_cursor_x == skill_xpos1 && skill_cursor_y == skill_ypos2) selected_dspec = 5;
-            if (skill_cursor_x == skill_xpos2 && skill_cursor_y == skill_ypos2) selected_dspec = 6;
-            if (skill_cursor_x == skill_xpos3 && skill_cursor_y == skill_ypos2) selected_dspec = 7;
-            if (skill_cursor_x == skill_xpos4 && skill_cursor_y == skill_ypos2) selected_dspec = 8;
-            if (skill_cursor_x == skill_xpos5 && skill_cursor_y == skill_ypos2) selected_dspec = 9;
-        }
-
-        //PREVENTS PEOPLE FROM SELECTING SKILLS THAT DON'T EXIST YET
-        //also prevents you from selecting skills you already selected
-        if (cur_select == 0){
-            sound_play(asset_get("mfx_confirm"), 0, 0);
-        }
-        if (cur_select == 1) {
-            if (selected_fspec == selected_nspec) {
-            
-                selected_fspec = -1
-                sound_play(sound_get("mfx_notice"), 0, 0);
-            }
-            else sound_play(asset_get("mfx_confirm"), 0, 0);
-        }
-        if (cur_select == 2) {
-            if (selected_uspec == selected_nspec || selected_uspec == selected_fspec) {
-            
-                selected_uspec = -1
-                sound_play(sound_get("mfx_notice"), 0, 0);
-            }
-            else sound_play(asset_get("mfx_confirm"), 0, 0);
-        }
-        if (cur_select == 3) {
-            if (selected_dspec == selected_nspec || selected_dspec == selected_fspec || selected_dspec == selected_uspec) {
-            
-                selected_dspec = -1
-                sound_play(sound_get("mfx_notice"), 0, 0);
-            }
-            else sound_play(asset_get("mfx_confirm"), 0, 0);
-        }
-    }
-
-    //goes to previous selection if you press "jump" when selecting any of the steps
-    //pressing "jump" while on the N-special selection will give bar the default skills
-    if (jump_pressed && jump_counter == 1)
-    {
-        clear_button_buffer( PC_JUMP_PRESSED );
-        sound_play(asset_get("mfx_back"), 0, 0);
-        if (cur_select == 0) {
-            cur_select = 4;
-            selected_nspec = 0;
-            selected_fspec = 1;
-            selected_uspec = 2;
-            selected_dspec = 3;
-        }
-        if (cur_select == 1) {
-            cur_select = 0; //moves to select the previous input
-            selected_nspec = -1; //cancel the selection of the previous input
-        }
-        if (cur_select == 2) {
-            cur_select = 1;
-            selected_fspec = -1;
-        }
-        if (cur_select == 3) {
-            cur_select = 2;
-            selected_uspec = -1;
-        }
-    }
-
-    //quit select screen
-    if (cur_select == 4)
-    {
-        menu_up = false;
-        if (!menu_up) {
-            barUnpause();
-            menu_countdown = menu_countdown_reset;
-        }
-    }
-    else if (cur_select < 4)
-    {
-        go_through = true;
-        attack_invince = true;
+        menu_timer = 126;
+        menu_open = true;
     }
 }
 
-//countdown timer so people won't stall with the skill select forever
-//this only happens with the spawn menu, and if it's not training mode
-if (!training_mode && !testing && menu_up)
+//special menu timer
+if(menu_timer >= 0)
 {
-    menu_countdown --;
+    menu_open = true;
 
-    //5... 4... 3... 2... 1...
-    if (menu_countdown == 300 || menu_countdown == 240 || menu_countdown == 180 || menu_countdown == 120 || menu_countdown == 60)
+    barPause();
+    if (menu_timer >= 120 || menu_timer <= 20) menu_timer--;
+}
+else menu_open = false;
+
+if(close_timer >= 0) close_timer--;
+
+//menu selection
+if(menu_open)
+{
+    menu_close = true;
+    if(up_pressed)
     {
-        sound_play(asset_get("mfx_coin"), 0, 0);
-        invincible = true;
-        invince_time = 0;
+        menu_dir = 0;
+        arrow_frame = 0;
+        if (active_col < 4)
+        {
+            arrow_anim_up = true;
+            arrow_anim_side = false;
+            arrow_anim_down = false;
+        }
     }
-
-    //selecting default skills if you take too much time
-    if (menu_countdown <= 0)
+    else if(down_pressed)
     {
-        if (selected_nspec == -1) {
-            selected_nspec = 0;
+        menu_dir = 2;
+        arrow_frame = 0;
+        if (active_col < 4)
+        {
+            arrow_anim_up = false;
+            arrow_anim_side = false;
+            arrow_anim_down = true;
         }
-        if (selected_fspec == -1) {
-            selected_fspec = 1;
-            if (selected_nspec == 1) selected_fspec = 0;
+    }
+    else if(right_pressed) 
+    {
+        menu_dir = 1;
+        arrow_frame = 0;
+        if (active_col < 4)
+        {
+            arrow_anim_up = false;
+            arrow_anim_side = true;
+            arrow_anim_down = false;
         }
-        if (selected_uspec == -1) {
-            selected_uspec = 2;
-            if (selected_nspec == 2 || selected_fspec == 2) {
-                selected_uspec = 1;
-                if (selected_nspec == 1 || selected_fspec == 1) selected_uspec = 0;
-            }
+    }
+    else if(jump_down) menu_dir = -2; //jump cancel
+    else menu_dir = -1;
+
+    if(menu_timer == 120) sound_play(asset_get("mfx_forward"));
+
+    if(active_col < 4)
+    {
+        if(menu_dir != -1 && menu_dir != prev_dir)
+        {
+			//jump to go back 1 column
+			if(menu_dir == -2)
+            {
+				active_col--;
+				//cancel menu if jump pressed in nspecial column
+				if(active_col < 0){
+					menu_timer = -1;
+					specialnums = [0,0,0,0];
+				//just go back one
+				}else{
+					sound_play(asset_get("mfx_back"));
+					for(var i = 0; i < 3; i++){
+						specs_chosen[active_col, i] = true;
+					}
+				}
+			}
+            else
+            {
+				specialnums[active_col] = menu_dir;
+				sound_play(asset_get("mfx_confirm"));
+				for(var i = 0; i < 3; i++)
+                {
+					if(i != menu_dir) specs_chosen[active_col, i] = false;
+				}
+				active_col++;
+        	}
         }
-        if (selected_dspec == -1) {
-            selected_dspec = 3;
-            if (selected_nspec == 3 || selected_fspec == 3 || selected_uspec == 3) {
-                selected_dspec = 2;
-                if (selected_nspec == 2 || selected_fspec == 2 || selected_uspec == 2) {
-                    selected_dspec = 1;
-                    if (selected_nspec == 2 || selected_fspec == 2 || selected_uspec == 2) selected_dspec = 0;
-                }
-            }
-        }
-        cur_select = 4;
+        prev_dir = menu_dir;
+    }
+    if(active_col >= 4 && menu_confirm)
+    {
+        menu_timer = 20;
+        menu_confirm = false;
+    }
+    
+    cursor_timer++;
+    if(cursor_timer >= 24) cursor_timer = 0;
+}
+
+//resets menu variables when closed
+if(menu_close && !menu_open)
+{
+    barUnpause();
+
+    menu_close = false; 
+    sound_play(asset_get("mfx_back"));
+    close_timer = 4;
+    menu_dir = -1;
+    prev_dir = -1;
+    active_col = 0;
+    menu_confirm = true;
+    cursor_timer = 0;
+    
+    for(var i = 0; i <= 3; i++)
+    {
+        for(var j = 0; j <= 2; j++) specs_chosen[i, j] = true;
     }
 }
 
-//this part updates the "inp_" stuff so it will connect with the actuall skill
-inp_nspec = is_special_pressed( DIR_NONE );
-inp_fspec = is_special_pressed( DIR_LEFT ) || is_special_pressed( DIR_RIGHT );
-inp_uspec = is_special_pressed( DIR_UP );
-inp_dspec = is_special_pressed( DIR_DOWN );
-
-if (selected_nspec == 0) inp_skill0 = inp_nspec;
-if (selected_nspec == 1) inp_skill1 = inp_nspec;
-if (selected_nspec == 2) inp_skill2 = inp_nspec;
-if (selected_nspec == 3) inp_skill3 = inp_nspec;
-if (selected_nspec == 4) inp_skill4 = inp_nspec;
-if (selected_nspec == 5) inp_skill5 = inp_nspec;
-if (selected_nspec == 6) inp_skill6 = inp_nspec;
-if (selected_nspec == 7) inp_skill7 = inp_nspec;
-if (selected_nspec == 8) inp_skill8 = inp_nspec;
-if (selected_nspec == 9) inp_skill9 = inp_nspec;
-
-if (selected_fspec == 0) inp_skill0 = inp_fspec;
-if (selected_fspec == 1) inp_skill1 = inp_fspec;
-if (selected_fspec == 2) inp_skill2 = inp_fspec;
-if (selected_fspec == 3) inp_skill3 = inp_fspec;
-if (selected_fspec == 4) inp_skill4 = inp_fspec;
-if (selected_fspec == 5) inp_skill5 = inp_fspec;
-if (selected_fspec == 6) inp_skill6 = inp_fspec;
-if (selected_fspec == 7) inp_skill7 = inp_fspec;
-if (selected_fspec == 8) inp_skill8 = inp_fspec;
-if (selected_fspec == 9) inp_skill9 = inp_fspec;
-
-if (selected_uspec == 0) inp_skill0 = inp_uspec;
-if (selected_uspec == 1) inp_skill1 = inp_uspec;
-if (selected_uspec == 2) inp_skill2 = inp_uspec;
-if (selected_uspec == 3) inp_skill3 = inp_uspec;
-if (selected_uspec == 4) inp_skill4 = inp_uspec;
-if (selected_uspec == 5) inp_skill5 = inp_uspec;
-if (selected_uspec == 6) inp_skill6 = inp_uspec;
-if (selected_uspec == 7) inp_skill7 = inp_uspec;
-if (selected_uspec == 8) inp_skill8 = inp_uspec;
-if (selected_uspec == 9) inp_skill9 = inp_uspec;
-
-if (selected_dspec == 0) inp_skill0 = inp_dspec;
-if (selected_dspec == 1) inp_skill1 = inp_dspec;
-if (selected_dspec == 2) inp_skill2 = inp_dspec;
-if (selected_dspec == 3) inp_skill3 = inp_dspec;
-if (selected_dspec == 4) inp_skill4 = inp_dspec;
-if (selected_dspec == 5) inp_skill5 = inp_dspec;
-if (selected_dspec == 6) inp_skill6 = inp_dspec;
-if (selected_dspec == 7) inp_skill7 = inp_dspec;
-if (selected_dspec == 8) inp_skill8 = inp_dspec;
-if (selected_dspec == 9) inp_skill9 = inp_dspec;
-
-// this is reserved for the skill selction mechanic
-// it entirely changes the special moves bar uses in a match
-// it needs to pause the game while selecting skills
-// to use this, bar needs to press up and taunt to open up the menu in the begining of the match
-
-// default skills: light dagger - nspecial | burning fury - fspecial | force leap - uspecial | photon blast - dspecial
+if (arrow_anim_up || arrow_anim_side || arrow_anim_down)
+{
+    arrow_frame += 0.5;
+    if (arrow_frame >= 4)
+    {
+        arrow_anim_up = false;
+        arrow_anim_side = false;
+        arrow_anim_down = false;
+    }
+}
 
 //////////////////////////////////////////////////MISC. SECTION//////////////////////////////////////////////////
 
@@ -1054,11 +907,16 @@ with (pHitBox) //references all hitbox objects
 }
 
 //aura color stuff
-if (theikos_active && is_8bit)
+if (theikos_active)
 {
-    if (get_player_color(player) == 7) aura_color = $9AE2D3;
-    else if (get_player_color(player) == 8) aura_color = $20D3EB;
-    aura_alpha = 1;
+    if (is_8bit)
+    {
+        if (get_player_color(player) == 7) aura_color = $9AE2D3;
+        else if (get_player_color(player) == 8) aura_color = $20D3EB;
+        aura_alpha = 1;
+    }
+    else if (get_player_color(player) == 11 && birthboy) aura_color = $FFD46D;
+    else aura_color = $45B6F5;
 }
 
 //check if game is paused
@@ -1133,6 +991,11 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
                 else if (!smash_charging) sound_stop(sfx_charge);
             }
             break;
+    }
+
+    if (attack == AT_THEIKOS)
+    {
+        if (window == 2 && get_gameplay_time() % (6-floor(window_timer/20)) == 0) light_charge(x, y-32);
     }
 
     if (burningfury_active)
@@ -1248,9 +1111,75 @@ if (has_rune("L") && was_reloaded) //theikos reload check
     theikos_active = true;
 }
 
-//theikos stuff
+//theikos related user events
 user_event(0);
 user_event(1);
+
+//i stole this from muno's goku ehe~
+//this is the anti-cheapie section which is a mix of theikos bar, a few very useful runes for the occasion and the lord's blessing buff
+var found = false;
+with oPlayer if self != other switch url
+{
+	case "2273636433":
+	case "1870768156":
+	case "1869351026":
+	case "2443363942":
+	case "2159023588":
+	case "1980469422":
+		break;
+	default:
+		if (
+			check_string_for_name(player, "nald") || 
+			check_string_for_name(player, "%") || 
+			check_string_for_name(player, "sand") || 
+			check_string_for_name(player, "psy") || 
+			check_string_for_name(player, "ultra") || 
+			check_string_for_name(player, "god") || 
+			check_string_for_name(player, "boss") || 
+			check_string_for_name(player, "ui ") || 
+			check_string_for_name(player, "ssg") || 
+			check_string_for_name(player, "melee") || 
+			check_string_for_name(player, "accurate")
+			) found = true;
+		break;
+}
+if (found) fuck_you_cheapies = true;
+
+if (fuck_you_cheapies && (state != PS_SPAWN && state != PS_DEAD && state != PS_RESPAWN) ) //activation
+{
+    if (!theikos_active && !od_ready) if (attack_down && special_down) attack = AT_THEIKOS;
+
+    if (theikos_active && fuck_you_cheapies) soft_armor = 999999999;
+}
+// list of things the anti-cheapie mode does:
+// BAR:
+// - 999 stocks                                                                                 [attack_update]
+// - 999,999,999 mp (but has a passive mana gain rate of 1 per sec)                             [attack_update]
+// - 999,999,999 constant soft armor                                                            [update]
+// - theikos (and all it brings to the table)                                                   [attack_update]
+// - lord's blessing buff (longer light attack stunning, longer burning time)                   [attack_update]
+// - rune A (airdashing)                                                                        [update, animation, post_draw]
+// - rune D (earthquake D-air)                                                                  [attack_update]
+// - rune G (warping to spear projectiles)                                                      [update, hit_player, hitbox_update]
+// - rune J (mana gain from burning/pre-lightstunning) (twice as effective)                     [update]
+// - rune N (adding the lightstunning mechanic)                                                 [update]
+// CHEAPIE/ANYONE ELSE:
+// - 10 stocks                                                                                  [update (intro), attack_update]
+// - double damage dealt on them                                                                [update (intro), attack_update]
+// - knockback adjustment doubled                                                               [update (intro), attack_update]
+
+if (turbo_time)
+{
+    //by default, give all the moves a shitton of cooldown
+    if (window == 1 && window_timer == 1) move_cooldown[attack] = 99999;
+    //if bar isn't attack, let him attack
+    if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) move_cooldown[attack] = 0;
+    //if the attack isn't the previous attack put no cooldown
+    if (previous_attack != attack || attack == AT_NAIR) move_cooldown[previous_attack] = 0;
+
+    previous_attack = attack;
+}
+
 
 //seriously don't be afraid, stupid mortal (also give me my outline)
 if (bibical)
@@ -1532,8 +1461,14 @@ if (!has_rune("N"))
             lightstun_mechanic_active = false;
             break;
     }
+
+    if (fuck_you_cheapies && theikos_active)
+    {
+        holyburn_mechanic_active = true;
+        lightstun_mechanic_active = true;
+    }
 }
-else //holy light mechanic
+else
 {
     holyburn_mechanic_active = true;
     lightstun_mechanic_active = true;
@@ -1552,8 +1487,8 @@ if (lightstun_mechanic_active) //holy light mechanic
             if (lightstun_pre_stun) with (other)
             {
                 var lightstunner = create_hitbox(48, 10, other.x, other.y-char_height/2);
-                if ((godpower || od_already_active || theikos_active) && !is_8bit || get_player_color(player) == 31) lightstun_hit.fx_particles = 5;
-                else lightstun_hit.fx_particles = 1;
+                lightstun_hit.fx_particles = 1;
+                if (user_event_1_active) lightstun_hit.fx_particles = 5;
             }
             lightstun_pre_stun = false;
         }
@@ -1580,6 +1515,7 @@ if (lightstun_mechanic_active) //holy light mechanic
             if (lightstun_timer % 15 == 0) with (other)
             {
                 if (has_rune("J") && (!has_rune("K") && mp_current < mp_max) || has_rune("K") && mp_current < runeK_mp_max) mp_current += 1;
+                else if (fuck_you_cheapies && theikos_active && mp_current < mp_max) mp_current += 2;
             }
         }
         
@@ -1728,7 +1664,7 @@ else
 
 //////////////////////////////////////////////////ABYSS RUNES SECTION//////////////////////////////////////////////////
 
-if (has_rune("A"))
+if (has_rune("A") || fuck_you_cheapies && theikos_active) //airdash
 {
     //initial activation
     if (free && state != PS_HITSTUN && state != PS_PRATFALL && state != PS_ATTACK_AIR && runeA_dash_timer >= runeA_dash_time_max && (runeA_dash_cooldown >= runeA_dash_cooldown_max || theikos))
@@ -1780,7 +1716,7 @@ if (has_rune("B")) //the djump speed change is on the double jump code above
     max_djumps = 5;
 }
 
-if (has_rune("E"))
+if (has_rune("E")) //slippery bar
 {
     initial_dash_speed = 10;
     dash_turn_time = 20;
@@ -1813,7 +1749,7 @@ if (has_rune("F")) //heavy bar
     }
 }
 
-if (has_rune("G")) //teleporting to spears
+if (has_rune("G") || fuck_you_cheapies && theikos_active) //teleporting to spears
 {
     if (window == 3)
     {
@@ -1878,7 +1814,7 @@ if (has_rune("H")) //hookshot u-strong
     }
 }
 
-if (has_rune("K")) //overcharged mana - flashing gauge (the mana stuff itself is with the mana debug cheat)
+if (has_rune("K") || fuck_you_cheapies && theikos_active) //overcharged mana - flashing gauge (the mana stuff itself is with the mana debug cheat)
 {
     if (get_gameplay_time() % 20 == 0) gauge_EX_timer_active = true;
 
@@ -1928,10 +1864,7 @@ if (has_rune("O") && od_current >= od_max && !od_already_active && (state != PS_
 {
     if (attack_pressed && special_pressed)
     {
-        if (!free) 
-        {
-            set_attack(AT_OVERDRIVE);
-        }
+        if (!free || fuck_you_cheapies && theikos_active) set_attack(AT_OVERDRIVE);
     }
 }
 else if ("fs_charge" in self && fs_charge >= 200 && (state != PS_ATTACK_AIR || state != PS_ATTACK_GROUND)
@@ -1962,7 +1895,7 @@ if (godpower)
 
     if (god_time == god_time_reset-1)
     {
-        sound_play(sound_get("sfx_lordpunishment"), 0, 0, 2);
+        sound_play(sound_get("sfx_lordpunishment"));
         od_ready = false;
     }
 
@@ -2066,7 +1999,7 @@ if (has_rune("K"))
         }
         else mp_fc_rate = 0;
     }
-    else //theikos
+    else if (theikos_active && !fuck_you_cheapies) //theikos
 	{
         mp_current = 100;
         gauge_color = gauge_EX_color;
@@ -2092,7 +2025,7 @@ if (has_rune("K"))
 }
 else
 {
-    if (!theikos_active)
+    if (!theikos_active && !menu_open)
     {
         if (phone_cheats[CHEAT_MANADEBUG] > 0) manaDebug = true;
 
@@ -2104,9 +2037,12 @@ else
         else if (phone_cheats[CHEAT_MANADEBUG] == 6) mp_fc_rate = 100;
         else mp_fc_rate = 0;
     }
-    else
+    else if (theikos_active && !fuck_you_cheapies) mp_fc_rate = 100;
+    else if (menu_open) mp_fc_rate = 0;
+    else if (fuck_you_cheapies && theikos_active)
     {
-        mp_fc_rate = 100;
+        mp_fc_rate = 1;
+        if (mp_current <= 200) mp_current = mp_max;
     }
 }
 
@@ -2243,12 +2179,23 @@ if ("steve_death_message" in self) switch (attack)
         break;
 }
 
+//car bar mechanic destroyer
+//erase platform from existance (not really, just render something else)
+if ("kart_inside" in self && kart_inside)
+{
+    close_timer = -1;
+    menu_timer = -1;
+    msg_menu = false;
+    plat_pre_sprite = sprite_get("empty");
+    plat_post_sprite = sprite_get("empty");
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //menu pausing everything define
 
 //just stop bar, and nobody else, while making him invincible
 #define barPause {
-    hurtboxID.sprite_index = sprite_get("empty");
+    hurtboxID.sprite_index = hurtbox_spr;
     destroy_hitboxes();
     can_move = false;
     can_attack = false;
@@ -2265,7 +2212,6 @@ if ("steve_death_message" in self) switch (attack)
 }
 //a special unpause for bar
 #define barUnpause {
-    hurtboxID.sprite_index = hurtbox_spr;
     can_move = true;
     can_attack = true;
     can_jump = true;
@@ -2277,27 +2223,15 @@ if ("steve_death_message" in self) switch (attack)
     hitpause = false;
     hitstop = 0;
     hitstop_full = 0;
-    go_through = false;
-    //recorded_time = get_gameplay_time(); //used for testing
 
     if (get_gameplay_time() >= 125) state = PS_IDLE;
     else state_timer = get_gameplay_time();
-
-    if (is_training_menu)
-    {
-        invince_time = 0; //in practice mode, it disables the extra invincibility
-        invincible = false;
-    }
-    else
-    {
-        invince_time = 90; //it takes a sec and a half after the versus mode selection to get be invincible
-        invincible = true;
-    }
 }
 
 //charging effects
 //light
 #define light_charge
+/// light_charge(x, y, ...)
 {
     sprite_change_offset("fx_introlight", 16, 96);
     sprite_change_offset("theikos_fx_introlight", 16, 96);
@@ -2313,6 +2247,7 @@ if ("steve_death_message" in self) switch (attack)
 }
 //fire
 #define fire_charge
+/// fire_charge(x, y, ...)
 {
     var x = argument[0], y = argument[1];
 
@@ -2325,6 +2260,10 @@ if ("steve_death_message" in self) switch (attack)
         embers.state = 4;
         embers.depth = -random/2;
 }
+
+//stolen from muno too (it allows me to see the character names)
+#define check_string_for_name(player, string)
+return string_count(string, string_lower(get_char_info(player, INFO_STR_NAME)))
 
 //unused
 #define playerPause

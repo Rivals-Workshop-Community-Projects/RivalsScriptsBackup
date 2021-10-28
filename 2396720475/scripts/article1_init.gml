@@ -14,7 +14,7 @@ solid_timer = 30;
 falling_state = false;
 
 sprite_index = sprite_get("box_spin");
-mask_index = sprite_get("box_spin");
+mask_index = sprite_get("box_hurtbox");
 image_index = 0;
 //image_speed = .4;
 

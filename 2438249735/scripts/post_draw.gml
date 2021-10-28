@@ -29,7 +29,7 @@ draw_sprite_ext(sprite_index, image_index, x , y , spr_dir, 1, 0 , c_black ,  ( 
 
 if (state == PS_PARRY or state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD or state == PS_AIR_DODGE
    or state == PS_FIRST_JUMP or state == PS_DOUBLE_JUMP  or state == PS_WALL_JUMP) and state_timer < 2 {    
-   move_cooldown[AT_FSPECIAL_2] = 20
+   move_cooldown[AT_FSPECIAL_2] = 10
 } 
 
 

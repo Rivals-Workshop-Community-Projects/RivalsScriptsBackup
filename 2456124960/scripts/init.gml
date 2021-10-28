@@ -227,3 +227,13 @@ boxing_title = "Illidrium Wielder";
 boxing_short_name = "Nate";
 battle_text = "* Purple sparks fizzle through the air.";
 miiverse_post = sprite_get("miiverse");
+
+in_adventure = false;
+should_do_intro = true;
+hit_player_event = 2;
+
+pronouns = ["he","him","his","is"];
+am_is_clothed = true;
+am_is_guest = true;
+am_is_magic = true;
+am_is_handed = true;

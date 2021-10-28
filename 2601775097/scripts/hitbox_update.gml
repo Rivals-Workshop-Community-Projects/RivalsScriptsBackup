@@ -93,7 +93,7 @@ if (attack == AT_DSTRONG_2)
             //initial ground hit stuff
             var hit_collision = create_hitbox(AT_DSTRONG_2, 2, x, y);
             hit_collision.fx_particles = 2;
-            if (player_id.theikos && !player_id.is_8bit) hit_collision.fx_particles = 6;
+            if (player_id.user_event_1_active) hit_collision.fx_particles = 6;
             
             var fx_collision = spawn_hit_fx(x, y, player_id.fx_fireblow3);
             fx_collision.depth = -7;
@@ -181,7 +181,7 @@ if (attack == player_id.AT_SKILL9)
     }
 }
 
-if (has_rune("G")) //spear warp
+if (has_rune("G") || player_id.fuck_you_cheapies && player_id.theikos_active) //spear warp
 {
     switch (attack)
     {

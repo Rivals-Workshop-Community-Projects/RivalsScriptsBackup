@@ -12,12 +12,21 @@ with (obj_article1) {
 shader_end();
 
 
-if (state == PS_SPAWN) {
+if (state == PS_SPAWN && should_do_intro == true) {
 	if (state_timer < 28 + (2*player) ) {
 		draw_sprite(sprite_get("intro_pokeball_throw"), (state_timer - (2*player))/3, x, y + (2*(power(((state_timer - (2*player)) - 23), 1.7)) - 50));     
 	} else if (state_timer < 37 + (2*player) ) {
 		draw_sprite(sprite_get("intro_pokeball_open"), ((state_timer - (2*player))/3)-1, x, y - 12);    		
 	} else if (state_timer < 55 + (2*player) ) {
 		draw_sprite(sprite_get("intro_pokeball_open"), 3, x, y - 12);    		
+	}
+}
+
+if (in_adventure) {
+	if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_FTHROW) {
+		draw_sprite_ext(sprite_get("fthrow_back"), image_index, x, y, spr_dir, 1, 0, c_white, 1);
+	}
+	if ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_DTHROW) {
+		draw_sprite_ext(sprite_get("dthrow"), image_index, x, y, spr_dir, 1, 0, c_white, 1);
 	}
 }

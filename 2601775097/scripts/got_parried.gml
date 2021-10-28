@@ -13,6 +13,8 @@ accelblitz_active_timer = false;
 burst_pos = 56;
 burst_count = 0;
 
+flashbanged_id = noone;
+
 if (holyburn_mechanic_active)
 {
 	other.outline_color = [0, 0, 0];

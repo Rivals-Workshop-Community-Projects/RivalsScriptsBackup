@@ -246,13 +246,17 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.10", "22 October, 2021");
+initHeader("General");
+initSection("Added a new Cheat.");
+
 initPatch("1.9", "19 September, 2021");
 initHeader("General");
 initSection("Upgraded to MunoPhone Touch.
 Added dust effects to grounded normals.
 Brightened color palette.");
 initHeader("Stats - Adjustments");
-initSection("Ground friction 0.7 --> 1.")
+initSection("Ground friction 0.7 --> 1.");
 	
 initPatch("1.8", "15 January, 2021");
 initHeader("Damage Output - Nerfs");
@@ -421,6 +425,7 @@ zero".
 #define CORE_cheats
 
 CHEAT_AIM		= initCheat("Free Wisp Aim", [0, 1], ["Off", "On"], "Freely aim Wisp Specials, even when they're not done from a Wisp Capsule.");
+CHEAT_DRILL		= initCheat("Drill Control", [0, 1], ["Off", "On"], "Control Sonic's movement during DSpecial.");
 
 
 

@@ -200,7 +200,6 @@ set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 2);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 90);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 2);
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(atk, hitboxNum, HG_HITSTUN_MULTIPLIER, 5);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, od_fx_fireblow2);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_forsburn_combust"));
 set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 6);

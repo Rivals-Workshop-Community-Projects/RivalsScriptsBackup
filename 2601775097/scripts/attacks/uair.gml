@@ -49,7 +49,7 @@ set_hitbox_value(atk, hitboxNum, HG_WIDTH, 50);
 set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 80);
 set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 4); //1 = low priority over other moves || 10 = highest
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 8);
-set_hitbox_value(atk, hitboxNum, HG_ANGLE, 96);
+set_hitbox_value(atk, hitboxNum, HG_ANGLE, 85);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 6); //hitstun
@@ -58,7 +58,4 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
-set_hitbox_value(atk, hitboxNum, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 1); //it needs to be a different value for every different move in the file
-set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 0);
-set_hitbox_value(atk, hitboxNum, HG_FORCE_FLINCH, 0);

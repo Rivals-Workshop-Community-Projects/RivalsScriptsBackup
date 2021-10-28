@@ -52,6 +52,6 @@ set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, sound_get("sliceh1"));
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, 305);
-set_hitbox_value(AT_NAIR, 1, HG_HITSTUN_MULTIPLIER, .8);
+set_hitbox_value(AT_NAIR, 1, HG_HITSTUN_MULTIPLIER, .9);
 
 

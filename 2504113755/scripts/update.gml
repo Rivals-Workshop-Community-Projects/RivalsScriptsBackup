@@ -7,44 +7,44 @@ if get_training_cpu_action() != CPU_FIGHT || trainingMode == 1 {
 }
 
 
+
+
+
+
+
+
 	if (get_player_color(player) == 30) {
 		
 		
-		 if (state != PS_IDLE && show_halloween_skin == true) {
-	
-		show_halloween_skin = false;
-		set_skin(-1)
+		if(state == PS_SPAWN || state == PS_RESPAWN){
+
+show_halloween_skin = true;
+
+
+
+}
 		
-		spawn_hit_fx(x, y, mcfly_remove)
+				if (	show_halloween_skin == true) {
 
-}
+set_skin("mcfly")
 
+		
+	if (state != PS_IDLE && state != PS_SPAWN && state != PS_RESPAWN&& get_gameplay_time() > 140) {
+		
+					show_halloween_skin = false;
+	mcfly =	spawn_hit_fx(x, y, mcfly_remove)
+	mcfly.spr_dir = spr_dir
+		
+			set_skin(-1)
 
-if (get_gameplay_time() < 140) {
+	}
+		
+				}
+		
 	
-		set_skin("mcfly")
-
-	
-}
-
-if (state == PS_DEAD || state == PS_RESPAWN) {
-	
-	show_halloween_skin = true;
-	
-	
-	
-}
-
-if ((state == PS_IDLE  || state == PS_RESPAWN) && show_halloween_skin == true){
-	
-	set_skin("mcfly")
 	
 }
 
-
-
-
-}
 
 
 if (attack == AT_EXTRA_1 && taunt_down) {

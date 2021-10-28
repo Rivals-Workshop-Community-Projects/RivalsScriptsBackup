@@ -23,6 +23,34 @@ enum ROCK{
 //Muno Phone -------------------------------------------------------------------
 user_event(14);
 
+if(state == PS_SPAWN){
+	if(get_player_color(player) == 29 and down_pressed){
+		skin_alt = !skin_alt;
+		sound_play(sound_get("_pho_open1"));
+		if(skin_alt){
+			//snappy
+			set_color_profile_slot( 29, 0, 15, 15, 15 ); //Hat
+			set_color_profile_slot( 29, 1, 151, 82, 201 ); //Clothes
+			set_color_profile_slot( 29, 2, 9, 10, 9 ); //Skirt
+			set_color_profile_slot( 29, 3, 89, 0, 0 ); //Bow Front
+			set_color_profile_slot( 29, 4, 111, 64, 47 ); //Hair
+			set_color_profile_slot( 29, 5, 111, 64, 47 ); //Eyes
+			set_color_profile_slot( 29, 6, 52, 6, 71 ); //Detailing
+			set_color_profile_slot( 29, 7, 0, 255, 0 ); //Rainbow
+		} else {
+			//masq
+			set_color_profile_slot( 29, 0, 173, 255, 242 ); //Hat
+			set_color_profile_slot( 29, 1, 161, 98, 64 ); //Clothes
+			set_color_profile_slot( 29, 2, 214, 255, 237 ); //Skirt
+			set_color_profile_slot( 29, 3, 212, 228, 255 ); //Bow Front
+			set_color_profile_slot( 29, 4, 46, 128, 153 ); //Hair
+			set_color_profile_slot( 29, 5, 161, 215, 255 ); //Eyes
+			set_color_profile_slot( 29, 6, 157, 250, 242 ); //Detailing
+			set_color_profile_slot( 29, 7, 0, 255, 0 ); //Rainbow
+		}
+	}
+}
+
 if(state == PS_WAVELAND){
 	sound_stop(air_dodge_sound);
 	//sound_stop(jump_sound);
@@ -176,7 +204,7 @@ if(dragon_install){
 	//if another tenshi tells this one to start their music up
 	//this is basically a control value to make sure music is always playing when
 	//an install is up when multiple of this character are in the same game
-	if(play_theme and !lightweight){
+	if(play_theme){
 		var volume = 0;
         volume = get_local_setting(3);
 		sound_play(sound_get("install" + string(install_theme)), true, 0, min(2*volume, 1), 1);
@@ -413,7 +441,7 @@ if(di_input_buffer == 0){
 
 #define deactivate_install()
 //fair
-set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 7);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 3, HG_WINDOW, 99);
@@ -442,7 +470,7 @@ set_hitbox_value(AT_NAIR, 4, HG_WINDOW, 99);
 set_hitbox_value(AT_NAIR, 5, HG_WINDOW, 99);
 set_hitbox_value(AT_NAIR, 6, HG_WINDOW, 99);
 //utilt
-set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 5);
 set_hitbox_value(AT_UTILT, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 2);

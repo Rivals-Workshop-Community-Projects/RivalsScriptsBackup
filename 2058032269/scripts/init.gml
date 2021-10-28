@@ -154,6 +154,8 @@ gfzsignspr = sprite_get("signcuphead");
 
 wallop = false;
 
+hit_player_event = 12;
+
 //soulbound conflict
 battle_text = "* Smells like...";
 battle_text2 = "* ... what's that liquid?";

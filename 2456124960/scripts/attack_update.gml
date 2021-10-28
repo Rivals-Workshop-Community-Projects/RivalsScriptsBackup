@@ -313,9 +313,10 @@ if (attack == AT_NSPECIAL_2){
 			set_hitbox_value(AT_NSPECIAL, 5, HG_BASE_HITPAUSE, 19);
 			set_hitbox_value(AT_NSPECIAL, 5, HG_HITPAUSE_SCALING, 1);	
 
-			spawn_hit_fx(x + (30 * spr_dir), y - 40, empoweredFX);	
-
-			spawn_hit_fx(crystal.x, crystal.y, empoweredFX);
+			fx = spawn_hit_fx(x + (30 * spr_dir), y - 40, empoweredFX);	
+			fx.depth = depth - 1;
+			fx = spawn_hit_fx(crystal.x, crystal.y, empoweredFX);
+			fx.depth = depth - 1;
 			
 			crystal.empowered = 1;
 		} else {
@@ -430,8 +431,10 @@ if (attack == AT_FSPECIAL) {
 		}
 		if (window_timer == 5) {
 			sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"), false, noone, 0.5);		
-			spawn_hit_fx(x + (10*spr_dir), y - 85, beamChargeRing);
-			spawn_hit_fx(x + (10*spr_dir - 20 + random_func(3, 40, true)), y - 65 - random_func(5, 40, true), beamChargeSparkle1);
+			fx = spawn_hit_fx(x + (10*spr_dir), y - 85, beamChargeRing);
+			fx.depth = depth - 1;
+			fx = spawn_hit_fx(x + (10*spr_dir - 20 + random_func(3, 40, true)), y - 65 - random_func(5, 40, true), beamChargeSparkle1);
+			fx.depth = depth - 1;
 		}
 		
 		if (fastFSpec == true) {
@@ -604,7 +607,7 @@ if (attack == AT_DSPECIAL){
 			case 45:
 			case 48:
 				ring = spawn_hit_fx(x, y - 30, buffChargeRing);
-				ring.depth = -8;
+				ring.depth = depth + 1;
 				break;
 			case 2:
 			case 17:

@@ -15,10 +15,10 @@ set_window_value(AT_UTILT, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_UTILT, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 
 set_window_value(AT_UTILT, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(AT_UTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 4);
+set_window_value(AT_UTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_UTILT,1);
 
@@ -34,8 +34,8 @@ set_hitbox_value(AT_UTILT, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 8);
 set_hitbox_value(AT_UTILT, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, .6);
-set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 7);
+set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, .8);
+set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, sound_get("slam1"));
 set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 304);

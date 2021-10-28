@@ -2,7 +2,7 @@ set_attack_value(AT_DAIR, AG_CATEGORY, 1);
 set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("dair"));
 set_attack_value(AT_DAIR, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_DAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_DAIR, AG_LANDING_LAG, 6);
+set_attack_value(AT_DAIR, AG_LANDING_LAG, 9);//6
 set_attack_value(AT_DAIR, AG_HURTBOX_SPRITE, sprite_get("dair_hurt"));
 
 set_window_value(AT_DAIR, 1, AG_WINDOW_TYPE, 1);
@@ -39,8 +39,8 @@ set_hitbox_value(AT_DAIR, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_DAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 7);
 set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 270);
-set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 4.6);
-set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, 0.5);
+set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 4.5);
+set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, 0.4);
 set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, sound_get("bigpunch"));

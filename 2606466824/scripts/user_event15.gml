@@ -405,6 +405,19 @@ initSection("Trummel & Alto, Otto, Steve, Link");
 
 
 
+initPatch("1.072", "October 23rd, 2021");
+initHeader("General");
+initSection("* Will no longer repeatedly play the intro during cutscenes on Adventure Mode stages.");
+initSection("* Adjusted the depth of many particle visuals to appear properly on Adventure Mode stages.");
+initSection("* Added Character Attribute variables for compatability with Adventure Mode stages.");
+initHeader("DSpecial");
+initSection("* Now properly functions against Adventure Mode enemies.");
+initSection("* When used in Adventure Mode, Revenge's boosted hit has reduced hitpause and only creates one additional explosion.");
+initSection("* Fixed the layering order on the ring visual effects.");
+initHeader("FSpecial");
+initSection("* Now properly functions against Adventure Mode enemies.");
+initHeader("USpecial");
+initSection("* Now properly functions against Adventure Mode enemies.");
 
 initPatch("1.071", "October 15th, 2021");
 initHeader("Jab");

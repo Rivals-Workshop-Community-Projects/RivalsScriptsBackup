@@ -383,6 +383,18 @@ initSection("Trummel & Alto, Otto, Steve, Link, Goku");
 
 // other patches go here...
 
+initPatch("1.73", "October 23rd, 2021");
+initHeader("General");
+initSection("* Will now properly play the intro on Adventure Mode stages.");
+initSection("* Adjusted the depth of many particle visuals to appear properly on Adventure Mode stages.");
+initSection("* Added Character Attribute variables for compatability with Adventure Mode stages.");
+initHeader("DAir");
+initSection("* Now properly allows a Timed Hit to be inputted directly after hitting Adventure Mode enemies.");
+initHeader("FStrong");
+initSection("* Now properly allows a Timed Hit to be inputted directly after hitting Adventure Mode enemies.");
+initHeader("NSpecial");
+initSection("* Adjusted the depth of the beam visual to appear properly on Adventure Mode stages.");
+
 initPatch("1.72", "October 17th, 2021");
 initHeader("General");
 initSection("* Adjusted the masks for FStrong, DAir, USpecial and FSpecial, to help them interact better with solid objects.");

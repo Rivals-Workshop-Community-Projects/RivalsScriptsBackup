@@ -293,7 +293,7 @@ if (attack == AT_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 	}
 //}
 
-
+/*
 // New gotHitFormula
 if (got_hitFspecial && !hitpause){
 	
@@ -327,10 +327,11 @@ if (got_hitFspecial && !hitpause){
 		heart_num = 0;
 	}
 }
+*/
 
 //////////////////////////////////////////////////////////////////////////////
 // OLD GOT HIT FORMULA FOR WHEN IT WAS ONLY DURING FSPECIAL AND LOST ALL METER
-/*
+
 if (got_hitFspecial){
 //	spawn_hit_fx( x, y, hearthurt_fx);
 	
@@ -363,7 +364,7 @@ if (got_hitFspecial){
 		heart_num = 0;
 	}
 }
-*/
+
 ///////////////////////////////////////////////////////////////////////////////
 
 if (instance_exists(asset_get("obj_article1"))){

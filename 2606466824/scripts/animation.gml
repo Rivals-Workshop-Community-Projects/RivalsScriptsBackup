@@ -96,9 +96,21 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AI
 	} else {
 		hurtboxID.sprite_index = sprite_get("fspecial_althurt");
 	}
+	
+	if (window == 1) {
+		if (window_timer < 4) {
+			image_index = 1;
+		} else if (window_timer < 8) {
+			image_index = 2;
+		} else if (window_timer < 12) {
+			image_index = 3;
+		} else {
+			image_index = 4;
+		}
+	}
 }
 
-if (state == PS_SPAWN) {
+if (state == PS_SPAWN && should_do_intro == true) {
     if (state_timer < 37 + (2*player) ) {
         sprite_index = sprite_get("null");
 		draw_x = 0;

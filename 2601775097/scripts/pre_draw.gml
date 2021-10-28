@@ -2,7 +2,7 @@
 
 shader_start();
 //credit to Ability for helping me out on this!
-if (state == PS_RESPAWN || attack == AT_TAUNT && state == PS_ATTACK_GROUND && free == true) draw_sprite(sprite_get("plat_pre"), 0, x, y);
+if (state == PS_RESPAWN || attack == AT_TAUNT && state == PS_ATTACK_GROUND && free == true) draw_sprite(plat_pre_sprite, 0, x, y);
 //Turns out having a pre-draw not actually draw anything when taunting in the air with a state that should be on the ground means something.
 
 //intro pillar

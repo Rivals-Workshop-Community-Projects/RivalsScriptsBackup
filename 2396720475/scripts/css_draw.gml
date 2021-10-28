@@ -16,8 +16,6 @@ var alts = 15;
 var color = get_player_color(player);
 var name = " ";
 
-var ColorPrev = [0, 0, 0];
-var ColorNext = [0, 0, 0];
 
 // Updating image_alpha when a new color is selected
 if (color <= 16){
@@ -136,6 +134,7 @@ image_index = color;
 			
 				case 8: 
 			name = " 9: Pumpkin"; 
+				draw_sprite_ext( sprite_get("css_cal_icon"), 0, x + 176, y + 108, 1, 1, 0, c_white, 1);
 			var position = 8;
 			ColorPrev = make_color_rgb(211, 226, 154);
 			ColorNext = make_color_rgb(214, 217, 22);
@@ -201,6 +200,7 @@ image_index = color;
 			ColorNext = make_color_rgb(216, 62, 219);
 			ColorNextNext = make_color_rgb(212, 51, 78);
 			draw_sprite_ext(sprite_get("slime_charselect"), 0, x + 8, y + 8, 2, 2, 0, -1, 1);
+			draw_sprite_ext( sprite_get("css_cal_icon"), 0, x + 176, y + 108, 1, 1, 0, c_white, 1);
 				break;	
 				
 				case 15: 
@@ -285,13 +285,13 @@ shader_end();
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
-draw_text_color(x + 4, y + 215, "v1.7.4", c_gray, c_gray, c_gray, c_gray, 1);
+draw_text_color(x + 4, y + 215, "v1.8", c_gray, c_gray, c_gray, c_gray, 1);
 
 // Date Display
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_right);
 draw_set_valign(fa_bottom);
-draw_text_color(x + 218, y + 215, "August 3rd, 2021", c_gray, c_gray, c_gray, c_gray, 1);
+draw_text_color(x + 218, y + 215, "October 24th, 2021", c_gray, c_gray, c_gray, c_gray, 1);
 
 // Initial Name	+ Rectangles
 //if (image_alpha > 0){

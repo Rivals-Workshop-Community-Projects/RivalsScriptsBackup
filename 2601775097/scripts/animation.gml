@@ -6,10 +6,8 @@ switch (state){
     default: break;
 }
 
-
-
 //intro
-if (state == PS_SPAWN && !was_reloaded && !allow_bibical)
+if (state == PS_SPAWN && !was_reloaded && !allow_bibical && !testing)
 {
     if (intro_timer < 19 && intro_timer >= 0)
     {
@@ -153,7 +151,7 @@ if (attack == AT_TAUNT)
     }
 
     //change the hurtbox to ex_guy_hurt_box if you are trying to use mana debug or the skill select
-    if (training_mode)
+    if (get_match_setting(SET_PRACTICE))
     {
         if (up_down || down_down) set_attack_value(AT_TAUNT, AG_HURTBOX_SPRITE, asset_get("ex_guy_hurt_box"));
         else if (!up_down && !down_down) reset_attack_value(AT_TAUNT, AG_HURTBOX_SPRITE);
@@ -173,7 +171,7 @@ if (attack == AT_PHONE)
 }
 
 //air dash rune
-if (has_rune("A"))
+if (has_rune("A") || fuck_you_cheapies && theikos_active)
 {
     if (runeA_dash && free)
     {

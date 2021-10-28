@@ -27,6 +27,8 @@ if (theikos_active || godpower || od_already_active || get_player_color(player) 
 
     if (!is_8bit)
     {
+        user_event_1_active = true;
+        
         fx_introlight = sprite_get("theikos_fx_introlight_back");
 
         if (burningfury_active)
@@ -59,6 +61,7 @@ if (theikos_active || godpower || od_already_active || get_player_color(player) 
         fx_rockblow = hit_fx_create(sprite_get("theikos_fx_rockblow"), 27);
         set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, fx_fireblow1);
         set_hitbox_value(AT_DSTRONG, 1, HG_HIT_PARTICLE_NUM, 6);
+        set_hitbox_value(AT_DSTRONG, 3, HG_HIT_PARTICLE_NUM, 6);
         // some changed variables are in attack_update
 
         // u-strong
@@ -68,6 +71,8 @@ if (theikos_active || godpower || od_already_active || get_player_color(player) 
         set_hitbox_value(AT_USTRONG, 5, HG_PROJECTILE_SPRITE, sprite_get("theikos_fx_ustrong_b_lightspearburn_proj"));
         set_hitbox_value(AT_USTRONG, 5, HG_VISUAL_EFFECT, fx_fireblow2);
         set_hitbox_value(AT_USTRONG, 5, HG_PROJECTILE_DESTROY_EFFECT, fx_fireblow2);
+        for (var i = 0; i < 4; i++) set_hitbox_value(AT_USTRONG, i, HG_HIT_PARTICLE_NUM, 5);
+        set_hitbox_value(AT_USTRONG, 5, HG_HIT_PARTICLE_NUM, 6);
 
         // [0] light dagger
         set_hitbox_value(AT_SKILL0, 1, HG_PROJECTILE_SPRITE, sprite_get("theikos_fx_lightdagger_proj"));
@@ -161,6 +166,8 @@ if (theikos_active || godpower || od_already_active || get_player_color(player) 
         set_hitbox_value(AT_SKILL7, 1, HG_HIT_PARTICLE_NUM, 5);
 
         // [8] ember fist (the rest of the variables are in attack_update.gml)
+        set_attack_value(AT_SKILL8, AG_SPRITE, sprite_get("theikos_emberfist"));
+        set_attack_value(AT_SKILL8, AG_AIR_SPRITE, sprite_get("theikos_emberfist_air"));
         fx_emberfist = hit_fx_create(sprite_get("theikos_fx_emberfist"), 30);
         set_hitbox_value(AT_SKILL8, 1, HG_HIT_PARTICLE_NUM, 6);
 
@@ -173,7 +180,22 @@ if (theikos_active || godpower || od_already_active || get_player_color(player) 
         set_hitbox_value(AT_SKILL9, 2, HG_VISUAL_EFFECT, fx_fireblow2);
         set_hitbox_value(AT_SKILL9, 2, HG_PROJECTILE_DESTROY_EFFECT, fx_fireblow2);
 
+        // [10] searing descent
+        set_attack_value(AT_SKILL10, AG_SPRITE, sprite_get("theikos_searingdescent"));
+        set_hitbox_value(AT_SKILL10, 1, HG_VISUAL_EFFECT, fx_fireblow1);
+        set_hitbox_value(AT_SKILL10, 2, HG_VISUAL_EFFECT, fx_fireblow1);
+        set_hitbox_value(AT_SKILL10, 3, HG_VISUAL_EFFECT, fx_fireblow1);
+        set_hitbox_value(AT_SKILL10, 4, HG_VISUAL_EFFECT, fx_fireblow3);
+        set_hitbox_value(AT_SKILL10, 5, HG_VISUAL_EFFECT, fx_fireblow2);
+        set_hitbox_value(AT_SKILL10, 6, HG_VISUAL_EFFECT, fx_fireblow2);
+        for (var i = 0; i < 7; i++) set_hitbox_value(AT_SKILL10, i, HG_HIT_PARTICLE_NUM, 6);
+
+        // [11] flashbang
+        fx_flashbang_lightsmear = hit_fx_create(sprite_get("theikos_fx_flashbang_lightsmear"), 9);
+        fx_flashbang_firesmear = hit_fx_create(sprite_get("theikos_fx_flashbang_firesmear"), 15);
+
         // theikos Ustrong
+        fx_lightpillar = sprite_get("theikos_fx_ustrong_lightpillar");
         set_hitbox_value(AT_USTRONG_2, 1, HG_VISUAL_EFFECT, fx_lightblow1);
         set_hitbox_value(AT_USTRONG_2, 1, HG_HIT_PARTICLE_NUM, 5);
 
@@ -192,6 +214,8 @@ if (theikos_active || godpower || od_already_active || get_player_color(player) 
 }
 else
 {
+    user_event_1_active = false;
+
     fx_introlight = sprite_get("fx_introlight_back");
 
     if (burningfury_active)
@@ -231,6 +255,8 @@ else
     reset_hitbox_value(AT_USTRONG, 5, HG_PROJECTILE_SPRITE);
     reset_hitbox_value(AT_USTRONG, 5, HG_VISUAL_EFFECT);
     reset_hitbox_value(AT_USTRONG, 5, HG_PROJECTILE_DESTROY_EFFECT);
+    for (var i = 0; i < 4; i++) reset_hitbox_value(AT_USTRONG, i, HG_HIT_PARTICLE_NUM);
+    reset_hitbox_value(AT_USTRONG, i, HG_HIT_PARTICLE_NUM);
 
     // [0] light dagger
     reset_hitbox_value(AT_SKILL0, 1, HG_PROJECTILE_SPRITE);
@@ -324,6 +350,8 @@ else
     reset_hitbox_value(AT_SKILL7, 1, HG_HIT_PARTICLE_NUM);
 
     // [8] ember fist (the rest of the variables are in attack_update.gml)
+    reset_attack_value(AT_SKILL8, AG_SPRITE);
+    reset_attack_value(AT_SKILL8, AG_AIR_SPRITE);
     fx_emberfist = hit_fx_create(sprite_get("fx_emberfist"), 30);
     reset_hitbox_value(AT_SKILL8, 1, HG_HIT_PARTICLE_NUM);
 
@@ -336,7 +364,22 @@ else
     reset_hitbox_value(AT_SKILL9, 2, HG_VISUAL_EFFECT);
     reset_hitbox_value(AT_SKILL9, 2, HG_PROJECTILE_DESTROY_EFFECT);
 
+    // [10] searing descent
+    set_attack_value(AT_SKILL10, AG_SPRITE, sprite_get("searingdescent"));
+    set_hitbox_value(AT_SKILL10, 1, HG_VISUAL_EFFECT, fx_fireblow1);
+    set_hitbox_value(AT_SKILL10, 2, HG_VISUAL_EFFECT, fx_fireblow1);
+    set_hitbox_value(AT_SKILL10, 3, HG_VISUAL_EFFECT, fx_fireblow1);
+    set_hitbox_value(AT_SKILL10, 4, HG_VISUAL_EFFECT, fx_fireblow3);
+    set_hitbox_value(AT_SKILL10, 5, HG_VISUAL_EFFECT, fx_fireblow2);
+    set_hitbox_value(AT_SKILL10, 6, HG_VISUAL_EFFECT, fx_fireblow2);
+    for (var i = 0; i < 7; i++) reset_hitbox_value(AT_SKILL10, i, HG_HIT_PARTICLE_NUM);
+    
+    // [11] flashbang
+    fx_flashbang_lightsmear = hit_fx_create(sprite_get("fx_flashbang_lightsmear"), 9);
+    fx_flashbang_firesmear = hit_fx_create(sprite_get("fx_flashbang_firesmear"), 15);
+
     // theikos Ustrong
+    fx_lightpillar = sprite_get("fx_ustrong_lightpillar");
     reset_hitbox_value(AT_USTRONG_2, 1, HG_VISUAL_EFFECT);
     reset_hitbox_value(AT_USTRONG_2, 1, HG_HIT_PARTICLE_NUM);
 

@@ -2,6 +2,18 @@
 // Used for gameplay mechanics
 // Runs every frame
 
+
+if (!costume_end && (get_player_color(player) == 8 || get_player_color(player) == 14)){
+	if (state_timer % 6 == 0) {
+		introTimer++;
+	}
+
+	if (state != PS_SPAWN && state != PS_IDLE && state != PS_RESPAWN){
+		costume_end = true;
+	}
+}
+
+
 if (get_player_color(player) == 14 && state == PS_SPAWN && state_timer < 10){
 	set_victory_sidebar( sprite_get( "slime_result_small" ));
 	set_victory_portrait( sprite_get( "slime_portrait" ));

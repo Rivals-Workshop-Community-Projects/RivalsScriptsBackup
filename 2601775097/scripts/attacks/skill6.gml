@@ -90,10 +90,11 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 3);
 
-hitboxNum ++; //initial attack - sweetspot
+hitboxNum ++; //sweetspot
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 7); //at which window from the above the attack is created
 set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 4); //hitbox duration in frames
+set_hitbox_value(atk, hitboxNum, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 0);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, -8);
 set_hitbox_value(atk, hitboxNum, HG_WIDTH, 60);
@@ -102,10 +103,10 @@ set_hitbox_value(atk, hitboxNum, HG_SHAPE, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 1);
 set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 4); //1 = low priority over other moves || 10 = highest
-set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 8); //10
-set_hitbox_value(atk, hitboxNum, HG_ANGLE, 270);
-set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.8);
+set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 8);
+set_hitbox_value(atk, hitboxNum, HG_ANGLE, 55); //270
+set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 9); //8
+set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 1.2); //0.8
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 10); //hitstun
 set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_fireblow2);
@@ -116,6 +117,7 @@ hitboxNum ++; //initial attack - sourspot
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 7); //at which window from the above the attack is created
 set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 6); //hitbox duration in frames
+set_hitbox_value(atk, hitboxNum, HG_WINDOW_CREATION_FRAME, 2);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 0);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, -8);
 set_hitbox_value(atk, hitboxNum, HG_WIDTH, 168);
@@ -124,10 +126,11 @@ set_hitbox_value(atk, hitboxNum, HG_SHAPE, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 2);
 set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 2); //1 = low priority over other moves || 10 = highest
-set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 5); //8
-set_hitbox_value(atk, hitboxNum, HG_ANGLE, 90);
-set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.7);
+set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 5);
+set_hitbox_value(atk, hitboxNum, HG_ANGLE, 80); //90
+set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 8); //7
+set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.8); //0.7
+set_hitbox_value(atk, hitboxNum, HG_ANGLE_FLIPPER, 6); //0
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 6); //hitstun
 set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_fireblow1);

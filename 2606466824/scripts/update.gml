@@ -29,13 +29,40 @@ with (oPlayer) {
 		}
 	}
 }
-if (doBurn == true) {
-	for (i = 0; i < 4; i++) {
-		if (burnType[i] > 0) {
-			burnHitbox = create_hitbox(AT_DSPECIAL, burnType[i], burnTargetX[i], burnTargetY[i] - 40);
-			burnType[i] = 0;
+if (in_adventure) {
+	with (obj_stage_article) {
+		if (!"incinRevengeTimer" in self) {
+			incinRevengeTimer = 500;
+		} else if (incinRevengeTimer < 500) {
+			if (!hitpause || incinRevengeTimer > 12) {
+				incinRevengeTimer++;
+			}
+			if (incinRevengeTimer == 15) {
+				print("burn lol");
+				other.burnTargetAdv = id;
+				other.burnType[1] = 4;
+				other.burnTargetX[1] = round(x+hsp);
+				other.burnTargetY[1] = round(y+vsp);
+				other.doBurn = true;
+			}
+		}
+	}
+	if (doBurn == true) {
+		if (burnType[1] > 0) {
+			burnHitbox = create_hitbox(AT_DSPECIAL, burnType[1], burnTargetX[1], burnTargetY[1] - 40);
+			burnType[1] = 0;
 		}
 		doBurn = false;
+	}
+} else {
+	if (doBurn == true) {
+		for (i = 0; i < 4; i++) {
+			if (burnType[i] > 0) {
+				burnHitbox = create_hitbox(AT_DSPECIAL, burnType[i], burnTargetX[i], burnTargetY[i] - 40);
+				burnType[i] = 0;
+			}
+			doBurn = false;
+		}
 	}
 }
 
@@ -155,7 +182,8 @@ if (state == PS_DASH && state_timer % 19 == 12) {
 }
 //this stops the overhead HUD from getting in the way of the animation. If your animation does not involve much movement, this may not be necessary.
 
-if (state == PS_SPAWN) {
+if (state == PS_SPAWN && should_do_intro == true) {
+	if ("room_manager" in self) {in_adventure = true;}
 	if (state_timer == 9 + (2*player)) {
 		sound_play(asset_get("sfx_swipe_medium1"));
 	}
@@ -178,6 +206,8 @@ if (state == PS_SPAWN) {
 		draw_indicator = true;
 	}
 	char_height = 62 - draw_y;
+} else if (state != 1) {
+	should_do_intro = false;
 }
 
 if (revengeMult > 1) {

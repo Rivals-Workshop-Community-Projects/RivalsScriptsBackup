@@ -517,6 +517,11 @@ with phone{
 	initPatchWords_ext("Wow that is very funny", fa_left, c_gray, 1, 0); */
 	
 	
+			initPatch("2.4", "24 October, 2021");
+		
+			initPatchWords_ext("fixed smol issues with the halloween skin", fa_center, c_white, 0, 0);
+	
+	
 			initPatch("2.3", "24 October, 2021");
 		
 			initPatchWords_ext("DOWNWARDS TILT I BEG OF YOU", fa_center, c_white, 0, 1);

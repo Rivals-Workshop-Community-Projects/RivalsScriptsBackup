@@ -131,7 +131,7 @@ switch(fx_type){
 		life++;
 		visible = 1;
 		image_index = player_id.charge_level*4 + floor((life%12)/3);
-		if(player_id.state_cat == SC_HITSTUN or player_id.window == 3){
+		if(player_id.state_cat == SC_HITSTUN or player_id.window == 3 or player_id.state == PS_PRATFALL){
 			instance_destroy(self);
 		}
 		break;

@@ -9,7 +9,7 @@ set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_ENDLAG, "22");
 
 
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 13);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 13); //18?
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);

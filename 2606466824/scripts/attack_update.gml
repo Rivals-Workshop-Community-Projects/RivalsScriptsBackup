@@ -269,7 +269,8 @@ if (attack == AT_NSPECIAL){
 		set_hitbox_value(AT_NSPECIAL, 4, HG_WINDOW, 30);
 	}
 	if (window == 2 && window_timer == 1) {
-		spawn_hit_fx(x + ((4*strong_charge) + 40)*spr_dir, y - 20 - (3*custom_up_held), ropeSmoke);	
+		fx = spawn_hit_fx(x + ((4*strong_charge) + 40)*spr_dir, y - 20 - (3*custom_up_held), ropeSmoke);	
+		fx.depth = depth + 1;
 		if (strong_charge > 6) {
 			set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 10);
 			set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 11);
@@ -413,6 +414,18 @@ if (attack == AT_FSPECIAL){
             }      
         }
     }
+	
+	if (revengeMult > 1 && window == 2 && !has_hit && !has_hit_player) {
+		if (jump_pressed && false) {
+			revengeMult = 1;
+			state = PS_DOUBLE_JUMP;
+			state_timer = 0;
+			fx = spawn_hit_fx(x, y, firehfx);
+			fx.depth = depth - 1;
+			hsp *= 0.8;
+			vsp = -9.5;
+		}
+	}
 } else {
 	move_cooldown[AT_FSPECIAL_2] = 0;
 }
@@ -727,6 +740,7 @@ if (attack == AT_USPECIAL){
 				} else {
 					myFX.draw_angle = 270;
 				}
+				myFX.depth = depth + 1;
 			}
 		} else {
 			if (shield_down) {
@@ -742,10 +756,11 @@ if (attack == AT_USPECIAL){
 				vsp = -5;
 				hsp *= 0.3;
 				if (get_player_color(player) == 24) {
-					spawn_hit_fx( x, y-25, burstR);				
+					myFX = spawn_hit_fx( x, y-25, burstR);				
 				} else {
-					spawn_hit_fx( x, y-25, burst);
+					myFX = spawn_hit_fx( x, y-25, burst);
 				}
+				myFX.depth = depth + 1;
 				move_cooldown[AT_USPECIAL_2] = 50;
 				sound_play(asset_get("sfx_blow_heavy1"));
 				array_push(phone_dust_query, [x - 5*spr_dir, y, "land", spr_dir]);
@@ -875,16 +890,16 @@ if (attack == AT_DSPECIAL){
 			myBurst = spawn_hit_fx (x, y, RburstMain);	
 			myBurst.depth = -12;
 			myBurst = spawn_hit_fx (x, y, RburstRingsA);	
-			myBurst.depth = -10;
+			myBurst.depth = 12;
 			myBurst = spawn_hit_fx (x, y, RburstRingsB);	
-			myBurst.depth = 12;			
+			myBurst.depth = -10;			
 		} else {
 			myBurst = spawn_hit_fx (x, y, burstMain);	
 			myBurst.depth = -12;
 			myBurst = spawn_hit_fx (x, y, burstRingsA);	
-			myBurst.depth = -10;
+			myBurst.depth = 12;
 			myBurst = spawn_hit_fx (x, y, burstRingsB);	
-			myBurst.depth = 12;	
+			myBurst.depth = -10;	
 		}	
 	}
 	

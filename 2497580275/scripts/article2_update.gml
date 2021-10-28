@@ -6,7 +6,18 @@ vsp *= 0.95;
 with(pHitBox)
 {
     if(collision_circle(other.x,other.y,50,self,true,false) && hit_priority != 0 && proj_break == 0 && player_id != other.player_id)
-        other.state = 2;
+    {
+        if(other.hit_timer == 0)
+        {
+            spawn_hit_fx((x+other.x)/2, (y+other.y)/2, 194);
+            sound_play(asset_get("sfx_ori_seinhit_medium"));
+            other.hit_timer = 60;   
+        }
+        if(type == 2)
+            other.state = 1;
+        else
+            other.state = 2;
+    }
 }
 
 if(player_id.state == PS_RESPAWN)

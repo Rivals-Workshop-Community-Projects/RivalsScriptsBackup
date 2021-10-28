@@ -32,6 +32,7 @@ burst_count = 0;
 
 //guard aura activates if bar gets hit while it's active
 if (guardaura_active) guard_explosion = true;
+//if (guardaura_active) guardaura_active = false; //absorbtion take
 
 //light hookshot resets
 hookshot_speedboost = false;
@@ -46,4 +47,36 @@ if (has_rune("A"))
     runeA_dash = false;
     runeA_dash_cool_active = true;
     runeA_dash_timer = runeA_dash_time_max;
+}
+
+if(menu_timer > -1){
+    menu_timer = -1;
+}
+
+if (fuck_you_cheapies && super_armor)
+{
+	hitpause = false;
+	hitstop = 0;
+	hitstop_full = 0;
+}
+
+#define ApplySpark()
+{
+	hit_player_obj.lightstun_id = player;
+
+	if (!hit_player_obj.lightstun && !hit_player_obj.lightstun_pre_stun) //if it isn't active at all
+	{
+		hit_player_obj.lightstun_timer = 300;
+		hit_player_obj.lightstun_pre_stun = true;
+
+		if (attack != AT_USTRONG) lightstun_has_hit = true;
+	}
+	else if (hit_player_obj.lightstun_pre_stun && !lightstun_has_hit) //if the pre-stun countdown is active
+	{
+		hit_player_obj.lightstun_timer = 0;
+	}
+	else if (hit_player_obj.lightstun) //if the lightstun is applied
+	{
+		hit_player_obj.lightstun_timer += 0;
+	}
 }

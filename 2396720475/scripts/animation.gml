@@ -3,6 +3,10 @@
 // Used for animation purposes such as changing the 
 // character’s sprite_index and image_index.
 
+if (attack == AT_TAUNT && state == PS_ATTACK_GROUND && death_chime_sound){
+	suppress_stage_music(0, 0.1);
+}
+
 switch (state){
     case PS_HITSTUN:
 		if (get_player_color(player) == 14){
@@ -19,6 +23,14 @@ switch (state){
 if (has_skin()) { //is there a skin equipped?
     sprite_index = skin_sprite(sprite_index); //get the skinned sprite
     basic_animations(); //correct the idle, walk, and dash animations
+}
+
+
+if (!costume_end && (get_player_color(player) == 8 || get_player_color(player) == 14)){
+	if (state == PS_SPAWN || state == PS_IDLE){
+		sprite_index = sprite_get("tomo_hallow");
+		image_index = introTimer;
+	}
 }
 
 //COPY START

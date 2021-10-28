@@ -121,8 +121,13 @@ if (get_player_color(player) == 11 && birthboy)
 	set_color_profile_slot(11, 6, 159, 241, 255); //LIGHT
 	set_color_profile_slot(11, 7, 76, 133, 233); //FIRE
 
-	//fire shading amplify
+	//shading tweaks
+	set_character_color_shading(5, 1); //CLOTHBLACK
 	set_character_color_shading(7, 1.5); //FIRE
+
+	//article stuff
+	set_article_color_slot(6, 159, 241, 255, 1);
+	set_article_color_slot(7, 76, 133, 233, 1);
 }
 
 //burning fury outline colors
@@ -263,6 +268,9 @@ if("theikos_active" in self)
 			set_character_color_slot(7, 235, 211, 32);
         	set_article_color_slot(7, 235, 211, 32);
 		}
+
+		//birthday alt gets white theikos hair
+		if (get_player_color(player) == 11 && birthboy) set_color_profile_slot(11, 1, 206, 216, 227); //HAIR
 	}
 }
 

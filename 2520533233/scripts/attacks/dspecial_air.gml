@@ -6,7 +6,7 @@ set_attack_value(AT_DSPECIAL_AIR, AG_NUM_WINDOWS, 4);
 set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_HSPEED, 3);
+set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL_AIR, 1, AG_WINDOW_VSPEED, 0);
 
@@ -16,7 +16,7 @@ set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_SFX, sound_get("counter"));
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_HSPEED, 4);
+set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_VSPEED, 0);
 

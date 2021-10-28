@@ -13,7 +13,7 @@ state = 0;
 state_timer = 0;
 
 sprite_index = sprite_get("box");
-mask_index = sprite_get("box");
+mask_index = sprite_get("box_hurtbox");
 image_index = 0;
 
 got_hit = false;

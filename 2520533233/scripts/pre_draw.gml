@@ -2,8 +2,8 @@
 if(dragon_install){
    
     gpu_set_fog(true, rainbow_color, 0, 0);
-    draw_sprite_ext(sprite_index, image_index, x + 2 - random_func(4,8,true) , y - 2 + random_func(2,6,true)  , spr_dir*2, 2, 0 , c_black , .5);
-    draw_sprite_ext(sprite_index, image_index, x - 2 + random_func(4,8,true) , y + 2 - random_func(2,6,true)  , spr_dir*2, 2, 0 , c_black , .5);
+    draw_sprite_ext(sprite_index, image_index, x + 2 - random_func(4,8,true) , y - 2 + random_func(2,6,true)  , spr_dir*2, 2, 0 , c_black , 1);
+    draw_sprite_ext(sprite_index, image_index, x - 2 + random_func(4,8,true) , y + 2 - random_func(2,6,true)  , spr_dir*2, 2, 0 , c_black , 1);
     for(var t = 0; t < install_trail_size; t++){
         var i = install_trail[t];
         if(i.life > 0){

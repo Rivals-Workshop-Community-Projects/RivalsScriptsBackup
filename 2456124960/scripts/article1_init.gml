@@ -36,3 +36,5 @@ hit_lockout = 0;
 hitPlayer = 0;
 
 onPlat = false;
+
+adventure_timer = 300;

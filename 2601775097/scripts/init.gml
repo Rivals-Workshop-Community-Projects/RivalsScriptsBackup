@@ -3,56 +3,73 @@ crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
-char_height = 56;
-idle_anim_speed = .2;
-crouch_anim_speed = .1;
-walk_anim_speed = .2;
-dash_anim_speed = .3;
-pratfall_anim_speed = .25;
+//These variables are used to reference Bar's default movement stats for modification.
+normal_dash_anim_speed = .3;
 
-//These variables are used to reference Bar's default movement stats for modification by Guard Aura.
 normal_walk_speed = 2.75;
+normal_walk_accel = 0.2;
 normal_walk_turn_time = 8;
-normal_walk_turn_time = 8;
+normal_initial_dash_time = 10;
 normal_initial_dash_speed = 7.5; 
 normal_dash_speed = 7; 
 normal_dash_turn_time = 14;
-normal_dash_turn_time = 14;
 normal_moonwalk_accel = 1.2;
-normal_wave_land_adj = 1.35;
+
+normal_leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
+normal_max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
+normal_air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state
 normal_air_accel = .3;
 normal_prat_fall_accel = .85;
 normal_air_friction = .05;
 
-walk_speed = 2.75;
-walk_accel = 0.2;
-walk_turn_time = 8;
-initial_dash_time = 10;
-initial_dash_speed = 7.5;
-dash_speed = 7;
-dash_turn_time = 14;
+normal_max_djumps = 3;
+
+normal_fast_fall = 15; //fast fall speed
+normal_knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+
+normal_prat_land_time = 6;
+normal_wave_land_time = 8;
+normal_wave_land_adj = 1.35;
+normal_wave_friction = .4; //grounded deceleration when wavelanding
+
+
+
+char_height = 56;
+idle_anim_speed = .2;
+crouch_anim_speed = .1;
+walk_anim_speed = .2;
+dash_anim_speed = normal_dash_anim_speed;
+pratfall_anim_speed = .25;
+
+walk_speed = normal_walk_speed;
+walk_accel = normal_walk_accel;
+walk_turn_time = normal_walk_turn_time;
+initial_dash_time = normal_initial_dash_time;
+initial_dash_speed = normal_initial_dash_speed;
+dash_speed = normal_dash_speed;
+dash_turn_time = normal_dash_turn_time;
 dash_turn_accel = 1.2;
 dash_stop_time = 6;
 dash_stop_percent = .4; //the value to multiply your hsp by when going into idle from dash or dashstop
 ground_friction = .6;
-moonwalk_accel = 1.2;
+moonwalk_accel = normal_moonwalk_accel;
 
 jump_start_time = 5;
 jump_speed = 11.5;
 short_hop_speed = 7;
-leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state
+leave_ground_max = normal_leave_ground_max; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = normal_max_jump_hsp; //the maximum hsp you can have when jumping from the ground
+air_max_speed = normal_air_max_speed; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .3;
-prat_fall_accel = .85; //multiplier of air_accel while in pratfall
-air_friction = .05;
+air_accel = normal_air_accel;
+prat_fall_accel = normal_prat_fall_accel; //multiplier of air_accel while in pratfall
+air_friction = normal_air_friction;
 
 djump_speed = 5;
 djump_accel = -1;
 djump_accel_start_time = 0;
 djump_accel_end_time = 10;
-max_djumps = 3;
+max_djumps = normal_max_djumps;
 double_jump_time = 33; //the number of frames to play the djump animation. Can't be less than 31.
 
 walljump_hsp = 5;
@@ -60,16 +77,16 @@ walljump_vsp = 11;
 walljump_time = 32;
 wall_frames = 2;
 max_fall = 10; //maximum fall speed without fastfalling
-fast_fall = 15; //fast fall speed //12
+fast_fall = normal_fast_fall; //fast fall speed //12
 gravity_speed = .65;
 hitstun_grav = .5;
-knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = normal_knockback_adj; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 6;
-wave_land_time = 8;
-wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .4; //grounded deceleration when wavelanding
+prat_land_time = normal_prat_land_time;
+wave_land_time = normal_wave_land_time;
+wave_land_adj = normal_wave_land_adj; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_friction = normal_wave_friction; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 2;
@@ -118,12 +135,7 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
-//training mode detection - credit to Jill Katze
-training_mode = false;
-if (get_training_cpu_action() != CPU_FIGHT || was_reloaded) training_mode = true;
-training_msg = false;
-msg_menu = true;
-msg_phone = true;
+msg_menu = false;
 
 //test player detection
 testing = false;
@@ -132,6 +144,9 @@ with (oTestPlayer)
 	testing = true;
 	msg_menu = true;
 }
+
+//practice mode check
+if (get_match_setting(SET_PRACTICE)) msg_menu = true;
 
 //Hovering
 true_gravity_speed = gravity_speed;
@@ -154,6 +169,8 @@ jump_total = max_djumps + 1; //unused
 plat_frame = 0;
 plat_animspeed = 0.25;
 plat_strip_length = 16; //not sure i even used this lmfao
+plat_pre_sprite = sprite_get("plat_pre");
+plat_post_sprite = sprite_get("plat_post");
 
 //Custom Hitboxes
 hb_sweet_0 = sprite_get("hb_sweet_0");
@@ -255,56 +272,13 @@ emberfist_cost = 20;
 lighthookshot_activate_cost = 5;
 lighthookshot_attack_cost = 15;
 lighthookshot_total_cost = lighthookshot_activate_cost + lighthookshot_attack_cost;
+searingdescent_cost = 10;
+flashbang_activate_cost = 10;
+flashbang_attack_cost = 10;
+flashbang_total_cost = flashbang_activate_cost + flashbang_attack_cost;
 
 //skills menu stuff
-menu_up = false;
-menu_countdown_reset = 1200; //20 secs
-menu_countdown = menu_countdown_reset;
-is_training_menu = false; //this just redirects the command from unfreezing everyone to just unfreezing bar
-recorded_time = 0; //used for testing
-skill_cursor_x = 24; //light dagger's position is the default position
-skill_cursor_y = 72;
-movement = 32; //the cursor moves 32 pixels
-border_x1 = 24; //left limit
-border_x2 = 152; //right limit
-border_y1 = 72; //up limit
-border_y2 = 40; //down limit
-selected_nspec = -1;
-selected_fspec = -1;
-selected_uspec = -1;
-selected_dspec = -1;
-with (oTestPlayer)
-{
-    selected_nspec = 0;
-    selected_fspec = 1;
-    selected_uspec = 2;
-    selected_dspec = 3;
-}
-cur_select = 0;
-//positions for the skill icons on the selection
-skill_xpos1 = 24;
-skill_xpos2 = 56;
-skill_xpos3 = 88;
-skill_xpos4 = 120;
-skill_xpos5 = 152;
-skill_ypos1 = 72;
-skill_ypos2 = 40;
-
-//input names - i'll need it eventually probably
-inp_nspec = special_pressed;
-inp_fspec = special_pressed && left_pressed || special_pressed && right_pressed;
-inp_uspec = special_pressed && up_pressed;
-inp_dspec = special_pressed && down_pressed;
-inp_skill0 = 0;
-inp_skill1 = 0;
-inp_skill2 = 0;
-inp_skill3 = 0;
-inp_skill4 = 0;
-inp_skill5 = 0;
-inp_skill6 = 0;
-inp_skill7 = 0;
-inp_skill8 = 0;
-inp_skill9 = 0;
+//is_training_menu = false; //this just redirects the command from unfreezing everyone to just unfreezing bar
 
 //skill refferences
 AT_SKILL0 = AT_NTHROW; // [0] light dagger
@@ -319,6 +293,37 @@ AT_SKILL6 = AT_FSPECIAL_2; // [6] power smash
 AT_SKILL7 = AT_USPECIAL_2; // [7] guard aura
 AT_SKILL8 = AT_DSPECIAL_2; // [8] ember fist
 AT_SKILL9 = AT_EXTRA_2; // [9] light hookshot
+AT_SKILL10 = AT_EXTRA_3; // [10] searing dscent
+AT_SKILL11 = 39; // [11] flashbang
+
+//jpeg menu---------------------------------------------------------------------
+
+//you can change the sprite per-alt or for other reasons if you wish by changing which sprite this variable uses
+hud_menu = sprite_get("hud_menu_bg");
+
+//menu variables
+specialnums = [0, 0, 0, 0];         //add 1 to each number for the special number, i.e. 0211 = specs 1322
+menu_open = false;
+menu_confirm = true;
+menu_close = false;                 //used to reset all variables at once when the menu is closed
+close_timer = -1;                   //used for menu vfx when closing					
+if (!testing) menu_timer = 120;		//menu closes when this equals -1
+else menu_timer = -1; 
+menu_dir = -1;                      //returns 0 for up, 1 for right, 2 for down, and -1 for left and idle
+prev_dir = -1;                      //used for input lockout so you pressing a direction once doesn't register every frame
+active_col = 0;                     //used for player selection
+for(var i = 0; i <= 3; i++){
+    for(var j = 0; j <= 2; j++){
+        specs_chosen[i, j] = true;  //determines what icons are drawn on the menu
+    }
+}
+cursor_timer = 0;					//used for the cursor blinking
+arrow_frame = 0; //4
+arrow_anim_up = false;
+arrow_anim_side = false;
+arrow_anim_down = false;
+
+//jpeg menu end-----------------------------------------------------------------
 
 //if more are needed, i'll just use other inputs
 //or if i can't use the default specials like that cuz they will be overwritten idk
@@ -358,6 +363,7 @@ fx_lightblow3 = hit_fx_create(sprite_get("fx_lightblow3"), 30);
 fx_fireblow1 = hit_fx_create(sprite_get("fx_fireblow1"), 20);
 fx_fireblow2 = hit_fx_create(sprite_get("fx_fireblow2"), 30);
 fx_fireblow3 = hit_fx_create(sprite_get("fx_fireblow3"), 40);
+
 set_hit_particle_sprite(1, sprite_get("fx_lightparticle"));
 set_hit_particle_sprite(2, sprite_get("fx_fireparticle"));
 
@@ -380,6 +386,9 @@ fx_earthshatter = hit_fx_create(sprite_get("fx_chasmshatter"), 180);
 fx_guardaura = hit_fx_create(sprite_get("fx_guardaura"), 15);
 
 fx_emberfist = hit_fx_create(sprite_get("fx_emberfist"), 30);
+
+fx_flashbang_lightsmear = hit_fx_create(sprite_get("fx_flashbang_lightsmear"), 9);
+fx_flashbang_firesmear = hit_fx_create(sprite_get("fx_flashbang_firesmear"), 15);
 
 //technical variables
 did_i_turn = false; //for f-strong
@@ -438,8 +447,8 @@ sfx_fire = sound_get("sfx_constantfire");
 
 guardaura_active = false;
 guard_explosion = false;
-guard_slow = 0.8;
-guard_time_max = 180 //3 secs (usd to be 8)
+guard_time_real = 2; //i'm just lazy to calculate seconds
+guard_time_max = guard_time_real*60;
 guard_time = guard_time_max;
 
 emberfist_up = false;
@@ -457,15 +466,21 @@ hookshot_lifetime = 55;
 hookshot_retract = false; //these were ment for the article to know if bar caught anything
 hookshot_retract_timer = 0;
 
+descent_timer_reset = 20;
+descent_timer = descent_timer_reset; //checks untill bar can jump/airdodge out out the move
+
+flashbanged_id = noone;
+
 //////////////////////////////////////////////////MISC. SECTION//////////////////////////////////////////////////
 
 is_AI = false;
 show_player_info = true;
-is_bar = 2429376422;
+is_bar = 2601775097;
 
 game_paused = false;
 
 last_attack_hit = 0;
+previous_attack = AT_JAB;
 /*
 attack_history = [0, 0];
 
@@ -533,6 +548,7 @@ helel_blur = array_create(2);
 myday = 25;
 mymonth = 10;
 birthboy = false;
+if (current_day == myday && current_month == mymonth) birthboy = true;
 
 //move names for the stat debug thing
 move_names = [
@@ -574,9 +590,9 @@ move_names = [
 	"AT_TAUNT",
 	"AT_TAUNT_2",
 	"AT_LIGHT_HOOKSHOT",
-	"AT_EXTRA_3",
+	"AT_SEARING_DESCENT",
+	"AT_FLASHBANG",
 	"AT_PHONE",
-	"???",
 	"AT_LIGHT_DAGGER_AIR",
 	"???",
 	"???",
@@ -692,6 +708,10 @@ if (has_rune("L")) theikos = true;
 else theikos = false;
 
 theikos_active = false; //this is used so i can delay the transformation
+fuck_you_cheapies = false;
+AT_THEIKOS = 47;
+trans_stall_max = 120;
+trans_stall = 0;
 
 aura_frame = 0;
 base_aura_speed = 0.25;
@@ -701,9 +721,6 @@ aura_color = $45B6F5;
 text_time = 0; //used for the text particles
 text_maxTime = 5; //controls the rate of holy text particles spawning
 text_alpha = 1; //alpha animation
-
-set_hit_particle_sprite(5, sprite_get("theikos_fx_lightparticle"));
-set_hit_particle_sprite(6, sprite_get("theikos_fx_fireparticle"));
 
 //i don't need healing but thanks
 heal_count = 0
@@ -758,7 +775,6 @@ lightpillar_frame = 0;
 lightpillar_xscale = 0.3;
 lightpillar_alpha = 0.8;
 ustrong2_cast = false;
-normal_prat_land_time = 6; //used to default back after using theikos U-strong
 
 //fire ground logic for Dstrong
 groundfire_count = 3;
@@ -773,11 +789,29 @@ dstrong2_fire_y = y;
 fx_armorbreak = hit_fx_create(sprite_get("theikos_fx_fstrong_armorbreak"), 20);
 fx_firesmear = hit_fx_create(sprite_get("fx_dstrong_t_firesmear"), 20);
 fx_fireground = hit_fx_create(sprite_get("fx_dstrong_t_fireground"), 90);
+fx_lightpillar = sprite_get("theikos_fx_ustrong_lightpillar");
 
 //theikos Fstrong sound effect array
 sfx_armorbreak[0] = sound_get("sfx_armorbreak1");
 sfx_armorbreak[1] = sound_get("sfx_armorbreak2");
 sfx_armorbreak[2] = sound_get("sfx_armorbreak3");
+
+//particles
+/*
+if ((theikos_active || godpower || od_already_active || get_player_color(player) == 31) && !is_8bit)
+{
+	set_hit_particle_sprite(5, sprite_get("theikos_fx_lightparticle"));
+    set_hit_particle_sprite(6, sprite_get("theikos_fx_fireparticle"));
+}
+else
+{
+	set_hit_particle_sprite(1, sprite_get("fx_lightparticle"));
+	set_hit_particle_sprite(2, sprite_get("fx_fireparticle"));
+}
+*/
+set_hit_particle_sprite(5, sprite_get("theikos_fx_lightparticle"));
+set_hit_particle_sprite(6, sprite_get("theikos_fx_fireparticle"));
+user_event_1_active = false;
 
 //////////////////////////////////////////////////WORKSHOP INTERRACTION SECTION//////////////////////////////////////////////////
 
@@ -856,1062 +890,21 @@ fs_hide_meter = true; //so i can make it use the OD gauge instead
 //rivals of fighters stage
 //superMove = AT_OVERDRIVE;
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//Dategirl compatibility
-//faces dictionary:
-//0 - normal/happy
-//1 - flustered af
-//2 - grief
-//3 - awkward
-//4 - confused
-//5 - angry flustered
-//Date Girl Support. Generated using McDucky's Date Girl Generator!
-Chatting = true;
-if (!theikos) DG_portrait = sprite_get("DG_portrait");
-else if (theikos) DG_portrait = sprite_get("DG_portrait_theikos");
-var DG_page = 0;
-
-//Page 0 - INTRO
-DG_page = 0;
-DG_chat_type[DG_page] = 1;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 4; //4 - confused
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"Uhm, hi..? Do I... Know you?
-
-"
-
-DG_options[DG_page] = 
-"You don't, but we can fix that.
-You're pretty cute.
-Hey~ No need to get all tensed up!"
-			
-DG_answers[DG_page] = [1,25,32];
-
-//OPTION1
-//Page 1
-DG_page = 1;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 3; //3 - awkward
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"*Ahem* Well... I'm Bar Reygard, Guardian of the Elements.
-Who are you?
-"
-
-DG_nextindex[DG_page] = 2;
-
-//Page 2
-DG_page = 2;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 0; //0 - normal/happy
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = true;
-
-DG_dialogue[DG_page] = 
-"
-
-"
-
-DG_dialogue_right[DG_page] = 
-"My name is Callie! I don't really know where I'm from but
-I do want to get to know YOU more!
-"
-DG_nextindex[DG_page] = 3;
-
-//SELECT1
-//Page 3
-DG_page = 3;
-DG_chat_type[DG_page] = 1;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 1; //1 - flustered af
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"G-Get to know me? Well.. There isn't a lot to say...
-I'm just an angel from another world assigned to stop the
-chaos happening here in Aether."
-
-DG_options[DG_page] = 
-"An angel? I never would have guessed!
-I would have expected something a bit more grand.
-What do you guard?"
-			
-DG_answers[DG_page] = [4,9,18];
-
-//OPTION1-1
-//Page 4
-DG_page = 4;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 0; //0 - normal/happy
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"Yeah, Angels in my world are hiding in plain sight.
-We use a human disguise to blend in.
-Gehenom did it first so we were forced into it to stop them."
-
-DG_nextindex[DG_page] = 5;
-
-//Page 5
-DG_page = 5;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 0; //0 - normal/happy
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = true;
-
-DG_dialogue[DG_page] = 
-"
-
-"
-
-DG_dialogue_right[DG_page] = 
-"Gehenom? Sounds pretty spooky~
-
-"
-DG_nextindex[DG_page] = 6;
-
-//Page 6
-DG_page = 6;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 0; //0 - normal/happy
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"You Humans probably know it as Hell or The Underworld.
-
-"
-
-DG_nextindex[DG_page] = 7;
-
-//Page 7
-DG_page = 7;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 3; //3 - awkward
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"W-well I should probably go, I still have work to do in this
-world, and it's not gonna finish itself.
-"
-
-DG_nextindex[DG_page] = 8;
-
-//Page 8
-DG_page = 8;
-DG_chat_type[DG_page] = 3;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 0; //0 - normal/happy
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"It was nice talking to someone for once though!
-Things started to get a bit lonely here...
-"
-
-//OPTION1-2
-//Page 9
-DG_page = 9;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 3; //3 - awkward
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"W-well yeah that's understandable.
-
-"
-
-DG_nextindex[DG_page] = 10;
-
-//Page 10
-DG_page = 10;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 3; //3 - awkward
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"You probably expected something less... Normal looking.
-
-"
-
-DG_nextindex[DG_page] = 11;
-
-//Page 11
-DG_page = 11;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 3; //3 - awkward
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"My Theïkós would fit that description a bit more.
-
-"
-
-DG_nextindex[DG_page] = 12;
-
-//Page 12
-DG_page = 12;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 3; //3 - awkward
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = true;
-
-DG_dialogue[DG_page] = 
-"
-
-"
-
-DG_dialogue_right[DG_page] = 
-"...Theïkós?
-
-"
-DG_nextindex[DG_page] = 13;
-
-//Page 13
-DG_page = 13;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 0; //0 - normal/happy
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"Y-yeah! That's my true form, the more angelic and grand
-looking one.
-"
-
-DG_nextindex[DG_page] = 14;
-
-//Page 14
-DG_page = 14;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 0; //0 - normal/happy
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"Using God's blessing I can transform to an unrestraint form,
-summoning an a holy armor on my body and becoming
-virtually indestructable."
-
-DG_nextindex[DG_page] = 15;
-
-//Page 15
-DG_page = 15;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 0; //0 - normal/happy
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"The only thing really holding this pure power back is...
-Well my willpower.
-"
-
-DG_nextindex[DG_page] = 16;
-
-//Page 16
-DG_page = 16;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 0; //0 - normal/happy
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"Without it, that form will crumble and the power - wasted.
-
-"
-
-DG_nextindex[DG_page] = 17;
-
-//Page 17
-DG_page = 17;
-DG_chat_type[DG_page] = 3;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 3; //3 - awkward
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"W-well I should get going, I have a job to do.
-But I do appritiate the talk!
-"
-
-//OPTION1-3
-//Page 18
-DG_page = 18;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 0; //0 - normal/happy
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"This gauntlet, actually.
-
-"
-
-DG_nextindex[DG_page] = 19;
-
-//Page 19
-DG_page = 19;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 0; //0 - normal/happy
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"This gauntlet is a very dangerous tool if it falls to the
-wrong hands.
-"
-
-DG_nextindex[DG_page] = 20;
-
-//Page 20
-DG_page = 20;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 0; //0 - normal/happy
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"The gauntlet holds the leftover energies God used to create
-the universe. My gauntlet specifically has the energy of
-the creation of the physical world, the elements."
-
-DG_nextindex[DG_page] = 21;
-
-//Page 21
-DG_page = 21;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 2; //2 - grief
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"But... It also holds a more... personal place in my heart...
-
-"
-
-DG_nextindex[DG_page] = 22;
-
-//Page 22
-DG_page = 22;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 3; //3 - awkward
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"I-I feel like I rambled for too long... I should probably
-get going.
-"
-
-DG_nextindex[DG_page] = 23;
-
-//Page 23
-DG_page = 23;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 3; //3 - awkward
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"Thanks for the chat, though..!
-
-"
-
-DG_nextindex[DG_page] = 24;
-
-//Page 24
-DG_page = 24;
-DG_chat_type[DG_page] = 3;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 2; //2 - grief
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"...Dad...
-
-"
-
-//OPTION2
-//Page 25
-DG_page = 25;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 1; //1 - flustered af
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"W-wha-
-
-"
-
-DG_nextindex[DG_page] = 26;
-
-//Page 26
-DG_page = 26;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 5; //5 - angry flustered
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"D-don't just say weird things l-like that...!
-
-"
-
-DG_nextindex[DG_page] = 27;
-
-//Page 27
-DG_page = 27;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 5; //5 - angry flustered
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = true;
-
-DG_dialogue[DG_page] = 
-"
-
-"
-
-DG_dialogue_right[DG_page] = 
-"I'm just being honest though! You have a cute face~!
-
-"
-DG_nextindex[DG_page] = 28;
-
-//Page 28
-DG_page = 28;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 5; //5 - angry flustered
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"... I-I don't have time for this-
-
-"
-
-DG_nextindex[DG_page] = 29;
-
-//Page 29
-DG_page = 29;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 5; //5 - angry flustered
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"Besides...! I-... I have someone else on my mind already.
-
-"
-
-DG_nextindex[DG_page] = 30;
-
-//Page 30
-DG_page = 30;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 5; //5 - angry flustered
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = true;
-
-DG_dialogue[DG_page] = 
-"
-
-"
-
-DG_dialogue_right[DG_page] = 
-"Hm... What a bummer.
-
-"
-DG_nextindex[DG_page] = 31;
-
-//Page 31
-DG_page = 31;
-DG_chat_type[DG_page] = 3;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 3; //3 - awkward
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"S-sorry...?
-
-"
-
-//OPTION3
-//Page 32
-DG_page = 32;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 3; //3 - awkward
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"Yeah I... I guess so. It's just... It's been odd here.
-
-"
-
-DG_nextindex[DG_page] = 33;
-
-//Page 33
-DG_page = 33;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 4; //4 - confused
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"This world is filled to the brim with people of all
-shapes and sizes.
-"
-
-DG_nextindex[DG_page] = 34;
-
-//Page 34
-DG_page = 34;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 4; //4 - confused
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"And here I thought that the weirdest thing ever was a
-demon skeleton, but apperently that's normal here too.
-"
-
-DG_nextindex[DG_page] = 35;
-
-//SELECT3
-//Page 35
-DG_page = 35;
-DG_chat_type[DG_page] = 1;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 4; //4 - confused
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"On top of that, most people here are looking for a fight,
-I just want to finish my job and go back home.
-"
-
-DG_options[DG_page] = 
-"Don't worry about it much, not everything is about work.
-I was accepted pretty warmly here though.
-"
-			
-DG_answers[DG_page] = [36,41];
-
-//OPTION3-1
-//Page 36
-DG_page = 36;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 3; //3 - awkward
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"I- Guess so... Maybe I can just stop to smell the flowers
-a bit...
-"
-
-DG_nextindex[DG_page] = 37;
-
-//Page 37
-DG_page = 37;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 0; //0 - normal/happy
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"But for now time is against me, creatures of abyss are
-appearing all over this world, I should at least wrap that
-up."
-
-DG_nextindex[DG_page] = 38;
-
-//Page 38
-DG_page = 38;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 0; //0 - normal/happy
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"Thanks for talking with me a bit... Uh...
-
-"
-
-DG_nextindex[DG_page] = 39;
-
-//Page 39
-DG_page = 39;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 0; //0 - normal/happy
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = true;
-
-DG_dialogue[DG_page] = 
-"
-
-"
-
-DG_dialogue_right[DG_page] = 
-"My name is Callie.
-
-"
-DG_nextindex[DG_page] = 40;
-
-//Page 40
-DG_page = 40;
-DG_chat_type[DG_page] = 3;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 3; //3 - awkward
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"Haha... I was rambling too much to ask for your name...
-I-I see.. thanks, Callie.
-"
-
-//OPTION3-2
-//Page 41
-DG_page = 41;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 1; //1 - flustered af
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"Really? I guess I was too tunnel-visioned for finishing my
-job here to notice...
-"
-
-DG_nextindex[DG_page] = 42;
-
-//Page 42
-DG_page = 42;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 3; //3 - awkward
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"Maybe I should try to get around here first... It might make
-it easier for me to feel more comfterable here.
-"
-
-DG_nextindex[DG_page] = 43;
-
-//Page 43
-DG_page = 43;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 3; //3 - awkward
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"Can't help but feel like I'm meddling with other people's
-affairs.
-"
-
-DG_nextindex[DG_page] = 44;
-
-//Page 44
-DG_page = 44;
-DG_chat_type[DG_page] = 2;
-
-DG_adopts_color_left[DG_page] = true;
-DG_adopts_color_right[DG_page] = true;
-
-DG_left_strip[DG_page] = 0; //0 - normal/happy
-DG_right_strip[DG_page] = 0;
-
-DG_custom_left_portrait[DG_page] = true;
-DG_custom_right_portrait[DG_page] = false;
-
-DG_right_speaker[DG_page] = false;
-
-DG_dialogue[DG_page] = 
-"I should go, I feel like I need to understand this world and
-it's people more, so I can do a decent job at preventing a
-disaster waiting to happen."
-
-DG_nextindex[DG_page] = 38;
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
+//callie compatibility
+user_event(10);
+
+//car bar
+if (get_player_color(player) != 31 || theikos) kart_sprite = sprite_get("car");
+else kart_sprite = sprite_get("car_theikos");
+kart_frames = 4;
+kart_anim_speed = 0.1;
+kart_anim_speed_scaling = 0.3;
+kart_engine_sound = 3;
+kart_drift_spr = 3;
+
+//so bar can gain mana in adventure mode and other various stage objects
+hit_player_event = 2;
 
 //munophone
-spr_exp0 = sprite_get("_exp0"); //nair
-spr_exp1 = sprite_get("_exp1"); //burning fury buffing
-spr_exp2 = sprite_get("_exp2"); //angleable moves
-spr_exp3 = sprite_get("_exp3"); //accel blitz
-spr_exp4 = sprite_get("_exp4"); //chasm burster
-spr_exp5 = sprite_get("_exp5"); //alternate option moves
-
-spr_drip = sprite_get("_pho_drip");
-
 muno_event_type = 0;
 user_event(14);

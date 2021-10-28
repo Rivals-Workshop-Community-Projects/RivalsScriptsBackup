@@ -189,3 +189,16 @@ battle_text = "* The smell of stardust fills the air.";
 muno_event_type = 0;
 user_event(14);
 //user_event(7);
+
+in_adventure = false;
+should_do_intro = true;
+hit_player_event = 2;
+
+pronouns = ["he","him","his","is"];
+am_is_clothed = true;
+am_is_guest = true;
+am_is_construct = true;
+am_is_magic = true;
+am_is_handed = true;
+am_is_experienced = true;
+am_is_myth = true;

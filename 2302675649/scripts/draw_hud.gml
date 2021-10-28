@@ -1,7 +1,7 @@
 if ("rollArray" in self)
 {
 	// intro song
-	if (state == PS_SPAWN && IsFirstLonin())
+	if ("in_adventure" not in self && state == PS_SPAWN && IsFirstLonin())
 	{
 		draw_set_font(asset_get("roaMBLFont"));
 		var musicName = GetMusicName();
@@ -567,6 +567,20 @@ if ("rollArray" in self)
 						AddText("max_jump_hsp 6 -> 10");
 						AddText("");
 						AddText("Replaced AK Mortal alt with Champion alt");
+						break;
+					case 36:
+						AddText("v1.36 - 23 Oct 2021");
+						AddText("Adventure Mode interactions Update");
+						AddText("");
+						AddText("FSpec now hooks onto solid articles in AM");
+						AddText("FSpec in AM will now grapple slower, so that the camera in AM can catch up (and won't instakill lmao)");
+						AddText("");
+						AddText("Portals now give 5 frames of invincibility in AM (so you won't be instakilled on teleport)");
+						AddText("Portals has Rune L enabled in AM (Not restricted by stage width and height boundaries)");
+						AddText("Portals now have normal depth in AM");
+						AddText("Portals now despawn on room switch in AM");
+						AddText("");
+						AddText("Disabled the Song Title intro in AM");
 						break;
 				}
 				DrawTutorialBlock();

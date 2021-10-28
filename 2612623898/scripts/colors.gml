@@ -18,7 +18,7 @@ set_color_profile_slot_range( 3, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 23 );
+set_num_palettes( 25 );
 
 // Blue
 set_color_profile_slot( 1, 0, 0, 0, 0 ); //Dark 2
@@ -64,7 +64,7 @@ set_color_profile_slot( 7, 3, 224, 255, 255 ); //Light 1
 
 // Pretty in Pink
 set_color_profile_slot( 8, 0, 0, 0, 0 ); //Dark 2
-set_color_profile_slot( 8, 1, 163, 116, 152 ); //Dark 1
+set_color_profile_slot( 8, 1, 156, 37, 128 ); //Dark 1
 set_color_profile_slot( 8, 2, 255, 143, 229 ); //Light 2
 set_color_profile_slot( 8, 3, 255, 230, 250 ); //Light 1
 
@@ -76,9 +76,9 @@ set_color_profile_slot( 9, 3, 179, 249, 255 ); //Light 1
 
 // Lime
 set_color_profile_slot( 10, 0, 0, 0, 0 ); //Dark 2
-set_color_profile_slot( 10, 1, 60, 207, 121 ); //Dark 1
-set_color_profile_slot( 10, 2, 90, 219, 144 ); //Light 2
-set_color_profile_slot( 10, 3, 135, 255, 185 ); //Light 1
+set_color_profile_slot( 10, 1, 14, 173, 81 ); //Dark 1
+set_color_profile_slot( 10, 2, 69, 235, 138 ); //Light 2
+set_color_profile_slot( 10, 3, 186, 255, 215 ); //Light 1
 
 // Red Man
 set_color_profile_slot( 11, 0, 0, 0, 0 ); //Dark 2
@@ -112,21 +112,21 @@ set_color_profile_slot( 15, 3, 0, 255, 0 ); //Light 1
 
 // Bronze
 set_color_profile_slot( 16, 0, 0, 0, 0 ); //Dark 2
-set_color_profile_slot( 16, 1, 140, 115, 0 ); //Dark 1
-set_color_profile_slot( 16, 2, 163, 139, 26 ); //Light 2
-set_color_profile_slot( 16, 3, 181, 157, 43 ); //Light 1
+set_color_profile_slot( 16, 1, 140, 40, 0 ); //Dark 1
+set_color_profile_slot( 16, 2, 196, 84, 0 ); //Light 2
+set_color_profile_slot( 16, 3, 255, 180, 133 ); //Light 1
 
 // Silver
 set_color_profile_slot( 17, 0, 0, 0, 0 ); //Dark 2
-set_color_profile_slot( 17, 1, 99, 99, 99 ); //Dark 1
-set_color_profile_slot( 17, 2, 199, 199, 199 ); //Light 2
-set_color_profile_slot( 17, 3, 230, 230, 230 ); //Light 1
+set_color_profile_slot( 17, 1, 62, 72, 99 ); //Dark 1
+set_color_profile_slot( 17, 2, 167, 167, 194 ); //Light 2
+set_color_profile_slot( 17, 3, 227, 236, 247 ); //Light 1
 
 // Golden
 set_color_profile_slot( 18, 0, 0, 0, 0 ); //Dark 2
-set_color_profile_slot( 18, 1, 181, 155, 36 ); //Dark 1
-set_color_profile_slot( 18, 2, 242, 216, 95 ); //Light 2
-set_color_profile_slot( 18, 3, 255, 231, 125 ); //Light 1
+set_color_profile_slot( 18, 1, 145, 102, 12 ); //Dark 1
+set_color_profile_slot( 18, 2, 217, 190, 80 ); //Light 2
+set_color_profile_slot( 18, 3, 255, 237, 145 ); //Light 1
 
 // Dark Default
 set_color_profile_slot( 19, 0, 20, 38, 28 ); //Dark 2
@@ -151,6 +151,18 @@ set_color_profile_slot( 22, 0, 38, 25, 40 ); //Dark 2
 set_color_profile_slot( 22, 1, 60, 39, 63 ); //Dark 1
 set_color_profile_slot( 22, 2, 81, 66, 83 ); //Light 2
 set_color_profile_slot( 22, 3, 212, 169, 142 ); //Light 1
+
+// Orange
+set_color_profile_slot( 23, 0, 0, 0, 0 ); //Dark 2
+set_color_profile_slot( 23, 1, 192, 92, 0 ); //Dark 1
+set_color_profile_slot( 23, 2, 255, 162, 29 ); //Light 2
+set_color_profile_slot( 23, 3, 255, 234, 155 ); //Light 1
+
+// Yellow
+set_color_profile_slot( 24, 0, 0, 0, 0 ); //Dark 2
+set_color_profile_slot( 24, 1, 145, 102, 12 ); //Dark 1
+set_color_profile_slot( 24, 2, 217, 190, 80 ); //Light 2
+set_color_profile_slot( 24, 3, 255, 237, 145 ); //Light 1
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

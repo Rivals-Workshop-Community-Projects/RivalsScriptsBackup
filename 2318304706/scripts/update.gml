@@ -36,7 +36,8 @@ if (introTimer < 6) {
 }
 //this increments introTimer every few frames, depending on the number entered
 
-if (state == PS_SPAWN && taunt_pressed && usingAltGBeamControl == 0) {
+if (state == PS_SPAWN && taunt_pressed && usingAltGBeamControl == 0 && should_do_intro == true) {
+	if ("room_manager" in self) {in_adventure = true;}
 	usingAltGBeamControl = 1;
 	sound_play(sound_get("smrpg_yoshi"));	
 }
@@ -71,6 +72,10 @@ if (whirlOut == 1) {
 			detonating = false;
 		}
 	}
+}
+
+if (state != 1 && state != 25) {
+	should_do_intro = false;
 }
 
 if (!free) {

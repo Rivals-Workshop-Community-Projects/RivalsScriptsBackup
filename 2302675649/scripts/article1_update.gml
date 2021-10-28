@@ -7,6 +7,7 @@
 
 // Check despawn
 if (replacedCount > maxArticles && state != AS_DESPAWN) isDespawn = true;
+if ("in_adventure" in player_id && player_id.in_adventure && instance_exists(obj_stage_main.room_manager) && obj_stage_main.room_manager.room_switch_on) isDespawn = true;
 if (newState != state) SetArticleState(newState);
 
 // Update
@@ -15,7 +16,7 @@ otherPortal = noone;
 with(asset_get("obj_article1")) if (player_id == other.player_id && self != other && !isDespawn && replacedCount <= maxArticles) other.otherPortal = self;
 if (otherPortalTemp != otherPortal) SetSprites();
 for (var i = 0; i < 8; ++i) if (afterImage[i] != -1 && afterImage[i].alpha > 0) afterImage[i].alpha--;
-if (!safeZone && ((y > ceil(room_height/5) && y < floor(2*room_height/3) && x > ceil(room_width/6) && x < floor(5*room_width/6)) || has_rune("L"))) safeZone = true;
+if (!safeZone && ((y > ceil(room_height/5) && y < floor(2*room_height/3) && x > ceil(room_width/6) && x < floor(5*room_width/6)) || noLimit)) safeZone = true;
 
 var tele = true;
 if (!player_id.canTele) with(asset_get("obj_article1")) if (player_id == other.player_id && IsPlayerInPortal()) tele = false;
@@ -87,6 +88,11 @@ else
                 player_id.y+=vsp;
                 player_id.canTele = false;
                 player_id.teleFlash = 16;
+                if ("in_adventure" in player_id && player_id.in_adventure && !player_id.invincible)
+                {
+                    player_id.invincible = true;
+                    player_id.invince_time = 5;
+                }
             }
             break;
     
@@ -214,7 +220,7 @@ else
         vsp = lengthdir_y(-moveAdj, moveAngle);
         canMove = false;
     }
-    else if (!has_rune("L") && y < ceil(room_height/5))
+    else if (!noLimit && y < ceil(room_height/5))
     {
         if (safeZone)
         {
@@ -233,7 +239,7 @@ else
         moveAngle = 270;
         canMove = false;
     }
-    else if (!has_rune("L") && y > floor(2*room_height/3))
+    else if (!noLimit && y > floor(2*room_height/3))
     {
         if (safeZone)
         {
@@ -252,7 +258,7 @@ else
         moveAngle = 90;
         canMove = false;
     }
-    else if (!has_rune("L") && x < ceil(room_width/6))
+    else if (!noLimit && x < ceil(room_width/6))
     {
         if (safeZone)
         {
@@ -271,7 +277,7 @@ else
         moveAngle = 0;
         canMove = false;
     }
-    else if (!has_rune("L") && x > floor(5*room_width/6))
+    else if (!noLimit && x > floor(5*room_width/6))
     {
         if (safeZone)
         {

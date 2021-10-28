@@ -189,14 +189,14 @@ case AT_DATTACK:
 	}
 	if(window == 1 and window_timer == 10){
 		sound_play(asset_get("sfx_blow_heavy1"));
-		take_damage(player, player, 1);
+		take_damage(player, player, 2);
 	}
 	if(has_hit and window < 3){
 		if(jump_down or jump_pressed){
 			dattack_jump_buffer = true;
 		}
 	}
-	if(has_hit and (window == 3 or window == 2 and window_timer > 6)){
+	if(has_hit and (window == 3 or window == 2)){
 		if(jump_pressed or dattack_jump_buffer){
 			state_timer = 0;
 			set_state(PS_JUMPSQUAT);
@@ -250,7 +250,7 @@ case AT_DSPECIAL:
 
 case AT_FTILT:
     if(window == 2 and window_timer == 1){
-        take_damage(player, player, 1);
+        take_damage(player, player, 2);
     }
 	break;
 

@@ -66,6 +66,9 @@ sprite_change_offset("emberfist", 38, 94);
 sprite_change_offset("emberfist_air", 38, 90);
 sprite_change_offset("lighthookshot", 70, 94);
 sprite_change_offset("lighthookshot_air", 70, 94);
+sprite_change_offset("searingdescent", 62, 94);
+sprite_change_offset("flashbang", 40, 94);
+sprite_change_offset("flashbang_air", 40, 94);
 
 sprite_change_offset("lordpunishment", 46, 94);
 
@@ -122,6 +125,9 @@ sprite_change_offset("fx_lighthookshotburn", 70, 94);
 sprite_change_offset("fx_lighthookshotburn_proj", 36, 9);
 sprite_change_offset("fx_lighthookshot_chain", 15, 9);
 
+sprite_change_offset("fx_flashbang_lightsmear", 48, 64);
+sprite_change_offset("fx_flashbang_firesmear", 48, 64);
+
 sprite_change_offset("fx_lordpunishment_firehand", 23, 47);
 sprite_change_offset("fx_lordpunishment_greatsword", 184, 191);
 sprite_change_offset("fx_lordpunishment_slash", 176, 96);
@@ -139,6 +145,9 @@ sprite_change_offset("theikos_photonblast", 48, 94);
 sprite_change_offset("theikos_chasmburster", 46, 94);
 sprite_change_offset("theikos_chasmburster_air", 46, 94);
 sprite_change_offset("theikos_powersmash", 48, 94);
+sprite_change_offset("theikos_emberfist", 38, 94);
+sprite_change_offset("theikos_emberfist_air", 38, 90);
+sprite_change_offset("theikos_searingdescent", 62, 94);
 
 sprite_change_offset("theikos_fx_debris", 16, 16);
 sprite_change_offset("theikos_fx_rockblow", 142, 150);
@@ -146,6 +155,8 @@ sprite_change_offset("theikos_fx_rockblow", 142, 150);
 //theikos effects
 sprite_change_offset("theikos_fx_introlight", 16, -16);
 sprite_change_offset("theikos_fx_introlight_back", 24, 16);
+
+sprite_change_offset("theikos_fx_shockwave", 100, 100);
 
 sprite_change_offset("theikos_fx_lightblow1", 48, 48);
 sprite_change_offset("theikos_fx_lightslash", 64, 56);
@@ -170,6 +181,8 @@ sprite_change_offset("theikos_fx_lighthookshotburn", 70, 94);
 sprite_change_offset("theikos_fx_lighthookshot_proj", 36, 9);
 sprite_change_offset("theikos_fx_lighthookshotburn_proj", 36, 9);
 sprite_change_offset("theikos_fx_lighthookshot_chain", 15, 9);
+sprite_change_offset("theikos_fx_flashbang_lightsmear", 48, 64);
+sprite_change_offset("theikos_fx_flashbang_firesmear", 48, 64);
 
 sprite_change_offset("theikos_aura", 32, 56);
 
@@ -236,3 +249,7 @@ sprite_change_offset("last_resort", 27, 39);
 
 //green flower zone
 sprite_change_offset("GFZ_signpost", 18, 41);
+
+//RC car
+sprite_change_offset("car", 6, 6);
+sprite_change_offset("car_theikos", 6, 6);

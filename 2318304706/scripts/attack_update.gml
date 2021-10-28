@@ -14,12 +14,24 @@ if (attack == AT_JAB) {
 	if (window == 5) {
 		set_hitbox_value(AT_JAB, 5, HG_WINDOW, 6);
 		set_hitbox_value(AT_JAB, 6, HG_WINDOW, 60);
-		if (window_timer == 1 && !hitpause) {spawn_hit_fx(x + 44 * spr_dir, y - 36, muzzleJab)};
+		if (window_timer == 1 && !hitpause) {
+			fx = spawn_hit_fx(x + 44 * spr_dir, y - 36, muzzleJab);
+			fx.depth = depth + 1;
+		}
 	}
 	if (window == 6) {
-		if (window_timer == 1 && !hitpause) {spawn_hit_fx(x + 40 * spr_dir, y - 36, muzzleJab)};
-		if (window_timer == 5 && !hitpause) {spawn_hit_fx(x + 40 * spr_dir, y - 36, muzzleJab)};
-		if (window_timer == 9 && !hitpause) {spawn_hit_fx(x + 40 * spr_dir, y - 36, muzzleJab)};
+		if (window_timer == 1 && !hitpause) {
+			fx = spawn_hit_fx(x + 40 * spr_dir, y - 36, muzzleJab);
+			fx.depth = depth + 1;
+		}
+		if (window_timer == 5 && !hitpause) {
+			fx = spawn_hit_fx(x + 40 * spr_dir, y - 36, muzzleJab);
+			fx.depth = depth + 1;
+		}
+		if (window_timer == 9 && !hitpause) {
+			fx = spawn_hit_fx(x + 40 * spr_dir, y - 36, muzzleJab);
+			fx.depth = depth + 1;
+		}
 		
 		if (window_timer < 8 && (timedHitAvailable == true || isAI == true || phone_cheats[CHEAT_ALWAYS] == 1)) {
 			shouldShowIndicator = 1;
@@ -272,6 +284,7 @@ if (attack == AT_NSPECIAL){
 		
 		if (window_timer % 4 == 0) {
 			gbeamParticle[gbeamParticleNum] = spawn_hit_fx(x + ((60 + random_func( 9, 40, false )) * spr_dir), y - 65 + random_func( 8, 60, false ), gbeamChargeParticle);
+			gbeamParticle[gbeamParticleNum].depth = depth + 1;
 			gbeamParticleNum++;
 		}
 		
@@ -393,18 +406,22 @@ if (attack == AT_NSPECIAL){
 			switch (gbeamStoredCharge) {
 				case 0:
 					myBeam = spawn_hit_fx(x + 46*spr_dir, y - 32, gbeamFail);
+					myBeam.depth = depth + 1;
 					gbeamVisOffset = 46;
 					break;
 				case 1:
 					myBeam = spawn_hit_fx(x + 70*spr_dir, y - 32, gbeamSmall);
+					myBeam.depth = depth + 1;
 					gbeamVisOffset = 70;
 					break;
 				case 2:
 					myBeam = spawn_hit_fx(x + 120*spr_dir, y - 32, gbeamMedium);
+					myBeam.depth = depth + 1;
 					gbeamVisOffset = 120;
 					break;
 				case 3:
 					myBeam = spawn_hit_fx(x + 170*spr_dir, y - 32, gbeamLarge);
+					myBeam.depth = depth + 1;
 					gbeamVisOffset = 170;
 					break;
 			}
@@ -513,7 +530,8 @@ if (attack == AT_USPECIAL) {
 			flash.flashAngle = flashAngle;
 			flashOut = 1;
 		} else {
-			spawn_hit_fx(x+(flashX*spr_dir), y+flashY, failSmoke);			
+			fx = spawn_hit_fx(x+(flashX*spr_dir), y+flashY, failSmoke);			
+			fx.depth = depth - 1;
 		}
 		array_push(phone_dust_query, [x, y, "land", spr_dir]);
 	}

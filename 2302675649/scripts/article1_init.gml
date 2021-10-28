@@ -2,7 +2,7 @@ sprite_index = sprite_get("portalSpawn");
 image_index = 0;
 spr_dir = 1;
 uses_shader = true;
-depth = 10;
+if !("in_adventure" in player_id && player_id.in_adventure) depth = 10;
 
 state = 0;
 newState = 0;
@@ -27,9 +27,11 @@ moveAngle = 0;
 nspecAngle = -621;
 nspecSpeed = 5;
 
+noLimit = has_rune("L") || ("in_adventure" in player_id && player_id.in_adventure);
+
 hitpause = 0;
 old_hsp = 0;
-ols_vsp = 0;
+old_vsp = 0;
 
 safeZone = false;
 

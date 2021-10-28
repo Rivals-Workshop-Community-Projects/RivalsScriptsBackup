@@ -9,29 +9,53 @@ if invis == true and !attacking {
    move_cooldown[AT_FSPECIAL_2] = 20	
 }
 
-if get_gameplay_time() < 60 {
-	if get_gameplay_time() == 1 {
+if get_gameplay_time() < 50 {
+	if get_gameplay_time() <= 3 {
+	                 sound_stop(sound_get("steath"))
+		    	     sound_stop(asset_get("sfx_bird_nspecial"))
+		    	     
 		    	     sound_play(sound_get("steath"),false,noone,1)
-		    	     sound_play(asset_get("sfx_bird_nspecial"),false,noone,0.4)
+		    	     sound_play(asset_get("sfx_bird_nspecial"),false,noone,1,1)
+		    	     
+		    	     if get_player_color(player) == 18 {
+		    	     	sound_stop(sound_get("JCintro"))
+		    	     	sound_play(sound_get("JCintro"),false,noone,2.3,1)
+		    	     }
 	}
 	
-	visible = false 
+	draw_indicator = false 
 	
-	if  get_gameplay_time() % 6 == 0 {
-	              spawn_hit_fx(x + 300*spr_dir  - get_gameplay_time()*5*spr_dir , y - 20, lpar2)   
+	
+	if  get_gameplay_time() % 4 == 0 {
+	              spawn_hit_fx(x + 200 - random_func(1,401,true) , y - 60 + 200 - random_func(2,401,true), lpar2)   
 	}
-    	if  get_gameplay_time() % 10 == 0 {
-	              spawn_hit_fx(x + 300*spr_dir  - get_gameplay_time()*5*spr_dir , y - 20, lpar3)   
-	}          
-		if  get_gameplay_time() % 6 == 3 {
-	              spawn_hit_fx(x + 300*spr_dir  - get_gameplay_time()*5*spr_dir , y - 20, lpar5)   
+	
+	if  get_gameplay_time() % 4 == 3 {
+	              spawn_hit_fx(x + 300 - random_func(1,151,true) , y - 60 + 300 - random_func(2,151,true), lpar2)   
+	}
+	
+    if  get_gameplay_time() % 4 == 2 {
+	              spawn_hit_fx(x + 100 - random_func(1,201,true) , y - 60 + 100 - random_func(2,201,true), lpar3)   
+	} 
+	
+	if  get_gameplay_time() % 4 == 1 {
+	              spawn_hit_fx(x + 200 - random_func(1,401,true) , y - 60 + 200 - random_func(2,401,true), lpar5)   
 	}
                   
 }
 
-if get_gameplay_time() == 60 {
+if get_gameplay_time() == 50 {
 	
-	    visible = true
+	if get_player_color(player) == 18 {
+		    	     	sound_stop(sound_get("JCsteath"))
+		    	     	sound_play(sound_get("JCsteath"),false,noone,2.4,1)
+	}
+		    	     
+	shake_camera(4,4)
+	
+    spawn_hit_fx(x,y- 40,306)
+	sound_play(asset_get("sfx_bird_downspecial_end"),false,noone,.7)
+	
     
       spawn_hit_fx(x  , y - 30, lpar1)              
                   spawn_hit_fx(x , y - 30, lpar4)   
@@ -41,8 +65,8 @@ if get_gameplay_time() == 60 {
                   spawn_hit_fx(x  , y - 40, shit5)  
                   
 
-                  sound_play(asset_get("sfx_bird_downspecial"),false,noone,0.4)
-                    sound_play(sound_get("steathend"),false,noone,1)
+                  sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1.4)
+                  sound_play(sound_get("steathend"),false,noone,1)
 }
 
 if hitpause && invitimer == -1{
@@ -238,7 +262,6 @@ if state_timer == 1 {
 	  
 	 if state_timer > 18 {
 	     hsp = 0
-	     draw_indicator = true
 	 } else {
 	 		 if state_timer % 2 == 0 {
 	 		 	spawn_hit_fx(x - 20 + random_func(4,40,true) , y - 16 - random_func(5,40,true), lpar1)
@@ -326,9 +349,18 @@ with oPlayer if (activated_kill_effect) {
 
 if finisher = 60 {
 	
+	if get_player_color(player) == 18 {
+		sound_stop(sound_get("JCsteath"))
+		sound_stop(sound_get("JCsteathend"))
+		    sound_play(sound_get("RKO"),false,noone,2)
+	}
+		
 	spawn_hit_fx(x,y,lighten)
-    sound_play(sound_get("tstrong"),false,noone,0.4)
-    sound_play(sound_get("grassblade"),false,noone,1)
+       sound_play(sound_get("tstrong"),false,noone,0.4)
+       sound_play(sound_get("grassblade"),false,noone,1)
+    
+
+	
 }
 
 if finisher = 40 {

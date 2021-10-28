@@ -1,5 +1,5 @@
 //hi
-if (state == PS_SPAWN) {
+if (state == PS_SPAWN && should_do_intro == true) {
 	if (introTimer < 8 && introTimer >= 0) {
         sprite_index = sprite_get("intro");
         image_index = introTimer + 1;

@@ -24,7 +24,7 @@ ig++;
 
 //Jab 1 End
 set_window_value(AT_JAB, ig, AG_WINDOW_TYPE, 1);
-set_window_value(AT_JAB, ig, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_JAB, ig, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_JAB, ig, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, ig, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_JAB, ig, AG_WINDOW_CANCEL_TYPE, 1);

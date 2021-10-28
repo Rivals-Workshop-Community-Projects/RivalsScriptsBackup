@@ -1,28 +1,19 @@
 //B - Reversals
-
-if (window == 1 && window_timer == 1 && !hitpause){
     
-
-    
+if (window == 1 && window_timer == 1 && !hitpause) {
+ 
    if  get_window_value(attack, 1, AG_WINDOW_LENGTH) >= 8 {
-       
-       
-       sound_play(sound_get("whoosh"),false,noone,1.4,
-        min ( 0.5, 1.2 - get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) )
-       
-       
-       
+            
+       sound_play(sound_get("whoosh"),false,noone,.5,
+        max ( 0.4, 1.2 - get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) )
        
    } else {
       
-      sound_play(sound_get("punch"),false,noone,.8,
-        min ( 0.5, 1.5 - get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) )
-       
-        
+      sound_play(sound_get("punch"),false,noone,.5,
+        max ( 0.4, 1.2 - get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) )
+            
    }
-    
-    
-    
+ 
 }
 
 
@@ -64,17 +55,24 @@ if (attack == AT_NAIR || attack == AT_JAB)
         if(left_down)
             spr_dir = -1;}
 }
+
 //Cooldowns
+
 if (attack == AT_UAIR){
-    move_cooldown[AT_UAIR] = 80;}
+    move_cooldown[AT_UAIR] = 80;
+}
     
 if (attack == AT_JAB){
     move_cooldown[AT_JAB] = 25;
     move_cooldown[AT_NAIR] = 25;
 }
+
 if (attack == AT_NAIR){
     move_cooldown[AT_NAIR] = 999;
 }
+
+
+
 //Jab into CLJ
 if(attack == AT_JAB)
 {
@@ -106,3 +104,4 @@ if(attack == AT_NAIR)
         can_move = false;
     }
 }
+

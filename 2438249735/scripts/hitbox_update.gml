@@ -51,7 +51,8 @@ hsp /= 1.01
   }
       if player_id.invitimer == -1 {
         destroyed = true
-        			          
+        			    
+        			    
         			    sound_stop(sound_get("grassblade"))
         			    sound_play(sound_get("grassblade"),false,noone,1)
         			    sound_stop(sound_get("tstrong"))  
@@ -137,7 +138,6 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
                           sound_play(asset_get("sfx_syl_nspecial_flowerhit"),false,noone,0.9)  
     	               spawn_hit_fx(other.x , other.y, shit1)  
     	               shake_camera(2,2)
-    	               take_damage(player,-1,-1)
     	        }
     	        
     	        if invitimer > 0 {
@@ -175,6 +175,14 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
     	        if invitimer == 0 && (state == PS_ROLL_FORWARD or state == PS_ROLL_BACKWARD or state == PS_WAVELAND){
     	        sound_play(asset_get("sfx_bird_nspecial"),false,noone,0.4)
     	     sound_play(sound_get("steath"),false,noone,1)
+    	     
+    
+        		if get_player_color(player) == 18 {
+		    	   sound_stop(sound_get("JCsteath"))
+		    	   sound_play(sound_get("JCsteath"),false,noone,1.88)
+		    	}
+        	
+        			    
     	     spawn_hit_fx(x  , y, ds)  
     	     invitimer = 1
     	            shake_camera(1,4)

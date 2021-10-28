@@ -24,6 +24,7 @@ sprite_change_offset("standing_hurtbox", 25, 46);
 sprite_change_offset("TAG_crown", 28, 56);
 
 sprite_change_offset("box", 23, 22);
+sprite_change_offset("box_hurtbox", 26, 26);
 sprite_change_offset("box_spin", 25, 24);
 sprite_change_offset("plushy", 23, 22);
 sprite_change_offset("plushy_spin", 25, 24);
@@ -117,5 +118,8 @@ sprite_change_offset("spinhurt", 30, 60);
 
 set_victory_theme( sound_get( "victory_tune" ));
 set_victory_bg( sprite_get( "victory_bg" ));
+
+sprite_change_offset("tomo_hallow", 32, 44);
+sprite_change_offset("costume_fall", 32, 44);
 
 user_event(15);

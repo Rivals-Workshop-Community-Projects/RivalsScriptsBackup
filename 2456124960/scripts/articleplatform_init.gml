@@ -12,3 +12,5 @@ fake_hsp = 0;
 fake_vsp = 0;
 
 madeHigh = 0;
+
+adventure_timer = 300;

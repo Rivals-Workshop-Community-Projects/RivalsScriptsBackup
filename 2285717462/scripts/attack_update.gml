@@ -644,7 +644,7 @@ switch(attack){
                 can_move = 0;
                 if times_thru || window_timer > window_end / 2{
                     var amt = 10;
-                    if false{ // RUNE
+                    if phone_cheats[CHEAT_DRILL]{ // RUNE
                         spr_dir = 1;
                         if !joy_pad_idle laser_angle -= amt * sign(angle_difference(laser_angle, joy_dir));
                     }

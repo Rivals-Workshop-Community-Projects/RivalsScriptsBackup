@@ -1,5 +1,18 @@
 ///
 
+if get_gameplay_time() < 50 {
+    sprite_index = sprite_get("empty")
+} else {
+if get_gameplay_time() < 90 {
+    sprite_index = sprite_get("crouch")
+    image_index = 3
+}
+
+if get_gameplay_time() >= 90 &&  get_gameplay_time() < 95{
+    sprite_index = sprite_get("crouch")
+    image_index = 4
+}
+}
 
 if invis == false {
     

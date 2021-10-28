@@ -73,6 +73,9 @@ if (burningfury_active) //these moves apply holy burning only if burning fury is
 				HolyBurn();
 			}
 			break;
+		case 39: //flashbang
+			if (my_hitboxID.hbox_num == 2) HolyBurn();
+			break;
 		case AT_FSTRONG_2: //theikos F-strong
 			HolyBurn();
 			break;
@@ -91,7 +94,6 @@ switch (my_hitboxID.attack) //these moves apply holy burn regardless if burning 
 	case AT_NTHROW: case AT_NSPECIAL_AIR: //light dagger
 		if (my_hitboxID.hbox_num == 3) HolyBurn();
 		break;
-
 	case AT_FTHROW: case AT_FSPECIAL_AIR: //burning fury
 		if (my_hitboxID.hbox_num < 4) HolyBurn();
 		break;
@@ -115,7 +117,9 @@ switch (my_hitboxID.attack) //these moves apply holy burn regardless if burning 
 	case AT_EXTRA_2: //light hookshot
 		if (my_hitboxID.hbox_num == 2) HolyBurn();
 		break;
-
+	case AT_EXTRA_3: //searing descent
+		HolyBurn();
+		break;
 	case AT_DSTRONG_2:
 		HolyBurn();
 		break;
@@ -126,7 +130,7 @@ switch (my_hitboxID.attack) //these moves apply holy burn regardless if burning 
 
 ////////////////////////////////////////////////////////RUNES SECTION////////////////////////////////////////////////////////
 
-if (has_rune("G") && state_cat != SC_HITSTUN) //warping light spears
+if ((has_rune("G") || fuck_you_cheapies && theikos_active) && state_cat != SC_HITSTUN) //warping light spears
 {
 	last_attack_hit = attack;
 	
@@ -216,6 +220,10 @@ if (lightstun_mechanic_active) //light spark
 		case AT_EXTRA_2:
 			if (my_hitboxID.hbox_num == 1) ApplySpark();
 			break;
+		//flashbang applies a spark on a successful grab only
+		case 39:
+			if (my_hitboxID.hbox_num == 2 && !burningfury_active) ApplySpark();
+			break;
 		//only applies to the light attack Fstrong rune
 		case AT_FSTRONG:
 			if (has_rune("C") && !burningfury_active) ApplySpark();
@@ -241,19 +249,20 @@ if (lightstun_mechanic_active) //light spark
 			//unlike holy burning, the timer for a spark doesn't reset
 			case AT_JAB: case AT_UTILT: case AT_FTILT: case AT_DTILT: case AT_NAIR: case AT_UAIR: case AT_FAIR: case AT_DAIR: case AT_BAIR:
 			case AT_FSTRONG_2: case AT_DSTRONG: case AT_DSTRONG_2: case AT_FTHROW: case AT_FSPECIAL_AIR: case AT_UTHROW:
-			case AT_EXTRA_1: case AT_FSPECIAL_2: case AT_DSPECIAL_2:
+			case AT_EXTRA_1: case AT_FSPECIAL_2: case AT_DSPECIAL_2: case AT_EXTRA_3:
 				LightstunCancel();
 				break;
-
 			case AT_NTHROW: case AT_NSPECIAL_AIR:
 				if (my_hitboxID.hbox_num == 3) LightstunCancel();
 				break;
-			case AT_USTRONG:
+			case AT_USTRONG: 
 				if (burningfury_active || my_hitboxID.hbox_num == 5) LightstunCancel();
 				break;
-
 			case AT_EXTRA_2: //the burning version cancels lightstunning
 				if (my_hitboxID.hbox_num == 2) LightstunCancel();
+				break;
+			case 39: //flashbang cancels lightstunning if it's the burning fury version
+				if (my_hitboxID.hbox_num == 2 && burningfury_active) LightstunCancel();
 				break;
 			case AT_FSTRONG:
 				if (!has_rune("C") || burningfury_active) LightstunCancel();
@@ -296,10 +305,10 @@ if (attack == AT_DSTRONG_2) //when the fireball of theikos D-strong hits a playe
     }
 }
 
-if ((attack == AT_SKILL1 || attack == AT_SKILL1_AIR) && pHitBox.hbox_num == 2)
-{
-	burningfury_target = hit_player_obj;
-}
+if ((attack == AT_SKILL1 || attack == AT_SKILL1_AIR) && pHitBox.hbox_num == 2) burningfury_target = hit_player_obj;
+
+if (attack == AT_SKILL11 && pHitBox.hbox_num == 1) flashbanged_id = hit_player_obj;
+
 
 //reset bar's accel blitz if he hits someone with a move
 //not including accel blitz itself

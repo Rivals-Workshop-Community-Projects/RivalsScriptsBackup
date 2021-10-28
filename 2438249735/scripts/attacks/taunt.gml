@@ -62,3 +62,4 @@ set_hitbox_value(AT_TAUNT, 1, HG_VISUAL_EFFECT_X_OFFSET, 24);
 set_hitbox_value(AT_TAUNT, 1, HG_HIT_SFX, asset_get("sfx_syl_nspecial_flowerhit"));
 set_hitbox_value(AT_TAUNT, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_TAUNT, 1, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_TAUNT, 1, HG_HIT_LOCKOUT, 8);

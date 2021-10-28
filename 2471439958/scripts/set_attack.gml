@@ -19,6 +19,19 @@ if (attack == AT_NSPECIAL_2 or attack = AT_NSPECIAL_AIR){
     }
     
 }
+if (attack == AT_FSTRONG){
+    if pistols = 1{
+        attack = AT_EXTRA_2;
+    }
+    
+}
+
+if (attack == AT_EXTRA_2){
+    if pistols = 0{
+        attack = AT_FSTRONG;
+    }
+    
+}
 
 if (attack == AT_USPECIAL or attack == AT_USPECIAL_GROUND){
 

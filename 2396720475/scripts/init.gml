@@ -2,7 +2,18 @@
 // Runs once when the player is created
 // Where most player variables are assigned
 
+// this is kinda funny idk what this variable does - Fungi October 24th 2021
 HITPLAYERDURINGUSPECIALIDKWHYTHISDOESNTWORK = false;
+
+introTimer = 0;
+costume_end = false;
+
+costume_destroy = true;
+costume_num = 0;
+costume_temp_x = 0;
+costume_temp_y = 0;
+costume_temp_spr_dir = 1;
+is_destroying_costume = false;
 
 trailer_effect = false;
 tsj_check = false;

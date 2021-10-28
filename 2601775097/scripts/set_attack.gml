@@ -12,193 +12,58 @@ if (attack == AT_DATTACK)
     else attack = AT_JAB;
 }
 
-//skill selection itself
-//NEUTRAL SPECIAL
-switch (selected_nspec) {
-    case 0:
-        if (attack == AT_NSPECIAL) attack = AT_SKILL0;
-        if (attack == AT_NSPECIAL_AIR) attack = AT_SKILL0_AIR;
-    break;
-    case 1:
-        if (attack == AT_NSPECIAL) attack = AT_SKILL1;
-        if (attack == AT_NSPECIAL_AIR) attack = AT_SKILL1_AIR;
-    break;
-    case 2:
-        if (attack == AT_NSPECIAL) attack = AT_SKILL2;
-        if (attack == AT_NSPECIAL_AIR) attack = AT_SKILL2;
-    break;
-    case 3:
-        if (attack == AT_NSPECIAL) attack = AT_SKILL3;
-        if (attack == AT_NSPECIAL_AIR) attack = AT_SKILL3;
-    break;
-    case 4:
-        if (attack == AT_NSPECIAL) attack = AT_SKILL4;
-        if (attack == AT_NSPECIAL_AIR) attack = AT_SKILL4;
-    break;
-    case 5:
-        if (attack == AT_NSPECIAL) attack = AT_SKILL5;
-        if (attack == AT_NSPECIAL_AIR) attack = AT_SKILL5;
-    break;
-    case 6:
-        if (attack == AT_NSPECIAL) attack = AT_SKILL6;
-        if (attack == AT_NSPECIAL_AIR) attack = AT_SKILL6;
-    break;
-    case 7:
-        if (attack == AT_NSPECIAL) attack = AT_SKILL7;
-        if (attack == AT_NSPECIAL_AIR) attack = AT_SKILL7;
-    break;
-    case 8:
-        if (attack == AT_NSPECIAL) attack = AT_SKILL8;
-        if (attack == AT_NSPECIAL_AIR) attack = AT_SKILL8;
-    break;
-    case 9:
-        if (attack == AT_NSPECIAL) attack = AT_SKILL9;
-        if (attack == AT_NSPECIAL_AIR) attack = AT_SKILL9;
-    break;
-}
-//FORWARD SPECIAL
-switch (selected_fspec) {
-    case 0:
-        if (attack == AT_FSPECIAL) attack = AT_SKILL0;
-        if (attack == AT_FSPECIAL_AIR) attack = AT_SKILL0_AIR;
-    break;
-    case 1:
-        if (attack == AT_FSPECIAL) attack = AT_SKILL1;
-        if (attack == AT_FSPECIAL_AIR) attack = AT_SKILL1_AIR;
-    break;
-    case 2:
-        if (attack == AT_FSPECIAL) attack = AT_SKILL2;
-        if (attack == AT_FSPECIAL_AIR) attack = AT_SKILL2;
-    break;
-    case 3:
-        if (attack == AT_FSPECIAL) attack = AT_SKILL3;
-        if (attack == AT_FSPECIAL_AIR) attack = AT_SKILL3;
-    break;
-    case 4:
-        if (attack == AT_FSPECIAL) attack = AT_SKILL4;
-        if (attack == AT_FSPECIAL_AIR) attack = AT_SKILL4;
-    break;
-    case 5:
-        if (attack == AT_FSPECIAL) attack = AT_SKILL5;
-        if (attack == AT_FSPECIAL_AIR) attack = AT_SKILL5;
-    break;
-    case 6:
-        if (attack == AT_FSPECIAL) attack = AT_SKILL6;
-        if (attack == AT_FSPECIAL_AIR) attack = AT_SKILL6;
-    break;
-    case 7:
-        if (attack == AT_FSPECIAL) attack = AT_SKILL7;
-        if (attack == AT_FSPECIAL_AIR) attack = AT_SKILL7;
-    break;
-    case 8:
-        if (attack == AT_FSPECIAL) attack = AT_SKILL8;
-        if (attack == AT_FSPECIAL_AIR) attack = AT_SKILL8;
-    break;
-    case 9:
-        if (attack == AT_FSPECIAL) attack = AT_SKILL9;
-        if (attack == AT_FSPECIAL_AIR) attack = AT_SKILL9;
-    break;
-}
-//UP SPECIAL
-switch (selected_uspec) {
-    case 0:
-        if (attack == AT_USPECIAL) attack = AT_SKILL0;
-        if (attack == AT_USPECIAL_GROUND) attack = AT_SKILL0_AIR;
-    break;
-    case 1:
-        if (attack == AT_USPECIAL) attack = AT_SKILL1;
-        if (attack == AT_USPECIAL_GROUND) attack = AT_SKILL1_AIR;
-    break;
-    case 2:
-        if (attack == AT_USPECIAL) attack = AT_SKILL2;
-        if (attack == AT_USPECIAL_GROUND) attack = AT_SKILL2;
-    break;
-    case 3:
-        if (attack == AT_USPECIAL) attack = AT_SKILL3;
-        if (attack == AT_USPECIAL_GROUND) attack = AT_SKILL3;
-    break;
-    case 4:
-        if (attack == AT_USPECIAL) attack = AT_SKILL4;
-        if (attack == AT_USPECIAL_GROUND) attack = AT_SKILL4;
-    break;
-    case 5:
-        if (attack == AT_USPECIAL) attack = AT_SKILL5;
-        if (attack == AT_USPECIAL_GROUND) attack = AT_SKILL5;
-    break;
-    case 6:
-        if (attack == AT_USPECIAL) attack = AT_SKILL6;
-        if (attack == AT_USPECIAL_GROUND) attack = AT_SKILL6;
-    break;
-    case 7:
-        if (attack == AT_USPECIAL) attack = AT_SKILL7;
-        if (attack == AT_USPECIAL_GROUND) attack = AT_SKILL7;
-    break;
-    case 8:
-        if (attack == AT_USPECIAL) attack = AT_SKILL8;
-        if (attack == AT_USPECIAL_GROUND) attack = AT_SKILL8;
-    break;
-    case 9:
-        if (attack == AT_USPECIAL) attack = AT_SKILL9;
-        if (attack == AT_USPECIAL_GROUND) attack = AT_SKILL9;
-    break;
-}
-//DOWN SPECIAL
-switch (selected_dspec) {
-    case 0:
-        if (attack == AT_DSPECIAL) attack = AT_SKILL0;
-        if (attack == AT_DSPECIAL_AIR) attack = AT_SKILL0_AIR;
-    break;
-    case 1:
-        if (attack == AT_DSPECIAL) attack = AT_SKILL1;
-        if (attack == AT_DSPECIAL_AIR) attack = AT_SKILL1_AIR;
-    break;
-    case 2:
-        if (attack == AT_DSPECIAL) attack = AT_SKILL2;
-        if (attack == AT_DSPECIAL_AIR) attack = AT_SKILL2;
-    break;
-    case 3:
-        if (attack == AT_DSPECIAL) attack = AT_SKILL3;
-        if (attack == AT_DSPECIAL_AIR) attack = AT_SKILL3;
-    break;
-    case 4:
-        if (attack == AT_DSPECIAL) attack = AT_SKILL4;
-        if (attack == AT_DSPECIAL_AIR) attack = AT_SKILL4;
-    break;
-    case 5:
-        if (attack == AT_DSPECIAL) attack = AT_SKILL5;
-        if (attack == AT_DSPECIAL_AIR) attack = AT_SKILL5;
-    break;
-    case 6:
-        if (attack == AT_DSPECIAL) attack = AT_SKILL6;
-        if (attack == AT_DSPECIAL_AIR) attack = AT_SKILL6;
-    break;
-    case 7:
-        if (attack == AT_DSPECIAL) attack = AT_SKILL7;
-        if (attack == AT_DSPECIAL_AIR) attack = AT_SKILL7;
-    break;
-    case 8:
-        if (attack == AT_DSPECIAL) attack = AT_SKILL8;
-        if (attack == AT_DSPECIAL_AIR) attack = AT_SKILL8;
-    break;
-    case 9:
-        if (attack == AT_DSPECIAL) attack = AT_SKILL9;
-        if (attack == AT_DSPECIAL_AIR) attack = AT_SKILL9;
-    break;
+switch (attack){
+    
+    case AT_NSPECIAL:
+        if(specialnums[0] == 0){
+            attack = AT_SKILL0;  //light dagger
+        }else if(specialnums[0] == 1){
+            attack = AT_SKILL5;  //chasm burster
+        }else if(specialnums[0] == 2){
+            attack = AT_SKILL8;  //ember fist
+        }
+        break;
+
+    case AT_FSPECIAL:
+        if(specialnums[1] == 0){
+            attack = AT_SKILL1;  //burning fury
+        }else if(specialnums[1] == 1){
+            attack = AT_SKILL6;  //power smash
+        }else if(specialnums[1] == 2){
+            attack = AT_SKILL9;  //light hookshot
+        }
+        break;
+
+    case AT_USPECIAL:
+        if(specialnums[2] == 0){
+            attack = AT_SKILL2;  //force leap
+        }else if(specialnums[2] == 1){
+            attack = AT_SKILL4;  //accel blitz
+        }else if(specialnums[2] == 2){
+            attack = AT_SKILL10; //searing descent
+        }
+        break;
+
+    case AT_DSPECIAL:
+        if(specialnums[3] == 0){
+            attack = AT_SKILL3;  //photon blast
+        }else if(specialnums[3] == 1){
+            attack = AT_SKILL7;  //guard aura
+        }else if(specialnums[3] == 2){
+            attack = AT_SKILL11; //flashbang
+        }
+        break;
+    
 }
 
 //what if i have no MP?
 //this is just the move's activation, the other parts are on attack_update.gml
-if (move_cooldown[attack] > 0 && show_player_info) mp_error_active = true;
+if (move_cooldown[attack] > 0 && show_player_info && (attack == AT_SKILL0 || attack == AT_SKILL1 ||attack == AT_SKILL2 ||
+attack == AT_SKILL3 || attack == AT_SKILL4 || attack == AT_SKILL5 ||
+attack == AT_SKILL6 || attack == AT_SKILL7 || attack == AT_SKILL8 ||
+attack == AT_SKILL9 || attack == AT_SKILL10 ||attack == AT_SKILL11 ||
+attack == AT_SKILL0_AIR || attack == AT_SKILL1_AIR)) mp_error_active = true;
 
-//guard aura has a cooldown thing going on
-if (cool_start && attack == AT_SKILL7 && show_player_info)
-{
-    if (cooldown > 0)
-    {
-        cd_error_active = true;
-        mp_error_active = false;
-    }
-}
 
 //aerial skills - for some reason it doesn't let me make aerial skills only aerial
 if (free)
@@ -259,7 +124,7 @@ if ((attack == AT_FSTRONG_2 || attack == AT_FSTRONG) && free)
     else if (right_strong_pressed && -spr_dir) spr_dir = 1;
 }
 
-clear_button_buffer(PC_ATTACK_PRESSED);
+if (turbo_time) clear_button_buffer(PC_ATTACK_PRESSED);
 
 //munophone
 muno_event_type = 2;

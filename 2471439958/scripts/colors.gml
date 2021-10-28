@@ -59,12 +59,12 @@ set_color_profile_slot( 2, 7, 74, 74, 74 ); //cleaver
 // The Intruder
 set_color_profile_slot( 3, 0, 255, 225, 201 ); //white
 set_color_profile_slot( 3, 1, 115, 115, 115 ); //scarf
-set_color_profile_slot( 3, 2, 43, 43, 43 ); //hair
-set_color_profile_slot( 3, 3, 54, 54, 54 ); //hoodie
+set_color_profile_slot( 3, 2, 74, 74, 74 ); //hair
+set_color_profile_slot( 3, 3, 77, 54, 35 ); //hoodie
 set_color_profile_slot( 3, 4, 74, 47, 18 ); //wood
-set_color_profile_slot( 3, 5, 23, 186, 7 ); //blood
+set_color_profile_slot( 3, 5, 214, 7, 7 ); //blood
 set_color_profile_slot( 3, 6, 38, 255, 0 ); //eyes
-set_color_profile_slot( 3, 7, 59, 59, 59 ); //cleaver
+set_color_profile_slot( 3, 7, 122, 122, 122 ); //cleaver
 
 // Katie
 set_color_profile_slot( 4, 0, 255, 255, 255 ); //white
@@ -82,18 +82,18 @@ set_color_profile_slot( 5, 1, 176, 0, 129 ); //scarf
 set_color_profile_slot( 5, 2, 171, 58, 181 ); //hair
 set_color_profile_slot( 5, 3, 113, 222, 98 ); //hoodie
 set_color_profile_slot( 5, 4, 0, 69, 0 ); //wood
-set_color_profile_slot( 5, 5, 173, 0, 0 ); //blood
+set_color_profile_slot( 5, 5, 255, 0, 0 ); //blood
 set_color_profile_slot( 5, 6, 255, 255, 255 ); //eyes
 set_color_profile_slot( 5, 7, 219, 44, 44 ); //cleaver
 
-// Liz
-set_color_profile_slot( 6, 0, 245, 203, 191 ); //white
-set_color_profile_slot( 6, 1, 113, 196, 207 ); //scarf
-set_color_profile_slot( 6, 2, 250, 67, 171 ); //hair
-set_color_profile_slot( 6, 3, 87, 87, 122 ); //hoodie
-set_color_profile_slot( 6, 4, 0, 0, 0 ); //wood
-set_color_profile_slot( 6, 5, 54, 168, 249 ); //blood
-set_color_profile_slot( 6, 6, 144, 56, 231 ); //eyes
+// Kromer
+set_color_profile_slot( 6, 0, 255, 255, 255 ); //white
+set_color_profile_slot( 6, 1, 242, 242, 242 ); //scarf
+set_color_profile_slot( 6, 2, 56, 56, 56 ); //hair
+set_color_profile_slot( 6, 3, 66, 66, 66 ); //hoodie
+set_color_profile_slot( 6, 4, 171, 104, 150 ); //wood
+set_color_profile_slot( 6, 5, 255, 217, 0 ); //blood
+set_color_profile_slot( 6, 6, 255, 217, 0 ); //eyes
 set_color_profile_slot( 6, 7, 255, 255, 255 ); //cleaver
 
 // Hikaru
@@ -181,10 +181,10 @@ set_color_profile_slot( 15, 0, 255, 231, 222 ); //white
 set_color_profile_slot( 15, 1, 120, 120, 120 ); //scarf
 set_color_profile_slot( 15, 2, 110, 57, 43 ); //hair
 set_color_profile_slot( 15, 3, 101, 171, 85 ); //hoodie
-set_color_profile_slot( 15, 4, 200, 204, 159 ); //wood
+set_color_profile_slot( 15, 4, 110, 73, 64 ); //wood
 set_color_profile_slot( 15, 5, 247, 240, 74 ); //blood
 set_color_profile_slot( 15, 6, 145, 209, 181 ); //eyes
-set_color_profile_slot( 15, 7, 120, 76, 54 ); //cleaver
+set_color_profile_slot( 15, 7, 140, 140, 140 ); //cleaver
 
 // Firion (FFII)
 set_color_profile_slot( 16, 0, 255, 217, 189 ); //white

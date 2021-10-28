@@ -16,10 +16,10 @@ set_window_value(AT_FTILT, 1, AG_WINDOW_SFX, sound_get("punch"));
 set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 6);
 
 set_window_value(AT_FTILT, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 7);
+set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 10);//7
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 3);
-set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 4);
+set_window_value(AT_FTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 
 

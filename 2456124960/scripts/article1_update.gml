@@ -14,11 +14,20 @@ if (size == 0) {
 	mask_index = sprite_get("crystal_mask_large");
 }
 
-phone_blastzone_b = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE);
-if (y > phone_blastzone_b + 500) {
-	player_id.crystalOut = 0;
-	instance_destroy(hb);
-	instance_destroy();
+if (player_id.in_adventure) {
+	adventure_timer--;
+	if (adventure_timer < 0) {
+		player_id.crystalOut = 0;
+		instance_destroy(hb);
+		instance_destroy();
+	}
+} else {
+	phone_blastzone_b = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE);
+	if (y > phone_blastzone_b + 500) {
+		player_id.crystalOut = 0;
+		instance_destroy(hb);
+		instance_destroy();
+	}
 }
 
 if (article_mode == 0) {

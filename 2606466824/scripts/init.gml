@@ -51,6 +51,7 @@ doBurn = false;
 burnType = [0, 0, 0, 0];
 burnTargetX = [0, 0, 0, 0];
 burnTargetY = [0, 0, 0, 0];
+burnTargetAdv = 0;
 
 target = noone;
 fspecmode = 0;
@@ -186,3 +187,15 @@ muno_event_type = 0;
 user_event(14);
 	
 user_event(7);
+
+in_adventure = false;
+should_do_intro = true;
+hit_player_event = 2;
+
+pronouns = ["they","them","their","are"];
+am_is_fire = true;
+am_is_clothed = true;
+am_is_guest = true;
+am_is_handed = true;
+am_is_verbal = false;
+am_is_evil = true;

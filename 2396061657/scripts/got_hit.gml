@@ -7,19 +7,21 @@
 
 // Sets current meter to 0 
 
+/*
 got_hitFspecial = true;
 isFspecial = false;
 meter_damage = floor(enemy_hitboxID.damage);
 LoveMeter = clamp(LoveMeter - floor(meter_damage * 2.5), 0, 200);
+*/
 
 //////////////////////////////
 // Old Got Hit Formula
-/*
+
 if (isFspecial){
 	got_hitFspecial = true;
 	isFspecial = false;
 }
-*/
+
 ////////////////////////////
 
 //if (enemy_hitboxID.type == 1){
