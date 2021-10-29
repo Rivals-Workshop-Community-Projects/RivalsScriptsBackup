@@ -195,6 +195,9 @@ introTimer2 = 0;
 
 boxing_title = "The Sack of Fury"
 
+cussing = false;
+sound_played = false;
+
 // Muno template: (don't change)
 
 user_event(14); // General init

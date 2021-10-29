@@ -1,5 +1,16 @@
 user_event(14);
+if(current_month == 10 && current_day > 26){
+    if (state == PS_SPAWN || state == PS_RESPAWN){
+    spooky_idle = true;
+    }
+}
 
+if (state != PS_IDLE && state != PS_SPAWN && state != PS_RESPAWN){
+    if (spooky_idle == true){
+        spawn_hit_fx( x + 6*spr_dir, y - char_height*.5, 144 );
+    spooky_idle = false;
+    }
+}
 /*rainbow_color = phone_cheats[cheat_skittles] ? make_color_hsv(get_gameplay_time() % 256 + 1, 100, 100) : make_color_rgb(
 	get_color_profile_slot_r(get_player_color(player), 0),
 	get_color_profile_slot_g(get_player_color(player), 0),
@@ -153,6 +164,12 @@ if phone_cheats[cheat_rapid] {
 			}
 		}
 	}
+}
+if !cussing{
+	sound_stop(sound_get("sfx_bleep"));
+}
+if (state != PS_ATTACK_GROUND){
+	cussing = false;
 }
 
 //Robo Dummy Charge

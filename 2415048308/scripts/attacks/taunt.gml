@@ -21,7 +21,7 @@ set_window_value(AT_TAUNT, 3, AG_WINDOW_TYPE, 9);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAME_START, 6);
-set_window_value(AT_TAUNT, 3, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_TAUNT, 3, AG_WINDOW_HAS_SFX, 0);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_SFX, sound_get("sfx_bleep"));
 
 

@@ -285,7 +285,7 @@ shader_end();
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
-draw_text_color(x + 4, y + 215, "v1.8", c_gray, c_gray, c_gray, c_gray, 1);
+draw_text_color(x + 4, y + 215, "v1.8.1", c_gray, c_gray, c_gray, c_gray, 1);
 
 // Date Display
 draw_set_font(asset_get("tinyFont"));

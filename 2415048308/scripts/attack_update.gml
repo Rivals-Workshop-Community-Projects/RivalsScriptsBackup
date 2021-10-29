@@ -154,10 +154,15 @@ if (attack == AT_TAUNT){
 	if (window == 3 && window_timer == 1){
 		sound_stop(sound_get("sfx_bleep_start"));
 		//sound_play(sound_get("sfx_bleep"));
+		if (cussing == false){
+			sound_play(sound_get("sfx_bleep"), true, noone, 1);
+			cussing = true;
+		}
 	}
 	if (window == 3 && window_timer == 6 && taunt_down == false){
 		set_state(PS_IDLE);
 		sound_stop(sound_get("sfx_bleep"));
+		cussing = false;
 	}
 }
 

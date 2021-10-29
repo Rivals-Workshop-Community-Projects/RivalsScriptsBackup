@@ -2,6 +2,7 @@ sprite_change_offset("dummyhurt", 28, 86);
 sprite_change_offset("dummycrouchhurt", 28, 86);
 sprite_change_offset("intro", 28, 88);
 sprite_change_offset("idle", 28, 86);
+sprite_change_offset("dummy_spooky", 28, 104);
 sprite_change_offset("hurt", 28, 86);
 sprite_change_offset("bighurt", 28, 86);
 sprite_change_offset("hurtground", 28, 86);
