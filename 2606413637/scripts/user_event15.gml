@@ -266,6 +266,12 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.6", "29 October, 2021");
+initHeader("DTilt - Buffs");
+initSection("SSJ only: startup 10 --> 8.");
+initHeader("NSpecial - Bugfixes");
+initSection("Fixed whiff pratfall after USpecial.");
+
 initPatch("1.5", "04 October, 2021");
 initHeader("NSpecial - Nerfs");
 initSection("Base endlag 16 --> 24; adjusted animation timing to match.");

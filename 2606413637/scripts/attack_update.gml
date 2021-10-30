@@ -106,7 +106,7 @@ switch(attack){
 		set_pratfall(4);
 		break;
 	case AT_NSPECIAL:
-		set_pratfall(7);
+		set_pratfall(8);
 		break;
 }
 

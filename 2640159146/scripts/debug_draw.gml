@@ -1,0 +1,11 @@
+//draw_debug_text(x, y + 15, "blood meter:" +string(bloodmeter));
+//draw_debug_text(x, y + 75, "danmomemt:" +string(danmoment));
+//draw_debug_text(x, y + 35, "burst meter:" +string(burstmeter));
+//draw_debug_text(x, y + 55, "burst:" +string(burst));
+//draw_debug_text(x, y + 75, "burstactive:" +string(burstactive));
+//draw_debug_text(x, y + 15, "num spikes left:" +string(numspikesleft));
+//draw_debug_text(x, y + 35, "num spikes right:" +string(numspikesright));
+//draw_debug_text(x, y + 55, "burst active left" +string(burstspikehitboxleft));
+//draw_debug_text(x, y + 75, "usingspecial" +string(usingspecial));
+//draw_debug_text(x, y + 55, "burststop" +string(burststop));
+//draw_debug_text(x, y + 35, "a" +string(cooldownstart));

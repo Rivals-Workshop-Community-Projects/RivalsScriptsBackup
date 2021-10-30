@@ -1,0 +1,10 @@
+knife_stack = 0;
+is_frozen = false;
+store_hsp = 0;
+store_vsp = 0;
+countdown = -1;
+hitstun_counter = -1;
+outline_color = [0, 0, 0];
+//col_R = get_color_profile_slot_r( get_player_color(other_player_id.player), 0);
+//col_G = get_color_profile_slot_g( get_player_color(other_player_id.player), 0);
+//col_B = get_color_profile_slot_b( get_player_color(other_player_id.player), 0);

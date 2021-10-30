@@ -195,8 +195,8 @@ charData[2 + charNum] = [2254931693, "Anime Girls", sprite_get("idle" + string(c
 charNum += 3
 teamNum += 1
 //I'm Blue, da be dee da ba di 31
-charData[0 + charNum] = [2357967710, "I'm Blue, da be dee", sprite_get("idle" + string(charNum + 1)), .15, teamNum, 1 + charNum, 2 + charNum] //Phoenix
-charData[1 + charNum] = [2605468032, "I'm Blue, da be dee", sprite_get("idle" + string(charNum + 2)), speed, teamNum, 0 + charNum, 2 + charNum] //Gura
+charData[0 + charNum] = [2605468032, "I'm Blue, da be dee", sprite_get("idle" + string(charNum + 1)), .1, teamNum, 1 + charNum, 2 + charNum] //Gura
+charData[1 + charNum] = [2357967710, "I'm Blue, da be dee", sprite_get("idle" + string(charNum + 2)), .15, teamNum, 0 + charNum, 2 + charNum] //Phoenix
 charData[2 + charNum] = [2605304929, "I'm Blue, da be dee", sprite_get("idle" + string(charNum + 3)), .2, teamNum, 0 + charNum, 1 + charNum] //Daora
 charNum += 3
 teamNum += 1

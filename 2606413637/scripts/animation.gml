@@ -192,7 +192,6 @@ switch(sprite){
 		}
 		break;
 	
-	
 }
 
 

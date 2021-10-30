@@ -85,6 +85,7 @@ phone_blastzone_b = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZON
 // phone_blastzone_r = get_stage_data(SD_BLASTZONE_RIGHT_X);
 // phone_blastzone_t = get_stage_data(SD_BLASTZONE_TOP_Y);
 // phone_blastzone_b = get_stage_data(SD_BLASTZONE_BOTTOM_Y);
+phone_game_over = false;
 phone_lagging = false;
 phone_online = 0;
 for (var cur = 0; cur < 4; cur++){
@@ -439,7 +440,6 @@ i = phone.starting_ag_index;
 
 // General Attack Indexes
 AG_MUNO_ATTACK_EXCLUDE = i; i++;		// Set to 1 to exclude this move from the list of moves
-AG_MUNO_ATTACK_REFRESH = i; i++;		// Set to 1 to refresh this move's data every frame while the frame data guide is open
 AG_MUNO_ATTACK_NAME = i; i++;			// Enter a string to override move name
 AG_MUNO_ATTACK_FAF = i; i++;			// Enter a string to override FAF
 AG_MUNO_ATTACK_ENDLAG = i; i++;			// Enter a string to override endlag
@@ -1217,6 +1217,16 @@ if phone_practice && !phone.frame_data_loaded{
 }
 
 if !phone.lightweight{
+	
+	if !phone_game_over{
+		var dead = [1, 1, 1, 1];
+		with oPlayer if state != PS_DEAD{
+			dead[get_player_team(player) - 1] = 0;
+		}
+		if dead[0] + dead[1] + dead[2] + dead[3] > 2{
+			phone_game_over = true;
+		}
+	}
 
 	if !phone_char_ided{
 		with oPlayer if self != other{
