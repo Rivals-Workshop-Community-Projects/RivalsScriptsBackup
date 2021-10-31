@@ -146,3 +146,18 @@ switch(my_hitboxID.attack) {
 		sound_play(asset_get("sfx_icehit_medium2"), 0, noone, .7, 1.4)
 	break;
 }
+
+//hit_player.gml
+
+if my_hitboxID.type == 1 && my_hitboxID.attack != AT_NAIR {
+  
+  if my_hitboxID.damage >= 5 {
+        sound_play(sound_get("swingstrong"),false,noone, 0.4 + my_hitboxID.damage/30)    
+       
+  } else {
+        sound_play(sound_get("swingmid"),false,noone, 0.4 + my_hitboxID.damage/30)   
+  
+  }
+       sound_play(asset_get("sfx_icehit_medium2"),false,noone, 0.3 + my_hitboxID.damage/20)    
+
+ }

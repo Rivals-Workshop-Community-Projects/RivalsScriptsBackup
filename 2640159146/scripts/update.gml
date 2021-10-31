@@ -80,8 +80,12 @@ if(attack == AT_USPECIAL && state == PS_ATTACK_AIR){
 	move_cooldown[AT_USPECIAL] = 0;
 }
 
-if ((attack == AT_DSPECIAL && window == 2 && window_timer == 19) || (attack == AT_DSPECIAL_AIR && (window == 3 && window_timer == 13) || (window == 4 && window_timer == 19))) {
+if (attack == AT_FSPECIAL && window == 4 && window_timer == 31) {
+	move_cooldown[AT_FSPECIAL] = 25;
+}
+
+if ( (attack == AT_DSPECIAL && window == 2 && window_timer == 19) || (attack == AT_DSPECIAL_AIR && (window == 3 && window_timer == 13) || (window == 4 && window_timer == 19))) {
 	    move_cooldown[AT_DSPECIAL] = 40;
 	    move_cooldown[AT_DSPECIAL_AIR] = 40;
 }
-print_debug(string(bloodmeter))
+//print_debug(string(bloodmeter))

@@ -41,5 +41,5 @@ set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_DESTROY_EFFECT, shell_destroy);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sound_get("ShellHit"));
 
-set_attack_value(AT_FSTRONG, AG_MUNO_ATTACK_MISC_ADD, "Hsp goes from 10 to 15 after being parried. Has 100 frames of cooldown.");
+set_attack_value(AT_FSTRONG, AG_MUNO_ATTACK_MISC_ADD, "Hsp goes from 10 to 15 after being parried. Damage and Knockback values are halved when in the air. Has 100 frames of cooldown.");
 set_attack_value(AT_FSTRONG, AG_MUNO_ATTACK_ENDLAG, string(get_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH)));

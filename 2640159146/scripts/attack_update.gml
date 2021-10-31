@@ -9,17 +9,21 @@ if window == 1 && window_timer == 1 {
 	beginning = 0;
 }
 
+if attack == AT_FSPECIAL || attack == AT_DSPECIAL_AIR {
+	can_wall_jump = true;
+}
+
 if burst = 1 && (((attack == AT_FSPECIAL || (attack == AT_NSPECIAL)) && has_hit)) {
 	usingspecial = true;
 	burststop = 240;
 } 
 
 if burst = 1 {
-		set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 9.5);
-		set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 1);
+		set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 9.75);
+		set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.1);
 		
 		set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 7);
-		set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.2);
+		set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.1);
 } else {
 		reset_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK);
 		reset_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING);
@@ -61,6 +65,8 @@ else if (bloodmeter > bloodmetermax && !hitpause && (state != PS_ATTACK_GROUND |
 	set_attack(AT_DSPECIAL_2);
 	hurtboxID.sprite_index = get_attack_value(AT_DSPECIAL_2, AG_HURTBOX_SPRITE);
 	burstactive = false;
+	djumps = 0;
+	move_cooldown[AT_USPECIAL] = 0;
 }
 
 //====================================
@@ -335,12 +341,6 @@ if attack == AT_USPECIAL && !free {
 	}
 }
 
-if attack == AT_DSPECIAL {
-	if window == 2 && window_timer == 1 {
-		sound_play(asset_get("sfx_blow_heavy2"));
-	}
-}
-
 	if attack = AT_DSPECIAL_AIR && window != 4 && !free {
 		window = 4;
 		window_timer = 0;
@@ -440,6 +440,11 @@ switch(attack) {
 	case AT_UTILT: 
 		if window == 1 && window_timer == 5 sound_play(sound_get("swingmid"), 0, noone, 1, .9)
 	break;
+	case AT_DSTRONG: {
+		if (window == 3 && window_timer == 10) || (window == 7 && window_timer == 10) {
+						sound_play(sound_get("swingmid"))
+		}
+	}
 }
 
 

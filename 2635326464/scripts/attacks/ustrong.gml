@@ -63,7 +63,7 @@ set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 16);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_X, -10);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y, -59);
 set_hitbox_value(AT_USTRONG, 2, HG_ANGLE, 45);
-set_hitbox_value(AT_USTRONG, 2, HG_ANGLE_FLIPPER, 3);
+set_hitbox_value(AT_USTRONG, 2, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 1.2);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_HITPAUSE, 11);
@@ -79,5 +79,5 @@ set_hitbox_value(AT_USTRONG, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_abyss_explosion_big"));
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 141);
 
-set_attack_value(AT_USTRONG, AG_MUNO_ATTACK_MISC_ADD, "Launch distance has 3 charge levels. Hspeed values are 4, 5 and 6, while Vspeed values are -16, -17 and -18.");
+set_attack_value(AT_USTRONG, AG_MUNO_ATTACK_MISC_ADD, "Launch distance has 3 charge levels. Hspeed values are 4, 5 and 6, while Vspeed values are -16, -17 and -18. Angle flipper changes to 3 after bouncing (sending away from the explosion).");
 set_attack_value(AT_USTRONG, AG_MUNO_ATTACK_ENDLAG, string(get_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH)));

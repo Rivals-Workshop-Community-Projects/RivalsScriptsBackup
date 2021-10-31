@@ -1,13 +1,3 @@
-if attack == AT_FSTRONG {
-	if (free){
-		kb_value = 6;
-		kb_scale = 0.8
-	} else {
-		kb_value = 8;
-		kb_scale = 1.2;
-	}
-}
-
 //Mario Karting yourself
 
 if (attack == AT_FSTRONG)  {
@@ -42,6 +32,16 @@ if (attack == AT_FSTRONG)  {
 			hsp = 15;
 		} else hsp = -15;
 	}
+
+	if (free) {
+		damage = 5;
+		kb_value = 4;
+		kb_scale = 0.6;
+	} else {
+		damage = 9;
+		kb_value = 8;
+		kb_scale = 1.2;
+	}
 }
 
 //Ustrong bounce
@@ -59,6 +59,7 @@ if (attack == AT_USTRONG)  {
 			sprite_index = red_bomb;
 			if (bounces = 1){
 				grav += 0.6;
+				player_id.bomb_bounced = 1;
 				if (grav < 2.5) {
 					vsp = (-12 + grav);
 					sound_play (sound_get("BobOmbBounce"));
@@ -88,6 +89,9 @@ if (attack == AT_USTRONG)  {
 	}
 	if (hbox_num == 2){
 		can_hit_self = 1;
+		if (player_id.bomb_bounced == 1){
+			hit_flipper = 3;
+		}
 	}
 }
 
@@ -133,14 +137,16 @@ if (attack == AT_FSTRONG_2){
 
 	if (hbox_num == 1){
 
+
 		if (hitbox_timer == 1){
 			y_increment = 0;
+			can_hit_self = false;
 		}
 	
 		through_platforms = 3;
 
 		if (hitbox_timer > 10){
-			can_hit_self = 1;
+			//can_hit_self = 1;
 		}
 
 		if (hitbox_timer mod 30 == 0){

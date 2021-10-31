@@ -364,6 +364,13 @@ switch(attack){
 
 	case AT_USTRONG:
 	{
+
+		if (window == 1){
+			if (window_timer == 1){
+				bomb_bounced = 0;
+			}
+		}
+
 		move_cooldown[AT_USTRONG] = 60;
 		
 		if (strong_charge <= 20){
@@ -947,6 +954,12 @@ switch(attack){
 				window = 4;
 				window_timer = 0;
 			}
+
+			//no stalling
+
+			if (abs(hsp) < 4){
+				set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, 1);
+			} else set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_VSPEED, 0.5);
 		}
 
 		//revert fire ball
@@ -960,11 +973,11 @@ switch(attack){
 	
 		if (window == 2 || window == 4){
 			if (abs(hsp) < 2){
-				set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_VSPEED, 2);
+				set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_VSPEED, 2.6);
 			} else if (abs(hsp) < 4){
-				set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_VSPEED, 1.5);
+				set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_VSPEED, 1.9);
 			} else if (abs(hsp) < 6){
-				set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_VSPEED, 1);
+				set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_VSPEED, 1.2);
 			} else set_window_value(AT_USPECIAL_2, 3, AG_WINDOW_VSPEED, 0.5);
 		}
 

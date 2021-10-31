@@ -27,7 +27,7 @@ set_hitbox_value(AT_FSTRONG_2, 1, HG_HITBOX_X, 8);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_HITBOX_Y, -46);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_ANGLE, 361);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_BASE_KNOCKBACK, 4);
-set_hitbox_value(AT_FSTRONG_2, 1, HG_KNOCKBACK_SCALING, 1);
+set_hitbox_value(AT_FSTRONG_2, 1, HG_KNOCKBACK_SCALING, 0.3);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_HITSTUN_MULTIPLIER, 1);
@@ -76,5 +76,5 @@ set_hitbox_value(AT_FSTRONG_2, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_FSTRONG_2, 2, HG_HIT_SFX, sound_get("blue_explosion"));
 set_hitbox_value(AT_FSTRONG_2, 2, HG_VISUAL_EFFECT, 13);
 
-set_attack_value(AT_FSTRONG_2, AG_MUNO_ATTACK_MISC_ADD, "You can only use it once, when you're in a stock match and losing. Still activates a cooldown of 100 frames for your regular FStrong.");
+set_attack_value(AT_FSTRONG_2, AG_MUNO_ATTACK_MISC_ADD, "You can only use it once per match, when you're in a stock match and losing. The explosion can hurt ou. Still activates a cooldown of 100 frames for your regular FStrong.");
 set_attack_value(AT_FSTRONG_2, AG_MUNO_ATTACK_ENDLAG, string(get_window_value(AT_FSTRONG_2, 2, AG_WINDOW_LENGTH)));
