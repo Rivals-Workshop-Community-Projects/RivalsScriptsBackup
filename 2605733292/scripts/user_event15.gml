@@ -259,6 +259,37 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.7", "31 October, 2021");
+initHeader("General");
+initSection("~ Adjusted VFX for the intro animation.
+~ Fixed a bug where an attack after any hit of Jab or landing Nair would have Sleep Kirby’s hurtbox be his jab hurtbox.
+~ Fixed a bug where opponents could tech out of the Sleep status.
+~ Fixed opponents flying to the top of the screen if they hit the bottom blastzone while under the Sleep status.
+~ Adjusted sound effect for when the Sleep status wears off.
+~ Added dust effects for when Sleep Kirby activates Sweet Dreams (aka he falls asleep) by idling.");
+initHeader("Jab");
+initSection("~ Added dust effects to Jab 1 and Jab 2.
+~ Adjusted Jab 3 hitbox to connect better when doing landing Neutral Air.");
+initHeader("Forward Tilt");
+initSection("~ Added dust effects.");
+initHeader("Up Tilt");
+initSection("~ Adjusted hitbox sizes to better match the animation.");
+initHeader("Down Tilt");
+initSection("~ Adjusted hitbox size to better match the animation.");
+initHeader("Neutral Air");
+initSection("~ The spin sound effect now stops when the move is parried.");
+initHeader("Forward Air");
+initSection("~ Adjusted hitbox size to better match the animation.");
+initHeader("Up Air");
+initSection("~ Adjusted sfx timing.
++ Knockback Scaling: .4 -> .5");
+initHeader("Down Air");
+initSection("~ Adjusted hitbox sizes to better match the animation.");
+initHeader("Back Air");
+initSection("~ Adjusted hitbox sizes to better match the animation.");
+initHeader("Neutral Special (Burst Bubble)");
+initSection("- Now properly puts Sleep Kirby into parry stun when parried.");
+
 initPatch("1.6", "28 September, 2021");
 initHeader("General");
 initSection("~ Hotfix to remove debug text.");

@@ -450,7 +450,7 @@ switch(attack) {
 
 
 
-if (attack == AT_JAB && (window == 1 || window == 3)) {
+if (attack == AT_JAB && (window == 1 || window == 4) && window_timer == 1) {
     clear_button_buffer(PC_ATTACK_PRESSED);
 }
 

@@ -17,7 +17,7 @@ if burststop = 0 {
 	cooldownstart = false;
 }
 
-if (burststop = 0 && usingspecial == false && burst && (danmoment % 10) == 1) {
+if (burststop = 0 && usingspecial == false && burst && (danmoment % 11) == 1) {
    take_damage( player, -1, 1 );
 }	
 
@@ -84,7 +84,9 @@ if (attack == AT_FSPECIAL && window == 4 && window_timer == 31) {
 	move_cooldown[AT_FSPECIAL] = 25;
 }
 
-if ( (attack == AT_DSPECIAL && window == 2 && window_timer == 19) || (attack == AT_DSPECIAL_AIR && (window == 3 && window_timer == 13) || (window == 4 && window_timer == 19))) {
+if ( (attack == AT_DSPECIAL && window == 2 && window_timer == 19) 
+|| (attack == AT_DSPECIAL_AIR && window == 3 && window_timer == 13) 
+|| (attack == AT_DSPECIAL_AIR && window == 4 && window_timer == 19) ) {
 	    move_cooldown[AT_DSPECIAL] = 40;
 	    move_cooldown[AT_DSPECIAL_AIR] = 40;
 }

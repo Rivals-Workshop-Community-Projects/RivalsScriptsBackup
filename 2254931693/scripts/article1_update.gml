@@ -1,7 +1,15 @@
 // article_update
 
+if (state != PS_TUMBLE){
+mask_index = sprite_get("frog_mask");
+}
 
-if (free = 1 && (state != PS_HITSTUN && state != PS_PRATFALL)){
+if (state == PS_TUMBLE){
+mask_index = asset_get("empty_sprite");
+}
+
+
+if (free = 1 && (state != PS_HITSTUN && state != PS_PRATFALL && state != PS_TUMBLE)){
 vsp = vsp + 1;
 }
 
@@ -45,10 +53,42 @@ sprite_change_offset("frog_despawn", 148, 327);
 
 if (y > room_height + 100){
     player_id.frog_exists = 0;
-    player_id.frog_deathtimer = 480;
+    player_id.frog_deathtimer = 240;
     sound_play(sound_get("bonby_frog_sd"));
     shake_camera(4, 8);
     instance_destroy();
+}
+
+if (player_id.state = PS_ATTACK_GROUND && player_id.attack = AT_DSPECIAL_2){
+    var dspecialbackdir = point_direction(x, y, player_id.x + (24 * player_id.spr_dir), player_id.y - 16);
+    var dspecialbackspeed = 5;
+    if (player_id.x < x){
+        spr_dir = -1;
+    }
+    if (player_id.x > x){
+        spr_dir = 1;
+    }    
+    hsp = lengthdir_x(dspecialbackspeed, dspecialbackdir);
+    vsp = lengthdir_y(dspecialbackspeed, dspecialbackdir);
+}
+
+if (player_id.state = PS_ATTACK_AIR && player_id.attack = AT_FSPECIAL_2){
+    if (player_id.window_timer = 0 && player_id.window = 1){
+      state = PS_TUMBLE;
+      state_timer = 0;
+      hsp = 0;
+      vsp = 0;
+      spr_dir = player_id.spr_dir
+      y = player_id.y - 20;
+      x = player_id.x;
+    }
+}
+
+if (player_id.state = PS_HITSTUN && state = PS_TUMBLE && hsp = 0 && vsp = 0){
+      state = PS_PRATFALL;
+      state_timer = 0;
+      hsp = -3 * spr_dir;
+      vsp = -9;
 }
 
 
@@ -278,25 +318,6 @@ if (state_timer > 0 && free = 1){
             state_timer = 0;
         }
         break; 
-        
-    //FSpecial (Knocked Back)      
-    case PS_TUMBLE:
-        sprite_index = sprite_get("frog_idle_air");
-        image_index = state_timer / 4;
-        if state_timer = 0{
-        y = y - 5;
-        free = true;
-        vsp = -9;
-        hsp = 8 * player_id.spr_dir;     
-        } 
-        if (state_timer > 2 && free = 0){
-            sound_play(sound_get("bonby_frog_land"))
-            hsp = 0;
-            state = PS_LAND;
-            state_timer = 0;
-        }        
-        
-    break;
 
 
     //Parried        
@@ -328,7 +349,13 @@ if (state_timer > 0 && free = 1){
         if hsp < 0{
             spr_dir = 1;
         }        
-    break;    
+    break; 
+    
+    //Fspecial Throw   
+    case PS_TUMBLE:
+        sprite_index = asset_get("empty_sprite");
+        image_index = state_timer / 4;
+    break;     
    
 }
 

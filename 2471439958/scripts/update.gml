@@ -185,12 +185,8 @@ if (attack == AT_DSPECIAL){
 
 //ELEMENT CHANGE
 
-if (taunt_pressed){
-	if down_down && (element_change == 5){
-	fire = 0
-	ice = 0
-	thunder = 0
-	pistols = 1
+
+if (pistols == 1){
 
 	set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -2);
 	
@@ -278,13 +274,10 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, 131);
 	
 }
-	if right_down && (element_change == 5){
+
 	
-	fire = 0
-	ice = 1
-	thunder = 0
-	pistols = 0
-			
+if (ice == 1){		
+		
 	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 8);	
 	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
 	
@@ -299,26 +292,20 @@ if (taunt_pressed){
 	set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 12);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 45);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -28);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 8);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, .3);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 14);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, -0);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_EFFECT, 5);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 199);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 158);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("bulletI"));
 	
 	set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_HSPEED, 14);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_VSPEED, -2);
-	set_hitbox_value(AT_NSPECIAL, 2, HG_EFFECT, 5);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 199);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, 158);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("bulletI"));
 	
 	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, 14);
 	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_VSPEED, 2);
-	set_hitbox_value(AT_NSPECIAL, 3, HG_EFFECT, 5);
 	set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 199);
 	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 158);
 	set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("bulletI"));
@@ -329,7 +316,6 @@ if (taunt_pressed){
 	set_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE, 2);
 	set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 0);
 	set_hitbox_value(AT_USPECIAL, 1, HG_LIFETIME, 14);
-	set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 4);
 	set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 199);
 	set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 199);
 	set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("ice_effect"));
@@ -338,7 +324,6 @@ if (taunt_pressed){
 	set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_DAMAGE, 2);
 	set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_BASE_KNOCKBACK, 0);
 	set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_LIFETIME, 14);
-	set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_BASE_HITPAUSE, 4);
 	set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_VISUAL_EFFECT, 199);
 	set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_PROJECTILE_DESTROY_EFFECT, 199);
 	set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_PROJECTILE_SPRITE, sprite_get("ice_effect"));
@@ -351,18 +336,14 @@ if (taunt_pressed){
 	set_num_hitboxes(AT_FSTRONG, 2);
 	
 	set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, sound_get("sfx_blow_ice_heavy2"));
-	set_hitbox_value(AT_FSTRONG, 1, HG_EFFECT, 0);
 	set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 199);
-	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 20);
 	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 7);
 	set_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING, 0.7);
 	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 8);
 	set_hitbox_value(AT_FSTRONG, 1, HG_ANGLE, 40);
 	
 	set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, sound_get("sfx_blow_ice_heavy2"));
-	set_hitbox_value(AT_FSTRONG, 2, HG_EFFECT, 5);
 	set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 199);
-	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_HITPAUSE, 30);
 	set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 8);
 	set_hitbox_value(AT_FSTRONG, 2, HG_KNOCKBACK_SCALING, 0.7);
 	set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 10);
@@ -380,8 +361,7 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 5);
 	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 9);
 	set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 40);
-	set_hitbox_value(AT_FAIR, 1, HG_EFFECT, 0);
-	set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 9);
+	set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 8);
 	set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .7);
 	set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 15);
 	set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .5);
@@ -393,7 +373,7 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 45);
 	set_hitbox_value(AT_FAIR, 2, HG_EFFECT, 0);
 	set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 8);
-	set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .6);
+	set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .5);
 	set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 10);
 	set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, sound_get("sfx_blow_ice_heavy1"));
 	set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 199);
@@ -403,17 +383,14 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FAIR, 3, HG_ANGLE, 45);
 	set_hitbox_value(AT_FAIR, 3, HG_EFFECT, 0);
 	set_hitbox_value(AT_FAIR, 3, HG_BASE_KNOCKBACK, 8);
-	set_hitbox_value(AT_FAIR, 3, HG_KNOCKBACK_SCALING, .6);
+	set_hitbox_value(AT_FAIR, 3, HG_KNOCKBACK_SCALING, .5);
 	set_hitbox_value(AT_FAIR, 3, HG_BASE_HITPAUSE, 10);
 	set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, sound_get("sfx_blow_ice_heavy1"));
 	set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, 199);
 }
-	if left_down && (element_change == 5){
 
-	fire = 0
-	ice = 0
-	thunder = 1
-	pistols = 0
+	
+if thunder == 1{
 	
 	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 18);
 	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, sound_get("TESLA_CHARGE"));
@@ -497,7 +474,7 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 40);
 	set_hitbox_value(AT_FAIR, 1, HG_EFFECT, 11);
 	set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 9);
-	set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .6);
+	set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .7);
 	set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 12);
 	set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .5);
 	set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_clairen_tip_med"));
@@ -523,12 +500,9 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
 	set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, 129);
 }
-	if up_down && (element_change == 5){
+
 	
-	fire = 1
-	ice = 0
-	thunder = 0
-	pistols = 0
+if fire == 1{
 	
 	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 9);	
 	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
@@ -652,8 +626,39 @@ if (taunt_pressed){
 	set_hitbox_value(AT_FAIR, 3, HG_BASE_HITPAUSE, 10);
 	set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 	set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, 204);
-	
 }
+
+	
+
+
+if (taunt_pressed){
+	if down_down && (element_change == 5){
+	fire = 0
+	ice = 0
+	thunder = 0
+	pistols = 1
+	}
+	if right_down && (element_change == 5){
+	
+	fire = 0
+	ice = 1
+	thunder = 0
+	pistols = 0
+	}
+	if left_down && (element_change == 5){
+
+	fire = 0
+	ice = 0
+	thunder = 1
+	pistols = 0
+	}
+	if up_down && (element_change == 5){
+	
+	fire = 1
+	ice = 0
+	thunder = 0
+	pistols = 0
+	}
 	if (!joy_pad_idle){
 		element_change++;
 		if (element_change >= 7){
@@ -676,6 +681,7 @@ if (taunt_pressed){
 		}
 	}
 }
+//NO Element
 
 
 //I LIVE AGAIN

@@ -3,12 +3,24 @@
 if (attack == AT_TAUNT){
     if attack_down{
         attack = AT_TAUNT_2;
-    } 
+    }
+    
 }
 
 if (attack == AT_NSPECIAL){
     if pistols = 1{
         attack = AT_NSPECIAL_2;
+    }
+    
+}
+if (attack == AT_NSPECIAL){
+    if (fire = 0) && (ice = 0) && (thunder = 0) && (pistols = 0){
+        attack = AT_EXTRA_3;
+    }
+}
+if (attack == AT_EXTRA_3){
+    if (fire = 1) or (ice = 1) or (thunder = 1) or (pistols = 1){
+        attack = AT_NSPECIAL;
     }
     
 }
@@ -21,12 +33,12 @@ if (attack == AT_NSPECIAL_2 or attack = AT_NSPECIAL_AIR){
 }
 if (attack == AT_FSTRONG){
     if pistols = 1{
-        attack = AT_EXTRA_2;
+        attack = AT_FSTRONG_2;
     }
     
 }
 
-if (attack == AT_EXTRA_2){
+if (attack == AT_FSTRONG_2){
     if pistols = 0{
         attack = AT_FSTRONG;
     }

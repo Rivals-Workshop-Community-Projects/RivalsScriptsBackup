@@ -1,9 +1,48 @@
 //hitbox_update
 
 
-if (attack = AT_FSPECIAL && (hbox_num = 1) && hitbox_timer = 3){
-    x_pos = x_pos + 20;
+if (attack == AT_FSPECIAL_2){
+    
+if (player_id.state = PS_ATTACK_AIR && player_id.attack == AT_FSPECIAL_2 && player_id.window = 1){
+        length = 0;
+    }
+    
+    
+    if (y > room_height + 99){
+    length = 0;
 }
+    
+    if (player_id.frog_exists = 1){
+        
+        
+        
+        if (free = 1){
+        player_id.frog.x = x
+        player_id.frog.y = y
+        player_id.frog.hsp = hsp;
+        player_id.frog.vsp = vsp;    
+        
+        if (hsp > 0){
+            player_id.frog.spr_dir = 1
+        }
+        
+        if (hsp < 0){
+            player_id.frog.spr_dir = -1
+        }
+    
+    }
+    
+            if (free = 0){
+        player_id.frog.state = PS_IDLE_AIR;
+        player_id.frog.state_timer = 0;
+        length = 0;
+    }    
+    
+}
+
+}
+
+
 
 
 if (player_id.frog_exists = 1 && (player_id.frog.state != PS_ATTACK_GROUND && player_id.frog.state != PS_ATTACK_AIR) && attack = AT_FSPECIAL){

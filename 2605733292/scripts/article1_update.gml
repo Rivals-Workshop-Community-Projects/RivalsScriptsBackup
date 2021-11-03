@@ -406,6 +406,8 @@ if (state == 4){
 		cur_hitbox.projectile_parry_stun = false;
 	}
 	
+	cur_hitbox.can_tech = 1;
+	
 	//destroy hitbox
 	if (should_destroy_hitbox && hitbox_active){
 		should_destroy_hitbox = false;

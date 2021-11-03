@@ -104,7 +104,7 @@ instance_create(x, y, "obj_article_solid");
 phone = {
 	
 	// version
-	firmware: 1,
+	firmware: 4,
 	
 	// dev-end config
 	uses_shader: 0,
@@ -179,6 +179,60 @@ sfx_pho_power_on = sound_get("_pho_acnh_chime1");
 
 initIndexes();
 
+phone.attack_names = [
+	"None",
+	"Jab",
+	"???",
+	"???",
+	"FTilt",
+	"DTilt",
+	"UTilt",
+	"FStrong",
+	"DStrong",
+	"UStrong",
+	"DAttack",
+	"FAir",
+	"BAir",
+	"DAir",
+	"UAir",
+	"NAir",
+	"FSpecial",
+	"DSpecial",
+	"USpecial",
+	"NSpecial",
+	"FStrong 2",
+	"DStrong 2",
+	"UStrong 2",
+	"USpecial Ground",
+	"USpecial 2",
+	"FSpecial 2",
+	"FThrow",
+	"UThrow",
+	"DThrow",
+	"NThrow",
+	"DSpecial 2",
+	"Extra 1",
+	"DSpecial Air",
+	"NSpecial 2",
+	"FSpecial Air",
+	"Taunt",
+	"Taunt 2",
+	"Extra 2",
+	"Extra 3",
+	"MunoPhone",
+	"???",
+	"NSpecial Air",
+	"???",
+	"???",
+	"???",
+	"???",
+	"???",
+	"???",
+	"???",
+	"???",
+	"???"
+];
+
 with phone{
 	
 	phone = self;
@@ -211,7 +265,42 @@ with phone{
 	UTIL_STATE_LOAD	= pho_initUtil("Load Position and Damage", [0], "", "Load the position and damage saved by the previous setting.");
 	UTIL_GREEN		= pho_initUtil("Greenscreen", [0, 1], ["Off", "On"], "Enable a greenscreen that is drawn at the same depth as the phone's content screen.
 	
-	(Won't take effect until you put away the phone.)")
+	(Won't take effect until you put away the phone.)");
+	UTIL_PARRY		= pho_initUtil("Endless Parry", [0, 1], ["Off", "On"], "Causes other players' parry windows to last forever until they successfully parry something, if the CPU action is set to Parry.
+	
+	Useful for testing the on-parry effects of a move without having to time it perfectly.");
+	
+	var attack_list = [
+		0,
+		AT_JAB,
+		AT_FTILT,
+		AT_DTILT,
+		AT_UTILT,
+		AT_DATTACK,
+		AT_FSTRONG,
+		AT_USTRONG,
+		AT_DSTRONG,
+		AT_NAIR,
+		AT_FAIR,
+		AT_BAIR,
+		AT_UAIR,
+		AT_DAIR,
+		AT_NSPECIAL,
+		AT_FSPECIAL,
+		AT_USPECIAL,
+		AT_DSPECIAL,
+		AT_TAUNT,
+		];
+		
+	var attack_names = [];
+	
+	for (var i = 0; i < array_length(attack_list); i++){
+		attack_names[i] = phone.attack_names[attack_list[i]];
+	}
+	
+	UTIL_ATTACK		= pho_initUtil("Spam Attack", attack_list, attack_names, "Makes the CPU spam a certain attack. Set the CPU action to Crouch for ground moves, and Jump for air moves.
+	
+	(If the action is Jump, this Utility will also try to force the CPU to shorthop.)");
 	UTIL_CPU		= pho_initUtil("CPU Behavior Changes", [1, 0], ["On", "Off"], "Makes changes to some base-game CPUs to make them better training dummies, removing annoying side effects when recovering.
 	
 		Zetterburn, Maypul, and Ranno cannot inflict their status effects.
@@ -463,10 +552,7 @@ if !phone_hud_hidden && draw_indicator{
 
 #define CORE_css_draw
 
-var is_online = 0;
-for (var cur = 0; cur < 4; cur++){
-	if get_player_hud_color(cur+1) == $64e542 is_online = 1;
-}
+var is_online = get_player_hud_color(player) == $64e542;
 
 shader_end();
 
@@ -482,14 +568,22 @@ user_event(15);
 
 rectDraw(x + 10, y + 10, 202, 6, c_black);
 
-var offset = (alt_cur > 15) * 16;
-
 var col = alt_ui_recolor == noone ? c_white : make_color_rgb(get_color_profile_slot_r(alt_cur, alt_ui_recolor), get_color_profile_slot_g(alt_cur, alt_ui_recolor), get_color_profile_slot_b(alt_cur, alt_ui_recolor));
- 
-for(i = 0; i < (num_alts - offset) && i < 16; i++){
-	var draw_color = (i == alt_cur - offset) ? col : c_gray * 0.5;
-	var draw_x = x + 78 + 8 * i;
-	rectDraw(draw_x, y + 10, 6, 4, draw_color);
+
+// var offset = (alt_cur > 15) * 16;
+
+// for (i = 0; i < (num_alts - offset) && i < 16; i++){
+// 	var draw_color = (i == alt_cur - offset) ? col : c_gray * 0.5;
+// 	var draw_x = x + 78 + 8 * i;
+// 	rectDraw(draw_x, y + 10, 6, 4, draw_color);
+// }
+
+var thin = num_alts > 16;
+
+for (i = 0; i < num_alts; i++){
+	var draw_color = (i == alt_cur) ? col : c_gray * 0.5;
+	var draw_x = x + 78 + (thin ? 4 : 8) * i;
+	rectDraw(draw_x, y + 10, thin ? 2 : 6, 4, draw_color);
 }
 
 var txt = "#" + string(alt_cur);
@@ -756,6 +850,7 @@ if phone.big_screen_pos_offset < 1{
 		
 		else if "options" in item{
 			textDraw(draw_x + 140 - round(118 * (phone.y / phone.lowered_y)), draw_y + 222 - phone.extra_top_size, "fName", c_white, 1000, 1000, fa_center, 1, 0, 1, "ATTACK: " + (array_length(item.options) > 1 ? (array_length(item.options) > 2 ? "Next Option" : "Toggle") : "Activate"), 1);
+			if array_length(item.options) > 2 textDraw(draw_x + 140 - round(118 * (phone.y / phone.lowered_y)), draw_y + 201 - phone.extra_top_size, "fName", c_white, 1000, 1000, fa_center, 1, 0, 1, "JUMP: Previous Option", 1);
 		}
 	}
 	
@@ -996,7 +1091,7 @@ if phone.big_screen_pos_offset < 1{
 						text_x += add_x * 2;
 					
 						for (var j = 0; j < array_length(stats_table); j++){
-							textDraw(text_x, text_y, "fName", hb.parent_hbox && hb.parent_hbox != j && j > 0 ? c_gray : c_white, 18, 24, fa_left, 1, 0, 1, stats_table[j], true);
+							textDraw(text_x, text_y, "fName", hb.parent_hbox && hb.parent_hbox != i + 1 && j > 0 ? c_gray : c_white, 18, 24, fa_left, 1, 0, 1, stats_table[j], true);
 							text_x += add_x;
 						}
 						
@@ -1059,12 +1154,23 @@ if phone.big_screen_pos_offset < 1{
 		
 		rectDraw(text_x + 64, text_y - 19, this_w - 128, 2, app_color);
 		
-		if array_length(item.option_names) > 1{
-			for (var i = 0; i < array_length(item.option_names); i++){
-				var to_draw = item.option_names[i];
-				if item.on == i to_draw = "> " + to_draw + " <";
-				textDraw(this_x, text_y, "fName", item.on == i ? c_white : c_gray, 18, this_w, fa_center, 1, 0, 1, to_draw, true);
-				text_y += phone.last_text_size[1] + 10;
+		var num_options = array_length(item.option_names);
+		
+		if num_options > 1{
+			var col_height = 10;
+			var num_cols = min(4, ceil(num_options / col_height));
+			var col_spacing = 96 + 32 * (5 - num_cols);;
+			var avg_col = (num_cols - 1) / 2;
+			
+			for (var j = 0; j < num_cols; j++){
+				var col_x = this_x + (j - avg_col) * col_spacing;
+				var col_y = text_y;
+				for (var i = j * col_height; i < (j + 1) * col_height && i < num_options; i++){
+					var to_draw = item.option_names[i];
+					if item.on == i to_draw = "> " + to_draw + " <";
+					textDraw(col_x, col_y, "fName", item.on == i ? c_white : c_gray, 18, this_w, fa_center, 1, 0, 1, to_draw, true);
+					col_y += phone.last_text_size[1] + 10;
+				}
 			}
 		}
 		else{
@@ -1261,11 +1367,6 @@ if !phone.lightweight{
 			}
 		}
 		else if phone_lagging != 1 phone_lagging = 0;
-		
-		if phone.utils_cur_updated[phone.UTIL_DMG_FREEZE]{
-			phone.utils_cur_updated[phone.UTIL_DMG_FREEZE] = 0;
-			phone_frozen_damage = get_player_damage(player);
-		}
 	}
 
 	if array_length(phone_dust_query){
@@ -1281,6 +1382,11 @@ if phone_practice{
 
 	if phone.utils_cur[phone.UTIL_DMG_FREEZE]{
 		set_player_damage(player, phone_frozen_damage);
+	}
+	
+	if phone.utils_cur_updated[phone.UTIL_DMG_FREEZE]{
+		phone.utils_cur_updated[phone.UTIL_DMG_FREEZE] = 0;
+		phone_frozen_damage = get_player_damage(player);
 	}
 	
 	if phone.utils_cur_updated[phone.UTIL_STATE_SAVE]{
@@ -1316,13 +1422,11 @@ if phone_practice{
 	}
 	
 	if phone.utils_cur[phone.UTIL_CPU] && phone_practice{
-		with oPlayer{
+		with oPlayer if "url" in self{
 			if (burned && burnt_id.url == CH_ZETTERBURN && get_player_hud_color(burnt_id.player) == c_gray) burned = 0;
 			if get_player_hud_color(player) == c_gray{
 				if (url == CH_KRAGG) can_up_b = 0;
 				if (url == CH_FORSBURN) move_cooldown[AT_FSPECIAL] = 2;
-				if (url != CH_MAYPUL) marked = false;
-				if (url != CH_RANNO) poison = 0;
 				if (url == CH_SHOVEL_KNIGHT){
 					gems = 0;
 					if (state == PS_ATTACK_AIR && window == 1 && window_timer == 1){
@@ -1331,6 +1435,22 @@ if phone_practice{
 					}
 				}
 			}
+			if (url != CH_MAYPUL) marked = false;
+			if (url != CH_RANNO) poison = 0;
+		}
+	}
+	
+	if phone.utils_cur[phone.UTIL_PARRY] && get_training_cpu_action() == CPU_PARRY{
+		with oPlayer if self != other && state == PS_PARRY && window == 1 && !hitpause && !invincible window_timer = 1;
+	}
+	
+	if phone.utils_cur[phone.UTIL_ATTACK]{
+		var atk = phone.utils_cur[phone.UTIL_ATTACK];
+		with oPlayer if get_player_hud_color(player) == c_gray && (state == PS_FIRST_JUMP && vsp != 0 || state == PS_CROUCH){
+			if (state == PS_FIRST_JUMP){
+				vsp = -short_hop_speed;
+			}
+			set_attack(atk);
 		}
 	}
 }
@@ -1554,12 +1674,14 @@ if "options" in arr[phone.cursor]{
 	var opts = array_length(arr[phone.cursor].options);
 	var utiling = phone.app == phone.APP_UTILS;
 	var cheating = phone.app == phone.APP_CHEATS;
-	if attack_pressed{
-		arr[phone.cursor].on++;
+	var cursor_change = (attack_pressed - jump_pressed);
+	if cursor_change != 0{
+		arr[phone.cursor].on += cursor_change;
 		if utiling phone.utils_cur_updated[phone.cursor] = 1;
 		if cheating phone_cheats_updated[phone.cursor] = 1;
 		phoneCursorChange();
 		clear_button_buffer(PC_ATTACK_PRESSED);
+		clear_button_buffer(PC_JUMP_PRESSED);
 		phonePageChange();
 		sound_play(sfx_pho_page, false, 0);
 	}
@@ -1635,60 +1757,6 @@ if (attack == AT_TAUNT && joy_pad_idle && phone_practice) || attack == AT_PHONE{
 
 #define loadFrameData
 
-var move_names = [
-	"???",
-	"Jab",
-	"???",
-	"???",
-	"FTilt",
-	"DTilt",
-	"UTilt",
-	"FStrong",
-	"DStrong",
-	"UStrong",
-	"DAttack",
-	"FAir",
-	"BAir",
-	"DAir",
-	"UAir",
-	"NAir",
-	"FSpecial",
-	"DSpecial",
-	"USpecial",
-	"NSpecial",
-	"FStrong 2",
-	"DStrong 2",
-	"UStrong 2",
-	"USpecial Ground",
-	"USpecial 2",
-	"FSpecial 2",
-	"FThrow",
-	"UThrow",
-	"DThrow",
-	"NThrow",
-	"DSpecial 2",
-	"Extra 1",
-	"DSpecial Air",
-	"NSpecial 2",
-	"FSpecial Air",
-	"Taunt",
-	"Taunt 2",
-	"Extra 2",
-	"Extra 3",
-	"MunoPhone",
-	"???",
-	"NSpecial Air",
-	"???",
-	"???",
-	"???",
-	"???",
-	"???",
-	"???",
-	"???",
-	"???",
-	"???"
-];
-
 i = 0; // i = current spot in the registered move list
 
 if phone.include_stats initStats();
@@ -1697,7 +1765,7 @@ if phone.include_custom initCustom();
 for (j = 0; j < array_length_1d(phone.move_ordering); j++){ // j = index in array of ordered attack indexes
 	var current_attack_index = phone.move_ordering[j];
 	if (get_window_value(current_attack_index, 1, AG_WINDOW_LENGTH) || get_hitbox_value(current_attack_index, 1, HG_HITBOX_TYPE)) && !get_attack_value(current_attack_index, AG_MUNO_ATTACK_EXCLUDE){
-		initMove(current_attack_index, move_names[current_attack_index]);
+		initMove(current_attack_index, phone.attack_names[current_attack_index]);
 	}
 }
 
@@ -2087,7 +2155,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
+var dir = argument_count > 3 ? argument[3] : 0;
 
 switch (name) {
     default: 

@@ -8,7 +8,7 @@ draw_sprite_ext( sprite_get( "frogcon" ), -1, temp_x + 190, temp_y - 12, 1, 1, 0
 if (frog_deathtimer > 0){
 draw_sprite_ext( sprite_get( "frogcon" ), -1, temp_x + 190, temp_y - 12, 1, 1, 0, c_black, 1);
 draw_sprite_ext( sprite_get( "frogmeterbar" ), -1, temp_x + 80, temp_y - 12, 1, 1, 0, c_white, 1);
-draw_sprite_ext( sprite_get( "frogmeterbarwhite" ), -1, temp_x + 186, temp_y - 10, frog_deathtimer / 480 * -1, 1, 0, c_white, 1);
+draw_sprite_ext( sprite_get( "frogmeterbarwhite" ), -1, temp_x + 186, temp_y - 10, frog_deathtimer / 240 * -1, 1, 0, c_white, 1);
 }
 
 

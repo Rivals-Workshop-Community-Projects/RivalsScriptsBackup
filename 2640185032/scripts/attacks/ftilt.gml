@@ -4,12 +4,12 @@ set_attack_value(AT_FTILT, AG_HURTBOX_SPRITE, sprite_get("ftilt_hurt"));
 
 //hit 1-------------------------------------------------------------------------
 set_window_value(AT_FTILT, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FTILT, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FTILT, 1, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_FTILT, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FTILT, 1, AG_WINDOW_SFX, sound_get("swipe_Er02"));
-set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 7);
+set_window_value(AT_FTILT, 1, AG_WINDOW_SFX_FRAME, 9);
 
 set_window_value(AT_FTILT, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FTILT, 2, AG_WINDOW_LENGTH, 4);
@@ -24,7 +24,7 @@ set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 
 //hit 2-------------------------------------------------------------------------
 set_window_value(AT_FTILT, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 //sfx played in attack update to change the pitch

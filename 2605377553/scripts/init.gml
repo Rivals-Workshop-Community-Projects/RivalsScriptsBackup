@@ -6,6 +6,7 @@ steve_death_message = "Steve was slain by Mallory70942794";
 pkmn_stadium_front_img = sprite_get("pkmn_sprite1");
 pkmn_stadium_back_img = sprite_get("pkmn_sprite2");
 arena_title = "Heir of Miasma";
+spam_ad = sprite_get("mal_ad")
 
 //fx
 sword = hit_fx_create( sprite_get( "hfx_sword" ), 30 );

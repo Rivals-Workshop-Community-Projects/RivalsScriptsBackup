@@ -35,125 +35,298 @@ if (window = 3){
 }
 }
 
-
-//dstrong throw
-if (attack == AT_DSTRONG && window = 2 && window_timer = 16 && (has_hit_player = false || hit_player_obj.super_armor = true)){
-    window = 7;
-    window_timer = 0;
+if (attack == AT_USTRONG && window > 1){
+    hud_offset = 90;
 }
 
-if (attack == AT_DSTRONG && window = 4 && window_timer = 1){
-    vsp = -10;
-}
 
-if (attack == AT_DSTRONG && window = 4){
-    can_move = 0;
 
-}
+
 
 if (attack == AT_DSTRONG && window = 5){
     can_move = false;
     vsp = vsp + 0.35;
 }
 
-if (attack == AT_DSTRONG && (window = 5 || window = 4)){
-    if (hsp > 7){
-        hsp = 7;
+if (attack == AT_FSPECIAL && (window = 5 || window = 4)){
+
+ if (grabbed_player_damage >= 120){
+    if (hsp > 8){
+        hsp = 8;
     }
-        if (hsp < -7){
-        hsp = -7;
+        if (hsp < -8){
+        hsp = -8;
+    }
+ }
+ if (grabbed_player_damage < 120){
+    if (hsp > 6){
+        hsp = 6;
+    }
+        if (hsp < -6){
+        hsp = -6;
+    }
+ } 
+ 
+
+}
+
+
+if (attack == AT_FSPECIAL && (window = 5 || window = 4) && left_down){
+    if (spr_dir = -1){    
+    hsp = hsp - fspecial_movement_mult;
+    }    
+    if (spr_dir = 1){    
+    hsp = hsp - (fspecial_movement_mult * 0.4);
     }
 }
 
-
-if (attack == AT_DSTRONG && (window = 5 || window = 4) && left_down){
-    hsp = hsp - dstrong_movement_mult;
+if (attack == AT_FSPECIAL && (window = 5 || window = 4) && right_down){
+    if (spr_dir = 1){    
+    hsp = hsp + fspecial_movement_mult;
+    }    
+    if (spr_dir = -1){    
+    hsp = hsp + (fspecial_movement_mult * 0.4);
+    }
 }
 
-if (attack == AT_DSTRONG &&  (window = 5 || window = 4) && right_down){
-    hsp = hsp + dstrong_movement_mult;
+if (attack == AT_FSPECIAL && window = 6){
+    grabbed_player_damage = 0;
+    move_cooldown[AT_FSPECIAL] = 40;
 }
 
-if (attack == AT_DSTRONG && has_hit_player){
-    if (window == 3 || window == 2){
+if (attack == AT_FSPECIAL && window = 3 && free = 1){
+    move_cooldown[AT_FSPECIAL] = 9999;
+}
+
+if (attack == AT_FSPECIAL && window == 2 && !has_hit_player && frog_exists = 1){
+    
+if (point_distance(x, y, frog.x, frog.y) < 46 && (frog.state = PS_IDLE || frog.state = PS_IDLE_AIR || frog.state = PS_LAND || frog.state = PS_PRATFALL || frog.state = PS_FIRST_JUMP || frog.state = PS_TUMBLE)){
+    destroy_hitboxes();
+    set_attack(AT_FSPECIAL_2);
+    window = 1;
+    window_timer = 0;
+    hurtboxID.sprite_index = sprite_get("fspecial_2_hurt")    
+}
+
+}
+
+if (attack == AT_FSPECIAL_2){
+    can_move = false;
+}
+
+if (attack == AT_FSPECIAL_2 && window = 1){
+    
+//No Input
+    if (!up_down && !right_down && !left_down && !down_down){
+        if (spr_dir = 1){
+        frogthrow_dir = 2;
+        }
+        if (spr_dir = -1){
+        frogthrow_dir = 6;
+        }        
+    set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_HSPEED, 13);
+    set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_VSPEED, -8);
+    set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+    }     
+    
+    
+    //Up
+    if (up_down && !right_down && !left_down && !down_down){
+        frogthrow_dir = 0;
+        set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_HSPEED, 0);
+        set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_VSPEED, -20);
+        set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+    }
+
+    //Up-Right
+    if (up_down && right_down && !left_down && !down_down){
+        frogthrow_dir = 1;
+        spr_dir = 1;
+        set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_HSPEED, 7);
+        set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_VSPEED, -16);
+        set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+    } 
+    
+    //Right
+    if (!up_down && right_down && !left_down && !down_down){
+        frogthrow_dir = 2;
+           spr_dir = 1;    
+    set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_HSPEED, 13);
+    set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_VSPEED, -8);
+    set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+    } 
+
+    //Up-Left   
+    if (up_down && !right_down && left_down && !down_down){
+                frogthrow_dir = 7;
+           spr_dir = -1;    
+        set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_HSPEED, 7);
+        set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_VSPEED, -16);
+        set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+    } 
+
+    //Left    
+    if (!up_down && !right_down && left_down && !down_down){
+        frogthrow_dir = 6;
+           spr_dir = -1;    
+    set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_HSPEED, 13);
+    set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_VSPEED, -8);
+    set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+    } 
+    
+    //Down-Left  
+    if (!up_down && !right_down && left_down && down_down){
+                frogthrow_dir = 5;
+           spr_dir = -1;    
+        set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_HSPEED, 7);
+        set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_VSPEED, 16);
+        set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+    }     
+
+    //Down-Right
+    if (!up_down && right_down && !left_down && down_down){
+                frogthrow_dir = 3;
+           spr_dir = 1;    
+        set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_HSPEED, 7);
+        set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_VSPEED, 16);
+        set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+    }     
+
+    //Down
+    if (!up_down && !right_down && !left_down && down_down){
+                frogthrow_dir = 4;
+        set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_HSPEED, 0);
+        set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_VSPEED, 20);
+        set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+    }       
+        
+    
+    
+}
+
+if (attack == AT_FSPECIAL && was_parried && window = 2){
+ set_state(PS_PRATFALL);    
+}
+
+if (attack == AT_FSPECIAL && has_hit_player){
+    
+        if (y > phone_blastzone_b - 100) {
+            if grabbed_player_damage < 120{
+    with hit_player_obj {
+        self.y = other.y - 60;
+            hitstop = 0;   
+            vsp = -6;
+    } 
+    }
+
+            if grabbed_player_damage >= 120{
+    with hit_player_obj {
+        hitstop = 8;
+        self.y = other.y;
+    } 
+            }
+            
+        }
+    
+    
+    
+    if (window == 4 && y < phone_blastzone_b - 100){
+        if (window_timer = 1){
+            vsp = -8;
+            hsp = hsp * 0.65;
+        }
     with (hit_player_obj){
         if (super_armor = false){
+                hitstop = 8;    
         if(other.spr_dir = 1){
-        self.x = other.x + 30;
+        self.x = other.x + 20;
+        self.y = other.y - 25;
+    }
+    
+        if(other.spr_dir = -1){
+        self.x = other.x - 20;
+        self.y = other.y - 25;
+    }
+        }
+}
+}
+
+    if (window == 5 && y < phone_blastzone_b - 100){
+    with (hit_player_obj){
+        if (super_armor = false){
+                hitstop = 8;    
+        if(other.spr_dir = 1){
+        self.x = other.x;
+        self.y = other.y - 55;
+    }
+    
+        if(other.spr_dir = -1){
+        self.x = other.x;
+        self.y = other.y - 55;
+    }
+        }
+}
+}
+
+    if (window == 6){
+    with (hit_player_obj){
+        if (super_armor = false){
+                hitstop = 8;    
+        if(other.spr_dir = 1){
+        self.x = other.x;
         self.y = other.y - 6;
     }
     
         if(other.spr_dir = -1){
-        self.x = other.x - 30;
+        self.x = other.x;
         self.y = other.y - 6;
     }
         }
 }
+}
 
-if (window == 3){
+if (window == 4){
     with (hit_player_obj){
         other.grabbed_player_damage = get_player_damage( player );
         if (super_armor = false){
         self.hitstop = 8;
         }
     }
-    dstrong_movement_mult = (0.06 * ((grabbed_player_damage * 0.1) + 1));
-}
-
-}
-
-if (attack == AT_DSTRONG && window = 4){
-    with (hit_player_obj){
-        self.hitstop = 8;
-        
-        if(other.spr_dir = 1){
-        self.x = other.x + 20;
-        self.y = other.y - 34;
-    }
     
-        if(other.spr_dir = -1){
-        self.x = other.x - 20;
-        self.y = other.y - 34;
-    }
-    
+ if (grabbed_player_damage >= 120){
+fspecial_movement_mult = (0.05 * ((grabbed_player_damage * 0.25) + 1));
+ }
+ if (grabbed_player_damage < 120){
+fspecial_movement_mult = (0.02 * ((grabbed_player_damage * 0.05) + 0.85));
+ }     
 }
+
+
 }
 
 
-if (attack == AT_DSTRONG && window = 5){
-    with (hit_player_obj){
-    self.hitstop = 8;
-    }
-    can_fast_fall = 0;
-    vsp = vsp + 0.5;
-    with (hit_player_obj){
-        self.x = other.x;
-        self.y = other.y - 50;
-    }
+
+if (attack == AT_FSPECIAL && window = 3){
+ if (window_timer = 6){
+     set_state(PS_IDLE_AIR);
+ }
 }
 
-if (attack == AT_DSTRONG && window = 6 && window_timer = 1){
-    hsp = 0;
-    with (hit_player_obj){
-        if(other.spr_dir = 1){
-        self.x = other.x + 20;
-        self.y = other.y - 5;
-    }
-    
-        if(other.spr_dir = -1){
-        self.x = other.x - 20;
-        self.y = other.y - 5;
-    }
-}
-}
+if (attack == AT_FSPECIAL && window = 2 && has_hit_player){
+    destroy_hitboxes();
+    window = 4
+    window_timer = 0;
 }
 
-if (attack == AT_DSTRONG && has_hit_player){
-    if (y > room_height){
-  with (hit_player_obj){
-    self.hitstop = 0;
+if (attack == AT_FSPECIAL && (window = 2 || window = 3) && !has_hit_player){
+    can_wall_jump = true;
 }
-}
+
+
+
+
+if (attack == AT_FSPECIAL && window = 5){
+vsp = vsp + 0.5;
 }
 
 
@@ -325,45 +498,6 @@ if attack == AT_USPECIAL_GROUND{
     fall_through = false;
 }
 
-if (attack == AT_FSPECIAL && window = 2 && special_down){
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 9);    
-   fspecial_charge = fspecial_charge + 1;
-
-}
-
-if (attack == AT_FSPECIAL && ((window = 2 && !special_down) || (fspecial_charge = 44))){
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, (-3 - ((fspecial_charge / 44) * 7)));
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 2);
-set_window_value(AT_FSPECIAL, 2, AG_WINDOW_TYPE, 0);
-set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 10 + ((fspecial_charge / 44) * 5));
-set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 10 + ((fspecial_charge / 44) * 5));
-set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 10 + ((fspecial_charge / 44) * 5));
-}
-
-if (attack == AT_FSPECIAL && fspecial_charge > 25){
-set_num_hitboxes(AT_FSPECIAL, 4);
-}
-
-if (attack == AT_FSPECIAL && fspecial_charge < 26){
-set_num_hitboxes(AT_FSPECIAL, 3);
-}
-
-
-
-if (attack == AT_FSPECIAL && (window = 3 || window = 4)){
-    can_wall_jump = true;
-}
-
-
-if (attack == AT_FSPECIAL && window = 3 && window_timer = 3){
-    fspecial_charge = 0;
-
-}
-
-if (attack == AT_FSPECIAL && window = 3 && window_timer = 1 && !hitpause){
-    spawn_hit_fx(x, y, fspecial_waveeffect)
-
-}
 
 
 if (attack == AT_DAIR && window == 1){

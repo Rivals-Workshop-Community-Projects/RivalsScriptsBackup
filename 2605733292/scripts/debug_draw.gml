@@ -12,5 +12,12 @@
 //draw_debug_text( temp_x, temp_y - 50, string(copy_essence_owner))
 //draw_debug_text( temp_x, temp_y - 50, string(damage_dealt))
 //draw_debug_text( temp_x, temp_y - 50, string(copy_essence_hit))
+//draw_debug_text( temp_x, temp_y - 50, string(hurtboxID.sprite_index))
 
 //530 is trailer pos
+
+//hi person reading this code
+//
+//pay no attention to whats going on in here
+//
+//mario

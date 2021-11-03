@@ -112,6 +112,20 @@ frogjump = 0;
 
 detached_cooldown = 0
 
+tvtrail_sprite = 0;
+tvtrail_index = 0;
+tvtrail_x = 0;
+tvtrail_y = 0;
+tvtrail2_sprite = 0;
+tvtrail2_index = 0;
+tvtrail2_x = 0;
+tvtrail2_y = 0;
+tvtrail_opacity = 1;
+tvtrail2_opacity = 0.5;
+
+fspecial_movement_mult = 0;
+frogthrow_dir = 2;
+
 nspecial_grabbedplayer = 0;
 
 sprite_change_collision_mask( "frog_tonguehitbox1", true, 0, 0, 0, 0, 0, 0 );

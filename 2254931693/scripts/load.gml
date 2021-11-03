@@ -29,7 +29,7 @@ sprite_change_offset("tech", 48, 88);
 sprite_change_offset("jab", 92, 128);
 sprite_change_offset("dattack", 40, 88);
 sprite_change_offset("ftilt", 56, 88);
-sprite_change_offset("dtilt", 48, 88);
+sprite_change_offset("dtilt", 92, 128);
 sprite_change_offset("utilt", 48, 88);
 sprite_change_offset("nair", 92, 128);
 sprite_change_offset("nair2", 92, 128);
@@ -37,16 +37,17 @@ sprite_change_offset("fair", 92, 128);
 sprite_change_offset("bair", 132, 128);
 sprite_change_offset("uair", 92, 128);
 sprite_change_offset("dair", 72, 108);
-sprite_change_offset("fstrong", 48, 108);
+sprite_change_offset("fstrong", 92, 128);
 sprite_change_offset("ustrong", 46, 128);
 sprite_change_offset("funnyustrong", 46, 249);
-sprite_change_offset("dstrong", 48, 88);
+sprite_change_offset("dstrong", 92, 128);
 sprite_change_offset("nspecial", 92, 128);
 sprite_change_offset("nspecial_air", 92, 128);
 sprite_change_offset("nspecial_2", 92, 128);
 sprite_change_offset("nspecial_2_air", 92, 128);
 sprite_change_offset("fspecial", 92, 128);
 sprite_change_offset("fspecial_air", 92, 128);
+sprite_change_offset("fspecial_2", 92, 128);
 sprite_change_offset("uspecial", 92, 128);
 sprite_change_offset("uspecial_ground", 92, 128);
 sprite_change_offset("uspecial_air", 92, 128);
@@ -57,8 +58,7 @@ sprite_change_offset("dspecial_3", 92, 128);
 sprite_change_offset("dspecial_3_air", 92, 128);
 sprite_change_offset("taunt", 48, 88);
 
-sprite_change_offset("fspecial_chargeeffect", 102, 100);
-sprite_change_offset("fspecial_trumpetwave", 92, 128);
+sprite_change_offset("fspecial_arrow", 92, 128);
 sprite_change_offset("uspecial_effect", 92, 128);
 
 sprite_change_offset("frog_idle", 148, 328);
@@ -74,6 +74,9 @@ sprite_change_offset("frog_spit", 148, 328);
 sprite_change_offset("frog_mask", 148, 328);
 sprite_change_offset("frog_despawn", 148, 328);
 sprite_change_offset("frog_tonguehitbox1", 100, 100);
+
+sprite_change_offset("frog_projectile", 64, 64);
+sprite_change_offset("frog_projectile_mask", 64, 64);
 
 sprite_change_offset("plat", 64, 94);
 

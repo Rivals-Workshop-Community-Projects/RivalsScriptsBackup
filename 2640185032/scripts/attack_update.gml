@@ -52,13 +52,13 @@ switch(attack){
                 window_timer = 0;
                 window = 4;
             }
-        }else if(window == 4 && window_timer == 5 && !hitpause){
+        }else if(window == 4 && window_timer == 7 && !hitpause){
             sound_play(sound_get("swipe_Er02"), false, noone, 1, 1.2);
             
         //charge
         }else if(window == 7 && window_timer == 4){
             if(special_down){
-                if(increase >= 10){
+                if(increase >= 6){ //was 10
                     increased = true;
                     increase = 0;
                 }else{
@@ -126,33 +126,29 @@ switch(attack){
         break;
 
     case AT_USTRONG:
-        if(grab != noone){
-            grab.hitstun -= 1; //static hitstun
-        }
-            if(window >= 5){
-                force_depth = true;
-                depth = 1;
-                if(window == 5){
-                    if(window_timer == 1){
-                        grab.x = x + (12 * spr_dir);
-                        grab.y = y - 70;
-                    }else if(window_timer <= 4){
-                        if((grab.state == PS_HITSTUN || grab.state == PS_HITSTUN_LAND)){
-                            grab.x = ease_cubeOut(grab.x, (x - 25 * spr_dir), window_timer, 4);
-                            grab.y = ease_cubeOut(grab.y, (y - 34), window_timer, 4);
-                        }
-                    }else if(window_timer > 4 && window_timer < 9){
-                        if((grab.state == PS_HITSTUN || grab.state == PS_HITSTUN_LAND)){
-                            grab.x = ease_cubeIn(grab.x, (x + 7 * spr_dir), window_timer - 4, 4);
-                            grab.y = ease_cubeOut(grab.y, (y - 2), window_timer - 4, 4);
-                        }
+        if(window >= 5){
+            force_depth = true;
+            depth = 1;
+            if(window == 5){
+                if(window_timer == 1){
+                    grab.x = x + (12 * spr_dir);
+                    grab.y = y - 70;
+                }else if(window_timer <= 4){
+                    if((grab.state == PS_HITSTUN || grab.state == PS_HITSTUN_LAND)){
+                        grab.x = ease_cubeOut(grab.x, (x - 25 * spr_dir), window_timer, 4);
+                        grab.y = ease_cubeOut(grab.y, (y - 34), window_timer, 4);
+                    }
+                }else if(window_timer > 4 && window_timer < 9){
+                    if((grab.state == PS_HITSTUN || grab.state == PS_HITSTUN_LAND)){
+                        grab.x = ease_cubeIn(grab.x, (x + 7 * spr_dir), window_timer - 4, 4);
+                        grab.y = ease_cubeOut(grab.y, (y - 2), window_timer - 4, 4);
                     }
                 }
-            }else if(window == 7){
-                //grab.hitstun += 2;
-                grab = noone;
             }
-        //}
+        }else if(window == 7){
+            //grab.hitstun += 2;
+            grab = noone;
+        }
         break;
 
     case AT_NSPECIAL:
@@ -169,6 +165,12 @@ switch(attack){
                     spr_dir *= -1;
                     hsp *= -1;
                 }
+            }
+            //if charged
+            if(window_timer == 5 && knives == 6){
+                window_timer = 0;
+                window = 3;
+                sound_play(asset_get("sfx_swipe_weak2"));
             }
         }else if(window == 2){
             can_b_reverse = false;
@@ -202,17 +204,17 @@ switch(attack){
         }else if(window == 3){
             can_jump = false;
             if(increase > 0) vsp = clamp(-90, vsp, 3);
-            if(window_timer <= 5 && can_b_reverse){
+            /*if(window_timer <= 5 && can_b_reverse){
                 if((left_pressed && spr_dir == 1) || (right_pressed && spr_dir == -1)){
                     can_b_reverse = false;
                     spr_dir *= -1;
                     hsp *= -1;
                 }
-            }
+            }//*/
             //charge stuff
             if(window_timer == 6){
                 if(special_down){
-                    if(increase >= 10){
+                    if(increase >= 6){ //was 10
                         increased = true;
                         increase = 0;
                     }else{
@@ -303,15 +305,15 @@ switch(attack){
             
             //movement
             if(left_down || right_down){
-                hsp += (0.25 * right_down) - (0.25 * left_down);
+                hsp += (0.2 * right_down) - (0.2 * left_down);
             }
-            hsp = clamp(-7, hsp, 7);
+            hsp = clamp(-6, hsp, 6);
             
             //loop
             if(window_timer == 9){
                 window_timer = 1;
                 uspec_loop++;
-                if(uspec_loop == 4){
+                if(uspec_loop == 2){
                     window_timer = 0;
                     window++;
                 }
@@ -324,7 +326,7 @@ switch(attack){
                 set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 16);
                 window_timer = 0;
                 window = 4;
-                vsp = min(-2, -8 + (2 * uspec_bounce));
+                vsp = min(-2, -10 + (2 * uspec_bounce));
             }
             
             //transition into knife throw
@@ -341,7 +343,7 @@ switch(attack){
             hsp = clamp(-3, hsp, 3);
             if(window_timer == 2){
                 if(special_down){
-                    if(increase >= 10){
+                    if(increase >= 6){ //was 10
                         increased = true;
                         increase = 0;
                     }else{
@@ -405,6 +407,9 @@ switch(attack){
                             is_frozen = true;
                             knife_stack = 0;
                             other.can_dspec = false;
+                            outline_color = [0, 0, 0];
+                            init_shader();
+                            hitstun_counter = -1;
                         }
                     }
                 }
@@ -420,6 +425,9 @@ switch(attack){
                         is_frozen = true;
                         knife_stack = 0;
                         other.can_dspec = false;
+                        outline_color = [0, 0, 0];
+                        init_shader();
+                        hitstun_counter = -1;
                     }
                 }
             }

@@ -112,6 +112,12 @@ sprite_change_offset("switcher_ice", 70, 75);
 sprite_change_offset("switcher_plasma", 70, 75);
 sprite_change_offset("switcher_rock", 70, 75);
 
+sprite_change_offset("element_switch2", 50, 90);
+    sprite_change_offset("element_switch2_fire", 50, 90);
+    sprite_change_offset("element_switch2_ice", 50, 90);
+    sprite_change_offset("element_switch2_plasma", 50, 90);
+    sprite_change_offset("element_switch2_earth", 50, 90);
+
 
 set_victory_bg( sprite_get( "victory_background" ));
 

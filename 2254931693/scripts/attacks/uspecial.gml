@@ -41,7 +41,7 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -9);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 2);
 
-set_num_hitboxes(AT_USPECIAL, 6);
+set_num_hitboxes(AT_USPECIAL, 7);
 
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, 1);

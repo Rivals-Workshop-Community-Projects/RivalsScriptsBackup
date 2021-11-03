@@ -35,7 +35,7 @@ sprite_change_offset("jab", 20, 37, true);//
 sprite_change_offset("dattack", 40, 65, true);//
 sprite_change_offset("ftilt", 30, 37, true);//
 sprite_change_offset("dtilt", 22, 37, true);//
-sprite_change_offset("utilt", 20, 47, true);//
+sprite_change_offset("utilt", 20, 57, true);//
 sprite_change_offset("nair", 25, 40, true);//
 sprite_change_offset("fair", 35, 40, true);//
 sprite_change_offset("bair", 35, 40, true);//

@@ -1,6 +1,8 @@
 
 if(!free){
-    uspec_bounce = 0;
+    if !(state == PS_ATTACK_GROUND && attack == AT_USPECIAL){
+        uspec_bounce = 0;
+    }
     uspec_can_grab = true;
 }
 
@@ -31,6 +33,8 @@ with(asset_get("oPlayer")){
     if("knife_stack" in self){
         if(state == PS_DEAD || state == PS_RESPAWN){
             knife_stack = 0;
+            outline_color = [0, 0, 0];
+            init_shader();
         }
     }
     

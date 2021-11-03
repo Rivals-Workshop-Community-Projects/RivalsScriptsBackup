@@ -391,7 +391,6 @@ if (attack == AT_EXTRA_1) {
     if ((window == 1) && hitpause == false) {
         can_move = true;
         can_jump = true;
-        can_attack = true;
         can_strong = true;
         can_special = true;
         can_shield = true;
@@ -433,7 +432,7 @@ if (attack == AT_DATTACK){
 	if (window == 1 && window_timer == 1) {
         reset_window_value(AT_DATTACK, 7, AG_WINDOW_LENGTH);
     }
-	if (window == 10 && has_hit && (window_timer == 5 || window_timer == 6 || window_timer == 7 || window_timer == 8 || window_timer == 9 || window_timer == 10 || window_timer == 11 || window_timer == 12 || window_timer == 13) && (special_pressed || right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed)) {
+	if (window == 9 && has_hit && (window_timer == 5 || window_timer == 6 || window_timer == 7 || window_timer == 8 || window_timer == 9 || window_timer == 10 || window_timer == 11 || window_timer == 12 || window_timer == 13) && (special_pressed || right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed)) {
     	attack_end();
     	set_attack(AT_FSTRONG_2);
     	CorrectHurtboxes();

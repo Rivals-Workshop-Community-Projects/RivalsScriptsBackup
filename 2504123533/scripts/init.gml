@@ -161,6 +161,9 @@ introTimer = -3;
 introTimer2 = 0;
 introTimer3 = 0;
 
+//compat
+spam_ad = sprite_get("vis_ad")
+
 //Dracula!!!
 //Dracula support
 dracula_portrait = sprite_get("dracula_portrait");

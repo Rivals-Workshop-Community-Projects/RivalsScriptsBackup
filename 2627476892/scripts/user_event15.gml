@@ -205,6 +205,10 @@ initImage_ext(sprite_get("dstrong"), -4, fa_center, 2, 2, true, c_white, 1, true
 initImage_ext(sprite_get("fstrong"), -4, fa_left, 2, 2, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("ustrong"), -4, fa_right, 2, 2, true, c_white, 1, true, noone, noone, noone, noone);
 
+initTip("The Spoinkus Boinkus: Bair");
+initWords("Is it just me, or does Lancer's back air animation look similar to Old Exetior's back air animation? i'm not mad, I'm just saying they look similar.");
+initImage_ext(sprite_get("bair"), -4, fa_center, 3, 3, true, c_white, 1, false, noone, noone, noone, noone);
+
 
 
 /*
@@ -244,6 +248,30 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.15", "2 November, 2021");
+
+initHeader("Buffs:");
+initSection("+ Fair has more range (he needs it)
++ Uair was made bigger (he needs it)
++ Uair does more damage and knockback
++ Bair spiking hitbox was made bigger
++ Fstrong hitbox made just a tiny bit bigger
++ Hitting 0 and 3 charge Fspecial has less endlag, 26 -> 18
++ Boosted Uspecial goes a little higher, 13 -> 14
+");
+
+initHeader("Nerfs:");
+initSection("- Fair has more endlag, 8 -> 10, and 1 more landing lag, 6 -> 7
+- Uair is an actual move now so startup increased, frame 6 -> frame 8
+");
+
+initHeader("Changes:");
+initSection("= Jab, Ftilt, Utilt, Ustrong have more exaggerated attack poses (and in turn some range buff from this lol)
+= Dattack rework, it's now a multihit (and it can go off ledge lol)
+");
+
+
+//
 initPatch("1.14", "17 October, 2021");
 
 initHeader("Buffs:");

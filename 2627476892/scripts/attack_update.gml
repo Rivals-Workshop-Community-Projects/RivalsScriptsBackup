@@ -46,7 +46,7 @@ switch(attack){
 		}
 		break;
 	case AT_DATTACK:
-		if window == 3 && window_timer == 1{
+		if window == 4 && window_timer == 1{
 			array_push(phone_dust_query, [x + spr_dir * 70, y, "dash_start", -spr_dir]);
 		}
 		break;
@@ -284,7 +284,7 @@ if(attack == AT_FSPECIAL){
     		    		spawn_hit_fx(x, y, vfx_afterimage);
     		    			}
     		}	
-    }    if(window == 5 && window_timer = 22){
+    }    if(window == 5 && window_timer = 16){
     	var dust = spawn_hit_fx(x, y - 34, dust_effect);
         dust.depth = -10;
     }    if(window == 3 && window_timer = 18){
@@ -311,7 +311,7 @@ if(attack == AT_USPECIAL){
     		set_hitbox_value(AT_USPECIAL, 2, HG_DAMAGE, 6);
     		set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_MASK, -1);
     }if(bike_charge > 0){
-    		set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -13);
+    		set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -14);
     		set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 10);
     		set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("beeg_explosion"));
     		set_hitbox_value(AT_USPECIAL, 2, HG_PROJECTILE_MASK, sprite_get("beeg_explosion"));
@@ -380,9 +380,21 @@ if(window == 1 && window_timer = 14){
 }
 
 if(attack == AT_DATTACK){
-	if(window == 4 && window_timer = 14){
+	if(window == 1 && window_timer = 1){
+		set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 1);
+	}	if(window == 3 && window_timer = 5){
+		set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 0);
+	}if(window == 5 && window_timer = 14){
 		var dust = spawn_hit_fx(x, y - 34, dust_effect);
         dust.depth = -10;
+	}
+	if(window == 3 && window_timer = 5){
+		if(free){
+			window = 5;
+			window_timer = 0;
+		}		if(!free){
+			sound_play(asset_get("sfx_land_med"));
+		}
 	}
 }
 

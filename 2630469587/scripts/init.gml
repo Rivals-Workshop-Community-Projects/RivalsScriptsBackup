@@ -32,9 +32,9 @@ hitstun_hurtbox_spr = -1;
 char_height = 58;
 idle_anim_speed = .12;
 crouch_anim_speed = .1;
-walk_anim_speed = .15;
+walk_anim_speed = 12/ 60;
 dash_anim_speed = .25;
-pratfall_anim_speed = .25;
+pratfall_anim_spe2 = .25;
 
 walk_speed = 4.2;
 walk_accel = 0.25;

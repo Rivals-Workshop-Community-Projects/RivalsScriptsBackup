@@ -11,7 +11,7 @@ set_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("boom"));
-set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX_FRAME, 17)
+set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX_FRAME, 10)
 
 set_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAMES, 3);

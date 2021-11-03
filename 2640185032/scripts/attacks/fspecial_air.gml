@@ -6,13 +6,13 @@ set_attack_value(AT_FSPECIAL_AIR, AG_HURTBOX_SPRITE, sprite_get("fspecial_air_hu
 
 //startup
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX, asset_get("sfx_ice_back_air"));
-set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME, 13);
+set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX_FRAME, 15);
 
 //sweetspot
 set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_TYPE, 1);
@@ -67,7 +67,7 @@ set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HITPAUSE_SCALING, 0.7);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_HIT_SFX, sound_get("crashinghit2"));
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_VISUAL_EFFECT, 305);
-set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_EXTRA_HITPAUSE, 30);
+set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_EXTRA_HITPAUSE, 25);
 set_hitbox_value(AT_FSPECIAL_AIR, 1, HG_IGNORES_PROJECTILES, 1);
 
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_HITBOX_TYPE, 1);
@@ -76,13 +76,14 @@ set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_LIFETIME, 6);
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_HITBOX_X, 6);
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_HITBOX_Y, -22);
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_WIDTH, 41);
-set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_HEIGHT, 68);
+set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_HEIGHT, 62);
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_DAMAGE, 6);
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_ANGLE, 75);
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_KNOCKBACK_SCALING, .8);
+set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_HIT_SFX, sound_get("sfx_knifehit_m"));
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_FSPECIAL_AIR, 2, HG_EXTRA_HITPAUSE, 25);

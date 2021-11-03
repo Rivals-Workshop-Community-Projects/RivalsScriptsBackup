@@ -22,7 +22,7 @@ if (state == PS_SPAWN) {
 		sound_play(sfx_swallow);
 	}
 	if (state_timer == 83){
-		spawn_hit_fx( x, y - 32, 304 );
+		spawn_hit_fx( x, y - 32, ability_star_hit_fx );
 		sound_play(sfx_ability_get);
 	}
 	if (state_timer == 119){
@@ -60,14 +60,6 @@ if (attack == AT_EXTRA_2){
 			//sprite_index = sprite_get("roll_backward");
 		}
 	}
-	//hurtboxID.sprite_index = sprite_get("sleep_hurtbox");
-}
-
-if (attack == AT_JAB && window == 1){
-	//hurtboxID.sprite_index = sprite_get("jab_hurt");
-}
-
-if (attack == AT_EXTRA_1){
 	//hurtboxID.sprite_index = sprite_get("sleep_hurtbox");
 }
 

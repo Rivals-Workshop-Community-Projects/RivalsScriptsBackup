@@ -64,6 +64,8 @@ if (my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num = 1) {
 
 if(my_hitboxID.attack == AT_FSPECIAL and my_hitboxID.hbox_num == 1 and !hit_player_obj.clone){
 	fspecial_grabbed_player = hit_player_obj;
+			destroy_hitboxes();
+
 }
 
 //hit_player.gml
@@ -110,11 +112,11 @@ if (my_hitboxID.attack == AT_USPECIAL && hit_player_obj.state == PS_HITSTUN) {
 //Made it so that Nspecial and Fspecial drain meter (Krankees)
 if (burst != 1) 
 {
-	if (my_hitboxID.attack != AT_NSPECIAL and my_hitboxID.attack != AT_FSPECIAL)
+	if (my_hitboxID.attack != AT_NSPECIAL and my_hitboxID.attack != AT_FSPECIAL and my_hitboxID.attack != AT_FSTRONG)
 	{
 		bloodmeter += (my_hitboxID.damage * 2.25);
 	}
-	else if (my_hitboxID.attack == AT_NSPECIAL or my_hitboxID.attack == AT_FSPECIAL)
+	else if (my_hitboxID.attack == AT_NSPECIAL or my_hitboxID.attack == AT_FSPECIAL or my_hitboxID.attack == AT_FSTRONG)
 	{
 		if (my_hitboxID.hbox_num == 2)
 		bloodmeter -= 10;
@@ -160,4 +162,8 @@ if my_hitboxID.type == 1 && my_hitboxID.attack != AT_NAIR {
   }
        sound_play(asset_get("sfx_icehit_medium2"),false,noone, 0.3 + my_hitboxID.damage/20)    
 
+ }
+ 
+ if attack == AT_DSPECIAL_AIR {
+ 		djumps = 0;
  }

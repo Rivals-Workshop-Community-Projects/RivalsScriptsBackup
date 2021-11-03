@@ -208,6 +208,7 @@ stage_id = get_stage_data( SD_ID );
 ll_stage = false;
 tf_stage = false;
 temple_stage = false;
+am_stage = false;
 
 // if the stage id matches, it's the lethal league stage
 // it doesn't look like it should work, but it does
@@ -225,6 +226,13 @@ if (stage_id == "nt\383980\2486256103") {
 	temple_stage = true;
 	print_debug( "Temple detected" );
 }
+
+// i know there's variables for this but i can't find em :(
+if (stage_id == "nt\383980\2634489514") {
+	am_stage = true;
+	print_debug( "Hallowflame stage detected" );
+}
+
 
 // WORKSHOP SUPPORTS BEGIN HERE
 

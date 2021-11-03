@@ -13,7 +13,7 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_spin_longer"));
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_spin"));
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 9);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, .4);
 //strong hit
@@ -27,7 +27,7 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_LENGTH, 9); //loops in attack_update
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 4);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -15);
+set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -16);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 1.4);
 //endlag
@@ -89,7 +89,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, 1);
 //late hit
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 2, HG_WINDOW, 3);
-set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 33);
+set_hitbox_value(AT_USPECIAL, 2, HG_LIFETIME, 21);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_X, -1);
 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -35);
 set_hitbox_value(AT_USPECIAL, 2, HG_WIDTH, 80);  //70
@@ -109,7 +109,7 @@ set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_GROUP, 1);
 //DETECTION HITBOX, ONLY GRABS KNIVES, NOT AN ACTUAL HITBOX
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_WINDOW, 2);
-set_hitbox_value(AT_USPECIAL, 3, HG_LIFETIME, 36);
+set_hitbox_value(AT_USPECIAL, 3, HG_LIFETIME, 24);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_X, 1);
 set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_Y, -25);
 set_hitbox_value(AT_USPECIAL, 3, HG_WIDTH, 100);

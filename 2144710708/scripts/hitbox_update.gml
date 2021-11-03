@@ -228,14 +228,30 @@ if (attack == AT_DSPECIAL) {
 
 
 	// shoe gets destroyed upon touching blastzones
-	if (x < stage_left_blast || x > stage_right_blast) {
-		//sound_play(sound_get("button15"), false, noone, 1, 1);
-		destroyed = true;
-	}
+	
+	if (!player_id.am_stage) {
+		if (x < stage_left_blast || x > stage_right_blast) {
+			//sound_play(sound_get("button15"), false, noone, 1, 1);
+			destroyed = true;
+		}
 
-	if (y > stage_bottom_blast) {
-		//sound_play(sound_get("button15"), false, noone, 1, 1);
-		destroyed = true;
+		if (y > stage_bottom_blast) {
+			//sound_play(sound_get("button15"), false, noone, 1, 1);
+			destroyed = true;
+		}
+	}
+	else if (player_id.am_stage) {
+	//x = player_id.x + (20 *player_id.spr_dir);
+		//y = player_id.y - 20;
+		
+		if (abs(player_id.x - x) > 500) {
+			destroyed = true;
+		}
+		
+		if (abs(player_id.y - y) > 500) {
+			destroyed = true;
+		}
+		
 	}
 	
 	//player_id.x = x;

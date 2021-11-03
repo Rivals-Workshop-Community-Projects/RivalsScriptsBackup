@@ -8,7 +8,7 @@ set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
 
 //start
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 13);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_ori_ustrong_charge"));

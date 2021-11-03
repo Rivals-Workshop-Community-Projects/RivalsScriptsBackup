@@ -15,6 +15,10 @@ with (asset_get("pHitBox")) //references all hitbox objects
 }
 
 
+if (state_cat = SC_HITSTUN){
+	grabbed_player_damage = 0;
+}
+
 if (detached_cooldown > 0){
 	detached_cooldown = detached_cooldown - 1;
 }
@@ -44,91 +48,45 @@ if (state = PS_WAVELAND){
     sound_stop(air_dodge_sound);
 }
 
-if (state = PS_HITSTUN || state = PS_HITSTUN_LAND){
-    fspecial_charge = 0;
-}
-
-if ((state = PS_ATTACK_GROUND || state = PS_ATTACK_AIR) && attack == AT_FSPECIAL && window = 2){
-
-can_jump = true;
-    can_wall_jump = true;
-
-if (fspecial_charge = 4){
-    charge1SFX = sound_play(sound_get("bonby_fspecial_charge1"))
-}
-
-if (fspecial_charge > 4){
-   can_move = false;
-   hsp = hsp / 2;
-       vsp = vsp / 1.5;    
-
-    
-}
-
-if (fspecial_charge = 45){
-    sound_play(sound_get("bonby_fspecial_chargetier1"))
-    chargelongSFX = sound_play( sound_get("bonby_fspecial_chargelong"));
-}
-
-if (fspecial_charge = 360){
-    sound_play(sound_get("bonby_fspecial_chargetier2"))
-}
-
-if (fspecial_charge = 720){
-    sound_play(sound_get("bonby_fspecial_chargetier3"))
-}
-
-if (fspecial_charge = 1260){
-    sound_play(sound_get("bonby_fspecial_chargetier4"))
-}
-
-if (fspecial_charge = 1800){
-    sound_play(sound_get("bonby_fspecial_chargetier5"))
-}
-
-if (fspecial_charge > 720){
-    shake_camera(1, 1);
-}
-
-if (fspecial_charge > 1260){
-    shake_camera(2, 2);
-}
-
-if (fspecial_charge > 1800){
-    shake_camera(4, 4);
-}
-
-if (fspecial_charge = 1860){
-    window = 3;
-    window_timer = 0;
+if (state = PS_PRATFALL && attack == AT_FSPECIAL){
+	if (hitstop == 0 && hitpause == 0){
+	hsp = -3 * spr_dir; 
+		if (state_timer = 1){
+		vsp = -9;
+	}
+	if (state_timer > 1){	
+	vsp = vsp + 0.35;
+	}
+	}
+	
 }
 
 
 
-}
-
-if (state = PS_FIRST_JUMP || state = PS_WALL_JUMP || state = PS_DOUBLE_JUMP){
-    if (fspecial_charge > 3){
-    sound_stop(charge1SFX);
-    }
-    if (fspecial_charge > 44){
-    sound_stop(chargelongSFX)
-    }    
-    fspecial_charge = 0;
-}
-
-if ((state = PS_ATTACK_GROUND || state = PS_ATTACK_AIR) && attack == AT_FSPECIAL && window = 3 && window_timer = 2){
-
-    if (fspecial_charge > 3){
-sound_stop(charge1SFX);
-}
-
-    if (fspecial_charge > 44){
-sound_stop(chargelongSFX);
+if (state = PS_IDLE){
+	frog_movetimer = 0;
 }
 
 
+
+if (get_gameplay_time() mod 5 == 0){
+tvtrail_sprite = sprite_index;
+tvtrail_index = image_index;
+tvtrail_x = x;
+tvtrail_y = y;
+tvtrail_opacity = 1;
 }
+
+if (get_gameplay_time() mod 10 == 0){
+tvtrail2_sprite = sprite_index;
+tvtrail2_index = image_index;
+tvtrail2_x = x;
+tvtrail2_y = y;
+tvtrail2_opacity = 1;
+}
+
+tvtrail_opacity = tvtrail_opacity - 0.1;
+tvtrail2_opacity = tvtrail2_opacity - 0.075;
 
 
 
@@ -181,7 +139,9 @@ if (frog_deathtimer = 1){
     sound_play(sound_get("bonby_frog_recharge"));
 }
 
-
+if (free = 0 && move_cooldown[AT_FSPECIAL] > 42){
+	move_cooldown[AT_FSPECIAL] = 42;
+}
 
 
 with oPlayer{
@@ -192,9 +152,9 @@ with oPlayer{
     }
 }
 
-if (family = 1){
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_SFX, sound_get("family"));
-}
+
+
+
 
 //character/stage support
 

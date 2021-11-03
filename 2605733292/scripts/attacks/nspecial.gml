@@ -187,3 +187,11 @@ set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_DESTROY_EFFECT, 304);
+
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, true);
+//set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_PARRY_STUN, true);
+//set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_PARRY_STUN, true);

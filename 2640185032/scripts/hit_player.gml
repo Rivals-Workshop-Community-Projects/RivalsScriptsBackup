@@ -93,5 +93,6 @@ if(my_hitboxID.sprite_index == sprite_get("nspec_proj") || (my_hitboxID.attack =
 	}
 	if(not_max && hit_player_obj.knife_stack == 3){
 		spawn_hit_fx( hit_player_obj.x, hit_player_obj.y - (char_height/2 + 10), vfx_ring_flash );
+		//sound_play(sound_get("sfx_can_freeze"));
 	}
 }

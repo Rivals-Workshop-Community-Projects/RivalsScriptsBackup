@@ -163,7 +163,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[23,1] = "Bon-bee"
     ce[23,2] = "" 
     ce[24,0] = make_color_rgb(255, 131, 66)
-    ce[24,1] = "Totsugeki"
+    ce[24,1] = "Corsair"
     ce[24,2] = ""    
     ce[25,0] = make_color_rgb(97, 160, 207)
     ce[25,1] = "Maverick"

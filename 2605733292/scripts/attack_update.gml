@@ -3,6 +3,13 @@
 if (attack == AT_EXTRA_1){
 	set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
 	iasa_script();
+	if (window == 1){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x - (22 * spr_dir), y, "walk", spr_dir)
+			spawn_base_dust( x + (20 * spr_dir), y, "walk", spr_dir*-1)
+			sound_play(land_sound)
+		}
+	}
 	if (window == 2){
 		set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"))
 		if (window_timer == 1 || window_timer == 25){
@@ -17,6 +24,9 @@ if (attack == AT_EXTRA_1){
 	}
 }
 
+//oh this is for the custom walk anim i did
+//this does nothing for gameplay
+//ignore this
 if (attack == AT_EXTRA_3){
 	hsp = 3 * spr_dir
 	if (image_index == 2 || image_index == 7){
@@ -31,6 +41,7 @@ if (attack == AT_EXTRA_3){
 		set_state(PS_IDLE);
 	}
 }
+//cool
 
 //Jab
 if (attack == AT_JAB){
@@ -43,42 +54,49 @@ if (attack == AT_JAB){
 		set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
 		set_hitbox_value(AT_JAB, 4, HG_VISUAL_EFFECT, pillow_hit_fx_med);
 		clear_button_buffer(PC_ATTACK_PRESSED);
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x - (14 * spr_dir), y, "dash", spr_dir)
+		}
 	}
 	if (window == 2){
-		set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
+		//set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
 	}
 	if (window == 3){
-		set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
+		//set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
 	}
 	if (window == 4){
-		set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
+		//set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
 		clear_button_buffer(PC_ATTACK_PRESSED);
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x - (14 * spr_dir), y, "dash", spr_dir)
+		}
 	}
 	if (window == 5){
-		set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
+		//set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
 	}
 	if (window == 6){
-		set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
+		//set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
 	}
 	if (window == 7){
-		set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
+		//set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
 		if (window_timer == 5){
 			spawn_base_dust( x + (30 * spr_dir), y, "dash_start", spr_dir * -1)
 		}
 	}
 	if (window == 8){
-		set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
+		//set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
 	}
 	if (window == 9){
-		set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
+		//set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
 	}
 	if (window != 10){
 		jab_is_jabbing = true
-		set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
+		//set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
 		set_attack_value(AT_EXTRA_1, AG_SPRITE, sprite_get("sleep_jab3"));
 	}
 	if (window == 10){
 		jab_is_jabbing = false
+		//hurtboxID.sprite_index = sprite_get("jab_hurt");
 		if (window_timer > 4){
 			iasa_script();
 			if (attack_pressed){
@@ -105,9 +123,11 @@ if (attack == AT_JAB){
 if (attack != AT_JAB){
 	jab_is_jabbing = false
 }
+//wow i am do good at coding!!!
 
 //Dash Attack: Running Tackle
 if (attack == AT_DATTACK){
+	hurtboxID.sprite_index = sprite_get("dattack_hurt");
 	if (window != 4){
 		dattack_sfx_timer = 0
 	}
@@ -126,48 +146,42 @@ if (attack == AT_DATTACK){
 	}
 }	
 
-//Up Tilt: Scorpion Kick
-if (has_rune("C")){
-	set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, sfx_smash64_swipe_med);
-	set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, sfx_smash64_blow_med);
-	set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, sfx_smash64_blow_med);
-	set_hitbox_value(AT_UTILT, 1, HG_HITSTUN_MULTIPLIER, 1.5);
-	set_hitbox_value(AT_UTILT, 1, HG_HITBOX_X, 0);
-	set_hitbox_value(AT_UTILT, 1, HG_HITBOX_Y, -52);
-	set_hitbox_value(AT_UTILT, 1, HG_WIDTH, 120);
-	set_hitbox_value(AT_UTILT, 1, HG_HEIGHT, 145);
-} else {
-	set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, sfx_kirby_swipe1);
-	set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-	set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-	set_hitbox_value(AT_UTILT, 1, HG_HITSTUN_MULTIPLIER, 1);
-	set_hitbox_value(AT_UTILT, 1, HG_HITBOX_X, 0);
-	set_hitbox_value(AT_UTILT, 1, HG_HITBOX_Y, -52);
-	set_hitbox_value(AT_UTILT, 1, HG_WIDTH, 65);
-	set_hitbox_value(AT_UTILT, 1, HG_HEIGHT, 65);
+//Forward Tilt
+if (attack == AT_FTILT){
+	hurtboxID.sprite_index = sprite_get("ftilt_hurt");
+	if (window == 1){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x - (14 * spr_dir), y, "dash", spr_dir)
+		}
+	}
 }
 
+//Up Tilt: Scorpion Kick
 if (attack == AT_UTILT){
 	if (window == 1){
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-			spawn_base_dust( x - (22 * spr_dir), y, "walk", spr_dir)
+			spawn_base_dust( x - (22 * spr_dir), y, "dash", spr_dir)
+			spawn_base_dust( x + (20 * spr_dir), y, "walk", spr_dir*-1)
 		}
+		if (has_rune("C")){
+			set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, sfx_smash64_swipe_med);
+			set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, sfx_smash64_blow_med);
+			set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, sfx_smash64_blow_med);
+			set_hitbox_value(AT_UTILT, 1, HG_HITSTUN_MULTIPLIER, 1.5);
+			set_hitbox_value(AT_UTILT, 1, HG_HITBOX_X, 0);
+			set_hitbox_value(AT_UTILT, 1, HG_HITBOX_Y, -52);
+			set_hitbox_value(AT_UTILT, 1, HG_WIDTH, 120);
+			set_hitbox_value(AT_UTILT, 1, HG_HEIGHT, 145);
+		}
+		//if (hurtboxID.sprite_index == sprite_get("jab")){
+			hurtboxID.sprite_index = sprite_get("utilt_hurt");
+		//}
 	}
 }
-
-/*
-if (attack == AT_UTILT){
-	if (window == 1){
-		if (window_timer == 3){
-			spawn_hit_fx(x - 30, y - 60, pillow_hit_fx_sml)
-			spawn_hit_fx(x + 30, y - 60, 302)
-		}
-	}
-}
-*/
 
 //Down Tilt: Slide
 if (attack == AT_DTILT){
+	hurtboxID.sprite_index = sprite_get("dtilt_hurt");
 	//can_jump = true
 	can_fast_fall = false;
 	if (has_rune("I")){
@@ -331,15 +345,11 @@ if (has_rune("C")){
 	set_hitbox_value(AT_BAIR, 1, HG_HITBOX_Y, -24);
 	set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 143);
 	set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 80);
-} else {
-	set_hitbox_value(AT_BAIR, 1, HG_HITBOX_X, -40);
-	set_hitbox_value(AT_BAIR, 1, HG_HITBOX_Y, -16);
-	set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 34);
-	set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 20);
 }
 
 //Forward Strong
 if (attack == AT_FSTRONG){
+	hurtboxID.sprite_index = sprite_get("fstrong_hurt");
 	if (has_rune("F")){
 		set_attack_value(AT_FSTRONG, AG_CATEGORY, 2);
 		set_attack_value(AT_FSTRONG, AG_OFF_LEDGE, 1);
@@ -385,6 +395,7 @@ if (attack == AT_FSTRONG){
 
 //Up Strong
 if (attack == AT_USTRONG){
+hurtboxID.sprite_index = sprite_get("ustrong_hurt");
 	if (window == 2){
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			spawn_base_dust( x + (18 * spr_dir), y, "jump", spr_dir * -1)
@@ -409,6 +420,7 @@ if (attack == AT_USTRONG){
 
 //Down Strong
 if (attack == AT_DSTRONG){
+	hurtboxID.sprite_index = sprite_get("dstrong_hurt");
 	if (window == 2){
 		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			spawn_base_dust( x + (42 * spr_dir), y, "dash", spr_dir * -1)
@@ -428,6 +440,7 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 //Neutral Special: Burst Bubble
 if (attack == AT_NSPECIAL){
+	hurtboxID.sprite_index = sprite_get("nspecial_hurt");
 	if (window == 1){
 		burst_bubble_hit = false
 		burst_bubble_can_move = false
@@ -511,7 +524,7 @@ if (attack == AT_NSPECIAL){
 		burst_bubble_is_charged = false
 		burst_bubble_can_move = false
 		move_cooldown[AT_NSPECIAL] = 80;
-		if (window_timer < 8){
+		if (window_timer < 8){//>
 			if ((spr_dir == 1 && left_down && !right_down) || (spr_dir == -1 && !left_down && right_down)){
 				//Speed boost!!!
 				hsp = -7 * spr_dir
@@ -543,7 +556,9 @@ if (attack == AT_NSPECIAL){
 	}
 }
 
+//Forward Special: Nightly Nightcap
 if (attack == AT_FSPECIAL){
+	hurtboxID.sprite_index = sprite_get("fspecial_hurt");
 	if (window == 1){
 		set_window_value(AT_FSPECIAL, 5, AG_WINDOW_HSPEED_TYPE, 1);
 		if (window_timer == 4){
@@ -569,6 +584,7 @@ if (attack == AT_FSPECIAL){
 
 //Up Special
 if (attack == AT_USPECIAL){
+	hurtboxID.sprite_index = sprite_get("uspecial_hurt");
 	prat_land_time = 10;
 	if (!free){
 		y = y - 24
@@ -612,10 +628,14 @@ if (attack == AT_USPECIAL){
 
 //Down Special: Sleep Copy Essence
 if (attack == AT_DSPECIAL){
+	hurtboxID.sprite_index = sprite_get("dspecial_hurt");
 	copy_essence_hit = 0
     if (window == 1){
 		if (window_timer == 4 && !free){
 			vsp = -3
+			sound_play(asset_get("sfx_forsburn_cape_swipe"), false, noone, 1, 1);
+			spawn_base_dust( x + (22 * spr_dir), y, "walk", 1)
+			spawn_base_dust( x + (22 * spr_dir), y, "walk", -1)
 		}
 		if (window_timer == 12){
 			if (essences_in_use !=  essences_max_limit){
@@ -624,6 +644,7 @@ if (attack == AT_DSPECIAL){
 				y = y - 26
 				vsp = -7
 				sound_play(sfx_teleport);
+				spawn_base_dust( x + (0 * spr_dir), y + 4, "doublejump", spr_dir)
 				essence_out = true
 				instance_create(x + 0 * spr_dir, y + 18, "obj_article1");
 			}

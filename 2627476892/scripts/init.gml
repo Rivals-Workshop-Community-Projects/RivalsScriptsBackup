@@ -80,11 +80,6 @@ vfx_roll = hit_fx_create(spr_vfx_roll, 15);
 explosion_effect = hit_fx_create(sprite_get("explosion"), 32);
 fast_explosion_effect = hit_fx_create(sprite_get("explosion"), 16);
 
-// Variables
-has_goku_beam = true;
-doing_goku_beam = false;
-beam_newest_hbox = noone;
-
 
 
 // Animation Info

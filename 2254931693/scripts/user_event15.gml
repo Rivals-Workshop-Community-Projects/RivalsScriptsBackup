@@ -198,7 +198,7 @@ so that things like page breaks can work properly.
 	initWords("");		
 	initHeader("Moving Frog");
 	initImage(sprite_get("_pho_frogmoving"), -5);	
-	initWords("If you want to move your frog around, use DSpecial while it's out to bring it closer to you, or use FSpecial to knock it away.");
+	initWords("If you want to move your frog around, use DSpecial while it's out to bring it closer to you, or use FSpecial to throw it around.");
 	initWords("");	
 	initWords("");	
 	initWords("");		
@@ -244,9 +244,28 @@ so that things like page breaks can work properly.
 	initImage(sprite_get("_pho_frogparry"), -5);		
 	initWords("Lastly, remember that your frog can be attacked by opponents. If it gets parried or knocked offstage, you'll be unable to use NSpecial or Dspecial for a short time.");
 	
-	initTip("F-Special Charge");
-	initImage(sprite_get("fspecial"), 8);		
-	initWords("F-Special can be charged by holding the Special button down. In addition to increased damage, you'll fly back further, allowing you to use the move for horizontal recovery.");
+	initTip("F-Special");
+	initImage(sprite_get("fspecial"), 5);		
+	initWords("Leap forward to grab an opponent and explosively slam them down on the ground. You can control your movement a bit before landing after grabbing someone. If the grabbed opponent is at 120% or higher, you'll be able to move much farther, and even send them into the blastzone.");
+	initWords("");	
+	initWords("");	
+	initWords("");	
+	initWords("");		
+	initWords("");	
+	initWords("");	
+	initWords("");		
+	initWords("");	
+	initWords("");	
+	initWords("");		
+	initWords("");	
+	initWords("");		
+	initWords("");	
+	initWords("");		
+	initWords("");	
+	initImage(sprite_get("fspecial_2"), -4);	
+	initWords("You can also grab your frog and throw it in 8 different directions. It can also hit opponents.");
+
+
 
 	initTip("D-Air");
 	initImage(sprite_get("dair"), -4);		
@@ -255,11 +274,6 @@ so that things like page breaks can work properly.
 	initTip("N-Air");
 	initImage(sprite_get("nair2"), -3);		
 	initWords("N-Air can be charged by holding the Attack button down. When fully charged, it becomes a strong spiking attack.");
-	
-	initTip("D-Strong");
-	initImage(sprite_get("dstrong"), 11);	
-	initWords("DStrong is a command grab, where you lift the opponent and slam them down to the ground in an explosive manner. You can move during this attack when you grab onto someone, and can even jump offstage. Keep in mind that you'll die before the opponent does if you pull this off.");
-	
 	
 	
 	initTip("Frogge");
@@ -305,9 +319,33 @@ in a Patch.
 
 #define CORE_patches
 
+	initPatch("2.20", "October 31st, 2021");
+
+	initHeader("Adjustments");
+	initSection("-FSpecial and DStrong have been reworked");
+	initSection("-FStrong and DTilt have been given new animations");		
+	initSection("-FStrong and DTilt windows and hitboxes have been altered to match the new animations");		
+	initSection("-FStrong now uses hit effects from charged NAir");		
+	initSection("-Adjusted animation for UStrong");	
+	initSection("-Added HUD offset to UStrong");			
+
+	initHeader("Buffs");
+	initSection("-Frog death cooldown now ends instantly upon player death");	
+	initSection("-Decreased Frog death cooldown time (480 -> 240)");
+	initSection("-Decreased UStrong endlag (21 -> 18)");	
+	initSection("-Decreased FStrong endlag (24 -> 17)");		
+	
+	initHeader("Nerfs");
+	initSection("-Increased BAir startup (12 -> 14)");	
+	initSection("-Decreased BAir sweetspot damage (13 -> 12)");		
+	initSection("-Decreased BAir sweetspot base knockback (8 -> 7)");		
+	initSection("-Decreased UStrong hitbox lifetime (7 -> 3)");	
+	initSection("-Added whifflag to FStrong");			
+	
+
 	initPatch("2.19", "September 27th, 2021");
 
-	initHeader("General");
+	initHeader("Adjustments");
 	initSection("-Detached NSpecial now launches grabbed opponents at a fixed angle");	 
 
 	initHeader("Buffs");

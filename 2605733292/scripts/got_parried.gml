@@ -3,12 +3,15 @@
 if (my_hitboxID.attack == AT_NAIR){
 	prat_land_time = 80;
 	set_state(PS_PRATFALL);
+	sound_stop(sfx_hammer_swipe_spin);
 }
 
+/*
 if (my_hitboxID.attack == AT_NSPECIAL){
 	prat_land_time = 80;
 	set_state(PS_PRATLAND);
 }
+*/
 
 if (my_hitboxID.attack == AT_DSPECIAL){
 	essence_got_parried = true

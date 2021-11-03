@@ -94,15 +94,15 @@ if (state == 2){
     used_for_fly = false;
     
     //Get target
-    movement_angle = point_direction(x, y, following.x-(following.spr_dir*65), following.y-60);
-    movement_distance = point_distance(x, y, following.x-(following.spr_dir*65), following.y-60);
+    movement_angle = point_direction(x, y, following.x-(following.spr_dir*45), following.y-60);
+    movement_distance = point_distance(x, y, following.x-(following.spr_dir*45), following.y-60);
     
     //Set speed
     current_speed = point_distance(0, 0, vsp, hsp);
     if (movement_distance < 1) {
     	current_speed = 0;
     } else if (movement_distance > 24) {
-    	if (current_speed != 9) {
+    	if (current_speed != 14) {
     		current_speed++;
     	}
     } else {
@@ -369,9 +369,9 @@ if (state == 10){
 	if (state_timer % 96 = 0) {y = home_y}		//Prevents drifting away
 	
 	if (last_state == 2) {
-		movement_distance = point_distance(home_x, home_y, following.x-(following.spr_dir*65), following.y-60);
+		movement_distance = point_distance(home_x, home_y, following.x-(following.spr_dir*45), following.y-60);
 	} else {
-		movement_distance = point_distance(home_x, home_y, player_id.x-(player_id.spr_dir*65), player_id.y-60);
+		movement_distance = point_distance(home_x, home_y, player_id.x-(player_id.spr_dir*45), player_id.y-60);
 	}
 	
 	if (movement_distance > 10) {

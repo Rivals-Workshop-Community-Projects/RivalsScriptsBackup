@@ -115,10 +115,6 @@ if attack == AT_FSPECIAL and window = 2 and window_timer = 1 {
 move_cooldown[AT_FSPECIAL] = 50
 }
 
-if attack == AT_TAUNT {
-move_cooldown[AT_TAUNT] = 20
-}
-
 if attack == AT_DSPECIAL and window = 3 and window_timer = 1 {
 move_cooldown[AT_DSPECIAL] = 110
 }
@@ -336,20 +332,83 @@ if (attack == AT_DAIR) {
 	}
 }
 
-//EXTRA_1 stick? (wtf) 
-if (attack == AT_EXTRA_1) {
-	if window == 3 && window_timer >= 4{
-		if right_strong_pressed * spr_dir or left_strong_pressed * -spr_dir{
-		window = 4;
+//TAUNT SELECT
+if (attack == AT_TAUNT){
+	if window == 2{
+		if taunt_down{
+			set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 4);
+			}
 		}
-	}
-	if window == 6 && window_timer >= 1{
-		if right_strong_pressed * spr_dir or left_strong_pressed * -spr_dir{
-		window = 7;
+	if window == 3 && window_timer == 11{
+		if taunt_down{
+			window_timer = 1;
 		}
 	}
 }
 
+if (attack == AT_TAUNT){
+    			if fire = 1{
+                	set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("element_switch2_fire"));
+                }
+				if ice = 1{
+					set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("element_switch2_ice"));
+				}
+				if thunder = 1{
+					set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("element_switch2_plasma"));
+				}
+				if pistols = 1{
+					set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("element_switch2_earth"));
+				}
+}
+
+
+
+//ELEMENTAL SWITCHER ALT
+switch(attack) {
+    
+    case AT_TAUNT :
+    
+    	if window == 1 && (!joy_pad_idle) {
+            clear_button_buffer( PC_ATTACK_PRESSED )
+       }
+           
+     if window == 3 {
+    if joy_dir < 45 || joy_dir >= 315 {
+    fire = 0
+	ice = 1
+	thunder = 0
+	pistols = 0
+    }
+             
+    if joy_dir < 135 and joy_dir >= 45 {
+    fire = 1
+	ice = 0
+	thunder = 0
+	pistols = 0
+    }
+             
+    if joy_dir < 225 and joy_dir >= 135 {
+    fire = 0
+	ice = 0
+	thunder = 1
+	pistols = 0
+    }
+             
+    if joy_dir < 315 and joy_dir >= 225 {
+    fire = 0
+	ice = 0
+	thunder = 0
+	pistols = 1
+    }  
+    if (joy_pad_idle) {
+    //fire = 0
+	//ice = 0
+	//thunder = 0
+	//pistols = 0
+            }
+    }
+    break ;
+}
 
 if (attack == AT_JAB) {
 	if window == 3 && window_timer == 9{
@@ -357,7 +416,6 @@ if (attack == AT_JAB) {
 		set_window_value(AT_JAB, 13, AG_WINDOW_ANIM_FRAME_START, 13);
 	}
 }
-
 
 if (attack == AT_JAB) {
 	if window < 4{
@@ -369,6 +427,10 @@ if (attack == AT_JAB) {
 		}
 	}
 }
+
+//--------------------------------//
+
+
 
 if (attack == AT_JAB){
 	if window == 1 && window_timer == 1 {
@@ -383,18 +445,8 @@ if (attack == AT_JAB){
 	if window == 13 && window_timer >= 10 {
 		move_cooldown[AT_JAB] = 20
 	}
-	//if window <= 3{
-		//if right_strong_pressed * spr_dir or left_strong_pressed * -spr_dir{
-			//set_attack( AT_EXTRA_1 );
-		//}
-	//}
 }
 
-if (attack == AT_EXTRA_1){
-	if window == 6 && window_timer == 9{
-		window = 10;
-	}
-}
 if (attack == AT_JAB){
 	if window >= 9 && has_hit=true{
 		can_jump=true;
@@ -475,7 +527,7 @@ if(caleb==1){
 	if(attack==AT_NSPECIAL)&&(window==1)&&(window_timer==1){sound_play(sound_get("laugh"));}
 	if(attack==AT_NSPECIAL_2)&&(window==1)&&(window_timer==1){sound_play(sound_get("laugh"));}
 	if(attack==AT_USTRONG)&&(window==2)&&(window_timer==1){sound_play(sound_get("RIP"));}
-	if(attack==AT_EXTRA_1)&&(window==1)&&(window_timer==1){sound_play(sound_get("open_for_bussiness"));}
+	if(attack==AT_FTILT)&&(window==1)&&(window_timer==1){sound_play(sound_get("open_for_bussiness"));}
 	if(attack==AT_UTILT)&&(window==1)&&(window_timer==1){sound_play(sound_get("hahahaha"));}
 	if(attack==AT_DATTACK)&&(window==1)&&(window_timer==2){sound_play(sound_get("laugh2"));}
 	if(attack==AT_DTILT)&&(window==1)&&(window_timer==1){sound_play(sound_get("nevermore"));}
@@ -497,7 +549,7 @@ if(machina==1){
 	if(attack==AT_NSPECIAL)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_light_of_the_future_1"));}
 	if(attack==AT_NSPECIAL_2)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_light_of_the_future_1"));}
 	if(attack==AT_USTRONG)&&(window==2)&&(window_timer==1){sound_play(sound_get("machina_furious_blades_burst_2"));}
-	if(attack==AT_EXTRA_1)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_stunning_slash"));}
+	if(attack==AT_FTILT)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_stunning_slash"));}
 	if(attack==AT_UTILT)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_light_of_the_future_2"));}
 	if(attack==AT_DATTACK)&&(window==1)&&(window_timer==2){sound_play(sound_get("machina_furious_blades_burst_1"));}
 	if(attack==AT_FAIR)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_awakening_longer"));}
@@ -509,3 +561,6 @@ if(machina==1){
 	if(attack==AT_DSPECIAL)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_awakening"));}
 	if(attack==AT_FSPECIAL)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_brv_attack"));}
 }
+
+
+

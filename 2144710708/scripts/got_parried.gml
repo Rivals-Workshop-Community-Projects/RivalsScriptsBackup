@@ -9,7 +9,7 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1) {
 }
 
 
-if (attack == AT_DATTACK) {
+if (my_hitboxID.attack == AT_DATTACK) {
 	
 	// can't escape parry stun while dash attacking
 	should_dattack2 = false;
@@ -21,7 +21,7 @@ if (attack == AT_DATTACK) {
 char_height = 52;
 
 
-if (attack == AT_FSPECIAL) {
+if (my_hitboxID.attack == AT_FSPECIAL) {
 	
 	// interrupts fspecial
 	// stops 0 air accel bug
@@ -59,12 +59,12 @@ if (my_hitboxID.attack == AT_DSPECIAL) {
 
 }
 
-if (attack == AT_DSPECIAL_2) {
+if (my_hitboxID.attack == AT_DSPECIAL_2) {
 	sound_play(sound_get("button15"), false, noone, 1, 1);
 	y = 2500;
 }
 
-if (attack == AT_USPECIAL) {
+if (my_hitboxID.attack == AT_USPECIAL) {
 	// don't go into the air 
 	vsp = 0;
 	window = 4;

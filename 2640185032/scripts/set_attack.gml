@@ -35,10 +35,10 @@ switch(attack){
         increased = false;
         increase = 0;
         //if charged
-        if (knives == 6){
+        /*if (knives == 6){
             window = 3;
             sound_play(asset_get("sfx_swipe_weak2"));
-        }
+        }//*/
         break;
     
     case AT_FSPECIAL:

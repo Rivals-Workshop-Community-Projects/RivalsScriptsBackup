@@ -48,26 +48,26 @@ set_num_hitboxes(AT_DSTRONG, 2);
 //Charged, Front Hit
 set_hitbox_value(AT_DSTRONG, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DSTRONG, 1, HG_WINDOW_CREATION_FRAME, 4);
-set_hitbox_value(AT_DSTRONG, 1, HG_LIFETIME, 4);
+set_hitbox_value(AT_DSTRONG, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_X, 50);
-set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_Y, -30);
-set_hitbox_value(AT_DSTRONG, 1, HG_WIDTH, 90);
-set_hitbox_value(AT_DSTRONG, 1, HG_HEIGHT, 90);
+set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_Y, -10);
+set_hitbox_value(AT_DSTRONG, 1, HG_WIDTH, 80);
+set_hitbox_value(AT_DSTRONG, 1, HG_HEIGHT, 50);
 set_hitbox_value(AT_DSTRONG, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_DSTRONG, 1, HG_PRIORITY, 3);
-set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 6);
+set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE, 45);
+set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_DSTRONG, 1, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, 1.0);
+set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, 1.3);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_waterhit_heavy2"));
-set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_PARTICLE_NUM, 1);
-set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, splatter);
+set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_GROUP, 1);
 
 //required for all synced hitboxes
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_TYPE, 2);
@@ -84,26 +84,26 @@ set_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_PLASMA_SAFE, true);
 //Charged, Back Hit
 set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW_CREATION_FRAME, 4);
-set_hitbox_value(AT_DSTRONG, 2, HG_LIFETIME, 5);
-set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_X, -45);
+set_hitbox_value(AT_DSTRONG, 2, HG_LIFETIME, 4);
+set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_X, -65);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_Y, -30);
-set_hitbox_value(AT_DSTRONG, 2, HG_WIDTH, 90);
+set_hitbox_value(AT_DSTRONG, 2, HG_WIDTH, 70);
 set_hitbox_value(AT_DSTRONG, 2, HG_HEIGHT, 60);
 set_hitbox_value(AT_DSTRONG, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_DSTRONG, 2, HG_PRIORITY, 3);
-set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 6);
+set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 10);
 set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE, 135);
+set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE_FLIPPER, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, 1.0);
+set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, 1.3);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_waterhit_heavy2"));
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_PARTICLE_NUM, 1);
-set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, splatter);
 
 //required for all synced hitboxes
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 2);

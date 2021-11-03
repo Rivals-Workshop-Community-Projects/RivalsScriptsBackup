@@ -2,7 +2,7 @@ set_attack_value(AT_FAIR, AG_CATEGORY, 1);
 set_attack_value(AT_FAIR, AG_SPRITE, sprite_get("fair"));
 set_attack_value(AT_FAIR, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_FAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_FAIR, AG_LANDING_LAG, 6);
+set_attack_value(AT_FAIR, AG_LANDING_LAG, 7);
 set_attack_value(AT_FAIR, AG_HURTBOX_SPRITE, sprite_get("fair_hurt"));
 
 //startup
@@ -18,7 +18,7 @@ set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 
 //endlag
-set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -28,7 +28,7 @@ set_num_hitboxes(AT_FAIR,2);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 3);
-set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 30);
+set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 40);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -20);
 set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 55);
 set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 45);
@@ -45,7 +45,7 @@ set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_light1"));
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 3);
-set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, -12);
+set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 6);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_Y, -10);
 set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 75);
 set_hitbox_value(AT_FAIR, 2, HG_HEIGHT, 35);

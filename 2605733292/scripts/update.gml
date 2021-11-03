@@ -248,6 +248,7 @@ if (sprite_index != sprite_get("jab")){
 	jab_is_jabbing = false
 }
 
+
 if (jab_is_jabbing == false && hurtboxID.sprite_index != sprite_get("sleep_hurtbox")
 && state != PS_CROUCH
 && state != PS_ATTACK_GROUND
@@ -263,6 +264,7 @@ if (jab_is_jabbing == false && hurtboxID.sprite_index != sprite_get("sleep_hurtb
 	hurtboxID.sprite_index = sprite_get("sleep_hurtbox");
 }
 
+
 if (state != PS_ATTACK_GROUND){
 	set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
 }
@@ -276,6 +278,7 @@ if (IsSleepKirby_PlayAbilityStarSFX == true){
 //(i hate this)
 	with (oPlayer){
 		if (is_in_playtest == false){
+			sfx_ability_star_break = sound_get("sfx_ability_star_break");
 			Sleep_Meter = sprite_get("enemy_sleep_bar");
 
 			//Debug vars
@@ -287,6 +290,10 @@ if (IsSleepKirby_PlayAbilityStarSFX == true){
 
 			if (NotSleepKirby_IsSleeping){
 			
+					//can_shield = false;
+					can_tech = false;
+					can_wall_tech = false;
+					
 					//Muno Steve Stuffs
 					if (url == 2284823424){
 						//set_attack(AT_TAUNT_2);
@@ -349,7 +356,7 @@ if (IsSleepKirby_PlayAbilityStarSFX == true){
 								vsp = -6
 								NotSleepKirby_IsSleeping = false
 								NotSleepKirby_SleepTick = 0
-								sound_play(asset_get("mfx_unstar"));
+								sound_play(sfx_ability_star_break);
 								djumps = 0
 								has_airdodge = true
 								has_walljump = true
@@ -371,11 +378,12 @@ if (IsSleepKirby_PlayAbilityStarSFX == true){
 						}
 						//Checking to see if the player hits the bottom blastzone while sleeping.
 						if (y > blastzone_b && NotSleepKirby_WasHitBySleepRune == false){
-							vsp = -20
-							y -= 50
+							vsp = -12
+							old_vsp = vsp
+							y -= 40
 							NotSleepKirby_SleepTick = 0
 							NotSleepKirby_IsSleeping = false
-							sound_play(asset_get("mfx_unstar"));
+							sound_play(sfx_ability_star_break);
 							djumps = 0
 							has_airdodge = true
 							has_walljump = true
@@ -386,7 +394,7 @@ if (IsSleepKirby_PlayAbilityStarSFX == true){
 						NotSleepKirby_SleepTimer = 0
 						NotSleepKirby_IsSleeping = false
 						NotSleepKirby_SleepTick = 0
-						sound_play(oPlayer.sfx_ability_star_break);
+						sound_play(sfx_ability_star_break);
 					}
 				} else {
 					NotSleepKirby_hat_timer = 0

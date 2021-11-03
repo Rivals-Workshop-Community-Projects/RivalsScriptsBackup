@@ -53,7 +53,7 @@ set_hitbox_value(AT_NAIR, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 3);
 set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 85);
 set_hitbox_value(AT_NAIR, 1, HG_ANGLE_FLIPPER, 7);
-set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, sound_get("sfx_knifehit_s"));
