@@ -4,6 +4,8 @@ crouchbox_spr = sprite_get("crouch_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
+hit_player_event = 11
+
 Hikaru_Title = "Shifting Steel"
 
 nname = "Uza Ckater"

@@ -43,8 +43,6 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("nspecial_proj")
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, .2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GRAVITY, 0.7);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
-set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 8);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get( "sfx_blow_medium1" ));

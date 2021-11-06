@@ -5,10 +5,13 @@ player_id.can_rock = false;
 if(!warm){
     with(pHitBox){
 		if(place_meeting(x, y, other) and (player_id.free or type == 2 or !player_id.free and player_id.y > other.y) and !other.amdead){
-			player_id.hitpause = true;
-			player_id.hitstop = floor(hitpause * 1.3);
-			player_id.old_vsp = player_id.vsp;
-			player_id.old_hsp = player_id.hsp;
+			if(type != 2){
+				player_id.hitpause = true;
+				player_id.hitstop = floor(hitpause * 1.3);
+				player_id.old_vsp = player_id.vsp;
+				player_id.old_hsp = player_id.hsp;
+			}
+			has_hit = true;
 			sound_play(sound_effect);
 			sound_play(asset_get("sfx_kragg_rock_shatter"));
 			other.amdead = true;

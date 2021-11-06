@@ -27,6 +27,7 @@ if(free){
 }
 
 if(player_id.destroy_pipis == true || pipis_timer == 200){
+	sound_play(sound_get("pipis_boom"));
     player_id.pipis_amount = 0;
     create_hitbox(AT_TAUNT_2, 1, x - 16, y - 12);
 	create_hitbox(AT_TAUNT_2, 2, x - 16, y - 12);

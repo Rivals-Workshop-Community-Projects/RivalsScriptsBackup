@@ -1,4 +1,14 @@
 
+
+if "in_adventure" in self {
+	
+   if get_gameplay_time() == 2 {
+   	 x = 2477
+   	 y = 10455
+   }	
+   
+}
+
 if !instance_exists(hit_player_obj){
 
 hit_player_obj = self

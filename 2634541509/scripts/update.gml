@@ -1,3 +1,9 @@
+if(hud_anim < 80){
+	hud_anim++;
+}else{
+	hud_anim = 0;
+}
+
 fair_cooldown++;
 set_victory_bg(sprite_get("win_bg"));
 
@@ -38,6 +44,17 @@ if(attack == AT_UTILT && attack_pressed && window_timer >= 12){
 	}
 }
 
+if(car_amount == 1){
+	if(car_timer > 300){
+		car_timer = 0;
+		sound_play(sound_get("explosion"));
+		car_amount = 0;
+	}
+	car_timer++
+}else{
+	car_timer = 0;
+}
+
 if(attack == AT_NSPECIAL && window == 2){
 	move_cooldown[AT_NSPECIAL] = 60;
 }
@@ -69,6 +86,8 @@ if(spawn_mail == true && mail_timer < mail_amount){
 
 if(pipis_amount == 1){
 	move_cooldown[AT_DSPECIAL] = 240;
+}else if(get_player_color(player) == 14){
+	move_cooldown[AT_DSPECIAL] = 0;
 }
 
 if(attack == AT_DSPECIAL && window == 2 && window_timer == 6 && state != PS_AIR_DODGE && state != PS_PARRY && state != PS_ROLL_FORWARD && state != PS_ROLL_BACKWARD){
@@ -102,6 +121,7 @@ if(taunt_pressed){
 if(attack == AT_EXTRA_3 && window == 2 && (attack_pressed || jump_pressed || shield_pressed || jump_pressed || left_pressed || right_pressed || taunt_pressed) && state != PS_AIR_DODGE && state != PS_PARRY && state != PS_ROLL_FORWARD && state != PS_ROLL_BACKWARD){
 	window = 3;
 	window_timer = 0;
+	sound_stop(sound_get("KEYGEN"));
 }
 
 if(attack == AT_EXTRA_3 && window == 1){

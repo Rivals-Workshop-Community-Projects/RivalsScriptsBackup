@@ -1,10 +1,12 @@
 
 
-
+fcharge += 1
 ///
 
 
-
+if old_vsp < -6 {
+	old_vsp = -6
+}
 
 	if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num >= 3){
 	

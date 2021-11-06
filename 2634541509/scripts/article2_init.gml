@@ -1,5 +1,7 @@
 anglee = 0;
-player_id.pipis_amount = 1;
+if(get_player_color(player) != 14){
+    player_id.pipis_amount = 1;
+}else{}
 image_yscale = 2;
 image_xscale = 2;
 depth = -10;

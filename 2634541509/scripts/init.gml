@@ -72,9 +72,9 @@ techroll_recovery_frames = 2;
 techroll_speed = 5;
 
 //airdodge animation frames
-air_dodge_startup_frames = 2;
+air_dodge_startup_frames = 3;
 air_dodge_active_frames = 2;
-air_dodge_recovery_frames = 2;
+air_dodge_recovery_frames = 3;
 air_dodge_speed = 7;
 
 //roll animation frames
@@ -115,12 +115,13 @@ fair_cooldown = 0;
 proj_check = 0;
 
 //nspecial proj
-jumpe = 0;
+jumpe = 1;
 
 //fspecial stuff
 boom = hit_fx_create(sprite_get("explosion"), 17);
 boom2 = hit_fx_create(sprite_get("explosion2"), 17);
 car_amount = 0;
+car_timer = 0;
 
 mail_amount = 0;
 spawn_mail = false;
@@ -135,8 +136,8 @@ destroy_pipis = false;
 
 //dtaunt variables
 r_change = 255;
-g_change = 0;
-b_change = 0;
+g_change = 205;
+b_change = 205;
 shading_timer = 0;
 
 //intro
@@ -144,3 +145,4 @@ intro_timer = 0;
 
 //special stuff
 special_x = 0;
+hud_anim = 0;
