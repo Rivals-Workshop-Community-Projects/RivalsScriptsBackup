@@ -82,9 +82,11 @@ if attack == AT_DAIR {
 
 
 if attack == AT_DATTACK {
-    if has_hit && window == 4 {
-    	window_timer += 1
+    if has_hit && !hitpause {
+    	window_timer += .6
+    	hsp /= 1.2
     }
+    
     if window == 2 {
     	hsp /= 1.01
     }
@@ -385,14 +387,19 @@ if attack == AT_USPECIAL{
 	if down_down {
 		fall_through = true
 	}
+	
 if window < 3 {	
 can_fast_fall = false
 } else {
 	if vsp < 0 {
 		vsp /= 1.01
 	}
-can_fast_fall = true	
+  if window == 3 {	
+   can_fast_fall = true	
+  }
+  	
 }
+ 
 if window == 1 {
 	hsp /= 1.1
 	vsp /= 2

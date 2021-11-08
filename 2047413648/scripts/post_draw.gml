@@ -2,9 +2,6 @@
 
 shader_start();
 
-if "in_adventure" in self && invincible {
-	draw_sprite_ext(sprite_index,image_index,x,y,spr_dir,1,0,-1,1)
-}
 
 if move_cooldown[AT_EXTRA_3] > 0 && hit_player_obj != self{
         	draw_sprite_ext(sprite_get("slosh"), 0, hit_player_obj.x , hit_player_obj.y - 36,

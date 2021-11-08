@@ -13,7 +13,7 @@ if (isFspecial){
 
 
 // Turns opponents status effects off
-with (hit_player){
+with (hit_player_obj){
 
 	if (isCandy){
 		CandyCounter = 0;

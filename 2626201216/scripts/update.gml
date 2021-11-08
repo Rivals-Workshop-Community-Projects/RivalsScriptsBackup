@@ -4,6 +4,8 @@ user_event(14);
 
 
 
+
+
 rainbow_color = phone_cheats[cheat_skittles] ? make_color_hsv(get_gameplay_time() % 256 + 1, 100, 100) : make_color_rgb(
 	get_color_profile_slot_r(get_player_color(player), 0),
 	get_color_profile_slot_g(get_player_color(player), 0),
@@ -22,6 +24,14 @@ if phone_cheats[cheat_recoil] with pHitBox if player_id == other can_hit_self = 
 
 //syncing animations for puddle
 
+if (get_player_color(player) == 9 && (state_timer mod 5) == 0 && random_func( 0, 1000, true) = 9)
+{
+
+
+sound_play(sound_get("susquiet"));
+}
+
+
 if (puddle_anim_timer < 5)
 {
 puddle_anim_timer++;
@@ -39,15 +49,8 @@ else
 	puddle_anim_timer = 0;
 }
 
-if (( state = PS_WALK || state == PS_DASH || state == PS_WAVELAND || state == PS_DASH_START || state == PS_DASH_STOP || state == PS_DASH_TURN ) && 69 = 420)
-{
-	if ((get_gameplay_time() mod 2) == 0)
-	{
 
-		temp_id = instance_create(x -10 * spr_dir, y, "obj_article2");
-		temp_id.self_id =  temp_id;
-	}
-}
+
 
 if (state = PS_JUMPSQUAT && spark = 0 && state_timer = 0)
 {
@@ -56,6 +59,7 @@ if (state = PS_JUMPSQUAT && spark = 0 && state_timer = 0)
 	temp_id = instance_create(x +30 * spr_dir, y-20, "obj_article2");
 	temp_id.self_id =  temp_id;
 }
+
 
 //slip_id[1] = player_id;
 //slip_id
@@ -73,6 +77,7 @@ if (pratfall_debt)
 
 
 //Making everyone slip. lol!
+
 
 with(oPlayer)
 {
@@ -109,6 +114,8 @@ with(oPlayer)
 		ground_friction	= old_ground_friction; 
 	}
 }
+
+
 
 if (taunt_timer > 0)
 {
@@ -159,7 +166,7 @@ if (spark)
 	}
 	if (!free)
 	{
-		collided = instance_place(x, y, obj_article3);
+		collided = instance_place(floor(x), floor(y), obj_article3);
 
 		if (collided != noone)
 		{
@@ -178,7 +185,7 @@ if (spark)
 		}
 		
 
-		banana = instance_place(x,y,obj_article1);
+		banana = instance_place(floor(x),floor(y),obj_article1);
 			if (banana != noone && banana.player_id = id && banana.article_type = 1)
 			{
 				
@@ -205,7 +212,7 @@ if (spark)
 	{
 		hsp = 10 * spr_dir;
 
-		front_collided = instance_place(x + 10 * spr_dir, y, obj_article3);
+		front_collided = instance_place(floor(x) + 10 * spr_dir, floor(y), obj_article3);
 
 		if (front_collided != noone)
 		{
@@ -235,7 +242,7 @@ if (spark)
 }
 
 
-if (!spark && attack != AT_USPECIAL)
+if (!spark && attack != AT_USPECIAL )
 {
 	// Air movement
 	char_height = 80;
@@ -380,6 +387,10 @@ if (rechecking)
 		rechecking_timer = 0;
 	}
 }
+
+
+
+
 
 //rechecking = 1;
 

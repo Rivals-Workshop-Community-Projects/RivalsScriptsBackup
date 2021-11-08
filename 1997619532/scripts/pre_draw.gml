@@ -1,4 +1,14 @@
 //pre_draw.gml
+
+if omega == 1 && get_gameplay_time() > 90{
+	
+	 gpu_set_fog(true, c_white, 0, 1);
+        draw_sprite_ext(sprite_index, image_index, x + 2 - random_func(1,3,true)*2, y - random_func(2,3,true)*2, spr_dir, 1, 0, c_white, .6);
+     gpu_set_fog(false, c_white, 0, 0);
+	
+	
+}
+
 shader_start();
 var style = 0;
 
@@ -8,6 +18,7 @@ with oPlayer {
     style = styler;
   }
 }
+
 
 
 if halo >= 1 and halo < 5 {

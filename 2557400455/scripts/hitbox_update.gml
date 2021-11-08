@@ -2,8 +2,8 @@
 
 if attack == AT_FAIR or attack == AT_EXTRA_1  {
     
-    vsp /= 1.05
-    hsp /= 1.05
+    vsp /= 1.06
+    hsp /= 1.08
   
 if attack == AT_EXTRA_1 {
 	vsp /= 1.06

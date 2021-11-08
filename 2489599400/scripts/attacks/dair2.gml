@@ -105,7 +105,7 @@ set_hitbox_value(AT_EXTRA_2, 3, HG_PROJECTILE_GRAVITY, .25);
 set_hitbox_value(AT_EXTRA_2, 3, HG_PROJECTILE_VSPEED, 5);
 set_hitbox_value(AT_EXTRA_2, 3, HG_PROJECTILE_DESTROY_EFFECT, 14);
 set_hitbox_value(AT_EXTRA_2, 3, HG_PROJECTILE_IS_TRANSCENDENT, true);
-
+set_hitbox_value(AT_EXTRA_2, 3, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 
 set_hitbox_value(AT_EXTRA_2, 4, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_EXTRA_2, 4, HG_HITBOX_TYPE, 2);

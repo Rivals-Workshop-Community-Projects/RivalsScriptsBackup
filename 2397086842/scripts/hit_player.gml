@@ -66,11 +66,14 @@ if (my_hitboxID.attack == AT_FAIR and my_hitboxID.damage == 12 ) {
 
 if my_hitboxID.type == 1 && my_hitboxID.damage >= 8 {
     sound_play(asset_get("sfx_kragg_rock_land"),false,noone, 0.7 + my_hitboxID.damage/20, 1.1 - random_func(5,20,true)/100)
+
+
    if get_gameplay_time() %2 == 0 {
-            sound_play(asset_get("sfx_shovel_hit_heavy2"),false,noone, 0.5 + my_hitboxID.damage/20)
+            sound_play(asset_get("sfx_shovel_hit_heavy2"),false,noone, 0.5 + my_hitboxID.damage/20,  min(1, 2.2 - min((hitstop*hitstop)/120,1.8)) )
    } else {
-       sound_play(asset_get("sfx_shovel_hit_med2"),false,noone, 0.5 + my_hitboxID.damage/20)
+       sound_play(asset_get("sfx_shovel_hit_med2"),false,noone, 0.5 + my_hitboxID.damage/20,  min(1, 2.2 - min((hitstop*hitstop)/120,1.8)) )
    }
+   
 }
 
 if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num <= 3 {

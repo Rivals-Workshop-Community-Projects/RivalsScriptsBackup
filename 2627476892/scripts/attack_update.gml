@@ -380,6 +380,7 @@ if(window == 1 && window_timer = 14){
 }
 
 if(attack == AT_DATTACK){
+	can_fast_fall = false;
 	if(window == 1 && window_timer = 1){
 		set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 1);
 	}	if(window == 3 && window_timer = 5){

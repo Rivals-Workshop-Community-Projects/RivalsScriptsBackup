@@ -1,3 +1,7 @@
+intro = 1
+if introhit = 0 {
+	introhit = 1
+}
 
 
 

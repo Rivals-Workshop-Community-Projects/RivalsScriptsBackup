@@ -319,6 +319,13 @@ in a Patch.
 
 #define CORE_patches
 
+	initPatch("2.21", "November 7th, 2021");
+	
+	initHeader("Nerfs");	
+	initSection("-Decreased USpecial last hit knockback scaling (0.65 -> 0.5)");
+	initSection("-Increased USpecial last hit base hitpause (10 -> 11)");
+	initSection("-Increased USpecial last hit hitpause scaling (0.8 -> 0.9)");	
+
 	initPatch("2.20", "October 31st, 2021");
 
 	initHeader("Adjustments");

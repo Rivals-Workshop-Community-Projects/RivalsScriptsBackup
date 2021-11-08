@@ -11,6 +11,9 @@ GrappleMode = 0;
 // [Roses]   [Candy]   [Ribbon]   [Balloon]
 //    0         1         2           3
 
+can_fireball = false;
+can_fireball_timer = 0;
+
 LoveMeter = 0;
 LoveStorage = 0;
 

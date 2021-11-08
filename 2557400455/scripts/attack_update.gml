@@ -45,7 +45,7 @@ switch attack {
              
              if has_hit_player && !hitpause {
                  vsp = -4
-                 hsp = -4*spr_dir
+                 hsp /= 4
                  set_attack(AT_FSPECIAL)
                  window = 6
                  window_timer = 6
@@ -318,6 +318,7 @@ switch attack {
                window = 3 
                window_timer = 2
                sound_stop(charge_sound2)
+               sound_play(sound_get("shot1"),false,noone,0.7,.8)
            }
            
            if state_timer > 98 {

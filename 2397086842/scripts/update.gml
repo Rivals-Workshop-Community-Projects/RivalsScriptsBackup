@@ -106,13 +106,14 @@ if move_cooldown[AT_DSPECIAL] == 1 {
 
 
 
-if get_gameplay_time() < 92 {
+if get_gameplay_time() < 92 && get_gameplay_time() >= 3 {
 	set_attack(AT_EXTRA_1)
 	window = 1
 	window_timer = 0
 	draw_indicator = false
-	if get_gameplay_time() == 1 { 
-	sound_play(asset_get("sfx_bird_sidespecial"),false,noone,1)
+	
+	if get_gameplay_time() == 6 { 
+	sound_play(asset_get("sfx_bird_sidespecial"),false,noone,1,1.2)
 	}
 		
 }
@@ -122,7 +123,7 @@ if get_gameplay_time() == 92 {
 	window = 2
 	window_timer = 2
 	hsp = 5*spr_dir
-	sound_play(asset_get("sfx_bird_sidespecial_start"),false,noone,1)
+	sound_play(asset_get("sfx_bird_sidespecial_start"),false,noone,1,1.2)
 	sound_play(asset_get("sfx_spin"),false,noone,1)
 }
 

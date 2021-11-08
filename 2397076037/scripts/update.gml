@@ -233,10 +233,10 @@ if hit_player_obj.state == PS_DEAD && deathnum > -1{
 
 }
 
-if get_gameplay_time() == 1 {
+if get_gameplay_time() == 3 {
 	set_attack(AT_TAUNT)
 	window = 3
-	window_timer = 0
+	window_timer = 1
 }
 	if exheld == 8 or exheld == 10 {
 		outline_color = [255, 255, 255]

@@ -11,7 +11,7 @@ display = image_alpha * 10;
 // Variables for positioning of visuals
 var temp_x = x + 12;
 var temp_y = y + 140;
-var alts = 25;
+var alts = 26;
 
 var color = get_player_color(player);
 var name = " ";
@@ -39,7 +39,7 @@ image_index = color;
 // Determines CSS icon colors
 if (color == 0 || color == alts - 1 || color == alts){
 	if (color == 0){
-		ColorPrev = make_color_rgb(get_color_profile_slot_r(25, 0 ), get_color_profile_slot_g(25, 0 ), get_color_profile_slot_b(25, 0 ));
+		ColorPrev = make_color_rgb(get_color_profile_slot_r(alts, 0 ), get_color_profile_slot_g(alts, 0 ), get_color_profile_slot_b(alts, 0 ));
 		ColorNext = make_color_rgb(get_color_profile_slot_r(color + 1, 0 ), get_color_profile_slot_g(color + 1, 0 ), get_color_profile_slot_b(color + 1, 0 ));
 		ColorNextNext = make_color_rgb(get_color_profile_slot_r(color + 2, 0 ), get_color_profile_slot_g(color + 2, 0 ), get_color_profile_slot_b(color + 2, 0 ));
 	}
@@ -165,8 +165,7 @@ else {
 				break;	
 				
 				case 19: 
-			name = " 20: Anarchy"; 
-			draw_sprite_ext( sprite_get("css_cal_icon"), 0, x + 176, y + 108, 1, 1, 0, c_white, 1);
+			name = " 20: Anarchy";
 			var position = 19;
 				break;	
 				
@@ -199,6 +198,11 @@ else {
 			name = " 26: Event"; 
 			draw_sprite_ext( sprite_get("css_cal_icon"), 0, x + 176, y + 108, 1, 1, 0, c_white, 1);
 			var position = 25;
+				break;
+				
+				case 26: 
+			name = " 27: Everything"; 
+			var position = 26;
 				break;	
 		}
 	//break;
@@ -279,13 +283,13 @@ draw_sprite_ext( sprite_get("select_highlight"), 0, x + 8, y + 8, 1, 1, 0, Highl
 draw_set_font(1);
 draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
-draw_text_color(x + 4, y + 231, "v1.9.2", c_gray, c_gray, c_gray, c_gray, 1);
+draw_text_color(x + 4, y + 231, "v2.0.2", c_gray, c_gray, c_gray, c_gray, 1);
 
 // Date Display
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_right);
 draw_set_valign(fa_bottom);
-draw_text_color(x + 218, y + 214, "October 24th, 2021", c_gray, c_gray, c_gray, c_gray, 1);
+draw_text_color(x + 218, y + 214, "November 7th, 2021", c_gray, c_gray, c_gray, c_gray, 1);
 
 // Initial Name	+ Rectangles
 //if (image_alpha > 0){

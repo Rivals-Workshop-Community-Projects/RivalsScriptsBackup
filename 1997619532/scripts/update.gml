@@ -226,7 +226,7 @@ if (state == PS_WALL_JUMP) {
 
  if get_player_color(player) == 1 && omega == 1 {
  	
- 	if visible && get_gameplay_time() % 6 == 0 and ((state != PS_ATTACK_GROUND and state != PS_DASH)  or (attack != AT_TAUNT and (state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR))) {
+ 	if visible && get_gameplay_time() % 4 == 0 and ((state != PS_ATTACK_GROUND and state != PS_DASH)  or (attack != AT_TAUNT and (state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR))) {
  	spawn_hit_fx( floor(x - 7 + (random_func(1, 60, true)/4)) , floor(y) , auram )
  	}
  	
@@ -237,7 +237,28 @@ if (state == PS_WALL_JUMP) {
  	}
  	
  	
- 	if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR && !hitpause {
+ 	if (state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR) && !hitpause {
+ 		
+ 		if window == 1 && window_timer == 1 {
+ 		   switch get_gameplay_time() % 3 {
+ 		   	
+ 		   	   case 0 :
+ 		   	   sound_play(sound_get("OZS1"),false,noone,0.85, 1.05 - random_func(1,10,true)/100);
+ 		   	   break ;
+ 		   	   
+ 		   	   case 1 : 
+ 		   	   sound_play(sound_get("OZS2"),false,noone,0.85, 1.05 - random_func(1,10,true)/100);
+ 		   	   break ;
+ 		   	   
+ 		   	   case 2 : 
+ 		   	   sound_play(sound_get("OZS3"),false,noone,0.85, 1.05 - random_func(1,10,true)/100);
+ 		   	   break ;
+ 		   	   
+ 		   }
+ 		    
+ 		
+ 		}
+ 		
  		
  		if attack == AT_TAUNT{
  			if window == 1 && window_timer == 1 {
@@ -573,7 +594,7 @@ if (state_cat == SC_HITSTUN or overt >= 999) and !hitpause {
 
 
 
-if get_gameplay_time() <= 45 {
+if get_gameplay_time() <= 45 &&  get_gameplay_time() > 3  {
 
   set_attack (AT_TAUNT)
   window = 2
@@ -846,13 +867,13 @@ if get_gameplay_time() % 5 == 0 && (hit_player_obj.hsp > 10 or hit_player_obj.hs
 	
 }
 
-if get_gameplay_time() <= 120 && omega == 0 and taunt_pressed && get_player_color(player) == 1{
+if get_gameplay_time() <= 120 && get_gameplay_time() > 5  && omega == 0 and taunt_pressed && get_player_color(player) == 1{
 	omega = 1
 	sound_play(sound_get("OZ1"));
 	set_victory_theme(sound_get("OZwin"));
 }
 
-if get_gameplay_time() <= 120 && sakura == 0 and taunt_pressed && get_player_color(player) == 5{
+if get_gameplay_time() <= 120  && get_gameplay_time() > 5  && sakura == 0 and taunt_pressed && get_player_color(player) == 5{
 	sakura = 1
 	sound_play(asset_get("sfx_gem_collect"));
 	

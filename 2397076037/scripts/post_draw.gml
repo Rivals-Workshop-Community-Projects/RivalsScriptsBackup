@@ -179,6 +179,12 @@ if rank >= 4 && get_gameplay_time() % 5 < 3{
         draw_sprite_ext(sprite_index, image_index, x + 2 - shsp*1.1 - random_func(1,4,true) , y - 2 - (10 * triggered) - svsp*1.1 + random_func(2,4,true)  , spr_dir, 1, 0 , c_green , 0.2);
 		draw_sprite_ext(sprite_index, image_index, x - 2 - shsp*1.05 + random_func(1,4,true) , y + 2 - (10 * triggered) - svsp*1.05 - random_func(2,4,true)  , spr_dir, 1, 0 , c_lime , 0.3);
         break ;      
+
+
+	  	case 9 :
+        draw_sprite_ext(sprite_index, image_index, x + 2 - shsp*1.1 - random_func(1,4,true) , y - 2 - (10 * triggered) - svsp*1.1 + random_func(2,4,true)  , spr_dir, 1, 0 , c_blue , 0.2);
+		draw_sprite_ext(sprite_index, image_index, x - 2 - shsp*1.05 + random_func(1,4,true) , y + 2 - (10 * triggered) - svsp*1.05 - random_func(2,4,true)  , spr_dir, 1, 0 , c_yellow , 0.3);
+        break ;    
         
 	  }
  

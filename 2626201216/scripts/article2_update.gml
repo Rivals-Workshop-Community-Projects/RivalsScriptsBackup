@@ -15,6 +15,9 @@
 
 */
 
+x = round(x);
+y = round(y);
+
 if (state == 0){ //Idle
 
 
@@ -22,7 +25,7 @@ if (state == 0){ //Idle
     {
         if (player_id.state = PS_ATTACK_AIR)
         {
-            hsp += player_id.hsp * 0.02;
+            hsp = round(hsp + player_id.hsp * 0.02);
         }
 
         if (hsp > 10)
@@ -47,10 +50,15 @@ if (state == 0){ //Idle
             }        
             else if ("temp_water_hitbox" in self)
             {
-                temp_water_hitbox.x = x;
-                temp_water_hitbox.y = y;
+                //temp_water_hitbox.x = x;
+                //temp_water_hitbox.y = y;
             }
         }
+    }
+
+    if (state_timer > 150)
+    {
+        setState(9);
     }
     
     if (!free)
@@ -86,8 +94,8 @@ if (state == 2)
     {
         
 
-            max_covered = check_spot(15, obj_article2);
-            min_covered = check_spot(-15, obj_article2);
+            max_covered = check_spot(size, obj_article2);
+            min_covered = check_spot(-size, obj_article2);
 
         if (max_covered = 0 || min_covered = 0) 
         {
@@ -108,22 +116,31 @@ if (state == 2)
 
 if (state == 3)
 {
+
+    move_snap(30, 1);
+    setState(9);
+    if (69 = 420)
+    {
+
     if (state_timer = 20)
     {
+        x = round(x);
+        y = round(y);
         if ( collision_line(x, y, x - 1000, y, obj_article2, false, true) != noone && collision_line(x, y, x - 1000, y, obj_article2, false, true).player_id = player_id)
         {
             min_connection = collision_line(x, y, x - 1000, y, obj_article2, false, true);
 
             distance = x - min_connection.x;
             player_id.distance = distance;
-            offset = frac(distance/15) * 15;
+            offset = frac(distance/size) * size;
             player_id.offset = offset;
 
-            min_connection.x -= (15 - offset);
+            min_connection.x -= (size - offset);
 
             distance = x - min_connection.x;
-            player_id.distance = distance;
-            difference = distance / 15;
+            //player_id.distance = distance;
+            difference = distance / size;
+            player_id.difference = difference;
 
             i = 0;
         }
@@ -131,12 +148,14 @@ if (state == 3)
 
     if (state_timer > 21)
     {
+         x = round(x);
+        y = round(y);
         if ("i" in self)
         {
 
             if (i < (difference + 1))
             {
-                    temp_id = instance_create(x - (15 * i), y,  "obj_article3");
+                    temp_id = instance_create(x - (size * i), y,  "obj_article3");
                     temp_id.self_id = temp_id;
                     temp_id.death_timer = player_id.death_amount;
                     i += 1;
@@ -152,6 +171,8 @@ if (state == 3)
         }
     }
 
+    }
+
 }
 
 
@@ -160,6 +181,9 @@ if (state = 9)
 {
     if (state_timer > 16)
     {
+                        temp_id = instance_create(x, y,  "obj_article3");
+                    temp_id.self_id = temp_id;
+                    temp_id.death_timer = player_id.death_amount;
     instance_destroy();
     exit; //Stops execution of the script
     }

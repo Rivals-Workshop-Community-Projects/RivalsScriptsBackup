@@ -24,20 +24,72 @@ if (isFspecial){
 
 ////////////////////////////
 
-//if (enemy_hitboxID.type == 1){
-	if (focus_attack){
-		focus_attack = false;
-		focus_armorbreak = true;
-	}
-//}
 
-if (focus_attack || focus_armorbreak){
-	if (enemy_hitboxID.type == 2){
-		LoveMeter = clamp(floor(LoveMeter + LoveStorage + (enemy_hitboxID.damage * 8)), 0, 200);
+if (focus_attack){
+//	if (enemy_hitboxID.type == 2){
+		var recovered_hearts = enemy_hitboxID.damage * 10;
+		LoveMeter = clamp(floor(LoveMeter + LoveStorage + recovered_hearts), 0, 200);
 		LoveStorage = 0;
-	}
+
+		var a_gain = recovered_hearts div 100
+		var b_gain = recovered_hearts div 10
+	
+		var digit_1 = noone;
+		digit_1 = instance_create(x - 24, y + 20, "obj_article2");
+		digit_1.state_timer = 2;
+		digit_1.state = 5;
+		digit_1.player_id = id;
+		digit_1.player = player;
+		digit_1.vsp = -2;
+		digit_1.sprite_index = sprite_get("callie_num");
+		digit_1.image_index = a_gain;
+		digit_1.image_speed = 0;
+		digit_1.depth = -100;
+		
+		var digit_2 = noone;
+		digit_2 = instance_create(x - 12, y + 20, "obj_article2");
+		digit_2.state_timer = 2;
+		digit_2.state = 5;
+		digit_2.player_id = id;
+		digit_2.player = player;
+		digit_2.vsp = -2;
+		digit_2.sprite_index = sprite_get("callie_num");
+		digit_2.image_index = b_gain;
+		digit_2.image_speed = 0;
+		digit_2.depth = -100;
+
+		var digit_3 = noone;
+		digit_3 = instance_create(x, y + 20, "obj_article2");
+		digit_3.state_timer = 2;
+		digit_3.state = 5;
+		digit_3.player_id = id;
+		digit_3.player = player;
+		digit_3.vsp = -2;
+		digit_3.sprite_index = sprite_get("callie_num");
+		digit_3.image_index = 0;
+		digit_3.image_speed = 0;
+		digit_3.depth = -100;
+
+		var digit_4 = noone;
+		digit_3 = instance_create(x - 36, y + 20, "obj_article2");
+		digit_3.state_timer = 2;
+		digit_3.state = 5;
+		digit_3.player_id = id;
+		digit_3.player = player;
+		digit_3.vsp = -2;
+		digit_3.sprite_index = sprite_get("callie_text");
+		digit_3.image_index = 0;
+		digit_3.image_speed = 0;
+		digit_3.depth = -100;
+
+//	}
 }
 
+if (focus_attack){
+	focus_attack = false;
+	focus_armorbreak = true;
+}
+	
 // Turns opponents status effects off if Date Girl is in specific states
 with (hit_player){
 	

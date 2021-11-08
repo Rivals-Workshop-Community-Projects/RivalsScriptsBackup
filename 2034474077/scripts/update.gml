@@ -321,7 +321,7 @@ if ("enemykirby" in self && enemykirby != undefined) { //if kirby is in a match 
 
 //kill sound on galaxy
 with(oPlayer) if(activated_kill_effect) {
-    if(hit_player_obj == other && other.can_final_spark && (get_player_stocks(player) == 1 || (other.attack == AT_NSPECIAL_AIR && other.has_hit_player))){
+    if(hit_player_obj == other && other.can_final_spark && (get_player_stocks(player) == 1 || other.attack == AT_NSPECIAL_AIR) && other.has_hit_player){
         with(other){
             if(ballin){
                 sound_play(sound_get("sfx_ball_buzzer"));

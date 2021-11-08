@@ -686,37 +686,37 @@ if (taunt_pressed){
 
 //I LIVE AGAIN
 
-if get_gameplay_time() <= 120 && caleb == 0 and taunt_pressed && get_player_color(player) == 2{
-	caleb = 1
-	sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
-	sound_play(sound_get("I_live_again"));
-}
-if get_player_color(player) == 2{
-	set_victory_theme(sound_get("caleb_victory"));
-}
+//if get_gameplay_time() <= 120 && caleb == 0 and taunt_pressed && get_player_color(player) == 2{
+	//caleb = 1
+	//sound_play(asset_get("sfx_frog_fspecial_charge_gained_2"));
+	//sound_play(sound_get("I_live_again"));
+//}
+//if get_player_color(player) == 2{
+	//set_victory_theme(sound_get("caleb_victory"));
+//}
 
 //SERVANT OF THE CRYSTAL
 
-if get_gameplay_time() <= 120 && machina == 0 and taunt_pressed && get_player_color(player) == 12{
-	machina = 1
-	sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"));
-	sound_play(sound_get("machina_intro"));
-}
+//if get_gameplay_time() <= 120 && machina == 0 and taunt_pressed && get_player_color(player) == 12{
+	//machina = 1
+	//sound_play(asset_get("sfx_frog_fspecial_charge_gained_1"));
+	//sound_play(sound_get("machina_intro"));
+//}
 
-if get_player_color(player) == 12{
-	set_victory_theme(sound_get("machina_victory"));
-}
-if get_player_color(player) == 15{
-	set_victory_theme(sound_get("yuri_victory"));
-}
+//if get_player_color(player) == 12{
+	//set_victory_theme(sound_get("machina_victory"));
+//}
+//if get_player_color(player) == 15{
+	//set_victory_theme(sound_get("yuri_victory"));
+//}
 //----------------------------- //
 //CALEB SOUNDS
 
-if (state == PS_FIRST_JUMP)&&(state_timer==1) {
-    if (caleb == 1) {
-        sound_play(sound_get("JUMP"));
-    }
-}
+//if (state == PS_FIRST_JUMP)&&(state_timer==1) {
+    //if (caleb == 1) {
+        //sound_play(sound_get("JUMP"));
+    //}
+//}
 if(caleb==1)&&(state==14)&&(state_timer==80){
 		sound_play( sound_get("am_not_dead_yet"));
 }

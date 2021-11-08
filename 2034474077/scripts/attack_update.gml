@@ -210,8 +210,8 @@ switch (attack){
                 if (window_timer == 2 && free){
                     set_window_value(AT_FSPECIAL_1, 5, AG_WINDOW_TYPE, 7);
                     set_window_value(AT_FSPECIAL_1, 13, AG_WINDOW_TYPE, 7);
-                    set_hitbox_value(AT_FSPECIAL_1, 7, HG_ANGLE, 90);
-                    set_hitbox_value(AT_FSPECIAL_1, 7, HG_BASE_KNOCKBACK, 5);
+                    set_hitbox_value(AT_FSPECIAL_1, 7, HG_ANGLE, 95);
+                    set_hitbox_value(AT_FSPECIAL_1, 7, HG_BASE_KNOCKBACK, 4.5);
                 }
                 if(window_timer == 2 && runeB){
                     rage = get_player_damage(player);
@@ -652,13 +652,13 @@ switch (attack){
         if(window == 6 && multihit != noone){
             if(window_timer <= 5){
                 if((multihit.state == PS_HITSTUN || multihit.state == PS_HITSTUN_LAND)){
-                    multihit.x = ease_cubeIn(multihit.x, x, window_timer, window_timer + 5);
-                    multihit.y = ease_cubeOut(multihit.y, (y - 50), window_timer, window_timer + 5);
+                    multihit.x = ease_cubeOut(multihit.x, x, window_timer, window_timer + 5);
+                    multihit.y = ease_cubeIn(multihit.y, (y - 50), window_timer, window_timer + 5);
                 }
             }else if(window_timer > 5){
                 if((multihit.state == PS_HITSTUN || multihit.state == PS_HITSTUN_LAND)){
-                    multihit.x = ease_cubeOut(multihit.x, (x + 45 * spr_dir), window_timer - 5, 5);
-                    multihit.y = ease_cubeIn(multihit.y, (y - 1), window_timer - 5, 5);
+                    multihit.x = ease_cubeIn(multihit.x, (x + 45 * spr_dir), window_timer - 5, 5);
+                    multihit.y = ease_cubeOut(multihit.y, (y - 1), window_timer - 5, 5);
                 }
             }
         }

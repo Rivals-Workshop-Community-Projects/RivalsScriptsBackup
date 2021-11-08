@@ -2,19 +2,19 @@
 
 
 
-if get_player_color(player) == 2 and caleb == 1 && get_gameplay_time() <= 200{
-       draw_debug_text(temp_x,temp_y - 12,"I Live, AGAIN");
-}       
-if get_player_color(player) == 2 and caleb == 0 && get_gameplay_time() <= 120{
-       draw_debug_text(temp_x,temp_y - 30,"Press Taunt for voiced mode");
-}
+//if get_player_color(player) == 2 and caleb == 1 && get_gameplay_time() <= 200{
+       //draw_debug_text(temp_x,temp_y - 12,"I Live, AGAIN");
+//}       
+//if get_player_color(player) == 2 and caleb == 0 && get_gameplay_time() <= 120{
+       //draw_debug_text(temp_x,temp_y - 30,"Press Taunt for voiced mode");
+//}
 
-if get_player_color(player) == 12 and machina == 1 && get_gameplay_time() <= 200{
-       draw_debug_text(temp_x,temp_y - 12,"I'll protect Rem");
-}       
-if get_player_color(player) == 12 and machina == 0 && get_gameplay_time() <= 120{
-       draw_debug_text(temp_x,temp_y - 30,"Press Taunt for voiced mode");
-}
+//if get_player_color(player) == 12 and machina == 1 && get_gameplay_time() <= 200{
+       //draw_debug_text(temp_x,temp_y - 12,"I'll protect Rem");
+//}       
+//if get_player_color(player) == 12 and machina == 0 && get_gameplay_time() <= 120{
+       //draw_debug_text(temp_x,temp_y - 30,"Press Taunt for voiced mode");
+//}
 
 shader_start();
 // nspec

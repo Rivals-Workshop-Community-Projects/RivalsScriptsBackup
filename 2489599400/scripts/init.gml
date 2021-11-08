@@ -109,3 +109,11 @@ tapecool = 0;
 grabbed_player_obj = noone;    //the player object currently being grabbed.
 grabbed_player_relative_x = 0; //the relative x and y position of the grabbed player, at the point they were grabbed.
 grabbed_player_relative_y = 0;   //we store this coordinate to smoothly reposition the grabbed player later.
+
+//adventure
+pronouns = ["it","it","its","is"];
+am_is_experienced = true;
+am_is_evil = true;
+am_is_magic = true;
+am_is_construct = true;
+am_is_big = true;

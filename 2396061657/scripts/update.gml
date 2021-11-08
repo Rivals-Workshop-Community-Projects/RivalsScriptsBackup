@@ -2,6 +2,16 @@
 // Used for gameplay mechanics
 // Runs every frame
 
+if (!can_fireball){
+	can_fireball_timer++;
+	
+	if (can_fireball_timer >= 100){
+		can_fireball = true;
+		can_fireball_timer = 0;
+	}
+}
+
+
 if (LoveGained_Timer == 0){
 	
 	var a_gain = LoveGained div 100
@@ -63,6 +73,8 @@ if (LoveGained_Visual && LoveGained_Timer > 0){
 	LoveGained_Timer--;
 }
 
+/* 
+// Halloween Costume Code
 if (!costume_end && (get_player_color(player) == 25 || get_player_color(player) == 19)){
 	if (state_timer % 6 == 0) {
 		introTimer++;
@@ -72,6 +84,7 @@ if (!costume_end && (get_player_color(player) == 25 || get_player_color(player) 
 		costume_end = true;
 	}
 }
+*/
 
 if (get_training_cpu_action() == CPU_STAND && taunt_pressed && attack == AT_TAUNT) {
 	taunt_counter = 140
@@ -136,6 +149,7 @@ if (tsj_timer >= 60){
 		tsj_timer = 0;
 	}
 }
+
 
 // Gives Callie Armor during start up and dash of nspecial
 if (attack == AT_DSPECIAL && (window == 1 || window == 5) && !focus_armorbreak){
@@ -255,7 +269,7 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 	}
 }
 
-// Nspecial Dash Cancel Effect
+// Dspecial Dash Cancel Effect
 if (attack == AT_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && !hitpause){
 	if (window == 5 && window_timer % 3 == 0){
 		instance_create( x, y - 10 -  random_func( 2, 60, true ), "obj_article2");
@@ -471,6 +485,28 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 			// BowlingKing - alt color
 			if (!up_down && down_down && left_down && !right_down && shield_down && !attack_down && !special_down){
 				SecretColor = 8;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+		}
+		
+		if (get_player_color(player) == 25){ // Color 3 Secret Alt
+
+			// Riptide - alt color
+			if (up_down && !down_down && !left_down && !right_down && !shield_down && attack_down && !special_down){
+				SecretColor = 9;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}
+		}
+		
+		if (get_player_color(player) == 25){ // Color 3 Secret Alt
+
+			// Yshtola - alt color
+			if (!up_down && down_down && !left_down && !right_down && !shield_down && attack_down && !special_down){
+				SecretColor = 10;
 				ColorLock = 1;
 				ColorLocked = true;
 				init_shader();

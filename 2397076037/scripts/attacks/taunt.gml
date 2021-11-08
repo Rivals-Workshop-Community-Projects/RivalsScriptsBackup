@@ -24,7 +24,7 @@ set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAMES, 18);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAME_START, 37);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_SFX, sound_get("counterhit"));
-set_window_value(AT_TAUNT, 3, AG_WINDOW_SFX_FRAME, 1);
+set_window_value(AT_TAUNT, 3, AG_WINDOW_SFX_FRAME, 3);
 
 
 set_num_hitboxes(AT_TAUNT, 12);

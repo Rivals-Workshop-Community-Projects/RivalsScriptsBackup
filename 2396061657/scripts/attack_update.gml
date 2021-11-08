@@ -25,6 +25,110 @@ if (state == PS_ATTACK_GROUND){
 }
 */
 
+if (attack == AT_FTILT){
+
+	if (window == 1 && window_timer == 1){
+		set_hitbox_value(AT_FTILT, 2, HG_WINDOW, 200);	
+	}
+	if (can_fireball){
+		if (window == 1 && window_timer >= 6 && (attack_down || left_stick_down || right_stick_down) && LoveMeter >= 30 && can_fireball){
+			can_fireball = false;
+			set_hitbox_value(AT_FTILT, 2, HG_WINDOW, 2);
+			LoveMeter = LoveMeter - 30;
+			
+			if (LoveMeter > 0){
+				var digit_1 = noone;
+				digit_1 = instance_create(x - 12, y + 20, "obj_article2");
+				digit_1.state_timer = 2;
+				digit_1.state = 5;
+				digit_1.player_id = id;
+				digit_1.player = player;
+				digit_1.vsp = 1;
+				digit_1.sprite_index = sprite_get("callie_text");
+				digit_1.image_index = 1;
+				digit_1.image_speed = 0;
+				digit_1.depth = -100;
+				
+				var digit_2 = noone;
+				digit_2 = instance_create(x, y + 20, "obj_article2");
+				digit_2.state_timer = 2;
+				digit_2.state = 5;
+				digit_2.player_id = id;
+				digit_2.player = player;
+				digit_2.vsp = 1;
+				digit_2.sprite_index = sprite_get("callie_num");
+				digit_2.image_index = 3;
+				digit_2.image_speed = 0;
+				digit_2.depth = -100;
+
+				var digit_3 = noone;
+				digit_3 = instance_create(x + 12, y + 20, "obj_article2");
+				digit_3.state_timer = 2;
+				digit_3.state = 5;
+				digit_3.player_id = id;
+				digit_3.player = player;
+				digit_3.vsp = 1;
+				digit_3.sprite_index = sprite_get("callie_num");
+				digit_3.image_index = 0;
+				digit_3.image_speed = 0;
+				digit_3.depth = -100;
+			}
+		}
+	}
+}
+
+if (attack == AT_UTILT){
+
+	if (window == 1 && window_timer == 1){
+		set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 200);	
+	}
+	if (can_fireball){
+		if (window == 1 && window_timer >= 6 && (attack_down || up_stick_down) && LoveMeter >= 30 && can_fireball){
+			can_fireball = false;
+			set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 2);
+			LoveMeter = LoveMeter - 30;
+		
+			if (LoveMeter > 0){
+				var digit_1 = noone;
+				digit_1 = instance_create(x - 24, y + 20, "obj_article2");
+				digit_1.state_timer = 2;
+				digit_1.state = 5;
+				digit_1.player_id = id;
+				digit_1.player = player;
+				digit_1.vsp = 1;
+				digit_1.sprite_index = sprite_get("callie_text");
+				digit_1.image_index = 1;
+				digit_1.image_speed = 0;
+				digit_1.depth = -100;
+				
+				var digit_2 = noone;
+				digit_2 = instance_create(x - 12, y + 20, "obj_article2");
+				digit_2.state_timer = 2;
+				digit_2.state = 5;
+				digit_2.player_id = id;
+				digit_2.player = player;
+				digit_2.vsp = 1;
+				digit_2.sprite_index = sprite_get("callie_num");
+				digit_2.image_index = 3;
+				digit_2.image_speed = 0;
+				digit_2.depth = -100;
+
+				var digit_3 = noone;
+				digit_3 = instance_create(x, y + 20, "obj_article2");
+				digit_3.state_timer = 2;
+				digit_3.state = 5;
+				digit_3.player_id = id;
+				digit_3.player = player;
+				digit_3.vsp = 1;
+				digit_3.sprite_index = sprite_get("callie_num");
+				digit_3.image_index = 0;
+				digit_3.image_speed = 0;
+				digit_3.depth = -100;
+			}
+		}
+	}
+}
+
 if (attack == AT_USTRONG){
 	if (window == 3 || (window == 4 && window_timer < 6)){
 		hud_offset = 70;

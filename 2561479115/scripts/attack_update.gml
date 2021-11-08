@@ -68,11 +68,12 @@ switch (attack) {
 	        can_move = false;
 	        vsp *= 0.8;
 	        hsp *= 0.8;
-	        vsp += 0.1;
+	        grav = 0;
 	        can_shield = true;
 	    } else {
 	        can_wall_jump = true;
 	        can_shield = false;
+	        grav = gravity_speed;
 	    }
 	    
 	    if (window == 2 && window_timer == 1) {
@@ -139,7 +140,7 @@ switch (attack) {
 		if window == 6 {
 			can_fast_fall = true;
 			if !free {
-				landing_lag_time = floor( get_window_value(attack,window,AG_WINDOW_LENGTH)*(1+(0.5*(get_window_value(attack,window,AG_WINDOW_HAS_WHIFFLAG)&&has_hit)) ));
+				landing_lag_time = floor( get_window_value(attack,window,AG_WINDOW_LENGTH)*(1+(0.5*(get_window_value(attack,window,AG_WINDOW_HAS_WHIFFLAG)&&!has_hit)) ));
 				landing_lag_time -= window_timer-2;
 				set_state(!was_parried?PS_LANDING_LAG:PS_PRATLAND);
 				
@@ -235,6 +236,17 @@ switch (attack) {
 	break;
 }
 
+if (attack == AT_JAB) {
+    if (right_down-left_down == -spr_dir && down_down-up_down == 0 && !has_hit && !has_hit_player) {
+        if get_window_value(attack,window,AG_WINDOW_CANCEL_TYPE) != 0 {
+	        set_window_value(attack,window,AG_WINDOW_CANCEL_TYPE, 0);
+	        set_window_value(attack,window,AG_WINDOW_GOTO, 24);
+        }
+    } else {
+    	reset_window_value(attack,window,AG_WINDOW_CANCEL_TYPE);
+    	reset_window_value(attack,window,AG_WINDOW_GOTO);
+    }
+}
 
 //#region Roke Text Easter Egg
 if (attack == AT_TAUNT && state_timer == 1 && down_down && get_match_setting(SET_PRACTICE)) {

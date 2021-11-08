@@ -54,6 +54,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_GRAVITY, 0.4);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, 0);
+set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
 
 //SPD-T: Self-Propelling Drone - Targeting
 //'One of three basic drone models available to agents, the SPD-T is a godsend to those who require precision.

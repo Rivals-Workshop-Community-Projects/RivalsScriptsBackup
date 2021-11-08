@@ -665,7 +665,7 @@ if attack == AT_TAUNT {
         
         exheld = -1
         
-            if window_timer == 1 {
+            if window_timer == 4 {
               sound_play(sound_get("intro"))    
             }
             

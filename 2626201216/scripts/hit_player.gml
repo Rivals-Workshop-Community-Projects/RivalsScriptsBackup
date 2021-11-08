@@ -20,3 +20,10 @@ if (attack == AT_USTRONG)
 {
     sound_play(asset_get("sfx_blow_heavy1"));
 }
+
+if (get_player_color(player) == 9 &&  random_func( 0, 20, true) = 9)
+{
+
+spawn_hit_fx(hit_player_obj.x,hit_player_obj.y,jerma_hit);
+sound_play(sound_get("sus"));
+}

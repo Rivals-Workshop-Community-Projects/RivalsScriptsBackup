@@ -1,3 +1,5 @@
+
+
 //articleX_init - runs once, when the article is created. Template by Muno
 
 //Sprite and direction
@@ -80,3 +82,5 @@ max = "n"
 
 max_covered = 0;
 min_covered = 0;
+
+size = 30;

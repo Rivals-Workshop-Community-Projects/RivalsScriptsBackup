@@ -64,6 +64,8 @@ sprite_change_offset("phone_open", 32, 64);
 sprite_change_offset("plat", 64, 94);
 
 
+sprite_change_offset("jerma_hit", 42, 32);
+
 sprite_change_offset("nspecial_proj", 64, 94);
 sprite_change_offset("banana", 84, 209);
 sprite_change_offset("banana_speen", 84, 209);
@@ -79,9 +81,9 @@ sprite_change_offset("watersplash_mask", 7, 29);
 sprite_change_offset("debugwater", 7, 29);
 sprite_change_offset("debugwater_mask", 7, 29);
 sprite_change_offset("puddle", 7, 14);
-sprite_change_offset("puddle_alt", 15, 14);
-sprite_change_offset("puddle_mask", 7, 14);
-sprite_change_offset("puddle_electric", 7, 46);
+sprite_change_offset("puddle_alt", 36, 14);
+sprite_change_offset("puddle_mask", 28, 14);
+sprite_change_offset("puddle_electric", 28, 46);
 sprite_change_offset("puddle_fade", 7, 14);
 sprite_change_offset("puddle_spawn", 7, 14);
 sprite_change_offset("puddle_edge", 7, 14);

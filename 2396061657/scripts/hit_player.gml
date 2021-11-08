@@ -11,13 +11,13 @@ if (attack != AT_NTHROW && attack != AT_DTHROW && attack != AT_UTHROW && attack 
 }
 
 // checks to see if user hit Callie then they adopt the hitpause of their move instead of Callie Fspecial
-if (attack == AT_FSPECIAL && state == PS_HITSTUN){
+if (my_hitboxID.attack == AT_FSPECIAL && state == PS_HITSTUN){
 	with(hit_player){
 		hitstop = other.hitstop;
 	}
 }
 
-if (attack == AT_DSPECIAL){
+if (my_hitboxID.attack == AT_DSPECIAL){
 	should_crumple = true;
 	crumple_timer = 0;
 	crumple_x = hit_player_obj.x;
@@ -27,7 +27,7 @@ if (attack == AT_DSPECIAL){
 }
 
 // Does all the fancy code to define when Date Girl lands a grab
-if (attack == AT_FSPECIAL && state != PS_HITSTUN){
+if (my_hitboxID.attack == AT_FSPECIAL && state != PS_HITSTUN){
 	other.isThorn = false;
 	other.isRibbon = false;
 	other.isBalloon = false;

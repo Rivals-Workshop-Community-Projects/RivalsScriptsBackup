@@ -2,6 +2,10 @@ user_event(11);
 
 draw_set_font(asset_get("tinyFont"));
 
+//draw_text_ext_transformed(temp_x+120, temp_y-34,string(offset), 0, 40 , 1.25 , 1.25, 0);
+//draw_text_ext_transformed(temp_x+150, temp_y-34,string(distance), 0, 40 , 1.25 , 1.25, 0);
+//draw_text_ext_transformed(temp_x+180, temp_y-34,string(difference), 0, 40 , 1.25 , 1.25, 0);
+
 if ("temp_min_x" in self && "temp_max_x" in self)
 {
 

@@ -66,14 +66,21 @@ if attack == AT_BAIR and window == 1 and window_timer == 8  {
 
 }
 
-if attack == AT_UAIR and window == 1 and window_timer == 9  {
+if attack == AT_UAIR and window == 2 and window_timer == 4  {
 	
     sound_play(sound_get("swingw1"),false,noone, .7 , .76)
 }
 
-if attack == AT_UAIR && has_hit_player && window <= 3 && hit_player_obj.state_cat == SC_HITSTUN && hitpause{
-		hit_player_obj.y += floor(((y - 30) - hit_player_obj.y) / 8)
-		hit_player_obj.x += floor(((x) - hit_player_obj.x) / 8)
+
+if attack == AT_USTRONG and window == 2 and window_timer == 2  {
+	
+    sound_play(sound_get("swingw1"),false,noone, .9 , .8)
+}
+
+
+if attack == AT_UAIR && has_hit_player && window <= 2 && hit_player_obj.state_cat == SC_HITSTUN && hitpause{
+		hit_player_obj.y += floor(((y - 30) - hit_player_obj.y) / 5)
+		hit_player_obj.x += floor(((x) - hit_player_obj.x) / 5)
 }
 
 
@@ -168,6 +175,10 @@ if window == 2 && window_timer % 3 = 0 {
     hsp /= 3
     vsp = -12
 	set_state (PS_PRATFALL)	
+	}
+	
+	if window > 3 && window < 10{
+		hitstop = 0
 	}
 	
 	if window <= 2 && has_hit_player {
@@ -593,6 +604,7 @@ if window == 1 && window_timer == 3 && !hitpause {
 
 if attack == AT_DAIR {
 	
+	hsp /= 1.1
 
 if window == 8 {
 
@@ -622,10 +634,7 @@ if window == 1 && window_timer == 10 && !hitpause {
 
 if window > 1 && window <= 3 {
 	vsp = 16
-	if down_down {
-		fall_through = true
-	}
-	
+
 	if y > room_height/2 + 250 && window > 1 && state_timer > 30{
 		
 		if jump_pressed or shield_pressed {
@@ -643,9 +652,9 @@ if window > 1 && window <= 3 {
 	}
 	
 	  if !free {
-	  	hsp = 3*spr_dir
 	  	shake_camera(2,2)
-    	sound_play(asset_get("sfx_ori_stomp_hit"),false,noone,0.7);
+    	sound_play(asset_get("sfx_ori_stomp_hit"),false,noone,0.5);
+    	sound_play(sound_get("slice"),false,noone,1.2,0.8);
       }
 }
 

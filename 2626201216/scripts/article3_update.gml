@@ -15,6 +15,8 @@
 
 */
 
+
+
 //Sprite and animation handling
 
 //Make time progress
@@ -52,9 +54,12 @@ if (sprite_index != sprite[state] || mask_index != mask[state])
 
 if (state == 0){ //Dissapear Check
 
-move_snap(15, 1);
+    x = round(x);
+    y = round(y);
 
-            if (   place_meeting(x,y+8,asset_get("par_block")) == 0 && place_meeting(x,y+4,asset_get("par_jumpthrough")) == 0  )
+//move_snap(30, 1);
+
+    if (   place_meeting(x,y+8,asset_get("par_block")) == 0 && place_meeting(x,y+4,asset_get("par_jumpthrough")) == 0 && place_meeting(x,y+4,obj_stage_article_solid) == 0 && place_meeting(x,y+4,obj_stage_article_platform) == 0 )
     {
            setState(2);
     }
@@ -86,6 +91,15 @@ move_snap(15, 1);
         setState(1);
     }
 
+
+}
+
+if (state = 0)
+{
+            call_recheck();
+
+        //spawn_hit_fx(x,y, player_id.puddle_spawn);
+        setState(1);
 }
 
 if (state == 1 || state = 5){ //Attack
@@ -95,9 +109,9 @@ if (state == 1 || state = 5){ //Attack
     if (death_timer = 980)
     {
                 //DETERMINING EDGES
-            min_covered = check_spot(-8, obj_article3);
+            min_covered = check_spot(-16, obj_article3);
         
-            max_covered = check_spot(8, obj_article3);
+            max_covered = check_spot(16, obj_article3);
 
             edge = 0;
             edge_state = 0;
@@ -150,56 +164,6 @@ if (state == 1 || state = 5){ //Attack
         }
     }
     
-    //ALL CODE FOR SLIPPING
-
-
-    if (69 = 420) //HOW????? 
-    {
-    slipped = instance_place(x, y, oPlayer);                        //assigns the variable slipped to anyone touching it (will this break in ffa?)
-
-    if (slipped != noone )                    //if slipped is another player
-    {
-        with(slipped)  
-        {
-            if ("one_time_slip" in self && one_time_slip != noone)   //if a variable called one_time_slip is in the opponent and is not -4, change walk speed
-            {
-                dash_speed      = 15;
-                walk_speed      = 10;		// 3    -  4.5
-                walk_accel      = 3;		// 0.2  -  0.5
-                ground_friction = -4;		// 0.3  -  1
-            }
-            else                                                     //this code runs once only if one_time_slip isn't there
-            {
-                if (ground_friction != -4)                                //if dash speed isn't abnormal, set the current dash_speed as their original
-                {
-                //other.old_dash_speed = dash_speed;               
-                //other.old_walk_speed = walk_speed;
-                other.old_walk_accel = walk_accel;
-                other.old_ground_friction = ground_friction;
-                }                                                   
-                one_time_slip = 0;                                  //set one_time_slip to something to make the first condition true so it'll be set
-                other.old_slipped = other.slipped;                     
-            }
-            
-            
-        }
-    }
-
-    }
-    
-    
-
-
-
-    if (69 = 420)
-    {
-
-    }
-
-    if (slipped != old_slipped && old_slipped != noone)
-    {
-        reset_slip();
-    }
     
     //Check if it's mid air
 
@@ -214,82 +178,6 @@ if (state == 1 || state = 5){ //Attack
     }
 
 
-
-    //ALL CODE FOR RECHECKING GOES HERE
-    //( (    y < (rechecking_y + 5)    ) ||   ( y > (rechecking_y - 5)   )      ) 
-//rechecking_collision()
-    if (69 = 420)
-    {       
-
-
-
-
-
-
-
-
-        //CHECKING FOR CONNECTIONS
-
-        if (edge = 1)
-        {
-            if (edge_state = 1)
-            {
-                if ( check_spot(20, obj_article3) )
-                {
-                    edge = 2;
-                }
-            }
-            if (edge_state = 2)
-            {
-                if ( check_spot(-20, obj_article3) )
-                {
-                    edge = 2;
-                }
-            }
-        }
-
-
-
-        //SPAWNING CONNECTOR
-
-        if (edge = 2)
-        {
-            temp_id = instance_create(x + 15, y,  "obj_article3");
-            temp_id.self_id = temp_id;
-            temp_id.death_timer = death_timer;
-            temp_id = instance_create(x + 30, y,  "obj_article3");
-            temp_id.self_id = temp_id;
-            temp_id.death_timer = death_timer;
-            call_recheck();
-        }
-
-        
-
-        rechecking = 0;
-
-
-    }
-
-    //RECHECKING CODE OVER
-
-        //Changing Frames
-if (69 = 420)
-{
-    if (edge_state = 1)
-    {
-        //sprite_index = sprite_get("puddle_edge");
-    }
-    if (edge_state = 2)
-    {
-        //sprite_index = sprite_get("puddle_edge2");
-    }
-    if (edge_state = 3)
-    {
-        //sprite_index = sprite_get("puddle_edge3");
-    }
-
-}
-
         //ded
 
     if (death_timer < 0)
@@ -302,6 +190,9 @@ if (69 = 420)
 }
 
 if (state == 2){ //Dying
+
+        instance_destroy();
+        exit; //Stops execution of the script
 
       if (state_timer > 20)
       {
@@ -316,23 +207,20 @@ if (state == 2){ //Dying
             }
         }
         call_recheck();
-        instance_destroy();
-        exit; //Stops execution of the script
       }
     
-}
-
-if (state == 3){ //You can add more of these for as many states as you want
-    //Behavior goes here or whatever
 }
 
 if (state = 8)
 {
 
+    
+
     if (marked_for_electricity && player_id.was_parried && player_id.attack == AT_USPECIAL)
     {
         setState(2);
     }
+
 
     if (state_timer = 1)
     {
@@ -340,6 +228,7 @@ if (state = 8)
         hitbox_timer = 0;
     }
 
+    
     hitbox_timer++;
 
     if (hitbox_timer > 9)
@@ -347,6 +236,7 @@ if (state = 8)
         create_hitbox( AT_FSPECIAL, 1, x, y);
         hitbox_timer = 0;
     }
+
 
     if (state_timer > 100)
     {
@@ -377,6 +267,8 @@ else
 
 
 exist_timer++;
+
+
 
 #define setState(new_state) //This custom function makes it easier to switch states. You can't use it outside of articleX_update.gml; if you want to do this from the player's update.gml or something, just copy the contents of this to the with statement.
 
@@ -439,12 +331,15 @@ state_timer = 0;
 
 #define call_recheck()
 
+if (69 = 420)
+{
     with(player_id)
     {
             article_type = 3;
     temp_id = instance_create(other.x, other.y+10, "obj_article1");
 
     }
+}
 
 //                player_id.rechecking = 1;
 //                player_id.rechecking_y = y;

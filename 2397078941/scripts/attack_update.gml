@@ -65,6 +65,7 @@ set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, 0.7);
     	can_wall_jump = true
 
     if window == 2 && has_hit_player {
+    	move_cooldown[AT_USPECIAL] = 60
     	has_walljump = true
     	set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 1);
 		window = 4
@@ -806,8 +807,8 @@ if attack == AT_DATTACK {
     if has_hit && window == 4 {
     	window_timer += 1
     }
-    if window == 2 {
-    	hsp /= 1.01
+    if window > 2 {
+    	hsp /= 1.1
     }
 }
 

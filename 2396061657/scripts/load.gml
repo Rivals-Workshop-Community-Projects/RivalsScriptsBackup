@@ -9,6 +9,8 @@ sprite_change_offset("display", 0, 45);
 sprite_change_offset("recharged", 25, 68);
 sprite_change_offset("grabrecharged", 41, 41);
 
+sprite_change_offset("callie_fireball", 30, 16);
+
 sprite_change_offset("crouch_hurtbox", 20, 70);
 sprite_change_offset("date_logo",  65, 65);
 sprite_change_offset("stage_logo",  65, 65);
@@ -47,15 +49,15 @@ sprite_change_offset("tech", 24, 74);
 
 sprite_change_offset("jab", 38, 82);
 sprite_change_offset("dattack", 50, 118);
-sprite_change_offset("ftilt", 50, 118);
+sprite_change_offset("ftilt", 30, 72);
 sprite_change_offset("dtilt", 30, 98);
-sprite_change_offset("utilt", 26, 112);
+sprite_change_offset("utilt", 30, 100);
 sprite_change_offset("nair", 74, 100);
 sprite_change_offset("fair", 70, 100);
 sprite_change_offset("bair", 60, 90);
-sprite_change_offset("uair", 50, 108);
+sprite_change_offset("uair", 88, 148);
 sprite_change_offset("dair", 50, 98);
-sprite_change_offset("fstrong", 50, 118);
+sprite_change_offset("fstrong", 70, 118);
 sprite_change_offset("ustrong", 32, 140);
 sprite_change_offset("dstrong", 74, 118);
 sprite_change_offset("nspecial", 40, 84);

@@ -3,6 +3,7 @@ sprite_change_offset("crouch", 136, 158);
 sprite_change_offset("walk", 136, 158);
 sprite_change_offset("walkturn", 136, 158);
 
+sprite_change_offset("smallfunnyslashfx", 200, 3);
 
 sprite_change_offset("dash", 136, 158);
 

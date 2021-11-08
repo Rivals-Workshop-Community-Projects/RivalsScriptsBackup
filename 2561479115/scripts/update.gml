@@ -160,6 +160,7 @@ if (ds_list_size(roke_dstrong_targets) > 0) {
     else
         ds_list_clear(roke_dstrong_targets);
 }
+
 #define p_process()
 //process particles. everything here should be self explanatory.
 var i = 0;

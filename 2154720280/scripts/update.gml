@@ -297,16 +297,18 @@ if coindrop > 0 && !hitpause{
 
 if get_player_color(player) == 12 {
 	
-if get_gameplay_time() < 5 {
+if get_gameplay_time() < 5 &&  get_gameplay_time() > 2{
 	set_attack (AT_EXTRA_3)
 	supply = 6
 	set_victory_theme(sound_get("taunt"));
 }
 
 } else {
-	if get_gameplay_time() == 2 {
+	
+	if get_gameplay_time() == 4 {
      visible = false 
 	 sound_play(asset_get("sfx_holy_tablet"));
+	 sound_play(asset_get("sfx_holy_tablet_appear"));
 	}
 	
 	if get_gameplay_time() == 2 {

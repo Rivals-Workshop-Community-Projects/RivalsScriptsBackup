@@ -37,9 +37,17 @@ else if (get_player_color(player) == 8)
 {
     css_image = sprite_get("charselect9");
 }
+else if (get_player_color(player) == 9)
+{
+    css_image = sprite_get("charselect10");
+}
 
 
 charselect_frame += 0.1;
+if (get_player_color(player) == 9)
+{
+    charselect_frame += 0.1;
+}
 draw_sprite(css_image, charselect_frame, x + 8, y + 8);
 
 if "alt_cur" in self alt_cur_old = alt_cur;

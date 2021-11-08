@@ -99,6 +99,7 @@ ustrong_thunder2 = hit_fx_create(sprite_get("ustrong_thunder2"), 17);
 
 noclip = hit_fx_create(sprite_get("noclip"), 0);
 
+jerma_hit = hit_fx_create(sprite_get("jerma_hit"), 30);
 
 //VFX VARIABLES
 

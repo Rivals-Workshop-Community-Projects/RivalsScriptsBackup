@@ -37,8 +37,8 @@ set_window_value(AT_BAIR, 4, AG_WINDOW_SFX, asset_get("sfx_clairen_hit_med"));
 
 set_window_value(AT_BAIR, 5, AG_WINDOW_TYPE, 2);
 set_window_value(AT_BAIR, 5, AG_WINDOW_LENGTH, 5);
-set_window_value(AT_BAIR, 5, AG_WINDOW_HSPEED, -7);
-set_window_value(AT_BAIR, 5, AG_WINDOW_VSPEED, -4);
+set_window_value(AT_BAIR, 5, AG_WINDOW_HSPEED, -5);
+set_window_value(AT_BAIR, 5, AG_WINDOW_VSPEED, -3);
 set_window_value(AT_BAIR, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_BAIR, 5, AG_WINDOW_ANIM_FRAME_START, 6);
 
@@ -103,8 +103,8 @@ set_hitbox_value(atk, hboxnum, HG_DAMAGE, 10);
 set_hitbox_value(atk, hboxnum, HG_ANGLE, 40);
 set_hitbox_value(atk, hboxnum, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(atk, hboxnum, HG_KNOCKBACK_SCALING, 0.8);
-set_hitbox_value(atk, hboxnum, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(atk, hboxnum, HG_HITPAUSE_SCALING, .25);
+set_hitbox_value(atk, hboxnum, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(atk, hboxnum, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(atk, hboxnum, HG_VISUAL_EFFECT_X_OFFSET, -32);
 set_hitbox_value(atk, hboxnum, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(atk, hboxnum, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));

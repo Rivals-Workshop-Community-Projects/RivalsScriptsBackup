@@ -1,3 +1,6 @@
+
+
+
 //articleX_init - runs once, when the article is created. Template by Muno
 
 //Sprite and direction
@@ -34,7 +37,7 @@ sprite[3] = sprite_get("puddle_electric");
 sprite[4] = sprite_get("article_idle");
 sprite[5] = sprite_get("puddle_edge");
 sprite[6] = sprite_get("article_idle");
-sprite[7] = sprite_get("article_idle");
+sprite[7] = sprite_get("puddle_fade");
 sprite[8] = sprite_get("puddle_electric");
 sprite[9] = sprite_get("article_idle");
 
@@ -46,7 +49,7 @@ mask[3] = sprite_get("article_idle");
 mask[4] = sprite_get("article_idle");
 mask[5] = sprite_get("puddle_mask");
 mask[6] = sprite_get("article_idle");
-mask[7] = sprite_get("article_idle");
+mask[7] = sprite_get("puddle_mask");
 mask[8] = sprite_get("puddle_mask");
 mask[9] = sprite_get("article_idle");
 

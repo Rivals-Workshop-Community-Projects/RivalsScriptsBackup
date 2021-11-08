@@ -73,6 +73,7 @@ if nodispenser {
 	if (attack == AT_UTILT){
 		set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 5);
 		set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 4); //the joke that used to be here has been ruined
+															//and on top of that i've forgotten what joke was even here
 		
 		set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 5);
 		set_hitbox_value(AT_UTILT, 1, HG_HEIGHT, 68);
@@ -111,8 +112,8 @@ if nodispenser {
 		set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 50);
 		set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 40);
 		set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 70);
-		set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 7);
-		set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .65);		
+		set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 6);
+		set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .55);		
 		
 		set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 20);
 		set_hitbox_value(AT_FAIR, 2, HG_HITBOX_Y, -68);
@@ -126,8 +127,8 @@ if nodispenser {
 	if (attack == AT_UAIR){
 		set_attack_value(AT_UAIR, AG_LANDING_LAG, 7);
 		
-		set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 7);
-		set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 5);
+		set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 6);
+		set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 4);
 		
 		set_window_value(AT_UAIR, 3, AG_WINDOW_LENGTH, 5);
 		set_window_value(AT_UAIR, 4, AG_WINDOW_LENGTH, 6);
@@ -135,10 +136,11 @@ if nodispenser {
 		set_hitbox_value(AT_UAIR, 1, HG_HITBOX_Y, -78);
 		set_hitbox_value(AT_UAIR, 1, HG_WIDTH, 80);
 		set_hitbox_value(AT_UAIR, 1, HG_HEIGHT, 56);
-		set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 6);
+		set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 5);
 		set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 7);	
-		set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .55);
-		set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 7);
+		set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .45);
+		set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, .35);
+		set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 6);
 	}
 } else { //Reset attacks
 
@@ -210,6 +212,7 @@ if nodispenser {
 		reset_hitbox_value(AT_UAIR, 1, HG_DAMAGE);
 		reset_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK);	
 		reset_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING);
+		reset_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING);
 		reset_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE);
 }
 

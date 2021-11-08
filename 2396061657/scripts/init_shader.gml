@@ -187,6 +187,46 @@ if ("ColorLocked" in self && ColorLocked){
 			set_article_color_slot( 6, 158, 145, 102 ); //Leggy 1
 			set_article_color_slot( 7, 254, 254, 254 ); //Leggy 2
 		break;	
+		case 9:
+			// Riptide
+			set_character_color_slot( 0, 242, 228, 214 ); //Hair Bottom
+			set_character_color_slot( 1, 209, 90, 1 ); //Shirt
+			set_character_color_slot( 2, 1, 198, 216 ); //Tie/Hoodie
+			set_character_color_slot( 3, 12, 25, 58 ); //Skirt
+			set_character_color_slot( 4, 1, 198, 216 ); //Eyes
+			set_character_color_slot( 5, 230, 166, 126 ); //Skin
+			set_character_color_slot( 6, 12, 25, 58 ); //Leggy 1
+			set_character_color_slot( 7, 12, 25, 58 ); //Leggy 2
+			
+			set_article_color_slot( 0, 242, 228, 214 ); //Hair Bottom
+			set_article_color_slot( 1, 209, 90, 1 ); //Shirt
+			set_article_color_slot( 2, 1, 198, 216 ); //Tie/Hoodie
+			set_article_color_slot( 3, 12, 25, 58 ); //Skirt
+			set_article_color_slot( 4, 1, 198, 216 ); //Eyes
+			set_article_color_slot( 5, 230, 166, 126 ); //Skin
+			set_article_color_slot( 6, 12, 25, 58 ); //Leggy 1
+			set_article_color_slot( 7, 12, 25, 58 ); //Leggy 2
+		break;	
+		case 10:
+			// Y'shtola
+			set_character_color_slot( 0, 228, 228, 232 ); //Hair Bottom
+			set_character_color_slot( 1, 59, 33, 41 ); //Shirt
+			set_character_color_slot( 2, 54, 193, 192 ); //Tie/Hoodie
+			set_character_color_slot( 3, 59, 33, 41 ); //Skirt
+			set_character_color_slot( 4, 188, 188, 232 ); //Eyes
+			set_character_color_slot( 5, 255, 204, 167 ); //Skin
+			set_character_color_slot( 6, 27, 25, 26 ); //Leggy 1
+			set_character_color_slot( 7, 27, 25, 26 ); //Leggy 2
+
+			set_article_color_slot( 0, 228, 228, 232 ); //Hair Bottom
+			set_article_color_slot( 1, 59, 33, 41 ); //Shirt
+			set_article_color_slot( 2, 54, 193, 192 ); //Tie/Hoodie
+			set_article_color_slot( 3, 59, 33, 41 ); //Skirt
+			set_article_color_slot( 4, 188, 188, 232 ); //Eyes
+			set_article_color_slot( 5, 255, 204, 167 ); //Skin
+			set_article_color_slot( 6, 27, 25, 26 ); //Leggy 1
+			set_article_color_slot( 7, 27, 25, 26 ); //Leggy 2
+		break;	
 		case 200:
 			// ThinkEyes
 			set_character_color_slot( 0, 255, 221, 28 ); //Hair Bottom
@@ -373,4 +413,16 @@ set_color_profile_slot( 25, 4, 1, 198, 216 ); //Eyes
 set_color_profile_slot( 25, 5, 230, 166, 126 ); //Skin
 set_color_profile_slot( 25, 6, 12, 25, 58 ); //Leggy 1
 set_color_profile_slot( 25, 7, 12, 25, 58 ); //Leggy 2
+*/
+
+/*
+// Y'shtola
+set_color_profile_slot( 25, 0, 228, 228, 232 ); //Hair Bottom
+set_color_profile_slot( 25, 1, 59, 33, 41 ); //Shirt
+set_color_profile_slot( 25, 2, 54, 193, 192 ); //Tie/Hoodie
+set_color_profile_slot( 25, 3, 59, 33, 41 ); //Skirt
+set_color_profile_slot( 25, 4, 188, 188, 232 ); //Eyes
+set_color_profile_slot( 25, 5, 255, 204, 167 ); //Skin
+set_color_profile_slot( 25, 6, 27, 25, 26 ); //Leggy 1
+set_color_profile_slot( 25, 7, 27, 25, 26 ); //Leggy 2
 */

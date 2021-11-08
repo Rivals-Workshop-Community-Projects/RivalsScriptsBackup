@@ -176,7 +176,7 @@ if (attack == AT_DSTRONG)
 
         if (strong_charge > 4 && (strong_charge mod 10) == 0)
         {
-            create_hitbox(AT_DSTRONG, 2, x, y);
+            //create_hitbox(AT_DSTRONG, 2, x, y);
         }
     }
     if (window = 3)

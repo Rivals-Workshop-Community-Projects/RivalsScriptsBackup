@@ -49,3 +49,5 @@ if state == clamp(state,5,6) {
 }
 
 */
+
+//gpu_set_colorwriteenable(false,false,false,true)

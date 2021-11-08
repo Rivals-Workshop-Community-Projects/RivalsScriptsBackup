@@ -1,4 +1,6 @@
 //registry check :)
+//gpu_set_colorwriteenable(true,true,true,true)
+
 if "beacon" in self {
     if t_active {
         draw_set_alpha(t_shade/15);

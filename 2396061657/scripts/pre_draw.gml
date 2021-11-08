@@ -9,7 +9,8 @@ with (obj_article1){ // Draws the outline of the heart during the first state (W
 	}
 }
 
-
+/*
+// Halloween Costume Code
 if (((state != PS_SPAWN && state != PS_IDLE) && costume_destroy) || is_destroying_costume){
 
 	if (costume_temp_x == 0){
@@ -33,6 +34,7 @@ if (((state != PS_SPAWN && state != PS_IDLE) && costume_destroy) || is_destroyin
 		}
 	}
 }
+*/
 
 /*
 if (should_crumple && crumple_timer < 7){

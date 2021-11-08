@@ -4,8 +4,6 @@
 //}
 
 
- sound_play(sound_get("slices"),false,noone,.5 + my_hitboxID.damage/15 , 2.5 - min((hitstop*hitstop)/150 , 1.2) )
-
 
 if my_hitboxID.damage >= 1 {
 move_cooldown[AT_EXTRA_3] = hitstop
@@ -127,6 +125,7 @@ if (my_hitboxID.attack == AT_UAIR) && uairhit == 0 && halo < 6 {
 if (my_hitboxID.attack == AT_USTRONG) {
 	 halotimer = 180; 
 	 halo += 1  
+	 sound_play(sound_get("RI"),false,noone, .8,1.12)
 }
 
 if (my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 1) {
@@ -184,19 +183,3 @@ if halo < 6 {
  halo += 1    
  halotimer = 180; 
 } 
-
-if my_hitboxID.type == 1 {
-   
-   if hitstop > 15 {
-   	 hit_player_obj.hitstop += 1
-   	 hitstop += 1
-   }
-   
-
-   
-   if hitstop > 5 {
-   	 hit_player_obj.hitstop += 1
-   	 hitstop += 1
-   }	
-	
-}

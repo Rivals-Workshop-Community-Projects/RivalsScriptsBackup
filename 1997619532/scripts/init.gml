@@ -24,6 +24,10 @@ omega = 0
 svsp = 0
 shsp = 0
 
+
+hit_player_event = 11
+
+
 overt = 600
 stabt = 0;
 hitflash = false
@@ -47,8 +51,8 @@ walk_speed = 4;
 walk_accel = .6;
 walk_turn_time = 10;
 initial_dash_time = 5;
-initial_dash_speed = 7.5;
-dash_speed = 7.5;
+initial_dash_speed = 6.5;
+dash_speed = 6.5;
 dash_turn_time = 4;
 dash_turn_accel = 0.1;
 dash_stop_time = 6;
@@ -61,21 +65,21 @@ jump_speed = 13;
 jump_frames = 8;
 short_hop_speed = 7.5;
 djump_speed = 13;
-leave_ground_max = 4; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 4; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
+leave_ground_max = 5; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = 0.33;
 prat_fall_accel = 1; //multiplier of air_accel while in pratfall
-air_friction = .055;
+air_friction = .044;
 max_djumps = 1;
 double_jump_time = 34; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 4;
 walljump_vsp = 10;
 walljump_time = 20;
 wall_frames = 2; //anim frames before you leave the wall
-max_fall = 9; //maximum fall speed without fastfalling
-fast_fall = 13; //fast fall speed
+max_fall = 8; //maximum fall speed without fastfalling
+fast_fall = 14; //fast fall speed
 gravity_speed = .65;
 hitstun_grav = .5;
 knockback_adj = 1.10; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
@@ -152,7 +156,7 @@ sprite_change_offset("slash3", 50, 50);
 slash4 = hit_fx_create( sprite_get( "slash4" ), 12 );
 sprite_change_offset("slash4", 50, 50);
 
-auram = hit_fx_create( sprite_get( "aura" ), 8 );
+auram = hit_fx_create( sprite_get( "aura" ), 6 );
 sprite_change_offset("aura", 48, 92);
 
 
