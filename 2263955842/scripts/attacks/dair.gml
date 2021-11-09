@@ -9,7 +9,7 @@ set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_DAIR, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
-set_window_value(AT_DAIR, 1, AG_WINDOW_SFX_FRAME, 9);
+set_window_value(AT_DAIR, 1, AG_WINDOW_SFX_FRAME, 10);
 
 set_window_value(AT_DAIR, 2, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_DAIR, 2, AG_WINDOW_ANIM_FRAMES, 3);
@@ -71,7 +71,7 @@ set_hitbox_value(AT_DAIR, 3, HG_HEIGHT, 33);
 set_hitbox_value(AT_DAIR, 3, HG_PRIORITY, 1);
 set_hitbox_value(AT_DAIR, 3, HG_DAMAGE, 4);
 set_hitbox_value(AT_DAIR, 3, HG_ANGLE, 90);
-set_hitbox_value(AT_DAIR, 3, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_DAIR, 3, HG_BASE_KNOCKBACK, 5);
 set_hitbox_value(AT_DAIR, 3, HG_KNOCKBACK_SCALING, 0.5);
 set_hitbox_value(AT_DAIR, 3, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_DAIR, 3, HG_HITPAUSE_SCALING, 0.4);

@@ -3,6 +3,8 @@
 // Used for animation purposes such as changing the 
 // character’s sprite_index and image_index.
 
+/*
+// Slime Alt Stuff, retired for now
 if (attack == AT_TAUNT && state == PS_ATTACK_GROUND && death_chime_sound){
 	suppress_stage_music(0, 0.1);
 }
@@ -144,3 +146,5 @@ if object_index != oPlayer && object_index != oTestPlayer {
 return _ssnksprites.skin_active != -1;
 
 //COPY END
+
+*/

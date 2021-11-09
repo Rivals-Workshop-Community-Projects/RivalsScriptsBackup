@@ -3,9 +3,11 @@ shader_start();
 //Offscreen
 with pHitBox {
 	if (player_id == other.id && attack == AT_NSPECIAL && type == 2 && kb_angle != 270 && !(hbox_num > 7 && hbox_num < 12)) {
+		if "uspecialNum" in self {
 		if uspecialNum != 0 {
 			draw_sprite_ext(other.ballOffSprite, uspecialShape , uspecialHudX,  uspecialHudY, 1, 1, uspecialRot, other.hud_color, 1)
 			draw_sprite_ext(other.ballOffSpriteTwo, 0, uspecialHudX,  uspecialHudY, 1, 1, 0, c_white, 1)
+		}
 		}
 	}
 }
@@ -175,15 +177,30 @@ if sagemode == 6  && (!attacking or (attacking && attack != AT_USPECIAL) or (att
 
 }
 
-if state == PS_AIR_DODGE {
-    if state_timer % 4 <= 1 {
-        draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, 1, 0, -1, 0.6)
+if state == PS_WAVELAND  {
+	draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, 1, 0, -1, 1)
+}
+
+if state == PS_ATTACK_AIR && attack == AT_EXTRA_3 {
+	    if state_timer % 4 <= 1 {
+        draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, 1, 0, -1, 0.4)
             draw_sprite_ext(sprite_index, image_index, x - shsp*3, y - svsp*3, spr_dir, 1, 0, -1, 0.2)
     }
     
   if state_timer % 4 > 1 {
-            draw_sprite_ext(sprite_index, image_index, x - shsp*2, y - svsp*2, spr_dir, 1, 0, -1, 0.6)
+            draw_sprite_ext(sprite_index, image_index, x - shsp*2, y - svsp*2, spr_dir, 1, 0, -1, 0.3)
     }
+    
+	  gpu_set_blendmode(bm_add);
+    if state_timer % 4 <= 1 {
+        draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, 1, 0, -1, 0.6)
+            draw_sprite_ext(sprite_index, image_index, x - shsp*3, y - svsp*3, spr_dir, 1, 0, -1, 0.1)
+    }
+    
+  if state_timer % 4 > 1 {
+            draw_sprite_ext(sprite_index, image_index, x - shsp*2, y - svsp*2, spr_dir, 1, 0, -1, 0.3)
+    }
+      gpu_set_blendmode(bm_normal);
 }
 
 if attacking && attack == AT_USPECIAL && window == 3 && get_gameplay_time() % 2 == 0 && window_timer < 12{
@@ -263,6 +280,8 @@ if get_player_color(player) == 12 && move_cooldown[AT_NSPECIAL_2] < 80 {
 
   gpu_set_blendmode(bm_normal);
 }
+
+
 }
 
      

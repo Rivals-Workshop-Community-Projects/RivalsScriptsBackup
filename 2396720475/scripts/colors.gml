@@ -99,10 +99,10 @@ set_color_profile_slot( 13, 2, 25, 197, 243 ); //Needle
 set_color_profile_slot( 13, 3, 169, 107, 170 ); //Box
 
 // Event Tomo
-set_color_profile_slot( 14, 0, 212, 51, 78 ); //Body
-set_color_profile_slot( 14, 1, 88, 252, 104 ); //Leaf
-set_color_profile_slot( 14, 2, 225, 233, 246 ); //Needle
-set_color_profile_slot( 14, 3, 206, 154, 52 ); //Box
+set_color_profile_slot( 14, 0, 204, 79, 41 ); //Body
+set_color_profile_slot( 14, 1, 16, 40, 89 ); //Leaf
+set_color_profile_slot( 14, 2, 212, 203, 17 ); //Needle
+set_color_profile_slot( 14, 3, 145, 17, 46 ); //Box
 
 // VaporMo
 set_color_profile_slot( 15, 0, 216, 62, 219 ); //Body

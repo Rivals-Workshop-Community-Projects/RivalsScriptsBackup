@@ -19,7 +19,19 @@ if ("needleplatform" in self && instance_exists(needleplatform) && needleplatfor
 }
 
 if (attack == AT_FSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)){
-	
+
+		if (chargedash >= 40 || (window >= 5 && window < 6)){ // Strong
+			draw_sprite_ext(sprite_get("fspecial"), -1, x - (25 * spr_dir), y, spr_dir, 1, 0, c_white, 0.5);		
+		}
+		if (chargedash >= 20 || (window >= 4 && window < 6)){ // Medium
+			draw_sprite_ext(sprite_get("fspecial"), -1, x - (18 * spr_dir), y, spr_dir, 1, 0, c_white, 0.5);		
+		}
+		if (chargedash >= 1 || (window >= 3 && window < 6)){ // Weak
+			draw_sprite_ext(sprite_get("fspecial"), -1, x - (10 * spr_dir), y, spr_dir, 1, 0, c_white, 0.5);		
+		}
+		
+/* 
+	// old slime costume code	
 	if (get_player_color(player) != 14){
 		if (chargedash >= 40 || (window >= 5 && window < 6)){ // Strong
 			draw_sprite_ext(sprite_get("fspecial"), -1, x - (25 * spr_dir), y, spr_dir, 1, 0, c_white, 0.5);		
@@ -41,7 +53,8 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AI
 		if (chargedash >= 1 || (window >= 3 && window < 6)){ // Weak
 			draw_sprite_ext(sprite_get("slime_fspecial"), -1, x - (10 * spr_dir), y, spr_dir, 1, 0, c_white, 0.5);		
 		}
-		}
+	}
+*/
 }
 
 // Tomo Super Jump Visual
@@ -72,6 +85,8 @@ if (state == PS_RESPAWN){
 }
 shader_end();
 
+/*
+// Halloween Costume
 if (((state != PS_SPAWN && state != PS_IDLE) && costume_destroy) || is_destroying_costume){
 
 	if (costume_temp_x == 0){
@@ -95,3 +110,4 @@ if (((state != PS_SPAWN && state != PS_IDLE) && costume_destroy) || is_destroyin
 		}
 	}
 }
+*/

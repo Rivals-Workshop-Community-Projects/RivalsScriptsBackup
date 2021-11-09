@@ -53,7 +53,7 @@ if nfloat > 4 && !STRONGPLEZ{
         }
 }
 
-if nfloat > 4 && STRONGPLEZ{
+if nfloat > 4 && STRONGPLEZ && hhh > 0 {
         switch attack{
             
             case AT_NAIR:
@@ -97,7 +97,7 @@ switch attack {
 
  case AT_TAUNT :
  
-    can_jump = true
+   
     
 	move_cooldown[AT_TAUNT] = 5
 	
@@ -105,6 +105,54 @@ switch attack {
 
 
 
+   if window == 10 {
+   	
+   	print(state_timer)	
+   	if state_timer < 151 {	
+   		
+   		can_jump = true
+   		can_shield = true
+   		
+   		if state_timer % 20 == 0 or state_timer == 2 {
+   			state_timer += 2
+   			sound_play(asset_get("sfx_coin_collect"),false,noone,1, max(.5,state_timer/100));
+   		}
+   		
+       spawn_hit_fx( famix + 20 - random_func(3, 40, true) , famiy  - 400 +  random_func(4, 800, true) , hpar2)
+      spawn_hit_fx( famix + 20 - random_func(1, 40, true) , famiy  - 400 + random_func(2, 800, true) , hpar3)	
+   	}
+  
+   		if window_timer == 47 {
+   			window_timer = 21
+   				sound_play(sound_get("tauntloop"),false,noone,1,1.2);
+   		}
+   		
+   		
+   		
+   		if state_timer == 151 {
+   			
+   			if window_timer < 47 {
+   				window_timer = 49
+   			}
+   			//sound_play(asset_get("sfx_absa_kickhit"),false,noone,1,1.2);
+   			sound_play(sound_get("glitch6"),false,noone,1);
+             move_cooldown[AT_EXTRA_1] = 32
+                with (pHitBox) {
+             	if player_id == other.id {
+             		if attack == AT_EXTRA_1 {
+                         destroyed = 1
+             		}
+                 }
+                }
+   		}
+   	
+   	
+   	
+   } else {
+   
+
+    can_jump = true
+    
    if window <= 2 {
 	nctimer += 1
 	
@@ -283,7 +331,7 @@ switch attack {
     
       }
       }
-      
+   }
  break;
  
 
@@ -808,7 +856,7 @@ case AT_UAIR :
   	
   	if has_hit_player && window == 3 && window_timer < 13 && hitpause {
   		hit_player_obj.x += floor((x - hit_player_obj.x) / 12)
-  		hit_player_obj.y += floor((y - 90 - hit_player_obj.y) / 7)
+  		hit_player_obj.y += floor((y - 90 - hit_player_obj.y) / 5)
   	}
   	
   	if window == 1 {
@@ -991,6 +1039,7 @@ if window > 2 {
 	famix += floor(((x-30*spr_dir)-famix)/4)
     famiy += floor((y-56-famiy)/4)
 }	
+
 nfloat = 0
     if  move_cooldown[AT_EXTRA_1] == 0 && window == 1 && window_timer == 1{
     	set_attack (AT_EXTRA_1)
@@ -1021,7 +1070,7 @@ nfloat = 0
   
     if has_hit_player && window == 3 && window_timer < 15 && hitpause && hit_player_obj.state_cat == SC_HITSTUN{
   		hit_player_obj.x += floor((x + 20*spr_dir - hit_player_obj.x) / 4)
-  		hit_player_obj.y += floor((y - 20 - hit_player_obj.y) / 4)
+  		hit_player_obj.y += floor((y - 20 - hit_player_obj.y) / 2)
   	}
   	
   if window == 1 && window_timer == 2 && !hitpause{
@@ -1035,6 +1084,15 @@ nfloat = 0
   if window == 1 && window_timer == 15 {
   	x = famix
   	y = famiy
+  }
+  
+  if window == 3  {
+  	if up_down {
+  	y -= 2
+  	}
+  	if down_down {
+  	y += 2	
+  	}
   }
   
   if window == 2 && window_timer == 1 && !hitpause{
@@ -1060,7 +1118,11 @@ nfloat = 0
   		  move_cooldown[AT_USPECIAL_GROUND] = 20
   	}
   	
+  	if window < 4 {
   	vsp = 0
+  	} else {
+  	vsp /= 1.5	
+  	}
   	can_move = false
   	can_wall_jump = true
   	hsp /= 1.08
@@ -1100,7 +1162,9 @@ nfloat = 0
   if down_down {	
   fall_through = true
   }
+  
   can_fast_fall = false
+  
   if window == 1 {
   vsp /= 2
   hsp /= 2
@@ -1156,6 +1220,13 @@ nfloat = 0
   		vsp -= 0.4
   	}
   	
+  	if window == 4 && !has_hit {
+  		prat_land_time = 12;
+  		set_state(PS_PRATFALL)
+  		state_timer = 1
+  		vsp = -4
+    }
+    
   	if !free && window > 2{
   		prat_land_time = 15;
   		set_state(PS_PRATFALL)
@@ -1455,6 +1526,7 @@ if window == 3 {
 if window == 4 && window_timer == 1 {
 		sound_stop(cur_sound)
 	if state_timer <= 60 {
+		move_cooldown[AT_FSTRONG] = 90
 		spawn_hit_fx(x + 30*spr_dir,y - 40,305)
 		create_hitbox(AT_FSTRONG,1,x + 30*spr_dir ,y - 40)
 		shake_camera(4,10)
@@ -1466,6 +1538,7 @@ if window == 4 && window_timer == 1 {
 	}
 	
 	if state_timer > 60 && state_timer < 119 {
+		move_cooldown[AT_FSTRONG] = 160
 		spawn_hit_fx(x + 610*spr_dir,y - 46, fstrong2)
 		spawn_hit_fx(x ,y - 40, fxslash1)
 		shake_camera(6,10)
@@ -1482,7 +1555,7 @@ if window == 4 && window_timer == 1 {
 	if state_timer >= 119 {
 		
 		state_timer = 300
-		
+		move_cooldown[AT_FSTRONG] = 210
 		spawn_hit_fx(x + 620*spr_dir,y - 46, fstrong3)
 		spawn_hit_fx(x ,y - 40, fxslash1)
 		spawn_hit_fx(x ,y - 40, lighten)

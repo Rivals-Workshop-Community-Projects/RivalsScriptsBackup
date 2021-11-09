@@ -13,6 +13,7 @@ GrappleMode = 0;
 
 can_fireball = false;
 can_fireball_timer = 0;
+can_fireball_destroy = hit_fx_create( sprite_get("callie_fireball_hitfx"), 20)
 
 LoveMeter = 0;
 LoveStorage = 0;

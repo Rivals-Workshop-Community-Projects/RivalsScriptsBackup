@@ -10,6 +10,7 @@ sprite_change_offset("recharged", 25, 68);
 sprite_change_offset("grabrecharged", 41, 41);
 
 sprite_change_offset("callie_fireball", 30, 16);
+sprite_change_offset("callie_fireball_hitfx", 26, 20);
 
 sprite_change_offset("crouch_hurtbox", 20, 70);
 sprite_change_offset("date_logo",  65, 65);

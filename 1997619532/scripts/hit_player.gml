@@ -4,7 +4,104 @@
 //}
 
 
- sound_play(sound_get("slices"),false,noone,.5 + my_hitboxID.damage/15 , 2.5 - min((hitstop*hitstop)/150 , 1.2) )
+if get_player_color(player) != 4 && get_player_color(player) != 15 && get_player_color(player) != 8 && get_player_color(player) != 17 {
+ sound_play(sound_get("slices"),false,noone,.5 + my_hitboxID.damage/15 , 2.5 - min((hitstop*hitstop)/120 , 1.2) )
+} else {
+	
+	if get_player_color(player) == 4 {
+		 sound_play(asset_get("sfx_waterhit_heavy2"),false,noone,.5 + my_hitboxID.damage/15 , 2 - min((hitstop*hitstop)/120 , 1.5) )
+		 sound_play(asset_get("sfx_waterhit_medium"),false,noone,.5 + my_hitboxID.damage/15)
+		 
+		 if my_hitboxID.type == 2 {
+         esMnum = floor(hit_player_obj.hitstop)
+		 }
+	}
+	
+	if get_player_color(player) == 17 {
+		mixellev1 = (1 - random_func(1,100,true)/50)/5
+		mixellev2 = (1 - random_func(2,100,true)/50)/5
+		
+		sound_stop(sound_get("slice"))
+		sound_stop(sound_get("slicel"))
+		
+
+		 
+		 if my_hitboxID.kb_scale >= .6 {
+		 	sound_play(asset_get("sfx_blow_medium3") )
+		 } else {
+		 	sound_play(asset_get("sfx_blow_medium2")) 
+	
+		 }
+		 
+	}
+	
+	
+	if get_player_color(player) == 15 {
+		sound_stop(sound_get("slice"))
+		sound_stop(sound_get("slicel"))
+		  
+		 sound_play(asset_get("sfx_blow_medium3"),false,noone,.4 + my_hitboxID.damage/15 , 2 - min((hit_player_obj.hitstop*hit_player_obj.hitstop)/120 , 1.2) )
+		
+		
+		 sound_play(asset_get("sfx_waterhit_medium"),false,noone,.6 + my_hitboxID.damage/15)
+		 
+		 
+		 if my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_USTRONG or my_hitboxID.attack == AT_DSTRONG {
+		    if 	my_hitboxID.damage > 5 {
+		    			 sound_play(sound_get("cheese"),false,noone,.8)
+		
+		    }
+		 } 
+		 
+		 if my_hitboxID.kb_scale >= .6 {
+		 	sound_play(asset_get("sfx_blow_heavy2"),false,noone,.4 + my_hitboxID.damage/15 , 2 - min((hit_player_obj.hitstop*hit_player_obj.hitstop)/150 , 1.4) )
+		 }
+		 
+		 if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 8 {
+		 	sound_play(sound_get("cheese"),false,noone,.8)
+		 }
+		 if my_hitboxID.attack == AT_EXTRA_2 && my_hitboxID.hbox_num == 6 {
+		 	sound_play(sound_get("cheese"),false,noone,.8)
+		 }
+		 
+	}
+	
+	
+	if get_player_color(player) == 8 {
+
+
+		 sound_play(sound_get("hmed"),false,noone,.4 + my_hitboxID.damage/15 , 2 - min((hit_player_obj.hitstop*hit_player_obj.hitstop)/120 , 1.2) )
+		
+		
+		 if my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_USTRONG or my_hitboxID.attack == AT_DSTRONG {
+		    if 	my_hitboxID.damage > 5 {
+		    	sound_stop(sound_get("hmed"))
+		    		 sound_play(sound_get("hstrong"),false,noone,.4 + my_hitboxID.damage/15 , 2 - min((hit_player_obj.hitstop*hit_player_obj.hitstop)/120 , 1.2) )
+	 
+		
+		    }
+		 } 
+		 
+		 if my_hitboxID.kb_scale >= .6 {
+		 	sound_stop(sound_get("hmed"))	
+		   sound_play(sound_get("hstrong"),false,noone,.5 + my_hitboxID.damage/15 , 2 - min((hit_player_obj.hitstop*hit_player_obj.hitstop)/150 , 1.2) )
+	     }
+		 
+		 if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 8 {
+		 	sound_stop(sound_get("hmed"))
+	   sound_play(sound_get("hcine"),false,noone,.4 + my_hitboxID.damage/15 , 2 - min((hit_player_obj.hitstop*hit_player_obj.hitstop)/150 , 1.2) )
+	  
+		 }
+		    if my_hitboxID.attack == AT_EXTRA_2 && my_hitboxID.hbox_num == 6 {
+		    	sound_stop(sound_get("hmed"))
+		   sound_play(sound_get("hcine"),false,noone,.4 + my_hitboxID.damage/15 , 2 - min((hit_player_obj.hitstop*hit_player_obj.hitstop)/150 , 1.2) )
+	  
+		 }
+		 
+	}
+	
+	
+}
 
 
 if my_hitboxID.damage >= 1 {

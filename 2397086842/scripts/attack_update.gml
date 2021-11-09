@@ -3,6 +3,36 @@ if (attack == AT_USPECIAL || attack == AT_NSPECIAL || attack == AT_FSPECIAL ){
     trigger_b_reverse();
 }
 
+if attack == AT_EXTRA_3 {
+    
+    has_airdodge = false
+    can_fast_fall = false
+    
+    if !free {
+        state = PS_WAVELAND
+        state_timer = 1
+        sound_play(asset_get("sfx_waveland_zet"))
+        invincible = false
+        invince_time = 0
+    }
+    
+    if state_timer <= 5 {
+
+    } else if state_timer > 10 {
+    	can_attack = true
+    }
+    
+    if state_timer < 12 {
+    	vsp -= 0.4
+		if state_timer > 1 {
+		hsp = 7*spr_dir
+		}
+		
+
+	}
+	
+
+}
 
 /// 
 
@@ -193,9 +223,30 @@ if !hitpause {
     
     
     if attack == AT_FAIR{
+    	if window == 1 {
+    		set_attack_value(AT_FAIR, AG_LANDING_LAG, 4);
+    	} else {
+    		set_attack_value(AT_FAIR, AG_LANDING_LAG, 8);
+    	}
         if window == 2 && window_timer == 1 {
             sound_play(asset_get("sfx_swipe_heavy2"))
         }
+    }
+    
+    if attack == AT_BAIR{
+    	if window == 1 {
+    		set_attack_value(AT_BAIR, AG_LANDING_LAG, 4);
+    	} else {
+    		set_attack_value(AT_BAIR, AG_LANDING_LAG, 8);
+    	}
+    }
+    
+    if attack == AT_DAIR{
+    	if window == 1 {
+    		set_attack_value(AT_DAIR, AG_LANDING_LAG, 4);
+    	} else {
+    		set_attack_value(AT_DAIR, AG_LANDING_LAG, 8);
+    	}
     }
     
     if attack == AT_DATTACK {

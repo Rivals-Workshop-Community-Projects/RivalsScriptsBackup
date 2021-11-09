@@ -186,6 +186,16 @@ set_color_profile_slot( 15, 5, 35, 67, 49 ); //BELT
 set_color_profile_slot( 15, 6, 167, 186, 74 );//LITTLE YELLOW BOW
 set_color_profile_slot( 15, 7, 134, 192, 108 ); //PINK
 
+// Sakuya Izayoi
+set_color_profile_slot( 16, 0, 24, 56, 136 ); //DRESS + SLEEVES (light)
+set_color_profile_slot( 16, 1, 255, 255, 255 ); //BOW (light)
+set_color_profile_slot( 16, 2, 209, 207, 206 ); //HAIR (light)
+set_color_profile_slot( 16, 3, 255, 215, 198 ); //SKIN (light)
+set_color_profile_slot( 16, 4, 146, 132, 161 ); //EYES (light)
+set_color_profile_slot( 16, 5, 35, 179, 103 ); //BELT
+set_color_profile_slot( 16, 6, 32, 32, 32 ); //LITTLE YELLOW BOW
+set_color_profile_slot( 16, 7, 188, 188, 188 ); //PINK
+
 /* Alts that shall be forgoten :'(
 set_color_profile_slot(11, 0, 37,77,143); //DRESS + SLEEVES (light)
 set_color_profile_slot(11, 1, 188,51,44); //BOW (light)

@@ -16,6 +16,7 @@ if (taunt_down && attack == AT_EXTRA_1 && state == PS_ATTACK_GROUND && window ==
 	window_timer = 1;
 }
 
+/*
 // Slime Taunt
 if (attack == AT_TAUNT){
 	if (get_player_color(player) == 14){
@@ -36,6 +37,7 @@ if (attack == AT_TAUNT){
 		}
 	}
 }
+*/
 
 if (attack == AT_EXTRA_2 && state == PS_ATTACK_GROUND && window == 1 && window_timer == 4){
 	
@@ -53,7 +55,8 @@ if (attack == AT_EXTRA_2 && state == PS_ATTACK_GROUND && window == 1 && window_t
 	}
 	
 	if (down_down){ // Doo
-		sound_play(sound_get("moyai_start"));
+		sound_play(asset_get("sfx_frog_croak"));
+//		sound_play(sound_get("moyai_start"));
 		window = 2;
 		window_timer = 1;
 	}
@@ -62,7 +65,8 @@ if (attack == AT_EXTRA_2 && state == PS_ATTACK_GROUND && window == 1 && window_t
 		attack = AT_EXTRA_3;
 		window = 2;
 		window_timer = 1;
-		sound_play(sound_get("moyai_shout"));
+		sound_play(asset_get("sfx_bird_screech"));
+//		sound_play(sound_get("moyai_shout"));
 	}
 	
 	/*
@@ -74,18 +78,30 @@ if (attack == AT_EXTRA_2 && state == PS_ATTACK_GROUND && window == 1 && window_t
 
 if (attack == AT_EXTRA_2 && down_down && window = 2 && window_timer == 6){
 	window_timer = 5;
-	if (yai_hold_sound == 27){
+	if (yai_hold_sound == 20){
 		yai_hold_sound = 0;
 	}
+	
+	if (yai_hold_sound == 0){
+		//sound_play(sound_get("tomo_voice"));
+		sound_play(asset_get("sfx_frog_dspecial_swallow"));
+	}
+/*
 	if (yai_hold_sound == 0){
 		sound_play(sound_get("moyai_hold"));
 	}
+*/
 	yai_hold_sound++;
 }
 
 if (attack == AT_EXTRA_2  && window = 2 && window_timer == 8){
+	sound_stop(asset_get("sfx_frog_dspecial_swallow"));
+	sound_play(asset_get("sfx_frog_dspecial_spit"));
+/*
+// Moyai
 	sound_stop(sound_get("moyai_hold"));
 	sound_play(sound_get("moyai_end"));
+*/
 }
 
 if ((attack == AT_EXTRA_2 || attack == AT_EXTRA_3) && state == PS_ATTACK_GROUND && window == 2 && window_timer == 12){
@@ -157,7 +173,7 @@ if (attack == AT_DSPECIAL){
 			movingbox.initial_spawn = true;
 			movingbox.hitfxowner = id;
 			
-			if (get_player_color(player) == 12 || get_player_color(player) == 14 || get_player_color(player) == 10 || get_player_color(player) == 1 || SecretColor == 2 || SecretColor == 3){
+			if (get_player_color(player) == 12 || get_player_color(player) == 14 || get_player_color(player) == 10 || get_player_color(player) == 1 || SecretColor == 2 || SecretColor == 4){
 				flag_destroy = false;
 				movingbox.flag = true;
 			}
@@ -264,28 +280,17 @@ if (attack == AT_NSPECIAL){
 	move_cooldown[AT_NSPECIAL] = 30;
 	if (window == 1){
 
-		if (get_player_color(player) == 14){
-			set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("slime_nspecial_air"));
-			set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("slime_nspecial_ground"));
-		}
-		else {
-			set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_air"));
-			set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_ground"));	
-		}
+		set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_air"));
+		set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_ground"));	
 			
 		set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 6);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 3);
 			
 		if (special_down) { // Charge Shot
 			if (window_timer == 9 && chargespike == 20){
-				if (get_player_color(player) == 14){
-					set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("slime_tomochungus"));
-					set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("slime_tomochungus"));
-				}
-				else {
-					set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("tomochungus"));
-					set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("tomochungus"));
-				}
+				set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("tomochungus"));
+				set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("tomochungus"));
+				
 				set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 3);
 				set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 6);
 				window = 2;

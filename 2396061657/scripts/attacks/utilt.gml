@@ -75,12 +75,12 @@ set_hitbox_value(AT_UTILT, 2, HG_HIT_SFX, sound_get("proj_hit"));
 set_hitbox_value(AT_UTILT, 2, HG_PROJECTILE_HSPEED, 3.5);
 set_hitbox_value(AT_UTILT, 2, HG_PROJECTILE_VSPEED, -3.25);
 
-set_hitbox_value(AT_UTILT, 2, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_UTILT, 2, HG_PROJECTILE_DESTROY_EFFECT, can_fireball_destroy);
 
 set_hitbox_value(AT_UTILT, 2, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_UTILT, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_UTILT, 2, HG_PROJECTILE_PLASMA_SAFE, 0);
-set_hitbox_value(AT_UTILT, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_UTILT, 2, HG_PROJECTILE_IS_TRANSCENDENT, 0);
 set_hitbox_value(AT_UTILT, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 0);
 set_hitbox_value(AT_UTILT, 2, HG_PROJECTILE_UNBASHABLE, 0);
 set_hitbox_value(AT_UTILT, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);

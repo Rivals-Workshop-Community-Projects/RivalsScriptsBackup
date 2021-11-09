@@ -149,7 +149,7 @@ land_sound = asset_get("sfx_jumpground");
 landing_lag_sound = asset_get("sfx_land_light");
 jump_sound = asset_get("sfx_jumpair");
 djump_sound = asset_get("sfx_jumpair");
-air_dodge_sound = asset_get("sfx_bird_sidespecial_start");
+air_dodge_sound = asset_get("sfx_quick_dodge");
 
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;

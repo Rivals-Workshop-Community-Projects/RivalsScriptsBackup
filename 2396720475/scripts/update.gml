@@ -2,7 +2,8 @@
 // Used for gameplay mechanics
 // Runs every frame
 
-
+/*
+// Halloween
 if (!costume_end && (get_player_color(player) == 8 || get_player_color(player) == 14)){
 	if (state_timer % 6 == 0) {
 		introTimer++;
@@ -13,11 +14,11 @@ if (!costume_end && (get_player_color(player) == 8 || get_player_color(player) =
 	}
 }
 
-
 if (get_player_color(player) == 14 && state == PS_SPAWN && state_timer < 10){
 	set_victory_sidebar( sprite_get( "slime_result_small" ));
 	set_victory_portrait( sprite_get( "slime_portrait" ));
 }
+*/
 
 if (trailer_effect){
 	spawn_hit_fx(Box.x + 6, Box.y, hit_small1);
@@ -475,7 +476,7 @@ if (instance_exists(movingbox) && movingbox.destroy && movingbox.solid_timer == 
 		if (get_player_color(player) == 15){
 			Box.sprite_index = sprite_get("moff");
 		}
-		if (get_player_color(player) == 12 || get_player_color(player) == 14 || get_player_color(player) == 10 || get_player_color(player) == 1 || SecretColor == 2 || SecretColor == 3){
+		if (get_player_color(player) == 12 || get_player_color(player) == 14 || get_player_color(player) == 10 || get_player_color(player) == 1 || SecretColor == 2 || SecretColor == 3 || SecretColor == 4){
 			Box.flag = false;
 		}		
 		if (movingbox.flag){		
@@ -562,7 +563,19 @@ if (state == PS_SPAWN || was_reloaded){ // Checks if start of match or practice 
 				ColorLocked = true;
 				init_shader();
 			}			
+		}	
+		
+		if (get_player_color(player) == 1){ // Color 1 Blueberry Secret Alt
+
+			// Slime - Alt color Shield + Down + Jump
+			if (!up_down && down_down && !left_down && !right_down && shield_down && !attack_down && !special_down){
+				SecretColor = 4;
+				ColorLock = 1;
+				ColorLocked = true;
+				init_shader();
+			}			
 		}		
+			
 		
 		if (ColorLocked){
 			sound_play(asset_get("mfx_confirm"));

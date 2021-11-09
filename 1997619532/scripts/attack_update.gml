@@ -8,6 +8,14 @@ if (attack == AT_NSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL || a
  if (state_timer == 1 or (window == 1 && window_timer == 1)) && !hitpause && get_gameplay_time() > 120 {
       sound_play(sound_get("swingw1"),false,noone, .5 ,
         max ( 0.5, 1.6 - ((get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) + (get_window_value(attack, 2, AG_WINDOW_LENGTH)/20)) - (random_func(1,10,true))/100 ))
+      
+      
+      if get_player_color(player) == 8 {
+      	      sound_play(sound_get("Cslash"),false,noone, 1 ,
+        min( 1.2, max ( 0.8, 1.8 - ((get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) + (get_window_value(attack, 2, AG_WINDOW_LENGTH)/20)) - (random_func(1,10,true))/100 ))
+      )
+      }
+       
        //sound_play(asset_get("sfx_swipe_heavy2"),false,noone, .8 ,
        //max( 0.9, .5 + get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) - (random_func(1,10,true))/100 )
  }  
@@ -160,7 +168,7 @@ if window == 2 && window_timer % 3 = 0 {
     if window == 1 && window_timer == 1 {
     	
     		var halodeact = spawn_hit_fx( x - (10 * spr_dir) , y - 50 , 305 )
-    		halodeact.depth = -1000
+    		halodeact.depth = 1
     		
     		if get_player_color(player) == 5 && sakura == 1 {
 			 spawn_hit_fx( x - 10 * spr_dir, y - 30, shit5 )
@@ -246,7 +254,7 @@ if attack == AT_EXTRA_2 {
     if window == 1 && window_timer == 1 {
     		shake_camera(6,6)
     		var halodeact = spawn_hit_fx( x - (10 * spr_dir) , y - 50 , 305 )
-    		halodeact.depth = -1000
+    		halodeact.depth = 1
     	
     }
     
@@ -455,7 +463,12 @@ if window > 2{
 	
 	can_wall_jump = true
 	
-}	
+} else {
+	if window_timer < 5 {
+	hsp /= 1.2
+	}
+}
+
 	if window == 1 && halo >= 6{
         hurtboxID.sprite_index = get_attack_value(AT_EXTRA_2, AG_HURTBOX_SPRITE);
       	set_attack (AT_EXTRA_2) 
@@ -537,6 +550,9 @@ if attack == AT_DSPECIAL {
 
 if attack == AT_NSPECIAL {
 
+ if state_timer < 5 {
+ 	if right_down - left_down != 0 spr_dir = right_down - left_down
+ }
 move_cooldown[AT_NSPECIAL] = 30
 
 if window_timer == 1 && window == 1 {
@@ -558,7 +574,7 @@ if window_timer == 1 && window == 1 {
 	if window == 1 && halo >= 6{
 		sound_play(sound_get("SpaceCutB"));
 		var halodeact = spawn_hit_fx( x - (10 * spr_dir) , y - 50 , 305 )
-    		halodeact.depth = -1000
+    		halodeact.depth = 1
 		window = 3
 		halo = 0    	
 			shake_camera(6,6)

@@ -4,6 +4,12 @@ introtimer = -1
 
 superMove = 14
 
+if get_player_color(player) == 17 {
+    
+    mixellev1 = 0
+    mixellev2 = 0
+}
+
 hurtbox_spr = asset_get("ex_guy_hurt_box");
 crouchbox_spr = sprite_get("crouch_box");
 air_hurtbox_spr = -1;

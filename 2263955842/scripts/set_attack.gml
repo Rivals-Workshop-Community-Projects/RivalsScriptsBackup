@@ -30,19 +30,19 @@ if (attack == AT_FSPECIAL)
     
     for (var i = 2; i < 6; i += 1)
     {
-        switch(fspe_stall)
+        switch(fspe_stall + 1)
         {
             case 1:
-                //set_window_value(AT_FSPECIAL, i, AG_WINDOW_VSPEED_TYPE, 1);
-                //set_window_value(AT_FSPECIAL, i, AG_WINDOW_CUSTOM_GRAVITY, 1);
+                set_window_value(AT_FSPECIAL, i, AG_WINDOW_VSPEED_TYPE, 1);
+                set_window_value(AT_FSPECIAL, i, AG_WINDOW_CUSTOM_GRAVITY, 1);
             break;
             case 2:
-                //set_window_value(AT_FSPECIAL, i, AG_WINDOW_VSPEED_TYPE, 0);
-                //set_window_value(AT_FSPECIAL, i, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
+                set_window_value(AT_FSPECIAL, i, AG_WINDOW_VSPEED_TYPE, 0);
+                set_window_value(AT_FSPECIAL, i, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
             break;
             case 3:
-                //set_window_value(AT_FSPECIAL, i, AG_WINDOW_VSPEED_TYPE, 0);
-                //set_window_value(AT_FSPECIAL, i, AG_WINDOW_CUSTOM_GRAVITY, 0.2);
+                set_window_value(AT_FSPECIAL, i, AG_WINDOW_VSPEED_TYPE, 0);
+                set_window_value(AT_FSPECIAL, i, AG_WINDOW_CUSTOM_GRAVITY, 0.2);
             break;
         }
     }
@@ -86,8 +86,6 @@ if (attack == AT_NSPECIAL_2)
 }
 
 
-// MunoPhone
-user_event(13);
 
 
 

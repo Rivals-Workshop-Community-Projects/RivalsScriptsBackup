@@ -357,3 +357,38 @@ set_hitbox_value(AT_EXTRA_2, 9, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_EXTRA_2, 9, HG_HITBOX_GROUP, 1);
 
 
+
+set_hitbox_value(AT_EXTRA_2, 11, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_EXTRA_2, 11, HG_WINDOW, 2);
+set_hitbox_value(AT_EXTRA_2, 11, HG_WINDOW_CREATION_FRAME, 1);
+set_hitbox_value(AT_EXTRA_2, 11, HG_LIFETIME, 60);
+set_hitbox_value(AT_EXTRA_2, 11, HG_HITBOX_X, -12 - 30);
+set_hitbox_value(AT_EXTRA_2, 11, HG_HITBOX_Y, -5);
+set_hitbox_value(AT_EXTRA_2, 11, HG_PRIORITY, 3);
+set_hitbox_value(AT_EXTRA_2, 11, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_EXTRA_2, 11, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+set_hitbox_value(AT_EXTRA_2, 11, HG_PROJECTILE_SPRITE, sprite_get("esM"));
+set_hitbox_value(AT_EXTRA_2, 11, HG_PROJECTILE_AIR_FRICTION, 0.03);
+set_hitbox_value(AT_EXTRA_2, 11, HG_PROJECTILE_HSPEED, 0);
+set_hitbox_value(AT_EXTRA_2, 11, HG_PROJECTILE_VSPEED, -8);
+set_hitbox_value(AT_EXTRA_2, 11, HG_PROJECTILE_GRAVITY, 0.4);
+set_hitbox_value(AT_EXTRA_2, 11, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_EXTRA_2, 11, HG_PROJECTILE_ANIM_SPEED, 0.55);
+set_hitbox_value(AT_EXTRA_2, 11, HG_PROJECTILE_DESTROY_EFFECT, 302);
+set_hitbox_value(AT_EXTRA_2, 11, HG_WIDTH, 0);
+set_hitbox_value(AT_EXTRA_2, 11, HG_HEIGHT, 0);
+set_hitbox_value(AT_EXTRA_2, 11, HG_SHAPE, 0);
+set_hitbox_value(AT_EXTRA_2, 11, HG_PRIORITY, 0);
+set_hitbox_value(AT_EXTRA_2, 11, HG_DAMAGE, 1);
+set_hitbox_value(AT_EXTRA_2, 11, HG_ANGLE, 90);
+set_hitbox_value(AT_EXTRA_2, 11, HG_ANGLE_FLIPPER, 7);
+set_hitbox_value(AT_EXTRA_2, 11, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_EXTRA_2, 11, HG_KNOCKBACK_SCALING, 0.5);
+set_hitbox_value(AT_EXTRA_2, 11, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_EXTRA_2, 11, HG_EXTRA_HITPAUSE, 25);
+set_hitbox_value(AT_EXTRA_2, 11, HG_HITPAUSE_SCALING, 0.3);
+set_hitbox_value(AT_EXTRA_2, 11, HG_HIT_SFX, sound_get("slice"));
+set_hitbox_value(AT_EXTRA_2, 11, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_EXTRA_2, 11, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_EXTRA_2, 11, HG_VISUAL_EFFECT, SC);
+

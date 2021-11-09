@@ -46,7 +46,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT_X_OFFSET, 19);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_USTRONG, 1, HG_HITSTUN_MULTIPLIER, 1);
-set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 305);
+set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 304);
 
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_WINDOW, 2);

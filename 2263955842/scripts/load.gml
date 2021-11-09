@@ -34,10 +34,11 @@ sprite_change_offset("jab", 64, 82);
 sprite_change_offset("dattack", 76, 72);
 sprite_change_offset("ftilt", 48, 72);
 sprite_change_offset("dtilt", 32, 76);
-sprite_change_offset("utilt", 66, 136);
+sprite_change_offset("utilt", 56, 128);
+sprite_change_offset("utilt_hurt", 66, 136);
 sprite_change_offset("nair", 46, 76);
 sprite_change_offset("fair", 64, 78);
-sprite_change_offset("bair", 61, 89);
+sprite_change_offset("bair", 64, 96);
 sprite_change_offset("uair", 52, 80);
 sprite_change_offset("dair", 42, 86);
 

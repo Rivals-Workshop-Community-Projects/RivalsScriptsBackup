@@ -50,7 +50,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, hit_diagonal1);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, -20);
 
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW, 3);
+set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW, 200);
 set_hitbox_value(AT_FSTRONG, 2, HG_LIFETIME, 6);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X, 45);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_Y, -50);

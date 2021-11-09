@@ -290,6 +290,5 @@ if (is_fumo)
         }
 }
 
+
 trainingMode = 0
-// MunoPhone
-user_event(14);

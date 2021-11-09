@@ -7,14 +7,6 @@ if (get_gameplay_time() < 4)
     }
 }
 
-// MunoPhone
-if get_training_cpu_action() != CPU_FIGHT || trainingMode == 1 {
-    user_event(14);
-} else {
-    if get_training_cpu_action() == CPU_STAND {
-        trainingMode = 1
-    }
-}
 
 
 // entrance

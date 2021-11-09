@@ -2,6 +2,8 @@
 // Used for gameplay mechanics
 // Runs every frame
 
+set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_DESTROY_EFFECT, can_fireball_destroy);
+
 if (!can_fireball){
 	can_fireball_timer++;
 	

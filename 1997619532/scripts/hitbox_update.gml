@@ -33,3 +33,12 @@ if attack == AT_NSPECIAL && hbox_num == 1 {
 	}
 	
 }
+
+if attack == AT_EXTRA_2  {
+	vsp -= 0.1
+    hsp /= 1.02
+   if hitbox_timer == 59 or hitbox_timer = random_func(2,30,true) + 30 {
+   	destroyed = true
+   	sound_play(asset_get("sfx_waterhit_medium"),false,noone,.4,0.85);
+   }
+}

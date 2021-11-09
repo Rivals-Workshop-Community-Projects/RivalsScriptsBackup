@@ -36,7 +36,7 @@ if state_cat == SC_HITSTUN {
                draw_sprite_ext(sprite_index, image_index, x - 5 + random_func(1,10,true), y - 5 + random_func(2,10,true) , spr_dir, 1, 0 , c_white ,  0.4 );	
      	  gpu_set_blendmode(bm_normal);
     }
-    draw_sprite_ext(sprite_index, image_index, x - 5 + random_func(1,10,true), y - 5 + random_func(2,10,true) , spr_dir, 1, 0 , c_white ,  0.3 );	
+    draw_sprite_ext(sprite_index, image_index, x - 5 + random_func(1,10,true), y - 5 + random_func(2,10,true) , spr_dir, 1, 0 , c_white ,  0.8);	
    
 }
 
@@ -160,7 +160,7 @@ if hhh = 0 && attacking {
         }
 }
 
-if attacking && attack == AT_TAUNT && window >= 4 {
+if attacking && attack == AT_TAUNT && window >= 4 && window < 10 {
 	draw_sprite_ext(sprite_get("tauntfunk"), 1, thundervictim.x  , thundervictim.y  - 200 , spr_dir, 1, 0 , c_white ,  1.6 - (get_gameplay_time()%20)/20);
 	draw_sprite_ext(sprite_get("tauntfunk"), 2, thundervictim.x  , thundervictim.y  - 200 , spr_dir, 1, 0 , c_white ,  move_cooldown[AT_NSPECIAL_2]/10 );
     

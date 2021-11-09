@@ -2,9 +2,6 @@
 // Runs once when the player is created
 // Where most player variables are assigned
 
-// this is kinda funny idk what this variable does - Fungi October 24th 2021
-HITPLAYERDURINGUSPECIALIDKWHYTHISDOESNTWORK = false;
-
 introTimer = 0;
 costume_end = false;
 

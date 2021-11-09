@@ -52,6 +52,21 @@ if ("ColorLocked" in self && ColorLocked){
 			set_article_color_slot(2, 255, 204, 54 ); //Needle
 			set_article_color_slot(3, 129, 82, 31 ); //Box
 		break;	
+		
+		case 4:
+
+			// slime
+			set_character_color_slot( 0, 45, 159, 219 ); //Body
+			set_character_color_slot( 1, 251, 220, 108 ); //Leaf
+			set_character_color_slot( 2, 225, 233, 246 ); //Needle
+			set_character_color_slot( 3, 7, 60, 87 ); //Box
+			
+			set_article_color_slot( 0, 45, 159, 219 ); //Body
+			set_article_color_slot( 1, 251, 220, 108 ); //Leaf
+			set_article_color_slot( 2, 225, 233, 246 ); //Needle
+			set_article_color_slot( 3, 7, 60, 87 ); //Box
+		
+		break;	
 	}
 }
 
@@ -73,4 +88,11 @@ set_color_profile_slot( 14, 0, 4, 123, 51 ); //Body
 set_color_profile_slot( 14, 1, 255, 222, 135 ); //Leaf
 set_color_profile_slot( 14, 2, 255, 204, 54 ); //Needle
 set_color_profile_slot( 14, 3, 129, 82, 31 ); //Box
+
+
+// slime
+set_color_profile_slot( 16, 0, 45, 159, 219 ); //Body
+set_color_profile_slot( 16, 1, 251, 220, 108 ); //Leaf
+set_color_profile_slot( 16, 2, 251, 220, 108 ); //Needle
+set_color_profile_slot( 16, 3, 7, 60, 87 ); //Box
 */

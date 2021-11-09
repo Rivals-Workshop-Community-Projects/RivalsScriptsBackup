@@ -6,7 +6,11 @@ move_cooldown[AT_FSPECIAL] = 0 ;
 //	introhit = -1
 //}
 
-
+	if get_player_color(player) == 17 {
+		mixellev1 = (1 - random_func(1,100,true)/50)/2
+		mixellev2 = (1 - random_func(2,100,true)/50)/2
+	}
+	
 if halo < 6 && enemy_hitboxID.type == 1 {
 halotimer -= enemy_hitboxID.damage*8
 }

@@ -75,17 +75,24 @@ if hhh == 2{
 if hhh == 1 && my_hitboxID.type == 1{
     hhh = 0
     
+    
+    
     		var hfx1 = spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 60, fxslash1 )
 			hfx1.draw_angle = 90 + my_hitboxID.kb_angle/2 - 20 + random_func(9,40,true)
 			
     	spawn_hit_fx( hit_player_obj.x,hit_player_obj.y - 60, fxslash2 )
+		
 			
     with hit_player_obj {
+    	invincible = true
+    	invince_time = 15
         take_damage(player,-1,5)
     }
+    
     sound_play(sound_get("mhit2"),false,noone, (0.3 + my_hitboxID.damage/30),0.8)  
     sound_play(sound_get("mhit3"),false,noone, 0.6)  
-    create_hitbox(AT_EXTRA_1,1,hit_player_obj.x,hit_player_obj.y - 40)
+
+   	create_hitbox(AT_EXTRA_1,1, my_hitboxID.x, my_hitboxID.y)
 
 }
 
@@ -279,7 +286,7 @@ switch my_hitboxID.attack {
     
     
      case AT_UAIR:
-        
+        move_cooldown[AT_USPECIAL_GROUND] += hitstop
         if my_hitboxID.hbox_num == 1 {
               sound_play(asset_get("sfx_shovel_hit_heavy2"),false,noone,0.8);
         }  

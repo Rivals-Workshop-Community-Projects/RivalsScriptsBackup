@@ -59,6 +59,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_HITSTUN_MULTIPLIER, 1.0);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DSTRONG, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_SDI_MULTIPLIER, 0.1);
+set_hitbox_value(AT_DSTRONG, 1, HG_EXTRA_HITPAUSE, 2);
 
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW, 2);
@@ -83,6 +84,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_HITSTUN_MULTIPLIER, 1.0);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DSTRONG, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_SDI_MULTIPLIER, 0.1);
+set_hitbox_value(AT_DSTRONG, 2, HG_EXTRA_HITPAUSE, 2);
 
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW, 4);
@@ -106,6 +108,7 @@ set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, sound_get("slice"));
 set_hitbox_value(AT_DSTRONG, 3, HG_HITSTUN_MULTIPLIER, 1.0);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DSTRONG, 3, HG_TECHABLE, 1);
+
 
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 4, HG_WINDOW, 2);
@@ -131,3 +134,4 @@ set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DSTRONG, 4, HG_TECHABLE, 1);
 set_hitbox_value(AT_DSTRONG, 4, HG_SDI_MULTIPLIER, 0.1);
 set_hitbox_value(AT_DSTRONG, 4, HG_TECHABLE, 1);
+set_hitbox_value(AT_DSTRONG, 4, HG_EXTRA_HITPAUSE, 2);

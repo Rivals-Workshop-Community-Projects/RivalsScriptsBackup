@@ -1,8 +1,16 @@
 //Offscreen
 
 
+if djumps == 0 {
+	
+	djump_speed = 9;
+} else {
+	djump_speed = 7.5;
+}
+
 with pHitBox {
 	if (player_id == other.id && attack == AT_NSPECIAL && type == 2 && kb_angle != 270 && !(hbox_num > 7 && hbox_num < 12)) {
+		if "uspecialMinX" in self {
 		uspecialHudX = clamp(x, view_get_xview() + uspecialMinX , (view_get_xview() + view_get_wview()) - uspecialMaxX )
 		uspecialHudY = clamp(y, view_get_yview() + uspecialMinY, (view_get_yview() + view_get_hview()) - (44 + uspecialMaxY ))
 		uspecialNum = 0
@@ -73,6 +81,8 @@ with pHitBox {
 		//print(string(uspecialNum))
 		//print(string(uspecialHudX))
 		//print(string(uspecialHudY))
+		
+	}
 	}
 }
 //
@@ -170,49 +180,28 @@ if sagemode != 0 {
 
 
 if state == PS_AIR_DODGE {
-	if state_timer == 0 {
-		rolling = 0
-	}
-	
-	if state_timer < 12 {
-		if state_timer > 1 {
-		hsp = 7*spr_dir
-		}
-	if state_timer == 1 {	
-		vsp/=2
-	if left_down && !right_down {
-		spr_dir = -1
-	} 
-	
-	if !left_down && right_down {
-		spr_dir = 1
-	}
-	}
-		airvsp = vsp
-		airhsp = hsp
-	}
-	
-	
-	if state_timer > 12 {
-		vsp = airvsp
-		hsp = airhsp
-		airvsp += 0.4
-		airhsp /= 1.01
-		airvsp /= 1.01
-	}
-	
-	if state_timer == 15 && rolling = 1 {
+
+    
+		
+
+	if state_timer == 1 && (!joy_pad_idle) {
+		
+		if right_down - left_down != 0 spr_dir = right_down - left_down
+		
+		move_cooldown[AT_EXTRA_3] = 0
 		set_attack(AT_EXTRA_3)
 		window = 1
 		window_timer = 1
-	}
-	
+		sound_play(asset_get("sfx_bird_sidespecial_start"))
+	    vsp /= 2
 		
-		if state_timer == 20 {
-			state_timer = 99
-			window_timer = 99
-			set_state (PS_IDLE_AIR)
-		}
+	}
+    
+    if state_timer > 1 {
+    	hsp = 0
+    	vsp = 0
+    }
+    
 }
 
 

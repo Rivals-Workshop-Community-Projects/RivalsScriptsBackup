@@ -3,6 +3,35 @@
 shader_start();
 
 
+if state == PS_ATTACK_GROUND && attack == AT_TAUNT && window == 10 {
+    
+ if state_timer < 60 && state_timer % 20 < 15{
+  draw_debug_text(x - 48 ,y -120,"-Initiating-");  
+ }
+  
+  
+ if state_timer > 60 && state_timer < 75{
+  draw_debug_text(x - 55 ,y -120,"Downloading____|");  
+ }
+ 
+ if state_timer > 80 && state_timer < 95{
+  draw_debug_text(x - 55 ,y -120,"Downloading]___|");  
+ }
+ 
+ if state_timer > 100 && state_timer < 115{
+  draw_debug_text(x - 55 ,y -120,"Downloading]]__|");  
+ }
+ 
+ if state_timer > 120 && state_timer < 135{
+  draw_debug_text(x - 55 ,y -120,"Downloading]]]_|");  
+ }
+
+ if state_timer > 140 && state_timer < 155{
+  draw_debug_text(x - 55 ,y -120,"Downloading]]]]|");  
+ }
+ 
+}
+
 if move_cooldown[AT_EXTRA_1] > 0 && hhh == 0 && move_cooldown[AT_EXTRA_1] < 290{
     
             draw_sprite_ext(sprite_get("hhh2"), get_gameplay_time()/3 , famix , famiy , spr_dir, 1, 0 , c_white,  0.6 - move_cooldown[AT_USPECIAL_GROUND]/30);

@@ -8,10 +8,11 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 if !hitpause {
 	shsp = (shsp + hsp)/2
     svsp = (svsp + vsp)/2
+    
 }
 
 if state == PS_PRATFALL {
-	can_fast_fall = true
+	//can_fast_fall = true
 }
 
 if !instance_exists(hit_player_obj){
@@ -679,7 +680,7 @@ halotimer = 180;
 
 if halotimer < 1 {
 	var halodeact = spawn_hit_fx( x - (10 * spr_dir) , y - 50 , 305 )
-    		halodeact.depth = -1000
+    		halodeact.depth = 1
     		
     		
     halotimer = 90;		
@@ -1035,3 +1036,21 @@ if move_cooldown [AT_BAIR] > 0 {
 		move_cooldown [AT_BAIR] = 0
 	}
 }
+
+
+///Melon
+if "esMnum" in self {
+    	if esMnum > 0 {
+    		esMnum -= 1
+    		set_hitbox_value(AT_EXTRA_2, 11, HG_PROJECTILE_HSPEED, 6 + random_func(1,13,true)/2);
+            set_hitbox_value(AT_EXTRA_2, 11, HG_PROJECTILE_VSPEED, -4 - + random_func(2,6,true));
+
+    		
+            if esMnum % 3 == 0 {
+            	            
+            var melone = spawn_hit_fx( floor(hit_player_obj.x - (0 + random_func(3, 50, true)) * spr_dir)  ,floor( hit_player_obj.y - 70 + random_func(4, 50, true)) , 303 )
+    		melone.depth = 1
+            	create_hitbox(AT_EXTRA_2,11,floor(hit_player_obj.x),floor(hit_player_obj.y - 40) )
+            }
+    	}
+    }

@@ -12,43 +12,24 @@ else {
 }
 
 if (move_cooldown[AT_USPECIAL] == 0){
-	if (get_player_color(player) != 14){
-		draw_sprite_ext(sprite_get("needle_hud"), 0, temp_x + 120, temp_y - 12, 1, 1, 0, c_white, 1);
-	}
-	else {
+
+	if ("SecretColor" in self && SecretColor == 4){
 		draw_sprite_ext(sprite_get("slime_needle_hud"), 0, temp_x + 120, temp_y - 12, 1, 1, 0, c_white, 1);	
 	}
+	else {
+		draw_sprite_ext(sprite_get("needle_hud"), 0, temp_x + 120, temp_y - 12, 1, 1, 0, c_white, 1);
+	}
+
 }
 else {
-	if (get_player_color(player) != 14){
-		draw_sprite_ext(sprite_get("needle_hud"), 1, temp_x + 120, temp_y - 12, 1, 1, 0, c_white, 1);
-	}
-	else {
+	if ("SecretColor" in self && SecretColor == 4){
 		draw_sprite_ext(sprite_get("slime_needle_hud"), 1, temp_x + 120, temp_y - 12, 1, 1, 0, c_white, 1);
 	}
-}
-
-/*
-// Draws the battery on the HUD
-draw_sprite_ext(sprite_get("battery"), 0, temp_x + 160, temp_y - 12, 1, 1, 0, c_white, 1);
-if ("chargeshot" in self){
-	draw_sprite_part(sprite_get("battery"), 3, 0, 0, chargeshot, 16, temp_x + 160, temp_y - 12);
-}
-
-// Draws the current Grab Meter
-if ("GrappleMode" in self){
-	draw_sprite_ext(sprite_get("meter"), 4, temp_x + 40, temp_y - 2, 1, 1, 0, c_white, 1);
-
-	draw_sprite_part(sprite_get("meter"), GrappleMode, 0, 0, LoveMeter[GrappleMode]/2, 8, temp_x + 10, temp_y - 6);
-	if (GrappleMode == 0){
-		draw_sprite_ext(sprite_get("gifts"), GrappleMode, temp_x + 4, temp_y - 12, 1, 1, 0, c_white, 1);
+	else {
+		draw_sprite_ext(sprite_get("needle_hud"), 1, temp_x + 120, temp_y - 12, 1, 1, 0, c_white, 1);
 	}
-	else{
-		draw_sprite_ext(sprite_get("gifts"), GrappleMode, temp_x + 4, temp_y - 8, 1, 1, 0, c_white, 1);			
-	}
-	draw_debug_text(temp_x + 12, temp_y - 8, string(LoveMeter[GrappleMode]));
 }
-*/
+
 
 // This is just some test code I wanna leave in
 /*

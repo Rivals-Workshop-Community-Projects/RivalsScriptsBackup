@@ -74,8 +74,15 @@ if (instance_exists(Box)){
 	if (Box.flag && get_player_color(player) == 10){
 		draw_sprite_ext(sprite_get("flags"), 1, Box.x, Box.y, 1, 1, 0, c_white, 1);
 	}	
-	if (Box.flag && get_player_color(player) == 1 && current_weekday == 6){
-		draw_sprite_ext(sprite_get("flags"), 2, Box.x, Box.y, 1, 1, 0, c_white, 1);
+	if (Box.flag && get_player_color(player) == 1){
+		if (SecretColor == 4){
+			draw_sprite_ext(sprite_get("flags"), 6, Box.x, Box.y, 1, 1, 0, c_white, 1);
+		}
+		else {
+			if (current_weekday == 6){
+				draw_sprite_ext(sprite_get("flags"), 2, Box.x, Box.y, 1, 1, 0, c_white, 1);		
+			}
+		}
 	}	
 	if (Box.flag && SecretColor == 2){
 		draw_sprite_ext(sprite_get("flags"), 3, Box.x, Box.y, 1, 1, 0, c_white, 1);
@@ -95,8 +102,15 @@ if (instance_exists(movingbox)){
 	if (movingbox.flag && get_player_color(player) == 10){
 		draw_sprite_ext(sprite_get("flags"), 1, movingbox.x, movingbox.y, 1, 1, 0, c_white, 1);
 	}	
-	if (movingbox.flag && get_player_color(player) == 1 && current_weekday == 6){
-		draw_sprite_ext(sprite_get("flags"), 2, movingbox.x, movingbox.y, 1, 1, 0, c_white, 1);
+	if (movingbox.flag && get_player_color(player) == 1){
+		if (SecretColor == 4){
+			draw_sprite_ext(sprite_get("flags"), 6, movingbox.x, movingbox.y, 1, 1, 0, c_white, 1);
+		}
+		else {
+			if (current_weekday == 6){
+				draw_sprite_ext(sprite_get("flags"), 2, movingbox.x, movingbox.y, 1, 1, 0, c_white, 1);
+			}
+		}
 	}	
 	if (movingbox.flag && SecretColor == 2){
 		draw_sprite_ext(sprite_get("flags"), 3, movingbox.x, movingbox.y, 1, 1, 0, c_white, 1);
@@ -125,12 +139,14 @@ if (flag_destroy){
 if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && window <= 2){
 shader_start();
 	
-	if (get_player_color(player) != 14){
+	// Slime Alt
+	if (SecretColor != 4){
 		needle_sprite = draw_sprite_ext(sprite_get("needle"), -1, x, y - 15, 1, 1, needle_angle, c_white, 1);	
 	}
 	else {
 		needle_sprite = draw_sprite_ext(sprite_get("slime_needle"), -1, x, y - 15, 1, 1, needle_angle, c_white, 1);		
 	}
+
 shader_end();
 }
 

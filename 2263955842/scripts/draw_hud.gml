@@ -38,5 +38,3 @@ if ("char_height" in self){ //Error wrapping
 }
 
 
-// MunoPhone
-user_event(11);

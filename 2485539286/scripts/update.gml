@@ -18,16 +18,16 @@ if state == PS_PRATFALL {
 
 
 if can_attack && special_pressed && !left_down && !right_down && !up_down && !down_down && 	move_cooldown [AT_NSPECIAL] > 0{
-	 sound_play(asset_get("sfx_ell_overheat"))
-	 sound_play(asset_get("sfx_ell_steam_release"))
+	 sound_play(asset_get("sfx_ell_overheat"),false,noone,.7)
+	 sound_play(asset_get("sfx_ell_steam_release"),false,noone,.7)
 	 set_state(PS_PRATFALL)
 	 prat_land_time = 12;
 	 move_cooldown [AT_EXTRA_3] = 0
 	 
 if hhh > 0 {	 
-	 vsp = -8
+	 vsp = -9
 } else {
-	vsp = -8
+	vsp = -9
 }
 	       	spawn_base_dust(x, y, "djump", spr_dir)
 	       	spawn_base_dust(x, y, "land", spr_dir)

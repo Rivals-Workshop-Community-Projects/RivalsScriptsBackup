@@ -24,7 +24,12 @@ if (state == PS_LANDING_LAG) && attack == AT_DAIR {
         draw_y = 6
         
     if state_timer == 12 {
-        sound_play(sound_get("slicel"),false,noone,.6,.6);
+        sound_play(sound_get("slicel"),false,noone,.4,.7);
     }
     
+}
+
+
+if get_player_color(player) == 17 { 
+    draw_y = 9999
 }

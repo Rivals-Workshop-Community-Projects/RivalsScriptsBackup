@@ -40,9 +40,22 @@ if alt == 4 {
       draw_sprite_ext(sprite_get("charselectmelon"),drawtime / 5,temp_x-2,temp_y-2,2,2,0,-1,1);
 }
 
-if alt == 7 {
+if alt == 8 {
     if drawtime == 1 {
-        sound_play(sound_get("bruh"))
+        sound_play(sound_get("Cslash"))
+    }
+}
+
+
+if alt == 15 {
+    if drawtime == 1 {
+        sound_play(sound_get("cheese"))
+    }
+}
+
+if alt == 17 {
+    if drawtime == 1 {
+        sound_play(asset_get("sfx_blow_medium2"))
     }
 }
 
@@ -82,6 +95,18 @@ var palette_names = [
   "Gray",
   "Watermelon EX",
   "Sakura",
+  "0 Attempt",
+  "BBat", 
+  "99999",   
+  "Kumak", 
+  "Xeha"
+  "R00"
+   "Glitch" 
+   "Yeah she's gay"
+  "Negative Mage"
+  "Mayo"
+  "California"
+   "Day1 Zetta"
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check
