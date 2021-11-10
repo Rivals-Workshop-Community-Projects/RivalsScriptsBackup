@@ -25,11 +25,13 @@ if (attack == AT_NSPECIAL){
 if (attack == AT_FSPECIAL && window == 2){
         can_move = true;
     }
-
-
-if (attack == AT_NAIR && has_hit){//jump cancel nairs
-        can_jump = true;
+if (attack == AT_DSPECIAL && window == 2){
+        can_shield = true;
     }
+
+//if (attack == AT_NAIR && has_hit){//jump cancel nairs
+//        can_jump = true;
+//    }
     
 //Extra Taunt    
 if (attack == AT_TAUNT && down_down){
@@ -56,13 +58,10 @@ if (attack == AT_USTRONG && window == 1 && window_timer == 17){
         sound_play( asset_get( "sfx_forsburn_consume" ) );
     }    
     
-// heals damage to self:
-if (attack == AT_DSPECIAL && window == 4 && has_hit) {
-        take_damage( player, -1, -1 );
-    }
 // Deals damage to self:
-if (attack == AT_DSPECIAL && window == 4 && !has_hit) {
-        take_damage( player, -1, 2 );
+if (attack == AT_DSPECIAL && window == 4 && window_timer == 1 && !has_hit) {
+    set_player_damage( player, clamp(get_player_damage(player)+25, 0 , 999) ); 
+
     }
 
 //Ledge Snap    

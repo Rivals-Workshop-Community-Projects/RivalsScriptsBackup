@@ -50,11 +50,11 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 // }
 
 //Fspecial2
-if (attack == AT_FSPECIAL && window == 1 && window_timer == 12 && special_down) {
+if (attack == AT_FSPECIAL && window == 1 && window_timer == 12 && special_down && has_rune("B")) {
    set_attack(AT_FSPECIAL_2);
 }
 //glockenburn
-if (attack == AT_NSPECIAL && attack_down && (window_timer < 5 && window == 1) || ((attack_pressed || special_pressed) && rounds_left > 0 && attack == AT_NSPECIAL_2 && window == 3) && has_rune("N")) {
+if (attack == AT_NSPECIAL && attack_down && ((window_timer < 5 && window == 1) || ((attack_pressed || special_pressed) && rounds_left > 0 && attack == AT_NSPECIAL_2 && window == 3)) && has_rune("N")) {
 	hurtboxID.sprite_index = get_attack_value(attack,AG_HURTBOX_SPRITE);
 	set_attack(AT_NSPECIAL_2);
 	rounds_left --;

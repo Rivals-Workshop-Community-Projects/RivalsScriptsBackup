@@ -39,18 +39,18 @@ alt_name[9]  = "Norman";
 alt_name[10] = "Phobos";
 alt_name[11] = "RHCP";
 alt_name[12] = "Flesh";
-alt_name[13] = "Cacturne";
-alt_name[14] = "Phineas";
-alt_name[15] = "Ao Oni";
-alt_name[16] = "Listener-Kun";
-alt_name[17] = "Smithers";
-alt_name[18] = "Psychicpebbles";
+alt_name[13] = "Dark Cactus";
+alt_name[14] = "Child";
+alt_name[15] = "Jumpscare";
+alt_name[16] = "Listens";
+alt_name[17] = "Nuclear Plant";
+alt_name[18] = "Psychic";
 alt_name[19] = "Sylvanos";
 alt_name[20] = "Doomkin";
-alt_name[21] = "Void";
-alt_name[22] = "Habanero (Zetta)";
+alt_name[21] = "Voided";
+alt_name[22] = "Habanero";//Habanero (Zetta)
 alt_name[23] = "Feri";
-alt_name[24] = "Infamous (Kingdoge)";
+alt_name[24] = "Infamous";//Infamous (Kingdoge)
 
 draw_set_halign(fa_right);
 textDraw(temp_x + 198, temp_y + 106, "fName", c_aqua, 0, 1000, 1, false, 0.3, "v" + patch_ver);

@@ -319,6 +319,40 @@ in a Patch.
 
 #define CORE_patches
 
+	initPatch("2.23", "November 9th, 2021");
+
+	initHeader("Adjustments");		
+	initSection("-Added 'Ranked Gold' alt");		
+	initSection("-Removed hitstun multiplier from USpecial last hit");	
+	initSection("-Adjusted smear on NAir sprite");	
+	initSection("-Added frame 1 swipe sound to BAir");
+	initSection("-BAir animation has been updated, adjusted the startup and added a smear");	
+	
+
+	initHeader("Buffs");		
+	initSection("-Increased USpecial last hit knockback scaling (0.5 -> 0.6)");
+	
+	
+	initHeader("Nerfs");	
+	initSection("-Decreased BAir sourspot hitbox size");	
+	initSection("-Increased BAir startup (14 -> 16)");
+	initSection("-Increased BAir endlag (9 -> 12)");		
+	initSection("-Decreased FSpecial grab size");	
+	initSection("-Decreased FSpecial frog throw knockback scaling (1 -> 0.4)");
+	initSection("-Decreased FSpecial frog throw damage (11 -> 8)");	
+	initSection("-Decreased FSpecial slam damage (14 -> 12)");		
+	initSection("-Decreased FSpecial slam knockback scaling (1.1 -> 1)");
+	initSection("-Decreased FSpecial slam base knockback (8 -> 6)");	
+	
+
+	initPatch("2.22", "November 8th, 2021");
+
+	initHeader("Adjustments");	
+	initSection("-Changed sprite for respawn platform");
+	initSection("-Cleaned up color profile slot ranges");
+	initSection("-Adjusted colors for the following alts: Lime, Monochrome, Gold, Poison, Neon, Watermelon, Crimson");	
+	initSection("-Removed 4 alts: Lode, Cosign, Tomo, Bon-bee");		
+
 	initPatch("2.21", "November 7th, 2021");
 	
 	initHeader("Nerfs");	
@@ -717,6 +751,9 @@ in a Patch.
 	
 	initPatch("1.0", "October 11th, 2020");
 	initWords_ext("hmm today i will release character", fa_center, c_white, 0, 0);
+
+	initPatch("Credits", "");
+	initSection("-BAir smear sprited by: Delta Parallax");		
 
 // Recommended template for non-Sandbert characters (delete the other patches):
 

@@ -58,7 +58,7 @@ wave_friction       = 0.03;		// 0    -  0.15
 roll_forward_max    = 9;        // 9    -  11
 roll_backward_max   = 9;        // 9    -  11       always the same as forward
 wave_land_time      = 12;		// 6    -  12
-wave_land_adj       = 1.4;		// 1.2  -  1.5      idk what zetterburn's is
+wave_land_adj       = 1.8;		// 1.2  -  1.5      idk what zetterburn's is
 air_dodge_speed     = 7.5;      // 7.5  -  8
 techroll_speed      = 10;       // 8    -  11
 

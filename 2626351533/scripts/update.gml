@@ -20,7 +20,7 @@ else {
 }
 
 //Actual gliding
-if (can_glide == true && jump_down && glide_off == false && im_gliding_cont < 150 &&  
+if (can_glide == true && jump_down && glide_off == false && im_gliding_cont < 90 &&  //used to be 150
 (state == PS_IDLE_AIR || state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP)){
     im_gliding = true;
     vsp = 1;
@@ -31,9 +31,9 @@ else {
 }
 
 //Already glided once
-if (!jump_down && glide_used){
-    glide_off = true;
-}
+//if (!jump_down && glide_used){
+//    glide_off = true;
+//}
 
 //Resets the glide variables
 if (!free){
@@ -52,7 +52,7 @@ else {
 }
 
 //Actual gliding again
-if (im_gliding == true && jump_down && im_gliding_cont < 150){
+if (im_gliding == true && jump_down && im_gliding_cont < 90){
     im_gliding = true;
     im_gliding_cont++;
     vsp = 1;
@@ -85,7 +85,8 @@ if (instance_exists(batarang)){
         spawn_hit_fx( batarang.x, batarang.y, 13);
         if (instance_exists(mine)){
         	if (mine.batarang_carry == true){
-        	    instance_destroy(mine);
+        	    mine.batarang_carry = false;
+        	    mine.state = 0;
         	}
         }
         instance_destroy(batarang);
@@ -97,7 +98,8 @@ if (instance_exists(batarang)){
         spawn_hit_fx( batarang.x, batarang.y, 13);
         if (instance_exists(mine)){
         	if (mine.batarang_carry == true){
-        	    instance_destroy(mine);
+        	    mine.batarang_carry = false;
+        	    mine.state = 0;
         	}
         }
         instance_destroy(batarang);

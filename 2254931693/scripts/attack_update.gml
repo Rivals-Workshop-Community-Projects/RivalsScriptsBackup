@@ -40,6 +40,10 @@ if (attack == AT_USTRONG && window > 1){
 }
 
 
+if (attack == AT_BAIR && window = 1 && window_timer = 1 && !hitpause){
+    sound_play(sound_get("bonby_swipe_4"))
+}
+
 
 
 

@@ -38,6 +38,8 @@ if ((place_meeting(x, y, player_id.batarang)) && state == 0){
 if (state == 0){
 	vsp = 8;
 	player_id.mine_myself = false;
+	can_be_grounded = true;
+	ignores_walls = false;
 	
 	if (free){
     	sprite_index = sprite_get("mine_air");

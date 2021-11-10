@@ -1,3 +1,13 @@
+if my_hitboxID.type == 1 {
+        sound_play(asset_get("sfx_blow_medium2"),false,noone,.4 + my_hitboxID.damage/15 , 2 - min((hit_player_obj.hitstop*hit_player_obj.hitstop)/120 , 1.2) )
+        
+        
+         
+         if my_hitboxID.kb_scale >= .6 {
+             sound_play(asset_get("sfx_blow_heavy2"),false,noone,.4 + my_hitboxID.damage/15 , 2 - min((hit_player_obj.hitstop*hit_player_obj.hitstop)/150 , 1.4) )
+        }
+}
+
 //Batarang hits, should come back
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1){
     batarang.state_timer = 41;
@@ -46,6 +56,7 @@ if (my_hitboxID.attack == AT_DSTRONG){
 	}
     
 }
+
 
 /*
 if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1){

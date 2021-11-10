@@ -1,5 +1,5 @@
 //Glide sprite
-if (can_glide == true && jump_down && glide_off == false && state != PS_ATTACK_AIR && im_gliding_cont < 150){
+if (can_glide == true && jump_down && glide_off == false && state != PS_ATTACK_AIR && im_gliding_cont < 90){
     sprite_index = sprite_get("glide");
 }
 

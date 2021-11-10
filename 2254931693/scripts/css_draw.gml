@@ -11,7 +11,8 @@ set_character_color_shading( 4, 0 );
 set_character_color_shading( 5, 0 );
 set_character_color_shading( 6, 0 );
 }
- 
+
+
  
  
 
@@ -87,7 +88,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
     color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
     
-    col_max = 25; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    col_max = 21; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(22, 135, 111) // "color preview square" color. can be any color!
@@ -118,7 +119,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[8,1] = "Cocoa"
     ce[8,2] = ""
     ce[9,0] = make_color_rgb(255, 213, 0)
-    ce[9,1] = "Gold"
+    ce[9,1] = "Lemon"
     ce[9,2] = ""
     ce[10,0] = make_color_rgb(199, 255, 156)
     ce[10,1] = "Island"
@@ -126,65 +127,65 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[11,0] = make_color_rgb(161, 28, 28)
     ce[11,1] = "Crimson"
     ce[11,2] = ""    
-    ce[12,0] = make_color_rgb(255, 49, 246)
+    ce[12,0] = make_color_rgb(255, 135, 250)
     ce[12,1] = "Neon"
     ce[12,2] = ""
-    ce[13,0] = make_color_rgb(59, 0, 79)
+    ce[13,0] = make_color_rgb(114, 31, 143)
     ce[13,1] = "Poison"
     ce[13,2] = ""
-    ce[14,0] = make_color_rgb(255, 185, 64)
-    ce[14,1] = "Cinnamon"
+    ce[14,0] = make_color_rgb(255, 159, 41)
+    ce[14,1] = "Cinna"
     ce[14,2] = ""
-    ce[15,0] = make_color_rgb(86, 144, 61)
-    ce[15,1] = "Lode"
+    ce[15,0] = make_color_rgb(255, 221, 153)
+    ce[15,1] = "Desert"
     ce[15,2] = "" 
-    ce[16,0] = make_color_rgb(253, 128, 84)
-    ce[16,1] = "Cosign"
+    ce[16,0] = make_color_rgb(96, 31, 194)
+    ce[16,1] = "Cosmic"
     ce[16,2] = ""    
-    ce[17,0] = make_color_rgb(255, 103, 112)
-    ce[17,1] = "Tomo"
+    ce[17,0] = make_color_rgb(255, 130, 182)
+    ce[17,1] = "Watermelon"
     ce[17,2] = ""    
-    ce[18,0] = make_color_rgb(230, 193, 129)
-    ce[18,1] = "Desert"
+    ce[18,0] = make_color_rgb(255, 213, 23)
+    ce[18,1] = "Ranked Gold"
     ce[18,2] = "" 
-    ce[19,0] = make_color_rgb(96, 31, 194)
-    ce[19,1] = "Cosmic"
+    ce[19,0] = make_color_rgb(240, 246, 255)
+    ce[19,1] = "Bone-Chilling"
     ce[19,2] = ""    
-    ce[20,0] = make_color_rgb(255, 85, 162)
-    ce[20,1] = "Watermelon"
+    ce[20,0] = make_color_rgb(255, 131, 66)
+    ce[20,1] = "Corsair"
     ce[20,2] = ""    
-    ce[21,0] = make_color_rgb(241, 164, 36)
-    ce[21,1] = "Brigade Leader"
+    ce[21,0] = make_color_rgb(97, 160, 207)
+    ce[21,1] = "Maverick"
     ce[21,2] = ""    
     ce[22,0] = make_color_rgb(240, 246, 255)
-    ce[22,1] = "Bone-Chilling"
+    ce[22,1] = ""
     ce[22,2] = ""    
     ce[23,0] = make_color_rgb(255, 204, 0)
-    ce[23,1] = "Bon-bee"
+    ce[23,1] = ""
     ce[23,2] = "" 
     ce[24,0] = make_color_rgb(255, 131, 66)
-    ce[24,1] = "Corsair"
+    ce[24,1] = ""
     ce[24,2] = ""    
     ce[25,0] = make_color_rgb(97, 160, 207)
-    ce[25,1] = "Maverick"
+    ce[25,1] = ""
     ce[25,2] = ""   
     ce[26,0] = make_color_rgb(86, 144, 61)
-    ce[26,1] = "Lode"
+    ce[26,1] = ""
     ce[26,2] = ""    
     ce[27,0] = make_color_rgb(86, 144, 61)
-    ce[27,1] = "Lode"
+    ce[27,1] = ""
     ce[27,2] = "" 
     ce[28,0] = make_color_rgb(86, 144, 61)
-    ce[28,1] = "Lode"
+    ce[28,1] = ""
     ce[28,2] = ""    
     ce[29,0] = make_color_rgb(86, 144, 61)
-    ce[29,1] = "Lode"
+    ce[29,1] = ""
     ce[29,2] = ""    
     ce[30,0] = make_color_rgb(86, 144, 61)
-    ce[30,1] = "Lode"
+    ce[30,1] = ""
     ce[30,2] = ""    
     ce[31,0] = make_color_rgb(86, 144, 61)
-    ce[31,1] = "Lode"
+    ce[31,1] = ""
     ce[31,2] = ""       
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.

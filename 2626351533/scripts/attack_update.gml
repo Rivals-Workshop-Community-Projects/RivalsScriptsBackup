@@ -1,3 +1,23 @@
+if (state_timer == 1 or (window == 1 && window_timer == 1)) && !hitpause
+&& (attack != AT_FTILT && attack != AT_DSTRONG && attack != AT_FAIR && attack != AT_BAIR && 
+attack != AT_NSPECIAL && attack != AT_FSPECIAL && attack != AT_DSPECIAL){
+   h = get_window_value(attack, 1, AG_WINDOW_LENGTH)
+   d = get_window_value(attack, 2, AG_WINDOW_LENGTH)
+
+ if h < 9 {
+   if get_gameplay_time() % 2 == 0 {
+      sound_play(asset_get("sfx_swipe_heavy1"),false,noone, .65 ,
+       max ( 0.5, 1.6 - ((h/20) +  (d/20)) - (random_func(1,10,true))/100 ))
+  } else {      
+      sound_play(asset_get("sfx_swipe_heavy1"),false,noone, .65 ,
+       max ( 0.5, 1.6 - ((h/20) +  (d/20)) - (random_func(1,10,true))/100 ))  
+  }
+ } else {
+      sound_play(asset_get("sfx_bird_downspecial"),false,noone, .65 ,
+       max ( 0.5, 1.6 - ((h/20) +  (d/20)) - (random_func(1,10,true))/100 ))
+ }  
+ }  
+
 //B - Reversals
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
@@ -46,7 +66,7 @@ if (attack == AT_UAIR){
 //NSpecial - Batarang
 if (attack == AT_NSPECIAL){
     move_cooldown[AT_NSPECIAL] = 9999;
-    if (window == 1 && window_timer == 12 && special_down){
+/*    if (window == 1 && window_timer == 12 && special_down){
     	window_timer--;
     	if (spr_dir == 1 && left_pressed){
     		spr_dir = -1;
@@ -54,7 +74,7 @@ if (attack == AT_NSPECIAL){
     	if (spr_dir == -1 && right_pressed){
     		spr_dir = 1;
     	}
-    }
+    }*/
     //Creates the batarang and angles it or not
     if (window == 2 && window_timer == 2){
         batarang = instance_create( x+60*spr_dir, y-30, "obj_article2"); 
@@ -74,7 +94,7 @@ if (attack == AT_FSPECIAL){
     if (window == 2){
     	fspecial_hit = false;
         grapple_cont = 0;
-        if (window_timer == 4 && special_down){
+    /*    if (window_timer == 4 && special_down){
 	    		window_timer--;
 		    	if (spr_dir == 1 && left_pressed){
 		    		spr_dir = -1;
@@ -82,7 +102,7 @@ if (attack == AT_FSPECIAL){
 		    	if (spr_dir == -1 && right_pressed){
 		    		spr_dir = 1;
 		    	}
-	    	}
+	    	}*/
         if (window_timer == 5){
             if (!free){
                 spawn_hit_fx( x+60*spr_dir, y-15, 140);
@@ -103,7 +123,7 @@ if (attack == AT_FSPECIAL){
     
     //Chain sound every couple of frames
     if ((window == 2 || window == 3 || window == 4) && grapple_pull_back == 0 && grapple_pull_up == 0
-    && state_timer%3 == 0 && !special_down){
+    && state_timer%3 == 0){
         sound_play(asset_get("sfx_ell_utilt_loop"));
     }
     

@@ -33,7 +33,7 @@ max_jump_hsp        = 6;		// 4    -  8
 air_max_speed       = 5.5;  		// 3    -  7
 jump_change         = 3;		// 3
 air_accel           = 0.3;		// 0.2  -  0.4
-prat_fall_accel     = 0.65;		// 0.25 -  1.5
+prat_fall_accel     = 0.45;		// 0.25 -  1.5
 air_friction        = 0.04;		// 0.02 -  0.07
 max_fall            = 8;		// 6    -  11
 fast_fall           = 12;		// 11   -  16
@@ -51,7 +51,7 @@ max_djumps          = 3;		// 0    -  3        the 0 is elliana because she has h
 walljump_hsp        = 7;		// 4    -  7
 walljump_vsp        = 8;		// 7    -  10
 land_time           = 4;		// 4    -  6
-prat_land_time      = 18;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
+prat_land_time      = 24;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
 wave_friction       = 0.12;		// 0    -  0.15

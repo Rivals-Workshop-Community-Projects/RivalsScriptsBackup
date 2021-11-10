@@ -103,7 +103,6 @@ set_hitbox_value(AT_USPECIAL_GROUND, 6, HG_DAMAGE, 6);
 set_hitbox_value(AT_USPECIAL_GROUND, 6, HG_ANGLE, 90);
 set_hitbox_value(AT_USPECIAL_GROUND, 6, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(AT_USPECIAL_GROUND, 6, HG_HITPAUSE_SCALING, .9);
-set_hitbox_value(AT_USPECIAL_GROUND, 6, HG_HITSTUN_MULTIPLIER, 0.65);
 set_hitbox_value(AT_USPECIAL_GROUND, 6, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_USPECIAL_GROUND, 6, HG_KNOCKBACK_SCALING, 0.5);
 set_hitbox_value(AT_USPECIAL_GROUND, 6, HG_HIT_SFX, sound_get("bonby_upspecial_hit"));
