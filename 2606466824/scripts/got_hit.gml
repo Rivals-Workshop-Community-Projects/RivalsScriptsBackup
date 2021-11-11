@@ -22,7 +22,7 @@ if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_DSPECI
 		hit_player_obj.old_hsp /= 4;
 		hit_player_obj.old_vsp /= 4;
 	} else {
-		hitstop = 10;
+		hitstop = 6;
 	}
 	//print_debug ("lol revenge");
 	revengeMult += 0.3 + (incomingDamage * 0.12);
@@ -33,6 +33,12 @@ if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_DSPECI
 	wrapped = false;
 	sound_play(sound_get("dspec_2"));
 	revengeTarget = hit_player_obj.player;
+	set_window_value(AT_DSPECIAL, 6, AG_WINDOW_LENGTH, 18);
+	
+	if (enemy_hitboxID.type == 2) {
+		revengeTarget = noone;
+		set_window_value(AT_DSPECIAL, 6, AG_WINDOW_LENGTH, 9);
+	}
 }
 
 if (get_player_damage(player) > revengeAnchor + 50) {

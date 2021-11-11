@@ -212,6 +212,8 @@ whirlwind_punch_effect = false;
 
 whirlwind_player = 0;
 
+clap_vfx = hit_fx_create(sprite_get("clap"), 20);
+
 col_R1 = get_color_profile_slot_r( get_player_color(player), 6);
 col_G1 = get_color_profile_slot_g( get_player_color(player), 6);
 col_B1 = get_color_profile_slot_b( get_player_color(player), 6);

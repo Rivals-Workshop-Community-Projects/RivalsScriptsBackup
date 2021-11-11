@@ -3,6 +3,57 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+
+//Sai SFX
+if (state_timer == 1 or (window == 1 && window_timer == 1)) && attack != AT_JAB && attack != AT_NAIR  && !hitpause {
+  sound_play(asset_get("sfx_bird_sidespecial_start"),false,noone, .6 ,
+    max ( 0.5, 1.6 - ((get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) + (get_window_value(attack, 2, AG_WINDOW_LENGTH)/20)) - (random_func(1,10,true))/100 ))
+  
+  
+  if attack != AT_USPECIAL && attack != AT_DSPECIAL  {
+  if attack == AT_FSTRONG or attack == AT_DSTRONG or attack == AT_USTRONG or attack == AT_FSPECIAL {
+  	
+    if sword_id[1].follow_type == 0 {
+  
+         sound_play(asset_get("sfx_ice_on_player"),false,noone, .7,
+    max ( 1, 2 - ((get_window_value(attack, 1, AG_WINDOW_LENGTH)/30) + (get_window_value(attack, 2, AG_WINDOW_LENGTH)/30)) - (random_func(1,10,true))/100 ))
+               sound_play(asset_get("sfx_ice_on_player"),false,noone, .45 ,
+    max ( 0.5, 2 - ((get_window_value(attack, 1, AG_WINDOW_LENGTH)/15) + (get_window_value(attack, 2, AG_WINDOW_LENGTH)/15)) - (random_func(1,10,true))/100 ))
+  
+               sound_play(asset_get("sfx_spin"),false,noone, .9 , .8)
+  
+    } 
+    
+  } else {
+  	
+  	 if sword_id[0].follow_type == 0  && attack != AT_TAUNT {
+  
+         sound_play(asset_get("sfx_ice_on_player"),false,noone, .6 ,
+    max ( 0.5, 2 - ((get_window_value(attack, 1, AG_WINDOW_LENGTH)/15) + (get_window_value(attack, 2, AG_WINDOW_LENGTH)/15)) - (random_func(1,10,true))/100 ))
+  
+    } 
+    
+    
+  }
+}
+  
+   //sound_play(asset_get("sfx_swipe_heavy2"),false,noone, .8 ,
+   //max( 0.9, .5 + get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) - (random_func(1,10,true))/100 )
+
+
+
+ if  (window == 2 && window_timer == 1) && ( attack == AT_FSTRONG or attack == AT_DSTRONG or attack == AT_USTRONG or attack == AT_FSPECIAL ) && !hitpause {
+ 	  
+ 	        sound_play(asset_get("sfx_bird_sidespecial_start"),false,noone, .6 ,
+        max ( 0.5, 2 - ((get_window_value(attack, 1, AG_WINDOW_LENGTH)/20) + (get_window_value(attack, 2, AG_WINDOW_LENGTH)/20)) - (random_func(1,10,true))/100 ))
+      
+      
+ 	    sound_play(asset_get("sfx_ice_shieldup"),false,noone, .9 ,
+        max ( 0.5, 2 - ((get_window_value(attack, 1, AG_WINDOW_LENGTH)/15) + (get_window_value(attack, 2, AG_WINDOW_LENGTH)/15)) - (random_func(1,10,true))/100 ))
+      
+ }
+}
+
 for (var i = 0; i <= 1; i++) {
     if (instance_exists(sword_id[i])) {
         if (sword_id[i].follow_type == 0) {
@@ -12,6 +63,8 @@ for (var i = 0; i <= 1; i++) {
         
     }
 }
+
+
 
 //Sword facing the correct position when attacking.
 
@@ -200,17 +253,18 @@ if (attack == AT_FSPECIAL){
 	    
 	    for (var i = 0; i <= 1; i++) {
 	        if (instance_exists(sword_id[i])) {
-	        	if (place_meeting(x, y, sword_id[i]) && sword_id[i].follow_type = 1 && sword_id[i].state != PS_DEAD && sword_id[i].state != PS_RESPAWN) {
+	        	if (place_meeting(x + (4 * spr_dir), y, sword_id[i]) && !sword_id[i].go_back && sword_id[i].follow_type = 1 && sword_id[i].state != PS_DEAD && sword_id[i].state != PS_RESPAWN) {
 					sound_play(asset_get("sfx_buzzsaw_hit"));
 	        		sword_id[i].go_back = true; 
 	        		sword_id[i].follow_type = 0;
 	        		hitpause = 1;
-	        		hitstop = 8;
+	        		hitstop = 3;
 	        		sword_id[i].hitpause = hitstop;
 	        		hsp = 0;
 	        		vsp = 0;
 	        		old_hsp = 0;
 	        		old_vsp = 0;
+    				spawn_hit_fx(round(x), round(y - 36), 301)
 	        		destroy_hitboxes();
 	        		destroy_sword_hitboxes();
 	        		var alive_swords = 2;
@@ -274,11 +328,21 @@ if (attack == AT_USPECIAL){
     
     for (var i = 0; i <= 1; i++) {
         if (instance_exists(sword_id[i])) {
-        	if (place_meeting(x, y, sword_id[i]) && sword_id[i].follow_type = 1 && sword_id[i].state != PS_DEAD && sword_id[i].state != PS_RESPAWN) {
+        	if (place_meeting(x, y, sword_id[i]) && !sword_id[i].go_back && sword_id[i].follow_type = 1 && sword_id[i].state != PS_DEAD && sword_id[i].state != PS_RESPAWN) {
 				sound_play(asset_get("sfx_buzzsaw_hit"));
         		sword_id[i].go_back = true;
+        		sword_id[i].follow_type = 0;
         		hitpause = 1;
-        		hitstop = 8;
+    			hitstop = 4;
+	        	sword_id[i].hitpause = hitstop;
+        		hsp = 0;
+        		vsp = 0;
+        		old_hsp = 0;
+        		old_vsp = 0;
+        		destroy_hitboxes();
+        		destroy_sword_hitboxes();
+        		
+        		spawn_hit_fx(round(x), round(y - 36), 301)
         		
         		window = 1;
         		window_timer = 4;

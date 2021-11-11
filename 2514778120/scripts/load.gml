@@ -109,6 +109,7 @@ sprite_change_offset("plasma_hit_green2", 94, 94);
 sprite_change_offset("plasma_hit_tip", 108, 108);
 sprite_change_offset("sword_deathfx2", 0, 264);
 
+sprite_change_offset("miiverse", 60, 30);
 
 #define sword_sprite_change_offset(name, off_x, off_y)
 sprite_change_offset("sword0" + "_" + name, off_x, off_y);

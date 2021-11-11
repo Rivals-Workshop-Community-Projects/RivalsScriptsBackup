@@ -44,7 +44,7 @@ if (my_hitboxID.attack == AT_UAIR){
 }*/
 if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1) {
     with obj_article2 {
-        if hBox == other.my_hitboxID { //If it is the article's hitbox
+        if player_id == other && hBox == other.my_hitboxID { //If it is the article's hitbox
             hit_timer = hit_timer_max;
         }
     }

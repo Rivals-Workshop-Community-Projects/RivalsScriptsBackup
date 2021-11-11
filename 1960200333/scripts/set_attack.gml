@@ -7,3 +7,7 @@ if (attack == AT_NSPECIAL && fry_platinum == 1 && temperature >= temperature_max
     sound_play(asset_get("sfx_abyss_explosion_start"));
     temperature = 0;
 }
+
+/*if(attack == AT_FSTRONG || attack == AT_USTRONG){
+    sound_play(asset_get("sfx_shovel_swing_heavy1"));
+}*/

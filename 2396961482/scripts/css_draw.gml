@@ -47,14 +47,14 @@ alt_name[19] = "Reflector";
 alt_name[20] = "Stalker of the Dark";
 alt_name[21] = "Princess";
 alt_name[22] = "Evolution";
-alt_name[23] = "Top 8 Jacklom";
-alt_name[24] = "Top 8 Slime";
+alt_name[23] = "The Crystal Fish";
+alt_name[24] = "For Fish, With the Times.";
 alt_name[25] = "Fish Guard";
 alt_name[26] = "Inner";
 alt_name[27] = "Transcend";
 alt_name[28] = "Funny Font";
 alt_name[29] = "You're Going to Brazil";
-alt_name[30] = "Top 8 Zora";
+alt_name[30] = "Dokufish";
 //alt_name[31] = "";
 
 draw_set_halign(fa_right);

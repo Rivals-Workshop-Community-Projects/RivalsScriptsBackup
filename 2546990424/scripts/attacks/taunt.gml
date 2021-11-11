@@ -7,7 +7,7 @@ set_attack_value(AT_TAUNT, AG_HURTBOX_SPRITE, sprite_get("taunt_hurt"));
 set_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH, 30);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_ANIM_FRAMES, 12);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("okay"));
+set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("okay_vv"));
 set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX_FRAME, 5);
 
 set_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH, 3);

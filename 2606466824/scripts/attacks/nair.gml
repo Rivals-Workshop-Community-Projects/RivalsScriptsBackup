@@ -13,7 +13,7 @@ set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 2);
 
 set_window_value(AT_NAIR, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_NAIR, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_NAIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 
@@ -33,7 +33,7 @@ set_num_hitboxes(AT_NAIR, 2);
 set_hitbox_value(AT_NAIR, 1, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_NAIR, 1, HG_LIFETIME, 3);
+set_hitbox_value(AT_NAIR, 1, HG_LIFETIME, 2);
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_X, 5);
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_Y, -40);
 set_hitbox_value(AT_NAIR, 1, HG_WIDTH, 90);
@@ -61,7 +61,7 @@ set_hitbox_value(AT_NAIR, 2, HG_HITBOX_Y, -35);
 set_hitbox_value(AT_NAIR, 2, HG_WIDTH, 65);
 set_hitbox_value(AT_NAIR, 2, HG_HEIGHT, 55);
 set_hitbox_value(AT_NAIR, 2, HG_PRIORITY, 1);
-set_hitbox_value(AT_NAIR, 2, HG_DAMAGE, 7);
+set_hitbox_value(AT_NAIR, 2, HG_DAMAGE, 6);
 set_hitbox_value(AT_NAIR, 2, HG_ANGLE, 40);
 set_hitbox_value(AT_NAIR, 2, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_NAIR, 2, HG_BASE_KNOCKBACK, 5);

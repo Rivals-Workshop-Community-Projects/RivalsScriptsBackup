@@ -210,9 +210,9 @@ set_hitbox_value(AT_NSPECIAL, 9, HG_DAMAGE, 15);
 set_hitbox_value(AT_NSPECIAL, 9, HG_ANGLE, 60);
 set_hitbox_value(AT_NSPECIAL, 9, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_NSPECIAL, 9, HG_KNOCKBACK_SCALING, .825);
-set_hitbox_value(AT_NSPECIAL, 9, HG_BASE_HITPAUSE, 7);
-set_hitbox_value(AT_NSPECIAL, 9, HG_HITPAUSE_SCALING, .4);
-set_hitbox_value(AT_NSPECIAL, 9, HG_HIT_SFX, asset_get("sfx_burnapplied"));
+set_hitbox_value(AT_NSPECIAL, 9, HG_BASE_HITPAUSE, 10); //was 7
+set_hitbox_value(AT_NSPECIAL, 9, HG_HITPAUSE_SCALING, .8); //was 0.4
+set_hitbox_value(AT_NSPECIAL, 9, HG_HIT_SFX, asset_get("sfx_ell_strong_attack_explosion"));
 set_hitbox_value(AT_NSPECIAL, 9, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_NSPECIAL, 9, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_NSPECIAL, 9, HG_PROJECTILE_DOES_NOT_REFLECT, 1);

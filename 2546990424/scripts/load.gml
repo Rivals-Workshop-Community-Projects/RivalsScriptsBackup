@@ -73,3 +73,4 @@ sprite_change_offset("dspecial_projectile", 62, 90);
 sprite_change_offset("dspecial_effect", 62, 90);
 sprite_change_offset("dspecial_mask", 62, 90);
 sprite_change_offset("arrows", 10, 9);
+sprite_change_offset("clap", 43, 40);

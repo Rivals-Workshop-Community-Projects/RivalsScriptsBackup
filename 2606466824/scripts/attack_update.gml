@@ -324,6 +324,8 @@ if (attack == AT_FSPECIAL){
 		}
 		if (dattackBounce > 5) {
 			vsp = clamp (vsp, -3, 3);
+		} else {
+			vsp = vsp * 0.95;
 		}
 	}
 	
@@ -416,14 +418,15 @@ if (attack == AT_FSPECIAL){
     }
 	
 	if (revengeMult > 1 && window == 2 && !has_hit && !has_hit_player) {
-		if (jump_pressed && false) {
+		if (jump_pressed) {
 			revengeMult = 1;
 			state = PS_DOUBLE_JUMP;
 			state_timer = 0;
 			fx = spawn_hit_fx(x, y, firehfx);
 			fx.depth = depth - 1;
-			hsp *= 0.8;
+			hsp *= (0.8 - (window_timer * 0.012));
 			vsp = -9.5;
+			destroy_hitboxes();
 		}
 	}
 } else {
@@ -672,11 +675,12 @@ if (attack == AT_NTHROW) {
 }
 
 if (attack == AT_USPECIAL){
+	uspecCancel--;
 	if (window == 1) {
 		set_window_value(AT_USPECIAL, 3, AG_WINDOW_GOTO, 8);
 		set_attack_value(AT_USPECIAL, AG_CATEGORY, 2);
 		target = noone;
-		uspecCancel = 0;
+		uspecCancel = -600;
 		if (window_timer == phone_window_end) {
 			array_push(phone_dust_query, [x, y, "jump", spr_dir]);		
 		}
@@ -701,7 +705,6 @@ if (attack == AT_USPECIAL){
 		if (special_pressed) {
 			set_window_value(AT_USPECIAL, 3, AG_WINDOW_GOTO, 4);
 			move_cooldown[AT_USPECIAL] = 999999;
-			uspecCancel = 0;
 		}
 	}
 	
@@ -710,20 +713,14 @@ if (attack == AT_USPECIAL){
 			window = 4;
 			window_timer = 0;
 		}
-		if (revengeMult > 1 && false) {
-			can_attack = true;
-			uspecCancel = 1;
-		}
 		if (window_timer == 8 && get_window_value(AT_USPECIAL, 3, AG_WINDOW_GOTO) == 8) {
 			set_state(PS_PRATFALL);
 			target = noone;	
-			uspecCancel = 0;
 		}
 	}
 	if (window == 4) {
 		set_window_value(AT_USPECIAL, 5, AG_WINDOW_HSPEED, 7 + (3*(right_down - left_down)*spr_dir));
 		uspecHSP = 7 + (3*(right_down - left_down)*spr_dir);
-		uspecCancel = 0;
 	}
 	if (window == 5) {
 		set_window_value(AT_USPECIAL, 5, AG_WINDOW_HSPEED, uspecHSP * clamp(((30-window_timer) / 15), 0.5, 1.2));
@@ -760,6 +757,7 @@ if (attack == AT_USPECIAL){
 				} else {
 					myFX = spawn_hit_fx( x, y-25, burst);
 				}
+				revengeHitShakeFrames = 2;
 				myFX.depth = depth + 1;
 				move_cooldown[AT_USPECIAL_2] = 50;
 				sound_play(asset_get("sfx_blow_heavy1"));
@@ -768,9 +766,28 @@ if (attack == AT_USPECIAL){
 			}
 		}
 	}
+	if (window == 6) {
+		can_jump = true;
+		can_attack = has_hit;
+		if (window_timer >= phone_window_end) {
+			set_state(PS_PRATFALL);
+		}
+		if (special_down && move_cooldown[AT_FSPECIAL] < 1) {
+			spr_dir = sign(right_down - left_down);
+			set_attack(AT_FSPECIAL);
+		}
+		if (!free) {
+			destroy_hitboxes();
+			window = 9;
+			window_timer = 0;
+			hsp *= 0.4;	
+			array_push(phone_dust_query, [x + 10*spr_dir, y, "land", spr_dir]);	
+		}
+	}
 	if (window == 7) {
 		vsp += 0.3;
-		hsp = clamp (hsp, -6, 6);
+		hsp = clamp (hsp, -5, 5);
+		hsp *= 0.92;
 		if (window_timer > 20) {
 			set_attack_value(AT_USPECIAL, AG_CATEGORY, 1);
 			//set_state(PS_PRATFALL);
@@ -803,14 +820,12 @@ if (attack == AT_USPECIAL){
 	} else {
 		fall_through = false;
 	}
-} 
 
-if (uspecCancel == 1 && attack != AT_USPECIAL && false) {
-	move_cooldown[AT_USPECIAL] = 999999;
-	spawn_hit_fx(x, y-20, empoweredFX);
-	revengeMult = 1;
-	uspecCancel = 0;
-}
+	if (uspecCancel < 0 && uspecCancel > -500) {
+		can_attack = true;
+		can_jump = true;
+	}
+} 
 
 if (attack == AT_DSPECIAL){	
 	 if (window == 1) {

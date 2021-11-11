@@ -67,6 +67,7 @@ var palette_names = [
   "Raw Lethal",
   "Taking Hell",
   "Saiyan",
+  "Rage Sthiccman",
   "Florida",
   "California",
 ];

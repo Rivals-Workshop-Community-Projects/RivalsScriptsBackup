@@ -326,6 +326,8 @@ in a Patch.
 	initSection("-Removed hitstun multiplier from USpecial last hit");	
 	initSection("-Adjusted smear on NAir sprite");	
 	initSection("-Added frame 1 swipe sound to BAir");
+	initSection("-Added additional window to Bair to fix timing on late hit");
+	initSection("-Adjusted size and shape of BAir sourspot hitbox during clean hit window");	
 	initSection("-BAir animation has been updated, adjusted the startup and added a smear");	
 	
 

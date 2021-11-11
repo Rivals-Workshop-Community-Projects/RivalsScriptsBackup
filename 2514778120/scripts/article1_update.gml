@@ -46,6 +46,9 @@ if (follow_type == 0) {
         depth = player_id.depth + force_depth;
     }
 }
+else {
+	depth = 0;
+}
 
 if (y >= room_height && (state == PS_HITSTUN || state == PS_DEAD)) {
     percent = hitpoints_max;
@@ -64,7 +67,7 @@ if ((x >= room_width || x <= 0) && (state == PS_HITSTUN || state == PS_DEAD)) {
 }
 
 //Kill the swords when the player is dead or respawning.
-if ((player_id.state == PS_DEAD || player_id.state == PS_RESPAWN) && player_id.state_timer == 1) {
+if ((player_id.state == PS_DEAD || player_id.state == PS_RESPAWN) && state != PS_RESPAWN) {
     follower_set_state(PS_RESPAWN);
     hitstun = 0;
     hitpause = 0;
@@ -328,11 +331,15 @@ if (state == PS_DEAD || state == PS_RESPAWN){
 if (go_back && !committed) {
     attack = AT_NSPECIAL;
     strong_charge = 0;
+    state_timer = 0;
     window_timer = 1;
     window = 14;
     go_back = false;
     player_id.sword_shared_sound = -1;
     follower_set_state(PS_ATTACK_AIR);
+	sprite_index = player_id.sword_attack_spr[sprite_type, attack];
+	hurtbox_mask = player_id.sword_attack_hurtbox_spr[sprite_type, attack];
+	image_index = 0;
 }
 
 #define animation_machine()

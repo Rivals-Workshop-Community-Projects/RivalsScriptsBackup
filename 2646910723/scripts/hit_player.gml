@@ -37,9 +37,9 @@ if my_hitboxID.hit_priority == 9  {
       with hit_player_obj {
              take_damage(player, -1, dmdamge)
          }
-    sound_play(sound_get("slicew1"),false,noone,.3 + my_hitboxID.damage/15 , 2.3 - min((hitstop*hitstop)/120 , 1.8) )
+    sound_play(sound_get("slicew1"),false,noone,.6 + my_hitboxID.damage/20 , 2.3 - min((hitstop*hitstop)/120 , 1.8) )
   }
-        sound_play(sound_get("slice"),false,noone, .3 + my_hitboxID.damage/15, 1 )
+        sound_play(sound_get("slice"),false,noone, .7 + my_hitboxID.damage/20, 1 )
     
 } else {
     
@@ -55,21 +55,22 @@ if my_hitboxID.hit_priority == 9  {
         with hit_player_obj {
              take_damage(player, -1, dmdamge)
          }
-    sound_play(sound_get("slap"),false,noone,.6, 2 - min((hitstop*hitstop)/100 , 1.5)  )
+    sound_play(sound_get("slap"),false,noone,.9, 2 - min((hitstop*hitstop)/100 , 1.5)  )
     }
-    sound_play(sound_get("slap"),false,noone,.4, 1)
+    
+    sound_play(sound_get("slap"),false,noone,.7, 1)
     
     } else {
        if bragesub >= 50 or ragemode {   
-       sound_play(sound_get("slam2"),false,noone, .5 + my_hitboxID.damage/20, 2 - min((hitstop*hitstop)/100 , 1.5)  )
-       sound_play(sound_get("slam1"),false,noone, .5 + my_hitboxID.damage/20)
+       sound_play(sound_get("slam2"),false,noone, .7 + my_hitboxID.damage/20, 2 - min((hitstop*hitstop)/100 , 1.5)  )
+       sound_play(sound_get("slam1"),false,noone, .7 + my_hitboxID.damage/20)
        
          with hit_player_obj {
              take_damage(player, -1, dmdamge)
          }
          
        } else {
-        sound_play(sound_get("slam1"),false,noone, .5 + my_hitboxID.damage/20, 2 - min((hitstop*hitstop)/100 , 1.5)  )   
+        sound_play(sound_get("slam1"),false,noone, .8 + my_hitboxID.damage/20, 2 - min((hitstop*hitstop)/100 , 1.5)  )   
        }
        
        

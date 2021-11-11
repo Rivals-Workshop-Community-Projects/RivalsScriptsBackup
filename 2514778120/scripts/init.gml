@@ -149,3 +149,5 @@ for (var i = 0; i < 2; i++) {
         sword_bar_target[i] = sword_id[i].hitpoints_max;
     }
 }
+
+miiverse_post = sprite_get("miiverse");

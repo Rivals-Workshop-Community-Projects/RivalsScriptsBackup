@@ -11,10 +11,10 @@
 
 //music file name, in your /sounds folder
 //if you want to keep it empty, keep the placeholder name and it will disallow selecting that music
-var music_1 = "music_loop3";
-var music_2 = "music_loop2";
+var music_1 = "Aleccio";
+var music_2 = "Zeroh";
 var music_3 = "music_loop";
-var music_4 = "NEO_IKARUS";
+var music_4 = "music_loop2";
 
 //confirmation sound to play when music has been changed
 //sound_get and asset_get both works here.
@@ -23,8 +23,8 @@ var confirm_sound = sound_get("EyeFlash");
 //music name title
 var music_title_1 = "BIG SHOT (Arrangement) - Aleccio";
 var music_title_2 = "BIG SHOT (Divided By Zero) - Zeroh";
-var music_title_3 = "BIG SHOT (Original) - Toby Fox";
-var music_title_4 = "Power of 'NEO' (IKARUS Remix) - BlastProcessed";
+var music_title_3 = "[[SPAMTON G. SPAMTON]] - BobTheGUYYYYY";
+var music_title_4 = "BIG SHOT (Original) - Toby Fox";
 
 //title name bar position
 //false for below GO, true for above GO

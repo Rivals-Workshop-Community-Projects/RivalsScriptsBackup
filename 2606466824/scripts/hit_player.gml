@@ -43,6 +43,9 @@ if (my_hitboxID.attack == AT_USPECIAL && hit_player_obj.state == PS_HITSTUN) {
 		//target.y = my_hitboxID.y;
 	}
 }
+if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 2) {
+	uspecCancel = 14;
+}
 
 if (revengeMult > 1 && get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_REVENGE_KB_MULTIPLIER) != 0) {
 	//take_damage(hit_player_obj.player, player, round(my_hitboxID.damage * (revengeMult - 1)));
@@ -91,14 +94,32 @@ if (revengeMult > 1 && get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num
 
 
 
-if (my_hitboxID.attack == AT_FAIR) {
+if (my_hitboxID.attack == AT_FAIR || my_hitboxID.attack == AT_UAIR ) {
 	sound_play(asset_get("sfx_blow_medium1"), false, noone, 1, 1);
 }
-if (my_hitboxID.attack == AT_BAIR) {
-	sound_play(asset_get("sfx_blow_heavy1"), false, noone, 0.5, 1);
+if (my_hitboxID.attack == AT_BAIR || my_hitboxID.attack == AT_DAIR || my_hitboxID.attack == AT_DATTACK) {
+	if (my_hitboxID.hbox_num == 1) {
+		sound_play(asset_get("sfx_blow_heavy1"), false, noone, 0.9, 1);
+	} else {
+		sound_play(asset_get("sfx_blow_medium1"), false, noone, 1, 1);	
+	}
 }
-if (my_hitboxID.attack == AT_DAIR) {
-	sound_play(asset_get("sfx_blow_heavy1"), false, noone, 0.5, 1);
+if (my_hitboxID.attack == AT_UTHROW && my_hitboxID.hbox_num > 1) {
+	sound_play(asset_get("sfx_blow_heavy1"), false, noone, 1, 1);
+}
+if (my_hitboxID.attack == AT_NTHROW && my_hitboxID.hbox_num > 1) {
+	sound_play(asset_get("sfx_blow_heavy1"), false, noone, 1, 1);
+	sound_play(asset_get("sfx_blow_heavy2"), false, noone, 1, 1);
+}
+if (my_hitboxID.attack == AT_DTHROW && my_hitboxID.hbox_num > 1) {
+	sound_play(asset_get("sfx_blow_medium1"), false, noone, 1, 1);
+}
+if (my_hitboxID.attack == AT_FTHROW && my_hitboxID.hbox_num > 1) {
+	sound_play(asset_get("sfx_bird_nspecial2"), false, noone, 1, 0.9);
+	sound_play(asset_get("sfx_bird_nspecial2"), false, noone, 1, 0.8);
+}
+if (my_hitboxID.attack == AT_NAIR || my_hitboxID.attack == AT_UTILT || my_hitboxID.attack == AT_DTILT) {
+	sound_play(asset_get("sfx_blow_medium3"), false, noone, 0.5, 1);
 }
 
 if (my_hitboxID.attack == AT_FSTRONG) {
@@ -109,7 +130,8 @@ if (my_hitboxID.attack == AT_FSTRONG) {
 	}
 }
 if (my_hitboxID.attack == AT_USTRONG) {
-	sound_play(asset_get("sfx_blow_heavy1"), false, noone, 1, 1);
+	sound_play(sound_get("punch_heavy"), false, noone, 0.5 + (0.3 * my_hitboxID.hbox_num), 0.88 + (0.07 * my_hitboxID.hbox_num));
+	sound_play(asset_get("sfx_blow_heavy2"), false, noone, 0.5, 1);
 }
 
 if (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num == 4) {

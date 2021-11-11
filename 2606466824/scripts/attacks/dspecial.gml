@@ -40,12 +40,12 @@ set_window_value(AT_DSPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL, 4, AG_WINDOW_SFX, sound_get("popoff_usmash"));
 
 set_window_value(AT_DSPECIAL, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 5, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_DSPECIAL, 5, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_DSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 6);
 
 set_window_value(AT_DSPECIAL, 6, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 6, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_DSPECIAL, 6, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_DSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 7);
 
@@ -82,8 +82,8 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW, 5);
 set_hitbox_value(AT_DSPECIAL, 2, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_Y, -30);
-set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 150);
-set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 120);
+set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 180);
+set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 140);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 55);
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE_FLIPPER, 3);

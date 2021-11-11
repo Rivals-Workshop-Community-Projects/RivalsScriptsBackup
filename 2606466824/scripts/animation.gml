@@ -132,3 +132,7 @@ if (state == PS_SPAWN && should_do_intro == true) {
 		draw_y = 0;
     }
 }
+
+if (state == PS_DOUBLE_JUMP) {
+	hurtboxID.sprite_index = sprite_get("idleh_hurt");
+}

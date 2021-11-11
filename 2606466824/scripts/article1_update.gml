@@ -259,9 +259,9 @@ if (state == 4){
 		state = 2;
 		state_timer = 2;
 	}
-	if ((grabbedPlayerID.state == PS_ATTACK_GROUND || grabbedPlayerID.state == PS_ATTACK_GROUND) && (grabbedPlayerID.attack == AT_DATTACK || grabbedPlayerID.attack == AT_FSPECIAL) && grabbedPlayerID.dattackBounce < 10) {
-		grabbedPlayerID.x = (2*grabbedPlayerID.x + (x - (40*throwDirection)))/3;
-		grabbedPlayerID.y = (2*grabbedPlayerID.y + (y - 30))/3;
+	if ((grabbedPlayerID.state == PS_ATTACK_GROUND || grabbedPlayerID.state == PS_ATTACK_AIR) && (grabbedPlayerID.attack == AT_DATTACK || grabbedPlayerID.attack == AT_FSPECIAL) && grabbedPlayerID.dattackBounce < 10) {
+		grabbedPlayerID.x = (2*grabbedPlayerID.x + (x - (30*throwDirection)))/3;
+		grabbedPlayerID.y = (2*grabbedPlayerID.y + (y - 10))/3;
 		grabbedPlayerID.hsp = 0;
 		grabbedPlayerID.vsp = -2;
 		print("hi");

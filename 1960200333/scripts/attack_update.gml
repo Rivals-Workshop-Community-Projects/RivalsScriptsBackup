@@ -256,15 +256,17 @@ if (attack == AT_DSPECIAL)
 //-------------------- Normals ----------------------
 
 if (attack == AT_DATTACK){
-    
-    if (window >= 2 && window <= 3 && has_hit_player == true && dattack_target.hitstun > 0){ //Dash attack grab code courtesy of Muno
-        dattack_target.x = lerp(dattack_target.x, x + (42*spr_dir), 0.7);
-        dattack_target.y = lerp(dattack_target.y, y - 16, 1);
+    if (window == 1){
+        reset_attack_value(AT_DATTACK, AG_NUM_WINDOWS);
     }
-    
-    if (window == 6 && was_parried = false)
-    {
-        iasa_script();
+    if (window >= 2 && window <= 6 && has_hit_player == true && dattack_target.hitstun > 0){ //Dash attack grab code courtesy of Muno
+        dattack_target.x = lerp(dattack_target.x, x + (42*spr_dir), 0.8);
+        dattack_target.y = lerp(dattack_target.y, y - 16, 0.5);
+        if (window == 3 && window_timer >= get_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH)-3){
+            window = 5;
+            window_timer = 0;
+            set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 7);
+        }
     }
     
 }

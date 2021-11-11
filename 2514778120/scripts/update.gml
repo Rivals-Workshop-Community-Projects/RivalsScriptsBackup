@@ -29,6 +29,7 @@ else {
                     || (get_attack_value(sword_id[i].attack, AG_CATEGORY) == 0 && free)
                     || (get_attack_value(sword_id[i].attack, AG_CATEGORY) == 2)) {
                     sword_id[i].next_state = PS_IDLE;
+                    destroy_sword_hitboxes()
                 }
             }
         }
@@ -127,3 +128,13 @@ with (pHitBox) {
     }
 }
 
+#define destroy_sword_hitboxes()
+
+with (pHitBox) {
+    if ("sword_owner" in self && player_id == other.id && type == 1) {
+        if (instance_exists(sword_owner)) {	
+        	instance_destroy(id);
+        	continue;
+        }
+    }
+}

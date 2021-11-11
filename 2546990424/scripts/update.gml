@@ -109,7 +109,7 @@ if (whirlwind_punch == true){
 }
 
 //Resets the DSpecial Cooldown
-if (state == PS_WALL_JUMP || state == PS_HITSTUN || !free){
+if (state == PS_WALL_JUMP || !free){
 	move_cooldown[AT_DSPECIAL] = 0;
 }
 

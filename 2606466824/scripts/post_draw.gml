@@ -4,7 +4,7 @@ user_event(14);
 if (phone_cheats[CHEAT_DISPLAY] == 1) {
 	draw_debug_text( x - 10, y+20, "x" + string(revengeMult));
 }
-//draw_debug_text( x, y, string( window ));
+//draw_debug_text( x, y, string( vsp ));
 //draw_debug_text( x, y+20, string( window_timer ));
 
 //draw_debug_text( x, y+50, string( revengeTarget ));

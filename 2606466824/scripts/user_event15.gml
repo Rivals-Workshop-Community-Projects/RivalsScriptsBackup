@@ -405,6 +405,37 @@ initSection("Trummel & Alto, Otto, Steve, Link");
 
 
 
+initPatch("1.08", "November 10th, 2021");
+initHeader("General");
+initSection("* Added an alt for LessTime, who placed Top 8 in Blueberry Bout with Incineroar!");
+initSection("* Hit SFX adjusted on a lot of moves, did more layering with base cast hit sounds.");
+initSection("* Screenshake adjusted on all throws.");
+initSection("- Did some slight tweaking to air stats, should feel *slightly* slower now.");
+initHeader("DSpecial");
+initSection("- When revenging a projectile, players can only get hit by the smaller 'all-target' counterattack hitbox.");
+initSection("- When revenging a melee hit, increased the endlag of the counterattack (12 -> 18).");
+initSection("+ When revenging a projectile, decreased the endlag of the counterattack (12 -> 9).");
+initHeader("FSpecial");
+initSection("- Startup increased (13f -> 18f).");
+initSection("- Endlag increased (22f -> 25f). Fall speed slightly reduced during endlag.");
+initSection("+ If you have a Revenge charge, you can spend the Revenge charge to jump-cancel this move during the active frames if you haven't hit anyone.");
+initSection("* Fixed a bug where using an aerial FSpecial into your own ropes to bounce off would not properly move Incineroar to the ropes' throw point.");
+initHeader("NAir");
+initSection("* Strong Hit Active Frames reduced (3 -> 2).");
+initHeader("USpecial");
+initSection("- Reduced Knockback on the spike (8+.6 -> 8+.4).");
+initSection("- Reduced Hitstun Multiplier on the spike (1 -> .9).");
+initSection("* Changed Launch Angle of the weak hitbox of the descent (40 -> 50).");
+initSection("- Incineroar will now go into pratfall after using the descending part of USpecial.");
+initSection("+ During the endlag of the descending part, you can cancel into jump or FSpecial if you have those resources.");
+initSection("+ During the endlag of the descending part, can cancel into an attack if you hit the spike.");
+initSection("* Reduced the duration of downwards motion, increased the endlag (cancel) window (30, 10 -> 25, 15).");
+initSection("- Incineroar will now go into Soft Landing(15f lag) if you land during the endlag (originally 6f landing lag).");
+initSection("- Reduced the amount of horizontal movement allowed during the bounce portion of the move.");
+initSection("* Added slight screenshake when crash landing during this move.");
+initHeader("UStrong");
+initSection("- Smear visual made smaller. Hitbox sizes reduced to match.");
+
 initPatch("1.072", "October 23rd, 2021");
 initHeader("General");
 initSection("* Will no longer repeatedly play the intro during cutscenes on Adventure Mode stages.");

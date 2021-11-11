@@ -40,6 +40,7 @@ set_hitbox_value(AT_FTHROW, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FTHROW, 1, HG_TECHABLE, 3);
 set_hitbox_value(AT_FTHROW, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_FTHROW, 1, HG_MUNO_HITBOX_EXCLUDE, 1);
+set_hitbox_value(AT_FTHROW, 1, HG_EXTRA_CAMERA_SHAKE, -1);
 
 set_hitbox_value(AT_FTHROW, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_FTHROW, 2, HG_HITBOX_TYPE, 1);

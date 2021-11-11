@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 20 );
+set_num_palettes( 21 );
 
 // Blue
 set_color_profile_slot( 1, 0, 102, 112, 217 ); //Energy - eyes
@@ -206,25 +206,35 @@ set_color_profile_slot( 17, 5, 16, 39, 94 ); //InnerCoat
 set_color_profile_slot( 17, 6, 255, 206, 201 ); //Skin
 set_color_profile_slot( 17, 7, 255, 255, 255 ); //Eye sub
 
+// Rage Sthicc
+set_color_profile_slot( 18, 0, 0, 230, 103 ); //Energy - eyes
+set_color_profile_slot( 18, 1, 11, 84, 76 ); //Hair
+set_color_profile_slot( 18, 2, 21, 99, 90 ); //Coat
+set_color_profile_slot( 18, 3, 0, 59, 53 ); //Decor
+set_color_profile_slot( 18, 4, 0, 11, 23 ); //Line
+set_color_profile_slot( 18, 5, 0, 11, 23 ); //InnerCoat
+set_color_profile_slot( 18, 6, 92, 181, 172 ); //Skin
+set_color_profile_slot( 18, 7, 140, 255, 169 ); //Eye sub
+
 // Florida
-set_color_profile_slot( 18, 0, 255, 123, 0 ); //Energy - eyes
-set_color_profile_slot( 18, 1, 208, 0, 255 ); //Hair
-set_color_profile_slot( 18, 2, 255, 123, 0 ); //Coat
-set_color_profile_slot( 18, 3, 208, 0, 255 ); //Decor
-set_color_profile_slot( 18, 4, 0, 0, 0 ); //Line
-set_color_profile_slot( 18, 5, 0, 255, 0 ); //InnerCoat
-set_color_profile_slot( 18, 6, 0, 255, 0 ); //Skin
-set_color_profile_slot( 18, 7, 255, 255, 255 ); //Eye sub
+set_color_profile_slot( 19, 0, 255, 123, 0 ); //Energy - eyes
+set_color_profile_slot( 19, 1, 208, 0, 255 ); //Hair
+set_color_profile_slot( 19, 2, 255, 123, 0 ); //Coat
+set_color_profile_slot( 19, 3, 208, 0, 255 ); //Decor
+set_color_profile_slot( 19, 4, 0, 0, 0 ); //Line
+set_color_profile_slot( 19, 5, 0, 255, 0 ); //InnerCoat
+set_color_profile_slot( 19, 6, 0, 255, 0 ); //Skin
+set_color_profile_slot( 19, 7, 255, 255, 255 ); //Eye sub
 
 // California
-set_color_profile_slot( 19, 0, 255, 0, 0 ); //Energy - eyes
-set_color_profile_slot( 19, 1, 0, 0, 255 ); //Hair
-set_color_profile_slot( 19, 2, 255, 0, 0 ); //Coat
-set_color_profile_slot( 19, 3, 0, 0, 255 ); //Decor
-set_color_profile_slot( 19, 4, 0, 0, 0 ); //Line
-set_color_profile_slot( 19, 5, 251, 255, 0 ); //InnerCoat
-set_color_profile_slot( 19, 6, 251, 255, 0 ); //Skin
-set_color_profile_slot( 19, 7, 255, 255, 255 ); //Eye sub
+set_color_profile_slot( 20, 0, 255, 0, 0 ); //Energy - eyes
+set_color_profile_slot( 20, 1, 0, 0, 255 ); //Hair
+set_color_profile_slot( 20, 2, 255, 0, 0 ); //Coat
+set_color_profile_slot( 20, 3, 0, 0, 255 ); //Decor
+set_color_profile_slot( 20, 4, 0, 0, 0 ); //Line
+set_color_profile_slot( 20, 5, 251, 255, 0 ); //InnerCoat
+set_color_profile_slot( 20, 6, 251, 255, 0 ); //Skin
+set_color_profile_slot( 20, 7, 255, 255, 255 ); //Eye sub
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

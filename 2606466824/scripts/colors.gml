@@ -291,9 +291,9 @@ set_color_profile_slot( 26, 0, 139, 227, 235 ); //red fur
 set_color_profile_slot( 26, 1, 73, 72, 77 ); //black fur
 set_color_profile_slot( 26, 2, 156, 185, 214 ); //grey fur
 set_color_profile_slot( 26, 3, 247, 247, 128 ); //fire light
-set_color_profile_slot( 26, 4, 244, 161, 83 ); //fire med
-set_color_profile_slot( 26, 5, 237, 164, 100 ); //fire dark
-set_color_profile_slot( 26, 6, 230, 123, 15 ); //fire outline
+set_color_profile_slot( 26, 4, 244, 206, 83 ); //fire med
+set_color_profile_slot( 26, 5, 230, 127, 39 ); //fire dark
+set_color_profile_slot( 26, 6, 209, 98, 14 ); //fire outline
 set_color_profile_slot( 26, 7, 244, 216, 5 ); //eyes
 
 

@@ -24,7 +24,7 @@ if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
 //UTilt SFX and VFX
 if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_UTILT
 && window == 2 && window_timer == 0 && !hitpause){
-	spawn_hit_fx( x, y-80, 254);
+	spawn_hit_fx( x, y-90, clap_vfx);
     sound_play(asset_get("sfx_birdclap"));
 }
 

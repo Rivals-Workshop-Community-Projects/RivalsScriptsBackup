@@ -40,6 +40,7 @@ set_hitbox_value(AT_NTHROW, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_NTHROW, 1, HG_TECHABLE, 3);
 set_hitbox_value(AT_NTHROW, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_NTHROW, 1, HG_MUNO_HITBOX_EXCLUDE, 1);
+set_hitbox_value(AT_NTHROW, 1, HG_EXTRA_CAMERA_SHAKE, -1);
 
 set_hitbox_value(AT_NTHROW, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_NTHROW, 2, HG_HITBOX_TYPE, 1);
@@ -61,3 +62,4 @@ set_hitbox_value(AT_NTHROW, 2, HG_HIT_SFX, sound_get("punch_heavy"));
 set_hitbox_value(AT_NTHROW, 2, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_NTHROW, 2, HG_REVENGE_KB_MULTIPLIER, 1.2);
 set_hitbox_value(AT_NTHROW, 2, HG_MUNO_HITBOX_MISC_ADD, "Against airborne foes: KB 8+.8");
+set_hitbox_value(AT_NTHROW, 2, HG_EXTRA_CAMERA_SHAKE, 1);
