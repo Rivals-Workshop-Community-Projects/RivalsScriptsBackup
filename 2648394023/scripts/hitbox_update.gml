@@ -1,7 +1,11 @@
 switch(attack){
 	
 	case AT_NSPECIAL:
-
+		
+		if abs(hsp){
+			spr_dir = sign(hsp);
+		}
+		
 		if hbox_num == 4{ // homing radio wave
 			var move_angle = point_direction(0, 0, hsp, vsp);
 			var move_speed = point_distance(0, 0, hsp, vsp);

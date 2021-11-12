@@ -5,6 +5,9 @@ hitstun_hurtbox_spr = sprite_get("stand_box");
 
 Hikaru_Title = "Lucah"
 
+isLucah = 0
+Lucahnum = 0
+
 nname = "Lucah"
 ncode1 = "Formerly known as Natalie."
 ncode2 = "An angel[?] trained by [???] organization."

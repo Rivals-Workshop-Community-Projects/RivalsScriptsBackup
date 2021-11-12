@@ -50,14 +50,15 @@ set_num_hitboxes(AT_NSPECIAL, 0);
 for (var i = 1; i < 5; i++){
 	set_hitbox_value(AT_NSPECIAL, i, HG_HITBOX_TYPE, 2);
 	set_hitbox_value(AT_NSPECIAL, i, HG_WINDOW, 4);
-	set_hitbox_value(AT_NSPECIAL, i, HG_WIDTH, 24);
-	set_hitbox_value(AT_NSPECIAL, i, HG_HEIGHT, 24);
+	// set_hitbox_value(AT_NSPECIAL, i, HG_WIDTH, 24);
+	// set_hitbox_value(AT_NSPECIAL, i, HG_HEIGHT, 24);
 	set_hitbox_value(AT_NSPECIAL, i, HG_PRIORITY, 1);
 	set_hitbox_value(AT_NSPECIAL, i, HG_HIT_PARTICLE_NUM, 1);
-	set_hitbox_value(AT_NSPECIAL, i, HG_PROJECTILE_MASK, -1);
+	// set_hitbox_value(AT_NSPECIAL, i, HG_PROJECTILE_MASK, -1);
 	set_hitbox_value(AT_NSPECIAL, i, HG_PROJECTILE_ANIM_SPEED, 1/3);
 	set_hitbox_value(AT_NSPECIAL, i, HG_PROJECTILE_GROUND_BEHAVIOR, 2);
 	set_hitbox_value(AT_NSPECIAL, i, HG_PROJECTILE_WALL_BEHAVIOR, 2);
+	set_hitbox_value(AT_NSPECIAL, i, HG_LIGHT_GIMMICK, 2);
 }
 
 set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 30);
@@ -68,6 +69,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("photon_uv"));
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("photon_uv"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 18);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_weak"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, vfx_hit_small);
@@ -88,10 +90,10 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, vfx_hit_small);
 set_hitbox_value(AT_NSPECIAL, 2, HG_MUNO_HITBOX_NAME, "Infrared");
 
 set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 45);
-set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, 32);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, 32);
+// set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, 32);
+// set_hitbox_value(AT_NSPECIAL, 3, HG_HEIGHT, 32);
 set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE, 45);
-set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE_FLIPPER, 3);
+// set_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_NSPECIAL, 3, HG_DAMAGE, 10);
@@ -102,15 +104,14 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("photon_uv_gam
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, 23);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, vfx_hit_med);
-set_hitbox_value(AT_NSPECIAL, 3, HG_LIGHT_GIMMICK, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_MUNO_HITBOX_MISC_ADD, light_gimmick_desc);
 set_hitbox_value(AT_NSPECIAL, 3, HG_MUNO_HITBOX_NAME, "UV: Gamma");
 
 set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 180);
-set_hitbox_value(AT_NSPECIAL, 4, HG_WIDTH, 48);
-set_hitbox_value(AT_NSPECIAL, 4, HG_HEIGHT, 48);
+// set_hitbox_value(AT_NSPECIAL, 4, HG_WIDTH, 48);
+// set_hitbox_value(AT_NSPECIAL, 4, HG_HEIGHT, 48);
 set_hitbox_value(AT_NSPECIAL, 4, HG_ANGLE, 45);
-set_hitbox_value(AT_NSPECIAL, 4, HG_ANGLE_FLIPPER, 3);
+// set_hitbox_value(AT_NSPECIAL, 4, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_NSPECIAL, 4, HG_KNOCKBACK_SCALING, 0.6);
 set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 9);
@@ -121,6 +122,5 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_SPRITE, sprite_get("photon_ir_rad
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_HSPEED, 5);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
 set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT, vfx_hit_med);
-set_hitbox_value(AT_NSPECIAL, 4, HG_LIGHT_GIMMICK, 2);
 set_hitbox_value(AT_NSPECIAL, 4, HG_MUNO_HITBOX_MISC_ADD, light_gimmick_desc);
 set_hitbox_value(AT_NSPECIAL, 4, HG_MUNO_HITBOX_NAME, "IR: Radio");

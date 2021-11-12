@@ -67,7 +67,7 @@ if ((x >= room_width || x <= 0) && (state == PS_HITSTUN || state == PS_DEAD)) {
 }
 
 //Kill the swords when the player is dead or respawning.
-if ((player_id.state == PS_DEAD || player_id.state == PS_RESPAWN) && state != PS_RESPAWN) {
+if ((player_id.state == PS_DEAD || player_id.state == PS_RESPAWN) && player_id.state_timer == 1) {
     follower_set_state(PS_RESPAWN);
     hitstun = 0;
     hitpause = 0;

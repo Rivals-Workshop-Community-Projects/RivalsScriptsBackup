@@ -104,6 +104,10 @@ if ir_change_timer ir_change_timer--;
 
 
 
+if phone_landing can_dspecial = 1;
+
+
+
 if phone_attacking switch(attack){
 	case AT_FSTRONG:
 	case AT_USTRONG:

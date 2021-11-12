@@ -5,6 +5,30 @@
         }   
         
 
+
+if attack == AT_FAIR && window == 1 && window_timer == 1 && !hitpause {
+	sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,1.5)
+	sound_play(asset_get("sfx_ice_on_player"),false,noone,1,1.2)
+}
+
+if attack == AT_UAIR && window == 1 && window_timer == 1 && !hitpause{
+	sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1,.9)
+}
+
+
+if attack == AT_UAIR && window == 1 && window_timer == 10 && !hitpause{
+		sound_play(asset_get("sfx_swipe_medium2"),false,noone,1,.9)
+}
+
+if attack == AT_BAIR && window == 1 && window_timer == 1 && !hitpause{
+	sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1,1.15)
+}
+
+
+if attack == AT_DAIR && window == 1 && window_timer == 1 && !hitpause{
+	sound_play(asset_get("sfx_clairen_spin"),false,noone,1,.8)
+}
+
 if attack == AT_FAIR && has_hit && !hitpause {
 window_timer += 0.2	
 }
@@ -455,6 +479,7 @@ if get_player_color(player) == 10 {
          }
          
          if state_timer > 205 && !free && !hitpause {
+         	attack_end()
          	set_state(PS_LAND)
          	state_timer = 0
          }
@@ -516,9 +541,11 @@ if get_player_color(player) == 10 {
         
 
         if attack == AT_DSTRONG or attack == AT_FSTRONG {
+        	
          if window == 2 && window_timer = 1 {
              sound_play(asset_get("sfx_bird_downspecial"))
          }   
+         
         }
         
         if attack == AT_USTRONG {

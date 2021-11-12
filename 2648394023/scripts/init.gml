@@ -104,6 +104,7 @@ nspecial_charge_max = 3;
 nspecial_pulse_timer = 0;
 nspecial_pulse_number = 0;
 nspecial_pulse_alpha = 0;
+can_dspecial = 1;
 
 wing_sound = noone;
 drawing_wings = 0; // init_shader

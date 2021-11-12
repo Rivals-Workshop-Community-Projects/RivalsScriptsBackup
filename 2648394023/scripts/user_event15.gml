@@ -189,7 +189,7 @@ initWords("The ownership of the photons is determined by the last player to hit 
 initTip("USpecial: Two-Slit Experiment");
 initWords("By USpecialing into a prism, you can aim a second time to extend your recovery or change direction. A fully-charged photon will also shoot out in the opposite direction.");
 initWords("There's no way for an enemy to tell which arrow is you and which one is the photon; use the Uncertainty Principle of quantum mechanics to deceive your foes.");
-initWords("To help with tricky inputs where you want to USpecial left but then emerge rightward from the prism or vice-versa, hold the shield button to invert your stick inputs when shooting out of the prism.");
+initWords("The first USpecial reads its left/right input at the moment you input the attack, so you're free to hold a different angle to prepare for the prism dash right away.");
 
 initTip("DSpecial: Bouncing Butterfly");
 initWords("If you connect with DSpecial, you'll skip the pratfall and be actionable very quickly for combos.");
@@ -253,6 +253,42 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.2", "11 November, 2021");
+initHeader("USpecial - Bugfixes");
+initSection("Corrected an issue with the pratland change from v1.1.");
+
+initPatch("1.1", "11 November, 2021");
+initHeader("NSpecial - Buffs, Nerfs, Adjustments");
+initSection("Uncharged photons now inflict light hitstun and fully charge prisms.
+Glare now loses the NSpecial charge when he gets parried.
+Removed angle flipper from charged photons.
+Photons now use a sprite mask for collision, to make them connect better at close range.");
+initHeader("FSpecial - Nerfs, Bugfixes");
+initSection("Thrown prism is no longer transcendent.
+UV prism auto-aim no longer targets invisible (e.g. dead) players.");
+initHeader("USpecial - QoL, Bugfixes");
+initSection("USpecial now reads its left/right input during the first three frames of the attack - there's now more time to aim the prism dash.
+Removed the shield input to reverse the direction of the prism USpecial.
+No longer cancels into pratland at strange times.");
+initHeader("DSpecial - Buffs");
+initSection("You can now use a mini DSpecial if you've already used DSpecial before touching the ground / etc.");
+initHeader("Jab - Adjustments");
+initSection("Hit 1 base knockback 4 --> 5.");
+initHeader("FTilt - Buffs, Bugfixes");
+initSection("Hit 2 damage 4 --> 7.
+Follow-ups now work with tilt stick.");
+initHeader("UTilt, DTilt - Buffs, Adjustments");
+initSection("Damage 5 --> 7.
+Reduced horizontal push when using these attacks.");
+initHeader("FAir - Buffs");
+initSection("Hitbox size increased, position adjusted.");
+initHeader("FStrong - Buffs");
+initSection("Damage 10 --> 12.
+Startup 20 --> 15.
+Hitbox's inward range increased.");
+initHeader("DStrong - Nerfs");
+initSection("Endlag 14 --> 20.");
 
 initPatch("1.0", "07 November, 2021");
 initHeader("General");

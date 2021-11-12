@@ -4,6 +4,7 @@ if move_cooldown[AT_FSPECIAL_2] > 0 && state_cat == SC_HITSTUN{
    	move_cooldown[AT_FSPECIAL_2]  += 1
 }
 
+
 if !instance_exists(hit_player_obj){
 hit_player_obj = self
 }
@@ -18,10 +19,39 @@ if raged && raged != 3 {
 
 
 
-if get_gameplay_time() == 1 {
+if get_gameplay_time() == 4 {
 		spawn_hit_fx(x,y-30,304)
   sound_play(sound_get("respawn"),false,noone,1.3)
   sound_play(sound_get("pdodge"),false,noone,1.3)
+  
+  
+  with oPlayer {
+  	if id != other.id {
+  		if "isLucah" in self {
+  			other.isLucah = 1
+  			
+  			switch player {
+  				case 1 :
+  			     Lucahnum = make_color_rgb(255,20,20)
+  			    break;
+  			     
+  			    case 2 :
+  			     Lucahnum = make_color_rgb(50,255,40)
+  			    break;
+
+  			    case 3 :
+  			     Lucahnum = make_color_rgb(250,190,190)
+  			    break;
+
+  			    case 4 :
+  			     Lucahnum = make_color_rgb(20,20,155)
+  			    break;
+  			}
+  			
+  		}
+  	}
+  }
+  
   
 }
 

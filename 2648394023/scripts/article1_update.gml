@@ -217,7 +217,7 @@ if h != noone{
 		ir_loops_left = 0;
 		
 		var angle = h.player_id.joy_pad_idle ? 90 : h.player_id.joy_dir;
-		angle += 180 * h.player_id.shield_down;
+		// angle += 180 * h.player_id.shield_down;
 		
 		h.player_id.move_angle = angle;
 		attack_direction = angle + 180;
@@ -366,7 +366,7 @@ return hfx;
 var target = noone;
 var record = 1000000;
 
-with oPlayer{
+with oPlayer if visible{
 	if (get_player_team(player) != get_player_team(excluded)){
 		var d = point_distance(x, y - char_height / 2, other.x, other.y);
 		if d < record{

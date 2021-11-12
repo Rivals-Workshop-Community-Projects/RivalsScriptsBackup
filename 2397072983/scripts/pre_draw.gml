@@ -19,8 +19,11 @@ if style != 4 && (!attacking or (attacking && (attack != AT_FSPECIAL or (attack 
 	
 }
 
-shader_start();
 
+
+
+if Lucahnum == 0 {
+	shader_start();
 		draw_sprite_ext(sprite_index, image_index, x + 2 - random_func(1,4,true) , y - 2 + random_func(2,4,true)  , spr_dir, 1, 0 , c_black , 0.4);
 		draw_sprite_ext(sprite_index, image_index, x - 2 + random_func(1,4,true) , y + 2 - random_func(2,4,true)  , spr_dir, 1, 0 , c_black , 0.4);
 		draw_sprite_ext(sprite_index, image_index-1, x + 2 - shsp*1.5 - random_func(1,4,true) , y - 2 - svsp*1.5 + random_func(2,4,true)  , spr_dir, 1, 0 , c_black , 0.1);
@@ -29,6 +32,25 @@ shader_start();
 	draw_sprite_ext(sprite_get("aura"), 0, x - 100 - shsp*1.1, y  - 160 - svsp *1.1, 2, 2, 0 , -1 , 0.2);
 	draw_sprite_ext(sprite_get("aura"), 0, x - 75 - shsp*1.2 , y - 120 - svsp *1.2, 1.5, 1.5, 0 , -1 , 0.2);
 	draw_sprite_ext(sprite_get("aura"), 0, x - 50 - shsp*1.3 , y - 80 - svsp *1.3, 1, 1, 0 , -1 , 0.2);
+	shader_end() 
+}  else {
+	
+   	gpu_set_fog(1, Lucahnum, 0, 1);
+
+		draw_sprite_ext(sprite_index, image_index, x + 2  , y    , spr_dir, 1, 0 , c_white , 1);
+		draw_sprite_ext(sprite_index, image_index, x - 2  , y    , spr_dir, 1, 0 , c_white , 1);
+		draw_sprite_ext(sprite_index, image_index, x   , y + 2   , spr_dir, 1, 0 , c_white , 1);
+		draw_sprite_ext(sprite_index, image_index, x   , y - 2   , spr_dir, 1, 0 , c_white , 1);
+		draw_sprite_ext(sprite_index, image_index-1, x + 2 - shsp*1.5 - random_func(1,4,true) , y - 2 - svsp*1.5 + random_func(2,4,true)  , spr_dir, 1, 0 , c_white , 0.4);
+		draw_sprite_ext(sprite_index, image_index-1, x - 2 - shsp*1.1 + random_func(1,4,true) , y + 2 - svsp*1.1 - random_func(2,4,true)  , spr_dir, 1, 0 , c_white , 0.4);
+
+	gpu_set_fog(0, Lucahnum, 0, 0);
+	
+	
+}
+
+
+shader_start();
 
 if attacking && attack == AT_DSPECIAL && free {
 	   draw_sprite_ext(sprite_get("plat"), 0, x , y  , 1, 1, 0 , c_white , 1);	

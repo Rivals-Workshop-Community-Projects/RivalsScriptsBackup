@@ -58,14 +58,36 @@ switch(attack){
 	case AT_FTILT:
 		
 		if window == 3{
+			var in_atk = attack_pressed;
+			var in_up = up_down;
+			var in_down = down_down;
+			
+			if up_stick_pressed{
+				in_atk = 1;
+				in_up = 1;
+				in_down = 0;
+			}
+			
+			if down_stick_pressed{
+				in_atk = 1;
+				in_up = 0;
+				in_down = 1;
+			}
+			
+			if left_stick_pressed || right_stick_pressed{
+				in_atk = 1;
+				in_up = 0;
+				in_down = 0;
+			}
+			
 			if jump_pressed && has_hit && !was_parried{
 				attack_end();
 				set_state(PS_JUMPSQUAT);
 			}
-			else if attack_pressed{
+			else if in_atk{
 				var was_was_parried = was_parried;
 				attack_end();
-				switch(down_down - up_down){
+				switch(in_down - in_up){
 					case 1:
 						var old_spr_dir = spr_dir;
 						set_attack(AT_DTILT);
@@ -98,7 +120,7 @@ switch(attack){
 	case AT_UTILT:
 		if window == 1{
 			if window_timer == 1 hsp = 0;
-			hsp = 2 * spr_dir;
+			// hsp = 2 * spr_dir;
 			if window_timer == phone_window_end{
 				y -= 32;
 				vsp = -4;
@@ -367,8 +389,10 @@ switch(attack){
 					sound_play(asset_get("sfx_ori_ustrong_launch"));
 					sound_play(asset_get("sfx_orca_snow_evaporate"));
 				}
-				if window_timer == phone_window_end{
+				if window_timer == 3{
 					move_angle = 90 - 20 * (right_down - left_down);
+				}
+				if window_timer == phone_window_end{
 					hsp = lengthdir_x(48, move_angle);
 					vsp = lengthdir_y(48, move_angle);
 					var h = spawn_hit_fx(x, y, vfx_sparkles_up);
@@ -423,7 +447,7 @@ switch(attack){
 				}
 				break;
 		}
-		if window > 2 && !free{
+		if window > 2 && !free && !hitpause && vsp >= 0{
 			attack_end();
 			set_state(PS_PRATLAND);
 		}
@@ -437,17 +461,26 @@ switch(attack){
 		
 		switch(window){
 			case 1:
-				hsp *= 0.8;
-				vsp *= 0.8;
-				if window_timer == phone_window_end{
-					spawn_hit_fx(x, y, vfx_sparkles_up);
-					hsp = 8 * spr_dir;
-					vsp = -7;
-					x += hsp * 2;
-					y += vsp * 2;
+				if !can_dspecial{
+					window = 2;
+					window_timer = 8;
+				}
+				else{
+					hsp *= 0.8;
+					vsp *= 0.8;
+					
+					if window_timer == phone_window_end{
+						spawn_hit_fx(x, y, vfx_sparkles_up);
+						hsp = 8 * spr_dir;
+						vsp = -7;
+						x += hsp * 2;
+						y += vsp * 2;
+					}
 				}
 				break;
 			case 2:
+				can_dspecial = 0;
+				
 				can_move = 0;
 				hsp = clamp(hsp + air_accel * (right_down - left_down), -10, 10);
 				
