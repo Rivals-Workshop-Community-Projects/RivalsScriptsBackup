@@ -131,7 +131,7 @@ x_hand = 0; //reference to the player
 y_hand = 0; // reference to the game
 
 spd_hand = 0;
-acc_hand = 0.5 + has_rune("G") * 0.2
+acc_hand = 0.6 + has_rune("G") * 0.2
 acc_hand_ref = acc_hand;
 
 // FXs

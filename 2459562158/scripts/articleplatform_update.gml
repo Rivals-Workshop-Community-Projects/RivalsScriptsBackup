@@ -43,7 +43,7 @@ switch(state)
         {
             if !(has_rune("E"))
             {
-                if (state_timer % 2 == 0)
+                if (state_timer % 3 != 0)
                 {
                     vsp = 1;
                 }
@@ -110,6 +110,14 @@ with(oPlayer)
          if (url == nitori_url) and (up_down) and (vsp > -1) and (free)
          {
              vsp -= 0.5;
+         }
+         
+         if (url == nitori_url) and ((state == PS_ATTACK_AIR) or (state == PS_ATTACK_GROUND)) and (attack == AT_DSPECIAL)
+         {
+             if(vsp < -8)
+             {
+                vsp = -8;
+             }
          }
     }
     else

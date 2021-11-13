@@ -25,6 +25,14 @@ switch (my_hitboxID.attack )
     break;
 }
 
+with(obj_article_platform)
+{
+	if (player_id == other)
+    {
+       destroyed = true;
+    }
+}
+
 #define find_angle(x, y, x_to,y_to)
 
 

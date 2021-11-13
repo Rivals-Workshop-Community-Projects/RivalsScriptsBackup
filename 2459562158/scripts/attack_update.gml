@@ -40,7 +40,7 @@ switch(attack)
               var time = get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH);
                 x_hand = 80 * spr_dir;
                 
-                spd_hand = (13.5 + has_rune("G") * 9) * spr_dir;
+                spd_hand = (15 + has_rune("G") * 9) * spr_dir;
                 
                 
                 if(window_timer == time)
