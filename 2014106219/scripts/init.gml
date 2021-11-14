@@ -148,3 +148,8 @@ page++;
 dracula_speaker[page] = 2;
 dracula_text[page] = "Oh yeah? And old geezers like you must be...uh...retired! Yeah, that's it!";
 page++;
+
+//adventure
+pronouns = ["she","her","her","is"];
+am_is_noob = true;
+am_is_experienced = true;
