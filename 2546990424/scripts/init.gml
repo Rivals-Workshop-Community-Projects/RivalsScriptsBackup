@@ -11,7 +11,7 @@
 
 // Physical size
 char_height         = 60;       //                  not zetterburn's. this is just cosmetic anyway
-knockback_adj       = .9;		// 0.9  -  1.2
+knockback_adj       = .95;		// 0.9  -  1.2
 
 // Ground movement
 walk_speed          = 3;		// 3    -  4.5
@@ -51,7 +51,7 @@ max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has h
 walljump_hsp        = 6;		// 4    -  7
 walljump_vsp        = 9;		// 7    -  10
 land_time           = 6;		// 4    -  6
-prat_land_time      = 10;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
+prat_land_time      = 17;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
 wave_friction       = 0.07;		// 0    -  0.15

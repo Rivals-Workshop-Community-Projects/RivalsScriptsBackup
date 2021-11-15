@@ -26,10 +26,21 @@ if attack == AT_BAIR && window == 1 && window_timer == 1 && !hitpause{
 
 
 if attack == AT_DAIR && window == 1 && window_timer == 1 && !hitpause{
+	set_attack_value(AT_DAIR, AG_CATEGORY, 2);
 	sound_play(asset_get("sfx_clairen_spin"),false,noone,1,.8)
 }
 
-if attack == AT_FAIR && has_hit && !hitpause {
+if attack == AT_DAIR  && !free  {
+	destroy_hitboxes()
+ if has_hit_player {	
+  set_state(PS_LAND)
+  state_timer = 1
+  create_hitbox(AT_DAIR,18,x,y)	
+ }
+  set_attack_value(AT_DAIR, AG_CATEGORY, 1);
+}
+
+if attack == AT_FAIR && has_hit && !hitpause && window > 2 {
 window_timer += 0.2	
 }
 
@@ -167,7 +178,7 @@ if isyellow && !hitpause {
         
     if attack == AT_JAB && window == 3 && attack_pressed && window_timer <= 6 && joy_pad_idle {
         set_attack (AT_UTILT)
-        window = 5
+        window = 6
         window_timer = 0
         sound_play(asset_get("sfx_swipe_weak2"))
     } 
@@ -186,18 +197,71 @@ if isyellow && !hitpause {
     }
     
     
-    if attack == AT_UTILT && window == 5 && window_timer == 6 {
+    if attack == AT_UTILT && window == 6 && window_timer == 6 {
         set_attack (AT_JAB)
         window = 2
         window_timer = 0
         sound_play(asset_get("sfx_swipe_weak1"))
     }
     
-    if attack == AT_UTILT && window == 1 && window_timer == 7 {
+    if attack == AT_UTILT && window == 1 && window_timer == 1 {
         window = 3
         window_timer = 0
         sound_play(asset_get("sfx_forsburn_reappear"))
         sound_play(asset_get("sfx_swipe_weak1"))
+        hsp = 7*spr_dir
+    }
+    
+    if attack == AT_UTILT && has_hit_player {
+    	
+    	if window == 3 or window == 4 {
+    		
+    	   	with hit_player_obj {
+    	   		if state_cat == SC_HITSTUN {
+   	               vsp = 0
+   	               hsp = 0
+   	               x += floor( (other.x  + 40*other.spr_dir - x)/6 )
+   	               y += floor( (other.y - 30 - y)/6 )
+    	   		}
+             }
+                  
+    	}
+    	
+    	if window == 4 && window_timer > 5 {
+    		window = 5
+    		window_timer = 1
+    		sound_play(asset_get("sfx_spin"))
+    		sound_play(asset_get("sfx_clairen_spin"),false,noone,1,.8)
+    	}
+    	
+    	if window == 5 && window_timer <= 15 {
+    	
+    		with hit_player_obj {
+    		if state_cat == SC_HITSTUN {	
+    		if other.window_timer <= 13 {
+    			
+    			can_tech = false
+   	               vsp = 0
+   	               hsp = 0
+   	               x += floor( (other.x  - 6*other.spr_dir - x)/4 )
+   	               y += floor( (other.y - 60 - y)/4 )
+               	
+             
+    		    } else {
+    		           x += floor( (other.x  - 6*other.spr_dir - x)/2 )
+   	                   y += floor( (other.y - y)/2 )
+    		    }
+    		
+    		if other.window_timer == 15 {
+    			y = other.y
+    		}
+    		}
+    		
+    		}
+    	}
+    		
+    	
+    	
     }
     
     if attack == AT_DATTACK && window == 1 && window_timer == 1 {
@@ -235,7 +299,7 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
             if get_player_color(player) == 10 {
             	sound_play(sound_get("fox_illusion_swoosh"),false,noone,1,0.85 + (random_func(1,30,true)/100))
             }
-            			set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 60);
+            			set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 90);
                 sound_play(asset_get("sfx_clairen_swing_mega_instant"))
             	sound_play(asset_get("sfx_ori_bash_use"))
             	sound_play(asset_get("sfx_bird_nspecial"))
@@ -301,13 +365,19 @@ if get_player_color(player) == 10 {
                  }
              if left_down and !right_down and !free and !jump_down and !up_down{
              	attack_end();
-                 set_state (PS_AIR_DODGE)
+                 set_state (PS_WAVELAND)
                  state_timer = 1
+                 hsp = -8
+                 old_hsp = -8
+                 vsp = 10
              }
              if right_down and !left_down and !free and !jump_down and !up_down{
              	attack_end();
-                 set_state (PS_AIR_DODGE)
+                 set_state (PS_WAVELAND)
                  state_timer = 1 
+                  hsp = 8
+                 old_hsp = 8
+                 vsp = 10
              }
          }
         }
@@ -541,10 +611,22 @@ if get_player_color(player) == 10 {
         
 
         if attack == AT_DSTRONG or attack == AT_FSTRONG {
-        	
+        
+        if attack == AT_DSTRONG {
+        	hsp /= 1.06
+        }	
          if window == 2 && window_timer = 1 {
+         	set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_Y, -22);
+         	set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 90);
+            set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 60);
              sound_play(asset_get("sfx_bird_downspecial"))
          }   
+         
+         if has_hit_player {
+         	set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_Y, -42);
+         	set_hitbox_value(AT_FSTRONG, 2, HG_WIDTH, 130);
+            set_hitbox_value(AT_FSTRONG, 2, HG_HEIGHT, 130);
+         }
          
         }
         

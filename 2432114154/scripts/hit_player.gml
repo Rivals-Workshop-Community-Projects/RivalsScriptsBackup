@@ -140,7 +140,9 @@ if my_hitboxID.attack != AT_USTRONG and my_hitboxID.attack != AT_FSTRONG and my_
 	
 	if my_hitboxID.attack == AT_DSTRONG {
 		set_hitbox_value(AT_EXTRA_2, 5, HG_ANGLE_FLIPPER, 7 );
-		
+		set_hitbox_value(AT_EXTRA_2, 5, HG_KNOCKBACK_SCALING, 1);
+	    set_hitbox_value(AT_EXTRA_2, 5, HG_ANGLE, 40);
+	    set_hitbox_value(AT_EXTRA_2, 5, HG_HITSTUN_MULTIPLIER, 1);	
 			old_hsp = 14 * (1  - (x < inkvictim.x)*2)
 	} else {
 		set_hitbox_value(AT_EXTRA_2, 5, HG_ANGLE_FLIPPER, 0 );
