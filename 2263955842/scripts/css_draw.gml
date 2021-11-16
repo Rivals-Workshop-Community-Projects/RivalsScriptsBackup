@@ -26,13 +26,14 @@ alt_name[6]  = "Kokoro";
 alt_name[7]  = "Rumia";
 alt_name[8]  = "Cirno";
 alt_name[9]  = "Meiling";
-alt_name[10] = "PC 98";
-alt_name[11] = "CtC";
-alt_name[12] = "Yuuto";
-alt_name[13] = "Zetta";
-alt_name[14] = "Abyss";
-alt_name[15] = "Early Access";
- 
+alt_name[10] = "Sakuya Izayoi";
+alt_name[11] = "PC 98";
+alt_name[12] = "CtC";
+alt_name[13] = "Yuuto";
+alt_name[14] = "Zetta";
+alt_name[15] = "Abyss";
+alt_name[16] = "Early Access";
+alt_name[17] = "Slimepuffen";
  
 //Patch
  

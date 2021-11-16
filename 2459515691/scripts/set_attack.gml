@@ -5,6 +5,8 @@ switch (attack)
         {
             failboosttype = 1;
             attack = AT_SPECIALFAIL;
+            if (prev_frame_state = PS_DOUBLE_JUMP || vsp = -djump_speed) used_djump_check = true;
+            //print_debug(used_djump_check);
             //if (infield) FieldRefuel();
             //else attack = AT_SPECIALFAIL;
         }

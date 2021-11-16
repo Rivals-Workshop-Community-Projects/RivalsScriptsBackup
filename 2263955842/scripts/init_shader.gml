@@ -20,7 +20,7 @@ switch (get_player_color(player)) {
 
 
 //early access alt 
-if (get_player_color(player) == 15){
+if (get_player_color(player) == 16){
     set_color_profile_slot_range(7, 10, 26, 7)
     set_color_profile_slot_range(2, 24, 11, 19); //HAIR 
     

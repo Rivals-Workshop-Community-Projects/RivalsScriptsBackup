@@ -37,11 +37,13 @@ if (yinyang_id != noone)
 }
 
 // destroying all cards
+/*
 while(ds_list_size(dspe_list))
 {
     instance_destroy(dspe_list[|0]);
     ds_list_delete(dspe_list,0);
 }
+*/
         
         
 // Reflect Seals

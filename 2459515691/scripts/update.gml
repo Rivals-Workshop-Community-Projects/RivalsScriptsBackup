@@ -13,6 +13,23 @@ if (state_cat == SC_GROUND_COMMITTED || state_cat == SC_GROUND_NEUTRAL || state 
 
 if (state_cat == SC_GROUND_COMMITTED || state_cat == SC_GROUND_NEUTRAL || state_cat == SC_HITSTUN) failboost = true;
 
+if (state_cat == SC_GROUND_COMMITTED || state_cat == SC_GROUND_NEUTRAL)
+{ 
+    used_djump_check = false;
+}
+
+if (state == PS_ATTACK_AIR && attack == AT_USPECIAL && window = 2)
+{ 
+    used_djump_check = false;
+}
+
+prev_frame_state = state;
+
+if (used_djump_check && djumps != max_djumps)
+{
+    djumps = max_djumps;
+}
+
 if (instance_exists(fueltank_ins))
 {
     if (fueltank_ins.orig_player != player) instance_destroy(fueltank_ins);

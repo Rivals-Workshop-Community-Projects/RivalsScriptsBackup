@@ -82,6 +82,7 @@ sprite_change_offset("entrance", 146, 98);
 
 sprite_change_offset("yinyang", 26, 26);
 sprite_change_offset("yinyang_ea", 26, 26);
+sprite_change_offset("slimepuffen_dvd", 26, 26);
 sprite_change_offset("yinyang_destroy", 66, 48);
 
 // HEAD

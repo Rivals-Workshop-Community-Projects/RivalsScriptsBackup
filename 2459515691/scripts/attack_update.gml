@@ -247,6 +247,7 @@ switch (attack)
         iasa_script();
         set_state(PS_LAND);
     }
+    if (prev_state == PS_DOUBLE_JUMP) djumps = 1;
     break;
 
     case AT_USPECIAL:
@@ -312,7 +313,7 @@ switch (attack)
     {
         vsp = free?-5:-7;
         articlestate = 0;
-        fueltank_ins = instance_create(x + spr_dir*4, y-16, "obj_article1");
+        fueltank_ins = instance_create(x + spr_dir*4, y, "obj_article1");
     }
     if (window > 2 && !free)
     {

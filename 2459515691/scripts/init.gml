@@ -11,6 +11,9 @@ fieldcooldown = 0;
 failboost = true;
 failboosttype = 0; //1 = uspecial (upward boost), 2 = fspecial (forward boost)
 
+used_djump_check = false;
+prev_frame_state = state;
+
 sussy = false;
 
 hurtbox_spr = sprite_get("hurtbox");
