@@ -50,7 +50,7 @@ set_hitbox_value(AT_JAB, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_JAB, 1, HG_DAMAGE, 3);
 set_hitbox_value(AT_JAB, 1, HG_ANGLE, 361);
 set_hitbox_value(AT_JAB, 1, HG_BASE_KNOCKBACK, 4);
-set_hitbox_value(AT_JAB, 1, HG_KNOCKBACK_SCALING, 0.4);
+set_hitbox_value(AT_JAB, 1, HG_KNOCKBACK_SCALING, 0.6);
 set_hitbox_value(AT_JAB, 1, HG_BASE_HITPAUSE, 4);
 //set_hitbox_value(AT_JAB, 1, HG_EXTRA_HITPAUSE, 1); //makes jab1>utilt true.
 set_hitbox_value(AT_JAB, 1, HG_HITPAUSE_SCALING, 0);
@@ -86,8 +86,8 @@ set_hitbox_value(AT_JAB, 2, HG_WIDTH, 12);
 set_hitbox_value(AT_JAB, 2, HG_HEIGHT, 12);
 
 //knockback
-set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, 0.1); 
+set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 4.5);
+set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, 0.3); 
 set_hitbox_value(AT_JAB, 2, HG_ANGLE, 361);
 set_hitbox_value(AT_JAB, 2, HG_ANGLE_FLIPPER, 6);
 //stun

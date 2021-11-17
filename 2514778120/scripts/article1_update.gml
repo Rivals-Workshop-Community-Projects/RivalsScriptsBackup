@@ -67,12 +67,18 @@ if ((x >= room_width || x <= 0) && (state == PS_HITSTUN || state == PS_DEAD)) {
 }
 
 //Kill the swords when the player is dead or respawning.
-if ((player_id.state == PS_DEAD || player_id.state == PS_RESPAWN) && player_id.state_timer == 1) {
+if (player_id.state == PS_RESPAWN && player_id.state_timer == 1) {
     follower_set_state(PS_RESPAWN);
     hitstun = 0;
     hitpause = 0;
     state_timer = get_match_setting(SET_PRACTICE) ? respawn_time : 0;
     spawn_hit_fx(round(x), round(y), fx_death)
+    
+}
+if (player_id.state == PS_DEAD && state != PS_DEAD && state != PS_RESPAWN) {
+    follower_set_state(PS_DEAD);
+    hitstun = 0;
+    hitpause = 0;
     
 }
 
@@ -292,6 +298,7 @@ switch (state) {
     
     case PS_RESPAWN:
         committed = 1;
+        go_back = true;
         invincible = 2;
         x += lengthdir_x(target_dist / max(1, follow_speed), target_dir);
         y += lengthdir_y(target_dist / max(1, follow_speed), target_dir);
@@ -313,15 +320,18 @@ switch (state) {
         
         
         if ((state_timer >= respawn && player_id.state != PS_DEAD) || (player_id.state == PS_RESPAWN && player_id.visible)) {
-            committed = 0;
-            percent = 0;
 		    attack = AT_NSPECIAL;
 		    strong_charge = 0;
+		    state_timer = 0;
 		    window_timer = 1;
 		    window = 14;
 		    go_back = false;
+			percent = 0;
 		    player_id.sword_shared_sound = -1;
 		    follower_set_state(PS_ATTACK_AIR);
+			sprite_index = player_id.sword_attack_spr[sprite_type, attack];
+			hurtbox_mask = player_id.sword_attack_hurtbox_spr[sprite_type, attack];
+			image_index = 0;
         }
         break;
 }
@@ -926,49 +936,4 @@ with (player_id) {
             nspecial_sword = !nspecial_sword
         }
     }
-}
-
-#define death_effect_spawn()
-var spawn = noone;
-with (player_id) spawn = spawn_dust_fx(round(other.x), round(other.y), asset_get("stage_explosion_spr"), 32);
-with (spawn)
-{
-	color = get_player_hud_color(other.player_id.player);
-	
-	if (y > room_height - 32)
-	{
-	    y = (room_height)
-	    draw_angle  = 90
-	    if (x < 0)
-	        draw_angle  = 45
-	    if (x > room_width)
-	        draw_angle  = 135
-	}
-	if (y < 32)
-	{
-	    y = 0
-	    draw_angle  = 270
-	    if (x < 0)
-	        draw_angle  = -45
-	    if (x > room_width)
-	        draw_angle  = 225
-	}
-	if (x > room_width - 32)
-	{
-	    draw_angle  = 180
-	    if (y < 0)
-	        draw_angle  = 225
-	    if (y > room_height)
-	        draw_angle  = 135
-	    x = (room_width)
-	}
-	if (x < 32)
-	{
-	    draw_angle  = 0
-	    if (y < 0)
-	        draw_angle  = -45
-	    if (y > room_height)
-	        draw_angle  = 45
-	    x = 0
-	}
 }

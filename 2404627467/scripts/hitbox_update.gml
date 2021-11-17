@@ -33,7 +33,7 @@ if (attack = AT_FSPECIAL && hbox_num = 3) {
             off_y = anthem_marked_player.y;
         }
         else {
-    		anthem_track_lenactual = ease_backIn(anthem_track_len, 0, hitbox_timer, 10, 15)
+    		anthem_track_lenactual = ease_backIn(anthem_track_len, 0, hitbox_timer, 10, 8)
     		if (hitbox_timer >= 11) {
     		    with (player_id) {
     		        var hbox = create_hitbox(AT_FSPECIAL, 4, round(other.x), round(other.y))
@@ -45,7 +45,7 @@ if (attack = AT_FSPECIAL && hbox_num = 3) {
 		        exit;
     		}
         }
-        if (anthem_marked_player.anthem_marked_timer < anthem_hittime + 30) {
+        if (anthem_marked_player.anthem_marked_timer < anthem_hittime + 15) {
         	
     		with (player_id)
     		    other.sprite_index = sprite_get("fx_fspecial_proj2b");

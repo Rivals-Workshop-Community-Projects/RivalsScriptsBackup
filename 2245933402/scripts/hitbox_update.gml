@@ -2,6 +2,7 @@
 
 
 if attack == AT_USPECIAL && hbox_num == 3 {
+	
     if hitbox_timer % 2 == 0 {
      spawn_hit_fx (x  + 18 - random_func(1, 36, true), y - 10 , 108)
     }
@@ -32,13 +33,19 @@ if attack == AT_DAIR && hbox_num == 3 {
 
 
 if attack == AT_NSPECIAL{
+	if player_id.move_cooldown[AT_TAUNT_2] > 0 {
+		hit_priority = 0
+	} else {
+		hit_priority = 9	
+	}
    dattacks1 = hit_fx_create( sprite_get( "dattacks1" ), 12 );
-	spawn_hit_fx (x, y - 42, dattacks1)	
+	spawn_hit_fx (x, y - 39, dattacks1)	
 }
+
 
 if attack == AT_BAIR && hbox_num == 3{
    dattacks1 = hit_fx_create( sprite_get( "dattacks1" ), 12 );
-	spawn_hit_fx (x, y - 42, dattacks1)	
+	spawn_hit_fx (x, y - 44, dattacks1)	
 	if hitbox_timer == 1 {
 		spr_dir *= -1
 		hsp *= -1
@@ -78,16 +85,20 @@ if attack == AT_FSPECIAL && hbox_num == 1 {
             spawn_hit_fx (x , y, 109)
         }
         
-	if hitbox_timer > 80  {
+	if hitbox_timer == 80  {
 		shake_camera (4,8)
 	   spawn_hit_fx (x , y - 10 , 253)
 	    spawn_hit_fx (x , y - 10 , 204)
 	    sound_play(sound_get("exp2")); 
 	   sound_play(asset_get("sfx_abyss_explosion")); 
-	    create_hitbox(AT_FSPECIAL , 2 , x  , y );
-	    destroyed = 1
+	   hsp = 0
+	   vsp = -1
 	}
 	
+	if hitbox_timer == 86 {
+	    create_hitbox(AT_FSPECIAL , 2 , x  , y - 20 );
+	    destroyed = 1
+	}
 
     if !free {
     	for (var i = 1; i <= 4; i++) can_hit[i] = (i == player);	

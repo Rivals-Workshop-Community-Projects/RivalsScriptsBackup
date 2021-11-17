@@ -17,16 +17,8 @@ switch (article_index) {
 		
 		//check if hit
 		if (state < 3) {
-			if (player_id.state == PS_RESPAWN) set_article_state(3);
-			else {
-				var was_hit = false;
-				if (was_hit) {
-					set_state(3);
-				}
-			}
+			if (player_id.state == PS_RESPAWN || player_id.state == PS_DEAD || y > room_height + 50) set_article_state(3);
 		}
-		
-		//collision fix?
 
 		
 		//friction
@@ -312,7 +304,7 @@ switch (article_index) {
 				}
 				
 				//expire after a set time
-				if (state_timer > 480) set_article_state(5);
+				if (state_timer > 300) set_article_state(5);
 			break;
 			
 			case 3: //explode

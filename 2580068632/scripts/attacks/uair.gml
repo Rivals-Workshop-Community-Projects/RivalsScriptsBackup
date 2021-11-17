@@ -10,7 +10,7 @@ set_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_UAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, sfx_uair);
-set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 2);
+set_window_value(AT_UAIR, 1, AG_WINDOW_SFX_FRAME, 4);
 
 set_window_value(AT_UAIR, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_UAIR, 2, AG_WINDOW_LENGTH, 2);

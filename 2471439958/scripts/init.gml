@@ -229,3 +229,12 @@ page++;
 dracula_speaker[page] = 1;
 dracula_text[page] = "It's showtime";
 page++;
+
+
+
+//--------------------------FINAL SMASH BUDDY COMPATIBILTY------------------------------
+counter = 0;
+success = false;
+fs_char_chosen_final_smash = "custom";
+fs_char_portrait_y = 110;
+fs_portrait_x = 120;

@@ -405,6 +405,20 @@ initSection("Trummel & Alto, Otto, Steve, Link");
 
 
 
+initPatch("1.081", "November 11th, 2021");
+initHeader("FSpecial");
+initSection("- Hitbox size reduced.");
+initHeader("UAir");
+initSection("- Hitbox sizes all reduced.");
+initHeader("USpecial");
+initSection("* Fixed a bug where you could cancel the move very early by hitting the rising non-scoop hitbox.");
+initHeader("UStrong");
+initSection("- Visual and hitbox size reduced. Again.");
+initSection("+ Made the sweetspot cover a little more of the sourspot.");
+initSection("- Sourspot KB reduced (8.5+.95 -> 8.5+.9)");
+initHeader("UTilt");
+initSection("- Hitbox sizes all reduced.");
+
 initPatch("1.08", "November 10th, 2021");
 initHeader("General");
 initSection("* Added an alt for LessTime, who placed Top 8 in Blueberry Bout with Incineroar!");

@@ -93,19 +93,23 @@ switch attack {
     
     case AT_UTILT :
         
+        if has_hit && !hitpause {
+        	window_timer += 0.5
+        }
+        
         if hitpause {
             y -= 2
             x += 1*spr_dir
-                if hit_player_obj.state_cat == SC_HITSTUN {
-                    hit_player_obj.y += floor((y - 100 - hit_player_obj.y )/8)
-                }
+                //if hit_player_obj.state_cat == SC_HITSTUN {
+                //    hit_player_obj.y += floor((y - 100 - hit_player_obj.y )/8)
+                //}
                 
                 window_timer += 1
         }
         
         if !hitpause {
             can_move = false
-        if window == 1 && window_timer == 9 {
+        if window == 1 && window_timer == 7 {
             sound_play(asset_get("sfx_abyss_explosion"),false,noone,1,1.6)
             shake_camera(2,2)
             spawn_base_dust(x, y, "land", spr_dir)
@@ -130,6 +134,9 @@ switch attack {
     case AT_DAIR :
         
         if !hitpause {
+        	if window == 1 && window_timer == 1 {
+        		set_attack_value(AT_DAIR, AG_CATEGORY, 1);
+        	}
         if window == 1 && window_timer == 10 {
             sound_play(asset_get("sfx_swipe_medium1"),false,noone,1,1)
         }
@@ -417,14 +424,10 @@ switch attack {
     
         sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1)
     }
-    if window == 4 {
-        vsp /= 1.5
-        can_move = false
-            hsp /= 1.1
-    }
+    
+
     
     if window == 3 {
-        vsp = 0
         if window_timer == 1  && !hitpause{
             hsp = 8*spr_dir
                   spawn_base_dust(x,y,"dash_start",spr_dir)
@@ -449,12 +452,18 @@ switch attack {
          hit_player_obj.state_timer -= 1
          
          if free {
+         	hsp /= 1.2
              vsp = 0
              if state_timer % 5 == 0 {
                  spawn_base_dust(x ,y,"dash",spr_dir*-1)
                 spawn_base_dust(x ,y,"dash_start",spr_dir)
              }
          }
+         
+         if window == 4 {
+         window_timer -= 1
+         }
+         
          soft_armor = 999
          
          hit_player_obj.hsp = 0
@@ -465,41 +474,40 @@ switch attack {
          hit_player_obj.x += floor((x + 32*spr_dir - hit_player_obj.x)/4)
          hit_player_obj.y += floor((y - 4 - hit_player_obj.y)/4)
          
-         if special_pressed or state_timer >= 45{
+         if state_timer > 15 {
+         if special_down or state_timer >= 45{
              set_attack(AT_EXTRA_1)
              window = 1
              window_timer = 1
          }
          
-         if right_pressed {
+         if right_down {
              spr_dir = 1
              set_attack(AT_EXTRA_1)
              window = 2
              window_timer = 1
          }
          
-         if left_pressed {
+         if left_down {
              spr_dir = -1
              set_attack(AT_EXTRA_1)
              window = 2
              window_timer = 1
          }
          
-         if up_pressed {
+         if up_down {
              set_attack(AT_EXTRA_1)
              window = 3
              window_timer = 1
          }
          
-         if down_pressed {
+         if down_down {
              set_attack(AT_EXTRA_1)
              window = 4
              window_timer = 1
          }
          
-         if state_timer < 60 && window == 4 {
-             window_timer -= 1
-         } 
+         }
          
      }   
         
@@ -531,6 +539,7 @@ switch attack {
              spawn_hit_fx(x,y,nf3)
          }
          if window == 4 && window_timer == 4*5 {
+         	set_attack_value(AT_DAIR, AG_CATEGORY, 2);
              spawn_hit_fx(x,y,nf4)
              attack_end()
              vsp = -5

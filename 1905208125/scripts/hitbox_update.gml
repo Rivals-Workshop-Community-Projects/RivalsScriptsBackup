@@ -2,7 +2,7 @@
 
 switch (attack) {
 	case AT_FSPECIAL:
-		if (!free) {
+		if (!free || ("in_adventure" in player_id && place_meeting(x,y+2,asset_get("par_block")))) {
 			ground_time++;
 			if (ground_time > 1) {
 				destroyed = true;
@@ -20,7 +20,7 @@ switch (attack) {
 	    var blastzone_t = get_stage_data(SD_Y_POS) - get_stage_data(SD_TOP_BLASTZONE);
 	    var blastzone_b = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE);
 	    
-	    if ((x != clamp(x, blastzone_l, blastzone_r) || y > blastzone_b) || hsp == 0) {
+	    if (("in_adventure" not in player_id && (x != clamp(x, blastzone_l, blastzone_r) || y > blastzone_b)) || hsp == 0) {
 	    	// Arrow dies at blast zone or against wall
 			destroyed = true;
 		}

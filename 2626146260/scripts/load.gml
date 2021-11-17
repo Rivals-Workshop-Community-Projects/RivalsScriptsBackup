@@ -4,6 +4,8 @@ sprite_change_offset("walk", 136, 158);
 sprite_change_offset("walkturn", 136, 158);
 
 
+sprite_change_offset("wooeffect", 50, 500);
+
 sprite_change_offset("dash", 136, 158);
 
 

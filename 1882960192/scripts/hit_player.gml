@@ -28,6 +28,8 @@ if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) {
 
 if (my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num == 1) {
 	my_hitboxID.hitbox_timer = 128;
+	my_hitboxID.vsp = 0;
+	my_hitboxID.hsp = 0;	
 }
 
 //DSpecial double jump restore

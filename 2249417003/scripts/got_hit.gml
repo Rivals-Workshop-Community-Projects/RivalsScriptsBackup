@@ -8,7 +8,7 @@ if ((state_cat == SC_HITSTUN || state == PS_HITSTUN_LAND) && enemy_hitboxID.dama
 		ralsei_heart_active = false;
 		if (ralsei_tp < ralsei_max_tp && enemy_hitboxID.hitbox_timer > 1) ralsei_tp -= min(enemy_hitboxID.damage * 2 + 3, 60);
 		ralsei_heart_article_id.image_index = 5;
-		hitstop = max(hitstop, 30);
+		hitstop = max(hitstop, 40);
 		hitpause = true;
 		sound_play(sound_get("dr_hurt1"));
 		

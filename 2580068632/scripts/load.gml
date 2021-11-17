@@ -75,6 +75,7 @@ sprite_change_offset("nspecial_wings", 92, 138);
 sprite_change_offset("fspecial", 92, 138);
 sprite_change_offset("fspecial_muno", 92, 138);
 sprite_change_offset("uspecial", 92, 138);
+sprite_change_offset("uspecial_brawl", 92, 138);
 sprite_change_offset("uspecial_muno", 92, 138);
 sprite_change_offset("uspecial_test", 92, 138);
 sprite_change_offset("dspecial", 92, 138);

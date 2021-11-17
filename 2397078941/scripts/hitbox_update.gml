@@ -29,6 +29,9 @@ if attack == AT_USPECIAL && hbox_num == 1{
 }
 
 if attack == AT_FSPECIAL && hbox_num <= 4 {
+	if (spr_dir = -1 && hsp > 0) or (spr_dir = 1 && hsp < 0)  {
+       hsp *= -1
+	}
      spawn_hit_fx (x  - 18*spr_dir , y + 10 - random_func(1, 20, true), esp)
 }
 
@@ -181,24 +184,34 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
 	   	     }
 	   }
 	   
-	    //if nearbyhitbox.type == 2 && nearbyhitbox.hit_effect_x != -0.666 && hitbox_timer > 1 && hitbox_timer < 10 && hitbox_timer > 0{
-	    //    
-        //    hsp = nearbyhitbox.hsp/4
-        //    vsp = nearbyhitbox.vsp/4
-        //    hitbox_timer = -6
-	    //    image_index = 8
-	    //    with player_id {
-	    //    	spawn_hit_fx(x, y - 50, tauntpar1)
-	    //    	spawn_hit_fx(x, y - 10, tauntpar1)
-	    //    	spawn_hit_fx(x + 10, y - 30, tauntpar1)
-	    //    	spawn_hit_fx(x - 10, y - 30, tauntpar1)
-	    //    	sound_play(asset_get("sfx_ori_taunt2"),false,noone,1.5);
-	    //    	sound_play(asset_get("sfx_abyss_hex_hit"),false,noone,0.5)
-	    //    	take_damage(player, -1, -1 * floor(5+ other.nearbyhitbox.damage/4))
-	    //    }
-	    //    nearbyhitbox.destroyed = 1
-	    //    destroyed = true
-	    //}
+	    if nearbyhitbox.type == 2 && nearbyhitbox.hit_effect_x != -0.666 && hitbox_timer > 1 && hitbox_timer < 10 && hitbox_timer > 0 && nearbyhitbox.player != orig_player{
+	         
+            hitbox_timer = -10
+	        image_index = 8
+	        
+	        if nearbyhitbox.hsp < 0 {
+	        	spr_dir = 1
+	        } else {
+	        	spr_dir = -1
+	        }
+	        
+	        spawn_hit_fx(x,y,302)
+	        sound_play(asset_get("sfx_abyss_hex_hit"),false,noone,1,0.8)
+	        
+	        create_hitbox(AT_FSPECIAL,1,x,y + 6 )
+	        
+	        //with player_id {
+	        //	spawn_hit_fx(x, y - 50, tauntpar1)
+	        //	spawn_hit_fx(x, y - 10, tauntpar1)
+	        //	spawn_hit_fx(x + 10, y - 30, tauntpar1)
+	        //	spawn_hit_fx(x - 10, y - 30, tauntpar1)
+	        //	sound_play(asset_get("sfx_ori_taunt2"),false,noone,1.5);
+	        //	sound_play(asset_get("sfx_abyss_hex_hit"),false,noone,0.5)
+	        //	take_damage(player, -1, -1 * floor(5+ other.nearbyhitbox.damage/4))
+	        //}
+	        //nearbyhitbox.destroyed = 1
+	        //destroyed = true
+	    }
 	    
 	     if nearbyhitbox.type == 2 && nearbyhitbox.hit_effect_x == -0.666 && hitbox_timer < 60  && nearbyhitbox.player_id.nolan == 0{
 	         sound_play(asset_get("sfx_abyss_hex_hit"))
@@ -209,7 +222,7 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
 	     }
 	    
 		if nearbyhitbox.type == 1  && hitbox_timer < 10 && nearbyhitbox.hit_effect_x != 0.666{
-			
+			spr_dir = nearbyhitbox.spr_dir
 			kb_value = nearbyhitbox.kb_value
 			kb_scale = nearbyhitbox.kb_scale 
 			kb_angle = nearbyhitbox.kb_angle

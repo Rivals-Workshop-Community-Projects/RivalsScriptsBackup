@@ -45,6 +45,8 @@ hsp /= 1.5
 can_move = false
 
 	if window == 2 && !special_down {
+		spawn_hit_fx(x+(state_timer*4)*spr_dir + 34, room_width/2 - 200,sworddown  )
+		spawn_hit_fx(x+(state_timer*4)*spr_dir - 34, room_width/2 - 200,sworddown  )
 		set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_X, state_timer*4 );
 		window = 3 
 		window_timer = 0
@@ -53,8 +55,8 @@ can_move = false
 	
 	if window == 3 {
 		state_timer -= 1
-		
-		spawn_hit_fx( x + state_timer*spr_dir*4 - 90 + random_func(1,181,true), y - random_func(2,10,true), 14)
+
+		spawn_hit_fx( x + state_timer*spr_dir*4 - 70 + random_func(1,141,true), y - random_func(2,10,true), 14)
 		
 		if window_timer % 4 == 0 {
 			sound_play(sound_get("slicel"),false,noone,.7,1.1)
@@ -223,12 +225,15 @@ weapon = 0
        	
     if window == 1 && window_timer == 1 {
 
+	create_hitbox(AT_EXTRA_1, 3 , x + 200*spr_dir , y - 40)
+	spawn_hit_fx( x + 200*spr_dir, y - 40, slashc)
+	
         jc = 1
          spawn_hit_fx(x-10*spr_dir,y-50,305)
         if !free  && triggered == 0 {
           sound_play(sound_get("cnoise4"))
         }
-        sound_play(sound_get("vef3"),false,noone,2,1.05 - (random_func(1,10,true))/100)  
+        sound_play(sound_get("vef3")) 
         sound_play(asset_get("sfx_bird_sidespecial"))
             hsp = -4*spr_dir
         if free {    
@@ -250,6 +255,10 @@ weapon = 0
             if triggered == 0 {
             DT -= 2
             }
+            
+     create_hitbox(AT_EXTRA_1, 3 , x + 180*spr_dir , y - 80)
+	spawn_hit_fx( x + 200*spr_dir, y - 80, slashc)
+	
         sound_play(sound_get("vJC1"),false,noone, 2)
         sound_play(sound_get("SpaceCutB"))
             hsp = -4*spr_dir
@@ -263,6 +272,8 @@ weapon = 0
     
     if window == 1 && window_timer == 8 && jc == 2 {
                     window_timer = 2
+    create_hitbox(AT_EXTRA_1, 3 , x + 180*spr_dir , y - 00)
+	spawn_hit_fx( x + 200*spr_dir, y - 00, slashc)            
         sound_play(sound_get("SpaceCutB"))
             hsp = -4*spr_dir
         if free {    
@@ -273,6 +284,7 @@ weapon = 0
         create_hitbox(AT_EXTRA_1, 1, x -10*spr_dir, y)
     }
 }
+
 
 if attack == AT_JAB {
     
@@ -693,7 +705,7 @@ if attack == AT_TAUNT {
         
         exheld = -1
         
-            if window_timer == 1 {
+            if window_timer == 4 {
               sound_play(sound_get("intro"))    
             }
             
@@ -967,9 +979,9 @@ if attack == AT_DSTRONG {
     
     if has_hit_player {
         soft_armor = 999
-        set_num_hitboxes(AT_DSTRONG, 2);
+        set_num_hitboxes(AT_DSTRONG, 3);
     } else {
-        set_num_hitboxes(AT_DSTRONG, 1);
+        set_num_hitboxes(AT_DSTRONG, 2);
         soft_armor = 0
     }
     
@@ -1060,7 +1072,7 @@ if attack == AT_DSTRONG {
         }
     }
     
-    if window == 4 && window_timer == 35 && has_hit_player && !hitpause{
+    if window == 4 && window_timer == 35 && has_hit_player && !hitpause && hit_player_obj.hitpause = true {
         spawn_hit_fx (x+20*spr_dir,y-40, 305)
         sound_play(sound_get("RI"))  
         spawn_hit_fx (x+20*spr_dir,y-40, lighten)

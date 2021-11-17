@@ -136,7 +136,7 @@ dracula_speaker[page] = 0;
 dracula_text[page] = "Well, what do we have here... A human boy? Strange. You look different, although I had the impression that this world was free of those miserable insects.";
 page++;
 dracula_speaker[page] = 1;
-dracula_text[page] = "Oh, no, I'm an outsider, much like you are. By the way, nice decor you got around here.";
+dracula_text[page] = "Oh, no, I'm an outsider. Just like you. By the way, nice decor you got around here.";
 page++;
 dracula_speaker[page] = 0;
 dracula_text[page] = "Hmph... Native of this world or not, that makes you no less of a trespasser to my castle!";
@@ -148,7 +148,7 @@ dracula_speaker[page] = 1;
 dracula_text[page] = "Hmmm... Nah, thanks, I'll pass. But since you mentioned them, I think you need to get better security. Honestly, skeletons and bats? And you've been doing this over and over for centuries?";
 page++;
 dracula_speaker[page] = 2;
-dracula_text[page] = "...It's a wonder you keep getting beat by dudes with whips everytime.";
+dracula_text[page] = "...Is it no wonder you keep being whipped to death every time?";
 page++;
 dracula_speaker[page] = 0;
 dracula_text[page] = "...That's enough![glass] You dare come into my castle without a permit, and dare to make a mockery of me and my army... You need to be taught a lesson, insolent child!";
@@ -157,6 +157,7 @@ dracula_speaker[page] = 1;
 dracula_text[page] = "Alright, then.[taunt] Bring it on, old man!";
 page++;
 
-//command input timer
-commtimer = 0;
-commstage = 0;
+//adventure
+pronouns = ["he","him","his","is"];
+am_is_noob = true;
+am_is_experienced = true;

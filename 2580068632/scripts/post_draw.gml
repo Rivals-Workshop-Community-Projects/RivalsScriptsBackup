@@ -1,4 +1,5 @@
 //post_draw.gml
 
-//Munophone
-user_event(12);
+//
+muno_event_type = 4;
+user_event(14);

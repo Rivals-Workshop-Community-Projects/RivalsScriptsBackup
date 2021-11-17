@@ -73,7 +73,14 @@ if (player_id.ralsei_heart_active) {
 		//play graze sound
 		sound_play(snd_graze);
 		time_since_last_graze = 0;
-		player_id.ralsei_tp += floor(min(graze_tally * 2, 60));
+		
+		with (player_id) {
+			ralsei_tp += floor(min(graze_tally * 2, 60));
+			if (ralsei_tp >= ralsei_max_tp) {
+				ralsei_tp_drain_lock = ralsei_tp_drain_lock_time;
+			}
+		}
+
 	}
 }
 else {

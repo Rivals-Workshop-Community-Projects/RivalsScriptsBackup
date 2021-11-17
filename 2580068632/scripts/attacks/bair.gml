@@ -21,12 +21,12 @@ set_window_value(AT_BAIR, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 
 //Inbetween 1 and 2
 set_window_value(AT_BAIR, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_BAIR, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_BAIR, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_BAIR, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_BAIR, 3, AG_WINDOW_SFX, sfx_bair_2);
-set_window_value(AT_BAIR, 3, AG_WINDOW_SFX_FRAME, 4);
+set_window_value(AT_BAIR, 3, AG_WINDOW_SFX_FRAME, 3);
 
 //Active 1
 set_window_value(AT_BAIR, 4, AG_WINDOW_TYPE, 1);
@@ -36,12 +36,12 @@ set_window_value(AT_BAIR, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 
 //Inbetween 1 and 2
 set_window_value(AT_BAIR, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_BAIR, 5, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_BAIR, 5, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_BAIR, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_BAIR, 5, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_BAIR, 5, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_BAIR, 5, AG_WINDOW_SFX, sfx_bair_3);
-set_window_value(AT_BAIR, 5, AG_WINDOW_SFX_FRAME, 4);
+set_window_value(AT_BAIR, 5, AG_WINDOW_SFX_FRAME, 3);
 
 //Active 3
 set_window_value(AT_BAIR, 6, AG_WINDOW_TYPE, 1);
@@ -49,7 +49,7 @@ set_window_value(AT_BAIR, 6, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_BAIR, 6, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_BAIR, 6, AG_WINDOW_ANIM_FRAME_START, 11);
 
-//Inbetween 1 and 2
+//Endlag
 set_window_value(AT_BAIR, 7, AG_WINDOW_TYPE, 1);
 set_window_value(AT_BAIR, 7, AG_WINDOW_LENGTH, 13);
 set_window_value(AT_BAIR, 7, AG_WINDOW_ANIM_FRAMES, 5);

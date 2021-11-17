@@ -562,5 +562,23 @@ if(machina==1){
 	if(attack==AT_FSPECIAL)&&(window==1)&&(window_timer==1){sound_play(sound_get("machina_brv_attack"));}
 }
 
+switch (attack){
+case 49:								//FINAL SMASH BUDDY
+	
+	can_move = false;
+	if window == 1 {
+			set_attack_value(49, AG_NUM_WINDOWS, 3);
+		}
+	if (window > 1 && state_timer % 4 == 0){
+      	instance_create(x , y, "obj_article3");
+    }
+	if window == 2 {
+		if (has_hit) {
+			set_attack_value(49, AG_NUM_WINDOWS, 18);
+			window_timer = 15;
+		}
+	}
+	break;
+}
 
 

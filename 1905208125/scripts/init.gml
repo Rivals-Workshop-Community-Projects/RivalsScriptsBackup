@@ -10,6 +10,17 @@ hook_jump_mult = 0.8;
 dtilt_softcap = 8;
 
 
+//AM
+hit_player_event = 0;
+pronouns = ["she", "her", "her", "is"];
+
+am_is_earth = true;
+am_is_noob = true;
+am_is_handed = true;
+am_is_clothed = true;
+am_is_guest = false;
+
+
 fx_explo=hit_fx_create(sprite_get("hfx_explo"),30);
 fx_funny_arrow=hit_fx_create(sprite_get("vfx_funny_arrow"),18);
 shold=0;

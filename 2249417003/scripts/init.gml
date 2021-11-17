@@ -136,6 +136,8 @@ ralsei_draw_time_since_last_hit = 30;
 ralsei_use_super_move = false;
 ralsei_super_move_cancelled = false;
 ralsei_tp_multiplier = 1 + has_rune("H");
+ralsei_tp_drain_lock = 0;
+ralsei_tp_drain_lock_time = 30;
 
 ralsei_courage = 0;
 ralsei_max_courage = 480; //8s

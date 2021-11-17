@@ -63,24 +63,25 @@ if (my_hitboxID.attack == AT_FSPECIAL && (my_hitboxID.hbox_num == 1 || my_hitbox
 	repeat(mark_times) {
 		if ((!instance_exists(hit_player_obj.anthem_marked_id) || hit_player_obj.anthem_marked_id == id) && hit_player_obj.anthem_marked_amount < fspecial_amount_max && (hit_player_obj.anthem_marked_timer <= 0 || hit_player_obj.anthem_marked_timer > 60)) {
 			hit_player_obj.anthem_marked = true;
+			hit_player_obj.anthem_marked_amount += 1;
 			
 			var amount = hit_player_obj.anthem_marked_amount;
 			var hbox = create_hitbox(AT_FSPECIAL, 3, round(hit_player_obj.x), round(hit_player_obj.y))
-			hbox.anthem_track_dir = (amount / fspecial_amount_max) * 360;
+			hbox.anthem_track_dir = (amount / hit_player_obj.anthem_marked_amount) * 360;
 			hbox.anthem_track_len = 64;
 			hbox.anthem_marked_player = hit_player_obj;
 			hbox.x = hit_player_obj.x + lengthdir_x(hbox.anthem_track_len, hbox.anthem_track_dir);
 			hbox.y = hit_player_obj.y - (hit_player_obj.char_height / 2) + lengthdir_y(hbox.anthem_track_len, hbox.anthem_track_dir);
-			hbox.anthem_hittime = random_func(1, 60, true);
+			hbox.anthem_hittime = hit_player_obj.anthem_marked_amount * 30;
 			hbox.player = my_hitboxID.player;
 			hit_player_obj.anthem_marked_hboxes[amount] = hbox;
-			hit_player_obj.anthem_marked_amount += 1;
 			hit_player_obj.anthem_marked_amount = clamp(hit_player_obj.anthem_marked_amount, 0, fspecial_amount_max);
 			hit_player_obj.anthem_marked_id = id;
 			hit_player_obj.anthem_marked_timer = fspecial_timer_max;
 			
 			for (var i = 0; i < hit_player_obj.anthem_marked_amount; i++) {
-				hit_player_obj.anthem_marked_hboxes[i].anthem_track_dir = (i / fspecial_amount_max) * 360;
+				if (instance_exists(hit_player_obj.anthem_marked_hboxes[i]))
+					hit_player_obj.anthem_marked_hboxes[i].anthem_track_dir = (i / hit_player_obj.anthem_marked_amount) * 360;
 			}
 		}
 	}

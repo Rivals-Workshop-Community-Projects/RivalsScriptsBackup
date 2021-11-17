@@ -1,6 +1,12 @@
 //Fancy CSS template by Muno
 //Put in css_draw.gml
 
+//brawl
+if (has_rune("O")){
+	draw_sprite(sprite_get("charselectbg"),0,x + 8,y + 8);
+	draw_sprite(sprite_get("charselect_brawl"),0,x + 8,y + 8);
+}
+
 shader_end();
 
 //GB Icon
@@ -56,6 +62,7 @@ draw_set_halign(fa_left);
 //exclude alt. name
 //textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
 
+
 //ricE's colorgrid css_draw stuffs.
 if (alt_cur < 16){
 	draw_sprite(sprite_get("colorgrid"),alt_cur,x + 8, y - 24);
@@ -69,18 +76,27 @@ if (alt_cur < 16){
 if (get_player_color(player) == 6){
 	draw_sprite(sprite_get("css_icon_abyss"),0,x+10,y+42);
 } else if (get_player_color(player) == 7){
-	draw_sprite(sprite_get("css_ea_outline"),0,x + 8,y + 8);
+	if (has_rune("O")){
+		draw_sprite(sprite_get("css_ea_brawl_outline"),0,x + 8,y + 8);
+	} else {
+		draw_sprite(sprite_get("css_ea_outline"),0,x + 8,y + 8);
+	}
 	draw_sprite(sprite_get("css_icon_ea"),0,x+10,y+42);
 } else if (get_player_color(player) == 18){
 	draw_sprite(sprite_get("css_icon_ranked"),0,x+10,y+46);
 } else if (get_player_color(player) == 16 || get_player_color(player) == 17 || get_player_color(player) == 19){
 	if (get_player_color(player) == 17){
-		draw_sprite(sprite_get("css_gold_outline"),0,x + 8,y + 8);
+		if (has_rune("O")){
+			draw_sprite(sprite_get("css_gold_brawl_outline"),0,x + 8,y + 8);
+		} else {
+			draw_sprite(sprite_get("css_gold_outline"),0,x + 8,y + 8);
+		}
 	}
 	draw_sprite(sprite_get("css_icon_special"),0,x+10,y+42);
 } 
 
-user_event(12);
+muno_event_type = 6;
+user_event(14);
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
  

@@ -27,7 +27,7 @@ set_window_value(AT_FTILT, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.4);
 
 
 //recovery
-set_window_value(AT_FTILT, 3, AG_WINDOW_TYPE, 13);
+set_window_value(AT_FTILT, 3, AG_WINDOW_TYPE, 14);
 set_window_value(AT_FTILT, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAMES, 2); //4
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 4); //8
@@ -61,6 +61,7 @@ set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 3 );
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT_Y_OFFSET, 8 );
+set_hitbox_value(AT_FTILT, 2, HG_HIT_LOCKOUT, 6);
 
 //sweetspot.
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_TYPE, 1);
@@ -75,9 +76,9 @@ set_hitbox_value(AT_FTILT, 2, HG_PRIORITY, 4);  //high priority
 set_hitbox_value(AT_FTILT, 2, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_FTILT, 2, HG_SDI_MULTIPLIER, 1);
 
-set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, 10);
+set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, 11);
 set_hitbox_value(AT_FTILT, 2, HG_ANGLE, 40);
-set_hitbox_value(AT_FTILT, 2, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_FTILT, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FTILT, 2, HG_BASE_HITPAUSE, 10);
@@ -95,7 +96,7 @@ set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, 148 ); //19//"sweetspot small"
 set_hitbox_value(AT_FTILT, 3,  HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_FTILT, 3,  HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FTILT, 3,  HG_WINDOW, 10);
-set_hitbox_value(AT_FTILT, 3,  HG_LIFETIME, 9);
+set_hitbox_value(AT_FTILT, 3,  HG_LIFETIME, 7);
 set_hitbox_value(AT_FTILT, 3,  HG_HITBOX_X, 0);
 set_hitbox_value(AT_FTILT, 3,  HG_HITBOX_Y, 0);
 set_hitbox_value(AT_FTILT, 3,  HG_WIDTH, 8);
@@ -105,7 +106,7 @@ set_hitbox_value(AT_FTILT, 3,  HG_DAMAGE, 1);
 set_hitbox_value(AT_FTILT, 3,  HG_VISUAL_EFFECT_Y_OFFSET, -16);
 //knockback
 set_hitbox_value(AT_FTILT, 3,  HG_BASE_KNOCKBACK, 3);
-set_hitbox_value(AT_FTILT, 3,  HG_KNOCKBACK_SCALING, 0.1); 
+set_hitbox_value(AT_FTILT, 3,  HG_KNOCKBACK_SCALING, 0.75); 
 set_hitbox_value(AT_FTILT, 3,  HG_ANGLE, 361);
 //stun
 set_hitbox_value(AT_FTILT, 3,  HG_BASE_HITPAUSE, 2);
@@ -129,5 +130,5 @@ set_hitbox_value(AT_FTILT, 3,  HG_PROJECTILE_PARRY_STUN, 0 );
 set_hitbox_value(AT_FTILT, 3,  HG_PROJECTILE_DOES_NOT_REFLECT, 0 );
 set_hitbox_value(AT_FTILT, 3,  HG_PROJECTILE_IS_TRANSCENDENT, 0 );
 set_hitbox_value(AT_FTILT, 3,  HG_PROJECTILE_DESTROY_EFFECT, 193);
-set_hitbox_value(AT_FTILT, 3,  HG_PROJECTILE_HSPEED, 15);
+set_hitbox_value(AT_FTILT, 3,  HG_PROJECTILE_HSPEED, 20);
 set_hitbox_value(AT_FTILT, 3,  HG_PROJECTILE_VSPEED, 0);

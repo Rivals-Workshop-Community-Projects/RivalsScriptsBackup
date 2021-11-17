@@ -126,3 +126,4 @@ sprite_change_offset("plat", 64, 94);
 
 
 sprite_change_offset("miiverse", 60, 30);
+sprite_change_offset("FinalSmash", 70, 120);

@@ -117,6 +117,7 @@ if btrain >= 100 && btrain < 300 {
 	sound_play(asset_get("sfx_frog_fspecial_charge_full"))	
 	btrain = 420
 	knockback_adj = .85;
+	
 	//+3 dmg nipples, +1 dmg other, grab + 4dmg
 	set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 6);
 	set_hitbox_value(AT_DAIR, 3, HG_DAMAGE, 6);
@@ -125,6 +126,13 @@ if btrain >= 100 && btrain < 300 {
 	set_hitbox_value(AT_EXTRA_1, 1, HG_DAMAGE, 8);
 	//reflector stuff in attack update
 	
+set_window_value(AT_NAIR, 1, AG_WINDOW_INVINCIBILITY, 2);
+set_window_value(AT_NAIR, 2, AG_WINDOW_INVINCIBILITY, 2);
+set_window_value(AT_NAIR, 3, AG_WINDOW_INVINCIBILITY, 2);
+
+set_window_value(AT_JAB, 1, AG_WINDOW_INVINCIBILITY, 2);
+set_window_value(AT_JAB, 2, AG_WINDOW_INVINCIBILITY, 2);
+set_window_value(AT_JAB, 3, AG_WINDOW_INVINCIBILITY, 2);
 	
 	init_shader()
 	

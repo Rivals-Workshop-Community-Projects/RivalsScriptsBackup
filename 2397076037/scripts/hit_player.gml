@@ -39,21 +39,19 @@ inactive = 120
   
 if my_hitboxID.type == 1 && DT < 16 && triggered == 0 {
 	
-  if (my_hitboxID.damage <= 5 &&  my_hitboxID.damage > 1) {
+  if (my_hitboxID.damage <= 5 && my_hitboxID.damage > 1) {
   	DT += 1
 
   }	
   
-  if rank > 4 {
+  if rank > 4 && my_hitboxID.damage > 5 {
   	DT += 1
   }
   
-  if my_hitboxID.damage > 5{
+  if my_hitboxID.damage > 5 {
   	DT += 2
   }	
-  
-
-  
+ 
 }
 
 move_cooldown[AT_EXTRA_3] = hitstop/2
@@ -89,7 +87,7 @@ if triggered == 1 or rank >= 4{
 			hit_player_obj.hitstop += 2
 		}
 		
-		 sound_play(sound_get("slicew1"),false,noone,.5 + my_hitboxID.damage/15 , 2.3 - min((hitstop*hitstop)/120 , 1.8) )
+		 sound_play(sound_get("slicew1"),false,noone,.5 + my_hitboxID.damage/15 , 2.3 - min((hitstop*hitstop)/80 , 1.5) )
 
 	if my_hitboxID.damage >= 2 {
 	   	 with hit_player_obj {
@@ -111,7 +109,7 @@ if triggered == 1 or rank >= 4{
 		
 		  slashn = hit_fx_create( sprite_get( "slashc" ), floor(8 + hitstop) );
 		 spawn_hit_fx (hit_player_obj.x  + (random_func(1, 36, true))*spr_dir, hit_player_obj.y - 10 - random_func(2, 66, true) , slashn)
- 	      sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone, 0.6 + my_hitboxID.damage/20, 2.2 - min((hitstop*hitstop)/120,1.8) )
+ 	      sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone, 0.6 + my_hitboxID.damage/20, 2.2 - min((hitstop*hitstop)/80,1.5) )
 
 
 

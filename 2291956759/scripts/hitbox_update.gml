@@ -22,6 +22,7 @@ if attack == AT_FSPECIAL && hbox_num == 3{
 if attack == AT_NSPECIAL && hbox_num == 8{
 	vsp /= 1.1
 	hsp /= 1.1
+	
 	if hitbox_timer == 1 {
 		vsp = player_id.hit_player_obj.vsp -3 + random_func(1, 6, true) 
 		hsp = player_id.hit_player_obj.hsp -3 + random_func(2, 6, true)
@@ -29,10 +30,11 @@ if attack == AT_NSPECIAL && hbox_num == 8{
 	
 	
 	var heal_player = instance_place(x, y, oPlayer)	
-	if (heal_player != noone) && hitbox_timer > 6 {
+	if (heal_player != noone) && hitbox_timer > 16 {
 	if  heal_player.url == player_id.url && heal_player.state_cat != SC_HITSTUN && heal_player.isyellow = 0 {
-  	    sound_play(asset_get("sfx_diamond_small_collect"),false,noone,0.4);
-		heal_player.ink += 5
+		sound_stop(asset_get("sfx_diamond_small_collect"));
+  	    sound_play(asset_get("sfx_diamond_small_collect"),false,noone,0.6,1.2);
+		heal_player.ink += 4
 		destroyed = 1
 		bhl = hit_fx_create( sprite_get( "blackhit" ), 6);
 		spawn_hit_fx (x,y,bhl)
@@ -44,7 +46,7 @@ if attack == AT_NSPECIAL && hbox_num == 8{
    if player_id.attacking &&  player_id.attack == AT_NSPECIAL && window < 2{
    	hitbox_timer = 7
    	x += (player_id.x - x) / 60
-	y += (player_id.y - y) / 60
+	y += (player_id.y - 40 - y) / 60
 	fall_through = true
 	if player_id.x - x < 0 {
 		hsp -= 0.6
@@ -69,7 +71,7 @@ if attack == AT_NSPECIAL && hbox_num == 8{
 		hsp += 0.2
 	}
 	
-	if player_id.y - y < 0 {
+	if player_id.y - 40 - y < 0 {
 		vsp -= 0.2
 	} else {
 		vsp += 0.2
@@ -106,6 +108,8 @@ summon = hit_fx_create( sprite_get( "summon" ), 40 );
 				i2 = hit_fx_create( sprite_get( "inkpar6" ), 26);
 ///Zetta
 if hbox_num == 1 {
+	
+	enemies = 1 
 	
 	if hitbox_timer == 1 {
 	waiting = 1
@@ -238,6 +242,8 @@ if hbox_num == 1 {
 ///Alex 
 if hbox_num == 2 {
     
+    enemies = 1 
+    
     if x < player_id.hit_player_obj.x {
     	spr_dir = 1
     } else {
@@ -333,7 +339,7 @@ if hbox_num == 2 {
 ///Mayu
 if hbox_num == 3 {
 	
-
+    enemies = 1 
 	
 	if hitbox_timer == 1 {
 	waiting = 1
@@ -476,7 +482,9 @@ if hbox_num == 3 {
 
 ///Saji
 if hbox_num == 4 {
-	
+	 
+	enemies = 1
+	 
 	if hitbox_timer == 1 {
 	waiting = 1
 	heath = 1 
@@ -571,6 +579,8 @@ if hbox_num == 4 {
 
 ///Akai
 if hbox_num == 5 {
+	
+	enemies = 1 
 	
 	if player_id.akaihit == 1 && hitbox_timer < 34*4{
 		player_id.hit_player_obj.x += floor((x + 80*spr_dir - player_id.hit_player_obj.x)/10)

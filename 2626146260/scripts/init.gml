@@ -5,10 +5,12 @@ hitstun_hurtbox_spr = -1;
 
 Hikaru_Title = "Motivated"
 
-nname = "Vergil Sparda"
-ncode1 = "He found fighting normally is too boring."
-ncode2 = "So he decided to do it while sitting on"
-ncode3 = "his favorite chair, limiting himself."
+sprite_change_offset("smallfunnyslashfx", 200, 3);
+
+nname = "Birgil Colivial"
+ncode1 = "A war veteran that gave up fighting once."
+ncode2 = "In his crippled state, he found enlightment."
+ncode3 = "Now he can conjures his spirit power."
 
 deathnum = 0
 triggertime = 0
@@ -140,6 +142,8 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
+sworddown = hit_fx_create( sprite_get( "wooeffect" ), 20 );
+
 birdb2 = hit_fx_create( sprite_get( "birdb2" ), 15*2 );
 sprite_change_offset("birdb2", 120, 60);
 
@@ -161,6 +165,9 @@ plat2 = hit_fx_create( sprite_get( "plat2" ), 4 );
 
 SC = hit_fx_create( sprite_get( "SC" ), 12 );
 sprite_change_offset("SC", 100, 100);
+
+SC2 = hit_fx_create( sprite_get( "SC" ), 6 );
+
 
 slashc = hit_fx_create( sprite_get( "slashc" ), 20 );
 sprite_change_offset("slashc", 75, 50);

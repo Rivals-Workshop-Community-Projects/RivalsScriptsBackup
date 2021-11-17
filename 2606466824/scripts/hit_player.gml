@@ -43,8 +43,8 @@ if (my_hitboxID.attack == AT_USPECIAL && hit_player_obj.state == PS_HITSTUN) {
 		//target.y = my_hitboxID.y;
 	}
 }
-if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 2) {
-	uspecCancel = 14;
+if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 3) {
+	uspecCancel = 30;
 }
 
 if (revengeMult > 1 && get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num, HG_REVENGE_KB_MULTIPLIER) != 0) {

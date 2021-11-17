@@ -33,7 +33,7 @@ if (type == 2 && !in_hitpause) {
         break;
         
         case AT_USPECIAL_GROUND:
-            if (hitbox_timer > 60 && !free) { destroyed = true; break;}
+            if (hitbox_timer > 45 && !free) { destroyed = true; break;}
             if (hitbox_timer <= 1) { 
                 proj_angle = point_direction(0, 0, hsp, vsp); 
                 ralsei_was_hit = false; break;
@@ -42,7 +42,7 @@ if (type == 2 && !in_hitpause) {
             //don't track the opponent if ralsei was attacked.
             //if (player_id.hitstun >= 1) { ralsei_was_hit = true; }
 
-            if (hitbox_timer == 59) { // && !ralsei_was_hit) {
+            if (hitbox_timer == 44) { // && !ralsei_was_hit) {
                 walls = 0;
                 grounds = 0;
                 

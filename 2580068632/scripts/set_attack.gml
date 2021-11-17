@@ -1,4 +1,5 @@
 //set_attack.gml
 
 //Munophone
-user_event(13);
+muno_event_type = 2;
+user_event(14);

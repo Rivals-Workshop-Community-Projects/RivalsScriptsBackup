@@ -98,7 +98,7 @@ set_hitbox_value(AT_DTILT, 2, HG_HEIGHT, 70);
 set_hitbox_value(AT_DTILT, 2, HG_SHAPE, 0);
 //knockback
 set_hitbox_value(AT_DTILT, 2, HG_BASE_KNOCKBACK, 11);
-set_hitbox_value(AT_DTILT, 2, HG_KNOCKBACK_SCALING, 1); 
+set_hitbox_value(AT_DTILT, 2, HG_KNOCKBACK_SCALING, 0.9); 
 set_hitbox_value(AT_DTILT, 2, HG_ANGLE, 90);
 //stun
 set_hitbox_value(AT_DTILT, 2, HG_BASE_HITPAUSE, 10);

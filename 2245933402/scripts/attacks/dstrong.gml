@@ -29,7 +29,7 @@ set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 8);
 
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 9);
 
@@ -81,8 +81,8 @@ set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE, 40);
 set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, 1.4);
-set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 14);
-set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, 0.6);
+set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 15);
+set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_EXTENDED_PARRY_STUN, 1);

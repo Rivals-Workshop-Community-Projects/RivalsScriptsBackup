@@ -21,6 +21,10 @@ if (ralsei_courage > 0) {
     ralsei_tp = 0;
     ralsei_draw_tp = 0;
     ralsei_draw_time_since_last_hit = 60;
+    
+    if (ralsei_heart_active) {
+		deactivate_heart();
+    }
 }
 else {
     //tp handing
@@ -59,7 +63,7 @@ if (ralsei_heart_active) {
     //restore airdodge when landing
     if (!free) ralsei_heart_has_airdodge_before_activating = true;
     //clamp speed in the air
-    else if (state == PS_IDLE_AIR) hsp = clamp(hsp, -walk_speed, walk_speed);
+    else if (state == PS_IDLE_AIR || state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP || state == PS_ATTACK_AIR) hsp = clamp(hsp, -2.5, 2.5);
 
     switch (state) {
         case PS_DASH_START:
@@ -84,18 +88,41 @@ if (ralsei_heart_active) {
         //break;
     }
     
+    //tick down tp
+    
+    
+    if (ralsei_tp <= 0) {
+		ralsei_heart_active = false;
+    	has_airdodge = (!free || ralsei_heart_has_airdodge_before_activating);
+		sound_play(sound_get("dr_powerup"), 0, noone, 0.5, 1);
+    }
+    
+    else {
+    	//ralsei_draw_tp = 0;
+    	
+    	if (ralsei_tp_drain_lock <= 0) {
+    		ralsei_tp -= 0.125;
+    	}
+    	else {
+    		ralsei_tp_drain_lock--;
+    	}
+    }
+    
+    
     //disable after 5 seconds
     //if (ralsei_tp == ralsei_max_tp) {
-    	ralsei_heart_deactivate_timer++;
-    	if (ralsei_heart_deactivate_timer >= 300) {
-    		ralsei_heart_active = false;
-	    	has_airdodge = (!free || ralsei_heart_has_airdodge_before_activating);
-			sound_play(sound_get("dr_powerup"), 0, noone, 0.5, 1);
-    	}
+    	//ralsei_heart_deactivate_timer++;
+    	//if (ralsei_heart_deactivate_timer >= 300) {
+    	//	ralsei_heart_active = false;
+	    //	has_airdodge = (!free || ralsei_heart_has_airdodge_before_activating);
+		//	sound_play(sound_get("dr_powerup"), 0, noone, 0.5, 1);
+    	//}
     //}
 }
 else {
 	ralsei_heart_deactivate_timer = 0;
+	ralsei_tp_drain_lock = 0;
+	if (ralsei_tp <= 0) move_cooldown[AT_DSPECIAL] = max(move_cooldown[AT_DSPECIAL], 2);
 }
 
 if (instance_exists(ralsei_bair_bullet_hit_player_object_id)) {
@@ -347,3 +374,25 @@ else {
 	//bonus codec when ralsei has full meter + trummel isn't taunting
 	if (ralsei_tp == ralsei_max_tp) bonuscodec = true;
 }
+
+
+
+#define deactivate_heart
+ralsei_heart_active = false;
+has_airdodge = (!free || ralsei_heart_has_airdodge_before_activating);
+sound_play(sound_get("dr_powerup"), 0, noone, 0.5, 1);
+move_cooldown[AT_DSPECIAL] = max(move_cooldown[AT_DSPECIAL], 2);
+ralsei_heart_active = false;
+
+if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) {
+	hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+}
+else if (state == PS_CROUCH) {
+	hurtboxID.sprite_index = hurtbox_spr;
+}
+else {
+	hurtboxID.sprite_index = crouchbox_spr;
+}
+
+
+

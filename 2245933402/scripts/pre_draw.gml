@@ -1,5 +1,5 @@
 ///
-
+shader_start();
 if get_player_color(player) == 7 {
 		if visible && state != PS_PRATFALL && state != PS_PRATLAND {
     
@@ -10,3 +10,5 @@ if get_player_color(player) == 7 {
   gpu_set_blendmode(bm_normal);
 }
 }
+
+shader_end() 

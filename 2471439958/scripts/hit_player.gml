@@ -95,7 +95,11 @@ if (my_hitboxID.attack == AT_FSTRONG && ice = 1 && hit_player_obj.ice_mark == 1 
     hit_player_obj.outline_color = [0, 0, 0];
 }
 
-
+//FINAL SMASH
+if (my_hitboxID.attack == 49 && window < 17 && hit_player_obj.hitstun > 0) {
+    hit_player_obj.x = x + spr_dir * 80
+    hit_player_obj.y = y + -15
+}
 
 
 

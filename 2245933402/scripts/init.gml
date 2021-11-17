@@ -10,6 +10,8 @@ obabo = 1
 ostyle = 5
 otime = 0
 
+jumping = 0
+
 nname = "Boarack Oboama"
 ncode1 = "The President of AERica."
 ncode2 = "Suspected to carry the exotic material [Obamium] "
@@ -36,7 +38,7 @@ walk_anim_speed = .125;
 dash_anim_speed = .25;
 pratfall_anim_speed = .25;
 
-walk_speed = 3.1;
+walk_speed = 3.5;
 walk_accel = 0.5;
 walk_turn_time = 6;
 initial_dash_time = 8;
@@ -69,7 +71,7 @@ max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 16; //fast fall speed
 gravity_speed = .65;
 hitstun_grav = .5;
-knockback_adj = 0.97; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 16;

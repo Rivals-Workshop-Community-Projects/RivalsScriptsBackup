@@ -48,6 +48,7 @@ with (oPlayer) {
 			anthem_marked = false;
 			anthem_marked_timer = 0;
 			anthem_marked_amount = 0;
+			anthem_marked_hboxes = array_create(other.fspecial_amount_max, noone);
 		}
 	}
 	if (state == PS_RESPAWN && anthem_marked) {
@@ -59,6 +60,7 @@ with (oPlayer) {
 			if (instance_exists(anthem_marked_hboxes[i]))
 				instance_destroy(anthem_marked_hboxes[i]);
 		}
+		anthem_marked_hboxes = array_create(other.fspecial_amount_max, noone);
 	}
 }
 
@@ -70,7 +72,7 @@ if ("superTrue" in self) {
 		if (instance_exists(hit_player_obj))
 			hit_player_obj.canUseCounterTimer = 500
 		
-		set_hitbox_value(49, 4, HG_DAMAGE, 75);
+		set_hitbox_value(49, 4, HG_DAMAGE, 25);
 		/// X is roughly how many frames until your super finish if it's an attack, it's unessessary for status effect supers
 		
 		}

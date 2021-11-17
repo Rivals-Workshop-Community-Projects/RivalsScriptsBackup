@@ -141,12 +141,14 @@ bubble_x = 0;
 bubble_y = 8;
 
 
-
+sworddown = hit_fx_create( sprite_get( "wooeffect" ), 20 );
 
 plat2 = hit_fx_create( sprite_get( "plat2" ), 4 );
 
 SC = hit_fx_create( sprite_get( "SC" ), 12 );
 sprite_change_offset("SC", 100, 100);
+
+SC2 = hit_fx_create( sprite_get( "SC" ), 6 );
 
 slashc = hit_fx_create( sprite_get( "slashc" ), 20 );
 sprite_change_offset("slashc", 75, 50);

@@ -1,5 +1,5 @@
 ///
-
+/*
 if attack == AT_EXTRA_1 && hbox_num == 1 {
  slashc = hit_fx_create( sprite_get( "slashc" ), 20 );
  
@@ -36,11 +36,13 @@ if hitbox_timer == 1 {
     
 }
 
+*/
+
 
 if attack == AT_EXTRA_1 && hbox_num == 3 {
- SC = hit_fx_create( sprite_get( "SC" ), 16 );
+ SC = hit_fx_create( sprite_get( "SC" ), 12 );
  if hitbox_timer == 19 {
-          spawn_hit_fx(x, y, SC)
+          spawn_hit_fx(x, y - 6, SC)
            sound_play(sound_get("SpaceCut")) 
  }
  
@@ -86,7 +88,7 @@ if attack == AT_FSPECIAL && hbox_num == 1 {
 	spawn_hit_fx( x + 40 - random_func(5, 80, true) - (10*spr_dir), y - random_func(4, 10, true) , esp )
 }
 
-if attack == AT_FSPECIAL && hbox_num == 2 {
+if attack == AT_FSPECIAL && hbox_num == 2 && player_id.stormtarget == player_id {
   can_hit_self = true	
 }
 
@@ -170,7 +172,7 @@ if attack == AT_DSPECIAL && hbox_num == 2 {
     	}
 	  }
 		 sound_play(sound_get("SpaceCutB"),false,noone,0.4) 	
-	create_hitbox(AT_DSPECIAL,1,x + 100 - random_func(1,200,true),y)
+	create_hitbox(AT_DSPECIAL,1,x + 70 - random_func(1,140,true),y)
 	}
 }
 

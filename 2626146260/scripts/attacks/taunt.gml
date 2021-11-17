@@ -24,7 +24,7 @@ set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAMES, 18);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAME_START, 37);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_SFX, sound_get("counterhit"));
-set_window_value(AT_TAUNT, 3, AG_WINDOW_SFX_FRAME, 1);
+set_window_value(AT_TAUNT, 3, AG_WINDOW_SFX_FRAME, 3);
 
 
 set_num_hitboxes(AT_TAUNT, 12);
@@ -46,7 +46,7 @@ set_hitbox_value(AT_TAUNT, 2, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_TAUNT, 2, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_TAUNT, 2, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_TAUNT, 2, HG_VISUAL_EFFECT_X_OFFSET, -10);
-set_hitbox_value(AT_TAUNT, 2, HG_HIT_SFX, asset_get("slicel"));
+set_hitbox_value(AT_TAUNT, 2, HG_HIT_SFX, sound_get("slicel"));
 set_hitbox_value(AT_TAUNT, 2, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_TAUNT, 1, HG_HITBOX_TYPE, 1);

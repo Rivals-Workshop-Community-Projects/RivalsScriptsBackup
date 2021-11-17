@@ -44,6 +44,7 @@ set_window_value(AT_JAB, 5, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_JAB, 5, AG_WINDOW_SFX, sfx_krtd_sword_swipe1);
 set_window_value(AT_JAB, 5, AG_WINDOW_SFX_FRAME, 4);
 
+//Finishing Hit Startup
 set_window_value(AT_JAB, 6, AG_WINDOW_TYPE, 1);
 set_window_value(AT_JAB, 6, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_JAB, 6, AG_WINDOW_ANIM_FRAMES, 2);
@@ -52,11 +53,13 @@ set_window_value(AT_JAB, 6, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_JAB, 6, AG_WINDOW_SFX, sfx_smash_ult_sword_swing_medium_2);
 set_window_value(AT_JAB, 6, AG_WINDOW_SFX_FRAME, 2);
 
+//Finishing Hit Active
 set_window_value(AT_JAB, 7, AG_WINDOW_TYPE, 1);
 set_window_value(AT_JAB, 7, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_JAB, 7, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, 7, AG_WINDOW_ANIM_FRAME_START, 9);
 
+//Finishing Hit Endlag
 set_window_value(AT_JAB, 8, AG_WINDOW_TYPE, 1);
 set_window_value(AT_JAB, 8, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_JAB, 8, AG_WINDOW_ANIM_FRAMES, 5);

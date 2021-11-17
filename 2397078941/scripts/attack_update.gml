@@ -247,6 +247,7 @@ set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 180);
 
    		if attack == AT_FSPECIAL {
 			
+			move_cooldown[AT_FSPECIAL] = 45
 			
 	        if window == 4 {
 	        	can_fast_fall = false
@@ -274,7 +275,6 @@ set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 180);
 				vsp = 0
 			}
 			
-			move_cooldown[AT_FSPECIAL] = 20
 			
 			
 			if window == 1 && window_timer == 1 {
@@ -400,7 +400,7 @@ set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 180);
 				if attack_pressed && state_timer > 15{
 				window = 4
 				window_timer = 0
-				state_timer += 10
+				state_timer = 120
 		    	}
 		    	
 		    	
@@ -447,17 +447,16 @@ set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 180);
 		    		state_timer = 120
 		    			sound_play(asset_get("sfx_swipe_heavy2"))
 		    			set_attack(AT_UTILT)
-		    			window = 2
-		    			window_timer = 0
+		    			window = 1
+		    			window_timer = 2
 		    	}
 		    	
 		    	if down_pressed {
 		    		state_timer = 120
-		    			sound_play(asset_get("sfx_blow_medium2"))
-		    			sound_play(asset_get("sfx_crunch"))
+		    		sound_play(asset_get("sfx_swipe_heavy1"))
 		    			set_attack(AT_DTILT)
-		    			window = 2
-		    			window_timer = 0
+		    			window = 1
+		    			window_timer = 2
 		    	}
 		    	
 		    	
@@ -476,8 +475,14 @@ set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 180);
 	}
 	
 	if attack == AT_FTILT && window == 1 && window_timer == 1 {
-	
+	    set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 86);
+        set_hitbox_value(AT_FTILT, 2, HG_HEIGHT, 36);
 		sound_play(asset_get("sfx_swipe_heavy1"))
+	}
+	
+	if attack == AT_FTILT && has_hit_player {
+		set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 126);
+        set_hitbox_value(AT_FTILT, 2, HG_HEIGHT, 76);
 	}
 	
 	if attack == AT_JAB && window == 2 && window_timer == 1 {
@@ -808,7 +813,7 @@ if attack == AT_DATTACK {
     	window_timer += 1
     }
     if window > 2 {
-    	hsp /= 1.1
+    	hsp /= 1.03
     }
 }
 

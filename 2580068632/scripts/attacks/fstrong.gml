@@ -16,7 +16,7 @@ set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, sfx_fstrong);
+set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, sfx_dimensional_cape_strike);
 
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 2);

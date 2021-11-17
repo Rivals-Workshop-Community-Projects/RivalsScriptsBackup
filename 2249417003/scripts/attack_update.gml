@@ -341,21 +341,23 @@ switch (attack) { //open switch(attack)
 					vsp = min(vsp, 1);
 					//can_move = false;
 					if (window_timer == 2 && !joy_pad_idle) {
-						hsp += lengthdir_x(1, joy_dir);
-						vsp += lengthdir_x(1, joy_dir);
+						hsp += lengthdir_x(0.5, joy_dir);
+						vsp += lengthdir_x(0.5, joy_dir);
 					}
 				}
+			break;
 			case 4:
-				if (window_timer > 5 && has_hit) {//if (window_timer > 7 - (has_hit * 2)) {
+				if (window_timer > 4 || has_hit /* && has_hit*/) {//if (window_timer > 7 - (has_hit * 2)) {
 					if ((attack_pressed || attack_down) && ralsei_nair_consecutive_hits < 3) {
 						ralsei_nair_cycle = (ralsei_nair_cycle+1) mod 6;
 						window = 1;
 						window_timer = 5;
 						
 						
-						if (has_hit) {
+						if (true /* has_hit */ ) {
 							attack_end();
-							ralsei_nair_consecutive_hits++;
+							if (has_hit) ralsei_nair_consecutive_hits++;
+							else ralsei_nair_consecutive_hits = 0;
 						
 							//transition to final hit if ralsei has hit three nairs already
 							if (ralsei_nair_consecutive_hits == 3) {
@@ -479,6 +481,9 @@ switch (attack) { //open switch(attack)
 					window = 5;
 					window_timer = 0;
 				}
+				else if (window_timer == 1 && !hitpause) {
+					sound_play(asset_get("sfx_swipe_medium1"), false, noone, 0.8, 1.2);
+				}
 			break;
 			case 3:
 				if (window_timer == 1) {
@@ -505,6 +510,9 @@ switch (attack) { //open switch(attack)
 				}
 			break;
 			case 5:
+				if (window_timer == 1 && !hitpause) {
+					sound_play(asset_get("sfx_spin"), false, noone, 0.75, 0.9);
+				}
 			case 6:
 				hsp = clamp(hsp, -1, 1);
 				vsp = min(vsp, 4);
@@ -704,6 +712,7 @@ switch (attack) { //open switch(attack)
 				has_airdodge = false;
 				sound_play(sound_get("dr_powerup"));
 				ralsei_heart_deactivate_timer = 0;
+				ralsei_tp_drain_lock = ralsei_tp_drain_lock_time;
 			//}
 
 		}

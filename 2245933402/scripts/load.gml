@@ -16,6 +16,10 @@ sprite_change_offset("pratfall", 64, 104);
 sprite_change_offset("land", 64, 104);
 sprite_change_offset("landinglag", 64, 104);
 
+sprite_change_offset("djump4", 64, 104);
+sprite_change_offset("djump2", 64, 104);
+sprite_change_offset("djump3", 64, 104);
+
 sprite_change_offset("parry", 64, 104);
 sprite_change_offset("roll_forward", 64, 104);
 sprite_change_offset("roll_backward", 64, 104);

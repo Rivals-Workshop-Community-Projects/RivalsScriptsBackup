@@ -17,7 +17,7 @@ if (my_hitboxID.type == 2) {
 			//make transcendant
 			my_hitboxID.transcendent = true;
 			//have hitstun
-			my_hitboxID.hitstun_factor = 1;
+			my_hitboxID.hitstun_factor = 1.5;
 			//upward knockback
 			my_hitboxID.kb_angle = 90;
 		break;

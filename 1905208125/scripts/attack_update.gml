@@ -2,7 +2,7 @@ var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
 
 switch (attack) {
 	case AT_DTILT:
-	    if (window != 4 && has_hit_player){
+	    if (window != 4 && has_hit){
 	        can_jump = true;
 	    }
 	    if (window == 1 && window_timer == window_length) {

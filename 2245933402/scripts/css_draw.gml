@@ -49,6 +49,11 @@ var palette_names = [
   "Trump",
   "Orochi",
   "Equaliza",
+  "BLW",
+  "Agent N",
+  "Amaya", 
+  "Solid",
+  "Cosmic",  
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check

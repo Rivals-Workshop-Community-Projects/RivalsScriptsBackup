@@ -11,12 +11,12 @@ set_window_value(AT_DAIR, 1, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_DAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 
 set_window_value(AT_DAIR, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DAIR, 2, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_DAIR, 2, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_DAIR, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DAIR, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_DAIR, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DAIR, 2, AG_WINDOW_SFX, asset_get("sfx_ori_stomp_spin"));
-set_window_value(AT_DAIR, 2, AG_WINDOW_SFX_FRAME, 3);
+set_window_value(AT_DAIR, 2, AG_WINDOW_SFX_FRAME, 2);
 
 set_window_value(AT_DAIR, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DAIR, 3, AG_WINDOW_LENGTH, 13);
@@ -53,8 +53,8 @@ set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 2);
 set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 290);//40
 set_hitbox_value(AT_DAIR, 1, HG_FORCE_FLINCH, 1);
 set_hitbox_value(AT_DAIR, 1, HG_ANGLE_FLIPPER, 10);
-set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 3);
-set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 4);
+set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 4);
+set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 

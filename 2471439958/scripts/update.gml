@@ -681,6 +681,16 @@ if (taunt_pressed){
 		}
 	}
 }
+
+if (attack == 49){
+		hit_player_obj.should_make_shockwave=false;
+		hit_player.can_move=false;
+		hit_player.can_wall_jump=false;
+		hit_player.has_walljump=false;
+		hit_player.can_fast_fall=false;
+}
+
+
 //NO Element
 
 

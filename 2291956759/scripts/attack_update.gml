@@ -209,12 +209,37 @@ if attack == AT_FSPECIAL {
 }
 
 if attack == AT_USPECIAL {
-	can_fast_fall = false
+	
+		can_fast_fall = false
+		
+	if window == 2 or (window == 1 && window_timer > 1){
+	    spr_angle = (state_timer - 90)
+	} 
+	set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_X, -6 + ((state_timer - 90)*spr_dir));
+	
     if window = 1 {
-        vsp /= 1.2
+    	y -= 2
+        vsp /= 1.1
         hsp /= 1.05
         
+        if state_timer < 5 {
+        	state_timer = 90
+        }
+        
+        
+        
+        if left_down {
+        	state_timer += 2
+        }
+        
+        if right_down {
+        	state_timer -= 2
+        }
+        
     }
+    
+    state_timer -= 1
+    
     if window == 1 && window_timer == 6 {
         sound_play(asset_get("sfx_forsburn_disappear")) 
     }
@@ -222,27 +247,33 @@ if attack == AT_USPECIAL {
         sound_play(asset_get("sfx_bird_downspecial")) 
     }
     if window == 3 && window_timer == 6 {
-            vsp = -14
+    	    hsp = (state_timer - 90)/-4
+            vsp = -12
+           if !inkshield {
             set_state (PS_PRATFALL)
+           } else {
+           	inkshield = 0
+           
+           }
     }
 }
 
 if attack == AT_DSPECIAL {
     
-    if taunt_pressed && ink >= 300 && !free{
-    	sasdh = instance_create(x + 80*spr_dir,y,"oPlayer");
-    	set_attack (AT_FSPECIAL)
-    	window = 2
-    	window_timer = 4
-    	shake_camera(6,12)
-    	sound_play(sound_get("counterhit")) 	
-    	sound_play(asset_get("sfx_bird_downspecial")) 
-    	sound_play(asset_get("sfx_orca_absorb")) 
-    	spawn_hit_fx(x,y - 30,306)
-    	spawn_hit_fx(x,y - 30,305)
-    	ink = 0
-    	x -= 40*spr_dir
-    }
+//    if taunt_pressed && ink >= 300 && !free{
+//    	sasdh = instance_create(x + 80*spr_dir,y,"oPlayer");
+//    	set_attack (AT_FSPECIAL)
+//    	window = 2
+//    	window_timer = 4
+//    	shake_camera(6,12)
+//    	sound_play(sound_get("counterhit")) 	
+//    	sound_play(asset_get("sfx_bird_downspecial")) 
+//    	sound_play(asset_get("sfx_orca_absorb")) 
+//    	spawn_hit_fx(x,y - 30,306)
+//    	spawn_hit_fx(x,y - 30,305)
+//    	ink = 0
+//    	x -= 40*spr_dir
+//    }
         if joy_dir < 45 || joy_dir >= 315 {
             summon = 0
         }

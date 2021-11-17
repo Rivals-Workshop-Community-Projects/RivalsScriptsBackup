@@ -6,7 +6,6 @@ if (my_hitboxID.attack == AT_FSPECIAL){
 	//dimensional_cape_hit = true;
 }
 
-
 if (my_hitboxID.attack == AT_FAIR) {
 	if (window < 6){
 		hit_player_obj.x -= 6 * hit_player_obj.spr_dir

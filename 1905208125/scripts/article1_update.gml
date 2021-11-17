@@ -3,6 +3,14 @@
 if !init {
 	init = 1;
 	}
+if host != noone {
+    if(!instance_exists(host) || host.state==PS_RESPAWN)
+    {
+        instance_destroy();
+        exit;
+    }
+}
+
 x=host.x-(30*spr_dir)+host.hsp;	
 y=host.y-35+host.vsp;
 if (bomb_timer<50&&bomb_timer>25)
@@ -51,13 +59,6 @@ if (bomb_timer == 0)
     exit;
 }
 
-if host != noone {
-    if(host.state==PS_RESPAWN)
-    {
-        instance_destroy();
-        exit;
-    }
-}
 
 if detonate && bomb_timer > 16 {
 	bomb_timer = 16;

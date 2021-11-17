@@ -32,7 +32,7 @@ if rank > 0  {
 
 if rankm <= 0 {
 	if rank == 1 {
-	   sound_play(sound_get("tipped"),false,noone,.8,0.6) 
+	   sound_play(sound_get("tipped"),false,noone,.6,0.6) 
 	    prevrank = rank 
     } else {
     	 prevrank = rank 
@@ -55,7 +55,7 @@ if rank < 6  {
      	case 1 :
      	sound_stop(sound_get("tipped")) 	
      	if rank > prevrank {
-     	sound_play(sound_get("tipped"),false,noone,.8,0.7) 
+     	sound_play(sound_get("tipped"),false,noone,.6,0.65) 
      	prevrank = rank
      	}
      	break;
@@ -63,7 +63,7 @@ if rank < 6  {
      	case 2 :
      	sound_stop(sound_get("tipped")) 	
      	if rank > prevrank {
-     	sound_play(sound_get("tipped"),false,noone,.8,0.8) 
+     	sound_play(sound_get("tipped"),false,noone,.6,0.7) 
      	prevrank = rank
      	}
      	
@@ -72,7 +72,7 @@ if rank < 6  {
      	case 3 :
      	sound_stop(sound_get("tipped")) 	
      	if rank > prevrank {
-     	sound_play(sound_get("tipped"),false,noone,.8,0.9) 
+     	sound_play(sound_get("tipped"),false,noone,.6,0.75) 
      	prevrank = rank
      	}
      	break;
@@ -80,8 +80,8 @@ if rank < 6  {
         case 4 :
      	sound_stop(sound_get("tipped")) 	
      	if rank > prevrank {
-     	sound_play(sound_get("tipped"),false,noone,.8,1) 
-     	sound_play(sound_get("tipped"),false,noone,.4,0.7) 
+     	sound_play(sound_get("tipped"),false,noone,.6,1) 
+     	sound_play(sound_get("tipped"),false,noone,.4,0.8) 
      	prevrank = rank
      	}
         
@@ -100,7 +100,7 @@ if rank < 6  {
      	case 5 :
      	sound_stop(sound_get("tipped")) 	
      	if rank > prevrank {
-     	sound_play(sound_get("tipped"),false,noone,.8, 1.1) 
+     	sound_play(sound_get("tipped"),false,noone,.6, .9) 
      	sound_play(sound_get("tipped"),false,noone,.4,0.7) 
      	prevrank = rank
      	}
@@ -110,7 +110,7 @@ if rank < 6  {
         case 6 :
         sound_stop(sound_get("tipped")) 	
      	if rank > prevrank {
-     	sound_play(sound_get("tipped"),false,noone,.8, 1.2) 
+     	sound_play(sound_get("tipped"),false,noone,.8, 1) 
      	sound_play(sound_get("tipped"),false,noone,.4,0.6) 
      	prevrank = rank
      	}
@@ -243,11 +243,12 @@ if hit_player_obj.state == PS_DEAD && deathnum > -1{
 
 }
 
-if get_gameplay_time() == 1 {
+if get_gameplay_time() == 3 {
 	set_attack(AT_TAUNT)
 	window = 3
 	window_timer = 0
 }
+
 	if exheld == 8 or exheld == 10 {
 		outline_color = [255, 255, 255]
 		sound_play(asset_get("sfx_charge_blade_ready"),false,noone,0.8);
@@ -426,35 +427,36 @@ if state == PS_DASH_TURN or state == PS_WALK_TURN{
 
 if triggered = 1 {
 	
-	if get_gameplay_time() % 30 == 0 {
+	if !hitpause {
+	if triggertime % 90 == 45 {
 		    spawn_hit_fx(x - 50 + random_func(5,101,true),y-58 - random_func(3,60,true),birdb2) 	
 
 	}
 	
-	if get_gameplay_time() % 30 == 15 {
+	if triggertime % 90 == 0 {
 		    spawn_hit_fx(x - 50 + random_func(5,101,true),y-58 - random_func(3,60,true),birdb1) 	
     
 	}
 	
-	if get_gameplay_time() % 40 == random_func(16,30,true) {
+	if triggertime % 90 == 0 {
 	sound_play(sound_get("bnoise1"),false,noone,0.3,.9 - (random_func(1,10,true))/100)  
     
     if get_player_color(player) != 9 {
   
     	switch random_func(1,2,true){
     		case 0:
-    		sound_play(sound_get("taunt1"),false,noone,.6,1.6)
+    		sound_play(sound_get("taunt1"),false,noone,.3,1.6)
     		break;
     		
     		case 1:
-    		sound_play(sound_get("taunt2"),false,noone,.6,1.6)
+    		sound_play(sound_get("taunt2"),false,noone,.3,1.6)
     		break;
     		
     	}
     	
 	} else {
 		
-		sound_play(sound_get("squack1"),false,noone, .4 , 1.2 + (random_func(1,30,true))/100 )
+		sound_play(sound_get("squack1"),false,noone, .3 , 1.2 + (random_func(1,30,true))/100 )
 
     }
     	
@@ -463,29 +465,29 @@ if triggered = 1 {
     } 
     spawn_hit_fx(x - 50 + random_func(3,101,true),y-28 - random_func(5,60,true),birdb2) 	
     
-    
+	}
 	
 }
 
-if get_gameplay_time() % 40 == random_func(15,30,true) {
+if triggertime % 90 == 45 {
 	sound_play(sound_get("bnoise2"),false,noone,0.3,.9 - (random_func(1,10,true))/100)  
         if get_player_color(player) != 9 {
         	
   
     	switch random_func(1,2,true){
     		case 0:
-    		sound_play(sound_get("taunt1"),false,noone,.6,1.6)
+    		sound_play(sound_get("taunt1"),false,noone,.3,1.6)
     		break;
     		
     		case 1:
-    		sound_play(sound_get("taunt2"),false,noone,.6,1.6)
+    		sound_play(sound_get("taunt2"),false,noone,.3,1.6)
     		break;
     		
     	}
     	
     	} else {
     		
-    		sound_play(sound_get("squack1"),false,noone, .4 , 1.2 + (random_func(1,30,true))/100 )
+    		sound_play(sound_get("squack1"),false,noone, .3 , 1.2 + (random_func(1,30,true))/100 )
     
         }
     
@@ -510,13 +512,12 @@ if player_id == other.id {
 }
 } 
 
-
 walk_speed = 4;
 walk_accel = 0.4;
 walk_turn_time = 4;
 initial_dash_time = 10;
-initial_dash_speed = 8;
-dash_speed = 7.5
+initial_dash_speed = 7;
+dash_speed = 6.5
 dash_turn_time = 8;
 dash_turn_accel = .5;
 dash_stop_time = 6;
@@ -528,12 +529,12 @@ jump_start_time = 5;
 jump_speed = 12;
 short_hop_speed = 8;
 djump_speed = 12;
-leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state
+leave_ground_max = 5; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 4; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
-wave_land_adj = 1.3;
+wave_land_adj = 1.25;
 	
 walljump_hsp = 5;
 walljump_vsp = 12;
@@ -601,10 +602,10 @@ ground_friction = .5;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
-jump_speed = 10;
+jump_speed = 11;
 short_hop_speed = 8;
-djump_speed = 10;
-leave_ground_max = 4.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
+djump_speed = 11;
+leave_ground_max = 5; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down

@@ -338,7 +338,7 @@ if (attack == AT_NSPECIAL) {
 
 if (attack == AT_FSPECIAL){
 	can_fast_fall = false;
-	grav = 0.25;
+	grav = 0.35;
 	vsp = min(vsp, 6);
     if (state_timer == 1 ){
     	fspecial_times = 0;

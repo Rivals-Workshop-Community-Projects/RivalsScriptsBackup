@@ -80,7 +80,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 0);
 
-set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 21);
+set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 18);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 8);
 //priority/grouping
 set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 5); //inflict inertia

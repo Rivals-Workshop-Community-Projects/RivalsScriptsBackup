@@ -13,7 +13,7 @@ set_attack_value(AT_FAIR, AG_LANDING_LAG, 8);
 set_attack_value(AT_FAIR, AG_NUM_WINDOWS, 4);
 
 //startup
-set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);//sfx_charge_blade_swing
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, sound_get("fesliyan_burst"));//asset_get("sfx_shovel_swing_light2"));
@@ -62,12 +62,13 @@ set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 2); //high priority
 set_hitbox_value(AT_FAIR, 1, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_FAIR, 1, HG_SDI_MULTIPLIER, 1);
 
-set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 3);
+set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 4);
 set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 45);
-set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, 0);
+set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 4.5);
+set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, 0.65);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, 0.4);
+set_hitbox_value(AT_FAIR, 1, HG_EXTRA_HITPAUSE, 1);
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 305 ); //"basic sweetspot"
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 
@@ -87,7 +88,7 @@ set_hitbox_value(AT_FAIR, 2, HG_SDI_MULTIPLIER, 1);
 set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 3);
 set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 361);
 set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .7);
+set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .65);
 set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, 0.5);
@@ -119,12 +120,12 @@ set_hitbox_value(AT_FAIR, 4, HG_HEIGHT, 8);
 
 //knockback
 set_hitbox_value(AT_FAIR, 4, HG_BASE_KNOCKBACK, 4);
-set_hitbox_value(AT_FAIR, 4, HG_KNOCKBACK_SCALING, 0.5); 
-set_hitbox_value(AT_FAIR, 4, HG_ANGLE, 65);
+set_hitbox_value(AT_FAIR, 4, HG_KNOCKBACK_SCALING, 0.85); 
+set_hitbox_value(AT_FAIR, 4, HG_ANGLE, 60);
 //stun
 set_hitbox_value(AT_FAIR, 4, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_FAIR, 4, HG_HITPAUSE_SCALING, 0);
-set_hitbox_value(AT_FAIR, 4, HG_HITSTUN_MULTIPLIER, 0.65); 
+set_hitbox_value(AT_FAIR, 4, HG_HITSTUN_MULTIPLIER, 1); 
 //effects
 set_hitbox_value(AT_FAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(AT_FAIR, 4, HG_HIT_LOCKOUT, 1);

@@ -1,6 +1,18 @@
 ///
 
 
+
+
+if (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) && attack == AT_USPECIAL && window <= 2 {
+    
+    
+    if state_timer > 5 {
+    draw_x = floor((state_timer - 90)/3)
+    }
+    
+    
+}
+
 if isyellow {
     if (state == PS_ROLL_BACKWARD or state == PS_ROLL_FORWARD or state == PS_TECH_FORWARD or state == PS_TECH_BACKWARD){
      sprite_index = sprite_get("pratfall");
