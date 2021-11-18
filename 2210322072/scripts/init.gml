@@ -17,11 +17,16 @@ superMove = 14
 rekarma = 0
 karma = 0
 karmacom = 0
-admw = 3
-admb = 1
+
+
+admw = 4
+admb = 3
+
+
 karmatimer = 0
 nshit = 0
 souldmg = 0
+
 col = 0
 col1 = 155
 col2 = 155
@@ -52,7 +57,7 @@ walk_accel = 1;
 walk_turn_time = 4;
 initial_dash_time = 10;
 initial_dash_speed = 7;
-dash_speed = 7
+dash_speed = 6.5
 dash_turn_time = 8;
 dash_turn_accel = .5;
 dash_stop_time = 10;
@@ -66,10 +71,10 @@ short_hop_speed = 7;
 djump_speed = 10;
 leave_ground_max = 4; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 4; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 4.8; //the maximum hsp you can accelerate to when in a normal aerial state
+air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .28;
-prat_fall_accel = 1; //multiplier of air_accel while in pratfall
+prat_fall_accel = 0; //multiplier of air_accel while in pratfall
 air_friction = .0522;
 max_djumps = 1;
 double_jump_time = 40; //the number of frames to play the djump animation. Can't be less than 31.
@@ -81,7 +86,7 @@ max_fall = 7.5; //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed
 gravity_speed = .50;
 hitstun_grav = .53;
-knockback_adj = 1.0;//the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.05;//the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 15;

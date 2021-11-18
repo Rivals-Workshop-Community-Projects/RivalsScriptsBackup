@@ -6,7 +6,7 @@ set_attack_value(AT_UTILT, AG_CATEGORY, 2);
 set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_UTILT, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UTILT, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_ice_on_player"));
+//set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_ice_on_player"));
 set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 5);
 
 set_window_value(AT_UTILT, 2, AG_WINDOW_LENGTH, 4);
@@ -43,7 +43,7 @@ set_hitbox_value(AT_UTILT, 1, HG_HITSTUN_MULTIPLIER, 1);
 
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 2);
-set_hitbox_value(AT_UTILT, 2, HG_LIFETIME, 4);
+set_hitbox_value(AT_UTILT, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_X, 10);
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_Y, -56);
 set_hitbox_value(AT_UTILT, 2, HG_WIDTH, 46);

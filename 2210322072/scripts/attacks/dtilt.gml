@@ -5,7 +5,7 @@ set_attack_value(AT_DTILT, AG_HURTBOX_SPRITE, sprite_get("dtilt_hurt"));
 set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DTILT, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DTILT, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, asset_get("sfx_ice_shieldup"));
+//set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, asset_get("sfx_ice_shieldup"));
 set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 4);
 
 set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 4);

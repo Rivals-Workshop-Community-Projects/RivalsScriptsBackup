@@ -43,6 +43,13 @@ if karmatimer != 0 {
     }
 }
 
+
+
+if move_cooldown[AT_NSPECIAL_2] > 0 {
+
+         draw_sprite_ext(sprite_get("yinyang"), 0,  room_width/2 ,  room_height/2 - 60,0.8,0.8,move_cooldown[AT_NSPECIAL_2]*-1,-1,min(0.3,(move_cooldown[AT_NSPECIAL_2] - 60 )/120) );     
+
+}   
 ///if soultimer == 0 {
 ///draw_sprite_ext(sprite_get("glow"), 0, x, y - 40);
 ///draw_sprite_ext(sprite_get("glow"), 0, x, y - 40);

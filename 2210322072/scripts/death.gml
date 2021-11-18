@@ -1,9 +1,7 @@
 ///
 
-
-admw = 3
-admb = 1
-
+admw = 4
+admb = 3
 
 if karmatimer > 0  {
         karmatimer = 360

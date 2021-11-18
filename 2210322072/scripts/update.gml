@@ -5,67 +5,60 @@
 	}
 
 
-if admw < 0 {
-	admw = 0
-}
-
 
 if karmatimer < 2 {
 switch admw {
 
-    case 0 :
+    case 4 :
     
         with (pHitBox) {
-		if player_id == other.id {
-		     		kb_scale = hitpause/10
+		if player_id == other.id && attack != AT_NSPECIAL && attack != AT_FSPECIAL && attack != AT_USPECIAL && attack != AT_DSPECIAL && attack != AT_TAUNT{
+		     	
+		     	
+		     	if (sound_effect == sound_get("slice1") or sound_effect == sound_get("slice2")
+                or sound_effect == sound_get("slice3")) and damage > 1 {
+		     		kb_scale = hitpause/15
+		     		hitpause_growth = hitpause/60
+                }
+		     		
+		        if (sound_effect != sound_get("slice1") and sound_effect != sound_get("slice2")
+                   and sound_effect != sound_get("slice3")) and damage > 1 {
+		     		kb_scale = hitpause/15
 		     		hitpause_growth = hitpause/10
+                }
+                
+		     		
   		     }
   	    }
   	    
     break;
     
-    case 1:
-       with (pHitBox) {
-		if player_id == other.id {
+     
+    case 0 :
+    
+     	with (pHitBox)  {
+     		
+     		
+		     if player_id == other.id && attack != AT_NSPECIAL && attack != AT_FSPECIAL && attack != AT_USPECIAL && attack != AT_DSPECIAL && attack != AT_TAUNT{
+		     	//extra_hitpause = floor(damage/1.3)
+		     	
+		     	if (sound_effect == sound_get("slice1") or sound_effect == sound_get("slice2")
+                   or sound_effect == sound_get("slice3")) and damage > 1 {
 		     		kb_scale = hitpause/50
-		     		hitpause_growth = hitpause/50
-  		     }
-  	    }
-    
-    break;
-    
-    
-    case 2:
-             	with (pHitBox) {
-		     if player_id == other.id {
-		     	extra_hitpause = floor(damage/2)
-		     		kb_scale = hitpause/80
 		     		hitpause_growth = hitpause/80
-  		     }
-  	    }
-    
-    break;
-
-
-    case 3:
-         	with (pHitBox) {
-		     if player_id == other.id {
-		     	extra_hitpause = floor(damage/2)
-		     		kb_scale = hitpause/80
+                }
+                
+                
+                if (sound_effect != sound_get("slice1") and sound_effect != sound_get("slice2")
+                   and sound_effect != sound_get("slice3")) and damage > 1 {
+		     		kb_scale = hitpause/60
 		     		hitpause_growth = hitpause/80
+                }
+                
+                   
   		     }
   	    }
-    break;
-     
-     
-    case 4 :
-     	with (pHitBox) {
-		     if player_id == other.id {
-		     	extra_hitpause = floor(damage/1.3)
-		     		kb_scale = hitpause/100
-		     		hitpause_growth = hitpause/100
-  		     }
-  	    }
+  	    
     break; 
 
 }
@@ -402,6 +395,7 @@ if soultimer < -1 {
                      soultimer = 0
                      x = soulx
                      y = souly
+                     spr_dir = souldir
                      set_attack (AT_DSPECIAL)
                      window = 4
                      window_timer = 0
@@ -468,6 +462,7 @@ if nshit == 3 {
 }
 
 
+if get_gameplay_time() > 120 {
 if admb == 3 {
 		if get_gameplay_time() % 2 == 0 {
 	spawn_hit_fx( x + 40 - random_func(5, 80, true) - (10*spr_dir), y - 20 - random_func(4, 80, true) , esp1 )
@@ -479,6 +474,7 @@ if admw == 4 {
 		if get_gameplay_time() % 2 == 1 {
 	spawn_hit_fx( x + 40 - random_func(5, 80, true) - (10*spr_dir), y - 20 - random_func(4, 80, true) , esp2 )
 	}
+}
 }
 // Soul
 if soultimer <= -240 && !hitpause {
@@ -550,6 +546,8 @@ vsp = 0
 set_attack (AT_DSPECIAL)
 window = 4
 window_timer = 0
+
+
 }
 
 
@@ -639,8 +637,15 @@ if soultimer > -340 && soultimer < -1  {
 		    nearbyhitbox.image_yscale *= 2
                      x = soulx 
                      y = souly 
+                     spr_dir = souldir
 
-                     
+                if admw == 4 {
+                	admb = 3
+                	admw = 0
+                } else if admb = 3 {
+                	admb = 0
+                	admw = 4
+                }        
 	}
 	}
 }
@@ -674,7 +679,40 @@ set_state(PS_PRATFALL)
 prat_land_time = 150;
 window = 4
 window_timer = 0
+
+if admw == 4 {
+	admb = 3
+	admw = 0
+} else if admb = 3 {
+	admb = 0
+	admw = 4
+}
+
 	}
 }
 
-
+if move_cooldown[AT_NSPECIAL_2] == 0 {
+with oPlayer if (activated_kill_effect) {
+	
+  if hit_player_obj == other {
+  	
+             with other {
+             	
+	         if  get_player_color(player) == 5 {
+             sound_play(sound_get("CARAMELFN"))
+             }
+             
+             
+         
+             spawn_hit_fx ( x, y + 30, 304 )
+             spawn_hit_fx ( x, y + 30, wh )
+             spawn_hit_fx ( x, y + 30, bh )
+             
+             
+             sound_play(sound_get("ADfull"))
+             move_cooldown[AT_NSPECIAL_2] = 120
+               
+             }
+   }
+}
+}

@@ -154,8 +154,10 @@ if otime > 890 or ostyle == 5{
 	
 	otime -= 1
 	
+if otime > 890 && "ai_target" in self {
     take_damage(player, -1, -1)
-    
+}
+
 if ostyle == 1{
 
 

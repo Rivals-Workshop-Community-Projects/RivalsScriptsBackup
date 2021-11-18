@@ -28,6 +28,11 @@ if alt == 5 {
         sound_play(sound_get("CARAMEL"))
     }
   draw_sprite_ext(sprite_get("charselectrb"),drawtime / 5,temp_x-2,temp_y-2,2,2,0,-1,1);
+} else {
+    
+    if drawtime == 1 {
+        sound_stop(sound_get("CARAMEL"))
+    }
 }
 
 
@@ -63,6 +68,9 @@ var palette_names = [
   "Poisonous",
   "Rainbow Soul",
   "Acolyte Alt",
+  "The Unforgotten",
+  "The Unforgiven",
+  "BLW",
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check
