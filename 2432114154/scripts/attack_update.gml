@@ -6,6 +6,20 @@
         
 
 
+    if attack == AT_FSPECIAL{
+    	
+    	if has_hit {
+              old_vsp = -5
+              old_hsp = 4*spr_dir
+              set_attack(AT_DSPECIAL)
+              window = 3
+              window_timer = 0
+              state_timer = 200
+	          set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 10);
+    	}
+    	
+    }
+    
 if attack == AT_FAIR && window == 1 && window_timer == 1 && !hitpause {
 	sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,1.5)
 	sound_play(asset_get("sfx_ice_on_player"),false,noone,1,1.2)
@@ -22,6 +36,11 @@ if attack == AT_UAIR && window == 1 && window_timer == 10 && !hitpause{
 
 if attack == AT_BAIR && window == 1 && window_timer == 1 && !hitpause{
 	sound_play(asset_get("sfx_swipe_heavy2"),false,noone,1,1.15)
+	set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 64);
+    set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 34);
+    set_attack_value(AT_BAIR, AG_CATEGORY, 1);
+    set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+    set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 303);
 }
 
 
@@ -278,6 +297,7 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
 
     
     if attack == AT_FSPECIAL{
+    	
     	prat_land_time = 10;
     	can_wall_jump = true
         if window == 1 {
@@ -357,29 +377,10 @@ if get_player_color(player) == 10 {
 }
          }
          
-         if (has_hit or window == 3 or (window == 2 && window_timer > 3)) && get_gameplay_time() > 120{
+         if window > 1 && get_gameplay_time() > 120{
                  can_jump = true
-                  move_cooldown[AT_FSPECIAL] = 5
-                 if !has_hit{
-                     move_cooldown[AT_NSPECIAL] = 20
-                 }
-             if left_down and !right_down and !free and !jump_down and !up_down{
-             	attack_end();
-                 set_state (PS_WAVELAND)
-                 state_timer = 1
-                 hsp = -8
-                 old_hsp = -8
-                 vsp = 10
-             }
-             if right_down and !left_down and !free and !jump_down and !up_down{
-             	attack_end();
-                 set_state (PS_WAVELAND)
-                 state_timer = 1 
-                  hsp = 8
-                 old_hsp = 8
-                 vsp = 10
-             }
          }
+         
         }
         
         
@@ -425,8 +426,15 @@ if get_player_color(player) == 10 {
          }   
          
          if window == 2 && window_timer == 25 {
+         	
+         	if has_hit_player {
              sound_play(sound_get("RZ"))
-             
+         	} else {
+         		sound_play(asset_get("sfx_spin"),false,noone,2)
+         	  sound_play(asset_get("sfx_bird_nspecial"))	
+        	sound_play(asset_get("sfx_bird_sidespecial_start"))	
+         	}
+         	
 		var angle = (round(joy_dir / 11.25) * 11.25) / 180 * -3.14; //45)*45)/180
 		if (joy_pad_idle){
 			hsp = 4*spr_dir;
@@ -440,6 +448,11 @@ if get_player_color(player) == 10 {
         
          }
          
+         if has_hit_player {
+              
+              
+         }
+         
          if window == 3  {
          	
          	if hsp < 0  && state_timer < 400{
@@ -451,8 +464,14 @@ if get_player_color(player) == 10 {
             }
          	
          	move_cooldown[AT_DAIR] = 10
+         	
             if has_hit_player {
+              
+              if window < 3 {
+              	window_timer += 0.5
+              }
 
+              
            if x < hit_player_obj.x && state_timer < 400{
          		spr_dir = 1
          		state_timer = 400
@@ -464,8 +483,17 @@ if get_player_color(player) == 10 {
          	}
          	
          	
+         	
+         	
                   with hit_player_obj{
                   	
+                  	state_timer -= 1
+                  	
+                  	can_tech = false 
+                  	
+                  	if vsp > 0 {
+                  		vsp /= 1.05
+                  	}
                   	                  
                   if state == PS_RESPAWN {
                   	attack_end();
@@ -492,9 +520,19 @@ if get_player_color(player) == 10 {
                   	}
                   	
                   }
-            	
-                        hsp = floor(hit_player_obj.x - x) / 20 + (5 * spr_dir)
-                		vsp = floor((hit_player_obj.y * 1.2) - y) / 30
+            	 
+            	 
+            if state_timer < 1200 {
+              	hsp = -20*spr_dir
+              	vsp = -15
+              	state_timer = 1200
+            } else {
+            	vsp /= 1.05
+            	hsp /= 1.05
+            }
+            
+                        x += floor(hit_player_obj.x - x) / 20 + (5 * spr_dir)
+                		y += floor((hit_player_obj.y * 1.2) - y) / 30
                 
                         
                         if (hit_player_obj.x - x < 30) and (hit_player_obj.x - x > -30) {
@@ -503,17 +541,17 @@ if get_player_color(player) == 10 {
                 	
                     if	(hit_player_obj.y - y > 20) or (hit_player_obj.y - y < -20) {	
                 	if hit_player_obj.y - y < 0 {
-                		y -= 10
+                		y -= min(state_timer - 1200, 10)
                 	} else {
-                	    y += 10
+                	    y += min(state_timer - 1200, 10)
                 	} 
                     }
                     
                      if	(hit_player_obj.x - x > 20) or (hit_player_obj.x - x < -20) {	
                    		if hit_player_obj.x - x < 0 {
-                		x -= 10
+                		x -= min(state_timer - 1200, 10)
                 	} else {
-                	    x += 10
+                	    x += min(state_timer - 1200, 10)
                 	} 
                      }
              }

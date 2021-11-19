@@ -10,25 +10,32 @@ if attack != AT_FSTRONG && my_hitboxID.hbox_num < 2 {
 	hit_player_obj.y += 10
 }
 
-if my_hitboxID.attack == AT_USPECIAL  && my_hitboxID.hbox_num == 3 && isyellow{
+
+if my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 3 && isyellow {
+	
+		move_cooldown[AT_USPECIAL] = 15
+	set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+    set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 304);	
+	set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 124);
+    set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 124);
+    set_attack_value(AT_BAIR, AG_CATEGORY, 2);
+    
+    y += floor ( (hit_player_obj.y + 20 - y)/3 )
+    
 	spr_dir *= -1
 	old_vsp = -12
 	old_hsp = 3*spr_dir
- set_attack(AT_BAIR)
- window = 3
- window_timer = 4
+	vsp = -12
+	hsp = 3*spr_dir
+    set_attack(AT_BAIR)
+    window = 1
+    window_timer = 5
 
-	move_cooldown[AT_USPECIAL] = 0
+
 }
 
-if my_hitboxID.attack == AT_FSPECIAL {
-	old_vsp = -5
-	old_hsp = 4*spr_dir
- set_attack(AT_DSPECIAL)
- window = 3
- window_timer = 0
- state_timer = 200
-	set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 10);
+if my_hitboxID.attack == AT_FSPECIAL  {
+
 }
 
 
@@ -47,6 +54,8 @@ if my_hitboxID.attack == AT_EXTRA_2{
 			}
 }
 
+
+if 	move_cooldown[AT_USPECIAL] = 0 {
 
 if move_cooldown[AT_NSPECIAL_2] = 0 && uphit != 0 && downhit != 0 && sidehit != 0 && neutralhit != 0 && my_hitboxID.type == 1
 and my_hitboxID.attack != AT_NSPECIAL and my_hitboxID.attack != AT_USPECIAL and my_hitboxID.attack != AT_DSPECIAL and my_hitboxID.attack != AT_FSPECIAL
@@ -225,5 +234,7 @@ or my_hitboxID.attack == AT_NAIR or my_hitboxID.attack == AT_TAUNT){
 
 
 
+}
 
+move_cooldown[AT_FSPECIAL_2] = 0
 move_cooldown[AT_NSPECIAL_2] = 999

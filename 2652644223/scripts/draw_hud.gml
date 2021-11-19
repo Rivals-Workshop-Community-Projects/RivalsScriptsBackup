@@ -1,3 +1,9 @@
+if(state == PS_SPAWN)
+{
+    if(auto_reload)
+        draw_debug_text(temp_x, temp_y-10, "Taunt to disable Auto-Reload");
+}
+else
 //Draw bullets remaining
 if(variable_instance_exists(id,"bullets"))
 {

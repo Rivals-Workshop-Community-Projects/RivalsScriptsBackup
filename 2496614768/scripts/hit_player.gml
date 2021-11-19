@@ -1,4 +1,6 @@
 ///
+canceltime = 0
+
 
 if !timebreak {
 if my_hitboxID.damage >= 2 {

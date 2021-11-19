@@ -9,6 +9,8 @@ crouch_anim_speed = .2;
 walk_anim_speed = .125;
 dash_anim_speed = 0.4;
 pratfall_anim_speed = .25;
+can_wall_cling = true;
+clingtime = 0;
 
 walk_speed = 4.25;
 walk_accel = 0.2;

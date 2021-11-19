@@ -25,6 +25,9 @@ dspec_held = 0;
 last_attack_hit = 0;
 last_hit_timer = 0;
 outline_timer = 0;
+auto_reload = true;
+prac_text = "";
+prac_timer = 0;
 
 bTut_Missions = true;
 bTut_mssn_reset = false;
@@ -88,7 +91,7 @@ air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aeri
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
 prat_fall_accel = .75; //multiplier of air_accel while in pratfall
-air_friction = .03;
+air_friction = .04;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 7;
@@ -98,7 +101,7 @@ max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 14; //fast fall speed
 gravity_speed = .4;
 hitstun_grav = .5;
-knockback_adj = 1.2; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 12;

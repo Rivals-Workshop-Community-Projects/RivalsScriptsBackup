@@ -30,7 +30,9 @@ if alt == 14 && drawtime == 1{
   sound_play(sound_get("drip")) 
 }
 
-
+if alt == 10 && drawtime == 1{
+  sound_play(sound_get("fox_shine")) 
+}
 
 //define the palette names
 var palette_names = [

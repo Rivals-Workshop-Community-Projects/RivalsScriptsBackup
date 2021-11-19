@@ -102,7 +102,7 @@ draw_set_alpha(1);
 textDraw(temp_x + 2, temp_y + 116, "fName", c_white, 0, 1000, 1, true, drawAlpha, alt_name[alt_cur]);
 textDraw(temp_x + 2, temp_y + 130, "fName", c_white, 0, 1000, 1, true, drawAlpha, "Alt #" + string(alt_cur+1) + " of #" + string(num_alts));
 
-textDraw(temp_x + 2, temp_y + 40, "fName", c_white, 0, 1000, 1, true, 0.5, "v."+ string(get_char_info( player, INFO_VER_MAJOR)) +"."+ string(get_char_info( player, INFO_VER_MINOR))); // patch
+// textDraw(temp_x + 2, temp_y + 40, "fName", c_white, 0, 1000, 1, true, 0.5, "v."+ string(get_char_info( player, INFO_VER_MAJOR)) +"."+ string(get_char_info( player, INFO_VER_MINOR))); // patch
 
 //exclude alt. name
 //textDraw(temp_x + 2, temp_y + 124, "fName", $EBFFFF, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));

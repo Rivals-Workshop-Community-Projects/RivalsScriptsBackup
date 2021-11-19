@@ -271,7 +271,7 @@ if (attack == AT_NSPECIAL){
 		}
 		
 		// Cooldown
-		move_cooldown[AT_NSPECIAL] = 45;
+		move_cooldown[AT_NSPECIAL] = 60;
 		
 		//throw_speed = fc_bunt ? firecracker_speed * .75 : firecracker_speed;
 		throw_speed = firecracker_speed;
@@ -283,8 +283,11 @@ if (attack == AT_NSPECIAL){
 		if(fc_bunt){ 
 			//set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_AIR_FRICTION, .4);
 			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GRAVITY, .68);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, (throw_speed*0.5) * dcos(firecracker_angle));
 		}
 		
+		
+
 		// Set firecracker spawn loc
 		
 		// Prevent throw spawn location from being beyond the hand's throw arc
@@ -303,7 +306,6 @@ if (attack == AT_NSPECIAL){
 			}
 		}
 		
-
 		set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, fc_base_x + dcos(firecracker_angle)*40);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, fc_base_y + -dsin(firecracker_angle)*35 - 8);
 		
@@ -312,6 +314,7 @@ if (attack == AT_NSPECIAL){
 		
 		
 	}
+
 }
 #endregion
 
@@ -757,7 +760,7 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 		{
 			with(grabbedProj)
 			{
-				
+				transcendent = true;
 				vsp = 0;
 				hsp = 0;
 				
@@ -1471,7 +1474,7 @@ if (attack == AT_USPECIAL){
 		{
 			grabbedid = tempSolid;
 			grabbed_solid = true;
-			can_grab_solid_uspec = free && tempPlat!=noone;;
+			can_grab_solid_uspec = free && tempPlat!=noone;
 			
 			 // Play sound and hitpause
 			sound_play(sound_get("tenru_grab"));
@@ -1559,6 +1562,7 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
 		{
 			with(grabbedProj)
 			{
+				transcendent = true;
 				if(in_hitpause)
 				{
 					vsp = 0;
@@ -1705,7 +1709,7 @@ if (attack == AT_DSPECIAL){
 		land_dust_timer = 24;
 		whiffspin = false;
 		
-		if(dspec_big_flip == 1){ set_window_value(AT_DSPECIAL,2,AG_WINDOW_VSPEED,-14); set_window_value(AT_DSPECIAL,2,AG_WINDOW_SFX,asset_get("sfx_ori_bash_projectile")); dspec_big_flip = 2;}
+		if(dspec_big_flip == 1){ set_window_value(AT_DSPECIAL,2,AG_WINDOW_VSPEED,-16); set_window_value(AT_DSPECIAL,2,AG_WINDOW_SFX,asset_get("sfx_ori_bash_projectile")); dspec_big_flip = 2;}
 		else {	set_window_value(AT_DSPECIAL,2,AG_WINDOW_VSPEED,-9); set_window_value(AT_DSPECIAL,2,AG_WINDOW_SFX,asset_get("sfx_ori_stomp_spin")); dspec_big_flip = 0;}
 		
 	}
@@ -2125,6 +2129,7 @@ if (attack == AT_AIR_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_G
 		{
 			with(grabbedProj)
 			{
+				transcendent = true;
 				hsp = 0;
 				vsp = 0;
 				
@@ -2210,7 +2215,7 @@ if (attack == AT_AIR_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_G
     		window = 5;
     		break_grab = true;
     		
-    		set_hitbox_value(AT_AIR_DSPECIAL, 2, HG_ANGLE, 305);
+    		set_hitbox_value(AT_AIR_DSPECIAL, 2, HG_ANGLE, 280);
     		
     		
 			set_window_value(AT_AIR_DSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 10);
@@ -2260,7 +2265,7 @@ if (attack == AT_AIR_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_G
     		window = 5;
     		break_grab = true;
     		
-    		set_hitbox_value(AT_AIR_DSPECIAL, 2, HG_ANGLE, 215);
+    		set_hitbox_value(AT_AIR_DSPECIAL, 2, HG_ANGLE, 260);
     		
     		
 			set_window_value(AT_AIR_DSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 6);
@@ -2631,10 +2636,10 @@ if(attack == AT_BAIR){
 //Ftilt code
 if(attack == AT_FTILT){
 
-	if(has_hit_player && window == 2)
-	{
-		hsp = 0;
-	}
+	// if(has_hit_player && window == 2)
+	// {
+	// 	hsp = 0;
+	// }
 }
 #endregion
 
@@ -2702,7 +2707,8 @@ if(attack == AT_FSTRONG){
 	}
 	
 	// Air ver
-	if(window == 4 && window_timer == phone_window_end && free){
+	if(free)
+	{
 		set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong_air"));
 		set_attack_value(AT_FSTRONG, AG_AIR_SPRITE, sprite_get("fstrong_air"));
 		set_attack_value(AT_FSTRONG, AG_HURTBOX_SPRITE, sprite_get("fstrong_air_hurt"));
@@ -2711,14 +2717,17 @@ if(attack == AT_FSTRONG){
 		with(pHurtBox) 
 			if(other.player == player && !other.free) sprite_index = sprite_get("fstrong_air_hurt");
 			else if(other.player == player && other.free) sprite_index = sprite_get("fstrong_air_hurt");
-		
-		window = 6;
-		window_timer = 1;
-		
+			
+					
 		set_window_value(AT_FSTRONG, 6, AG_WINDOW_ANIM_FRAMES, 4);
 		set_window_value(AT_FSTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 12);
 		set_window_value(AT_FSTRONG, 6, AG_WINDOW_HAS_CUSTOM_FRICTION, 0);
 		set_window_value(AT_FSTRONG, 6, AG_WINDOW_LENGTH, 8);
+	}
+	
+	if(window == 4 && window_timer == phone_window_end && free){
+		window = 6;
+		window_timer = 1;
 	}
 	
 

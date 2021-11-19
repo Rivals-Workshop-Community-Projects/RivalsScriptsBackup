@@ -538,7 +538,7 @@ with(pHitBox){
          }
          
          // Explode if bunt
-         if(is_bunt) hitbox_timer = other.fc_lifetime-1;
+         //if(is_bunt) hitbox_timer = other.fc_lifetime-1;
      }
      
 	if(attack == AT_EXTRA_3)
@@ -789,4 +789,3 @@ if trummelcodecneeded{
 
 
 }
-

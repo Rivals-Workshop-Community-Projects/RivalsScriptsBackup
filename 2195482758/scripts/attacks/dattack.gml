@@ -2,7 +2,7 @@ set_attack_value(AT_DATTACK, AG_SPRITE, sprite_get("dattack"));
 set_attack_value(AT_DATTACK, AG_AIR_SPRITE, sprite_get("dattack_air"));
 set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 9);
 set_attack_value(AT_DATTACK, AG_CATEGORY, 2);
-set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 1);
+set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 0);
 set_attack_value(AT_DATTACK, AG_USES_CUSTOM_GRAVITY, 1);
 set_attack_value(AT_DATTACK, AG_HURTBOX_SPRITE, sprite_get("dattack_hurt"));
 set_attack_value(AT_DATTACK, AG_HURTBOX_AIR_SPRITE, sprite_get("dattack_air_hurt"));

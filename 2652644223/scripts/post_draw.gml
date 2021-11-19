@@ -1,6 +1,9 @@
 //Draw bullets remaining
 if(variable_instance_exists(id,"hud_bullet"))
 {
+    if(prac_timer != 0)
+        draw_debug_text(x-(string_length(prac_text)*4), y+4, prac_text);
+        
     if(hud_bullet != bullets)
     {
         hud_bullet = bullets

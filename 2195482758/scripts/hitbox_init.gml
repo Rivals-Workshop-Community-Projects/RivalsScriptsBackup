@@ -31,12 +31,14 @@ else if(sprite_index == sprite_get("firecracker_triple") || sprite_index == spri
 if(sprite_index == sprite_get("firecracker_single_spin") || sprite_index == sprite_get("firecracker_double_spin") || sprite_index == sprite_get("firecracker_triple_spin"))
 {
     is_spin = true;
-
+    with(player_id) sound_play( sound_get( "tenru_fc_spin" ) );
 } 
 else 
 {
     through_platforms = 9999999;
 }
+
+if(is_bunt && num_fc > 0) with(player_id) sound_play( sound_get( "tenru_fc_bunt" ) );
 
 
 lastPlayer = player_id;

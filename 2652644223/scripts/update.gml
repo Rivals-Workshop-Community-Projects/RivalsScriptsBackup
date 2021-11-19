@@ -149,11 +149,7 @@ if(bullets < 1)
     if(special_pressed && !up_down && !attack_pressed  && outline_timer == 0 && state != PS_ATTACK_AIR  && state != PS_ATTACK_GROUND)
     {
         if(bullets != 0 && down_down || bullets == 0)
-        {
-            clear_button_buffer(PC_SPECIAL_PRESSED);
-            sound_play(asset_get("sfx_absa_orb_miss"), false, noone, 0.5);
-            outline_timer = 20;
-        }
+            reload_check();
     }
     move_cooldown[AT_DSPECIAL] = 2;
     move_cooldown[AT_NSPECIAL] = 2;
@@ -182,6 +178,42 @@ if(state_cat = SC_HITSTUN || state == PS_WALL_JUMP || !free)
 {
     fspec_used = false;
     uspec_used = 0;
+}
+if(state == PS_SPAWN)
+{
+    if(taunt_pressed && auto_reload)
+    {
+        sound_play(sound_get("revolver_wheel1"));
+        auto_reload = false;
+    }
+}
+
+if (get_training_cpu_action() != CPU_FIGHT && state != PS_SPAWN) {
+    if(prac_timer != 0)
+        prac_timer --;
+    else
+        prac_text = "";
+
+    if(up_down && taunt_pressed && prac_timer == 0)
+    {
+        auto_reload = !auto_reload;
+        prac_timer = 30;
+        prac_text = "Auto Reload " + (auto_reload ? "enabled" : "disabled")
+        sound_play(asset_get("mfx_coin"));
+    }
+    if(down_down && taunt_pressed && prac_timer == 0)
+    {
+        if(bullets == 6)
+            hud_enhanced = 5;
+        else
+            hud_enhanced = 0;
+        bullets = 6;
+        prac_timer = 30;
+        prac_text = (hud_enhanced == 5 ? "Ammo enhanced!" : "Ammo reloaded.")
+        sound_play(asset_get("mfx_coin"));
+    }
+    if(attack == AT_TAUNT && state == PS_ATTACK_GROUND)
+        set_state(PS_IDLE);
 }
 
 #region Buddy compatibilities
@@ -297,7 +329,7 @@ if(variable_instance_exists(id,"diag"))
         diag = "Oh great, another Loxodont agent to take me down?";
         
     if((otherUrl == "2249417003" || otherUrl == "2085832560" || otherUrl == "1965632965"
-        || otherUrl == "2407716024" || otherUrl == "2144710708" || otherUrl == "2066970512") && diag != "") //Characters with a gun.
+        || otherUrl == "2407716024" || otherUrl == "2144710708" || otherUrl == "2396911824" || otherUrl == "2066970512") && diag != "") //Characters with a gun.
         diag = "Armed hostile detected. I'm gonna need you to put your arms up before you hurt anyone.";
     
     //NRS/3-Part dialogue
@@ -387,6 +419,19 @@ if(variable_instance_exists(id,"diag"))
         if(array_length(bTut_mssn_cmbo_moves) <= bTut_mssn_part)
             bTut_mssn_finish = true;
     }
+}
+
+#define reload_check()
+if(auto_reload)
+{
+    if(!free)
+    set_attack(AT_TAUNT_2);
+}
+else
+{
+    clear_button_buffer(PC_SPECIAL_PRESSED);
+    sound_play(asset_get("sfx_absa_orb_miss"), false, noone, 0.5);
+    outline_timer = 20;
 }
 
 #endregion

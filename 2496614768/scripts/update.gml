@@ -1,5 +1,24 @@
 /// intro 
 
+if canceltime > 1 {
+	
+	if state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND {
+		
+	if !free {
+		set_state(PS_PRATLAND)
+		state_timer = 0
+	} else {
+		set_state(PS_PRATFALL)
+		state_timer = 0
+	}
+	
+	canceltime = 0
+	
+	}
+	
+}
+
+
 if get_gameplay_time() == 1{
 	set_attack(AT_EXTRA_1)
 	window = 1
@@ -141,6 +160,11 @@ if !hitpause {
 
 if timebreak > 0 {
 	
+	
+	set_attack_value(AT_USTRONG, AG_STRONG_CHARGE_WINDOW, 0);
+	set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 0);
+	set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 0);
+	
 	if !free && hsp != 0 && get_gameplay_time() % 12 == 0 {
 		create_hitbox(AT_EXTRA_1,5,x,y - 22)
 	}
@@ -208,6 +232,12 @@ if timebreak > 0 {
     }
 } else {
 	timesound = 0
+	
+		
+	set_attack_value(AT_USTRONG, AG_STRONG_CHARGE_WINDOW, 1);
+	set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
+	set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
+	
 }
 
 if timebreak == 1 {

@@ -61,7 +61,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.4);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
-set_hitbox_value(AT_NSPECIAL, 1, HG_TECHABLE, 1);
+//set_hitbox_value(AT_NSPECIAL, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_IGNORES_PROJECTILES, true);
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);

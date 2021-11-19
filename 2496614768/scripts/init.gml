@@ -5,6 +5,8 @@ hitstun_hurtbox_spr = sprite_get("air_box");
 
 bhood = get_player_color(player) == 10
 
+canceltime = 0
+
 ncode1 = "A speedter(?) stickman janitor."
 ncode2 = "He have a complicated relationship "
 ncode3 = "with his ex-boss Mr.Green."
@@ -91,7 +93,7 @@ hitstun_grav = .50;
 knockback_adj = 1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 10;
+prat_land_time = 20;
 wave_land_time = 8;
 wave_land_adj = 0.8; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .01; //grounded deceleration when wavelanding

@@ -32,7 +32,7 @@ set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_clairen_fspecial_
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.5)
  
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 23);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.5)
@@ -53,10 +53,11 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 5);
-set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 2);
+set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 2);
-set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 90);
+set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 100);
+set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, 16);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get(fc_string));
@@ -82,10 +83,11 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 90);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 90);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 4);
-set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 2);
+set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 1);
-set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 90);
+set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 100);
+set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_ANIM_SPEED, 0.6);

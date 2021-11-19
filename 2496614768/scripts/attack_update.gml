@@ -796,6 +796,14 @@ switch attack {
     
     if window == 7 {
         
+        if vsp > 15 && y > room_height/2 + 200 {
+            attack_end();
+            vsp = -10
+            hsp = 0
+            attack = AT_UAIR
+            window = 2
+            window_timer = 0
+        }
               hit_player_obj.hsp = floor((x - 10*spr_dir - hit_player_obj.x)/7) 
                hit_player_obj.vsp = svsp
                 hit_player_obj.x += floor((x - 10*spr_dir - hit_player_obj.x)/3) 
@@ -831,6 +839,8 @@ switch attack {
     
     
     case AT_FSPECIAL :
+         
+        canceltime = 20
         
            can_fast_fall = false
         
@@ -840,10 +850,15 @@ switch attack {
             can_shield = true
             can_strong = true    
             move_cooldown[AT_FSPECIAL_2] = 5
+            
+            if window_timer > 10 && !free {
+               set_state(PS_PRATLAND)
+		       state_timer = 0
+            }
         }
         
         if window == 1  {
-            move_cooldown[AT_FSPECIAL] = 999
+            //move_cooldown[AT_FSPECIAL] = 999
             ais1 = sprite_index
             aii1 = image_index + 1
             aix1 = x

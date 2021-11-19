@@ -63,8 +63,15 @@ if (attack == AT_NSPECIAL){
         set_attack_value(AT_NSPECIAL, AG_CATEGORY, 1);
     if(window == 1)
     {
-        // if(window_timer == 4 && !free && special_down && bullets != 6 || !free && bullets == 0)
-        //     set_attack(AT_TAUNT_2);
+        if(window_timer == 1)
+            clear_button_buffer(PC_SPECIAL_PRESSED);
+
+        if(window_timer == 8 && !free && special_down && bullets != 6 || !free && bullets == 0)
+        {
+            white_flash_timer = 10;
+            set_attack(AT_TAUNT_2);
+            state_timer = 0;
+        }
     }
     if (window == 2)
     {  
@@ -141,7 +148,6 @@ if (attack == AT_DSPECIAL){
     }
 }
 
-
 if (attack == AT_USPECIAL){
     can_fast_fall = false;
     if (window == 1)
@@ -163,8 +169,8 @@ if (attack == AT_USPECIAL){
                 fire_ang = joy_dir;
             set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, abs(9 * cos(degtorad(fire_ang))));
             set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -9 * sin(degtorad(fire_ang)));
-            set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_X, abs(35*cos(degtorad(fire_ang))));
-            set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_Y, -40 - 35*sin(degtorad(fire_ang)));
+            set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_X, abs(20*cos(degtorad(fire_ang))));
+            set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_Y, -40 - abs(20*sin(degtorad(fire_ang))));
         }
     }
     else
@@ -212,7 +218,7 @@ if(attack == AT_JAB)
 }
 if(attack == AT_FAIR)
 {
-    if(hitpause)
+    if(hitpause && window_timer < 3)
     {
         old_hsp = -5*spr_dir;
         old_vsp = -6; 
@@ -233,8 +239,9 @@ if(attack == AT_USTRONG)
 {   
     if(window == 1 && bullets <= 0)
     {
-        attack_end();
-        set_attack(AT_UTILT);
+        reload_check();
+        if(!auto_reload)
+            set_attack(AT_UTILT);
     }
     if(window == 2 && window_timer == 12)
     {
@@ -255,11 +262,9 @@ if(attack == AT_DSTRONG)
 
         if(bullets <= 1)
         {
-            clear_button_buffer(PC_SPECIAL_PRESSED);
-            sound_play(asset_get("sfx_absa_orb_miss"), false, noone, 0.5);
-            outline_timer = 20;
-            attack_end();
-            set_attack(AT_FTILT);
+            reload_check();
+            if(!auto_reload)
+                set_attack(AT_FTILT);
         }
         else
         {
@@ -289,8 +294,9 @@ if(attack == AT_FSTRONG)
 {   
     if(window == 1 && bullets <= 0)
     {
-        attack_end();
-        set_attack(AT_FTILT);
+        reload_check();
+        if(!auto_reload)
+            set_attack(AT_FTILT);
     }
     if(window == 2 && window_timer == 3)
         bullets --;
@@ -450,3 +456,16 @@ if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
 newdust.dust_color = dust_color; //set the dust color
 if dir != 0 newdust.spr_dir = dir; //set the spr_dir
 return newdust;
+
+#define reload_check()
+if(auto_reload)
+{
+    if(!free)
+    set_attack(AT_TAUNT_2);
+}
+else
+{
+    clear_button_buffer(PC_SPECIAL_PRESSED);
+    sound_play(asset_get("sfx_absa_orb_miss"), false, noone, 0.5);
+    outline_timer = 20;
+}
