@@ -4,22 +4,22 @@
 //PORTRAITS
 switch (get_player_color(player))
 {
-    case 7: //Gameboy CSS outline
+    case 14: //Gameboy CSS outline
         draw_sprite_ext(sprite_get("charselect_extra"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1);
         break;
-    case 8: //NES CSS outline
+    case 15: //NES CSS outline
         draw_sprite_ext(sprite_get("charselect_extra"), 1, x + 8, y + 8, 2, 2, 0, c_white, 1);
         break;
-    case 30: //Helel CSS outline
+    case 25: //Helel CSS outline
         draw_sprite_ext(sprite_get("charselect_extra"), 2, x + 8, y + 8, 2, 2, 0, c_white, 1);
         break;
-    case 31: //Theikos Bar
+    case 26: //Theikos Bar
         draw_sprite_ext(sprite_get("charselect_extra"), 3, x + 8, y + 8, 2, 2, 0, c_white, 1);
         break;
 }
 
 //ALT NAMES
-var num_alts = 32;
+var num_alts = 27;
 var alt_cur = get_player_color(player);
 
 //seasonal alt names
@@ -36,31 +36,26 @@ alt_name[3] = "Spark of Lightning";
 alt_name[4] = "Scientific Prodigy";
 alt_name[5] = "Umbra Princess";
 alt_name[6] = "Chief Demon Hunter";
-alt_name[7] = "Early Access";
-alt_name[8] = "Demake";
-alt_name[9] = "Endless Abyss";
-alt_name[10] = "Infamous";
-alt_name[11] = season_name[get_match_setting(SET_SEASON)];
-alt_name[12] = "Emerald Guardian";
-alt_name[13] = "REANIMATION"; //alt name: smoking savage.
-alt_name[14] = "Nuclear Raven";
-alt_name[15] = "Lofty";
-alt_name[16] = "11th Fatui Harbinger";
-alt_name[17] = "Underdog";
-alt_name[18] = "Son of the Omega";
-alt_name[19] = "Half Hot - Half Cold"
-alt_name[20] = "Banishing Shifter";
-alt_name[21] = "Crimson Eclipse";
-alt_name[22] = "Stellar Traveller";
-alt_name[23] = "Sun God";
-alt_name[24] = "Fiery Racing Spirit";
-alt_name[25] = "Lazy Destroyer";
-alt_name[26] = "Ultraviolet";
-alt_name[27] = "Mesmerizing Phantom";
-alt_name[28] = "Thunderous Howl";
-alt_name[29] = "Amethyst Fist";
-alt_name[30] = "Broken Prism";
-alt_name[31] = "Theía Evlogía";
+alt_name[7] = "The Previous Guardian";
+alt_name[8] = "Ultimate Lifeform";
+alt_name[9] = "REANIMATION"; //alt name: smoking savage.
+alt_name[10] = "Nuclear Raven";
+alt_name[11] = "Lofty";
+alt_name[12] = "11th Fatui Harbinger";
+alt_name[13] = "Son of the Omega";
+alt_name[14] = "Early Access";
+alt_name[15] = "Demake";
+alt_name[16] = "Endless Abyss";
+alt_name[17] = "Infamous";
+alt_name[18] = "Ranked Gold";
+alt_name[19] = season_name[get_match_setting(SET_SEASON)];
+alt_name[20] = "Crimson Eclipse";
+alt_name[21] = "Stellar Traveller";
+alt_name[22] = "Sun God";
+alt_name[23] = "Fiery Racing Spirit";
+alt_name[24] = "Ultraviolet";
+alt_name[25] = "Broken Prism";
+alt_name[26] = "Theía Evlogía";
 
 //birthday alt stuff
 //updates the CSS instantly and adds the alt's name
@@ -83,28 +78,18 @@ if (current_day = myday && current_month == mymonth)
 var icon_x_pos = x + 174;
 var icon_y_pos = y + 108;
 
+if (get_player_color(player) >= 14 && get_player_color(player) <= 19)
+{
+    draw_sprite(sprite_get("css_icons"), get_player_color(player) - 14 , icon_x_pos, icon_y_pos);
+}
+
 switch (get_player_color(player))
 {
-    case 7: //Early Access
-        draw_sprite(sprite_get("css_icons"),0,icon_x_pos,icon_y_pos);
-        break;
-    case 8: //NES Icon
-        draw_sprite(sprite_get("css_icons"),1,icon_x_pos,icon_y_pos);
-        break;
-    case 9: //Abyss Icon
-        draw_sprite(sprite_get("css_icons"),2,icon_x_pos,icon_y_pos);
-        break;
-    case 10: //Infamous Icon
-        draw_sprite(sprite_get("css_icons"),3,icon_x_pos,icon_y_pos);
-        break;
-    case 11: //Seasonal Icon
-        draw_sprite(sprite_get("css_icons"),4,icon_x_pos,icon_y_pos);
-        break;
-    case 30: //Nekrochroma
-        draw_sprite(sprite_get("css_icons"),5,icon_x_pos,icon_y_pos);
-        break;
-    case 31: //Theikos
+    case 25: //Nekrochroma
         draw_sprite(sprite_get("css_icons"),6,icon_x_pos,icon_y_pos);
+        break;
+    case 26: //Theikos
+        draw_sprite(sprite_get("css_icons"),7,icon_x_pos,icon_y_pos);
         break;
 }
 
@@ -144,71 +129,83 @@ else if (drawtime < 140) {
 
 //idle sprite showcase
 sprite_change_offset("idle", 32, 78);
-sprite_change_offset("idle_line", 32, 78);
+sprite_change_offset("idle_line", 16, 39);
 
 var idle = sprite_get("idle");
 var line = sprite_get("idle_line");
+var scale = 2;
 
 //idle
-if (drawtime < 10) draw_sprite_ext(idle, drawtime/5, temp_x+24+(drawtime/20), temp_y+128, 1, 1, 0, -1, drawtime/10);
-else if (drawtime < 60) draw_sprite_ext(idle, drawtime/5, temp_x+24+(drawtime/20), temp_y+128, 1, 1, 0, -1, drawtime*-0.01+1.25);
-else draw_sprite_ext(idle, drawtime/5, temp_x+16+(drawtime/5), temp_y+128, 1, 1, 0, -1, drawtime*-0.01+1.25);
+scale = 1;
+if (drawtime < 10) draw_sprite_ext(idle, drawtime/5, temp_x+24+(drawtime/20), temp_y+128, scale, scale, 0, -1, drawtime/10);
+else if (drawtime < 60) draw_sprite_ext(idle, drawtime/5, temp_x+24+(drawtime/20), temp_y+128, scale, scale, 0, -1, drawtime*-0.01+1.25);
+else draw_sprite_ext(idle, drawtime/5, temp_x+16+(drawtime/5), temp_y+128, scale, scale, 0, -1, drawtime*-0.01+1.25);
 
 //outline
+scale = 2;
 var line_color = $000000;
 switch (get_player_color(player))
 {
-    case 7: //gameboy
+    case 14: //gameboy
         line_color = $0f380f;
         break;
-    case 8: //NES
+    case 15: //NES
         line_color = $b20020; //this color doesn't show for some reason
         break;
     case 11: //seasonal -> hallowen
         if (get_match_setting(SET_SEASON) == 3 && current_day != myday && current_month != mymonth) line_color = $2b2b4b;
         break;
-    case 30: //helel
+    case 25: //helel
         line_color = $343434;
         break;
-    case 31: //theikos
+    case 26: //theikos
         line_color = $012b46;
         break;
 }
 
-if (drawtime < 10) draw_sprite_ext(line, drawtime/5, temp_x+24+(drawtime/20), temp_y+128, 1, 1, 0, line_color, drawtime/10);
-else if (drawtime < 60) draw_sprite_ext(line, drawtime/5, temp_x+24+(drawtime/20), temp_y+128, 1, 1, 0, line_color, drawtime*-0.01+1.25);
-else draw_sprite_ext(line, drawtime/5, temp_x+16+(drawtime/5), temp_y+128, 1, 1, 0, line_color, drawtime*-0.01+1.25);
+if (drawtime < 10) draw_sprite_ext(line, drawtime/5, temp_x+24+(drawtime/20), temp_y+128, scale, scale, 0, line_color, drawtime/10);
+else if (drawtime < 60) draw_sprite_ext(line, drawtime/5, temp_x+24+(drawtime/20), temp_y+128, scale, scale, 0, line_color, drawtime*-0.01+1.25);
+else draw_sprite_ext(line, drawtime/5, temp_x+16+(drawtime/5), temp_y+128, scale, scale, 0, line_color, drawtime*-0.01+1.25);
 
 
-//UNUSED
-//old text stuff
-/*
+
+//theikos hair color changer from user_event 1 (don't ask. please don't ask.)
+if !("theikos_color_increase" in self) theikos_color_increase = true;
+if !("theikos_color_maxTime" in self) theikos_color_maxTime = 60; //60 = 60 frames
+if !("theikos_color_rate" in self) theikos_color_rate = 2; //the rate at which the time goes up
+if !("theikos_color_alpha" in self) theikos_color_alpha = 0; //the "if" statements use this for the time
+if !("theikos_redrate" in self) theikos_redrate = 0.9;
+if !("theikos_red" in self) theikos_red = 70;
+if !("theikos_greenratehue" in self) theikos_greenrate = 1.5;
+if !("theikos_green" in self) theikos_green = 129;
+if !("theikos_bluerate" in self) theikos_bluerate = 0.8;
+if !("theikos_blue" in self) theikos_blue = 195;
+
+var col_hair = 2; //lik colors.gml
+
+if (theikos_color_increase)
 {
-    //textDraw(temp_x + 10, temp_y + anim_y, "fName", c_white, 0, 1000, 1, true, 1, alt_name[alt_cur]);
+    theikos_color_alpha += theikos_color_rate;
+    theikos_red += theikos_redrate;
+    theikos_green += theikos_greenrate;
+    theikos_blue += theikos_bluerate;
 
-    //Alt - drawing the rectangles
-    rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
- 
-    for(i = 0; i < num_alts; i++){
-        var draw_color = (i == alt_cur) ? c_white : c_gray;
-        var draw_x = temp_x + 5 * i;
-        rectDraw(draw_x + 2, temp_y + 137, draw_x + 4, temp_y + 140, draw_color);
-    }
-
-    draw_set_halign(fa_left);
-
-    //patch_ver = "1.0";
-    textDraw(temp_x + 128, temp_y + 198, "fName", c_white, 0, 1000, 1, true, 0.5, "ver. " + patch_ver); //ver. text
-    //textDraw(temp_x + 8, temp_y + 100, "medFont", c_white, 0, 1000, 1, true, 1, patch_ver); //patch version text
-
-    //alt. number
-    textDraw(temp_x + 2, temp_y + 108, "fName", c_white, 0, 1000, 1, true, 1, "#" + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
+    if (theikos_color_alpha >= theikos_color_maxTime) theikos_color_increase = false;
 }
-*/
+else
+{
+    theikos_color_alpha -= theikos_color_rate; //this only controls the "if" statements
+    theikos_red -= theikos_redrate;
+    theikos_green -= theikos_greenrate;
+    theikos_blue -= theikos_bluerate;
 
-//EXPERIMENTS
-//drawing rectangles experiment
-//rectDraw(temp_x, temp_y + 130, temp_x + 200, temp_y + 148, c_blue);
+    if (theikos_color_alpha <= 0) theikos_color_increase = true;
+}
+color_rgb = make_color_rgb(theikos_red, theikos_green, theikos_blue);
+set_color_profile_slot(26, col_hair, color_get_red(color_rgb), color_get_green(color_rgb), color_get_blue(color_rgb));
+init_shader();
+
+
 
 //munophone
 muno_event_type = 6;

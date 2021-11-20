@@ -4,6 +4,8 @@ crouchbox_spr = sprite_get("crouch_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
+canceltime = 0
+
 introhit = 0
 rollside = 1
 dspecon = 0
@@ -72,7 +74,7 @@ max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = 0.30;
-prat_fall_accel = 0.4; //multiplier of air_accel while in pratfall
+prat_fall_accel = 1; //multiplier of air_accel while in pratfall
 air_friction = 0.04;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.

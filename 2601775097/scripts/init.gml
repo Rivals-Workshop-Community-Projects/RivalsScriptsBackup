@@ -172,6 +172,16 @@ plat_strip_length = 16; //not sure i even used this lmfao
 plat_pre_sprite = sprite_get("plat_pre");
 plat_post_sprite = sprite_get("plat_post");
 
+alt_cur = get_player_color(player);
+alt_col_dblue = 0;
+alt_col_white = 1;
+alt_col_hair = 2;
+alt_col_skin = 3;
+alt_col_lblue = 4;
+alt_col_black = 5;
+alt_col_light = 6;
+alt_col_fire = 7;
+
 //Custom Hitboxes
 hb_sweet_0 = sprite_get("hb_sweet_0");
 hb_sweet_1 = sprite_get("hb_sweet_1");
@@ -192,6 +202,9 @@ HG_HITBOX_COLOR = -1;
 //1 = sweetspots(yellow), only when there's at least 1 sour spot and 1 sweetspot these will appear
 //2 = holy burn(cyan), when using any move that inflicts holy burn
 //3 = lightstun(white), will only show if the sparks of light rune is active, on moves that inflict a spark of light
+
+//heh, stole from munophone so i can still use it
+window_end = 0;
 
 //////////////////////////////////////////////////MANA MECHANIC SECTION//////////////////////////////////////////////////
 
@@ -267,13 +280,14 @@ chasmburster_total_cost = chasmburster_activate_cost + chasmburster_attack_cost;
 powersmash_activate_cost = 5;
 powersmash_attack_cost = 25;
 powersmash_total_cost = powersmash_activate_cost + powersmash_attack_cost;
-guardaura_counter_cost = 10;
 emberfist_cost = 20;
 lighthookshot_activate_cost = 5;
 lighthookshot_attack_cost = 15;
 lighthookshot_total_cost = lighthookshot_activate_cost + lighthookshot_attack_cost;
-searingdescent_cost = 10;
-flashbang_activate_cost = 10;
+searingdescent_activate_cost = 10;
+searingdescent_attack_cost = 10;
+searingdescent_total_cost = searingdescent_activate_cost + searingdescent_attack_cost;
+flashbang_activate_cost = 0;
 flashbang_attack_cost = 10;
 flashbang_total_cost = flashbang_activate_cost + flashbang_attack_cost;
 
@@ -318,10 +332,12 @@ for(var i = 0; i <= 3; i++){
     }
 }
 cursor_timer = 0;					//used for the cursor blinking
-arrow_frame = 0; //4
+arrow_frame = 0;
 arrow_anim_up = false;
 arrow_anim_side = false;
 arrow_anim_down = false;
+menu_armor_time_reset = 60*4;
+menu_armor_time = menu_armor_time_reset;
 
 //jpeg menu end-----------------------------------------------------------------
 
@@ -330,7 +346,6 @@ arrow_anim_down = false;
 
 //holy light
 lightstun_timer = -1; //it counts down twice, once for the pre timer and again for the stun itself
-lightstun_id = noone;
 lightstun = false;
 lightstun_pre_stun = false;
 lightstun_parried = false;
@@ -349,7 +364,8 @@ holyburning = false;
 holyburn_counter = 0;
 holyburn_maxcount = 120;
 holyburn_default_maxcount = 120;
-burn_outline = [33, 57, 155];
+burn_outline = [255, 255, 255];
+holy_burned_by = noone;
 
 //skill graphic variables
 fx_empty = hit_fx_create(sprite_get("empty"), 1); //this just allows me to deny hitsparks from existance
@@ -374,21 +390,27 @@ fx_ustrong_lightaxe_sprite = sprite_get("empty");
 fx_dstrong_fireblast = hit_fx_create(sprite_get("fx_dstrong_fireblast"), 40);
 fx_rockblow = hit_fx_create(sprite_get("fx_rockblow"), 27);
 
-//fx_lightdagger_creation_sprite = sprite_get("fx_lightdagger_creation"); // delete this and keep the throwing itself as a hitfx
+fx_lightdagger = sprite_get("empty");
+fx_lightdagger_air = sprite_get("empty");
 
 fx_photonblast = hit_fx_create(sprite_get("fx_photonblast"), 21);
 
 fx_accelblitz = hit_fx_create(sprite_get("fx_accelblitz"), 18);
 fx_accel_indicator = sprite_get("accelblitz_indicator");
 
+fx_chasmburster = hit_fx_create(sprite_get("fx_chasmburster"), 18);
 fx_earthshatter = hit_fx_create(sprite_get("fx_chasmshatter"), 180);
 
 fx_guardaura = hit_fx_create(sprite_get("fx_guardaura"), 15);
+fx_homing_afterimage = hit_fx_create(sprite_get("fx_homing_afterimage"), 16);
 
 fx_emberfist = hit_fx_create(sprite_get("fx_emberfist"), 30);
 
+fx_lighthookshot = sprite_get("empty");
+
 fx_flashbang_lightsmear = hit_fx_create(sprite_get("fx_flashbang_lightsmear"), 9);
 fx_flashbang_firesmear = hit_fx_create(sprite_get("fx_flashbang_firesmear"), 15);
+
 
 //technical variables
 did_i_turn = false; //for f-strong
@@ -400,7 +422,8 @@ turn_right = false;
 
 sfx_charge = sound_get("sfx_charge");
 
-hitbox_cooldown = 10; //for d-strong
+hitbox_cooldown_max = 10; //for d-strong
+hitbox_cooldown = hitbox_cooldown_max;
 
 tracking_target = noone; //for u-strong
 
@@ -419,7 +442,7 @@ leap_ypos = 0;
 photon_charge = false;
 photon_cycle = 0; //counts the amount of attacks
 blast_power = 0; //calculate the damage
-charge_time = 30; //window length of the winged up charging
+max_charge_time = 40; //window length of the winged up charging
 
 accelblitz_active = false;
 accelblitz_done_once = false;
@@ -444,12 +467,17 @@ reached_max_bursts = false;
 burst_cool = 0;
 
 sfx_fire = sound_get("sfx_constantfire");
+artc_powersmash_chasm = noone;
 
-guardaura_active = false;
-guard_explosion = false;
-guard_time_real = 2; //i'm just lazy to calculate seconds
-guard_time_max = guard_time_real*60;
-guard_time = guard_time_max;
+polaris_active = false;
+homing_target_id = noone;
+already_shot = false;
+homing_cooldown = 30;
+homing_post_buffer = -1;
+homing_post_buffer_counting = false;
+homing_outline_alpha = 0.1;
+homing_outline_alpha_rate = 0.02;
+homing_outline_increase = true;
 
 emberfist_up = false;
 emberfist_down = false;
@@ -468,26 +496,29 @@ hookshot_retract_timer = 0;
 
 descent_timer_reset = 20;
 descent_timer = descent_timer_reset; //checks untill bar can jump/airdodge out out the move
+searingdescent_id = noone;
 
 flashbanged_id = noone;
 
 //////////////////////////////////////////////////MISC. SECTION//////////////////////////////////////////////////
 
 is_AI = false;
+AI_vs = false; //bypasses the "i can't see the AI's skills cuz he can choose whatever he wants now"
+AI_fighting_time = 0;
 show_player_info = true;
-is_bar = 2601775097;
+is_bar_ditto = false;
+
+//bar URLs just in case
+is_bar = 2601775097; //full ver
+is_bar_test = 2560739972; //test build
+is_bar_old = 2429376422; //old ver- why do you even have this
+
+//small_sprites = 1;
 
 game_paused = false;
 
 last_attack_hit = 0;
 previous_attack = AT_JAB;
-/*
-attack_history = [0, 0];
-
-//attack history - hit_player / set_attack
-attack_history[1] = attack_history[0];
-attack_history[0] = attack;
-*/
 
 //intro - credit to nackles42 for the tutorial!
 intro_timer = -4; //setting it to -4 should prevent the first few frames of the animation from being blocked by the screen opening.
@@ -501,8 +532,17 @@ switch_spr = false;
 
 //is this an 8-bit alt? (used to give it different outline effects)
 is_8bit = false;
-if (get_player_color(player) == 7 || get_player_color(player) == 8) is_8bit = true;
+if (get_player_color(player) == 14 || get_player_color(player) == 15) is_8bit = true;
 else is_8bit = false;
+
+helel_alt = false;
+if (get_player_color(player) == 25) helel_alt = true;
+else helel_alt = false;
+
+theikos_alt = false;
+if (get_player_color(player) == 26) theikos_alt = true;
+else theikos_alt = false;
+
 
 //outline coloring
 color_r = 0;
@@ -516,7 +556,7 @@ color_time_max = 30;
 allow_bibical = false;
 bibical = false;
 
-if (get_player_color(player) == 11)
+if (get_player_color(player) == 19)
 {
     switch(get_match_setting(SET_SEASON))
     {
@@ -576,7 +616,7 @@ move_names = [
 	"AT_DSTRONG_2",
 	"AT_USTRONG_2",
 	"AT_USPECIAL_GROUND", //doesn't exist
-	"AT_GUARD_AURA",
+	"AT_POLARIS",
 	"AT_POWER_SMASH",
 	"AT_BURNING_FURY",
 	"AT_FORCE_LEAP",
@@ -731,6 +771,7 @@ damage_heal = 0;
 //why do i hear boss music?
 bossMusic_start = false;
 bossMusic_count = 0;
+bossMusic_playing = false;
 theikos_music_toggle = true;
 
 //Theikos Skin Hair Glow
@@ -797,21 +838,13 @@ sfx_armorbreak[1] = sound_get("sfx_armorbreak2");
 sfx_armorbreak[2] = sound_get("sfx_armorbreak3");
 
 //particles
-/*
-if ((theikos_active || godpower || od_already_active || get_player_color(player) == 31) && !is_8bit)
-{
-	set_hit_particle_sprite(5, sprite_get("theikos_fx_lightparticle"));
-    set_hit_particle_sprite(6, sprite_get("theikos_fx_fireparticle"));
-}
-else
-{
-	set_hit_particle_sprite(1, sprite_get("fx_lightparticle"));
-	set_hit_particle_sprite(2, sprite_get("fx_fireparticle"));
-}
-*/
 set_hit_particle_sprite(5, sprite_get("theikos_fx_lightparticle"));
 set_hit_particle_sprite(6, sprite_get("theikos_fx_fireparticle"));
+
+if (theikos_alt) user_event(1); //should activate the effects without needing anything else, he can't turn back from this lol
 user_event_1_active = false;
+
+user_event_0_was_active = false;
 
 //////////////////////////////////////////////////WORKSHOP INTERRACTION SECTION//////////////////////////////////////////////////
 
@@ -891,10 +924,10 @@ fs_hide_meter = true; //so i can make it use the OD gauge instead
 //superMove = AT_OVERDRIVE;
 
 //callie compatibility
-user_event(10);
+user_event(12);
 
 //car bar
-if (get_player_color(player) != 31 || theikos) kart_sprite = sprite_get("car");
+if (get_player_color(player) != 31 && !theikos) kart_sprite = sprite_get("car");
 else kart_sprite = sprite_get("car_theikos");
 kart_frames = 4;
 kart_anim_speed = 0.1;
@@ -903,7 +936,7 @@ kart_engine_sound = 3;
 kart_drift_spr = 3;
 
 //so bar can gain mana in adventure mode and other various stage objects
-hit_player_event = 2;
+hit_player_event = 13;
 
 //munophone
 muno_event_type = 0;

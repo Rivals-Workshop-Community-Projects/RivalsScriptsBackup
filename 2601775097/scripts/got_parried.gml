@@ -1,9 +1,6 @@
 //got_parried.gml
 
-if (holyburning)
-{
-    holyburning = false;
-}
+if (holyburning) holyburning = false;
 
 reset_window_value(AT_SKILL4, 4, AG_WINDOW_HSPEED);
 reset_window_value(AT_SKILL4, 4, AG_WINDOW_VSPEED);
@@ -15,10 +12,8 @@ burst_count = 0;
 
 flashbanged_id = noone;
 
-if (holyburn_mechanic_active)
-{
-	other.outline_color = [0, 0, 0];
-}
+if (holyburn_mechanic_active) other.outline_color = [0, 0, 0];
+
 
 //gtting parried sets lightstun_parried to true
 if (lightstun_mechanic_active)
@@ -26,7 +21,7 @@ if (lightstun_mechanic_active)
 	//moves that use the mechanic
 	switch (attack)
 	{
-		//photon blast, accel blitz, guard aura and theikos U-strong all apply the mechanic
+		//photon blast, accel blitz, polaris and theikos U-strong all apply the mechanic
 		case AT_DTHROW: case AT_NSPECIAL_2: case AT_USPECIAL_2: case AT_USTRONG_2:
 			ParriedLight();
 			break;

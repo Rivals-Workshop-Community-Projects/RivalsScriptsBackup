@@ -169,7 +169,6 @@ set_num_hitboxes(atk, 3);
 hitboxNum = 1; //ZA WARUDO
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 1); //at which window from the above the attack is created
-set_hitbox_value(atk, hitboxNum, HG_WINDOW_CREATION_FRAME, 1); //at which window from the above the attack is created
 set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 60); //hitbox duration in frames
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 0);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, 0);
@@ -181,7 +180,7 @@ set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 0);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 361);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 1);
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 1); //hitstun
-set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_lightblow3);
+//set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_lightblow3);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 1);
 set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 3);
@@ -239,3 +238,8 @@ set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 6);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 2);
 set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 1);
+
+
+//munophone
+if (!get_match_setting(SET_PRACTICE)) exit;
+set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "Press ATTACK + SPECIAL when your OVERDRIVE gauge is full, or SPECIAL with the final smash buddy");

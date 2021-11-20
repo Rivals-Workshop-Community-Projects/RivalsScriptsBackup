@@ -16,8 +16,14 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
     if (attack == AT_SKILL0_AIR) draw_sprite_ext(fx_lightdagger_air, image_index, x-(64*spr_dir), y-94, 1*spr_dir, 1, 0, c_white, 1);
 
     //accel blitz indicator
-    if (attack == AT_SKILL4 && window == 2 && window_timer > 0) {
-        draw_sprite_ext(fx_accel_indicator, get_player_color(player), accel_drawpoint_x, accel_drawpoint_y, 2, 2, 0, c_white, 0.8);
+    if (attack == AT_SKILL4 && window == 2 && window_timer > 0)
+    {
+        if (user_event_1_active) draw_sprite_ext(fx_accel_indicator, get_player_color(player)+26, accel_drawpoint_x, accel_drawpoint_y, 2, 2, 0, c_white, 0.8);
+        else
+        {
+            if (!is_8bit && alt_cur != 9) draw_sprite_ext(fx_accel_indicator, get_player_color(player), accel_drawpoint_x, accel_drawpoint_y, 2, 2, 0, c_white, 0.8);
+            else draw_sprite_ext(fx_accel_indicator, get_player_color(player), accel_drawpoint_x, accel_drawpoint_y, 2, 2, 0, c_white, 1);
+        }
     }
 
     //light hookshot effect
@@ -34,8 +40,8 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
         {
             draw_sprite_ext(sprite_get("fx_lordpunishment_firehand"), image_index, x, y, 2*spr_dir, 2, 0, c_white, 1);
 
-            if (window >= 12 && window <= 18 && OD_sword_image <= 24) draw_sprite_ext(sprite_get("‏‏fx_lordpunishment_greatsword_8bit"), OD_sword_image, x, y, 2*spr_dir, 2, 0, c_white, 1);
-            if (window == 17) draw_sprite_ext(sprite_get("‏‏fx_lordpunishment_slash_8bit"), 0, x, y, 2*spr_dir, 2, 0, c_white, OD_slash_alpha);
+            if (window >= 12 && window <= 18 && OD_sword_image <= 24) draw_sprite_ext(sprite_get("fx_lordpunishment_greatsword_8bit"), OD_sword_image, x, y, 2*spr_dir, 2, 0, c_white, 1);
+            if (window == 17) draw_sprite_ext(sprite_get("fx_lordpunishment_slash_8bit"), 0, x, y, 2*spr_dir, 2, 0, c_white, OD_slash_alpha);
         }
         else
         {
@@ -43,7 +49,7 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
             if (window == 17) draw_sprite_ext(sprite_get("fx_lordpunishment_slash"), 0, x, y, 2*spr_dir, 2, 0, c_white, OD_slash_alpha);
         }
 
-        if (OD_stop_window_timer > 0) draw_sprite_ext(sprite_get("fx_screen"), 0, view_get_xview(), view_get_yview(), 1, 1, 0, c_white, 1);
+        if (OD_stop_timer > 0) draw_sprite_ext(sprite_get("fx_screen"), 0, view_get_xview(), view_get_yview(), 1, 1, 0, c_white, 1);
     }
 }
 
@@ -108,7 +114,6 @@ if (show_glide_ui)
 }
 
 
-
 //when testing, the skill select can be brought up with up+taunt
 var temp_x = x-104;
 var temp_y = y+16;
@@ -128,7 +133,7 @@ with (oTestPlayer) if ("menu_open" in self)
     {
         if(menu_timer <= 120)
         {
-            draw_sprite_ext(sprite_get("‏‏hud_menu_bg_playtest"), 0, temp_x + 4, temp_y - 116 , 2, 2, 0, c_white, 1);
+            draw_sprite_ext(sprite_get("hud_menu_bg_playtest"), 0, temp_x + 4, temp_y - 116 , 2, 2, 0, c_white, 1);
             var menuy = -124;
             var i;
             var k = 0;
@@ -171,17 +176,23 @@ with (oTestPlayer) if ("menu_open" in self)
 
             switch (active_col)
             {
+                case -1:
+                    draw_debug_text(temp_x + 36, temp_y - 100, "Skill Select Cancelled");
+                    break;
                 case 0:
-                    draw_debug_text(temp_x + 32, temp_y - 100, "Selecting: " + "N-SPECIAL");
+                    draw_debug_text(temp_x + 36, temp_y - 100, "Selecting: " + "N-SPECIAL");
                     break;
                 case 1:
-                    draw_debug_text(temp_x + 32, temp_y - 100, "Selecting: " + "F-SPECIAL");
+                    draw_debug_text(temp_x + 36, temp_y - 100, "Selecting: " + "F-SPECIAL");
                     break;
                 case 2:
-                    draw_debug_text(temp_x + 32, temp_y - 100, "Selecting: " + "U-SPECIAL");
+                    draw_debug_text(temp_x + 36, temp_y - 100, "Selecting: " + "U-SPECIAL");
                     break;
                 case 3:
-                    draw_debug_text(temp_x + 32, temp_y - 100, "Selecting: " + "D-SPECIAL");
+                    draw_debug_text(temp_x + 36, temp_y - 100, "Selecting: " + "D-SPECIAL");
+                    break;
+                case 4:
+                    draw_debug_text(temp_x + 42, temp_y - 100, "Selection Complete");
                     break;
             }
         }

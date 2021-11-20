@@ -1,46 +1,40 @@
-//user event 0 - theikos bar rune
+//user event 0 - theikos bar rune (init)
 
-if (theikos_active)
+if (theikos_active != user_event_0_was_active) //runs once
 {
-    //////////////////////////////////////////////////VISUALS SECTION//////////////////////////////////////////////////
+    var theikos_time = 0;
 
-    //flame aura
-    aura_frame += aura_speed;
-    if (hsp == 0) aura_speed = base_aura_speed;
-    else if (hsp > 0) aura_speed = base_aura_speed + hsp / 16;
-    else if (hsp < 0) aura_speed = base_aura_speed + hsp / 16 * spr_dir;
-
-    //ancient text aura
-    if (get_gameplay_time() % 3 == 0)
+    //ditto check
+    with (oPlayer) if (self != other && "url" in self)
     {
-        var text_randomX = random_func(4, 8,true)*8;
-        var text_randomY = random_func(5, 8,true)*10;
-        var textdepth = random_func(6, 10,true);
-        var holytext = instance_create(x - (8 + (28*spr_dir) - (text_randomX * spr_dir)), y - (16 + text_randomY), "obj_article1");
-            holytext.state = 2;
-            holytext.player = player;
-            holytext.spr_dir = spr_dir;
-            holytext.vsp -= 2;
-            holytext.depth = textdepth-7;
-            if (spr_dir == -1) holytext.spr_dir = -spr_dir;
+        if (url != other.is_bar && url != other.is_bar_test && url != other.is_bar_old) other.is_bar_ditto = false;
+        else other.is_bar_ditto = true;
     }
 
-    //theikos music
-    bossMusic_start = true;
+    //aura color stuff
+    if (is_8bit)
+    {
+        if (get_player_color(player) == 14) aura_color = $9AE2D3;
+        else if (get_player_color(player) == 15) aura_color = $20D3EB;
+        aura_alpha = 1;
+    }
+    else if (get_player_color(player) == 19 && birthboy) aura_color = $FFD46D;
+    else aura_color = $45B6F5;
+
+    //golden effects
+    user_event(1);
+
+    //music cue
+    if (!testing) bossMusic_start = true;
     if (bossMusic_start)
     {
-        bossMusic_count ++; //this is just a state timer thing to prevent it from playing multiple times and making it consistent
-
-        if (bossMusic_count == 1)
+        with (oPlayer) if ("bossMusic_start" in self && bossMusic_start && self != other)
         {
-            var volume = get_local_setting(3);
-            if (!is_8bit) sound_play(sound_get("mus_theikos"), true, noone, min(volume*2, 1));
-            else sound_play(sound_get("mus_theikos_demake"), true, noone, min(volume*2, 1));
+            if (!is_8bit) sound_stop(sound_get("mus_theikos"));
+            else sound_stop(sound_get("mus_theikos_demake"));
         }
     }
-
-    //////////////////////////////////////////////////STATS SECTION//////////////////////////////////////////////////
-
+    
     //INIT CHANGES
     dash_anim_speed = .5;
     walk_speed = 2.1;
@@ -62,63 +56,12 @@ if (theikos_active)
     wave_land_adj = 2.25; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
     wave_friction = .2; //grounded deceleration when wavelanding
 
-    if (state == PS_ATTACK_AIR && (attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG)) air_friction = .3;
-    else air_friction = 0;
-
     //EXTRA FEATURES
-    soft_armor = 10; //free real estate soft armor
-    if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) soft_armor = 9999; //basically invincible
-    if (state == PS_DASH_START || has_rune("A") && runeA_dash && free) shake_camera(4, 3);
-
-    if (fast_falling) heavy_land = true; //fastfalling logic
-    if (heavy_land && (state == PS_LAND || state == PS_LANDING_LAG))
-    {
-        shake_camera(6, 5);
-
-        land_time = 16;
-        set_attack_value(attack, AG_LANDING_LAG, 16);
-
-        heavy_land_start_count = true;
-
-        if (heavy_land_start_count)
-        {
-            heavy_land_count++;
-
-            if (heavy_land_count >= 10)
-            {
-                heavy_land_start_count = false;
-                heavy_land_count = 0;
-                heavy_land = false;
-                reset_attack_value(attack, AG_LANDING_LAG);
-            }
-        }
-    }
-    else land_time = 4;
-
     set_hitbox_value(AT_TAUNT, 1, HG_BASE_KNOCKBACK, 30); //taunt knockback basically insta-kills
 
-    if (smash_charging) shake_camera(ceil(strong_charge/10), 10); //charging a strong will make the screen shake depending on the power
-
-    //healing if you have full mana... which is basically always buuuuut it makes things more interesting for the 1 sec you don't lol
-    if (mp_current == mp_max)
-    {
-        heal_count ++;
-        if (heal_count == heal_count_max) damage_heal = heal_me_now;
-        if (heal_count > heal_count_max)
-        {
-            heal_count = 0;
-            damage_heal = 0;
-        }
-    }
-    take_damage(player, player, damage_heal);
+    dont_tumble = true; //no tripping
 
     turbo_time = true; //theikos bar has turbo mode
-
-    dont_tumble = true; //no tripping
-    if (state == PS_PRATLAND) state = PS_IDLE; //who tf needs a pratland
-    if (state == PS_PRATFALL) state = PS_IDLE_AIR;
-
-    holyburn_maxcount = god_burn_time;
 
     //this will make the normal strongs' vspeed stop in midair
     for(i = 0; i <= 9; i ++)
@@ -133,40 +76,95 @@ if (theikos_active)
         set_window_value(AT_DSTRONG, i, AG_WINDOW_VSPEED, 0);
     }
 }
-else
+
+user_event_0_was_active = theikos_active; // everything under this runs every frame
+theikos_time ++;
+
+//////////////////////////////////////////////////VISUALS SECTION//////////////////////////////////////////////////
+
+//ancient text aura (doesn't appear in dittos to reduce lag)
+if (!is_bar_ditto) if (get_gameplay_time() % 3 == 0)
 {
-    if (!theikos_active)
-    {
-        bossMusic_count = 0;
-        sound_stop(sound_get("mus_theikos"));
-        sound_stop(sound_get("mus_theikos_demake"));
-    }
-
-    //INIT CHANGES
-    walk_speed = normal_walk_speed;
-    walk_turn_time = normal_walk_turn_time;
-    initial_dash_speed = normal_initial_dash_speed;
-    dash_speed = normal_dash_speed;
-    dash_turn_time = normal_dash_turn_time;
-    moonwalk_accel = normal_moonwalk_accel;
-    wave_land_adj = normal_wave_land_adj;
-    air_accel = normal_air_accel;
-    prat_fall_accel = normal_prat_fall_accel;
-    air_friction = normal_air_friction;
-    dash_anim_speed = normal_dash_anim_speed;
-    walk_accel = normal_walk_accel;
-    initial_dash_time = normal_initial_dash_time;
-    leave_ground_max = normal_leave_ground_max; //the maximum hsp you can have when you go from grounded to aerial without jumping
-    max_jump_hsp = normal_max_jump_hsp; //the maximum hsp you can have when jumping from the ground
-    air_max_speed = normal_air_max_speed; //the maximum hsp you can accelerate to when in a normal aerial state
-    max_djumps = normal_max_djumps;
-    fast_fall = normal_fast_fall; //fast fall speed
-    knockback_adj = normal_knockback_adj; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
-    wave_land_time = normal_wave_land_time;
-    wave_friction = normal_wave_friction; //grounded deceleration when wavelanding
-
-    //EXTRA FEATURES
-    reset_hitbox_value(AT_TAUNT, 1, HG_BASE_KNOCKBACK); //taunt knockback basically insta-kills
-    holyburn_maxcount = holyburn_default_maxcount;
-    turbo_time = false; //theikos bar has turbo mode
+    var text_randomX = random_func(4, 8,true)*8;
+    var text_randomY = random_func(5, 8,true)*10;
+    var textdepth = random_func(6, 10,true);
+    var holytext = instance_create(x - (8 + (28*spr_dir) - (text_randomX * spr_dir)), y - (16 + text_randomY), "obj_article1");
+        holytext.state = 2;
+        holytext.player = player;
+        holytext.spr_dir = spr_dir;
+        holytext.vsp -= 2;
+        holytext.depth = textdepth-7;
+        if (spr_dir == -1) holytext.spr_dir = -spr_dir;
 }
+
+//theikos music
+if (bossMusic_start)
+{
+    bossMusic_count ++; //this is just a state timer thing to prevent it from playing multiple times and making it consistent
+
+    if (bossMusic_count == 1)
+    {
+        var volume = get_local_setting(3);
+        if (!is_8bit) sound_play(sound_get("mus_theikos"), true, noone, min(volume*2, 1));
+        else sound_play(sound_get("mus_theikos_demake"), true, noone, min(volume*2, 1));
+    }
+}
+
+
+//////////////////////////////////////////////////STATS SECTION//////////////////////////////////////////////////
+
+//air friction changes when bar is charing a normal strong
+if (state == PS_ATTACK_AIR && (attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG)) air_friction = .3;
+else air_friction = 0;
+
+//armor
+soft_armor = 10; //free real estate soft armor
+if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) soft_armor = 9999; //basically invincible
+
+//epic screenshakes of raw POWER
+if (state == PS_DASH_START || has_rune("A") && runeA_dash && free) shake_camera(4, 3);
+
+if (fast_falling) heavy_land = true; //fastfalling logic
+if (heavy_land && (state == PS_LAND || state == PS_LANDING_LAG))
+{
+    shake_camera(6, 5);
+
+    land_time = 16;
+    set_attack_value(attack, AG_LANDING_LAG, 16);
+
+    heavy_land_start_count = true;
+
+if (heavy_land_start_count)
+{
+    heavy_land_count++;
+
+    if (heavy_land_count >= 10)
+        {
+            heavy_land_start_count = false;
+            heavy_land_count = 0;
+            heavy_land = false;
+            reset_attack_value(attack, AG_LANDING_LAG);
+        }
+    }
+}
+else land_time = 4;
+
+if (smash_charging) shake_camera(ceil(strong_charge/10), 10); //charging a strong will make the screen shake depending on the power
+
+if (state == PS_PRATLAND) state = PS_IDLE; //who tf needs a pratland lmao
+if (state == PS_PRATFALL) state = PS_IDLE_AIR;
+
+//"i need healing"
+if (mp_current == mp_max)
+{
+    heal_count ++;
+    if (heal_count == heal_count_max) damage_heal = heal_me_now;
+    if (heal_count > heal_count_max)
+    {
+        heal_count = 0;
+        damage_heal = 0;
+    }
+}
+take_damage(player, player, damage_heal);
+
+if (holyburn_maxcount == holyburn_default_maxcount) with (oPlayer) holyburn_maxcount = god_burn_time;

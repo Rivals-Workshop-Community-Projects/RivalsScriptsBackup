@@ -48,6 +48,7 @@ sprite_change_offset("dair", 46, 94);
 sprite_change_offset("fstrong", 64, 94);
 sprite_change_offset("ustrong", 80, 118);
 sprite_change_offset("dstrong", 64, 94);
+sprite_change_offset("dattack", 64, 94);
 
 //skills
 sprite_change_offset("lightdagger", 64, 94);
@@ -113,10 +114,14 @@ sprite_change_offset("accelblitz_indicator", 16, 32);
 
 sprite_change_offset("fx_chasmburster", 32, 86);
 sprite_change_offset("fx_chasmshatter", 64, 126);
+sprite_change_offset("fx_chasmburster_placeholder", 32, 86);
 
 sprite_change_offset("fx_powersmash_ground", 80, 32);
 
 sprite_change_offset("fx_guardaura", 48, 48);
+sprite_change_offset("fx_homing_proj", 16, 16);
+sprite_change_offset("fx_homing_proj_8bit", 16, 16);
+sprite_change_offset("fx_homing_afterimage", 16, 16);
 
 sprite_change_offset("fx_emberfist", -16, 70); //don't ask why it's -16
 
@@ -131,14 +136,14 @@ sprite_change_offset("fx_flashbang_firesmear", 48, 64);
 sprite_change_offset("fx_lordpunishment_firehand", 23, 47);
 sprite_change_offset("fx_lordpunishment_greatsword", 184, 191);
 sprite_change_offset("fx_lordpunishment_slash", 176, 96);
-sprite_change_offset("‏‏fx_lordpunishment_greatsword_8bit", 184, 191);
-sprite_change_offset("‏‏fx_lordpunishment_slash_8bit", 176, 96);
+sprite_change_offset("fx_lordpunishment_greatsword_8bit", 184, 191);
+sprite_change_offset("fx_lordpunishment_slash_8bit", 176, 96);
 
 //theikos exclusive
 sprite_change_offset("theikos_fstrong", 40, 96);
 sprite_change_offset("theikos_ustrong", 48, 96);
 sprite_change_offset("theikos_dstrong", 48, 128);
-sprite_change_offset("‏‏theikos_dstrong_b", 64, 94);
+sprite_change_offset("theikos_dstrong_b", 64, 94);
 sprite_change_offset("theikos_burningfury", 46, 94);
 sprite_change_offset("theikos_burningfury_air", 46, 92);
 sprite_change_offset("theikos_photonblast", 48, 94);
@@ -170,11 +175,13 @@ sprite_change_offset("theikos_fx_lightdagger_proj", 18, 9);
 sprite_change_offset("theikos_fx_lightdaggerburn_proj", 18, 9);
 sprite_change_offset("theikos_fx_photonblast", 112, 154);
 sprite_change_offset("theikos_fx_accelblitz", 98, 70);
-sprite_change_offset("theikos_accelblitz_indicator", 16, 32);
+//sprite_change_offset("theikos_accelblitz_indicator", 16, 32);
 sprite_change_offset("theikos_fx_chasmburster", 32, 86);
 sprite_change_offset("theikos_fx_chasmshatter", 64, 126);
 sprite_change_offset("theikos_fx_powersmash_ground", 80, 32);
 sprite_change_offset("theikos_fx_guardaura", 48, 48);
+sprite_change_offset("theikos_fx_homing_proj", 16, 16);
+sprite_change_offset("theikos_fx_homing_afterimage", 16, 16);
 sprite_change_offset("theikos_fx_emberfist", -16, 70);
 sprite_change_offset("theikos_fx_lighthookshot", 70, 94);
 sprite_change_offset("theikos_fx_lighthookshotburn", 70, 94);
@@ -196,7 +203,7 @@ sprite_change_offset("theikos_fx_ustrong_b_lightaxe", 80, 118);
 sprite_change_offset("theikos_fx_ustrong_b_lightaxeburn", 80, 118);
 sprite_change_offset("theikos_fx_ustrong_b_lightspear_proj", 9, 38);
 sprite_change_offset("theikos_fx_ustrong_b_lightspearburn_proj", 9, 38);
-sprite_change_offset("‏‏theikos_fx_dstrong_b_fireblast", 64, 94);
+sprite_change_offset("theikos_fx_dstrong_b_fireblast", 64, 94);
 
 sprite_change_offset("theikos_plat_post", 64, 94);
 sprite_change_offset("no_mp", 8, 8);

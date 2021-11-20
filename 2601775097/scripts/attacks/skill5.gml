@@ -87,7 +87,7 @@ hitboxNum ++; //chasms bursting
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 99); //this window doesn't actually exist on purpose
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, -1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 2)
-set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 18);
+set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 14); //18
 set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 6);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 56);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, -48);
@@ -100,7 +100,7 @@ set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.7);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_SPRITE, sprite_get("fx_chasmburster"));
+set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_SPRITE, sprite_get("fx_chasmburster_placeholder"));
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_fireblow1);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_DESTROY_EFFECT, fx_empty);
@@ -138,7 +138,7 @@ hitboxNum ++; //chasms bursting - burning fury ver
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 99); //this window doesn't actually exist on purpose
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, -1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 2)
-set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 18);
+set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 14); //18
 set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 6);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 32);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, -40);
@@ -182,3 +182,10 @@ set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 7); //hitstun
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 1);
+
+
+//munophone
+if (!get_match_setting(SET_PRACTICE)) exit;
+set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "30 MP (5 MP to activate, 25 MP to attack)
+Can be jump canceled
+Burning Fury shoots out 2 more fire pillars, increases damage and knockback");

@@ -6,7 +6,7 @@ set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
 
 
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 6 );
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_clairen_dspecial_counter_active"));
@@ -21,7 +21,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_clairen_fspecial_dash"));
 
 
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 7);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 14);

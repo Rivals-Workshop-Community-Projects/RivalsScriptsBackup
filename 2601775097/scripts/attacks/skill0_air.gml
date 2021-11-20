@@ -7,6 +7,7 @@ set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("lightdagger_air_hurt"));
 set_attack_value(atk, AG_NUM_WINDOWS, 13);
 set_attack_value(atk, AG_HAS_LANDING_LAG, 1);
 set_attack_value(atk, AG_LANDING_LAG, 5);
+set_attack_value(atk, AG_USES_CUSTOM_GRAVITY, 1);
 
 windowNum = 0;
 
@@ -14,19 +15,21 @@ windowNum = 0;
 
 windowNum ++; //windup 1
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 6); //4 /
+set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 6); //4
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, windowNum, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(atk, windowNum, AG_WINDOW_CUSTOM_GROUND_FRICTION, 2);
 set_window_value(atk, windowNum, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, windowNum, AG_WINDOW_SFX, asset_get("sfx_ori_spirit_flame_1"));
 set_window_value(atk, windowNum, AG_WINDOW_SFX_FRAME, 1);
+set_window_value(atk, windowNum, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 windowNum ++; //windup 2
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
 set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 10); //8
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(atk, windowNum, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 windowNum++; //throw
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
@@ -39,6 +42,7 @@ set_window_value(atk, windowNum, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(atk, windowNum, AG_WINDOW_HSPEED, -1);
 set_window_value(atk, windowNum, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(atk, windowNum, AG_WINDOW_VSPEED, -5);
+set_window_value(atk, windowNum, AG_WINDOW_CUSTOM_GRAVITY, 0.75);
 
 windowNum ++; //endlag
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
@@ -47,6 +51,7 @@ set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 2); //3
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(atk, windowNum, AG_WINDOW_CANCEL_TYPE, 2);
 set_window_value(atk, windowNum, AG_WINDOW_CANCEL_FRAME, 6);
+set_window_value(atk, windowNum, AG_WINDOW_CUSTOM_GRAVITY, 0.75);
 
 //LIGHT DAGGER 2 (5-8)
 
@@ -58,12 +63,14 @@ set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(atk, windowNum, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, windowNum, AG_WINDOW_SFX, asset_get("sfx_ori_spirit_flame_1"));
 set_window_value(atk, windowNum, AG_WINDOW_SFX_FRAME, 1);
+set_window_value(atk, windowNum, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 windowNum ++; //windup 2
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
 set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 10); //8
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 13);
+set_window_value(atk, windowNum, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 windowNum++; //throw
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
@@ -76,6 +83,7 @@ set_window_value(atk, windowNum, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(atk, windowNum, AG_WINDOW_HSPEED, -1);
 set_window_value(atk, windowNum, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(atk, windowNum, AG_WINDOW_VSPEED, -5);
+set_window_value(atk, windowNum, AG_WINDOW_CUSTOM_GRAVITY, 0.75);
 
 windowNum ++; //endlag
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
@@ -84,6 +92,7 @@ set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 2); //3
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 18);
 set_window_value(atk, windowNum, AG_WINDOW_CANCEL_TYPE, 2);
 set_window_value(atk, windowNum, AG_WINDOW_CANCEL_FRAME, 6);
+set_window_value(atk, windowNum, AG_WINDOW_CUSTOM_GRAVITY, 0.75);
 
 //LIGHT DAGGER 3 (9-12) - works alongside burning fury but uses the same animation as light dagger 1
 
@@ -96,12 +105,14 @@ set_window_value(atk, windowNum, AG_WINDOW_CUSTOM_GROUND_FRICTION, 2);
 set_window_value(atk, windowNum, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, windowNum, AG_WINDOW_SFX, asset_get("sfx_burnapplied"));
 set_window_value(atk, windowNum, AG_WINDOW_SFX_FRAME, 2);
+set_window_value(atk, windowNum, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 windowNum ++; //windup 2
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
 set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 10); //8
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(atk, windowNum, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 windowNum++; //throw
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
@@ -114,6 +125,7 @@ set_window_value(atk, windowNum, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(atk, windowNum, AG_WINDOW_HSPEED, -1);
 set_window_value(atk, windowNum, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(atk, windowNum, AG_WINDOW_VSPEED, -5);
+set_window_value(atk, windowNum, AG_WINDOW_CUSTOM_GRAVITY, 0.75);
 
 windowNum ++; //endlag
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
@@ -122,6 +134,7 @@ set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 2); //3
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(atk, windowNum, AG_WINDOW_CANCEL_TYPE, 2);
 set_window_value(atk, windowNum, AG_WINDOW_CANCEL_FRAME, 6);
+set_window_value(atk, windowNum, AG_WINDOW_CUSTOM_GRAVITY, 0.75);
 
 windowNum ++; //window 13 = canceled loop window
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
@@ -130,6 +143,7 @@ set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(atk, windowNum, AG_WINDOW_CANCEL_TYPE, 2);
 set_window_value(atk, windowNum, AG_WINDOW_CANCEL_FRAME, 6);
+set_window_value(atk, windowNum, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 
 set_num_hitboxes(atk, 3);
@@ -216,3 +230,9 @@ set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 //set_hitbox_value(atk, hitboxNum, HG_EFFECT, 1); //is now burning fury's holy fire
+
+
+//munophone
+if (!get_match_setting(SET_PRACTICE)) exit;
+set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "5 MP
+Burning Fury makes the first thrown dagger stronger");

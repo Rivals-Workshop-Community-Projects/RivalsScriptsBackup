@@ -40,7 +40,7 @@ set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 6); //starting fram
 
 windowNum ++; //attack 1 endlag
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 15);
+set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 21); //15
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 9); //starting frame. starts from 0
 set_window_value(atk, windowNum, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -211,3 +211,9 @@ set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, -1); //it needs to be a different value for every different move in the file
+
+
+//munophone
+if (!get_match_setting(SET_PRACTICE)) exit;
+set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "Press SPECIAL to shoot a spear (5 MP)
+Affected by Burning Fury's buff");

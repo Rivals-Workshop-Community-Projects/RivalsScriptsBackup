@@ -56,3 +56,8 @@ set_window_value(atk, windowNum, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(atk, windowNum, AG_WINDOW_VSPEED, 0);
 set_window_value(atk, windowNum, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(atk, windowNum, AG_WINDOW_HSPEED, 0);
+
+
+//munophone
+if (!get_match_setting(SET_PRACTICE)) exit;
+set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "Press ATTACK + SPECIAL against a cheap enemy");

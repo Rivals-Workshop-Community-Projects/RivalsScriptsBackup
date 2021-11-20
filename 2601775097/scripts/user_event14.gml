@@ -1,5 +1,7 @@
 // phone - backend
 
+if (!get_match_setting(SET_PRACTICE)) exit;
+
 draw_set_valign(fa_top)
 
 switch(muno_event_type){
@@ -204,7 +206,7 @@ phone.attack_names = [
 	"Theïkós DStrong",
 	"Theïkós UStrong",
 	"USpecial Ground", //doesn't exist
-	"Guard Aura", 
+	"Polaris", 
 	"Power Smash",
 	"Burning Fury",
 	"Force Leap",
@@ -218,9 +220,9 @@ phone.attack_names = [
 	"Taunt",
 	"Taunt 2",
 	"Light Hookshot",
-	"Extra 3",
+	"Searing Descent",
+	"Flashbang",
 	"MunoPhone",
-	"???",
 	"Light Dagger (Air)",
 	"???",
 	"???",

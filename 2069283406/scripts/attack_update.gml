@@ -572,6 +572,11 @@ if attack == AT_NSPECIAL{
 	
 	
 		if attack_pressed or up_stick_down or down_stick_down or left_stick_down or up_stick_down {
+			
+			   if fireon == 3 {
+					canceltime = 20
+			   }
+			   
 			if  firerange > 0 {
 			firerange = -100
 			fireon = 0
@@ -586,6 +591,7 @@ if attack == AT_NSPECIAL{
 	        set_attack(AT_NAIR)
 	        window = 1
 			window_timer = 5
+					canceltime = 0
 	        }
 	        
 	        if up_stick_down or (up_down && !down_down)  {

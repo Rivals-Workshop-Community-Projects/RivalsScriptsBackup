@@ -1,4 +1,4 @@
-//hit_player - called when one of your hitboxes hits a player
+//user event 13 - hit player but for stages
 
 ////////////////////////////////////////////////////////MANA MECHANIC SECTION////////////////////////////////////////////////////////
 
@@ -356,7 +356,6 @@ if (my_hitboxID.attack == AT_SKILL9 && my_hitboxID.hbox_num == 1 && (state == PS
 {
 	hit_player_obj.holyburning = player; // unique burning id to know who burnt the opponent
 	hit_player_obj.holyburn_counter = 0;
-	hit_player_obj.holy_burned_by = self;
 }
 #define ApplySpark()
 {

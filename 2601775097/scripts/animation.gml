@@ -159,7 +159,7 @@ if (attack == AT_TAUNT)
 }
 
 //doing inputs on phone
-if (attack == AT_PHONE)
+if ("AT_PHONE" in self && attack == AT_PHONE)
 {
     if (image_index == 4)
     {

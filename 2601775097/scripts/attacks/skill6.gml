@@ -164,3 +164,9 @@ set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 2);
 set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 0);
+
+
+//munophone
+if (!get_match_setting(SET_PRACTICE)) exit;
+set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "30 MP (5 MP to activate, 25 MP to attack)
+Can be jump canceled");

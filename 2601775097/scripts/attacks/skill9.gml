@@ -103,7 +103,6 @@ set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(atk, hitboxNum, HG_EXTENDED_PARRY_STUN, 1);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 
 hitboxNum ++; //burning spear
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 99); //excluded from HG_PARENT_HITBOX
@@ -134,3 +133,9 @@ set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_HSPEED, 10);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(atk, hitboxNum, HG_EXTENDED_PARRY_STUN, 1);
+
+
+//munophone
+if (!get_match_setting(SET_PRACTICE)) exit;
+set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "20 MP (5 MP to activate, 15 MP to use)
+Hold down SPECIAL to get flung further");

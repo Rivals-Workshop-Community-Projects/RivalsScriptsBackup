@@ -30,13 +30,12 @@ dist_y = 0;
 burst_pos = 56;
 burst_count = 0;
 
-//guard aura activates if bar gets hit while it's active
-if (guardaura_active) guard_explosion = true;
-//if (guardaura_active) guardaura_active = false; //absorbtion take
-
 //light hookshot resets
 hookshot_speedboost = false;
 hookshot_launch = false;
+
+//searing descent resets
+searingdescent_id = noone;
 
 //Ustrong hookshot reset
 runeH_target = noone;

@@ -1,6 +1,6 @@
 ///
 
-intro = 1
+//intro = 1
 lockontime = 180
 
 if lockon == 0 {
@@ -14,7 +14,7 @@ if lockon == 1 && my_hitboxID.type == 1 && move_cooldown[AT_FSPECIAL_2] == 0 && 
 	sound_stop(sound_get("RI"));
 	sound_play(sound_get("RI"));
 	sound_play(sound_get("SpaceCut"));
-	hhalo = 240
+	hhalo = 300
 	lockon = 0
 	spawn_hit_fx(x - 10*spr_dir,y - 30, 306)
 var halodmg = floor(my_hitboxID.damage/3)
@@ -29,7 +29,6 @@ move_cooldown[AT_FSPECIAL_2] = 40
 }
 
 if hhalo > 0{
-	hhalo = 240
 
 if my_hitboxID.type == 1 {
 
@@ -45,15 +44,16 @@ with hit_player_obj {
 
 
 spawn_hit_fx (hit_player_obj.x - (10 * spr_dir), hit_player_obj.y - 40, 303)
-if my_hitboxID.hitstun_factor != 6 {
-if get_gameplay_time() % 2 == 0 {
-sound_play(sound_get("RI"),false,noone, 0.3 + my_hitboxID.damage/20)
-} else {
-sound_play(sound_get("RI2"),false,noone, 0.35 + my_hitboxID.damage/20)	
-}
-}
-}	
 
+if my_hitboxID.hitstun_factor != 6 {
+	
+sound_play(sound_get("slice"),false,noone, 0.5 + my_hitboxID.damage/20, 1 - min( (hitpause*hitpause)/150 , .5 ) )
+sound_play(sound_get("RI"),false,noone, 0.2 + my_hitboxID.damage/30, 1 - min( (hitpause*hitpause)/150 , .5 ) )
+
+
+}
+
+}
 }
 
 if introhit = 0 {

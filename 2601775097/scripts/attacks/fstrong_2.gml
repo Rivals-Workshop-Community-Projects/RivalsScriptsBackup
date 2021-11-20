@@ -178,3 +178,8 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, sound_get("sfx_tauntattack"));
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 3);
+
+
+//munophone
+if (!get_match_setting(SET_PRACTICE)) exit;
+set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "Affected by Burning Fury's buff");

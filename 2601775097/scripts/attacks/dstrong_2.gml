@@ -67,7 +67,7 @@ set_num_hitboxes(atk, 3);
 hitboxNum = 1; //initial projectile
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 2); // 1 = physical attack || 2 = projectile
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 4);
-set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 99999); //for normal bar: 30
+set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 30);
 set_hitbox_value(atk, hitboxNum, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 0);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, 0);
@@ -84,8 +84,9 @@ set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_SPRITE, sprite_get("fx_dstrong_t_
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_ANIM_SPEED, 0); //gets faster with charge
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_VSPEED, 0); //gets faster with charge
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_PARRY_STUN, 0); //only false for theikos bar
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_IS_TRANSCENDENT, 1); //only true for theikos bar
+set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_PARRY_STUN, 1); //only false for theikos bar
+set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_IS_TRANSCENDENT, 0); //only true for theikos bar
+set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 2);
 
 hitboxNum ++; //collision explosion
@@ -142,3 +143,8 @@ set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 2);
+
+
+//munophone
+if (!get_match_setting(SET_PRACTICE)) exit;
+set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "Affected by Burning Fury's buff");

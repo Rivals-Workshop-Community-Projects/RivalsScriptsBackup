@@ -81,7 +81,7 @@ set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 2);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 361);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 0.1);
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 3); //hitstun
-set_hitbox_value(atk, hitboxNum, HG_EXTRA_HITPAUSE, 50);
+set_hitbox_value(atk, hitboxNum, HG_EXTRA_HITPAUSE, 10); //50
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 
@@ -106,3 +106,9 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 32);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_ori_energyhit_medium"));
 set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 3);
+
+
+//munophone
+if (!get_match_setting(SET_PRACTICE)) exit;
+set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "10 MP
+Burning Fury alters the launch angle and makes the spike stronger");

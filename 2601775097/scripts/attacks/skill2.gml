@@ -26,12 +26,12 @@ set_window_value(atk, windowNum, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, windowNum, AG_WINDOW_SFX, sound_get("sfx_forceleap_jump"));
 set_window_value(atk, windowNum, AG_WINDOW_SFX_FRAME, 3);
 
-
 windowNum ++; //windup 3
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 0);
 set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 2); //controls speed
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 1); //frames amount on strip
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 3); //starting frame. starts from 0
+
 windowNum ++; //movement
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 0);
 set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 12); //controls speed
@@ -186,3 +186,10 @@ set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_burnconsume"));
 set_hitbox_value(atk, hitboxNum, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 2); //it needs to be a different value for every different move in the file
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 2);
+
+
+//munophone
+if (!get_match_setting(SET_PRACTICE)) exit;
+set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "10 MP
+Press ATTACK to use the attack spike (10 MP)
+Burning Fury increases damage and knockback");

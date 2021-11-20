@@ -16,7 +16,7 @@ holyburning = false;
 holyburn_counter = 0;
 holyburn_default_maxcount = 120;
 holyburn_maxcount = holyburn_default_maxcount;
-burn_outline = [33, 57, 155];
+holy_burned_by = noone;
 
 //lord's blessing
 god_damage = 1.5;

@@ -115,3 +115,8 @@ set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 1); //it needs to be a differe
 set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 3);
 set_hitbox_value(atk, hitboxNum, HG_FORCE_FLINCH, 0);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 1);
+
+
+//munophone
+if (!get_match_setting(SET_PRACTICE)) exit;
+set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "Burning Fury increases the damage and inflicts holy burn");

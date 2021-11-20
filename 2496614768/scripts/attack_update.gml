@@ -4,8 +4,11 @@ if (attack == AT_USPECIAL || attack == AT_NSPECIAL|| attack == AT_DSPECIAL){
 }
 
 
+if (state_timer == 1 or has_hit_player) && (attack == AT_FAIR or attack == AT_DAIR or attack == AT_UAIR or attack == AT_BAIR or attack == AT_NAIR) {
+	set_attack_value(attack, AG_CATEGORY, 1);
+}
 
-if state_timer == 1 && free &&  move_cooldown[AT_FSPECIAL_2] > 0 {
+if state_timer == 2 && free &&  move_cooldown[AT_FSPECIAL_2] > 0 {
     vsp = -3
 }
 
@@ -839,7 +842,12 @@ switch attack {
     
     
     case AT_FSPECIAL :
-         
+    
+        if (attack == AT_FAIR or attack == AT_DAIR or attack == AT_UAIR or attack == AT_BAIR or attack == AT_NAIR) {
+	set_attack_value(attack, AG_CATEGORY, 2);
+   }
+   
+         djumps = 0
         canceltime = 20
         
            can_fast_fall = false
@@ -887,7 +895,7 @@ switch attack {
             aiy2 = y
             aisd2 = spr_dir
             aid2 = 30
-            hsp = 100*spr_dir    
+            hsp = 80*spr_dir    
             
             spawn_base_dust(x, y, "dash_start", spr_dir)
             spawn_base_dust(x , y, "dash", spr_dir)

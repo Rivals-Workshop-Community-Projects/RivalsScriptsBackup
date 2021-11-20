@@ -59,8 +59,8 @@ walk_speed = 3;
 walk_accel = 1;
 walk_turn_time = 4;
 initial_dash_time = 10;
-initial_dash_speed = 6.5;
-dash_speed = 6;
+initial_dash_speed = 8;
+dash_speed = 7.5;
 dash_turn_time = 10;
 dash_turn_accel = .5;
 dash_stop_time = 10;
@@ -73,11 +73,11 @@ jump_speed = 14;
 jump_frames = 9;
 short_hop_speed = 8;
 djump_speed = 15;
-leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 3.5; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 3.5; //the maximum hsp you can accelerate to when in a normal aerial state
+leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = 0.35;
+air_accel = 0.3;
 prat_fall_accel = 0.8; //multiplier of air_accel while in pratfall
 air_friction = .05;
 max_djumps = 1;
@@ -90,13 +90,13 @@ max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed
 gravity_speed = .75;
 hitstun_grav = .50;
-knockback_adj = 1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 20;
 wave_land_time = 8;
-wave_land_adj = 0.8; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .01; //grounded deceleration when wavelanding
+wave_land_adj = 1.2; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_friction = .6; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 2;

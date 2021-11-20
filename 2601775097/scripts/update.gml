@@ -7,7 +7,7 @@ user_event(14);
 if (get_match_setting(SET_PRACTICE)) if (up_down && taunt_down) msg_menu = false;
 
 //AI stuff
-if (is_AI) show_player_info = false;
+if (!AI_vs && is_AI) show_player_info = false;
 //if bar is a CPU, then he won't show the following:
 //1: equiped skills
 //2: mini mana gauge
@@ -124,10 +124,21 @@ if (!testing && "kart_inside" not in self)
     }
 }
 
-
 if (intro_timer < 13 && !was_reloaded) draw_indicator = false;
 else draw_indicator = true;
 //this stops the overhead HUD from getting in the way of the animation. If your animation does not involve much movement, this may not be necessary.
+
+
+//check if game is paused
+if (!start_down) game_paused = false;
+if (game_paused) start_down = false;
+if (start_down) game_paused = true;
+
+//window end logic stolen from munophone so i don't need to use munophone when i don't need it
+if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
+{
+    window_end = floor(get_window_value(attack, window, AG_WINDOW_LENGTH) * ((get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !has_hit) ? 1.5 : 1));
+}
 
 //////////////////////////////////////////////////MOVEMENT MECHANICS SECTION//////////////////////////////////////////////////
 
@@ -162,7 +173,9 @@ if (state_timer == 5 && (state == PS_DOUBLE_JUMP || state == PS_FIRST_JUMP) && (
 //thanks supersonic!
 if (hovering && state != PS_ATTACK_AIR && state == PS_IDLE_AIR)
 {
-    if (abs(hsp) >= air_max_speed) spr_dir = sign(hsp); //if the absolute value of hsp is greater than or equal to air_max_speed - set the direction to the sign of hsp.
+    if (abs(hsp) >= air_max_speed) spr_dir = sign(hsp);
+    //if the absolute value of hsp is greater than or equal to air_max_speed - set the direction to the sign of hsp.
+
     //NOTE: normally this would be.. very unsafe as sign() returns a value of -1, 0, or 1.
     //however, since we're already guaranteeing that hsp is never 0 when this runs,
     //this is fine.
@@ -249,6 +262,10 @@ if (!theikos_active) //theikos bar doesn't have this limit
     }
 }
 
+//up tilt momentum boost
+//if (state == PS_DASH_START || state == PS_DASH) set_window_value(AT_UTILT, 2, AG_WINDOW_HSPEED_TYPE, 0);
+//else if (state != PS_DASH_START && state != PS_DASH && state != PS_ATTACK_GROUND) reset_window_value(AT_UTILT, 2, AG_WINDOW_HSPEED_TYPE);
+
 //////////////////////////////////////////////////MANA SECTION//////////////////////////////////////////////////
 
 //natural mana regen mechanic
@@ -324,7 +341,6 @@ if (cool_start)
     }
 }
 
-
 //on cooldown message
 if (cd_error_active)
 {
@@ -351,7 +367,6 @@ if (cd_error_active)
     }
 }
 
-
 //mini MP gauge animation
 if (show_miniMP)
 {
@@ -369,19 +384,19 @@ if (show_miniMP)
 
 //MP burn logic for burning fury and guard aura
 //if the skill select menu is up, MP gain/burn will pause
-if (!menu_open && (burningfury_active || guardaura_active))
+if (!menu_open && (burningfury_active || polaris_active))
 {
     //activating buffs will burn mana over time and disable mp gaining
     mpGainable = false;
-    if (burningfury_active && phone_cheats[CHEAT_MPDRAIN] == 0) mp_fc_rate = buff_overtime_cost;
-    if (guardaura_active && phone_cheats[CHEAT_MPDRAIN] == 0) mp_fc_rate = buff_overtime_cost*2;
-    if (phone_cheats[CHEAT_MPDRAIN] == 1) mp_fc_rate = 0;
+    if (burningfury_active || polaris_active) mp_fc_rate = buff_overtime_cost;
+    if (burningfury_active && polaris_active) mp_fc_rate = buff_overtime_cost*2;
 
     mp_fc_num += mp_fc_rate;
 
     if (mp_fc_num >= mp_fc_maxNum)
     {
-        mp_current --;
+        if ("phone_cheats" in self && phone_cheats[CHEAT_MPDRAIN] == 1 || has_rune("K") && theikos_active) mp_current -= 0;
+        else mp_current --;
         mp_fc_num = 0;
     }
     if (mp_current <= 0)
@@ -389,17 +404,26 @@ if (!menu_open && (burningfury_active || guardaura_active))
         mp_current = 0;
         sound_play(asset_get("sfx_abyss_despawn"), 0, 0, 2);
         burningfury_active = false;
-        guardaura_active = false; //if you reach 0 mp, it will just deactivate the skill without any counter attack
+        polaris_active = false; //if you reach 0 mp, it will just deactivate the skill without any counter attack
     }
 }
 else mpGainable = true;
 
 //natural mana regen speeds
-if (theikos_active && !burningfury_active) mp_fc_rate = 100;
+if (theikos_active && !burningfury_active && !polaris_active) mp_fc_rate = 100;
 else if (menu_open) mp_fc_rate = 0; //skill select menu
-else if (!burningfury_active) mp_fc_rate = mp_rate_default;
+else if (!burningfury_active && !polaris_active) mp_fc_rate = mp_rate_default;
 
 //////////////////////////////////////////////////SKILLS AND STRONGS SECTION//////////////////////////////////////////////////
+
+//D-strong effect stuff
+//attack update doesn't let me put stuff on window timer 0
+if (attack == AT_DSTRONG && (window == 4 || window == 6) && window_timer == 0 && !hitpause)
+{
+    var flameblast = spawn_hit_fx(x, y, fx_dstrong_fireblast);
+    flameblast.depth = -6;
+    sound_play(asset_get("sfx_burnapplied"));
+}
 
 //burning fury
 if (burningfury_active) 
@@ -442,16 +466,15 @@ else
 if (accelblitz_active) //accel blitz's motion blur after bar's teleport
 {
     //accel blitz logic
-    if ((theikos_active || godpower) && !is_8bit || get_player_color(player) == 31)
+    if (user_event_1_active)
     {
         var blend_color = make_colour_rgb(237, 207, 97);
     }
     else
     {
-        var palNum = get_player_color(player);
-        var blend_r = get_color_profile_slot_r(palNum, 6);
-        var blend_g = get_color_profile_slot_g(palNum, 6);
-        var blend_b = get_color_profile_slot_b(palNum, 6);
+        var blend_r = get_color_profile_slot_r(alt_cur, 6);
+        var blend_g = get_color_profile_slot_g(alt_cur, 6);
+        var blend_b = get_color_profile_slot_b(alt_cur, 6);
         var blend_color = make_colour_rgb(blend_r, blend_g, blend_b);
     }
 
@@ -549,28 +572,89 @@ if (reached_max_bursts)
 //chasm effect spawning
 if (spawn_earth_shatter)
 {
+    var burst_projectile = spawn_hit_fx(x+burst_pos*spr_dir-46*spr_dir, y-42, fx_chasmburster);
+    burst_projectile = -4;
+
     var earth_shatter = spawn_hit_fx(x+burst_pos*spr_dir-46*spr_dir, y, fx_earthshatter);
-    earth_shatter.depth = depth - 10;
+    earth_shatter.depth = -5;
+
     sound_play(asset_get("sfx_burnapplied"), 0, 0, 0.7);
     spawn_earth_shatter = false;
 }
 
 //guard aura logic
-if (guardaura_active)
+if (polaris_active)
 {
-    guard_time --;
-    super_armor = true;
-    if (guard_time <= 0) guardaura_active = false;
-}
-else if (!guardaura_active) if (attack != AT_OVERDRIVE && attack != AT_THEIKOS) super_armor = false;
+    if (get_gameplay_time() % 6 == 0) light_charge(x, y-96, 180);
 
-if (guard_explosion)
-{
-    set_attack(AT_SKILL7);
-    window = 6;
-    window_timer = 0;
-    can_move = false;
+    //making sure the multihitters don't spawn more than 1 projectile (there's probably a better way to check this)
+    if (already_shot && (attack != AT_SKILL1 || attack == AT_SKILL1 && window <= 7) && (attack != AT_SKILL1_AIR || attack == AT_SKILL1_AIR && window <= 7)
+    && attack != AT_SKILL3 && (attack != AT_SKILL5 || attack == AT_SKILL5 && window <= 5 && window_timer <= 2) && attack != AT_SKILL10
+    && (attack != AT_SKILL6 || attack == AT_SKILL6 && window <= 5) && attack != AT_DSTRONG && attack != AT_DATTACK
+    || window == get_attack_value(attack, AG_NUM_WINDOWS) || state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
+    {
+        already_shot = false;
+    }
+
+    /*
+    //these multi hitting moves move bar around so i don't want the hitpause to mess with the combo
+    if (attack == AT_SKILL1 || attack == AT_SKILL1_AIR || attack == AT_SKILL10 || attack == AT_DATTACK && window < 4 || attack == AT_JAB)
+    {
+        set_hitbox_value(AT_SKILL7, 1, HG_BASE_KNOCKBACK, 0);
+        set_hitbox_value(AT_SKILL7, 1, HG_KNOCKBACK_SCALING, 0);
+        set_hitbox_value(AT_SKILL7, 1, HG_BASE_HITPAUSE, 0);
+        set_hitbox_value(AT_SKILL7, 1, HG_HITPAUSE_SCALING, 0);
+    }
+    else
+    {
+        reset_hitbox_value(AT_SKILL7, 1, HG_BASE_KNOCKBACK);
+        reset_hitbox_value(AT_SKILL7, 1, HG_KNOCKBACK_SCALING);
+        reset_hitbox_value(AT_SKILL7, 1, HG_BASE_HITPAUSE);
+        reset_hitbox_value(AT_SKILL7, 1, HG_HITPAUSE_SCALING);
+    }
+    */
+    
+    if (down_down && special_pressed && state_cat != SC_GROUND_COMMITTED && state_cat != SC_AIR_COMMITTED)
+    {
+        if (polaris_active)
+        {
+            homing_post_buffer_counting = true;
+            homing_post_buffer = 10;
+            sound_play(asset_get("sfx_abyss_despawn"));
+            polaris_active = false;
+        }
+    }
+
+    //outline logic
+    if (!is_8bit)
+    {
+        if (homing_outline_alpha >= 0.8) homing_outline_increase = false;
+        else if (homing_outline_alpha <= 0.1) homing_outline_increase = true;
+
+        if (homing_outline_increase) homing_outline_alpha += homing_outline_alpha_rate;
+        else if (!homing_outline_increase) homing_outline_alpha -= homing_outline_alpha_rate;
+    }
+
+    //if bar is on an 8bit alt change the projectile to the one with the outline
+    if (is_8bit) set_hitbox_value(AT_SKILL7, 1, HG_PROJECTILE_SPRITE, sprite_get("fx_homing_proj_8bit"));
 }
+else
+{
+    homing_outline_increase = true;
+    if (is_8bit) homing_outline_alpha = 1;
+    else homing_outline_alpha = 0.1;
+}
+if (homing_post_buffer_counting)
+{
+    clear_button_buffer( PC_SPECIAL_PRESSED );
+    homing_post_buffer--;
+    if (homing_post_buffer == 9 && mp_current > 0) spawn_hit_fx(x, y-32, fx_lightblow2);
+    if (homing_post_buffer <= -1)
+    {
+        homing_post_buffer_counting = false;
+    }
+}
+
 
 //light hookshot
 //differences between the air version and the ground version
@@ -613,15 +697,13 @@ if (descent_timer <= 0 && state != PS_ATTACK_AIR || !free)
     if (attack == AT_SKILL10 && free) burningfury_active = false;
 }
 
-
-
 //reset flashbangs's target too so there won't be any jank
 if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND || attack != AT_SKILL11) flashbanged_id = noone;
 
 
 //prat_land_time changing
 if (ustrong2_cast) prat_land_time = 24; //theikos U-strong
-else if (attack == AT_SKILL2 && prev_state == PS_PRATFALL && state == PS_PRATLAND) prat_land_time = 10; //force leap
+else if ((attack == AT_SKILL2 || attack == AT_SKILL10) && prev_state == PS_PRATFALL && state == PS_PRATLAND) prat_land_time = 10; //force leap and searing descent
 else if (theikos_active) prat_land_time = 2; //theikos in general
 else prat_land_time = normal_prat_land_time;
 
@@ -629,9 +711,7 @@ else prat_land_time = normal_prat_land_time;
 if (prev_state == PS_PRATLAND && ustrong2_cast) ustrong2_cast = false;
 
 
-// if the MP cost is greater than the current MP, this will set a positive cooldown time, meaning the move can't be used before it
-// this is for the initial cost only?
-// original code is based off Jill Katze's sakuya
+// SKILL COOLDOWNS (based off Jill Katze's sakuya)
 
 // u-strong
 move_cooldown[AT_USTRONG] = 1 + ceil(strong_cost - mp_current);
@@ -646,7 +726,8 @@ move_cooldown[AT_SKILL0_AIR] = 1 + ceil(lightdagger_cost - mp_current);
 // [1] burning fury
 move_cooldown[AT_SKILL1] = 1 + ceil(buff_total_cost - mp_current);
 move_cooldown[AT_SKILL1_AIR] = 1 + ceil(buff_total_cost - mp_current);
-if (burningfury_active) {
+if (burningfury_active)
+{
     move_cooldown[AT_SKILL1] = 1 + ceil(burningfury_attack_cost - mp_current);
     move_cooldown[AT_SKILL1_AIR] = 1 + ceil(burningfury_attack_cost - mp_current);
 }
@@ -666,18 +747,18 @@ move_cooldown[AT_SKILL5] = 1 + ceil(chasmburster_total_cost - mp_current);
 // [6] power smash
 move_cooldown[AT_SKILL6] = 1 + ceil(powersmash_total_cost - mp_current);
 
-// [7] guard aura
+// [7] polaris
 move_cooldown[AT_SKILL7] = 1 + ceil(buff_total_cost - mp_current);
+if (homing_post_buffer_counting || polaris_active) move_cooldown[AT_SKILL7] = 2;
 
 // [8] ember fist
-move_cooldown[AT_SKILL8] = 1 + ceil(emberfist_cost - mp_current);
 move_cooldown[AT_SKILL8] = 1 + ceil(emberfist_cost - mp_current);
 
 // [9] light hookshot
 move_cooldown[AT_SKILL9] = 1 + ceil(lighthookshot_total_cost - mp_current);
 
 // [10] searing descent
-move_cooldown[AT_SKILL10] = 1 + ceil(searingdescent_cost - mp_current);
+move_cooldown[AT_SKILL10] = 1 + ceil(searingdescent_activate_cost - mp_current);
 
 // [11] flashbag
 move_cooldown[AT_SKILL11] = 1 + ceil(flashbang_total_cost - mp_current);
@@ -724,12 +805,27 @@ if(menu_timer >= 0)
 }
 else menu_open = false;
 
-if(close_timer >= 0) close_timer--;
+if (close_timer >= 0) close_timer--;
 
 //menu selection
 if(menu_open)
 {
+    //invincibility timer when using the skill select (5 secs)
+    menu_armor_time --;
+    if (menu_armor_time > 0 || active_col == -1) attack_invince = true;
+    else attack_invince = false;
+    
+    //cancel any invincibility bar might have
+    if (menu_armor_time > 60)
+    {
+        invincible = false;
+        invince_time = 0;
+    }
+    //makes bar flash when he has 1 second left
+    if (menu_armor_time <= 60 && menu_armor_time % 4 == 0 && menu_armor_time > 0) invincible = true;
+
     menu_close = true;
+    //controls
     if(up_pressed)
     {
         menu_dir = 0;
@@ -763,32 +859,40 @@ if(menu_open)
             arrow_anim_down = false;
         }
     }
-    else if(jump_down) menu_dir = -2; //jump cancel
+    else if(jump_pressed) menu_dir = -2; //jump cancel
     else menu_dir = -1;
 
-    if(menu_timer == 120) sound_play(asset_get("mfx_forward"));
+    if (menu_timer == 120) sound_play(asset_get("mfx_forward")); //open menu sound
 
-    if(active_col < 4)
+    //skill select logic
+    if (active_col < 4)
     {
-        if(menu_dir != -1 && menu_dir != prev_dir)
+        if (menu_dir != -1 && menu_dir != prev_dir)
         {
-			//jump to go back 1 column
-			if(menu_dir == -2)
+			if (menu_dir == -2) //go back
             {
-				active_col--;
-				//cancel menu if jump pressed in nspecial column
-				if(active_col < 0){
-					menu_timer = -1;
+                //get_gameplay_time works as a sort of limiter
+                //because the thing is it goes to active_col = -1 as soon as the match starts
+                if (get_gameplay_time() > 1 && active_col >= 0) active_col--;
+
+				if (active_col == -1) //cancel skill select entirely
+                {
+                    menu_timer = 20;
 					specialnums = [0,0,0,0];
-				//just go back one
-				}else{
+                    for (var i = 0; i < 4; i++)
+                    {
+                        specs_chosen[i, 1] = false;
+                        specs_chosen[i, 2] = false;
+                    }
+                    sound_play(asset_get("mfx_back"));
+				}
+                else //just go back one
+                {
 					sound_play(asset_get("mfx_back"));
-					for(var i = 0; i < 3; i++){
-						specs_chosen[active_col, i] = true;
-					}
+					for (var i = 0; i < 3; i++) specs_chosen[active_col, i] = true;
 				}
 			}
-            else
+            else //confirm
             {
 				specialnums[active_col] = menu_dir;
 				sound_play(asset_get("mfx_confirm"));
@@ -796,18 +900,19 @@ if(menu_open)
                 {
 					if(i != menu_dir) specs_chosen[active_col, i] = false;
 				}
-				active_col++;
+				active_col ++;
         	}
         }
         prev_dir = menu_dir;
     }
-    if(active_col >= 4 && menu_confirm)
+    if (menu_confirm && active_col >= 4) //ending selection
     {
         menu_timer = 20;
         menu_confirm = false;
     }
     
-    cursor_timer++;
+    //cursor animation
+    cursor_timer ++;
     if(cursor_timer >= 24) cursor_timer = 0;
 }
 
@@ -815,9 +920,10 @@ if(menu_open)
 if(menu_close && !menu_open)
 {
     barUnpause();
+    menu_armor_time = menu_armor_time_reset;
 
     menu_close = false; 
-    sound_play(asset_get("mfx_back"));
+    if (!is_AI || is_AI && AI_vs) sound_play(asset_get("mfx_back"));
     close_timer = 4;
     menu_dir = -1;
     prev_dir = -1;
@@ -842,7 +948,7 @@ if (arrow_anim_up || arrow_anim_side || arrow_anim_down)
     }
 }
 
-//////////////////////////////////////////////////MISC. SECTION//////////////////////////////////////////////////
+//////////////////////////////////////////////////VISUALS SECTION//////////////////////////////////////////////////
 
 //credit to delta parallax for the custom hitbox colors code
 //& nackles
@@ -906,24 +1012,6 @@ with (pHitBox) //references all hitbox objects
     }
 }
 
-//aura color stuff
-if (theikos_active)
-{
-    if (is_8bit)
-    {
-        if (get_player_color(player) == 7) aura_color = $9AE2D3;
-        else if (get_player_color(player) == 8) aura_color = $20D3EB;
-        aura_alpha = 1;
-    }
-    else if (get_player_color(player) == 11 && birthboy) aura_color = $FFD46D;
-    else aura_color = $45B6F5;
-}
-
-//check if game is paused
-if (!start_down) game_paused = false;
-if (game_paused) start_down = false;
-if (start_down) game_paused = true;
-
 //credit to supersonic for the tutorial
 /*
 with (hit_fx_obj)
@@ -945,7 +1033,7 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
     switch (attack)
     {
         case AT_USTRONG:
-            if (window == 2 && get_gameplay_time() % (5-floor(strong_charge/15)) == 0 && !burningfury_active) light_charge(x, y-32);
+            if (window == 2 && get_gameplay_time() % (5-floor(strong_charge/15)) == 0 && !burningfury_active) light_charge(x, y-32, -1);
 
             if (window == 2 && strong_charge == 0 && !burningfury_active) sound_play(sfx_charge);
             else if (!smash_charging) sound_stop(sfx_charge);
@@ -955,7 +1043,7 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
             {
                 if (get_gameplay_time() % (4-photon_cycle) == 0)
                 {
-                    light_charge(x, y-40);
+                    light_charge(x, y-40, -1);
                 }
             }
 
@@ -965,13 +1053,13 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
         case AT_EXTRA_2: //light hookshot
             if (window == 2 && get_gameplay_time() % (4-floor(hookshot_chargetime/5)) == 0 && hookshot_chargetime != 0 && !burningfury_active)
             {
-                light_charge(x-16*spr_dir, y-40);
+                light_charge(x-16*spr_dir, y-40, -1);
             }
             if (window == 2 && window_timer == 1 && hookshot_chargetime == 0 && !burningfury_active) sound_play(sfx_charge);
             else if (window != 2) sound_stop(sfx_charge);
             break;
         case AT_USTRONG_2: //theikos Ustrong
-            if (window == 2 && get_gameplay_time() % (5-floor(strong_charge/15)) == 0) light_charge(x, y-32);
+            if (window == 2 && get_gameplay_time() % (5-floor(strong_charge/15)) == 0) light_charge(x, y-32, -1);
 
             if (window == 2 && strong_charge == 0) sound_play(sfx_charge);
             else if (!smash_charging) sound_stop(sfx_charge);
@@ -985,7 +1073,7 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
         case AT_FSTRONG: //uses the light charge effect only with rune C
             if (has_rune("C"))
             {
-                if (window == 2 && get_gameplay_time() % (5-floor(strong_charge/15)) == 0 && !burningfury_active) light_charge(x, y-32);
+                if (window == 2 && get_gameplay_time() % (5-floor(strong_charge/15)) == 0 && !burningfury_active) light_charge(x, y-32, -1);
 
                 if (window == 2 && strong_charge == 0 && !burningfury_active) sound_play(sfx_charge);
                 else if (!smash_charging) sound_stop(sfx_charge);
@@ -995,7 +1083,7 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 
     if (attack == AT_THEIKOS)
     {
-        if (window == 2 && get_gameplay_time() % (6-floor(window_timer/20)) == 0) light_charge(x, y-32);
+        if (window == 2 && get_gameplay_time() % (6-floor(window_timer/20)) == 0) light_charge(x, y-32, -1);
     }
 
     if (burningfury_active)
@@ -1025,23 +1113,23 @@ else
 //victory screen stuff
 if (!theikos_active)
 {
-    switch (get_player_color(player))
+    switch (alt_cur)
     {
-        case 7: //Gameboy
+        case 14: //Gameboy
             set_victory_portrait(sprite_get("portrait_extra1"));
 	        set_victory_sidebar(sprite_get("result_small_extra1"));
             set_victory_theme(sound_get("mus_victory_demake"));
             break;
-        case 8: //NES
+        case 15: //NES
             set_victory_portrait(sprite_get("portrait_extra2"));
 	        set_victory_sidebar(sprite_get("result_small_extra2"));
             set_victory_theme(sound_get("mus_victory_demake"));
             break;
-        case 30: //Helel
+        case 25: //Helel
             set_victory_portrait(sprite_get("portrait_extra3"));
 	        set_victory_sidebar(sprite_get("result_small_extra3"));
             break;
-        case 31: //Theikos alt
+        case 26: //Theikos alt
             set_victory_portrait(sprite_get("portrait_extra4"));
 	        set_victory_sidebar(sprite_get("result_small_extra4"));
             break;
@@ -1053,14 +1141,14 @@ if (!theikos_active)
 }
 else
 {
-    switch (get_player_color(player))
+    switch (alt_cur)
     {
-        case 7: //Gameboy
+        case 14: //Gameboy
             set_victory_portrait(sprite_get("portrait_extra5"));
 	        set_victory_sidebar(sprite_get("result_small_extra5"));
             set_victory_theme(sound_get("mus_victory_demake"));
             break;
-        case 8: //NES
+        case 15: //NES
             set_victory_portrait(sprite_get("portrait_extra6"));
 	        set_victory_sidebar(sprite_get("result_small_extra6"));
             set_victory_theme(sound_get("mus_victory_demake"));
@@ -1072,114 +1160,45 @@ else
     }
 }
 
+//some effects require constant updating
+if (user_event_1_active || theikos_alt)
+{
+    if (burningfury_active)
+    {
+        fx_ustrong_lightaxe_sprite = sprite_get("theikos_fx_ustrong_b_lightaxeburn");
+        fx_lightdagger = sprite_get("theikos_fx_lightdaggerburn");
+        fx_lightdagger_air = sprite_get("theikos_fx_lightdaggerburn_air");
+        fx_lighthookshot = sprite_get("theikos_fx_lighthookshotburn");
+    }
+    else
+    {
+        fx_ustrong_lightaxe_sprite = sprite_get("theikos_fx_ustrong_b_lightaxe");
+        fx_lightdagger = sprite_get("theikos_fx_lightdagger");
+        fx_lightdagger_air = sprite_get("theikos_fx_lightdagger_air");
+        fx_lighthookshot = sprite_get("theikos_fx_lighthookshot");
+    }
+}
+else
+{
+    if (burningfury_active)
+    {
+        fx_ustrong_lightaxe_sprite = sprite_get("fx_ustrong_lightaxeburn");
+        fx_lightdagger = sprite_get("fx_lightdaggerburn");
+        fx_lightdagger_air = sprite_get("fx_lightdaggerburn_air");
+        fx_lighthookshot = sprite_get("fx_lighthookshotburn");
+    }
+    else
+    {
+        fx_ustrong_lightaxe_sprite = sprite_get("empty");
+        fx_lightdagger = sprite_get("empty");
+        fx_lightdagger_air = sprite_get("empty");
+        fx_lighthookshot = sprite_get("empty");
+    }
+}
+
 //helel alt rainbow color
 //the outline is with the other outlines
-if (get_player_color(player) == 30)
-{
-    color_rate += 5;
-    if (color_rate >= 255) color_rate = 0;
-
-    var color_rgb = make_color_rgb(255, 0, 0);
-    var hue = (color_get_hue(color_rgb)+color_rate) mod 255;
-    var helel_hsv = make_color_hsv(hue, color_get_saturation(color_rgb), color_get_value(color_rgb));
-
-    //light
-    set_color_profile_slot(30 ,6 , color_get_red(helel_hsv) ,color_get_green(helel_hsv) ,color_get_blue(helel_hsv));
-    set_article_color_slot(6, color_get_red(helel_hsv), color_get_green(helel_hsv), color_get_blue(helel_hsv));
-
-    //fire
-    set_color_profile_slot(30 ,7 , color_get_red(helel_hsv)-120 ,color_get_green(helel_hsv)-120 ,color_get_blue(helel_hsv)-120);
-    set_article_color_slot(7, color_get_red(helel_hsv)-120 ,color_get_green(helel_hsv)-120 ,color_get_blue(helel_hsv)-120);
-
-    //when bar double jumps and starts a dash he will get a rainbow motion blur
-    var helel_r = get_color_profile_slot_r(30, 6);
-    var helel_g = get_color_profile_slot_g(30, 6);
-    var helel_b = get_color_profile_slot_b(30, 6);
-    var helel_blend_color = make_colour_rgb(helel_r, helel_g, helel_b);
-
-    //blur logic from the joke motion blur character
-    for(var i = array_length_1d(helel_blur) - 1; i > 0; i--) helel_blur[@ i] = helel_blur[i - 1];
-    helel_blur[@ i] = [sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, helel_blend_color, image_alpha];
-
-    init_shader();
-}
-
-//theikos stuff
-if (has_rune("L") && was_reloaded) //theikos reload check
-{
-    theikos = true;
-    theikos_active = true;
-}
-
-//theikos related user events
-user_event(0);
-user_event(1);
-
-//i stole this from muno's goku ehe~
-//this is the anti-cheapie section which is a mix of theikos bar, a few very useful runes for the occasion and the lord's blessing buff
-var found = false;
-with oPlayer if self != other switch url
-{
-	case "2273636433":
-	case "1870768156":
-	case "1869351026":
-	case "2443363942":
-	case "2159023588":
-	case "1980469422":
-		break;
-	default:
-		if (
-			check_string_for_name(player, "nald") || 
-			check_string_for_name(player, "%") || 
-			check_string_for_name(player, "sand") || 
-			check_string_for_name(player, "psy") || 
-			check_string_for_name(player, "ultra") || 
-			check_string_for_name(player, "god") || 
-			check_string_for_name(player, "boss") || 
-			check_string_for_name(player, "ui ") || 
-			check_string_for_name(player, "ssg") || 
-			check_string_for_name(player, "melee") || 
-			check_string_for_name(player, "accurate")
-			) found = true;
-		break;
-}
-if (found) fuck_you_cheapies = true;
-
-if (fuck_you_cheapies && (state != PS_SPAWN && state != PS_DEAD && state != PS_RESPAWN) ) //activation
-{
-    if (!theikos_active && !od_ready) if (attack_down && special_down) attack = AT_THEIKOS;
-
-    if (theikos_active && fuck_you_cheapies) soft_armor = 999999999;
-}
-// list of things the anti-cheapie mode does:
-// BAR:
-// - 999 stocks                                                                                 [attack_update]
-// - 999,999,999 mp (but has a passive mana gain rate of 1 per sec)                             [attack_update]
-// - 999,999,999 constant soft armor                                                            [update]
-// - theikos (and all it brings to the table)                                                   [attack_update]
-// - lord's blessing buff (longer light attack stunning, longer burning time)                   [attack_update]
-// - rune A (airdashing)                                                                        [update, animation, post_draw]
-// - rune D (earthquake D-air)                                                                  [attack_update]
-// - rune G (warping to spear projectiles)                                                      [update, hit_player, hitbox_update]
-// - rune J (mana gain from burning/pre-lightstunning) (twice as effective)                     [update]
-// - rune N (adding the lightstunning mechanic)                                                 [update]
-// CHEAPIE/ANYONE ELSE:
-// - 10 stocks                                                                                  [update (intro), attack_update]
-// - double damage dealt on them                                                                [update (intro), attack_update]
-// - knockback adjustment doubled                                                               [update (intro), attack_update]
-
-if (turbo_time)
-{
-    //by default, give all the moves a shitton of cooldown
-    if (window == 1 && window_timer == 1) move_cooldown[attack] = 99999;
-    //if bar isn't attack, let him attack
-    if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) move_cooldown[attack] = 0;
-    //if the attack isn't the previous attack put no cooldown
-    if (previous_attack != attack || attack == AT_NAIR) move_cooldown[previous_attack] = 0;
-
-    previous_attack = attack;
-}
-
+if (helel_alt || theikos_alt) user_event(2);
 
 //seriously don't be afraid, stupid mortal (also give me my outline)
 if (bibical)
@@ -1202,7 +1221,7 @@ if (birthboy) {
 }
 
 //glowing outlines for different states
-if (theikos_active || burningfury_active || godpower || get_player_color(player) == 31) //only start and end working if any of these are true
+if (theikos_active || burningfury_active || godpower || theikos_alt) //only start and end working if any of these are true
 {
     if (increase) color_timer ++;
     else if (!increase) color_timer --;
@@ -1234,7 +1253,7 @@ if (!is_8bit) //color choices
             color_g = 23 + color_timer*1.7;
             color_b = 130 + color_timer*2.3;
         }
-        else if (get_player_color(player) == 31)
+        else if (theikos_alt)
         {
             color_r = 77 + color_timer*3; //168
             color_g = 31 + color_timer*2.1; //95
@@ -1246,7 +1265,7 @@ if (!is_8bit) //color choices
             color_g = 43;
             color_b = 43;
         }
-        else if (get_player_color(player) == 30) //helel alt outline
+        else if (helel_alt) //helel alt outline
         {
             color_r = 52;
             color_g = 52;
@@ -1270,9 +1289,9 @@ else if (is_8bit)
 {
     if (burningfury_active && !theikos_active)
     {
-        switch (get_player_color(player))
+        switch (alt_cur)
         {
-            case 7: //GAMEBOY
+            case 14: //GAMEBOY
                 if (increase) {
                     color_r = 167;
                     color_g = 186;
@@ -1285,7 +1304,7 @@ else if (is_8bit)
                 }
                 break;
         
-            case 8: //NES
+            case 15: //NES
                 if (increase) {
                     color_r = 65;
                     color_g = 65;
@@ -1301,9 +1320,9 @@ else if (is_8bit)
     }
     else if (theikos_active)
     {
-        switch (get_player_color(player))
+        switch (alt_cur)
         {
-            case 7: //GAMEBOY
+            case 14: //GAMEBOY
                 if (increase) {
                     color_r = 167;
                     color_g = 186;
@@ -1316,44 +1335,43 @@ else if (is_8bit)
                 }
                 break;
         
-            case 8: //NES
-                palNum = 8;
+            case 15: //NES
                 if (increase) {
                     color_r = 162;
                     color_g = 48;
                     color_b = 0;
-                    set_color_profile_slot(palNum, 0, 255, 219, 162); //CLOTHWHITE
-                    set_color_profile_slot(palNum, 1, 255, 121, 48); //HAIR
-                    set_color_profile_slot(palNum, 2, 255, 219, 162); //SKIN
-                    set_color_profile_slot(palNum, 3, 255, 121, 48); //CLOTHLIGHTBLUE
-                    set_color_profile_slot(palNum, 4, color_r, color_g, color_b); //CLOTHDARKBLUE
-                    set_color_profile_slot(palNum, 5, color_r, color_g, color_b); //CLOTHBLACK
+                    set_color_profile_slot(alt_cur, alt_col_white, 255, 219, 162); //CLOTHWHITE
+                    set_color_profile_slot(alt_cur, alt_col_hair, 255, 121, 48); //HAIR
+                    set_color_profile_slot(alt_cur, alt_col_skin, 255, 219, 162); //SKIN
+                    set_color_profile_slot(alt_cur, alt_col_lblue, 255, 121, 48); //CLOTHLIGHTBLUE
+                    set_color_profile_slot(alt_cur, alt_col_dblue, color_r, color_g, color_b); //CLOTHDARKBLUE
+                    set_color_profile_slot(alt_cur, alt_col_black, color_r, color_g, color_b); //CLOTHBLACK
                 }
                 else if (!increase) {
                     color_r = 121;
                     color_g = 65;
                     color_b = 0;
-                    set_color_profile_slot(palNum, 0, 255, 203, 186); //CLOTHWHITE
-                    set_color_profile_slot(palNum, 1, 227, 81, 0); //HAIR
-                    set_color_profile_slot(palNum, 2, 255, 203, 186); //SKIN
-                    set_color_profile_slot(palNum, 3, 227, 81, 0); //CLOTHLIGHTBLUE
-                    set_color_profile_slot(palNum, 4, color_r, color_g, color_b); //CLOTHDARKBLUE
-                    set_color_profile_slot(palNum, 5, color_r, color_g, color_b); //CLOTHBLACK
+                    set_color_profile_slot(alt_cur, alt_col_white, 255, 203, 186); //CLOTHWHITE
+                    set_color_profile_slot(alt_cur, alt_col_hair, 227, 81, 0); //HAIR
+                    set_color_profile_slot(alt_cur, alt_col_skin, 255, 203, 186); //SKIN
+                    set_color_profile_slot(alt_cur, alt_col_lblue, 227, 81, 0); //CLOTHLIGHTBLUE
+                    set_color_profile_slot(alt_cur, alt_col_dblue, color_r, color_g, color_b); //CLOTHDARKBLUE
+                    set_color_profile_slot(alt_cur, alt_col_black, color_r, color_g, color_b); //CLOTHBLACK
                 }
                 break;
         }
     }
     else //reset color
     {
-        switch (get_player_color(player))
+        switch (alt_cur)
         {
-            case 7: //GAMEBOY
+            case 14: //GAMEBOY
                 color_r = 15;
                 color_g = 56;
                 color_b = 15;
                 break;
 
-            case 8: //NES
+            case 15: //NES
                 color_r = 32;
                 color_g = 0;
                 color_b = 178;
@@ -1370,46 +1388,44 @@ if (godpower)
 
     if (is_8bit)
     {
-        switch (get_player_color(player))
+        switch (alt_cur)
         {
-            case 7: //GAMEBOY
-                palNum = 7;
+            case 14: //GAMEBOY
                 if (increase) {
                     color_r = 221;
                     color_g = 226;
                     color_b = 154;
-                    set_color_profile_slot(palNum, 0, 83, 122, 62); //CLOTHWHITE
-                    set_color_profile_slot(palNum, 2, 83, 122, 62); //SKIN
-                    set_color_profile_slot(palNum, 4, 211, 226, 154); //CLOTHDARKBLUE
-                    set_color_profile_slot(palNum, 5, 211, 226, 154); //CLOTHBLACK
+                    set_color_profile_slot(alt_cur, alt_col_white, 83, 122, 62); //CLOTHWHITE
+                    set_color_profile_slot(alt_cur, alt_col_skin, 83, 122, 62); //SKIN
+                    set_color_profile_slot(alt_cur, alt_col_dblue, 211, 226, 154); //CLOTHDARKBLUE
+                    set_color_profile_slot(alt_cur, alt_col_black, 211, 226, 154); //CLOTHBLACK
 
                 }
                 else if (!increase) {
                     color_r = 83;
                     color_g = 122;
                     color_b = 62;
-                    set_color_profile_slot(palNum, 0, 211, 226, 154); //CLOTHWHITE
-                    set_color_profile_slot(palNum, 2, 211, 226, 154); //SKIN
-                    set_color_profile_slot(palNum, 4, 83, 122, 62); //CLOTHDARKBLUE
-                    set_color_profile_slot(palNum, 5, 83, 122, 62); //CLOTHBLACK
+                    set_color_profile_slot(alt_cur, alt_col_white, 211, 226, 154); //CLOTHWHITE
+                    set_color_profile_slot(alt_cur, alt_col_skin, 211, 226, 154); //SKIN
+                    set_color_profile_slot(alt_cur, alt_col_dblue, 83, 122, 62); //CLOTHDARKBLUE
+                    set_color_profile_slot(alt_cur, alt_col_black, 83, 122, 62); //CLOTHBLACK
                 }
                 break;
         
-            case 8: //NES
-                palNum = 8;
+            case 15: //NES
                 if (increase) {
                     color_r = 195;
                     color_g = 113;
                     color_b = 0;
-                    set_color_profile_slot(palNum, 4, color_r, color_g, color_b); //CLOTHDARKBLUE
-                    set_color_profile_slot(palNum, 5, color_r, color_g, color_b); //CLOTHBLACK
+                    set_color_profile_slot(alt_cur, alt_col_dblue, color_r, color_g, color_b); //CLOTHDARKBLUE
+                    set_color_profile_slot(alt_cur, alt_col_black, color_r, color_g, color_b); //CLOTHBLACK
                 }
                 else if (!increase) {
                     color_r = 121;
                     color_g = 65;
                     color_b = 0;
-                    set_color_profile_slot(palNum, 4, color_r, color_g, color_b); //CLOTHDARKBLUE
-                    set_color_profile_slot(palNum, 5, color_r, color_g, color_b); //CLOTHBLACK
+                    set_color_profile_slot(alt_cur, alt_col_dblue, color_r, color_g, color_b); //CLOTHDARKBLUE
+                    set_color_profile_slot(alt_cur, alt_col_black, color_r, color_g, color_b); //CLOTHBLACK
                 }
                 break;
         }
@@ -1417,22 +1433,22 @@ if (godpower)
 }
 else if (!godpower && is_8bit && !theikos_active)//reset the colors
 {
-    switch (get_player_color(player))
+    switch (alt_cur)
     {
-        case 7: //GAMEBOY
-            set_color_profile_slot(7, 0, 211, 226, 154); //CLOTHWHITE
-            set_color_profile_slot(7, 2, 211, 226, 154); //SKIN
-            set_color_profile_slot(7, 4, 83, 122, 62); //CLOTHDARKBLUE
-            set_color_profile_slot(7, 5, 83, 122, 62); //CLOTHBLACK
+        case 14: //GAMEBOY
+            set_color_profile_slot(alt_cur, alt_col_white, 211, 226, 154); //CLOTHWHITE
+            set_color_profile_slot(alt_cur, alt_col_skin, 211, 226, 154); //SKIN
+            set_color_profile_slot(alt_cur, alt_col_dblue, 83, 122, 62); //CLOTHDARKBLUE
+            set_color_profile_slot(alt_cur, alt_col_black, 83, 122, 62); //CLOTHBLACK
             break;
 
-        case 8: //NES
-            set_color_profile_slot(8, 0, 255, 203, 186); //CLOTHWHITE
-            set_color_profile_slot(8, 1, 227, 81, 0); //HAIR
-            set_color_profile_slot(8, 2, 255, 203, 186); //SKIN
-            set_color_profile_slot(8, 3, 227, 81, 0); //CLOTHLIGHTBLUE
-            set_color_profile_slot(8, 4, 32, 0, 178); //CLOTHDARKBLUE
-            set_color_profile_slot(8, 5, 32, 0, 178); //CLOTHBLACK
+        case 15: //NES
+            set_color_profile_slot(alt_cur, alt_col_white, 255, 203, 186); //CLOTHWHITE
+            set_color_profile_slot(alt_cur, alt_col_hair, 227, 81, 0); //HAIR
+            set_color_profile_slot(alt_cur, alt_col_skin, 255, 203, 186); //SKIN
+            set_color_profile_slot(alt_cur, alt_col_lblue, 227, 81, 0); //CLOTHLIGHTBLUE
+            set_color_profile_slot(alt_cur, alt_col_dblue, 32, 0, 178); //CLOTHDARKBLUE
+            set_color_profile_slot(alt_cur, alt_col_black, 32, 0, 178); //CLOTHBLACK
             break;
     }
 }
@@ -1440,9 +1456,11 @@ else if (!godpower && is_8bit && !theikos_active)//reset the colors
 outline_color = [color_r, color_g, color_b];
 init_shader();
 
+//////////////////////////////////////////////////MECHANICS STUFF//////////////////////////////////////////////////
+
 if (!has_rune("N"))
 {
-    switch (phone_cheats[CHEAT_TECHTOGGLE])
+    if ("phone_cheats" in self) switch (phone_cheats[CHEAT_TECHTOGGLE])
     {
         case 1: //burninng only
             holyburn_mechanic_active = true;
@@ -1587,23 +1605,14 @@ if (lightstun_mechanic_active) //holy light mechanic
 }
 else
 {
-    lightstun_id = noone;
-    lightstun_parried = false;
-    lightstun_parried_timer = -1;
-    lightstun_has_hit = false;
-
-    with (oPlayer)
+    with (oPlayer) if (other != self)
     {
         lightstun_timer = -1;
         lightstun = false;
         lightstun_pre_stun = false;
-        fx_lightstunned_frame = 0;
-        fx_lightstunned_rot = 0;
-        fx_lightstunned_alpha = 1;
-        fx_lightstunned_speed = 0.25;
-        fx_lightstunned_alphaincrease = false;
     }
 }
+
 
 if (holyburn_mechanic_active) //holy burn mechanic
 {
@@ -1613,11 +1622,10 @@ if (holyburn_mechanic_active) //holy burn mechanic
         if (!hitpause || hitpause && lightstun)
         {
             holyburn_counter += 1;
-            outline_color = hit_player_obj.burn_outline; //make it so it changes colors depending on the alt
             var randomX = random_func(1, 8,true)*8;
             var randomY = random_func(2, 8,true);
         
-            if (holyburn_counter % 20 == 0) take_damage(player, other.player, 1); //every 20 frames hurt foe (CHANGE THIS TO 30)
+            if (holyburn_counter % 30 == 0) take_damage(player, other.player, 1); //every 20 frames hurt foe (CHANGE THIS TO 30)
 
             if (holyburn_counter % 3 == 0) with (other) //spawn fire particles
             {
@@ -1655,12 +1663,102 @@ if (holyburn_mechanic_active) //holy burn mechanic
 }
 else
 {
-    with (oPlayer)
+    with (oPlayer) if (other != self)
     {
         holyburning = noone;
         holyburn_counter = 0;
     }
 }
+
+//////////////////////////////////////////////////THEIKOS SECTION//////////////////////////////////////////////////
+
+if (has_rune("L") && was_reloaded) //theikos reload check
+{
+    theikos = true;
+    theikos_active = true;
+}
+
+if (theikos_active) user_event(0); //theikos perks
+
+//i stole this from muno's goku ehe~
+//this is the anti-cheapie section which is a mix of theikos bar, a few very useful runes for the occasion and the lord's blessing buff
+var found = false;
+with (oPlayer) if (self != other && "url" in self) switch (url)
+{
+	case "2273636433":
+	case "1870768156":
+	case "1869351026":
+	case "2443363942":
+	case "2159023588":
+	case "1980469422":
+		break;
+	default:
+		if (
+			check_string_for_name(player, "nald") || 
+			check_string_for_name(player, "%") || 
+			check_string_for_name(player, "sand") || 
+			check_string_for_name(player, "psy") || 
+			check_string_for_name(player, "ultra") || 
+			check_string_for_name(player, "god") || 
+			check_string_for_name(player, "boss") || 
+			check_string_for_name(player, "ui ") || 
+			check_string_for_name(player, "ssg") || 
+			check_string_for_name(player, "melee") || 
+			check_string_for_name(player, "accurate")
+			) found = true;
+		break;
+}
+if (found) fuck_you_cheapies = true;
+
+if (fuck_you_cheapies && (state != PS_SPAWN && state != PS_DEAD && state != PS_RESPAWN) ) //activation
+{
+    if (attack_down && special_down)
+    {
+        if (!theikos_active) set_attack(AT_THEIKOS);
+        else if (od_current >= od_max && !theikos_active) set_attack(AT_THEIKOS);
+        else if (od_current >= od_max && theikos_active && !od_already_active) set_attack(AT_OVERDRIVE);
+    }
+
+    if (theikos_active && fuck_you_cheapies) soft_armor = 999999999;
+}
+// list of things the anti-cheapie mode does:
+// BAR:
+// - 999 stocks                                                                                 [attack_update]
+// - 999,999,999 mp (but has a passive mana gain rate of 1 per sec)                             [attack_update]
+// - 999,999,999 constant soft armor                                                            [update]
+// - theikos (and all it brings to the table)                                                   [attack_update]
+// - lord's blessing buff (longer light attack stunning, longer burning time)                   [attack_update]
+// - rune A (airdashing)                                                                        [update, animation, post_draw]
+// - rune D (earthquake D-air)                                                                  [attack_update]
+// - rune G (warping to spear projectiles)                                                      [update, hit_player, hitbox_update]
+// - rune J (mana gain from burning/pre-lightstunning) (twice as effective)                     [update]
+// - rune N (adding the lightstunning mechanic)                                                 [update]
+// CHEAPIE/ANYONE ELSE:
+// - 10 stocks                                                                                  [update (intro), attack_update]
+// - double damage dealt on them                                                                [update (intro), attack_update]
+// - knockback adjustment doubled                                                               [update (intro), attack_update]
+
+if (turbo_time)
+{
+    //by default, give all the moves a shitton of cooldown
+    if (window == 1 && window_timer == 1) move_cooldown[attack] = 99999;
+    //if bar isn't attack, let him attack
+    if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) move_cooldown[attack] = 0;
+    //if the attack isn't the previous attack put no cooldown
+    if (previous_attack != attack || attack == AT_NAIR) move_cooldown[previous_attack] = 0;
+}
+previous_attack = attack;
+
+//flame aura
+if (theikos_active || godpower)
+{
+    aura_frame += aura_speed;
+    if (hsp == 0) aura_speed = base_aura_speed;
+    else if (hsp > 0) aura_speed = base_aura_speed + hsp / 16;
+    else if (hsp < 0) aura_speed = base_aura_speed + hsp / 16 * spr_dir;
+}
+
+with (oTestPlayer) if ("theikos" in self && theikos) theikos_active = true; //making sure theikos bar is active in the playtest mode
 
 //////////////////////////////////////////////////ABYSS RUNES SECTION//////////////////////////////////////////////////
 
@@ -1834,10 +1932,11 @@ if (has_rune("K") || fuck_you_cheapies && theikos_active) //overcharged mana - f
 
 if (has_rune("O")) //overdrive meter
 {
-    if (od_current <= 0) od_current = 0;
+    if (od_current <= 0) od_current = 0; //no ngative numbers
 
     if (frac(od_current) > 0) od_current -= frac(od_current); //death splits OD into a fraction, so just delete the fraction
 
+    //OD ready
     if (od_current >= 100 && !od_ready)
     {
         sound_play(sound_get("sfx_od_ready"));
@@ -1864,7 +1963,7 @@ if (has_rune("O") && od_current >= od_max && !od_already_active && (state != PS_
 {
     if (attack_pressed && special_pressed)
     {
-        if (!free || fuck_you_cheapies && theikos_active) set_attack(AT_OVERDRIVE);
+        if (!free && !fuck_you_cheapies && !theikos_active) set_attack(AT_OVERDRIVE);
     }
 }
 else if ("fs_charge" in self && fs_charge >= 200 && (state != PS_ATTACK_AIR || state != PS_ATTACK_GROUND)
@@ -1873,7 +1972,12 @@ else if ("fs_charge" in self && fs_charge >= 200 && (state != PS_ATTACK_AIR || s
     if (special_pressed && !up_down && !down_down && !left_down && !right_down && !free && attack != AT_USTRONG) fs_force_fs = true;
 }
 
-with (oTestPlayer) if ("theikos" in self && theikos) theikos_active = true; //making sure theikos bar is active in the playtest mode
+//turbo mode shenanigans
+//using it in the rivals of fighters stage will still mess with the timestop but i can't do much about it
+if (get_match_setting(SET_TURBO))
+{
+    if (attack != AT_OVERDRIVE && od_already_active && !godpower && od_current >= od_max) godpower = true;
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //FINAL SMASH/OVERDRIVE POST ATTACK EFFECT: LORD'S BLESSING
@@ -1887,11 +1991,18 @@ if (attack == AT_OVERDRIVE && (state_cat == SC_GROUND_NEUTRAL || state_cat == SC
 if (godpower)
 {
     od_prepare_godpower = false;
+    if (od_already_active) //this part is also on attack update, it's just to REALLY failsafe this
+    {
+        od_already_active = false;
+        OD_stop_timer = OD_stop_timer_max;
+    }
     //timer work
-    god_time --;
+    if (theikos_active && fuck_you_cheapies) god_time = god_time_reset;
+    else god_time --;
+
     od_current = god_time/9;
 
-    if (theikos_active) od_current = (god_time/9)/2;
+    if (theikos_active && !fuck_you_cheapies) od_current = (god_time/9)/2;
 
     if (god_time == god_time_reset-1)
     {
@@ -1904,21 +2015,22 @@ if (godpower)
         godpower = false;
         god_time = god_time_reset;
         sound_play(asset_get("sfx_abyss_despawn"), 0, 0, 2);
-        if (theikos_active)
-        {
-            theikos_active = false;
-            od_already_active = false;
-        }
     }
 
     //extra burning
-    with (asset_get("oPlayer")) if (player != other.player) holyburn_maxcount = god_burn_time;
+    with (oPlayer) holyburn_maxcount = god_burn_time;
 }
 else if (!godpower && !od_already_active) // for some reason this doesn't wanna work with theia evlogia
 {
     od_cooldown ++;
+    if (od_cooldown < 5) user_event(1); //disable effects cuz godpower is no longer on
     if (od_cooldown == 5) od_gainable = true;
     if (od_gainable) od_cooldown = 0;
+
+    with (asset_get("oPlayer"))
+    {
+        if (!other.theikos_active) holyburn_maxcount = holyburn_default_maxcount;
+    }
 }
 
 //aura logic
@@ -1926,12 +2038,6 @@ if (!theikos_active)
 {
     if (godpower)
     {
-        //flame aura
-        aura_frame += aura_speed;
-        if (hsp == 0) aura_speed = base_aura_speed;
-        else if (hsp > 0) aura_speed = base_aura_speed + hsp / 16;
-        else if (hsp < 0) aura_speed = base_aura_speed + hsp / 16 * spr_dir;
-
         if (is_8bit && !theikos_active)
         {
             if (god_time > 120) aura_alpha = 1;
@@ -1941,14 +2047,6 @@ if (!theikos_active)
         {
             if (god_time > 120) aura_alpha = 0.3;
             else if (god_time <= 120) aura_alpha = god_time/400;
-        }
-    }
-    else
-    {
-        with (asset_get("oPlayer"))
-        {
-            damage_scaling = 1;
-            holyburn_maxcount = holyburn_default_maxcount;
         }
     }
 }
@@ -1973,12 +2071,12 @@ else if (theikos_active)
 charge_color = make_color_hsv(get_gameplay_time() % 255, 255, 255); //custom color for the charge gauge
 if ("fs_char_initialized" in self) if (fs_char_initialized && has_rune("O")) fs_charge = 0; //make sure it doesn't work with the OD rune
 
-switch (get_player_color(player)) //fs portrait changer
+switch (alt_cur) //fs portrait changer
 {
-    case 7: //Gameboy
+    case 14: //Gameboy
         fs_char_portrait_override = sprite_get("fs_portrait2");
         break;
-    case 8: //NES
+    case 15: //NES
         fs_char_portrait_override = sprite_get("fs_portrait3");
         break;
     default:
@@ -2004,38 +2102,25 @@ if (has_rune("K"))
         mp_current = 100;
         gauge_color = gauge_EX_color;
         
-        lightdagger_cost = 0;
-        buff_total_cost = 0; //"buffs" include burning fury and guard aura
-        buff_overtime_cost = 0;
-        buff_activation_cost = 0;
-        burningfury_attack_cost = 0;
-        forceleap_activate_cost = 0;
-        forceleap_attack_cost = 0;
-        photonblast_cost = 0;
-        accelblitz_cost = 0;
-        chasmburster_activate_cost = 0;
-        chasmburster_attack_cost = 0;
-        powersmash_activate_cost = 0;
-        powersmash_attack_cost = 0;
-        guardaura_counter_cost = 0;
-        emberfist_cost = 0;
-        lighthookshot_activate_cost = 0;
-        lighthookshot_attack_cost = 0;
+        freeSkills();
     }
 }
 else
 {
     if (!theikos_active && !menu_open)
     {
-        if (phone_cheats[CHEAT_MANADEBUG] > 0) manaDebug = true;
+        if ("phone_cheats" in self)
+        {
+            if (phone_cheats[CHEAT_MANADEBUG] > 0) manaDebug = true;
 
-        if (phone_cheats[CHEAT_MANADEBUG] == 1) mp_fc_rate = mp_rate_default;
-        else if (phone_cheats[CHEAT_MANADEBUG] == 2) mp_fc_rate = 5;
-        else if (phone_cheats[CHEAT_MANADEBUG] == 3) mp_fc_rate = 10;
-        else if (phone_cheats[CHEAT_MANADEBUG] == 4) mp_fc_rate = 20;
-        else if (phone_cheats[CHEAT_MANADEBUG] == 5) mp_fc_rate = 50;
-        else if (phone_cheats[CHEAT_MANADEBUG] == 6) mp_fc_rate = 100;
-        else mp_fc_rate = 0;
+            if (phone_cheats[CHEAT_MANADEBUG] == 1) mp_fc_rate = mp_rate_default;
+            else if (phone_cheats[CHEAT_MANADEBUG] == 2) mp_fc_rate = 5;
+            else if (phone_cheats[CHEAT_MANADEBUG] == 3) mp_fc_rate = 10;
+            else if (phone_cheats[CHEAT_MANADEBUG] == 4) mp_fc_rate = 20;
+            else if (phone_cheats[CHEAT_MANADEBUG] == 5) mp_fc_rate = 50;
+            else if (phone_cheats[CHEAT_MANADEBUG] == 6) mp_fc_rate = 100;
+            else mp_fc_rate = 0;
+        }
     }
     else if (theikos_active && !fuck_you_cheapies) mp_fc_rate = 100;
     else if (menu_open) mp_fc_rate = 0;
@@ -2045,6 +2130,10 @@ else
         if (mp_current <= 200) mp_current = mp_max;
     }
 }
+
+//no mana drain
+if ("phone_cheats" in self && phone_cheats[CHEAT_MPDRAIN] == 1) freeSkills();
+else unFreeSkills();
 
 // Dracula intro dialogue
 dracula_portrait = sprite_get("dracula_portrait1");
@@ -2227,23 +2316,32 @@ if ("kart_inside" in self && kart_inside)
     if (get_gameplay_time() >= 125) state = PS_IDLE;
     else state_timer = get_gameplay_time();
 }
-
 //charging effects
 //light
-#define light_charge
-/// light_charge(x, y, ...)
+#define light_charge(x, y, angle_type)
 {
     sprite_change_offset("fx_introlight", 16, 96);
     sprite_change_offset("theikos_fx_introlight", 16, 96);
 
     var x = argument[0], y = argument[1];
+    var angle_type = argument_count > 2 ? argument[2] : -1;
 
-    var light_randomAngle = random_func(6, 360,true);    
+    var light_randomAngle = random_func(6, 360,true);
     var light = instance_create(x, y, "obj_article1");
         light.state = 3;
         light.player = player;
         light.depth = -7;
-        light.image_angle = light_randomAngle;
+        light.image_angle = angle_type;
+
+    if (angle_type == -1) light.image_angle = light_randomAngle;
+    else if (angle_type >= 0)
+    {
+        var light_randomX = (random_func(32, 9,true)-5)*5;
+        var light_randomY = (random_func(23, 9,true)-5)*5;
+        light.image_angle = angle_type;
+        light.x = light_randomX + x;
+        light.y = light_randomY + y;
+    } 
 }
 //fire
 #define fire_charge
@@ -2260,54 +2358,56 @@ if ("kart_inside" in self && kart_inside)
         embers.state = 4;
         embers.depth = -random/2;
 }
+#define freeSkills
+{
+    strong_cost = 0;
+
+    lightdagger_cost = 0;
+    buff_total_cost = 0; //"buffs" include burning fury and polaris
+    buff_overtime_cost = 0;
+    buff_activation_cost = 0;
+    burningfury_attack_cost = 0;
+    forceleap_activate_cost = 0;
+    forceleap_attack_cost = 0;
+    photonblast_cost = 0;
+    accelblitz_cost = 0;
+    chasmburster_activate_cost = 0;
+    chasmburster_attack_cost = 0;
+    powersmash_activate_cost = 0;
+    powersmash_attack_cost = 0;
+    emberfist_cost = 0;
+    lighthookshot_activate_cost = 0;
+    lighthookshot_attack_cost = 0;
+    searingdescent_activate_cost = 0;
+    searingdescent_attack_cost = 0;
+    flashbang_activate_cost = 0;
+    flashbang_attack_cost = 0;
+}
+#define unFreeSkills
+{
+    strong_cost = 5;
+    lightdagger_cost = 5;
+    buff_total_cost = 50; //"buffs" include burning fury and polaris
+    buff_overtime_cost = 5;
+    buff_activation_cost = 10;
+    burningfury_attack_cost = 10;
+    forceleap_activate_cost = 10;
+    forceleap_attack_cost = 10;
+    photonblast_cost = 40;
+    accelblitz_cost = 10;
+    chasmburster_activate_cost = 5;
+    chasmburster_attack_cost = 25;
+    powersmash_activate_cost = 5;
+    powersmash_attack_cost = 25;
+    emberfist_cost = 20;
+    lighthookshot_activate_cost = 5;
+    lighthookshot_attack_cost = 15;
+    searingdescent_activate_cost = 10;
+    searingdescent_attack_cost = 10;
+    flashbang_activate_cost = 0;
+    flashbang_attack_cost = 10;
+}
 
 //stolen from muno too (it allows me to see the character names)
 #define check_string_for_name(player, string)
 return string_count(string, string_lower(get_char_info(player, INFO_STR_NAME)))
-
-//unused
-#define playerPause
-with (asset_get("oPlayer")) //stop everyone in game, i'm not using this
-{
-    can_move = false;
-    can_attack = false;
-    can_jump = false;
-    can_strong = false;
-    can_ustrong = false;
-    can_special = false;
-    can_shield = false;
-    can_fast_fall = false;
-    hitpause = true;
-    hitstop = 999999;
-    hitstop_full = 999999;
-    if (invincible == false)
-    {
-        invincible = true;
-        invince_time = 999;
-    }
-    state = PS_SPAWN;
-}
-#define playerUnpause
-with (asset_get("oPlayer")) //unstop everyone in game, i'm not using this too
-{
-    can_move = true;
-    can_attack = true;
-    can_jump = true;
-    can_strong = true;
-    can_ustrong = true;
-    can_special = true;
-    can_shield = true;
-    can_fast_fall = true;
-    hitpause = false;
-    hitstop = 0;
-    hitstop_full = 0;
-    invincible = false;
-    invince_time = 0;
-    if (get_gameplay_time() > 30) state = PS_IDLE;
-    else state = PS_SPAWN;
-}
-#define inDitto
-with (asset_get("oPlayer")) //not using this because bar's pause is dependant only on himself
-{
-    if (url == other.url and !("is_ai" in self)) return true;
-}

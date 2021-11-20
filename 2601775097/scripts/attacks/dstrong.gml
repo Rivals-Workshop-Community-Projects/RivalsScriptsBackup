@@ -37,8 +37,6 @@ set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
 set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 12);
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 9); //starting frame. starts from 0
-set_window_value(atk, windowNum, AG_WINDOW_HAS_SFX, 1);
-set_window_value(atk, windowNum, AG_WINDOW_SFX, asset_get("sfx_burnapplied"));
 
 windowNum ++; //attack endlag
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
@@ -52,8 +50,6 @@ set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
 set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 12);
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 9); //starting frame. starts from 0
-set_window_value(atk, windowNum, AG_WINDOW_HAS_SFX, 1);
-set_window_value(atk, windowNum, AG_WINDOW_SFX, asset_get("sfx_burnapplied"));
 
 windowNum ++; //dummy window (7)
 
@@ -70,7 +66,7 @@ set_hitbox_value(atk, hitboxNum, HG_WIDTH, 40);
 set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 40);
 set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 2); //1 = low priority over other moves || 10 = highest
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 1); //i want this to do less damage
-set_hitbox_value(atk, hitboxNum, HG_ANGLE, 270);
+set_hitbox_value(atk, hitboxNum, HG_ANGLE, 75); //270
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 3); //hitstun
 set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.2); 
@@ -79,7 +75,7 @@ set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 2); //for some reason this
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_burnapplied"));
-set_hitbox_value(atk, hitboxNum, HG_ANGLE_FLIPPER, 9);
+set_hitbox_value(atk, hitboxNum, HG_ANGLE_FLIPPER, 7); //9
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, -1); //it needs to be a different value for every different move in the file
 set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 2);
@@ -121,7 +117,7 @@ set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 6); //1 = low priority over other 
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 7);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 361);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 1.2);
+set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 1.05); //1.2
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 15); //hitstun
 set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 1.5); 
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_fireblow2);
@@ -188,3 +184,8 @@ set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_SPRITE, sprite_get("fx_debris"));
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_DESTROY_EFFECT, 193);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_GROUND_BEHAVIOR, 2);
+
+
+//munophone
+if (!get_match_setting(SET_PRACTICE)) exit;
+set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "Affected by Burning Fury's buff");

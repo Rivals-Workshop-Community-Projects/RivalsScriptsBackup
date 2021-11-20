@@ -90,3 +90,8 @@ set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 1); //hitbox duration in frames
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 0);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, -32);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 3);
+
+
+//munophone
+if (!get_match_setting(SET_PRACTICE)) exit;
+set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "10 MP");

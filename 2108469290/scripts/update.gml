@@ -1,7 +1,7 @@
 
 if get_gameplay_time() < 120 {
 	lockon = 0
-	move_cooldown[AT_NSPECIAL] = 100
+	move_cooldown[AT_NSPECIAL] = 5
 }
 
 
@@ -331,6 +331,7 @@ if state == PS_IDLE or state == PS_WALK or state == PS_IDLE_AIR{
 
 if hhalo > 0 {
 
+if walk_speed != 4 {
 walk_anim_speed = .2;
 dash_anim_speed = .4;
 	
@@ -338,20 +339,21 @@ walk_speed = 4;
 walk_accel = 0.4;
 walk_turn_time = 6;
 initial_dash_time = 10;
-initial_dash_speed = 8;
+initial_dash_speed = 7;
 dash_speed = 7
 
-leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state
+leave_ground_max = 5; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .33;
 		
 move_cooldown[AT_TAUNT_2] = 0
-
+}
 
 } else{
 
+if walk_speed != 3 {
 walk_anim_speed = .13;
 dash_anim_speed = .28;
 
@@ -359,14 +361,15 @@ walk_speed = 3;
 walk_accel = 0.4;
 walk_turn_time = 6;
 initial_dash_time = 10;
-initial_dash_speed = 6.8;
-dash_speed = 6.2
+initial_dash_speed = 6.5;
+dash_speed = 6
 
 leave_ground_max = 4.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .26;
+}
 
 }
 
@@ -374,6 +377,7 @@ if hhalo > 1 {
 	spawn_hit_fx( x + 24 - random_func(5, 50, true) - (20 * spr_dir) , y - 30- random_func(4, 80, true) , esp )
 	hhalo -= 1
 }
+
 
 if hhalo = 1 {
 	hhalo = 0

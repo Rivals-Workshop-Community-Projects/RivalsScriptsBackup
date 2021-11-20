@@ -1,5 +1,7 @@
 // phone - frontend
 
+if (!get_match_setting(SET_PRACTICE)) exit;
+
 if object_index == asset_get("cs_playerbg_obj"){
 	CORE_css_draw();
 	exit;
@@ -28,7 +30,7 @@ Set parameters that are used by the CSS drawing code.
 #define CORE_css_draw
 
 // The number of alt costumes your char has, up to 32.
-num_alts = 32;
+num_alts = 27;
 
 // Whether or not to display a name for each alt.
 use_alt_names = false;
@@ -79,7 +81,7 @@ phone.uses_shader = true;
 phone.extra_top_size = 0;
 
 // Set to true and the "Fast Graphics" feature will be enabled; see _readme.gml.
-phone.supports_fast_graphics = false;
+phone.supports_fast_graphics = true;
 
 // Set to true and the phone will NOT activate Fast Fraphics when FPS gets low.
 phone.dont_fast = false;
@@ -88,7 +90,7 @@ phone.dont_fast = false;
 // If you're porting the phone to an existing char and don't need any of these
 // features, you might as well turn on lightweight to save a tiny bit of
 // performance. (see _docs.gml for a full list of what this disables)
-phone.lightweight = false;
+phone.lightweight = true;
 
 // If you've created custom AG_ or HG_ indexes for your character already,
 // use these to change where the phone starts assigning custom AG_s and HG_s.
@@ -166,6 +168,11 @@ so that things like page breaks can work properly.
 */
 
 #define CORE_tips
+
+initTip("Mana Cost Cheat Sheet");
+initWords("Bar has a bunch of skills to choose from, but remembering how much mana each of them costs can be a pain
+Here's a special cheat sheet to know how much MP you need for every skill")
+initImage_ext(sprite_get("_exp6"), 0, fa_center, 2, 2, false, c_white, 1, true, noone, noone, noone, noone);
 
 initTip("Fast N-air");
 initWords("Bar's N-air is a regular Sex-Kick type move at a glance, but whenever Bar lands a hit with
@@ -279,60 +286,169 @@ in a Patch.
 
 #define CORE_patches
 
+/*
+initPatch("1.?", "??/??/2021");
+initHeader("General");
+initSection("nothing to see here.
+");
+*/
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//																														//
+//														1.5																//
+//																														//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+initPatch("1.5", "19/11/2021");
+initHeader("General");
+initSection("= Disabled Munophone on anywhere that isn't practice mode because it lags Bar hard
+= Added new fighter tip - Mana Cost Cheat Sheet
+= Added notes on the attack frame data on Munophone to tell which moves get affected by Burning Fury's buff, mana costs for skills, aswell as moves that have other special properties
+= No MP drain cheat now makes all MP costs 0
+= Using the Mechanic Alternator cheat or rune N in Bar dittos should now not cancel the mechanics out
+= Strongs, Searing Descent and Flashbang are now affected by the infinite MP from the rune K + L combination
+= Patch notes format now goes per move, rather than per section which hopfully should be an easier read for both users and the Munophone
+= Equipping rune O while using the anti-cheapie mode will give Bar infinite OD, allowing him to spam Lord's Punishment
+= Holy Burning outline should now work properly in Bar dittos
+- Holy burn DoT rate decreased (1% per 20 frames -> 1% per 30 frames | total: 6% -> 4%)
+");
+initHeader("Skills");
+initSection("= Added back the skill select invincibility, but it's now only 4 seconds
+= Added prompts to when the skill select is cancelled and complete
+= When restarting a match, Bar has the option to select his skills again
+= Other visual adjustments to Bar's skill select
+= Bar's AI now chooses skills when he is set to fight
+= Chasm Burster's position is swapped with Flashbang
++ Polaris added
+- Guard Aura removed
+");
+initHeader("Alts");
+initSection("= Fixed issue where the glowing color of Theïkós Bar's (including the alt) platform wasn't golden
+= Fixed some colors from not recoloring on alts (i most likely missed it, he has a lot of sprites)
+= Eye color is now no longer a part of bar's changeable pallete
+= Changed color order on alts (the dust color is now based off the hoodie's color)
+= Altered alts: Spark of Lightning, Scientific Prodigy, Chief Demon Hunter, REANIMATION, Lofty, Son of the Omega
+= Rearranged alt placements
++ Added alts: The Previous Guardian, Ultimate Lifeform, Ranked Gold
+- Removed alts: Emerald Guardian, Underdog, Half Cold - Half Hot, Banishing Shifter, Lazy Destroyer, Mesmerizing Phantom, Thunderous Howl, Amethyst Fist
+= Theïkós variants of Bar's fire based skills now make both his eyes glow yellow
+= 8-bit Theïkós Bar no longer has blend effects to the aura
+= 8-bit alt fire and light colors shading altered so they are more visible
+= Theía Evlogía alt now changes colors in the CSS too
+= Added the cyan line to Bar's CSS instead of the secoundary light from the fire
+= Altered the portraits for Early Access and Demake alts to suppot the new color change
+");
+initHeader("Jab");
+initSection("+ Jab is now dash cancelable if Bar hit anything with any of the attacks
+");
+initHeader("Dash Attack");
+initSection("+ Added attack
+* Bar can still D-tilt and U-tilt out of a dash, but he can't F-tilt or Jab
+");
+initHeader("D-tilt");
+initSection("= Hitbox angle adjusted (85 -> 75)
++ Ground friction on window 1 decreased (0.2 -> 0.1)
++ Ground friction on window 2 decreased (0.3 -> 0.2)
+");
+initHeader("U-strong");
+initSection("- Axe swing endlag increased (15 -> 21)
+- Spear projctile shooting is now delayed to match the animation (window 5, timer 5 -> window 5, timer 10) (on whiff)
+");
+initHeader("F-strong");
+initSection("- Knockback scaling decreased (1.2 -> 1.15)
+");
+initHeader("D-strong");
+initSection("= Fire spread effect plays at the right timing now
+= Fire spread sound effect now doesn't play in delay
+= Charge hitbox angle altered (270 -> 75)
+= Charge hitbox angle flipper altered (9 -> 7)
+- Knockback scaling decreased (1.2 -> 1.05)
+");
+initHeader("D-air");
+initSection("= Fixed coloring issue on the shirt
+");
+initHeader("Light Dagger");
+initSection("+ Added custom gravity to windows 3, 4, 7, 8, 11 and 12 (0.75)
+");
+initHeader("Burning Fury");
+initSection("- When Bar uses Burning Fury's dash in midair, gets parried and lands while the attack is still going will now put him in pratland
+- Bar now cannot pull enemies along if they aren't in hitstun already
+");
+initHeader("Photon Blast");
+initSection("= Charge times altered but the overal charge time stays the same (min: 30 -> 40 frames | mid: 30 frames | max: 30 -> 20)
+= Added hitsparks on Bar when he's charging to show him going up another tier of charge
++ Added soft armor to all charge levels (min: 4 | mid: 8 | max: 12)
++ Max charge damage increments altered (5+5+10 -> 7+7+10)
++ Base knockback now gets higher with longer charges (min: 7 | mid: 7 -> 8 | max 7 -> 9)
++ Knockback scaling now gets higher with longer charges (min: 0.9 -> 0.8 | mid: 0.9 -> 0.95 | max 0.9 -> 1.1)
+");
+initHeader("Accel Blitz");
+initSection("= Indicator updated for the 8-bit alts and the REANIMATION alt
+");
+initHeader("Chasm Burster");
+initSection("= Added screenshake to the buffed version
+= While airborne, holding down will allow Bar to pass through platforms
+- Projectile lifetime decreased for both buffed and non-buffed versions (18 -> 14)
+");
+initHeader("Power Smash");
+initSection("= While falling, holding down will allow Bar to pass through platforms
+= The burning ground no longer affects teammates
+");
+initHeader("Light Hookshot");
+initSection("= Added sound effect when the projectile gets destroyed by enemies
++ The spear projectile now ignores projectiles
+");
+initHeader("Searing Descent");
+initSection("= Fixed coloring issue on the shirt in one of the frames
+= Searing Descent is now a 2 parter move, similarly to Force Leap. Hold down the special button while rising to do the 2nd part of the move at a cost of 10 mp
+= Custom gravity and vspeed around the rise tweaked to fit the new change, hopefully not very noticeable (v-speed: -10 -> -9.75 | gravity: 2 -> 1.75)
+= While shooting down, holding down will allow Bar to pass through platforms
+= Sound effects are now all a part of a single effect
+= The skill now works like a mini command grab, similarly to Burning Fury
++ Drift multiplier added (0.01)
+- Bar now cannot pull enemies along if they aren't in hitstun already
+- Pratland time increased (6 -> 10)
+");
+initHeader("Flashbang");
+initSection("= Attack MP cost now depletes before the light blast (window 7's end -> window 6's end)
++ Mana cost for the grab removed, the skill's total cost is now 10 MP
++ While grabbed, opponents are trapped in hitpause
+- Extra hitpause on grab decreased (50 -> 10)
+- Bar now cannot grab enemies if they aren't in hitstun already
+");
+initHeader("Theïkós D-strong");
+initSection("+ The fireball projectile now passes through the platform Bar stands on
++ When the fireball's duration ends it will explode, but will not set up the burning ground
+- Fireball projectile is no longer transcendent (this feature was originally ment for Theïkós Bar only, which now it is)
+- Fireball projectile duration decreased (99999 -> 30) (was also ment for Theïkós Bar only and is kept that way)
+= Fixed hit particles to display the correct particles
+");
+initHeader("Theïkós U-strong");
+initSection("= Fixed attack effect graphic
+");
+initHeader("Lord's Punishment");
+initSection("= Fixed issue where turbo mode would mess with the skill, bypassing the timestop and not giving him the Divine Blessing (on the rune version)
+= Removed the extra hitspark that appeared on the freezing
+= The post-attack buff now also allows bar to burn double the time like his Theïkós state
+");
+initHeader("Theïkós State");
+initSection("= Theïkós Bar now has double the burn time (it was ment to be a thing long ago)
+= Fixed bug where Theïkós Bar's music will overlap
+= Theïkós variants of Bar's fire based skills now make both his eyes glow yellow
+= Bar's user events for Theïkós and it's effects now only activate when they are needed, hopefully will drop frames less
+= Theïkós Bar's particles won't appear if there's more than one Bar, regardless if he uses Theïkós or not
+= 8-bit Theïkós Bar no longer has blend effects to the aura
+= 8-bit alt fire and light colors shading altered so they are more visible
+");
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//																														//
+//														1.4																//
+//																														//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 initPatch("1.4", "25/10/2021");
-initHeader("Gameplay Balance Changes");
-initSection("= Skill select now works like the Mii Fighters - press a direction to select 1 of 3 skills per slot (thanks JPEG!)
-= Fastfall speed increased for real this time
-= Jab 1 hitstun multiplier removed
-= U-tilt hitstun multiplier removed
-= D-strong drag hitbox creation frame increased (0 -> 1)
-= Hitting with N-air will now put Bar in [window 4, window_timer 18] instead of [window 5, window_timer 0] and destroy the hitbox
-= N-air hitbox angle altered (50 -> 361)
-= U-air hitbox angle altered (96 -> 85)
-= D-air hitstun multiplier changed to hitpause scaling
-= Light Dagger is now B-reversable (good luck doing that though)
-= Burning Fury drag fixed (again)
-= Force Leap hitstun multiplier changed to hitpause scaling
-= Photon Blast hitstun multiplier removed
-= Chasm Burster punch attack hitstun multiplier removed
-= Power Smash will now only spawn the burning crater if Bar is not in hitpause
-= Power Smash sweetspot angle altered (270 -> 55)
-= Power Smash sourspot angle altered 90-> 80)
-= Power Smash sourspot angle flipper added (6)
-= Guard Aura is now unable to let Bar move, as he needs to hold down the button to continiously use it
-= Lord's Punishment hitstun multiplier removed
-= Theïkós F-strong hitstun multiplier removed
+initHeader("General");
+initSection("= Fastfall speed increased for real this time
 = Added restrictions* to the Bar's special turbo mode (thanks Kayeetle!)
 = Added anti-cheapie mode**, to use, press attack + special like Lord's Punishment, and Bar will transform to a beefier Theïkós state (enables itself automatically with rune L)
-= Bar can also gain mp from stage objects (if they allow it)
-= Searing Descent added
-= Flashbang added
-");
-initHeader("Buffs");
-initSection("+ D-strong drag hitbox base hitpause decreased (10 -> 7)
-+ D-strong drag hitbox hitpause scaling decreased (0.9 -> 0.7)
-+ D-strong drag hitbox is now untechable and unbounceable (HG_TECHABLE 1 - > 3)
-+ Burning Fury knockback scaling increased (ground: 0.6 -> 0.9 || air: 0.4 -> 0.7)
-+ Photon Blast hitpause scaling added (0.2)
-+ Power Smash sweetspot base knockback increased (8 -> 9)
-+ Power Smash sweetspot knockback scaling increased (0.8 -> 1.2)
-+ Power Smash sourspot base knockback increased (7 -> 8)
-+ Power Smash sourspot knockback scaling increased (0.7 -> 0.8)
-+ Theïkós F-strong hitpause scaling added (0.9)
-+ Theïkós Bar now physically rejects pratlanding and pratfalling
-");
-initHeader("Nerfs");
-initSection("- D-strong drag hitbox lifetime decreased (4 -> 3)
-- Photon Blast soft armor and super armor removed on charging
-- Photon Blast base hitpause decreased (15 -> 8)
-- Guard Aura now wastes twice as much mp when held (5 mp per sec -> 10 mp per sec)
-");
-initHeader("Visual Changes");
-initSection("= Added back skill select prompt for training mode
-= D-strong drag hitbox sfx changed (sfx_blow_heavy1 -> sfx_blow_medium2)
-= D-strong fire spread effect now plays earlier
-= Force Leap whoosh sfx now plays earlier
-= Slightly altered offset of Power Smash's shockwave effect
+= Bar can also gain MP from adventure mode enemies
 = Updated Burning Fury Buff tip on Munophone to include the 2 new skills and their interractions with Burning Fury
 = Theïkós alt now has it's own animation of Ember Fist (it's just Bar with a yellow eye)
 = Theïkós rune (Rune L) special intro now uses the new shockwave effect
@@ -340,6 +456,85 @@ initSection("= Added back skill select prompt for training mode
 = Default results portrait updated to match the rest of the portraits
 = Small preview fix
 = Super secret alt has it's own custom Theïkós state color pallete
++ Theïkós Bar now physically rejects pratlanding and pratfalling
+");
+initHeader("Skills");
+initSection("= Skill select now works like the Mii Fighters - press a direction to select 1 of 3 skills per slot (thanks JPEG!)
++ Searing Descent added
++ Flashbang added
+");
+initHeader("Jab");
+initSection("= Jab 1 hitstun multiplier removed
+");
+initHeader("U-tilt");
+initSection("= U-tilt hitstun multiplier removed
+");
+initHeader("D-strong");
+initSection("= D-strong drag hitbox sfx changed (sfx_blow_heavy1 -> sfx_blow_medium2)
+= D-strong fire spread effect now plays earlier
++ Drag hitbox base hitpause decreased (10 -> 7)
++ Drag hitbox hitpause scaling decreased (0.9 -> 0.7)
++ Drag hitbox is now untechable and unbounceable (HG_TECHABLE 1 - > 3)
+- D-strong drag hitbox creation frame delayed (0 -> 1)
+- D-strong drag hitbox lifetime decreased (4 -> 3)
+");
+initHeader("N-air");
+initSection("= Hitting with N-air will now put Bar in [window 4, window_timer 18] instead of [window 5, window_timer 0] and destroy the hitbox
+= Hitbox angle altered (50 -> 361)
+");
+initHeader("U-air");
+initSection("= Hitbox angle altered (96 -> 85)
+");
+initHeader("D-air");
+initSection("= Hitstun multiplier changed to hitpause scaling
+");
+initHeader("Light Dagger");
+initSection("= Light Dagger is now B-reversable (good luck doing that though)
+");
+initHeader("Burning Fury");
+initSection("= Command grab drag fixed (again)
++ Burning Fury knockback scaling increased (ground: 0.6 -> 0.9 || air: 0.4 -> 0.7)
+");
+initHeader("Force Leap");
+initSection("= Hitstun multiplier changed to hitpause scaling
+= Force Leap whoosh sfx now plays earlier
+");
+initHeader("Photon Blast");
+initSection("= Hitstun multiplier removed
++ Photon Blast hitpause scaling added (0.2)
+- Photon Blast soft armor and super armor removed on charging
+- Photon Blast base hitpause decreased (15 -> 8)
+");
+initHeader("Chasm Burster");
+initSection("= Punch attack hitstun multiplier removed
+");
+initHeader("Power Smash");
+initSection("= Power Smash will now only spawn the burning crater if Bar is not in hitpause
+= Slightly altered offset of Power Smash's shockwave effect
+= Sweetspot angle altered (270 -> 55)
+= Sourspot angle altered (90-> 80)
+= Sourspot angle flipper added (6)
++ Sweetspot base knockback increased (8 -> 9)
++ Sweetspot knockback scaling increased (0.8 -> 1.2)
++ Sourspot base knockback increased (7 -> 8)
++ Sourspot knockback scaling increased (0.7 -> 0.8)
+");
+initHeader("Guard Aura");
+initSection("= Guard Aura is now unable to let Bar move, as he needs to hold down the button to continiously use it
+- Guard Aura now wastes twice as much mp when held (5 mp per sec -> 10 mp per sec)
+");
+initHeader("Searing Descent");
+initSection("+ Skill added
+");
+initHeader("Flashbang");
+initSection("+ Skill added
+");
+initHeader("Lord's Punishment");
+initSection("= Hitstun multiplier removed
+");
+initHeader("Theïkós F-strong");
+initSection("= Hitstun multiplier removed
++ Final hit hitpause scaling added (0.9)
 ");
 initHeader("Workshop Compatibilities");
 initSection("+ RC car for the RC mode
@@ -367,245 +562,231 @@ initSection("* Special restrictions for Bar's built-in Turbo include:
 - doubles everyone else's knockback adjustment
 ");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//																														//
+//														1.3																//
+//																														//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 initPatch("1.3", "13/10/2021");
-initHeader("Gameplay Balance Changes");
-initSection("= Bar can now select skills when playtesting by inputting up + taunt as you would in training mode (he actually could earlier but only on training and you couldn't see it)
-= Holy Burning is now able to burn Lightstunned foes untill the stun duration is over
+initHeader("General");
+initSection("= Holy Burning is now able to burn Lightstunned foes untill the stun duration is over
 = Fixed bug where Burning Fury will drag foes if the first attack hit and it's instantly used
 = Rune B now lets bar glide for 150 frames instead of disabling gliding
 = Rune N will now keep Bar's Holy Burning activated too
 = Added synergy between Holy Burning and Lightstunning - Lightstunned foes that also burn will now keep burning untill the stun duration is over
 = Rune O will now only make Bar lose half of his OD instead of reset it
-");
-initHeader("Buffs");
-initSection("+ Fastfall speed increased (12 -> 15)
-+ U-tilt landing lag decreased (12 -> 4)
-+ U-air landing lag decreased (8 -> 4)
-+ F-air landing lag decreased (9 -> 5)
-+ D-air landing lag decreased (12 -> 6)
-+ D-air sweetspot hitpause scaling increased (0.7 -> 0.6)
-+ B-air landing lag decreased (10 -> 5)
-+ Force Leap buffed explosion knockback scaling increased (0.25 -> 0.7)
-+ Light Hookshot normal version is now transcendent
-");
-initHeader("Nerfs");
-initSection("- F-tilt sweetspot and sourspot are now techable (no tech/bounce -> tech)
-- F-tilt sweetspot knockback scaling decreased (0.7 -> 0.6)
-- F-air sweetspot knockback scaling decreased (0.7 -> 0.6)
-- F-air sweetspot base hitpause decreased (15 -> 12)
-- D-air sweetspot knockback scaling decreased (0.9 -> 0.7)
-- D-air sweetspot base hitpause decreased (25 -> 12)
-- B-air sweetspot base hitpause decreased (13 -> 11)
-- Burning Fury's air final blow base knockback decreased (10 -> 6)
-- Burning Fury's air final blow knockback scaling decreased (0.6 -> 0.4)
-- Force Leap explosion base knockback decreased (5 -> 4)
-- Force Leap explosion knockback scaling decreased (0.7 -> 0.8)
-- Force Leap explosion base hitpause decreased (12 -> 8)
-- Force Leap explosion hitstun multiplier decreased (1.2 -> 0.7)
-- Force Leap buffed explosion base knockback decreased (8 -> 5)
-- Force Leap buffed explosion hitstun multiplier decreased (1.5 -> 0.9)
-- Photon Blast hitstun multiplier decreased (1.5 -> 0.8)
-");
-initHeader("Visual Changes");
-initSection("= Gliding stamina is now green to not confuse it's color with rune O's OD gauge
-= Fixed effect color on D-strong's charge when using the golden Theïkós effects
-= Theïkós F-strong will now only spawn the dusts if Bar isn't in hitpause
+= Gliding stamina is now green to not confuse it's color with rune O's OD gauge
 = Victory themes updated to fit Bar's stage music
 = Win portrait, CSS art and results art updated
 = BG color changed
 = Mod thumbnail updated
 = Some of Bar's colors are slightly altered to fit the new art
++ Fastfall speed increased (12 -> 15)
+");
+initHeader("Skills");
+initSection("= Bar can now select skills when playtesting by inputting up + taunt as you would in training mode (he actually could earlier but only on training and you couldn't see it)
+");
+initHeader("F-tilt");
+initSection("- Sweetspot and sourspot are now techable (no tech/bounce -> tech)
+- F-tilt sweetspot knockback scaling decreased (0.7 -> 0.6)
+");
+initHeader("U-tilt");
+initSection("+ Landing lag decreased (12 -> 4)
+");
+initHeader("D-strong");
+initSection("= Fixed effect color on D-strong's charge when using the golden Theïkós effects
+");
+initHeader("U-air");
+initSection("+ Landing lag decreased (8 -> 4)
+");
+initHeader("F-air");
+initSection("+ Landing lag decreased (9 -> 5)
+- Sweetspot knockback scaling decreased (0.7 -> 0.6)
+- Sweetspot base hitpause decreased (15 -> 12)
+");
+initHeader("D-air");
+initSection("+ Landing lag decreased (12 -> 6)
++ Sweetspot hitpause scaling increased (0.7 -> 0.6)
+- Sweetspot knockback scaling decreased (0.9 -> 0.7)
+- Sweetspot base hitpause decreased (25 -> 12)
+");
+initHeader("B-air");
+initSection("+ B-air landing lag decreased (10 -> 5)
+- Sweetspot base hitpause decreased (13 -> 11)
+");
+initHeader("Burning Fury");
+initSection("- Air final blow base knockback decreased (10 -> 6)
+- Air final blow knockback scaling decreased (0.6 -> 0.4)
+");
+initHeader("Force Leap");
+initSection("+ Buffed explosion knockback scaling increased (0.25 -> 0.7)
+- Explosion base knockback decreased (5 -> 4)
+- Explosion knockback scaling decreased (0.7 -> 0.8)
+- Explosion base hitpause decreased (12 -> 8)
+- Explosion hitstun multiplier decreased (1.2 -> 0.7)
+- Buffed explosion base knockback decreased (8 -> 5)
+- Buffed explosion hitstun multiplier decreased (1.5 -> 0.9)
+");
+initHeader("Photon Blast");
+initSection("- Hitstun multiplier decreased (1.5 -> 0.8)
+");
+initHeader("Light Hookshot");
+initSection("+ Normal projectile version is now transcendent
+");
+initHeader("Theïkós F-strong");
+initSection("= Theïkós F-strong will now only spawn the dusts if Bar isn't in hitpause
 ");
 initHeader("Workshop Compatibilities");
 initSection("+ Munophone has been updated to Munophone Touch
 + Palutena's guidance
 ");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//																														//
+//														1.2																//
+//																														//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 initPatch("1.2", "3/10/2021");
-initHeader("Gameplay Balance Changes");
+initHeader("General");
 initSection("= Attacks that give Bar under 1 mp (or odp for rune O) now give 1 unit
 = Rune A (Airdash) no longer stops Bar's momentum in midair
 = Theïkós Bar now works in the CSS playtest
 = Theïkós Bar's turbo mode now allows Bar to fastfall (i wanted to use iasa_script() but it gave me some issues)
-= Theïkós F-strong angle flipper removed
-= Theïkós F-strong now doesn't end the burning fury buff prematurely, and will end right after the last hit
-= Both types of F-strongs are now reverseable in midair just as they are on the ground
-= Theïkós D-strong ground fire kb scaling removed
-= Theïkós D-strong ground fire base knockback decreased (3 -> 2.5)
 = Rune J functionality changed entirely (Gauntlet melee attack damage increase -> MP gain from anyone affected by Bar's mechanics)
 = Fixed bug that made Bar glitch out when using runes L and K together
 = Fixed potential problems with rune K's mana cap
 = Fixed issue where Bar would get the lightstun timer after getting parried from F-strong, regardless if rune C is used or not
 = Disabled interraction between runes L and O, now they work indpendently of each other instead of doing the transformation
+= Removed annoying message when Theïkós Bar shakes the screen with his strong charging
 = Added new phone cheat: Mechanic Alternator (Allows you to decide if you want Bar's Holy Burning, Lightstunning, both or none to be active)
-");
-initHeader("Buffs");
-initSection("+ Photon Blast now has a SDI multiplier (0 -> 0.7)
-+ Lord's Punishment final fire launch angle flipper 7 added
+= Munophone now displays the name of Lord's Punishment properly on the frame data tab (Instead of ???)
 + Theïkós Bar knockback adjust decreased (0.8 -> 0.5)
-+ Theïkós U-strong multihit angle altered (70 -> 80)
-+ Theïkós U-strong multihit has a SDI multiplier (0 -> 0.01)
-+ Theïkós U-strong multihit angle flipper added (0 -> 7)
-+ Theïkós F-strong while rapid punching has a SDI multiplier (0 -> 0.01)
-+ Theïkós F-strong base knockback increased (6 -> 8)
-+ Theïkós F-strong kb scaling increased (0.9 -> 1.1)
-+ Theïkós F-strong final hit damage on the normal form increased (3 -> 5)
-+ Theïkós D-strong ground fire has a SDI multiplier (0 -> 0.01)
-");
-initHeader("Nerfs");
-initSection("- F-strong base knockback decreased (7.5 -> 7)
-- D-strong base knockback decreased (8 -> 7)
-- Burning Fury dash attack damage decreased (4 -> 2)
-- Burning Fury final blast damage decreased (10 -> 8)
-- Burning Fury stun attack damage decreased (7 -> 5)
-- Light Hookshot extended parry stun added
 - Rune A (Airdash) thrust decreased (11.25 -> 9)
 - Rune A (Airdash) + Theïkós thrust decreased (24 -> 12.8)
-- Theïkós F-strong's final hit is now techable
-- Theïkós F-strong hitstun multiplier decreased (1.5 -> 1.2)
 ");
-initHeader("Visual Changes");
-initSection("= Ember Fist sprites altered, his eye didn't glow like with all his other fire based moves
-= Removed annoying message when Theïkós Bar shakes the screen with his strong charging
-= Munophone now displays the name of Lord's Punishment properly on the frame data tab (Instead of ???)
+initHeader("F-strong");
+initSection("= The move is now reverseable in midair just as it is on the ground
+- Base knockback decreased (7.5 -> 7)
 ");
-initHeader("Workshop Compatibilities");
-initSection("+ N/A
+initHeader("D-strong");
+initSection("- Base knockback decreased (8 -> 7)
+");
+initHeader("Burning Fury");
+initSection("- Dash attack damage decreased (4 -> 2)
+- Final blast damage decreased (10 -> 8)
+- Stun attack damage decreased (7 -> 5)
+");
+initHeader("Photon Blast");
+initSection("+ SDI multiplier added (0 -> 0.7)
+");
+initHeader("Ember Fist");
+initSection("= Sprites altered, his eye didn't glow like with all his other fire based moves
+");
+initHeader("Light Hookshot");
+initSection("- extended parry stun added
+");
+initHeader("Lord's Punishment");
+initSection("+ Final fire launch angle flipper added (7)
+");
+initHeader("Theïkós U-strong");
+initSection("+ Theïkós U-strong multihit angle altered (70 -> 80)
++ Theïkós U-strong multihit has a SDI multiplier (0 -> 0.01)
++ Theïkós U-strong multihit angle flipper added (0 -> 7)
+");
+initHeader("Theïkós F-strong");
+initSection("= Angle flipper removed
+= Theïkós F-strong now doesn't end the burning fury buff prematurely, and will end right after the last hit
+= The move is now reverseable in midair just as it is on the ground
++ Rapid punching has a SDI multiplier (0 -> 0.01)
++ Base knockback increased (6 -> 8)
++ Knockback scaling increased (0.9 -> 1.1)
++ Final hit damage on the normal form increased (3 -> 5)
+- Final hit is now techable
+- Hitstun multiplier decreased (1.5 -> 1.2)
+");
+initHeader("Theïkós U-strong");
+initSection("= Theïkós D-strong ground fire kb scaling removed
+= Theïkós D-strong ground fire base knockback decreased (3 -> 2.5)
++ Theïkós D-strong ground fire has a SDI multiplier (0 -> 0.01)
 ");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//																														//
+//														1.1																//
+//																														//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 initPatch("1.1", "21/9/2021");
-initHeader("Gameplay Balance Changes");
-initSection("= N-air sourspot added
-= Burning Fury's dash attack now depends on Bar's HSP and VSP values and applies them on enemies, making it hit consistently
-= Power Smash now no longer deals damage when stood on, and only applies holy fire
-= Power Smash's burning crater can no longer be parried
-= Light Hookshot skill cost split reversed (charge: 15 -> 5 | release: 5 -> 15)
-= The timestop hitbox of Lord's Punishment (overdrive/final smash) now appears 1 frame later (creation frame 0 -> 1)
-= Fixed Theía Evlogía not reverting Bar back to normal properly
-= Added new phone cheat: no MP draining (will prevent Burning Fury and Guard Aura from draining MP)
-");
-initHeader("Buffs");
-initSection("+ F-strong base knockback increased (6.5 -> 7.5)
-+ F-strong knockback scaling increased (0.9 -> 1.2)
-+ U-strong axe knockback scaling increased (0.7 -> 1.1)
-+ D-tilt ground friction decreased on windows 1 and 2 (window 1: 0.4 -> 0.2 | window 2: 0.4 -> 0.3)
-+ Burning Fury dash attack hitpause decreased (14 -> 8)
-+ Burning Fury dash attack hitpause scaling (0.8 -> 0.5)
-");
-initHeader("Nerfs");
-initSection("- N-air lifetime decreased (24 -> 2) (The 22 frames that are removed are in the new sourspot)
-- U-strong spear knockback scaling decreased (0.9 -> 0.7)
-- D-strong base knockback decreased for the fire blast (9 -> 8)
-- Power Smash sweetspot damage decreased (10 -> 8)
-- Power Smash sourspot damage decreased (8 -> 5)
-- Buffed Power Smash sweetspot damage decreased (13 -> 10)
-- Buffed Power Smash sourspot damage decreased (10 -> 8)
-- Ember Fist MP cost increased (10 -> 20)
-- Ember Fist MP window 4 time increased (14 -> 20)
-");
-initHeader("Visual Changes");
-initSection("= N-air sweetspot is now colored yellow so you can tell when the hitboxes swap
+initHeader("General");
+initSection("= Added new phone cheat: no MP draining (will prevent Burning Fury and Guard Aura from draining MP)
 = Broken Prism alt now has dimmer fire
 = Broken Prism alt now brings out the color trail in more scenarios
 = Added V1 release date to phone
 = Corrected attack names for Lord's Punishment and Theía Evlogía in the Stat Debug Mode on the phone
 ");
+initHeader("D-tilt");
+initSection("+ Ground friction decreased on windows 1 and 2 (window 1: 0.4 -> 0.2 | window 2: 0.4 -> 0.3)
+");
+initHeader("U-strong");
+initSection("+ Axe knockback scaling increased (0.7 -> 1.1)
++ Knockback scaling increased (0.9 -> 1.2)
+- Spear knockback scaling decreased (0.9 -> 0.7)
+");
+initHeader("F-strong");
+initSection("+ Base knockback increased (6.5 -> 7.5)
++ Knockback scaling increased (0.9 -> 1.2)
+");
+initHeader("D-strong");
+initSection("- Fire blast base knockback decreased(9 -> 8)
+");
+initHeader("N-air");
+initSection("= Sourspot added
+= Sweetspot is now colored yellow so you can tell when the hitboxes swap
+- Sweetspot lifetime decreased (24 -> 2) (The 22 frames that are removed are in the new sourspot)
+");
+initHeader("Burning Fury");
+initSection("= Dash attack now depends on Bar's HSP and VSP values and applies them on enemies, making it hit consistently
++ Burning Fury dash attack hitpause decreased (14 -> 8)
++ Burning Fury dash attack hitpause scaling (0.8 -> 0.5)
+");
+initHeader("Power Smash");
+initSection("= Power Smash now no longer deals damage when stood on, and only applies holy fire
+= Power Smash's burning crater can no longer be parried
+- Sweetspot damage decreased (10 -> 8)
+- Sourspot damage decreased (8 -> 5)
+- Buffed Sweetspot damage decreased (13 -> 10)
+- Buffed Sourspot damage decreased (10 -> 8)
+");
+initHeader("Ember Fist");
+initSection("- MP cost increased (10 -> 20)
+- Window 4 time increased (14 -> 20)
+");
+initHeader("Light Hookshot");
+initSection("= Skill cost split reversed (charge: 15 -> 5 | release: 5 -> 15)
+");
+initHeader("Lord's Punishment");
+initSection("= Timestop hitbox delayed (creation frame 0 -> 1)
+");
+initHeader("Theía Evlogía");
+initSection("= Fixed Theía Evlogía not reverting Bar back to normal properly
+");
 initHeader("Workshop Compatibilities");
 initSection("+ Rivals of Fighter super move
 ");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//																														//
+//														1.0																//
+//																														//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 initPatch("1.0", "14/9/2021");
-initHeader("Gameplay Balance Changes");
-initSection("= Mana Debug Mode is now a munophone cheat, and has more options than on and off
-= When selecting skills, Bar is now go-throughable, and hurtbox is removed too
-= In practice mode, the skill select will no longer have a timer in the begining of the match
-= Disabled being able to re-open the skill select menu in training mode while it's already open
+initHeader("General");
+initSection("= Mana Debug Mode is now a Munophone cheat, and has more options than on and off
 = Added stamina when gliding - Bar loses stamina as long as he glides, and restores 50 stamina when walljumping or wall-teching
 = Bar's AI is now slightly smarter, he will not waste mana if he doesn't have a bit over the mana cost of the skill
-= Fixed bug that made bar stay in his U-tilt animation after landing a hit and fastfalling, he now goes into landing lag instead
-= U-tilt is now no longer hitfallable
-= Altered how Burning Fury's buff is disabled through F-strong and D-strong - Instead of disabling on hit, they only disable when Bar has hit someone already and is no longer in the attack state
 = The method charging a strong consumes mana altered, every 6 strong_charge frames Bar will consume 1 MP (Attacks affected: D-strong, Theïkós D-strong, Theïkós U-strong)
-= Fixed issue where you could see Bar's light axe under the burning version on U-strong
-= Fixed problem that made burning U-strong's spear not aimable like the normal version
-= Added hit lockout to D-strong's flat fire blast (0 -> 20) (To prevent the shockwave and rune I rocks to deal extra damage and overwrite the knockback)
-= Fixed Light Dagger's (air version) lifetime
-= Light Dagger (normal ver) knockback angle adjusted (50 -> 65)
-= Force Leap is now able to be controlled using up and down aswell as left and right. pressing up/back will send Bar up, and pressing down/forward will send Bar forward.
-= Fixed bug that made Bar's endpoint position not reset when getting hit while using Accel Blitz
-= Fixed bug that turns Bar invisible after using Accel Blitz and dying from the pratfall
-= Fixed bug that makes Bar's Accel Blitz not reset it's relative position on death
-= Accel Blitz's behaviour when colliding with the stage is altered, it will now push Bar out of the ground for easier recoveries
-= Fixed some jank when using Accel Blitz with either Theïkós or turbo mode
-= Chasm Burster's mana cost is now split to two parts: when Bar activates the attack he loses only 5 MP, but when landing he loses 25 MP
-= Chasm Burster's variants are now a single move instead of 2 seperate ones
-= Chasm Burster now won't spawn the bursts in midair
-= Added angle flipper 3 to Guard Aura
-= Guard Aura angle adjusted (361 -> 50)
 = Theïkós Bar's effects have been seperated from the Divine Punishment alt, and it is now purely cosmetic
-= Theïkós D-strong will now allow only one burning ground at a time
-= Power Smash added
-= Light Hookshot added
-");
-initHeader("Buffs");
-initSection("+ Jab 1 range increased (width 60 -> 68 | height 28 -> 32 | X 24 -> 28)
-+ Jab 2 range increased (width 72 -> 80 | height 28 -> 36 | X 26 -> 30)
-+ Jab 2 knockback increased (4.5 -> 6)
-+ Jab 3 range increased (width 88 -> 96 | height 42 -> 50)
-+ Bar now moves further out on Jab 3 (hspeed 5 -> 7)
-+ Jab 3 startlag decreased (8 -> 6)
-+ D-tilt ground friction decreased (0.5 -> 0.4)
-+ D-tilt range increased (width 66 -> 80 | height 36 -> 40 | X 26 -> 30)
-+ F-strong range increase (width 60 -> 80)
-+ Reduced friction before and while charing F-strong (0.5 -> 0.2)
-+ U-strong axe attack endlag decreased (21 -> 15)
-+ U-strong light spear lifetime increased (20 -> 30)
-+ U-strong light spear will now aim itself towards the target's position on hit
-+ D-strong knockback increased (base 8 -> 9 | scaling 1.1 -> 1.2)
-+ N-air will go to it's endlag instantly if you land a hit with it
-+ N-air range increased (width 60 -> 76 | height 32 -> 38 | X 24 -> 18)
-+ N-air startlag decreased (6 -> 4)
-+ Light dagger endlag decreased (18 -> 15)
-+ Force leap's aim trajectory altered
-+ Photon Blast now won't send Bar into pratfall if he hits someone with it
-+ Buffed up Chasm Burster will now shoot 6 fire bursts instead of 4
-+ You can now jump out of Chasm Burster while falling
-+ Heavily buffed Theïkós wavedash (wave_land_adj: 1.35 -> 2.25 | wave_friction: 0.4 -> 0.2)
-");
-initHeader("Nerfs");
-initSection("- F-tilt hitboxes lifetime decreased (sweetspot: 6 -> 2 | sourspot: 8 -> 4)
-- Removed all hitstun properties from Light Dagger
-- Light Dagger startup windows time increased (windows 1/5/9: 4 -> 6 | windows 2/6/10: 8 -> 10) (also applies for the air version)
-- pratland duration after using force leap increased (6 -> 10)
-- Decreased travel distance per frame on Accel Blitz (10 -> 8)
-- Buffed Chasm Burster damage nerfed (initial hit 9 -> 7 | fire bursts 8 -> 6)
-- Guard Aura active time decreased (8 secs -> 3 secs) (this does not affect the mana depletion speed)
-- Guard Aura base knockback increased (5 -> 12)
-- Guard Aura knockback scaling removed
-- Guard Aura hitstun multiplier decreased (2 -> 0.4)
-- Guard Aura extra hitpause remove
-");
-initHeader("Visual Changes");
-initSection("- Changed skill select invincibility to attack_invince
-= Bar now flashes when you have 5 seconds left when you select skills
-= The training mode messages now only disappear only after you do the respective inputs instead of a pre-set timer
-= Updated color of his skill icons
-= Burning Fury, Force Leap, Power Smash and Ember Fist icons altered
-= Changed the input button prompts on the skill select hud
 = Updated respawn platform graphic
 = When falling Bar is now more animated
 = Added particles when Bar charges any chargeable holy fire/light attack
 = Added sound effects when Bar charges any chargeable holy fire/light attack
-= Added the fire effect to charged D-strong
 = Updated holy burning effect
 = Fixed bug that kept the foe's outline color the burning outline color when parrying an attack that's ment to burn them
-= Added a recolored rock effect to match Bar's pallete instead of using the default large rock hitspark
-= Light Dagger's effect is now a part of the animation itself
-= Changed sound when Bar uses Burning Light Dagger
-= Added particles to when Bar uses Burning Fury, as some states overwrite the outline coloring
-= Added a new motion effect when using Force Leap
-= Made the dust rotate along where Bar is going with Force Leap
-= Fixed issue that prevented Bar's pratfall animation from playing after using Accel Blitz
 = Renamed Guardian of the Elements alt (the default) to Elemental Guardian
 = Fixed colors on some victory portraits
 = Broken Prism alt's color changing speed is now slower
@@ -616,6 +797,119 @@ initSection("- Changed skill select invincibility to attack_invince
 = Added phone animation
 = Added 8-bit Theïkós portraits
 = Added 8-bit Theïkós music theme
++ Heavily buffed Theïkós wavedash (wave_land_adj: 1.35 -> 2.25 | wave_friction: 0.4 -> 0.2)
+");
+initHeader("Skills");
+initSection("= When selecting skills, Bar is now go-throughable, and hurtbox is removed too
+= In practice mode, the skill select will no longer have a timer in the begining of the match
+= Disabled being able to re-open the skill select menu in training mode while it's already open
+= Changed skill select invincibility to attack_invince
+= Bar now flashes when you have 5 seconds left when you select skills
+= The training mode messages now only disappear only after you do the respective inputs instead of a pre-set timer
+= Updated color of his skill icons
+= Burning Fury, Force Leap, Power Smash and Ember Fist icons altered
+= Changed the input button prompts on the skill select hud
+");
+initHeader("Jab");
+initSection("+ Jab 1 range increased (width 60 -> 68 | height 28 -> 32 | X 24 -> 28)
++ Jab 2 range increased (width 72 -> 80 | height 28 -> 36 | X 26 -> 30)
++ Jab 2 knockback increased (4.5 -> 6)
++ Jab 3 range increased (width 88 -> 96 | height 42 -> 50)
++ Bar now moves further out on Jab 3 (hspeed 5 -> 7)
++ Jab 3 startlag decreased (8 -> 6)
+");
+initHeader("U-tilt");
+initSection("= Fixed bug that made bar stay in his U-tilt animation after landing a hit and fastfalling, he now goes into landing lag instead
+- U-tilt is now no longer hitfallable
+");
+initHeader("F-tilt");
+initSection("- Hitboxes lifetime decreased (sweetspot: 6 -> 2 | sourspot: 8 -> 4)
+");
+initHeader("D-tilt");
+initSection("+ Ground friction decreased (0.5 -> 0.4)
++ Range increased (width 66 -> 80 | height 36 -> 40 | X 26 -> 30)
+");
+initHeader("U-strong");
+initSection("= Fixed issue where you could see Bar's light axe under the burning version of the axe
+= Fixed problem that made the burning spear not aimable like the normal version
++ Axe attack endlag decreased (21 -> 15)
++ Light spear lifetime increased (20 -> 30)
++ Light spear will now aim itself towards the first opponent that was hit by the axe attack
+");
+initHeader("F-strong");
+initSection("= Burning Fury's buff now gets disabled only after hitting with the move and Bar is no longer in an attack state
++ Range increase (width 60 -> 80)
++ Reduced friction before and while charging (0.5 -> 0.2)
+");
+initHeader("D-strong");
+initSection("= Burning Fury's buff now gets disabled only after hitting with the move and Bar is no longer in an attack state
+= Fire blast Hit lockout added(0 -> 20) (To prevent the shockwave and rune I rocks to deal extra damage and overwrite the knockback)
+= Added the fire effect when charging
+= Added a recolored rock effect to match Bar's pallete instead of using the default large rock hitspark
++ D-strong knockback increased (base 8 -> 9 | scaling 1.1 -> 1.2)
+");
+initHeader("N-air");
+initSection("+ N-air will go to it's endlag instantly if you land a hit with it
++ Range increased (width 60 -> 76 | height 32 -> 38 | X 24 -> 18)
++ Startlag decreased (6 -> 4)
+");
+initHeader("Light Dagger");
+initSection("= Fixed air version lifetime
+= Normal projectile knockback angle adjusted (50 -> 65)
+= The effect is now a part of the animation itself
+= Changed sound when Bar uses Burning Light Dagger
++ Endlag decreased (18 -> 15)
+- Removed all hitstun properties from Light Dagger
+- Startlag windows time increased (windows 1/5/9: 4 -> 6 | windows 2/6/10: 8 -> 10) (also applies for the air version)
+");
+initHeader("Burning Fury");
+initSection("= Added particles to when the buff is active, as some states overwrite the outline coloring
+");
+initHeader("Force Leap");
+initSection("= Added a new motion effect
+= Made the dust rotate along where Bar is going
+= Force Leap can now be aimed using up and down aswell as left and right. pressing up/back will send Bar up, and pressing down/forward will send Bar forward.
++ Aim trajectory altered
+- pratland duration increased (6 -> 10)
+");
+initHeader("Photon Blast");
+initSection("+ Photon Blast now won't send Bar into pratfall if he hits someone with it
+");
+initHeader("Accel Blitz");
+initSection("= Fixed bug that made Bar's endpoint position not reset when getting hit while using the move
+= Fixed bug that turns Bar invisible after using dying from the skill's pratfall
+= Fixed bug that makes Bar's Accel Blitz not reset it's relative position on death
+= Accel Blitz's behaviour when colliding with the stage is altered, it will now push Bar out of the ground for easier recoveries
+= Fixed some jank when using Accel Blitz with either Theïkós or turbo mode
+= Fixed issue that prevented Bar's pratfall animation from playing
+- Decreased travel distance per frame (10 -> 8)
+");
+initHeader("Chasm Burster");
+initSection("= MP cost is now split to two parts: when Bar activates the attack he loses only 5 MP, but when landing he loses 25 MP
+= Chasm Burster's ground and air variants are now a single move
+= Chasm Burster now won't spawn the bursts in midair
++ Buffed up Chasm Burster will now shoot 6 fire bursts instead of 4
++ You can now jump out of Chasm Burster while falling
+- Buffed damage nerfed (initial hit 9 -> 7 | fire bursts 8 -> 6)
+");
+initHeader("Power Smash");
+initSection("+ Skill added
+");
+initHeader("Guard Aura");
+initSection("= Added angle flipper (3)
+= Angle adjusted (361 -> 50)
+- Active time decreased (8 secs -> 3 secs) (this does not affect the mana depletion speed)
+- Base knockback increased (5 -> 12)
+- Knockback scaling removed
+- Hitstun multiplier decreased (2 -> 0.4)
+- Extra hitpause removed
+");
+initHeader("Light Hookshot");
+initSection("+ Skill added
+");
+initHeader("Theïkós D-strong");
+initSection("
+= Theïkós D-strong will now allow only one burning ground at a time
 ");
 initHeader("Workshop Compatibilities");
 initSection("+ Neptendo jingle
@@ -625,82 +919,125 @@ initSection("+ Neptendo jingle
 + Final Smash
 ");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//																														//
+//													DELTA (beta 3)														//
+//																														//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 initPatch("DELTA", "5/6/2021");
-initHeader("Gameplay Balance Changes");
-initSection("= Fixed bug that messed with the hurtbox if you do an attack or dodge while using the skill menu.
-= Whenever the skill menu is brought up on training mode, it will reset the cursor position to Light Dagger's position
-= The skill menu can loop around itself
-= At the start of a match, after Bar closes the skill menu he will have invincibility for 90 frames (1.5 secs)
-= Fixed bug that kept Bar in place if he finishes selecting skills before the match allows characters to move
-= Jabs hitpause fixed
-= All jabs angle flippers removed
-= F-air hitbox arrangement altered (has 2 sourspots above and below following the animation, sweetspot in the middle)
-= B-air's sourspot now sends forward instead of backwards
-= F-strong back hitbox disabled
-= Photon Blast angle flipper altred (8 -> 3)
-= Photon Blast now resets it's charge to prevent turbo mode/Theïkós Bar to store it up
-= Fixed problem with Chasm Burster's bursts staying in place if used as up special
-= Accel Blitz added
-= Ember Fist added
-= Theïkós F-strong added
-= Theïkós U-strong added
-= Theïkós D-strong added
-");
-initHeader("Buffs");
-initSection("+ Dash speed increased
-+ All jabs hitstuns reduced
-+ Jab 3 overall speed increased (startup: 6 -> 4 | attack: 8 -> 6 | endlag: 10 -> 8)
-+ Jab 3 knockback angle altered (10 -> 40)
-+ Jab 4 knockback angle adjusted (10 -> 30)
-+ Jab 4 overall speed increased (startup: 12 -> 8 | attack: 10 -> 8 | endlag: 12 -> 8)
-+ F-strong hitbox size increased (30x50 -> 60x40)
-+ U-tilt sourspot base hitpause increased (3 -> 6)
-+ D-tilt hitpause scaling added (0.2)
-+ N-air base hitpause increased (4 -> 5)
-+ U-air base hitpause increased and hitpause scaling added (base hitpause: 4 -> 6 | hitpause scaling: 0.2)
-+ D-air knockback scaling increased (0.7 -> 0.9)
-+ D-air's startup is slightly faster so it can chain with accel blitz (15 -> 12)
-+ U-strong's 2nd projectile (normal version) knockback and knockback scaling increase (base kb: 5 -> 7 | kb scaling: 0.7 -> 0.9)
-+ U-strong's 2nd projectile (burning version) kb scaling increase (0.8 -> 1.1)
-+ U-strong's 2nd projectile size increase (8x40 -> 16x60)
-+ U-strong's 2nd projectile is now aimable
-+ Light Dagger knockback increased (3 -> 5)
-+ Light Dagger extra hitpause added (4)
-+ Chasm Burster air friction decreased (0.3 -> 0.1)
-+ Added a soft spike hitbox when Bar starts to fall with chasm burster active
-+ Taunt hitbox size increased (x:16 y:16 -> x:24 y:32)
-+ Taunt lifetime increased (1 -> 2)
-+ Theïkós Bar's Force Leap doesn't go into pratfall 
-");
-initHeader("Nerfs");
-initSection("- Jab now locks people inside it less
-- F-air sourspot lifetime decreased (6 -> 4)
-- F-air sweetspot base knockback decreased (7 -> 5)
-- D-air sweetspot base knockback decreased (9 -> 6)
-- F-strong is no longer turnable
-- Uncharged Photon Blast startup increased (14 -> 25) (excluding Theïkós Bar)
-- Chasm Burster projectile damage decreased (normal: 6 -> 4 | burning fury buffed: 11 -> 8)
-- Added parry stun to Chasm Buster
-- Guard Aura is active 8 seconds, and will not do the counter attack automatically (consumes 50 MP total)
-- taunt damage decreased (12 -> 10)
-- Theïkós Bar initial dash speed and dash speed nerfed to be more controllable
-");
-initHeader("Visual Changes");
-initSection("= A frame in U-strong's animation was altered to portray the hitboxes better
-= Added colored hitboxes (to moves that aren't projectiles)
-= Fixed visual bug where Guard Aura on Theïkós Bar will not show the hitspark when releasing the move
+initHeader("General");
+initSection("= Added colored hitboxes (to moves that aren't projectiles)
 = Added custom hit particles to moves that spawn hitboxes outside of the attack itself
 = Bar's gauntlet glow take the color of his light, rather than his light blue clouthes on the portraits
 = Renamed NES alt to Demake
 = Early Acess and Demake alts now have a chiptune version of Bar's victory theme
 = Fiery Racing Spirit alt colors altered
 = Renamed Star Guardian alt to Stellar Traveller
-= Added 16 new alts
+= Added 16 new alts (he has 32 now)
 = Holy Fire on the Divine Punishment alt portrait altered to match the in-game pallete
 = Camera shake increased on Theïkós Bar dash start
 = Camera shake while landing with Theïkós Bar only occurs on fastfalling
 = Camera shake added when charging strongs with Theïkós Bar
 = Added outline to Theïkós Bar's ancient text
++ Dash speed increased
+- Theïkós Bar initial dash speed and dash speed nerfed to be more controllable
+");
+initHeader("Skills/New Moves");
+initSection("= Fixed bug that messed with the hurtbox if you do an attack or dodge while using the skill menu.
+= Whenever the skill menu is brought up on training mode, it will reset the cursor position to Light Dagger's position
+= The skill menu can loop around itself
+= At the start of a match, after Bar closes the skill menu he will have invincibility for 90 frames (1.5 secs)
+= Fixed bug that kept Bar in place if he finishes selecting skills before the match allows characters to move
+");
+initHeader("Jab");
+initSection("= Hitpause fixed for all jabs
+= All jabs angle flippers removed
++ All jabs hitstuns reduced
++ Jab 3 overall speed increased (startup: 6 -> 4 | attack: 8 -> 6 | endlag: 10 -> 8)
++ Jab 3 knockback angle altered (10 -> 40)
++ Jab 4 knockback angle adjusted (10 -> 30)
++ Jab 4 overall speed increased (startup: 12 -> 8 | attack: 10 -> 8 | endlag: 12 -> 8)
+- Jab now locks people inside it less
+");
+initHeader("U-tilt");
+initSection("+ Sourspot base hitpause increased (3 -> 6)
+");
+initHeader("D-tilt");
+initSection("+ D-tilt hitpause scaling added (0.2)
+");
+initHeader("U-strong");
+initSection("= A frame in the animation was altered to portray the hitboxes better
+");
+initHeader("F-strong");
+initSection("+ Normal projectile knockback increased (5 -> 7)
++ Normal projectile knockback scaling increased (0.7 -> 0.9)
++ Buffed projectileknockback scaling increased (0.8 -> 1.1)
++ Projectile size increase (8x40 -> 16x60)
++ Projectile is now aimable
+");
+initHeader("F-strong");
+initSection("= Back hitbox removed
++ Hitbox size increased (30x50 -> 60x40)
+- F-strong is no longer turnable
+");
+initHeader("N-air");
+initSection("+ base hitpause increased (4 -> 5)
+");
+initHeader("U-air");
+initSection("+ base hitpause increased (4 -> 6)
++ hitpause scaling added (0.2)
+");
+initHeader("F-air");
+initSection("= Hitbox arrangement altered (has 2 sourspots above and below following the animation, sweetspot in the middle)
+- Sourspot lifetime decreased (6 -> 4)
+- Sweetspot base knockback decreased (7 -> 5)
+");
+initHeader("D-air");
+initSection("+ Knockback scaling increased (0.7 -> 0.9)
++ Startup is slightly faster so it can chain with Accel Blitz (15 -> 12)
+- Sweetspot base knockback decreased (9 -> 6)
+");
+initHeader("Taunt");
+initSection("+ Hitbox size increased (x:16 y:16 -> x:24 y:32)
++ Lifetime increased (1 -> 2)
+- taunt damage decreased (12 -> 10)
+");
+initHeader("Light Dagger");
+initSection("+ Normal projectile knockback increased (3 -> 5)
++ Normal projectile extra hitpause added (4)
+");
+initHeader("Force Leap");
+initSection("+ Theïkós Bar doesn't go into pratfall
+");
+initHeader("Photon Blast");
+initSection("= Angle flipper altered (8 -> 3)
+= Photon Blast now resets it's charge to prevent turbo mode/Theïkós Bar to store it up
+- Uncharged Photon Blast startup increased (14 -> 25) (excluding Theïkós Bar)
+");
+initHeader("Accel Blitz");
+initSection("+ Skill added
+");
+initHeader("Chasm Burster");
+initSection("= Fixed problem with Chasm Burster's bursts staying in place if used as up special
++ Air friction decreased (0.3 -> 0.1)
++ Added a soft spike hitbox when Bar starts to fall with Chasm Burster active
+- Bursts damage decreased (normal: 6 -> 4 | burning fury buffed: 11 -> 8)
+- Added parry stun to bursts
+");
+initHeader("Guard Aura");
+initSection("= Fixed visual bug where Guard Aura on Theïkós Bar will not show the hitspark when releasing the move
+- Guard Aura is active 8 seconds, and will not do the counter attack automatically (consumes 50 MP total)
+");
+initHeader("Ember Fist");
+initSection("+ Skill added
+");
+initHeader("Theïkós U-strong");
+initSection("+ Attack added
+");
+initHeader("Theïkós F-strong");
+initSection("+ Attack added
+");
+initHeader("Theïkós D-strong");
+initSection("+ Attack added
 ");
 initHeader("Workshop Compatibilities");
 initSection("+ Soulbound conflict flavor text
@@ -709,72 +1046,104 @@ initSection("+ Soulbound conflict flavor text
 + Assist Buddy compatibility
 ");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//																														//
+//													GAMMA (beta 2)														//
+//																														//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 initPatch("GAMMA", "23/4/2021");
-initHeader("Gameplay Balance Changes");
+initHeader("General");
 initSection("= Double jumps now work like his first jump
 = Gliding will now only make Bar change direction if he goes at max speed
 = Mana Debug Mode's natural MP regen speed doubled
-= F-tilt hitboxes are bigger and deal more identical values
-= Fixed Burning Fury's rapid mana deplete if people are hit durring the initial activation
-= Force Leap stalls in midair before the leap
-= Photon Blast connects properly
-= B-air added
-= F-strong added
-= U-strong added
-= D-strong added
-= Skill Select added
-= Chasm Burster added
-= Guard Aura added
-");
-initHeader("Buffs");
-initSection("+ Re/spawning MP value buffed (0 -> 100)
-+ A successful Parrying gives more mana (10 -> 25)
+= Bar's offsets now overlap with the stage as they should
+= Bar's idle is now slightly slimmer to fit the rest of his sprites
+= Added mini mana gauge that shows up whenever Bar gains mana, de/activate Mana Debug Mode, and when MP is insufficient
+= No MP now says Low MP and the arrow under his nametag flashes
+= When Bar has insufficient mana a sound will play
+= Holy Burned foes will now gt different colored outlines depending on Bar's alt
+= Replaced the Mysterious Friend with the Fiery Racing Spirit alt
+= Added unique alt names for seasonal alts
++ Skill Select added
++ Re/spawning MP value buffed (0 -> 100)
++ A successful Parry gives more mana (10 -> 25)
 + All moves damage increase (too many to point out here tbh)
-+ Jab 1 hitpause increase
+- MP gain while attacking decreased to match the new damage output
+- Theïkós Bar is actually killable
+- Theïkós Bar dash speed decreased
+");
+initHeader("Jab");
+initSection("+ Jab 1 hitpause increase
 + Jab 1 is faster
 + Jab 1 friction decreased
 + Jab 2 is faster
 + Jab 2 hitpause decreased
 + Jab 3 is faster
 + Jab 3 hitpause decreased
-+ F-tilt has slightly less friction on the first window
-+ D-tilt is faster
-+ D-tilt friction decreased
-+ N-air stays active for longer
+");
+initHeader("F-tilt");
+initSection("= Hitboxes are bigger and deal more identical values
++ Ground friction decreased on window 1
+");
+initHeader("D-tilt");
+initSection("+ D-tilt is faster
++ Ground friction decreased
+");
+initHeader("U-strong");
+initSection("+ Attack added
+");
+initHeader("F-strong");
+initSection("+ Attack added
+");
+initHeader("D-strong");
+initSection("+ Attack added
+");
+initHeader("N-air");
+initSection("+ N-air stays active for longer
 + N-air is faster
 + N-air deals more knockback
-+ F-air hitboxes size increase
-+ F-air has an extra sweetspot hitbox
-+ F-air hitpause decreased
-+ U-air is faster
-+ D-air hitboxes size increase
-+ D-air sourspot deals more knockback
-+ Light Dagger knockback and hitstun increased (Burning Light Dagger too)
-+ Burning Fury activation attack hitpause decreased
-+ Burning Fury activation and dash attack startup speed increase
-+ Burning Fury dash attack is untechable
-+ Burning Fury stun attack hitbox size incrase
-+ Burning Fury final blast on the grounded version launches slightly upwards
-+ Photon Blast final hit knockback increase 
 ");
-initHeader("Nerfs");
-initSection("- MP gain while attacking decreased to match the new damage output
-- Theïkós Bar is actually killable
-- Theïkós Bar dash speed decreased
+initHeader("U-air");
+initSection("+ U-air is faster
 ");
-initHeader("Visual Changes");
-initSection("= Bar's offsets now overlap with the stage as they should
-= Bar's idle is now slightly slimmer to fit the rest of his sprites
-= Light Dagger has hit sound effects now
+initHeader("F-air");
+initSection("+ Hitboxes size increase
++ Another sweetspot hitbox added
++ Hitpause decreased
+");
+initHeader("D-air");
+initSection("+ Hitboxes size increase
++ Sourspot deals more knockback
+");
+initHeader("B-air");
+initSection("+ Attack added
+");
+initHeader("Light Dagger");
+initSection("= Hit sound effects added
++ Knockback and hitstun increased (Burning Light Dagger too)
+");
+initHeader("Burning Fury");
+initSection("= Fixed Burning Fury's rapid mana deplete if people are hit durring the initial activation
 = Burning Fury's activation blast is now in front of Bar
-= Force Leap has a new leap sound
-= Added mini mana gauge that shows up whenever Bar gains mana, de/activate Mana Debug Mode, and when MP is insufficient
-= No MP now says Low MP and the arrow under his nametag flashes
-= When Bar has insufficient mana a sound will play
-= Added sound effect for when Bar runs out of mana with Burning Fury
-= Holy Burned foes will now gt different colored outlines depending on Bar's alt
-= Replaced the Mysterious Friend with the Fiery Racing Spirit alt
-= Added unique alt names for seasonal alts
+= Added sound effect for when Bar runs out of MP with Burning Fury
++ Activation attack hitpause decreased
++ Activation and dash attack startup speed increase
++ Dash attack is untechable
++ Stun attack hitbox size incrase
++ Final blast on the grounded version launches slightly upwards
+");
+initHeader("Force Leap");
+initSection("= Force Leap stalls in midair before the leap
+= New leaping sound
+");
+initHeader("Photon Blast");
+initSection("= The hits now connect properly
++ Final hit knockback increase
+");
+initHeader("Chasm Burster");
+initSection("+ Skill added
+");
+initHeader("Guard Aura");
+initSection("+ Skill added
 ");
 initHeader("Workshop Compatibilities");
 initSection("+ Steve death messages
@@ -782,6 +1151,10 @@ initSection("+ Steve death messages
 + Last Resort painting
 + TCO drawings
 ");
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//																														//
+//														BETA															//
+//																														//
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 initPatch("BETA", "19/3/2021");
 initHeader("General");
@@ -890,7 +1263,7 @@ Note: mps = Mana Per Sec.");
 
 CHEAT_STATS	= initCheat("Stat Debug", [0, 1], ["Off", "On"], "Allows you to see various background stats.");
 
-CHEAT_MPDRAIN = initCheat("No Mana Drain", [0, 1], ["Off", "On"], "Disables the MP drain from skills like Burning Fury and Guard Aura");
+CHEAT_MPDRAIN = initCheat("No Mana Drain", [0, 1], ["Off", "On"], "All mana costs now don't cost anything, aswell as disabling any sort of active mana burning.");
 
 CHEAT_TECHTOGGLE = initCheat("Mechanic Alternator", [1, 2, 3, 0], ["Burning only", "Lightstun only", "Burning + Lightstun", "None"], "Allows you to freely toggle Bar's mechanics without using the runes cuz I hate going to the character select menu.
 (Will not work with Rune N.)");

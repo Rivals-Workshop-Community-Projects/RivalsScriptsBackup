@@ -1,7 +1,16 @@
 /// intro 
 
+
 if canceltime > 1 {
 	
+	djumps = 0
+
+	
+	if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND  {
+		canceltime = 100
+	}
+	
+	if canceltime > 50 {
 	if state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND {
 		
 	if !free {
@@ -14,8 +23,23 @@ if canceltime > 1 {
 	
 	canceltime = 0
 	
+	} else {
+		
+		if free {
+			if vsp > 0 {
+	     	vsp /= 1.6
+			}
+		hsp /= 1.1
+		}
+		
+	}
 	}
 	
+	
+}
+
+if state == PS_PRATFALL or state == PS_PRATLAND {
+	canceltime = 0
 }
 
 
@@ -41,46 +65,11 @@ if visible && free && !attacking && can_attack && taunt_pressed {
 
 if shock >= 1 && walk_speed == 3{
 	
-walk_speed = 4;
-walk_accel = 1;
-walk_turn_time = 4;
-initial_dash_time = 10;
-initial_dash_speed = 8;
-dash_speed = 7.5;
-dash_turn_time = 10;
-dash_turn_accel = .5;
-dash_stop_time = 10;
-dash_stop_percent = .0; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .4;
-moonwalk_accel = 1.8;
 
-leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state
-jump_change = 3; 
-wave_land_adj = 1;
 }
 
 if shock < 1 && walk_speed != 3 {
-	
-walk_speed = 3;
-walk_accel = 1;
-walk_turn_time = 4;
-initial_dash_time = 10;
-initial_dash_speed = 6.5;
-dash_speed = 6;
-dash_turn_time = 10;
-dash_turn_accel = .5;
-dash_stop_time = 10;
-dash_stop_percent = .0; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .4;
-moonwalk_accel = 1.8;
-	
-leave_ground_max = 6; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 3.5; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 3.5; //the maximum hsp you can accelerate to when in a normal aerial state
-jump_change = 3; 
-wave_land_adj = 0.8;
+
 
 }
 

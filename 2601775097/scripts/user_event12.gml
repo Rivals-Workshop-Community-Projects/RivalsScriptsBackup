@@ -1,4 +1,4 @@
-//user_event10 - Dategirl compatibility
+//user_event12 - Dategirl compatibility
 
 //faces dictionary:
 //0 - normal/happy

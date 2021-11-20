@@ -62,7 +62,7 @@ set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 1); //1 = low priority over other 
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 14);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 40);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 1.2);
+set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 1.15); //1.2
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 20); //hitstun
 set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 304);
@@ -71,3 +71,8 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(atk, hitboxNum, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 2); //it needs to be a different value for every different move in the file
+
+
+//munophone
+if (!get_match_setting(SET_PRACTICE)) exit;
+set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "Affected by Burning Fury's buff");

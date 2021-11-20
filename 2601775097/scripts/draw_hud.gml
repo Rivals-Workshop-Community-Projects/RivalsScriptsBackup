@@ -3,73 +3,87 @@
 // skill select menu
 if !("menu_open" in self) exit;
 
-if (menu_open)
+if (menu_open && (!is_AI || is_AI && AI_vs))
 {
     //The Menu(tm)
     if(menu_timer <= 120){
         draw_sprite_ext(hud_menu, 0, temp_x - 8, temp_y - 128, 2, 2, 0, c_white, 1);
+
+        if (menu_armor_time >= 0 && active_col >= 0)
+        {
+            var timer_x_offset = temp_x + 36;
+            draw_debug_text(timer_x_offset, temp_y - 140, "Invince Time = " + string(menu_armor_time/60));
+            if (menu_armor_time % 60 == 0) draw_debug_text(timer_x_offset + 118, temp_y - 140, ".00"); //yeah. i'm drawing it seperately.
+        }
+
         var menuy = -124;
         var i;
         var k = 0;
         for(var menux = 38; menux <= 178; menux += 38){
             menuy = -130;
-            switch (menux){
+            switch (menux)
+            {
                 case 38:
                     i = 0;
                     break;
-            
                 case 76:
                     i = 1;
                     break;
-            
                 case 114:
                     i = 2;
                     break;
-            
                 case 152:
                     i = 3;
                     break;
             }
-            for(var j = 0; j < 3; j ++){
-                if(specs_chosen[i, j] == true){
+            for (var j = 0; j < 3; j ++)
+            {
+                if (specs_chosen[i, j] == true)
+                {
                     draw_sprite_ext(sprite_get("skillicons"), i + (j*4), temp_x + menux, temp_y + 46 + menuy, 2, 2, 0, c_white, 1);
-                }else{
+                }
+                else
+                {
                     draw_sprite_ext(sprite_get("skillicons_disabled"), i + (j*4), temp_x + menux, temp_y + 46 + menuy, 2, 2, 0, c_white, 1);
                 }
                 menuy += 32;
             }
         }
 
+        //indicator arrows
         if (arrow_anim_up) draw_sprite_ext(sprite_get("hud_menu_arrow"), arrow_frame, temp_x, temp_y - 52, 2, 2, 90, c_white, 1);
         if (arrow_anim_side) draw_sprite_ext(sprite_get("hud_menu_arrow"), arrow_frame, temp_x + 2, temp_y - 52, 2, 2, 0, c_white, 1);
         if (arrow_anim_down) draw_sprite_ext(sprite_get("hud_menu_arrow"), arrow_frame, temp_x + 34, temp_y - 18, 2, 2, 270, c_white, 1);
 
-        if(active_col >= 0 && active_col < 4){
+        //cursor placement
+        if(active_col >= 0 && active_col < 4)
+        {
             draw_sprite_ext(sprite_get("skillselect_cursor"), (cursor_timer/3), temp_x + (38 * (active_col + 1)), temp_y - 84, 2, 2, 0, c_white, 1);
         }
 
+        //text
         switch (active_col)
         {
+            case -1:
+                draw_debug_text(temp_x + 36, temp_y - 100, "Skill Select Cancelled");
+                break;
             case 0:
-                draw_debug_text(temp_x + 32, temp_y - 100, "Selecting: " + "N-SPECIAL");
+                draw_debug_text(temp_x + 36, temp_y - 100, "Selecting: " + "N-SPECIAL");
                 break;
             case 1:
-                draw_debug_text(temp_x + 32, temp_y - 100, "Selecting: " + "F-SPECIAL");
+                draw_debug_text(temp_x + 36, temp_y - 100, "Selecting: " + "F-SPECIAL");
                 break;
             case 2:
-                draw_debug_text(temp_x + 32, temp_y - 100, "Selecting: " + "U-SPECIAL");
+                draw_debug_text(temp_x + 36, temp_y - 100, "Selecting: " + "U-SPECIAL");
                 break;
             case 3:
-                draw_debug_text(temp_x + 32, temp_y - 100, "Selecting: " + "D-SPECIAL");
+                draw_debug_text(temp_x + 36, temp_y - 100, "Selecting: " + "D-SPECIAL");
+                break;
+            case 4:
+                draw_debug_text(temp_x + 42, temp_y - 100, "Selection Complete");
                 break;
         }
     }
-    //Menu Closing
-    /*if(close_timer > 0){
-        shader_start();
-        draw_sprite(hud_menu, (floor(close_timer / 2) + 5), temp_x - 12, temp_y - 144);
-        shader_end();
-    }*/
 }
 else if (!menu_open && "kart_inside" not in self)
 {
@@ -137,10 +151,10 @@ else if (!menu_open && "kart_inside" not in self)
                 else if (mp_current >= lightdagger_cost) draw_sprite_ext(sprite_get("skillicons"), 0, nspecial, temp_y - 40, 2, 2, 0, c_white, 1);
                 break;
             
-            //chasm burster
+            //flashbang
             case 1:
-                if (mp_current < chasmburster_total_cost) draw_sprite_ext(sprite_get("skillicons_disabled"), 4, nspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                else if (mp_current >= chasmburster_total_cost) draw_sprite_ext(sprite_get("skillicons"), 4, nspecial, temp_y - 40, 2, 2, 0, c_white, 1);
+                if (mp_current < flashbang_total_cost) draw_sprite_ext(sprite_get("skillicons_disabled"), 4, nspecial, temp_y - 40, 2, 2, 0, c_white, 1);
+                else if (mp_current >= flashbang_total_cost) draw_sprite_ext(sprite_get("skillicons"), 4, nspecial, temp_y - 40, 2, 2, 0, c_white, 1);
                 break;
             
             //ember fist
@@ -196,8 +210,8 @@ else if (!menu_open && "kart_inside" not in self)
             
             //searing descent
             case 2:
-                if (mp_current < searingdescent_cost) draw_sprite_ext(sprite_get("skillicons_disabled"), 10, uspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                else if (mp_current >= searingdescent_cost) draw_sprite_ext(sprite_get("skillicons"), 10, uspecial, temp_y - 40, 2, 2, 0, c_white, 1);
+                if (mp_current < searingdescent_activate_cost) draw_sprite_ext(sprite_get("skillicons_disabled"), 10, uspecial, temp_y - 40, 2, 2, 0, c_white, 1);
+                else if (mp_current >= searingdescent_activate_cost) draw_sprite_ext(sprite_get("skillicons"), 10, uspecial, temp_y - 40, 2, 2, 0, c_white, 1);
                 break;
             
         }
@@ -211,16 +225,20 @@ else if (!menu_open && "kart_inside" not in self)
                 else if (mp_current >= photonblast_cost) draw_sprite_ext(sprite_get("skillicons"), 3, dspecial, temp_y - 40, 2, 2, 0, c_white, 1);
                 break;
             
-            //guard aura
+            //polaris
             case 1:
                 if (mp_current < buff_total_cost) draw_sprite_ext(sprite_get("skillicons_disabled"), 7, dspecial, temp_y - 40, 2, 2, 0, c_white, 1);
                 else if (mp_current >= buff_total_cost) draw_sprite_ext(sprite_get("skillicons"), 7, dspecial, temp_y - 40, 2, 2, 0, c_white, 1);
+                if (polaris_active)
+                {
+                    draw_sprite_ext(sprite_get("skillicons"), 7, dspecial, temp_y - 40, 2, 2, 0, c_white, 1);
+                }
                 break;
             
-            //flashbang
+            //chasm burster
             case 2:
-                if (mp_current < flashbang_total_cost) draw_sprite_ext(sprite_get("skillicons_disabled"), 11, dspecial, temp_y - 40, 2, 2, 0, c_white, 1);
-                else if (mp_current >= flashbang_total_cost) draw_sprite_ext(sprite_get("skillicons"), 11, dspecial, temp_y - 40, 2, 2, 0, c_white, 1);
+                if (mp_current < chasmburster_total_cost) draw_sprite_ext(sprite_get("skillicons_disabled"), 11, dspecial, temp_y - 40, 2, 2, 0, c_white, 1);
+                else if (mp_current >= chasmburster_total_cost) draw_sprite_ext(sprite_get("skillicons"), 11, dspecial, temp_y - 40, 2, 2, 0, c_white, 1);
                 break;
             
         }

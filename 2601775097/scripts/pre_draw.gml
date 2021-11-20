@@ -28,7 +28,7 @@ if (accelblitz_active)
 if (lightstun) draw_sprite_ext(fx_lightstunned, fx_lightstunned_frame, x, y - (char_height / 2 + 6), 1, 1, fx_lightstunned_rot, c_white, fx_lightstunned_alpha);
 
 //helel skin motion blur
-if (get_player_color(player) == 30)
+if (helel_alt)
 {
 	if (state == PS_DOUBLE_JUMP && vsp < 0 || state == PS_DASH_START || fast_falling || state == PS_WAVELAND || state == PS_ROLL_BACKWARD
 	|| state == PS_ROLL_FORWARD || state == PS_AIR_DODGE || attack == AT_SKILL2 && (window == 4 || window == 5)
@@ -48,6 +48,36 @@ if (get_player_color(player) == 30)
 }
 shader_end();
 
-gpu_set_blendmode(bm_add);
-if (theikos_active || godpower) draw_sprite_ext(sprite_get("theikos_aura"), aura_frame, x, y-28, 1, 1, hsp*4, aura_color, aura_alpha); //theikos aura
-gpu_set_blendmode(bm_normal);
+
+//"guard" aura outline cuz it doesn't have armor
+//credit to some random dude on reddit and lukaru
+if (polaris_active)
+{
+	var col_light = 6;
+	var aura_offset = 2;
+
+	var light_red = get_color_profile_slot_r(alt_cur, col_light);
+	var light_green = get_color_profile_slot_g(alt_cur, col_light);
+	var light_blue = get_color_profile_slot_g(alt_cur, col_light);
+	var color = make_colour_rgb(light_red, light_green, light_blue);
+
+	gpu_set_fog(1, color, 0, 1);
+	//set X's and set Y's
+	for (var i_x = -aura_offset; i_x <= aura_offset; i_x += aura_offset) for (var i_y = -aura_offset; i_y <= aura_offset; i_y += aura_offset)
+	{  
+		//don't draw in the center cuz bar is there
+		if (i_y != 0 && i_x != 0) draw_sprite_ext(sprite_index, image_index, x + i_x, y - i_y, 1*spr_dir, 1, spr_angle, c_white, homing_outline_alpha);
+	}
+	gpu_set_fog(0, c_white, 0, 0);
+}
+
+
+//theikos aura
+if (theikos_active || godpower) 
+{
+	gpu_set_blendmode(bm_add);
+	if (!is_8bit) draw_sprite_ext(sprite_get("theikos_aura"), aura_frame, x, y-28, 1, 1, hsp*4, aura_color, aura_alpha);
+	gpu_set_blendmode(bm_normal);
+
+	if (is_8bit) draw_sprite_ext(sprite_get("theikos_aura"), aura_frame, x, y-28, 1, 1, hsp*4, aura_color, aura_alpha); 
+}

@@ -3,6 +3,9 @@
 //normals
 switch (attack)
 {
+    case AT_JAB:
+        if (has_hit && !hitpause) can_dash = true;
+        break;
     case AT_UTILT:
         can_fast_fall = false;
         break;
@@ -75,7 +78,7 @@ switch (attack)
         }
     
         //if bar has enough mana and presses special, throw the spear
-        if (window == 5 && window_timer >= 5 && special_down && mp_current >= strong_cost)
+        if (window == 5 && image_index >= 11 && special_down && mp_current >= strong_cost)
         {
             set_attack(AT_USTRONG) window = 6;
         }
@@ -148,31 +151,30 @@ switch (attack)
         //don't throw spear if special isn't pressed or he doesn't have enough mana
         if (window == 5 && (!special_down || mp_current < strong_cost)) 
         {
-            if (has_hit) { //hitting = 15 frames || whiff = 23 frames
-                if (window_timer == get_window_value(AT_USTRONG, 5, AG_WINDOW_LENGTH)) {
-                    window = 9;
-                    window_timer = 0;
-                }
-            }
-            else {
-                if (window_timer == 23) {
-                    window = 9;
-                    window_timer = 0;
-                }
+            if (window_timer == window_end)
+            {
+                window = 9;
+                window_timer = 0;
             }
         }
-
+        
         if (window == 7 && window_timer == 3) burningfury_active = false;
         break;
     
     case AT_DSTRONG:
         if (window == 2) //charge
         {
-            if (strong_charge % 6 == 0 && strong_charge != 0) mp_current --;
-            
+            //active mana drain while charging
+            if (strong_charge % 6 == 0 && strong_charge != 0)
+            {
+                if (phone_cheats[CHEAT_MPDRAIN] == 1 || has_rune("K") && theikos_active) mp_current -= 0;
+                else mp_current --;
+            }
+
+            //cannot gain mana while charing
             if (strong_charge >= 0 && strong_charge <= 60) mpGainable = false;
 
-            if (window_timer == 5 || strong_charge % 10)
+            if (window_timer == 5 || strong_charge % hitbox_cooldown_max)
             {
                 hitbox_cooldown --;
 
@@ -183,7 +185,7 @@ switch (attack)
                     if (user_event_1_active) dstrong_firecharge.fx_particles = 6;
 
                     attack_end(AT_DSTRONG);
-                    hitbox_cooldown = 10;
+                    hitbox_cooldown = hitbox_cooldown_max;
                 }
             }
 
@@ -210,11 +212,7 @@ switch (attack)
             }
         }
 
-        if ((window == 3 || window == 6) && window_timer < 1 && !hitpause)
-        {
-            var flameblast = spawn_hit_fx(x, y, fx_dstrong_fireblast);
-            flameblast.depth = -6;
-        }
+        //effect work is in update.gml
 
         if (window == 5 && ((has_hit && window_timer == 14) || (!has_hit && window_timer == 21)) ) window = 7;
 
@@ -253,7 +251,7 @@ switch (attack)
                     //16 = offset
 
                     //pre-set trajectory
-                    if (theikos_active && !is_8bit || get_player_color(player) == 31 || godpower) rock[i].sprite_index = sprite_get("theikos_fx_debris");
+                    if (user_event_1_active) rock[i].sprite_index = sprite_get("theikos_fx_debris");
                     else rock[i].sprite_index = sprite_get("fx_debris");
 
                     rock[i].hsp = (i-1.5)*2*spr_dir;
@@ -437,7 +435,11 @@ switch (attack)
         if (attack == AT_SKILL1_AIR && !free)
         {
             if (window <= 7) attack = AT_SKILL1;
-            else if (window > 7) set_state(PS_LANDING_LAG);
+            else if (window > 7)
+            {
+                if (was_parried) set_state(PS_PRATLAND);
+                else set_state(PS_LANDING_LAG);
+            }
         }
         break;
 
@@ -549,15 +551,23 @@ switch (attack)
     
         if (special_down) //charge
         {
-            if (window == 3)
+            switch (window)
             {
-                photon_cycle = 1;
-                blast_power = 1;
-            }
-            if (window == 4)
-            {
-                photon_cycle = 2;
-                blast_power = 2;
+                case 2: //level 1
+                    if (!theikos_active) soft_armor = 4;
+                    break;
+                case 3: //level 2
+                    if (!theikos_active) soft_armor = 8;
+                    photon_cycle = 1;
+                    blast_power = 1;
+                    if (window_timer == 1 && !hitpause) spawn_hit_fx(x, y-40, fx_lightblow1);
+                    break;
+                case 4: //level 3
+                    if (!theikos_active) soft_armor = 12;
+                    photon_cycle = 2;
+                    blast_power = 2;
+                    if (window_timer == 1 && !hitpause) spawn_hit_fx(x, y-40, fx_lightblow2);
+                    break;
             }
         }
         else if (!special_down) //release
@@ -567,7 +577,7 @@ switch (attack)
                 window = 5;
                 window_timer = 0;
             }
-            if (((window == 2 && window_timer >= charge_time/2) || window == 3 || window == 4) && window_timer >= 2) //they all have the same length
+            if (((window == 2 && window_timer >= max_charge_time/2) || window == 3 || window == 4) && window_timer >= 2) //they all have the same length
             {
                 window = 5;
                 window_timer = 0;
@@ -593,37 +603,39 @@ switch (attack)
         }
 
         //attack itself
-        if (blast_power == 1)
+        if (blast_power > 0) //if charge is over 1
         {
+            set_hitbox_value(AT_SKILL3, 1, HG_BASE_KNOCKBACK, 2);
+            set_hitbox_value(AT_SKILL3, 1, HG_KNOCKBACK_SCALING, 0);
             set_hitbox_value(AT_SKILL3, 1, HG_DAMAGE, 7);
-            set_hitbox_value(AT_SKILL3, 1, HG_BASE_KNOCKBACK, 2);
-            set_hitbox_value(AT_SKILL3, 1, HG_KNOCKBACK_SCALING, 0);
             set_hitbox_value(AT_SKILL3, 1, HG_EXTRA_HITPAUSE, 10);
         }
-        if (blast_power == 2)
-        {
-            set_hitbox_value(AT_SKILL3, 1, HG_DAMAGE, 5);
-            set_hitbox_value(AT_SKILL3, 1, HG_BASE_KNOCKBACK, 2);
-            set_hitbox_value(AT_SKILL3, 1, HG_KNOCKBACK_SCALING, 0);
-            set_hitbox_value(AT_SKILL3, 1, HG_EXTRA_HITPAUSE, 10);
-        }
-        if (blast_power == 0 || photon_cycle == 0)
+        else //if charge is min charge
         {
             reset_hitbox_value(AT_SKILL3, 1, HG_DAMAGE);
+            reset_hitbox_value(AT_SKILL3, 1, HG_EXTRA_HITPAUSE);
             reset_hitbox_value(AT_SKILL3, 1, HG_BASE_KNOCKBACK);
             reset_hitbox_value(AT_SKILL3, 1, HG_KNOCKBACK_SCALING);
-            reset_hitbox_value(AT_SKILL3, 1, HG_EXTRA_HITPAUSE);
         }
 
-        //give bar softarmor / superarmor if he's not in theikos
-        /*
-        if (!theikos_active)
+        if (photon_cycle == 0)
         {
-            if (blast_power == 1) soft_armor = 5;
-            else if (blast_power == 2) soft_armor = 10;
-            else soft_armor = 0;
+            switch (blast_power)
+            {
+                case 2:
+                    set_hitbox_value(AT_SKILL3, 1, HG_BASE_KNOCKBACK, 9);
+                    set_hitbox_value(AT_SKILL3, 1, HG_KNOCKBACK_SCALING, 1.1);
+                    break;
+                case 1:
+                    set_hitbox_value(AT_SKILL3, 1, HG_BASE_KNOCKBACK, 8);
+                    set_hitbox_value(AT_SKILL3, 1, HG_KNOCKBACK_SCALING, 0.95);
+                    break;
+                case 0:
+                    reset_hitbox_value(AT_SKILL3, 1, HG_BASE_KNOCKBACK); //6
+                    reset_hitbox_value(AT_SKILL3, 1, HG_KNOCKBACK_SCALING); //0.8
+                    break;
+            }
         }
-        */
         break;
     
     case AT_NSPECIAL_2: // [4] ACCEL BLITZ
@@ -668,7 +680,7 @@ switch (attack)
                     //still holding down the special attack button, it will keep going in that direction
 
                     //underswap papyrus alt has it's own sound effect that plays
-                    if (get_player_color(player) == 13) sound_play(sound_get("sfx_soul"), 0, 0);
+                    if (alt_cur == 9) sound_play(sound_get("sfx_soul"), 0, 0);
                 }
 
                 if (!joy_pad_idle)
@@ -738,14 +750,18 @@ switch (attack)
     case AT_EXTRA_1: // [5] CHASM BURSTER
 
         can_wall_jump = true;
-        if (window == 3) can_jump = true;
+        if (window == 3)
+        {
+            can_jump = true;
+            fall_through = down_down;
+        }
         else can_jump = false;
 
         //mana costs
         if (window == 1 && window_timer == 1) mp_current -= chasmburster_activate_cost;
         if (window == 4 && window_timer == 1 && !hitpause) mp_current -= chasmburster_attack_cost;
 
-        if (attack == AT_SKILL5 && window == 4 && window_timer == 2) shake_camera(6, 8); //power, time
+        if (window == 4 && window_timer == 2) shake_camera(6, 8); //power, time
     
         if (window == 5 && window_timer == 1 && !hitpause)
         {
@@ -788,6 +804,7 @@ switch (attack)
                 window = 7;
                 window_timer = 1;
             }
+            if (window == 7 && window_timer == 2) shake_camera(8, 11); //power, time
             if (window == 8 && window_timer == get_window_value(AT_SKILL5, 8, AG_WINDOW_LENGTH))
             {
                 burningfury_active = false;
@@ -799,7 +816,11 @@ switch (attack)
     case AT_FSPECIAL_2: // [6] POWER SMASH
 
         can_wall_jump = true;
-        if (window == 4 && window_timer > 12 || window == 5) can_jump = true;
+        if (window == 4 && window_timer > 12 || window == 5)
+        {
+            can_jump = true;
+            fall_through = down_down;
+        }
         else can_jump = false;
 
         if (window_timer == 1 && !hitpause)
@@ -826,12 +847,13 @@ switch (attack)
             }
 
             //works like zetter down b fire
-            if (!instance_exists(obj_article3) && window_timer == 2 && !place_meeting(x, y, asset_get("plasma_field_obj")) && !hitpause)
+            if (!instance_exists(artc_powersmash_chasm) && window_timer == 2 && !place_meeting(x, y, asset_get("plasma_field_obj")) && !hitpause)
             {
-                var powersmash = instance_create(x, y, "obj_article3");
-                powersmash.depth = -4;
+                artc_powersmash_chasm = instance_create(x, y, "obj_article3");
+                artc_powersmash_chasm.state = 0;
+                artc_powersmash_chasm.depth = -4;
             }
-            else if (instance_exists(obj_article3) && window_timer == 1) instance_destroy(obj_article3);
+            else if (instance_exists(artc_powersmash_chasm) && window_timer == 1 && artc_powersmash_chasm.state == 0) instance_destroy(artc_powersmash_chasm);
         }
 
         if (burningfury_active)
@@ -885,47 +907,18 @@ switch (attack)
 
         }
         break;
-    case AT_USPECIAL_2: // [7] GUARD AURA
-
-        if (window == 1) guard_time = guard_time_max; //variable reset
-
+    case AT_USPECIAL_2: // [7] POLARIS
+        can_fast_fall = false;
+        
         //activation
-        if (window == 2 && window_timer == 1)
-        {
-            mp_current -= buff_activation_cost;
-            guardaura_active = true;
-            spawn_hit_fx(x, y-32, fx_lightblow1);
-            var fx_guard = spawn_hit_fx(x, y-32, fx_guardaura);
-            fx_guard.depth = -10;
-        }
-
-        //counter style
-        if (window == 3 && guard_time > 0 && special_down) if (window_timer == get_window_value(AT_SKILL7, 3, AG_WINDOW_LENGTH)) window_timer = 0;
-
         if (window == 4 && window_timer == 1)
         {
-            guardaura_active = false;
-            sound_play(asset_get("sfx_abyss_despawn"));
-        }
-
-        if (window == 5)
-        {
-            if(!free) set_state(PS_IDLE);
-            else if(free) set_state(PS_IDLE_AIR);
-        }
-
-        if (window == 6 && window_timer == 1 && !hitpause)
-        {
-            mp_current -= guardaura_counter_cost;
-            guardaura_active = false;
-            guard_explosion = false;
-            invincible = true;
-            invince_time = 4;
-        }
-        if (window == 6 && window_timer == 2 && !hitpause)
-        {
-            spawn_hit_fx(x, y-32, fx_lightblow2);
-            sound_play(asset_get("sfx_frog_fspecial_charge_full"), 0, 0); //get new sfx
+            mp_current -= buff_activation_cost;
+            polaris_active = true;
+            var fx_aura = spawn_hit_fx(x, y-32, fx_lightblow1);
+            fx_aura.depth = -6;
+            //var fx_guard = spawn_hit_fx(x, y-32, fx_guardaura);
+            //fx_guard.depth = -10;
         }
         break;
     
@@ -1063,10 +1056,9 @@ switch (attack)
             reset_hitbox_value(AT_SKILL8, 1, HG_VISUAL_EFFECT);
             reset_hitbox_value(AT_SKILL8, 1, HG_HIT_SFX);
             reset_hitbox_value(AT_SKILL8, 1, HG_EXTRA_HITPAUSE);
-            reset_hitbox_value(AT_SKILL8, 1, HG_HITBOX_COLOR);
         }
 
-        if (theikos_active && !is_8bit || get_player_color(player) == 31 || godpower) //this game hates me so i put this code here
+        if (user_event_1_active) //this game hates me so i put this code here
         {
             set_hitbox_value(AT_SKILL8, 1, HG_VISUAL_EFFECT, fx_fireblow1);
 
@@ -1208,12 +1200,10 @@ switch (attack)
             {
                 set_hitbox_value(attack, i, HG_DAMAGE, 4);
             }
-            set_hitbox_value(attack, 3, HG_BASE_KNOCKBACK, 10); //so it will connect
-
             set_hitbox_value(attack, 4, HG_DAMAGE, 10);
             set_hitbox_value(attack, 5, HG_DAMAGE, 7);
 
-            if (window == 7 && window_timer == phone_window_end) burningfury_active = false;
+            if (window == 8 && window_timer == window_end) burningfury_active = false;
         }
         else
         {
@@ -1223,26 +1213,62 @@ switch (attack)
             {
                 reset_hitbox_value(attack, i, HG_DAMAGE);
             }
-            reset_hitbox_value(attack, 3, HG_BASE_KNOCKBACK);
             reset_hitbox_value(attack, 4, HG_DAMAGE);
             reset_hitbox_value(attack, 5, HG_DAMAGE);
         }
 
-        if (window == 1 && window_timer == 1) 
+        if (window == 1 && window_timer == 1) //variable reset + mp
         {
-            mp_current -= searingdescent_cost;
+            mp_current -= searingdescent_activate_cost;
             descent_timer = descent_timer_reset;
+            searingdescent_id = noone;
         }
 
-        if (window == 1 && window_timer == phone_window_end) //sound
+        //funny not command grab
+        if (searingdescent_id != noone)
         {
-            array_push(phone_stopped_sounds, sound_play(asset_get("sfx_zetter_fireball_fire")));
-            array_push(phone_stopped_sounds, sound_play(asset_get("sfx_ori_ustrong_launch")));
+            if (window < 3)
+            {
+                searingdescent_id.hsp = hsp/4;
+                searingdescent_id.vsp = vsp;
+            }
+
+            if (burningfury_active)
+            {
+                if (window < 3)
+                {
+                    searingdescent_id.hsp = hsp/4;
+                    searingdescent_id.vsp = vsp*1.25;
+                }
+                else if (window == 3)
+                {
+                    searingdescent_id.vsp = vsp-3;
+                }
+            }
+        }
+        if (window > 3) searingdescent_id = noone;
+
+        if (window == 4)
+        {
+            if (special_down && mp_current >= searingdescent_attack_cost)
+            {
+                window = 4;
+                window_timer = window_end;
+            }
+            else if (window_timer == window_end)
+            {
+                set_state(PS_PRATFALL);
+                burningfury_active = false;
+            }
         }
 
-        if (window == 6 && !hitpause) //meteor timer
+        if (window == 5 && window_timer == 1) mp_current -= searingdescent_attack_cost;
+
+        if (window == 7) //meteor timer
         {
-            descent_timer--;
+            fall_through = down_down;
+
+            if (!hitpause) descent_timer--;
 
             if (descent_timer <= 0)
             {
@@ -1252,7 +1278,7 @@ switch (attack)
             }
         }
 
-        if (window == 7)
+        if (window == 8)
         {
             can_move = false;
             if (window_timer < 1 && !hitpause)
@@ -1341,6 +1367,8 @@ switch (attack)
 
         with (flashbanged_id) //moving the grabbed guy around
         {
+            hitpause = true;
+            hitstop = 2;
             if (other.window == 5)
             {
                 if (x > other.x - 48 && other.spr_dir || x < other.x + 48 && -other.spr_dir) x = x - other.state_timer/2*other.spr_dir;
@@ -1364,13 +1392,11 @@ switch (attack)
 
         if (window == 6 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause)
         {
+            mp_current -= flashbang_attack_cost; //skill cost
             if (burningfury_active) var smear = spawn_hit_fx(x, y, fx_flashbang_firesmear);
             else var smear = spawn_hit_fx(x, y, fx_flashbang_lightsmear);
             smear.depth = -7;
         }
-
-        //flashbang attack cost
-        if (window == 7 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) mp_current -= flashbang_attack_cost;
         break;
           
 }
@@ -1586,6 +1612,8 @@ else //buff reset
     }
 }
 
+if (attack == AT_SKILL5 || attack == AT_SKILL6 || attack == AT_SKILL10) fall_through = down_down;
+
 //////////////////////////////////////////////////THEIKOS SECTION//////////////////////////////////////////////////
 
 //theikos Fstrong rapid punch looping
@@ -1687,7 +1715,6 @@ switch (attack)
         }
         break;
     case AT_USTRONG_2:
-
         if (window == 1) lightpillar_alpha = 0.8;
 
         //size changer
@@ -1790,7 +1817,6 @@ switch (attack)
         }
         break;
     case AT_DSTRONG_2:
-
         if (window == 1) groundfire_count = 3; //reset
         
         if (window == 2) //charge window (including mana subtruction)
@@ -1813,12 +1839,14 @@ switch (attack)
             set_hitbox_value(AT_DSTRONG_2, 1, HG_PROJECTILE_ANIM_SPEED, fire_proj_vspeed/100 + 0.2);
         }
 
+        //fire smear
         if (window == 3 && window_timer == 1)
         {
             var firesmear = spawn_hit_fx(x, y, fx_firesmear);
             firesmear.depth = -8;
         }
 
+        //burning fury stuff
         if (burningfury_active)
         {
             if (window == 4 && window_timer == 2) burningfury_active = false;
@@ -1832,7 +1860,20 @@ switch (attack)
             reset_hitbox_value(AT_DSTRONG_2, 2, HG_VISUAL_EFFECT);
             reset_hitbox_value(AT_DSTRONG_2, 3, HG_DAMAGE);
         }
-        //needs burning fury support
+
+        //theikos tweaks
+        if (theikos_active)
+        {
+            set_hitbox_value(attack, 1, HG_LIFETIME, 99999);
+            set_hitbox_value(attack, 1, HG_PROJECTILE_PARRY_STUN, 0);
+            set_hitbox_value(attack, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+        }
+        else
+        {
+            reset_hitbox_value(attack, 1, HG_LIFETIME);
+            reset_hitbox_value(attack, 1, HG_PROJECTILE_PARRY_STUN);
+            reset_hitbox_value(attack, 1, HG_PROJECTILE_IS_TRANSCENDENT);
+        }
         break;
 }
 
@@ -1874,12 +1915,15 @@ if (attack == AT_OVERDRIVE)
     //od_prepare_godpower = true;
 
     burningfury_active = false;
-    guardaura_active = false;
+    polaris_active = false;
 
     super_armor = true;
     can_move = false;
     can_wall_jump = false;
     attack_invince = true;
+
+    //activate effects for this one frame and it will stay on
+    if (window == 1 && window_timer == 1) user_event(1);
 
     //stop bar's momentum when he starts casting
     if (window <= 4)
@@ -2040,8 +2084,16 @@ if (attack == AT_OVERDRIVE)
     }
 
     //final hit particles
-    if (is_8bit) set_hitbox_value(AT_OVERDRIVE, 3, HG_HIT_PARTICLE_NUM, 2);
-    else reset_hitbox_value(AT_OVERDRIVE, 3, HG_HIT_PARTICLE_NUM);
+    if (is_8bit)
+    {
+        set_hitbox_value(AT_OVERDRIVE, 2, HG_HIT_PARTICLE_NUM, 2);
+        set_hitbox_value(AT_OVERDRIVE, 3, HG_HIT_PARTICLE_NUM, 2);
+    }
+    else
+    {
+        reset_hitbox_value(AT_OVERDRIVE, 2, HG_HIT_PARTICLE_NUM);
+        reset_hitbox_value(AT_OVERDRIVE, 3, HG_HIT_PARTICLE_NUM);
+    }
 
     if (window == 17) shake_camera(10, 3); //power, time
 
@@ -2063,8 +2115,14 @@ if (attack == AT_OVERDRIVE)
                 od_current = 0;
                 od_ready = false;
             }
+            attack_invince = false;
         }
     }
+}
+else
+{
+    od_already_active = false;
+    OD_stop_timer = OD_stop_timer_max;
 }
 
 //lord's blessing buff on attacks
@@ -2137,8 +2195,12 @@ if (attack == AT_THEIKOS)
     if (window == 3 && window_timer == 1) 
     {
         theikos_active = true;
+        user_event(0);
+        user_event(1);
+
         mp_max = 999999999;
         mp_current = mp_max;
+        if (has_rune("O")) od_current = od_max;
 
         set_player_stocks(player, 9999);
 
@@ -2182,6 +2244,9 @@ if (attack == AT_THEIKOS)
         trans_stall = 0;
     }
 }
+
+if (attack != AT_OVERDRIVE && attack != AT_THEIKOS) super_armor = false;
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Alternate stage collide function. This must go at the end of attack_update.

@@ -1,5 +1,7 @@
 //debug_draw.gml
 
+if (!get_match_setting(SET_PRACTICE)) exit;
+
 //Stat Debug cheat
 if (phone_cheats[CHEAT_STATS] == 1)
 {
@@ -109,19 +111,46 @@ if (phone_cheats[CHEAT_STATS] == 1)
 
 //draw_debug_text(x, y, "text = " + string(variable));
 
-//draw_debug_text(x, y-128, "menu_open = " + string(menu_open));
-//draw_debug_text(x, y-128+16, "menu_confirm = " + string(menu_confirm));
-//draw_debug_text(x, y-128+32, "menu_close = " + string(menu_close));
-
-//draw_debug_text(x, y, "burningfury_target = " + string(burningfury_target));
-
-//if (burningfury_target != noone) draw_debug_text(x, y, string(burningfury_target.hsp) + "," + string(burningfury_target.vsp));
-
-//draw_debug_text(x, y, "descent_timer = " + string(descent_timer));
-
-
 //actuall variable checking stuff i did over time
 {
+    /*
+    if (homing_target_id != noone)
+    {
+        with (homing_target_id) draw_debug_text(other.x, other.y, "their state = " + get_state_name(state));
+    }
+    */
+    
+    //draw_debug_text(x-48, y-128, "menu_dir / prev_dir = " + string(menu_dir) + "/" + string(prev_dir));
+    //draw_debug_text(x-48, y-128+16, "menu_timer = " + string(menu_timer));
+    //draw_debug_text(x-48, y-128+32, "active_col = " + string(active_col));
+
+    //draw_debug_text(x, y-128, "menu_open = " + string(menu_open));
+    //draw_debug_text(x, y-128+16, "menu_confirm = " + string(menu_confirm));
+    //draw_debug_text(x, y-128+32, "menu_close = " + string(menu_close));
+
+    //draw_debug_text(x, y, "burningfury_target = " + string(burningfury_target));
+
+    //if (burningfury_target != noone) draw_debug_text(x, y, string(burningfury_target.hsp) + "," + string(burningfury_target.vsp));
+
+    //draw_debug_text(x, y, "descent_timer = " + string(descent_timer));
+
+    //draw_debug_text(x, y, "image = " + string(image_index));
+    //with (oPlayer) draw_debug_text(x, y, "holyburn_maxcount = " + string(holyburn_maxcount));
+
+    //with (oPlayer) draw_debug_text(x, y, "holyburn_counter = " + string(holyburn_counter));
+
+    //draw_debug_text(x, y, "mp_fc_rate = " + string(mp_fc_rate));
+
+    //draw_debug_text(x, y, "reached_max_bursts = " + string(reached_max_bursts));
+
+    //draw_debug_text(x, y, "homing_outline_alpha = " + string(homing_outline_alpha));
+
+    //draw_debug_text(x, y, "burningfury_target = " + string(burningfury_target));
+
+    //draw_debug_text(x, y, "attack_invince = " + string(attack_invince));
+    //draw_debug_text(x, y+16, "invincible = " + string(invincible));
+
+    //player == max(player_is_on(player)
     // this was used to test the natural mana gaining mechanic
 
     //draw_debug_text(x,y,"mana = " + string(mp_current) + "/" + string(mp_max));

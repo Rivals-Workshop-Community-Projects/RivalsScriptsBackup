@@ -106,3 +106,8 @@ set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 1);
 set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 0);
 set_hitbox_value(atk, hitboxNum, HG_FORCE_FLINCH, 0);
+
+
+//munophone
+if (!get_match_setting(SET_PRACTICE)) exit;
+set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "Affected by Burning Fury's buff");

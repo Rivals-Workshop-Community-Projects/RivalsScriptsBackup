@@ -5,7 +5,7 @@ set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
 lockon = 0
 lockontime = 180
 fcharge = 0
-intro = 1
+//intro = 1
 
 move_cooldown[AT_FSPECIAL] = 0
 move_cooldown[AT_USPECIAL] = 0 	

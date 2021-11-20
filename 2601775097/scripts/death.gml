@@ -18,10 +18,12 @@ burst_count = 0;
 powersmash_afterburn = false;
 powersmash_aftertime = 0;
 
-guardaura_active = false;
+polaris_active = false;
 
 hookshot_speedboost = false;
 hookshot_launch = false;
+
+searingdescent_id = noone;
 
 runeG_blitzjump = false;
 

@@ -1,5 +1,42 @@
 ///
 
+if state == PS_PRATFALL or state == PS_PRATLAND {
+	canceltime = 0
+}
+
+if canceltime > 1 {
+	
+	if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND  {
+		canceltime = 100
+	}
+	
+	if canceltime > 50 {
+	if state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND {
+		
+	if !free {
+		set_state(PS_PRATLAND)
+		state_timer = 0
+	} else {
+		set_state(PS_PRATFALL)
+		state_timer = 0
+	}
+	
+	canceltime = 0
+	
+	} else {
+		
+		if free {
+			if vsp > 0 {
+	     	vsp /= 1.6
+			}
+		hsp /= 1.1
+		}
+		
+	}
+	}
+	
+	
+}
 
 
 	    	if state == PS_AIR_DODGE && state_timer > 15 && move_cooldown[AT_UAIR] != 0{

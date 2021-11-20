@@ -1,90 +1,98 @@
-set_character_color_shading(5, 1.5); //CLOTHBLACK
+//init_shader
 
-switch (get_player_color(player))
+//variables for flexibility (should be the same as colors.gml)
+var pal_num = get_player_color(player);
+var col_dblue = 0;
+var col_white = 1;
+var col_hair = 2;
+var col_skin = 3;
+var col_lblue = 4;
+var col_black = 5;
+var col_light = 6;
+var col_fire = 7;
+
+set_character_color_shading(col_black, 1.5); //CLOTHBLACK
+
+switch (pal_num)
 {
 	case 0: //default powers recoloring
-		set_character_color_slot(6, 159, 241, 255); //LIGHT
-		set_character_color_slot(7, 76, 133, 233); //FIRE
+		set_character_color_slot(col_light, 159, 241, 255); //LIGHT
+		set_character_color_slot(col_fire, 76, 133, 233); //FIRE
 
-		set_article_color_slot(6, 159, 241, 255); //LIGHT
-		set_article_color_slot(7, 76, 133, 233); //FIRE
+		set_article_color_slot(col_light, 159, 241, 255); //LIGHT
+		set_article_color_slot(col_fire, 76, 133, 233); //FIRE
 
-		set_character_color_shading(7, 1.5); //FIRE
+		set_character_color_shading(col_fire, 1.5); //FIRE
 
 		//alternate brighter fire: (7, 95, 172, 229)
 		break;
 
 	case 1: //p2 alt light shading amplify + fire reverse
-		set_character_color_shading(6, 1.5); //LIGHT
-		set_character_color_shading(7, -1); //FIRE
+		set_character_color_shading(col_light, 1.5); //LIGHT
+		set_character_color_shading(col_fire, -1); //FIRE
 		break;
 
 
 	case 2: case 3: //venus + liav alt fire color shading amplify
-		set_character_color_shading(7, 1.5); //FIRE
+		set_character_color_shading(col_fire, 1.5); //FIRE
 		break;
 	
-	case 4: case 11: case 15: //roy, festive and ain alts fire amplify
-		set_character_color_shading(7, 1.5); //FIRE
+	case 4: case 11: case 19: //roy, festive and ain alts fire amplify
+		set_character_color_shading(col_fire, 1.5); //FIRE
 		break;
 	
 	case 5: case 6: //asra and sahar alt reverse shading
-		set_character_color_shading(6, -1.5); //LIGHT
-		set_character_color_shading(7, -1.5); //FIRE
+		set_character_color_shading(col_light, -1.5); //LIGHT
+		set_character_color_shading(col_fire, -1.5); //FIRE
 		break;
 
-	case 7: //gameboy alt 8-bit shader + outline
+	case 14: //gameboy alt 8-bit shader + outline
 		for(i = 0; i < 8; i++) set_character_color_shading(i, 0);
 		outline_color = [15, 56, 15];
 		break;
 
-	case 8: //NES alt 8-bit shader + outline
-		for(i = 0; i < 8; i++) set_character_color_shading(i, 0);
+	case 15: //NES alt 8-bit shader + outline
+		for(i = 0; i < 6; i++) set_character_color_shading(i, 0);
+		set_character_color_shading(6, 10);
+		set_character_color_shading(7, 5);
 		outline_color = [32, 0, 178];
 		break;
-
-	case 9: case 13: case 16: //abyss, us!pap and childe alt reverse shading for fire
-		set_character_color_shading(7, -1.5); //FIRE
+	case 9: case 12: case 16: //abyss, us!pap and childe alt reverse shading for fire
+		set_character_color_shading(col_fire, -1.5); //FIRE
 		break;
 	
-	case 12: //(&) knuckles' alt fire, light and light blue cloth amplify
+	case 8: //shadow alt fire, light and light blue cloth amplify
 		set_character_color_shading(3, 1.5); //CLOTHLIGHTBLUE
-		set_character_color_shading(6, 1.5); //LIGHT
-		set_character_color_shading(7, 1.5); //FIRE
+		set_character_color_shading(col_light, 1.5); //LIGHT
+		set_character_color_shading(col_fire, 1.5); //FIRE
 		break;
 	
-	case 14: //okuu reverse fire and light shading
-		set_character_color_shading(6, -3); //LIGHT
-		set_character_color_shading(7, -1.5); //FIRE
+	case 10: //okuu reverse fire and light shading
+		set_character_color_shading(col_light, -3); //LIGHT
+		set_character_color_shading(col_fire, -1.5); //FIRE
 		break;
 
-	case 18: //nero reverse fire and light shading
-		set_character_color_shading(6, -2); //LIGHT
-		set_character_color_shading(7, -1); //FIRE
+	case 13: //nero reverse fire and light shading
+		set_character_color_shading(col_light, -2); //LIGHT
+		set_character_color_shading(col_fire, -1); //FIRE
 		break;
 	
-	case 21: case 22: //jurami and baysen alts reverse shading for fire
-		set_character_color_shading(7, -1); //FIRE
+	case 20: case 21: //jurami and baysen alts reverse shading for fire
+		set_character_color_shading(col_fire, -1); //FIRE
 		break;
 
-	case 24: //splatracer's alt
+	case 23: //splatracer's alt
 		set_character_color_shading(3, 1.5); //CLOTHLIGHTBLUE
-		set_character_color_shading(6, -3); //LIGHT
-		set_character_color_shading(7, 2); //FIRE
+		set_character_color_shading(col_light, -3); //LIGHT
+		set_character_color_shading(col_fire, 2); //FIRE
 		break;
-
-	case 25: //prober's alt fire shading amplify
-		set_character_color_shading(7, 1.5); //FIRE
+	case 25: //helel alt shading tweaking
+		set_character_color_shading(col_light, 4); //LIGHT
+		set_character_color_shading(col_fire, -2); //FIRE
 		break;
-
-	case 28: //iroh alt light and fire shading amplify
-		set_character_color_shading(6, 1.5); //LIGHT
-		set_character_color_shading(7, 2); //FIRE
-		break;
-
-	case 30: //helel alt shading tweaking
-		set_character_color_shading(6, 4); //LIGHT
-		set_character_color_shading(7, -2); //FIRE
+	case 18: //gold alt shading tweak
+		set_character_color_shading(col_dblue, -1); //CLOTHDARKBLUE
+		set_character_color_shading(col_black, 2); //CLOTHBLACK
 		break;
 	/*
 	case 7: //arc alt alpha
@@ -92,13 +100,13 @@ switch (get_player_color(player))
 		{
 			// reset the color to default
 			var temp_r = get_color_profile_slot_r(7, slot_num);
-			var temp_g = get_color_profile_slot_g(7, slot_num);
+			var temp_g = get_color_profile_slot_g(col_fire, slot_num);
 			var temp_b = get_color_profile_slot_b(7, slot_num);
 			set_character_color_slot(slot_num, temp_r, temp_g, temp_b, .75);
 			set_article_color_slot(slot_num, temp_r, temp_g, temp_b, .75);
 		}
 
-		set_character_color_shading(7, -2); //FIRE
+		set_character_color_shading(col_fire, -2); //FIRE
 		break;
 	*/
 }
@@ -110,7 +118,7 @@ var mymonth = 10;
 if (current_day = myday && current_month == mymonth) birthboy = true;
 else birthboy = false;
 
-if (get_player_color(player) == 11 && birthboy)
+if (pal_num == 19 && birthboy)
 {
 	set_color_profile_slot(11, 0, 206, 216, 227); //CLOTHWHITE
     set_color_profile_slot(11, 1, 182, 88, 61); //HAIR
@@ -122,16 +130,16 @@ if (get_player_color(player) == 11 && birthboy)
 	set_color_profile_slot(11, 7, 76, 133, 233); //FIRE
 
 	//shading tweaks
-	set_character_color_shading(5, 1); //CLOTHBLACK
-	set_character_color_shading(7, 1.5); //FIRE
+	set_character_color_shading(col_black, 1); //CLOTHBLACK
+	set_character_color_shading(col_fire, 1.5); //FIRE
 
 	//article stuff
-	set_article_color_slot(6, 159, 241, 255, 1);
-	set_article_color_slot(7, 76, 133, 233, 1);
+	set_article_color_slot(col_light, 159, 241, 255, 1);
+	set_article_color_slot(col_fire, 76, 133, 233, 1);
 }
 
 //burning fury outline colors
-switch (get_player_color(player))
+switch (pal_num)
 {
     case 0: //default
         burn_outline = [33, 57, 155];
@@ -154,19 +162,44 @@ switch (get_player_color(player))
     case 6: //sahar
         burn_outline = [124, 4, 171];
         break;
-    case 7: //GB
+	case 7: //bar's dad
+        burn_outline = [16, 83, 78];
+        break;
+	case 8: //shadow
+		burn_outline = [113, 11, 0];
+		break;
+	case 9: //US!papyrus
+		burn_outline = [255, 134, 40]; //bravery
+		//burn_outline = [40, 255, 255]; //patience
+		break;
+	case 10: //okuu
+		burn_outline = [255, 147, 96];
+		break;
+	case 11: //ain
+        burn_outline = [35, 116, 123];
+        break;
+	case 12: //childe
+		burn_outline = [191, 86, 238];
+		break;
+	case 13: //nero
+		burn_outline = [67, 179, 255];
+		break;
+    case 14: //GB
         burn_outline = [83, 122, 62];
         break;
-    case 8: //NES
+    case 15: //NES
         burn_outline = [32, 0, 178];
         break;
-	case 9: //abyss
+	case 16: //abyss
         burn_outline = [228, 125, 255];
         break;
-	case 10: //infamous
+	case 17: //infamous
 		burn_outline = [51, 158, 158];
 		break;
-    case 11: //seasonals
+	case 18: //gold rank
+		burn_outline = [113, 142, 157];
+		break;
+    case 19: //seasonals
 		switch(get_match_setting(SET_SEASON))
 		{
 			case 1: //v-day
@@ -184,62 +217,22 @@ switch (get_player_color(player))
 		}
 		if (birthboy) burn_outline = [33, 57, 155];
 		break;
-	case 12: //knuckles
-		burn_outline = [153, 75, 51];
-		break;
-	case 13: //US!papyrus
-		burn_outline = [255, 134, 40]; //bravery
-		//burn_outline = [40, 255, 255]; //patience
-		break;
-	case 14: //okuu
-		burn_outline = [255, 147, 96];
-		break;
-	case 15: //ain
-        burn_outline = [35, 116, 123];
-        break;
-	case 16: //childe
-		burn_outline = [191, 86, 238];
-		break;
-	case 17: //beowulf
-		burn_outline = [33, 34, 87];
-		break;
-	case 18: //nero
-		burn_outline = [67, 179, 255];
-		break;
-	case 19: //shoto
-		burn_outline = [156, 104, 31];
-		break;
-	case 28: //basara
-		burn_outline = [0, 0, 0];
-		break;
-    case 21: //jurami
+    case 20: //jurami
         burn_outline = [146, 11, 0];
         break;
-    case 22: //baysen
+    case 21: //baysen
         burn_outline = [40, 0, 102];
 		break;
-	case 23: //shiro
+	case 22: //shiro
 		burn_outline = [129, 23, 5];
         break;
-    case 24: //splatracer's skin
+    case 23: //splatracer's skin
         burn_outline = [72, 151, 0];
         break;
-	case 25: //prober's skin
-		burn_outline = [159, 88, 19];
-		break;
-	case 26: //trail mix's skin
+	case 24: //trail mix's skin
 		burn_outline = [140, 60, 127];
 		break;
-	case 27: //monarch
-		burn_outline = [7 , 65, 196];
-		break;
-	case 28: //iroh
-		burn_outline = [139, 68, 17];
-		break;
-	case 29: //olympia
-		burn_outline = [143, 48, 99];
-		break;
-	case 30: //helel
+	case 25: //helel
 		if("color_rate" in self)
 		{
 			var color_rgb = make_color_rgb(150, 0, 0);
@@ -248,7 +241,7 @@ switch (get_player_color(player))
 			burn_outline = [color_get_red(helel_hsv) ,color_get_green(helel_hsv) ,color_get_blue(helel_hsv)];
 		}
 		break;
-    case 31: //theikos
+    case 26: //theikos
         burn_outline = [217, 165, 71];
         break;
 }
@@ -258,50 +251,50 @@ if("theikos_active" in self)
 {
 	if (theikos_active)
 	{
-		if (get_player_color(player) != 7 && get_player_color(player) != 8) 
+		if (pal_num != 14 && pal_num != 15) 
 		{
 			burn_outline = [217, 165, 71]; //theikos
 		}
-		if (get_player_color(player) == 8) //theikos NES fire color
+		if (pal_num == 15) //theikos NES fire color
 		{
 			burn_outline = [235, 211, 32];
-			set_character_color_slot(7, 235, 211, 32);
-        	set_article_color_slot(7, 235, 211, 32);
+			set_character_color_slot(col_fire, 235, 211, 32);
+        	set_article_color_slot(col_fire, 235, 211, 32);
 		}
 
 		//birthday alt gets white theikos hair
-		if (get_player_color(player) == 11 && birthboy) set_color_profile_slot(11, 1, 206, 216, 227); //HAIR
+		if (pal_num == 11 && birthboy) set_color_profile_slot(11, col_hair, 206, 216, 227); //HAIR
 	}
 }
 
 if ("od_already_active" in self && od_already_active || "godpower" in self && godpower)
 {
-	if (get_player_color(player) == 8) //theikos NES fire color
+	if (pal_num == 15) //theikos NES fire color
 	{
-		set_character_color_slot(7, 235, 211, 32);
-    	set_article_color_slot(7, 235, 211, 32);
+		set_character_color_slot(col_fire, 235, 211, 32);
+    	set_article_color_slot(col_fire, 235, 211, 32);
 	}
 	
-	if (get_player_color(player) != 8 && get_player_color(player) != 7) burn_outline = [217, 165, 71];
+	if (pal_num != 15 && pal_num != 14) burn_outline = [217, 165, 71];
 }
 else
 {
-	if (get_player_color(player) == 8)
+	if (pal_num == 15)
 	{
-		set_character_color_slot(7, 97, 162, 255);
-		set_article_color_slot(7, 97, 162, 255);
+		set_character_color_slot(col_fire, 97, 162, 255);
+		set_article_color_slot(col_fire, 97, 162, 255);
 	}
 	
 }
 
 /*
-if (birthboy && get_player_color(player) == 14) 
+if (birthboy && pal_num == 14) 
 {
-    set_character_color_slot(6, 159, 241, 255); //LIGHT
-	set_character_color_slot(7, 76, 133, 233); //FIRE
+    set_character_color_slot(col_light, 159, 241, 255); //LIGHT
+	set_character_color_slot(col_fire, 76, 133, 233); //FIRE
 
-	set_article_color_slot(6, 159, 241, 255); //LIGHT
-	set_article_color_slot(7, 76, 133, 233); //FIRE
+	set_article_color_slot(col_light, 159, 241, 255); //LIGHT
+	set_article_color_slot(col_fire, 76, 133, 233); //FIRE
 	burn_outline = [33, 57, 155];
 }
 */

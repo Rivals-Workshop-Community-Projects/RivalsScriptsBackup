@@ -427,13 +427,9 @@ if get_player_color(player) == 10 {
          
          if window == 2 && window_timer == 25 {
          	
-         	if has_hit_player {
-             sound_play(sound_get("RZ"))
-         	} else {
-         		sound_play(asset_get("sfx_spin"),false,noone,2)
-         	  sound_play(asset_get("sfx_bird_nspecial"))	
-        	sound_play(asset_get("sfx_bird_sidespecial_start"))	
-         	}
+         		sound_play(asset_get("sfx_spin"),false,noone,1.5)
+        	 sound_play(sound_get("RZ"),false,noone,.75,1.2)
+         	
          	
 		var angle = (round(joy_dir / 11.25) * 11.25) / 180 * -3.14; //45)*45)/180
 		if (joy_pad_idle){
@@ -491,12 +487,14 @@ if get_player_color(player) == 10 {
                   	
                   	can_tech = false 
                   	
-                  	if vsp > 0 {
+                  	if y > other.y - 100 {
                   		vsp /= 1.05
                   	}
                   	                  
                   if state == PS_RESPAWN {
+                  	
                   	attack_end();
+                  	
                       with other {
                       	window = 4
                       	window_timer = 1
@@ -509,15 +507,6 @@ if get_player_color(player) == 10 {
                       sound_play(asset_get("sfx_roll"))
 
                   }
-                  
-                  	if x + hsp < 100 or x + hsp > (room_width - 100) {
-                  		x -= hsp
-                  	}
-                  	
-                  	
-                  if y + vsp < 100 or y + vsp > room_height - 100 {
-                  		y -= vsp
-                  	}
                   	
                   }
             	 
@@ -670,7 +659,7 @@ if get_player_color(player) == 10 {
         
         if attack == AT_USTRONG {
             
-            set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 12 + strong_charge/8);
+            set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 8 + strong_charge/8);
             
             if window == 1 && strong_charge == 0 {
                 hsp = 1*spr_dir
@@ -717,17 +706,13 @@ if get_player_color(player) == 10 {
             if window == 4 {
                 sound_stop(asset_get("sfx_troupple_rumble"))
             }
-         if window == 4 && window_timer == 1 {
-                          
-             hsp = 10*spr_dir
-             if strong_charge > 8{
+         if window == 3 && window_timer == 1 {
+         	 hsp = 10*spr_dir
              shake_camera (floor(strong_charge/6),8)
              sound_play(sound_get("RI"))
-             spawn_hit_fx(x+40*spr_dir,y, 113)
-             }
          }   
          
-         if window == 4 && window_timer == 2 {
+         if window == 4 && window_timer == 1 {
              hsp = 0
          }
             

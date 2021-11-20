@@ -11,6 +11,8 @@ windowNum = 1; //windup
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
 set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 4); //controls speed
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 2); //frames amount on strip
+//set_window_value(atk, windowNum, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+//set_window_value(atk, windowNum, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1.1);
 
 windowNum ++; //windup 2 electric boogaloo
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
@@ -90,3 +92,8 @@ set_hitbox_value(atk, hitboxNum, HG_ANGLE_FLIPPER, 0); //was causing issues
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 1);
 set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 0);
 set_hitbox_value(atk, hitboxNum, HG_FORCE_FLINCH, 0);
+
+
+//munophone
+if (!get_match_setting(SET_PRACTICE)) exit;
+set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "Affected by Burning Fury's buff");

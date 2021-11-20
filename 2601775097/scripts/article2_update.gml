@@ -12,7 +12,12 @@ switch (state)
 
         //hitbox
         //thanks Frtοud!
-        if (!instance_exists(groundfire)) groundfire = create_hitbox(AT_DSTRONG_2, 3, x, y-8);
+        if (!instance_exists(groundfire))
+        {
+            groundfire = create_hitbox(AT_DSTRONG_2, 3, x, y-8);
+            groundfire.fx_particles = 2;
+            if (player_id.user_event_1_active) groundfire.fx_particles = 6;
+        }
         if (state_timer % 10 == 0)
         {
             for (var p = 0; p < array_length(groundfire.can_hit); p++) groundfire.can_hit[p] = true; 

@@ -18,7 +18,7 @@ set_window_value(atk, windowNum, AG_WINDOW_HSPEED, 0);
 
 windowNum ++; //charge 1 (window 2)
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 0);
-set_window_value(atk, windowNum, AG_WINDOW_LENGTH, charge_time); //controls speed
+set_window_value(atk, windowNum, AG_WINDOW_LENGTH, max_charge_time); //controls speed
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 1); //frames amount on strip
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 2); //starting frame. starts from 0
 set_window_value(atk, windowNum, AG_WINDOW_VSPEED_TYPE, 1);
@@ -30,7 +30,7 @@ set_window_value(atk, windowNum, AG_WINDOW_SFX, asset_get("sfx_boss_shine"));
 
 windowNum ++; //charge 2 (window 3)
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 0);
-set_window_value(atk, windowNum, AG_WINDOW_LENGTH, charge_time); //controls speed
+set_window_value(atk, windowNum, AG_WINDOW_LENGTH, max_charge_time*0.75); //controls speed //30
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 1); //frames amount on strip
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 3); //starting frame. starts from 0
 set_window_value(atk, windowNum, AG_WINDOW_VSPEED_TYPE, 1);
@@ -42,7 +42,7 @@ set_window_value(atk, windowNum, AG_WINDOW_SFX, asset_get("sfx_boss_shine"));
 
 windowNum ++; //charge 3 (window 4)
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 0);
-set_window_value(atk, windowNum, AG_WINDOW_LENGTH, charge_time); //controls speed
+set_window_value(atk, windowNum, AG_WINDOW_LENGTH, max_charge_time*0.5); //controls speed //20
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 1); //frames amount on strip
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 4); //starting frame. starts from 0
 set_window_value(atk, windowNum, AG_WINDOW_VSPEED_TYPE, 1);
@@ -91,7 +91,7 @@ set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 9); //1 = low priority over other 
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 10);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 361);
 set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 8); //15
 set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.2);
 set_hitbox_value(atk, hitboxNum, HG_SDI_MULTIPLIER, 0.7);
@@ -100,3 +100,8 @@ set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 3);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_boss_laser_hit"));
 set_hitbox_value(atk, hitboxNum, HG_ANGLE_FLIPPER, 3);
+
+
+//munophone
+if (!get_match_setting(SET_PRACTICE)) exit;
+set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "40 MP");
