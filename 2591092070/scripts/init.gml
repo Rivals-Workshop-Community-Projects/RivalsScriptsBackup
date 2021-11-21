@@ -103,3 +103,7 @@ the_timer = 0;
 the_charge = false;
 the_charging = false;
 the_shine = 0;
+
+// You could use var in attack_update, but this should save a couple allocations every cycle
+dair_hitbox = noone;
+fspecial_hitbox = noone;

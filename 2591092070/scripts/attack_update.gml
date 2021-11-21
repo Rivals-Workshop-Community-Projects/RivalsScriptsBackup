@@ -180,3 +180,34 @@ if (attack == AT_NSPECIAL) {
 		move_cooldown[AT_NSPECIAL] = 150;
 	}
 }
+
+//CODE BY ROBOT
+if (attack == AT_DAIR) {
+    // Still have to reset these every cycle
+    dair_hitbox = noone;
+    fspecial_hitbox = noone;
+    // For each hitbox, check if it's owned by this character, and if it's dair or fspecial
+    with (pHitBox) {
+        if (player_id == other.id) {
+            if (attack == AT_DAIR) {
+                other.dair_hitbox = id;
+            } else if (attack == AT_FSPECIAL) {
+                other.fspecial_hitbox = id;
+            }
+        }
+    }
+    // If both a dair and fpsecial exist, check if they touch
+    if ((dair_hitbox != noone) && (fspecial_hitbox != noone)) {
+        with (dair_hitbox) {
+            if (place_meeting(x, y, other.fspecial_hitbox)) {
+                other.vsp = -11.5;
+                spawn_hit_fx(x+1,y+47,301);
+				sound_play(asset_get("sfx_blow_medium1"));
+				attack_end();
+				if (other.fspecial_hitbox){
+					destroyed = true;
+				}
+            }
+        }
+    }
+}
