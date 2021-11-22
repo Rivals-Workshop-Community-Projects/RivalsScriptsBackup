@@ -5,8 +5,18 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 
 ///
+if attack == AT_EXTRA_2 {
 
-
+    if window == 1 && window_timer == 14 && !hitpause {
+    	shake_camera(2,4)
+		sound_play(asset_get("sfx_abyss_explosion"),false,noone,1, 1.2);
+	}
+	
+	
+    if window == 1 && window_timer == 1 && !hitpause {
+		sound_play(asset_get("sfx_ice_on_player"),false,noone,.8, .9);
+	}
+}
 
 if attack == AT_FTILT or attack == AT_DTILT or attack == AT_JAB {
 	if has_hit_player{
@@ -110,7 +120,7 @@ if (attack == AT_BAIR){
 
 if (attack == AT_DAIR){
 	
-	if free && state_timer > 60 && y + vsp > room_height/2 + 300 && ((jump_pressed) or (shield_pressed) or (attack_pressed)) && !has_hit_player{
+	if free && state_timer > 60 && y + vsp > room_height/2 + 300 && ((jump_pressed) or (shield_pressed) or (attack_pressed) or y + vsp > room_height) && !has_hit_player{
 		sound_play(sound_get("RI"),false,noone,0.8,0.8)
         sound_play(asset_get("sfx_ori_bash_launch"));
         sound_play(asset_get("sfx_abyss_explosion"))
@@ -251,16 +261,16 @@ if (attack == AT_DAIR){
 		
 		
 		if x > other.x && other.hitpause == false {
-			x += floor((other.x + 56 - x)/4)
+			x += floor((other.x + 56 - x)/2)
 		}
 		
 		if x < other.x && other.hitpause == false  {
-		   x += floor((other.x - 56 - x)/4)
+		   x += floor((other.x - 56 - x)/2)
 		}
 		   
-		if other.y - 40 >= y  {
+		if other.y - 30 + other.vsp >= y  {
 
-	    	y = other.y - 30
+	    	y = other.y - 30 + other.vsp
 		} 
 		
 		vsp = other.vsp
@@ -470,7 +480,7 @@ if attack == AT_DSTRONG {
 
 if attack == AT_NSPECIAL{
     
-   	if free && window > 3 && state_timer > 60 && y + vsp > room_height/2 + 300 && ((jump_pressed) or (shield_pressed) or (attack_pressed)) {
+   	if free && window > 3 && state_timer > 60 && y + vsp > room_height/2 + 300 && ((jump_pressed) or (shield_pressed) or (attack_pressed) or y + vsp > room_height) {
 		sound_play(sound_get("RI"),false,noone,0.8,0.75)
         sound_play(asset_get("sfx_ori_bash_launch"));
         sound_play(asset_get("sfx_abyss_explosion"))
@@ -502,6 +512,7 @@ if attack == AT_NSPECIAL{
     
     
     if window <= 3 && window != 0{
+    	vsp = 0
     	if window > 1 && shield_pressed && has_airdodge{
     		spawn_hit_fx(x - 35*spr_dir,y - 80, 14)
     		char_height = 50;
@@ -1242,6 +1253,12 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 		}
 	}
 		if window == 4{
+			
+		if window_timer == 6 && !hitpause{
+				var trait = spawn_hit_fx( x + 10 * spr_dir  , y + 4 , ushadow)
+				trait.draw_angle = 90*spr_dir
+		}
+		
 		if window_timer == 9 {
 			vsp = -8
 			
@@ -1254,6 +1271,14 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 		
 		if window_timer == 18{
 			sound_play(asset_get("sfx_ice_shieldup"))
+			
+			if fcharge > 0 {
+				fcharge -= 1
+			} else {
+				vsp = -8
+				set_state(PS_PRATFALL)
+				prat_land_time = 20;
+			}
 		}
 	}
 	
@@ -1403,10 +1428,11 @@ if attack == AT_TAUNT{
 		//sound_play(sound_get("Balesi"));
 	}
 		window_timer = 0
-		drops -= 0.8
+		
 		
 		if get_gameplay_time() > 120{
 			sound_play(asset_get("sfx_troupple_rumble"),false,noone,.7,2);
+			drops -= 0.8
 		}
     }
 

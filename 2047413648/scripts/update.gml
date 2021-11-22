@@ -1,4 +1,14 @@
 
+
+if "in_adventure" in self {
+	
+   if get_gameplay_time() == 2 {
+   	 x = 2477
+   	 y = 10455
+   }	
+   
+}
+
 if !instance_exists(hit_player_obj){
 
 hit_player_obj = self
@@ -333,14 +343,11 @@ if fcharge == 6{
 	fchargetimer = 0
 }
 
-if fcharge == 0 {
-	move_cooldown[AT_FSPECIAL] = 6
-}
 
 if fcharge < 1 {
-	
 	move_cooldown[AT_DSPECIAL] = 6
-	
+	move_cooldown[AT_NSPECIAL] = 6
+	move_cooldown[AT_FSPECIAL] = 6
 }
 
 if fcharge <= 0{

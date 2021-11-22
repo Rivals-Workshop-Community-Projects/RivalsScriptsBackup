@@ -93,9 +93,6 @@ switch attack {
     
     case AT_UTILT :
         
-        if has_hit && !hitpause {
-        	window_timer += 0.5
-        }
         
         if hitpause {
             y -= 2

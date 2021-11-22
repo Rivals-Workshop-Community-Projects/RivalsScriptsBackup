@@ -4,6 +4,8 @@ crouchbox_spr = sprite_get("crouch_box");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
+hit_player_event = 11
+
 Hikaru_Title = "Shifting Steel"
 
 nname = "Uza Ckater"
@@ -65,7 +67,7 @@ air_accel = 0.25;
 prat_fall_accel = 0.85; //multiplier of air_accel while in pratfall
 air_friction = .055;
 max_djumps = 1;
-double_jump_time = 31; //the number of frames to play the djump animation. Can't be less than 31.
+double_jump_time = 36; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 5.5;
 walljump_vsp = 7.75;
 walljump_time = 18;

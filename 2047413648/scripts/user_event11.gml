@@ -1,22 +1,12 @@
 
 
-
+fcharge += 1
 ///
 
 
-	if (my_hitboxID.attack == AT_EXTRA_2){
-	
-	
-	
-	if my_hitboxID.hbox_num == 1 {
-		sound_play(sound_get("RI"))
-    	sound_play(asset_get("sfx_shovel_hit_heavy2"))	
-	} else {
-		sound_play(asset_get("sfx_shovel_hit_med2"))
-	}
-	
-	}
-
+if old_vsp < -6 {
+	old_vsp = -6
+}
 
 	if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num >= 3){
 	
