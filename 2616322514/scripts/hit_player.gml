@@ -1,4 +1,4 @@
-if (my_hitboxID.hbox_num == 2 && my_hitboxID.attack == AT_FTILT or my_hitboxID.hbox_num == 3 && my_hitboxID.attack == AT_DAIR or my_hitboxID.hbox_num == 2 && my_hitboxID.attack == AT_FAIR or my_hitboxID.hbox_num == 2 && my_hitboxID.attack == AT_UAIR){
+if (my_hitboxID.hbox_num == 2 && my_hitboxID.attack == AT_FTILT or my_hitboxID.hbox_num == 2 && my_hitboxID.attack == AT_DTILT or my_hitboxID.hbox_num == 3 && my_hitboxID.attack == AT_DAIR or my_hitboxID.hbox_num == 2 && my_hitboxID.attack == AT_FAIR or my_hitboxID.hbox_num == 2 && my_hitboxID.attack == AT_UAIR){
     if (!place_meeting(x, y, terrain) && instance_exists(terrain) && !electro_charged or !instance_exists(terrain) && !electro_charged){
     if (instance_exists(terrain)){
         terrain.state = 2;

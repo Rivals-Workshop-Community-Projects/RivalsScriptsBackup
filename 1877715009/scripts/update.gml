@@ -2774,7 +2774,6 @@ else if (get_gameplay_time() == (b_infamous?90:68))
 				|| url == "2000855966" // Wolf
 				|| url == "2013448650" // Joker
 				|| url == "1988220395" // Samus
-				|| url == "2035128973" // Lucario
 				|| url == "1970731843" // Meta Knight
 				|| url == "1877253352" // Falco
 				)

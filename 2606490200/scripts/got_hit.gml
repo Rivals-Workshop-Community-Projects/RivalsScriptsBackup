@@ -1,6 +1,11 @@
 //
 
 
+
+if btrain < 95 {
+  btrain += enemy_hitboxID.damage/6
+}
+
 if hit_player_obj == self {
     
     set_state(PS_PRATFALL)

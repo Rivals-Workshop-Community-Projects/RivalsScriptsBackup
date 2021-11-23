@@ -168,7 +168,7 @@ air_dodge_sound     = asset_get("sfx_quick_dodge");
 bubble_x = -10;
 bubble_y = 0;
 
-
+first_jab_parried = false;
 electro_charged = false;
 force_discharge = false;
 electro_start = false;

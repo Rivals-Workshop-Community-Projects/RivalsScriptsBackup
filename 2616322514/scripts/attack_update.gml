@@ -191,6 +191,10 @@ if (attack == AT_NAIR){
 	}
 }
 
+if (attack == AT_JAB){
+        was_parried = false;
+}
+
 if (attack == AT_TAUNT){
 	if (window == 1 && window_timer == 17){
 		sound_play(sound_get("sfx_shock_large"), false, noone, 1.6, 1);

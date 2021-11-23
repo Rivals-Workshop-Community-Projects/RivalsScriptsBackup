@@ -273,6 +273,22 @@ initHeader("Alternate Colors");
 initWords("+ 14 more color swaps have been added, with special thanks to Prober for most of them and Specter for the Xurkitree alt base");
 //initSection("* The character has been released.");
 
+initPatch("1.2", "21 November, 2021");
+initHeader("Jab");
+initWords("+ Parry stun is no longer inflicted when parried");
+initHeader("Misc.");
+initWords("~ In addition to being hit when charged outside of terrain (including but not limited to supercharged strongs/specials), an indicator will appear when Koko is parried when charged.");
+
+initPatch("1.3", "22 November, 2021");
+initHeader("Down Special");
+initWords("+ New counter animation has been applied to give the move more readability");
+initWords("~ New sound effect given to the spark");
+initWords("+ Startup frames 8 -> 6");
+initWords("- Counter frames 9 -> 8");
+initWords("- Endlag frames 24 -> 36");
+initHeader("Down Tilt");
+initWords("+ Sweetspt now generates an electric terrain");
+
 initPatch("About Tapu Koko", "");
 initHeader("Created by");
 initSection("TheSmashWaffle");

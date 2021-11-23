@@ -3,6 +3,17 @@ if (attack == AT_NSPECIAL || attack == AT_DSPECIAL ){
     trigger_b_reverse();
 }
 
+with hit_player_obj {
+	
+	if "clone" in self {
+		if clone == true {
+		clone = false 
+		}
+	}
+	
+	
+}
+
 switch attack {
     
     case AT_JAB :
@@ -242,6 +253,93 @@ switch attack {
     
     case AT_FSPECIAL :
         
+
+        if window >= 3 {
+     
+     if has_hit_player && hit_player_obj.super_armor == false {
+         
+         hit_player_obj.state_timer -= 1
+         
+         if free {
+         	hsp /= 1.2
+             vsp = 0
+             if state_timer % 5 == 0 {
+                 spawn_base_dust(x ,y,"dash",spr_dir*-1)
+                spawn_base_dust(x ,y,"dash_start",spr_dir)
+             }
+         }
+         
+         if window_timer > 18{
+         window_timer -= 1
+         }
+         
+         soft_armor = 999
+         
+         hit_player_obj.hsp = 0
+         hit_player_obj.vsp = 0
+         
+         hit_player_obj.fall_through = true
+         
+         hit_player_obj.x += floor((x + 12*spr_dir - hit_player_obj.x)/4)
+         hit_player_obj.y += floor((y - 34 - hit_player_obj.y)/4)
+         
+         if state_timer > 25 {
+         	
+         if special_down or state_timer >= 45{
+         	attack_end()
+             set_attack(AT_EXTRA_1)
+             window = 7
+             window_timer = 1
+             sound_play(asset_get("sfx_bird_sidespecial_start"),false,noone,1,.8)
+            
+         }
+         
+         if right_down {
+         	attack_end()
+         	
+             if spr_dir = -1 {
+             	spr_dir *= -1
+             	sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1.2)
+             set_attack(AT_EXTRA_1)
+             window = 6
+             window_timer = 1
+             
+             } else {
+             	sound_play(asset_get("sfx_bird_sidespecial_start"),false,noone,1,.8)
+             set_attack(AT_EXTRA_1)
+             window = 7
+             window_timer = 1
+
+             }
+         }
+         
+         if left_down {
+         	attack_end()
+         	
+         	if spr_dir = -1 {
+         		sound_play(asset_get("sfx_bird_sidespecial_start"),false,noone,1,.8)
+             set_attack(AT_EXTRA_1)
+             window = 7
+             window_timer = 1
+         	} else {
+         		spr_dir *= -1
+         		sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1.2)
+             set_attack(AT_EXTRA_1)
+             window = 6
+             window_timer = 1
+         	}
+         	
+         }
+         
+
+         
+         }
+         
+     }   
+        
+        
+    }
+    
         can_move = false
         can_fastfall = false
         if window < 3 {
@@ -278,6 +376,7 @@ switch attack {
         can_fast_fall = false
         
         if window == 1 && state_timer == 1 && !hitpause {
+        	sound_play(asset_get("sfx_swipe_heavy1"),false,noone,1,1)
             sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1)
         }
         
@@ -404,7 +503,6 @@ switch attack {
        
     case AT_NSPECIAL :   
     
-    move_cooldown[AT_NSPECIAL] = 30
     
     if window == 1 {
     	 if right_pressed {
@@ -472,13 +570,16 @@ switch attack {
          hit_player_obj.y += floor((y - 4 - hit_player_obj.y)/4)
          
          if state_timer > 15 {
-         if special_down or state_timer >= 45{
+         	
+          if special_down or state_timer >= 45{
+         	attack_end()
              set_attack(AT_EXTRA_1)
              window = 1
              window_timer = 1
          }
          
          if right_down {
+         	attack_end()
              spr_dir = 1
              set_attack(AT_EXTRA_1)
              window = 2
@@ -486,6 +587,7 @@ switch attack {
          }
          
          if left_down {
+         	attack_end()
              spr_dir = -1
              set_attack(AT_EXTRA_1)
              window = 2
@@ -493,12 +595,14 @@ switch attack {
          }
          
          if up_down {
+         	attack_end()
              set_attack(AT_EXTRA_1)
              window = 3
              window_timer = 1
          }
          
          if down_down {
+         	attack_end()
              set_attack(AT_EXTRA_1)
              window = 4
              window_timer = 1
@@ -586,6 +690,68 @@ switch attack {
                hit_player_obj.hsp = 0
                
                hit_player_obj.x += floor((x - 6*spr_dir - hit_player_obj.x)/4)
+         }
+         
+         if window == 6{
+         	
+         	if window_timer = 2 && !hitpause{
+         		hsp = 6*spr_dir 
+         	}
+         	
+         	if window_timer < 10 {
+
+         	} else if window_timer > 6*4 {
+         		window_timer += 0.5
+         	}
+         	
+         	if window_timer < 6*2 {
+         	   hit_player_obj.hsp = 0
+               hit_player_obj.vsp = 4
+               
+               hit_player_obj.x += floor((x - 30*spr_dir - hit_player_obj.x)/2)
+               hit_player_obj.y += floor((y - 36 -  hit_player_obj.y)/2)
+         	} else if window_timer < 6*3  {
+         	   hit_player_obj.hsp = 0
+               hit_player_obj.vsp = 4
+               
+               hit_player_obj.x += floor((x + 40*spr_dir - hit_player_obj.x)/4)
+               hit_player_obj.y += floor((y - 36 -  hit_player_obj.y)/6)
+         	}
+         }
+         
+         if window == 7{
+         	with hit_player_obj {
+         		can_tech = false
+         	}
+         	if hitpause {
+         		window_timer += 0.5
+         	}
+         	
+         	if window_timer > 5*3 + 2 && !hipause {
+         		window_timer += 0.5
+         	}
+         	
+         	if window_timer < 5*3 {
+         	   hit_player_obj.hsp = 0
+               hit_player_obj.vsp = 0
+               
+               hit_player_obj.x += floor((x - 30*spr_dir - hit_player_obj.x)/2)
+               hit_player_obj.y += floor((y - 50 -  hit_player_obj.y)/2)
+         	} else if window_timer == 5*3   {
+         	   hit_player_obj.hsp = 0
+               hit_player_obj.vsp = 0
+               
+               hit_player_obj.x = x + 35*spr_dir
+               hit_player_obj.y = y
+               
+               if !hitpause {
+               if free {
+               	create_hitbox(AT_EXTRA_1, 9 ,x,y)
+               } else {
+               	create_hitbox(AT_EXTRA_1, 10 ,x,y)
+               }
+               }
+         	}
          }
          
      break ;
