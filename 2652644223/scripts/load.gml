@@ -67,3 +67,4 @@ sprite_change_offset("articlearrow", 34, 64);
 sprite_change_offset("dtilt_proj", 116, 142);
 sprite_change_offset("reload_input", 118, 142);
 sprite_change_offset("scarf_fire", 106, 100);
+sprite_change_offset("miiverse", 60, 30);

@@ -212,7 +212,7 @@ if (get_training_cpu_action() != CPU_FIGHT && state != PS_SPAWN) {
         prac_text = (hud_enhanced == 5 ? "Ammo enhanced!" : "Ammo reloaded.")
         sound_play(asset_get("mfx_coin"));
     }
-    if(attack == AT_TAUNT && state == PS_ATTACK_GROUND)
+    if(attack == AT_TAUNT && prac_timer != 0 && state == PS_ATTACK_GROUND)
         set_state(PS_IDLE);
 }
 

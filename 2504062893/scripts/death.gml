@@ -10,9 +10,13 @@ with(asset_get("obj_article1")){
 
 if (article1_count > 0){
     with (article1){
-        lifespan = 0; // depending on script order, might only work if changed to 1?   
+        lifespan = 1; // depending on script order, might only work if changed to 1?   
     }
 } 
+
+holding_boosted = false;
+caught_fspecial = 0;
+
 
 // uspec_cancel_alarm = -1;
 // atk_cooldown = 0;

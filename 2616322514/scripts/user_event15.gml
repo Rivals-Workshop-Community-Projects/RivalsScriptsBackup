@@ -289,6 +289,14 @@ initWords("- Endlag frames 24 -> 36");
 initHeader("Down Tilt");
 initWords("+ Sweetspt now generates an electric terrain");
 
+initPatch("1.4", "23 November, 2021");
+initHeader("Down Special");
+initWords("- The counter is no longer triggered if an invincible opponent strikes");
+initHeader("Misc");
+initWords("~ Hitpause on various attacks has been decreased for better gamefeel");
+initWords("~ New sound effects from Smash Ultimate have been added, including but not limited to a spike sound for DAir and a sourspot sound for BAir");
+initSection("Special thanks to Vertyx for these quality of life changes :)");
+
 initPatch("About Tapu Koko", "");
 initHeader("Created by");
 initSection("TheSmashWaffle");

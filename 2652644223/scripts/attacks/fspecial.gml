@@ -65,6 +65,6 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.2);
 set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 20);
 set_hitbox_value(AT_FSPECIAL, 2, HG_EXTRA_HITPAUSE, 12);
-set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, laserhit_fx);
+set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, stronglaser_fx);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_LOCKOUT, 6);

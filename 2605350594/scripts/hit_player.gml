@@ -6,7 +6,15 @@ if(attack == AT_FTILT && my_hitboxID.hbox_num == 1)
     hsp = 0;
     old_hsp = 0;
     hit_player_obj.x = clamp(hit_player_obj.x, x-100, x+100);
-	jet_charge = true;
+	if(!jet_charge)
+	{
+		jet_charge = true;
+		jet_timer = 0;
+		white_flash_timer = 10;
+		sound_play(asset_get("sfx_coin_capture"));
+		fx = spawn_hit_fx(x,y-40,4);
+		fx.depth = depth + 3;
+	}
 }
 
 if ((my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DSPECIAL_AIR) && my_hitboxID.hbox_num == 1) 
@@ -22,7 +30,15 @@ if ((my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DSPECIAL_AIR)
 		set_attack_value(attack, AG_NUM_WINDOWS, 7);
 		window = 4;
         window_timer = 0;
-		jet_charge = true;
+		if(!jet_charge)
+		{
+			jet_charge = true;
+			jet_timer = 0;
+			white_flash_timer = 10;
+			sound_play(asset_get("sfx_coin_capture"));
+			fx = spawn_hit_fx(x,y-40,4);
+			fx.depth = depth + 3;
+		}
 		
 		//if this attack hasn't grabbed a player yet, grab the player we just hit.
 		if (!instance_exists(grabbed_player_obj)) { grabbed_player_obj = hit_player_obj; }

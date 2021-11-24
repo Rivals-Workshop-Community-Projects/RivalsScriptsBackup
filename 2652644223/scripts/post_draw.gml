@@ -8,6 +8,11 @@ if(variable_instance_exists(id,"hud_bullet"))
     {
         hud_bullet = bullets
         hud_timer = 30;
+        if(bullets == 0)
+        {
+            outline_timer = 20;
+            sound_play(asset_get("sfx_abyss_despawn"));
+        }
     }
     if(hud_timer != 0 && bullets != 0)
     {

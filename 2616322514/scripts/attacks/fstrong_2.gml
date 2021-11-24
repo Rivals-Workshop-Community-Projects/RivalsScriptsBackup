@@ -39,7 +39,7 @@ set_hitbox_value(AT_FSTRONG_2, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_ANGLE, 60);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_KNOCKBACK_SCALING, 1);
-set_hitbox_value(AT_FSTRONG_2, 1, HG_BASE_HITPAUSE, 20);
+set_hitbox_value(AT_FSTRONG_2, 1, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_VISUAL_EFFECT, electric_hit);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_PROJECTILE_DESTROY_EFFECT, electro_burst);

@@ -41,7 +41,7 @@ set_hitbox_value(AT_NAIR, 1, HG_ANGLE_FLIPPER, 9);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, 302);
-set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, sound_get("sfx_shield_hit_weak"));
 
 set_hitbox_value(AT_NAIR, 2, HG_MUNO_HITBOX_NAME, "Multihit 2");
 
@@ -71,10 +71,10 @@ set_hitbox_value(AT_NAIR, 3, HG_ANGLE, 60);
 set_hitbox_value(AT_NAIR, 3, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_NAIR, 3, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(AT_NAIR, 3, HG_BASE_HITPAUSE, 9);
-set_hitbox_value(AT_NAIR, 3, HG_HITPAUSE_SCALING, .3);
+set_hitbox_value(AT_NAIR, 3, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_NAIR, 3, HG_VISUAL_EFFECT_X_OFFSET, 20);
 set_hitbox_value(AT_NAIR, 3, HG_VISUAL_EFFECT_Y_OFFSET, -20);
-set_hitbox_value(AT_NAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_NAIR, 3, HG_HIT_SFX, asset_get("sfx_shield_hit_medium"));
 set_hitbox_value(AT_NAIR, 3, HG_HITBOX_GROUP, 2);
 
 /*set_hitbox_value(AT_NAIR, 4, HG_MUNO_HITBOX_NAME, "Hard Hitter 1");

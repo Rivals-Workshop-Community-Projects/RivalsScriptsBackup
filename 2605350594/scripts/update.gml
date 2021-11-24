@@ -11,7 +11,8 @@ if(jet_charge)
 {
     if(jet_timer > 90)
     {
-        spawn_hit_fx(x,y-40,3)
+        fx = spawn_hit_fx(x,y-40,3)
+        fx.depth = depth - 10;
         white_flash_timer = 8;
         jet_timer = 0;
     }

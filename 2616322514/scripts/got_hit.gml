@@ -1,4 +1,4 @@
-if (attack == AT_DSPECIAL && super_armor = true){
+if (attack == AT_DSPECIAL && super_armor = true && hit_player_obj.invincible = false){
     window = 4;
     window_timer = 0;
     if (enemy_hitboxID.type == 1){

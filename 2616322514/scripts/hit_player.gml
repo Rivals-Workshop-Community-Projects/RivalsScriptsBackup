@@ -46,3 +46,7 @@ if (my_hitboxID.attack == 49){
 	}
 	}
 }
+
+if (my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 3) {
+    sound_play(sound_get("meteor"));
+}

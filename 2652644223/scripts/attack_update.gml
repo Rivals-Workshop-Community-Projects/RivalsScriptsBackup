@@ -227,12 +227,14 @@ if(attack == AT_FAIR)
 
 if(attack == AT_BAIR || attack == AT_DAIR)
 {
-    if((attack_pressed || left_strong_pressed || right_strong_pressed || down_strong_pressed || up_strong_pressed) && window == 3 && bullets > 0 && !hitpause && free)
+    if((attack_pressed || left_strong_pressed || right_strong_pressed || down_strong_pressed || up_strong_pressed 
+     || left_stick_pressed || right_stick_pressed || down_stick_pressed || up_stick_pressed) && window == 3 && bullets > 0 && !hitpause && free)
     { window = 4; window_timer = 0; if(attack==AT_BAIR){vsp = -4; hsp = 3*spr_dir;}else vsp = -6; sound_play(sound_get("revolver_shot")); bullets--;}
 }
 if(attack == AT_UAIR)
 {
-    if((attack_pressed || left_strong_pressed || right_strong_pressed || down_strong_pressed || up_strong_pressed)&& window == 2 && window_timer > 5 && bullets > 0 && !hitpause && free)
+    if((attack_pressed || left_strong_pressed || right_strong_pressed || down_strong_pressed || up_strong_pressed 
+    || left_stick_pressed || right_stick_pressed || down_stick_pressed || up_stick_pressed) && window == 2 && window_timer > 5 && bullets > 0 && !hitpause && free)
     { window = 4; window_timer = 0; vsp += 2; sound_play(sound_get("revolver_shot")); bullets--;}
 }
 if(attack == AT_USTRONG)
@@ -260,7 +262,7 @@ if(attack == AT_DSTRONG)
         reset_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE);
         reset_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT);
 
-        if(bullets <= 1)
+        if(bullets == 0)
         {
             reload_check();
             if(!auto_reload)
@@ -282,12 +284,22 @@ if(attack == AT_DSTRONG)
             }
         }
     }
-    if(window == 3 && (window_timer <= 1 || window_timer == 12))
+    if(window == 3)
     {
-        if(hitpause)
-            window_timer += 2;
-        bullets --;
-        sound_play(sound_get("revolver_shot"));
+        if(window_timer <= 1 || window_timer == 12)
+        {
+            if(hitpause)
+                window_timer += 2;
+            bullets --;
+            sound_play(sound_get("revolver_shot"));
+        }
+        if(window_timer == 10 && bullets == 0)
+        {
+            white_flash_timer = 10;
+            reload_check();
+            if(!auto_reload)
+                set_attack(AT_FTILT);
+        }
     }
 }
 if(attack == AT_FSTRONG)
@@ -363,7 +375,8 @@ if(attack == AT_DTILT)
             shot_x = 0;
         }
         
-        if(attack_pressed && window_timer >= 6 && bullets != 0)
+        if((attack_pressed || left_strong_pressed || right_strong_pressed || down_strong_pressed || up_strong_pressed 
+        || left_stick_pressed || right_stick_pressed || down_stick_pressed || up_stick_pressed) && window_timer >= 6 && bullets != 0)
         {
             clear_button_buffer(PC_ATTACK_PRESSED);
             attack_end();
@@ -458,6 +471,7 @@ if dir != 0 newdust.spr_dir = dir; //set the spr_dir
 return newdust;
 
 #define reload_check()
+
 if(auto_reload)
 {
     if(!free)

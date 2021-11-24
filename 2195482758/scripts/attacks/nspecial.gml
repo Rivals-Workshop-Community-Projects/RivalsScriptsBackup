@@ -32,7 +32,7 @@ set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_clairen_fspecial_
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.5)
  
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 23);
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.5)

@@ -69,8 +69,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 75);
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 8.5);
 set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, .9);
-set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 20);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, .70);
+set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 22);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, 157);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, sound_get("sfx_electro_hit_heavy"));
 

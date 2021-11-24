@@ -49,8 +49,8 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .9);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, electric_hit);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_X_OFFSET, 16);
-set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 18);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .6);
+set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 14);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("sfx_electro_hit_heavy"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 

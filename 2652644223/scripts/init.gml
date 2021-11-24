@@ -55,11 +55,23 @@ bTut_tips_desc[2] = "All of your aerials with the exception of N-Air and F-Air, 
 //Hit Effects
 laserhit_sfx = sound_get("laser_hit")
 laserhit_fx = hit_fx_create(sprite_get("laserspark"), 34);
-stronglaser_fx = hit_fx_create(sprite_get("stronglaser"), 24);
+stronglaser_fx = hit_fx_create(sprite_get("stronglaser"), 30);
 dtilt_shot = hit_fx_create(sprite_get("dtilt_proj"), 15);
 uspec_fire = hit_fx_create(sprite_get("uspecfire"), 18);
 fspec_spark = hit_fx_create(sprite_get("fspec_thunder"), 20);
 scarf_fire = hit_fx_create(sprite_get("scarf_fire"), 20);
+
+//Compat
+steve_death_message = "Steve was disintegrated.";
+battle_text = "*You sense a greater danger than wavedashing...";
+arena_title = "Revolver Ducky";
+arena_short_name = "(Revolver Ducky)";
+Hikaru_Title = "Revolver Ducky";
+tcoart = sprite_get("tcoart");
+miiverse_post = sprite_get("miiverse");
+ncode1 = "Doesn't seem to come from here.";
+ncode2 = "Technology has far advanced our times.";
+ncode3 = "Too dangerous to be kept alive. Exterminate.";
 
 char_height = 58;
 idle_anim_speed = .1;

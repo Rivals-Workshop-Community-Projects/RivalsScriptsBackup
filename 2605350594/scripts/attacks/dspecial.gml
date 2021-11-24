@@ -145,6 +145,7 @@ set_hitbox_value(AT_DSPECIAL, 7, HG_DAMAGE, 5);
 set_hitbox_value(AT_DSPECIAL, 7, HG_BASE_KNOCKBACK, 12);
 set_hitbox_value(AT_DSPECIAL, 7, HG_HITSTUN_MULTIPLIER, .5);
 set_hitbox_value(AT_DSPECIAL, 7, HG_EXTRA_HITPAUSE, 10);
+set_hitbox_value(AT_DSPECIAL, 7, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_DSPECIAL, 7, HG_VISUAL_EFFECT, 1);
 set_hitbox_value(AT_DSPECIAL, 7, HG_ANGLE, 250);
 set_hitbox_value(AT_DSPECIAL, 7, HG_HITBOX_GROUP, -1);
