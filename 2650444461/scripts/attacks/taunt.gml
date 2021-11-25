@@ -5,7 +5,6 @@ set_attack_value(AT_TAUNT, AG_NUM_WINDOWS, 3);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_ANIM_FRAMES, 5);
-//set_window_value(AT_TAUNT, 1, AG_WINDOW_ANIM_FRAME_START, 36);
 
 set_window_value(AT_TAUNT, 2, AG_WINDOW_TYPE, 9);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH, 74);
@@ -29,4 +28,6 @@ set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_DESTROY_EFFECT, fx_empty);
 set_hitbox_value(AT_TAUNT, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(AT_TAUNT, 1, HG_PROJECTILE_GRAVITY, 10);

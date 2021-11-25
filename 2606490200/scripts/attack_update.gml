@@ -709,13 +709,17 @@ switch attack {
                hit_player_obj.vsp = 4
                
                hit_player_obj.x += floor((x - 30*spr_dir - hit_player_obj.x)/2)
-               hit_player_obj.y += floor((y - 36 -  hit_player_obj.y)/2)
-         	} else if window_timer < 6*3  {
+               hit_player_obj.y += floor((y - 46 -  hit_player_obj.y)/2)
+         	} else if window_timer < 6*3 + 1  {
          	   hit_player_obj.hsp = 0
                hit_player_obj.vsp = 4
                
-               hit_player_obj.x += floor((x + 40*spr_dir - hit_player_obj.x)/4)
-               hit_player_obj.y += floor((y - 36 -  hit_player_obj.y)/6)
+               hit_player_obj.x += floor((x + 40*spr_dir - hit_player_obj.x)/6)
+               hit_player_obj.y += floor((y - 56 -  hit_player_obj.y)/6)
+         	}
+         	
+         	if window_timer == 6*2 {
+         		hsp = 8*spr_dir
          	}
          }
          
@@ -727,7 +731,7 @@ switch attack {
          		window_timer += 0.5
          	}
          	
-         	if window_timer > 5*3 + 2 && !hipause {
+         	if window_timer > 5*3 + 2 && !hitpause {
          		window_timer += 0.5
          	}
          	

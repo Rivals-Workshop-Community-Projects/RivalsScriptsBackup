@@ -259,6 +259,16 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.2", "24th November, 2021");
+initHeader("Buffs");
+initSection("- Hitting aerial Dive now restores USpecial and FSpecial");
+initHeader("Nerfs");
+initSection("- Made Mudkip even lighter (1.2->1.3)");
+initHeader("Fixes / Other Changes");
+initSection("- Improved NSpecial startup to be more distinct from other similar moves (mainly FAir and FStrong)");
+initSection("- Fixed taunt rain to be unbashable, plasma safe, etc");
+
+
 initPatch("1.1", "10th November, 2021");
 initHeader("Buffs");
 initSection("- Sped up startup and endlag of grounded DSpecial to fit Mudkip's quick playstyle better");

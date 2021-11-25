@@ -15,6 +15,7 @@ if(my_hitboxID.attack == AT_DSPECIAL_AIR){
 	if(my_hitboxID.hbox_num == 1){
 		window = 8;window_timer = 0;
 		vsp = -12;old_vsp = -12;destroy_hitboxes();
+		upb = false;move_cooldown[AT_USPECIAL] = 0;fspecialcooldown = false;
 	}
 }
 
