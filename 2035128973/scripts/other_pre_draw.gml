@@ -1,0 +1,9 @@
+if ("other_player_id" in self && "boneMark" in other_player_id && draw_indicator)
+{
+	if (instance_exists(other_player_id.boneMark) && other_player_id.boneMark == id) with (other_player_id.boneObj) if (state == 1)
+	{
+		with (other.other_player_id) shader_start();
+		draw_sprite_ext(sprite_get("boneMark"), 1, other.x, floor(other.y-other.char_height/2), 2*other.spr_dir, 2, 0, c_white, 1);
+		shader_end();
+	}
+}

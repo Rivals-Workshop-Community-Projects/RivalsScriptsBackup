@@ -1,7 +1,8 @@
-set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
+set_attack_value(AT_EXTRA_3, AG_CATEGORY, 1);
 set_attack_value(AT_EXTRA_3, AG_SPRITE, sprite_get("airdodge"));
 set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 1);
-set_attack_value(AT_EXTRA_3, AG_HAS_LANDING_LAG, 4);
+set_attack_value(AT_EXTRA_3, AG_HAS_LANDING_LAG, 1);
+set_attack_value(AT_EXTRA_3, AG_LANDING_LAG, 1);
 
 set_attack_value(AT_EXTRA_3, AG_OFF_LEDGE, 0);
 set_attack_value(AT_EXTRA_3, AG_USES_CUSTOM_GRAVITY, 1);

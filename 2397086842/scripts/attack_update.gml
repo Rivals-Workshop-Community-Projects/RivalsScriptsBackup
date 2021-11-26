@@ -8,17 +8,16 @@ if attack == AT_EXTRA_3 {
     has_airdodge = false
     can_fast_fall = false
     
+    invincible = false
+    invince_time = 0
+        
     if !free {
-        state = PS_WAVELAND
-        state_timer = 1
         sound_play(asset_get("sfx_waveland_zet"))
-        invincible = false
-        invince_time = 0
     }
     
     if state_timer <= 5 {
 
-    } else if state_timer > 10 {
+    } else if state_timer > 15 {
     	can_attack = true
     }
     

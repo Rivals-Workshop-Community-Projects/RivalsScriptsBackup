@@ -2,7 +2,6 @@
 
 
 if djumps == 0 {
-	
 	djump_speed = 9;
 } else {
 	djump_speed = 7.5;
@@ -187,7 +186,6 @@ if state == PS_AIR_DODGE {
 	if state_timer == 1 && (!joy_pad_idle) {
 		
 		if right_down - left_down != 0 spr_dir = right_down - left_down
-		
 		move_cooldown[AT_EXTRA_3] = 0
 		set_attack(AT_EXTRA_3)
 		window = 1
@@ -197,7 +195,7 @@ if state == PS_AIR_DODGE {
 		
 	}
     
-    if state_timer > 1 {
+    if state_timer > 2 {
     	hsp = 0
     	vsp = 0
     }

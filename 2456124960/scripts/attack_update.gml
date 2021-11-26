@@ -48,6 +48,22 @@ if (attack == AT_JAB) {
 	if (window == 7 && window_timer == 8) {sound_play(asset_get("sfx_bird_sidespecial_start"), false, noone, 0.8, 0.8);}
 	if (window == 8 && window_timer == 4) {sound_play(asset_get("sfx_bird_sidespecial_start"), false, noone, 0.8, 0.8);}
 	if (window == 8 && window_timer == 10) {sound_play(asset_get("sfx_bird_sidespecial_start"), false, noone, 0.8, 1);}
+	
+	////
+	//thank you supersonic
+    if (sign(right_down-left_down) == -spr_dir && down_down-up_down == 0 && !has_hit && !has_hit_player) {
+        var win_time = get_window_value(attack,window,AG_WINDOW_LENGTH);
+        set_window_value(attack,window,AG_WINDOW_CANCEL_FRAME, win_time);
+        if get_window_value(attack,window,AG_WINDOW_CANCEL_TYPE) != 0 && window_timer == win_time {
+            set_state(PS_IDLE);
+            was_parried = false; 
+            //if you get ftilt frame-perfectly on parry you can carry the parry lag over
+            //that doesn't happen in base cast so this fixes that
+        }
+    } else {
+        reset_window_value(attack,window,AG_WINDOW_CANCEL_FRAME);
+    }
+	////
 }
 
 if (attack == AT_DATTACK) {
@@ -131,7 +147,7 @@ if (attack == AT_DAIR) {
 
 if (attack == AT_DTILT) {
 	if (window == 1 && window_timer == 1) {
-		if (right_down - left_down != 0) {spr_dir = right_down - left_down;}
+		//if (right_down - left_down != 0) {spr_dir = right_down - left_down;}
 		if (instance_exists (construct)) {instance_destroy(construct);}
 		construct = instance_create(x, y, "obj_article2");
 		construct.spr_dir = spr_dir;
@@ -145,7 +161,7 @@ if (attack == AT_DTILT) {
 
 if (attack == AT_UTILT) {
 	if (window == 1 && window_timer == 1) {
-		if (right_down - left_down != 0) {spr_dir = right_down - left_down;}
+		//if (right_down - left_down != 0) {spr_dir = right_down - left_down;}
 		if (instance_exists (construct)) {instance_destroy(construct);}
 		construct = instance_create(x, y, "obj_article2");
 		construct.spr_dir = spr_dir;
@@ -159,7 +175,13 @@ if (attack == AT_UTILT) {
 
 if (attack == AT_FTILT) {
 	if (window == 1 && window_timer == 1) {
-		if (right_down - left_down != 0) {spr_dir = right_down - left_down;}
+		//if (right_down - left_down != 0) {spr_dir = right_down - left_down;}
+		set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 55);
+		set_hitbox_value(AT_FTILT, 2, HG_HEIGHT, 55);
+	}
+	if (has_hit || has_hit_player) {
+		set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 75);
+		set_hitbox_value(AT_FTILT, 2, HG_HEIGHT, 75);
 	}
 }
 
