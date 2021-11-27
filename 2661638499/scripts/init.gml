@@ -155,10 +155,15 @@ empty_spr = asset_get("empty_sprite");
 unown_airdodge_sfx = asset_get("sfx_quick_dodge");
 unown_airdodge_vfx = 66;
 
+unown_fastfall_vfx = hit_fx_create( asset_get("fx_fastfall_bg"), 12 );
+
 //================================================================
 // Balancing
 unown_d_speed = 8;
 unown_d_accel = 0.5;
+
+unown_n_cooldown = 40;
+unown_n_invincibility = 50;
 
 //================================================================
 // Forms
@@ -178,19 +183,18 @@ prev_spr_dir = spr_dir;
 lev_amplitude = 24; // total range of motion
 lev_cycle_time = 40; //half a full up/down cycle
 
-lev_airdodge_cooldown_max = 50;
+lev_parry_cooldown_max = 50;
 
 uno_lev_height_min = 12;
 uno_lev_height_mid = 24;
-uno_lev_height_max = 32;
+uno_lev_height_max = 36;
 uno_lev_offset = 0; //depends on current form
-
 
 //Flags
 lev_bypass = false; //set to TRUE to avoid levitation for your attack
 lev_is_grounded = true; //TRUE if close enough to ground to be considered landed
 lev_pratland_timer = 0; //prevents exiting pratfall if above zero & "landed", ticks down when landed
-lev_airdodge_cooldown = 0; //prevents parry from being spammed by not restoring airdodge immediately
+lev_parry_cooldown = 0; //prevents parry from being spammed by not restoring airdodge immediately
 
 // technical flags or derived from above
 lev_state = 0; //0 aerial, 1 high-lev, 2 mid-lev, 3 low-lev
@@ -201,6 +205,9 @@ lev_target_accel = (2.0 * lev_target_vsp) / lev_cycle_time;
 
 //================================================================
 //attack flags
+
+unown_c_used = false; //once per airtime
+
 unown_i_angle = 90; //straight up
 unown_i_prongs_spr = sprite_get("attack_I_prong");
 
@@ -212,6 +219,16 @@ unown_t_times_max = 3;
 
 unown_u_bounced = false;
 
+//position of water spout (timer counts down)
+unown_y_water = { tip_x:0, tip_y:0, start_x:0, start_y:0, index:0, timer:0 }; 
+unown_y_waterstart_spr = sprite_get("attack_Y_waterstart");
+unown_y_waterbeam_spr = sprite_get("attack_Y_waterbeam");
+unown_y_watertip_spr = sprite_get("attack_Y_watertip");
+unown_y_water_active_frames = 4;
+unown_y_water_active_time = 20;
+unown_y_water_dying_frames = 2;
+unown_y_water_dying_time = 10;
+
 //================================================================
 // Pokémon Teaches Typing
 unown_text_buffer = "";
@@ -220,6 +237,10 @@ unown_attack_is_fresh = false; //wether an attack is recent or not (if true, wil
 
 unown_best_word_pos = 0;
 unown_best_word_length = 0;
+
+//unown_word_length_bonus[3] = scale of bonus for a 3-letter word in the buffer
+unown_word_length_bonus = [0, 0, 0.25, 0.50, 0.75, 0.85, 1, 1.10, 1.25];
+unown_letter_exclamation_bonus = 0.15; //added bonus for using "!" for each additional letter not in a word
 
 unown_dictionary = {}; //misnomer: actually a trie
 with (oPlayer) if (self != other) && ("unown_dictionary" in self)

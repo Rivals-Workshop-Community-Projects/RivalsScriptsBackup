@@ -89,28 +89,24 @@ if (my_hitboxID.type == 1 && hitpause && point_distance(x, y, teammate_player_id
 
 
 //if the teammate is using helping hand add the damage dealt to the charge level
-if (is_teammate_using_helping_hand() && has_been_buffed_by_helping_hand) {
+if (is_teammate_using_helping_hand() && has_been_buffed_by_helping_hand && hit_player_obj != teammate_player_id && hit_player_obj.player != player) {
     var teammate_id = teammate_player_id;
     var damage_dealt = my_hitboxID.damage;
     
     //don't gain charge for hitting with dspecial itself
-    if (my_hitboxID.attack != AT_DSPECIAL_2 && damage_dealt > 0 )
-    with (master_player_id) {
-        hh_charge_percent += damage_dealt;
-        
-        if (hh_charge_level < hh_maximum_charge_level && hh_charge_percent > hh_charge_percent_array[hh_charge_level]) {
-            hh_charge_level += 1;
-        }
-        /*
-        var new_charge_level = min( floor(hh_charge_percent / hh_percent_per_level), hh_maximum_charge_level );
-        
-        if (new_charge_level > hh_charge_level) {
-            with (teammate_id) {
-                spawn_hit_fx(x, y - 30, 20);
+    if (my_hitboxID.attack != AT_DSPECIAL_2 && damage_dealt > 0 ) {
+        var charge_target;
+        //for solo player quirks, the charge goes straight to the other teammate character
+        if (is_solo_player) charge_target = teammate_player_id;
+        //normally, the charge goes to the master player instance
+        else charge_target = master_player_id;
+        with (charge_target) {
+            hh_charge_percent += damage_dealt;
+            
+            if (hh_charge_level < hh_maximum_charge_level && hh_charge_percent > hh_charge_percent_array[hh_charge_level]) {
+                hh_charge_level += 1;
             }
         }
-        hh_charge_level = new_charge_level;
-        */
     }
     
     if (has_been_buffed_by_helping_hand) {

@@ -1,5 +1,6 @@
 ///
 
+    
 if player_id.nolan == 0 {
 if attack == AT_NSPECIAL{
 	
@@ -222,11 +223,18 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
 	     }
 	    
 		if nearbyhitbox.type == 1  && hitbox_timer < 10 && nearbyhitbox.hit_effect_x != 0.666{
-			spr_dir = nearbyhitbox.spr_dir
+			
 			kb_value = nearbyhitbox.kb_value
 			kb_scale = nearbyhitbox.kb_scale 
 			kb_angle = nearbyhitbox.kb_angle
-			hit_flipper = 6
+            
+            if kb_angle > 90 && kb_angle < 180 {
+            	
+            	kb_angle = (kb_angle - 180)*-1
+            	
+            }
+            
+            
 			
 		    for (var i = 1; i < 20; i++) can_hit[i] = true
 			damage = 5 + floor(nearbyhitbox.damage/2)
@@ -301,6 +309,8 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
 		    
 		    
 		    hitbox_timer = 15
+		    
+		    
 	    }
 	    
 	    if nearbyhitbox.type == 1  && hitbox_timer < 10 && nearbyhitbox.hit_effect_x == 0.666 && nearbyhitbox.player_id.nolan == 0{
@@ -348,13 +358,7 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
 
 
 if attack == AT_NSPECIAL && hbox_num == 3 {
-	    if hsp < 0 {
-        spr_dir = -1
-    } 
-    
-    if hsp > 0 {
-        spr_dir = 1
-    }
+
 
      	with player_id {
                 if window < 3 {

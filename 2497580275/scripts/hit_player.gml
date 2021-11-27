@@ -49,3 +49,8 @@ if(attack == AT_FSPECIAL)
 		if (player_id == other.id) 
 			depth = -999;
 }
+
+
+if(my_hitboxID.attack == AT_FAIR){
+    old_vsp = -2;
+}

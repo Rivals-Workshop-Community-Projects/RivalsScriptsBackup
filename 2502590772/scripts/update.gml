@@ -1,6 +1,13 @@
 //update.gml
 
-//master player script
+
+if (is_solo_player && !initialize_unit_players) {
+    user_event(8); //user_event8.gml - establish buff damage arrays
+	user_event(7); //user_event7.gml - team up with any other solo plusle/minun players.
+	initialize_unit_players = true;
+	exit;
+}
+
 if (is_master_player) {
 
 	//initiate
@@ -57,6 +64,9 @@ if (is_master_player) {
 				}
 			}
 		}
+		//update the airdodge hud
+		has_airdodge = leader_unit.has_airdodge;
+		
 		//keep track of the special button being held
 		if (special_down || special_pressed || (leader_unit.attack == AT_TAUNT_2 && leader_unit.state == PS_ATTACK_GROUND)) {
 			special_held_counter = max(0, special_held_counter + 1);
@@ -68,10 +78,9 @@ if (is_master_player) {
 		}
 	}
 
-
-
 	exit;
 }
+
 
 
 
@@ -182,18 +191,21 @@ if (!custom_clone) {
 	//input buffer for partner
 	leader_cycle_buffer();
 	
-	//the leader can't use dspecial
-	move_cooldown[AT_DSPECIAL] = 2;
 	
 	//the leader can't use nspecial if they have no baton
 	if (!nspecial_can_use_baton) {
 		//get the baton back by landing on the ground
-		if (!free) nspecial_can_use_baton = 1;
+		//solo players can only get the baton back if their partner doesn't have it
+		if (!free && (!is_solo_player || !instance_exists(teammate_player_id) || teammate_player_id.nspecial_can_use_baton == 0)) nspecial_can_use_baton = 1;
 		else move_cooldown[AT_NSPECIAL] = 2;
 	}
 	
-	//dspecial is handled by this script instead
-	leader_dspecial_handler();
+	//the leader can't use dspecial; if solo then they can.
+	if (!is_solo_player) { 
+		move_cooldown[AT_DSPECIAL] = 2; 
+		//dspecial is handled by this script instead
+		leader_dspecial_handler();
+	}
 	
 	//nspecial is handled by this script during spawns and respawns
 	leader_spawn_nspecial_handler();
@@ -251,16 +263,63 @@ else {
 	switch (state) {
 		case PS_DASH_STOP: 
 			//slow down if the leader is right ahead
-			if (!master_player_id.special_held && instance_exists(teammate_player_id) && teammate_player_id.state_cat == SC_GROUND_NEUTRAL) {
-				var teammate_distance = abs(teammate_player_id.x - x);
-	            if (spr_dir == sign(teammate_player_id.x - x) && teammate_distance <= 40) {
-	                //hsp = -spr_dir * ((40 - teammate_distance) / max(state_timer, 1));
-	                hsp = 0;
-	                x -= spr_dir * ((40 - teammate_distance) / max(state_timer, 1));
-	            }
+			if (!master_player_id.special_held && instance_exists(teammate_player_id) ) {
+				if (teammate_player_id.state_cat == SC_GROUND_NEUTRAL) {
+					var teammate_distance = abs(teammate_player_id.x - x);
+		            if (spr_dir == sign(teammate_player_id.x - x) && teammate_distance <= 40) {
+		                //hsp = -spr_dir * ((40 - teammate_distance) / max(state_timer, 1));
+		                hsp = 0;
+		                x -= spr_dir * ((40 - teammate_distance) / max(state_timer, 1));
+		            }
+				}
+				else if (teammate_player_id.state == PS_ATTACK_GROUND && teammate_player_id.attack == AT_DATTACK && teammate_player_id.state_timer < partner_input_buffer_delay) {
+					var teammate_distance = abs(teammate_player_id.x - x);
+					if teammate_distance <= 300 {
+						set_attack(AT_DATTACK);
+					}
+		            if (spr_dir == sign(teammate_player_id.x - x) && teammate_distance <= 40) {
+		                //hsp = -spr_dir * ((40 - teammate_distance) / max(state_timer, 1));
+		                hsp = 0;
+		                x -= spr_dir * ((40 - teammate_distance) / max(state_timer, 1));
+		            }
+				}
 			}
             //draw the partner behind the leader
             force_depth = true;
+			depth = -3.5;
+		break;
+		
+		case PS_HITSTUN_LAND:
+			//auto-tech.
+			//print("state " + get_state_name(state) + " prev state " + get_state_name(prev_state));
+			if (state_timer <= 1 && (prev_state == PS_HITSTUN || prev_state == PS_TUMBLE) && !free && !master_player_id.special_held && !hitpause) {
+				//print("trigger")
+				set_state(PS_TECH_GROUND);
+				var teammate_distance = (teammate_player_id.x - x) * spr_dir;
+				//print(string(teammate_distance));
+				if (teammate_distance > 100) { set_state(PS_TECH_FORWARD); }
+				else if (teammate_distance < -100) { set_state(PS_TECH_BACKWARD); }
+				sound_play(asset_get("sfx_tech"));
+			}
+			force_depth = true;
+			depth = -3.5;
+		break;
+		
+		case PS_TECH_GROUND:
+		case PS_TECH_FORWARD:
+		case PS_TECH_BACKWARD:
+			if (state_timer <= 1 && (prev_state == PS_HITSTUN || prev_state == PS_TUMBLE) && !master_player_id.special_held && !hitpause) {
+				//print("trigger 2")
+				var teammate_distance = (teammate_player_id.x - x) * spr_dir;
+				//if (teammate_distance > 100) state = PS_TECH_FORWARD;
+				//else if (teammate_distance < -100) state = PS_TECH_BACKWARD;
+				//else state = PS_TECH_GROUND;
+				if (teammate_distance > 100) { set_state(PS_TECH_FORWARD); }
+				else if (teammate_distance < -100) { set_state(PS_TECH_BACKWARD); }
+				else { set_state(PS_TECH_GROUND); }
+				sound_play(asset_get("sfx_tech"));
+			}
+			force_depth = true;
 			depth = -3.5;
 		break;
 		
@@ -301,9 +360,9 @@ else {
 								
 		
 		case PS_ROLL_FORWARD:
-        case PS_TECH_FORWARD:
+        //case PS_TECH_FORWARD:
         case PS_ROLL_BACKWARD:
-        case PS_TECH_BACKWARD:
+        //case PS_TECH_BACKWARD:
         	//if the leader is at a lower altitude than the partner, roll towards the partner
         	if (state_timer <= 0 && instance_exists(teammate_player_id) && y < teammate_player_id.y && !(master_player_id.special_held) && x != teammate_player_id.x) {
         		spr_dir = sign(x - teammate_player_id.x);
@@ -675,7 +734,9 @@ switch (state) {
 	//if attacking, just set 'was_parried' to true.
 	case PS_ATTACK_GROUND:
 	case PS_ATTACK_AIR:
-		if (attack != AT_DSPECIAL && attack != AT_EXTRA_3) was_parried = true;
+		if (attack != AT_DSPECIAL && attack != AT_EXTRA_3 && attack != AT_TAUNT && attack != AT_TAUNT_2) {
+			set_parry_lag_to_maximum();
+		}
 	break;
 	//don't do anything for these states.
 	case PS_DEAD:
@@ -686,15 +747,38 @@ switch (state) {
 	//if already in pratfall or pratland, just set 'was_parried' to true.
 	case PS_PRATFALL:
 	case PS_PRATLAND:
-		was_parried = true;
+		set_parry_lag_to_maximum();
 	break;
-	//anything else, set the state to pratfall or pratland.
-	default:
-	    was_parried = true;
+	//any neutral state, set the state to pratfall or pratland.
+	case PS_IDLE:
+	case PS_IDLE_AIR:
+	case PS_WALK:
+	case PS_CROUCH:
+	case PS_WALK_TURN:
+	case PS_WAVELAND:
+	case PS_LANDING_LAG:
+	case PS_LAND:
+	case PS_FIRST_JUMP:
+	case PS_DOUBLE_JUMP:
+	case PS_DASH:
+	case PS_DASH_START:
+	case PS_DASH_STOP:
+	case PS_DASH_TURN:
+	    set_parry_lag_to_maximum();
 	    if (free) set_state(PS_PRATFALL);
 	    else set_state(PS_PRATLAND);
 	break;
+	//anything else, wait until next frame.
+	default:
+		leading_teammate_got_parried_trigger = 1;
+	break;
 }
+return;
+
+#define set_parry_lag_to_maximum
+was_parried = true;
+parry_lag = max(parry_lag, 40);
+if (instance_exists(teammate_player_id)) parry_lag = max(parry_lag, teammate_player_id.parry_lag);
 return;
 
 

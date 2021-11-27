@@ -54,6 +54,15 @@ switch (state) {
             	spr_dir = dir_correct;
             	dir_correct = 0;
             break;
+            
+            case AT_DSPECIAL:
+            	//fake hitstun when armoring attacks
+            	if (dspecial_fake_hitstun > 0) {
+            		var spr_name = "hurtground";
+                    if (species_id == 1) spr_name = "m_" + spr_name;
+                    sprite_index = sprite_get(spr_name);
+                    //image_index = 1;
+            	}
         }
     break;
     
@@ -70,6 +79,8 @@ switch (state) {
         sprite_index = spr_minun_reskin[state];
         image_index = img_index;
     break;
+    
+    case PS_LANDING_LAG:
     
     case PS_HITSTUN:
         //sprite reskin for minun only
@@ -108,7 +119,7 @@ switch (state) {
                 //var img_index = image_index;
                 sprite_index = spr_minun_reskin[state];
                 //image_index = img_index;
-                image_index = teammate_player_id.image_index + 6;
+                if (instance_exists(teammate_player_id)) image_index = teammate_player_id.image_index + 6;
             }
             else {
                 sprite_index = sprite_get("m_intro");

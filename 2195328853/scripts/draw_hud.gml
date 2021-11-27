@@ -10,3 +10,6 @@ if(steam_cooldown <= 0){
 }
 
 shader_end();
+
+muno_event_type = 5;
+	user_event(14);

@@ -12,12 +12,16 @@ set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_SFX, sound_get("compact"));
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_SFX_FRAME, 10);
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_INVINCIBILITY, 1);
+set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_VSPEED, 0);
+set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_VSPEED_TYPE, 1);
 
 //compact
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_TYPE, 9);
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_VSPEED, 0);
+set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_INVINCIBILITY, 1);
 
 //release
@@ -27,6 +31,8 @@ set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_SFX, asset_get("sfx_ell_strong_attack_explosion"));
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_SFX_FRAME, 0);
+set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_VSPEED, 0);
+set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_VSPEED_TYPE, 1);
 
 //no grapple
 set_window_value(AT_DSPECIAL_2, 4, AG_WINDOW_LENGTH, 4);

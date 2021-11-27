@@ -207,7 +207,8 @@ if(attack == AT_DAIR)
         old_vsp = -8;
         has_hit = false;
     }
-    if((attack_down || down_strong_down)&& window == 3 && window_timer >= 4)
+    if((attack_down || up_strong_down || right_strong_down || left_strong_down || down_strong_down || strong_down
+    || down_stick_down || up_stick_down || left_stick_down || right_stick_down) && window == 3 && window_timer >= 4)
     {
         attack_end();
         window = 3;

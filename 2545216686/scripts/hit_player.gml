@@ -11,6 +11,7 @@ switch (my_hitboxID.attack){
 	case AT_USTRONG:
 		if (my_hitboxID.hbox_num == 2){
 			sound_play(asset_get("mfx_ring_bell"));
+			//spawn_hit_fx( hit_player_obj.x + (12*hit_player_obj.spr_dir), hit_player_obj.y - 20, 251);
 		}
 		break;
 	case AT_FSPECIAL_AIR:
@@ -26,6 +27,14 @@ switch (my_hitboxID.attack){
 			tailsdidstartingdownbhitboxhit = true
 		}
 		break;
+}
+
+if (my_hitboxID.attack == AT_NAIR
+	|| my_hitboxID.attack == AT_FAIR
+	|| my_hitboxID.attack == AT_UAIR
+	|| my_hitboxID.attack == AT_DAIR
+	|| my_hitboxID.attack == AT_BAIR){
+	aerialattack = 0;
 }
 
 //hit_player.gml

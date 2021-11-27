@@ -1,7 +1,7 @@
 //death.gml
 
 
-if (is_master_player) exit;
+if (is_master_player || is_test_player || is_solo_player) exit;
 
 //hud visual
 visual_hud_icon_hurt = true;

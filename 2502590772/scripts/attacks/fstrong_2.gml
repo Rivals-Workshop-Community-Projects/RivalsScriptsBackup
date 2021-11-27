@@ -37,7 +37,7 @@ set_window_value(AT_FSTRONG_2, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSTRONG_2, 3, AG_WINDOW_LENGTH, 40); //variable duration, set in attack_update.gml
 set_window_value(AT_FSTRONG_2, 3, AG_WINDOW_ANIM_FRAMES, 8); //looping; animated in animation.gml
 set_window_value(AT_FSTRONG_2, 3, AG_WINDOW_ANIM_FRAME_START, 13);
-set_window_value(AT_FSTRONG_2, 3, AG_WINDOW_HSPEED, 9); //attack_update pulls this value and scales up to 1.5x depending on charge time
+set_window_value(AT_FSTRONG_2, 3, AG_WINDOW_HSPEED, 9.5); //attack_update pulls this value and scales up to 1.5x depending on charge time
 set_window_value(AT_FSTRONG_2, 3, AG_WINDOW_HSPEED_TYPE, 2); //don't maintain speed here, attack_update maintains speed
 set_window_value(AT_FSTRONG_2, 3, AG_WINDOW_VSPEED_TYPE, 1); //don't fall
 
@@ -97,14 +97,14 @@ set_hitbox_value(AT_FSTRONG_2, 1, HG_HEIGHT, 52);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_ANGLE, 45);
-set_hitbox_value(AT_FSTRONG_2, 1, HG_BASE_KNOCKBACK, 7.5);
+set_hitbox_value(AT_FSTRONG_2, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_FINAL_BASE_KNOCKBACK, 5); //scales over time
-set_hitbox_value(AT_FSTRONG_2, 1, HG_KNOCKBACK_SCALING, 1.1);
+set_hitbox_value(AT_FSTRONG_2, 1, HG_KNOCKBACK_SCALING, 1.15);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_EFFECT, 0);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_BASE_HITPAUSE, 18);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_VISUAL_EFFECT, 304);
-set_hitbox_value(AT_FSTRONG_2, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
+set_hitbox_value(AT_FSTRONG_2, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_FSTRONG_2, 1, HG_HIT_SFX, sound_get("strong_2_launch"));
 set_hitbox_value(AT_FSTRONG_2, 1, HG_HIT_LOCKOUT, 10);
 

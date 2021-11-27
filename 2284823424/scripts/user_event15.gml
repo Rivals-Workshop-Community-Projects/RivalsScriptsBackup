@@ -201,6 +201,7 @@ initWords("The order is:
 - Brewing Stand
 - Enchanting Table
 - Villager (poor guy...)");
+initWords("If you exhaust all 7 of these containers, you'll get access to an unusual 8th container...");
 
 var item_descs = [
 	"A block that bounces players and some projectiles,
@@ -400,6 +401,22 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("2.1", "20 November, 2021");
+initHeader("NSpecial - Reworks");
+initSection("? Block only appears once the other 7 containers have been exhausted.");
+initHeader("Super Mushroom - Buffs, Bugfixes");
+initSection("Duration 300 --> 360.
+Corrected hitstun sprite.");
+initHeader("Green Shell - Buffs");
+initSection("Quantity 1 --> 2.");
+initHeader("Starman - Buffs");
+initSection("Duration 300 --> 360.");
+initHeader("DTilt - Adjustments");
+initSection("Angle 75 --> 40.
+Knockback 6/0.3 --> 4/0.2.
+Hitpause 6/0.5 --> 5/0.3.
+Can no longer be teched.");
 
 initPatch("2.0", "19 September, 2021");
 initHeader("General");
@@ -663,7 +680,7 @@ initHeader("General");
 initSection("The character was released.");
 initWords("Removed Herobrine");
 
-initPatch("About CHARACTER NAME", "");
+initPatch("About Steve", "");
 initHeader("Character by");
 initSection("Muno - byMuno.com");
 initHeader("SFX from");

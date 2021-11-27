@@ -128,6 +128,15 @@ if(slippery == 21 && splatrecalled == 0){
 	splatrecalled = 1;
 }
 
+if(bike_charge < 3){
+if(bike_charging_time = 28){
+	bike_charging_time = 0;
+	bike_charge += 1;
+	sound_play(asset_get("sfx_ori_ustrong_charge"));
+	spawn_hit_fx(x + spr_dir * -25, y - 2, 19);
+}
+}
+
 //dstrong
 if(dstrong_charge == 0){
 	set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong"));

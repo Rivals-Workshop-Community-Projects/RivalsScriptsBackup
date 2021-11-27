@@ -18,6 +18,11 @@ switch attack {
     break;
     
     case AT_DAIR:
+    if (window == 1 && window_timer == window_length) || (window == 2 && window_timer == 1) {
+        fall_through = true
+    } else {
+        fall_through = false
+    }
     if state_timer == 1002 {
         window_timer = 7
     }
@@ -113,15 +118,21 @@ switch attack {
     break;
     
     case AT_FSPECIAL:
-    
-    var doll_obj = doll_exists() ? hit_doll : doll_id
-    
-    if window == 1 && doll_obj != noone && !(doll_obj.state == PS_DEAD && doll_obj.recent_player != id) {
-        if state_timer == 6 {
-            doll_obj.state = PS_ATTACK_AIR
-            doll_obj.state_timer = 0
-            doll_obj.image_index = 1
-            spawn_hit_fx(doll_obj.x, doll_obj.y-35, vfx_shine)
+    can_fast_fall = false
+    if counter_hit {
+        invincible = true
+        invince_time = 2
+    }
+    if ss_type != 0 {
+        var doll_obj = doll_exists() ? hit_doll : doll_id
+
+        if window == 1 && doll_obj != noone && doll_obj != undefined && !(doll_obj.state == PS_DEAD && doll_obj.recent_player != id) {
+            if state_timer == 6 {
+                doll_obj.state = PS_ATTACK_AIR
+                doll_obj.state_timer = 0
+                doll_obj.image_index = 1
+                spawn_hit_fx(doll_obj.x, doll_obj.y-35, vfx_shine)
+            }
         }
     }
     
@@ -140,17 +151,15 @@ switch attack {
     
     //teleport
     if window == 2 && window_timer = window_length {
-        if doll_obj != noone && doll_obj.state != PS_DEAD {
-            if !doll_obj.shine_hit {
-                x = doll_obj.x
-                y = doll_obj.y
-            } else {
-                x = doll_obj.shine_hit.x
-                y = doll_obj.shine_hit.y
-            }
-        } else {
-            x += ss_dist
+        if ss_doll != undefined && !instance_exists(ss_doll) && ss_type == 1 ss_type = 0
+        
+        if ss_type == 1 {
+            ss_x = ss_doll.x
+            ss_y = ss_doll.y
         }
+        
+        x = ss_x
+        if ss_type != 0 y = ss_y
         
         if ss_dist != 0 spr_dir = sign(ss_dist)
         
@@ -160,14 +169,14 @@ switch attack {
         var detect_dist_mid = 60
         var detect_dist_close = 30
         
-        if !(doll_exists() && doll_obj.shine_hit != undefined) && ((spr_dir = -1 && (instance_position(x + detect_dist_far, y-20, pHurtBox) || instance_position(x + detect_dist_mid, y-20, pHurtBox) || instance_position(x + detect_dist_close, y-20, pHurtBox)))
-        || (spr_dir = 1 && (instance_position(x - detect_dist_far, y-20, pHurtBox) || instance_position(x - detect_dist_mid, y-20, pHurtBox) || instance_position(x - detect_dist_close, y-20, pHurtBox)))) {
+        if (spr_dir == -1 && (instance_position(x + detect_dist_far, y-20, pHurtBox) || instance_position(x + detect_dist_mid, y-20, pHurtBox) || instance_position(x + detect_dist_close, y-20, pHurtBox)))
+        || (spr_dir == 1 && (instance_position(x - detect_dist_far, y-20, pHurtBox) || instance_position(x - detect_dist_mid, y-20, pHurtBox) || instance_position(x - detect_dist_close, y-20, pHurtBox))) {
             attack_dir = 1
         }
         
-        if down_down && !(doll_exists() && doll_obj.hit_counter > 0) {
+        if down_down && !(ss_type != 0 && doll_obj.hit_counter > 0) {
             attack_dir = 2
-        } else if up_down && !(doll_exists() && doll_obj.hit_counter > 0) {
+        } else if up_down && !(ss_type != 0 && doll_obj.hit_counter > 0) {
             attack_dir = 3
         } else if (left_down && spr_dir = 1) || (right_down && spr_dir == -1) {
             attack_dir = 1
@@ -215,7 +224,7 @@ switch attack {
     }
     
     if window == 8 && window_timer > 4 && !was_parried {
-        iasa_script()
+        if get_window_value(AT_FSPECIAL, 7, AG_WINDOW_TYPE) != 7 iasa_script()
     }
     break;
     
@@ -288,20 +297,10 @@ switch attack {
             doll_id.state_timer = 40
         }
     }
-    /*
-    if window == 1 && window_timer > 6 && !joy_pad_idle {
-        doll_angle = joy_dir
-        if spr_dir == 1 && doll_angle > 180 doll_angle -= 360
-        
-        
-        if free doll_angle = spr_dir == 1 ? -45 : -135
-        else doll_angle = clamp(doll_angle, 30 + 120*(spr_dir==-1), 60 + 60*(spr_dir==-1))
-        
-    }
-    */
     
-    var spd = 8
-    if free spd = 7
+    
+    var spd = 10
+    if free spd = 8
     
     if window = 1 && window_timer == window_length {
         if free doll_angle = -90 + spr_dir*45
@@ -312,8 +311,11 @@ switch attack {
         doll_id.vsp = -spd*dsin(doll_angle)
         doll_id.spr_dir = -spr_dir
         doll_id.recent_player = id
-        take_damage(player, -1, 4)
+        take_damage(player, -1, 2)
         if free vsp -= 10
+        
+        if left_down && !right_down doll_id.hsp -= 6
+        if !left_down && right_down doll_id.hsp += 6
     }
     
     if window == 2 && window_timer > 4 {
@@ -323,13 +325,19 @@ switch attack {
     case AT_UTHROW:
     //fspecial upwards
     if window == 3 && window_timer > 8 && !was_parried {
-        iasa_script()
+        if get_window_value(AT_UTHROW, 3, AG_WINDOW_TYPE) != 7 iasa_script()
     }
     if window == 1 && window_timer == 4 {
         sound_play(asset_get("sfx_bird_sidespecial_start"))
         sound_play(asset_get("sfx_swipe_medium2"))
     }
     break;
+}
+
+if (attack == AT_FSPECIAL || attack == AT_UTHROW || attack == AT_DAIR) && (!free || ss_free_timer <= 6 || has_hit) {
+    set_window_value(AT_UTHROW, 3, AG_WINDOW_TYPE, 0);
+    set_window_value(AT_FSPECIAL, 7, AG_WINDOW_TYPE, 0);
+    set_window_value(AT_FSPECIAL, 8, AG_WINDOW_TYPE, 0);
 }
 
 #define doll_exists()

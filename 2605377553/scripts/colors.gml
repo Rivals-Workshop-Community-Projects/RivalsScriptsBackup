@@ -237,15 +237,15 @@ set_color_profile_slot( 20, 5, 252, 255, 255 ); //Eyes/Socks
 set_color_profile_slot( 20, 6, 252, 255, 255 ); //Smog
 set_color_profile_slot( 20, 7, 57, 82, 82 ); //Smog Outline
 
-//doge derby
-set_color_profile_slot( 21, 0, 130, 255, 251 ); //Hoodie Pink
-set_color_profile_slot( 21, 1, 255, 250, 222 ); //Skin
-set_color_profile_slot( 21, 2, 255, 13, 241 ); //Hair
-set_color_profile_slot( 21, 3, 255, 87, 251 ); //Hoodie Purp
-set_color_profile_slot( 21, 4, 255, 102, 247 ); //Skirt
-set_color_profile_slot( 21, 5, 255, 69, 227 ); //Eyes/Socks
-set_color_profile_slot( 21, 6, 0, 238, 255 ); //Smog
-set_color_profile_slot( 21, 7, 0, 238, 255 ); //Smog Outline
+// canada
+set_color_profile_slot( 21, 0, 252, 253, 255 ); //Hoodie Pink
+set_color_profile_slot( 21, 1, 255, 240, 201 ); //Skin
+set_color_profile_slot( 21, 2, 81, 63, 71 ); //Hair
+set_color_profile_slot( 21, 3, 255, 0, 0 ); //Hoodie Purp
+set_color_profile_slot( 21, 4, 252, 253, 255 ); //Skirt
+set_color_profile_slot( 21, 5, 255, 0, 0 ); //Eyes/Socks
+set_color_profile_slot( 21, 6, 255, 255, 255 ); //Smog
+set_color_profile_slot( 21, 7, 255, 0, 0 ); //Smog Outline
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===

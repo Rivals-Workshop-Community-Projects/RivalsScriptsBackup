@@ -64,6 +64,10 @@ switch (state) {
             	//play sound effect
             	if (species_id == 0) sound_play(sound_get("baton_plusle"));
     			else sound_play(sound_get("baton_minun"));
+    			if (state_cat != SC_HITSTUN && state != PS_TUMBLE) {
+    				if (hitpause) old_vsp = min(old_vsp, 0);
+    				else vsp = min(vsp, 0);
+    			}
             }
             
             

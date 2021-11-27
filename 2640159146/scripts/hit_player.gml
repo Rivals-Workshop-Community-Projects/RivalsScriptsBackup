@@ -167,3 +167,24 @@ if my_hitboxID.type == 1 && my_hitboxID.attack != AT_NAIR {
  if attack == AT_DSPECIAL_AIR {
  		djumps = 0;
  }
+ 
+if(burst == 1){
+ 	switch(my_hitboxID.attack){
+ 		case AT_FSTRONG_2:
+ 		case AT_FSPECIAL:
+ 			if(my_hitboxID.hbox_num == 1){
+ 				break;
+ 			}
+ 		case AT_DSTRONG:
+ 		 	spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-32, hfx_claw);
+ 		 	break;
+ 		case AT_NSPECIAL:
+ 			if(my_hitboxID.hbox_num == 1){
+ 				break;
+ 			}
+ 		case AT_USTRONG:
+ 			spawn_hit_fx(x+spr_dir*32, hit_player_obj.y-52, hfx_clawup);
+ 		 	break;
+ 	}
+}
+ 

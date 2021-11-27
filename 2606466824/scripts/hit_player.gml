@@ -37,10 +37,9 @@ if (my_hitboxID.attack == AT_DSTRONG) {
 }
 
 if (my_hitboxID.attack == AT_USPECIAL && hit_player_obj.state == PS_HITSTUN) {
-	if (my_hitboxID.hbox_num <= 2) {
+	//if (my_hitboxID.hbox_num <= 2) {
+	if (my_hitboxID.hbox_num == 1) {
 		target = hit_player_obj;
-		//target.x = my_hitboxID.x;
-		//target.y = my_hitboxID.y;
 	}
 }
 if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 3) {
@@ -88,6 +87,8 @@ if (revengeMult > 1 && get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num
 	revengeHitShakeFrames = hitstop;
 	with (hit_player_obj) {
 		incinRevengeTimer = 5;
+		incinRevOffset = sign(old_hsp);
+		if (incinRevOffset = 0) {incinRevOffset = 1;}
 		print("applying explosion after 10 frames!");
 	}
 }
@@ -96,6 +97,9 @@ if (revengeMult > 1 && get_hitbox_value(my_hitboxID.attack, my_hitboxID.hbox_num
 
 if (my_hitboxID.attack == AT_FAIR || my_hitboxID.attack == AT_UAIR ) {
 	sound_play(asset_get("sfx_blow_medium1"), false, noone, 1, 1);
+}
+if (my_hitboxID.attack == AT_FAIR && my_hitboxID.hbox_num == 2 ) {
+	sound_play(asset_get("sfx_blow_heavy1"), false, noone, 0.8, 1);
 }
 if (my_hitboxID.attack == AT_BAIR || my_hitboxID.attack == AT_DAIR || my_hitboxID.attack == AT_DATTACK) {
 	if (my_hitboxID.hbox_num == 1) {
@@ -137,4 +141,10 @@ if (my_hitboxID.attack == AT_USTRONG) {
 if (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num == 4) {
 	sound_play(sound_get("punch_medium"), false, noone, 0.8, 1);
 	sound_play(asset_get("sfx_blow_heavy2"), false, noone, 0.5, 1);
+}
+
+if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num > 2) {
+	myArrow = spawn_hit_fx (hit_player_obj.x, hit_player_obj.y - 40, revArrow);	
+	myArrow.draw_angle = radtodeg(arctan2(hit_player_obj.old_hsp, hit_player_obj.old_vsp)) + 180;
+	myArrow.spr_dir = 1;
 }

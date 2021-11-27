@@ -53,6 +53,8 @@ sprite_change_offset("dspecial", 100, 130);
 sprite_change_offset("dspecial_air", 100, 130);
 sprite_change_offset("taunt", 100, 130);
 
+sprite_change_offset("intro", 100, 130);
+
 sprite_change_offset("plat", 52, 4);
 
 sprite_change_offset("airdodge_vfx", 100, 130);

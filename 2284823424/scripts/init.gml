@@ -80,10 +80,10 @@ elytra = false;
 elytra_max = 300;
 elytra_fall_speed = 0; //ever-changing
 starman = 0;
-starman_max = 300;
+starman_max = 360; // 300
 starman_sound = noone;
 mushroom = 0;
-mushroom_max = 300;
+mushroom_max = 360; // 300
 size_mult = 1;
 orig_char_height = char_height;
 last_size_sprite = noone;
@@ -605,7 +605,7 @@ IT_BELL				= initItem("Bell", spr_itm_bell, spr_itm_bell, AT_NTHROW, 0);
 IT_TOTEM			= initItem("Totem of Undying", spr_itm_totem, spr_itm_totem, 0, 0);
 
 IT_MUSHROOM			= initItem("Super Mushroom", spr_itm_mushroom, spr_itm_mushroom, AT_EXTRA_2, 0);
-IT_SHELL			= initItem("Green Shell", spr_itm_shell, spr_itm_shell, AT_NTHROW, 0 + 5 * has_rune("O"));
+IT_SHELL			= initItem("Green Shell", spr_itm_shell, spr_itm_shell, AT_NTHROW, 4 + 1 * has_rune("O"));
 IT_STAR				= initItem("Starman", spr_itm_star, spr_itm_star, AT_EXTRA_2, 0);
 
 held_item = 0;
@@ -631,6 +631,8 @@ CT_BREWING			= initContainer("Brewing Stand", spr_nspecial_cont_brewing_stand, s
 CT_ENCHANT			= initContainer("Enchanting Table", spr_nspecial_cont_enchanting_table, spr_walk, [IT_FROST_WALKER, IT_RIPTIDE, IT_THORNS]);
 CT_TESTIFICATE		= initContainer("Villager", spr_nspecial_cont_villager, spr_walk, [IT_CROSSBOW, IT_BELL, IT_TOTEM]);
 CT_MARIO			= initContainer("? Block", spr_nspecial_cont_mario, spr_walk, [IT_MUSHROOM, IT_SHELL, IT_STAR]);
+
+do_the_mario = 0; // in ? Block mode or not
 
 next_container = CT_CRAFT;
 // next_container = CT_MARIO;
@@ -1317,8 +1319,9 @@ if has_rune("N"){
 #define initItem(item_name, item_held_sprite, item_inv_sprite, item_attack, item_count)
 
 var temp = (item_count == 5);
+var temp2 = (item_count == 4);
 
-if item_count == 5 item_count = 1;
+if item_count == 5 || item_count == 4 item_count = 1;
 
 items[i] = {
 	name: item_name,
@@ -1335,6 +1338,10 @@ items[i] = {
 
 if temp{
 	items[i].count_max = 6;
+}
+
+if temp2{
+	items[i].count_max = 2;
 }
 
 i++;

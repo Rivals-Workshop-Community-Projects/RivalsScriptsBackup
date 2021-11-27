@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 4, 10, 15 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 27 );
+set_num_palettes( 28 );
 
 // blue
 set_color_profile_slot( 1, 0, 74, 84, 176 ); //red fur
@@ -295,6 +295,16 @@ set_color_profile_slot( 26, 4, 244, 206, 83 ); //fire med
 set_color_profile_slot( 26, 5, 230, 127, 39 ); //fire dark
 set_color_profile_slot( 26, 6, 209, 98, 14 ); //fire outline
 set_color_profile_slot( 26, 7, 244, 216, 5 ); //eyes
+
+// AZCards
+set_color_profile_slot( 27, 0, 75, 75, 92 ); //red fur
+set_color_profile_slot( 27, 1, 97, 23, 23 ); //black fur
+set_color_profile_slot( 27, 2, 135, 143, 153 ); //grey fur
+set_color_profile_slot( 27, 3, 247, 222, 121 ); //fire light
+set_color_profile_slot( 27, 4, 244, 184, 5 ); //fire med
+set_color_profile_slot( 27, 5, 244, 57, 5 ); //fire dark
+set_color_profile_slot( 27, 6, 143, 31, 9 ); //fire outline
+set_color_profile_slot( 27, 7, 222, 174, 31 ); //eyes
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -352,11 +352,8 @@ if(window == 1 && window_timer = 14){
     		}
     	}if(window == 2 && window_timer = 14){
     	if(bike_charge < 3){
-    		sound_play(asset_get("sfx_ori_ustrong_charge"));
-    	bike_charge += 1;
     	window = 1;
     	window_timer = 2;
-    	spawn_hit_fx(x + spr_dir * -25, y - 2, 19);
     	}
     }if(window == 1 || window == 2){
     	if(shield_pressed || jump_pressed || attack_pressed){
@@ -375,6 +372,10 @@ if(window == 1 && window_timer = 14){
     		bike_charge = 0;
     		slippery = 600;
     		splatrecalled = 0;
+    	}
+    }if(bike_charge != 3){
+    	if(window == 1 || window == 2){
+    		bike_charging_time += 1;
     	}
     }
 }

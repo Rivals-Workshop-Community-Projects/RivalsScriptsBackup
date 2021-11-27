@@ -23,7 +23,7 @@ dash_turn_time = 11;
 dash_turn_accel = 2;
 dash_stop_time = 6;
 dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .6;
+ground_friction = .5;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
@@ -55,9 +55,9 @@ wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usu
 wave_friction = .02; //grounded deceleration when wavelanding
 
 //crouch animation frames
-crouch_startup_frames = 2;
+crouch_startup_frames = 3;
 crouch_active_frames = 1;
-crouch_recovery_frames = 1;
+crouch_recovery_frames = 3;
 
 //parry animation frames
 dodge_startup_frames = 1;
@@ -78,7 +78,7 @@ techroll_speed = 10;
 air_dodge_startup_frames = 1;
 air_dodge_active_frames = 4;
 air_dodge_recovery_frames = 1;
-air_dodge_speed = 7.5;
+air_dodge_speed = 8;
 
 //roll animation frames
 roll_forward_startup_frames = 1;
@@ -98,11 +98,20 @@ djump_sound = asset_get("sfx_jumpair");
 air_dodge_sound = asset_get("sfx_quick_dodge");
 set_victory_theme(sound_get("victory_theme"));
 set_victory_bg(sprite_get("victorybg"));
+alt = get_player_color(player);
+box = false;
+if(alt == 27){ //cube
+	box = true;
+	set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get("dspecial_box"));
+}else{
+	
+}
 
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
 
+crawling = false;
 upb = false;
 upbtime = 0;
 nspecialcharge = 0;
@@ -162,8 +171,8 @@ tcoart = sprite_get("tcoart");
 pkmn_stadium_front_img = sprite_get("pkmnstadium");
 pkmn_stadium_back_img = sprite_get("pkmnstadium_back");
 pkmn_stadium_name_override = "Blue Blob";
-Hikaru_Title = "Bouncy Brawler";
 arena_title = "Bouncy Brawler";
+boxing_title = "Bouncy Brawler";
 ncode1 = "Strange Blob from a place called the Mattyverse";
 ncode2 = "Friendly and bouncy, can manipulate water";
 ncode3 = "Surprisingly durable, can absorb most force";
@@ -239,3 +248,6 @@ var page = 0;
     dracula_text[page] = "She be";
     page++;
 }*/
+
+muno_event_type = 0;
+user_event(14);

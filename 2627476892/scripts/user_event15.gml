@@ -248,6 +248,40 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.16", "23 November, 2021");
+
+initHeader("Buffs:");
+initSection("+ Ftilt's hitbox size was increased
++ Ftilt's finishing kb scaling was increased, .5 -> .6
++ Utilt's hitbox size was increased slightly
++ Dtilt's hitbox size was increased slightly
++ Dtilt comes out 1 frame faster, Frame 7 -> 6
++ Nair's hitbox size was increased slightly
++ Nair comes out 1 frame faster, Frame 9 -> 8
++ Fair's hitbox size was increased
++ Dair's hitbox size was increased
++ Dair comes out 1 frame faster, Frame 10 -> 9
++ Uair's hitbox size was increased slightly
++ Bair deals 2 more damage, 6 -> 8
++ Bair comes out 2 frames faster, Frame 16 -> 14
++ Fstrong base kb increased, 9 -> 10
++ Fstrong kb scaling increased, 0.8 -> 0.9
++ Fstrong explosion base kb increased, 9 -> 11
++ Fstrong comes out 2 frames faster, Frame 18 -> 16
++ Increased Fstrong's hitbox size a little
++ Increased Dstrong's hitbox size
++ Nspecial comes out 3 frames faster, Frame 19 -> 16
++ Fspecial's hitbox size was increased
++ Fspecial kb was increased overall
++ Uspecial's hitbox size was increased slightly
+for some reason munophone is not letting me scroll down from this section sooooo
+Changes:
+= Removed Bair's early sour spot
+= The amount of time left to charge Dspecial by 1 is kept upon cancel 
+(It now works similarly to Samus or Sheik Nspec instead of relying on specific window frames)");
+
+
+//
 initPatch("1.15", "2 November, 2021");
 
 initHeader("Buffs:");

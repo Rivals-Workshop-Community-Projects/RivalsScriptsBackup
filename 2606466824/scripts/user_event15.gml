@@ -405,6 +405,34 @@ initSection("Trummel & Alto, Otto, Steve, Link");
 
 
 
+initPatch("1.09", "November 23rd, 2021");
+initHeader("General");
+initSection("* Added an alt for AZCards, who placed Top 8 in Blueberry Bout with Incineroar!");
+initSection("* Incineroar will now behave themself in stand mode when chosen as an AI in practice mode.");
+initHeader("BThrow");
+initSection("* Hit vfx adjusted.");
+initHeader("DSpecial");
+initSection("* Fixed a bug in which the repeated explosions could launch in unintended directions. Now they should all launch the same way as the original attack.");
+initSection("* Added an indicator for the launch direction of the explosions.");
+initHeader("FAir");
+initSection("- Startup increased (F10 -> F11)");
+initSection("- Hitbox sizes decreased.");
+initSection("- Landing Lag increased (6/9 -> 8/12)");
+initSection("* Hit sounds adjusted.");
+initHeader("FSpecial");
+initSection("* Lowered the time it takes for opponents to become fully grabbed once hit by the grab hitbox. (Throws can be inputted sooner)");
+initHeader("FThrow");
+initSection("* Hit vfx adjusted.");
+initHeader("UAir");
+initSection("* Angle Flipper removed.");
+initHeader("USpecial");
+initSection("* Fixed a bug where trying to cancel into FSpecial in an unintended way could cause unintended behavior.");
+initSection("- Will no longer grab opponents who get grabbed on the ascent, except those who get hit on the first frame.");
+initSection("+ Increased hitbox size for the first frame.");
+initSection("- Decreased the amount of horizontal control on the ascent.");
+initHeader("UThrow");
+initSection("* Hit vfx adjusted.");
+
 initPatch("1.081", "November 11th, 2021");
 initHeader("FSpecial");
 initSection("- Hitbox size reduced.");

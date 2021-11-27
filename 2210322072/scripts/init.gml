@@ -12,6 +12,10 @@ ncode3 = "she is capable of creating astra projection of herself."
 
 curse_target = 0
 
+hue = 5
+
+savemode = 0
+
 superMove = 14
 
 rekarma = 0
@@ -67,14 +71,14 @@ moonwalk_accel = 1.8;
 
 jump_start_time = 5;
 jump_speed = 10;
-short_hop_speed = 7;
+short_hop_speed = 5;
 djump_speed = 10;
 leave_ground_max = 4; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 4; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .28;
-prat_fall_accel = 0; //multiplier of air_accel while in pratfall
+prat_fall_accel = .8; //multiplier of air_accel while in pratfall
 air_friction = .0522;
 max_djumps = 1;
 double_jump_time = 40; //the number of frames to play the djump animation. Can't be less than 31.
@@ -145,7 +149,7 @@ SC = hit_fx_create( sprite_get( "SC" ), 16 );
 sprite_change_offset("SC", 100, 100);
 ai = hit_fx_create( sprite_get( "ai" ), 8 );
 
-wh = hit_fx_create( sprite_get( "whitehit" ), 14 );
+wh = hit_fx_create( sprite_get( "whitehit" ), 22 );
 sprite_change_offset("whitehit", 80, 80);
 
 bh = hit_fx_create( sprite_get( "blackhit" ), 22 );

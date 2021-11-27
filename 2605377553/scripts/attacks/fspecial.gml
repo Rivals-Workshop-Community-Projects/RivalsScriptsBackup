@@ -33,6 +33,9 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_SFX_FRAME, 8);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_SFX, asset_get("sfx_ell_fist_fire"));
 
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 8);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 30);
@@ -43,9 +46,6 @@ set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 0);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 5);
-set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FSPECIAL, 4, AG_WINDOW_SFX_FRAME, 2);
-set_window_value(AT_FSPECIAL, 4, AG_WINDOW_SFX, asset_get("sfx_ell_fist_fire"));
 
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 16);
@@ -62,7 +62,7 @@ set_num_hitboxes(AT_FSPECIAL, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 4);
-set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 25);
+set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 15);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, -80);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -10);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 90);
@@ -83,6 +83,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_PARTICLE_NUM, 1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, fspecdie);
 
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, 1);

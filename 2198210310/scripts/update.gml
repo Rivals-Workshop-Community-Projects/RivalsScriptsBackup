@@ -272,6 +272,9 @@ if (state == PS_ATTACK_GROUND) && (attack == AT_UTILT) && (window == 2) {
 }
 
 if fspecCooldown > 0 {
+	if fspecCooldown == 1 {
+		sound_play(asset_get("mfx_xp"))
+	}
     fspecCooldown--;
 }
 

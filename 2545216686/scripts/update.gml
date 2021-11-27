@@ -1,30 +1,11 @@
 //update.gml
 
 //munophone
+muno_event_type = 1;
 user_event(14);
 
-//Motion Blur "Cheat Code"
-phone_blurs = phone_cheats[cheat_blurs];
-if (phone_blurs == 1){
-	set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair_noblur"));
-	set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("dair_noblur"));
-	set_attack_value(AT_DATTACK, AG_SPRITE, sprite_get("dattack_noblur"));
-	set_attack_value(AT_DTILT, AG_SPRITE, sprite_get("dtilt_noblur"));
-	set_attack_value(AT_FTILT, AG_SPRITE, sprite_get("ftilt_noblur"));
-	set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("nair_noblur"));
-	set_attack_value(AT_UAIR, AG_SPRITE, sprite_get("uair_noblur"));
-} else {
-	set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair"));
-	set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("dair"));
-	set_attack_value(AT_DATTACK, AG_SPRITE, sprite_get("dattack"));
-	set_attack_value(AT_DTILT, AG_SPRITE, sprite_get("dtilt"));
-	set_attack_value(AT_FTILT, AG_SPRITE, sprite_get("ftilt"));
-	set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("nair"));
-	set_attack_value(AT_UAIR, AG_SPRITE, sprite_get("uair"));
-}
-
 //Infinite Flight Cheat Code
-phone_flight = phone_cheats[cheat_flight];
+//phone_flight = phone_cheats[cheat_flight];
 if (phone_flight == 1){
 	set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, sfx_flight_cheat);
 } else {
@@ -32,7 +13,7 @@ if (phone_flight == 1){
 }
 
 //Infinite Dive Cheat Code
-phone_dive = phone_cheats[cheat_dive];
+//phone_dive = phone_cheats[cheat_dive];
 if (phone_dive == 1){
 	set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 1);
 } else {
@@ -150,6 +131,24 @@ if (!free && !collision_line(x + 10 * spr_dir, y - 16, x + 16 * spr_dir, y + 16,
 } else {
 	at_ledge = false
 }
+
+//Sleep Kirby Hat Offsets
+if (free){
+	//Air Hat Offsets
+	sleep_kirby_hat_offset_x = -2; //
+	sleep_kirby_hat_offset_y = -2; //
+	sleep_kirby_has_sleep_sprites = false; //Set this to true to enable custom sleep sprites.
+	sleep_kirby_sleep_sprite_ground = sprite_get("hurtground")
+	sleep_kirby_sleep_sprite_air = sprite_get("hurt")
+} else if (!free){
+	//Grounded Hat Offsets
+	sleep_kirby_hat_offset_x = 0; //
+	sleep_kirby_hat_offset_y = -2; //
+	sleep_kirby_has_sleep_sprites = false; //Set this to true to enable custom sleep sprites.
+	sleep_kirby_sleep_sprite_ground = sprite_get("hurtground")
+	sleep_kirby_sleep_sprite_air = sprite_get("hurt")
+}
+
 
 if (move_cooldown[AT_DSPECIAL] == 1){
 	tailsisrobotout = false

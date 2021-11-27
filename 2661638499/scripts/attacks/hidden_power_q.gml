@@ -54,7 +54,7 @@ set_hitbox_value(atk, 1, HG_HITBOX_Y, -10);
 set_hitbox_value(atk, 1, HG_WIDTH, 25);
 set_hitbox_value(atk, 1, HG_HEIGHT, 25);
 set_hitbox_value(atk, 1, HG_PRIORITY, 5);
-set_hitbox_value(atk, 1, HG_DAMAGE, 2);
+set_hitbox_value(atk, 1, HG_DAMAGE, 6);
 set_hitbox_value(atk, 1, HG_ANGLE, 60);
 set_hitbox_value(atk, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(atk, 1, HG_KNOCKBACK_SCALING, 0.8);
@@ -79,7 +79,7 @@ set_hitbox_value(atk, 3, HG_HITBOX_Y, 26);
 set_hitbox_value(atk, 3, HG_WIDTH, 12);
 set_hitbox_value(atk, 3, HG_HEIGHT, 12);
 set_hitbox_value(atk, 3, HG_PRIORITY, 8);
-set_hitbox_value(atk, 3, HG_DAMAGE, 12);
+set_hitbox_value(atk, 3, HG_DAMAGE, 8);
 set_hitbox_value(atk, 3, HG_ANGLE, 315);
 set_hitbox_value(atk, 3, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(atk, 3, HG_KNOCKBACK_SCALING, 0.8);
@@ -98,7 +98,7 @@ set_hitbox_value(atk, 4, HG_HITBOX_Y, 4);
 set_hitbox_value(atk, 4, HG_WIDTH, 24);
 set_hitbox_value(atk, 4, HG_HEIGHT, 48);
 set_hitbox_value(atk, 4, HG_PRIORITY, 2);
-set_hitbox_value(atk, 4, HG_DAMAGE, 7);
+set_hitbox_value(atk, 4, HG_DAMAGE, 6);
 set_hitbox_value(atk, 4, HG_ANGLE, 60);
 set_hitbox_value(atk, 4, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(atk, 4, HG_KNOCKBACK_SCALING, .35);
@@ -114,4 +114,4 @@ if ("q" not in unown_dictionary) unown_dictionary.q = make_trie_Q();
 //================================================================
 //contains words starting with Q
 #define make_trie_Q()
-    return {};
+    return {u:{a:{c:{k:{_:1,s:{_:1}}},d:{_:1,r:{a:{n:{t:{_:1}}}}},h:{o:{g:{_:1}}},i:{n:{t:{_:1}}},k:{e:{_:1,r:{_:1}},i:{n:{g:{_:1}}}},l:{i:{f:{i:{c:{a:{t:{i:{o:{n:{s:{_:1}}}}}}},e:{d:{_:1},s:{_:1}}},y:{_:1,i:{n:{g:{_:1}}}}},t:{i:{e:{s:{_:1}}},y:{_:1}}},m:{s:{_:1}}},n:{d:{a:{r:{y:{_:1}}}},t:{i:{t:{i:{e:{s:{_:1}}},y:{_:1}}},u:{m:{_:1}}}},r:{a:{n:{t:{i:{n:{e:{_:1,d:{_:1}}}}}}},k:{_:1},r:{e:{l:{_:1,e:{d:{_:1}}}},y:{_:1}},t:{_:1,e:{r:{_:1,b:{a:{c:{k:{_:1,s:{_:1}}}}},s:{_:1}},t:{_:1}}}},g:{s:{i:{r:{e:{_:1}}}}}},e:{a:{s:{y:{_:1}}},e:{n:{_:1,s:{_:1}},r:{_:1,s:{_:1}}},l:{l:{_:1,e:{r:{_:1}}}},r:{y:{_:1}},s:{t:{_:1,i:{o:{n:{_:1,a:{b:{l:{e:{_:1}}}},e:{d:{_:1}},i:{n:{g:{_:1}}},n:{a:{i:{r:{e:{_:1}}}}},s:{_:1}}}}}},u:{e:{_:1}}},i:{b:{b:{l:{e:{_:1}}}},c:{h:{e:{_:1}},k:{_:1,e:{r:{_:1},s:{t:{_:1}}},i:{e:{_:1}},l:{y:{_:1}},s:{a:{n:{d:{_:1}}}}}},d:{_:1},e:{t:{_:1,e:{r:{_:1}},l:{y:{_:1}}}},l:{t:{_:1,i:{n:{g:{_:1}}},s:{_:1}},a:{v:{a:{_:1}}},l:{a:{d:{i:{n:{_:1}}}}}},n:{c:{e:{_:1}},i:{n:{e:{_:1}}},t:{e:{s:{s:{e:{n:{t:{i:{a:{l:{_:1}}}}}}}},t:{_:1}},s:{_:1},u:{p:{l:{e:{t:{s:{_:1}}}}}}}},r:{k:{_:1,s:{_:1},y:{_:1}}},t:{_:1,e:{_:1},s:{_:1},t:{e:{r:{_:1,s:{_:1}}},i:{n:{g:{_:1}}}}},v:{e:{r:{_:1,i:{n:{g:{_:1}}}}}},x:{o:{t:{e:{_:1}}}},z:{_:1,m:{a:{s:{t:{e:{r:{_:1}}}}}},z:{e:{s:{_:1}}}}},o:{t:{a:{_:1,t:{i:{o:{n:{_:1}}}}},e:{_:1,d:{_:1},s:{_:1}},h:{_:1},i:{n:{g:{_:1}}}}}},w:{i:{l:{f:{i:{s:{h:{_:1}}}}}}}};

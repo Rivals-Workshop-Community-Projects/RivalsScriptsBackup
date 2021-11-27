@@ -14,7 +14,7 @@ set_color_profile_slot_range( 2, 2, 57, 64 );
 
 // radiation
 set_color_profile_slot( 0, 3, 0, 255, 0 );
-set_color_profile_slot_range( 3, 28, 1, 31 );
+set_color_profile_slot_range( 3, 41, 1, 56 );
 
 // skin shade-
 set_color_profile_slot( 0, 4, 23, 52, 54 );
@@ -22,7 +22,7 @@ set_color_profile_slot_range( 4, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 17 );
+set_num_palettes( 18 );
 
 // fry
 set_color_profile_slot( 1, 0, 191, 43, 21 ); //skin
@@ -31,7 +31,7 @@ set_color_profile_slot( 1, 2, 255, 101, 54 ); //crystal
 set_color_profile_slot( 1, 3, 255, 106, 0 ); //radiation
 set_color_profile_slot( 1, 4, 153, 5, 5 ); //skin shade-
 
-// parasol 
+// parasol
 set_color_profile_slot( 2, 0, 255, 217, 48 ); //skin
 set_color_profile_slot( 2, 1, 51, 126, 255 ); //claws
 set_color_profile_slot( 2, 2, 125, 173, 255 ); //crystal
@@ -129,16 +129,23 @@ set_color_profile_slot( 15, 2, 169, 224, 169 ); //crystal
 set_color_profile_slot( 15, 3, 1, 187, 0 ); //radiation
 set_color_profile_slot( 15, 4, 151, 240, 171 ); //skin shade-
 
-// monotone 
+// monotone
 set_color_profile_slot( 16, 0, 87, 87, 87 ); //skin
 set_color_profile_slot( 16, 1, 255, 145, 208 ); //claws
 set_color_profile_slot( 16, 2, 255, 222, 241 ); //crystal
 set_color_profile_slot( 16, 3, 172, 172, 172 ); //radiation
 set_color_profile_slot( 16, 4, 46, 46, 46 ); //skin shade-
 
+// JM-Won
+set_color_profile_slot( 17, 0, 0, 234, 255 ); //skin
+set_color_profile_slot( 17, 1, 23, 255, 251 ); //claws
+set_color_profile_slot( 17, 2, 135, 124, 24 ); //crystal
+set_color_profile_slot( 17, 3, 43, 27, 41 ); //radiation
+set_color_profile_slot( 17, 4, 111, 135, 237 ); //skin shade-
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"skin","colors":[{"r":40,"g":80,"b":82,"main":true}]},{"name":"claws","colors":[{"r":0,"g":255,"b":117,"main":true},{"r":255,"g":255,"b":255},{"r":15,"g":167,"b":85}]},{"name":"crystal","colors":[{"r":80,"g":255,"b":190,"main":true},{"r":19,"g":206,"b":137},{"r":0,"g":165,"b":104},{"r":0,"g":95,"b":60},{"r":73,"g":117,"b":101},{"r":83,"g":228,"b":175},{"r":116,"g":255,"b":203},{"r":73,"g":206,"b":156},{"r":223,"g":255,"b":243},{"r":111,"g":225,"b":183},{"r":38,"g":201,"b":141}]},{"name":"radiation","colors":[{"r":0,"g":255,"b":0,"main":true},{"r":0,"g":179,"b":82}]},{"name":"skin shade-","colors":[{"r":23,"g":52,"b":54,"main":true}]}]}
+{"formatversion":1,"data":[{"name":"skin","colors":[{"r":40,"g":80,"b":82,"main":true}]},{"name":"claws","colors":[{"r":0,"g":255,"b":117,"main":true},{"r":255,"g":255,"b":255},{"r":15,"g":167,"b":85}]},{"name":"crystal","colors":[{"r":80,"g":255,"b":190,"main":true},{"r":19,"g":206,"b":137},{"r":0,"g":165,"b":104},{"r":0,"g":95,"b":60},{"r":73,"g":117,"b":101},{"r":83,"g":228,"b":175},{"r":116,"g":255,"b":203},{"r":73,"g":206,"b":156},{"r":223,"g":255,"b":243},{"r":111,"g":225,"b":183},{"r":38,"g":201,"b":141}]},{"name":"radiation","colors":[{"r":0,"g":255,"b":0,"main":true},{"r":0,"g":179,"b":82},{"r":0,"g":116,"b":77},{"r":0,"g":183,"b":120}]},{"name":"skin shade-","colors":[{"r":23,"g":52,"b":54,"main":true}]}]}
 === END JSON PALETTE ===
 */

@@ -102,6 +102,7 @@ break;
 case AT_DAIR:
 case AT_MINUN_DAIR:
 	//stall and fall
+	//if (window == 1 && !hitpause) vsp = min(vsp, -3);
 	if (window <= 3 && !hitpause) hsp = clamp(hsp, -4, 4);
 //don't break
 
@@ -198,6 +199,12 @@ case AT_FSPECIAL_2: //minun projectile
     		clear_teammate_special_inputs_as_leader();
     		//startup is walljump-cancellable
     		can_wall_jump = true;
+    		
+    		//spawn fx if buffed
+    		if (has_been_buffed_by_helping_hand) {
+    			spawn_hit_fx(x - spr_dir * 20, y - 30, vfx_hh_buff_static);
+    			sound_play(asset_get("sfx_absa_cloud_crackle"),  0, noone, 0.4, 0.8);
+    		}
     	break;
     	case 2:
     		if (attack == AT_FSPECIAL_2) {
@@ -212,6 +219,11 @@ case AT_FSPECIAL_2: //minun projectile
     		//slow fall and speed
     		vsp = min(vsp, 2);
     		//hsp = clamp(hsp, -2, 2);
+    		
+    		if (has_been_buffed_by_helping_hand) {
+    			spawn_hit_fx(x + spr_dir * 30, y - 20, vfx_hh_buff_static);
+    		}
+    		
     	break;
     	case 3:
     		move_cooldown[AT_FSPECIAL] = 40;
@@ -305,6 +317,12 @@ case AT_USPECIAL_2:
     can_wall_jump = true;
     //can't fastfall
     can_fast_fall = 0;
+    
+    //register additional special button presses
+    if (special_pressed || (is_solo_player && (window > 1 || window_timer >= 10) && special_down)) {
+    	uspecial_use_second_part = true;
+    }
+    
     if (hitpause) break;
     switch (window) {
     	case 1:
@@ -312,6 +330,8 @@ case AT_USPECIAL_2:
     		if (window_timer == 1) {
     			uspecial_used_angle = noone;
     			uspecial_angle = 90;
+    			uspecial_use_second_part = false;
+    			clear_button_buffer(PC_SPECIAL_PRESSED);
     		}
     		//stop falling if at the blastzone
     		if (vsp > 0 && y >= master_player_id.blastzone_b - 16) {
@@ -371,7 +391,7 @@ case AT_USPECIAL_2:
     		uspecial_drag_teammate();
     		
 			//if the teammate is still holding on and special is pressed again, use their special too
-			if (!was_parried && uspecial_used_angle == noone && (special_pressed || special_down) 
+			if (!was_parried && uspecial_used_angle == noone && uspecial_use_second_part//(special_pressed || special_down) 
 			//&& window_timer >= 5
 			&& instance_exists(teammate_player_id) && teammate_player_id.was_parried == false && teammate_player_id.attack == AT_USPECIAL_GROUND 
 			&& (teammate_player_id.state == PS_ATTACK_AIR || teammate_player_id.state == PS_ATTACK_GROUND) ) {
@@ -413,7 +433,8 @@ case AT_DSPECIAL:
     //fall slowly
     vsp = clamp(vsp, -4, 2);
     
-    if (state_timer == 22 && !hitpause && instance_exists(teammate_player_id)) {
+    
+    if (state_timer == 35 && !hitpause && instance_exists(teammate_player_id)) {
     	with (teammate_player_id) { helping_hand_buff_activate(); }
     }
     else if (state_timer < 2) {
@@ -428,13 +449,25 @@ case AT_DSPECIAL:
     	hh_charge_expiry_timer = hh_maximum_charge_expiry_timer;
     }
     
+    //maintain records in case of damage
+    //dspecial crouch armor
+	dspecial_record_window = window;
+	dspecial_record_window_timer = window_timer;
+
+    
     if (!hitpause) {
+    	//cosmetic - when 'crouch cancelling' damage, switch to a hitstun sprite but don't actually go into hitstun
+    	dspecial_fake_hitstun--;
     	
-    	if (window == get_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS) && master_player_id.hh_charge_level > 0) {
+    	//transition to dspecial2 when necessary
+    	var final_window = get_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS);
+    	
+    	if (window == final_window && master_player_id.hh_charge_level > 0) {
     		safely_set_attack(AT_DSPECIAL_2);
     		break;
     	}
     	
+    	//cosmetic
     	var clap = false;
 	    var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH) - 1;
 	    var half_window_2_length = floor(get_window_value(attack, 2, AG_WINDOW_LENGTH) / 2) - 1;
@@ -453,6 +486,33 @@ case AT_DSPECIAL:
 	    	var pitch = 0.975 + random_func(player + 10, 10, false) / 200;
 	    	sound_play(sound_get("hh"), 0, noone, volume, pitch);
 	    }
+	    
+	    if (is_solo_player && window >= 2 && window <= 8) {
+	    	var teammate_exists = instance_exists(teammate_player_id);
+	    	
+	    	if (teammate_exists) with (teammate_player_id) {
+    			if ((attack != AT_DSPECIAL && attack != AT_DSPECIAL_2) || (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) ) {
+    				other.hh_charge_level = max(hh_charge_level, other.hh_charge_level);
+    				other.hh_charge_percent = max(hh_charge_percent, other.hh_charge_percent);
+    			}
+	    	}
+	    	if (is_special_pressed(DIR_NONE) && teammate_exists && nspecial_can_use_baton) {
+	    		safely_set_attack(AT_NSPECIAL);
+	    	}
+	    	else if (is_special_pressed(DIR_DOWN)) {
+	    		window = final_window;
+	    		window_timer = 0;
+	    		if (hh_charge_level != 0) sound_play(sound_get("trick"));
+	    	}
+	    	else if (shield_pressed) {
+	    		clear_button_buffer(PC_SHIELD_PRESSED);
+	    		window = final_window;
+	    		window_timer = 0;
+	    		hh_charge_percent = 0;
+	    		hh_charge_level = 0;
+	    		sound_play(asset_get("sfx_zetter_shine"));
+	    	}
+	    }
     }
 
 break;
@@ -463,6 +523,9 @@ case AT_DSPECIAL_2:
     can_move = false;
     //fall slowly
     vsp = clamp(vsp, -4, 2);
+    
+    
+    
     if (hitpause) break;
     
     switch (window) {
@@ -473,6 +536,7 @@ case AT_DSPECIAL_2:
     			master_player_id.hh_charge_level = 0;
     			master_player_id.hh_charge_percent = 0;
     		}
+    		super_armor = true;
     	break;
     	
     	case 2:
@@ -484,12 +548,17 @@ case AT_DSPECIAL_2:
     		super_armor = true;
     		
     		if (is_end_of_window()) {
-    			super_armor = false;
     			window = (species_id * 3) + (local_hh_charge_level) + 3;
     			window_timer = 0;
     			//spend all charges
-    			master_player_id.hh_charge_level = 0;
-    			master_player_id.hh_charge_percent = 0;
+    			
+    			//maintain charge level
+			    var affected_player_id = master_player_id;
+			    if (is_solo_player && instance_exists(teammate_player_id)) affected_player_id = teammate_player_id;
+			    with (affected_player_id) {
+			    	hh_charge_level = 0;
+    				hh_charge_percent = 0;
+			    }
     			
     			//spawn explosion article
     			var particle_article = instance_create(x, y - 30, "obj_article3");
@@ -502,6 +571,7 @@ case AT_DSPECIAL_2:
     	case 5:
     	case 6:
     	case 7:
+    		
     		//plusle's level 1, 2 and 3.
     		//minun's level 1.
     		//spawn hit fx
@@ -512,11 +582,13 @@ case AT_DSPECIAL_2:
     		else if (is_end_of_window()) {
     			window = get_attack_value(AT_DSPECIAL_2, AG_NUM_WINDOWS);
     			window_timer = 0;
+    			super_armor = false;
     		}
     	break;
     	
     	case 8:
     	case 9:
+    		super_armor = false;
     	    //minun's level 2 and 3.
     	    //spawn hit fx
     		if (window_timer == 1) {
@@ -532,6 +604,7 @@ case AT_DSPECIAL_2:
     			var particle_article = instance_create(x, y - 30, "obj_article3");
     			particle_article.article_id = 1;
     			particle_article.sprite_index = spr_dspecial_chargeboom[(window - 4) mod 3];
+    			super_armor = false;
     		}
     	break;
     }

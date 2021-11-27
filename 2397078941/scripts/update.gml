@@ -1680,3 +1680,6 @@ if get_player_color(player) == 12 && nolan == 0{
 	}
     init_shader();	 
 }
+
+
+

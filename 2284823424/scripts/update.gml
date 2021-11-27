@@ -690,9 +690,9 @@ prev_on_block_and_grounded = on_block && !free;
 
 
 
-/*
-
 //Funny minecraft sprint jump
+
+/*
 
 switch(state){
 	case PS_DASH:
@@ -710,8 +710,6 @@ switch(state){
 		dash_flag = false;
 		break;
 }
-
-print_debug(string(vsp))
 
 */
 

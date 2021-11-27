@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 3;
+	var noOfPatches = 4;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -87,6 +87,12 @@ if ((state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) || (attack != AT_NSPEC
     sound_stop(asSFX[0]);
     sound_stop(asSFX[1]);
     sound_stop(asSFX[2]);
+}
+
+if (state == PS_SPAWN && state_timer == 84) spawn_hit_fx(x,y-28,aura_effect);
+if (state == PS_PARRY && state_timer == 1)
+{
+	var owo = spawn_hit_fx(x+spr_dir*4+hsp*2,y-54,shinestar_effect); owo.depth = depth-1;
 }
 
 //if (state == PS_WALL_JUMP || !free) uspecBan = false;

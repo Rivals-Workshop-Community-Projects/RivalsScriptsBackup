@@ -2,6 +2,8 @@
 
 if attack == AT_FSPECIAL && hbox_num == 3{
 	
+	player_id.move_cooldown[AT_FSPECIAL] = 5
+	
   if spr_dir == 1 && hsp < 0 {
   	hsp *= -1
   }
@@ -10,11 +12,11 @@ if attack == AT_FSPECIAL && hbox_num == 3{
   	hsp *= -1
   }
 	
-
+  
+  
 	
 	if  hitbox_timer % 5 == 0 {
-		i2 = hit_fx_create( sprite_get( "inkpar5" ), 26);
-			spawn_hit_fx( x + 8*spr_dir , y + 50 - random_func(4, 36, true) , i2 )
+			spawn_hit_fx( x + 20*spr_dir - random_func(5, 60, true)*spr_dir , y + 56 - random_func(4, 36, true) , i2 )
     }
 	
 }
@@ -36,7 +38,7 @@ if attack == AT_NSPECIAL && hbox_num == 8{
   	    sound_play(asset_get("sfx_diamond_small_collect"),false,noone,0.6,1.2);
 		heal_player.ink += 4
 		destroyed = 1
-		bhl = hit_fx_create( sprite_get( "blackhit" ), 6);
+
 		spawn_hit_fx (x,y,bhl)
 		heal_player.move_cooldown[AT_EXTRA_2] = 60
 	}
@@ -44,7 +46,7 @@ if attack == AT_NSPECIAL && hbox_num == 8{
    }
    
    if player_id.attacking &&  player_id.attack == AT_NSPECIAL && window < 2{
-   	hitbox_timer = 7
+   	hitbox_timer = 16
    	x += (player_id.x - x) / 60
 	y += (player_id.y - 40 - y) / 60
 	fall_through = true
@@ -54,7 +56,7 @@ if attack == AT_NSPECIAL && hbox_num == 8{
 		hsp += 0.6
 	}
 	
-	if player_id.y - y < 0 {
+	if player_id.y - 40 - y < 0 {
 		vsp -= 0.6
 	} else {
 		vsp += 0.6
@@ -81,8 +83,15 @@ if attack == AT_NSPECIAL && hbox_num == 8{
 	
 }
 
-
+if attack == AT_FSPECIAL && type == 2 {
+	if hitbox_timer > 5 && hitbox_timer < 15 {
+		hsp /= 1.1
+		vsp /= 1.1
+	}
+}
+	
 if attack == AT_FSPECIAL && hbox_num > 3{
+
 	  if spr_dir == 1 && hsp < 0 {
   	hsp *= -1
   }
@@ -93,7 +102,6 @@ if attack == AT_FSPECIAL && hbox_num > 3{
 
 	
 	if  hitbox_timer % 5 == 0 {
-		i2 = hit_fx_create( sprite_get( "inkpar5" ), 26);
 			spawn_hit_fx( x + 8*spr_dir , y + 38 , i2 )
     }
 	
@@ -103,9 +111,7 @@ if attack == AT_FSPECIAL && hbox_num > 3{
 if attack == AT_DSPECIAL {
 		
 		player_id.move_cooldown[AT_DSPECIAL] = 2
-summon = hit_fx_create( sprite_get( "summon" ), 40 );
-				i1 = hit_fx_create( sprite_get( "inkpar5" ), 26);
-				i2 = hit_fx_create( sprite_get( "inkpar6" ), 26);
+
 ///Zetta
 if hbox_num == 1 {
 	
@@ -187,7 +193,7 @@ if hbox_num == 1 {
    
    if hitbox_timer == 23*4 {
    	shake_camera(2, 10)
-   	SC = hit_fx_create( sprite_get( "SC" ), 12 );
+
    	create_hitbox(AT_DSPECIAL , 12 , x - 300 , y - 10  );
    	spawn_hit_fx(x - 300 , y - 10  , SC )
    	create_hitbox(AT_DSPECIAL , 12 , x + 300 , y - 10  );
@@ -196,7 +202,7 @@ if hbox_num == 1 {
    
    if hitbox_timer == 24*4 {
    	shake_camera(4, 10)
-   	SC = hit_fx_create( sprite_get( "SC" ), 12 );
+
    	create_hitbox(AT_DSPECIAL , 12 , x - 250 , y - 10  );
    	spawn_hit_fx(x - 250 , y - 10  , SC )
    	create_hitbox(AT_DSPECIAL , 12 , x + 250 , y - 10  );
@@ -205,7 +211,7 @@ if hbox_num == 1 {
    
    if hitbox_timer == 25*4 {
    	shake_camera(4, 10)
-   	SC = hit_fx_create( sprite_get( "SC" ), 12 );
+
    	create_hitbox(AT_DSPECIAL , 12 , x - 180 , y - 10  );
    	spawn_hit_fx(x - 180 , y - 10  , SC )
    	create_hitbox(AT_DSPECIAL , 12 , x + 180 , y - 10  );
@@ -214,7 +220,7 @@ if hbox_num == 1 {
    
     if hitbox_timer == 26*4 {
     	shake_camera(4, 10)
-   	SC = hit_fx_create( sprite_get( "SC" ), 12 );
+
    	create_hitbox(AT_DSPECIAL , 12 , x - 110 , y - 10  );
    	spawn_hit_fx(x - 110 , y - 10  , SC )
    	create_hitbox(AT_DSPECIAL , 12 , x + 110 , y - 10  );
@@ -223,7 +229,7 @@ if hbox_num == 1 {
    
     if hitbox_timer == 27*4 {
     	shake_camera(4, 10)
-   	SC = hit_fx_create( sprite_get( "SC" ), 12 );
+
    	create_hitbox(AT_DSPECIAL , 12 , x - 50 , y - 10  );
    	spawn_hit_fx(x - 50 , y - 10  , SC )
    	create_hitbox(AT_DSPECIAL , 12 , x + 50 , y - 10  );
@@ -297,7 +303,7 @@ if hbox_num == 2 {
    		image_index = 20
    	}
    		if  hitbox_timer % 4 == 0 {
-		i2 = hit_fx_create( sprite_get( "inkpar5" ), 26);
+
 			spawn_hit_fx( x + 8*spr_dir , y + 28 , i2 )
          }
    	hsp = 14*spr_dir
@@ -782,7 +788,7 @@ if hbox_num == 17 or hbox_num == 15 or hbox_num == 14 or hbox_num == 16
 			
 		
 		if  hitbox_timer % 5 == 0 {
-		i2 = hit_fx_create( sprite_get( "inkpar5" ), 26);
+
 			spawn_hit_fx( x + 8*spr_dir , y + 50 - random_func(4, 36, true) , i2 )
         }
 	}

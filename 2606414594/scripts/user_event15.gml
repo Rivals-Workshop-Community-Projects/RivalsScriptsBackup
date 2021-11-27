@@ -84,10 +84,12 @@ phone.supports_fast_graphics = false;
 // Set to true and the phone will NOT activate Fast Fraphics when FPS gets low.
 phone.dont_fast = false;
 
-// Set to true and this will DISABLE a lot of the phone's side utilities.
-// If you're porting the phone to an existing char and don't need any of these
-// features, you might as well turn on lightweight to save a tiny bit of
-// performance. (see _docs.gml for a full list of what this disables)
+// Set to true and this will DISABLE a lot of the phone's side features, mostly
+// the coding shortcuts.
+// See _docs.gml for a full list of what it disables.
+// If you don't intend to use any of those bonus features in your character,
+// you should set this to true since it saves a bit of performance.
+// (it's false by default since Phone Sandbert uses some of those features)
 phone.lightweight = false;
 
 // If you've created custom AG_ or HG_ indexes for your character already,
@@ -245,6 +247,13 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.5", "20 November, 2021");
+initHeader("MunoPhone Touch Firmware v5");
+initSection("Added a new utility var: phone_game_over, which is true when the game has ended and is in the slow-mo at the end.
+Removed the unused attack grid index AG_MUNO_ATTACK_REFRESH.");
+initHeader("Misc.");
+initSection("Removed some confusing notes from the attack code files.");
 
 initPatch("1.4", "03 October, 2021");
 initHeader("NAir - Adjustments, Aesthetics");
@@ -654,7 +663,7 @@ Spear IDs:
 */
 
 // Palutena's Guidance (for RuberCuber's Pit character)
-// Works kind of similarly to MunoPhone.
+// Works kind of similarly to Trummel codecs.
 // initCodecPagePit(speaker, expression, voice, text);
 // List of expressions and voice clips: https://pastebin.com/wsz22ZwJ
 

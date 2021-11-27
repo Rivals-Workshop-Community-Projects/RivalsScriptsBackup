@@ -1,4 +1,4 @@
-set_num_palettes(23);
+set_num_palettes(28);
 
 //DEFAULT COLOR (R,G,B)
 set_color_profile_slot(0, 0, 29, 167, 231); //BODY
@@ -191,3 +191,43 @@ set_color_profile_slot(22, 2, 64, 12, 25); //EYES
 set_color_profile_slot(22, 3, 80, 155, 0); //EYES SHINE
 set_color_profile_slot(22, 4, 56, 90, 20); //EYES SHINE 2
 set_color_profile_slot(22, 5, 80, 155, 0); //ATTACK TRAIL
+
+//King Blob
+set_color_profile_slot(23, 0, 107, 134, 225); //BODY
+set_color_profile_slot(23, 1, 249, 113, 81); //CHEEKS
+set_color_profile_slot(23, 2, 50, 37, 114); //EYES
+set_color_profile_slot(23, 3, 79, 137, 232); //EYES SHINE
+set_color_profile_slot(23, 4, 79, 137, 232); //EYES SHINE 2
+set_color_profile_slot(23, 5, 249, 113, 81); //ATTACK TRAIL
+
+//KOB
+set_color_profile_slot(24, 0, 255, 205, 55); //BODY
+set_color_profile_slot(24, 1, 255, 255, 255); //CHEEKS
+set_color_profile_slot(24, 2, 43, 36, 50); //EYES
+set_color_profile_slot(24, 3, 193, 50, 116); //EYES SHINE
+set_color_profile_slot(24, 4, 37, 40, 218); //EYES SHINE 2
+set_color_profile_slot(24, 5, 227, 139, 45); //ATTACK TRAIL
+
+//Mr Oarly
+set_color_profile_slot(25, 0, 193, 228, 237); //BODY
+set_color_profile_slot(25, 1, 249, 142, 142); //CHEEKS
+set_color_profile_slot(25, 2, 59, 146, 171); //EYES
+set_color_profile_slot(25, 3, 173, 239, 255); //EYES SHINE
+set_color_profile_slot(25, 4, 115, 196, 217); //EYES SHINE 2
+set_color_profile_slot(25, 5, 249, 142, 142); //ATTACK TRAIL
+
+//Ball
+set_color_profile_slot(26, 0, 29, 167, 231); //BODY
+set_color_profile_slot(26, 1, 29, 167, 231); //CHEEKS
+set_color_profile_slot(26, 2, 29, 167, 231); //EYES
+set_color_profile_slot(26, 3, 29, 167, 231); //EYES SHINE
+set_color_profile_slot(26, 4, 29, 167, 231); //EYES SHINE 2
+set_color_profile_slot(26, 5, 0, 255, 228); //ATTACK TRAIL
+
+//Cube
+set_color_profile_slot(27, 0, 191, 136, 146); //BODY
+set_color_profile_slot(27, 1, 255, 228, 209); //CHEEKS
+set_color_profile_slot(27, 2, 65, 38, 39); //EYES
+set_color_profile_slot(27, 3, 191, 136, 146); //EYES SHINE
+set_color_profile_slot(27, 4, 113, 73, 74); //EYES SHINE 2
+set_color_profile_slot(27, 5, 255, 228, 209); //ATTACK TRAIL

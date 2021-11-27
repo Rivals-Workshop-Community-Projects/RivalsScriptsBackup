@@ -178,6 +178,7 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, ffire);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 0.8);
 set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, true);
 
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 4, HG_WINDOW, 4);

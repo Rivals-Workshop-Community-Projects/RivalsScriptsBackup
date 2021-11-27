@@ -33,7 +33,7 @@ set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 
 set_window_value(AT_FTILT, 5, AG_WINDOW_LENGTH, 6);
-set_window_value(AT_FTILT, 5, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_FTILT, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTILT, 5, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_FTILT, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 

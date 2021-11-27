@@ -1,5 +1,5 @@
-hurtbox_spr = asset_get("ex_guy_hurt_box");
-crouchbox_spr = asset_get("ex_guy_crouch_box");
+hurtbox_spr = sprite_get("stand_hurt");
+crouchbox_spr = sprite_get("crouch_hurt");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
@@ -26,6 +26,7 @@ last_attack_hit = 0;
 last_hit_timer = 0;
 outline_timer = 0;
 auto_reload = true;
+tac_reload = false;
 prac_text = "";
 prac_timer = 0;
 
@@ -105,10 +106,10 @@ air_accel = .3;
 prat_fall_accel = .75; //multiplier of air_accel while in pratfall
 air_friction = .04;
 max_djumps = 1;
-double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
+double_jump_time = 36; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 7;
 walljump_vsp = 8;
-walljump_time = 32;
+walljump_time = 36;
 max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 14; //fast fall speed
 gravity_speed = .4;

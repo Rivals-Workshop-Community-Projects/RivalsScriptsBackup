@@ -27,7 +27,7 @@ sprite_change_offset("jab", 62, 78);
 sprite_change_offset("dattack", 64, 66);
 sprite_change_offset("ftilt", 60, 84);
 sprite_change_offset("dtilt", 44, 62);
-sprite_change_offset("utilt", 36, 110);
+sprite_change_offset("utilt", 36, 112);
 sprite_change_offset("nair", 60, 74);
 sprite_change_offset("fair", 50, 106);
 sprite_change_offset("bair", 84, 100);
@@ -43,16 +43,19 @@ sprite_change_offset("uspecial", 64, 118);
 sprite_change_offset("dspecial_ground", 66, 92);
 sprite_change_offset("dspecial_air", 74, 96);
 sprite_change_offset("burst", 98, 118);
+sprite_change_offset("bloodheat_die", 69, 95);
 sprite_change_offset("taunt", 62, 112);
 sprite_change_offset("phone_open", 32, 64);
 
 sprite_change_offset("meterfull", 0, 0);
 sprite_change_offset("meterempty", 0, 0);
+sprite_change_offset("blood_icon", 10, 23);
 sprite_change_offset("esps", 30, 30);
 sprite_change_offset("spikes_right", 48, 66);
 sprite_change_offset("spikes_left", 22, 66);
 
-
+sprite_change_offset("clawbig", 90, 9);
+sprite_change_offset("clawup", 90, 90);
 sprite_change_offset("plat", 64, 60);
 
 sprite_change_offset("nspecial_proj", 64, 94);

@@ -118,8 +118,9 @@ if attack == AT_BAIR {
 
 if attack == AT_DSPECIAL {
     can_move = false;
-    hsp *= 0.96;
-    vsp *= 0.96;
+    vsp = clamp(vsp, -3, 3)
+    //hsp *= 0.96;
+    //vsp *= 0.96;
     if window == 1 {
         counterDmg = get_player_damage(player);
         super_armor = false;
@@ -128,10 +129,10 @@ if attack == AT_DSPECIAL {
     if window == 2 {
         if window_timer == 1 {
             sound_play(asset_get("sfx_zetter_shine"))
-            hsp *= 0.2
-            vsp *= 0.2
+            //hsp *= 0.2
+            vsp *= 0.1
         } else if window_timer < 20 {
-            hsp *= 0.9
+            hsp *= 0.95
             vsp *= 0.9
         }
         if (window_timer <= 12 && !has_rune("F")) || (window_timer <= 18 && has_rune("F")) {
@@ -250,6 +251,7 @@ if attack == AT_DSPECIAL {
 
 if attack == AT_DSPECIAL_2 {
     super_armor = false;
+    can_move = false
     if window == 1 && window_timer == 10 {
         if compactID == undefined {
             window = 4;

@@ -12,15 +12,17 @@ with (oPlayer) {
 			if (incinRevengeTimer == 15 || incinRevengeTimer == 23) {
 				print("burn lol");
 				other.burnType[player-1] = 3;
-				other.burnTargetX[player-1] = round(x+hsp);
+				other.burnTargetX[player-1] = round(x+hsp) - (10 * incinRevOffset);
 				other.burnTargetY[player-1] = round(y+vsp);
+				other.burnSide[player-1] = incinRevOffset;
 				other.doBurn = true;
 			}
 			if (incinRevengeTimer == 31) {
 				print("burn lol");
 				other.burnType[player-1] = 4;
-				other.burnTargetX[player-1] = round(x+hsp);
+				other.burnTargetX[player-1] = round(x+hsp) - (10 * incinRevOffset);
 				other.burnTargetY[player-1] = round(y+vsp);
+				other.burnSide[player-1] = incinRevOffset;
 				other.doBurn = true;
 			}
 			if (state_cat != SC_HITSTUN) {
@@ -41,8 +43,9 @@ if (in_adventure) {
 				print("burn lol");
 				other.burnTargetAdv = id;
 				other.burnType[1] = 4;
-				other.burnTargetX[1] = round(x+hsp);
+				other.burnTargetX[1] = round(x+hsp) - (10 * incinRevOffset);
 				other.burnTargetY[1] = round(y+vsp);
+				other.burnSide[1] = incinRevOffset;
 				other.doBurn = true;
 			}
 		}
@@ -50,6 +53,7 @@ if (in_adventure) {
 	if (doBurn == true) {
 		if (burnType[1] > 0) {
 			burnHitbox = create_hitbox(AT_DSPECIAL, burnType[1], burnTargetX[1], burnTargetY[1] - 40);
+			myArrow = spawn_hit_fx (burnTargetX[1], burnTargetY[1] - 40, revArrow);	
 			burnType[1] = 0;
 		}
 		doBurn = false;
@@ -59,6 +63,9 @@ if (in_adventure) {
 		for (i = 0; i < 4; i++) {
 			if (burnType[i] > 0) {
 				burnHitbox = create_hitbox(AT_DSPECIAL, burnType[i], burnTargetX[i], burnTargetY[i] - 40);
+				//myArrow = spawn_hit_fx (burnTargetX[i], burnTargetY[i] - 40, revArrow);	
+				//myArrow.draw_angle = get_hitbox_value(AT_DSPECIAL, 4, HG_ANGLE) - 90;
+				//myArrow.spr_dir = sign(burnSide[i]);
 				burnType[i] = 0;
 			}
 			doBurn = false;

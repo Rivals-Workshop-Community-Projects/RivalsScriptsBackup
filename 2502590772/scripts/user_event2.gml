@@ -69,14 +69,14 @@ vfx_fstrong2_trail = hit_fx_create(sprite_get("fxfstrongtrail"), 16);
 
 #define get_fx_sprite_pm(fx_name)
 var acronym;
-if species_id == 0 acronym = "plus";
+if species_id == (0 + is_solo_player) acronym = "plus";
 else acronym = "minus";
 return sprite_get(fx_name + acronym);
 
 #define get_fx_sprite_pm_opposite(fx_name)
 //gets the opposite sprite.
 var acronym;
-if species_id == 1 acronym = "plus";
+if species_id == (1 - is_solo_player) acronym = "plus";
 else acronym = "minus";
 return sprite_get(fx_name + acronym);
 

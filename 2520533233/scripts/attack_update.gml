@@ -966,12 +966,12 @@ switch(attack){
     	break;
     case AT_FAIR:
 
-		if(window == 2 and window_timer == 1){
+		/*if(window == 2 and window_timer == 1){
 			hsp += spr_dir*2;
 			if(vsp > 2){
 				vsp = 2;
 			}
-		}
+		}*/
     	if(window < 3 and dragon_install){
     		soft_armor = install_armor;
     		add_install_trail(10, 30);
@@ -980,10 +980,8 @@ switch(attack){
     		soft_armor = 0;
     		add_install_trail(10, 20);
     	}
-    /*	if(window == 2 and window_timer == 1){
-    		if(vsp > 0){
-    			vsp = 0;
-    		}
+    	if(window == 2 and window_timer == 1){
+
     		if(hsp < 7 and hsp > -7){
     			hsp = 5*spr_dir;
     		}
@@ -1001,7 +999,7 @@ switch(attack){
 
     	}
     	if(window > 1 and vsp < -5 and !dragon_install){
-    		vsp+=2;
+    		//vsp+=2;
     	}
     	
     	if(vsp < -8){
@@ -1009,10 +1007,10 @@ switch(attack){
     	}
     	if(has_hit and abs(hsp) > 8){
     		hsp = sign(hsp)*8;
-    	}*/
+    	}/*
     	if(vsp > 4 and window < 4 and !fast_falling){
     		vsp = 4;
-    	}
+    	}*/
     	break;
     case AT_EXTRA_3:
     	if(window == 1){
@@ -1172,9 +1170,13 @@ switch(attack){
     		var kb = 0;
     		with(pHitBox){
     			if(place_meeting(x,y, other)){
-    				if (player_id != other and type != 2){
+    				if (player_id != other){
     					counter = true;
     					countered = player_id;
+						if(type == 2){
+							print("hi");
+							countered = noone;
+						}
     					dmg = damage;
     					kb = kb_value;
     				} else if (can_hit_self) {
@@ -1196,8 +1198,10 @@ switch(attack){
     			set_hitbox_value(AT_EXTRA_2, 1, HG_BASE_KNOCKBACK, max(floor(kb*1.2), 6));
     			//spawn_hit_fx(x, y-30, 108);
     			sound_play(sound_get("nuthinpersonal"));
+    			if(countered != noone){
     			countered.hitpause = true;
     			countered.hitstop = 24;
+    			}
     			counter_target = countered;
     			set_attack(AT_EXTRA_2);
     		}

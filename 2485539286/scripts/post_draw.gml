@@ -29,14 +29,17 @@ if state == PS_PARRY or move_cooldown [AT_EXTRA_3] != 0 {
 
 
 if state_cat == SC_HITSTUN {
-    
+	
+    gpu_set_blendmode(bm_add);
     if get_gameplay_time() % 6 < 2 {
         spawn_hit_fx( x + 20 - random_func(1, 40, true) , y - 10 -  random_func(2, 60, true) , hpar3)
-    	  gpu_set_blendmode(bm_add);
-               draw_sprite_ext(sprite_index, image_index, x - 5 + random_func(1,10,true), y - 5 + random_func(2,10,true) , spr_dir, 1, 0 , c_white ,  0.4 );	
-     	  gpu_set_blendmode(bm_normal);
+    	  
+               draw_sprite_ext(sprite_index, image_index, x - 2 + random_func(1,5,true), y - 2 + random_func(2,5,true) , spr_dir, 1, 0 , c_white ,  0.4 );	
+     	  
+    } else {
+    draw_sprite_ext(sprite_index, image_index, x - 2 + random_func(1,5,true), y - 2 + random_func(2,5,true) , spr_dir, 1, 0 , c_white ,  0.8);
     }
-    draw_sprite_ext(sprite_index, image_index, x - 5 + random_func(1,10,true), y - 5 + random_func(2,10,true) , spr_dir, 1, 0 , c_white ,  0.8);	
+   gpu_set_blendmode(bm_normal);
    
 }
 

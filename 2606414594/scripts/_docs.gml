@@ -37,7 +37,10 @@ phone_window_end
 		? 1.5 : 1))
 	...which is a fancy way of saying "the last frame of the current attack
 	window." You can use this to run code at the end of a window, e.g.
-		if (window_timer == window_end)
+	
+	if (window_timer == phone_window_end){
+		print("this is being run at the END of this window");
+	}
 
 phone_playtest
 	This is true if you are playtesting the character on the CSS, and false
@@ -47,6 +50,11 @@ phone_practice
 	This is true if you are playing in Practice Mode, and false otherwise. It
 	also gets set to false when the MunoPhone is powered off, and is always
 	false for CPU players.
+
+phone_game_over
+	This is true if all of the players except for one team are in the PS_DEAD
+	state, which means that the game has ended and is in slow-mo or	whatever.
+	(Might act weirdly on custom stages with weird rules, who knows)
 
 phone_stopped_sounds
 	This is an array that stores the instance IDs of played sounds, empty by
@@ -120,7 +128,7 @@ phone_lightweight
 	help optimize performance a little bit if you don't need any of these
 	features.
 	
-	Recommended if you're porting the phone to an existing character.... I mean,
+	Recommended if you're porting the phone to an existing character... I mean,
 	you might as well.
 	
 	Disables:
@@ -136,6 +144,7 @@ phone_lightweight
 	- phone_landing
 	- automatically enabling Fast Graphics
 	- phone_dust_query
+	- phone_game_over
 
 phone_fast
 	This is true if the Fast Graphics setting is enabled (either manually or
@@ -362,6 +371,6 @@ HG_MUNO_OBJECT_LAUNCH_ANGLE
 ...That was a lot.
 
 If you're a big brain coder and have made your OWN custom AG_s or HG_s, there's
-a chance that their indexes overlap. To resolve this, see user_event14.gml.
+a chance that their indexes overlap. To resolve this, see user_event15.gml.
 
 */

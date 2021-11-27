@@ -84,7 +84,7 @@ if getting_bashed {
                     spawn_hit_fx(other.x, other.y - 20, 143);
                 }
                 var boom = create_hitbox(AT_NSPECIAL, 3, x, y - 20);
-                    boom.hit_flipper = 3;
+                    boom.spr_dir = hitbox.spr_dir
                 player_id.cubeCooldown = 0;
                 instance_destroy();
                 exit; 
@@ -95,7 +95,7 @@ if getting_bashed {
                 }
                 var boom = create_hitbox(AT_NSPECIAL, 2, x, y - 10);
                     boom.can_hit_self = false;
-                    boom.hit_flipper = 3;
+                    boom.spr_dir = hitbox.spr_dir
                 player_id.cubeCooldown = 0;
                 instance_destroy();
                 exit;

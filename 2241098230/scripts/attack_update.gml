@@ -50,7 +50,7 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 // }
 
 //Fspecial2
-if (attack == AT_FSPECIAL && window == 1 && window_timer == 12 && special_down && has_rune("B")) {
+if (attack == AT_FSPECIAL && window == 1 && window_timer == 12 && special_down) {
    set_attack(AT_FSPECIAL_2);
 }
 //glockenburn
@@ -719,7 +719,7 @@ if (attack == AT_FSPECIAL){
     	
     	if (shield_pressed && window <= 5 && vsp > 0.5) {
 			move_cooldown[AT_FSPECIAL] = 15;
-            window = 25;
+            window = 10;
             window_timer = 0;
 			grab_timer = 0;
             vsp -= 8;

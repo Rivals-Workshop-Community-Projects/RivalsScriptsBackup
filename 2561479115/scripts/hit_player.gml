@@ -44,6 +44,18 @@ if (my_hitboxID.type == 2 && my_hitboxID.hits_tag == 2) {
     hit_player_obj.hitstop = hit_player_obj.hitstop_full;
 }
 
+if my_hitboxID.attack == AT_USPECIAL && !attack_charged
+    && ds_list_size(hit_player_obj.roke_mark_id) > 0 
+    && ds_list_find_index(hit_player_obj.roke_mark_id,id) != -1 {
+    attack_charged = true;
+    white_flash_timer = 20;
+    sound_play(asset_get("sfx_diamond_small_collect"));
+    hit_player_obj.roke_mark = 0;
+    ds_list_clear(hit_player_obj.roke_mark_id);
+    ds_list_clear(hit_player_obj.roke_mark_anim);
+    hit_player_obj.roke_mark_destroytimer = 0;
+}
+
 switch (my_hitboxID.attack) {
     case AT_JAB: if my_hitboxID.hbox_num == 1 sound_play(asset_get("sfx_shovel_hit_light1"),false,noone,0.75,0.9); break;
     case AT_DATTACK: sound_play(asset_get("sfx_shovel_hit_med2"),false,noone,0.6,0.8); break;
@@ -77,7 +89,7 @@ switch (my_hitboxID.attack) {
                 }
             break;
             default:
-                if ds_list_find_index(roke_dstrong_targets, hit_player_obj) == -1 {
+                if ds_list_find_index(roke_dstrong_targets, hit_player_obj) == -1  {
                     print("a")
                     ds_list_add(roke_dstrong_targets, hit_player_obj);
                 }

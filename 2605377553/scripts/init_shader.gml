@@ -48,5 +48,51 @@ set_article_color_slot( 7, 251, 255, 36 ); //Smog Outline
 }
 }
 
+if (variable_instance_exists(id, "extra_col")){
+if (extra_col==2){//Nuzl Viola
+// shade, r, g, b, alpha
+set_character_color_slot( 0, 94, 67, 54 ); //Hoodie Pink
+set_character_color_slot( 1, 201, 143, 103 ); //Skin
+set_character_color_slot( 2, 179, 73, 36 ); //Hair
+set_character_color_slot( 3, 176, 68, 58 ); //Hoodie Purp
+set_character_color_slot( 4, 176, 68, 58 ); //Skirt
+set_character_color_slot( 5, 176, 68, 58 ); //Eyes/Socks
+set_character_color_slot( 6, 161, 71, 35 ); //Smog
+set_character_color_slot( 7, 209, 111, 73 ); //Smog Outline
+
+set_article_color_slot( 0, 94, 67, 54 ); //Hoodie Pink
+set_article_color_slot( 1, 201, 143, 103 ); //Skin
+set_article_color_slot( 2, 179, 73, 36 ); //Hair
+set_article_color_slot( 3, 176, 68, 58 ); //Hoodie Purp
+set_article_color_slot( 4, 176, 68, 58 ); //Skirt
+set_article_color_slot( 5, 176, 68, 58 ); //Eyes/Socks
+set_article_color_slot( 6, 161, 71, 35 ); //Smog
+set_article_color_slot( 7, 209, 111, 73 ); //Smog Outline
+}
+}
+
+if (variable_instance_exists(id, "extra_col")){
+if (extra_col==3){//Doge
+// shade, r, g, b, alpha
+set_character_color_slot( 0, 130, 255, 251 ); //Hoodie Pink
+set_character_color_slot( 1, 255, 250, 222 ); //Skin
+set_character_color_slot( 2, 255, 13, 241 ); //Hair
+set_character_color_slot( 3, 255, 87, 251 ); //Hoodie Purp
+set_character_color_slot( 4, 255, 102, 247 ); //Skirt
+set_character_color_slot( 5, 255, 69, 227 ); //Eyes/Socks
+set_character_color_slot( 6, 0, 238, 255 ); //Smog
+set_character_color_slot( 7, 0, 238, 255 ); //Smog Outline
+
+set_article_color_slot( 0, 130, 255, 251 ); //Hoodie Pink
+set_article_color_slot( 1, 255, 250, 222 ); //Skin
+set_article_color_slot( 2, 255, 13, 241 ); //Hair
+set_article_color_slot( 3, 255, 87, 251 ); //Hoodie Purp
+set_article_color_slot( 4, 255, 102, 247 ); //Skirt
+set_article_color_slot( 5, 255, 69, 227 ); //Eyes/Socks
+set_article_color_slot( 6, 0, 238, 255 ); //Smog
+set_article_color_slot( 7, 0, 238, 255 ); //Smog Outline
+}
+}
+
 
 

@@ -90,6 +90,8 @@ sprite_change_offset("smoke", 60, 60);
 sprite_change_offset("nspecial_proj", 64, 94);
 sprite_change_offset("fxEmpowered", 60, 60);
 
+sprite_change_offset("arrow", 86, 128);
+
 sprite_change_offset("hurt", 66, 106);
 sprite_change_offset("hurtground", 66, 106);
 sprite_change_offset("bighurt", 66, 106);

@@ -90,4 +90,10 @@ if ( (attack == AT_DSPECIAL && window == 2 && window_timer == 19)
 	    move_cooldown[AT_DSPECIAL] = 40;
 	    move_cooldown[AT_DSPECIAL_AIR] = 40;
 }
+
+if (burstmeter == 0 and free == false and blooddie = 0 and state != PS_ATTACK_GROUND)
+{
+	blooddie = 1;
+	set_attack(AT_EXTRA_1);
+}
 //print_debug(string(bloodmeter))

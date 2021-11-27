@@ -72,9 +72,12 @@ sprite_change_offset("plasma_fx", 126, 130);
 
 sprite_change_offset("drone", 64, 64);
 sprite_change_offset("drone_launch", 64, 64);
+sprite_change_offset("drone_launch_trans", 64, 64);
 sprite_change_offset("drone_startup", 64, 64);
 sprite_change_offset("drone_charging", 64, 64);
 sprite_change_offset("drone_charged", 64, 64);
+sprite_change_offset("drone_charging_right", 64, 64);
+sprite_change_offset("drone_charged_right", 64, 64);
 
 sprite_change_offset("article2_startup", 64, 94);
 sprite_change_offset("article2_active", 64, 94);
@@ -95,6 +98,7 @@ sprite_change_offset("beam_front", 56, 70);
 sprite_change_offset("beam_back", 114, 70);
 sprite_change_offset("fx_LaserCharge",64,66);
 sprite_change_offset("red_tracer",0,1);
+sprite_change_offset("white_tracer",0,1);
 
 sprite_change_offset("line_part", 6, 0);
 

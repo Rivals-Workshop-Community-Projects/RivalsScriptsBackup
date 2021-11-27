@@ -104,8 +104,8 @@ jump_speed = 10;
 short_hop_speed = 5;
 djump_speed = 9;
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
+max_jump_hsp = 5.5; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 5.5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 4; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .35;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
@@ -217,16 +217,26 @@ bubble_x = 0;
 bubble_y = 8;
 
 //MunoPhone Sprites
-spr_alts = sprite_get("alts");
-spr_nspec = sprite_get("nspecial_muno");
-spr_energy = sprite_get("energy_shot");
-spr_fspec = sprite_get("fspecial_muno");
-spr_fspec2 = sprite_get("fspecial_2_muno");
-spr_uspec = sprite_get("uspecial_muno");
-spr_robot_walk = sprite_get("robot_walk_default");
-spr_dtilt_muno = sprite_get("dtilt_muno");
-spr_ustronk = sprite_get("ustrong_muno");
-spr_fair_muno = sprite_get("fair_muno");
+//spr_alts = sprite_get("alts");
+if (get_player_color( player ) != 0){
+	spr_nspec = sprite_get("nspecial");
+	spr_energy = sprite_get("energy_shot");
+	spr_fspec = sprite_get("fspecial");
+	spr_fspec2 = sprite_get("fspecial_2");
+	spr_uspec = sprite_get("uspecial");
+	spr_robot_walk = sprite_get("robot_walk");
+	spr_dtilt_muno = sprite_get("dtilt");
+	spr_ustronk = sprite_get("ustrong");
+} else {
+	spr_nspec = sprite_get("nspecial_muno");
+	spr_energy = sprite_get("energy_shot");
+	spr_fspec = sprite_get("fspecial_muno");
+	spr_fspec2 = sprite_get("fspecial_2_muno");
+	spr_uspec = sprite_get("uspecial_muno");
+	spr_robot_walk = sprite_get("robot_walk_default");
+	spr_dtilt_muno = sprite_get("dtilt_muno");
+	spr_ustronk = sprite_get("ustrong_muno");
+}
 
 //MunoPhone Cheat Code Vars
 phone_blurs = 0
@@ -234,4 +244,5 @@ phone_flight = 0
 phone_dive = 0
 
 //MunoPhone Trigger
+muno_event_type = 0;
 user_event(14);

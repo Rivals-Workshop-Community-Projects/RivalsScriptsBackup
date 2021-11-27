@@ -30,7 +30,7 @@ daired = 0
 golden = 0
 drop = 0
 coindrop = 0
-batt = 1
+batt = 0
 supply = 0
 noinv = 3
 

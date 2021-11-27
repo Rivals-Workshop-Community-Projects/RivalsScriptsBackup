@@ -532,10 +532,18 @@ xrange = abs(hit_player_obj.x - x);
 yrange = abs(y - hit_player_obj.y);
 }
 
-if state == PS_DASH_TURN {
+if state == PS_DASH_TURN  {
+	
+	RAR = 5
 	
 	set_state (PS_WALK_TURN)
 	
+}
+
+RAR -= 1
+
+if RAR > 0 && state == PS_JUMPSQUAT {
+ if right_down - left_down != 0 spr_dir = right_down - left_down
 }
 
 if stabt >= 10 {

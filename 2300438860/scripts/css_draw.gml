@@ -89,6 +89,7 @@ var palette_names = [
                 "Landkon Alt",
                 "Bed Lump",     
                 "Guy from UnderSomething", 
+                "BLW", 
                 "N.Y.A",          
                 
 ];

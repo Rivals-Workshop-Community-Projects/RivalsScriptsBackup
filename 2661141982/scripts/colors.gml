@@ -212,13 +212,13 @@ set_color_profile_slot( 23, 3, 162, 255, 10 ); //Light
 set_color_profile_slot( 23, 4, 224, 224, 224 ); //Skin 2
 set_color_profile_slot( 23, 5, 162, 255, 10 ); //water
 
-// Pearl
-set_color_profile_slot( 24, 0, 159, 167, 181 ); //Skin
-set_color_profile_slot( 24, 1, 224, 220, 101 ); //Fins
-set_color_profile_slot( 24, 2, 255, 99, 252 ); //Marks
-set_color_profile_slot( 24, 3, 255, 248, 219 ); //Light
-set_color_profile_slot( 24, 4, 214, 234, 255 ); //Skin 2
-set_color_profile_slot( 24, 5, 230, 128, 255 ); //water
+// Raging Demon
+set_color_profile_slot( 24, 0, 91, 84, 115 ); //Skin
+set_color_profile_slot( 24, 1, 194, 107, 43 ); //Fins
+set_color_profile_slot( 24, 2, 163, 99, 52 ); //Marks
+set_color_profile_slot( 24, 3, 255, 31, 31 ); //Light
+set_color_profile_slot( 24, 4, 163, 99, 52 ); //Skin 2
+set_color_profile_slot( 24, 5, 129, 25, 204 ); //water
 
 // Blue Beetle
 set_color_profile_slot( 25, 0, 61, 65, 105 ); //Skin

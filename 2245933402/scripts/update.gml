@@ -196,11 +196,11 @@ walljump_time = 24;
 max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 16; //fast fall speed
 gravity_speed = .65;
-wave_land_adj = 1.2;
+wave_land_adj = 1.25;
 
 hitstun_grav = .5;
 
-knockback_adj = 1.2;
+knockback_adj = 1.1;
 }
 
 } else {
@@ -216,7 +216,7 @@ walk_speed = 3;
 walk_accel = 0.5;
 walk_turn_time = 6;
 initial_dash_time = 8;
-initial_dash_speed = 6.5;
+initial_dash_speed = 6;
 dash_speed = 6;
 dash_turn_time = 4;
 dash_turn_accel = 1.5;
@@ -226,14 +226,14 @@ ground_friction = .5;
 moonwalk_accel = 1.4;
 
 jump_start_time = 4;
-jump_speed = 11;
+jump_speed = 12;
 short_hop_speed = 5;
-djump_speed = 11;
+djump_speed = 12;
 leave_ground_max = 5; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .3;
+air_accel = .35;
 prat_fall_accel = .80; //multiplier of air_accel while in pratfall
 air_friction = .02;
 max_djumps = 1;
@@ -243,14 +243,14 @@ walljump_vsp = 11;
 walljump_time = 24;
 max_fall = 8; //maximum fall speed without fastfalling
 fast_fall = 12; //fast fall speed
-gravity_speed = .5;
+gravity_speed = .6;
 hitstun_grav = .5;
-knockback_adj = 1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = .95; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 16;
 wave_land_time = 8;
-wave_land_adj = 1.1; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_land_adj = 1.15; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .04; //grounded deceleration when wavelanding
 }	
 	
@@ -265,7 +265,7 @@ if ostyle == 3{
 	
 	set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 12);
 	
-	set_attack_value(AT_NAIR, AG_LANDING_LAG, 12);
+	set_attack_value(AT_NAIR, AG_LANDING_LAG, 10);
 	set_window_value(AT_NAIR, 4, AG_WINDOW_LENGTH, 16);
 	
 	set_attack_value(AT_DAIR, AG_LANDING_LAG, 12);
@@ -278,7 +278,7 @@ if ostyle == 3{
 	
 	set_window_value(AT_UTILT, 4, AG_WINDOW_LENGTH, 8);
 	
-	set_attack_value(AT_NAIR, AG_LANDING_LAG, 8);
+	set_attack_value(AT_NAIR, AG_LANDING_LAG, 6);
 	set_window_value(AT_NAIR, 4, AG_WINDOW_LENGTH, 12);
 	
 	set_attack_value(AT_DAIR, AG_LANDING_LAG, 8);

@@ -39,8 +39,8 @@ set_hitbox_value(AT_NAIR, 1, HG_HITBOX_TYPE, 1);
 
 set_hitbox_value(AT_NAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_NAIR, 1, HG_LIFETIME, 3);//4
-set_hitbox_value(AT_NAIR, 1, HG_WIDTH, 73);
-set_hitbox_value(AT_NAIR, 1, HG_HEIGHT, 36);
+set_hitbox_value(AT_NAIR, 1, HG_WIDTH, 83);
+set_hitbox_value(AT_NAIR, 1, HG_HEIGHT, 46);
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_X, 32);
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_Y, -19);
 set_hitbox_value(AT_NAIR, 1, HG_PRIORITY, 1);
@@ -61,8 +61,8 @@ set_hitbox_value(AT_NAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_NAIR, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_NAIR, 2, HG_LIFETIME, 3);//4
-set_hitbox_value(AT_NAIR, 2, HG_WIDTH, 73);//60
-set_hitbox_value(AT_NAIR, 2, HG_HEIGHT, 36);//40
+set_hitbox_value(AT_NAIR, 2, HG_WIDTH, 83);//60
+set_hitbox_value(AT_NAIR, 2, HG_HEIGHT, 46);//40
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_X, 32);//15
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_Y, -19);//-25
 set_hitbox_value(AT_NAIR, 2, HG_PRIORITY, 1);

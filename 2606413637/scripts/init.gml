@@ -209,14 +209,7 @@ checked_sprite_names = [
     "uphurt",
     "downhurt",
     "bouncehurt",
-    "spinhurt",
-    
-    "bighurt", 
-    "hurtground", 
-    "bouncehurt", 
     "spinhurt", 
-    "uphurt", 
-    "downhurt", 
     
     "jumpstart", 
     "jump", 
@@ -252,8 +245,9 @@ checked_sprite_names = [
     "uspecial", 
     "dspecial", 
     "taunt",
+    
     "phone_open",
-    "intro"
+    "intro",
     ];
 
 var a = 0;

@@ -299,7 +299,7 @@ switch attack {
          	
              if spr_dir = -1 {
              	spr_dir *= -1
-             	sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1.2)
+             	sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1)
              set_attack(AT_EXTRA_1)
              window = 6
              window_timer = 1
@@ -323,7 +323,7 @@ switch attack {
              window_timer = 1
          	} else {
          		spr_dir *= -1
-         		sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1.2)
+         		sound_play(asset_get("sfx_bird_downspecial"),false,noone,1,1)
              set_attack(AT_EXTRA_1)
              window = 6
              window_timer = 1
@@ -371,7 +371,7 @@ switch attack {
     
     case AT_DSPECIAL :
     
-    print(move_cooldown[AT_DSPECIAL])
+    //print(move_cooldown[AT_DSPECIAL])
         can_move = false
         can_fast_fall = false
         
@@ -482,7 +482,7 @@ switch attack {
                     fxhup = spawn_hit_fx(x,y - 120,hup)
          fxhup.depth = -100
          sound_play(asset_get("sfx_coin_collect"))
-         //htrain += 5
+         htrain += 5
          
        }
        
@@ -694,12 +694,31 @@ switch attack {
          
          if window == 6{
          	
+         	//animation.gml or update.gml
+with (asset_get("new_dust_fx_obj")) {
+
+    if player == other.player && (dust_fx == 23 or dust_fx == 24 or dust_fx == 21) {
+        dust_length = 0;
+    }
+
+}
+
          	if window_timer = 2 && !hitpause{
          		hsp = 6*spr_dir 
          	}
          	
+         	
+         	if hitpause {
+         		window_timer += .7
+         		hit_player_obj.x += hit_player_obj.old_hsp
+         		hit_player_obj.y += hit_player_obj.old_vsp
+         		x += 3*spr_dir
+         	}
+         	
          	if window_timer < 10 {
-
+                   if state_timer % 3 == 0 {
+                   	window_timer -= 1
+                   }
          	} else if window_timer > 6*4 {
          		window_timer += 0.5
          	}
@@ -724,9 +743,11 @@ switch attack {
          }
          
          if window == 7{
+         	
          	with hit_player_obj {
          		can_tech = false
          	}
+         	
          	if hitpause {
          		window_timer += 0.5
          	}

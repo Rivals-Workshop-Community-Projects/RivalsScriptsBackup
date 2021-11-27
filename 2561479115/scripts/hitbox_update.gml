@@ -1,5 +1,27 @@
 if (attack == AT_FSPECIAL && hbox_num == 1 && changed != 1) {
-    if (!free) destroyed = 1;
+    print(grounds);
+    if (!free && grounds == 0) {
+        //destroyed = 1;
+        hit_priority = 0;
+        unbashable = true;
+        vsp = -4;
+        hsp *= 0.3;
+        grav = 0.6;
+        grounds = 1;
+        enemies = 1;
+        walls = 1;
+        through_platforms = 999;
+        hitbox_timer = 0;
+        sound_play(asset_get("sfx_shovel_hit_light1"),false,-4,0.4,1.04);
+        spawn_hit_fx(x,y,302);
+        in_hitpause = 3;
+        sprite_index = transp_spr;
+        changed = 3;
+    } else if grounds == 1 {
+        if !in_hitpause {
+            hsp *= 0.96;
+        } else in_hitpause--;
+    }
 }
 if (hits_tag && !tagged) {
     with (oPlayer) {
@@ -33,10 +55,15 @@ if (hits_tag && !tagged) {
 if attack == AT_DSPECIAL && hbox_num == 1 {
     player_id.move_cooldown[AT_DSPECIAL] = player_id.beacon_cd;
     if !free && !bashed && !was_parried with player_id {
+        if instance_exists(beacon) && beacon.state == 1 {
+            beacon.state = 2;
+            beacon.state_timer = 0;
+        }
         beacon = instance_create(other.x+16*other.spr_dir,other.y+32,"obj_article2");
         beacon.player_id = id;
         //beacon.orig_player = player;
         beacon.orig_player_id = id;
+        move_cooldown[AT_DSPECIAL] = 180;
         instance_destroy(other);
         exit;
     } else if !free && (bashed || was_parried) {
@@ -55,12 +82,18 @@ if attack == AT_DSPECIAL && hbox_num == 1 {
         player_id.touching_proj = false;
     }
     with (obj_article1) {
-        if (player_id == other.player_id) {
+        if (player_id == other.player_id && !passed_field) {
             if (point_distance(other.x,other.y,x,y-30) <= 40) {
                 passed_field = true;
+                spawn_hit_fx(x,y-30,305);
+                sound_play(asset_get("sfx_absa_dattack"));
             }
         }
     }
+}
+if attack == AT_FSPECIAL && changed == 2 {
+    with (player_id) spr = sprite_get("test_particle");
+    if (hitbox_timer%4) createParticle(1,10,24,spr,x,y-4,-hsp/3,-vsp/3,0,0,1.4,-0.1,50,true);
 }
 
 if (attack == AT_NSPECIAL && hbox_num == 1) {

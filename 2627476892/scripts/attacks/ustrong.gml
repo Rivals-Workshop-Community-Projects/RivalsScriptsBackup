@@ -29,7 +29,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_MUNO_HITBOX_NAME, "The hitbox that sends up")
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_Y, -35);
-set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 60);
+set_hitbox_value(AT_USTRONG, 1, HG_WIDTH, 65);
 set_hitbox_value(AT_USTRONG, 1, HG_HEIGHT, 80);
 set_hitbox_value(AT_USTRONG, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_PRIORITY, 2);

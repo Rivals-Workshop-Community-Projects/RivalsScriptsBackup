@@ -47,9 +47,11 @@ if(hit and can_graze){
         graze_dir = hitID.spr_dir;
     }
 }
-
+if(tenshi.dragon_install){
+	force_graze = false;
+}
 //the actual graze
-if(graze_timer == graze_lockout and can_graze or force_graze) {
+if(graze_timer == graze_lockout and can_graze or force_graze and !tenshi.dragon_install) {
 	if(tenshi.state == PS_ROLL_BACKWARD or tenshi.state == PS_ROLL_FORWARD or tenshi.state == PS_AIR_DODGE or force_graze){
 		blue = true;
 	}

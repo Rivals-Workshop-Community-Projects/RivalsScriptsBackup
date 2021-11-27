@@ -146,9 +146,9 @@ if(dragon_install){
 		rainbow_color_slow2 = make_colour_hsv(12*((cur_time/4+15)%30), 255, 160); //ui rainbow2 only runs in DI
 		rainbow_pastel = make_colour_hsv(12*((cur_time/4+15)%30), 120, 255); //ui rainbow2 only runs in DI
 	}
-	if(cur_time%4 == 0){
+
 		install_time++;
-	}
+
 	install_timer++;
 	rainbow_color_slow = make_colour_hsv(12*((cur_time/4)%30), 255, 255); //ui rainbow only runs in DI
 	rainbow_color_ULTRADARK = make_colour_hsv(12*((cur_time/4)%30), 225, 50); //UTLRA dark rainbow used for outline

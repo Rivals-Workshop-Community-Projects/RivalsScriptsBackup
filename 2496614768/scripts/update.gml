@@ -1,22 +1,25 @@
 /// intro 
 
-
 if canceltime > 1 {
 	
-	djumps = 0
 
 	
-	if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND  {
+	if (state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND) && attack != AT_FSPECIAL  {
 		canceltime = 100
 	}
 	
 	if canceltime > 50 {
-	if state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND {
+	if (( state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND ) && window == get_attack_value(attack, AG_NUM_WINDOWS) 
+	
+	
+	 && window_timer > get_window_value(attack, get_attack_value(attack, AG_NUM_WINDOWS), AG_WINDOW_LENGTH) - 2) or (attack == AT_JAB && window == 6) {
 		
 	if !free {
+		attack_end()
 		set_state(PS_PRATLAND)
 		state_timer = 0
 	} else {
+		attack_end()
 		set_state(PS_PRATFALL)
 		state_timer = 0
 	}
@@ -29,7 +32,7 @@ if canceltime > 1 {
 			if vsp > 0 {
 	     	vsp /= 1.6
 			}
-		hsp /= 1.1
+		hsp /= 1.05
 		}
 		
 	}
@@ -38,7 +41,9 @@ if canceltime > 1 {
 	
 }
 
-if state == PS_PRATFALL or state == PS_PRATLAND {
+
+
+if state == PS_PRATFALL or state == PS_PRATLAND or state == PS_WALL_JUMP{
 	canceltime = 0
 }
 

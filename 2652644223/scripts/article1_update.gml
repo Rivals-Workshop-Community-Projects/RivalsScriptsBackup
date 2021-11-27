@@ -108,19 +108,26 @@ with(hbox)
     (attack == AT_UAIR || attack == AT_DTILT || attack == AT_DAIR || attack == AT_FSPECIAL || attack == AT_USTRONG || attack == AT_DSTRONG) && hbox_num == 2 || 
     (attack == AT_DTILT || attack == AT_NSPECIAL || attack == AT_FSTRONG || attack == AT_DSTRONG) && hbox_num == 1) && player_id == other.player_obj)
     {
-        if(other.bullets_held != 3)
+        with(other)
+            if article_should_lockout hit_lockout = 2;
+        sound_play(asset_get("sfx_clairen_tip_weak"));
+        spawn_hit_fx(other.x,other.y,128);
+        destroyed = true;
+        other.spr_dir = spr_dir;
+        other.state_timer = 0;
+
+        //Check if full
+        if(other.bullets_held < 3)
         {
-            with(other)
-                if article_should_lockout hit_lockout = 2;
-            sound_play(asset_get("sfx_clairen_tip_weak"));
-            spawn_hit_fx(other.x,other.y,128);
             if(hit_effect == other.player_id.laserhit_fx)
                 other.bullets[other.bullets_held].enhanced = true;
             other.bullets_held ++;
             other.idle_timer = 0;
+        }
+        else
+        {
+            other.state = 1;
             other.state_timer = 0;
-            destroyed = true;
-            other.spr_dir = spr_dir;
         }
     }
     else if (type == 1)

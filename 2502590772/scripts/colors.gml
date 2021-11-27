@@ -26,7 +26,7 @@ set_color_profile_slot_range( 5, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 30 );
+set_num_palettes( 32 );
 
 // Shiny
 set_color_profile_slot( 1, 0, 255, 220, 161 ); //P FUR
@@ -259,6 +259,22 @@ set_color_profile_slot( 29, 2, 250, 191, 30 ); //P ACCENT 2
 set_color_profile_slot( 29, 3, 35, 185, 185 ); //M FUR
 set_color_profile_slot( 29, 4, 255, 238, 0 ); //M ACCENT1
 set_color_profile_slot( 29, 5, 250, 191, 30 ); //M ACCENT 2
+
+// Solo Plusle
+set_color_profile_slot( 30, 0, 255, 220, 161 ); //P FUR
+set_color_profile_slot( 30, 1, 255, 160, 145 ); //P ACCENT 1
+set_color_profile_slot( 30, 2, 255, 89, 0 ); //P ACCENT 2
+set_color_profile_slot( 30, 3, 251, 212, 128 ); //M FUR
+set_color_profile_slot( 30, 4, 97, 255, 155 ); //M ACCENT1
+set_color_profile_slot( 30, 5, 48, 140, 85 ); //M ACCENT 2
+
+// Solo Minun
+set_color_profile_slot( 31, 0, 255, 220, 161 ); //P FUR
+set_color_profile_slot( 31, 1, 255, 160, 145 ); //P ACCENT 1
+set_color_profile_slot( 31, 2, 255, 89, 0 ); //P ACCENT 2
+set_color_profile_slot( 31, 3, 251, 212, 128 ); //M FUR
+set_color_profile_slot( 31, 4, 97, 255, 155 ); //M ACCENT1
+set_color_profile_slot( 31, 5, 48, 140, 85 ); //M ACCENT 2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

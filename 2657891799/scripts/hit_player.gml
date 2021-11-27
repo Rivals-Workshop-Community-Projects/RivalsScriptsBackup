@@ -52,5 +52,17 @@ if atk == AT_DSPECIAL && hnum == 1 {
         doll_id.state_timer = 0
         doll_id.shine_hit = hit_player_obj
     }
-    
+    ss_type = 2
+    ss_x = hit_player_obj.x
+    ss_y = hit_player_obj.y
 }
+
+counter_hit = noone
+
+if doll_id != noone && hit_doll == undefined && doll_id.state != PS_DEAD && atk != AT_UTHROW && atk != AT_FSPECIAL && !(atk == AT_DAIR && state_timer > 1000) {
+    hit_doll = doll_id;
+}
+
+set_window_value(AT_UTHROW, 3, AG_WINDOW_TYPE, 0);
+set_window_value(AT_FSPECIAL, 7, AG_WINDOW_TYPE, 0);
+set_window_value(AT_FSPECIAL, 8, AG_WINDOW_TYPE, 0);

@@ -24,6 +24,8 @@ if (is_master_player || move_cooldown[attack] > 0) exit;
 #macro INP_LEFT_STICK 1 << 21
 #macro INP_RIGHT_STICK 1 << 22
 
+//if (custom_clone) print(string(get_gameplay_time()) + " clone atk");
+
 switch (attack) {
     
     case AT_FSPECIAL:
@@ -38,19 +40,33 @@ switch (attack) {
     
     case AT_FSTRONG:
         //there's some weird code I can't find that keeps flipping fstrong's direction to the right. therefore:
+        
+        /*
         if (is_strong_pressed(DIR_LEFT) - is_strong_pressed(DIR_RIGHT) == 0) {
-            if (species_id == 1 && !master_player_id.special_held) {
+           // if (species_id == 1 &&  !master_player_id.special_held) {
                 var raw_input_dir = (ai_inputs_raw & INP_RIGHT != 0) - (ai_inputs_raw & INP_LEFT != 0);
                 if (raw_input_dir != 0) {
                     dir_correct = raw_input_dir;
+                    print(string(species_id) + "-- dir_correct = " + string(dir_correct) + " - raw_input_dir");
                 }
-                else dir_correct = spr_dir;
-            }
-            else dir_correct = spr_dir;
-            
+                else print(string(species_id) + "-- dir_correct = none - raw_input_dir");
+                //else dir_correct = spr_dir;
+            //}
+            //else dir_correct = spr_dir;
         }
-        else dir_correct = 0;
-
+        
+        else*/ if (is_strong_pressed(DIR_LEFT)) { dir_correct = -1; }// print(string(species_id) + "-- dir_correct = " + string(dir_correct) + " - left stick"); }
+        else if (is_strong_pressed(DIR_RIGHT)) { dir_correct = 1;  }// print(string(species_id) + "-- dir_correct = " + string(dir_correct) + " - right stick"); }
+        else if (is_strong_pressed(DIR_ANY) && right_down - left_down != 0) {
+            dir_correct = right_down - left_down;
+            //print(string(species_id) + "-- dir_correct = " + string(dir_correct) + " - right minus left"); 
+        }
+        
+        else {
+            
+            dir_correct = spr_dir;
+        }
+        
         if (has_been_buffed_by_helping_hand) attack = AT_FSTRONG_2;
         else if (custom_clone) attack = AT_FTHROW;
     break;
@@ -139,9 +155,22 @@ switch (attack) {
     break;
     
     case AT_JAB:
-    
+        
+        
+        
         if (custom_clone && !(master_player_id.special_held)) {
-           //the partner should always use this move towards the teammate UNLESS the player is forcing a desync with the special button
+            /*
+            //check if this should be a dash attack instead
+            if (artificial_dash > 0) {
+                attack = AT_DATTACK;
+                print("jab converted to dash")
+                if (species_id == 1) attack = get_minun_attack(attack);
+            }
+            */
+            
+            
+            
+           //the partner should always use jab towards the teammate UNLESS the player is forcing a desync with the special button
             if (instance_exists(teammate_player_id) && prev_state != PS_ATTACK_GROUND) {
                 var teammate_dir = sign(teammate_player_id.x - x);
                 if (teammate_dir != 0) spr_dir = teammate_dir;
@@ -151,15 +180,25 @@ switch (attack) {
     break;
     
     case AT_DATTACK:
-        if (custom_clone && artificial_dash && !(master_player_id.special_held) && is_attack_pressed(DIR_ANY)
-        && ((ai_inputs & INP_RIGHT_HARD != 0) - (ai_inputs & INP_LEFT_HARD != 0) != 0) ) {
+        //if (custom_clone) print(string(get_gameplay_time()) + "artificial dash: " + string(artificial_dash > 0));
+        
+        
+        if (custom_clone && !(master_player_id.special_held) 
+           && buffer_sync_state[buffer_counter] != PS_DASH && buffer_sync_state[buffer_counter] != PS_DASH_START
+        
+        //if (custom_clone && artificial_dash > 0 && !(master_player_id.special_held) && is_attack_pressed(DIR_ANY)    
+        && ((ai_inputs & INP_RIGHT_HARD != 0) - (ai_inputs & INP_LEFT_HARD != 0) != 0) 
+        && artificial_dash >= 0  
+        ) {
             //use the real intended attack if the player didn't intend for a dash
+            //print("switching attack")
             if (is_attack_pressed(DIR_UP)) attack = AT_UTILT;
             else if (is_attack_pressed(DIR_DOWN)) attack = AT_DTILT;
             else if (spr_dir == 1 && is_attack_pressed(DIR_RIGHT)) attack = AT_FTILT;
             else if (spr_dir == -1 && is_attack_pressed(DIR_LEFT)) attack = AT_FTILT;
-            else if (is_attack_pressed(DIR_RIGHT) || is_attack_pressed(DIR_LEFT)) { spr_dir *= -1; attack = AT_FTILT; }
-            else attack = AT_JAB;
+            //else if (is_attack_pressed(DIR_RIGHT) || is_attack_pressed(DIR_LEFT)) { spr_dir *= -1; attack = AT_FTILT; }
+            else if (right_down - left_down == 0 && up_down - down_down == 0 && attack_pressed) attack = AT_JAB;
+            //else if (is_attack_pressed(DIR_NONE)) attack = AT_JAB;
         }
         
         if (species_id == 1) attack = get_minun_attack(attack);
@@ -174,18 +213,20 @@ switch (attack) {
     case AT_FTILT:
     case AT_UTILT:
     case AT_DTILT:
-    //case AT_DATTACK:
         if (custom_clone && !(master_player_id.special_held)) {
             //correct for dashing
-            if (instance_exists(teammate_player_id) && sync_next_predicted_state == PS_ATTACK_GROUND && (teammate_player_id.attack == AT_DATTACK || teammate_player_id.attack == AT_MINUN_DATTACK)) {
+            if (artificial_dash < 0) { //(buffer_sync_state[buffer_counter] == PS_DASH_START) {
+            //if (instance_exists(teammate_player_id) && sync_next_predicted_state == PS_ATTACK_GROUND && (teammate_player_id.attack == AT_DATTACK || teammate_player_id.attack == AT_MINUN_DATTACK)) {
                 attack = AT_DATTACK;
             }
+            /*
             //correct for unintended tilts
             else if (attack == AT_FTILT 
              && (ai_inputs_raw & INP_RIGHT != 0) && (ai_inputs_raw & INP_LEFT != 0)
              && (ai_inputs_raw & INP_RIGHT_STICK != 0) && (ai_inputs_raw & INP_LEFT_STICK != 0)) {
                 attack = AT_JAB;
             }
+            */
         }
         
         //todo: make the tilt face the right way 

@@ -284,7 +284,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 18 );
+set_num_palettes( 22 );
 
 // Hime
 set_color_profile_slot( 1, 0, 109, 140, 161 ); //Hair_light
@@ -360,8 +360,8 @@ set_color_profile_slot( 7, 7, 155, 178, 179 ); //Pants
 set_color_profile_slot( 8, 0, 178, 136, 112 ); //Hair_light
 set_color_profile_slot( 8, 1, 125, 105, 91 ); //Hair_dark
 set_color_profile_slot( 8, 2, 243, 222, 210 ); //Skin
-set_color_profile_slot( 8, 3, 189, 177, 100 ); //Energy_light
-set_color_profile_slot( 8, 4, 130, 122, 80 ); //Energy_dark
+set_color_profile_slot( 8, 3, 118, 204, 227 ); //Energy_light
+set_color_profile_slot( 8, 4, 77, 176, 201 ); //Energy_dark
 set_color_profile_slot( 8, 5, 74, 77, 74 ); //Metal
 set_color_profile_slot( 8, 6, 49, 50, 49 ); //Shirt
 set_color_profile_slot( 8, 7, 90, 162, 181 ); //Pants
@@ -420,10 +420,10 @@ set_color_profile_slot( 13, 7, 40, 39, 81 ); //Pants
 set_color_profile_slot( 14, 0, 93, 54, 127 ); //Hair_light
 set_color_profile_slot( 14, 1, 64, 37, 87 ); //Hair_dark
 set_color_profile_slot( 14, 2, 207, 185, 247 ); //Skin
-set_color_profile_slot( 14, 3, 183, 5, 227 ); //Energy_light
-set_color_profile_slot( 14, 4, 140, 4, 173 ); //Energy_dark
-set_color_profile_slot( 14, 5, 92, 50, 102 ); //Metal
-set_color_profile_slot( 14, 6, 125, 39, 204 ); //Shirt
+set_color_profile_slot( 14, 3, 201, 98, 227 ); //Energy_light
+set_color_profile_slot( 14, 4, 150, 54, 173 ); //Energy_dark
+set_color_profile_slot( 14, 5, 60, 45, 64 ); //Metal
+set_color_profile_slot( 14, 6, 107, 82, 130 ); //Shirt
 set_color_profile_slot( 14, 7, 46, 18, 71 ); //Pants
 
 // Eltnum
@@ -456,9 +456,50 @@ set_color_profile_slot( 17, 5, 71, 41, 1 ); //Metal
 set_color_profile_slot( 17, 6, 247, 239, 178 ); //Shirt
 set_color_profile_slot( 17, 7, 199, 167, 99 ); //Pants
 
+// BLM
+set_color_profile_slot( 18, 0, 38, 35, 41 ); //Hair_light
+set_color_profile_slot( 18, 1, 26, 26, 26 ); //Hair_dark
+set_color_profile_slot( 18, 2, 115, 91, 58 ); //Skin
+set_color_profile_slot( 18, 3, 255, 229, 0 ); //Energy_light
+set_color_profile_slot( 18, 4, 232, 173, 0 ); //Energy_dark
+set_color_profile_slot( 18, 5, 181, 181, 181 ); //Metal
+set_color_profile_slot( 18, 6, 79, 79, 79 ); //Shirt
+set_color_profile_slot( 18, 7, 26, 26, 26 ); //Pants
+
+// Bout
+set_color_profile_slot( 19, 0, 55, 59, 55 ); //Hair_light
+set_color_profile_slot( 19, 1, 0, 31, 0 ); //Hair_dark
+set_color_profile_slot( 19, 2, 255, 238, 194 ); //Skin
+set_color_profile_slot( 19, 3, 37, 81, 184 ); //Energy_light
+set_color_profile_slot( 19, 4, 0, 20, 133 ); //Energy_dark
+set_color_profile_slot( 19, 5, 68, 115, 70 ); //Metal
+set_color_profile_slot( 19, 6, 0, 46, 84 ); //Shirt
+set_color_profile_slot( 19, 7, 35, 59, 35 ); //Pants
+
+// Rat God
+set_color_profile_slot( 20, 0, 179, 255, 125 ); //Hair_light
+set_color_profile_slot( 20, 1, 45, 122, 87 ); //Hair_dark
+set_color_profile_slot( 20, 2, 255, 246, 232 ); //Skin
+set_color_profile_slot( 20, 3, 255, 168, 217 ); //Energy_light
+set_color_profile_slot( 20, 4, 184, 23, 23 ); //Energy_dark
+set_color_profile_slot( 20, 5, 46, 36, 79 ); //Metal
+set_color_profile_slot( 20, 6, 168, 34, 88 ); //Shirt
+set_color_profile_slot( 20, 7, 216, 221, 230 ); //Pants
+
+// Cotton Candy..?
+set_color_profile_slot( 21, 0, 179, 254, 255 ); //Hair_light
+set_color_profile_slot( 21, 1, 94, 179, 209 ); //Hair_dark
+set_color_profile_slot( 21, 2, 255, 236, 176 ); //Skin
+set_color_profile_slot( 21, 3, 255, 158, 255 ); //Energy_light
+set_color_profile_slot( 21, 4, 230, 103, 218 ); //Energy_dark
+set_color_profile_slot( 21, 5, 201, 205, 207 ); //Metal
+set_color_profile_slot( 21, 6, 230, 248, 255 ); //Shirt
+set_color_profile_slot( 21, 7, 232, 175, 214 ); //Pants
+
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
 {"formatversion":1,"data":[{"name":"Hair_light","colors":[{"r":"76","g":"50","b":"39","main":true}]},{"name":"Hair_dark","colors":[{"r":"50","g":"38","b":"34","main":true}]},{"name":"Skin","colors":[{"r":"253","g":"233","b":"185","main":true},{"r":231,"g":196,"b":147},{"r":199,"g":141,"b":99}]},{"name":"Energy_light","colors":[{"r":"249","g":"202","b":"53","main":true}]},{"name":"Energy_dark","colors":[{"r":"225","g":"160","b":"76","main":true}]},{"name":"Metal","colors":[{"r":"41","g":"32","b":"38","main":true},{"r":64,"g":53,"b":59},{"r":27,"g":22,"b":26}]},{"name":"Shirt","colors":[{"r":"39","g":"70","b":"94","main":true},{"r":25,"g":48,"b":75}]},{"name":"Pants","colors":[{"r":"33","g":"33","b":"38","main":true}]}]}
 === END JSON PALETTE ===
 */
+

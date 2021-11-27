@@ -12,7 +12,7 @@ set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_zetter_downb"));
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX_FRAME, 8);
 
-set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 26);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 

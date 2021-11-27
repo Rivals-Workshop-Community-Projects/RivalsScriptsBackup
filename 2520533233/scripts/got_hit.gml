@@ -23,7 +23,7 @@ if(move_cooldown[AT_FSPECIAL] > 0){
     move_cooldown[AT_FSPECIAL] = 0;
 }*/
 if(dragon_install){
-    install_time += enemy_hitboxID.damage*50;
+    install_time += enemy_hitboxID.damage*40;
 }
 if(attack == AT_DSPECIAL and (window == 2 or window == 3)){
     set_attack(AT_EXTRA_1);

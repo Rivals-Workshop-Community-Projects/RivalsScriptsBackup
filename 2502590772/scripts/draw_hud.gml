@@ -1,6 +1,5 @@
 //if (!custom_clone) draw_debug_text(x, y, string(buffer_up_down));
 
-
 //draw_hud.gml – used to draw on top of the player’s HUD. To get the position of the HUD, use temp_x and temp_y.
 
 if (is_master_player || custom_clone) exit;
@@ -11,7 +10,10 @@ var inner_hud_y = temp_y + 8;
 draw_sprite(spr_hud_plusminus, species_id, temp_x + 166, temp_y - 16);
 draw_sprite(spr_hud_baton, !nspecial_can_use_baton, temp_x + 186, temp_y - 14);
 
-
+if (is_solo_player) {
+    shader_end();
+    exit;
+}
 
 var teammate_exists = instance_exists(teammate_player_id);
 

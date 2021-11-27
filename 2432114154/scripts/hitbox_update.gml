@@ -60,7 +60,7 @@ if attack == AT_NSPECIAL {
 	    
 	    if nearbyhitbox != noone && player_id != other.player_id && type == 2 && hit_priority != 0 && can_hit_self == false{
 	    	
-	    	damage += 5
+	    	damage *= 1.5 
 	    	
 	    	can_hit[other.player] = false
 	    	
@@ -72,6 +72,8 @@ if attack == AT_NSPECIAL {
 	    	
 	    	with other {
 	    		
+	    		player_id.move_cooldown[AT_EXTRA_1] = 60
+	    		
             sound_stop(sound_get("RI")); 
             sound_play(sound_get("RI")); 
             shake_camera(4, 6)
@@ -80,11 +82,22 @@ if attack == AT_NSPECIAL {
 	    	
             spawn_hit_fx (x - 10 + random_func(2,20,true), y  - random_func(2,40,true) , 302 )
 	    	
-			hsp = (player_id.x - x)/10
-			vsp = (player_id.y - 30 - y)/10
-			spr_dir *= -1
+
+			
+			var angle = point_direction(x, y, player_id.x, player_id.y - 40 );
+
+            hsp = lengthdir_x(8, angle)
+            vsp = lengthdir_y(8, angle)
 			
 			
+				if hsp < 0 {
+                    spr_dir = -1
+                } 
+                
+                if hsp > 0 {
+                    spr_dir = 1
+                }
+    
 			//nearbyhitbox.grav = 0.2 + abs(nearbyhitbox.hsp/40)
 	       	//nearbyhitbox.hitbox_timer = 1
 			//nearbyhitbox.hit_priority = 0

@@ -97,6 +97,19 @@ if ("rollArray" in self)
 						AddText("Adjusted all aura-based hit sfx");
 						AddText("");
 						AddText("Fixed Photon Edge alt colours");
+						break;
+					case 3:
+						AddText("v2.2 - 26 Nov 2021");
+						AddText("");
+						AddText("Redone Intro animation");
+						AddText("Redone Victory screen");
+						AddText("");
+						AddText("Added Down Taunt");
+						AddText("");
+						AddText("Added a small amount of runes");
+						AddText("");
+						AddText("Bugfix for DSpec not doing DJump after using jumps");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

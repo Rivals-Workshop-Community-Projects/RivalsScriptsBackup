@@ -2,6 +2,10 @@
 //gpu_set_colorwriteenable(true,true,true,true)
 
 if "beacon" in self {
+    /*if move_cooldown[AT_DSPECIAL] {
+        draw_set_font(asset_get("tinyFont"));
+        draw_text_ext_transformed(temp_x+162,temp_y-14,`${string_format(move_cooldown[AT_DSPECIAL]/60, 2, 1)}`, 0, 100, 2, 2, 0);
+    }*/
     if t_active {
         draw_set_alpha(t_shade/15);
         draw_sprite(sprite_get("screen_ovr"),0,0,0);

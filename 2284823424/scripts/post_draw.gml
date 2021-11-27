@@ -90,7 +90,7 @@ if real_sprite == spr_uspecial{
 
 
 if (state_cat == SC_HITSTUN && state_timer < 30) || (attacking && attack == AT_TAUNT_2 && "bed_time" in self && bed_time > bed_time_max - bed_time_mid && bed_time % 10 < 5){
-	draw_sprite_ext(real_sprite, real_index, x, y, image_xscale, image_yscale, image_angle, c_red, 0.5);
+	draw_sprite_ext(real_sprite, real_index, x, y, image_xscale * size_mult, image_yscale * size_mult, image_angle, c_red, 0.5);
 }
 
 shader_end();

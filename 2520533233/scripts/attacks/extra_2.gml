@@ -12,7 +12,8 @@ set_window_value(AT_EXTRA_2, 1, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_ANIM_FRAME_START, 1);
-
+set_window_value(AT_EXTRA_2, 2, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_EXTRA_2, 2, AG_WINDOW_SFX, sound_get("fairdash"));
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_EXTRA_2, 2, AG_WINDOW_VSPEED, 0);
 
@@ -32,7 +33,7 @@ set_window_value(AT_EXTRA_2, 4, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_EXTRA_2, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_EXTRA_2, 4, AG_WINDOW_SFX, sound_get("fairdash"));
 
-set_window_value(AT_EXTRA_2, 5, AG_WINDOW_LENGTH, 28);
+set_window_value(AT_EXTRA_2, 5, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_EXTRA_2, 5, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_EXTRA_2, 5, AG_WINDOW_ANIM_FRAME_START, 7);
 

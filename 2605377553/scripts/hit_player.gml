@@ -21,26 +21,6 @@ if ((hitFSTRONG || hitUSTRONG|| hitDSTRONG) && hit_player_obj.malsick)
 	hit_player_obj.strongStunnedTimer = 20;
 }
 
-if (my_hitboxID.attack == AT_DATTACK) {
-	
-	//Before PROGRESSING, first make sure that:
-	//-The player is in an attack animation
-	//-The opponent is in hitstun
-	//-The player did not get parried, and
-	//-The opponent is not a Forsburn clone.
-
-	if ((state == PS_ATTACK_GROUND)
-	  && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND)
-    	  && was_parried == false
-	  && hit_player_obj.clone == false) {
-		
-		//transition to the '2' part of the attack.
-		destroy_hitboxes();
-		attack_end();
-		set_attack(AT_EXTRA_1);
-	}
-}
-
 if (my_hitboxID.attack == AT_USPECIAL) {
 	
 	//Before PROGRESSING, first make sure that:

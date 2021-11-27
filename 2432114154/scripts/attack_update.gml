@@ -362,7 +362,9 @@ if attack == AT_JAB && window == 6 && (window_timer >= 6 or has_hit) {
     
         if attack == AT_NSPECIAL{
         	clear_button_buffer(PC_SPECIAL_PRESSED)
+        	if window <= 2 && window_timer < 6{ 
         	create_hitbox(AT_NSPECIAL,2,x,y - 30)
+        	}
          ///if window < 3 {    
          ///vsp = 0
          ///hsp = 0
@@ -709,7 +711,7 @@ if get_player_color(player) == 10 {
          if window == 3 && window_timer == 1 {
          	 hsp = 10*spr_dir
              shake_camera (floor(strong_charge/6),8)
-             sound_play(sound_get("RI"))
+             sound_play(sound_get("RI"),false,noone,.7,.87)
          }   
          
          if window == 4 && window_timer == 1 {

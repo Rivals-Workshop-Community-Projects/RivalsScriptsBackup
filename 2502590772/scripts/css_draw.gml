@@ -24,7 +24,7 @@ var temp_x = x + 8;
 var temp_y = y + 9;
 
  
-var num_alts = 30;
+var num_alts = 32;
 var alt_cur = get_player_color(player);
  
 
@@ -61,8 +61,8 @@ alt_name[26] = "Sweet Stuff";
 alt_name[27] = "Nana & Popo";
 alt_name[28] = "Alto & Trummel";
 alt_name[29] = "MO & Astray";
-alt_name[30] = "woag";
-alt_name[31] = "woag";
+alt_name[30] = "Just Plusle (Co-Op/2v1)";
+alt_name[31] = "Just Minun (Co-Op/2v1)";
  
  
 
@@ -70,21 +70,22 @@ alt_name[31] = "woag";
 draw_set_halign(fa_left);
 //color boxes
 rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
- 
+
 for(i = 0; i < num_alts; i++){
     var draw_color = (i == alt_cur) ? c_white : c_gray;
     var draw_x = temp_x + 2 + 10 * (i mod 16);
-    var draw_y = temp_y + 137 + (i >= 16) * 4
+    var draw_y = temp_y + 137 + (i >= 16) * 4;
     rectDraw(draw_x, draw_y, draw_x + 7, draw_y + 1, draw_color);
 }
  
 draw_set_halign(fa_left);
 
 //timed mode warning
-var match_timer = get_match_setting(SET_TIMER);
-var match_stocks = get_match_setting(SET_STOCKS);
-var match_practice = get_match_setting(SET_PRACTICE);
-if ((get_match_setting(SET_STOCKS) <= 0 && get_match_setting(SET_TIMER) > 0 && get_match_setting(SET_PRACTICE) == 0)) {
+//var match_timer = get_match_setting(SET_TIMER);
+//var match_stocks = get_match_setting(SET_STOCKS);
+//var match_practice = get_match_setting(SET_PRACTICE);
+
+if ((get_match_setting(SET_STOCKS) <= 0 && get_match_setting(SET_TIMER) > 0 && get_match_setting(SET_PRACTICE) == 0 && alt_cur < 30)) {
     draw_set_alpha(0.7);
     rectDraw(temp_x + 8, temp_y + 40, temp_x + 192, temp_y + 112, c_black);
     draw_set_alpha(1);
@@ -94,8 +95,20 @@ if ((get_match_setting(SET_STOCKS) <= 0 && get_match_setting(SET_TIMER) > 0 && g
     textDraw(temp_x + 10, temp_y + 96, "fName", c_white, 0, 1000, 1, true, 1, "  your own risk!");
 }
 
+
+if ((get_match_setting(SET_TEAMS) == 0 && alt_cur >= 30)) {
+    draw_set_alpha(0.7);
+    rectDraw(temp_x + 8, temp_y + 40, temp_x + 192, temp_y + 112, c_black);
+    draw_set_alpha(1);
+    textDraw(temp_x + 10, temp_y + 48, "fName", c_white, 0, 1000, 1, true, 1, "* To use Co-Op");
+    textDraw(temp_x + 10, temp_y + 64, "fName", c_white, 0, 1000, 1, true, 1, "  Plusle & Minun,");
+    textDraw(temp_x + 10, temp_y + 80, "fName", c_white, 0, 1000, 1, true, 1, "  set Teams Mode in");
+    textDraw(temp_x + 10, temp_y + 96, "fName", c_white, 0, 1000, 1, true, 1, "  the Match Rules.");
+}
+
+
 //include alt. name
-textDraw(temp_x + 2, temp_y + 116, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1) + ": " + alt_name[alt_cur]);
+textDraw(temp_x + 2, temp_y + 116 - (16 * get_match_setting(SET_TEAMS)), "fName", c_white, 0, 1000, 1, true, 1, (alt_cur < 9 ? "0" : "") + string(alt_cur + 1) + ": " + alt_name[alt_cur]);
  
 //exclude alt. name
 //textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));

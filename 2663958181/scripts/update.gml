@@ -153,7 +153,7 @@ if under_cloud{
 	print("Not Under Cloud");
 	if is_squr_wet{
 		if squr_buff_timer <= squr_buff_timer_max{
-			if state_cat == SC_HITSTUN{
+			if state_cat == SC_HITSTUN and state != PS_TUMBLE{
 				if squr_buff_timer != squr_buff_timer_max - 1 {
 					squr_buff_timer++;
 				}
@@ -166,9 +166,11 @@ if under_cloud{
 }
 
 if raincloud == noone{
-	if attack == AT_DSPECIAL_2 and window < 3{
-		window = 3;
-		window_timer = 0;
+	if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND{
+		if attack == AT_DSPECIAL_2 and window < 3{
+			window = 3;
+			window_timer = 0;
+		}
 	}
 }
 

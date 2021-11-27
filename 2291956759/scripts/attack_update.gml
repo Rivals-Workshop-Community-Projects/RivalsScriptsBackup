@@ -7,6 +7,12 @@ window_timer += 0.2
 
 if !hitpause && !isyellow{
     
+    
+    if attack == AT_BAIR && window == 1 && window_timer == 1 && !hitpause {
+	sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,1.5)
+	sound_play(asset_get("sfx_ice_on_player"),false,noone,1,1.2)
+    }
+
     if attack == AT_DATTACK {
     if window == 1 && window_timer == 1 {
         sound_play(asset_get("sfx_shovel_swing_heavy1"))
@@ -69,6 +75,7 @@ if attack == AT_FSTRONG {
     }
     
     if window == 2 {
+    	hsp = 4*spr_dir
         //if !free {
         //x += 4*spr_dir
         //}
@@ -144,15 +151,19 @@ if attack == AT_DAIR {
         window_timer = 2
     }
     if !free {
-            	sound_play(asset_get("sfx_ori_stomp_hit"));
-        if left_down && !right_down {
+    	
+
+    	attack_end()
+    	destroy_hitboxes()
+        sound_play(asset_get("sfx_ori_stomp_hit"));
+        if hit_player_obj.x < x{
             spr_dir = -1
-        }
-        if !left_down && right_down {
+        } else {
             spr_dir = 1
         }
-        window = 3
-        window_timer = 0
+        attack = AT_UTILT
+        window = 2
+        window_timer = 6
     }
     
     }
@@ -195,14 +206,14 @@ if attack == AT_FSPECIAL {
     if window == 2 && window_timer == 4{
         sound_play(asset_get("sfx_orca_absorb")) 
         if inkshield < 0 {
-            create_hitbox(AT_FSPECIAL , 3 , x + 40*spr_dir , y - 36  );
+            create_hitbox(AT_FSPECIAL , 3 , x + 20*spr_dir , y - 36  );
         } else {
         	inkshield = 0
             sound_play(sound_get("SpaceCut")) 
             spawn_hit_fx(x, y - 32, 304)
-            create_hitbox(AT_FSPECIAL , 4 , x + 40*spr_dir , y - 36  );
-            create_hitbox(AT_FSPECIAL , 5 , x + 40*spr_dir , y - 36  );
-            create_hitbox(AT_FSPECIAL , 6 , x + 40*spr_dir , y - 36  );
+            create_hitbox(AT_FSPECIAL , 4 , x + 20*spr_dir , y - 36  );
+            create_hitbox(AT_FSPECIAL , 5 , x + 20*spr_dir , y - 36  );
+            create_hitbox(AT_FSPECIAL , 6 , x + 20*spr_dir , y - 36  );
         }
 
     }
@@ -750,7 +761,8 @@ if isyellow && !hitpause {
             
          if window == 2 && window_timer = 1 {
              sound_play(asset_get("sfx_bird_downspecial"))
-         }   
+         } 
+         
         }
         
         if attack == AT_USTRONG {

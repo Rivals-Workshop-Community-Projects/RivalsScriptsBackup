@@ -12,7 +12,7 @@ set_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_SFX_FRAME, 0);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, .3);
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, .2);
 
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 2);
@@ -92,7 +92,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE, 90);
 set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 9);
-set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, 0.9);
+set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT_X_OFFSET, 10);

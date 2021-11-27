@@ -56,16 +56,6 @@ if attack == AT_JAB
 	was_parried = false;
 }
 
-//dattack2 turnaround
-if attack == AT_EXTRA_1
-{
-	hurtboxID.sprite_index = sprite_get("dattack2_hurt");
-    if window == 1 && window_timer == 1 && !hitpause
-     {
-            spr_dir*=-1;
-      }
-}
-
 //bair
 if attack == AT_BAIR
 {

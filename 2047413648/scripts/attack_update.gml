@@ -133,6 +133,7 @@ if (attack == AT_DAIR){
         
         set_state(PS_PRATFALL)
         vsp = -10
+        old_vsp = -10
         prat_land_time = 6;
         spawn_hit_fx(x,y - 60, 306)
 		create_hitbox(AT_EXTRA_3 , 2 , x - 30 * spr_dir, y - 40 );	
@@ -226,6 +227,7 @@ if (attack == AT_DAIR){
                             set_state(PS_PRATFALL)
                             state_timer = 300
                             vsp = -16
+                            old_vsp = -16
                             hsp = 6*spr_dir
                             prat_land_time = 6;
                             spawn_hit_fx(x,y - 60, 306)
@@ -480,6 +482,10 @@ if attack == AT_DSTRONG {
 
 if attack == AT_NSPECIAL{
     
+    if window < 4 {
+    	vsp = 0
+    }
+
    	if free && window > 3 && state_timer > 60 && y + vsp > room_height/2 + 300 && ((jump_pressed) or (shield_pressed) or (attack_pressed) or y + vsp > room_height) {
 		sound_play(sound_get("RI"),false,noone,0.8,0.75)
         sound_play(asset_get("sfx_ori_bash_launch"));
@@ -493,6 +499,7 @@ if attack == AT_NSPECIAL{
         
         set_state(PS_PRATFALL)
         vsp = -10
+        old_vsp = -10
         prat_land_time = 6;
         spawn_hit_fx(x,y - 60, 306)
 
@@ -509,19 +516,6 @@ if attack == AT_NSPECIAL{
     can_fast_fall = false
     
     hsp /= 1.05
-    
-    
-    if window <= 3 && window != 0{
-    	vsp = 0
-    	if window > 1 && shield_pressed && has_airdodge{
-    		spawn_hit_fx(x - 35*spr_dir,y - 80, 14)
-    		char_height = 50;
-    		if !free {
-    			y -= 15
-    		}
-    	}
-    	can_shield = true
-    }
     
     
     if window == 1 {
@@ -625,7 +619,7 @@ if attack == AT_NSPECIAL{
     
     
     if  window == 2 or window == 3 {
-    if move_cooldown[AT_FSPECIAL] == 0 and !free and (special_pressed  and left_down) and dairv = 0 {
+    if move_cooldown[AT_FSPECIAL] == 0 and (special_pressed  and left_down) and dairv = 0 {
         hsp = -9
         
         fcharge -= 1
@@ -641,7 +635,7 @@ if attack == AT_NSPECIAL{
         
     } 
     
-    if move_cooldown[AT_FSPECIAL] == 0 and !free and (special_pressed  and right_down) and dairv = 0 {
+    if move_cooldown[AT_FSPECIAL] == 0 and (special_pressed  and right_down) and dairv = 0 {
         hsp = 9
         
         fcharge -= 1

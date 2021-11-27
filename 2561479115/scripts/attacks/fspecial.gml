@@ -32,8 +32,8 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 60);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 68);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -52);
-set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 60);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 60);
+set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 40);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 40);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 2);
 
@@ -43,11 +43,17 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_EFFECT, 9);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
 */
+set_hitbox_value(AT_FSPECIAL, 1, HG_EFFECT, 9);
+set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 90);
+set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.6);//added
+
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .06);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("drone_launch"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_ANIM_SPEED, 0.5);
-set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_MASK, sprite_get("drone"));
+set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 15);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -2);

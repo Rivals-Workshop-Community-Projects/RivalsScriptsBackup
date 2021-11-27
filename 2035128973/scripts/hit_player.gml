@@ -1,5 +1,19 @@
 
-//hit_player_obj.orig_knock *= 1 + (get_player_damage( player ) / 200);
+if (has_rune("G")) hit_player_obj.orig_knock *= 1 + (get_player_damage(player) / 150);
+
+if (has_rune("C") && my_hitboxID.player == player) switch (my_hitboxID.attack)
+{
+	case AT_FTILT:
+	case AT_DTILT:
+	case AT_FAIR:
+	case AT_DAIR:
+	case AT_NAIR:
+		var markArticle = instance_create(x+spr_dir*24, y-2, "obj_article3");
+		markArticle.newState = 1;
+		markArticle.sprite_index = asset_get("empty_sprite");
+		boneMark = hit_player_obj;
+		boneMarkDir = my_hitboxID.proj_angle;
+}
 
 if (my_hitboxID.player == player) switch (my_hitboxID.attack)
 {
@@ -62,16 +76,16 @@ if (my_hitboxID.player == player) switch (my_hitboxID.attack)
 		tutDone[5] = 1;
 		break;
 	case AT_FSPECIAL:
-		if (my_hitboxID.hbox_num == 1 && instance_exists(boneObj) && hit_player_obj == boneMark && boneObj.state == 1)
+		if (my_hitboxID.hbox_num == 1)
 		{
-			instance_destroy(boneObj);
-			boneObj = noone;
-			tutDone[3] = 1;
-			set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 10);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.05);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, sound_get("criticalhit"));
-			set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 30);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 14);
+			if (instance_exists(boneObj) && hit_player_obj == boneMark && boneObj.state == 1)
+			{
+				instance_destroy(boneObj);
+				boneObj = noone;
+				tutDone[3] = 1;
+				CritForcePalm();
+			}
+			else if (has_rune("A")) CritForcePalm();
 		}
 		break;
 	case AT_FSPECIAL_AIR:
@@ -84,4 +98,13 @@ if (my_hitboxID.player == player) switch (my_hitboxID.attack)
 			hit_player_obj.should_make_shockwave = false;
 			hit_player_obj.x += spr_dir*5;
 		}
+}
+
+#define CritForcePalm()
+{
+	set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 10);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.05);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, sound_get("criticalhit"));
+	set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 30);
+	set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 14);
 }

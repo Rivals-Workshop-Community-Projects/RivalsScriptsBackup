@@ -47,12 +47,16 @@ if !hitpause {
 if htrain >= 100 && htrain < 300 {
 	if (get_player_color(player) == 11) {
 		sound_stop(sound_get("powerup"))
-		sound_play(sound_get("powerup"))
+		sound_play(sound_get("powerup"),false,noone,1,1.15)
+	} else {
+		 sound_play(asset_get("sfx_ice_shatter_big"))	
+		 sound_play(asset_get("sfx_kragg_rock_pillar"))	
 	}
 	spawn_hit_fx(x,y - 50,156)
 	spawn_hit_fx(x,y - 50,306)
 	uped += 1
-	sound_play(asset_get("sfx_frog_fspecial_charge_full"))	
+	sound_play(asset_get("sfx_abyss_explosion_start"))	
+	sound_play(asset_get("sfx_abyss_hazard_burst"))	
 	htrain = 420
 	initial_dash_speed = 6.5;
     dash_speed = 6;
@@ -78,15 +82,20 @@ if htrain > 300 {
 if atrain >= 100 && atrain < 300 {
 	if (get_player_color(player) == 11) {
 		sound_stop(sound_get("powerup"))
-		sound_play(sound_get("powerup"))
+		sound_play(sound_get("powerup"),false,noone,1,1.15)
+	} else {
+		 sound_play(asset_get("sfx_ice_shatter_big"))	
+		 sound_play(asset_get("sfx_kragg_rock_pillar"))	
 	}
 	spawn_hit_fx(x,y - 50,156)
 	spawn_hit_fx(x,y - 50,306)
 	uped += 1
-	sound_play(asset_get("sfx_frog_fspecial_charge_full"))	
+	sound_play(asset_get("sfx_abyss_explosion_start"))		
+	sound_play(asset_get("sfx_abyss_hazard_burst"))	
 	atrain = 420
 	max_djumps = 2;
 	//+2dmg
+	set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_ori_sein_fstrong_hit_final"));
 	set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 10);
 	set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 9);
 	set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, 9);
@@ -109,12 +118,16 @@ if atrain > 300 {
 if btrain >= 100 && btrain < 300 {
 	if (get_player_color(player) == 11) {
 		sound_stop(sound_get("powerup"))
-		sound_play(sound_get("powerup"))
+		sound_play(sound_get("powerup"),false,noone,1,1.15)
+	} else {
+		 sound_play(asset_get("sfx_ice_shatter_big"))	
+		 sound_play(asset_get("sfx_kragg_rock_pillar"))	
 	}
 	spawn_hit_fx(x,y - 50,156)
 	spawn_hit_fx(x,y - 50,306)
 	uped += 1
-	sound_play(asset_get("sfx_frog_fspecial_charge_full"))	
+	sound_play(asset_get("sfx_abyss_explosion_start"))		
+	sound_play(asset_get("sfx_abyss_hazard_burst"))	
 	btrain = 420
 	knockback_adj = .85;
 	
@@ -145,12 +158,16 @@ if btrain > 300 {
 if ltrain >= 100 && ltrain < 300 {
 	if (get_player_color(player) == 11) {
 		sound_stop(sound_get("powerup"))
-		sound_play(sound_get("powerup"))
+		sound_play(sound_get("powerup"),false,noone,1,1.15)
+	} else {
+		 sound_play(asset_get("sfx_ice_shatter_big"))	
+		 sound_play(asset_get("sfx_kragg_rock_pillar"))	
 	}
 	spawn_hit_fx(x,y - 50,156)
 	spawn_hit_fx(x,y - 50,306)
 	uped += 1
-	sound_play(asset_get("sfx_frog_fspecial_charge_full"))	
+	sound_play(asset_get("sfx_abyss_explosion_start"))		
+	sound_play(asset_get("sfx_abyss_hazard_burst"))	
 	ltrain = 420
 	
 	set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 12);

@@ -40,7 +40,7 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_GOTO, 7);
 
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 14);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED_TYPE, 1);
@@ -75,7 +75,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 2);
-set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 4);
+set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_TECHABLE, 3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("nspec_grab"));

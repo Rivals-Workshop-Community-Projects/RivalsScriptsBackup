@@ -1,6 +1,45 @@
 move_cooldown[AT_USPECIAL] = 0 ;
 dspecon = 0
-intro = 1
+//intro = 1
+
+
+	
+	if countering == 1 {
+		
+		if enemy_hitboxID.type == 2 {
+			invincible = true
+			invince_time = 30
+			
+			hitstop = 10
+			
+			state_timer = 999
+			enemy_hitboxID.hsp *= -2
+			enemy_hitboxID.vsp = - 20
+			spawn_hit_fx(x,y - 40, 304)
+			sound_play(sound_get("RI"),false,noone,1,1.35);
+			sound_play(sound_get("parry"),false,noone,.6,1.35);
+			countering = 3 
+		
+		//old_hsp = -4*spr_dir
+		//old_vsp = -4
+		//hsp = -4*spr_dir
+		//vsp = -4
+		state = prev_state
+		attack = AT_FSPECIAL
+		window = 1
+		window_timer = 0
+		
+		}
+		
+		
+		
+		
+	}
+	
+	
+
+
+canceltime = 0
 
      if attack == AT_NSPECIAL && fireon >= 3{
      	    firerange = -100

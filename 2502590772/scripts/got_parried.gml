@@ -4,7 +4,7 @@
 if (my_hitboxID.player != my_hitboxID.orig_player || is_master_player) exit;
 
 //when the leader gets parried at melee range AND the clone isn't using dspecial, the clone gets parry stun too.
-if (my_hitboxID.type == 1 && instance_exists(teammate_player_id)) {
+if (my_hitboxID.type == 1 && instance_exists(teammate_player_id) && (!custom_clone || is_solo_player)) {
     
     
     //don't parry jabs

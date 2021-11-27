@@ -2,9 +2,15 @@
 ///
 move_cooldown[AT_NSPECIAL_2] = 0
 
-if attack == my_hitboxID.attack == AT_USTRONG {
-	    hitstop -= 6
-        hit_player_obj.hitstop -= 6
+if my_hitboxID.attack == AT_USTRONG   {
+	    hitstop -= 4
+        hit_player_obj.hitstop -= 4
+}
+
+if  (my_hitboxID.attack == AT_UAIR && my_hitboxID.hbox_num > 2) {
+	
+	hitstop -= 2
+    hit_player_obj.hitstop -= 2
 }
 
 if my_hitboxID.attack != AT_NSPECIAL && my_hitboxID.attack != AT_FSPECIAL 
@@ -228,23 +234,22 @@ if my_hitboxID.attack == AT_NSPECIAL {
 	
 
 if my_hitboxID.hbox_num == 1 or my_hitboxID.hbox_num == 4 {
-
-
-	    }
-if my_hitboxID.hbox_num == 3 {
-	if karmatimer == 0 and soultimer == 0 {
-
-                } else {
-                spawn_hit_fx (hit_player_obj.x,hit_player_obj.y - 40, wh )
-                }
+  sound_play(sound_get("slice1"))
 }
-if my_hitboxID.hbox_num == 2 {	
-	if karmatimer == 0 and soultimer == 0 {
+	    
+	    
+if my_hitboxID.hbox_num == 3 {
+                spawn_hit_fx (hit_player_obj.x,hit_player_obj.y - 40, wh )
 
-                } else {
+}
+
+if my_hitboxID.hbox_num == 2 {	
+
                 spawn_hit_fx (hit_player_obj.x,hit_player_obj.y - 40, bh )
-                }
+            
 }	
+
+
 }
 
 if  my_hitboxID.attack == AT_DAIR {
@@ -327,17 +332,15 @@ if my_hitboxID.attack == AT_NSPECIAL {
      }
      
 
-if my_hitboxID.hbox_num == 1 or my_hitboxID.hbox_num == 4 {
+if my_hitboxID.type == 1{
 	
-	if my_hitboxID.hbox_num == 4  {
-		sound_play(sound_get("slicen"))
-	}
+	
+	
+	
 	if nshit < 2{
 	nshit += 1
 	}
-	if nshit == 2 {
-		sound_play(sound_get("slicef"))
-	}
+
 
 }
 	
@@ -346,9 +349,7 @@ if my_hitboxID.hbox_num == 1 or my_hitboxID.hbox_num == 4 {
 if (my_hitboxID.attack == AT_FSPECIAL or my_hitboxID.attack == AT_USPECIAL  or 
 (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.type == 1 )) {
 
-if my_hitboxID.attack == AT_NSPECIAL {
-	sound_play(sound_get("slicef"))
-}	
+
 	 move_cooldown[AT_NSPECIAL] = 10
 	 
 	if nshit < 2{

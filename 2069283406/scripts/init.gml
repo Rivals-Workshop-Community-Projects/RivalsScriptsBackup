@@ -6,6 +6,8 @@ hitstun_hurtbox_spr = -1;
 
 canceltime = 0
 
+countering = 0
+
 introhit = 0
 rollside = 1
 dspecon = 0

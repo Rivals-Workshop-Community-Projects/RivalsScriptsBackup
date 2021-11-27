@@ -63,6 +63,7 @@ switch (my_hitboxID.attack){ //lol switch statement
 		hit.depth = depth-4
 		break;
 	*/
+	/*
 	case AT_DAIR:
 		if (my_hitboxID.hbox_num < 3 && my_hitboxID.hbox_num != 6){
 			//hit_player_obj.x = x + 6 * spr_dir
@@ -72,6 +73,7 @@ switch (my_hitboxID.attack){ //lol switch statement
 			hit_player_obj.y -= 6
 		}
 		break;
+	*/
 	case AT_FSTRONG:
 		sound_play(sfx_fighter_blow1);
 		break;

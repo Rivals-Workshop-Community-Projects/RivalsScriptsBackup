@@ -94,6 +94,10 @@ if (my_hitboxID.attack == AT_DATTACK) {
     set_window_value(AT_DATTACK, 7, AG_WINDOW_LENGTH, 4);
 }
 
+if (my_hitboxID.attack == AT_FSTRONG) {
+    set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 14);
+}
+
 if (voice_mode && (my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DSPECIAL_AIR)) {
 	voice_rng = random_func(0, 4, true);
 	if (voice_rng == 0)

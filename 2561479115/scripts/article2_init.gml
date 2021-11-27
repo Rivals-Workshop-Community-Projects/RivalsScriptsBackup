@@ -1,14 +1,24 @@
 //
-sprite_index = sprite_get("article2_startup");
+__spr = sprite_get("article2_startup");
+sprite_index = asset_get("empty_sprite");
 mask_index = sprite_get("article2_mask");
 grav_accel = 0.6;
 
+yoffs = 0;
+_image_index = 0;
+_image_number = sprite_get_number(__spr);
 //can_be_grounded = false;
 
 charges = 2;
 
 radius = 65;
 center = [0,-30];
+
+with player_id {
+    var pal = get_player_color(player);
+    var shade = 3;
+    other.col = make_color_rgb(get_color_profile_slot_r(pal,shade),get_color_profile_slot_g(pal,shade),get_color_profile_slot_b(pal,shade))
+}
 
 target = noone;
 direc = -361;

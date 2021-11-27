@@ -1,5 +1,14 @@
 ///
 
+if my_hitboxID.attack == AT_BAIR {
+	sound_play(sound_get("slice"),false,noone,1.2,0.6)
+	sound_play(asset_get("sfx_blow_heavy1"),false,noone,1, 2.2 - min((hitstop*hitstop)/120 , 1.5) )
+}
+
+if my_hitboxID.attack == AT_DSTRONG {
+	sound_play(sound_get("slice"),false,noone,1.2,0.6)
+	sound_play(asset_get("sfx_ori_energyhit_heavy"),false,noone,1,1.1)
+}
 if my_hitboxID.attack == AT_NAIR && !isyellow{
 hit_player_obj.x += ((x + (35 * spr_dir)) - hit_player_obj.x) / 2
 		hit_player_obj.y += ((y + 10) - hit_player_obj.y) / 2

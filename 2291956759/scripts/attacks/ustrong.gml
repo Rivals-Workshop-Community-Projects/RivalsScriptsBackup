@@ -2,7 +2,7 @@
 set_attack_value(AT_USTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrong"));
 set_attack_value(AT_USTRONG, AG_NUM_WINDOWS, 4);
-set_attack_value(AT_USTRONG, AG_CATEGORY, 2);
+set_attack_value(AT_USTRONG, AG_CATEGORY, 1);
 set_attack_value(AT_USTRONG, AG_HURTBOX_SPRITE, sprite_get("ustrong_hurt"));
 
 set_window_value(AT_USTRONG, 1, AG_WINDOW_LENGTH, 12);
@@ -76,7 +76,7 @@ set_hitbox_value(AT_USTRONG, 2, HG_WIDTH, 80);
 set_hitbox_value(AT_USTRONG, 2, HG_HEIGHT, 100);
 set_hitbox_value(AT_USTRONG, 2, HG_SHAPE, 2);
 set_hitbox_value(AT_USTRONG, 2, HG_PRIORITY, 4);
-set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 8);
+set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 6);
 set_hitbox_value(AT_USTRONG, 2, HG_ANGLE, 90);
 set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_USTRONG, 2, HG_KNOCKBACK_SCALING, 1);

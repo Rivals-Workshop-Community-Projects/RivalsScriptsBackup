@@ -137,14 +137,17 @@ if (attack == AT_JAB){
 	
 	////
 	//thank you supersonic
-	if (sign(right_down - left_down) == -spr_dir && down_down - up_down == 0 && !has_hit && !has_hit_player) {
-        if (get_window_value(attack, window, AG_WINDOW_CANCEL_TYPE) != 0) {
-            set_window_value(attack, window, AG_WINDOW_CANCEL_TYPE, 0);
-            set_window_value(attack ,window, AG_WINDOW_GOTO, 24);
+    if (sign(right_down-left_down) == -spr_dir && down_down-up_down == 0 && !has_hit && !has_hit_player) {
+        var win_time = get_window_value(attack,window,AG_WINDOW_LENGTH);
+        set_window_value(attack,window,AG_WINDOW_CANCEL_FRAME, win_time);
+        if get_window_value(attack,window,AG_WINDOW_CANCEL_TYPE) != 0 && window_timer == win_time {
+            set_state(PS_IDLE);
+            was_parried = false; 
+            //if you get ftilt frame-perfectly on parry you can carry the parry lag over
+            //that doesn't happen in base cast so this fixes that
         }
     } else {
-        reset_window_value(attack, window, AG_WINDOW_CANCEL_TYPE);
-        reset_window_value(attack, window, AG_WINDOW_GOTO);
+        reset_window_value(attack,window,AG_WINDOW_CANCEL_FRAME);
     }
 	////
 }
@@ -349,8 +352,8 @@ if (attack == AT_FSPECIAL){
 			target.state = PS_HITSTUN;
 			
 			if (window == 4) {
-				target.x = ease_linear(target.x, x + (42 * spr_dir), window_timer, 10);
-				target.y = ease_linear(target.y, y - 10 + grabHeightOffset, window_timer, 10);
+				target.x = ease_linear(target.x, x + (42 * spr_dir), window_timer, 4);
+				target.y = ease_linear(target.y, y - 10 + grabHeightOffset, window_timer, 4);
 				target.hsp = 0;
 				target.vsp = -2;
 				target.state = PS_HITSTUN;
@@ -694,7 +697,7 @@ if (attack == AT_USPECIAL){
 	
 	if (window == 2) {
 		set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, (-14 + (window_timer * .66)));	
-		set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 1.8 * (right_down - left_down) * spr_dir);	
+		set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 1.3 * (right_down - left_down) * spr_dir);	
 		set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, get_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED));	
 		if (window_timer % 4 == 0) {
 			array_push(phone_dust_query, [x, y, "walk", spr_dir]);	
@@ -773,7 +776,9 @@ if (attack == AT_USPECIAL){
 			set_state(PS_PRATFALL);
 		}
 		if (special_down && move_cooldown[AT_FSPECIAL] < 1) {
-			spr_dir = sign(right_down - left_down);
+			if (right_down - left_down != 0) {
+				spr_dir = sign(right_down - left_down);
+			}
 			set_attack(AT_FSPECIAL);
 		}
 		if (!free) {

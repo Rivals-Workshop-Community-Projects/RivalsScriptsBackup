@@ -19,11 +19,12 @@ with (player_id)
     {
         other.sprite_index = sprite_get("yinyang_ea");
     }
-    
+    /*
     if (get_player_color(player) == 17)
     {
         other.sprite_index = sprite_get("slimepuffen_dvd");
     }
+    */
 }
 
 

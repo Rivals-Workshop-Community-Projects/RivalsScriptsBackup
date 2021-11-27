@@ -296,25 +296,25 @@ set_color_profile_slot( 26, 5, 255, 255, 255 ); //Symbol
 set_color_profile_slot( 26, 6, 255, 212, 194 ); //Hands
 set_color_profile_slot( 26, 7, 44, 47, 57 ); //Shoes
 
-// S-Falcon
-set_color_profile_slot( 27, 0, 230, 67, 59 ); //Hat
-set_color_profile_slot( 27, 1, 252, 220, 182 ); //face
-set_color_profile_slot( 27, 2, 81, 83, 137 ); //body
-set_color_profile_slot( 27, 3, 0, 0, 0 ); //Hood
-set_color_profile_slot( 27, 4, 215, 161, 99 ); //Arms
-set_color_profile_slot( 27, 5, 237, 207, 51 ); //Symbol
-set_color_profile_slot( 27, 6, 246, 235, 112 ); //Hands
-set_color_profile_slot( 27, 7, 246, 235, 112 ); //Shoes
-
 // S-Gura
-set_color_profile_slot( 28, 0, 45, 122, 194 ); //Hat
-set_color_profile_slot( 28, 1, 255, 223, 209 ); //face
-set_color_profile_slot( 28, 2, 45, 122, 194 ); //body
-set_color_profile_slot( 28, 3, 230, 244, 255 ); //Hood
-set_color_profile_slot( 28, 4, 142, 168, 194 ); //Arms
-set_color_profile_slot( 28, 5, 209, 82, 82 ); //Symbol
-set_color_profile_slot( 28, 6, 255, 223, 209 ); //Hands
-set_color_profile_slot( 28, 7, 158, 208, 255 ); //Shoes
+set_color_profile_slot( 27, 0, 45, 122, 194 ); //Hat
+set_color_profile_slot( 27, 1, 255, 223, 209 ); //face
+set_color_profile_slot( 27, 2, 45, 122, 194 ); //body
+set_color_profile_slot( 27, 3, 230, 244, 255 ); //Hood
+set_color_profile_slot( 27, 4, 142, 168, 194 ); //Arms
+set_color_profile_slot( 27, 5, 209, 82, 82 ); //Symbol
+set_color_profile_slot( 27, 6, 255, 223, 209 ); //Hands
+set_color_profile_slot( 27, 7, 158, 208, 255 ); //Shoes
+
+// S-Falcon
+set_color_profile_slot( 28, 0, 230, 67, 59 ); //Hat
+set_color_profile_slot( 28, 1, 252, 220, 182 ); //face
+set_color_profile_slot( 28, 2, 81, 83, 137 ); //body
+set_color_profile_slot( 28, 3, 0, 0, 0 ); //Hood
+set_color_profile_slot( 28, 4, 215, 161, 99 ); //Arms
+set_color_profile_slot( 28, 5, 237, 207, 51 ); //Symbol
+set_color_profile_slot( 28, 6, 246, 235, 112 ); //Hands
+set_color_profile_slot( 28, 7, 246, 235, 112 ); //Shoes
 
 // S-Lancer Gaming
 set_color_profile_slot( 29, 0, 51, 51, 51 ); //Hat

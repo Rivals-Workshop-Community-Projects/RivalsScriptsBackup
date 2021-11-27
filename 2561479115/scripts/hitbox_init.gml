@@ -16,8 +16,11 @@ if attack == AT_NSPECIAL && hbox_num == 1 {
     var starting_damage;
     var prog = ease_linear(0, 1, player_id.roke_nspecial_charge, player_id.roke_nspecial_max_charge);
     with player_id starting_damage = get_hitbox_value(other.attack, other.hbox_num, HG_DAMAGE);
-    extra_hitpause = clamp(player_id.roke_nspecial_charge, 20, 60);
+    extra_hitpause = clamp(player_id.roke_nspecial_charge, 10, 60);
     damage = floor(starting_damage+7*prog);
     if player_id.roke_nspecial_charge > 30 sprite_index = sprite_get("nspecialproj_strong");
     big = player_id.roke_nspecial_charge > 30;
+    
 }
+
+if attack == AT_FSPECIAL transp_spr = sprite_get("drone_launch_trans");

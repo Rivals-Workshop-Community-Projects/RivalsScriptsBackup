@@ -54,14 +54,13 @@ set_window_value(AT_FSPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 set_num_hitboxes(AT_FSPECIAL, 1);
 
-set_hitbox_value(AT_FSPECIAL, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 8);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 23);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -25);
-set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 40);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 30);
+set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 55);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 45);
 set_hitbox_value(AT_FSPECIAL, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 4);

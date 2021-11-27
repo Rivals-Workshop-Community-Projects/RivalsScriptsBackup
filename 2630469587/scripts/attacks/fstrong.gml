@@ -12,7 +12,7 @@ set_window_value(AT_FSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, sound_get("judgement"));
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 
-set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 13);
+set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 22);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 11);
 

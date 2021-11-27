@@ -80,7 +80,9 @@ if (get_player_color(player) == 6){
 	draw_sprite(sprite_get("css_icon_special"),0,x+10,y+42);
 } 
 
-user_event(12);
+//phone
+muno_event_type = 6;
+user_event(14);
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
  

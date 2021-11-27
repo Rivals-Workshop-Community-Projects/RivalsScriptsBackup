@@ -119,17 +119,17 @@ if(hit_player_obj != -4 && hit_player_obj.state == PS_RESPAWN)
     parasiteTimerMax = parasiteTimer2;
 }
 
-if(hit_player_obj != -4)
-{
-    if(hit_player_obj.activated_kill_effect && hitpause)
-    {
-        with(obj_article2)
-        {
-            if(player == other.player)
-                state = 2;
-        }
-    }
-}
+// if(hit_player_obj != -4)
+// {
+//     if(hit_player_obj.activated_kill_effect && hitpause)
+//     {
+//         with(obj_article2)
+//         {
+//             if(player == other.player)
+//                 state = 2;
+//         }
+//     }
+// }
 
 //Debug things
 if (get_training_cpu_action() != CPU_FIGHT) 

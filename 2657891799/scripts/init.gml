@@ -32,6 +32,9 @@ ss_y = 0
 ss_timer = 0
 ss_count = 0
 force_cancel = false
+ss_type = 0 //0 = distance, 1 = doll, 2 = player
+ss_doll = undefined
+ss_free_timer = 0
 
 //uspecial
 uspec_dir = 0
@@ -48,6 +51,7 @@ doll_id = noone
 hit_doll = undefined
 proj_doll = false
 doll_angle = 45
+counter_hit = noone
 
 hurtbox_spr = asset_get("ferret_hurtbox");
 crouchbox_spr = asset_get("cat_crouchbox");
@@ -94,7 +98,7 @@ max_fall = 13; //maximum fall speed without fastfalling
 fast_fall = 18; //fast fall speed
 gravity_speed = .80;
 hitstun_grav = .5;
-knockback_adj = 1.0; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.05; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 10;

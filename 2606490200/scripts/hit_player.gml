@@ -66,7 +66,16 @@ if my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num > 1 {
 
 if ltrain < 100 {
 if my_hitboxID.attack == AT_DAIR or my_hitboxID.attack == AT_DTILT or my_hitboxID.attack == AT_DSPECIAL or my_hitboxID.attack == AT_DSTRONG {
-        
+    
+    if my_hitboxID.sound_effect == asset_get("sfx_blow_heavy2") {
+        sound_stop(asset_get("sfx_blow_heavy2"))
+        sound_play(asset_get("sfx_blow_medium2"),false,noone,1.2,.9)
+    }    
+    if my_hitboxID.sound_effect == asset_get("sfx_blow_heavy1") {
+        sound_stop(asset_get("sfx_blow_heavy1"))
+        sound_play(asset_get("sfx_blow_medium1"),false,noone,1.2,.9)
+    } 
+    
     
     ltrain += my_hitboxID.damage
 }
@@ -80,6 +89,16 @@ if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 7{
 
 } else {
     
+    if my_hitboxID.attack == AT_DAIR or my_hitboxID.attack == AT_DTILT or my_hitboxID.attack == AT_DSPECIAL or my_hitboxID.attack == AT_DSTRONG {
+  
+    if my_hitboxID.kb_scale >= .7 {
+		 sound_play(asset_get("sfx_kragg_rock_shatter"),false,noone,.5 + my_hitboxID.damage/10 , 1.6 - min((hit_player_obj.hitstop*hit_player_obj.hitstop)/130 , 1) )
+    } else {
+		 sound_play(asset_get("sfx_kragg_rock_land"),false,noone,.4 + my_hitboxID.damage/10 , 1.6 - min((hit_player_obj.hitstop*hit_player_obj.hitstop)/130 , 1) )
+    }
+    
+    }
+    
     if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 7{
     sound_play(asset_get("sfx_blow_heavy2"),false,noone,1,.8)
    }
@@ -89,6 +108,14 @@ if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 7{
 if htrain < 100 && hit_player_obj != self {
 if my_hitboxID.attack == AT_UAIR or my_hitboxID.attack == AT_UTILT or my_hitboxID.attack == AT_USPECIAL or my_hitboxID.attack == AT_USTRONG {
   
+    if my_hitboxID.sound_effect == asset_get("sfx_blow_heavy2") {
+        sound_stop(asset_get("sfx_blow_heavy2"))
+        sound_play(asset_get("sfx_blow_medium2"),false,noone,1.2,.9)
+    }    
+    if my_hitboxID.sound_effect == asset_get("sfx_blow_heavy1") {
+        sound_stop(asset_get("sfx_blow_heavy1"))
+        sound_play(asset_get("sfx_blow_medium1"),false,noone,1.2,.9)
+    } 
     
     htrain += my_hitboxID.damage
 }
@@ -101,18 +128,35 @@ if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 6{
 }
 
 } else {
-    
+   if my_hitboxID.attack == AT_UAIR or my_hitboxID.attack == AT_UTILT or my_hitboxID.attack == AT_USPECIAL or my_hitboxID.attack == AT_USTRONG {
+
+    if my_hitboxID.kb_scale >= .7 {
+		 sound_play(asset_get("sfx_kragg_rock_shatter"),false,noone,.5 + my_hitboxID.damage/10 , 1.6 - min((hit_player_obj.hitstop*hit_player_obj.hitstop)/130 , 1) )
+    } else {
+		 sound_play(asset_get("sfx_kragg_rock_land"),false,noone,.4 + my_hitboxID.damage/10 , 1.6 - min((hit_player_obj.hitstop*hit_player_obj.hitstop)/130 , 1) )
+    }
+   }  
     if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 6{
     sound_play(asset_get("sfx_blow_heavy2"),false,noone,1,.8)
    }
    
 }
 
-if atrain < 100 && move_cooldown [AT_NAIR] == 0 && move_cooldown [AT_BAIR] == 0{
+if atrain < 100 {
 if my_hitboxID.attack == AT_BAIR or my_hitboxID.attack == AT_FAIR or my_hitboxID.attack == AT_FTILT or my_hitboxID.attack == AT_FSPECIAL or my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_DATTACK{
         
+    if my_hitboxID.sound_effect == asset_get("sfx_blow_heavy2") {
+        sound_stop(asset_get("sfx_blow_heavy2"))
+        sound_play(asset_get("sfx_blow_medium2"),false,noone,1.2,.9)
+    }    
+    if my_hitboxID.sound_effect == asset_get("sfx_blow_heavy1") {
+        sound_stop(asset_get("sfx_blow_heavy1"))
+        sound_play(asset_get("sfx_blow_medium1"),false,noone,1.2,.9)
+    } 
     
+  if  move_cooldown [AT_NAIR] == 0 && move_cooldown [AT_BAIR] == 0 {  
     atrain += my_hitboxID.damage
+  }
 }
 
 if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 2{
@@ -123,6 +167,15 @@ if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 2{
 }
 
 } else {
+   if my_hitboxID.attack == AT_BAIR or my_hitboxID.attack == AT_FAIR or my_hitboxID.attack == AT_FTILT or my_hitboxID.attack == AT_FSPECIAL or my_hitboxID.attack == AT_FSTRONG or my_hitboxID.attack == AT_DATTACK{
+
+    if my_hitboxID.kb_scale >= .5 {
+		 sound_play(asset_get("sfx_kragg_rock_shatter"),false,noone,.5 + my_hitboxID.damage/10 , 1.6 - min((hit_player_obj.hitstop*hit_player_obj.hitstop)/130 , 1) )
+    } else {
+		 sound_play(asset_get("sfx_kragg_rock_land"),false,noone,.4 + my_hitboxID.damage/10 , 1.6 - min((hit_player_obj.hitstop*hit_player_obj.hitstop)/130 , 1) )
+    }
+    
+  }
     
     if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 2{
     sound_play(asset_get("sfx_blow_heavy2"),false,noone,1,.8)
@@ -132,8 +185,6 @@ if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 2{
 
 if btrain < 100 {
 if my_hitboxID.attack == AT_NAIR or my_hitboxID.attack == AT_JAB {
- 
-    
     btrain += my_hitboxID.damage*1
 }
 
@@ -146,6 +197,10 @@ if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 1{
 }
 
 } else {
+    
+    if my_hitboxID.attack == AT_NAIR or my_hitboxID.attack == AT_JAB {
+       sound_play(asset_get("sfx_kragg_rock_land"),false,noone,.4 + my_hitboxID.damage/10 , 1.6 - min((hit_player_obj.hitstop*hit_player_obj.hitstop)/130 , 1) )
+    }
     
     if my_hitboxID.attack == AT_EXTRA_1 && my_hitboxID.hbox_num == 1{
     sound_play(asset_get("sfx_blow_heavy2"),false,noone,1,.8)

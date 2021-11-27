@@ -1,9 +1,10 @@
 ///#args attack
-attack_charged = false;
+if attack == AT_USPECIAL attack_charged = false;
 bullet_fired = false;
 
 if (attack == AT_USPECIAL) {
-    reset_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE);
+    reset_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE);
+    uspec_airdodge_pratfall = false;
 }
 if attack == AT_NSPECIAL {
     roke_nspecial_charge = 0;
@@ -15,3 +16,8 @@ if attack == AT_NSPECIAL {
 
 
 if attack == AT_USTRONG && free attack = AT_UAIR;
+
+if attack == AT_JAB {
+    buffering_reverse = false;
+    jab_was_parried = false;
+}

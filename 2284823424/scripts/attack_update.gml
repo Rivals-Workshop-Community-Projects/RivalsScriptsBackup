@@ -654,30 +654,40 @@ switch(attack){
                             
                         }
                         
+                        if do_the_mario{
+                        	next_container = CT_MARIO;
+                        }
+                        
                         if array_equals(containers[next_container].spent_items, [1,1,1]){
-                            
-                            var found = false;
-                            for (i = 0; i < array_length_1d(containers) && !found; i++){
-                                containerIncrement();
-                                if !array_equals(containers[next_container].spent_items, [1,1,1]){
-                                    found = true;
-                                }
-                            }
-                            if !found || phone_cheats[CHEAT_TMI]{
-                                for (i = 0; i < array_length_1d(containers); i++){
+                            if do_the_mario{
+                            	for (i = 0; i < array_length_1d(containers); i++){
                                     containers[i].spent_items = [0,0,0];
-                                    restock_alpha = 10;
-                                    if !advancement_made_items{
-                                    	advancement_made_items = 1;
-										with chat_owner{
-											ds_list_add(chat_txt, "Steve has completed the challenge [A Complete Catalogue]");
-											ds_list_add(chat_tmr, chat_tmr_max);
-											ds_list_add(chat_col, c_white);
-										}
-                                    }
                                 }
+                                restock_alpha = 10;
+                                if !advancement_made_items{
+                                	advancement_made_items = 1;
+									with chat_owner{
+										ds_list_add(chat_txt, "Steve has completed the challenge [A Complete Catalogue]");
+										ds_list_add(chat_tmr, chat_tmr_max);
+										ds_list_add(chat_col, c_white);
+									}
+                                }
+                                next_container = nspecial_cursor;
+                                do_the_mario = 0;
                             }
-                            
+                            else{
+                            	var found = false;
+	                            for (i = 0; i < array_length_1d(containers) - 1 && !found; i++){
+	                                containerIncrement();
+	                                if !array_equals(containers[next_container].spent_items, [1,1,1]){
+	                                    found = true;
+	                                }
+	                            }
+	                            if !found || phone_cheats[CHEAT_TMI]{
+	                            	do_the_mario = 1;
+	                            	next_container = CT_MARIO;
+	                            }
+                            }
                         }
                     }
                     clear_button_buffer(PC_SPECIAL_PRESSED);
@@ -1439,7 +1449,7 @@ switch(attack){
 
 #define containerIncrement
 
-var len = array_length_1d(containers);
+var len = array_length_1d(containers) - 1;
 next_container++;
 if (next_container >= len) next_container -= len;
 

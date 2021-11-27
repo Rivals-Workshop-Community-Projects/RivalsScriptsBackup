@@ -94,7 +94,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 0);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, vfx_water_small);
 
 //medium
@@ -132,7 +132,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 0);
-set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, vfx_water_medium);
 
 //large
@@ -184,7 +184,7 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_WIDTH, 70);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HEIGHT, 60);
 set_hitbox_value(AT_NSPECIAL, 4, HG_PRIORITY, 3);
 set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 1);
-set_hitbox_value(AT_NSPECIAL, 4, HG_ANGLE, 22);
+set_hitbox_value(AT_NSPECIAL, 4, HG_ANGLE, 10);
 set_hitbox_value(AT_NSPECIAL, 4, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_NSPECIAL, 4, HG_SHAPE, 0);
 set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_KNOCKBACK, 8);
@@ -195,7 +195,7 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_waterhit_weak"));
 set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_NSPECIAL, 4, HG_SDI_MULTIPLIER, 1.2);
+set_hitbox_value(AT_NSPECIAL, 4, HG_SDI_MULTIPLIER, 1.1);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITSTUN_MULTIPLIER, 0.7);
 
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
@@ -236,6 +236,7 @@ set_hitbox_value(AT_NSPECIAL, 5, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));
 set_hitbox_value(AT_NSPECIAL, 5, HG_VISUAL_EFFECT, vfx_water_large);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_NSPECIAL, 5, HG_EXTENDED_PARRY_STUN, 1);
 
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_MASK, -1);
@@ -248,7 +249,7 @@ set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_AIR_FRICTION, 0);
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
-set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_PARRY_STUN, 0);
+set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_DOES_NOT_REFLECT, 0);
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_DESTROY_EFFECT, 0);

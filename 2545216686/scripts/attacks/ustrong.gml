@@ -31,7 +31,7 @@ set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_USTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-set_num_hitboxes(AT_USTRONG, 3);
+set_num_hitboxes(AT_USTRONG, 2);
 
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_TYPE, 1);//Normal
 set_hitbox_value(AT_USTRONG, 1, HG_WINDOW, 3);

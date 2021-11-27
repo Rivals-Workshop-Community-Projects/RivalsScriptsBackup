@@ -5,15 +5,11 @@ if (glow_timer > glow_int)
 }
 
 light_timer = min(light_timer+1 - (2*(state > 2)),light_max_timer)
-// print(light_timer)
 
 if (state == 1 and state_timer > 250)
-{
     glow_timer++;
-}
 
 lock_state = false;
-var destroy = false;
 
 if(get_gameplay_time() % 4 == 0)
     image_index ++;
@@ -22,25 +18,22 @@ if (state < 2)
 {
     hsp *= 0.9
     vsp *= 0.9
+    
+    if(collision_circle(x,y-20,10,asset_get("par_block"),true, false)) //bounce wall
+        hsp = -hsp;
 }
 
 switch(state)
 {
     case 0: //spawn
         if(state_timer <= 10)
-        {   create_hitbox(AT_NSPECIAL_2, 2, x, y) }
+            create_hitbox(AT_NSPECIAL_2, 2, x, y) 
         if(state_timer >= 24)
-        {
             setState(1)
-        }
         break;
     case 1: //still
         if(state_timer >= 300)
-        {   
-            // create_hitbox(AT_NSPECIAL_2, 2, x, y) 
-            // spawn_hit_fx(x, y, nspec_explode);
             setState(3);
-        }
         hitbox_detection();
         break;
     case 2: //get hit and explodes (by anglara)
@@ -52,38 +45,31 @@ switch(state)
         }
         else if (state_timer == 4)
         {
-            print("wooo")
             create_hitbox(AT_NSPECIAL_2, 1, x+2, y+2);
             setState(4);
         }
         break;
-    case 3: //get hit and dies)
+    case 3: //get hit and dies
         spawn_hit_fx(x, y, nspec_die);
         sound_play(asset_get("sfx_ori_seinhit_weak"));
         visible = false;
         setState(4);
         break;
     case 4: //disappear
-        if (destroy_timer == 0)
-        {
-            setState(4);
-            t.depth = player_id.depth - 3
-        }
-        else if (destroy_timer == 10)
-        {
-            sound_play(asset_get("sfx_ori_spirit_flame_1"));
-            destroy = true;
-        }
         destroy_timer++;
         break;
         
+    if (destroy_timer == 10)
+    {
+        sound_play(asset_get("sfx_ori_spirit_flame_1"));
+        instance_destroy();
+    }
 }
 
 if(hit_lockout <= 0)
     state_timer+= !lock_state;
 
-//print(`${state}, ${state_timer}`)
-if destroy instance_destroy();
+
 #define setState(_state)
 lock_state = true;
 state = _state;

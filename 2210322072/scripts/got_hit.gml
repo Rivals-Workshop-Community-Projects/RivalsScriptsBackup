@@ -5,7 +5,7 @@ if introhit = 0 {
 }
 intro = 1
 
-if nshit == -10 {
+if nshit <= -10 {
     nshit = 0
 }
 
@@ -35,13 +35,16 @@ if enemy_hitboxID.type == 1 {
                      y = souly 
                      spr_dir = souldir
 
-                if admw == 4 {
-                	admb = 3
-                	admw = 0
-                } else if admb = 3 {
-                	admb = 0
-                	admw = 4
-                }  
+     if savemode = 0 {
+            	admb = 3
+            	admw = 0
+            } else if savemode = 1 {
+            	admw = 4
+            	admb = 0
+            }  else if savemode = 2 {
+            	admb = 3
+            	admw = 4
+            }
                 
                 move_cooldown[AT_DSPECIAL] = 0
                 hsp = 0

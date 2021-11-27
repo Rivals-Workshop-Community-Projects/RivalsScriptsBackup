@@ -29,6 +29,7 @@ set_window_value(AT_UTHROW, 2, AG_WINDOW_VSPEED_TYPE, 0);
 set_window_value(AT_UTHROW, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.9);
 
 //endlag
+set_window_value(AT_UTHROW, 3, AG_WINDOW_TYPE, 7);
 set_window_value(AT_UTHROW, 3, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_UTHROW, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_UTHROW, 3, AG_WINDOW_ANIM_FRAME_START, 3);

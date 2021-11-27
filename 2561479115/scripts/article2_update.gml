@@ -27,7 +27,8 @@ if (replacedcount > maxarticles){
     shoulddie = true;
 }
 
-
+if !free && position_meeting(x,y-1,asset_get("par_jumpthrough")) yoffs = -1;
+else yoffs = 0;
 
 
 //Clairen plasma field will destroy the article (NOTE: does not work properly with maxarticles > 1)
@@ -134,6 +135,8 @@ if (state == 1){
             if (point_distance(other.x+other.center[0],other.y+other.center[1],x,y-30) <= other.radius && !passed_field) {
                 passed_field = true;
                 other.charges--;
+                spawn_hit_fx(x,y-30,305);
+                sound_play(asset_get("sfx_absa_dattack"));
             }
         }
     }
@@ -166,6 +169,7 @@ if (state == 1){
 //State 2: Dying
 
 if (state == 2){
+	player_id.move_cooldown[AT_DSPECIAL] = player_id.beacon_cd;
 	if state_timer == 0 {
 		sound_play(asset_get("sfx_absa_jab1"),false,-4,0.8,1);
 		sound_play(asset_get("sfx_absa_cloud_crackle"),false,-4,0.9,1.3);
@@ -177,9 +181,11 @@ if (state == 2){
         player_id.in_field = false; //sanity check
         player_id.beacon = noone;
         player_id.move_cooldown[AT_DSPECIAL] = player_id.beacon_cd;
-        //var fx = spawn_hit_fx(x,y-20,player_id.explo);
-        //fx.depth-=50;
-        //sound_play(sound_get("explosion_sound"));
+        if player_id.taunt_down {
+        	var fx = spawn_hit_fx(x,y-20,player_id.explo);
+        	fx.depth-=50;
+        	sound_play(sound_get("explosion_sound"));
+        }
         instance_destroy();
         exit;
     }
@@ -190,6 +196,7 @@ if (state == 2){
 //State 3: shoost charge
 
 if (state == 3){
+	player_id.move_cooldown[AT_DSPECIAL] = max(2,player_id.move_cooldown[AT_DSPECIAL]);
     if state_timer == 0 {
     	sound_play(asset_get("sfx_boss_shine"));
     	sound_play(asset_get("sfx_boss_shine"));
@@ -283,6 +290,7 @@ if (state == 3){
 //State 4: shoost
 
 if (state == 4){
+	player_id.move_cooldown[AT_DSPECIAL] = max(2,player_id.move_cooldown[AT_DSPECIAL]);
 	if state_timer == 0 {
 		sound_play(asset_get("sfx_sand_screech"));
 	}
@@ -338,6 +346,7 @@ if (state == 4){
 //State 5: tag throw
 
 if (state == 5){
+	player_id.move_cooldown[AT_DSPECIAL] = max(2,player_id.move_cooldown[AT_DSPECIAL]);
 	//Put something here if you want
 	if (instance_exists(tag)) {
 		if state_timer == 0 sound_play(asset_get("sfx_absa_concentrate"));
@@ -353,25 +362,38 @@ if (state == 5){
             }
         }
         target = currenttarget;
-        tag.x = lerp(tag.x,x,0.2);
-    	tag.y = lerp(tag.y,y-30,0.2);
-    	//tag.proj_angle = (point_direction(tag.x,tag.y,target.x,target.y-25)%180)+180*spr_dir;
-    	tag.spr_dir = sign(target.x-x);
-    	if ( tag.sprite_index == sprite_get("drone") ) {
-     		tag.sprite_index = sprite_get("drone_charging");
-     		tag.mask_index = tag.sprite_index;
+        tag.hsp = 0;
+        tag.vsp = 0;
+        //tag.x = lerp(tag.x,x,0.3);
+        if state_timer == 0 tagpos = [tag.x,tag.y];
+        tag.x = ease_circOut(tagpos[0], x, min(state_timer,10),10);
+    	//tag.y = lerp(tag.y,y-30,0.3);
+    	tag.y = ease_circOut(tagpos[1], y-40, min(state_timer,10),10);
+    	tag.hitbox_timer = 0;
+    	//tag.proj_angle = point_direction(tag.x,tag.y,target.x,target.y-25);
+    	var dir = sign(target.x-x)
+    	tag.spr_dir = dir != 0 ? dir : tag.spr_dir;
+    	tag_ang = point_direction(tag.x,tag.y,target.x,target.y-25);
+    	
+    	var dst_from_90 = angle_difference(90,tag_ang)/2;
+    	tag.proj_angle = clamp(90-dst_from_90,60,120)+180*(tag.spr_dir==-1);
+    	if ( tag.sprite_index == sprite_get("drone_launch") ) {
+     		tag.sprite_index = sprite_get("drone_charging_right");
+     		//tag.mask_index = tag.sprite_index;
     		tag.image_index = 0;
-    	} else if ( tag.sprite_index == sprite_get("drone_charging") && tag.image_index == 5 ){
-    		tag.sprite_index = sprite_get("drone_charged");
-     		tag.mask_index = tag.sprite_index;
+    		tag.img_spd = 0.2;
+    	} else if ( tag.sprite_index == sprite_get("drone_charging_right") && tag.image_index == 4 ){
+    		tag.sprite_index = sprite_get("drone_charged_right");
+     		//tag.mask_index = tag.sprite_index;
     		tag.image_index = 0;
+    		tag.img_spd = 0.33;
     	}
 	}
 	if (state_timer == 35 || !instance_exists(tag)) {
 	    if (instance_exists(tag)) {
 	    	repeat(2) sound_play(asset_get("sfx_ell_small_missile_fire"),false,-4,1,1.4);
-    	    tag.hsp = lengthdir_x(16,point_direction(tag.x,tag.y,target.x,target.y-25));
-    	    tag.vsp = lengthdir_y(16,point_direction(tag.x,tag.y,target.x,target.y-25));
+    	    tag.hsp = lengthdir_x(16,tag_ang);
+    	    tag.vsp = lengthdir_y(16,tag_ang);
     	    tag.kb_angle = 90;
     	    tag.hit_flipper = 0;
     	    tag.kb_value = 6;
@@ -379,6 +401,7 @@ if (state == 5){
     	    tag.hitpause = 4;
     	    tag.changed = 2;
     	    tag.through_platforms = 6;
+    	    tag.effect = 0;
     	    charges--;
 	    }
 	    state = 1;
@@ -386,60 +409,6 @@ if (state == 5){
 	    target = noone;
 	}
 }
-
-
-
-//State 6
-
-if (state == 6){
-	//Put something here if you want
-}
-
-
-
-//State 7
-
-if (state == 7){
-	//Put something here if you want
-}
-
-
-
-//State 8
-
-if (state == 8){
-	//Put something here if you want
-}
-
-
-
-//State 9: Attack
-
-if (state == 9){
-    
-    //11 frames in, create DSPECIAL hitbox 1
-    if (state_timer == 11){
-    	create_hitbox(AT_DSPECIAL, 1, floor(x), floor(y-18));
-    	sound_play(sound_get("a_cool_noise"));
-    }
-    
-    //11 frames in, create DSPECIAL hitbox 2
-    if (state_timer == 15){
-    	create_hitbox(AT_DSPECIAL, 2, floor(x), floor(y-18));
-    	sound_play(sound_get("a_cool_noise2"));
-    }
-    
-    //Die after 28 frames (article is used up)
-    if (state_timer == 28){
-	    state = 2;
-	    state_timer = 0;
-    }
-}
-
-
-
-//NOTE: To use a hitbox properly with an article, it MUST be a projectile! (hitbox type 2)
-
 
 
 //Sprite and animation handling
@@ -480,31 +449,32 @@ switch(state){
 switch(animation_type){
     
     case 0: //Increment image_index every frame
-        image_index++;
+        _image_index++;
     	break;
     case 1: //Increment image_index at the rate determined by idle_anim_rate
         if (state_timer mod idle_anim_rate == 0){
-            image_index++;
+            _image_index++;
         }
         break;
     
     case 2: //Increment image_index at the rate determined by die_anim_rate
         if (state_timer mod die_anim_rate == 0){
-            image_index++;
+            _image_index++;
         }
         break;
         
     case 3: //Increment image_index at the rate determined by idle_anim_rate
-        if (state_timer mod spawn_anim_rate == 0 && image_index < image_number-1){
-            image_index++;
+        if (state_timer mod spawn_anim_rate == 0 && _image_index < _image_number-1){
+            _image_index++;
         }
         break;
 }
 
 //If not already at the sprite it should be, switch to the new sprite and restart the animation
-if (sprite_index != new_sprite){
-    sprite_index = new_sprite;
-    image_index = 0;
+if (__spr != new_sprite){
+	__spr = new_sprite;
+    _image_index = 0;
+    _image_number = sprite_get_number(__spr);
 }
 
 

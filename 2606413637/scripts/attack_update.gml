@@ -105,9 +105,6 @@ switch(attack){
 	case AT_DAIR:
 		set_pratfall(4);
 		break;
-	case AT_NSPECIAL:
-		set_pratfall(8);
-		break;
 }
 
 
@@ -544,6 +541,9 @@ switch attack{
 				vsp = 0;
 				can_move = false;
 				can_fast_fall = false;
+				break;
+			case 8: // endlag pt 2
+				set_window_value(attack, window, AG_WINDOW_TYPE, 7 * free);
 				break;
 		}
 		break;

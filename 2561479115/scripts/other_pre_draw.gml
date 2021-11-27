@@ -1,5 +1,5 @@
 //
-
+if !instance_exists(other_player_id) exit;
 if "roke_mark_id" in self && roke_mark > 0 && roke_lastmark == other_player_id {
     var mOffset = 0;
     var spr = 0;

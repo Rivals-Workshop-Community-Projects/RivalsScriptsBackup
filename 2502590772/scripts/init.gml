@@ -2,6 +2,8 @@
 
 //check if otestplayer
 is_test_player = (object_index == asset_get("oTestPlayer"));
+//check if solo/co-op player
+is_solo_player = (get_player_color(player) >= 30)
 
 if (!custom_clone) {
     is_master_player = true;
@@ -42,9 +44,11 @@ if (!custom_clone) {
     
     move_cooldown[AT_DSPECIAL] = 2;
     
-    if (!is_test_player) exit;
-    
     master_player_id = id;
+    //print("master player id = " + string(master_player_id));
+    
+    if (!is_test_player && !is_solo_player) exit;
+    
 }
 is_master_player = false;
 
@@ -52,10 +56,11 @@ is_master_player = false;
 //0 = plusle, 1 = minun
 //for the test player, just load plusle.
 if (is_test_player) species_id = 0;
+else if (is_solo_player) species_id = (get_player_color(player) == 31);
 else species_id = clones_player_id.created_instance_index;
 
 //hide any buddies from this unit if they are not plusle.
-if (species_id != 0 && instance_exists(pet_obj)) {
+if (species_id != 0 && !is_solo_player && instance_exists(pet_obj)) {
     with (pet_obj) { visible = false; }
 }
 
@@ -79,7 +84,7 @@ x += spr_dir * (1 - species_id * 2) * 21;
 
 
 // leader / teammate / species variables
-master_player_id = clones_player_id;
+if (!is_test_player && !is_solo_player) master_player_id = clones_player_id;
 teammate_player_id = noone;
 damage_percent_as_teammate = 0;
 has_been_knocked_out = 0;
@@ -109,8 +114,15 @@ jab2_input_was_buffered = false; //equals true when a repeat jab2 is buffered. u
 
 uspecial_angle = 0;
 uspecial_used_angle = noone;
+uspecial_use_second_part = false;
 uspecial_homing_x = x;
 uspecial_homing_y = y;
+
+
+//dspecial crouch armor
+dspecial_record_window = 0;
+dspecial_record_window_timer = 0;
+dspecial_fake_hitstun = 0;
 
 //aesthetic variables
 visual_hud_icon_hurt = 0; 
@@ -184,8 +196,8 @@ ai_airdodge_direction = 90;
 ai_state = 0;
 disable_ai = true;
 sync = 1;
-sync_distance = 100;
-follow_distance = 20;
+sync_distance = 200;
+follow_distance = 40;
 sync_next_predicted_state = state;
 
 
@@ -224,7 +236,7 @@ with (oPlayer) {
 }
 if (position_estimation_arr == noone) {
   host_player = self;
-  print_debug(`est created in ${self.player}`);
+  //print_debug(`est created in ${self.player}`);
   var p1 = [array_create(31, [noone, noone, noone, noone]), -1];
   var p2 = [array_create(31, [noone, noone, noone, noone]), -1];
   var p3 = [array_create(31, [noone, noone, noone, noone]), -1];
@@ -251,7 +263,7 @@ if (position_estimation_arr == noone) {
   bboxes_obtained = false;
 }
 
-print_debug(`pnum: ${player}`);
+//print_debug(`pnum: ${player}`);
 
 short_hop_height = noone;
 short_hop_vert_time = noone;
@@ -294,5 +306,16 @@ neutral_attacks[1] = AT_NAIR;
 neutral_attacks[2] = AT_DSPECIAL;
 
 
+#define determine_if_player_is_solo_player 
+/*
+if (!get_match_setting(SET_TEAMS) || instance_exists(teammate_player_id)) return false;
+var this_player_team = get_player_team(player);
+with (oPlayer) {
 
-
+    if (id == other.id || get_player_team(player) != this_player_team || clone || custom_clone || url != other.url) continue;
+    
+    if (get_player_color(player) < 30 || ("is_solo_player" in self && is_solo_player == true)) {
+        return true;
+    }
+}
+*/

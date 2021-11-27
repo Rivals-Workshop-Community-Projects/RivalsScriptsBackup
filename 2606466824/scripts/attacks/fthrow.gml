@@ -62,3 +62,4 @@ set_hitbox_value(AT_FTHROW, 2, HG_HIT_SFX, asset_get("sfx_swipe_medium2"));
 set_hitbox_value(AT_FTHROW, 2, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_FTHROW, 2, HG_REVENGE_KB_MULTIPLIER, 1.2);
 set_hitbox_value(AT_FTHROW, 2, HG_MUNO_HITBOX_MISC_ADD, "Against airborne foes: KB 8+.8");
+set_hitbox_value(AT_FTHROW, 2, HG_VISUAL_EFFECT, 196);

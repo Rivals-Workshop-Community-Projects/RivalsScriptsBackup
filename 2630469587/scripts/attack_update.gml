@@ -422,10 +422,31 @@ if (attack == AT_USTRONG){
         window = 9;
         window_timer = 26;
     }
-    if (window >= 6){
+    if (window == 6 || window == 7 || window == 8 || window == 9){
             iasa_script();
     }
-
+    
+    if (window == 3 && !has_hit) {
+    window = 10;
+    window_timer = 0;
+    }
+    
+    if (window >= 11) {
+    	iasa_script();
+    }
+    
+    if (window == 10 && window_timer == 24) {
+    window = 11;
+    window_timer = 0;
+    }
+    if (window == 11 && window_timer == 5) {
+    window = 12;
+    window_timer = 0;
+    }
+    if (window == 12 && window_timer == 9) {
+    window = 13;
+    window_timer = 0;
+    }
 }
 
 if (attack == AT_DATTACK){
@@ -464,6 +485,9 @@ if (attack == AT_NSPECIAL_AIR && window == 4 && window_timer == 1) {
 
 
 if (attack == AT_FSTRONG){
+	if (window == 1 && window_timer == 1) {
+        reset_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH);
+    }
     if (window == 2 && window_timer == 5 && hitpause == false && !was_parried)
     {
         if (down_down && spr_dir == 1) {

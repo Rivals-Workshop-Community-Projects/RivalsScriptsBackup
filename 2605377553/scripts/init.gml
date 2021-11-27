@@ -15,6 +15,7 @@ midsmoke = hit_fx_create( sprite_get( "hfx_midsmoke" ), 50 );
 smokeball = hit_fx_create( sprite_get( "hfx_smokeball" ), 15 );
 set_hit_particle_sprite( 1, sprite_get( "particle_1" ) );
 set_hit_particle_sprite( 2, sprite_get( "particle_2" ) );
+fspecdie = hit_fx_create( sprite_get( "fspec_die" ), 30 );
 
 //extra alts
 extra_col = 0;
@@ -129,7 +130,7 @@ malsick = false;
 malsick_consumed = false;
 
 //smoke shit
-maxSmoke = 6;
+maxSmoke = 3;
 smokeAmount = maxSmoke;
 
 //uspeccancel

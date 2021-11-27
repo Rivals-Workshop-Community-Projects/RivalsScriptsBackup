@@ -22,6 +22,7 @@ sprite_change_offset("land", 50/2, 58/2, true);
 sprite_change_offset("landinglag", 50/2, 58/2, true);
 
 sprite_change_offset("parry", 50/2, 66/2, true);
+sprite_change_offset("parry_box", 50/2, 66/2, true);
 sprite_change_offset("roll_forward", 50/2, 58/2, true);
 sprite_change_offset("roll_backward", 50/2, 58/2, true);
 sprite_change_offset("airdodge", 60/2, 58/2, true);
@@ -47,11 +48,13 @@ sprite_change_offset("nspecial", 50/2, 58/2, true);
 sprite_change_offset("fspecial", 46/2, 58/2, true);
 sprite_change_offset("uspecial", 46/2, 88/2, true);
 sprite_change_offset("dspecial", 50/2, 78/2, true);
+sprite_change_offset("dspecial_box", 50/2, 78/2, true);
 sprite_change_offset("taunt", 50/2, 58/2, true);
 
 sprite_change_offset("respawn", 80/2, 40/2, true);
 sprite_change_offset("plat", 80, 0);
 
+sprite_change_offset("phone_open", 50/2, 58/2, true);
 sprite_change_offset("feri_costume", 84, 114);
 sprite_change_offset("miiverse_post", 60, 30);
 sprite_change_offset("otto_bobblehead", 4, 4);
@@ -59,6 +62,7 @@ sprite_change_offset("trialgrounds", 31, 0);
 sprite_change_offset("lastresort", 27, 39);
 
 sprite_change_offset("blob_ball", 18, 18);
+sprite_change_offset("blob_ball_box", 18, 18);
 sprite_change_offset("blob_ball_explosion", 50, 50);
 sprite_change_offset("blob_ball_explosion2", 100, 100);
 sprite_change_offset("bluetrail", 12, 12);

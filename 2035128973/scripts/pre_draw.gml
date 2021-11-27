@@ -89,6 +89,15 @@ if ("rollArray" in self)
 		draw_sprite_ext(sprite_get("boneProj"), 0, x+draw_x, y-30+draw_y, spr_dir, 1, spr_angle, c_white, 1);
 		shader_end();
 	}
+	if (has_rune("G")) // aura
+	{
+		var auraAmt = floor(get_player_damage(player)/10);
+		gpu_set_fog(1, tempColour3, 0, 1);
+		draw_sprite_ext(sprite_index, image_index, x+draw_x+random_func(5,auraAmt,1)-auraAmt/2, y+draw_y+random_func(6,auraAmt,1)-auraAmt/2, spr_dir, 1, spr_angle, c_white, 0.7);
+		gpu_set_fog(1, tempColour, 0, 1);
+		draw_sprite_ext(sprite_index, image_index, x+draw_x+random_func(7,auraAmt,1)-auraAmt/2, y+draw_y+random_func(8,auraAmt,1)-auraAmt/2, spr_dir, 1, spr_angle, c_white, 0.7);
+		gpu_set_fog(0, c_white, 0, 0);
+	}
 
 	// trans flag
 	if ("transcounter" in self && transcounter != 0 && draw_indicator)
@@ -133,7 +142,7 @@ if ("rollArray" in self)
 		//	gpu_set_fog(0, c_white, 0, 0);
 		//	break;
 		//
-		//// final smash
+		//// rainbow
 		//default:
 		//	if (aura > 0)
 		//	{

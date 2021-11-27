@@ -55,7 +55,7 @@ for (var i = 0; i < nbr; i += 1)
     set_hitbox_value(AT_DSPECIAL, i, HG_HIT_LOCKOUT, 1);
     set_hitbox_value(AT_DSPECIAL, i, HG_VISUAL_EFFECT, 302);
     set_hitbox_value(AT_DSPECIAL, i, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-    if (get_player_color(player) == 11)
+    if (get_player_color(player) == 12)
     {
         set_hitbox_value(AT_DSPECIAL, i, HG_PROJECTILE_SPRITE, sprite_get("ofuda_ctc"));
     }

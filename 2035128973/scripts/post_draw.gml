@@ -3,6 +3,9 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 {
 	switch (attack)
 	{
+		case AT_EXTRA_1:
+			draw_debug_text(x-24, y+6, "el wiwi");
+			break;
 		case AT_FSPECIAL:
 			DrawAura("fspecial_boneless_extra", 1, 8);
 			break;

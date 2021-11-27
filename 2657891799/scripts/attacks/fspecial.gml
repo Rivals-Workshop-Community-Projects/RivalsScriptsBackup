@@ -79,6 +79,7 @@ set_window_value(AT_FSPECIAL, 6, AG_WINDOW_CUSTOM_GRAVITY, 0.7);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_GOTO, 8);
 
 //endlag fwd
+set_window_value(AT_FSPECIAL, 7, AG_WINDOW_TYPE, 7);
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_LENGTH, 25);
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 12);
@@ -86,6 +87,7 @@ set_window_value(AT_FSPECIAL, 7, AG_WINDOW_CUSTOM_GRAVITY, 0.7);
 set_window_value(AT_FSPECIAL, 7, AG_WINDOW_GOTO, 9);
 
 //endlag back
+set_window_value(AT_FSPECIAL, 8, AG_WINDOW_TYPE, 7);
 set_window_value(AT_FSPECIAL, 8, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_FSPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, 21);

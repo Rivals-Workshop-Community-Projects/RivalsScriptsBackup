@@ -1,5 +1,9 @@
 //article1_init
 sprite_index = sprite_get("blob_ball");
+if(player_id.box){ //cube
+	sprite_index = sprite_get("blob_ball_box");
+}
+
 ball = 0;
 ball_timer = 10;
 bomb_anim = 0;

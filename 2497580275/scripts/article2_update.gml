@@ -13,14 +13,19 @@ with(pHitBox)
             sound_play(asset_get("sfx_ori_seinhit_medium"));
             other.hit_timer = 60;   
         }
-        if(type == 2)
+        if(type == 2 && other.state == 0)
+        {
             other.state = 1;
-        else
+        }
+        else if(other.state < 2)
+        {
             other.state = 2;
+        }
     }
 }
 
-if(player_id.state == PS_RESPAWN)
+//Die after 
+if(player_id.state == PS_RESPAWN && state < 3)
     state = 2;
 
 if(get_gameplay_time() % 2)

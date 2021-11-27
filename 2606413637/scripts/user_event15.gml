@@ -266,6 +266,13 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.7", "22 November, 2021");
+initHeader("NSpecial - Nerfs");
+initSection("Air version now has pratfall.");
+initHeader("Rolls - Clarity");
+initSection("Afterimage now moves in the direction of the roll / tech.
+Adjusted afterimage timing.");
+
 initPatch("1.6", "29 October, 2021");
 initHeader("DTilt - Buffs");
 initSection("SSJ only: startup 10 --> 8.");

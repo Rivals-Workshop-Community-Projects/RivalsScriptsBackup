@@ -219,6 +219,14 @@ if (attack == AT_DTILT){
 	if (has_rune("I") && dtilt_started_on_ground == false){
 		vsp = 0
 	}
+	if (window == 3){
+		if (window_timer == 1
+		|| window_timer == 7
+		|| window_timer == 13){
+			//spawn_base_dust( x - (15 * spr_dir), y, "walk", spr_dir)
+		}
+		
+	}
 }
 
 if (attack == AT_EXTRA_2){
@@ -445,13 +453,18 @@ if (attack == AT_NSPECIAL){
 		burst_bubble_hit = false
 		burst_bubble_can_move = false
 		set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 3);
-		if (window_timer == 8 && burst_bubble_is_charged == true){
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && burst_bubble_is_charged == true){
 			burst_bubble_is_charged = false
+			sound_stop(sfx_charge);
 			sound_play(sfx_charge_max);
 			spawn_hit_fx( x, y - 12, burst_bubble_charged_vfx );
 			window = 6
 			window_timer = 0
 			set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 7);
+		}
+		if (!free && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			spawn_base_dust( x + (10 * spr_dir), y, "walk", spr_dir*-1)
+			spawn_base_dust( x - (10 * spr_dir), y, "walk", spr_dir)
 		}
 	}
     if (window == 2){
@@ -494,6 +507,10 @@ if (attack == AT_NSPECIAL){
 			burst_bubble_is_charged = true
 			window = 5
 			window_timer = 0
+			if (!free){
+				spawn_base_dust( x + (10 * spr_dir), y, "dash", spr_dir*-1)
+				spawn_base_dust( x - (10 * spr_dir), y, "dash", spr_dir)
+			}
 		}
 	}
 	if (window == 5){
@@ -564,10 +581,12 @@ if (attack == AT_FSPECIAL){
 		if (window_timer == 4){
 			sound_play(asset_get("sfx_jumpground"));
 		}
-		if (window_timer == 19 && !free && !has_rune("L")){
-			spawn_base_dust( x + (52 * spr_dir), y, "dash_start", spr_dir * -1)
+		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !free && !has_rune("L")){
+			spawn_base_dust( x + (52 * spr_dir), y, "land", spr_dir * -1)
+			spawn_base_dust( x - (20 * spr_dir), y, "dash", spr_dir)
 		} else if (window_timer == 1 && !free && has_rune("L")){
-			spawn_base_dust( x + (52 * spr_dir), y, "dash_start", spr_dir * -1)
+			spawn_base_dust( x + (52 * spr_dir), y, "land", spr_dir * -1)
+			spawn_base_dust( x - (20 * spr_dir), y, "dash", spr_dir)
 		}
 	}
     if (window == 3){

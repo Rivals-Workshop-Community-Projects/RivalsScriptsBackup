@@ -9,6 +9,13 @@ if (state == PS_PRATFALL) && attack == AT_DAIR {
 }
 
 
+if (state == PS_DASH_TURN) {
+    sprite_index = sprite_get("dashstart");
+    image_index = state_timer/3
+    
+}
+
+
 if (state == PS_PRATLAND) {
     
     sprite_index = sprite_get("landinglag");

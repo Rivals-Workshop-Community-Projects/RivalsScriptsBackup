@@ -31,7 +31,8 @@ if (obj_stage_main.graphics_level < 4) {
     maskMidder();
     
     with (oPlayer) {
-        draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, -0.2, 0, c_black, 1);
+        var y_size = -0.2
+        draw_sprite_ext(sprite_index, image_index, x, y, spr_dir + (small_sprites * spr_dir), y_size + (y_size * small_sprites), 0, c_black, 1);
     }
     
     maskFooter();

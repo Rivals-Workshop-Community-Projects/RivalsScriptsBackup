@@ -17,5 +17,7 @@ with my_hitboxID {
     }
 }
 
+shuriken_charge = 0
+
 ss_start = 0
 ss_timer = 0

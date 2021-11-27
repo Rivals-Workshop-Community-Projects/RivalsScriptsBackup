@@ -1,21 +1,10 @@
 //article2_update.gml
 
 var hb_exists = instance_exists(hitbox_id);
-if (hb_exists) {
-    //if (hitbox_id.was_parried) {
-        //trigger_got_parried = true;
-        //hitbox_id.destroyed = true;
-        //parried_by_player = hitbox_id.player;
-        //hitbox_id = noone;
-        //hb_exists = false;
-        //hp += 1;
-    //}
-}
+
 if (!hb_exists && hitbox_respawn_time < 0) {
     trigger_hitbox_destroyed = true;
 }
-
-
 
 //parry handling
 handle_got_parried();
@@ -23,13 +12,13 @@ handle_got_parried();
 handle_hitbox_destroyed();
 handle_hitbox_respawn();
 
-
-
+//handle hitpause
 if (hitpause_timer > 0) {
     hsp = 0;
     vsp = 0;
     hitpause_timer--;
 }
+//handle hitbox respawn timer
 else if (hitbox_respawn_time > 0) {
     hsp = 0;
     vsp = 0;
@@ -133,7 +122,6 @@ if (was_parried) {
 }
 
 return;
-
 
 
 #define create_hitbox_from_clone_player_id

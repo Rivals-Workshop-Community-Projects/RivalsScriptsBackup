@@ -95,6 +95,10 @@ if attack == AT_DATTACK {
 
 if attack == AT_NSPECIAL{
 	
+    if has_hit_player {
+		soft_armor = 999
+	}
+	
 	if window = 3 { 
 		move_cooldown[AT_NSPECIAL] = 10 
 	}
@@ -108,16 +112,18 @@ if attack == AT_NSPECIAL{
 		set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 3);
 	}
 	
-	if window == 1 && window_timer == 6 && batt >= 4 && special_down && !hitpause{
+	if window == 1 && window_timer == 6 && batt >= 1 && special_down && !hitpause{
 		sound_stop(asset_get("sfx_holy_tablet"));
 		set_attack_value(AT_NSPECIAL, AG_NUM_WINDOWS, 6);
 		window = 4
 		window_timer = 0
-		shake_camera(4,4)
+		
+		shake_camera(batt,batt)
+		
 		sound_play(asset_get("sfx_bird_downspecial"));
-		sound_play(sound_get("supercombo"),false,noone,0.8,1.2);
+		sound_play(sound_get("supercombo"),false,noone,0.8, 2 - batt/4 );
 		spawn_base_dust(x,y, "land",spr_dir)
-		batt -= 1
+		battfade = 25
 		spawn_hit_fx(x,y,sw)
 	}
 	
@@ -125,30 +131,38 @@ if attack == AT_NSPECIAL{
 		
 		if window_timer % 7 == 0 {
 			spawn_base_dust(x,y, "land",spr_dir)
-			shake_camera(4,4)
+			shake_camera(batt,batt)
 			
 		}
 		
 	}
 	
-	if window == 5 && window_timer == 3 && !hitpause{ 
+	if window == 5 && window_timer == 3 && !hitpause { 
 		shake_camera(6,6)
 		sound_play(asset_get("sfx_ori_energyhit_heavy"));
 		sound_play(asset_get("sfx_bird_nspecial"));
-		sound_play(sound_get("lazerfire"),false,noone,0.8,1.4);
+		sound_play(sound_get("lazerfire"),false,noone,0.8, 2 - state_timer/60 );
 		sound_play(asset_get("sfx_combust"));
 		spawn_hit_fx(x + 30*spr_dir, y - 42, 305)
 		spawn_hit_fx(x + 580*spr_dir,y - 42, lasernor)
 		spawn_base_dust(x,y, "land",spr_dir)
 		spawn_base_dust(x - 30*spr_dir,y, "dashstart",spr_dir)
-		batt = 0
+		battfade = 25
+		batt -= 1
 	}
+	
+		if window == 6 && window_timer == 4 && batt > 0 { 
+			state_timer += 15
+			attack_end()
+			
+			window = 5
+			window_timer = 1
+			
+		}
+		
+
  	
- 	if window == 5 && hitpause{
- 		spawn_hit_fx(x + 580*spr_dir,y - 42, lasernor)
- 	}
- 	
- 	if window == 6  && !hitpause{
+ 	if window == 6 && !hitpause{
  		if window_timer == 16 && free {
  			set_state(PS_PRATFALL)
  		}

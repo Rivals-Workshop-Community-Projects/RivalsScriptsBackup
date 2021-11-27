@@ -5,3 +5,4 @@ hittimer = 0;
 usingspecial = false;
 burststop = 0;
 cooldownstart = false;
+blooddie = 1;

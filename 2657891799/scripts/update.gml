@@ -46,28 +46,34 @@ if (proj_doll && (special_pressed || special_down))
     proj_doll = false
     reset_window_value(AT_FSPECIAL, 2, AG_WINDOW_GOTO);
     move_cooldown[AT_FSPECIAL] = 12
+    has_hit = false
     destroy_hitboxes()
     attack_end()
 }
 
 if ss_start {
     ss_timer++
-    
+    ss_type = 0
     
     var ss_list = [AT_UTHROW,AT_JAB,AT_FTILT,AT_UTILT,AT_DTILT,AT_NAIR,AT_FAIR,AT_DATTACK,AT_DAIR,AT_BAIR,AT_UAIR,AT_FSTRONG,AT_DSTRONG,AT_USTRONG,AT_NSPECIAL,AT_DSPECIAL,AT_USPECIAL]
     for (var i = 0; i < array_length(ss_list); i++) {
         move_cooldown[ss_list[i]] = 2
     }
     
-    
     var dist_mult = 3
     
     ss_dist += dist_mult*sign(ss_dist)
     ss_dist = clamp(ss_dist, -250, 250)
-    
-    if doll_id != noone && instance_exists(doll_id) {
-        ss_x = doll_id.x
-        ss_y = doll_id.y - 16
+    if hit_doll != undefined && instance_exists(hit_doll) && !(attack_down || strong_down) && !(hit_doll.state == PS_DEAD && hit_doll.last_hit != id) && (hit_doll.state != PS_DEAD || hit_doll.hit_counter < 2) {
+        ss_type = 1
+        ss_doll = hit_doll
+        ss_x = ss_doll.x
+        ss_y = ss_doll.y-16
+    } else if doll_id != noone && instance_exists(doll_id) && !(attack_down || strong_down) && !(doll_id.state == PS_DEAD && doll_id.last_hit != id) && (doll_id.state != PS_DEAD || doll_id.hit_counter < 2) {
+        ss_type = 1
+        ss_doll = doll_id
+        ss_x = ss_doll.x
+        ss_y = ss_doll.y-16
     } else {
         ss_x = x + ss_dist
         ss_y = 320
@@ -79,6 +85,7 @@ if ss_start {
         if ss_y > bottom_y - 10 ss_y = bottom_y - 10
     }
     
+    
     //if (has_hit_player && !hitpause && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)) || (ss_timer > 90 && state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) {
     if !was_parried && (ss_timer > 90 || !special_down || hit_doll != undefined) {
         set_state(free ? PS_ATTACK_AIR : PS_ATTACK_GROUND)
@@ -87,30 +94,16 @@ if ss_start {
         window_timer = 0
         state_timer = 0
         ss_start = false
-        move_cooldown[AT_FSPECIAL] = 100
+        move_cooldown[AT_FSPECIAL] = 80
         hurtboxID.sprite_index = get_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE);
         sprite_index = get_attack_value(AT_FSPECIAL, AG_SPRITE);
         ss_count++
+        if attack_down || strong_down ss_type = 0
     }
 }
 
-//uspec droplets
-with hit_fx_obj {
-    if sprite_index == other.droplet_large {
-        var movespd = 9 + (id mod 4)
-        x -= movespd*dcos(draw_angle)*-spr_dir
-        y += movespd*dsin(draw_angle)*-spr_dir
-        
-        /*
-        if instance_position(x, y, asset_get("par_block")) {
-            with other {
-                spawn_hit_fx(other.x, other.y, 6)
-            }
-            y = -100000
-        }
-        */
-    }
-}
+if free ss_free_timer++
+else ss_free_timer = 0
 
 if draw_jet {
     draw_jet_timer++
@@ -205,4 +198,40 @@ if draw_jet {
 with oPlayer if id != other.id && activated_kill_effect && triggers_kill_effect {
     with other sound_play(asset_get("sfx_frog_gong_hit"))
     triggers_kill_effect = false;
+}
+
+//dspecial armour
+if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_DSPECIAL {
+    if window == 1 && window_timer > 5 {
+        super_armor = true
+    } else {
+        super_armor = false
+    }
+} else if attack == AT_DSPECIAL && super_armor {
+    super_armor = false
+}
+
+if state == PS_HITSTUN || state == PS_HITSTUN_LAND || !((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && (attack == AT_UTHROW || attack == AT_DAIR || attack == AT_FSPECIAL || attack == AT_DSPECIAL)) {
+    if counter_hit {
+        counter_hit = noone
+        invincible = false
+    }
+}
+
+if state == PS_WALL_JUMP || state == PS_HITSTUN || state == PS_HITSTUN_LAND move_cooldown[AT_FSPECIAL] = 2
+
+//intro anim
+
+var intro_time = get_gameplay_time();
+if intro_time == 27 sound_play(asset_get("sfx_ell_fist_explode"))
+if intro_time == 27 sound_play(sound_get("ss_attack"))
+if intro_time == 27 || intro_time == 24 {
+    for (var i = 0; i < 8; i++) {
+        var smokex = x + (random_func(i, 60, true) - 30)
+        var smokey = y - 35 + (random_func(i+1, 60, true) - 30)
+        var smokeangle = random_func(i+2, 360, true)
+        var smokefx = spawn_hit_fx(smokex, smokey, vfx_smoke)
+            smokefx.draw_angle = smokeangle
+            smokefx.depth = -10
+    }
 }

@@ -7,6 +7,15 @@
  * docs.google.com/spreadsheets/d/19UtK7xG2c-ehxdlhCFKMpM4_IHSG-EXFgXLJaunE79I
  */
 
+//rioku -- Trail effects for blood rage strongs
+demon_trail_size = 3;
+for(var i = 0; i < demon_trail_size; i++){
+    demon_trail[i] = 
+    {x:x, y:y, sprite_index:sprite_index, image_index:0, color:c_white, spr_dir:spr_dir, life:0};
+}
+trail_color = make_color_rgb(get_color_profile_slot_r(get_player_color(player), 3), get_color_profile_slot_g(get_player_color(player), 3), get_color_profile_slot_b(get_player_color(player), 3))
+hfx_claw = hit_fx_create(sprite_get("clawbig"), 28);
+hfx_clawup = hit_fx_create(sprite_get("clawup"), 28);
 // STAT NAME		ZETTER VALUE   BASECAST RANGE   NOTES
 
 // Physical size
@@ -170,6 +179,7 @@ bloodmeter = 0;
 bloodmetermax = 100;
 bloodmetermin = 0;
 bloodmeterdec = 0.065;
+blooddie = 1;
 
 blood_anim = 0;
 

@@ -1,4 +1,5 @@
 ///
+
 canceltime = 0
 
 
@@ -32,7 +33,7 @@ if (my_hitboxID.type == 2 &&  my_hitboxID.damage <= 1) or (my_hitboxID.attack ==
 if my_hitboxID.damage < 5  {
 	
 			
-			
+	if my_hitboxID.hitpause > 1 {
 			
     switch random_func(2,3,true) {
          case 0 :    
@@ -48,6 +49,9 @@ if my_hitboxID.damage < 5  {
          break ;
          
     }
+	}
+    
+    
 } else {
     
 

@@ -1,7 +1,7 @@
 var holding_attack = (attack_down || special_down || strong_down || right_strong_down || left_strong_down || up_strong_down || down_strong_down || right_stick_down || left_stick_down || up_stick_down || down_stick_down);
 var window_length = get_window_value(attack,window,AG_WINDOW_LENGTH);
 var window_end = window_timer >= floor(get_window_value(attack,window,AG_WINDOW_LENGTH)*(1+(.5*!has_hit*get_window_value(attack,window,AG_WINDOW_HAS_WHIFFLAG))))-1;
-
+//print(`window:${window}, window_timer:${window_timer}`);
 if (attack == AT_NSPECIAL) {
 	trigger_ult_b_reverse();
 }
@@ -29,7 +29,7 @@ switch (get_window_value(attack,window,AG_WINDOW_TYPE)) {
 		}
 		
 		if (window_timer == window_length) {
-		    if (holding_attack && window_hold_time >= window_length-2-window_leniency && bullets > 0) {
+		    if (holding_attack && window_hold_time >= window_length-1-window_leniency && bullets > 0) {
 		        window = jump_window;
 		        window_timer = 0;
 		        //speed doesn't work properly when setting the window like this, so we fix that here
@@ -64,38 +64,63 @@ switch (attack) {
 			}
 	    }
 	    
+	    if window == 3 && window_timer == 1 {
+	    	spawn_hit_fx(x, y-30, plasma_hitfx);
+	    }
+	    
 	    if (window == 1) {
 	        can_move = false;
 	        vsp *= 0.8;
 	        hsp *= 0.8;
 	        grav = 0;
 	        can_shield = true;
+	        if !special_down && window_timer > 16 {
+	        	window++
+	        	window_timer = 0;
+	        }
 	    } else {
 	        can_wall_jump = true;
-	        can_shield = false;
+	        //if shield_pressed {
+	        	//can_shield = true;
+	        	//uspec_airdodge_pratfall = !attack_charged;
+	        //}
 	        grav = gravity_speed;
 	    }
 	    
-	    if (window == 2 && window_timer == 1) {
+	    if (window == 3 && window_timer == 1) {
 	    	sound_play(asset_get("sfx_clairen_fspecial_dash"));
 	    }
 	    if !was_parried
-		    if has_hit && point_distance(x,y,hit_player_obj.x,hit_player_obj.y) < 50 can_jump = true;
-		    else if (attack_charged) {
-		        set_window_value(AT_USPECIAL,3,AG_WINDOW_TYPE,1);
-		        if jump_pressed {
-		        	var mult = 0.6;
+		    if (attack_charged) {
+		    	can_shield = true;
+		        set_window_value(AT_USPECIAL,4,AG_WINDOW_TYPE,1);
+		        if window == 4 && window_timer == window_length set_state(PS_IDLE_AIR);
+		        if is_attack_pressed(DIR_ANY) || is_strong_pressed(DIR_ANY) {
+		        	var mult = 0.4;
 		        	hsp = (x-px)*mult;
 		        	vsp = (y-py)*mult;
-		        	if !free can_jump = true;
-		        	else if free {
-		        		djumps = 1;
-		        		set_state(PS_IDLE_AIR);
-		        	}
+		        	can_attack = true;
+		        	
+		        	free = true;
+		        } else if is_special_pressed(DIR_ANY) {
+		        	var mult = 0.4;
+		        	hsp = (x-px)*mult;
+		        	vsp = (y-py)*mult;
+		        	can_special = true;
+		        	
+		        	free = true;
+		        } else if jump_pressed {
+		        	var mult = 0.3;
+		        	hsp = (x-px)*mult;
+		        	vsp = (y-py)*mult;
+		        	can_jump = true;
+		        	
 		        	free = true;
 		        }
+		        
 		        //can_jump = true;
-		    } else if has_hit can_jump = true;
+		    }
+		
 	    px = x;
 		py = y;
 	break;
@@ -118,7 +143,7 @@ switch (attack) {
         		window_timer = 0;
         		sound_stop(cur_sound);
         	}
-		} else if (window == 4 && window_timer == 4) {
+		} else if (window == 3 && window_timer == 4) {
 			hsp = -4*spr_dir;
 		}
 		
@@ -134,7 +159,7 @@ switch (attack) {
 		//if you hit the first hit of ustrong, create a hitbox that deletes their DI.
 		//remove this if people complain about it lol it's probably busted
 		if window == 3 && has_hit && !hitpause create_hitbox(attack,4,x+34*spr_dir,y-30);
-		if window >= 3 && window < 6 {
+		if window >= 3 && window < 5 {
 			hud_offset = ceil(lerp(hud_offset,100,0.3));
 		}
 		if window == 6 {
@@ -155,7 +180,7 @@ switch (attack) {
 	break;
 	case AT_FSTRONG:
 		if (window == 1 && window_timer == 1) {
-			hsp = -6*spr_dir;
+			hsp = -4*spr_dir;
 		}
 	break;
     case AT_DSTRONG:
@@ -217,9 +242,16 @@ switch (attack) {
 	break;
 	case AT_JAB:
 		if window == 4 && window_timer == 1 hsp += 6*spr_dir;
+		if (window == 6) && !hitpause && has_hit && !was_parried {
+			can_attack = true;
+			move_cooldown[AT_JAB] = 2;
+			can_ustrong = true;
+			can_strong = true;
+			can_special = true;
+		}
 	break;
 	case AT_DTILT:
-		if window == 1 && window_timer == 6
+		//if window == 1 && window_timer == 6
 			//sound_play(asset_get("sfx_zetter_fireball_fire"),false,-4,0.4,1.1);
 	break;
 	case AT_UAIR:
@@ -234,19 +266,30 @@ switch (attack) {
 			set_state(PS_IDLE_AIR);
 		}
 	break;
+	case AT_DSPECIAL:
+		if instance_exists(beacon) && beacon.state == 1 {
+			beacon.state = 2;
+            beacon.state_timer = 0;
+		}
+	break;
 }
+
 
 if (attack == AT_JAB) {
     if (right_down-left_down == -spr_dir && down_down-up_down == 0 && !has_hit && !has_hit_player) {
-        if get_window_value(attack,window,AG_WINDOW_CANCEL_TYPE) != 0 {
-	        set_window_value(attack,window,AG_WINDOW_CANCEL_TYPE, 0);
-	        set_window_value(attack,window,AG_WINDOW_GOTO, 24);
+    	var win_time = get_window_value(attack,window,AG_WINDOW_LENGTH);
+    	set_window_value(attack,window,AG_WINDOW_CANCEL_FRAME, win_time);
+        if get_window_value(attack,window,AG_WINDOW_CANCEL_TYPE) != 0 && window_timer == win_time {
+	        set_state(PS_IDLE);
+	        was_parried = false; 
+	        //if you get ftilt frame-perfectly on parry you can carry the parry lag over
+	        //that doesn't happen in base cast so this fixes that
         }
     } else {
-    	reset_window_value(attack,window,AG_WINDOW_CANCEL_TYPE);
-    	reset_window_value(attack,window,AG_WINDOW_GOTO);
+    	reset_window_value(attack,window,AG_WINDOW_CANCEL_FRAME);
     }
 }
+
 
 //#region Roke Text Easter Egg
 if (attack == AT_TAUNT && state_timer == 1 && down_down && get_match_setting(SET_PRACTICE)) {

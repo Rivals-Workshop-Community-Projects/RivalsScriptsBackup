@@ -41,3 +41,10 @@ if attack == AT_USPECIAL {
 }
 
 hit_doll = undefined
+counter_hit = noone
+
+if attack == AT_FSPECIAL has_hit = false
+
+reset_window_value(AT_UTHROW, 3, AG_WINDOW_TYPE);
+reset_window_value(AT_FSPECIAL, 7, AG_WINDOW_TYPE);
+reset_window_value(AT_FSPECIAL, 8, AG_WINDOW_TYPE);

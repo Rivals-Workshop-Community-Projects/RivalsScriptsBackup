@@ -200,7 +200,7 @@ if (attack == AT_NSPECIAL) && (hbox_num == 1) {
                     spawn_hit_fx(other.x, other.y - 20, 143);
                 }
                 var explosion = create_hitbox(AT_NSPECIAL, 3, x, y - 20);
-                    explosion.spr_dir = hsp == 0 ? spr_dir : sign(hsp);
+                    explosion.spr_dir = hitbox.spr_dir;
                 player_id.cubeCooldown = 0;
                 destroyed = true;
                 exit;

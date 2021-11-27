@@ -2,6 +2,8 @@ crouch_counter = 0;
 isWalle = true; //for other walle players to detect
 fspecCooldown = 0;
 
+spam_ad = sprite_get("spam_ad")
+
 timer = 0;
 
 always_holding_rock = false;

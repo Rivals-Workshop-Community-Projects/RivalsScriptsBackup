@@ -53,6 +53,7 @@ sprite_change_offset("nspecial", 64, 94);
 sprite_change_offset("fspecial", 128, 158);
 sprite_change_offset("fspec_boom", 60, 102);
 sprite_change_offset("fspec_boom_mask", 60, 102);
+sprite_change_offset("fspec_die", 60, 102);
 sprite_change_offset("uspecial", 96, 126);
 sprite_change_offset("dspecial", 64, 94);
 sprite_change_offset("taunt", 64, 94);

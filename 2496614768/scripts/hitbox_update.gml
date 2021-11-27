@@ -23,6 +23,9 @@ if attack == AT_USTRONG && hbox_num == 4 {
 
 if attack == AT_NSPECIAL && hbox_num == 1 {
     
+    
+    
+    
     x = player_id.x + 26*player_id.spr_dir
     y = player_id.y - 40
     
@@ -160,6 +163,11 @@ if attack == AT_FSPECIAL && hbox_num == 3 {
        create_hitbox(AT_FSPECIAL,4,x,y)
    }   
     
+    with player_id {
+    	if state == PS_PRATFALL or state == PS_PRATLAND {
+    		state = PS_IDLE
+    	}
+    }
 }
 
 

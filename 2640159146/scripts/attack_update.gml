@@ -78,7 +78,36 @@ if attack == AT_NSPECIAL {
     }
     
 if (attack == AT_NSPECIAL) {
-	//reset 'grabbed_player' variables on the first frame when performing a grab.
+	
+    if(window == 1){
+    	grabbed_player_obj = noone;
+    }
+    if(window < 4 and grabbed_player_obj!= noone and !hitpause){
+    	window = 4;
+    	window_timer = 0;
+    } 
+    if(window == 4){
+    	if(window_timer < 12){
+    		grabbed_player_obj.hitstop = 2;
+    		grabbed_player_obj.hitstop_full = 2;
+    	}
+		if(window_timer < 4){
+				grabbed_player_obj.x = lerp(grabbed_player_obj.x, x+spr_dir*40, .25);
+    			grabbed_player_obj.y = lerp(grabbed_player_obj.y, y+16, .25);
+		} else if (window_timer < 8){
+				grabbed_player_obj.x = x+spr_dir*42;
+    			grabbed_player_obj.y = y+8;
+		} else if (window_timer < 12){
+				grabbed_player_obj.x = x+spr_dir*56;
+    			grabbed_player_obj.y = y-8;
+		} else if (window_timer == 12){
+				grabbed_player_obj.x = x+spr_dir*40;
+    			grabbed_player_obj.y = y-42;
+		}
+    }
+    can_fast_fall = false;
+	
+	/*//reset 'grabbed_player' variables on the first frame when performing a grab.
     if (window == 1 && window_timer == 1) { 
     	grabbed_player_obj = noone; 
     	grabbed_player_relative_x = 0;
@@ -126,7 +155,7 @@ if (attack == AT_NSPECIAL) {
 			//the above block can be copied for as many windows as necessary.
 			//e.g. for an attack like Clairen's back throw, you might have an additional window where the grabbed player is pulled behind.
 		}
-    }
+    }*/
 }
 
 }
@@ -138,8 +167,58 @@ if attack == AT_FSTRONG {
     if window == 2 && window_timer == 1 {
         sound_play(asset_get("sfx_swipe_heavy2"));
     }
-    
+} 
 if (attack == AT_FSTRONG) {
+	if(window == 1){
+    	grabbed_player_obj = noone;
+    }
+    if(window < 4 and grabbed_player_obj!= noone and !hitpause){
+    	window = 4;
+    	window_timer = 0;
+    } 
+    if(window == 4){
+    	if(window_timer < 12){
+    		grabbed_player_obj.hitstop = 2;
+    		grabbed_player_obj.hitstop_full = 2;
+    	}
+		if(window_timer < 4){
+				grabbed_player_obj.x = lerp(grabbed_player_obj.x, x+spr_dir*50, .25);
+    			grabbed_player_obj.y = lerp(grabbed_player_obj.y, y-16, .25);
+		} else if (window_timer < 4){
+				grabbed_player_obj.x = x+spr_dir*52;
+    			grabbed_player_obj.y = y-16;
+		} else {
+				grabbed_player_obj.x = x-spr_dir*32;
+    			grabbed_player_obj.y = y-8;
+		}
+    } else if (window == 5){
+    		grabbed_player_obj.hitstop = 2;
+    		grabbed_player_obj.hitstop_full = 2;
+    		if(window_timer < 9){
+				grabbed_player_obj.x = x-spr_dir*32;
+    			grabbed_player_obj.y = y-8;
+    		} else if (window_timer < 18){
+    			grabbed_player_obj.x = x-spr_dir*24;
+    			grabbed_player_obj.y = y-32;
+    		} else {
+    			grabbed_player_obj.x = x-spr_dir*20;
+    			grabbed_player_obj.y = y-30;
+    		}
+    } else if (window == 6){
+    		if(window_timer < 6){
+	    	    grabbed_player_obj.hitstop = 2;
+	    		grabbed_player_obj.hitstop_full = 2;
+    		}
+    		if(window_timer < 5){
+    			grabbed_player_obj.x = x-spr_dir*20;
+    			grabbed_player_obj.y = y-30;
+    		} else if(window_timer == 5){
+    			grabbed_player_obj.x = x+spr_dir*32;
+    			grabbed_player_obj.y = y;
+    		}
+    		
+    }
+	/*
 	//reset 'grabbed_player' variables on the first frame when performing a grab.
     if (window == 1 && window_timer == 1) { 
     	grabbed_player_obj = noone; 
@@ -189,8 +268,7 @@ if (attack == AT_FSTRONG) {
 			//e.g. for an attack like Clairen's back throw, you might have an additional window where the grabbed player is pulled behind.
 		}
     }
-}
-
+	*/
 }
 
 //====================================
@@ -203,6 +281,57 @@ if attack == AT_FSTRONG_2 {
     
 //attack_update.gml
 if (attack == AT_FSTRONG_2) {
+		if(window == 1){
+    	grabbed_player_obj = noone;
+    }
+    if(window < 4 and grabbed_player_obj!= noone and !hitpause){
+    	window = 4;
+    	window_timer = 0;
+    } 
+    if(window == 4){
+    	if(window_timer < 12){
+    		grabbed_player_obj.hitstop = 2;
+    		grabbed_player_obj.hitstop_full = 2;
+    	}
+		if(window_timer < 4){
+				grabbed_player_obj.x = lerp(grabbed_player_obj.x, x+spr_dir*50, .25);
+    			grabbed_player_obj.y = lerp(grabbed_player_obj.y, y-16, .25);
+		} else if (window_timer < 4){
+				grabbed_player_obj.x = x+spr_dir*52;
+    			grabbed_player_obj.y = y-16;
+		} else {
+				grabbed_player_obj.x = x-spr_dir*32;
+    			grabbed_player_obj.y = y-8;
+		}
+    } else if (window == 5){
+    		grabbed_player_obj.hitstop = 2;
+    		grabbed_player_obj.hitstop_full = 2;
+    		if(window_timer < 9){
+				grabbed_player_obj.x = x-spr_dir*32;
+    			grabbed_player_obj.y = y-8;
+    		} else if (window_timer < 18){
+    			grabbed_player_obj.x = x-spr_dir*24;
+    			grabbed_player_obj.y = y-32;
+    		} else {
+    			grabbed_player_obj.x = x-spr_dir*20;
+    			grabbed_player_obj.y = y-30;
+    		}
+    } else if (window == 6){
+    		if(window_timer < 6){
+	    	    grabbed_player_obj.hitstop = 2;
+	    		grabbed_player_obj.hitstop_full = 2;
+    		}
+    		if(window_timer < 5){
+    			grabbed_player_obj.x = x-spr_dir*20;
+    			grabbed_player_obj.y = y-30;
+    		} else if(window_timer == 5){
+    			grabbed_player_obj.x = x+spr_dir*32;
+    			grabbed_player_obj.y = y;
+    		}
+    		
+    }
+	
+	/*
 	//reset 'grabbed_player' variables on the first frame when performing a grab.
     if (window == 1 && window_timer == 1) { 
     	grabbed_player_obj = noone; 
@@ -251,7 +380,7 @@ if (attack == AT_FSTRONG_2) {
 			//the above block can be copied for as many windows as necessary.
 			//e.g. for an attack like Clairen's back throw, you might have an additional window where the grabbed player is pulled behind.
 		}
-    }
+    }*/
 }
 
 }
@@ -275,7 +404,7 @@ if (attack == AT_FSPECIAL){
     		fspecial_grabbed_player.hitstop_full = 2;
     	}
 		if(window_timer < 4){
-				fspecial_grabbed_player.x = x;
+				fspecial_grabbed_player.x = lerp(fspecial_grabbed_player.x, x, .15);
     			fspecial_grabbed_player.y = y-8;
 		} else if (window_timer < 8){
 			fspecial_grabbed_player.x = x-spr_dir*8;;
@@ -287,7 +416,6 @@ if (attack == AT_FSPECIAL){
 			fspecial_grabbed_player.x = x+spr_dir*64;
 			fspecial_grabbed_player.y = y;
 		}
-
     }
     can_fast_fall = false;
 }
@@ -323,7 +451,7 @@ if attack == AT_USPECIAL {
 }
 
 if attack == AT_USPECIAL {
-	if window == 2 && window_timer > 8 {
+	if window == 2 && window_timer > 8  {
 			if shield_down {
 				window = 7;
 				window_timer = 0;
@@ -332,7 +460,7 @@ if attack == AT_USPECIAL {
 }
 
 if attack == AT_USPECIAL && !free {
-	if window == 4 {
+	if window == 4 || window == 5 {
 		destroy_hitboxes();
 		window = 6;
 		window_timer = 0;
@@ -384,7 +512,6 @@ if ((attack == AT_DSPECIAL && window == 2 && window_timer == 6)
 }
 
 
-
 if ((attack == AT_DSPECIAL && window == 2 && window_timer == 6) 
 || (attack == AT_DSPECIAL_AIR && window == 4 && window_timer == 6)) {
 	if burst = 0 && spikehitboxleft = true {
@@ -414,6 +541,12 @@ if ((attack == AT_DSPECIAL && window == 2 && window_timer == 6)
 	}
 }
 }
+
+if (attack = AT_DSPECIAL_2)
+{
+	blooddie = 0; 
+}
+
 
 if attack == AT_TAUNT && window == 2 && window_timer == 17 && taunt_down {
 	window_timer = 2;
@@ -450,8 +583,35 @@ switch(attack) {
 
 
 
-if (attack == AT_JAB && (window == 1 || window == 4) && window_timer == 1) {
+if (attack == AT_JAB && (window == 2 || window == 4)) {
     clear_button_buffer(PC_ATTACK_PRESSED);
 }
 
+//rioku - Strong visual effects
+switch (attack){
+	case AT_FSTRONG_2:
+	case AT_DSTRONG:
+    case AT_DSPECIAL:
+	case AT_NSPECIAL:
+	case AT_FSPECIAL:
+	case AT_USTRONG:
 
+		for(var i = 0; i < demon_trail_size; i++){
+			demon_trail[i].life--;
+			demon_trail[i].x-=spr_dir*2;
+		}
+		var cur_time = state_timer;
+		var current_trail = demon_trail[floor(cur_time/10)%3];
+		if(current_trail.life <= 0){
+			current_trail.x = x;
+			current_trail.y = y;
+			current_trail.sprite_index = sprite_index;
+			current_trail.image_index = image_index;
+			current_trail.color = trail_color;
+			current_trail.spr_dir = spr_dir;
+			
+			//if we walk we make the trail last longer so it looks cooler
+				current_trail.life = 16;
+		}
+	break;
+}

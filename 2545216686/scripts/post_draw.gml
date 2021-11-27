@@ -1,3 +1,5 @@
 //post_draw.gml
 
-user_event(12);
+//phone
+muno_event_type = 4;
+user_event(14);

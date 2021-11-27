@@ -4,7 +4,22 @@ if (attack == AT_USPECIAL || attack == AT_NSPECIAL|| attack == AT_DSPECIAL){
 }
 
 
-if (state_timer == 1 or has_hit_player) && (attack == AT_FAIR or attack == AT_DAIR or attack == AT_UAIR or attack == AT_BAIR or attack == AT_NAIR) {
+if (attack == AT_JAB) {
+    if (right_down-left_down == -spr_dir && down_down-up_down == 0 && !has_hit && !has_hit_player) {
+        var win_time = get_window_value(attack,window,AG_WINDOW_LENGTH);
+        set_window_value(attack,window,AG_WINDOW_CANCEL_FRAME, win_time);
+        if get_window_value(attack,window,AG_WINDOW_CANCEL_TYPE) != 0 && window_timer == get_window_value(attack,window,AG_WINDOW_LENGTH) {
+            set_state(PS_IDLE);
+            was_parried = false; 
+            //if you get ftilt frame-perfectly on parry you can carry the parry lag over
+            //that doesn't happen in base cast so this fixes that
+        }
+    } else {
+        reset_window_value(attack,window,AG_WINDOW_CANCEL_FRAME);
+    }
+}
+
+if canceltime = 0 && (attack == AT_FAIR or attack == AT_DAIR or attack == AT_UAIR or attack == AT_BAIR or attack == AT_NAIR) {
 	set_attack_value(attack, AG_CATEGORY, 1);
 }
 
@@ -119,7 +134,7 @@ switch attack {
         window_timer += 0.3
     }
         
-    if window == 2 && window_timer >= 11 && !hitpause {
+    if window == 2 && window_timer == 8 && !hitpause {
         sound_stop(asset_get("sfx_swipe_medium2"))
         sound_play(asset_get("sfx_swipe_medium2"),false,noone,1,1 + random_func(1,3,true)/20)
     }
@@ -130,17 +145,33 @@ switch attack {
     
     case AT_UTILT :
     
+    can_move = false
+    hsp /= 1.05
+    if window == 1 && window_timer == 1 && !hitpause  {
+    	spawn_base_dust(x, y, "dash", spr_dir)
+        sound_play(asset_get("sfx_swipe_weak1"))
+    }
+    
     if window == 1 && window_timer == 6 && !hitpause {
         sound_play(asset_get("sfx_swipe_medium2"),false,noone,1,0.9 + random_func(1,3,true)/20)
     }
     
         
-    if window == 2 && window_timer == 8 && !hitpause {
+    if window == 2 && window_timer == 5 && !hitpause {
         sound_play(asset_get("sfx_swipe_medium1"),false,noone,1,0.9 + random_func(1,3,true)/20)
     }
     
-    if window == 4 && window_timer == 1 && !hitpause {
+    if window == 4 && window_timer == 1 && !hitpause  {
+    	if  !free {
         spawn_base_dust(x, y, "land", spr_dir)
+        sound_play(asset_get("sfx_land"))
+    	} else if canceltime = 0 {
+    		attack_end()
+    		set_state(PS_IDLE_AIR)
+    	} else if canceltime != 0 {
+    		attack_end()
+    		set_state(PS_PRATFALL)
+    	} 
     }
     
     
@@ -222,9 +253,13 @@ switch attack {
     if hitpause && window < 4 {
         window_timer += 1
     }
-    if window == 1 && window_timer == 8 && !hitpause {
-        sound_play(asset_get("sfx_spin"))
-        sound_play(asset_get("sfx_swipe_weak1"),false,noone,1,0.9 + random_func(1,3,true)/20)
+    if window == 1 && window_timer == 1 && !hitpause {
+        sound_play(asset_get("sfx_swipe_heavy1"))
+   }
+    
+    
+    if window == 1 && window_timer == 7 && !hitpause {
+      sound_play(asset_get("sfx_swipe_weak1"),false,noone,1,0.9 + random_func(1,3,true)/20)
     }
     
     break;
@@ -738,7 +773,9 @@ switch attack {
     if window == 4 && has_hit_player && !hitpause{
     
     
-        if window_timer == 25 or attack_pressed{
+         if window_timer == 25 or attack_pressed or special_pressed {
+         	move_cooldown[AT_NSPECIAL] = 20
+         
             window = 5
             window_timer = 1
           sound_play(asset_get("sfx_swipe_medium2"),false,noone,1,0.9 + random_func(1,3,true)/20)
@@ -843,20 +880,22 @@ switch attack {
     
     case AT_FSPECIAL :
     
-        if (attack == AT_FAIR or attack == AT_DAIR or attack == AT_UAIR or attack == AT_BAIR or attack == AT_NAIR) {
-	set_attack_value(attack, AG_CATEGORY, 2);
-   }
-   
-         djumps = 0
+
+	 set_attack_value(AT_FAIR, AG_CATEGORY, 2);
+     set_attack_value(AT_NAIR, AG_CATEGORY, 2);
+     set_attack_value(AT_BAIR, AG_CATEGORY, 2);
+     set_attack_value(AT_DAIR, AG_CATEGORY, 2);
+     set_attack_value(AT_UAIR, AG_CATEGORY, 2);
+     
+         
         canceltime = 20
         
            can_fast_fall = false
         
         if window == 3 {
-            can_jump = true
             can_attack = true
-            can_shield = true
-            can_strong = true    
+            can_strong = true   
+            can_ustrong = true    
             move_cooldown[AT_FSPECIAL_2] = 5
             
             if window_timer > 10 && !free {
@@ -945,6 +984,7 @@ switch attack {
     if window > 4 {
         can_wall_jump = true
     }
+    
     if window == 3 && has_hit_player{
         set_num_hitboxes(AT_USPECIAL, 4);
     }
@@ -1158,6 +1198,9 @@ switch attack {
     
     break;
 }
+
+
+
 
 
 #define spawn_base_dust(x, y, name, dir)

@@ -254,6 +254,10 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.3", "19 November, 2021");
+initHeader("FSpecial - Bugfixes");
+initSection("Prism's hurtbox now obeys a hitbox's Hit Lockout.");
+
 initPatch("1.2", "11 November, 2021");
 initHeader("USpecial - Bugfixes");
 initSection("Corrected an issue with the pratland change from v1.1.");

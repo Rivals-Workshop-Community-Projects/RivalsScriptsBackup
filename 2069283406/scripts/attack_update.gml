@@ -12,22 +12,29 @@ if attack == AT_NAIR && !hitpause{
 
 }
 
+if canceltime = 0 && (attack == AT_FAIR or attack == AT_DAIR or attack == AT_UAIR or attack == AT_BAIR or attack == AT_NAIR) {
+	set_attack_value(attack, AG_CATEGORY, 1);
+}
 
-if attack != AT_NSPECIAL && attack != AT_DSPECIAL && attack != AT_USPECIAL && attack != AT_FSPECIAL  &&	move_cooldown[AT_TAUNT_2] != 0 {
+
+if attack != AT_NSPECIAL && attack != AT_DSPECIAL && attack != AT_USPECIAL && attack != AT_FSPECIAL  &&	move_cooldown[AT_TAUNT_2] != 0  && !hitpause {
 		fall_through = 1
 		
 		if window_timer % 2 = 0 {
 		spawn_hit_fx( x   , y , dsshadow )
 		}
 		
+		if abs(hit_player_obj.x - x) > 10 && abs(hit_player_obj.y - 25 - y) > 10  {
+	     var angle = point_direction(x + 20*spr_dir, y,  hit_player_obj.x,  hit_player_obj.y - 25 );
+		 x += floor(lengthdir_x(10, angle))
+		}
 		
-		
-         
          if attack != AT_BAIR {
-		x += (hit_player_obj.x + hit_player_obj.hsp - 20*spr_dir - x) / 12
+		 x += (hit_player_obj.x + hit_player_obj.hsp - 20*spr_dir - x) / 16
          } else {
-         x += (hit_player_obj.x + hit_player_obj.hsp + 40*spr_dir - x) / 12
+         x += (hit_player_obj.x + hit_player_obj.hsp + 40*spr_dir - x) / 8
          }
+         
 		y += ((hit_player_obj.y) - y + hit_player_obj.vsp*2) / 12
 
         
@@ -36,11 +43,11 @@ if attack != AT_NSPECIAL && attack != AT_DSPECIAL && attack != AT_USPECIAL && at
 		
 
    	if hit_player_obj.x < x - 100  {
-		x -= 10
+		x -= 6
 	} 
 	
 	if hit_player_obj.x > x + 100{
-	    x += 10
+	    x += 6
 	} 	
 	
 }
@@ -463,6 +470,13 @@ if attack == AT_DAIR{
 
 if attack == AT_NSPECIAL{
 	
+	
+	 set_attack_value(AT_FAIR, AG_CATEGORY, 2);
+     set_attack_value(AT_NAIR, AG_CATEGORY, 2);
+     set_attack_value(AT_BAIR, AG_CATEGORY, 2);
+     set_attack_value(AT_DAIR, AG_CATEGORY, 2);
+     set_attack_value(AT_UAIR, AG_CATEGORY, 2);
+     
 		if window == 3 && (!inrange or firerange <= 0){
 		
 		if window_timer > 1{
@@ -560,7 +574,7 @@ if attack == AT_NSPECIAL{
 			}
 	}
 	
-	if window >= 3 && state_timer >= 25 {
+	if window >= 3 && state_timer >= 30 {
 		
 		if fireon < 3 && window == 3 {
 	 	window_timer += 2
@@ -644,6 +658,7 @@ if attack == AT_NSPECIAL{
 
 		
 		move_cooldown[AT_TAUNT_2] = 15
+		
 		firetimer += 1
 		mask_index = asset_get("empty_sprite");
 		fall_through = 1
@@ -661,9 +676,15 @@ if attack == AT_NSPECIAL{
 		}
 		spr_dir = (hit_player_obj.x > x?1:-1)
 		
-
-		hsp = (hit_player_obj.x + hit_player_obj.hsp - 30*spr_dir - x) / 20
-		vsp = ((hit_player_obj.y) - y + hit_player_obj.vsp*2) / 20
+        
+        if abs(hit_player_obj.x - x) > 10 && abs(hit_player_obj.y - 25 - y) > 10  {
+	     var angle = point_direction(x + 20*spr_dir, y,  hit_player_obj.x,  hit_player_obj.y - 25 );
+		 x += floor(lengthdir_x(10, angle))
+		}
+         y += floor(lengthdir_y(10, angle))
+         
+		hsp = (hit_player_obj.x + hit_player_obj.hsp - 30*spr_dir - x) / 24
+		vsp = ((hit_player_obj.y) - y + hit_player_obj.vsp*2) / 24
 
         
        	y += (hit_player_obj.y - y) / 20
@@ -671,11 +692,11 @@ if attack == AT_NSPECIAL{
 		
 
    	if hit_player_obj.x < x - 50  {
-		x -= 10
+		x -= 6
 	} 
 	
 	if hit_player_obj.x > x + 50{
-	    x += 10
+	    x += 6
 	} 	
 	
 		
@@ -874,6 +895,11 @@ if attack == AT_DSPECIAL {
 
 if attack == AT_FSPECIAL{
 	
+	if state_timer <= 16 {
+		countering = 1
+	} else if countering = 1{
+		countering = 0 
+	}
 
 	
 	if window == 2 {

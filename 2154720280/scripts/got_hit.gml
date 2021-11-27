@@ -1,5 +1,12 @@
 ///
 
+
+   
+   batt2 += (enemy_hitboxID.damage*2.8)/(max(1, (supply+1)/5 ))
+   battfade = 45
+
+
+
 if has_rune("F") {
  if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
      if attack == AT_TAUNT {

@@ -34,7 +34,7 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 
 
 //recovery (chaining into 2nd uspecial happens here)
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 8);//12
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_HSPEED_TYPE, 1);
@@ -42,7 +42,7 @@ set_window_value(AT_USPECIAL, 4, AG_WINDOW_VSPEED_TYPE, 1);
 
 //fall
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE, 7); //pratfall after
-set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_USPECIAL, 5, AG_WINDOW_LENGTH, 8);//9
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 16);
 

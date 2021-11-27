@@ -64,9 +64,13 @@ if shinebox != undefined && instance_exists(shinebox) {
     shinebox.vsp = vsp
 }
 
-with hit_fx_obj if sprite_index == other.player_id.shine_spr {
-    x = other.x
-    y = other.y - 35
+if state == PS_ATTACK_AIR {
+    if recent_player != undefined && recent_player.is_greninja {
+        with hit_fx_obj if sprite_index == other.recent_player.shine_spr {
+            x = other.x
+            y = other.y - 35
+        }
+    }
 }
 
 prev_vsp = vsp
@@ -76,6 +80,7 @@ if destroy {
     sound_play(sound_get("substitute_destroy"))
     instance_destroy(id)
 }
+
 
 
 #define on_hit(hbox)
@@ -94,6 +99,8 @@ hit_player_num = hbox.player;
 
 //Default Hitpause Calculation
 //You probably want this stuff because it makes the hit feel good.
+
+var can_dead = false
 if hbox.type == 1 {
     var desired_hitstop = clamp(hbox.hitpause + hbox.damage * hbox.hitpause_growth * 0.05, 0, 20);
     with hit_player_obj {
@@ -105,27 +112,18 @@ if hbox.type == 1 {
         has_hit = true;
         hit_doll = other.id;
         
-        if is_greninja {
-            if doll_id == noone {
-                //other.player_id.doll_id = noone
-                //doll_id = other.id
-                //other.player_id = id
-                //other.player = player
-            }
-        }
-        
         if !is_greninja || (is_greninja && ((state_timer > 1000 && attack == AT_DAIR) || attack == AT_UTHROW)) {
-            other.state = PS_DEAD
-            other.state_timer = 0
-            other.hit_counter++
+            can_dead = true
         }
         if hitstop < desired_hitstop {
             hitstop = desired_hitstop;
             hitstop_full = desired_hitstop;
         }
+        
+        if is_greninja other.recent_player = id
+        other.last_hit = id
     }
     
-    recent_player = hit_player_obj
     
     if hit_player_obj.is_greninja && hbox.attack == AT_FSPECIAL {
         state = PS_DEAD
@@ -161,6 +159,12 @@ kb_dir = get_hitbox_angle(hbox);
 
 hsp = lengthdir_x(orig_knock, kb_dir);
 vsp = lengthdir_y(orig_knock, kb_dir);
+
+if can_dead && orig_knock > 10 {
+    state = PS_DEAD
+    state_timer = 0
+    hit_counter++
+}
             
 
 #define filters(hbox)
@@ -178,7 +182,7 @@ with hbox {
 
 #define create_article_hitbox(attack, hbox_num, _x, _y)
 //Use this function to easily create hitboxes that ignore the article's hit detection.
-with recent_player {
+with recent_player if is_greninja {
     var hbox = create_hitbox(attack, hbox_num, floor(_x), floor(_y))
     hbox.owner = other;
 }

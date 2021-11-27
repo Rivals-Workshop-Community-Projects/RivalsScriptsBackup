@@ -12,57 +12,89 @@ set_player_damage(player, teammate_player_id.damage_percent_as_teammate);
 
 //teammate_player_id.damage_percent_as_teammate = get_player_damage(player);
 //make the leader a follower
-custom_clone = true;
+if (!is_solo_player && !is_test_player) {
+	custom_clone = true;
 
-//give the leader's aerials a short delay - prevents instant-buffered aerials from occuring before the AI attempts a recovery
-put_aerials_on_cooldown();
-
-//copy the partner's buffer
-repeat (partner_input_buffer_delay) {
-
-    buffer_ai_inputs[i] = teammate_player_id.buffer_ai_inputs[i];
-    
-    buffer_joy_dir[i] = teammate_player_id.buffer_joy_dir[i]
-    buffer_joy_pad_idle[i] = teammate_player_id.buffer_joy_pad_idle[i]
-    
-    buffer_x_position[i] = x;
-    buffer_y_position[i] = y;
-    
-    buffer_sync_state[i] = teammate_player_id.buffer_sync_state[i];
-    
-    i++;
+	//give the leader's aerials a short delay - prevents instant-buffered aerials from occuring before the AI attempts a recovery
+	put_aerials_on_cooldown();
+	
+	//copy the partner's buffer
+	repeat (partner_input_buffer_delay) {
+	
+	    buffer_ai_inputs[i] = teammate_player_id.buffer_ai_inputs[i];
+	    
+	    buffer_joy_dir[i] = teammate_player_id.buffer_joy_dir[i]
+	    buffer_joy_pad_idle[i] = teammate_player_id.buffer_joy_pad_idle[i]
+	    
+	    buffer_x_position[i] = x;
+	    buffer_y_position[i] = y;
+	    
+	    buffer_sync_state[i] = teammate_player_id.buffer_sync_state[i];
+	    
+	    i++;
+	}
 }
+//else if (is_solo_player && nspecial_buffer_into_dspecial) {
+	
+//}
 
 //reset buff aesthetic variables
 visual_hh_powerup_counter = 0;
 
 //make the follower a leader
 with (teammate_player_id) {
-    custom_clone = false;
 	
-	//clean buffered inputs
-	var i = 0;
-    repeat (partner_input_buffer_delay) {
-    
-        buffer_ai_inputs[i] = 0;
-        
-        buffer_joy_dir[i] = joy_dir; 
-        buffer_joy_pad_idle[i] = joy_pad_idle;
-        
-        buffer_x_position[i] = x;
-        buffer_y_position[i] = y;
-        
-        buffer_sync_state[i] = state;
-        
-        i++;
-    }
-    
+	if (!is_solo_player && !is_test_player) {
+	
+	    custom_clone = false;
+		
+		//clean buffered inputs
+		var i = 0;
+	    repeat (partner_input_buffer_delay) {
+	    
+	        buffer_ai_inputs[i] = 0;
+	        
+	        buffer_joy_dir[i] = joy_dir; 
+	        buffer_joy_pad_idle[i] = joy_pad_idle;
+	        
+	        buffer_x_position[i] = x;
+	        buffer_y_position[i] = y;
+	        
+	        buffer_sync_state[i] = state;
+	        
+	        i++;
+	    }
+	}
     //if using an attack:
     if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) {
     	switch (attack mod 50) {
     		//exit dspecial if currently using that
     		case AT_DSPECIAL:
     			safely_set_state(PS_IDLE);
+    			//make the new leader use DSpecial
+    			with (teammate_player_id) {
+    				var use_dspec = 0;
+    				if (state_cat == SC_GROUND_NEUTRAL || state_cat == SC_AIR_NEUTRAL) use_dspec = 1;
+    				else {
+    					switch (state) {
+    						case PS_DASH:
+    						case PS_DASH_TURN:
+    						case PS_DASH_START:
+    						case PS_DASH_STOP:
+    						case PS_WALL_JUMP:
+    						case PS_LAND:
+    						case PS_LANDING_LAG:
+    							use_dspec = 1;
+    						break;
+    					}
+    				}
+    				if (use_dspec) {
+	    				attack_end();
+						destroy_hitboxes();
+						move_cooldown[AT_DSPECIAL] = 0;
+						set_attack(AT_DSPECIAL);
+    				}
+    			}
     		break;
     		//exit uspecial and clamp momentum
     		case AT_USPECIAL:

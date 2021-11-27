@@ -542,6 +542,10 @@ with phone{
 	 * "Patch" in the function calls, and instead of a name for the patch,
 	 * put the version number and full date.
 	 */
+	 initPatch("1.X", "23, November 2021");
+	 initPatchWords("Install: Max Time: 120s > 30s
+Dspecial: Counter now works against projectiles. The actual hit of the counter has a shorter animation. No longer generates graze in install.
+Fair: Reverted air dash behaviour.");
 	 initPatch("1.1.9", "23, July 2021");
 	 initPatchWords("Fixed a bug where attempting to platform jump cancel fspecial without double jumps available would repeatedly play the cancel audio.")
 	 initPatch("1.1.8", "23, July 2021");

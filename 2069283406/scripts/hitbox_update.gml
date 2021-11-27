@@ -11,9 +11,22 @@ if attack == AT_FSPECIAL && hbox_num == 1 {
 		hsp = (7 - random_func(1,14,true))*spr_dir
 		create_hitbox(AT_FSPECIAL,1,x,y)
 	}
+   
+   
+   if hitbox_timer == 1 && player_id.countering = 3 {
+   	sound_play(asset_get("sfx_ori_energyhit_medium"))
+   	   destroyed = true 
+   	   spawn_hit_fx(x,y + 40,firepar2)
+   	   player_id.vsp = -2
+   	   player_id.hsp = -2*spr_dir
+   	   player_id.countering = 0
+   	   create_hitbox(AT_FSPECIAL,3,x,y)
+   }
+   
+   
+   
+   
 
-
-	var firepar1 = hit_fx_create( sprite_get( "firepar1" ), 20);
     if get_gameplay_time() % 5 = 0 {
 	spawn_hit_fx( x , y + 50 - random_func(13, 20, true) , firepar1 )
 	 }
@@ -50,7 +63,6 @@ if attack == AT_USPECIAL && hbox_num == 11  {
 		other.y += floor((y - other.y) / 12)
 	}
 	
-	var firepar1 = hit_fx_create( sprite_get( "firepar1" ), 20);
     if get_gameplay_time() % 2 = 0 {
 	spawn_hit_fx( x + 10 - random_func(1, 20, true), y + 60 - random_func(13, 40, true) , firepar1 )
 	}
@@ -58,6 +70,19 @@ if attack == AT_USPECIAL && hbox_num == 11  {
 }
 
 if attack == AT_FSPECIAL && hbox_num >= 2 && hbox_num < 9  {
+
+          if hbox_num == 3 && hitbox_timer < 5 {
+          	
+          		   var angle = point_direction(x, y, player_id.hit_player_obj.x, player_id.hit_player_obj.y - 20 );
+          
+                      hsp = lengthdir_x(17, angle)
+                      vsp = lengthdir_y(17, angle)
+                      
+          }
+          
+          if hbox_num == 3 && hitbox_timer > 30 {
+          	 destroyed = true
+          }
 
 if y - 60 > room_height {
 	destroyed = 1
@@ -116,7 +141,6 @@ if player_id.move_cooldown[AT_TAUNT_2] != 0{
 					hitpause = 12
 					hitpause_growth = 0.5
 					hit_priority = 5
-	var firepar1 = hit_fx_create( sprite_get( "firepar1" ), 20);
 	spawn_hit_fx( x , y + 60 - random_func(13, 40, true) , firepar1 )
 	
 	with player_id {
@@ -271,14 +295,12 @@ if kb_value = 8 {
 	create_hitbox(AT_FSPECIAL,9,floor(x),floor(y))
 	spawn_hit_fx(x,y,305)
 	}
-	var firepar1 = hit_fx_create( sprite_get( "firepar1" ), 20);
     if get_gameplay_time() % 2 = 0 {
 	spawn_hit_fx( x + 10 - random_func(1, 20, true), y + 60 - random_func(13, 40, true) , firepar1 )
 	}
 }
    
   if hsp > 3 or hsp < -3{
-	var firepar1 = hit_fx_create( sprite_get( "firepar1" ), 20);
 	
     if get_gameplay_time() % 3 = 0 {
 	spawn_hit_fx( x , y + 60 - random_func(13, 40, true) , firepar1 )

@@ -122,7 +122,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_GROUNDEDNESS, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_LOCKOUT, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
-if (get_player_color(player) != 11)
+if (get_player_color(player) != 12)
 {
     set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("ofuda"));
 }

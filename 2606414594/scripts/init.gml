@@ -1,13 +1,22 @@
 /*
  * The stats below are taken from Zetterburn, replacing Sandbert's overpowered
- * movement stats. The ATTACKS are still in their overpowered form in this
- * template, so be sure to make the ones for your character weaker.
+ * movement stats. The commented-out numbers are the range of values the RoA
+ * base cast has - e.g. it lists the slowest and fastest run speeds.
+ * 
+ * Replace Zetter's stats with whatever strengths/weaknesses your char should
+ * have, e.g. change dash_speed to 8 or so if you want a fast character.
+ *
+ * Explanation of each stat:
+ * https://rivalsofaether.com/player-variables/
  * 
  * Base Cast Frame Data:
  * docs.google.com/spreadsheets/d/19UtK7xG2c-ehxdlhCFKMpM4_IHSG-EXFgXLJaunE79I
+ * 
+ * Base Cast Stats:
+ * docs.google.com/spreadsheets/d/14JIjL_5t81JHqnJmU6BSsRosTe2JO8sFGUysM_9tDoU
  */
 
-// STAT NAME		ZETTER VALUE   BASECAST RANGE   NOTES
+// STAT NAME		VALUE       BASECAST RANGE   NOTES
 
 // Physical size
 char_height         = 52;       //                  not zetterburn's. this is just cosmetic anyway

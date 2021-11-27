@@ -44,6 +44,8 @@ activatejump = false
 
 istouchingaplayer = instance_nearest(x,y,asset_get("oPlayer"));
 
+robot_dust_spawn_var = 0;
+
 blastzone_r = room_width - get_stage_data(SD_X_POS) + get_stage_data(SD_SIDE_BLASTZONE);
 blastzone_l = get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE);
 blastzone_t = get_stage_data(SD_Y_POS) - get_stage_data(SD_TOP_BLASTZONE);

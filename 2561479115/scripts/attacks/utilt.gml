@@ -16,7 +16,7 @@ set_window_value(AT_UTILT, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_UTILT, 2, AG_WINDOW_JUMP_TO, 4);
 
 set_window_value(AT_UTILT, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 10);//8
 set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_UTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -29,7 +29,8 @@ set_window_value(AT_UTILT, 4, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UTILT, 4, AG_WINDOW_SFX, asset_get("sfx_clairen_hit_strong"));
 
 set_window_value(AT_UTILT, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UTILT, 5, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_UTILT, 5, AG_WINDOW_LENGTH, 18);//20
+set_window_value(AT_UTILT, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_UTILT, 5, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UTILT, 5, AG_WINDOW_ANIM_FRAME_START, 9);
 
@@ -69,7 +70,8 @@ set_hitbox_value(atk, hboxnum, HG_ANGLE, 65);
 set_hitbox_value(atk, hboxnum, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(atk, hboxnum, HG_KNOCKBACK_SCALING, 0.9);
 set_hitbox_value(atk, hboxnum, HG_BASE_HITPAUSE, 9);
-set_hitbox_value(atk, hboxnum, HG_HITPAUSE_SCALING, .65);
+set_hitbox_value(atk, hboxnum, HG_HIT_LOCKOUT, 6);
+set_hitbox_value(atk, hboxnum, HG_HITPAUSE_SCALING, 1);//.65
 set_hitbox_value(atk, hboxnum, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(atk, hboxnum, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(atk, hboxnum, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
@@ -82,6 +84,7 @@ set_hitbox_value(atk, hboxnum, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(atk, hboxnum, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(atk, hboxnum, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(atk, hboxnum, HG_PROJECTILE_HIT_TAG, 2);
+set_hitbox_value(atk, hboxnum, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 /*
 set_hitbox_value(AT_UTILT, 2, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_TYPE, 1);

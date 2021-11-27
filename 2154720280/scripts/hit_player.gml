@@ -1,10 +1,6 @@
 ///
 
-if my_hitboxID.type == 1 { 
-   
-   batt2 += my_hitboxID.damage*2.5
-   battfade = 45
-}
+
 
 if has_rune("N") && meleehit == 1  {
          if random_func(10, 20, true) <= 4 {

@@ -1,8 +1,8 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
  
-patch_ver = "1.15";
-patch_day = "2";
+patch_ver = "1.16";
+patch_day = "23";
 patch_month = "NOV";
  
 var num_alts = 21;
@@ -37,8 +37,8 @@ alt_name[23]  = "Mean Bean";
 alt_name[24]  = "The J in Jevil"; 
 alt_name[25]  = "30 Minutes or Less"; 
 alt_name[26]  = "Back in Business"; 
-alt_name[27]  = "Show me your Moves!"; 
-alt_name[28]  = "Cyber Shark"; 
+alt_name[27]  = "Cyber Shark";
+alt_name[28]  = "Show me your Moves!"; 
 alt_name[29]  = "Lancer Gaming"; 
  
 //Patch
@@ -83,7 +83,7 @@ if (get_player_color(player)==19){
     }
     
 //Special Icon
-if (get_player_color(player)== 28 || get_player_color(player)== 27 || get_player_color(player)== 29){
+if (get_player_color(player)== 28 || get_player_color(player)== 29){
         draw_sprite(sprite_get("special_icon"),2,x+10,y+56);
     }
     

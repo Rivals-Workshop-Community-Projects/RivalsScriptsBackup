@@ -38,7 +38,7 @@ walk_anim_speed = .125;
 dash_anim_speed = .25;
 pratfall_anim_speed = .25;
 
-walk_speed = 3.5;
+walk_speed = 1;
 walk_accel = 0.5;
 walk_turn_time = 6;
 initial_dash_time = 8;

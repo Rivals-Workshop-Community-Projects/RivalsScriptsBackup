@@ -141,8 +141,8 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[20,1] = "Ghost"
     ce[20,2] = "An original color. A white spectre."  
     ce[21,0] = make_color_rgb(255, 13, 241)
-    ce[21,1] = "Derby Champion"
-    ce[21,2] = "Alt by and for KingDoge, for Dev Derby 2021."      
+    ce[21,1] = "Canada??"
+    ce[21,2] = "Thought it would be kinda funny. Mal is canadian."      
 
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.

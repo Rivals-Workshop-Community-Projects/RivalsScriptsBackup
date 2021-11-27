@@ -28,7 +28,7 @@ set_window_value(AT_DSPECIAL_AIR, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_DSPECIAL_AIR, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL_AIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_LENGTH, 20); //Landing lag
+set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_LENGTH, 26); //Landing lag
 set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DSPECIAL_AIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);

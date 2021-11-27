@@ -27,6 +27,8 @@ phone_offscr_leeway = 16; // approximate width/height of obj
 
 
 
+hit_lockout = 0;
+
 // supersonic
 hbox_group = array_create(4,array_create(50,array_create(10,0))); //ew
  

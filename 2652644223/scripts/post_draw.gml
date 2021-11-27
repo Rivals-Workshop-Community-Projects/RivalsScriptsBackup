@@ -23,7 +23,7 @@ if(variable_instance_exists(id,"hud_bullet"))
         draw_debug_text(x-4, y + 8, "x" + string(bullets));
     }
     //Reload Bar
-    if(attack == AT_TAUNT_2 && hud_bullet != 0 && !hud_fail && hud_enhanced == 0 && state == PS_ATTACK_GROUND && state_timer > 8 && window <= 2)
+    if(attack == AT_TAUNT_2 && tac_reload && !hud_fail && hud_enhanced == 0 && state == PS_ATTACK_GROUND && state_timer > 8 && window <= 2)
     {
         draw_sprite(sprite_get("reloadbar"), 0, x-30, y+4);
         draw_sprite(sprite_get("reloadtick"), 0, x-30+floor((state_timer-8)*1.5), y+4);

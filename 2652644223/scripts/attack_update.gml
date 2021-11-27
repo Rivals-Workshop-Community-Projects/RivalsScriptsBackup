@@ -56,7 +56,10 @@ if(state_timer == 1)
 }
 
 if(state_timer <= 3 && !free && bullets != 6 && attack_pressed && special_pressed && attack != AT_TAUNT_2)
+{
+    tac_reload = true;
     attack = AT_TAUNT_2;
+}
 
 if (attack == AT_NSPECIAL){
     if(free)
@@ -68,6 +71,7 @@ if (attack == AT_NSPECIAL){
 
         if(window_timer == 8 && !free && special_down && bullets != 6 || !free && bullets == 0)
         {
+            tac_reload = true;
             white_flash_timer = 10;
             set_attack(AT_TAUNT_2);
             state_timer = 0;
@@ -206,6 +210,7 @@ if(attack == AT_JAB)
     if(window == 7 && bullets <= 0)
     {
         attack_end();
+        tac_reload = false;
         set_attack(AT_TAUNT_2);
     }
     if(window == 8 && window_timer <= 1)
@@ -319,6 +324,8 @@ if(attack == AT_DTILT)
     {
         if(bullets <= 0)
         {
+            if(state_timer == 1)
+                reload_check();
             set_num_hitboxes(AT_DTILT, 3);
             if(window_timer == 9)
             {
@@ -405,7 +412,7 @@ if(attack == AT_TAUNT_2)
         hud_fail = false;
         hud_enhanced = 0;
     }
-    if(window == 2 && hud_bullet != 0 && hud_enhanced == 0)
+    if(window == 2 && tac_reload && hud_enhanced == 0)
     {
         if((special_pressed || attack_pressed) && !hud_fail)
         {
@@ -475,7 +482,7 @@ return newdust;
 if(auto_reload)
 {
     if(!free)
-    set_attack(AT_TAUNT_2);
+    { tac_reload = false; set_attack(AT_TAUNT_2);}
 }
 else
 {

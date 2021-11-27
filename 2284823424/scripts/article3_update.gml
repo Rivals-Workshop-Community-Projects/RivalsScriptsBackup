@@ -4,7 +4,7 @@ if (cycle_timer >= cycle_timer_max){
 	if (cycle == cycle_max){
 		//explode!
 		var spawn_y = y - 56;
-		var hbox = create_hitbox(AT_USPECIAL, 3, x, spawn_y);
+		var hbox = create_hitbox(AT_USPECIAL, 3, round(x), round(spawn_y));
 		hbox.can_hit_self = true;
 		hbox.blast_blocks = (steve_water_last_frame != get_gameplay_time());
 		with oPlayer if !clone && muno_char_id == other.player_id.muno_char_id && soft_armor{

@@ -62,6 +62,12 @@ switch (state)
             }
         }
 //=============================================================================
+        else if (attack == UNOWN_ATK.N)
+        && (window == 4) && (window_timer == 0)
+        {
+            image_index = 5;
+        }
+//=============================================================================
         else if (attack == AT_EXTRA_1) //parry
         {
             init_shader();
@@ -75,6 +81,8 @@ switch (state)
     } break;
     case PS_WALL_JUMP:
     case PS_WALL_TECH:
+    case PS_JUMPSQUAT:
+    case PS_FIRST_JUMP:
     case PS_DOUBLE_JUMP:
     {
         unown_looking_dir = spr_dir;
@@ -92,9 +100,9 @@ switch (state)
     case PS_LAND:
     case PS_WAVELAND:
     case PS_PRATFALL:
+    case PS_PRATLAND:
     {
         sprite_index = cur_form_sprites.prat;
-        //image_index = ?
     } break;
     case PS_AIR_DODGE:
     {
@@ -103,7 +111,8 @@ switch (state)
         if (window == 1 && window_timer == 0 && air_dodge_dir != 0 && !hitpause)
         {
             sound_play(unown_airdodge_sfx);
-            spawn_hit_fx( x, y - unown_eye_center_offset, unown_airdodge_vfx );
+            var hfx = spawn_hit_fx( x, y - unown_eye_center_offset, unown_airdodge_vfx );
+            hfx.image_index = 2;
         }
     } break;
     default: 
@@ -127,6 +136,23 @@ switch (state)
             image_index = 0;
         }
     } break;
+}
+
+//unown Y's water spout
+if (unown_y_water.timer > 0) && (state != PS_ATTACK_AIR || !hitpause)
+{
+    unown_y_water.timer--;
+
+    if !(state == PS_ATTACK_AIR) && (unown_y_water.timer > unown_y_water_dying_time)
+    { unown_y_water.timer = unown_y_water_dying_time; }
+    
+    var animframe = (unown_y_water.timer < unown_y_water_dying_time) 
+                  ?  (unown_y_water_dying_time - unown_y_water.timer) 
+                     * (unown_y_water_dying_frames * 1.0 / unown_y_water_dying_time) + unown_y_water_active_frames
+                  :  (unown_y_water_active_time - (unown_y_water.timer - unown_y_water_dying_time))
+                     * (unown_y_water_active_frames * 1.0 / unown_y_water_active_time)
+    
+    unown_y_water.index = floor(animframe);
 }
 
 

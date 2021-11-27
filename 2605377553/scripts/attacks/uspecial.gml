@@ -14,8 +14,9 @@ set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED, 0);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED, -1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, 0);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_bird_sidespecial"));
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX_FRAME, 3);
 
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_TYPE, 2);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 20);
@@ -25,9 +26,6 @@ set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED, 3);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -9);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_bird_sidespecial"));
-set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX_FRAME, 5);
 
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 10);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 8);

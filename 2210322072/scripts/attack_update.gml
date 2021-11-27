@@ -24,11 +24,11 @@ if attack == AT_JAB {
 if attack == AT_NAIR {
 	
 	if window == 2 {
-		set_attack_value(AT_NAIR, AG_LANDING_LAG, 5);
+		set_attack_value(AT_NAIR, AG_LANDING_LAG, 4);
 	}
 	if window == 1 && window_timer <= 1 {
 	if left_strong_pressed or right_strong_pressed {
-		set_attack_value(AT_FAIR, AG_LANDING_LAG, 14);
+		set_attack_value(AT_FAIR, AG_LANDING_LAG, 10);
 		set_attack (AT_FAIR)
 		window = 5
 		window_timer = 0
@@ -70,7 +70,7 @@ if attack == AT_FAIR {
 	
 	if window == 1 && window_timer <= 1 {
 	if left_strong_pressed or right_strong_pressed {
-		set_attack_value(AT_FAIR, AG_LANDING_LAG, 14);
+		set_attack_value(AT_FAIR, AG_LANDING_LAG, 10);
 		window = 5
 		window_timer = 0
 		sound_play(asset_get("sfx_spin"))
@@ -127,7 +127,7 @@ if attack == AT_UAIR {
 	
 	if window == 1 && window_timer <= 1 {
 	if up_strong_pressed{
-		set_attack_value(AT_UAIR, AG_LANDING_LAG, 12);
+		set_attack_value(AT_UAIR, AG_LANDING_LAG, 10);
 		window = 5
 		window_timer = 0
 		sound_play(asset_get("sfx_swipe_heavy2"))
@@ -159,7 +159,7 @@ if attack == AT_DTILT {
 if attack == AT_DAIR {
 	
 	if window == 2 {
-		set_attack_value(AT_DAIR, AG_LANDING_LAG, 8);
+		set_attack_value(AT_DAIR, AG_LANDING_LAG, 6);
 	}
 			if window == 4 {
 		set_state (PS_IDLE_AIR)
@@ -256,6 +256,9 @@ if attack == AT_DSTRONG {
 
 if attack == AT_FSTRONG {
 	if window_timer == 1 && window == 1 && !hitpause {
+		if nshit < 0 {
+			nshit = 0
+		}
 		sound_play(asset_get("sfx_spin"))
 		sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,.9 + random_func(1,30,true)/100)
 	}
@@ -267,7 +270,7 @@ if attack == AT_FSTRONG {
 
 
 if attack == AT_FSPECIAL {
-	
+
 	if window >= 3 {
 	can_wall_jump = true
 	}
@@ -286,6 +289,9 @@ if attack == AT_FSPECIAL {
 		}
 		if window_timer % 6 == 0 {
 			spawn_hit_fx(x + window_timer*6*spr_dir, y , ai)
+		}
+		if window_timer == 20 {
+			sound_play(asset_get("sfx_bird_sidespecial"),false,noone,1,.8)
 		}
 	}
 	if window == 3 && window_timer == 1 && !hitpause && free {
@@ -349,14 +355,17 @@ if attack == AT_NSPECIAL {
 	
 	if nshit > 3 && window == 1 && window_timer == 11 {
 		
-		if admb = 0 {
+		if admb = 0 && admw = 4 {
 			
 		set_attack (AT_FTILT)
 		window = 2
 		window_timer = 0
 		create_hitbox(AT_NSPECIAL , 3 , x + (40*spr_dir) , y - 40 ); 
+		sound_play(asset_get("sfx_spin"))
+		sound_play(sound_get("slicen"),false,noone,1.2,1.4)
+		} 
 		
-		} else {
+		if admb = 3 && admw = 0 {
 			
 		set_attack (AT_FSTRONG)	
 		window = 1
@@ -365,6 +374,16 @@ if attack == AT_NSPECIAL {
 		
 		nshit = -10
 		
+			if admb = 3 && admw = 4 {
+						set_attack (AT_FTILT)
+	                 	window = 2
+	                 	window_timer = 0
+	                 	
+				create_hitbox(AT_NSPECIAL , 3 , x + (20*spr_dir) , y - 40 ); 
+				sound_play(sound_get("slicen"),false,noone,1.2,1.4)
+				
+				nshit = -20
+			}
 
 		sound_play(asset_get("sfx_spin"))
 		sound_play(asset_get("sfx_ice_on_player"))
@@ -373,23 +392,62 @@ if attack == AT_NSPECIAL {
 	}
 }
 
+if nshit == -20 && (attack == AT_FSTRONG or attack == AT_FTILT) {
+	hsp /= 1.2
+	vsp = 0
+	
+	if attack == AT_FTILT && window == 3 {
+		set_attack (AT_FSTRONG)	
+		window = 1
+		window_timer = 5
+	}
+	
+	if attack == AT_FSTRONG {
+	    	
+		if window = 2 && window_timer == 1 {
+			sound_play(sound_get("slicen"),false,noone,1.2,1.4)
+			create_hitbox(AT_NSPECIAL , 2 , x + (40*spr_dir) , y - 40 ); 
+		}	
+		
+		if window = 4 && window_timer > 5 {
+			nshit = 0
+		}
+		
+	 } 
+	    
+}
 
-if nshit == -10 && attack == AT_FSTRONG {
+
+if nshit == -10 && (attack == AT_FSTRONG or attack == AT_FTILT) {
 	     
-	    if window == 1 && window_timer == 1 {
-	    	nshit = 0
-	    }
-	     
+	     hsp /= 1.2
+	     if vsp > 0 vsp /= 1.4
+
+	    
+	    if attack == AT_FSTRONG {
+	    	
 		if window = 2 && window_timer == 1 {
 			create_hitbox(AT_NSPECIAL , 2 , x + (40*spr_dir) , y - 40 ); 
-			nshit = 0
+			sound_play(sound_get("slicen"),false,noone,1.2,1.4)
 		}	
+		
+		if window = 4 && window_timer > 5  {
+			nshit = 0
+		}
+		
+	    } 
 	
 }
 	
 
 if attack == AT_USPECIAL {
+	
+
+	
+	
 	prat_land_time = 15;
+	
+	
 	if window >= 3 {
 	can_wall_jump = true
 	}
@@ -400,12 +458,15 @@ if attack == AT_USPECIAL {
 		can_fast_fall = false
 	}
 	
-		if window == 1 {
+	  if window == 1 {
 		if window_timer % 5 == 0 {
 			spawn_hit_fx(x  , y - window_timer*8 , ai)
 		}
 		if window_timer % 6 == 0 {
 			spawn_hit_fx(x , y - window_timer*5 , ai)
+		}
+		if window_timer == 20 {
+			sound_play(asset_get("sfx_bird_sidespecial"),false,noone,1,.8)
 		}
 	  }
 	
@@ -427,7 +488,7 @@ if attack == AT_USPECIAL {
 	
 	if window == 1 && window_timer > 23 && !hitpause {
 		spawn_hit_fx(x , y - 36, 302)
-		spawn_hit_fx(x , y - 36, 304)
+		//spawn_hit_fx(x , y - 36, 304)
 		spawn_hit_fx(x , y - 30 , ai)
 		spawn_hit_fx(x , y - 90 , ai)
 		spawn_hit_fx(x , y - 150 , ai)
@@ -444,9 +505,24 @@ if attack == AT_USPECIAL {
 if attack == AT_DSPECIAL {
 	prat_land_time = 15;
 
-	
+		if window_timer == 2 && window = 1{
+           if admw == 4 && admb != 3 {
+           	savemode = 0
+           } 
+           
+           if admb = 3 && admw != 4 {
+           	savemode = 1
+           }
+           
+           if admb = 3 && admw = 4 {
+           	savemode = 2
+           }
+		}
+		
 	if window == 1 && soultimer < 0 {
 		
+
+
 		outline_color = [0, 0, 0]
                      	init_shader();
                          spawn_hit_fx (x,y -30 , 302 )
@@ -474,17 +550,15 @@ if attack == AT_DSPECIAL {
 	}
 	
 	if window == 3 && window_timer == 1 && !hitpause {
-
-if admw == 4 {
+		
 	admb = 3
-	admw = 0
-} else if admb = 3 {
-	admb = 0
-	admw = 4
-}
+    admw = 4
+
 
 
 if  get_player_color(player) == 5 {
+		     sound_stop(sound_get("CARAMELFN"))
+             sound_stop(sound_get("CARAMEL"))
 sound_play(sound_get("CARAMEL"))
 }		
 		souldmg = 0
@@ -522,13 +596,16 @@ sound_play(sound_get("CARAMEL"))
 	}
 	
 	if window == 4 && window_timer == 1 && !hitpause{
-		if admw == 4 {
-        	admb = 3
-        	admw = 0
-        } else if admb = 3 {
-        	admb = 0
-        	admw = 4
-        }
+            if savemode = 0 {
+            	admb = 3
+            	admw = 0
+            } else if savemode = 1 {
+            	admw = 4
+            	admb = 0
+            }  else if savemode = 2 {
+            	admb = 3
+            	admw = 4
+            } 
 
 	}
 	if window == 4 && window_timer == 44 && free {

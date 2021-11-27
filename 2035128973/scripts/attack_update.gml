@@ -1,5 +1,9 @@
 if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2 || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == 49) trigger_b_reverse();
-
+//has_rune("H")
+//1- object mod
+//2- ranged mod
+//3 - hit mod
+//4 - ability boost
 switch (attack)
 {
     case AT_TAUNT:
@@ -19,6 +23,21 @@ switch (attack)
             vsp = 0;
         }
         if (window == 2 && window_timer == get_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH) && (attack_invince || taunt_down)) window_timer = 0;
+        break;
+
+    case AT_EXTRA_1:
+        can_jump = true;
+        if (state_timer == 1) {spawn_base_dust(x, y-floor(char_height/2), "anime", spr_dir); sound_play(sound_get("riolu"),0,noone,3);}
+        if (taunt_down && !jump_pressed)
+		{
+			if (window_timer == get_window_value(AT_EXTRA_1, 1, AG_WINDOW_LENGTH)) window_timer = 0;
+			suppress_stage_music(0.2, 0.5);
+		}
+        else
+		{
+			sound_stop(sound_get("riolu"));
+			window = 2;
+		}
         break;
 
 	case AT_JAB:
@@ -56,7 +75,7 @@ switch (attack)
 				if (free && state_timer > 40)
 				{
 					can_shield = true;
-					can_jump = true;
+					if (jump_counter == 0) set_state(PS_IDLE_AIR);
 					if (is_special_pressed(DIR_UP)) set_attack(AT_USPECIAL);
 				}
 				if (afterImageTimer == 0) afterImageTimer = 16;
@@ -128,9 +147,9 @@ switch (attack)
 				else if (window_timer == get_window_value(AT_USPECIAL_2, 1, AG_WINDOW_LENGTH)/2)
 				{
 					if (!(special_down||special_pressed) || hasBone /*|| uspecBan*/)
-					{
 						set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH, 6);
-					}
+					else if (has_rune("B"))
+						set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH, 2);
 				}
 				if (window_timer < get_window_value(AT_USPECIAL_2, 1, AG_WINDOW_LENGTH)/2)
 					break;
@@ -316,7 +335,7 @@ switch (attack)
 					asSFX[0] = sound_play(sound_get("ascStart"));
 					asSFX[2] = sound_play(sound_get("vc_lucario_003"));
 				}
-				else if (window_timer == get_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH) && asCharge == asChargeMax) InitAuraSphere();
+				else if (window_timer == get_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH) && asCharge == asChargeMax && !has_rune("L")) InitAuraSphere();
 				if (!asReverse && (spr_dir==1?left_down:right_down) && window_timer < 5)
 				{
 					hsp *= -1;
@@ -327,10 +346,10 @@ switch (attack)
 
 			case 2:
 				if (state_timer == 120 && !hitpause) asSFX[1] = sound_play(sound_get("ascLoop"), 1);
-				if (asCharge < asChargeMax)
+				if (asCharge < asChargeMax || has_rune("L"))
 				{
-					asCharge++;
-					if (asCharge == asChargeMax)
+					asCharge += has_rune("D")+1;
+					if (asCharge == asChargeMax && !has_rune("L"))
 					{
 						var owo = spawn_hit_fx(x+2*spr_dir,y-40,shinestar_effect); owo.depth = -10;
 						sound_play(asset_get("mfx_star"));
@@ -440,9 +459,44 @@ switch (attack)
 	set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, asCharge/asChargeMax>0.5?aurabig_effect:aura_effect);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, asCharge/asChargeMax>0.5?aurabig_effect:aura_effect);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_ori_energyhit_"+(asCharge/asChargeMax>0.5?"heavy":"medium")));
-	set_window_value(AT_NSPECIAL, 4, AG_WINDOW_HSPEED, lerp(-2, -6, asCharge/asChargeMax));
+	set_window_value(AT_NSPECIAL, 4, AG_WINDOW_HSPEED, lerp(-2, -6, min(asCharge/asChargeMax,1)));
 	window = 3;
 	window_timer = 0;
 	sound_stop(asSFX[2]);
 	clear_button_buffer(PC_SPECIAL_PRESSED);
 }
+
+#define spawn_base_dust
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+{
+    var dlen; //dust_length value
+    var dfx; //dust_fx value
+    var dfg; //fg_sprite value
+    var dfa = 0; //draw_angle value
+    var dust_color = 0;
+    var x = argument[0], y = argument[1], name = argument[2];
+    var dir = argument_count > 3 ? argument[3] : 0;
+    
+    switch (name) {
+        default: 
+        case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+        case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+        case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+        case "doublejump": 
+        case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+        case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+        case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+        case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+        case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+        case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+        case "anime": dlen = 1; dfx = 22; dfg = 2656; dust_color = 1; break;
+    }
+    var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+    newdust.dust_fx = dfx; //set the fx id
+    if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+    newdust.dust_color = dust_color; //set the dust color
+    if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+    newdust.draw_angle = dfa;
+    return newdust;
+} // Supersonic

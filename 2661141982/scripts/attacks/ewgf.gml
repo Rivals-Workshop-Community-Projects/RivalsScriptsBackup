@@ -9,7 +9,7 @@ set_window_value(AT_EXTRA_1, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_SFX_FRAME, 6);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_SFX, asset_get("sfx_swish_medium"));
-set_window_value(AT_EXTRA_1, 1, AG_WINDOW_HSPEED, 1);
+set_window_value(AT_EXTRA_1, 1, AG_WINDOW_HSPEED, 0);
 
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_EXTRA_1, 2, AG_WINDOW_ANIM_FRAMES, 2);

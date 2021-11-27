@@ -31,3 +31,7 @@ if (attack == AT_DSPECIAL){
     	}
     }
 }
+
+if (state == PS_PARRY && box){
+    sprite_index = sprite_get("parry_box");
+}

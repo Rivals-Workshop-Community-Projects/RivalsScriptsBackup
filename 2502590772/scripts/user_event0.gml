@@ -1,7 +1,7 @@
 //user_event1.gml - plusle and minun constants.
 //called in init.gml.
 
-if (is_master_player) {
+if (is_master_player || is_solo_player) {
 	
     hh_knockback_multiplier = 1;		//multiplicative
     hh_damage_multiplier = 1.6; 		//multiplicative
@@ -15,7 +15,7 @@ if (is_master_player) {
     hh_maximum_charge_expiry_timer = 30;
     
     
-	exit;
+	if (is_master_player) exit;
 }
 
 partner_input_buffer_delay = 7; //the input delay between the leader and partner

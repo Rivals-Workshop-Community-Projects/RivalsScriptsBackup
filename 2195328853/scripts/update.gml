@@ -1,4 +1,5 @@
-//update
+muno_event_type = 1;
+user_event(14);
 
 if(!free || free && (state == PS_WALL_JUMP || state == PS_WALL_TECH || state == PS_HITSTUN)){
    upb = false;uairboost = 1;
@@ -24,6 +25,11 @@ if(nspecialcharge < 60 && fspecialcharge < 60){
     else if (get_player_color( player ) == 16){
         if (outline_color[0] != 143 || outline_color[1] != 80 || outline_color[2] != 1){
             outline_color=[143, 80, 1]
+            init_shader();
+        }
+    }else if (get_player_color( player ) == 26){
+        if (outline_color[0] != 29 || outline_color[1] != 167 || outline_color[2] != 231){
+            outline_color=[29, 167, 231]
             init_shader();
         }
     }else{
@@ -137,6 +143,25 @@ if (attack != AT_NSPECIAL && state != PS_HITSTUN && special_pressed && joy_pad_i
 				}instance_destroy(blob_ball3);
 			}
 			nspecialcharge = 0;
+}
+
+//Crawl
+if(state == PS_CROUCH){
+    can_move = true;
+    if (right_down){
+        hsp = 0.5;//spr_dir = 1;
+        crawling = true;          
+    }else if (left_down){
+        hsp = -0.5;
+        crawling = true;  
+    }
+    if (joy_pad_idle){
+        hsp = 0;
+        crawling = false;
+    }
+   
+}else{
+    crawling = false;
 }
 
 if (get_match_setting(SET_RUNES)) {

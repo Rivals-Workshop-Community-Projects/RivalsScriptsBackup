@@ -19,7 +19,7 @@ set_window_value(AT_USPECIAL_GROUND, 1, AG_WINDOW_ANIM_FRAMES, 8);
 //set_window_value(AT_USPECIAL_GROUND, 1, AG_WINDOW_SFX, asset_get("sfx_absa_cloud_placepop"));
 
 //endlag
-set_window_value(AT_USPECIAL_GROUND, 2, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_USPECIAL_GROUND, 2, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_USPECIAL_GROUND, 2, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_USPECIAL_GROUND, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USPECIAL_GROUND, 2, AG_WINDOW_HAS_WHIFFLAG, 1); //can_hit equals true when the teammate's uspecial hits

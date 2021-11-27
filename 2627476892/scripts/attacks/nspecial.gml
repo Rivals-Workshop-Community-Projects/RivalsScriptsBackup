@@ -7,11 +7,11 @@ set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"));
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
 
 // startup
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 18);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, sound_get("snd_spearrise"));
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 17);
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 14);
 
 // attack
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 12);

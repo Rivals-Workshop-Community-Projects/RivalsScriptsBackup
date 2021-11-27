@@ -5,6 +5,7 @@
     you can ask me if you want to use it.
     discord: Supersonic#9999
 */
+shader_end();
 var charuuid = string(sprite_get("idle"));
 if ("soupcss_char" not in self || soupcss_char != charuuid)
     css_init(charuuid)
@@ -56,6 +57,8 @@ if css_hovered {
     if slide_timer > 80 slide_timer--;
 }
 
+//draw_debug_text(floor(x)+12, floor(y)-14, `[Beta, see desc for details]`);
+
 //draw_rectangle_color(x+10,y+10,x+210,y+151,c_white,c_white,c_white,c_white,false);
 
 prev_alt = current_alt; 
@@ -78,7 +81,7 @@ x = floor(x);
 y = floor(y); 
 //set alt data 
 alts = []; 
-default_shade_slot = 2; //shade slot used for if a color is not defined in an alt. 
+default_shade_slot = 3; //shade slot used for if a color is not defined in an alt. 
 //add each alt here! in order from top to bottom.
 add_alt("Rokesha"); 
 add_alt("Hime");
@@ -98,6 +101,10 @@ add_alt("Abyss");
 add_alt("Eltnum");
 add_alt("Mori Calliope");
 add_alt("Fio");
+add_alt("BLM");
+add_alt("Blueberry");
+add_alt("Rat God");
+add_alt("Cotton Candy..?");
 
 
 css_timer = 0; 

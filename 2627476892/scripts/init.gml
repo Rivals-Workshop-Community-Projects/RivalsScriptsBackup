@@ -168,6 +168,7 @@ bubble_y = 8;
 //Lancer's variables (Signed Lancer)
 bike_charge = 1;
 chargepart = 0;
+bike_charging_time = 0;
 bike_level = 0;
 nspecial_projectile_var = 0;
 nspecial_grab_failed = 0;
@@ -197,7 +198,7 @@ if(alt == 6){ //susie
 	lancer_laugh = sound_get("snd_momlaugh");
 }if(alt == 17){ //sans
 	lancer_laugh = sound_get("snd_sanslaugh");
-}if(alt == 27){ //falcon
+}if(alt == 28){ //falcon
 	lancer_laugh = sound_get("snd_ouwoouh");
 }if(alt == 26){ //the baby
 	lancer_laugh = sound_get("snd_babymario");

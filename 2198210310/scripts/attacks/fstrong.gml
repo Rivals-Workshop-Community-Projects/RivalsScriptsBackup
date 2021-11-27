@@ -19,7 +19,7 @@ set_window_value(AT_FSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_ell_strong_attack_explosion"));
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX_FRAME, 8);
 
-set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 25);
+set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED, -8);

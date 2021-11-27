@@ -64,13 +64,24 @@ if (funny_broken_mode || has_rune("J")) && ssj{
 
 
 
-if (state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD) && state_timer == 0 || (state == PS_TECH_BACKWARD || state == PS_TECH_FORWARD) && state_timer == 1{
+if (state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD) && state_timer == 3 || (state == PS_TECH_BACKWARD || state == PS_TECH_FORWARD) && state_timer == 4{
 	var h = spawn_hit_fx(x, y, ssjs[ssj].hairstyle == 1 ? vfx_afterimage_ssj1 : (ssjs[ssj].hairstyle == 2 ? vfx_afterimage_ssj3 : vfx_afterimage));
 	h.spr_dir = old_spr_dir;
+	h.goku_id = self;
+	h.hsp = sign(hsp) * 5;
 }
 
 else{
 	old_spr_dir = spr_dir;
+}
+
+
+
+with asset_get("hit_fx_obj") if "goku_id" in self && goku_id == other{
+	x += hsp;
+	var fric = 0.3;
+	if abs(hsp) > fric hsp -= fric * sign(hsp);
+	else hsp = 0;
 }
 
 

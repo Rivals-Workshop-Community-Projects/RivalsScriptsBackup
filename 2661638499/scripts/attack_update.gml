@@ -1,6 +1,7 @@
 
 //reset flag: set to TRUE explicitly in the attack
 lev_bypass = false;
+can_fast_fall = true;
 
 // per-attack logic
 switch(attack)
@@ -8,7 +9,8 @@ switch(attack)
 	//===========================
 	case 2: //B
 	{
-        can_wall_jump = (window == 3 || window == 6)
+        can_wall_jump = (window == 3 || window == 6);
+		can_fast_fall =  !(window == 4 || window == 5);
 
 		lev_bypass = window < 6;
 		if (!free && window < 4)
@@ -40,9 +42,11 @@ switch(attack)
         }
         else if (window == 2 || window == 3)
 		{
+			unown_c_used = true;
             can_move = false;
             lev_bypass = true;
             move_cooldown[attack] = 60;
+		    can_fast_fall = false;
 		}
 	} break;
 	//===========================
@@ -58,6 +62,7 @@ switch(attack)
             can_move = false;
             if (hsp < unown_d_speed) hsp += unown_d_accel;
             lev_bypass = true;
+		    can_fast_fall = false;
         }
 	} break;
 	//===========================
@@ -69,16 +74,39 @@ switch(attack)
 		}
 	} break;
 	//===========================
+	case 7: //G
+	{
+		if (window <= 2)
+		{
+			if (vsp > 0) vsp *= 0.6;
+		}
+        if (window == 3)
+        {
+        	if (y < -40)
+        	{
+        		vsp = 0;
+        	   var sd_hitbox = create_hitbox(attack, 2, x, y - 32);
+        	   sd_hitbox.can_hit_self = true;
+        	}
+        	else if (special_down)
+        	{
+        		window_timer = 0;
+        	}
+        }
+	} break;
+	//===========================
 	case 8: //H
 	{
         if (window == 2 && window_timer == 1 && attack_down && !hitpause)
 		{
-			hsp -= 4;
+			hsp = max(hsp - 4, -7);
 		}
 	} break;
 	//===========================
 	case 9: //I
 	{
+		can_fast_fall = !(window == 2 || window == 3);
+		
 		if (window == 1 && window_timer == 1)
 		{
 			unown_i_angle = 90;
@@ -131,6 +159,7 @@ switch(attack)
 		{
 			vsp *= 0.1; hsp *= 0.1;
 			lev_bypass = true;
+			can_fast_fall = false;
 			
 			if (instance_exists(unown_j_victim))
 			{
@@ -152,9 +181,10 @@ switch(attack)
 	//===========================
 	case 12: //L
 	{
-        can_wall_jump = (window == 3 || window == 6)
+        can_wall_jump = (window == 3 || window == 7);
 
 		lev_bypass = !(window == 5 || window == 7);
+		can_fast_fall = !(window == 6);
 		if (window < 4)
 		{
             if (!free)
@@ -187,6 +217,27 @@ switch(attack)
 		set_hitbox_value(attack, 2, HG_WINDOW, (vsp > 1) ? 3 : 0);
 	} break;
 	//===========================
+    case 14: //N
+    {
+        lev_bypass = (window == 2 || window == 4);
+        super_armor = (window == 2);
+        
+        if !(window == 3 || window == 5)
+        {
+        	can_move = false;
+        	can_fast_fall = false;
+	        //Dampen momentum
+	        hsp *= 0.85;
+	        vsp *= 0.85;
+        }
+        
+        if (window == 2)
+        {
+			user_event(2); //Counter logic is in there
+			move_cooldown[UNOWN_ATK.N] = unown_n_cooldown;
+        }
+    }break;
+	//===========================
     case 17: //Q
     {
         if ((window == 3) || (window == 2 && has_hit_player))
@@ -204,12 +255,35 @@ switch(attack)
         else if (window == 4)
         {
         	lev_bypass = true;
+			can_fast_fall = false;
         	vsp *= 0.55;
+        }
+    }break;
+	//===========================
+    case 18: //R
+    {
+        can_fast_fall = false;
+        lev_bypass = (window < 4);
+        
+        if (!free && window < 3)
+        {
+        	destroy_hitboxes();
+        	window = 4;
+        	window_timer = 0;
+        }
+        else if (window == 2) && (special_down || state_timer < 20)
+        {
+        	if (window_timer == get_window_value( attack, window, AG_WINDOW_LENGTH ))
+            {
+                window_timer = 0;
+                attack_end();
+            }
         }
     }break;
 	//===========================
     case 20: //T
     {
+        can_fast_fall = false;
         if (window == 1 && window_timer <= 1)
         {
             unown_t_times_through = 0;
@@ -218,7 +292,7 @@ switch(attack)
         if (window == 3) && (special_down)
         {
             //VSP boost
-            vsp -= 0.2;
+            vsp -= (up_down && vsp > -4) ? 0.8 : ((vsp > 0) ? 0.5 : 0.2);
 
             if (unown_t_times_max > unown_t_times_through)
             && (window_timer == get_window_value( attack, window, AG_WINDOW_LENGTH ))
@@ -232,6 +306,7 @@ switch(attack)
 	//===========================
     case 21: //U
     {
+		can_fast_fall = !unown_u_bounced;
         if (window == 1 && window_timer <= 1)
         {
             unown_u_bounced = false;
@@ -257,13 +332,47 @@ switch(attack)
         }
     }break;
 	//===========================
+    case 25: //Y
+    {
+        can_fast_fall = false;
+        hsp *= 0.75; 
+        if (window == 1)
+        {
+        	vsp *= 0.75;
+        }
+        else if (window == 2)
+        {
+        	can_move = false;
+        	if (window_timer == 1 && !hitpause)
+        	{
+        		unown_y_waterhitbox = create_hitbox(attack, 2, x, y);
+        		unown_y_water.tip_x = x - 1;
+        		unown_y_water.tip_y = y + get_hitbox_value(attack, 0, HG_HITBOX_Y);
+        		unown_y_water.timer = unown_y_water_active_time + unown_y_water_dying_time;
+        	}
+
+            unown_y_water.start_x = x - 1;
+        	unown_y_water.start_y = y + 24;
+        	
+        	if instance_exists(unown_y_waterhitbox)
+        	{
+        		var distance = 12 + unown_y_water.tip_y - unown_y_water.start_y;
+        		unown_y_waterhitbox.hitbox_timer = 0;
+        		unown_y_waterhitbox.y_pos = distance/2 + 24;
+        		unown_y_waterhitbox.image_yscale = distance/200.0;
+        	}
+        }
+    }break;
+	//===========================
     case 28: //?
     {
+    	can_fast_fall = false;
     	lev_bypass = true;
     }break;
 	//===========================
     case AT_EXTRA_1: //Pseudoparry
     {
+    	can_fast_fall = false;
         if (window == 1) 
         {
             perfect_dodging = true;
@@ -279,7 +388,9 @@ switch(attack)
 fall_through = (down_down) && (!lev_bypass);
 
 
+//=====================================================================
 #define do_faster_falling()
+//make gravity pull harder than max_fall speeds during this move
 {
     if (vsp >= max_fall && vsp < fast_fall)
     {

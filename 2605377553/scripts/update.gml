@@ -24,12 +24,32 @@ with (oPlayer) {
 }
 
 //secret colors
-//me and the boys
-if (state==PS_SPAWN && extra_col == 0){
+//Sun (clown)
+if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) != 2 && get_player_color( player ) != 5 ){
 	if (taunt_down&&down_down){
 		extra_col = 1
 		white_flash_timer = 18;
 		sound_play(sound_get("jerma"));
+		init_shader();
+	}
+}
+
+//Nuzl (viola player)
+if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 2){
+	if (taunt_down&&down_down){
+		extra_col = 2
+		white_flash_timer = 18;
+		sound_play(sound_get("nuzl_viola"));
+		init_shader();
+	}
+}
+
+//Doge (ex derby chamption)
+if (state==PS_SPAWN && extra_col == 0 && get_player_color( player ) == 5){
+	if (taunt_down&&down_down){
+		extra_col = 3
+		white_flash_timer = 18;
+		sound_play(asset_get("sfx_holy_tablet_appear"));
 		init_shader();
 	}
 }

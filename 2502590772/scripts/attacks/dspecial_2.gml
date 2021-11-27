@@ -20,14 +20,14 @@ set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_SFX, sound_get("charge_tell"));
 
 //armor window
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 41);
 
 //startup 2
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 43);
@@ -94,7 +94,7 @@ set_window_value(AT_DSPECIAL_2, 9, AG_WINDOW_VSPEED_TYPE, 1);
 
 //endlag
 set_window_value(AT_DSPECIAL_2, 10, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL_2, 10, AG_WINDOW_LENGTH, 17);
+set_window_value(AT_DSPECIAL_2, 10, AG_WINDOW_LENGTH, 21);
 set_window_value(AT_DSPECIAL_2, 10, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_DSPECIAL_2, 10, AG_WINDOW_ANIM_FRAME_START, 48);
 set_window_value(AT_DSPECIAL_2, 10, AG_WINDOW_HSPEED_TYPE, 1);
@@ -179,7 +179,7 @@ set_hitbox_value(AT_DSPECIAL_2, 4, HG_HEIGHT, diameter_lvl_1);
 set_hitbox_value(AT_DSPECIAL_2, 4, HG_PRIORITY, 7);
 set_hitbox_value(AT_DSPECIAL_2, 4, HG_DAMAGE, 12);
 set_hitbox_value(AT_DSPECIAL_2, 4, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_DSPECIAL_2, 4, HG_KNOCKBACK_SCALING, .8);
+set_hitbox_value(AT_DSPECIAL_2, 4, HG_KNOCKBACK_SCALING, .85);
 set_hitbox_value(AT_DSPECIAL_2, 4, HG_BASE_HITPAUSE, 15);
 set_hitbox_value(AT_DSPECIAL_2, 4, HG_EXTRA_HITPAUSE, 5);
 set_hitbox_value(AT_DSPECIAL_2, 4, HG_VISUAL_EFFECT, 20);
@@ -197,7 +197,7 @@ set_hitbox_value(AT_DSPECIAL_2, 5, HG_HITBOX_Y, -30);
 set_hitbox_value(AT_DSPECIAL_2, 5, HG_WIDTH,  diameter_lvl_2);
 set_hitbox_value(AT_DSPECIAL_2, 5, HG_HEIGHT, diameter_lvl_2);
 set_hitbox_value(AT_DSPECIAL_2, 5, HG_PRIORITY, 7);
-set_hitbox_value(AT_DSPECIAL_2, 5, HG_DAMAGE, 10);
+set_hitbox_value(AT_DSPECIAL_2, 5, HG_DAMAGE, 8);
 set_hitbox_value(AT_DSPECIAL_2, 5, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DSPECIAL_2, 5, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_DSPECIAL_2, 5, HG_BASE_HITPAUSE, 3);

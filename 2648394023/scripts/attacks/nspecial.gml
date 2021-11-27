@@ -59,6 +59,7 @@ for (var i = 1; i < 5; i++){
 	set_hitbox_value(AT_NSPECIAL, i, HG_PROJECTILE_GROUND_BEHAVIOR, 2);
 	set_hitbox_value(AT_NSPECIAL, i, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 	set_hitbox_value(AT_NSPECIAL, i, HG_LIGHT_GIMMICK, 2);
+	set_hitbox_value(AT_NSPECIAL, i, HG_MUNO_HITBOX_MISC_ADD, light_gimmick_desc);
 }
 
 set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 30);
@@ -104,7 +105,6 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("photon_uv_gam
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, 23);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_clairen_tip_strong"));
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, vfx_hit_med);
-set_hitbox_value(AT_NSPECIAL, 3, HG_MUNO_HITBOX_MISC_ADD, light_gimmick_desc);
 set_hitbox_value(AT_NSPECIAL, 3, HG_MUNO_HITBOX_NAME, "UV: Gamma");
 
 set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 180);
@@ -122,5 +122,4 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_SPRITE, sprite_get("photon_ir_rad
 set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_HSPEED, 5);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_clairen_hit_med"));
 set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT, vfx_hit_med);
-set_hitbox_value(AT_NSPECIAL, 4, HG_MUNO_HITBOX_MISC_ADD, light_gimmick_desc);
 set_hitbox_value(AT_NSPECIAL, 4, HG_MUNO_HITBOX_NAME, "IR: Radio");

@@ -278,7 +278,8 @@ if (IsSleepKirby_PlayAbilityStarSFX == true){
 //(i hate this)
 	with (oPlayer){
 		if (is_in_playtest == false){
-			sfx_ability_star_break = sound_get("sfx_ability_star_break");
+			//sfx_ability_star_break = sound_get("sfx_ability_star_break");
+			sfx_ability_star_break = asset_get("mfx_unstar");
 			Sleep_Meter = sprite_get("enemy_sleep_bar");
 
 			//Debug vars

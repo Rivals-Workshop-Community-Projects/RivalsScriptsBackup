@@ -23,8 +23,8 @@ switch admw {
 		     		
 		        if (sound_effect != sound_get("slice1") and sound_effect != sound_get("slice2")
                    and sound_effect != sound_get("slice3")) and damage > 1 {
-		     		kb_scale = hitpause/15
-		     		hitpause_growth = hitpause/10
+		     		kb_scale = hitpause/14
+		     		hitpause_growth = hitpause/14
                 }
                 
 		     		
@@ -45,14 +45,14 @@ switch admw {
 		     	if (sound_effect == sound_get("slice1") or sound_effect == sound_get("slice2")
                    or sound_effect == sound_get("slice3")) and damage > 1 {
 		     		kb_scale = hitpause/50
-		     		hitpause_growth = hitpause/80
+		     		hitpause_growth = hitpause/60
                 }
                 
                 
                 if (sound_effect != sound_get("slice1") and sound_effect != sound_get("slice2")
                    and sound_effect != sound_get("slice3")) and damage > 1 {
 		     		kb_scale = hitpause/60
-		     		hitpause_growth = hitpause/80
+		     		hitpause_growth = hitpause/60
                 }
                 
                    
@@ -449,8 +449,29 @@ if nshit == 2 {
     spawn_hit_fx (x,y - 30, bh )
 }
 
-if nshit > 3 {
+if nshit > 3 && visible {
     spawn_hit_fx( x + 40 - random_func(6, 80, true) - (10*spr_dir), y - 20 - random_func(7, 80, true) , esp )
+    
+    if admb == 3 && get_gameplay_time() % 24 == 0 {
+    	
+       bh2 = hit_fx_create( sprite_get( "blackhit" ), 12);
+        
+    	ex1 = spawn_hit_fx( x - 2*spr_dir , y - 36 , bh2 )
+    	 
+    	ex1.spr_dir = .8
+    	ex1.image_yscale = .8
+    }
+    
+    if admw == 4 && get_gameplay_time() % 24 == 12 {
+    	wh2 = hit_fx_create( sprite_get( "whitehit" ), 16 );
+    	
+    	ex2 = spawn_hit_fx( x - 2*spr_dir  , y - 36 , wh2 )
+    	
+    	ex2.spr_dir = .7
+    	ex2.image_yscale = .7
+    	
+    }
+    
 	if !hitpause {
 	nshit -= 1
 	}
@@ -463,15 +484,15 @@ if nshit == 3 {
 
 
 if get_gameplay_time() > 120 {
-if admb == 3 {
-		if get_gameplay_time() % 2 == 0 {
+if admb == 3 && visible {
+		if get_gameplay_time() % 4 == 0 {
 	spawn_hit_fx( x + 40 - random_func(5, 80, true) - (10*spr_dir), y - 20 - random_func(4, 80, true) , esp1 )
 	}
 
 }
 
-if admw == 4 {
-		if get_gameplay_time() % 2 == 1 {
+if admw == 4 && visible {
+		if get_gameplay_time() % 4 == 2 {
 	spawn_hit_fx( x + 40 - random_func(5, 80, true) - (10*spr_dir), y - 20 - random_func(4, 80, true) , esp2 )
 	}
 }
@@ -529,7 +550,7 @@ if soultimer < 0 && get_gameplay_time() % 60 == 0 && soulfree == 1 {
     spawn_hit_fx (soulx,souly - 30, bh )
 	}
 
-if soultimer < -1 && soultimer > -240 && down_down && special_down && can_attack {
+if soultimer < -1 && soultimer > -330 && down_down && special_down && (can_jump or can_attack) {
 	outline_color = [0, 0, 0]
 	init_shader();
     spawn_hit_fx (x,y -30 , 302 )
@@ -553,6 +574,8 @@ window_timer = 0
 
 if soultimer < -1 {
 	
+
+    
 	var col = get_gameplay_time() % 60 * 1.5
 	
 	if get_gameplay_time() % 60 == 0 {
@@ -639,18 +662,21 @@ if soultimer > -340 && soultimer < -1  {
                      y = souly 
                      spr_dir = souldir
 
-                if admw == 4 {
-                	admb = 3
-                	admw = 0
-                } else if admb = 3 {
-                	admb = 0
-                	admw = 4
-                }        
+            if savemode = 0 {
+            	admb = 3
+            	admw = 0
+            } else if savemode = 1 {
+            	admw = 4
+            	admb = 0
+            }  else if savemode = 2 {
+            	admb = 3
+            	admw = 4
+            }      
 	}
 	}
 }
 	
-if (y >= room_height - vsp) or ( x + hsp > room_width) or ( x + hsp < 0) or (y <= vsp + 10) {
+if (y >= room_height - vsp) or ( x + hsp > room_width) or ( x + hsp < 0) or (y <= vsp + 10 && state_cat == SC_HITSTUN) {
 			outline_color = [0, 0, 0]
 	init_shader();
     spawn_hit_fx (x,y -30 , 302 )
@@ -665,6 +691,7 @@ y = souly
             state_timer = 99
 		    invincible = 0
 		    window_timer = 99
+		    
     vsp = -7
     hsp = 0		    
 		        spawn_hit_fx (x,y -30 , 302 )
@@ -680,13 +707,16 @@ prat_land_time = 150;
 window = 4
 window_timer = 0
 
-if admw == 4 {
-	admb = 3
-	admw = 0
-} else if admb = 3 {
-	admb = 0
-	admw = 4
-}
+     if savemode = 0 {
+            	admb = 3
+            	admw = 0
+            } else if savemode = 1 {
+            	admw = 4
+            	admb = 0
+            }  else if savemode = 2 {
+            	admb = 3
+            	admw = 4
+            }
 
 	}
 }
@@ -699,7 +729,9 @@ with oPlayer if (activated_kill_effect) {
              with other {
              	
 	         if  get_player_color(player) == 5 {
-             sound_play(sound_get("CARAMELFN"))
+	         	sound_stop(sound_get("CARAMELFN"))
+	         	sound_play(sound_get("CARAMELFN"))
+             sound_stop(sound_get("CARAMEL"))
              }
              
              
@@ -708,7 +740,7 @@ with oPlayer if (activated_kill_effect) {
              spawn_hit_fx ( x, y + 30, wh )
              spawn_hit_fx ( x, y + 30, bh )
              
-             
+             sound_stop(sound_get("ADfull"))
              sound_play(sound_get("ADfull"))
              move_cooldown[AT_NSPECIAL_2] = 120
                
@@ -716,3 +748,20 @@ with oPlayer if (activated_kill_effect) {
    }
 }
 }
+
+if get_player_color(player) = 5 {
+	hue+= 2
+	if hue>255 {
+		hue = 0;
+	}
+	//make hue shift every step + loop around
+
+	color_rgb=make_color_rgb(255, 100, 50);
+	//make a gamemaker color variable using kirby's default color (body)
+	hue2=(color_get_hue(color_rgb)+hue) mod 255;
+	color_hsv=make_color_hsv(hue2,color_get_saturation(color_rgb),color_get_value(color_rgb)); 
+	//make a gamemaker color variable using the new hue
+	set_color_profile_slot(5,0,color_get_red(color_hsv),color_get_green(color_hsv),color_get_blue(color_hsv));
+	//set the new color using rgb values from the gamemaker color
+}
+init_shader()

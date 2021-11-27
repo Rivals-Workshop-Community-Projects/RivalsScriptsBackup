@@ -4,6 +4,11 @@ if (attack == AT_NSPECIAL || attack == AT_JAB || attack == AT_UTILT ||attack == 
     can_fast_fall = false;
 }
 
+//cancel anim (make ithis a rune)
+//if (attack == AT_NSPECIAL_2 && window == 2 || attack == AT_NSPECIAL_2 && window == 3){
+//    can_move = true;
+//	can_jump = true;
+//}
 
 var no_hp = !hitpause;
 
@@ -221,7 +226,7 @@ switch (attack)
                     {  
                         sound_play(asset_get("sfx_absa_singlezap1"));
                         white_flash_timer = 10;
-                        set_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE, 15);
+                        set_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE, 20);
                     }
                     else
                         reset_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE);

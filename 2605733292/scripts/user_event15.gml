@@ -43,7 +43,7 @@ alt_ui_recolor = noone;
 alt_names = [
 	"Default","Blue","Red","Green","Monochrome","Purple","Shadow","Gameboy",
 	"Yellow","Carbon","Brown","Ivory","Sapphire","Valk","Pink","Red + Blue",
-	"Infamous","Pure Gold","Ranked Gold","Champion","Orange","Snow","Emerald","Adventure Ability",
+	"Infamous","Pure Gold","Ranked Gold","Champion","Orange","Emerald","Snow","Adventure Ability",
 	];
 
 
@@ -85,7 +85,7 @@ phone.dont_fast = false;
 // If you're porting the phone to an existing char and don't need any of these
 // features, you might as well turn on lightweight to save a tiny bit of
 // performance. (see _docs.gml for a full list of what this disables)
-phone.lightweight = false;
+phone.lightweight = true;
 
 // If you've created custom AG_ or HG_ indexes for your character already,
 // use these to change where the phone starts assigning custom AG_s and HG_s.
@@ -259,6 +259,26 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.8", "8 November, 2021");
+initHeader("General");
+initSection("~ Adjusted the screenshots on the Steam page.
+~ Adjusted the icon for Sleep Kirby on the CSS.
+~ Fixed the names for the Emerald and Snow palettes being swapped on the CSS.
+~ Fixed the hat overlapping the pillow’s outlines for a frame in the jump animation.
+~ Adjusted hud sprite.");
+initHeader("Dash Attack");
+initSection("~ Adjusted hit fx when landing the early hit.");
+initHeader("Down Tilt");
+initSection("~ Fixed parts of Sleep Kirby’s feet overlapping outlines on his body for a single frame.");
+initHeader("Down Air");
+initSection("- Final Hit Angle: 285 -> 275
++ Final Hit Knockback Scaling: 0.4 -> 0.5
++ Multihit Knockback Scaling: 0.1 -> None (The multihits should connect better now.)");
+initHeader("Neutral Special (Burst Bubble)");
+initSection("~ Added dust effects when using the move on the ground.");
+initHeader("Forward Special (Nightly Nightcap)");
+initSection("~ Added dust effects when using the move on the ground.");
+
 initPatch("1.7", "31 October, 2021");
 initHeader("General");
 initSection("~ Adjusted VFX for the intro animation.
@@ -321,7 +341,7 @@ initHeader("General");
 initSection("~ Hurtbox adjusted.
 ~ The MunoPhone has been upgraded to the MunoPhone Touch!");
 
-initPatch("1.2", "42 Shmebruary, 2021");
+initPatch("1.2", "19 September, 2021");
 initHeader("Neutral Air");
 initSection("- Landing Hit Knockback Scaling: 0.8 -> 0.7");
 initHeader("Neutral Special");
@@ -361,7 +381,7 @@ initPatch("1.0", "18 September, 2021");
 initHeader("General");
 initSection("Kirby got the Sleep Ability in Rivals. Now nobody is safe from him. Brace yourself.");
 
-initPatch(".About Sleep Kirby", "It's Kirby!
+initPatch("About Sleep Kirby", "It's Kirby!
 	
 ...but with the Sleep Ability.");
 initHeader("Character by");

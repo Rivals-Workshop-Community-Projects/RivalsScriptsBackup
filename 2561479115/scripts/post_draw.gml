@@ -28,7 +28,6 @@ if (ds_list_size(particles) > 0) {
 }
 
 
-
 shader_start();
 if (state == PS_PARRY && window == 1) {
     draw_sprite_ext(sprite_get("shield"),image_index,x,y,spr_dir,1,0,-1,1);

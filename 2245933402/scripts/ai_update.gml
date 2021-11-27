@@ -1,4 +1,5 @@
 //ai_update - called every frame for this character as a CPU
+if (get_training_cpu_action() == CPU_FIGHT) && get_gameplay_time() > 120{
 temp_level = 9;
 rangedtimer -= 1
 xdist = abs(ai_target.x - x);
@@ -60,6 +61,8 @@ if attack == AT_DTILT && has_hit_player {
 
 otime -= 10
 if otime <= 0 {
+	sound_play(sound_get("teleport1"),false,noone,.8,0.8);
+	spawn_hit_fx(x,y - 50,305)
 	ostyle = random_func(1,4,true) + 1
 	otime = 900
 			 shake_camera(2,2)
@@ -494,4 +497,5 @@ if attack != AT_DSPECIAL{
 			shield_pressed = true
 			}
 	}
+}
 }

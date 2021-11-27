@@ -5,9 +5,9 @@ with obj_article1 {
         for (var _i = 0; _i < ds_list_size(position_table); _i++) {
             var frame = 0;
             with player_id {
-                var window_length = get_window_value(AT_USPECIAL,2,AG_WINDOW_LENGTH);
-                var window_frames = get_window_value(AT_USPECIAL,2,AG_WINDOW_ANIM_FRAMES);
-                var window_frame_start = get_window_value(AT_USPECIAL,2,AG_WINDOW_ANIM_FRAME_START);
+                var window_length = get_window_value(AT_USPECIAL,3,AG_WINDOW_LENGTH);
+                var window_frames = get_window_value(AT_USPECIAL,3,AG_WINDOW_ANIM_FRAMES);
+                var window_frame_start = get_window_value(AT_USPECIAL,3,AG_WINDOW_ANIM_FRAME_START);
                 frame = -1 + window_frame_start + (other.position_table[|_i][2]/window_length)*window_frames;
             }
             if cur_target < _i && _i % 2 == 0

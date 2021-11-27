@@ -13,8 +13,8 @@ set_attack_value(this_attack, AG_HURTBOX_SPRITE, sprite_get("dair_hurt"));
 set_window_value(this_attack, 1, AG_WINDOW_TYPE, 1);
 set_window_value(this_attack, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(this_attack, 1, AG_WINDOW_ANIM_FRAMES, 4);
-set_window_value(this_attack, 1, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(this_attack, 1, AG_WINDOW_VSPEED, -3);
+//set_window_value(this_attack, 1, AG_WINDOW_VSPEED_TYPE, 2);
+//set_window_value(this_attack, 1, AG_WINDOW_VSPEED, -3);
 set_window_value(this_attack, 1, AG_WINDOW_CUSTOM_GRAVITY, 1.0);
 set_window_value(this_attack, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(this_attack, 1, AG_WINDOW_SFX_FRAME, 8);
@@ -24,7 +24,7 @@ set_window_value(this_attack, 2, AG_WINDOW_TYPE, 1);
 set_window_value(this_attack, 2, AG_WINDOW_LENGTH, 2);
 set_window_value(this_attack, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(this_attack, 2, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(this_attack, 2, AG_WINDOW_VSPEED, 1);
+set_window_value(this_attack, 2, AG_WINDOW_VSPEED, 0);
 set_window_value(this_attack, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 
 

@@ -45,6 +45,7 @@ set_window_value(AT_EXTRA_1, 6, AG_WINDOW_ANIM_FRAME_START, 26);
 set_window_value(AT_EXTRA_1, 6, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_EXTRA_1, 6, AG_WINDOW_SFX, asset_get("sfx_shovel_swing_heavy2"));
 set_window_value(AT_EXTRA_1, 6, AG_WINDOW_SFX_FRAME, 1);
+set_window_value(AT_EXTRA_1, 6, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 
 set_window_value(AT_EXTRA_1, 7, AG_WINDOW_LENGTH, 5*7);
 set_window_value(AT_EXTRA_1, 7, AG_WINDOW_ANIM_FRAMES, 7);

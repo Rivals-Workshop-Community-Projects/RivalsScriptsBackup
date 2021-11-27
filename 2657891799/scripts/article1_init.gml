@@ -47,3 +47,6 @@ hit_counter = 0
 shinebox = undefined
 
 prev_vsp = 0
+
+recent_player = undefined
+last_hit = undefined

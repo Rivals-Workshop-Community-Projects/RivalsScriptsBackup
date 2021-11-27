@@ -31,8 +31,12 @@ if (lev_is_grounded)
     //reset once-per-airtime stuff!
     djumps = 0;
     has_walljump = true;
-    if (lev_airdodge_cooldown == 0) has_airdodge = true;
+    if (lev_parry_cooldown == 0) has_airdodge = true;
 
+    //pratland sends straight to PS_IDLE_AIR when it ends 
+    //(cases where you fastfall from prat)
+    if (prev_state == PS_PRATLAND) set_state(PS_PRATFALL);
+    
     switch (state)
     {
         case PS_PRATFALL: 
@@ -58,9 +62,20 @@ if (lev_is_grounded)
     }
 }
 
-//universal fastfall
-if (!fast_falling && down_hard_pressed && !lev_is_grounded)
+if (state_cat == SC_HITSTUN) || (state == PS_PRATFALL)
 {
+    can_fast_fall = false;
+}
+else if !(fast_falling || state == PS_ATTACK_AIR)
+{
+    can_fast_fall = true;
+}
+
+//rising fastfall check
+if (!fast_falling && down_hard_pressed && !lev_is_grounded && free) 
+ && can_fast_fall & (vsp < 0)
+{
+    spawn_hit_fx( x, y, unown_fastfall_vfx);
     vsp = fast_fall;
     fast_falling = true;
 }
@@ -82,7 +97,7 @@ if (state == PS_AIR_DODGE && air_dodge_dir == 0 && window == 1)
     var pseudogrounded = ground_test(uno_lev_height_max + uno_lev_offset, true);
     //set_attack.gml is not called. Dan pls.
     set_attack( pseudogrounded ? AT_EXTRA_1 : unown_form_data[UNOWN_ATK.QM].atk);
-    if (pseudogrounded) lev_airdodge_cooldown = lev_airdodge_cooldown_max;
+    if (pseudogrounded) lev_parry_cooldown = lev_parry_cooldown_max;
     unown_attack_is_fresh = true;
     
     hurtbox_spr = unown_form_data[UNOWN_ATK.QM].hurtbox;
@@ -95,7 +110,17 @@ if (state == PS_AIR_DODGE && air_dodge_dir == 0 && window == 1)
     lev_bypass = false; //failsafe
 }
 
-lev_airdodge_cooldown = clamp(lev_airdodge_cooldown - 1, 0, lev_airdodge_cooldown_max);
+if (lev_parry_cooldown > 0) 
+{
+    lev_parry_cooldown = clamp(lev_parry_cooldown - 1, 0, lev_parry_cooldown_max);
+    if (lev_parry_cooldown == 0) has_airdodge = true;
+}
+
+//once per airtime moves
+if (lev_is_grounded || !free)
+{
+    unown_c_used = false;
+}
 
 //=============================================================
 //turning animation

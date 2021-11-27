@@ -4,7 +4,28 @@
 if (is_master_player) exit;
 if (!custom_clone) {
     disable_ai = !(get_training_cpu_action() == CPU_FIGHT);
-
+    
+    //default AI for specials
+    if (state == PS_ATTACK_AIR) {
+        switch (attack) {
+            case AT_USPECIAL:
+            case AT_USPECIAL_2:
+                //mash special
+                special_pressed = true;
+                //try to walljump
+                jump_pressed = true;
+            break;
+            case AT_FSPECIAL:
+            case AT_FSPECIAL_2:
+                //try to walljump
+                jump_pressed = true;
+                //desync too if the partner is onstage
+                special_down = (instance_exists(teammate_player_id) && !(teammate_player_id.free));
+            break;
+            
+        }
+    }
+    
     exit;
 }
 disable_ai = true;
@@ -108,11 +129,21 @@ process_inputs();
     var leader_x_distance = abs((teammate_player_id.x + teammate_player_id.hsp) - (x + hsp));//abs(teammate_player_id.x - x);
     var leader_x_direction = sign((teammate_player_id.x + teammate_player_id.hsp) - (x + hsp));//sign((teammate_player_id.x - (2 * teammate_player_id.spr_dir)) - x);
     //var leader_x_direction = sign((teammate_player_id.x - (2 * teammate_player_id.spr_dir)) - x);
-    var leader_target_x_distance = abs(leader_x - x);
-    var leader_target_x_direction = sign(leader_x - x);
+    
+    var leader_target_x_distance, leader_target_x_direction;
+    
+    if (y + 16 < teammate_player_id.y) {
+        leader_target_x_distance = leader_x_distance;
+        leader_target_x_direction = leader_x_direction;
+    }
+    else {
+        leader_target_x_distance = abs(leader_x - x);
+        leader_target_x_direction = sign(leader_x - x);
+    }
     
     
-    artificial_dash = false;
+    
+    artificial_dash = sign(artificial_dash) * (abs(artificial_dash) - 1); 
     
     ai_prev_inputs_raw = ai_inputs_raw;
 
@@ -147,6 +178,14 @@ process_inputs();
         (is_strong_pressed(DIR_UP) && can_ustrong) 
         || ((is_strong_pressed(DIR_LEFT) || is_strong_pressed(DIR_RIGHT) || is_strong_pressed(DIR_DOWN)) && can_strong) ) ) );
     */
+    
+    //don't attack unless master_special_held equals true or the leader is close to the partner
+    //if (!master_special_held && leader_x_distance > 300) {
+     //   ai_inputs &= ~(INP_ATTACK | INP_ATTACK_PRESSED | INP_JUMP | INP_LEFT_STRONG | INP_RIGHT_STRONG | INP_UP_STRONG | INP_DOWN_STRONG);
+     //   ai_inputs_raw &= ~(INP_ATTACK | INP_JUMP | INP_LEFT_STRONG | INP_RIGHT_STRONG | INP_UP_STRONG | INP_DOWN_STRONG);
+     //   //ai_inputs_raw &= ~(INP_ATTACK_PRESSED | INP_LEFT_STRONG | INP_RIGHT_STRONG | INP_UP_STRONG | INP_DOWN_STRONG);
+    //}
+    
     var made_an_attack_input = 
      ( ((ai_inputs & INP_SHIELD_PRESSED) != 0) //|| ((ai_inputs |= INP_TAUNT) != 0 && !free)
     || (can_attack && (ai_inputs & INP_ATTACK_PRESSED) != 0)
@@ -184,19 +223,32 @@ process_inputs();
     else {
 
         switch (state) {
-            case PS_HITSTUN:
             case PS_HITSTUN_LAND:
             case PS_WRAPPED:
             case PS_FROZEN:
-                //in hitstun, always DI towards the partner and drift in. 
+                clear_dir();
+            break;
+            
+            case PS_HITSTUN:
+            //case PS_TUMBLE:
+
+                
                 clear_dir();
                 if (hitpause) {
-                    joy_pad_idle = false;
-                    joy_dir = round(point_direction(x, y, teammate_player_id.x, teammate_player_id.y));
-                    joy_pad_idle = false;
+                    //in hitstun, always DI towards the partner and drift in. 
+                    //joy_dir = round(point_direction(x, y, teammate_player_id.x, teammate_player_id.y));
+                    //joy_pad_idle = false;
+                    
+                    //in hitstun, no-DI and drift in.
+                    joy_dir = 90;
+                    joy_pad_idle = true;
                     var teammate_dir = sign(teammate_player_id.x - x);
                     move_in_x_direction(-sign(teammate_dir), false);
                 }
+                //else if (y < teammate_player_id.y && state == PS_TUMBLE) {
+                //    var teammate_dir = sign(teammate_player_id.x - x);
+                //    move_in_x_direction(-sign(teammate_dir), false);
+                //}
                 else if (hsp != 0) {
                     move_in_x_direction(-sign(hsp), false);
                 }
@@ -493,26 +545,26 @@ process_inputs();
                 if (teammate_player_id.buffer_y_position[b]> y) {
                     ai_inputs |= INP_DOWN_HARD;
                 }
-                else if (teammate_player_id.buffer_y_position[b]< y && teammate_player_id.y < y) {
+                else if (teammate_player_id.buffer_y_position[b]< y && teammate_player_id.y + 4 < y) {
                     ai_inputs |= INP_JUMP_PRESSED;
                 }
             }
         
             if (leader_x_distance > follow_distance * 3 && (state == PS_IDLE || state == PS_WALK || state == PS_WALK_TURN)) {
-                if (teammate_player_id.buffer_sync_state[b]) == PS_WALK_TURN {
+                //if (teammate_player_id.buffer_sync_state[b]) == PS_WALK_TURN {
                     //move_towards_x_position(leader_x, true);
+                    //move_towards_x_position_unless_player_is_holding_opposite_direction(leader_x, true);
+                //}
+                //else {
                     move_towards_x_position_unless_player_is_holding_opposite_direction(leader_x, true);
-                }
-                else {
-                    move_towards_x_position_unless_player_is_holding_opposite_direction(leader_x, true);
-                }
+                //}
                 if (state == PS_WALK_TURN && sign(hsp) != leader_x_direction) hsp *= 0.5;
-                artificial_dash = true;
+                artificial_dash = 2;
                 break;
             }
             else if (leader_x_distance < follow_distance * 2 && (state == PS_DASH || state == PS_DASH_START || state == PS_DASH_TURN)) {
                 ai_inputs &= ~(INP_LEFT_HARD | INP_RIGHT_HARD | INP_LEFT | INP_RIGHT);
-                artificial_dash = true;
+                artificial_dash = 2;
                 break;
             }
             else if (leader_target_x_distance > 10) {
@@ -536,11 +588,12 @@ process_inputs();
             if (run_direction != leader_target_x_direction) {
                 ai_inputs &= ~(INP_LEFT_HARD | INP_RIGHT_HARD);
                 if (state == PS_DASH || state == PS_DASH_START || state == PS_DASH_TURN) ai_inputs &= ~(INP_LEFT | INP_RIGHT);
+                artificial_dash = -2;
             }
             //check if this a cpu dash and not a player dash
-            if ((ai_inputs & INP_RIGHT_HARD != 0) - (ai_inputs & INP_LEFT_HARD != 0) != spr_dir) {
-                artificial_dash = true;
-            }
+            //if ((ai_inputs & INP_RIGHT_HARD != 0) - (ai_inputs & INP_LEFT_HARD != 0) != spr_dir) {
+            //    artificial_dash = 2;
+            //}
         break;
         case PS_DASH:
         case PS_DASH_TURN:
@@ -559,6 +612,7 @@ process_inputs();
             if (run_direction != leader_target_x_direction) {
                 ai_inputs &= ~(INP_LEFT_HARD | INP_RIGHT_HARD);
                 if (state == PS_DASH || state == PS_DASH_START || state == PS_DASH_TURN) ai_inputs &= ~(INP_LEFT | INP_RIGHT);
+                artificial_dash = -2;
             }
             else if ((state != PS_DASH && state != PS_DASH_TURN && state != PS_DASH_START) || spr_dir != run_direction) {
                 if (run_direction == -1) ai_inputs |= INP_LEFT_HARD;
@@ -593,8 +647,14 @@ process_inputs();
                     ai_inputs |= INP_DOWN_HARD;
                 }
             }
-
-            move_towards_x_position_unless_player_is_holding_opposite_direction(leader_x, leader_x_distance > follow_distance * 3);
+            
+            if (y + 16 > teammate_player_id.y) {
+                move_towards_x_position(leader_x, leader_x_distance > follow_distance * 3);
+            }
+            else {
+                move_towards_x_position_unless_player_is_holding_opposite_direction(leader_x, leader_x_distance > follow_distance * 3);
+            }
+            
             //if ((ai_inputs & INP_RIGHT == 0) && (ai_inputs & INP_LEFT == 0)) {
                 //move_towards_x_position_unless_player_is_holding_opposite_direction(leader_x, false);
                 //move_towards_x_position(leader_x, false);
@@ -637,7 +697,7 @@ process_inputs();
             
             if (leader_x_distance < follow_distance * 2 && (state == PS_DASH || state == PS_DASH_START || state == PS_DASH_TURN)) {
                 ai_inputs &= ~(INP_LEFT_HARD | INP_RIGHT_HARD | INP_LEFT | INP_RIGHT);
-                artificial_dash = true;
+                artificial_dash = 2;
                 break;
             }
             else if (leader_target_x_distance > 10 && leader_x_distance > 10) {
@@ -846,6 +906,8 @@ process_inputs();
   down_stick_pressed  = down_stick_counter  < 7;
   right_stick_pressed = right_stick_counter < 7;
   */
+  if (master_player_id.special_held || point_distance(x, y, teammate_player_id.x, teammate_player_id.y) < 150) {
+  
   attack_pressed    = attack_counter    < 6 && (up_stick_pressed + down_stick_pressed + left_stick_pressed + right_stick_pressed == 0);
   special_pressed   = special_counter   < 6;
   jump_pressed      = jump_counter      < 7;
@@ -853,6 +915,16 @@ process_inputs();
   
   up_hard_pressed   = up_hard_counter   < 3;
   down_hard_pressed = down_hard_counter < 3;
+  }
+  else {
+  attack_pressed    = 0;
+  special_pressed   = special_counter < 6;
+  jump_pressed      = 0;
+  shield_pressed    = 0;
+  
+  up_hard_pressed   = 0;
+  down_hard_pressed = 0;
+  }
   
   attack_counter    = min(attack_counter+1, 10);
   special_counter   = min(special_counter+1, 10);
@@ -861,6 +933,7 @@ process_inputs();
   
   up_hard_counter   = min(up_hard_counter+1, 10);
   down_hard_counter = min(down_hard_counter+1, 10);
+  
   
   //jump_pressed = false;
   //shield_pressed = false;

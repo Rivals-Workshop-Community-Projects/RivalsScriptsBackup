@@ -40,7 +40,7 @@ set_window_value(AT_DATTACK, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //air cancel window
 set_window_value(AT_DATTACK, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DATTACK, 4, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_DATTACK, 4, AG_WINDOW_LENGTH, 12);//6
 set_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_ANIM_FRAME_START, 14);
 set_window_value(AT_DATTACK, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);

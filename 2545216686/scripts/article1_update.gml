@@ -138,6 +138,7 @@ if (state == 1){ //Landing after State 0
 	vsp = 0
 	if (state_timer == 1){
 		sound_play(asset_get("sfx_gus_land"))
+		spawn_base_dust( x + (0 * spr_dir), y, "land", spr_dir)
 	}
 	if (state_timer == 11){
 		free = false
@@ -150,6 +151,14 @@ if (state == 2){ //Walking
 	player_id.tailsisrobotout = true
 	player_id.tailsdspecheydidtherobotdieyet = 1
     hsp = 3.5 * spr_dir
+	if (image_index == 1 || image_index == 3 || image_index == 5 || image_index == 7 || image_index == 9){
+		robot_dust_spawn_var++;
+		if (robot_dust_spawn_var == 1){
+			spawn_base_dust( x + (0 * spr_dir), y, "walk", spr_dir)
+		}
+	} else {
+		robot_dust_spawn_var = 0
+	}
 	with (asset_get("oPlayer")){
 	    if (place_meeting(x, y, other)){
 	    	if (player != other.player_id.player){
@@ -209,6 +218,7 @@ if (state == 4){ //Jumpsquat
 		sound_play(asset_get("sfx_mobile_gear_jump"));
 	}
 	if (state_timer == 4){
+		spawn_base_dust( x + (0 * spr_dir), y + 2, "jump", spr_dir)
 		setState(5);
 	}
 	player_id.tailsdidpressdownbwhenthingisactive = 0
@@ -411,3 +421,36 @@ exist_timer++;
 
 state = new_state;
 state_timer = 0;
+
+//Supersonic's Base Cast Dust Function
+#define spawn_base_dust
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dfa = 0; //draw_angle value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir = argument_count > 3 ? argument[3] : 0;
+
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = dfa;
+return newdust;

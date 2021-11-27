@@ -1,3 +1,4 @@
+sprite_change_offset("intro", 38, 58);
 sprite_change_offset("idle", 34, 64);
 sprite_change_offset("idle_boneless", 28, 64);
 sprite_change_offset("hurt", 28, 60);

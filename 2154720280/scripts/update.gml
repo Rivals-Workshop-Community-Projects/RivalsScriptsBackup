@@ -224,11 +224,11 @@ if noinv > 0 {
 
 if hit_player_obj.state == PS_RESPAWN && hit_player_obj.state_timer == 1 {
 	
-batt += 1
- sound_play(sound_get("shockready"));
- spawn_hit_fx(x,y,sw)
- shake_camera(6,4)
- battfade = 90
+//batt += 1
+// sound_play(sound_get("shockready"));
+// spawn_hit_fx(x,y,sw)
+// shake_camera(6,4)
+// battfade = 90
  
 }
 

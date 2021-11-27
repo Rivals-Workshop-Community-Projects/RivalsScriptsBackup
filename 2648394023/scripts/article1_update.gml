@@ -1,7 +1,3 @@
-
-
-
-
 switch(state){
 	case PS_SPAWN:
 		var s_t_max = 8;
@@ -153,7 +149,10 @@ switch(state){
 
 
 
-if !hitstop state_timer++;
+if !hitstop{
+	state_timer++;
+	if hit_lockout hit_lockout--;
+}
 exist_timer++;
 
 
@@ -405,6 +404,9 @@ else{
 // supersonic
 
 #define hitbox_detection
+
+if hit_lockout return noone;
+
 //estimated like 80% accurate imo
 var currentHighestPriority = noone;
 
@@ -452,6 +454,7 @@ if instance_exists(currentHighestPriority) with currentHighestPriority {
 		}
 	}
 	other.hitstop = floor(desired_hitstop);
+	other.hit_lockout = no_other_hit;
 	if hbox_group != -1 other.hbox_group[@ orig_player-1][@ attack][@ hbox_group] = 1;
 }
 

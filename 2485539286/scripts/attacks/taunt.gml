@@ -63,7 +63,7 @@ set_window_value(AT_TAUNT, 9, AG_WINDOW_ANIM_FRAME_START, 43);
 set_window_value(AT_TAUNT, 10, AG_WINDOW_TYPE, 1);
 set_window_value(AT_TAUNT, 10, AG_WINDOW_LENGTH, 4*15);
 set_window_value(AT_TAUNT, 10, AG_WINDOW_ANIM_FRAMES, 15);
-set_window_value(AT_TAUNT, 10, AG_WINDOW_ANIM_FRAME_START, 0);
+set_window_value(AT_TAUNT, 10, AG_WINDOW_ANIM_FRAME_START, 50);
 set_window_value(AT_TAUNT, 10, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_TAUNT, 10, AG_WINDOW_SFX, asset_get("sfx_clairen_spin"));
 set_window_value(AT_TAUNT, 10, AG_WINDOW_SFX_FRAME, 47);

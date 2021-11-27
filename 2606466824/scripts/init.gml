@@ -51,6 +51,7 @@ doBurn = false;
 burnType = [0, 0, 0, 0];
 burnTargetX = [0, 0, 0, 0];
 burnTargetY = [0, 0, 0, 0];
+burnSide = [0, 0, 0, 0];
 burnTargetAdv = 0;
 
 target = noone;
@@ -173,6 +174,8 @@ introTimer = -10;
 introTimer2 = 0;
 
 empoweredFX = hit_fx_create( sprite_get( "fxEmpowered" ), 28 );
+
+revArrow = hit_fx_create( sprite_get( "arrow" ), 15 );
 
 set_victory_portrait(sprite_get("portrait_real"));
 

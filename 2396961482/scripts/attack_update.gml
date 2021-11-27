@@ -209,7 +209,8 @@ if (attack == AT_FSPECIAL && window == 2 && taunt_pressed && !free){
 }
 
 //grounded fspecial finisher
-if (attack == AT_FSPECIAL && has_hit && window == 3 && special_pressed && !free){
+if (attack == AT_FSPECIAL && window == 3 && special_pressed && !free){
+//if (attack == AT_FSPECIAL && has_hit && window == 3 && special_pressed && !free){
         set_attack(AT_FSPECIAL_2);
 }
 
@@ -224,7 +225,8 @@ if (attack == AT_USPECIAL_2 && window == 1 && window_timer == 1){
         sound_play(asset_get("sfx_spin"));
 }
 //air fspecial finisher
-if (attack == AT_FSPECIAL && has_hit && window == 3 && special_pressed && free){
+if (attack == AT_FSPECIAL && window == 3 && special_pressed && free){
+//if (attack == AT_FSPECIAL && has_hit && window == 3 && special_pressed && free){
         set_attack(AT_EXTRA_2);
 }
 
@@ -298,6 +300,10 @@ if (attack == AT_DSPECIAL){
     lanternhud_CURRENT = 0;}
     
 #define spawn_base_dust
+/// @param x
+/// @param y
+/// @param name
+/// @param dir = 0
 /// spawn_base_dust(x, y, name, dir = 0)
 ///spawn_base_dust(x, y, name, ?dir)
 //This function spawns base cast dusts. Names can be found below.

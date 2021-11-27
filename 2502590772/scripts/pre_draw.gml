@@ -63,8 +63,12 @@ else {
 }
 
 //remnants of debug hell, c. 2021 commentized
+
+
 //with (obj_article3) draw_debug_text(x, y - 100, string(state))
 //var xx = x + 150 * (species_id * 2 - 1);
+//draw_debug_text(xx, y - 200, "hh_charge_expiry_timer: " + string(hh_charge_expiry_timer));
+//draw_debug_text(xx, y - 220, "hh_charge_level: " + string(hh_charge_level));
 //draw_debug_text(xx, y - 200, "window: " + string(window));
 //draw_debug_text(xx, y - 240, "state: " + get_state_name(state));
 //var i = -300;

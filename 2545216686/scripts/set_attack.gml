@@ -18,5 +18,6 @@ if (tailsgrabbedrobot == true){
 if (attack == AT_FSPECIAL && tailsdidhesidebrobot == true){
 	tailsdidhesidebrobot = false
 }
-
-user_event(13);
+//phone
+muno_event_type = 2;
+user_event(14);

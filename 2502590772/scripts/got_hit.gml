@@ -8,6 +8,7 @@
 
 
 //if the partner is being attacked, add the damage onto the partner.
+var unaltered_orig_knock = 0;
 
 var damage_multiplier = (1 + (enemy_hitboxID.player_id.strong_charge / 100));
 var damage_dealt = floor(enemy_hitboxID.damage * damage_multiplier);
@@ -17,8 +18,12 @@ if (custom_clone) {
     damage_percent_as_teammate += damage_dealt; 
     teammate_player_id.damage_percent_as_teammate -= damage_dealt; //if this goes into the negatives, it will be corrected in animation.gml
     
+    unaltered_orig_knock = orig_knock;
+    
     //recalculate knockback/stun effects.
     recalculate_hitbox_effects_for_teammate();
+    
+    
     
 }
 else {
@@ -55,6 +60,33 @@ if (species_id == 1 && state_cat == SC_HITSTUN && !hit_by_own_fspecial) {
         destroy = true;
         should_create_hitbox_upon_destroy = false;
     }
+}
+
+//if using helping hand, add faux crouch armor
+if (attack == AT_DSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR || prev_state == PS_ATTACK_GROUND || prev_state == PS_ATTACK_AIR)) {
+    
+    orig_knock /= 1.5; //reduce by 33%
+    
+    if (!free && (orig_knock <= 4 || state == PS_HITSTUN_LAND || (enemy_hitboxID.type == 2 && enemy_hitboxID.damage <= 8))) {
+        if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) { set_state(prev_state); }
+    	window = dspecial_record_window;
+        window_timer = dspecial_record_window_timer;
+        dspecial_fake_hitstun = 6;
+        orig_knock = 0;
+        if (hitpause) {
+            if (unaltered_orig_knock > 0 && old_hsp != 0) {
+                spr_dir = -sign(old_hsp); //flip facing direction as if really taking a hit
+            }
+            old_hsp = 0;
+            old_vsp = 0;
+        }
+        else {
+            hsp = 0;
+        }
+        
+    }
+    
+    if (orig_knock < unaltered_orig_knock) should_make_shockwave = false;
 }
 
 

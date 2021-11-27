@@ -53,7 +53,6 @@ if (attack == AT_USPECIAL){
        	spawn_hit_fx (x , y - 40 , 302)
     }
     
-        move_cooldown[AT_USPECIAL] = 999
         
    if window == 1 && !hitpause {
    	  grelive = 0
@@ -82,8 +81,8 @@ if (attack == AT_USPECIAL){
           	vsp -= 0.4
           	hsp /= 1.1
           } else {
-          	if vsp > -5  {
-          	 vsp -= 0.9
+          	if vsp > -6  {
+          	 vsp -= 1.8
           	}
           }
           
@@ -574,6 +573,7 @@ if attack == AT_NAIR && ostyle == 3 {
 if window == 1 && window_timer == 1 {
 	set_attack_value(AT_NAIR, AG_LANDING_LAG, 8);
 }
+
 if gun == 1 {
 	
 	if window >= 2 and window <= 4{
@@ -628,7 +628,7 @@ if attack == AT_DAIR{
 	   	spawn_hit_fx (x + 8*spr_dir, y + 20, 3)
 	}
 	
-	if window == 5 && has_hit && dbullet == 0 && ostyle == 3{
+	if window == 4 && has_hit && dbullet == 0 && ostyle == 3 && window_timer > 1 {
 		dbullet = 1
 		sound_play(sound_get("SGL"));
 		sound_play(sound_get("GL"));

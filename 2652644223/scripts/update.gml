@@ -204,12 +204,12 @@ if (get_training_cpu_action() != CPU_FIGHT && state != PS_SPAWN) {
     if(down_down && taunt_pressed && prac_timer == 0)
     {
         if(bullets == 6)
-            hud_enhanced = 5;
+            hud_enhanced = 6;
         else
             hud_enhanced = 0;
         bullets = 6;
         prac_timer = 30;
-        prac_text = (hud_enhanced == 5 ? "Ammo enhanced!" : "Ammo reloaded.")
+        prac_text = (hud_enhanced == 6 ? "Ammo enhanced!" : "Ammo reloaded.")
         sound_play(asset_get("mfx_coin"));
     }
     if(attack == AT_TAUNT && prac_timer != 0 && state == PS_ATTACK_GROUND)
@@ -425,7 +425,7 @@ if(variable_instance_exists(id,"diag"))
 if(auto_reload)
 {
     if(!free)
-    set_attack(AT_TAUNT_2);
+    { tac_reload = false; set_attack(AT_TAUNT_2);}
 }
 else
 {

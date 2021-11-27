@@ -11,3 +11,5 @@ if (enemy_hitboxID.type == 1 && instance_exists(boneMark) && hit_player_obj == b
     player_id.boneObj = noone;
     instance_destroy();
 }
+
+sound_stop(sound_get("riolu"));

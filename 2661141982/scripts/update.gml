@@ -28,27 +28,13 @@ if(lure_timer == 1)
     white_flash_timer = 8;
 }
 //lol
-if (attack == AT_USPECIAL)
-{
-	if (window_timer == 1 and window == 4) taunt_fstrong = false;
-	
-	if (taunt_down and window == 4)
-	{
-	    taunt_fstrong = true;
-	}
-	
-	if (taunt_fstrong and window_timer == 1)
-	{
-	    sound_play(sound_get("hado"));
-	    taunt_fstrong = false;
-	}
-}
+
 
 if (attack == AT_NSPECIAL)
 {
 	if (window_timer == 1 and window == 1) taunt_fstrong = false;
 	
-	if (taunt_down and window == 1)
+	if (taunt_down and window == 1 and window_timer == 1)
 	{
 	    taunt_fstrong = true;
 	}
@@ -64,7 +50,7 @@ if (attack == AT_FSPECIAL)
 {
 	if (window_timer == 1 and window == 1) taunt_fstrong = false;
 	
-	if (taunt_down and window == 1)
+	if (taunt_down and window == 1 and window_timer == 1)
 	{
 	    taunt_fstrong = true;
 	}
@@ -80,7 +66,7 @@ if (attack == AT_USPECIAL)
 {
 	if (window_timer == 1 and window == 1) taunt_fstrong = false;
 	
-	if (taunt_down and window == 1)
+	if (taunt_down and window == 1 and window_timer == 1)
 	{
 	    taunt_fstrong = true;
 	}

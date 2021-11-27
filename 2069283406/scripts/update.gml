@@ -11,7 +11,7 @@ if canceltime > 1 {
 	}
 	
 	if canceltime > 50 {
-	if state != PS_ATTACK_AIR and state != PS_ATTACK_GROUND {
+		if (( state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND ) && window == get_attack_value(attack, AG_NUM_WINDOWS) && window_timer > get_window_value(attack, get_attack_value(attack, AG_NUM_WINDOWS), AG_WINDOW_LENGTH) - 2) {
 		
 	if !free {
 		set_state(PS_PRATLAND)
@@ -568,6 +568,10 @@ if get_gameplay_time() <= 120 && sakura == 0 and taunt_pressed && get_player_col
 
 if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR{
 	attacking = true
+} else {
+	if countering = 1 {
+		countering = 0
+	}
 }
 	
 if state != PS_ATTACK_GROUND and state != PS_ATTACK_AIR{

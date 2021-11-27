@@ -105,7 +105,7 @@ var heal_player = instance_place(x, y, oPlayer)
   	    	sound_play(asset_get("sfx_may_arc_hit"));
 			spawn_hit_fx( heal_player.x  , heal_player.y , tauntpar1 )
 			spawn_hit_fx( x  , y , tauntpar1 )
-		heal_player.supply += 6
+		heal_player.supply += 8
 		take_damage( heal_player.player, -1 , -8 )
 		destroyed = 1
 	}

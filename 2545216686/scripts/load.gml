@@ -12,7 +12,7 @@ sprite_change_offset("dashturn", 40, 70);
 sprite_change_offset("hurt", 64, 98);
 sprite_change_offset("bighurt", 56, 62);
 sprite_change_offset("hurtground", 62, 98);
-sprite_change_offset("bouncehurt", 120, 80);
+sprite_change_offset("bouncehurt", 64, 98);
 sprite_change_offset("spinhurt", 50, 60);
 sprite_change_offset("uphurt", 96, 118);
 sprite_change_offset("downhurt", 50, 50);
@@ -28,7 +28,7 @@ sprite_change_offset("landinglag", 56, 68);
 
 //Defense
 sprite_change_offset("parry", 56, 70);
-sprite_change_offset("roll_forward", 56, 138);
+sprite_change_offset("roll_forward", 78, 138);
 sprite_change_offset("roll_backward", 84, 138);
 sprite_change_offset("airdodge", 100, 118);
 sprite_change_offset("waveland", 84, 138);
