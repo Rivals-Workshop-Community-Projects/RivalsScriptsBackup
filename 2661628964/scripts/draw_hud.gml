@@ -1,0 +1,12 @@
+//draw_debug_text( temp_x+8, temp_y-24,  string(stock_owner))
+//draw_debug_text( temp_x+32, temp_y-24,  string(stock_owner_id))
+draw_sprite(sprite_get("meowth_hud"), meowth_down, temp_x+24, temp_y-20)
+draw_sprite(sprite_get("hp"), meowth_hp/2, temp_x+34, temp_y-4)
+draw_sprite(sprite_get("assist"), meowth_timer/60, temp_x+34, temp_y+2)
+//draw_debug_text( temp_x+24, temp_y-24,  string(meowth_active))
+
+draw_sprite(sprite_get("osha_hud"), oshawott_down, temp_x+76, temp_y-20)
+draw_sprite(sprite_get("hp"), oshawott_hp/2, temp_x+86, temp_y-4)
+draw_sprite(sprite_get("assist"), oshawott_timer/60, temp_x+86, temp_y+2)
+//draw_debug_text( temp_x+76, temp_y-24,  string(oshawott_active))
+//draw_debug_text( temp_x+76, temp_y-24,  string(uspec_limit))

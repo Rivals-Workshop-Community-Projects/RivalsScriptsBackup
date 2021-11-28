@@ -81,6 +81,9 @@ sprite_change_offset("doll", 40, 80);
 
 sprite_change_offset("indicator", 7, 5);
 
+sprite_change_offset("particle1", 12, 12);
+sprite_change_offset("particle2", 12, 12);
+
 set_victory_theme(sound_get("victory"));
 
 set_victory_bg(sprite_get("victory_bg"))

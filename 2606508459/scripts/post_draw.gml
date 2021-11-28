@@ -19,12 +19,7 @@ if (elec_target != noone)
     
     with (elec_target)
     {
-        outline_color = [ _r, _g, _b ];
-        init_shader();
-        outline_color = [ 0, 0, 0 ];
-    }
-}
-
+        outline_color = [ _r, _g, _b ];        init_shader();        outline_color = [ 0, 0, 0 ];    }} // WARN: Possible Desync. Object var set in draw script. Consider using `var` or creating constants in `init.gml`.
 //====> DOWN B #######################################################
 
 if (dspecial_symbol_contA > 0)

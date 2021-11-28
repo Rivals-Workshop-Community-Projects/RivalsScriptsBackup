@@ -9,8 +9,6 @@ var ig = 1;
 set_window_value(AT_JAB, ig, AG_WINDOW_TYPE, 1);
 set_window_value(AT_JAB, ig, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_JAB, ig, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_JAB, ig, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_JAB, ig, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
 
 ig++;
 
@@ -19,6 +17,8 @@ set_window_value(AT_JAB, ig, AG_WINDOW_TYPE, 1);
 set_window_value(AT_JAB, ig, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_JAB, ig, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, ig, AG_WINDOW_ANIM_FRAME_START, 1);
+set_window_value(AT_JAB, ig, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_JAB, ig, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
 
 ig++;
 
@@ -46,6 +46,8 @@ set_window_value(AT_JAB, ig, AG_WINDOW_TYPE, 1);
 set_window_value(AT_JAB, ig, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_JAB, ig, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, ig, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(AT_JAB, ig, AG_WINDOW_HSPEED, 3);
+set_window_value(AT_JAB, ig, AG_WINDOW_ANIM_FRAME_START, 5);
 
 ig++;
 
@@ -72,6 +74,7 @@ ig++;
 set_window_value(AT_JAB, ig, AG_WINDOW_TYPE, 1);
 set_window_value(AT_JAB, ig, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_JAB, ig, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_JAB, ig, AG_WINDOW_HSPEED, 3);
 set_window_value(AT_JAB, ig, AG_WINDOW_ANIM_FRAME_START, 13);
 
 ig++;

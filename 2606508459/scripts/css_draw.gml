@@ -15,6 +15,11 @@ var rec_h = 3;      //height
 var rec_xm = 3;     //x margin
 var rec_ym = 2;     //y margin
 
+var alt_arr = [
+    ["charselect2", [15, 16, 18, 19]],
+    ["charselect3", [17]],
+]
+
 var arr_peeps = [
     ["Fernet", "KeroBerry1/The5oul", 0, "@"]
     ,["Olympia", "Sprite_Star0", 2, "@"]
@@ -31,13 +36,14 @@ var arr_peeps = [
     ,["Techno & Tenor", "BobTheGUYYYYY", 14, "@"]
     ,["Tak", "Taktaagic", 15, "@"]
     //,["Lukastar", "Lukaru", 16, "@"]
-    ,["Fox", "Alt by Zerks", 17, ""]
+    //,["Fox", "Alt by Zerks", 17, ""]
+    ,["Anglara", "Laylowthetyrant", 20, "@"]
     ,["T. Gear", "KeroBerry1/The5oul", 0, "@"]
     ,["TuQiu", "Usagibun1", 9, "@"] 
     ,["Kiera", "YeahBeezii", 18, "@"]
     ,["A. Master", "KeroBerry1", 0, "@"]
     ,["Daora", "Opengunner", 19, "@"]
-    ,["Halloween", "2021 Dev Derby", 20, ""]
+    //,["Halloween", "2021 Dev Derby", 21, ""]
 ];
 
 var arr_secret = [
@@ -95,14 +101,23 @@ else
 
 //====> DRAW ALT CHAR SELECT
 
-//BLUE EXCEPTION
-if (curr_alt == 17)
+//Lookup curr_alt against alt_A and alt_B arrays
+var _useAlt = noone;
+
+for (var i = 0; i < array_length_1d(alt_arr); i++)
 {
-    draw_sprite_ext( sprite_get("charselect3"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1 );
+    if (_useAlt == noone)
+    {
+        for (var ix = 0; ix < array_length_1d(alt_arr[i][1]); ix++)
+        {
+            if (alt_arr[i][1][ix] == curr_alt) { _useAlt = alt_arr[i][0]; }
+        }
+    }
 }
-else if (curr_alt >= 15)
+
+if (_useAlt != noone)
 {
-    draw_sprite_ext( sprite_get("charselect2"), 0, x + 8, y + 8, 2, 2, 0, c_white, 1 );
+    draw_sprite_ext( sprite_get(_useAlt), 0, x + 8, y + 8, 2, 2, 0, c_white, 1 );
 }
 
 //====> WRITE ON CSS

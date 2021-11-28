@@ -38,6 +38,7 @@ switch atk {
 if atk == AT_NSPECIAL && hnum == 4 {
     if hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND {
         hit_player_obj.x = lerp(hit_player_obj.x, my_hitboxID.x, 0.8)
+        hit_player_obj.should_make_shockwave = false
     }
 }
 

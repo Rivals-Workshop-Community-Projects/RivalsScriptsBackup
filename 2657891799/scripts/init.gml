@@ -2,6 +2,9 @@ timer = 0;
 
 is_greninja = true
 
+set_hit_particle_sprite(1, sprite_get("particle1"));
+set_hit_particle_sprite(2, sprite_get("particle2"));
+
 vfx_airdodge = hit_fx_create(sprite_get("airdodge_vfx"), 20)
 vfx_water_large = hit_fx_create(sprite_get("vfx_water_large"), 28)
 vfx_water_medium = hit_fx_create(sprite_get("vfx_water_medium"), 24)

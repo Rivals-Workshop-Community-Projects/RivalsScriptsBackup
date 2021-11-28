@@ -9,6 +9,10 @@ switch (my_hitboxID.attack)
         print_debug(string(hit_player)); //player that parried your hitbox
         print_debug(string(my_hitboxID)); //the hitbox that was parried
         */
+        can_jump = false;
+        break;
+    case AT_NSPECIAL_2:
+        can_jump = false;
         break;
     case AT_FSPECIAL:
         //special_parried_cool = special_parried_cool_c;

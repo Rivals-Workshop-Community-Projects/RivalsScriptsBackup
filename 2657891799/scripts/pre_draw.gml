@@ -56,7 +56,17 @@ if shuriken_charge == 3 && timer mod 60 < 12 {
 gpu_set_fog(0, c_white, 0, 0);
 gpu_set_alphatestenable(false);
 
-if ss_start {
+//shadow sneak indicator
+if ss_type == 0 && (ss_start || ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_FSPECIAL && image_index < 5)) {
+    if ss_start var _spr = sprite_index
+    else var _spr = sprite_get("airdodge")
+    gpu_set_alphatestenable(true);
+    gpu_set_fog(1, c_black, 0, 1);
+    draw_sprite_ext(_spr, image_index, ss_x, y, spr_dir, 1, 0, c_white, 0.4)
+    gpu_set_fog(0, c_white, 0, 0);
+    gpu_set_alphatestenable(false);
+}
+if ss_start && ss_type != 0 {
     var w = 40
     var h = 8
     draw_set_alpha(0.6)

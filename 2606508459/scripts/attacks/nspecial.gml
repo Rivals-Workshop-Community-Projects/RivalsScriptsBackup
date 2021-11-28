@@ -11,6 +11,11 @@ var ig = 1;
 set_window_value(AT_NSPECIAL, ig, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NSPECIAL, ig, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NSPECIAL, ig, AG_WINDOW_ANIM_FRAMES, 7);
+set_window_value(AT_NSPECIAL, ig, AG_WINDOW_HAS_SFX, 1);
+//set_window_value(AT_NSPECIAL, ig, AG_WINDOW_SFX, sound_get("charge_3"));
+//set_window_value(AT_NSPECIAL, ig, AG_WINDOW_SFX, asset_get("sfx_frog_fspecial_charge_full"));
+set_window_value(AT_NSPECIAL, ig, AG_WINDOW_SFX, asset_get("sfx_frog_fspecial_charge_gained_1"));
+set_window_value(AT_NSPECIAL, ig, AG_WINDOW_SFX_FRAME, 11);
 
 ig++;
 
@@ -43,6 +48,8 @@ set_window_value(AT_NSPECIAL, ig, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NSPECIAL, ig, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_NSPECIAL, ig, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_NSPECIAL, ig, AG_WINDOW_ANIM_FRAME_START, 19);
+set_window_value(AT_NSPECIAL, ig, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_NSPECIAL, ig, AG_WINDOW_SFX, asset_get("sfx_frog_fspecial_charge_full"));
 
 ig++;
 
@@ -166,6 +173,7 @@ set_hitbox_value(AT_NSPECIAL, ig, HG_VISUAL_EFFECT, 22);
 ig++;
 
 //Catooken Hitbox
+/*
 set_hitbox_value(AT_NSPECIAL, ig, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, ig, HG_LIFETIME, 70);
 set_hitbox_value(AT_NSPECIAL, ig, HG_PRIORITY, 2);
@@ -183,5 +191,6 @@ set_hitbox_value(AT_NSPECIAL, ig, HG_HITPAUSE_SCALING, .8);
 set_hitbox_value(AT_NSPECIAL, ig, HG_PROJECTILE_HSPEED, 4);
 set_hitbox_value(AT_NSPECIAL, ig, HG_PROJECTILE_VSPEED, 0);
 set_hitbox_value(AT_NSPECIAL, ig, HG_VISUAL_EFFECT, 22);
+*/
 
 //END

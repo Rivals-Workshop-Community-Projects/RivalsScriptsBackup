@@ -74,6 +74,7 @@ if state == PS_ATTACK_AIR {
 }
 
 prev_vsp = vsp
+if !hitstop hitstun = clamp(hitstun-1,0,10000000000000000000)
 
 if destroy {
     player_id.doll_id = noone
@@ -112,13 +113,15 @@ if hbox.type == 1 {
         has_hit = true;
         hit_doll = other.id;
         
-        if !is_greninja || (is_greninja && ((state_timer > 1000 && attack == AT_DAIR) || attack == AT_UTHROW)) {
+        if is_greninja && ((state_timer > 1000 && attack == AT_DAIR) || attack == AT_UTHROW) {
             can_dead = true
         }
         if hitstop < desired_hitstop {
             hitstop = desired_hitstop;
             hitstop_full = desired_hitstop;
         }
+        
+        if !is_greninja other.damage += hbox.damage
         
         if is_greninja other.recent_player = id
         other.last_hit = id
@@ -147,9 +150,10 @@ hitstop = floor(desired_hitstop);
 if article_should_lockout hit_lockout = hbox.no_other_hit;
 
 //Default Hitstun Calculation
-hitstun = (hbox.kb_value * 4 * ((kb_adj - 1) * 0.6 + 1) + hbox.damage * 0.12 * hbox.kb_scale * 4 * 0.65 * kb_adj) + 12;
-hitstun_full = hitstun;
-            
+if !hit_player_obj.is_greninja {
+    hitstun = (hbox.kb_value * 4 * ((kb_adj - 1) * 0.6 + 1) + hbox.damage * 0.12 * hbox.kb_scale * 4 * 0.65 * kb_adj) + 12;
+    hitstun_full = hitstun;
+}            
 //Default Knockback Calculation
 
 // if other.force_flinch && !other.free orig_knock = 0; //uncomment this line for grounded articles.
@@ -160,7 +164,7 @@ kb_dir = get_hitbox_angle(hbox);
 hsp = lengthdir_x(orig_knock, kb_dir);
 vsp = lengthdir_y(orig_knock, kb_dir);
 
-if can_dead && orig_knock > 10 {
+if can_dead || damage >= 12 {
     state = PS_DEAD
     state_timer = 0
     hit_counter++

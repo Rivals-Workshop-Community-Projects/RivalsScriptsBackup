@@ -86,7 +86,12 @@ switch attack {
         }
     }
     
-    move_cooldown[AT_NSPECIAL] = 15
+    //stall
+    if window <= 5 {
+        vsp = clamp(vsp, -8, 5)
+    }
+    
+    move_cooldown[AT_NSPECIAL] = 0
     
     if !free && window <= 3 && window_timer == window_length spawn_base_dust(x, y, "n_wavedash", spr_dir)
     
@@ -113,6 +118,7 @@ switch attack {
         set_window_value(AT_NSPECIAL, 6, AG_WINDOW_SFX, shuriken_charge == 1 ? asset_get("sfx_swipe_weak2") : (shuriken_charge == 2 ? sound_get("bar_swing_med1") : sound_get("bar_swing_med2")));
         var shkn = create_hitbox(AT_NSPECIAL, shuriken_charge, x+40*spr_dir, y-25)
             shkn.spr_dir = spr_dir
+            shkn.fx_particles = get_hitbox_value(AT_NSPECIAL, shuriken_charge, HG_HIT_PARTICLE_NUM)
         shuriken_charge = 0
     }
     break;
@@ -126,7 +132,7 @@ switch attack {
     if ss_type != 0 {
         var doll_obj = doll_exists() ? hit_doll : doll_id
 
-        if window == 1 && doll_obj != noone && doll_obj != undefined && !(doll_obj.state == PS_DEAD && doll_obj.recent_player != id) {
+        if window == 1 && doll_obj != noone && doll_obj != undefined && !((doll_obj.state == PS_DEAD || doll_obj.hitstun > 0) && doll_obj.recent_player != id) {
             if state_timer == 6 {
                 doll_obj.state = PS_ATTACK_AIR
                 doll_obj.state_timer = 0
@@ -269,10 +275,6 @@ switch attack {
         }
     }
     
-    if window == 4 {
-        uspec_draw_dir = lerp(uspec_draw_dir, 90, 0.2)
-    }
-    
     if (window == 3 && window_timer > 2) || window == 4 {
         can_wall_jump = true
         
@@ -283,10 +285,26 @@ switch attack {
             move_cooldown[AT_USPECIAL] = 20
         }
     }
+    
+    if window == 4 {
+        uspec_draw_dir = lerp(uspec_draw_dir, 90, 0.2)
+        
+        if special_pressed {
+            ss_start = true
+            ss_timer = 90
+            ss_count = 0
+            if left_down && !right_down spr_dir = -1
+            else if !left_down && right_down spr_dir = 1
+            else if dcos(uspec_dir) != 0 spr_dir = sign(dcos(uspec_dir))
+            ss_dist = 60*spr_dir
+            ss_type = 0
+            reset_window_value(AT_FSPECIAL, 2, AG_WINDOW_GOTO);
+        }
+    }
     break;
     
     case AT_DSPECIAL:
-    move_cooldown[AT_DSPECIAL] = 40
+    move_cooldown[AT_DSPECIAL] = 60
     if state_timer == 6 {
         sound_play(asset_get("mfx_star"))
         spawn_hit_fx(x-50*spr_dir,y-30,301)

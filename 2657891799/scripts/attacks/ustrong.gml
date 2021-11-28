@@ -54,6 +54,7 @@ set_hitbox_value(AT_USTRONG, 1, HG_EXTRA_HITPAUSE, 8);
 set_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, vfx_water_small);
+set_hitbox_value(AT_USTRONG, 1, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(AT_USTRONG, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, 1);
 
@@ -77,6 +78,7 @@ set_hitbox_value(AT_USTRONG, 2, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_USTRONG, 2, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, vfx_water_medium);
+set_hitbox_value(AT_USTRONG, 2, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, 2);
 
 set_hitbox_value(AT_USTRONG, 3, HG_PARENT_HITBOX, 2);
@@ -108,5 +110,6 @@ set_hitbox_value(AT_USTRONG, 4, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_USTRONG, 4, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_USTRONG, 4, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));
 set_hitbox_value(AT_USTRONG, 4, HG_VISUAL_EFFECT, vfx_water_large);
+set_hitbox_value(AT_USTRONG, 4, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_USTRONG, 4, HG_TECHABLE, 1);
 set_hitbox_value(AT_USTRONG, 4, HG_HITBOX_GROUP, 2);

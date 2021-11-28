@@ -50,9 +50,9 @@ set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 6);
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.4);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_CUSTOM_GRAVITY, 0.6);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.4);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.2);
 
 //proj
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_TYPE, 2);
@@ -76,6 +76,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));
 set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, vfx_water_large);
+set_hitbox_value(AT_USPECIAL, 1, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_LOCKOUT, 10);
 

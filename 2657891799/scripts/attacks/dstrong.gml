@@ -46,6 +46,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_waterhit_heavy2"));
 set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, vfx_water_large);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_DSTRONG, 1, HG_HIT_PARTICLE_NUM, 1);
 
 set_hitbox_value(AT_DSTRONG, 2, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
@@ -55,3 +56,4 @@ set_hitbox_value(AT_DSTRONG, 2, HG_LIFETIME, 4);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_X, -45);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_Y, -15);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_DSTRONG, 2, HG_HIT_PARTICLE_NUM, 1);

@@ -226,10 +226,10 @@ if (_currHB != noone)
             
             if (_HBHit.player_id != o)
             {
-                if (x > _HBHit.x)       { other._targetX += floor(rd * 1.5); }
-                else                    { other._targetX -= floor(rd * 1.5); }
-                if (y > _HBHit.y)       { other._targetY += floor(vrd * 1.5); }
-                else                    { other._targetY -= floor(vrd * 1.5); }
+                if (x > _HBHit.x)       { other._targetX += floor(rd * 2.5); }
+                else                    { other._targetX -= floor(rd * 2.5); }
+                if (y > _HBHit.y)       { other._targetY += floor(vrd * 2.5); }
+                else                    { other._targetY -= floor(vrd * 2.5); }
             }
             else if (_HBHit.player_id == o && _HBHit.attack == AT_NSPECIAL)
             {
@@ -252,6 +252,7 @@ if (_currHB != noone)
                         
                         //Forward weak
                         case AT_JAB:
+                        case AT_DATTACK:
                             if (o.image_xscale > 0)     { other._targetX += rd; }
                             else                        { other._targetX -= rd; }
                             break;
@@ -264,9 +265,7 @@ if (_currHB != noone)
                             break;
                         
                         //Forward
-                        case AT_DATTACK:
                         case AT_FTILT:
-                        case AT_FAIR:
                             if (o.image_xscale > 0)     { other._targetX += rd * modf[0]; }
                             else                        { other._targetX -= rd * modf[0]; }
                             break;
@@ -305,12 +304,19 @@ if (_currHB != noone)
                             break;
                         
                         //Forward Up Strong
-                        case AT_USTRONG:
-                        case AT_USPECIAL:
+                        /*
                             if (o.image_xscale > 0)     { other._targetX += rd * modf[1]; }
                             else                        { other._targetX -= rd * modf[1]; }
                             other._targetY -= vrd * modf[1];
                             _fxDirection = 1;
+                            break;*/
+                        
+                        //Forward Down, low rebound
+                        case AT_FAIR:
+                            if (o.image_xscale > 0)     { other._targetX += rd * modf[0]; }
+                            else                        { other._targetX -= rd * modf[0]; }
+                            other._targetY += vrd * modf[0];
+                            _fxDirection = 2;
                             break;
                         
                         //Forward Down, jump
@@ -329,9 +335,31 @@ if (_currHB != noone)
                             _reverseVisual = -1;
                             break;
                         
-                        //Straight Up Weak
+                        //Backwards weak
                         case AT_DTILT:
+                            if (o.image_xscale > 0)     { other._targetX -= rd * modf[2]; }
+                            else                        { other._targetX += rd * modf[2]; }
+                            _reverseVisual = -1;
+                            break;
+                            
+                        //Backwards Up strong
+                        case 42:
+                            if (o.image_xscale > 0)     { other._targetX -= rd * modf[1]; }
+                            else                        { other._targetX += rd * modf[1]; }
                             other._targetY -= vrd;
+                            _reverseVisual = -1;
+                            break;
+                        
+                        //Straight Up Weak
+                        /*case AT_DTILT:
+                            other._targetY -= vrd;
+                            _fxDirection = 2;
+                            break;*/
+                          
+                        //Straight Up Strong  
+                        case AT_USTRONG:
+                        case AT_USPECIAL:
+                            other._targetY -= vrd * modf[3];
                             _fxDirection = 2;
                             break;
                         
@@ -368,8 +396,10 @@ if (_currHB != noone)
             {
                 //Sound
                 //sound_play(asset_get("sfx_clairen_spin"));
-                sound_play(asset_get("sfx_clairen_hit_med"));
-                sound_play(asset_get("sfx_absa_whip3"));
+                //sound_play(asset_get("sfx_clairen_hit_med"));
+                //sound_play(asset_get("sfx_absa_whip3"));
+                sound_play(sound_get("electric hit"));
+                sound_play(sound_get("hard hit"));
                 
                 var use_sprCharge = other._charge > 0 ? other._charge + 1 : 1;
                 
@@ -436,10 +466,14 @@ if (_currHB != noone)
                             default:
                             case 0:
                                 o.old_vsp = o.vsp; break;
-                            case 1:
+                            /*case 1:
                                 o.old_vsp = o.vsp > 0 ? -o.vsp : o.vsp; break;
                             case 2:
-                                o.old_vsp = o.vsp < 0 ? -o.vsp : o.vsp; break;
+                                o.old_vsp = o.vsp < 0 ? -o.vsp : o.vsp; break;*/
+                            case 1:
+                                o.old_vsp = -8; break;
+                            case 2:
+                                o.old_vsp = 8; break;
                         }
                     }
                     else
@@ -484,9 +518,9 @@ if (_fxCool <= 0)
             c_owner.flag_ballCall = 1;
         }
     }
-    else if (!free)
+    else if (!free && place_meeting(x, y, asset_get("par_block")))
     {
-        _targetY = y - c_HBVRepositionDist;
+        _targetY = y - c_HBVRepositionDist + 35;
         
         sound_play(asset_get("sfx_clairen_hit_med"));
         spawn_hit_fx( x + fx_ballBounce_x, y + fx_ballBounce_y, fx_ballBounce );
@@ -497,10 +531,6 @@ if (_fxCool <= 0)
         {
             c_owner.flag_ballCall = 1;
         }
-    }
-    else
-    {
-        _consUnfreeF = 0;
     }
 }
 
@@ -606,12 +636,12 @@ if (c_HBLifespan > 0 &&
 {
     var lock = 0; //1 = left, 2 = right, 10 = up, 20 = down
     
-    if (x < view_get_xview()) { lock = 1; } //Snap Left
-    if (x > view_get_xview() + 958) { lock = 2; } //Snap Rigth
-    if (y < view_get_yview()) { lock += 10; } //Snap Up
-    if (y > view_get_yview() + 486) { lock += 20; } //Snap Down
+    if (x < view_get_xview()) { lock = 1; }  //Snap Left    
+    if (x > view_get_xview() + 958) { lock = 2; }  //Snap Rigth    
+    if (y < view_get_yview()) { lock += 10; }  //Snap Up    
+    if (y > view_get_yview() + 486) { lock += 20; }  //Snap Down       
     
-    if (lock > 0)
+    if (lock > 0) // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")). // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
     {
         _offscreen = true;
         var nso = c_owner.nspecial_offscreen;
@@ -619,23 +649,62 @@ if (c_HBLifespan > 0 &&
         switch (lock)
         {
             default:
-            case 0:  break;
-            case 1:  _offscreenX = 2                   ; _offscreenY = y - view_get_yview(); _offscreenId = 4; break; //Left
-            case 2:  _offscreenX = 958                 ; _offscreenY = y - view_get_yview(); _offscreenId = 0; break; //Right
-            case 10: _offscreenX = x - view_get_xview(); _offscreenY = 0                   ; _offscreenId = 6; break; //Up
-            case 11: _offscreenX = 12                  ; _offscreenY = 10                  ; _offscreenId = 5; break; //Up Left
-            case 12: _offscreenX = 948                 ; _offscreenY = 10                  ; _offscreenId = 7; break; //Up Right
-            case 20: _offscreenX = x - view_get_xview(); _offscreenY = 486                 ; _offscreenId = 2; break; //Down
-            case 21: _offscreenX = 12                  ; _offscreenY = 476                 ; _offscreenId = 3; break; //Down Left
-            case 22: _offscreenX = 948                 ; _offscreenY = 476                 ; _offscreenId = 1; break; //Down Right
-        }
+            case 0:  
+                break;
+            case 1:  
+                _offscreenX = 2;
+                _offscreenY = y - view_get_yview();
+                _offscreenId = 4;
+                break; 
+            //Left            
+            case 2:
+                _offscreenX = 958; 
+                _offscreenY = y - view_get_yview(); 
+                _offscreenId = 0; 
+                break;
+            //Right            
+            case 10: 
+                _offscreenX = x - view_get_xview(); 
+                _offscreenY = 0;
+                _offscreenId = 6; 
+                break; 
+            //Up            
+            case 11:
+                _offscreenX = 12; 
+                _offscreenY = 10; 
+                _offscreenId = 5; 
+                break; 
+            //Up Left            
+            case 12: 
+                _offscreenX = 948; 
+                _offscreenY = 10; 
+                _offscreenId = 7; 
+                break; 
+            //Up Right
+            case 20: _offscreenX = x - view_get_xview();
+                _offscreenY = 486; 
+                _offscreenId = 2; 
+                break; 
+            //Down
+            case 21: 
+                _offscreenX = 12; 
+                _offscreenY = 476; 
+                _offscreenId = 3; 
+                break; 
+            //Down Left
+            case 22: 
+                _offscreenX = 948; 
+                _offscreenY = 476; 
+                _offscreenId = 1; 
+                break; 
+            //Down Right
+        } // WARN: Possible Desync. Consider using get_instance_x(asset_get("camera_obj")). // WARN: Possible Desync. Consider using get_instance_y(asset_get("camera_obj")).
     }
     else
     {
         _offscreen = false;
     }
 }
-
 //====> Manage cooldown variables
 //Reset after a cycle
 _antiGravity_f--;       if (_antiGravity_f < 0)         { _antiGravity_f = c_antiGravity_f; }

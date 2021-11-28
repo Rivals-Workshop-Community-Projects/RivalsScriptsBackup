@@ -22,7 +22,7 @@ sprite_change_offset("parry", 48, 94);
 sprite_change_offset("roll_forward", 48, 94);
 sprite_change_offset("roll_backward", 48, 94);
 sprite_change_offset("airdodge", 48, 94);
-sprite_change_offset("waveland", 35, 59); //!!!!!
+sprite_change_offset("waveland", 35, 60); //!!!!!
 sprite_change_offset("tech", 35, 59); //!!!!!
 
 //Hurt Animations
@@ -72,6 +72,9 @@ sprite_change_offset("nspecial_air", 80, 94);
 sprite_change_offset("nspecial_down", 47, 91); //!!!!!
 sprite_change_offset("nspecial_2", 48, 94);
 sprite_change_offset("nspecial_2_air", 35, 91); //!!!!!
+sprite_change_offset("nspecial_3", 48, 94);
+sprite_change_offset("nspecial_3_air", 48, 94);
+sprite_change_offset("fail", 80, 94);
 sprite_change_offset("fspecial", 80, 126);
 sprite_change_offset("fspecial_2", 80, 94);
 sprite_change_offset("uspecial", 80, 126);
@@ -129,37 +132,50 @@ sprite_change_offset("ballBlast_down", 112, 62);
 sprite_change_offset("ballBlast_up", 112, 62);
 
 sprite_change_offset("fspecial_shine", 45, 66);
+sprite_change_offset("shine", 80, 94);
+sprite_change_offset("bling", 112, 94);
 
 sprite_change_offset("MPModeMid", 13, 17);
 sprite_change_offset("Offscreen", 80, 62);
 sprite_change_offset("Offscreen2", 80, 62);
+sprite_change_offset("catooken_ind", 16, 32);
 
 sprite_change_offset("brand", 0, 0);
 sprite_change_offset("halloween_drop", 48, 94);
 
 //COMP
-//sprite_change_offset("kart", 6, 6);
+sprite_change_offset("kart", 6, 6);
 sprite_change_offset("regigigas_kart", 7, 7);
 
 //V-SOUND
 set_victory_bg(sprite_get("victory_bg"));
 
 //BLUE EXCEPTION
-if (get_player_color(player) == 17)
+try
 {
-    set_victory_portrait( sprite_get( "portrait3" ));
-    set_victory_sidebar( sprite_get( "result_small3" ));
-    set_victory_theme(sound_get("fernet_victory"));
+    if (get_player_color(player) == 17)
+    {
+        set_victory_portrait( sprite_get( "portrait3" ));
+        set_victory_sidebar( sprite_get( "result_small3" ));
+        set_victory_theme(sound_get("fernet_victory"));
+    }
+    
+    else if (get_player_color(player) >= 15)
+    {
+        set_victory_portrait( sprite_get( "portrait2" ));
+        set_victory_sidebar( sprite_get( "result_small2" ));
+        set_victory_theme(sound_get("fernet_victory"));
+    }
+    else
+    {
+        set_victory_portrait( sprite_get( "portrait" ));
+        set_victory_sidebar( sprite_get( "result_small" ));
+        set_victory_theme(sound_get("OGG_Fernet_Victory_Theme"));
+    }
 }
-
-else if (get_player_color(player) >= 15)
+catch (er)
 {
-    set_victory_portrait( sprite_get( "portrait2" ));
-    set_victory_sidebar( sprite_get( "result_small2" ));
-    set_victory_theme(sound_get("fernet_victory"));
-}
-else
-{
+    print_debug("caught")
     set_victory_portrait( sprite_get( "portrait" ));
     set_victory_sidebar( sprite_get( "result_small" ));
     set_victory_theme(sound_get("OGG_Fernet_Victory_Theme"));

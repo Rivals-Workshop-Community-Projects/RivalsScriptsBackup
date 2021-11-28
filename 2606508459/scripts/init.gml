@@ -11,6 +11,7 @@ dip_inputHadoken = false;
 dip_MP = false;
 dip_ballHitstop = true;
 dip_boing = true;
+dip_swapSpecial = true;
 
 /*
 dip_mode = get_player_color(player);
@@ -47,6 +48,8 @@ fx_hardway_y = -156;
 
 fx_gado_duration = 20;
 fx_gado_End = hit_fx_create( sprite_get("ball_formC_End"), fx_gado_duration );
+//fx_shine = hit_fx_create( sprite_get("shine"), 15 );
+fx_bling = hit_fx_create( sprite_get("bling"), 16 );
 
 fx_nspecial_dust1_duration = 30;
 fx_nspecial_dust1 = hit_fx_create( sprite_get("nspecial_dust1"), fx_nspecial_dust1_duration );
@@ -107,10 +110,6 @@ nspecial_targetY = 0;
 nspecial_held_c = 20;
 nspecial_held = 0;
 nspecial_postfail = false;
-
-nspecial_hadoInput = 0;
-nspecial_hado_cool = 0;
-nspecial_hado_lock = 0;
 
 nspecial_offscreen = sprite_get("Offscreen");;
 nspecial_offscreen2 = sprite_get("Offscreen2");;
@@ -256,7 +255,7 @@ max_jump_hsp = 4; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 6; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .35;
-prat_fall_accel = .5; //multiplier of air_accel while in pratfall
+prat_fall_accel = .7; //.5; //multiplier of air_accel while in pratfall
 air_friction = .02;
 max_djumps = 1;
 double_jump_time = 35; //the number of frames to play the djump animation. Can't be less than 31.
@@ -271,9 +270,9 @@ knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = ligh
 
 land_time = 6; //normal landing frames
 prat_land_time = 10;
-wave_land_time = 8;
+wave_land_time = 10;
 wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .04; //grounded deceleration when wavelanding
+wave_friction = .02; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 2;

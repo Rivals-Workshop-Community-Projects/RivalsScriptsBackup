@@ -1,0 +1,3 @@
+//hitbox init
+
+sludgeadd = false;

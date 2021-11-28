@@ -251,6 +251,3 @@ if (my_hitboxID.attack == AT_NSPECIAL &&
     y = tar_y;
 }
 */
-
-
-

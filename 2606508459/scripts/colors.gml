@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 43, 14, 29 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 21 );
+set_num_palettes( 20 );
 
 // Olympia
 set_color_profile_slot( 1, 0, 255, 64, 179 ); //Fire
@@ -154,7 +154,7 @@ set_color_profile_slot( 12, 3, 95, 84, 115 ); //Scarf
 set_color_profile_slot( 12, 4, 97, 52, 65 ); //Tail tip
 set_color_profile_slot( 12, 5, 117, 99, 130 ); //Eyes1
 set_color_profile_slot( 12, 6, 167, 165, 199 ); //Midriff
-set_color_profile_slot( 12, 7, 232, 118, 118 ); //Pants
+set_color_profile_slot( 12, 7, 227, 64, 64 ); //Pants
 
 // Taak
 set_color_profile_slot( 13, 0, 234, 227, 255 ); //Fire
@@ -166,15 +166,15 @@ set_color_profile_slot( 13, 5, 232, 63, 88 ); //Eyes1
 set_color_profile_slot( 13, 6, 232, 63, 88 ); //Midriff
 set_color_profile_slot( 13, 7, 199, 126, 230 ); //Pants
 
-// Fox McCloud
-set_color_profile_slot( 14, 0, 175, 172, 230 ); //Fire
-set_color_profile_slot( 14, 1, 255, 162, 0 ); //Fur
-set_color_profile_slot( 14, 2, 64, 212, 23 ); //Bra
-set_color_profile_slot( 14, 3, 199, 0, 56 ); //Scarf
-set_color_profile_slot( 14, 4, 255, 217, 217 ); //Tail tip
-set_color_profile_slot( 14, 5, 64, 143, 97 ); //Eyes1
-set_color_profile_slot( 14, 6, 64, 212, 23 ); //Midriff
-set_color_profile_slot( 14, 7, 255, 162, 0 ); //Pants
+// Anglara
+set_color_profile_slot( 14, 0, 186, 34, 77 ); //Fire
+set_color_profile_slot( 14, 1, 101, 223, 242 ); //Fur
+set_color_profile_slot( 14, 2, 251, 255, 0 ); //Bra
+set_color_profile_slot( 14, 3, 186, 34, 77 ); //Scarf
+set_color_profile_slot( 14, 4, 255, 64, 179 ); //Tail tip
+set_color_profile_slot( 14, 5, 134, 255, 47 ); //Eyes1
+set_color_profile_slot( 14, 6, 251, 255, 0 ); //Midriff
+set_color_profile_slot( 14, 7, 101, 223, 242 ); //Pants
 
 // Regular Pants
 set_color_profile_slot( 15, 0, 148, 0, 211 ); //Fire
@@ -225,16 +225,6 @@ set_color_profile_slot( 19, 4, 219, 112, 147 ); //Tail tip
 set_color_profile_slot( 19, 5, 140, 255, 0 ); //Eyes1
 set_color_profile_slot( 19, 6, 235, 241, 255 ); //Midriff
 set_color_profile_slot( 19, 7, 90, 77, 171 ); //Pants
-
-// Halloween
-set_color_profile_slot( 20, 0, 255, 68, 0 ); //Fire
-set_color_profile_slot( 20, 1, 148, 201, 169 ); //Fur
-set_color_profile_slot( 20, 2, 58, 58, 77 ); //Bra
-set_color_profile_slot( 20, 3, 58, 58, 77 ); //Scarf
-set_color_profile_slot( 20, 4, 219, 112, 147 ); //Tail tip
-set_color_profile_slot( 20, 5, 151, 209, 35 ); //Eyes1
-set_color_profile_slot( 20, 6, 148, 201, 169 ); //Midriff
-set_color_profile_slot( 20, 7, 255, 68, 0 ); //Pants
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

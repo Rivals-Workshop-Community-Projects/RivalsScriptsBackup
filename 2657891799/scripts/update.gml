@@ -16,7 +16,7 @@ if state == PS_WALL_JUMP && !clinging {
 }
 
 if state == PS_PRATFALL {
-    vsp -= 0.3
+    vsp -= 0.15
 }
 
 //shuriken vfx
@@ -64,12 +64,12 @@ if ss_start {
     
     ss_dist += dist_mult*sign(ss_dist)
     ss_dist = clamp(ss_dist, -250, 250)
-    if hit_doll != undefined && instance_exists(hit_doll) && !(attack_down || strong_down) && !(hit_doll.state == PS_DEAD && hit_doll.last_hit != id) && (hit_doll.state != PS_DEAD || hit_doll.hit_counter < 2) {
+    if hit_doll != undefined && instance_exists(hit_doll) && !(attack_down || strong_down) && !((hit_doll.hitstun > 0 || hit_doll.state == PS_DEAD) && hit_doll.last_hit != id) && ((hit_doll.hitstun == 0 && hit_doll.state != PS_DEAD) || hit_doll.hit_counter < 2) {
         ss_type = 1
         ss_doll = hit_doll
         ss_x = ss_doll.x
         ss_y = ss_doll.y-16
-    } else if doll_id != noone && instance_exists(doll_id) && !(attack_down || strong_down) && !(doll_id.state == PS_DEAD && doll_id.last_hit != id) && (doll_id.state != PS_DEAD || doll_id.hit_counter < 2) {
+    } else if doll_id != noone && instance_exists(doll_id) && !(attack_down || strong_down) && !((doll_id.hitstun > 0 || doll_id.state == PS_DEAD) && doll_id.last_hit != id) && ((doll_id.hitstun == 0 && doll_id.state != PS_DEAD) || doll_id.hit_counter < 2) {
         ss_type = 1
         ss_doll = doll_id
         ss_x = ss_doll.x
@@ -167,6 +167,7 @@ if draw_jet {
         if draw_jet_timer < 14 && !has_collided {
             var angle_index = uspec_dir/45
             var jetbox = create_hitbox(AT_USPECIAL, 1, hitbox_x, hitbox_y)
+                jetbox.fx_particles = get_hitbox_value(AT_USPECIAL, 1, HG_HIT_PARTICLE_NUM)
             switch angle_index {
                 case 0: case 4: //horizontal
                 jetbox.kb_angle = 45

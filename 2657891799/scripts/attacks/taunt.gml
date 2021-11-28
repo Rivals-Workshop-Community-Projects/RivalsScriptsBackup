@@ -35,6 +35,7 @@ set_hitbox_value(AT_TAUNT, 1, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_TAUNT, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_TAUNT, 1, HG_HIT_SFX, asset_get("sfx_waterhit_medium"));
 set_hitbox_value(AT_TAUNT, 1, HG_VISUAL_EFFECT, 0);
+set_hitbox_value(AT_TAUNT, 1, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(AT_TAUNT, 1, HG_HITBOX_GROUP, 1);
 
 set_hitbox_value(AT_TAUNT, 2, HG_PARENT_HITBOX, 1);

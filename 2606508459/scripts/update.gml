@@ -95,6 +95,7 @@ if (!free)
 
 //Hadoken Input
 
+/*
 if (dip_inputHadoken)
 {
     //Partial cancelation
@@ -151,6 +152,7 @@ if (dip_inputHadoken)
             break;
     }
 }
+*/
 
 //print_debug("HADO: " + string(nspecial_hadoInput))
 
@@ -166,7 +168,8 @@ for (var i = 0; i < pBall_amount; i++)
         
         if (!arr_pBall[i].free) 
         { 
-            arr_pBall[i].sprite_index = sprite_get("ball_formC_" + string(use_charge +  1));
+            //arr_pBall[i].sprite_index = sprite_get("ball_formC_" + string(use_charge +  1));
+            arr_pBall[i].sprite_index = sprite_get("ball_formC_2");
             
             if (fx_nspecial_ground_cool <= 0)
             {
@@ -315,7 +318,6 @@ intro_timer += intro_fpf        if (intro_timer >= intro_timerMax)      { intro_
 uspecial_hits_cool--;           if (uspecial_hits_cool < 0)             { uspecial_hits_cool = 0; }
 fx_nspecial_ground_cool--;      if (fx_nspecial_ground_cool < 0)        { fx_nspecial_ground_cool = 0; }
 special_parried_cool--;         if (special_parried_cool < 0)           { special_parried_cool = 0; }
-nspecial_hado_cool--;           if (nspecial_hado_cool < 0)             { nspecial_hado_cool = 0; }
 elec_timer--;                   if (elec_timer < 0)                     { elec_timer = 0; }
 
 //====> FUNCTIONS #######################################################

@@ -61,30 +61,16 @@ else
 if (attack == AT_NSPECIAL)
 {
     var use_spm = 0;
-    if (nspecial_hado_lock == 0)
-    {
-        if (attack_down) nspecial_hado_lock = 1;
-        if (nspecial_hadoInput == 4) nspecial_hado_lock = 2;
-    }
     
-    var is_hadoken = nspecial_hado_lock != 0
-    var use_energy = nspecial_hado_lock * 2
-    
-    if (fBall_obj != noone
-        /*&& fBall_obj._currHB == noone*/
-        && window < 8
-        && !is_hadoken)
+    if (!dip_swapSpecial
+        && fBall_obj != noone
+        && window < 8)
     {
         attack_end();
         set_state(PS_IDLE);
     }
     
-    if (is_hadoken)
-    {
-        use_spm = 2;
-        //hsp = 0;
-    }
-    else { use_spm = nspecial_mode }
+    use_spm = nspecial_mode
     
     //If the player has not enough MP run the no MP sequence
     if (window == 1)
@@ -101,24 +87,15 @@ if (attack == AT_NSPECIAL)
             set_attack_value( AT_NSPECIAL, AG_SPRITE, sprite_get ("nspecial") );
             
             nspecial_postfail = true;
-            nspecial_hadoInput = 0;
-            
-            //take_damage( player, -1, 1 );
         }
-        /*if (is_hadoken && free) 
-        {
-            window = 2;
-            window_timer = 0;
-        }*/
     }
     
     //Snap of the no MP sequence after 15 frames
     else if (window == 13)
     {
-        if (window_timer == 20)
-        {
-            attack_end();
-            set_state(PS_IDLE);
+        if (window_timer == 20)                
+        {                        
+            attack_end();            
             hurtboxID.sprite_index = asset_get("ex_guy_hurt_box");
         }
     }
@@ -142,10 +119,9 @@ if (attack == AT_NSPECIAL)
             }
             else
             {
-                if (window_timer == 1)
+                if (window_timer == 1)                                
                 {
-                    sound_play(asset_get("sfx_zap"));
-                    
+                    sound_play(sound_get("charge_1"), false, 0, .5);
                     set_attack_value( AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
                     
                     if (nspecial_charge < 2)        { window = 2; }
@@ -165,11 +141,16 @@ if (attack == AT_NSPECIAL)
             }
         }
         
+        if (window == 5 && window_timer == 1)
+        {
+            spawn_hit_fx(x - (36 * spr_dir), y - 20, fx_bling);
+        }
+        
+        
         if ((window == 2 || window == 3 || window == 4 || window == 5 || window == 6) && 
-            (!special_down || attack_down || is_hadoken))
+            (!special_down || attack_down))
         {
             if (free && use_spm == 2)   window = 10;
-            else if (is_hadoken)        window = 10;
             else                        window = 7;
             window_timer = 0;
         }
@@ -201,10 +182,13 @@ if (attack == AT_NSPECIAL)
         //Shoot
         if ((window == 8 ||
             window == 11 /*|| 
-            (window == 9 && window_timer == 5)*/) &&
-            flag_nspecial == 0 &&
-            (fBall_obj == noone || is_hadoken))
+            (window == 9 && window_timer == 5)*/)
+            && flag_nspecial == 0
+            )
         {
+            //Stop sound
+            sound_stop(sound_get( "charge_1" ));
+
             //Deduct MP
             val_mp -= nspecial_cost[use_spm];
             
@@ -217,60 +201,55 @@ if (attack == AT_NSPECIAL)
                 image_xscale *= -1;
             }
             
-            //if (is_hadoken) nspecial_charge = 5;
-            if (is_hadoken) nspecial_charge = use_energy;
-            
-            if (!is_hadoken || nspecial_hado_cool <= 0)
+            if (use_spm == 2 && free)
             {
-                nspecial_hado_cool = 60;
-                if (use_spm == 2 && free)
-                {
-                    spawnFireBall(
-                        x + (nspecial_offsetX * image_xscale),
-                        y + nspecial_offsetY,
-                        x, 
-                        y - 30, 
-                        use_spm, 
-                        nspecial_charge, 
-                        fBall_distance, 
-                        0, 
-                        false, 
-                        true
-                    );
-                }
-                else if (down_down)
-                {
-                    //spawnFireBall(x, y - 30, use_spm, nspecial_charge, fBall_distance / 2, 40, false, false);
-                    spawnFireBall(
-                        x + (nspecial_offsetX * image_xscale),
-                        y + nspecial_offsetY,
-                        x, 
-                        y - 30, 
-                        use_spm, 
-                        nspecial_charge, 
-                        fBall_distance / 2, 
-                        40, 
-                        false,
-                        false
-                    );
-                }
-                else
-                {
-                    //spawnFireBall(x, y - 30, use_spm, nspecial_charge, fBall_distance, 0, false, false);
-                    spawnFireBall(
-                        x + (nspecial_offsetX * image_xscale),
-                        y + nspecial_offsetY,
-                        x, 
-                        y - 30, 
-                        use_spm, 
-                        nspecial_charge, 
-                        fBall_distance, 
-                        0, 
-                        false,
-                        false
-                    );
-                }
+                spawnFireBall(
+                    x + (nspecial_offsetX * image_xscale),
+                    y + nspecial_offsetY,
+                    x, 
+                    y - 30, 
+                    use_spm, 
+                    nspecial_charge, 
+                    fBall_distance, 
+                    0, 
+                    false, 
+                    true
+                );
             }
+            else if (down_down && !dip_swapSpecial)
+            {
+                //spawnFireBall(x, y - 30, use_spm, nspecial_charge, fBall_distance / 2, 40, false, false);
+                spawnFireBall(
+                    x + (nspecial_offsetX * image_xscale),
+                    y + nspecial_offsetY,
+                    x, 
+                    y - 30, 
+                    use_spm, 
+                    nspecial_charge, 
+                    fBall_distance / 2, 
+                    40, 
+                    false,
+                    false
+                );
+            }
+            else
+            {
+                //spawnFireBall(x, y - 30, use_spm, nspecial_charge, fBall_distance, 0, false, false);
+                spawnFireBall(
+                    x + (nspecial_offsetX * image_xscale),
+                    y + nspecial_offsetY,
+                    x, 
+                    y - 30, 
+                    use_spm, 
+                    nspecial_charge, 
+                    fBall_distance, 
+                    0, 
+                    false,
+                    false
+                );
+            }
+            
+            /*
             else
             {
                 //spawnFireBall(x, y - 30, -1, nspecial_charge, fBall_distance, 0, false, false);
@@ -287,10 +266,10 @@ if (attack == AT_NSPECIAL)
                     false
                 );
             }
+            */
             
             nspecial_last_charge = nspecial_charge;
             nspecial_charge = 0;
-            nspecial_hadoInput = 0;
             flag_nspecial = 1;
         }
         
@@ -301,12 +280,123 @@ if (attack == AT_NSPECIAL)
         
         //Shoot animation loop normalization
         //End the attack at the end window of the first nspecial variant 
-        if ((window == 9 && window_timer == 15) || (window == 12 && window_timer == 15))
+        if ((window == 9 && window_timer == 15) || (window == 12 && window_timer == 15))        
         {
-            nspecial_hado_lock = 0;
             attack_end();
             set_state(PS_IDLE);
         }
+    }
+}
+
+//====> NEUTRAL B 3, CATOOKEN (43) #######################################################
+
+if (attack == 43)
+{
+    //Charge move: Reset to the charging animation if B is still being held at the end of it
+    if ((window == 2 || window == 3 || window == 4) && 
+        /*special_down*/ false)
+    {
+        //Save charge if the player presses shield
+        if (shield_pressed)
+        {
+            sound_play(asset_get("mfx_coin"));
+            set_state(PS_IDLE);
+            hurtboxID.sprite_index = asset_get("ex_guy_hurt_box");
+        }
+        else
+        {
+            if (window_timer == 1)                                
+            {                                        
+                sound_play(asset_get("sfx_zap"));                    
+                set_attack_value( 43, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
+                
+                if (nspecial_charge < 2)        { window = 2; }
+                else if (nspecial_charge < 6)   { window = 3; }
+                else                            { window = 4; }
+                
+                set_attack_value( 43, AG_HURTBOX_AIR_SPRITE, sprite_get("nspecial_air_hurt"));
+                set_attack_value( 43, AG_AIR_SPRITE, sprite_get ("nspecial_air") );
+            }
+            else if (window_timer == 12 && nspecial_charge < 6)
+            {
+                window_timer = 0;
+                nspecial_charge++;
+            }
+        }
+    }
+    
+    if ((window == 2 || window == 3 || window == 4 || window == 5 || window == 6) && 
+        /*(!special_down || attack_down)*/ true)
+    {
+        window = 7;
+        window_timer = 0;
+    }
+    
+    //Charge move: Ready animation after fully charging
+    if (window == 6 && 
+        special_down)
+    {
+        //Save charge if the player presses shield
+        if (shield_pressed)
+        {
+            sound_play(asset_get("mfx_coin"));
+            set_state(PS_IDLE);
+            hurtboxID.sprite_index = asset_get("ex_guy_hurt_box");
+        }
+        else
+        {
+            window_timer = 0;
+        }
+    }
+    
+    //Shoot
+    if (window == 8 && window_timer == 1 && move_cooldown[AT_NSPECIAL] <= 0)
+    {
+        spawnFireBall(
+            x + (nspecial_offsetX * image_xscale),
+            y + nspecial_offsetY,
+            x, 
+            y - 30, 
+            2, 
+            3, 
+            fBall_distance, 
+            0, 
+            false,
+            free
+        );
+        move_cooldown[AT_NSPECIAL] = 60;
+    }
+}
+
+//Catooken fail
+
+if (attack == 44)
+{
+    if (window == 3 && 
+        (
+            attack_pressed ||
+            special_pressed ||
+            jump_pressed ||
+            shield_pressed ||
+            taunt_pressed ||
+            up_pressed ||
+            down_pressed ||
+            left_pressed ||
+            right_pressed ||
+            up_strong_pressed ||
+            down_strong_pressed ||
+            left_strong_pressed ||
+            right_strong_pressed ||
+            up_stick_pressed ||
+            down_stick_pressed ||
+            left_stick_pressed ||
+            right_stick_pressed
+        )
+    )
+    {
+        attack_end();
+        set_state(PS_IDLE);
+        print_debug("Access")
     }
 }
 
@@ -322,15 +412,20 @@ if (attack == AT_NSPECIAL_2)
         set_attack(AT_NSPECIAL);
     }*/
     
-    if (window == 1 && window_timer == 6)
-    {
-        nspecial_targetX = x
-        nspecial_targetY = y + ballCall_callOffsetY;
-        spawn_hit_fx(nspecial_targetX, nspecial_targetY, 304);
+    can_jump = !was_parried;
+    
+    if (window == 1 && window_timer == 1)        
+    {                 
+        nspecial_targetX = x;        
+        nspecial_targetY = y - 25; 
+        
+        //spawn_hit_fx(nspecial_targetX, nspecial_targetY, fx_shine);
         
         //Indicator
         if (fBall_obj != noone)
         {
+            sound_play(asset_get("sfx_frog_fspecial_cancel"));
+            
             with (fBall_obj)
             {
                 spawn_hit_fx(x, y, 304);
@@ -340,11 +435,12 @@ if (attack == AT_NSPECIAL_2)
         flag_ballCall = 0;
     }
     
-    if (window == 2 && 
-        window_timer == 1)
+    /*if (window == 2 && 
+        window_timer == 1 &&
+        !hitpause)
     {
         sound_play(sound_get("fingersnap"), false, 0, 1, 0.7);
-    }
+    }*/
     
     if (flag_ballCall == 1)
     {
@@ -370,6 +466,10 @@ if (attack == AT_NSPECIAL_2)
                 _targetY = other.nspecial_targetY;
                 _reduceChargeNSCool = c_reduceChargeNSCool;
                 _reduceChargeNSFlag = true;
+            }
+            if (window_timer = 1 && true)
+            {
+                sound_play(asset_get("sfx_bird_nspecial2"))
             }
         }
         
@@ -569,7 +669,7 @@ if (attack == AT_DSPECIAL)
     
     if (window == 2 && window_timer == 6)
     {
-        if (!flag_explode)
+        if (!flag_explode && !dip_swapSpecial)
         {
             spawn_hit_fx(x, y - 20, 143); //3
             spawn_hit_fx(x, y - 20, 13);
@@ -634,7 +734,7 @@ if (attack == AT_TAUNT)
 //====> PRE CODED #######################################################
 
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == 43){
     trigger_b_reverse();
 }
 
@@ -681,6 +781,7 @@ if (mode == 0 ||
 
     if (fBall_obj != noone)     
     {
+        print_debug("enter");
         spawn_hit_fx(fBall_obj.x, fBall_obj.y, fBall_obj.c_vanishFX);
         instance_destroy(fBall_obj._currHB); 
         instance_destroy(fBall_obj);
@@ -706,29 +807,29 @@ else if (mode >= 0)
     //Tilt
     if (tilt)
     {
-        set_hitbox_value( AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, pBall_base_hsp + (pBall_inc_hsp * use_charge) - 1);
-        set_hitbox_value( AT_NSPECIAL, 3, HG_PROJECTILE_VSPEED, pBall_base_hsp + (pBall_inc_hsp * use_charge) - 1); 
+        set_hitbox_value( 43, 1, HG_PROJECTILE_HSPEED, pBall_base_hsp + (pBall_inc_hsp * use_charge) - 1);
+        set_hitbox_value( 43, 1, HG_PROJECTILE_VSPEED, pBall_base_hsp + (pBall_inc_hsp * use_charge) - 1); 
     }
     else
     {
-        set_hitbox_value( AT_NSPECIAL, 3, HG_PROJECTILE_HSPEED, pBall_base_hsp + (pBall_inc_hsp * use_charge));
-        set_hitbox_value( AT_NSPECIAL, 3, HG_PROJECTILE_VSPEED, 0);
+        set_hitbox_value( 43, 1, HG_PROJECTILE_HSPEED, pBall_base_hsp + (pBall_inc_hsp * use_charge));
+        set_hitbox_value( 43, 1, HG_PROJECTILE_VSPEED, 0);
     }
     
     //Parameters
-    set_hitbox_value( AT_NSPECIAL, 3, HG_DAMAGE, pBall_base_dmg + (pBall_inc_dmg * use_charge));
-    set_hitbox_value( AT_NSPECIAL, 3, HG_BASE_HITPAUSE, pBall_base_hitpause + (pBall_inc_hitpause * use_charge));
+    set_hitbox_value( 43, 1, HG_DAMAGE, pBall_base_dmg + (pBall_inc_dmg * use_charge));
+    set_hitbox_value( 43, 1, HG_BASE_HITPAUSE, pBall_base_hitpause + (pBall_inc_hitpause * use_charge));
     
     //Sound
     switch (use_charge)
     {
-        case 0: set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_weak2")); break;
-        case 1: set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_medium2")); break;
-        case 2: set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2")); break;
-        case 3: set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2")); break;
+        case 0: set_hitbox_value(43, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2")); break;
+        case 1: set_hitbox_value(43, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2")); break;
+        case 2: set_hitbox_value(43, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2")); break;
+        case 3: set_hitbox_value(43, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2")); break;
     }
     
-    var new_pBall = create_hitbox(AT_NSPECIAL, 3, x + (use_offX * image_xscale), y + use_offY);
+    var new_pBall = create_hitbox(43, 1, x + (use_offX * image_xscale), y + use_offY);
     
     with (new_pBall)
     {
@@ -747,3 +848,12 @@ else if (mode >= 0)
 return noone
 
 //END
+
+// #region vvv LIBRARY DEFINES AND MACROS vvv
+// DANGER File below this point will be overwritten! Generated defines and macros below.
+// Write NO-INJECT in a comment above this area to disable injection.
+#define window_time_is(frame) // Version 0
+    // Returns if the current window_timer matches the frame AND the attack is not in hitpause
+    return window_timer == frame and !hitpause
+// DANGER: Write your code ABOVE the LIBRARY DEFINES AND MACROS header or it will be overwritten!
+// #endregion

@@ -40,6 +40,8 @@ if (dip_developerMode)
     }
 }
 
+draw_sprite(sprite_get("catooken_ind"), move_cooldown[AT_NSPECIAL] <= 0 ? 0 : 1, temp_x + 188, temp_y - 4);
+
 //====> SPHERE OFF-SCREEN #######################################################
 
 with (fBall_obj)

@@ -26,7 +26,7 @@ ig++;
 
 //Forward Air End
 set_window_value(AT_NAIR, ig, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NAIR, ig, AG_WINDOW_LENGTH, 15);
+set_window_value(AT_NAIR, ig, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_NAIR, ig, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NAIR, ig, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_NAIR, ig, AG_WINDOW_CANCEL_TYPE, 1);
@@ -63,10 +63,10 @@ set_hitbox_value(AT_NAIR, ig, HG_HITBOX_Y, -29);
 set_hitbox_value(AT_NAIR, ig, HG_WIDTH, 59);
 set_hitbox_value(AT_NAIR, ig, HG_HEIGHT, 53);
 set_hitbox_value(AT_NAIR, ig, HG_PRIORITY, 2);
-set_hitbox_value(AT_NAIR, ig, HG_DAMAGE, 4);
+set_hitbox_value(AT_NAIR, ig, HG_DAMAGE, 3);
 set_hitbox_value(AT_NAIR, ig, HG_ANGLE, 50); // changed angle
-set_hitbox_value(AT_NAIR, ig, HG_BASE_KNOCKBACK, 6.5); // lowered bkb
-set_hitbox_value(AT_NAIR, ig, HG_KNOCKBACK_SCALING, .4);
+set_hitbox_value(AT_NAIR, ig, HG_BASE_KNOCKBACK, 5); // lowered bkb
+set_hitbox_value(AT_NAIR, ig, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(AT_NAIR, ig, HG_BASE_HITPAUSE, 6); // raised hitpause, (bad kero no hitpause)
 set_hitbox_value(AT_NAIR, ig, HG_HITPAUSE_SCALING, .3); // added hitpause scaling
 //set_hitbox_value(AT_NAIR, ig, HG_EXTRA_HITPAUSE, 5); // added extra hitpause to differentiate from bair, frame advantage ergo more utilitarian combo tool

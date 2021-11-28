@@ -9,6 +9,7 @@ if attack == AT_NSPECIAL && hbox_num == 3 {
                 _hit.hsp = hsp
                 _hit.spr_dir = spr_dir
                 _hit.can_hit_self = was_parried
+                _hit.fx_particles = 2
             multihit_counter++
         } else {
             var _hit = create_hitbox(AT_NSPECIAL, 5, x, y)
@@ -16,6 +17,7 @@ if attack == AT_NSPECIAL && hbox_num == 3 {
                 _hit.hsp = hsp
                 _hit.spr_dir = spr_dir
                 _hit.can_hit_self = was_parried
+                _hit.fx_particles = 1
             destroyed = true;
         }
     }

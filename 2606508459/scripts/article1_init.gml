@@ -43,7 +43,7 @@ c_HBPostHitCool = 0;        //Post Hit Cooldown (custom property)
 c_HBRepositionDist = 0;     //Reposition Distance (custom property)
 c_HBVRepositionDist = 0;    //Vertical Reposition Distance (custom property)
 c_HBLifespan = 0;           //Make the spheres lower one level after this amount of frames, or not at all if the value is 0
-c_strongMod = [2, 3];
+c_strongMod = [2, 3, 1, 5];
 
 //Hitbox Position
 /*
