@@ -135,6 +135,10 @@ switch (attack)
 
     case AT_FSPECIAL:
         can_fast_fall = false;
+        if(free)
+		set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 7);
+		else
+		set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 1);
         switch (window)
         {
             case 1:

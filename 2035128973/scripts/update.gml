@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 4;
+	var noOfPatches = 5;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -68,6 +68,10 @@ for (var i = 0; i < 3; ++i) if (rollArray[i] != -1 && rollArray[i].rollAlpha > 0
 char_height += (state==PS_CROUCH&&down_down)||(state==PS_ATTACK_GROUND&&(attack==AT_DTILT||attack==AT_DTHROW))?-5:5;
 char_height = clamp(char_height, charHeightCrouch, charHeightStand);
 
+// hue
+hue+=1;
+hue%=255;
+
 // transcend
 transcounter = clamp((((get_player_color(player) == 8) && (state==PS_SPAWN||(attack == AT_TAUNT && state == PS_ATTACK_GROUND)))?transcounter+2:transcounter-6),0,70);
 
@@ -131,6 +135,8 @@ else
 	initial_dash_speed = initial_dash_speed_rush;
 	dash_stop_percent = dash_stop_percent_rush;
 }
+
+init_shader();
 
 #define MenuNav(_maxv, _prevState, _nextState)
 {

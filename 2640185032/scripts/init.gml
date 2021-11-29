@@ -130,7 +130,7 @@ parry_y = 0;
 //freeze stuff
 can_dspec = false;
 frozen_timer = -1;
-freeze_max = 150;
+freeze_max = 120;
 
 fspec_fog_timer = -1;
 

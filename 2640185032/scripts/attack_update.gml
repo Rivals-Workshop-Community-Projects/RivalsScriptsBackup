@@ -459,6 +459,7 @@ switch(attack){
 
 if(can_dspec && !free && (attack != AT_FSTRONG && attack != AT_USTRONG && attack != AT_DSTRONG)){
     if(!hitpause && special_pressed && down_down){
+        //destroy_hitboxes(); //put this in before you patch pls
         attack_end();
         attack = AT_DSPECIAL;
         window_timer = 0;

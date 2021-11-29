@@ -216,95 +216,95 @@ set_color_profile_slot( 18, 5, 102, 110, 138 ); //Mask2
 set_color_profile_slot( 18, 6, 38, 72, 173 ); //Eye
 set_color_profile_slot( 18, 7, 89, 104, 151 ); //Spike
 
-// pop
-set_color_profile_slot( 19, 0, 211, 30, 57 ); //Fur1
-set_color_profile_slot( 19, 1, 146, 20, 55 ); //Fur2
-set_color_profile_slot( 19, 2, 79, 101, 189 ); //AltFur1
-set_color_profile_slot( 19, 3, 69, 40, 161 ); //AltFur2
-set_color_profile_slot( 19, 4, 240, 210, 77 ); //Mask1
-set_color_profile_slot( 19, 5, 184, 164, 20 ); //Mask2
-set_color_profile_slot( 19, 6, 79, 79, 79 ); //Eye
-set_color_profile_slot( 19, 7, 36, 43, 51 ); //Spike
-
 // drunken
-set_color_profile_slot( 20, 0, 150, 63, 128 ); //Fur1
-set_color_profile_slot( 20, 1, 101, 39, 112 ); //Fur2
-set_color_profile_slot( 20, 2, 240, 233, 202 ); //AltFur1
-set_color_profile_slot( 20, 3, 196, 175, 153 ); //AltFur2
-set_color_profile_slot( 20, 4, 95, 95, 95 ); //Mask1
-set_color_profile_slot( 20, 5, 57, 57, 69 ); //Mask2
-set_color_profile_slot( 20, 6, 102, 110, 138 ); //Eye
-set_color_profile_slot( 20, 7, 141, 118, 173 ); //Spike
+set_color_profile_slot( 19, 0, 150, 63, 128 ); //Fur1
+set_color_profile_slot( 19, 1, 101, 39, 112 ); //Fur2
+set_color_profile_slot( 19, 2, 240, 233, 202 ); //AltFur1
+set_color_profile_slot( 19, 3, 196, 175, 153 ); //AltFur2
+set_color_profile_slot( 19, 4, 95, 95, 95 ); //Mask1
+set_color_profile_slot( 19, 5, 57, 57, 69 ); //Mask2
+set_color_profile_slot( 19, 6, 102, 110, 138 ); //Eye
+set_color_profile_slot( 19, 7, 141, 118, 173 ); //Spike
 
 // esix
-set_color_profile_slot( 21, 0, 0, 84, 157 ); //Fur1
-set_color_profile_slot( 21, 1, 3, 0, 125 ); //Fur2
-set_color_profile_slot( 21, 2, 0, 46, 86 ); //AltFur1
-set_color_profile_slot( 21, 3, 0, 2, 69 ); //AltFur2
-set_color_profile_slot( 21, 4, 255, 188, 47 ); //Mask1
-set_color_profile_slot( 21, 5, 219, 88, 24 ); //Mask2
-set_color_profile_slot( 21, 6, 0, 84, 157 ); //Eye
-set_color_profile_slot( 21, 7, 199, 165, 94 ); //Spike
+set_color_profile_slot( 20, 0, 0, 84, 157 ); //Fur1
+set_color_profile_slot( 20, 1, 3, 0, 125 ); //Fur2
+set_color_profile_slot( 20, 2, 0, 46, 86 ); //AltFur1
+set_color_profile_slot( 20, 3, 0, 2, 69 ); //AltFur2
+set_color_profile_slot( 20, 4, 255, 188, 47 ); //Mask1
+set_color_profile_slot( 20, 5, 219, 88, 24 ); //Mask2
+set_color_profile_slot( 20, 6, 0, 84, 157 ); //Eye
+set_color_profile_slot( 20, 7, 199, 165, 94 ); //Spike
 
 // lemongrass
-set_color_profile_slot( 22, 0, 128, 219, 116 ); //Fur1
-set_color_profile_slot( 22, 1, 81, 166, 125 ); //Fur2
-set_color_profile_slot( 22, 2, 243, 255, 156 ); //AltFur1
-set_color_profile_slot( 22, 3, 204, 191, 100 ); //AltFur2
-set_color_profile_slot( 22, 4, 219, 219, 219 ); //Mask1
-set_color_profile_slot( 22, 5, 158, 170, 219 ); //Mask2
-set_color_profile_slot( 22, 6, 0, 150, 0 ); //Eye
-set_color_profile_slot( 22, 7, 73, 179, 73 ); //Spike
+set_color_profile_slot( 21, 0, 128, 219, 116 ); //Fur1
+set_color_profile_slot( 21, 1, 81, 166, 125 ); //Fur2
+set_color_profile_slot( 21, 2, 243, 255, 156 ); //AltFur1
+set_color_profile_slot( 21, 3, 204, 191, 100 ); //AltFur2
+set_color_profile_slot( 21, 4, 219, 219, 219 ); //Mask1
+set_color_profile_slot( 21, 5, 158, 170, 219 ); //Mask2
+set_color_profile_slot( 21, 6, 0, 150, 0 ); //Eye
+set_color_profile_slot( 21, 7, 73, 179, 73 ); //Spike
 
 // shine bright
-set_color_profile_slot( 23, 0, 165, 115, 75 ); //Fur1
-set_color_profile_slot( 23, 1, 125, 60, 35 ); //Fur2
-set_color_profile_slot( 23, 2, 54, 54, 54 ); //AltFur1
-set_color_profile_slot( 23, 3, 20, 20, 20 ); //AltFur2
-set_color_profile_slot( 23, 4, 240, 240, 240); //Mask1
-set_color_profile_slot( 23, 5, 185, 185, 185 ); //Mask2
-set_color_profile_slot( 23, 6, 55, 125, 140 ); //Eye
-set_color_profile_slot( 23, 7, 215, 110, 170 ); //Spike
+set_color_profile_slot( 22, 0, 165, 115, 75 ); //Fur1
+set_color_profile_slot( 22, 1, 125, 60, 35 ); //Fur2
+set_color_profile_slot( 22, 2, 54, 54, 54 ); //AltFur1
+set_color_profile_slot( 22, 3, 20, 20, 20 ); //AltFur2
+set_color_profile_slot( 22, 4, 240, 240, 240 ); //Mask1
+set_color_profile_slot( 22, 5, 185, 185, 185 ); //Mask2
+set_color_profile_slot( 22, 6, 55, 125, 140 ); //Eye
+set_color_profile_slot( 22, 7, 215, 110, 170 ); //Spike
 
 // r u n
-set_color_profile_slot( 24, 0, 111, 103, 126 ); //Fur1
-set_color_profile_slot( 24, 1, 81, 76, 103 ); //Fur2
-set_color_profile_slot( 24, 2, 76, 75, 93 ); //AltFur1
-set_color_profile_slot( 24, 3, 49, 49, 59 ); //AltFur2
-set_color_profile_slot( 24, 4, 62, 61, 92 ); //Mask1
-set_color_profile_slot( 24, 5, 49, 47, 70 ); //Mask2
-set_color_profile_slot( 24, 6, 254, 255, 0 ); //Eye
-set_color_profile_slot( 24, 7, 254, 255, 0 ); //Spike
+set_color_profile_slot( 23, 0, 111, 103, 126 ); //Fur1
+set_color_profile_slot( 23, 1, 81, 76, 103 ); //Fur2
+set_color_profile_slot( 23, 2, 76, 75, 93 ); //AltFur1
+set_color_profile_slot( 23, 3, 49, 49, 59 ); //AltFur2
+set_color_profile_slot( 23, 4, 62, 61, 92 ); //Mask1
+set_color_profile_slot( 23, 5, 49, 47, 70 ); //Mask2
+set_color_profile_slot( 23, 6, 254, 255, 0 ); //Eye
+set_color_profile_slot( 23, 7, 254, 255, 0 ); //Spike
 
 // can't kill
-set_color_profile_slot( 25, 0, 253, 253, 253 ); //Fur1
-set_color_profile_slot( 25, 1, 127, 148, 217 ); //Fur2
-set_color_profile_slot( 25, 2, 123, 37, 201 ); //AltFur1
-set_color_profile_slot( 25, 3, 73, 21, 136 ); //AltFur2
-set_color_profile_slot( 25, 4, 238, 220, 0 ); //Mask1
-set_color_profile_slot( 25, 5, 206, 135, 23 ); //Mask2
-set_color_profile_slot( 25, 6, 203, 191, 49 ); //Eye
-set_color_profile_slot( 25, 7, 92, 211, 216 ); //Spike
+set_color_profile_slot( 24, 0, 253, 253, 253 ); //Fur1
+set_color_profile_slot( 24, 1, 127, 148, 217 ); //Fur2
+set_color_profile_slot( 24, 2, 123, 37, 201 ); //AltFur1
+set_color_profile_slot( 24, 3, 73, 21, 136 ); //AltFur2
+set_color_profile_slot( 24, 4, 238, 220, 0 ); //Mask1
+set_color_profile_slot( 24, 5, 206, 135, 23 ); //Mask2
+set_color_profile_slot( 24, 6, 203, 191, 49 ); //Eye
+set_color_profile_slot( 24, 7, 92, 211, 216 ); //Spike
 
 // photon edge
-set_color_profile_slot( 26, 0, 62, 61, 92 ); //Fur1
-set_color_profile_slot( 26, 1, 49, 47, 70 ); //Fur2
-set_color_profile_slot( 26, 2, 166, 166, 166 ); //AltFur1
-set_color_profile_slot( 26, 3, 102, 110, 138 ); //AltFur2
-set_color_profile_slot( 26, 4, 165, 205, 234 ); //Mask1
-set_color_profile_slot( 26, 5, 124, 151, 213 ); //Mask2
-set_color_profile_slot( 26, 6, 255, 105, 157 ); //Eye
-set_color_profile_slot( 26, 7, 255, 105, 157 ); //Spike
+set_color_profile_slot( 25, 0, 62, 61, 92 ); //Fur1
+set_color_profile_slot( 25, 1, 49, 47, 70 ); //Fur2
+set_color_profile_slot( 25, 2, 166, 166, 166 ); //AltFur1
+set_color_profile_slot( 25, 3, 102, 110, 138 ); //AltFur2
+set_color_profile_slot( 25, 4, 165, 205, 234 ); //Mask1
+set_color_profile_slot( 25, 5, 124, 151, 213 ); //Mask2
+set_color_profile_slot( 25, 6, 255, 105, 157 ); //Eye
+set_color_profile_slot( 25, 7, 255, 105, 157 ); //Spike
 
 // nova visionary
-set_color_profile_slot( 27, 0, 127, 148, 217 ); //Fur1
-set_color_profile_slot( 27, 1, 85, 97, 183 ); //Fur2
-set_color_profile_slot( 27, 2, 252, 244, 198 ); //AltFur1
-set_color_profile_slot( 27, 3, 241, 187, 140 ); //AltFur2
-set_color_profile_slot( 27, 4, 213, 199, 242 ); //Mask1
-set_color_profile_slot( 27, 5, 112, 112, 156 ); //Mask2
-set_color_profile_slot( 27, 6, 255, 234, 115 ); //Eye
-set_color_profile_slot( 27, 7, 120, 204, 205 ); //Spike
+set_color_profile_slot( 26, 0, 127, 148, 217 ); //Fur1
+set_color_profile_slot( 26, 1, 85, 97, 183 ); //Fur2
+set_color_profile_slot( 26, 2, 252, 244, 198 ); //AltFur1
+set_color_profile_slot( 26, 3, 241, 187, 140 ); //AltFur2
+set_color_profile_slot( 26, 4, 213, 199, 242 ); //Mask1
+set_color_profile_slot( 26, 5, 112, 112, 156 ); //Mask2
+set_color_profile_slot( 26, 6, 255, 234, 115 ); //Eye
+set_color_profile_slot( 26, 7, 120, 204, 205 ); //Spike
+
+// hue
+set_color_profile_slot( 27, 0, 223, 215, 228 ); //Fur1
+set_color_profile_slot( 27, 1, 179, 173, 202 ); //Fur2
+set_color_profile_slot( 27, 2, 99, 100, 104 ); //AltFur1
+set_color_profile_slot( 27, 3, 74, 74, 76 ); //AltFur2
+set_color_profile_slot( 27, 4, 255, 255, 0 ); //Mask1
+set_color_profile_slot( 27, 5, 171, 171, 0 ); //Mask2
+set_color_profile_slot( 27, 6, 79, 79, 79 ); //Eye
+set_color_profile_slot( 27, 7, 36, 43, 51 ); //Spike
 
 // god of death
 set_color_profile_slot( 28, 0, 52, 52, 52 ); //Fur1

@@ -28,6 +28,7 @@ if (attack == AT_USPECIAL)
         var boneArticle = instance_create(x, y+image_yscale*100+4, "obj_article3");
 		boneArticle.spr_dir = spr_dir;
 		boneArticle.x += hsp*2;
+        sound_play(asset_get("sfx_land_light"));
         instance_destroy();
         exit;
     }
@@ -35,6 +36,7 @@ if (attack == AT_USPECIAL)
     {
         var boneArticle = instance_create(x-spr_dir*(image_xscale*100+8), y, "obj_article3");
 		boneArticle.spr_dir = -spr_dir;
+        sound_play(asset_get("sfx_land_light"));
         instance_destroy();
         exit;
     }

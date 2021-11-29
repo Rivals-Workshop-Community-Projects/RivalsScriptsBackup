@@ -11,6 +11,7 @@ vfx_water_medium = hit_fx_create(sprite_get("vfx_water_medium"), 24)
 vfx_water_small = hit_fx_create(sprite_get("vfx_water_small"), 21)
 vfx_smoke = hit_fx_create(sprite_get("vfx_smoke"), 15)
 vfx_splash = hit_fx_create(sprite_get("jet_splash"), 20)
+vfx_eye = hit_fx_create(sprite_get("vfx_eye"), 12)
 
 shine_spr = sprite_get("vfx_shine")
 vfx_shine = hit_fx_create(shine_spr, 18)

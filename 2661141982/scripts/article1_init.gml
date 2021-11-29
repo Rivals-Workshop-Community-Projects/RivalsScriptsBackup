@@ -37,7 +37,7 @@ orig_knock = 0;
 destroy_timer = 0;
 
 light_color = 0;
-light_radius = 100;
+light_radius = 1;
 light_timer = 0;
 light_max_timer = 30;
 with player_id

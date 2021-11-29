@@ -374,6 +374,31 @@ if ("practice" in self)
 						AddText("");
 						AddText("Replaced Moon Kitten alt with Champion alt cuz Seggo won Riptide lmao");
 						break;
+					case 20:
+						AddText("v1.19 - 28 Nov 2021");
+						AddText("Look a Buff!");
+						AddText("");
+						AddText("+ DAir Landing lag 10>8");
+						AddText("");
+						AddText("+ BAir KBS +.1 to both hitboxes");
+						AddText("");
+						AddText("+ USpecial Startup 18>14");
+						AddText("");
+						AddText("+ FSpecial (Up Throw) endlag 12>6");
+						AddText("+ FSpecial Startup 16>14");
+						AddText("+ FSpecial Endlag 16>8");
+						AddText("");
+						AddText("- FSpecial doesn't go as far");
+						AddText("+ FSpecial doesn't go into special fall on ground");
+						AddText("+ UAir constellation tipper added back in");
+						AddText("");
+						AddText("+ FStrong Endlag 14>12");
+						AddText("");
+						AddText("+ UStrong Startup 10>9");
+						AddText("+ UStrong Endlag 11>10");
+						AddText("");
+						AddText("+ DStrong Endlag 13>12");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

@@ -1,4 +1,4 @@
 if (attack == AT_USPECIAL)
 {
-    lastHsp = 0;  
+    lastHsp = 0;
 }

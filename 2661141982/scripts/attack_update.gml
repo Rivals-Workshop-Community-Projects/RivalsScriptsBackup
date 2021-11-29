@@ -14,6 +14,83 @@ var no_hp = !hitpause;
 
 switch (attack)
 {
+	case 49: //FINAL SMASH
+		if(window == 1)
+		{
+			fs_cinematic = false;
+			reset_attack_value(49, AG_SPRITE);
+			reset_attack_value(49, AG_AIR_SPRITE);
+			fs_loops = 0;
+            reset_attack_value(49, AG_NUM_WINDOWS);
+		}
+		if(window == 2)
+		{
+			if(window_timer == 1)
+				spawn_base_dust(x+15*spr_dir,y,"dash_start",spr_dir)
+			if(window_timer == 20)
+			{
+				if(fs_loops != 1)
+					fs_loops++;
+				else
+				{
+					window = 3;
+					window_timer = 0;
+				}
+			}
+		}
+		//cinematic part
+		if(window == 6)
+		{
+			can_move = false;
+			vsp = -0.1;
+			hsp = -0.2*spr_dir;
+			if(variable_instance_exists(id,"fs_target"))
+			{
+				set_view_position(fs_target.x + (char_height / 5)*spr_dir, fs_target.y - (char_height / 2));
+				fs_target.hsp = 1.6*spr_dir;
+				fs_target.vsp = -0.1;
+			}
+		}
+		if(window == 7)
+		{
+			can_move = false;
+			set_attack_value(49, AG_SPRITE, sprite_get("uspecial2"));
+			set_attack_value(49, AG_AIR_SPRITE, sprite_get("uspecial2"));
+			if(image_index < 3)
+			{
+				vsp = -0.05;
+				hsp = 0.5*spr_dir;
+			}
+			else
+			{
+				x = fs_target.x+20*spr_dir;
+				y = fs_target.y - 60;
+			}
+			if(variable_instance_exists(id,"fs_target"))
+			{
+				set_view_position(fs_target.x + (char_height / 5)*spr_dir, fs_target.y - (char_height / 2));
+				fs_target.hsp = 0.8*spr_dir;
+				fs_target.vsp = -0.05;
+			}
+		}
+		if(window == 8)
+		{
+			set_view_position(x + (char_height / 5)*spr_dir, y - (char_height / 2));
+			hsp = -1*spr_dir
+			vsp = 30;
+			if(variable_instance_exists(id,"fs_target"))
+			{
+				fs_target.x = x-20*spr_dir;
+				fs_target.y = y+20;
+				fs_target.can_tech = false;
+			}
+		}
+		if(window == 9)
+		{
+			if(window_timer % 4 == 0 && window_timer < 20)
+				create_hitbox(49,8,x,y);
+		}
+	break;
 	case AT_USTRONG:
 		can_move = false;
 	    can_fast_fall = false;

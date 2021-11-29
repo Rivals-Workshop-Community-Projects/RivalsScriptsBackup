@@ -54,6 +54,7 @@ if (my_hitboxID.player == player) switch (my_hitboxID.attack)
 		markArticle.sprite_index = asset_get("empty_sprite");
 		boneMark = hit_player_obj;
 		boneMarkDir = my_hitboxID.proj_angle;
+		sound_play(asset_get("sfx_syl_dstrong"));
 		if (attack == AT_USPECIAL) tutDone[4] = 1;
 		break;
 	case AT_USPECIAL_2:

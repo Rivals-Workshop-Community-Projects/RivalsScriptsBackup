@@ -136,6 +136,9 @@ switch (attack)
 		if (!hitpause) switch (window)
 		{
 			case 1:
+				can_fast_fall = false;
+				hsp /= 1.1;
+				vsp /= 1.1;
 				if (window_timer == 1)
 				{
 					fire_ang = 90;

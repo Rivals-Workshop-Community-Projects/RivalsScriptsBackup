@@ -181,3 +181,6 @@ asSFX[2] = 0;
 afterImageTimer = 0;
 afterImageMax = 16;
 afterImage = array_create(afterImageMax, -1);
+
+//hue
+hue = 0;

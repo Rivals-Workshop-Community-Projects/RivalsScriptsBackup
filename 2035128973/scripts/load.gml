@@ -93,6 +93,8 @@ sprite_change_offset("taunt_extra", 27, 29);
 
 sprite_change_offset("plat", 56, 8);
 RatioOffset("killcard", 0.5, 0.5);
+sprite_change_offset("hud", 12, 12);
+RatioOffset("boneHud", 0.5, 0.5);
 
 sprite_change_offset("bone", 24, 60);
 sprite_change_collision_mask("bone", true, 0, 0, 0, 0, 0, 0);

@@ -47,27 +47,27 @@ set_num_hitboxes(AT_UAIR, 4)
 //set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 //set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 //set_hitbox_value(AT_UAIR, 1, HG_ANGLE_FLIPPER, 6);
-/*
+
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_TYPE, 1); // sweet-ish
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_UAIR, 2, HG_WINDOW, 2);
-set_hitbox_value(AT_UAIR, 2, HG_LIFETIME, 2);
+set_hitbox_value(AT_UAIR, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_X, 2);
-set_hitbox_value(AT_UAIR, 2, HG_HITBOX_Y, -65);
+set_hitbox_value(AT_UAIR, 2, HG_HITBOX_Y, -68);
 set_hitbox_value(AT_UAIR, 2, HG_WIDTH, 26);
 set_hitbox_value(AT_UAIR, 2, HG_HEIGHT, 26);
 set_hitbox_value(AT_UAIR, 2, HG_PRIORITY, 4);
 set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 8);
 set_hitbox_value(AT_UAIR, 2, HG_ANGLE, 90);
 set_hitbox_value(AT_UAIR, 2, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, 0.8);
+set_hitbox_value(AT_UAIR, 2, HG_KNOCKBACK_SCALING, 0.9);
 set_hitbox_value(AT_UAIR, 2, HG_BASE_HITPAUSE, 13);
 set_hitbox_value(AT_UAIR, 2, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, beegstar_effect);
 set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_UAIR, 2, HG_ANGLE_FLIPPER, 6);
-*/
+
 set_hitbox_value(AT_UAIR, 3, HG_HITBOX_TYPE, 1); // normal
 set_hitbox_value(AT_UAIR, 3, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_UAIR, 3, HG_WINDOW, 2);
@@ -82,7 +82,7 @@ set_hitbox_value(AT_UAIR, 3, HG_ANGLE, 90);
 set_hitbox_value(AT_UAIR, 3, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_UAIR, 3, HG_KNOCKBACK_SCALING, 0.75);
 set_hitbox_value(AT_UAIR, 3, HG_BASE_HITPAUSE, 7);
-set_hitbox_value(AT_UAIR, 3, HG_HITPAUSE_SCALING, 0.7);
+set_hitbox_value(AT_UAIR, 3, HG_HITPAUSE_SCALING, 0.6);
 set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, bigstar_effect);
 set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_medium2"));

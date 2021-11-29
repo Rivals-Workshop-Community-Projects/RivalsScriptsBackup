@@ -57,7 +57,7 @@ switch (my_hitboxID.attack)
 if((my_hitboxID.attack == AT_FSTRONG
 || my_hitboxID.attack == AT_USTRONG
 || my_hitboxID.attack == AT_DSTRONG)
-//|| (my_hitboxID.attack == AT_UAIR && my_hitboxID.hbox_num <= 2))
+|| (my_hitboxID.attack == AT_UAIR && my_hitboxID.hbox_num <= 2)
 && !hit_player_obj.clone
 && noOfStars > 0
 )

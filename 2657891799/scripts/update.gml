@@ -99,6 +99,10 @@ if ss_start {
         sprite_index = get_attack_value(AT_FSPECIAL, AG_SPRITE);
         ss_count++
         if attack_down || strong_down ss_type = 0
+        if ss_type == 0 {
+            spawn_hit_fx(ss_x-6, y - 46, vfx_eye)
+            spawn_hit_fx(ss_x+6, y - 46, vfx_eye)
+        }
     }
 }
 

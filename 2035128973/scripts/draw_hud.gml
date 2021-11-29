@@ -14,6 +14,26 @@ if ("rollArray" in self)
 		draw_sprite_ext(get_char_info(killCard.deadPlayer.player, INFO_OFFSCREEN), killCard.deadPlayer.select-1, tempX+70, tempY+2, -1, 1, 0, c_white, tempAlpha);
 		shader_end();
 	}
+	
+	with (pHitBox) if (player_id == other.id && attack == AT_USPECIAL && hbox_num == 1)
+	{
+		var clampCheckX = x != clamp(x, view_get_xview(), view_get_xview()+view_get_wview());
+		var clampCheckY = y != clamp(y, view_get_yview(), view_get_yview()+view_get_hview());
+		if (clampCheckX || clampCheckY)
+		{
+			var hudShape = clampCheckX&&clampCheckY;
+			var hudOffset = 34;
+			var drawX = clamp(x-view_get_xview(), hudOffset, view_get_wview()-hudOffset);
+			var drawY = clamp(y-view_get_yview(), hudOffset, view_get_hview()-hudOffset);
+			var hudRot = 0;
+			if (drawX == view_get_wview()-hudOffset) hudRot = 90;
+			if (drawY == hudOffset) hudRot = 180;
+			if (drawX == hudOffset) hudRot = (drawY==view_get_hview()-hudOffset)?0:270;
+
+			draw_sprite_ext(sprite_get("hud"), hudShape , drawX,  drawY, 2, 2, hudRot, get_player_hud_color(other.player), 1);
+			draw_sprite_ext(sprite_get("boneHud"), 0, drawX,  drawY, 2, 2, 0, c_white, 1);
+		}
+	}
 
 	// taunt menu
 	if (practice && !"temp_level" in self)
@@ -109,6 +129,18 @@ if ("rollArray" in self)
 						AddText("Added a small amount of runes");
 						AddText("");
 						AddText("Bugfix for DSpec not doing DJump after using jumps");
+						break;
+					case 4:
+						AddText("v2.3 - 29 Nov 2021");
+						AddText("");
+						AddText("Extreme Speed now has a proper startup animation - Thanks Sai!");
+						AddText("Slightly changed startup speed properties (instant stop -> slow down)");
+						AddText("");
+						AddText("The bone projectile now has an offscreen indicator");
+						AddText("");
+						AddText("Polished Bone sfx");
+						AddText("");
+						AddText("Swapped Pop alt for Hue alt");
 						break;
 				}
 				DrawTutorialBlock();

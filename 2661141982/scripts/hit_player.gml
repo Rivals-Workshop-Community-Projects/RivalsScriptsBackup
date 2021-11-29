@@ -29,6 +29,45 @@ else if (my_hitboxID.attack == AT_FSTRONG)
 {
     has_hit_player = true;
 }
+else if my_hitboxID.attack == 49 and !hit_player_obj.clone
+{
+    if(my_hitboxID.hbox_num <= 6)
+    {
+        if(my_hitboxID.hbox_num == 1)
+        {
+            fs_tempcheck = 0;
+            //check for too many players
+            for(i = 0; i < 4; i++)
+            {
+                if (is_player_on(i+1))
+                    fs_tempcheck ++;
+            }
+            if(fs_tempcheck > 2)
+                fs_cinematic = false;
+            else
+                fs_cinematic = true;
+        }
+        if(my_hitboxID.hbox_num == 6 && fs_cinematic)
+        { 
+            set_attack_value(49, AG_NUM_WINDOWS, 10);
+            window = 6
+            window_timer = 0
+            hit_player_obj.hitstun = 9999;
+            fs_target = hit_player_obj;
+            hit_player_obj.x = lerp(hit_player_obj.x,x+(spr_dir*90),0.4)
+            hit_player_obj.y = lerp(hit_player_obj.y,y-40,0.3)
+        }
+        else
+        {
+            hit_player_obj.x = lerp(hit_player_obj.x,x+(spr_dir*40),0.4)
+            hit_player_obj.y = lerp(hit_player_obj.y,y-20,0.3)
+        }
+    }
+    if(my_hitboxID.hbox_num == 8)
+    {
+        hit_player_obj.should_make_shockwave = false;
+    }
+}
 
 
 var spawn = false;

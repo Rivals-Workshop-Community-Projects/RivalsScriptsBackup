@@ -52,15 +52,15 @@ alt_name[15]  = "Lorekeeper";
 alt_name[16]  = "Flickering Spectre";
 alt_name[17]  = "Star Fox";
 alt_name[18]  = "Snowblind";
-alt_name[19]  = "Pop";
-alt_name[20]  = "Drunken";
-alt_name[21]  = ".net";
-alt_name[22]  = "Lemongrass";
-alt_name[23]  = "Shine Bright";
-alt_name[24]  = "R U N";
-alt_name[25]  = "Can't Kill";
-alt_name[26]  = "Photon Edge";
-alt_name[27]  = "Nova Visionary";
+alt_name[19]  = "Drunken";
+alt_name[20]  = ".net";
+alt_name[21]  = "Lemongrass";
+alt_name[22]  = "Shine Bright";
+alt_name[23]  = "R U N";
+alt_name[24]  = "Can't Kill";
+alt_name[25]  = "Photon Edge";
+alt_name[26]  = "Nova Visionary";
+alt_name[27]  = "Hue";
 alt_name[28]  = "God of Death";
 alt_name[29]  = "Mewmew";
 alt_name[30]  = "Bunny";
@@ -92,7 +92,6 @@ gpu_set_blendmode(bm_normal);
 if (currAlt != 0)			textDraw(temp_x + 2 + min(image_alpha,1) * 8, temp_y + 80 + offset, "fName", c_gray, 0, 1000, 1, true, image_alpha, alt_name[currAlt-1]);
 textLen =		 (textLen + textDraw(temp_x + 2 + min(image_alpha,1) * 16, temp_y + 96 + offset, "fName", c_white, 0, 1000, 1, true, image_alpha, alt_name[currAlt]))/2;
 if (currAlt != num_alts-1)	textDraw(temp_x + 2 + min(image_alpha,1) * 8, temp_y + 112+ offset, "fName", c_gray, 0, 1000, 1, true, image_alpha, alt_name[currAlt+1]);
-
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
 {

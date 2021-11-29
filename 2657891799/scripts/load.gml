@@ -64,6 +64,7 @@ sprite_change_offset("vfx_water_small", 50, 50);
 
 sprite_change_offset("vfx_smoke", 24, 24);
 sprite_change_offset("vfx_shine", 80, 80);
+sprite_change_offset("vfx_eye", 19, 19);
 
 sprite_change_offset("shuriken_large", 35, 32);
 sprite_change_offset("shuriken_small", 35, 32);

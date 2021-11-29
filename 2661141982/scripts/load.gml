@@ -56,6 +56,9 @@ sprite_change_offset("ewgf", 64, 94);
 sprite_change_offset("taunt", 64, 94);
 sprite_change_offset("star", 10,10);
 
+sprite_change_offset("fs", 64, 94);
+sprite_change_offset("beamfs", 64, 128);
+
 sprite_change_offset("plat", 64, 94);
 sprite_change_offset("uspecial_proj", 64, 64);
 sprite_change_offset("bubble_proj", 64, 64);

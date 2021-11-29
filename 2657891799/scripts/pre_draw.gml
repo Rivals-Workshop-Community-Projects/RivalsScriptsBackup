@@ -62,14 +62,15 @@ if ss_type == 0 && (ss_start || ((state == PS_ATTACK_AIR || state == PS_ATTACK_G
     else var _spr = sprite_get("airdodge")
     gpu_set_alphatestenable(true);
     gpu_set_fog(1, c_black, 0, 1);
-    draw_sprite_ext(_spr, image_index, ss_x, y, spr_dir, 1, 0, c_white, 0.4)
+    draw_sprite_ext(_spr, image_index, ss_x, y, spr_dir, 1, 0, c_white, 0.1 + (0.15*ss_timer/90))
     gpu_set_fog(0, c_white, 0, 0);
     gpu_set_alphatestenable(false);
 }
-if ss_start && ss_type != 0 {
+if ss_start {
     var w = 40
     var h = 8
-    draw_set_alpha(0.6)
+    var a = ss_type == 0 ? 0.4 + (0.2*ss_timer/90) : 0.6
+    draw_set_alpha(a)
     draw_rectangle_color(ss_x + w/2, ss_y, ss_x - w/2, ss_y+h, c_black,c_black,c_gray,c_gray,false)
     draw_set_alpha(1)
 }

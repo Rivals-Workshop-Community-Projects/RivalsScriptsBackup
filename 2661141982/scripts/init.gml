@@ -19,6 +19,13 @@ ewgf_timer = 0;
 // intro
 introTimer = -4;
 
+//Final Smash
+fs_char_chosen_final_smash = "custom";
+fs_char_portrait_y = 80;
+fs_loops = 0;
+fs_cinematic = false;
+fs_target = false;
+
 // afterimage
 afterImageTimer = 0;
 afterImageMax = 16;

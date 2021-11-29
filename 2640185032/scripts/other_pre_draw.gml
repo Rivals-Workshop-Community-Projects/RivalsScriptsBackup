@@ -10,12 +10,12 @@ if("is_frozen" in self && "spr_iceclock_back" in other_player_id){
 if("knife_stack" in self && "spr_stack" in other_player_id){
     if(knife_stack > 0){
         hud_offset = 2;
-        var draw_x = -34;
+        var draw_x = -32;
         
         for(var i = 0; i < knife_stack; i++){
             
             draw_sprite_ext(other_player_id.spr_stack, 0, x  + draw_x, y - (char_height + 26), 2, 2, 0, c_white, 1);
-            draw_x += 9;
+            draw_x += 10;
             if(i == 2) draw_x += 10;
         }
     }

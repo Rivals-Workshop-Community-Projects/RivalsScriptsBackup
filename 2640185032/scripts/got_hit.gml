@@ -6,3 +6,9 @@ if(enemy_hitboxID.type == 1){
         init_shader();
 	}
 }
+
+if(attack == AT_NSPECIAL && (prev_state == PS_ATTACK_AIR || prev_state == PS_ATTACK_GROUND)){
+    if(enemy_hitboxID.kb_value > 0){
+        knives = 0;
+    }
+}
