@@ -355,7 +355,7 @@ spr_ability_star = sprite_get("ability_star_active");
 Hikaru_Title = "Soundly Sleeping Star";
 
 ncode1 = "The Pink Demon from Dream Land.";
-ncode2 = "Carries his Sleep Ability.";
+ncode2 = "Carries the Sleep Ability.";
 ncode3 = "Do not be fooled by it: stay on guard.";
 
 arena_title = "Sleeping Star Warrior";
@@ -365,6 +365,10 @@ battle_text = "* You start to feel drowsy just by looking at that creature.";
 
 has_fail = true;
 fail_text = "Guess you shouldnt have slept on this character.";
+
+gfzsignspr = sprite_get("gfz")
+
+tcoart = sprite_get("tco_sketch");
 
 //MunoPhone Touch
 muno_event_type = 0;

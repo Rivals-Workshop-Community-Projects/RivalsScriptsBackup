@@ -115,11 +115,13 @@ switch(attack)
 	
 	case AT_FTILT:
 	{
+		stancedodge_win(3)
 		stancedodge_win(4)
 	}break;
 	
 	case AT_DTILT:
 	{
+		stancedodge_win(2)
 		stancedodge_win(3)
 	}break;
 	
@@ -127,6 +129,7 @@ switch(attack)
 	{
 		hsp = clamp(hsp, -10,10);
 		
+		stancedodge_win(3)
 		stancedodge_win(4)
 	}break;
 	
@@ -149,7 +152,10 @@ switch(attack)
 			}
 		}
 		
+		stancedodge_win(3)
+		stancedodge_win(4)
 		stancedodge_win(5)
+		stancedodge_win(7)
 		stancedodge_win(8)
 		
 		window_advance(6,3)
@@ -158,11 +164,13 @@ switch(attack)
 	
 	case AT_UTILT:
 	{
-		stancedodge_win_timer(4, 6)
+		stancedodge_win(3)
+		stancedodge_win(4)
 	}break;
 	
 	case AT_UAIR:
 	{
+		stancedodge_win(3)
 		stancedodge_win(4)
 	}break;
 	
@@ -170,7 +178,9 @@ switch(attack)
 	{
 		window_advance(4, 7)
 		window_advance(5, 8)
+		stancedodge_win(2)
 		stancedodge_win(3)
+		stancedodge_win(5)
 		stancedodge_win(6)
 		
 		switch (window)
@@ -217,6 +227,7 @@ switch(attack)
 			hud_offset = 50;
 		}
 		
+		stancedodge_win(3)
 		stancedodge_win(4)
 	}break;
 	
@@ -238,7 +249,7 @@ switch(attack)
 		}
 		
 		if (window == 2 && window_timer <= 1 && !hitpause) && bair_stall == true &&
-		((spr_dir = -1 && right_down) || (spr_dir = 1 && left_down))
+		((spr_dir = -1 && right_down) || (spr_dir = 1 && left_down)) && attack_down
 		{
 			vsp = clamp(vsp, -5,0.1);
 			hsp -= 2*spr_dir;
@@ -251,6 +262,7 @@ switch(attack)
 			hsp *= 0.9;
 		}
 		
+		stancedodge_win(2)
 		stancedodge_win(3)
 		stancedodge_win(4)
 	}break;
@@ -275,7 +287,8 @@ switch(attack)
 			nair_stall = false;
 		}
 		
-		stancedodge_win_timer(3,2)
+		stancedodge_win(2)
+		stancedodge_win(3)
 		stancedodge_win(4)
 	}break;
 	
@@ -291,7 +304,12 @@ switch(attack)
 			
 			var raptorboostd = collision_rectangle(x+20*spr_dir,y-30, x+40*spr_dir, y-15, obj_article2, true, true)
 			
-			if window != 1 && (raptorbooste != noone || (raptorboostd != noone && raptorboostd.player_id == id && special_down))
+			if window != 1 && (raptorbooste != noone)
+			{
+				window = 5;
+				window_timer = 0;
+			}
+			else if (raptorboostd != noone && raptorboostd.player_id == id && special_down)
 			{
 				if croagstance == 1 {suckerpunchsludge = true;}
 				window = 5;
@@ -394,6 +412,7 @@ switch(attack)
 			}break;
 		}
 		
+		stancedodge_win(6)
 		stancedodge_win(7)
 		stancedodge_win(8)
 		stancedodge_win(9)
@@ -553,7 +572,7 @@ switch(attack)
 			{
 				if free && window_timer <= 7
 				{
-					vsp = clamp(vsp, -4,-0.1);
+					vsp = clamp(vsp, -4,4);
 					hsp = clamp(hsp, -3.5, 3.5);
 				}
 				
@@ -576,56 +595,8 @@ switch(attack)
 							sting_pause = 4;
 							sting_pause_scaling = 0.1;
 						}
-					
-						switch(spr_dir)
-						{
-							case 1:
-							{
-								if !free
-								{
-									sting_angle1 = 355;
-									sting_angle2 = 5;
-									sting_angle3 = 0;
-								
-									sting_offset_x = 48;
-									sting_offset_y = -28;
-								}
-							
-								if free
-								{
-									sting_angle1 = 320;
-									sting_angle2 = 310;
-									sting_angle3 = 315;
-							
-									sting_offset_x = 32;
-									sting_offset_y = 0;
-								}
-							}break;
-					
-							case -1:
-							{
-								if !free
-								{
-									sting_angle1 = 5;
-									sting_angle2 = 355;
-									sting_angle3 = 0;
-							
-									sting_offset_x = 48;
-									sting_offset_y = -28;
-								}
 						
-								if free
-								{
-									sting_angle1 = 35;
-									sting_angle2 = 45;
-									sting_angle3 = 40;
-									
-									sting_offset_x = 32;
-									sting_offset_y = 0;
-								}
-							}break;
-						}
-
+						poisonsting_variables_set()
 						if !free
 						{
 							var spit = spawn_hit_fx( x+sting_offset_x*0.5*spr_dir, y + sting_offset_y, spit_fx )
@@ -635,14 +606,13 @@ switch(attack)
 							var poison_sting1 = create_hitbox( AT_NSPECIAL, 1, x+sting_offset_x*spr_dir, y + sting_offset_y+4 )
 							poison_sting1.damage = sting_damage;
 							poison_sting1.length += poison_sting_charge*0.1;
-							poison_sting1.hsp += poison_sting_charge*spr_dir*0.1;
+							poison_sting1.hsp += poison_sting_charge*spr_dir*0.15;
 							poison_sting1.vsp = 1.2;
 							poison_sting1.proj_angle = sting_angle1;
 							poison_sting1.hitpause = sting_pause;
 							poison_sting1.fx_particles = 1;
 							poison_sting1.hitpause_growth = sting_pause_scaling;
 						}
-						
 						if free
 						{
 							var spit = spawn_hit_fx( x+sting_offset_x*0.5*spr_dir, y-18 + sting_offset_y, spit_fx )
@@ -652,8 +622,8 @@ switch(attack)
 							var poison_sting1 = create_hitbox( AT_NSPECIAL, 1, x+sting_offset_x*spr_dir, y + sting_offset_y )
 							poison_sting1.damage = sting_damage;
 							poison_sting1.length += poison_sting_charge*0.05;
-							poison_sting1.hsp = 7.5*spr_dir + poison_sting_charge*0.1*spr_dir;
-							poison_sting1.vsp = 5.5 + poison_sting_charge*0.15;
+							poison_sting1.hsp = 8.5*spr_dir + poison_sting_charge*0.15*spr_dir;
+							poison_sting1.vsp = 6.5 + poison_sting_charge*0.15;
 							poison_sting1.proj_angle = sting_angle1;
 							poison_sting1.hitpause = sting_pause;
 							poison_sting1.fx_particles = 1;
@@ -663,64 +633,66 @@ switch(attack)
 								
 						case 3:
 						{
-						if !free
-						{
-							var poison_sting2 = create_hitbox( AT_NSPECIAL, 1, x+sting_offset_x*spr_dir, y + sting_offset_y-4 )
-							poison_sting2.damage = sting_damage;
-							poison_sting2.length += poison_sting_charge*0.1;
-							poison_sting2.hsp += poison_sting_charge*spr_dir*0.1;
-							poison_sting2.vsp = -1.2;
-							poison_sting2.proj_angle = sting_angle2;
-							poison_sting2.hitpause = sting_pause;
-							poison_sting2.fx_particles = 1;
-							poison_sting2.hitpause_growth = sting_pause_scaling;
-						}
-						
-						if free
-						{
-							var poison_sting2 = create_hitbox( AT_NSPECIAL, 1, x+sting_offset_x*spr_dir, y + sting_offset_y )
-							poison_sting2.damage = sting_damage;
-							poison_sting2.length += poison_sting_charge*0.05;
-							poison_sting2.hsp = 5.5*spr_dir + poison_sting_charge*0.1*spr_dir;
-							poison_sting2.vsp = 7.5 + poison_sting_charge*0.15;
-							poison_sting2.proj_angle = sting_angle2;
-							poison_sting2.hitpause = sting_pause;
-							poison_sting2.fx_particles = 1;
-							poison_sting2.hitpause_growth = sting_pause_scaling;
-						}
-					}break;
-				
-					case 6:
-					{
-						if !free
-						{
-							var poison_sting3 = create_hitbox( AT_NSPECIAL, 1, x+sting_offset_x*spr_dir, y + sting_offset_y )
-							poison_sting3.damage = sting_damage;
-							poison_sting3.length += poison_sting_charge*0.1;
-							poison_sting3.hsp += poison_sting_charge*spr_dir*0.1;
-							poison_sting3.proj_angle = sting_angle3;
-							poison_sting3.hitpause = sting_pause;
-							poison_sting3.fx_particles = 1;
-							poison_sting3.hitpause_growth = sting_pause_scaling;
-						}
-									
-						if free
-						{
-							var poison_sting3 = create_hitbox( AT_NSPECIAL, 1, x+sting_offset_x*spr_dir, y + sting_offset_y )
-							poison_sting3.damage = sting_damage;
-							poison_sting3.length += poison_sting_charge*0.05;
-							poison_sting3.hsp = 6.5*spr_dir + poison_sting_charge*0.1*spr_dir;
-							poison_sting3.vsp = 6.5 + poison_sting_charge*0.15;
-							poison_sting3.proj_angle = sting_angle3;
-							poison_sting3.hitpause = sting_pause;
-							poison_sting3.fx_particles = 1;
-							poison_sting3.hitpause_growth = sting_pause_scaling;
-						}
-								
-						poison_sting_charge = 0;
-						sting_charged = false;
+							poisonsting_variables_set()
+							if !free
+							{
+								var poison_sting2 = create_hitbox( AT_NSPECIAL, 1, x+sting_offset_x*spr_dir, y + sting_offset_y-4 )
+								poison_sting2.damage = sting_damage;
+								poison_sting2.length += poison_sting_charge*0.1;
+								poison_sting2.hsp += poison_sting_charge*spr_dir*0.15;
+								poison_sting2.vsp = -1.2;
+								poison_sting2.proj_angle = sting_angle2;
+								poison_sting2.hitpause = sting_pause;
+								poison_sting2.fx_particles = 1;
+								poison_sting2.hitpause_growth = sting_pause_scaling;
+							}
+							
+							if free
+							{
+								var poison_sting2 = create_hitbox( AT_NSPECIAL, 1, x+sting_offset_x*spr_dir, y + sting_offset_y )
+								poison_sting2.damage = sting_damage;
+								poison_sting2.length += poison_sting_charge*0.05;
+								poison_sting2.hsp = 6.5*spr_dir + poison_sting_charge*0.1*spr_dir;
+								poison_sting2.vsp = 8.5 + poison_sting_charge*0.15;
+								poison_sting2.proj_angle = sting_angle2;
+								poison_sting2.hitpause = sting_pause;
+								poison_sting2.fx_particles = 1;
+								poison_sting2.hitpause_growth = sting_pause_scaling;
+							}
 						}break;
-					}break;
+				
+						case 6:
+						{
+							poisonsting_variables_set()
+							if !free
+							{
+								var poison_sting3 = create_hitbox( AT_NSPECIAL, 1, x+sting_offset_x*spr_dir, y + sting_offset_y )
+								poison_sting3.damage = sting_damage;
+								poison_sting3.length += poison_sting_charge*0.1;
+								poison_sting3.hsp += poison_sting_charge*spr_dir*0.15;
+								poison_sting3.proj_angle = sting_angle3;
+								poison_sting3.hitpause = sting_pause;
+								poison_sting3.fx_particles = 1;
+								poison_sting3.hitpause_growth = sting_pause_scaling;
+							}
+										
+							if free
+							{
+								var poison_sting3 = create_hitbox( AT_NSPECIAL, 1, x+sting_offset_x*spr_dir, y + sting_offset_y )
+								poison_sting3.damage = sting_damage;
+								poison_sting3.length += poison_sting_charge*0.05;
+								poison_sting3.hsp = 7.5*spr_dir + poison_sting_charge*0.15*spr_dir;
+								poison_sting3.vsp = 7.5 + poison_sting_charge*0.15;
+								poison_sting3.proj_angle = sting_angle3;
+								poison_sting3.hitpause = sting_pause;
+								poison_sting3.fx_particles = 1;
+								poison_sting3.hitpause_growth = sting_pause_scaling;
+							}
+									
+							poison_sting_charge = 0;
+							sting_charged = false;
+							}break;
+						}break;
 					}
 				}break;
 				
@@ -778,7 +750,7 @@ switch(attack)
 			{
 				if free && window_timer <= 7
 				{
-					vsp = clamp(vsp, -4, 4);
+					vsp = clamp(vsp, -4, 1);
 					hsp = clamp(hsp, -3.5, 3.5);
 				}
 				
@@ -791,11 +763,11 @@ switch(attack)
 					{
 						sludgecharge = 1;
 					}
-					else if poison_sting_charge >= 20 && poison_sting_charge <= 58
+					else if poison_sting_charge >= 20 && poison_sting_charge <= 40
 					{
 						sludgecharge = 2;
 					}
-					else if poison_sting_charge >= 58
+					else if poison_sting_charge >= 40
 					{
 						sludgecharge = 3;
 					}
@@ -864,8 +836,10 @@ switch(attack)
 	case AT_DSPECIAL: //Swagger/Foul Play
 	{
 		hsp = clamp(hsp, -8,8);
+		
 		if window == 1
 		{
+			if window_timer == 1 && free {vsp = clamp(vsp, -8,-2);}
 			hud_offset += 5;
 			hud_offset = clamp(hud_offset, 0, 45);
 			
@@ -879,6 +853,11 @@ switch(attack)
 		if window == 2 || window == 3
 		{
 			hud_offset = 45;
+			
+			if (window == 2 && window_timer >= 2) || (window >=3) && has_hit
+			{
+				can_jump = true;
+			}
 			
 			if window == 2 && window_timer == 1
 			{
@@ -918,6 +897,7 @@ switch(attack)
 	
 	case AT_USPECIAL: //Bounce
 	{
+		
 		if (window >= 2 && window != 3 && window <= 4) && !hitpause
 		{
 			if window == 2 && (window_timer == 1 || window_timer == 5 || window_timer == 10 || window_timer == 15)
@@ -932,13 +912,21 @@ switch(attack)
 		
 		switch (window)
 		{
+			case 1:
+			{
+				if window_timer == 1 && free
+				{
+					vsp = -3;
+				}
+			}break;
+			
 			case 2:
 			{
 				bounce_angle = round(lengthdir_x(hsp, vsp)*-4.5);
 				bounce_stretch = abs(vsp*0.08)
 				bounce_offset = bounce_stretch*8;
 				
-				bounce_transp -= 0.08;
+				if !hitpause{bounce_transp -= 0.06;}
 				bounce_transp = clamp(bounce_transp, 0, 1);
 			}break;
 			
@@ -957,6 +945,7 @@ switch(attack)
 				if down_down
 				{
 					fall_through = true;
+					vsp += 0.75;
 				}
 				else
 				{
@@ -994,7 +983,7 @@ switch(attack)
 					bounce_transp = clamp(bounce_transp, 0, 1);
 				}
 				
-				if !was_parried{can_shield = true;}
+				if !was_parried{can_jump = true;}
 			}break;
 			
 			case 5:
@@ -1103,7 +1092,7 @@ switch(attack)
 
 #define stancedodge_win_timer(windownum, windowtime)
 {
-	if window == windownum && window_timer >= windowtime && (has_hit_player || suckerpunchsludge) && croagstance == 1
+	if window == windownum && window_timer >= windowtime && (has_hit_player || suckerpunchsludge) && croagstance == 1 && !hitpause
 	{
 		if !was_parried{can_shield = true;}
 		if free {can_jump = true;}
@@ -1112,10 +1101,63 @@ switch(attack)
 
 #define stancedodge_win(windownum)
 {
-	if window == windownum && (has_hit_player || suckerpunchsludge) && croagstance == 1
+	if window == windownum && (has_hit_player || suckerpunchsludge) && croagstance == 1 && !hitpause
 	{
 		if !was_parried{can_shield = true;}
 		else {can_shield = false;}
 		if free {can_jump = true;}
 	}
 }
+
+#define poisonsting_variables_set()
+{
+	switch(spr_dir)
+						{
+							case 1:
+							{
+								if !free
+								{
+									sting_angle1 = 355;
+									sting_angle2 = 5;
+									sting_angle3 = 0;
+								
+									sting_offset_x = 48;
+									sting_offset_y = -28;
+								}
+							
+								if free
+								{
+									sting_angle1 = 320;
+									sting_angle2 = 310;
+									sting_angle3 = 315;
+							
+									sting_offset_x = 32;
+									sting_offset_y = 0;
+								}
+							}break;
+					
+							case -1:
+							{
+								if !free
+								{
+									sting_angle1 = 5;
+									sting_angle2 = 355;
+									sting_angle3 = 0;
+							
+									sting_offset_x = 48;
+									sting_offset_y = -28;
+								}
+						
+								if free
+								{
+									sting_angle1 = 35;
+									sting_angle2 = 45;
+									sting_angle3 = 40;
+									
+									sting_offset_x = 32;
+									sting_offset_y = 0;
+								}
+							}break;
+						}
+}
+

@@ -259,6 +259,24 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.9", "29 November, 2021");
+initHeader("General");
+initSection("~ Added Finished tag.
+~ Added Greenflower Zone compatibility.
+~ Added TCO Art compatibility.
+~ Adjusted Muno Steve death message.
+~ Adjusted Steam preview image a little bit.");
+initHeader("Jab");
+initSection("- Jab 3 now has parry stun.");
+initHeader("Down Air");
+initSection("~ Adjusted endlag animation to be a bit smoother.");
+initHeader("Up Strong");
+initSection("~ Fixed a part of Sleep Kirby’s arm not being shaded for a frame.");
+initHeader("Down Special (Sleep Copy Essence)");
+initSection("~ Fixed the Ability Star drawing an opponent’s hit fx if the Ability Star hits someone.
+~ Fixed a bug where if both players hit the Ability Star at the same time while having their hitboxes overlapping each other, both would get put to sleep.
+~ Fixed a bug where if an opponent hit Sleep Kirby’s Ability Star into his own Burst Bubble (NSpecial projectile), the bubble would pick up the Ability Star.");
+
 initPatch("1.8", "8 November, 2021");
 initHeader("General");
 initSection("~ Adjusted the screenshots on the Steam page.
@@ -393,7 +411,7 @@ initSection("- Kirby's Return to Dream Land
 - Super Smash Bros. 64
 - Super Smash Bros. for Nintendo 3DS and Wii U");
 initHeader("Compatible with");
-initSection("Trummel & Alto, Otto, Steve, Link, Hikaru, Agent N, Henry Stickmin, Dedede Arena, Soulbound Conflict");
+initSection("Trummel & Alto, Otto, Steve, Link, Hikaru, TCO, Agent N, Henry Stickmin, Dedede Arena, Soulbound Conflict, Greenflower Zone");
 initHeader("Credits");
 initSection("Kirby is owned by HAL Labratories. No copyright infingement was intended in making this. This is merely made out of love for the series.");
 
@@ -639,7 +657,7 @@ otto_bobblehead_sprite = sprite_get("otto");
 otto_bobblebody_sprite = sprite_get("_pho_example_bobble_body");
 
 // Steve death message.
-steve_death_message = "Steve couldn't stay awake";
+steve_death_message = "Steve got sent to Dream Land";
 
 // Link spear. (determines which spear your char will drop the first time)
 link_spear_drop = 3;

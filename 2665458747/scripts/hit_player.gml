@@ -48,10 +48,18 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1)
     hit_player_obj.croagpoison = clamp(hit_player_obj.croagpoison, 0, 100);
 }
 
-if (my_hitboxID.attack == AT_NSPECIAL_2 && my_hitboxID.hbox_num == 1)
+if (my_hitboxID.attack == AT_NSPECIAL_2)
 {
-    hit_player_obj.croagpoison += 10;
-    hit_player_obj.croagpoison = clamp(hit_player_obj.croagpoison, 0, 100);
+    if my_hitboxID.hbox_num == 1
+    {
+        hit_player_obj.croagpoison += 10;
+        hit_player_obj.croagpoison = clamp(hit_player_obj.croagpoison, 0, 100);
+    }
+    
+    if my_hitboxID.hbox_num >= 1.1
+    {
+        hit_player_obj.hitstop += hit_player_obj.croagpoison*0.25;
+    }
 }
 
 if (my_hitboxID.attack == AT_FSPECIAL_2 )
@@ -91,7 +99,7 @@ if hit_player_obj.croagpoison >= 24
         sound_play(sound_get("dp-poison"));
         spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-48, tipperfx)
         
-        //take_damage(hit_player_obj.player, player,round(extra_damage*0.2))
+        take_damage(hit_player_obj.player, player,round(extra_damage*0.2))
     }
     
     if (my_hitboxID.attack == AT_UAIR && (my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 4))
@@ -106,7 +114,7 @@ if hit_player_obj.croagpoison >= 24
         sound_play(sound_get("dp-poison"));
         spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-48, tipperfx)
         
-        //take_damage(hit_player_obj.player, player,round(extra_damage*0.2))
+        take_damage(hit_player_obj.player, player,round(extra_damage*0.2))
     }
     
     if (my_hitboxID.attack == AT_DAIR && 
@@ -122,7 +130,7 @@ if hit_player_obj.croagpoison >= 24
         sound_play(sound_get("dp-poison"));
         spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-48, tipperfx)
         
-        //take_damage(hit_player_obj.player, player,round(extra_damage*0.2))
+        take_damage(hit_player_obj.player, player,round(extra_damage*0.2))
     }
     
     if (my_hitboxID.attack == AT_FAIR && 
@@ -138,7 +146,7 @@ if hit_player_obj.croagpoison >= 24
         sound_play(sound_get("dp-poison"));
         spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-48, tipperfx)
         
-        //take_damage(hit_player_obj.player, player,round(extra_damage*0.2))
+        take_damage(hit_player_obj.player, player,round(extra_damage*0.2))
     }
     
     if (my_hitboxID.attack == AT_DSTRONG && (my_hitboxID.hbox_num == 3))
@@ -153,7 +161,7 @@ if hit_player_obj.croagpoison >= 24
         sound_play(sound_get("dp-poison"));
         spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-48, tipperfx)
         
-        //take_damage(hit_player_obj.player, player,round(extra_damage*0.2))
+        take_damage(hit_player_obj.player, player,round(extra_damage*0.2))
     }
     
     if (my_hitboxID.attack == AT_FSTRONG && (my_hitboxID.hbox_num == 2))
@@ -168,7 +176,7 @@ if hit_player_obj.croagpoison >= 24
         sound_play(sound_get("dp-poison"));
         spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-48, tipperfx)
         
-        //take_damage(hit_player_obj.player, player,round(extra_damage*0.2))
+        take_damage(hit_player_obj.player, player,round(extra_damage*0.2))
     }
     
     if (my_hitboxID.attack == AT_USTRONG && (my_hitboxID.hbox_num == 4))
@@ -183,7 +191,7 @@ if hit_player_obj.croagpoison >= 24
         sound_play(sound_get("dp-poison"));
         spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-48, tipperfx)
         
-        //take_damage(hit_player_obj.player, player,round(extra_damage*0.2))
+        take_damage(hit_player_obj.player, player,round(extra_damage*0.2))
     }
 }
 
@@ -203,7 +211,7 @@ else if hit_player_obj.croagpoison <= 25 && hit_player_obj.croagpoison != 0
         sound_play(sound_get("dp-poison"));
         spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-48, tipperfx2)
         
-        //take_damage(hit_player_obj.player, player,round(extra_damage*0.1))
+        take_damage(hit_player_obj.player, player,round(extra_damage*0.1))
     }
     
     if (my_hitboxID.attack == AT_UAIR && (my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 4))
@@ -217,7 +225,7 @@ else if hit_player_obj.croagpoison <= 25 && hit_player_obj.croagpoison != 0
         sound_play(sound_get("dp-poison"));
         spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-48, tipperfx2)
         
-        //take_damage(hit_player_obj.player, player,round(extra_damage*0.1))
+        take_damage(hit_player_obj.player, player,round(extra_damage*0.1))
     }
     
     if (my_hitboxID.attack == AT_DAIR && 
@@ -233,7 +241,7 @@ else if hit_player_obj.croagpoison <= 25 && hit_player_obj.croagpoison != 0
         sound_play(sound_get("dp-poison"));
         spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-48, tipperfx2)
         
-        //take_damage(hit_player_obj.player, player,round(extra_damage*0.1))
+        take_damage(hit_player_obj.player, player,round(extra_damage*0.1))
     }
     
     if (my_hitboxID.attack == AT_FAIR && 
@@ -249,7 +257,7 @@ else if hit_player_obj.croagpoison <= 25 && hit_player_obj.croagpoison != 0
         sound_play(sound_get("dp-poison"));
         spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-48, tipperfx)
         
-        //take_damage(hit_player_obj.player, player,round(extra_damage*0.1))
+        take_damage(hit_player_obj.player, player,round(extra_damage*0.1))
     }
     
     if (my_hitboxID.attack == AT_DSTRONG && (my_hitboxID.hbox_num == 3))
@@ -264,7 +272,7 @@ else if hit_player_obj.croagpoison <= 25 && hit_player_obj.croagpoison != 0
         sound_play(sound_get("dp-poison"));
         spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-48, tipperfx)
         
-        //take_damage(hit_player_obj.player, player,round(extra_damage*0.1))
+        take_damage(hit_player_obj.player, player,round(extra_damage*0.1))
     }
     
     if (my_hitboxID.attack == AT_FSTRONG && (my_hitboxID.hbox_num == 2))
@@ -279,7 +287,7 @@ else if hit_player_obj.croagpoison <= 25 && hit_player_obj.croagpoison != 0
         sound_play(sound_get("dp-poison"));
         spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-48, tipperfx)
         
-        //take_damage(hit_player_obj.player, player,round(extra_damage*0.1))
+        take_damage(hit_player_obj.player, player,round(extra_damage*0.1))
     }
     
     if (my_hitboxID.attack == AT_USTRONG && (my_hitboxID.hbox_num == 4))
@@ -293,6 +301,6 @@ else if hit_player_obj.croagpoison <= 25 && hit_player_obj.croagpoison != 0
         sound_play(sound_get("dp-poison"));
         spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-48, tipperfx)
         
-        //take_damage(hit_player_obj.player, player,round(extra_damage*0.1))
+        take_damage(hit_player_obj.player, player,round(extra_damage*0.1))
     }
 }

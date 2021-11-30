@@ -144,7 +144,11 @@ switch (my_hitboxID.attack){ //lol switch statement
 			if (hit_player_obj.NotSleepKirby_IsSleeping == false && hit_player_obj.clone == false){
 				sound_play(sfx_ability_get);
 				sound_play(sfx_death);
-				
+				if (my_hitboxID.projectile_parry_stun == true){
+					print("Ability Star hit an opponent!")
+				} else if (my_hitboxID.projectile_parry_stun == false){
+					print("Ability Star backfired on Sleep Kirby!")
+				}
 				if (my_hitboxID.hbox_num == 1){
 					copy_essence_hit = true
 				}

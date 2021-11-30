@@ -78,6 +78,10 @@ ability_show = true;
 
 bounce_lockout = 0;
 
+gaming_timing_variable_that_i_should_have_named_better = 0;
+
+copy_essence_belongs_to_sleep_kirby = true;
+
 //HITBOX STUFF aaaa (thank u to tdude for letting me reuse some code)
 can_get_hit = true;
 hitbox_hit = noone;

@@ -134,7 +134,7 @@ switch (croagstance)
         
         set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 3);
         set_hitbox_value(AT_FAIR, 2, HG_WINDOW_CREATION_FRAME, 0);
-        set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 7);
+        set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 4);
         set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 15);
         set_hitbox_value(AT_FAIR, 2, HG_HITBOX_Y, -35);
         set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 42);
@@ -148,7 +148,7 @@ switch (croagstance)
         set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, fighthit);
         set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, 0);
         set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, 0);
-        set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 12);
+        set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 7);
         set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, sound_get("dp-hit2"));
         set_hitbox_value(AT_FAIR, 2, HG_HITBOX_GROUP, 1);
         
@@ -210,7 +210,7 @@ switch (croagstance)
         
         set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 3);
         set_hitbox_value(AT_FAIR, 2, HG_WINDOW_CREATION_FRAME, 0);
-        set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 7);
+        set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 4);
         set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 20);
         set_hitbox_value(AT_FAIR, 2, HG_HITBOX_Y, -35);
         set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 55);
@@ -224,7 +224,7 @@ switch (croagstance)
         set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, fighthit);
         set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, 0);
         set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, 0);
-        set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 12);
+        set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, 7);
         set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, sound_get("dp-hit2"));
         set_hitbox_value(AT_FAIR, 2, HG_HITBOX_GROUP, 1);
         

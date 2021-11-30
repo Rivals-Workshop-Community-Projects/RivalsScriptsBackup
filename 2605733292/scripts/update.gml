@@ -278,10 +278,10 @@ if (IsSleepKirby_PlayAbilityStarSFX == true){
 //(i hate this)
 	with (oPlayer){
 		if (is_in_playtest == false){
+			//print(url)
 			//sfx_ability_star_break = sound_get("sfx_ability_star_break");
 			sfx_ability_star_break = asset_get("mfx_unstar");
 			Sleep_Meter = sprite_get("enemy_sleep_bar");
-
 			//Debug vars
 			//draw_debug_text( x, y - 30, string(NotSleepKirby_IsSleeping))
 			//draw_debug_text( x, y , string(state_timer))
@@ -301,6 +301,24 @@ if (IsSleepKirby_PlayAbilityStarSFX == true){
 						//window = 2;
 						//window_timer = 0;
 						//bed_timer = 0;
+						
+						//Sleep Kirby Hat Offsets
+						if (free){
+							//Air Hat Offsets
+							sleep_kirby_hat_offset_x = 26*spr_dir; //
+							sleep_kirby_hat_offset_y = 8; //
+							sleep_kirby_has_sleep_sprites = false; //Set this to true to enable custom sleep sprites.
+							sleep_kirby_sleep_sprite_ground = sprite_get("hurtground")
+							sleep_kirby_sleep_sprite_air = sprite_get("hurt")
+						} else if (!free){
+							//Grounded Hat Offsets
+							sleep_kirby_hat_offset_x = 26*spr_dir; //
+							sleep_kirby_hat_offset_y = 8; //
+							sleep_kirby_has_sleep_sprites = false; //Set this to true to enable custom sleep sprites.
+							sleep_kirby_sleep_sprite_ground = sprite_get("hurtground")
+							sleep_kirby_sleep_sprite_air = sprite_get("hurt")
+						}
+						
 					}
 			
 					if (state_timer == -1){

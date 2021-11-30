@@ -117,6 +117,9 @@ if (attack == AT_JAB){
 			window = 2
 			window_timer = 0
 		}
+		if (was_parried){
+			window_timer = get_window_value(attack, window, AG_WINDOW_LENGTH);
+		}
 	}
 }
 

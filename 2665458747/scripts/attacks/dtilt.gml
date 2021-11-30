@@ -13,7 +13,7 @@ set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAMES, 2);
 
-set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 13);
+set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAMES, 2);
@@ -37,7 +37,7 @@ set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, fighthit);
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(AT_DTILT, 1, HG_EXTRA_HITPAUSE, 2);
+set_hitbox_value(AT_DTILT, 1, HG_EXTRA_HITPAUSE, 4);
 set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, .1);
 set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, sound_get("dp-hit2"));
 set_hitbox_value(AT_DTILT, 1, HG_HITBOX_GROUP, 1);

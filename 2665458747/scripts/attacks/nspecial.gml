@@ -55,6 +55,6 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_LOCKOUT, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_FORCE_FLINCH, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GRAVITY, 0);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 11.5);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 13.5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, 0);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);

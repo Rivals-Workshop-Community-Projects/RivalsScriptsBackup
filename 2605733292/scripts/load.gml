@@ -115,5 +115,7 @@ sprite_change_offset("indicator", 7, 10);
 
 sprite_change_offset("otto", 0, 2);
 
+sprite_change_offset("gfz", 19, 37);
+
 //Victory Background
 set_victory_bg(sprite_get("victory_background"));

@@ -320,7 +320,12 @@ if (state == 3){ //Got Hit???
 
 if (state == 4){
 	//create_hitbox(AT_DSPECIAL, 1, x, y - 24);
-	cur_hitbox = create_hitbox(AT_DSPECIAL, 1, x, y + 4);
+	
+	if (gaming_timing_variable_that_i_should_have_named_better == 3){
+		cur_hitbox = create_hitbox(AT_DSPECIAL, 1, x, y + 4);
+	} else if (gaming_timing_variable_that_i_should_have_named_better != 3){
+		gaming_timing_variable_that_i_should_have_named_better++;
+	}
 	if (hsp > 4.5){
 		hsp = hsp - 0.5
 	}
@@ -368,6 +373,7 @@ if (state == 4){
 			if (player_id.essences_in_use != player_id.essences_max_limit){
 				player_id.move_cooldown[AT_DSPECIAL] = 120;
 			}
+			cur_hitbox.destroyed = true;
 			instance_destroy();
 			exit;
 		}
@@ -402,8 +408,10 @@ if (state == 4){
 	//parry stun stuffs
 	if (cur_hitbox.player == player){
 		cur_hitbox.projectile_parry_stun = true;
+		copy_essence_belongs_to_sleep_kirby = true;
 	} else {
 		cur_hitbox.projectile_parry_stun = false;
+		copy_essence_belongs_to_sleep_kirby = false;
 	}
 	
 	cur_hitbox.can_tech = 1;
@@ -425,6 +433,7 @@ if (state == 4){
 		if (player_id.essences_in_use != player_id.essences_max_limit){
 			player_id.move_cooldown[AT_DSPECIAL] = 120;
 		}
+		cur_hitbox.destroyed = true;
 		instance_destroy();
 		exit;
 	}
@@ -438,6 +447,7 @@ if (state == 4){
 		if (player_id.essences_in_use != player_id.essences_max_limit){
 			player_id.move_cooldown[AT_DSPECIAL] = 120;
 		}
+		cur_hitbox.destroyed = true;
 		instance_destroy();
 		exit;
 	}

@@ -85,14 +85,20 @@ if (attack == AT_NSPECIAL){
 	with (asset_get("obj_article1")){
 		if (place_meeting(x, y, other)){
 			if ((state == 2 || state == 4) && player_id.player == other.player){
-				sound_play ( asset_get ( "sfx_blow_medium2" ));
-				oh_crap_did_i_get_absorbed_by_bubble = true
-				hey_what_way_did_bubble_hit_me = other.spr_dir
-				//x = other.x
-				//y = other.y
-				//if (spr_dir == -1){
-					sound_play ( asset_get ( "mfx_star" ));
-				//}
+				if (copy_essence_belongs_to_sleep_kirby == true){
+					sound_play ( asset_get ( "sfx_blow_medium2" ));
+					oh_crap_did_i_get_absorbed_by_bubble = true
+					hey_what_way_did_bubble_hit_me = other.spr_dir
+					//x = other.x
+					//y = other.y
+					//if (spr_dir == -1){
+						sound_play ( asset_get ( "mfx_star" ));
+					//}
+				} else if (copy_essence_belongs_to_sleep_kirby == false){
+					spawn_hit_fx( x, y - 32, 304 );
+					sound_play(player_id.sfx_canvas_curse_balloon_pop);
+					instance_destroy();
+				}
 			}
 		}
 	}

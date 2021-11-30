@@ -3,7 +3,14 @@
 
 if !instance_exists(attachedhitbox) && state == 0
 {
-    state = 1;
+	if player_id.state_cat != SC_HITSTUN
+	{
+    	state = 1;
+	}
+	else
+	{
+		precautionarytimer-=200;
+	}
 }
 else if instance_exists(attachedhitbox)
 {
@@ -78,6 +85,7 @@ switch (state)
             sludgeswitch = false;
         }
         sludgehboxdetectsize = 30;
+        sludgebelchedpop()
     }break;
     
     case 4:
@@ -91,6 +99,7 @@ switch (state)
             sludgeswitch = false;
         }
         sludgehboxdetectsize = 36;
+        sludgebelchedpop()
     }break;
     
     case 5:
@@ -104,6 +113,7 @@ switch (state)
             sludgeswitch = false;
         }
         sludgehboxdetectsize = 48;
+        sludgebelchedpop()
     }break;
     
     case 6:
@@ -341,6 +351,7 @@ if instance_exists(self) &&  (state >= 1 && state <= 6)
 		else if belchtimer == 1
 		{
 			hsp = 0;
+			sludgebelched = false;
 			belchtimer--;
 		}
     }
@@ -370,4 +381,16 @@ if instance_exists(self)
         print("gone");
         instance_destroy();
     }
+}
+
+#define sludgebelchedpop()
+if sludgebelched
+{
+	var player = collision_circle(x,y,sludgehboxdetectsize,oPlayer,true,true)
+	
+	if player != noone && player.id != player_id.id
+	{
+		state = 7;
+		state_timer = 0;
+	}
 }
