@@ -246,6 +246,27 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.13", "30 November, 2021");
+
+initHeader("Buffs:");
+initSection("+ Bair has increased range (egg grew legs)
++ Bair's hitbox was made bigger
++ Dair comes out 2 frames faster, Frame 17 -> 15
+");
+
+initHeader("Nerfs:");
+initSection("- Bair's base kb was decreased, 8.5 -> 8
+- Bair's landing lag was increased, 8 -> 10
+- Dair sweetspot's kb scaling was reduced, 0.8 -> 0.7
+");
+
+initHeader("Changes:");
+initSection("= Fixed a bug where Egg's Uspecial article would still be active after death and could teleport them during respawn (mb)
+= Did the same fix for Egg's Counter articles because I foresee that the same issue could occur
+= Tell me if it still happens (I got it to work once by myself and then never again lol)
+");
+
+//
 initPatch("1.12", "29 November, 2021");
 
 initHeader("Buffs:");

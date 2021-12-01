@@ -185,16 +185,19 @@ initImage_ext(sprite_get("uspecial"), -4, fa_center, 2, 2, true, c_white, 1, fal
 initTip("DSpecial: Electricity Field");
 initWords("Once Pikachu's Electricity Meter, performing Down Special will create an Electricity Field");
 initWords("If Pikachu touches the field it charges him and converts his next attack that uses Thunder to Electric");
-initWords("Inside the field Pikachu gets a significant speed boost.");
-initWords("Don't get too comfortable inside the Electricity Field though! Staying inside will drain the Electricity Meter faster; as well as using Electric Attacks, inside or outside!");
+initWords("Inside the field Pikachu gets a significant speed boost and using NSpecial inside will let Pikachu float wherever direction the joystick is held.");
+initWords("Don't get too comfortable inside the Electricity Field though! Staying inside will drain the Electricity Meter faster; as well as using Electric Charged Attacks, inside or outside!");
 initImage_ext(sprite_get("field"), -6, fa_center, 1, 1, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("nspecial"), -4, fa_center, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
 initImage_ext(sprite_get("nair"), -4, fa_left, 2, 2, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("nair"), -4, fa_center, 2, 2, true, c_white, 1, true, noone, noone, noone, noone);
-initImage_ext(sprite_get("nair_elec"), -4, fa_center, 2, 2, true, c_white, 1, true, noone, noone, noone, noone);
+initImage_ext(sprite_get("nair_elec"), -4, fa_center, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
+
 
 initTip("Electric Attacks");
 initWords("Pikachu's Electric Attacks work like Clairen's tippers, but more potent and stuns longer!");
 initWords("Electric Attacks will stun opponents and extends hitpause and hitstun");
+initWords("Electric Attacks similar to Clairen's Plasma tippers, but Pikachu's stuns last a little bit longer");
 initImage_ext(sprite_get("ftilt"), -4, fa_left, 2, 2, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("ftilt"), -4, fa_center, 2, 2, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("ftilt_elec"), -4, fa_center, 2, 2, true, c_white, 1, true, noone, noone, noone, noone);
@@ -214,7 +217,12 @@ initImage_ext(sprite_get("dgf_vfx"), -6, fa_center, 2, 2, true, c_white, 1, true
 
 initImage_ext(sprite_get("hellsweep"), -4, fa_right, 2, 2, true, c_white, 1, true, noone, noone, noone, noone);
 
-initTip("C.Dash Attack: Electric Wind God Fist");
+initTip("C.Dash Attack: Wind God Fist");
+initWords("A quick uppercut from an evasive move");
+initWords("Wind God Fist counts as a tilt move! Since it is a tilt move, you can cancel jab into WGF.");
+initImage_ext(sprite_get("EWGF"), -4, fa_left, 2, 2, true, c_white, 1, true, noone, noone, noone, noone);
+
+initTip("C.Dash Perfect Attack: Electric Wind God Fist");
 initWords("Input: Forward, Down, [Down Forward + Attack]");
 initWords("Pressing Attack as soon as possible during Crouch Dash will cause Wind God Fist to become Electric Wind God Fist.");
 initWords("An electric sound will play on a successful input.");
@@ -236,7 +244,10 @@ initWords("Could there be more to this technique?");
 initImage_ext(sprite_get("dgf"), -6, fa_left, 2, 2, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("dgf_vfx"), -6, fa_left, 2, 2, true, c_white, 1, true, noone, noone, noone, noone);
 
-	
+initTip("Crouch Dash Cancelling");
+initWords("Pressing Forward while in the middle of a Crouch Dash will cancel it into a normal Dash!");
+initWords("This makes it easy to chain Crouch Dashes together and approach evasively.");
+
 // initTip("Sandbert's Lore");
 // initWords_ext("Chapter 1", fa_center, c_gray, 0, false);
 // initWords("Sandbert, a son of the ruling family of the Firelands, is an experienced and hardened warrior. He has fought many wars for the Fire Capital, a bellicose nation that constantly seeks to expand its influence over neighbouring lands. His courage in battle has made him a hero among his people.");
@@ -290,10 +301,142 @@ in a Patch.
 
 #define CORE_patches
 
-initPatch("1.0.0", "28 November, 2021");
-initHeader("Pikachu Mishima RELEASE!");
-initSection("Have fun!");
 //-----------------------//
+initPatch("1.2", "30 November, 2021");
+initHeader("--Last Stretch Update--");
+
+initHeader("This will be the final update until the Pokemon Jam judging is finished");
+initSection("Think of this patch being the final Beta test patch :)");
+
+initHeader("Electricity Field");
+initSection("New Mechanic: Holding NSpecial inside the Field will let Pikachu float towards the control stick's direction");
+initSection("Non-frame perfect Electric Wind God Fists inside Electricity Field now counts as a proper EWGF");
+initSection("Non-frame perfect EWGF will not push back parries");
+initSection("Non-frame perfect EWGF will have no Plasma Stun multiplier (Every Charged move deals 120% hitpause of what Plasma Stun normally does)");
+initSection("Fixed a bug where attacking too fast consecutively will not charge the attack inside the field");
+
+initHeader("NSpecial");
+initSection("Knockback 7 -> 4");
+initSection("Angle Flipper 0 -> 9");
+initSection("Custom Gravity 50% -> 25%");
+initSection("Loop limit [unlimited] -> 5 loops");
+initSection("Implemented 20f Cooldown");
+initSection("Can now be cancelled into an Attack");
+
+initHeader("DSpecial");
+initSection("3rd Elec.Charged Hitbox hitpause 4 -> 15");
+initSection("3rd Elec.Charged Hitbox group -1 -> 1 (same as non Elec.charged Hitbox)");
+initSection("Non Elec.charged Hitbox group -1 -> 1");
+
+initHeader("FSpecial");
+initSection("Disabled B-reverse");
+initSection("Holding Special button will flip the direction of the move");
+
+initHeader("UTilt");
+initSection("Damage 6 -> 4");
+
+initHeader("UStrong");
+initSection("Angle 90 -> 110");
+
+initHeader("Wind God Fist");
+initSection("EWGF Hitpause 15 -> 10");
+initSection("Fixed a bug where inputting EWGF in the recovery of Wind God Fist shows EWGF's animation");
+
+initHeader("Misc");
+initSection("Added Victory Music from Pokken");
+initSection("Implemented proper outlined victory portraits for GnW and Gameboy Alts");
+
+//-----------------------//
+
+initPatch("1.1", "30 November, 2021");
+initHeader("--Attack Changes and Corrections--");
+
+
+initHeader("Dash Attack");
+initSection("Hitpause Scaling 0 -> 0.7");
+
+initHeader("FSpecial");
+initSection("Hitbox moved 12 pixels forward");
+
+initHeader("NSpecial");
+initSection("Hitbox moved 2 pixels forward");
+
+initHeader("DTilt");
+initSection("Hitbox moved 10 pixels forward");
+initSection("Hitbox wideness reduced by 22");
+
+initHeader("FAir");
+initSection("Extra Hitpause 0 -> 2");
+
+initHeader("BAir");
+initSection("Hitpause Scaling 0.4 -> 0.7");
+
+initHeader("DAir");
+initSection("Hitpause 20 -> 10");
+initSection("Hitpause Scaling 1 -> 0.7");
+
+initHeader("NAir");
+initSection("Endlag 9 -> 10");
+
+initHeader("DStrong");
+initSection("Hitbox size reworked to match new visual");
+initSection("Hitbox Angle 280 -> 75");
+initSection("New 2f spike sweetspot on foot");
+
+initHeader("FStrong");
+initSection("Hitbox size reworked to match new visual");
+
+initHeader("Wind God Fist/EWGF");
+initSection("Hitbox wideness reduced by 14");
+initSection("Hitbox moved 2 pixels forward");
+
+initHeader("Dragon Upper");
+initSection("Hitpause Scaling 0 -> 0.7");
+initSection("Hitbox wideness reduced by 14");
+initSection("Hitbox moved 2 pixels forward");
+initSection("Hitbox moved 5 pixels upwards");
+
+initHeader("Attack Sprites Improved");
+initSection("FStrong and DStrong Sprites updated");
+
+initHeader("Misc and Bug Fixes");
+initSection("Fixed visual bug where attacking too quickly after an Electric Charged Move will retain the Electric VFX");
+initSection("Latest patch notes now appear on top of Munophone Patch Menu");
+
+//-----------------------//
+
+initPatch("1.0.2a", "29 November, 2021");
+initHeader("--More Adjustments and Misc Improvements Pt.2--");
+
+initHeader("More SFX Adjustments");
+initSection("SFX timing adjustmets");
+
+initHeader("Electric Buff");
+initSection("Fixed Electric Buff staying after getting knocked out");
+
+initHeader("Sprite Changes");
+initSection("F Special and N Special sprites updated");
+
+//-----------------------//
+ 
+initPatch("1.0.2", "29 November, 2021");
+initHeader("--More Adjustments and Misc Improvements--");
+
+initHeader("Reduced EWGF early input window");
+initSection("EWGF input window 4f -> 2f");
+
+initHeader("Hitstop adjustments");
+initSection("Fair 1 hitstop 8f -> 5f");
+initSection("Bair hitstop 6f -> 8f");
+
+initHeader("More SFX Adjustments");
+initSection("SFX timing adjustmets");
+
+initHeader("Bonus Buff Pikachu Picture In Game Files");
+initSection("he ripped yo");
+
+//-----------------------//
+
 initPatch("1.0.1", "28 November, 2021");
 initHeader("--SFX Adjustments and Misc Improvements--");
 
@@ -317,37 +460,12 @@ initSection("Added some unlisted information in Frame Data viewer");
 initHeader("2 New Alts");
 initSection("Added Shiny and Game and Watch Colors");
 
-//-----------------------//
-
-initPatch("1.0.2", "29 November, 2021");
-initHeader("--More Adjustments and Misc Improvements--");
-
-initHeader("Reduced EWGF early input window");
-initSection("EWGF input window 4f -> 2f");
-
-initHeader("Hitstop adjustments");
-initSection("Fair 1 hitstop 8f -> 5f");
-initSection("Bair hitstop 6f -> 8f");
-
-initHeader("More SFX Adjustments");
-initSection("SFX timing adjustmets");
-
-initHeader("Bonus Buff Pikachu Picture In Game Files");
-initSection("he ripped yo");
 
 //-----------------------//
 
-initPatch("1.0.2a", "29 November, 2021");
-initHeader("--More Adjustments and Misc Improvements Pt.2--");
-
-initHeader("More SFX Adjustments");
-initSection("SFX timing adjustmets");
-
-initHeader("Electric Buff");
-initSection("Fixed Electric Buff staying after getting knocked out");
-
-initHeader("Sprite Changes");
-initSection("F Special and N Special sprites updated");
+initPatch("1.0.0", "28 November, 2021");
+initHeader("Pikachu Mishima RELEASE!");
+initSection("Have fun!");
 
 //-----------------------//
 

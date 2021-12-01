@@ -60,7 +60,7 @@ if (state == 0){
         	player_id.teleport = false;
         			    instance_destroy();
                          exit;
-        }if(player_id.attack != AT_USPECIAL || player_id.state == PS_HITSTUN || player_id.state == PS_HITSTUN_LAND || player_id.state == PS_TUMBLE){
+        }if(player_id.attack != AT_USPECIAL || player_id.state == PS_HITSTUN || player_id.state == PS_HITSTUN_LAND || player_id.state == PS_TUMBLE || player_id.state == PS_DEAD || player_id.state == PS_RESPAWN){
         	player_id.teleport_outline = false;
         	sound_stop(asset_get("sfx_ori_charged_flame_charge2"));
         	        	spawn_hit_fx(x - spr_dir, y, 109);

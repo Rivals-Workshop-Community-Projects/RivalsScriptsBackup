@@ -46,13 +46,15 @@ if rival_players==1 and !noturn {
 if (state!=PS_ATTACK_GROUND && state!=PS_ATTACK_AIR){
 ewgf = false;
 omen = false;
+ewgf_real = false;
 hellsweep2 = false;
 hellsweepdgf = false;
 no_drain = false;
 elec_start = false;
+elec_vfx = false;
 }
 
-if (state!=PS_ATTACK_GROUND && state !=PS_ATTACK_AIR) elec_vfx = false;
+
 
 if (!free || state == PS_WALL_JUMP){
 	move_cooldown[AT_FSPECIAL] = 0;
@@ -60,7 +62,7 @@ if (!free || state == PS_WALL_JUMP){
 
 if (electrified)
 {
-// ewgf = true;
+ewgf = true;
 // omen = true;
 }
 
@@ -88,7 +90,7 @@ if (instance_exists( field_obj )){
 	
 
 		
-	if place_meeting( x, y, field_obj ) && state!=PS_ATTACK_GROUND && state!=PS_ATTACK_AIR{ 
+	if place_meeting( x, y, field_obj ){ 
 	field_obj.player_touching = true;
 	elec_charge -= elec_passivedrain;
 	
@@ -255,6 +257,7 @@ if start_dir[0]==1 && spr_dir == looking{
     
     if dp=2 and (right_down and down_down ) and attack_pressed {
     	ewgf=true;
+    	ewgf_real = true;
     	no_drain = true;
         dp=3
         dp_timer=10
@@ -293,6 +296,7 @@ if start_dir[0]==-1 && spr_dir == looking{
     
     if dp==2 and (left_down and down_down ) and attack_pressed {
     	ewgf=true;
+    	ewgf_real = true;
     	no_drain = true;
         dp=3
         dp_timer=10
@@ -329,6 +333,7 @@ if start_dir[0]==1 && spr_dir == looking{
     
     if dp=2 and (right_down and down_down ) and attack_pressed {
     	ewgf=true;
+    	ewgf_real = true;
     	no_drain = true;
         dp=3
         dp_timer=10
@@ -361,6 +366,7 @@ if start_dir[0]==-1 && spr_dir == looking{
     
     if dp==2 and (left_down and down_down ) and attack_pressed {
     	ewgf=true;
+    	ewgf_real = true;
     	no_drain = true;
         dp=3
         dp_timer=10

@@ -27,6 +27,8 @@ if (state == PS_ATTACK_GROUND && attack == AT_EXTRA_1){
 
 
 
+
+
 //auto turn animations
 if (spr_dir != looking)
 {

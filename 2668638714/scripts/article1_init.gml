@@ -10,6 +10,9 @@ state = PS_WALK;
 state_timer = 0;
 lock_state = false;
 
+inactive_timer = 0;
+inactive_timer_max = 300;
+
 ignores_walls = false;
 
 hitbox = noone;

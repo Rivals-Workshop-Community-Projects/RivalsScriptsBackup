@@ -10,7 +10,7 @@ field_sound = true;
 if (player_touching)
 {
     with (player_id){
-    // ewgf = true;
+    elec_vfx = true;
     // omen = true;
     electrified = true;
     

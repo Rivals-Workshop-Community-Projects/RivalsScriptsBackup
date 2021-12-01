@@ -185,8 +185,10 @@ otgf = 0;
 otgf_timer=0;
 otgf_temp=0;
 
-ewgf = false;
 omen = false;
+
+ewgf = false;
+ewgf_real = false;
 ewgf_window = 2;
 
 strong_pressed = false;
@@ -212,10 +214,12 @@ elec_gain = 0.01;
 elec_start = false;
 elec_full = false;
 
+nspec_loops = 0;
+
+
 elecstun_multiplier = 1.2;
 
 field_obj = noone;
-
 
 
 hellsweep2 = false;

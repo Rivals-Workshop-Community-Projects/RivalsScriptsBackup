@@ -19,13 +19,14 @@ switch my_hitboxID.attack
 	case AT_FSPECIAL:
 	
 		var boost = 2*(window == 6)
-		if (window == 6) take_damage(player,-1,5);
+		if (window == 6 and !was_parried) take_damage(player,-1,5);
 		destroy_hitboxes()
 		window = 8;
 		window_timer = 0;
 		old_vsp = -7-boost;
 		old_hsp = sign(old_hsp);
-		fspecial_used = true;
+		fspecial_used = false;
+		move_cooldown[AT_FSPECIAL] = 30;
 	break;
 	case AT_UAIR:
 		old_vsp -= 0.5;

@@ -26,7 +26,7 @@ set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX, sound_get("smw_yoshi_spit"));
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_SFX_FRAME, 11);
-set_window_value(AT_NSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.1);
+set_window_value(AT_NSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.01);
 
 // endlag
 set_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH, 16);

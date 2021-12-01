@@ -93,6 +93,12 @@ switch (attack)
                     window_timer = 0;
                 }
             break;
+            case 5:
+                if window_timer == 1
+                {
+                	sound_play(asset_get("sfx_abyss_explosion_big"));
+                }
+            break;
         }
     break;
     case AT_FSTRONG:

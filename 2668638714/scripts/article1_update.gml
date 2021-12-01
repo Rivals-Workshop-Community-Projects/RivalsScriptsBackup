@@ -3,6 +3,12 @@ if !instance_exists(self) exit;
 hsp = abs(hsp) > 0.3 ? lerp(hsp, 0, 0.06) : 0;
 vsp = abs(vsp) > 0.3 ? lerp(vsp, 0, 0.06) : 0;
 
+if inactive_timer == 1
+{
+	sound_play(sound_get("active"))
+}
+inactive_timer = max(inactive_timer-1,0)
+
 if state == PS_WALK
 {
 	if point_distance(0,0,hsp,vsp) > 2 and !instance_exists(hitbox)
@@ -41,7 +47,7 @@ var should_die = false;
             }
         break;
         case PS_IDLE:
-            image_index += 0.14
+            image_index += (inactive_timer == 0)*0.14
         break;
         
         //Nspecial
@@ -133,6 +139,7 @@ var should_die = false;
     hit_detection();
 
 // }
+
 if should_die
 {
 	with player_id
@@ -141,6 +148,8 @@ if should_die
 	}
 	instance_destroy();
 }
+
+
 
 #define changeState(_state)
 state = _state;
@@ -214,13 +223,18 @@ if hbox.attack == AT_FSPECIAL and hit_player_obj == player_id and state != PS_DE
 		window_timer = 0;
 		old_vsp = -5-boost;
 		old_hsp /= 1.4;
-		fspecial_used = true;
+		fspecial_used = false;
+		move_cooldown[AT_FSPECIAL] = 30;
     }
 }
 
 if hit_player_obj != player_id
 {
-    should_destroy = true;
+    if state == PS_IDLE and inactive_timer == 0
+    {
+    	inactive_timer = inactive_timer_max;
+    	sound_play(sound_get("inactive"));
+	}
 }
 else
 {
@@ -264,7 +278,7 @@ else
 	
 	if !(hbox.attack == AT_USPECIAL and hbox.hbox_num == 1)
 	{
-		changeState(PS_ATTACK_AIR)
+		if (inactive_timer == 0) changeState(PS_ATTACK_AIR)
 	}
 	else if (hbox.attack == AT_USPECIAL and hbox.hbox_num == 1)
 	{
@@ -276,6 +290,11 @@ else
 			spr_angle = 0;
 	        hurtboxID.image_angle = spr_angle;
 		}
+	}
+	
+	if (inactive_timer != 0)
+	{
+		should_destroy = (hbox.attack == AT_USPECIAL and hbox.hbox_num == 2) or (hbox.attack == AT_FSPECIAL)
 	}
 }
 
@@ -295,7 +314,7 @@ with hbox {
 
     
     var player_equal = (player == other.player_id.player);
-    var initial_hit = (player_equal and !(attack == AT_NSPECIAL or attack == AT_NSPECIAL_2 or attack == AT_DSPECIAL))
+    var initial_hit = (player_equal and !(attack == AT_NSPECIAL or attack == AT_NSPECIAL_2 or attack == AT_DSPECIAL)) or !player_equal
     var team_equal = get_player_team(player) == get_player_team(other.player_id.player);
     return ("owner" not in self || owner != other) //check if the hitbox was created by this article
         && hit_priority != 0 && hit_priority <= 10

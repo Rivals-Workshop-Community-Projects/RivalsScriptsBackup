@@ -71,7 +71,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_DSPECIAL, 2, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW, 2);
 set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW_CREATION_FRAME, 6);
 set_hitbox_value(AT_DSPECIAL, 3, HG_LIFETIME, 3);
@@ -84,7 +84,7 @@ set_hitbox_value(AT_DSPECIAL, 3, HG_DAMAGE, 4);
 set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE, 45);
 set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_KNOCKBACK, 7); // 10
 set_hitbox_value(AT_DSPECIAL, 3, HG_KNOCKBACK_SCALING, 0);
-set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_HITPAUSE, 4); // 3
+set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_HITPAUSE, 15); // 3
 set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, 20);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_absa_singlezap2"));
 set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE_FLIPPER, 3);
@@ -92,14 +92,14 @@ set_hitbox_value(AT_DSPECIAL, 3, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_DSPECIAL, 4, HG_MUNO_HITBOX_NAME, "Uncharged");
 set_hitbox_value(AT_DSPECIAL, 4, HG_HITBOX_TYPE, 1);
-set_hitbox_value(AT_DSPECIAL, 4, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_DSPECIAL, 4, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSPECIAL, 4, HG_WINDOW, 3);
 set_hitbox_value(AT_DSPECIAL, 4, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_DSPECIAL, 4, HG_LIFETIME, 3);
 set_hitbox_value(AT_DSPECIAL, 4, HG_HITBOX_Y, -20);
 set_hitbox_value(AT_DSPECIAL, 4, HG_WIDTH, 80);
 set_hitbox_value(AT_DSPECIAL, 4, HG_HEIGHT, 80);
-set_hitbox_value(AT_DSPECIAL, 4, HG_PRIORITY, 1);
+set_hitbox_value(AT_DSPECIAL, 4, HG_PRIORITY, 0);
 set_hitbox_value(AT_DSPECIAL, 4, HG_EFFECT, 11);
 set_hitbox_value(AT_DSPECIAL, 4, HG_DAMAGE, 2);
 set_hitbox_value(AT_DSPECIAL, 4, HG_ANGLE, 45);

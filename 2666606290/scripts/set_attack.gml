@@ -1,4 +1,5 @@
 ///#args attack // this line makes code editors not freak out for some reason
+elec_vfx = false;
 
 switch(attack)
 {
@@ -72,14 +73,11 @@ switch(attack)
         
     break;
     
+    case AT_NSPECIAL:
+    nspec_loops = 0;
+    break;
 }
 
-// if (electrified)
-// {
-//     ewgf = true;
-//     omen = true;
-    
-// }
 
 
 

@@ -54,6 +54,7 @@ if (attack == AT_DSTRONG or attack == AT_USTRONG or attack == AT_FSTRONG)
             
                 set_hitbox_value(AT_USTRONG, 2, HG_HEIGHT, 300);
                 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y, -150);
+                set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 157);
                 set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 8);
                 
                 set_window_value(AT_USTRONG, 1, AG_WINDOW_SFX, sound_get("thunder_start"));
@@ -99,6 +100,7 @@ if (attack == AT_DSTRONG or attack == AT_USTRONG or attack == AT_FSTRONG)
                 reset_hitbox_value(AT_USTRONG, 2, HG_HEIGHT);
                 reset_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y);
                 reset_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK);
+                reset_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT);
                 reset_window_value(AT_USTRONG, 1, AG_WINDOW_SFX);
                 reset_window_value(AT_USTRONG, 2, AG_WINDOW_SFX);
                 reset_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH);

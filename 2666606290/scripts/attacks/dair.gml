@@ -35,8 +35,8 @@ set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 11); // 18
 set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 270);
 set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 5); // 10
 set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, 0.8); // 1.0
-set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 20);
-set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, 1.0);
+set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, 0.7);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 197);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));

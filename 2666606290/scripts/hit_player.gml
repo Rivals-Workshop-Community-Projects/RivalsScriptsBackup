@@ -14,7 +14,26 @@ attack != AT_FSPECIAL &&
 attack != AT_DSPECIAL &&
 attack != AT_NSPECIAL)
 {
+    switch (attack){
+    case AT_FSTRONG_2:
+    
+    if !ewgf_real
+    {
     hit_player_obj.hitstop *= elecstun_multiplier;
     hit_player_obj.hitstop_full *= elecstun_multiplier;
+    }
+    else
+    {
+    hit_player_obj.hitstop *= elecstun_multiplier;
+    hit_player_obj.hitstop_full *= elecstun_multiplier;
+    }
+    
+    break;
+        
+    default:
+    hit_player_obj.hitstop *= elecstun_multiplier;
+    hit_player_obj.hitstop_full *= elecstun_multiplier;
+    break;
+    }
 }
 

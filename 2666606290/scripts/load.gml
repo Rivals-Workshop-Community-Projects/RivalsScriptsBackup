@@ -80,8 +80,8 @@ sprite_change_offset("nspecial_beam_loop", 0, 64);
 sprite_change_offset("nspecial_beam_fade", 0, 33);
 sprite_change_offset("vfx_nspecial_fire", 100, 140);
 sprite_change_offset("vfx_ftilt_destroy", 100, 140); // actually for nspecial, not ftilt
-sprite_change_offset("fspecial", 36, 44);
-sprite_change_offset("fspecial_hurt", 36*2, 44*2);
+sprite_change_offset("fspecial", 32, 44);
+sprite_change_offset("fspecial_hurt", 32*2, 44*2);
 sprite_change_offset("uspecial", 36, 44);
 sprite_change_offset("uspecial_hurt", 36*2, 44*2);
 sprite_change_offset("dspecial", 76, 84);
@@ -103,3 +103,16 @@ sprite_change_offset("phone_open", 36, 44);
 sprite_change_offset("plat", 64/2, 94/2);
 
 sprite_change_offset("nspecial_proj", 64, 94);
+
+
+set_victory_theme( sound_get("wintheme") );
+
+
+
+if (get_player_color( player ) == 9) {
+set_victory_portrait( sprite_get("gameboy_win")  );
+}
+
+if (get_player_color( player ) == 10) {
+set_victory_portrait( sprite_get("gnw_win") );
+}

@@ -38,8 +38,8 @@ if (state == 0){
 		state = 4;
 		state_timer = 0;
 	}*/if(player_id.counter_drop == 2){
-		state = 4;
-		state_timer = 0;
+		 instance_destroy();
+    	exit;
 	}
 	    if (place_meeting(x, y, asset_get("pHitBox")) && state == 0) { //activates front counter
     	with (asset_get("pHitBox")){
@@ -74,6 +74,10 @@ if (state == 0){
     else{
     	hitbox_hit = noone;
     }
+    if(player_id.attack != AT_DSPECIAL || player_id.state == PS_HITSTUN || player_id.state == PS_HITSTUN_LAND || player_id.state == PS_TUMBLE || player_id.state == PS_DEAD || player_id.state == PS_RESPAWN){
+    			 instance_destroy();
+    			exit;
+    }
 }
 
 
@@ -92,8 +96,8 @@ if (state == 1){
 		state = 4;
 		state_timer = 0;
 	}*/if(player_id.counter_drop == 1){
-		state = 4;
-		state_timer = 0;
+		    instance_destroy();
+    		exit;
 	}
 if (place_meeting(x, y, asset_get("pHitBox")) && state == 1) { //activates back counter
     	with (asset_get("pHitBox")){
@@ -127,6 +131,10 @@ if (place_meeting(x, y, asset_get("pHitBox")) && state == 1) { //activates back 
     }
     else{
     	hitbox_hit = noone;
+    }
+    if(player_id.attack != AT_DSPECIAL || player_id.state == PS_HITSTUN || player_id.state == PS_HITSTUN_LAND || player_id.state == PS_TUMBLE || player_id.state == PS_DEAD || player_id.state == PS_RESPAWN){
+    			 instance_destroy();
+    			exit;
     }
 }
 

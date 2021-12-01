@@ -1,5 +1,10 @@
 //colors
 if(instance_exists(oPlayer)){
+    
+
+
+    
+    
             if (!electrified){
                 if (get_player_color( player ) == 9) {
                     outline_color = [35, 67, 49];

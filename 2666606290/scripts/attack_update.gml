@@ -1,7 +1,6 @@
 //B - Reversals
 switch(attack){
 	case AT_NSPECIAL:
-	case AT_FSPECIAL:
 	case AT_DSPECIAL:
 	case AT_USPECIAL:
 		trigger_b_reverse();
@@ -112,18 +111,45 @@ switch(attack){
 	
 	case AT_NSPECIAL:
 	can_fast_fall = false;
+	move_cooldown[attack] = 20;
 		if (special_down){
-			if (window == 3 && window_timer <= 1)
+			if (window == 3 && window_timer <= 1) && nspec_loops < 4
 			{
+				nspec_loops++;
 				window = 2;
 				window_timer = -1;
 			}
 		}
 		
-		if (window == 1 && window_timer == 1){
-		vsp = vsp/2;
-		hsp = hsp/2;
+		if (instance_exists( field_obj )){
+			
+	         if (field_obj.player_touching){
+	         	
+	         can_attack = true;
+	         
+		        if (!joy_pad_idle) && (window == 2 || (window == 3 && window_timer > 1)){
+	            hsp += lengthdir_x(0.5, joy_dir);
+	            vsp += lengthdir_y(0.5, joy_dir);
+	            
+	            hsp = clamp(hsp, -5, 5);
+	            vsp = clamp(vsp, -5, 5);
+	            
+	            elec_charge -= elec_passivedrain * 2;
+		         }
+	         }
+	         else
+	         {
+	         	hsp = clamp(hsp, -2, 2);
+	            vsp = clamp(vsp, -2, 2);
+	         }
 		}
+		
+		else{
+			
+				hsp = clamp(hsp, -2, 2);
+	            vsp = clamp(vsp, -2, 2);
+		}
+		
 		
 	break;
 	
@@ -140,6 +166,10 @@ switch(attack){
 		if (window == 1 && window_timer == 1){
 		vsp = -2;
 		hsp = hsp/2;
+		}
+		
+		if (special_down && window == 1 && window_timer == get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH)){
+			spr_dir = -spr_dir;
 		}
 		
 		}
@@ -209,6 +239,8 @@ switch(attack){
 			}
 		}
 		else if window==2{
+			dp = 0;
+			otgf = 0;
 			if window_timer == get_window_value( attack, window, AG_WINDOW_LENGTH ){
 				window = 4;
 				window_timer = 0;
@@ -216,6 +248,8 @@ switch(attack){
 		}
 
 		else if window==4{
+			dp = 0;
+			otgf = 0;
 			if window_timer == get_window_value( attack, window, AG_WINDOW_LENGTH ){
 				window = 5;
 				window_timer = get_window_value( attack, window, AG_WINDOW_LENGTH );
@@ -224,7 +258,7 @@ switch(attack){
 		
 		
 		
-		if (ewgf) was_parried = false;
+		if (ewgf && ewgf_real) was_parried = false;
 		
 		break;
 		
@@ -294,6 +328,7 @@ switch(attack){
 			
 		}
 		else if window==2{
+			otgf = 0;
 			if window_timer == get_window_value( attack, window, AG_WINDOW_LENGTH ){
 				window = 3;
 				window_timer = get_window_value( attack, window, AG_WINDOW_LENGTH );
@@ -336,6 +371,10 @@ if (window == 1 && window_timer == 1){
 	         if (electrified)
 	            elec_charge -= elec_drain;
 	            
+	            if (instance_exists( field_obj )){
+	            	if (!field_obj.player_touching)
+	            	electrified = false;
+	            }else
 	            electrified = false;
 	    break;
 	    

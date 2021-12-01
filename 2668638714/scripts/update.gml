@@ -119,16 +119,22 @@ if (state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR)
                 y-=2
                 vsp = -2.4;
                 hsp = ((window == 6 ? fspecial_speed_wcharge : fspecial_speed_spark)*spr_dir);
-                if window == 6 take_damage(player,-1,5);
+                if (window == 6 and !hitpause) take_damage(player,-1,5);
             }
 
             break;
             
             case 5:
             case 7:
+            
+            if (right_down-left_down == -spr_dir)
+            {
+                hsp -= sign(hsp)
+            }
+            
             if (window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)-1)
             {
-                set_state(PS_PRATFALL);
+                set_state(get_window_value(attack,window,AG_WINDOW_TYPE) == 7 ? PS_PRATFALL : PS_IDLE_AIR);
             }
             break;
             case 8:
