@@ -1,1 +1,0 @@
-// pre-draw is a script that draws things behind the player.
