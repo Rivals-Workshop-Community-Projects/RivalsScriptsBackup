@@ -70,7 +70,7 @@ set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-set_num_hitboxes(AT_FSPECIAL, 2);
+set_num_hitboxes(AT_FSPECIAL, 3);
 
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 4);
@@ -115,3 +115,15 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_EFFECT, 99);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 157);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, 1);
+
+//detection hitbox
+set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FSPECIAL, 3, HG_WINDOW, 2);
+set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 60);
+set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_X, 80);
+set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, -26);
+set_hitbox_value(AT_FSPECIAL, 3, HG_WIDTH, 60);
+set_hitbox_value(AT_FSPECIAL, 3, HG_HEIGHT, 60);
+set_hitbox_value(AT_FSPECIAL, 3, HG_PRIORITY, 0);
+set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 0);
+set_hitbox_value(AT_FSPECIAL, 3, HG_SHAPE, 0);

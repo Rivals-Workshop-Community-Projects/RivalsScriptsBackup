@@ -147,4 +147,31 @@ if my_hitboxID.attack == AT_DSPECIAL {
     
 }
 
+with my_hitboxID {
+    
+    if attack == AT_NSPECIAL && hbox_num <= 3 {
+        
+        
+        
+        if bouncing == 1 {
+            
+            with player_id.hit_player_obj {
+            take_damage(player,-1, floor(other.hbox_num*1.5) )
+            hitstop += other.hbox_num*10
+            }
+        
+
+                 spawn_hit_fx(x,y,sw2)
+                 spawn_hit_fx(x,y,304)
+             sound_play(asset_get("sfx_blow_heavy2"),false,noone,1,1.3 - hbox_num/10)    
+                sound_play(asset_get("sfx_absa_kickhit"),false,noone,1,1 - hbox_num/10)
+            
+            bouncing = 0
+        }
+        
+        
+    }
+    
+    
+}
 

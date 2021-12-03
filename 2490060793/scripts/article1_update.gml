@@ -247,6 +247,13 @@ if (hitbox != noone) && (timer > 10) {
 			    	case 4: tipper_num = 4 break;
 			    }
 			    break;
+			    
+			    case AT_FSPECIAL_2:
+			    switch hitbox.hbox_num {
+			    	case 5: tipper_num = 5 break;
+			    	default: tipper_num = 1 break;
+			    }
+			    break;
 			}
         }
         

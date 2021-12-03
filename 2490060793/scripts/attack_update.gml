@@ -1,7 +1,5 @@
 // attack_update
 
-var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH)
-
 //B - Reversals
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
     trigger_b_reverse();
@@ -59,11 +57,21 @@ if attack == AT_NSPECIAL {
         var spawn_x = x + spr_dir*60;
         var orb = instance_create(spawn_x, y - 40, "obj_article1");
             orb.hsp = spr_dir*15;
-        meter_prev = meter_cur;
-        meter_cur -= orb_value;
-        meter_flash_timer = meter_flash_val;
+        if !break_active {
+        	meter_prev = meter_cur;
+        	meter_cur -= orb_value;
+        	meter_flash_timer = meter_flash_val;
+        }
         if !free spawn_base_dust(x, y, "dash_start", spr_dir);
     }
+}
+
+//limit xslash
+if attack != AT_FSPECIAL_2 && state_timer <= 3 && attack_pressed && special_pressed && break_active {
+	set_attack(AT_FSPECIAL_2)
+	sound_play(sound_get("xslash_start"))
+	tip_active = false
+	hurtboxID.sprite_index = get_attack_value(AT_FSPECIAL_2, AG_HURTBOX_SPRITE);
 }
 
 
@@ -120,7 +128,7 @@ if attack == AT_FSPECIAL {
         
         hsp = clamp(hsp, -4, 4)
         vsp = clamp(vsp, -4, 4)
-        if strong_charge != 0 && strong_charge mod 1 == 0 {
+        if !break_active && strong_charge != 0 && strong_charge mod 1 == 0 {
             meter_cur -= fspec_value;
         }
         
@@ -152,9 +160,37 @@ if attack == AT_FSPECIAL {
     	if window_timer == 1 {
     		if !free spawn_base_dust(x, y, "dash_start", spr_dir);
     	}
+    	
+    	var iscolliding = false; //whether detection hitbox is hitting a hurtbox
+        
+        //find detection hitbox
+        with pHitBox {
+            if attack == AT_FSPECIAL && hbox_num == 3 && player_id == other {
+                var hitboxID = id; //id of detection hitbox
+            }
+        }
+        
+        //check if any hurtbox is colliding with detection hitbox
+        with pHurtBox {
+            if instance_place(x, y, hitboxID) && playerID != other {
+                iscolliding = true;
+            }
+        }
+        
+        //advance window if colliding
+        if iscolliding || hsp == 0 {
+            window = 3;
+            window_timer = window_length;
+            //set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HSPEED, 0.5*movespd*spr_dir*dcos(moveangle));
+        	//set_window_value(AT_FSPECIAL, 4, AG_WINDOW_VSPEED, -0.5*movespd*dsin(moveangle));
+            //hsp = get_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED) * spr_dir;
+            destroy_hitboxes();
+        }
+    	
     	if (abs(point_distance(x, y, origx, origy)) > abs(movedist) + 20 - 8*movespd) || (place_meeting(x + 20*spr_dir, y-30, asset_get("par_block"))) {
     		window = 3
     		window_timer = window_length
+    		destroy_hitboxes();
     	}
     }
     
@@ -180,7 +216,7 @@ if attack == AT_FSPECIAL {
     }
     
     if window == 4 && window_timer == 1 {
-    	if !has_reduced {
+    	if !has_reduced && !break_active {
 	        meter_prev = meter_cur;
 	        meter_cur -= 8;
 	        meter_flash_timer = 30;
@@ -284,18 +320,22 @@ if attack == 49 {
 }
 
 if attack == AT_TAUNT_2 {
+	if (taunt_down) && (debugMode == true || practice_mode) {
+	    if up_down {
+	        meter_cur++;
+	    } else if down_down {
+	        meter_cur--;
+	    }
+	}
     if window == 2 {
         draw_limit = true;
         
         if meter_cur >= meter_max {
     		draw_limit = false;
-    		spawn_hit_fx(x, y, limit_finish)
     		window = 3;
     		window_timer = 0;
-    		draw_limit_flash = true;
-    		sound_play(sound_get("limit_end_sfx"))
     		spawn_base_dust(x, y, "dash_start", 1)
-    		spawn_base_dust(x, y, "dash_start", -1)
+			spawn_base_dust(x, y, "dash_start", -1)
     	}
     }
     if window == 2 && !taunt_down {
@@ -306,6 +346,32 @@ if attack == AT_TAUNT_2 {
         sound_stop(limit_loop)
         draw_limit = false;
     }
+}
+
+if attack == AT_FSPECIAL_2 {
+	if window <= 6 soft_armor = 10000
+	else soft_armor = 0
+	can_move = false
+	if window < 6 && window_timer == window_length-1 && !hitpause {
+		has_reduced = true
+        meter_prev = meter_cur;
+        //meter_cur -= 10;
+        //meter_flash_timer = 30;
+	}
+	if window == 7 && !hitpause {
+		meter_prev = meter_cur;
+    	meter_cur -= 5
+	}
+	
+	/*
+    if window_timer == window_length switch window {
+        case 1: sound_play(sound_get("xslash_hit1")) break;
+        case 2: sound_play(sound_get("xslash_hit2")) break;
+        case 3: sound_play(sound_get("xslash_hit3")) break;
+        case 4: sound_play(sound_get("xslash_hit4")) break;
+        case 5: sound_play(sound_get("xslash_hit5")) break;
+    }
+    */
 }
 
 if window <= 2 user_event(0)

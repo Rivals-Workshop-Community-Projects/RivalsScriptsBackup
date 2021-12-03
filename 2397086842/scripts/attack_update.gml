@@ -313,6 +313,7 @@ if !hitpause {
                 
                 spawn_hit_fx(x + 22*spr_dir, y - 36, 302)
             }
+            
             if ncharge == 20 {
                 sound_play(asset_get("sfx_zetter_shine"),false,noone,1.2)
                 spawn_hit_fx(x + 22*spr_dir, y - 36, 302)
@@ -325,10 +326,10 @@ if !hitpause {
                 ncharge += 5
             }
             
-            if (special_down and ncharge <= 20) && window_timer > 1 {
-                ncharge += 1
-                window_timer = 4
-            }
+            //if (special_down and ncharge <= 20) && window_timer > 1 {
+            //    ncharge += 1
+            //    window_timer = 4
+            //}
         }
         
         if window == 2 && window_timer == 1 {

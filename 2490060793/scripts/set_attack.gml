@@ -11,11 +11,11 @@ if attack == AT_NSPECIAL {
 }
 */
 
-/*
-if attack == AT_TAUNT {
+//limit charge
+if practice_mode && attack == AT_TAUNT && (up_down || down_down) {
     attack = AT_TAUNT_2
 }
-*/
+
 
 if attack == AT_USPECIAL {
     if !free {

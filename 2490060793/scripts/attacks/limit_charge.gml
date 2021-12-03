@@ -1,6 +1,6 @@
 set_attack_value(AT_TAUNT_2, AG_CATEGORY, 2);
 set_attack_value(AT_TAUNT_2, AG_SPRITE, sprite_get("limit_charge"));
-set_attack_value(AT_TAUNT_2, AG_HURTBOX_SPRITE, sprite_get("limit_charge_hurt"));
+set_attack_value(AT_TAUNT_2, AG_HURTBOX_SPRITE, asset_get("ex_guy_hurt_box"));
 
 set_attack_value(AT_TAUNT_2, AG_NUM_WINDOWS, 3);
 

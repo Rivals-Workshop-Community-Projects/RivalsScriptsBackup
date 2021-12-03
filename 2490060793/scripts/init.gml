@@ -1,6 +1,8 @@
 set_color_profile_slot_range( 3, 1, 1, 1 );
 set_color_profile_slot_range( 6, 1, 1, 1 );
 
+instance_create(-1000, -1000, "obj_article2");
+
 is_barr = true;
 
 //fspec afterimage
@@ -10,6 +12,8 @@ fspec_movearr = array_create(5, [undefined,undefined])
 intro_flip = false;
 
 debugMode = false;
+
+tip_active = true;
 
 //practice mode detector
 playtest = (object_index == oTestPlayer);
@@ -55,6 +59,12 @@ limit_flash_timer = 0;
 limit_circle_radius = 0;
 limit_circle_alpha = 0;
 limit_circle_col = c_yellow;
+
+break_active = false
+break_timer = 0
+break_col = c_white
+break_col2 = c_white
+
 
 orb_value = 15;
 hit_value = 7;
@@ -173,34 +183,88 @@ bubble_x = 0;
 bubble_y = 8;
 
 /*
+switch(get_match_setting(SET_SEASON)){
+    case 1:
+    // Spring
+    set_color_profile_slot( 24, 0, 255, 235, 252 ); //Body main
+    set_color_profile_slot( 24, 1, 227, 136, 215 ); //Body shade
+    set_color_profile_slot( 24, 2, 255, 107, 153 ); //Eyes
+    set_color_profile_slot( 24, 3, 242, 255, 255 ); //Meter White
+    set_color_profile_slot( 24, 4, 242, 58, 163 ); //Meter main
+    set_color_profile_slot( 24, 5, 242, 143, 199 ); //Sparks
+    set_color_profile_slot( 24, 6, 169, 172, 188 ); //Meter Dark White
+    set_color_profile_slot( 24, 7, 179, 11, 126 ); //Meter Dark main
+    break;
+    
+    case 2:
+    // Summer
+    set_color_profile_slot( 24, 0, 235, 134, 59 ); //Body main
+    set_color_profile_slot( 24, 1, 196, 63, 22 ); //Body shade
+    set_color_profile_slot( 24, 2, 242, 228, 214 ); //Eyes
+    set_color_profile_slot( 24, 3, 255, 218, 117 ); //Meter White
+    set_color_profile_slot( 24, 4, 0, 156, 204 ); //Meter main
+    set_color_profile_slot( 24, 5, 255, 212, 133 ); //Sparks
+    set_color_profile_slot( 24, 6, 242, 149, 39 ); //Meter Dark White
+    set_color_profile_slot( 24, 7, 0, 88, 156 ); //Meter Dark main
+    break;
+    
+    case 3:
+    // Autumn
+    set_color_profile_slot( 24, 0, 55, 31, 94 ); //Body main
+    set_color_profile_slot( 24, 1, 28, 11, 56 ); //Body shade
+    set_color_profile_slot( 24, 2, 158, 4, 50 ); //Eyes
+    set_color_profile_slot( 24, 3, 228, 227, 255 ); //Meter White
+    set_color_profile_slot( 24, 4, 186, 5, 59 ); //Meter main
+    set_color_profile_slot( 24, 5, 247, 146, 176 ); //Sparks
+    set_color_profile_slot( 24, 6, 143, 140, 212 ); //Meter Dark White
+    set_color_profile_slot( 24, 7, 150, 0, 80 ); //Meter Dark main
+    break;
+    
+    case 4:
+    // Winter
+    set_color_profile_slot( 24, 0, 166, 254, 255 ); //Body main
+    set_color_profile_slot( 24, 1, 78, 163, 212 ); //Body shade
+    set_color_profile_slot( 24, 2, 250, 255, 255 ); //Eyes
+    set_color_profile_slot( 24, 3, 242, 255, 255 ); //Meter White
+    set_color_profile_slot( 24, 4, 89, 136, 227 ); //Meter main
+    set_color_profile_slot( 24, 5, 161, 191, 247 ); //Sparks
+    set_color_profile_slot( 24, 6, 169, 172, 188 ); //Meter Dark White
+    set_color_profile_slot( 24, 7, 35, 86, 184 ); //Meter Dark main
+    break;
+}
+*/
+
+/*
 rune O desc="At full meter, press parry + taunt to unleash a powerful attack."
 rune O type="A"
-rune N desc="You can have 3 orbs out at once"
+rune N desc="NSPECIAL shoots out 3 orbs at once."
 rune N type="O"
-rune M desc="Press down + taunt to charge meter"
+rune M desc="Press down + taunt to charge meter."
 rune M type="A"
 rune L desc="Sweetspots stun."
 rune L type="H"
+
 rune K desc="All special attacks are more powerful at full meter."
 rune K type="O"
-rune J desc="FSPECIAL uses less meter and travels further."
+rune J desc="NAIR can be held indefinitely."
 rune J type="A"
 rune I desc="Hitting orbs with meter attacks creates much stronger hitboxes."
 rune I type="H"
-rune H desc="DSPECIAL orb hitbox size increased."
+rune H desc="Orbs slowly home in on opponents."
 rune H type="O"
-rune G desc="Charging strongs increases meter."
-rune G type="A"
+rune G desc="Strong attacks have no sweetspot, but power uniformly scales with meter amount."
+rune G type="H"
+
 rune F desc="Orbs can't be destroyed by opponents."
 rune F type="O"
-rune E desc=""
-rune E type="R"
-rune D desc="FSPECIAL has a hitbox on the orb when it spawns."
-rune D type="R"
-rune C desc="NSPECIAL travels faster and uses less meter"
+rune E desc="USPECIAL goes much higher."
+rune E type="A"
+rune D desc="Press DSPECIAL during any attack to instantly flip meter."
+rune D type="A"
+rune C desc="NSPECIAL throws orb out further."
 rune C type="R"
-rune B desc="USPECIAL aiming speed increased and aiming starts centered on current position."
-rune B type="A"
-rune A desc="Meter gain rate increased."
+rune B desc="FSPECIAL travels further and can be jump canceled."
+rune B type="H"
+rune A desc="Non-sweetspot attacks give more meter on hit."
 rune A type="A"
 */

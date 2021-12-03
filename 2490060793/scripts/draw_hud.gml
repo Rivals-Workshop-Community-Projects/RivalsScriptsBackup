@@ -27,8 +27,18 @@ if meter_flipped {
     flash_draw_xscale *= -1;
 }
 if draw_meter {
-    draw_sprite_ext(sprite_get("hud_meter_red"), 0, meter_draw_x, temp_y - 14, meter_draw_xscale, 1, 0, c_white, 1)
+    var _spr = sprite_get("hud_meter_red")
+    var _col = c_white
     
+    
+    if break_active {
+        _spr = sprite_get("hud_meter_blank")
+        _col = break_col
+    }
+    
+    draw_sprite_ext(_spr, 0, meter_draw_x, temp_y - 14, meter_draw_xscale, 1, 0, _col, 1)
+    
+    //if break_active draw_sprite_ext(sprite_get("hud_meter_break"), floor(break_timer/5), temp_x + 2, temp_y - 28, 1, 1, 0, c_white, 1)
     /*
     var blend = gpu_get_blendmode(); //gets the current blend mode
     gpu_set_blendmode(bm_add); //use additive blending for next draw_* calls

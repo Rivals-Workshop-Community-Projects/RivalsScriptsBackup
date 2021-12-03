@@ -81,7 +81,7 @@ if attack == AT_NSPECIAL && hbox_num <= 3{
         	player_id.move_cooldown[AT_NSPECIAL] = 5
 		}
 		
-		if bouncing == true {
+	if bouncing == true {
 			
 			if bouncenum == 0 {
 	        	bouncing = 0
@@ -103,18 +103,18 @@ if attack == AT_NSPECIAL && hbox_num <= 3{
 				}
 			}
           }
-           	
+          
            
            if x > room_width   {
            	 x -= hsp*2
-           	if bouncing == false {
+           	//if bouncing == false {
            	 destroyed = true
            	 sound_play(asset_get("sfx_spin"),false,noone,1)
-           	} else {
-           	sound_stop(asset_get("sfx_absa_singlezap1"))
-	    	sound_play(asset_get("sfx_absa_singlezap1"),false,noone,1)	
-	    	bouncenum -= 1
-           	}
+           	//} else {
+           	//sound_stop(asset_get("sfx_absa_singlezap1"))
+	    	//sound_play(asset_get("sfx_absa_singlezap1"),false,noone,1)	
+	    	//bouncenum -= 1
+           	//}
            	if batted == 1 {
            	vsp = -14
            	hsp = -10
@@ -130,14 +130,14 @@ if attack == AT_NSPECIAL && hbox_num <= 3{
 
            if x < 0 {
            	x -= hsp*2
-           	if bouncing == false {
+           	//if bouncing == false {
            	 destroyed = true
            	 sound_play(asset_get("sfx_spin"),false,noone,1)	
-           	} else {
-           	sound_stop(asset_get("sfx_absa_singlezap1"))
-	    	sound_play(asset_get("sfx_absa_singlezap1"),false,noone,1)	
-	    	bouncenum -= 1
-           	}
+           	//} else {
+           	//sound_stop(asset_get("sfx_absa_singlezap1"))
+	    	//sound_play(asset_get("sfx_absa_singlezap1"),false,noone,1)	
+	    	//bouncenum -= 1
+           	//}
            	if batted == 1 {
            	vsp = -14
            	hsp = 10
@@ -519,20 +519,24 @@ if lockouttimer < 0 {
          	   		switch hbox_num {
                      case 1 :
                      create_hitbox(AT_NSPECIAL,7,x,y)
+                     create_hitbox(AT_NSPECIAL,1,x,y)
                      break;
                      
                      case 2 :
                      create_hitbox(AT_NSPECIAL,8,x,y - 20)
                      create_hitbox(AT_NSPECIAL,9,x,y + 20)
+                     create_hitbox(AT_NSPECIAL,2,x,y)
                      break;
                      
                      case 3 :
                      create_hitbox(AT_NSPECIAL,7,x,y)
                      create_hitbox(AT_NSPECIAL,8,x,y - 20)
                      create_hitbox(AT_NSPECIAL,9,x,y + 20)
+                     create_hitbox(AT_NSPECIAL,3,x,y)
                      break;
+                     
                     }
-                    destroyed = true
+                   destroyed = true
          	   	} else {
          	   	
          	   switch hbox_num {
@@ -675,7 +679,7 @@ if lockouttimer < 0 {
               // break;
               //}
               //destroyed = true
-             	if bouncing == false { 
+             	//if bouncing == false { 
                    hsp = (player_id.x - x)/55
                    vsp = (player_id.y - 600 - y)/60
                    batted = 1
@@ -684,7 +688,7 @@ if lockouttimer < 0 {
                    spawn_hit_fx(x,y ,b4)
                    hitbox_timer = 5
                    shake_camera(2,2)
-             	}
+             	//}
          	}  
 	   }
 

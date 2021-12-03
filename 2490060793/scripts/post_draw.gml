@@ -15,7 +15,7 @@ if draw_limit {
     gpu_set_blendmode(bm_add); //use additive blending for next draw_* calls
     
     draw_set_alpha(limit_circle_alpha)
-    draw_circle_color(x, y - 40, floor(limit_circle_radius), c_white, limit_circle_col, false)
+    draw_circle_color(x, y - 40, floor(limit_circle_radius), limit_circle_col, c_black, false)
     draw_set_alpha(1)
     
     gpu_set_blendmode(blend); //goes back to whatever blend mode you were in.
@@ -46,4 +46,9 @@ with obj_article1 if player_id == other.id && !was_bashed {
 	draw_set_alpha(1)
 	
 	gpu_set_blendmode(blend); //goes back to whatever blend mode you were in.
+}
+
+//xslash text
+if tip_active && break_active {
+	draw_debug_text(floor(x-80), floor(y+10), "Press Attack + Special!")
 }

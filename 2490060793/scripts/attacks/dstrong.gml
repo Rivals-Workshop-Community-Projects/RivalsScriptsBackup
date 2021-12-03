@@ -22,7 +22,7 @@ set_window_value(AT_DSTRONG, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_SFX, sound_get("bar_swing_med2"));
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_SFX_FRAME, 6);
 
-set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);

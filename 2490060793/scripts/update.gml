@@ -2,6 +2,8 @@
 
 timer++
 
+window_length = get_window_value(attack, window, AG_WINDOW_LENGTH) * (get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) ? 1.5 : 1);
+
 //practice mode detector
 if (get_training_cpu_action() != CPU_FIGHT && !playtest && !("is_ai" in self)) {
     practice_mode = true;
@@ -64,6 +66,7 @@ if state == PS_CROUCH && prev_prev_state == PS_ATTACK_GROUND && attack == AT_DSP
 
 //debug meter managment
 
+/*
 if (taunt_down) && (debugMode == true || practice_mode) {
     if up_down {
         meter_cur++;
@@ -71,11 +74,12 @@ if (taunt_down) && (debugMode == true || practice_mode) {
         meter_cur--;
     }
 }
+*/
 
 
 meter_cur = clamp(meter_cur, 0, meter_max)
 
-if meter_cur < orb_value {
+if meter_cur < orb_value && !break_active {
     move_cooldown[AT_NSPECIAL] = 2;
 }
 
@@ -99,6 +103,10 @@ if num_orbs > 1 {
     spawn_hit_fx(min_id.x, min_id.y, orb_explosion_vfx)
     instance_destroy(min_id);
 }
+
+//practice mode tip
+if !practice_mode tip_active = false
+
 /*
 var shape = get_hitbox_value(attack, hitbox_num[tipper_num], HG_SHAPE);
 var effect = get_hitbox_value(attack, hitbox_num[tipper_num], HG_EFFECT);
@@ -121,7 +129,7 @@ with pHitBox {
 }
 
 if draw_limit {
-	if limit_timer mod 2 == 0 meter_cur++;
+	//if limit_timer mod 2 == 0 meter_cur++;
 	limit_timer++;
 	if limit_timer mod 4 == 0 limit_vfx_counter++;
 	
@@ -148,8 +156,13 @@ if draw_limit {
 		else if limit_circle_col == c_aqua limit_circle_col = c_yellow;
 	}
 	limit_circle_radius = 60 + dsin(limit_timer*14*2)*5
-	limit_circle_alpha = 0.2 + dsin(limit_timer*14*2)*0.1
+	limit_circle_alpha = 0.3 + dsin(limit_timer*14*2)*0.1
 }
+
+/*
+set_view_position(1200,400)
+with oPlayer if state == PS_RESPAWN state_timer = 0
+*/
 
 with hit_fx_obj {
 	if "barvar" in self {
@@ -157,6 +170,56 @@ with hit_fx_obj {
 	}
 }
 
+if !break_active && meter_cur >= meter_max {
+	break_active = true
+	spawn_hit_fx(x, y, limit_finish)
+	draw_limit_flash = true;
+	sound_play(sound_get("limit_end_sfx"))
+	limit_vfx_counter = 0
+}
+
+if break_active {
+	break_timer++
+	
+	//limit vfx
+	if break_timer mod 4 == 0 limit_vfx_counter++;
+	
+	if break_timer mod 12 == 0 {
+		var randvar = random_func(0, 50, true) - 25;
+		var limitfx = spawn_hit_fx(x + randvar, y - 2, limit_large)
+			limitfx.barvar = true;
+	}
+	
+	if break_timer mod 10 == 0 {
+		var randvar = random_func(1, 50, true) - 25;
+		var limitfx = spawn_hit_fx(x + randvar, y - 2, limit_small)
+			limitfx.barvar = true;
+	}
+	
+	//flash
+	
+	switch floor((timer mod 10)/5) {
+        case 0:
+        break_col = $ffde88 //light
+        break_col2 = $ecbe5b //light shade
+        break;
+        
+        case 1:
+        break_col = $ffcd4a //dark
+        break_col2 = $ffaf3b //dark shade
+        break;
+    }
+    
+    if meter_cur <= 0 {
+    	break_active = false
+    	break_timer = 0
+    }
+}
+
+
+if break_active && meter_cur < meter_max {
+	meter_cur -= 0.1
+}
 
 if draw_limit_flash {
 	limit_flash_timer++;

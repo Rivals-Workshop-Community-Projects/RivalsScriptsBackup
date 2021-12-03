@@ -7,16 +7,27 @@ if my_hitboxID.effect == 99 || my_hitboxID.effect == 11 {
         sound_play(sound_get("bar_hit"))
         break;
         
+        case AT_FSPECIAL_2:
+        if my_hitboxID.hbox_num < 5 {
+            sound_play(sound_get("bar_hit"))
+        } else {
+            sound_play(sound_get("bar_sweetspot_hit"))
+        }
+        has_reduced = true
+        break;
+        
         default:
         sound_play(sound_get("bar_sweetspot_hit"))
         break;
     }
     
-    if !has_reduced {
+    if !has_reduced && !break_active {
         meter_prev = meter_cur;
         meter_cur -= reduce_value;
         meter_flash_timer = 30;
         has_reduced = true;
+    } else if break_active && meter_cur == meter_max {
+        meter_cur -= 1
     }
 } else if hit_player_obj != id && meter_cur != meter_max && my_hitboxID.type == 1 {
     meter_prev = meter_cur;
@@ -45,4 +56,19 @@ if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 3 {
 if my_hitboxID.attack == AT_USPECIAL && (my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3) {
     hit_player_obj.hsp = 0;
     hit_player_obj.old_hsp = 0;
+}
+
+//xslash
+if my_hitboxID.attack == AT_FSPECIAL_2 {
+    if my_hitboxID.hbox_num != 5 && (hit_player_obj.state == PS_HITSTUN || hit_player_obj.state == PS_HITSTUN_LAND) {
+        hit_player_obj.x = lerp(hit_player_obj.x, my_hitboxID.x, 0.4)
+        hit_player_obj.y = lerp(hit_player_obj.y, my_hitboxID.y+(hit_player_obj.char_height/2), 0.4)
+    }
+    switch my_hitboxID.hbox_num {
+        case 1: sound_play(sound_get("xslash_hit1")) break;
+        case 2: sound_play(sound_get("xslash_hit2")) break;
+        case 3: sound_play(sound_get("xslash_hit3")) break;
+        case 4: sound_play(sound_get("xslash_hit4")) break;
+        case 5: sound_play(sound_get("xslash_hit5")) break;
+    }
 }
