@@ -59,8 +59,6 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 109);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 109);
 set_hitbox_value(AT_NSPECIAL, 1, HG_EFFECT, 12);
 
-set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Cooldown: 42f");
+//set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Cooldown: 42f");
 
-set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_MISC_ADD, "The Damge, Base Knockback, 
-AND angle are not on any specific megavitamin. 
-Everything other stat is consistent between each Megavitmin.");
+//set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_MISC_ADD, "The Damge, Base Knockback, AND angle are not on any specific megavitamin. Everything other stat is consistent between each Megavitmin.");

@@ -1,6 +1,7 @@
 //Brute shot
 
 sprite_index = sprite_get("BS grenade");
+mask_index = sprite_get("BS grenade");
 
 BS_lifetime = 90;
 ignores_walls = false;

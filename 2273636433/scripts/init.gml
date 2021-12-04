@@ -34,7 +34,7 @@ max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .25;
-prat_fall_accel = .8; //multiplier of air_accel while in pratfall
+prat_fall_accel = .75; //multiplier of air_accel while in pratfall
 air_friction = .05;			//Rainbow says : Only 2 decimal values
 walljump_hsp = 6;
 walljump_vsp = 8;
@@ -213,6 +213,8 @@ fire_taunt_sound_frame = 1;
 
 fs_display = 180;
 doc_score = 0;		
+
+hit_player_event = 2;
 
 /* funny variables for phone thing
 prev_gravity_speed = gravity_speed;

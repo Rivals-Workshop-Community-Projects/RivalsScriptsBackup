@@ -13,7 +13,8 @@ if attack == AT_NSPECIAL{
 		if damage >18 { damage = 18; C_dam =7;}
 		if kb_value >18 {  kb_value = 18; C_knock =7;}
 	}
-
+	if C_dam > 7 { C_dam = 7;}
+	if C_knock > 7 {C_knock = 7;}
 	if damage >=8 {
 		effect = 0;
 	}
@@ -22,8 +23,11 @@ if attack == AT_NSPECIAL{
 	if hsp !=0  {proj_angle = (hitbox_timer*(abs(hsp)+1))*-spr_dir;}
 	else if hsp ==0{ proj_angle = (hitbox_timer*2)*-spr_dir; }
 	//BOUNCE
-	if !free{
+	if !free || (place_meeting(x, y + 1 , asset_get("obj_stage_article_solid")) && vsp>=0) 	|| (place_meeting(x, y + 1 , asset_get("obj_article_solid")) && vsp>=0) {
 		floor_pos = y;
+		 if length == 99999{
+			destroyed = true;
+		 }
 	}
 	if y == floor_pos {
 		 if grav == 0.5 { vsp = -10.5}
@@ -76,6 +80,7 @@ if attack == AT_NSPECIAL{
 					spr_dir = player_id.spr_dir;		//Can Turn Around
 					kb_value = kb_value*1.5;
 					C_knock += 2;
+					extra_hitpause+=2;
 					show = 1;
 				}
 		}
@@ -103,14 +108,15 @@ if attack == AT_NSPECIAL{
 				x = player_id.x +26*player_id.spr_dir;
 				y = player_id.y - 26;
 				vsp = -15;
-				hsp = 3.5*player_id.spr_dir;
-				length = 200;
+				hsp = 2.5*player_id.spr_dir;
+				length = 225;
 				hitbox_timer = 0;
 				if grav!= 0 {grav = 0.5;}
 				else { grav = 0.25;}
 				player_id.pilleffect=1;
 				damage = damage*1.5;
 				C_dam  += 2;
+				extra_hitpause+=2;
 				pill_state =0;
 				spr_dir = player_id.spr_dir;		//Can Turn Around
 				show = 1;
@@ -125,8 +131,9 @@ if attack == AT_NSPECIAL{
 		if abs(x - (player_id.x-37*player_id.spr_dir))<45{
 			if abs(y - (player_id.y - 58))<45{
 				grav = 0.42;
-				vsp = - 25 - player_id.strong_charge/6;
+				vsp = - 28 - player_id.strong_charge/6;
 				hsp = hsp/4;
+				through_platforms =16;
 				y = player_id.y - 58;
 				hitbox_timer =0;
 				length = 99999;
@@ -135,6 +142,7 @@ if attack == AT_NSPECIAL{
 				player_id.pilleffect=8;
 				kb_value = kb_value*1.5;
 				C_knock += 2;
+				extra_hitpause+=2;
 				show = 1;
 			}
 		}
@@ -155,6 +163,7 @@ if attack == AT_NSPECIAL{
 				player_id.pilleffect=4;
 				kb_value = kb_value*1.5;
 				C_knock += 2;
+				extra_hitpause+=2;
 				show = 1;
 			}
 		}
@@ -175,6 +184,7 @@ if attack == AT_NSPECIAL{
 				player_id.pilleffect=9;
 				kb_value = kb_value*1.5;
 				C_knock += 2;
+				extra_hitpause+=2;
 				show = 1;
 			}
 		}
@@ -217,6 +227,7 @@ if attack == AT_NSPECIAL{
 					damage = damage*1.25;
 					C_knock += 1;
 					C_dam  += 1;
+					extra_hitpause+=2;
 					show = 1;
 					charge = player_id.strong_charge;
 					pill_state = 2;
@@ -244,6 +255,7 @@ if attack == AT_NSPECIAL{
 				damage = damage*1.25;
 				C_knock += 1;
 				C_dam  += 1;
+				extra_hitpause+=2;
 				show = 1;
 			}
 		}
@@ -259,6 +271,7 @@ if attack == AT_NSPECIAL{
 				pill_state = 4;
 				damage = damage*1.5;
 				C_dam  += 2;
+				extra_hitpause+=2;
 				show = 1;
 				vsp = -abs(vsp/2);
 				if abs(hsp) < 1{hsp = player_id.spr_dir*(4.5+ player_id.strong_charge/10);}
@@ -278,6 +291,7 @@ if attack == AT_NSPECIAL{
 				pill_state = 5;
 				damage = damage*1.5;
 				C_dam  += 2;
+				extra_hitpause+=2;
 				show = 1;
 				vsp = -abs(vsp/2);
 				if (hsp ==0){hsp = -player_id.spr_dir*(4.5+ player_id.strong_charge/10); }
@@ -290,7 +304,7 @@ if attack == AT_NSPECIAL{
 
 
 	//RETURNING PILLS TO NORMAL BEHAVIOR
-	if pill_state == 1 && !free{ destroyed = true;}
+	if pill_state == 1 && !free || (place_meeting(x, y + 1 , asset_get("obj_stage_article_solid")) && vsp>=0) 	|| (place_meeting(x, y + 1 , asset_get("obj_article_solid")) && vsp>=0) { destroyed = true;}
 
 	if  pill_state ==2{
 		if ( hitbox_timer >89 + charge) {
@@ -319,7 +333,7 @@ if attack == AT_NSPECIAL{
 	}
 
 	if pill_state ==4||pill_state ==5{
-		if !free{
+		if !free || (place_meeting(x, y + 1 , asset_get("obj_stage_article_solid")) && vsp>=0) 	|| (place_meeting(x, y + 1 , asset_get("obj_article_solid")) && vsp>=0) {
 			vsp = 0;
 			proj_angle = (hitbox_timer*(abs(hsp)+10))*-spr_dir;
 			grav = 0;
@@ -345,6 +359,8 @@ if forced == 1 {
 
 
 
-if y > player_id.phone_blastzone_b + + 300 {
-	destroyed = true;
+if !("in_adventure" in player_id) {
+	if y > player_id.phone_blastzone_b + + 300 {
+		destroyed = true;
+	}
 }

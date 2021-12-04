@@ -1,5 +1,11 @@
 //ai_update - called every frame for this character as a CPU
 
+//REFLECT TESTING
+//if can_special{
+	//set_attack(AT_FSPECIAL);
+//}
+
+
 //General Logic
 
 xdist = abs(ai_target.x - x);

@@ -30,18 +30,31 @@ alt_name[22] = "BLMario";
 alt_name[23] = "Vaporwave";
 alt_name[24] = "TSMSB";
 
+num_alts = 25;
+//Alt
+
+rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
+
+for(i = 0; i < num_alts; i++){
+	var draw_color = (i == alt_cur) ? c_white : c_gray;
+	var draw_x = temp_x + 2 + 8 * i;
+	rectDraw(draw_x, temp_y + 137, draw_x + 5, temp_y + 140, draw_color);
+}
+
 draw_set_halign(fa_left);
 
-textDraw(temp_x + 2, temp_y + 132, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1) + ": " + alt_name[alt_cur]);
+//include alt. name
+textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1) + ": " + alt_name[alt_cur]);
 
-user_event(12); 
+//exclude alt. name
+//textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
 
 
 
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
- 
+
 draw_set_font(asset_get(argument[2]));
- 
+
 if argument[7]{ //outline. doesn't work lol
     for (i = -1; i < 2; i++){
         for (j = -1; j < 2; j++){
@@ -49,7 +62,13 @@ if argument[7]{ //outline. doesn't work lol
         }
     }
 }
- 
+
 draw_text_ext_transformed_color(argument[0], argument[1], argument[9], argument[4], argument[5], argument[6], argument[6], 0, argument[3], argument[3], argument[3], argument[3], argument[8]);
- 
+
 return string_width_ext(argument[9], argument[4], argument[5]);
+
+
+
+#define rectDraw(x1, y1, x2, y2, color)
+
+draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argument[4], argument[4], argument[4], argument[4], false);

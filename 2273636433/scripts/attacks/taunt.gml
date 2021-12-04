@@ -12,5 +12,4 @@ set_window_value(AT_TAUNT, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX, sound_get("pillthrow"));
 set_window_value(AT_TAUNT, 1, AG_WINDOW_SFX_FRAME, 35);
 
-set_attack_value(AT_TAUNT, AG_MUNO_ATTACK_MISC_ADD, "Cooldown: 20f (ONLY after the pattern resets)
-Hold Parry to not swap your megavitamin");
+//set_attack_value(AT_TAUNT, AG_MUNO_ATTACK_MISC_ADD, "Cooldown: 20f (ONLY after the pattern resets) Hold Parry to not swap your megavitamin");

@@ -158,14 +158,14 @@ set_hitbox_value(AT_NAIR, 6, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_NAIR, 6, HG_FINAL_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_NAIR, 6, HG_ANGLE_FLIPPER, 6);
 
-set_hitbox_value(AT_NAIR, 1, HG_MUNO_HITBOX_MISC_ADD, "Early hit (Backleg) (Sourspot)")
+//set_hitbox_value(AT_NAIR, 1, HG_MUNO_HITBOX_MISC_ADD, "Early hit (Backleg) (Sourspot)")
 
-set_hitbox_value(AT_NAIR, 2, HG_MUNO_HITBOX_MISC_ADD, "Early hit (Frontleg) (Sourspot)")
+//set_hitbox_value(AT_NAIR, 2, HG_MUNO_HITBOX_MISC_ADD, "Early hit (Frontleg) (Sourspot)")
 
-set_hitbox_value(AT_NAIR, 3, HG_MUNO_HITBOX_MISC_ADD, "Middle hit (Backleg) (Sourspot)")
+//set_hitbox_value(AT_NAIR, 3, HG_MUNO_HITBOX_MISC_ADD, "Middle hit (Backleg) (Sourspot)")
 
-set_hitbox_value(AT_NAIR, 4, HG_MUNO_HITBOX_MISC_ADD, "Middle hit (Frontleg) (Sourspot)")
+//set_hitbox_value(AT_NAIR, 4, HG_MUNO_HITBOX_MISC_ADD, "Middle hit (Frontleg) (Sourspot)")
 
-set_hitbox_value(AT_NAIR, 5, HG_MUNO_HITBOX_MISC_ADD, "Late hit (Backleg) (Sweetspot)")
+//set_hitbox_value(AT_NAIR, 5, HG_MUNO_HITBOX_MISC_ADD, "Late hit (Backleg) (Sweetspot)")
 
-set_hitbox_value(AT_NAIR, 6, HG_MUNO_HITBOX_MISC_ADD, "Late hit (Frontleg) (Sweetspot)")
+//set_hitbox_value(AT_NAIR, 6, HG_MUNO_HITBOX_MISC_ADD, "Late hit (Frontleg) (Sweetspot)")

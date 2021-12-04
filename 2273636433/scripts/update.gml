@@ -1,11 +1,15 @@
 //update
-user_event(14);
+//user_event(14);
 //--------------------------------------------INTRO ANIMATION-----------------------------------------------
 if (timer_intro_2 < 3) {
     timer_intro_2++;
 } else {
     timer_intro_2 = 0;
     timer_intro++;
+}
+
+if  get_player_color(player) == 11 ||  get_player_color(player) == 12 { 
+	set_victory_theme(sound_get("TF2Victory"));
 }
 
 if (state == PS_SPAWN && taunt_down )||  get_player_color(player) == 24 {
@@ -373,50 +377,6 @@ if (has_rune ("L"))|| ((has_rune ("N")) )&& (has_rune ("I")) {
 	snolid = 0;
 }
 
-//------------------------------------------------------------MUNOPHONE CHEATS--------------------------
-// phoen cheats aka same thing
-if (phone_cheats[cheat_floaty]) {
-    // generally absa stats
-    gravity_speed = 0.3; 
-    hitstun_grav = 0.45;
-    air_accel = 0.4;
-    jump_speed = 11.60;
-    djump_speed = 10.60;
-    short_hop_speed = 8.50;
-    double_jump_time = 40;
-    //djump_accel = -1.4;
-    air_max_speed = 6;
-} else {
-	gravity_speed = .50;
-	hitstun_grav = .51;
-	air_accel = .25;
-	jump_speed = 10.5;
-	short_hop_speed = 6.5;
-	djump_speed = 10;
-	double_jump_time = 32;
-	air_max_speed = 5;
-}
-if (phone_cheats[cheat_jump] != 1) {
-	max_djumps = phone_cheats[cheat_jump];
-}
-// hello
-if(found_mario) {
-	print("said hello to Mario")
-  sound_play(sound_get("hello"));
-  found_mario = false;
-}
-
-//die
-    if move_cooldown[AT_DSPECIAL] == 0 && hitstop{
-        with oPlayer if (activated_kill_effect) {
-           if other.hit_player_obj == self && get_player_stocks(player) == 1 {
-                with other {
-                    move_cooldown[AT_DSPECIAL] = 60;
-                    sound_play(sound_get("finishhit"));
-                }
-            }
-        }
-}
 
 //------------------------------------------------------------------------KIRBY LOGIC --------------------------
 if swallowed { //Kirby ability script starts here

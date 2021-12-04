@@ -1,6 +1,7 @@
 //rocket launcher
 
 sprite_index = sprite_get("rocket");
+mask_index = sprite_get("rocket");
 
 rocket_lifetime = 90;
 ignores_walls = false;

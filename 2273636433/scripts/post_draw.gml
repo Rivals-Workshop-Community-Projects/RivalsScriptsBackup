@@ -4,7 +4,7 @@
 //draw_debug_text(x  ,y, string(docscore));
 //draw_debug_text(x , y-20 , string(doc_score));
 //draw_debug_text(x , y-40 , string(doc_ditto));
-//draw_debug_text(x , y-60 , string(hsp));
+//draw_debug_text(x , y-60 , string(vsp));
 //draw_debug_text(x ,y+20, string(previo[0]));
 //draw_debug_text(x , y-80 , string(valido));
 
@@ -183,4 +183,6 @@ if doc_score > 0{
 		doc_score = 0;	
 	}
 }
-	user_event(12);
+	
+	
+//user_event(12);

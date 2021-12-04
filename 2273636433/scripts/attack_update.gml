@@ -14,7 +14,6 @@ if attack == AT_USPECIAL{
 		shoryuken = 1;
 	}
 	if grabbedid != noone {													//Debugging - Error Message
-
 		if (grabbedid.state == PS_DEAD || grabbedid.state == PS_RESPAWN ){
 			grabbedid.ungrab = 1;			//Drop Grab
 			grabbedid = noone;
@@ -47,6 +46,10 @@ if attack == AT_USPECIAL{
 			can_fast_fall = false;
 			grabbedid.ungrab = 1;			//Drop Grab
 			grabbedid = noone;
+		}		
+	} else {							//Noone got grabbed
+		if state_timer >10{
+			can_wall_jump=true;
 		}
 	}
 	if(grabbedid != noone){				//While is grabbed
@@ -87,11 +90,11 @@ if attack == AT_DAIR && has_hit{
 
 if attack == AT_NSPECIAL {			//PILL LOGIC
 	if window == 2 && window_timer == 1 && !hitpause{
-		if !((has_rune("A")||phone_cheats[cheat_rng])){ pill++; }								//RUNE LOGIC
+		if !((has_rune("A"))){ pill++; }								//RUNE LOGIC
 	}
 	
 	if window ==2 || window == 3{	
-		if !(has_rune("I")||phone_cheats[cheat_cooldown]){									//RUNE LOGIC
+		if !(has_rune("I")){									//RUNE LOGIC
 			move_cooldown[AT_NSPECIAL] = 42;
 			move_cooldown[AT_TAUNT] = 42;
 		}
@@ -125,15 +128,15 @@ if(attack==AT_DSPECIAL){
 			if(special_pressed)&&(!hitpause) {
 				vsp=-2.75 -has_rune("L")+ cyclone*3;
 			} else if (special_down)&&(!hitpause){
-				vsp=-2 -has_rune("L") + cyclone*3;			
+				vsp=-2.25 -has_rune("L") + cyclone*3;			
 			}else {
-				vsp= vsp + 0.25 + down_down/2;	
-				if (vsp >(1+cyclone*3+ down_down/2)) { vsp = 1 + +cyclone*3+ down_down/2;}
+				vsp= vsp + 0.25 + down_hard_pressed;	
+				if (vsp >(1+cyclone*3+ down_hard_pressed)) { vsp = 1 + +cyclone*3+ down_hard_pressed;}
 			}
 		}
 	
-		if(left_down){hsp-=.5 + !free/8;}
-		if(right_down){hsp+=.5+ !free/8;}
+		if(left_down){hsp-=.525 + !free/8;}
+		if(right_down){hsp+=.525+ !free/8;}
 
 		if hsp > (2.5 + !free + has_rune("L")*2){ hsp = 2.5 + !free + has_rune("L")*2;}
 		if hsp < (-2.5 - !free - has_rune("L")*2){ hsp = -2.5 - !free - has_rune("L")*2;}
@@ -172,8 +175,6 @@ if ((attack == AT_FSTRONG|| attack == AT_DSTRONG || attack == AT_USTRONG) && win
 	}
 }
 
-//---------------------------------------------ACTUAL REFLECTOR LOGIC - THANKS ARCHY-----------------------------------------
-//------------------------------------------------------V3 UPDATE: 17/03-----------------------------------------
 
 if attack == AT_FSPECIAL {
 	if window ==2 {
@@ -183,149 +184,106 @@ if attack == AT_FSPECIAL {
 				cape = 1;
 			}
 		}
-
-	}
-	if window ==3 {
 		if vsp >6 {
 			vsp = 6;
 		}
+		
 	}
 }
-//REFLECTOR IS NOT ACTIVE
-if attack == AT_FSPECIAL && window == 1 {		//Startup
-    gustav = 0;
-}
+
+//---------------------------------------------ACTUAL REFLECTOR LOGIC - THANKS ARCHY-----------------------------------------
+//------------------------------------------------------V4 UPDATE: 22/11-----------------------------------------
+
 //ACTIVE REFLECTOR
 if (attack == AT_FSPECIAL && window == 2 ) {		
-    hit_check = noone;
-	//So now it checks for players, hitbox or articles
+	if done_reflecting == 0{
+		//Interact with oponent hitboxes
+		with (asset_get("pHitBox")){					//From the perspective of the hitbox
+			if type == 2 && other.player !=  player {		//Not my own projectile / not the same
+				if (abs (x -  (other.x + 44*other.spr_dir)) <=50 ) && (abs (y -  (other.y - 34)) <=40 ) && hitstun_factor!= -1 {		//detectiong
+					other.done_reflecting = 1;										//Player gets notified
+					//CHECK IF ARTICLES EXIST IN THE SAME PLACE AS THE HITBOX
+					hit_check = noone;
+					//article 1
+					if hit_check == noone {hit_check = instance_place(x,y,obj_article1);}
+					//article 2
+					if hit_check == noone {hit_check = instance_place(x,y,obj_article2);}
+					//article 3
+					if hit_check == noone {hit_check = instance_place(x,y,obj_article3);}
+					//article platform
+					if hit_check == noone {hit_check = instance_place(x,y,obj_article_platform);}
+					//article solid
+					if hit_check == noone {hit_check = instance_place(x,y,obj_article_solid);}		
 
-	//BUT DMM has a separate hitbox for players
-	//if hit_check == noone {
-        //hit_check = instance_place(x+50*spr_dir,y,OPlayer); 
-    //}
-    if hit_check == noone {
-        hit_check = instance_place(x+50*spr_dir,y,pHitBox);
-    }
-    if hit_check == noone {
-        hit_check = instance_place(x+50*spr_dir,y,obj_article1);
-    }
-    if hit_check == noone {
-        hit_check = instance_place(x+50*spr_dir,y,obj_article2);
-    }
-    if hit_check == noone {
-        hit_check = instance_place(x+50*spr_dir,y,obj_article3);
-    }
-    if hit_check == noone {
-        hit_check = instance_place(x+50*spr_dir,y,obj_article_solid);
-    }
-    if hit_check == noone {
-        hit_check = instance_place(x+50*spr_dir,y,obj_article_platform);
-    }
-    //distance to  object
-    if hit_check != noone {
-        hit_dist = distance_to_object(hit_check);
-    }
-    
-	//Conditions for Reflector to be active
-    if (hit_check != noone  && (hit_check != pHitBox || (hit_check == pHitBox && hit_check.type == 2 )) && gustav != hit_check  && !has_hit_player && hit_check.player != player  && hit_check.type != 1)&& hit_check.hitstun_factor != -1   {
+					//Reflect Logic	
+					//For the Player
+					other.invincible = 1;
+					other.invince_time = 16;							
+					spawn_hit_fx( other.x +44*other.spr_dir, other.y-34, 194 );			//VISUAL EFFECT 
+					other.play_sound = 1;
+					was_parried = true;											
 
-        gustav = hit_check;						//Object
-		invincible = 1;
-		invince_time = 12;							
-		spawn_hit_fx( x +44*spr_dir, y-34, 194 );			//VISUAL EFFECT 
-		gustav.was_parried = true;							//MOVED THIS LINE UP TO COVER A COUPLE OF SPECFIC CASES
+					//CODE FOR TENRU INTERACTION I GUESS
+					if variable_instance_exists(self, "reflected") {
+					   reflected = true;
+					}
+					//CODE FOR MATT I GUESS
+					if variable_instance_exists(self, "UnReflectable") {
+					   UnReflectable = false;
+					}
 
-		//CODE FOR TENRU INTERACTION I GUESS
-		if variable_instance_exists(gustav, "reflected") {
-           gustav.reflected = true;
-        }
+					//For the hitbox
+					image_angle = 0+(180*(spr_dir+1));				//REFLECTS 
+					//Actual Reflect
+					damage *= 1.25
+					kb_value *= 1.25;
+					can_hit_self = true;
+					if does_not_reflect == false {hitbox_timer =0;}
 
-		//CODE FOR MATT I GUESS
-		if variable_instance_exists(gustav, "UnReflectable") {
-           gustav.UnReflectable = false;
-        }
-
-		//CODE FOR SEIJA INTERACTION I GUESS
-		if variable_instance_exists(gustav, "sided") {
-
-			gustav.sided = -gustav.sided;           
-            gustav.cant_be_hit = 20;
-            gustav.was_switched = true;
-			gustav.hitboxHit = gustav.id;
-        }
-
-		//UPDATE: IF the projectile is not static ( or has a really small movement speed) it reflects
-		//There is Horizontal movement
-		gustav.image_xscale = 0.01;
-		if variable_instance_exists(gustav, "sprdir") {
-			gustav.hsp = sprdir * abs(gustav.hsp);					
-			gustav.sprdir = sprdir;
-		} else {
-			gustav.hsp = spr_dir * abs(gustav.hsp);			
-			gustav.spr_dir = spr_dir;
-		}
-		//Theres no horizontal movement BUT there is vertical movment
-		 if abs(gustav.vsp) > 0.5  && abs(gustav.hsp) <=  0.5{					
-			if variable_instance_exists(gustav, "sprdir") {				
-				gustav.sprdir *= -1;
-			} else {				
-				gustav.spr_dir *= -1;
-			}
-		}
-		
-		//SPEED MULTIPLIER LOGIC
-        if gustav.object_index != oPlayer {
-			gustav.hitbox_timer = 0;
-            gustav.can_hit_self = true;
-            gustav.x = x + 60*spr_dir;
-            gustav.y = gustav.y;
-
-            gustav.image_angle = 0+(180*(spr_dir+1));				//REFLECTS 
-
-
-			if abs(gustav.hsp) <= 0.5  {				//Varely any HSP
-				gustav.hsp = 4*spr_dir
-				if gustav.free {				
-					gustav.vsp *= -1;
-				}else {
-					gustav.vsp = -5;
+					//Movement
+					x = other.x +50*other.spr_dir;
+					if abs(hsp) <= 1  {				//Varely any HSP
+						hsp = 4*other.spr_dir;
+						spr_dir = other.spr_dir;
+						if !free && grav != 0 {				
+							vsp = -5;
+						} else{
+							vsp = -abs(vsp);
+						}
+					}else{
+						spr_dir *= -1;
+						hsp *=  -1.25;
+					}
+					//DITTO INTERACTION - ESPECIFICALLY FOR DR MELEE MARIO DITTO
+					if variable_instance_exists(self, "C_knock") {
+					   C_knock += 2;
+					   forced = 1;
+					   extra_hitpause +=2;
+					}
+					//Movement For Articles
+					if hit_check != noone {							//Reflect Article
+						if hit_check.player == player{				//The article is from the same player as the hitbox
+							hit_check.hsp *= -1.25;	
+							hit_check.spr_dir *= -1;
+							hit_check = noone;
+						}
+					} 
+					
 				}
-			}else{
-				gustav.hsp = gustav.hsp* 1.25
 			}
-        }
-
-	   //DAMAGE AND KNOCKBACK MODIFIERS
-        if variable_instance_exists(gustav, "damage") {
-           gustav.damage *= 1.25;
-        }
-        if variable_instance_exists(gustav, "kb_value") {
-            gustav.kb_value *= 1.25;
-        }
-
-		//DITTO INTERACTION - ESPECIFICALLY FOR DR MELEE MARIO DITTO
-		if variable_instance_exists(gustav, "C_knock") {
-		   if variable_instance_exists(gustav, "kb_value") {
-				gustav.kb_value *= 1.25;
-		   }
-           gustav.C_knock += 2;
-		   gustav.forced = 1;
-        }
-
-
-		//SOUND TO PLAY
-        sound_play(sound_get("mantle"));					//Here comes a sound effect
+		}
     }
-    if hit_check == noone {
-        gustav = 0;
-    }
+	//Complementary to reflect
+	if play_sound ==1{
+		sound_play(sound_get("mantle"));					//Here comes a sound effect
+		play_sound = 0;
+	}
 }
 
 
 //-----------------------------------------------------RUNE LOGIC PART 1 ---------------------------------------------
 
-if (has_rune("B") || phone_cheats[cheat_funny]){
+if (has_rune("B") ){
 	set_hitbox_value(AT_NAIR, 6, HG_LIFETIME, 120);
 	set_hitbox_value(AT_NAIR, 5, HG_LIFETIME, 120);
 }else{
@@ -348,7 +306,7 @@ if (has_rune("D")){
 if (has_rune("F")){
 	set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, 1.1);
 	set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 3);
-	set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -15);
+	set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -19);
 	set_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE, 1);
 	
 }
@@ -361,7 +319,7 @@ if (has_rune("G")){
 	}
 }
 
-if (has_rune("H")|| phone_cheats[cheat_luigi]){
+if (has_rune("H")){
 	if attack == AT_DSPECIAL{
 		if state_timer < 48 {invincible = true;}
 	}
@@ -391,7 +349,7 @@ if (has_rune("N")){
 }
 
 
-if (has_rune("L")|| phone_cheats[cheat_space]){
+if (has_rune("L")){
 	if attack == AT_DSPECIAL {
 		can_jump = true;
 		if window == 2 && window_timer ==12{

@@ -19,5 +19,11 @@ switch (state){
 		}
 	break;
     
+	case PS_PRATLAND:
+        sprite_index = sprite_get("landinglag");
+    break;
+
     default: break;
+
+
 }

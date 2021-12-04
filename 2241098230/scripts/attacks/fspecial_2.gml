@@ -18,7 +18,7 @@ set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_SFX_FRAME, 8);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_HSPEED, 8 + (4 + has_rune("B")));
+set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_HSPEED, 8 + (4 * has_rune("B")));
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));

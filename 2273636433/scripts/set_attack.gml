@@ -23,7 +23,9 @@ if attack == AT_FSPECIAL{
 	if vsp< 0  {
 		cyclone = 0;
 	}
+	play_sound=0;
+	done_reflecting = 0;
 }
 
 
-user_event(13);
+//user_event(13);

@@ -216,6 +216,31 @@ if (BS_ammo <= 0)
 		
 }
 
+if (attack == AT_USPECIAL_2) //RPG
+{ 
+            can_fastfall = false;
+		if (window == 3 && window_timer == 1 && RPG_ammo > 0) 
+	{
+        var rocket = instance_create(x + (1 * spr_dir), y - 3, "obj_article1");
+        rocket.hsp = spr_dir * 0;
+        rocket.spr_dir = spr_dir;
+		}
+    if (window == 3 && window_timer = 1){
+        RPG_ammo -= 1;
+        RPG_shots += 1;
+    }
+if (window == 6 && window_timer == 9 && RPG_ammo <= 0)
+{
+    RPG_empty = true;
+}
+    
+if (RPG_empty == true)
+{
+  set_state(PS_IDLE); 
+}
+}
+
+
 if (attack == AT_USTRONG_2) //Battle rifle
 { 
 	    if (window == 4 && window_timer > 8){
@@ -286,29 +311,6 @@ if (window == 2)
 
 }
 
-if (attack == AT_USPECIAL_2) //RPG
-{ 
-            can_fastfall = false;
-		if (window == 3 && window_timer == 1 && RPG_ammo > 0) 
-	{
-        var rocket = instance_create(x , y - 3, "obj_article1");
-        rocket.hsp = spr_dir * 0;
-        rocket.spr_dir = spr_dir;
-		}
-    if (window == 3 && window_timer = 1){
-        RPG_ammo -= 1;
-        RPG_shots += 1;
-    }
-if (window == 6 && window_timer == 9 && RPG_ammo <= 0)
-{
-    RPG_empty = true;
-}
-    
-if (RPG_empty == true)
-{
-  set_state(PS_IDLE); 
-}
-}
 
 
 if (attack == AT_USPECIAL) //Grav Lift
@@ -346,6 +348,13 @@ if (attack == AT_DATTACK){ //ASSAULT RIFLE DOWN
     if (window == 3 && window_timer == 9)
     {
 		sound_play(sound_get("AR"));
+    }
+}
+
+if (attack == AT_FSTRONG){ //SHOTGUN
+    if (window == 4 && window_timer == 1)
+    {
+		sound_stop(sound_get("COCK"));
     }
 }
 

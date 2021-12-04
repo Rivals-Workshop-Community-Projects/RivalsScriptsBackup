@@ -204,13 +204,13 @@ set_color_profile_slot( 19, 5, 220, 113, 255 ); //Tie / Eyes
 set_color_profile_slot( 19, 6, 220, 113, 255 ); //HeadBand
 
 // Gameboy
-set_color_profile_slot( 20, 0, 83, 122, 62 ); //Lab Coat
-set_color_profile_slot( 20, 1, 167, 186, 74 ); //Pants
-set_color_profile_slot( 20, 2, 211, 226, 154 ); //Hair / Shoes
+set_color_profile_slot( 20, 0, 211, 226, 154 ); //Lab Coat
+set_color_profile_slot( 20, 1, 83, 122, 62 ); //Pants
+set_color_profile_slot( 20, 2, 83, 122, 62 ); //Hair / Shoes
 set_color_profile_slot( 20, 3, 167, 186, 74 ); //Gloves
 set_color_profile_slot( 20, 4, 167, 186, 74 ); //Skin
 set_color_profile_slot( 20, 5, 167, 186, 74 ); //Tie / Eyes
-set_color_profile_slot( 20, 6, 83, 122, 62 ); //HeadBand
+set_color_profile_slot( 20, 6, 211, 226, 154 ); //HeadBand
 
 // Nes dr. mario
 set_color_profile_slot( 21, 0, 255, 255, 255 ); //Lab Coat
@@ -222,13 +222,13 @@ set_color_profile_slot( 21, 5, 255, 189, 0 ); //Tie / Eyes
 set_color_profile_slot( 21, 6, 255, 189, 0 ); //HeadBand
 
 // BLMario
-set_color_profile_slot( 22, 0, 255, 234, 219 ); //Lab Coat
-set_color_profile_slot( 22, 1, 48, 48, 48 ); //Pants
+set_color_profile_slot( 22, 0, 249, 234, 219 ); //Lab Coat
+set_color_profile_slot( 22, 1, 61, 61, 61 ); //Pants
 set_color_profile_slot( 22, 2, 28, 28, 28 ); //Hair / Shoes
-set_color_profile_slot( 22, 3, 207, 166, 58 ); //Gloves
-set_color_profile_slot( 22, 4, 138, 71, 11 ); //Skin
-set_color_profile_slot( 22, 5, 255, 250, 0 ); //Tie / Eyes
-set_color_profile_slot( 22, 6, 227, 223, 0 ); //HeadBand
+set_color_profile_slot( 22, 3, 203, 204, 31 ); //Gloves
+set_color_profile_slot( 22, 4, 143, 85, 33 ); //Skin
+set_color_profile_slot( 22, 5, 46, 46, 46 ); //Tie / Eyes
+set_color_profile_slot( 22, 6, 207, 203, 0 ); //HeadBand
 
 // Vaporwave
 set_color_profile_slot( 23, 0, 139, 236, 240 ); //Lab Coat

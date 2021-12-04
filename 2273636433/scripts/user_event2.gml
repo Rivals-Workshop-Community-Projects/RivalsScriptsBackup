@@ -3,11 +3,6 @@
 if my_hitboxID.attack == AT_FSPECIAL{
 	hit_player_obj.spr_dir *= -1;
 	hit_player_obj.hsp = hit_player_obj.hsp*-1;
-	hit_player_obj.left_down = !hit_player_obj.left_down;
-	hit_player_obj.left_pressed = !hit_player_obj.left_pressed;
-	hit_player_obj.right_down = !hit_player_obj.right_down;
-	hit_player_obj.right_pressed = !hit_player_obj.right_pressed;
-
 }
 
 if my_hitboxID.attack == AT_DAIR{

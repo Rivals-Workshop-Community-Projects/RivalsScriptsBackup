@@ -43,7 +43,7 @@ if (hit_wall)
 with (oPlayer)
 {
 if (id != other.player_id) {    
-  if (place_meeting(x - 2, y - 12, other))
+  if (place_meeting(x, y, other))
   {
       with (other)
       {
