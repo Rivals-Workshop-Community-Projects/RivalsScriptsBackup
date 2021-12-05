@@ -13,8 +13,9 @@ if (window == last_window) && attack != AT_EXTRA_1{
 
 
 if attack == AT_NAIR && has_hit && hitpause{
-	window_timer += 0.5
+	//window_timer += 0.5
 	state_timer += 1
+
 	
 	        	if state_timer % 5 == 0{
      		    	  sound_play(asset_get("sfx_ice_shieldup"),false,noone,1.4)
@@ -370,18 +371,18 @@ if !hitpause {
      
 
         if window == 1 {
-     	if window_timer == 11 {
+     	if window_timer == 8 {
      		    	  sound_play(asset_get("sfx_ice_shieldup"),false,noone,1.4)
      	}
         }
      	
      	
      if window == 2 {
-     	if window_timer == 7 or window_timer == 11 {
+     	if window_timer == 2 or window_timer == 4 {
      		    	  sound_play(asset_get("sfx_ice_shieldup"),false,noone,1.4)
      	}
      	
-     	   if window_timer < 10 && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN {
+     	   if window_timer < 8 && has_hit_player && hit_player_obj.state_cat == SC_HITSTUN {
                 	hit_player_obj.x += (x + 60*spr_dir - hit_player_obj.x) / 3
 		            hit_player_obj.vsp = ((y) - 20 - hit_player_obj.y) / 2
             }
@@ -485,16 +486,6 @@ if !hitpause {
      	fancyfx();
      	vsp = -0.5
      	
-     	    if (place_meeting(x+10*spr_dir, y, asset_get("par_block"))) {
-                 set_attack (AT_FAIR)
-                 window = 1
-                 window_timer = 10
-                 vsp = -9
-                 hsp = -5*spr_dir
-                  spawn_hit_fx (x+10*spr_dir, y - 20, 305)
-                  sound_play(sound_get("slicew2")); 
-                  shake_camera (2,4)
-             }
              
      }
      
@@ -588,11 +579,26 @@ if !hitpause {
             
         	fancyfx();
         	vsp = 18
+        	
+        if !has_hit_player {	
         if (y > room_height/2 + 300){
         	can_shield = true
         }
         	can_wall_jump = true
+        } else {
         	
+        	if (y > room_height/2 + 320){
+        	set_attack(AT_JAB)
+        	sound_play(asset_get("sfx_swipe_heavy2"))
+                                  sound_play(asset_get("sfx_bird_nspecial"),false,noone,0.4)
+                hsp = -4*spr_dir
+                vsp = -6
+                window = 4
+                window_timer = 0
+            spawn_hit_fx(x  , y, ds) 
+        	}
+        	
+        }
         	if !free {
      
       	 	
@@ -632,24 +638,24 @@ if !hitpause {
   
        case AT_USPECIAL: 
        
+          	hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+          	
 
                can_fast_fall = false 
         can_wall_jump = true
         
         if window == 3 {
         	
-        	       		mask_index = asset_get("empty_sprite");
+        if window_timer == 1 {
+       	sound_play(sound_get("Uspec1"),false,noone,0.6); 
+        }
+        
+        	       		//mask_index = asset_get("empty_sprite");
         	       
          hsp /= 1.4
         vsp = -0.5
         shake_camera(1,4)
         
-        if left_down && !right_down {
-        	spr_dir = -1
-        }
-        if !left_down && right_down {
-        	spr_dir = 1
-        }
         
         
         }
@@ -658,23 +664,30 @@ if !hitpause {
         	  	 sound_play(sound_get("swingw2"));  
                   spawn_hit_fx(x  , y - 40, shit5)  
                   
-        if !up_down  {
-            vsp = 0
-            hsp = 20*spr_dir
+        if choosendir = 1  {
+            vsp = -2
+            hsp = 14*spr_dir
+ 
        	}
        	
-       	
-       	if up_down  {
+       	if choosendir = 2  {
             vsp = -16
-            hsp = 20*spr_dir
+            hsp = 8*spr_dir
+
        	}
        	
+       	if choosendir = 3  {
+            vsp = 14
+            hsp = 8*spr_dir
+
+       	}
        	
+
         }
         
         if window >= 4 {
         	
-
+            fall_through = true
         	
         	if window == 4 {
         		       switch state_timer % 3 + 1 {
@@ -714,10 +727,13 @@ if !hitpause {
             
         		
         	}
-        		hsp /= 1.1
+        	hsp /= 1.1
         	vsp /= 1.1
+        	if window < 6 && vsp != 0{
+        		vsp -= 0.4
+        	}
         		can_move = false 
-        		if vsp > 0 {
+        	if window == 6 && vsp > 0 {
         		vsp = 0
         	}
         }
@@ -726,97 +742,97 @@ if !hitpause {
        	
        	prat_land_time = 24;
        	
-       	if window_timer == 10 && special_down {
-       		prat_land_time = 12;
-       		window = 3
-       		window_timer = 0
+       	if window_timer == 1 {
+       	choosen_dirx = x
+       	choosen_diry = y 
+       	sound_play(sound_get("Uspec1"),false,noone,0.6); 
+       	} else {
+       		
+       		if !up_down and !down_down {
+       		choosen_dirx += (right_down - left_down)*10
+       		} else {
+       		choosen_dirx += (right_down - left_down)*6	
+       		}
+       		
+       		if !left_down and !right_down {
+       		choosen_diry -= (up_down - down_down)*10
+       		} else {
+       		choosen_diry -= (up_down - down_down)*6
+       		}
+       		
+       		if state_timer % 2 == 0 {
+       			spawn_hit_fx( floor(choosen_dirx) - 10 + random_func(1,20,true) , floor(choosen_diry - 20) - 10 + random_func(2,20,true) , lpar1)   
+       			
+       		}
+       		
+       		if state_timer % 3 == 0 {
+       			spawn_hit_fx( floor(choosen_dirx) - 10 + random_func(1,20,true)  , floor(choosen_diry - 20) - 10 + random_func(2,20,true), lpar2)   
+       			
+       		}
+       		
+       		if state_timer % 3 == 1 {
+       			spawn_hit_fx( floor(choosen_dirx) - 10 + random_func(1,20,true)  , floor(choosen_diry - 20) - 10 + random_func(2,20,true), lpar4)   
+       			
+       		}
+       		
        	}
+       	
+       	
+       	//if window_timer == 10 && special_down {
+       	//	prat_land_time = 12;
+       	//	window = 3
+       	//	window_timer = 0
+       	//}
        	hsp /= 1.4
         vsp = 0
         can_shield = true
         
-        if left_down && !right_down {
-        	spr_dir = -1
-        }
-        if !left_down && right_down {
-        	spr_dir = 1
-        }
         
-        if window_timer == 1 {
-        	sound_play(sound_get("Uspec1"),false,noone,0.6); 
-        }
-        
-        if window_timer == 15 {
+        if window_timer == 25 {
        	       		sound_play(asset_get("sfx_bird_downspecial"),false,noone,1)
        		      	 sound_play(sound_get("swingw2")); 
+       		      	 
+       		     spawn_hit_fx(x   , y - 30 , shit1)   
+                spawn_hit_fx(floor(x + floor(choosen_dirx))/2   , floor(y + floor(choosen_diry))/2 - 30, shit1)     
+                spawn_hit_fx(floor(x + floor(choosen_dirx*8))/9   , floor(y + floor(choosen_diry*8))/9 - 30, shit1)    
+                //spawn_hit_fx(floor(x*2 + floor(choosen_dirx))/3   , floor(y*2 + floor(choosen_diry))/3 - 30, shit1)    
+                
        		      spawn_hit_fx(x  , y - 30, lpar1)              
                   spawn_hit_fx(x , y - 30, lpar4)   
                   
-                  spawn_hit_fx(x - 30  , y - 30, lpar4)              
-                  spawn_hit_fx(x + 30  , y - 30, lpar4)   
+                  spawn_hit_fx(floor(x + floor(choosen_dirx))/2  , floor(y + floor(choosen_diry))/2 - 30, lpar4)              
+                  spawn_hit_fx(floor(x + floor(choosen_dirx))/2   , floor(y + floor(choosen_diry))/2 - 30, lpar4)   
+                  
                   spawn_hit_fx(x  , y - 40, shit5)  	
-       	
-       	
-       	if !up_down  {
-       		uspec = 0
-                x += 80*spr_dir
-                hsp = 10*spr_dir
-
-                set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, -26);
-                set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_Y, -26);
-       	}
-       	
-       	
-       	if up_down  {
-       		uspec = 1
-                x += 80*spr_dir
-                hsp = 10*spr_dir
-                y -= 60
-                vsp = -20
-                
-
-                 set_hitbox_value(AT_USPECIAL, 2, HG_HITBOX_Y, 26);
-                set_hitbox_value(AT_USPECIAL, 3, HG_HITBOX_Y, 66);
-       	}
-       	
-       	       	
-       	
-       	
+                  
+         x = floor(choosen_dirx)
+       	 y = floor(choosen_diry)
+     	  
+     	 vsp = -4
+     	 
+     	 prat_land_time = 30
+     	 
+     	      if (place_meeting(x+10*spr_dir, y, asset_get("par_block"))) {
+                 set_state (PS_PRATFALL)
+                 window_timer = 1
+                 vsp = -6
+                  spawn_hit_fx (x+10*spr_dir, y - 20, 14)
+                  sound_play(sound_get("slicew2")); 
+                  sound_play(asset_get("sfx_kragg_rock_shatter"),false,noone,1,0.8 + random_func(1,5,true)/10)
+                  shake_camera (2,4)
+                  move_cooldown[AT_USPECIAL_2] = 10
+             }
        }
+       
+       
+       
        }
        
        
        if window == 2 {
-       	
-       	if window_timer <= 1 {
-       		if uspec = 0 {
-       			spawn_hit_fx(x  , y - 35 - random_func(1,10,true), shit1)              
-                spawn_hit_fx(x - 50*spr_dir  , y - 30 - random_func(2,10,true), shit1)   
-                spawn_hit_fx(x - 100*spr_dir  , y - 30 - random_func(3,10,true), shit1)              
-                
-                spawn_hit_fx(x - 30*spr_dir  , y - 30, lpar4)              
-                spawn_hit_fx(x - 60*spr_dir  , y - 30, lpar4)   
-                spawn_hit_fx(x - 120*spr_dir  , y - 30, lpar4)              
-                spawn_hit_fx(x - 150*spr_dir  , y - 30, lpar4)   
-                
-                 hsp = 6*spr_dir
-                vsp = -3
-       		} else {
-       			spawn_hit_fx(x - 10*spr_dir  , y - 15 - random_func(1,10,true), shit1)              
-                spawn_hit_fx(x - 50*spr_dir  , y + 5 - random_func(2,10,true), shit1)   
-                spawn_hit_fx(x - 100*spr_dir  , y + 45 - random_func(3,10,true), shit1)              
-                
-                spawn_hit_fx(x - 30*spr_dir  , y - 10, lpar4)              
-                spawn_hit_fx(x - 60*spr_dir  , y + 10, lpar4)   
-                spawn_hit_fx(x - 120*spr_dir  , y + 30, lpar4)              
-                spawn_hit_fx(x - 150*spr_dir  , y + 50, lpar4)   
-                
-                hsp = 5*spr_dir
-                vsp = -6
-       		}
-       	}
-       	
-         if window_timer == 25 or (window_timer > 5 && !free) {
+
+       	 
+         if window_timer == 20 or (window_timer > 5 && !free) {
          	set_state(PS_PRATFALL)
          }
        	

@@ -5,6 +5,16 @@ hit_player_obj = self
 
 }
 
+
+
+
+if move_cooldown[AT_USPECIAL_2] == 9 {
+	spawn_hit_fx(x  , y - 40, shit5)  
+	       	    spawn_hit_fx(x   , y - 30 , shit1)   
+                spawn_hit_fx(floor(x + floor(choosen_dirx))/2   , floor(y + floor(choosen_diry))/2 - 30, 14)     
+                spawn_hit_fx(floor(x + floor(choosen_dirx*8))/9   , floor(y + floor(choosen_diry*8))/9 - 30, 13)   
+}
+
 if invis == true and !attacking {
    move_cooldown[AT_FSPECIAL_2] = 20	
 }
@@ -127,7 +137,7 @@ if state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR {
 		set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_VSPEED, -4 - random_func(2,4,true));
 	}
 	
-	if (has_hit_player && hitpause && get_gameplay_time() % 4 == 0 && invitimer == 0 && window != 4) or move_cooldown[AT_NSPECIAL_2] > 0{
+	if (has_hit_player && hitpause && get_gameplay_time() % 10 == 0 && invitimer == 0 && window != 4) or move_cooldown[AT_NSPECIAL_2] > 0{
 		create_hitbox(AT_NSPECIAL, 3, hit_player_obj.x, hit_player_obj.y - 40)
 	}
 	
@@ -317,6 +327,7 @@ if state_timer < 12 {
 
 }
 
+/*
 if instance_number(oPlayer) == 2 {
 
 
@@ -441,3 +452,5 @@ if finishercd != 0 &&  hit_player_obj.state_cat == SC_HITSTUN && !hitpause{
     	break ;
 	 }
 } 
+
+*/

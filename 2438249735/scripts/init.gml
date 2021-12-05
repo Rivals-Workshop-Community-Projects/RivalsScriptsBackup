@@ -8,6 +8,10 @@ ncode1 = "A divine being, or just a humanoid being"
 ncode2 = "bearing the embodiment of grasses (Poaceae)"
 ncode3 = "They can make grass grow on any surface."
 
+choosen_dirx = 0
+choosen_diry = 0
+choonsedir = 0
+
 uspec = 0
 invis = 1
 shsp = 0

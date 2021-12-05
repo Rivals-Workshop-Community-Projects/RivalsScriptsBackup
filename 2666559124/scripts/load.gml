@@ -54,6 +54,8 @@ sprite_change_offset("bomb", 16, 0);
 
 sprite_change_offset("plat", 35, 0);
 
+sprite_change_offset("hurtbox", 32, 76);
+
 set_victory_bg(sprite_get("victory_bg"));
 
 set_victory_theme( sound_get( "victory_theme" ));

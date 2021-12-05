@@ -245,7 +245,13 @@ if attack == AT_NSPECIAL && hbox_num == 4 {
 
  player_id.target.hsp = 1 * spr_dir
  player_id.target.vsp = -1
+ player_id.target.hitstop = 5
+ player_id.target.x += 1
+
  
+ if get_gameplay_time() % 4 == 0 {
+ 	player_id.target.x -= 4
+ }
  
  if hitbox_timer > 10 {
       if x < player_id.target.x {

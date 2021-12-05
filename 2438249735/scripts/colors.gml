@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 19 );
+set_num_palettes( 22 );
 
 // unnamed alt palette
 set_color_profile_slot( 1, 0, 46, 189, 255 ); //Energy
@@ -216,7 +216,37 @@ set_color_profile_slot( 18, 5, 255, 255, 255 ); //Eyes 1
 set_color_profile_slot( 18, 6, 255, 116, 18 ); //Eyes 2
 set_color_profile_slot( 18, 7, 255, 255, 255 ); //white spot
 
+// Baked
+set_color_profile_slot( 19, 0, 0, 253, 160 ); //Energy
+set_color_profile_slot( 19, 1, 247, 222, 86 ); //Hair
+set_color_profile_slot( 19, 2, 224, 181, 157 ); //Body
+set_color_profile_slot( 19, 3, 66, 209, 217 ); //Dark body
+set_color_profile_slot( 19, 4, 101, 108, 138 ); //Leaves
+set_color_profile_slot( 19, 5, 255, 255, 255 ); //Eyes 1
+set_color_profile_slot( 19, 6, 0, 253, 160 ); //Eyes 2
+set_color_profile_slot( 19, 7, 255, 255, 255 ); //white spot
 
+// BLW
+set_color_profile_slot( 20, 0, 255, 255, 255 ); //Energy
+set_color_profile_slot( 20, 1, 199, 162, 14 ); //Hair
+set_color_profile_slot( 20, 2, 82, 53, 26 ); //Body
+set_color_profile_slot( 20, 3, 31, 31, 31 ); //Dark body
+set_color_profile_slot( 20, 4, 242, 242, 242 ); //Leaves
+set_color_profile_slot( 20, 5, 255, 171, 0 ); //Eyes 1
+set_color_profile_slot( 20, 6, 255, 255, 255 ); //Eyes 2
+set_color_profile_slot( 20, 7, 255, 250, 84 ); //white spot
+
+// Baked
+
+    set_color_profile_slot(21, 0, 29, 29, 36  );
+    set_color_profile_slot(21, 1, 102, 11, 46 );
+    set_color_profile_slot(21, 2, 102, 11, 46 );
+    set_color_profile_slot(21, 3, 29, 29, 36  );
+    set_color_profile_slot(21, 4, 79, 13, 38  );
+    set_color_profile_slot(21, 5, 102, 11, 46 );
+    set_color_profile_slot(21, 6, 29, 29, 36 );
+    set_color_profile_slot(21, 7, 255, 255, 255 );
+        
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
 {"formatversion":1,"data":[{"name":"Energy","colors":[{"r":177,"g":255,"b":28,"main":true}]},{"name":"Hair","colors":[{"r":139,"g":179,"b":35},{"r":82,"g":116,"b":23,"main":true}]},{"name":"Body","colors":[{"r":154,"g":148,"b":93},{"r":107,"g":102,"b":61,"main":true},{"r":180,"g":174,"b":120}]},{"name":"Dark body","colors":[{"r":58,"g":56,"b":29,"main":true},{"r":65,"g":61,"b":32},{"r":45,"g":42,"b":21},{"r":97,"g":93,"b":57}]},{"name":"Leaves","colors":[{"r":33,"g":62,"b":2},{"r":44,"g":79,"b":6,"main":true},{"r":85,"g":130,"b":36}]},{"name":"Eyes 1","colors":[{"r":193,"g":226,"b":71,"main":true}]},{"name":"Eyes 2","colors":[{"r":123,"g":189,"b":0,"main":true},{"r":37,"g":103,"b":0},{"r":93,"g":167,"b":0}]},{"name":"white spot","colors":[{"r":255,"g":255,"b":255,"main":true}]}]}

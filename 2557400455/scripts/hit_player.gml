@@ -31,11 +31,13 @@ if my_hitboxID.attack == AT_FSPECIAL{
     
 }
 
-if my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 2 && gun == 0{
-	move_cooldown[AT_EXTRA_3] = 16
-	crossout = 0
-	move_cooldown[AT_DSPECIAL] = 60
+if my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 2 {
 	
+	crossout = 0
+	if gun == 0 {
+		move_cooldown[AT_DSPECIAL] = 60
+	move_cooldown[AT_EXTRA_3] = 16
+	}
 }
 
 if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.type == 2{

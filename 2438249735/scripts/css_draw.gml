@@ -52,6 +52,9 @@ var palette_names = [
   "Hibiki",
   "Pyra",
   "Joo Ceana",
+   "Baked", 
+   "BLW",
+   "Negative",
 ];
 var alt = get_player_color(player);
 //draw the alt name and number. maybe not positioned well i didnt check
