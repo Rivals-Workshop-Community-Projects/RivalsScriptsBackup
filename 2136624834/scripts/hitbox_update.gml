@@ -5,9 +5,6 @@ if attack == AT_NSPECIAL {
 	
 	if player_id.attacking &&  player_id.attack == AT_NSPECIAL && (player_id.window == 1 or player_id.window == 4) && player_id.window_timer == 1 {
 		
-		if hbox_num == 1 {
-		destroyed = 1
-		}
 	}
 	
 		if player_id.window == 2 && player_id.attack == AT_USPECIAL  
@@ -94,8 +91,13 @@ if attack == AT_NSPECIAL {
 
 
 if attack == AT_FSTRONG  {
+	
+	if hbox_num >= 2 {
+		sprite_index = sprite_get("icicle2")
+	}
+	
 	if player_id.fstronghit > 1 && player_id.timefreeze < 20{
-		hsp = 3 * spr_dir
+		hsp = 1 * spr_dir
 		hitbox_timer -= 1
 	}
 	

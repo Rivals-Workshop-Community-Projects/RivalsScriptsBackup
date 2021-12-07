@@ -15,13 +15,15 @@ if attack == AT_FSPECIAL {
         sound_play(player_id.sfx_spiral_dustbun,false,noone,0.3,0.85);
         spawn_hit_fx(x,y-15,player_id.hfx_sand_big);
         //later see if this works
-        with(player_id) {
-            meteor_id = instance_create(other.x,other.y,"obj_article1");
-            meteor_id.rock_type = "sand";
-            meteor_id.spr_dir = other.spr_dir;
-            move_cooldown[AT_FSPECIAL] = 130;
-            other.destroyed = true;
+        if player == player_id.player {
+            with(player_id) {
+                meteor_id = instance_create(other.x,other.y,"obj_article1");
+                meteor_id.rock_type = "sand";
+                meteor_id.spr_dir = other.spr_dir;
+                move_cooldown[AT_FSPECIAL] = 130;
+            }
         }
+        destroyed = true;
         /*
         var met = instance_create(x,y,"obj_article1");
         met.rock_type = "sand";
@@ -45,16 +47,18 @@ if attack == AT_FSPECIAL_2 && hbox_num == 1 {
         sound_play(player_id.sfx_poke_rocktomb,false,noone,0.95,1.15);
         sound_play(asset_get("sfx_blow_weak1"),false,noone,0.75,0.95);
         //later see if this works
-        with(player_id) {
-            meteor_id = instance_create(other.x,other.y,"obj_article1");
-            meteor_id.rock_type = "rock";
-            meteor_id.spr_dir = other.spr_dir;
-            meteor_id.vsp = -20;
-            meteor_id.hsp = other.hsp * 0.95;
-            meteor_id.spr_dir = other.spr_dir;
-            move_cooldown[AT_FSPECIAL_2] = 130;
-            other.destroyed = true;
+        if player == player_id.player {
+            with(player_id) {
+                meteor_id = instance_create(other.x,other.y,"obj_article1");
+                meteor_id.rock_type = "rock";
+                meteor_id.spr_dir = other.spr_dir;
+                meteor_id.vsp = -20;
+                meteor_id.hsp = other.hsp * 0.95;
+                meteor_id.spr_dir = other.spr_dir;
+                move_cooldown[AT_FSPECIAL_2] = 130;
+            }
         }
+        destroyed = true;
         /*
         var met = instance_create(x,y,"obj_article1");
         met.rock_type = "rock";

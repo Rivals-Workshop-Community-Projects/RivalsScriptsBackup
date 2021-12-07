@@ -23,7 +23,7 @@ if my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.orig_player == player {
     window_timer = 0;
 }
 
-if my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num == 1 && my_hitboxID.orig_player == player {
+if my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num == 1 && my_hitboxID.orig_player_id == self {
     meteor_id = instance_create(my_hitboxID.x,my_hitboxID.y,"obj_article1");
     meteor_id.rock_type = "rock";
     meteor_id.spr_dir = my_hitboxID.spr_dir;
@@ -34,7 +34,7 @@ if my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num == 1 && my_hitbox
     my_hitboxID.destroyed = true;
 }
 
-if my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num == 2 && my_hitboxID.orig_player == player {
+if my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num == 2 && my_hitboxID.orig_player_id == self {
     my_hitboxID.rock_owner.should_die = true;
 }
 

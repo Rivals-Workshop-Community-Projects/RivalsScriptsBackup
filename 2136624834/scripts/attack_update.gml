@@ -584,14 +584,14 @@ if window = 1 {
 
 if window == 3 && window_timer = 1 {
 sound_play(asset_get("sfx_ice_shatter"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
-spawn_hit_fx( x + ((60 + (fcharge * 8)) * spr_dir) , y - 40 + fver*6 , 305 )
+spawn_hit_fx( x + ((60 + (fcharge * 8)) * spr_dir) , y - 40 + fver*6 , tauntpar1 )
 	
 }	
 
 
 if window == 4 && window_timer = 1 {
-spawn_hit_fx( floor(x + ((2 + (fcharge * 8)) * spr_dir)) , y - 44 + fver*6 , icicle3 )
-create_hitbox(AT_FSPECIAL , 2,  floor(x + ((56 + (fcharge * 8)) * spr_dir)) , y - 43 + fver*6);	
+spawn_hit_fx( floor(x + ((12 + (fcharge * 8)) * spr_dir)) , y - 44 + fver*6 , icicle3 )
+create_hitbox(AT_FSPECIAL , 2,  floor(x + ((66 + (fcharge * 8)) * spr_dir)) , y - 43 + fver*6);	
 }	
 
 if window == 4 && window_timer == 2 {
@@ -734,7 +734,7 @@ if !hitpause and ((window == 3 && window_timer == 9) or (window == 5 && window_t
 }
 if attack == AT_FSTRONG {
 
-if (window == 2 && window_timer > 2) or window == 3 or (window == 4  && window_timer < 6) {
+if (window == 2 && window_timer > 2) or window == 3 or (window == 4  && window_timer < 12) {
 		if timefreeze < 1 {
 			set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 10);
 	if window_timer % 3 == 0 && !hitpause {
@@ -745,14 +745,20 @@ if (window == 2 && window_timer > 2) or window == 3 or (window == 4  && window_t
 		}
 	}
 	
+	if window == 4 && window_timer == 11 && !hitpause {
+		sound_play(asset_get("sfx_ori_energyhit_medium"))
+		shake_camera(4,4)
+	}
 			if timefreeze > 0 {
 				set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 2);
-	if window_timer % 2 == 0 {
+				
+	if window_timer % 2 == 0  {
 	
 		sound_play(asset_get("sfx_ice_shieldup"),false,noone,1,max(0.5,(1.6-get_window_value(attack,1,AG_WINDOW_LENGTH)/30) - (random_func(1,20,true)/100) ))
 			create_hitbox(AT_FSTRONG , 1 ,  x - (( 40 + (window_timer * 6)) * spr_dir)   , y - 60 + random_func(2, 40, true) );
 			spawn_hit_fx(  x - (( 40 + (window_timer * 6)) * spr_dir) , y - 60 + random_func(2, 40, true) , icepar1 )
-		}
+	}
+		
 	}
 	
 }
@@ -1292,14 +1298,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 if attack == AT_NSPECIAL {
 
 
-	if window = 1 {
-		if usednsp = 0 {
-		window = 3
-		usednsp = 1
-		} else { 
-		set_attack (AT_JAB)
-		}
-	}
+
 	
 	
 
