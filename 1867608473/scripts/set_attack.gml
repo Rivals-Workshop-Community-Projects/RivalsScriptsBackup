@@ -104,8 +104,6 @@ if (!runeH){
 	}
 }
 
-user_event(13);
-
 #define MakeAssistSprite(n)
 ExtraColGroup = n
 init_shader()

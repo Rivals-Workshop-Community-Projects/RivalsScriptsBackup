@@ -1,6 +1,5 @@
 //Intro Animation Code ripped from R-00
 //stage_id = get_stage_data(SD_ID);
-user_event(14);
 
 
 if get_gameplay_time() == 2 {
@@ -14,6 +13,7 @@ if get_gameplay_time() == 2 {
 if get_gameplay_time() < 120 {
     if get_gameplay_time() == 2 {
         set_attack(AT_NTHROW);
+        
         /*
         if shield_down and get_player_color(player) == 15{
         	flag_active = true;
@@ -34,7 +34,7 @@ if get_gameplay_time() < 120 {
 
 if attack == AT_NTHROW && window <= 3{
 	if taunt_pressed{
-		sparkles_active = true;
+		kris_sparkles_active = true;
 	}
 	if shield_pressed{
 		flag_active = true;
@@ -51,14 +51,14 @@ if attack == AT_NTHROW && window < 3 && state_timer > 1{
 // NES Color Swap
 if attack == AT_NTHROW && window <= 3 && get_player_color(player) == 8{
 	if (jump_pressed){
-		set_color_profile_slot(8, 0, 162, 255, 243); //SKIN
-		set_color_profile_slot(8, 1, 235, 235, 235); //ARMOR
-		set_color_profile_slot(8, 2, 255, 97, 178); //CAPE
-		set_color_profile_slot(8, 3, 48, 81, 130); //HAIR
-		set_color_profile_slot(8, 4, 154, 32, 121); //HILT
-		set_color_profile_slot(8, 5, 255, 186, 235); //SWORD
-		set_color_profile_slot(8, 6, 178, 16, 48); //SOUL
-		set_color_profile_slot(8, 7, 219, 65, 97); //STRONG HIT
+		set_character_color_slot(0, 162, 255, 243); //SKIN
+		set_character_color_slot(1, 235, 235, 235); //ARMOR
+		set_character_color_slot(2, 255, 97, 178); //CAPE
+		set_character_color_slot(3, 48, 81, 130); //HAIR
+		set_character_color_slot(4, 154, 32, 121); //HILT
+		set_character_color_slot(5, 255, 186, 235); //SWORD
+		set_character_color_slot(6, 178, 16, 48); //SOUL
+		set_character_color_slot(7, 219, 65, 97); //STRONG HIT
 	}
 }
 
@@ -67,14 +67,14 @@ if attack == AT_NTHROW && window == 3 && get_gameplay_time() > 120 && buttonmash
     set_state(PS_IDLE);
 }
 
-if sparkles_active{
-	sparkle_timer++;
-	if sparkle_timer == 4{
-		sparkle_frame++;
-		sparkle_timer = 0;
+if kris_sparkles_active{
+	kris_sparkle_timer++;
+	if kris_sparkle_timer == 4{
+		kris_sparkle_frame++;
+		kris_sparkle_timer = 0;
 	}
-	if sparkle_frame > 8{
-		sparkle_frame = 0;
+	if kris_sparkle_frame > 8{
+		kris_sparkle_frame = 0;
 	}
 }
 
@@ -96,13 +96,13 @@ if diamondbutbetterkrisbbutbetter{
 	runeN = true;
 	runeO = true;
 	
-	sparkle_timer++;
-	if sparkle_timer == 4{
-		sparkle_frame++;
-		sparkle_timer = 0;
+	kris_sparkle_timer++;
+	if kris_sparkle_timer == 4{
+		kris_sparkle_frame++;
+		kris_sparkle_timer = 0;
 	}
-	if sparkle_frame > 8{
-		sparkle_frame = 0;
+	if kris_sparkle_frame > 8{
+		kris_sparkle_frame = 0;
 	}
 	
 	invinc_time--;
@@ -210,7 +210,7 @@ if (get_gameplay_time() >= 140){
         hide_help = false;
     }
 }
-*/
+
 
 if (get_stage_data(SD_ID) == 75518 or get_stage_data(SD_ID) == 51050 or get_stage_data(SD_ID) == 40312){
 	boss_fight = true;
@@ -220,38 +220,10 @@ if boss_fight{
 	if get_gameplay_time() % 120 == 0{
 		tp_gauge++;
 	}
-}
+}*/
 
 if toggle_courage{
 	supersaiyan = 1;
-}
-
-if (phone_cheats[cheat_freespecials] == 1) {
-	   free_specials = true;
-} else {
-	free_specials = false;
-}
-if (phone_cheats[cheat_keeptp] == 1) {
-	   keeptp_on_death = true;
-} else {
-	keeptp_on_death = false;
-}
-if (phone_cheats[cheat_courage] == 0) {
-	   courage_drain = true;
-	   toggle_courage = false;
-}
-if (phone_cheats[cheat_courage] == 1) {
-	   courage_drain = false;
-	   toggle_courage = false;
-}
-if (phone_cheats[cheat_courage] == 2) {
-	   courage_drain = false;
-	   toggle_courage = true;
-}
-if (phone_cheats[cheat_diamond] == 1) {
-	   diamondbutbetterkrisbbutbetter = true;
-} else {
-	diamondbutbetterkrisbbutbetter = false;
 }
 
 if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2){
@@ -1330,16 +1302,16 @@ if runesUpdated{
 }
 
 if (trummelcodec_id != noone) {
-if (trummelcodec_id.codecindex == 10 || trummelcodec_id.codecindex == 17){
-	if (trummelcodec_id.codectimer2 <= 1 && trummelcodec_id.currentcodecline == 1){
-		//music
-		sound_play(sound_get("rouxlskaard"), true, false);
+	if (trummelcodec_id.codecindex == 10 || trummelcodec_id.codecindex == 17){
+		if (trummelcodec_id.codectimer2 <= 1 && trummelcodec_id.currentcodecline == 1){
+			//music
+			sound_play(sound_get("rouxlskaard"), true, false);
+		}
 	}
-}
-if ((trummelcodec_id.codecindex != 10 && trummelcodec_id.codecindex != 17) || !trummelcodec_id.codec){
-	//stop
-	sound_stop(sound_get("rouxlskaard"));
-}
+	if ((trummelcodec_id.codecindex != 10 && trummelcodec_id.codecindex != 17) || !trummelcodec_id.codec){
+		//stop
+		sound_stop(sound_get("rouxlskaard"));
+	}
 }
 //Ralsei Talk
 /*

@@ -34,7 +34,6 @@ if !get_match_setting(SET_RUNES) {
 	if ("depNotice" not in self) depNotice = 0;
 	if ("abyssEnabled" in self && abyssEnabled && (menuActive || timerActive)) abyssDraw();
 }
-user_event(11);
 #define abyssDraw 
 /// abyssDraw()
 /// draws text and images the player recieved from the abyss buddy.

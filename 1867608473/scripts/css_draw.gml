@@ -40,24 +40,25 @@ alt_cur = get_player_color(player);
 
 // CSS Goodies
 // Seasonal
+var y_off_extra = 72;
 if (alt_cur == 6){
-  draw_sprite_ext(sprite_get("cssextras"), 2, temp_x + 3, temp_y + 92, 1, 1, 0, c_white, 1);
+  draw_sprite_ext(sprite_get("cssextras"), 2, temp_x + 3, temp_y + y_off_extra, 1, 1, 0, c_white, 1);
 }
 // Abyss
 if (alt_cur == 7){
-  draw_sprite_ext(sprite_get("cssextras"), 1, temp_x + 3, temp_y + 92, 1, 1, 0, c_white, 1);
+  draw_sprite_ext(sprite_get("cssextras"), 1, temp_x + 3, temp_y + y_off_extra, 1, 1, 0, c_white, 1);
 }
 // Early Access
 if (alt_cur == 8){
-  draw_sprite_ext(sprite_get("cssextras"), 3, temp_x + 3, temp_y + 92, 1, 1, 0, c_white, 1);
+  draw_sprite_ext(sprite_get("cssextras"), 3, temp_x + 3, temp_y + y_off_extra, 1, 1, 0, c_white, 1);
 }
 // Little Star
 if (alt_cur == 15){
-  draw_sprite_ext(sprite_get("cssextras"), 0, temp_x + 3, temp_y + 92, 1, 1, 0, c_white, 1);
+  draw_sprite_ext(sprite_get("cssextras"), 0, temp_x + 3, temp_y + y_off_extra, 1, 1, 0, c_white, 1);
 }
 // Show Nothing
 if ((alt_cur != 6 and alt_cur != 7 and alt_cur != 8 and alt_cur != 15) || alt_cur > 15) {
-  draw_sprite_ext(sprite_get("cssextras"), 2, temp_x + 3, temp_y + 92, 1, 1, 0, c_white, 0);
+  draw_sprite_ext(sprite_get("cssextras"), 2, temp_x + 3, temp_y + y_off_extra, 1, 1, 0, c_white, 0);
 }
 
 
@@ -77,14 +78,13 @@ for(var i = 0; i < ceil(array_length(alt_name)/16); i++){
 draw_set_halign(fa_left);
  
 //include alt. name
-textDraw(temp_x + 2, temp_y + 124 - 5*(ceil(array_length(alt_name)/16)-1), "fName", c_white, 0, 1000, 1, true, 1, "" + (alt_cur < 9 ? "0" : "") + string(alt_cur+1) + ": " + alt_name[alt_cur]);
+textDraw(temp_x + 2, temp_y + 124 - 5*(ceil(array_length(alt_name)/16)-1), "fName", c_white, 0, 1000, 1, true, 1, "Mod by: EquinoxDoodles");
+textDraw(temp_x + 2, temp_y + 110 - 5*(ceil(array_length(alt_name)/16)-1), "fName", c_white, 0, 1000, 1, true, 1, "" + (alt_cur < 9 ? "0" : "") + string(alt_cur+1) + ": " + alt_name[alt_cur]);
 
 if ((alt_cur) > 15 && player == 0) { //draw a warning that extra skins won't work online
   textDraw(temp_x + 2, temp_y + 110 - 5*(ceil(array_length(alt_name)/16)-1), "fName", c_white, 0, 1000, 1, true, 1, "WILL NOT WORK ONLINE");
 }
  
- 
-user_event(12);
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
  
 draw_set_font(asset_get(argument[2]));

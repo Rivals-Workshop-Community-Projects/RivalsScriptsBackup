@@ -198,15 +198,6 @@ fail_text = "Curated";
 // Battle Text
 spr_getfucked = sprite_get("spookymonth")
 
-// Training Lab Support
-is_ai = false;
-timer1 = get_game_timer();      //The initial game timer.
-timer2 = 0;                     //The game timer after a couple seconds pass.
-courage_drain = true;
-keeptp_on_death = false;
-quick_set_on = false;
-free_specials = false;
-
 //abyss
 devil_reduce = .5;
 combo_starter = 5;
@@ -229,9 +220,9 @@ usa = 0;
 buttonmasher = 0;
 diamondbutbetterkrisbbutbetter = false;
 invinc_time = 0;
-sparkles_active = false;
-sparkle_frame = 0;
-sparkle_timer = 0;
+kris_sparkles_active = false;
+kris_sparkle_frame = 0;
+kris_sparkle_timer = 0;
 tp2_vis = 0;
 
 dspec_activesound = sound_get("sfx_spell");
@@ -254,6 +245,7 @@ walk_speed_start = walk_speed;
 stats_adjusted = true;
 
 toggle_courage = false;
+courage_drain = true;
 
 //this var makes f5 not break the buddy if developing with more than one
 //workshop character or buddy in the match
@@ -312,16 +304,17 @@ flag_x = x;
 flag_y = y;
 flag_active = false;
 
-set_color_profile_slot(0, 5, 117, 250, 237); //SKIN
-set_color_profile_slot(0, 1, 201, 228, 242); //ARMOR
-set_color_profile_slot(0, 2, 235, 9, 152); //CAPE
-set_color_profile_slot(0, 3, 11, 11, 59); //HAIR
-set_color_profile_slot(0, 4, 117, 10, 87); //HILT
-set_color_profile_slot(0, 0, 237, 148, 165); //SWORD
-set_color_profile_slot(0, 6, 255, 0, 0); //SOUL
-set_color_profile_slot(0, 7, 217, 16, 144); //STRONG HIT
+set_character_color_slot(5, 117, 250, 237); //SKIN
+set_character_color_slot(1, 201, 228, 242); //ARMOR
+set_character_color_slot(2, 235, 9, 152); //CAPE
+set_character_color_slot(3, 11, 11, 59); //HAIR
+set_character_color_slot(4, 117, 10, 87); //HILT
+set_character_color_slot(0, 237, 148, 165); //SWORD
+set_character_color_slot(6, 255, 0, 0); //SOUL
+set_character_color_slot(7, 217, 16, 144); //STRONG HIT
 
 //VMan_2002 added stuff in my code and it's probably beneficial????
+
 vman_skinkit_color_names = [
 	"Sword", "Armor", "Cape", "Hair", "Hilt", "Skin", "Soul", "Strong Hit",
 	"Susie Hair", "Susie Body", "Susie Jacket", "Susie Jacket 2", "Susie Axe Handle", "Susie Axe Head", "Susie Axe Blade", "Susie Gold",
@@ -335,5 +328,3 @@ SkinExtraColors = [
 	[0, 0, 0, 0, 0], //Jevil
 	[0, 0, 0, 0] //Lancer
 ]
-
-user_event(14);

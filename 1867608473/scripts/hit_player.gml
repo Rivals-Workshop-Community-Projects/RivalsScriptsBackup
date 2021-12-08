@@ -140,8 +140,11 @@ if my_hitboxID.damage > 7 {
 
 switch my_hitboxID.sound_effect {
 	case 199: //icehit weak
+	case 498:
 	case 499:
 	case 500: //weak1 and weak2
+	case 501: //weak1 and weak2
+	case 506: //weak1 and weak2
 		sound_play(sound_get("hweak"));
 	break;
 
@@ -155,6 +158,7 @@ switch my_hitboxID.sound_effect {
 
 	case 510:
 	case 511: //heavy1 and 2
+	case 512: //heavy1 and 2
 		sound_play(sound_get("hstrong"));
 	break;
 
