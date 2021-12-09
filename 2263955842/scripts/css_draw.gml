@@ -34,6 +34,7 @@ alt_name[14] = "Zetta";
 alt_name[15] = "Abyss";
 alt_name[16] = "Early Access";
 alt_name[17] = "Slimepuffen";
+alt_name[18] = "BLM"
  
 //Patch
  

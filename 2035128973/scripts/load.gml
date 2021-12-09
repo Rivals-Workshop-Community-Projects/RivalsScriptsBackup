@@ -91,6 +91,10 @@ sprite_change_offset("dspecial_boneless", 50, 100);
 sprite_change_offset("taunt", 34, 72);
 sprite_change_offset("taunt_extra", 27, 29);
 
+sprite_change_offset("megaLuc", 12, 28);
+sprite_change_offset("riley", 16, 30);
+sprite_change_offset("anubis", 9, 29);
+
 sprite_change_offset("plat", 56, 8);
 RatioOffset("killcard", 0.5, 0.5);
 sprite_change_offset("hud", 12, 12);

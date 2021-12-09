@@ -66,7 +66,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
     color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
     
-    col_max = 15; // number of alternate color palettes. 0 is the default color, count it accordingly.
+    col_max = 26; // number of alternate color palettes. 0 is the default color, count it accordingly.
     
     //first array index is for alternate color. second array index is for distinguishing the information in it.
     ce[0,0] = make_color_rgb(71, 71, 71) // "color preview square" color. can be any color!
@@ -120,6 +120,36 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[16,0] = make_color_rgb(255, 0, 0)
     ce[16,1] = "Takky"
     ce[16,2] = "Alt based on the OC skunk, Tak."
+    ce[17,0] = make_color_rgb(71, 71, 71)
+    ce[17,1] = "Illusion"
+    ce[17,2] = "Palette based on the 5 Gen Pokémon Zoroark."
+    ce[18,0] = make_color_rgb(47, 94, 125)
+    ce[18,1] = "Night Warrior"
+    ce[18,2] = "Alt based of Jon Talbain from Darkstalkers."
+    ce[19,0] = make_color_rgb(229, 175, 66)
+    ce[19,1] = "Innocence"
+    ce[19,2] = "Alt based of Taokaka from BlazBlue."
+    ce[20,0] = make_color_rgb( 94, 48, 31)
+    ce[20,1] = "Berserker Claw"
+    ce[20,2] = "Alt based of Sabretooth from Marvel (vs Capcom)."
+    ce[21,0] = make_color_rgb(194, 165, 123)
+    ce[21,1] = "Ninth Fang"
+    ce[21,2] = "Alt based of Inosuke from Demon Slayer."
+    ce[22,0] = make_color_rgb(62, 54, 50 )
+    ce[22,1] = "Full Moon"
+    ce[22,2] = "Alt based of Great Ape from Dragon Ball Z."
+    ce[23,0] = make_color_rgb(242, 240, 238)
+    ce[23,1] = "Spooky"
+    ce[23,2] = "Alt based on the Boo enemies from Super Mario."
+    ce[24,0] = make_color_rgb(135, 88, 62)
+    ce[24,1] = "Tazmily"
+    ce[24,2] = "Alt based of Boney from Mother 3."
+    ce[25,0] = make_color_rgb(154, 109, 80)
+    ce[25,1] = "Amethyst Fist"
+    ce[25,2] = "Alt based of the Workshop original Olympia."
+    ce[26,0] = make_color_rgb(71, 71, 71 )
+    ce[26,1] = "Stardust"
+    ce[26,2] = "Alt based of Iggy from Jojo Bizarre Adventures"
     // you can add more, by copypasting and changing the first index of the array accordingly.
     // ! changing part end.
     // you can ignore the mess below...

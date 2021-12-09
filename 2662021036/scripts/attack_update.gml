@@ -32,12 +32,24 @@ if (attack == AT_FSPECIAL && window = 4){
     iasa_script();
 }
 
-
+if (attack == AT_NSPECIAL && window = 1 && window_timer = 15){
+    var spawn_x = 90;
+    check_spawn_knot(x + 90 * spr_dir, y);    
+}
 
 if (attack == AT_NSPECIAL && window = 1 && window_timer = 16){
     if (grassknot_exists = 0){
+            if (can_spawn = false){
+                sound_play(sound_get("vileplume_grassknot_fail"))
+        attack = AT_NSPECIAL_2;
+        window = 1;
+        window_timer = 0;
+        hurtboxID.sprite_index = sprite_get("idle_hurtbox");
+    }
+                if (can_spawn = true){
         grassknot_exists = 1;
-        grassknot_article = instance_create( x + (64 * spr_dir), y - 12, "obj_article1" );
+        grassknot_article = instance_create( x + (64 * spr_dir), spawn_y - 12, "obj_article1" );
+    }
     }
     
 }
@@ -115,11 +127,27 @@ if (attack == AT_NSPECIAL && window = 2){
 
 if (attack == AT_NSPECIAL && window = 3){
         in_grassknot_loop = 0;  
+
+    if (window_timer = 1){
+        move_cooldown[AT_NSPECIAL] = 36;
+    }    
 }
+
+if (attack == AT_USTRONG){
+    if (window = 2 || window = 3 || (window = 4 && window_timer < 11)){
+        hud_offset = 72;
+    }
+}
+
 
 if (attack == AT_FSTRONG){
         hud_offset = 78;
 }
+
+if (attack == AT_DSTRONG && window = 2){
+        hud_offset = 40;
+}
+
 
 
 if (attack == AT_USTRONG && window = 2 && window_timer = 1 && hitpause = false){
@@ -135,6 +163,10 @@ if (attack == AT_USPECIAL){
     if (window > 2 && free && shield_pressed){
     state = PS_PRATFALL;
     state_timer = 0;
+    sound_play( asset_get("sfx_frog_fspecial_cancel"));
+    hurtboxID.sprite_index = sprite_get("idle_hurtbox");
+    destroy_hitboxes();    
+    attack_end();
 vsp = -6;
     }
     
@@ -232,3 +264,21 @@ secret_v.hitstop = 0;
 }
 
 }
+
+
+#define check_spawn_knot(_spawn_x, _spawn_y)
+spawn_y = _spawn_y;
+spawn_x = _spawn_x;
+can_spawn = true;
+var old_mask_index = mask_index
+mask_index = sprite_get("grassknot_mask");
+while ((!(position_meeting(spawn_x, spawn_y, asset_get("par_block")) || position_meeting(spawn_x, spawn_y, asset_get("par_jumpthrough")))) || position_meeting(spawn_x, (spawn_y - 2), asset_get("par_block")) || position_meeting(spawn_x, (spawn_y - 2), asset_get("par_jumpthrough")))
+{
+    spawn_y += 1;
+    if (spawn_y > room_height)
+    {
+        can_spawn = false;
+        break;
+    }
+}
+mask_index = old_mask_index;

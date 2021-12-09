@@ -170,11 +170,25 @@ inward_hidden_power_timer_max = 2 * 17;
 inward_hidden_power_fast = false; //use to set 2x speed of effect
 
 hidden_power_strength_vfx = 0; //1, 2, 3 to have a hitfx appear to communicate range of hidden power
+hidden_power_text_anim = ""; //last word consumed by !
+hidden_power_text_anim_timer = 0; //time to animate the above
+hidden_power_text_anim_timer_max = 2 * 60;
+hidden_power_text_anim_pos = 0; //index of word start for positioning
 
+vfx_shiny_override = false; //see below in forms
 vfx_snow_twinkle = hit_fx_create(sprite_get("vfx_snow_twinkle"), 6); //if it aint broke...
+
+unsafe_corrupt_timer = 0;
+unsafe_corrupt_timer_max = 40;
+unsafe_spr = sprite_get("vfx_corrupt");
+unsafe_sfx = asset_get("sfx_genesis_tv_static");
+unsafe_frame = 0;
 
 //================================================================
 // Balancing
+unown_b_fastfall_cooldown = 32;
+unown_l_fastfall_cooldown = 32;
+
 unown_d_speed = 8;
 unown_d_accel = 0.5;
 
@@ -206,6 +220,7 @@ if (is_string(stage_id))
     stage_id = (string_length(stage_id) > 0 ? real(stage_id) : 0)
 }
 unown_current_form = 1 + random_func((player + stage_id) % 24, 28, true);
+vfx_shiny_override = (0 == random_func((player + stage_id) % 24, 8192, true));
 
 hurtbox_spr = unown_form_data[unown_current_form].hurtbox;
 
@@ -239,7 +254,10 @@ lev_target_accel = (2.0 * lev_target_vsp) / lev_cycle_time;
 //================================================================
 //attack flags
 
-unown_c_used = false; //once per airtime
+//once per airtime
+unown_c_used = false; 
+unown_g_used = false; 
+unown_t_used = false; 
 
 unown_i_angle = 90; //straight up
 unown_i_prongs_spr = sprite_get("attack_I_prong");
@@ -251,6 +269,9 @@ unown_t_times_through = 0; //number of loops made
 unown_t_times_max = 3;
 
 unown_u_bounced = false;
+
+//used by B and L to not be able to combo-fast fall into itself at ludicrous speeds
+fast_fall_prevention_timer = 0;
 
 //position of water spout (timer counts down)
 unown_y_waterhitbox = noone;
@@ -274,6 +295,8 @@ unown_diagonal_leniency_max = 2;
 unown_best_word_pos = 0;
 unown_best_word_length = 0;
 unown_current_bonus = 0;
+
+unown_last_special_word = "";
 
 //unown_word_length_bonus[3] = scale of bonus for a 3-letter word in the buffer
 unown_word_length_bonus = [0, 0, 0.20, 0.40, 0.60, 0.75, 0.90, 1.0, 1.05, 1.10, 1.15, 1.20, 1.25];

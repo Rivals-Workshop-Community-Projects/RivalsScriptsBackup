@@ -57,7 +57,7 @@ set_hitbox_value(AT_BAIR, 2, HG_ANGLE, 55);
 set_hitbox_value(AT_BAIR, 2, HG_ANGLE_FLIPPER, 5);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, 0.85);
-set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 7.5);
+set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, 0.9);
 set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, 305); //Sweetspot
 set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, -10);

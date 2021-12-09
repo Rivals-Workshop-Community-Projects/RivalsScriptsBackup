@@ -73,6 +73,8 @@ clear_button_buffer(PC_TAUNT_PRESSED);
 attack = unown_form_data[target_form].atk;
 
 if (attack == UNOWN_ATK.C && unown_c_used)
+|| (attack == UNOWN_ATK.G && unown_g_used)
+|| (attack == UNOWN_ATK.T && unown_t_used)
 {
     move_cooldown[attack] = 3;
 }
@@ -91,10 +93,14 @@ if !(move_cooldown[attack] > 0)
 {
     hurtbox_spr = unown_form_data[target_form].hurtbox;
     unown_current_form = target_form;
-    unown_attack_is_fresh = true;
+    unown_attack_is_fresh = (attack != AT_PHONE);
+    
+    adjust_unown_attack_grid();
+    unown_recalculate_stats = true;
 }
 
 lev_bypass = false; //failsafe
+unown_diagonal_leniency = unown_diagonal_leniency_max; // see attack_update.gml
 
 
 //=========================================================
@@ -108,18 +114,41 @@ lev_bypass = false; //failsafe
     // 7 8 9
     // just to make the arrays above more readable
     
-    var final_dir = 0;
+    // the supersonic epiphany
+    // numpad_notaion = 5 + (up_down-down_down)*3 + (right_down-left_down)
+    
     var dp = dir_pressed;
-    if (dp.down)
-    { final_dir = dp.left ? 7 : (!dp.right ? 8 : 9); }
-    else if (dp.up)
-    { final_dir = dp.left ? 1 : (!dp.right ? 2 : 3); }
-    else
-    { final_dir = dp.left ? 4 : (!dp.right ? 5 : 6); }
+    var final_dir =  5 + (dp.down - dp.up)*3 + (dp.right - dp.left);
     
     return result_array[final_dir - 1];
 }
 
+//=========================================================
+#define adjust_unown_attack_grid()
+{
+    var bonus = unown_current_bonus;
+    
+    //apply buffs based on current word boost
+    for (var hb = 1; hb <= get_num_hitboxes(attack); hb++)
+    {
+        apply_word_bonus(bonus, attack, hb, HG_DAMAGE, HG_UNOWN_DAMAGE_BONUS);
+        apply_word_bonus(bonus, attack, hb, HG_BASE_KNOCKBACK, HG_UNOWN_KNOCKBACK_BONUS);
+        apply_word_bonus(bonus, attack, hb, HG_KNOCKBACK_SCALING, HG_UNOWN_SCALING_BONUS);
+    }
+}
+
+#define apply_word_bonus(cur_mult, atk, hnum, base_index, bonus_index)
+{
+    if (0 < get_hitbox_value(atk, hnum, bonus_index))
+    {
+        reset_hitbox_value(atk, hnum, base_index);
+        
+        // total = base + charge * bonus
+        var value = get_hitbox_value(atk, hnum, base_index)
+           + (cur_mult * get_hitbox_value(atk, hnum, bonus_index) );
+        set_hitbox_value(atk, hnum, base_index, value);
+    }
+}
 
 
 

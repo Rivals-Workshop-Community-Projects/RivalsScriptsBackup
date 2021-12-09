@@ -20,10 +20,4 @@ switch(hitmove){
     case AT_FSPECIAL:
         sound_stop(sound_get("sfx_fspecial_loop"))
         break;
-    case AT_USPECIAL:
-        if hitnum < 5 and hit_player_obj.super_armor != true{
-            hit_player_obj.x = (x + get_hitbox_value(AT_USPECIAL, hitnum + 1, HG_HITBOX_X) * spr_dir);
-            hit_player_obj.y = y + get_hitbox_value(AT_USPECIAL, hitnum + 1, HG_HITBOX_Y);
-        }
-        break;
 }

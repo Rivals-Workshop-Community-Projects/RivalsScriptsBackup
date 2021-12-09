@@ -86,6 +86,8 @@ if (hit_wall){
  }	
 }
 
+
+
 if ((state = PS_LAND) && (!place_meeting(x + (40 * spr_dir),y + vsp + 1, asset_get("par_block"))) && (!place_meeting(x + (40 * spr_dir),y + vsp + 1, asset_get("par_jumpthrough")))){
 	if (player_id.leechseed = 0){		
 				state = PS_ATTACK_GROUND;
@@ -110,6 +112,21 @@ if ((state = PS_LAND) && (!place_meeting(x + (40 * spr_dir),y + vsp + 1, asset_g
         player_id.window_timer = 0; 	
 }
 
+if (place_meeting( x , y + 1 , asset_get("par_block"))){
+sprite_change_offset("grassknot_idle", 93, 110);
+sprite_change_offset("grassknot_rise", 93, 110);
+sprite_change_offset("grassknot_lower", 93, 110);
+sprite_change_offset("grassknot_attack", 93, 150);
+sprite_change_offset("grassknot_attack_seed", 93, 270);
+}
+
+if (place_meeting( x , y + 1 ,asset_get("par_jumpthrough"))){
+sprite_change_offset("grassknot_idle", 93, 111);
+sprite_change_offset("grassknot_rise", 93, 111);
+sprite_change_offset("grassknot_lower", 93, 111);
+sprite_change_offset("grassknot_attack", 93, 151);
+sprite_change_offset("grassknot_attack_seed", 93, 271);
+}
 
 switch(state){
     
@@ -166,7 +183,7 @@ switch(state){
             instance_destroy(self);
         }   
                 if state_timer = 4{
-              create_hitbox( AT_NSPECIAL, 1, x + 3, y - 50);  	
+              create_hitbox( AT_NSPECIAL, 1, x + (3 * spr_dir), y - 50);  	
                 }
        
         break;         
@@ -191,7 +208,7 @@ switch(state){
 			  	player_id.move_cooldown[AT_DSPECIAL] = 180;
         }
                 if state_timer = 4{
-              create_hitbox( AT_NSPECIAL, 2, x + 3, y - 110);  	
+              create_hitbox( AT_NSPECIAL, 2, x + (3 * spr_dir), y - 110);  	
                 }
        
         break;    
@@ -199,5 +216,6 @@ switch(state){
  
    
 }
+
 
 state_timer++;

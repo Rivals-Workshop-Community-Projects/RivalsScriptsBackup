@@ -74,9 +74,13 @@ fspecialhit = hit_fx_create( sprite_get( "sludgebomb_hit" ), 14 );
 large_poison_hit = hit_fx_create( sprite_get( "large_poison_hfx" ), 32 );
 leechseed_poison_effect = hit_fx_create( sprite_get( "leechseed_gas" ), 32 );
 leechseed_despawn = hit_fx_create( sprite_get( "leechseed_parried" ), 24 );
+leechseed_heal_effect = hit_fx_create( sprite_get( "leechseed_heal_effect" ), 20 );
 grassknot_right_fx = hit_fx_create( sprite_get( "grassknot_travel_effect_right" ), 36 );
 grassknot_left_fx = hit_fx_create( sprite_get( "grassknot_travel_effect_left" ), 36 );
 
+fstrong_hit_fx = hit_fx_create( sprite_get( "fstrong_hfx" ), 28 );
+dattack_hit_fx = hit_fx_create( sprite_get( "dattack_small_hfx" ), 12 );
+dattack_hit_fx_big = hit_fx_create( sprite_get( "dattack_big_hfx" ), 20 );
 
 // Animation Info
 fspecialtrail_x_random1 = 0;
@@ -208,11 +212,16 @@ vileplume_poison_effect = false;
 poison_tick_sound = sound_get("vileplume_poison_tick");
 
 grassknot_exists = 0;
+spawn_y = y;
+spawn_x = x;
+can_spawn = false;
 
 secret_v = 99;
 
 pkmn_stadium_front_img = sprite_get("pokemonstadium1");
 pkmn_stadium_back_img = sprite_get("pokemonstadium2");
+
+miiverse_post = sprite_get("miiverse_post");
 
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines

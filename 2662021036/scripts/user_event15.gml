@@ -225,7 +225,63 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("Credits", "");
 
+initHeader("Harbige12");
+initSection("Code to detect ground below player when using NSpecial");
+
+initHeader("Supersonic");
+initSection("Hit detection code for Leech Seed");
+
+initPatch("1.4", "1 December, 2021");
+
+initHeader("Adjustments");
+initSection("-DStrong now uses hit effect 304 (basic large)");
+
+initHeader("Buffs");
+initSection("-NSpecial can now be used in air, even if a Grass Knot isn't already present on the stage");
+
+initHeader("Bugfixes");
+initSection("-Fixed NSpecial hitbox being misaligned when Grass Knot is facing left");
+initSection("-Fixed Grass Knot hovering if NSpecial is used out of jumpsquat");
+
+initPatch("1.3", "30 November, 2021");
+
+initHeader("Adjustments");
+initSection("-Reworked USpecial aerial hitboxes to have the same stats (7 damage, 6 BKB, 0.6 scaling, angle flipper 10)");
+initSection("-Added a sound to indicate cancelling USpecial");
+initSection("-Adjusted color of swipe on FTilt to prevent the attack from blending in with bright stages");
+initSection("-Reduced UAir vertical speed boost (3.5 -> 1.5)");
+initSection("-Fixed an oversight where UTilt animation was missing its smear");
+
+initHeader("Bugfixes");
+initSection("-Fixed hurtbox not resetting after cancelling USpecial");	
+
+initPatch("1.2", "28 November, 2021");
+
+initHeader("Adjustments");	
+initSection("-Added new hit effects for Dash Attack");
+initSection("-Added new hit effect for FStrong");
+initSection("-Added effect for Leech Seed healing");
+initSection("-Adjusted sprite for BAir to match hitbox size buff");
+initSection("-Added hud offset to UStrong and DStrong");
+initSection("-Added vertical air speed boost to UAir");
+initSection("-Added compatibility with Miiverse stage");
+
+initHeader("Buffs");
+initSection("-Increased Dash Attack spin hitboxes size");
+initSection("-Adjusted Dash Attack spin hitbox knockback to connect more consistently");
+initSection("-Increased BAir hitbox size");
+initSection("-Increased BAir active frames (3 -> 4)");
+initSection("-Increased UAir active frames (3 -> 4)");
+initSection("-Increased NSpecial base knockback (6 -> 8)");
+
+initHeader("Nerfs");
+initSection("-Decreased NSpecial knockback scaling (1 -> 0.9)");
+
+initHeader("Bugfixes");
+initSection("-Fixed hitboxes not disappearing after cancelling USpecial");	
+initSection("-Fixed hitbox groups not resetting after cancelling USpecial");	
 
 
 initPatch("1.1", "23 November, 2021");
@@ -267,7 +323,6 @@ initSection("-Fixed explosion hitbox of FSpecial not causing parry stun when par
 
 
 initPatch("1.0", "22 November, 2021");
-
 
 
 

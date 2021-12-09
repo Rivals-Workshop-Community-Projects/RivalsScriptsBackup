@@ -66,7 +66,7 @@ set_window_value(atk, windowNum, AG_WINDOW_SFX_FRAME, 0);
 set_window_value(atk, windowNum, AG_WINDOW_SFX, asset_get("sfx_clairen_dspecial_counter_success"));
 
 windowNum ++; //endlag
-set_window_value(atk, windowNum, AG_WINDOW_TYPE, 7);
+set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1); //7
 set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 12); //controls speed
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 1); //frames amount on strip
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 9); //starting frame. starts from 0

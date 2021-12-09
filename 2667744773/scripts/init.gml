@@ -118,6 +118,8 @@ hfx_x_scissor = hit_fx_create(sprite_get("hfx_x_scissor"), 24);
 hfx_drill_run = hit_fx_create(sprite_get("hfx_drill_run"), 24);
 hfx_giga_impact = hit_fx_create(sprite_get("hfx_giga_impact"), 40);
 
+galaxy_timer = 0;
+
 // ============================================================================
 // Compatibility shit everyone bugs me to implement
 

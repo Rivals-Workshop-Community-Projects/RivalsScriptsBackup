@@ -69,8 +69,9 @@ switch (attack)
                 {
                     vsp = 10;
                 }
-                if window_timer == 3{
-                sound_play(asset_get("sfx_ori_stomp_spin"));
+                if window_timer == 3 and !hitpause
+                {
+                	sound_play(asset_get("sfx_ori_stomp_spin"));
                 }
             break;
             case 4:
@@ -94,7 +95,7 @@ switch (attack)
                 }
             break;
             case 5:
-                if window_timer == 1
+                if window_timer == 1 and !hitpause
                 {
                 	sound_play(asset_get("sfx_abyss_explosion_big"));
                 }

@@ -223,13 +223,13 @@ switch(attack){
 		case 3:
 		    if (window_timer == 1) {
 		    	sound_stop(asset_get("sfx_frog_fspecial_charge_loop"))
-		    	create_hitbox(AT_NSPECIAL, 1, floor(x), floor(y-32));
+		    	create_hitbox(AT_NSPECIAL, 1, floor(x + 35*spr_dir), floor(y-32));
 		    	if(charge_length >= 40){
-		    		create_hitbox(AT_NSPECIAL, 2, floor(x), floor(y-32));
+		    		create_hitbox(AT_NSPECIAL, 2, floor(x + 35*spr_dir), floor(y-32));
 		    		sound_play(asset_get("sfx_swipe_medium1"))
 		    	}
 		    	if(charge_length >= 70){
-		    		create_hitbox(AT_NSPECIAL, 3, floor(x), floor(y-32));
+		    		create_hitbox(AT_NSPECIAL, 3, floor(x + 35*spr_dir), floor(y-32));
 		    	}
 		    }
 		    if(window_timer == 2){

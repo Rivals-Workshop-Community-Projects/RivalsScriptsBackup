@@ -53,3 +53,4 @@ sprite_change_offset("plat", 0, 0);
 sprite_change_offset("phone_open_2", 32, 48);
 
 sprite_change_offset("vfx_hiddenpower", 104, 104);
+sprite_change_offset("vfx_corrupt", 32, 48);

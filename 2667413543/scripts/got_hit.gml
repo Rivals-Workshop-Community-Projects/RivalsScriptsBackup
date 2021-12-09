@@ -11,7 +11,8 @@ if (hitbox_applies_mummy){
 }
 
 // cancel cofa grab on hit
-if (attack == AT_FSPECIAL){ // the ridley
+if (attack == AT_FSPECIAL && orig_knock != 0){ // the ridley
+	window = 7;
 	if (instance_exists(fspecial_grab_id)){ 
 		with(fspecial_grab_id){
 			// hitstop stuff

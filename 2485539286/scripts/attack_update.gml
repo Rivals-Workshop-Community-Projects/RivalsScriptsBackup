@@ -1069,7 +1069,7 @@ nfloat = 0
   }
   
     if has_hit_player && window == 3 && window_timer < 15 && hitpause && hit_player_obj.state_cat == SC_HITSTUN{
-  		hit_player_obj.x += floor((x + 20*spr_dir - hit_player_obj.x) / 4)
+  		hit_player_obj.x += floor((x + 30*spr_dir - hit_player_obj.x) / 3)
   		hit_player_obj.y += floor((y - 20 - hit_player_obj.y) / 2)
   	}
   	
@@ -1115,6 +1115,11 @@ nfloat = 0
   	} 
   	
   	if window == 3 && window_timer == 15 {
+  		if !has_hit_player {
+  			hsp /= 1.5
+  			prat_land_time = 10;
+  			set_state(PS_PRATFALL)
+  		}
   		  move_cooldown[AT_USPECIAL_GROUND] = 20
   	}
   	

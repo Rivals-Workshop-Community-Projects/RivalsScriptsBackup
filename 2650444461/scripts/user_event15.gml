@@ -259,6 +259,11 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.3", "30th November, 2021");
+initHeader("Fixes / Other Changes");
+initSection("- Fixed FStrong mud projectiles having less range when facing left");
+initSection("- Added bubble sfx to parry");
+
 initPatch("1.2", "24th November, 2021");
 initHeader("Buffs");
 initSection("- Hitting aerial Dive now restores USpecial and FSpecial");

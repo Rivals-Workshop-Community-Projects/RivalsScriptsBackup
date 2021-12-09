@@ -84,6 +84,7 @@ else
 //this stops the overhead HUD from getting in the way of the animation. If your animation does not involve much movement, this may not be necessary.
 
 if phone_cheats[CHEAT_FLY] && !shield_down vsp = -1;
+if phone_cheats[CHEAT_INF_NSPECIAL] wow_chrg = wow_chrg_max;
 
 if (fspecial_grab_id != noone){
 	//print("A");
@@ -123,9 +124,6 @@ if (fspecial_grab_id != noone){
 				x = other.x + other.hsp + (grab_off_x*other.spr_dir);
 				y = other.y + other.vsp + grab_off_y;
 				
-				if (other.window == 6 && allow_suicide)
-					y += 2;
-				
 				hitpause = true;
 				hitstop_full = max(hitstop_full, 5);
 				hitstop = hitstop_full;
@@ -134,6 +132,19 @@ if (fspecial_grab_id != noone){
 		}
 	}
 }
+
+// nspecial groups
+// flop told me to not bother resetting it but i did it anyway
+// sorry flop
+var nspecial_inst_exists = false;
+with(asset_get("pHitBox")){
+	if (player_id == other && attack == AT_NSPECIAL){
+		nspecial_inst_exists = true;
+	}
+}
+if (!nspecial_inst_exists)
+	wow_hitbox_group = 0;
+			
 var cursefx_1 = hit_fx_create(sprite_get("cursed_fx1"), 6*4);
 var cursefx_2 = hit_fx_create(sprite_get("cursed_fx2"), 4*4);
 var cursefx_used = (round(get_gameplay_time() / 4.5) % 2 == 0) ? cursefx_2 : cursefx_1;

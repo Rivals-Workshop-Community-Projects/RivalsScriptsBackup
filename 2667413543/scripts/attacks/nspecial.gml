@@ -58,7 +58,7 @@ set_hitbox_value(AT_NSPECIAL, temp_num, HG_BASE_KNOCKBACK, 4);
 set_hitbox_value(AT_NSPECIAL, temp_num, HG_KNOCKBACK_SCALING, 0.5);
 set_hitbox_value(AT_NSPECIAL, temp_num, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_NSPECIAL, temp_num, HG_HITPAUSE_SCALING, 0.3);
-set_hitbox_value(AT_NSPECIAL, temp_num, HG_HIT_SFX, sound_get("wwisp_burn"));
+set_hitbox_value(AT_NSPECIAL, temp_num, HG_HIT_SFX, sound_get("wwisp_hit"));
 set_hitbox_value(AT_NSPECIAL, temp_num, HG_VISUAL_EFFECT, wwisp_hit);
 
 set_hitbox_value(AT_NSPECIAL, temp_num, HG_PROJECTILE_SPRITE, sprite_get("wwisp_proj"));

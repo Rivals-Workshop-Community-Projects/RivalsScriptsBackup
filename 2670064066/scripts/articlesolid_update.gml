@@ -1,5 +1,4 @@
 
-
 grav_lifetime--;
 
 if (grav_lifetime == 499) {
@@ -14,7 +13,7 @@ if (grav_lifetime < 0){
     instance_destroy();
 }
 
-    vsp = 9.9; //nice
+    vsp = 9.9; 
     
 
 

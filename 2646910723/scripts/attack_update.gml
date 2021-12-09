@@ -6,7 +6,7 @@ if ragemode {
      set_attack_value(AT_NAIR, AG_NUM_WINDOWS, 7);
      set_attack_value(AT_JAB, AG_NUM_WINDOWS, 7);
      
-    if window < 4 && attack != AT_EXTRA_1  && attack != AT_UAIR && attack != AT_DAIR && attack != AT_DTILT && attack != AT_TAUNT && !hitpause {
+    if window < 4 && attack != AT_EXTRA_1  && attack != AT_UAIR && attack != AT_DAIR && attack != AT_DTILT && attack != AT_TAUNT && attack != AT_JAB && attack != AT_NAIR && !hitpause {
      
      move_cooldown[AT_NSPECIAL] = 5
      
@@ -14,12 +14,32 @@ if ragemode {
         
         move_cooldown[AT_EXTRA_2] = 60
         
+
         window = 3
         window_timer = 1
+
         
         shake_camera(2,2)
         aafx = spawn_hit_fx(x + 8*spr_dir,y + 8,rl)
-               aafx.depth = 1
+               aafx.depth = 1    }
+    
+    if (attack == AT_JAB or attack == AT_NAIR) && window < 3 {
+    	
+    	//move_cooldown[AT_NSPECIAL] = 5
+     
+        sound_play(sound_get("fspec3"),false,noone,.8,1)
+        
+        //move_cooldown[AT_EXTRA_2] = 60
+        
+
+        window = 8
+        window_timer = 1
+
+        
+        shake_camera(2,2)
+        aafx = spawn_hit_fx(x + 8*spr_dir,y + 8,rl)
+               aafx.depth = 1  
+    	
     }
     
     
@@ -43,7 +63,7 @@ if hitpause{
     if  move_cooldown[AT_EXTRA_1] != 0 move_cooldown[AT_EXTRA_1] ++ 
 }
 
-if !ragemode && state_timer <= 10 && (attack_down or special_down) && attack != AT_EXTRA_1  && attack != AT_UAIR && attack != AT_DAIR && attack != AT_DTILT && attack != AT_TAUNT && !hitpause {
+if !ragemode && state_timer <= 10 && (attack_down or special_down or left_stick_down or down_stick_down or up_stick_down or right_stick_down) && attack != AT_EXTRA_1  && attack != AT_UAIR && attack != AT_DAIR && attack != AT_DTILT && attack != AT_TAUNT && !hitpause {
     
     move_cooldown[AT_EXTRA_1] += 4
     

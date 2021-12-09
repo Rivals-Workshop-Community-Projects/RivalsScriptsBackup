@@ -1,3 +1,4 @@
+@ -0,0 +1,823 @@
 // phone - frontend
 
 if object_index == asset_get("cs_playerbg_obj"){
@@ -176,13 +177,14 @@ initWords("This gives Cofagrigus powerful disjoint on its attacks, making it dif
 initTip("Ability: Mummy");
 initWords("Cofagrigus's  main gimmick is it's ability, Mummy. Anyone making direct contact with Cofagrigus (aka a non-projectile move) will be afflicted by it's mummy curse.");
 initWords("When under the effects of the curse, any move that doesn't land will cause the user to take a small amount of damage, similarly to Ranno's poison. Unlike poison, the only way to get rid of the curse is to wait it out.");
-initWords("The curse is also lifted if either the curse giver or reciever loses a stock.");
+initWords("The curse is also lifted if the cursed opponent succesfully parries, or either the curse giver or reciever loses a stock.");
 
 initTip("NSpecial: Will-O-Wisp");
 initWords("Cofagrigus charges Will-O-Wisp, a weak projectile attack that inflicts its Mummy Curse on anyone hit. It can be charged up to 3 levels, and pressing the parry button will store the charge.");
 initWords("Charge Level 1: A single Will-O-Wisp orb is fired at a short range. If the charge is stored at this level, charging can be resumed by pressing special.");
 initWords("Charge Level 2: Two Will-O-Wisp orbs are fired at a medium range. If the charge is stored at this level, charging can be resumed by pressing special.");
 initWords("Charge Level 3: Three Will-O-Wisp orbs are fired at a long range. If the charge is stored at this level, pressing special will automatically fire the attack.");
+initWords("If an opponent parries a Will-O-Wisp orb, all orbs in a given cluster will reset their lifetimes and be reflected.");
 initImage_ext(sprite_get("tip_nspecial"), -4, fa_right, -1, 1, true, c_white, 1, true, noone, noone, noone, noone);
 initImage_ext(sprite_get("tip_nspecial"), -4, fa_left, 1, 1, true, c_white, 1, false, noone, noone, noone, noone);
 
@@ -301,7 +303,7 @@ initSection("-Reduced damage taken from Mummy from 2% to 1%
 
 -Decreased FStrong KB scaling from 0.8 sweetspot, 0.7 sourspot to 0.7 sweetspot, 0.6 sourspot
 
--Decreased DAttack startup from 4 to 6 frames
+-Increased DAttack startup from 4 to 6 frames
 -Increased DAttack BKB from 6 to 7
 -Decreased DAttack KB scaling from 0.4 to 0.3
 
@@ -322,7 +324,40 @@ initSection("-Oops forgot to actually implement the FSpecial curse thing from la
 -Buffed FAir BKB from 4 to 6
 -Reduced NSpecial storing time from 24 to 15 frames
 -Increased size of throw hitbox for FSpecial so it connects more consistently");
+initHeader("Bugs");
 initSection("-Mummy particles now appear when the timer is extended by attacking");
+
+initPatch("1.3", "November 29th, 2021");
+initHeader("Aesthetic");
+initSection("-Increased screen shake on powerful hit of Hex
+-Increased hitpause on powerful hit of Hex
+-Adjusted custom hit effects to be higher quality
+-Updated Munophone entries on Mummy and NSpecial to reflect new changes (some not added yet but like shush)
+-Removed secondary alt UI");
+initHeader("Balance");
+initSection("-Successfully parrying now removes Mummy
+-Level 1 Will-O-Wisp orbs now resets lifetime when parried
+-Parrying FSpecial now puts Cofagrigus in parry stun
+-Increased DAttack endlag from 10 to 12");
+initHeader("Bugs");
+initSection("-Fixed bug where if Cofagrigus was hit by a 0 KB move during FSpecial it would ascend");
+
+initPatch("1.4", "November 30th, 2021");
+initHeader("Aesthetic");
+initSection("-Added death sound effect
+-Improved NAir smear
+-Improved FStrong smear
+-Added swipe SFX to FStrong
+-Renamed Undertale alt to ''Comfy As It Looks''
+-Altered NSpecial hit sound
+-Added NSpecial charge level cheat to Munophone");
+initHeader("Balance");
+initSection("-Parrying NSpecial now resets lifetimes of all orbs part of the same shot
+-Parrying NSpecial now reflects all orbs part of the same shot
+-FSpecial now puts opponent in pratfall
+-Increased Jab height and width by 5
+-Decreased Jab SDI multiplier from 2 to 1.5");
+initHeader("no more jam patches can we get an F");
 
 initPatch("About Cofagrigus", "");
 initHeader("General Info");
@@ -408,6 +443,8 @@ CHEAT_FLY		= initCheat("Fly", [0, 1], ["Off", "On"], "Take flight. So balanced
 (hold shield to not fly)");
 
 
+CHEAT_INF_NSPECIAL = initCheat("Infinite Nspecial Charge", [0, 1], ["Off", "On"], ";)")
+CHEAT_FUNNY_NSPECIAL = initCheat("Funny Nspecial", [0, 1], ["Off", "On"], "Will-O-Wisp is now Transcendent")
 
 /*
 ╔═══════════════════════════════════════════════════════════════════════════╗

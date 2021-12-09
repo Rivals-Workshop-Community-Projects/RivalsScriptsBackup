@@ -8,7 +8,7 @@
 char_height         = 64;       // cosmetic
 knockback_adj       = 1;		// 0.9  -  1.2
 
-// Ground movement
+// Ground movement (obsolete)
 walk_speed          = 3.25;		// 3    -  4.5
 walk_accel          = 0.2;		// 0.2  -  0.5
 walk_turn_time      = 6;		// 6
@@ -23,7 +23,7 @@ ground_friction     = 0.5;		// 0.3  -  1
 moonwalk_accel      = 1.3;		// 1.2  -  1.4
     
 // Air movement
-leave_ground_max    = 6;		// 4    -  8
+leave_ground_max    = 9;		// 4    -  8
 max_jump_hsp        = 6;		// 4    -  8
 air_max_speed       = 5;  		// 3    -  7
 jump_change         = 3;		// 3
@@ -50,11 +50,11 @@ prat_land_time      = 20;		// 3    -  24       zetterburn's is 3, but that's ONL
 parry_stun_extra_time = 40 - prat_land_time; //since Unown doesnt have conventional pratland
 
 // Shield-button actions
-wave_friction       = 0.12;		// 0    -  0.15
+wave_friction       = 0;		// 0    -  0.15
 roll_forward_max    = 9;		// 9    -  11
 roll_backward_max   = 9;		// 9    -  11       always the same as forward
 wave_land_time      = 8;		// 6    -  12
-wave_land_adj       = 1.3;		// 1.2  -  1.5      idk what zetterburn's is
+wave_land_adj       = 2;		// 1.2  -  1.5      idk what zetterburn's is
 air_dodge_speed     = 7.5;		// 7.5  -  8
 techroll_speed      = 6;		// 8    -  11
 
@@ -142,10 +142,12 @@ bubble_y = 8;
 
 AG_UNOWN_WINDOW_ACTIVE = 70; //set to TRUE to note an active window, first active window encountered will add the current letter to the buffer
 
-//window length bonuses
+//window bonuses
 
-//damage bonuses
-//kb bonuses
+//hitbox bonuses
+HG_UNOWN_DAMAGE_BONUS = 70;
+HG_UNOWN_KNOCKBACK_BONUS = 71;
+HG_UNOWN_SCALING_BONUS = 72;
 
 //================================================================
 // Animation
@@ -157,13 +159,47 @@ unown_airdodge_vfx = 66;
 
 unown_fastfall_vfx = hit_fx_create( asset_get("fx_fastfall_bg"), 12 );
 
+sfx_unown_buff_up = asset_get("sfx_ell_arc_taunt_start");
+sfx_unown_buff_down = asset_get("sfx_ell_arc_taunt_end");
+
+vfx_hiddenpower_spr = sprite_get("vfx_hiddenpower")
+hitfx_hiddenpower = hit_fx_create(vfx_hiddenpower_spr, 24);
+
+inward_hidden_power_timer = 0;
+inward_hidden_power_timer_max = 2 * 17;
+inward_hidden_power_fast = false; //use to set 2x speed of effect
+
+hidden_power_strength_vfx = 0; //1, 2, 3 to have a hitfx appear to communicate range of hidden power
+hidden_power_text_anim = ""; //last word consumed by !
+hidden_power_text_anim_timer = 0; //time to animate the above
+hidden_power_text_anim_timer_max = 2 * 60;
+hidden_power_text_anim_pos = 0; //index of word start for positioning
+
+vfx_shiny_override = false; //see below in forms
+vfx_snow_twinkle = hit_fx_create(sprite_get("vfx_snow_twinkle"), 6); //if it aint broke...
+
+unsafe_corrupt_timer = 0;
+unsafe_corrupt_timer_max = 40;
+unsafe_spr = sprite_get("vfx_corrupt");
+unsafe_sfx = asset_get("sfx_genesis_tv_static");
+unsafe_frame = 0;
+
 //================================================================
 // Balancing
+unown_b_fastfall_cooldown = 32;
+unown_l_fastfall_cooldown = 32;
+
 unown_d_speed = 8;
 unown_d_accel = 0.5;
 
 unown_n_cooldown = 40;
 unown_n_invincibility = 50;
+
+unown_maxspeed_base = air_max_speed;
+//Word buffer stat bonuses
+unown_maxspeed_bonus = 1.0;
+unown_kbadjust_bonus = -0.1;
+unown_accel_bonus = 0.1;
 
 //================================================================
 // Forms
@@ -175,6 +211,18 @@ unown_turning_timer = 0; //counts down
 unown_turning_time_per_frame = 6;
 
 prev_spr_dir = spr_dir;
+
+//initialize form
+var stage_id = get_stage_data(SD_ID);
+if (is_string(stage_id)) 
+{ 
+    stage_id = string_digits(stage_id);
+    stage_id = (string_length(stage_id) > 0 ? real(stage_id) : 0)
+}
+unown_current_form = 1 + random_func((player + stage_id) % 24, 28, true);
+vfx_shiny_override = (0 == random_func((player + stage_id) % 24, 8192, true));
+
+hurtbox_spr = unown_form_data[unown_current_form].hurtbox;
 
 //================================================================
 // Levitation
@@ -206,7 +254,10 @@ lev_target_accel = (2.0 * lev_target_vsp) / lev_cycle_time;
 //================================================================
 //attack flags
 
-unown_c_used = false; //once per airtime
+//once per airtime
+unown_c_used = false; 
+unown_g_used = false; 
+unown_t_used = false; 
 
 unown_i_angle = 90; //straight up
 unown_i_prongs_spr = sprite_get("attack_I_prong");
@@ -219,7 +270,11 @@ unown_t_times_max = 3;
 
 unown_u_bounced = false;
 
+//used by B and L to not be able to combo-fast fall into itself at ludicrous speeds
+fast_fall_prevention_timer = 0;
+
 //position of water spout (timer counts down)
+unown_y_waterhitbox = noone;
 unown_y_water = { tip_x:0, tip_y:0, start_x:0, start_y:0, index:0, timer:0 }; 
 unown_y_waterstart_spr = sprite_get("attack_Y_waterstart");
 unown_y_waterbeam_spr = sprite_get("attack_Y_waterbeam");
@@ -234,21 +289,36 @@ unown_y_water_dying_time = 10;
 unown_text_buffer = "";
 unown_text_maxlength = 16; //max number of characters on the buffer
 unown_attack_is_fresh = false; //wether an attack is recent or not (if true, will add a letter when it reaches an active window)
+unown_diagonal_leniency = 0; //if above zero, allows switching to diagonals when using cardinal attacks
+unown_diagonal_leniency_max = 2;
 
 unown_best_word_pos = 0;
 unown_best_word_length = 0;
+unown_current_bonus = 0;
+
+unown_last_special_word = "";
 
 //unown_word_length_bonus[3] = scale of bonus for a 3-letter word in the buffer
-unown_word_length_bonus = [0, 0, 0.25, 0.50, 0.75, 0.85, 1, 1.10, 1.25];
-unown_letter_exclamation_bonus = 0.15; //added bonus for using "!" for each additional letter not in a word
+unown_word_length_bonus = [0, 0, 0.20, 0.40, 0.60, 0.75, 0.90, 1.0, 1.05, 1.10, 1.15, 1.20, 1.25];
+unown_letter_exclamation_bonus = 0.015; //added bonus for using "!" for each additional letter not in a word
+unown_recalculate_stats = true; //set to true to let passive buffs recalculate (needed at the start to init the forms)
 
 unown_dictionary = {}; //misnomer: actually a trie
+unown_collect_dictionary_entries = true;
 with (oPlayer) if (self != other) && ("unown_dictionary" in self)
 { 
-    with (other) print("taken from " + string(other.id));
+    with (other) print("dictionary copied from P" + string(other.player));
     other.unown_dictionary = unown_dictionary;
+    other.unown_collect_dictionary_entries = false;
     break;
 }
+
+//================================================================
+// Compatibilities
+
+//Pokémon Stadium
+pkmn_stadium_front_img = sprite_get("cmp_stadium_front");
+pkmn_stadium_back_img = sprite_get("cmp_stadium_back");
 
 //================================================================
 // MunoPhone Touch code - don't touch

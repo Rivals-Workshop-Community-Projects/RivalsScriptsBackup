@@ -1,5 +1,8 @@
 ////
 
+if state == PS_PRATFALL && !down_down && attack == AT_FSPECIAL {
+	vsp -= .3
+}
 if !instance_exists(hit_player_obj){
 
 hit_player_obj = self

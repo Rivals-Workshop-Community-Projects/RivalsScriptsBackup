@@ -142,6 +142,29 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("Swapped Pop alt for Hue alt");
 						break;
+					case 5:
+						AddText("v2.4 - 7 Dec 2021");
+						AddText("");
+						AddText("Lucario's outline now flashes when Aura Sphere is fully charged");
+						AddText("Aura Sphere now becomes transcendant on parry");
+						AddText("Aura Sphere is now Polite when charged less than 20% of full charge");
+						AddText("");
+						AddText("Both USpecials now have Extended Parry Stun");
+						AddText("Pratland time 16 -> 20");
+						AddText("");
+						AddText("UAir KB 7+0.7 -> 6+0.8");
+						AddText("");
+						AddText("Bone DTilt Angle 65 -> 80");
+						AddText("Boneless DTilt KB 9+0.4 -> 8+0.2");
+						AddText("");
+						AddText("Boneless FTilt sweet KB 7+0.9 -> 7.5+0.9");
+						AddText("Boneless FTilt sweet Base hitpause 8 -> 9");
+						AddText("Boneless FTilt sweet fixed hit sfx");
+						AddText("");
+						AddText("FStrong Angle 361 -> 40");
+						AddText("");
+						AddText("Added Pilot's Lucario idle costumes to Up/Down taunt");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();

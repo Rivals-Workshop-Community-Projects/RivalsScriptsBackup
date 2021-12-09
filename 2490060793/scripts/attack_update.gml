@@ -121,10 +121,12 @@ if attack == AT_FSPECIAL {
     	fspec_movearr = array_create(5, [undefined,undefined])
         has_snapped = false;
         //can_shield = true;
+        /*
         if window_timer > 4 && meter_cur <= 0 {
-            window++;
+            window = 2;
             window_timer = 0;
         }
+        */
         
         hsp = clamp(hsp, -4, 4)
         vsp = clamp(vsp, -4, 4)
@@ -146,6 +148,7 @@ if attack == AT_FSPECIAL {
     }
     can_move = false;
     can_wall_jump = true
+    
     if special_down && meter_cur > 0 strong_down = true;
     
     if window == 2 {
@@ -349,8 +352,8 @@ if attack == AT_TAUNT_2 {
 }
 
 if attack == AT_FSPECIAL_2 {
-	if window <= 6 soft_armor = 10000
-	else soft_armor = 0
+	//if window == 1 soft_armor = 12
+	//else soft_armor = 0
 	can_move = false
 	if window < 6 && window_timer == window_length-1 && !hitpause {
 		has_reduced = true

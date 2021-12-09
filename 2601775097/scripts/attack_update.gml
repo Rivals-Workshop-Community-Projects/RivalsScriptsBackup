@@ -536,104 +536,112 @@ switch (attack)
         break;
 
     case AT_DTHROW: // [3] PHOTON BLAST
-
-        can_move = false;
-
-        //resets the variables at the start of the move just in case
-        //this prevents theikos bar canceling the move and keeping the charge
-        if (window == 1 && window_timer == 1)
+        if (!photon_used)
         {
-            photon_cycle = 0;
-            blast_power = 0;
-        }
+            can_move = false;
+
+            //resets the variables at the start of the move just in case
+            //this prevents theikos bar canceling the move and keeping the charge
+            if (window == 1 && window_timer == 1)
+            {
+                photon_cycle = 0;
+                blast_power = 0;
+            }
     
-        if (window == 2 && window_timer == 1) mp_current -= photonblast_cost; //skill cost
+            if (window == 2 && window_timer == 1) mp_current -= photonblast_cost; //skill cost
     
-        if (special_down) //charge
-        {
-            switch (window)
+            if (special_down) //charge
             {
-                case 2: //level 1
-                    if (!theikos_active) soft_armor = 4;
-                    break;
-                case 3: //level 2
-                    if (!theikos_active) soft_armor = 8;
-                    photon_cycle = 1;
-                    blast_power = 1;
-                    if (window_timer == 1 && !hitpause) spawn_hit_fx(x, y-40, fx_lightblow1);
-                    break;
-                case 4: //level 3
-                    if (!theikos_active) soft_armor = 12;
-                    photon_cycle = 2;
-                    blast_power = 2;
-                    if (window_timer == 1 && !hitpause) spawn_hit_fx(x, y-40, fx_lightblow2);
-                    break;
+                switch (window)
+                {
+                    case 2: //level 1
+                        if (!theikos_active) soft_armor = 4;
+                        break;
+                    case 3: //level 2
+                        if (!theikos_active) soft_armor = 8;
+                        photon_cycle = 1;
+                        blast_power = 1;
+                        if (window_timer == 1 && !hitpause) spawn_hit_fx(x, y-40, fx_lightblow1);
+                        break;
+                    case 4: //level 3
+                        if (!theikos_active) soft_armor = 12;
+                        photon_cycle = 2;
+                        blast_power = 2;
+                        if (window_timer == 1 && !hitpause) spawn_hit_fx(x, y-40, fx_lightblow2);
+                        break;
+                }
             }
-        }
-        else if (!special_down) //release
-        {
-            if (theikos_active && (window == 2 || window == 3 || window == 4) && window_timer >= 2) //theikos bar can instantly unleash photon blast
+            else if (!special_down) //release
             {
-                window = 5;
+                if (theikos_active && (window == 2 || window == 3 || window == 4) && window_timer >= 2) //theikos bar can instantly unleash photon blast
+                {
+                    window = 5;
+                    window_timer = 0;
+                }
+                if (((window == 2 && window_timer >= max_charge_time/2) || window == 3 || window == 4) && window_timer >= 2) //they all have the same length
+                {
+                    window = 5;
+                    window_timer = 0;
+                }
+            }
+
+            //loop around the attack when there's more than 0 photon cycles
+            if (window == 5 && window_timer == get_window_value(AT_SKILL3, 5, AG_WINDOW_LENGTH) && photon_cycle > 0)
+            {
                 window_timer = 0;
+                attack_end(AT_SKILL3);
+                photon_cycle --;
             }
-            if (((window == 2 && window_timer >= max_charge_time/2) || window == 3 || window == 4) && window_timer >= 2) //they all have the same length
+
+            //photon blast effect
+            if (window == 5 && window_timer == 1) fx_pblast = spawn_hit_fx(x, y, fx_photonblast);
+
+            //reset the variables at the end of the move
+            if (window == 6 && window_timer == 1)
             {
-                window = 5;
-                window_timer = 0;
+                photon_cycle = 0;
+                blast_power = 0;
             }
-        }
 
-        //loop around the attack when there's more than 0 photon cycles
-        if (window == 5 && window_timer == get_window_value(AT_SKILL3, 5, AG_WINDOW_LENGTH) && photon_cycle > 0)
-        {
-            window_timer = 0;
-            attack_end(AT_SKILL3);
-            photon_cycle --;
-        }
-
-        //photon blast effect
-        if (window == 5 && window_timer == 1) fx_pblast = spawn_hit_fx(x, y, fx_photonblast);
-
-        //reset the variables at the end of the move
-        if (window == 6 && window_timer == 1)
-        {
-            photon_cycle = 0;
-            blast_power = 0;
-        }
-
-        //attack itself
-        if (blast_power > 0) //if charge is over 1
-        {
-            set_hitbox_value(AT_SKILL3, 1, HG_BASE_KNOCKBACK, 2);
-            set_hitbox_value(AT_SKILL3, 1, HG_KNOCKBACK_SCALING, 0);
-            set_hitbox_value(AT_SKILL3, 1, HG_DAMAGE, 7);
-            set_hitbox_value(AT_SKILL3, 1, HG_EXTRA_HITPAUSE, 10);
-        }
-        else //if charge is min charge
-        {
-            reset_hitbox_value(AT_SKILL3, 1, HG_DAMAGE);
-            reset_hitbox_value(AT_SKILL3, 1, HG_EXTRA_HITPAUSE);
-            reset_hitbox_value(AT_SKILL3, 1, HG_BASE_KNOCKBACK);
-            reset_hitbox_value(AT_SKILL3, 1, HG_KNOCKBACK_SCALING);
-        }
-
-        if (photon_cycle == 0)
-        {
-            switch (blast_power)
+            //attack itself
+            if (blast_power > 0) //if charge is over 1
             {
-                case 2:
-                    set_hitbox_value(AT_SKILL3, 1, HG_BASE_KNOCKBACK, 9);
-                    set_hitbox_value(AT_SKILL3, 1, HG_KNOCKBACK_SCALING, 1.1);
-                    break;
-                case 1:
-                    set_hitbox_value(AT_SKILL3, 1, HG_BASE_KNOCKBACK, 8);
-                    set_hitbox_value(AT_SKILL3, 1, HG_KNOCKBACK_SCALING, 0.95);
-                    break;
-                case 0:
-                    reset_hitbox_value(AT_SKILL3, 1, HG_BASE_KNOCKBACK); //6
-                    reset_hitbox_value(AT_SKILL3, 1, HG_KNOCKBACK_SCALING); //0.8
-                    break;
+                set_hitbox_value(AT_SKILL3, 1, HG_BASE_KNOCKBACK, 2);
+                set_hitbox_value(AT_SKILL3, 1, HG_KNOCKBACK_SCALING, 0);
+                set_hitbox_value(AT_SKILL3, 1, HG_DAMAGE, 7);
+                set_hitbox_value(AT_SKILL3, 1, HG_EXTRA_HITPAUSE, 10);
+            }
+            else //if charge is min charge
+            {
+                reset_hitbox_value(AT_SKILL3, 1, HG_DAMAGE);
+                reset_hitbox_value(AT_SKILL3, 1, HG_EXTRA_HITPAUSE);
+                reset_hitbox_value(AT_SKILL3, 1, HG_BASE_KNOCKBACK);
+                reset_hitbox_value(AT_SKILL3, 1, HG_KNOCKBACK_SCALING);
+            }
+
+            if (photon_cycle == 0)
+            {
+                switch (blast_power)
+                {
+                    case 2:
+                        set_hitbox_value(AT_SKILL3, 1, HG_BASE_KNOCKBACK, 9);
+                        set_hitbox_value(AT_SKILL3, 1, HG_KNOCKBACK_SCALING, 1.1);
+                        break;
+                    case 1:
+                        set_hitbox_value(AT_SKILL3, 1, HG_BASE_KNOCKBACK, 8);
+                        set_hitbox_value(AT_SKILL3, 1, HG_KNOCKBACK_SCALING, 0.95);
+                        break;
+                    case 0:
+                        reset_hitbox_value(AT_SKILL3, 1, HG_BASE_KNOCKBACK); //6
+                        reset_hitbox_value(AT_SKILL3, 1, HG_KNOCKBACK_SCALING); //0.8
+                        break;
+                }
+            }
+
+            //can only be used once in the air
+            if (window == get_attack_value(attack, AG_NUM_WINDOWS) && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH))
+            {
+                if (!theikos_active) photon_used = true;
             }
         }
         break;
@@ -748,7 +756,6 @@ switch (attack)
         }
         break;
     case AT_EXTRA_1: // [5] CHASM BURSTER
-
         can_wall_jump = true;
         if (window == 3)
         {
@@ -758,7 +765,14 @@ switch (attack)
         else can_jump = false;
 
         //mana costs
-        if (window == 1 && window_timer == 1) mp_current -= chasmburster_activate_cost;
+        if (window == 1 && window_timer == 1) 
+        {
+            mp_current -= chasmburster_activate_cost;
+            burst_pos = get_hitbox_value(AT_EXTRA_1, 2, HG_HITBOX_X);
+            burst_count = -1;
+
+            if (burningfury_active) chasm_burningfury_was_active = true;
+        }
         if (window == 4 && window_timer == 1 && !hitpause) mp_current -= chasmburster_attack_cost;
 
         if (window == 4 && window_timer == 2) shake_camera(6, 8); //power, time
@@ -770,23 +784,7 @@ switch (attack)
         }
 
         //chasms bursting
-        if ((window == 5 || window == 8) && window_timer < 13 && !hitpause) burst_count ++;
-
-        if ( ((window == 5 && burst_count % 3 == 0) || (window == 8 && burst_count % 2 == 0)) && window_timer < 13 && !hitpause && !reached_max_bursts)
-        {
-            var chasmburst = create_hitbox(AT_SKILL5, 2, x+burst_pos*spr_dir, y-42);
-            chasmburst.fx_particles = 2;
-            if (user_event_1_active) chasmburst.fx_particles = 6;
-
-            burst_pos += 40;
-        }
-
-        //burst reset
-        if (window == 6 && window_timer == 1)
-        {
-            burst_pos = get_hitbox_value(AT_EXTRA_1, 2, HG_HITBOX_X);
-            burst_count = 0;
-        }
+        if ((window == 5 || window == 8) && !hitpause) burst_count_start = true;
         
         if (window == 6 && window_timer == get_window_value(AT_SKILL5, 6, AG_WINDOW_LENGTH)) window = 9;
 
@@ -797,6 +795,7 @@ switch (attack)
             create_hitbox(AT_SKILL5, 5, x, y);
             attack_end(AT_SKILL5);
         }
+
         if (burningfury_active)
         {
             if (!free && window == 4 && window_timer == 1)
@@ -909,7 +908,6 @@ switch (attack)
         break;
     case AT_USPECIAL_2: // [7] POLARIS
         can_fast_fall = false;
-        
         //activation
         if (window == 4 && window_timer == 1)
         {
@@ -1083,35 +1081,33 @@ switch (attack)
             hookshot_chargetime = 0;
             hookshot_retract_timer = 0;
             reset_hitbox_value(AT_SKILL9, 1, HG_EXTRA_HITPAUSE);
+            reset_hitbox_value(AT_SKILL9, 1, HG_PROJECTILE_HSPEED);
+            reset_hitbox_value(AT_SKILL9, 1, HG_LIFETIME);
 
-            reset_hitbox_value(AT_SKILL9, 2, HG_PROJECTILE_HSPEED);
-            reset_hitbox_value(AT_SKILL9, 2, HG_LIFETIME);
-            reset_hitbox_value(AT_SKILL9, 2, HG_DAMAGE);
-            reset_hitbox_value(AT_SKILL9, 2, HG_DAMAGE);
-            reset_hitbox_value(AT_SKILL9, 2, HG_BASE_KNOCKBACK);
-            reset_hitbox_value(AT_SKILL9, 2, HG_KNOCKBACK_SCALING);
-            reset_hitbox_value(AT_SKILL9, 2, HG_BASE_HITPAUSE);
-            reset_hitbox_value(AT_SKILL9, 2, HG_HITPAUSE_SCALING);
-            reset_hitbox_value(AT_SKILL9, 2, HG_EXTENDED_PARRY_STUN);
+            //reset_hitbox_value(AT_SKILL9, 2, HG_DAMAGE);
+            //reset_hitbox_value(AT_SKILL9, 2, HG_BASE_KNOCKBACK);
+            //reset_hitbox_value(AT_SKILL9, 2, HG_KNOCKBACK_SCALING);
+            //reset_hitbox_value(AT_SKILL9, 2, HG_BASE_HITPAUSE);
+            //reset_hitbox_value(AT_SKILL9, 2, HG_HITPAUSE_SCALING);
+            //reset_hitbox_value(AT_SKILL9, 2, HG_EXTENDED_PARRY_STUN);
         }
 
         //holding down the button will add more extra hitpause and distance on the normal version
         //on the burning version it increases it's speed and killpower capabilities
         if (window == 2 && special_down && hookshot_chargetime < 10)
         {
-            if (window_timer == get_window_value(AT_SKILL9, 2, AG_WINDOW_LENGTH))
+            if (window_timer == window_end)
             {
                 hookshot_chargetime ++;
                 set_hitbox_value(AT_SKILL9, 1, HG_EXTRA_HITPAUSE, hookshot_chargetime*2+20); //min: 20 || max: 40
+                set_hitbox_value(AT_SKILL9, 1, HG_PROJECTILE_HSPEED, hookshot_chargetime/2+14); //min: 14 || max: 24
+                set_hitbox_value(AT_SKILL9, 1, HG_LIFETIME, 55-hookshot_chargetime); //min: 55 || max: 45
 
-                hookshot_liftime = 55-hookshot_chargetime*2.25; //min: 45 || max: 32.5
-
-                set_hitbox_value(AT_SKILL9, 2, HG_PROJECTILE_HSPEED, hookshot_chargetime/3+14); //min: 14 || max: 19
-                set_hitbox_value(AT_SKILL9, 2, HG_DAMAGE, hookshot_chargetime/2.5+10); //min: 10 || max: 14
-                set_hitbox_value(AT_SKILL9, 2, HG_BASE_KNOCKBACK, hookshot_chargetime/10+6); //min: 6 || max: 7
-                set_hitbox_value(AT_SKILL9, 2, HG_KNOCKBACK_SCALING, 0.8-hookshot_chargetime/50); //min: 0.8 || max: 0.6
-                set_hitbox_value(AT_SKILL9, 2, HG_BASE_HITPAUSE, hookshot_chargetime/2+10); //min: 10 || max: 15
-                set_hitbox_value(AT_SKILL9, 2, HG_HITPAUSE_SCALING, hookshot_chargetime/50+0.7); //min: 0.7 || max: 0.9
+                //set_hitbox_value(AT_SKILL9, 2, HG_DAMAGE, hookshot_chargetime/2.5+10); //min: 10 || max: 14
+                //set_hitbox_value(AT_SKILL9, 2, HG_BASE_KNOCKBACK, hookshot_chargetime/10+6); //min: 6 || max: 7
+                //set_hitbox_value(AT_SKILL9, 2, HG_KNOCKBACK_SCALING, 0.8-hookshot_chargetime/50); //min: 0.8 || max: 0.6
+                //set_hitbox_value(AT_SKILL9, 2, HG_BASE_HITPAUSE, hookshot_chargetime/2+10); //min: 10 || max: 15
+                //set_hitbox_value(AT_SKILL9, 2, HG_HITPAUSE_SCALING, hookshot_chargetime/50+0.7); //min: 0.7 || max: 0.9
                 window_timer = 0;
             }
         }
@@ -1170,7 +1166,7 @@ switch (attack)
             boost.draw_angle = -80*spr_dir;
         }
         
-        if (window == 5 && window_timer == get_window_value(AT_SKILL9, 5, AG_WINDOW_LENGTH)) window = 7; //skip the fail animation
+        if (window == 5 && window_timer == window_end) window = 7; //skip the fail animation
 
         if (hookshot_skip)
         {

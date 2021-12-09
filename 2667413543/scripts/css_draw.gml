@@ -1,5 +1,5 @@
-muno_event_type = 6;
-user_event(14);
+//muno_event_type = 6;
+//user_event(14);
 
 //Fancy CSS template by Muno
 //32 Alt code stolen from Kris, if you steal this keep the chain going :)
@@ -47,7 +47,7 @@ alt_name[27] = "Rainbow Sand";
 alt_name[28] = "Transgengar";
 alt_name[29] = "hands like these?";
 alt_name[30] = "Undiscovered Group";
-alt_name[31] = "Relic";
+alt_name[31] = "Comfy As It Looks";
  
 if get_player_color(player) == 29{
 textDraw(temp_x + 28, temp_y + 103, "fName", c_white, 0, 1000, 1, true, 1, "Who needs gender with" );

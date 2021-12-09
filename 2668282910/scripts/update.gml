@@ -115,9 +115,9 @@ if (!free || state == PS_WALL_JUMP || state == PS_HITSTUN){
 
 //Plays the EX Ready stuff
 if (ex_cooldown == 3){
-	if (no_ex_sfx == false){
-		sound_play(sound_get("ex_ready"), false, noone, 0.5, 1);
-	}
+//	if (no_ex_sfx == false){
+		sound_play(sound_get("ex_ready"), false, noone, 0.8, 1);
+//	}
 	spawn_hit_fx( x+35*spr_dir, y-70, fire_effect_small);
 }
 
@@ -185,6 +185,10 @@ if (fspecial_grab == true){
 if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) || (attack != AT_FSPECIAL){
     fspecial_grab = false;
 }
+
+//if (x > get_stage_data(SD_X_POS) + 230){ //soltar o oponente com o FSPecial perto da plataforma
+//	    ex_cooldown = 150;
+//}
 
 
 

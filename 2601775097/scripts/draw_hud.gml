@@ -221,7 +221,7 @@ else if (!menu_open && "kart_inside" not in self)
             
             //photon blast
             case 0:
-                if (mp_current < photonblast_cost) draw_sprite_ext(sprite_get("skillicons_disabled"), 3, dspecial, temp_y - 40, 2, 2, 0, c_white, 1);
+                if (mp_current < photonblast_cost || photon_used) draw_sprite_ext(sprite_get("skillicons_disabled"), 3, dspecial, temp_y - 40, 2, 2, 0, c_white, 1);
                 else if (mp_current >= photonblast_cost) draw_sprite_ext(sprite_get("skillicons"), 3, dspecial, temp_y - 40, 2, 2, 0, c_white, 1);
                 break;
             

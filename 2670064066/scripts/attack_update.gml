@@ -315,16 +315,22 @@ if (window == 2)
 
 if (attack == AT_USPECIAL) //Grav Lift
 {
-	if (window == 1 && window_timer == 1)
-	{
-		instance_destroy(gravlift);
-	}
+
 	if (window == 2 && window_timer == 7)
 	{
         var gravlift = instance_create(x + 9 * spr_dir, y + 80, "obj_article_solid");
         gravlift.spr_dir = spr_dir;
         move_cooldown[AT_USPECIAL] = 180;
         //grav_liftime = 500;
+	}
+	
+	if (window == 1 && window_timer == 1)
+	{
+		with obj_article_solid { // change to 2 or 3, or solid/plat, if you need to
+    if player_id == other { // makes sure to delete only YOUR article
+        instance_destroy(self);
+    }
+}
 	}
 }
 

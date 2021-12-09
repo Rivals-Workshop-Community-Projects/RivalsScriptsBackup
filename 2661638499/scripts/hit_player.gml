@@ -1,6 +1,6 @@
 //hitplayer
 
-if (my_hitboxID.attack == UNOWN_ATK.J && my_hitboxID.hbox_num == 1)
+if (my_hitboxID.attack == unown_form_data[UNOWN_ATK.J].atk && my_hitboxID.hbox_num == 1)
 {
     if (!instance_exists(unown_j_victim))
     {

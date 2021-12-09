@@ -26,9 +26,9 @@ accelblitz_post_timer = 0;
 dist_x = 0;
 dist_y = 0;
 
-//reset chasm burster's burst position if bar gets hit
-burst_pos = 56;
-burst_count = 0;
+//chasm burster's variables
+burst_count_start = false;
+burst_count = -1;
 
 //light hookshot resets
 hookshot_speedboost = false;

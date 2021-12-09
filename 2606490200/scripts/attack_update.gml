@@ -204,6 +204,7 @@ switch attack {
             sound_play(asset_get("sfx_ori_stomp_hit"),false,noone,1,1)
             sound_play(asset_get("sfx_ori_energyhit_medium"),false,noone,1,1)
             shake_camera(6,6)
+           // move_cooldown[AT_DSTRONG] = 999
         }
         
      }

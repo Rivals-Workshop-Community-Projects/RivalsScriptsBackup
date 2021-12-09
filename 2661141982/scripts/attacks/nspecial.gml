@@ -55,6 +55,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);//nspecial_proj2_mask
 set_hitbox_value(AT_NSPECIAL, 1, HG_SHAPE, 0);
 //set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 0);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, .7);
 set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_NSPECIAL, 1, HG_DRIFT_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_SDI_MULTIPLIER, 1);

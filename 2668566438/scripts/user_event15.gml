@@ -264,6 +264,35 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.2", "30 November, 2021");
+initHeader("Dair - Adjustments");
+initSection("The move now has a stronger hitbox for the first 8 frames (IE the old one) and a weaker one for the rest of the duration.");
+initHeader("NSpecial - Cosmetics");
+initSection("Made the needles rotate to more accurately depict their trajectory.
+Made the hitbox bigger.
+Changed the swipe sound to be heavy because lol
+Made the projectiles spawn further ahead so that when used against a wall they actually work");
+initHeader("FSpecial - Fixes")
+initSection("Fspecial will now put you in parry stun");
+initHeader("NAir - Adjustments")
+initSection("NAir no longer pushes you up.");
+initHeader("FTilt - Adjustments")
+initSection("FTilt startup 12 > 9");
+initHeader("DTilt - Adjustments")
+initSection("DTilt endlag 12 > 9");
+initHeader("UStrong - Adjustments")
+initSection("UStrong endlag 22 > 18");
+initHeader("FStrong - Adjustments")
+initSection("FStrong endlag 22 > 18");
+initHeader("Misc - Additions & Fixes");
+initSection("Fixed the offscreen indicators colors.
+Beedrill's KB ADJ 1.3 > 1.2
+Made poison go away on parry
+Added Soulbound Conflict support
+Added Assist Buddy support
+Added Agent N support
+Added Hikaru support
+Added TCO support");
 
 initPatch("About Beedrill", "");
 initWords("According to all known laws

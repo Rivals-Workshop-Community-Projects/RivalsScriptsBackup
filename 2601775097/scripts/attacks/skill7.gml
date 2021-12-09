@@ -78,12 +78,12 @@ set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, 0);
 set_hitbox_value(atk, hitboxNum, HG_WIDTH, 20);
 set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 20);
 set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 2); //1 = low priority over other moves || 10 = highest
-set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 1);
-set_hitbox_value(atk, hitboxNum, HG_ANGLE, 90);
-set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 0); //4
-set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0); //0,5
-set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 0); //5
-set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0); //0.4
+set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 3);
+set_hitbox_value(atk, hitboxNum, HG_ANGLE, 75);
+set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 7);
+//set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.5);
+set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_lightblow1);
 set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 3);
@@ -95,8 +95,8 @@ set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_ANIM_SPEED, 0.3);
-set_hitbox_value(atk, hitboxNum, HG_EFFECT, 9);
-
+//set_hitbox_value(atk, hitboxNum, HG_EFFECT, 9);
+set_hitbox_value(atk, hitboxNum, HG_ANGLE_FLIPPER, 2); //2 / 7
 
 //munophone
 if (!get_match_setting(SET_PRACTICE)) exit;

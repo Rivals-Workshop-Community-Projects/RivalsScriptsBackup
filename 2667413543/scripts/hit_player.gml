@@ -40,6 +40,16 @@ switch(my_hitboxID.attack){
 		if (hit_player_obj.cofa_mummy){
 			hit_player_obj.orig_knock = 8 + (get_player_damage(hit_player_obj.player) * 1 * 0.12 * hit_player_obj.knockback_adj);
 			take_damage(hit_player_obj.player, player, 5);
+			
+			// hitpause
+			hit_player_obj.hitstop_full += 6;
+			hitstop_full += 6;
+			hit_player_obj.hitstop = hit_player_obj.hitstop_full;
+			hitstop = hitstop_full;
+			
+			// shake
+			hit_player_obj.should_make_shockwave = true;
+			shake_camera(round(hit_player_obj.orig_knock), round(hitstop_full*.7));
 		}
 	break;
 }

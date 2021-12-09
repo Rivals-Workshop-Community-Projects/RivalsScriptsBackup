@@ -76,7 +76,7 @@ sprite_change_offset("nspecial_charge2", 26, 26);
 sprite_change_offset("nspecial_charge3", 26, 26);
 
 sprite_change_offset("sludge", 24, 24);
-sprite_change_offset("pin_missile", 50, 10);
+sprite_change_offset("pin_missile", 60, 10);
 sprite_change_offset("puddle", 44, 56);
 sprite_change_offset("puddle_despawn", 44, 56);
 sprite_change_offset("puddle_spawn", 44, 56);

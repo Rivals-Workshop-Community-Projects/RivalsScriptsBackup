@@ -98,6 +98,14 @@ set_color_profile_slot( 7, 3, 0, 123, 66 ); //Light Gray
 set_color_profile_slot( 7, 4, 255, 255, 255 ); //White
 set_color_profile_slot( 7, 5, 90, 255, 123 ); //Dark White
 set_color_profile_slot( 7, 6, 0, 0, 0 ); //Eye
+// GSC-Shiny
+set_color_profile_slot( 16, 0, 0, 0, 0 ); //Gray
+set_color_profile_slot( 16, 1, 0, 0, 0 ); //Dark Gray
+set_color_profile_slot( 16, 2, 0, 0, 0 ); //Darker Gray
+set_color_profile_slot( 16, 3, 16, 88, 248 ); //Light Gray
+set_color_profile_slot( 16, 4, 255, 255, 255 ); //White
+set_color_profile_slot( 16, 5, 112, 152, 248 ); //Dark White
+set_color_profile_slot( 16, 6, 0, 0, 0 ); //Eye
 
 // Carbink
 set_color_profile_slot( 8, 0, 147, 150, 169 ); //Gray

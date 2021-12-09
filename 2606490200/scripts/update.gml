@@ -5,6 +5,27 @@ hit_player_obj = self
 
 }
 
+/*
+if move_cooldown[AT_DSTRONG] > 0 {
+	perfect_dodging = true
+	
+}
+
+if state == PS_PARRY {
+	
+	if window_timer == 4 && state_timer < 30 {
+		window_timer -= 1
+	}
+	
+	if state_timer = 40 {
+		set_state(PS_PRATLAND)
+		state_timer = 0
+	}
+	
+}
+*/
+
+
 if djumps == 1 {
 	djump_speed = 9;
 } else {
@@ -129,7 +150,7 @@ if btrain >= 100 && btrain < 300 {
 	sound_play(asset_get("sfx_abyss_explosion_start"))		
 	sound_play(asset_get("sfx_abyss_hazard_burst"))	
 	btrain = 420
-	knockback_adj = .85;
+	knockback_adj = .9;
 	
 	//+3 dmg nipples, +1 dmg other, grab + 4dmg
 	set_hitbox_value(AT_DAIR, 2, HG_DAMAGE, 6);

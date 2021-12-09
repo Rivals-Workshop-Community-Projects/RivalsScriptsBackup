@@ -15,6 +15,8 @@ if (my_hitboxID.type == 1 && leechseed.poison_seed == 0 && collision_circle( lee
     take_damage( player, -1, (leech_heal * -1) );
     if (leech_heal > 0){
     sound_play(sound_get("vileplume_leechseed_heal"));    
+    ls_heal = spawn_hit_fx( x, y, leechseed_heal_effect );   
+    ls_heal.depth = depth - 1;  
     }
 }
 

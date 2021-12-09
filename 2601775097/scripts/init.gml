@@ -166,6 +166,7 @@ prev_djumps = 0; //used for double jump turnarounds in update.gml
 djump_speed_reset = djump_speed;
 jump_total = max_djumps + 1; //unused
 
+//platform
 plat_frame = 0;
 plat_animspeed = 0.25;
 plat_strip_length = 16; //not sure i even used this lmfao
@@ -371,45 +372,88 @@ holy_burned_by = noone;
 fx_empty = hit_fx_create(sprite_get("empty"), 1); //this just allows me to deny hitsparks from existance
 
 fx_introlight = sprite_get("fx_introlight_back");
-
-fx_lightblow1 = hit_fx_create(sprite_get("fx_lightblow1"), 15);
-fx_lightslash = hit_fx_create(sprite_get("fx_lightslash"), 15);
-fx_lightblow2 = hit_fx_create(sprite_get("fx_lightblow2"), 25);
-fx_lightblow3 = hit_fx_create(sprite_get("fx_lightblow3"), 30);
-fx_fireblow1 = hit_fx_create(sprite_get("fx_fireblow1"), 20);
-fx_fireblow2 = hit_fx_create(sprite_get("fx_fireblow2"), 30);
-fx_fireblow3 = hit_fx_create(sprite_get("fx_fireblow3"), 40);
-
-set_hit_particle_sprite(1, sprite_get("fx_lightparticle"));
-set_hit_particle_sprite(2, sprite_get("fx_fireparticle"));
-
 fx_boost = hit_fx_create(sprite_get("fx_speedboost"), 14);
 
 fx_ustrong_lightaxe_sprite = sprite_get("empty");
-
-fx_dstrong_fireblast = hit_fx_create(sprite_get("fx_dstrong_fireblast"), 40);
-fx_rockblow = hit_fx_create(sprite_get("fx_rockblow"), 27);
-
 fx_lightdagger = sprite_get("empty");
 fx_lightdagger_air = sprite_get("empty");
-
-fx_photonblast = hit_fx_create(sprite_get("fx_photonblast"), 21);
-
-fx_accelblitz = hit_fx_create(sprite_get("fx_accelblitz"), 18);
 fx_accel_indicator = sprite_get("accelblitz_indicator");
-
-fx_chasmburster = hit_fx_create(sprite_get("fx_chasmburster"), 18);
-fx_earthshatter = hit_fx_create(sprite_get("fx_chasmshatter"), 180);
-
-fx_guardaura = hit_fx_create(sprite_get("fx_guardaura"), 15);
-fx_homing_afterimage = hit_fx_create(sprite_get("fx_homing_afterimage"), 16);
-
-fx_emberfist = hit_fx_create(sprite_get("fx_emberfist"), 30);
-
 fx_lighthookshot = sprite_get("empty");
+fx_armorbreak = hit_fx_create(sprite_get("theikos_fx_fstrong_armorbreak"), 20);
+fx_lightpillar = sprite_get("theikos_fx_ustrong_lightpillar");
 
-fx_flashbang_lightsmear = hit_fx_create(sprite_get("fx_flashbang_lightsmear"), 9);
-fx_flashbang_firesmear = hit_fx_create(sprite_get("fx_flashbang_firesmear"), 15);
+//normal ver
+fx_b_lightblow1 = hit_fx_create(sprite_get("fx_lightblow1"), 15);
+fx_b_lightslash = hit_fx_create(sprite_get("fx_lightslash"), 15);
+fx_b_lightblow2 = hit_fx_create(sprite_get("fx_lightblow2"), 25);
+fx_b_lightblow3 = hit_fx_create(sprite_get("fx_lightblow3"), 30);
+fx_b_fireblow1 = hit_fx_create(sprite_get("fx_fireblow1"), 20);
+fx_b_fireblow2 = hit_fx_create(sprite_get("fx_fireblow2"), 30);
+fx_b_fireblow3 = hit_fx_create(sprite_get("fx_fireblow3"), 40);
+
+fx_b_dstrong_fireblast = hit_fx_create(sprite_get("fx_dstrong_fireblast"), 40);
+fx_b_rockblow = hit_fx_create(sprite_get("fx_rockblow"), 27);
+fx_b_photonblast = hit_fx_create(sprite_get("fx_photonblast"), 21);
+fx_b_accelblitz = hit_fx_create(sprite_get("fx_accelblitz"), 18);
+fx_b_chasmburster = hit_fx_create(sprite_get("fx_chasmburster"), 18);
+fx_b_earthshatter = hit_fx_create(sprite_get("fx_chasmshatter"), 180);
+fx_b_homing_afterimage = hit_fx_create(sprite_get("fx_homing_afterimage"), 16);
+fx_b_emberfist = hit_fx_create(sprite_get("fx_emberfist"), 30);
+fx_b_flashbang_lightsmear = hit_fx_create(sprite_get("fx_flashbang_lightsmear"), 9);
+fx_b_flashbang_firesmear = hit_fx_create(sprite_get("fx_flashbang_firesmear"), 15);
+fx_b_firesmear = hit_fx_create(sprite_get("fx_dstrong_t_firesmear"), 20);
+fx_b_fireground = hit_fx_create(sprite_get("fx_dstrong_t_fireground"), 90);
+
+//theikos ver
+fx_t_lightblow1 = hit_fx_create(sprite_get("theikos_fx_lightblow1"), 15);
+fx_t_lightslash = hit_fx_create(sprite_get("theikos_fx_lightslash"), 15);
+fx_t_lightblow2 = hit_fx_create(sprite_get("theikos_fx_lightblow2"), 25);
+fx_t_lightblow3 = hit_fx_create(sprite_get("theikos_fx_lightblow3"), 30);
+fx_t_fireblow1 = hit_fx_create(sprite_get("theikos_fx_fireblow1"), 20);
+fx_t_fireblow2 = hit_fx_create(sprite_get("theikos_fx_fireblow2"), 30);
+fx_t_fireblow3 = hit_fx_create(sprite_get("theikos_fx_fireblow3"), 40);
+
+fx_t_dstrong_fireblast = hit_fx_create(sprite_get("theikos_fx_dstrong_b_fireblast"), 40);
+fx_t_rockblow = hit_fx_create(sprite_get("theikos_fx_rockblow"), 27);
+fx_t_photonblast = hit_fx_create(sprite_get("theikos_fx_photonblast"), 21);
+fx_t_accelblitz = hit_fx_create(sprite_get("theikos_fx_accelblitz"), 18);
+fx_t_chasmburster = hit_fx_create(sprite_get("theikos_fx_chasmburster"), 18);
+fx_t_earthshatter = hit_fx_create(sprite_get("theikos_fx_chasmshatter"), 180);
+fx_t_homing_afterimage = hit_fx_create(sprite_get("theikos_fx_homing_afterimage"), 16);
+fx_t_emberfist = hit_fx_create(sprite_get("theikos_fx_emberfist"), 30);
+fx_t_flashbang_lightsmear = hit_fx_create(sprite_get("theikos_fx_flashbang_lightsmear"), 9);
+fx_t_flashbang_firesmear = hit_fx_create(sprite_get("theikos_fx_flashbang_firesmear"), 15);
+fx_t_firesmear = hit_fx_create(sprite_get("theikos_fx_dstrong_firesmear"), 20);
+fx_t_fireground = hit_fx_create(sprite_get("theikos_fx_dstrong_fireground"), 90);
+
+//effect hit_fx_create setup
+fx_lightblow1 = fx_b_lightblow1;
+fx_lightslash = fx_b_lightslash;
+fx_lightblow2 = fx_b_lightblow2;
+fx_lightblow3 = fx_b_lightblow3;
+fx_fireblow1 = 	fx_b_fireblow1;
+fx_fireblow2 = 	fx_b_fireblow2;
+fx_fireblow3 = 	fx_b_fireblow3;
+
+fx_dstrong_fireblast = 		fx_b_dstrong_fireblast;
+fx_rockblow = 				fx_b_rockblow;
+fx_photonblast = 			fx_b_photonblast;
+fx_accelblitz = 			fx_b_accelblitz;
+fx_chasmburster = 			fx_b_chasmburster;
+fx_earthshatter = 			fx_b_earthshatter;
+fx_homing_afterimage = 		fx_b_homing_afterimage;
+fx_emberfist = 				fx_b_emberfist;
+fx_flashbang_lightsmear = 	fx_b_flashbang_lightsmear;
+fx_flashbang_firesmear = 	fx_b_flashbang_firesmear;
+fx_firesmear = 				fx_b_firesmear;
+fx_fireground = 			fx_b_fireground;
+
+//particles
+set_hit_particle_sprite(1, sprite_get("fx_lightparticle"));
+set_hit_particle_sprite(2, sprite_get("fx_fireparticle"));
+
+set_hit_particle_sprite(5, sprite_get("theikos_fx_lightparticle"));
+set_hit_particle_sprite(6, sprite_get("theikos_fx_fireparticle"));
 
 
 //technical variables
@@ -443,6 +487,7 @@ photon_charge = false;
 photon_cycle = 0; //counts the amount of attacks
 blast_power = 0; //calculate the damage
 max_charge_time = 40; //window length of the winged up charging
+photon_used = false;
 
 accelblitz_active = false;
 accelblitz_done_once = false;
@@ -460,11 +505,13 @@ blur_array_length = 2;
 blur = array_create(blur_array_length);
 
 burst_pos = 56;
-burst_count = 0;
-delay_burst_count = 0;
+burst_count = -1;
+max_burst_count = 20;
+burst_count_start = false;
 spawn_earth_shatter = false;
 reached_max_bursts = false;
 burst_cool = 0;
+chasm_burningfury_was_active = false;
 
 sfx_fire = sound_get("sfx_constantfire");
 artc_powersmash_chasm = noone;
@@ -472,7 +519,7 @@ artc_powersmash_chasm = noone;
 polaris_active = false;
 homing_target_id = noone;
 already_shot = false;
-homing_cooldown = 30;
+homing_cooldown = -1; //30 frames cooldown
 homing_post_buffer = -1;
 homing_post_buffer_counting = false;
 homing_outline_alpha = 0.1;
@@ -488,9 +535,6 @@ hookshot_lag_count = 0; //throw window time
 hookshot_chargetime = 0; //how strong is bar's charge
 hookshot_launch = false; //used for the animation
 hookshot_skip = false;
-
-hookshot_lifetime = 55;
-
 hookshot_retract = false; //these were ment for the article to know if bar caught anything
 hookshot_retract_timer = 0;
 
@@ -826,20 +870,10 @@ dstrong2_active_count = 80; //the same value as AT_DSTRONG_2's 3rd hitbox HG_LIF
 dstrong2_fire_x = x;
 dstrong2_fire_y = y;
 
-//strongs effects
-fx_armorbreak = hit_fx_create(sprite_get("theikos_fx_fstrong_armorbreak"), 20);
-fx_firesmear = hit_fx_create(sprite_get("fx_dstrong_t_firesmear"), 20);
-fx_fireground = hit_fx_create(sprite_get("fx_dstrong_t_fireground"), 90);
-fx_lightpillar = sprite_get("theikos_fx_ustrong_lightpillar");
-
 //theikos Fstrong sound effect array
 sfx_armorbreak[0] = sound_get("sfx_armorbreak1");
 sfx_armorbreak[1] = sound_get("sfx_armorbreak2");
 sfx_armorbreak[2] = sound_get("sfx_armorbreak3");
-
-//particles
-set_hit_particle_sprite(5, sprite_get("theikos_fx_lightparticle"));
-set_hit_particle_sprite(6, sprite_get("theikos_fx_fireparticle"));
 
 if (theikos_alt) user_event(1); //should activate the effects without needing anything else, he can't turn back from this lol
 user_event_1_active = false;

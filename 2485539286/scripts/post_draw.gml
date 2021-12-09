@@ -30,16 +30,30 @@ if state == PS_PARRY or move_cooldown [AT_EXTRA_3] != 0 {
 
 if state_cat == SC_HITSTUN {
 	
+	if hitpause {
     gpu_set_blendmode(bm_add);
     if get_gameplay_time() % 6 < 2 {
         spawn_hit_fx( x + 20 - random_func(1, 40, true) , y - 10 -  random_func(2, 60, true) , hpar3)
     	  
-               draw_sprite_ext(sprite_index, image_index, x - 2 + random_func(1,5,true), y - 2 + random_func(2,5,true) , spr_dir, 1, 0 , c_white ,  0.4 );	
+               draw_sprite_ext(sprite_index, image_index, x - 4 + random_func(1,9,true), y - 4 + random_func(2,9,true) , spr_dir, 1, 0 , c_white ,  0.4 );	
      	  
     } else {
-    draw_sprite_ext(sprite_index, image_index, x - 2 + random_func(1,5,true), y - 2 + random_func(2,5,true) , spr_dir, 1, 0 , c_white ,  0.8);
+    draw_sprite_ext(sprite_index, image_index, x - 4 + random_func(1,9,true), y - 4 + random_func(2,9,true) , spr_dir, 1, 0 , c_white ,  0.8);
     }
    gpu_set_blendmode(bm_normal);
+	} else {
+	
+	
+	 if get_gameplay_time() % 10 < 3 {
+        spawn_hit_fx( x + 20 - random_func(1, 40, true) , y - 10 -  random_func(2, 60, true) , hpar3)
+    	  
+               draw_sprite_ext(sprite_index, image_index, x - 4 + random_func(1,9,true), y - 4 + random_func(2,9,true) , spr_dir, 1, 0 , c_white ,  0.4 );	
+     	  
+    }
+    
+		
+		
+	}
    
 }
 

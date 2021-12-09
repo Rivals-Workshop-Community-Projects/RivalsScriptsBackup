@@ -102,23 +102,27 @@ switch(attack){
 				break;
 				case 3:
 					if (window_timer == 1){
-						switch(charge_state){
-							case 0:
-								create_hitbox(AT_NSPECIAL, 1, x+36*spr_dir, y-36);
-								set_window_value(AT_NSPECIAL, 4, AG_WINDOW_HSPEED, -1);
-							break;
-							case 1:
-								create_hitbox(AT_NSPECIAL, 1, x+20*spr_dir, y-52);
-								create_hitbox(AT_NSPECIAL, 1, x+36*spr_dir, y-20);
-								set_window_value(AT_NSPECIAL, 4, AG_WINDOW_HSPEED, -3);
-							break;
-							case 2:
-								create_hitbox(AT_NSPECIAL, 1, x+20*spr_dir, y-68);
-								create_hitbox(AT_NSPECIAL, 1, x+36*spr_dir, y-36);
-								create_hitbox(AT_NSPECIAL, 1, x+20*spr_dir, y-4);
-								set_window_value(AT_NSPECIAL, 4, AG_WINDOW_HSPEED, -8);
-							break;
+						var proj_off_x = 36;
+						var proj_off_y = -36;
+						var proj_vert_dist = 32;
+						var hbox_count_max = charge_state;
+						
+						print(wow_hitbox_group);
+						if (hbox_count_max != 0)
+							proj_off_y = -36 - (hbox_count_max*16)
+						
+						var temp_counter = 0;
+						while(temp_counter <= hbox_count_max){
+							if (hbox_count_max != 0)
+								proj_off_x = (temp_counter % 2 != 1) ? 20 : 36;
+							
+							var temp_hitbox = create_hitbox(AT_NSPECIAL, 1, x+proj_off_x*spr_dir, y+proj_off_y+(proj_vert_dist*temp_counter));
+							temp_hitbox.charge_state = charge_state;
+							temp_hitbox.wow_hitbox_group = wow_hitbox_group;
+							temp_hitbox.nspecial_count = temp_counter;
+							temp_counter++;
 						}
+						wow_hitbox_group++;
 						wow_chrg = 0;
 					}
 				break;
@@ -171,7 +175,7 @@ switch(attack){
 						vsp *= .5;
 					}
 					else if (fspecial_grab_time > fspecial_grab_time_max || fspecial_grab_id == noone || !instance_exists(fspecial_grab_id)){ // no grab instance or whatev
-						window = 4;
+						window = 7;
 						window_timer = 0;
 						destroy_hitboxes();
 					}
@@ -192,6 +196,8 @@ switch(attack){
 						// vfx
 						var fx_1 = spawn_base_dust(fspecial_grab_id.x, y, "land");
 						fx_1.depth = depth-1;
+						
+						fspecial_grab_time = 0;
 					}
 				break;
 				case 6: // moving across the ground loop
@@ -261,7 +267,6 @@ switch(attack){
 						fspecial_grab_id = noone;
 					}
 					if window_timer == phone_window_end{
-						attack_end();
 						set_state(free ? PS_IDLE_AIR : PS_IDLE);
 						destroy_hitboxes();
 						fspecial_grab_id = noone;
@@ -269,7 +274,6 @@ switch(attack){
 				break;
 				case 8: // throw
 					if window_timer == phone_window_end{
-						attack_end();
 						set_state(free ? PS_IDLE_AIR : PS_IDLE);
 						destroy_hitboxes();
 						fspecial_grab_id = noone;
@@ -278,149 +282,21 @@ switch(attack){
 				case 9: // whiff endlag
 					hsp = clamp(hsp, -8, 8);
 					if window_timer == phone_window_end{
-						attack_end();
-						set_state(free ? PS_IDLE_AIR : PS_IDLE);
 						destroy_hitboxes();
 						fspecial_grab_id = noone;
-					}
-				break;
-			}
-			/*
-			switch(window){
-				case 1: // startup
-					if window_timer == 1{
-						fspecial_grab_time = 0;
-						fspecial_grab_time_max = 90;
-					}
-					off_edge = true;
-				break;
-				case 2: // lunge
-					hsp = 14*spr_dir;
-					off_edge = true;
-					
-					if (!free){
-						if (window_timer == 1)
-							spawn_base_dust(x, y, "dash_start");
-						else if (window_timer == 3)
-							spawn_base_dust(x, y, "dash");
-					}
-					else{
-						if (window_timer == 1){
-							var fx_a = spawn_base_dust(x, y - 22, "doublejump");
-							fx_a.draw_angle = (spr_dir == -1) ? 90 : 270;
-						}
-					}
-				break;
-				case 3: // drag grounded
-					if (fspecial_grab_time > fspecial_grab_time_max || fspecial_grab_id == noone || !instance_exists(fspecial_grab_id)){ // no grab instance or whatev
-						window = 4;
-						window_timer = 0;
-						destroy_hitboxes();
-					}
-					else{
-						// speed
-						var drag_accel = .5;
-						var min_spd = 4;
-						var max_spd = 12;
-						// acceleration
-						hsp += drag_accel * spr_dir;
-						if (abs(hsp) < min_spd || sign(hsp) != sign(spr_dir)) // going opposite direction or too slow? force hsp to min speed
-							hsp = min_spd * spr_dir;
-								
-						hsp = clamp(hsp, -max_spd, max_spd)
-								
-						if window_timer == phone_window_end // hitbox reset
-							attack_end();
 						
-						if (window_timer % 3 == 0 && abs(hsp) > 3) // fx
-							spawn_base_dust(x, y, "dash");
-							
-						if (attack_pressed || special_pressed){ // yeet
-							window = 5;
-							window_timer = 0;
-							destroy_hitboxes();
-						}
-						else if (shield_pressed){ // cancel
-							window = 4;
-							window_timer = 0;
-							destroy_hitboxes();
-						}
-						else if (free){ // entered air
-							set_state(free ? PS_IDLE_AIR : PS_IDLE);
-							destroy_hitboxes();
-						}
-					}
-					
-					if (fspecial_grab_time <= fspecial_grab_time_max)
-						fspecial_grab_time++;
-				break;
-				case 6: // drag air
-					if (free){ // lol
-						if (shield_pressed){ // cancel
-							clear_button_buffer(PC_SHIELD_PRESSED);
-							window = 4;
-							window_timer = 0;
-							destroy_hitboxes();
-							vsp *= .5;
-						}
-						else if (fspecial_grab_time > fspecial_grab_time_max || fspecial_grab_id == noone || !instance_exists(fspecial_grab_id)){ // no grab instance or whatev
-							window = 4;
-							window_timer = 0;
-							destroy_hitboxes();
-						}
-						else{
-							hsp *= .8;
-							vsp += .5;
-							if vsp < 0
-								vsp = 0;
-							
-							if (fspecial_grab_time <= fspecial_grab_time_max)
-								fspecial_grab_time++;
-						}
-					}
-					else{
-						window = 3;
-						window_timer = 0;
-						fspecial_grab_time = 0;
-						spawn_base_dust(x, y, "land");
-					}
-				break;
-				case 4: // grab release
-					if (window_timer == 1){
-						if (instance_exists(fspecial_grab_id)){
-							with(fspecial_grab_id){
-								// hitstop
-								hitstop = 0;
-								hitstop_full = 1;
-								hitpause = false;
-								// speed stuff
-								vsp = -7;
-								hsp = (4 * other.spr_dir) + (other.hsp*.3);
-								old_vsp = vsp;
-								old_hsp = hsp;
-								//print(vsp);
-							}
-						}
-						fspecial_grab_id = noone;
-					}
-					if window_timer == phone_window_end || free{
-						set_state(free ? PS_IDLE_AIR : PS_IDLE);
-						destroy_hitboxes();
-					}
-				break;
-				case 5: // yeet
-					if window_timer == phone_window_end
-						fspecial_grab_id = noone;
-				break;
-				case 7: // endlag
-					hsp = clamp(hsp, -8, 8)
-					if window_timer == phone_window_end{
-						set_state(free ? PS_IDLE_AIR : PS_IDLE);
-						destroy_hitboxes();
+						print(was_parried);
+						if (was_parried)
+							parry_lag = 90;
 					}
 				break;
 			}
-			*/
+			
+			if (window >= 3 && window <= 4) && (!instance_exists(fspecial_grab_id) || !fspecial_grab_id.hitpause){
+				window = 7;
+				window_timer = 0;
+				fspecial_grab_id = noone;
+			}
 		}
 	break;
 	

@@ -46,7 +46,15 @@ alt_name[11] = "Cyrus";
 alt_name[12] = "Cynthia";
 alt_name[13] = "Abyss";
 alt_name[14] = "Early Access";
-alt_name[15] = "Shiny";
+alt_name[15] = "Mew";
+alt_name[16] = "Celebi";
+alt_name[17] = "Jirachi";
+alt_name[18] = "Gold Rank";
+alt_name[19] = "Deoxys";
+alt_name[20] = "Victini";
+alt_name[21] = "Diancie";
+alt_name[22] = "Marshadow";
+alt_name[23] = "Shiny";
  
  
  
@@ -103,6 +111,9 @@ switch (get_player_color(player))
 		break;
 	case 14:
 		draw_sprite_ext(sprite_get("css_icons"), 1, x+176, y+110, 2, 2, 0, c_white, 1);
+		break;
+	case 18:
+		draw_sprite_ext(sprite_get("css_icons"), 2, x+176, y+110, 2, 2, 0, c_white, 1);
 		break;
 }
 // if (get_player_color(player) == 14)

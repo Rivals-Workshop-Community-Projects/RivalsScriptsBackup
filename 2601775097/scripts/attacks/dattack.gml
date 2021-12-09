@@ -75,7 +75,7 @@ set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 38);
 set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 2); //1 = low priority over other moves || 10 = highest
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 4);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 40); //35 allows it to be teched if they DI down
-set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 8.5);
+set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 7); //8.5
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 5); //hitstun
 set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 303);
@@ -83,6 +83,7 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, hitboxNum); //it needs to be a different value for every different move in the file
+set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 1);
 
 hitboxNum ++; //attack 2
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile

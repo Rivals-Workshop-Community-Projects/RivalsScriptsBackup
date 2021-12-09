@@ -96,7 +96,7 @@ else if(my_hitboxID.attack == AT_NSPECIAL)
 if(my_hitboxID.attack == AT_NSPECIAL) hit_player_obj.should_make_shockwave = false;
 
 // Fspecial grab
-if (my_hitboxID.attack == AT_FSPECIAL){
+if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1){
 	if(hit_player_obj.state_cat == SC_HITSTUN)
     if ((window == 3 || window == 4) && grabbedid == noone){
         hit_player_obj.grabbed = 1;

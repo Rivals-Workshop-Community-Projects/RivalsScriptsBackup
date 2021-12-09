@@ -12,8 +12,8 @@ accelblitz_done_once = false;
 dist_x = 0;
 dist_y = 0;
 
-burst_pos = 56;
-burst_count = 0;
+burst_count_start = false;
+burst_count = -1;
 
 powersmash_afterburn = false;
 powersmash_aftertime = 0;

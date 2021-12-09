@@ -145,7 +145,7 @@ set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, -52); //excluded from HG_PARENT_HI
 set_hitbox_value(atk, hitboxNum, HG_WIDTH, 64);
 set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 70);
 set_hitbox_value(atk, hitboxNum, HG_ANGLE, 100);
-set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(atk, hitboxNum, HG_SDI_MULTIPLIER, 0.7);
@@ -175,6 +175,7 @@ set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_burnconsume"));
 set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 1);
 set_hitbox_value(atk, hitboxNum, HG_HIT_LOCKOUT, 2);
+set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 3);
 
 hitboxNum ++; //meteor constant sourspot
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 7); //excluded from HG_PARENT_HITBOX
@@ -196,6 +197,7 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_fireblow2);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_forsburn_combust"));
 set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 2);
+set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 3);
 
 hitboxNum ++; //meteor landing hitbox
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 8); //excluded from HG_PARENT_HITBOX

@@ -2,7 +2,7 @@
 
 var temp_x = x + 8;
 var temp_y = y + 9;
-var numAlts = 31;
+var numAlts = 32;
 
 patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(get_char_info(player, INFO_VER_MINOR)-1);
 image_alpha = max(image_alpha-0.02, 0);
@@ -14,6 +14,13 @@ if (!"textLen" in self) textLen = 2;
 
 if (!"currAlt" in self)
 {
+	//Reset secret alt
+	set_color_profile_slot( 24, 0, 91, 84, 115 ); //Skin
+	set_color_profile_slot( 24, 1, 194, 107, 43 ); //Fins
+	set_color_profile_slot( 24, 2, 163, 99, 52 ); //Marks
+	set_color_profile_slot( 24, 3, 255, 31, 31 ); //Light
+	set_color_profile_slot( 24, 4, 163, 99, 52 ); //Skin 2
+	set_color_profile_slot( 24, 5, 129, 25, 204 ); //water
 	image_alpha = 3;
 	currAlt = alt_new;
 }

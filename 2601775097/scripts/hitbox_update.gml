@@ -83,36 +83,33 @@ if (player_id.theikos) //light daggers dissolve effect but theikos
 }
 
 //theikos D-strong
-if (attack == AT_DSTRONG_2)
+if (attack == AT_DSTRONG_2 && hbox_num == 1)
 {
-    if (hbox_num == 1)
+    if (hitbox_timer > 1) grounds = 0; //makes it so it only passes through the first platform
+
+    if (freemd || !free && hitbox_timer > 1 || hitbox_timer == length - 1) //spawn explosion
     {
-        if (hitbox_timer > 1) grounds = 0; //makes it so it only passes through the first platform
+        destroyed = true;
 
-        if (freemd || !free && hitbox_timer > 1 || hitbox_timer == length - 1) //spawn explosion
+        //initial ground hit stuff
+        var hit_collision = create_hitbox(AT_DSTRONG_2, 2, x, y);
+        hit_collision.fx_particles = 2;
+        if (player_id.user_event_1_active) hit_collision.fx_particles = 6;
+        
+        var fx_collision = spawn_hit_fx(x, y, player_id.fx_fireblow3);
+        fx_collision.depth = -7;
+        sound_play(asset_get("sfx_forsburn_combust"), 0, 0);
+        
+        if (freemd || !free && hitbox_timer > 1) dstrong2_active = true;
+    }
+    if (dstrong2_active) //spawn ground fire
+    {
+        if (!instance_exists(firespread_article) && !in_hitpause)
         {
-            destroyed = true;
-
-            //initial ground hit stuff
-            var hit_collision = create_hitbox(AT_DSTRONG_2, 2, x, y);
-            hit_collision.fx_particles = 2;
-            if (player_id.user_event_1_active) hit_collision.fx_particles = 6;
-            
-            var fx_collision = spawn_hit_fx(x, y, player_id.fx_fireblow3);
-            fx_collision.depth = -7;
-            sound_play(asset_get("sfx_forsburn_combust"), 0, 0);
-            
-            if (freemd || !free && hitbox_timer > 1) dstrong2_active = true;
-        }
-        if (dstrong2_active) //spawn ground fire
-        {
-            if (!instance_exists(firespread_article) && !in_hitpause)
+            for (var count = -player_id.groundfire_count; count <= player_id.groundfire_count; count ++)
             {
-                for (var count = -player_id.groundfire_count; count <= player_id.groundfire_count; count ++)
-                {
-                    var firespread = instance_create(x + groundfire_offset * count, y, "obj_article2");
-                    firespread.state = 12;
-                }
+                var firespread = instance_create(x + groundfire_offset * count, y, "obj_article2");
+                firespread.state = 12;
             }
         }
     }
@@ -136,6 +133,19 @@ if (attack == player_id.AT_SKILL7)
     else player_id.homing_target_id = player_id;
     
     //print("homing_target_id = " + string(player_id.homing_target_id));
+
+    //if bar isn't in certain animations, allow the move to hitstun and knockback
+    if (kb_value == 0 && hitpause == 0 && hitpause_growth == 0)
+    {
+        if ((player_id.state != PS_ATTACK_AIR && player_id.state != PS_ATTACK_GROUND) || player_id.attack != player_id.AT_SKILL1
+        && player_id.attack != player_id.AT_SKILL1_AIR && player_id.attack != player_id.AT_SKILL10
+        && (player_id.attack != AT_DATTACK || player_id.attack == AT_DATTACK && window >= 4) && player_id.attack != AT_JAB)
+        {
+            kb_value = 7;
+            hitpause = 5;
+            hitpause_growth = 0.4;
+        }
+    }
 
     //hit detection
     for(var i = array_length(can_hit); i > -1; i--;)
@@ -220,7 +230,7 @@ if (attack == player_id.AT_SKILL9)
         spawn_hit_fx(x+32*spr_dir, y, player_id.fx_lightblow2);
         sound_play(asset_get("sfx_ori_energyhit_medium"), 0, 0);
     }
-    if (pHitBox.hbox_num == 2 && hitbox_timer == player_id.hookshot_lifetime-1)
+    if (pHitBox.hbox_num == 2 && hitbox_timer == length - 1)
     {
         spawn_hit_fx(x+32*spr_dir, y, player_id.fx_fireblow2);
         sound_play(asset_get("sfx_forsburn_combust"), 0, 0);

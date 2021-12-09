@@ -14,21 +14,8 @@ set_character_color_shading( 6, 0 );
 }
 
 
-if (grassknot_exists = 0 && free = 1){
-	move_cooldown[AT_NSPECIAL] = 9999;
-}
 
-if (grassknot_exists = 0 && free = 0){
-	move_cooldown[AT_NSPECIAL] = 0;
-}
 
-if grassknot_exists = 0 && !place_meeting(x + (128 * spr_dir),y + vsp + 1, asset_get("par_block")) && !place_meeting(x + (110 * spr_dir),y + vsp + 1, asset_get("par_jumpthrough")){
-	move_cooldown[AT_NSPECIAL] = 9999;
-}
-
-if grassknot_exists = 1 && grassknot_article.state = PS_ATTACK_GROUND{
-	move_cooldown[AT_NSPECIAL] = 9999;
-}
 
 if (state_cat = SC_HITSTUN){
 	        in_grassknot_loop = 0; 

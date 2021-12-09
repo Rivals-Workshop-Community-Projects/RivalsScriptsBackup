@@ -2,6 +2,20 @@ if attack == AT_NSPECIAL {
 	if(hitbox_timer == 30){
 		destroyed = true;
 	}
+	if(hbox_num == 2){
+		if(spr_dir == -1){
+			proj_angle = -10;
+		}else{
+			proj_angle = 10;
+		}
+	}
+	if(hbox_num == 3){
+		if(spr_dir == -1){
+			proj_angle = -15;
+		}else{
+			proj_angle = 15;
+		}
+	}
 }
 if(attack == AT_DSPECIAL){
     if(free){

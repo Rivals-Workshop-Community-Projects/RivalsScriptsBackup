@@ -35,6 +35,7 @@ switch (attack)
 		}
         else
 		{
+			if (hasBone) costumeIndex = random_func(0, array_length_1d(costumeList), 1);
 			sound_stop(sound_get("riolu"));
 			window = 2;
 		}
@@ -462,6 +463,7 @@ switch (attack)
 	set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, asCharge/asChargeMax>0.5?aurabig_effect:aura_effect);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, asCharge/asChargeMax>0.5?aurabig_effect:aura_effect);
 	set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_ori_energyhit_"+(asCharge/asChargeMax>0.5?"heavy":"medium")));
+	set_hitbox_value(AT_NSPECIAL, 2, HG_EFFECT, asCharge/asChargeMax>0.2?0:9);
 	set_window_value(AT_NSPECIAL, 4, AG_WINDOW_HSPEED, lerp(-2, -6, min(asCharge/asChargeMax,1)));
 	window = 3;
 	window_timer = 0;

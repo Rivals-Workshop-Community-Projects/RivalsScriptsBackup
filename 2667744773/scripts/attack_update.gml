@@ -3,6 +3,22 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+if(attack == AT_UAIR || attack == AT_FAIR || attack == AT_BAIR){
+	if(flutterTimer > 0){
+		if(up_strong_pressed || down_strong_pressed || left_strong_pressed || right_strong_pressed){
+			if(up_down){
+    			if(window_timer == 1){
+					spawn_base_dust(x-(0*spr_dir), y, "n_wavedash", 0);
+    				sound_play(sound_get("Substitute"));
+    				flutterTimer -= 15;	
+    			}
+			}
+		}
+	}
+}
+
+
+
 if(attack == AT_FSTRONG){
 	if(window == 2){
 		if(window_timer == 1){
@@ -209,8 +225,13 @@ if(attack == AT_DSTRONG){
 if (attack == AT_NSPECIAL){
 	
     if (window == 1){
-    	if(window_timer == 1){
-    		flutterTimer -= 20;	
+    	if(flutterTimer > 0){
+    		if(window_timer == 1){
+    			flutterTimer -= 20;	
+    			set_window_value(AT_NSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, .2);
+    		}
+    	}else{
+    		set_window_value(AT_NSPECIAL, 2, AG_WINDOW_CUSTOM_GRAVITY, 1);
     	}
     	if(window_timer == ((get_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH) / 1.5))){
     		if (!special_down){
@@ -410,7 +431,7 @@ if (attack == AT_EXTRA_1) {
 if(attack == AT_EXTRA_2){
 	if(window == 1 && window_timer == 1){
 		var intro = random_func( 0, 3, true )
-  	// 	var intro = 2
+  	// 	var intro = 1
     	if(intro = 2){
     		set_attack_value(AT_EXTRA_2, AG_SPRITE, sprite_get("intro1"));
 			set_attack_value(AT_EXTRA_2, AG_CATEGORY, 0);
@@ -431,7 +452,7 @@ if(attack == AT_EXTRA_2){
 			set_window_value(AT_EXTRA_2, 2, AG_WINDOW_SFX, sound_get("Double_Edge1"));
 
 			set_window_value(AT_EXTRA_2, 3, AG_WINDOW_TYPE, 1);
-			set_window_value(AT_EXTRA_2, 3, AG_WINDOW_LENGTH, 30);
+			set_window_value(AT_EXTRA_2, 3, AG_WINDOW_LENGTH, 44);
 			set_window_value(AT_EXTRA_2, 3, AG_WINDOW_ANIM_FRAMES, 5);
 			set_window_value(AT_EXTRA_2, 3, AG_WINDOW_ANIM_FRAME_START, 11);
 			set_window_value(AT_EXTRA_2, 3, AG_WINDOW_HAS_SFX, 1);
@@ -444,7 +465,7 @@ if(attack == AT_EXTRA_2){
 			set_attack_value(AT_EXTRA_2, AG_NUM_WINDOWS, 5);
 
 			set_window_value(AT_EXTRA_2, 1, AG_WINDOW_TYPE, 1);
-			set_window_value(AT_EXTRA_2, 1, AG_WINDOW_LENGTH, 30);
+			set_window_value(AT_EXTRA_2, 1, AG_WINDOW_LENGTH, 40);
 			set_window_value(AT_EXTRA_2, 1, AG_WINDOW_ANIM_FRAMES, 5);
 
 			set_window_value(AT_EXTRA_2, 2, AG_WINDOW_TYPE, 1);
@@ -467,7 +488,7 @@ if(attack == AT_EXTRA_2){
 			set_window_value(AT_EXTRA_2, 4, AG_WINDOW_HAS_SFX, 1);
 			set_window_value(AT_EXTRA_2, 4, AG_WINDOW_SFX, sound_get("cry"));
 
-			set_window_value(AT_EXTRA_2, 5, AG_WINDOW_LENGTH, 30);
+			set_window_value(AT_EXTRA_2, 5, AG_WINDOW_LENGTH, 40);
 			set_window_value(AT_EXTRA_2, 5, AG_WINDOW_ANIM_FRAMES, 5);
 			set_window_value(AT_EXTRA_2, 5, AG_WINDOW_ANIM_FRAME_START, 13);
 			set_window_value(AT_EXTRA_2, 5, AG_WINDOW_HAS_SFX, 1);

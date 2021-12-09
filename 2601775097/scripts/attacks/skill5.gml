@@ -37,9 +37,9 @@ set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 4); //starting fram
 set_window_value(atk, windowNum, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, windowNum, AG_WINDOW_SFX, asset_get("sfx_kragg_spike"));
 
-windowNum ++; //endlag
+windowNum ++; //bursts window
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 16); //controls speed
+set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 20); //controls speed //16
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 2); //frames amount on strip
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 5); //starting frame. starts from 0
 
@@ -114,6 +114,7 @@ set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 2);
+set_hitbox_value(atk, hitboxNum, HG_HIT_LOCKOUT, 8);
 
 hitboxNum ++; //initial attack - burning fury ver
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
@@ -159,12 +160,13 @@ set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_forsburn_combust"));
 set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
+set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_GROUND_BEHAVIOR, 2);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 2);
+set_hitbox_value(atk, hitboxNum, HG_HIT_LOCKOUT, 4);
 
 hitboxNum ++; //soft spike stomp
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile

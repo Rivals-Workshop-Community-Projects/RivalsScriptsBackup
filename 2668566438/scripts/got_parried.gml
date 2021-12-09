@@ -1,0 +1,1 @@
+hit_player_obj.poi_cooldown = 0;

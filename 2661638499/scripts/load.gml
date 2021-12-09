@@ -49,6 +49,8 @@ sprite_change_offset("hurtbox_X", OFFSET_X*2, OFFSET_Y*2);
 sprite_change_offset("hurtbox_EM", OFFSET_X*2, OFFSET_Y*2);
 
 
+sprite_change_offset("plat", 0, 0);
 sprite_change_offset("phone_open_2", 32, 48);
 
-sprite_change_offset("plat", 0, 0);
+sprite_change_offset("vfx_hiddenpower", 104, 104);
+sprite_change_offset("vfx_corrupt", 32, 48);

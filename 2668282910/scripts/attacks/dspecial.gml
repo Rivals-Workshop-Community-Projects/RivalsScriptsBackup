@@ -20,7 +20,7 @@ set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 
-set_num_hitboxes(AT_DSPECIAL, 1);
+set_num_hitboxes(AT_DSPECIAL, 3);
 
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 99);
@@ -68,3 +68,29 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, false);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_PLASMA_SAFE, 1);
+
+/*
+set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DSPECIAL, 3, HG_WINDOW, 99);
+set_hitbox_value(AT_DSPECIAL, 3, HG_LIFETIME, 999999999);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_X, 0);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_Y, 0);
+set_hitbox_value(AT_DSPECIAL, 3, HG_WIDTH, 60);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HEIGHT, 60);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PRIORITY, 5);
+set_hitbox_value(AT_DSPECIAL, 3, HG_DAMAGE, 8);
+set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE, 60);
+set_hitbox_value(AT_DSPECIAL, 3, HG_EFFECT, 9);
+set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_KNOCKBACK, 8);
+set_hitbox_value(AT_DSPECIAL, 3, HG_KNOCKBACK_SCALING, .5);
+set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_HITPAUSE, 12);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HITPAUSE_SCALING, .7);
+set_hitbox_value(AT_DSPECIAL, 3, HG_EXTRA_HITPAUSE, 6);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_SFX, sound_get("pokken_ball_ex_hit"));
+set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, zetter_hit3);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_PARRY_STUN, false);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 1);

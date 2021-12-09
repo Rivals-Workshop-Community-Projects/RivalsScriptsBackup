@@ -68,7 +68,7 @@ sprite_change_offset("plat", 64, 70);
 sprite_change_offset("mummy_icon", 8, 8);
 sprite_change_offset("wwisp_fx1", 24, 24);
 sprite_change_offset("wwisp_fx2", 24, 24);
-sprite_change_offset("wwisp_hfx", 96, 96);
+sprite_change_offset("wwisp_hfx", 128, 128);
 sprite_change_offset("wwisp_charge_fx", 96, 96);
 sprite_change_offset("cursed_fx1", 24, 24);
 sprite_change_offset("cursed_fx2", 24, 24);

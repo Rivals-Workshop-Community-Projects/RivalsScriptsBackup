@@ -76,7 +76,7 @@ hitboxNum = 1; //spear
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 99); //excluded from HG_PARENT_HITBOX
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, -1); //excluded from HG_PARENT_HITBOX
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 2); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 40); //excluded from HG_PARENT_HITBOX
+set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 55); //excluded from HG_PARENT_HITBOX
 set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 8);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 16); //excluded from HG_PARENT_HITBOX
@@ -108,7 +108,7 @@ hitboxNum ++; //burning spear
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 99); //excluded from HG_PARENT_HITBOX
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, -1); //excluded from HG_PARENT_HITBOX
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 2); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitboxNum, HG_LIFETIME, hookshot_lifetime); //excluded from HG_PARENT_HITBOX
+set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 55); //excluded from HG_PARENT_HITBOX
 set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 16); //excluded from HG_PARENT_HITBOX
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, -30); //excluded from HG_PARENT_HITBOX

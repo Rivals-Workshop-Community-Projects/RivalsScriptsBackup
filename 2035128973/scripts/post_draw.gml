@@ -65,6 +65,12 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 			break;
 	}
 }
+else if (costumeIndex>=0)
+{
+	shader_start();
+	draw_sprite_ext(costumeList[costumeIndex], image_index, x, y, 2*spr_dir, 2, 0, c_white, 1);
+	shader_end();
+}
 
 #define GetColourPlayer(_index)
 {

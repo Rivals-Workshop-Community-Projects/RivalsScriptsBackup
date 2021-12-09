@@ -28,7 +28,7 @@ set_window_value(AT_DATTACK, 2, AG_WINDOW_SFX, asset_get("sfx_ell_drill_loop"));
 set_window_value(AT_DATTACK, 2, AG_WINDOW_CUSTOM_GRAVITY, 0);
 
 set_window_value(AT_DATTACK, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 8);
+set_window_value(AT_DATTACK, 3, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_DATTACK, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);

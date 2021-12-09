@@ -340,6 +340,7 @@ switch(attack)
 					{
 						hsp = 5.5*spr_dir;
 						vsp = -2;
+						spawn_hit_fx( x+40*spr_dir, y+14, spunch_effect )
 					}
 					else
 					{
@@ -510,6 +511,13 @@ switch(attack)
 			{
 				hsp = 0;
 				y -= 10;
+				switch (croagberry)
+				{
+					case 0:{spawn_hit_fx( x-21*spr_dir, y-100, oranpush )}break;
+					case 1:{spawn_hit_fx( x-21*spr_dir, y-100, pechapush )}break;
+					case 2:{spawn_hit_fx( x-21*spr_dir, y-100, rawstpush )}break;
+					case 3:{spawn_hit_fx( x-21*spr_dir, y-100, cheripush )}break;
+				}
 			}
 			
 			if window_timer == 2 && !hitpause
@@ -549,12 +557,16 @@ switch(attack)
 			
 			case 2:
 			{   
+				if window_timer == 1 && !hitpause
+				{
+					sound_play(sound_get("dp-nspec-charge"));
+				}
 				if special_down && poison_sting_charge <= 59
 				{
 					poison_sting_charge++;
 					if window_timer >=3
 					{
-						window_timer = 0;
+						window_timer = 2;
 					}
 				}
 				
@@ -562,6 +574,11 @@ switch(attack)
 				{
 					window = 5;
 					window_timer = 0;
+					if !hitpause 
+					{
+						sound_stop(sound_get("dp-nspec-charge"));
+						sound_play(sound_get("dp-nspec-store"));
+					}
 				}
 				
 				nspecial_switch_to_2();
@@ -570,10 +587,14 @@ switch(attack)
 			
 			case 3:
 			{
-				if free && window_timer <= 7
+				if free && window_timer <= 7 && nspec_stall
 				{
 					vsp = clamp(vsp, -4,4);
 					hsp = clamp(hsp, -3.5, 3.5);
+				}
+				else if free && window_timer >= 7
+				{
+					nspec_stall = false;
 				}
 				
 				if !hitpause
@@ -583,52 +604,58 @@ switch(attack)
 					{
 						case 1:
 						{
+							
+							if !hitpause
+							{
+								sound_stop(sound_get("dp-nspec-charge"));
+							}
+							
 							if poison_sting_charge >=30
 							{
 							sting_damage = 2;
 							sting_pause = 6;
 							sting_pause_scaling = 0.05;
 							}
-						else if poison_sting_charge <= 30
-						{
-							sting_damage = 1;
-							sting_pause = 4;
-							sting_pause_scaling = 0.1;
-						}
-						
-						poisonsting_variables_set()
-						if !free
-						{
-							var spit = spawn_hit_fx( x+sting_offset_x*0.5*spr_dir, y + sting_offset_y, spit_fx )
-							spit.draw_angle = sting_angle3;
-							spit.depth = -5;
+							else if poison_sting_charge <= 30
+							{
+								sting_damage = 1;
+								sting_pause = 4;
+								sting_pause_scaling = 0.1;
+							}
 							
-							var poison_sting1 = create_hitbox( AT_NSPECIAL, 1, x+sting_offset_x*spr_dir, y + sting_offset_y+4 )
-							poison_sting1.damage = sting_damage;
-							poison_sting1.length += poison_sting_charge*0.1;
-							poison_sting1.hsp += poison_sting_charge*spr_dir*0.15;
-							poison_sting1.vsp = 1.2;
-							poison_sting1.proj_angle = sting_angle1;
-							poison_sting1.hitpause = sting_pause;
-							poison_sting1.fx_particles = 1;
-							poison_sting1.hitpause_growth = sting_pause_scaling;
-						}
-						if free
-						{
-							var spit = spawn_hit_fx( x+sting_offset_x*0.5*spr_dir, y-18 + sting_offset_y, spit_fx )
-							spit.draw_angle = sting_angle3;
-							spit.depth = -5;
-							
-							var poison_sting1 = create_hitbox( AT_NSPECIAL, 1, x+sting_offset_x*spr_dir, y + sting_offset_y )
-							poison_sting1.damage = sting_damage;
-							poison_sting1.length += poison_sting_charge*0.05;
-							poison_sting1.hsp = 8.5*spr_dir + poison_sting_charge*0.15*spr_dir;
-							poison_sting1.vsp = 6.5 + poison_sting_charge*0.15;
-							poison_sting1.proj_angle = sting_angle1;
-							poison_sting1.hitpause = sting_pause;
-							poison_sting1.fx_particles = 1;
-							poison_sting1.hitpause_growth = sting_pause_scaling;
-						}
+							poisonsting_variables_set()
+							if !free
+							{
+								var spit = spawn_hit_fx( x+sting_offset_x*0.5*spr_dir, y + sting_offset_y, spit_fx )
+								spit.draw_angle = sting_angle3;
+								spit.depth = -5;
+								
+								var poison_sting1 = create_hitbox( AT_NSPECIAL, 1, x+sting_offset_x*spr_dir, y + sting_offset_y+4 )
+								poison_sting1.damage = sting_damage;
+								poison_sting1.length += poison_sting_charge*0.1;
+								poison_sting1.hsp += poison_sting_charge*spr_dir*0.15;
+								poison_sting1.vsp = 1.2;
+								poison_sting1.proj_angle = sting_angle1;
+								poison_sting1.hitpause = sting_pause;
+								poison_sting1.fx_particles = 1;
+								poison_sting1.hitpause_growth = sting_pause_scaling;
+							}
+							if free
+							{
+								var spit = spawn_hit_fx( x+sting_offset_x*0.5*spr_dir, y-18 + sting_offset_y, spit_fx )
+								spit.draw_angle = sting_angle3;
+								spit.depth = -5;
+								
+								var poison_sting1 = create_hitbox( AT_NSPECIAL, 1, x+sting_offset_x*spr_dir, y + sting_offset_y )
+								poison_sting1.damage = sting_damage;
+								poison_sting1.length += poison_sting_charge*0.05;
+								poison_sting1.hsp = 8.5*spr_dir + poison_sting_charge*0.15*spr_dir;
+								poison_sting1.vsp = 6.5 + poison_sting_charge*0.15;
+								poison_sting1.proj_angle = sting_angle1;
+								poison_sting1.hitpause = sting_pause;
+								poison_sting1.fx_particles = 1;
+								poison_sting1.hitpause_growth = sting_pause_scaling;
+							}
 						}break;
 								
 						case 3:
@@ -728,12 +755,17 @@ switch(attack)
 			
 			case 2:
 			{   
+				if window_timer == 1 && !hitpause
+				{
+					sound_play(sound_get("dp-nspec-charge"));
+				}
+				
 				if special_down && poison_sting_charge <= 59
 				{
 					poison_sting_charge++;
 					if window_timer >=3
 					{
-						window_timer = 0;
+						window_timer = 2;
 					}
 				}
 				
@@ -741,6 +773,11 @@ switch(attack)
 				{
 					window = 5;
 					window_timer = 0;
+					if !hitpause 
+					{
+						sound_stop(sound_get("dp-nspec-charge"));
+						sound_play(sound_get("dp-nspec-store"));
+					}
 				}
 				
 				nspecial_switch_to_1();
@@ -748,14 +785,19 @@ switch(attack)
 			
 			case 3:
 			{
-				if free && window_timer <= 7
+				if free && window_timer <= 7 && nspec_stall
 				{
 					vsp = clamp(vsp, -4, 1);
 					hsp = clamp(hsp, -3.5, 3.5);
 				}
+				else if free && window_timer >= 7
+				{
+					nspec_stall = false;
+				}
 				
 				if window_timer == 1 && !hitpause
 				{
+					sound_stop(sound_get("dp-nspec-charge"));
 					spit = spawn_hit_fx( x+20*spr_dir, y-28, spit_fx )
 					spit.depth = -5;
 					
@@ -839,7 +881,7 @@ switch(attack)
 		
 		if window == 1
 		{
-			if window_timer == 1 && free {vsp = clamp(vsp, -8,-2);}
+			if window_timer == 1 && free && dspec_stall {vsp = clamp(vsp, -8,-2);}
 			hud_offset += 5;
 			hud_offset = clamp(hud_offset, 0, 45);
 			
@@ -861,6 +903,7 @@ switch(attack)
 			
 			if window == 2 && window_timer == 1
 			{
+				dspec_stall = false;
 				if button_down >= 11
 				{
 					for (var i = 0; i<instance_number(obj_article2); i++) 
@@ -918,10 +961,15 @@ switch(attack)
 				{
 					vsp = -3;
 				}
+				
+				if window_timer == 12 && !hitpause
+				{
+					spawn_hit_fx( x, y+10, bounce_start )
+				}
 			}break;
 			
 			case 2:
-			{
+			{	
 				bounce_angle = round(lengthdir_x(hsp, vsp)*-4.5);
 				bounce_stretch = abs(vsp*0.08)
 				bounce_offset = bounce_stretch*8;
@@ -993,6 +1041,7 @@ switch(attack)
 				if !hitpause && window_timer == 0
 				{
 					spawn_hit_fx( x, y, bounce_land_fx )
+					spawn_hit_fx( x, y+10, bounce_start )
 				}
 				
 				hsp = 0;
@@ -1160,4 +1209,35 @@ switch(attack)
 							}break;
 						}
 }
+#define spawn_base_dust
+///spawn_base_dust(x, y, name, ?dir)
+//This function spawns base cast dusts. Names can be found below.
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dfa = 0; //draw_angle value
+var dust_color = 0;
+var x = argument[0], y = argument[1], name = argument[2];
+var dir = argument_count > 3 ? argument[3] : 0;
+
+switch (name) {
+    default: 
+    case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
+    case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
+    case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
+    case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
+    case "land": dlen = 24; dfx = 0; dfg = 2620; break;
+    case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
+    case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
+    case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+}
+var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+newdust.dust_fx = dfx; //set the fx id
+if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
+newdust.dust_color = dust_color; //set the dust color
+if dir != 0 newdust.spr_dir = dir; //set the spr_dir
+newdust.draw_angle = dfa;
+return newdust;
 

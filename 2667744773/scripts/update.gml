@@ -108,4 +108,10 @@ with (asset_get("oPlayer")) {
 }
 
 
+if (galaxy_timer == 0 and instance_exists(hit_player_obj) and hit_player_obj.activated_kill_effect)
+{
+    galaxy_timer = 90;
+    sound_play(sound_get("supereffective"));
+}
+galaxy_timer = max(galaxy_timer-1,0)
 

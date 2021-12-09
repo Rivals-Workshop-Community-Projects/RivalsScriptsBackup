@@ -18,7 +18,14 @@ if (window_timer <= 1 && get_window_value(attack, window, AG_UNOWN_WINDOW_ACTIVE
     }
     else if (attack == AT_TAUNT) //! case: consume buffer
     {
-        if (unown_best_word_length > 1) unown_text_buffer = "";
+        if (unown_best_word_length > 1) 
+        {
+            hidden_power_text_anim = string_upper(
+                string_copy(unown_text_buffer, unown_best_word_pos+1, unown_best_word_length));
+            hidden_power_text_anim_timer = hidden_power_text_anim_timer_max;
+            hidden_power_text_anim_pos = unown_best_word_pos;
+            unown_text_buffer = "";
+        }
     }
     else  //? case: backspace
     {
@@ -58,12 +65,63 @@ if (window_timer <= 1 && get_window_value(attack, window, AG_UNOWN_WINDOW_ACTIVE
 #define check_if_special_word(word)
 {
     word = string_upper(word);
+    if (word == unown_last_special_word) return;
+
     switch (word)
     {
        case "UNOWN":
             sound_play(sound_get("gsc_unown"));
        break;
+       case "MISSINGNO":
+            sound_play(unsafe_sfx);
+            unsafe_corrupt_timer = unsafe_corrupt_timer_max;
+       break;
+
+       case "HONK":
+            sound_play(sound_get("honk"));
+       break;
+       case "UNKNOWN":
+            sound_play(asset_get("mfx_tut_fail"));
+       break;
+       case "FORNACE":
+            sound_play(asset_get("mfx_logo_shing"));
+       break;
+
+       case "HANDICAP":
+            set_player_damage( player, 999);
+       break;
+
+       case "ATMOSPHERE":
+            sound_play(asset_get("mfx_forward"));
+            spawn_hit_fx(x, y - unown_eye_center_offset, 66);
+            y = y-500;
+       break;
+
+       case "HEAL":
+       case "ORAN":
+       case "BERRY":
+       case "REST":
+            sound_play(sound_get("rse_potion"));
+            	take_damage( player, -1, -2 );
+       break;
+
+       case "SITRUS":
+       case "POTION":
+       case "RECOVER":
+            sound_play(sound_get("rse_potion"));
+            	take_damage( player, -1, -5 );
+       break;
+
+       case "MASUDA":
+            sound_play(sound_get("rse_shiny"));
+            vfx_shiny_override = true;
+       break;
+       default:
+            return; //skips saving this word: not special
+       break;
     }
+
+    unown_last_special_word = word;
 }
 
 //====================================================================

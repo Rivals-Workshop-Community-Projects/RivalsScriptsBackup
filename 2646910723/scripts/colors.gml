@@ -169,10 +169,10 @@ set_color_profile_slot( 13, 7, 255, 255, 255 ); //Eye sub
 // BLW
 set_color_profile_slot( 14, 0, 255, 187, 0 ); //Energy - eyes
 set_color_profile_slot( 14, 1, 0, 0, 0 ); //Hair
-set_color_profile_slot( 14, 2, 71, 8, 24 ); //Coat
-set_color_profile_slot( 14, 3, 166, 23, 21 ); //Decor
+set_color_profile_slot( 14, 2, 26, 26, 26 ); //Coat
+set_color_profile_slot( 14, 3, 181, 0, 0 ); //Decor
 set_color_profile_slot( 14, 4, 0, 0, 0 ); //Line
-set_color_profile_slot( 14, 5, 28, 21, 0 ); //InnerCoat
+set_color_profile_slot( 14, 5, 255, 255, 255 ); //InnerCoat
 set_color_profile_slot( 14, 6, 105, 69, 44 ); //Skin
 set_color_profile_slot( 14, 7, 240, 208, 208 ); //Eye sub
 

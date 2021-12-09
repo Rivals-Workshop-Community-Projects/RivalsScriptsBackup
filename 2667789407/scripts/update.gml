@@ -66,7 +66,7 @@ if (state_cat == SC_HITSTUN) || (state == PS_PRATFALL)
 {
     can_fast_fall = false;
 }
-else if !(fast_falling || state == PS_ATTACK_AIR)
+else if !(fast_falling || state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
 {
     can_fast_fall = true;
 }
@@ -117,9 +117,11 @@ if (lev_parry_cooldown > 0)
 }
 
 //once per airtime moves
-if (lev_is_grounded || !free)
+if (lev_is_grounded || !free || state == PS_WALL_JUMP || state == PS_WALL_TECH)
 {
     unown_c_used = false;
+    unown_g_used = false;
+    unown_t_used = false;
 }
 
 //=============================================================

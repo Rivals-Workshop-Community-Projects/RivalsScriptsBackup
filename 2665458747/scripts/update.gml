@@ -16,6 +16,8 @@ if !free
     bair_stall = true;
     bounce_limit = 2;
     croagfspecused = false;
+    dspec_stall = true;
+    nspec_stall = true;
 }
 
 if free
@@ -280,6 +282,7 @@ hitfxDepth(sludgebombbig, -5)
 hitfxDepth(dissipate, -5)
 hitfxDepth(mudhit, -5)
 hitfxDepth(suckpunchhit, -5)
+hitfxDepth(bounce_start, -6)
 
 #define hitfxDepth(hitfxname, depf)
 

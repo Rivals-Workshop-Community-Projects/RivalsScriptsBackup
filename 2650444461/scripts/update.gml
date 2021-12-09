@@ -66,15 +66,19 @@ with (asset_get("pHitBox")){
 }
 
 if(state == PS_PARRY){
+	if(state_timer == 1){
+		sound_play(sound_get("Bubble"));
+	}
 	if(state_timer == 20){
 		spawn_hit_fx(x-30*spr_dir+random_func(1, 10, true)*spr_dir,y-40-random_func(2, 10, true),fx_bubbles);
 		spawn_hit_fx(x+20*spr_dir+random_func(3, 10, true)*spr_dir,y+4-random_func(4, 10, true),fx_bubbles);
 		spawn_hit_fx(x-30*spr_dir+random_func(5, 10, true)*spr_dir,y+4-random_func(6, 10, true),fx_bubbles_fast);
 		spawn_hit_fx(x+20*spr_dir+random_func(7, 10, true)*spr_dir,y-40-random_func(8, 10, true),fx_bubbles_fast);
+		sound_play(sound_get("Bubble Pop"));
 	}
 }
 
-if(get_gameplay_time() <= 120){
+/*if(get_gameplay_time() <= 120){
 	
 }
 
@@ -102,7 +106,7 @@ if (runesUpdated || get_match_setting(SET_RUNES)) {
 	}if (has_rune("O") || runeO) {
 		
 	}
-}
+}*/
 
 
 if(!loaded){

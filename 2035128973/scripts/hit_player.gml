@@ -25,7 +25,7 @@ if (my_hitboxID.player == player) switch (my_hitboxID.attack)
 		break;
 	case AT_FTHROW:
 		if (my_hitboxID.hbox_num == 1)
-			sound_play(asset_get("sfx_blow_medium2"));
+			sound_play(asset_get("sfx_blow_heavy1"));
 		break;
 	case AT_BAIR:
 		if (my_hitboxID.hbox_num == 1)

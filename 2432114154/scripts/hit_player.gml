@@ -214,7 +214,7 @@ or my_hitboxID.attack == AT_FAIR or (my_hitboxID.attack == AT_BAIR && move_coold
 	sound_play(asset_get("sfx_waterwarp_start"),false,noone,1.2,1.2)
 	sound_play(asset_get("sfx_boss_vortex_end"),false,noone,1,1.6)	
 	with hit_player_obj {
-		take_damage(player,-1,4)
+		//take_damage(player,-1,4)
 		//hitstop += 6
 	}
 	//hitstop += 3

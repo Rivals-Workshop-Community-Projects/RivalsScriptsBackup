@@ -347,7 +347,7 @@ if (attack == AT_FSPECIAL){
 			set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecial_air"));
 		}
 		
-		    // Whiff hitboxes
+		// Whiff hitboxes
 	    if (grabbedid == noone){
 		    set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 22);
 			set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 5);
@@ -357,11 +357,11 @@ if (attack == AT_FSPECIAL){
 			set_window_value(AT_FSPECIAL, 5, AG_WINDOW_CUSTOM_AIR_FRICTION, air_friction)
 			
 			set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -36 + fspec_yoff);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, -35 + fspec_yoff);
+			set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, -35 + fspec_yoff/2);
 			
 						
-			set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 76 + fspec_xoff);
-			set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, 66 + fspec_xoff);
+			set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 71 + fspec_xoff);
+			set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_X, 36 + fspec_xoff);
 	    }
 	}
 	
@@ -418,7 +418,7 @@ if (attack == AT_FSPECIAL){
 
 
 	// Grabbing projectile
-	if(hitpause == false && grabbedid == noone && grabbedProj == noone && (window == 3 || window == 4))
+	if(hitpause == false && grabbedid == noone && grabbedProj == noone && (window == 3 || window == 4) && !shield_down && !special_down)
 	{
 		
 	// First, get nearby hitboxes
@@ -716,8 +716,15 @@ if (attack == AT_FSPECIAL){
 	
 	// Custom hitbox creation
 	if(!hitpause && grabbedid == noone && grabbedProj == noone && window >= 3 && window <= 5 && !KRAGG)
-		if(window_timer <= 1 && window < 5)
-			create_hitbox(AT_FSPECIAL,window-2,x,y);
+	{
+		if(window_timer <= 1 && window == 3)
+		{
+			create_hitbox(AT_FSPECIAL,1,x,y);
+			create_hitbox(AT_FSPECIAL,2,x,y);
+		}
+			
+	}
+
 }
 #endregion
 
@@ -1286,7 +1293,7 @@ if (attack == AT_USPECIAL){
     // }
     
     // Grabbing projectile
-	if(grabbedProj == noone && (window < 7 && window > 2))
+	if(grabbedProj == noone && (window < 7 && window > 2) && !shield_down && !special_down)
 	{
 	// First, get nearby hitboxes
 	var tempProj = collision_circle(
@@ -2215,7 +2222,7 @@ if (attack == AT_AIR_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_G
     		window = 5;
     		break_grab = true;
     		
-    		set_hitbox_value(AT_AIR_DSPECIAL, 2, HG_ANGLE, 280);
+    		set_hitbox_value(AT_AIR_DSPECIAL, 2, HG_ANGLE, 285);
     		
     		
 			set_window_value(AT_AIR_DSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 10);
@@ -2265,7 +2272,7 @@ if (attack == AT_AIR_DSPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_G
     		window = 5;
     		break_grab = true;
     		
-    		set_hitbox_value(AT_AIR_DSPECIAL, 2, HG_ANGLE, 260);
+    		set_hitbox_value(AT_AIR_DSPECIAL, 2, HG_ANGLE, 245);
     		
     		
 			set_window_value(AT_AIR_DSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 6);

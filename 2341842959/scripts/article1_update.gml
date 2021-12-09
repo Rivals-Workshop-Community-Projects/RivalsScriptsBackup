@@ -51,7 +51,7 @@ if (player_id.levei_parry == true){
 //}
 
 with (asset_get("pHitBox")){
-	if ((attack == AT_NSPECIAL || attack == AT_DSPECIAL) 
+	if ((attack == AT_DSPECIAL || attack == AT_FSPECIAL) 
 	&& (place_meeting(x,y,other.id) && other.player_id = player_id) && other.state != 2){
 		other.image_index = 0;
 		other.state = 2;
@@ -90,7 +90,7 @@ if (state == 2){
 	if (state_timer == 9){
 		player_id.explosion_cont++;
 		sound_play(asset_get("sfx_ell_fist_explode"));
-		create_hitbox( AT_DSPECIAL, 1, x, y-30);
+		create_hitbox( AT_DSPECIAL, 2, x, y-30);
 	}
 	if (state_timer == 45){
 		shoulddie = true;

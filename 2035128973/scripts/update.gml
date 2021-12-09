@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 5;
+	var noOfPatches = 6;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -116,6 +116,8 @@ if (instance_exists(boneObj) && boneObj.state != 2) hasBone = false;
 else with (asset_get("pHitBox")) if (player_id == other.id && attack == AT_USPECIAL && hbox_num == 1) other.hasBone = false;
 
 if (!lastHasBone && hasBone) sound_play(sound_get("falco_shine"));
+
+if (costumeIndex >= 0 && sprite_index != sprite_get("idle") && sprite_index!=sprite_get("intro")) costumeIndex = -1;
 
 if (hasBone)
 {

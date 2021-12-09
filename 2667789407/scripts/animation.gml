@@ -45,6 +45,12 @@ switch (state)
             spawn_hit_fx(x + (window == 3 ? 36 : -36), y - 30, 14);
         }
 //=============================================================================
+        else if (attack == UNOWN_ATK.G) && (window == 3)
+        {
+            image_index = get_window_value(attack, window, AG_WINDOW_ANIM_FRAME_START);
+            image_index += (hsp > -3) + (hsp > -1.5) + (hsp > 1.5) + (hsp > 3);
+        }
+//=============================================================================
         else if (attack == UNOWN_ATK.L) && (window == 4)
         {
             //shake_camera(12, 2);
@@ -209,8 +215,11 @@ else
     inward_hidden_power_fast = false;
 }
 
+if (hidden_power_text_anim_timer > 0) hidden_power_text_anim_timer--;
+
+
 //Shiny!
-if (get_player_color(player) == 1) 
+if (get_player_color(player) == 1 || vfx_shiny_override)
 && (get_gameplay_time() % (16 + random_func(4, 128, true)) == 0)
 {
     var kx = x - 32 + random_func(5, 64, true);

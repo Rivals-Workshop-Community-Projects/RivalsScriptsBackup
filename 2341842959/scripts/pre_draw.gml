@@ -23,7 +23,8 @@ if (gas_bair_cont > 0 && gas_bair_cont < 5){
 }
 
 if (gas_nspecial_cont > 0 && gas_nspecial_cont < 6){
-    draw_sprite_ext(sprite_get("gas_NSPECIAL_HOLD"), gas_nspecial_cont, gas_nspecial_posx, gas_nspecial_posy, spr_dir, 1, 0, c_white, 1 );
+    draw_sprite_ext(sprite_get("gas_NSPECIAL_HOLD"), gas_nspecial_cont, gas_nspecial_posx, 
+    gas_nspecial_posy, spr_dir, 1, uspecial_rot, c_white, 1 );
 }
 
 if (gas_djump == 1){

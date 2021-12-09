@@ -262,6 +262,7 @@ if (!theikos_active) //theikos bar doesn't have this limit
     }
 }
 
+
 //up tilt momentum boost
 //if (state == PS_DASH_START || state == PS_DASH) set_window_value(AT_UTILT, 2, AG_WINDOW_HSPEED_TYPE, 0);
 //else if (state != PS_DASH_START && state != PS_DASH && state != PS_ATTACK_GROUND) reset_window_value(AT_UTILT, 2, AG_WINDOW_HSPEED_TYPE);
@@ -299,53 +300,11 @@ else mpBelowZero = false;
 if (attack == AT_TAUNT) mpGainable = false;
 else mpGainable = true;
 
-//low MP message
-if (mp_error_active)
-{
-    show_miniMP = true;
-	miniMP_time = miniMP_noMP;
-	miniMP_alpha = 1;
-
-    mp_errorcool --;
-    mp_error_frame += mp_error_speed;
-    if (mp_errorcool == 19)
-    {
-        sound_play(sound_get("mfx_notice"), 0, 0);
-        if (spr_dir == 1)
-        {
-            mp_message1edit = spawn_hit_fx(x-32, y-78, mp_message1);
-            mp_message1edit.depth = depth - 10;
-        }
-        else
-        {
-            mp_message2edit = spawn_hit_fx(x+32, y-78, mp_message2);
-            mp_message2edit.depth = depth - 10;
-        }
-    }
-    if (mp_errorcool <= 0)
-    {
-        mp_error_active = false;
-        mp_errorcool = 20;
-    }
-}
-
-//guard aura and accel blitz both have a skill cooldown
-if (cool_start)
-{
-    cooldown --;
-
-    if (cooldown <= 0)
-    {
-        cool_start = false;
-        cooldown = cool_reset;
-    }
-}
 
 //on cooldown message
 if (cd_error_active)
 {
     cd_errorcool --;
-    cd_error_frame += cd_error_speed;
     if (cd_errorcool == 19)
     {
         sound_play(sound_get("mfx_notice"), 0, 0);
@@ -367,6 +326,35 @@ if (cd_error_active)
     }
 }
 
+
+//low MP message
+if (mp_error_active)
+{
+    show_miniMP = true;
+	miniMP_time = miniMP_noMP;
+	miniMP_alpha = 1;
+
+    mp_errorcool --;
+    if (mp_errorcool == 19)
+    {
+        sound_play(sound_get("mfx_notice"), 0, 0);
+        if (spr_dir == 1)
+        {
+            mp_message1edit = spawn_hit_fx(x-32, y-78, mp_message1);
+            mp_message1edit.depth = depth - 10;
+        }
+        else
+        {
+            mp_message2edit = spawn_hit_fx(x+32, y-78, mp_message2);
+            mp_message2edit.depth = depth - 10;
+        }
+    }
+    if (mp_errorcool <= 0)
+    {
+        mp_error_active = false;
+        mp_errorcool = 20;
+    }
+}
 //mini MP gauge animation
 if (show_miniMP)
 {
@@ -461,6 +449,8 @@ else
     blast_power = 0;
     reset_window_value(AT_SKILL3, 6, AG_WINDOW_TYPE);
 }
+
+if (!free) photon_used = false;
 
 //accel blitz logic (tis a long one chief)
 if (accelblitz_active) //accel blitz's motion blur after bar's teleport
@@ -581,22 +571,50 @@ if (spawn_earth_shatter)
     sound_play(asset_get("sfx_burnapplied"), 0, 0, 0.7);
     spawn_earth_shatter = false;
 }
+//allows bar to spawn bursts even if he isn't in the attack itself
+// check if i like it seperated like this or if it feels too strong
+if (burst_count_start && !hitpause) 
+{
+    burst_count ++;
+    if (chasm_burningfury_was_active) max_burst_count = 29;
+    else max_burst_count = 19;
+
+    if (!hitpause && !reached_max_bursts)
+    {
+        if (burst_count % 5 == 0)
+        {
+            var chasmburst = create_hitbox(AT_SKILL5, 2, x+burst_pos*spr_dir, y-42);
+            chasmburst.fx_particles = 2;
+            if (user_event_1_active) chasmburst.fx_particles = 6;
+            burst_pos += 40;
+        }
+    }
+
+    if (burst_count >= max_burst_count)
+    {
+        burst_count_start = false;
+        burst_count = -1;
+        if (chasm_burningfury_was_active) chasm_burningfury_was_active = false;
+    }
+}
 
 //guard aura logic
 if (polaris_active)
 {
     if (get_gameplay_time() % 6 == 0) light_charge(x, y-96, 180);
 
-    //making sure the multihitters don't spawn more than 1 projectile (there's probably a better way to check this)
-    if (already_shot && (attack != AT_SKILL1 || attack == AT_SKILL1 && window <= 7) && (attack != AT_SKILL1_AIR || attack == AT_SKILL1_AIR && window <= 7)
-    && attack != AT_SKILL3 && (attack != AT_SKILL5 || attack == AT_SKILL5 && window <= 5 && window_timer <= 2) && attack != AT_SKILL10
-    && (attack != AT_SKILL6 || attack == AT_SKILL6 && window <= 5) && attack != AT_DSTRONG && attack != AT_DATTACK
-    || window == get_attack_value(attack, AG_NUM_WINDOWS) || state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
-    {
-        already_shot = false;
-    }
+    if (homing_cooldown >= 0) homing_cooldown--; //internal cooldown
+    if (already_shot) already_shot = false;
 
-    /*
+    //making sure the multihitters don't spawn more than 1 projectile (there's probably a better way to check this)
+    //if (already_shot && (attack != AT_SKILL1 || attack == AT_SKILL1 && window <= 7) && (attack != AT_SKILL1_AIR || attack == AT_SKILL1_AIR && window <= 7)
+    //&& attack != AT_SKILL3 && (attack != AT_SKILL5 || attack == AT_SKILL5 && window <= 5 && window_timer <= 2) && attack != AT_SKILL10
+    //&& (attack != AT_SKILL6 || attack == AT_SKILL6 && window <= 5) && attack != AT_DSTRONG && attack != AT_DATTACK
+    //|| window == get_attack_value(attack, AG_NUM_WINDOWS) || state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
+    //{
+    //    already_shot = false;
+    //}
+
     //these multi hitting moves move bar around so i don't want the hitpause to mess with the combo
     if (attack == AT_SKILL1 || attack == AT_SKILL1_AIR || attack == AT_SKILL10 || attack == AT_DATTACK && window < 4 || attack == AT_JAB)
     {
@@ -612,9 +630,8 @@ if (polaris_active)
         reset_hitbox_value(AT_SKILL7, 1, HG_BASE_HITPAUSE);
         reset_hitbox_value(AT_SKILL7, 1, HG_HITPAUSE_SCALING);
     }
-    */
     
-    if (down_down && special_pressed && state_cat != SC_GROUND_COMMITTED && state_cat != SC_AIR_COMMITTED)
+    if (down_down && special_pressed && state_cat != SC_HITSTUN)
     {
         if (polaris_active)
         {
@@ -643,6 +660,7 @@ else
     homing_outline_increase = true;
     if (is_8bit) homing_outline_alpha = 1;
     else homing_outline_alpha = 0.1;
+    homing_cooldown = -1;
 }
 if (homing_post_buffer_counting)
 {
@@ -685,8 +703,8 @@ if (hookshot_speedboost)
 {
     window = 5;
     window_timer = 0;
-    hsp += hookshot_chargetime/2*spr_dir+10*spr_dir; //min: 10 || max: 15
-    vsp -= hookshot_chargetime/5+4; //min: 4 || max: 6
+    hsp += hookshot_chargetime/2.5*spr_dir+13*spr_dir; //min: 13 || max: 17
+    vsp -= hookshot_chargetime/3+5; //min: 5 || max: 8.33
     hookshot_speedboost = false;
 }
 
@@ -737,6 +755,7 @@ move_cooldown[AT_SKILL2] = 1 + ceil(forceleap_activate_cost - mp_current);
 
 // [3] photon blast
 move_cooldown[AT_SKILL3] = 1 + ceil(photonblast_cost - mp_current); 
+if (photon_used) move_cooldown[AT_SKILL3] = 2; 
 
 // [4] accel blitz
 move_cooldown[AT_SKILL4] = 1 + ceil(accelblitz_cost - mp_current);

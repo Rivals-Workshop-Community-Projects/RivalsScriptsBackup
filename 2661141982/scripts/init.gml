@@ -16,6 +16,9 @@ shoryu_obj = -1;
 ewgf_input = -1;
 ewgf_timer = 0;
 
+alt1_secret = 0;
+alt2_secret = 0;
+
 // intro
 introTimer = -4;
 

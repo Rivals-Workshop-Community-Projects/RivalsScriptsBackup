@@ -24,7 +24,7 @@ switch (attack)
         if (window == 1 && window_timer == 1)
         { uhc_looping_attack_can_exit = false; }
         
-        if (window == 5 && window_timer == 1 && !uhc_has_cd_blade)
+        if (window == 5 && window_timer == 1 && (!uhc_has_cd_blade || was_parried))
         { window = 8; } //skip to finisher
         
         if (window == 7)
@@ -42,9 +42,9 @@ switch (attack)
                 create_hitbox(AT_JAB, 6, 0, 0);
             }
             
-            if (!attack_down && uhc_looping_attack_can_exit) 
+            if (!attack_down && uhc_looping_attack_can_exit) || (was_parried)
             { 
-                window = 8;
+                window = (was_parried ? 9 : 8);
                 window_timer = 0;
                 destroy_hitboxes();
                 uhc_update_blade_status = true;
@@ -91,7 +91,7 @@ switch (attack)
                 create_hitbox(AT_DATTACK, 3, 0, 0);
             }
             
-            if (!attack_down && uhc_looping_attack_can_exit) 
+            if (!attack_down && uhc_looping_attack_can_exit) || (was_parried)
             { 
                 window = 4;
                 window_timer = 0;
@@ -296,6 +296,7 @@ switch (attack)
 //==========================================================
     case AT_DSPECIAL:
     {
+        can_fast_fall = false;
         if (window == 1)
         {
             //try finding a target for CD recall
@@ -542,6 +543,10 @@ if (uhc_has_cd_blade || uhc_spin_cost_throw_bypass)
         uhc_current_cd.was_parried = true;
         uhc_current_cd.last_parried_by_player = parry_id.player;
     }
+    
+    // air throw penality detection
+    uhc_current_cd.aerial_strong_check = free;
+    uhc_current_cd.aerial_strong_frames = 0;
 }
 //==============================================================================
 #define adjust_bladed_attack_grid()

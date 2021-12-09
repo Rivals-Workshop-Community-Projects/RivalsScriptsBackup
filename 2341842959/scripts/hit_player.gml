@@ -1,6 +1,6 @@
 //hit_player
 
-if (my_hitboxID.type == 2){
+if (my_hitboxID.type == 2 && my_hitboxID.attack != AT_FSPECIAL && my_hitboxID.attack != AT_DSPECIAL){
         hitpause = true;
         hitstop = my_hitboxID.hitpause;
         hitstop_full = my_hitboxID.hitpause;

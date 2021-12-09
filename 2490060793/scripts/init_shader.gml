@@ -57,13 +57,17 @@ if variable_instance_exists(self, "timer") && !(state == PS_PARRY && window == 1
 if object_index == asset_get("draw_result_screen") {
 
     if alt_cur == 0 set_character_color_slot(4, 255, 255, 255, 1);
-    set_character_color_slot(3, ml[0], ml[1], ml[2], 1);
+    //set_character_color_slot(3, ml[0], ml[1], ml[2], 1);
         
     if alt_cur == 0 set_character_color_slot(6, 169, 172, 188, 1);
-    set_character_color_slot(7, md[0], md[1], md[2], 1);
+    //set_character_color_slot(7, md[0], md[1], md[2], 1);
 
 }
 
+//print(a)
+//print(object_index)
+
+//'cs_playerbg_obj'
 
 //light shades
 if alt_cur == 0 {

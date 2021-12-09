@@ -294,8 +294,8 @@ if (attack == AT_NSPECIAL){
 	        	var dist = point_distance(other.x+70*other.spr_dir, other.y-10, x, y); //distance
 	        	if(dist <= 60){
 	                with(other){
-		                var mud = create_hitbox(AT_DTILT, 4, x+25*spr_dir, y-20);mud.hsp += 2+(strong_charge/10)*spr_dir;mud.vsp -= 2;
-		                mud = create_hitbox(AT_DTILT, 4, x+35*spr_dir, y-20);mud.hsp += (strong_charge/10);
+		                var mud = create_hitbox(AT_DTILT, 4, x+25*spr_dir, y-20);mud.hsp = (10+(strong_charge/10))*spr_dir;mud.vsp -= 2;
+		                mud = create_hitbox(AT_DTILT, 4, x+35*spr_dir, y-20);mud.hsp += (strong_charge/10)*spr_dir;
 		        	}
 	                destroyed = true;
 	        	}

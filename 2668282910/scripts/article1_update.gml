@@ -20,7 +20,11 @@ else {
 //Idle
 if (state == 0){
 	image_index += .3;
-	hit_detection();	
+	hit_detection();
+	
+//	if (wisp_ex == true && state_timer == 1){
+//		wisp_hitbox_idle = create_hitbox(AT_DSPECIAL, 3, x, y);
+//	}
 }
 
 //Travelling 
@@ -249,7 +253,12 @@ else {
 }
 
 //Knockback direction
+if (hbox.type == 1){
 
+//if (instance_exists(wisp_hitbox_idle)){
+//	wisp_hitbox_idle.destroyed = true;	
+//}
+	
 //0°
 if (((hbox_angle >= 30) && (hbox_angle < 60)) || hbox_angle == 361
 || ((hbox_angle <= 150) && (hbox_angle > 120))){
@@ -312,7 +321,7 @@ if (hbox_angle < 260) && (hbox_angle > 150){
 	wisp_hitbox_angle = 315;
 }
 
-if (hbox.type == 1){
+
 
 wisp_hitbox_damage = hbox.damage*0.6;
 wisp_hitbox_bkb = hbox.kb_value*0.6;
@@ -320,6 +329,7 @@ wisp_hitbox_kbs = hbox.kb_scale*0.6;
 wisp_hitbox_hitpause = hbox.hitpause*0.6;
 wisp_hitbox_hitpause_scale = hbox.hitpause_growth*3;
 
+player_id.move_cooldown[AT_DSPECIAL] = 60;
 state = 1;
 state_timer = 0;
 hsp = lengthdir_x(orig_knock, kb_dir)*0.9;

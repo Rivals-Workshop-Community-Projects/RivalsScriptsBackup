@@ -125,6 +125,10 @@ sprite_change_offset("sludgebombbig", 128, 128);
 sprite_change_offset("bombset", 80, 80);
 sprite_change_offset("dissipate", 64, 64);
 sprite_change_offset("capsule", 96, 128);
+sprite_change_offset("oranpush", 96, 64);
+sprite_change_offset("pechapush", 96, 64);
+sprite_change_offset("rawstpush", 96, 64);
+sprite_change_offset("cheripush", 96, 64);
 
 sprite_change_offset("punish_indic", 24, 46);
 sprite_change_offset("toxic_indic", 24, 46);
@@ -149,6 +153,13 @@ sprite_change_offset("poison_pre_indicator", 4, 11);
 sprite_change_offset("bighit", 128, 128);
 sprite_change_offset("bigpunch", 128, 128);
 sprite_change_offset("bigsting", 128, 128);
+sprite_change_offset("spunch_effect", 80, 96);
+sprite_change_offset("bounce_start", 80, 96);
+sprite_change_offset("oran_hit", 96, 96);
+sprite_change_offset("pecha_hit", 96, 96);
+sprite_change_offset("rawst_hit_weak", 96, 96);
+sprite_change_offset("rawst_hit", 96, 96);
+sprite_change_offset("cheri_hit", 96, 96);
 
 sprite_change_offset("substitute", 32, 32);
 sprite_change_offset("knockedoff", 32, 32);

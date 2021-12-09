@@ -136,6 +136,14 @@ cloud = noone;
 explosion_cont = 0;
 levei_parry = false;
 
+uspecial_rot = 0;
+
+shot_fired = false;
+fspecial_dir = 1;
+ring_rot = 0;
+ring_x = 0;
+ring_y = 0;
+
 tokens = 0;
 
 cor_dir = 1;
@@ -144,6 +152,7 @@ corG = 0;
 corB = 0;
 
 claw_effect = hit_fx_create( sprite_get( "claw_effect" ), 20 );
+zetter_effect = hit_fx_create( sprite_get( "zetter_hit2" ), 20 );
 
 //Compaaaatablitiesilies
 

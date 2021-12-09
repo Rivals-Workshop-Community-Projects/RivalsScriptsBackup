@@ -58,3 +58,4 @@ set_hitbox_value(AT_USPECIAL_2, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_USPECIAL_2, 1, HG_HIT_LOCKOUT, 1);
+set_hitbox_value(AT_USPECIAL_2, 1, HG_EXTENDED_PARRY_STUN, 1);

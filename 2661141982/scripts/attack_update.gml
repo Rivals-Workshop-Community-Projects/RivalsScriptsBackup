@@ -39,6 +39,16 @@ switch (attack)
 			}
 		}
 		//cinematic part
+		if(window >= 6 && window <= 9)
+		{
+			if(variable_instance_exists(id,"fs_target"))
+			{
+				fs_target.can_tech = false;
+				fs_target.can_wall_tech = false;
+				if(fs_target.state != PS_RESPAWN)
+					fs_target.state = PS_HITSTUN;
+			}
+		}
 		if(window == 6)
 		{
 			can_move = false;
@@ -46,6 +56,11 @@ switch (attack)
 			hsp = -0.2*spr_dir;
 			if(variable_instance_exists(id,"fs_target"))
 			{
+				if(window_timer == 2)
+				{
+					fs_target.x -= 150*spr_dir;
+					x -= 150*spr_dir;
+				}
 				set_view_position(fs_target.x + (char_height / 5)*spr_dir, fs_target.y - (char_height / 2));
 				fs_target.hsp = 1.6*spr_dir;
 				fs_target.vsp = -0.1;
@@ -75,14 +90,16 @@ switch (attack)
 		}
 		if(window == 8)
 		{
-			set_view_position(x + (char_height / 5)*spr_dir, y - (char_height / 2));
-			hsp = -1*spr_dir
-			vsp = 30;
-			if(variable_instance_exists(id,"fs_target"))
+    	set_view_position(x + (char_height / 5)*spr_dir, y - (char_height / 2));
+    	hsp = -1*spr_dir
+    	vsp = 30;
+		if(variable_instance_exists(id,"fs_target"))
 			{
-				fs_target.x = x-20*spr_dir;
-				fs_target.y = y+20;
-				fs_target.can_tech = false;
+				if(fs_target.state != PS_RESPAWN)
+				{
+					fs_target.x = x-20*spr_dir;
+					fs_target.y = y+20;
+				}
 			}
 		}
 		if(window == 9)

@@ -66,14 +66,14 @@ if (state_cat == SC_HITSTUN) || (state == PS_PRATFALL)
 {
     can_fast_fall = false;
 }
-else if !(fast_falling || state == PS_ATTACK_AIR)
+else if !(fast_falling || state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
 {
     can_fast_fall = true;
 }
 
 //rising fastfall check
 if (!fast_falling && down_hard_pressed && !lev_is_grounded && free) 
- && can_fast_fall & (vsp < 0)
+ && can_fast_fall && (vsp < 0)
 {
     spawn_hit_fx( x, y, unown_fastfall_vfx);
     vsp = fast_fall;
@@ -117,9 +117,11 @@ if (lev_parry_cooldown > 0)
 }
 
 //once per airtime moves
-if (lev_is_grounded || !free)
+if (lev_is_grounded || !free || state == PS_WALL_JUMP || state == PS_WALL_TECH)
 {
     unown_c_used = false;
+    unown_g_used = false;
+    unown_t_used = false;
 }
 
 //=============================================================
@@ -144,9 +146,31 @@ prev_spr_dir = spr_dir;
 
 //=============================================================================
 //Word typing
+if (unown_collect_dictionary_entries)
+{
+    get_extra_dictionary_entries();
+    unown_collect_dictionary_entries = false;
+}
+
 if (unown_attack_is_fresh)
 {
     user_event(1);
+}
+
+//=============================================================================
+//Form stats
+if (unown_recalculate_stats)
+{
+    unown_recalculate_stats = false;
+    
+    //Apply form's speed and weight
+    var bonus = unown_current_bonus;
+    var form_accel = unown_form_data[unown_current_form].speed;
+    var form_weight = unown_form_data[unown_current_form].weight;
+    
+    knockback_adj = lerp(form_weight, form_weight+unown_kbadjust_bonus, bonus);
+    air_accel     = lerp(form_accel,  form_accel+unown_accel_bonus, bonus);
+    air_max_speed = lerp(unown_maxspeed_base, unown_maxspeed_base+unown_maxspeed_bonus, bonus);
 }
 
 
@@ -155,6 +179,7 @@ if (unown_attack_is_fresh)
 {
     lev_is_grounded = false;
     var lev_prev_state = lev_state;
+    if (!free) lev_prev_state = 3;
     
     //cases where levitate turns off
     if (state_cat == SC_HITSTUN) || (vsp < -4)
@@ -236,4 +261,73 @@ if (check_plat && !val)
 }
 
 return val;
- 
+
+//=============================================================================
+// Collect extra entries from other mods
+#define get_extra_dictionary_entries()
+{
+    var list = [];
+    with (oPlayer) if (self != other)
+    {
+        var char_name = get_char_info(player, INFO_STR_NAME);
+        var char_author = get_char_info(player, INFO_STR_AUTHOR); //broken?
+        with (other)
+        {
+            list = string_split(char_name);
+            for (var i = 0; i < array_length(list); i++)
+                insert_in_trie(unown_dictionary, list[i]);
+
+            list = string_split(char_author);
+            for (var i = 0; i < array_length(list); i++)
+                insert_in_trie(unown_dictionary, list[i]);
+        }
+    }
+    
+    //list = string_split(get_stage_data(SD_???));
+    //for (var i = 0; i < array_length(list); i++)
+    //    insert_in_trie(unown_dictionary, list[i]);
+}
+//=============================================================================
+#define string_split(str)
+{
+    var output = []; 
+    var o = 0;
+    var length = string_length(str);
+    var stop = false;
+    var i = 1;
+    while (i < length)
+    {
+        var n = 1;
+        while (" " != string_char_at(str, i + n) && ((i + n) <= length)) n++;
+        output[o] = string_copy(str, i, n); o++;
+        i += n + 1;
+    }
+    
+    return output;
+}
+
+#macro TERMINATOR  "_"
+//=============================================================================
+#define insert_in_trie(top_trie, word)
+{
+    word = string_letters(string_lower(word));
+    var word_length = string_length(word);
+    if (word_length < 2) return;
+    var cur_trie = top_trie;
+    for (var cur_index = 1; cur_index <= word_length; cur_index++)
+    {
+        var letter = string_char_at(word, cur_index);
+        if (letter in cur_trie)
+        {
+            cur_trie = variable_instance_get(cur_trie, letter);
+        }
+        else
+        {
+            variable_instance_set(cur_trie, letter, {});
+            cur_trie = variable_instance_get(cur_trie, letter);
+        }
+    }
+    
+    //mark path as valid
+    variable_instance_set(cur_trie, TERMINATOR, true);
+}

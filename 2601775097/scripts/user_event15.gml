@@ -294,6 +294,57 @@ initSection("nothing to see here.
 */
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //																														//
+//														1.6																//
+//																														//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+initPatch("1.6", "03/12/2021");
+initHeader("General");
+initSection("= Fixed memory leak from constantly creating hit effects and not actually spawning them
+");
+initHeader("Dash Attack");
+initSection("= First half angle altered (45 -> 40)
++ First half is now untechable (HG_UNTECHABLE: 1)
+- First half base knockback decreased (8.5 -> 7)
+");
+initHeader("Photon Blast");
+initSection("= Removed pratfall from the skill but Bar can't use Photon Blast again untill he lands
+");
+initHeader("Chasm Burster");
+initSection("= Golden graphics fixed
++ Chasms burst independently of Bar
+- Added hit lockout to both versions (normal ver: 8 | buffed ver: 4)
+- Increased time Bar wastes on the ground after punching for the normal version (16 frames -> 20 frames)
+- Chasms burst rate decreased (normal ver: 3 -> 5 | buffed ver: 2 -> 5) (the amount of bursts stay the same)
+");
+initHeader("Accel Blitz");
+initSection("= Indicator graphics for Broken Prism and Ultraviolet were misplaced for the normal Bar, this is fixed now
+");
+initHeader("Polaris");
+initSection("= Instead of working once per multihitting move, the move now has an internal cooldown, only shooting once per 20 frames, regardless of the attack he used
+= Polaris can now be disabled while attacking, but cannot be disabled while in hitstun
++ Base knockback increased* (0 -> 7)
++ Base hitpause increased* (0 -> 5)
++ Hitpause scaling increased* (0 -> 0.4)
++ Damage increased (1 -> 3)
++ Added angle flipper (2)
+
+* On Jab, Dash Attack (1st half), Burning Fury and Searing descent the projectiles don't hitstun and knockback so the sequence will be landed properly
+* If Bar isn't currently in the exception moves stated, the projectile will deal hitstun and knockback
+");
+initHeader("Light Hookshot");
+initSection("= Charging the skill for longer will make the projectile faster* but shorten the lifetime** (like the unused buffed version)
++ Flinging distance increased (min: 10 -> 13 | max: 15 -> 17)
++ Flinging height increased (min: 4 -> 5 | max: 6 -> 8.33)
+
+* Projectile speed (min: 14 | max: 24)
+** Projectile liftime (min: 55 | max: 45)
+");
+initHeader("Searing Descent");
+initSection("+ Apex hitbox base knockback increased (5 -> 7) (this prevents people from being able to airdodge for enough frames)
++ Meteor sweetspot and constant hitbox are now both untechable and unbounceable (HG_TECHABLE: 3)
+");
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//																														//
 //														1.5																//
 //																														//
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -304,6 +355,7 @@ initSection("= Disabled Munophone on anywhere that isn't practice mode because i
 = Added notes on the attack frame data on Munophone to tell which moves get affected by Burning Fury's buff, mana costs for skills, aswell as moves that have other special properties
 = No MP drain cheat now makes all MP costs 0
 = Using the Mechanic Alternator cheat or rune N in Bar dittos should now not cancel the mechanics out
+= Updated character icon
 = Strongs, Searing Descent and Flashbang are now affected by the infinite MP from the rune K + L combination
 = Patch notes format now goes per move, rather than per section which hopfully should be an easier read for both users and the Munophone
 = Equipping rune O while using the anti-cheapie mode will give Bar infinite OD, allowing him to spam Lord's Punishment

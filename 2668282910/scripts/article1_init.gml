@@ -20,6 +20,7 @@ hsp = 0;                                            //The horizontal speed of th
 vsp = 0;                                            //The vertical speed of the article.
 
 wisp_hitbox = noone;
+wisp_hitbox_idle = noone;
 
 wisp_ex = false;
 

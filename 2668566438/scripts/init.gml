@@ -212,6 +212,27 @@ charge_max = 80;
 //compat
 pkmn_stadium_front_img = sprite_get("pokemon_front");
 pkmn_stadium_back_img = sprite_get("pokemon_back");
+
+battle_text = "A wild Beedrill approaches!";
+
+assistAttack = AT_FSTRONG; //The attack to use as the assist
+assistOffsetX = -32; //The horizontal distance they spawn from the player
+assistOffsetY = 0; //The vertical distance they spawn from the player
+assistVelX = 0; //The horizontal velocity applied when the assist is called
+assistVelY = 0; //The vertical velocity applied when the assist is called
+assistGroundOnly = true; //Whether or not they are forced to the ground
+assistFloat = false; //Whether or not they stay in place vertically
+assistCool = 120; //The time it takes for the assist to recharge
+
+ncode1 = "Insect-like creature with projectile venom.";
+ncode2 = "Aforementioned venom corrosive and extremely dangerous.";
+ncode3 = "Excels in its flying ability, proceed with caution.";
+
+Hikaru_Title = "Buzz Bomber, Hikaru";
+
+tcoart = sprite_get("tco_sketch");
+
+arena_title = "The Buzz Bomber";
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines
 

@@ -104,6 +104,8 @@ set_victory_bg( sprite_get( "croag_victory_bg" ));
 //Croagunk
 nair_stall = true;
 bair_stall = true;
+dspec_stall = true;
+nspec_stall = true;
 
 croagfstrongcharge = 0;
 
@@ -179,6 +181,12 @@ sludgebombbig = hit_fx_create( sprite_get( "sludgebombbig" ), 30 );
 bombset = hit_fx_create( sprite_get( "bombset" ), 14 );
 dissipate = hit_fx_create( sprite_get( "dissipate" ), 35 );
 ballcapsule = hit_fx_create( sprite_get( "capsule" ), 36 );
+spunch_effect = hit_fx_create( sprite_get( "spunch_effect" ), 20 );
+bounce_start = hit_fx_create( sprite_get( "bounce_start" ), 25 );
+oranpush = hit_fx_create( sprite_get( "belch_oranpush" ), 21 );
+pechapush = hit_fx_create( sprite_get( "belch_pechapush" ), 21 );
+rawstpush = hit_fx_create( sprite_get( "belch_rawstpush" ), 21 );
+cheripush = hit_fx_create( sprite_get( "belch_cheripush" ), 21 );
 
 stinghit = hit_fx_create( sprite_get( "stinghit" ), 10 );
 fighthit = hit_fx_create( sprite_get( "fighthit" ), 20 );
@@ -191,6 +199,11 @@ suckpunchhit = hit_fx_create( sprite_get( "suckerpunch" ), 32 );
 bighit = hit_fx_create( sprite_get( "bighit" ), 35 );
 bigpunch = hit_fx_create( sprite_get( "bigpunch" ), 35 );
 bigsting = hit_fx_create( sprite_get( "bigsting" ), 35 );
+oran_hit = hit_fx_create( sprite_get( "oran_hit" ), 35 );
+pecha_hit = hit_fx_create( sprite_get( "pecha_hit" ), 35 );
+rawst_hit_weak = hit_fx_create( sprite_get( "rawst_hit_weak" ), 35 );
+rawst_hit = hit_fx_create( sprite_get( "rawst_hit" ), 35 );
+cheri_hit = hit_fx_create( sprite_get( "cheri_hit" ), 35 );
 
 
 set_hit_particle_sprite( 1, sprite_get("poison_fx"));

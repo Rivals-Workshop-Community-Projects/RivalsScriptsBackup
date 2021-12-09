@@ -42,6 +42,8 @@ sprite_change_offset("nspecial", 63, 94);
 sprite_change_offset("nspecial_air", 63, 94);
 sprite_change_offset("nspecial_hold", 101, 115);
 sprite_change_offset("nspecial_hold_air", 101, 115);
+sprite_change_offset("newmove", 54, 98);
+sprite_change_offset("newmove_air", 54, 98);
 sprite_change_offset("fspecial", 63, 94);
 sprite_change_offset("uspecial", 63, 94);
 sprite_change_offset("dspecial", 63, 94);
@@ -69,5 +71,8 @@ sprite_change_offset("CloudSpawn", 64, 95);
 sprite_change_offset("cloud", 64, 95);
 sprite_change_offset("Cloud_Explode", 64, 95);
 sprite_change_offset("claw_effect", 109, 138);
+sprite_change_offset("clawshotring", 32, 32);
+sprite_change_offset("proj_zetter1", 49, 10);
+sprite_change_offset("zetter_hit2", 74, 74);
 
 sprite_change_offset("plat", 96, 18);

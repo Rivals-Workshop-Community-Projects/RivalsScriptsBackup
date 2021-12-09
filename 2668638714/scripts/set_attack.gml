@@ -2,7 +2,7 @@ if attack == AT_NSPECIAL and instance_exists(voltorb_obj)
 {
     attack = AT_NSPECIAL_2;
     
-    if !(voltorb_obj.state == PS_ATTACK_GROUND or voltorb_obj.state == PS_DEAD)
+    if !(voltorb_obj.state == PS_ATTACK_GROUND or voltorb_obj.state == PS_DEAD) and (voltorb_obj.inactive_timer == 0)
     {
         voltorb_obj.state = PS_ATTACK_GROUND;
         voltorb_obj.state_timer = 0;
@@ -12,6 +12,12 @@ if attack == AT_NSPECIAL and instance_exists(voltorb_obj)
 
 if (attack == AT_TAUNT && (down_down)){
   attack = AT_TAUNT_2 
+}
+
+if attack == AT_FSPECIAL
+{
+    set_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE, free ? 7 : 1);
+    set_window_value(AT_FSPECIAL, 7, AG_WINDOW_TYPE, free ? 7 : 1);
 }
 
 if attack == AT_USPECIAL

@@ -7,3 +7,4 @@ uses_shader = false
 state = PS_LAND;
 image_index = 5;
 state_timer = 40;
+

@@ -286,11 +286,19 @@ if instance_exists(self) &&  (state >= 1 && state <= 6)
     			
     			if player_id == other.player_id
     			{
-    				if attack == AT_USPECIAL && hbox_num == 1
+    				if attack == AT_USPECIAL
     				{
-    					player_id.bounce_hit = true;
-    					other.state = 6;
-    					other.state_timer = 0;
+    					if hbox_num == 2
+    					{
+    						other.sludgedamage = 0;
+    					}
+    					
+    					if hbox_num == 1
+    					{
+    						player_id.bounce_hit = true;
+    						other.state = 6;
+    						other.state_timer = 0;
+    					}
     				}
     				
     				if (attack == AT_NSPECIAL && hbox_num == 1) ||
@@ -315,6 +323,7 @@ if instance_exists(self) &&  (state >= 1 && state <= 6)
     					other.hit_delay = 25;
     					other.hitstop = 8;
     					other.belchtimer = 20;
+    					hit_effect = 0;
     				}
     			}
     			

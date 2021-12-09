@@ -453,6 +453,7 @@ if (attack == AT_DSPECIAL){
     }
     //Spawns the Wisp (if it's the EX one and if it needs to destroy a previous one)
     if (window == 2 && window_timer == 3){
+        move_cooldown[AT_DSPECIAL] = 60;
         if (instance_exists(will_o_wisp)){
             if (will_o_wisp.wisp_ex == true){
                 spawn_hit_fx( will_o_wisp.x, will_o_wisp.y, fire_effect_big);

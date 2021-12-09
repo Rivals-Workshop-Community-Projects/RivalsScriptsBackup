@@ -39,6 +39,23 @@ if(do_taunt_2)
 	do_taunt_2 = false;
 }
 
+
+// Wallsit hsp and vsp scaling
+if(clinging && jump_down)
+{
+	walljump_vsp-=0.1;
+	walljump_vsp = max(walljump_vsp,5);
+	
+	walljump_hsp+=0.1;
+	walljump_hsp = min(walljump_hsp,7);
+}
+else if(state != PS_WALL_JUMP)
+{
+	walljump_vsp = base_walljump_vsp;
+	walljump_hsp = base_walljump_hsp;
+}
+
+
 if(attack == AT_TAUNT && state != PS_ATTACK_GROUND) sound_stop( sound_get( "tenru_laugh" ));
 
 // Phone skin swap

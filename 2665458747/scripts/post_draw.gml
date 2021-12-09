@@ -57,18 +57,25 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
         if window == 2 && window_timer <= 8
         {
             draw_sprite_ext(sprite_get("bounce_force"), get_gameplay_time()/4, x, y-18+bounce_offset, 
-            2, -2-bounce_stretch, bounce_angle, c_white, bounce_transp)
+            2, -2-bounce_stretch, bounce_angle, c_white, 0.2+bounce_transp)
         }
         
         if window == 4 && bounce_fall >= 3
         {
             draw_sprite_ext(sprite_get("bounce_force"), get_gameplay_time()/4, x, y-26+bounce_offset, 
-            2, 2+bounce_stretch, bounce_angle, c_white, bounce_transp)
+            2, 2+bounce_stretch, bounce_angle, c_white, 0.2+bounce_transp)
         }
         
         gpu_set_blendmode(bm_normal)
         
-        draw_sprite_ext(sprite_get("bounce_orb"), 0, x, y-22+bounce_offset, 2, 2+bounce_stretch, bounce_angle, c_white, 1)
+         if (window == 2 && window_timer <= 8) || (window == 4 && bounce_fall >= 3)
+        {
+            draw_sprite_ext(sprite_get("bounce_orb"), 0, x, y-22+bounce_offset, 2, 2+bounce_stretch, bounce_angle, c_white, 1)
+        }
+        else
+        {
+             draw_sprite_ext(sprite_get("bounce_orb"), 0, x, y-22+bounce_offset, 2, 2+bounce_stretch, bounce_angle, c_white, 0.5)
+        }
     }
     
     switch (croagstance)

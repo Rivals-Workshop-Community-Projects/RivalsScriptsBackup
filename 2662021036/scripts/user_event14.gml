@@ -310,6 +310,21 @@ with phone{
 		Shovel Knight's FSpecial and USpecial have no hitbox (meaning no gems are created), and he doesn't drop bags of gems on death.");
 }
 
+with (asset_get("oPlayer")) {
+	
+	if (url == 2265876548){
+		other.id = id;
+		other.url = random_func( 21, 9999999999, false );
+					canon = false;supercanon = false;hypercanon = false;op = false;
+					runeA = false;runeB = false;runeC = false;runeD = false;runeE = false;runeF = false;
+					runeG = false;runeH = false;runeI = false;runeJ = false;runeK = false;
+					runeL = false;runeM = false;runeN = false;runeO = false;
+					runesUpdated = false;
+		
+	}
+	
+}
+
 initTip("Phone Controls", true);
 initHeader("Sleep Mode");
 initSection("With the phone open, pressing Special goes to the Home Screen, and then pressing it again closes the phone.");

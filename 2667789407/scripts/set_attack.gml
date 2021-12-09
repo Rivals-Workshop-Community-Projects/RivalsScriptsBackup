@@ -73,6 +73,8 @@ clear_button_buffer(PC_TAUNT_PRESSED);
 attack = unown_form_data[target_form].atk;
 
 if (attack == UNOWN_ATK.C && unown_c_used)
+|| (attack == UNOWN_ATK.G && unown_g_used)
+|| (attack == UNOWN_ATK.T && unown_t_used)
 {
     move_cooldown[attack] = 3;
 }

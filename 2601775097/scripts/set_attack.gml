@@ -37,12 +37,19 @@ switch (attack) //skills setup
     
 }
 
+//photon blast on cooldown
+if (attack == AT_SKILL3 && photon_used && show_player_info)
+{
+    if (mp_current >= photonblast_cost) cd_error_active = true;
+    else mp_error_active = true;
+}
+
 //what if i have no MP?
 //this is just the move's activation, the other parts are on attack_update.gml
 if (move_cooldown[attack] > 0 && show_player_info && (attack == AT_SKILL0 || attack == AT_SKILL1 ||attack == AT_SKILL2 ||
-attack == AT_SKILL3 || attack == AT_SKILL4 || attack == AT_SKILL5 ||
+attack == AT_SKILL3 && !photon_used || attack == AT_SKILL4 || attack == AT_SKILL5 ||
 attack == AT_SKILL6 || attack == AT_SKILL7 && !homing_post_buffer_counting && !polaris_active || attack == AT_SKILL8 ||
-attack == AT_SKILL9 || attack == AT_SKILL10 ||attack == AT_SKILL11 ||
+attack == AT_SKILL9 || attack == AT_SKILL10 || attack == AT_SKILL11 ||
 attack == AT_SKILL0_AIR || attack == AT_SKILL1_AIR)) mp_error_active = true;
 
 

@@ -76,8 +76,8 @@ sfx_dbfz_hit_broken = sound_get("ARC_BTL_CMN_Hit_XLarge");
 sfx_dbfz_hit_jab3 = sound_get("ARC_BTL_GKN_Atk5A_3rd_Hit");
 
 // VFX
-wwisp_charge = hit_fx_create(sprite_get("wwisp_charge_fx"), 15);
-wwisp_hit = hit_fx_create(sprite_get("wwisp_hfx"), 15);
+wwisp_charge = hit_fx_create(sprite_get("wwisp_charge_fx"), 21);
+wwisp_hit = hit_fx_create(sprite_get("wwisp_hfx"), 18);
 bair_cross1 = hit_fx_create(sprite_get("bair_hfx_1"), 14);
 bair_cross2 = hit_fx_create(sprite_get("bair_hfx_2"), 14);
 fspecial_fx = hit_fx_create(sprite_get("fspecial_fx"), 16);
@@ -177,6 +177,7 @@ mummy_hudspr_stored = sprite_get("mummy_icon"); // im storing this because sprit
 // will o wisp
 wow_chrg = 0;
 wow_chrg_max = 90; // 2 seconds
+wow_hitbox_group = 0; // adds 1 when nspecial is shot, resets to 0 if there are no projectiles
 
 // this is here so the game doesn't error when your own nspecial hits you
 // it's for mummy, dummy

@@ -86,8 +86,8 @@ if attack == AT_NSPECIAL {
 			
 			var angle = point_direction(x, y, player_id.x, player_id.y - 40 );
 
-            hsp = lengthdir_x(8, angle)
-            vsp = lengthdir_y(8, angle)
+            hsp = lengthdir_x(10, angle)
+            vsp = lengthdir_y(10, angle)
 			
 			
 				if hsp < 0 {

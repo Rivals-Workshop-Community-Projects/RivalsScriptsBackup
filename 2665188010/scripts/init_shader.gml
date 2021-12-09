@@ -1,7 +1,7 @@
 //init_shader
-if get_player_color(player) == 12 {
-    set_character_color_shading( 1, 0.6 );
-}
+// if get_player_color(player) == 12 {
+//     set_character_color_shading( 1, 0.6 );
+// }
 
 //Early Access alt
 if get_player_color(player) == 14 {

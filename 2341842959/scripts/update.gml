@@ -15,6 +15,23 @@ if (state == PS_ATTACK_GROUND && attack == AT_FTILT && window == 1 && window_tim
 }
 */
 
+if (get_player_color(player) == 16){
+	set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX, sound_get("FARTWITHEXTRAREVERB"));
+	set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, sound_get("FARTWITHEXTRAREVERB"));
+	set_window_value(AT_USPECIAL, 4, AG_WINDOW_SFX, sound_get("FARTWITHEXTRAREVERB"));
+}
+else {
+    set_window_value(AT_USPECIAL, 2, AG_WINDOW_SFX, sound_get("skunkburst"));
+    set_window_value(AT_USPECIAL, 3, AG_WINDOW_SFX, sound_get("skunkburst"));
+    set_window_value(AT_USPECIAL, 4, AG_WINDOW_SFX, sound_get("skunkburst"));
+}
+
+if (tokens < 1){
+    move_cooldown[AT_USPECIAL] = 0;
+}
+else {
+    move_cooldown[AT_USPECIAL] = 999;
+}
 
 if (state == PS_DOUBLE_JUMP && state_timer == 1){
     gas_djumpx = x;
@@ -112,14 +129,10 @@ if (tokens > 0 && !free && state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR){
 }
 
 if (tokens > 3){
-    move_cooldown[AT_FSPECIAL] = 999;
-    move_cooldown[AT_DSPECIAL] = 999;
-    move_cooldown[AT_USPECIAL] = 999;
+    move_cooldown[AT_NSPECIAL] = 999;
 }
 if (tokens < 3){
-    move_cooldown[AT_FSPECIAL] = 0;
-    move_cooldown[AT_DSPECIAL] = 0;
-    move_cooldown[AT_USPECIAL] = 0;
+    move_cooldown[AT_NSPECIAL] = 0;
 }
 
 if (introTimer2 < 2) {

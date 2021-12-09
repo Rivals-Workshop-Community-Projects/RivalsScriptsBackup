@@ -50,6 +50,10 @@ sprite_change_offset("plat", 84, 94);
 
 sprite_change_offset("nspecial_proj", 64, 94);
 
+sprite_change_offset("fstrong_hfx", 45, 45);
+sprite_change_offset("dattack_small_hfx", 65, 78);
+sprite_change_offset("dattack_big_hfx", 65, 78);
+
 sprite_change_offset("sludgebomb", 20, 20);
 sprite_change_offset("sludgebomb_explosion", 45, 45);
 sprite_change_offset("sludgebomb_explosion", 90, 90);
@@ -64,6 +68,7 @@ sprite_change_offset("leechseed_poison_start", 90, 110);
 sprite_change_offset("leechseed_idle_poison", 90, 110);
 sprite_change_offset("leechseed_mask", 90, 110);
 sprite_change_offset("leechseed_parried", 90, 110);
+sprite_change_offset("leechseed_heal_effect", 90, 122);
 
 sprite_change_offset("leechseed_gas", 90, 110);
 
@@ -79,3 +84,5 @@ sprite_change_offset("grassknot_rise", 93, 110);
 sprite_change_offset("grassknot_lower", 93, 110);
 sprite_change_offset("grassknot_attack", 93, 150);
 sprite_change_offset("grassknot_attack_seed", 93, 270);
+
+sprite_change_offset("miiverse_post", 60, 30);

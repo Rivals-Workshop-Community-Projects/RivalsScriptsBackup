@@ -9,6 +9,8 @@ if (spr_dir < 0) && (cur_form_data.left_sprites != noone)
     cur_form_sprites = cur_form_data.left_sprites;
 }
 
+draw_y = 0; //animated below so reset here
+
 switch (state)
 {
     case PS_ATTACK_AIR:
@@ -18,7 +20,13 @@ switch (state)
         unown_turning_timer = unown_turning_time_per_frame + 1;
         
 //=============================================================================
-        if (attack == UNOWN_ATK.C) && !hitpause
+        if (attack == UNOWN_ATK.A) && !hitpause
+        && (window == 2 && window_timer == 0)
+        {
+            spawn_hit_fx( x, y-4, 141 );
+        }
+//=============================================================================
+        else if (attack == UNOWN_ATK.C) && !hitpause
              && (window == 2 && window_timer == 0)
         {
             spawn_hit_fx( x+24, y-4, 125 );
@@ -35,6 +43,12 @@ switch (state)
         && (window == 3 || window == 7) && (window_timer == 0)
         {
             spawn_hit_fx(x + (window == 3 ? 36 : -36), y - 30, 14);
+        }
+//=============================================================================
+        else if (attack == UNOWN_ATK.G) && (window == 3)
+        {
+            image_index = get_window_value(attack, window, AG_WINDOW_ANIM_FRAME_START);
+            image_index += (hsp > -3) + (hsp > -1.5) + (hsp > 1.5) + (hsp > 3);
         }
 //=============================================================================
         else if (attack == UNOWN_ATK.L) && (window == 4)
@@ -63,14 +77,39 @@ switch (state)
         }
 //=============================================================================
         else if (attack == UNOWN_ATK.N)
-        && (window == 4) && (window_timer == 0)
         {
-            image_index = 5;
+            if (window == 2)
+            {
+                image_index = get_window_value(attack, 2, AG_WINDOW_ANIM_FRAME_START) + (window_timer > 8);
+            }
+            if (window == 4) && (window_timer == 0)
+            {
+                image_index = 5;
+            }
+        }
+//=============================================================================
+        else if (attack == UNOWN_ATK.P) && !hitpause
+        && (window == 2 && window_timer == 0)
+        {
+            spawn_hit_fx( x-12, y+12, 116 );
         }
 //=============================================================================
         else if (attack == AT_EXTRA_1) //parry
         {
             init_shader();
+        }
+//=============================================================================
+        else if (attack == AT_TAUNT) && !hitpause
+        && (window == 2 && window_timer == 0 && get_num_hitboxes(attack) > 0) //exclamation
+        {
+            switch (hidden_power_strength_vfx)
+            {
+                case 1: spawn_hit_fx( x, y - unown_eye_center_offset, 302 ); break;
+                case 2: spawn_hit_fx( x, y - unown_eye_center_offset, 254 ); break;
+                case 3: spawn_hit_fx( x, y - unown_eye_center_offset, 304 ); break;
+            } hidden_power_strength_vfx = 0;
+            
+            spawn_hit_fx( x, y - unown_eye_center_offset, hitfx_hiddenpower );
         }
 //=============================================================================
     } break;
@@ -116,7 +155,7 @@ switch (state)
         }
     } break;
     default: 
-        print("encountered state " + get_state_name( state ));
+        //print("encountered state " + get_state_name( state ));
         sprite_index = cur_form_sprites.idle;
         image_index = 0;
         break; //implicit !? I shouldnt need the above lines to set sprite index ideally
@@ -135,6 +174,15 @@ switch (state)
             sprite_index = cur_form_sprites.idle;
             image_index = 0;
         }
+    } break;
+    case PS_RESPAWN:
+    {
+        sprite_index = cur_form_sprites.idle;
+        image_index = 0;
+        draw_y = 8 - floor(sin(0.02*state_timer*(2*pi)) * 8);
+        
+        if (state_timer == (phone_practice? 1 : 90)) 
+           spawn_hit_fx(x, y - unown_eye_center_offset, 66);
     } break;
 }
 
@@ -155,6 +203,31 @@ if (unown_y_water.timer > 0) && (state != PS_ATTACK_AIR || !hitpause)
     unown_y_water.index = floor(animframe);
 }
 
+//===============================================================
+//Hidden power effect
+init_shader();
+if (inward_hidden_power_timer > 0)
+{
+    inward_hidden_power_timer -= (inward_hidden_power_fast ? 2 : 1);
+}
+else 
+{ 
+    inward_hidden_power_fast = false;
+}
+
+if (hidden_power_text_anim_timer > 0) hidden_power_text_anim_timer--;
+
+
+//Shiny!
+if (get_player_color(player) == 1 || vfx_shiny_override)
+&& (get_gameplay_time() % (16 + random_func(4, 128, true)) == 0)
+{
+    var kx = x - 32 + random_func(5, 64, true);
+    var ky = y - unown_eye_center_offset - 32 + random_func(6, 64, true);
+    
+    var k = spawn_hit_fx(kx, ky, vfx_snow_twinkle);
+    k.depth = depth - 1;
+}
 
 //=============================================================================
 #define ground_raytest(x, y)

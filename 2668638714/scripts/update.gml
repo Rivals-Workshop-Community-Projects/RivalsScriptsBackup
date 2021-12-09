@@ -127,14 +127,14 @@ if (state == PS_ATTACK_GROUND or state == PS_ATTACK_AIR)
             case 5:
             case 7:
             
-            if (right_down-left_down == -spr_dir)
+            if (right_down-left_down == -spr_dir and !was_parried)
             {
                 hsp -= sign(hsp)
             }
             
             if (window_timer >= get_window_value(attack, window, AG_WINDOW_LENGTH)-1)
             {
-                set_state(get_window_value(attack,window,AG_WINDOW_TYPE) == 7 ? PS_PRATFALL : PS_IDLE_AIR);
+                set_state(get_window_value(attack,window,AG_WINDOW_TYPE) == 7 or was_parried ? PS_PRATFALL : PS_IDLE_AIR);
             }
             break;
             case 8:

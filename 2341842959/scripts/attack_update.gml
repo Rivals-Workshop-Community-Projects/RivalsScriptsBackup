@@ -53,10 +53,18 @@ if (attack == AT_FTILT && window == 1 && window_timer == 5){
 }
 */
 
+if (attack == AT_DTILT){
+	if (has_hit && window == 2){
+		window = 3;
+		window_timer = 2;
+	}
+}
+
 //Visual Effects Gas
 {
 //DTilt Visual Effect
 if (attack == AT_DTILT && window == 1){
+	set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 3);
     gas_dtilt_cont = 0;
     gas_dtilt_posx = x;
     gas_dtilt_posy = y-10;
@@ -166,16 +174,24 @@ if (attack == AT_BAIR && window > 1){
 }
 
 //NSpecial 2 Visual Effect
-if (attack == AT_NSPECIAL_2 && window == 1){
+if (attack == AT_USPECIAL && window == 1){
     gas_nspecial_cont = 0;
     gas_nspecial_posx = x;
     gas_nspecial_posy = y;
 }
 
-if (attack == AT_NSPECIAL_2 && window > 1){
+if (attack == AT_USPECIAL && window > 1){
     if (window == 2 && window_timer == 1){
         gas_nspecial_posx = x;
         gas_nspecial_posy = y+10;
+    }
+    if (window == 3 && window_timer == 1){
+        gas_nspecial_posx = x-40*spr_dir;
+        gas_nspecial_posy = y-40;
+    }
+    if (window == 4 && window_timer == 1){
+        gas_nspecial_posx = x;
+        gas_nspecial_posy = y-110;
     }
     if (!hitpause){
         gas_nspecial_cont += .01;  
@@ -208,30 +224,57 @@ if (attack == AT_DATTACK){
 }
 
 //Specials Diagonally
-if ((attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL) && window == 1){
-    if (up_down && (right_down || left_down)){
-        set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 20);
-        set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED, -20);
-    }
-    if (down_down && (right_down || left_down)){
-        set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HSPEED, 20);
-        set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED, 20);
-    }
-    if (!up_down && !down_down){
-        set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED, 0);
-    }
-    if (!right_down && !left_down){
-        set_window_value(AT_USPECIAL, 3, AG_WINDOW_HSPEED, 0);
-        set_window_value(AT_DSPECIAL, 3, AG_WINDOW_HSPEED, 0);
-    }
+if (attack == AT_NSPECIAL && window == 1){
+	if (joy_pad_idle){
+		set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED, 20);
+		set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED, 0);
+	}
+	if (up_down && !right_down && !left_down && !down_down){
+		set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED, 0);
+		set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED, -20);
+	}
+		if (up_down && right_down && !down_down && !left_down){
+			spr_dir = 1;
+			set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED, 20);
+			set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED, -20);
+		}
+		if (right_down && !up_down && !down_down && !left_down){
+			spr_dir = 1;
+			set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED, 20);
+			set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED, 0);
+		}
+		if (down_down && right_down && !up_down && !left_down){
+			spr_dir = 1;
+			set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED, 20);
+			set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED, 20);
+		}
+		if (down_down && !right_down && !left_down && !up_down){
+			set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED, 0);
+			set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED, 20);
+		}
+		if (down_down && left_down && !right_down && !up_down){
+			spr_dir = -1;
+			set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED, 20);
+			set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED, 20);
+		}
+		if (left_down && !right_down && !up_down && !down_down){
+			spr_dir = -1;
+			set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED, 20);
+			set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED, 0);
+		}
+		if (up_down && left_down && !right_down && !down_down){
+			spr_dir = -1;
+			set_window_value(AT_NSPECIAL, 3, AG_WINDOW_HSPEED, 20);
+			set_window_value(AT_NSPECIAL, 3, AG_WINDOW_VSPEED, -20);
+		}
 }
 
-if (attack == AT_DSPECIAL){
+if (attack == AT_NSPECIAL){
     fall_through = true;
 }
 
 //Spawn Cloud
-if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL){
+if (attack == AT_NSPECIAL){
     levei_parry = false;
     if (window == 2 && window_timer == 4){
         instance_create(x,y,"obj_article1"); 
@@ -248,8 +291,9 @@ if (attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL){
     
 }
 
+
 //Cloud Detonate
-if (attack == AT_NSPECIAL && window == 1){
+if (attack == AT_DSPECIAL && window == 1){
     if (window_timer == 1){
        explosion_cont = 0; 
     }
@@ -258,9 +302,116 @@ if (attack == AT_NSPECIAL && window == 1){
     }
 }
 
-if (attack == AT_NSPECIAL_2){
+if (attack == AT_USPECIAL && window == 1){
     tokens = 3.1;
+    
+	if ((up_down && !right_down && !left_down && !down_down) || (joy_pad_idle)){
+		uspecial_rot = 0;
+		set_window_value(AT_USPECIAL, 1, AG_WINDOW_GOTO, 2);
+		set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 11);
+	}
+	
+	if (right_down && !up_down && !down_down && !left_down){
+		spr_dir = 1;
+		uspecial_rot = 270;
+		set_window_value(AT_USPECIAL, 1, AG_WINDOW_GOTO, 3);
+		set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 15);
+	}
+	
+	if (left_down && !right_down && !up_down && !down_down){
+		spr_dir = -1;
+		uspecial_rot = 90;
+		set_window_value(AT_USPECIAL, 1, AG_WINDOW_GOTO, 3);
+		set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 15);
+	}
+	
+	if (down_down && !right_down && !left_down && !up_down && free){
+		uspecial_rot = 180;
+		set_window_value(AT_USPECIAL, 1, AG_WINDOW_GOTO, 4);
+		set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 19);
+	}
+		
+
 }
+
+if (attack == AT_FSPECIAL){
+	if (window == 1){
+		set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 0);
+	    set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 0);
+	    set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 180);
+	    set_hitbox_value(AT_FSPECIAL, 4, HG_LIFETIME, 0);
+	    set_hitbox_value(AT_FSPECIAL, 5, HG_LIFETIME, 0);
+		ring_rot = 0;
+        ring_x = 40;
+        ring_y = 40;
+		shot_fired = false;
+	}
+    if (shot_fired == false && window > 1){
+        if (down_down && !right_down && !left_down){
+            window = 2;
+            ring_rot = 270;
+            ring_x = 10;
+            ring_y = 0;
+            set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 180);
+            set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 0);
+            set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 0);
+            set_hitbox_value(AT_FSPECIAL, 4, HG_LIFETIME, 0);
+            set_hitbox_value(AT_FSPECIAL, 5, HG_LIFETIME, 0);
+        }
+        if (down_down && ((right_down && spr_dir == 1) || (left_down && spr_dir == -1))){
+            window = 3;
+            ring_rot = 315;
+            ring_x = 25;
+            ring_y = 20;
+            set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 0);
+            set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 180);
+            set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 0);
+            set_hitbox_value(AT_FSPECIAL, 4, HG_LIFETIME, 0);
+            set_hitbox_value(AT_FSPECIAL, 5, HG_LIFETIME, 0);
+        }
+        if (!down_down && !up_down && ((right_down && spr_dir == 1) || (left_down && spr_dir == -1))){
+            window = 4;
+            ring_rot = 0;
+            ring_x = 40;
+            ring_y = 40;
+            set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 0);
+            set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 0);
+            set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 180);
+            set_hitbox_value(AT_FSPECIAL, 4, HG_LIFETIME, 0);
+            set_hitbox_value(AT_FSPECIAL, 5, HG_LIFETIME, 0);
+        }
+        if (up_down && ((right_down && spr_dir == 1) || (left_down && spr_dir == -1))){
+            window = 5;
+            ring_rot = 45;
+            ring_x = 25;
+            ring_y = 60;
+            set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 0);
+            set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 0);
+            set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 0);
+            set_hitbox_value(AT_FSPECIAL, 4, HG_LIFETIME, 180);
+            set_hitbox_value(AT_FSPECIAL, 5, HG_LIFETIME, 0);
+        }
+        if (up_down && !right_down && !left_down){
+            window = 6;
+            ring_rot = 90;
+            ring_x = 10;
+            ring_y = 80;
+            set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 0);
+            set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 0);
+            set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 0);
+            set_hitbox_value(AT_FSPECIAL, 4, HG_LIFETIME, 0);
+            set_hitbox_value(AT_FSPECIAL, 5, HG_LIFETIME, 180);
+        }
+    }
+    if (state_timer > 10 && !special_down && window < 7){
+        shot_fired = true;
+        window_timer = 1;
+        window = 7;
+        fspecial_dir = spr_dir;
+    }
+}
+
+
 
 #define gas_direction()
 {

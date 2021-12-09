@@ -3,6 +3,8 @@ set_color_profile_slot_range( 6, 1, 1, 1 );
 
 instance_create(-1000, -1000, "obj_article2");
 
+cssTimer = 0;
+
 is_barr = true;
 
 //fspec afterimage

@@ -19,10 +19,13 @@ if get_player_color(player) = 12 {
 	//make a gamemaker color variable using chosen color
 	var hue1=(color_get_hue(color_rgb1)+hue) mod 255;
 	//shift that colour by Hue, make sure it also loops
-	var color_hsv1=make_color_hsv(hue1,color_get_saturation(color_rgb1),color_get_value(color_rgb1)); 
+	var color_hsv1=make_color_hsv(hue1,color_get_saturation(color_rgb1),color_get_value(color_rgb1));
+	var color_hsv2=make_color_hsv(hue1,color_get_saturation(color_rgb1),color_get_value(color_rgb1)*0.7);
 	//make a gamemaker color variable using the new hue
 	set_color_profile_slot(get_player_color(player),4,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
+	set_color_profile_slot(get_player_color(player),7,color_get_red(color_hsv2),color_get_green(color_hsv2),color_get_blue(color_hsv2));
 	set_article_color_slot(4,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
+	set_article_color_slot(7,color_get_red(color_hsv2),color_get_green(color_hsv2),color_get_blue(color_hsv2));
 	//set_article_color_slot(6,color_get_red(color_hsv1),color_get_green(color_hsv1),color_get_blue(color_hsv1));
 	//set the new color using rgb values from the gamemaker color
 }
