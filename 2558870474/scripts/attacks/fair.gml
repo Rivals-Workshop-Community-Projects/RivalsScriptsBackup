@@ -14,7 +14,7 @@ set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 8);
 
 set_window_value(AT_FAIR, 2, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 
@@ -29,7 +29,7 @@ set_num_hitboxes(AT_FAIR,4);
 // Umbrella Hits
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 5);
+set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 44);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -42);
 set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 63);
@@ -48,7 +48,7 @@ set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 // Umbrella 2
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 2);
-set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 5);
+set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 27);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_Y, -22);
 set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 68);
@@ -67,7 +67,7 @@ set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 // Tipper Hits
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 3, HG_WINDOW, 2);
-set_hitbox_value(AT_FAIR, 3, HG_LIFETIME, 5);
+set_hitbox_value(AT_FAIR, 3, HG_LIFETIME, 3);
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_X, 63);
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_Y, -37);
 set_hitbox_value(AT_FAIR, 3, HG_WIDTH, 54);
@@ -87,7 +87,7 @@ set_hitbox_value(AT_FAIR, 3, HG_TIPPER, 1);
 // Tipper 2
 set_hitbox_value(AT_FAIR, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 4, HG_WINDOW, 2);
-set_hitbox_value(AT_FAIR, 4, HG_LIFETIME, 5);
+set_hitbox_value(AT_FAIR, 4, HG_LIFETIME, 3);
 set_hitbox_value(AT_FAIR, 4, HG_HITBOX_X, 28);
 set_hitbox_value(AT_FAIR, 4, HG_HITBOX_Y, -3);
 set_hitbox_value(AT_FAIR, 4, HG_WIDTH, 80);

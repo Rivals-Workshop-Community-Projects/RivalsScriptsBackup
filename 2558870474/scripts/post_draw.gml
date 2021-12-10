@@ -1,6 +1,11 @@
 //post draw
 shader_start();
 if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND{
+    if attack == AT_FSTRONG{
+        var clone_distx;
+        var clone_disty = 16;
+        draw_sprite_ext(sprite_get("cloneindicator"), 0, x + (126 * spr_dir + round(strong_charge * 2.5) * spr_dir), y - clone_disty, 2 * spr_dir, 2, 0, c_white, clonevis_indicator);
+    }
     if !free{
         if attack == AT_NSPECIAL and window == 2{
             switch(charge){

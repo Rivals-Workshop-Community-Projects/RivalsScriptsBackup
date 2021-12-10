@@ -6,7 +6,7 @@ var hitnum = my_hitboxID.hbox_num;
 //hit_player_obj.should_make_shockwave = false;
 switch(hitmove){
     case AT_NAIR:
-        if hitnum < 7{
+        if hitnum < 3{  // 7
             hit_player_obj.should_make_shockwave = false;
         }
         break;

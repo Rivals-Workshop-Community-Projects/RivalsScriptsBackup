@@ -4,8 +4,16 @@
 
 small_sprites = true;
 
+// Adventure Mode
+am_is_water = true;
+am_is_verbal = true;
+am_is_experienced = true;
+am_is_handed = true;
+
+pronouns = ["she","her","hers","is"];
+
 // Future Balance Changes
-futurechanges = false;              // Only set to true if there are changes that aren't in the live build that we want to test.
+futurechanges = false;           	// Only set to true if there are changes that aren't in the live build that we want to test.
 proposed_balance = false;           // This is what handles the cheats. Don't even bother with this <3
 
 // For Future Reference (Mainly for us ADHD bbs)
@@ -23,6 +31,8 @@ max_summons = 2;
 hue = 0;
 
 superjump = false;
+
+clonevis_indicator = 0;
 
 do_dairhit2 = false;
 
@@ -130,7 +140,7 @@ air_max_speed       = 4;  		// 3    -  7
 jump_change         = 3;		// 3
 air_accel           = 0.3;		// 0.2  -  0.4
 prat_fall_accel     = 0.85;		// 0.25 -  1.5
-air_friction        = 0.06;		// 0.02 -  0.07
+air_friction        = 0.04;		// 0.02 -  0.07
 max_fall            = 9.5;		// 6    -  11
 fast_fall           = 13.5;		// 11   -  16
 gravity_speed       = 0.45;		// 0.3  -  0.6
@@ -231,7 +241,9 @@ spr_clone_startup	= sprite_get("clone_startup");
 spr_clone_active	= sprite_get("clone_active");
 spr_clone_endlag	= sprite_get("clone_endlag");
 spr_clone_die		= sprite_get("roll_clone");
+spr_smallclone_die		= sprite_get("roll_smallclone");
 spr_clone_die_dash	= sprite_get("vfx_clonedashing_vanish");
+spr_smallclone_die_dash	= sprite_get("vfx_smallclonedashing_vanish");
 
 col_arrow = get_player_hud_color(player);
 
@@ -293,10 +305,14 @@ vfx_example = hit_fx_create(sprite_get("example"), 54); // then you do   spawn_h
 
 vfx_roll_clone = hit_fx_create(sprite_get("roll_clone"), 54); // then you do   spawn_hit_fx(vfx_example);
 vfx_clonedashing_melt = hit_fx_create(sprite_get("vfx_clonedashing_vanish"), 54); // then you do   spawn_hit_fx(vfx_example);
+
+vfx_roll_smallclone = hit_fx_create(sprite_get("roll_smallclone"), 54); // then you do   spawn_hit_fx(vfx_example);
+vfx_smallclonedashing_melt = hit_fx_create(sprite_get("vfx_smallclonedashing_vanish"), 54); // then you do   spawn_hit_fx(vfx_example);
+
 vfx_charge2_hit = hit_fx_create(sprite_get("charge2_explosion_proj"), 20);
 vfx_fspecial_end = hit_fx_create(sprite_get("vfx_fspecial_end"), 36);
 vfx_bigfspecial_end = hit_fx_create(sprite_get("vfx_bigfspecial_end"), 36);
-vfx_fspecial_start = hit_fx_create(sprite_get("fspecial_detection"), 24);
+vfx_fspecial_start = hit_fx_create(sprite_get("fspecial_detection"), 32);
 
 vfx_hit_small1 = hit_fx_create(sprite_get("vfx_small1"), 18);
 vfx_hit_small2 = hit_fx_create(sprite_get("vfx_small2"), 18);

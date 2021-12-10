@@ -1,4 +1,4 @@
-set_attack_value(AT_USTRONG, AG_CATEGORY, 2);
+set_attack_value(AT_USTRONG, AG_CATEGORY, 0);
 set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrong"));
 set_attack_value(AT_USTRONG, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_USTRONG, AG_HAS_LANDING_LAG, 3);

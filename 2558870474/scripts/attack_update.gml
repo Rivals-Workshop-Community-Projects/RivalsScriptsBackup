@@ -49,7 +49,10 @@ if window == 1 and window_timer == 1{
 			set_hitbox_value(AT_UTILT, 2, HG_VISUAL_EFFECT, vfx_hit_med1);
 			set_hitbox_value(AT_UTILT, 4, HG_VISUAL_EFFECT, vfx_hit_med1);
 			set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, vfx_hit_med1);
-			set_hitbox_value(AT_NAIR, 8, HG_VISUAL_EFFECT_X_OFFSET, vfx_hit_med1);
+			set_hitbox_value(AT_NAIR, 4, HG_VISUAL_EFFECT, vfx_hit_med1);
+			set_hitbox_value(AT_NAIR, 7, HG_VISUAL_EFFECT, vfx_hit_med1);
+			set_hitbox_value(AT_NAIR, 8, HG_VISUAL_EFFECT, vfx_hit_med1);
+			set_hitbox_value(AT_NAIR, 10, HG_VISUAL_EFFECT, vfx_hit_med1);
 			set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, vfx_hit_med1);
 			set_hitbox_value(AT_FAIR, 4, HG_VISUAL_EFFECT, vfx_hit_med1);
 			set_hitbox_value(AT_DAIR, 2, HG_VISUAL_EFFECT, vfx_hit_med1);
@@ -170,7 +173,11 @@ if proposed_balance{
             switch(window){
                 case 1:
                     if window_timer == 1{
+                    	clonevis_indicator = 0;
                         illusion = noone;
+                    }
+                    if window_timer < get_window_value(attack, 1, AG_WINDOW_LENGTH) - 1{
+                    	clonevis_indicator += (1 / (get_window_value(attack, 1, AG_WINDOW_LENGTH) - 8));
                     }
                     break;
                 case 2:
@@ -193,6 +200,8 @@ if proposed_balance{
                 case 3:
                 	if window_timer >= 16{
                 		iasa_script();
+                	} else {
+                		clonevis_indicator -= .1;
                 	}
                 	move_cooldown[AT_FSTRONG] = 80;
             }

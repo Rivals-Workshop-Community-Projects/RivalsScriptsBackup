@@ -45,8 +45,6 @@ switch(state){
         if hsp == 0{
         	instance_destroy(hitbox);
             // Slash
-			image_xscale = 1;
-			image_yscale = 1;
             setState(6);
         } else {
 			if instance_exists(hitbox)
@@ -94,8 +92,6 @@ switch(state){
         break;
     case 6:
     case 5: // Despawning
-		image_xscale = 1;
-		image_yscale = 1;
     	instance_destroy(hitbox)
     	ignores_walls = true;
     	player_id.illusion = noone;

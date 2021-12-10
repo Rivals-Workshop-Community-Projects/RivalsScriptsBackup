@@ -22,8 +22,8 @@ sprite[1]     = player_id.spr_clone_dash;           // Speeding Forward
 sprite[2]     = player_id.spr_clone_startup;        // Start-up
 sprite[3]     = player_id.spr_clone_active;         // Hitting
 sprite[4]     = player_id.spr_clone_endlag;         // Endlag
-sprite[5]     = player_id.spr_clone_die;            // Despawning
-sprite[6]     = player_id.spr_clone_die_dash;       // Despawning Dash
+sprite[5]     = player_id.spr_smallclone_die;            // Despawning
+sprite[6]     = player_id.spr_smallclone_die_dash;       // Despawning Dash
 
 clonevf_x = 6 * spr_dir
 

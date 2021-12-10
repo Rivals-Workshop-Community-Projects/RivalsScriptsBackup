@@ -2,10 +2,9 @@ var hit_bkb = enemy_hitboxID.kb_value;
 var hit_dmg = enemy_hitboxID.damage;
 
 if instance_exists(illusion) and hit_bkb > 0 and hit_dmg > 0{
+	clonevis_indicator = 0;
     if illusion.state != 5{
-        if illusion.state == 1 and hsp != 0{
-		    illusion.image_xscale = 1;
-		    illusion.image_yscale = 1;
+        if illusion.state == 1{
             illusion.state = 6;
             illusion.state_timer = 0;
             //spawn_hit_fx(illusion.x - (64 * spr_dir), illusion.y - 70, vfx_clonedashing_melt);
@@ -14,8 +13,6 @@ if instance_exists(illusion) and hit_bkb > 0 and hit_dmg > 0{
                 instance_destroy(hitbox);
             }
         } else {
-		    illusion.image_xscale = 1;
-		    illusion.image_yscale = 1;
             illusion.state = 5;
             illusion.state_timer = 0;
             //spawn_hit_fx(illusion.x + illusion.clonevf_x, illusion.y+8, vfx_roll_clone);

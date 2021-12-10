@@ -28,7 +28,7 @@ set_num_hitboxes(AT_BAIR, 3);
 // Brella
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 5);
+set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_X, -31);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_Y, -44);
 set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 88);
@@ -48,7 +48,7 @@ set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 // Ice
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 2);
-set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 5);
+set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_X, -58);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_Y, -47);
 set_hitbox_value(AT_BAIR, 2, HG_WIDTH, 59);
@@ -69,7 +69,7 @@ set_hitbox_value(AT_BAIR, 2, HG_TIPPER, 1);
 // Ice also
 set_hitbox_value(AT_BAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 3, HG_WINDOW, 2);
-set_hitbox_value(AT_BAIR, 3, HG_LIFETIME, 5);
+set_hitbox_value(AT_BAIR, 3, HG_LIFETIME, 3);
 set_hitbox_value(AT_BAIR, 3, HG_HITBOX_X, -26);
 set_hitbox_value(AT_BAIR, 3, HG_HITBOX_Y, -75);
 set_hitbox_value(AT_BAIR, 3, HG_WIDTH, 91);

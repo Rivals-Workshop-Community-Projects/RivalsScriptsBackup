@@ -1,6 +1,7 @@
 var moveparried = my_hitboxID.attack;
 
 charge = 0;
+clonevis_indicator = 0;
 
 switch(moveparried){
     case AT_FSTRONG:
