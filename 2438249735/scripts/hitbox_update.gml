@@ -54,7 +54,7 @@ hsp /= 1.01
         			    
         			    
         			    sound_stop(sound_get("grassblade"))
-        			    sound_play(sound_get("grassblade"),false,noone,1)
+        			    sound_play(sound_get("grassblade"),false,noone,1,1.5)
         			    sound_stop(sound_get("tstrong"))  
         			    sound_play(sound_get("tstrong"),false,noone,0.6)
         create_hitbox(AT_NSPECIAL,4,x,y - 20)
@@ -75,7 +75,7 @@ if attack == AT_NSPECIAL && hbox_num == 2 {
         destroyed = true
         			          
         			    sound_stop(sound_get("grassblade"))
-        			    sound_play(sound_get("grassblade"),false,noone,1)
+        			    sound_play(sound_get("grassblade"),false,noone,1,1.5)
         			    sound_stop(sound_get("tstrong"))  
         			    sound_play(sound_get("tstrong"),false,noone,0.6)
         create_hitbox(AT_NSPECIAL,4,x,y - 20)
@@ -276,10 +276,12 @@ if hitbox_timer == 1 {
 	spr_dir = player_id.spr_dir
 }
 
- if hitbox_timer < 40 {
-     image_index = hitbox_timer/3
+ if hitbox_timer < 30 {
+     image_index = hitbox_timer/2
      vsp /= 1.05
  } else {
+ 	player_id.target.invince_time = 0
+ 	player_id.target.invincible = false 
      
                       switch ((hitbox_timer + x) % 3) + 1{
                     	case 1:

@@ -66,7 +66,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 22; // number of alternate color palettes. 0 is the default color, count it accordingly.
+	col_max = 26; // number of alternate color palettes. 0 is the default color, count it accordingly.
 	
 	//first array index is for alternate color. second array index is for distinguishing the information in it.
 	ce[0,0] = make_color_rgb(95, 129, 248) // "color preview square" color. can be any color!
@@ -138,6 +138,18 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[22,0] = make_color_rgb(255, 115, 84)
 	ce[22,1] = "Poison Dart Frog"
 	ce[22,2] = ""
+	ce[23,0] = make_color_rgb(79, 173, 232)
+	ce[23,1] = "Mega Swamp"
+	ce[23,2] = ""
+	ce[24,0] = make_color_rgb(87, 217, 26)
+	ce[24,1] = "Frog Funk"
+	ce[24,2] = ""
+	ce[25,0] = make_color_rgb(251, 9, 59)
+	ce[25,1] = "Mad Rat Dead"
+	ce[25,2] = ""
+	ce[26,0] = make_color_rgb(26, 0, 36)
+	ce[26,1] = "frog_character"
+	ce[26,2] = ""
 	// you can add more, by copypasting and changing the first index of the array accordingly.
 	// ! changing part end.
 	// you can ignore the mess below...

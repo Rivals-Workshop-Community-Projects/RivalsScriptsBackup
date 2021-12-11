@@ -1,13 +1,13 @@
 //poison related
 
 
-if !instance_exists(attachedhitbox) && state == 0
+if (!instance_exists(attachedhitbox) || place_meeting(x,y, asset_get("plasma_field_obj"))) && state == 0
 {
-	if player_id.state_cat != SC_HITSTUN
+	if (player_id.state_cat != SC_HITSTUN) || (player_id.was_parried) || (attachedhitbox.was_parried)
 	{
     	state = 1;
 	}
-	else
+	else if place_meeting(x,y, asset_get("plasma_field_obj")) || (player_id.state_cat == SC_HITSTUN) || (player_id.was_parried)
 	{
 		precautionarytimer-=200;
 	}
@@ -16,13 +16,18 @@ else if instance_exists(attachedhitbox)
 {
     x = round(attachedhitbox.x);
     y = round(attachedhitbox.y);
+    
+    if (attachedhitbox.was_parried)
+    {
+    	precautionarytimer-=200;
+    }
 }
 
 if (state >= 1 && state <= 5)
 {
     image_index = get_gameplay_time()/6;
     
-    if sludgehp <= 0
+    if sludgehp <= 0 || place_meeting(x,y, asset_get("plasma_field_obj")) || (player_id.was_parried)
     {
         state = 6;
         state_timer = 0;
@@ -387,7 +392,6 @@ if instance_exists(self)
     }
     else if precautionarytimer <= 1
     {
-        print("gone");
         instance_destroy();
     }
 }

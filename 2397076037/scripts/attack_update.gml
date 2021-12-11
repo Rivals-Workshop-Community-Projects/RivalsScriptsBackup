@@ -1,4 +1,5 @@
 
+
 if !has_hit_player or attack == AT_DATTACK{
 exheld = 0
 }
@@ -952,7 +953,7 @@ if attack == AT_DSTRONG {
         soft_armor = 999
         set_num_hitboxes(AT_DSTRONG, 3);
     } else {
-        set_num_hitboxes(AT_DSTRONG, 1);
+        set_num_hitboxes(AT_DSTRONG, 2);
         soft_armor = 0
     }
     

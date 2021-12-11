@@ -9,3 +9,5 @@ sub_start = 1;
 sub_timer = 120;
 sub_rotation = 0;
 sub_dir = 1;
+
+fadevariablething = .005;

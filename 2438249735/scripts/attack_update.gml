@@ -740,7 +740,7 @@ if !hitpause {
         
        if window == 1 {
        	
-       	prat_land_time = 24;
+       	prat_land_time = 12;
        	
        	if window_timer == 1 {
        	choosen_dirx = x
@@ -810,7 +810,7 @@ if !hitpause {
      	  
      	 vsp = -4
      	 
-     	 prat_land_time = 30
+     	 prat_land_time = 12
      	 
      	      if (place_meeting(x+10*spr_dir, y, asset_get("par_block"))) {
                  set_state (PS_PRATFALL)

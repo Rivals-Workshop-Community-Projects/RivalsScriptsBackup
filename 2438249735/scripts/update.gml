@@ -7,7 +7,6 @@ hit_player_obj = self
 
 
 
-
 if move_cooldown[AT_USPECIAL_2] == 9 {
 	spawn_hit_fx(x  , y - 40, shit5)  
 	       	    spawn_hit_fx(x   , y - 30 , shit1)   
@@ -325,6 +324,20 @@ if state_timer < 12 {
 	}
 }
 
+}
+
+if finishercd == 0 {
+with oPlayer if (activated_kill_effect) {
+  if hit_player_obj == other {
+  	with other {
+  		galx = x
+        galy = y
+            sound_play(sound_get("tstrong"),false,noone,1)
+  	    finishercd = 60 
+
+  	}
+  }
+}
 }
 
 /*

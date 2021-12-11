@@ -20,7 +20,7 @@ with hit_player_obj
 {
     if ("croagpoison" in self)
     {
-        croagpoison -= 5 + other.enemy_hitboxID.damage;
+        croagpoison -= 10 + other.enemy_hitboxID.damage*2;
         croagpoison = clamp(croagpoison, 0, 100);
     }
 }

@@ -1,4 +1,6 @@
 //got parried
+croagbelchcharged = false;
+poison_sting_charge = 0;
 
 with hit_player_obj
 {

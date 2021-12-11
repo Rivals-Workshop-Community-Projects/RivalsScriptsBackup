@@ -32,7 +32,7 @@ if invitimer > 0 &&
 	set_hitbox_value(AT_NSPECIAL, 4, HG_KNOCKBACK_SCALING, my_hitboxID.kb_scale);
 	set_hitbox_value(AT_NSPECIAL, 4, HG_ANGLE, my_hitboxID.kb_angle);
 	set_hitbox_value(AT_NSPECIAL, 4, HG_HITSTUN_MULTIPLIER, my_hitboxID.hitstun_factor);
-
+   
 
     invitimer = -1
 
@@ -42,6 +42,9 @@ spawn_hit_fx(x,y -40, shit1)
     spawn_hit_fx(hit_player_obj.x + 10 * spr_dir, hit_player_obj.y - 40, shit5)
     
     target = hit_player_obj
+    
+    target.invince_time = 5
+    target.invincible = true 
     
     if get_player_color(player) == 18 {
     	 sound_stop(sound_get("JCsteath"))

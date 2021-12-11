@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 23 );
+set_num_palettes( 27 );
 
 // Seismitoad
 set_color_profile_slot( 1, 0, 74, 182, 255 ); //blue1
@@ -255,6 +255,46 @@ set_color_profile_slot( 22, 4, 255, 243, 90 ); //eye
 set_color_profile_slot( 22, 5, 255, 252, 107 ); //belly
 set_color_profile_slot( 22, 6, 254, 255, 250 ); //teeth
 set_color_profile_slot( 22, 7, 53, 70, 151 ); //dark
+
+// Mega Swampert
+set_color_profile_slot( 23, 0, 79, 173, 232 ); //blue1
+set_color_profile_slot( 23, 1, 30, 134, 191 ); //blue2
+set_color_profile_slot( 23, 2, 32, 73, 120 ); //blue3
+set_color_profile_slot( 23, 3, 255, 179, 0 ); //orange
+set_color_profile_slot( 23, 4, 255, 188, 113 ); //eye
+set_color_profile_slot( 23, 5, 191, 225, 255 ); //belly
+set_color_profile_slot( 23, 6, 231, 232, 228 ); //teeth
+set_color_profile_slot( 23, 7, 255, 91, 69 ); //dark
+
+// Bonby
+set_color_profile_slot( 24, 0, 87, 217, 26 ); //blue1
+set_color_profile_slot( 24, 1, 51, 153, 83 ); //blue2
+set_color_profile_slot( 24, 2, 0, 77, 13 ); //blue3
+set_color_profile_slot( 24, 3, 255, 251, 64 ); //orange
+set_color_profile_slot( 24, 4, 255, 253, 161 ); //eye
+set_color_profile_slot( 24, 5, 255, 253, 161 ); //belly
+set_color_profile_slot( 24, 6, 254, 255, 250 ); //teeth
+set_color_profile_slot( 24, 7, 181, 180, 114 ); //dark
+
+// Mad Rat
+set_color_profile_slot( 25, 0, 85, 86, 85 ); //blue1
+set_color_profile_slot( 25, 1, 75, 59, 78 ); //blue2
+set_color_profile_slot( 25, 2, 44, 35, 46 ); //blue3
+set_color_profile_slot( 25, 3, 232, 230, 44 ); //orange
+set_color_profile_slot( 25, 4, 255, 255, 255 ); //eye
+set_color_profile_slot( 25, 5, 251, 9, 59 ); //belly
+set_color_profile_slot( 25, 6, 230, 220, 226 ); //teeth
+set_color_profile_slot( 25, 7, 242, 147, 0 ); //dark
+
+// Frog Character
+set_color_profile_slot( 26, 0, 26, 0, 36 ); //blue1
+set_color_profile_slot( 26, 1, 42, 28, 59 ); //blue2
+set_color_profile_slot( 26, 2, 64, 34, 99 ); //blue3
+set_color_profile_slot( 26, 3, 32, 255, 103 ); //orange
+set_color_profile_slot( 26, 4, 132, 129, 23 ); //eye
+set_color_profile_slot( 26, 5, 152, 89, 144 ); //belly
+set_color_profile_slot( 26, 6, 165, 199, 176 ); //teeth
+set_color_profile_slot( 26, 7, 235, 226, 19 ); //dark
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

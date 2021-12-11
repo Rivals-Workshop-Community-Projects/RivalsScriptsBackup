@@ -1,5 +1,7 @@
 //visual objects
 
+image_alpha -= fadevariablething;
+
 switch(object_type)
 {
 	case 1:
@@ -24,8 +26,9 @@ switch(object_type)
 				vsp = -6;
 				ignores_walls = true;
 				can_be_grounded = false;
-				hsp *= 0.9
+				hsp *= 2;
 				image_angle+= 10*spr_dir;
+				fadevariablething = .01;
 				
 				sound_play(sound_get("dp-djump"));
 			}
