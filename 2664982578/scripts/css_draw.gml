@@ -2,10 +2,10 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "0.0";
-patch_day = "30";
-patch_month = "NOV";
+patch_day = "11";
+patch_month = "DEC";
  
-var num_alts = 17;
+var num_alts = 25;
 var alt_cur = get_player_color(player);
  
 //Alt name init. var doesn't work with arrays lol
@@ -18,16 +18,23 @@ alt_name[4]  = "Shiny";
 alt_name[5]  = "Idk I googled Pokemon egg and apparently this exists in Pokemon Go"; 
 alt_name[6]  = "Joshi"; 
 alt_name[7]  = "Just an Egg"; 
-alt_name[8]  = "Wate rmelon"; 
-alt_name[9]  = "Jigglypuff"; 
-alt_name[10]  = "Kirby :)"; 
-alt_name[11]  = "Wallnut Gaming"; 
-alt_name[12]  = "Notorious"; 
+alt_name[8]  = "There has always been an Exggecute alt."; 
+alt_name[9]  = "Wate rmelon"; 
+alt_name[10]  = "Jigglypuff"; 
+alt_name[11]  = "Kirby :)"; 
+alt_name[12]  = "Wallnut Gaming"; 
 alt_name[13]  = "fukcin... spamtong"; 
 alt_name[14]  = "Eggdog's pre-evolution"; 
 alt_name[15]  = "I am being forced to make a second eggdog alt please he has my wife and children"; 
-alt_name[16]  = "Trans rights are Speggtacular"; 
-alt_name[17]  = "What matters is on the inside"; 
+alt_name[16]  = "I have made this eggdog alt with my own free will"; 
+alt_name[17]  = ".--. .-.. . .- ... . / ... .- ...- . / -- ."; 
+alt_name[18]  = "FTLdog"; 
+alt_name[19]  = "Notorious";
+alt_name[20]  = "Trans rights are Speggtacular"; 
+alt_name[21]  = "What matters is on the inside"; 
+alt_name[22]  = "Balanced Breakfast"; 
+alt_name[23]  = ":Eggdog:"; 
+alt_name[24]  = "What the fuck is that"; 
  
 //Patch
  
@@ -37,7 +44,7 @@ textDraw(temp_x + 130, temp_y + -12, "fName", c_white, 0, 1000, 1, true, 1, "VER
 textDraw(temp_x + 2, temp_y + 32, "fName", c_white, 0, 1000, 1, true, 1, patch_day + " " + patch_month);
 draw_sprite(sprite_get("stockicon"),0,x+173,y+34);
 
-if (get_player_color(player)==14 || get_player_color(player)==15){
+if (get_player_color(player)==14 || get_player_color(player)==15 || get_player_color(player)== 16 || get_player_color(player)== 17 || get_player_color(player)== 18 || get_player_color(player)== 23){
         draw_sprite(sprite_get("eggdog_charselect"),0,x+8,y+8);
 }
 
@@ -64,6 +71,7 @@ textDraw(temp_x + 2, temp_y + 124 - 5*(ceil(array_length(alt_name)/16)-1), "fNam
 //exclude alt. name
 //textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
 
+/*
 //GB Icon
 if (get_player_color(player)==20){
         draw_sprite(sprite_get("special_icon"),1,x+10,y+56);
@@ -73,9 +81,9 @@ if (get_player_color(player)==20){
 if (get_player_color(player)==19){
         draw_sprite(sprite_get("special_icon"),0,x+10,y+56);
     }
-    
+  */  
 //Special Icon
-if (get_player_color(player)== 14 || get_player_color(player)== 15){
+if (get_player_color(player)== 14 || get_player_color(player)== 15 || get_player_color(player)== 16 || get_player_color(player)== 17 || get_player_color(player)== 18 || get_player_color(player)== 23 || get_player_color(player)== 24){
         draw_sprite(sprite_get("special_icon"),2,x+10,y+56);
     }
     

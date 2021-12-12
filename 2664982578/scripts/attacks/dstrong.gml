@@ -92,3 +92,5 @@ set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_DSTRONG, 2, HG_DRIFT_MULTIPLIER, 1);
+set_hitbox_value(AT_DSTRONG, 2, HG_SDI_MULTIPLIER, 1);

@@ -41,6 +41,7 @@ sprite_change_offset("bair", 65, 27, true);//
 sprite_change_offset("uair", 20, 57, true);//
 sprite_change_offset("dair", 15, 27, true);//
 sprite_change_offset("fstrong", 53, 57, true);//
+sprite_change_offset("bbout_fstrong", 53, 57, true);//
 sprite_change_offset("ustrong", 42, 67, true);//
 sprite_change_offset("dstrong", 40, 27, true);
 sprite_change_offset("nspecial", 30, 37, true);//

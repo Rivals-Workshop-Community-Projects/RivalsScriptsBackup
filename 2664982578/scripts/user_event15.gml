@@ -182,7 +182,8 @@ initImage_ext(sprite_get("_pho_nspecial"), -4, fa_center, 2, 2, true, c_white, 1
 initTip("FSpecial: Egg Drop");
 initWords("Egg Drop is a lunging command grab. If the first hitbox connects, Egg will slam the opponent into the ground.");
 initWords("The mechanics of Fspecial work similarly to Bowser's Fspecial, in that the second hitbox of the move is only created if Egg lands with an opponent.");
-initWords("Egg is forced to drop the opponent if they don't land within 2 seconds.");
+initWords("Egg is forced to drop the opponent if they don't land within 1 1/2 seconds.");
+initWords("Fspecial can be cancelled mid air if Special is pressed again. Egg will squeeze the opponent which has set knockback.");
 initImage_ext(sprite_get("_pho_fspecial"), -4, fa_center, 2, 2, true, c_white, 1, false, noone, noone, noone, noone);
 
 initTip("USpecial: Wonder Trade");
@@ -246,6 +247,32 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.14", "11 December, 2021");
+
+initHeader("Buffs:");
+initSection("+ Dash turn now has increased hatch rate (Dash dancing is now more optimal)
++ Hoop lasts a little longer, 2 sec -> 2.5 sec
++ Dtilt now has a smaller weaker hitbox closer to egg
++ Dair can now be wall jumped out of
++ Fspecial can now be cancelled mid air
++ Added 6 new alts (two of which are champion alts shoutouts to WS Elites)
+");
+
+initHeader("Nerfs:");
+initSection("- Fair comes out 1 frame slower, 18 -> 19
+- Fair's landing lag was increased, 10 -> 11
+- Nspecial's max hsp was lowered a bit
+- Hoop base kb lowered, 9 -> 8
+- Hoop kb scaling lowered, .7 -> .6
+- Egg is forced to drop Fspecial sooner, 2 sec -> 1.5 sec
+");
+
+initHeader("Changes:");
+initSection("= Fair's base kb and scaling were increased, 8 -> 9, .6 -> .8 (Changed with hopes that it won't combo as easily anymore)
+= All moves should correctly set drift and sdi multipliers back to 1(thank you menace and ducky)
+");
+
+//
 initPatch("1.13", "30 November, 2021");
 
 initHeader("Buffs:");

@@ -22,7 +22,7 @@ set_color_profile_slot_range( 4, 2, 5, 24 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 18 );
+set_num_palettes( 25 );
 
 // Red egg
 set_color_profile_slot( 1, 0, 238, 241, 210 ); //egg shell
@@ -73,40 +73,40 @@ set_color_profile_slot( 7, 2, 237, 223, 223 ); //Egg spots bottom
 set_color_profile_slot( 7, 3, 255, 225, 0 ); //adrenaline orb
 set_color_profile_slot( 7, 4, 255, 182, 0 ); //ditto
 
+// Exggecute
+set_color_profile_slot( 8, 0, 255, 206, 194 ); //egg shell
+set_color_profile_slot( 8, 1, 255, 206, 194 ); //egg spots
+set_color_profile_slot( 8, 2, 255, 255, 255 ); //Egg spots bottom
+set_color_profile_slot( 8, 3, 255, 182, 0 ); //adrenaline orb
+set_color_profile_slot( 8, 4, 201, 147, 109 ); //ditto
+
 // Watermelom
-set_color_profile_slot( 8, 0, 33, 148, 33 ); //egg shell
-set_color_profile_slot( 8, 1, 71, 209, 71 ); //egg spots
-set_color_profile_slot( 8, 2, 71, 209, 71 ); //Egg spots bottom
-set_color_profile_slot( 8, 3, 219, 0, 0 ); //adrenaline orb
-set_color_profile_slot( 8, 4, 255, 0, 94 ); //ditto
+set_color_profile_slot( 9, 0, 33, 148, 33 ); //egg shell
+set_color_profile_slot( 9, 1, 71, 209, 71 ); //egg spots
+set_color_profile_slot( 9, 2, 71, 209, 71 ); //Egg spots bottom
+set_color_profile_slot( 9, 3, 219, 0, 0 ); //adrenaline orb
+set_color_profile_slot( 9, 4, 255, 0, 94 ); //ditto
 
 // Pikachu
-set_color_profile_slot( 9, 0, 255, 229, 0 ); //egg shell
-set_color_profile_slot( 9, 1, 255, 229, 0 ); //egg spots
-set_color_profile_slot( 9, 2, 255, 0, 0 ); //Egg spots bottom
-set_color_profile_slot( 9, 3, 255, 149, 0 ); //adrenaline orb
-set_color_profile_slot( 9, 4, 238, 207, 179 ); //ditto
+set_color_profile_slot( 10, 0, 255, 229, 0 ); //egg shell
+set_color_profile_slot( 10, 1, 255, 229, 0 ); //egg spots
+set_color_profile_slot( 10, 2, 255, 0, 0 ); //Egg spots bottom
+set_color_profile_slot( 10, 3, 255, 149, 0 ); //adrenaline orb
+set_color_profile_slot( 10, 4, 238, 207, 179 ); //ditto
 
 // Kirby
-set_color_profile_slot( 10, 0, 253, 189, 255 ); //egg shell
-set_color_profile_slot( 10, 1, 253, 189, 255 ); //egg spots
-set_color_profile_slot( 10, 2, 255, 112, 158 ); //Egg spots bottom
-set_color_profile_slot( 10, 3, 102, 102, 102 ); //adrenaline orb
-set_color_profile_slot( 10, 4, 223, 166, 224 ); //ditto
+set_color_profile_slot( 11, 0, 253, 189, 255 ); //egg shell
+set_color_profile_slot( 11, 1, 253, 189, 255 ); //egg spots
+set_color_profile_slot( 11, 2, 255, 112, 158 ); //Egg spots bottom
+set_color_profile_slot( 11, 3, 102, 102, 102 ); //adrenaline orb
+set_color_profile_slot( 11, 4, 223, 166, 224 ); //ditto
 
 // Walnut Gaming
-set_color_profile_slot( 11, 0, 201, 147, 109 ); //egg shell
-set_color_profile_slot( 11, 1, 201, 147, 109 ); //egg spots
-set_color_profile_slot( 11, 2, 255, 255, 255 ); //Egg spots bottom
-set_color_profile_slot( 11, 3, 110, 255, 0 ); //adrenaline orb
-set_color_profile_slot( 11, 4, 230, 170, 131 ); //ditto
-
-// phasmo
-set_color_profile_slot( 12, 0, 238, 207, 179 ); //egg shell
-set_color_profile_slot( 12, 1, 216, 130, 35 ); //egg spots
-set_color_profile_slot( 12, 2, 127, 156, 151 ); //Egg spots bottom
-set_color_profile_slot( 12, 3, 186, 207, 203 ); //adrenaline orb
-set_color_profile_slot( 12, 4, 154, 189, 183 ); //ditto
+set_color_profile_slot( 12, 0, 201, 147, 109 ); //egg shell
+set_color_profile_slot( 12, 1, 201, 147, 109 ); //egg spots
+set_color_profile_slot( 12, 2, 255, 255, 255 ); //Egg spots bottom
+set_color_profile_slot( 12, 3, 110, 255, 0 ); //adrenaline orb
+set_color_profile_slot( 12, 4, 230, 170, 131 ); //ditto
 
 // cringe
 set_color_profile_slot( 13, 0, 255, 255, 255 ); //egg shell
@@ -129,19 +129,68 @@ set_color_profile_slot( 15, 2, 255, 199, 233 ); //Egg spots bottom
 set_color_profile_slot( 15, 3, 255, 199, 233 ); //adrenaline orb
 set_color_profile_slot( 15, 4, 255, 199, 233 ); //ditto
 
+// P3 Eggdog
+set_color_profile_slot( 16, 0, 148, 255, 205 ); //egg shell
+set_color_profile_slot( 16, 1, 148, 255, 205 ); //egg spots
+set_color_profile_slot( 16, 2, 142, 245, 196 ); //Egg spots bottom
+set_color_profile_slot( 16, 3, 148, 255, 205 ); //adrenaline orb
+set_color_profile_slot( 16, 4, 148, 255, 205 ); //ditto
+
+// P4 Eggdog
+set_color_profile_slot( 17, 0, 211, 141, 226 ); //egg shell
+set_color_profile_slot( 17, 1, 211, 141, 226 ); //egg spots
+set_color_profile_slot( 17, 2, 185, 124, 199 ); //Egg spots bottom
+set_color_profile_slot( 17, 3, 211, 141, 226 ); //adrenaline orb
+set_color_profile_slot( 17, 4, 211, 141, 226 ); //ditto
+
+// FTLDog
+set_color_profile_slot( 18, 0, 255, 255, 128 ); //egg shell
+set_color_profile_slot( 18, 1, 255, 255, 128 ); //egg spots
+set_color_profile_slot( 18, 2, 242, 242, 122 ); //Egg spots bottom
+set_color_profile_slot( 18, 3, 0, 255, 247 ); //adrenaline orb
+set_color_profile_slot( 18, 4, 47, 59, 163 ); //ditto
+
+// phasmo
+set_color_profile_slot( 19, 0, 238, 207, 179 ); //egg shell
+set_color_profile_slot( 19, 1, 216, 130, 35 ); //egg spots
+set_color_profile_slot( 19, 2, 127, 156, 151 ); //Egg spots bottom
+set_color_profile_slot( 19, 3, 186, 207, 203 ); //adrenaline orb
+set_color_profile_slot( 19, 4, 154, 189, 183 ); //ditto
+
 // Trans rights
-set_color_profile_slot( 16, 0, 255, 255, 255 ); //egg shell
-set_color_profile_slot( 16, 1, 255, 199, 233 ); //egg spots
-set_color_profile_slot( 16, 2, 110, 230, 251 ); //Egg spots bottom
-set_color_profile_slot( 16, 3, 255, 199, 233 ); //adrenaline orb
-set_color_profile_slot( 16, 4, 110, 230, 251 ); //ditto
+set_color_profile_slot( 20, 0, 255, 255, 255 ); //egg shell
+set_color_profile_slot( 20, 1, 255, 199, 233 ); //egg spots
+set_color_profile_slot( 20, 2, 110, 230, 251 ); //Egg spots bottom
+set_color_profile_slot( 20, 3, 255, 199, 233 ); //adrenaline orb
+set_color_profile_slot( 20, 4, 110, 230, 251 ); //ditto
 
 // BLW
-set_color_profile_slot( 17, 0, 148, 92, 58 ); //egg shell
-set_color_profile_slot( 17, 1, 255, 251, 74 ); //egg spots
-set_color_profile_slot( 17, 2, 55, 59, 59 ); //Egg spots bottom
-set_color_profile_slot( 17, 3, 148, 92, 58 ); //adrenaline orb
-set_color_profile_slot( 17, 4, 255, 251, 74 ); //ditto
+set_color_profile_slot( 21, 0, 148, 92, 58 ); //egg shell
+set_color_profile_slot( 21, 1, 255, 251, 74 ); //egg spots
+set_color_profile_slot( 21, 2, 55, 59, 59 ); //Egg spots bottom
+set_color_profile_slot( 21, 3, 148, 92, 58 ); //adrenaline orb
+set_color_profile_slot( 21, 4, 255, 251, 74 ); //ditto
+
+// Bbout Egg
+set_color_profile_slot( 22, 0, 101, 37, 196 ); //egg shell
+set_color_profile_slot( 22, 1, 0, 136, 255 ); //egg spots
+set_color_profile_slot( 22, 2, 92, 255, 92 ); //Egg spots bottom
+set_color_profile_slot( 22, 3, 56, 130, 194 ); //adrenaline orb
+set_color_profile_slot( 22, 4, 242, 211, 182 ); //ditto
+
+// Lesstime EggDog
+set_color_profile_slot( 23, 0, 156, 234, 255 ); //egg shell
+set_color_profile_slot( 23, 1, 0, 204, 255 ); //egg spots
+set_color_profile_slot( 23, 2, 0, 162, 255 ); //Egg spots bottom
+set_color_profile_slot( 23, 3, 59, 245, 242 ); //adrenaline orb
+set_color_profile_slot( 23, 4, 102, 128, 255 ); //ditto
+
+// Nothing There
+set_color_profile_slot( 24, 0, 219, 0, 0 ); //egg shell
+set_color_profile_slot( 24, 1, 255, 255, 255 ); //egg spots
+set_color_profile_slot( 24, 2, 255, 255, 255 ); //Egg spots bottom
+set_color_profile_slot( 24, 3, 219, 0, 0 ); //adrenaline orb
+set_color_profile_slot( 24, 4, 219, 0, 0 ); //ditto
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

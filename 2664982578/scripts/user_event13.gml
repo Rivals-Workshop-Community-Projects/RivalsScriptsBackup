@@ -50,7 +50,7 @@ precache(); // Cache skins while loading to ensure max performance during match
 
 //You can set the skin you want your character to use here.
 //As an example:
- if (get_player_color(player) == 14 || get_player_color(player)== 15) set_skin("eggdog");
+ if (get_player_color(player) == 14 || get_player_color(player)== 15 || get_player_color(player)== 16 || get_player_color(player)== 17 || get_player_color(player)== 18 || get_player_color(player)== 23) set_skin("eggdog");
 //This will set the skin to the skin "myskin" when the player is using the 16th color palette.
 
 

@@ -90,6 +90,7 @@ if(attack == AT_FAIR){
 
 if(attack == AT_DAIR){
 	can_fast_fall = false;
+	can_wall_jump = true;
 	hud_offset = 20;
 	if(window == 3 || window == 4 || window == 5){
 		if(!free){
@@ -254,6 +255,7 @@ if(attack == AT_USTRONG){
 
 if(attack == AT_NSPECIAL){
 	can_fast_fall = false;
+	hsp = clamp(hsp,-2.5,2.5);
 	if(window == 1){ 
 	if(window_timer = 4){
 		vsp_type = 1;
@@ -334,6 +336,15 @@ if (attack == AT_FSPECIAL_2 && instance_exists(grabbed_player_obj)) {
 			var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
 			grabbed_player_obj.x = x + 50 * spr_dir;
 			grabbed_player_obj.y = y - 50;
+		}if (window == 6) { 
+			//change as necessary. by default, this grab will pull the opponent to (30, 0) in front of the player.
+			var pull_to_x = 30 * spr_dir;
+			var pull_to_y = 0;
+			
+			//using an easing function, smoothly pull the opponent into the grab over the duration of this window.
+			var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
+			grabbed_player_obj.x = x + 30 * spr_dir;
+			grabbed_player_obj.y = y + 0;
 		}
 		//the above block can be copied for as many windows as necessary.
 		//e.g. for an attack like Clairen's back throw, you might have an additional window where the grabbed player is pulled behind.
@@ -343,7 +354,7 @@ if (attack == AT_FSPECIAL_2 && instance_exists(grabbed_player_obj)) {
 			window = 2;
 			window_timer = 0;
 			}
-		}if(window_timer = 120 && free){
+		}if(window_timer = 90 && free){
 			window = 3;
 			window_timer = 0;
 			sound_play(sound_get("grab_fail"));
@@ -367,7 +378,7 @@ if(window == 1){
 			window = 2;
 			window_timer = 0;
 			}
-		}if(window_timer = 120 && free){
+		}if(window_timer = 90 && free){
 			window = 3;
 			window_timer = 0;
 			sound_play(sound_get("grab_fail"));
@@ -379,7 +390,7 @@ if(window == 1){
 		}if(hatch_amount < 3000){
 if(hsp > 2 || hsp < -2){
 	hatch_amount += 1 + hatch_increase;
-}
+	}
 }
 }
 
@@ -391,11 +402,23 @@ if (attack == AT_FSPECIAL_2) {
 			window = 5;
 			window_timer = 0;
 		}
-	}if(window = 3 && window_timer = phone_window_end && !was_parried){
+	}
+	//windows being cancelled moment
+	if(window = 3 && window_timer = phone_window_end && !was_parried){
 			set_state(PS_IDLE);
 		}if(window = 3 && window_timer = phone_window_end && was_parried){
 			set_state(PS_PRATLAND);
-		}if(window == 2 && window_timer > 6){
+		}if(window = 5 && window_timer = phone_window_end && !was_parried){
+			set_state(PS_IDLE);
+		}if(window = 5 && window_timer = phone_window_end && was_parried){
+			set_state(PS_PRATLAND);
+		}if(window = 7 && window_timer = phone_window_end && !was_parried){
+			set_state(PS_IDLE);
+		}if(window = 7 && window_timer = phone_window_end && was_parried){
+			set_state(PS_PRATLAND);
+		}
+		
+		if(window == 2 && window_timer > 6){
 			    	grabbed_player_obj = noone; 
     	grabbed_player_relative_x = 0;
     	grabbed_player_relative_y = 0;
@@ -403,6 +426,18 @@ if (attack == AT_FSPECIAL_2) {
 			    	grabbed_player_obj = noone; 
     	grabbed_player_relative_x = 0;
     	grabbed_player_relative_y = 0;
+	}if(window == 6 && window_timer > 4){
+			    	grabbed_player_obj = noone; 
+    	grabbed_player_relative_x = 0;
+    	grabbed_player_relative_y = 0;
+	}if(window == 7 && window_timer > 4){
+    	move_cooldown[AT_FSPECIAL] = 30;
+	}
+	if(window == 1 && window_timer > 20){
+		if(special_pressed){
+			window = 6;
+			window_timer = 0;
+		}
 	}
 }
 if(attack == AT_USPECIAL){

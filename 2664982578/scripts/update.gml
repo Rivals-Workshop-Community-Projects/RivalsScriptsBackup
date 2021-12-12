@@ -35,6 +35,12 @@ if(hsp > 2 || hsp < -2){
 }
 }
 
+if(hatch_amount < 3000){
+if(state == PS_DASH_TURN){
+	hatch_amount += 1 + hatch_increase;
+}
+}
+
 if(hatch_amount > 3000){
 	hatch_amount = 3000;
 }
@@ -72,6 +78,12 @@ if(attack == AT_TAUNT){
 
 if(phone_landing == true){
 	move_cooldown[AT_FSPECIAL] = 0;
+}
+
+if (bbout_egg == true){
+ 	set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("bbout_fstrong"));
+} if (bbout_egg == false){
+ 	set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong"));
 }
 
 if (eggdog_skin == true){

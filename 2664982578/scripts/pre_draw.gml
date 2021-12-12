@@ -10,6 +10,7 @@ if(attack == AT_USPECIAL){
 
 if(state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 if(attack == AT_EXTRA_1){
+	if(champ_skin == false){
     if(window == 1 && window_timer = 17){
         snd_rng = random_func(0, 8, true);
         if (snd_rng == 0) {
@@ -34,7 +35,28 @@ if(attack == AT_EXTRA_1){
     }if(window == 6 && window_timer < 5){
          draw_sprite_ext(sprite_get("shiny_hatched"), shiny, x, y, 1 * spr_dir, 1,0,-1,1);
     }
-    }
+	}if(champ_skin == true){ //champ skins
+		if(get_player_color(player)== 18){
+	if(window == 3 || window == 4 || window == 5){
+         draw_sprite_ext(sprite_get("shiny_hatched"), 9, x, y, 1 * spr_dir, 1,0,-1,1);
+    }if(window == 6 && window_timer < 5){
+         draw_sprite_ext(sprite_get("shiny_hatched"), 9, x, y, 1 * spr_dir, 1,0,-1,1);
+    			}
+			}		if(get_player_color(player)== 23){
+	if(window == 3 || window == 4 || window == 5){
+         draw_sprite_ext(sprite_get("shiny_hatched"), 8, x, y, 1 * spr_dir, 1,0,-1,1);
+    }if(window == 6 && window_timer < 5){
+         draw_sprite_ext(sprite_get("shiny_hatched"), 8, x, y, 1 * spr_dir, 1,0,-1,1);
+    			}
+			}if(get_player_color(player)== 24){
+	if(window == 3 || window == 4 || window == 5){
+         draw_sprite_ext(sprite_get("shiny_hatched"), 10, x, y, 1 * spr_dir, 1,0,-1,1);
+    }if(window == 6 && window_timer < 5){
+         draw_sprite_ext(sprite_get("shiny_hatched"), 10, x, y, 1 * spr_dir, 1,0,-1,1);
+    			}
+			}
+    	}
+	}
 }
 
 if(trans_outline == true){

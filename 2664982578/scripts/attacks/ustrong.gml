@@ -85,3 +85,5 @@ set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_USTRONG, 2, HG_DRIFT_MULTIPLIER, 1);
+set_hitbox_value(AT_USTRONG, 2, HG_SDI_MULTIPLIER, 1);

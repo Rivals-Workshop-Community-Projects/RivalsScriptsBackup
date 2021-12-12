@@ -39,6 +39,8 @@ set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_FTILT, 1, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_FTILT, 1, HG_DRIFT_MULTIPLIER, 1);
+set_hitbox_value(AT_FTILT, 1, HG_SDI_MULTIPLIER, 1);
 
 set_hitbox_value(AT_FTILT, 2, HG_MUNO_HITBOX_NAME, "Sweet Spot");
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_TYPE, 1);
@@ -58,3 +60,5 @@ set_hitbox_value(AT_FTILT, 2, HG_EXTRA_HITPAUSE, 6);
 set_hitbox_value(AT_FTILT, 2, HG_HITPAUSE_SCALING, 0.9);
 set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, 67);
 set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_absa_uair"));
+set_hitbox_value(AT_FTILT, 2, HG_DRIFT_MULTIPLIER, 1);
+set_hitbox_value(AT_FTILT, 2, HG_SDI_MULTIPLIER, 1);

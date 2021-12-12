@@ -154,3 +154,9 @@ if (my_hitboxID.attack == AT_DSPECIAL_2) {
 		charm_timer = 600;
 	}
 }
+
+if(bbout_egg == true){
+	if(my_hitboxID.attack == AT_FSTRONG){
+		sound_play(sound_get("vineboom"), false, noone, 0.8, 1);	
+	}
+}

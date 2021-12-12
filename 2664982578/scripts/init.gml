@@ -104,6 +104,8 @@ counter_drop = 0;
 
 eggdog_skin = false;
 trans_outline = false;
+bbout_egg = false;
+champ_skin = false;
 
 grabbed_player_obj = noone;    //the player object currently being grabbed.
 grabbed_player_relative_x = 0; //the relative x and y position of the grabbed player, at the point they were grabbed.
@@ -196,12 +198,18 @@ bubble_y = 8;
 alt = get_player_color(player);
 eggdog_skin = false;
 trans_outline = false;
+bbout_egg = false;
+champ_skin = false;
 set_victory_portrait(sprite_get("portrait"));
-if(alt == 14 || alt == 15){ 
+if(alt == 14 || alt == 15 || alt == 16 || alt == 17 || alt == 18 || alt == 23){ 
 	eggdog_skin = true;
 	set_victory_portrait(sprite_get("eggdog_portrait"));
-}if(alt == 16){ 
+}if(alt == 20){ 
 	trans_outline = true;
+}if(alt == 22){ 
+	bbout_egg = true;
+}if(alt == 18 || alt == 23 || alt == 24){ 
+	champ_skin = true;
 }
 
 

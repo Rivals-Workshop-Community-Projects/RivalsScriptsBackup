@@ -128,6 +128,12 @@ if (state == 2){
         	        	spawn_hit_fx(x - spr_dir, y, 13);
         	            instance_destroy();
                          exit;
+        	}if(player_id.window == 6){
+        		spawn_hit_fx(player_id.x + player_id.spr_dir * 30, player_id.y - 20, 112);
+        		sound_play(asset_get("sfx_ori_energyhit_heavy"));
+        		create_hitbox(AT_NSPECIAL, 1, player_id.x + player_id.spr_dir * 30, player_id.y - 20);
+        		    instance_destroy();
+                    exit;
         	}
         }
         }if(state_timer > 2){
@@ -185,7 +191,7 @@ if (state == 6){
         x = player_id.x + player_id.spr_dir * 180;
         y = player_id.y - 110;
         spawn_hit_fx(x - spr_dir, y, 112);
-	}if(state_timer = 120){
+	}if(state_timer = 150){
 		spawn_hit_fx(x - spr_dir, y, 13);
     		    instance_destroy();
     			exit;
@@ -222,7 +228,16 @@ if (state == 7){
 		sound_play(sound_get("ballin"));
 		sound_play(sound_get("ballin2"));
 	}
-if(state_timer = 90){
+if(player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR){
+        if(player_id.attack == AT_FSPECIAL_2){
+        	if(player_id.window == 5){
+		spawn_hit_fx(x - spr_dir, y, 13);
+    		    instance_destroy();
+    			exit;
+        		}
+        	}
+        }
+    if(state_timer = 120){
 		spawn_hit_fx(x - spr_dir, y, 13);
     		    instance_destroy();
     			exit;
@@ -265,6 +280,12 @@ if (state == 8){
         	        	spawn_hit_fx(x - spr_dir, y, 13);
         	            instance_destroy();
                          exit;
+        	}if(player_id.window == 6){
+        		spawn_hit_fx(player_id.x + player_id.spr_dir * 30, player_id.y - 20, 112);
+        		sound_play(asset_get("sfx_ori_energyhit_heavy"));
+        		create_hitbox(AT_NSPECIAL, 1, player_id.x + player_id.spr_dir * 30, player_id.y - 20);
+        		    instance_destroy();
+                    exit;
         	}
         }
         }if(state_timer > 2){

@@ -215,4 +215,6 @@ set_hitbox_value(AT_EXTRA_1, 8, HG_VISUAL_EFFECT, 130);
 set_hitbox_value(AT_EXTRA_1, 8, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
 set_hitbox_value(AT_EXTRA_1, 8, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_EXTRA_1, 8, HG_HIT_LOCKOUT, 6);
+set_hitbox_value(AT_EXTRA_1, 8, HG_DRIFT_MULTIPLIER, 1);
+set_hitbox_value(AT_EXTRA_1, 8, HG_SDI_MULTIPLIER, 1);
 

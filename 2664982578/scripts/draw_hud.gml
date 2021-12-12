@@ -9,7 +9,7 @@ if(hatch_amount >= 3000){
 if(charm_timer > 0){
    draw_debug_text(temp_x + 40, temp_y - 12, string("x2!!!")); 
 }
-if (get_player_color(player) == 14 || get_player_color(player) == 15){
+if (eggdog_skin == true){
 	    draw_sprite(sprite_get("eggdog_face"), 0, temp_x + 46, temp_y+20);
 }
 /* debug

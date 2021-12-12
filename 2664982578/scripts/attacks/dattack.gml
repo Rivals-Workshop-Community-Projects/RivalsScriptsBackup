@@ -52,3 +52,5 @@ set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, 0.9);
 set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, 197);
 set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+set_hitbox_value(AT_DATTACK, 1, HG_DRIFT_MULTIPLIER, 1);
+set_hitbox_value(AT_DATTACK, 1, HG_SDI_MULTIPLIER, 1);
