@@ -1,23 +1,12 @@
+
 // Seagulls
 play_sound++;
 
 if ambience_on < 0{
-    ambience_on = 2;
+    ambience_on = 1;
 }
-if ambience_on > 2{
+if ambience_on > 1{
     ambience_on = 0;
-}
-
-switch(ambience_on){
-    case 0:
-        ambience_vol = 0.5;
-        break;
-    case 1:
-        ambience_vol = 0;
-        break;
-    case 2:
-        ambience_vol = 1;
-        break;
 }
 
 

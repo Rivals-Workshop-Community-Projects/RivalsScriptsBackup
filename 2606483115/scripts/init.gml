@@ -136,6 +136,7 @@ vfx_firework = hit_fx_create( sprite_get( "firework" ), 24);
 vfx_firework2 = hit_fx_create( sprite_get( "firework2" ), 24);
 vfx_firework3 = hit_fx_create( sprite_get( "firework3" ), 24);
 halloween_end = hit_fx_create( sprite_get( "halloween_end" ), 8);
+vfx_steam_particle = hit_fx_create( sprite_get( "steam_particle" ), 15);
 
 
 //Variables
@@ -147,6 +148,7 @@ full_length = 0
 wall_dir = 1
 steam_wall_dismiss = false
 red_indicator_timer = 0
+green_indicator_timer = 0
 uspecial_uppie = false
 uspecial_steam_grav = 0
 uspecial_no_steam = false
@@ -163,6 +165,13 @@ random_var = 0
 random_sway = 1
 steam_break_timer = 0
 steam_wall_no_down = 0
+steam_part = noone
+steam_part_2 = noone
+
+//Steam Update
+pedal_to_metal = false
+chuff_noise_timer = 0
+damage_adj = 1
 
 //Pokemon Stadium
 pkmn_stadium_back_img = sprite_get("galega_back_sprite")

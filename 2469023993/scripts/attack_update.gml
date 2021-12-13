@@ -4,6 +4,7 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 }
 //swift mode value changes
 if swift_mode = true{
+	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj_2"));
 	set_hitbox_value(AT_FSTRONG, 5, HG_BASE_KNOCKBACK, 9);
 	set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 10);
 	set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 10);
@@ -191,6 +192,12 @@ if swift_mode = true{
 	set_window_value(AT_JAB, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 	set_window_value(AT_JAB, 7, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
 	set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, asset_get("sfx_forsburn_combust"));
+	if (window == 2 && attack == AT_USPECIAL && window_timer < 30){
+		super_armor = true;
+	}
+	if (window == 2 && attack == AT_USPECIAL && window_timer > 30){
+		super_armor = false;
+	}
 	if (attack == AT_FSTRONG){
 		if (window == 2 && window_timer == 1){
 		sound_play(asset_get("sfx_ori_dsmash_skitter_sein"))
@@ -214,6 +221,7 @@ if swift_mode = true{
 }
 
 if swift_mode = false{
+	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspecial_proj"));
 	set_hitbox_value(AT_FSTRONG, 5, HG_BASE_KNOCKBACK, 6);
 	set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 7);
 	set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 7);
@@ -401,6 +409,8 @@ if swift_mode = false{
 	set_window_value(AT_JAB, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
 	set_window_value(AT_JAB, 7, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 	set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, asset_get("sfx_ori_sein_fstrong"));
+	if (window == 2 && attack == AT_USPECIAL && window_timer < 15) super_armor = true;
+	if (window == 2 && attack == AT_USPECIAL && window_timer > 15) super_armor = false;
 	//sounds on strongs
 	if (attack == AT_FSTRONG){
 		if (window == 2 && window_timer == 1){
@@ -460,8 +470,7 @@ if (window == 3 && attack == AT_DSPECIAL) super_armor = false;
 if (window == 4 && attack == AT_DSPECIAL && window_timer > 10) super_armor = false;
 	
 
-if (window == 2 && attack == AT_USPECIAL && window_timer < 15) super_armor = true;
-if (window == 2 && attack == AT_USPECIAL && window_timer > 15) super_armor = false;
+
 	
 if (attack == AT_DSPECIAL){
 	move_cooldown[AT_DSPECIAL] = 20;
@@ -573,7 +582,7 @@ if (attack == AT_USPECIAL){
 
 
 
-if attack == AT_TAUNT_2 {
+if (attack == AT_TAUNT_2) {
 	if window == 1 {
         if window_timer == 1 && down_down && training{
 			user_event(0);
@@ -611,3 +620,193 @@ if (attack == 49){
 }
 
 
+if (radio == 1){
+	if (attack == AT_JAB){
+		if (window == 7 && window_timer == 1 ){
+			sound_play(sound_get("atk1"));
+		}
+	}
+	
+	if (attack == AT_DATTACK){
+		if (window == 1 && window_timer == 1){
+			if (swift_mode = false){
+				sound_play(sound_get("atk21"))
+			}
+			else if (swift_mode = true){
+				sound_play(sound_get("getready"))
+			}
+		}
+	}
+	
+	if (attack == AT_FTILT){
+		if (window == 1 && window_timer == 1){
+		sound_play(sound_get("atk3"))
+		}
+	}
+	
+	if (attack == AT_DTILT){
+		if (window == 2 && window_timer == 3){
+			if (swift_mode = false){
+				sound_play(sound_get("atk18"))
+			}
+			else if (swift_mode = true){
+				sound_play(sound_get("THERE"))
+			}
+		}
+	}
+	
+	if (attack == AT_UTILT){
+		if (window == 1 && window_timer == 1 ){
+		sound_play(sound_get("atk11"))
+		}
+	}
+	
+	if (attack == AT_FAIR){
+		if (window == 1 && window_timer == 1 ){
+		sound_play(sound_get("atk4"))
+		}
+	}
+	
+	if (attack == AT_UAIR){
+		if (window == 1 && window_timer == 6 ){
+		sound_play(sound_get("atk5"))
+		}
+	}
+	
+	if (attack == AT_BAIR){
+		if (window == 1 && window_timer == 13){
+			if (swift_mode = false){
+				sound_play(sound_get("atk14"))
+			}
+			else if (swift_mode = true){
+				sound_play(sound_get("atk10"))
+			}
+		}
+	}
+	
+	if (attack == AT_DAIR){
+		if (window == 1 && window_timer == 4){
+			if (swift_mode = false){
+				sound_play(sound_get("atk6"))
+			}
+			else if (swift_mode = true){
+				sound_play(sound_get("atk19"))
+			}
+		}
+	}
+	
+	if (attack == AT_NAIR){
+		if (window == 1 && window_timer == 7){
+			if (swift_mode = false){
+				sound_play(sound_get("atk17"))
+			}
+			else if (swift_mode = true){
+				sound_play(sound_get("goodbye"))
+			}
+		}
+	}
+	
+	if (attack == AT_NSPECIAL){
+		if (window == 1 && window_timer == 1){
+			if (swift_mode = false){
+				sound_play(sound_get("FIRE"))
+			}
+			else if (swift_mode = true){
+				sound_play(sound_get("BLAZE"))
+			}
+		}
+	}
+	
+	if (attack == AT_FSPECIAL){
+		if (window == 1 && window_timer == 11){
+			if (swift_mode = false){
+				sound_play(sound_get("atk15"))
+			}
+			else if (swift_mode = true){
+				sound_play(sound_get("atk16"))
+			}
+		}
+	}
+	
+	if (attack == AT_FSPECIAL){
+		if (window == 4 && window_timer == 1){
+			if (swift_mode = false){
+				sound_play(sound_get("GOTCHA"))
+			}
+			else if (swift_mode = true){
+				sound_play(sound_get("takethis"))
+			}
+		}
+	}
+	
+	if (attack == AT_USPECIAL){
+		if (window == 1 && window_timer == 2){
+			if (swift_mode = false){
+				sound_play(sound_get("atk12"))
+			}
+			else if (swift_mode = true){
+				sound_play(sound_get("atk9"))
+			}
+		}
+	}
+	if (attack == AT_DSPECIAL){
+		if (window == 1 && window_timer == 2){
+			sound_play(sound_get("atk13"))
+		}
+		if (window == 4 && window_timer == 3 ){
+			sound_play(sound_get("atk7"))
+		}
+		if (window == 4 && window_timer == 5 ){
+			sound_play(sound_get("xionatk1"))
+		}
+		if (window == 5 && window_timer == 6 ){
+			sound_play(sound_get("GETEM"))
+		}
+	}
+	if (attack == AT_FSTRONG){
+		if (window == 2 && window_timer == 1){
+			if (swift_mode = false){
+				sound_play(sound_get("HAAAAAAA"))
+			}
+			else if (swift_mode = true){
+				sound_play(sound_get("TAAAA"))
+			}
+		}
+	}
+	if (attack == AT_DSTRONG){
+		if (window == 2 && window_timer == 1){
+			if (swift_mode = false){
+				sound_play(sound_get("atk8"))
+			}
+			else if (swift_mode = true){
+				sound_play(sound_get("ITSOVER"))
+			}
+		}
+	}
+	if (attack == AT_USTRONG){
+		if (window == 2 && window_timer == 1){
+			if (swift_mode = false){
+				sound_play(sound_get("atk20"))
+			}
+			else if (swift_mode = true){
+				sound_play(sound_get("URDONE"))
+			}
+		}
+	}
+	if (attack == AT_TAUNT){
+		if (window == 1 && window_timer == 3 ){
+			sound_play(sound_get("atk2"))
+		}
+		if (window == 2 && window_timer == 12 ){
+			sound_play(sound_get("imhere"))
+		}
+		if (window == 3 && window_timer == 6 ){
+			sound_play(sound_get("thx"))
+		}
+	}
+	if (attack == AT_TAUNT_2){
+		if (window == 1 && window_timer == 1 ){
+			sound_play(sound_get("comeon"))
+		}
+	}
+}

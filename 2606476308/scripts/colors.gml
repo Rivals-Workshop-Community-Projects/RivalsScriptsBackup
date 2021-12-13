@@ -22,12 +22,12 @@ set_color_profile_slot_range( 4, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 8 );
+set_num_palettes( 11 );
 
 // Purple
 set_color_profile_slot( 1, 0, 91, 61, 99 ); //Fur/Rocks
-set_color_profile_slot( 1, 1, 255, 198, 189 ); //Eyes
-set_color_profile_slot( 1, 2, 214, 182, 184 ); //Wings
+set_color_profile_slot( 1, 1, 255, 212, 212 ); //Eyes
+set_color_profile_slot( 1, 2, 214, 214, 214 ); //Wings
 set_color_profile_slot( 1, 3, 176, 113, 162 ); //Ears
 set_color_profile_slot( 1, 4, 87, 47, 102 ); //Ears 2
 
@@ -72,6 +72,27 @@ set_color_profile_slot( 7, 1, 255, 204, 15 ); //Eyes
 set_color_profile_slot( 7, 2, 255, 224, 224 ); //Wings
 set_color_profile_slot( 7, 3, 224, 206, 0 ); //Ears
 set_color_profile_slot( 7, 4, 194, 126, 0 ); //Ears 2
+
+// Tennis Ball
+set_color_profile_slot( 8, 0, 119, 207, 77 ); //Fur/Rocks
+set_color_profile_slot( 8, 1, 255, 255, 238 ); //Eyes
+set_color_profile_slot( 8, 2, 250, 255, 250 ); //Wings
+set_color_profile_slot( 8, 3, 0, 173, 144 ); //Ears
+set_color_profile_slot( 8, 4, 0, 89, 107 ); //Ears 2
+
+// Shaven
+set_color_profile_slot( 9, 0, 255, 143, 143 ); //Fur/Rocks
+set_color_profile_slot( 9, 1, 255, 249, 237 ); //Eyes
+set_color_profile_slot( 9, 2, 255, 255, 255 ); //Wings
+set_color_profile_slot( 9, 3, 245, 160, 151 ); //Ears
+set_color_profile_slot( 9, 4, 188, 74, 155 ); //Ears 2
+
+// Pollen
+set_color_profile_slot( 10, 0, 217, 170, 63 ); //Fur/Rocks
+set_color_profile_slot( 10, 1, 74, 74, 74 ); //Eyes
+set_color_profile_slot( 10, 2, 79, 79, 79 ); //Wings
+set_color_profile_slot( 10, 3, 48, 46, 46 ); //Ears
+set_color_profile_slot( 10, 4, 0, 0, 0 ); //Ears 2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -67,6 +67,7 @@ sprite_change_offset("vfx_steam3", 35, 35);
 sprite_change_offset("doublejump_steam", 47, 80);
 sprite_change_offset("steam_bar", 28, 15);
 sprite_change_offset("vfx_steam_bar_red", 28, 15);
+sprite_change_offset("vfx_steam_bar_green", 28, 15);
 sprite_change_offset("steam_bar_hud", 52, 42);
 sprite_change_offset("vfx_fair_oomph", 40, 40);
 sprite_change_offset("vfx_steam_blast_bair", 75, 40);
@@ -84,6 +85,8 @@ sprite_change_offset("vfx_speed_line_y", 30, 30);
 sprite_change_offset("geyser_start", 80, 80);
 sprite_change_offset("geyser_idle", 80, 80);
 sprite_change_offset("geyser_action", 80, 80);
+sprite_change_offset("geyser_action_full", 80, 80);
+sprite_change_offset("geyser_action_weak", 80, 80);
 sprite_change_offset("geyser_mask", 1, 80);
 sprite_change_offset("hurtbox", 125, 152);
 sprite_change_offset("hurtbox_air", 125, 152);
@@ -169,5 +172,10 @@ sprite_change_offset("halloween_left", 125, 152);
 sprite_change_offset("halloween_right", 125, 152);
 sprite_change_offset("halloween_end", 125, 152);
 
+sprite_change_offset("steam_particle", 64, 64);
+
+sprite_change_offset("hud_steam_meter", 5, 18);
+
 sprite_change_offset("geyser_timer", 20, 10);
+sprite_change_offset("geyser_timer_emergency", 20, 10);
 

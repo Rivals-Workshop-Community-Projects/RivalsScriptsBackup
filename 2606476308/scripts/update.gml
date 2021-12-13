@@ -41,3 +41,7 @@ if(halloween == true){
         hall_end.spr_dir = spr_dir
     }
 }
+
+if(rock_pause > 0){
+    rock_pause--
+}

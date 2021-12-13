@@ -1,14 +1,14 @@
 //Dattack Stuff
-if (my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num != 1){
+if (my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num != 1 && !hit_player_obj.super_armor && hit_player_obj.soft_armor < my_hitboxID.damage){
     if (window == 2 && grabbedid == noone){
         hit_player_obj.grabbed = 1;
-        grabbedid = hit_player_obj;
+        grabbedid = hit_player_obj;	
 		grabbedid.ungrab = 0;
     }
 }
 
 //Dattack Stuff
-if (my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num < 7){
+if (my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num < 7 && !hit_player_obj.super_armor && hit_player_obj.soft_armor < my_hitboxID.damage){
     if (window == 2 && grabbedid == noone){
         hit_player_obj.grabbed = 1;
         grabbedid = hit_player_obj;
@@ -51,6 +51,9 @@ if(my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 3){
 
 reserve_supply_active = false
 
+if(pedal_to_metal){
+	steam += 2
+}
 //Steam Geyser Scan Hitbox Extended Hitstun If Enemy Is Hit
 if(my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 2){
 	if(other.state == PS_HITSTUN || other.state == PS_HITSTUN_LAND){

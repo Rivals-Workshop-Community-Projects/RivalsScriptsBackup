@@ -42,13 +42,14 @@ if state{
     }
     switch(obj_stage_main.ambience_on){
         case 0:
-            drawText(x, ambi_option_y, "fName", c_white, 19, 1000, fa_center, 1, 1, 1, "Ambience: Quiet");
-            break;
-        case 1:
             drawText(x, ambi_option_y, "fName", c_white, 19, 1000, fa_center, 1, 1, 1, "Ambience: Off");
             break;
-        case 2:
-            drawText(x, ambi_option_y, "fName", c_white, 19, 1000, fa_center, 1, 1, 1, "Ambience: On");
+        case 1:
+        	if get_local_setting(SET_MUSIC_VOL) == 0{
+            	drawText(x, ambi_option_y, "fName", c_white, 19, 1000, fa_center, 1, 1, 1, "Ambience: Off");
+        	} else {
+        		drawText(x, ambi_option_y, "fName", c_white, 19, 1000, fa_center, 1, 1, 1, "Ambience: On");
+        	}
             break;
     }
     

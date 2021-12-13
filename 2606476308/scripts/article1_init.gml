@@ -22,5 +22,6 @@ gotHit_timer = 0
 rotate_angle = 0
 rock_hitbox = noone
 magnet = false
+cancelled = false
 
 gotHit_timer = 0

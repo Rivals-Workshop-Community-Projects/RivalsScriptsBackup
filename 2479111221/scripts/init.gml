@@ -4,6 +4,8 @@ var day;
 var hour = current_hour;
 var minute = current_minute;
 
+moe_squr_bonk_type = 1; // 1, Wood
+
 if get_match_setting(SET_PRACTICE) == 1{
    with(obj_stage_article){
        if num == 4{
@@ -23,8 +25,9 @@ if get_match_setting(SET_PRACTICE) == 1{
 
 play_sound = 0;
 seagull_timer = 60;
-ambience_on = 2;
-ambience_vol = 1;
+
+ambience_on = 1;
+ambience_vol = get_local_setting(SET_MUSIC_VOL);
 platform_select = 0;
 
 print_debug(string(hour))
@@ -32,10 +35,10 @@ print_debug(string(hour))
 switch(current_weekday){
    case 0:
        day = "Sunday";
-       print("Weeklies Today");
+       //print_debug("Weeklies Today");
        with(obj_stage_article){
            if num == 2{
-               visible = 1;
+               visible = 0;
            }
            if num == 3{
                visible = 0;
@@ -44,9 +47,10 @@ switch(current_weekday){
        break;
    case 1:
        day = "Monday";
+       print_debug("RWL Today");
        with(obj_stage_article){
            if num == 2{
-               visible = 0;
+               visible = 1;
            }
            if num == 3{
                visible = 0;

@@ -3,7 +3,7 @@ dspecon = 0
 //intro = 1
 
 
-	
+	/*
 	if countering == 1 {
 		
 		if enemy_hitboxID.type == 2 {
@@ -35,7 +35,7 @@ dspecon = 0
 		
 		
 	}
-	
+	*/
 	
 
 

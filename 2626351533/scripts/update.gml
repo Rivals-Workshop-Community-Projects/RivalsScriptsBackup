@@ -3,7 +3,8 @@ if ((state == PS_FIRST_JUMP && state_timer > 20)
 || (state == PS_FIRST_JUMP && state_timer > 5 && (down_down || down_pressed))
 || (state == PS_IDLE_AIR && (down_down || down_pressed))
 || (state == PS_IDLE_AIR && prev_state == PS_DOUBLE_JUMP)
-|| (state == PS_DOUBLE_JUMP && state_timer > 7 && (down_down || down_pressed))){
+|| (state == PS_DOUBLE_JUMP && state_timer > 7 && (down_down || down_pressed))
+|| (state == PS_WALL_JUMP && state_timer > 7 && (down_down || down_pressed))){
     can_glide = true;
     //Makes so it doesn't use the Djump
     if ((down_down || down_pressed) && glide_off == false){
@@ -21,7 +22,7 @@ else {
 
 //Actual gliding
 if (can_glide == true && jump_down && glide_off == false && im_gliding_cont < 90 &&  //used to be 150
-(state == PS_IDLE_AIR || state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP)){
+(state == PS_IDLE_AIR || state == PS_FIRST_JUMP || state == PS_DOUBLE_JUMP || state == PS_WALL_JUMP)){
     im_gliding = true;
     vsp = 1;
 //    glide_used = true;

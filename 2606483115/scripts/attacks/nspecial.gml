@@ -9,9 +9,9 @@ set_attack_value(AT_NSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("nspecial_air_hu
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
+//set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.5);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, sound_get("sfx_steam_quick"));
+//set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, sound_get("sfx_crank"));
 
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH, 10);

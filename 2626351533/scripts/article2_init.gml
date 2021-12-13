@@ -21,6 +21,46 @@ vsp = 0;                                            //The vertical speed of the 
 
 batarang_back = noone;
 
+draw1 = 0;
+draw1_x = 0;
+draw1_y = 0;
+draw1_rot = 0;
+
+draw2 = 0;
+draw2_x = 0;
+draw2_y = 0;
+draw2_rot = 0;
+
+draw3 = 0;
+draw3_x = 0;
+draw3_y = 0;
+draw3_rot = 0;
+
+draw4 = 0;
+draw4_x = 0;
+draw4_y = 0;
+draw4_rot = 0;
+
+draw5 = 0;
+draw5_x = 0;
+draw5_y = 0;
+draw5_rot = 0;
+
+draw6 = 0;
+draw6_x = 0;
+draw6_y = 0;
+draw6_rot = 0;
+
+draw7 = 0;
+draw7_x = 0;
+draw7_y = 0;
+draw7_rot = 0;
+
+draw8 = 0;
+draw8_x = 0;
+draw8_y = 0;
+draw8_rot = 0;
+
 //Terrain behavior
 can_be_grounded = true;                            //Determines if the article follows platforms when free == false.
 ignores_walls = false;                               //Determines if the article goes through walls.

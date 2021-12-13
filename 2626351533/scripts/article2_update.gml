@@ -32,6 +32,84 @@ if (state_timer >= 45 && state < 3){
 	state = 3;
 }
 
+if (state_timer%3 == 0){
+	if (draw1 == 0 && state != 5){
+		draw1_x = x;
+		draw1_y = y;
+		draw1_rot = image_angle;	
+		draw1 = 0.9;
+	}
+	else if (draw2 == 0 && state != 5){
+		draw2_x = x;
+		draw2_y = y;
+		draw2_rot = image_angle;	
+		draw2 = 0.9;
+	}
+	else if (draw3 == 0 && state != 5){
+		draw3_x = x;
+		draw3_y = y;
+		draw3_rot = image_angle;	
+		draw3 = 0.9;
+	}
+	else if (draw4 == 0 && state != 5){
+		draw4_x = x;
+		draw4_y = y;
+		draw4_rot = image_angle;	
+		draw4 = 0.9;
+	}
+	else if (draw5 == 0 && state != 5){
+		draw5_x = x;
+		draw5_y = y;
+		draw5_rot = image_angle;	
+		draw5 = 0.9;
+	}
+	else if (draw6 == 0 && state != 5){
+		draw6_x = x;
+		draw6_y = y;
+		draw6_rot = image_angle;	
+		draw6 = 0.9;
+	}
+	else if (draw7 == 0 && state != 5){
+		draw7_x = x;
+		draw7_y = y;
+		draw7_rot = image_angle;	
+		draw7 = 0.9;
+	}
+	else if (draw8 == 0 && state != 5){
+		draw8_x = x;
+		draw8_y = y;
+		draw8_rot = image_angle;	
+		draw8 = 0.9;
+	}
+	
+	if (draw1 > 0){
+		draw1 -= 0.1;
+	}
+	if (draw2 > 0){
+		draw2 -= 0.1;
+	}
+	if (draw3 > 0){
+		draw3 -= 0.1;
+	}
+	if (draw4 > 0){
+		draw4 -= 0.1;
+	}
+	if (draw5 > 0){
+		draw5 -= 0.1;
+	}
+	if (draw6 > 0){
+		draw6 -= 0.1;
+	}
+	if (draw7 > 0){
+		draw7 -= 0.1;
+	}
+	if (draw8 > 0){
+		draw8 -= 0.1;
+	}
+	
+	
+}
+
 //State 0: Flying Forward
 if (state == 0){
 	if (state_timer == 1){
@@ -107,16 +185,30 @@ if (state == 4){
 	image_angle += 35*spr_dir;
 }
 
+//State 4: It's dying
+if (state == 5){
+	sprite_index = asset_get("empty_sprite");
+
+}
+
+
 //Grabs the mine
 if ((place_meeting(x, y, player_id)) && (state >= 3) && 
 (player_id.state != PS_AIR_DODGE && player_id.state != PS_ROLL_BACKWARD && player_id.state != PS_ROLL_FORWARD)){
 	if ((instance_exists(player_id.mine)) && player_id.mine.state == 1){
             player_id.mine.state = 2;
         }
-	shoulddie = true;
+	state = 5;
+	state_timer = 560;
+	player_id.batarang_hitbox.destroyed = true;
+	player_id.batarang_hitbox = create_hitbox(AT_NSPECIAL, 4, x, y);
 }
 
 //Destroy after a certain time
+if (state_timer > 560){
+	state = 5;
+}
+
 if (state >= 3 && state_timer > 600){
 	shoulddie = true;
 }

@@ -20,10 +20,6 @@ set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_TYPE, 9);
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_VSPEED, 13.5);
-set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_HSPEED, 4);
-set_window_value(AT_DSPECIAL_AIR, 2, AG_WINDOW_HSPEED_TYPE, 1);
 
 set_window_value(AT_DSPECIAL_AIR, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL_AIR, 3, AG_WINDOW_LENGTH, 4);

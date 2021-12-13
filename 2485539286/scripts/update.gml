@@ -20,7 +20,7 @@ if state == PS_PRATFALL {
 }
 
 
-if can_attack && special_pressed && !left_down && !right_down && !up_down && !down_down && 	move_cooldown [AT_NSPECIAL] > 0{
+if can_attack && special_pressed && ((!left_down && !right_down && !up_down && !down_down && 	move_cooldown [AT_NSPECIAL] > 0) or (move_cooldown[AT_USPECIAL] > 0 && up_down && !down_down)) {
 	 sound_play(asset_get("sfx_ell_overheat"),false,noone,.7)
 	 sound_play(asset_get("sfx_ell_steam_release"),false,noone,.7)
 	 set_state(PS_PRATFALL)

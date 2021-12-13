@@ -5,17 +5,29 @@ if(red_indicator_timer > 0){
     red_indicator_timer--
 }
 
+if(green_indicator_timer > 0){
+    draw_sprite(sprite_get("vfx_steam_bar_green"), green_indicator_timer / 6, x + 1, y - (char_height + 33))
+    green_indicator_timer--
+}
+
 if(instance_exists(geyser)){
     if(geyser.state == 2){
         //draw_debug_text(geyser.x, geyser.y + 90, string(5 - round(geyser.state_timer / 60)))
-        draw_sprite(sprite_get("geyser_timer"), geyser.state_timer/9, geyser.x, geyser.y + 90)
+        if(geyser.lifetime < 35){
+        	draw_sprite(sprite_get("geyser_timer"), 35 - geyser.lifetime, geyser.x, geyser.y + 90)
+        }else{
+        	draw_sprite(sprite_get("geyser_timer"), 0, geyser.x, geyser.y + 90)
+        	if(geyser.lifetime > 50){
+        		draw_sprite(sprite_get("geyser_timer_emergency"), geyser.lifetime * 2, geyser.x, geyser.y + 90)
+        	}
+        }
     }
 }
 
 if(instance_exists(geyser_2)){
     if(geyser_2.state == 2){
         //draw_debug_text(geyser_2.x, geyser_2.y + 90, string(5 - round(geyser_2.state_timer / 60)))
-        draw_sprite(sprite_get("geyser_timer"), geyser_2.state_timer/9, geyser_2.x, geyser_2.y + 90)
+        draw_sprite(sprite_get("geyser_timer"), 35 - geyser_2.lifetime, geyser_2.x, geyser_2.y + 90)
     }
 }
 

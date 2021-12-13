@@ -20,7 +20,7 @@ if (stealth_rock >= 1){
             }
         }
         if (window == 2){
-            if (window_timer == 1){
+            if (window_timer == 2){
                 stealth_rock -= 1;
             }
         }
@@ -59,6 +59,7 @@ if (stealth_rock >= 1){
         }
         if (window == 2 && window_timer == 1){
             stealth_rock -= 1;
+            super_armor = false;
         }
     }
     
@@ -90,7 +91,7 @@ switch (attack)
     case AT_USTRONG:
         if (window == 2)
             sound_stop(sound_get("strong_charge"));
-        if (window == 2 && window_timer == 1)
+        if (window == 2 && window_timer == 1 && stealth_rock == 0)
             take_damage(player, -1, 4);
         break;
     case AT_DSTRONG:
@@ -98,11 +99,11 @@ switch (attack)
             sound_stop(sound_get("strong_charge"));
         break;
     case AT_NAIR:
-        if (window == 2 && window_timer == 1)
+        if (window == 2 && window_timer == 1 && stealth_rock == 0 && !hitstop )
             take_damage(player, -1, 3);
         break;
     case AT_USPECIAL:
-        if (window == 3 && window_timer == 1)
+        if (window == 3 && window_timer == 1 && stealth_rock == 0)
             take_damage(player, -1, 4);
         break;
     default:

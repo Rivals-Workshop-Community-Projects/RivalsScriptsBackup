@@ -29,7 +29,7 @@ set_color_profile_slot_range( 5, 40, 85, 50 );
 set_num_palettes( 32 );
 
 // Nexus Shift
-set_color_profile_slot( 1, 0, 7, 9, 36 ); //BODY
+set_color_profile_slot( 1, 0, 12, 15, 64 ); //BODY
 set_color_profile_slot( 1, 1, 26, 62, 135 ); //SHADE
 set_color_profile_slot( 1, 2, 198, 221, 245 ); //LIGHT
 set_color_profile_slot( 1, 3, 0, 0, 0 ); //OUTLINE

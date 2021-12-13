@@ -21,8 +21,8 @@ initial_dash_speed = 8.25;
 dash_speed = 7.75;
 dash_turn_time = 10;
 dash_turn_accel = 1.3;
-dash_stop_time = 4;
-dash_stop_percent = .31; //the value to multiply your hsp by when going into idle from dash or dashstop
+dash_stop_time = 6;
+dash_stop_percent = .3; //the value to multiply your hsp by when going into idle from dash or dashstop
 ground_friction = .6;
 moonwalk_accel = 1.5;
 
@@ -39,14 +39,14 @@ prat_fall_accel = .3; //multiplier of air_accel while in pratfall
 air_friction = .03;
 max_djumps = 1;
 double_jump_time = 54; //the number of frames to play the djump animation. Can't be less than 31.
-walljump_hsp = 5;
-walljump_vsp = 8;
+walljump_hsp = 7;
+walljump_vsp = 10;
 walljump_time = 32;
 max_fall = 9; //maximum fall speed without fastfalling
 fast_fall = 15; //fast fall speed
 gravity_speed = .5;
 hitstun_grav = .5;
-knockback_adj = 1.2; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 8;
@@ -106,6 +106,8 @@ can_swift = true;
 swift_mode = false;
 swift_timer = 0;
 training = get_training_cpu_action() != CPU_FIGHT;
+
+radio = 0;
 
 kirbyability = 16;
 swallowed = 0;

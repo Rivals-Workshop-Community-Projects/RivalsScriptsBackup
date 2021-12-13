@@ -40,6 +40,7 @@ if(state == 0){
 
 //stuck
 if(state == 1){
+	cancelled = false
 	sprite_index = sprite_get("flying_rock_stuck")
 	mask_index = sprite_get("flying_rock_mask")
 	if(grounded_state == "ground"){
@@ -62,14 +63,14 @@ if(state == 1){
 //spinning
 if(state == 2){
 	//hitbox
-	if(hit_timer <= 0 && magnet == false){
+	if(hit_timer <= 0 && magnet == false && cancelled != true){
         var rock_hitbox = create_hitbox(AT_FSPECIAL, 3, x, y)
         if(rock_hitbox.x > player_id.x){
         	rock_hitbox.spr_dir = -1
         }else{
         	rock_hitbox.spr_dir = 1
         }
-	}else if(hit_timer <= 0 && magnet == true){
+	}else if(hit_timer <= 0 && magnet == true && cancelled != true){
 		var rock_hitbox = create_hitbox(AT_FSPECIAL, 1, x, y)
 		if(rock_hitbox.x > player_id.x){
         	rock_hitbox.spr_dir = -1
@@ -91,6 +92,11 @@ if(state == 2){
 		sound_play(asset_get("sfx_kragg_rock_land"))
 	}
 	if(hit_wall == true){
+		if(cancelled == true){
+			spawn_hit_fx(x, y, 301)
+			instance_destroy();
+			exit;
+		}
 		state = 1
 		state_timer = 0
 		grounded_state = "wall"
@@ -113,6 +119,7 @@ with (asset_get("pHitBox")){
 	if (place_meeting(x, y, other)){
 		if(player_id == other.player_id && other.gotHit_timer <= 0){
 			if(other.state == 1 && other.state_timer > 2 && attack != AT_USPECIAL){
+				other.has_hit_player = true
 				spawn_hit_fx(x, y, hit_effect)
 				sound_play(sound_effect)
 				sound_play(asset_get("sfx_kragg_rock_pull"))
@@ -130,6 +137,14 @@ with (asset_get("pHitBox")){
 				other.state = 2
 				other.state_timer = 0
 				other.hit_wall = false
+				if(attack == AT_DAIR){
+					player_id.window = 4
+					player_id.window_timer = 0
+					player_id.vsp = -8
+					player_id.old_vsp = -8
+					player_id.old_hsp = 0
+					player_id.hsp = 0
+				}
 				if(type == 1){
 					with(player_id){
 						old_hsp = hsp
@@ -188,4 +203,10 @@ if (x < -200 && !(player_id.attack == AT_USPECIAL && player_id.state == PS_ATTAC
     exit;
 }
 
+if(cancelled == true){
+	image_alpha = 0.5
+}else{
+	image_alpha = 1
+}
+	
 state_timer++

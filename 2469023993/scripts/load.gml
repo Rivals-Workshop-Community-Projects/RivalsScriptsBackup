@@ -60,6 +60,8 @@ sprite_change_offset("plat", 125, 158);
 
 sprite_change_offset("nspecial_proj", 125, 158);
 
+sprite_change_offset("nspecial_proj_2", 125, 158);
+
 set_victory_bg( sprite_get("noxground"));
 
 sprite_change_offset("kirbothrow", 125, 158);

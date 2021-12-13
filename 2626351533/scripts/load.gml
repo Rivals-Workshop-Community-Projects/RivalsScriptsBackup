@@ -59,6 +59,7 @@ sprite_change_offset("mine", 16, 31);
 sprite_change_offset("mine_air", 16, 31);
 sprite_change_offset("mine_range", 35, 35);
 sprite_change_offset("batarang", 16, 21);
+sprite_change_offset("batarang_draw", 16, 21);
 sprite_change_offset("batarang_mask", 16, 21);
 sprite_change_offset("grapple_hook", 16, 31);
 sprite_change_offset("grapple_cable", 31, 36);

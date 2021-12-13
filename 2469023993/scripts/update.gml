@@ -6,7 +6,6 @@ if !free or state == PS_WALL_JUMP or state == PS_WALL_TECH {
 	used_fspecial = false;
 }
 
-
 if swift_mode = true{
 	move_cooldown[AT_DSPECIAL] = 30;
 	move_cooldown[AT_TAUNT] = 10;
@@ -26,6 +25,8 @@ if swift_mode = true{
 	leave_ground_max = 7.5;
 	max_jump_hsp = 7.5;
 	short_hop_speed = 5.75;
+	walljump_hsp = 8;
+	walljump_vsp = 9;
 	waveland_sound = asset_get("sfx_waveland_ori");
 }
 
@@ -48,6 +49,8 @@ if swift_mode = false{
 	leave_ground_max = 6;
 	max_jump_hsp = 6;
 	short_hop_speed = 6;
+	walljump_hsp = 7;
+	walljump_vsp = 10;
 	waveland_sound = asset_get("sfx_waveland_fors");
 }
 
@@ -222,4 +225,10 @@ if (amber_startHug == true) //Amber will set this bool to true when this player 
 	
 	//Set this bool back to false so that this doesn't loop
     amber_startHug = false;
+}
+
+if (state == PS_SPAWN && state_timer <= 100 && radio == 0 && up_down && shield_down && special_down && attack_down && strong_down && taunt_pressed){
+	radio = 1;
+	sound_play(sound_get("light_confirm"));
+	sound_play(sound_get("LETSGO"));
 }

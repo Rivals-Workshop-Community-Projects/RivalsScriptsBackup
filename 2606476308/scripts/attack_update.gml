@@ -61,6 +61,7 @@ if (attack == AT_USPECIAL && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
     }
 }
 
+/*
 if (attack == AT_UAIR){
 	if (window == 1 && window_timer == 11){
 		if (spr_dir == 1){
@@ -69,7 +70,7 @@ if (attack == AT_UAIR){
 		spawn_hit_fx( x - 42, y - 45, bat_sweetspot );
 		}
 	}
-}
+}*/
 
 if(attack == AT_FSTRONG){
 	if(window == 2 && window_timer == 1){
@@ -77,17 +78,27 @@ if(attack == AT_FSTRONG){
 	}
 }
 
+
 if (attack == AT_DAIR){
-	if (window == 3 && window_timer == 15){
-		set_state( PS_IDLE_AIR );
+	if(window == 3){
+		if(window_timer == 11){
+			window_timer = 0
+		}
+		if(state_timer > 30){
+			can_jump = true
+			can_shield = true
+			can_special = true
+			can_attack = true
+		}
 	}
 }
-
+/*
 if (attack == AT_BAIR){
 	if (window == 3 && window_timer == 16){
 		set_state( PS_IDLE_AIR );
 	}
 }
+*/
    	
 if(attack == AT_USPECIAL){
 	if(window == 1){
@@ -98,13 +109,14 @@ if(attack == AT_USPECIAL){
 				flying_rock1_uspecial = true
 				flying_rock1 = instance_create(x, y - 5, "obj_article1")
 				if(left_down){
-					flying_rock1.hsp = 2 + random_func_2(1, 5, true)
+					flying_rock1.hsp = 4 + random_func_2(1, 5, true)
 				}else if(right_down){
-					flying_rock1.hsp = -2 - random_func_2(1, 6, true)
+					flying_rock1.hsp = -4 - random_func_2(1, 6, true)
 				}else{
-					flying_rock1.hsp = -3 + random_func_2(1, 7, true)
+					flying_rock1.hsp = -1 + random_func_2(1, 2, true)
 				}
-				flying_rock1.vsp = 3
+				flying_rock1.ignores_walls = true
+				flying_rock1.vsp = 2
 				flying_rock1.state = 2
 			}else{
 				flying_rock1_uspecial = false
@@ -113,14 +125,15 @@ if(attack == AT_USPECIAL){
 				flying_rock2_uspecial = true
 				flying_rock2 = instance_create(x, y - 5, "obj_article1")
 				if(left_down){
-					flying_rock2.hsp = 2 + random_func_2(2, 5, true)
+					flying_rock2.hsp = 6 + random_func_2(2, 5, true)
 				}else if(right_down){
-					flying_rock2.hsp = -2 - random_func_2(2, 6, true)
+					flying_rock2.hsp = -6 - random_func_2(2, 6, true)
 				}else{
-					flying_rock2.hsp = -3 + random_func_2(2, 7, true)
+					flying_rock2.hsp = -1 + random_func_2(2, 2, true)
 				}
-				flying_rock2.vsp = 6
+				flying_rock2.vsp = 4
 				flying_rock2.state = 2
+				flying_rock2.ignores_walls = true
 			}else{
 				flying_rock2_uspecial = false
 			}
@@ -132,21 +145,28 @@ if(attack == AT_USPECIAL){
 				}else if(right_down){
 					flying_rock3.hsp = -2 - random_func_2(3, 6, true)
 				}else{
-					flying_rock3.hsp = -3 + random_func_2(3, 7, true)
+					flying_rock3.hsp = -1 + random_func_2(3, 2, true)
 				}
-				flying_rock3.vsp = 9
+				flying_rock3.vsp = 6
 				flying_rock3.state = 2
+				flying_rock3.ignores_walls = true
 			}else{
 				flying_rock3_uspecial = false
 			}
 		}
 	}
 	if(window == 2){
-		colCir = collision_circle(x, y - 25, 130, oPlayer, true, true);
-		grabbedid = colCir
-		if(colCir != noone){
-			if(!grabbedid.free){
-				grabbedid.y -= 2
+		if(window_timer < 11){
+			colCir = collision_circle(x, y - 25, 130, oPlayer, true, true);
+			if(colCir != noone){
+				grabbedid = colCir
+				if(grabbedid != noone){
+					if(!grabbedid.free){
+						grabbedid.y -= 2
+					}
+				}
+			}else{
+				grabbedid = noone
 			}
 		}
 		if(state_timer mod 10 == 0 && !hitpause){
@@ -156,25 +176,34 @@ if(attack == AT_USPECIAL){
 			magnet_vfx.movement = 1
 		}
 		if(!rock_hit){
-			if(shield_pressed && window_timer > 8 && (flying_rock1_uspecial || flying_rock2_uspecial || flying_rock3_uspecial)){
+			if(shield_pressed && has_airdodge && window_timer > 8 && (flying_rock1_uspecial || flying_rock2_uspecial || flying_rock3_uspecial)){
 				sound_play(asset_get("mfx_back"))
-				set_state(PS_PRATFALL)
-				vsp = -3
-				create_hitbox(AT_NSPECIAL, 3, x, y)
+				hsp = 0
+				vsp = 0
+				set_state(PS_PARRY_START)
+				if(grabbedid != noone){
+					create_hitbox(AT_NSPECIAL, 3, x, y)
+				}
 				if(flying_rock1_uspecial){
 					flying_rock1.state = 2
 					flying_rock1.hsp = -1 + random_func_2(1, 3, true)
 					flying_rock1.vsp = -2
+					flying_rock1.ignores_walls = false
+					flying_rock1.cancelled = true	
 				}
 				if(flying_rock2_uspecial){
 					flying_rock2.state = 2
 					flying_rock2.hsp = -1 + random_func_2(2, 3, true)
 					flying_rock2.vsp = -2
+					flying_rock2.ignores_walls = false
+					flying_rock2.cancelled = true	
 				}
 				if(flying_rock3_uspecial){
 					flying_rock3.state = 2
 					flying_rock3.hsp = -1 + random_func_2(3, 3, true)
 					flying_rock3.vsp = -2
+					flying_rock3.ignores_walls = false
+					flying_rock3.cancelled = true	
 				}
 				exit;
 				
@@ -187,12 +216,13 @@ if(attack == AT_USPECIAL){
 		can_move = false
 	}
 	if(window == 2 && window_timer > 10 || window == 3){
-		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 7);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
 		set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 4);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.75);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 10);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.95);
-		set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+		set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.4);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 6);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, -1);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0.5);
+		set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 		set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 303);
 		if(flying_rock1_uspecial == true){
 			extended_nspecial_window = true
@@ -222,10 +252,11 @@ if(attack == AT_USPECIAL){
 			flying_rock1.spr_dir = 1
 			flying_rock1.magnet = true
 			flying_rock1.ignores_walls = true; 
+			flying_rock1.cancelled = false; 
 			flying_rock1.sprite_index = sprite_get("flying_rock")
 			flying_rock1.state = 0
 			flying_rock1.image_angle = point_direction(flying_rock1.x, flying_rock1.y, x, y) + 45
-			if(hitpause == false){
+			if(hitpause == false && rock_pause <= 0){
 				flying_rock1.vsp = (floor((state_timer * -1) / 3)) * sin(degtorad(point_direction(flying_rock1.x, flying_rock1.y, x, y)));;
 				flying_rock1.hsp = (floor(state_timer / 4))* cos(degtorad(point_direction(flying_rock1.x, flying_rock1.y, x, y)));
 			}else{
@@ -240,6 +271,7 @@ if(attack == AT_USPECIAL){
 				sound_play(asset_get("sfx_blow_medium1"))
 				spawn_hit_fx(flying_rock1.x, flying_rock1.y - 10, 193)
 				instance_destroy(flying_rock1)
+				
 				if(hsp > 0){
 					if(spr_dir == 1){
 						set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 85);
@@ -263,8 +295,9 @@ if(attack == AT_USPECIAL){
 			flying_rock2.ignores_walls = true; 
 			flying_rock2.sprite_index = sprite_get("flying_rock")
 			flying_rock2.state = 0
+			flying_rock2.cancelled = false; 
 			flying_rock2.image_angle = point_direction(flying_rock2.x, flying_rock2.y, x, y) + 45
-			if(hitpause == false){
+			if(hitpause == false && rock_pause <= 0){
 				flying_rock2.vsp = (floor((state_timer * -1) / 3)) * sin(degtorad(point_direction(flying_rock2.x, flying_rock2.y, x, y)));;
 				flying_rock2.hsp = (floor(state_timer / 4))* cos(degtorad(point_direction(flying_rock2.x, flying_rock2.y, x, y)));
 			}else{
@@ -279,6 +312,7 @@ if(attack == AT_USPECIAL){
 				sound_play(asset_get("sfx_blow_medium2"))
 				spawn_hit_fx(flying_rock2.x, flying_rock2.y - 10, 193)
 				instance_destroy(flying_rock2)
+				
 				if(hsp > 0){
 					if(spr_dir == 1){
 						set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 85);
@@ -302,8 +336,9 @@ if(attack == AT_USPECIAL){
 			flying_rock3.ignores_walls = true; 
 			flying_rock3.sprite_index = sprite_get("flying_rock")
 			flying_rock3.state = 0
+			flying_rock3.cancelled = false; 
 			flying_rock3.image_angle = point_direction(flying_rock3.x, flying_rock3.y, x, y) + 45
-			if(hitpause == false){
+			if(hitpause == false && rock_pause <= 0){
 				flying_rock3.vsp = (floor((state_timer * -1) / 3)) * sin(degtorad(point_direction(flying_rock3.x, flying_rock3.y, x, y)));;
 				flying_rock3.hsp = (floor(state_timer / 4))* cos(degtorad(point_direction(flying_rock3.x, flying_rock3.y, x, y)));
 			}else{
@@ -318,6 +353,7 @@ if(attack == AT_USPECIAL){
 				sound_play(asset_get("sfx_blow_medium3"))
 				spawn_hit_fx(flying_rock3.x, flying_rock3.y - 10, 193)
 				instance_destroy(flying_rock3)
+				
 				if(hsp > 0){
 					if(spr_dir == 1){
 						set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 85);
@@ -381,6 +417,8 @@ if(attack == AT_NSPECIAL){
 						flying_rock1.hsp = -4
 					}
 					flying_rock1.vsp = -3
+					flying_rock1.ignores_walls = false
+					flying_rock1.cancelled = true	
 				}
 				if(instance_exists(flying_rock2)){
 					flying_rock2.state = 2
@@ -390,6 +428,8 @@ if(attack == AT_NSPECIAL){
 						flying_rock2.hsp = -4
 					}
 					flying_rock2.vsp = -3
+					flying_rock2.ignores_walls = false
+					flying_rock2.cancelled = true	
 				}
 				if(instance_exists(flying_rock3)){
 					flying_rock3.state = 2
@@ -399,6 +439,8 @@ if(attack == AT_NSPECIAL){
 						flying_rock3.hsp = -4
 					}
 					flying_rock3.vsp = -3
+					flying_rock3.ignores_walls = false
+					flying_rock3.cancelled = true	
 				}
 				exit;
 			}
@@ -443,8 +485,9 @@ if(attack == AT_NSPECIAL){
 			flying_rock1.ignores_walls = true; 
 			flying_rock1.sprite_index = sprite_get("flying_rock")
 			flying_rock1.state = 0
+			flying_rock1.cancelled = false; 
 			flying_rock1.image_angle = point_direction(flying_rock1.x, flying_rock1.y, x, y) + 45
-			if(hitpause == false){
+			if(hitpause == false && rock_pause <= 0){
 				flying_rock1.vsp = (floor((state_timer * -1) / 3)) * sin(degtorad(point_direction(flying_rock1.x, flying_rock1.y, x, y)));;
 				flying_rock1.hsp = (floor(state_timer / 3)) * cos(degtorad(point_direction(flying_rock1.x, flying_rock1.y, x, y)));
 			}else{
@@ -452,6 +495,7 @@ if(attack == AT_NSPECIAL){
 				flying_rock1.hsp = 0
 			}
 			if(distance_to_object(flying_rock1) < 2){
+				
 				vsp = (floor((state_timer * -1) / 6))* sin(degtorad(point_direction(flying_rock1.x, flying_rock1.y, x, y)));
 				hsp = (floor(state_timer / 6)) * cos(degtorad(point_direction(flying_rock1.x, flying_rock1.y, x, y)));
 				sound_play(asset_get("sfx_blow_medium1"))
@@ -480,8 +524,9 @@ if(attack == AT_NSPECIAL){
 			flying_rock2.ignores_walls = true; 
 			flying_rock2.sprite_index = sprite_get("flying_rock")
 			flying_rock2.state = 0
+			flying_rock2.cancelled = false; 
 			flying_rock2.image_angle = point_direction(flying_rock2.x, flying_rock2.y, x, y) + 45
-			if(hitpause == false){
+			if(hitpause == false && rock_pause <= 0){
 				flying_rock2.vsp = (floor((state_timer * -1) / 3)) * sin(degtorad(point_direction(flying_rock2.x, flying_rock2.y, x, y)));;
 				flying_rock2.hsp = (floor(state_timer / 3)) * cos(degtorad(point_direction(flying_rock2.x, flying_rock2.y, x, y)));
 			}else{
@@ -517,8 +562,9 @@ if(attack == AT_NSPECIAL){
 			flying_rock3.ignores_walls = true; 
 			flying_rock3.sprite_index = sprite_get("flying_rock")
 			flying_rock3.state = 0
+			flying_rock3.cancelled = false; 
 			flying_rock3.image_angle = point_direction(flying_rock3.x, flying_rock3.y, x, y) + 45
-			if(hitpause == false){
+			if(hitpause == false && rock_pause <= 0){
 				flying_rock3.vsp = (floor((state_timer * -1) / 3)) * sin(degtorad(point_direction(flying_rock3.x, flying_rock3.y, x, y)));;
 				flying_rock3.hsp = (floor(state_timer / 3)) * cos(degtorad(point_direction(flying_rock3.x, flying_rock3.y, x, y)));
 			}else{
@@ -526,6 +572,7 @@ if(attack == AT_NSPECIAL){
 				flying_rock3.hsp = 0
 			}
 			if(distance_to_object(flying_rock3) < 2){
+				
 				vsp = (floor((state_timer * -1) / 6))* sin(degtorad(point_direction(flying_rock3.x, flying_rock3.y, x, y)));
 				hsp = (floor(state_timer / 6)) * cos(degtorad(point_direction(flying_rock3.x, flying_rock3.y, x, y)));
 				sound_play(asset_get("sfx_blow_medium3"))
@@ -570,16 +617,36 @@ if(attack == AT_DSPECIAL){
 	}
 }
 if(attack == AT_DSPECIAL_AIR){
-	if(window == 2 && window_timer == 23){
+	if(window == 2 && window_timer == 17){
 		if(was_parried){
 			set_state(PS_PRATFALL)
 		}else{
 			set_state(PS_IDLE_AIR)
 		}
 	}
+	if(window == 3){
+		if(free){
+			if(was_parried){
+				set_state(PS_PRATFALL)
+			}else{
+				set_state(PS_IDLE_AIR)
+				if(left_down){
+					spr_dir = -1
+				}else if(right_down){
+					spr_dir = 1
+				}
+			}
+		}
+	}
 	if(window == 2 && !free){
 		window = 3
 		window_timer = 0
+		destroy_hitboxes();
+		if(state_timer <= 11 || has_hit_player && state_timer <= 11){
+			if(hsp > 1 || hsp < -1){
+				hsp = 10*spr_dir
+			}
+		}
 		sound_play(asset_get("sfx_blow_weak1"))
 		sound_play(asset_get("sfx_kragg_rock_shatter"))
 		if(instance_exists(flying_rock1)){

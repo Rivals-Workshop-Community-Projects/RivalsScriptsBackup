@@ -22,3 +22,6 @@ hit_wall = false;                                   //If the article moves into 
 
 dist = 0
 number = 0
+
+lifetime = 0
+attack = false

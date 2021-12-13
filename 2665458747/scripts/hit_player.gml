@@ -43,7 +43,7 @@ if (my_hitboxID.attack == AT_USTRONG)
 }
 
 //poison
-if "croagpoison" in self
+if "croagpoison" in hit_player_obj
 {
     if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1)
     {

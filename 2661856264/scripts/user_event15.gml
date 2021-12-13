@@ -259,7 +259,55 @@ in a Patch.
 
 #define CORE_patches
 
-initPatch("1.0", "21/12/03");
+initPatch("1.2", "21/12/12");
+initHeader("Second Patch");
+initSection("Reworks");
+initWords("DAir now uses a different angle -70 > 35- and new knockback to accomodate -base: 8 > 7; scaling: 0.9 > 0.8, on top of lower hitpause -base: 12 > 10; scaling: 1 > 0.9;");
+initWords("UStrong's latebox got a different angle -40/45 > 70. To compensate it's got a different knockback formula -base: 5 > 7; scaling: 1 > 0.9, higher damage -5 > 9- and hitpause -base: 5 > 8; scaling: 1 > 0.9;");
+initSection("Buffs");
+initWords("Fixed a bug with NAir that recounted the recoil frame, basically giving Golem damage undeservingly so :(");
+initWords("FSpecial has lower startup: 18 > 16;");
+initWords("Enhanced NAir, UStrong and UStrong now give no recoil damage;");
+initSection("Nerfs");
+initWords("Parrying Geodude now forces Golem into parry stun;");
+initWords("The normal rocks thrown from NSpecial now deal less hitstun: 1 > 0.8;");
+initWords("Jab1 is now techable, has less active frames -4 > 3- and more endlag: 12 > 15, however it's not a real nerf since you can still tilt-cancel it from frame 3 onwards. Jab2 also lost 1 active frame: 4 > 3;");
+initWords("Enhanced FStrong only has super armor during the initial window of the attack;");
+initSection("Other");
+initWords("Changed sfx for DTilt's sourspot;");
+initWords("Removed  BAir's shell hitbox: it now only has 3;");
+initWords("UStrong's earlybox got a different hitpause formula -base: 13 > 11.5; scaling: 1 > 1.15;");
+initWords("Jab1 changed its angle (35 > 40/45);");
+initWords("death.gml now works properly. This means that stealth rocks will be correctly removed on death and Golem will cry when dying;");
+
+initPatch("1.1", "21/12/08");
+initHeader("First Patch");
+initSection("Buffs");
+initWords("Higher Air Friction: 0.02 > 0.03;");
+initWords("Higher Max Air Speed: 3 > 4;");
+initWords("Higher Jump Speed: 10 > 11;");
+initWords("Higher Short hop speed: 6 > 7;");
+initWords("Higher Max Jump Horizontal Speed: 4 > 5;");
+initWords("USpecial should go slightly higher.");
+initSection("Nerfs");
+initWords("Pratfall Acceleration nerfed: 1.5 > 0.85;");
+initWords("NAir has lower base knockback: 8 > 7;");
+initWords("BAir has longer startup: 12 > 14;");
+initWords("It's actually possible to SDI away from DStrong's multihits: 0.1 > 0.5;");
+initWords("UStrong has longer startup -6 > 10- and lower scaling knockback -1.25 > 1.15, and should also properly inflict self-damage: 4;");
+initWords("Geodude lifetime nerfed: 240 > 140, for real this time;");
+initWords("Geodude hitstun nerfed in accordance to basecast standard 1 > 0.5;");
+initWords("FSpecial base startup increased: 12 > 18;");
+initWords("FSpecial turning window time increased: 10 > 14;");
+initWords("USpecial startup increased: 9 > 12;");
+initSection("Other");
+initWords("Corrected idle and crouch hurtboxes to normal shapes;");
+initWords("Corrected offset for the hurtboxes for FTilt, DTilt and DAir;");
+initWords("At the beginning of each attack that uses a rock, a sound will be played;");
+initWords("Stealth Rocks now change colors properly depending on the alt;");
+initWords("Geodude will now use the same colors as Golem's shell rather than its skin;");
+
+initPatch("1.0", "21/12/05");
 initHeader("Release");
 initWords("Notice please that some stuff might still need to be polished. I'm grateful for your help, regardless");
 

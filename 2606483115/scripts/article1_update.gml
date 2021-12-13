@@ -79,17 +79,19 @@ if(state == 1){
 //Idle
 if(state == 2){
 	sprite_index = sprite_get("geyser_idle")
-	if(state_timer >= 300){
+	if(lifetime < 55){
+		lifetime += 0.1
+	}else{
 		sound_play(sound_get("sfx_steam3"))
-		state = 3
+		state = 5
 		state_timer = 0
 		image_index = 0
 	}
-	if(number == 1){
+	/*if(number == 1){
 		create_hitbox(AT_DSPECIAL, 2, x, y + 65)
 	}else{
 		create_hitbox(AT_DSPECIAL, 3, x, y + 65)
-	}
+	}*/
 }
 
 //Action
@@ -115,6 +117,58 @@ if(state == 4){
 	if(image_index <= 0){
 		instance_destroy();
 		exit;
+	}
+}
+
+//Steam Update
+
+//Full Action
+if(state == 5){
+	sprite_index = sprite_get("geyser_action_full")
+	image_index += 0.25
+	if(state_timer == 1){
+		sound_play(sound_get("sfx_steam2"))
+	}
+	if(image_index == 1){
+		create_hitbox(AT_DSPECIAL, 5, x, y + 29)
+	}
+	if(image_index >= 6){
+		instance_destroy();
+		exit;
+	}
+}
+
+//Weak Action
+if(state == 6){
+	sprite_index = sprite_get("geyser_action_weak")
+	image_index += 0.25
+	if(state_timer == 1){
+		sound_play(sound_get("sfx_steam2"))
+	}
+	if(image_index == 1){
+		create_hitbox(AT_DSPECIAL, 4, x, y + 50)
+	}
+	if(image_index >= 5){
+		instance_destroy();
+		exit;
+	}
+}
+
+if(attack == true){
+	if(state != 6 && state != 5 && state != 3){
+		if(lifetime < 17){
+			state = 6
+			state_timer = 0
+			image_index = 0
+		}else if(lifetime < 36){
+			state = 3
+			state_timer = 0
+			image_index = 0
+		}else{
+			state = 5
+			state_timer = 0
+			image_index = 0
+		}
 	}
 }
 state_timer++

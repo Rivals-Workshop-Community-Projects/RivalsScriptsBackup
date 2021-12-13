@@ -21,7 +21,7 @@ set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 2);
 
 
-set_num_hitboxes(AT_NSPECIAL, 3);
+set_num_hitboxes(AT_NSPECIAL, 4);
 
 //Flying forward hitbox
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
@@ -100,3 +100,29 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
 //set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 302);
+
+//Going back hitbox (second)
+set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_NSPECIAL, 4, HG_WINDOW, 99);
+set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 60);
+set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_X, 0);
+set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_Y, 0);
+set_hitbox_value(AT_NSPECIAL, 4, HG_WIDTH, 1);
+set_hitbox_value(AT_NSPECIAL, 4, HG_HEIGHT, 1);
+set_hitbox_value(AT_NSPECIAL, 4, HG_PRIORITY, 0);
+set_hitbox_value(AT_NSPECIAL, 4, HG_DAMAGE, 5);
+set_hitbox_value(AT_NSPECIAL, 4, HG_ANGLE, 60);
+set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_NSPECIAL, 4, HG_KNOCKBACK_SCALING, .2);
+set_hitbox_value(AT_NSPECIAL, 4, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_NSPECIAL, 4, HG_HITPAUSE_SCALING, .4);
+set_hitbox_value(AT_NSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_abyss_hazard_hit"));
+set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_IS_TRANSCENDENT, false);
+set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_PARRY_STUN, true);
+set_hitbox_value(AT_NSPECIAL, 4, HG_EXTENDED_PARRY_STUN, true);
+set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+//set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_NSPECIAL, 4, HG_VISUAL_EFFECT, 1);

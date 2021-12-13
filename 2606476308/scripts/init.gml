@@ -126,6 +126,7 @@ if(get_player_color(player) == 7){
 
 kirbyability = 3
 
+rock_pause = 0
 flying_rock1 = noone
 flying_rock2 = noone
 flying_rock3 = noone

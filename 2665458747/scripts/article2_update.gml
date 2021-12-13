@@ -17,7 +17,7 @@ else if instance_exists(attachedhitbox)
     x = round(attachedhitbox.x);
     y = round(attachedhitbox.y);
     
-    if (attachedhitbox.was_parried)
+    if (attachedhitbox.was_parried) || (player_id.state_cat == SC_HITSTUN)
     {
     	precautionarytimer-=200;
     }

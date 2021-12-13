@@ -1,9 +1,11 @@
 //draw_hud.gml
 
+
+draw_sprite(sprite_get("hud_steam_meter"), (steam / 3.13), temp_x + 31, temp_y + 24)
+
 /*
-draw_sprite(sprite_get("steam_bar_hud"), reserve_supply / 10, temp_x + 50, temp_y - 38)
+draw_debug_text(temp_x + 58, temp_y - 23, string(uspecial_uppie))
 
-draw_debug_text(temp_x + 58, temp_y - 23, string(reserve_supply))
+draw_debug_text(temp_x + 82, temp_y - 23, string(uspecial_no_steam))
 
-draw_debug_text(temp_x + 82, temp_y - 23, string(get_player_color(player)))
 */

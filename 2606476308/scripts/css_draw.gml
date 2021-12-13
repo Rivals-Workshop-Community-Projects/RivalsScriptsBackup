@@ -10,7 +10,7 @@ var alt_cur = get_player_color(player);
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-var num_alts = 8;
+var num_alts = 11;
 var alt_cur = get_player_color(player);
 
 var alt_new = get_player_color(player);
@@ -36,6 +36,9 @@ alt_name[4]  = "Camouflage";
 alt_name[5]  = "Ghost";
 alt_name[6]  = "Demon";
 alt_name[7]  = "Batmonkey";
+alt_name[8]  = "Tennis Ball";
+alt_name[9]  = "Shaven";
+alt_name[10]  = "Pollen";
 
 //Alt
 

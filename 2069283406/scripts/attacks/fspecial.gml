@@ -21,7 +21,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_burnapplied"));
 
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 0);

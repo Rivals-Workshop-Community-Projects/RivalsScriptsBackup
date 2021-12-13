@@ -1,13 +1,27 @@
+
+/*
 if(my_hitboxID.attack == AT_BAIR && my_hitboxID.hbox_num == 1){
 	window = 4;
 	window_timer = 0;
 }
 
+
 if (my_hitboxID.attack == AT_DAIR){
 	if (window == 2){
 		window = 4;
 		window_timer = 0;
+		hit_player_obj.x = x
+		hit_player_obj.y = y + 90
 	}
+}*/
+
+if(my_hitboxID.attack == AT_DAIR){
+	window = 4
+	window_timer = 0
+	vsp = -8
+	old_vsp = -8
+	old_hsp = hit_player_obj.old_hsp * -1
+	hsp = 0
 }
 
 if(my_hitboxID.attack == AT_FSPECIAL){

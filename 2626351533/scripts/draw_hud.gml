@@ -2,7 +2,7 @@
 if "batarang" in self{
 
 with (batarang) {
-	
+	if (state < 5){
 	var leeway = 0;
 	
 	var off_l = x < view_get_xview() - leeway;
@@ -31,6 +31,7 @@ with (batarang) {
 		with other shader_start();
 		draw_sprite_ext(sprite_get("article_offscreen"), 8, clamp(x - view_get_xview(), margin, view_get_wview() - margin)-30, clamp(y - view_get_yview(), margin, view_get_hview() - margin)-45, 2, 2, 0, c_white, 1);
 		with other shader_end();
+	}
 	}
 }
 
