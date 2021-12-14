@@ -8,7 +8,6 @@ rainbow_color = phone_cheats[cheat_skittles] ? make_color_hsv(get_gameplay_time(
 set_character_color_slot(0, color_get_red(rainbow_color), color_get_green(rainbow_color), color_get_blue(rainbow_color));
 
 
-
 if cooldownstart = true {
 	burststop -= 1;
 }
@@ -37,6 +36,58 @@ if burstmeter <= 0 {
 	burststop = 0;
 }
 
+//==================================================================
+if (burst_timer > 0) burst_timer--;
+else
+{
+	
+	    	if (spawning_front_spikes)
+{
+   var ground = false
+   while (!ground && burstfronty < 10000) //replace 2000 with bottom blast zone
+   {
+      ground = test_for_ground(burstfrontx, burstfronty)
+      if (!ground) burstfronty += 16; //step downwards (adjust precisiion as needed)
+   }
+   if (ground)
+   {
+  var hfx = spawn_hit_fx(burstfrontx, burstfronty, spikes_fx1);
+       hfx.spr_dir = burst_dir;
+        burstfrontx += (burst_dir * 50); //go forward 50 pixels
+        var hbox = create_hitbox( AT_DSPECIAL, 4, burstfrontx - (burst_dir * 50), burstfronty);
+        hbox.spr_dir = burst_dir;
+   }
+   else
+   {
+       spawning_front_spikes = false; 
+   }
+}
+
+	    	if (spawning_back_spikes)
+{
+   var ground = false
+   while (!ground && burstbacky < 10000) //replace 2000 with bottom blast zone
+   {
+      ground = test_for_ground(burstbackx, burstbacky)
+      if (!ground) burstbacky += 16; //step downwards (adjust precisiion as needed)
+   }
+   if (ground)
+   {
+  var hfx = spawn_hit_fx(burstbackx, burstbacky, spikes_fx2);
+       hfx.spr_dir = burst_dir;
+        burstbackx -= (burst_dir * 50); //go forward 50 pixels
+        var hbox = create_hitbox( AT_DSPECIAL, 4, burstbackx + (burst_dir * 50), burstbacky);
+        hbox.spr_dir = burst_dir;
+   }
+   else
+   {
+       spawning_back_spikes = false; 
+   }
+}
+
+    burst_timer = burst_timer_max;
+}
+//==================================================================
 
 if burst = 1 && !hitpause{
 	if (attack == AT_DSTRONG && state == PS_ATTACK_GROUND && window == 1 && window_timer == 1) {
@@ -91,9 +142,21 @@ if ( (attack == AT_DSPECIAL && window == 2 && window_timer == 19)
 	    move_cooldown[AT_DSPECIAL_AIR] = 40;
 }
 
-if (burstmeter == 0 and free == false and blooddie = 0 and state != PS_ATTACK_GROUND)
+if (burstmeter == 0 and free == false and blooddie = 0 and state_cat != SC_GROUND_COMMITTED)
 {
 	blooddie = 1;
 	set_attack(AT_EXTRA_1);
 }
 //print_debug(string(bloodmeter))
+
+// Returns TRUE if ground is detected, FALSE if not.
+#define test_for_ground(pos_x, pos_y)
+{
+   var depth_check_ground = 4; //"depth" of the check, in pixels (in case you're slightly off the ground, still lets you see that ground)
+   var found_ground = (noone != collision_line(pos_x, pos_y, pos_x, pos_y + depth_check_ground, 
+                                               asset_get("par_block"), true, true))
+                   || (noone != collision_line(pos_x, pos_y, pos_x, pos_y + depth_check_ground, 
+                                               asset_get("par_jumpthrough"), true, true));
+   return found_ground;
+}
+

@@ -22,7 +22,20 @@ if isyellow {
     
     case PS_IDLE :
      sprite_index = sprite_get("idle");
-     image_index = state_timer/6    
+     
+     if state_timer < 600 {
+     image_index = (state_timer%24/6) 
+     
+     if random_func(1,60,true) == 6 {
+         state_timer = 600
+     }
+     
+     } else if state_timer < 605 {
+     image_index = 4    
+     } else if state_timer >= 605 {
+     image_index = 5 + (state_timer%24/6)       
+     }
+     
     break;
     
     case PS_DASH :

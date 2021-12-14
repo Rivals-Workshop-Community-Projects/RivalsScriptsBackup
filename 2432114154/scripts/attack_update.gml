@@ -563,6 +563,7 @@ if get_player_color(player) == 10 {
                 
         
         if attack == AT_DSPECIAL{ 
+        	move_cooldown[AT_USPECIAL] = 2
         	hitpause = 0
          if free && window <= 2{
          	if state_timer % 8 == 0 {

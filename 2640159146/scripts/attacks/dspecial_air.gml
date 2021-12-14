@@ -39,6 +39,7 @@ set_num_hitboxes(AT_DSPECIAL_AIR, 3);
 
 //spike
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_LIFETIME, 4);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HITBOX_X, 22);
@@ -57,6 +58,7 @@ set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DSPECIAL_AIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_WINDOW_CREATION_FRAME, 4);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_LIFETIME, 8);
@@ -76,6 +78,7 @@ set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DSPECIAL_AIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_WINDOW, 4);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_LIFETIME, 6);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HITBOX_X, 0);

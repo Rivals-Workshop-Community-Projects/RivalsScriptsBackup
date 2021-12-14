@@ -45,6 +45,7 @@ sprite_change_offset("dspecial_air", 74, 96);
 sprite_change_offset("burst", 98, 118);
 sprite_change_offset("bloodheat_die", 69, 95);
 sprite_change_offset("taunt", 62, 112);
+sprite_change_offset("jordan", 62, 112);
 sprite_change_offset("phone_open", 32, 64);
 
 sprite_change_offset("meterfull", 0, 0);
@@ -52,7 +53,11 @@ sprite_change_offset("meterempty", 0, 0);
 sprite_change_offset("blood_icon", 10, 23);
 sprite_change_offset("esps", 30, 30);
 sprite_change_offset("spikes_right", 48, 66);
+sprite_change_offset("spikemask_right", 48, 66);
 sprite_change_offset("spikes_left", 22, 66);
+sprite_change_offset("spikemask_left", 22, 66);
+sprite_change_offset("empty", 0, 0);
+sprite_change_offset("uspecialfx", 100, 130);
 
 sprite_change_offset("clawbig", 90, 9);
 sprite_change_offset("clawup", 90, 90);

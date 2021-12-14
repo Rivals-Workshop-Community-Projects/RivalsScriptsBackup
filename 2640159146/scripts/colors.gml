@@ -139,8 +139,8 @@ set_color_profile_slot( 16, 4, 46, 46, 46 ); //skin shade-
 // JM-Won
 set_color_profile_slot( 17, 0, 0, 234, 255 ); //skin
 set_color_profile_slot( 17, 1, 23, 255, 251 ); //claws
-set_color_profile_slot( 17, 2, 135, 124, 24 ); //crystal
-set_color_profile_slot( 17, 3, 43, 27, 41 ); //radiation
+set_color_profile_slot( 17, 2, 166, 97, 88 ); //crystal
+set_color_profile_slot( 17, 3, 107, 62, 80 ); //radiation
 set_color_profile_slot( 17, 4, 111, 135, 237 ); //skin shade-
 
 

@@ -188,11 +188,15 @@ burstactive = false;
 burstmeter = 0;
 burstmetermax = 100;
 burstmetermin = 0;
+//burstmeterdec = 0.185;
 burstmeterdec = 0.185;
 burstdamage = 2;
 danmoment = 100;
 burststop = 0;
 cooldownstart = false;
+
+delaytimer = 0;
+spawning_front_spikes = false;
 
 meter_draw_percentage = 0.5; //handles both BURST and BLOOD now, no lerping weirdness!
 
@@ -209,9 +213,18 @@ numspikesright = 0;
 burstspikehitboxleft = false;
 burstspikehitboxright = false;
 usingspecial = false;
-
+burst_timer = 0;
+burst_timer_max = 5;
+burst_dir = spr_dir;
+spawning_front_spikes = false;
+spawning_back_spikes = false;
+burstfrontx = 0;
+burstbackx = 0;
+burstfronty = 0;
+burstbacky = 0;
 
 esps_fx1 = hit_fx_create( sprite_get( "esps" ), 20 );
+uspecialfx = hit_fx_create( sprite_get( "uspecialfx" ), 40 );
 spikes_fx1 = hit_fx_create( sprite_get( "spikes_right" ), 30 );
 spikes_fx2 = hit_fx_create( sprite_get( "spikes_left" ), 30 );
 

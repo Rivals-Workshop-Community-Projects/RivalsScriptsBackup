@@ -55,11 +55,11 @@ if my_hitboxID.attack == AT_EXTRA_2{
 }
 
 
-if 	move_cooldown[AT_USPECIAL] = 0 {
+if move_cooldown[AT_USPECIAL] = 0 {
 
 if move_cooldown[AT_NSPECIAL_2] = 0 && uphit != 0 && downhit != 0 && sidehit != 0 && neutralhit != 0 && my_hitboxID.type == 1
 and my_hitboxID.attack != AT_NSPECIAL and my_hitboxID.attack != AT_USPECIAL and my_hitboxID.attack != AT_DSPECIAL and my_hitboxID.attack != AT_FSPECIAL
-and my_hitboxID.attack != AT_EXTRA_1{
+and my_hitboxID.attack != AT_EXTRA_1 and state_cat != SC_HITSTUN {
 	
 	inkvictim = hit_player_obj
     finaldir = spr_dir
@@ -98,12 +98,14 @@ if my_hitboxID.attack != AT_USTRONG and my_hitboxID.attack != AT_FSTRONG and my_
 	create_hitbox(AT_EXTRA_2,1,x,y)
     create_hitbox(AT_EXTRA_2,2,x,y)
     create_hitbox(AT_EXTRA_2,3,x,y)
-    hitstop += 40
-    move_cooldown[AT_NAIR] = 40 
+    
+    hitstop += 20
+    move_cooldown[AT_NAIR] = 20 
     
 
 	
 } else {
+	
 	
 	
 	set_hitbox_value(AT_EXTRA_2, 1, HG_BASE_KNOCKBACK, 6);
@@ -221,7 +223,7 @@ or my_hitboxID.attack == AT_FAIR or (my_hitboxID.attack == AT_BAIR && move_coold
 }
 
 if neutralhit == 0 && ((attack == AT_JAB && window <= 3) or (my_hitboxID.attack == AT_UTILT and my_hitboxID.hbox_num == 3)
-or my_hitboxID.attack == AT_NAIR or my_hitboxID.attack == AT_TAUNT){
+or my_hitboxID.attack == AT_NAIR or my_hitboxID.attack == AT_TAUNT) && my_hitboxID.type == 1{
 	neutralhit = 30
 	sound_play(asset_get("sfx_waterwarp_start"),false,noone,1.2,1)
     sound_play(asset_get("sfx_boss_vortex_end"),false,noone,1,1.65)	

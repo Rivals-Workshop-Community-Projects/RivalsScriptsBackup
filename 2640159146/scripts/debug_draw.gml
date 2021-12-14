@@ -9,3 +9,5 @@
 //draw_debug_text(x, y + 75, "usingspecial" +string(usingspecial));
 //draw_debug_text(x, y + 55, "burststop" +string(burststop));
 //draw_debug_text(x, y + 35, "a" +string(cooldownstart));
+//draw_debug_text(x, y + 35, "delay" +string(delaytimer));
+//draw_debug_text(x, y + 65, "spawning_front_spikes" +string(spawning_front_spikes));

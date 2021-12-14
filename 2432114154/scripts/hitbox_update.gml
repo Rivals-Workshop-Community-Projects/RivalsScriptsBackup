@@ -5,6 +5,7 @@ plasma_safe = true
 if attack == AT_EXTRA_2 && hbox_num < 5{
 	
 	with player_id {
+		
 		if other.hitbox_timer < 10 {
 		uphit = 0
 		downhit = 0
@@ -12,8 +13,14 @@ if attack == AT_EXTRA_2 && hbox_num < 5{
 		neutralhit = 0
 		}
 	    	
-	    if other.hitbox_timer > 2 && other.hitbox_timer < 10 && attack != AT_EXTRA_2 {
-	    	other.hitbox_timer = 20
+	    if attack != AT_EXTRA_2 {
+	    	
+	    	with other {
+	    	if hitbox_timer == hbox_num*8 {
+	    	 hitbox_timer = 18 + (15*hbox_num) - 1
+	    	}
+	    	}
+	    	
 	    }
 	}
 

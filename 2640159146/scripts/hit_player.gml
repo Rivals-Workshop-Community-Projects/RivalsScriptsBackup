@@ -17,8 +17,6 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num = 1) {
 		//transition to the 'throw' part of the attack.
 		destroy_hitboxes();
 		attack_end();
-		window = 4;
-		window_timer = 0;
 		//if this attack hasn't grabbed a player yet, grab the player we just hit.
 		if (!instance_exists(grabbed_player_obj)) { grabbed_player_obj = hit_player_obj; }
 		
@@ -48,8 +46,6 @@ if (my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num = 1) {
 		//transition to the 'throw' part of the attack.
 		destroy_hitboxes();
 		attack_end();
-		window = 4;
-		window_timer = 0;
 		//if this attack hasn't grabbed a player yet, grab the player we just hit.
 		if (!instance_exists(grabbed_player_obj)) { grabbed_player_obj = hit_player_obj; }
 		
@@ -116,10 +112,13 @@ if (burst != 1)
 	{
 		bloodmeter += (my_hitboxID.damage * 2.25);
 	}
-	else if (my_hitboxID.attack == AT_NSPECIAL or my_hitboxID.attack == AT_FSPECIAL or my_hitboxID.attack == AT_FSTRONG)
+	else if (my_hitboxID.attack == AT_NSPECIAL or my_hitboxID.attack == AT_FSTRONG)
 	{
 		if (my_hitboxID.hbox_num == 2)
 		bloodmeter -= 10;
+	} else if (my_hitboxID.attack == AT_FSPECIAL) {
+				if (my_hitboxID.hbox_num == 2)
+		bloodmeter -= 15;
 	}
 }
 //gnome

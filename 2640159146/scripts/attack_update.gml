@@ -3,6 +3,23 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+if (burst = 1 && ((attack == AT_DSPECIAL && window == 2 && window_timer == 1 && state == PS_ATTACK_GROUND) 
+|| (attack == AT_DSPECIAL_AIR && window == 4 && window_timer == 1 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))))
+{
+	  burstfrontx = x + (spr_dir * 90); //initial position for front check
+  burstbackx = x - (spr_dir * 60);  //initial positionfor back check
+burstfronty = y;
+burstbacky = y;
+
+  spawning_front_spikes = true;
+  spawning_back_spikes = true;
+  //save current position for future spikes
+	burst_y = y;
+  burst_dir = spr_dir;
+  //delay for first spike goes here
+  burst_timer = 0;
+}
+
 if window == 1 && window_timer == 1 {
 	beginning = 1;
 } else {
@@ -18,22 +35,51 @@ if burst = 1 && (((attack == AT_FSPECIAL || (attack == AT_NSPECIAL)) && has_hit)
 	burststop = 240;
 } 
 
+if get_player_color( player ) == 17 {
+	if attack == AT_TAUNT && window == 1 && window_timer == 1 {
+		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("jordan"));
+	}
+}
+
 if burst = 1 {
 		set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 9.75);
 		set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.1);
 		
 		set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 7);
 		set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.1);
+		
+		set_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK, 6.75);
+		set_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING, .7);
+		
+		set_hitbox_value(AT_USPECIAL, 4, HG_BASE_KNOCKBACK, 7);
+		set_hitbox_value(AT_USPECIAL, 4, HG_KNOCKBACK_SCALING, .6);
+		
+		set_hitbox_value(AT_USPECIAL, 5, HG_BASE_KNOCKBACK, 7.5);
+		set_hitbox_value(AT_USPECIAL, 5, HG_KNOCKBACK_SCALING, .9);
+		
+		set_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED, -15);
+
 } else {
 		reset_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK);
 		reset_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING);
 		
 		reset_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK);
 		reset_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING);
+		
+		reset_hitbox_value(AT_USPECIAL, 3, HG_BASE_KNOCKBACK);
+		reset_hitbox_value(AT_USPECIAL, 3, HG_KNOCKBACK_SCALING);
+
+		reset_hitbox_value(AT_USPECIAL, 4, HG_BASE_KNOCKBACK);
+		reset_hitbox_value(AT_USPECIAL, 4, HG_KNOCKBACK_SCALING);
+
+		reset_hitbox_value(AT_USPECIAL, 5, HG_BASE_KNOCKBACK);
+		reset_hitbox_value(AT_USPECIAL, 5, HG_KNOCKBACK_SCALING);
+		
+		reset_window_value(AT_USPECIAL, 2, AG_WINDOW_VSPEED);
+
 }
 
-// Hey rioku can you just set this to be the final window / frame of fspecial it sets a variable thanks
-//I added "burst = 1" to fix this the fspecial issue
+
 if (burst = 1 && (usingspecial = true && (attack == AT_NSPECIAL && window == 6) || (attack == AT_FSPECIAL && window == 4)) || state == PS_HITSTUN) {
 	usingspecial = false;
 	cooldownstart = true;
@@ -107,55 +153,7 @@ if (attack == AT_NSPECIAL) {
     }
     can_fast_fall = false;
 	
-	/*//reset 'grabbed_player' variables on the first frame when performing a grab.
-    if (window == 1 && window_timer == 1) { 
-    	grabbed_player_obj = noone; 
-    	grabbed_player_relative_x = 0;
-    	grabbed_player_relative_y = 0;
-    }
-    
-    if (instance_exists(grabbed_player_obj)) {
-		//first, drop the grabbed player if this is the last window of the attack, or if they somehow escaped hitstun.
-		if (window >= 5) { grabbed_player_obj = noone; }
-		else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { grabbed_player_obj = noone; }
-	
-		else {
-			//keep the grabbed player in hitstop until the grab is complete.
-			grabbed_player_obj.hitstop = 2;
-			grabbed_player_obj.hitpause = true;
-			
-				//if this is the first frame of a window, store the grabbed player's relative position.
-			if (window_timer <= 1) {
-				grabbed_player_relative_x = grabbed_player_obj.x - x;
-				grabbed_player_relative_y = grabbed_player_obj.y - y;
-			}
-		
-			//on the first window, pull the opponent into the grab.
-			if (window == 4) { 
-				//change as necessary. by default, this grab will pull the opponent to (30, 0) in front of the player.
-				var pull_to_x = 30 * spr_dir;
-				var pull_to_y = -12;
-				
-				//using an easing function, smoothly pull the opponent into the grab over the duration of this window.
-				var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
-				grabbed_player_obj.x = x + ease_circOut( round(grabbed_player_relative_x), pull_to_x, window_timer, window_length);
-				grabbed_player_obj.y = y + ease_circOut( round(grabbed_player_relative_y), pull_to_y, window_timer, window_length);
-			}	//if this is the first frame of a window, store the grabbed player's relative position.
-			if (window == 5) { 
-				//change as necessary. by default, this grab will pull the opponent to (30, 0) in front of the player.
-				var pull_to_x = 32 * spr_dir;
-				var pull_to_y = 0;
-				
-				//using an easing function, smoothly pull the opponent into the grab over the duration of this window.
-				var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
-				grabbed_player_obj.x = x + ease_circOut( round(grabbed_player_relative_x), pull_to_x, window_timer, window_length);
-				grabbed_player_obj.y = y + ease_circOut( round(grabbed_player_relative_y), pull_to_y, window_timer, window_length);
 
-			}
-			//the above block can be copied for as many windows as necessary.
-			//e.g. for an attack like Clairen's back throw, you might have an additional window where the grabbed player is pulled behind.
-		}
-    }*/
 }
 
 }
@@ -218,57 +216,7 @@ if (attack == AT_FSTRONG) {
     		}
     		
     }
-	/*
-	//reset 'grabbed_player' variables on the first frame when performing a grab.
-    if (window == 1 && window_timer == 1) { 
-    	grabbed_player_obj = noone; 
-    	grabbed_player_relative_x = 0;
-    	grabbed_player_relative_y = 0;
-    }
-    
-    if (instance_exists(grabbed_player_obj)) {
-		//first, drop the grabbed player if this is the last window of the attack, or if they somehow escaped hitstun.
-		if (window >= 7) { grabbed_player_obj = noone; }
-		else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { grabbed_player_obj = noone; }
-	
-		else {
-			//keep the grabbed player in hitstop until the grab is complete.
-			grabbed_player_obj.hitstop = 2;
-			grabbed_player_obj.hitpause = true;
-			
-				//if this is the first frame of a window, store the grabbed player's relative position.
-			if (window_timer <= 1) {
-				grabbed_player_relative_x = grabbed_player_obj.x - x;
-				grabbed_player_relative_y = grabbed_player_obj.y - y;
-			}
-		
-			//on the first window, pull the opponent into the grab.
-			if (window == 5) { 
-				//change as necessary. by default, this grab will pull the opponent to (30, 0) in front of the player.
-				var pull_to_x = -18 * spr_dir;
-				var pull_to_y = -32;
-				
-				//using an easing function, smoothly pull the opponent into the grab over the duration of this window.
-				var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
-				grabbed_player_obj.x = x + ease_circOut( round(grabbed_player_relative_x), pull_to_x, window_timer, window_length);
-				grabbed_player_obj.y = y + ease_circOut( round(grabbed_player_relative_y), pull_to_y, window_timer, window_length);
-			}	//if this is the first frame of a window, store the grabbed player's relative position.
-			if (window == 6) { 
-				//change as necessary. by default, this grab will pull the opponent to (30, 0) in front of the player.
-				var pull_to_x = 32 * spr_dir;
-				var pull_to_y = 0;
-				
-				//using an easing function, smoothly pull the opponent into the grab over the duration of this window.
-				var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
-				grabbed_player_obj.x = x + ease_circOut( round(grabbed_player_relative_x), pull_to_x, window_timer, window_length);
-				grabbed_player_obj.y = y + ease_circOut( round(grabbed_player_relative_y), pull_to_y, window_timer, window_length);
 
-			}
-			//the above block can be copied for as many windows as necessary.
-			//e.g. for an attack like Clairen's back throw, you might have an additional window where the grabbed player is pulled behind.
-		}
-    }
-	*/
 }
 
 //====================================
@@ -331,56 +279,6 @@ if (attack == AT_FSTRONG_2) {
     		
     }
 	
-	/*
-	//reset 'grabbed_player' variables on the first frame when performing a grab.
-    if (window == 1 && window_timer == 1) { 
-    	grabbed_player_obj = noone; 
-    	grabbed_player_relative_x = 0;
-    	grabbed_player_relative_y = 0;
-    }
-    
-    if (instance_exists(grabbed_player_obj)) {
-		//first, drop the grabbed player if this is the last window of the attack, or if they somehow escaped hitstun.
-		if (window >= 7) { grabbed_player_obj = noone; }
-		else if (grabbed_player_obj.state != PS_HITSTUN && grabbed_player_obj.state != PS_HITSTUN_LAND) { grabbed_player_obj = noone; }
-	
-		else {
-			//keep the grabbed player in hitstop until the grab is complete.
-			grabbed_player_obj.hitstop = 2;
-			grabbed_player_obj.hitpause = true;
-			
-				//if this is the first frame of a window, store the grabbed player's relative position.
-			if (window_timer <= 1) {
-				grabbed_player_relative_x = grabbed_player_obj.x - x;
-				grabbed_player_relative_y = grabbed_player_obj.y - y;
-			}
-		
-			//on the first window, pull the opponent into the grab.
-			if (window == 5) { 
-				//change as necessary. by default, this grab will pull the opponent to (30, 0) in front of the player.
-				var pull_to_x = -18 * spr_dir;
-				var pull_to_y = -32;
-				
-				//using an easing function, smoothly pull the opponent into the grab over the duration of this window.
-				var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
-				grabbed_player_obj.x = x + ease_circOut( round(grabbed_player_relative_x), pull_to_x, window_timer, window_length);
-				grabbed_player_obj.y = y + ease_circOut( round(grabbed_player_relative_y), pull_to_y, window_timer, window_length);
-			}	//if this is the first frame of a window, store the grabbed player's relative position.
-			if (window == 6) { 
-				//change as necessary. by default, this grab will pull the opponent to (30, 0) in front of the player.
-				var pull_to_x = 32 * spr_dir;
-				var pull_to_y = 0;
-				
-				//using an easing function, smoothly pull the opponent into the grab over the duration of this window.
-				var window_length = get_window_value(attack, window, AG_WINDOW_LENGTH);
-				grabbed_player_obj.x = x + ease_circOut( round(grabbed_player_relative_x), pull_to_x, window_timer, window_length);
-				grabbed_player_obj.y = y + ease_circOut( round(grabbed_player_relative_y), pull_to_y, window_timer, window_length);
-
-			}
-			//the above block can be copied for as many windows as necessary.
-			//e.g. for an attack like Clairen's back throw, you might have an additional window where the grabbed player is pulled behind.
-		}
-    }*/
 }
 
 }
@@ -476,6 +374,9 @@ if attack == AT_USPECIAL && !free {
 		sound_play(asset_get("sfx_zetter_downb"));
 	}
 
+if attack == AT_DSPECIAL_AIR && window == 2 && window_timer > 12 {
+		djumps = 0;
+}
 
 if ((attack == AT_DSPECIAL && window == 2 && window_timer == 6) 
 || (attack == AT_DSPECIAL_AIR && window == 4 && window_timer == 6)){
@@ -556,7 +457,7 @@ if attack == AT_TAUNT && window == 2 && window_timer == 17 && taunt_down {
 //gnome
 switch(attack) {
 	case AT_FAIR: 
-		if window == 1 && window_timer == 5 sound_play(sound_get("swingmid"))
+		if window == 1 && window_timer == 9 sound_play(sound_get("swingmid"))
 	break;
 	case AT_BAIR: 
 		if window == 1 && window_timer == 5 sound_play(sound_get("swingmid"), 0, noone, 1, .9)
@@ -592,9 +493,11 @@ switch (attack){
 	case AT_FSTRONG_2:
 	case AT_DSTRONG:
     case AT_DSPECIAL:
+    case AT_DSPECIAL_AIR:
 	case AT_NSPECIAL:
 	case AT_FSPECIAL:
 	case AT_USTRONG:
+	case AT_USPECIAL:
 
 		for(var i = 0; i < demon_trail_size; i++){
 			demon_trail[i].life--;

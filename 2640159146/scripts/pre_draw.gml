@@ -3,9 +3,12 @@ if(burst==1 and state != PS_ROLL_BACKWARD and state != PS_ROLL_FORWARD and state
     	case AT_FSTRONG_2:
     	case AT_DSTRONG:
     	case AT_DSPECIAL:
+    	case AT_DSPECIAL_AIR:
     	case AT_NSPECIAL:
     	case AT_FSPECIAL:
     	case AT_USTRONG:
+	   	case AT_USPECIAL:
+	   	
     	    gpu_set_fog(true, trail_color, 1, 1);
 			for(var t = 0; t < demon_trail_size; t++){
 	        	var i = demon_trail[t];
