@@ -1,6 +1,7 @@
 var hudCol = get_player_hud_color(player_id.player);
 if (replacedCount == 1) DrawHUD(hudCol);
 
+if (get_player_color(player) == 19) draw_sprite_ext(sprite_get("cross"),0,x,y,1,1,get_gameplay_time(),c_white,1);
 if (state != 4 && articleInit && player_id.object_index != oTestPlayer) with (player_id)
 {
     var shine = !instance_exists(other.otherPortal);

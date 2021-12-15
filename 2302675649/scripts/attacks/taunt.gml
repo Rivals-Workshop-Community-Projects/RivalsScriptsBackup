@@ -48,3 +48,9 @@ set_window_value(AT_EXTRA_1, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_EXTRA_1, 1, AG_WINDOW_SFX, sound_get("drip"));
 //set_window_value(AT_EXTRA_1, 1, AG_WINDOW_SFX, asset_get("sfx_absa_8b"));
+
+set_attack_value(AT_EXTRA_2, AG_SPRITE, sprite_get("genesis"));
+set_attack_value(AT_EXTRA_2, AG_NUM_WINDOWS, 1);
+
+set_window_value(AT_EXTRA_2, 1, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_EXTRA_2, 1, AG_WINDOW_ANIM_FRAMES, 1);

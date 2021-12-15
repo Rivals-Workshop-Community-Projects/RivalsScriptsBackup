@@ -44,7 +44,9 @@ if(menu_open == true){
         var width = 52 + (44 * (active_col + 1));
         draw_sprite_part_ext(sprite_get("hud_blackout"), 0, width, 0, 232 - width, 146, temp_x - 12 + width, temp_y - 144, 1, 1, c_black, 0.5);
         if(menu_dir != -1){
-            draw_sprite_ext(sprite_get("hud_arrowglow"), menu_dir, temp_x -12, temp_y - 144, 1, 1, 0, c_white, 0.7);
+            if (menu_dir != 69){
+                draw_sprite_ext(sprite_get("hud_arrowglow"), menu_dir, temp_x -12, temp_y - 144, 1, 1, 0, c_white, 0.7);
+            }
         }
     }
 }

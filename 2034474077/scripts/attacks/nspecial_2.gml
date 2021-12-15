@@ -33,7 +33,7 @@ set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_SFX_FRAME, 1);
 set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_HSPEED, 2);
-set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_HSPEED_TYPE, 1);
+set_window_value(AT_NSPECIAL_2, 5, AG_WINDOW_HSPEED_TYPE, 0); //was 1
 //hit
 set_window_value(AT_NSPECIAL_2, 6, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NSPECIAL_2, 6, AG_WINDOW_LENGTH, 12);

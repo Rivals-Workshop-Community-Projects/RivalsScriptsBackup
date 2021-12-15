@@ -251,6 +251,30 @@ if ("rollArray" in self)
 			}
 			break;
 	}
+
+	// Genesis
+	if (genesisEffect > 0)
+	{
+		gpu_set_blendenable(false); gpu_set_colorwriteenable(false,false,false,true); draw_set_alpha(0); draw_rectangle_color(0,0,room_width,room_height,c_white,c_white,c_white,c_white,false); draw_set_alpha(1);
+		draw_set_alpha(genesisAlpha);
+		draw_circle_colour(x, y, genesisEffect, c_white, c_white, false);
+		draw_set_alpha(1);
+		gpu_set_colorwriteenable(true,true,true,true); gpu_set_blendenable(true); gpu_set_blendmode_ext(bm_dest_alpha,bm_inv_dest_alpha); gpu_set_alphatestenable(true);
+		var genStage = GenesisStageList();
+		with (asset_get("par_block"))
+		{
+			var xScale = genStage?1:range_finder(get_instance_x(self),get_instance_y(self),0,other.room_width,self,1,0)/32;
+			var yScale = genStage?1:range_finder(get_instance_x(self),get_instance_y(self),270,other.room_height,self,1,0)/32;
+			draw_sprite_ext(asset_get("solid_32x32"),0,get_instance_x(self),get_instance_y(self),xScale,yScale,0,c_white,1);
+		}
+		with (asset_get("par_jumpthrough"))
+		{
+			var xScale = genStage?1:range_finder(get_instance_x(self),get_instance_y(self),0,other.room_width,self,1,0)/32;
+			var yScale = genStage?1:range_finder(get_instance_x(self),get_instance_y(self),270,other.room_height,self,1,0)/32;
+			draw_sprite_ext(asset_get("jumpthrough_32x32"),0,get_instance_x(self),get_instance_y(self),xScale,yScale,0,c_white,1);
+		}
+		gpu_set_blendmode(bm_normal); gpu_set_alphatestenable(false);
+	}
 }
 
 #define draw_rectangle(x1, y1, x2, y2, x3, y3, x4, y4, colour1, colour2)
@@ -262,7 +286,6 @@ if ("rollArray" in self)
 #define GetColourPlayer(_index)
 {
 	return make_colour_rgb(get_color_profile_slot_r(get_player_color(player), _index),get_color_profile_slot_g(get_player_color(player), _index),get_color_profile_slot_b(get_player_color(player), _index));
-	
 }
 
 #define FlagPart(_colour, _heightRatio, _xOffsetRatio)
@@ -270,4 +293,90 @@ if ("rollArray" in self)
 	gpu_set_fog(1, _colour, 0, 1);
 	for (i = -1; i < 2; ++i) for (j = -1; j < 2; ++j)
 		draw_sprite_part_ext(sprite_index, image_index, 0, sprite_height*_xOffsetRatio, sprite_width*spr_dir, sprite_height*_heightRatio, x+i*2+draw_x-sprite_xoffset*(1+small_sprites), y+j*2+(draw_y-sprite_yoffset+sprite_height*_xOffsetRatio)*(1+small_sprites), spr_dir*(1+small_sprites), 1+small_sprites, c_white, 1);
+}
+
+#define range_finder(x,y,dir,range,object,prec,notme)
+//
+//  Returns the exact distance to the farthest instance of an object in a
+//  given direction from a given point, or noone if no instance is found.
+//  The solution is found in log2(range) collision checks.
+//
+//      x,y         position in room, real
+//      dir         direction to look in degrees, real
+//      range       the greatest distance to look in pixels, real
+//      object      which objects to look for (or all), real
+//      prec        true to use precise collision checking, bool
+//      notme       true to ignore the calling instance, bool
+//
+/// GMLscripts.com/license
+{
+    var ox,oy,dir,range,object,prec,notme,dx,dy,sx,sy,distance,ox2,oy2;
+    ox = argument0;
+    oy = argument1;
+    dir = argument2;
+    range = argument3;
+    object = argument4;
+    prec = argument5;
+    notme = argument6;
+    sx = lengthdir_x(range,dir);
+    sy = lengthdir_y(range,dir);
+    dx = ox + sx;
+    dy = oy + sy;
+    ox2 = argument0;
+    oy2 = argument1;
+    if (collision_line(ox,oy,dx,dy,object,prec,notme) < 0) {
+        distance = 0;
+    }else{
+        while ((abs(sx) >= 1) || (abs(sy) >= 1)) {
+            sx /= 2;
+            sy /= 2;
+            if (collision_line(ox2,oy2,dx,dy,object,prec,notme) < 0) {
+                ox2 -= sx;
+                oy2 -= sy;
+            }else{
+                ox2 += sx;
+                oy2 += sy;
+            }
+        }
+        distance = point_distance(ox,oy,ox2,oy2);
+    }
+    return distance;
+}
+
+#define GenesisStageList()
+{
+	// true: default to scale 2
+	switch (get_stage_data(SD_ID))
+	{
+		case 1://"Sylvan Radiance";
+		case 23://"Lovers Encore";
+		case 16:
+		case 26://"Neon Universe EX";
+		case 19://"Howl of the Forest";
+		case 24://"In the Halls of the Usurper (Rivals Ver.)";
+		case 22://"Tutorial Session";
+		default:
+			return true;
+		case 2://"Fiery Ambitions";
+		case 3://"Fight and Flight";
+		case 4://"The Earthen Division";
+		case 5://"Oceanic Breeze";
+		case 7://"Moonlight Inferno";
+		case 8://"Luna Ascension EX";
+		case 9://"Lightning Pandemonium";
+		case 10://"Glacial Bastion";
+		case 11://"Decisive Encounter";
+		case 12://"Formless Onslaught";
+		case 14://"The Earthen Division (Main Event Ver.)";
+		case 15://"Ori and the Blind Forest Medley";
+		case 17://"Fire's Last Hope";
+		case 18://"Elusive Master of Toxin";
+		case 20://"Full Steam Vengeance!!";
+		case 21://"Shovel Knight Medley";
+		case 25://"Nihil Redux";
+		case 27://"The Earthen Division (Main Event Ver.)";
+		case 29://"Tetherball Versus";
+		case 36://"Tactical Evolution EX ~ Creatures Medley";
+			return false;
+	}
 }

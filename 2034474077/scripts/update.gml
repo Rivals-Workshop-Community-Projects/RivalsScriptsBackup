@@ -73,6 +73,8 @@ if(menu_open){
         menu_dir = 2;
     }else if(dir_held == 1){
         menu_dir = 1;
+    }else if(taunt_down){ //random
+        menu_dir = 69;
     }else{
         menu_dir = -1;
     }
@@ -80,12 +82,23 @@ if(menu_open){
         sound_play(asset_get("mfx_forward"));
     }
     if(active_col < 4){
-        if(menu_dir != -1 && menu_dir != prev_dir){
+        if(menu_dir != -1 && menu_dir != 69 && menu_dir != prev_dir){
             specialnums[active_col] = menu_dir;
             sound_play(asset_get("mfx_change_color"));
             for(var i = 0; i < 3; i++){
                 if(i != menu_dir){
                     specs_chosen[active_col, i] = false;;
+                }
+            }
+            active_col++;
+        }else if(menu_dir == 69 && menu_dir != prev_dir){
+            var randomspec = floor(random_func( 0, 3, false ));
+            //print_debug(string(randomspec));
+            specialnums[active_col] = randomspec;
+            sound_play(asset_get("mfx_change_color"));
+            for(var i = 0; i < 3; i++){
+                if(i != randomspec){
+                    specs_chosen[active_col, i] = false;
                 }
             }
             active_col++;

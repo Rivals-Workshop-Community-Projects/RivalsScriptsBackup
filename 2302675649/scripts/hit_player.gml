@@ -148,6 +148,9 @@ if (hit_player_obj.url == "1867634411")
 		case 16:
 			effect = chun_effect;
 			break;
+		case 19:
+			effect = genesis_effect;
+			break;
 		case 20:
 			effect = bunny_effect;
 			break;

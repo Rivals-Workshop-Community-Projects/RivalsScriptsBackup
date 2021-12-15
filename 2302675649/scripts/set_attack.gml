@@ -27,6 +27,11 @@ switch (attack)
 			attack = AT_EXTRA_1;
 		else if (get_player_color(player) == 12 && !practice)
 			attack = AT_TAUNT_2;
+		else if (get_player_color(player) == 19 && !practice)
+		{
+			sound_play(sound_get("tts"),0,-4,4);
+			attack = AT_EXTRA_2;
+		}
 		break;
 	case AT_DSPECIAL:
 		if (move_cooldown[attack] == 0) dspecImage = {sprite:sprite_index, image:image_index, x:x, y:y, spr_dir:spr_dir, alpha:20};

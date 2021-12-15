@@ -582,6 +582,15 @@ if ("rollArray" in self)
 						AddText("");
 						AddText("Disabled the Song Title intro in AM");
 						break;
+					case 37:
+						AddText("v1.37 - 15 Dec 2021");
+						AddText("");
+						AddText("Drip alt is now Genesis alt");
+						AddText("Both alts used very similar colour schemes");
+						AddText("The Genesis alt has added effects");
+						AddText("");
+						AddText("Slightly changed Spectrum alt");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -824,6 +833,8 @@ if ("rollArray" in self)
 				return "Pokemon Masters EX - Lillie Battle Theme";
 			else if (string_count("2598328548", get_stage_data(SD_ID)) > 0)
 				return "No Straight Roads - Vs. Sayu";
+			else if (string_count("2669189302", get_stage_data(SD_ID)) > 0)
+				return "Hyper Potions - Waterfall";
 			return "Darude - Sandstorm";
 	}
 }

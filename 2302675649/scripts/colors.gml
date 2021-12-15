@@ -216,14 +216,14 @@ set_color_profile_slot( 18, 5, 255, 233, 156 ); //skin
 set_color_profile_slot( 18, 6, 99, 71, 47 ); //skin2
 set_color_profile_slot( 18, 7, 161, 126, 126 ); //hair
 
-// Drip
-set_color_profile_slot( 19, 0, 234, 36, 18 ); //sword
-set_color_profile_slot( 19, 1, 46, 46, 46 ); //shirt
-set_color_profile_slot( 19, 2, 14, 14, 14 ); //shirt2
-set_color_profile_slot( 19, 3, 209, 48, 72 ); //pants
-set_color_profile_slot( 19, 4, 128, 19, 102 ); //pants2
-set_color_profile_slot( 19, 5, 242, 213, 197 ); //skin
-set_color_profile_slot( 19, 6, 222, 157, 118 ); //skin2
+// Genesis
+set_color_profile_slot( 19, 0, 255, 0, 0 ); //sword
+set_color_profile_slot( 19, 1, 47, 43, 42 ); //shirt
+set_color_profile_slot( 19, 2, 22, 19, 23 ); //shirt2
+set_color_profile_slot( 19, 3, 248, 92, 105 ); //pants
+set_color_profile_slot( 19, 4, 168, 30, 86 ); //pants2
+set_color_profile_slot( 19, 5, 215, 223, 233 ); //skin
+set_color_profile_slot( 19, 6, 137, 148, 187 ); //skin2
 set_color_profile_slot( 19, 7, 20, 20, 20 ); //hair
 
 // Laurie D. Bunnykins
@@ -252,9 +252,9 @@ set_color_profile_slot( 22, 1, 255, 41, 116 ); //shirt
 set_color_profile_slot( 22, 2, 181, 17, 115 ); //shirt2
 set_color_profile_slot( 22, 3, 93, 250, 253 ); //pants
 set_color_profile_slot( 22, 4, 41, 142, 204 ); //pants2
-set_color_profile_slot( 22, 5, 175, 188, 210 ); //skin
-set_color_profile_slot( 22, 6, 121, 120, 173 ); //skin2
-set_color_profile_slot( 22, 7, 135, 139, 142 ); //hair
+set_color_profile_slot( 22, 5, 98, 106, 117 ); //skin
+set_color_profile_slot( 22, 6, 54, 53, 77 ); //skin2
+set_color_profile_slot( 22, 7, 48, 50, 51 ); //hair
 
 // Swordfighter
 set_color_profile_slot( 23, 0, 247, 252, 255 ); //sword

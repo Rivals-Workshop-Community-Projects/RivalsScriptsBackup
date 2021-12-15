@@ -204,17 +204,17 @@ switch (attack){
                     reset_hitbox_value(AT_FSPECIAL_1, 7, HG_ANGLE);
                     reset_hitbox_value(AT_FSPECIAL_1, 7, HG_BASE_KNOCKBACK);
                     reset_window_value(AT_FSPECIAL_1, 5, AG_WINDOW_TYPE);
-                    reset_window_value(AT_FSPECIAL_1, 13, AG_WINDOW_TYPE);
+                    reset_window_value(AT_FSPECIAL_1, 16, AG_WINDOW_TYPE);
                     reset_hitbox_value(AT_FSPECIAL_1, 8, HG_KNOCKBACK_SCALING);
                 }
                 if (window_timer == 2 && free){
                     set_window_value(AT_FSPECIAL_1, 5, AG_WINDOW_TYPE, 7);
-                    set_window_value(AT_FSPECIAL_1, 13, AG_WINDOW_TYPE, 7);
+                    //set_window_value(AT_FSPECIAL_1, 13, AG_WINDOW_TYPE, 7);
                     set_hitbox_value(AT_FSPECIAL_1, 7, HG_ANGLE, 95);
                     set_hitbox_value(AT_FSPECIAL_1, 7, HG_BASE_KNOCKBACK, 4.5);
                 }
                 if(window_timer == 2 && runeB){
-                    rage = get_player_damage(player);
+                    var rage = get_player_damage(player);
                     set_hitbox_value(AT_FSPECIAL_1, 8, HG_KNOCKBACK_SCALING, (1.2 + (rage * 0.005)));
                 }
             }
@@ -272,13 +272,16 @@ switch (attack){
         if(window == 6 && free){
             window_timer = 99;
         }
+        if(window == 5){
+            move_cooldown[AT_FSPECIAL_2] = 15;
+        }
         if(multihit != noone && !hitpause){
             destroy_hitboxes();
             window = 5;
             window_timer = 0;
             can_move = true;
-            hsp = -4 * spr_dir;
-            vsp = -6;
+            hsp = -1 * spr_dir; //was -4 * spr_dir
+            vsp = -7; //was -6
             multihit = noone;
         }
         break;

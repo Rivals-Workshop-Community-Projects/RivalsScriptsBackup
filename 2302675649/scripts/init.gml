@@ -105,6 +105,7 @@ dragon_effect = hit_fx_create(sprite_get("dragonhit"), 48);
 saw_effect = hit_fx_create(sprite_get("sawhit"), 48);
 chun_effect = hit_fx_create(sprite_get("chunhit"), 48);
 bunny_effect = hit_fx_create(sprite_get("bunnyhit"), 48);
+genesis_effect = hit_fx_create(sprite_get("genesishit"), 24);
 
 // vfx roll
 rollArray = array_create(6, -1);
@@ -152,6 +153,8 @@ strongAng = 0;
 
 // transcend
 transcounter = 0;
+genesisEffect = 0;
+genesisAlpha = 0;
 
 // dair cancel
 dairCancel = 30;
