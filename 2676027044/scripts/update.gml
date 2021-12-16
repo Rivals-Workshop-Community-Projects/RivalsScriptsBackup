@@ -2,73 +2,6 @@
 // Used for gameplay mechanics
 // Runs every frame
 
-//print(joy_dir);
-
-with(pHitBox){
-	if (player_id == other.id && attack == AT_NSPECIAL){
-		if (hitbox_timer % 4 == 0){
-			if (hbox_num == 2){
-				instance_create( x, y + 30 - random_func( 3, 60, true ), "obj_article2");
-			}
-			else {
-				instance_create( x, y + 15 - random_func( 3, 30, true ), "obj_article2");			
-			}
-		}
-		
-		if ("is_new_ball" in self && !is_new_ball){
-			if (player_id.mim_wisp != noone && hitbox_timer > 1){
-				with (player_id.mim_wisp){
-					if (active){
-						if (place_meeting(x, y, other)){
-							if (other.hbox_num <= 2){
-								
-								if (other.hbox_num == 2 && !other.is_new_ball){
-									other.player_id.special_shadowball = create_hitbox(AT_NSPECIAL, 3, other.x, other.y);
-									other.player_id.special_shadowball.player_id = other.player_id;
-									other.player_id.special_shadowball.hitbox_timer = 0;
-									other.player_id.special_shadowball.player = other.player;
-									other.player_id.special_shadowball.hitbox_timer = -25;
-									other.player_id.special_shadowball.hsp = other.hsp;
-									sound_play(asset_get("sfx_zetter_shine_charged"));
-
-									var new_hitfx = spawn_hit_fx( x, y - 35, player_id.hfx_shadow_mid);
-							
-									var shadowball_friend = instance_create(0, 0, "obj_article2");
-									shadowball_friend.player_id = other.player_id.id;
-									shadowball_friend.player = other.player_id.player;
-									shadowball_friend.sprite_index = sprite_get("blank");
-									shadowball_friend.state = 2;
-
-									
-									other.is_new_ball = true;
-									instance_destroy(other);
-									exit;
-								}
-								
-								if (other.hbox_num == 1 && !other.is_new_ball){
-									var new_hitfx = spawn_hit_fx( x, y - 35, player_id.hfx_shadow_small);
-
-									var new_shadowball = create_hitbox(AT_NSPECIAL, 2, other.x, other.y);
-									new_shadowball.player_id = other.player_id;
-									new_shadowball.hitbox_timer = 0;
-									new_shadowball.player = other.player;
-									new_shadowball.hitbox_timer = -25;
-									new_shadowball.hsp = other.hsp;
-									sound_play(asset_get("sfx_zetter_shine_charged"));									
-																		
-									other.is_new_ball = true;
-									instance_destroy(other);
-									exit;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
 
 with(oPlayer){
 
@@ -91,15 +24,15 @@ if (special_shadowball != noone){
 	}
 }
 
-// Runs init_shader so Mim leggings are the right colors
+// Runs init_shader so Mim tum are the right colors
 if (state == PS_SPAWN && state_timer == 1){
 	init_shader();
 }
 
+// Realigns mimikyu if they cancel uspecial
 if ((attack == AT_USPECIAL && !atk_air && !atk_ground) || attack != AT_USPECIAL){
 	draw_y = 0;
 }
-
 
 if (attack == AT_FSPECIAL_2){
 	if (window == 2){
@@ -188,6 +121,14 @@ if (parried){
 	}
 }
 
+/*
+print(view_get_yview());
+
+if (mim_wisp != noone){
+	print(mim_wisp.y);
+}
+*/
+
 if (mim_wisp != noone){
 	with (mim_wisp){
 		if (active){
@@ -198,12 +139,14 @@ if (mim_wisp != noone){
 					active = false;
 					cooldown_timer = 100;
 					spawn_hit_fx( x, y - 35, other.hfx_shadow_mid);
+					state = 6;
 				}
 				
 				if (other.attack == AT_FSPECIAL && other.window == 2 && (other.atk_air || other.atk_ground)){
 					active = false;
 					spawn_hit_fx( x, y - 35, other.hfx_shadow_mid);
 					cooldown_timer = 100;
+					state = 6;
 				}
 			}
 			else {
@@ -460,12 +403,72 @@ if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND){
 	atk_air = false;
 }
 
-// test code to check if they have the curse effect
-with(oPlayer){
-	if (mimikyu_curse){
-//		print("cursed");
+// Particle Effects for Nspecial After it's gone through wisp and was parried (yeah I know it's very specific and dumb I agree)
+with(pHitBox){
+	if (player_id == other.id && attack == AT_NSPECIAL){
+		if (hitbox_timer % 4 == 0){
+			if (hbox_num == 2){
+				instance_create( x, y + 30 - random_func( 3, 60, true ), "obj_article2");
+			}
+			else {
+				instance_create( x, y + 15 - random_func( 3, 30, true ), "obj_article2");			
+			}
+		}
+		
+		if ("is_new_ball" in self && !is_new_ball){
+			if (player_id.mim_wisp != noone && hitbox_timer > 1){
+				with (player_id.mim_wisp){
+					if (active){
+						if (place_meeting(x, y, other)){
+							if (other.hbox_num <= 2){
+								
+								if (other.hbox_num == 2 && !other.is_new_ball){
+									other.player_id.special_shadowball = create_hitbox(AT_NSPECIAL, 3, other.x, other.y);
+									other.player_id.special_shadowball.player_id = other.player_id;
+									other.player_id.special_shadowball.hitbox_timer = 0;
+									other.player_id.special_shadowball.player = other.player;
+									other.player_id.special_shadowball.hitbox_timer = -25;
+									other.player_id.special_shadowball.hsp = other.hsp;
+									sound_play(asset_get("sfx_zetter_shine_charged"));
+
+									var new_hitfx = spawn_hit_fx( x, y - 35, player_id.hfx_shadow_mid);
+							
+									var shadowball_friend = instance_create(0, 0, "obj_article2");
+									shadowball_friend.player_id = other.player_id.id;
+									shadowball_friend.player = other.player_id.player;
+									shadowball_friend.sprite_index = sprite_get("blank");
+									shadowball_friend.state = 2;
+
+									
+									other.is_new_ball = true;
+									instance_destroy(other);
+									exit;
+								}
+								
+								if (other.hbox_num == 1 && !other.is_new_ball){
+									var new_hitfx = spawn_hit_fx( x, y - 35, player_id.hfx_shadow_small);
+
+									var new_shadowball = create_hitbox(AT_NSPECIAL, 2, other.x, other.y);
+									new_shadowball.player_id = other.player_id;
+									new_shadowball.hitbox_timer = 0;
+									new_shadowball.player = other.player;
+									new_shadowball.hitbox_timer = -25;
+									new_shadowball.hsp = other.hsp;
+									sound_play(asset_get("sfx_zetter_shine_charged"));									
+																		
+									other.is_new_ball = true;
+									instance_destroy(other);
+									exit;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
+
 
 
 //intro

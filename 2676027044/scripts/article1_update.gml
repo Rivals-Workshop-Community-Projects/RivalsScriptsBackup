@@ -137,6 +137,7 @@ switch(state){
 		explosion_timer++;
 	break;		
 		
+	// Bottom Wisp Hitbox
 	case 5:
 	
 		if (state_timer == 10){

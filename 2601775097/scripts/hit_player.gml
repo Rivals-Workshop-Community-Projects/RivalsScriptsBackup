@@ -345,7 +345,7 @@ if (attack != AT_SKILL4)
 //if bar hits an enemy he will pull
 //but he won't get a free pull if it's himself
 if (my_hitboxID.attack == AT_SKILL9 && my_hitboxID.hbox_num == 1 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
-&& hit_player_obj != self && !has_rune("G")) hookshot_speedboost = true;
+&& hit_player_obj != self && !has_rune("G") && (!fuck_you_cheapies || fuck_you_cheapies && !theikos_active)) hookshot_speedboost = true;
 
 
 

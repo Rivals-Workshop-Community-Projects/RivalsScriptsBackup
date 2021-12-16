@@ -77,6 +77,7 @@ if (attack == AT_NSPECIAL){
     }*/
     //Creates the batarang and angles it or not
     if (window == 2 && window_timer == 2){
+    	batarang_hit = false;
         batarang = instance_create( x+60*spr_dir, y-30, "obj_article2"); 
         if (up_down){
             batarang.state = 1;
@@ -163,6 +164,9 @@ if (attack == AT_DSPECIAL){
     if (window == 1 && window_timer == 1){
     	set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 50);
     	set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE_FLIPPER, 3);
+    	set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 140);
+		set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 140);
+		set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
         if (instance_exists(mine)){
             set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
             set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 3);
@@ -189,9 +193,19 @@ if (attack == AT_DSPECIAL){
                 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 60);
             }
         }
+        if (window_timer == 4){
+        	if (instance_exists(mine) && mine.state == 1 && batarang_hit == true){
+		        batarang.shoulddie = true;
+		        mine.state_timer = 0;
+            	mine.state = 3;
+            	window = 3;
+            	window_timer = 1;
+        	}
+        }
+        
         if (window_timer == 16){
             if (instance_exists(mine)){
-                if (mine.state == 1){
+            	if (mine.state == 1){
 		            batarang.shoulddie = true;
 	            }
 	            mine.state_timer = 0;
@@ -214,6 +228,9 @@ if (attack == AT_USPECIAL){
         set_hitbox_value(AT_USPECIAL, 3, HG_LIFETIME, 8);
         set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 90);
         set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE_FLIPPER, 0);
+        set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 100);
+		set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 100);
+		set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 7);
         uspecial_hold = false;
     }
     //Changes the mine hitboxes

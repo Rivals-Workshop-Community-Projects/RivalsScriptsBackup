@@ -27,7 +27,7 @@ normal_max_djumps = 3;
 normal_fast_fall = 15; //fast fall speed
 normal_knockback_adj = 1.15; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
-normal_prat_land_time = 6;
+normal_prat_land_time = 12;
 normal_wave_land_time = 8;
 normal_wave_land_adj = 1.35;
 normal_wave_friction = .4; //grounded deceleration when wavelanding
@@ -206,6 +206,7 @@ HG_HITBOX_COLOR = -1;
 
 //heh, stole from munophone so i can still use it
 window_end = 0;
+last_window = 0;
 
 //////////////////////////////////////////////////MANA MECHANIC SECTION//////////////////////////////////////////////////
 
@@ -493,13 +494,21 @@ accelblitz_active = false;
 accelblitz_done_once = false;
 accelblitz_active_timer = false;
 accelblitz_post_timer = 0;
-accel_drawpoint_x = 0;
-accel_drawpoint_y = 0;
 tp_angle = 90; //the angle of the joystick, the default is 90 (up)
-tp_dist = 15; //distance that the indicator will go per frame
-dist_x = 0;
-dist_y = 0;
-tp_prec = 8; //The precision of the teleportation algorithm.
+tp_dist = 0; //distance that the indicator will go per frame
+dist_x = 0; //the direction bar goes (X)
+dist_y = 0; //the direction bar goes (Y)
+accel_temp_x = 0; //records the indicator's
+accel_temp_y = 0; //current position
+artc_accel_indicator = noone;
+accel_vulnerability = false;
+accel_hit_time_reset = 50;
+accel_hit_time = accel_hit_time_reset;
+//afterimage stuff
+last_dir = 1;
+cur_dir = 1;
+cur_sprite = -4;
+cur_image = -4;
 
 blur_array_length = 2;
 blur = array_create(blur_array_length);
@@ -515,6 +524,7 @@ chasm_burningfury_was_active = false;
 
 sfx_fire = sound_get("sfx_constantfire");
 artc_powersmash_chasm = noone;
+power_jump_cancel_time = 0;
 
 polaris_active = false;
 homing_target_id = noone;

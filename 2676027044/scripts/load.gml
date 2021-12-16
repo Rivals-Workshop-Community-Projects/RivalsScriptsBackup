@@ -2,6 +2,9 @@
 // called right after the item is loaded into the game. 
 // This is where you would normally set sprites’ origins and bounding boxes.
 
+sprite_change_offset("offscreen_wisp", 28, 56);
+sprite_change_offset("offscreen_HUD", 28, 56);
+
 sprite_change_offset("mimikyu_stand_hurtbox", 68, 94);
 sprite_change_offset("mimikyu_crouch_hurtbox", 68, 94);
 

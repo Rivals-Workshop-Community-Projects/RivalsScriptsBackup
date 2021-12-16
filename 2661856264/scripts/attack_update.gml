@@ -1,10 +1,18 @@
+if (attack == AT_JAB && window == 3 && window_timer > 3){
+    can_special = true;
+}
+
+if (attack == AT_DATTACK && window <= 2){
+    can_ustrong = true;
+}
+
 //Rockless Armor Stuff
 if (stealth_rock == 0){
     if (attack == AT_DTILT) && (window == 2 || window == 3){
         soft_armor = 6; 
     }
-    if (attack == AT_FSTRONG && window == 2){
-        soft_armor = 13;
+    if (attack == AT_FSTRONG && window == 1){
+        soft_armor = 6;
     }
 }
 
@@ -26,26 +34,26 @@ if (stealth_rock >= 1){
         }
     }
     
-    if (attack == AT_USTRONG
-    || attack == AT_DSTRONG
-    || attack == AT_DTILT){ 
+    if (attack == AT_DSTRONG){ 
         if (window == 1 && window_timer = 1){
             sound_play(sound_get("special"));
         }
-    }
-    if (attack == AT_USTRONG && window == 1)
-    || (attack == AT_DSTRONG && window == 3){
-        soft_armor = 13;
-    }
-    if (attack == AT_DTILT){
-        if (window == 2 || window == 3){
-            soft_armor = 13;
+        if (window == 3){
+            soft_armor = 6;
+        }
+        if (window == 4 && window_timer == 1){
+            stealth_rock -= 1;
         }
     }
-    if (attack == AT_USTRONG && window == 5
-    || attack == AT_DSTRONG && window == 4
-    || attack == AT_DTILT && window == 4){
-        if (window_timer == 1){
+    
+    if (attack == AT_UTILT){ 
+        if (window == 1 && window_timer = 1){
+            sound_play(sound_get("special"));
+        }
+        if (window == 2 || window == 3){
+            soft_armor = 6;
+        }
+        if (window == 4 && window_timer == 1){
             stealth_rock -= 1;
         }
     }
@@ -91,20 +99,10 @@ switch (attack)
     case AT_USTRONG:
         if (window == 2)
             sound_stop(sound_get("strong_charge"));
-        if (window == 2 && window_timer == 1 && stealth_rock == 0)
-            take_damage(player, -1, 4);
         break;
     case AT_DSTRONG:
         if (window == 2)
             sound_stop(sound_get("strong_charge"));
-        break;
-    case AT_NAIR:
-        if (window == 2 && window_timer == 1 && stealth_rock == 0 && !hitstop )
-            take_damage(player, -1, 3);
-        break;
-    case AT_USPECIAL:
-        if (window == 3 && window_timer == 1 && stealth_rock == 0)
-            take_damage(player, -1, 4);
         break;
     default:
         break;

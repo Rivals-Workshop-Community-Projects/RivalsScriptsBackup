@@ -86,6 +86,8 @@ set_hitbox_value(AT_DATTACK, 2, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_DATTACK, 2, HG_SDI_MULTIPLIER, 1);
+set_hitbox_value(AT_DATTACK, 2, HG_DRIFT_MULTIPLIER, 1);
 
 set_hitbox_value(AT_DATTACK, 3, HG_MUNO_HITBOX_NAME, "Late Weak Hitbox");
 set_hitbox_value(AT_DATTACK, 3, HG_HITBOX_TYPE, 1);
@@ -104,3 +106,5 @@ set_hitbox_value(AT_DATTACK, 3, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DATTACK, 3, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_DATTACK, 3, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 set_hitbox_value(AT_DATTACK, 3, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_DATTACK, 3, HG_SDI_MULTIPLIER, 1);
+set_hitbox_value(AT_DATTACK, 3, HG_DRIFT_MULTIPLIER, 1);

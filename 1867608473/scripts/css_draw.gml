@@ -76,14 +76,21 @@ for(var i = 0; i < ceil(array_length(alt_name)/16); i++){
 }
  
 draw_set_halign(fa_left);
+
+var shade_slot_kris = 5;
+var col_name_R = get_color_profile_slot_r(alt_cur, shade_slot_kris);
+var col_name_G = get_color_profile_slot_g(alt_cur, shade_slot_kris);
+var col_name_B = get_color_profile_slot_b(alt_cur, shade_slot_kris);
+var col_name = make_color_rgb(col_name_R, col_name_G, col_name_B);
  
 //include alt. name
-textDraw(temp_x + 2, temp_y + 124 - 5*(ceil(array_length(alt_name)/16)-1), "fName", c_white, 0, 1000, 1, true, 1, "Mod by: EquinoxDoodles");
+textDraw(temp_x + 2, temp_y + 124 - 5*(ceil(array_length(alt_name)/16)-1), "fName", col_name, 0, 1000, 1, true, 1, "Mod by: EquinoxDoodles");
 textDraw(temp_x + 2, temp_y + 110 - 5*(ceil(array_length(alt_name)/16)-1), "fName", c_white, 0, 1000, 1, true, 1, "" + (alt_cur < 9 ? "0" : "") + string(alt_cur+1) + ": " + alt_name[alt_cur]);
 
+/*
 if ((alt_cur) > 15 && player == 0) { //draw a warning that extra skins won't work online
   textDraw(temp_x + 2, temp_y + 110 - 5*(ceil(array_length(alt_name)/16)-1), "fName", c_white, 0, 1000, 1, true, 1, "WILL NOT WORK ONLINE");
-}
+}*/
  
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
  

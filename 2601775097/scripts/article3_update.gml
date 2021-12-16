@@ -8,6 +8,8 @@ switch (state)
         ignores_walls = false;
         vsp = 1;
 
+        mask_index = sprite_get("artc_powersmash_mask");
+
         //graphical stuff
         if (golden) sprite_index = sprite_get("theikos_fx_powersmash_ground");
         else sprite_index = sprite_get("fx_powersmash_ground")

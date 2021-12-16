@@ -101,7 +101,7 @@ if attack == AT_DATTACK && has_hit && window == 2 {
 if bloodmeter < bloodmetermin {
 	bloodmeter = bloodmetermin;
 }
-else if (bloodmeter > bloodmetermax && !hitpause && (state != PS_ATTACK_GROUND || state != PS_ATTACK_AIR)) {
+else if (bloodmeter > bloodmetermax && !hitpause && state != PS_HITSTUN){
 	bloodmeter = 0;
 	burst = 1;
 	burstmeter = 100;

@@ -11,6 +11,7 @@ if my_hitboxID.type == 1 {
 //Batarang hits, should come back
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1){
     batarang.state_timer = 41;
+    batarang_hit = true;
 }
 
 //If the "going back" hitbox hits, creates it again
@@ -48,11 +49,11 @@ if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1){
 
 //DStrong hitpause
 if (my_hitboxID.attack == AT_DSTRONG){
-	if (flash_stun > 20){
+	if (flash_stun > 25){
 		hit_player_obj.hitstop = flash_stun;
 	}
 	else {
-		hit_player_obj.hitstop = 20;
+		hit_player_obj.hitstop = 25;
 	}
     
 }

@@ -405,6 +405,7 @@ if (attack == AT_FSPECIAL){
     }
     if (state_timer > 10 && !special_down && window < 7){
         shot_fired = true;
+        tokens += 1.1; 
         window_timer = 1;
         window = 7;
         fspecial_dir = spr_dir;

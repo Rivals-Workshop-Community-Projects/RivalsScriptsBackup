@@ -98,3 +98,4 @@ set_hitbox_value(AT_UTILT, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, sound_get("crash"));
+set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 1);

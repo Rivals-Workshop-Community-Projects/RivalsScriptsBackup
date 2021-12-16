@@ -68,7 +68,8 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, .9);
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITPAUSE_SCALING, .9);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_LOCKOUT, 9);
+set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 3);
@@ -87,7 +88,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 11);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_NSPECIAL, 3, HG_EFFECT, 12);
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, rock_m);
-set_hitbox_value(AT_NSPECIAL, 3, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 3, HG_EXTENDED_PARRY_STUN, true);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITSTUN_MULTIPLIER, .5);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, sound_get("rock_hit"));

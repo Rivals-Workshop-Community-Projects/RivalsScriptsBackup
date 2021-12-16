@@ -8,3 +8,8 @@ parried = true;
 
 // You can't really hear this but it exists
 sound_play(sound_get("parry_success"));
+
+if (enemy_hitboxID.player_id == id){
+	invince_time = 0;
+	invincible = false;
+}

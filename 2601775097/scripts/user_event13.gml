@@ -290,7 +290,7 @@ if(attack == AT_USTRONG and window < 7)
 	tracking_target = hit_player_obj; //sets tracking for ustrong proj
 }
 
-if (attack == AT_DSTRONG_2) //when the fireball of theikos D-strong hits a player
+if (my_hitboxID.attack == AT_DSTRONG_2) //when the fireball of theikos D-strong hits a player
 {
 	if (my_hitboxID.hbox_num == 1)
     {
@@ -312,7 +312,7 @@ if (hit_player_obj.state_cat == SC_HITSTUN)
 }
 
 
-if (polaris_active && !was_parried)
+if (polaris_active && !was_parried && homing_cooldown <= -1)
 {
 	if (my_hitboxID.attack == AT_SKILL7 && my_hitboxID.hbox_num == 1) homing_target_id = noone;
 	else homing_target_id = hit_player_obj;
@@ -323,6 +323,7 @@ if (polaris_active && !was_parried)
 	&& !already_shot && homing_target_id != self)
 	{
 		already_shot = true;
+		homing_cooldown = 20; //internal cooldown
 		if (x > hit_player_obj.x) create_hitbox(AT_SKILL7, 1, x+64, y-48);
 		else create_hitbox(AT_SKILL7, 1, x-64, y-48);
 		ManaBurn();
@@ -344,7 +345,7 @@ if (attack != AT_SKILL4)
 //if bar hits an enemy he will pull
 //but he won't get a free pull if it's himself
 if (my_hitboxID.attack == AT_SKILL9 && my_hitboxID.hbox_num == 1 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
-&& hit_player_obj != self && !has_rune("G")) hookshot_speedboost = true;
+&& hit_player_obj != self && !has_rune("G") && (!fuck_you_cheapies || fuck_you_cheapies && !theikos_active)) hookshot_speedboost = true;
 
 
 
@@ -356,6 +357,7 @@ if (my_hitboxID.attack == AT_SKILL9 && my_hitboxID.hbox_num == 1 && (state == PS
 {
 	hit_player_obj.holyburning = player; // unique burning id to know who burnt the opponent
 	hit_player_obj.holyburn_counter = 0;
+	hit_player_obj.holy_burned_by = self;
 }
 #define ApplySpark()
 {

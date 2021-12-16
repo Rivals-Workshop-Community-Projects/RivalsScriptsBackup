@@ -33,7 +33,7 @@ max_jump_hsp        = 6;		// 4    -  8
 air_max_speed       = 5.5;  		// 3    -  7
 jump_change         = 3;		// 3
 air_accel           = 0.3;		// 0.2  -  0.4
-prat_fall_accel     = 0.45;		// 0.25 -  1.5
+prat_fall_accel     = 0.35;		// 0.25 -  1.5
 air_friction        = 0.04;		// 0.02 -  0.07
 max_fall            = 8;		// 6    -  11
 fast_fall           = 12;		// 11   -  16
@@ -186,6 +186,7 @@ uspecial_hold = false;
 
 batarang = noone;
 batarang_hitbox = noone;
+batarang_hit = false;
 
 grapple = noone;
 grapple_cont = 0;

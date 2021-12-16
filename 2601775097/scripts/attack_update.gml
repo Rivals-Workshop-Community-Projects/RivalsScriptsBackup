@@ -647,7 +647,6 @@ switch (attack)
         break;
     
     case AT_NSPECIAL_2: // [4] ACCEL BLITZ
-        
         accelblitz_active = true;
         blur_array_length = 5;
         can_fast_fall = 0; //Prevent the player from accidentally fast falling during the move.
@@ -655,7 +654,7 @@ switch (attack)
         can_wall_jump = true;
         fall_through = true;
         
-        if (window == 1) //this is for rune G, it makes sure that the variable is reset when bar uses accel blitz normally
+        if (window == 1 && window_timer == 1) //this is for rune G, it makes sure that the variable is reset when bar uses accel blitz normally
         {
             last_attack_hit = 0;
             runeG_blitzjump = false;
@@ -666,9 +665,10 @@ switch (attack)
         //teleport template made by Deor
         if (!accelblitz_done_once)
         {
-            //reset positioning
+            //reset variables
             if (window == 1 && window_timer == 1)
             {
+                accel_hit_time = accel_hit_time_reset;
                 dist_x = 0;
                 dist_y = 0;
             }
@@ -676,65 +676,89 @@ switch (attack)
             //aim logic
             if (window == 2)
             {
-                if (!theikos_active) tp_dist = 8; //10
-                else if (theikos_active) tp_dist = 15;
+                //spawn indicator article
+                if (!instance_exists(artc_accel_indicator))
+                {
+                    artc_accel_indicator = instance_create(x, y, "obj_article2");
+                    artc_accel_indicator.state = 4;
+                    artc_accel_indicator.depth = -8;
+                }
+                else
+                {
+                    artc_accel_indicator.hsp = dist_x;
+                    artc_accel_indicator.vsp = dist_y;
+                }
 
-                if (window_timer == 1) //setup window
+                //setup window
+                if (window_timer == 1)
                 {
                     mp_current -= accelblitz_cost;
-                    tp_dist = 100;
-                    tp_angle = 90;
-                    //the move will always default up, but if you set a direction and
-                    //still holding down the special attack button, it will keep going in that direction
+                    tp_angle = 90; //the move will always default up, but if you set a direction and
+                    artc_accel_indicator.x = x;
+                    artc_accel_indicator.y = y;
+
+                    //indicator movement speed (i tried to shoot for the same speed feel as the old version)
+                    if (!theikos_active) tp_dist = 8 * 1.5; //12
+                    else if (theikos_active) tp_dist = 15 * 1.5; //22.5
 
                     //underswap papyrus alt has it's own sound effect that plays
                     if (alt_cur == 9) sound_play(sound_get("sfx_soul"), 0, 0);
                 }
 
+                //indicator movement logic
                 if (!joy_pad_idle)
                 {
                     tp_angle = joy_dir;
-                    dist_x += lengthdir_x(tp_dist, tp_angle);
-                    dist_y += lengthdir_y(tp_dist, tp_angle);
+                    dist_x = lengthdir_x(tp_dist, tp_angle);
+                    dist_y = lengthdir_y(tp_dist, tp_angle);
                 }
-
-                x_ = x + dist_x; //The coordinates of the desired teleportation destination.
-                y_ = y + dist_y;
-
-                accel_drawpoint_x = x_;
-                accel_drawpoint_y = y_;
-            }         
-
-            //accel blitz start
-            if (!special_down && window == 2 || window == 2 && window_timer == get_window_value(AT_SKILL4, 2, AG_WINDOW_LENGTH)) 
-            {
-                window = 3;
-                window_timer = 0;
-                var fx_accelbitz_blast = spawn_hit_fx(x, y-32, fx_accelblitz);
-                fx_accelbitz_blast.depth = -6;
-                var random_angle = random_func(18, 60, true)-30;
-                fx_accelbitz_blast.draw_angle = random_angle;
-                sound_play(asset_get("sfx_ori_uptilt_single"));
+                else
+                {
+                    dist_x = lengthdir_x(0, tp_angle);
+                    dist_y = lengthdir_y(0, tp_angle);
+                }
+                
+                //accel blitz start
+                if (!special_down || window_timer == window_end) 
+                {
+                    window = 3;
+                    window_timer = 0;
+                    var fx_accelbitz_blast = spawn_hit_fx(x, y-32, fx_accelblitz);
+                    fx_accelbitz_blast.depth = -6;
+                    var random_angle = random_func(18, 60, true)-30;
+                    fx_accelbitz_blast.draw_angle = random_angle;
+                    sound_play(asset_get("sfx_ori_uptilt_single"));
+                }
             }
     
-            //Teleportation Logic
-            if(window == 3 && window_timer == 1)
+            //movement Logic (the indicator is actually invisible here)
+            if(window == 3)
             {
-                /*
-                if(place_meeting(x_, y_, asset_get("par_block"))) //Check to see if destination is colliding with the stage.
+                //record the coordinates and erase the indicator
+                if (window_timer < 1 && !hitpause)
                 {
-                    var tp_dest = stage_collide_alt(x, y, x_, y_, tp_prec); //Use alternate collision function to determine the new teleportation destination.
-                    x_ = tp_dest[0];
-                    y_ = tp_dest[1];
+                    accel_temp_x = artc_accel_indicator.x;
+                    accel_temp_y = artc_accel_indicator.y;
+                    accel_speed = point_distance(x, y, accel_temp_x, accel_temp_y);
+                    if (instance_exists(artc_accel_indicator)) instance_destroy(artc_accel_indicator);
                 }
-                */
-            
-                //Change the player's location to the teleport destination.
-                x = x_;
-                y = y_;
+                accel_dir = point_direction(x, y, accel_temp_x, accel_temp_y);
+                
+                //the movement itself
+                if (!hitpause)
+                {
+                    hsp = lengthdir_x(accel_speed/5, accel_dir);
+			        vsp = lengthdir_y(accel_speed/5, accel_dir);
+                }
 
                 attack_end(AT_SKILL4);
             }
+
+            if (window >= 3 && window <= 4 || window == 5 && window_timer < 2) accel_vulnerability = true;
+            else accel_vulnerability = false;
+            
+            if (theikos_active && accel_vulnerability) invincible = true;
+            
 
             //accel blitz exit effect
             if (!hitstop && window == 4 && window_timer == 1) 
@@ -747,7 +771,7 @@ switch (attack)
             }
 
             //move end
-            if (window == 5 && window_timer == get_window_value(AT_SKILL4, 5, AG_WINDOW_LENGTH))
+            if (window == 5 && window_timer == window_end)
             {
                 accelblitz_active_timer = true;
 
@@ -813,14 +837,18 @@ switch (attack)
         }
         break;
     case AT_FSPECIAL_2: // [6] POWER SMASH
-
         can_wall_jump = true;
-        if (window == 4 && window_timer > 12 || window == 5)
+        if (window == 5)
         {
-            can_jump = true;
+            if (!hitpause) power_jump_cancel_time ++;
+            if (power_jump_cancel_time >= 12) can_jump = true;
             fall_through = down_down;
         }
-        else can_jump = false;
+        else
+        {
+            can_jump = false;
+            power_jump_cancel_time = 0;
+        }
 
         if (window_timer == 1 && !hitpause)
         {

@@ -93,6 +93,11 @@ switch (get_player_color(player))
         break;
 }
 
+
+//constantly reset bar's color
+var col_white = 1;
+set_color_profile_slot_range(col_white, 13, 7, 15); //CLOTHWHITE
+
 draw_set_halign(fa_left);
 
 //ANIMATION VARIABLES

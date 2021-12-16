@@ -53,6 +53,9 @@ if (player_id.levei_parry == true){
 with (asset_get("pHitBox")){
 	if ((attack == AT_DSPECIAL || attack == AT_FSPECIAL) 
 	&& (place_meeting(x,y,other.id) && other.player_id = player_id) && other.state != 2){
+		if (attack == AT_FSPECIAL){
+			destroyed = true;
+		}
 		other.image_index = 0;
 		other.state = 2;
 		other.state_timer = 0;

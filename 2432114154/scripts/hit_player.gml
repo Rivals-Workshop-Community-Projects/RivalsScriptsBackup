@@ -106,6 +106,7 @@ if my_hitboxID.attack != AT_USTRONG and my_hitboxID.attack != AT_FSTRONG and my_
 	
 } else {
 	
+	hit_player_obj.hitstop += 100
 	
 	
 	set_hitbox_value(AT_EXTRA_2, 1, HG_BASE_KNOCKBACK, 6);

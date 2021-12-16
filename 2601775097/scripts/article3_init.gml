@@ -12,3 +12,5 @@ else golden = false;
 
 state = 0;
 state_timer = 0;
+
+alt_cur = get_player_color(player);

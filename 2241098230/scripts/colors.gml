@@ -1,5 +1,3 @@
-//Alt colors by Zerks
-
 // DEFAULT COLOR
 
 // Skin
@@ -32,7 +30,7 @@ set_color_profile_slot_range( 6, 5, 8, 9 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 16 );
+set_num_palettes( 17 );
 
 // Blue
 set_color_profile_slot( 1, 0, 255, 209, 196 ); //Skin
@@ -168,6 +166,15 @@ set_color_profile_slot( 15, 3, 34, 114, 1 ); //Pants
 set_color_profile_slot( 15, 4, 255, 255, 228 ); //White
 set_color_profile_slot( 15, 5, 88, 92, 90 ); //Fire Outline
 set_color_profile_slot( 15, 6, 224, 10, 146 ); //Smoke
+
+// Daora
+set_color_profile_slot( 16, 0, 129, 100, 168 ); //Skin
+set_color_profile_slot( 16, 1, 13, 99, 195 ); //Hair
+set_color_profile_slot( 16, 2, 249, 214, 72 ); //Fire/Gold
+set_color_profile_slot( 16, 3, 13, 99, 195 ); //Pants
+set_color_profile_slot( 16, 4, 250, 251, 252 ); //White
+set_color_profile_slot( 16, 5, 170, 0, 0 ); //Fire Outline
+set_color_profile_slot( 16, 6, 13, 99, 195 ); //Smoke
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

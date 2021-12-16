@@ -244,7 +244,7 @@ switch(my_hitboxID.attack){
 				// Change KB
 				if (my_hitboxID.hbox_num == 1){
 					with (hit_player_obj){
-						orig_knock = 9 + get_player_damage(player) * 0.7 * 0.12 * other.hit_player_obj.knockback_adj;
+						orig_knock = 9 + get_player_damage(player) * 1.0 * 0.12 * other.hit_player_obj.knockback_adj;
 					}
 
 				}

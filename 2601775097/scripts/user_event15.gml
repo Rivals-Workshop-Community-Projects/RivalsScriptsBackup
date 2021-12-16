@@ -294,6 +294,44 @@ initSection("nothing to see here.
 */
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //																														//
+//														1.7																//
+//																														//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+initPatch("1.7", "13/12/2021");
+initHeader("Alts");
+initSection("= Early Access and Demake now recolor Bar's eyes too
+");
+initHeader("Dash Attack");
+initSection("- Both hitboxes are now no longer untechable, again (HG_TECHABLE 1 -> 0)
+");
+initHeader("Force Leap");
+initSection("- Pratland time increased (10 -> 12)
+");
+initHeader("Accel Blitz");
+initSection("= The movement for the attack is now different, the indicator collides with walls and cannot pass through them
+- Bar now doesn't instantly teleport, and instead travels the distance for a few frames (teleport buffer window 1 -> 5)
+- Pratland time increased (6 -> 12)
+- Landing while Bar is flashing after the time is up will put him in pratland instead of a normal landing
+- When Bar is hit while blitzing he will be stunned for 50 frames (Theïkós Bar is completely invincible in that time)
+");
+initHeader("Power Smash");
+initSection("= Added a new collision box to it, which can be viewed in hitbox view
+= Removed unused hitbox
+- Delayed the jump cancel time (state timer 14 -> 38)
+");
+initHeader("Polaris");
+initSection("= Angle altered (75 -> 60)
+= Base knockback of the projectile increased (7 -> 8)
+= Angle flipper altered (2 -> 6)
+= Altered hitpause conditions, the attack will not alter the values depending on the animation Bar is in currently, and will keep it's values from the initial spawn
++ Jab 4 now brings out the projectile with the knockback
+");
+initHeader("Theía Evlogía");
+initSection("= Fixed issue with the anti-cheapie mode where Bar will launch himself after teleporting with Light Hookshot
+= Fixed the effect color on his attacks that are not set in a special way
+");
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//																														//
 //														1.6																//
 //																														//
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

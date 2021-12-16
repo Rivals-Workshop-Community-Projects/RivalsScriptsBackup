@@ -3,7 +3,35 @@
 
 switch (state)
 {
+    case 4: //accel blitz indicator
+        free = true;
+        can_be_grounded = false;
+        ignores_walls = false;
+        mask_index = sprite_get("artc_accelblitz_indicator");
+
+        sprite_index = sprite_get("accelblitz_indicator");
+        image_xscale = 2;
+        image_yscale = 2;
+        image_alpha = 0.8;
+        
+        //visual work
+        if (player_id.attack == player_id.AT_SKILL4 && player_id.window == 2)
+        {
+            if (golden && alt_cur != 26) image_index = alt_cur+27;
+            else
+            {
+                image_index = alt_cur;
+                if (!player_id.is_8bit && alt_cur != 9) image_alpha = 1;
+                else image_alpha = 0.8;
+            }
+        }
+        else image_alpha = 0;
+        break;
+
     case 12: //theikos D-strong
+        can_be_grounded = true;
+        ignores_walls = false;
+        
         //graphical stuff
         if (golden) sprite_index = sprite_get("theikos_fx_dstrong_fireground");
         else sprite_index = sprite_get("fx_dstrong_t_fireground");

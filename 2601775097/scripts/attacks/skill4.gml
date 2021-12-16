@@ -28,13 +28,13 @@ set_window_value(atk, windowNum, AG_WINDOW_HSPEED, 0);
 
 windowNum ++; //movement buffer (3)
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 1); //controls speed
+set_window_value(atk, windowNum, AG_WINDOW_LENGTH, 5); //controls speed
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 1); //frames amount on strip
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 2); //starting frame. starts from 0
-set_window_value(atk, windowNum, AG_WINDOW_VSPEED_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_VSPEED, 0);
-set_window_value(atk, windowNum, AG_WINDOW_HSPEED_TYPE, 1);
-set_window_value(atk, windowNum, AG_WINDOW_HSPEED, 0);
+set_window_value(atk, windowNum, AG_WINDOW_VSPEED_TYPE, 2);
+//set_window_value(atk, windowNum, AG_WINDOW_VSPEED, 0);
+set_window_value(atk, windowNum, AG_WINDOW_HSPEED_TYPE, 2);
+//set_window_value(atk, windowNum, AG_WINDOW_HSPEED, 0);
 
 windowNum ++; //casting
 set_window_value(atk, windowNum, AG_WINDOW_TYPE, 1);
@@ -94,4 +94,5 @@ set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 3);
 
 //munophone
 if (!get_match_setting(SET_PRACTICE)) exit;
-set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "10 MP");
+set_attack_value(atk, AG_MUNO_ATTACK_MISC_ADD, "10 MP
+Getting hit while Bar is moving will stun him for 30 frames");

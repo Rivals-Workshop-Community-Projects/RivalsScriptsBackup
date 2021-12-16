@@ -2,10 +2,10 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "1.16";
-patch_day = "23";
-patch_month = "NOV";
+patch_day = "12";
+patch_month = "DEC";
  
-var num_alts = 21;
+var num_alts = 31;
 var alt_cur = get_player_color(player);
  
 //Alt name init. var doesn't work with arrays lol
@@ -40,6 +40,7 @@ alt_name[26]  = "Back in Business";
 alt_name[27]  = "Cyber Shark";
 alt_name[28]  = "Show me your Moves!"; 
 alt_name[29]  = "Lancer Gaming"; 
+alt_name[30]  = "Faster than Lancer"; 
  
 //Patch
  

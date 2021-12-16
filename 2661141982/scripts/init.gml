@@ -18,6 +18,19 @@ ewgf_timer = 0;
 
 alt1_secret = 0;
 alt2_secret = 0;
+fishe = 0;
+shotoTarget = -4;
+shotoTurnBuffer = 0;
+shotoDir = 0;
+shotoMove = 0;
+shotoMoveBuffer = 0;
+isShoto = -1;
+inputNSpec2 = 0;
+inputNSpec = 0;
+inputFSpec = 0;
+inputUSpec = 0;
+inputTimer = 0;
+goalpha = 1;
 
 // intro
 introTimer = -4;
@@ -92,7 +105,7 @@ max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 13; //fast fall speed
 gravity_speed = .50;
 hitstun_grav = .5;
-knockback_adj = 1.05; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = (has_rune("K") ? 1.2 : 1.05); //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 10;
@@ -144,7 +157,7 @@ djump_sound = asset_get("sfx_jumpair");
 air_dodge_sound = asset_get("sfx_quick_dodge");
 splashfx = hit_fx_create( sprite_get( "anglarahitfx" ), 18 );
 blank = hit_fx_create( sprite_get( "blank" ), 2 );
-splash_dair = hit_fx_create( sprite_get( "bubble_proj" ), 18 );
+splash_dair = hit_fx_create( sprite_get( "bubble_proj" ), 20 );
 sweet = hit_fx_create( sprite_get( "sweet" ), 15 );
 small = hit_fx_create( sprite_get( "smallhit" ), 15 );
 set_hit_particle_sprite(1, sprite_get("particles"))

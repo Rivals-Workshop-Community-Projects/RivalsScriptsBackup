@@ -16,6 +16,7 @@ else golden = false;
 anim_speed = 0.2;
 
 groundfire = noone;
+alt_cur = get_player_color(player);
 
 //state dictionary:
 //0 = (unused)
@@ -23,11 +24,11 @@ groundfire = noone;
 //2 = (unused)
 //3 = (unused)
 //4 = accel blitz
-//5 = chasm burster (if it's better to make it an article)
-//6 = power smash
+//5 = (unused)
+//6 = power smash (article 3 lol)
 //7 = (unused)
 //8 = (unused)
-//9 = light hookshot
-//10 = theikos Ustrong
+//9 = (unused)
+//10 = (unused)
 //11 = (unused)
 //12 = theikos Dstrong

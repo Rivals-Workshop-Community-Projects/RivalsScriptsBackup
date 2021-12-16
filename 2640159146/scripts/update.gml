@@ -20,10 +20,9 @@ if (burststop = 0 && usingspecial == false && burst && (danmoment % 11) == 1) {
    take_damage( player, -1, 1 );
 }	
 
-//made it not go down if it's at 0 (krankees)
-if (bloodmeter > bloodmetermin)
+if (bloodmeter > bloodmetermin){
 bloodmeter -= bloodmeterdec;
-
+}
 
 if burstmeter > 0 && usingspecial == false && burststop = 0 {
 	burstmeter -= burstmeterdec;
@@ -131,6 +130,13 @@ if(attack == AT_USPECIAL && state == PS_ATTACK_AIR){
 	move_cooldown[AT_USPECIAL] = 0;
 }
 
+if(attack == AT_FSPECIAL && state == PS_ATTACK_AIR){
+    move_cooldown[AT_FSPECIAL] = 999;
+} else if !free || state == PS_HITSTUN || state == PS_WALL_JUMP {
+	move_cooldown[AT_FSPECIAL] = 0;
+}
+
+
 if (attack == AT_FSPECIAL && window == 4 && window_timer == 31) {
 	move_cooldown[AT_FSPECIAL] = 25;
 }
@@ -138,8 +144,8 @@ if (attack == AT_FSPECIAL && window == 4 && window_timer == 31) {
 if ( (attack == AT_DSPECIAL && window == 2 && window_timer == 19) 
 || (attack == AT_DSPECIAL_AIR && window == 3 && window_timer == 13) 
 || (attack == AT_DSPECIAL_AIR && window == 4 && window_timer == 19) ) {
-	    move_cooldown[AT_DSPECIAL] = 40;
-	    move_cooldown[AT_DSPECIAL_AIR] = 40;
+	    move_cooldown[AT_DSPECIAL] = 60;
+	    move_cooldown[AT_DSPECIAL_AIR] = 60;
 }
 
 if (burstmeter == 0 and free == false and blooddie = 0 and state_cat != SC_GROUND_COMMITTED)

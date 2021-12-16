@@ -69,8 +69,6 @@ set_hitbox_value(AT_FTHROW, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_FTHROW, 1, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_FTHROW, 1, HG_HIT_SFX, asset_get("sfx_swipe_medium2"));
 set_hitbox_value(AT_FTHROW, 1, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_FTHROW, 1, HG_HITSTUN_MULTIPLIER, 1.2);
-set_hitbox_value(AT_FTHROW, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_FTHROW, 1, HG_VISUAL_EFFECT, 1);
 
 //Smoked
@@ -90,7 +88,6 @@ set_hitbox_value(AT_FTHROW, 2, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_FTHROW, 2, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_FTHROW, 2, HG_HIT_SFX, asset_get("sfx_burnconsume"));
 set_hitbox_value(AT_FTHROW, 2, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_FTHROW, 2, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_FTHROW, 2, HG_TECHABLE, 1);
 set_hitbox_value(AT_FTHROW, 2, HG_VISUAL_EFFECT, smokeconsume_fx_bot);
 set_hitbox_value(AT_FTHROW, 2, HG_VISUAL_EFFECT_Y_OFFSET, 32);

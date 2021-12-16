@@ -21,11 +21,11 @@ if (stealth_rock > 0){
 
 if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
     if (attack == AT_DTILT){
-    	if (stealth_rock == 0){
-    		draw_sprite_ext(sprite_get("dtilt_armor"), image_index, x, y, spr_dir, 1, 0, point_1, 1 );
-    	}
+    	draw_sprite_ext(sprite_get("dtilt_armor"), image_index, x, y, spr_dir, 1, 0, point_1, 1 );
+    }
+    if (attack == AT_UTILT){
     	if (stealth_rock >= 1){
-    	   draw_sprite_ext(sprite_get("dtilt_armor"), image_index, x, y, spr_dir, 1, 0, point_2, 1 );
+    	   draw_sprite_ext(sprite_get("utilt_armor"), image_index, x, y, spr_dir, 1, 0, point_1, 1 );
     	}
     }
     if (attack == AT_NAIR){
@@ -34,15 +34,12 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
     	}
     }
     if (attack == AT_FSTRONG){
-        draw_sprite_ext(sprite_get("fstrong_armor"), image_index, x, y, spr_dir, 1, 0, point_2, 1 );
+        draw_sprite_ext(sprite_get("fstrong_armor"), image_index, x, y, spr_dir, 1, 0, point_1, 1 );
     }
 }
 
 if (stealth_rock > 0 && state == PS_ATTACK_GROUND){
     if (attack == AT_DSTRONG){
-        draw_sprite_ext(sprite_get("dstrong_armor"), image_index, x, y, spr_dir, 1, 0, point_2, 1 );
-    }
-    if (attack == AT_USTRONG){
-        draw_sprite_ext(sprite_get("ustrong_armor"), image_index, x, y, spr_dir, 1, 0, point_2, 1 );
+        draw_sprite_ext(sprite_get("dstrong_armor"), image_index, x, y, spr_dir, 1, 0, point_1, 1 );
     }
 }

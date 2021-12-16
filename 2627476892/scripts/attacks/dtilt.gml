@@ -54,3 +54,5 @@ set_hitbox_value(AT_DTILT, 1, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DTILT, 1, HG_KNOCKBACK_SCALING, .2);
 set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(AT_DTILT, 1, HG_SDI_MULTIPLIER, 1);
+set_hitbox_value(AT_DTILT, 1, HG_DRIFT_MULTIPLIER, 1);

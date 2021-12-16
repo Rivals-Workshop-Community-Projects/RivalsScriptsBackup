@@ -91,3 +91,5 @@ set_hitbox_value(AT_USTRONG, 3, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_USTRONG, 3, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 set_hitbox_value(AT_USTRONG, 3, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_USTRONG, 3, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_USTRONG, 3, HG_SDI_MULTIPLIER, 1);
+set_hitbox_value(AT_USTRONG, 3, HG_DRIFT_MULTIPLIER, 1);

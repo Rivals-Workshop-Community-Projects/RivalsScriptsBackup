@@ -39,12 +39,12 @@ set_hitbox_value(AT_NAIR, 1, HG_HITBOX_TYPE, 1);
 
 set_hitbox_value(AT_NAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_NAIR, 1, HG_LIFETIME, 3);//4
-set_hitbox_value(AT_NAIR, 1, HG_WIDTH, 83);
-set_hitbox_value(AT_NAIR, 1, HG_HEIGHT, 46);
-set_hitbox_value(AT_NAIR, 1, HG_HITBOX_X, 32);
-set_hitbox_value(AT_NAIR, 1, HG_HITBOX_Y, -19);
+set_hitbox_value(AT_NAIR, 1, HG_WIDTH, 78);
+set_hitbox_value(AT_NAIR, 1, HG_HEIGHT, 54);
+set_hitbox_value(AT_NAIR, 1, HG_HITBOX_X, 31);
+set_hitbox_value(AT_NAIR, 1, HG_HITBOX_Y, -11);
 set_hitbox_value(AT_NAIR, 1, HG_PRIORITY, 1);
-set_hitbox_value(AT_NAIR, 1, HG_SHAPE, 2);
+set_hitbox_value(AT_NAIR, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_NAIR, 1, HG_DAMAGE, 4);
 set_hitbox_value(AT_NAIR, 1, HG_ANGLE, 70);
 // set_hitbox_value(AT_NAIR, 1, HG_ANGLE_FLIPPER, 4);// lol flippers
@@ -59,12 +59,12 @@ set_hitbox_value(AT_NAIR, 1, HG_EXTRA_HITPAUSE, 2);
 
 set_hitbox_value(AT_NAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 2, HG_WINDOW, 4);
-set_hitbox_value(AT_NAIR, 2, HG_SHAPE, 2);
+set_hitbox_value(AT_NAIR, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_NAIR, 2, HG_LIFETIME, 3);//4
-set_hitbox_value(AT_NAIR, 2, HG_WIDTH, 83);//60
-set_hitbox_value(AT_NAIR, 2, HG_HEIGHT, 46);//40
-set_hitbox_value(AT_NAIR, 2, HG_HITBOX_X, 32);//15
-set_hitbox_value(AT_NAIR, 2, HG_HITBOX_Y, -19);//-25
+set_hitbox_value(AT_NAIR, 2, HG_WIDTH, 78);//60
+set_hitbox_value(AT_NAIR, 2, HG_HEIGHT, 54);//40
+set_hitbox_value(AT_NAIR, 2, HG_HITBOX_X, 31);//15
+set_hitbox_value(AT_NAIR, 2, HG_HITBOX_Y, -11);//-25
 set_hitbox_value(AT_NAIR, 2, HG_PRIORITY, 1);
 set_hitbox_value(AT_NAIR, 2, HG_DAMAGE, 4);
 set_hitbox_value(AT_NAIR, 2, HG_ANGLE, 45);

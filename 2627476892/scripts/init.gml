@@ -202,6 +202,8 @@ if(alt == 6){ //susie
 	lancer_laugh = sound_get("snd_ouwoouh");
 }if(alt == 26){ //the baby
 	lancer_laugh = sound_get("snd_babymario");
+}if(alt == 30){ //ftl
+	lancer_laugh = sound_get("ftl_laugh");
 }
 if(alt == 0){
 	spr_vfx_afterimage = sprite_get("afterimage2");

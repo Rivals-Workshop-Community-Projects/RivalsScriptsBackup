@@ -7,7 +7,7 @@
 }*/
 
 // Devilsknife Cost
-if (attack == AT_NSPECIAL && tp_gauge < devilsknife_cost && !phone_cheats[cheat_freespecials]){
+if (attack == AT_NSPECIAL && tp_gauge < devilsknife_cost){
 	attack = AT_EXTRA_2;
 }
 else if (attack == AT_NSPECIAL && move_cooldown[AT_NSPECIAL] == 0 && tp_gauge >= devilsknife_cost){
@@ -21,7 +21,7 @@ if (attack == AT_FSPECIAL && tp_gauge >= 65 && move_cooldown[AT_FSPECIAL_2] == 0
 	tp_gauge -= red_buster_cost;
 }
 
-if (attack == AT_FSPECIAL && tp_gauge < rude_buster_cost && !phone_cheats[cheat_freespecials]){
+if (attack == AT_FSPECIAL && tp_gauge < rude_buster_cost){
 	attack = AT_EXTRA_1;
 }
 else if (attack == AT_FSPECIAL && tp_gauge >= rude_buster_cost && move_cooldown[AT_FSPECIAL] == 0){

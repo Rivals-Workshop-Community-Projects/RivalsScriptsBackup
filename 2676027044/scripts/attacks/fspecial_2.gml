@@ -108,7 +108,7 @@ set_hitbox_value(AT_FSPECIAL_2, 5, HG_PRIORITY, 5);
 set_hitbox_value(AT_FSPECIAL_2, 5, HG_DAMAGE, 5);
 set_hitbox_value(AT_FSPECIAL_2, 5, HG_ANGLE, 75);
 set_hitbox_value(AT_FSPECIAL_2, 5, HG_BASE_KNOCKBACK, 10);
-set_hitbox_value(AT_FSPECIAL_2, 5, HG_KNOCKBACK_SCALING, .3);
+set_hitbox_value(AT_FSPECIAL_2, 5, HG_KNOCKBACK_SCALING, .6);
 set_hitbox_value(AT_FSPECIAL_2, 5, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_FSPECIAL_2, 5, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_FSPECIAL_2, 5, HG_HIT_SFX, sound_get("playroughend"));

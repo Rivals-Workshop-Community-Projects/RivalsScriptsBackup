@@ -83,7 +83,7 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, hitboxNum); //it needs to be a different value for every different move in the file
-set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 1);
+//set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 1);
 
 hitboxNum ++; //attack 2
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
@@ -105,7 +105,7 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT_Y_OFFSET, 4);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, hitboxNum); //it needs to be a different value for every different move in the file
-set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 1);
+//set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 1);
 
 
 //munophone

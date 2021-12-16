@@ -284,6 +284,9 @@ set_hitbox_value(AT_NSPECIAL, 8, HG_PROJECTILE_GRAVITY, 0);
 set_hitbox_value(AT_NSPECIAL, 8, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_NSPECIAL, 8, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(AT_NSPECIAL, 8, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_NSPECIAL, 8, HG_SDI_MULTIPLIER, 1);
+set_hitbox_value(AT_NSPECIAL, 8, HG_DRIFT_MULTIPLIER, 1);
+set_hitbox_value(AT_NSPECIAL, 8, HG_TECHABLE, 1);
 
 set_hitbox_value(AT_NSPECIAL, 9, HG_MUNO_HITBOX_NAME, "Forward Throw Projectile");
 set_hitbox_value(AT_NSPECIAL, 9, HG_WINDOW, 8);
@@ -317,6 +320,8 @@ set_hitbox_value(AT_NSPECIAL, 9, HG_PROJECTILE_GRAVITY, 0);
 set_hitbox_value(AT_NSPECIAL, 9, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_NSPECIAL, 9, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(AT_NSPECIAL, 9, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_NSPECIAL, 9, HG_SDI_MULTIPLIER, 1);
+set_hitbox_value(AT_NSPECIAL, 9, HG_DRIFT_MULTIPLIER, 1);
 
 set_hitbox_value(AT_NSPECIAL, 10, HG_MUNO_HITBOX_NAME, "Back Throw Projectile");
 set_hitbox_value(AT_NSPECIAL, 10, HG_WINDOW, 9);

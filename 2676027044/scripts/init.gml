@@ -127,7 +127,7 @@ max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
 walljump_vsp = 8;
 walljump_hsp = 6;
 walljump_time = 32;
-prat_fall_accel = .5; //multiplier of air_accel while in pratfall
+prat_fall_accel = 1; //multiplier of air_accel while in pratfall
 prat_land_time = 16;
 land_time = 4; //normal landing frames
 

@@ -136,53 +136,17 @@ switch (state)
 				&& state != PS_TECH_BACKWARD && state != PS_TECH_FORWARD 
 				&& state != PS_WALL_TECH) && !hitpause && !invincible && !super_armor
                 {
-                    croagpoison += 25;
+                    croagpoison += 75;
                     croagpoison = clamp(croagpoison, 0, 100);
                 }
             }
             
-            switch (sludgelevel)
+            with player_id
             {
-                case 0:
-                {
-                    with player_id
-                    {
-                        spawn_hit_fx( other.x, other.y, dissipate )
-                    }
-                    sound_play(sound_get("sm-dissipate"));
-                    sprite_index = sprite_get("empty");
-                }break;
-                
-                case 1:
-                {
-                    with player_id
-                    {
-                        spawn_hit_fx( other.x, other.y, dissipate )
-                    }
-                    sound_play(sound_get("sm-dissipate"));
-                    sprite_index = sprite_get("empty");
-                }break;
-                
-                case 2:
-                {
-                    with player_id
-                    {
-                        spawn_hit_fx( other.x, other.y, dissipate )
-                    }
-                    sound_play(sound_get("sm-dissipate"));
-                    sprite_index = sprite_get("empty");
-                }break;
-                
-                case 3:
-                {
-                    with player_id
-                    {
-                        spawn_hit_fx( other.x, other.y, dissipate )
-                    }
-                    sound_play(sound_get("sm-dissipate"));
-                    sprite_index = sprite_get("empty");
-                }break;
+                spawn_hit_fx( other.x, other.y, dissipate )
             }
+            sound_play(sound_get("sm-dissipate"));
+            sprite_index = sprite_get("empty");
         }
         
         if state_timer >= 10 && instance_exists(self)

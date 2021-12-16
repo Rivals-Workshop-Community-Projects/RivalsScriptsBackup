@@ -15,17 +15,6 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
     if (attack == AT_SKILL0) draw_sprite_ext(fx_lightdagger, image_index, x-64*spr_dir, y-94, 1*spr_dir, 1, 0, c_white, 1);
     if (attack == AT_SKILL0_AIR) draw_sprite_ext(fx_lightdagger_air, image_index, x-(64*spr_dir), y-94, 1*spr_dir, 1, 0, c_white, 1);
 
-    //accel blitz indicator
-    if (attack == AT_SKILL4 && window == 2 && window_timer > 0)
-    {
-        if (user_event_1_active && alt_cur != 26) draw_sprite_ext(fx_accel_indicator, alt_cur+27, accel_drawpoint_x, accel_drawpoint_y, 2, 2, 0, c_white, 0.8);
-        else
-        {
-            if (!is_8bit && alt_cur != 9) draw_sprite_ext(fx_accel_indicator, alt_cur, accel_drawpoint_x, accel_drawpoint_y, 2, 2, 0, c_white, 0.8);
-            else draw_sprite_ext(fx_accel_indicator, alt_cur, accel_drawpoint_x, accel_drawpoint_y, 2, 2, 0, c_white, 1);
-        }
-    }
-
     //light hookshot effect
     if (attack == AT_SKILL9)
     {

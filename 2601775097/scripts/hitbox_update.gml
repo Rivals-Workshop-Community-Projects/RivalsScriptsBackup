@@ -135,17 +135,17 @@ if (attack == player_id.AT_SKILL7)
     //print("homing_target_id = " + string(player_id.homing_target_id));
 
     //if bar isn't in certain animations, allow the move to hitstun and knockback
-    if (kb_value == 0 && hitpause == 0 && hitpause_growth == 0)
-    {
-        if ((player_id.state != PS_ATTACK_AIR && player_id.state != PS_ATTACK_GROUND) || player_id.attack != player_id.AT_SKILL1
-        && player_id.attack != player_id.AT_SKILL1_AIR && player_id.attack != player_id.AT_SKILL10
-        && (player_id.attack != AT_DATTACK || player_id.attack == AT_DATTACK && window >= 4) && player_id.attack != AT_JAB)
-        {
-            kb_value = 7;
-            hitpause = 5;
-            hitpause_growth = 0.4;
-        }
-    }
+    //if (kb_value == 0 && hitpause == 0 && hitpause_growth == 0)
+    //{
+    //    if ((player_id.state != PS_ATTACK_AIR && player_id.state != PS_ATTACK_GROUND) || player_id.attack != player_id.AT_SKILL1
+    //    && player_id.attack != player_id.AT_SKILL1_AIR && player_id.attack != player_id.AT_SKILL10
+    //    && (player_id.attack != AT_DATTACK || player_id.attack == AT_DATTACK && window >= 4) && player_id.attack != AT_JAB)
+    //    {
+    //        kb_value = 7;
+    //        hitpause = 5;
+    //        hitpause_growth = 0.4;
+    //    }
+    //}
 
     //hit detection
     for(var i = array_length(can_hit); i > -1; i--;)

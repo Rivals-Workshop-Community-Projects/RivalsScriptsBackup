@@ -138,6 +138,7 @@ if (start_down) game_paused = true;
 if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
 {
     window_end = floor(get_window_value(attack, window, AG_WINDOW_LENGTH) * ((get_window_value(attack, window, AG_WINDOW_HAS_WHIFFLAG) && !has_hit) ? 1.5 : 1));
+    last_window = get_attack_value(attack, AG_NUM_WINDOWS);
 }
 
 //////////////////////////////////////////////////MOVEMENT MECHANICS SECTION//////////////////////////////////////////////////
@@ -455,7 +456,7 @@ if (!free) photon_used = false;
 //accel blitz logic (tis a long one chief)
 if (accelblitz_active) //accel blitz's motion blur after bar's teleport
 {
-    //accel blitz logic
+    //color logic
     if (user_event_1_active)
     {
         var blend_color = make_colour_rgb(237, 207, 97);
@@ -475,7 +476,7 @@ if (accelblitz_active) //accel blitz's motion blur after bar's teleport
     }
     blur[@ i] = [sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, blend_color, image_alpha];
 }
-if (!accelblitz_active) blur[@ i] = [sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, blend_color, image_alpha];
+else blur[@ i] = [sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, blend_color, image_alpha];
 //this timer will allow bar to act out of accel blitz
 if (accelblitz_active_timer)
 {
@@ -490,7 +491,6 @@ if (accelblitz_active_timer)
     {
         accelblitz_active_timer = false;
         accelblitz_active = false;
-        accelblitz_post_timer = 0;
         blur_array_length = 2;
 
         //if bar:
@@ -503,9 +503,22 @@ if (accelblitz_active_timer)
     }
 }
 else if (!accelblitz_active_timer && attack != AT_SKILL4) accelblitz_active = false; //stops motion blur
+
+//fuck you dan
+if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_SKILL4 && window == 3 && window_timer == 0)
+{
+    hsp = 0;
+    vsp = 0;
+}
+
 //allows bar to do accel blitz again if the conditions are met, and resets the variables to set up another accel blitz
 //this code shouldsn't affect theikos bar at all
-if (state == PS_LAND || state == PS_LANDING_LAG || state == PS_WAVELAND || state == PS_PRATLAND|| state == PS_WALL_JUMP || attack == AT_SKILL4 && !free) 
+if (accelblitz_post_timer > 1 && !free && state != PS_PRATLAND)
+{
+    state = PS_PRATLAND;
+    accelblitz_post_timer = 0;
+}
+else if (state != PS_ATTACK_GROUND && !free || state == PS_WALL_JUMP || state == PS_ATTACK_GROUND && attack != AT_SKILL4)
 {
     accelblitz_active = false;
     accelblitz_active_timer = false;
@@ -516,6 +529,12 @@ if (state == PS_LAND || state == PS_LANDING_LAG || state == PS_WAVELAND || state
 if (accelblitz_done_once && free && up_down && special_down) state = PS_PRATFALL;
 //prevernts superposition of an invincible pratfall
 if (accelblitz_done_once && !accelblitz_active_timer && !pHurtBox.dodging) state = PS_PRATFALL;
+//getting hit while blitzing will stun bar heavily
+if (accel_vulnerability && (state == PS_HITSTUN || state == PS_HITSTUN_LAND))
+{
+    if (accel_hit_time > 0) accel_hit_time --;
+    hitstop = accel_hit_time;
+}
 
 //chasm burster (air) logic
 if (free)
@@ -616,20 +635,25 @@ if (polaris_active)
     //}
 
     //these multi hitting moves move bar around so i don't want the hitpause to mess with the combo
-    if (attack == AT_SKILL1 || attack == AT_SKILL1_AIR || attack == AT_SKILL10 || attack == AT_DATTACK && window < 4 || attack == AT_JAB)
+    if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
     {
-        set_hitbox_value(AT_SKILL7, 1, HG_BASE_KNOCKBACK, 0);
-        set_hitbox_value(AT_SKILL7, 1, HG_KNOCKBACK_SCALING, 0);
-        set_hitbox_value(AT_SKILL7, 1, HG_BASE_HITPAUSE, 0);
-        set_hitbox_value(AT_SKILL7, 1, HG_HITPAUSE_SCALING, 0);
+        if (attack == AT_SKILL1 || attack == AT_SKILL1_AIR || attack == AT_SKILL10
+        || attack == AT_DATTACK && window < 4 || attack == AT_JAB && window < 10)
+        {
+            set_hitbox_value(AT_SKILL7, 1, HG_BASE_KNOCKBACK, 0);
+            set_hitbox_value(AT_SKILL7, 1, HG_KNOCKBACK_SCALING, 0);
+            set_hitbox_value(AT_SKILL7, 1, HG_BASE_HITPAUSE, 0);
+            set_hitbox_value(AT_SKILL7, 1, HG_HITPAUSE_SCALING, 0);
+        }
+        else
+        {
+            reset_hitbox_value(AT_SKILL7, 1, HG_BASE_KNOCKBACK);
+            reset_hitbox_value(AT_SKILL7, 1, HG_KNOCKBACK_SCALING);
+            reset_hitbox_value(AT_SKILL7, 1, HG_BASE_HITPAUSE);
+            reset_hitbox_value(AT_SKILL7, 1, HG_HITPAUSE_SCALING);
+        }
     }
-    else
-    {
-        reset_hitbox_value(AT_SKILL7, 1, HG_BASE_KNOCKBACK);
-        reset_hitbox_value(AT_SKILL7, 1, HG_KNOCKBACK_SCALING);
-        reset_hitbox_value(AT_SKILL7, 1, HG_BASE_HITPAUSE);
-        reset_hitbox_value(AT_SKILL7, 1, HG_HITPAUSE_SCALING);
-    }
+    
     
     if (down_down && special_pressed && state_cat != SC_HITSTUN)
     {
@@ -721,9 +745,8 @@ if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND || attack != AT_SKILL11)
 
 //prat_land_time changing
 if (ustrong2_cast) prat_land_time = 24; //theikos U-strong
-else if ((attack == AT_SKILL2 || attack == AT_SKILL10) && prev_state == PS_PRATFALL && state == PS_PRATLAND) prat_land_time = 10; //force leap and searing descent
 else if (theikos_active) prat_land_time = 2; //theikos in general
-else prat_land_time = normal_prat_land_time;
+else prat_land_time = normal_prat_land_time; //used for force leap and accel blitz, searing descent forces bar into the ground anyways
 
 //it also needs to check if it's currently pratlanding and has that variable active
 if (prev_state == PS_PRATLAND && ustrong2_cast) ustrong2_cast = false;

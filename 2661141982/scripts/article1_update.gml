@@ -33,12 +33,17 @@ switch(state)
         break;
     case 1: //still
         if(state_timer >= 300)
+        {
+            create_hitbox(AT_NSPECIAL_2, 2, x+2, y+2);
             setState(3);
+        }
         hitbox_detection();
         break;
     case 2: //get hit and explodes (by anglara)
         if (state_timer == 0)
         {
+            if(has_rune("E"))
+                player_id.lure_timer = 0;
             visible = false;
             var t = spawn_hit_fx(x, y, nspec_explode_big);
             t.depth = player_id.depth - 3
@@ -141,6 +146,7 @@ if hit_lockout <= 0
                 hitstop = desired_hitstop;
                 hitstop_full = desired_hitstop;
             }
+            if attack == AT_DAIR {old_vsp = -12; hitstop /= 3;}
             
             // if other.attack == AT_DSPECIAL
             // {
@@ -155,7 +161,6 @@ if hit_lockout <= 0
         if type == 2 
         {
             destroyed = true;
-            if attack == AT_DAIR with player_id vsp = -12
         }
     }
 } else hit_lockout--;

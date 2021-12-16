@@ -44,6 +44,8 @@ set_hitbox_value(AT_FTILT, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 6);
 set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_waterhit_weak"));
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_FTILT, 1, HG_SDI_MULTIPLIER, 1);
+set_hitbox_value(AT_FTILT, 1, HG_DRIFT_MULTIPLIER, 1);
 
 set_hitbox_value(AT_FTILT, 2, HG_MUNO_HITBOX_NAME, "Launcher");
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_TYPE, 1);
@@ -64,3 +66,5 @@ set_hitbox_value(AT_FTILT, 2, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, 150);
 set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_swish_weak"));
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_FTILT, 2, HG_SDI_MULTIPLIER, 1);
+set_hitbox_value(AT_FTILT, 2, HG_DRIFT_MULTIPLIER, 1);

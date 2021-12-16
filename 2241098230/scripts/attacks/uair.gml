@@ -64,10 +64,10 @@ set_num_hitboxes(AT_UAIR, 3);
 set_hitbox_value(AT_UAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_UAIR, 1, HG_LIFETIME, 3);
-set_hitbox_value(AT_UAIR, 1, HG_HITBOX_X, 22);
-set_hitbox_value(AT_UAIR, 1, HG_HITBOX_Y, -72);
-set_hitbox_value(AT_UAIR, 1, HG_WIDTH, 64 + (has_rune("O") * 144));
-set_hitbox_value(AT_UAIR, 1, HG_HEIGHT, 64 + (has_rune("O") * 144));
+set_hitbox_value(AT_UAIR, 1, HG_HITBOX_X, 14);
+set_hitbox_value(AT_UAIR, 1, HG_HITBOX_Y, -68);
+set_hitbox_value(AT_UAIR, 1, HG_WIDTH, 40 + (has_rune("O") * 144));
+set_hitbox_value(AT_UAIR, 1, HG_HEIGHT, 40 + (has_rune("O") * 144));
 set_hitbox_value(AT_UAIR, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE, 90);
@@ -75,8 +75,6 @@ set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_UAIR, 1, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_UAIR, 1, HG_SDI_MULTIPLIER, 0);
-set_hitbox_value(AT_UAIR, 1, HG_TECHABLE, 1);
 
 //Regular throw
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_TYPE, 1);
@@ -97,7 +95,6 @@ set_hitbox_value(AT_UAIR, 2, HG_HITPAUSE_SCALING, 0.2);
 set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_swipe_medium2"));
 set_hitbox_value(AT_UAIR, 2, HG_EFFECT, 9);
 set_hitbox_value(AT_UAIR, 2, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_UAIR, 2, HG_TECHABLE, 2);
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_GROUP, 1);
 
 //Smoke consume throw
@@ -119,7 +116,6 @@ set_hitbox_value(AT_UAIR, 3, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, asset_get("sfx_burnconsume"));
 set_hitbox_value(AT_UAIR, 3, HG_EFFECT, 9);
 set_hitbox_value(AT_UAIR, 3, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_UAIR, 3, HG_TECHABLE, 2);
 set_hitbox_value(AT_UAIR, 3, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, smokeconsume_fx_bot);
 set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT_Y_OFFSET, 32);

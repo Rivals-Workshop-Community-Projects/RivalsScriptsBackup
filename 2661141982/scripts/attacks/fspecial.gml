@@ -70,6 +70,7 @@ set_window_value(AT_FSPECIAL, 8, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL, 8, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FSPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, 25);
+set_window_value(AT_FSPECIAL, 8, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 
 //set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
@@ -149,7 +150,7 @@ set_hitbox_value(AT_FSPECIAL, 4, HG_LIFETIME, 4);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_X, 21);
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_Y, -21);
 set_hitbox_value(AT_FSPECIAL, 4, HG_WIDTH, 76);
-set_hitbox_value(AT_FSPECIAL, 4, HG_ANGLE, 45);//why was this angle 30 before wtf
+set_hitbox_value(AT_FSPECIAL, 4, HG_ANGLE, 40);//why was this angle 30 before wtf
 set_hitbox_value(AT_FSPECIAL, 4, HG_HEIGHT, 44);
 set_hitbox_value(AT_FSPECIAL, 4, HG_PRIORITY, 8);
 set_hitbox_value(AT_FSPECIAL, 4, HG_BASE_KNOCKBACK, 8);

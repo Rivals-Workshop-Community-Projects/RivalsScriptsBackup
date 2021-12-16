@@ -90,7 +90,7 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(atk, hitboxNum, HG_TECHABLE, 3);
 
-hitboxNum ++; //sweetspot
+hitboxNum ++; //ground collision - sweetspot
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 7); //at which window from the above the attack is created
 set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 4); //hitbox duration in frames
@@ -113,7 +113,7 @@ set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_fireblow2);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_forsburn_combust"));
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 2);
 
-hitboxNum ++; //initial attack - sourspot
+hitboxNum ++; //ground collision - sourspot
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 1); // 1 = physical attack || 2 = projectile
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 7); //at which window from the above the attack is created
 set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 6); //hitbox duration in frames
@@ -136,34 +136,6 @@ set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_fireblow1);
 set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_burnapplied"));
 set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 2);
-
-//UNUSED HITBOX
-hitboxNum ++; //constant fire apply
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 2); // 1 = physical attack || 2 = projectile
-set_hitbox_value(atk, hitboxNum, HG_WINDOW, 99); //at which window from the above the attack is created
-set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 180); //hitbox duration in frames
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 0);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, -16);
-set_hitbox_value(atk, hitboxNum, HG_WIDTH, 168);
-set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 24);
-set_hitbox_value(atk, hitboxNum, HG_SHAPE, 1);
-set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 2); //1 = low priority over other moves || 10 = highest
-set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 0);
-set_hitbox_value(atk, hitboxNum, HG_ANGLE, 90);
-set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 0);
-set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, 1);
-set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_burnapplied"));
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_SPRITE, sprite_get("empty"));
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_DESTROY_EFFECT, fx_empty);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, 3);
-set_hitbox_value(atk, hitboxNum, HG_GROUNDEDNESS, 1);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_IS_TRANSCENDENT, 1);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 2);
-set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 0);
 
 
 //munophone

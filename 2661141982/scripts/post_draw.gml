@@ -1,4 +1,6 @@
 //ZOOM BITCH
+draw_sprite_ext(sprite_get("lefishe"),0,view_get_xview(),view_get_yview(),2,2,0,c_white,fishe);
+
 shader_start();
 if(attack == 49 && fs_cinematic && window >= 6 && window <= 9 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))
 {

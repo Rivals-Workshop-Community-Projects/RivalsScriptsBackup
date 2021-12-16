@@ -41,3 +41,5 @@ set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_UAIR, 1, HG_ANGLE_FLIPPER, 6);
+set_hitbox_value(AT_UAIR, 1, HG_SDI_MULTIPLIER, 1);
+set_hitbox_value(AT_UAIR, 1, HG_DRIFT_MULTIPLIER, 1);

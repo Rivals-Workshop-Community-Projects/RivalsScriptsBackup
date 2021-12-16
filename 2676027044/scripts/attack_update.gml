@@ -46,7 +46,7 @@ switch(attack){
 	case AT_DSTRONG:
 		if (atk_air || atk_ground){
 			if(window == 4 && window_timer == 1 && !has_hit_player){
-				set_player_damage(player, clamp(get_player_damage(player) + 12, 0, 999) )
+				set_player_damage(player, clamp(get_player_damage(player) + 10, 0, 999) )
 				shake_camera(3,2);	
 			}
 		}
@@ -68,6 +68,7 @@ switch(attack){
 			
 			if (window == 1){
 			
+				set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE , 0);
 				
 				if (window_timer == 1){
 					fspec_flip = false;
@@ -97,6 +98,14 @@ switch(attack){
 					set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
 					touched_wisp = false;
 				}
+				
+				if (special_down){
+					set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE , 1);
+				}
+				else {
+					set_attack_value(AT_FSPECIAL, AG_OFF_LEDGE , 0);
+				}
+				
 			}
 			
 			if (window == 3 && !free){

@@ -258,6 +258,58 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.3", "21/12/16");
+initHeader("Third Patch");
+initSection("Reworks");
+initWords("DAir is now essentially a different move. Here's the changes:");
+initWords_ext("Endlag: 14 > 12 (not counting whifflag);", fa_left, c_white, 1, false);
+initWords_ext("Hitpause on the first hit (6 > 5);", fa_left, c_white, 1, false);
+initWords_ext("Angle on the second (35 > 85);", fa_left, c_white, 1, false);
+initWords_ext("Knockback on the second (base: 7 > 6);", fa_left, c_white, 1, false);
+initWords_ext("Hitpause on the second (base: 10 > 9.5).", fa_left, c_white, 1, false);
+initWords("FAir is now a COMPLETELY different move: Here's the changes:");
+initWords_ext("Landing Lag: 5 > 12;", fa_left, c_white, 1, false);
+initWords_ext("Startup: 5 > 8;", fa_left, c_white, 1, false);
+initWords_ext("Active frames: 3 > 4;", fa_left, c_white, 1, false);
+initWords_ext("Endlag: 12 > 16 (not counting whifflag);", fa_left, c_white, 1, false);
+initWords_ext("Damage: 6 > 9;", fa_left, c_white, 1, false);
+initWords_ext("Knockback (scaling: 0.3 > 0.9));", fa_left, c_white, 1, false);
+initWords_ext("Hitpause (base: 6 > 7.5, scaling: 0.5 > 1);", fa_left, c_white, 1, false);
+initWords_ext("Sound (light cut > heavy cut sound).", fa_left, c_white, 1, false);
+initWords("NSpecial's brawl hitbox now has 9 frames of hit lockout, allowing it to be a viable kill option at high percents (but not directly comboing into the rock).");
+initSection("Buffs");
+initWords("Buffed Walljump (horizontal speed: 4.5 > 5, vertical speed: 7 > 8);");
+initWords("Self-harm has been completely removed from the character;");
+initWords("Jab1 is now Special-cancelable;");
+initWords("UTilt can now be enhanced to get Sturdy Armor (soft armor 6, activates at frame 4 and deactivates during the endlag);");
+initWords("Extended the duration of the window in which you can DACUS (1 > 6 frames, the entire startup);");
+initWords("Reduced NAir's landing lag (10 > 9) and buffed the knockback scaling on the earlybox (0.9 > 10);");
+initWords("FSpecial will now completely halt your momentum during the startup and endlag;");
+initWords("USpecial will now completely halt your momentum during the startup;");
+initWords("Changed angle to DSpec's final hit (60 > Sakurai) and buffed knockback (base: 6 > 75).");
+initSection("Nerfs");
+initWords("DTilt can't be enhanced anymore;");
+initWords("UAir's hurtbox has been edited an it's now much less disjointed;");
+initWords("DAir has smaller hitboxes;");
+initWords("FStrong has weaker armor (soft armor 13 > 6);");
+initWords("UStrong:");
+initWords_ext("It can't be enhanced anymore;", fa_left, c_white, 1, false);
+initWords_ext("Lower knockback scaling on the earlybox (1.15 > 1.1).", fa_left, c_white, 1, false);
+initWords("Enhanced DStrong has weaker armor (soft armor 13 > 6);");
+initWords("Parrying Geodude now should correctly cause extended parrystun on Golem;");
+initWords("FSpecial has more startup (16 > 18) and is slower at turning (14 > 20);");
+initWords("DSpecial:");
+initWords_ext("The multi-hits are now less active (4 > 2 frames each);", fa_left, c_white, 1, false);
+initWords_ext("Said multi-hits are also completely SDIable now;", fa_left, c_white, 1, false);
+initWords_ext("Said multi-hits's hitboxes are now all smaller and consistent size-wise, save for the scoop (also smaller) and the finisher.", fa_left, c_white, 1, false);
+initSection("Other");
+initWords("DTilt can't go off ledges anymore;");
+initWords("Reworked NAir's hitpause formula for the earlybox (base: 12 > 9.5, scaling: 1 > 0.9) and latebox (base: 10 > 8.5, scaling > 0.5 > 0.75);");
+initWords("Fixed a bug that made the sex kick hitbox for NAir appear during the latebox's window;");
+initWords("USpec:");
+initWords_ext("Reworked the hitpause formula for the second hitbox (base: 8 > 9);", fa_left, c_white, 1, false);
+initWords_ext("Changed the angle for the sourspot (361 > 70).", fa_left, c_white, 1, false);
+initWords("Changed DSpec's final hit's hitpause formula (base: 6 > 9.5, scaling: 0.75 > 0.8);");
 
 initPatch("1.2", "21/12/12");
 initHeader("Second Patch");

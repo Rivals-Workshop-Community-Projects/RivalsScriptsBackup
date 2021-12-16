@@ -248,6 +248,22 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.17", "12 December, 2021");
+
+initHeader("Buffs:");
+initSection("+ Fair base kb increased, 7 -> 8
++ Nspecial's Down-throw can no longer be teched
++ Uspecial's first hit does a little more KB to combo better
++ Dspecial can now truly be parried out of
++ Added a new alt
+");
+
+initHeader("Changes:");
+initSection("= All attacks should correctly set SDI and Drift back to 1
+");
+
+
+//
 initPatch("1.16", "23 November, 2021");
 
 initHeader("Buffs:");

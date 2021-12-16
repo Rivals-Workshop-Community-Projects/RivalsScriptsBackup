@@ -111,12 +111,15 @@ sprite_change_offset("fx_photonblast", 112, 154);
 
 sprite_change_offset("fx_accelblitz", 98, 70);
 sprite_change_offset("accelblitz_indicator", 16, 32);
+sprite_change_offset("artc_accelblitz_indicator", 16, 32);
 
 sprite_change_offset("fx_chasmburster", 32, 86);
 sprite_change_offset("fx_chasmshatter", 64, 126);
 sprite_change_offset("fx_chasmburster_placeholder", 32, 86);
 
 sprite_change_offset("fx_powersmash_ground", 80, 32);
+sprite_change_offset("artc_powersmash_mask", 80, 32);
+
 
 sprite_change_offset("fx_guardaura", 48, 48);
 sprite_change_offset("fx_homing_proj", 16, 16);

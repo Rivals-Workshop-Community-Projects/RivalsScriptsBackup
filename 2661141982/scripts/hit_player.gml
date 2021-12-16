@@ -13,7 +13,6 @@ else if my_hitboxID.attack == AT_DAIR
 }
 else if my_hitboxID.attack == AT_FSPECIAL and my_hitboxID.hbox_num < 5 and !hit_player_obj.clone
 {
-    print("fspec")
     hit_player_obj.x = lerp(hit_player_obj.x,x+(spr_dir*10),0.2)
     hit_player_obj.y = lerp(hit_player_obj.y,y,0.3)
 }
@@ -94,4 +93,11 @@ if (my_hitboxID.attack == AT_USPECIAL and my_hitboxID.hbox_num < 3) or my_hitbox
 
 var t=spawn_hit_fx(offx + (my_hitboxID.hit_effect_x*spr_dir), offy + my_hitboxID.hit_effect_y, spawn ? splashfx : small);
 t.depth = depth - 4
-if (my_hitboxID.attack == AT_NSPECIAL) t.draw_angle = 90
+if (my_hitboxID.attack == AT_NSPECIAL) 
+{
+    t.draw_angle = 90
+    if(my_hitboxID.sprite_index == sprite_get("nspecial_projfire"))
+    {
+        create_hitbox(AT_NSPECIAL, my_hitboxID.hbox_num+1,my_hitboxID.x-10*my_hitboxID.spr_dir,my_hitboxID.y);
+    }
+}

@@ -93,7 +93,7 @@ set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_EXTRA_2, 1, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_EXTRA_2, 1, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_EXTRA_2, 1, HG_SDI_MULTIPLIER, 1);
+set_hitbox_value(AT_EXTRA_2, 1, HG_SDI_MULTIPLIER, 0.01);
 set_hitbox_value(AT_EXTRA_2, 1, HG_PROJECTILE_PLASMA_SAFE, true);
 
 set_hitbox_value(AT_EXTRA_2, 2, HG_HITBOX_TYPE, 2);
@@ -129,7 +129,7 @@ set_hitbox_value(AT_EXTRA_2, 2, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_EXTRA_2, 2, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_EXTRA_2, 2, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_EXTRA_2, 2, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_EXTRA_2, 2, HG_SDI_MULTIPLIER, 1);
+set_hitbox_value(AT_EXTRA_2, 2, HG_SDI_MULTIPLIER, 0.01);
 set_hitbox_value(AT_EXTRA_2, 2, HG_PROJECTILE_PLASMA_SAFE, true);
 
 set_hitbox_value(AT_EXTRA_2, 3, HG_HITBOX_TYPE, 2);
@@ -165,7 +165,7 @@ set_hitbox_value(AT_EXTRA_2, 3, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_EXTRA_2, 3, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_EXTRA_2, 3, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_EXTRA_2, 3, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_EXTRA_2, 3, HG_SDI_MULTIPLIER, 1);
+set_hitbox_value(AT_EXTRA_2, 3, HG_SDI_MULTIPLIER, 0.01);
 set_hitbox_value(AT_EXTRA_2, 3, HG_PROJECTILE_PLASMA_SAFE, true);
 
 set_hitbox_value(AT_EXTRA_2, 4, HG_HITBOX_TYPE, 2);
@@ -201,7 +201,7 @@ set_hitbox_value(AT_EXTRA_2, 4, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_EXTRA_2, 4, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_EXTRA_2, 4, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_EXTRA_2, 4, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_EXTRA_2, 4, HG_SDI_MULTIPLIER, 1);
+set_hitbox_value(AT_EXTRA_2, 4, HG_SDI_MULTIPLIER, 0.01);
 set_hitbox_value(AT_EXTRA_2, 4, HG_PROJECTILE_PLASMA_SAFE, true);
 
 set_hitbox_value(AT_EXTRA_2, 5, HG_HITBOX_TYPE, 2);
@@ -237,5 +237,5 @@ set_hitbox_value(AT_EXTRA_2, 5, HG_PROJECTILE_UNBASHABLE, true);
 set_hitbox_value(AT_EXTRA_2, 5, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_EXTRA_2, 5, HG_EXTENDED_PARRY_STUN, 1);
 set_hitbox_value(AT_EXTRA_2, 5, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_EXTRA_2, 5, HG_SDI_MULTIPLIER, 1);
+set_hitbox_value(AT_EXTRA_2, 5, HG_SDI_MULTIPLIER, 0.01);
 set_hitbox_value(AT_EXTRA_2, 5, HG_PROJECTILE_PLASMA_SAFE, true);

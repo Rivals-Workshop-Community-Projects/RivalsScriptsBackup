@@ -47,6 +47,7 @@ set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, 1.05);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, sound_get("thud"));
+set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, 1);
 
 set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_TYPE, 2);
@@ -67,3 +68,4 @@ set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_SPRITE, sprite_get("spring"));
 set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_MASK, sprite_get("spring"));
 set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_UAIR, 2, HG_PROJECTILE_VSPEED, 6);
+set_hitbox_value(AT_UAIR, 2, HG_VISUAL_EFFECT, 1);

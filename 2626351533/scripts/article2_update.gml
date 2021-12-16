@@ -154,6 +154,7 @@ if (state == 3){
 	
 	if (state_timer == 60){
 		player_id.batarang_hitbox = create_hitbox(AT_NSPECIAL, 2, x, y);
+		player_id.batarang_hit = false;
 	}
 	
 	sprite_index = sprite_get("batarang");

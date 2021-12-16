@@ -32,10 +32,10 @@ set_window_value(AT_DAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);//this should be here, n
 
 set_num_hitboxes(AT_DAIR, 1);
 
-set_hitbox_value(AT_DAIR, 1, HG_HITBOX_TYPE, 2);// stationary projectile
+set_hitbox_value(AT_DAIR, 1, HG_HITBOX_TYPE, 1);// stationary projectile
 //set_hitbox_value(AT_DAIR, 1, HG_WINDOW_CREATION_FRAME, 1);
 set_hitbox_value(AT_DAIR, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_DAIR, 1, HG_LIFETIME, 6);
+set_hitbox_value(AT_DAIR, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_X, 0);
 set_hitbox_value(AT_DAIR, 1, HG_HITBOX_Y, 6);
 set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 6);
@@ -50,16 +50,16 @@ set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 270);
 //set_hitbox_value(AT_DAIR, 1, HG_EXTRA_CAMERA_SHAKE, 1);
 //set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 1);
-set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_DESTROY_EFFECT, blank);
+// set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_DESTROY_EFFECT, blank);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
-set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_ANIM_SPEED, .5);
-set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
-set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
-set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
-set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_PLASMA_SAFE, true);
-set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
-set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_PARRY_STUN, 1);
-set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_UNBASHABLE, 1);
+// set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+// set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_MASK, -1);
+// set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_ANIM_SPEED, .5);
+// set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+// set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+// set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
+// set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_PLASMA_SAFE, true);
+// set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+// set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_PARRY_STUN, 1);
+// set_hitbox_value(AT_DAIR, 1, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_PARTICLE_NUM, 1);

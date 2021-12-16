@@ -39,3 +39,4 @@ set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, 16);
 set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, sound_get("slam1"));
+set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 1);

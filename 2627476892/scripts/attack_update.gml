@@ -348,17 +348,28 @@ if(window == 1 && window_timer = 14){
     		}
     		if(bike_charge == 3){
     			window = 3;
-    			window_timer = 0;
+    			window_timer = 2;
     		}
     	}if(window == 2 && window_timer = 14){
     	if(bike_charge < 3){
     	window = 1;
     	window_timer = 2;
     	}
-    }if(window == 1 || window == 2){
-    	if(shield_pressed || jump_pressed || attack_pressed){
+    }if(window == 1 && window_timer > 6){
+    	if(jump_pressed || attack_pressed){
     		window = 3;
-    		window_timer = 0;
+    		window_timer = 2;
+    		}if(shield_pressed){
+    		sound_play(asset_get("sfx_frog_fspecial_cancel"));
+        		set_state(PS_PARRY_START);
+    	}
+    	}if(window == 2){
+    	if(jump_pressed || attack_pressed){
+    		window = 3;
+    		window_timer = 2;
+    		}if(shield_pressed){
+    		sound_play(asset_get("sfx_frog_fspecial_cancel"));
+        		set_state(PS_PARRY_START);
     	}
     }if(window == 3 && window_timer = 8){
     	sound_play(asset_get("sfx_frog_fspecial_cancel"));

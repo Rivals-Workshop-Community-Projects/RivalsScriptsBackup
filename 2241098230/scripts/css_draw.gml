@@ -5,7 +5,7 @@ patch_ver = "BETA";
 patch_day = "";
 patch_month = "";
  
-var num_alts = 16;
+var num_alts = 17;
 var alt_cur = get_player_color(player);
  
  
@@ -28,6 +28,7 @@ alt_name[12] = "Bowser";
 alt_name[13] = "Sylvanos";
 alt_name[14] = "Tauros";
 alt_name[15] = "Android 13";
+alt_name[16] = "Daora";
  
  
  

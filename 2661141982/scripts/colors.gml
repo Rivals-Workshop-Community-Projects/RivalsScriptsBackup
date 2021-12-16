@@ -139,13 +139,13 @@ set_color_profile_slot( 14, 3, 148, 216, 255 ); //Light
 set_color_profile_slot( 14, 4, 252, 238, 238 ); //Skin 2
 set_color_profile_slot( 14, 5, 116, 140, 184 ); //water
 
-// Dark Blue Moon
-set_color_profile_slot( 15, 0, 0, 39, 194 ); //Skin
-set_color_profile_slot( 15, 1, 0, 2, 150 ); //Fins
-set_color_profile_slot( 15, 2, 56, 159, 255 ); //Marks
-set_color_profile_slot( 15, 3, 255, 218, 97 ); //Light
-set_color_profile_slot( 15, 4, 240, 0, 208 ); //Skin 2
-set_color_profile_slot( 15, 5, 97, 255, 201 ); //water
+// fernet
+set_color_profile_slot( 15, 0, 235, 221, 188 ); //Skin
+set_color_profile_slot( 15, 1, 159, 0, 168 ); //Fins
+set_color_profile_slot( 15, 2, 159, 0, 168 ); //Marks
+set_color_profile_slot( 15, 3, 37, 214, 51 ); //Light
+set_color_profile_slot( 15, 4, 255, 212, 0 ); //Skin 2
+set_color_profile_slot( 15, 5, 255, 23, 177 ); //water
 
 // Inner Otaku
 set_color_profile_slot( 16, 0, 54, 54, 54 ); //Skin

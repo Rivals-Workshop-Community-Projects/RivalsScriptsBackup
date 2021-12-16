@@ -42,3 +42,5 @@ set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
+set_hitbox_value(AT_BAIR, 1, HG_SDI_MULTIPLIER, 1);
+set_hitbox_value(AT_BAIR, 1, HG_DRIFT_MULTIPLIER, 1);

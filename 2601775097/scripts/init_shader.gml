@@ -287,6 +287,10 @@ else
 	
 }
 
+//changes the early access alt to us the same color as her white-blue clouthes
+if ("is_8bit" in self && is_8bit) set_color_profile_slot_range(col_white, 150, 10, 12);
+else set_color_profile_slot_range(col_white, 13, 7, 15); //from colors.gml
+
 /*
 if (birthboy && pal_num == 14) 
 {

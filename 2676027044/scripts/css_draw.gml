@@ -269,13 +269,13 @@ shader_end();
 draw_set_font(1);
 draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
-draw_text_color(x + 4, y + 231, "v1.0.0", c_gray, c_gray, c_gray, c_gray, 1);
+draw_text_color(x + 4, y + 231, "v1.1.0", c_gray, c_gray, c_gray, c_gray, 1);
 
 // Date Display
 draw_set_font(asset_get("tinyFont"));
 draw_set_halign(fa_right);
 draw_set_valign(fa_bottom);
-draw_text_color(x + 218, y + 214, "December 7st, 2021", c_gray, c_gray, c_gray, c_gray, 1);
+draw_text_color(x + 218, y + 214, "December 16th, 2021", c_gray, c_gray, c_gray, c_gray, 1);
 
 // Initial Name	+ Rectangles
 //if (image_alpha > 0){

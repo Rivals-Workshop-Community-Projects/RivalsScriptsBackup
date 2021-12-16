@@ -1,6 +1,7 @@
 //B - Reversals
 if (attack == AT_NSPECIAL || attack == AT_JAB || attack == AT_UTILT ||attack == AT_NSPECIAL_2 || attack == AT_USPECIAL_2|| attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_DSPECIAL_2 ||attack == AT_USPECIAL){
-    trigger_b_reverse();
+    if(shotoTurnBuffer <= 0 )
+		trigger_b_reverse();
     can_fast_fall = false;
 }
 
@@ -9,8 +10,8 @@ if (attack == AT_NSPECIAL || attack == AT_JAB || attack == AT_UTILT ||attack == 
 //    can_move = true;
 //	can_jump = true;
 //}
-
 var no_hp = !hitpause;
+if(state_timer == 1) fx = -4;
 
 switch (attack)
 {
@@ -108,13 +109,32 @@ switch (attack)
 				create_hitbox(49,8,x,y);
 		}
 	break;
+	case AT_FSTRONG:
+		if(window == 2 && window_timer <= 1)
+		{
+			window_timer++;
+			if(fx == -4)
+				fx = spawn_hit_fx(x+50*spr_dir,y-25,splash_dair);
+			fx.depth = -999;
+		}
+		break;
 	case AT_USTRONG:
 		can_move = false;
 	    can_fast_fall = false;
 	break;
 	case AT_DAIR:
-		if (window != 2) can_fast_fall = false;//makes it so that you can hitfall this move
-		
+		if (window != 2) 
+			can_fast_fall = false;//makes it so that you can hitfall this move
+		else
+		{
+			if(window_timer <= 1)
+			{
+				window_timer++;
+				if(fx == -4)
+					fx = spawn_hit_fx(x,y+6,splash_dair);
+				fx.depth = -999;
+			}
+		}
         if (window == 1)
         {
             if (window_timer == 1) move_cooldown[AT_DAIR] = 40;
@@ -124,7 +144,7 @@ switch (attack)
 		move_cooldown[AT_NSPECIAL] = 30;
 	    can_wall_jump  = true;
 	
-		if(attack_pressed && lure_timer == 0 && (window == 1))
+		if(attack_pressed && lure_timer == 0 && (window == 1 && window_timer > 1))
 		{
 		    lure_timer = 180;
 		    set_attack(AT_NSPECIAL_2);
@@ -135,11 +155,13 @@ switch (attack)
 		}
 	break;
 	case AT_DATTACK:
-	if (get_gameplay_time() mod 4 == 0 and window < 4 and !hitpause)
-	{
-		var posy = round(random_func(4, 36, true)) - 18
-        spawn_hit_fx(x,y+vsp+posy-24,star)
-	}
+		if(has_hit && has_rune("F"))
+			can_jump = true;
+		if (get_gameplay_time() mod 4 == 0 and window < 4 and !hitpause)
+		{
+			var posy = round(random_func(4, 36, true)) - 18
+			spawn_hit_fx(x,y+vsp+posy-24,star)
+		}
 	break;
 	
 	case AT_NSPECIAL_2:
@@ -169,17 +191,17 @@ switch (attack)
 		break;
 		
 		case 2:
-		    if (attack_pressed && lure_timer == 0)
+		    if (attack_pressed && !was_parried && lure_timer == 0)
 			{
 			    lure_timer = 180;
-			    set_attack(AT_FSPECIAL_2);
 			    destroy_hitboxes();
 			    attack_end();
+			    set_attack(AT_FSPECIAL_2);
 			    can_fast_fall = false;
 			    can_move = false;
 			}
 			
-			if (special_pressed)
+			if (special_pressed && !was_parried)
 			{
 			    set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 8);
 			    window = 6;
@@ -330,7 +352,11 @@ switch (attack)
         }
     }
 	
-	
+	if(window >= 1 && window <= 3 && has_rune("J"))
+		super_armor = true;
+	else
+		super_armor = false;
+
 	switch (window)
 	{
 		case 1:
@@ -359,16 +385,26 @@ switch (attack)
 			    vsp = round(lerp(vsp, 0, 0.1));
 			    can_fast_fall = false;
 			    can_move = false;
+				clear_button_buffer(PC_SPECIAL_PRESSED);
 			}
 		break;
 		
 		case 5:
 		case 6:
-		if (get_training_cpu_action() != CPU_FIGHT && taunt_pressed) 
+		if(has_rune("B"))
 		{
-			sound_play(asset_get("sfx_absa_singlezap1"));
-			white_flash_timer = 10;
-			set_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE, 15);
+			can_jump = true;
+			can_strong = true;
+			can_ustrong = true;
+		}
+		if (get_training_cpu_action() != CPU_FIGHT && taunt_pressed || special_pressed && has_rune("L")) 
+		{
+			if(!special_pressed)
+			{
+				sound_play(asset_get("sfx_absa_singlezap1"));
+				white_flash_timer = 10;
+				set_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_HITPAUSE, 15);
+			}
 			set_attack(AT_EXTRA_1);
 		}
 		if (free) vsp *= .9;

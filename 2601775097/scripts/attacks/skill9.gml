@@ -70,7 +70,7 @@ set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, windowNum, AG_WINDOW_ANIM_FRAME_START, 8);
 
 
-set_num_hitboxes(atk, 2);
+set_num_hitboxes(atk, 1);
 
 hitboxNum = 1; //spear
 set_hitbox_value(atk, hitboxNum, HG_WINDOW, 99); //excluded from HG_PARENT_HITBOX
@@ -104,35 +104,36 @@ set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(atk, hitboxNum, HG_EXTENDED_PARRY_STUN, 1);
 
-hitboxNum ++; //burning spear
-set_hitbox_value(atk, hitboxNum, HG_WINDOW, 99); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, -1); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 2); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 55); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 2);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 16); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, -30); //excluded from HG_PARENT_HITBOX
-set_hitbox_value(atk, hitboxNum, HG_SHAPE, 0);
-set_hitbox_value(atk, hitboxNum, HG_WIDTH, 48);
-set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 16);
-set_hitbox_value(atk, hitboxNum, HG_ANGLE, 50);
-set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 6);
-set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.8);
-set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 10);
-set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.7);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_SPRITE, sprite_get("fx_lighthookshotburn_proj"));
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_fireblow2);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_DESTROY_EFFECT, fx_fireblow2);
-set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_burnconsume"));
-set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 2);
-set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 2);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_ANIM_SPEED, 0.2);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_HSPEED, 10);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_PARRY_STUN, 1);
-set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
-set_hitbox_value(atk, hitboxNum, HG_EXTENDED_PARRY_STUN, 1);
+//UNUSED - BURNING LIGHT HOOKSHOT
+//hitboxNum ++; //burning spear
+//set_hitbox_value(atk, hitboxNum, HG_WINDOW, 99); //excluded from HG_PARENT_HITBOX
+//set_hitbox_value(atk, hitboxNum, HG_HITBOX_GROUP, -1); //excluded from HG_PARENT_HITBOX
+//set_hitbox_value(atk, hitboxNum, HG_HITBOX_TYPE, 2); //excluded from HG_PARENT_HITBOX
+//set_hitbox_value(atk, hitboxNum, HG_LIFETIME, 55); //excluded from HG_PARENT_HITBOX
+//set_hitbox_value(atk, hitboxNum, HG_PRIORITY, 2);
+//set_hitbox_value(atk, hitboxNum, HG_HITBOX_X, 16); //excluded from HG_PARENT_HITBOX
+//set_hitbox_value(atk, hitboxNum, HG_HITBOX_Y, -30); //excluded from HG_PARENT_HITBOX
+//set_hitbox_value(atk, hitboxNum, HG_SHAPE, 0);
+//set_hitbox_value(atk, hitboxNum, HG_WIDTH, 48);
+//set_hitbox_value(atk, hitboxNum, HG_HEIGHT, 16);
+//set_hitbox_value(atk, hitboxNum, HG_ANGLE, 50);
+//set_hitbox_value(atk, hitboxNum, HG_DAMAGE, 6);
+//set_hitbox_value(atk, hitboxNum, HG_BASE_KNOCKBACK, 6);
+//set_hitbox_value(atk, hitboxNum, HG_KNOCKBACK_SCALING, 0.8);
+//set_hitbox_value(atk, hitboxNum, HG_BASE_HITPAUSE, 10);
+//set_hitbox_value(atk, hitboxNum, HG_HITPAUSE_SCALING, 0.7);
+//set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_SPRITE, sprite_get("fx_lighthookshotburn_proj"));
+//set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_MASK, -1);
+//set_hitbox_value(atk, hitboxNum, HG_VISUAL_EFFECT, fx_fireblow2);
+//set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_DESTROY_EFFECT, fx_fireblow2);
+//set_hitbox_value(atk, hitboxNum, HG_HIT_SFX, asset_get("sfx_burnconsume"));
+//set_hitbox_value(atk, hitboxNum, HG_HIT_PARTICLE_NUM, 2);
+//set_hitbox_value(atk, hitboxNum, HG_HITBOX_COLOR, 2);
+//set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_ANIM_SPEED, 0.2);
+//set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_HSPEED, 10);
+//set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_PARRY_STUN, 1);
+//set_hitbox_value(atk, hitboxNum, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+//set_hitbox_value(atk, hitboxNum, HG_EXTENDED_PARRY_STUN, 1);
 
 
 //munophone

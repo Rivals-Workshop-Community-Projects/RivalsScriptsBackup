@@ -57,6 +57,9 @@ if (attack == AT_SKILL2)
     else if (window > 4) spr_angle = 0;
 }
 
+//accel blitz makes bar invisible when he goes lightspeed but he can still be hit
+if (attack == AT_SKILL4 && (window >= 3 && window <= 4 || window == 5 && window_timer < 2)) sprite_index = sprite_get("empty");
+
 //ember fist draw logic
 if (attack == AT_SKILL8)
 {

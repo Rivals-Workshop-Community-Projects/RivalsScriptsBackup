@@ -50,6 +50,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("slicel"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_FSPECIAL, 1, HG_SDI_MULTIPLIER, 0.01);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, -1);
 
