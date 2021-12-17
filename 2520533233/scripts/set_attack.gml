@@ -10,5 +10,13 @@ if((attack_pressed and special_pressed  or di_input == 5 and special_pressed or 
     }
     attack = AT_EXTRA_1;
 }
+
+if(attack == AT_FSPECIAL ){
+    fspecial_jump_cancel = false;
+    if(free){
+        attack = AT_FSPECIAL_AIR;
+    }
+}
+
 //Muno Phone
-user_event(13);
+//user_event(13);

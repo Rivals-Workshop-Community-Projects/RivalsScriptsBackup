@@ -51,23 +51,23 @@ set_article_color_slot( 7, 251, 255, 36 ); //Smog Outline
 if (variable_instance_exists(id, "extra_col")){
 if (extra_col==2){//Nuzl Viola
 // shade, r, g, b, alpha
-set_character_color_slot( 0, 94, 67, 54 ); //Hoodie Pink
-set_character_color_slot( 1, 201, 143, 103 ); //Skin
-set_character_color_slot( 2, 179, 73, 36 ); //Hair
-set_character_color_slot( 3, 176, 68, 58 ); //Hoodie Purp
-set_character_color_slot( 4, 176, 68, 58 ); //Skirt
-set_character_color_slot( 5, 176, 68, 58 ); //Eyes/Socks
-set_character_color_slot( 6, 161, 71, 35 ); //Smog
-set_character_color_slot( 7, 209, 111, 73 ); //Smog Outline
+set_character_color_slot( 21, 0, 80, 57, 49 ); //Hoodie Pink
+set_character_color_slot( 21, 1, 218, 173, 154 ); //Skin
+set_character_color_slot( 21, 2, 154, 80, 71 ); //Hair
+set_character_color_slot( 21, 3, 173, 63, 62 ); //Hoodie Purp
+set_character_color_slot( 21, 4, 173, 63, 62 ); //Skirt
+set_character_color_slot( 21, 5, 62, 25, 21 ); //Eyes/Socks
+set_character_color_slot( 21, 6, 198, 162, 228 ); //Smog
+set_character_color_slot( 21, 7, 177, 87, 207 ); //Smog Outline
 
-set_article_color_slot( 0, 94, 67, 54 ); //Hoodie Pink
-set_article_color_slot( 1, 201, 143, 103 ); //Skin
-set_article_color_slot( 2, 179, 73, 36 ); //Hair
-set_article_color_slot( 3, 176, 68, 58 ); //Hoodie Purp
-set_article_color_slot( 4, 176, 68, 58 ); //Skirt
-set_article_color_slot( 5, 176, 68, 58 ); //Eyes/Socks
-set_article_color_slot( 6, 161, 71, 35 ); //Smog
-set_article_color_slot( 7, 209, 111, 73 ); //Smog Outline
+set_article_color_slot( 21, 0, 80, 57, 49 ); //Hoodie Pink
+set_article_color_slot( 21, 1, 218, 173, 154 ); //Skin
+set_article_color_slot( 21, 2, 154, 80, 71 ); //Hair
+set_article_color_slot( 21, 3, 173, 63, 62 ); //Hoodie Purp
+set_article_color_slot( 21, 4, 173, 63, 62 ); //Skirt
+set_article_color_slot( 21, 5, 62, 25, 21 ); //Eyes/Socks
+set_article_color_slot( 21, 6, 198, 162, 228 ); //Smog
+set_article_color_slot( 21, 7, 177, 87, 207 ); //Smog Outline
 }
 }
 

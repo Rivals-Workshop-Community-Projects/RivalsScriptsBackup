@@ -13,7 +13,7 @@ install_time = 0;
 end_dragon_install = false;
 play_theme = false;
 install_armor = 5;
-
+fspecial_jump_cancel = false;
 set_hit_particle_sprite(1, sprite_get("hfx_part_fire"));
 set_hit_particle_sprite(2, sprite_get("hfx_part_fire2"));
 

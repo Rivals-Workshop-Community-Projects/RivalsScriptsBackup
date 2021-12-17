@@ -170,7 +170,7 @@ switch rock_state{
 			hold_timer++;
 			if(hold_timer > 8){
 				with(oPlayer){
-					if(place_meeting(x, y+5, other) and !free and other.y >= y){
+					if(place_meeting(x, y+5, other) and !free and other.y >= y and state_cat != SC_HITSTUN){
 						free = true;
 						state = PS_PRATFALL;
 					}	

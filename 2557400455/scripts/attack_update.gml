@@ -104,7 +104,7 @@ switch attack {
                  if hsp > 0 {
                      hsp /= 1.1
                  }
-                 if window == 2 && hsp < -3.5 {
+                 if window == 2 && hsp < -4.5 {
                      create_hitbox(AT_FAIR,3,x,y)
                  }
              }
@@ -113,7 +113,7 @@ switch attack {
                  if hsp < 0 {
                      hsp /= 1.1
                  }
-                 if window == 2 && hsp > 3.5 {
+                 if window == 2 && hsp > 4.5 {
                      create_hitbox(AT_FAIR,3,x,y)
                  }
              }
@@ -150,11 +150,11 @@ switch attack {
              
              if window_timer == 0 or window_timer % 4 == 0 {
                  sound_play(sound_get("shot1"),false,noone,0.5)
-                 create_hitbox(AT_FAIR,1,x + 20*spr_dir,y - 26)
+                 create_hitbox(AT_FAIR,1,x + 30*spr_dir,y - 26)
              }
              
               if window_timer == 2 or window_timer % 2 == 0 {
-                 create_hitbox(AT_FAIR,2,x + 20*spr_dir,y - 26)
+                 create_hitbox(AT_FAIR,2,x + 30*spr_dir,y - 26)
              }
          }
              

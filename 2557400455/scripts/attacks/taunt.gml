@@ -28,7 +28,7 @@ set_hitbox_value(AT_TAUNT, 1, HG_DAMAGE, 1);
 set_hitbox_value(AT_TAUNT, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_TAUNT, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_TAUNT, 1, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_TAUNT, 1, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_TAUNT, 1, HG_BASE_KNOCKBACK, 2);
 set_hitbox_value(AT_TAUNT, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_TAUNT, 1, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_TAUNT, 1, HG_EXTRA_HITPAUSE, 0);

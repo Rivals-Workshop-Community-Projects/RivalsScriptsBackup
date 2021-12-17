@@ -20,7 +20,7 @@ set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FTILT, 3, AG_WINDOW_ANIM_FRAME_START, 1);
 
 set_window_value(AT_FTILT, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FTILT, 4, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTILT, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FTILT, 4, AG_WINDOW_HAS_WHIFFLAG, 7);
@@ -61,7 +61,7 @@ set_hitbox_value(AT_FTILT, 2, HG_IGNORES_PROJECTILES, true);
 set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
 set_hitbox_value(AT_FTILT, 2, HG_PROJECTILE_PLASMA_SAFE, true);
 set_hitbox_value(AT_FTILT, 2, HG_WINDOW, 99);
-set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 13);
+set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 80);
 set_hitbox_value(AT_FTILT, 2, HG_HEIGHT, 40);
 set_hitbox_value(AT_FTILT, 2, HG_PRIORITY, 1);

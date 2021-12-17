@@ -1,5 +1,10 @@
 ///
 
+if attack == AT_NSPECIAL && hbox_num == 3 {
+	create_hitbox(AT_TAUNT,2,x,y-30)
+}
+
+
 if attack == AT_FAIR or attack == AT_EXTRA_1  {
     
     vsp /= 1.06

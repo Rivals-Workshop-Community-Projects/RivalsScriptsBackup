@@ -1,4 +1,6 @@
+
 // EARTHQUAKE
+
 set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong"));
 set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_DSTRONG, AG_HAS_LANDING_LAG, 3);
@@ -30,7 +32,7 @@ set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 28);
+set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 22);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 6);
 //set_window_value(AT_DSTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, 10);

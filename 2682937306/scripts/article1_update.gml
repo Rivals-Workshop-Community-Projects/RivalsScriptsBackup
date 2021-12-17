@@ -124,10 +124,12 @@ switch (state){
 	sprite_index = sprite_get("nspecial_sandstorm_storm");
 	mask_index = sprite_get("nspecial_sandstorm_storm");
 	image_alpha = 0;
-	if ( x-450 > get_instance_x(asset_get("camera_obj")) || x+450 < get_instance_x(asset_get("camera_obj")) ){ x = x+10; }
-	if (place_meeting(x, y, player_id)){ player_id.buffup = true; } else { player_id.buffup = false; }
+	image_xscale = 0.2;
+	x = player_id.x - 110;
+	//if ( x-450 > get_instance_x(asset_get("camera_obj")) || x+450 < get_instance_x(asset_get("camera_obj")) ){ x = x+10; }
+	//if (place_meeting(x, y, player_id)){ player_id.buffup = true; }
 	//if (free == false && ((state_timer mod 5) == 0)){ create_hitbox(AT_DSTRONG, 4, x, y-19); }
-	if (state_timer > 250){ instance_destroy(); }
+	if (state_timer > 230){ instance_destroy(); }
 	break;
 	
 }

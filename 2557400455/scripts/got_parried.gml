@@ -14,3 +14,10 @@
     }
     
     move_cooldown[AT_USPECIAL_GROUND] = 22
+    
+    if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.type == 1 {
+        
+        parry_lag = 60
+        set_state(PS_PRATFALL)
+        
+    }

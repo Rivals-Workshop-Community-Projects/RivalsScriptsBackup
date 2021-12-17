@@ -13,6 +13,7 @@ var temp_y = y + 9;
 var num_alts = 16;
 var alt_cur = get_player_color(player);
 
+
 alt_name[0]  = "Default";
 alt_name[1]  = "Shiny";
 alt_name[2]  = "Lileep";

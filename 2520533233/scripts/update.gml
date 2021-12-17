@@ -21,7 +21,7 @@ enum ROCK{
     THROW
 }
 //Muno Phone -------------------------------------------------------------------
-user_event(14);
+//user_event(14);
 
 if(state == PS_SPAWN){
 	if(get_player_color(player) == 29 and down_pressed){
@@ -51,6 +51,18 @@ if(state == PS_SPAWN){
 	}
 }
 
+
+if(fspecial_jump_cancel and (state == PS_JUMPSQUAT or free)){
+	if(left_pressed or left_down){
+		spr_dir = -1;
+	} else if (right_pressed or right_down){
+		spr_dir = 1;
+	}
+	if(free){
+		fspecial_jump_cancel = false;
+	}
+}
+
 if(state == PS_WAVELAND){
 	sound_stop(air_dodge_sound);
 	//sound_stop(jump_sound);
@@ -63,7 +75,7 @@ if(state == PS_CROUCH){
 		hud_offset = -24;
 	}
 }
-
+/*
 if(phone_cheats[cheat_install] == 1){
 	if(!dragon_install){
 		tenshi_magic = tenshi_magic_max/2;
@@ -74,7 +86,7 @@ if(phone_cheats[cheat_install] == 1){
 		}
 		tenshi_magic = tenshi_magic_max + 300;
 	}
-}
+}*/
 //-----------------------------------Lightweight Mode---------------------------
 
 if(state == PS_SPAWN){

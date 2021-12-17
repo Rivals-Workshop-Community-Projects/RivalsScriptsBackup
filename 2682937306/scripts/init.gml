@@ -106,7 +106,7 @@ roll_back_active_frames         = 4;
 roll_back_recovery_frames       = 2;
 
 //Test knockback
-//knockback_spd = vsp;
+knockback_spd = vsp;
 
 //Tornado stuff
 tornado_id = noone;

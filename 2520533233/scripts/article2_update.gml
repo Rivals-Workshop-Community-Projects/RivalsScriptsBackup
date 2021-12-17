@@ -91,7 +91,7 @@ switch(fx_type){
 			
 			x = player_id.x + player_id.hsp;
 			y = player_id.y + player_id.vsp;
-			if(player_id.attack != AT_FSPECIAL or player_id.window > 2 or player_id.state == PS_PRATFALL){
+			if((player_id.attack != AT_FSPECIAL and player_id.attack != AT_FSPECIAL_AIR) or player_id.window > 2 or player_id.state == PS_PRATFALL or player_id.state == PS_RESPAWN){
 				instance_destroy(self);
 			}
 		}

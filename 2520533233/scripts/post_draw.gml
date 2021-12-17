@@ -35,4 +35,4 @@ if(dragon_install){
 }
 
 //Muno Phone
-user_event(12);
+//user_event(12);

@@ -110,8 +110,22 @@ switch(attack){
     	}
     	break;
     //------------------ FSPECIAL ---------------------    
+    case AT_FSPECIAL_AIR:
+    	can_fast_fall = false;
+    	if(window > 3 and !free){
+    		set_state(PS_LANDING_LAG);
+    		landing_lag = 6;
+    	} else if (!free){
+    		attack = AT_FSPECIAL;
+    	}
+    	
+    	if(window == 4 and abs(hsp) > 4){
+    		hsp = spr_dir*abs(hsp) *.97
+    	}
     case AT_FSPECIAL:
         can_wall_jump = true; //allow walljump at any time
+    	
+
     	
         if(window == 1){
             tenshi_fsp_charge = 0;
@@ -165,15 +179,15 @@ switch(attack){
                 
             } 
             if(!fspec_start and dragon_install){
-            	hsp = spr_dir*12;
-            	x += spr_dir*max((tenshi_fsp_charge/2.4), 10);
+            	hsp = spr_dir*17 + spr_dir * (tenshi_fsp_charge/5); ;
+            	//x += spr_dir*max((tenshi_fsp_charge/2.4), 10);
             } else {
             	if(fspec_start and !dragon_install){
-            		hsp = spr_dir*10;
-            		x += spr_dir * (tenshi_fsp_charge/2.4);
+            		hsp = spr_dir*12 + spr_dir * (tenshi_fsp_charge/5); 
+            		//x += spr_dir * (tenshi_fsp_charge/2.4);
             	} else {
-            		hsp = spr_dir*12;
-            		x += spr_dir * (tenshi_fsp_charge/2.4);
+            		hsp = spr_dir*17 + spr_dir * (tenshi_fsp_charge/5);
+            		//x += spr_dir * (tenshi_fsp_charge/2.4);
             	}
             }
         }
@@ -213,10 +227,24 @@ switch(attack){
         				hsp = spr_dir *8;
         			}
         			move_cooldown[AT_FSPECIAL] = 2;
+        			sound_stop(sound_get("uspec"))
         			sound_play(sound_get("uspec"))
         		}
         	}
         }
+		if(window == 4 and abs(hsp) > 9){
+    		hsp = spr_dir*abs(hsp) *.95;
+    	}
+    	
+    	 if(can_jump and jump_down){
+    	 	if(left_pressed){
+    	 		spr_dir = -1
+    	 	} else if (right_pressed){
+    	 		spr_dir = 1;
+    	 	}
+    		fspecial_jump_cancel = true;
+    	 }
+    	
         break;
     //------------------ USPECIAL --------------------- 
     case AT_USPECIAL:
@@ -1014,6 +1042,9 @@ switch(attack){
     	break;
     case AT_EXTRA_3:
     	if(window == 1){
+    		if(window_timer == 1){
+    			hsp = clamp(hsp, -6, 6)
+    		}
     		grabbed_player = noone;
     	}
     	if(has_hit_player){
@@ -1044,6 +1075,9 @@ switch(attack){
     	}
     	break;
     case AT_FSPECIAL_2:
+        if(window_timer == 1){
+    		hsp = clamp(hsp, -6, 6)
+    	}
     	if(window > 3 and window < 6){
     		can_fast_fall = false;
     	}

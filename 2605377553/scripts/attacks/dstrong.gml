@@ -57,6 +57,7 @@ set_window_value(AT_DSTRONG, 7, AG_WINDOW_SFX, sound_get("elli_chains"));
 set_window_value(AT_DSTRONG, 9, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_DSTRONG, 9, AG_WINDOW_ANIM_FRAME_START, 20);
 set_window_value(AT_DSTRONG, 9, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_DSTRONG, 9, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 
 set_num_hitboxes(AT_DSTRONG, 8);

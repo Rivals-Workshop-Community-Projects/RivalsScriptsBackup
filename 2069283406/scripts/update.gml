@@ -1,6 +1,6 @@
 ///
 
-if state == PS_PRATFALL or state == PS_PRATLAND {
+if state == PS_PRATFALL or state == PS_PRATLAND or (!free && state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) {
 	canceltime = 0
 }
 
