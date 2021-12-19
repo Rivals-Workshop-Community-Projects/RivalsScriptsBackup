@@ -37,12 +37,15 @@ or my_hitboxID.sound_effect == sound_get("slice3")) and my_hitboxID.damage > 1 {
 		if karmatimer == 0 and soultimer == 0 { 
 		hit_player_obj.hitstop += floor(hitstop/2) + 10
 		} else {
-		hit_player_obj.hitstop += floor(hitstop/2)	
+		hit_player_obj.hitstop += floor(hitstop/2) + 4
 		}
 		
 		with hit_player_obj {
         	take_damage(player,-1, floor( (other.my_hitboxID.damage*0.5)) )
         }
+        
+        
+        
 
 	    sound_play(sound_get("strong3"),false,noone,0.6,0.9 + random_func(1,20,true)/30)	
 	}
@@ -97,7 +100,11 @@ if my_hitboxID.sound_effect != sound_get("slice1") && my_hitboxID.sound_effect !
     	spawn_hit_fx( hit_player_obj.x + random_func(3, 40, true)*spr_dir, hit_player_obj.y - 50 + random_func(1, 10, true), shit6 )
      }
      
-		
+		if attack == AT_DAIR && my_hitboxID.kb_angle = 270 {
+        hitstop += 8
+        hit_player_obj.hitstop += 8
+        }
+        
 		sound_play(sound_get("strong3"),false,noone,0.7,0.6 + random_func(1,10,true)/30)
 	}
 }

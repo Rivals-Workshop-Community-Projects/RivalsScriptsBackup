@@ -309,29 +309,31 @@ if attack == AT_FSPECIAL {
 	}
 	
 	if has_hit_player && window == 4 && !hitpause{
-		window_timer += 0.6
+		window_timer += 0.4
 	}
+	if window == 3 {
 	move_cooldown[AT_FSPECIAL] = 999 ;
 	move_cooldown[AT_USPECIAL] = 999 ;
+	}
 }
 
 if attack == AT_NSPECIAL {
 
 	
-	if window == 1 && window_timer <= 5 {
-		if left_down && !right_down {
-			spr_dir = -1
-		}
-		if right_down && !left_down {
-			spr_dir = 1
-		}
+	if state_timer <= 5 {
+		
+		if right_down - left_down != 0 spr_dir = right_down - left_down
+
+		
 	}
+	
 	can_move = false
 	can_fast_fall = false
 		
-	if window == 1  && !hitpause && nshit < 3 && !free{
-		x -= (12 - window_timer)/2 * spr_dir
+	if window == 1 && !hitpause && nshit < 3 && !free{
+		//x -= (12 - window_timer)/2 * spr_dir
 	}
+	
 	if window != 1 && free {
 		vsp/= 1.5
 	}
@@ -341,6 +343,7 @@ if attack == AT_NSPECIAL {
 				move_cooldown[AT_NSPECIAL] = 0;
 		}
 	}
+	
 	if window > 2 && has_hit && !hitpause {
 		window_timer += 0.4
 	}
@@ -495,11 +498,13 @@ if attack == AT_USPECIAL {
 	}
 	
 	if has_hit_player && window == 4 && !hitpause{
-		window_timer += 0.6
+		window_timer += 0.2
 	}
 	
+	if window == 3 {
 	move_cooldown[AT_FSPECIAL] = 999 ;
 	move_cooldown[AT_USPECIAL] = 999 ;
+	}
 }
 
 if attack == AT_DSPECIAL {

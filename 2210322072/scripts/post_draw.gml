@@ -1,5 +1,10 @@
 shader_start();
 
+if 	move_cooldown[AT_FSPECIAL] > 30 
+	or move_cooldown[AT_USPECIAL] > 30 {
+		 draw_sprite_ext(sprite_get("nodash"), state_timer/2 , x - 50 , y - 12  , 2, 2, 0 , -1 , 1 );
+	}
+	
 if nshit > 3 {
      gpu_set_blendmode(bm_add);
         draw_sprite_ext(sprite_index, image_index , x , y - (get_gameplay_time() % 10)/2  , spr_dir*1, 1, 0 , -1 , 0.5 - (get_gameplay_time() % 10/30));

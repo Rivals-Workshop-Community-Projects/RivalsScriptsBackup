@@ -297,6 +297,15 @@ initWords("~ Hitpause on various attacks has been decreased for better gamefeel"
 initWords("~ New sound effects from Smash Ultimate have been added, including but not limited to a spike sound for DAir and a sourspot sound for BAir");
 initSection("Special thanks to Vertyx for these quality of life changes :)");
 
+initPatch("1.5", "18 December, 2021");
+initHeader("Aerials");
+initWords("- Most of their startup vsp has been halved to reduce any additional");
+initHeader("Electric Sweetspots");
+initWords("+ All 20 x 20 -> 26 x 26");
+initHeader("Misc.");
+initWords("+ NSpecial last hit bkb 8.5 -> 9");
+initWords("+ UStrong Sourspot bkb hit bkb 8 -> 8.5");
+
 initPatch("About Tapu Koko", "");
 initHeader("Created by");
 initSection("TheSmashWaffle");

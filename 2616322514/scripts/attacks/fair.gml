@@ -12,7 +12,7 @@ set_hitbox_value(AT_FAIR, 2, HG_MUNO_HITBOX_MISC, "Creates electric terrain or s
 set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FAIR, 1, AG_WINDOW_VSPEED, -1);
+set_window_value(AT_FAIR, 1, AG_WINDOW_VSPEED, -.5);
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
 set_window_value(AT_FAIR, 1, AG_WINDOW_SFX_FRAME, 11);
 
@@ -53,8 +53,8 @@ set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 4);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_Y, -34);
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 58);
-set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 20);
-set_hitbox_value(AT_FAIR, 2, HG_HEIGHT, 20);
+set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 26);
+set_hitbox_value(AT_FAIR, 2, HG_HEIGHT, 26);
 set_hitbox_value(AT_FAIR, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_FAIR, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 8);
