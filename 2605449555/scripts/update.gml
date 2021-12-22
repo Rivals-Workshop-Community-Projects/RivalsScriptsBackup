@@ -12,12 +12,25 @@ if (state == PS_HITSTUN) {
 
 // Up Special Uses
 
-if (CannUSpcUses == 0) {
-    move_cooldown[AT_USPECIAL] = 6;
-}
+//if (CannUSpcUses == 0) {
+//    move_cooldown[AT_USPECIAL] = 6;
+//}
 
 if (state == PS_HITSTUN || state == PS_WALL_JUMP || free == false) {
+	CannTpUsed = false;
     CannUSpcUses = 1;
+    
+}
+
+if (state == PS_HITSTUN && attack == AT_DSPECIAL) {
+	damage_scaling = 1;
+	with (oPlayer) {
+    	if (CannOppFSpecialHit == true && id != other.id) {
+	        visible = true;
+	        invincible = false;
+    	}
+    	
+    }
 }
 
 // Neutral Special Power Timer
@@ -27,30 +40,28 @@ if (state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) {
     CannUSpcCharging = false;
 }
 
-// Neutral Special Heat Check
-
-/*if (HeatLevel == 0 &&) {
-    move_cooldown[AT_NSPECIAL] = 6;
-    
-    if (special_pressed && joy_pad_idle) {
-        if (CannNSpcNoHeatSoundDelay == false) {
-            sound_play(sound_get("error"));
-        }
-        CannNSpcNoHeatSoundDelay = true;
-    } else {
-        CannNSpcNoHeatSoundDelay = false;
-    }
-}*/
-
 // Neutral Special Cannon Ball Active
 
 if (CannCannonBallActive == true) {
     move_cooldown[AT_NSPECIAL] = 6;
 }
 
+// NSpecial Saving Charge
+
+if (CannNSpcCharge > 0 && state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) {
+	CannStoredNSpecialAmt = CannNSpcCharge;
+}
+
+// Bair Hsp Reset
+
+if (CannBairHasYeet == true && free == false) {
+	CannBairHasYeet = false;
+	//sound_play(asset_get("sfx_ell_steam_hit"));
+}
+
 // Forward Special Grab Stuff
 
-if (free == false || state == PS_HITSTUN) {
+if (free == false || state == PS_HITSTUN || state == PS_WALL_JUMP) {
     CannFSpcUsed = false;
 }
 
@@ -65,9 +76,9 @@ if (CannFSpcUsed == true) {
 
 // No Super Armor Outside of Uspecial
 
-if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND && attack != AT_USPECIAL) {
-	super_armor = false;
-}
+//if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND && attack != AT_USPECIAL) {
+//	super_armor = false;
+//}
 
 // Strong Charging
 
@@ -101,110 +112,117 @@ if (state == PS_PARRY) {
 
 // Stop When Parried
 
-if (state == PS_PRATLAND && free == false && CannFspecialPrat == false) {
-	hsp = 0;
-}
+//if (state == PS_PRATLAND && free == false && CannFspecialPrat == false) {
+//	hsp = 0;
+//}
 
 if (CannFspecialPrat == true && free == false && state != PS_PRATLAND) {
 	CannFspecialPrat = false;
 }
 
-// Heat Meter Stat Changing
+// Teleport to Cannonball
 
-if (HeatLevel == 0 || HeatLevel == 1) {
-    walk_speed = 2.5;
-    walk_accel = 0.15;
-    initial_dash_speed = 4.25;
-    dash_speed = 3.5;
-    dash_turn_accel = 1;
-    
-    leave_ground_max = 6.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
-    max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
-    air_max_speed = 5.5; //the maximum hsp you can accelerate to when in a normal aerial state
-    jump_change = 2; //maximum hsp when double jumping. If already going faster, it will not slow you down
-    air_accel = .15;
-    
-    land_time = 4; //normal landing frames
-    prat_land_time = 3;
-    wave_land_time = 8;
-    wave_land_adj = 1.3; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-    wave_friction = 0.6; //grounded deceleration when wavelanding
-} else if (HeatLevel == 2 || HeatLevel == 3) {
-    walk_speed = 2.75;
-    walk_accel = 0.165;
+if (state != PS_HITSTUN && state != PS_ATTACK_GROUND && state != PS_ATTACK_GROUND && state != PS_TECH_GROUND && state != PS_TECH_BACKWARD && state != PS_TECH_FORWARD && state != PS_PARRY_START && state != PS_PARRY && state != PS_ROLL_BACKWARD && state != PS_ROLL_FORWARD && state != PS_PRATLAND && state != PS_ATTACK_AIR && state != PS_WALL_TECH && state != PS_AIR_DODGE && state != PS_PRATFALL) {
+	CannTeleportable = true;
+} else {
+	CannTeleportable = false;
+}
+
+
+
+// Heat Meter Stat Changing (now not used)
+
+/*if (HeatLevel == 0 || HeatLevel == 1) {
+	walk_speed = 2.75;
+    walk_accel = 0.16;
     initial_dash_speed = 5.3;
     dash_speed = 4.45;
-    dash_turn_accel = 1.12;
+    dash_turn_accel = 1.13;
     
-    leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-    max_jump_hsp = 6.4; //the maximum hsp you can have when jumping from the ground
-    air_max_speed = 5.8; //the maximum hsp you can accelerate to when in a normal aerial state
-    jump_change = 2.4; //maximum hsp when double jumping. If already going faster, it will not slow you down
-    air_accel = .18;
+    leave_ground_max = 7; 
+    max_jump_hsp = 6.25; 
+    air_max_speed = 5.7; 
+    jump_change = 2.5; 
+    air_accel = .19;
     
-    wave_land_adj = 1.44; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-    wave_friction = 0.36; //grounded deceleration when wavelanding
-} else if (HeatLevel == 4 || HeatLevel == 5) {
-    walk_speed = 3;
-    walk_accel = 0.18;
-    initial_dash_speed = 6.35;
-    dash_speed = 5.4;
-    dash_turn_accel = 1.24;
+    wave_land_adj = 1.45; 
+    wave_friction = 0.35; 
+} else if (HeatLevel == 2 || HeatLevel == 3) {
+    walk_speed = 2.90;
+    walk_accel = 0.17;
+    initial_dash_speed = 5.93;
+    dash_speed = 5.02;
+    dash_turn_accel = 1.20;
     
-    leave_ground_max = 7.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
-    max_jump_hsp = 6.8; //the maximum hsp you can have when jumping from the ground
-    air_max_speed = 6.1; //the maximum hsp you can accelerate to when in a normal aerial state
-    jump_change = 2.8; //maximum hsp when double jumping. If already going faster, it will not slow you down
+    leave_ground_max = 7.3;
+    max_jump_hsp = 6.55;
+    air_max_speed = 5.9;
+    jump_change = 2.7;
     air_accel = .21;
     
-    wave_land_adj = 1.58; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-    wave_friction = 0.12; //grounded deceleration when wavelanding
+    wave_land_adj = 1.53;
+    wave_friction = 0.28; 
+} else if (HeatLevel == 4 || HeatLevel == 5) {
+    walk_speed = 3.05;
+    walk_accel = 0.18;
+    initial_dash_speed = 6.56;
+    dash_speed = 5.59;
+    dash_turn_accel = 1.27;
+    
+    leave_ground_max = 7.6; 
+    max_jump_hsp = 6.85;
+    air_max_speed = 6.1;
+    jump_change = 2.9; 
+    air_accel = .23;
+    
+    wave_land_adj = 1.61;
+    wave_friction = 0.21; 
 } else if (HeatLevel == 6 || HeatLevel == 7) {
-    walk_speed = 3.25;
-    walk_accel = 0.195;
-    initial_dash_speed = 7.4;
-    dash_speed = 6.35;
-    dash_turn_accel = 1.36;
+    walk_speed = 3.20;
+    walk_accel = 0.19;
+    initial_dash_speed = 7.19;
+    dash_speed = 6.16;
+    dash_turn_accel = 1.34;
     
-    leave_ground_max = 8; //the maximum hsp you can have when you go from grounded to aerial without jumping
-    max_jump_hsp = 7.2; //the maximum hsp you can have when jumping from the ground
-    air_max_speed = 6.4; //the maximum hsp you can accelerate to when in a normal aerial state
-    jump_change = 3.2; //maximum hsp when double jumping. If already going faster, it will not slow you down
-    air_accel = .24;
+    leave_ground_max = 7.9; 
+    max_jump_hsp = 7.15;
+    air_max_speed = 6.3;
+    jump_change = 3.1; 
+    air_accel = .25;
     
-    wave_land_adj = 1.72; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-    wave_friction = 0; //grounded deceleration when wavelanding
+    wave_land_adj = 1.69;
+    wave_friction = 0.14; 
 } else if (HeatLevel == 8 || HeatLevel == 9) {
+	walk_speed = 3.35;
+	walk_accel = 0.20;
+	initial_dash_speed = 7.82;
+	dash_speed = 6.73;
+	dash_turn_accel = 1.41;
+	
+	leave_ground_max = 8.2; 
+	max_jump_hsp = 7.45;
+	air_max_speed = 6.5;
+	jump_change = 3.3; 
+	air_accel = .27;
+	
+	wave_land_adj = 1.77;
+	wave_friction = 0.07; 
+} else if (HeatLevel >= 10) {
     walk_speed = 3.5;
     walk_accel = 0.21;
     initial_dash_speed = 8.45;
     dash_speed = 7.3;
     dash_turn_accel = 1.48;
     
-    leave_ground_max = 8.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
-    max_jump_hsp = 7.6; //the maximum hsp you can have when jumping from the ground
-    air_max_speed = 6.7; //the maximum hsp you can accelerate to when in a normal aerial state
-    jump_change = 3.6; //maximum hsp when double jumping. If already going faster, it will not slow you down
-    air_accel = .27;
+    leave_ground_max = 8.5; 
+    max_jump_hsp = 7.75; 
+    air_max_speed = 6.7;
+    jump_change = 3.5; 
+    air_accel = .29;
     
-    wave_land_adj = 1.86; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-    wave_friction = 0; //grounded deceleration when wavelanding
-} else if (HeatLevel >= 10) {
-    walk_speed = 3.75;
-    walk_accel = 0.225;
-    initial_dash_speed = 9.5;
-    dash_speed = 8.25;
-    dash_turn_accel = 1.6;
-    
-    leave_ground_max = 9; //the maximum hsp you can have when you go from grounded to aerial without jumping
-    max_jump_hsp = 8; //the maximum hsp you can have when jumping from the ground
-    air_max_speed = 7; //the maximum hsp you can accelerate to when in a normal aerial state
-    jump_change = 4; //maximum hsp when double jumping. If already going faster, it will not slow you down
-    air_accel = .3;
-    
-    wave_land_adj = 2; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-    wave_friction = 0; //grounded deceleration when wavelanding
-}
+    wave_land_adj = 1.85; 
+    wave_friction = 0; 
+}*/
 
 // Heat Glow Anim
 
@@ -239,39 +257,3 @@ if ((state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) || (attack != AT_NSPEC
 }
 
 
-/*
-
-// Heat Fuse Timer
-
-if (HeatLevel >= 10) {
-    if (CannUSpcCharging = false) {
-        if (FuseTimer <= 15) {
-            if (FuseCounter >= 60) {
-                FuseTimer += 1;
-                FuseCounter = 0;
-            }
-            FuseCounter += 1;
-        } else {
-            FuseTimer = 1;
-            FuseCounter = 0;
-            HeatLevel = 0;
-            CannExploded = true;
-        }
-    }
-}*/
-
-// Heat Lower Anim
-
-/*if (CannDeath == true) {
-    if (HeatLowerAnim > HeatLevel) {
-        if (HeatLowerAnimCounter >= 3) {
-            HeatLowerAnim -= 1;
-            HeatLowerAnimCounter = 0;
-        }
-        HeatLowerAnimCounter += 1;
-    } else {
-        CannDeath = false;
-        HeatLowerAnim = 9;
-        
-    }
-}

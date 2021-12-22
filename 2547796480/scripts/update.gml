@@ -201,7 +201,7 @@ if ANtimeslow > 1 {
     	spawn_hit_fx(other.x - 10 + random_func(1,20,true),other.y - 50 + random_func(2,20,true), kFinal)
     	spawn_hit_fx(other.x - 10 + random_func(3,20,true),other.y - 50 + random_func(4,20,true), 305)
     	}	
-    	take_damage(player,-1,2)
+    	take_damage(player,-1,1)
     	shake_camera(4,4)
 	   
 	}
@@ -213,7 +213,7 @@ if ANtimeslow > 1 {
     	spawn_hit_fx(other.x - 10 + random_func(1,20,true),other.y - 50 + random_func(2,20,true), kFinal)
     	spawn_hit_fx(other.x - 10 + random_func(3,20,true),other.y - 50 + random_func(4,20,true), 305)
     	}	
-    	take_damage(player,-1,2)
+    	take_damage(player,-1,1)
     	shake_camera(4,4)
 	}
 	

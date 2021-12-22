@@ -14,4 +14,10 @@ sprite_change_offset("z_bg2", 320/2, 318/2);
 sprite_change_offset("z_bg1", 736/2, 512/2);
 sprite_change_offset("x_bg1", 736/2, 512/2);
 
+sprite_change_offset("cometbg", 626/2, 352/2);
+sprite_change_offset("cometline", 222, 0);
+sprite_change_offset("cometmain", 99, 162);
+sprite_change_offset("cometground", 572/2, 216/2);
+sprite_change_offset("cometmoon", 320/2, 318/2);
+
 sprite_change_offset("radio", 12, 19);

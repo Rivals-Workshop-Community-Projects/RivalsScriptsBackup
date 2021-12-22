@@ -30,11 +30,48 @@ if attack == AT_FSPECIAL || attack == AT_DSPECIAL_AIR {
 	can_wall_jump = true;
 }
 
-if burst = 1 && (((attack == AT_FSPECIAL || (attack == AT_NSPECIAL)) && has_hit)) {
+if burst = 1 && (((attack == AT_FSPECIAL || (attack == AT_NSPECIAL || (attack == AT_USPECIAL))) && has_hit)) {
 	usingspecial = true;
 	burststop = 240;
-} 
+}
 
+
+if !free {
+if (attack == AT_DSPECIAL && window == 2 && window_timer == 6 && state == PS_ATTACK_GROUND) 
+|| (attack == AT_DSPECIAL_AIR && window == 4 && window_timer == 6 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))
+if burst = 0 {
+    
+   var frontx = x + (spr_dir * 80);
+   var backx = x - (spr_dir * 50);
+  
+   //landed: try finding an edge
+            var depth_check = 5;
+//            var length_check = 50;
+            //landed on leftmost side?
+            left_test = (noone == collision_line(frontx, y, frontx, y+depth_check, 
+                                      asset_get("par_block"), true, true))
+                         && (noone == collision_line(frontx, y, frontx, y+depth_check, 
+                                      asset_get("par_jumpthrough"), true, true));
+                                          
+            //landed on rightmost side?
+            right_test = (noone == collision_line(backx, y, backx, y+depth_check, 
+                                       asset_get("par_block"), true, true))
+                          && (noone == collision_line(backx, y, backx, y+depth_check, 
+                                       asset_get("par_jumpthrough"), true, true));
+
+
+
+if (!left_test) {
+    var hbox = create_hitbox( AT_DSPECIAL, 4, frontx, y - 32);
+   spikehitboxleft = true;
+}
+
+if (!right_test) {
+    var hbox = create_hitbox( AT_DSPECIAL, 4, backx, y - 32);
+    hbox.spr_dir = burst_dir;
+}
+}
+}
 if get_player_color( player ) == 17 {
 	if attack == AT_TAUNT && window == 1 && window_timer == 1 {
 		set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("jordan"));
@@ -80,7 +117,7 @@ if burst = 1 {
 }
 
 
-if (burst = 1 && (usingspecial = true && (attack == AT_NSPECIAL && window == 6) || (attack == AT_FSPECIAL && window == 4)) || state == PS_HITSTUN) {
+if (burst = 1 && (usingspecial = true && (attack == AT_NSPECIAL && window == 6) || (attack == AT_FSPECIAL && window == 4) || attack == AT_USPECIAL && (window == 5 || window == 6)) || state == PS_HITSTUN) {
 	usingspecial = false;
 	cooldownstart = true;
 }
@@ -351,7 +388,7 @@ if attack == AT_USPECIAL {
 if attack == AT_USPECIAL {
 	if window == 2 && window_timer > 8  {
 			if shield_down {
-				window = 7;
+				window = 8;
 				window_timer = 0;
 		} 
 }
@@ -378,70 +415,7 @@ if attack == AT_DSPECIAL_AIR && window == 2 && window_timer > 12 {
 		djumps = 0;
 }
 
-if ((attack == AT_DSPECIAL && window == 2 && window_timer == 6) 
-|| (attack == AT_DSPECIAL_AIR && window == 4 && window_timer == 6)){
-	if burst = 0 && spikehitboxright = true {
-	    create_hitbox( AT_DSPECIAL, 2, x, y - 40 );
-		spikehitboxright = false;	
-} else if burst = 1 && burstspikehitboxright = true {
-	if numspikesright = 1 {
-			set_hitbox_value(AT_DSPECIAL, 4, HG_WIDTH, numspikesright * (50))
-	set_hitbox_value(AT_DSPECIAL, 4, HG_HITBOX_X, ((numspikesright * 30) + 40))
-		    create_hitbox( AT_DSPECIAL, 4, x, y - 40 );
-		burstspikehitboxright = false;
-		numspikesright = 0;
-	}	else if numspikesright = 2 {
-			set_hitbox_value(AT_DSPECIAL, 4, HG_WIDTH, numspikesright * (50))
-	set_hitbox_value(AT_DSPECIAL, 4, HG_HITBOX_X, ((numspikesright * 30) + 36))
-		    create_hitbox( AT_DSPECIAL, 4, x, y - 40 );
-		burstspikehitboxright = false;
-		numspikesright = 0;
-	}	else if numspikesright > 2 && numspikesright < 7{
-	set_hitbox_value(AT_DSPECIAL, 4, HG_WIDTH, numspikesright * (50))
-	set_hitbox_value(AT_DSPECIAL, 4, HG_HITBOX_X, ((numspikesright * 30) + numspikesright * 5))
-		    create_hitbox( AT_DSPECIAL, 4, x, y - 40 );
-		burstspikehitboxright = false;
-		numspikesright = 0;
-	}	else if numspikesright > 6 {
-	set_hitbox_value(AT_DSPECIAL, 4, HG_WIDTH, numspikesright * (50))
-	set_hitbox_value(AT_DSPECIAL, 4, HG_HITBOX_X, ((numspikesright * 30) + numspikesright * 1))
-		    create_hitbox( AT_DSPECIAL, 4, x, y - 40 );
-		burstspikehitboxright = false;
-		numspikesright = 0;
-}
-}
-}
 
-
-if ((attack == AT_DSPECIAL && window == 2 && window_timer == 6) 
-|| (attack == AT_DSPECIAL_AIR && window == 4 && window_timer == 6)) {
-	if burst = 0 && spikehitboxleft = true {
-	    create_hitbox( AT_DSPECIAL, 3, x, y - 40 );
-	    spikehitboxleft = false;
-} else if burst = 1 && burstspikehitboxleft = true {
-	if numspikesleft < 3 {
-	set_hitbox_value(AT_DSPECIAL, 5, HG_WIDTH, numspikesleft * (-50))
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HITBOX_X, ((numspikesleft * -20) + numspikesleft * -12))
-		    create_hitbox( AT_DSPECIAL, 5, x, y - 40 );
-		burstspikehitboxleft = false;
-		numspikesleft = 0;
-	} else if numspikesleft > 2 && numspikesleft < 6 {
-	set_hitbox_value(AT_DSPECIAL, 5, HG_WIDTH, numspikesleft * (-50))
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HITBOX_X, ((numspikesleft * -28) ))
-		    create_hitbox( AT_DSPECIAL, 5, x, y - 40 );
-		burstspikehitboxleft = false;
-		numspikesleft = 0;
-	
-	} else if numspikesleft > 6 {
-	set_hitbox_value(AT_DSPECIAL, 5, HG_WIDTH, numspikesleft * (-50))
-	set_hitbox_value(AT_DSPECIAL, 5, HG_HITBOX_X, ((numspikesleft * -28) + numspikesleft * 1))
-		    create_hitbox( AT_DSPECIAL, 5, x, y - 40 );
-		burstspikehitboxleft = false;
-		numspikesleft = 0;
-	
-	}
-}
-}
 
 if (attack = AT_DSPECIAL_2)
 {

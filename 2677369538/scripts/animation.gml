@@ -10,14 +10,14 @@ if (state == PS_ATTACK_GROUND && attack == AT_USTRONG){
 }
 
 if (attack == AT_FSPECIAL){
-	if (state == PS_ATTACK_AIR){
-		if (window == 5){
+	if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
+		if (window == 4 || window == 5){
 			if (which_bash == 1 && spin_hit == false){
 				sprite_index = sprite_get("fspecial");
 				hurtboxID.sprite_index = sprite_get("fspecial_hurt");
 				image_index = 9;
 			}
-			if (which_bash == 1){
+			if (which_bash == 1 && spin_hit != false){
 				sprite_index = sprite_get("dair");
 				hurtboxID.sprite_index = sprite_get("dair_hurt");
 				image_index = 5;
@@ -25,7 +25,7 @@ if (attack == AT_FSPECIAL){
 			if (which_bash == 2){
 				sprite_index = sprite_get("fspecial_spin");
 				hurtboxID.sprite_index = sprite_get("fspecial_spin_hurt");
-				image_index = 1;
+				image_index = floor(image_number*state_timer/(image_number*3));;
 			}
 		}
 		if (window == 6){ 

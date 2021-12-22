@@ -31,9 +31,9 @@ if (attack == AT_JAB) {
         set_hitbox_value(AT_JAB, 1, HG_ANGLE, 45);
     }
     
-    if (hsp > 2.25) {
+    if (hsp > 4) {
         set_hitbox_value(AT_JAB, 1, HG_BASE_KNOCKBACK, hsp);
-    } else if (hsp < -2.25) {
+    } else if (hsp < -4) {
         set_hitbox_value(AT_JAB, 1, HG_BASE_KNOCKBACK, hsp * -1);
     } else {
         set_hitbox_value(AT_JAB, 1, HG_BASE_KNOCKBACK, 4);
@@ -47,42 +47,9 @@ if (attack == AT_JAB) {
 }
 if (attack == AT_DTILT) {
     if (window == 1 && window_timer == 1) {
-        var DTiltMaxSpeed = HeatLevel + 5;
-        if (hsp >= 4) {
-            var DTiltHspTest = hsp + (6 * spr_dir);
-            if (DTiltHspTest <= DTiltMaxSpeed) {
-                hsp = DTiltHspTest;
-            } else {
-                hsp = DTiltMaxSpeed * spr_dir;
-            }
-        } else {
-            hsp = DTiltMaxSpeed * 0.75 * spr_dir;
-        }
-        
-        
-    }
-    
-    
-    if (window == 2 && window_timer <= 2) {
-        if (down_down == false && hsp != 0) {
-            hsp = hsp / 1.66;
-        }
-    }
-    if (window == 2 && window_timer == 6) {
-        if (down_down == true) {
-            window = 3;
-        }
-    }
-    
-    
-    if (window == 2) {
-        if (hsp <= 6.5 && hsp >= -6.5 ) {
-            set_hitbox_value(AT_DTILT, 1, HG_ANGLE, 80);
-            set_hitbox_value(AT_DTILT, 2, HG_ANGLE, 60);
-        } else if (hsp > 6.5 || hsp < -6.5) {
-            set_hitbox_value(AT_DTILT, 1, HG_ANGLE, 60);
-            set_hitbox_value(AT_DTILT, 2, HG_ANGLE, 40);
-        }
+    	if (hsp < 8 || hsp > -8) {
+        	hsp = 8 * spr_dir;
+    	}
     }
     
     if (window >= 2) {
@@ -128,28 +95,7 @@ if (attack == AT_UTILT) {
 }
 
 if (attack == AT_DATTACK) {
-    
-    /*if (window == 1) {
-    	if (window_timer == 1) {
-    		if (hsp = 0) {
-				hsp = CannStrongHspStore;
-			}
-    	}
-    }
-    if (window == 2) {
-        if (hsp > 0 || hsp < 0) {
-            DAttackHSP = (hsp * spr_dir) + 8;
-        }else {
-            DAttackHSP = 8;
-        }
-        set_hitbox_value(AT_DATTACK, 1, HG_BASE_KNOCKBACK, DAttackHSP);
-    }*/
-    
-    //if (window = 3) {
-    //    hsp = 0;
-    //}
-    
-    
+
     // Heat Increaser
     if (has_hit_player == true && RaiseHeat == false && HeatLevel < 10) {
         HeatLevel += 1;
@@ -173,9 +119,6 @@ if (attack == AT_NAIR) {
     	if (vsp < -1) {
     		vsp = -1;
     	}
-    	//if (CannNairDidReduce == false) {
-    	//	CannNairVspReduce = true;
-    	//}
     	can_fast_fall = false;
     }
 }
@@ -194,6 +137,21 @@ if (attack == AT_BAIR) {
         HeatLevel += 1;
         RaiseHeat = true;
     }
+    if (window == 2) {
+    	if (window_timer == 8 && hitpause == false) {
+    		hsp = 5 * spr_dir;
+    		//vsp = -3;
+    		move_cooldown[AT_BAIR] = 20;
+    	}
+    }
+    
+    if (window == 3 && window_timer >= 6) {
+    	can_attack = true;
+    	can_special = true;
+    	can_jump = true;
+    }
+    
+    grav = 0.5;
 }
 
 if (attack == AT_UAIR) {
@@ -215,192 +173,208 @@ if (attack == AT_DAIR) {
 // Specials
 
 if (attack == AT_USPECIAL) {
-    if (window == 1 || window == 2 || window == 3) {
-        if (vsp > 0.1 || vsp < -0.1) {
-            vsp = vsp / 2;
-        } else {
-            vsp = 0;
-        }
-        
-        if (hsp > 0.1 || hsp < -0.1) {
-            hsp = hsp / 2;
-        } else {
-            hsp = 0;
-        }
-        grav = 0.2;
-        can_fast_fall = false;
-    }
-    
-    if (window == 1) {
-        if (window_timer == 1) {
-            sound_play(asset_get("sfx_ell_utilt_retract"));
-        }
-        CannUSpcCharging = true;
-        if (free == true) {
-            CannUSpcUses = 0;
-        }
-    }
-    
-    if (window == 2) {
-        CannUSpcCharging = true;
-        if (CannUSpcChargingTimer == 20) {
-            if (HeatLevel > 0 && CannUSpcChargePower < 4 && special_down == true) {
-                HeatLevel -= 1;
-                CannUSpcChargePower += 1;
-                if (CannUSpcChargePower != 4) {
-                sound_play(asset_get("mfx_xp"));
-            } else {
-                sound_play(asset_get("sfx_shop_buy"));
-                
-            }
-            } else {
-                window = 3;
-            }
-            CannUSpcChargingTimer = 0;
-        }
-        CannUSpcChargingTimer += 1;
-    }
-    
-    if (window == 3) {
-        if (window_timer == 1) {
-            sound_play(asset_get("sfx_ell_explosion_medium"));
-        }
-        CannUSpcCharging = false;
-        CannUSpcX = x;
-        CannUSpcY = y;
-        set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 9 + CannUSpcChargePower);
-    }
-    
-    if (window == 4) {
-        if (CannUSpcShootBallEndTimer == 0) {
-            y = y - 40;
-            //x = x + (20 * spr_dir);
-            vsp = -14 - (CannUSpcChargePower* 2);
-            
-        }
-        if (CannUSpcShootBallEndTimer == 1) {
-            hsp = (4 + (CannUSpcChargePower)) * spr_dir;
-        }
-        if (CannUSpcShootBallEndTimer == 2) {
-            set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, (vsp/hsp));
-            set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 8 + (1.5 * CannUSpcChargePower));
-            set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE, 70);
-            create_hitbox(AT_USPECIAL, 2, CannUSpcX - (25 * spr_dir), CannUSpcY - 30);
-            
-        }
-        
-        CannUSpcShootBallEndTimer += 1;
-        if ((free == false && CannUSpcShootBallEndTimer > 10)) {
-            window = 5;
-            CannUSpcShootBallEndTimer = 0;
-            CannUSpcChargePower = 0;
-        }
-        
-        CannUSpcShootHitboxTimer += 1;
-        
-        /*if (CannUSpcShootHitboxTimer == 8) {
-            if (vsp < 0) {
-                set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, (vsp/hsp));
-                set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, hsp);
-                set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_VSPEED, vsp);
-                if (CannUSpcChargePower < 3) {
-                    set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 14 + ((3 + (CannUSpcChargePower / 1.5)) * CannUSpcChargePower));
-                } else {
-                    set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 18 + ((4 + (CannUSpcChargePower * 4)) * CannUSpcChargePower));
-                }
-                create_hitbox(AT_USPECIAL, 1, x, y - 30);
-                CannUSpcShootHitboxTimer = 0;
-            }
-        }*/
-        
-        /*if (vsp > 0 && CannUSpcShootHitboxTimer < 10) {
-            create_hitbox(AT_USPECIAL, 3, x, y - 30);
-            CannUSpcShootHitboxTimer = 100;
-        }*/
-        
-        //can_jump = true;
-        //can_attack = true;
-        
-        //soft_armor = 200;
-        
-        if (vsp > 0) {
-            //can_attack = true;
-            //can_jump = true;
-            //can_shield = true;
-        }
-        
-        can_wall_jump = true;
-        grav = 0.75;
-    }
-    
-    if (window == 5) {
-        CannUSpcShootBallEndTimer = 0;
-        CannUSpcChargePower = 0;
-        //can_jump = true;
-        //can_attack = true;
-        can_wall_jump = true;
-        grav = 0.5;
-        soft_armor = 0;
-    }
-    
-    CannUSpcCharging = true; // So you can't explode yourself during these windows, but I'm too lazy to change it from Up special lol
+	switch (window) {
+		case 1:
+		if (window_timer == 1) {
+			vsp = vsp / 3;
+			hsp = hsp / 3;
+		}
+		grav = 0.2;
+		break;
+		
+		case 2:
+		can_move = true;
+		if (hitpause <= 0) {
+			vsp = -9;
+		}
+		
+		if (hsp > 3) {
+			hsp = 3;
+		} else if (hsp < -3) {
+			hsp = -3;
+		}
+		
+		if (window_timer == 0 || window_timer == 5 || window_timer == 10 || window_timer == 15) {
+			create_hitbox(AT_USPECIAL, 7, x, y);
+		}
+		break;
+		
+		case 3:
+		if (hsp > 3) {
+			hsp = 3;
+		} else if (hsp < -3) {
+			hsp = -3;
+		}
+		
+		if (window_timer > 5) {
+			can_walljump = true;
+		}
+		
+		case 4:
+		
+		can_walljump = true;
+		
+		break;
+		
+		break;
+		
+		default:
+		
+		break;
+	}
+	
+	can_fast_fall = false;
 }
 
 if (attack == AT_NSPECIAL) {
     if (window == 1 || window == 2 || window == 3) {
         CannUSpcCharging = true; // So you can't explode yourself during these windows, but I'm too lazy to change it from Up special lol
+        
+        //if (hsp > 1) {
+        //	hsp = 1;
+        //} else if (hsp < -1) {
+        //	hsp = -1;
+        //}
+        
+        if (vsp > 1) {
+        	vsp = 1;
+        }
     }
     
     if (window == 1) {
         if (window_timer == 4) {
             sound_play(asset_get("sfx_ell_utilt_retract"));
         }
+        
+        //CannNSpecialVsp = -1.03;
+		//CannNSpecialHsp = 2.82;
+		CannNSpecialVelocity = 3;
+        CannNSpecialSpdTimer = 0;
+        CannDotTime = 0;
+        
+        CannDot1XPos = 0;
+        CannDot1YPos = 0;
+        CannDot2XPos = 0;
+        CannDot2YPos = 0;
+        CannDot3XPos = 0;
+        CannDot3YPos = 0;
+        CannDot4XPos = 0;
+        CannDot4YPos = 0;
+        CannDot5XPos = 0;
+        CannDot5YPos = 0;
     }
     
     if (window == 2) {
         
-        if (CannNSpcChargeTimer >= 15 && CannNSpcCharge <= 2 && HeatLevel >= 1) {
-            HeatLevel -= 1;
-            CannNSpcCharge += 1; 
-            if (CannNSpcCharge != 3) {
-                sound_play(asset_get("mfx_xp"));
-            } else {
-                sound_play(asset_get("sfx_shop_buy"));
-                
-            }
-            CannNSpcChargeTimer = 0;
+        /*if (CannNSpcCharge < 3) {
+        	if (CannNSpcChargeTimer >= 20 && CannNSpcCharge <= 2) {
+	            CannNSpcCharge += 1; 
+	            if (CannNSpcCharge != 3) {
+	                sound_play(asset_get("mfx_xp"));
+	            } else {
+	                sound_play(asset_get("sfx_shop_buy"));
+	                
+	            }
+	            CannNSpcChargeTimer = 0;
+	        }
         }
+        
         CannNSpcChargeTimer += 1;
+		
+		if (special_down == false) {
+		    window = 3;
+		}
+		
+		// Charging
+		
+		if (CannNSpecialSpdTimer <= 60) {
+			if (CannStoredNSpecialAmt == 0) {
+				CannNSpecialVelocity = ease_linear( 30, 90, CannNSpecialSpdTimer, 60 ) * 0.1;
+			} else if (CannStoredNSpecialAmt == 1) {
+				CannNSpecialVelocity = ease_linear( 50, 90, CannNSpecialSpdTimer, 40 ) * 0.1;
+			} else if (CannStoredNSpecialAmt == 2) {
+				CannNSpecialVelocity = ease_linear( 70, 90, CannNSpecialSpdTimer, 20 ) * 0.1;
+			} else if (CannStoredNSpecialAmt == 3) {
+				CannNSpecialVelocity = 7;
+			}
+			
+			CannNSpecialHsp = CannNSpecialVelocity * dcos(55) * spr_dir;
+			
+			CannNSpecialVsp = CannNSpecialVelocity * dsin(55) * -1; // Note Flipped Coordinates
+			
+			CannNSpecialSpdTimer += 1;
+		}*/
         
-        if (special_down == false) {
-            window = 3;
+        if (free == true) {
+	        if (hsp > 2) {
+	        	hsp = 2;
+	        } else if (hsp < -2) {
+	        	hsp = -2;
+	        }
         }
         
-        can_jump = true;
-        can_shield = true;
-        can_wall_jump = true;
+        CannNSpecialHsp = 1.5 * spr_dir;
+			
+		CannNSpecialVsp = -2.6; // Note Flipped Coordinates
+        
+        CannBallParry = false;
+        
+        //can_jump = true;
+        //can_shield = true;
+        //can_wall_jump = true;
         grav = 0.25;
     }
 
-    if (window == 3) {
-        //hsp = hsp / 2;
-        //vsp = vsp / 2;
-        grav = 0.25;
+	if (window == 2 || window == 3) {
+		// Dot 1
+		CannDot1XPos = (x + 47 * spr_dir) + CannNSpecialHsp * 9;
+		CannDot1YPos = (y - 19) + CannNSpecialVsp * 12 + 0.5 * 0.3 * (81);
+		
+		// Dot 2
+		CannDot2XPos = (x + 47 * spr_dir) + CannNSpecialHsp * (18);
+		CannDot2YPos = (y - 19) + CannNSpecialVsp * (24) + 0.5 * 0.3 * (324);
+		
+		// Dot 3
+		CannDot3XPos = (x + 47 * spr_dir) + CannNSpecialHsp * (27);
+		CannDot3YPos = (y - 19) + CannNSpecialVsp * (36) + 0.5 * 0.3 * (729);
+		
+		// Dot 4
+		CannDot4XPos = (x + 47 * spr_dir) + CannNSpecialHsp * (36);
+		CannDot4YPos = (y - 19) + CannNSpecialVsp * (48) + 0.5 * 0.3 * (1296);
+		
+		// Dot 5
+		CannDot5XPos = (x + 47 * spr_dir) + CannNSpecialHsp * (45);
+		CannDot5YPos = (y - 19) + CannNSpecialVsp * (60) + 0.5 * 0.3 * (2025);
+		
+		CannBallDie = false;
+	}
+
+    if (window == 3 || window == 4) {
+        grav = 0.2;
     }
     
-    if (window == 4) {
+    if (window == 5) {
         if (window_timer == 1) {
             sound_play(asset_get("sfx_ell_explosion_medium"));
             CannCannonBallActive = true;
-            instance_create(x+45*spr_dir, y-20, "obj_article1");
-            //if ((spr_dir == 1 && right_down) || (spr_dir == -1 && left_down)) {
-            //    hsp = (-3.5 - CannNSpcCharge) * spr_dir;
-            //}
-            //if (free == true) {
-                //vsp = (-2 - (CannNSpcCharge * 2))
-            //}
+            instance_create(x+42*spr_dir, y-42, "obj_article1");
             CannNSpcCharge = 0;
             CannNSpcChargeTimer = 0;
+            
+            CannNSpecialVsp = -1.03;
+			CannNSpecialHsp = 2.82;
+			CannNSpecialVelocity = 3;
+        	CannNSpecialSpdTimer = 0;
+        	CannDotTime = 0;
+        	
+        	CannStoredNSpecialAmt = 0;
+        	
+        	
+        } else {
+        	can_jump = true;
+        	can_shield = true;
+        	can_attack = true;
+        	can_special = true;
         }
     }
     
@@ -408,26 +382,119 @@ if (attack == AT_NSPECIAL) {
     
 }
 
+// Teleport
+
+if (attack == AT_FTILT) {
+	if (window == 1) {
+		if (window_timer == 1) {
+			CannTpX = x;
+			CannTpY = y;
+			
+			CannBallGetValues = true;
+		}
+		
+		vsp = 0;
+		hsp = 0;
+	}
+	
+	if (window == 2) {
+		if (window_timer == 1) {
+			create_hitbox(AT_USPECIAL, 1, CannTpX, CannTpY);
+			
+			
+			
+			x = CannBallTpX + 22 * spr_dir;
+			y = CannBallTpY;
+			hsp = CannBallTpHsp;
+			vsp = CannBallTpVsp;
+			
+			CannTpUsed = true;
+			
+			CannBallDelete = true;
+			CannBallGetValues = false;
+		} else {
+			CannBallDelete = false;
+		}
+		
+		if (window_timer == 2) {
+			create_hitbox(AT_USPECIAL, 8, x - 20 * spr_dir, y - 30);
+		}
+		
+		grav = 0.2;
+	}
+	
+	if (window == 3) {
+		can_jump = true;
+		can_shield = true;
+		can_attack = true; 
+		can_special = true;
+	}
+}
+
 if (attack == AT_FSPECIAL) {
+	
+	if (window == 1) {
+		if (free == false) {
+        	CannBallFSpcLand = true;
+        } else {
+        	CannBallFSpcLand = false;
+        }
+        
+        CannFSpecialLanded = false;
+        
+        with (oPlayer) {
+    		if (id != other.id) {
+		        CannOppFSpecialHit = false;
+    		}
+    	}
+        
+        hsp = hsp / 3;
+	}
+	
     if (window == 1 || window == 2) {
         vsp = 0;
         grav = 0.4;
         CannFSpcUsed = true;
-    }
-    
-    if (window == 1) {
-        if (window_timer == 1) {
-            sound_play(asset_get("sfx_ell_utilt_cannon"));
-        }
+        
     }
     
     if (window == 2) {
         
-        if (CannFSpcDashTimer == 1) {
-            hsp = (7 + (HeatLevel / 3)) * spr_dir;
-            CannFSpcDashLength = 35 - (HeatLevel / 2);
+        if (window_timer == 3) {
+        	sound_play(asset_get("sfx_ell_utilt_cannon"));
         }
         
+        if (CannFSpcDashTimer == 1) {
+            //hsp = 12 * spr_dir;
+            CannFSpcDashLength = 35;
+        }
+        
+        if (free == true) {
+        	hsp = 11 * spr_dir;
+        } else {
+        	hsp = 8.5 * spr_dir;
+        }
+        
+        if (CannFSpecialLanded == true) {
+        	window_timer = CannFSpcDashLength;
+        	CannFSpecialLanded = false;
+        } else {
+        	CannFSpcDashLength = window_timer;
+        }
+        
+        // Ledge Snapping
+        if (place_meeting(x + hsp, y, asset_get("par_block")) && free) {
+		    for (var i = 1; i < 20; i++){
+		        if (!place_meeting(x + hsp, y- i ,asset_get("par_block"))) {
+		            reset_window_value(AT_FSPECIAL, 5, AG_WINDOW_TYPE);
+		            reset_window_value(AT_FSPECIAL, 13, AG_WINDOW_TYPE);
+		            y -= i;
+		            CannBallFSpcLand = true;
+		            CannFSpecialLanded = true;
+		            break;
+		        }
+		    }
+		}
         
         if (has_hit_player == true) {
             window = 4;
@@ -435,21 +502,17 @@ if (attack == AT_FSPECIAL) {
             CannFSpcDashTimer = 0;
         }
         
-        if (CannFSpcDashTimer == 1) {
-            create_hitbox(AT_FSPECIAL, 1, x, y);
-        }
+        //if (CannFSpcDashTimer == 1) {
+        //    create_hitbox(AT_FSPECIAL, 1, x, y);
+        //}
         
-        if (CannFSpcDashTimer >= 20) {
+        if (window_timer == 24) {
             window = 6;
+            window_timer = 0;
+            hsp = hsp / 3;
             CannFSpcDashTimer = 0;
         }
         CannFSpcDashTimer += 1;
-        
-        if (CannFSpcDashTimer >= 10) {
-            //can_jump = true;
-            //can_shield = true;
-            can_wall_jump = true;
-        }
     }
     
     if (window == 3) {
@@ -457,38 +520,30 @@ if (attack == AT_FSPECIAL) {
         vsp = vsp / 2;
         grav = 0.2;
         
-        
     }
     
     if (window == 4) {
         hsp = 0;
         vsp = 0;
         
-        if (HeatLevel > 0) {
-            if (CannFSpcChargeShotTimer >= 15 && HeatLevel > 0) {
-                if (HeatLevel > 0 && CannFSpcCharge < 3) {
-                    HeatLevel -= 1;
-                    CannFSpcCharge += 1;
-                    if (CannFSpcCharge != 3) {
-                        sound_play(asset_get("mfx_xp"));
-                    } else {
-                        sound_play(asset_get("sfx_shop_buy"));
-                    }
-                } else {
-                    window = 5;
-                    CannFSpcChargeShotTimer = 0;
-                }
-                CannFSpcChargeShotTimer = 0;
-            }
-            CannFSpcChargeShotTimer += 1;
-        } else {
-            window = 5;
-        }
-        
-        
-        if (special_down == false) {
-            window = 5;
-        }
+    }
+    
+    if (window == 4 || (window == 5 && window_timer < 10)) {
+    	with (oPlayer) {
+    		if (CannOppFSpecialHit == true && id != other.id) {
+		    	vsp = 0;
+				hsp = 0;
+				x = other.x + 30 * other.spr_dir;
+				y = other.y - 20;
+		        hitpause = 1;
+		        hitpause_timer = 1;
+		        visible = false;
+		        invincible = true;
+		        other.CannBallFSpcLand = true;
+    		}
+    		
+    	}
+        attack_invince = true;
         
     }
     
@@ -496,51 +551,22 @@ if (attack == AT_FSPECIAL) {
         hsp = 0;
         vsp = 0;
         if (window_timer == 1) {
-            sound_play(asset_get("sfx_ell_utilt_loop"));
+            sound_play(asset_get("sfx_ell_fist_fire"));
             
         }
         
         CannFSpcChargeShotTimer = 0;
         
-        if (window_timer < 12) {
-            if (CannFSpcCharge == 0) {
-                set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 40);
-                set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 8);
-                set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.4);
-            } 
-            if (CannFSpcCharge == 1) {
-                set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 40);
-                set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 9.5);
-                set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.5);
-            } 
-            if (CannFSpcCharge == 2) {
-                set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 40);
-                set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 11);
-                set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.6);
-            } 
-            if (CannFSpcCharge == 3) {
-                set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE, 40);
-                set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 12.5);
-                set_hitbox_value(AT_FSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.7);
-            } 
-            CannGrabbedId.vsp = 0;
-            CannGrabbedId.hsp = 0;
-            CannGrabbedId.x = x + 30 * spr_dir;
-            CannGrabbedId.y = y - 20;
-        }
-        if (window_timer == 11) {
-            CannGrabbedId.visible = true;
-            with (oPlayer) {
-    			//if (id != other.id) continue; //ignore the player that called this 'with' statement
-    			if (id != other.id) {
-    				if (CannOppInvis == true) {
-    					visible = true;
-    					CannOppInvis = false;
-    				}
-    			}
-            }
-            hit_player_obj.invincible = false;
-            create_hitbox(AT_FSPECIAL, 2, x - 40 * spr_dir, y - 30);
+        if (window_timer == 10) {
+        	with (oPlayer) {
+        		if (CannOppFSpecialHit == true && id != other.id) {
+		            visible = true;
+		            invincible = false;
+		            CannOppFSpecialHit = false;
+        		}
+        	}
+            attack_invince = false;
+            CannGrabbedId = 0;
         }
         
         if (window_timer == 17) {
@@ -550,18 +576,14 @@ if (attack == AT_FSPECIAL) {
     }
     
     if (window == 6) {
-        if (window_timer == 1) {
-            sound_play(asset_get("sfx_mobile_gear_wall"));
-            hsp = hsp / 2;
-            CannGrabbedId = 0;
-        }
-        
-        if (free == true && window_timer == 8) {
-        	state = PS_PRATFALL;
-        	CannFspecialPrat = true;
-        }
         
         move_cooldown[AT_FSPECIAL] = 30;
+    }
+    
+    if (window_timer == 15 && CannBallFSpcLand == false && free == true) {
+    	set_state(PS_PRATFALL);
+    	hsp = hsp / 4;
+    	vsp = vsp / 4;
     }
     
     can_move = false;
@@ -573,91 +595,64 @@ if (attack == AT_DSPECIAL) {
     CannUSpcCharging = true; // So you can't explode yourself during these windows, but I'm too lazy to change it from Up special lol
 
     if (window == 1) {
-        super_armor = true;
-        CannCounterActive = true;
-        
-        if (window_timer == 1) {
-            sound_play(asset_get("sfx_gus_propeller_dagger_wall"));
-        }
-        
-        if (free == true) {
-            hsp = 0;
-        }
-        vsp = 0;
-	    
-	    if (CannCounterAttack == true) {
-	        if (CannCounterStunHit == false) {
-	            sound_play(asset_get("sfx_buzzsaw_hit"));
-	            //create_hitbox(AT_DSPECIAL, 2, x, y);
-	            window = 2;
-	            CannCounterStunHit = true;
-	        }
+    	
+    	damage_scaling = 0.5;
+    	
+    	if (window_timer > 5 && window_timer < 19) {
+	        super_armor = true;
+	        CannCounterActive = true;
 	        
-	        if (CannDSpcMeleeHit == true) {
-	            if (point_distance( x, y, CannCounteredEnemyId.x, CannCounteredEnemyId.y ) >= 60) {
-	    			hsp = hsp / 2;
-	    		}
+	        if (free == true) {
+	            hsp = 0;
 	        }
-	    }
+	        vsp = 0;
+		    
+		    if (CannCounterAttack == true) {
+				sound_play(asset_get("sfx_buzzsaw_hit"));
+				if (CannDSpcDmg <= 30) {
+					set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 5 + CannDSpcDmg);
+				} else {
+					set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 35);
+				}
+				
+				super_armor = false;
+				attack_invince = true;
+				CannCounterActive = false;
+		        
+		        if (CannDSpcMeleeHit == true) {
+		            if (point_distance( x, y, CannCounteredEnemyId.x, CannCounteredEnemyId.y ) >= 60) {
+		    			hsp = hsp / 3;
+		    		}
+		    		CannDSpcMeleeHit = false;
+		        }
+		        
+		        window_timer = 0;
+    			window = 2;
+		    }
+		    
+    	} else if (window_timer >= 19) {
+    		window_timer = 0;
+    		window = 3;
+		    CannCounterActive = false;
+	        super_armor = false;
+    	} else {
+    		CannCounterActive = false;
+    		CannCounterAttack = false;
+    	}
 	    
     }
     
-    if (window == 2) {
-    	
-        if (CannCounterAttack == false) {
-	        window = 4;
-	        super_armor = false;
-        } else {
-	        if (CannDSpcKB <= 7) {
-	            set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 5 + CannDSpcKB);
-	        } else {
-	            set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 12);
-	        }
-	        if (CannDSpcDmg <= 30) {
-	            set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 5 + CannDSpcDmg);
-	        } else {
-	            set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 35);
-	        }
-	        invincible = 2;
-	        super_armor = false;
-	    }
+    if (window > 1) {
+    	damage_scaling = 1;
+    }
+	
+	if (window == 2) {
+		
+	
+	    
 	}
 	
 	if (window == 3) {
-		
-		invincible = 2;
-		
-	    if (window_timer == 1) {
-	    	if (CannDSpcMeleeHit == true) {
-	    		if (point_distance( x, y, CannCounteredEnemyId.x, CannCounteredEnemyId.y ) >= 60) {
-	    			hsp = hsp / 2;
-	    		}
-	        	
-	            if (HeatLevel + 3 <= 10) {
-	            	HeatLevel += 3;
-	            } else {
-	            	HeatLevel = 10;
-	            }
-	            CannDSpcMeleeHit = false;
-	        } else {
-	        	CannCounterHeatGain = round(CannDSpcDmg / 3) + 1;
-	        	if (CannCounterHeatGain + HeatLevel <= 10) {
-	        		HeatLevel += CannCounterHeatGain;
-	        	} else {
-	        		HeatLevel = 10;
-	        	}
-	        }
-	    	
-	    	
-	    	
-	    	CannCounterActive = false;
-	    	
-            sound_play(asset_get("sfx_ell_explosion_medium"));
-        }
-	    CannCounterAttack = false;
-	}
-	
-	if (window == 4) {
 	    if (window_timer == 1) {
             sound_play(asset_get("sfx_ell_utilt_retract"));
         }
@@ -675,277 +670,36 @@ if (attack == AT_DSPECIAL) {
 	can_fast_fall = false;
 }
 
-if (attack == AT_FSTRONG) {
-	if (window == 1) {
-		if (window_timer == 1) {
-			if (HeatLevel > 0) {
-				HeatLevel -= 1;
-			}
-			sound_play(asset_get("mfx_xp"));
-			if (hsp = 0) {
-				hsp = CannStrongHspStore;
-			}
-		}
-		if (window_timer == 6) {
-			sound_play(asset_get("sfx_ell_utilt_retract"));
-		}
-	}
-	if (window == 2) {
-		
-		
-		if (CannStrongTimer >= 20) {
-			if (HeatLevel > 0 && CannStrongPower <= 1) {
-				HeatLevel -= 1;
-            	CannStrongPower += 1;
-            	if (CannStrongPower != 2) {
-            	    sound_play(asset_get("mfx_xp"));
-            	} else {
-            	    sound_play(asset_get("sfx_shop_buy"));
-            	}
-            	CannStrongTimer = 0;
-			} else {
-				sound_play(asset_get("sfx_ell_explosion_medium"));
-				window = 3;
-				window_timer = 0;
-				CannStrongTimer = 0;
-			}
-		}
-		
-		if (CannAttackDown == false) {
-			sound_play(asset_get("sfx_ell_explosion_medium"));
-            window = 3;
-        }
-		
-		CannStrongTimer += 1;
-	}
-	
-	if (window == 3) {
-		if (window_timer == 1) {
-			if (CannStrongPower == 0) { // 
-				set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 12);
-				set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 12);
-				set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 12);
-				set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 12);
-				set_hitbox_value(AT_FSTRONG, 3, HG_DAMAGE, 12);
-				set_hitbox_value(AT_FSTRONG, 3, HG_BASE_KNOCKBACK, 12);
-			}
-			if (CannStrongPower == 1) {
-				set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 19);
-				set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 14);
-				set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 19);
-				set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 14);
-				set_hitbox_value(AT_FSTRONG, 3, HG_DAMAGE, 19);
-				set_hitbox_value(AT_FSTRONG, 3, HG_BASE_KNOCKBACK, 14);
-			}
-			if (CannStrongPower == 2) {
-				set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 26);
-				set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 16);
-				set_hitbox_value(AT_FSTRONG, 2, HG_DAMAGE, 26);
-				set_hitbox_value(AT_FSTRONG, 2, HG_BASE_KNOCKBACK, 16);
-				set_hitbox_value(AT_FSTRONG, 3, HG_DAMAGE, 26);
-				set_hitbox_value(AT_FSTRONG, 3, HG_BASE_KNOCKBACK, 16);
-			}
-		}
-		
-		if (window_timer == 8) {
-			//create_hitbox(AT_FSTRONG, 1, x, y);
-		}
-		if (window_timer == 12) {
-			//create_hitbox(AT_FSTRONG, 2, x, y);
-		}
-		if (window_timer == 12) {
-			create_hitbox(AT_FSTRONG, 3, x, y);
-		}
-	}
-	
-	CannUSpcCharging = true; // So you can't explode yourself during these windows, but I'm too lazy to change it from Up special lol
-}
-
 if (attack == AT_USTRONG) {
-	if (window == 1) {
-		if (window_timer == 1) {
-			if (HeatLevel > 0) {
-				HeatLevel -= 1;
-			}
-			sound_play(asset_get("mfx_xp"));
-			if (hsp = 0) {
-				hsp = CannStrongHspStore;
-			}
-		}
-		if (window_timer == 6) {
-			sound_play(asset_get("sfx_ell_utilt_retract"));
-		}
-	}
-	if (window == 2) {
-		
-		
-		if (CannStrongTimer >= 20) {
-			if (HeatLevel > 0 && CannStrongPower <= 1) {
-				HeatLevel -= 1;
-            	CannStrongPower += 1;
-            	if (CannStrongPower != 2) {
-            	    sound_play(asset_get("mfx_xp"));
-            	} else {
-            	    sound_play(asset_get("sfx_shop_buy"));
-            	}
-            	CannStrongTimer = 0;
-			} else {
-				window = 3;
-				window_timer = 0;
-				CannStrongTimer = 0;
-			}
-		}
-		
-		if (CannAttackDown == false) {
-            window = 3;
-        }
-		
-		CannStrongTimer += 1;
-	}
 	
 	if (window == 4) {
-		if (window_timer == 1) {
-			//sound_play(asset_get("sfx_ell_explosion_medium"));
-			if (CannStrongPower == 0) {
-				set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 10);
-				set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 12);
-				set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 10);
-				set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 12);
-				set_hitbox_value(AT_USTRONG, 3, HG_DAMAGE, 10);
-				set_hitbox_value(AT_USTRONG, 3, HG_BASE_KNOCKBACK, 12);
-			}
-			if (CannStrongPower == 1) {
-				set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 16);
-				set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 14);
-				set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 16);
-				set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 14);
-				set_hitbox_value(AT_USTRONG, 3, HG_DAMAGE, 16);
-				set_hitbox_value(AT_USTRONG, 3, HG_BASE_KNOCKBACK, 14);
-			}
-			if (CannStrongPower == 2) {
-				set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 22);
-				set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 16);
-				set_hitbox_value(AT_USTRONG, 2, HG_DAMAGE, 22);
-				set_hitbox_value(AT_USTRONG, 2, HG_BASE_KNOCKBACK, 16);
-				set_hitbox_value(AT_USTRONG, 3, HG_DAMAGE, 22);
-				set_hitbox_value(AT_USTRONG, 3, HG_BASE_KNOCKBACK, 16);
-			}
-			
-			if (hsp > 4 || hsp < -4) {
-				set_hitbox_value(AT_USTRONG, 3, HG_ANGLE, 55);
-			} else {
-				set_hitbox_value(AT_USTRONG, 3, HG_ANGLE, 70);
-			}
-		}
-		
-		if (window_timer == 2) {
-			create_hitbox(AT_USTRONG, 4, x, y);
-		}
 		
 		if (window_timer > 8) {
 			CannGrabbedId.hsp = hsp;
 		}
 		
-		
+	}
+	
+	if (CannGrabbedId != 0) {
+		if (CannUStrongEasingTimer < 20) {
+			CannGrabbedId.x = ease_cubeOut( CannUStrongStartX, x - (10 * spr_dir), CannUStrongEasingTimer, 20 );
+			CannGrabbedId.y = ease_cubeOut( CannUStrongStartY, y - 55, CannUStrongEasingTimer, 20 );
+			CannUStrongEasingTimer += 1;
+		} else {
+			CannGrabbedId.x = x - (10 * spr_dir);
+			CannGrabbedId.y = y - 55;
+		}
+		CannGrabbedId.hsp = 0;
+		CannGrabbedId.vsp = 0;
 	}
 	
 	if (window == 6) {
-		if (window_timer < 8) {
-			if (CannGrabbedId != 0) {
-				CannGrabbedId.x = x + (30 * spr_dir);
-				CannGrabbedId.y = y - 50;
-				CannGrabbedId.hsp = hsp;
-			}
-		}
 		
-		if (window_timer == 10) {
+		if (window_timer == 7) {
 			CannGrabbedId = 0;
-		}
-		if (window_timer == 12) {
-			create_hitbox(AT_USTRONG, 3, x, y);
+			CannUStrongEasingTimer = 0;
 		}
 	}
-	
-	CannUSpcCharging = true; // So you can't explode yourself during these windows, but I'm too lazy to change it from Up special lol
-}
-
-if (attack == AT_DSTRONG) {
-	if (window == 1) {
-		if (window_timer == 1) {
-			if (HeatLevel > 0) {
-				HeatLevel -= 1;
-			}
-			sound_play(asset_get("mfx_xp"));
-			if (hsp = 0) {
-				hsp = CannStrongHspStore;
-			}
-		}
-		if (window_timer == 6) {
-			sound_play(asset_get("sfx_ell_utilt_retract"));
-		}
-	}
-	if (window == 2) {
-		
-		
-		if (CannStrongTimer >= 20) {
-			if (HeatLevel > 0 && CannStrongPower <= 1) {
-				HeatLevel -= 1;
-            	CannStrongPower += 1;
-            	if (CannStrongPower != 2) {
-            	    sound_play(asset_get("mfx_xp"));
-            	} else {
-            	    sound_play(asset_get("sfx_shop_buy"));
-            	}
-            	CannStrongTimer = 0;
-			} else {
-				window = 3;
-				window_timer = 0;
-				CannStrongTimer = 0;
-			}
-		}
-		
-		if (CannAttackDown == false) {
-            window = 3;
-        }
-		
-		CannStrongTimer += 1;
-	}
-	
-	if (window == 3) {
-		if (window_timer == 1) {
-			//sound_play(asset_get("sfx_ell_explosion_medium"));
-			if (CannStrongPower == 0) {
-				set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 11);
-				set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 10);
-				set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 11);
-				set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 10);
-			}
-			if (CannStrongPower == 1) {
-				set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 17);
-				set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 11.5);
-				set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 17);
-				set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 11.5);
-			}
-			if (CannStrongPower == 2) {
-				set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 24);
-				set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 13);
-				set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 24);
-				set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 13);
-			}
-		}
-		
-		if (window_timer == 8) {
-			create_hitbox(AT_DSTRONG, 1, x, y);
-		}
-		if (window_timer == 16) {
-			create_hitbox(AT_DSTRONG, 2, x, y);
-		}
-		if (window_timer == 28) {
-			create_hitbox(AT_DSTRONG, 1, x, y);
-		}
-	}
-	
-	CannUSpcCharging = true; // So you can't explode yourself during these windows, but I'm too lazy to change it from Up special lol
 }
 
 if (attack == AT_TAUNT) {
@@ -999,4 +753,153 @@ if (attack == AT_TAUNT) {
 			set_hitbox_value(AT_TAUNT, 4, HG_PROJECTILE_HSPEED, ConfettiYellowHsp);
 		}
 	}
+}
+
+
+/*
+
+Removed USPECIAL
+if (attack == AT_USPECIAL) {
+    if (window == 1 || window == 2 || window == 3) {
+        CannUSpcCharging = true; // So you can't explode yourself during these windows, but I'm too lazy to change it from Up special lol
+        
+        if (hsp > 3.5) {
+        	hsp = 3.5;
+        } else if (hsp < -3.5) {
+        	hsp = -3.5;
+        }
+        
+        if (vsp > 1) {
+        	vsp = 1;
+        }
+    }
+    
+    if (window == 1) {
+        if (window_timer == 4) {
+            sound_play(asset_get("sfx_ell_utilt_retract"));
+        }
+        
+        //CannNSpecialVsp = -2.82;
+		//CannNSpecialHsp = 1.03;
+		CannNSpecialVelocity = 3;
+        CannNSpecialSpdTimer = 0;
+        CannDotTime = 0;
+        
+        CannDot1XPos = 0;
+        CannDot1YPos = 0;
+        CannDot2XPos = 0;
+        CannDot2YPos = 0;
+        CannDot3XPos = 0;
+        CannDot3YPos = 0;
+        CannDot4XPos = 0;
+        CannDot4YPos = 0;
+        CannDot5XPos = 0;
+        CannDot5YPos = 0;
+    }
+    
+    if (window == 2) {
+        
+        if (CannNSpcCharge < 3) {
+        	if (CannNSpcChargeTimer >= 20 && CannNSpcCharge <= 2) {
+	            CannNSpcCharge += 1; 
+	            if (CannNSpcCharge != 3) {
+	                sound_play(asset_get("mfx_xp"));
+	            } else {
+	                sound_play(asset_get("sfx_shop_buy"));
+	                
+	            }
+	            CannNSpcChargeTimer = 0;
+	        }
+        }
+        
+        CannNSpcChargeTimer += 1;
+		
+		if (special_down == false) {
+		    window = 3;
+		}
+		
+		// Charging
+		
+		if (CannNSpecialSpdTimer <= 60) {
+			if (CannStoredNSpecialAmt == 0) {
+				CannNSpecialVelocity = ease_linear( 30, 90, CannNSpecialSpdTimer, 60 ) * 0.1;
+			} else if (CannStoredNSpecialAmt == 1) {
+				CannNSpecialVelocity = ease_linear( 50, 90, CannNSpecialSpdTimer, 40 ) * 0.1;
+			} else if (CannStoredNSpecialAmt == 2) {
+				CannNSpecialVelocity = ease_linear( 70, 90, CannNSpecialSpdTimer, 20 ) * 0.1;
+			} else if (CannStoredNSpecialAmt == 3) {
+				CannNSpecialVelocity = 7;
+			}
+			//CannNSpecialVelocity = ease_linear( 3, 7, CannNSpecialSpdTimer, 60 );
+			
+			CannNSpecialHsp = CannNSpecialVelocity * dcos(70) * spr_dir;
+			
+			CannNSpecialVsp = CannNSpecialVelocity * dsin(70) * -1; // Note Flipped Coordinates
+			
+			CannNSpecialSpdTimer += 1;
+		}
+        
+        can_jump = true;
+        can_shield = true;
+        can_wall_jump = true;
+        grav = 0.25;
+    }
+
+	if (window == 2 || window == 3) {
+		// Dot 1
+		CannDot1XPos = (x + 47 * spr_dir) + CannNSpecialHsp * 12;
+		CannDot1YPos = (y - 19) + CannNSpecialVsp * 12 + 0.5 * 0.3 * (144);
+		
+		// Dot 2
+		CannDot2XPos = (x + 47 * spr_dir) + CannNSpecialHsp * (24);
+		CannDot2YPos = (y - 19) + CannNSpecialVsp * (24) + 0.5 * 0.3 * (576);
+		
+		// Dot 3
+		CannDot3XPos = (x + 47 * spr_dir) + CannNSpecialHsp * (36);
+		CannDot3YPos = (y - 19) + CannNSpecialVsp * (36) + 0.5 * 0.3 * (1296);
+		
+		// Dot 4
+		CannDot4XPos = (x + 47 * spr_dir) + CannNSpecialHsp * (48);
+		CannDot4YPos = (y - 19) + CannNSpecialVsp * (48) + 0.5 * 0.3 * (2304);
+		
+		// Dot 5
+		CannDot5XPos = (x + 47 * spr_dir) + CannNSpecialHsp * (60);
+		CannDot5YPos = (y - 19) + CannNSpecialVsp * (60) + 0.5 * 0.3 * (3600);
+		
+	}
+
+    if (window == 3 || window == 4) {
+        grav = 0.05;
+    }
+    
+    if (window == 5) {
+        if (window_timer == 1) {
+            sound_play(asset_get("sfx_ell_explosion_medium"));
+            CannCannonBallActive = true;
+            instance_create(x+15*spr_dir, y-50, "obj_article1");
+            CannNSpcCharge = 0;
+            CannNSpcChargeTimer = 0;
+            
+            CannNSpecialVsp = -1.03;
+			CannNSpecialHsp = 2.82;
+			CannNSpecialVelocity = 3;
+			CannNSpecialSpdTimer = 0;
+			CannDotTime = 0;
+			
+			CannStoredNSpecialAmt = 0;
+        }
+        
+        if (window_timer > 1) {
+        	if (special_down == true) {
+        		attack = AT_FTILT;
+        		window = 1;
+        		window_timer = 1;
+        	}
+        }
+        
+		grav = 0.05;
+    }
+    
+    CannUSpcCharging = true; // So you can't explode yourself during these windows, but I'm too lazy to change it from Up special lol
+    
 }

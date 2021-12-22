@@ -108,7 +108,7 @@ if (my_hitboxID.attack == AT_USPECIAL && hit_player_obj.state == PS_HITSTUN) {
 //Made it so that Nspecial and Fspecial drain meter (Krankees)
 if (burst != 1) 
 {
-	if (my_hitboxID.attack != AT_NSPECIAL and my_hitboxID.attack != AT_FSPECIAL and my_hitboxID.attack != AT_FSTRONG)
+	if (my_hitboxID.attack != AT_NSPECIAL and my_hitboxID.attack != AT_FSPECIAL and my_hitboxID.attack != AT_USPECIAL and my_hitboxID.attack != AT_FSTRONG)
 	{
 		bloodmeter += (my_hitboxID.damage * 2.25);
 	}
@@ -119,6 +119,10 @@ if (burst != 1)
 	} else if (my_hitboxID.attack == AT_FSPECIAL) {
 				if (my_hitboxID.hbox_num == 2)
 		bloodmeter -= 15;
+	} else if (my_hitboxID.attack == AT_USPECIAL) {
+		if (my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 4) {
+		bloodmeter -= 15;
+	} 
 	}
 }
 //gnome

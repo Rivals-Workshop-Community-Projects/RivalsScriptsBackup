@@ -4,12 +4,9 @@ if (attack == AT_FTILT) {
     attack = AT_JAB;
 }
 
-if (attack == AT_USPECIAL) {
-    CannUSpcChargingTimer = 0;
-    CannUSpcCharging = false;
-    CannUSpcShootBallEndTimer = 0;
-    CannUSpcChargePower = 0;
-    CannUSpcShootHitboxTimer = 0;
+// Teleport to Cannonball
+if (special_down == true && CannTpUsed == false && joy_pad_idle == true && CannTeleportable == true && CannCannonBallActive == true && CannBallOppHit == false && CannTpUsed == false && (CannBoomY < get_stage_data(SD_BOTTOM_BLASTZONE) + get_stage_data(SD_Y_POS) - 200 && CannBoomX > get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE) + 100 && CannBoomX < room_width + get_stage_data(SD_X_POS) + get_stage_data(SD_SIDE_BLASTZONE) - 100)) {
+	attack = AT_FTILT; // Teleport to Cannonball
 }
 
 RaiseHeat = false;
@@ -35,18 +32,9 @@ if (attack == AT_DSPECIAL) {
 }*/
 
 if (attack == AT_FSTRONG || attack == AT_USTRONG || attack == AT_DSTRONG) {
-    if (HeatLevel == 0) {
-        state = PS_IDLE;
-        //sound_play(asset_get("sfx_zetter_fireball_fire"));
-        move_cooldown[AT_FSTRONG] = 6;
-        move_cooldown[AT_USTRONG] = 6;
-        move_cooldown[AT_DSTRONG] = 6;
-        //move_cooldown[AT_DATTACK] = 6;
-    } else {
-        CannGrabbedId = 0;
-        CannStrongTimer = 0;
-        CannStrongPower = 0;
-    }
+	CannGrabbedId = 0;
+	CannStrongTimer = 0;
+	CannStrongPower = 0;
 }
 
 if (attack == AT_DATTACK) {

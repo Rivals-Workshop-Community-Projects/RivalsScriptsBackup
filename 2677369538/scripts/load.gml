@@ -81,14 +81,13 @@ sprite_change_offset("cards", 60*2, 128);
 sprite_change_offset("cards_small", 60*2, 128);
 sprite_change_offset("large_flame", 64, 95);
 
-sprite_change_offset("rat_bombardier_bomb", 131, 173);
 sprite_change_offset("rat_bombardier_mask", 64*2, 95*2);
 sprite_change_offset("rat_bombardier", 64*2, 95*2);
+sprite_change_offset("rat_bombardier_bomb", 64*2, 88*2);
 sprite_change_offset("rat_bombardier_run", 131, 188);
-sprite_change_offset("rat_bombardier_turn", 131, 188);
+sprite_change_offset("rat_bombardier_turn", 134, 194);
 sprite_change_offset("rat_bombardier_nobomb", 131, 188);
-sprite_change_offset("rat_bombardier_disappear", 134, 191);
-sprite_change_offset("rat_bombardier_bomb", 131, 173);
+sprite_change_offset("rat_bombardier_disappear", 131, 194);
 sprite_change_offset("rat_bombardier_mask", 64*2, 95*2);
 sprite_change_offset("nspecial_proj", 131, 188);
 

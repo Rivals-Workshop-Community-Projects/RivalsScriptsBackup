@@ -26,8 +26,16 @@ if (state == PS_ATTACK_AIR && attack == AT_DAIR && window == 2 && hitpause == fa
 	}
 }	
 
+if(my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.destroyed == true){ 
+	player_id.move_cooldown[AT_NSPECIAL] = 15; 
+}
+
 if (attack == AT_FSPECIAL){
 	if (free == true && move_cooldown[AT_FSPECIAL] > 1){ move_cooldown[AT_FSPECIAL] = 3; }
+}
+
+if (state == PS_WALL_JUMP){
+	move_cooldown[AT_FSPECIAL] = 0;
 }
 
 confetti_num = random_func(9, 12, false);
@@ -37,7 +45,7 @@ if (rats == 1){ if (rat_timer >= 4){ rat_timer = 1; } }
 if (rats == 2){ if (rat_timer >= 9){ rat_timer = 6; } }
 if (rats == 3){ if (rat_timer >= 14){ rat_timer = 11; } }
 
-if (propeller_rats >= 4){ move_cooldown[AT_DSPECIAL] = 9999999999; } else { move_cooldown[AT_DSPECIAL] = 0; }
+//if (propeller_rats >= 4){ move_cooldown[AT_DSPECIAL] = 9999999999; } else { move_cooldown[AT_DSPECIAL] = 0; }
 
 if (get_player_color(player) == 6){
 	set_character_color_shading( 0, 0 );

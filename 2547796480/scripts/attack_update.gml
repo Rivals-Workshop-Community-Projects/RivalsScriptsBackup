@@ -101,6 +101,9 @@ if attack == AT_DAIR {
 }
 
 if attack == AT_NSPECIAL  {
+	
+
+	
 	if window == 1 && window_timer < 5{
 	    if left_down && !right_down {
   	    	spr_dir = -1

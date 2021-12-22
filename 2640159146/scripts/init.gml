@@ -188,7 +188,7 @@ burstactive = false;
 burstmeter = 0;
 burstmetermax = 100;
 burstmetermin = 0;
-//burstmeterdec = 0.185;
+//burstmeterdec = 0;
 burstmeterdec = 0.185;
 burstdamage = 2;
 danmoment = 100;
@@ -222,6 +222,12 @@ burstfrontx = 0;
 burstbackx = 0;
 burstfronty = 0;
 burstbacky = 0;
+
+//hi garebear
+back_dspec_hitbox_var = false;
+back_dspec_hitbox_timer = 0;
+front_dspec_hitbox_var = false;
+front_dspec_hitbox_timer = 0;
 
 esps_fx1 = hit_fx_create( sprite_get( "esps" ), 20 );
 uspecialfx = hit_fx_create( sprite_get( "uspecialfx" ), 40 );

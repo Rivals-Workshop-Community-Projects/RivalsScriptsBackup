@@ -628,7 +628,7 @@ if lockouttimer < 0 {
          		
          		if bouncing == false {
          	    spawn_hit_fx(x,y ,b4)
-                hitbox_timer = 5
+                hitbox_timer = 30
                 shake_camera(2,2)
          		bouncing = true
          		bouncenum = 1
@@ -686,7 +686,7 @@ if lockouttimer < 0 {
                    hit_priority = 9
                    for (var i = 1; i < 20; i++) can_hit[i] = true
                    spawn_hit_fx(x,y ,b4)
-                   hitbox_timer = 5
+                   hitbox_timer = 30
                    shake_camera(2,2)
              	//}
          	}  

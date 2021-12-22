@@ -2,3 +2,5 @@
 
 HeatLevel = 0;
 CannNSpcCharge = 0;
+
+CannBallDie = true;

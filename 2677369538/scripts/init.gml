@@ -13,6 +13,9 @@ which_bash = 0;
 afterimage_timer = 0;
 KILL_RATS = 0;
 
+groundrat_id = noone;
+airrat_id = noone;
+
 char_height = 68;
 idle_anim_speed = 1/6.5;
 crouch_anim_speed = .1;

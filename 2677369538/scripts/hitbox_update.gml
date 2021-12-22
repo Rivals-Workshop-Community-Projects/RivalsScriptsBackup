@@ -4,8 +4,7 @@ if (get_player_color(player) == 7){
 	outline_color = [140, 81, 10];
 	init_shader();
 }
-
-/*	
+	
 //DAttack
 if (attack == AT_DATTACK){
 	if (hbox_num == 3){
@@ -22,12 +21,38 @@ if (attack == AT_DATTACK){
 		}
 	}
 }
-*/
 
 //NSpecial
 if (attack == AT_NSPECIAL){
+if (hbox_num == 2 && destroyed == true){
+	player_id.move_cooldown[AT_NSPECIAL] = 60;
+	sound_play(sound_get("sfx_bomb_explode"));
+}
+	if (player_id.state == PS_DEAD || player_id.state == PS_RESPAWN || player_id.was_parried){ destroyed = true; }
+	if (was_parried == true){ player_id.move_cooldown[AT_NSPECIAL] = 60; }
     if (hbox_num == 1){
     	if (player_id.move_cooldown[AT_NSPECIAL] < 2){ player_id.move_cooldown[AT_NSPECIAL]++; }
+    	
+    	with (asset_get("pHitBox")){
+    		if (player != other.player && place_meeting(x,y,other.id)){
+    		other.hsp = 4 * spr_dir;
+    		other.vsp = -6;
+    		other.slapped = true;
+    		other.spr_dir = spr_dir;
+    		other.hitbox_timer = 5;
+    		other.attack_back = true;
+    		//}
+    		with (player_id){
+    		//if (player != other.player && place_meeting(x,y,other.id)){
+    		hitpause = true;
+    		hitstop = 6;
+    		hitstop_full = 10;
+    		has_hit = true;
+    		old_hsp = 0;
+    		old_vsp = 0;
+    		}
+    	}
+    }
 if (hitbox_timer == 1){
 	jumpy = false;
 	jumpytime = 0;
@@ -39,76 +64,112 @@ if (hitbox_timer == 1){
 if (hitbox_timer >= 800){ hitbox_timer = 0; } //So it lives forever.
 knight_distance = point_distance(player_id.x, player_id.y - player_id.char_height * 0.1, x, y);
 if (turned == true && player_id.special_down && free){ removerat_time += 1; }
-if (free && removerat_time >= 15){
+if (free && removerat_time >= 10){
 	//If they're in the air and you press special
 	//they should use this sprite w/ this speed
 	sprite_index = sprite_get("rat_bombardier_disappear");
 	image_speed = 0.9;
+	if(removerat_time >= 18){
+		player_id.move_cooldown[AT_NSPECIAL] = 60;
+		destroyed = true;
+		sound_play(sound_get("sfx_bomb_explode"));
+	}
 }
-if (knight_distance <= 40 && player_id.attack == AT_FSPECIAL && player_id.window == 2 && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){
-    //This is when he's bashing normally
-    slapped = true;
-    vsp = -5;
-    hsp = 4 * spr_dir;
-    spr_dir = player_id.spr_dir;
-    grounds = 1; walls = 1;
-    mask_index = asset_get("empty_sprite");
-    collision_sprite = asset_get("empty_sprite");
-    sprite_index = sprite_get("rat_bombardier_nobomb");
-    player_id.window = 4;
-    player_id.window_timer = 1;
-    player_id.spin_hit = true;
-    player_id.hitstop = 10; player_id.hitstop_full = 7; 
-	shake_camera( 2, 6 );
-	player_id.hitpause = true;
-    create_hitbox(AT_NSPECIAL, 2, x, y);
-	spawn_base_dust(x + (20 * spr_dir), y - 32, "wallland", spr_dir * -1); 
+
+if (attack_back == true){
+	if (hitbox_timer == 5){
+	var deadboi = create_hitbox(AT_NSPECIAL, 3, x, y);
+	var retaliate = create_hitbox(AT_NSPECIAL, 2, x, y);
+	retaliate.hsp = 8 * spr_dir;
+	retaliate.vsp = -7;
+	//retaliate.spr_dir = spr_dir;
+	retaliate.can_hit_self = 1;
+	grounds = 1; walls = 1;
+	mask_index = asset_get("empty_sprite");
+	collision_sprite = asset_get("empty_sprite");
+	sprite_index = sprite_get("rat_bombardier_nobomb");
+	}
 }
-if (knight_distance <= 40 && player_id.attack == AT_DAIR && player_id.window == 2 && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){
-    //This is when he's down bashing
-    slapped = true;
-    vsp = -5;
-    hsp = 4 * spr_dir;
-    spr_dir = player_id.spr_dir;
-    grounds = 1; walls = 1;
-    mask_index = asset_get("empty_sprite");
-    collision_sprite = asset_get("empty_sprite");
-    sprite_index = sprite_get("rat_bombardier_nobomb");
-	player_id.attack = AT_FSPECIAL;
-    player_id.window = 4;
-    player_id.window_timer = 1;
-    player_id.spin_hit = true;
-    player_id.hitstop = 10; player_id.hitstop_full = 7; 
-	player_id.which_bash = 1;
-	shake_camera( 2, 6 );
-	player_id.hitpause = true;
-    create_hitbox(AT_NSPECIAL, 2, x, y);
-	spawn_base_dust(x, y, "land"); 
+
+with (asset_get("pHitBox")){
+		if (player_id == other.player_id && place_meeting(x,y,other.id)){
+			if (attack == AT_FSPECIAL && hbox_num == 1){
+			//This is when he's bashing normally
+		    other.slapped = true;
+		    other.vsp = -8;
+		    other.hsp = 1 * spr_dir;
+		    other.spr_dir = player_id.spr_dir;
+		    other.grounds = 1; other.walls = 1;
+		    other.mask_index = asset_get("empty_sprite");
+		    other.collision_sprite = asset_get("empty_sprite");
+		    other.sprite_index = sprite_get("rat_bombardier_nobomb");
+		    player_id.window = 4;
+		    player_id.window_timer = 1;
+		    player_id.spin_hit = true;
+		    player_id.hitstop = 10; player_id.hitstop_full = 7; 
+			shake_camera( 2, 6 );
+			player_id.hitpause = true;
+		    create_hitbox(AT_NSPECIAL, 2, other.x, other.y);
+			spawn_base_dust(x + (22 * spr_dir), y - 32, "walljump", spr_dir * -1);
+    	}
+	}
 }
-if (knight_distance <= 40 && player_id.attack == AT_FSPECIAL && player_id.window == 8 && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND)){
-    //This is when he's rolling
-    slapped = true;
-    vsp = -6;
-    hsp = 5 * spr_dir;
-    spr_dir = player_id.spr_dir;
-    grounds = 1; walls = 1;
-    mask_index = asset_get("empty_sprite");
-    collision_sprite = asset_get("empty_sprite");
-    sprite_index = sprite_get("rat_bombardier_nobomb");
-    player_id.window = 9;
-    player_id.window_timer = 1;
-    create_hitbox(AT_NSPECIAL, 2, x, y);
+with (asset_get("pHitBox")){
+		if (player_id == other.player_id && place_meeting(x,y,other.id)){
+			if (attack == AT_DAIR){
+				//This is when he's down bashing
+		    other.slapped = true;
+		    other.vsp = -5;
+		    other.hsp = 2 * spr_dir;
+		    other.spr_dir = player_id.spr_dir;
+		    other.grounds = 1; other.walls = 1;
+		    other.mask_index = asset_get("empty_sprite");
+		    other.collision_sprite = asset_get("empty_sprite");
+		    other.sprite_index = sprite_get("rat_bombardier_nobomb");
+			spawn_base_dust(x, y, "land"); 
+			player_id.attack = AT_FSPECIAL;
+		    player_id.window = 4;
+		    player_id.window_timer = 1;
+		    player_id.spin_hit = true;
+		    player_id.hitstop = 10; player_id.hitstop_full = 7; 
+			player_id.which_bash = 1;
+			shake_camera( 2, 6 );
+			player_id.hitpause = true;
+		    create_hitbox(AT_NSPECIAL, 2, other.x, other.y);
+    	}
+	}
 }
-if (knight_distance <= 40 && player_id.attack == AT_FSPECIAL && player_id.window == 6 && player_id.window_timer > 6 && (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND) && sprite_index != sprite_get("rat_bombardier_nobomb")){
+with (asset_get("pHitBox")){
+		if (player_id == other.player_id && place_meeting(x,y,other.id)){
+			if (attack == AT_FSPECIAL && hbox_num == 4){
+			//This is when he's rolling
+		    other.slapped = true;
+		    other.vsp = -6;
+		    other.hsp = 5 * spr_dir;
+		    other.spr_dir = player_id.spr_dir;
+		    other.grounds = 1; other.walls = 1;
+		    other.mask_index = asset_get("empty_sprite");
+		    other.collision_sprite = asset_get("empty_sprite");
+		    other.sprite_index = sprite_get("rat_bombardier_nobomb");
+			create_hitbox(AT_NSPECIAL, 2, other.x, other.y);
+		    player_id.window = 9;
+		    player_id.window_timer = 1;
+		    //other.destroyed = true;
+		}
+    }
+}
+with (asset_get("pHitBox")){
+	if (player_id == other.player_id && place_meeting(x,y,other.id)){
+		if (attack == AT_FSPECIAL && hbox_num == 2){
     //spinning
-    slapped = true;
-    vsp = -6;
-    hsp = 5 * spr_dir;
-    spr_dir = player_id.spr_dir;
-    grounds = 1; walls = 1;
-    mask_index = asset_get("empty_sprite");
-    collision_sprite = asset_get("empty_sprite");
-    sprite_index = sprite_get("rat_bombardier_nobomb");
+    other.slapped = true;
+    other.vsp = -6;
+    other.hsp = 5 * spr_dir;
+    other.spr_dir = player_id.spr_dir;
+    other.grounds = 1; other.walls = 1;
+    other.mask_index = asset_get("empty_sprite");
+    other.collision_sprite = asset_get("empty_sprite");
+    other.sprite_index = sprite_get("rat_bombardier_nobomb");
 	player_id.spin_hit = true;
 	player_id.move_cooldown[AT_FSPECIAL] = 1;
     player_id.window = 5;
@@ -119,9 +180,9 @@ if (knight_distance <= 40 && player_id.attack == AT_FSPECIAL && player_id.window
 	shake_camera( 2, 6 );
 	sound_play(sound_get("sfx_spin_rebound"));
 	sound_play(sound_get("sfx_bomb_explode"));
-	create_hitbox(AT_NSPECIAL, 3, x, y);
-	spawn_hit_fx( x, y-20, player_id.bomb_explosion );
-	spawn_base_dust(x, y, "djump"); 
+	create_hitbox(AT_NSPECIAL, 2, other.x, other.y);
+		}
+	}
 }
 if ( (y > view_get_yview() + view_get_hview()) or (x+150 < view_get_xview()) or (y+120 < view_get_yview()) or (y-120 > view_get_yview() + view_get_hview()) or (x-150 > view_get_xview() + view_get_wview())){
         instance_destroy(); //If it's off screen, delete it.
@@ -196,20 +257,36 @@ else if (free == false && slapped == false){
 	}
 }
 
+
 if (attack == AT_NSPECIAL && hbox_num == 2){
+	if (was_parried == false){
 	if (free == false || place_meeting( x-4 * spr_dir, y, asset_get("par_block"))){
 		create_hitbox(AT_NSPECIAL, 3, x, y);
 		spawn_hit_fx( x, y-20, player_id.bomb_explosion );
 		sound_play(sound_get("sfx_bomb_explode"));
-		player_id.move_cooldown[AT_NSPECIAL] = 1;
+		player_id.move_cooldown[AT_NSPECIAL] = 60;
 		instance_destroy();
+		}
+	}
+	if (player_id.was_parried == true){
+		//can_hit_self = true;
+		vsp = -1;
+		grav = 1;
 	}
 }
+
+//if (attack == AT_NSPECIAL && hbox_num == 4){ can_hit_self = 1; }
 
 if (attack == AT_DSPECIAL && hbox_num == 1){ //Rats, we are the rats
 	through_platforms = 2;
 	grounds = 1;
 	walls = 1;
+	var hit_player_obj = player_id.hit_player_obj;
+	if (player_id.has_hit_player && hit_player_obj.state == PS_HITSTUN){ create_hitbox(AT_DSPECIAL, 4, x, y-3); image_xscale = 0; image_yscale = 0; } else { image_xscale = 0.1; image_yscale = 0.2; }
+	if (hitbox_timer == 2){ player_id.propeller_rats += 1; }
+	if (player_id.propeller_rats >= 3 && hitbox_timer > 30 || player_id.was_parried){ destroyed = true; }
+	
+	if (player_id.state == PS_DEAD || player_id.state == PS_RESPAWN){ destroyed = true; }
 	if (hitbox_timer < 2){ vsp = -4; hsp = 4 * spr_dir; }
 	if (hitbox_timer == 2){ grav = 0; }
 	if (hitbox_timer > 2 && hitbox_timer < 280){
@@ -250,8 +327,17 @@ if (attack == AT_DSPECIAL && hbox_num == 1){ //Rats, we are the rats
 	    }
 	}
 	
-	if (hsp * spr_dir > 1 && hitbox_timer > 2 && hitbox_timer < 300){ sprite_index = sprite_get("propeller_rat_move"); }
+	if (hsp * spr_dir > 1 && hitbox_timer > 2 && hitbox_timer < 300){ sprite_index = sprite_get("propeller_rat_move");  create_hitbox(AT_DSPECIAL, 5, x, y-3); }
 	if (hsp * spr_dir < 1 && hitbox_timer > 2 && hitbox_timer < 300){ sprite_index = sprite_get("propeller_rat"); }
+	
+	if (x-400 > get_instance_x(asset_get("camera_obj"))){
+		x = x-1;
+		spr_dir = -1;
+	}
+	if (x+400 < get_instance_x(asset_get("camera_obj")) ){
+		x = x+1;
+		spr_dir = 1;
+	}
 	
 	if (place_meeting( x, y+20, player_id)){
 	if (player_id.state == PS_ATTACK_AIR && player_id.attack == AT_USPECIAL && player_id.window >= 3 && player_id.window < 5 && hitbox_timer < 300){
@@ -261,7 +347,7 @@ if (attack == AT_DSPECIAL && hbox_num == 1){ //Rats, we are the rats
 	player_id.window_timer = 0;
 	create_hitbox(AT_DSPECIAL, 2, x * spr_dir, y-20);
 	player_id.rats += 1;
-	player_id.propeller_rats = player_id.propeller_rats - 1; 
+	//player_id.propeller_rats = player_id.propeller_rats - 1; 
 		}
 	}
 	
@@ -270,11 +356,13 @@ if (attack == AT_DSPECIAL && hbox_num == 1){ //Rats, we are the rats
     	other.destroyed = true; //Touching enemy hitboxes kills it.
     	}
     }
-    var rat_die = 0;
+    //var rat_die = 0;
     with (asset_get("pHitBox")){
 		if (player_id == other.player_id && place_meeting(x,y,other.id)){
 			if (attack == AT_DAIR || attack == AT_FSPECIAL){
-			if (rat_die == 0){ sound_play(sound_get("sfx_rat")); player_id.propeller_rats = player_id.propeller_rats - 1; }
+			//if (rat_die == 0){
+			//sound_play(sound_get("sfx_rat"));
+			//player_id.propeller_rats -= 1;
 			if (attack == AT_DAIR){
 			if (hbox_num < 4){
 			other.destroyed = true;
@@ -286,10 +374,11 @@ if (attack == AT_DSPECIAL && hbox_num == 1){ //Rats, we are the rats
 			player_id.hitpause = true;
 			player_id.hitstop = 10;
 			player_id.hitstop_full = 7;
+		    player_id.spin_hit = true;
+			player_id.which_bash = 1;
 			player_id.old_vsp = player_id.vsp;
 			player_id.old_hsp = player_id.hsp;
-			player_id.which_bash = 1;
-			rat_die = 1;
+			//rat_die = 1;
 				}
 			}
 			if (attack == AT_FSPECIAL){
@@ -302,9 +391,10 @@ if (attack == AT_DSPECIAL && hbox_num == 1){ //Rats, we are the rats
 			player_id.hitpause = true;
 			player_id.hitstop = 10;
 			player_id.hitstop_full = 7;
+		    player_id.spin_hit = true;
 			player_id.old_vsp = player_id.vsp;
 			player_id.old_hsp = player_id.hsp;
-			rat_die = 1;
+			//rat_die = 1;
 			}
 			if (hbox_num == 2 || hbox_num == 3){
 			other.destroyed = true;
@@ -323,7 +413,7 @@ if (attack == AT_DSPECIAL && hbox_num == 1){ //Rats, we are the rats
 			player_id.old_vsp = player_id.vsp;
 			player_id.old_hsp = player_id.hsp;
 			player_id.which_bash = 2;
-			rat_die = 1;
+			//rat_die = 1;
 			}
 			if (hbox_num == 4){
 			other.destroyed = true;
@@ -333,9 +423,9 @@ if (attack == AT_DSPECIAL && hbox_num == 1){ //Rats, we are the rats
 			player_id.hitpause = true;
 			player_id.old_vsp = player_id.vsp;
 			player_id.old_hsp = player_id.hsp;
-			rat_die = 1;
+			//rat_die = 1;
+					}
 				}
-			}
 			}
     	}
     }
@@ -345,7 +435,7 @@ if (attack == AT_DSPECIAL && hbox_num == 1){ //Rats, we are the rats
 		instance_destroy();
 	}
 	
-	if (player_id.KILL_RATS == 1 && is_rat_really_killed < 2){ 
+	if (player_id.KILL_RATS == 1 && is_rat_really_killed < 2){
 		is_rat_really_killed += 1;
 		player_id.propeller_rats = 0;
 		create_hitbox(AT_DSPECIAL, 2, x, y);
@@ -356,6 +446,7 @@ if (attack == AT_DSPECIAL && hbox_num == 1){ //Rats, we are the rats
 	}
 	
 	if (self.destroyed == true){
+		sound_play(sound_get("sfx_rat"));
 		create_hitbox(AT_DSPECIAL, 2, x, y);
 		create_hitbox(AT_DSPECIAL, 3, x+5 * spr_dir, y+30);
 		player_id.propeller_rats -= 1;
@@ -377,7 +468,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir = argument_count > 3 ? argument[3] : 0;
+var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
 
 switch (name) {
     default: 
@@ -389,7 +480,6 @@ switch (name) {
     case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
     case "land": dlen = 24; dfx = 0; dfg = 2620; break;
     case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
-	case "wallland": dlen = 24; dfx = 0; dfg = 2620; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
     case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
     case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
 }

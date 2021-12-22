@@ -42,7 +42,7 @@ if(get_player_color(player) == 16){
     set_hitbox_value(AT_FSTRONG, 3, HG_VISUAL_EFFECT, hfx_bat);
     set_hitbox_value(AT_FSTRONG, 4, HG_VISUAL_EFFECT, hfx_bat);
     set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("dspecial_dev_knife"));
-    set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, hfx_pumpkin);
+    set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, hfx_bat);
     set_hitbox_value(AT_USPECIAL, 2, HG_VISUAL_EFFECT, hfx_bat);
     set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, hfx_pumpkin);
     set_hitbox_value(AT_DATTACK, 1, HG_VISUAL_EFFECT, hfx_pumpkin);
@@ -75,7 +75,7 @@ air_max_speed       = 6;  		// 3    -  7
 jump_change         = 3;		// 3
 air_accel           = 0.36;		// 0.2  -  0.4
 prat_fall_accel     = 0.85;		// 0.25 -  1.5
-air_friction        = 0.02;		// 0.02 -  0.07
+air_friction        = 0.035;		// 0.02 -  0.07
 max_fall            = 10;		// 6    -  11
 fast_fall           = 14;		// 11   -  16
 gravity_speed       = 0.45;		// 0.3  -  0.6

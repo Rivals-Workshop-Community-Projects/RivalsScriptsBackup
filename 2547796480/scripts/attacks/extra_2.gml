@@ -131,3 +131,5 @@ set_hitbox_value(AT_EXTRA_2, 2, HG_HITSTUN_MULTIPLIER, 0);
 set_hitbox_value(AT_EXTRA_2, 2, HG_EXTRA_CAMERA_SHAKE, 1);
 set_hitbox_value(AT_EXTRA_2, 2, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_EXTRA_2, 2, HG_TECHABLE, 1);
+set_hitbox_value(AT_EXTRA_2, 2, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_EXTRA_2, 2, HG_EXTENDED_PARRY_STUN, 1);

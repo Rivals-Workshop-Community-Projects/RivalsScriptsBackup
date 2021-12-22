@@ -40,7 +40,6 @@ if (attack == AT_UAIR){
 if (attack == AT_DAIR){
 	can_fast_fall = false;
 	if (window < 2){which_bash = 0; hsp = 0;}
-	if(window < 4){spin_hit = false;}
 	if(!free && window < 4){
 		window = 4; 
 		window_timer = 0; 
@@ -82,22 +81,26 @@ if (attack == AT_DATTACK){
 		if (window_timer == 1){
 			spawn_base_dust(x, y, "dash_start");
 		}
+		if (window_timer == 8){
+		if (!(attack_down || down_stick_down || right_stick_down || left_stick_down || up_stick_down)){
+			spawn_base_dust(x, y, "dash");
+			window = 3;
+			window_timer = 0;
+		}
+		}
+	}
+	if (window == 2 || window == 3){
 		if (has_hit == 1){
 			can_attack = 1;
 			can_jump = 1;
 		}
-		if (window_timer == 8 && !attack_down){
-			spawn_base_dust(x, y, "dash");
-			window = 4;
-			window_timer = 0;
-		}
 	}
-    if (window == 3){
+    if (window == 4){
 		if (window_timer == 6 || window_timer == 12){
 			spawn_base_dust(x, y, "dash");
 		}
-		if (!attack_down){
-			window = 4;
+		if (!(attack_down || down_stick_down || right_stick_down || left_stick_down || up_stick_down)){
+			window = 5;
 			window_timer = 0;
 		} else {
 			if (window_timer == 6 || window_timer == 12){
@@ -109,7 +112,7 @@ if (attack == AT_DATTACK){
 			}
 		}
 	}
-	if (window == 4){
+	if (window == 5){
 		destroy_hitboxes();
 	}
 }
@@ -120,7 +123,7 @@ if (attack == AT_DTILT){
 		if (window == 2){
 			destroy_hitboxes();
 		}
-		if (window == 3 && attack_pressed){
+		if (window == 3 && ((attack_pressed && down_down) /* && down_down to prevent misnputs*/ || down_stick_pressed)){
 			window = 4;
 			window_timer = 0;
 			has_hit = 0;
@@ -142,6 +145,7 @@ if (attack == AT_DTILT){
 
 //FStrong
 if (attack == AT_FSTRONG){
+	set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 9 + strong_charge / 2);
 	var spawnposL = random_func( 19, 46, true);
 	var spawnposR = random_func( 20, 45, true);
 	if (window == 1){ confetti_L = random_func( 1, 100, true); }
@@ -234,19 +238,20 @@ if (attack == AT_DSTRONG){
 	}
 }
 
-//UStrong
+//NSpecial
 if (attack == AT_NSPECIAL){
-	if (window == 3){ move_cooldown[AT_NSPECIAL] = 5; }
+	if (window == 2 && window_timer == 1){ move_cooldown[AT_NSPECIAL] = 15; }
 	if (window > 1){ can_jump = true; }
 }
 
 //FSpecial
 if (attack == AT_FSPECIAL){
+	if (window == 7 && window_timer > 1){ move_cooldown[AT_FSPECIAL] = 1; can_dash = true; can_jump = true; }
 	if ( window == 6 ){ can_fast_fall = true; } else { can_fast_fall = false; }
 	move_cooldown[AT_FSPECIAL] = 10;
-	if (window == 2){ which_bash = 0; }
-	if (window < 5){ 
-		spin_hit = false; 
+	if (window == 2){
+		which_bash = 0
+		if (has_hit == true && hitpause == true){ window = 4; window_timer = 0; }
 	}
 	if (window == 2){
 		if (special_pressed && window_timer > 5){ 
@@ -257,6 +262,8 @@ if (attack == AT_FSPECIAL){
 		}
 		if (place_meeting( x+1 * spr_dir, y, asset_get("par_block"))) { 
 			spawn_base_dust(x + (22 * spr_dir), y - 32, "walljump", spr_dir * -1); 
+			which_bash = 1;
+			spin_hit = false; 
 			window = 4; window_timer = 1; 
 			hitstop = 10; hitstop_full = 7; 
 			shake_camera( 2, 6 );
@@ -271,6 +278,7 @@ if (attack == AT_FSPECIAL){
 	}
 	if (window == 4){ //Stopper sends him into the spin starter
 		window = 5;
+		window_timer = 0;
 		sound_play(sound_get("sfx_bash_hit"));
 	} 
 	if (window == 5){ //Spin start goes into the looping spin
@@ -278,8 +286,8 @@ if (attack == AT_FSPECIAL){
 		window = 6;
 		window_timer = 0;
 		}
-		if (window_timer == 0 && spin_hit == false){
-			sound_play(sound_get("sfx_spinjump"));
+		if (window_timer == 1 && spin_hit == false){
+			//sound_play(sound_get("sfx_spinjump"));
 			which_bash = 2;
 		}
 		else {if (window_timer == 0){spawn_base_dust(x, y, "djump");}}
@@ -288,10 +296,7 @@ if (attack == AT_FSPECIAL){
 		can_move = true; 
 	}
 	if (window == 6){
-		/* if (window_timer > 10){
-			//create_hitbox(AT_FSPECIAL, 2, x, y); 
-			//create_hitbox(AT_FSPECIAL, 3, x, y); 
-		} */
+		if (has_hit == true && hitpause == true){ window = 5; window_timer = 0; }
 		//can_jump = 1;
 		can_wall_jump = 1;
 		var stick_dir = right_stick_pressed or down_stick_pressed or left_stick_pressed or up_stick_pressed
@@ -406,7 +411,15 @@ if (attack == AT_DSPECIAL){
     can_fast_fall = false;
     can_move = false
 	if (window == 1 && window_timer == 1){
-	propeller_rats += 2;
+	//propeller_rats += 1;
+	//attack_end();
+	}
+	if (window == 3){
+		can_jump = true;
+	}
+	if (has_hit_player){
+	//propeller_rats += 1;
+	attack_end();
 	}
 }
 //SuperSonic base dust code

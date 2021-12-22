@@ -1,6 +1,8 @@
 //post-draw
 
-if (attack == AT_USPECIAL && state != PS_TECH_GROUND && state != PS_TECH_FORWARD && state != PS_TECH_BACKWARD && state != PS_ROLL_BACKWARD && state != PS_ROLL_FORWARD && state != PS_PARRY && state != PS_AIR_DODGE && state != PS_TECH_GROUND && state != PS_TECH_FORWARD && state != PS_TECH_BACKWARD) {
+// OLD USPECIAL
+
+/*if (attack == AT_USPECIAL && state != PS_TECH_GROUND && state != PS_TECH_FORWARD && state != PS_TECH_BACKWARD && state != PS_ROLL_BACKWARD && state != PS_ROLL_FORWARD && state != PS_PARRY && state != PS_AIR_DODGE && state != PS_TECH_GROUND && state != PS_TECH_FORWARD && state != PS_TECH_BACKWARD) {
     if (window == 1 || window == 2 || window == 3) {
         if (spr_dir == 1) {
             shader_start();
@@ -82,7 +84,38 @@ if (attack == AT_USPECIAL && state != PS_TECH_GROUND && state != PS_TECH_FORWARD
         }
     }
     
-}
+}*/
+
+// Neutral Special Meter
+//if (attack == AT_NSPECIAL && state != PS_TECH_GROUND && state != PS_TECH_FORWARD && state != PS_TECH_BACKWARD && state != PS_ROLL_BACKWARD && state != PS_ROLL_FORWARD && state != PS_PARRY && state != PS_AIR_DODGE && state != PS_TECH_GROUND && state != PS_TECH_FORWARD && state != PS_TECH_BACKWARD) {
+//    if (window == 2 || window == 1) {
+//        shader_start();
+//        draw_sprite_ext(sprite_get("nspecial_smallmeter"), CannNSpcCharge, x - 10 * spr_dir, y - 80, 1, 1, 0, -1, 1);
+//        shader_end();
+//    }
+    
+    /*if ((window == 2 && CannNSpcCharge > 0) || (window == 2 && CannNSpcCharge == 0 && CannNSpcChargeTimer > 1) || window = 3) {
+        shader_start();
+        draw_sprite_ext(sprite_get("positiondot"), 1, CannDot1XPos, CannDot1YPos - 20, 1, 1, 0, -1, 1);
+        shader_end();
+        
+        shader_start();
+        draw_sprite_ext(sprite_get("positiondot"), 1, CannDot2XPos, CannDot2YPos - 20, 1, 1, 0, -1, 1);
+        shader_end();
+        
+        shader_start();
+        draw_sprite_ext(sprite_get("positiondot"), 1, CannDot3XPos, CannDot3YPos - 20, 1, 1, 0, -1, 1);
+        shader_end();
+        
+        shader_start();
+        draw_sprite_ext(sprite_get("positiondot"), 1, CannDot4XPos, CannDot4YPos - 20, 1, 1, 0, -1, 1);
+        shader_end();
+        
+        shader_start();
+        draw_sprite_ext(sprite_get("positiondot"), 1, CannDot5XPos, CannDot5YPos - 20, 1, 1, 0, -1, 1);
+        shader_end();
+    }*/
+//}
 
 // Heat Meter 10
 if (HeatLevel >= 10) {
