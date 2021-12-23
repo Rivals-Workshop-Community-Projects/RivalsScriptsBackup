@@ -11,13 +11,14 @@ if swift_mode = true{
 	move_cooldown[AT_TAUNT] = 10;
 	move_cooldown[AT_TAUNT_2] = 10;
 	swift_timer++;
+	knockback_adj = 1.05;
 	walk_speed = 4;
 	walk_anim_speed = .175;
 	wave_land_adj = 1.5;
-	dash_speed = 9;
+	dash_speed = 10;
 	dash_anim_speed = .35;
-	initial_dash_speed = 9.25;
-	air_dodge_speed = 8.5;
+	initial_dash_speed = 10.5;
+	air_dodge_speed = 9;
 	air_max_speed = 6;
 	air_accel = 0.45;
 	jump_speed = 9;
@@ -30,17 +31,18 @@ if swift_mode = true{
 	waveland_sound = asset_get("sfx_waveland_ori");
 }
 
-if swift_timer > 666{
+if swift_timer > 700{
 	swift_mode = false;
 }
 
 if swift_mode = false{
+	knockback_adj = 1.15;
 	walk_speed = 3.5;
 	walk_anim_speed = .125;
 	wave_land_adj = 1.35;
-	dash_speed = 7.75;
+	dash_speed = 8;
 	dash_anim_speed = .3;
-	initial_dash_speed = 8.25;
+	initial_dash_speed = 8.5;
 	air_dodge_speed = 7.5;
 	air_max_speed = 5;
 	air_accel = 0.3;
@@ -54,7 +56,7 @@ if swift_mode = false{
 	waveland_sound = asset_get("sfx_waveland_fors");
 }
 
-if swift_timer = 666{
+if swift_timer = 700{
 	sound_play(sound_get("swiftoff"));
 	sound_stop(sound_get("swifton"));
 }

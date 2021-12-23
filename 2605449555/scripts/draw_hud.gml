@@ -2,11 +2,11 @@
 
 // Debugs
 
-draw_debug_text( temp_x, temp_y - 85, string( CannBallFSpcLand ));
+//draw_debug_text( temp_x, temp_y - 85, string( invincible ));
 
-draw_debug_text( temp_x + 60, temp_y - 85, string( CannBallOppLastHitY ));
+//draw_debug_text( temp_x + 60, temp_y - 85, string( CannBallOppLastHitY ));
 
-draw_debug_text( temp_x + 120, temp_y - 85, string( CannBallOppLastHitLD ));
+//draw_debug_text( temp_x + 120, temp_y - 85, string( CannBallOppLastHitLD ));
 
 if (CannCannonBallActive == false) {
     shader_start();

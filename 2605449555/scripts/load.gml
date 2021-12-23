@@ -36,9 +36,9 @@ sprite_change_offset("bair", 100, 95);
 sprite_change_offset("uair", 80, 118);
 sprite_change_offset("dair", 40, 78);
 sprite_change_offset("fstrong", 40, 98);
-sprite_change_offset("ustrong", 96, 160);
+sprite_change_offset("ustrong", 96, 158);
 sprite_change_offset("dstrong", 90, 78);
-sprite_change_offset("nspecial", 78, 120);
+sprite_change_offset("nspecial", 78, 118);
 sprite_change_offset("fspecial", 40, 98);
 sprite_change_offset("uspecial", 70, 108);
 sprite_change_offset("dspecial", 100, 118);
@@ -66,7 +66,7 @@ sprite_change_offset("cannonball_hud", 14, 16);
 
 sprite_change_offset("recoveryboom", 59, 118);
 sprite_change_offset("burningboom", 59, 118);
-sprite_change_offset("recovery", 100, 120);
+sprite_change_offset("recovery", 100, 118);
 
 sprite_change_offset("warning", 18, 36);
 

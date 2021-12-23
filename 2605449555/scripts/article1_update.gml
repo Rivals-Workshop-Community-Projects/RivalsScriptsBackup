@@ -34,13 +34,13 @@ if (state == 0) {
 	}
 	
 	// Dertinmining Bonk LD
-	if ((abs(darctan2(vsp, hsp)) <= 40) || abs(darctan2(vsp, hsp)) >= 320) {
-		cannoball_BonkLD = 40;
-	} else if (abs(darctan2(vsp, hsp)) >= 140 && abs(darctan2(vsp, hsp)) <= 220) {
-		cannoball_BonkLD = 140;
-	} else if (abs(darctan2(vsp, hsp)) > 40 && abs(darctan2(vsp, hsp)) < 140) {
+	if ((abs(darctan2(vsp, hsp)) <= 45) || abs(darctan2(vsp, hsp)) >= 315) {
+		cannoball_BonkLD = 45;
+	} else if (abs(darctan2(vsp, hsp)) >= 135 && abs(darctan2(vsp, hsp)) <= 225) {
+		cannoball_BonkLD = 135;
+	} else if (abs(darctan2(vsp, hsp)) > 45 && abs(darctan2(vsp, hsp)) < 135) {
 		cannoball_BonkLD = abs(darctan2(vsp, hsp));
-	} else if abs(darctan2(vsp, hsp)) > 220 && abs(darctan2(vsp, hsp)) < 320 {
+	} else if abs(darctan2(vsp, hsp)) > 225 && abs(darctan2(vsp, hsp)) < 315 {
 		cannoball_BonkLD = abs(darctan2(vsp, hsp)) - 180;
 	}
 	
@@ -145,12 +145,12 @@ if (state == 0) {
 					
 				}
 				
-				if (point_distance(other.x,other.y, other.cannonball_enemy_idX, other.cannonball_enemy_idY) <= 50 && other.cannonball_enemy_id.state != PS_AIR_DODGE && other.cannonball_enemy_id.state != PS_ROLL_BACKWARD && other.cannonball_enemy_id.state != PS_ROLL_FORWARD && other.cannonball_enemy_id.state != PS_TECH_GROUND && other.cannonball_enemy_id.state != PS_TECH_FORWARD && other.cannonball_enemy_id.state != PS_TECH_BACKWARD && other.cannonball_enemy_id.state != PS_WALL_TECH && other.cannonball_enemy_id.state != PS_DEAD && other.cannonball_enemy_id.state != PS_RESPAWN && initial_invince == false) { // When hitting an opponent
+				if (point_distance(other.x,other.y, other.cannonball_enemy_idX, other.cannonball_enemy_idY) <= 50 && other.cannonball_enemy_id.state != PS_AIR_DODGE && other.cannonball_enemy_id.state != PS_ROLL_BACKWARD && other.cannonball_enemy_id.state != PS_ROLL_FORWARD && other.cannonball_enemy_id.state != PS_TECH_GROUND && other.cannonball_enemy_id.state != PS_TECH_FORWARD && other.cannonball_enemy_id.state != PS_TECH_BACKWARD && other.cannonball_enemy_id.state != PS_WALL_TECH && other.cannonball_enemy_id.state != PS_DEAD && other.cannonball_enemy_id.state != PS_RESPAWN && initial_invince == false && invincible == false) { // When hitting an opponent
 					if (other.cannonball_BurningForm == true) {
 						other.state_timer = 0;
 						other.state = 1;
 						other.ignores_walls = true;
-					} else if (other.cannonball_NoBonkTime <= 0 && other.player_id.attack != AT_FTILT && other.cannonball_NoHitPlayer <= 0 && other.cannonball_enemy_id.state != PS_AIR_DODGE && other.cannonball_enemy_id.state != PS_ROLL_BACKWARD && other.cannonball_enemy_id.state != PS_ROLL_FORWARD && other.cannonball_enemy_id.state != PS_TECH_GROUND && other.cannonball_enemy_id.state != PS_TECH_FORWARD && other.cannonball_enemy_id.state != PS_TECH_BACKWARD && other.cannonball_enemy_id.state != PS_WALL_TECH && other.cannonball_enemy_id.state != PS_DEAD && other.cannonball_enemy_id.state != PS_RESPAWN && initial_invince == false) {
+					} else if (other.cannonball_NoBonkTime <= 0 && other.player_id.attack != AT_FTILT && other.cannonball_NoHitPlayer <= 0 && other.cannonball_enemy_id.state != PS_AIR_DODGE && other.cannonball_enemy_id.state != PS_ROLL_BACKWARD && other.cannonball_enemy_id.state != PS_ROLL_FORWARD && other.cannonball_enemy_id.state != PS_TECH_GROUND && other.cannonball_enemy_id.state != PS_TECH_FORWARD && other.cannonball_enemy_id.state != PS_TECH_BACKWARD && other.cannonball_enemy_id.state != PS_WALL_TECH && other.cannonball_enemy_id.state != PS_DEAD && other.cannonball_enemy_id.state != PS_RESPAWN && initial_invince == false && invincible == false) {
 						other.state_timer = 0;
 						other.cannonball_ShakeTime = 9;
 						other.cannonball_BonkHsp = other.hsp;
@@ -159,12 +159,12 @@ if (state == 0) {
 					}
 				}
 			} else {
-				if (point_distance(other.x,other.y, other.player_id.x, other.player_id.y) <= 50 && other.player_id.state != PS_AIR_DODGE && other.player_id.state != PS_ROLL_BACKWARD && other.player_id.state != PS_ROLL_FORWARD && other.player_id.state != PS_TECH_GROUND && other.player_id.state != PS_TECH_FORWARD && other.player_id.state != PS_TECH_BACKWARD && other.player_id.state != PS_WALL_TECH && other.player_id.state != PS_DEAD && other.player_id.state != PS_RESPAWN && initial_invince == false) { // When hitting Cann (opponent controls)
+				if (point_distance(other.x,other.y, other.player_id.x, other.player_id.y) <= 50 && other.player_id.state != PS_AIR_DODGE && other.player_id.state != PS_ROLL_BACKWARD && other.player_id.state != PS_ROLL_FORWARD && other.player_id.state != PS_TECH_GROUND && other.player_id.state != PS_TECH_FORWARD && other.player_id.state != PS_TECH_BACKWARD && other.player_id.state != PS_WALL_TECH && other.player_id.state != PS_DEAD && other.player_id.state != PS_RESPAWN && initial_invince == false && invincible == false) { // When hitting Cann (opponent controls)
 					if (other.cannonball_BurningForm == true) {
 						other.state_timer = 0;
 						other.state = 1;
 						other.ignores_walls = true;
-					} else if (other.cannonball_NoBonkTime <= 0 && other.player_id.attack != AT_FTILT && other.player_id.state != PS_AIR_DODGE && other.player_id.state != PS_ROLL_BACKWARD && other.player_id.state != PS_ROLL_FORWARD && other.player_id.state != PS_TECH_GROUND && other.player_id.state != PS_TECH_FORWARD && other.player_id.state != PS_TECH_BACKWARD && other.player_id.state != PS_WALL_TECH && other.player_id.state != PS_DEAD && other.player_id.state != PS_RESPAWN && initial_invince == false) {
+					} else if (other.cannonball_NoBonkTime <= 0 && other.player_id.attack != AT_FTILT && other.player_id.state != PS_AIR_DODGE && other.player_id.state != PS_ROLL_BACKWARD && other.player_id.state != PS_ROLL_FORWARD && other.player_id.state != PS_TECH_GROUND && other.player_id.state != PS_TECH_FORWARD && other.player_id.state != PS_TECH_BACKWARD && other.player_id.state != PS_WALL_TECH && other.player_id.state != PS_DEAD && other.player_id.state != PS_RESPAWN && initial_invince == false && invincible == false) {
 						other.state_timer = 0;
 						other.cannonball_ShakeTime = 9;
 						other.cannonball_BonkHsp = other.hsp;
@@ -649,32 +649,30 @@ if (state == 1) {
 	vsp = 0;
 	hsp = 0;
 	
-	if (state_timer == 1) {
-		sound_play(asset_get("sfx_forsburn_reappear_hit"));
-	}
-	
-	if (state_timer == 4) {
+	if (state_timer == 0) {
 		with (player_id) {
-    		set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 130);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 130);
-	    }
-	    create_hitbox(AT_NSPECIAL, 1, x, y - 15);
-	}
-	
-	if (state_timer == 8) {
-		with (player_id) {
-    		set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 140);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 140);
+    		set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 80);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 80);
 	    }
 	    create_hitbox(AT_NSPECIAL, 1, x, y - 15);
 	    
 	    sound_play(asset_get("sfx_forsburn_reappear_hit"));
 	}
 	
-	if (state_timer == 12) {
+	if (state_timer == 4) {
 		with (player_id) {
-    		set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 150);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 150);
+    		set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 100);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 100);
+	    }
+	    create_hitbox(AT_NSPECIAL, 1, x, y - 15);
+	    
+	    sound_play(asset_get("sfx_forsburn_reappear_hit"));
+	}
+	
+	if (state_timer == 10) {
+		with (player_id) {
+    		set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 140);
+			set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 140);
 	    }
 	    create_hitbox(AT_NSPECIAL, 1, x, y - 15);
 	    with (player_id) {
@@ -682,7 +680,7 @@ if (state == 1) {
 	    }
 	}
 	
-	if (state_timer == 16) {
+	if (state_timer == 15) {
 
 	    create_hitbox(AT_NSPECIAL, 2, x, y - 15);
 	    
@@ -838,7 +836,7 @@ player_id.CannBallOppLastHitLD = cannonball_LastOppHitLD;
 
 // Destroys If Off Screen Somehow
 
-if (y > get_stage_data(SD_BOTTOM_BLASTZONE) + get_stage_data(SD_Y_POS) || x < get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE) || x > room_width + get_stage_data(SD_X_POS) + get_stage_data(SD_SIDE_BLASTZONE)) {
+if (y > room_height|| x > room_width || x < 0) {
 	player_id.CannCannonBallActive = false;
 	instance_destroy();
 }

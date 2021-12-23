@@ -1,5 +1,5 @@
 if swift_mode = true{
-	swift_timer = 665;
+	swift_timer = 699;
 }
 
 if training{

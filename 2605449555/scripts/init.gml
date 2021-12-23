@@ -3,7 +3,7 @@ crouchbox_spr = sprite_get("canncrouch_hurt");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
-char_height = 52;
+char_height = 60;
 idle_anim_speed = .1;
 crouch_anim_speed = .1;
 walk_anim_speed = .125;
@@ -89,7 +89,7 @@ roll_backward_max = 9;
 
 land_sound = asset_get("sfx_land_med");
 landing_lag_sound = asset_get("sfx_land");
-waveland_sound = asset_get("sfx_shovel_hit_med2");
+waveland_sound = asset_get("sfx_waveland_gus");
 jump_sound = asset_get("sfx_jumpground");
 djump_sound = asset_get("sfx_jumpair");
 air_dodge_sound = asset_get("sfx_propeller_dagger_draw");

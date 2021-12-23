@@ -228,3 +228,8 @@ set_color_profile_slot(11, 4, 0, 0, 0); //EYES (light)
 set_color_profile_slot(11, 5, 188,51,44); //BELT
 set_color_profile_slot(11, 6, 231,147,29); //LITTLE YELLOW BOW
 set_color_profile_slot(11, 7, 172, 172, 172); //PINK
+
+=== BEGIN JSON PALETTE ===
+{"formatversion":1,"data":[{"name":"Dress + Sleeves","colors":[{"r":243,"g":39,"b":32,"main":true},{"r":188,"g":7,"b":7}]},{"name":"Bow","colors":[{"r":255,"g":0,"b":0,"main":true},{"r":188,"g":7,"b":7}]},{"name":"Hair","colors":[{"r":94,"g":58,"b":56,"main":true},{"r":71,"g":36,"b":47}]},{"name":"Skin","colors":[{"r":255,"g":215,"b":198,"main":true},{"r":225,"g":160,"b":148}]},{"name":"Eyes","colors":[{"r":140,"g":8,"b":6,"main":true},{"r":101,"g":11,"b":19}]},{"name":"Belt","colors":[{"r":62,"g":14,"b":32,"main":true}]},{"name":"Little Yellow Bow","colors":[{"r":255,"g":255,"b":0,"main":true}]},{"name":"Pink","colors":[{"r":240,"g":180,"b":189,"main":true}]}]}
+=== END JSON PALETTE ===
+*/

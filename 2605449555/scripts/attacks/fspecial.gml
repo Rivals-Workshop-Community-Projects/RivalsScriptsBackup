@@ -37,7 +37,7 @@ set_window_value(AT_FSPECIAL, 5, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_FSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 5);
 
-// Shoot + Endlag
+// Endlag
 
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 16);

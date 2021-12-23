@@ -230,12 +230,6 @@ if (attack == AT_NSPECIAL) {
     if (window == 1 || window == 2 || window == 3) {
         CannUSpcCharging = true; // So you can't explode yourself during these windows, but I'm too lazy to change it from Up special lol
         
-        //if (hsp > 1) {
-        //	hsp = 1;
-        //} else if (hsp < -1) {
-        //	hsp = -1;
-        //}
-        
         if (vsp > 1) {
         	vsp = 1;
         }
@@ -502,10 +496,6 @@ if (attack == AT_FSPECIAL) {
             CannFSpcDashTimer = 0;
         }
         
-        //if (CannFSpcDashTimer == 1) {
-        //    create_hitbox(AT_FSPECIAL, 1, x, y);
-        //}
-        
         if (window_timer == 24) {
             window = 6;
             window_timer = 0;
@@ -543,7 +533,6 @@ if (attack == AT_FSPECIAL) {
     		}
     		
     	}
-        attack_invince = true;
         
     }
     
@@ -565,7 +554,6 @@ if (attack == AT_FSPECIAL) {
 		            CannOppFSpecialHit = false;
         		}
         	}
-            attack_invince = false;
             CannGrabbedId = 0;
         }
         
@@ -616,7 +604,6 @@ if (attack == AT_DSPECIAL) {
 				}
 				
 				super_armor = false;
-				attack_invince = true;
 				CannCounterActive = false;
 		        
 		        if (CannDSpcMeleeHit == true) {
@@ -647,8 +634,6 @@ if (attack == AT_DSPECIAL) {
     }
 	
 	if (window == 2) {
-		
-	
 	    
 	}
 	
@@ -661,7 +646,6 @@ if (attack == AT_DSPECIAL) {
         
         CannCounteredEnemyId = 0;
         
-        invincible = 0;
         super_armor = false;
         move_cooldown[AT_DSPECIAL] = 20;
 	}

@@ -5,7 +5,7 @@ if (attack == AT_FTILT) {
 }
 
 // Teleport to Cannonball
-if (special_down == true && CannTpUsed == false && joy_pad_idle == true && CannTeleportable == true && CannCannonBallActive == true && CannBallOppHit == false && CannTpUsed == false && (CannBoomY < get_stage_data(SD_BOTTOM_BLASTZONE) + get_stage_data(SD_Y_POS) - 200 && CannBoomX > get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE) + 100 && CannBoomX < room_width + get_stage_data(SD_X_POS) + get_stage_data(SD_SIDE_BLASTZONE) - 100)) {
+if (special_down == true && CannTpUsed == false && joy_pad_idle == true && CannTeleportable == true && CannCannonBallActive == true && CannBallOppHit == false && CannTpUsed == false && (CannBoomY < room_height - 100 && CannBoomX > 100 && CannBoomX < room_width - 100)) {
 	attack = AT_FTILT; // Teleport to Cannonball
 }
 

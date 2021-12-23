@@ -11,7 +11,7 @@ set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 21);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_ori_glide_end"));
+set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_ori_glide_start"));
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX_FRAME, 1);
 
 set_window_value(AT_NSPECIAL, 2, AG_WINDOW_TYPE, 1);
@@ -66,6 +66,6 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
-set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_AIR_FRICTION, .63);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_AIR_FRICTION, .55);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DESTROY_EFFECT, 256);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 1);

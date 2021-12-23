@@ -135,8 +135,8 @@ if swift_mode = true{
 	set_hitbox_value(AT_JAB, 3, HG_BASE_HITPAUSE, 12);
 	set_hitbox_value(AT_NAIR, 2, HG_BASE_HITPAUSE, 14);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 16);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 18);
-	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 8.25);
+	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 20);
+	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 10);
 	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 16);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 14);
 	set_hitbox_value(AT_JAB, 3, HG_VISUAL_EFFECT, 304);
@@ -185,6 +185,7 @@ if swift_mode = true{
 	set_window_value(AT_DTILT, 3, AG_WINDOW_SFX, sound_get("slamEX"));
 	set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, sound_get("spinEX"));
 	set_window_value(AT_FAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
+	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_ori_glide_end"));
 	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_blink_dash"));
 	set_window_value(AT_FTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 	set_window_value(AT_FTILT, 2, AG_WINDOW_SFX, sound_get("clapEX"));
@@ -192,10 +193,21 @@ if swift_mode = true{
 	set_window_value(AT_JAB, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 	set_window_value(AT_JAB, 7, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
 	set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, asset_get("sfx_forsburn_combust"));
-	if (window == 2 && attack == AT_USPECIAL && window_timer < 30){
+	set_hitbox_value(AT_USPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
+	set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 60);
+	set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 6);
+	set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+	set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 302);
+	set_hitbox_value(AT_USPECIAL, 7, HG_HITSTUN_MULTIPLIER, 1);
+	set_hitbox_value(AT_USPECIAL, 7, HG_ANGLE_FLIPPER, 6);
+	set_hitbox_value(AT_USPECIAL, 7, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
+	set_hitbox_value(AT_USPECIAL, 7, HG_VISUAL_EFFECT, 301);
+	set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 5);
+	set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 6);
+	if (window == 2 && attack == AT_USPECIAL && window_timer < 40){
 		super_armor = true;
 	}
-	if (window == 2 && attack == AT_USPECIAL && window_timer > 30){
+	if (window == 2 && attack == AT_USPECIAL && window_timer > 40){
 		super_armor = false;
 	}
 	if (attack == AT_FSTRONG){
@@ -353,7 +365,7 @@ if swift_mode = false{
 	set_hitbox_value(AT_NAIR, 2, HG_BASE_HITPAUSE, 10);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 12);
 	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 15);
-	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 6.12);
+	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 7.5);
 	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH, 20);
 	set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 16);
 	set_hitbox_value(AT_JAB, 3, HG_VISUAL_EFFECT, 301);
@@ -402,6 +414,7 @@ if swift_mode = false{
 	set_window_value(AT_DTILT, 3, AG_WINDOW_SFX, asset_get("sfx_ori_stomp_hit"));
 	set_window_value(AT_FAIR, 1, AG_WINDOW_SFX, asset_get("sfx_spin"));
 	set_window_value(AT_FAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
+	set_window_value(AT_NSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_ori_glide_start"));
 	set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_leaves"));
 	set_window_value(AT_FTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 	set_window_value(AT_FTILT, 2, AG_WINDOW_SFX, asset_get("sfx_birdclap"));
@@ -409,8 +422,19 @@ if swift_mode = false{
 	set_window_value(AT_JAB, 4, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
 	set_window_value(AT_JAB, 7, AG_WINDOW_SFX, asset_get("sfx_swipe_medium1"));
 	set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, asset_get("sfx_ori_sein_fstrong"));
-	if (window == 2 && attack == AT_USPECIAL && window_timer < 15) super_armor = true;
-	if (window == 2 && attack == AT_USPECIAL && window_timer > 15) super_armor = false;
+	set_hitbox_value(AT_USPECIAL, 1, HG_HITSTUN_MULTIPLIER, -1);
+	set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 70);
+	set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 3);
+	set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+	set_hitbox_value(AT_USPECIAL, 1, HG_VISUAL_EFFECT, 303);
+	set_hitbox_value(AT_USPECIAL, 7, HG_HITSTUN_MULTIPLIER, -1);
+	set_hitbox_value(AT_USPECIAL, 7, HG_ANGLE_FLIPPER, 3);
+	set_hitbox_value(AT_USPECIAL, 7, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
+	set_hitbox_value(AT_USPECIAL, 7, HG_VISUAL_EFFECT, 303);
+	set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 4);
+	set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 5);
+	if (window == 2 && attack == AT_USPECIAL && window_timer < 20) super_armor = true;
+	if (window == 2 && attack == AT_USPECIAL && window_timer > 20) super_armor = false;
 	//sounds on strongs
 	if (attack == AT_FSTRONG){
 		if (window == 2 && window_timer == 1){
@@ -563,10 +587,10 @@ if (attack == AT_USPECIAL){
         var fly_dir = point_direction(0,0,hsp,vsp);
         var fly_dist = point_distance(0,0,hsp,vsp);
 		if swift_mode = false{
-			var max_speed = 3.75;
+			var max_speed = 4.5;
 		}
 		if swift_mode = true{
-			var max_speed = 4.5;
+			var max_speed = 6;
 		}
         if (fly_dist > max_speed){
             hsp = lengthdir_x(max_speed, fly_dir);
@@ -580,6 +604,11 @@ if (attack == AT_USPECIAL){
     }
 }
 
+if (attack == AT_USPECIAL){
+	if window == 3 && window_timer == 0 && !hitpause {
+        destroy_hitboxes();
+	}
+}
 
 
 if (attack == AT_TAUNT_2) {
@@ -674,7 +703,7 @@ if (radio == 1){
 	}
 	
 	if (attack == AT_BAIR){
-		if (window == 1 && window_timer == 13){
+		if (window == 1 && window_timer == 10){
 			if (swift_mode = false){
 				sound_play(sound_get("atk14"))
 			}
@@ -696,7 +725,7 @@ if (radio == 1){
 	}
 	
 	if (attack == AT_NAIR){
-		if (window == 1 && window_timer == 7){
+		if (window == 1 && window_timer == 4){
 			if (swift_mode = false){
 				sound_play(sound_get("atk17"))
 			}
