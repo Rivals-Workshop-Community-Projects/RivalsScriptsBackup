@@ -30,9 +30,12 @@ if attack == AT_FSPECIAL || attack == AT_DSPECIAL_AIR {
 	can_wall_jump = true;
 }
 
-if burst = 1 && (((attack == AT_FSPECIAL || (attack == AT_NSPECIAL || (attack == AT_USPECIAL))) && has_hit)) {
+
+if burst = 1 && (attack == AT_FSPECIAL || attack == AT_NSPECIAL || attack == AT_USPECIAL) && has_hit {
 	usingspecial = true;
 	burststop = 240;
+	cooldownstart = true;
+
 }
 
 
@@ -116,12 +119,12 @@ if burst = 1 {
 
 }
 
-
-if (burst = 1 && (usingspecial = true && (attack == AT_NSPECIAL && window == 6) || (attack == AT_FSPECIAL && window == 4) || attack == AT_USPECIAL && (window == 5 || window == 6)) || state == PS_HITSTUN) {
+/*
+if (burst = 1 && usingspecial = true && ((attack == AT_NSPECIAL && window == 6) || (attack == AT_FSPECIAL && window == 4) || (attack == AT_USPECIAL && (window == 5 || window == 6))) || state == PS_HITSTUN) {
 	usingspecial = false;
 	cooldownstart = true;
 }
-
+*/
 
 if attack == AT_FTILT && has_hit && window == 2 {
 	window = 4;

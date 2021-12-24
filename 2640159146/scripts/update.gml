@@ -42,34 +42,28 @@ else
 	
 	    	if (spawning_front_spikes)
 {
-
    var ground = false
    while (!ground && burstfronty < 10000) //replace 2000 with bottom blast zone
    {
-      
       ground = test_for_ground(burstfrontx, burstfronty)
       if (!ground) burstfronty += 16; //step downwards (adjust precisiion as needed)
    }
    if (ground)
    {
   var hfx = spawn_hit_fx(burstfrontx, burstfronty, spikes_fx1);
-       
        hfx.spr_dir = burst_dir;
-       burstfrontx += (burst_dir * 50); //go forward 50 pixels
-       front_dspec_hitbox_timer = 0;
-       front_dspec_hitbox_var = true;
+        burstfrontx += (burst_dir * 50); //go forward 50 pixels
+        var hbox = create_hitbox( AT_DSPECIAL, 4, burstfrontx - (burst_dir * 50), burstfronty);
+        hbox.spr_dir = burst_dir;
    }
    else
    {
        spawning_front_spikes = false; 
-       front_dspec_hitbox_var = false;
-       front_dspec_hitbox_timer = 0;
    }
 }
 
 	    	if (spawning_back_spikes)
 {
-
    var ground = false
    while (!ground && burstbacky < 10000) //replace 2000 with bottom blast zone
    {
@@ -79,50 +73,19 @@ else
    if (ground)
    {
   var hfx = spawn_hit_fx(burstbackx, burstbacky, spikes_fx2);
-  
        hfx.spr_dir = burst_dir;
         burstbackx -= (burst_dir * 50); //go forward 50 pixels
-        back_dspec_hitbox_timer = 0;
-        	back_dspec_hitbox_var = true;
+        var hbox = create_hitbox( AT_DSPECIAL, 4, burstbackx + (burst_dir * 50), burstbacky);
+        hbox.spr_dir = burst_dir;
    }
    else
    {
        spawning_back_spikes = false; 
-       back_dspec_hitbox_var = false;
-       back_dspec_hitbox_timer = 0;
    }
 }
 
     burst_timer = burst_timer_max;
 }
-
-//ok so like    
-if (back_dspec_hitbox_var){
-	back_dspec_hitbox_timer++;
-	if(back_dspec_hitbox_timer == 6){
-		back_dspec_hitbox_timer = -1;
-	}
-}
-if(back_dspec_hitbox_var){
-    if(back_dspec_hitbox_timer = -1){
-     var hbox = create_hitbox( AT_DSPECIAL, 4, burstbackx + (burst_dir * 68), burstbacky - 32);
-    hbox.spr_dir = burst_dir;
-    }
-}
-
-if (front_dspec_hitbox_var){
-	front_dspec_hitbox_timer++;
-	if(front_dspec_hitbox_timer == 6){
-		front_dspec_hitbox_timer = -1;
-	}
-}
-if(front_dspec_hitbox_var){
-    if(front_dspec_hitbox_timer = -1){
-        var hbox = create_hitbox( AT_DSPECIAL, 4, burstfrontx - (burst_dir * 68), burstfronty - 32);
-        hbox.spr_dir = burst_dir;
-    }
-}
-
 //==================================================================
 
 if burst = 1 && !hitpause{
@@ -185,7 +148,7 @@ if ( (attack == AT_DSPECIAL && window == 2 && window_timer == 19)
 	    move_cooldown[AT_DSPECIAL_AIR] = 60;
 }
 
-if (burstmeter == 0 and free == false and blooddie = 0 and state_cat != SC_GROUND_COMMITTED)
+if (burstmeter == 0 and free == false and blooddie = 0 and state_cat != SC_GROUND_COMMITTED and state_cat != SC_HITSTUN)
 {
 	blooddie = 1;
 	set_attack(AT_EXTRA_1);
