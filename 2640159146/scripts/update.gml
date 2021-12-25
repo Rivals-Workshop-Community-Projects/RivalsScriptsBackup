@@ -14,6 +14,7 @@ if cooldownstart = true {
 
 if burststop = 0 {
 	cooldownstart = false;
+	usingspecial = false;
 }
 
 if (burststop = 0 && usingspecial == false && burst && (danmoment % 11) == 1) {
@@ -53,12 +54,14 @@ else
   var hfx = spawn_hit_fx(burstfrontx, burstfronty, spikes_fx1);
        hfx.spr_dir = burst_dir;
         burstfrontx += (burst_dir * 50); //go forward 50 pixels
-        var hbox = create_hitbox( AT_DSPECIAL, 4, burstfrontx - (burst_dir * 50), burstfronty);
-        hbox.spr_dir = burst_dir;
+        front_dspec_hitbox_timer = 0;
+        	front_dspec_hitbox_var = true;
    }
    else
    {
        spawning_front_spikes = false; 
+       front_dspec_hitbox_var = false;
+       front_dspec_hitbox_timer = 0;
    }
 }
 
@@ -75,17 +78,47 @@ else
   var hfx = spawn_hit_fx(burstbackx, burstbacky, spikes_fx2);
        hfx.spr_dir = burst_dir;
         burstbackx -= (burst_dir * 50); //go forward 50 pixels
-        var hbox = create_hitbox( AT_DSPECIAL, 4, burstbackx + (burst_dir * 50), burstbacky);
-        hbox.spr_dir = burst_dir;
+        back_dspec_hitbox_timer = 0;
+        	back_dspec_hitbox_var = true;
    }
    else
    {
        spawning_back_spikes = false; 
+       back_dspec_hitbox_var = false;
+       back_dspec_hitbox_timer = 0;
    }
 }
 
     burst_timer = burst_timer_max;
 }
+
+//ok so like    
+if (back_dspec_hitbox_var){
+	back_dspec_hitbox_timer++;
+	if(back_dspec_hitbox_timer == 6){
+		back_dspec_hitbox_timer = -1;
+	}
+}
+if(back_dspec_hitbox_var){
+    if(back_dspec_hitbox_timer = -1){
+     var hbox = create_hitbox( AT_DSPECIAL, 4, burstbackx + (burst_dir * 68), burstbacky - 32);
+    hbox.spr_dir = burst_dir;
+    }
+}
+
+if (front_dspec_hitbox_var){
+	front_dspec_hitbox_timer++;
+	if(front_dspec_hitbox_timer == 6){
+		front_dspec_hitbox_timer = -1;
+	}
+}
+if(front_dspec_hitbox_var){
+    if(front_dspec_hitbox_timer = -1){
+        var hbox = create_hitbox( AT_DSPECIAL, 4, burstfrontx - (burst_dir * 68), burstfronty - 32);
+        hbox.spr_dir = burst_dir;
+    }
+}
+
 //==================================================================
 
 if burst = 1 && !hitpause{
